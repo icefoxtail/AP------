@@ -1,0 +1,202 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "PU",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "681998",
+              "denominator": "100000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "731354",
+              "denominator": "100000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "PD",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-681998",
+              "denominator": "100000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-731354",
+              "denominator": "100000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "O",
+    "L1",
+    "R1",
+    "PU",
+    "PD"
+  ],
+  "displaySegments": [
+    {
+      "id": "s1",
+      "refs": [
+        "L1",
+        "R1"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "PU",
+        "PD"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "O",
+    "L1",
+    "R1",
+    "PU",
+    "PD"
+  ],
+  "hiddenPointStyle": "NONE",
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a1",
+        "refs": [
+          "R1",
+          "O",
+          "PU"
+        ],
+        "value": 47,
+        "label": "2x+15",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a2",
+        "refs": [
+          "L1",
+          "O",
+          "PD"
+        ],
+        "value": 47,
+        "label": "4x-17",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a3",
+        "refs": [
+          "R1",
+          "O",
+          "PD"
+        ],
+        "value": 133,
+        "label": "3y+13",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 420
+  },
+  "caption": "두 직선이 한 점에서 만나서 생긴 네 각 가운데 맞꼭지각 두 개와 이웃한 한 각의 크기를 식으로 나타낸 그림이다.",
+  "accessibilityDescription": "두 직선이 가운데 한 점에서 엇갈려 만나고, 오른쪽 위 각에 2x+15, 왼쪽 아래 맞꼭지각에 4x-17, 오른쪽 아래 이웃한 각에 3y+13이 적혀 있다.",
+  "newVisualInformation": [
+    "맞꼭지각의 크기 2x+15와 4x-17",
+    "한 직선 위에서 이웃한 각의 크기 3y+13"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 직선이 한 점에서 만날 때 생기는 맞꼭지각의 크기가 각각 $(2x + 15)^\\circ$, $(4x - 17)^\\circ$이고, 이 중 한 각과 한 직선 위에서 이웃한 각의 크기가 $(3y + 13)^\\circ$이다. 이때 $x$의 값과 $y$의 값을 각각 구하고, 그 과정을 서술하시오. [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

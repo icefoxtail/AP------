@@ -1,0 +1,200 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "45"
+            },
+            {
+              "kind": "integer",
+              "value": "28"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "45"
+            },
+            {
+              "kind": "integer",
+              "value": "-28"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "2385",
+              "denominator": "109"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1484",
+              "denominator": "109"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "eABAC",
+        "count": 1,
+        "segments": [
+          "sAB",
+          "sCA"
+        ],
+        "color": "ROSE"
+      }
+    ],
+    "angles": [
+      {
+        "id": "aA",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 64,
+        "label": "64",
+        "arcs": 1,
+        "ring": 1,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aBCD",
+        "refs": [
+          "B",
+          "C",
+          "D"
+        ],
+        "value": 29,
+        "noLabel": true,
+        "equalGroup": 1,
+        "arcs": 1
+      },
+      {
+        "id": "aDCA",
+        "refs": [
+          "D",
+          "C",
+          "A"
+        ],
+        "value": 29,
+        "noLabel": true,
+        "equalGroup": 1,
+        "arcs": 1
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 360
+  },
+  "caption": "AB와 AC의 길이가 같은 이등변삼각형 ABC에서 각 C의 이등분선 CD가 변 AB와 만나는 점을 D로 나타낸 그림이다. 각 A는 64도로 주어져 있다.",
+  "accessibilityDescription": "왼쪽에 꼭짓점 A가 있고 오른쪽에 밑변 BC가 있는 이등변삼각형 ABC가 있다. AB와 AC에 길이가 같음을 나타내는 표시가 있고, C에서 변 AB로 각의 이등분선 CD가 그어져 점 D에서 만난다. 꼭짓점 A의 각은 64도로 표시되어 있다.",
+  "newVisualInformation": [
+    "AB와 AC의 길이가 같은 이등변삼각형 ABC",
+    "각 C의 이등분선 CD와 변 AB의 교점 D",
+    "각 A는 64도",
+    "각 C가 같은 크기로 나뉘는 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\overline{AB} = \\overline{AC}$인 이등변삼각형 $ABC$에서 $\\angle C$의 이등분선과 변 $AB$의 교점을 $D$라 하자. $\\angle A = 64^\\circ$일 때, 다음 물음에 답하시오. (1) $\\angle B$의 크기를 구하는 데 필요한 이등변삼각형의 성질을 쓰고, $\\angle B$의 크기를 구하시오. (2) $\\angle BDC$의 크기를 구하고, 구하는 과정을 서술하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,261 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "20"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "34",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "12237",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "I",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2353",
+              "denominator": "500"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "523",
+              "denominator": "200"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2353",
+              "denominator": "500"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "3731",
+              "denominator": "250"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2353",
+              "denominator": "500"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "I"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sDB",
+      "refs": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "sEA",
+      "refs": [
+        "E",
+        "A"
+      ]
+    },
+    {
+      "id": "sDI",
+      "refs": [
+        "D",
+        "I"
+      ]
+    },
+    {
+      "id": "sIE",
+      "refs": [
+        "I",
+        "E"
+      ]
+    },
+    {
+      "id": "sBI",
+      "refs": [
+        "B",
+        "I"
+      ]
+    },
+    {
+      "id": "sCI",
+      "refs": [
+        "C",
+        "I"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "eAD",
+        "ownerSegment": "sAD",
+        "text": "9"
+      },
+      {
+        "id": "eDI",
+        "ownerSegment": "sDI",
+        "text": "5"
+      },
+      {
+        "id": "eAE",
+        "ownerSegment": "sEA",
+        "text": "11"
+      },
+      {
+        "id": "eIE",
+        "ownerSegment": "sIE",
+        "text": "7"
+      }
+    ],
+    "parallels": [
+      {
+        "id": "pDEBC",
+        "count": 1,
+        "segments": [
+          "sDI",
+          "sBC"
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 500,
+    "height": 420
+  },
+  "caption": "삼각형 ABC의 내심 I를 지나 변 BC에 평행한 직선이 변 AB, AC와 만나는 점 D, E를 보여 주는 그림이다.",
+  "accessibilityDescription": "삼각형 ABC, 내심 I, I를 지나는 변 BC에 평행한 선분 DE, 변 AB 위의 D와 변 AC 위의 E가 표시되어 있다. 선분 AD, DI, AE, IE의 길이가 각각 9, 5, 11, 7로 적혀 있다.",
+  "newVisualInformation": [
+    "선분 DE가 변 BC와 평행하다는 표시",
+    "내심 I와 선분 BI, CI",
+    "길이 AD는 9, DI는 5, AE는 11, IE는 7"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\triangle ABC$의 내심 $I$를 지나고 변 $BC$에 평행한 직선이 변 $AB$, 변 $AC$와 만나는 점을 각각 $D$, $E$라고 하자. $\\overline{AD} = 9$, $\\overline{DI} = 5$, $\\overline{AE} = 11$, $\\overline{IE} = 7$일 때, $\\overline{AB} + \\overline{AC}$의 길이는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

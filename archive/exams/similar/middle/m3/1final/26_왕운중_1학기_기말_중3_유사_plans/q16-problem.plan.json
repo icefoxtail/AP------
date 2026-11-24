@@ -1,0 +1,97 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "axisScale": {
+      "x": 1,
+      "y": 2
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "3",
+          "-2",
+          "-1"
+        ],
+        "domain": [
+          "-7/2",
+          "3/2"
+        ]
+      },
+      {
+        "id": "g",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "-5",
+          "6",
+          "-1"
+        ],
+        "domain": [
+          "1/2",
+          "11/2"
+        ]
+      }
+    ],
+    "axisTitles": {
+      "x": "x",
+      "y": "y"
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "L",
+          "slope": "0",
+          "intercept": "1/2",
+          "style": "SOLID"
+        }
+      ],
+      "points": [
+        {
+          "id": "A",
+          "x": "-1-sqrt(7/2)",
+          "y": "1/2"
+        },
+        {
+          "id": "B",
+          "x": "-1+sqrt(7/2)",
+          "y": "1/2"
+        },
+        {
+          "id": "C",
+          "x": "3-sqrt(7/2)",
+          "y": "1/2"
+        },
+        {
+          "id": "D",
+          "x": "3+sqrt(7/2)",
+          "y": "1/2"
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "A": "A",
+    "B": "B",
+    "C": "C",
+    "D": "D"
+  },
+  "caption": "두 이차함수와 직선 y=1/2의 교점 A, B, C, D",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "이차함수 y=-x^2-2x+3과 y=-x^2+6x-5가 직선 y=1/2과 만나는 점 각각 A, B 및 C, D"
+    }
+  ],
+  "newVisualInformation": [
+    {
+      "id": "v1",
+      "description": "두 포물선과 직선 y=1/2의 위치 및 네 교점 A, B, C, D"
+    }
+  ]
+}

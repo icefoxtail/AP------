@@ -1,0 +1,217 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "직사각형 ABCD에서 점 P가 B에서 C 쪽으로 움직이고 있고, A, B, P, D를 이은 사각형 ABPD가 색칠되어 있다. AB의 길이는 10cm, BC의 길이는 20cm이고 사각형 ABPD의 넓이는 140제곱센티미터이다.",
+  "accessibilityDescription": "가로로 긴 직사각형의 아래쪽 변 위에 점 P가 있고, A, B, P, D를 이은 사각형이 연하게 색칠되어 있다. 직사각형의 세로변과 가로변에 10과 20이 표시되어 있다.",
+  "newVisualInformation": [
+    "직사각형 ABPD의 넓이 140",
+    "AB의 길이 10",
+    "BC의 길이 20",
+    "BC 위의 점 P"
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "20"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "20"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "P"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "sCB",
+      "refs": [
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "sDP",
+      "refs": [
+        "D",
+        "P"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "10",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lCB",
+        "ownerSegment": "sCB",
+        "text": "20",
+        "factRole": "GIVEN"
+      }
+    ],
+    "regions": [
+      {
+        "id": "target",
+        "fill": "LIGHT",
+        "label": "140",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "polygon": [
+              "A",
+              "B",
+              "P",
+              "D"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 320
+  },
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "직사각형 $ABCD$에서 $\\overline{AB} = 10\\text{ cm}$, $\\overline{BC} = 20\\text{ cm}$이고, 점 $P$는 점 $B$를 출발하여 점 $C$까지 변 $BC$를 따라 초속 $2\\text{ cm}$로 움직이고 있다. 점 $P$가 점 $B$를 출발한 지 $x$초 후의 사각형 $ABPD$의 넓이를 $y\\text{ cm}^{2}$라 할 때, 사각형 $ABPD$의 넓이가 $140\\text{ cm}^{2}$가 되는 것은 점 $P$가 점 $B$를 출발한 지 몇 초 후인가?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

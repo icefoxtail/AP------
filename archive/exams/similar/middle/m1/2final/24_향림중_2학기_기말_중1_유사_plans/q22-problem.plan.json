@@ -1,0 +1,83 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PYRAMID",
+      "base": {
+        "kind": "RECT",
+        "width": 6,
+        "depth": 6
+      },
+      "height": 4,
+      "names": ".....",
+      "points": [
+        {
+          "id": "M",
+          "at": {
+            "edge": [
+              "#b0",
+              "#b1"
+            ],
+            "t": "1/2"
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "M",
+      "to": "#apex",
+      "style": "SOLID"
+    },
+    {
+      "from": "M",
+      "to": "#b0",
+      "style": "SOLID"
+    }
+  ],
+  "dims": [
+    {
+      "solid": "s1",
+      "edge": [
+        "#b0",
+        "#b1"
+      ],
+      "label": "6"
+    },
+    {
+      "solid": "s1",
+      "from": "M",
+      "to": "#apex",
+      "label": "x"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "M",
+        "refs": [
+          "#apex",
+          "#b0"
+        ]
+      }
+    ]
+  },
+  "solidCaption": {
+    "text": "사각뿔"
+  },
+  "caption": "밑면이 한 변의 길이가 6 cm인 정사각형이고 옆면의 높이를 x로 표시한 사각뿔",
+  "accessibilityDescription": "정사각뿔의 한 옆면에 꼭짓점에서 밑면 모서리의 중점 M까지 그은 선분이 있고, 그 길이가 x로 표시되어 있다. 밑면의 한 변은 6 cm이다.",
+  "newVisualInformation": [
+    "밑면 한 변 6과 옆면의 높이 x"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서·논술형 2] 밑면이 한 변의 길이가 $6\\text{ cm}$인 정사각형이고 옆면이 모두 합동인 이등변삼각형인 사각뿔이 있다. 이 사각뿔의 밑넓이를 구하고, 옆면인 각 이등변삼각형의 높이가 $x\\text{ cm}$일 때 옆넓이를 $x$에 관한 식으로 나타내시오. 그리고 이 사각뿔의 겉넓이가 $120\\text{ cm}^2$일 때, $x$의 값을 구하는 과정을 자세히 서술하시오. [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

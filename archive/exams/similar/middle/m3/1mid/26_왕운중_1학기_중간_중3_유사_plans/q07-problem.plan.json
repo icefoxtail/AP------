@@ -1,0 +1,126 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "axisVariable": false,
+    "constructions": [
+      {
+        "id": "c1",
+        "center": "M0",
+        "radius": {
+          "value": "sqrt(2)"
+        },
+        "arc": {
+          "side": "LEFT"
+        },
+        "hits": [
+          {
+            "id": "A",
+            "branch": "LEFT"
+          }
+        ]
+      },
+      {
+        "id": "c2",
+        "center": "M1",
+        "radius": {
+          "value": "sqrt(2)"
+        },
+        "arc": {
+          "side": "BOTH"
+        },
+        "hits": [
+          {
+            "id": "B",
+            "branch": "LEFT"
+          },
+          {
+            "id": "D",
+            "branch": "RIGHT"
+          }
+        ]
+      },
+      {
+        "id": "c3",
+        "center": "M2",
+        "radius": {
+          "value": "sqrt(2)"
+        },
+        "arc": {
+          "side": "BOTH"
+        },
+        "hits": [
+          {
+            "id": "C",
+            "branch": "LEFT"
+          },
+          {
+            "id": "E",
+            "branch": "RIGHT"
+          }
+        ]
+      }
+    ],
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "points": [
+          {
+            "id": "M0",
+            "value": "-2",
+            "hideName": true
+          },
+          {
+            "id": "M1",
+            "value": "-1",
+            "hideName": true
+          },
+          {
+            "id": "M2",
+            "value": "0",
+            "hideName": true
+          },
+          {
+            "id": "A",
+            "value": "-2-sqrt(2)",
+            "showValue": false
+          },
+          {
+            "id": "B",
+            "value": "-1-sqrt(2)",
+            "showValue": false
+          },
+          {
+            "id": "C",
+            "value": "-sqrt(2)",
+            "showValue": false
+          },
+          {
+            "id": "D",
+            "value": "-1+sqrt(2)",
+            "showValue": false
+          },
+          {
+            "id": "E",
+            "value": "sqrt(2)",
+            "showValue": false
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "수직선 위의 점 -2, -1, 0을 중심으로 같은 반지름의 호를 왼쪽과 오른쪽에 그려 수직선과 만나는 점을 A, B, C, D, E로 나타낸 그림이다.",
+  "accessibilityDescription": "수직선 위에 -2, -1, 0의 위치를 중심으로 하는 세 개의 호가 그려져 있고, 이 호들이 수직선과 만나는 다섯 점에 A, B, C, D, E라는 이름이 붙어 있다. 각 점이 나타내는 수는 적혀 있지 않다.",
+  "newVisualInformation": [
+    "수직선 위 -2, -1, 0을 중심으로 하는 세 개의 호가 그려짐",
+    "호와 수직선이 만나는 점 A, B, C, D, E의 이름이 표시됨",
+    "다섯 점의 값은 비어 있음"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "수직선 위에 한 변의 길이가 $1$인 세 정사각형이 수직선의 구간 $[-2, -1]$, $[-1, 0]$, $[0, 1]$을 각각 밑변으로 하여 놓여 있다. 각 정사각형의 대각선의 길이를 반지름으로 하는 원호를 그려 수직선과 만나는 점을 각각 $\\text{A}, \\text{B}, \\text{C}, \\text{D}, \\text{E}$라 하자.\n\n- 점 $-2$를 중심으로 하고 대각선의 길이를 반지름으로 하여 왼쪽으로 내린 점: $\\text{A}$  \n- 점 $-1$을 중심으로 하고 대각선의 길이를 반지름으로 하여 왼쪽으로 내린 점: $\\text{B}$  \n- 점 $0$을 중심으로 하고 대각선의 길이를 반지름으로 하여 왼쪽으로 내린 점: $\\text{C}$  \n- 점 $-1$을 중심으로 하고 대각선의 길이를 반지름으로 하여 오른쪽으로 내린 점: $\\text{D}$  \n- 점 $0$을 중심으로 하고 대각선의 길이를 반지름으로 하여 오른쪽으로 내린 점: $\\text{E}$\n\n이때 $-1 - \\sqrt{2}$에 대응하는 점을 구하면? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

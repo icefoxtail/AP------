@@ -1,0 +1,93 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PRISM",
+      "base": {
+        "kind": "POLYGON",
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            8,
+            0
+          ],
+          [
+            8,
+            8
+          ],
+          [
+            4,
+            8
+          ]
+        ],
+        "plane": "XZ"
+      },
+      "height": 8,
+      "names": "........"
+    }
+  ],
+  "dims": [
+    {
+      "solid": "s1",
+      "edge": [
+        "#b0",
+        "#b1"
+      ],
+      "label": "8"
+    },
+    {
+      "solid": "s1",
+      "edge": [
+        "#b3",
+        "#b2"
+      ],
+      "label": "4"
+    },
+    {
+      "solid": "s1",
+      "edge": [
+        "#b0",
+        "#t0"
+      ],
+      "label": "8"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "#b1",
+        "refs": [
+          "#b0",
+          "#b2"
+        ]
+      },
+      {
+        "at": "#b2",
+        "refs": [
+          "#b1",
+          "#b3"
+        ]
+      }
+    ]
+  },
+  "solidCaption": {
+    "text": "비스듬히 자른 정육면체"
+  },
+  "caption": "한 모서리의 길이가 8 cm인 정육면체를 평면으로 비스듬히 잘라 낸 입체도형. 앞면은 평행한 두 변의 길이가 각각 4 cm, 8 cm인 사다리꼴이다.",
+  "accessibilityDescription": "앞면이 사다리꼴인 입체도형이 보인다. 사다리꼴의 평행한 두 변에는 4 cm와 8 cm, 깊이에는 8 cm가 표시되어 있다.",
+  "newVisualInformation": [
+    "앞면 사다리꼴의 두 변 4, 8과 깊이 8"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림은 한 모서리의 길이가 $8\\text{ cm}$인 정육면체를 평면으로 비스듬히 잘라내고 남은 입체도형이다. 앞면의 단면이 평행한 두 변의 길이가 각각 $4\\text{ cm}, 8\\text{ cm}$인 사다리꼴일 때, 이 입체도형의 부피는? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

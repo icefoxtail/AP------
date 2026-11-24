@@ -1,0 +1,330 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "지름의 길이가 16인 원 O에 내접하는 정팔각형을 나타낸다.",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "V0",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V1",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "V0"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "45"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V2",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "V0"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "90"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V3",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "V0"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "135"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V4",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "V0"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "180"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V5",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "V0"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "225"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V6",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "V0"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "270"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V7",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "V0"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "315"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "8"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "V0",
+    "V1",
+    "V2",
+    "V3",
+    "V4",
+    "V5",
+    "V6",
+    "V7"
+  ],
+  "pointNames": {
+    "O": "O"
+  },
+  "hiddenPointNames": [
+    "V0",
+    "V1",
+    "V2",
+    "V3",
+    "V4",
+    "V5",
+    "V6",
+    "V7"
+  ],
+  "unmarkedPointNames": [
+    "V0",
+    "V1",
+    "V2",
+    "V3",
+    "V4",
+    "V5",
+    "V6",
+    "V7"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "sV0V1",
+      "refs": [
+        "V0",
+        "V1"
+      ]
+    },
+    {
+      "id": "sV1V2",
+      "refs": [
+        "V1",
+        "V2"
+      ]
+    },
+    {
+      "id": "sV2V3",
+      "refs": [
+        "V2",
+        "V3"
+      ]
+    },
+    {
+      "id": "sV3V4",
+      "refs": [
+        "V3",
+        "V4"
+      ]
+    },
+    {
+      "id": "sV4V5",
+      "refs": [
+        "V4",
+        "V5"
+      ]
+    },
+    {
+      "id": "sV5V6",
+      "refs": [
+        "V5",
+        "V6"
+      ]
+    },
+    {
+      "id": "sV6V7",
+      "refs": [
+        "V6",
+        "V7"
+      ]
+    },
+    {
+      "id": "sV7V0",
+      "refs": [
+        "V7",
+        "V0"
+      ]
+    },
+    {
+      "id": "sV4V0",
+      "refs": [
+        "V4",
+        "V0"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lDiam",
+        "ownerSegment": "sV4V0",
+        "text": "16"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 560
+  }
+}

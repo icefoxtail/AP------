@@ -1,0 +1,78 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PYRAMID",
+      "base": {
+        "kind": "POLYGON",
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            6,
+            0
+          ],
+          [
+            0,
+            10
+          ]
+        ]
+      },
+      "height": 4,
+      "names": "...."
+    }
+  ],
+  "dims": [
+    {
+      "solid": "s1",
+      "edge": [
+        "#b0",
+        "#b1"
+      ],
+      "label": "6"
+    },
+    {
+      "solid": "s1",
+      "edge": [
+        "#b0",
+        "#b2"
+      ],
+      "label": "10"
+    },
+    {
+      "solid": "s1",
+      "height": true,
+      "label": "4"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "#b0",
+        "refs": [
+          "#b1",
+          "#b2"
+        ]
+      }
+    ]
+  },
+  "solidCaption": {
+    "text": "남은 물"
+  },
+  "caption": "그릇에 남은 물을 밑면의 직각을 낀 두 변이 6 cm, 10 cm이고 높이가 4 cm인 삼각뿔로 나타낸 그림",
+  "accessibilityDescription": "밑면이 직각삼각형인 삼각뿔이 보인다. 밑면의 두 변에는 6 cm와 10 cm, 높이에는 4 cm가 표시되어 있다.",
+  "newVisualInformation": [
+    "남은 물의 밑면 두 변 6, 10과 높이 4"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "가로의 길이가 $6\\text{ cm}$, 세로의 길이가 $10\\text{ cm}$, 높이가 $4\\text{ cm}$인 직육면체 모양의 그릇에 물을 가득 채운 후, 그릇을 기울여 물을 흘려보냈더니 그릇의 한 꼭짓점을 포함하는 삼각뿔 모양으로 물이 남았다. 흘려보낸 물의 양은? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

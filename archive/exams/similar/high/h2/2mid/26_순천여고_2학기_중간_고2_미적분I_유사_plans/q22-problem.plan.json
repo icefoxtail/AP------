@@ -1,0 +1,66 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "f",
+    "formula": "x^3",
+    "referenceLines": [
+      {
+        "id": "t",
+        "slope": "3",
+        "intercept": "2",
+        "intersectionX": [
+          "-1",
+          "2"
+        ],
+        "hideLabel": true
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "2",
+        "y": "8"
+      },
+      {
+        "id": "B",
+        "x": "-1",
+        "y": "-1"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "삼차함수 f의 그래프는 원점을 지나며 x의 세제곱 모양으로 위아래로 뻗어 있다. 곡선 위의 점 A를 지나고 곡선 위의 다른 점 B에서 접하는 직선이 그려져 있다.",
+  "accessibilityDescription": "원점을 지나는 삼차곡선의 위쪽에 점 A가 있고, 원점 근처 아래쪽에 점 B가 있다. A와 B를 잇는 직선이 B에서 곡선에 접한다.",
+  "newVisualInformation": [
+    "원점을 지나는 삼차곡선",
+    "곡선 위쪽의 점 A",
+    "곡선 아래쪽의 접점 B",
+    "A와 B를 잇는 직선"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서답형 5] (서술) 그림과 같이 함수 $f(x)=x^3$의 그래프로 나타낼 수 있는 해안선이 있다. 곡선 위의 점 $A(2,\\ f(2))$에서 이 해안선에 접하도록 하는 직선 다리를 건설하려고 한다. $A$가 아닌 접점을 $B$라 할 때, 점 $B$의 좌표와 선분 $AB$의 길이를 구하는 풀이과정과 답을 서술하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,350 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "Hl",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Hr",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P1r",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "P1"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P2r",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "P2"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U1",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "P1",
+          "P1r"
+        ],
+        "args": {
+          "length": {
+            "kind": "rational",
+            "numerator": "15",
+            "denominator": "2"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "70"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D1",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "P1",
+          "P1r"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "250"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U2",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "P2",
+          "P2r"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "9"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "120"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D2",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "P2",
+          "P2r"
+        ],
+        "args": {
+          "length": {
+            "kind": "rational",
+            "numerator": "5",
+            "denominator": "2"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "300"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "l1",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "P1",
+          "U1"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "l2",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "P2",
+          "U2"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "l1",
+          "l2"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "Hl",
+    "Hr",
+    "P1",
+    "P2",
+    "D1",
+    "U1",
+    "D2",
+    "U2",
+    "V"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sH",
+      "refs": [
+        "Hl",
+        "Hr"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "D1",
+        "U1"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "D2",
+        "U2"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aP1",
+        "refs": [
+          "Hl",
+          "P1",
+          "U1"
+        ],
+        "value": 110,
+        "label": "110",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aP2",
+        "refs": [
+          "Hr",
+          "P2",
+          "D2"
+        ],
+        "value": 60,
+        "label": "60",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aV",
+        "refs": [
+          "U1",
+          "V",
+          "D2"
+        ],
+        "value": 130,
+        "label": "a",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 460
+  },
+  "hiddenPointNames": [
+    "Hl",
+    "Hr",
+    "P1",
+    "P2",
+    "D1",
+    "U1",
+    "D2",
+    "U2",
+    "V"
+  ],
+  "caption": "가로선과 두 비스듬한 직선이 만나는 그림으로, 왼쪽 교점의 각 110도, 오른쪽 교점의 각 60도, 두 비스듬한 직선의 교점에 각 a가 표시되어 있다.",
+  "accessibilityDescription": "가로로 놓인 직선과 두 개의 비스듬한 직선이 세 점에서 교차하고, 왼쪽 교점에 각 110도, 오른쪽 교점에 각 60도, 두 비스듬한 직선의 교점에 각 a가 표시되어 있다.",
+  "newVisualInformation": [
+    "가로선",
+    "두 비스듬한 직선의 교점",
+    "각 110도",
+    "각 60도",
+    "각 a"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같이 가로선과 두 비스듬한 직선이 서로 만날 때 생긴 각 중에서, 두 비스듬한 직선의 교점에서의 각 $\\angle a$의 동위각의 크기를 각각 구하여 모두 더한 값은? (단, 왼쪽 아래 교점에서 가로선 위쪽 둔각은 $110^\\circ$이고, 오른쪽 아래 교점에서 가로선 아래쪽 맞은편 예각은 $60^\\circ$이다.) [3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

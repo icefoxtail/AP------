@@ -1,0 +1,215 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "18"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "MIDPOINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "CENTROID",
+        "inputs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G2",
+        "op": "CENTROID",
+        "inputs": [
+          "G",
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "G",
+    "G2"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAG",
+      "refs": [
+        "A",
+        "G"
+      ]
+    },
+    {
+      "id": "sGG2",
+      "refs": [
+        "G",
+        "G2"
+      ]
+    },
+    {
+      "id": "sG2D",
+      "refs": [
+        "G2",
+        "D"
+      ]
+    },
+    {
+      "id": "sGB",
+      "refs": [
+        "G",
+        "B"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sGC",
+      "refs": [
+        "G",
+        "C"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lGG2",
+        "ownerSegment": "sGG2",
+        "text": "4",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 400
+  },
+  "pointNames": {
+    "G2": "G'"
+  },
+  "caption": "삼각형 ABC의 변 BC의 중점 D와 무게중심 G를 잡고, 삼각형 GBC의 무게중심을 G프라임으로 잡아 두 점 G, G프라임을 잇는 선분에 길이 4센티미터를 적은 그림이다.",
+  "accessibilityDescription": "삼각형 ABC에서 변 BC의 중점 D가 표시되어 있고, 무게중심 G에서 꼭짓점 B, C로 점선이 그어져 있다. 삼각형 GBC의 무게중심 G프라임이 G와 D 사이에 있고, 선분 GG프라임 옆에 4센티미터가 적혀 있다.",
+  "newVisualInformation": [
+    "D는 변 BC의 중점이다.",
+    "G는 삼각형 ABC의 무게중심이다.",
+    "G프라임은 삼각형 GBC의 무게중심이다.",
+    "선분 GG프라임의 길이는 4센티미터이다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\triangle ABC$에서 점 $D$는 변 $BC$의 중점이고, 두 점 $G, G'$은 각각 $\\triangle ABC$와 $\\triangle GBC$의 무게중심이다. 선분 $\\overline{GG'}=4 m\\,cm$일 때, 선분 $\\overline{AG}$의 길이는? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

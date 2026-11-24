@@ -1,0 +1,129 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-5/2",
+          "5/2"
+        ],
+        "label": "y=x^2"
+      },
+      {
+        "id": "g",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "1/4"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ],
+        "label": "y=ax^2"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "2",
+          "y": "4"
+        },
+        {
+          "id": "B",
+          "x": "2",
+          "y": "1"
+        },
+        {
+          "id": "H",
+          "x": "2",
+          "y": "0"
+        },
+        {
+          "id": "C",
+          "x": "-sqrt(2)",
+          "y": "2"
+        },
+        {
+          "id": "D",
+          "x": "-sqrt(2)",
+          "y": "1/2"
+        },
+        {
+          "id": "E",
+          "x": "-sqrt(2)",
+          "y": "0"
+        }
+      ],
+      "segments": [
+        {
+          "id": "AB",
+          "from": "A",
+          "to": "B",
+          "dashed": true
+        },
+        {
+          "id": "BH",
+          "from": "B",
+          "to": "H",
+          "dashed": true
+        },
+        {
+          "id": "CD",
+          "from": "C",
+          "to": "D",
+          "dashed": true
+        },
+        {
+          "id": "DE",
+          "from": "D",
+          "to": "E",
+          "dashed": true
+        }
+      ],
+      "names": [
+        {
+          "id": "n1",
+          "text": "1",
+          "segment": "BH",
+          "labelDirection": "E"
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "A": "A",
+    "B": "B",
+    "C": "C",
+    "D": "D",
+    "E": "E",
+    "H": "H"
+  },
+  "caption": "두 이차함수 y=x^2과 y=ax^2 위의 점 A, B, C, D와 x축 위의 점 H, E",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 이차함수 y=x^2, y=ax^2 위의 A, B와 x축 수선의 발 H, C, D와 x축 수선의 발 E, AB=3BH, ED=1/2"
+    }
+  ],
+  "newVisualInformation": [
+    {
+      "id": "v1",
+      "description": "두 포물선과 점 A, B, C, D, E, H 및 선분 길이 BH=1, ED=1/2의 배치"
+    }
+  ]
+}
