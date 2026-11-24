@@ -1,0 +1,255 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "X"
+  ],
+  "displaySegments": [
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDB",
+      "refs": [
+        "D",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "rOA",
+        "ownerSegment": "sOA",
+        "text": "6",
+        "unit": "cm"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "arcAB",
+        "circle": "k",
+        "center": "O",
+        "from": "A",
+        "to": "B",
+        "side": "CW",
+        "highlight": false
+      }
+    ],
+    "regions": [
+      {
+        "id": "rgFold",
+        "fill": "MEDIUM",
+        "shapes": [
+          {
+            "loop": {
+              "start": "B",
+              "steps": [
+                {
+                  "to": "C",
+                  "arc": {
+                    "center": "O",
+                    "side": "CCW"
+                  }
+                },
+                {
+                  "to": "D"
+                },
+                {
+                  "to": "B"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 440,
+    "height": 400
+  },
+  "hiddenPointNames": [
+    "X"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "반지름이 6 센티미터인 사분원 OAB를 선분 CD를 접는 선으로 접어 점 B가 점 O에 오도록 한 뒤, 호 BC와 선분 CD, DB로 둘러싸인 부분을 색칠한 그림이다.",
+  "accessibilityDescription": "점 O를 중심으로 한 사분원 OAB가 있고, 호 AB 위의 점 C와 선분 OB 위의 점 D를 잇는 선분 CD가 그려져 있다. 점 B가 점 O에 오도록 접은 결과로 호 BC, 선분 CD, 선분 DB로 둘러싸인 부분이 색칠되어 있다. 선분 OA 옆에 6 센티미터가 적혀 있다.",
+  "newVisualInformation": [
+    "사분원의 반지름이 6 센티미터이다.",
+    "점 C는 호 AB 위에, 점 D는 선분 OB 위에 있다.",
+    "색칠한 부분의 경계가 호 BC, 선분 CD, 선분 DB이다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같이 반지름의 길이가 $6\\text{ cm}$인 사분원 $\\text{OAB}$를 $\\overline{\\text{CD}}$를 접는 선으로 하여(점 $\\text{C}$는 호 $\\text{AB}$ 위의 점, 점 $\\text{D}$는 $\\overline{\\text{OB}}$ 위의 점) 점 $\\text{B}$가 점 $\\text{O}$에 오도록 접었다. 이때 호 $\\text{BC}$와 $\\overline{\\text{CD}}$, $\\overline{\\text{DB}}$로 둘러싸인 색칠한 부분의 넓이를 구하면?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

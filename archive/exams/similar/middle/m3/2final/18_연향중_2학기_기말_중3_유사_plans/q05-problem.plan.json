@@ -1,0 +1,221 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "60"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "60"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "20"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "60"
+            },
+            {
+              "kind": "integer",
+              "value": "60"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sBA",
+      "refs": [
+        "B",
+        "A"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a45",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 45,
+        "label": "45",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a30",
+        "refs": [
+          "D",
+          "B",
+          "C"
+        ],
+        "value": 30,
+        "label": "30",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lBC",
+        "ownerSegment": "sBC",
+        "text": "60",
+        "unit": "m"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rBCA",
+      "refs": [
+        "B",
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 400
+  },
+  "caption": "지면 위의 두 지점 B, C와 산꼭대기 위 송신탑의 아래끝 D, 위끝 A를 나타낸 그림이다. B에서 A를 올려다본 각은 45도, D를 올려다본 각은 30도이고 BC는 60미터이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림과 같이 산 아래의 $C$ 지점과 $60\\text{ m}$ 떨어진 $B$ 지점에서 산꼭대기 위의 송신탑의 양 끝점 $A, D$를 올려다본 각의 크기가 각각 $45^\\circ, 30^\\circ$일 때, 송신탑의 높이 $\\overline{AD}$의 길이는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "BC=60미터, B에서 A를 올려다본 각=45도, B에서 D를 올려다본 각=30도이다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks",
+        "rightAngles",
+        "caption"
+      ]
+    }
+  ],
+  "accessibilityDescription": "수평 지면 위의 B와 C, C 위에 수직으로 세워진 송신탑 AD, B에서 A와 D로 향하는 두 시선이 보인다. 각각 45도와 30도의 각 표시, BC 옆의 60미터, C의 직각 표시가 보인다.",
+  "newVisualInformation": [
+    "두 올려다본 각과 지면 위 거리를 표시한다."
+  ]
+}

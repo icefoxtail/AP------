@@ -1,0 +1,78 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -3,
+      7,
+      -6,
+      4
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "LINE",
+        "coefficients": [
+          "-5/2",
+          "1/2"
+        ],
+        "domain": [
+          "-3",
+          "7"
+        ],
+        "color": "BLUE",
+        "label": "x-a*y=5"
+      },
+      {
+        "id": "g",
+        "kind": "LINE",
+        "coefficients": [
+          "1",
+          "-3"
+        ],
+        "domain": [
+          "-1",
+          "7/3"
+        ],
+        "color": "GREEN",
+        "label": "b*x+y=1"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "1",
+          "y": "-2",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ],
+      "guides": [
+        {
+          "id": "coords",
+          "from": "P",
+          "axis": "BOTH"
+        }
+      ]
+    }
+  },
+  "caption": "좌표평면에 두 직선 x-ay=5와 bx+y=1이 그려져 있고, 두 직선의 교점의 좌표가 (1, -2)로 표시되어 있다.",
+  "accessibilityDescription": "좌표평면에 기울기가 양수인 직선과 기울기가 음수인 직선이 각각 그려져 있으며, 두 직선이 만나는 점의 좌표가 (1, -2)로 표시되어 있다.",
+  "newVisualInformation": [
+    "두 직선 x-ay=5, bx+y=1",
+    "두 직선의 교점과 그 좌표 (1, -2)",
+    "교점에서 두 축에 내린 안내선"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 일차방정식 $x-ay=5$와 $bx+y=1$의 그래프의 교점의 좌표가 $(1,-2)$일 때, 두 상수 $a,b$에 대하여 $a-b$의 값은? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

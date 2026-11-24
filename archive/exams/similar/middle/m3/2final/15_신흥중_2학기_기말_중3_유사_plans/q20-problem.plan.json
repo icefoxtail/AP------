@@ -1,0 +1,375 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "A",
+          "R0"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "250"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "50"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "25"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "B",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "320"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "au",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "U"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bv",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "V"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "au",
+          "bv"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "W",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "75"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "X",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "E",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "320"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "aw",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "W"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ex",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "E",
+          "X"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "aw",
+          "ex"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "E",
+    "F",
+    "R0",
+    "U",
+    "V",
+    "W",
+    "X"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "sAF",
+      "refs": [
+        "A",
+        "F"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a0BAE",
+        "refs": [
+          "B",
+          "A",
+          "E"
+        ],
+        "value": 50,
+        "label": "50",
+        "color": "ROSE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aACB",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "value": 115,
+        "label": "x",
+        "color": "VIOLET",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "segmentColors": [
+      {
+        "segments": [
+          "sAB",
+          "sAC",
+          "sBC"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "segments": [
+          "sAE",
+          "sAF",
+          "sEF"
+        ],
+        "color": "WARM"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 420
+  },
+  "hiddenPointNames": [
+    "R0",
+    "U",
+    "V",
+    "W",
+    "X"
+  ],
+  "hiddenPointStyle": "NONE",
+  "pointNames": {
+    "E": "B'",
+    "F": "C'"
+  },
+  "caption": "삼각형 ABC와 점 A를 중심으로 50도 회전한 삼각형 AB'C'이 겹쳐 그려져 있다. 점 A, B, B', C'은 한 원 위에 있고 각 ACB는 x로 표시되어 있다.",
+  "accessibilityDescription": "두 삼각형 ABC와 AB'C'이 점 A에서 겹쳐 있고, 회전각 50과 각 x가 표시되어 있다. B'과 C'의 이름이 보인다.",
+  "newVisualInformation": [
+    "점 A를 중심으로 50도 회전한 삼각형과 주어진 회전각, 구하는 각 x를 표시한 구성"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림에서 $\\triangle AB'C'$은 $\\triangle ABC$를 점 $A$를 중심으로 하여 오른쪽으로 $50^\\circ$ 회전시킨 것이다. 네 점 $A, B, B', C'$이 한 원 위에 있을 때, $\\angle ACB$의 크기는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,181 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aA",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 45,
+        "label": "45",
+        "factRole": "GIVEN",
+        "color": "ROSE"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lBC",
+        "ownerSegment": "sBC",
+        "text": "5",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "x",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lCA",
+        "ownerSegment": "sCA",
+        "text": "y",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      }
+    ],
+    "segmentColors": [
+      {
+        "segments": [
+          "sBC"
+        ],
+        "color": "WARM"
+      },
+      {
+        "segments": [
+          "sAB"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "segments": [
+          "sCA"
+        ],
+        "color": "GREEN"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rB",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "caption": "∠B가 직각이고 ∠A가 45도인 직각삼각형 ABC로, 변 BC의 길이가 5cm이며 나머지 두 변은 x, y로 표시한 그림이다.",
+  "accessibilityDescription": "세 점 A, B, C로 이루어진 직각삼각형. B의 각에 직각 표시, A의 각에 45가 적혀 있고, 변 BC 옆에 5cm, 변 AB 옆에 x cm, 변 AC 옆에 y cm가 적혀 있다.",
+  "newVisualInformation": [
+    "∠B=90도, ∠A=45도, BC=5cm인 직각삼각형에서 두 변을 x, y로 둔다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림의 $\\angle B = 90^\\circ$, $\\angle A = 45^\\circ$, $\\overline{BC} = 5\\text{ cm}$인 직각삼각형 $ABC$에서 $\\overline{AB} = x$, $\\overline{AC} = y$의 값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

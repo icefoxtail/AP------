@@ -1,0 +1,362 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "7"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "7"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "90"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "7"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "270"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "7"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "156"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "7"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "336"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "7"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "192"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "7"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "12"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "k"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aAOF",
+        "refs": [
+          "A",
+          "O",
+          "F"
+        ],
+        "value": 78,
+        "noLabel": true,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aDOB",
+        "refs": [
+          "D",
+          "O",
+          "B"
+        ],
+        "value": 66,
+        "noLabel": true,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aCOE",
+        "refs": [
+          "C",
+          "O",
+          "E"
+        ],
+        "value": 36,
+        "noLabel": true,
+        "factRole": "GIVEN"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "arcAF",
+        "circle": "k",
+        "center": "O",
+        "from": "A",
+        "to": "F",
+        "side": "CW",
+        "highlight": false
+      },
+      {
+        "id": "arcDB",
+        "circle": "k",
+        "center": "O",
+        "from": "D",
+        "to": "B",
+        "side": "CW",
+        "highlight": false
+      },
+      {
+        "id": "arcCE",
+        "circle": "k",
+        "center": "O",
+        "from": "C",
+        "to": "E",
+        "side": "CCW",
+        "highlight": false
+      },
+      {
+        "id": "arcDF",
+        "circle": "k",
+        "center": "O",
+        "from": "D",
+        "to": "F",
+        "side": "CCW",
+        "label": "5",
+        "unit": "cm",
+        "color": "WARM"
+      }
+    ],
+    "regions": [
+      {
+        "id": "rAOF",
+        "fill": "WARM",
+        "shapes": [
+          {
+            "sector": {
+              "center": "O",
+              "from": "A",
+              "to": "F"
+            }
+          }
+        ]
+      },
+      {
+        "id": "rDOB",
+        "fill": "WARM",
+        "shapes": [
+          {
+            "sector": {
+              "center": "O",
+              "from": "D",
+              "to": "B"
+            }
+          }
+        ]
+      },
+      {
+        "id": "rCOE",
+        "fill": "WARM",
+        "shapes": [
+          {
+            "sector": {
+              "center": "O",
+              "from": "C",
+              "to": "E"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 480
+  },
+  "caption": "원 O에서 세 지름 AB, CD, EF를 그어 만든 중심각 가운데 각 AOF, 각 DOB, 각 COE의 비가 13 : 11 : 6이고 호 DF의 길이가 5 cm임을 나타낸 그림이다.",
+  "accessibilityDescription": "원의 중심 O를 지나는 세 지름 AB, CD, EF가 있고, 각 AOF와 각 DOB와 각 COE에 해당하는 부채꼴이 색칠되어 있으며, 호 DF 옆에 5 cm라는 길이가 적혀 있다.",
+  "newVisualInformation": [
+    "세 지름이 만드는 중심각의 비와 호 DF의 길이를 함께 보여 준다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같은 원 $O$에서 $\\angle AOF : \\angle DOB : \\angle COE = 13 : 11 : 6$이고 $\\overparen{DF} = 5\\text{ cm}$일 때, 원 $O$의 둘레의 길이는? [5점] (단, $\\overline{AB}, \\overline{CD}, \\overline{EF}$는 원 $O$의 지름이다.)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

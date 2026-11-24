@@ -26,8 +26,8 @@ window.questionBank = [
     "wide": false,
     "content": "$\\sqrt[3]{3}\\times\\sqrt[4]{27}=3^k$일 때, 실수 $k$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{13}{12}$",
+    "solution": "$\\sqrt[3]{3}=3^{\\frac{1}{3}}$, $\\sqrt[4]{27}=\\sqrt[4]{3^3}=3^{\\frac{3}{4}}$이므로\n$$\\sqrt[3]{3}\\times\\sqrt[4]{27}=3^{\\frac{1}{3}+\\frac{3}{4}}=3^{\\frac{13}{12}}$$\n따라서 $k=\\frac{13}{12}$"
   },
   {
     "id": 2,
@@ -54,8 +54,8 @@ window.questionBank = [
     "wide": false,
     "content": "양수 $a$에 대하여 $a^k-a^{-k}=4$일 때, $a^{2k}+a^{-2k}$의 값을 구하시오. (단, $k$는 실수)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$18$",
+    "solution": "$a^k-a^{-k}=4$의 양변을 제곱하면\n$$a^{2k}-2a^k\\times a^{-k}+a^{-2k}=a^{2k}+a^{-2k}-2=16$$\n따라서 $a^{2k}+a^{-2k}=18$"
   },
   {
     "id": 3,
@@ -82,8 +82,8 @@ window.questionBank = [
     "wide": false,
     "content": "세 양수 $a, b, c$에 대하여 $a^3=5, b^5=3, c^6=2$일 때, $(abc)^n$이 자연수가 되도록 하는 자연수 $n$의 최솟값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$30$",
+    "solution": "$a=5^{\\frac{1}{3}},\\ b=3^{\\frac{1}{5}},\\ c=2^{\\frac{1}{6}}$이므로\n$$(abc)^n=5^{\\frac{n}{3}}\\times 3^{\\frac{n}{5}}\\times 2^{\\frac{n}{6}}$$\n이 값이 자연수이려면 $\\frac{n}{3},\\ \\frac{n}{5},\\ \\frac{n}{6}$이 모두 음이 아닌 정수이어야 하므로 $n$은 $3,\\ 5,\\ 6$의 공배수이다. 최소공배수는 $30$이므로 $n$의 최솟값은 $30$이다."
   },
   {
     "id": 4,
@@ -116,8 +116,8 @@ window.questionBank = [
       "$-\\frac{2}{5}$",
       "$-\\frac{1}{5}$"
     ],
-    "answer": "",
-    "solution": ""
+    "answer": "③",
+    "solution": "한 번 축소할 때의 비율을 $r$라 하면 $5$번 축소한 후의 반지름의 길이가 $r^5=\\frac{1}{5}=5^{-1}$이므로 $r=5^{-\\frac{1}{5}}$이다.\n$3$번 축소한 후의 반지름의 길이는\n$$r^3=\\left(5^{-\\frac{1}{5}}\\right)^3=5^{-\\frac{3}{5}}$$\n이므로 $x=-\\frac{3}{5}$이고 ③이다."
   },
   {
     "id": 5,
@@ -144,8 +144,8 @@ window.questionBank = [
     "wide": false,
     "content": "$\\log_a 3=4$, $\\log_{\\frac{1}{9}} b=-\\frac{3}{8}$일 때, $ab$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$3$",
+    "solution": "$\\log_a 3=4$에서 $a^4=3$이므로 $a=3^{\\frac{1}{4}}$이다.\n$\\log_{\\frac{1}{9}}b=-\\frac{3}{8}$에서 $b=\\left(\\frac{1}{9}\\right)^{-\\frac{3}{8}}=9^{\\frac{3}{8}}=3^{\\frac{3}{4}}$이다.\n$$ab=3^{\\frac{1}{4}}\\times 3^{\\frac{3}{4}}=3$$"
   },
   {
     "id": 6,
@@ -178,8 +178,8 @@ window.questionBank = [
       "$536$",
       "$5360$"
     ],
-    "answer": "",
-    "solution": ""
+    "answer": "⑤",
+    "solution": "$\\log x=3.7292=3+0.7292=3+\\log 5.36=\\log 10^3+\\log 5.36=\\log(5.36\\times 10^3)$\n이므로 $x=5.36\\times 10^3=5360$이고 ⑤이다."
   },
   {
     "id": 7,
@@ -206,8 +206,8 @@ window.questionBank = [
     "wide": false,
     "content": "이차방정식 $x^2-10x+2=0$의 두 근이 $\\log a$, $\\log b$일 때, $\\log_a b+\\log_b a$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$48$",
+    "solution": "이차방정식의 근과 계수의 관계에서 $\\log a+\\log b=10$, $\\log a\\times\\log b=2$이다.\n$$\\log_a b+\\log_b a=\\frac{\\log b}{\\log a}+\\frac{\\log a}{\\log b}=\\frac{(\\log a)^2+(\\log b)^2}{\\log a\\log b}$$\n$$(\\log a)^2+(\\log b)^2=(\\log a+\\log b)^2-2\\log a\\log b=100-4=96$$\n이므로 구하는 값은 $\\frac{96}{2}=48$"
   },
   {
     "id": 8,
@@ -234,8 +234,8 @@ window.questionBank = [
     "wide": false,
     "content": "두 함수 $y=2^x$, $y=4\\times 2^x$의 그래프와 두 직선 $y=1$, $y=4$로 둘러싸인 도형의 넓이를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$6$",
+    "solution": "같은 높이 $y$에서 $y=2^x$의 그래프는 $x=\\log_2 y$이고, $y=4\\times 2^x=2^{x+2}$의 그래프는 $x=\\log_2 y-2$이다. 즉 두 그래프 사이의 가로 거리는 $y$의 값에 관계없이 $2$이다.\n따라서 두 그래프와 두 직선 $y=1,\\ y=4$로 둘러싸인 도형은 밑변의 길이가 $2$, 높이가 $4-1=3$인 평행사변형과 넓이가 같다.\n$$2\\times 3=6$$"
   },
   {
     "id": 9,
@@ -262,8 +262,8 @@ window.questionBank = [
     "wide": false,
     "content": "함수 $y=4^x-2^{x+1}+a$가 $x=b$에서 최솟값 $2$를 가질 때, 실수 $a, b$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$a=3,\\ b=0$",
+    "solution": "$2^x=t$ ($t>0$)로 놓으면\n$$y=t^2-2t+a=(t-1)^2+a-1$$\n$t=1$일 때 최솟값 $a-1$을 가진다. $t=2^x=1$에서 $x=0$이므로 $b=0$이고, 최솟값이 $2$이므로 $a-1=2$에서 $a=3$이다."
   },
   {
     "id": 10,
@@ -290,8 +290,8 @@ window.questionBank = [
     "wide": false,
     "content": "오른쪽 그림은 두 함수 $y=2^x$, $y=\\log_2 x$의 그래프이다. 실수 $d$의 값을 구하시오. (단, 점선은 $x$축 또는 $y$축에 평행하다.)\n<img src=\"q10.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$16$",
+    "solution": "그림에서 로그함수 $y=\\log_2 x$의 그래프가 $x$축과 만나는 점의 $x$좌표가 $a$이므로 $\\log_2 a=0$에서 $a=1$이다.\n점 $(a,\\ c)$가 $y=2^x$의 그래프 위의 점이므로 $c=2^1=2$\n점 $(b,\\ c)$가 $y=\\log_2 x$의 그래프 위의 점이므로 $\\log_2 b=2$에서 $b=4$\n점 $(b,\\ d)$가 $y=2^x$의 그래프 위의 점이므로 $d=2^4=16$"
   },
   {
     "id": 11,
@@ -318,8 +318,8 @@ window.questionBank = [
     "wide": false,
     "content": "함수 $y=\\log_3(x-a)+b$의 그래프가 다음 그림과 같고 직선 $x=1$이 이 그래프의 점근선일 때, 실수 $a, b$의 값을 구하시오.\n<img src=\"q11.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$a=1,\\ b=2$",
+    "solution": "함수 $y=\\log_3(x-a)+b$의 그래프의 점근선은 직선 $x=a$이다. 직선 $x=1$이 점근선이므로 $a=1$이다.\n그래프가 점 $(4,\\ 3)$을 지나므로 $3=\\log_3(4-1)+b=1+b$에서 $b=2$이다."
   },
   {
     "id": 12,
@@ -346,8 +346,8 @@ window.questionBank = [
     "wide": false,
     "content": "$x$에 대한 부등식\n$$\\log_{\\frac{1}{2}}(x-6) \\ge \\log_{\\frac{1}{2}}\\left(\\frac{1}{3}x+k\\right)$$\n를 만족시키는 모든 정수 $x$의 개수가 $7$일 때, 자연수 $k$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$3$",
+    "solution": "진수의 조건에서 $x-6>0$이므로 $x>6$이고, 이때 $\\frac{1}{3}x+k>0$도 성립한다.\n밑 $\\frac{1}{2}$이 $1$보다 작으므로 부등식은 $x-6\\le\\frac{1}{3}x+k$이다. 정리하면 $\\frac{2}{3}x\\le 6+k$에서 $x\\le 9+\\frac{3}{2}k$이다.\n따라서 해는 $6<x\\le 9+\\frac{3}{2}k$이고 정수 $x$가 $7,\\ 8,\\ \\cdots$로 $7$개이려면 가장 큰 정수가 $13$이어야 한다.\n$$13\\le 9+\\frac{3}{2}k<14,\\quad\\frac{8}{3}\\le k<\\frac{10}{3}$$\n$k$는 자연수이므로 $k=3$"
   },
   {
     "id": 13,
@@ -374,8 +374,8 @@ window.questionBank = [
     "wide": false,
     "content": "$xyz \\ne 0$인 실수 $x, y, z$에 대하여 $2^x=5^y=\\left(\\frac{1}{10}\\right)^z$일 때, $\\frac{1}{x}+\\frac{1}{y}+\\frac{1}{z}$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$0$",
+    "solution": "$2^x=5^y=\\left(\\frac{1}{10}\\right)^z=t$로 놓자. $xyz\\ne 0$이므로 $t\\ne 1$이고 $t>0$이다.\n$x=\\log_2 t$, $y=\\log_5 t$, $z=\\log_{\\frac{1}{10}}t$이므로\n$$\\frac{1}{x}=\\log_t 2,\\quad\\frac{1}{y}=\\log_t 5,\\quad\\frac{1}{z}=\\log_t\\frac{1}{10}=-\\log_t 10$$\n$$\\frac{1}{x}+\\frac{1}{y}+\\frac{1}{z}=\\log_t 2+\\log_t 5-\\log_t 10=\\log_t\\frac{2\\times 5}{10}=\\log_t 1=0$$"
   },
   {
     "id": 14,
@@ -402,8 +402,8 @@ window.questionBank = [
     "wide": false,
     "content": "클라이버의 법칙(Kleiber’s law)에 따르면 몸무게가 $x$인 포유류의 대사량은 $x^{\\frac{3}{4}}$에 정비례한다고 한다. 어느 소의 몸무게가 어느 개의 몸무게의 $100$배라고 할 때, 소의 대사량은 개의 대사량의 몇 배인지 구하시오. (단, $\\log 3.16=0.5$로 계산하고, 소수점 아래 첫째 자리에서 반올림한다.)\n[참고 자료: Geoffrey B. West 외, “A general model for the origin of allometric scaling laws in biology”]",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "약 $32$배",
+    "solution": "개의 몸무게를 $w$라 하면 소의 몸무게는 $100w$이다. 대사량은 몸무게의 $\\frac{3}{4}$제곱에 정비례하므로 비례상수를 $k$라 하면\n소의 대사량 $=k(100w)^{\\frac{3}{4}}$, 개의 대사량 $=kw^{\\frac{3}{4}}$\n소의 대사량은 개의 대사량의 배수는\n$$\\frac{k(100w)^{\\frac{3}{4}}}{kw^{\\frac{3}{4}}}=100^{\\frac{3}{4}}=10^{\\frac{3}{2}}$$\n이다. 이 값을 $N$이라 하면 $\\log N=\\frac{3}{2}=1+0.5=\\log 10+\\log 3.16=\\log 31.6$이므로 $N=31.6$이다.\n소수점 아래 첫째 자리에서 반올림하면 $32$이므로 소의 대사량은 개의 대사량의 약 $32$배이다."
   },
   {
     "id": 15,
@@ -430,8 +430,8 @@ window.questionBank = [
     "wide": false,
     "content": "$1$이 아닌 서로 다른 두 양수 $a, b$에 대하여 $\\log_a b=\\log_b a$일 때, 다음 물음에 답하시오.\n⑴ $b$를 $a$에 대한 식으로 나타내시오.\n⑵ $2^a \\times 16^b$의 최솟값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $b=\\frac{1}{a}$\n⑵ $16$",
+    "solution": "⑴ $\\log_a b=t$라 하면 $\\log_b a=\\frac{1}{t}$이므로 $t=\\frac{1}{t}$에서 $t^2=1$, $t=\\pm 1$이다.\n$t=1$이면 $b=a$이므로 $a,\\ b$가 서로 다른 수라는 조건에 맞지 않는다. 따라서 $t=-1$이고 $\\log_a b=-1$에서 $b=a^{-1}=\\frac{1}{a}$이다.\n⑵ $2^a\\times 16^b=2^a\\times 2^{4b}=2^{a+4b}=2^{a+\\frac{4}{a}}$\n$a>0$이므로 산술평균과 기하평균의 관계에 의하여 $a+\\frac{4}{a}\\ge 2\\sqrt{a\\times\\frac{4}{a}}=4$이고, 등호는 $a=\\frac{4}{a}$, 즉 $a=2$일 때 성립한다. 이때 $b=\\frac{1}{2}$로 $a\\ne 1$, $a\\ne b$이므로 조건에 맞는다.\n따라서 최솟값은 $2^4=16$"
   },
   {
     "id": 16,
@@ -458,8 +458,8 @@ window.questionBank = [
     "wide": false,
     "content": "$1<a<b<a^2$을 만족시키는 실수 $a, b$에 대하여 다음 네 수의 대소를 비교하시오.\n$$\\log_a b,\\ \\log_b a,\\ \\log_a \\frac{a}{b},\\ \\log_b \\frac{b}{a}$$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\log_a\\frac{a}{b}<\\log_b\\frac{b}{a}<\\log_b a<\\log_a b$",
+    "solution": "$\\log_a b=x$라 하자. $1<a<b<a^2$에서 각 변에 밑이 $a$인 로그를 취하면 $1<x<2$이다.\n$\\log_b a=\\frac{1}{x}$이므로 $\\frac{1}{2}<\\frac{1}{x}<1$\n$\\log_a\\frac{a}{b}=1-\\log_a b=1-x$이므로 $-1<1-x<0$\n$\\log_b\\frac{b}{a}=1-\\log_b a=1-\\frac{1}{x}$이므로 $0<1-\\frac{1}{x}<\\frac{1}{2}$\n$1-x<0<1-\\frac{1}{x}$이고, $1-\\frac{1}{x}<\\frac{1}{x}$는 $x<2$와 같으므로 성립한다. 또 $\\frac{1}{x}<1<x$이므로\n$$1-x<1-\\frac{1}{x}<\\frac{1}{x}<x$$\n따라서 $\\log_a\\frac{a}{b}<\\log_b\\frac{b}{a}<\\log_b a<\\log_a b$"
   },
   {
     "id": 17,
@@ -486,7 +486,7 @@ window.questionBank = [
     "wide": false,
     "content": "두 집합\n$$A=\\{x \\mid x^2-9x+8\\le 0\\},$$\n$$B=\\{x \\mid (\\log_2 x)^2-2k\\log_2 x+k^2-1\\le 0\\}$$\n에 대하여 $A\\cap B=\\varnothing$이 되도록 하는 실수 $k$의 값의 범위를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$k<-1$ 또는 $k>4$",
+    "solution": "$A$: $x^2-9x+8=(x-1)(x-8)\\le 0$에서 $A=\\{x\\mid 1\\le x\\le 8\\}$\n$B$: $\\log_2 x=t$로 놓으면 $t^2-2kt+k^2-1=(t-k)^2-1\\le 0$에서 $k-1\\le t\\le k+1$이다. 즉 $k-1\\le\\log_2 x\\le k+1$이므로 $B=\\{x\\mid 2^{k-1}\\le x\\le 2^{k+1}\\}$이다.\n$A\\cap B=\\varnothing$이려면 $B$가 $A$의 왼쪽에 있거나 오른쪽에 있어야 한다.\n(i) $2^{k+1}<1$인 경우: $k+1<0$에서 $k<-1$\n(ii) $2^{k-1}>8$인 경우: $k-1>3$에서 $k>4$\n따라서 $k<-1$ 또는 $k>4$"
   }
 ];

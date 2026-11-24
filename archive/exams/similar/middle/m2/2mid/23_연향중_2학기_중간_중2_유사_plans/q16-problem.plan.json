@@ -1,0 +1,241 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "16",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "12",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-10"
+            },
+            {
+              "kind": "integer",
+              "value": "-15"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lBC",
+        "ownerSegment": "sBC",
+        "text": "10",
+        "unit": "cm",
+        "ownership": "NEAREST",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lCD",
+        "ownerSegment": "sCD",
+        "text": "25",
+        "unit": "cm",
+        "ownership": "NEAREST",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "x",
+        "unit": "cm",
+        "ownership": "NEAREST",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "angles": [
+      {
+        "id": "aA",
+        "refs": [
+          "C",
+          "A",
+          "B"
+        ],
+        "value": 123.69,
+        "noLabel": true,
+        "arcs": 1,
+        "equalGroup": 1,
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aB",
+        "refs": [
+          "D",
+          "B",
+          "C"
+        ],
+        "value": 123.69,
+        "noLabel": true,
+        "arcs": 1,
+        "equalGroup": 1,
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aC",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "value": 19.44,
+        "noLabel": true,
+        "arcs": 2,
+        "equalGroup": 2,
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aD",
+        "refs": [
+          "B",
+          "D",
+          "C"
+        ],
+        "value": 19.44,
+        "noLabel": true,
+        "arcs": 2,
+        "equalGroup": 2,
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 520
+  },
+  "caption": "선분 BC를 공유하는 두 삼각형 ABC와 BCD가 그려져 있다. 각 CAB와 각 DBC, 각 ACB와 각 BDC에 각각 같은 각 표시가 있고 BC는 10 cm, CD는 25 cm, AB는 x cm로 적혀 있다.",
+  "accessibilityDescription": "선분 BC의 위쪽에 삼각형 ABC, 아래쪽에 삼각형 BCD가 있다. 각 CAB와 각 DBC에는 같은 개수의 호, 각 ACB와 각 BDC에는 다른 같은 개수의 호가 그려져 있고, BC 옆에 10 cm, CD 옆에 25 cm, AB 옆에 x cm가 적혀 있다.",
+  "newVisualInformation": [
+    "선분 BC를 공유하는 삼각형 ABC와 BCD",
+    "각 CAB와 각 DBC의 같은 각 표시",
+    "각 ACB와 각 BDC의 같은 각 표시",
+    "BC는 10 cm, CD는 25 cm, AB는 x cm 라벨"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\triangle ABC$와 $\\triangle BCD$에서 $\\angle CAB=\\angle DBC$이고 $\\angle ACB=\\angle BDC$이다. $\\overline{BC}=10\\text{ cm}$, $\\overline{CD}=25\\text{ cm}$일 때, $\\overline{AB}$의 길이는? [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

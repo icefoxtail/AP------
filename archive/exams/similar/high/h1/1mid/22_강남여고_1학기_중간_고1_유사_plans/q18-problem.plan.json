@@ -1,0 +1,141 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lBC",
+        "ownerSegment": "sBC",
+        "text": "a"
+      },
+      {
+        "id": "lCA",
+        "ownerSegment": "sCA",
+        "text": "b"
+      },
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "c"
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "A",
+    "B",
+    "C"
+  ],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 320
+  },
+  "caption": "세 변의 길이가 각각 a, b, c인 삼각형이 그려져 있다.",
+  "accessibilityDescription": "삼각형의 세 변 옆에 길이를 나타내는 문자 a, b, c가 각각 표시되어 있다.",
+  "newVisualInformation": [
+    "삼각형의 세 변에 길이 a, b, c가 붙어 있다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$x$, $y$에 대한 이차식 $x^2+5xy+4y^2-3ax-3ay+a^2-b^2-c^2$이 $x$, $y$에 대한 두 일차식의 곱으로 인수분해될 때, 양수 $a$, $b$, $c$를 세 변의 길이로 하는 삼각형은 어떤 삼각형인가?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

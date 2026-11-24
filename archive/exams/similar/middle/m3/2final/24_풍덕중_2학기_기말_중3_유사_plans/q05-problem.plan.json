@@ -1,0 +1,288 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-9"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-9"
+            },
+            {
+              "kind": "integer",
+              "value": "-8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "-8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "N",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "c",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "145"
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "M",
+    "N"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "c"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "OM",
+      "refs": [
+        "O",
+        "M"
+      ]
+    },
+    {
+      "id": "ON",
+      "refs": [
+        "O",
+        "N"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "eChords",
+        "count": 1,
+        "segments": [
+          "AB",
+          "CD"
+        ],
+        "color": "GREEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "AB",
+        "text": "18",
+        "unit": "cm"
+      },
+      {
+        "id": "lCD",
+        "ownerSegment": "CD",
+        "text": "18",
+        "unit": "cm"
+      },
+      {
+        "id": "lOM",
+        "ownerSegment": "OM",
+        "text": "8",
+        "unit": "cm"
+      },
+      {
+        "id": "lON",
+        "ownerSegment": "ON",
+        "text": "x",
+        "unit": "cm"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rM",
+      "refs": [
+        "O",
+        "M",
+        "B"
+      ]
+    },
+    {
+      "id": "rN",
+      "refs": [
+        "O",
+        "N",
+        "D"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "M",
+    "N"
+  ],
+  "hiddenPointStyle": "DOT",
+  "coordinateCanvas": {
+    "width": 416,
+    "height": 400
+  },
+  "caption": "원 O에 길이가 18 cm로 같은 두 현 AB, CD를 그리고, 중심 O에서 두 현에 내린 수선의 길이를 각각 8 cm와 x cm로 나타낸 그림이다.",
+  "accessibilityDescription": "원의 중심 O에서 두 현 AB, CD에 각각 수선을 내렸고, 두 현에는 같은 길이 표시가 되어 있다. 두 현의 길이는 18 cm, 한 수선의 길이는 8 cm, 다른 수선의 길이는 x cm로 표시되어 있다.",
+  "newVisualInformation": [
+    "길이가 같은 두 현과 중심에서 각 현까지의 거리를 나타낸다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "한 원 $O$에서 길이가 각각 $18\\rm,cm$로 서로 같은 두 현 $\\overline{AB}, \\overline{CD}$가 있다. 원의 중심 $O$에서 현 $\\overline{AB}$까지의 거리가 $8\\rm,cm$일 때, 중심 $O$에서 현 $\\overline{CD}$까지의 거리 $x$의 값은? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

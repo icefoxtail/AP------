@@ -1,0 +1,510 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "L",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "n3a",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-3",
+              "denominator": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "n3b",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "n2a",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-3",
+              "denominator": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "n2b",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "n1a",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-1"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-3",
+              "denominator": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "n1b",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-1"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "z0a",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-3",
+              "denominator": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "z0b",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p1a",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-3",
+              "denominator": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p1b",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p2a",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-3",
+              "denominator": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p2b",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p3a",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-3",
+              "denominator": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p3b",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "L",
+    "R",
+    "P",
+    "n3a",
+    "n3b",
+    "n2a",
+    "n2b",
+    "n1a",
+    "n1b",
+    "z0a",
+    "z0b",
+    "p1a",
+    "p1b",
+    "p2a",
+    "p2b",
+    "p3a",
+    "p3b"
+  ],
+  "displaySegments": [
+    {
+      "id": "axis",
+      "refs": [
+        "L",
+        "R"
+      ],
+      "arrow": "BOTH"
+    },
+    {
+      "id": "g3",
+      "refs": [
+        "n3a",
+        "n3b"
+      ]
+    },
+    {
+      "id": "g2",
+      "refs": [
+        "n2a",
+        "n2b"
+      ]
+    },
+    {
+      "id": "g1",
+      "refs": [
+        "n1a",
+        "n1b"
+      ]
+    },
+    {
+      "id": "g0",
+      "refs": [
+        "z0a",
+        "z0b"
+      ]
+    },
+    {
+      "id": "h1",
+      "refs": [
+        "p1a",
+        "p1b"
+      ]
+    },
+    {
+      "id": "h2",
+      "refs": [
+        "p2a",
+        "p2b"
+      ]
+    },
+    {
+      "id": "h3",
+      "refs": [
+        "p3a",
+        "p3b"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "m3",
+        "ownerSegment": "g3",
+        "text": "-3",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "m2",
+        "ownerSegment": "g2",
+        "text": "-2",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "m1",
+        "ownerSegment": "g1",
+        "text": "-1",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "m0",
+        "ownerSegment": "g0",
+        "text": "0",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "q1",
+        "ownerSegment": "h1",
+        "text": "1",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "q2",
+        "ownerSegment": "h2",
+        "text": "2",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "q3",
+        "ownerSegment": "h3",
+        "text": "3",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "수직선 위의 원점에 있는 점 P",
+  "accessibilityDescription": "양쪽으로 화살표가 있는 수직선에 -3부터 3까지의 눈금이 있고, 원점 위치에 점 P가 표시되어 있다.",
+  "newVisualInformation": [
+    "-3부터 3까지 눈금이 있는 수직선",
+    "원점에 있는 점 P"
+  ],
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 320
+  },
+  "hiddenPointNames": [
+    "L",
+    "R",
+    "n3a",
+    "n3b",
+    "n2a",
+    "n2b",
+    "n1a",
+    "n1b",
+    "z0a",
+    "z0b",
+    "p1a",
+    "p1b",
+    "p2a",
+    "p2b",
+    "p3a",
+    "p3b"
+  ],
+  "hiddenPointStyle": "NONE",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "4. 수직선 위의 원점에 점 $P$가 있다. 한 개의 주사위를 던져서 짝수의 눈이 나오면 왼쪽으로 $1$칸, 홀수의 눈이 나오면 오른쪽으로 $1$칸 이동한다고 할 때, 다음 물음에 답하시오. [5점]\n\n(1) 주사위를 $6$번 던져 점 $P$가 다시 원점으로 돌아오는 경우의 수를 구하시오. [3점]  \n(2) 주사위를 $6$번 던져 점 $P$가 다시 원점으로 돌아오지 않을 확률을 풀이과정과 함께 구하시오. [2점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

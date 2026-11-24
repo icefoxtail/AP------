@@ -1,0 +1,69 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "동전",
+        "elements": [
+          "앞면",
+          "뒷면"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "P의 이동",
+        "elements": [
+          "오른쪽2",
+          "왼쪽1"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        },
+        "style": "SOLID"
+      }
+    ]
+  },
+  "caption": "동전의 앞면이 나오면 점 P를 오른쪽으로 2만큼, 뒷면이 나오면 왼쪽으로 1만큼 이동시키는 규칙을 대응도로 나타낸 것이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 4] 수직선 위의 원점 $O$에 점 $P$가 있다. 동전 한 개를 던져 앞면이 나오면 오른쪽(양의 방향)으로 $2$만큼, 뒷면이 나오면 왼쪽(음의 방향)으로 $1$만큼 점 $P$를 이동시키기로 한다. 동전을 $5$번 던졌을 때, 점 $P$의 최종 위치가 $4$가 될 확률을 구하고 그 풀이과정을 서술하시오. [6점]  \n조건 1) 동전의 앞면과 뒷면이 나오는 횟수를 각각 $x$회, $y$회라 하고 연립방정식을 세워 풀이과정에 적으시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "앞면이 나오면 점 P를 오른쪽(양의 방향)으로 2만큼 이동시킨다.",
+      "mappedTo": "diagram"
+    },
+    {
+      "id": "c2",
+      "condition": "뒷면이 나오면 점 P를 왼쪽(음의 방향)으로 1만큼 이동시킨다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "동전의 앞면과 뒷면이 각각 점 P의 어느 방향·거리 이동에 대응되는지 보여 준다."
+  ]
+}

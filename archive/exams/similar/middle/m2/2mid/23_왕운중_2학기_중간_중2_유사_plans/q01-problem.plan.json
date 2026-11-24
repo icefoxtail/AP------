@@ -1,0 +1,340 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "LA1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "RA1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "LB1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "-8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "RB1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "-8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circA",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O1"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "O2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "22"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "LA2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "RA2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "29"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "LB2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "integer",
+              "value": "-14"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "RB2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "29"
+            },
+            {
+              "kind": "integer",
+              "value": "-14"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circB",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O2"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "7"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O1",
+    "LA1",
+    "RA1",
+    "LB1",
+    "RB1",
+    "O2",
+    "LA2",
+    "RA2",
+    "LB2",
+    "RB2"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circA",
+    "circB"
+  ],
+  "displaySegments": [
+    {
+      "id": "sLA",
+      "refs": [
+        "LA1",
+        "LB1"
+      ]
+    },
+    {
+      "id": "sRA",
+      "refs": [
+        "RA1",
+        "RB1"
+      ]
+    },
+    {
+      "id": "sBaseA",
+      "refs": [
+        "LB1",
+        "RB1"
+      ]
+    },
+    {
+      "id": "sLB",
+      "refs": [
+        "LA2",
+        "LB2"
+      ]
+    },
+    {
+      "id": "sRB",
+      "refs": [
+        "RA2",
+        "RB2"
+      ]
+    },
+    {
+      "id": "sBaseB",
+      "refs": [
+        "LB2",
+        "RB2"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "O1",
+    "LA1",
+    "RA1",
+    "LB1",
+    "RB1",
+    "O2",
+    "LA2",
+    "RA2",
+    "LB2",
+    "RB2"
+  ],
+  "hiddenPointStyle": "NONE",
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lga",
+        "ownerSegment": "sBaseA",
+        "text": "(가)",
+        "labelKind": "TEXT"
+      },
+      {
+        "id": "lgb",
+        "ownerSegment": "sBaseB",
+        "text": "(나)",
+        "labelKind": "TEXT"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 420
+  },
+  "caption": "서로 닮은 두 원기둥 (가), (나)가 나란히 그려져 있고, (가)의 밑면의 반지름과 (나)의 밑면의 반지름의 길이의 비는 4:7이다.",
+  "accessibilityDescription": "왼쪽에 작은 원기둥 (가), 오른쪽에 큰 원기둥 (나)가 있고, 각 원기둥의 윗면인 원과 옆면, 밑면이 보인다.",
+  "newVisualInformation": [
+    "반지름이 서로 다른 두 닮은 원기둥 (가)와 (나)",
+    "(가)와 (나)의 크기 차이"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "서로 닮은 두 원기둥 $(\\text{가})$, $(\\text{나})$의 밑면의 반지름의 길이의 비가 $4:7$일 때, 두 원기둥 $(\\text{가})$, $(\\text{나})$의 겉넓이의 비를 구하면? [3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

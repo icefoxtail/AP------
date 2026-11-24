@@ -1,0 +1,40 @@
+{
+  "kind": "geometry",
+  "elements": [
+    {
+      "type": "cube",
+      "verticesTop": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "verticesBottom": [
+        "E",
+        "F",
+        "G",
+        "H"
+      ],
+      "edge": "6"
+    },
+    {
+      "type": "segment",
+      "from": "C",
+      "to": "E"
+    },
+    {
+      "type": "segment",
+      "from": "E",
+      "to": "G"
+    },
+    {
+      "type": "angle",
+      "at": "E",
+      "arms": [
+        "C",
+        "G"
+      ],
+      "text": "x°"
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      0,
+      10,
+      -3,
+      9
+    ],
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "12",
+          "-1"
+        ],
+        "domain": [
+          "4",
+          "8"
+        ],
+        "color": "BLUE",
+        "label": {
+          "hidden": true,
+          "reason": "ANSWER",
+          "name": "l1"
+        }
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "-2",
+          "2"
+        ],
+        "domain": [
+          "0",
+          "5"
+        ],
+        "color": "WARM",
+        "style": "DASHED",
+        "label": {
+          "hidden": true,
+          "reason": "ANSWER",
+          "name": "l2"
+        }
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "y"
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "4",
+          "y": "8",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "8",
+          "y": "4",
+          "coordinates": true
+        },
+        {
+          "id": "P",
+          "x": "0",
+          "y": "-2",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "두 점 A(4, 8), B(8, 4)를 잇는 선분과 점 (0, -2)가 표시되어 있고, 점 (0, -2)를 지나는 직선이 선분과 만난다.",
+  "accessibilityDescription": "가로축과 세로축, 두 점 A와 B를 잇는 선분, 점 (0, -2)를 지나 선분과 교차하는 직선이 보인다.",
+  "newVisualInformation": [
+    "선분 AB",
+    "점 (0, -2)를 지나는 직선",
+    "점 A(4, 8)와 B(8, 4)"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "좌표평면 위에 두 점 $\\text{A}(4, 8)$, $\\text{B}(8, 4)$가 있다. 다음 중 일차방정식 $ax-y-2=0$의 그래프가 선분 $\\overline{\\text{AB}}$와 만나도록 하는 수 $a$의 값이 될 수 없는 것은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -15,8 +15,8 @@ window.questionBank = [
       "⑤ $-\\sqrt{25}$"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "③",
+    "solution": "<p>$25$의 제곱근은 제곱하여 $25$가 되는 수이므로 $\\pm5$이다.<br>① $5$, ② $-5$는 제곱근이다.<br>③ $\\sqrt{-25}$는 음수의 제곱근이므로 실수가 아니고 $25$의 제곱근도 아니다.<br>④ $\\sqrt{25}=5$, ⑤ $-\\sqrt{25}=-5$는 제곱근이다.</p>",
     "score": 3.0,
     "solutionImage": "assets/images/17_이수중_1학기_중간_중3_수학/q1-solution.svg",
     "solutionImageAlt": "해설 그림: 수직선 위에 -5와 5 두 점이 원점을 사이에 두고 표시되어 있다.",
@@ -38,8 +38,8 @@ window.questionBank = [
       "⑤ $\\sqrt{9}$"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "⑤",
+    "solution": "<p>① $x^2=9$를 만족하는 $x$는 $\\pm3$이다.<br>② $\\pm3$<br>③ 제곱하여 $9$가 되는 수는 $\\pm3$이다.<br>④ $(-3)^2=9$의 제곱근은 $\\pm3$이다.<br>⑤ $\\sqrt{9}=3$이다.<br>⑤만 $3$이고 나머지는 $\\pm3$이므로 답은 ⑤이다.</p>",
     "score": 4.0,
     "solutionImage": "assets/images/17_이수중_1학기_중간_중3_수학/q2-solution.svg",
     "solutionImageAlt": "해설 그림: 수직선 위에 -3과 3 두 점이 원점을 사이에 두고 표시되어 있다.",
@@ -61,8 +61,8 @@ window.questionBank = [
       "⑤ $\\sqrt{(-5)^2}$의 제곱근은 $\\pm \\sqrt{5}$이다."
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "③",
+    "solution": "<p>① $\\sqrt{64}=8$ (옳다)<br>② $0$의 제곱근은 $0$이다. (옳다)<br>③ $-5^2=-25$는 음수이므로 제곱근이 없다. (옳지 않다)<br>④ $\\sqrt{16}=4$의 음의 제곱근은 $-2$이다. (옳다)<br>⑤ $\\sqrt{(-5)^2}=5$의 제곱근은 $\\pm\\sqrt{5}$이다. (옳다)</p>",
     "score": 4.0,
     "solutionImage": "assets/images/17_이수중_1학기_중간_중3_수학/q3-solution.svg",
     "solutionImageAlt": "해설 그림: 수직선 위에 -25, 0, 25 세 점이 표시되어 있다.",
@@ -84,8 +84,8 @@ window.questionBank = [
       "⑤ $\\sqrt{\\frac{1}{3}} > \\frac{1}{2}$"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "③",
+    "solution": "<p>① $11<13$이므로 $\\sqrt{11}<\\sqrt{13}$ (옳다)<br>② $\\sqrt{0.1}\\approx0.316>0.1$ (옳다)<br>③ $\\frac{1}{2}>\\frac{1}{3}$이므로 $\\sqrt{\\frac{1}{2}}>\\sqrt{\\frac{1}{3}}$이다. 부등호가 반대이므로 옳지 않다.<br>④ $3=\\sqrt{9}>\\sqrt{7}$ (옳다)<br>⑤ $\\sqrt{\\frac{1}{3}}\\approx0.577>\\frac{1}{2}$ (옳다)</p>",
     "score": 4.0,
     "solutionImage": "assets/images/17_이수중_1학기_중간_중3_수학/q4-solution.svg",
     "solutionImageAlt": "해설 그림: 왼쪽 끝을 맞춘 세 개의 가로 선분이 위에서부터 놓여 있고, 각 선분 곁에 √(1/2), √(1/3), 1/2이 적혀 있다. 맨 위 선분이 가장 길고 맨 아래 선분이 가장 짧다.",
@@ -107,8 +107,8 @@ window.questionBank = [
       "⑤ 모든 유리수는 정수이다."
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "④",
+    "solution": "<p>① $0.333\\cdots$처럼 순환하는 무한소수는 유리수이다. (옳지 않다)<br>② $\\sqrt{4}=2$처럼 양수의 제곱근이 유리수일 수 있다. (옳지 않다)<br>③ 두 유리수 사이에는 유리수가 무수히 많다. (옳지 않다)<br>④ 두 무리수 사이에는 무리수가 무수히 많이 있다. (옳다)<br>⑤ $\\frac{1}{2}$처럼 정수가 아닌 유리수가 있다. (옳지 않다)</p>",
     "score": 3.0
   },
   {
@@ -126,8 +126,8 @@ window.questionBank = [
       "⑤ $\\sqrt{2}a^2 b$"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "①",
+    "solution": "<p>$250=2\\times5^3$이므로 $\\sqrt{250}=\\sqrt{2\\times5^3}=\\sqrt{2}\\times5\\sqrt{5}$이다.<br>$\\sqrt{5}=a$, $\\sqrt{2}=b$이므로 $5=a^2$이다.<br>$\\sqrt{250}=b\\times a^2\\times a=a^3b$</p>",
     "score": 4.0
   },
   {
@@ -145,8 +145,8 @@ window.questionBank = [
       "⑤ 4개"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "④",
+    "solution": "<p>$\\sqrt{4}=2$: 유리수<br>$2.\\dot{3}$: 순환소수이므로 유리수<br>$\\sqrt{7}$: 무리수<br>$\\sqrt{\\frac{2}{3}}$: 무리수<br>$\\frac{2}{3}$: 유리수<br>유리수는 $3$개이다.</p>",
     "score": 3.0
   },
   {
@@ -164,8 +164,8 @@ window.questionBank = [
       "⑤ $5a+3$"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "④",
+    "solution": "<p>$a<0$이므로 $-3a>0$, $a-3<0$이다.<br>$\\sqrt{(-3a)^2}=-3a$<br>$\\sqrt{(a-3)^2}=-(a-3)=3-a$<br>$\\sqrt{9a^2}=\\sqrt{(3a)^2}=-3a$<br>$-3a-(3-a)+(-3a)=-3a-3+a-3a=-5a-3$</p>",
     "score": 4.0,
     "solutionImage": "assets/images/17_이수중_1학기_중간_중3_수학/q8-solution.svg",
     "solutionImageAlt": "해설 그림: 네 개의 가로 선분이 위에서부터 놓여 있고, 각 선분에 세 제곱근을 간단히 한 식과 마지막 계산 결과가 붙어 있다. 선분은 주황색, 파란색, 초록색, 보라색으로 구분되어 있다.",
@@ -187,8 +187,8 @@ window.questionBank = [
       "⑤ $C < B < A$"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "①",
+    "solution": "<p>$A=-\\sqrt{2}\\approx-1.41$<br>$B=\\sqrt{3}-\\sqrt{2}\\approx1.73-1.41=0.32$<br>$C=\\sqrt{2}+\\sqrt{3}\\approx3.15$<br>$A<B<C$</p>",
     "score": 4.0
   },
   {
@@ -206,8 +206,8 @@ window.questionBank = [
       "⑤ $14$"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "②",
+    "solution": "<p>$n\\le\\sqrt{x}<n+1$에서 $n^2\\le x<(n+1)^2$이다.<br>이를 만족하는 자연수 $x$는 $n^2,\\ n^2+1,\\ \\cdots,\\ (n+1)^2-1$이고 개수는 $(n+1)^2-n^2=2n+1$이다.<br>$2n+1=23$이므로 $n=11$이다.</p>",
     "score": 5.0
   },
   {
@@ -225,8 +225,8 @@ window.questionBank = [
       "⑤ $3\\sqrt{14}$"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "⑤",
+    "solution": "<p>$3\\sqrt{7}\\times\\sqrt{4}\\div\\sqrt{2}=3\\sqrt{7}\\times2\\div\\sqrt{2}=\\frac{6\\sqrt{7}}{\\sqrt{2}}$<br>분모를 유리화하면 $\\frac{6\\sqrt{7}\\times\\sqrt{2}}{2}=3\\sqrt{14}$이다.</p>",
     "score": 4.0
   },
   {
@@ -244,8 +244,8 @@ window.questionBank = [
       "⑤ $15$"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "④",
+    "solution": "<p>$x=\\frac{2-\\sqrt{3}}{2+\\sqrt{3}}=\\frac{(2-\\sqrt{3})^2}{(2+\\sqrt{3})(2-\\sqrt{3})}=\\frac{7-4\\sqrt{3}}{1}=7-4\\sqrt{3}$<br>$y=\\frac{2+\\sqrt{3}}{2-\\sqrt{3}}=\\frac{(2+\\sqrt{3})^2}{1}=7+4\\sqrt{3}$<br>$x+y=(7-4\\sqrt{3})+(7+4\\sqrt{3})=14$</p>",
     "score": 4.0
   },
   {
@@ -263,8 +263,8 @@ window.questionBank = [
       "⑤ $9\\sqrt{6}$"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "④",
+    "solution": "<p>각 항을 간단히 한다.<br>$\\sqrt{54}=3\\sqrt{6}$, $2\\sqrt{24}=4\\sqrt{6}$, $\\sqrt{486}=9\\sqrt{6}$<br>$3\\sqrt{6}-4\\sqrt{6}+9\\sqrt{6}=8\\sqrt{6}$</p>",
     "score": 4.0,
     "solutionImage": "assets/images/17_이수중_1학기_중간_중3_수학/q13-solution.svg",
     "solutionImageAlt": "해설 그림: 세로 기준선에서 세 개의 화살표가 각각 오른쪽, 왼쪽, 오른쪽으로 뻗고, 그 아래에 결과 화살표가 있다. 화살표 옆에 3√6, 4√6, 9√6이 적혀 있다.",
@@ -286,8 +286,8 @@ window.questionBank = [
       "⑤ $11$"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "③",
+    "solution": "<p>$x=\\frac{1}{5-2\\sqrt{6}}=\\frac{5+2\\sqrt{6}}{(5-2\\sqrt{6})(5+2\\sqrt{6})}=\\frac{5+2\\sqrt{6}}{25-24}=5+2\\sqrt{6}$<br>$x-5=2\\sqrt{6}$의 양변을 제곱하면 $x^2-10x+25=24$이므로 $x^2-10x=-1$이다.<br>$x^2-10x+10=-1+10=9$</p>",
     "score": 4.0
   },
   {
@@ -305,8 +305,8 @@ window.questionBank = [
       "⑤ $8a-1$"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "①",
+    "solution": "<p>$\\sqrt{8}=2\\sqrt{2}\\approx2.83$이므로 정수 부분은 $2$이고 소수 부분은 $a=2\\sqrt{2}-2$이다.<br>$\\sqrt{128}=8\\sqrt{2}=4\\times2\\sqrt{2}\\approx11.31$이므로 정수 부분은 $11$이다.<br>소수 부분은 $8\\sqrt{2}-11$이다.<br>$2\\sqrt{2}=a+2$이므로 $8\\sqrt{2}-11=4(a+2)-11=4a-3$이다.</p>",
     "score": 4.0,
     "solutionImage": "assets/images/17_이수중_1학기_중간_중3_수학/q15-solution.svg",
     "solutionImageAlt": "해설 그림: 위쪽 수직선에는 2와 3 사이의 점 √8이, 아래쪽 수직선에는 11과 12 사이의 점 √128이 놓여 있다. 위쪽 수직선에서 2부터 √8까지의 거리를 화살표와 a로 표시한다.",
@@ -328,8 +328,8 @@ window.questionBank = [
       "⑤ $b^2(a+b)^3$"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "⑤",
+    "solution": "<p>$a^2b(a+b)^3$의 인수는 $a^2b(a+b)^3$을 나누어떨어뜨리는 식이다.<br>① $a^2$, ② $a+b$, ③ $a^2b$, ④ $b(a+b)^2$는 모두 인수이다.<br>⑤ $b^2(a+b)^3$은 $b^2$을 포함하는데 주어진 식에는 $b$가 한 번뿐이므로 인수가 아니다.</p>",
     "score": 4.0,
     "solutionImage": "assets/images/17_이수중_1학기_중간_중3_수학/q16-solution.svg",
     "solutionImageAlt": "해설 그림: 가운데 점에서 다섯 갈래 선이 뻗어 나가고, 각 선 위에 a², b, a+b, a+b, a+b가 차례로 적힌 인수 나무 모양 그림이다.",
@@ -351,8 +351,8 @@ window.questionBank = [
       "⑤ $\\pm \\frac{4}{9}$"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "②",
+    "solution": "<p>$4x^2+\\square xy+\\frac{1}{9}y^2$이 완전제곱식이려면 $\\left(2x\\pm\\frac{1}{3}y\\right)^2$이어야 한다.<br>$\\left(2x\\pm\\frac{1}{3}y\\right)^2=4x^2\\pm\\frac{4}{3}xy+\\frac{1}{9}y^2$<br>따라서 $\\square=\\pm\\frac{4}{3}$이다.</p>",
     "score": 4.0
   },
   {
@@ -370,8 +370,8 @@ window.questionBank = [
       "⑤ $x^2+x-30=(x+5)(x-6)$"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "④",
+    "solution": "<p>① $x^2-7x=x(x-7)$ (옳지 않다)<br>② $x^2-2x-8=(x-4)(x+2)$ (옳지 않다)<br>③ $(2x+3)(3x-2)=6x^2+5x-6$ 이므로 $6x^2-5x-6$과 다르다. (옳지 않다)<br>④ $x^2-225=x^2-15^2=(x-15)(x+15)$ (옳다)<br>⑤ $x^2+x-30=(x+6)(x-5)$ (옳지 않다)</p>",
     "score": 4.0
   },
   {
@@ -389,8 +389,8 @@ window.questionBank = [
       "⑤ $\\frac{7}{3}$"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "⑤",
+    "solution": "<p>$x^2+5x+6=(x+2)(x+3)$이므로 공통인수는 $x+2$ 또는 $x+3$이다.<br>$x+2$가 공통인수이면 $x=-2$를 $x^2+ax-2$에 대입하여 $4-2a-2=0$, $a=1$이다.<br>$x+3$이 공통인수이면 $x=-3$을 대입하여 $9-3a-2=0$, $a=\\frac{7}{3}$이다.<br>정수가 아닌 값은 $a=\\frac{7}{3}$이다.</p>",
     "score": 5.0
   },
   {
@@ -408,8 +408,8 @@ window.questionBank = [
       "⑤ $240$"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "①",
+    "solution": "<p>$\\sqrt{a^2-27}=b$의 양변을 제곱하면 $a^2-27=b^2$, 즉 $a^2-b^2=27$이다.<br>$(a+b)(a-b)=27$이고 $a+b>a-b>0$이다.<br>$a+b=27,\\ a-b=1$이면 $a=14,\\ b=13$ (두 자리 자연수)<br>$a+b=9,\\ a-b=3$이면 $a=6,\\ b=3$ (한 자리이므로 안 된다)<br>따라서 $a=14$, $b=13$이고 $ab=182$이다.</p>",
     "score": 5.0
   },
   {
@@ -421,8 +421,8 @@ window.questionBank = [
     "content": "[서술형 1] $\\sqrt{5.6}=a$, $\\sqrt{56}=b$일 때, $\\sqrt{0.0056}+\\sqrt{560}$의 값을 $a, b$에 관한 식으로 나타내라. [6점]",
     "choices": [],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "$10a+\\frac{b}{100}$",
+    "solution": "<p>$\\sqrt{0.0056}=\\sqrt{\\frac{56}{10000}}=\\frac{\\sqrt{56}}{100}=\\frac{b}{100}$<br>$\\sqrt{560}=\\sqrt{5.6\\times100}=10\\sqrt{5.6}=10a$<br>따라서 $\\sqrt{0.0056}+\\sqrt{560}=10a+\\frac{b}{100}$이다.</p>",
     "score": 6.0
   },
   {
@@ -437,8 +437,8 @@ window.questionBank = [
     "content": "[서술형 2] 다음 그림에서 $\\mathrm{A, B, C}$는 모두 정사각형이고, $\\mathrm{A}$와 $\\mathrm{B}$의 넓이가 각각 $\\mathrm{C}$의 넓이의 $3$배, $2$배이다. 이 세 정사각형을 붙여서 새로운 도형을 만들었을 때, 이 도형의 둘레의 길이가 $8\\sqrt{3}+4\\sqrt{2}+4\\text{cm}$이다. 이 도형의 넓이를 구하여라. [7점]",
     "choices": [],
     "images": ["assets/images/17_이수중_1학기_중간_중3_수학/q22-problem-visual-v2.svg"],
-    "answer": "",
-    "solution": "",
+    "answer": "$24\\ \\text{cm}^2$",
+    "solution": "<p>$\\mathrm{C}$의 한 변을 $c$라 하면 $\\mathrm{B}$의 넓이는 $2c^2$, $\\mathrm{A}$의 넓이는 $3c^2$이다.<br>따라서 $\\mathrm{B}$의 한 변은 $\\sqrt{2}c$, $\\mathrm{A}$의 한 변은 $\\sqrt{3}c$이다.<br>도형은 계단 모양이므로 둘레는 (가로의 합)$\\times2$ + (가장 큰 세로)$\\times2$이다.<br>가로의 합은 $\\sqrt{3}c+\\sqrt{2}c+c$, 가장 큰 세로는 $\\sqrt{3}c$이다.<br>둘레 $=2(\\sqrt{3}c+\\sqrt{2}c+c)+2\\sqrt{3}c=(4\\sqrt{3}+2\\sqrt{2}+2)c$<br>이것이 $8\\sqrt{3}+4\\sqrt{2}+4=(4\\sqrt{3}+2\\sqrt{2}+2)\\times2$와 같으므로 $c=2$이다.<br>도형의 넓이는 세 정사각형의 넓이의 합이므로 $3c^2+2c^2+c^2=6c^2=6\\times4=24\\,(\\text{cm}^2)$이다.</p>",
     "score": 7.0
   },
   {
@@ -450,8 +450,8 @@ window.questionBank = [
     "content": "[서술형 3] $f(x)=\\sqrt{\\frac{x^3+x^2-x-1}{x^3+x^2}}$일 때, $f(2) \\times f(3) \\cdots \\times f(9)$의 값은? [7점]",
     "choices": [],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "$\\frac{\\sqrt{5}}{3}$",
+    "solution": "<p>분자를 인수분해한다.<br>$x^3+x^2-x-1=x^2(x+1)-(x+1)=(x+1)(x^2-1)=(x+1)^2(x-1)$<br>분모는 $x^3+x^2=x^2(x+1)$이다.<br>$\\frac{x^3+x^2-x-1}{x^3+x^2}=\\frac{(x+1)^2(x-1)}{x^2(x+1)}=\\frac{(x+1)(x-1)}{x^2}$<br>$f(x)^2=\\frac{(x-1)(x+1)}{x^2}=\\frac{x-1}{x}\\times\\frac{x+1}{x}$이므로 $f(2)^2\\times\\cdots\\times f(9)^2=\\left(\\frac{1}{2}\\times\\frac{2}{3}\\times\\cdots\\times\\frac{8}{9}\\right)\\times\\left(\\frac{3}{2}\\times\\frac{4}{3}\\times\\cdots\\times\\frac{10}{9}\\right)$<br>앞의 곱은 $\\frac{1}{9}$, 뒤의 곱은 $\\frac{10}{2}=5$이므로 $\\frac{5}{9}$이다.<br>$f(x)>0$이므로 구하는 값은 $\\sqrt{\\frac{5}{9}}=\\frac{\\sqrt{5}}{3}$이다.</p>",
     "score": 7.0
   }
 ];

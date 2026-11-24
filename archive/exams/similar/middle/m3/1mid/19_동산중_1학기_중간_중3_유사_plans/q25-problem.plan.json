@@ -1,0 +1,388 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "넓이가 각각 7, 28, 63인 정사각형 A, B, C를 한 변씩 맞붙여 만든 도형이다.",
+  "accessibilityDescription": "작은 정사각형 A가 왼쪽 아래에 있고, 그 오른쪽에 B, B의 오른쪽에 가장 큰 C가 붙어 계단 모양을 이룬다. 각 정사각형 안에 이름과 넓이가 적혀 있다.",
+  "newVisualInformation": [
+    "정사각형 A, B, C의 넓이 7, 28, 63이 각각 표시되어 있다.",
+    "세 정사각형이 변을 맞대어 계단 모양으로 붙어 있다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "53",
+              "denominator": "20"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "53",
+              "denominator": "20"
+            },
+            {
+              "kind": "rational",
+              "numerator": "53",
+              "denominator": "20"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "53",
+              "denominator": "20"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "159",
+              "denominator": "20"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "159",
+              "denominator": "20"
+            },
+            {
+              "kind": "rational",
+              "numerator": "53",
+              "denominator": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "53",
+              "denominator": "20"
+            },
+            {
+              "kind": "rational",
+              "numerator": "53",
+              "denominator": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "159",
+              "denominator": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "159",
+              "denominator": "10"
+            },
+            {
+              "kind": "rational",
+              "numerator": "159",
+              "denominator": "20"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "159",
+              "denominator": "20"
+            },
+            {
+              "kind": "rational",
+              "numerator": "159",
+              "denominator": "20"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A1",
+    "A2",
+    "A3",
+    "A4",
+    "B2",
+    "B3",
+    "B4",
+    "C2",
+    "C3",
+    "C4"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sA1",
+      "refs": [
+        "A1",
+        "A2"
+      ]
+    },
+    {
+      "id": "sA2",
+      "refs": [
+        "A1",
+        "A4"
+      ]
+    },
+    {
+      "id": "sA3",
+      "refs": [
+        "A4",
+        "A3"
+      ]
+    },
+    {
+      "id": "sA4",
+      "refs": [
+        "A2",
+        "B4"
+      ]
+    },
+    {
+      "id": "sB1",
+      "refs": [
+        "A2",
+        "B2"
+      ]
+    },
+    {
+      "id": "sB2",
+      "refs": [
+        "B4",
+        "B3"
+      ]
+    },
+    {
+      "id": "sB3",
+      "refs": [
+        "B2",
+        "C4"
+      ]
+    },
+    {
+      "id": "sC1",
+      "refs": [
+        "B2",
+        "C2"
+      ]
+    },
+    {
+      "id": "sC2",
+      "refs": [
+        "C2",
+        "C3"
+      ]
+    },
+    {
+      "id": "sC3",
+      "refs": [
+        "C3",
+        "C4"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "regions": [
+      {
+        "id": "rA",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "A1",
+              "A2",
+              "A3",
+              "A4"
+            ]
+          }
+        ],
+        "label": "A 7",
+        "labelKind": "TEXT",
+        "labelPlacement": "AUTO_LEADER"
+      },
+      {
+        "id": "rB",
+        "fill": "WARM",
+        "shapes": [
+          {
+            "polygon": [
+              "A2",
+              "B2",
+              "B3",
+              "B4"
+            ]
+          }
+        ],
+        "label": "B 28",
+        "labelKind": "TEXT",
+        "labelPlacement": "AUTO_LEADER"
+      },
+      {
+        "id": "rC",
+        "fill": "BLUE",
+        "shapes": [
+          {
+            "polygon": [
+              "B2",
+              "C2",
+              "C3",
+              "C4"
+            ]
+          }
+        ],
+        "label": "C 63",
+        "labelKind": "TEXT",
+        "labelPlacement": "AUTO_LEADER"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 520,
+    "height": 360
+  },
+  "hiddenPointNames": [
+    "A1",
+    "A2",
+    "A3",
+    "A4",
+    "B2",
+    "B3",
+    "B4",
+    "C2",
+    "C3",
+    "C4"
+  ],
+  "hiddenPointStyle": "NONE",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 4] 정사각형 모양의 색종이 $3$장을 다음 그림과 같이 붙였다. $B$의 넓이는 $A$의 넓이의 $4$배이고, $C$의 넓이는 $A$의 넓이의 $9$배이다. 색종이 $A$의 넓이가 $7\\text{ cm}^2$일 때, 전체 도형의 둘레의 길이를 구하시오. [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

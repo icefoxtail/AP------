@@ -1,0 +1,79 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "A",
+        "name": "A(0,0)",
+        "elements": [
+          "출발"
+        ]
+      },
+      {
+        "id": "B",
+        "name": "P(1,2)",
+        "elements": [
+          "경유"
+        ]
+      },
+      {
+        "id": "C",
+        "name": "B(3,3)",
+        "elements": [
+          "도착"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 0
+        },
+        "to": {
+          "column": 2,
+          "element": 0
+        }
+      }
+    ]
+  },
+  "caption": "가로 3칸, 세로 3칸인 격자 도로망에서 A(0,0)에서 출발하여 P(1,2)를 거쳐 B(3,3)으로 가는 경유 관계를 나타낸 대응도이다. 맨 왼쪽 아래 한 칸은 공사 중이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "가로 $3$칸, 세로 $3$칸으로 이루어진 격자 모양의 도로망에서 맨 왼쪽 아래의 $1$칸이 공사 중으로 막혀 있어 지나갈 수 없다. 맨 왼쪽 위 꼭짓점 $A(0, 0)$에서 출발하여 맨 오른쪽 아래 꼭짓점 $B(3, 3)$까지 오른쪽 또는 아래쪽으로만 최단 거리로 갈 때, $A$에서 오른쪽으로 $2$칸, 아래쪽으로 $1$칸 떨어진 지점 $P(1, 2)$를 지날 확률은? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "가로 3칸, 세로 3칸의 격자 도로망",
+      "mappedTo": "diagram"
+    },
+    {
+      "id": "c2",
+      "condition": "맨 왼쪽 아래 1칸은 공사 중",
+      "mappedTo": "diagram"
+    },
+    {
+      "id": "c3",
+      "condition": "오른쪽 또는 아래쪽으로만 최단 거리로 이동",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "A(0,0), P(1,2), B(3,3)의 위치",
+    "A에서 P를 거쳐 B로 가는 경유 관계",
+    "왼쪽 아래 한 칸이 공사 중"
+  ]
+}

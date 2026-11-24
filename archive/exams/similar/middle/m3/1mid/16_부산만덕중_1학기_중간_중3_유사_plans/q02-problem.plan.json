@@ -1,0 +1,320 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "17",
+              "denominator": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "13",
+              "denominator": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "13",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "17",
+              "denominator": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "13",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-13",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-13",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-17",
+              "denominator": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-17",
+              "denominator": "10"
+            },
+            {
+              "kind": "rational",
+              "numerator": "17",
+              "denominator": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "P1",
+    "P2",
+    "P3",
+    "P4"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sCP1",
+      "refs": [
+        "C",
+        "P1"
+      ]
+    },
+    {
+      "id": "sP1P2",
+      "refs": [
+        "P1",
+        "P2"
+      ]
+    },
+    {
+      "id": "sP2B",
+      "refs": [
+        "P2",
+        "B"
+      ]
+    },
+    {
+      "id": "sBP3",
+      "refs": [
+        "B",
+        "P3"
+      ]
+    },
+    {
+      "id": "sP3P4",
+      "refs": [
+        "P3",
+        "P4"
+      ]
+    },
+    {
+      "id": "sP4A",
+      "refs": [
+        "P4",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "regions": [
+      {
+        "id": "rg0",
+        "fill": "WARM",
+        "label": "7",
+        "labelPlacement": "AUTO",
+        "shapes": [
+          {
+            "polygon": [
+              "B",
+              "C",
+              "P1",
+              "P2"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "rg1",
+        "fill": "BLUE",
+        "label": "3",
+        "labelPlacement": "AUTO",
+        "shapes": [
+          {
+            "polygon": [
+              "A",
+              "B",
+              "P3",
+              "P4"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 440,
+    "height": 420
+  },
+  "hiddenPointNames": [
+    "P1",
+    "P2",
+    "P3",
+    "P4"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "직사각형 ABCD의 가로와 세로를 각각 한 변으로 하는 두 정사각형을 붙여 그린 그림이다. 두 정사각형의 넓이가 각각 7과 3으로 주어져 있다.",
+  "accessibilityDescription": "가운데 직사각형 ABCD의 아래쪽에 넓이 7인 정사각형이, 왼쪽에 넓이 3인 정사각형이 붙어 있다. 각 정사각형 안에 7과 3이 적혀 있다.",
+  "newVisualInformation": [
+    "직사각형 ABCD",
+    "넓이 7인 정사각형",
+    "넓이 3인 정사각형"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "아래 그림과 같이 직사각형 $\\mathrm{ABCD}$의 가로와 세로의 길이를 각각 한 변으로 하는 정사각형을 그렸더니 그 넓이가 각각 $7$과 $3$이 되었다. 이때 직사각형 $\\mathrm{ABCD}$의 넓이는? [3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

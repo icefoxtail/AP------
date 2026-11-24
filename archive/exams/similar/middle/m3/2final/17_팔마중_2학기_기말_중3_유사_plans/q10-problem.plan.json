@@ -1,0 +1,251 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-8"
+            },
+            {
+              "kind": "integer",
+              "value": "-6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "-6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "H",
+    "P",
+    "A",
+    "B"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAH",
+      "refs": [
+        "A",
+        "H"
+      ]
+    },
+    {
+      "id": "sHB",
+      "refs": [
+        "H",
+        "B"
+      ]
+    },
+    {
+      "id": "sHP",
+      "refs": [
+        "H",
+        "P"
+      ]
+    },
+    {
+      "id": "sOH",
+      "refs": [
+        "O",
+        "H"
+      ]
+    },
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sAP",
+      "refs": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "sBP",
+      "refs": [
+        "B",
+        "P"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aAHP",
+        "refs": [
+          "A",
+          "H",
+          "P"
+        ],
+        "value": 90,
+        "noLabel": true,
+        "factRole": "GIVEN"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "eH",
+        "count": 1,
+        "segments": [
+          "sAH",
+          "sHB"
+        ],
+        "color": "BLUE"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lOA",
+        "ownerSegment": "sOA",
+        "text": "10",
+        "unit": "cm"
+      },
+      {
+        "id": "lHP",
+        "ownerSegment": "sHP",
+        "text": "4",
+        "unit": "cm"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 540
+  },
+  "hiddenPointNames": [
+    "O"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "반지름이 10 cm인 원의 일부분인 현 AB와, AB의 중점 H를 지나 AB에 수직인 선분 HP를 나타낸 그림이다. HP는 4 cm이고 삼각형 APB가 그려져 있다.",
+  "accessibilityDescription": "원 안에 현 AB가 있고 그 중점 H에서 수직으로 점 P까지 선분이 그어져 삼각형 APB가 만들어진다. 원의 반지름에 10 cm, HP에 4 cm가 표시되고 AH와 HB에 같은 길이 표시가 되어 있다.",
+  "newVisualInformation": [
+    "반지름 10 cm인 원",
+    "현 AB",
+    "AB의 중점 H",
+    "AB에 수직인 HP",
+    "HP의 길이 4 cm",
+    "AH와 HB의 같은 길이 표시",
+    "삼각형 APB"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림에서 $\\overline{AB}$는 반지름의 길이가 $10\\text{ cm}$인 원의 일부분이다. $\\overline{AH} = \\overline{BH}$, $\\overline{AB} \\perp \\overline{HP}$이고 $\\overline{HP} = 4\\text{ cm}$일 때, $\\triangle APB$의 넓이는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

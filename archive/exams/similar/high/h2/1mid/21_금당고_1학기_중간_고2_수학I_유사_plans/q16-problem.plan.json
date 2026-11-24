@@ -1,0 +1,237 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "3"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "O"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rC",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "arcAC",
+        "circle": "circ",
+        "center": "O",
+        "from": "A",
+        "to": "C",
+        "side": "CW",
+        "highlight": false
+      },
+      {
+        "id": "arcCB",
+        "circle": "circ",
+        "center": "O",
+        "from": "C",
+        "to": "B",
+        "side": "CW",
+        "highlight": false,
+        "label": "4pi",
+        "labelKind": "MATH"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "12",
+        "factRole": "GIVEN"
+      }
+    ],
+    "regions": [
+      {
+        "id": "rg",
+        "fill": "LIGHT",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "loop": {
+              "start": "A",
+              "steps": [
+                {
+                  "to": "B"
+                },
+                {
+                  "to": "C",
+                  "arc": {
+                    "center": "O",
+                    "side": "CCW"
+                  }
+                },
+                {
+                  "to": "A"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 340
+  },
+  "hiddenPointNames": [
+    "O"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "선분 AB를 지름으로 하는 반원의 호 AB 위에 점 C가 있고, 선분 AB와 선분 AC, 호 CB로 둘러싸인 부분을 나타낸 그림이다.",
+  "accessibilityDescription": "지름 AB가 아래쪽에 있는 반원과 호 위의 점 C가 보이고, 선분 AC와 호 CB가 그려져 있다. 호 CB 옆에 4pi가 적혀 있고, 선분 AB 옆에 12가 있다.",
+  "newVisualInformation": [
+    "반원의 지름 AB와 호 위의 점 C의 위치",
+    "AB=12, 호 CB의 길이 4pi",
+    "AB, AC, 호 CB로 둘러싸인 부분의 범위"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "길이가 $12$인 선분 $\\mathrm{AB}$를 지름으로 하는 반원의 호 $\\mathrm{AB}$ 위에 점 $\\mathrm{C}$가 있다. 호 $\\mathrm{CB}$의 길이가 $4\\pi$일 때, 두 선분 $\\mathrm{AB, AC}$와 호 $\\mathrm{CB}$로 둘러싸인 부분의 넓이를 $a\\pi + b\\sqrt{3}$이라 할 때 $ab$의 값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

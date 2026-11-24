@@ -1,0 +1,184 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "S",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "P",
+    "Q",
+    "R",
+    "S"
+  ],
+  "displaySegments": [
+    {
+      "id": "sPQ",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    },
+    {
+      "id": "sPR",
+      "refs": [
+        "P",
+        "R"
+      ]
+    },
+    {
+      "id": "sQR",
+      "refs": [
+        "Q",
+        "R"
+      ]
+    },
+    {
+      "id": "sPS",
+      "refs": [
+        "P",
+        "S"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "e1",
+        "count": 1,
+        "segments": [
+          "sPQ",
+          "sPR"
+        ],
+        "color": "ROSE"
+      }
+    ],
+    "angles": [
+      {
+        "id": "aQPS",
+        "refs": [
+          "Q",
+          "P",
+          "S"
+        ],
+        "value": 37,
+        "noLabel": true,
+        "equalGroup": 1,
+        "arcs": 1,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aSPR",
+        "refs": [
+          "S",
+          "P",
+          "R"
+        ],
+        "value": 37,
+        "noLabel": true,
+        "equalGroup": 1,
+        "arcs": 1,
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 360
+  },
+  "caption": "이등변삼각형 PQR에서 꼭지각 P의 이등분선 PS가 밑변 QR과 만난다. PQ와 PR에 같은 길이 표시가 있고, 각 QPS와 각 SPR에 같은 각 표시가 있다.",
+  "accessibilityDescription": "꼭짓점 P가 위에 있는 이등변삼각형 PQR에서 P와 밑변 위의 점 S를 잇는 선분이 보인다. PQ와 PR에 같은 길이 표시가 있고, P의 두 각에 같은 각 표시가 있다.",
+  "newVisualInformation": [
+    "같은 길이인 PQ와 PR, 꼭지각을 나누는 PS, 같은 각 표시가 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음은 「이등변삼각형의 두 밑각의 크기는 같음」을 설명하는 과정이다. $\\overline{PQ} = \\overline{PR}$인 $\\triangle PQR$에서 꼭지각 $\\angle P$의 이등분선과 밑변 $QR$의 교점을 $S$라 하면 $\\triangle PQS \\equiv \\triangle PRS$이다. 아래 빈칸 ①~⑤에 들어갈 것으로 잘못된 것을 모두 고르면? (정답 2개) [4점]\n\n- $\\overline{PQ} =$ [ ① ]  \n- [ ② ]은 공통  \n- $\\angle QPS =$ [ ③ ]  \n- 따라서 $\\triangle PQS \\equiv \\triangle PRS$ ([ ④ ]합동)이므로 $\\angle Q =$ [ ⑤ ]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

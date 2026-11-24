@@ -1,0 +1,289 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "19",
+              "denominator": "6"
+            },
+            {
+              "kind": "rational",
+              "numerator": "9",
+              "denominator": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "131",
+              "denominator": "30"
+            },
+            {
+              "kind": "rational",
+              "numerator": "109",
+              "denominator": "40"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "77",
+              "denominator": "30"
+            },
+            {
+              "kind": "rational",
+              "numerator": "77",
+              "denominator": "40"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "19",
+              "denominator": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "P",
+    "D",
+    "E",
+    "F"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sPD",
+      "refs": [
+        "P",
+        "D"
+      ]
+    },
+    {
+      "id": "sPE",
+      "refs": [
+        "P",
+        "E"
+      ]
+    },
+    {
+      "id": "sPF",
+      "refs": [
+        "P",
+        "F"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "8",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lAC",
+        "ownerSegment": "sAC",
+        "text": "5",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lPD",
+        "ownerSegment": "sPD",
+        "text": "2",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lPE",
+        "ownerSegment": "sPE",
+        "text": "1",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 520,
+    "height": 380
+  },
+  "rightAngles": [
+    {
+      "id": "rD",
+      "refs": [
+        "P",
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "rE",
+      "refs": [
+        "P",
+        "E",
+        "A"
+      ]
+    },
+    {
+      "id": "rF",
+      "refs": [
+        "P",
+        "F",
+        "A"
+      ]
+    }
+  ],
+  "caption": "삼각형 ABC 내부의 점 P에서 세 변 BC, CA, AB에 내린 수선의 발이 각각 D, E, F이다. AB의 길이는 8, AC의 길이는 5, PD는 2, PE는 1로 주어져 있다.",
+  "accessibilityDescription": "삼각형 ABC 안에 점 P가 있고, P에서 BC, CA, AB로 각각 수선 PD, PE, PF가 그려져 있다. AB와 AC 옆에 8과 5, PD와 PE 옆에 2와 1이 표시되어 있다.",
+  "newVisualInformation": [
+    "AB=8",
+    "AC=5",
+    "PD=2",
+    "PE=1",
+    "점 P에서 세 변에 내린 수선의 발 D, E, F"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\overline{AB} = 8$, $\\overline{AC} = 5$인 삼각형 $ABC$의 내부의 한 점 $P$에서 세 변 $BC, CA, AB$에 내린 수선의 발을 각각 $D, E, F$라 하자. $\\sin A \\times \\sin(B + C) = \\frac{9}{25}$이고, $\\overline{PD} = 2$, $\\overline{PE} = 1$일 때, 삼각형 $EFP$의 넓이는 $\\frac{q}{p}$이다. 서로소인 두 자연수 $p, q$에 대하여 $p + q$의 값은? (5.8점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

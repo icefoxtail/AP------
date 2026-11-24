@@ -1,0 +1,47 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "3",
+      "2",
+      "-1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -2,
+      4
+    ],
+    "viewport": [
+      -2.5,
+      4.5,
+      -2,
+      5.5
+    ],
+    "requiredPoints": [
+      {
+        "id": "X1",
+        "x": -1,
+        "y": 0,
+        "label": "-1"
+      },
+      {
+        "id": "V",
+        "x": 1,
+        "y": 4,
+        "label": ""
+      }
+    ],
+    "overlays": {
+      "lines": [
+        {
+          "id": "axis",
+          "x": "1"
+        }
+      ]
+    }
+  },
+  "caption": "축이 x=1이고 한 x절편이 -1이며 위로 볼록한 이차함수의 그래프"
+}

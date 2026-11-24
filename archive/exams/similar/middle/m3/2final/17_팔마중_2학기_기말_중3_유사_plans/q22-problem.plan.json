@@ -1,0 +1,394 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T1",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "180"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "270"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T3",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "355"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T4",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "100"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "r1",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "O",
+          "T1"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "t1",
+        "op": "PERPENDICULAR_THROUGH",
+        "inputs": [
+          "T1",
+          "r1"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "r2",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "O",
+          "E"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "t2",
+        "op": "PERPENDICULAR_THROUGH",
+        "inputs": [
+          "E",
+          "r2"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "r3",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "O",
+          "T3"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "t3",
+        "op": "PERPENDICULAR_THROUGH",
+        "inputs": [
+          "T3",
+          "r3"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "r4",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "O",
+          "T4"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "t4",
+        "op": "PERPENDICULAR_THROUGH",
+        "inputs": [
+          "T4",
+          "r4"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "t4",
+          "t1"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "t1",
+          "t2"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "t2",
+          "t3"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "t3",
+          "t4"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "O"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rB",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dAB",
+        "from": "B",
+        "to": "A",
+        "label": "8",
+        "unit": "cm",
+        "side": "LEFT",
+        "style": "BAR",
+        "offset": "AUTO"
+      },
+      {
+        "id": "dCE",
+        "from": "E",
+        "to": "C",
+        "label": "5",
+        "unit": "cm",
+        "side": "BELOW",
+        "style": "BAR",
+        "offset": "AUTO"
+      },
+      {
+        "id": "dCD",
+        "from": "C",
+        "to": "D",
+        "label": "12",
+        "unit": "cm",
+        "side": "RIGHT",
+        "style": "BAR",
+        "offset": "AUTO"
+      },
+      {
+        "id": "dDA",
+        "from": "D",
+        "to": "A",
+        "label": "9",
+        "unit": "cm",
+        "side": "ABOVE",
+        "style": "BAR",
+        "offset": "AUTO"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 600
+  },
+  "caption": "사각형 ABCD 안에 원 O가 네 변에 접하도록 그려져 있고, 변 BC 위에 접점 E가 있다. 각 B에는 직각 표시가 있고, 변 AB에 8 cm, 변 AD에 9 cm, 변 CD에 12 cm, 선분 CE에 5 cm의 길이 표시가 있다.",
+  "accessibilityDescription": "사각형 ABCD 안에 원 O가 네 변에 접하도록 그려져 있고, 변 BC 위에 접점 E가 있다. 각 B에는 직각 표시가 있고, 변 AB에 8 cm, 변 AD에 9 cm, 변 CD에 12 cm, 선분 CE에 5 cm의 길이 표시가 있다.",
+  "newVisualInformation": [
+    "원 O에 외접하는 사각형 ABCD, 변 BC 위의 접점 E, 네 곳의 길이 라벨을 보여 준다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 2] 다음 그림과 같이 원 $O$에 외접하는 $\\square ABCD$에서 $\\overline{BC}$와 원 $O$의 접점을 $E$라고 하자. $\\angle B = 90^\\circ$이고 $\\overline{AB} = 8\\text{ cm}$, $\\overline{AD} = 9\\text{ cm}$, $\\overline{CD} = 12\\text{ cm}$, $\\overline{CE} = 5\\text{ cm}$일 때, 원 $O$의 넓이를 구하시오. (풀이과정과 답을 모두 쓰시오.) (1) $\\overline{BE}$의 길이를 구하시오. (3점) (2) 원 $O$의 넓이를 구하시오. (2점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

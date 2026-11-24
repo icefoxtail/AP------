@@ -1,0 +1,181 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-16"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "expression",
+              "op": "neg",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "8"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aO",
+        "refs": [
+          "A",
+          "O",
+          "B"
+        ],
+        "value": 30,
+        "label": "30",
+        "factRole": "GIVEN"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "e1",
+        "count": 1,
+        "segments": [
+          "sOA",
+          "sOB"
+        ]
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lOA",
+        "ownerSegment": "sOA",
+        "text": "16",
+        "unit": "cm"
+      },
+      {
+        "id": "lOB",
+        "ownerSegment": "sOB",
+        "text": "16",
+        "unit": "cm"
+      }
+    ]
+  },
+  "rightAngles": [],
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 480
+  },
+  "caption": "점 O에 고정된 길이 16센티미터의 실과, 연직 아래의 A, 30도 옆으로 당긴 B 위치를 나타낸 그림이다. 두 위치 사이의 높이 차이는 제시하지 않았다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림과 같이 길이가 $16\\text{ cm}$인 실에 추를 달아 점 $O$에 고정시키고, 추를 연직 아래로 늘어뜨려 $A$ 지점에 오도록 하였다. 이 추를 $30^\\circ$만큼 옆으로 잡아당겨 $B$ 지점에 오도록 했을 때, $A$ 지점과 $B$ 지점에서의 추의 높이의 차는? (단, 추의 크기는 무시한다.)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "실의 길이는 16센티미터이고, 연직 아래 A에서 30도 옆으로 당긴 위치가 B이다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "accessibilityDescription": "점 O에서 연직 아래의 A로 내려간 실 OA와, O에서 30도 옆으로 올라간 실 OB가 보인다. 두 실 옆에 각각 16센티미터가 적혀 있고, O에 30도 각 표시가 있다.",
+  "newVisualInformation": [
+    "실의 길이와 두 위치가 이루는 각을 표시한다."
+  ]
+}

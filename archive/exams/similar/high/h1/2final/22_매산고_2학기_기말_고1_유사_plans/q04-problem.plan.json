@@ -1,0 +1,120 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X1",
+        "name": "X",
+        "elements": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "id": "X2",
+        "name": "X",
+        "elements": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "id": "X3",
+        "name": "X",
+        "elements": [
+          "1",
+          "2",
+          "3"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 0
+        },
+        "to": {
+          "column": 2,
+          "element": 2
+        }
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 1
+        },
+        "to": {
+          "column": 2,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 2
+        },
+        "to": {
+          "column": 2,
+          "element": 0
+        }
+      }
+    ],
+    "arrowGroups": [
+      {
+        "name": "f",
+        "from": "X1",
+        "to": "X2"
+      },
+      {
+        "name": "g",
+        "from": "X2",
+        "to": "X3"
+      }
+    ]
+  },
+  "caption": "집합 X에서 X로의 두 함수 f와 g의 대응을 나타낸 그림이다. f는 1을 2로, 2를 3으로, 3을 1로 보내고 g는 1을 3으로, 2를 2로, 3을 1로 보낸다.",
+  "newVisualInformation": [
+    "세 개의 X 열과 f, g의 대응 화살표를 표시한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "집합 $X = {1, 2, 3}$에 대하여 $X$에서 $X$로의 두 함수 $f, g$가 오른쪽 그림과 같을 때 ($f(1) = 2, f(2) = 3, f(3) = 1$, $g(1) = 3, g(2) = 2, g(3) = 1$), $(f \\circ g)(2) + (f^{-1} \\circ g)(1)$의 값을 구하면? [3.9점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

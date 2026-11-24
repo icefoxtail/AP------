@@ -1,0 +1,247 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "세 호의 길이의 비가 4 대 3 대 5인 원과 점 A의 원주각 x를 보인 그림",
+  "accessibilityDescription": "원의 중심 O와 원 위의 세 점 A, B, C가 있고, 세 호에 각각 4, 3, 5의 비를 나타내는 라벨이 붙어 있으며 점 A에서 원주각 x가 표시되어 있다.",
+  "newVisualInformation": [
+    "세 호의 길이의 비 4 대 3 대 5를 호마다 라벨로 보이고 점 A의 원주각 x를 표시한다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "90"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "210"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "300"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "OB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "OC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "ans",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "label": "x",
+        "factRole": "GIVEN"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "arcAB",
+        "circle": "circ",
+        "center": "O",
+        "from": "A",
+        "to": "B",
+        "side": "CCW",
+        "label": "4",
+        "labelKind": "TEXT",
+        "labelPlacement": "LEADER",
+        "factRole": "GIVEN",
+        "labelWeight": "MATH"
+      },
+      {
+        "id": "arcBC",
+        "circle": "circ",
+        "center": "O",
+        "from": "B",
+        "to": "C",
+        "side": "CCW",
+        "label": "3",
+        "labelKind": "TEXT",
+        "labelPlacement": "LEADER",
+        "factRole": "GIVEN",
+        "labelWeight": "MATH"
+      },
+      {
+        "id": "arcCA",
+        "circle": "circ",
+        "center": "O",
+        "from": "C",
+        "to": "A",
+        "side": "CCW",
+        "label": "5",
+        "labelKind": "TEXT",
+        "labelPlacement": "LEADER",
+        "factRole": "GIVEN",
+        "labelWeight": "MATH"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 540
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 원 $O$에서 $\\overarc{AB} : \\overarc{BC} : \\overarc{CA} = 4 : 3 : 5$일 때, $\\angle x = \\angle BAC$의 크기를 구하면?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

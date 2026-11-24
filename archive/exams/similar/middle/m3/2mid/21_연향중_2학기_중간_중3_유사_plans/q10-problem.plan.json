@@ -1,0 +1,205 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "O",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "M"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-9"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "15"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "M",
+    "O"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAM",
+      "refs": [
+        "A",
+        "M"
+      ]
+    },
+    {
+      "id": "sMB",
+      "refs": [
+        "M",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sCM",
+      "refs": [
+        "C",
+        "M"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lblAM",
+        "ownerSegment": "sAM",
+        "text": "12",
+        "unit": "cm"
+      },
+      {
+        "id": "lblMB",
+        "ownerSegment": "sMB",
+        "text": "12",
+        "unit": "cm"
+      },
+      {
+        "id": "lblAC",
+        "ownerSegment": "sAC",
+        "text": "6sqrt(5)",
+        "unit": "cm"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rM",
+      "refs": [
+        "A",
+        "M",
+        "C"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 560
+  },
+  "caption": "원 O에서 현 AB의 중점 M을 지나 현에 수직인 선분 CM이 원 위의 점 C까지 그어져 있다. AM과 BM의 길이는 각각 12 cm이고, 선분 CA의 길이는 6루트5 cm로 주어져 있다.",
+  "accessibilityDescription": "원 O 안에 현 AB가 수평으로 그어져 있고 그 중점이 M이다. M에서 위쪽 원 위의 점 C까지 수선 CM이 그어져 있으며 M에 직각 표시가 있다. AM과 BM 옆에 각각 12 cm, 선분 CA 옆에 6루트5 cm가 적혀 있다.",
+  "newVisualInformation": [
+    "현 AB의 중점 M과 수선 CM",
+    "AM=BM=12 cm, CA=6루트5 cm"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림의 원 $\\text{O}$에서 $\\overline{\\text{CM}}\\perp\\overline{\\text{AB}}$(단, $\\text{C}$는 원 위의 점, $\\text{M}$은 현 $\\text{AB}$ 위의 점)이고 $\\overline{\\text{AM}}=\\overline{\\text{BM}}=12\\text{ cm}$, $\\overline{\\text{CA}}=6\\sqrt{5}\\text{ cm}$일 때, 원 $\\text{O}$의 넓이는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

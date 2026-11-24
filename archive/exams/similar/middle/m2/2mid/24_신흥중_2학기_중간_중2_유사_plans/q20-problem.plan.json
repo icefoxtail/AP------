@@ -1,0 +1,235 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "삼각형 ABC의 내심 I를 지나는 두 각의 이등분선이 변 BC, AC와 만나는 점을 각각 D, E로 나타낸 그림이다. 각 ADB는 76도, 각 AEB는 83도로 주어져 있다.",
+  "accessibilityDescription": "점 I는 삼각형 ABC 안에 있고, 점 A에서 점 D까지, 점 B에서 점 E까지 선분이 그어져 있다. 각 ADB에 76, 각 AEB에 83, 각 C에 x가 적혀 있다.",
+  "newVisualInformation": [
+    "내심 I를 지나는 두 선분 AD와 BE가 그려져 있다.",
+    "각 ADB에 76, 각 AEB에 83, 각 C에 x가 표시되어 있다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "2289",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "7985",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "I",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "3603",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2715",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "107",
+              "denominator": "25"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "5788",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "4361",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "I"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aD",
+        "refs": [
+          "A",
+          "D",
+          "B"
+        ],
+        "value": 76,
+        "label": "76",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aE",
+        "refs": [
+          "A",
+          "E",
+          "B"
+        ],
+        "value": 83,
+        "label": "83",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aC",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "value": 46,
+        "label": "x",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 460,
+    "height": 380
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 3] $\\triangle ABC$의 내심 $I$에 대하여 $\\overline{AI}$의 연장선이 변 $BC$와 만나는 점을 $D$, $\\overline{BI}$의 연장선이 변 $AC$와 만나는 점을 $E$라 하자. $\\angle ADB=76^\\circ$, $\\angle AEB=83^\\circ$일 때, $\\angle C$의 크기를 구하는 풀이과정과 답을 쓰시오. [8점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

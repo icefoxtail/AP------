@@ -1,4 +1,58 @@
 {
-  "status": "EXEMPT",
-  "reason": "표준형 y=-(x-4)^2의 꼭짓점과 볼록 방향 판별 문항이다."
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-16",
+          "8",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "viewport": [
+      -1,
+      9,
+      -20,
+      2
+    ],
+    "functionName": "f",
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "4",
+        "y": "0"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "V"
+      ]
+    },
+    "axisTickValues": {
+      "x": [
+        "4"
+      ],
+      "y": []
+    }
+  },
+  "caption": "좌표평면에 이차함수의 그래프가 그려져 있고 꼭짓점의 위치가 가로축에 눈금으로 표시되어 있다.",
+  "accessibilityDescription": "좌표평면에 위로 볼록한 포물선이 그려져 있다. 포물선의 꼭짓점은 가로축 위의 4에 위치하고, 곡선은 아래로 뻗어 세로축의 음의 부분과 만난다.",
+  "newVisualInformation": [
+    "위로 볼록한 포물선",
+    "가로축 눈금 4",
+    "꼭짓점 (4, 0)"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 중 이차함수 $y = -(x-4)^2$의 그래프를 바르게 설명한 것은? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
 }

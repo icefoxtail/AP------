@@ -1,0 +1,436 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "7"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "MIDPOINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "MIDPOINT",
+        "inputs": [
+          "C",
+          "A"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lBC",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "pE",
+        "op": "PERPENDICULAR_THROUGH",
+        "inputs": [
+          "E",
+          "lBC"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lAB",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "pD",
+        "op": "PERPENDICULAR_THROUGH",
+        "inputs": [
+          "D",
+          "lAB"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "O",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "pE",
+          "pD"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "14"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C2",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B2"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A2",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B2"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "12"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A2",
+          "B2"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "MIDPOINT",
+        "inputs": [
+          "B2",
+          "C2"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "MIDPOINT",
+        "inputs": [
+          "C2",
+          "A2"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "I",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "19"
+            },
+            {
+              "kind": "rational",
+              "numerator": "10",
+              "denominator": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "O",
+    "A2",
+    "B2",
+    "C2",
+    "P",
+    "Q",
+    "R",
+    "I"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "OA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "OB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "OC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "OD",
+      "refs": [
+        "O",
+        "D"
+      ]
+    },
+    {
+      "id": "OE",
+      "refs": [
+        "O",
+        "E"
+      ]
+    },
+    {
+      "id": "OF",
+      "refs": [
+        "O",
+        "F"
+      ]
+    },
+    {
+      "id": "A2B2",
+      "refs": [
+        "A2",
+        "B2"
+      ]
+    },
+    {
+      "id": "B2C2",
+      "refs": [
+        "B2",
+        "C2"
+      ]
+    },
+    {
+      "id": "C2A2",
+      "refs": [
+        "C2",
+        "A2"
+      ]
+    },
+    {
+      "id": "IA2",
+      "refs": [
+        "I",
+        "A2"
+      ]
+    },
+    {
+      "id": "IB2",
+      "refs": [
+        "I",
+        "B2"
+      ]
+    },
+    {
+      "id": "IC2",
+      "refs": [
+        "I",
+        "C2"
+      ]
+    },
+    {
+      "id": "IP",
+      "refs": [
+        "I",
+        "P"
+      ]
+    },
+    {
+      "id": "IQ",
+      "refs": [
+        "I",
+        "Q"
+      ]
+    },
+    {
+      "id": "IR",
+      "refs": [
+        "I",
+        "R"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 600
+  },
+  "pointNames": {
+    "A2": "A'",
+    "B2": "B'",
+    "C2": "C'"
+  },
+  "caption": "삼각형 ABC의 외심 O와 세 변의 중점 D, E, F, 그리고 삼각형 A'B'C'의 내심 I와 세 변의 중점 P, Q, R을 각각 나타낸 그림이다.",
+  "accessibilityDescription": "두 삼각형이 나란히 있다. 왼쪽 삼각형 ABC에는 점 O가 있고 O에서 꼭짓점 A, B, C와 중점 D, E, F로 선분이 이어져 있다. 오른쪽 삼각형 A'B'C'에는 점 I가 있고 I에서 꼭짓점 A', B', C'와 중점 P, Q, R로 선분이 이어져 있다.",
+  "newVisualInformation": [
+    "삼각형 ABC의 외심 O와 중점 D, E, F",
+    "삼각형 A'B'C'의 내심 I와 중점 P, Q, R"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\triangle ABC$의 외심을 $O$, $\\triangle A'B'C'$의 내심을 $I$라 하고, $\\triangle ABC$의 세 변 $AB, BC, CA$의 중점을 각각 $D, E, F$, $\\triangle A'B'C'$의 세 변 $A'B', B'C', C'A'$의 중점을 각각 $P, Q, R$이라 할 때, 다음 중 항상 옳은 것은? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,315 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "S",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "3"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "8"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "K",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "3"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B0",
+    "S",
+    "G",
+    "T",
+    "P",
+    "K"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sB0S",
+      "refs": [
+        "B0",
+        "S"
+      ]
+    },
+    {
+      "id": "sSG",
+      "refs": [
+        "S",
+        "G"
+      ]
+    },
+    {
+      "id": "sST",
+      "refs": [
+        "S",
+        "T"
+      ]
+    },
+    {
+      "id": "sTP",
+      "refs": [
+        "T",
+        "P"
+      ]
+    },
+    {
+      "id": "sB0P",
+      "refs": [
+        "B0",
+        "P"
+      ]
+    },
+    {
+      "id": "sTK",
+      "refs": [
+        "T",
+        "K"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aWall",
+        "refs": [
+          "G",
+          "S",
+          "T"
+        ],
+        "value": 30,
+        "label": "30",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aSun",
+        "refs": [
+          "K",
+          "T",
+          "P"
+        ],
+        "value": 60,
+        "label": "60",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lST",
+        "ownerSegment": "sST",
+        "text": "2sqrt(3)",
+        "unit": "m"
+      }
+    ],
+    "segmentColors": [
+      {
+        "segments": [
+          "sTP"
+        ],
+        "color": "WARM"
+      },
+      {
+        "segments": [
+          "sST"
+        ],
+        "color": "BLUE"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dGround",
+        "from": "B0",
+        "to": "S",
+        "label": "4",
+        "unit": "m",
+        "side": "BELOW",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dHeight",
+        "from": "B0",
+        "to": "P",
+        "label": "h",
+        "unit": "m",
+        "side": "LEFT",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "rightAngles": [],
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 520
+  },
+  "hiddenPointNames": [
+    "B0",
+    "S",
+    "G",
+    "T",
+    "P",
+    "K"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "수평 지면에 수직인 가로등과, 지면과 30도 기울어진 벽, 지면과 60도의 각으로 비치는 태양 광선을 나타낸 그림이다. 지면 위 그림자는 4미터, 벽 위 그림자는 2루트3미터이고 가로등의 높이는 h로 두었다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "수평인 지면에 수직으로 서 있는 가로등에 지면과 $60^\\circ$의 크기로 태양 광선이 비추어 지면 위에 $4\\text{ m}$, 지면과 $30^\\circ$의 각을 이루는 벽의 경사면 위에 $2\\sqrt{3}\\text{ m}$의 그림자가 생겼다. 이때 가로등의 높이는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "가로등은 지면에 수직이고, 지면 위 그림자 4미터, 지면과 30도 기울어진 벽 위 그림자 2루트3미터, 태양 광선은 지면과 60도를 이룬다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "accessibilityDescription": "수평 지면 위에 수직으로 선 가로등, 지면과 30도 기울어진 벽, 벽 위의 그림자 끝에서 가로등 꼭대기로 이어지는 태양 광선이 보인다. 지면 그림자 4미터, 벽 그림자 2루트3미터, 30도와 60도의 각 표시, 가로등 높이 h가 보인다.",
+  "newVisualInformation": [
+    "가로등, 기울어진 벽, 태양 광선과 주어진 길이·각을 한 장에 표시한다."
+  ]
+}

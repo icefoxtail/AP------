@@ -1,0 +1,60 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "COS",
+    "coefficients": [
+      "1",
+      "1",
+      "0"
+    ],
+    "phasePi": "0",
+    "sourceDomain": {
+      "kind": "INTERVAL_PI",
+      "rangePi": [
+        "0",
+        "2"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      0,
+      6.3
+    ],
+    "viewport": [
+      -0.5,
+      6.8,
+      -1.5,
+      1.5
+    ],
+    "referenceLines": [
+      {
+        "id": "h",
+        "y": "1/2",
+        "intersectionCount": 2
+      }
+    ],
+    "keyPoints": true,
+    "axisTickPi": true,
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "0 이상 2π 이하에서 y=cos x의 그래프와 직선 y=1/2이 두 점에서 만나고, 그 두 점의 x좌표를 α, β라 한다.",
+  "accessibilityDescription": "가로축 0에서 2π까지 코사인 곡선이 한 주기 그려져 있고, 높이 1/2인 수평선이 곡선과 두 점에서 만난다.",
+  "newVisualInformation": [
+    "코사인 곡선이 한 주기 그려져 있다.",
+    "높이 1/2인 수평선이 곡선과 두 번 만난다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$0 \\le x \\le 2\\pi$에서 함수 $y = \\cos x$의 그래프와 직선 $y = \\frac{1}{2}$이 만나는 두 점의 $x$좌표를 각각 $\\alpha, \\beta$ ($\\alpha < \\beta$)라 할 때, $\\beta - \\alpha$의 값을 구하면?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

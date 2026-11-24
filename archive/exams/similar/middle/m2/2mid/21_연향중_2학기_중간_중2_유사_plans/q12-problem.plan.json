@@ -1,0 +1,185 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "466"
+            },
+            {
+              "kind": "integer",
+              "value": "1048"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "500"
+            },
+            {
+              "kind": "rational",
+              "numerator": "212365",
+              "denominator": "524"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "O"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sOC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a1",
+        "refs": [
+          "O",
+          "A",
+          "B"
+        ],
+        "value": 39,
+        "label": "39",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a2",
+        "refs": [
+          "O",
+          "B",
+          "C"
+        ],
+        "value": 24,
+        "label": "24",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 460,
+    "height": 480
+  },
+  "caption": "삼각형 ABC와 외심 O를 나타낸 그림이다. 각 OAB는 39도, 각 OBC는 24도로 주어져 있다.",
+  "accessibilityDescription": "삼각형 ABC의 세 꼭짓점과 내부의 점 O가 있고, O에서 A, B, C로 선분이 그려져 있다. 각 OAB에 39, 각 OBC에 24가 표시되어 있다.",
+  "newVisualInformation": [
+    "삼각형 ABC와 외심 O",
+    "각 OAB 39도, 각 OBC 24도"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "점 $O$는 $\\triangle ABC$의 외심이다. $\\angle OAB=39^\\circ$, $\\angle OBC=24^\\circ$일 때, $\\angle AOB - \\angle OAC$의 크기는? [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

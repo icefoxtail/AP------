@@ -1,0 +1,236 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-5"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "-6",
+            "denominator": "5"
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "rational",
+                "numerator": "12",
+                "denominator": "5"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "6",
+            "denominator": "5"
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "rational",
+                "numerator": "-12",
+                "denominator": "5"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "O"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "BD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "vAB",
+        "ownerSegment": "AB",
+        "text": "7",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vAC",
+        "ownerSegment": "AC",
+        "text": "10",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vBD",
+        "ownerSegment": "BD",
+        "text": "12",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "평행사변형 ABCD의 두 대각선 AC와 BD가 점 O에서 만나는 그림이다. 변 AB의 길이는 7 cm, 대각선 AC는 10 cm, 대각선 BD는 12 cm로 표시되어 있다.",
+  "accessibilityDescription": "평행사변형 ABCD의 네 변과 두 대각선이 그려져 있고 두 대각선의 교점에 O가 표시되어 있다. 변 AB에 7 cm, 대각선 AC에 10 cm, 대각선 BD에 12 cm라는 길이 글자가 붙어 있다.",
+  "newVisualInformation": [
+    "평행사변형 ABCD와 두 대각선 AC, BD",
+    "대각선의 교점 O",
+    "주어진 길이 AB 7 cm, AC 10 cm, BD 12 cm"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "평행사변형 $\\mathrm{ABCD}$에서 두 대각선의 교점을 $\\mathrm{O}$라 하자. $\\overline{\\mathrm{AB}} = 7\\text{ cm}$, $\\overline{\\mathrm{AC}} = 10\\text{ cm}$, $\\overline{\\mathrm{BD}} = 12\\text{ cm}$일 때, $\\triangle\\mathrm{OCD}$의 둘레의 길이는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            "0",
+            "0"
+          ]
+        }
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            "-5",
+            "0"
+          ]
+        }
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            "5",
+            "0"
+          ]
+        }
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            "-3",
+            "4"
+          ]
+        }
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            "-3",
+            "0"
+          ]
+        }
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "outputType": "CIRCLE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displayCircles": [
+    "k"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "from": "A",
+      "to": "B"
+    },
+    {
+      "id": "sAC",
+      "from": "A",
+      "to": "C"
+    },
+    {
+      "id": "sBC",
+      "from": "B",
+      "to": "C"
+    },
+    {
+      "id": "sCD",
+      "from": "C",
+      "to": "D",
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "rightAngles": [
+      {
+        "id": "rC",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ]
+      },
+      {
+        "id": "rD",
+        "refs": [
+          "C",
+          "D",
+          "B"
+        ]
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lCD",
+        "ownerSegment": "sCD",
+        "text": "b"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dAB",
+        "from": "A",
+        "to": "B",
+        "label": "2a",
+        "side": "BELOW",
+        "style": "ARROW"
+      }
+    ]
+  },
+  "caption": "예시(2a=10, b=4)일 때 지름 AB 위의 점 C와 수선의 발 D로 이루어진 직각삼각형 ACB이다."
+}

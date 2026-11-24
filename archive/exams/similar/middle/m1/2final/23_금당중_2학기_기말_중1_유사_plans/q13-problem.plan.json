@@ -1,0 +1,243 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "L",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-5",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "5",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "5",
+                  "denominator": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "5",
+                  "denominator": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "L",
+    "R",
+    "T",
+    "P"
+  ],
+  "displaySegments": [
+    {
+      "id": "sLR",
+      "refs": [
+        "L",
+        "R"
+      ]
+    },
+    {
+      "id": "sRT",
+      "refs": [
+        "R",
+        "T"
+      ]
+    },
+    {
+      "id": "sTL",
+      "refs": [
+        "T",
+        "L"
+      ]
+    },
+    {
+      "id": "sTP",
+      "refs": [
+        "T",
+        "P"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "e1",
+        "count": 1,
+        "segments": [
+          "sLR",
+          "sRT",
+          "sTL"
+        ]
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dLR",
+        "from": "L",
+        "to": "R",
+        "label": "5",
+        "unit": "m",
+        "side": "BELOW",
+        "style": "BAR",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dTP",
+        "from": "T",
+        "to": "P",
+        "label": "7",
+        "unit": "m",
+        "side": "ABOVE",
+        "style": "BAR",
+        "factRole": "GIVEN"
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "t1",
+        "at": [
+          0,
+          1.5
+        ],
+        "text": "담장"
+      },
+      {
+        "id": "t2",
+        "at": [
+          7.4,
+          3.6
+        ],
+        "text": "강아지"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 420
+  },
+  "rightAngles": [],
+  "hiddenPointNames": [
+    "L",
+    "R",
+    "T",
+    "P"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "정삼각형 모양 담장의 한 꼭짓점에 끈을 묶어 강아지를 연결한 모습이다. 담장의 한 변과 끈의 길이가 표시되어 있다.",
+  "accessibilityDescription": "정삼각형 담장의 위쪽 꼭짓점에서 오른쪽으로 길이가 7인 끈이 뻗어 있고, 담장의 한 변에는 길이 5가 표시되어 있다. 담장 안과 끈 끝에 담장, 강아지라는 글자가 있다.",
+  "newVisualInformation": [
+    "정삼각형 담장",
+    "한 변 5 m",
+    "꼭짓점에 묶인 끈 7 m",
+    "강아지 위치"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같이 한 변의 길이가 $5,\\mathrm{m}$인 정삼각형 모양의 담장이 있다. 이 담장의 한 모퉁이에 길이가 $7,\\mathrm{m}$인 끈으로 강아지를 묶어 놓았을 때, 이 강아지가 움직일 수 있는 영역의 최대 넓이는? (단, 강아지는 담장 안으로 들어갈 수 없고 끈의 매듭의 길이는 생각하지 않는다.)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

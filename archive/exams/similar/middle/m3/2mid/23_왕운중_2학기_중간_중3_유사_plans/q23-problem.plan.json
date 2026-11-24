@@ -1,0 +1,189 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "30"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "10981",
+              "denominator": "1000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "10981",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "10981",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "C",
+    "T",
+    "A"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sTree",
+      "refs": [
+        "A",
+        "T"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aB",
+        "refs": [
+          "T",
+          "B",
+          "A"
+        ],
+        "value": 45,
+        "label": "45",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aC",
+        "refs": [
+          "T",
+          "C",
+          "A"
+        ],
+        "value": 30,
+        "label": "30",
+        "factRole": "GIVEN"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dBC",
+        "from": "B",
+        "to": "C",
+        "label": "30",
+        "unit": "m",
+        "side": "BELOW",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 460,
+    "height": 340
+  },
+  "hiddenPointNames": [
+    "A",
+    "T"
+  ],
+  "caption": "두 지점 B, C 사이의 거리가 30 m이고, B에서 나무를 올려본 각이 45도, C에서 올려본 각이 30도인 그림이다.",
+  "accessibilityDescription": "지면을 나타내는 가로선 위의 두 점 B, C 사이에 30 m가 적혀 있고, 그 사이에 수직으로 선 나무의 꼭대기에서 B와 C로 향한 두 직선이 그려져 있으며, B에 45도, C에 30도의 각 표시가 보인다.",
+  "newVisualInformation": [
+    "B와 C 사이의 거리 30 m",
+    "B에서 올려본 각 45도, C에서 올려본 각 30도"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 3] 아래 그림에서 $B$ 지점에서 나무를 올려다본 각은 $45^\\circ$이고, $C$ 지점에서 나무를 올려다본 각은 $30^\\circ$이다. 두 지점 $B$와 $C$ 사이의 거리가 $30,\\mathrm{m}$일 때, 나무의 높이를 구하고 그 과정을 서술하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

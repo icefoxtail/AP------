@@ -1,0 +1,286 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "18"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-24"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-9"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "C",
+    "A",
+    "B",
+    "D",
+    "O",
+    "H"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "AD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "OH",
+      "refs": [
+        "O",
+        "H"
+      ]
+    },
+    {
+      "id": "BD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "DC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aBAD",
+        "refs": [
+          "B",
+          "A",
+          "D"
+        ],
+        "value": 26.565,
+        "noLabel": true,
+        "equalGroup": 1,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aDAC",
+        "refs": [
+          "D",
+          "A",
+          "C"
+        ],
+        "value": 26.565,
+        "noLabel": true,
+        "equalGroup": 1,
+        "factRole": "GIVEN"
+      }
+    ],
+    "equalAngles": [
+      {
+        "angles": [
+          "aBAD",
+          "aDAC"
+        ],
+        "color": "GREEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "tBD",
+        "ownerSegment": "BD",
+        "text": "15",
+        "unit": "cm"
+      },
+      {
+        "id": "tDC",
+        "ownerSegment": "DC",
+        "text": "9",
+        "unit": "cm"
+      },
+      {
+        "id": "tOH",
+        "ownerSegment": "OH",
+        "text": "r",
+        "unit": "cm"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rC",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "H"
+  ],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 600
+  },
+  "caption": "직각삼각형과 그 내접원, 꼭짓점에서 변으로 그은 각의 이등분선을 그린 그림이다. 변의 두 부분은 15 cm와 9 cm로 주어지고, 내접원의 반지름은 r로 표시되어 있다.",
+  "accessibilityDescription": "직각삼각형 안에 원이 내접해 있고, 한 꼭짓점에서 변 위의 점으로 각의 이등분선이 그어져 있다. 변 위의 두 선분에는 15 cm와 9 cm가, 원의 중심에서 변에 내린 반지름에는 r cm가 표시되어 있다.",
+  "newVisualInformation": [
+    "직각삼각형과 내접원이 그려진다.",
+    "각의 이등분선이 변과 만나고, 두 선분의 길이는 15 cm와 9 cm, 반지름은 r로 표시된다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[단답형 2] 그림에서 원 $O$는 직각삼각형 $ABC$ ($\\angle C = 90^\\circ$)의 내접원이고, $\\angle A$의 이등분선 $AD$가 변 $BC$와 만난다. $\\overline{BD} = 15\\rm,cm$, $\\overline{CD} = 9\\rm,cm$일 때, 내접원 $O$의 반지름의 길이를 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

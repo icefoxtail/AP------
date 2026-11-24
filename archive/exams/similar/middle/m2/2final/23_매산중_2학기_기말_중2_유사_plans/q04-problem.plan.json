@@ -1,0 +1,97 @@
+{
+  "capability": "composite-panels-v1",
+  "caption": "닮은 두 삼각기둥 A, B의 부피가 각각 16 세제곱센티미터, 54 세제곱센티미터이고 두 입체도형의 겉넓이의 비를 구하는 문제이다.",
+  "accessibilityDescription": "왼쪽 패널에는 삼각기둥 A, 오른쪽 패널에는 이와 닮은 삼각기둥 B가 있다. A의 세로 모서리 옆에 8 cm, B의 세로 모서리 옆에 12 cm가 표시되어 있고, 패널 제목에 각각의 부피 16 세제곱센티미터와 54 세제곱센티미터가 적혀 있다.",
+  "newVisualInformation": [
+    "A와 B는 닮은 삼각기둥",
+    "A의 높이 8 cm, B의 높이 12 cm",
+    "A의 부피 16 세제곱센티미터, B의 부피 54 세제곱센티미터"
+  ],
+  "panels": [
+    {
+      "caption": {
+        "text": "A: 16"
+      },
+      "plan": {
+        "capability": "solid-figure-v1",
+        "unit": "cm",
+        "solids": [
+          {
+            "id": "a",
+            "kind": "PRISM",
+            "base": {
+              "kind": "POLYGON",
+              "points": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  2,
+                  0
+                ],
+                [
+                  0,
+                  2
+                ]
+              ]
+            },
+            "height": 8
+          }
+        ],
+        "dims": [
+          {
+            "solid": "a",
+            "edge": "AD"
+          }
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "B: 54"
+      },
+      "plan": {
+        "capability": "solid-figure-v1",
+        "unit": "cm",
+        "solids": [
+          {
+            "id": "b",
+            "kind": "PRISM",
+            "base": {
+              "kind": "POLYGON",
+              "points": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  3,
+                  0
+                ],
+                [
+                  0,
+                  3
+                ]
+              ]
+            },
+            "height": 12
+          }
+        ],
+        "dims": [
+          {
+            "solid": "b",
+            "edge": "AD"
+          }
+        ]
+      }
+    }
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "닮은 두 입체도형 $A, B$의 부피가 각각 $16\\text{ cm}^3$, $54\\text{ cm}^3$일 때, 두 입체도형 $A, B$의 겉넓이의 비는? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

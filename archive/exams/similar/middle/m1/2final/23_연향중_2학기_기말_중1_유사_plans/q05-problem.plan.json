@@ -1,0 +1,240 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "P1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "7"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "O",
+    "T"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sP1P2",
+      "refs": [
+        "P1",
+        "P2"
+      ]
+    },
+    {
+      "id": "sP2P3",
+      "refs": [
+        "P2",
+        "P3"
+      ]
+    },
+    {
+      "id": "sP3P4",
+      "refs": [
+        "P3",
+        "P4"
+      ]
+    },
+    {
+      "id": "sP4P1",
+      "refs": [
+        "P4",
+        "P1"
+      ]
+    },
+    {
+      "id": "sAxis",
+      "refs": [
+        "O",
+        "T"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "O",
+    "T"
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "w",
+        "from": "P1",
+        "to": "P2",
+        "label": "3",
+        "unit": "cm",
+        "side": "BELOW",
+        "style": "ARROW",
+        "offset": "AUTO"
+      },
+      {
+        "id": "h",
+        "from": "P1",
+        "to": "P4",
+        "label": "6",
+        "unit": "cm",
+        "side": "LEFT",
+        "style": "ARROW",
+        "offset": "AUTO"
+      },
+      {
+        "id": "g",
+        "from": "P2",
+        "to": "O",
+        "label": "2",
+        "unit": "cm",
+        "side": "BELOW",
+        "style": "ARROW",
+        "offset": "AUTO"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAxis",
+        "ownerSegment": "sAxis",
+        "text": "l"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 380
+  },
+  "caption": "회전축 l에서 2 cm 떨어진 곳에 가로 3 cm, 세로 6 cm인 직사각형이 있는 그림이다.",
+  "accessibilityDescription": "오른쪽에 세로로 긴 직선 l이 있고, 그 왼쪽에 가로 3 cm, 세로 6 cm인 직사각형이 있다. 직사각형의 오른쪽 변과 축 사이의 거리는 2 cm로 표시되어 있다.",
+  "newVisualInformation": [
+    "직사각형의 가로 3과 세로 6을 표시하였다.",
+    "직사각형의 오른쪽 변과 회전축 l 사이의 거리 2를 표시하였다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "아래 그림과 같이 회전축 $l$에서 $2,\\mathrm{cm}$ 떨어져 있는 가로 $3,\\mathrm{cm}$, 세로 $6,\\mathrm{cm}$인 직사각형을 직선 $l$을 축으로 $1$회전 시킬 때 생기는 입체도형의 겉넓이를 구하면?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

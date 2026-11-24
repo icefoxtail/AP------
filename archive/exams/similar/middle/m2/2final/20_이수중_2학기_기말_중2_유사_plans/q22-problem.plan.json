@@ -1,0 +1,273 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "32",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "36",
+              "denominator": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "36",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "8",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "S",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "48",
+              "denominator": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "T",
+    "U",
+    "P",
+    "H",
+    "S"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sTU",
+      "refs": [
+        "T",
+        "U"
+      ]
+    },
+    {
+      "id": "sPH",
+      "refs": [
+        "P",
+        "H"
+      ]
+    },
+    {
+      "id": "sTP",
+      "refs": [
+        "T",
+        "P"
+      ]
+    },
+    {
+      "id": "sPS",
+      "refs": [
+        "P",
+        "S"
+      ]
+    },
+    {
+      "id": "sUH",
+      "refs": [
+        "U",
+        "H"
+      ]
+    },
+    {
+      "id": "sHS",
+      "refs": [
+        "H",
+        "S"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lTU",
+        "ownerSegment": "sTU",
+        "text": "h",
+        "unit": "m"
+      }
+    ],
+    "segmentColors": [
+      {
+        "segments": [
+          "sTU",
+          "sPH"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "segments": [
+          "sTP",
+          "sPS"
+        ],
+        "color": "WARM"
+      },
+      {
+        "segments": [
+          "sUH",
+          "sHS"
+        ],
+        "color": "GREEN"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dPH",
+        "from": "P",
+        "to": "H",
+        "label": "1.6",
+        "side": "LEFT",
+        "style": "ARROW",
+        "factRole": "GIVEN",
+        "unit": "m"
+      },
+      {
+        "id": "dTP",
+        "from": "T",
+        "to": "P",
+        "label": "7.2",
+        "side": "BELOW",
+        "style": "ARROW",
+        "factRole": "GIVEN",
+        "unit": "m"
+      },
+      {
+        "id": "dPS",
+        "from": "P",
+        "to": "S",
+        "label": "2.4",
+        "side": "BELOW",
+        "style": "ARROW",
+        "factRole": "GIVEN",
+        "unit": "m"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "U",
+        "T",
+        "P"
+      ]
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "H",
+        "P",
+        "S"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 360
+  },
+  "hiddenPointNames": [
+    "T",
+    "U",
+    "P",
+    "H",
+    "S"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "나무와 민준이가 햇빛을 받아 생긴 그림자를 보여 준다. 나무와 민준이 사이의 거리, 민준이의 키와 그림자 길이가 주어져 있고 나무의 높이는 h로 표시되어 있다.",
+  "accessibilityDescription": "왼쪽에 수직으로 선 나무, 오른쪽에 서 있는 민준이, 두 그림자의 끝이 한 점에서 만나는 그림이다. 나무 높이는 h, 민준이 키는 1.6미터, 나무에서 민준이까지 거리는 7.2미터, 민준이 그림자는 2.4미터로 표시되어 있다.",
+  "newVisualInformation": [
+    "나무와 민준이의 위치, 주어진 거리와 키, 그림자의 공통 끝점을 보여 준다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서답형 2] 키가 $1.6\\text{ m}$인 민준이가 나무로부터 $7.2\\text{ m}$ 떨어진 곳에 서 있으며, 민준이의 그림자의 길이는 $2.4\\text{ m}$이다. 민준이의 그림자의 끝이 나무의 그림자의 끝과 일치할 때, 나무의 높이를 구하시오. [3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

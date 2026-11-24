@@ -1,0 +1,313 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "13"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "integer",
+              "value": "-12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "N",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "20"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "N",
+          "O"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "12"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "90"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "N",
+          "O"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "12"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "90"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "M",
+    "N"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAM",
+      "refs": [
+        "A",
+        "M"
+      ]
+    },
+    {
+      "id": "sMB",
+      "refs": [
+        "M",
+        "B"
+      ]
+    },
+    {
+      "id": "sCN",
+      "refs": [
+        "C",
+        "N"
+      ]
+    },
+    {
+      "id": "sND",
+      "refs": [
+        "N",
+        "D"
+      ]
+    },
+    {
+      "id": "sOM",
+      "refs": [
+        "O",
+        "M"
+      ]
+    },
+    {
+      "id": "sON",
+      "refs": [
+        "O",
+        "N"
+      ]
+    },
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ],
+      "dashed": true
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "r1",
+      "refs": [
+        "O",
+        "M",
+        "A"
+      ]
+    },
+    {
+      "id": "r2",
+      "refs": [
+        "O",
+        "N",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lOM",
+        "ownerSegment": "sOM",
+        "text": "5"
+      },
+      {
+        "id": "lON",
+        "ownerSegment": "sON",
+        "text": "5"
+      },
+      {
+        "id": "lOA",
+        "ownerSegment": "sOA",
+        "text": "13"
+      }
+    ],
+    "segmentColors": [
+      {
+        "segments": [
+          "sOM",
+          "sON"
+        ],
+        "color": "BLUE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 560
+  },
+  "caption": "원 O 안에 두 현 AB와 CD가 있고, 중심 O에서 각 현에 내린 수선의 발 M, N이 표시되어 있다. OM과 ON에 길이 5, 반지름 OA에 길이 13이 표시되어 있고, M과 N에 직각 표시가 있다.",
+  "accessibilityDescription": "원 O 안에 두 현 AB와 CD가 있고, 중심 O에서 각 현에 내린 수선의 발 M, N이 표시되어 있다. OM과 ON에 길이 5, 반지름 OA에 길이 13이 표시되어 있고, M과 N에 직각 표시가 있다.",
+  "newVisualInformation": [
+    "원 O, 두 현 AB와 CD, 중심에서 내린 수선과 발 M, N, 수선의 길이와 반지름의 길이 라벨을 보여 준다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림의 원 $O$에서 $\\overline{OM} \\perp \\overline{AB}$, $\\overline{ON} \\perp \\overline{CD}$이고 $\\overline{OM} = \\overline{ON} = 5$이다. 원 $O$의 반지름의 길이가 $13$일 때, $\\overline{AB} + \\overline{CD}$의 값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

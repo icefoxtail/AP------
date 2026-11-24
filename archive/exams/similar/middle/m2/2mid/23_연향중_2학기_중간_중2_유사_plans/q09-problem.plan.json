@@ -1,0 +1,197 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-2781",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "8559",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "6219",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "8559",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "9",
+        "unit": "cm"
+      },
+      {
+        "id": "lDA",
+        "ownerSegment": "sDA",
+        "text": "x",
+        "unit": "cm"
+      }
+    ],
+    "angles": [
+      {
+        "id": "aADB",
+        "refs": [
+          "A",
+          "D",
+          "B"
+        ],
+        "value": 54,
+        "label": "54",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aBCD",
+        "refs": [
+          "B",
+          "C",
+          "D"
+        ],
+        "value": 72,
+        "label": "y",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "caption": "마름모 ABCD에서 변 AB의 길이가 9센티미터, 각 ADB가 54도이고 변 AD의 길이를 x, 각 BCD의 크기를 y로 나타내었다.",
+  "accessibilityDescription": "마름모 ABCD와 대각선 BD가 있고, 변 AB 옆에 9, 변 AD 옆에 x, 각 ADB에 54, 각 BCD에 y가 적혀 있다.",
+  "newVisualInformation": [
+    "변 AB의 길이 9센티미터",
+    "각 ADB의 크기 54도",
+    "변 AD의 길이 x",
+    "각 BCD의 크기 y"
+  ],
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 340
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "마름모 $ABCD$에서 $\\overline{AB}=9\\text{ cm}$, $\\angle ADB=54^\\circ$이고 $\\overline{AD}=x\\text{ cm}$, $\\angle BCD=y^\\circ$일 때, $x+y$의 값은? [3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

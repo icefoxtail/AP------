@@ -1,0 +1,311 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "9"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lAD",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lEC",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "E",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lAD",
+          "lEC"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "G",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "AE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "AF",
+      "refs": [
+        "A",
+        "F"
+      ]
+    },
+    {
+      "id": "FD",
+      "refs": [
+        "F",
+        "D"
+      ]
+    },
+    {
+      "id": "EF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "FC",
+      "refs": [
+        "F",
+        "C"
+      ]
+    },
+    {
+      "id": "AG",
+      "refs": [
+        "A",
+        "G"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "A",
+        "G",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "eq0",
+        "count": 1,
+        "segments": [
+          "AE",
+          "CD"
+        ]
+      }
+    ],
+    "parallels": [
+      {
+        "id": "p0",
+        "count": 1,
+        "segments": [
+          "AE",
+          "BC"
+        ]
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "vAG",
+        "ownerSegment": "AG",
+        "text": "6",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dBD",
+        "from": "B",
+        "to": "D",
+        "label": "9",
+        "unit": "cm",
+        "side": "BELOW",
+        "style": "BAR",
+        "value": "9"
+      }
+    ]
+  },
+  "caption": "사다리꼴 ABCE에서 변 AE와 변 BC가 평행하고, 변 BC의 연장선 위에 AE와 CD의 길이가 같도록 점 D를 잡았다. 선분 AD와 선분 CE의 교점 F, 점 A에서 선분 BD에 내린 수선의 발 G가 표시되어 있으며 BD는 9 cm, AG는 6 cm이다.",
+  "accessibilityDescription": "사다리꼴 ABCE의 윗변 AE와 아랫변 BC가 평행하고, BC를 오른쪽으로 연장한 곳에 점 D가 있다. AE와 CD에는 같은 길이 표시가 있고, AD와 CE가 만나는 점 F, A에서 BD에 내린 수선의 발 G와 직각 표시가 보인다. BD에는 9 cm, AG에는 6 cm가 적혀 있다.",
+  "newVisualInformation": [
+    "사다리꼴 ABCE",
+    "AE와 BC의 평행 표시",
+    "AE와 CD의 같은 길이 표시",
+    "AD와 CE의 교점 F",
+    "A에서 BD에 내린 수선의 발 G",
+    "BD의 길이 9 cm",
+    "AG의 길이 6 cm"
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 600
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 4] $\\overline{AE} // \\overline{BC}$인 사다리꼴 $ABCE$에서 변 $BC$의 연장선 위에 $\\overline{AE} = \\overline{CD}$가 되도록 점 $D$를 잡고, 선분 $AD$와 선분 $CE$의 교점을 $F$라 하자. 다음 물음에 답하시오. (1) $\\triangle AEF \\equiv \\triangle DCF$임을 보이시오. [3점] (2) 점 $A$에서 선분 $BD$에 내린 수선의 발을 $G$라 하자. $\\overline{BD} = 9\\text{ cm}$, $\\overline{AG} = 6\\text{ cm}$일 때, $\\square ABCE$의 넓이를 구하시오. [3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

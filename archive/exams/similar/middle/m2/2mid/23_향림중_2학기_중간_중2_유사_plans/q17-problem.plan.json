@@ -1,0 +1,218 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "4814304",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "7137499",
+              "denominator": "1000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "bB",
+        "op": "ANGLE_BISECTOR",
+        "inputs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "args": {
+          "mode": "INTERNAL"
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bC",
+        "op": "ANGLE_BISECTOR",
+        "inputs": [
+          "B",
+          "C",
+          "A"
+        ],
+        "args": {
+          "mode": "INTERNAL"
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "I",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "bB",
+          "bC"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "I"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAI",
+      "refs": [
+        "A",
+        "I"
+      ]
+    },
+    {
+      "id": "sBI",
+      "refs": [
+        "B",
+        "I"
+      ]
+    },
+    {
+      "id": "sCI",
+      "refs": [
+        "C",
+        "I"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aABI",
+        "refs": [
+          "A",
+          "B",
+          "I"
+        ],
+        "value": 28,
+        "label": "28",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aACI",
+        "refs": [
+          "A",
+          "C",
+          "I"
+        ],
+        "value": 27,
+        "label": "27",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aBAI",
+        "refs": [
+          "B",
+          "A",
+          "I"
+        ],
+        "value": 35,
+        "label": "x",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 420
+  },
+  "caption": "삼각형 ABC의 내심 I에 대하여 각 ABI가 28도, 각 ACI가 27도이고 각 BAI가 x인 그림이다.",
+  "accessibilityDescription": "삼각형 ABC 안에 내심 I가 있고, I에서 세 꼭짓점 A, B, C로 선분이 그어져 있다. 각 ABI 옆에 28, 각 ACI 옆에 27, 각 BAI 옆에 x가 적혀 있다.",
+  "newVisualInformation": [
+    "삼각형 ABC의 내심 I",
+    "I에서 A, B, C로 그은 선분",
+    "각 ABI=28도, 각 ACI=27도, 각 BAI=x"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "점 $I$가 $\\triangle ABC$의 내심이고 $\\angle ABI=28^\\circ$, $\\angle ACI=27^\\circ$일 때, $\\angle BAI$의 크기는? [3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

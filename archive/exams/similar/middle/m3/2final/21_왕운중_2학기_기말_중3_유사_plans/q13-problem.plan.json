@@ -1,0 +1,320 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "big",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "52"
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "small",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "neg",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "4"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "52"
+              }
+            ]
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "90"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "M",
+    "Q"
+  ],
+  "hiddenPointNames": [
+    "M",
+    "Q"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "big",
+    "small"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sOM",
+      "refs": [
+        "O",
+        "M"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "x",
+        "unit": "cm",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "regions": [
+      {
+        "id": "ring",
+        "fill": "MEDIUM",
+        "label": "48pi",
+        "unit": "cm^2",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "loop": {
+              "start": "Q",
+              "steps": [
+                {
+                  "to": "Q",
+                  "arc": {
+                    "center": "O",
+                    "side": "FULL"
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "holes": [
+          {
+            "loop": {
+              "start": "M",
+              "steps": [
+                {
+                  "to": "M",
+                  "arc": {
+                    "center": "O",
+                    "side": "FULL"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rM",
+      "refs": [
+        "O",
+        "M",
+        "B"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 440,
+    "height": 400
+  },
+  "caption": "중심이 O로 같은 두 원에서 큰 원의 현 AB가 작은 원에 접하고, 두 원 사이의 색칠한 부분의 넓이가 48파이 제곱센티미터로 주어진 그림이다. 현 AB의 길이는 x로 표시되어 있다.",
+  "accessibilityDescription": "중심 O를 공유하는 큰 원과 작은 원이 있고, 큰 원의 현 AB가 작은 원에 접한다. 두 원 사이의 고리 모양 부분이 색칠되어 있으며 그 넓이는 48파이 제곱센티미터로 적혀 있다. 현 AB의 길이는 x센티미터로 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "그림과 같이 중심이 $O$로 같은 두 동심원에서 큰 원의 현 $AB$는 작은 원의 접선이다. 두 원 사이의 색칠한 부분의 넓이가 $48\\pi\\rm,cm^2$일 때, 현 $\\overline{AB}$의 길이는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ],
+  "newVisualInformation": [
+    "두 동심원, 작은 원에 접하는 큰 원의 현 AB, 색칠한 고리 영역, 넓이 48파이 제곱센티미터, 현 AB의 x센티미터가 보인다."
+  ]
+}

@@ -1,0 +1,231 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "36",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "48",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sDB",
+      "refs": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "sEA",
+      "refs": [
+        "E",
+        "A"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "b",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 50.9,
+        "arcs": 1,
+        "factRole": "GIVEN",
+        "noLabel": true,
+        "color": "ROSE",
+        "equalGroup": 1
+      },
+      {
+        "id": "e",
+        "refs": [
+          "A",
+          "E",
+          "D"
+        ],
+        "value": 50.9,
+        "arcs": 1,
+        "factRole": "GIVEN",
+        "noLabel": true,
+        "color": "ROSE",
+        "equalGroup": 1
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "l1",
+        "ownerSegment": "sAD",
+        "text": "4",
+        "unit": "cm"
+      },
+      {
+        "id": "l2",
+        "ownerSegment": "sDB",
+        "text": "11",
+        "unit": "cm"
+      },
+      {
+        "id": "l3",
+        "ownerSegment": "sEA",
+        "text": "5",
+        "unit": "cm"
+      }
+    ]
+  },
+  "caption": "삼각형 ABC의 두 변 AB, AC 위에 점 D, E가 있고, 각 ABC와 각 AED가 같게 표시된 그림이다.",
+  "accessibilityDescription": "삼각형 ABC의 변 AB 위에 D, 변 AC 위에 E가 있다. 점 B와 점 E의 각에 같은 모양의 호가 그어져 있고, AD는 4, DB는 11, AE는 5로 적혀 있다.",
+  "newVisualInformation": [
+    "두 변 위의 점 D, E, 같은 각 표시, 길이 4, 11, 5를 보여 준다."
+  ],
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 360
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 1] 삼각형 $ABC$의 두 변 $AB, AC$ 위의 점을 각각 $D, E$라 하자. $\\angle ABC = \\angle AED$이고 $\\overline{AD} = 4\\text{ cm}, \\overline{AE} = 5\\text{ cm}, \\overline{DB} = 11\\text{ cm}$일 때, $\\overline{AC}$의 길이를 다음 단계에 따라 구하시오. [7점]\n\n(1) 닮은 삼각형을 기호를 사용하여 나타내기 (반드시 대응하는 꼭짓점의 순서대로 쓸 것) [2점]  \n(2) 닮음 조건 [2점]  \n(3) $\\overline{AC} = x$라 놓고, $x$ 구하기 (풀이) [2점]  \n(4) $\\overline{AC}$의 길이 [1점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,258 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "8",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "rational",
+              "numerator": "8",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Ddir",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "E",
+          "H"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "50"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ls",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "E",
+          "Ddir"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lb",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "G",
+          "H"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "ls",
+          "lb"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "G",
+    "H",
+    "E",
+    "F",
+    "T"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sGT",
+      "refs": [
+        "G",
+        "T"
+      ]
+    },
+    {
+      "id": "sGF",
+      "refs": [
+        "G",
+        "F"
+      ]
+    },
+    {
+      "id": "sEH",
+      "refs": [
+        "E",
+        "H"
+      ]
+    },
+    {
+      "id": "sET",
+      "refs": [
+        "E",
+        "T"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aEye",
+        "refs": [
+          "H",
+          "E",
+          "T"
+        ],
+        "value": 50,
+        "label": "50",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lEH",
+        "ownerSegment": "sEH",
+        "text": "15",
+        "unit": "m",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lEF",
+        "ownerSegment": "sEF",
+        "text": "1.6",
+        "unit": "m",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rH",
+      "refs": [
+        "E",
+        "H",
+        "T"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "G",
+    "H",
+    "E",
+    "F",
+    "T"
+  ],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 520
+  },
+  "caption": "건물에서 15 m 떨어진 지점에 있는 지호의 눈높이는 1.6 m이고, 지호의 눈에서 건물 꼭대기를 올려본 각은 50도로 표시되어 있다.",
+  "accessibilityDescription": "건물을 수직선으로, 지호의 눈높이를 지면에서 1.6 m인 수평선으로 나타내었다. 눈높이 수평선과 건물 꼭대기를 잇는 선 사이의 각이 50도이고, 건물까지의 거리는 15 m로 표시되어 있다.",
+  "newVisualInformation": [
+    "건물까지의 거리 15 m",
+    "지호의 눈높이 1.6 m",
+    "올려본 각 50도"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같이 건물에서 $15,\\mathrm{m}$ 떨어진 지점에서 지호가 건물의 꼭대기를 올려본 각의 크기가 $50^\\circ$이다. 지호의 눈높이가 $1.6,\\mathrm{m}$일 때, 건물의 높이는? (단, $\\sin 50^\\circ=0.77$, $\\cos 50^\\circ=0.64$, $\\tan 50^\\circ=1.19$로 계산한다.)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

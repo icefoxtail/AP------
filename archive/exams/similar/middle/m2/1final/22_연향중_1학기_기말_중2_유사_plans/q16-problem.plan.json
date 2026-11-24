@@ -1,0 +1,82 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -1,
+      6,
+      -4,
+      7
+    ],
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "-5",
+          "2"
+        ],
+        "domain": [
+          "1",
+          "5"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "7",
+          "-2"
+        ],
+        "domain": [
+          "1",
+          "5"
+        ],
+        "color": "WARM"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "ax",
+          "slope": "0",
+          "intercept": "0",
+          "label": "x"
+        },
+        {
+          "id": "ay",
+          "x": "0",
+          "label": "y"
+        }
+      ],
+      "points": [
+        {
+          "id": "P",
+          "x": "3",
+          "y": "1",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "두 직선이 점 (3, 1)에서 만나고, 가로축과 세로축이 각각 x, y로 표시되어 있다.",
+  "accessibilityDescription": "가로축과 세로축이 있는 좌표평면에 오른쪽 위로 올라가는 직선과 오른쪽 아래로 내려가는 직선이 점 (3, 1)에서 교차한다. 가로축 옆에 x, 세로축 위에 y가 쓰여 있다.",
+  "newVisualInformation": [
+    "두 직선",
+    "교점 (3, 1)",
+    "가로축 x와 세로축 y"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 일차방정식 $2x-y-a=0$, $bx+y-7=0$의 그래프의 교점이 $(3, 1)$일 때, $a$, $b$의 값은? (단, $a$, $b$는 수)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

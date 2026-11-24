@@ -1,0 +1,201 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "300",
+              "denominator": "169"
+            },
+            {
+              "kind": "rational",
+              "numerator": "720",
+              "denominator": "169"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sCB",
+      "refs": [
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAC",
+        "ownerSegment": "sCA",
+        "text": "5",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lBC",
+        "ownerSegment": "sCB",
+        "text": "12",
+        "factRole": "GIVEN"
+      }
+    ],
+    "angles": [
+      {
+        "id": "aX",
+        "refs": [
+          "A",
+          "C",
+          "D"
+        ],
+        "label": "x",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aY",
+        "refs": [
+          "B",
+          "C",
+          "D"
+        ],
+        "label": "y",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 500,
+    "height": 380
+  },
+  "rightAngles": [
+    {
+      "id": "rC",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "rD",
+      "refs": [
+        "A",
+        "D",
+        "C"
+      ]
+    }
+  ],
+  "caption": "직각삼각형 ABC에서 CD가 AB에 수직이고, 각 ACD는 x, 각 BCD는 y로 표시되어 있다. AC는 5, BC는 12이다.",
+  "accessibilityDescription": "점 C가 직각인 직각삼각형 ABC에서 AB에 수직인 CD를 그었고, 각 ACD는 x, 각 BCD는 y이며 AC는 5, BC는 12인 그림이다.",
+  "newVisualInformation": [
+    "직각삼각형 ABC, AB에 수직인 CD, 두 각 x와 y를 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같은 $\\angle\\text{C}=90^\\circ$인 직각삼각형 $\\text{ABC}$에서 $\\overline{\\text{AB}} \\perp \\overline{\\text{CD}}$이고 $\\overline{\\text{AC}}=5$, $\\overline{\\text{BC}}=12$이다. $\\angle\\text{ACD}=x^\\circ$, $\\angle\\text{BCD}=y^\\circ$라고 할 때, $\\frac{\\tan x^\\circ}{\\cos y^\\circ}$의 값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

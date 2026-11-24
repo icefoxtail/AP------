@@ -1,0 +1,185 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "평행사변형 ABCD에서 변 AB의 길이와 대각선 BD의 길이, 각 ADC의 크기가 표시되어 있다.",
+  "accessibilityDescription": "평행사변형 ABCD에 대각선 BD가 그려져 있고, AB에 9, BD에 14, 각 ADC에 65가 적혀 있다.",
+  "newVisualInformation": [
+    "평행사변형의 한 변과 대각선의 길이, 한 각의 크기를 표시한다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1601",
+              "denominator": "500"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1373",
+              "denominator": "200"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "6101",
+              "denominator": "500"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1373",
+              "denominator": "200"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aD",
+        "refs": [
+          "A",
+          "D",
+          "C"
+        ],
+        "value": 65,
+        "label": "65",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "9",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lBD",
+        "ownerSegment": "sBD",
+        "text": "14",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 340
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "평행사변형 $ABCD$에서 $\\overline{AB}=9\\text{ cm}$, $\\overline{BD}=14\\text{ cm}$, $\\angle ADC=65^\\circ$일 때, 다음 중 옳지 **않은** 것은? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,246 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "8856",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "4428",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "8856",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-2214",
+              "denominator": "1000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "8856",
+              "denominator": "1000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lac",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lbd",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "O",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lac",
+          "lbd"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "O"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAO",
+      "refs": [
+        "A",
+        "O"
+      ]
+    },
+    {
+      "id": "sOC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "sBO",
+      "refs": [
+        "B",
+        "O"
+      ]
+    },
+    {
+      "id": "sOD",
+      "refs": [
+        "O",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "regions": [
+      {
+        "id": "roc",
+        "fill": "WARM",
+        "label": "14",
+        "labelKind": "MATH",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "polygon": [
+              "O",
+              "D",
+              "C"
+            ]
+          }
+        ]
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAO",
+        "ownerSegment": "sAO",
+        "text": "2a"
+      },
+      {
+        "id": "lOC",
+        "ownerSegment": "sOC",
+        "text": "5a"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 460
+  },
+  "caption": "사다리꼴 ABCD에서 변 AD와 변 BC는 평행하고, 두 대각선 AC와 BD가 점 O에서 만난다. 선분 AO와 선분 OC의 길이의 비는 2 대 5이고, 삼각형 ODC의 넓이는 14제곱센티미터이다.",
+  "accessibilityDescription": "위아래 변이 평행한 사다리꼴 ABCD와 두 대각선의 교점 O가 보이고, 선분 AO와 OC 옆에 각각 2a와 5a가 적혀 있으며, 삼각형 ODC가 색칠되어 14가 표시되어 있다.",
+  "newVisualInformation": [
+    "사다리꼴 ABCD",
+    "AD와 BC의 평행 관계",
+    "대각선 AC와 BD의 교점 O",
+    "AO와 OC의 비 2 대 5",
+    "삼각형 ODC의 넓이 14"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 3] $\\overline{AD} \\parallel \\overline{BC}$인 사다리꼴 $ABCD$에서 두 대각선 $AC, BD$의 교점을 $O$라고 할 때, $\\overline{AO} : \\overline{OC} = 2 : 5$이다. $\\triangle ODC$의 넓이가 $14\\text{ cm}^{2}$일 때, 다음 물음에 답하시오.  \n(1) $\\triangle OAB$와 $\\triangle ODC$의 넓이가 같은 이유를 설명하시오. [3점]  \n(2) $\\triangle OBC$의 넓이를 구하시오. [3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

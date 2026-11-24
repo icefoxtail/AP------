@@ -1,0 +1,256 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "15"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-8"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "B",
+    "L",
+    "T",
+    "M",
+    "P",
+    "Q"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sLB",
+      "refs": [
+        "L",
+        "B"
+      ]
+    },
+    {
+      "id": "sLT",
+      "refs": [
+        "L",
+        "T"
+      ]
+    },
+    {
+      "id": "sTB",
+      "refs": [
+        "T",
+        "B"
+      ]
+    },
+    {
+      "id": "sPQ",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    },
+    {
+      "id": "sOT",
+      "refs": [
+        "O",
+        "T"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "O",
+    "B",
+    "L",
+    "T",
+    "M",
+    "P",
+    "Q"
+  ],
+  "hiddenPointStyle": "NONE",
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lOB",
+        "ownerSegment": "sOB",
+        "text": "12",
+        "unit": "cm"
+      },
+      {
+        "id": "lOM",
+        "ownerSegment": "sOT",
+        "text": "5",
+        "unit": "cm"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "M",
+        "O",
+        "B"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 460
+  },
+  "caption": "원뿔의 축을 포함한 단면이 이등변삼각형으로 그려져 있고, 밑면의 반지름이 12 cm, 밑면에서 단면까지의 높이가 5 cm로 표시되어 있다. 꼭짓점에서 단면까지의 높이는 10 cm이고, 단면은 밑면에 평행하다.",
+  "accessibilityDescription": "이등변삼각형 모양의 원뿔 단면이 있고, 가운데 점선 축을 따라 밑면에서 5 cm 되는 곳에 밑면과 평행한 선분이 그어져 있다. 밑면의 오른쪽 절반에 12 cm, 축의 아래쪽 부분에 5 cm가 적혀 있다.",
+  "newVisualInformation": [
+    "밑면에 평행한 단면",
+    "밑면의 반지름 12 cm",
+    "단면에서 밑면까지 5 cm"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "밑면의 반지름의 길이가 $12\\text{ cm}$인 원뿔을 밑면에 평행한 평면으로 자를 때, 원뿔의 꼭짓점에서 단면까지의 높이가 $10\\text{ cm}$, 단면에서 밑면까지의 높이가 $5\\text{ cm}$이다. 이때 생기는 단면의 반지름의 길이는? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

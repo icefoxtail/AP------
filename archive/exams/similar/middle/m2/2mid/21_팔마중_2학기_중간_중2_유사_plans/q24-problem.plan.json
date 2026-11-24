@@ -1,0 +1,284 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "16"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "16"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "112",
+              "denominator": "25"
+            },
+            {
+              "kind": "rational",
+              "numerator": "384",
+              "denominator": "25"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "7",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "P",
+    "Q"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sPQ",
+      "refs": [
+        "P",
+        "Q"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "12",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lBC",
+        "ownerSegment": "sBC",
+        "text": "16",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lBD",
+        "ownerSegment": "sBD",
+        "text": "20",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 420
+  },
+  "rightAngles": [
+    {
+      "id": "rQ",
+      "refs": [
+        "P",
+        "Q",
+        "D"
+      ]
+    },
+    {
+      "id": "rC",
+      "refs": [
+        "B",
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "caption": "직사각형 ABCD를 대각선 BD를 접는 선으로 접어 점 C가 E로 옮겨진 그림이다. 변 AD와 선분 BE의 교점이 P이고, P에서 BD에 내린 수선의 발이 Q이다.",
+  "accessibilityDescription": "직사각형 ABCD에서 A는 왼쪽 위, B는 왼쪽 아래, C는 오른쪽 아래, D는 오른쪽 위에 있다. 대각선 BD가 그려지고 C를 BD에 대하여 접은 점 E가 위쪽에 있다. AD와 BE가 만나는 점 P, P에서 BD에 내린 수선의 발 Q가 표시되어 있다. AB는 12 cm, BC는 16 cm, BD는 20 cm이다.",
+  "newVisualInformation": [
+    "직사각형 ABCD와 대각선 BD",
+    "접힌 점 E와 선분 BE, DE",
+    "AD와 BE의 교점 P",
+    "BD에 내린 수선의 발 Q",
+    "AB=12 cm, BC=16 cm, BD=20 cm"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 4] $\\overline{AB}=12\\text{ cm}$, $\\overline{BC}=16\\text{ cm}$, $\\overline{BD}=20\\text{ cm}$인 직사각형 모양의 종이 $ABCD$를 대각선 $BD$를 접는 선으로 하여 점 $C$가 점 $E$로 옮겨지도록 접었다. 변 $AD$와 선분 $BE$의 교점을 $P$라 하고, 점 $P$에서 대각선 $BD$에 내린 수선의 발을 $Q$라 할 때, 다음 물음에 답하시오. [6점]\n\n(1) $\\triangle PBD$가 이등변삼각형임을 설명하시오. (2점)  \n(2) $\\overline{DQ}$의 길이를 구하시오. (1점)  \n(3) $\\triangle DQP$와 $\\triangle BCD$가 닮음임을 설명하시오. (2점)  \n(4) $\\overline{PD}$의 길이를 구하시오. (1점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

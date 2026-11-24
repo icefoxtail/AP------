@@ -1,0 +1,213 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "10",
+              "denominator": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "60",
+              "denominator": "13"
+            },
+            {
+              "kind": "rational",
+              "numerator": "40",
+              "denominator": "13"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lCA",
+        "ownerSegment": "sCA",
+        "text": "5"
+      },
+      {
+        "id": "lBC",
+        "ownerSegment": "sBC",
+        "text": "12"
+      }
+    ],
+    "angles": [
+      {
+        "id": "ax",
+        "refs": [
+          "B",
+          "D",
+          "E"
+        ],
+        "label": "x",
+        "arcs": 1
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rC",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "rE",
+      "refs": [
+        "B",
+        "E",
+        "D"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 360
+  },
+  "caption": "각 C가 직각인 직각삼각형 ABC에서 변 BC 위의 점 D와, D에서 변 AB에 내린 수선의 발 E, 각 BDE를 x로 표시한 그림",
+  "accessibilityDescription": "직각삼각형 ABC에서 변 BC 위의 점 D, D에서 AB로 내린 수선 DE와 그 발 E의 직각 표시, 각 BDE의 라벨 x, 변 AC 옆의 5, 변 BC 옆의 12가 보인다.",
+  "newVisualInformation": [
+    "변 AC의 길이 5",
+    "변 BC의 길이 12",
+    "각 BDE의 라벨 x",
+    "수선 DE와 직각 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "그림과 같이 $\\angle C = 90^\\circ$인 직각삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{BC}} = 12$, $\\overline{\\mathrm{AC}} = 5$이다. 변 $\\mathrm{BC}$ 위의 점 $\\mathrm{D}$에서 변 $\\mathrm{AB}$에 내린 수선의 발을 $\\mathrm{E}$라 하고 $\\angle\\mathrm{BDE} = x$라 할 때, $\\cos x$의 값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

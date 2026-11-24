@@ -1,0 +1,327 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "P"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "12"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "P"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "8"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lPQ",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "P",
+          "Q"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lQR",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "Q",
+          "R"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lPR",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "P",
+          "R"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "MIDPOINT",
+        "inputs": [
+          "P",
+          "Q"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "MIDPOINT",
+        "inputs": [
+          "Q",
+          "R"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "pd",
+        "op": "PERPENDICULAR_THROUGH",
+        "inputs": [
+          "D",
+          "lPQ"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "pe",
+        "op": "PERPENDICULAR_THROUGH",
+        "inputs": [
+          "E",
+          "lQR"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "O",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "pd",
+          "pe"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "O",
+          "lPR"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "P",
+    "Q",
+    "R",
+    "D",
+    "E",
+    "O",
+    "F"
+  ],
+  "displaySegments": [
+    {
+      "id": "PD",
+      "refs": [
+        "P",
+        "D"
+      ]
+    },
+    {
+      "id": "DQ",
+      "refs": [
+        "D",
+        "Q"
+      ]
+    },
+    {
+      "id": "QE",
+      "refs": [
+        "Q",
+        "E"
+      ]
+    },
+    {
+      "id": "ER",
+      "refs": [
+        "E",
+        "R"
+      ]
+    },
+    {
+      "id": "RF",
+      "refs": [
+        "R",
+        "F"
+      ]
+    },
+    {
+      "id": "FP",
+      "refs": [
+        "F",
+        "P"
+      ]
+    },
+    {
+      "id": "OD",
+      "refs": [
+        "O",
+        "D"
+      ]
+    },
+    {
+      "id": "OE",
+      "refs": [
+        "O",
+        "E"
+      ]
+    },
+    {
+      "id": "OF",
+      "refs": [
+        "O",
+        "F"
+      ]
+    },
+    {
+      "id": "OP",
+      "refs": [
+        "O",
+        "P"
+      ]
+    },
+    {
+      "id": "OQ",
+      "refs": [
+        "O",
+        "Q"
+      ]
+    },
+    {
+      "id": "OR",
+      "refs": [
+        "O",
+        "R"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "O",
+        "D",
+        "P"
+      ]
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "O",
+        "E",
+        "R"
+      ]
+    },
+    {
+      "id": "r2",
+      "refs": [
+        "O",
+        "F",
+        "P"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "eq0",
+        "count": 1,
+        "segments": [
+          "PD",
+          "DQ"
+        ]
+      },
+      {
+        "id": "eq1",
+        "count": 2,
+        "segments": [
+          "QE",
+          "ER"
+        ]
+      }
+    ]
+  },
+  "caption": "삼각형 PQR에서 두 변 PQ와 QR의 수직이등분선이 점 O에서 만나고, D, E는 각각 PQ, QR의 중점이다. F는 O에서 PR에 내린 수선의 발이다.",
+  "accessibilityDescription": "삼각형 PQR 안에 점 O가 있고, OD와 OE가 각각 PQ, QR과 직각을 이룬다. OF는 PR과 직각이며, PD와 DQ, QE와 ER에 같은 길이 표시가 보인다.",
+  "newVisualInformation": [
+    "PQ와 QR의 수직이등분선의 교점 O",
+    "PQ, QR의 중점 D, E",
+    "PR에 내린 수선의 발 F",
+    "PD=DQ, QE=ER 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\triangle PQR$에서 두 변 $PQ$와 $QR$의 수직이등분선의 교점을 $O$라 하고, 변 $PQ, QR$의 중점을 각각 $D, E$, 점 $O$에서 변 $PR$에 내린 수선의 발을 $F$라 할 때, 다음 중 항상 옳은 것은? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

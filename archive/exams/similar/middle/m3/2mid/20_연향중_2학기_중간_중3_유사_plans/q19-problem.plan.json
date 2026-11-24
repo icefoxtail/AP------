@@ -1,0 +1,146 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lCA",
+        "ownerSegment": "sCA",
+        "text": "5",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lBC",
+        "ownerSegment": "sBC",
+        "text": "12",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 340
+  },
+  "rightAngles": [
+    {
+      "id": "rC",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    }
+  ],
+  "caption": "각 C가 직각인 직각삼각형 ABC에서 변 AC의 길이는 5cm이고 변 BC의 길이는 12cm이다.",
+  "accessibilityDescription": "그림에는 C가 직각인 삼각형 ABC가 있고, 변 AC와 BC에 각각 5cm, 12cm 라벨이 있다.",
+  "newVisualInformation": [
+    "각 C의 직각 표시",
+    "AC의 5cm 라벨",
+    "BC의 12cm 라벨"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "직각삼각형 $\\text{ABC}$에서 $\\angle\\text{C}=90^\\circ$, $\\overline{\\text{AC}}=5\\text{ cm}$, $\\overline{\\text{BC}}=12\\text{ cm}$일 때, 다음 물음에 답하시오. (1) $\\angle\\text{B}$의 삼각비 $\\sin B$, $\\cos B$, $\\tan B$를 구하시오. [4점] (2) $\\angle\\text{C}$에 대하여 $\\sin C$, $\\cos C$, $\\tan C$의 값 또는 정의 여부를 각각 쓰시오. [2점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

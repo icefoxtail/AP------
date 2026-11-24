@@ -1,0 +1,264 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "7522906",
+              "denominator": "1000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "bB",
+        "op": "ANGLE_BISECTOR",
+        "inputs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "args": {
+          "mode": "INTERNAL"
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bA",
+        "op": "ANGLE_BISECTOR",
+        "inputs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "args": {
+          "mode": "INTERNAL"
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "I",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "bB",
+          "bA"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bB2",
+        "op": "ANGLE_BISECTOR",
+        "inputs": [
+          "I",
+          "B",
+          "C"
+        ],
+        "args": {
+          "mode": "INTERNAL"
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bC2",
+        "op": "ANGLE_BISECTOR",
+        "inputs": [
+          "B",
+          "C",
+          "I"
+        ],
+        "args": {
+          "mode": "INTERNAL"
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "I2",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "bB2",
+          "bC2"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "I",
+    "I2"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sBI",
+      "refs": [
+        "B",
+        "I"
+      ]
+    },
+    {
+      "id": "sCI",
+      "refs": [
+        "C",
+        "I"
+      ]
+    },
+    {
+      "id": "sAI",
+      "refs": [
+        "A",
+        "I"
+      ]
+    },
+    {
+      "id": "sBI2",
+      "refs": [
+        "B",
+        "I2"
+      ]
+    },
+    {
+      "id": "sCI2",
+      "refs": [
+        "C",
+        "I2"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aBI2C",
+        "refs": [
+          "B",
+          "I2",
+          "C"
+        ],
+        "value": 149,
+        "label": "149",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aA",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 56,
+        "label": "x",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 420
+  },
+  "pointNames": {
+    "I2": "I'"
+  },
+  "caption": "삼각형 ABC의 내심 I와 삼각형 IBC의 내심 I'을 나타낸 그림이다. 각 BI'C의 크기 149도가 표시되어 있다.",
+  "accessibilityDescription": "삼각형 ABC 안에 내심 I가 있고, 삼각형 IBC 안에 다시 내심 I'이 있다. I'에서 B, C로 선분이 이어지고 그 사이 각에 149도가 표시되어 있다. 꼭짓점 A의 각에는 x가 표시되어 있다.",
+  "newVisualInformation": [
+    "삼각형 ABC의 내심 I",
+    "삼각형 IBC의 내심 I'",
+    "각 BI'C=149도",
+    "각 A의 x 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\triangle ABC$에서 점 $I$는 $\\triangle ABC$의 내심이고, 점 $I'$은 $\\triangle IBC$의 내심이다. $\\angle BI'C=149^\\circ$일 때, $\\angle A$의 크기는? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

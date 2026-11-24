@@ -1,0 +1,268 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "9",
+              "denominator": "2"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "5",
+                  "denominator": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "7"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "27",
+              "denominator": "8"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "15",
+                  "denominator": "8"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "7"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "D",
+    "B",
+    "E",
+    "C"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sDB",
+      "refs": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "sAE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "sEC",
+      "refs": [
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aA",
+        "refs": [
+          "D",
+          "A",
+          "E"
+        ],
+        "label": "α",
+        "style": "ARC"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "vAD",
+        "ownerSegment": "sAD",
+        "text": "4",
+        "unit": "cm"
+      },
+      {
+        "id": "vDB",
+        "ownerSegment": "sDB",
+        "text": "8",
+        "unit": "cm"
+      },
+      {
+        "id": "vAE",
+        "ownerSegment": "sAE",
+        "text": "6",
+        "unit": "cm"
+      },
+      {
+        "id": "vEC",
+        "ownerSegment": "sEC",
+        "text": "2",
+        "unit": "cm"
+      },
+      {
+        "id": "vDE",
+        "ownerSegment": "sDE",
+        "text": "5",
+        "unit": "cm"
+      },
+      {
+        "id": "vBC",
+        "ownerSegment": "sBC",
+        "text": "x",
+        "unit": "cm"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 520,
+    "height": 400
+  },
+  "caption": "삼각형 ABC의 변 AB와 AC 위에 각각 점 D, E를 잡고 선분 DE를 그린 그림이다. 주어진 네 선분의 길이와 DE, BC가 표시되어 있다.",
+  "accessibilityDescription": "삼각형 ABC와 변 위의 점 D, E, 선분 DE가 보이고, AD 4 cm, DB 8 cm, AE 6 cm, EC 2 cm, DE 5 cm, BC x cm가 표시되어 있다.",
+  "newVisualInformation": [
+    "삼각형 ABC",
+    "점 D, E",
+    "선분 DE",
+    "주어진 길이와 x"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\triangle ABC$의 변 $AB$ 위의 점 $D$와 변 $AC$ 위의 점 $E$에 대하여 $\\overline{AD}=4\\text{ cm}$, $\\overline{BD}=8\\text{ cm}$, $\\overline{AE}=6\\text{ cm}$, $\\overline{CE}=2\\text{ cm}$, $\\overline{DE}=5\\text{ cm}$일 때, $\\overline{BC}$의 길이는? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

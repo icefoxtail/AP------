@@ -26,8 +26,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 방정식을 푸시오.\n⑴ $x^3-1=0$\n⑵ $x^4-3x^2-4=0$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $x=1$ 또는 $x=\\frac{-1\\pm\\sqrt{3}i}{2}$\n⑵ $x=\\pm 2$ 또는 $x=\\pm i$",
+    "solution": "⑴ $x^3-1=(x-1)(x^2+x+1)=0$\n$x-1=0$에서 $x=1$\n$x^2+x+1=0$에서 $x=\\frac{-1\\pm\\sqrt{1-4}}{2}=\\frac{-1\\pm\\sqrt{3}i}{2}$\n⑵ $x^2=X$로 놓으면 $X^2-3X-4=(X-4)(X+1)=0$이므로 $X=4$ 또는 $X=-1$\n$x^2=4$에서 $x=\\pm 2$\n$x^2=-1$에서 $x=\\pm i$"
   },
   {
     "id": 2,
@@ -54,8 +54,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 방정식을 푸시오.\n⑴ $x^3-3x^2-x+3=0$\n⑵ $x^4+2x^3-7x^2-8x+12=0$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $x=-1$ 또는 $x=1$ 또는 $x=3$\n⑵ $x=-3$ 또는 $x=-2$ 또는 $x=1$ 또는 $x=2$",
+    "solution": "⑴ 앞의 두 항과 뒤의 두 항을 묶어 인수분해한다.\n$$x^3-3x^2-x+3=x^2(x-3)-(x-3)=(x-3)(x^2-1)=(x-3)(x-1)(x+1)=0$$\n따라서 $x=-1,\\ 1,\\ 3$\n⑵ $P(x)=x^4+2x^3-7x^2-8x+12$라 하면\n$P(1)=1+2-7-8+12=0$이므로 $x-1$을 인수로 가진다.\n조립제법으로 $x-1$로 나누면 몫은 $x^3+3x^2-4x-12$이다.\n$Q(x)=x^3+3x^2-4x-12=x^2(x+3)-4(x+3)=(x+3)(x^2-4)=(x+3)(x-2)(x+2)$\n이므로\n$$P(x)=(x-1)(x+3)(x-2)(x+2)=0$$\n따라서 $x=-3,\\ -2,\\ 1,\\ 2$"
   },
   {
     "id": 3,
@@ -82,8 +82,8 @@ window.questionBank = [
     "wide": false,
     "content": "삼차방정식 $x^3-3x^2+ax+5=0$의 한 근이 $-1$일 때, 실수 $a$의 값과 나머지 두 근을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$a=1$, 나머지 두 근: $2+i,\\ 2-i$",
+    "solution": "$x=-1$이 근이므로 대입하면\n$$(-1)^3-3\\times(-1)^2+a\\times(-1)+5=-1-3-a+5=1-a=0$$\n이므로 $a=1$\n방정식은 $x^3-3x^2+x+5=0$이다. 조립제법으로 $x+1$로 나누면 몫이 $x^2-4x+5$이므로\n$$(x+1)(x^2-4x+5)=0$$\n$x^2-4x+5=0$에서 $x=2\\pm\\sqrt{4-5}=2\\pm i$\n따라서 $a=1$이고 나머지 두 근은 $2+i,\\ 2-i$이다."
   },
   {
     "id": 4,
@@ -110,8 +110,8 @@ window.questionBank = [
     "wide": false,
     "content": "삼차방정식 $x^3-x^2+kx-k=0$이 허근 $3i$와 실근 $\\alpha$를 가질 때, $k+\\alpha$의 값을 구하시오. (단, $k$는 상수이다.)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$10$",
+    "solution": "$x^3-x^2+kx-k=0$을 묶어서 인수분해하면\n$$x^2(x-1)+k(x-1)=(x-1)(x^2+k)=0$$\n실근은 $x=1$이므로 $\\alpha=1$이다.\n허근은 $x^2+k=0$의 근 $x=\\pm\\sqrt{-k}$이고, 이것이 $3i$이므로 $x^2=-9$\n$k=9$\n따라서 $k+\\alpha=9+1=10$"
   },
   {
     "id": 5,
@@ -138,8 +138,8 @@ window.questionBank = [
     "wide": false,
     "content": "[문제해결] 삼차방정식 $x^3+ax^2+bx+6=0$의 세 근을 $2, \\alpha, \\beta$라고 하자. $\\alpha^2+\\beta^2=6$일 때, 두 상수 $a, b$의 값을 각각 구하시오.\n\n[단계1] $a$와 $b$ 사이의 관계를 식으로 나타내시오.\n[단계2] 두 상수 $a, b$의 값을 각각 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "[단계1] $b=-2a-7$\n[단계2] $a=-2,\\ b=-3$",
+    "solution": "[단계1] 세 근이 $2,\\ \\alpha,\\ \\beta$이므로 삼차방정식의 근과 계수의 관계에서\n$$2+\\alpha+\\beta=-a\\qquad\\cdots\\ ①$$\n$$2\\alpha+2\\beta+\\alpha\\beta=b\\qquad\\cdots\\ ②$$\n$$2\\alpha\\beta=-6\\qquad\\cdots\\ ③$$\n③에서 $\\alpha\\beta=-3$이고, ①에서 $\\alpha+\\beta=-a-2$이므로 ②에 대입하면\n$$b=2(-a-2)+(-3)=-2a-7$$\n\n[단계2] $\\alpha^2+\\beta^2=(\\alpha+\\beta)^2-2\\alpha\\beta=6$이므로\n$$(-a-2)^2-2\\times(-3)=6\\quad\\text{에서}\\quad (a+2)^2=0$$\n$a=-2$이고 $b=-2\\times(-2)-7=-3$\n(확인: $x^3-2x^2-3x+6=(x-2)(x^2-3)$이므로 세 근은 $2,\\ \\pm\\sqrt{3}$이고 $\\alpha^2+\\beta^2=6$)"
   },
   {
     "id": 6,
@@ -166,8 +166,8 @@ window.questionBank = [
     "wide": false,
     "content": "[연결] 비행기나 선박을 이용하여 물건을 수입할 때, 부피에 비하여 가벼운 물건은 부피무게를 이용하여 운송료를 부과한다. 다음은 어느 운송사에서 가로와 세로의 길이, 높이가 각각 $a\\text{ cm}$, $b\\text{ cm}$, $c\\text{ cm}$인 직육면체 모양의 상자의 부피무게를 구하는 식이다.\n$$\\text{부피무게}(\\text{kg})=\\frac{a\\times b\\times c}{5000}$$\n가로와 세로의 길이, 높이가 각각 $x\\text{ cm}$, $(x+10)\\text{ cm}$, $(x+40)\\text{ cm}$인 직육면체 모양의 상자의 부피무게가 $2\\text{ kg}$일 때, $x$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$10$",
+    "solution": "부피무게가 $2\\text{ kg}$이므로\n$$\\frac{x(x+10)(x+40)}{5000}=2$$\n$$x(x+10)(x+40)=10000$$\n전개하면 $x^3+50x^2+400x-10000=0$\n$x=10$을 대입하면 $1000+5000+4000-10000=0$이므로 $x-10$을 인수로 가진다.\n조립제법으로 나누면 몫이 $x^2+60x+1000$이므로\n$$(x-10)(x^2+60x+1000)=0$$\n$x^2+60x+1000=0$의 판별식은 $\\frac{D}{4}=900-1000<0$이므로 허근이다.\n$x$는 길이이므로 실수이다. 따라서 $x=10$"
   },
   {
     "id": 7,
@@ -194,8 +194,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 연립방정식을 푸시오.\n⑴ $\\begin{cases} y=x+2 \\\\ x^2+y^2=4 \\end{cases}$\n⑵ $\\begin{cases} x+y=5 \\\\ x^2-xy+y^2=7 \\end{cases}$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $(x,\\ y)=(0,\\ 2),\\ (-2,\\ 0)$\n⑵ $(x,\\ y)=(2,\\ 3),\\ (3,\\ 2)$",
+    "solution": "⑴ $y=x+2$를 $x^2+y^2=4$에 대입하면\n$$x^2+(x+2)^2=2x^2+4x+4=4$$\n$2x^2+4x=0$이므로 $2x(x+2)=0$에서 $x=0$ 또는 $x=-2$\n$x=0$이면 $y=2$, $x=-2$이면 $y=0$\n⑵ $x+y=5$에서 $y=5-x$를 $x^2-xy+y^2=7$에 대입하면\n$$x^2-x(5-x)+(5-x)^2=x^2-5x+x^2+25-10x+x^2=3x^2-15x+25=7$$\n$3x^2-15x+18=0$이므로 $x^2-5x+6=0$, $(x-2)(x-3)=0$에서 $x=2$ 또는 $x=3$\n$x=2$이면 $y=3$, $x=3$이면 $y=2$"
   },
   {
     "id": 8,
@@ -222,8 +222,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 연립방정식을 푸시오.\n⑴ $\\begin{cases} x^2-3xy+2y^2=0 \\\\ x^2+y^2=5 \\end{cases}$\n⑵ $\\begin{cases} x^2+xy-2y^2=0 \\\\ x^2+2xy+3y^2=3 \\end{cases}$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $(x,\\ y)=(2,\\ 1),\\ (-2,\\ -1),\\ \\left(\\frac{\\sqrt{10}}{2},\\ \\frac{\\sqrt{10}}{2}\\right),\\ \\left(-\\frac{\\sqrt{10}}{2},\\ -\\frac{\\sqrt{10}}{2}\\right)$\n⑵ $(x,\\ y)=\\left(\\frac{\\sqrt{2}}{2},\\ \\frac{\\sqrt{2}}{2}\\right),\\ \\left(-\\frac{\\sqrt{2}}{2},\\ -\\frac{\\sqrt{2}}{2}\\right),\\ (-2,\\ 1),\\ (2,\\ -1)$",
+    "solution": "⑴ $x^2-3xy+2y^2=(x-y)(x-2y)=0$이므로 $x=y$ 또는 $x=2y$\n(i) $x=y$일 때: $x^2+y^2=2y^2=5$이므로 $y=\\pm\\frac{\\sqrt{10}}{2}$, $x=y$\n(ii) $x=2y$일 때: $4y^2+y^2=5y^2=5$이므로 $y=\\pm 1$, $x=\\pm 2$\n⑵ $x^2+xy-2y^2=(x+2y)(x-y)=0$이므로 $x=-2y$ 또는 $x=y$\n(i) $x=y$일 때: $x^2+2xy+3y^2=y^2+2y^2+3y^2=6y^2=3$이므로 $y^2=\\frac{1}{2}$, $y=\\pm\\frac{\\sqrt{2}}{2}$, $x=y$\n(ii) $x=-2y$일 때: $4y^2-4y^2+3y^2=3y^2=3$이므로 $y=\\pm 1$, $x=\\mp 2$"
   },
   {
     "id": 9,
@@ -250,8 +250,8 @@ window.questionBank = [
     "wide": false,
     "content": "연립방정식 $\\begin{cases} 4x^2+4xy-3y^2=0 \\\\ 2x^2+2xy-y^2=2 \\end{cases}$의 해를 $x=a$, $y=b$라고 할 때, $a+b$의 값을 구하시오. (단, $a>0, b>0$)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$3$",
+    "solution": "$4x^2+4xy-3y^2=(2x-y)(2x+3y)=0$이므로 $y=2x$ 또는 $2x+3y=0$\n$a>0,\\ b>0$이므로 $2a+3b>0$이다. 따라서 $2x+3y=0$은 해가 될 수 없고 $y=2x$이다.\n$y=2x$를 $2x^2+2xy-y^2=2$에 대입하면\n$$2x^2+4x^2-4x^2=2x^2=2$$\n$x^2=1$이고 $x>0$이므로 $x=1$, $y=2$\n따라서 $a+b=1+2=3$"
   },
   {
     "id": 10,
@@ -278,8 +278,8 @@ window.questionBank = [
     "wide": false,
     "content": "연립방정식 $\\begin{cases} x-y=k \\\\ x^2+xy+y^2=4 \\end{cases}$가 오직 한 쌍의 해를 가질 때, 실수 $k$의 값을 모두 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$k=-4,\\ 4$",
+    "solution": "$x-y=k$에서 $x=y+k$를 $x^2+xy+y^2=4$에 대입하면\n$$(y+k)^2+(y+k)y+y^2=3y^2+3ky+k^2=4$$\n$3y^2+3ky+k^2-4=0$\n연립방정식의 해가 오직 한 쌍이려면 이 $y$에 대한 이차방정식이 중근을 가져야 하므로 $D=0$이다.\n$$D=(3k)^2-4\\times 3\\times(k^2-4)=9k^2-12k^2+48=-3k^2+48=0$$\n$k^2=16$이므로 $k=\\pm 4$"
   },
   {
     "id": 11,
@@ -306,8 +306,8 @@ window.questionBank = [
     "wide": false,
     "content": "[문제해결] 오른쪽 그림과 같이 원 모양의 울타리에 직사각형 모양의 화단이 내접하고 있다. 울타리의 둘레의 길이가 $10\\pi\\text{ m}$이고 화단의 둘레의 길이가 $28\\text{ m}$일 때, 화단의 가로와 세로의 길이를 각각 구하시오. (단, 화단의 가로의 길이는 세로의 길이보다 길고, 울타리의 두께는 생각하지 않는다.)\n<img src=\"q11.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "가로 $8\\text{ m}$, 세로 $6\\text{ m}$",
+    "solution": "원 모양 울타리의 둘레의 길이가 $10\\pi\\text{ m}$이므로 지름의 길이는 $10\\text{ m}$이다.\n직사각형이 원에 내접하므로 직사각형의 대각선의 길이는 원의 지름과 같은 $10\\text{ m}$이다.\n가로를 $x\\text{ m}$, 세로를 $y\\text{ m}$라 하면 ($x>y$)\n화단의 둘레가 $28\\text{ m}$이므로 $2(x+y)=28$, 즉 $x+y=14\\qquad\\cdots\\ ①$\n피타고라스 정리에 의하여 $x^2+y^2=10^2=100\\qquad\\cdots\\ ②$\n①에서 $y=14-x$를 ②에 대입하면\n$$x^2+(14-x)^2=2x^2-28x+196=100$$\n$x^2-14x+48=0$이므로 $(x-6)(x-8)=0$에서 $x=6$ 또는 $x=8$\n$x>y$이므로 $x=8,\\ y=6$\n따라서 화단의 가로는 $8\\text{ m}$, 세로는 $6\\text{ m}$이다."
   },
   {
     "id": 12,
@@ -334,8 +334,8 @@ window.questionBank = [
     "wide": false,
     "content": "[추론] 다음 그림과 같이 삼각형 $\\mathrm{ABC}$에서 변 $\\mathrm{BC}$ 위의 점 $\\mathrm{D}$에 대하여 $\\overline{\\mathrm{AD}}=6$, $\\overline{\\mathrm{BD}}=8$이고, $\\angle\\mathrm{BAD}=\\angle\\mathrm{BCA}$이다. $\\overline{\\mathrm{AC}}=\\overline{\\mathrm{CD}}-1$일 때, 삼각형 $\\mathrm{ABC}$의 둘레의 길이를 구하시오.\n<img src=\"q12.png\" />\n\n[단계1] 삼각형 $\\mathrm{ABC}$와 삼각형 $\\mathrm{DBA}$는 닮음임을 보이시오.\n[단계2] $\\overline{\\mathrm{CD}}=x$, $\\overline{\\mathrm{AB}}=y$라고 할 때, $x$와 $y$ 사이의 관계를 2개의 식으로 나타내시오.\n[단계3] 삼각형 $\\mathrm{ABC}$의 둘레의 길이를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "[단계1] 풀이 참조\n[단계2] $y^2=8(x+8)$, $3y=4(x-1)$\n[단계3] $39$",
+    "solution": "[단계1] 삼각형 $\\mathrm{ABC}$와 삼각형 $\\mathrm{DBA}$에서\n$\\angle\\mathrm{B}$는 공통이고, 조건에서 $\\angle\\mathrm{BCA}=\\angle\\mathrm{BAD}$이다.\n두 쌍의 대응하는 각의 크기가 각각 같으므로 $\\triangle\\mathrm{ABC}\\sim\\triangle\\mathrm{DBA}$ (AA 닮음)이다.\n\n[단계2] $\\overline{\\mathrm{CD}}=x$, $\\overline{\\mathrm{AB}}=y$라 하면 $\\overline{\\mathrm{AC}}=x-1$, $\\overline{\\mathrm{BC}}=\\overline{\\mathrm{BD}}+\\overline{\\mathrm{CD}}=8+x$이다.\n닮음비에서 $\\overline{\\mathrm{AB}}:\\overline{\\mathrm{DB}}=\\overline{\\mathrm{BC}}:\\overline{\\mathrm{BA}}=\\overline{\\mathrm{AC}}:\\overline{\\mathrm{DA}}$이므로\n$$y:8=(8+x):y=(x-1):6$$\n$y^2=8(8+x)$이므로 $y^2=8(x+8)\\qquad\\cdots\\ ①$\n$6y=8(x-1)$이므로 $3y=4(x-1)\\qquad\\cdots\\ ②$\n\n[단계3] ②에서 $y=\\frac{4(x-1)}{3}$을 ①에 대입하면\n$$\\frac{16(x-1)^2}{9}=8(x+8)$$\n$2(x-1)^2=9(x+8)$이므로 $2x^2-13x-70=0$\n$(2x+7)(x-10)=0$에서 $x=10$ ($x>0$)\n$y=\\frac{4\\times 9}{3}=12$\n따라서 $\\overline{\\mathrm{AB}}=12$, $\\overline{\\mathrm{AC}}=9$, $\\overline{\\mathrm{BC}}=18$이므로 삼각형 $\\mathrm{ABC}$의 둘레의 길이는\n$$12+9+18=39$$"
   },
   {
     "id": 13,
@@ -362,8 +362,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 연립부등식을 푸시오.\n⑴ $\\begin{cases} x+5\\ge 2x-1 \\\\ 3x+1>x+7 \\end{cases}$\n⑵ $\\begin{cases} 4x+1\\ge 3(x+1) \\\\ x+3\\le 2x-1 \\end{cases}$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $3<x\\le 6$\n⑵ $x\\ge 4$",
+    "solution": "⑴ $x+5\\ge 2x-1$에서 $6\\ge x$이므로 $x\\le 6$\n$3x+1>x+7$에서 $2x>6$이므로 $x>3$\n공통부분은 $3<x\\le 6$\n⑵ $4x+1\\ge 3(x+1)$에서 $4x+1\\ge 3x+3$이므로 $x\\ge 2$\n$x+3\\le 2x-1$에서 $4\\le x$이므로 $x\\ge 4$\n공통부분은 $x\\ge 4$"
   },
   {
     "id": 14,
@@ -390,8 +390,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 연립부등식을 푸시오.\n⑴ $\\begin{cases} x-4<4x+2 \\\\ 3x+7<-2x-3 \\end{cases}$\n⑵ $\\begin{cases} \\frac{x+1}{4}\\ge\\frac{x+2}{5} \\\\ 5(x-1)\\le 3x+1 \\end{cases}$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ 해가 없다.\n⑵ $x=3$",
+    "solution": "⑴ $x-4<4x+2$에서 $-6<3x$이므로 $x>-2$\n$3x+7<-2x-3$에서 $5x<-10$이므로 $x<-2$\n$x>-2$이면서 $x<-2$인 $x$는 없으므로 해가 없다.\n⑵ $\\frac{x+1}{4}\\ge\\frac{x+2}{5}$의 양변에 $20$을 곱하면 $5(x+1)\\ge 4(x+2)$이므로 $5x+5\\ge 4x+8$, $x\\ge 3$\n$5(x-1)\\le 3x+1$에서 $5x-5\\le 3x+1$이므로 $2x\\le 6$, $x\\le 3$\n공통부분은 $x=3$"
   },
   {
     "id": 15,
@@ -418,8 +418,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 연립부등식을 푸시오.\n⑴ $2x-5<3x-1\\le x+5$\n⑵ $x-5\\le\\frac{-3x+5}{2}\\le\\frac{x+2}{3}$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $-4<x\\le 3$\n⑵ $1\\le x\\le 3$",
+    "solution": "$A<B\\le C$ 꼴은 $A<B$와 $B\\le C$를 연립한 것이다.\n⑴ $2x-5<3x-1$에서 $-4<x$\n$3x-1\\le x+5$에서 $2x\\le 6$이므로 $x\\le 3$\n공통부분은 $-4<x\\le 3$\n⑵ $x-5\\le\\frac{-3x+5}{2}$의 양변에 $2$를 곱하면 $2x-10\\le -3x+5$이므로 $5x\\le 15$, $x\\le 3$\n$\\frac{-3x+5}{2}\\le\\frac{x+2}{3}$의 양변에 $6$을 곱하면 $3(-3x+5)\\le 2(x+2)$이므로 $-9x+15\\le 2x+4$, $11\\le 11x$, $x\\ge 1$\n공통부분은 $1\\le x\\le 3$"
   },
   {
     "id": 16,
@@ -446,8 +446,8 @@ window.questionBank = [
     "wide": false,
     "content": "연립부등식 $\\begin{cases} 1-2x\\le -x-1 \\\\ 5-4x\\ge a-x \\end{cases}$의 해가 $x=b$일 때, 두 상수 $a, b$의 값을 각각 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$a=-1,\\ b=2$",
+    "solution": "$1-2x\\le -x-1$에서 $2\\le x$이므로 $x\\ge 2$\n$5-4x\\ge a-x$에서 $-3x\\ge a-5$이므로 $x\\le\\frac{5-a}{3}$\n두 부등식의 해의 공통부분이 $x=b$ 한 값뿐이려면 $2\\le x\\le\\frac{5-a}{3}$에서 $\\frac{5-a}{3}=2$이어야 한다.\n$5-a=6$이므로 $a=-1$이고, 해는 $x=2$이므로 $b=2$"
   },
   {
     "id": 17,
@@ -502,8 +502,8 @@ window.questionBank = [
     "wide": false,
     "content": "[추론] 연립부등식 $x-2<2x-3<a$를 만족시키는 모든 정수 $x$의 값의 합이 $5$가 되도록 하는 자연수 $a$의 최댓값을 구하시오.\n\n[단계1] 주어진 연립부등식의 해를 $a$를 이용하여 나타내시오.\n[단계2] 모든 정수 $x$의 값의 합이 $5$가 되도록 하는 실수 $a$의 값의 범위를 구하시오.\n[단계3] 자연수 $a$의 최댓값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "[단계1] $1<x<\\frac{a+3}{2}$\n[단계2] $3<a\\le 5$\n[단계3] $5$",
+    "solution": "[단계1] $x-2<2x-3$에서 $1<x$\n$2x-3<a$에서 $x<\\frac{a+3}{2}$\n따라서 연립부등식의 해는 $1<x<\\frac{a+3}{2}$\n\n[단계2] 정수 $x$는 $2,\\ 3,\\ \\cdots$이고 합이 $5$가 되는 경우는 $2+3=5$뿐이므로 정수 $x$는 $2,\\ 3$이어야 한다. ($2$만이면 합이 $2$, $2,\\ 3,\\ 4$이면 합이 $9$)\n$3<\\frac{a+3}{2}\\le 4$이므로 $6<a+3\\le 8$, 즉 $3<a\\le 5$\n\n[단계3] $3<a\\le 5$를 만족시키는 자연수 $a$는 $4,\\ 5$이므로 최댓값은 $5$이다."
   },
   {
     "id": 19,
@@ -530,8 +530,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 부등식을 푸시오.\n⑴ $|x-2|\\ge 5$\n⑵ $|2x-3|<5$\n⑶ $|5-3x|>1$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $x\\le -3$ 또는 $x\\ge 7$\n⑵ $-1<x<4$\n⑶ $x<\\frac{4}{3}$ 또는 $x>2$",
+    "solution": "⑴ $|x-2|\\ge 5$에서 $x-2\\le -5$ 또는 $x-2\\ge 5$이므로 $x\\le -3$ 또는 $x\\ge 7$\n⑵ $|2x-3|<5$에서 $-5<2x-3<5$이므로 $-2<2x<8$, 즉 $-1<x<4$\n⑶ $|5-3x|>1$에서 $5-3x<-1$ 또는 $5-3x>1$\n$5-3x<-1$이면 $-3x<-6$이므로 $x>2$\n$5-3x>1$이면 $-3x>-4$이므로 $x<\\frac{4}{3}$\n따라서 $x<\\frac{4}{3}$ 또는 $x>2$"
   },
   {
     "id": 20,
@@ -558,8 +558,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 부등식을 푸시오.\n⑴ $|x+1|+|x-2|>9$\n⑵ $|2x-1|+|x-3|\\le 2$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $x<-4$ 또는 $x>5$\n⑵ 해가 없다.",
+    "solution": "절댓값 기호 안의 식이 $0$이 되는 $x$의 값을 기준으로 범위를 나눈다.\n⑴ $|x+1|+|x-2|>9$\n(i) $x<-1$일 때: $-(x+1)-(x-2)=-2x+1>9$이므로 $x<-4$ → $x<-4$\n(ii) $-1\\le x<2$일 때: $(x+1)-(x-2)=3>9$는 성립하지 않는다.\n(iii) $x\\ge 2$일 때: $(x+1)+(x-2)=2x-1>9$이므로 $x>5$ → $x>5$\n따라서 $x<-4$ 또는 $x>5$\n⑵ $|2x-1|+|x-3|\\le 2$\n(i) $x<\\frac{1}{2}$일 때: $-(2x-1)-(x-3)=-3x+4\\le 2$이므로 $x\\ge\\frac{2}{3}$인데 $x<\\frac{1}{2}$에 모순이다.\n(ii) $\\frac{1}{2}\\le x<3$일 때: $(2x-1)-(x-3)=x+2\\le 2$이므로 $x\\le 0$인데 $x\\ge\\frac{1}{2}$에 모순이다.\n(iii) $x\\ge 3$일 때: $(2x-1)+(x-3)=3x-4\\le 2$이므로 $x\\le 2$인데 $x\\ge 3$에 모순이다.\n따라서 해가 없다."
   },
   {
     "id": 21,
@@ -586,8 +586,8 @@ window.questionBank = [
     "wide": false,
     "content": "[문제해결] 걷는 속도가 초속 $1.5\\text{ m}$인 규리가 $t$초 동안 걸은 거리를 $f(t)\\text{ m}$라고 하자. $|f(t)-120|\\le 15$인 $t$의 값의 범위를 구하시오.\n\n[단계1] $f(t)$를 구하시오.\n[단계2] $|f(t)-120|\\le 15$인 $t$의 값의 범위를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "[단계1] $f(t)=1.5t$\n[단계2] $70\\le t\\le 90$",
+    "solution": "[단계1] (거리)$=$(속력)$\\times$(시간)이므로 $f(t)=1.5t$\n\n[단계2] $|f(t)-120|\\le 15$에 대입하면 $|1.5t-120|\\le 15$\n$-15\\le 1.5t-120\\le 15$이므로 $105\\le 1.5t\\le 135$\n각 변을 $1.5$로 나누면 $70\\le t\\le 90$"
   },
   {
     "id": 22,
@@ -614,8 +614,8 @@ window.questionBank = [
     "wide": false,
     "content": "[추론] 부등식 $|x-2|<a+3$을 만족시키는 정수 $x$의 개수가 $17$이 되도록 하는 자연수 $a$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$6$",
+    "solution": "$|x-2|<a+3$에서 $-(a+3)<x-2<a+3$이므로\n$$-a-1<x<a+5$$\n$a$가 자연수이므로 이 범위에 있는 정수 $x$는 $-a,\\ -a+1,\\ \\cdots,\\ a+4$이다.\n정수의 개수는 $(a+4)-(-a)+1=2a+5$이다.\n$2a+5=17$이므로 $a=6$\n(확인: $-7<x<11$에서 정수는 $-6,\\ \\cdots,\\ 10$의 $17$개)"
   },
   {
     "id": 23,
@@ -642,8 +642,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 이차부등식을 푸시오.\n⑴ $x^2-4x+3\\le 0$\n⑵ $9x^2-24x+16>0$\n⑶ $-x^2+4x-4\\ge 0$\n⑷ $-2x^2+2x-1<0$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $1\\le x\\le 3$\n⑵ $x\\ne\\frac{4}{3}$인 모든 실수\n⑶ $x=2$\n⑷ 모든 실수",
+    "solution": "⑴ $x^2-4x+3=(x-1)(x-3)\\le 0$이므로 $1\\le x\\le 3$\n⑵ $9x^2-24x+16=(3x-4)^2>0$이므로 $3x-4\\ne 0$인 모든 실수, 즉 $x\\ne\\frac{4}{3}$인 모든 실수\n⑶ 양변에 $-1$을 곱하면 $x^2-4x+4\\le 0$이므로 $(x-2)^2\\le 0$\n따라서 $x=2$\n⑷ 양변에 $-1$을 곱하면 $2x^2-2x+1>0$이다.\n$2x^2-2x+1=2\\left(x-\\frac{1}{2}\\right)^2+\\frac{1}{2}>0$이므로 모든 실수 $x$에 대하여 성립한다.\n따라서 해는 모든 실수이다."
   },
   {
     "id": 24,
@@ -670,8 +670,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 연립부등식을 푸시오.\n⑴ $\\begin{cases} 2x+1\\ge 0 \\\\ 3x^2+5x-2<0 \\end{cases}$\n⑵ $x+1<x^2-x+1<x+9$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $-\\frac{1}{2}\\le x<\\frac{1}{3}$\n⑵ $-2<x<0$ 또는 $2<x<4$",
+    "solution": "⑴ $2x+1\\ge 0$에서 $x\\ge -\\frac{1}{2}$\n$3x^2+5x-2=(3x-1)(x+2)<0$에서 $-2<x<\\frac{1}{3}$\n공통부분은 $-\\frac{1}{2}\\le x<\\frac{1}{3}$\n⑵ $x+1<x^2-x+1$에서 $x^2-2x>0$이므로 $x(x-2)>0$, 즉 $x<0$ 또는 $x>2$\n$x^2-x+1<x+9$에서 $x^2-2x-8<0$이므로 $(x-4)(x+2)<0$, 즉 $-2<x<4$\n공통부분은 $-2<x<0$ 또는 $2<x<4$"
   },
   {
     "id": 25,
@@ -698,8 +698,8 @@ window.questionBank = [
     "wide": false,
     "content": "이차부등식 $x^2+ax+b\\ge 0$의 해가 $x\\le -1$ 또는 $x\\ge 3$일 때, $a+b$의 값을 구하시오. (단, $a, b$는 상수이다.)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-5$",
+    "solution": "해가 $x\\le -1$ 또는 $x\\ge 3$이고 $x^2$의 계수가 $1$인 이차부등식은\n$$(x+1)(x-3)\\ge 0,\\qquad\\text{즉}\\qquad x^2-2x-3\\ge 0$$\n이다. $x^2+ax+b\\ge 0$과 비교하면 $a=-2,\\ b=-3$\n따라서 $a+b=-5$"
   },
   {
     "id": 26,
@@ -754,8 +754,8 @@ window.questionBank = [
     "wide": false,
     "content": "[연결] 주행 중인 자동차에서 브레이크가 작동한 순간부터 완전히 멈출 때까지 자동차가 움직인 거리를 제동 거리라고 한다. 자동차가 시속 $x\\text{ km}$로 주행 중일 때, 제동 거리를 $y\\text{ m}$라고 하면 다음이 성립한다.\n$$y=\\frac{1}{200}x^2+\\frac{1}{5}x\\text{ (단, }x>0\\text{)}$$\n제동 거리가 $70\\text{ m}$ 이하가 되도록 하는 자동차의 최대 속력을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "시속 $100\\text{ km}$",
+    "solution": "제동 거리가 $70\\text{ m}$ 이하이므로\n$$\\frac{1}{200}x^2+\\frac{1}{5}x\\le 70$$\n양변에 $200$을 곱하면 $x^2+40x\\le 14000$\n$x^2+40x-14000\\le 0$이므로 $(x+140)(x-100)\\le 0$에서 $-140\\le x\\le 100$\n$x>0$이므로 $0<x\\le 100$\n따라서 최대 속력은 시속 $100\\text{ km}$이다."
   },
   {
     "id": 28,
@@ -782,7 +782,7 @@ window.questionBank = [
     "wide": false,
     "content": "[추론] 연립부등식 $\\begin{cases} |x-1|\\le 2 \\\\ x^2-(a+4)x+4a<0 \\end{cases}$을 만족시키는 정수 $x$의 개수가 2가 되도록 하는 실수 $a$의 값의 범위를 구하시오.\n\n[단계1] 부등식 $|x-1|\\le 2$의 해를 구하시오.\n[단계2] 실수 $a$의 값의 범위를 나누어 부등식 $x^2-(a+4)x+4a<0$의 해를 구하시오.\n[단계3] 실수 $a$의 값의 범위를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "[단계1] $-1\\le x\\le 3$\n[단계2] $a<4$이면 $a<x<4$, $a=4$이면 해가 없음, $a>4$이면 $4<x<a$\n[단계3] $1\\le a<2$",
+    "solution": "[단계1] $|x-1|\\le 2$에서 $-2\\le x-1\\le 2$이므로 $-1\\le x\\le 3$\n\n[단계2] $x^2-(a+4)x+4a=(x-4)(x-a)<0$이다.\n$a<4$일 때: $a<x<4$\n$a=4$일 때: $(x-4)^2<0$이므로 해가 없다.\n$a>4$일 때: $4<x<a$\n\n[단계3] 연립부등식의 해는 $-1\\le x\\le 3$과 [단계2]의 해의 공통부분이다.\n$a\\ge 4$이면 공통부분이 없으므로 정수 $x$가 $0$개이다. 조건에 맞지 않는다.\n$a<4$일 때 공통부분은 $a<x\\le 3$ ($a\\ge -1$인 경우)이고, $a<-1$이면 $-1\\le x\\le 3$으로 정수 $x$가 $-1,\\ 0,\\ 1,\\ 2,\\ 3$의 $5$개이다.\n$a\\ge -1$일 때 정수 $x$가 $2$개이려면 $x=2,\\ 3$이어야 하므로 $1\\le a<2$\n따라서 $1\\le a<2$"
   }
 ];

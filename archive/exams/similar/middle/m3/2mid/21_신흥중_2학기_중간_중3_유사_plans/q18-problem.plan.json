@@ -1,0 +1,217 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-5657",
+              "denominator": "1000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "5657",
+              "denominator": "1000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "8"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "5657",
+            "denominator": "1000"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "AD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAD",
+        "ownerSegment": "AD",
+        "text": "4",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lCD",
+        "ownerSegment": "CD",
+        "text": "12",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rA",
+      "refs": [
+        "D",
+        "A",
+        "B"
+      ],
+      "factRole": "GIVEN"
+    },
+    {
+      "id": "rB",
+      "refs": [
+        "C",
+        "B",
+        "A"
+      ],
+      "factRole": "GIVEN"
+    }
+  ],
+  "caption": "지름이 AB인 원 O와 세 접선 AD, CD, BC를 보여 준다. AD는 4, CD는 12이다.",
+  "accessibilityDescription": "중심 O를 지나는 지름 AB가 수평으로 그려진 원이 있고, A와 B에서 각각 위로 뻗은 접선 AD, BC가 있다. 두 접선의 끝 D와 C를 잇는 접선 CD가 원에 닿아 있으며, AD 옆에 4, CD 옆에 12가 적혀 있고 A, B에 직각 표시가 있다.",
+  "newVisualInformation": [
+    "원 O와 지름 AB",
+    "접선 AD, BC, CD",
+    "AD 4, CD 12"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림에서 $\\overline{\\text{AD}}$, $\\overline{\\text{CD}}$, $\\overline{\\text{BC}}$는 지름이 $\\overline{\\text{AB}}$인 반원 $\\text{O}$의 접선이고, 두 점 $\\text{A}$, $\\text{B}$는 접점이다. $\\overline{\\text{AD}}=4$, $\\overline{\\text{CD}}=12$일 때, $\\overline{\\text{AB}}$의 길이는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

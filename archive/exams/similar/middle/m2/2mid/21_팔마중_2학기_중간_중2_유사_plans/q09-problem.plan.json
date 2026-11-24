@@ -1,0 +1,287 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "16"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "I",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cOuter",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "M"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "cInner",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "I"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [
+    "cOuter",
+    "cInner"
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "M",
+    "I",
+    "H"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "12",
+        "unit": "cm"
+      },
+      {
+        "id": "lBC",
+        "ownerSegment": "sBC",
+        "text": "16",
+        "unit": "cm"
+      },
+      {
+        "id": "lCA",
+        "ownerSegment": "sCA",
+        "text": "20",
+        "unit": "cm"
+      }
+    ],
+    "regions": [
+      {
+        "id": "between",
+        "fill": "LIGHT",
+        "pattern": "HATCH",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "loop": {
+              "start": "A",
+              "steps": [
+                {
+                  "to": "A",
+                  "arc": {
+                    "center": "M",
+                    "side": "FULL"
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "holes": [
+          {
+            "loop": {
+              "start": "H",
+              "steps": [
+                {
+                  "to": "H",
+                  "arc": {
+                    "center": "I",
+                    "side": "FULL"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rB",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 520,
+    "height": 480
+  },
+  "hiddenPointNames": [
+    "M",
+    "I",
+    "H"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "직각삼각형 ABC의 외접원과 내접원을 나타낸 그림이다. 외접원 안에서 내접원을 뺀 부분에 빗금이 쳐져 있다.",
+  "accessibilityDescription": "삼각형 ABC의 세 꼭짓점을 지나는 큰 원과 삼각형 안의 작은 원이 있고, 큰 원 안에서 작은 원을 뺀 부분에 빗금이 쳐져 있다. 세 변의 길이 12 cm, 16 cm, 20 cm가 적혀 있다.",
+  "newVisualInformation": [
+    "직각삼각형의 외접원과 내접원, 두 원 사이의 색칠 영역을 보여 준다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\angle B=90^\\circ$이고 $\\overline{AB}=12\\text{ cm}$, $\\overline{BC}=16\\text{ cm}$, $\\overline{AC}=20\\text{ cm}$인 직각삼각형 $ABC$의 외접원과 내접원을 그렸을 때, 외접원의 내부에서 내접원의 내부를 제외한 부분의 넓이는? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

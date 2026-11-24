@@ -1,0 +1,271 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "F",
+    "G",
+    "H"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "F",
+    "G",
+    "H"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sFG",
+      "refs": [
+        "F",
+        "G"
+      ]
+    },
+    {
+      "id": "sGH",
+      "refs": [
+        "G",
+        "H"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "regions": [
+      {
+        "id": "rShade",
+        "fill": "BLUE",
+        "shapes": [
+          {
+            "polygon": [
+              "F",
+              "B",
+              "C",
+              "D",
+              "H",
+              "G"
+            ]
+          }
+        ]
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dBig",
+        "from": "D",
+        "to": "C",
+        "label": "365",
+        "unit": "cm",
+        "side": "ABOVE",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dSmall",
+        "from": "A",
+        "to": "F",
+        "label": "135",
+        "unit": "cm",
+        "side": "BELOW",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 430,
+    "height": 360
+  },
+  "caption": "한 변의 길이가 365 cm인 정사각형의 왼쪽 아래 모서리에서 한 변의 길이가 135 cm인 정사각형을 잘라낸 모양이 그려져 있고, 남은 부분이 색칠되어 있다.",
+  "accessibilityDescription": "큰 정사각형의 왼쪽 아래 모서리가 오목하게 잘려 나간 도형이 있고, 점 이름은 쓰지 않았다. 남은 ㄱ자 모양 부분이 색칠되어 있다. 큰 정사각형의 위쪽 변 바깥에 365 cm, 잘라낸 부분의 아래쪽 변 바깥에 135 cm의 길이 표시가 있다.",
+  "newVisualInformation": [
+    "큰 정사각형의 한 변의 길이가 365 cm이다",
+    "잘라낸 작은 정사각형의 한 변의 길이가 135 cm이다",
+    "잘라내고 남은 부분이 색칠되어 있다"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같이 한 변의 길이가 $365\\text{ cm}$인 정사각형에서 한 변의 길이가 $135\\text{ cm}$인 정사각형을 잘라낸 도형의 넓이를 구하면? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

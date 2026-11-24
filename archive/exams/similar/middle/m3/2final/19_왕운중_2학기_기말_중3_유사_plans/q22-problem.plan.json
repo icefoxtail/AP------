@@ -1,0 +1,287 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "7",
+              "denominator": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "21"
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "21"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "25",
+            "denominator": "4"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "P",
+    "Q"
+  ],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "ab",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "ac",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "bc",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "cq",
+      "refs": [
+        "C",
+        "Q"
+      ]
+    },
+    {
+      "id": "ap",
+      "refs": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "pq",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    },
+    {
+      "id": "pc",
+      "refs": [
+        "P",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "abl",
+        "ownerSegment": "ab",
+        "text": "10",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "acl",
+        "ownerSegment": "ac",
+        "text": "10",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "bcl",
+        "ownerSegment": "bc",
+        "text": "12",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "rat",
+        "ownerSegment": "ap",
+        "text": "1:3",
+        "factRole": "GIVEN"
+      }
+    ],
+    "facts": [
+      {
+        "kind": "ON_CIRCLE",
+        "circle": "circ",
+        "points": [
+          "A",
+          "B",
+          "C",
+          "P"
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 650,
+    "height": 410
+  },
+  "caption": "AB와 AC의 길이가 같은 이등변삼각형 ABC와 그 외접원 O가 있고, 원 위의 점 P를 지나는 직선 AP가 변 BC의 연장선과 만나는 점 Q를 나타낸 그림",
+  "accessibilityDescription": "원 O에 내접하는 이등변삼각형 ABC가 있다. 변 AB와 AC에는 10, 변 BC에는 12가 적혀 있고, 원 위의 점 P를 지나 A와 이어지는 직선이 밑변 BC를 연장한 직선과 만나는 점 Q가 표시되어 있다. 선분 AP와 PQ의 길이의 비는 1 대 3으로 표시되어 있다.",
+  "newVisualInformation": [
+    "외접원 O와 내접하는 이등변삼각형 ABC",
+    "변의 길이 10과 12",
+    "원 위의 점 P와 두 연장선의 교점 Q",
+    "선분 AP와 PQ의 길이의 비 1 대 3"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 2] 오른쪽 그림의 원 $O$는 $\\overline{AB} = \\overline{AC} = 10$, $\\overline{BC} = 12$인 이등변삼각형 $ABC$의 외접원이고, 원 위의 점 $P$에 대하여 점 $Q$는 $\\overline{AP}$의 연장선과 $\\overline{BC}$의 연장선의 교점이다. $\\overline{AP} : \\overline{PQ} = 1 : 3$일 때, $\\overline{BQ}$의 길이를 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

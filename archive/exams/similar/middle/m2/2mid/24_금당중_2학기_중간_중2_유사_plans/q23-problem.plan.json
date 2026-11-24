@@ -1,0 +1,313 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "사다리꼴 ABCD에서 AD, EF, BC가 서로 평행하고 E는 AB 위, F는 DC 위에 있다. EF가 두 대각선 BD, AC와 만나는 점이 각각 P, Q이며 AE=6 cm, EB=3 cm, AD=9 cm, BC=18 cm가 표시되어 있다.",
+  "accessibilityDescription": "사다리꼴 ABCD와 평행한 세 선분 AD, EF, BC, 두 대각선 BD, AC, 그리고 EF 위의 교점 P, Q가 보인다. 변 AB는 AE와 EB로 나뉘어 6 cm와 3 cm, 변 AD는 9 cm, 변 BC는 18 cm로 표시되어 있다.",
+  "newVisualInformation": [
+    "사다리꼴 ABCD와 평행한 AD, EF, BC",
+    "대각선 BD, AC와 EF의 교점 P, Q",
+    "AE, EB, AD, BC의 길이"
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "9"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "18"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "9"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "P",
+    "Q"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "sEB",
+      "refs": [
+        "E",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCF",
+      "refs": [
+        "C",
+        "F"
+      ]
+    },
+    {
+      "id": "sFD",
+      "refs": [
+        "F",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "sBP",
+      "refs": [
+        "B",
+        "P"
+      ]
+    },
+    {
+      "id": "sPD",
+      "refs": [
+        "P",
+        "D"
+      ]
+    },
+    {
+      "id": "sAQ",
+      "refs": [
+        "A",
+        "Q"
+      ]
+    },
+    {
+      "id": "sQC",
+      "refs": [
+        "Q",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "parallels": [
+      {
+        "id": "p1",
+        "count": 1,
+        "segments": [
+          "sDA",
+          "sEF",
+          "sBC"
+        ]
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAE",
+        "ownerSegment": "sAE",
+        "text": "6",
+        "unit": "cm"
+      },
+      {
+        "id": "lEB",
+        "ownerSegment": "sEB",
+        "text": "3",
+        "unit": "cm"
+      },
+      {
+        "id": "lDA",
+        "ownerSegment": "sDA",
+        "text": "9",
+        "unit": "cm"
+      },
+      {
+        "id": "lBC",
+        "ownerSegment": "sBC",
+        "text": "18",
+        "unit": "cm"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 520,
+    "height": 360
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "사다리꼴 $ABCD$에서 $\\overline{AD} \\parallel \\overline{EF} \\parallel \\overline{BC}$이고 점 $E$는 변 $AB$ 위에, 점 $F$는 변 $DC$ 위에 있다. 선분 $EF$가 대각선 $BD$, 대각선 $AC$와 만나는 점을 각각 $P$, $Q$라 하자. $\\overline{AE} = 6\\text{ cm}$, $\\overline{EB} = 3\\text{ cm}$, $\\overline{AD} = 9\\text{ cm}$, $\\overline{BC} = 18\\text{ cm}$일 때, $\\overline{PQ}$의 길이를 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

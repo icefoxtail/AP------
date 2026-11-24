@@ -1,0 +1,207 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aAOB",
+        "refs": [
+          "A",
+          "O",
+          "B"
+        ],
+        "value": 45,
+        "label": "x",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lOA",
+        "ownerSegment": "sOA",
+        "text": "1",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rA",
+      "refs": [
+        "O",
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 360
+  },
+  "caption": "반지름이 1인 원의 오른쪽 끝점 A, 위쪽 끝점 C, 왼쪽 끝점 D가 표시되어 있다. 점 A를 지나 OA에 수직인 선분 AB와 점 O에서 B로 향하는 반직선이 있고, 각 AOB는 x로 표시되어 있다.",
+  "accessibilityDescription": "원 O 위에 오른쪽 끝점 A, 위쪽 끝점 C, 왼쪽 끝점 D가 있고, A에서 위로 수직인 선분 AB가 그려져 있다. 원점 O에서 B로 향하는 반직선이 있으며 각 AOB에는 x, 선분 OA에는 1이 적혀 있다.",
+  "newVisualInformation": [
+    "반지름 1인 원의 끝점 A, C, D",
+    "A에서 OA에 수직인 선분 AB와 각 x"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "좌표평면에서 원점 $\\text{O}(0, 0)$을 중심으로 하고 반지름의 길이가 $1$인 원의 오른쪽 끝점을 $\\text{A}(1, 0)$, 위쪽 끝점을 $\\text{C}(0, 1)$, 왼쪽 끝점을 $\\text{D}(-1, 0)$이라 하자. 점 $\\text{A}$를 지나고 $\\overline{\\text{OA}}$에 수직인 직선과, 양의 $x$축과 $x^\\circ$의 각을 이루는 반직선이 만나는 점을 $\\text{B}$라 할 때($0 < x < 90$), $\\tan x^\\circ$를 나타내는 선분은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

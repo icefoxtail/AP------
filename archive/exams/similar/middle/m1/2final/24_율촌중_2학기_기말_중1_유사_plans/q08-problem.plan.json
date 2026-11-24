@@ -1,0 +1,197 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "cH",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "L",
+    "R",
+    "D"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sLR",
+      "refs": [
+        "L",
+        "R"
+      ]
+    },
+    {
+      "id": "sOD",
+      "refs": [
+        "O",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "arcH",
+        "circle": "cH",
+        "center": "O",
+        "from": "L",
+        "to": "R",
+        "side": "CCW",
+        "highlight": false
+      }
+    ],
+    "regions": [
+      {
+        "id": "hemi",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "loop": {
+              "start": "L",
+              "steps": [
+                {
+                  "to": "R",
+                  "arc": {
+                    "center": "O",
+                    "side": "CCW"
+                  }
+                },
+                {
+                  "to": "L"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lR",
+        "ownerSegment": "sOD",
+        "text": "3",
+        "unit": "cm"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 380
+  },
+  "hiddenPointNames": [
+    "O",
+    "L",
+    "R",
+    "D"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "반지름이 주어진 반구를 나타낸 그림이다. 평평한 단면과 둥근 곡면, 반지름이 보인다.",
+  "accessibilityDescription": "반원 모양의 단면과 그 아래로 둥근 곡면이 이어진 반구가 보이고, 반지름 3센티미터가 표시되어 있다.",
+  "newVisualInformation": [
+    "반구의 반지름 3센티미터가 표시되어 있다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "반지름의 길이가 $3\\text{ cm}$인 반구의 부피는? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

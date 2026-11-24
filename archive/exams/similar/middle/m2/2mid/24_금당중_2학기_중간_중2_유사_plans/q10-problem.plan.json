@@ -1,0 +1,256 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "직사각형 ABCD에서 변 CD 위의 점 E를 잡고 BE를 접는 선으로 접었을 때 꼭짓점 C가 변 AD 위의 점 C'에 오는 모습을 나타낸 그림이다. AB는 12 cm, BC는 15 cm, DC'는 x로 표시되어 있다.",
+  "accessibilityDescription": "직사각형 ABCD의 네 변과 변 CD 위의 점 E, 변 AD 위의 점 C'가 보인다. 접는 선 BE와 접힌 뒤의 선분 BC', C'E가 그려져 있고, AB에는 12 cm, BC에는 15 cm, DC'에는 x가 적혀 있다.",
+  "newVisualInformation": [
+    "직사각형 ABCD와 변 CD 위의 점 E",
+    "접는 선 BE, 접힌 점 C'와 선분 BC', C'E",
+    "AB=12 cm, BC=15 cm, DC'=x"
+  ],
+  "pointNames": {
+    "Cp": "C'"
+  },
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "rational",
+              "numerator": "15",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Cp",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "Cp"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "sED",
+      "refs": [
+        "E",
+        "D"
+      ]
+    },
+    {
+      "id": "sACp",
+      "refs": [
+        "A",
+        "Cp"
+      ]
+    },
+    {
+      "id": "sCpD",
+      "refs": [
+        "Cp",
+        "D"
+      ]
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "sBCp",
+      "refs": [
+        "B",
+        "Cp"
+      ]
+    },
+    {
+      "id": "sCpE",
+      "refs": [
+        "Cp",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "12",
+        "unit": "cm"
+      },
+      {
+        "id": "lBC",
+        "ownerSegment": "sBC",
+        "text": "15",
+        "unit": "cm"
+      },
+      {
+        "id": "lCpD",
+        "ownerSegment": "sCpD",
+        "text": "x",
+        "unit": "cm"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rA",
+      "refs": [
+        "B",
+        "A",
+        "Cp"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 460,
+    "height": 400
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\overline{AB} = 12\\text{ cm}$, $\\overline{BC} = 15\\text{ cm}$인 직사각형 $ABCD$에서 변 $CD$ 위의 점 $E$를 잡아 $\\overline{BE}$를 접는 선으로 하여 꼭짓점 $C$가 변 $AD$ 위의 점 $C'$에 오도록 접었을 때, $\\overline{DC'}$의 길이는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

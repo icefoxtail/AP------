@@ -1,0 +1,80 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "kind": "FRUSTUM",
+      "base": {
+        "kind": "RECT",
+        "width": 8,
+        "depth": 8
+      },
+      "height": 5.656854249492381,
+      "topScale": 0.5,
+      "names": "........",
+      "points": [
+        {
+          "id": "M",
+          "at": {
+            "edge": [
+              "#b0",
+              "#b1"
+            ],
+            "t": "1/2"
+          }
+        },
+        {
+          "id": "N",
+          "at": {
+            "edge": [
+              "#t0",
+              "#t1"
+            ],
+            "t": "1/2"
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "M",
+      "to": "N",
+      "style": "SOLID"
+    }
+  ],
+  "dims": [
+    {
+      "edge": [
+        "#b0",
+        "#b1"
+      ],
+      "label": "8"
+    },
+    {
+      "edge": [
+        "#t0",
+        "#t1"
+      ],
+      "label": "4"
+    },
+    {
+      "from": "M",
+      "to": "N",
+      "label": "6"
+    }
+  ],
+  "caption": "두 밑면이 정사각형인 사각뿔대에서 윗면 한 변 4 cm, 아랫면 한 변 8 cm, 앞쪽 옆면의 높이 6 cm를 나타낸 그림이다. 앞쪽 두 밑면 모서리의 중점을 각각 M, N이라 하였다.",
+  "accessibilityDescription": "윗면과 아랫면이 정사각형인 사각뿔대가 보인다. 윗면 한 변은 4, 아랫면 한 변은 8로 표시되어 있고, 앞쪽 두 밑면 모서리의 중점 M, N을 이은 선분에 6이 표시되어 있다.",
+  "newVisualInformation": [
+    "윗면 한 변 4와 아랫면 한 변 8을 표시하였다.",
+    "앞쪽 옆면의 높이 6을 중점 M, N을 이용하여 표시하였다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림과 같이 두 밑면은 모두 정사각형이고, 옆면은 모두 합동인 사각뿔대에서 두 밑면의 한 변의 길이가 각각 $4,\\mathrm{cm}$, $8,\\mathrm{cm}$이고 옆면의 높이가 $6,\\mathrm{cm}$일 때, 이 사각뿔대의 겉넓이는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

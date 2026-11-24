@@ -1,0 +1,233 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "60"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "60"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "60"
+            },
+            {
+              "kind": "rational",
+              "numerator": "278",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "E",
+    "G",
+    "H",
+    "T"
+  ],
+  "displayLines": [],
+  "displaySegments": [
+    {
+      "id": "ground",
+      "refs": [
+        "O",
+        "G"
+      ]
+    },
+    {
+      "id": "person",
+      "refs": [
+        "O",
+        "E"
+      ]
+    },
+    {
+      "id": "tree",
+      "refs": [
+        "G",
+        "T"
+      ]
+    },
+    {
+      "id": "eyeline",
+      "refs": [
+        "E",
+        "H"
+      ]
+    },
+    {
+      "id": "sight",
+      "refs": [
+        "E",
+        "T"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aE",
+        "refs": [
+          "H",
+          "E",
+          "T"
+        ],
+        "value": 36,
+        "label": "36",
+        "factRole": "GIVEN"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dOG",
+        "from": "O",
+        "to": "G",
+        "label": "60",
+        "unit": "m",
+        "side": "BELOW",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dOE",
+        "from": "O",
+        "to": "E",
+        "label": "1.6",
+        "unit": "m",
+        "side": "LEFT",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "O",
+        "G",
+        "T"
+      ]
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "E",
+        "H",
+        "T"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "O",
+    "E",
+    "G",
+    "H",
+    "T"
+  ],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 600
+  },
+  "caption": "지면에 수직으로 선 나무와 그로부터 60 m 떨어진 곳에 선 사람이 보이고, 사람의 눈높이에서 나무 꼭대기를 올려다본 각이 36도로 표시되어 있다. 사람의 눈높이는 1.6 m이다.",
+  "accessibilityDescription": "수평인 지면, 지면에 똑바로 서 있는 나무, 사람의 눈높이를 나타내는 짧은 세로선이 보인다. 눈높이에서 나무 쪽으로 뻗은 수평선과 나무 꼭대기로 향하는 빗변이 있고, 그 두 선 사이의 각은 36도이며 지면의 거리는 60 m, 눈높이는 1.6 m로 적혀 있다.",
+  "newVisualInformation": [
+    "나무까지의 거리 60 m, 사람의 눈높이 1.6 m, 올려다본 각 36도가 주어진 그림이다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같이 똑바로 서 있는 나무로부터 $60,\\mathrm{m}$ 떨어진 지점에서 나무의 꼭대기를 올려다본 각의 크기가 $36^\\circ$이다. 사람의 눈높이가 $1.6,\\mathrm{m}$일 때, 이 나무의 높이는? (단, $\\sin 36^\\circ=0.59$, $\\cos 36^\\circ=0.81$, $\\tan 36^\\circ=0.73$으로 계산한다.)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

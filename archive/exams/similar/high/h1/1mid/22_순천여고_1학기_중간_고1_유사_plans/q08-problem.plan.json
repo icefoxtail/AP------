@@ -1,0 +1,70 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -4,
+      3,
+      -1,
+      17
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "5",
+          "-4+2*sqrt(3)",
+          "1"
+        ],
+        "domain": [
+          "-3",
+          "2"
+        ],
+        "color": "BLUE",
+        "label": "y=x^2+kx+5"
+      },
+      {
+        "id": "l",
+        "kind": "LINE",
+        "coefficients": [
+          "2",
+          "-4"
+        ],
+        "domain": [
+          "-3",
+          "2"
+        ],
+        "color": "WARM",
+        "label": "y=-4x+2"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "T",
+          "x": "-sqrt(3)",
+          "y": "2+4*sqrt(3)",
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "이차함수의 그래프와 기울기가 -4이고 y절편이 2인 직선이 한 점에서 만나는 모양을 나타낸 그림이다.",
+  "accessibilityDescription": "좌표평면에 아래로 볼록한 이차함수 그래프와 오른쪽 아래로 향하는 직선이 한 점에서 만나고, 두 그래프의 접점에 이름 없는 점이 표시되어 있다.",
+  "newVisualInformation": [
+    "이차함수 y=x^2+kx+5의 그래프와 직선 y=-4x+2가 접하는 상황을 보여 준다.",
+    "접점에는 점 표시만 있고 좌표나 k의 값은 표시하지 않는다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차함수 $y=x^2+kx+5$의 그래프와 직선 $y=-4x+2$의 그래프가 접하도록 하는 모든 실수 $k$의 값의 합은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,372 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "MIDPOINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G",
+        "op": "MIDPOINT",
+        "inputs": [
+          "C",
+          "D"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "MIDPOINT",
+        "inputs": [
+          "D",
+          "A"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "I",
+        "op": "MIDPOINT",
+        "inputs": [
+          "E",
+          "F"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "J",
+        "op": "MIDPOINT",
+        "inputs": [
+          "F",
+          "G"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "K",
+        "op": "MIDPOINT",
+        "inputs": [
+          "G",
+          "H"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L",
+        "op": "MIDPOINT",
+        "inputs": [
+          "H",
+          "E"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "J",
+    "K",
+    "L"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "sFG",
+      "refs": [
+        "F",
+        "G"
+      ]
+    },
+    {
+      "id": "sGH",
+      "refs": [
+        "G",
+        "H"
+      ]
+    },
+    {
+      "id": "sHE",
+      "refs": [
+        "H",
+        "E"
+      ]
+    },
+    {
+      "id": "sIJ",
+      "refs": [
+        "I",
+        "J"
+      ]
+    },
+    {
+      "id": "sJK",
+      "refs": [
+        "J",
+        "K"
+      ]
+    },
+    {
+      "id": "sKL",
+      "refs": [
+        "K",
+        "L"
+      ]
+    },
+    {
+      "id": "sLI",
+      "refs": [
+        "L",
+        "I"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "J",
+    "K",
+    "L"
+  ],
+  "hiddenPointStyle": "NONE",
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "6",
+        "factRole": "GIVEN"
+      }
+    ],
+    "regions": [
+      {
+        "id": "ring",
+        "fill": "MEDIUM",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "loop": {
+              "start": "E",
+              "steps": [
+                {
+                  "to": "F"
+                },
+                {
+                  "to": "G"
+                },
+                {
+                  "to": "H"
+                },
+                {
+                  "to": "E"
+                }
+              ]
+            }
+          }
+        ],
+        "holes": [
+          {
+            "loop": {
+              "start": "I",
+              "steps": [
+                {
+                  "to": "J"
+                },
+                {
+                  "to": "K"
+                },
+                {
+                  "to": "L"
+                },
+                {
+                  "to": "I"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 600
+  },
+  "caption": "한 변의 길이가 6인 바깥 정사각형 안에 각 변의 중점을 이어 만든 정사각형과, 그 정사각형의 각 변의 중점을 이어 만든 정사각형이 차례로 그려져 있다. 두 안쪽 정사각형 사이의 부분이 색칠되어 있다.",
+  "accessibilityDescription": "바깥 정사각형의 아래쪽 변에 6이 적혀 있고, 그 안에 45도 기울어진 첫 번째 중점 정사각형과 다시 그 중점을 이은 두 번째 정사각형이 있다. 첫 번째와 두 번째 정사각형 사이의 네 구간이 하나의 테두리 모양으로 색칠되어 있다.",
+  "newVisualInformation": [
+    "바깥 정사각형의 한 변의 길이 6",
+    "바깥 정사각형의 각 변의 중점을 이은 정사각형",
+    "그 정사각형의 각 변의 중점을 이은 정사각형",
+    "두 안쪽 정사각형 사이의 색칠된 영역"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같이 한 변의 길이가 $6$인 정사각형 안에 각 변의 중점을 연결한 정사각형을 연속하여 $2$개 그렸을 때, 색칠한 부분의 둘레의 길이는? [3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

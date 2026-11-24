@@ -1,0 +1,210 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "720",
+              "denominator": "169"
+            },
+            {
+              "kind": "rational",
+              "numerator": "300",
+              "denominator": "169"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "H"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAH",
+      "refs": [
+        "A",
+        "H"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lBC",
+        "ownerSegment": "sBC",
+        "text": "13",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lCA",
+        "ownerSegment": "sCA",
+        "text": "12",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      }
+    ],
+    "angles": [
+      {
+        "id": "aBAH",
+        "refs": [
+          "B",
+          "A",
+          "H"
+        ],
+        "value": 22.62,
+        "label": "x",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aCAH",
+        "refs": [
+          "C",
+          "A",
+          "H"
+        ],
+        "value": 67.38,
+        "label": "y",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 440
+  },
+  "rightAngles": [
+    {
+      "id": "rA",
+      "refs": [
+        "B",
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "rH",
+      "refs": [
+        "A",
+        "H",
+        "B"
+      ]
+    }
+  ],
+  "caption": "각 A가 직각인 삼각형 ABC에서 점 H는 변 BC에 내린 수선의 발이고, 변 BC는 13cm, 변 AC는 12cm이다. 각 BAH는 x, 각 CAH는 y로 표시되어 있다.",
+  "accessibilityDescription": "그림에는 A가 직각인 삼각형 ABC와 변 BC 위의 점 H가 보인다. AH와 BC가 직각으로 만나고, BC와 AC에 13cm, 12cm 라벨이 있으며, 점 A에서 x와 y 각이 표시되어 있다.",
+  "newVisualInformation": [
+    "각 A의 직각 표시",
+    "점 H의 직각 표시",
+    "BC의 13cm 라벨",
+    "AC의 12cm 라벨",
+    "각 BAH의 x 표시",
+    "각 CAH의 y 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같이 $\\angle\\text{A}=90^\\circ$인 직각삼각형 $\\text{ABC}$에서 $\\overline{\\text{AH}}\\perp\\overline{\\text{BC}}$이고 $\\overline{\\text{BC}}=13\\text{ cm}$, $\\overline{\\text{AC}}=12\\text{ cm}$일 때, $\\angle\\text{BAH}=x$, $\\angle\\text{CAH}=y$에 대하여 $\\sin x + \\cos y$의 값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

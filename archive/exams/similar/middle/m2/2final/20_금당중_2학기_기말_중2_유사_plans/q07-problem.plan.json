@@ -1,0 +1,284 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "18"
+            },
+            {
+              "kind": "integer",
+              "value": "9"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "18"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "18"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "G",
+    "M"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sDB",
+      "refs": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "sBM",
+      "refs": [
+        "B",
+        "M"
+      ]
+    },
+    {
+      "id": "sMC",
+      "refs": [
+        "M",
+        "C"
+      ]
+    },
+    {
+      "id": "sCE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "sEA",
+      "refs": [
+        "E",
+        "A"
+      ]
+    },
+    {
+      "id": "sAM",
+      "refs": [
+        "A",
+        "M"
+      ]
+    },
+    {
+      "id": "sDG",
+      "refs": [
+        "D",
+        "G"
+      ]
+    },
+    {
+      "id": "sGE",
+      "refs": [
+        "G",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "e1",
+        "count": 1,
+        "segments": [
+          "sBM",
+          "sMC"
+        ]
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lEA",
+        "ownerSegment": "sEA",
+        "text": "6",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lCE",
+        "ownerSegment": "sCE",
+        "text": "y",
+        "unit": "cm"
+      },
+      {
+        "id": "lGE",
+        "ownerSegment": "sGE",
+        "text": "x"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dBM",
+        "from": "B",
+        "to": "M",
+        "label": "9",
+        "side": "BELOW",
+        "style": "ARROW",
+        "factRole": "GIVEN",
+        "unit": "cm"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 360
+  },
+  "caption": "삼각형 ABC의 무게중심 G를 지나고 변 BC에 평행한 직선이 두 변 AB, AC와 만나는 점을 각각 D, E라 한다. M은 변 BC의 중점이고 BM=MC=9 cm, AE=6 cm, GE=x cm, EC=y cm이다.",
+  "accessibilityDescription": "삼각형 ABC와 변 BC의 중점 M, 무게중심 G가 보인다. G를 지나 BC에 평행한 선분 DE가 두 변 AB, AC와 만나고 BM과 MC에 같은 길이 표시가 있다. BM의 길이 9 cm, AE의 길이 6 cm, GE=x, EC=y가 표시되어 있다.",
+  "newVisualInformation": [
+    "삼각형 ABC, 변 BC의 중점 M, 무게중심 G를 보여 준다.",
+    "G를 지나 BC에 평행한 선분 DE를 보여 준다.",
+    "BM=MC=9 cm, AE=6 cm, GE=x, EC=y를 보여 준다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "삼각형 $ABC$에서 점 $G$는 무게중심이고, 점 $M$은 변 $BC$의 중점이다. 점 $G$를 지나고 변 $BC$에 평행한 직선이 두 변 $AB, AC$와 만나는 점을 각각 $D, E$라 하자. $\\overline{BM} = \\overline{MC} = 9\\text{ cm}$, $\\overline{AE} = 6\\text{ cm}$이고, $\\overline{GE} = x\\text{ cm}$, $\\overline{EC} = y\\text{ cm}$일 때, $x + y$의 값은? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

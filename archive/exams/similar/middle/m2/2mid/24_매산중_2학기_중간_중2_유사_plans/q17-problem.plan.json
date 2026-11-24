@@ -1,0 +1,325 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "20"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "22092",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "23909",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "6030",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "22499",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "35"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "50"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "51569",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "17932",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "39523",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "16878",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "sFG",
+      "refs": [
+        "F",
+        "G"
+      ]
+    },
+    {
+      "id": "sGH",
+      "refs": [
+        "G",
+        "H"
+      ]
+    },
+    {
+      "id": "sHE",
+      "refs": [
+        "H",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "20",
+        "unit": "cm"
+      },
+      {
+        "id": "lBC",
+        "ownerSegment": "sBC",
+        "text": "24",
+        "unit": "cm"
+      },
+      {
+        "id": "lFG",
+        "ownerSegment": "sFG",
+        "text": "18",
+        "unit": "cm"
+      }
+    ],
+    "angles": [
+      {
+        "id": "aA",
+        "refs": [
+          "D",
+          "A",
+          "B"
+        ],
+        "value": 75,
+        "label": "75"
+      },
+      {
+        "id": "aB",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 95,
+        "label": "95"
+      },
+      {
+        "id": "aC",
+        "refs": [
+          "B",
+          "C",
+          "D"
+        ],
+        "value": 80,
+        "label": "80"
+      },
+      {
+        "id": "aH",
+        "refs": [
+          "G",
+          "H",
+          "E"
+        ],
+        "value": 110,
+        "noLabel": true
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 360
+  },
+  "caption": "서로 닮은 두 사각형 ABCD와 EFGH를 나란히 나타낸 그림이다.",
+  "accessibilityDescription": "사각형 ABCD와 그보다 작은 사각형 EFGH가 있고, 두 사각형의 대응하는 꼭짓점과 변의 배치가 같게 그려져 있다.",
+  "newVisualInformation": [
+    "두 닮은 사각형 ABCD와 EFGH",
+    "AB=20 cm, BC=24 cm, FG=18 cm",
+    "각 A=75, 각 B=95, 각 C=80"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\square ABCD \\sim \\square EFGH$이고 $\\overline{AB}=20\\text{ cm}$, $\\overline{BC}=24\\text{ cm}$, $\\overline{FG}=18\\text{ cm}$, $\\angle A=75^\\circ$, $\\angle B=95^\\circ$, $\\angle C=80^\\circ$일 때, $\\overline{EF}$의 길이와 $\\angle H$의 크기를 차례로 구하면? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

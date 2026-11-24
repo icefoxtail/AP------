@@ -1,0 +1,280 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "P"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-6"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "P"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-6"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "qr",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "Q",
+          "R"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "pr",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "P",
+          "R"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "pq",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "P",
+          "Q"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "P",
+          "qr"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "Q",
+          "pr"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "N",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "R",
+          "pq"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "pl",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "P",
+          "L"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "qm",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "Q",
+          "M"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "rn",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "R",
+          "N"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "pl",
+          "qm"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "P",
+    "Q",
+    "R",
+    "L",
+    "M",
+    "N",
+    "H"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "PQ",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    },
+    {
+      "id": "QR",
+      "refs": [
+        "Q",
+        "R"
+      ]
+    },
+    {
+      "id": "RP",
+      "refs": [
+        "R",
+        "P"
+      ]
+    },
+    {
+      "id": "PL",
+      "refs": [
+        "P",
+        "L"
+      ]
+    },
+    {
+      "id": "QM",
+      "refs": [
+        "Q",
+        "M"
+      ]
+    },
+    {
+      "id": "RN",
+      "refs": [
+        "R",
+        "N"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": []
+  },
+  "rightAngles": [
+    {
+      "id": "rL",
+      "refs": [
+        "P",
+        "L",
+        "Q"
+      ]
+    },
+    {
+      "id": "rM",
+      "refs": [
+        "Q",
+        "M",
+        "R"
+      ]
+    },
+    {
+      "id": "rN",
+      "refs": [
+        "R",
+        "N",
+        "P"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 600
+  },
+  "caption": "예각삼각형 PQR의 각 꼭짓점에서 마주 보는 변에 내린 수선의 발 L, M, N과 세 수선의 교점 H가 그려져 있다. 각 수선의 발에는 직각 표시가 있다.",
+  "accessibilityDescription": "예각삼각형 PQR과 세 꼭짓점에서 대변에 내린 수선 PL, QM, RN이 보인다. 수선의 발 L, M, N과 세 수선이 만나는 점 H가 표시되어 있고, 세 발에 직각 표시가 있다.",
+  "newVisualInformation": [
+    "삼각형 PQR의 세 수선과 수선의 발 L, M, N, 교점 H를 표시한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 5] 예각삼각형 $PQR$의 세 꼭짓점 $P, Q, R$에서 마주 보는 변 $QR, RP, PQ$에 내린 수선의 발을 각각 $L, M, N$이라 하고, 세 수선의 교점을 $H$라 하자. $7$개의 점 $P, Q, R, L, M, N, H$ 중에서 $4$개의 점을 선택하여 만들 수 있는 사각형 중 원에 내접하는 사각형을 모두 찾고, 그 이유를 서술하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

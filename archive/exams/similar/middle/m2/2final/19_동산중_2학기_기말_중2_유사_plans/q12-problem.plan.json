@@ -1,0 +1,154 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "P",
+    "Q",
+    "R"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sPQ",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    },
+    {
+      "id": "sPR",
+      "refs": [
+        "P",
+        "R"
+      ]
+    },
+    {
+      "id": "sQR",
+      "refs": [
+        "Q",
+        "R"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lPQ",
+        "ownerSegment": "sPQ",
+        "text": "8",
+        "unit": "cm"
+      },
+      {
+        "id": "lPR",
+        "ownerSegment": "sPR",
+        "text": "x",
+        "unit": "cm"
+      },
+      {
+        "id": "lQR",
+        "ownerSegment": "sQR",
+        "text": "17",
+        "unit": "cm"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "Q",
+        "P",
+        "R"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 320
+  },
+  "hiddenPointNames": [
+    "P",
+    "Q",
+    "R"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "빗변의 길이가 17 센티미터이고 한 직각변의 길이가 8 센티미터인 직각삼각형을 나타낸 그림이다.",
+  "accessibilityDescription": "직각삼각형의 한 직각변에 8 센티미터, 다른 직각변에 x, 빗변에 17 센티미터가 표시되어 있고 직각 표시가 있다.",
+  "newVisualInformation": [
+    "직각삼각형의 두 직각변과 빗변에 각각 8 센티미터, x, 17 센티미터를 표시한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "빗변의 길이가 $17\\text{ cm}$이고 한 직각변의 길이가 $8\\text{ cm}$인 직각삼각형에서 나머지 한 직각변의 길이 $x$의 값은? [3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

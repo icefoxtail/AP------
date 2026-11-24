@@ -1,0 +1,298 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "K1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-80"
+            },
+            {
+              "kind": "integer",
+              "value": "130"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "K2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "180"
+            },
+            {
+              "kind": "integer",
+              "value": "130"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "K3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-80"
+            },
+            {
+              "kind": "integer",
+              "value": "40"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "K4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "180"
+            },
+            {
+              "kind": "integer",
+              "value": "40"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "K5",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "40"
+            },
+            {
+              "kind": "integer",
+              "value": "130"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "K6",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "40"
+            },
+            {
+              "kind": "integer",
+              "value": "40"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "c1a",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-64"
+            },
+            {
+              "kind": "integer",
+              "value": "80"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "c1b",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "80"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "c2a",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "60"
+            },
+            {
+              "kind": "integer",
+              "value": "80"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "c2b",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "160"
+            },
+            {
+              "kind": "integer",
+              "value": "80"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "K1",
+    "K2",
+    "K3",
+    "K4",
+    "K5",
+    "K6",
+    "c1a",
+    "c1b",
+    "c2a",
+    "c2b"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sTop",
+      "refs": [
+        "K1",
+        "K2"
+      ]
+    },
+    {
+      "id": "sBot",
+      "refs": [
+        "K3",
+        "K4"
+      ]
+    },
+    {
+      "id": "sDiv",
+      "refs": [
+        "K5",
+        "K6"
+      ]
+    },
+    {
+      "id": "sC1",
+      "refs": [
+        "c1a",
+        "c1b"
+      ]
+    },
+    {
+      "id": "sC2",
+      "refs": [
+        "c2a",
+        "c2b"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "K1",
+    "K2",
+    "K3",
+    "K4",
+    "K5",
+    "K6",
+    "c1a",
+    "c1b",
+    "c2a",
+    "c2b"
+  ],
+  "hiddenPointStyle": "NONE",
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lC1",
+        "ownerSegment": "sC1",
+        "text": "3.05"
+      },
+      {
+        "id": "lC2",
+        "ownerSegment": "sC2",
+        "text": "1.746"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 320
+  },
+  "caption": "제곱근표의 한 부분으로, 수 3.05와 그에 대응하는 제곱근 값 1.746이 나란히 적힌 표이다.",
+  "accessibilityDescription": "가로선 두 개와 가운데 세로선으로 두 칸이 만들어진 표이며, 왼쪽 칸에 3.05, 오른쪽 칸에 1.746이 적혀 있다.",
+  "newVisualInformation": [
+    "제곱근표에 적힌 수 3.05",
+    "3.05에 대응하는 제곱근 값 1.746"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "제곱근표에서 $\\sqrt{3.05} = 1.746$일 때, 제곱근의 성질을 이용하여 구한 $\\sqrt{305}$의 값은? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

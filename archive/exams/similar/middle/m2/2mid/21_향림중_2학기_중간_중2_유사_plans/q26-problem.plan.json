@@ -1,0 +1,231 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D0",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "D0"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "12"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "92"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "D0"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "12"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "242"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "c",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "12"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [
+    "c"
+  ],
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sOC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aOAB",
+        "refs": [
+          "O",
+          "A",
+          "B"
+        ],
+        "value": 44,
+        "label": "44",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aOCA",
+        "refs": [
+          "O",
+          "C",
+          "A"
+        ],
+        "value": 31,
+        "label": "31",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "r",
+        "ownerSegment": "sOA",
+        "text": "12",
+        "unit": "cm"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 460,
+    "height": 420
+  },
+  "caption": "삼각형 ABC의 외심 O와 외접원을 나타낸 그림이다. 각 OAB는 44, 각 OCA는 31이고 OA의 길이는 12 cm로 주어져 있다.",
+  "accessibilityDescription": "삼각형 ABC와 세 꼭짓점을 지나는 원, 중심 O, O에서 세 꼭짓점으로 그은 선분이 보인다. 꼭짓점 A와 C에 각각 44와 31의 각 표시가 있고 OA 옆에 12 cm가 적혀 있다.",
+  "newVisualInformation": [
+    "외심 O, 외접원, 두 주어진 각과 반지름 AO의 길이를 보여 준다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 4] 점 $O$가 $\\triangle ABC$의 외심이다. $\\angle OAB=44^\\circ$, $\\angle OCA=31^\\circ$이고 $\\overline{AO}=12\\text{ cm}$일 때, 부채꼴 $BOC$의 호 $BC$의 길이를 구하는 과정과 답을 쓰시오. [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

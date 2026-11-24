@@ -26,8 +26,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음에서 육십분법으로 나타낸 각은 호도법으로, 호도법으로 나타낸 각은 육십분법으로 나타내시오.\n⑴ $45^\\circ$\n⑵ $\\frac{5}{6}\\pi$\n⑶ $240^\\circ$\n⑷ $\\frac{7}{4}\\pi$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $\\frac{\\pi}{4}$\n⑵ $150^\\circ$\n⑶ $\\frac{4}{3}\\pi$\n⑷ $315^\\circ$",
+    "solution": "$1^\\circ=\\frac{\\pi}{180}$ (라디안), $1\\text{ 라디안}=\\frac{180^\\circ}{\\pi}$를 이용한다.\n⑴ $45^\\circ=45\\times\\frac{\\pi}{180}=\\frac{\\pi}{4}$\n⑵ $\\frac{5}{6}\\pi=\\frac{5}{6}\\times 180^\\circ=150^\\circ$\n⑶ $240^\\circ=240\\times\\frac{\\pi}{180}=\\frac{4}{3}\\pi$\n⑷ $\\frac{7}{4}\\pi=\\frac{7}{4}\\times 180^\\circ=315^\\circ$"
   },
   {
     "id": 2,
@@ -54,8 +54,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 삼각함수의 값을 구하시오.\n⑴ $\\sin\\frac{3}{4}\\pi$\n⑵ $\\cos 210^\\circ$\n⑶ $\\tan\\left(-\\frac{\\pi}{3}\\right)$\n⑷ $\\sin 300^\\circ$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $\\frac{\\sqrt{2}}{2}$\n⑵ $-\\frac{\\sqrt{3}}{2}$\n⑶ $-\\sqrt{3}$\n⑷ $-\\frac{\\sqrt{3}}{2}$",
+    "solution": "⑴ $\\sin\\frac{3}{4}\\pi=\\sin\\left(\\pi-\\frac{\\pi}{4}\\right)=\\sin\\frac{\\pi}{4}=\\frac{\\sqrt{2}}{2}$\n⑵ $\\cos 210^\\circ=\\cos(180^\\circ+30^\\circ)=-\\cos 30^\\circ=-\\frac{\\sqrt{3}}{2}$\n⑶ $\\tan\\left(-\\frac{\\pi}{3}\\right)=-\\tan\\frac{\\pi}{3}=-\\sqrt{3}$\n⑷ $\\sin 300^\\circ=\\sin(360^\\circ-60^\\circ)=-\\sin 60^\\circ=-\\frac{\\sqrt{3}}{2}$"
   },
   {
     "id": 3,
@@ -82,8 +82,8 @@ window.questionBank = [
     "wide": false,
     "content": "원점 $\\mathrm{O}$와 점 $\\mathrm{P}(-1, \\sqrt{3})$을 지나는 동경 $\\mathrm{OP}$가 나타내는 각의 크기를 $\\theta$라고 할 때, $\\sin\\theta, \\cos\\theta, \\tan\\theta$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\sin\\theta=\\frac{\\sqrt{3}}{2},\\ \\cos\\theta=-\\frac{1}{2},\\ \\tan\\theta=-\\sqrt{3}$",
+    "solution": "$\\overline{\\mathrm{OP}}=r=\\sqrt{(-1)^2+(\\sqrt{3})^2}=2$이므로\n$$\\sin\\theta=\\frac{y}{r}=\\frac{\\sqrt{3}}{2},\\quad\\cos\\theta=\\frac{x}{r}=-\\frac{1}{2},\\quad\\tan\\theta=\\frac{y}{x}=\\frac{\\sqrt{3}}{-1}=-\\sqrt{3}$$"
   },
   {
     "id": 4,
@@ -110,8 +110,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 방정식과 부등식을 푸시오. (단, $0\\le x < 2\\pi$)\n⑴ $\\sin x = -\\frac{\\sqrt{3}}{2}$\n⑵ $\\tan x < \\frac{\\sqrt{3}}{3}$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $x=\\frac{4}{3}\\pi$ 또는 $x=\\frac{5}{3}\\pi$\n⑵ $0\\le x<\\frac{\\pi}{6}$ 또는 $\\frac{\\pi}{2}<x<\\frac{7}{6}\\pi$ 또는 $\\frac{3}{2}\\pi<x<2\\pi$",
+    "solution": "⑴ $\\sin x=-\\frac{\\sqrt{3}}{2}$이면 $x$는 제3, 제4사분면의 각이고 기준각이 $\\frac{\\pi}{3}$이다. 따라서 $x=\\pi+\\frac{\\pi}{3}=\\frac{4}{3}\\pi$ 또는 $x=2\\pi-\\frac{\\pi}{3}=\\frac{5}{3}\\pi$\n⑵ $y=\\tan x$의 그래프와 직선 $y=\\frac{\\sqrt{3}}{3}$의 교점의 $x$좌표는 $\\frac{\\pi}{6},\\ \\frac{7}{6}\\pi$이고, $x=\\frac{\\pi}{2},\\ \\frac{3}{2}\\pi$에서 $\\tan x$가 정의되지 않는다. 그래프가 직선보다 아래쪽에 있는 구간은\n$$0\\le x<\\frac{\\pi}{6},\\quad\\frac{\\pi}{2}<x<\\frac{7}{6}\\pi,\\quad\\frac{3}{2}\\pi<x<2\\pi$$"
   },
   {
     "id": 5,
@@ -138,8 +138,8 @@ window.questionBank = [
     "wide": false,
     "content": "$\\frac{\\pi}{2} < \\theta < \\pi$이고 각 $\\theta$와 각 $6\\theta$를 나타내는 동경이 일치할 때, 각 $\\theta$의 크기를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{4}{5}\\pi$",
+    "solution": "두 동경이 일치하므로 $6\\theta=\\theta+2n\\pi$ ($n$은 정수)이다. $5\\theta=2n\\pi$에서 $\\theta=\\frac{2n\\pi}{5}$\n$\\frac{\\pi}{2}<\\theta<\\pi$이므로 $\\frac{1}{2}<\\frac{2n}{5}<1$에서 $\\frac{5}{4}<n<\\frac{5}{2}$이고 $n$은 정수이므로 $n=2$\n따라서 $\\theta=\\frac{4}{5}\\pi$"
   },
   {
     "id": 6,
@@ -166,8 +166,8 @@ window.questionBank = [
     "wide": false,
     "content": "둘레의 길이가 $18$인 부채꼴 중에서 넓이가 최대인 부채꼴의 반지름의 길이를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{9}{2}$",
+    "solution": "부채꼴의 반지름의 길이를 $r$, 호의 길이를 $l$이라 하면 둘레의 길이가 $18$이므로 $2r+l=18$에서 $l=18-2r$ ($0<r<9$)이다.\n부채꼴의 넓이는\n$$S=\\frac{1}{2}rl=\\frac{1}{2}r(18-2r)=r(9-r)=-\\left(r-\\frac{9}{2}\\right)^2+\\frac{81}{4}$$\n따라서 $r=\\frac{9}{2}$일 때 넓이가 최대 $\\frac{81}{4}$이다. 구하는 반지름의 길이는 $\\frac{9}{2}$이다."
   },
   {
     "id": 7,
@@ -194,8 +194,8 @@ window.questionBank = [
     "wide": false,
     "content": "$\\sin\\theta\\tan\\theta > 0, \\cos\\theta\\tan\\theta < 0$을 동시에 만족시키는 각 $\\theta$는 제몇 사분면의 각인지 말하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "제4사분면",
+    "solution": "$\\sin\\theta\\tan\\theta=\\frac{\\sin^2\\theta}{\\cos\\theta}>0$에서 $\\cos\\theta>0$이므로 $\\theta$는 제1사분면 또는 제4사분면의 각이다.\n$\\cos\\theta\\tan\\theta=\\sin\\theta<0$이므로 $\\theta$는 제3사분면 또는 제4사분면의 각이다.\n두 조건을 동시에 만족시키는 각 $\\theta$는 제4사분면의 각이다."
   },
   {
     "id": 8,
@@ -222,8 +222,8 @@ window.questionBank = [
     "wide": false,
     "content": "각 $\\theta$가 제2사분면의 각이고 $\\cos\\theta = -\\frac{4}{5}$일 때, $\\sin\\theta - \\tan\\theta$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{27}{20}$",
+    "solution": "$\\theta$가 제2사분면의 각이므로 $\\sin\\theta>0$이다.\n$$\\sin\\theta=\\sqrt{1-\\cos^2\\theta}=\\sqrt{1-\\frac{16}{25}}=\\frac{3}{5}$$\n$$\\tan\\theta=\\frac{\\sin\\theta}{\\cos\\theta}=\\frac{\\frac{3}{5}}{-\\frac{4}{5}}=-\\frac{3}{4}$$\n$$\\sin\\theta-\\tan\\theta=\\frac{3}{5}+\\frac{3}{4}=\\frac{12+15}{20}=\\frac{27}{20}$$"
   },
   {
     "id": 9,
@@ -250,8 +250,8 @@ window.questionBank = [
     "wide": false,
     "content": "$\\sin\\theta + \\cos\\theta = \\frac{1}{2}$일 때, $\\tan\\theta + \\frac{\\cos\\theta}{\\sin\\theta}$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-\\frac{8}{3}$",
+    "solution": "$\\sin\\theta+\\cos\\theta=\\frac{1}{2}$의 양변을 제곱하면\n$$\\sin^2\\theta+2\\sin\\theta\\cos\\theta+\\cos^2\\theta=1+2\\sin\\theta\\cos\\theta=\\frac{1}{4}$$\n이므로 $\\sin\\theta\\cos\\theta=-\\frac{3}{8}$이다.\n$$\\tan\\theta+\\frac{\\cos\\theta}{\\sin\\theta}=\\frac{\\sin\\theta}{\\cos\\theta}+\\frac{\\cos\\theta}{\\sin\\theta}=\\frac{\\sin^2\\theta+\\cos^2\\theta}{\\sin\\theta\\cos\\theta}=\\frac{1}{-\\frac{3}{8}}=-\\frac{8}{3}$$"
   },
   {
     "id": 10,
@@ -278,8 +278,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 함수의 주기와 최댓값, 최솟값을 구하시오.\n⑴ $y = 2\\sin\\left(\\frac{x}{2} - \\frac{\\pi}{3}\\right) - 1$\n⑵ $y = \\frac{1}{2}\\cos 2\\left(x - \\frac{\\pi}{6}\\right) + 2$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ 주기 $4\\pi$, 최댓값 $1$, 최솟값 $-3$\n⑵ 주기 $\\pi$, 최댓값 $\\frac{5}{2}$, 최솟값 $\\frac{3}{2}$",
+    "solution": "⑴ $y=2\\sin\\left(\\frac{x}{2}-\\frac{\\pi}{3}\\right)-1$에서 주기는 $\\frac{2\\pi}{\\frac{1}{2}}=4\\pi$이고, $-1\\le\\sin\\left(\\frac{x}{2}-\\frac{\\pi}{3}\\right)\\le 1$이므로 $-2-1\\le y\\le 2-1$에서 최댓값 $1$, 최솟값 $-3$이다.\n⑵ $y=\\frac{1}{2}\\cos 2\\left(x-\\frac{\\pi}{6}\\right)+2$에서 주기는 $\\frac{2\\pi}{2}=\\pi$이고, $-1\\le\\cos 2\\left(x-\\frac{\\pi}{6}\\right)\\le 1$이므로 $-\\frac{1}{2}+2\\le y\\le\\frac{1}{2}+2$에서 최댓값 $\\frac{5}{2}$, 최솟값 $\\frac{3}{2}$이다."
   },
   {
     "id": 11,
@@ -306,8 +306,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 식을 간단히 하시오.\n$$\\sin(\\pi + x)\\cos\\left(\\frac{\\pi}{2} - x\\right) + \\sin\\left(\\frac{\\pi}{2} + x\\right)\\cos(\\pi - x)$$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-1$",
+    "solution": "$\\sin(\\pi+x)=-\\sin x$, $\\cos\\left(\\frac{\\pi}{2}-x\\right)=\\sin x$, $\\sin\\left(\\frac{\\pi}{2}+x\\right)=\\cos x$, $\\cos(\\pi-x)=-\\cos x$이므로\n$$\\sin(\\pi+x)\\cos\\left(\\frac{\\pi}{2}-x\\right)+\\sin\\left(\\frac{\\pi}{2}+x\\right)\\cos(\\pi-x)=-\\sin^2x-\\cos^2x=-1$$"
   },
   {
     "id": 12,
@@ -334,8 +334,8 @@ window.questionBank = [
     "wide": false,
     "content": "$\\pi < x < 2\\pi$에서 $3\\cos^2 x + 8\\cos x - 3 = 0$을 만족시키는 $x$에 대하여 $\\cos\\left(\\frac{\\pi}{2} - x\\right)$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-\\frac{2\\sqrt{2}}{3}$",
+    "solution": "$\\cos x=t$로 놓으면 $3t^2+8t-3=(3t-1)(t+3)=0$이므로 $t=\\frac{1}{3}$ 또는 $t=-3$\n$-1\\le\\cos x\\le 1$이므로 $\\cos x=\\frac{1}{3}$이다.\n$\\cos\\left(\\frac{\\pi}{2}-x\\right)=\\sin x$이고 $\\pi<x<2\\pi$에서 $\\sin x<0$이므로\n$$\\sin x=-\\sqrt{1-\\cos^2x}=-\\sqrt{1-\\frac{1}{9}}=-\\frac{2\\sqrt{2}}{3}$$"
   },
   {
     "id": 13,
@@ -362,8 +362,8 @@ window.questionBank = [
     "wide": false,
     "content": "함수 $y = a\\cos bx + c$의 그래프가 다음 그림과 같을 때, 실수 $a, b, c$의 값을 구하시오. (단, $a>0, b>0$)\n<img src=\"q13.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$a=2,\\ b=3,\\ c=-1$",
+    "solution": "그래프에서 최댓값이 $1$, 최솟값이 $-3$이다. $a>0$이므로 $a+c=1$, $-a+c=-3$이고 두 식을 풀면 $a=2,\\ c=-1$이다.\n최댓값을 갖는 $x$가 $0$과 $\\frac{2}{3}\\pi$이므로 주기는 $\\frac{2}{3}\\pi$이다. $\\frac{2\\pi}{b}=\\frac{2}{3}\\pi$에서 $b=3$\n따라서 $a=2,\\ b=3,\\ c=-1$ (최솟값은 $x=\\frac{\\pi}{3}$에서 $-3$으로 그림과 일치한다.)"
   },
   {
     "id": 14,
@@ -390,8 +390,8 @@ window.questionBank = [
     "wide": false,
     "content": "$0\\le x < 2$일 때, 방정식 $\\sin 2\\pi x = \\frac{3}{5}$의 모든 해의 합을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$3$",
+    "solution": "$0\\le x<2$에서 $t=2\\pi x$로 놓으면 $0\\le t<4\\pi$이고 방정식은 $\\sin t=\\frac{3}{5}$이다.\n$\\sin\\alpha=\\frac{3}{5}$ ($0<\\alpha<\\frac{\\pi}{2}$)라 하면 $0\\le t<4\\pi$에서 해는\n$$t=\\alpha,\\ \\pi-\\alpha,\\ 2\\pi+\\alpha,\\ 3\\pi-\\alpha$$\n이고 합은 $\\alpha+(\\pi-\\alpha)+(2\\pi+\\alpha)+(3\\pi-\\alpha)=6\\pi$이다.\n$x=\\frac{t}{2\\pi}$이므로 $x$의 모든 해의 합은 $\\frac{6\\pi}{2\\pi}=3$"
   },
   {
     "id": 15,
@@ -418,8 +418,8 @@ window.questionBank = [
     "wide": false,
     "content": "모든 실수 $x$에 대하여 부등식 $\\sin^2 x - 6\\sin x + 6k - 4 > 0$이 항상 성립하도록 하는 실수 $k$의 값의 범위를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$k>\\frac{3}{2}$",
+    "solution": "$\\sin x=t$로 놓으면 $-1\\le t\\le 1$이고 $f(t)=t^2-6t+6k-4=(t-3)^2+6k-13$이다.\n$-1\\le t\\le 1$에서 $f(t)$는 감소하므로 $t=1$에서 최솟값 $f(1)=1-6+6k-4=6k-9$를 가진다.\n모든 $t$에 대하여 $f(t)>0$이려면 $6k-9>0$이므로 $k>\\frac{3}{2}$"
   },
   {
     "id": 16,
@@ -446,8 +446,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 그림과 같이 $0\\le x\\le 6$에서 함수 $y = \\frac{5}{2}\\sin\\frac{\\pi}{2}x$의 그래프와 직선 $y = \\frac{5\\sqrt{2}}{4}$가 만나는 네 점을 $x$좌표가 작은 것부터 차례로 $\\mathrm{A, B, C, D}$라고 할 때, 삼각형 $\\mathrm{BOC}$의 넓이를 구하시오. (단, $\\mathrm{O}$는 원점)\n<img src=\"q16.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{15\\sqrt{2}}{8}$",
+    "solution": "$y=\\frac{5}{2}\\sin\\frac{\\pi}{2}x$의 주기는 $\\frac{2\\pi}{\\frac{\\pi}{2}}=4$이다.\n$\\frac{5}{2}\\sin\\frac{\\pi}{2}x=\\frac{5\\sqrt{2}}{4}$에서 $\\sin\\frac{\\pi}{2}x=\\frac{\\sqrt{2}}{2}$이고 $0\\le x\\le 6$에서 $\\frac{\\pi}{2}x=\\frac{\\pi}{4},\\ \\frac{3}{4}\\pi,\\ \\frac{9}{4}\\pi,\\ \\frac{11}{4}\\pi$이므로\n$$x=\\frac{1}{2},\\ \\frac{3}{2},\\ \\frac{9}{2},\\ \\frac{11}{2}$$\n따라서 $\\mathrm{B}\\left(\\frac{3}{2},\\ \\frac{5\\sqrt{2}}{4}\\right)$, $\\mathrm{C}\\left(\\frac{9}{2},\\ \\frac{5\\sqrt{2}}{4}\\right)$이다. $\\overline{\\mathrm{BC}}=3$이고 원점에서 직선 $\\mathrm{BC}$까지의 거리는 $\\frac{5\\sqrt{2}}{4}$이므로\n$$\\frac{1}{2}\\times 3\\times\\frac{5\\sqrt{2}}{4}=\\frac{15\\sqrt{2}}{8}$$"
   },
   {
     "id": 17,
@@ -474,8 +474,8 @@ window.questionBank = [
     "wide": false,
     "content": "함수 $y = \\tan\\pi x \\;(0 < x < 2)$의 그래프와 직선 $y = -\\frac{5}{2}x + k$가 서로 다른 세 점에서 만나도록 하는 실수 $k$의 값의 범위를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$0<k<5$",
+    "solution": "$y=\\tan\\pi x$의 주기는 $1$이고 $0<x<2$에서 점근선은 $x=\\frac{1}{2},\\ x=\\frac{3}{2}$이다. 그래프는 세 구간 $\\left(0,\\frac{1}{2}\\right)$, $\\left(\\frac{1}{2},\\frac{3}{2}\\right)$, $\\left(\\frac{3}{2},2\\right)$에서 각각 증가하고, 직선 $y=-\\frac{5}{2}x+k$는 감소한다. 따라서 각 구간에서 교점은 많아야 한 개이다.\n$h(x)=\\tan\\pi x+\\frac{5}{2}x-k$로 놓으면 각 구간에서 $h$는 증가한다.\n$\\left(\\frac{1}{2},\\frac{3}{2}\\right)$: $h$가 $-\\infty$에서 $\\infty$까지 변하므로 항상 교점이 한 개 있다.\n$\\left(0,\\frac{1}{2}\\right)$: $x\\to 0$일 때 $h\\to -k$, $x\\to\\frac{1}{2}$일 때 $h\\to\\infty$이므로 $-k<0$, 즉 $k>0$이어야 교점이 있다.\n$\\left(\\frac{3}{2},2\\right)$: $x\\to\\frac{3}{2}$일 때 $h\\to-\\infty$, $x\\to 2$일 때 $h\\to 5-k$이므로 $5-k>0$, 즉 $k<5$이어야 교점이 있다.\n세 점에서 만나려면 $0<k<5$"
   },
   {
     "id": 18,
@@ -502,7 +502,7 @@ window.questionBank = [
     "wide": false,
     "content": "$\\frac{\\pi}{4} < x < \\frac{\\pi}{2}$인 모든 실수 $x$에 대하여 다음 보기 중 옳은 것을 모두 고르시오.\n\n[보기]\nㄱ. $\\sin x > \\cos x$\nㄴ. $4^{\\sin x} > 2^{\\cos x}$\nㄷ. $\\log_{\\frac{1}{2}}\\sin x < \\log_{\\frac{1}{2}}\\tan x$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "ㄱ, ㄴ",
+    "solution": "$\\frac{\\pi}{4}<x<\\frac{\\pi}{2}$에서 $0<\\cos x<\\frac{\\sqrt{2}}{2}<\\sin x<1$이다.\nㄱ. $\\sin x>\\cos x$ (참)\nㄴ. $4^{\\sin x}=2^{2\\sin x}$이고 $2\\sin x>\\sin x>\\cos x$이므로 밑 $2>1$에서 $2^{2\\sin x}>2^{\\cos x}$ (참)\nㄷ. $\\tan x=\\frac{\\sin x}{\\cos x}>\\sin x$ ($0<\\cos x<1$)이다. 밑 $\\frac{1}{2}$인 로그함수는 감소하므로 $\\log_{\\frac{1}{2}}\\sin x>\\log_{\\frac{1}{2}}\\tan x$이다. (거짓)\n따라서 옳은 것은 ㄱ, ㄴ이다."
   }
 ];

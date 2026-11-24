@@ -1,0 +1,266 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "사다리꼴 ABCD에서 변 AD, MN, BC가 서로 평행하고, 점 M이 변 AB를 2 대 1로 나누는 그림이다.",
+  "accessibilityDescription": "사다리꼴 ABCD의 윗변 AD에 6 cm, 아랫변 BC에 15 cm가 적혀 있다. 변 AB 위의 점 M과 변 DC 위의 점 N을 잇는 선분 MN이 두 밑변과 평행하게 그려져 있으며, 선분 AM과 MB에 2x와 x가 적혀 있다. 점 M, N의 이름이 표시되어 있다.",
+  "newVisualInformation": [
+    "윗변 AD 6 cm와 아랫변 BC 15 cm",
+    "AD, MN, BC가 서로 평행",
+    "AM과 MB의 길이 비 2 대 1"
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-9"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "15"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-9"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-6"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "dc",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "D",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ad",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "mn",
+        "op": "PARALLEL_THROUGH",
+        "inputs": [
+          "M",
+          "ad"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "N",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "mn",
+          "dc"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "M",
+    "N"
+  ],
+  "displaySegments": [
+    {
+      "id": "AD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "AM",
+      "refs": [
+        "A",
+        "M"
+      ]
+    },
+    {
+      "id": "MB",
+      "refs": [
+        "M",
+        "B"
+      ]
+    },
+    {
+      "id": "DN",
+      "refs": [
+        "D",
+        "N"
+      ]
+    },
+    {
+      "id": "NC",
+      "refs": [
+        "N",
+        "C"
+      ]
+    },
+    {
+      "id": "MN",
+      "refs": [
+        "M",
+        "N"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "planeMarks": {
+    "parallels": [
+      {
+        "id": "p1",
+        "count": 1,
+        "segments": [
+          "AD",
+          "MN",
+          "BC"
+        ]
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "vAD",
+        "ownerSegment": "AD",
+        "text": "6",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vBC",
+        "ownerSegment": "BC",
+        "text": "15",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vAM",
+        "ownerSegment": "AM",
+        "text": "2x",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vMB",
+        "ownerSegment": "MB",
+        "text": "x",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "사다리꼴 $ABCD$에서 $\\overline{AD} \\parallel \\overline{MN} \\parallel \\overline{BC}$이다. $\\overline{AD} = 6\\text{ cm}$, $\\overline{BC} = 15\\text{ cm}$이고, $\\overline{AM} : \\overline{MB} = 2 : 1$일 때, 선분 $\\overline{MN}$의 길이는? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "axisVariable": false,
+    "constructions": [
+      {
+        "id": "c1",
+        "center": "B",
+        "radius": {
+          "value": "sqrt(2)"
+        },
+        "arc": {
+          "side": "RIGHT"
+        },
+        "hits": [
+          {
+            "id": "P",
+            "branch": "RIGHT"
+          }
+        ],
+        "source": {
+          "grid": true,
+          "from": [
+            2,
+            0
+          ],
+          "to": [
+            1,
+            1
+          ],
+          "toName": "D"
+        }
+      }
+    ],
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "points": [
+          {
+            "id": "B",
+            "value": "2"
+          },
+          {
+            "id": "P",
+            "value": "2+sqrt(2)",
+            "showValue": false
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "정사각형과 대각선의 길이"
+  },
+  "caption": "수직선 위에 한 변의 길이가 1인 정사각형 ABCD를 놓고, 대각선 BD의 길이를 B에서 오른쪽으로 옮겨 점 P를 정한 그림이다. 점 B가 나타내는 수와 점 P의 위치가 표시되어 있다.",
+  "accessibilityDescription": "수직선 위의 점 B는 2를 나타내고, 그 위쪽 모눈에 한 변의 길이가 1인 정사각형 ABCD가 그려져 있다. B를 중심으로 한 호가 수직선의 오른쪽에서 만나는 점이 P로 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "수직선 위에 한 변의 길이가 $1$인 정사각형 $\\mathrm{ABCD}$가 있다. 꼭짓점 $\\mathrm{B}$에 대응하는 수가 $2$이고 대각선 $\\overline{\\mathrm{BD}}$와 선분 $\\overline{\\mathrm{BP}}$의 길이가 같을 때, 점 $\\mathrm{B}$의 오른쪽 수직선 위에서 점 $\\mathrm{P}$에 대응하는 수는? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "BD=BP, B=2",
+      "mappedTo": [
+        "numberLine.constructions",
+        "numberLine.rows"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "정사각형의 대각선 길이를 B의 오른쪽으로 옮긴 점 P의 위치를 보인다"
+  ]
+}

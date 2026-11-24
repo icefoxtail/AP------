@@ -1,0 +1,291 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "integer",
+              "value": "-12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "-5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "17"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "L1",
+    "L2"
+  ],
+  "displaySegments": [
+    {
+      "id": "sL1L2",
+      "refs": [
+        "L1",
+        "L2"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sCE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "e1",
+        "count": 1,
+        "segments": [
+          "sAB",
+          "sAC"
+        ],
+        "color": "ROSE"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lBD",
+        "ownerSegment": "sBD",
+        "text": "a",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lCE",
+        "ownerSegment": "sCE",
+        "text": "b",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "tl",
+        "at": [
+          -9.5,
+          0.8
+        ],
+        "text": "l"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 520,
+    "height": 360
+  },
+  "rightAngles": [
+    {
+      "id": "rA",
+      "refs": [
+        "B",
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "rD",
+      "refs": [
+        "B",
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "rE",
+      "refs": [
+        "C",
+        "E",
+        "A"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "L1",
+    "L2"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "직선 l 위에 A, D, E가 있고, B와 C에서 l에 내린 수선의 발이 각각 D, E인 직각이등변삼각형 ABC를 보여 준다. BD와 CE의 길이는 a cm, b cm로 주어져 있다.",
+  "accessibilityDescription": "수평 직선 l 위에 왼쪽부터 D, A, E가 놓여 있다. B는 D의 아래, C는 E의 아래에 있고, AB와 AC가 같은 길이임을 나타내는 눈금이 있다. BD는 a cm, CE는 b cm로 표시되어 있으며 A와 D와 E에 직각 표시가 있다.",
+  "newVisualInformation": [
+    "직선 l과 그 위의 A, D, E",
+    "B와 C에서 l에 내린 수선 BD, CE",
+    "AB와 AC의 같은 길이 표시",
+    "BD=a cm, CE=b cm",
+    "A, D, E의 직각 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\angle A=90^\\circ$, $\\overline{AB}=\\overline{AC}$인 직각이등변삼각형 $ABC$에서 꼭짓점 $A$를 지나고 변 $BC$와 만나지 않는 직선 $l$을 긋고, 두 점 $B$, $C$에서 직선 $l$에 내린 수선의 발을 각각 $D$, $E$라 하자. $\\overline{BD}=a\\text{ cm}$, $\\overline{CE}=b\\text{ cm}$일 때, 다음 보기 중 옳은 것만으로 짝지어진 것은? [4점]\n\n- ㄱ. $\\angle DBA=\\angle ABC$  \n- ㄴ. $\\angle DAB=\\angle ECA$  \n- ㄷ. $\\overline{DB}+\\overline{EC}=\\overline{DE}$  \n- ㄹ. $\\triangle DBA \\equiv \\triangle EAC$  \n- ㅁ. $\\square DBCE$의 넓이는 $\\dfrac{(a+b)^2}{2}\\text{ cm}^2$이다.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

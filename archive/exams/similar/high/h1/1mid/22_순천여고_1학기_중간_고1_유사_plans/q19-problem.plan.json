@@ -1,0 +1,63 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise_polynomial",
+    "domain": [
+      -3,
+      5
+    ],
+    "viewport": [
+      -4,
+      6,
+      -1,
+      18
+    ],
+    "pieces": [
+      {
+        "domain": [
+          -3,
+          5
+        ],
+        "coefficients": [
+          "0",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "referenceLines": [
+      {
+        "slope": "2",
+        "intercept": "8",
+        "label": "y=2x+8"
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "4",
+        "y": "16",
+        "label": "A(4, 16)"
+      },
+      {
+        "id": "B",
+        "x": "-2",
+        "y": "4",
+        "label": "B(-2, 4)"
+      },
+      {
+        "id": "C",
+        "x": "4",
+        "y": "0",
+        "label": "C"
+      },
+      {
+        "id": "D",
+        "x": "-2",
+        "y": "0",
+        "label": "D"
+      }
+    ]
+  },
+  "caption": "이차함수 y=x^2과 직선 y=2x+8의 교점 A, B 및 수선의 발 C, D"
+}

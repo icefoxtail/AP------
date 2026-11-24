@@ -1,0 +1,260 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "삼각형 ABC의 세 변의 중점 D, E, F를 이어 삼각형 DEF를 그렸다. AB는 10 cm, BC는 14 cm, CA는 12 cm이다.",
+  "accessibilityDescription": "삼각형 ABC의 각 변의 중점 D, E, F가 표시되어 있고, 세 중점을 이은 삼각형 DEF가 안쪽에 그려져 있다. AB는 10 cm, BC는 14 cm, CA는 12 cm이다.",
+  "newVisualInformation": [
+    "D, E, F는 각각 AB, BC, CA의 중점이다.",
+    "AB는 10 cm, BC는 14 cm, CA는 12 cm이다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "12",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1175755",
+              "denominator": "100000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "MIDPOINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "MIDPOINT",
+        "inputs": [
+          "C",
+          "A"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sDB",
+      "refs": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "sEC",
+      "refs": [
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "sCF",
+      "refs": [
+        "C",
+        "F"
+      ]
+    },
+    {
+      "id": "sFA",
+      "refs": [
+        "F",
+        "A"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "sFD",
+      "refs": [
+        "F",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "e1",
+        "count": 1,
+        "segments": [
+          "sAD",
+          "sDB"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "id": "e2",
+        "count": 2,
+        "segments": [
+          "sBE",
+          "sEC"
+        ],
+        "color": "WARM"
+      },
+      {
+        "id": "e3",
+        "count": 3,
+        "segments": [
+          "sCF",
+          "sFA"
+        ],
+        "color": "GREEN"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dAB",
+        "from": "A",
+        "to": "B",
+        "label": "10",
+        "unit": "cm",
+        "side": "BELOW",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dAC",
+        "from": "A",
+        "to": "C",
+        "label": "12",
+        "unit": "cm",
+        "side": "LEFT",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dBC",
+        "from": "B",
+        "to": "C",
+        "label": "14",
+        "unit": "cm",
+        "side": "RIGHT",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 440
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\triangle ABC$에서 세 변 $AB$, $BC$, $CA$의 중점을 각각 $D$, $E$, $F$라 하자. $\\overline{AB}=10\\text{ cm}$, $\\overline{BC}=14\\text{ cm}$, $\\overline{CA}=12\\text{ cm}$일 때, $\\triangle DEF$의 둘레의 길이는? [3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

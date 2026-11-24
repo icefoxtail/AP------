@@ -1,0 +1,200 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "사다리꼴 ABCD에서 변 AD와 BC가 평행하고 각 B가 직각이며, AD 5, AB 8, CD 10과 구해야 할 변 BC의 길이 x가 표시되어 있다.",
+  "accessibilityDescription": "사다리꼴 ABCD의 네 변과 평행 표시, 직각 표시가 있고, 변 위에 5, 8, 10, x가 적혀 있으며 꼭짓점 A, B, C, D의 이름이 보인다.",
+  "newVisualInformation": [
+    "사다리꼴 ABCD의 평행 표시와 직각 표시",
+    "변 AD 5, AB 8, CD 10, BC x"
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "11"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAD",
+        "ownerSegment": "sDA",
+        "text": "5",
+        "unit": "cm"
+      },
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "8",
+        "unit": "cm"
+      },
+      {
+        "id": "lCD",
+        "ownerSegment": "sCD",
+        "text": "10",
+        "unit": "cm"
+      },
+      {
+        "id": "lBC",
+        "ownerSegment": "sBC",
+        "text": "x",
+        "unit": "cm"
+      }
+    ],
+    "parallels": [
+      {
+        "id": "p1",
+        "count": 1,
+        "segments": [
+          "sDA",
+          "sBC"
+        ]
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "B",
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 440,
+    "height": 380
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "사다리꼴 $ABCD$에서 $\\overline{AD} \\parallel \\overline{BC}$이고 $ ngle B = 90^\\circ$이다. $\\overline{AD} = 5$, $\\overline{AB} = 8$, $\\overline{CD} = 10$일 때, 밑변 $BC$의 길이 $x$는? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

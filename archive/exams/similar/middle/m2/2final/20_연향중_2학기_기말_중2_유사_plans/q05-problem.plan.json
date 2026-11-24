@@ -1,0 +1,186 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "11"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "9"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "65"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "11"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "l1",
+        "ownerSegment": "sDA",
+        "text": "11"
+      },
+      {
+        "id": "l2",
+        "ownerSegment": "sBC",
+        "text": "x+3"
+      }
+    ],
+    "angles": [
+      {
+        "id": "a",
+        "refs": [
+          "B",
+          "A",
+          "D"
+        ],
+        "value": 115,
+        "arcs": 1,
+        "label": "115",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "b",
+        "refs": [
+          "C",
+          "B",
+          "A"
+        ],
+        "value": 65,
+        "arcs": 1,
+        "label": "y",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 384,
+    "height": 360
+  },
+  "caption": "평행사변형 ABCD에서 변 AD의 길이 11, 변 BC의 길이 x+3, 꼭짓점 A의 안쪽 각 115도, 꼭짓점 B의 안쪽 각 y가 표시된 그림이다.",
+  "accessibilityDescription": "평행사변형 ABCD의 네 변이 그려져 있고, 변 AD 옆에 11, 변 BC 옆에 x+3이 적혀 있다. 꼭짓점 A의 안쪽 각에 115가, 꼭짓점 B의 안쪽 각에 y가 호와 함께 붙어 있다.",
+  "newVisualInformation": [
+    "변 AD의 길이 11과 변 BC의 길이 x+3이 마주 보는 변에 표시됨",
+    "꼭짓점 A의 각 115도와 꼭짓점 B의 각 y가 이웃한 각으로 표시됨"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "평행사변형 $ABCD$에서 $\\overline{AD} = 11$, $\\overline{BC} = x + 3$, $\\angle A = 115^\\circ$, $\\angle B = y^\\circ$일 때, $x + y$의 값은? [3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

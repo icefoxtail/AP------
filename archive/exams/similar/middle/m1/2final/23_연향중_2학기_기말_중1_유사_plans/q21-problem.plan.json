@@ -1,0 +1,410 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "V0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "V1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "16"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "V2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "16"
+            },
+            {
+              "kind": "integer",
+              "value": "16"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "V3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "16"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M8",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "I",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cBig",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "V0"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "16"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cL",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "L"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "8"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cB",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "M8"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "8"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "V0",
+    "V1",
+    "V2",
+    "V3",
+    "L",
+    "M8",
+    "I"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sV0V1",
+      "refs": [
+        "V0",
+        "V1"
+      ]
+    },
+    {
+      "id": "sV1V2",
+      "refs": [
+        "V1",
+        "V2"
+      ]
+    },
+    {
+      "id": "sV2V3",
+      "refs": [
+        "V2",
+        "V3"
+      ]
+    },
+    {
+      "id": "sV3V0",
+      "refs": [
+        "V3",
+        "V0"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dLeft",
+        "from": "V0",
+        "to": "V3",
+        "label": "16",
+        "unit": "cm",
+        "side": "LEFT",
+        "style": "ARROW",
+        "value": "16",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dBottom",
+        "from": "V0",
+        "to": "V1",
+        "label": "16",
+        "unit": "cm",
+        "side": "BELOW",
+        "style": "ARROW",
+        "value": "16",
+        "factRole": "GIVEN"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "qBig",
+        "circle": "cBig",
+        "center": "V0",
+        "from": "V3",
+        "to": "V1",
+        "side": "CW"
+      },
+      {
+        "id": "semiL",
+        "circle": "cL",
+        "center": "L",
+        "from": "V0",
+        "to": "V3",
+        "side": "CCW"
+      },
+      {
+        "id": "semiB",
+        "circle": "cB",
+        "center": "M8",
+        "from": "V0",
+        "to": "V1",
+        "side": "CW"
+      }
+    ],
+    "regions": [
+      {
+        "id": "lens",
+        "fill": "WARM",
+        "shapes": [
+          {
+            "loop": {
+              "start": "V0",
+              "steps": [
+                {
+                  "to": "I",
+                  "arc": {
+                    "center": "L",
+                    "side": "CCW"
+                  }
+                },
+                {
+                  "to": "V0",
+                  "arc": {
+                    "center": "M8",
+                    "side": "CCW"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "id": "upper",
+        "fill": "WARM",
+        "shapes": [
+          {
+            "loop": {
+              "start": "V3",
+              "steps": [
+                {
+                  "to": "V1",
+                  "arc": {
+                    "center": "V0",
+                    "side": "CW"
+                  }
+                },
+                {
+                  "to": "I",
+                  "arc": {
+                    "center": "M8",
+                    "side": "CCW"
+                  }
+                },
+                {
+                  "to": "V3",
+                  "arc": {
+                    "center": "L",
+                    "side": "CCW"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "V3",
+        "V0",
+        "V1"
+      ]
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "V0",
+        "V1",
+        "V2"
+      ]
+    },
+    {
+      "id": "r2",
+      "refs": [
+        "V1",
+        "V2",
+        "V3"
+      ]
+    },
+    {
+      "id": "r3",
+      "refs": [
+        "V2",
+        "V3",
+        "V0"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 580
+  },
+  "hiddenPointNames": [
+    "V0",
+    "V1",
+    "V2",
+    "V3",
+    "L",
+    "M8",
+    "I"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "한 변의 길이가 16센티미터인 정사각형 안에 한 꼭짓점을 중심으로 하는 사분원과 두 변을 지름으로 하는 두 반원을 그린 그림이다. 두 반원이 만나 생기는 아래쪽 렌즈 모양과 그 위쪽 곡선 영역이 색칠되어 있다.",
+  "accessibilityDescription": "한 변의 길이가 16센티미터인 정사각형이 있고, 왼쪽 아래 꼭짓점을 중심으로 반지름 16센티미터인 사분원 호가 있다. 왼쪽 변과 아래쪽 변을 각각 지름으로 하는 반지름 8센티미터의 반원 두 개가 사분원 안에서 만나며, 아래쪽 렌즈 모양과 위쪽 곡선 영역에 색이 칠해져 있다. 왼쪽 변과 아래쪽 변에 16센티미터 표시가 있다.",
+  "newVisualInformation": [
+    "정사각형 한 변 16센티미터",
+    "사분원 반지름 16센티미터",
+    "두 반원 반지름 8센티미터",
+    "아래쪽 렌즈 모양과 위쪽 곡선 영역 색칠"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "한 변의 길이가 $16,\\mathrm{cm}$인 정사각형 내부에서, 한 꼭짓점을 중심으로 하는 반지름 $16,\\mathrm{cm}$인 사분원의 호와, 두 변을 각각 지름으로 하는 반지름 $8,\\mathrm{cm}$인 두 반원의 호가 만난다. 사분원 안쪽에서 두 반원에 의해 생기는 아래쪽 렌즈 모양과 위쪽 곡선 영역이 색칠되어 있을 때, 색칠한 부분의 둘레의 길이를 $x$, 넓이를 $y$라고 할 때 $x+y$의 값을 구하고 풀이 과정을 서술하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

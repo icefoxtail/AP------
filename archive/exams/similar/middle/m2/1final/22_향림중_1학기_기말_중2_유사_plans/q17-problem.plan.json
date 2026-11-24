@@ -1,0 +1,75 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-3",
+          "-1/2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -8,
+      2
+    ],
+    "viewport": [
+      -8,
+      2,
+      -5,
+      1
+    ],
+    "requiredPoints": [],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "-6",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "curveX": "0",
+          "coordinates": true
+        },
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        }
+      ],
+      "polygons": [
+        {
+          "id": "T",
+          "points": [
+            "A",
+            "O",
+            "B"
+          ],
+          "fill": "LIGHT"
+        }
+      ]
+    }
+  },
+  "caption": "직선이 x축과 만나는 점 A, y축과 만나는 점 B, 그리고 원점 O로 이루어진 삼각형 ABO를 나타낸다.",
+  "accessibilityDescription": "오른쪽 아래로 향하는 직선이 x축의 왼쪽 부분과 y축의 아래쪽 부분에서 만나고, 그 두 점과 원점을 이어 만든 삼각형이 색칠되어 있다.",
+  "newVisualInformation": [
+    "직선의 두 절편 A, B와 원점 O를 꼭짓점으로 하는 삼각형"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차함수 $y = -\\dfrac{1}{2}x - 3$의 그래프가 $x$축, $y$축과 만나는 점을 각각 $A$, $B$라 하고 원점을 $O$라 할 때, $\\triangle ABO$의 넓이는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

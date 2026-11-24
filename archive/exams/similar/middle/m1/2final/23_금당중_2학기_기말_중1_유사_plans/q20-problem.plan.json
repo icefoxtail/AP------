@@ -1,0 +1,303 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "-4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "S",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "W",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "O",
+    "P",
+    "Q",
+    "R",
+    "S",
+    "U",
+    "W"
+  ],
+  "displaySegments": [
+    {
+      "id": "sPO",
+      "refs": [
+        "P",
+        "O"
+      ]
+    },
+    {
+      "id": "sOS",
+      "refs": [
+        "O",
+        "S"
+      ]
+    },
+    {
+      "id": "sSR",
+      "refs": [
+        "S",
+        "R"
+      ]
+    },
+    {
+      "id": "sRP",
+      "refs": [
+        "R",
+        "P"
+      ]
+    },
+    {
+      "id": "l",
+      "refs": [
+        "W",
+        "U"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "arcPQ",
+        "circle": "circ",
+        "center": "O",
+        "from": "P",
+        "to": "Q",
+        "side": "MINOR",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "tPO",
+        "ownerSegment": "sPO",
+        "text": "5",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "tOS",
+        "ownerSegment": "sOS",
+        "text": "4",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "tSR",
+        "ownerSegment": "sSR",
+        "text": "2",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "tRP",
+        "ownerSegment": "sRP",
+        "text": "5",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "tl",
+        "ownerSegment": "l",
+        "text": "l"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rO",
+      "refs": [
+        "P",
+        "O",
+        "S"
+      ]
+    },
+    {
+      "id": "rS",
+      "refs": [
+        "O",
+        "S",
+        "R"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 480
+  },
+  "hiddenPointNames": [
+    "O",
+    "P",
+    "Q",
+    "R",
+    "S",
+    "U",
+    "W"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "직선 l을 회전축으로 하는 평면도형으로, 위쪽은 반지름 5cm인 사분원, 아래쪽은 윗변 5cm, 아랫변 2cm, 높이 4cm, 빗변 5cm인 사다리꼴이다.",
+  "accessibilityDescription": "오른쪽에 세로로 놓인 직선 l이 회전축이고, 그 왼쪽에 사분원이 위로 볼록하게 붙은 사다리꼴이 그려져 있다. 사분원의 반지름과 사다리꼴의 윗변에 5cm, 아랫변에 2cm, 높이에 4cm, 빗변에 5cm가 표시되어 있다.",
+  "newVisualInformation": [
+    "회전축 l",
+    "사분원의 반지름 5cm",
+    "사다리꼴의 윗변 5cm, 아랫변 2cm, 높이 4cm, 빗변 5cm"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림과 같이 반지름의 길이가 $5,\\mathrm{cm}$인 사분원 아래에 윗변이 $5,\\mathrm{cm}$, 아랫변이 $2,\\mathrm{cm}$, 높이가 $4,\\mathrm{cm}$, 빗변이 $5,\\mathrm{cm}$인 사다리꼴을 붙인 평면도형을 직선 $l$을 회전축으로 하여 $1$회전 시킬 때 생기는 회전체의 겉넓이는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

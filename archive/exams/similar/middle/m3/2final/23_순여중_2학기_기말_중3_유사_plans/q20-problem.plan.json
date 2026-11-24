@@ -1,0 +1,78 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "SCATTER",
+    "points": [
+      {
+        "x": 40,
+        "y": 55
+      },
+      {
+        "x": 60,
+        "y": 75
+      },
+      {
+        "x": 70,
+        "y": 80
+      },
+      {
+        "x": 55,
+        "y": 55
+      },
+      {
+        "x": 85,
+        "y": 85
+      },
+      {
+        "x": 60,
+        "y": 45
+      },
+      {
+        "x": 75,
+        "y": 65
+      },
+      {
+        "x": 80,
+        "y": 70
+      },
+      {
+        "x": 90,
+        "y": 80
+      },
+      {
+        "x": 95,
+        "y": 85
+      }
+    ],
+    "xRange": [
+      "30",
+      "100"
+    ],
+    "yRange": [
+      "40",
+      "100"
+    ],
+    "xStep": "10",
+    "yStep": "10",
+    "xTitle": "수학 점수",
+    "yTitle": "과학 점수",
+    "grid": true,
+    "equalUnits": true
+  },
+  "caption": "학생 10명의 수학 점수와 과학 점수를 나타낸 산점도",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림은 수학·과학 경시대회에 응시한 학생 10명의 수학 점수($x$)와 과학 점수($y$)에 대한 산점도이다. 수학 점수보다 과학 점수가 높은 학생은 전체의 몇 $%$인가?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "학생 10명의 수학 점수와 과학 점수",
+      "mappedTo": "chart.points"
+    }
+  ],
+  "newVisualInformation": [
+    "가로축은 수학 점수, 세로축은 과학 점수이고 점 10개가 흩어져 있다."
+  ]
+}

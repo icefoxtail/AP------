@@ -1,0 +1,337 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "90"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "270"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "45"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "135"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "225"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "315"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "sphere",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "T",
+    "B",
+    "U",
+    "L",
+    "D",
+    "R"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "sphere"
+  ],
+  "displaySegments": [
+    {
+      "id": "TU",
+      "refs": [
+        "T",
+        "U"
+      ]
+    },
+    {
+      "id": "TL",
+      "refs": [
+        "T",
+        "L"
+      ]
+    },
+    {
+      "id": "TD",
+      "refs": [
+        "T",
+        "D"
+      ]
+    },
+    {
+      "id": "TR",
+      "refs": [
+        "T",
+        "R"
+      ]
+    },
+    {
+      "id": "BU",
+      "refs": [
+        "B",
+        "U"
+      ]
+    },
+    {
+      "id": "BL",
+      "refs": [
+        "B",
+        "L"
+      ]
+    },
+    {
+      "id": "BD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "BR",
+      "refs": [
+        "B",
+        "R"
+      ]
+    },
+    {
+      "id": "UL",
+      "refs": [
+        "U",
+        "L"
+      ]
+    },
+    {
+      "id": "LD",
+      "refs": [
+        "L",
+        "D"
+      ]
+    },
+    {
+      "id": "DR",
+      "refs": [
+        "D",
+        "R"
+      ]
+    },
+    {
+      "id": "RU",
+      "refs": [
+        "R",
+        "U"
+      ]
+    },
+    {
+      "id": "TB",
+      "refs": [
+        "T",
+        "B"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "diameter",
+        "ownerSegment": "TB",
+        "text": "8",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "O",
+    "T",
+    "B",
+    "U",
+    "L",
+    "D",
+    "R"
+  ],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {
+    "width": 520,
+    "height": 520
+  },
+  "caption": "지름의 길이가 8cm인 구의 내부에 정팔면체를 꼭 맞게 넣은 모습을 나타낸 그림이다. 구는 큰 원으로, 정팔면체는 그 안의 선분들로 그려져 있다.",
+  "accessibilityDescription": "큰 원으로 나타낸 구 안에 위아래 꼭짓점과 가운데 사각형의 꼭짓점을 잇는 정팔면체가 들어 있고, 위아래 꼭짓점을 잇는 지름에 8cm가 표시되어 있다.",
+  "newVisualInformation": [
+    "구를 나타내는 원과 그 안의 정팔면체",
+    "구의 지름 8cm"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "지름의 길이가 $8,\\mathrm{cm}$인 구의 내부에 정팔면체를 꼭 맞게 집어넣을 때, 이 정팔면체의 부피를 구하면?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

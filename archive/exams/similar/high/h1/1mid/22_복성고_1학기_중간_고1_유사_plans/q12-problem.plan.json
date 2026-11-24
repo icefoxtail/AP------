@@ -1,0 +1,37 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise_polynomial",
+    "domain": [
+      -6,
+      6
+    ],
+    "viewport": [
+      -6,
+      6,
+      -5,
+      5
+    ],
+    "pieces": [
+      {
+        "domain": [
+          -6,
+          6
+        ],
+        "coefficients": [
+          "1/4",
+          "-5/12"
+        ]
+      }
+    ],
+    "referenceLines": [
+      {
+        "slope": "-5/12",
+        "intercept": "-23/12",
+        "label": "5x+12y+23=0"
+      }
+    ],
+    "requiredPoints": []
+  },
+  "caption": "평행한 두 직선 5x+12y-3=0과 5x+12y+23=0 사이의 거리 2"
+}

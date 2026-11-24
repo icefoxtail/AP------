@@ -1,0 +1,276 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ob",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "A",
+          "ob"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "c",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "OD",
+      "refs": [
+        "O",
+        "D"
+      ]
+    },
+    {
+      "id": "OB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "OE",
+      "refs": [
+        "O",
+        "E"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "BD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "arc1",
+        "circle": "c",
+        "center": "O",
+        "from": "B",
+        "to": "E",
+        "side": "CCW",
+        "highlight": false
+      }
+    ],
+    "angles": [
+      {
+        "id": "aO",
+        "refs": [
+          "B",
+          "O",
+          "A"
+        ],
+        "value": 60,
+        "label": "60",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lOB",
+        "ownerSegment": "OB",
+        "text": "4",
+        "unit": "cm"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rC",
+      "refs": [
+        "A",
+        "C",
+        "O"
+      ]
+    },
+    {
+      "id": "rB",
+      "refs": [
+        "D",
+        "B",
+        "O"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 440,
+    "height": 420
+  },
+  "hiddenPointNames": [
+    "E"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "점 O를 중심으로 하고 반지름의 길이가 4인 사분원에서 ∠AOB=60도이다. 점 A에서 OB에 내린 수선의 발이 C이고, 점 B에서 OB에 수직인 선이 OA의 연장선과 만나는 점이 D이며 사각형 ACBD가 그려져 있다.",
+  "accessibilityDescription": "사분원 O 안에 중심각 60도의 반지름 OA가 있고, A에서 OB에 내린 수선 AC와 B에서 세운 수직선 BD가 그려져 사각형 ACBD가 만들어진다. C와 B에 직각 표시가 있고 OB 옆에 4가 적혀 있다.",
+  "newVisualInformation": [
+    "반지름 4인 사분원과 중심각 60도",
+    "사각형 ACBD와 두 직각 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림과 같이 점 $\\mathrm{O}$를 중심으로 하고 반지름의 길이가 $4$인 사분원에서 $\\angle\\mathrm{AOB} = 60^\\circ$이다. $\\overline{\\mathrm{AC}} \\perp \\overline{\\mathrm{OB}}$, $\\overline{\\mathrm{DB}} \\perp \\overline{\\mathrm{OB}}$일 때, 사각형 $\\mathrm{ACBD}$의 넓이는? (단, 세 점 $\\mathrm{O, A, D}$는 한 직선 위에 있다.)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

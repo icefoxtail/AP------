@@ -1,0 +1,81 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A"
+  ],
+  "displayLines": [],
+  "displaySegments": [],
+  "displayCircles": [],
+  "coordinateLabels": [
+    "A"
+  ],
+  "planeMarks": {},
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 520
+  },
+  "caption": "좌표평면에 원점 O와 점 A(2, 3)을 표시한 그림이다.",
+  "accessibilityDescription": "가로축과 세로축이 있고 원점 O와 오른쪽 위의 점 A가 좌표와 함께 표시되어 있다.",
+  "newVisualInformation": [
+    "원점 O",
+    "점 A의 좌표 (2, 3)"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "좌표평면 위에서 상하 또는 좌우 방향으로 한 번에 $1$만큼씩 움직이는 점 $\\mathrm{P}$가 있다. 이때 원점을 출발한 점 $\\mathrm{P}$가 $7$번 움직여서 최종 위치가 점 $\\mathrm{A}(2,\\ 3)$이 되는 경우의 수는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,214 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "960",
+              "denominator": "289"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1800",
+              "denominator": "289"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "H"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAH",
+      "refs": [
+        "A",
+        "H"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aX",
+        "refs": [
+          "B",
+          "A",
+          "H"
+        ],
+        "value": 61.93,
+        "label": "x",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aY",
+        "refs": [
+          "H",
+          "A",
+          "C"
+        ],
+        "value": 28.07,
+        "label": "y",
+        "factRole": "GIVEN"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dAB",
+        "from": "A",
+        "to": "B",
+        "label": "15",
+        "side": "BELOW",
+        "style": "BAR",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dCA",
+        "from": "A",
+        "to": "C",
+        "label": "8",
+        "side": "LEFT",
+        "style": "BAR",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 420
+  },
+  "rightAngles": [
+    {
+      "id": "rA",
+      "refs": [
+        "B",
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "rH",
+      "refs": [
+        "A",
+        "H",
+        "B"
+      ]
+    }
+  ],
+  "caption": "직각삼각형 ABC에서 꼭짓점 A에서 빗변 BC에 수선 AH를 내린 그림이다. 두 직각변의 길이와 각 x, y가 표시되어 있다.",
+  "accessibilityDescription": "직각삼각형 ABC의 빗변 BC 위에 점 H가 있고, A에서 H까지 수선이 그려져 있다. 변 AB와 AC의 길이, 각 BAH를 x, 각 CAH를 y로 나타낸 표시가 보인다.",
+  "newVisualInformation": [
+    "직각삼각형 ABC",
+    "빗변에 내린 수선 AH",
+    "직각 표시 두 개",
+    "변 AB 15",
+    "변 AC 8",
+    "각 x, y"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림과 같이 $\\angle A = 90^\\circ$인 직각삼각형 $ABC$에서 $\\overline{AB} = 15$, $\\overline{AC} = 8$이고 $\\overline{AH} \\perp \\overline{BC}$일 때, $\\sin x + \\sin y$의 값은? (단, $\\angle BAH = x$, $\\angle CAH = y$)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

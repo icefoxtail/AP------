@@ -142,3 +142,21 @@ test('a pending reviewed parent correction cannot browse under a stale unverifie
   assert.equal(UnitCore.resolveRpmParent(conflict, 'm1').status, 'AMBIGUOUS');
   assert.equal(UnitCore.resolveRpmParent(conflict, 'm1').reason, 'RPM_EVIDENCE_PATH_CONFLICT');
 });
+test('a row still bound to the same stem and choices keeps its approved parent when only the whole-source fingerprint moved', () => {
+  // 해설·정답·그림이 바뀌면 전체 지문(sourceFingerprint)이 달라진다. 결속은 발문+보기뿐이므로 그것만으로 승인된 중단원을 버리지 않는다.
+  const record = {
+    sourceFile: 'original/middle/m1/2mid/25_연향중_2학기_중간_중1_기출.js',
+    id: 13, sourceOrdinal: 13, sourceQuestionNo: '13',
+    questionUid: 'qid_v1_618d09e48445ce3e0556235122b322e592ecd1eac03133418968ef89dbeed46e',
+    sourceGrade: '중1', curriculumKey: '2022', courseKey: 'M1-2',
+    sourceFingerprint: 'c63aa7ce8096ae25542432a35c8598cb8a3ca3411187d7672a01e056f163096e',
+    metadataAssignmentEvidence: { sourceFingerprint: '29930a5dd53e3f66a9073eabaedd2a073cd499d922e31d73294c80ad83b2da09',
+      fieldStatus: { standardUnit: 'approved_final_qa' } },
+    unverifiedTaxonomy: { curriculumKey: '2022', courseKey: 'M1-2', L1: '입체도형', L2: '다면체와 회전체', L3: '다면체', L4: '각기둥·각뿔' },
+  };
+  assert.equal(UnitCore.resolveRpmParent({ ...record, metaBinding: 'text' }, 'm1').basis, 'UNVERIFIED_PARENT');
+  // 결속이 없거나 단원 칸이 승인되지 않은 행은 예전처럼 낡은 부모를 쓰지 않는다.
+  assert.equal(UnitCore.resolveRpmParent(record, 'm1').basis, undefined);
+  const unapproved = { ...record, metaBinding: 'text', metadataAssignmentEvidence: { ...record.metadataAssignmentEvidence, fieldStatus: { standardUnit: 'manual_review_pending' } } };
+  assert.equal(UnitCore.resolveRpmParent(unapproved, 'm1').basis, undefined);
+});

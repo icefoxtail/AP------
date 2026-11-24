@@ -1,0 +1,217 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "13"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "144",
+              "denominator": "13"
+            },
+            {
+              "kind": "rational",
+              "numerator": "60",
+              "denominator": "13"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "96",
+              "denominator": "13"
+            },
+            {
+              "kind": "rational",
+              "numerator": "40",
+              "denominator": "13"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "96",
+              "denominator": "13"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aX",
+        "refs": [
+          "B",
+          "D",
+          "E"
+        ],
+        "value": 67.38,
+        "label": "x",
+        "factRole": "GIVEN",
+        "color": "ROSE"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "12"
+      },
+      {
+        "id": "lAC",
+        "ownerSegment": "sAC",
+        "text": "5"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "r1",
+      "refs": [
+        "B",
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "r2",
+      "refs": [
+        "D",
+        "E",
+        "B"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 400
+  },
+  "caption": "각 A가 직각인 직각삼각형 ABC에서 변 AB 위의 점 D와 변 BC 위의 점 E를 잇는 선분 DE가 변 BC에 수직이고, 각 BDE가 x로 표시되어 있다. 두 변 AB와 AC의 길이는 각각 12와 5로 주어져 있다.",
+  "accessibilityDescription": "점 A, B, C, D, E가 보이고, 꼭짓점 A와 점 E에 직각 표시가 있으며, 선분 AB에 12, 선분 AC에 5의 길이 라벨, 각 BDE에 x라는 각 표시가 있다.",
+  "newVisualInformation": [
+    "각 A의 직각 표시",
+    "변 AB와 AC의 길이 12와 5",
+    "변 BC에 수직인 선분 DE와 직각 표시",
+    "각 BDE를 나타내는 x"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림과 같이 $\\angle A = 90^\\circ$인 직각삼각형 $ABC$에서 $\\overline{AB} = 12$, $\\overline{AC} = 5$이다. 변 $AB, BC$ 위의 점 $D, E$에 대하여 $\\overline{DE} \\perp \\overline{BC}$이고 $\\angle BDE = x$일 때, $\\sin x + \\cos x$의 값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

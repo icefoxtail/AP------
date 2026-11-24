@@ -1,0 +1,213 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "5",
+              "denominator": "2"
+            },
+            {
+              "kind": "rational",
+              "numerator": "7694209",
+              "denominator": "1000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "4045085",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2938925",
+              "denominator": "1000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "e1",
+        "count": 1,
+        "segments": [
+          "sAB",
+          "sCA"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "id": "aC",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "value": 72,
+        "label": "72",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aABD",
+        "refs": [
+          "A",
+          "B",
+          "D"
+        ],
+        "value": 36,
+        "noLabel": true,
+        "equalGroup": 1,
+        "arcs": 1,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aDBC",
+        "refs": [
+          "D",
+          "B",
+          "C"
+        ],
+        "value": 36,
+        "noLabel": true,
+        "equalGroup": 1,
+        "arcs": 1,
+        "factRole": "GIVEN"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dBC",
+        "from": "B",
+        "to": "C",
+        "label": "5",
+        "unit": "cm",
+        "side": "BELOW",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 360
+  },
+  "caption": "이등변삼각형 ABC에서 각 B의 이등분선 BD가 변 AC와 만난다. 변 BC의 길이 5cm와 각 C의 크기 72도가 주어져 있다.",
+  "accessibilityDescription": "삼각형 ABC의 두 변 AB와 AC에 같은 길이 표시가 있고, 점 B에서 변 AC 위의 점 D로 각의 이등분선 BD가 그려져 있다. 변 BC에는 5cm의 길이 표시가, 각 C에는 72도의 각 표시가 있다.",
+  "newVisualInformation": [
+    "AB=AC",
+    "BD는 각 B의 이등분선",
+    "BC=5 cm",
+    "각 C=72도"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\overline{AB}=\\overline{AC}$인 이등변삼각형 $ABC$에서 $\\angle B$의 이등분선이 변 $AC$와 만나는 점을 $D$라 하자. $\\overline{BC}=5\\text{ cm}$, $\\angle C=72^\\circ$일 때, $\\overline{AD}$의 길이는? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

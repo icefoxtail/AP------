@@ -1,0 +1,61 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "A",
+        "name": "A에서 B",
+        "elements": [
+          "4가지"
+        ]
+      },
+      {
+        "id": "B",
+        "name": "B에서 C",
+        "elements": [
+          "3가지"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      }
+    ]
+  },
+  "caption": "A 지점에서 B 지점까지 가는 길 4가지와 B 지점에서 C 지점까지 가는 길 3가지를 두 단계로 나타낸 대응도이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$A$ 지점에서 $B$ 지점까지 가는 길은 $4$가지이고, $B$ 지점에서 $C$ 지점까지 가는 길은 $3$가지이다. $A$ 지점에서 출발하여 $B$ 지점을 거쳐 $C$ 지점까지 가는 모든 경로의 수는? (단, 같은 지점을 두 번 이상 지나지 않는다.) [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "A 지점에서 B 지점까지 가는 길은 4가지",
+      "mappedTo": "diagram"
+    },
+    {
+      "id": "c2",
+      "condition": "B 지점에서 C 지점까지 가는 길은 3가지",
+      "mappedTo": "diagram"
+    },
+    {
+      "id": "c3",
+      "condition": "같은 지점을 두 번 이상 지나지 않음",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "A에서 B까지 4가지",
+    "B에서 C까지 3가지"
+  ]
+}

@@ -1,0 +1,199 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "integer",
+              "value": "-20"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDB",
+      "refs": [
+        "D",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "8"
+      },
+      {
+        "id": "lCA",
+        "ownerSegment": "sCA",
+        "text": "17"
+      },
+      {
+        "id": "lBC",
+        "ownerSegment": "sBC",
+        "text": "x"
+      },
+      {
+        "id": "lCD",
+        "ownerSegment": "sCD",
+        "text": "y"
+      },
+      {
+        "id": "lDB",
+        "ownerSegment": "sDB",
+        "text": "25"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rB",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "rC",
+      "refs": [
+        "B",
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 440
+  },
+  "caption": "각 B가 직각인 삼각형 ABC와 각 C가 직각인 삼각형 BCD가 변 BC를 공유하고, AC=17 cm, AB=8 cm, BD=25 cm, BC=x cm, CD=y cm인 그림이다.",
+  "accessibilityDescription": "선분 BC를 공유하는 두 직각삼각형이 위아래로 놓여 있다. 위의 삼각형 ABC는 B에서 직각이고 AB 옆에 8, AC 옆에 17, BC 옆에 x가 적혀 있다. 아래의 삼각형 BCD는 C에서 직각이고 CD 옆에 y, BD 옆에 25가 적혀 있다.",
+  "newVisualInformation": [
+    "변 BC를 공유하는 두 직각삼각형 ABC와 BCD",
+    "AB=8, AC=17, BD=25",
+    "BC=x, CD=y와 두 직각 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\angle B = 90^\\circ$인 직각삼각형 $ABC$에서 $\\overline{AC} = 17\\text{ cm}$, $\\overline{AB} = 8\\text{ cm}$, $\\overline{BC} = x\\text{ cm}$이다. 또 변 $BC$를 한 변으로 하고 $\\angle BCD = 90^\\circ$인 직각삼각형 $BCD$에서 $\\overline{BD} = 25\\text{ cm}$, $\\overline{CD} = y\\text{ cm}$일 때, $x + y$의 값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

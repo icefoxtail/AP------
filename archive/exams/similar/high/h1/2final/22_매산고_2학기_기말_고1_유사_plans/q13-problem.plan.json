@@ -1,0 +1,63 @@
+{
+  "question": {
+    "status": "EXEMPT",
+    "reason": "발문에 그림이 없는 조각함수의 역함수 존재 조건 문항이다."
+  },
+  "solution": {
+    "capability": "multi-curve-figure-v1",
+    "graphPlan": {
+      "family": "multi-curve",
+      "curves": [
+        {
+          "id": "sq",
+          "kind": "SQRT",
+          "radicand": [
+            "3",
+            "-1"
+          ],
+          "amplitude": "1",
+          "sign": 1,
+          "offset": "-2",
+          "domain": [
+            "-4",
+            "3"
+          ]
+        },
+        {
+          "id": "rat",
+          "kind": "RATIONAL",
+          "numerator": [
+            "1",
+            "-2"
+          ],
+          "denominator": [
+            "-3",
+            "1"
+          ],
+          "domain": [
+            "3.4",
+            "9"
+          ]
+        }
+      ],
+      "overlays": {
+        "lines": [
+          {
+            "id": "y2",
+            "slope": "0",
+            "intercept": "-2"
+          }
+        ]
+      },
+      "axisTickValues": {
+        "x": [
+          "3"
+        ],
+        "y": [
+          "-2"
+        ]
+      }
+    },
+    "caption": "x≤3에서 근호식이 y≥-2를, x>3에서 유리식이 y<-2를 일대일로 덮어 역함수가 존재한다."
+  }
+}

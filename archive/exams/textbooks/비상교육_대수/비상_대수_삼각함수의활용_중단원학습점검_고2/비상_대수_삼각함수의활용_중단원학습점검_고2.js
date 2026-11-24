@@ -26,8 +26,8 @@ window.questionBank = [
     "wide": false,
     "content": "오른쪽 그림과 같이 $\\angle B=60^\\circ, b=6\\sqrt{3}$인 삼각형 $\\mathrm{ABC}$에서 외접원의 반지름의 길이를 구하시오.\n<img src=\"q01.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$6$",
+    "solution": "외접원의 반지름의 길이를 $R$라 하면 사인법칙에 의하여\n$$\\frac{b}{\\sin B}=2R,\\quad 2R=\\frac{6\\sqrt{3}}{\\sin 60^\\circ}=\\frac{6\\sqrt{3}}{\\frac{\\sqrt{3}}{2}}=12$$\n따라서 $R=6$"
   },
   {
     "id": 2,
@@ -54,8 +54,8 @@ window.questionBank = [
     "wide": false,
     "content": "오른쪽 그림과 같이 $\\angle B=45^\\circ, \\angle C=30^\\circ, b=3\\sqrt{2}$인 삼각형 $\\mathrm{ABC}$에서 $c$의 값을 구하시오.\n<img src=\"q02.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$3$",
+    "solution": "사인법칙에 의하여 $\\frac{b}{\\sin B}=\\frac{c}{\\sin C}$이므로\n$$\\frac{3\\sqrt{2}}{\\sin 45^\\circ}=\\frac{c}{\\sin 30^\\circ},\\quad\\frac{3\\sqrt{2}}{\\frac{\\sqrt{2}}{2}}=6=\\frac{c}{\\frac{1}{2}}$$\n따라서 $c=3$"
   },
   {
     "id": 3,
@@ -82,8 +82,8 @@ window.questionBank = [
     "wide": false,
     "content": "오른쪽 그림과 같이 $a=6, c=4, \\angle B=60^\\circ$인 삼각형 $\\mathrm{ABC}$에서 $b$의 값을 구하시오.\n<img src=\"q03.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$2\\sqrt{7}$",
+    "solution": "코사인법칙에 의하여\n$$b^2=a^2+c^2-2ac\\cos B=36+16-2\\times 6\\times 4\\times\\frac{1}{2}=52-24=28$$\n$b>0$이므로 $b=2\\sqrt{7}$"
   },
   {
     "id": 4,
@@ -110,8 +110,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 그림과 같은 삼각형 $\\mathrm{ABC}$의 넓이를 구하시오.\n<img src=\"q04.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $15$\n⑵ $8$",
+    "solution": "⑴ 두 변 $\\overline{\\mathrm{AB}}=5,\\ \\overline{\\mathrm{AC}}=4\\sqrt{3}$과 그 끼인각 $\\angle\\mathrm{A}=60^\\circ$가 주어졌으므로\n$$\\frac{1}{2}\\times 5\\times 4\\sqrt{3}\\times\\sin 60^\\circ=\\frac{1}{2}\\times 5\\times 4\\sqrt{3}\\times\\frac{\\sqrt{3}}{2}=15$$\n⑵ 두 변 $\\overline{\\mathrm{AB}}=4\\sqrt{2},\\ \\overline{\\mathrm{BC}}=4$와 그 끼인각 $\\angle\\mathrm{B}=135^\\circ$이므로\n$$\\frac{1}{2}\\times 4\\sqrt{2}\\times 4\\times\\sin 135^\\circ=\\frac{1}{2}\\times 4\\sqrt{2}\\times 4\\times\\frac{\\sqrt{2}}{2}=8$$"
   },
   {
     "id": 5,
@@ -138,8 +138,8 @@ window.questionBank = [
     "wide": false,
     "content": "반지름의 길이가 $4$인 원에 내접하는 삼각형 $\\mathrm{ABC}$에서 $a=4\\sqrt{3}$일 때, $\\cos A$의 값을 구하시오. (단, $0^\\circ < A < 90^\\circ$)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{1}{2}$",
+    "solution": "사인법칙에 의하여 $\\frac{a}{\\sin A}=2R$이므로 $\\sin A=\\frac{a}{2R}=\\frac{4\\sqrt{3}}{8}=\\frac{\\sqrt{3}}{2}$\n$0^\\circ<A<90^\\circ$이므로 $A=60^\\circ$이고 $\\cos A=\\cos 60^\\circ=\\frac{1}{2}$"
   },
   {
     "id": 6,
@@ -166,8 +166,8 @@ window.questionBank = [
     "wide": false,
     "content": "삼각형 $\\mathrm{ABC}$의 둘레의 길이가 $27$이고 $\\sin A + \\sin B + \\sin C = \\frac{9}{4}$일 때, 외접원의 반지름의 길이를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$6$",
+    "solution": "사인법칙에 의하여 $\\sin A=\\frac{a}{2R},\\ \\sin B=\\frac{b}{2R},\\ \\sin C=\\frac{c}{2R}$이므로\n$$\\sin A+\\sin B+\\sin C=\\frac{a+b+c}{2R}=\\frac{27}{2R}=\\frac{9}{4}$$\n따라서 $2R=12$이므로 $R=6$"
   },
   {
     "id": 7,
@@ -194,8 +194,8 @@ window.questionBank = [
     "wide": false,
     "content": "오른쪽 그림과 같이 원 모양의 연못가에 세 지점 $\\mathrm{A, B, C}$가 있다. 삼각형 $\\mathrm{ABC}$에서 $\\angle B=40^\\circ, \\angle C=110^\\circ$이고 $\\overline{\\mathrm{BC}}=10\\text{ m}$일 때, 연못의 넓이를 구하시오.\n<img src=\"q07.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$100\\pi\\text{ m}^2$",
+    "solution": "삼각형 $\\mathrm{ABC}$에서 $\\angle\\mathrm{A}=180^\\circ-40^\\circ-110^\\circ=30^\\circ$이다.\n연못의 반지름의 길이를 $R$라 하면 사인법칙에 의하여\n$$2R=\\frac{\\overline{\\mathrm{BC}}}{\\sin A}=\\frac{10}{\\sin 30^\\circ}=20$$\n이므로 $R=10\\text{ m}$이다. 연못의 넓이는 $\\pi\\times 10^2=100\\pi\\text{ m}^2$"
   },
   {
     "id": 8,
@@ -222,8 +222,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 등식을 만족시키는 삼각형 $\\mathrm{ABC}$는 어떤 삼각형인지 말하시오.\n⑴ $a\\sin A = b\\cos\\left(\\frac{\\pi}{2} - B\\right)$\n⑵ $\\sin^2 B + \\sin^2 C = \\sin A\\sin(B + C)$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $a=b$인 이등변삼각형\n⑵ $\\angle\\mathrm{A}=90^\\circ$인 직각삼각형",
+    "solution": "외접원의 반지름의 길이를 $R$라 하면 $\\sin A=\\frac{a}{2R},\\ \\sin B=\\frac{b}{2R},\\ \\sin C=\\frac{c}{2R}$이다.\n⑴ $\\cos\\left(\\frac{\\pi}{2}-B\\right)=\\sin B$이므로 $a\\sin A=b\\sin B$에서\n$$a\\times\\frac{a}{2R}=b\\times\\frac{b}{2R},\\quad a^2=b^2$$\n$a>0,\\ b>0$이므로 $a=b$이다. 따라서 $a=b$인 이등변삼각형이다.\n⑵ $\\sin(B+C)=\\sin(\\pi-A)=\\sin A$이므로 $\\sin^2B+\\sin^2C=\\sin^2A$이다.\n$$\\frac{b^2}{4R^2}+\\frac{c^2}{4R^2}=\\frac{a^2}{4R^2},\\quad b^2+c^2=a^2$$\n따라서 $\\angle\\mathrm{A}=90^\\circ$인 직각삼각형이다."
   },
   {
     "id": 9,
@@ -250,8 +250,8 @@ window.questionBank = [
     "wide": false,
     "content": "삼각형 $\\mathrm{ABC}$에서 $b=3, c=4$이고 $\\sin A = \\frac{\\sqrt{39}}{8}$일 때, $a$의 값을 구하시오. (단, $3 < a < 4$)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\sqrt{10}$",
+    "solution": "$\\sin A=\\frac{\\sqrt{39}}{8}$이므로 $\\cos A=\\pm\\sqrt{1-\\frac{39}{64}}=\\pm\\frac{5}{8}$이다.\n코사인법칙에 의하여 $a^2=b^2+c^2-2bc\\cos A=25-24\\cos A$\n$\\cos A=-\\frac{5}{8}$이면 $a^2=40$이므로 $a=2\\sqrt{10}>4$로 조건 $3<a<4$에 맞지 않는다.\n$\\cos A=\\frac{5}{8}$이면 $a^2=25-15=10$이므로 $a=\\sqrt{10}$이고 $3<\\sqrt{10}<4$이므로 조건에 맞는다.\n따라서 $a=\\sqrt{10}$"
   },
   {
     "id": 10,
@@ -278,8 +278,8 @@ window.questionBank = [
     "wide": false,
     "content": "반지름의 길이가 $6$인 원에 내접하는 삼각형 $\\mathrm{ABC}$에서 $c=8\\sqrt{2}$이고 $a:b=1:3$일 때, $\\cos C$와 $a$의 값을 구하시오. (단, $\\angle C > 90^\\circ$)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\cos C=-\\frac{1}{3},\\ a=\\frac{4\\sqrt{6}}{3}$",
+    "solution": "사인법칙에 의하여 $\\sin C=\\frac{c}{2R}=\\frac{8\\sqrt{2}}{12}=\\frac{2\\sqrt{2}}{3}$\n$\\angle\\mathrm{C}>90^\\circ$이므로 $\\cos C=-\\sqrt{1-\\frac{8}{9}}=-\\frac{1}{3}$\n$a=k,\\ b=3k$ ($k>0$)라 하면 코사인법칙에 의하여\n$$c^2=a^2+b^2-2ab\\cos C=k^2+9k^2-2\\times k\\times 3k\\times\\left(-\\frac{1}{3}\\right)=12k^2$$\n$c^2=128$이므로 $k^2=\\frac{32}{3}$, $k=\\frac{4\\sqrt{2}}{\\sqrt{3}}=\\frac{4\\sqrt{6}}{3}$\n따라서 $a=\\frac{4\\sqrt{6}}{3}$"
   },
   {
     "id": 11,
@@ -306,8 +306,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 그림과 같이 $\\angle C=90^\\circ$인 직각삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AC}}=3, \\overline{\\mathrm{BC}}=4$이고 선분 $\\mathrm{BC}$를 $3:1$로 내분하는 점을 $\\mathrm{P}$라고 하자. $\\angle\\mathrm{BAP}=\\theta$라고 할 때, $\\sin\\theta$의 값을 구하시오.\n<img src=\"q11.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{9\\sqrt{10}}{50}$",
+    "solution": "$\\overline{\\mathrm{AB}}=\\sqrt{3^2+4^2}=5$이고 점 $\\mathrm{P}$가 $\\overline{\\mathrm{BC}}$를 $3:1$로 내분하므로 $\\overline{\\mathrm{BP}}=3,\\ \\overline{\\mathrm{PC}}=1$이다.\n$\\overline{\\mathrm{AP}}=\\sqrt{3^2+1^2}=\\sqrt{10}$\n삼각형 $\\mathrm{ABP}$의 넓이를 두 가지로 나타내면\n$$\\frac{1}{2}\\times\\overline{\\mathrm{BP}}\\times\\overline{\\mathrm{AC}}=\\frac{1}{2}\\times 3\\times 3=\\frac{9}{2}$$\n$$\\frac{1}{2}\\times\\overline{\\mathrm{AB}}\\times\\overline{\\mathrm{AP}}\\times\\sin\\theta=\\frac{1}{2}\\times 5\\times\\sqrt{10}\\times\\sin\\theta$$\n따라서 $\\frac{5\\sqrt{10}}{2}\\sin\\theta=\\frac{9}{2}$에서 $\\sin\\theta=\\frac{9}{5\\sqrt{10}}=\\frac{9\\sqrt{10}}{50}$"
   },
   {
     "id": 12,
@@ -334,8 +334,8 @@ window.questionBank = [
     "wide": false,
     "content": "삼각형 $\\mathrm{ABC}$에서 $b=2, c=3, \\cos A = \\frac{3}{4}$일 때, 외접원의 반지름의 길이를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{4\\sqrt{7}}{7}$",
+    "solution": "코사인법칙에 의하여 $a^2=b^2+c^2-2bc\\cos A=4+9-2\\times 2\\times 3\\times\\frac{3}{4}=13-9=4$이므로 $a=2$\n$\\sin A=\\sqrt{1-\\frac{9}{16}}=\\frac{\\sqrt{7}}{4}$이므로 사인법칙에 의하여\n$$2R=\\frac{a}{\\sin A}=\\frac{2}{\\frac{\\sqrt{7}}{4}}=\\frac{8}{\\sqrt{7}}$$\n따라서 $R=\\frac{4}{\\sqrt{7}}=\\frac{4\\sqrt{7}}{7}$"
   },
   {
     "id": 13,
@@ -362,8 +362,8 @@ window.questionBank = [
     "wide": false,
     "content": "삼각형 $\\mathrm{ABC}$에서 $a=4, b=5, \\sin(A + B) = \\frac{1}{2}$일 때, 삼각형 $\\mathrm{ABC}$의 넓이를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$5$",
+    "solution": "$A+B+C=\\pi$이므로 $\\sin(A+B)=\\sin(\\pi-C)=\\sin C=\\frac{1}{2}$이다.\n삼각형 $\\mathrm{ABC}$의 넓이는\n$$\\frac{1}{2}ab\\sin C=\\frac{1}{2}\\times 4\\times 5\\times\\frac{1}{2}=5$$"
   },
   {
     "id": 14,
@@ -390,8 +390,8 @@ window.questionBank = [
     "wide": false,
     "content": "넓이가 $18$인 삼각형 $\\mathrm{ABC}$에서 $a=9, \\cos C = \\frac{\\sqrt{5}}{3}$일 때, $b$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$6$",
+    "solution": "$\\cos C=\\frac{\\sqrt{5}}{3}$이므로 $\\sin C=\\sqrt{1-\\frac{5}{9}}=\\frac{2}{3}$이다.\n삼각형의 넓이가 $\\frac{1}{2}ab\\sin C=18$이므로\n$$\\frac{1}{2}\\times 9\\times b\\times\\frac{2}{3}=3b=18$$\n따라서 $b=6$"
   },
   {
     "id": 15,
@@ -418,8 +418,8 @@ window.questionBank = [
     "wide": false,
     "content": "삼각형 $\\mathrm{ABC}$에서 $a=8, b=7, \\cos C = \\frac{11}{14}$일 때, 내접원의 반지름의 길이를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\sqrt{3}$",
+    "solution": "코사인법칙에 의하여 $c^2=a^2+b^2-2ab\\cos C=64+49-2\\times 8\\times 7\\times\\frac{11}{14}=113-88=25$이므로 $c=5$\n$\\sin C=\\sqrt{1-\\frac{121}{196}}=\\frac{5\\sqrt{3}}{14}$이므로 삼각형의 넓이는\n$$S=\\frac{1}{2}ab\\sin C=\\frac{1}{2}\\times 8\\times 7\\times\\frac{5\\sqrt{3}}{14}=10\\sqrt{3}$$\n내접원의 반지름의 길이를 $r$라 하면 $S=\\frac{1}{2}r(a+b+c)$이므로\n$$10\\sqrt{3}=\\frac{1}{2}r\\times 20,\\quad r=\\sqrt{3}$$"
   },
   {
     "id": 16,
@@ -446,8 +446,8 @@ window.questionBank = [
     "wide": false,
     "content": "오른쪽 그림과 같이 한 변의 길이가 $9$인 정육각형 $\\mathrm{ABCDEF}$에서 선분 $\\mathrm{CD}$를 $1:2$로 내분하는 점을 $\\mathrm{P}$라 하고 $\\angle\\mathrm{EPD}=\\theta$라고 할 때, $\\cos\\theta$의 값을 구하시오.\n<img src=\"q16.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{7\\sqrt{19}}{38}$",
+    "solution": "$\\overline{\\mathrm{CD}}=9$이고 점 $\\mathrm{P}$가 $\\overline{\\mathrm{CD}}$를 $1:2$로 내분하므로 $\\overline{\\mathrm{PD}}=6$이다. 또 $\\overline{\\mathrm{ED}}=9$이고 정육각형의 한 내각의 크기는 $120^\\circ$이므로 $\\angle\\mathrm{PDE}=120^\\circ$이다.\n삼각형 $\\mathrm{EPD}$에서 코사인법칙에 의하여\n$$\\overline{\\mathrm{EP}}^2=9^2+6^2-2\\times 9\\times 6\\times\\cos 120^\\circ=81+36+54=171$$\n이므로 $\\overline{\\mathrm{EP}}=3\\sqrt{19}$\n$$\\cos\\theta=\\frac{\\overline{\\mathrm{EP}}^2+\\overline{\\mathrm{PD}}^2-\\overline{\\mathrm{ED}}^2}{2\\times\\overline{\\mathrm{EP}}\\times\\overline{\\mathrm{PD}}}=\\frac{171+36-81}{2\\times 3\\sqrt{19}\\times 6}=\\frac{126}{36\\sqrt{19}}=\\frac{7}{2\\sqrt{19}}=\\frac{7\\sqrt{19}}{38}$$"
   },
   {
     "id": 17,
@@ -474,8 +474,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 그림과 같이 $\\overline{\\mathrm{AB}}=6, \\overline{\\mathrm{AC}}=12$인 삼각형 $\\mathrm{ABC}$에서 $\\angle\\mathrm{A}$의 이등분선이 변 $\\mathrm{BC}$와 만나는 점을 $\\mathrm{D}$라 하고, $\\overline{\\mathrm{BC}}=a$라고 하자. $a(\\sin B + \\sin C) = 9\\sqrt{3}$일 때, 삼각형 $\\mathrm{ABD}$의 넓이를 구하시오. (단, $\\angle\\mathrm{A} > 90^\\circ$)\n<img src=\"q17.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$6\\sqrt{3}$",
+    "solution": "외접원의 반지름의 길이를 $R$라 하면 $a=2R\\sin A,\\ \\sin B=\\frac{\\overline{\\mathrm{AC}}}{2R}=\\frac{12}{2R},\\ \\sin C=\\frac{\\overline{\\mathrm{AB}}}{2R}=\\frac{6}{2R}$이므로\n$$a(\\sin B+\\sin C)=2R\\sin A\\times\\frac{18}{2R}=18\\sin A=9\\sqrt{3}$$\n에서 $\\sin A=\\frac{\\sqrt{3}}{2}$이고 $\\angle\\mathrm{A}>90^\\circ$이므로 $\\angle\\mathrm{A}=120^\\circ$이다.\n삼각형 $\\mathrm{ABC}$의 넓이는 $\\frac{1}{2}\\times 6\\times 12\\times\\sin 120^\\circ=18\\sqrt{3}$\n각의 이등분선에 의하여 $\\overline{\\mathrm{BD}}:\\overline{\\mathrm{DC}}=\\overline{\\mathrm{AB}}:\\overline{\\mathrm{AC}}=6:12=1:2$이므로 삼각형 $\\mathrm{ABD}$의 넓이는 전체의 $\\frac{1}{3}$이다.\n$$18\\sqrt{3}\\times\\frac{1}{3}=6\\sqrt{3}$$"
   },
   {
     "id": 18,
@@ -502,7 +502,7 @@ window.questionBank = [
     "wide": false,
     "content": "오른쪽 그림과 같이 원에 내접하는 사각형 $\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{BC}}=3, \\overline{\\mathrm{CD}}+\\overline{\\mathrm{DA}}=8, \\angle\\mathrm{ADC}=60^\\circ$일 때, 사각형 $\\mathrm{ABCD}$의 넓이를 구하시오.\n<img src=\"q18.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{16\\sqrt{3}}{3}$",
+    "solution": "원에 내접하는 사각형에서 대각의 합이 $180^\\circ$이므로 $\\angle\\mathrm{ABC}=180^\\circ-60^\\circ=120^\\circ$이다.\n삼각형 $\\mathrm{ABC}$에서 코사인법칙에 의하여\n$$\\overline{\\mathrm{AC}}^2=3^2+3^2-2\\times 3\\times 3\\times\\cos 120^\\circ=18+9=27$$\n$\\overline{\\mathrm{CD}}=x,\\ \\overline{\\mathrm{DA}}=y$라 하면 $x+y=8$이고 삼각형 $\\mathrm{ACD}$에서 코사인법칙에 의하여\n$$\\overline{\\mathrm{AC}}^2=x^2+y^2-2xy\\cos 60^\\circ=x^2+y^2-xy=(x+y)^2-3xy=64-3xy$$\n이므로 $64-3xy=27$에서 $xy=\\frac{37}{3}$이다.\n사각형의 넓이는 두 삼각형의 넓이의 합이므로\n$$\\frac{1}{2}\\times 3\\times 3\\times\\sin 120^\\circ+\\frac{1}{2}\\times xy\\times\\sin 60^\\circ=\\frac{9\\sqrt{3}}{4}+\\frac{37\\sqrt{3}}{12}=\\frac{27\\sqrt{3}+37\\sqrt{3}}{12}=\\frac{16\\sqrt{3}}{3}$$"
   }
 ];
