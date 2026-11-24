@@ -1,0 +1,107 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -1,
+      7,
+      -2,
+      9
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "EXPONENTIAL",
+        "base": "2",
+        "shiftX": "1",
+        "coefficients": [
+          "1",
+          "1",
+          "0"
+        ],
+        "domain": [
+          "-1",
+          "4"
+        ],
+        "color": "BLUE",
+        "label": {
+          "hidden": true,
+          "reason": "ANSWER",
+          "name": "f"
+        }
+      },
+      {
+        "id": "g",
+        "kind": "LOGARITHMIC",
+        "base": "2",
+        "coefficients": [
+          "1",
+          "1",
+          "-1",
+          "0"
+        ],
+        "domain": [
+          "3/2",
+          "6"
+        ],
+        "color": "WARM",
+        "label": {
+          "hidden": true,
+          "reason": "ANSWER",
+          "name": "g"
+        }
+      },
+      {
+        "id": "l",
+        "kind": "LINE",
+        "coefficients": [
+          "7",
+          "-1"
+        ],
+        "domain": [
+          "-1",
+          "7"
+        ],
+        "color": "GREEN",
+        "label": "y=-x+7"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "3",
+          "y": "4"
+        },
+        {
+          "id": "B",
+          "x": "5",
+          "y": "2"
+        },
+        {
+          "id": "C",
+          "x": "0",
+          "y": "7"
+        }
+      ]
+    }
+  },
+  "caption": "지수함수 곡선 f와 로그함수 곡선 g, 직선 y = -x + 7의 그래프가 그려져 있다. 직선과 두 곡선의 교점을 각각 A, B라 하고, 직선과 y축의 교점을 C라 한다.",
+  "accessibilityDescription": "증가하는 지수곡선 f와 로그곡선 g가 있고, 기울기가 -1인 직선이 두 곡선과 각각 A, B에서 만나며 y축과 만나는 점이 C로 표시되어 있다.",
+  "newVisualInformation": [
+    "직선 y = -x + 7과 곡선 f의 교점이 A로 표시되어 있다.",
+    "직선 y = -x + 7과 곡선 g의 교점이 B로 표시되어 있다.",
+    "직선 y = -x + 7과 y축의 교점이 C로 표시되어 있다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 함수 $y = a^{x-1}$, $y = \\log_a(x-1)$ ($a > 1$)의 그래프와 직선 $y = -x + 7$의 교점을 각각 $A, B$라 하고, 직선 $y = -x + 7$과 $y$축의 교점을 $C$라 하자. $\\overline{AB} : \\overline{AC} = 2 : 3$일 때, $a$의 값을 구하는 과정을 풀이 과정과 함께 서술하시오. (6점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

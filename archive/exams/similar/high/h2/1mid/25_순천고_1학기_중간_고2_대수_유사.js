@@ -999,6 +999,7 @@ window.questionBank = [
   },
   {
     "id": 24,
+    "image": "assets/images/25_순천고_1학기_중간_고2_대수_유사/q24-problem.svg",
     "category": "지수함수",
     "standardCourse": "대수",
     "curriculum": "2022",

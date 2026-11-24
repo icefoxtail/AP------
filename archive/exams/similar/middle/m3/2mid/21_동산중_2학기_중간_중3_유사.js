@@ -365,6 +365,7 @@ window.questionBank = [
   },
   {
     "id": 9,
+    "image": "assets/images/21_동산중_2학기_중간_중3_유사/q09-problem.svg",
     "category": "이차함수의 그래프",
     "standardCourse": "중3",
     "curriculum": "2015",
