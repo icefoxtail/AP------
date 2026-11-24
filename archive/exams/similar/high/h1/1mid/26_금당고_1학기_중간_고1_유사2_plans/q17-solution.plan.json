@@ -1,0 +1,26 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "sourceQuote": "3<a<8에서 세 교점",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [{"coefficients": ["0", "0", "-1"]}, {"coefficients": ["0", "-3", "1"]}],
+    "breakpoints": [{"x": "0", "y": "0"}],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "functionName": "f",
+    "referenceCurves": [{
+      "id": "g", "name": "g",
+      "pieces": [{"coefficients": ["8", "4"]}, {"coefficients": ["0"]}, {"coefficients": ["-12", "4"]}],
+      "breakpoints": [{"x": "-2", "y": "0"}, {"x": "3", "y": "0"}],
+      "sourceDomain": {"kind": "ALL_REALS"},
+      "intersectionX": ["0", "3", "4"]
+    }],
+    "requiredPoints": [{"id": "O", "x": 0, "y": 0}, {"id": "A", "x": 3, "y": 0}, {"id": "B", "x": 4, "y": 4}, {"id": "C", "x": -2, "y": 0}, {"id": "V", "x": "3/2", "y": "-9/4"}],
+    "domain": [-3.5, 4.6],
+    "viewport": [-4, 5, -7, 10],
+    "axisTickValues": {"x": [-2, 3, 4], "y": []},
+    "sampleNote": "a=4"
+  },
+  "caption": "3<a<8에 속하는 a=4를 대입한 예. 두 그래프는 x=0,3,4에서 세 점에서 만난다.",
+  "sourceConditions": [{"id": "S1", "condition": "a=4이면 세 교점의 x좌표는 0, 3, 4", "mappedTo": ["graphPlan.pieces", "graphPlan.referenceCurves"]}],
+  "newVisualInformation": ["허용 범위 안의 매개변수에서 왼쪽 가지 교점 없이 세 교점이 생기는 구조를 보여 준다."]
+}

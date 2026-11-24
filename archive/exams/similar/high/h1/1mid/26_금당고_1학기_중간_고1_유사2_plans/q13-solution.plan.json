@@ -1,0 +1,18 @@
+{
+  "capability": "polynomial-spike-v1",
+  "sourceQuote": "이때 포물선과 직선의 차는 k(x+1)^2",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": ["0", "6", "1"],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "domain": [-5.5, 1.5],
+    "viewport": [-6, 2, -11, 8],
+    "requiredPoints": [{"id": "T", "x": -1, "y": -5}, {"id": "V", "x": -3, "y": -9}],
+    "exactCoordinates": {"T": ["-1", "-5"], "V": ["-3", "-9"]},
+    "overlays": {"lines": [{"id": "L", "slope": "4", "intercept": "-1", "label": "y=4x-1"}]},
+    "axisTickValues": {"x": [-3, -1], "y": []}
+  },
+  "caption": "k=1인 예에서 포물선 y=x²+6x와 공통 접선 y=4x-1은 (-1,-5)에서 접한다. 모든 k≠0에서도 접점의 x좌표는 -1이다.",
+  "sourceConditions": [{"id": "S1", "condition": "m=4, n=-1이며 두 그래프의 차이는 k(x+1)²", "mappedTo": ["graphPlan.coefficients", "graphPlan.overlays"]}],
+  "newVisualInformation": ["k의 값이 바뀌어도 공통 접선이 (-1)에서 닿는다는 것을 대표 포물선으로 보여 준다."]
+}

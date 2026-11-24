@@ -1,0 +1,17 @@
+{
+  "capability": "polynomial-spike-v1",
+  "sourceQuote": "k=2, y=2(x-1)^2",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": ["2", "-4", "2"],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "domain": [-1, 3],
+    "viewport": [-1.5, 3.5, -1, 5],
+    "requiredPoints": [{"id": "V", "x": 1, "y": 0}],
+    "exactCoordinates": {"V": ["1", "0"]},
+    "axisTickValues": {"x": [1], "y": []}
+  },
+  "caption": "k=2이면 포물선 y=2(x-1)²의 꼭짓점이 x축 위에 있어 접점은 (1,0) 하나이다.",
+  "sourceConditions": [{"id": "S1", "condition": "판별식 16-8k=0에 의해 k=2", "mappedTo": ["graphPlan.coefficients", "graphPlan.requiredPoints"]}],
+  "newVisualInformation": ["이차항 계수 k를 역산한 뒤 포물선이 x축에 접하는 상태를 확인한다."]
+}

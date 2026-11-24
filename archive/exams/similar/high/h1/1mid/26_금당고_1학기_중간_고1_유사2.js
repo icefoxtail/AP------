@@ -1,0 +1,1024 @@
+window.examTitle = "26_금당고_1학기_중간_고1_유사2";
+window.examDisplayTitle = "26년 금당고 고1 1학기 중간 발전형 유사문제 2";
+
+window.questionBank = [
+  {
+    "id": 1,
+    "category": "다항식의 연산",
+    "standardCourse": "공통수학1",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-C-01",
+    "standardUnit": "다항식의 연산",
+    "standardUnitOrder": 1,
+    "subUnitKey": "H22-C-01-POLYNOMIAL_BASIC",
+    "subUnit": "다항식의 연산",
+    "subUnitClassificationDepth": "complete_active_binding",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "다항식의 연산"
+    ],
+    "wide": false,
+    "content": "두 다항식 $A=x^2-2x+3$, $C=5x^2+x+4$가 $2A+B=C$를 만족한다. 다항식 $B$에서 $x$의 계수와 상수항의 합은?",
+    "choices": [
+      "$-3$",
+      "$-1$",
+      "$1$",
+      "$3$",
+      "$5$"
+    ],
+    "answer": "④",
+    "solution": "주어진 관계식 $2A+B=C$에서 $B=C-2A$이다.\n$B=(5x^2+x+4)-2(x^2-2x+3)$\n$=5x^2+x+4-2x^2+4x-6$\n$=3x^2+5x-2$이다.\n따라서 $x$의 계수 $5$와 상수항 $-2$의 합은 $3$이다.",
+    "score": 3.6,
+    "points": 3.6,
+    "difficultyBucket": 1,
+    "problemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
+    "templateKey": "TPL_H1_POLY_OPERATION_DIRECT",
+    "sourceQid": 1,
+    "variationType": "EXAM_FOLLOWUP",
+    "rpmPrimaryRecordId": "H1-RPM-135",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "provenance": {
+      "kind": "SIMILAR_FROM_ORIGINAL",
+      "sourceExam": "26_금당고_1학기_중간_고1_기출_c",
+      "sourceArchiveFile": "archive/exams/original/high/h1/1mid/26_금당고_1학기_중간_고1_기출_c.js",
+      "sourceQid": 1,
+      "variationType": "EXAM_FOLLOWUP",
+      "createdAt": "2026-11-25",
+      "createdAtSource": "GPT direct authored"
+    }
+  },
+  {
+    "id": 2,
+    "category": "다항식의 연산",
+    "standardCourse": "공통수학1",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-C-01",
+    "standardUnit": "다항식의 연산",
+    "standardUnitOrder": 1,
+    "subUnitKey": "H22-C-01-POLYNOMIAL_BASIC",
+    "subUnit": "다항식의 연산",
+    "subUnitClassificationDepth": "complete_active_binding",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "다항식의 연산"
+    ],
+    "wide": false,
+    "content": "두 실수 $x,y$가 $x+y=4$, $x^3+y^3=28$을 만족할 때, $x^2+y^2$의 값은?",
+    "choices": [
+      "$10$",
+      "$12$",
+      "$16$",
+      "$18$",
+      "$22$"
+    ],
+    "answer": "①",
+    "solution": "세제곱의 합 공식을 이용하여 먼저 $xy$를 구한다.\n$x^3+y^3=(x+y)^3-3xy(x+y)$이므로\n$28=4^3-3xy\\cdot4=64-12xy$이다.\n따라서 $12xy=36$, $xy=3$이다.\n이제 $(x+y)^2=x^2+y^2+2xy$를 쓰면\n$x^2+y^2=4^2-2\\cdot3=10$이다.",
+    "score": 3.8,
+    "points": 3.8,
+    "difficultyBucket": 2,
+    "problemTypeKey": "PT_H1_POLY_FORMULA_SYMMETRIC",
+    "templateKey": "TPL_H1_FORMULA_SYMMETRIC",
+    "sourceQid": 2,
+    "variationType": "EXAM_FOLLOWUP",
+    "rpmPrimaryRecordId": "H1-RPM-136",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "provenance": {
+      "kind": "SIMILAR_FROM_ORIGINAL",
+      "sourceExam": "26_금당고_1학기_중간_고1_기출_c",
+      "sourceArchiveFile": "archive/exams/original/high/h1/1mid/26_금당고_1학기_중간_고1_기출_c.js",
+      "sourceQid": 2,
+      "variationType": "EXAM_FOLLOWUP",
+      "createdAt": "2026-11-25",
+      "createdAtSource": "GPT direct authored"
+    }
+  },
+  {
+    "id": 3,
+    "category": "다항식의 연산",
+    "standardCourse": "공통수학1",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-C-01",
+    "standardUnit": "다항식의 연산",
+    "standardUnitOrder": 1,
+    "subUnitKey": "H22-C-01-POLYNOMIAL_BASIC",
+    "subUnit": "다항식의 연산",
+    "subUnitClassificationDepth": "complete_active_binding",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "다항식의 연산"
+    ],
+    "wide": false,
+    "content": "다항식 $(3x+ay-2)^2$의 전개식에서 $xy$의 계수가 $24$이다. 이 전개식에서 $y^2$의 계수는? (단, $a$는 상수이다.)",
+    "choices": [
+      "$4$",
+      "$8$",
+      "$9$",
+      "$12$",
+      "$16$"
+    ],
+    "answer": "⑤",
+    "solution": "$(A+B+C)^2$의 전개식에서 $xy$항은 $(3x)(ay)$의 두 배이다.\n따라서 $xy$항은 $6axy$이므로 $6a=24$, $a=4$이다.\n$y^2$항은 $(ay)^2=a^2y^2$에서만 생긴다.\n그러므로 $y^2$의 계수는 $a^2=4^2=16$이다.",
+    "score": 3.8,
+    "points": 3.8,
+    "difficultyBucket": 2,
+    "problemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
+    "templateKey": "TPL_H1_POLY_COEFFICIENT_EXTRACTION",
+    "sourceQid": 3,
+    "variationType": "EXAM_FOLLOWUP",
+    "rpmPrimaryRecordId": "H1-RPM-136",
+    "crossConceptKeys": [
+      "CC_EXPANSION_COEFFICIENT"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "provenance": {
+      "kind": "SIMILAR_FROM_ORIGINAL",
+      "sourceExam": "26_금당고_1학기_중간_고1_기출_c",
+      "sourceArchiveFile": "archive/exams/original/high/h1/1mid/26_금당고_1학기_중간_고1_기출_c.js",
+      "sourceQid": 3,
+      "variationType": "EXAM_FOLLOWUP",
+      "createdAt": "2026-11-25",
+      "createdAtSource": "GPT direct authored"
+    }
+  },
+  {
+    "id": 4,
+    "category": "복소수와 이차방정식",
+    "standardCourse": "공통수학1",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-C-05",
+    "standardUnit": "이차방정식과 이차함수",
+    "standardUnitOrder": 5,
+    "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
+    "subUnit": "이차방정식",
+    "subUnitClassificationDepth": "complete_active_binding",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "복소수와 이차방정식"
+    ],
+    "wide": false,
+    "content": "다음 다섯 이차방정식 중 서로 다른 두 허근을 갖는 방정식의 개수는?\n㉠ $x^2+4x+5=0$\n㉡ $2x^2-4x+2=0$\n㉢ $x^2-5x+2=0$\n㉣ $3x^2+2x+2=0$\n㉤ $x^2+2x-3=0$",
+    "choices": [
+      "$0$",
+      "$1$",
+      "$2$",
+      "$3$",
+      "$4$"
+    ],
+    "answer": "③",
+    "solution": "실수 계수 이차방정식이 서로 다른 두 허근을 가지려면 판별식 $D=b^2-4ac$가 음수여야 한다.\n㉠ $D=4^2-4\\cdot1\\cdot5=-4<0$이다.\n㉡ $D=(-4)^2-4\\cdot2\\cdot2=0$이므로 중근이다.\n㉢ $D=(-5)^2-4\\cdot1\\cdot2=17>0$이다.\n㉣ $D=2^2-4\\cdot3\\cdot2=-20<0$이다.\n㉤ $D=2^2-4\\cdot1\\cdot(-3)=16>0$이다.\n따라서 해당하는 것은 ㉠, ㉣의 두 방정식이며, 개수는 $2$이다.",
+    "score": 3.8,
+    "points": 3.8,
+    "difficultyBucket": 2,
+    "problemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
+    "templateKey": "TPL_H1_DISCRIMINANT_ROOT_EXISTENCE",
+    "sourceQid": 4,
+    "variationType": "EXAM_FOLLOWUP",
+    "rpmPrimaryRecordId": "H1-RPM-161",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "provenance": {
+      "kind": "SIMILAR_FROM_ORIGINAL",
+      "sourceExam": "26_금당고_1학기_중간_고1_기출_c",
+      "sourceArchiveFile": "archive/exams/original/high/h1/1mid/26_금당고_1학기_중간_고1_기출_c.js",
+      "sourceQid": 4,
+      "variationType": "EXAM_FOLLOWUP",
+      "createdAt": "2026-11-25",
+      "createdAtSource": "GPT direct authored"
+    }
+  },
+  {
+    "id": 5,
+    "category": "복소수와 이차방정식",
+    "standardCourse": "공통수학1",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-C-05",
+    "standardUnit": "이차방정식과 이차함수",
+    "standardUnitOrder": 5,
+    "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
+    "subUnit": "이차방정식",
+    "subUnitClassificationDepth": "complete_active_binding",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "복소수와 이차방정식"
+    ],
+    "wide": false,
+    "content": "이차방정식 $x^2-5x+4=0$의 두 근을 $\\alpha,\\beta$라 할 때, $(\\alpha-1)(\\beta-1)$의 값은?",
+    "choices": [
+      "$0$",
+      "$1$",
+      "$4$",
+      "$5$",
+      "$10$"
+    ],
+    "answer": "①",
+    "solution": "근과 계수의 관계에 의하여 $\\alpha+\\beta=5$, $\\alpha\\beta=4$이다.\n곱을 전개하면\n$(\\alpha-1)(\\beta-1)=\\alpha\\beta-(\\alpha+\\beta)+1$\n$=4-5+1=0$이다.",
+    "score": 3.6,
+    "points": 3.6,
+    "difficultyBucket": 1,
+    "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+    "templateKey": "TPL_H1_VIETA_SYMMETRIC_VALUE",
+    "sourceQid": 5,
+    "variationType": "EXAM_FOLLOWUP",
+    "rpmPrimaryRecordId": "H1-RPM-162",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "provenance": {
+      "kind": "SIMILAR_FROM_ORIGINAL",
+      "sourceExam": "26_금당고_1학기_중간_고1_기출_c",
+      "sourceArchiveFile": "archive/exams/original/high/h1/1mid/26_금당고_1학기_중간_고1_기출_c.js",
+      "sourceQid": 5,
+      "variationType": "EXAM_FOLLOWUP",
+      "createdAt": "2026-11-25",
+      "createdAtSource": "GPT direct authored"
+    }
+  },
+  {
+    "id": 6,
+    "category": "이차방정식과 이차함수",
+    "standardCourse": "공통수학1",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-C-05",
+    "standardUnit": "이차방정식과 이차함수",
+    "standardUnitOrder": 5,
+    "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
+    "subUnit": "이차함수의 활용",
+    "subUnitClassificationDepth": "complete_active_binding",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "이차방정식과 이차함수"
+    ],
+    "wide": false,
+    "content": "이차함수 $f(x)=x^2-4x+1$에 대하여 $a\\le x\\le1$에서의 최댓값이 $13$이다. $a<1$일 때 실수 $a$의 값은?",
+    "choices": [
+      "$-3$",
+      "$-2$",
+      "$0$",
+      "$1$",
+      "$6$"
+    ],
+    "answer": "②",
+    "solution": "$f(x)=x^2-4x+1=(x-2)^2-3$이므로 축은 $x=2$이다.\n$a<1<2$이므로 구간 $[a,1]$에서는 $x$가 증가할수록 함수값이 감소한다.\n따라서 최댓값은 왼쪽 끝점 $x=a$에서 얻는다.\n$f(a)=13$에서 $(a-2)^2-3=13$, 즉 $(a-2)^2=16$이다.\n$a=6$ 또는 $a=-2$인데 $a<1$을 만족하는 값은 $-2$뿐이다.",
+    "score": 4,
+    "points": 4,
+    "difficultyBucket": 2,
+    "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+    "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+    "sourceQid": 6,
+    "variationType": "EXAM_FOLLOWUP",
+    "rpmPrimaryRecordId": "H1-RPM-170",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_RESTRICTED_INTERVAL"
+    ],
+    "integrationPattern": "NONE",
+    "provenance": {
+      "kind": "SIMILAR_FROM_ORIGINAL",
+      "sourceExam": "26_금당고_1학기_중간_고1_기출_c",
+      "sourceArchiveFile": "archive/exams/original/high/h1/1mid/26_금당고_1학기_중간_고1_기출_c.js",
+      "sourceQid": 6,
+      "variationType": "EXAM_FOLLOWUP",
+      "createdAt": "2026-11-25",
+      "createdAtSource": "GPT direct authored"
+    }
+  },
+  {
+    "id": 7,
+    "category": "항등식과 나머지 정리",
+    "standardCourse": "공통수학1",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-C-02",
+    "standardUnit": "항등식과 나머지 정리",
+    "standardUnitOrder": 2,
+    "subUnitKey": "H22-C-02-CORE",
+    "subUnit": "항등식과 나머지 정리 핵심 개념",
+    "subUnitClassificationDepth": "complete_active_binding",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "항등식과 나머지 정리"
+    ],
+    "wide": false,
+    "content": "등식 $a(x-1)^2+b(x-1)+c=2x^2-3x+4$가 모든 실수 $x$에 대하여 성립할 때, $b+c$의 값은? (단, $a,b,c$는 상수이다.)",
+    "choices": [
+      "$0$",
+      "$1$",
+      "$2$",
+      "$3$",
+      "$4$"
+    ],
+    "answer": "⑤",
+    "solution": "왼쪽을 전개하면\n$a(x^2-2x+1)+bx-b+c$\n$=ax^2+(-2a+b)x+(a-b+c)$이다.\n오른쪽 $2x^2-3x+4$와 계수를 비교하여\n$a=2$, $-2a+b=-3$이므로 $b=1$이다.\n상수항은 $a-b+c=4$이므로 $2-1+c=4$, $c=3$이다.\n따라서 $b+c=1+3=4$이다.",
+    "score": 4,
+    "points": 4,
+    "difficultyBucket": 2,
+    "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+    "templateKey": "TPL_H1_IDENTITY_COEFFICIENT_COMPARE",
+    "sourceQid": 7,
+    "variationType": "EXAM_FOLLOWUP",
+    "rpmPrimaryRecordId": "H1-RPM-140",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_UNIVERSAL_INPUTS"
+    ],
+    "integrationPattern": "NONE",
+    "provenance": {
+      "kind": "SIMILAR_FROM_ORIGINAL",
+      "sourceExam": "26_금당고_1학기_중간_고1_기출_c",
+      "sourceArchiveFile": "archive/exams/original/high/h1/1mid/26_금당고_1학기_중간_고1_기출_c.js",
+      "sourceQid": 7,
+      "variationType": "EXAM_FOLLOWUP",
+      "createdAt": "2026-11-25",
+      "createdAtSource": "GPT direct authored"
+    }
+  },
+  {
+    "id": 8,
+    "category": "복소수와 이차방정식",
+    "standardCourse": "공통수학1",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-C-04",
+    "standardUnit": "복소수와 이차방정식",
+    "standardUnitOrder": 4,
+    "subUnitKey": "H22-C-04-COMPLEX_BASIC",
+    "subUnit": "복소수의 뜻과 표현",
+    "subUnitClassificationDepth": "complete_active_binding",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "복소수와 이차방정식"
+    ],
+    "wide": false,
+    "content": "두 실수 $a,b$가 복소수의 등식 $(a+3)+(2b-1)i=4-3i$를 만족한다. $ab$의 값은? (단, $i=\\sqrt{-1}$이다.)",
+    "choices": [
+      "$-3$",
+      "$-2$",
+      "$-1$",
+      "$0$",
+      "$1$"
+    ],
+    "answer": "③",
+    "solution": "두 복소수가 같으므로 실수부분과 허수부분이 각각 같다.\n$a+3=4$에서 $a=1$이다.\n$2b-1=-3$에서 $2b=-2$, 즉 $b=-1$이다.\n따라서 $ab=1\\cdot(-1)=-1$이다.",
+    "score": 3.6,
+    "points": 3.6,
+    "difficultyBucket": 1,
+    "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+    "templateKey": "TPL_H1_COMPLEX_COMPONENT_OPERATION",
+    "sourceQid": 8,
+    "variationType": "EXAM_FOLLOWUP",
+    "rpmPrimaryRecordId": "H1-RPM-155",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "provenance": {
+      "kind": "SIMILAR_FROM_ORIGINAL",
+      "sourceExam": "26_금당고_1학기_중간_고1_기출_c",
+      "sourceArchiveFile": "archive/exams/original/high/h1/1mid/26_금당고_1학기_중간_고1_기출_c.js",
+      "sourceQid": 8,
+      "variationType": "EXAM_FOLLOWUP",
+      "createdAt": "2026-11-25",
+      "createdAtSource": "GPT direct authored"
+    }
+  },
+  {
+    "id": 9,
+    "category": "이차방정식과 이차함수",
+    "standardCourse": "공통수학1",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-C-05",
+    "standardUnit": "이차방정식과 이차함수",
+    "standardUnitOrder": 5,
+    "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
+    "subUnit": "이차함수의 그래프",
+    "subUnitClassificationDepth": "complete_active_binding",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "이차방정식과 이차함수"
+    ],
+    "wide": false,
+    "content": "$k>0$에 대하여 이차함수 $y=kx^2-4x+2$의 그래프가 $x$축과 오직 한 점에서 만난다. $k$의 값은?",
+    "choices": [
+      "$\\dfrac12$",
+      "$1$",
+      "$\\dfrac32$",
+      "$2$",
+      "$\\dfrac52$"
+    ],
+    "answer": "④",
+    "solution": "$x$축과 한 점에서 만나므로 방정식 $kx^2-4x+2=0$은 중근을 가진다.\n$k>0$이어서 이차방정식이며, 판별식은\n$D=(-4)^2-4\\cdot k\\cdot2=16-8k$이다.\n$D=0$이므로 $16-8k=0$에서 $k=2$이다.\n실제로 $y=2(x-1)^2$이 되어 $x=1$에서 $x$축과 한 점에서 만난다.",
+    "score": 4,
+    "points": 4,
+    "difficultyBucket": 2,
+    "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+    "templateKey": "TPL_H1_QUADRATIC_INTERSECTION_TANGENCY",
+    "sourceQid": 9,
+    "variationType": "EXAM_FOLLOWUP",
+    "rpmPrimaryRecordId": "H1-RPM-167",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_POSITIVE"
+    ],
+    "integrationPattern": "NONE",
+    "provenance": {
+      "kind": "SIMILAR_FROM_ORIGINAL",
+      "sourceExam": "26_금당고_1학기_중간_고1_기출_c",
+      "sourceArchiveFile": "archive/exams/original/high/h1/1mid/26_금당고_1학기_중간_고1_기출_c.js",
+      "sourceQid": 9,
+      "variationType": "EXAM_FOLLOWUP",
+      "createdAt": "2026-11-25",
+      "createdAtSource": "GPT direct authored"
+    },
+    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_금당고_1학기_중간_고1_유사2_plans/q09-solution.plan.json"
+  },
+  {
+    "id": 10,
+    "category": "복소수와 이차방정식",
+    "standardCourse": "공통수학1",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-C-05",
+    "standardUnit": "이차방정식과 이차함수",
+    "standardUnitOrder": 5,
+    "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
+    "subUnit": "이차방정식",
+    "subUnitClassificationDepth": "complete_active_binding",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "복소수와 이차방정식"
+    ],
+    "wide": false,
+    "content": "이차방정식 $x^2-3x-2=0$의 두 근을 $\\alpha,\\beta$라 한다. $\\alpha^2+1$, $\\beta^2+1$을 두 근으로 하고 최고차항의 계수가 $1$인 이차방정식은?",
+    "choices": [
+      "$x^2-13x+18=0$",
+      "$x^2-15x+18=0$",
+      "$x^2-15x-18=0$",
+      "$x^2+15x+18=0$",
+      "$x^2-15x+14=0$"
+    ],
+    "answer": "②",
+    "solution": "근과 계수의 관계에 의하여 $\\alpha+\\beta=3$, $\\alpha\\beta=-2$이다.\n먼저 $\\alpha^2+\\beta^2=(\\alpha+\\beta)^2-2\\alpha\\beta=9+4=13$이다.\n새 두 근의 합은 $(\\alpha^2+1)+(\\beta^2+1)=13+2=15$이다.\n새 두 근의 곱은\n$(\\alpha^2+1)(\\beta^2+1)=(\\alpha\\beta)^2+(\\alpha^2+\\beta^2)+1$\n$=4+13+1=18$이다.\n따라서 구하는 이차방정식은 $x^2-15x+18=0$이다.",
+    "score": 4.2,
+    "points": 4.2,
+    "difficultyBucket": 2,
+    "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+    "templateKey": "TPL_H1_VIETA_TRANSFORMED_ROOT",
+    "sourceQid": 10,
+    "variationType": "EXAM_FOLLOWUP",
+    "rpmPrimaryRecordId": "H1-RPM-163",
+    "crossConceptKeys": [
+      "CC_VIETA_FORMULAS_QUADRATIC"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "provenance": {
+      "kind": "SIMILAR_FROM_ORIGINAL",
+      "sourceExam": "26_금당고_1학기_중간_고1_기출_c",
+      "sourceArchiveFile": "archive/exams/original/high/h1/1mid/26_금당고_1학기_중간_고1_기출_c.js",
+      "sourceQid": 10,
+      "variationType": "EXAM_FOLLOWUP",
+      "createdAt": "2026-11-25",
+      "createdAtSource": "GPT direct authored"
+    }
+  },
+  {
+    "id": 11,
+    "category": "인수분해",
+    "standardCourse": "공통수학1",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-C-03",
+    "standardUnit": "인수분해",
+    "standardUnitOrder": 3,
+    "subUnitKey": "H22-C-03-FACTORIZATION",
+    "subUnit": "인수분해",
+    "subUnitClassificationDepth": "complete_active_binding",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "인수분해"
+    ],
+    "wide": false,
+    "content": "일차식 $f(x)$에 대하여 $x^3+7-f(x)=(x-2)(x+a)^2$이 성립한다. $f(x)$에서 $x$의 계수와 상수항의 곱은? (단, $a$는 상수이다.)",
+    "choices": [
+      "$3$",
+      "$9$",
+      "$12$",
+      "$18$",
+      "$27$"
+    ],
+    "answer": "⑤",
+    "solution": "$f(x)$가 일차식이므로 왼쪽 $x^3+7-f(x)$의 $x^2$항 계수는 $0$이다.\n오른쪽을 전개하면\n$(x-2)(x+a)^2=x^3+(2a-2)x^2+(a^2-4a)x-2a^2$이다.\n따라서 $2a-2=0$에서 $a=1$이다.\n이때 오른쪽은 $(x-2)(x+1)^2=x^3-3x-2$이다.\n$x^3+7-f(x)=x^3-3x-2$이므로 $f(x)=3x+9$이다.\n따라서 $x$의 계수 $3$과 상수항 $9$의 곱은 $27$이다.",
+    "score": 4.4,
+    "points": 4.4,
+    "difficultyBucket": 3,
+    "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+    "templateKey": "TPL_H1_FACTORIZATION_APPLICATION",
+    "sourceQid": 11,
+    "variationType": "EXAM_FOLLOWUP",
+    "rpmPrimaryRecordId": "H1-RPM-153",
+    "crossConceptKeys": [
+      "CC_COEFFICIENT_COMPARISON"
+    ],
+    "conditionKeys": [
+      "COND_POLYNOMIAL_DEGREE_ONE"
+    ],
+    "integrationPattern": "SEQUENTIAL",
+    "provenance": {
+      "kind": "SIMILAR_FROM_ORIGINAL",
+      "sourceExam": "26_금당고_1학기_중간_고1_기출_c",
+      "sourceArchiveFile": "archive/exams/original/high/h1/1mid/26_금당고_1학기_중간_고1_기출_c.js",
+      "sourceQid": 11,
+      "variationType": "EXAM_FOLLOWUP",
+      "createdAt": "2026-11-25",
+      "createdAtSource": "GPT direct authored"
+    }
+  },
+  {
+    "id": 12,
+    "category": "항등식과 나머지 정리",
+    "standardCourse": "공통수학1",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-C-02",
+    "standardUnit": "항등식과 나머지 정리",
+    "standardUnitOrder": 2,
+    "subUnitKey": "H22-C-02-CORE",
+    "subUnit": "항등식과 나머지 정리 핵심 개념",
+    "subUnitClassificationDepth": "complete_active_binding",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "항등식과 나머지 정리"
+    ],
+    "wide": false,
+    "content": "다항식 $f(x)$를 $x+2$로 나눈 몫은 $Q(x)$, 나머지는 $1$이다. 또 $Q(x)$를 $x-1$로 나눈 나머지는 $4$이다. $f(x)$를 $(x+2)(x-1)$로 나눈 나머지가 $ax+b$일 때, $a-b$의 값은?",
+    "choices": [
+      "$-9$",
+      "$-7$",
+      "$-6$",
+      "$-5$",
+      "$-3$"
+    ],
+    "answer": "④",
+    "solution": "첫 번째 나눗셈 관계는 $f(x)=(x+2)Q(x)+1$이다.\n따라서 $f(-2)=1$이다.\n$Q(1)=4$이므로 $f(1)=(1+2)\\cdot4+1=13$이다.\n$(x+2)(x-1)$로 나눈 나머지를 $R(x)=ax+b$라 하면\n$R(-2)=f(-2)$, $R(1)=f(1)$이어서\n$-2a+b=1$, $a+b=13$이다.\n두 식을 빼면 $3a=12$이므로 $a=4$이고, $b=9$이다.\n따라서 $a-b=4-9=-5$이다.",
+    "score": 4.4,
+    "points": 4.4,
+    "difficultyBucket": 3,
+    "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+    "templateKey": "TPL_H1_REMAINDER_NESTED_DIVISION",
+    "sourceQid": 12,
+    "variationType": "EXAM_FOLLOWUP",
+    "rpmPrimaryRecordId": "H1-RPM-143",
+    "crossConceptKeys": [
+      "CC_LINEAR_REMAINDER_SETUP"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "provenance": {
+      "kind": "SIMILAR_FROM_ORIGINAL",
+      "sourceExam": "26_금당고_1학기_중간_고1_기출_c",
+      "sourceArchiveFile": "archive/exams/original/high/h1/1mid/26_금당고_1학기_중간_고1_기출_c.js",
+      "sourceQid": 12,
+      "variationType": "EXAM_FOLLOWUP",
+      "createdAt": "2026-11-25",
+      "createdAtSource": "GPT direct authored"
+    }
+  },
+  {
+    "id": 13,
+    "category": "이차방정식과 이차함수",
+    "standardCourse": "공통수학1",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-C-05",
+    "standardUnit": "이차방정식과 이차함수",
+    "standardUnitOrder": 5,
+    "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
+    "subUnit": "이차함수의 그래프",
+    "subUnitClassificationDepth": "complete_active_binding",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "이차방정식과 이차함수"
+    ],
+    "wide": false,
+    "content": "$k\\ne0$인 모든 실수 $k$에 대하여 이차함수 $y=kx^2+2(k+2)x+k-1$의 그래프에 공통으로 접하는 직선 $y=mx+n$이 존재한다. 이 직선의 접점의 $x$좌표는? (단, $m,n$은 $k$에 관계없는 상수이다.)",
+    "choices": [
+      "$-1$",
+      "$0$",
+      "$1$",
+      "$2$",
+      "$3$"
+    ],
+    "answer": "①",
+    "solution": "공통 직선 $y=mx+n$과의 교점을 구하는 이차방정식은\n$kx^2+(2k+4-m)x+(k-1-n)=0$이다.\n모든 $k\\ne0$에서 접하려면 판별식이 언제나 $0$이어야 한다.\n짝수 판별식을 쓰면\n$\\dfrac D4=(k+2-\\dfrac m2)^2-k(k-1-n)$\n$=(5+n-m)k+(2-\\dfrac m2)^2$이다.\n따라서 $(2-\\dfrac m2)^2=0$에서 $m=4$이고,\n$5+n-m=0$에서 $n=-1$이다.\n이때 포물선과 직선의 차는 $k(x+1)^2$이므로 접점의 $x$좌표는 $-1$이다.",
+    "score": 4.6,
+    "points": 4.6,
+    "difficultyBucket": 4,
+    "problemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
+    "templateKey": "TPL_H1_DISCRIMINANT_PARAMETER_IDENTITY",
+    "sourceQid": 13,
+    "variationType": "EXAM_FOLLOWUP",
+    "rpmPrimaryRecordId": "H1-RPM-169",
+    "crossConceptKeys": [
+      "CC_IDENTITY_IN_PARAMETER"
+    ],
+    "conditionKeys": [
+      "COND_NONZERO",
+      "COND_UNIVERSAL_INPUTS"
+    ],
+    "integrationPattern": "REINTERPRETATION",
+    "provenance": {
+      "kind": "SIMILAR_FROM_ORIGINAL",
+      "sourceExam": "26_금당고_1학기_중간_고1_기출_c",
+      "sourceArchiveFile": "archive/exams/original/high/h1/1mid/26_금당고_1학기_중간_고1_기출_c.js",
+      "sourceQid": 13,
+      "variationType": "EXAM_FOLLOWUP",
+      "createdAt": "2026-11-25",
+      "createdAtSource": "GPT direct authored"
+    },
+    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_금당고_1학기_중간_고1_유사2_plans/q13-solution.plan.json"
+  },
+  {
+    "id": 14,
+    "category": "이차방정식과 이차함수",
+    "standardCourse": "공통수학1",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-C-05",
+    "standardUnit": "이차방정식과 이차함수",
+    "standardUnitOrder": 5,
+    "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
+    "subUnit": "이차함수의 활용",
+    "subUnitClassificationDepth": "complete_active_binding",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "이차방정식과 이차함수"
+    ],
+    "wide": false,
+    "content": "밑변의 폭이 $6$이고 꼭짓점의 높이가 $9$인 포물선 모양의 문이 있다. 이 포물선은 $y$축에 대칭이고, $x$축과 $(-3,0)$, $(3,0)$에서 만난다. 문 안에 밑변이 $x$축 위에 있고 윗변의 두 꼭짓점이 포물선 위에 놓인 직사각형을 그린다. 직사각형의 둘레가 최대일 때 그 높이는?",
+    "choices": [
+      "$0$",
+      "$8$",
+      "$9$",
+      "$18$",
+      "$20$"
+    ],
+    "answer": "②",
+    "solution": "포물선은 $y$축 대칭이므로 $y=ax^2+9$라 놓는다.\n$(3,0)$을 지나므로 $9a+9=0$에서 $a=-1$이다.\n따라서 포물선은 $y=9-x^2$이다.\n직사각형 오른쪽 윗꼭짓점의 $x$좌표를 $t$($0<t<3$)라 하면\n가로 길이는 $2t$, 높이는 $9-t^2$이다.\n둘레 $P$는 $P=2\\{2t+(9-t^2)\\}$\n$=-2t^2+4t+18=-2(t-1)^2+20$이다.\n따라서 $t=1$에서 둘레가 최대이고, 그때 직사각형의 높이는 $9-1^2=8$이다.",
+    "score": 4.8,
+    "points": 4.8,
+    "difficultyBucket": 4,
+    "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+    "templateKey": "TPL_H1_QUADRATIC_EXTREMA_MODEL",
+    "sourceQid": 14,
+    "variationType": "EXAM_FOLLOWUP",
+    "rpmPrimaryRecordId": "H1-RPM-171",
+    "crossConceptKeys": [
+      "CC_RECTANGLE_PERIMETER_QUADRATIC_MAX"
+    ],
+    "conditionKeys": [
+      "COND_RESTRICTED_INTERVAL"
+    ],
+    "integrationPattern": "SEQUENTIAL",
+    "provenance": {
+      "kind": "SIMILAR_FROM_ORIGINAL",
+      "sourceExam": "26_금당고_1학기_중간_고1_기출_c",
+      "sourceArchiveFile": "archive/exams/original/high/h1/1mid/26_금당고_1학기_중간_고1_기출_c.js",
+      "sourceQid": 14,
+      "variationType": "EXAM_FOLLOWUP",
+      "createdAt": "2026-11-25",
+      "createdAtSource": "GPT direct authored"
+    },
+    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_금당고_1학기_중간_고1_유사2_plans/q14-solution.plan.json"
+  },
+  {
+    "id": 15,
+    "category": "복소수와 이차방정식",
+    "standardCourse": "공통수학1",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-C-04",
+    "standardUnit": "복소수와 이차방정식",
+    "standardUnitOrder": 4,
+    "subUnitKey": "H22-C-04-COMPLEX_OPERATION",
+    "subUnit": "복소수의 계산",
+    "subUnitClassificationDepth": "complete_active_binding",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "복소수와 이차방정식"
+    ],
+    "wide": false,
+    "content": "실수 $a$에 대해 복소수 $z=(a^2-9)+(a-3)i$라 한다. $z^2$이 음의 실수일 때, $\\left(\\dfrac{1+i}{\\sqrt2}\\right)^n=\\dfrac{(\\overline z-z)i}{12}$를 만족하는 자연수 $n$ 중 $100\\le n\\le250$인 것의 개수는? (단, $i=\\sqrt{-1}$이다.)",
+    "choices": [
+      "$16$",
+      "$17$",
+      "$18$",
+      "$19$",
+      "$20$"
+    ],
+    "answer": "④",
+    "solution": "$z=u+vi$라 두면 $z^2=(u^2-v^2)+2uvi$이다.\n$z^2$이 음의 실수이면 $uv=0$이고 $u^2-v^2<0$이다.\n$u=a^2-9$, $v=a-3$이므로 $(a^2-9)(a-3)=0$에서 $a=3$ 또는 $a=-3$이다.\n$a=3$일 때는 $z=0$이므로 제외한다. 따라서 $a=-3$, $z=-6i$, $\\overline z=6i$이다.\n오른쪽은 $\\dfrac{(6i+6i)i}{12}=-1$이다.\n$w=\\dfrac{1+i}{\\sqrt2}$라 놓으면 $w^2=i$, $w^4=-1$, $w^8=1$이다.\n따라서 $w^n=-1$일 필요충분조건은 $n\\equiv4\\pmod8$이다.\n$100\\le n\\le250$을 만족하는 수는 $100,108,\\ldots,244$이고\n그 개수는 $\\dfrac{244-100}{8}+1=19$이다.",
+    "score": 5,
+    "points": 5,
+    "difficultyBucket": 4,
+    "problemTypeKey": "PT_H1_COMPLEX_POWER_ROOT",
+    "templateKey": "TPL_H1_COMPLEX_ROOT_OF_UNITY_PERIOD",
+    "sourceQid": 15,
+    "variationType": "EXAM_FOLLOWUP",
+    "rpmPrimaryRecordId": "H1-RPM-158",
+    "crossConceptKeys": [
+      "CC_COMPLEX_SQUARE_NEGATIVE_REAL",
+      "CC_CONJUGATE_COMPLEX_DEFINITION"
+    ],
+    "conditionKeys": [
+      "COND_NATURAL_NUMBER",
+      "COND_RESTRICTED_INTERVAL"
+    ],
+    "integrationPattern": "SEQUENTIAL",
+    "provenance": {
+      "kind": "SIMILAR_FROM_ORIGINAL",
+      "sourceExam": "26_금당고_1학기_중간_고1_기출_c",
+      "sourceArchiveFile": "archive/exams/original/high/h1/1mid/26_금당고_1학기_중간_고1_기출_c.js",
+      "sourceQid": 15,
+      "variationType": "EXAM_FOLLOWUP",
+      "createdAt": "2026-11-25",
+      "createdAtSource": "GPT direct authored"
+    }
+  },
+  {
+    "id": 16,
+    "category": "이차방정식과 이차함수",
+    "standardCourse": "공통수학1",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-C-05",
+    "standardUnit": "이차방정식과 이차함수",
+    "standardUnitOrder": 5,
+    "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
+    "subUnit": "이차함수의 활용",
+    "subUnitClassificationDepth": "complete_active_binding",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "이차방정식과 이차함수"
+    ],
+    "wide": false,
+    "content": "최고차항의 계수가 $1$인 이차함수 $y=f(x)$의 그래프와 직선 $y=3x+k$는 서로 다른 두 점에서 만난다. 두 교점의 $x$좌표 $\\alpha<\\beta$가 $\\alpha:\\beta=1:4$를 만족하고 $f(1)=2$일 때, $k$가 최대가 되는 경우의 $\\beta$의 값은?",
+    "choices": [
+      "$\\dfrac32$",
+      "$2$",
+      "$\\dfrac52$",
+      "$3$",
+      "$\\dfrac72$"
+    ],
+    "answer": "③",
+    "solution": "$f(x)=x^2+px+q$로 놓는다.\n교점의 $x$좌표는 $x^2+(p-3)x+(q-k)=0$의 근이므로\n$\\alpha+\\beta=3-p$, $\\alpha\\beta=q-k$이다.\n$\\beta=4\\alpha$, $\\alpha<\\beta$이므로 $\\alpha>0$이다.\n따라서 $5\\alpha=3-p$, $p=3-5\\alpha$이다.\n$f(1)=2$에서 $1+p+q=2$이므로 $q=1-p=-2+5\\alpha$이다.\n$4\\alpha^2=q-k$에서\n$k=-4\\alpha^2+5\\alpha-2$\n$=-4\\left(\\alpha-\\dfrac58\\right)^2-\\dfrac7{16}$이다.\n$\\alpha>0$에서 $k$는 $\\alpha=\\dfrac58$일 때 최대이고, 이때\n$\\beta=4\\alpha=\\dfrac52$이다.",
+    "score": 5.2,
+    "points": 5.2,
+    "difficultyBucket": 4,
+    "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+    "templateKey": "TPL_H1_QUADRATIC_EXTREMA_MODEL",
+    "sourceQid": 16,
+    "variationType": "EXAM_FOLLOWUP",
+    "rpmPrimaryRecordId": "H1-RPM-171",
+    "crossConceptKeys": [
+      "CC_QUADRATIC_LINE_INTERSECTION_EQUATION",
+      "CC_VIETA_FORMULAS_QUADRATIC"
+    ],
+    "conditionKeys": [
+      "COND_FUNCTION_VALUE_CONSTRAINT"
+    ],
+    "integrationPattern": "INTERDEPENDENT",
+    "provenance": {
+      "kind": "SIMILAR_FROM_ORIGINAL",
+      "sourceExam": "26_금당고_1학기_중간_고1_기출_c",
+      "sourceArchiveFile": "archive/exams/original/high/h1/1mid/26_금당고_1학기_중간_고1_기출_c.js",
+      "sourceQid": 16,
+      "variationType": "EXAM_FOLLOWUP",
+      "createdAt": "2026-11-25",
+      "createdAtSource": "GPT direct authored"
+    }
+  },
+  {
+    "id": 17,
+    "category": "이차방정식과 이차함수",
+    "standardCourse": "공통수학1",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-C-05",
+    "standardUnit": "이차방정식과 이차함수",
+    "standardUnitOrder": 5,
+    "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
+    "subUnit": "이차함수의 그래프",
+    "subUnitClassificationDepth": "complete_active_binding",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "이차방정식과 이차함수"
+    ],
+    "wide": false,
+    "content": "함수 $f,g$가 다음과 같다.\n$f(x)=\\begin{cases}-x^2&(x<0)\\\\x^2-3x&(x\\ge0)\\end{cases}$\n$g(x)=\\begin{cases}a(x+2)&(x<-2)\\\\0&(-2\\le x<3)\\\\a(x-3)&(x\\ge3)\\end{cases}$\n양수 $a$에 대하여 두 그래프 $y=f(x)$와 $y=g(x)$가 서로 다른 세 점에서 만나는 $a$의 범위로 옳은 것은?",
+    "choices": [
+      "$0<a<3$",
+      "$3\\le a<8$",
+      "$3<a<8$",
+      "$3<a\\le8$",
+      "$a>8$"
+    ],
+    "answer": "③",
+    "solution": "구간마다 $f(x)=g(x)$를 풀고 해당 구간에 실제로 속하는 해만 센다.\n먼저 $-2\\le x<3$에서 $g(x)=0$이다. $x<0$에서는 $-x^2=0$의 해 $x=0$이 범위 밖이고, $0\\le x<3$에서는 $x(x-3)=0$ 중 $x=0$만 범위 안이다. 따라서 이 구간의 교점은 항상 하나다.\n$x\\ge3$에서는 $x^2-3x=a(x-3)$이므로 $(x-3)(x-a)=0$이다. $x=3$은 항상 교점이며, $a>3$일 때만 $x=a$가 추가된다.\n$x<-2$에서는 $-x^2=a(x+2)$이므로 $x^2+ax+2a=0$이다. 판별식 $D=a(a-8)$에 의하여 $0<a<8$에서는 교점이 없고 $a=8$에서는 $x=-4$에서 한 점, $a>8$에서는 서로 다른 두 점에서 만난다. $a>8$일 때 더 큰 근도 $(-a+\\sqrt{a^2-8a})/2<-2$이므로 두 근 모두 이 구간에 들어 있다.\n교점 수는 $0<a\\le3$에서 $2$, $3<a<8$에서 $3$, $a=8$에서 $4$, $a>8$에서 $5$이다.\n따라서 정확히 세 점에서 만날 조건은 $3<a<8$이다.",
+    "score": 5.2,
+    "points": 5.2,
+    "difficultyBucket": 5,
+    "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+    "templateKey": "TPL_H1_QUADRATIC_INTERSECTION_TANGENCY",
+    "sourceQid": 17,
+    "variationType": "EXAM_FOLLOWUP",
+    "rpmPrimaryRecordId": "H1-RPM-168",
+    "crossConceptKeys": [
+      "CC_DISCRIMINANT_APPLICATION"
+    ],
+    "conditionKeys": [
+      "COND_POSITIVE",
+      "COND_PIECEWISE_DOMAIN_PARTITION",
+      "COND_EXACT_INTERSECTION_COUNT"
+    ],
+    "integrationPattern": "CASE_BRANCH",
+    "provenance": {
+      "kind": "SIMILAR_FROM_ORIGINAL",
+      "sourceExam": "26_금당고_1학기_중간_고1_기출_c",
+      "sourceArchiveFile": "archive/exams/original/high/h1/1mid/26_금당고_1학기_중간_고1_기출_c.js",
+      "sourceQid": 17,
+      "variationType": "EXAM_FOLLOWUP",
+      "createdAt": "2026-11-25",
+      "createdAtSource": "GPT direct authored"
+    },
+    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_금당고_1학기_중간_고1_유사2_plans/q17-solution.plan.json"
+  },
+  {
+    "id": 18,
+    "category": "항등식과 나머지 정리",
+    "standardCourse": "공통수학1",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-C-01",
+    "standardUnit": "다항식의 연산",
+    "standardUnitOrder": 1,
+    "subUnitKey": "H22-C-01-POLYNOMIAL_BASIC",
+    "subUnit": "다항식의 연산",
+    "subUnitClassificationDepth": "complete_active_binding",
+    "questionType": "서술형",
+    "layoutTag": "grid",
+    "tags": [
+      "서술형",
+      "표"
+    ],
+    "wide": false,
+    "content": "[서·논술형 1]\n삼차다항식 $P(x)=ax^3+bx^2+cx+9$를 $x-2$로 나누는 조립제법의 일부가 다음 표에 나타나 있다. 맨 아랫줄의 처음 세 수는 몫의 계수이고 마지막 수는 나머지이다.\n\n| 조립수 | $x^3$ | $x^2$ | $x$ | 상수 |\n| :---: | :---: | :---: | :---: | :---: |\n| $2$ | $a$ | $b$ | $c$ | $9$ |\n|  |  | $4$ | $6$ | $2$ |\n|  | $2$ | $3$ | $1$ | $11$ |\n\n$P(x)$를 $x+2$로 나누었을 때의 나머지를 구하는 과정을 서술하시오.",
+    "choices": [],
+    "answer": "-1",
+    "solution": "조립제법에서 첫째 계수는 그대로 내려오므로 $a=2$이다.\n다음 칸에서 $b+4=3$이므로 $b=-1$이다.\n그다음 칸에서 $c+6=1$이므로 $c=-5$이다.\n따라서 $P(x)=2x^3-x^2-5x+9$이다.\n$x+2$로 나누었을 때의 나머지는 나머지정리에 따라 $P(-2)$이다.\n$P(-2)=2(-2)^3-(-2)^2-5(-2)+9$\n$=-16-4+10+9=-1$이다.\n그러므로 구하는 나머지는 $-1$이다.",
+    "score": 8,
+    "points": 8,
+    "difficultyBucket": 3,
+    "problemTypeKey": "PT_H1_POLY_DIVISION",
+    "templateKey": "TPL_H1_POLY_DIVISION_EXECUTION",
+    "sourceQid": 18,
+    "variationType": "EXAM_FOLLOWUP",
+    "rpmPrimaryRecordId": "H1-RPM-138",
+    "crossConceptKeys": [
+      "CC_REMAINDER_THEOREM_LINEAR"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "provenance": {
+      "kind": "SIMILAR_FROM_ORIGINAL",
+      "sourceExam": "26_금당고_1학기_중간_고1_기출_c",
+      "sourceArchiveFile": "archive/exams/original/high/h1/1mid/26_금당고_1학기_중간_고1_기출_c.js",
+      "sourceQid": 18,
+      "variationType": "EXAM_FOLLOWUP",
+      "createdAt": "2026-11-25",
+      "createdAtSource": "GPT direct authored"
+    }
+  },
+  {
+    "id": 19,
+    "category": "다항식의 연산",
+    "standardCourse": "공통수학1",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-C-01",
+    "standardUnit": "다항식의 연산",
+    "standardUnitOrder": 1,
+    "subUnitKey": "H22-C-01-POLYNOMIAL_BASIC",
+    "subUnit": "다항식의 연산",
+    "subUnitClassificationDepth": "complete_active_binding",
+    "questionType": "서술형",
+    "layoutTag": "grid",
+    "tags": [
+      "서술형",
+      "다항식의 연산"
+    ],
+    "wide": false,
+    "content": "[서·논술형 2]\n두 구가 서로 외접하고 있고, 두 구의 지름의 길이의 합은 $10$이다. 두 구의 부피의 합이 $\\dfrac{140}{3}\\pi$일 때, 두 구의 겉넓이의 합을 $a\\pi$라 하자. $a$의 값을 구하는 과정을 서술하시오.",
+    "choices": [],
+    "answer": "52",
+    "solution": "두 구의 지름을 $d_1,d_2$라 하면 $d_1+d_2=10$이다.\n지름이 $d$인 구의 부피는 $\\dfrac{\\pi d^3}{6}$이므로\n$\\dfrac{\\pi}{6}(d_1^3+d_2^3)=\\dfrac{140}{3}\\pi$이다.\n따라서 $d_1^3+d_2^3=280$이다.\n세제곱의 합 공식에서\n$d_1^3+d_2^3=(d_1+d_2)^3-3d_1d_2(d_1+d_2)$이므로\n$280=1000-30d_1d_2$이다. 따라서 $d_1d_2=24$이다.\n이제 $d_1^2+d_2^2=(d_1+d_2)^2-2d_1d_2=100-48=52$이다.\n지름이 $d$인 구의 겉넓이는 $\\pi d^2$이므로 두 구의 겉넓이의 합은 $52\\pi$이다.\n따라서 $a=52$이다.",
+    "score": 8,
+    "points": 8,
+    "difficultyBucket": 3,
+    "problemTypeKey": "PT_H1_POLY_FORMULA_SYMMETRIC",
+    "templateKey": "TPL_H1_FORMULA_SYMMETRIC",
+    "sourceQid": 19,
+    "variationType": "EXAM_FOLLOWUP",
+    "rpmPrimaryRecordId": "H1-RPM-136",
+    "crossConceptKeys": [
+      "CC_GEOMETRIC_AREA_VOLUME_FORMULA",
+      "CC_CUBIC_SUM_SYMMETRIC_EVALUATION"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "provenance": {
+      "kind": "SIMILAR_FROM_ORIGINAL",
+      "sourceExam": "26_금당고_1학기_중간_고1_기출_c",
+      "sourceArchiveFile": "archive/exams/original/high/h1/1mid/26_금당고_1학기_중간_고1_기출_c.js",
+      "sourceQid": 19,
+      "variationType": "EXAM_FOLLOWUP",
+      "createdAt": "2026-11-25",
+      "createdAtSource": "GPT direct authored"
+    }
+  },
+  {
+    "id": 20,
+    "category": "이차방정식과 이차함수",
+    "standardCourse": "공통수학1",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-C-05",
+    "standardUnit": "이차방정식과 이차함수",
+    "standardUnitOrder": 5,
+    "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
+    "subUnit": "이차함수의 활용",
+    "subUnitClassificationDepth": "complete_active_binding",
+    "questionType": "서술형",
+    "layoutTag": "grid",
+    "tags": [
+      "서술형",
+      "이차방정식과 이차함수"
+    ],
+    "wide": false,
+    "content": "[서·논술형 3]\n실수 $t$에 대하여 구간 $t\\le x\\le t+2$에서 이차함수 $f(x)=x^2-4x+5$의 최댓값과 최솟값의 **합**을 $g(t)$라 하자. 방정식 $g(t)=2$, $g(t)=3$, $g(t)=5$, $g(t)=10$의 서로 다른 실근의 개수를 차례로 $a,b,c,d$라 할 때, $a+2b+3c+4d$의 값을 구하는 과정을 서술하시오.",
+    "choices": [],
+    "answer": "16",
+    "solution": "$f(x)=x^2-4x+5=(x-2)^2+1$이므로 축은 $x=2$이고 최솟값은 $1$이다.\n구간의 왼쪽 끝점과 축 사이의 거리를 $u=t-2$라 놓으면 구간은 축을 기준으로 $[u,u+2]$에 해당한다.\n① $u\\le-2$이면 구간이 모두 축의 왼쪽에 있다. 양 끝점에서 최댓값과 최솟값을 얻으므로 $g=u^2+(u+2)^2+2$이다.\n② $-2<u\\le-1$이면 축이 구간 안에 있고 왼쪽 끝점이 더 멀다. 따라서 $g=u^2+2$이다.\n③ $-1<u<0$이면 축이 구간 안에 있고 오른쪽 끝점이 더 멀다. 따라서 $g=(u+2)^2+2$이다.\n④ $u\\ge0$이면 구간이 모두 축의 오른쪽에 있어 $g=u^2+(u+2)^2+2$이다.\n이 함수는 $u=-1$에서 최솟값 $3$을 가지므로 $g(t)=2$의 실근은 없고 $g(t)=3$의 실근은 하나다. 즉 $a=0$, $b=1$이다.\n$g(t)=5$에서는 가운데 두 경우에서 각각 $u=-\\sqrt3$, $u=-2+\\sqrt3$을 얻고, 둘 다 해당 구간에 속하므로 $c=2$이다.\n$g(t)=10$은 바깥 두 경우에서 $u^2+(u+2)^2+2=10$, 즉 $(u+1)^2=3$을 만족한다. 따라서 $u=-1\\pm\\sqrt3$이 각각 $u\\le-2$ 또는 $u\\ge0$을 만족하여 $d=2$이다.\n결국 $a+2b+3c+4d=0+2+6+8=16$이다.",
+    "score": 12,
+    "points": 12,
+    "difficultyBucket": 5,
+    "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+    "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+    "sourceQid": 20,
+    "variationType": "EXAM_FOLLOWUP",
+    "rpmPrimaryRecordId": "H1-RPM-170",
+    "crossConceptKeys": [
+      "CC_HORIZONTAL_LINE_INTERSECTIONS"
+    ],
+    "conditionKeys": [
+      "COND_PIECEWISE_DOMAIN_PARTITION",
+      "COND_RESTRICTED_INTERVAL"
+    ],
+    "integrationPattern": "CASE_BRANCH",
+    "provenance": {
+      "kind": "SIMILAR_FROM_ORIGINAL",
+      "sourceExam": "26_금당고_1학기_중간_고1_기출_c",
+      "sourceArchiveFile": "archive/exams/original/high/h1/1mid/26_금당고_1학기_중간_고1_기출_c.js",
+      "sourceQid": 20,
+      "variationType": "EXAM_FOLLOWUP",
+      "createdAt": "2026-11-25",
+      "createdAtSource": "GPT direct authored"
+    },
+    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_금당고_1학기_중간_고1_유사2_plans/q20-solution.plan.json"
+  }
+];

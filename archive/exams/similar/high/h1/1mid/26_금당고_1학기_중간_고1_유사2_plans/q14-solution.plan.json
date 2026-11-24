@@ -1,0 +1,22 @@
+{
+  "capability": "polynomial-spike-v1",
+  "sourceQuote": "직사각형의 둘레가 최대일 때 그 높이는",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": ["9", "0", "-1"],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "domain": [-3, 3],
+    "viewport": [-4, 4, -1, 10],
+    "requiredPoints": [{"id": "V", "x": 0, "y": 9}, {"id": "A", "x": -3, "y": 0}, {"id": "B", "x": 3, "y": 0}],
+    "exactCoordinates": {"V": ["0", "9"], "A": ["-3", "0"], "B": ["3", "0"]},
+    "overlays": {
+      "points": [{"id": "P", "curveX": "1"}, {"id": "Q", "curveX": "-1"}, {"id": "R", "axis": "x", "value": "1"}, {"id": "S", "axis": "x", "value": "-1"}],
+      "polygons": [{"id": "Rect", "points": ["S", "R", "P", "Q"], "fill": "NONE"}]
+    },
+    "axisTickValues": {"x": [-3, 3], "y": [9]}
+  },
+  "pointNames": {"P": "P", "Q": "Q", "R": "R", "S": "S"},
+  "caption": "포물선 y=9-x²에 내접한 직사각형. 둘레가 최대일 때 윗꼭짓점은 (±1,8)이므로 높이가 8이다.",
+  "sourceConditions": [{"id": "S1", "condition": "반폭 t=1에서 둘레 P=-2(t-1)²+20이 최대", "mappedTo": ["graphPlan.coefficients", "graphPlan.overlays"]}],
+  "newVisualInformation": ["최댓값을 주는 직사각형의 실제 위치와 높이 8을 보여 준다."]
+}
