@@ -1,0 +1,260 @@
+window.examTitle = "기하_127_평면벡터의내적의연산법칙-두벡터가이루는_고2_유형은행1";
+
+window.questionBank = [
+  {
+    "id": 1,
+    "category": "벡터의 내적",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-07",
+    "standardUnit": "벡터의 내적",
+    "standardUnitOrder": 7,
+    "subUnitKey": "H22-GE-07-VECTOR_DOT",
+    "subUnit": "벡터의 내적",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22_GE_07_VECTOR_DOT",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "벡터의 내적"
+    ],
+    "wide": false,
+    "content": "두 평면벡터 $\\vec{a}, \\vec{b}$가 이루는 각의 크기가 $\\frac{\\pi}{3}$이고\n$$|\\vec{b}|=2,\\; |\\vec{a}-2\\vec{b}|=2\\sqrt{7}$$\n일 때, $|\\vec{a}|$의 값은?",
+    "choices": [
+      "2",
+      "3",
+      "4",
+      "5",
+      "6"
+    ],
+    "answer": "⑤",
+    "solution": "1단계: $|\\vec{a}| = x$ ($x > 0$)라 두고 내적의 정의를 이용하여 $\\vec{a}\\cdot\\vec{b}$를 $x$로 나타낸다.\n$\\vec{a}\\cdot\\vec{b} = |\\vec{a}||\\vec{b}|\\cos\\frac{\\pi}{3} = x \\times 2 \\times \\frac{1}{2} = x$\n2단계: 주어진 크기 $|\\vec{a}-2\\vec{b}|=2\\sqrt{7}$의 양변을 제곱하여 전개한다.\n$|\\vec{a}-2\\vec{b}|^2 = |\\vec{a}|^2 - 4(\\vec{a}\\cdot\\vec{b}) + 4|\\vec{b}|^2 = (2\\sqrt{7})^2$\n3단계: 1단계의 식과 $|\\vec{b}|=2$를 대입하여 $x$에 관한 이차방정식을 세운다.\n$x^2 - 4(x) + 4(2^2) = 28$\n$x^2 - 4x + 16 = 28$\n$x^2 - 4x - 12 = 0$\n4단계: 이차방정식을 인수분해하여 $x$를 구한다.\n$(x-6)(x+2) = 0$이므로 $x = 6$ 또는 $x = -2$\n5단계: 벡터의 크기는 양수이므로 $x > 0$이다.\n$|\\vec{a}| = x = 6$\n따라서 정답은 ⑤이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-073",
+    "problemTypeKey": "PT_GEO_PLANE_VECTOR",
+    "templateKey": "TPL_GEO_PLANE_VECTOR_DOT",
+    "crossConceptKeys": [
+      "CC_QUADRATIC_EQUATION"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 2,
+    "category": "벡터의 내적",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-07",
+    "standardUnit": "벡터의 내적",
+    "standardUnitOrder": 7,
+    "subUnitKey": "H22-GE-07-VECTOR_DOT",
+    "subUnit": "벡터의 내적",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22_GE_07_VECTOR_DOT",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "벡터의 내적"
+    ],
+    "wide": false,
+    "content": "세 평면벡터 $\\vec{a}, \\vec{b}, \\vec{c}$에 대하여\n$$\\vec{a}+\\vec{b}+\\vec{c}=\\vec{0},\\; |\\vec{b}|=7,\\; |\\vec{c}|=13$$\n이고 두 벡터 $\\vec{a}, \\vec{b}$가 이루는 각의 크기가 $60^\\circ$일 때, $|\\vec{a}|$의 값은?",
+    "choices": [
+      "6",
+      "8",
+      "10",
+      "12",
+      "14"
+    ],
+    "answer": "②",
+    "solution": "1단계: 주어진 식에서 $\\vec{c}$를 이항하여 나타낸다.\n$\\vec{c} = -(\\vec{a}+\\vec{b})$\n2단계: 양변의 크기의 제곱을 취하여 전개한다.\n$|\\vec{c}|^2 = |-(\\vec{a}+\\vec{b})|^2 = |\\vec{a}+\\vec{b}|^2 = |\\vec{a}|^2 + 2(\\vec{a}\\cdot\\vec{b}) + |\\vec{b}|^2$\n3단계: $|\\vec{a}| = x$ ($x > 0$)라 하고 내적의 정의를 적용한다.\n$\\vec{a}\\cdot\\vec{b} = |\\vec{a}||\\vec{b}|\\cos 60^\\circ = x \\times 7 \\times \\frac{1}{2} = \\frac{7}{2}x$\n4단계: 주어진 수치 $|\\vec{b}|=7, |\\vec{c}|=13$을 대입하여 방정식을 세운다.\n$13^2 = x^2 + 2\\left(\\frac{7}{2}x\\right) + 7^2$\n$169 = x^2 + 7x + 49$\n$x^2 + 7x - 120 = 0$\n5단계: 이차방정식을 인수분해하여 근을 구한다.\n$(x-8)(x+15) = 0$이므로 $x = 8$ 또는 $x = -15$\n6단계: 벡터의 크기는 양수이므로 조건을 확인한다.\n$x > 0$이므로 $|\\vec{a}| = 8$\n따라서 정답은 ②이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-073",
+    "problemTypeKey": "PT_GEO_PLANE_VECTOR",
+    "templateKey": "TPL_GEO_PLANE_VECTOR_DOT",
+    "crossConceptKeys": [
+      "CC_QUADRATIC_EQUATION"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 3,
+    "category": "벡터의 내적",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-07",
+    "standardUnit": "벡터의 내적",
+    "standardUnitOrder": 7,
+    "subUnitKey": "H22-GE-07-VECTOR_DOT",
+    "subUnit": "벡터의 내적",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22_GE_07_VECTOR_DOT",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "벡터의 내적"
+    ],
+    "wide": false,
+    "content": "두 평면벡터 $\\vec{a}, \\vec{b}$가 이루는 각의 크기가 $60^\\circ$이고\n$$|\\vec{a}|=4,\\; |\\vec{b}|=3$$\n일 때, $|2\\vec{a}-\\vec{b}|$의 값은?",
+    "choices": [
+      "3",
+      "4",
+      "5",
+      "6",
+      "7"
+    ],
+    "answer": "⑤",
+    "solution": "1단계: 두 벡터가 이루는 각과 크기로부터 내적 $\\vec{a}\\cdot\\vec{b}$를 구한다.\n내적의 정의: $\\vec{a}\\cdot\\vec{b} = |\\vec{a}||\\vec{b}|\\cos 60^\\circ = 4 \\times 3 \\times \\frac{1}{2} = 6$\n2단계: 구하고자 하는 벡터의 크기의 제곱 $|2\\vec{a}-\\vec{b}|^2$을 전개한다.\n$|2\\vec{a}-\\vec{b}|^2 = 4|\\vec{a}|^2 - 4(\\vec{a}\\cdot\\vec{b}) + |\\vec{b}|^2$\n3단계: 주어진 크기와 구한 내적을 대입하여 계산한다.\n$= 4 \\times 4^2 - 4 \\times 6 + 3^2 = 4 \\times 16 - 24 + 9 = 64 - 24 + 9 = 49$\n4단계: 크기는 양수이므로 양의 제곱근을 취한다.\n$|2\\vec{a}-\\vec{b}| = \\sqrt{49} = 7$\n따라서 정답은 ⑤이다.",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-073",
+    "problemTypeKey": "PT_GEO_PLANE_VECTOR",
+    "templateKey": "TPL_GEO_PLANE_VECTOR_DOT",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE"
+  },
+  {
+    "id": 4,
+    "category": "벡터의 내적",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-07",
+    "standardUnit": "벡터의 내적",
+    "standardUnitOrder": 7,
+    "subUnitKey": "H22-GE-07-VECTOR_DOT",
+    "subUnit": "벡터의 내적",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22_GE_07_VECTOR_DOT",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "벡터의 내적"
+    ],
+    "wide": false,
+    "content": "한 변의 길이가 1인 정삼각형 $\\mathrm{ABC}$에서 $\\vec{\\mathrm{AB}}=\\vec{a}, \\vec{\\mathrm{AC}}=\\vec{b}$라 할 때, $|3\\vec{a}+5\\vec{b}|$의 값은?\n[그림: 한 변의 길이가 1인 정삼각형 ABC에서 꼭짓점 A에서 시작하는 두 변 AB와 AC의 벡터를 각각 a와 b로 표시]",
+    "choices": [
+      "5",
+      "6",
+      "7",
+      "8",
+      "9"
+    ],
+    "answer": "③",
+    "solution": "1단계: 정삼각형의 성질로부터 두 벡터의 크기와 이루는 각의 크기를 확인한다.\n$|\\vec{a}| = |\\vec{\\mathrm{AB}}| = 1$, $|\\vec{b}| = |\\vec{\\mathrm{AC}}| = 1$, 정삼각형의 한 내각의 크기는 $60^\\circ$이다.\n2단계: 두 벡터의 내적 $\\vec{a}\\cdot\\vec{b}$를 계산한다.\n$\\vec{a}\\cdot\\vec{b} = |\\vec{a}||\\vec{b}|\\cos 60^\\circ = 1 \\times 1 \\times \\frac{1}{2} = \\frac{1}{2}$\n3단계: 구하고자 하는 식의 크기의 제곱 $|3\\vec{a}+5\\vec{b}|^2$을 전개한다.\n$|3\\vec{a}+5\\vec{b}|^2 = 9|\\vec{a}|^2 + 30(\\vec{a}\\cdot\\vec{b}) + 25|\\vec{b}|^2$\n4단계: 값들을 대입하여 계산한다.\n$= 9 \\times 1^2 + 30 \\times \\frac{1}{2} + 25 \\times 1^2 = 9 + 15 + 25 = 49$\n5단계: 크기는 양수이므로 양의 제곱근을 취한다.\n$|3\\vec{a}+5\\vec{b}| = \\sqrt{49} = 7$\n따라서 정답은 ③이다.",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-073",
+    "problemTypeKey": "PT_GEO_PLANE_VECTOR",
+    "templateKey": "TPL_GEO_PLANE_VECTOR_DOT",
+    "crossConceptKeys": [
+      "CC_EQUILATERAL_TRIANGLE"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 5,
+    "category": "벡터의 내적",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-07",
+    "standardUnit": "벡터의 내적",
+    "standardUnitOrder": 7,
+    "subUnitKey": "H22-GE-07-VECTOR_DOT",
+    "subUnit": "벡터의 내적",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22_GE_07_VECTOR_DOT",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "벡터의 내적"
+    ],
+    "wide": false,
+    "content": "한 변의 길이가 1인 정육각형 $\\mathrm{ABCDEF}$에서 $\\vec{\\mathrm{BA}}=\\vec{a}, \\vec{\\mathrm{BC}}=\\vec{b}$라 할 때, $|3\\vec{a}+4\\vec{b}|$의 값은?\n[그림: 한 변의 길이가 1인 정육각형 ABCDEF에서 꼭짓점 B에서 뻗어나가는 두 변 BA와 BC의 벡터를 각각 a와 b로 표시]",
+    "choices": [
+      "\\sqrt{10}",
+      "\\sqrt{11}",
+      "2\\sqrt{3}",
+      "\\sqrt{13}",
+      "\\sqrt{14}"
+    ],
+    "answer": "④",
+    "solution": "1단계: 정육각형의 성질로부터 두 벡터의 크기와 이루는 각의 크기를 구한다.\n한 변의 길이가 1이므로 $|\\vec{a}| = |\\vec{\\mathrm{BA}}| = 1, |\\vec{b}| = |\\vec{\\mathrm{BC}}| = 1$이다.\n정육각형의 한 내각의 크기는 $\\frac{(6-2) \\times 180^\\circ}{6} = 120^\\circ$이므로 두 벡터 $\\vec{a}, \\vec{b}$가 이루는 각의 크기는 $120^\\circ$이다.\n2단계: 내적의 정의를 이용하여 $\\vec{a}\\cdot\\vec{b}$를 구한다.\n$\\vec{a}\\cdot\\vec{b} = |\\vec{a}||\\vec{b}|\\cos 120^\\circ = 1 \\times 1 \\times \\left(-\\frac{1}{2}\\right) = -\\frac{1}{2}$\n3단계: 구하고자 하는 식의 크기의 제곱 $|3\\vec{a}+4\\vec{b}|^2$을 전개한다.\n$|3\\vec{a}+4\\vec{b}|^2 = 9|\\vec{a}|^2 + 24(\\vec{a}\\cdot\\vec{b}) + 16|\\vec{b}|^2$\n4단계: 값들을 대입하여 계산한다.\n$= 9 \\times 1^2 + 24 \\times \\left(-\\frac{1}{2}\\right) + 16 \\times 1^2 = 9 - 12 + 16 = 13$\n5단계: 크기는 양수이므로 양의 제곱근을 취한다.\n$|3\\vec{a}+4\\vec{b}| = \\sqrt{13}$\n주의: 정육각형의 한 내각은 $120^\\circ$로 둔각이므로 내적의 값 부호에 주의한다 ($\\cos 120^\\circ = -\\frac{1}{2} < 0$).\n따라서 정답은 ④이다.",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-073",
+    "problemTypeKey": "PT_GEO_PLANE_VECTOR",
+    "templateKey": "TPL_GEO_PLANE_VECTOR_DOT",
+    "crossConceptKeys": [
+      "CC_REGULAR_HEXAGON"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 6,
+    "category": "벡터의 내적",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-07",
+    "standardUnit": "벡터의 내적",
+    "standardUnitOrder": 7,
+    "subUnitKey": "H22-GE-07-VECTOR_DOT",
+    "subUnit": "벡터의 내적",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22_GE_07_VECTOR_DOT",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "벡터의 내적"
+    ],
+    "wide": false,
+    "content": "한 변의 길이가 1인 정사각형 $\\mathrm{ABCD}$에서 $\\vec{\\mathrm{AB}}=\\vec{a}, \\vec{\\mathrm{AD}}=\\vec{b}$라 할 때,\n$$(\\vec{a}+2\\vec{b})\\cdot(-\\vec{a}+\\vec{b})$$\n의 값은?\n[그림: 한 변의 길이가 1인 정사각형 ABCD에서 꼭짓점 A에서 시작하는 두 변 AB와 AD의 벡터를 각각 a와 b로 표시]",
+    "choices": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "answer": "①",
+    "solution": "1단계: 정사각형의 성질로부터 벡터의 크기와 수직 관계를 확인한다.\n한 변의 길이가 1이므로 $|\\vec{a}| = |\\vec{\\mathrm{AB}}| = 1, |\\vec{b}| = |\\vec{\\mathrm{AD}}| = 1$이다.\n변 $\\mathrm{AB}$와 변 $\\mathrm{AD}$는 직교하므로 $\\vec{a} \\perp \\vec{b}$이고, 따라서 $\\vec{a}\\cdot\\vec{b} = 0$이다.\n2단계: 주어진 식을 내적의 분배법칙을 이용하여 전개한다.\n$(\\vec{a}+2\\vec{b})\\cdot(-\\vec{a}+\\vec{b}) = -(\\vec{a}\\cdot\\vec{a}) + \\vec{a}\\cdot\\vec{b} - 2(\\vec{b}\\cdot\\vec{a}) + 2(\\vec{b}\\cdot\\vec{b})$\n$= -|\\vec{a}|^2 - \\vec{a}\\cdot\\vec{b} + 2|\\vec{b}|^2$\n3단계: 크기 $|\\vec{a}|=1, |\\vec{b}|=1$과 내적 $\\vec{a}\\cdot\\vec{b}=0$을 대입하여 계산한다.\n$= -1^2 - 0 + 2 \\times 1^2 = -1 + 2 = 1$\n따라서 정답은 ①이다.",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-073",
+    "problemTypeKey": "PT_GEO_PLANE_VECTOR",
+    "templateKey": "TPL_GEO_PLANE_VECTOR_DOT",
+    "crossConceptKeys": [
+      "CC_SQUARE_PROPERTIES"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "NONE"
+  }
+];

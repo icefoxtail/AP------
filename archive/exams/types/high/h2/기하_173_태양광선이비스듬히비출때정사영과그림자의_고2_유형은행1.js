@@ -1,0 +1,227 @@
+window.examTitle = "기하_173_태양광선이비스듬히비출때정사영과그림자의_고2_유형은행1";
+
+window.questionBank = [
+  {
+    "id": 1,
+    "category": "공간도형 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-03",
+    "standardUnit": "공간도형",
+    "standardUnitOrder": 3,
+    "subUnitKey": "H22-GE-03-CORE",
+    "subUnit": "공간도형 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-03-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "공간도형 핵심 개념"
+    ],
+    "wide": false,
+    "content": "그림과 같이 태양광선이 지면과 $45^\\circ$의 각을 이루면서 지름의 길이가 $16\\,\\mathrm{cm}$인 공을 비추고 있다. 이때 지면에 생기는 이 공의 그림자의 넓이는? (단, 공은 구로 생각하고, 단위는 $\\mathrm{cm}^2$이다.) [그림: 지름의 길이가 16cm인 구 모양의 공이 지면 위에 있고, 평행한 태양광선이 지면과 45도의 각을 이루며 비추어 지면에 타원 모양의 그림자가 생겨 있다.]",
+    "choices": [
+      "$64\\sqrt{2}\\pi$",
+      "$72\\sqrt{2}\\pi$",
+      "$80\\sqrt{2}\\pi$",
+      "$96\\sqrt{2}\\pi$",
+      "$128\\sqrt{2}\\pi$"
+    ],
+    "answer": "①",
+    "solution": "공의 지름의 길이가 $16\\,\\mathrm{cm}$이므로 반지름의 길이는 $r=8\\,\\mathrm{cm}$이다.\n공의 중심을 지나고 태양광선에 수직인 평면으로 공을 자른 단면은 반지름의 길이가 $8\\,\\mathrm{cm}$인 원이므로 그 넓이 $S$는\n$$S=\\pi\\times 8^2=64\\pi$$\n이 원은 지면에 생긴 그림자를 태양광선에 수직인 평면 위로 정사영시킨 도형과 일치한다.\n태양광선과 지면이 이루는 각의 크기가 $45^\\circ$이므로, 지면과 태양광선에 수직인 평면이 이루는 각의 크기는 $90^\\circ-45^\\circ=45^\\circ$이다.\n따라서 구하는 그림자의 넓이를 $S'$이라 하면\n$$S=S'\\cos 45^\\circ=S'\\sin 45^\\circ$$\n$$S'=\\frac{S}{\\sin 45^\\circ}=\\frac{64\\pi}{\\frac{\\sqrt{2}}{2}}=64\\sqrt{2}\\pi$$\n따라서 정답은 ①이다.",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-056",
+    "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+    "templateKey": "TPL_GEO_SPACE_FIGURE_PROJECTION",
+    "crossConceptKeys": [
+      "CC_SPACE_FIGURE",
+      "CC_ELLIPSE",
+      "CC_TRIG_RATIO"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "NONE"
+  },
+  {
+    "id": 2,
+    "category": "공간도형 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-03",
+    "standardUnit": "공간도형",
+    "standardUnitOrder": 3,
+    "subUnitKey": "H22-GE-03-CORE",
+    "subUnit": "공간도형 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-03-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "공간도형 핵심 개념"
+    ],
+    "wide": false,
+    "content": "그림과 같이 구 모양의 기구가 하늘에 떠 있다. 태양광선이 지면과 $30^\\circ$의 각을 이루며 비출 때, 지면 위에 생기는 기구의 그림자의 넓이가 $24\\pi$이다. 이때 구 모양의 기구의 부피는? [그림: 공중에 떠 있는 구 모양의 기구에 평행한 태양광선이 지면과 30도의 각을 이루며 비추고 있고, 지면 위에 타원 모양의 그림자가 생겨 있다.]",
+    "choices": [
+      "$16\\sqrt{3}\\pi$",
+      "$20\\sqrt{3}\\pi$",
+      "$24\\sqrt{3}\\pi$",
+      "$32\\sqrt{3}\\pi$",
+      "$36\\sqrt{3}\\pi$"
+    ],
+    "answer": "④",
+    "solution": "구 모양의 기구의 반지름의 길이를 $r$라 하자.\n구의 중심을 지나고 태양광선에 수직인 평면으로 자른 단면의 넓이는 $S=\\pi r^2$이다.\n태양광선과 지면이 이루는 각의 크기가 $30^\\circ$이므로 지면과 태양광선에 수직인 평면이 이루는 각의 크기는 $90^\\circ-30^\\circ=60^\\circ$이다.\n지면에 생긴 그림자의 넓이 $S'=24\\pi$이므로 정사영의 성질에 의해\n$$S=S'\\cos 60^\\circ=24\\pi\\times\\frac{1}{2}=12\\pi$$\n즉, $\\pi r^2=12\\pi$이므로 $r=2\\sqrt{3}$이다.\n따라서 구 모양의 기구의 부피 $V$는\n$$V=\\frac{4}{3}\\pi r^3=\\frac{4}{3}\\pi\\times (2\\sqrt{3})^3=\\frac{4}{3}\\pi\\times 24\\sqrt{3}=32\\sqrt{3}\\pi$$\n따라서 정답은 ④이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-056",
+    "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+    "templateKey": "TPL_GEO_SPACE_FIGURE_PROJECTION",
+    "crossConceptKeys": [
+      "CC_SPACE_FIGURE",
+      "CC_ELLIPSE",
+      "CC_TRIG_RATIO"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 3,
+    "category": "공간도형 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-03",
+    "standardUnit": "공간도형",
+    "standardUnitOrder": 3,
+    "subUnitKey": "H22-GE-03-CORE",
+    "subUnit": "공간도형 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-03-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "공간도형 핵심 개념"
+    ],
+    "wide": false,
+    "content": "그림과 같이 햇빛이 지면과 $60^\\circ$의 각을 이루면서 반지름의 길이가 $9\\,\\mathrm{cm}$인 농구공을 비추고 있다. 이때 지면에 생기는 이 농구공의 그림자의 넓이는? (단, 농구공은 구로 생각하고, 단위는 $\\mathrm{cm}^2$이다.) [그림: 반지름의 길이가 9cm인 구 모양의 농구공이 지면에 놓여 있고, 평행한 햇빛이 지면과 60도의 각을 이루며 비추어 지면에 그림자가 생겨 있다.]",
+    "choices": [
+      "$42\\sqrt{3}\\pi$",
+      "$48\\sqrt{3}\\pi$",
+      "$54\\sqrt{3}\\pi$",
+      "$60\\sqrt{3}\\pi$",
+      "$66\\sqrt{3}\\pi$"
+    ],
+    "answer": "③",
+    "solution": "농구공의 반지름의 길이가 $9\\,\\mathrm{cm}$이므로, 농구공의 중심을 지나고 햇빛에 수직인 평면으로 자른 단면의 넓이 $S$는\n$$S=\\pi\\times 9^2=81\\pi$$\n햇빛이 지면과 $60^\\circ$의 각을 이루므로, 지면과 햇빛에 수직인 평면이 이루는 각의 크기는 $90^\\circ-60^\\circ=30^\\circ$이다.\n구하는 그림자의 넓이를 $S'$이라 하면 그림자의 햇빛에 수직인 평면 위로의 정사영이 단면인 원이므로\n$$S=S'\\cos 30^\\circ=S'\\sin 60^\\circ$$\n$$S'=\\frac{81\\pi}{\\frac{\\sqrt{3}}{2}}=\\frac{162\\pi}{\\sqrt{3}}=54\\sqrt{3}\\pi$$\n따라서 정답은 ③이다.",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-056",
+    "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+    "templateKey": "TPL_GEO_SPACE_FIGURE_PROJECTION",
+    "crossConceptKeys": [
+      "CC_SPACE_FIGURE",
+      "CC_ELLIPSE",
+      "CC_TRIG_RATIO"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "NONE"
+  },
+  {
+    "id": 4,
+    "category": "공간도형 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-03",
+    "standardUnit": "공간도형",
+    "standardUnitOrder": 3,
+    "subUnitKey": "H22-GE-03-CORE",
+    "subUnit": "공간도형 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-03-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "공간도형 핵심 개념"
+    ],
+    "wide": false,
+    "content": "그림과 같이 태양광선이 지면과 $30^\\circ$의 각을 이루면서 비추고 있다. 길이가 $4\\sqrt{3}$인 막대의 한 끝이 지면에 닿아 있고, 막대가 그림자 쪽으로 지면과 $30^\\circ$의 각을 이루며 기울어져 있을 때, 막대의 그림자의 길이는? (단, 태양광선과 막대 및 그림자는 지면에 수직인 한 평면 위에 있다.) [그림: 수평인 지면 위에 막대의 한 끝이 닿아 있고, 막대는 왼쪽 위 방향으로 지면과 30도의 각을 이루며 길이가 4√3으로 표시되어 있다. 오른쪽 위에서 왼쪽 아래로 평행한 태양광선이 지면과 30도의 각을 이루며 비추어, 막대의 아래쪽 왼쪽 지면에 그림자가 생겨 있다.]",
+    "choices": [
+      "$10$",
+      "$12$",
+      "$14$",
+      "$16$",
+      "$18$"
+    ],
+    "answer": "②",
+    "solution": "태양광선과 막대 및 그림자가 이루는 삼각형에서 막대와 그림자가 이루는 각의 크기는 $30^\\circ$, 태양광선과 그림자가 이루는 각의 크기는 $30^\\circ$이므로 막대와 태양광선이 이루는 각의 크기는\n$$180^\\circ-(30^\\circ+30^\\circ)=120^\\circ$$\n(예각으로는 $60^\\circ$)이다.\n태양광선에 수직인 평면을 $\\gamma$라 하자.\n막대와 평면 $\\gamma$가 이루는 각의 크기는 $90^\\circ-60^\\circ=30^\\circ$이므로, 막대의 평면 $\\gamma$ 위로의 정사영의 길이 $l_0$은\n$$l_0=4\\sqrt{3}\\cos 30^\\circ=4\\sqrt{3}\\times\\frac{\\sqrt{3}}{2}=6$$\n또한 지면과 평면 $\\gamma$가 이루는 각의 크기는 $90^\\circ-30^\\circ=60^\\circ$이다.\n막대의 그림자의 길이를 $l'$이라 하면, 그림자의 평면 $\\gamma$ 위로의 정사영의 길이도 $l_0$과 같으므로\n$$l'\\cos 60^\\circ=l_0 \\implies \\frac{1}{2}l'=6 \\implies l'=12$$\n따라서 정답은 ②이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-056",
+    "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+    "templateKey": "TPL_GEO_SPACE_FIGURE_PROJECTION",
+    "crossConceptKeys": [
+      "CC_RIGHT_TRIANGLE",
+      "CC_TRIG_RATIO"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 5,
+    "category": "공간도형 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-03",
+    "standardUnit": "공간도형",
+    "standardUnitOrder": 3,
+    "subUnitKey": "H22-GE-03-CORE",
+    "subUnit": "공간도형 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-03-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "공간도형 핵심 개념"
+    ],
+    "wide": false,
+    "content": "그림과 같이 한 변이 운동장에 닿아 있는 평면 모양의 차광막이 태양 쪽으로 운동장과 $30^\\circ$의 각을 이루며 기울어져 있고, 차광막의 그림자가 차광막의 아래쪽 운동장에 생기고 있다. 태양 빛이 운동장과 이루는 각의 크기가 $60^\\circ$이고 차광막의 넓이가 $12$일 때, 차광막의 그림자의 넓이는? (단, 태양 빛은 차광막이 운동장과 만나는 변에 수직인 방향으로 비춘다.) [그림: 수평인 운동장 위의 한 점에서 오른쪽 위(태양 쪽)로 차광막이 운동장과 30도의 각을 이루며 비스듬히 세워져 있다. 오른쪽 위에서 왼쪽 아래로 태양 빛이 운동장과 60도의 각을 이루며 비추어, 차광막의 바로 아래쪽 운동장에 그림자가 생겨 있다.]",
+    "choices": [
+      "$4\\sqrt{3}$",
+      "$6\\sqrt{3}$",
+      "$8\\sqrt{3}$",
+      "$10\\sqrt{3}$",
+      "$12\\sqrt{3}$"
+    ],
+    "answer": "①",
+    "solution": "태양 빛에 수직인 평면을 $\\gamma$라 하고, 차광막의 넓이를 $S=12$, 그림자의 넓이를 $S'$이라 하자.\n차광막과 그림자를 평면 $\\gamma$ 위로 정사영시킨 도형은 서로 일치하므로 그 넓이를 $S_0$이라 하자.\n차광막이 태양 쪽으로 운동장과 $30^\\circ$의 각을 이루고 태양 빛이 운동장과 $60^\\circ$의 각을 이루므로, 차광막과 태양 빛이 이루는 각의 크기는\n$$60^\\circ-30^\\circ=30^\\circ$$\n따라서 차광막과 평면 $\\gamma$가 이루는 각의 크기는 $90^\\circ-30^\\circ=60^\\circ$이므로\n$$S_0=S\\cos 60^\\circ=12\\times\\frac{1}{2}=6$$\n한편 태양 빛과 운동장이 이루는 각의 크기가 $60^\\circ$이므로 운동장과 평면 $\\gamma$가 이루는 각의 크기는 $90^\\circ-60^\\circ=30^\\circ$이다.\n따라서\n$$S_0=S'\\cos 30^\\circ=\\frac{\\sqrt{3}}{2}S'$$\n두 식을 연립하면\n$$\\frac{\\sqrt{3}}{2}S'=6 \\implies S'=\\frac{12}{\\sqrt{3}}=4\\sqrt{3}$$\n따라서 정답은 ①이다.",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-056",
+    "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+    "templateKey": "TPL_GEO_SPACE_FIGURE_PROJECTION",
+    "crossConceptKeys": [
+      "CC_SPACE_FIGURE",
+      "CC_TRIG_RATIO"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "INTERDEPENDENT"
+  }
+];

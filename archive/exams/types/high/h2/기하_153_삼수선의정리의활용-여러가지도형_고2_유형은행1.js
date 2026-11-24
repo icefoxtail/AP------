@@ -1,0 +1,276 @@
+window.examTitle = "기하_153_삼수선의정리의활용-여러가지도형_고2_유형은행1";
+
+window.questionBank = [
+  {
+    "id": 1,
+    "category": "공간도형 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-03",
+    "standardUnit": "공간도형",
+    "standardUnitOrder": 3,
+    "subUnitKey": "H22-GE-03-CORE",
+    "subUnit": "공간도형 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-03-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "공간도형 핵심 개념"
+    ],
+    "wide": false,
+    "content": "그림과 같이 밑면이 한 변의 길이가 $8$인 정삼각형이고 높이가 $4$인 직삼각기둥 $\\mathrm{ABC-DEF}$에서 모서리 $\\mathrm{AC}$의 중점을 $\\mathrm{M}$이라 할 때, 점 $\\mathrm{M}$과 모서리 $\\mathrm{EF}$ 사이의 거리는?\n[그림: 밑면 $\\mathrm{ABC}$와 $\\mathrm{DEF}$가 한 변의 길이가 $8$인 정삼각형이고 높이 $\\overline{\\mathrm{AD}}=4$인 직삼각기둥 $\\mathrm{ABC-DEF}$이다. 모서리 $\\mathrm{AC}$의 중점 $\\mathrm{M}$에서 밑면의 모서리 $\\mathrm{EF}$에 수선을 그어 그 거리를 묻는다.]",
+    "choices": [
+      "$\\sqrt{26}$",
+      "$2\\sqrt{7}$",
+      "$\\sqrt{30}$",
+      "$4\\sqrt{2}$",
+      "$\\sqrt{34}$"
+    ],
+    "answer": "②",
+    "solution": "모서리 $\\mathrm{DF}$의 중점을 $\\mathrm{N}$이라 하자.\n점 $\\mathrm{M}$은 $\\overline{\\mathrm{AC}}$의 중점이므로 선분 $\\mathrm{MN}$은 모서리 $\\mathrm{CF}$와 평행하고 길이가 같다.\n따라서 $\\overline{\\mathrm{MN}} \\perp (\\text{평면 } \\mathrm{DEF})$이고 $\\overline{\\mathrm{MN}}=4$이다.\n\n밑면 삼각형 $\\mathrm{DEF}$는 한 변의 길이가 $8$인 정삼각형이므로\n점 $\\mathrm{N}$에서 모서리 $\\mathrm{EF}$에 내린 수선의 발을 $\\mathrm{H}$라 하면,\n직각삼각형 $\\mathrm{NFH}$에서 $\\angle\\mathrm{NFH}=60^\\circ, \\overline{\\mathrm{NF}}=\\frac{1}{2}\\overline{\\mathrm{DF}}=4$이므로\n$\\overline{\\mathrm{NH}} = \\overline{\\mathrm{NF}} \\sin 60^\\circ = 4 \\times \\frac{\\sqrt{3}}{2} = 2\\sqrt{3}$\n\n$\\overline{\\mathrm{MN}} \\perp (\\text{평면 } \\mathrm{DEF})$이고 $\\overline{\\mathrm{NH}} \\perp \\overline{\\mathrm{EF}}$이므로, 삼수선의 정리에 의하여\n$\\overline{\\mathrm{MH}} \\perp \\overline{\\mathrm{EF}}$이다.\n따라서 점 $\\mathrm{M}$과 모서리 $\\mathrm{EF}$ 사이의 거리는 선분 $\\mathrm{MH}$의 길이이다.\n\n직각삼각형 $\\mathrm{MNH}$에서\n$\\overline{\\mathrm{MH}} = \\sqrt{\\overline{\\mathrm{MN}}^2 + \\overline{\\mathrm{NH}}^2} = \\sqrt{4^2 + (2\\sqrt{3})^2} = \\sqrt{16 + 12} = \\sqrt{28} = 2\\sqrt{7}$\n\n따라서 정답은 ②이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-055",
+    "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+    "templateKey": "TPL_GEO_SPACE_PERPENDICULAR_PROJECTION",
+    "crossConceptKeys": [
+      "CC_SPACE_FIGURE",
+      "CC_EQUILATERAL_TRIANGLE",
+      "CC_PYTHAGOREAN_THEOREM"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 2,
+    "category": "공간도형 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-03",
+    "standardUnit": "공간도형",
+    "standardUnitOrder": 3,
+    "subUnitKey": "H22-GE-03-CORE",
+    "subUnit": "공간도형 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-03-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "공간도형 핵심 개념"
+    ],
+    "wide": false,
+    "content": "그림과 같이 $\\overline{\\mathrm{AB}}=2, \\overline{\\mathrm{AC}}=4, \\overline{\\mathrm{AD}}=3$이고 $\\angle\\mathrm{EDF}=120^\\circ$인 삼각기둥 $\\mathrm{ABC-DEF}$가 있다. 꼭짓점 $\\mathrm{A}$에서 모서리 $\\mathrm{EF}$에 내린 수선의 발을 $\\mathrm{H}$라 할 때, $\\overline{\\mathrm{AH}}^2$의 값은?\n[그림: 직삼각기둥 $\\mathrm{ABC-DEF}$에서 $\\overline{\\mathrm{AB}}=2, \\overline{\\mathrm{AC}}=4, \\overline{\\mathrm{AD}}=3$이고 밑면 삼각형 $\\mathrm{DEF}$는 $\\overline{\\mathrm{DE}}=2, \\overline{\\mathrm{DF}}=4, \\angle\\mathrm{EDF}=120^\\circ$이다. 꼭짓점 $\\mathrm{A}$에서 모서리 $\\mathrm{EF}$에 내린 수선의 발을 $\\mathrm{H}$라 하고 선분 $\\mathrm{AH}$를 잇는다.]",
+    "choices": [
+      "$\\frac{61}{7}$",
+      "$\\frac{68}{7}$",
+      "$\\frac{75}{7}$",
+      "$\\frac{82}{7}$",
+      "$\\frac{89}{7}$"
+    ],
+    "answer": "③",
+    "solution": "직각기둥이므로 $\\overline{\\mathrm{AD}} \\perp (\\text{평면 } \\mathrm{DEF})$이다.\n$\\overline{\\mathrm{AD}} \\perp (\\text{평면 } \\mathrm{DEF})$이고 $\\overline{\\mathrm{AH}} \\perp \\overline{\\mathrm{EF}}$이므로, 삼수선의 정리에 의하여\n$\\overline{\\mathrm{DH}} \\perp \\overline{\\mathrm{EF}}$이다.\n\n밑면 삼각형 $\\mathrm{DEF}$에서 $\\overline{\\mathrm{DE}}=\\overline{\\mathrm{AB}}=2, \\overline{\\mathrm{DF}}=\\overline{\\mathrm{AC}}=4, \\angle\\mathrm{EDF}=120^\\circ$이다.\n코사인법칙에 의하여\n$\\overline{\\mathrm{EF}}^2 = \\overline{\\mathrm{DE}}^2 + \\overline{\\mathrm{DF}}^2 - 2\\overline{\\mathrm{DE}} \\cdot \\overline{\\mathrm{DF}} \\cos 120^\\circ$\n$\\overline{\\mathrm{EF}}^2 = 2^2 + 4^2 - 2 \\times 2 \\times 4 \\times \\left(-\\frac{1}{2}\\right) = 4 + 16 + 8 = 28$\n$\\therefore \\overline{\\mathrm{EF}} = 2\\sqrt{7}$\n\n삼각형 $\\mathrm{DEF}$의 넓이는\n$\\triangle \\mathrm{DEF} = \\frac{1}{2} \\times 2 \\times 4 \\times \\sin 120^\\circ = 4 \\times \\frac{\\sqrt{3}}{2} = 2\\sqrt{3}$\n\n또한 $\\triangle \\mathrm{DEF} = \\frac{1}{2} \\times \\overline{\\mathrm{EF}} \\times \\overline{\\mathrm{DH}}$이므로\n$\\frac{1}{2} \\times 2\\sqrt{7} \\times \\overline{\\mathrm{DH}} = 2\\sqrt{3} \\implies \\overline{\\mathrm{DH}} = \\frac{2\\sqrt{3}}{\\sqrt{7}}$\n$\\overline{\\mathrm{DH}}^2 = \\frac{12}{7}$\n\n직각삼각형 $\\mathrm{ADH}$에서 $\\angle\\mathrm{ADH}=90^\\circ$이므로\n$\\overline{\\mathrm{AH}}^2 = \\overline{\\mathrm{AD}}^2 + \\overline{\\mathrm{DH}}^2 = 3^2 + \\frac{12}{7} = 9 + \\frac{12}{7} = \\frac{75}{7}$\n\n따라서 정답은 ③이다.",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-055",
+    "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+    "templateKey": "TPL_GEO_SPACE_PERPENDICULAR_PROJECTION",
+    "crossConceptKeys": [
+      "CC_SPACE_FIGURE",
+      "CC_OBLIQUE_TRIANGLE_MEASURE",
+      "CC_TRIANGLE_AREA"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 3,
+    "category": "공간도형 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-03",
+    "standardUnit": "공간도형",
+    "standardUnitOrder": 3,
+    "subUnitKey": "H22-GE-03-CORE",
+    "subUnit": "공간도형 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-03-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "공간도형 핵심 개념"
+    ],
+    "wide": false,
+    "content": "그림과 같이 한 변의 길이가 $4$인 정사각형 $\\mathrm{ABCD}$를 대각선 $\\mathrm{BD}$를 접는 선으로 하여 두 면이 수직이 되도록 접었다. 이때 점 $\\mathrm{A}$에서 직선 $\\mathrm{BC}$까지의 거리는?\n[그림: 한 변의 길이가 $4$인 정사각형 $\\mathrm{ABCD}$를 대각선 $\\mathrm{BD}$를 접는 선으로 하여 두 평면 $\\mathrm{ABD}$와 $\\mathrm{CBD}$가 서로 수직이 되도록 공간에 세워 접었다. 점 $\\mathrm{A}$에서 직선 $\\mathrm{BC}$에 내린 수선의 길이를 구하는 상황이다.]",
+    "choices": [
+      "$\\sqrt{3}$",
+      "$\\sqrt{6}$",
+      "3",
+      "$2\\sqrt{3}$",
+      "4"
+    ],
+    "answer": "④",
+    "solution": "대각선 $\\mathrm{BD}$의 중점을 $\\mathrm{O}$라 하자.\n삼각형 $\\mathrm{ABD}$는 $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{AD}}=4$인 직각이등변삼각형이므로\n$\\overline{\\mathrm{AO}} \\perp \\overline{\\mathrm{BD}}$이고,\n$\\overline{\\mathrm{BD}} = 4\\sqrt{2}$이므로 $\\overline{\\mathrm{AO}} = \\frac{1}{2}\\overline{\\mathrm{BD}} = 2\\sqrt{2}$이다.\n\n평면 $\\mathrm{ABD}$와 평면 $\\mathrm{CBD}$가 수직이고 교선이 $\\mathrm{BD}$이며 $\\overline{\\mathrm{AO}} \\perp \\overline{\\mathrm{BD}}$이므로,\n$\\overline{\\mathrm{AO}} \\perp (\\text{평면 } \\mathrm{CBD})$이다.\n\n평면 $\\mathrm{CBD}$ 위의 점 $\\mathrm{O}$에서 직선 $\\mathrm{BC}$에 내린 수선의 발을 $\\mathrm{H}$라 하자.\n삼각형 $\\mathrm{CBD}$는 $\\angle\\mathrm{BCD}=90^\\circ$인 직각이등변삼각형이고 $\\mathrm{O}$는 빗변 $\\mathrm{BD}$의 중점이므로,\n$\\overline{\\mathrm{OH}}$는 $\\overline{\\mathrm{CD}}$에 평행하고 $\\mathrm{H}$는 변 $\\mathrm{BC}$의 중점이다.\n$\\therefore \\overline{\\mathrm{OH}} = \\frac{1}{2}\\overline{\\mathrm{CD}} = \\frac{1}{2} \\times 4 = 2$\n\n$\\overline{\\mathrm{AO}} \\perp (\\text{평면 } \\mathrm{CBD})$이고 $\\overline{\\mathrm{OH}} \\perp \\overline{\\mathrm{BC}}$이므로, 삼수선의 정리에 의하여\n$\\overline{\\mathrm{AH}} \\perp \\overline{\\mathrm{BC}}$이다.\n따라서 점 $\\mathrm{A}$에서 직선 $\\mathrm{BC}$까지의 거리는 선분 $\\mathrm{AH}$의 길이이다.\n\n직각삼각형 $\\mathrm{AOH}$에서\n$\\overline{\\mathrm{AH}} = \\sqrt{\\overline{\\mathrm{AO}}^2 + \\overline{\\mathrm{OH}}^2} = \\sqrt{(2\\sqrt{2})^2 + 2^2} = \\sqrt{8 + 4} = \\sqrt{12} = 2\\sqrt{3}$\n\n따라서 정답은 ④이다.",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-055",
+    "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+    "templateKey": "TPL_GEO_SPACE_PERPENDICULAR_PROJECTION",
+    "crossConceptKeys": [
+      "CC_GEOMETRIC_FOLDING",
+      "CC_SQUARE_PROPERTIES",
+      "CC_PYTHAGOREAN_THEOREM"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 4,
+    "category": "공간도형 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-03",
+    "standardUnit": "공간도형",
+    "standardUnitOrder": 3,
+    "subUnitKey": "H22-GE-03-CORE",
+    "subUnit": "공간도형 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-03-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "공간도형 핵심 개념"
+    ],
+    "wide": false,
+    "content": "그림과 같이 평면 $\\alpha$ 위에 있지 않은 한 점 $\\mathrm{A}$에 대하여 $\\overline{\\mathrm{AP}}=7, \\overline{\\mathrm{PQ}}=5, \\angle\\mathrm{APQ}=90^\\circ$인 삼각형 $\\mathrm{APQ}$가 되도록 평면 $\\alpha$ 위에 두 점 $\\mathrm{P, Q}$를 잡을 때, 선분 $\\mathrm{PQ}$가 그리는 도형의 넓이는?\n(단, 점 $\\mathrm{A}$에서 평면 $\\alpha$까지의 거리는 $7$보다 작다.)\n[그림: 평면 $\\alpha$ 위에 있지 않은 한 점 $\\mathrm{A}$에서 평면 $\\alpha$에 내린 수선의 발 $\\mathrm{H}$가 있다. 평면 $\\alpha$ 위에 두 점 $\\mathrm{P, Q}$가 있어 $\\overline{\\mathrm{AP}}=7, \\overline{\\mathrm{PQ}}=5, \\angle\\mathrm{APQ}=90^\\circ$를 만족한다. 선분 $\\mathrm{PQ}$가 회전하며 평면 $\\alpha$ 위에서 그리는 동심원 환형 영역을 나타낸다.]",
+    "choices": [
+      "$25\\pi$",
+      "$27\\pi$",
+      "$29\\pi$",
+      "$31\\pi$",
+      "$33\\pi$"
+    ],
+    "answer": "①",
+    "solution": "점 $\\mathrm{A}$에서 평면 $\\alpha$에 내린 수선의 발을 $\\mathrm{H}$라 하고, 선분 $\\mathrm{AH}$의 길이를 $h$라 하자 ($h < 7$).\n직각삼각형 $\\mathrm{AHP}$에서\n$\\overline{\\mathrm{HP}} = \\sqrt{\\overline{\\mathrm{AP}}^2 - \\overline{\\mathrm{AH}}^2} = \\sqrt{7^2 - h^2} = \\sqrt{49 - h^2}$\n\n$\\overline{\\mathrm{AH}} \\perp \\alpha$이고 $\\overline{\\mathrm{AP}} \\perp \\overline{\\mathrm{PQ}}$이므로, 삼수선의 정리에 의하여\n$\\overline{\\mathrm{HP}} \\perp \\overline{\\mathrm{PQ}}$이다.\n따라서 직각삼각형 $\\mathrm{HPQ}$에서\n$\\overline{\\mathrm{HQ}}^2 = \\overline{\\mathrm{HP}}^2 + \\overline{\\mathrm{PQ}}^2 = (49 - h^2) + 5^2 = 49 - h^2 + 25 = 74 - h^2$\n\n점 $\\mathrm{P}$는 점 $\\mathrm{H}$를 중심으로 하고 반지름의 길이가 $r_1 = \\sqrt{49 - h^2}$인 원 위를 움직이고,\n점 $\\mathrm{Q}$는 점 $\\mathrm{H}$를 중심으로 하고 반지름의 길이가 $r_2 = \\sqrt{74 - h^2}$인 원 위를 움직인다.\n$\\overline{\\mathrm{HP}} \\perp \\overline{\\mathrm{PQ}}$이므로 선분 $\\mathrm{PQ}$는 안쪽 원에 접하면서 두 원 사이를 회전한다.\n따라서 선분 $\\mathrm{PQ}$가 그리는 도형은 중심이 $\\mathrm{H}$이고 반지름의 길이가 각각 $r_1, r_2$인 두 동심원으로 둘러싸인 고리 모양(환형)이다.\n\n구하는 도형의 넓이는\n$\\pi r_2^2 - \\pi r_1^2 = \\pi (\\overline{\\mathrm{HQ}}^2 - \\overline{\\mathrm{HP}}^2) = \\pi \\times \\overline{\\mathrm{PQ}}^2 = \\pi \\times 5^2 = 25\\pi$\n\n따라서 정답은 ①이다.",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "low",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-055",
+    "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+    "templateKey": "TPL_GEO_SPACE_PERPENDICULAR_PROJECTION",
+    "crossConceptKeys": [
+      "CC_SPACE_FIGURE",
+      "CC_CIRCLE_CIRCUMFERENCE",
+      "CC_PYTHAGOREAN_THEOREM"
+    ],
+    "conditionKeys": [
+      "COND_UPPER_BOUND"
+    ],
+    "integrationPattern": "REINTERPRETATION"
+  },
+  {
+    "id": 5,
+    "category": "공간도형 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-03",
+    "standardUnit": "공간도형",
+    "standardUnitOrder": 3,
+    "subUnitKey": "H22-GE-03-CORE",
+    "subUnit": "공간도형 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-03-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "공간도형 핵심 개념"
+    ],
+    "wide": false,
+    "content": "길이가 $7$인 선분 $\\mathrm{AB}$를 지름으로 하는 구 위에 점 $\\mathrm{C}$가 있다. 점 $\\mathrm{A}$를 지나고 직선 $\\mathrm{AB}$에 수직인 직선 $l$이 직선 $\\mathrm{BC}$에 수직이다. 직선 $l$ 위의 점 $\\mathrm{D}$에 대하여 $\\overline{\\mathrm{BD}}=8, \\overline{\\mathrm{CD}}=5$일 때, 선분 $\\mathrm{AC}$의 길이는? (단, 점 $\\mathrm{C}$는 선분 $\\mathrm{AB}$ 위에 있지 않다.)\n[그림: 지름 $\\overline{\\mathrm{AB}}=7$인 구면 위에 점 $\\mathrm{C}$가 있다. 점 $\\mathrm{A}$를 지나고 선분 $\\mathrm{AB}$에 수직인 직선 $l$이 직선 $\\mathrm{BC}$와 수직을 이룬다. 직선 $l$ 위의 점 $\\mathrm{D}$에 대해 $\\overline{\\mathrm{BD}}=8, \\overline{\\mathrm{CD}}=5$가 주어져 있다.]",
+    "choices": [
+      "$\\sqrt{6}$",
+      "$\\sqrt{7}$",
+      "$2\\sqrt{2}$",
+      "3",
+      "$\\sqrt{10}$"
+    ],
+    "answer": "⑤",
+    "solution": "선분 $\\mathrm{AB}$가 구의 지름이므로 삼각형 $\\mathrm{ABC}$에서\n$\\angle\\mathrm{ACB} = 90^\\circ$, 즉 $\\overline{\\mathrm{BC}} \\perp \\overline{\\mathrm{AC}}$이다.\n조건에서 직선 $l$은 직선 $\\mathrm{BC}$에 수직이므로 $\\overline{\\mathrm{BC}} \\perp l$이다.\n직선 $\\mathrm{BC}$는 점 $\\mathrm{A}$에서 만나는 두 직선 $\\mathrm{AC}$와 $l$에 모두 수직이므로, 직선 $l$과 점 $\\mathrm{C}$를 포함하는 평면에 수직이다.\n선분 $\\mathrm{CD}$는 이 평면 위에 있으므로\n$\\overline{\\mathrm{BC}} \\perp \\overline{\\mathrm{CD}}$이다.\n\n직각삼각형 $\\mathrm{BCD}$에서 $\\angle\\mathrm{BCD}=90^\\circ$이므로\n$\\overline{\\mathrm{BC}} = \\sqrt{\\overline{\\mathrm{BD}}^2 - \\overline{\\mathrm{CD}}^2} = \\sqrt{8^2 - 5^2} = \\sqrt{64 - 25} = \\sqrt{39}$\n\n직각삼각형 $\\mathrm{ABC}$에서 $\\angle\\mathrm{ACB}=90^\\circ$이므로\n$\\overline{\\mathrm{AC}} = \\sqrt{\\overline{\\mathrm{AB}}^2 - \\overline{\\mathrm{BC}}^2} = \\sqrt{7^2 - (\\sqrt{39})^2} = \\sqrt{49 - 39} = \\sqrt{10}$\n\n따라서 정답은 ⑤이다.",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "low",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-055",
+    "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+    "templateKey": "TPL_GEO_SPACE_PERPENDICULAR_PROJECTION",
+    "crossConceptKeys": [
+      "CC_SPACE_FIGURE",
+      "CC_INSCRIBED_ANGLE",
+      "CC_PYTHAGOREAN_THEOREM"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 6,
+    "category": "공간도형 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-03",
+    "standardUnit": "공간도형",
+    "standardUnitOrder": 3,
+    "subUnitKey": "H22-GE-03-CORE",
+    "subUnit": "공간도형 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-03-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "공간도형 핵심 개념"
+    ],
+    "wide": false,
+    "content": "그림과 같이 밑면의 지름의 길이가 $4$이고 높이가 $5$인 원기둥의 두 밑면에 각각 지름 $\\mathrm{AB, CD}$가 있다. 두 직선 $\\mathrm{AB}$와 $\\mathrm{CD}$가 이루는 각의 크기가 $60^\\circ$일 때, 삼각형 $\\mathrm{CAB}$의 넓이는?\n[그림: 밑면의 지름이 $4$, 높이가 $5$인 원기둥의 아래 밑면 지름이 $\\mathrm{AB}$, 위 밑면 지름이 $\\mathrm{CD}$이다. 두 직선 $\\mathrm{AB}$와 $\\mathrm{CD}$가 이루는 각의 크기는 $60^\\circ$이다. 점 $\\mathrm{C}$와 아래 밑면의 두 점 $\\mathrm{A, B}$를 연결하여 삼각형 $\\mathrm{CAB}$를 형성한다.]",
+    "choices": [
+      "$\\sqrt{7}$",
+      "$2\\sqrt{7}$",
+      "$3\\sqrt{7}$",
+      "$4\\sqrt{7}$",
+      "$5\\sqrt{7}$"
+    ],
+    "answer": "④",
+    "solution": "아래 밑면의 중심을 $\\mathrm{O}$라 하자. 밑면의 반지름의 길이는 $r = 2$이다.\n점 $\\mathrm{C}$에서 아래 밑면에 내린 수선의 발을 $\\mathrm{C'}$이라 하면, $\\overline{\\mathrm{CC'}}=5$이고 $\\overline{\\mathrm{CC'}} \\perp (\\text{아래 밑면})$이다.\n점 $\\mathrm{C'}$은 아래 밑면의 둘레 위의 점이며, 지름 $\\mathrm{C'D'}$은 지름 $\\mathrm{CD}$의 정사영이므로 직선 $\\mathrm{AB}$와 직선 $\\mathrm{C'D'}$이 이루는 각의 크기는 $60^\\circ$이다.\n$\\overline{\\mathrm{OC'}} = 2$이므로 점 $\\mathrm{C'}$에서 직선 $\\mathrm{AB}$에 내린 수선의 발을 $\\mathrm{H}$라 하면\n직각삼각형 $\\mathrm{OC'H}$에서 $\\angle\\mathrm{C'OH}=60^\\circ$이므로\n$\\overline{\\mathrm{C'H}} = \\overline{\\mathrm{OC'}} \\sin 60^\\circ = 2 \\times \\frac{\\sqrt{3}}{2} = \\sqrt{3}$\n\n$\\overline{\\mathrm{CC'}} \\perp (\\text{아래 밑면})$이고 $\\overline{\\mathrm{C'H}} \\perp \\overline{\\mathrm{AB}}$이므로, 삼수선의 정리에 의하여\n$\\overline{\\mathrm{CH}} \\perp \\overline{\\mathrm{AB}}$이다.\n직각삼각형 $\\mathrm{CC'H}$에서\n$\\overline{\\mathrm{CH}} = \\sqrt{\\overline{\\mathrm{CC'}}^2 + \\overline{\\mathrm{C'H}}^2} = \\sqrt{5^2 + (\\sqrt{3})^2} = \\sqrt{25 + 3} = \\sqrt{28} = 2\\sqrt{7}$\n\n따라서 밑변이 $\\overline{\\mathrm{AB}}=4$이고 높이가 $\\overline{\\mathrm{CH}}=2\\sqrt{7}$인 삼각형 $\\mathrm{CAB}$의 넓이는\n$\\frac{1}{2} \\times \\overline{\\mathrm{AB}} \\times \\overline{\\mathrm{CH}} = \\frac{1}{2} \\times 4 \\times 2\\sqrt{7} = 4\\sqrt{7}$\n\n따라서 정답은 ④이다.",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-055",
+    "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+    "templateKey": "TPL_GEO_SPACE_PERPENDICULAR_PROJECTION",
+    "crossConceptKeys": [
+      "CC_SPACE_FIGURE",
+      "CC_SKEW_LINES",
+      "CC_TRIANGLE_AREA"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  }
+];
