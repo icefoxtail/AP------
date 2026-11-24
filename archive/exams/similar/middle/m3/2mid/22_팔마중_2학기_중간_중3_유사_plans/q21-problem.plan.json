@@ -1,0 +1,29 @@
+{
+  "kind": "geometry",
+  "elements": [
+    {
+      "type": "segment",
+      "from": "A",
+      "to": "B",
+      "length": "36",
+      "midpoint": "C"
+    },
+    {
+      "type": "circle",
+      "center": "O",
+      "diameter": "AC"
+    },
+    {
+      "type": "circle",
+      "center": "O'",
+      "diameter": "CB"
+    },
+    {
+      "type": "tangent",
+      "from": "A",
+      "toCircle": "O'",
+      "touch": "P",
+      "intersectsOAt": "Q"
+    }
+  ]
+}

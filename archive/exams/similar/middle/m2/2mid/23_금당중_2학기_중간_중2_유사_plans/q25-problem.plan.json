@@ -1,0 +1,315 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "9"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "15",
+              "denominator": "2"
+            },
+            {
+              "kind": "rational",
+              "numerator": "9",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "N",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "2"
+            },
+            {
+              "kind": "rational",
+              "numerator": "9",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "9",
+              "denominator": "2"
+            },
+            {
+              "kind": "rational",
+              "numerator": "9",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "L",
+    "M",
+    "N",
+    "P",
+    "G"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAN",
+      "refs": [
+        "A",
+        "N"
+      ]
+    },
+    {
+      "id": "sNB",
+      "refs": [
+        "N",
+        "B"
+      ]
+    },
+    {
+      "id": "sBL",
+      "refs": [
+        "B",
+        "L"
+      ]
+    },
+    {
+      "id": "sLC",
+      "refs": [
+        "L",
+        "C"
+      ]
+    },
+    {
+      "id": "sCM",
+      "refs": [
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "sMA",
+      "refs": [
+        "M",
+        "A"
+      ]
+    },
+    {
+      "id": "sMN",
+      "refs": [
+        "M",
+        "N"
+      ]
+    },
+    {
+      "id": "sAL",
+      "refs": [
+        "A",
+        "L"
+      ]
+    },
+    {
+      "id": "sMG",
+      "refs": [
+        "M",
+        "G"
+      ]
+    },
+    {
+      "id": "sNG",
+      "refs": [
+        "N",
+        "G"
+      ]
+    },
+    {
+      "id": "sGB",
+      "refs": [
+        "G",
+        "B"
+      ]
+    },
+    {
+      "id": "sGC",
+      "refs": [
+        "G",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "eAN",
+        "count": 1,
+        "segments": [
+          "sAN",
+          "sNB"
+        ]
+      },
+      {
+        "id": "eBL",
+        "count": 2,
+        "segments": [
+          "sBL",
+          "sLC"
+        ]
+      },
+      {
+        "id": "eCM",
+        "count": 3,
+        "segments": [
+          "sCM",
+          "sMA"
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 400
+  },
+  "caption": "삼각형 ABC의 세 변의 중점 L, M, N과 중선 AL, 선분 MN의 교점 P, 무게중심 G가 표시되어 있다.",
+  "newVisualInformation": [
+    "세 변의 중점 L, M, N",
+    "중선 AL과 선분 MN의 교점 P",
+    "삼각형 ABC의 무게중심 G"
+  ],
+  "accessibilityDescription": "삼각형 ABC의 세 변에 중점 L, M, N이 있고, 꼭짓점 A에서 점 L로 이어지는 중선과 선분 MN이 점 P에서 만난다. 중선 위에 무게중심 G가 보인다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 4] $\\triangle ABC$에서 세 변 $BC$, $CA$, $AB$의 중점을 각각 $L$, $M$, $N$이라 하고, 중선 $AL$과 선분 $MN$의 교점을 $P$, $\\triangle ABC$의 무게중심을 $G$라 하자. 다음 물음에 답하시오. [5점] (1) $\\overline{AP}:\\overline{PG}:\\overline{GL}$을 가장 간단한 자연수의 비로 나타내시오. [2점] (2) 삼각형의 넓이의 비 $\\triangle AMN:\\triangle MGN:\\triangle GBC$를 가장 간단한 자연수의 비로 나타내시오. [3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

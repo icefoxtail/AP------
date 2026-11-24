@@ -1,0 +1,101 @@
+{
+  "capability": "construction-spike-v1",
+  "mode": "PLANE_FIGURE_v1",
+  "mathPlan": [
+    {
+      "id": "B",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "D",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 6,
+        "y": 0
+      }
+    },
+    {
+      "id": "C",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 9.464,
+        "y": 0
+      }
+    },
+    {
+      "id": "A",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 6,
+        "y": 6
+      }
+    },
+    {
+      "id": "AB",
+      "op": "SEGMENT",
+      "inputs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "op": "SEGMENT",
+      "inputs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "op": "SEGMENT",
+      "inputs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "AD",
+      "op": "SEGMENT",
+      "inputs": [
+        "A",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "rightAngles": [
+      {
+        "vertex": "D",
+        "ray1": "A",
+        "ray2": "C"
+      }
+    ],
+    "angleArcs": [
+      {
+        "vertex": "B",
+        "ray1": "C",
+        "ray2": "A",
+        "label": "45°"
+      },
+      {
+        "vertex": "C",
+        "ray1": "A",
+        "ray2": "B",
+        "label": "60°"
+      }
+    ],
+    "segmentLabels": [
+      {
+        "from": "A",
+        "to": "B",
+        "label": "6√2"
+      }
+    ]
+  },
+  "caption": "AB=6√2, 각 B=45도, 각 C=60도, 수선 AD가 그려진 삼각형 ABC"
+}

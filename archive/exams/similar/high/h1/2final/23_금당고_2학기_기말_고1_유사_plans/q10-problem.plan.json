@@ -1,0 +1,98 @@
+{
+  "question": {
+    "status": "EXEMPT",
+    "reason": "발문에 그림이 없는 일차함수의 일대일대응 조건 문항이다."
+  },
+  "solution": {
+    "capability": "composite-panels-v1",
+    "panels": [
+      {
+        "capability": "piecewise-polynomial-spike-v1",
+        "graphPlan": {
+          "family": "piecewise-polynomial",
+          "pieces": [
+            {
+              "domain": [
+                -2,
+                5
+              ],
+              "coefficients": [
+                "1",
+                "-1"
+              ]
+            }
+          ],
+          "overlays": {
+            "lines": [
+              {
+                "id": "y1",
+                "slope": "0",
+                "intercept": "3"
+              },
+              {
+                "id": "y2",
+                "slope": "0",
+                "intercept": "-4"
+              }
+            ]
+          },
+          "domain": [
+            -2,
+            5
+          ],
+          "viewport": [
+            -3,
+            6,
+            -5,
+            4
+          ]
+        },
+        "caption": "a=-1, b=1일 때 (-2,3)과 (5,-4)를 이어 일대일대응이 된다."
+      },
+      {
+        "capability": "piecewise-polynomial-spike-v1",
+        "graphPlan": {
+          "family": "piecewise-polynomial",
+          "pieces": [
+            {
+              "domain": [
+                -2,
+                5
+              ],
+              "coefficients": [
+                "-2",
+                "1"
+              ]
+            }
+          ],
+          "overlays": {
+            "lines": [
+              {
+                "id": "y1",
+                "slope": "0",
+                "intercept": "3"
+              },
+              {
+                "id": "y2",
+                "slope": "0",
+                "intercept": "-4"
+              }
+            ]
+          },
+          "domain": [
+            -2,
+            5
+          ],
+          "viewport": [
+            -3,
+            6,
+            -5,
+            4
+          ]
+        },
+        "caption": "a=1이면 b=-2가 되어 양수 b 조건에 맞지 않는다."
+      }
+    ],
+    "caption": "a=-1일 때만 양수 b=1이 되어 열린구간 X에서 Y로의 일대일대응이 성립한다."
+  }
+}

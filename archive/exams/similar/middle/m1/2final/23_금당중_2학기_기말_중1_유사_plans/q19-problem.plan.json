@@ -1,0 +1,63 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "(1) 원기둥"
+      },
+      "plan": {
+        "capability": "solid-figure-v1",
+        "unit": "cm",
+        "solids": [
+          {
+            "kind": "CYLINDER",
+            "radius": 2,
+            "height": 12
+          }
+        ],
+        "dims": [
+          {
+            "diameter": "top",
+            "side": "TOP"
+          }
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "(2) 공 3개"
+      },
+      "plan": {
+        "capability": "solid-figure-v1",
+        "unit": "cm",
+        "solids": [
+          {
+            "kind": "SPHERE",
+            "radius": 2
+          },
+          {
+            "kind": "SPHERE",
+            "radius": 2
+          },
+          {
+            "kind": "SPHERE",
+            "radius": 2
+          }
+        ]
+      }
+    }
+  ],
+  "caption": "왼쪽에는 밑면의 지름이 4센티미터인 원기둥이, 오른쪽에는 이 원기둥에 꼭 맞게 들어가는 같은 크기의 공 3개가 그려져 있다.",
+  "accessibilityDescription": "왼쪽 패널에는 밑면의 지름 4센티미터가 표시된 원기둥이 있고, 오른쪽 패널에는 같은 크기의 공 세 개가 나란히 놓여 있다.",
+  "newVisualInformation": [
+    "밑면의 지름 4센티미터인 원기둥",
+    "원기둥에 꼭 맞게 들어가는 공 3개"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림과 같이 밑면의 지름의 길이가 $4,\\mathrm{cm}$인 원기둥 안에 $3$개의 공이 꼭 맞게 들어 있다. 이때 원기둥에서 공 $3$개를 제외한 부분이 차지하는 부피는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

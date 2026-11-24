@@ -1,0 +1,109 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      0,
+      12,
+      -2,
+      22
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "99",
+          "-28",
+          "2"
+        ],
+        "domain": [
+          "0",
+          "12"
+        ],
+        "color": "BLUE",
+        "label": "y=f(x)"
+      },
+      {
+        "id": "g",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "39",
+          "-12",
+          "1"
+        ],
+        "domain": [
+          "0",
+          "12"
+        ],
+        "color": "WARM",
+        "label": "y=g(x)"
+      },
+      {
+        "id": "k",
+        "kind": "LINE",
+        "coefficients": [
+          "19",
+          "0"
+        ],
+        "domain": [
+          "0",
+          "12"
+        ],
+        "color": "GREEN",
+        "style": "DASHED",
+        "label": "k"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "6",
+          "y": "3",
+          "unnamed": true
+        },
+        {
+          "id": "B",
+          "x": "10",
+          "y": "19",
+          "unnamed": true
+        }
+      ],
+      "callouts": [
+        {
+          "id": "ca",
+          "point": "A",
+          "text": "α",
+          "direction": "S",
+          "labelKind": "MATH"
+        },
+        {
+          "id": "cb",
+          "point": "B",
+          "text": "β+2",
+          "direction": "N",
+          "labelKind": "MATH"
+        }
+      ]
+    }
+  },
+  "caption": "최고차항의 계수가 각각 2와 1인 두 이차함수 f와 g의 그래프, 그리고 수평선 y=k가 그려져 있다. 두 곡선의 공통점 두 곳에 α와 β+2가 표시되어 있다.",
+  "accessibilityDescription": "좌표평면에 아래로 볼록한 두 포물선 f와 g가 있고, 위쪽에 수평선이 하나 그려져 있다. 두 포물선이 만나는 두 점 가운데 하나에는 α, 다른 하나에는 β+2가 붙어 있다.",
+  "newVisualInformation": [
+    "두 포물선 f와 g가 서로 다른 두 점에서 만난다.",
+    "수평선 y=k가 두 곡선과 만난다.",
+    "두 곡선의 공통점 두 곳에 α와 β+2가 표시되어 있다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "최고차항의 계수가 $2$인 이차함수 $f(x)$와 최고차항의 계수가 $1$인 이차함수 $g(x)$가 있다. 방정식 ${f(x)-3}{g(x)-3}=0$의 모든 실근이 $\\alpha$, $\\beta$이고, 방정식 $f(x)=g(x)$의 모든 실근은 $\\alpha$, $\\beta+2$이다. 상수 $k$에 대하여 방정식 ${f(x)-k}{g(x)-k}=0$의 서로 다른 실근의 개수가 $3$이고 이 세 실근의 합이 $16$일 때, $\\alpha+\\beta+k$의 값을 구하는 과정을 서술하시오. (단, $\\alpha<\\beta$)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

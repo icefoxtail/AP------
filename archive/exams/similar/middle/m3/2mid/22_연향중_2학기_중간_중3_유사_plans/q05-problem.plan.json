@@ -1,0 +1,151 @@
+{
+  "capability": "construction-spike-v1",
+  "mode": "PLANE_FIGURE_v1",
+  "mathPlan": [
+    {
+      "id": "A",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "D",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 4,
+        "y": 0
+      }
+    },
+    {
+      "id": "F",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 0,
+        "y": 4
+      }
+    },
+    {
+      "id": "C",
+      "op": "POLAR_POINT",
+      "inputs": [
+        "A"
+      ],
+      "args": {
+        "r": 4,
+        "deg": 35
+      }
+    },
+    {
+      "id": "AD_line",
+      "op": "LINE_THROUGH",
+      "inputs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "B",
+      "op": "PERPENDICULAR_FOOT",
+      "inputs": [
+        "C",
+        "AD_line"
+      ]
+    },
+    {
+      "id": "E",
+      "op": "POLAR_POINT",
+      "inputs": [
+        "A"
+      ],
+      "args": {
+        "r": 4.88,
+        "deg": 35
+      }
+    },
+    {
+      "id": "AE",
+      "op": "SEGMENT",
+      "inputs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "AD",
+      "op": "SEGMENT",
+      "inputs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "AF",
+      "op": "SEGMENT",
+      "inputs": [
+        "A",
+        "F"
+      ]
+    },
+    {
+      "id": "BC",
+      "op": "SEGMENT",
+      "inputs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "DE",
+      "op": "SEGMENT",
+      "inputs": [
+        "D",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "arcs": [
+      {
+        "center": "A",
+        "radius": 4,
+        "startDeg": 0,
+        "endDeg": 90
+      }
+    ],
+    "rightAngles": [
+      {
+        "vertex": "B",
+        "ray1": "C",
+        "ray2": "A"
+      },
+      {
+        "vertex": "D",
+        "ray1": "E",
+        "ray2": "A"
+      }
+    ],
+    "angleArcs": [
+      {
+        "vertex": "A",
+        "ray1": "D",
+        "ray2": "C",
+        "label": "x"
+      },
+      {
+        "vertex": "C",
+        "ray1": "A",
+        "ray2": "B",
+        "label": "y"
+      },
+      {
+        "vertex": "E",
+        "ray1": "A",
+        "ray2": "D",
+        "label": "z"
+      }
+    ]
+  },
+  "caption": "반지름이 1인 사분원 A에서 각 x, y, z와 선분 BC, AB, DE"
+}

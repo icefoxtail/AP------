@@ -1,0 +1,71 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-6",
+          "2"
+        ]
+      }
+    ],
+    "domain": [
+      2,
+      4
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "4",
+          "y": "2",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "2",
+          "y": "-2",
+          "coordinates": true
+        },
+        {
+          "id": "P",
+          "x": "0",
+          "y": "6",
+          "coordinates": true
+        }
+      ],
+      "segments": [
+        {
+          "id": "AB",
+          "from": "A",
+          "to": "B"
+        }
+      ]
+    }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "좌표평면 위에 두 점 A(4, 2), B(2, -2)와 선분 AB, 그리고 점 (0, 6)이 표시되어 있다.",
+  "accessibilityDescription": "가로축 x와 세로축 y, 점 A(4, 2)와 B(2, -2)를 잇는 선분, y축 위의 점 (0, 6)이 그려져 있다.",
+  "newVisualInformation": [
+    "점 A(4, 2), B(2, -2)의 좌표",
+    "선분 AB",
+    "점 (0, 6)",
+    "좌표축 x, y"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 [수준별 3-1]과 [수준별 3-2] 중 하나를 선택하여 답하시오.  \n[수준별 3-1] 두 점 $(-3, 0)$, $(0, 3)$을 지나는 일차함수의 그래프에 대하여 (1) 기울기, (2) $y$절편, (3) 일차함수의 식을 각각 구하시오.  \n[수준별 3-2] 좌표평면 위의 두 점 $\\text{A}(4, 2)$, $\\text{B}(2, -2)$에 대하여 일차함수 $y=ax+6$의 그래프가 선분 $\\text{AB}$와 만나도록 하는 상수 $a$의 값의 범위를 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,544 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "g00",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "g10",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "g20",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "g30",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "g40",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "g01",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "g11",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "g21",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "g31",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "g41",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "g02",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "g12",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "g22",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "g32",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "g42",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "g00",
+    "g10",
+    "g20",
+    "g30",
+    "g40",
+    "g01",
+    "g11",
+    "g21",
+    "g31",
+    "g41",
+    "g02",
+    "g12",
+    "g22",
+    "g32",
+    "g42"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sH00",
+      "refs": [
+        "g00",
+        "g10"
+      ]
+    },
+    {
+      "id": "sH10",
+      "refs": [
+        "g10",
+        "g20"
+      ]
+    },
+    {
+      "id": "sH20",
+      "refs": [
+        "g20",
+        "g30"
+      ]
+    },
+    {
+      "id": "sH30",
+      "refs": [
+        "g30",
+        "g40"
+      ]
+    },
+    {
+      "id": "sH01",
+      "refs": [
+        "g01",
+        "g11"
+      ]
+    },
+    {
+      "id": "sH11",
+      "refs": [
+        "g11",
+        "g21"
+      ]
+    },
+    {
+      "id": "sH21",
+      "refs": [
+        "g21",
+        "g31"
+      ]
+    },
+    {
+      "id": "sH31",
+      "refs": [
+        "g31",
+        "g41"
+      ]
+    },
+    {
+      "id": "sH02",
+      "refs": [
+        "g02",
+        "g12"
+      ]
+    },
+    {
+      "id": "sH12",
+      "refs": [
+        "g12",
+        "g22"
+      ]
+    },
+    {
+      "id": "sH22",
+      "refs": [
+        "g22",
+        "g32"
+      ]
+    },
+    {
+      "id": "sH32",
+      "refs": [
+        "g32",
+        "g42"
+      ]
+    },
+    {
+      "id": "sV00",
+      "refs": [
+        "g00",
+        "g01"
+      ]
+    },
+    {
+      "id": "sV01",
+      "refs": [
+        "g01",
+        "g02"
+      ]
+    },
+    {
+      "id": "sV10",
+      "refs": [
+        "g10",
+        "g11"
+      ]
+    },
+    {
+      "id": "sV11",
+      "refs": [
+        "g11",
+        "g12"
+      ]
+    },
+    {
+      "id": "sV20",
+      "refs": [
+        "g20",
+        "g21"
+      ]
+    },
+    {
+      "id": "sV21",
+      "refs": [
+        "g21",
+        "g22"
+      ]
+    },
+    {
+      "id": "sV30",
+      "refs": [
+        "g30",
+        "g31"
+      ]
+    },
+    {
+      "id": "sV31",
+      "refs": [
+        "g31",
+        "g32"
+      ]
+    },
+    {
+      "id": "sV40",
+      "refs": [
+        "g40",
+        "g41"
+      ]
+    },
+    {
+      "id": "sV41",
+      "refs": [
+        "g41",
+        "g42"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dW",
+        "from": "g00",
+        "to": "g40",
+        "label": "4칸",
+        "labelKind": "TEXT",
+        "side": "BELOW",
+        "style": "BAR"
+      },
+      {
+        "id": "dH",
+        "from": "g00",
+        "to": "g02",
+        "label": "2줄",
+        "labelKind": "TEXT",
+        "side": "LEFT",
+        "style": "BAR"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 360
+  },
+  "hiddenPointNames": [
+    "g00",
+    "g10",
+    "g20",
+    "g30",
+    "g40",
+    "g01",
+    "g11",
+    "g21",
+    "g31",
+    "g41",
+    "g02",
+    "g12",
+    "g22",
+    "g32",
+    "g42"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "위아래 두 줄에 각각 네 칸씩 모두 여덟 칸으로 나뉜 진열대의 모습이다.",
+  "accessibilityDescription": "가로로 네 칸, 세로로 두 줄인 직사각형 진열대가 격자로 나뉘어 있고 각 칸은 비어 있다. 아래쪽에는 가로로 네 칸이라는 표시가, 왼쪽에는 세로로 두 줄이라는 표시가 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "서로 다른 빨간색 가방 $2$개와 서로 다른 파란색 가방 $2$개를 오른쪽 그림과 같이 놓인 진열대 $8$칸(위아래 두 줄에 각각 $4$칸씩)에 진열하려고 한다. 두 색의 가방을 서로 다른 가로줄에 놓아 같은 가로줄에 같은 색 가방을 진열하는 경우의 수를 구하면?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "진열대는 위아래 두 줄에 각각 4칸씩 모두 8칸으로 이루어져 있다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks.dimensions"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "진열대가 두 줄 네 칸의 격자로 나뉘어 있음을 보여 준다.",
+    "가로 칸 수와 세로 줄 수를 표시한다."
+  ]
+}

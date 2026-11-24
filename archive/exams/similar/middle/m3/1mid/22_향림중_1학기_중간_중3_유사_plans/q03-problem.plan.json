@@ -1,0 +1,444 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "p0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "c0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "rational",
+              "numerator": "39",
+              "denominator": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "c1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "28",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "7",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "c2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "31",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "5",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "c3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "28",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "c4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "rational",
+              "numerator": "11",
+              "denominator": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "c5",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "12",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "c6",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "9",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "5",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "c7",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "12",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "7",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "p0",
+    "p1",
+    "p2",
+    "p3",
+    "c0",
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6",
+    "c7"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sg1",
+      "refs": [
+        "p0",
+        "p1"
+      ]
+    },
+    {
+      "id": "sg2",
+      "refs": [
+        "p1",
+        "p2"
+      ]
+    },
+    {
+      "id": "sg3",
+      "refs": [
+        "p2",
+        "p3"
+      ]
+    },
+    {
+      "id": "sg4",
+      "refs": [
+        "p3",
+        "p0"
+      ]
+    },
+    {
+      "id": "sg5",
+      "refs": [
+        "c0",
+        "c1"
+      ]
+    },
+    {
+      "id": "sg6",
+      "refs": [
+        "c1",
+        "c2"
+      ]
+    },
+    {
+      "id": "sg7",
+      "refs": [
+        "c2",
+        "c3"
+      ]
+    },
+    {
+      "id": "sg8",
+      "refs": [
+        "c3",
+        "c4"
+      ]
+    },
+    {
+      "id": "sg9",
+      "refs": [
+        "c4",
+        "c5"
+      ]
+    },
+    {
+      "id": "sg10",
+      "refs": [
+        "c5",
+        "c6"
+      ]
+    },
+    {
+      "id": "sg11",
+      "refs": [
+        "c6",
+        "c7"
+      ]
+    },
+    {
+      "id": "sg12",
+      "refs": [
+        "c7",
+        "c0"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "regions": [
+      {
+        "id": "rShade",
+        "fill": "LIGHT",
+        "pattern": "HATCH",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "polygon": [
+              "p0",
+              "p1",
+              "p2",
+              "p3"
+            ]
+          }
+        ],
+        "holes": [
+          {
+            "polygon": [
+              "c0",
+              "c1",
+              "c2",
+              "c3",
+              "c4",
+              "c5",
+              "c6",
+              "c7"
+            ]
+          }
+        ]
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "tx01",
+        "at": [
+          4,
+          4.55
+        ],
+        "text": "실수",
+        "labelKind": "TEXT"
+      },
+      {
+        "id": "tx02",
+        "at": [
+          4,
+          2.5
+        ],
+        "text": "유리수",
+        "labelKind": "TEXT"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 400
+  },
+  "hiddenPointNames": [
+    "p0",
+    "p1",
+    "p2",
+    "p3",
+    "c0",
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6",
+    "c7"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "바깥 직사각형은 실수 전체를, 안쪽 타원은 유리수를 나타내며, 타원을 둘러싼 바깥 부분에 빗금이 쳐져 있다.",
+  "accessibilityDescription": "큰 직사각형 안의 가운데에 타원이 있고, 위쪽에는 실수라고 적혀 있으며 타원 안에는 유리수라고 적혀 있다. 타원의 바깥쪽 부분에 빗금이 쳐져 있다.",
+  "newVisualInformation": [
+    "실수 전체를 나타내는 바깥 직사각형",
+    "유리수를 나타내는 안쪽 타원",
+    "유리수 부분을 제외한 바깥 부분의 빗금"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 <보기>에서 아래 그림의 색칠한 부분에 속하는 수는 모두 몇 개인가? [3점]\n\n> $\\sqrt{\\frac{9}{64}},\\quad 2 - \\sqrt{5},\\quad \\pi,\\quad \\sqrt{0.04},\\quad \\sqrt{12},\\quad 1.\\dot{3},\\quad -\\sqrt{7}$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

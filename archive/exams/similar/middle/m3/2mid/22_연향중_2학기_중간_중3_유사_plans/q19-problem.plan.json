@@ -1,0 +1,162 @@
+{
+  "capability": "construction-spike-v1",
+  "mode": "PLANE_FIGURE_v1",
+  "mathPlan": [
+    {
+      "id": "C",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "B",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": -6.928,
+        "y": 0
+      }
+    },
+    {
+      "id": "D",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": 0,
+        "y": 4
+      }
+    },
+    {
+      "id": "A",
+      "op": "SOURCE_POINT",
+      "args": {
+        "x": -6.928,
+        "y": 6.928
+      }
+    },
+    {
+      "id": "AC_line",
+      "op": "LINE_THROUGH",
+      "inputs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "BD_line",
+      "op": "LINE_THROUGH",
+      "inputs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "E",
+      "op": "INTERSECTION",
+      "inputs": [
+        "AC_line",
+        "BD_line"
+      ]
+    },
+    {
+      "id": "BC_line",
+      "op": "LINE_THROUGH",
+      "inputs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "H",
+      "op": "PERPENDICULAR_FOOT",
+      "inputs": [
+        "E",
+        "BC_line"
+      ]
+    },
+    {
+      "id": "AB",
+      "op": "SEGMENT",
+      "inputs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "op": "SEGMENT",
+      "inputs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "op": "SEGMENT",
+      "inputs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "CD",
+      "op": "SEGMENT",
+      "inputs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "BD",
+      "op": "SEGMENT",
+      "inputs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "EH",
+      "op": "SEGMENT",
+      "inputs": [
+        "E",
+        "H"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "rightAngles": [
+      {
+        "vertex": "C",
+        "ray1": "D",
+        "ray2": "B"
+      },
+      {
+        "vertex": "H",
+        "ray1": "E",
+        "ray2": "C"
+      }
+    ],
+    "angleArcs": [
+      {
+        "vertex": "C",
+        "ray1": "A",
+        "ray2": "B",
+        "label": "45°"
+      },
+      {
+        "vertex": "D",
+        "ray1": "B",
+        "ray2": "C",
+        "label": "60°"
+      }
+    ],
+    "segmentLabels": [
+      {
+        "from": "C",
+        "to": "D",
+        "label": "8"
+      }
+    ]
+  },
+  "caption": "교점 E에서 밑변 BC에 수선 EH를 내린 두 직각삼각형 ABC, DBC"
+}

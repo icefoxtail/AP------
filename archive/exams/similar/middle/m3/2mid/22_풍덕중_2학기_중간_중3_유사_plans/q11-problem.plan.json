@@ -1,0 +1,34 @@
+{
+  "kind": "geometry",
+  "elements": [
+    {
+      "type": "triangle",
+      "vertices": [
+        "A",
+        "B",
+        "C"
+      ],
+      "rightAngle": "B"
+    },
+    {
+      "type": "angleBisector",
+      "from": "C",
+      "to": "AB",
+      "foot": "D"
+    },
+    {
+      "type": "angle",
+      "at": "A",
+      "arms": [
+        "B",
+        "C"
+      ],
+      "text": "30°"
+    },
+    {
+      "type": "label",
+      "target": "AB",
+      "text": "6√3 cm"
+    }
+  ]
+}

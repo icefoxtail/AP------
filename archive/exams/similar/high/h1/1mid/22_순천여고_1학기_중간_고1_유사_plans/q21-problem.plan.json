@@ -1,0 +1,50 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise_polynomial",
+    "domain": [
+      -5,
+      3
+    ],
+    "viewport": [
+      -5,
+      4,
+      -10,
+      6
+    ],
+    "pieces": [
+      {
+        "domain": [
+          -5,
+          3
+        ],
+        "coefficients": [
+          "-8",
+          "2",
+          "1"
+        ]
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-4",
+        "y": "0",
+        "label": "(-4, 0)"
+      },
+      {
+        "id": "B",
+        "x": "2",
+        "y": "0",
+        "label": "(2, 0)"
+      },
+      {
+        "id": "V",
+        "x": "-1",
+        "y": "-9",
+        "label": "(-1, -9)"
+      }
+    ]
+  },
+  "caption": "x축과 (-4, 0), (2, 0)에서 만나고 최솟값이 -9인 이차함수 y=f(x)"
+}

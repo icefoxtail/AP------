@@ -1,0 +1,193 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "I",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "J",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cIn",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "cOut",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "9"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "I",
+    "J"
+  ],
+  "displayCircles": [
+    "cIn",
+    "cOut"
+  ],
+  "displayLines": [],
+  "displaySegments": [
+    {
+      "id": "sIJ",
+      "refs": [
+        "I",
+        "J"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lGap",
+        "ownerSegment": "sIJ",
+        "text": "4",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      }
+    ],
+    "regions": [
+      {
+        "id": "band",
+        "fill": "LIGHT",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "loop": {
+              "start": "J",
+              "steps": [
+                {
+                  "to": "J",
+                  "arc": {
+                    "center": "O",
+                    "side": "FULL"
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "holes": [
+          {
+            "loop": {
+              "start": "I",
+              "steps": [
+                {
+                  "to": "I",
+                  "arc": {
+                    "center": "O",
+                    "side": "FULL"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 460,
+    "height": 380
+  },
+  "hiddenPointNames": [
+    "O",
+    "I",
+    "J"
+  ],
+  "hiddenPointStyle": "DOT",
+  "caption": "중심이 같은 두 원이 겹쳐 그려져 있고, 작은 원의 둘레에서 큰 원의 둘레까지의 거리가 4 cm로 표시되어 있다.",
+  "accessibilityDescription": "가운데에 점이 하나 있고, 그 점을 중심으로 하는 작은 원과 큰 원이 함께 그려져 있다. 두 원 사이의 띠는 연한 회색으로 칠해져 있으며, 작은 원의 오른쪽 둘레에서 큰 원의 둘레까지 이어진 선분 옆에 4 cm가 적혀 있다.",
+  "newVisualInformation": [
+    "중심이 같은 두 원",
+    "두 원 사이의 띠 영역",
+    "작은 원의 둘레에서 큰 원의 둘레까지 4 cm 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 2] 어떤 원의 반지름의 길이를 $4\\text{ cm}$만큼 늘였더니 그 원의 넓이는 처음 원의 넓이의 $9$배가 되었다고 할 때, 처음 원의 반지름의 길이를 구하려고 한다. 다음 물음에 답하시오. [6점] (1) 처음 원의 반지름의 길이를 $x\\text{ cm}$라고 할 때, 이를 이용하여 이차방정식을 세우시오. (2점) (2) (1)에서 세운 이차방정식을 풀어 처음 원의 반지름의 길이를 구하시오. (3점) (3) 구한 해가 문제의 뜻에 맞는지 확인하시오. (1점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

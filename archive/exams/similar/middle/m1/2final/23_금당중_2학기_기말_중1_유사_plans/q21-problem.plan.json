@@ -1,0 +1,101 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "500"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "10"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "referenceCurves": [
+      {
+        "id": "jisu",
+        "name": "g",
+        "pieces": [
+          {
+            "coefficients": [
+              "0",
+              "100"
+            ]
+          }
+        ],
+        "breakpoints": [],
+        "sourceDomain": {
+          "kind": "INTERVAL",
+          "range": [
+            "0",
+            "50"
+          ],
+          "states": [
+            "CLOSED",
+            "CLOSED"
+          ]
+        },
+        "intersectionX": [
+          "0"
+        ]
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "A",
+        "x": 2,
+        "y": 1000
+      },
+      {
+        "id": "B",
+        "x": 2,
+        "y": 200
+      }
+    ],
+    "axisScale": {
+      "x": 50,
+      "y": 1
+    },
+    "axisTickValues": {
+      "x": [
+        "2",
+        "10",
+        "50"
+      ],
+      "y": [
+        "200",
+        "1000",
+        "5000"
+      ]
+    },
+    "axisTitles": {
+      "x": "시간(분)",
+      "y": "거리(m)"
+    }
+  },
+  "caption": "민수(y=500x)와 지수(y=100x)의 시간에 따른 이동 거리 그래프",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "민수 (2, 1000), 지수 (2, 200) 통과, 목표 거리 5000m",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ],
+  "newVisualInformation": []
+}

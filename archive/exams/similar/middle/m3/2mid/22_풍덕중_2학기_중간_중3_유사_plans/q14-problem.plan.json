@@ -1,0 +1,33 @@
+{
+  "kind": "geometry",
+  "elements": [
+    {
+      "type": "rectangle",
+      "vertices": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "width": "12 cm",
+      "height": "8 cm"
+    },
+    {
+      "type": "circle",
+      "center": "O",
+      "radius": "4 cm",
+      "touches": [
+        "AB",
+        "BC",
+        "AD"
+      ]
+    },
+    {
+      "type": "segment",
+      "from": "D",
+      "to": "E",
+      "tangentAt": "S",
+      "onSide": "BC"
+    }
+  ]
+}
