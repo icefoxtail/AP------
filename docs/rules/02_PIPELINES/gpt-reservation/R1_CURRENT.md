@@ -29,7 +29,8 @@ Use with [README_CURRENT.md](README_CURRENT.md). 이 문서는 공통 품질·�
 - 동결 후 기존 student solution을 qid마다 실제 따라 풀어 완전한 발문·그림·답·보기와 비교한다. **독립 정답 21/21 일치만으로 풀이 품질 완료 아님**. 결론까지 논리 비약·누락 계산·풀이법 선택 이유·교육과정 밖 방법·부호·그래프 좌표·경계/보기 판정을 확인하고, 부족하면 qid의 `solution`과 필요한 `solutionImage`/SVG를 바로 개선한다.
 - 학생용 작은칠판 순서: 주어진 것·목표 → 왜 이 조건/정리/식으로 시작하는지 → 중간 대입·전개·계산 → 모든 필요한 분기/반례/경계/보기 → 최종 유일답. 짧아도 학생이 재현 가능한 KEEP이면 그대로 유지. 어려운 문항은 칠판처럼 필요한 만큼 자세히. 줄 수, 텍스트 길이, 한 시험지 수정 qid 수·SVG 수에 artificial CAP 금지, 무의미 장문·고의 수정량 채우기도 금지.
 - qid별 `UPGRADE(reason, changedSolutionHash, beforeAfterSummary, studentBenefit)` / `KEEP(specificFollowThroughEvidence)` / `NOT_REVIEWABLE(exactSourceDebt)`를 누적 ledger에 실물 보존. 문제 원본/시각 변경은 검증된 원본과 직접 대조 후 최소 수정만, stored "공식 답/수정 답" 과거 논쟁이나 제작 메모를 학생용 최종해설에 노출하지 않는다.
-- 그림/발문 qid가 의심스럽다면 Git/Drive Evidence Vault 실제 original PDF/asset로 **필요한 그 qid**를 대조한다. 원본을 보지 않았으면 fidelity PASS 금지, PDF 없어도 학생용 수학 검증 가능한 qid까지 막지는 않는다. 원문 일치라고 전체 N/N 주장할 땐 그 N 전체 근거가 있어야 한다.
+- 2026-11-24 원장님 결정: 이미 들어온 시험지의 수정에서 원본 대조는 참고 근거다(순서: 수정 프로토콜 → 작업자 재량 → 원본 대조). 원본을 보지 못했다고 qid를 확인 대기·판단 불가·NOT_REVIEWABLE로 남기거나 사용자에게 원본 확인을 부탁하지 않고 "수정함/오탐"으로만 분류한다. 원본 대조가 필수인 것은 CREATE·첫 반입뿐이다 → docs/agents/common.md 맨 위 절.
+- 그림/발문 qid가 의심스럽다면 Git/Drive Evidence Vault 실제 original PDF/asset로 **필요한 그 qid**를 대조한다. 원본을 보지 않았으면 "원본 대조 완료"라 쓰지 않을 뿐 보류 사유는 아니며, PDF 없어도 학생용 수학 검증 가능한 qid까지 막지는 않는다. 원문 일치라고 전체 N/N 주장할 땐 그 N 전체 근거가 있어야 한다.
 
 ## 4. R1 자신의 정밀 Meta 전 qid 조회·수리 의무
 

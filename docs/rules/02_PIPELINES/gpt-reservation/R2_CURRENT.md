@@ -33,6 +33,7 @@ Use with [README_CURRENT.md](README_CURRENT.md). ROLE 바인딩: `role=R2, campa
 ## 4. R2 품질 calibration과 전 단계 증거 재사용
 
 - Golden 2~3 + 관련 Negative의 실제 qid/solution/visual·SHA·관찰을 읽어 학생 재현/판서 구조/밀도/Visual 의미·가독성의 5축 현재 기준을 고정, 실제 적용 검증기 `solution-calibration-gate --stage R2 --preflight` 등을 실행 가능하면 수행. 불가능하면 `NOT_RUN` + 도구/실행 시도/검증 소유자를 명시. Golden 미열람=본인 quality PASS 불가.
+- 2026-11-24 원장님 결정: 이미 들어온 시험지의 수정에서 원본 대조는 참고 근거다(순서: 수정 프로토콜 → 작업자 재량 → 원본 대조). 원본을 보지 못했다고 qid를 확인 대기·판단 불가·NOT_REVIEWABLE로 남기거나 사용자에게 원본 확인을 부탁하지 않고 "수정함/오탐"으로만 분류한다. 원본 대조가 필수인 것은 CREATE·첫 반입뿐이다 → docs/agents/common.md 맨 위 절.
 - 원문과 현행 JS 사이에 실제 충돌이 보이는 특정 qid는 Verified Drive Evidence Vault PDF·PNG/Git 원본 source identity를 읽어 핀포인트 수리, 실제 원본을 확인하지 못한 발문을 독단 삭제/복구 금지. 원래 qid에서 필요한 이미지/수식/교육과정 직접 의존만 재검하고 유효 기존 정상 qid는 건드리지 않는다.
 - 다른 writer가 진행 중이면 **mutation 0**. 기존 R1 freezе/SHA와 R1 업그레이드 이력을 지우거나 META_ONLY repair 명목으로 student solution을 덮어쓰지 않는다. stage 한 시험지 회차를 가능한 끝내고 Library JS/PNG/SVG·qid 개선 ledger·META_LOOKUP_EVIDENCE·Golden/validator evidence·DOC_READ_RECEIPT를 저장+원격 readback.
 
