@@ -1,0 +1,95 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-4",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "vx",
+        "x": "2",
+        "y": "-4"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0",
+          "unnamed": true
+        },
+        {
+          "id": "A",
+          "x": "2",
+          "y": "-4",
+          "unnamed": true
+        },
+        {
+          "id": "B",
+          "x": "4",
+          "y": "0",
+          "unnamed": true
+        }
+      ],
+      "polygons": [
+        {
+          "id": "tri",
+          "points": [
+            "O",
+            "A",
+            "B"
+          ],
+          "fill": "LIGHT"
+        }
+      ],
+      "callouts": [
+        {
+          "id": "cO",
+          "point": "O",
+          "text": "O",
+          "labelKind": "MATH"
+        },
+        {
+          "id": "cA",
+          "point": "A",
+          "text": "A",
+          "labelKind": "MATH"
+        },
+        {
+          "id": "cB",
+          "point": "B",
+          "text": "B",
+          "labelKind": "MATH"
+        }
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "아래로 볼록한 이차함수의 그래프가 원점 O와 x축 위의 점 B를 지나고, 꼭짓점 A가 x축 아래에 있다. 삼각형 OAB를 색칠했다.",
+  "accessibilityDescription": "아래로 볼록한 포물선이 원점 O와 x축 위의 점 B를 지나고, 꼭짓점 A가 x축 아래에 있다. 삼각형 OAB가 색칠되어 있다.",
+  "newVisualInformation": [
+    "포물선의 꼭짓점 A와 원점 O, x축과의 교점 B가 표시되어 있다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같은 이차함수 $y=ax^2+bx+c$의 그래프에서 꼭짓점을 $\\text{A}$라고 하자. $\\triangle\\text{OAB}$의 넓이가 $8$일 때, $a+b+c$의 값은? (단, $a$, $b$, $c$는 상수이고, $\\text{O}$는 원점, $\\text{B}(4, 0)$이다.) [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

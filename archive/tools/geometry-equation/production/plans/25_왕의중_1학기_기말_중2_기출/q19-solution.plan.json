@@ -1,0 +1,50 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "1",
+          "1"
+        ]
+      }
+    ],
+    "domain": [
+      -2,
+      2
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "-1",
+        "y": "0"
+      },
+      {
+        "id": "P1",
+        "x": "0",
+        "y": "1"
+      }
+    ],
+    "formula": "x + 1"
+  },
+  "caption": "원본은 양의기울기/양의 y절편만 정한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차방정식 $ax+by+c=0$의 그래프가 아래 그림과 같을 때, 다음 중 옳은 것을 모두 고른 것은? [4점]\n<보기>\nㄱ. $ab \\lt 0$\nㄴ. $bc \\gt 0$\nㄷ. $ac \\gt 0$",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "원본은 양의기울기/양의y절편만 정한다. 이선y=x+1은 부호 대표형이며 실제계수를확정하지않는다. −a/b>0에서ab<0,−c/b>0에서bc<0,따라서ac>0. ㄱ·ㄷ,정답④.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "원본은 양의기울기/양의y절편만 정한다."
+  ]
+}

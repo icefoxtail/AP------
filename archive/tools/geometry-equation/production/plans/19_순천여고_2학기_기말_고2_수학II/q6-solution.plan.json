@@ -1,0 +1,109 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "2",
+          "-1"
+        ]
+      },
+      {
+        "coefficients": [
+          "8",
+          "-6",
+          "1"
+        ]
+      },
+      {
+        "coefficients": [
+          "-24",
+          "10",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "2",
+        "y": "0"
+      },
+      {
+        "x": "4",
+        "y": "0"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "1",
+        "5"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      1,
+      5
+    ],
+    "viewport": [
+      1,
+      5,
+      -1.5,
+      1.5
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "2",
+        "y": "0"
+      },
+      {
+        "id": "B",
+        "x": "3",
+        "y": "-1"
+      },
+      {
+        "id": "C",
+        "x": "4",
+        "y": "0"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    "axisTickValues": {
+      "x": [
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "y": []
+    }
+  },
+  "caption": "도함수의 부호 변화만 보존한 예시이며 x=1부터 5까지를 확대했다. 축 위아래 위치로 원함수의 증가와 감소를 구분한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $y=f(x)$의 도함수 $y=f'(x)$의 그래프가 아래 그림과 같을 때, 옳은 것만을 보기에서 있는 대로 고른 것은?\nㄱ. $f(x)$는 $x=2$에서 극대이다.\nㄴ. $f(x)$는 구간 $(2,3)$에서 감소한다.\nㄷ. $f(x)$는 구간 $(3,5)$에서 증가한다. [4.2점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "PNG직접확인:2에서+→−,3은음의극소,4에서−→+,5양수. 제시된 수치 없는 높이를1로 둔 부호보존예시. ㄱㄴ 선택조합은표시하지않음.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "PNG직접확인:2에서+→−,3은음의극소,4에서−→+,5양수. 제시된 수치 없는 높이를1로 둔 부호보존예시. ㄱㄴ 선택조합은표시하지않음."
+  ]
+}

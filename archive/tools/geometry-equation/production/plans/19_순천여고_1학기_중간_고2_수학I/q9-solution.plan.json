@@ -1,0 +1,122 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -5,
+      3,
+      -5,
+      3
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "EXPONENTIAL",
+        "base": "3",
+        "shiftX": "-1",
+        "coefficients": [
+          "-1",
+          "1",
+          "1"
+        ],
+        "domain": [
+          "-4",
+          "1/2"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "g1",
+        "kind": "LOGARITHMIC",
+        "base": "3",
+        "coefficients": [
+          "1",
+          "1",
+          "4",
+          "-1"
+        ],
+        "domain": [
+          "-39/10",
+          "2"
+        ],
+        "color": "WARM",
+        "style": "DASHED",
+        "label": "a=4"
+      },
+      {
+        "id": "g2",
+        "kind": "LOGARITHMIC",
+        "base": "3",
+        "coefficients": [
+          "1",
+          "1",
+          "2",
+          "-1"
+        ],
+        "domain": [
+          "-19/10",
+          "2"
+        ],
+        "color": "GREEN",
+        "label": "a=2"
+      },
+      {
+        "id": "g3",
+        "kind": "LOGARITHMIC",
+        "base": "3",
+        "coefficients": [
+          "1",
+          "1",
+          "1/3",
+          "-1"
+        ],
+        "domain": [
+          "-3/10",
+          "2"
+        ],
+        "color": "ROSE",
+        "style": "DASHED",
+        "label": "a=1/3"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2"
+      ],
+      "y": [
+        "1"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "-1",
+          "y": "0",
+          "coordinates": true
+        },
+        {
+          "id": "Q",
+          "x": "0",
+          "y": "-2",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "제3사분면에서 첫 곡선은 x가 −1보다 크고 0보다 작은 범위에 있다. t=3의 (x+1)제곱으로 두면 t는 1보다 크고 3보다 작으며, 교점 조건에서 a=3의 (2−t)제곱−로그₃t+1이다. 이 값은 t가 커질수록 4에서 1/3로 감소하므로 a는 1/3보다 크고 4보다 작다. 따라서 α+β=13/3이고 답은 ④이다.",
+  "accessibilityDescription": "파란 지수곡선 f와 주황, 초록, 분홍의 로그곡선 세 개가 그려져 있다. 경계점 P(−1,0)와 Q(0,−2)가 표시되어 있다.",
+  "newVisualInformation": [
+    "f와 a=4, a=2, a=1/3인 로그곡선",
+    "제3사분면의 교점 범위",
+    "경계점 P(−1,0), Q(0,−2)"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "9. 두 곡선 $y = -3^{x+1}+1$과 $y = -\\log_{\\frac{1}{3}}(x+a)-1$이 제3사분면에서 만나도록 하는 상수 $a$값의 범위가 $\\alpha < a < \\beta$일 때, $\\alpha+\\beta$의 값을 구하면? [4.9점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

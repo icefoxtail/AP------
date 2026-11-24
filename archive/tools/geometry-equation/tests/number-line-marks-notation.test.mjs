@@ -56,7 +56,7 @@ test('plans that cannot be drawn faithfully are refused with their codes',()=>{
   assert.throws(()=>solveNumberLineFigure(one({showValue:0})),code('NUMBER_LINE_POINTS_INVALID'));
   assert.throws(()=>solveNumberLineFigure(points({id:'ㄱ',value:'1'},{id:'B',value:'2',name:'ㄱ'})),code('NUMBER_LINE_POINT_NAME_DUPLICATE'));
   assert.throws(()=>solveNumberLineFigure(points({id:'a',value:'1'},{id:'B',value:'2'})),code('NUMBER_LINE_POINTS_INVALID'));
-  assert.throws(()=>solveNumberLineFigure(points(...'ABCDEFGHI'.split('').map((id,i)=>({id,value:String(i)})))),code('NUMBER_LINE_POINTS_INVALID'));
+  assert.throws(()=>solveNumberLineFigure(points(...'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').map((id,i)=>({id,value:String(i)})))),code('NUMBER_LINE_POINTS_INVALID'));
   assert.doesNotThrow(()=>solveNumberLineFigure(points(...'ABCDEFGH'.split('').map((id,i)=>({id,value:String(i)})))));
   assert.throws(()=>solveNumberLineFigure({axisVariable:'no',rows:[]}),code('NUMBER_LINE_AXIS_VARIABLE_INVALID'));
   assert.throws(()=>solveNumberLineFigure({...q14,rows:[{...q14.rows[0],band:'no'}]}),code('NUMBER_LINE_ROWS_INVALID'));

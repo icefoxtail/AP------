@@ -1,0 +1,62 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-1",
+          "-3",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -2,
+      2
+    ],
+    "viewport": [
+      -2,
+      2,
+      -4,
+      2
+    ],
+    "functionName": "f",
+    "formula": "x^3-3x-1",
+    "requiredPoints": [
+      {
+        "id": "M",
+        "x": "-1",
+        "y": "1"
+      },
+      {
+        "id": "N",
+        "x": "1",
+        "y": "-3"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "sampleNote": "a=-1"
+  },
+  "caption": "a=−1일 때 그래프는 M(−1,1)에서 극대, N(1,−3)에서 극소이다. f(−1)=1>0, f(1)=−3<0이므로 f는 부호가 바뀌는 점이 세 번 생긴다. 따라서 F(x)는 0부터 x까지 f(t)를 적분한 함수이므로 극값을 세 개 가져 조건을 만족하지 않는다. 보기 중 −2<a<2에 해당하는 값은 −1뿐이므로 답은 ③이다.",
+  "accessibilityDescription": "가로축 −2부터 2까지의 범위에 삼차함수 f의 그래프가 있고, x=−1의 봉우리와 x=1의 골짜기가 표시되어 있다.",
+  "newVisualInformation": [
+    "a=-1일 때의 삼차함수 그래프와 두 극점을 나타내었다.",
+    "그래프가 x축과 세 번 만나는 모습을 보여 준다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "16. 함수 $f(x)=x^3-3x+a$에서 $F(x)=\\int_{0}^{x} f(t)dt$가 단 하나의 극값을 갖도록 하는 상수 $a$의 값이 될 수 없는 것은? [4.5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

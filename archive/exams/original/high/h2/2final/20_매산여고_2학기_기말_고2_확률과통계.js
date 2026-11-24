@@ -970,7 +970,11 @@ window.questionBank = [
     "wide": false,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/20_매산여고_2학기_기말_고2_확률과통계/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "95% 신뢰구간의 길이는 3.92σ/√n이므로 l = 3.92σ/√n1, 2l = 3.92σ/√n2에서 l = 1.96σ/√n2이다. 따라서 A = 3.92, B = 1.96이고, 두 식을 같게 놓으면 n1 = 4n2이므로 C = 1/4이다. 200(AC + BC) = 200 × (3.92 + 1.96) × 1/4 = 50 × 5.88 = 294이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -1147,7 +1151,11 @@ window.questionBank = [
     "wide": false,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/20_매산여고_2학기_기말_고2_확률과통계/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "표본의 크기가 16이므로 표본평균의 표준편차는 σ/4이고, σ = 7이면 7/4이다. 표본평균이 75분일 때 95% 신뢰구간의 왼쪽 끝은 a = 75 − 1.96 × 7/4 = 71.57이고, 표본평균이 77분일 때 99% 신뢰구간의 왼쪽 끝은 c = 77 − 2.58 × 7/4 = 72.485이다. 그러면 c − a = 2 − 0.62 × 7/4 = 0.915로 주어진 조건을 만족한다. 따라서 답은 7이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,

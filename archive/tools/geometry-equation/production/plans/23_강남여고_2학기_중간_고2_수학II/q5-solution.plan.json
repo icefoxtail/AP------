@@ -1,0 +1,90 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "3",
+          "3",
+          "2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -2,
+      2
+    ],
+    "viewport": [
+      -2,
+      2,
+      -1,
+      18
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "-3/4",
+        "y": "15/8"
+      }
+    ],
+    "exactCoordinates": {
+      "V": [
+        "-3/4",
+        "15/8"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "coordinateBand": {
+      "hide": [
+        "V"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "-1",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "curveX": "1",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "l",
+          "slope": "3",
+          "intercept": "5",
+          "label": "l"
+        }
+      ]
+    }
+  },
+  "caption": "예: a=3일 때의 그래프이다. 평균변화율은 (f(1)-f(-1))/2=((5+a)-(5-a))/2=a이고 이것이 3이므로 a=3이다. 그림에서 할선 l은 두 점 A(-1,2), B(1,8)을 지나며 기울기가 평균변화율 3이다. 따라서 답은 ②이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "5. 함수 $f(x)=2x^2+ax+3$에서 $x$의 값이 $-1$에서 $1$까지 변할 때, 평균변화율이 $3$이다. 이때 상수 $a$의 값은? [3.5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "구간 양 끝 A, B를 잇는 할선 l의 기울기가 평균변화율 3임을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "a=3일 때 구간 [-1,1]의 할선 l은 A(-1,2), B(1,8)을 지나고 기울기가 3이다."
+  ],
+  "accessibilityDescription": "아래로 볼록한 포물선 위의 두 점 A, B를 잇는 할선을 나타낸 그래프이며 두 점의 좌표가 표시되어 있다."
+}

@@ -1,0 +1,59 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "-5",
+          "3"
+        ],
+        "domain": [
+          "5",
+          "10"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "7",
+          "3/2"
+        ],
+        "domain": [
+          "5",
+          "10"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "8",
+          "y": "19",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "가로근영승수 w,세로전체경기 n. 3w−n5와 2n−3w14의교점(8,19). 근영 8승,영종 11승이면각+5,+14,정답②.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "영종이와 근영이가 계단에서 가위바위보를 하는데, 이긴 사람은 2계단을 올라가고, 진 사람은 1계단을 내려간다고 한다. 두 사람이 가위바위보를 하여 처음보다 영종이는 14계단, 근영이는 5계단을 올라갔을 때, 근영이는 몇 번 이겼는가? (단, 비기는 경우는 없다.) [4점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "가로근영승수w,세로전체경기n. 3w−n5와2n−3w14의교점(8,19). 근영8승,영종11승이면각+5,+14,정답②.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "가로근영승수w,세로전체경기n. 3w−n5와2n−3w14의교점(8,19). 근영8승,영종11승이면각+5,+14,정답②."
+  ]
+}

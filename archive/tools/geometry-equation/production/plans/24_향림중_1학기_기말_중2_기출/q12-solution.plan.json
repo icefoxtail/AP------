@@ -1,0 +1,59 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "-9",
+          "2"
+        ],
+        "domain": [
+          "3",
+          "7"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "-3",
+          "1"
+        ],
+        "domain": [
+          "3",
+          "7"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "6",
+          "y": "3",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "대입 y=x−3으로 x6,y3. 두선공통점이해,정답⑤.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "연립방정식 $\\begin{cases}2x-y=9\\\\y=x-3\\end{cases}$의 해는? [3점] 보기: ['$x=3,\\\\ y=0$', '$x=2,\\\\ y=-5$', '$x=-3,\\\\ y=6$', '$x=4,\\\\ y=1$', '$x=6,\\\\ y=3$']",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "대입y=x−3으로x6,y3. 두선공통점이해,정답⑤.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "대입y=x−3으로x6,y3. 두선공통점이해,정답⑤."
+  ]
+}

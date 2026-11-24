@@ -1,0 +1,97 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "3",
+          "0",
+          "1",
+          "0",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      0,
+      1
+    ],
+    "viewport": [
+      0,
+      1,
+      2.8,
+      3.4
+    ],
+    "requiredPoints": [
+      {
+        "id": "E0",
+        "x": "0",
+        "y": "3"
+      },
+      {
+        "id": "E1",
+        "x": "-sqrt(2)/2",
+        "y": "13/4"
+      },
+      {
+        "id": "E2",
+        "x": "sqrt(2)/2",
+        "y": "13/4"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "coordinateBand": {
+      "hide": [
+        "E0",
+        "E1",
+        "E2"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "0",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "curveX": "1",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "sec",
+          "slope": "0",
+          "intercept": "3",
+          "label": "y=3"
+        }
+      ]
+    }
+  },
+  "caption": "구간 양 끝의 함수값이 같을 때 내부에서 수평 접선이 생기는 위치를 살핀다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "9. 함수 $f(x)=-x^4+x^2+3$에 대하여 열린구간 $(0, 1)$에서 롤의 정리를 만족시키는 실수 $c$가 될 수 있는 모든 값의 합을 구하시오. [4.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "롤의 정리, 내부 도함수영점의 정확한 위치는 극점 모델에만 넣고 좌표라벨/최종합은 숨김.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "롤의 정리, 내부 도함수영점의 정확한 위치는 극점 모델에만 넣고 좌표라벨/최종합은 숨김."
+  ]
+}

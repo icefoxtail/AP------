@@ -1,0 +1,94 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "layout": "STACKED",
+    "xWindow": [
+      -5,
+      7
+    ],
+    "pieces": [
+      {
+        "coefficients": [
+          "-1",
+          "1"
+        ],
+        "domain": [
+          -1,
+          0
+        ],
+        "end": "CLOSED"
+      },
+      {
+        "coefficients": [
+          "1",
+          "1"
+        ],
+        "domain": [
+          0,
+          3
+        ],
+        "start": "OPEN"
+      }
+    ],
+    "referenceCurves": [
+      {
+        "id": "g",
+        "pieces": [
+          {
+            "coefficients": [
+              "2",
+              "-2",
+              "1"
+            ],
+            "domain": [
+              -1,
+              3
+            ]
+          }
+        ],
+        "jumpValues": [],
+        "axisTickValues": {
+          "x": [
+            "1"
+          ],
+          "y": [
+            "2"
+          ]
+        },
+        "requiredPoints": [
+          {
+            "id": "V",
+            "x": "1",
+            "y": "1"
+          }
+        ]
+      }
+    ],
+    "requiredPoints": [],
+    "axisTickValues": {
+      "x": [],
+      "y": [
+        "-1",
+        "1"
+      ]
+    }
+  },
+  "caption": "예: a=2일 때의 그림이다. 위는 y=f(x)로 입력 0에서만 좌극한 -1, 우극한 1로 불연속이다. 아래는 y=g(x)=x²-2x+2로 x축 위에 있어 g(x)=0인 점이 없으므로 f(g(x))는 모든 x에서 연속이다. 이는 판별식 a²-4a<0, 즉 0<a<4일 때이며 정수 a는 1, 2, 3의 3개이다. 따라서 답은 ③이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 함수 $f(x)=\\begin{cases}x+1&(x>0)\\\\x-1&(x\\le0)\\end{cases}$, $g(x)=x^2-ax+a$에 대하여 합성함수 $f(g(x))$가 모든 실수 $x$에서 연속이 되도록 하는 정수 $a$의 개수는? [4.2점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "f의 0에서의 점프와 x축 위에 놓여 0이 되지 않는 g를 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "f는 입력 0에서만 불연속이고 a=2일 때 g는 x축과 만나지 않아 g(x)=0인 점이 없다."
+  ],
+  "accessibilityDescription": "위쪽에 x=0에서 끊어지는 f의 그래프(왼쪽은 닫힌 점, 오른쪽은 빈 점), 아래쪽에 x축 위에 놓인 포물선 g를 나란히 그린 그림이다."
+}

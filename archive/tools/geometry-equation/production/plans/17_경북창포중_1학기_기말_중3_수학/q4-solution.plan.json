@@ -1,0 +1,59 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "2"
+        ],
+        "domain": [
+          "-5",
+          "2"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "g",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "16",
+          "12",
+          "2"
+        ],
+        "domain": [
+          "-5",
+          "2"
+        ],
+        "color": "WARM",
+        "label": "g"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "두 포물선은 폭이 같다. 꼭짓점의 위치를 비교하여 평행이동의 방향과 크기를 판단한다.",
+  "accessibilityDescription": "두 포물선은 폭이 같다. 꼭짓점의 위치를 비교하여 평행이동의 방향과 크기를 판단한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "4. 이차함수 $y=2x^2+12x+16$의 그래프는 $y=2x^2$의 그래프를 $x$축, $y$축의 방향으로 각각 얼마만큼 평행이동한 것인가? [3.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "2(x+3)²−2이므로 이동(−3,−2). 최종 이동량을 좌표·caption에 쓰지 않음.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "두 포물선은 폭이 같다. 꼭짓점의 위치를 비교하여 평행이동의 방향과 크기를 판단한다."
+  ]
+}

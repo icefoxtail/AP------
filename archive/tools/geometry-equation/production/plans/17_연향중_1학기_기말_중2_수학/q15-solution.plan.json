@@ -1,0 +1,49 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "x≥−1",
+        "color": "BLUE",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-1",
+              "state": "CLOSED"
+            },
+            "hi": null
+          }
+        ],
+        "hideSetLabel": true
+      },
+      {
+        "kind": "SET",
+        "label": "x",
+        "color": "WARM",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "-2",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "hideSetLabel": true
+      }
+    ]
+  },
+  "caption": "예: a=−4로 그렸다. 3x+3≥x+1에서 x≥−1이고 5x−2<4x+a에서 x<a+2이다. 두 부등식의 해가 공통부분이 없으려면 a+2가 −1 이하이어야 한다. a+2≤−1에서 a≤−3이다. a=−4이면 x<−2와 x≥−1이 겹치지 않는다. 따라서 답은 ⑤이다.",
+  "accessibilityDescription": "수직선 위에 두 줄이 있다. 위 줄은 −1 이상의 수 전체이고 아래 줄은 −2보다 작은 수 전체이며 두 구간이 겹치지 않는다.",
+  "newVisualInformation": [
+    "해가 겹치지 않으려면 a+2≤−1이어야 하므로 a≤−3"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>15. 연립부등식 $\\begin{cases} 3x+3 \\ge x+1 \\\\ 5x-2 < 4x+a \\end{cases}$의 해가 없을 때, 상수 $a$의 값의 범위는? [4점]</p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

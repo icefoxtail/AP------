@@ -1,0 +1,104 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -0.15,
+      1.15,
+      -0.15,
+      1.15
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "1"
+        ],
+        "domain": [
+          "0",
+          "1"
+        ],
+        "label": "y=x^2"
+      },
+      {
+        "id": "g",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "9"
+        ],
+        "domain": [
+          "0",
+          "1/3"
+        ],
+        "label": "y=9x^2"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "1/4",
+          "y": "1/16"
+        },
+        {
+          "id": "B",
+          "x": "3/4",
+          "y": "1/16"
+        },
+        {
+          "id": "C",
+          "x": "3/4",
+          "y": "9/16"
+        },
+        {
+          "id": "D",
+          "x": "1/4",
+          "y": "9/16"
+        }
+      ],
+      "segments": [
+        {
+          "id": "AB",
+          "from": "A",
+          "to": "B"
+        },
+        {
+          "id": "BC",
+          "from": "B",
+          "to": "C"
+        },
+        {
+          "id": "CD",
+          "from": "C",
+          "to": "D"
+        },
+        {
+          "id": "DA",
+          "from": "D",
+          "to": "A"
+        }
+      ]
+    }
+  },
+  "caption": "두 포물선 y=x²과 y=9x² 위에 점 A, C와 점 D가 있고, 각 변이 좌표축에 평행한 정사각형 ABCD가 그려져 있다.",
+  "accessibilityDescription": "좌표평면에 아래로 볼록한 두 포물선 y=x²과 y=9x²이 원점에서 만나고, y=x² 위의 두 점 A, C와 y=9x² 위의 점 D를 꼭짓점으로 하는 정사각형 ABCD가 있다.",
+  "newVisualInformation": [
+    "정사각형 ABCD와 두 포물선 y=x², y=9x²의 위치 관계"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림에서 사각형 $\\mathrm{ABCD}$는 정사각형이고, 각 변은 각각 $x$축, $y$축에 평행하다. 두 점 $\\mathrm{A, C}$는 포물선 $y = x^2$ 위의 점이고 점 $\\mathrm{D}$는 포물선 $y = 9x^2$ 위의 점이다. 이때 점 $\\mathrm{B}$의 좌표를 구하여라. (단, 점 $\\mathrm{A}$의 $x$좌표는 양수이다.) [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

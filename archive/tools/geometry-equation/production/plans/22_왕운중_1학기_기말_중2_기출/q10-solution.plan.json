@@ -1,0 +1,55 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-11",
+          "4"
+        ]
+      }
+    ],
+    "domain": [
+      1,
+      5
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "2",
+        "y": "-3"
+      },
+      {
+        "id": "P1",
+        "x": "3",
+        "y": "1"
+      },
+      {
+        "id": "P2",
+        "x": "4",
+        "y": "5"
+      }
+    ],
+    "formula": "4*x - 11"
+  },
+  "caption": "주어진 두 점 (2,−3),(4,5)에서 y4x−11. (3k,k) 대입해 k1이므로 실제 세 번째 점 (3,1). 정답 ①.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "세 점 $(2,-3)$, $(4,5)$, $(3k,k)$가 한 직선 위에 있을 때, $k$의 값을 구하면? [4점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "주어진두점(2,−3),(4,5)에서y4x−11. (3k,k)대입해k1이므로실제세번째점(3,1). 정답①.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "주어진두점(2,−3),(4,5)에서y4x−11. (3k,k)대입해k1이므로실제세번째점(3,1). 정답①."
+  ]
+}

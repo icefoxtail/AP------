@@ -94,7 +94,11 @@ window.questionBank = [
     "sourceOrdinal": 2,
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "solutionImage": "assets/images/22_매산고_1학기_중간_고2_확률과통계/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 정사각형이 가운데에서 가로와 세로로 나뉘어 네 영역이 되고, 각 영역이 서로 다른 색으로 칠해져 있으며 1, 2, 3, 4가 적혀 있다.",
+    "solutionImageCaption": "7가지 색 중에서 사용할 4가지 색을 고르는 방법은 35가지이다. 고른 네 색을 네 영역에 배열하는 방법은 4!가지이고, 회전하여 일치하는 배열은 네 가지씩 같은 것으로 보므로 35 곱하기 24 나누기 4는 210가지이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -433,7 +437,11 @@ window.questionBank = [
     "sourceOrdinal": 9,
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/22_매산고_1학기_중간_고2_확률과통계/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 점선으로 그린 정삼각형 탁자가 있고, 그 세 변 바깥에 좌석 점이 두 개씩 놓여 있으며 각 변에 좌석 수 2가 적혀 있다.",
+    "solutionImageCaption": "정삼각형 탁자에서는 120도씩 회전한 세 배치가 같은 것이므로 6!을 3으로 나눈다. 6!/3=720/3=240이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -730,7 +738,11 @@ window.questionBank = [
       "COND_INTEGER",
       "COND_RANGE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "solutionImage": "assets/images/22_매산고_1학기_중간_고2_확률과통계/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축 위 짝수 위치마다 파란 세로 막대가 서 있고, 막대 위에 f(0), f(2)부터 f(14)까지 이름이 적혀 있다.",
+    "solutionImageCaption": "f(x)는 성공확률 2/3인 이항분포에서 x번 성공할 확률이다. 구하는 값은 짝수 차수 항의 합이므로 (1/2)((1/3+2/3)¹⁵+(1/3−2/3)¹⁵)와 같다. 이 값은 (1/2)(1−1/3¹⁵)이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -778,7 +790,11 @@ window.questionBank = [
     "sourceOrdinal": 16,
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "solutionImage": "assets/images/22_매산고_1학기_중간_고2_확률과통계/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 집합 사이의 포함 관계와 원소가 속한 영역을 벤 다이어그램으로 나타낸 그림이다.",
+    "solutionImageCaption": "드모르간 법칙으로 P(A의 여사건∪B의 여사건)=1−P(A∩B)=0.8이므로 P(A∩B)=0.2이다. 그림은 A만 0.3, 겹침 0.2, B만 0.1, 바깥 0.4이고 색칠한 B는 겹침 0.2와 B만 0.1을 합친 것이다. 따라서 P(B)=0.2+0.1=0.3이고 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -830,7 +846,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RANGE"
     ],
-    "integrationPattern": "DEEP_COMPOSITE"
+    "integrationPattern": "DEEP_COMPOSITE",
+    "solutionImage": "assets/images/22_매산고_1학기_중간_고2_확률과통계/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 주사위를 던질 때 나오는 눈의 경우를 표로 나타낸 그림이다.",
+    "solutionImageCaption": "판별식 D=(a+b)²−4(ab+1)=(a−b)²−4이므로 실근이 없으려면 |a−b|<2이다. 6×6 표에서 대각선 6칸과 그 바로 옆 10칸을 칠했다. 모두 16칸이므로 확률은 16/36=4/9이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -956,7 +976,11 @@ window.questionBank = [
     "sourceOrdinal": 20,
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "solutionImage": "assets/images/22_매산고_1학기_중간_고2_확률과통계/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 집합 사이의 포함 관계와 원소가 속한 영역을 벤 다이어그램으로 나타낸 그림이다.",
+    "solutionImageCaption": "C가 A와 배반이려면 C는 S에서 A를 뺀 {8, 9, 10}의 부분집합이어야 한다. B와 배반이 아니려면 C가 B의 원소 8 또는 10을 포함해야 하므로 색칠한 B만의 영역 {8, 10}의 원소를 적어도 하나 포함한다. {8, 9, 10}의 부분집합 8개 중 8과 10이 모두 없는 부분집합은 공집합과 {9}의 2개이므로 8−2=6개이다. 따라서 답은 6이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,

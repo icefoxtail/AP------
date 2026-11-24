@@ -1,0 +1,59 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "A",
+        "name": "백의자리",
+        "elements": [
+          "4가지"
+        ]
+      },
+      {
+        "id": "B",
+        "name": "십의자리",
+        "elements": [
+          "남은4"
+        ]
+      },
+      {
+        "id": "C",
+        "name": "일의자리",
+        "elements": [
+          "남은3"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 0
+        },
+        "to": {
+          "column": 2,
+          "element": 0
+        }
+      }
+    ]
+  },
+  "caption": "백의 자리는 0을 뺀 1, 2, 3, 4의 4가지이다. 이어 십의 자리는 0을 포함해 남은 4장 중 하나, 일의 자리는 남은 3장 중 하나를 고르므로 4×4×3=48이다. 화살표는 선택 단계를 이은 것이다. 따라서 답은 ④ 48개이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$0$부터 $4$까지의 숫자가 각각 하나씩 적힌 $5$장의 카드가 있다. 이 중에서 $3$장의 카드를 한 장씩 차례대로 뽑아 만들 수 있는 세 자리 자연수의 개수는? (4점)",
+      "mappedTo": "diagram"
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "12"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "12x^2",
+    "functionName": "f",
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "0",
+        "y": "0"
+      },
+      {
+        "id": "A",
+        "x": "1",
+        "y": "12"
+      },
+      {
+        "id": "B",
+        "x": "-1",
+        "y": "12"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1"
+      ],
+      "y": [
+        "4",
+        "8"
+      ]
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "f(x)"
+    },
+    "regions": [
+      {
+        "id": "S",
+        "upper": "f",
+        "lower": "axis",
+        "from": "0",
+        "to": "1",
+        "fill": "LIGHT",
+        "label": "S"
+      }
+    ],
+    "domain": [
+      -1.15,
+      1.15
+    ],
+    "viewport": [
+      -1.2,
+      1.2,
+      -2,
+      16
+    ],
+    "overlays": {
+      "points": []
+    },
+    "coordinateBand": {
+      "hide": [
+        "V"
+      ]
+    }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "예: f(x)=12x²라 하면 우함수이고 0부터 1까지의 정적분은 4이다. (x⁵−2x³)f(x)는 홀함수이므로 −1부터 1까지의 적분은 0이고, 상수항 부분은 4이다. 따라서 답은 ④이다.",
+  "accessibilityDescription": "원점을 꼭짓점으로 하는 위로 열린 포물선, 0부터 1까지 곡선 아래에 색칠된 영역 S, 서로 대칭인 두 점 A와 B가 보인다.",
+  "newVisualInformation": [
+    "우함수의 대칭성을 보이기 위해 y축에 대하여 대칭인 두 점 A, B를 표시하였다.",
+    "0부터 1까지 곡선 아래 영역 S를 색칠하여 정적분 4를 나타내었다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)$가 모든 실수 $x$에 대하여 $f(-x)=f(x)$를 만족시키고 $\\displaystyle\\int_0^1 f(x),dx=4$일 때, 정적분 $\\displaystyle\\int_{-1}^1\\left(x^5-2x^3+\\dfrac{1}{2}\\right)f(x),dx$의 값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

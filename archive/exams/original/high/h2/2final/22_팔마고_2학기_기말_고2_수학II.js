@@ -487,7 +487,11 @@ window.questionBank = [
       "campaign": "HIGH_DYNAMIC_INTAKE_20261017",
       "examUid": "22_팔마고_2학기_기말_고2_수학II",
       "sourceOnlySha256": "58d347ce1266380db1bf4a32db251e80a53e79348c878459d8ee71790565768d"
-    }
+    },
+    "solutionImage": "assets/images/22_팔마고_2학기_기말_고2_수학II/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 양수 매개변수 k=1의 예시이다. x=0에서 감소하기 시작한 뒤 x=k에서 증가로 바뀌므로 그 지점의 높이를 확인한다. 예시를 최댓값을 주는 매개변수로 해석하지 않는다.",
+    "solutionImageCaption": "양수 매개변수 k=1의 예시이다. x=0에서 감소하기 시작한 뒤 x=k에서 증가로 바뀌므로 그 지점의 높이를 확인한다. 예시를 최댓값을 주는 매개변수로 해석하지 않는다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 10,
@@ -703,7 +707,11 @@ window.questionBank = [
       "campaign": "HIGH_DYNAMIC_INTAKE_20261017",
       "examUid": "22_팔마고_2학기_기말_고2_수학II",
       "sourceOnlySha256": "58d347ce1266380db1bf4a32db251e80a53e79348c878459d8ee71790565768d"
-    }
+    },
+    "solutionImage": "assets/images/22_팔마고_2학기_기말_고2_수학II/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 도함수와 가로축 사이의 부호를 원함수의 증가·감소와 연결한다. 두 극값의 차이를 도함수의 정적분으로 나타낸다.",
+    "solutionImageCaption": "도함수와 가로축 사이의 부호를 원함수의 증가·감소와 연결한다. 두 극값의 차이를 도함수의 정적분으로 나타낸다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -1128,7 +1136,12 @@ window.questionBank = [
       "campaign": "HIGH_DYNAMIC_INTAKE_20261017",
       "examUid": "22_팔마고_2학기_기말_고2_수학II",
       "sourceOnlySha256": "58d347ce1266380db1bf4a32db251e80a53e79348c878459d8ee71790565768d"
-    }
+    },
+    "solutionImage": "assets/images/22_팔마고_2학기_기말_고2_수학II/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 곡선 y=f(t)와 t축 사이의 영역이 x=1부터 x=3까지 색칠되어 있고, 곡선 위의 점 A(1, 10)이 표시되어 있다.",
+    "solutionImageCaption": "예: f(t)=3t²−6t+13, a=1, x=3일 때 색칠한 영역의 넓이는 S(x)=F(x)−F(a)이다. 구하는 극한은 2 곱하기 F′(a)이고 F′(a)=f(a)=10이므로 값은 20이다. 따라서 답은 20이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 94
   },
   {
     "id": 22,

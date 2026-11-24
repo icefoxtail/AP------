@@ -62,7 +62,11 @@ window.questionBank = [
         "reason": "0의 왼쪽에서 제곱근값이 0으로 수렴합니다."
       }
     ],
-    "questionUid": "qid_v1_d2715125fe312d321ddcdc2a223616cbbdce5414a5a500e01f340b09ad5c9e8a"
+    "questionUid": "qid_v1_d2715125fe312d321ddcdc2a223616cbbdce5414a5a500e01f340b09ad5c9e8a",
+    "solutionImage": "assets/images/19_제일고_2학기_중간_고2_수학II/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: x=0에서 끊어지는 그래프로, 아래쪽 수평선과 위쪽 수평선이 x=0에서 각각 열린 점으로 끝나는 모양이다.",
+    "solutionImageCaption": "y=x/|x|의 그래프이다. x<0에서 -1, x>0에서 1이므로 x→0-일 때 좌극한 -1, x→0+일 때 우극한 1로 두 값이 다르고 x=0에서는 정의되지 않아 양쪽 수평선이 열린 점으로 끝난다. 따라서 이 극한은 수렴하지 않고 답은 ④이다. 나머지 ①, ②, ③, ⑤는 각각 2, -6, 0, 0으로 수렴한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -324,7 +328,11 @@ window.questionBank = [
         "reason": "5개는 사잇값 정리로 보장되는 정수 수일 뿐, 원문이 묻는 가능한 정수의 전체 개수가 아닙니다."
       }
     ],
-    "questionUid": "qid_v1_75176afd2909fbf06706be297ebf28164a878713c239506f3c44d7e0403c745c"
+    "questionUid": "qid_v1_75176afd2909fbf06706be297ebf28164a878713c239506f3c44d7e0403c745c",
+    "solutionImage": "assets/images/19_제일고_2학기_중간_고2_수학II/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 위의 점 A에서 내려가 가로축을 점 R에서 지나 오른쪽 아래의 점 B에 이르는 그래프이다.",
+    "solutionImageCaption": "예: k=0이고 g(x)=f(x)-x를 직선으로 그렸다. g(0)=k+2=2>0, g(1)=k-4=-4<0이라 구간 양 끝 A(0,2), B(1,-4)에서 부호가 다르고 곡선이 x축을 R에서 지난다. 사잇값 정리로 근이 (0,1)에 보장되려면 k+2>0이고 k-4<0, 곧 -2<k<4이다. 이를 만족하는 정수 k는 -1, 0, 1, 2, 3의 5개이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -388,7 +396,11 @@ window.questionBank = [
         "reason": "구간 끝점을 바꾸거나 분모 3을 놓친 값입니다."
       }
     ],
-    "questionUid": "qid_v1_8cac1be78ae440cc4f139f391098a06c4b970f87c0a5a64df8242fbdb582b91c"
+    "questionUid": "qid_v1_8cac1be78ae440cc4f139f391098a06c4b970f87c0a5a64df8242fbdb582b91c",
+    "solutionImage": "assets/images/19_제일고_2학기_중간_고2_수학II/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축 아래에서 왼쪽의 낮은 곳에서 시작해 오른쪽으로 갈수록 완만하게 올라가는 곡선에 점 A와 점 B가 표시된 그래프이다.",
+    "solutionImageCaption": "예: a=-2일 때 f(x)=-2/(x+1)을 그렸다. 닫힌구간 [1,2]에서 분모가 양수이고 a<0이라 곡선이 계속 올라간다. 그래서 왼쪽 끝 A(1,-1)에서 최솟값 -1, 오른쪽 끝 B(2,-2/3)에서 최댓값 -2/3을 갖는다. 따라서 답은 ③이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 7,
@@ -458,7 +470,11 @@ window.questionBank = [
         "reason": "OP/t가 1로 수렴하므로 3이 아닙니다."
       }
     ],
-    "questionUid": "qid_v1_a852d5677c8417730eba4dc50d8462e3f0b3d585e22a7c17a2032aaccceb0fe4"
+    "questionUid": "qid_v1_a852d5677c8417730eba4dc50d8462e3f0b3d585e22a7c17a2032aaccceb0fe4",
+    "solutionImage": "assets/images/19_제일고_2학기_중간_고2_수학II/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 원점에서 시작해 오른쪽 위로 완만하게 오르는 제곱근 곡선 위의 점 P에서 가로축 위의 점 Q로 세로 선분이 내려오고 원점 O와 P, Q를 잇는 선분이 직각삼각형을 이루는 그래프이다.",
+    "solutionImageCaption": "예: t=4일 때를 그린다. P(4,2), 수선의 발 Q(4,0)이고 OQ=4, PQ=2, OP=√20이다. 일반적으로 OQ=t, PQ=√t, OP=√(t²+t)이고 (OP-PQ)/OQ=√(1+1/t)-1/√t이다. t가 커질수록 이 값은 1에 가까워지므로 극한은 1이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 8,
@@ -526,7 +542,11 @@ window.questionBank = [
         "reason": "b=3만 사용하고 a(4-2)²를 빠뜨린 값입니다."
       }
     ],
-    "questionUid": "qid_v1_380031b6b5ee2ee6b5321c2ea2eba0cd74f9547cb080896f2861d5e4a48660e9"
+    "questionUid": "qid_v1_380031b6b5ee2ee6b5321c2ea2eba0cd74f9547cb080896f2861d5e4a48660e9",
+    "solutionImage": "assets/images/19_제일고_2학기_중간_고2_수학II/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 끝 점 A에서 올라가는 직선이 점 P에서 위로 볼록한 포물선 조각으로 이어져 점 C를 지나 내려가 오른쪽 끝 점 B에서 점 A와 같은 높이에 이르는 그래프이다.",
+    "solutionImageCaption": "x=2에서 2·2-1=3=b이다. 주기 6이므로 f(6)=f(0)=-1이고 16a+b=-1에서 a=-1/4이다. 그림은 한 주기 [0,6]의 그래프로 왼쪽 직선이 P(2,3)에서 포물선으로 이어지고 양 끝점 A(0,-1), B(6,-1)의 높이가 같다. f(46)=f(4)이므로 곡선 위의 점 C(4,2)의 높이 2가 답이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -922,7 +942,11 @@ window.questionBank = [
         "reason": "44/6은 7과 같지 않습니다."
       }
     ],
-    "questionUid": "qid_v1_d31c7bcf91ffa1ac47c75722270bb8bac8f5371c7d96ba9dd0af59f9b065c744"
+    "questionUid": "qid_v1_d31c7bcf91ffa1ac47c75722270bb8bac8f5371c7d96ba9dd0af59f9b065c744",
+    "solutionImage": "assets/images/19_제일고_2학기_중간_고2_수학II/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 세로로 긴 삼차곡선이 y=6인 수평선과 x=2,4,6에서 만나고, x=8에서의 접선 t가 그려져 있다. 점 D(8,14)와 E(0,-2)의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "f(2)=f(4)=f(6)=6이므로 f(x)−6은 2,4,6을 근으로 갖고 f(x)=6+a(x−2)(x−4)(x−6)이다. f(0)=−2에서 a=1/6을 얻고, 곱의 미분법으로 f′(8)=22/3이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -1198,7 +1222,11 @@ window.questionBank = [
         "reason": "모든 n에 같은 개수의 점프가 있는 것은 아닙니다."
       }
     ],
-    "questionUid": "qid_v1_2da45846ebea34471d70deb322e997312efab0b6fd2c5e0e2787dbeebfd6df2b"
+    "questionUid": "qid_v1_2da45846ebea34471d70deb322e997312efab0b6fd2c5e0e2787dbeebfd6df2b",
+    "solutionImage": "assets/images/19_제일고_2학기_중간_고2_수학II/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 패널이 나란히 있다. 첫째 패널에는 x=2, 4, 8에서 한 칸씩 올라가는 계단이, 둘째 패널에는 x=3, 9에서 한 칸씩 올라가는 계단이 그려져 있고 각 수평선의 왼쪽 끝은 닫힌 점이다.",
+    "solutionImageCaption": "y=[log_(n+1) x]는 로그가 정수가 되는 x=(n+1)의 거듭제곱에서 뛴다. 왼쪽은 n=1(밑 2)로 x=2, 4, 8의 3곳, 오른쪽은 n=2(밑 3)로 x=3, 9의 2곳에서 끊어진다. n=3, 4, ..., 8(밑 4부터 9)은 x=밑 자신 한 곳씩이고 n=9(밑 10)는 x=10이 정의역 밖이라 0곳이다. 따라서 a_1+...+a_9=3+2+6+0=11이고 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -1337,7 +1365,11 @@ window.questionBank = [
     "sourceExamUid": "19_제일고_2학기_중간_고2_수학II",
     "provenance": "ORIGINAL_SOURCE",
     "metaProjectionStatus": "PROJECTION_REUSE_CANDIDATE",
-    "questionUid": "qid_v1_636368cd39706a78806ac32aaaf69e5646c855fbe5f125dc12c735475c626017"
+    "questionUid": "qid_v1_636368cd39706a78806ac32aaaf69e5646c855fbe5f125dc12c735475c626017",
+    "solutionImage": "assets/images/19_제일고_2학기_중간_고2_수학II/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 아래의 점 A에서 올라가 점 B에서 가로축을 지나고 점 C에서 꼭대기에 이른 뒤 내려가 가로축을 지나 오른쪽 아래 점 D에 이르는 꺾은선 그래프이다.",
+    "solutionImageCaption": "예: h(x)=x²f(x)-3x+1의 네 값 h(-2)=-1, h(-1)=0, h(0)=1, h(1)=-2를 꺾은선으로 이은 연속함수이다. B(-1,0)이 x축 위의 점이라 x=-1이 한 근이다. C에서 D로 갈 때 부호가 +에서 -로 바뀌어 구간 (0,1)에 근이 하나 더 있다. 두 근은 서로 다르므로 적어도 2개이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,

@@ -1,0 +1,86 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "label": "나머지",
+        "kind": "SET",
+        "color": "BLUE",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "3",
+              "state": "OPEN"
+            }
+          }
+        ]
+      },
+      {
+        "label": "③",
+        "kind": "SET",
+        "color": "WARM",
+        "pieces": [
+          {
+            "lo": {
+              "value": "3",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "두 해의 범위 비교"
+  },
+  "caption": "각 부등식을 풀면 ①, ②, ④, ⑤는 모두 x<3이고 ③만 x>3이다. 따라서 해가 다른 하나는 ③이다.",
+  "accessibilityDescription": "수직선에 두 줄이 있고, 첫째 줄은 3보다 작은 쪽에, 둘째 줄은 3보다 큰 쪽에 각각 다른 색의 굵은 범위가 표시되어 있다. 두 줄의 3 위치에는 빈 점이 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>10. 다음 중 부등식의 해가 다른 하나는? (3점)</p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "x+3<6",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "4x<12",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "-1+x>2",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    },
+    {
+      "id": "c4",
+      "condition": "-2x>-6",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    },
+    {
+      "id": "c5",
+      "condition": "-x/3>-1",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "수직선의 두 줄에 x<3인 범위와 x>3인 범위를 서로 다른 색으로 나타낸다."
+  ]
+}

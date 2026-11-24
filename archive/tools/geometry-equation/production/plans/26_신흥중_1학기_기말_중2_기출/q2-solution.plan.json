@@ -1,0 +1,55 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "7",
+          "-2"
+        ]
+      }
+    ],
+    "domain": [
+      -1,
+      4
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "0",
+        "y": "7"
+      },
+      {
+        "id": "P1",
+        "x": "2",
+        "y": "3"
+      },
+      {
+        "id": "P2",
+        "x": "7/2",
+        "y": "0"
+      }
+    ],
+    "formula": "7 - 2*x"
+  },
+  "caption": "절편(0,7)과 주어진 점(2,3)의 기울기(3−7)/2=−2. 정답⑤.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)=ax+7$에서 $f(2)=3$일 때, 수 $a$의 값은? [3점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "절편(0,7)과 주어진 점(2,3)의 기울기(3−7)/2=−2. 정답⑤.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "절편(0,7)과 주어진 점(2,3)의 기울기(3−7)/2=−2. 정답⑤."
+  ]
+}

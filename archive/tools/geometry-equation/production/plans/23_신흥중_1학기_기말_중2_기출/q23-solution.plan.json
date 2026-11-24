@@ -1,0 +1,50 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "1",
+          "-2"
+        ]
+      }
+    ],
+    "domain": [
+      -2,
+      3
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "-1",
+        "y": "3"
+      },
+      {
+        "id": "P1",
+        "x": "2",
+        "y": "-3"
+      }
+    ],
+    "formula": "1 - 2*x"
+  },
+  "caption": "주어진두점(−1,3),(2,−3)에서기울기 −6/3=−2,절편 1. 정답 y−2x+1.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형3] 두 점 $(-1,3)$과 $(2,-3)$을 지나는 직선을 그래프로 하는 일차함수의 식을 구하시오.",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "주어진두점(−1,3),(2,−3)에서기울기−6/3=−2,절편1. 정답y−2x+1.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "주어진두점(−1,3),(2,−3)에서기울기−6/3=−2,절편1. 정답y−2x+1."
+  ]
+}

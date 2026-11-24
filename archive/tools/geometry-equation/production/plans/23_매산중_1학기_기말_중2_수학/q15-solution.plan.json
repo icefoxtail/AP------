@@ -1,0 +1,50 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-1",
+          "-1"
+        ]
+      }
+    ],
+    "domain": [
+      -3,
+      3
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "0",
+        "y": "-1"
+      },
+      {
+        "id": "P1",
+        "x": "-1",
+        "y": "0"
+      }
+    ],
+    "formula": "-x - 1"
+  },
+  "caption": "ab<0과 b>a에서 a<0,b>0. y=ax−b는 음기울기/음절편으로 제2·3·4사분면. a−1,b1은 부호 대표일 뿐 원문값 확정 아님. 정답 ⑤.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>15. $ab < 0, b-a > 0$일 때, $y-ax+b=0$의 그래프가 지나는 사분면은? (5점)</p>",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "ab<0과b>a에서a<0,b>0. y=ax−b는음기울기/음절편으로제2·3·4사분면. a−1,b1은부호대표일뿐원문값확정아님. 정답⑤.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "ab<0과b>a에서a<0,b>0. y=ax−b는음기울기/음절편으로제2·3·4사분면. a−1,b1은부호대표일뿐원문값확정아님. 정답⑤."
+  ]
+}

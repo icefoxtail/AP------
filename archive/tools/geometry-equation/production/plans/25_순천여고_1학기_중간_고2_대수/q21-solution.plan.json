@@ -1,0 +1,68 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-8",
+          "-2",
+          "1"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "4"
+      ],
+      "states": [
+        "OPEN",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      0,
+      4
+    ],
+    "viewport": [
+      -1,
+      5,
+      -11,
+      3
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "t",
+      "y": "y"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "1",
+        "y": "-9"
+      },
+      {
+        "id": "B",
+        "x": "4",
+        "y": "0"
+      }
+    ]
+  },
+  "caption": "t=2ˣ으로 두면 x≤2에서 0<t≤4이고 y=t²−2t−8=(t−1)²−9이다. 그래프는 꼭짓점 V(1, −9)에서 최소이고, 구간 끝점 B(4, 0)에서 최대이다. t=1이면 x=0, t=4이면 x=2이므로 a=2, b=0, M=0, m=−9이다. 따라서 답은 a=2, b=0, M=0, m=−9이다.",
+  "accessibilityDescription": "t가 0보다 크고 4 이하인 구간에서 아래로 볼록한 포물선이 그려져 있고, 꼭짓점 V와 오른쪽 끝점 B의 좌표가 표시되어 있다.",
+  "newVisualInformation": [
+    "치환한 이차함수의 구간 0<t≤4에서 최저점 V(1, −9)와 최고점 B(4, 0)를 보여 최댓값과 최솟값을 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "정의역이 $\\{x | x \\le 2\\}$인 함수 $y = 2^{2x} - 2^{x+1} - 8$은 $x=a$일 때 최\\n댓값 $M$을 갖고 $x=b$일 때 최솟값 $m$을 갖는다. 실수\\n$a, b, M, m$을 구하는 과정과 정답을 서술하시오. [6점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

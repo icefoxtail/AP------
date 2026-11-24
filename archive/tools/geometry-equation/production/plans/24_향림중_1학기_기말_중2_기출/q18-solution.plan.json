@@ -1,0 +1,85 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "1",
+          "5"
+        ],
+        "domain": [
+          "-1",
+          "1"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "-2",
+          "5"
+        ],
+        "domain": [
+          "-1",
+          "1"
+        ]
+      },
+      {
+        "id": "f2",
+        "kind": "LINE",
+        "coefficients": [
+          "4",
+          "5"
+        ],
+        "domain": [
+          "-1",
+          "1"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "0",
+          "y": "1",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "0",
+          "y": "-2",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P2",
+          "x": "0",
+          "y": "4",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "④ 원래 절편 1을 아래 3 옮기면 −2여야 한다. 세 번째 선은 잘못 제시된 절편 4로 위 3 이동이라 비교한다. 올바른 식 y5x−2, 정답 ④.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 일차함수의 그래프를 $y$축의 방향으로 [ ] 안의 수만큼 평행이동한 그래프가 나타내는 일차함수 식으로 옳지 않은 것은? [4점] 보기: ['$y=4x$   [$4$]   $\\\\Rightarrow y=4x+4$', '$y=-3x$   [$-2$]   $\\\\Rightarrow y=-3x-2$', '$y=2x-3$   [$1$]   $\\\\Rightarrow y=2x-2$', '$y=5x+1$   [$-3$]   $\\\\Rightarrow y=5x+4$', '$y=-\\\\dfrac{1}{2}x$   [$5$]   $\\\\Rightarrow y=-\\\\dfrac{1}{2}x+5$']",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "④ 원래절편1을아래3옮기면−2여야한다. 세번째선은잘못제시된절편4로위3이동이라비교한다. 올바른식y5x−2,정답④.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "④ 원래절편1을아래3옮기면−2여야한다. 세번째선은잘못제시된절편4로위3이동이라비교한다. 올바른식y5x−2,정답④."
+  ]
+}

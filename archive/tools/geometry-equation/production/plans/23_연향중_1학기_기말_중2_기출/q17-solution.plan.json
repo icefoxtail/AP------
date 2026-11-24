@@ -1,0 +1,59 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "16",
+          "3/50"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      400
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "0",
+        "y": "16"
+      },
+      {
+        "id": "P1",
+        "x": "250",
+        "y": "31"
+      }
+    ],
+    "formula": "3*x/50 + 16",
+    "overlays": {
+      "lines": [
+        {
+          "id": "target",
+          "slope": "0",
+          "intercept": "31"
+        }
+      ]
+    }
+  },
+  "caption": "가로 6%소금물 g,세로소금 g. 마지막생수는전체 775−200−250=325g,정답④.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "8%의 소금물 200g과 6%의 소금물을 섞은 후, 생수를 더하여 4%의 소금물 775g을 만들려고 한다. 더 넣어야 할 생수의 양을 구하면? [5점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "가로6%소금물g,세로소금g. 기존16g을보존하고16+0.06x=31의교점x250. 마지막생수는전체775−200−250=325g,정답④.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "가로6%소금물g,세로소금g. 마지막생수는전체775−200−250=325g,정답④."
+  ]
+}

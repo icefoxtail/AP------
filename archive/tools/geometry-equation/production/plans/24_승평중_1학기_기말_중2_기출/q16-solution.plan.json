@@ -1,0 +1,42 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "4",
+          "0"
+        ]
+      }
+    ],
+    "domain": [
+      -5,
+      1
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "-3",
+        "y": "4"
+      },
+      {
+        "id": "P1",
+        "x": "0",
+        "y": "4"
+      }
+    ],
+    "formula": "(0)*x+(4)"
+  },
+  "caption": "y축에 수직인 직선은 수평이다. (−3,4)를 지나므로 y=4,즉 3y−12=0. 정답④.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 중 점 $(-3,4)$를 지나고 $y$축에 수직인 직선의 방정식은?",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

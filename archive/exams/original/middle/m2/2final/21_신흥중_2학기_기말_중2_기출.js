@@ -60,7 +60,11 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
-    "metaNullReason": "CROSSWALK_PROJECTION_ROW_MISSING"
+    "metaNullReason": "CROSSWALK_PROJECTION_ROW_MISSING",
+    "solutionImage": "assets/images/21_신흥중_2학기_기말_중2_기출/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "중선 AD=12 cm인 삼각형이며, 그림의 삼각형 모양은 설명용 예시이다. 무게중심 G는 AD를 2 : 1로 나누므로 AG=8 cm, GD=4 cm이고 x+3y=8+3×4=20 cm이다. 따라서 답은 ⑤ 20 cm이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -125,7 +129,11 @@ window.questionBank = [
     ],
     "integrationPattern": "NONE",
     "metaNullReason": "RPM_ONLY_COMPATIBILITY_PROJECTION",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/21_신흥중_2학기_기말_중2_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각이 표시된 두 변에 24와 다른 한 변의 길이가 적혀 있고 빗변에 25가 적힌 직각삼각형이다.",
+    "solutionImageCaption": "빗변의 길이가 25 cm이고 한 직각변이 24 cm인 직각삼각형이다. 피타고라스 정리에서 x²=25²−24²=625−576=49이므로 x=7 cm이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -184,7 +192,12 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "metaNullReason": "RPM_ONLY_COMPATIBILITY_PROJECTION",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/21_신흥중_2학기_기말_중2_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 집합의 원소 사이의 대응 관계를 화살표로 나타낸 그림이다.",
+    "solutionImageCaption": "세 변의 제곱합 비교표. ③만 8²+17²353≠19²361이므로 직각이 아니다. 다른 네 보기는 같음. 화살표는 보기별 비교 행이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 4,
@@ -382,7 +395,12 @@ window.questionBank = [
     ],
     "integrationPattern": "CASE_BRANCH",
     "metaNullReason": "CROSSWALK_L2_PROJECTION_MISMATCH",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/21_신흥중_2학기_기말_중2_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 패널은 직각변이 15와 8, 빗변이 17인 직각삼각형이고 오른쪽 패널은 직각변이 15와 17, 빗변이 √514인 직각삼각형이다. 두 패널 모두 직각 표시와 변 길이가 적혀 있다.",
+    "solutionImageCaption": "세 길이 17, 15, x 중 17이 빗변이면 x²=17²−15²=64이고, x가 빗변이면 x²=17²+15²=514이다. 가능한 x²의 값들의 차는 514−64=450이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 7,
@@ -775,7 +793,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "metaNullReason": "RPM_ONLY_COMPATIBILITY_PROJECTION",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/21_신흥중_2학기_기말_중2_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 집합의 원소 사이의 대응 관계를 화살표로 나타낸 그림이다.",
+    "solutionImageCaption": "두 구간 선택쌍 2×4=8가지를 연결 도로 나타낸다. 같은 지점 재방문은 포함하지 않음, 정답 ⑤.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -1070,7 +1092,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "metaNullReason": "CROSSWALK_PROJECTION_ROW_MISSING",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/21_신흥중_2학기_기말_중2_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 집합의 원소 사이의 대응 관계를 화살표로 나타낸 그림이다.",
+    "solutionImageCaption": "서로 다른 주머니의 독립 추출이다. 노랑 5/8×파랑 6/10=3/8, 정답 ①. 화살표는 계산 순서이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -1130,7 +1156,12 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "metaNullReason": "RPM semantic FINAL; middle2 crosswalk has no exact current projection row for this sequential probability path.",
-    "sourceMode": "AUDITED_REPAIR"
+    "sourceMode": "AUDITED_REPAIR",
+    "solutionImage": "assets/images/21_신흥중_2학기_기말_중2_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 집합의 원소 사이의 대응 관계를 화살표로 나타낸 그림이다.",
+    "solutionImageCaption": "한 번 꺼낼 때 딸기맛이 아닐 확률은 1−1/3=2/3이다. 다시 넣으므로 두 번 모두 딸기맛이 아닐 확률은 2/3×2/3=4/9이다. 적어도 하나가 딸기맛일 확률은 여사건으로 1−4/9=5/9이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 94
   },
   {
     "id": 19,
@@ -1198,7 +1229,11 @@ window.questionBank = [
     ],
     "integrationPattern": "CASE_BRANCH",
     "metaNullReason": "EXACT_ACTIVE_BINDING_PENDING",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/21_신흥중_2학기_기말_중2_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 집합의 원소 사이의 대응 관계를 화살표로 나타낸 그림이다.",
+    "solutionImageCaption": "오각형에서 A에서 시계 방향으로 세 번 이동하면 C에 닿고, 한 바퀴 다섯 번을 더 이동한 여덟 번도 C에 닿는다. 두 주사위 눈의 합이 3인 순서쌍은 (1,2), (2,1)의 2가지이고 합이 8인 순서쌍은 (2,6), (3,5), (4,4), (5,3), (6,2)의 5가지이다. 유리한 경우는 2+5=7가지이고 전체는 6×6=36가지이므로 확률은 7/36이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -1264,7 +1299,12 @@ window.questionBank = [
       "COND_UPPER_BOUND"
     ],
     "integrationPattern": "CASE_BRANCH",
-    "metaNullReason": "CROSSWALK_L2_PROJECTION_MISMATCH"
+    "metaNullReason": "CROSSWALK_L2_PROJECTION_MISMATCH",
+    "solutionImage": "assets/images/21_신흥중_2학기_기말_중2_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "합 [8, 9]이면서 차 절댓값 ≤2인 쌍만 표시. 다섯 합 8/9/10/11/12별 개수 3/2/3/2/1, 총 11/36. 두 패널은 서로 다른 합으로 겹치지 않음. 정답 ④. 합 [10, 11, 12]이면서 차 절댓값 ≤2인 쌍만 표시.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 94
   },
   {
     "id": 21,
@@ -1438,7 +1478,11 @@ window.questionBank = [
     ],
     "integrationPattern": "CASE_BRANCH",
     "metaNullReason": "EXACT_ACTIVE_BINDING_PENDING",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/21_신흥중_2학기_기말_중2_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 집합의 원소 사이의 대응 관계를 화살표로 나타낸 그림이다.",
+    "solutionImageCaption": "작은 수별로 세면 큰 수의 가짓수는 4, 3, 2, 1이므로 전체 경우는 4+3+2+1=10가지이다. 일의 자리인 큰 수가 3이면 (1,3), (2,3)의 2가지, 큰 수가 5이면 (1,5), (2,5), (3,5), (4,5)의 4가지로 홀수가 되는 경우는 2+4=6가지이다. 따라서 확률은 6/10=3/5이다. 따라서 답은 3/5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,

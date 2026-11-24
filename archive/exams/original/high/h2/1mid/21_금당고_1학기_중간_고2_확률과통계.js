@@ -323,7 +323,11 @@ window.questionBank = [
       "객관식"
     ],
     "category": "순열과 조합",
-    "originalCategory": "순열과 조합"
+    "originalCategory": "순열과 조합",
+    "solutionImage": "assets/images/21_금당고_1학기_중간_고2_확률과통계/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 정육면체의 앞면, 윗면, 옆면이 보이고, 보이지 않는 모서리는 점선으로 표시되어 있다.",
+    "solutionImageCaption": "정육면체의 여섯 면에 서로 다른 여섯 색을 칠하는 고정된 경우는 6!, 즉 720가지이다. 정육면체를 자기 자신으로 옮기는 회전은 24가지이므로 720 나누기 24는 30가지이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,

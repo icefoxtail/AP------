@@ -1,0 +1,51 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "-8",
+          "2"
+        ],
+        "domain": [
+          "2",
+          "8"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "1",
+          "1/2"
+        ],
+        "domain": [
+          "2",
+          "8"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "6",
+          "y": "4",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "두 조건의 교점(6,4)을 x+ay2에 대입해 6+4a2,a−1. 정답②.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$x, y$에 대한 연립방정식 $\\begin{cases} 2x-y=8 \\\\ -x+2y=2 \\end{cases}$의 해가 일차방정식 $x+ay=2$의 해일 때, 상수 $a$의 값은? [4점]",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

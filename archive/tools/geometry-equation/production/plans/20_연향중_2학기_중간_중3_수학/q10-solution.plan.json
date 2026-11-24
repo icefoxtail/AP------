@@ -1,0 +1,244 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "2184",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2748",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "12",
+                  "denominator": "1"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "√13",
+        "unit": "cm"
+      },
+      {
+        "id": "lAD",
+        "ownerSegment": "sDA",
+        "text": "2",
+        "unit": "cm"
+      },
+      {
+        "id": "lBC",
+        "ownerSegment": "sBC",
+        "text": "6",
+        "unit": "cm"
+      },
+      {
+        "id": "lCD",
+        "ownerSegment": "sCD",
+        "text": "4",
+        "unit": "cm"
+      }
+    ],
+    "angles": [
+      {
+        "id": "aA",
+        "refs": [
+          "B",
+          "A",
+          "D"
+        ],
+        "value": 150,
+        "label": "150",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aC",
+        "refs": [
+          "B",
+          "C",
+          "D"
+        ],
+        "value": 60,
+        "label": "60",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      }
+    ],
+    "regions": [
+      {
+        "id": "rABD",
+        "fill": "WARM",
+        "shapes": [
+          {
+            "polygon": [
+              "A",
+              "B",
+              "D"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "rBCD",
+        "fill": "BLUE",
+        "shapes": [
+          {
+            "polygon": [
+              "B",
+              "C",
+              "D"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 320
+  },
+  "caption": "대각선 BD로 사각형을 삼각형 ABD와 삼각형 BCD로 나눈다. 삼각형 ABD는 두 변 √13, 2와 끼인각 150도이므로 넓이가 √13/2이고, 삼각형 BCD는 두 변 6, 4와 끼인각 60도이므로 넓이가 6√3이다. 두 넓이의 합은 √13/2+6√3 cm²이다. 따라서 답은 ①이다.",
+  "accessibilityDescription": "사각형 ABCD에 대각선 BD가 점선으로 그어져 있고 삼각형 ABD는 주황색, 삼각형 BCD는 파란색으로 칠해져 있다. 각 A에는 150도, 각 C에는 60도 표시가 있고 네 변의 길이가 적혀 있다.",
+  "newVisualInformation": [
+    "대각선 BD로 나뉜 두 삼각형의 색칠",
+    "삼각형 ABD의 넓이 √13/2와 삼각형 BCD의 넓이 6√3",
+    "각 A의 150도, 각 C의 60도 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 $\\square\\mathrm{ABCD}$의 넓이를 구하면? (4점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

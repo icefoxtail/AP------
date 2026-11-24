@@ -1,0 +1,222 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "48"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "36"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "MIDPOINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G",
+        "op": "CENTROID",
+        "inputs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "G"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "sAG",
+      "refs": [
+        "A",
+        "G"
+      ]
+    },
+    {
+      "id": "sGD",
+      "refs": [
+        "G",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "eD",
+        "count": 1,
+        "segments": [
+          "sBD",
+          "sDC"
+        ]
+      }
+    ],
+    "segmentColors": [
+      {
+        "segments": [
+          "sAG"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "segments": [
+          "sGD"
+        ],
+        "color": "WARM"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lGD",
+        "ownerSegment": "sGD",
+        "text": "10",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lAC",
+        "ownerSegment": "sCA",
+        "text": "36",
+        "unit": "cm",
+        "ownership": "NEAREST",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rA",
+      "refs": [
+        "B",
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 460,
+    "height": 380
+  },
+  "caption": "직각삼각형 ABC에서 빗변 BC의 중점 D와 무게중심 G를 나타낸 그림이다. 선분 AC의 길이는 36 센티미터, 선분 GD의 길이는 10 센티미터이다.",
+  "accessibilityDescription": "직각삼각형 ABC에서 A에 직각 표시가 있고, 빗변 BC의 중점 D와 무게중심 G가 보인다. AC는 36 센티미터, GD는 10 센티미터로 표시되어 있다.",
+  "newVisualInformation": [
+    "직각삼각형 ABC, 빗변 BC의 중점 D, 무게중심 G, 길이 36과 10을 보여 준다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\angle A = 90^\\circ$인 직각삼각형 $ABC$에서 점 $G$는 $\\triangle ABC$의 무게중심이고, 점 $D$는 빗변 $BC$의 중점이다. $\\overline{AC} = 36\\text{ cm}$이고 $\\overline{GD} = 10\\text{ cm}$일 때, 다음 물음에 답하시오. [8점]  \n(1) $\\overline{AG}$의 길이를 구하시오. (답만) [2점]  \n(2) $\\overline{BC}$의 길이를 구하시오. (풀이과정과 답) [3점]  \n(3) $\\overline{AB}$의 길이를 구하시오. (풀이과정과 답) [3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

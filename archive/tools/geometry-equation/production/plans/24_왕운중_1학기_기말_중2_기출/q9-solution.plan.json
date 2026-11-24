@@ -1,0 +1,59 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "3",
+          "-1"
+        ],
+        "domain": [
+          "0",
+          "3"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "7/3",
+          "-2/3"
+        ],
+        "domain": [
+          "0",
+          "3"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "2",
+          "y": "1",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "가로 시속 2 시간, 세로 시속 3 시간. x+y3,2x+3y7의 교점 (2,1). 빠른 거리 3×1=3km, 정답 ①. 조건선 연장과 비음수 시간 구별.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "현수는 총 거리가 7 km인 산책로를 걷는데 처음에는 시속 2 km로 걷다가 도중에 더 빠르게 산책을 마치기 위해 남은 거리는 시속 3 km로 걸어 3시간 만에 산책을 마쳤다. 시속 3 km로 걸은 거리는?",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "가로시속2시간,세로시속3시간. x+y3,2x+3y7의교점(2,1). 빠른거리3×1=3km,정답①. 조건선연장과비음수시간구별.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "가로시속2시간,세로시속3시간. x+y3,2x+3y7의교점(2,1). 빠른거리3×1=3km,정답①. 조건선연장과비음수시간구별."
+  ]
+}

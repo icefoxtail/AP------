@@ -1,0 +1,59 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "8",
+          "-1"
+        ],
+        "domain": [
+          "0",
+          "8"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "10",
+          "-2"
+        ],
+        "domain": [
+          "0",
+          "8"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "2",
+          "y": "6",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "토끼 x/닭 y의 마리수 x+y8, 다리수 4x+2y20. 두 조건의 공통점 (2,6)으로 식의 의미를 확인하며 물음은 연립식 ②이다. 실제 마리수는 정수.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "왕운이네 할머니 댁에는 토끼 $x$마리와 닭 $y$마리를 기르고 있다. 토끼와 닭은 합쳐서 모두 8마리이고, 다리의 수의 합은 20이다. $x, y$에 대한 연립방정식으로 표현한 것을 구하면? [3점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "토끼x/닭y의마리수x+y8,다리수4x+2y20. 두조건의공통점(2,6)으로식의의미를확인하며물음은연립식②이다. 실제마리수는정수.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "토끼x/닭y의마리수x+y8,다리수4x+2y20. 두조건의공통점(2,6)으로식의의미를확인하며물음은연립식②이다. 실제마리수는정수."
+  ]
+}

@@ -600,7 +600,11 @@ window.questionBank = [
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/20_풍덕중_1학기_중간_중2_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 내접원이 세 변과 만나는 점 D, E, F가 있고 내심 I에서 접점으로 수직인 선분이 그어져 있다. AD와 AF에 4, DB와 BE에 5, EC와 CF에 2가 적혀 있다.",
+    "solutionImageCaption": "한 점에서 원에 그은 두 접선의 길이는 같으므로 AD=AF=4, BD=BE=5이고 CE=CF=x라 하자. 삼각형의 둘레가 22이므로 2(4+5+x)=22에서 4+5+x=11이고 x=2이다. 따라서 EC=2cm이고 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,

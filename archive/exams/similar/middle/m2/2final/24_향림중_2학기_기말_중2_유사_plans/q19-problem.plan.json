@@ -1,0 +1,179 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "A",
+        "name": "원판 A",
+        "elements": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "id": "B",
+        "name": "원판 B",
+        "elements": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 3
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 3
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 3
+        },
+        "style": "SOLID"
+      }
+    ]
+  },
+  "caption": "원판 A의 세 칸에는 1, 2, 3이 하나씩, 원판 B의 네 칸에는 1, 2, 3, 4가 하나씩 적혀 있고, 두 원판의 바늘이 가리킬 수 있는 수들이 화살표로 짝지어져 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "각각 $3$등분, $4$등분된 두 원판 $A, B$가 있다. 원판 $A$에는 $1, 2, 3$이 각각 하나씩 적혀 있고, 원판 $B$에는 $1, 2, 3, 4$가 각각 하나씩 적혀 있다. 두 원판의 바늘을 각각 돌린 후 멈추었을 때, 두 바늘이 가리키는 숫자가 서로 다를 확률은? (단, 바늘이 경계선을 가리키는 경우는 생각하지 않는다.)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "원판 A는 3등분되어 1, 2, 3이 각각 하나씩 적혀 있고, 원판 B는 4등분되어 1, 2, 3, 4가 각각 하나씩 적혀 있다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "원판 A의 세 칸에 1, 2, 3이 하나씩 적혀 있다",
+    "원판 B의 네 칸에 1, 2, 3, 4가 하나씩 적혀 있다",
+    "원판 A의 수와 원판 B의 수가 짝지어지는 경우가 화살표로 이어져 있다"
+  ]
+}

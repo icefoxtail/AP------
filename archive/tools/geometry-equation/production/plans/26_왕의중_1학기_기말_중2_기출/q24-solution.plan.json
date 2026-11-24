@@ -1,0 +1,102 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "A",
+        "name": "정수 a",
+        "elements": [
+          "1",
+          "2",
+          "4",
+          "−1",
+          "−2",
+          "−4"
+        ]
+      },
+      {
+        "id": "B",
+        "name": "정수 b",
+        "elements": [
+          "4",
+          "2",
+          "1",
+          "−4",
+          "−2",
+          "−1"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 3
+        },
+        "to": {
+          "column": 1,
+          "element": 3
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 4
+        },
+        "to": {
+          "column": 1,
+          "element": 4
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 5
+        },
+        "to": {
+          "column": 1,
+          "element": 5
+        }
+      }
+    ]
+  },
+  "caption": "행렬식 0 조건 24−6ab=0에서 ab4의 정수쌍 6개를 빠짐없이 대응시킨다. 같은 상수항 5에서 동일선은 (2,2)뿐이라 A4. 그 한 쌍을 제외한 나머지 5개는 서로 다른 평행선이므로 B5. a0/b0은 행렬식이 0 아니어서 해 없음 경우에 빠진 것이 아니다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "연립방정식 $\\begin{cases}4x+3ay=5\\\\2bx+6y=5\\end{cases}$의 해가 무수히 많을 때 $ab$의 값을 $A$라 하고, 해가 없을 때의 정수 순서쌍 $(a,b)$의 개수를 $B$라 하자. $A$, $B$의 값을 풀이과정과 함께 각각 구하시오. (단, $a,b$는 정수이다.) [5점]",
+      "mappedTo": "diagram"
+    }
+  ]
+}

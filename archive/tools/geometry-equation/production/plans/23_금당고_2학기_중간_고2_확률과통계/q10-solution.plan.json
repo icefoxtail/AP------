@@ -1,0 +1,59 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 2,
+        "depth": 4
+      },
+      "height": 5,
+      "names": "........"
+    }
+  ],
+  "dims": [
+    {
+      "solid": "s1",
+      "edge": [
+        "#b0",
+        "#b1"
+      ],
+      "label": "2"
+    },
+    {
+      "solid": "s1",
+      "edge": [
+        "#b1",
+        "#b2"
+      ],
+      "label": "4"
+    },
+    {
+      "solid": "s1",
+      "edge": [
+        "#b0",
+        "#t0"
+      ],
+      "label": "5"
+    }
+  ],
+  "solidCaption": {
+    "text": "직육면체"
+  },
+  "caption": "세 모서리의 길이가 2, 4, 5로 모두 다른 직육면체이다. 고정한 상태에서 여섯 면에 서로 다른 여섯 색을 칠하는 경우는 6!, 즉 720가지이다. 자기 자신으로 옮기는 회전은 4가지이므로 720 나누기 4는 180가지이다. 따라서 답은 ②이다.",
+  "accessibilityDescription": "가로 2, 세로 4, 높이 5인 직육면체가 보이고, 세 모서리의 길이가 표시되어 있다.",
+  "newVisualInformation": [
+    "세 모서리의 길이가 2, 4, 5로 모두 다른 직육면체",
+    "자기 자신으로 옮기는 회전이 4가지임"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림과 같이 가로, 세로의 길이가 각각 $2\\rm\\,cm$, $4\\rm\\,cm$이고 높이가 $5\\rm\\,cm$인 직육면체의 6개의 면에 서로 다른 6가지 색을 모두 사용하여 색칠을 하려고 한다. 각 면에는 한 가지 색만 칠하고, 회전하여 일치하는 것은 같은 것으로 볼 때 직육면체의 각 면에 색칠을 하는 경우의 수는? [5.4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

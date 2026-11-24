@@ -1,0 +1,361 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3464102",
+              "denominator": "1000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "5276311",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "4104242",
+              "denominator": "1000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "8083531",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2483350",
+              "denominator": "1000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCF",
+      "refs": [
+        "C",
+        "F"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sCE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aBAC",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 120,
+        "label": "120",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aBDC",
+        "refs": [
+          "B",
+          "D",
+          "C"
+        ],
+        "value": 80,
+        "label": "x",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "aBEC",
+        "refs": [
+          "B",
+          "E",
+          "C"
+        ],
+        "value": 40,
+        "label": "y",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "eABAC",
+        "count": 1,
+        "segments": [
+          "sAB",
+          "sAC"
+        ]
+      }
+    ],
+    "callouts": [
+      {
+        "id": "kB1",
+        "kind": "ANGLE",
+        "vertex": "B",
+        "rays": [
+          "C",
+          "E",
+          "A"
+        ],
+        "at": "LEFT",
+        "angles": [
+          {
+            "id": "cbe",
+            "refs": [
+              "C",
+              "B",
+              "E"
+            ],
+            "value": 10,
+            "label": "10",
+            "ring": 1,
+            "style": "ARC",
+            "labelPlacement": "LEADER",
+            "factRole": "GIVEN"
+          }
+        ]
+      },
+      {
+        "id": "kB2",
+        "kind": "ANGLE",
+        "vertex": "B",
+        "rays": [
+          "C",
+          "D",
+          "A"
+        ],
+        "at": "ABOVE",
+        "angles": [
+          {
+            "id": "cbd",
+            "refs": [
+              "C",
+              "B",
+              "D"
+            ],
+            "value": 20,
+            "label": "20",
+            "ring": 1,
+            "style": "ARC",
+            "factRole": "GIVEN"
+          }
+        ]
+      },
+      {
+        "id": "kC1",
+        "kind": "ANGLE",
+        "vertex": "C",
+        "rays": [
+          "F",
+          "E",
+          "D",
+          "A"
+        ],
+        "at": "RIGHT",
+        "angles": [
+          {
+            "id": "acd",
+            "refs": [
+              "A",
+              "C",
+              "D"
+            ],
+            "value": 50,
+            "label": "50",
+            "ring": 1,
+            "style": "ARC",
+            "factRole": "GIVEN"
+          },
+          {
+            "id": "ace",
+            "refs": [
+              "A",
+              "C",
+              "E"
+            ],
+            "value": 100,
+            "label": "100",
+            "ring": 2,
+            "style": "ARC",
+            "factRole": "GIVEN"
+          }
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 600
+  },
+  "caption": "각 A가 120도인 이등변삼각형 ABC와 변 BC를 C 너머로 연장한 위의 점 F를 그렸다. B와 C에서 그은 삼등분선이 만나는 점 D, E를 표시하고, B 주변의 각 10, 20과 C 주변의 각 50, 100을 따로 그려 보여 준다.",
+  "accessibilityDescription": "꼭짓점 A의 각이 120도인 이등변삼각형 ABC가 있고, 변 BC를 C 너머로 연장한 위에 점 F가 있다. B에서 그은 두 선과 C에서 그은 두 선이 각각 D, E에서 만나며, B와 C 옆에 각 10, 20, 50, 100을 따로 그린 그림이 있다. 각 BDC와 각 BEC는 각각 x와 y로 표시되어 있다.",
+  "newVisualInformation": [
+    "각 A가 120도인 이등변삼각형 ABC와 변 BC의 연장선 위의 점 F",
+    "B와 C에서 그은 삼등분선의 교점 D, E",
+    "B 주변의 각 10, 20과 C 주변의 각 50, 100을 따로 그린 그림",
+    "각 BDC와 각 BEC를 나타내는 x, y"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서·논술형 3] $\\overline{AB}=\\overline{AC}$, $\\angle A=120^\\circ$인 이등변삼각형 $ABC$에서 변 $BC$의 연장선 위에 점 $F$가 있다. $\\angle B$의 삼등분선(각각 $\\angle CBD=20^\\circ$, $\\angle CBE=10^\\circ$)과 $\\angle ACF$의 삼등분선(각각 $\\angle ACD=50^\\circ$, $\\angle ACE=100^\\circ$)의 교점을 각각 $D$, $E$라 할 때, $\\angle BDC$와 $\\angle BEC$의 크기를 구하시오. [6점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

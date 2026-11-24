@@ -197,7 +197,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-01-LIMIT",
     "subUnit": "함수의 극한",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_제일고_2학기_중간_고2_수학II/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 볼록한 포물선의 구간 [1,4]에서 꼭짓점 V와 양 끝점 A, B를 나타낸 그래프이다.",
+    "solutionImageCaption": "x→3에서 (x-3)/f(x)가 1/2로 수렴하므로 f(3)=0이고 f′(3)=2이다. f(x)=x²+bx+c에서 b=-4, c=3이라 f(x)=(x-2)²-1이다. 그림의 구간 [1,4]에서 꼭짓점 V(2,-1)이 포함되어 최솟값은 -1이고 양 끝은 A(1,0), B(4,3)이다 (정답 ②).",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -334,7 +338,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-02-CONTINUITY",
     "subUnit": "함수의 연속",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_제일고_2학기_중간_고2_수학II/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축과 세로축 위에 원점 대칭인 곡선이 있고, 곡선이 x축과 만나는 점들이 표시되어 있다.",
+    "solutionImageCaption": "예: f(x)=x³-55/12 x²+25/6 x (x≥0), f(x)=x³+55/12 x²+25/6 x (x<0)로 잡으면 f(1)>0, f(2)<0, f(3)<0, f(4)>0이어서 두 구간에서 부호가 바뀐다. 기함수이므로 양의 근의 반대편에도 근이 생기고 f(0)=0이다. 따라서 실근은 적어도 5개이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -466,7 +474,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-05-TANGENT",
     "subUnit": "접선의 방정식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_제일고_2학기_중간_고2_수학II/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼차곡선 y=−x³−2x²+8이 원점을 지나는 직선 t와 x=−2에서 접하고 x=2에서 다시 만난다. 곡선의 꼭짓점 M(0, 8)과 N(−4/3, 184/27)이 표시되어 있다.",
+    "solutionImageCaption": "접점의 x좌표를 t라 하면 접선의 기울기는 k=−3t²−4t이고, 접점이 직선 y=kt 위에 있으므로 −t³−2t²+8=kt이다. 대입하면 t³+t²+4=0이고 (t+2)(t²−t+2)=0에서 실근은 t=−2이다. 따라서 k=−3×4−4×(−2)=−4이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -499,7 +511,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-02-CONTINUITY",
     "subUnit": "함수의 연속",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_제일고_2학기_중간_고2_수학II/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 주기 5로 반복되는 연속 함수의 그래프 두 주기이다.",
+    "solutionImageCaption": "x=2에서 연속이므로 4a+b=-7, f(0)=f(5)이므로 25a+b=-28이다. a=-1, b=-3이다. 그림은 한 주기 [0,5]와 다음 주기 [5,10]이다. 18=3+5·3이므로 f(18)=f(3)=-9+18-3=6이고 그림의 점 P(3,6)이 그 값이다 (정답 ⑤).",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,

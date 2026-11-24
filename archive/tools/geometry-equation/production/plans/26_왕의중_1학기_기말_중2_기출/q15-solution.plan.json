@@ -1,0 +1,42 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "3",
+          "0"
+        ]
+      }
+    ],
+    "domain": [
+      -6,
+      3
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "-5",
+        "y": "3"
+      },
+      {
+        "id": "P1",
+        "x": "2",
+        "y": "3"
+      }
+    ],
+    "formula": "3"
+  },
+  "caption": "수평선에서는 2a−1=a+1,a2. 실제두점(−5,3),(2,3)이 y3위에있다. 정답②.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 점 $(-5,2a-1)$, $(2,a+1)$을 지나는 직선이 $y$축에 수직일 때, $a$의 값은? [4점]",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

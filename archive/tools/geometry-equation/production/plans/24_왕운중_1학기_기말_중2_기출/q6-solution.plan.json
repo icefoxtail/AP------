@@ -1,0 +1,50 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "-1/3"
+        ]
+      }
+    ],
+    "domain": [
+      -1,
+      7
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "0",
+        "y": "2"
+      },
+      {
+        "id": "P1",
+        "x": "6",
+        "y": "0"
+      }
+    ],
+    "formula": "2 - x/3"
+  },
+  "caption": "절편점(6,0),(0,2)을읽어합 8. 정답④.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차함수 $y=-\\dfrac{1}{3}x+2$의 그래프의 $x$절편을 $a$, $y$절편을 $b$라 할 때, $a+b$의 값은?",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "절편점(6,0),(0,2)을읽어합8. 정답④.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "절편점(6,0),(0,2)을읽어합8. 정답④."
+  ]
+}

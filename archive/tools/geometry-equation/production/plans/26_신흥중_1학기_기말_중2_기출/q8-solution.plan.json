@@ -1,0 +1,66 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "-2",
+          "4"
+        ],
+        "domain": [
+          "-1",
+          "2"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "1",
+          "4"
+        ],
+        "domain": [
+          "-1",
+          "2"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "0",
+          "y": "-2",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "0",
+          "y": "1",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "a/2=4에서 a8. 같은 기울기 4와 서로 다른 절편 −2,1이므로 평행한 별개의 두 선. 교점없음,정답③.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 일차방정식 $ax-2y=4$, $-4x+y=1$의 그래프의 교점이 존재하지 않을 때, 수 $a$의 값은? [4점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "a/2=4에서 a8. 같은 기울기4와 서로 다른 절편−2,1이므로 평행한 별개의 두 선. 교점없음,정답③.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "a/2=4에서 a8. 같은 기울기4와 서로 다른 절편−2,1이므로 평행한 별개의 두 선. 교점없음,정답③."
+  ]
+}

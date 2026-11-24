@@ -1,0 +1,75 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "-4",
+          "-6",
+          "-1"
+        ],
+        "domain": [
+          "-7",
+          "1"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "axis",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "0"
+        ],
+        "domain": [
+          "-7",
+          "1"
+        ],
+        "color": "WARM",
+        "label": "y=0"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "V",
+          "x": "-3",
+          "y": "5",
+          "coordinates": true
+        },
+        {
+          "id": "P",
+          "x": "0",
+          "y": "-4",
+          "coordinates": true
+        }
+      ],
+      "segments": []
+    }
+  },
+  "caption": "공통 꼭짓점과 세로축에서의 만남을 한 포물선 위에 표시하고 꼭짓점형에 대입한다.",
+  "accessibilityDescription": "공통 꼭짓점과 세로축에서의 만남을 한 포물선 위에 표시하고 꼭짓점형에 대입한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "14. 이차함수 $y = 2(x + 3)^2 + 5$의 그래프와 꼭짓점의 좌표가 같고, 이차함수 $y = \\frac{1}{4}x^2 - 2x - 4$의 그래프와 $y$축에서 만나는 포물선을 그래프로 갖는 이차함수의 식은? [4.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "V−3,5와P0,−4→a−1. 최종함수식 대신중립f라벨.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "공통 꼭짓점과 세로축에서의 만남을 한 포물선 위에 표시하고 꼭짓점형에 대입한다."
+  ]
+}

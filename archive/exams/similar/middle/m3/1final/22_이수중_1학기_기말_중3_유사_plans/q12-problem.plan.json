@@ -1,0 +1,70 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -4,
+      4,
+      -9,
+      2
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "2"
+      ],
+      "y": [
+        "-4",
+        "-8"
+      ]
+    },
+    "curves": [
+      {
+        "id": "ref",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "-1"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ],
+        "color": "WARM",
+        "label": "y=-x^2"
+      },
+      {
+        "id": "q",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "-1/2"
+        ],
+        "domain": [
+          "-4",
+          "4"
+        ],
+        "color": "BLUE",
+        "label": "y=ax^2"
+      }
+    ],
+    "overlays": {
+      "points": []
+    }
+  },
+  "caption": "원점을 꼭짓점으로 하고 위로 볼록한 두 포물선 y=ax²과 y=-x²가 그려져 있으며, y=ax²의 그래프 폭이 y=-x²보다 넓다.",
+  "accessibilityDescription": "좌표평면에 원점에서 꼭짓점을 이루는 위로 볼록한 두 포물선이 있고, y=-x²의 그래프보다 y=ax²의 그래프가 더 넓게 벌어져 있다.",
+  "newVisualInformation": [
+    "위로 볼록한 두 포물선의 폭 비교",
+    "기준이 되는 그래프 y=-x²의 위치"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차함수 $y=ax^2$의 그래프가 위로 볼록하고, $y=-x^2$의 그래프보다 폭이 넓을 때, 다음 중 이 그래프의 식이 될 수 있는 것은? [3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

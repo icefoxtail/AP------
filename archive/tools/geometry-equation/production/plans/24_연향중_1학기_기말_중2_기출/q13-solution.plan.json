@@ -1,0 +1,55 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-1",
+          "2"
+        ]
+      }
+    ],
+    "domain": [
+      -2,
+      7
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "-1",
+        "y": "-3"
+      },
+      {
+        "id": "P1",
+        "x": "4",
+        "y": "7"
+      },
+      {
+        "id": "P2",
+        "x": "6",
+        "y": "11"
+      }
+    ],
+    "formula": "2*x - 1"
+  },
+  "caption": "마지막 두 점의 기울기 4/2=2. 첫 점 (−1,−3)에서 y2x−1, 그러므로 (4,7),(6,11). k7, 정답 ③.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "세 점 $(-1,-3)$, $(4,k)$, $(6,k+4)$이 한 직선 위에 있을 때, $k$의 값을 구하면? (단, $k$는 상수) [4점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "마지막두점의기울기4/2=2. 첫점(−1,−3)에서y2x−1,그러므로(4,7),(6,11). k7,정답③.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "마지막두점의기울기4/2=2. 첫점(−1,−3)에서y2x−1,그러므로(4,7),(6,11). k7,정답③."
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "40",
+          "-1"
+        ],
+        "domain": [
+          "0",
+          "40"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "50",
+          "-3/2"
+        ],
+        "domain": [
+          "0",
+          "40"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "20",
+          "y": "20",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "가로 x는 A 시간 분, 세로 y는 B 시간 분. x+y40,180x+120y6000의 교점 (20,20). A 거리 3.6km, B 거리 2.4km. 선은 조건의 보조 연장이고 시간은 비음수이다. 정답 ⑤.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "지민이는 40분 동안 러닝 코스를 달렸다. 처음 A 구간은 분속 180 m로, 이후 체력을 조절하기 위해 B 구간은 분속 120 m로 달렸다. 지민이가 달린 총 거리가 6 km일 때, A 구간과 B 구간의 거리를 각각 구하면? [5점]",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

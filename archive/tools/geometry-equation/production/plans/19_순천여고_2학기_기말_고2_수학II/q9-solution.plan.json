@@ -1,0 +1,239 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "17",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "D"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "17",
+            "denominator": "10"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ground",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ray",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "E"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "ground",
+          "ray"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rA",
+      "refs": [
+        "B",
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "rD",
+      "refs": [
+        "E",
+        "D",
+        "C"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "hiddenPointStyle": "NONE",
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "3.4",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lDE",
+        "ownerSegment": "sDE",
+        "text": "1.7",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lAD",
+        "ownerSegment": "sAD",
+        "text": "x",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lDC",
+        "ownerSegment": "sDC",
+        "text": "y",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 420
+  },
+  "caption": "가로등과 사람, 그림자 끝이 만드는 두 직각삼각형은 닮음이고 높이의 비가 3.4:1.7=2:1이다. 사람까지의 거리를 x, 그림자 길이를 y라 하면 닮음비에서 y=x이다. 시간에 대해 미분하면 dy/dt=dx/dt이고 사람의 속도가 1.5 m/s이므로 그림자 길이의 변화율도 1.5 m/s이다. 따라서 답은 ②이다.",
+  "accessibilityDescription": "가로등 밑에서 꼭대기까지 높이 3.4가 표시되고, 사람의 머리에서 지면의 그림자 끝으로 햇빛이 지나간다. 사람까지의 거리 x와 그림자 길이 y가 지면에 표시되어 있다.",
+  "newVisualInformation": [
+    "가로등 높이 3.4, 사람 키 1.7, 사람까지의 거리 x, 그림자 길이 y, 햇빛 직선을 한 장면에 표시한다.",
+    "높이의 비 2:1에서 y=x임을 확인할 수 있다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "키가 $1.7\\,\\mathrm{m}$인 사람이 지상 $3.4\\,\\mathrm{m}$ 높이의 가로등 바로 밑에서 $1.5\\,\\mathrm{m/s}$의 속도로 일직선으로 걸어갈 때, 이 사람의 그림자의 길이의 변화율은? [4.4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

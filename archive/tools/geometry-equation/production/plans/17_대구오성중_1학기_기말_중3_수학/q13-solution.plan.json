@@ -1,0 +1,75 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "5",
+          "0",
+          "-2/3"
+        ],
+        "domain": [
+          "-4",
+          "4"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "axis",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "0"
+        ],
+        "domain": [
+          "-4",
+          "4"
+        ],
+        "color": "WARM",
+        "label": "y=0"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "-3",
+          "y": "-1",
+          "coordinates": true
+        },
+        {
+          "id": "V",
+          "x": "0",
+          "y": "5",
+          "coordinates": false
+        }
+      ],
+      "segments": []
+    }
+  },
+  "caption": "주어진 점과 대칭축을 이용하여 꼭짓점의 높이를 정한다.",
+  "accessibilityDescription": "주어진 점과 대칭축을 이용하여 꼭짓점의 높이를 정한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "13. 이차함수 $y = -\\frac{2}{3}x^2 + q$의 그래프가 $(-3, -1)$을 지날 때, 꼭짓점의 좌표는? [3.6점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "−1=−6+q→q5. 최종꼭짓점좌표와눈금숨김.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "주어진 점과 대칭축을 이용하여 꼭짓점의 높이를 정한다."
+  ]
+}

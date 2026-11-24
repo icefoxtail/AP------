@@ -1,0 +1,59 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "9",
+          "-3"
+        ],
+        "domain": [
+          "0",
+          "3"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "-5",
+          "4"
+        ],
+        "domain": [
+          "0",
+          "3"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "2",
+          "y": "3",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "④의 두 직선은 실제(2,3)에서 만난다. 해가 되려면 두 식 모두 만족해야 하며 다른 보기의 불일치는 대입으로 판정한다. 정답④.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 연립방정식 중 $x, y$의 순서쌍 $(2, 3)$을 해로 갖는 것을 고르면? [3점] 보기: ['$\\\\begin{cases} x+y=3 \\\\\\\\ 2x+y=4 \\\\end{cases}$', '$\\\\begin{cases} x-y=-1 \\\\\\\\ 2x-y=7 \\\\end{cases}$', '$\\\\begin{cases} x+y=5 \\\\\\\\ 2x-3y=5 \\\\end{cases}$', '$\\\\begin{cases} 3x+y=9 \\\\\\\\ 4x-y=5 \\\\end{cases}$', '$\\\\begin{cases} x-y=1 \\\\\\\\ 3x-y=3 \\\\end{cases}$']",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "④의 두 직선은 실제(2,3)에서 만난다. 해가 되려면 두 식 모두 만족해야 하며 다른 보기의 불일치는 대입으로 판정한다. 정답④.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "④의 두 직선은 실제(2,3)에서 만난다. 해가 되려면 두 식 모두 만족해야 하며 다른 보기의 불일치는 대입으로 판정한다. 정답④."
+  ]
+}

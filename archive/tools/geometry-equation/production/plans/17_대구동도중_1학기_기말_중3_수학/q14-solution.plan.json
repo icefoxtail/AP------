@@ -1,0 +1,58 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "7",
+          "6",
+          "1"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -7,
+      1
+    ],
+    "viewport": [
+      -7,
+      1,
+      -3,
+      8
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": -3,
+        "y": -2
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "꼭짓점과 축을 기준으로 왼쪽·오른쪽의 변화 방향을 읽는다.",
+  "accessibilityDescription": "꼭짓점과 축을 기준으로 왼쪽·오른쪽의 변화 방향을 읽는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "14. 이차함수 $y = (x + 3)^2 - 2$의 그래프에 대한 설명 중 옳지 않은 것은? [4.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "independent",
+      "condition": "꼭짓점(−3,−2), 축오른쪽에서 증가하므로 감소라고 한⑤가 틀리다.",
+      "mappedTo": [
+        "graphPlan"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "꼭짓점과 축을 기준으로 왼쪽·오른쪽의 변화 방향을 읽는다."
+  ]
+}

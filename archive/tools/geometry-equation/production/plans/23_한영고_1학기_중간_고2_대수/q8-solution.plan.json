@@ -1,0 +1,229 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "X",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "xaxis",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "yaxis",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "P",
+          "xaxis"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "X",
+    "P",
+    "H"
+  ],
+  "displaySegments": [
+    {
+      "id": "sOP",
+      "refs": [
+        "O",
+        "P"
+      ]
+    },
+    {
+      "id": "sPH",
+      "refs": [
+        "P",
+        "H"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sOH",
+      "refs": [
+        "O",
+        "H"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "C"
+  ],
+  "coordinateLabels": [
+    "P"
+  ],
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 420
+  },
+  "hiddenPointNames": [
+    "X",
+    "H",
+    "P"
+  ],
+  "rightAngles": [
+    {
+      "id": "rH",
+      "refs": [
+        "P",
+        "H",
+        "O"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aT",
+        "refs": [
+          "X",
+          "O",
+          "P"
+        ],
+        "value": 143.13,
+        "label": "θ",
+        "labelKind": "MATH",
+        "arcs": 1,
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "s",
+        "ownerSegment": "sPH",
+        "text": "3",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "c",
+        "ownerSegment": "sOH",
+        "text": "4",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "r",
+        "ownerSegment": "sOP",
+        "text": "5",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "θ가 제2사분면의 각이고 sinθ=3/5이므로 cosθ=-4/5, tanθ=-3/4이다. sin(π/2+θ)=cosθ, tan(π-θ)=-tanθ이므로 주어진 식은 cosθ-tanθ-cosθ=-tanθ이다. 따라서 -tanθ=3/4이다. 따라서 답은 ⑤이다.",
+  "accessibilityDescription": "좌표평면의 반지름 5인 원 위 제2사분면에 점 (-4, 3)이 있고, 원점에서 그 점까지 반지름을 그었다. 그 점에서 x축에 내린 수선까지의 세로 길이는 3, 원점에서 수선의 발까지의 가로 길이는 4, 빗변은 5로 표시되어 있다.",
+  "newVisualInformation": [
+    "제2사분면의 점 (-4, 3)과 원점을 잇는 빗변 5",
+    "가로 4, 세로 3인 직각삼각형",
+    "양의 x축과 반지름이 이루는 각 θ"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\frac{\\pi}{2} < \\theta < \\pi$ 이고 $\\sin\\theta = \\frac{3}{5}$ 일 때, $\\sin(\\frac{\\pi}{2} + \\theta) + \\tan(\\pi - \\theta) - \\cos\\theta$ 의 값은? [4.3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

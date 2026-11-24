@@ -1,0 +1,217 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "C"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "12"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "C"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cAB",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cCD",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "12"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "OC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "OD",
+      "refs": [
+        "O",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dAC",
+        "from": "A",
+        "to": "C",
+        "label": "x",
+        "side": "BELOW",
+        "style": "ARROW"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "aAB",
+        "circle": "cAB",
+        "center": "O",
+        "from": "A",
+        "to": "B",
+        "side": "CCW",
+        "highlight": false
+      },
+      {
+        "id": "aCD",
+        "circle": "cCD",
+        "center": "O",
+        "from": "C",
+        "to": "D",
+        "side": "CCW",
+        "highlight": false
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 520
+  },
+  "caption": "중심이 O인 두 부채꼴 OAB, OCD가 있고 점 A는 반직선 OC 위, 점 B는 반직선 OD 위에 있다. 두 호 AB, CD와 선분 AC, BD로 둘러싸인 도형 ABDC에서 AC의 길이를 x로 나타내었다.",
+  "accessibilityDescription": "중심 O에서 두 반지름 방향으로 중심각이 같은 두 부채꼴이 겹쳐져 있다. 작은 부채꼴의 호 AB와 큰 부채꼴의 호 CD가 있고, 두 반지름 방향 사이에 선분 AC와 BD가 놓여 도형 ABDC를 이룬다. AC의 길이는 x로 적혀 있다.",
+  "newVisualInformation": [
+    "중심각이 같은 두 부채꼴 OAB, OCD",
+    "A가 OC 위, B가 OD 위에 있는 배치",
+    "AC의 길이 x"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "중심각의 크기가 같고 중심이 $O$인 두 부채꼴 $OAB$, $OCD$에 대하여 점 $A$는 반직선 $OC$ 위에, 점 $B$는 반직선 $OD$ 위에 있고 $\\overline{OA} < \\overline{OC}$이다. 두 호 $AB, CD$와 두 선분 $AC, BD$로 둘러싸인 도형 $ABDC$의 둘레의 길이가 $36$일 때, 도형 $ABDC$의 넓이가 최대가 되는 선분 $AC$의 길이를 구하시오. (6점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

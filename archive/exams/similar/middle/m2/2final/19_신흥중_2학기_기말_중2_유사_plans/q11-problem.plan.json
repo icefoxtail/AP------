@@ -1,0 +1,327 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "17"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "225",
+              "denominator": "17"
+            },
+            {
+              "kind": "rational",
+              "numerator": "120",
+              "denominator": "17"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "MIDPOINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "N",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "kO",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "17",
+            "denominator": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "kM",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "M"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "15",
+            "denominator": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "kN",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "N"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "O",
+    "M",
+    "N"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "aBA",
+        "circle": "kO",
+        "center": "O",
+        "from": "B",
+        "to": "A",
+        "side": "CW",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "aAC",
+        "circle": "kO",
+        "center": "O",
+        "from": "A",
+        "to": "C",
+        "side": "CW",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "aM",
+        "circle": "kM",
+        "center": "M",
+        "from": "A",
+        "to": "B",
+        "side": "CCW",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "aN",
+        "circle": "kN",
+        "center": "N",
+        "from": "C",
+        "to": "A",
+        "side": "CCW",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "regions": [
+      {
+        "id": "rL",
+        "fill": "BLUE",
+        "shapes": [
+          {
+            "loop": {
+              "start": "A",
+              "steps": [
+                {
+                  "to": "B",
+                  "arc": {
+                    "center": "O",
+                    "side": "MINOR"
+                  }
+                },
+                {
+                  "to": "A",
+                  "arc": {
+                    "center": "M",
+                    "side": "CW"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "loop": {
+              "start": "A",
+              "steps": [
+                {
+                  "to": "C",
+                  "arc": {
+                    "center": "O",
+                    "side": "MINOR"
+                  }
+                },
+                {
+                  "to": "A",
+                  "arc": {
+                    "center": "N",
+                    "side": "CCW"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "15",
+        "unit": "cm",
+        "ownership": "NEAREST",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lBC",
+        "ownerSegment": "sBC",
+        "text": "17",
+        "unit": "cm",
+        "ownership": "NEAREST",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "직각삼각형 ABC의 세 변을 각각 지름으로 하는 반원과 색칠된 두 초승달 모양 영역",
+  "accessibilityDescription": "삼각형 ABC의 세 변 바깥쪽에 각각 반원이 그려져 있고, 빗변 BC 위의 반원과 겹치지 않는 두 초승달 모양 부분이 색칠되어 있다. 변 AB와 변 BC 옆에 15cm와 17cm가 적혀 있고 각 A에 직각 표시가 있다.",
+  "newVisualInformation": [
+    "직각삼각형 ABC와 세 변을 지름으로 하는 반원",
+    "변 AB 15cm, 빗변 BC 17cm",
+    "빗변 위 반원 바깥에 색칠된 두 초승달 영역"
+  ],
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 400
+  },
+  "hiddenPointNames": [
+    "O",
+    "M",
+    "N"
+  ],
+  "hiddenPointStyle": "NONE",
+  "rightAngles": [
+    {
+      "id": "rA",
+      "refs": [
+        "B",
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\angle A = 90^\\circ$인 직각삼각형 $ABC$의 세 변을 각각 지름으로 하는 반원을 그렸다(빗변 $BC$ 위 반원과 겹치지 않는 두 직각변 위 반원의 바깥쪽 두 초승달 모양 부분을 색칠함). $\\overline{AB} = 15\\text{ cm}, \\overline{BC} = 17\\text{ cm}$일 때, 색칠한 부분의 넓이는? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

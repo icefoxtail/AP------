@@ -1,0 +1,51 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "-5",
+          "3/2"
+        ],
+        "domain": [
+          "8",
+          "20"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "20/3",
+          "2/3"
+        ],
+        "domain": [
+          "8",
+          "20"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "14",
+          "y": "16",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "가로 x는 서원이 승수, 세로 y는 서원이 패수. 서원이 3x−2y10, 서호 −2x+3y20의 교점 (14,16). 서호가 진 횟수는 x이므로 14회. 실제 횟수는 비음수 정수다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "서원이와 서호가 계단에서 가위바위보를 하여 이기면 3계단을 올라가고, 지면 2계단을 내려가는 게임을 하고 있다. 처음보다 서원이는 10계단, 서호는 20계단을 더 올라가 있을 때, 서호가 진 횟수를 구하시오. (단, 비기는 경우는 없다.) [5점]",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

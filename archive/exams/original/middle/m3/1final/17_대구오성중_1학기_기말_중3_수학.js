@@ -58,7 +58,11 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "score": 3.8,
-    "image": ""
+    "image": "",
+    "solutionImage": "assets/images/17_대구오성중_1학기_기말_중3_수학/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 위에 두 점이 표시되어 있고, 각 점에 a=-3 제외, a=1 제외라는 라벨이 붙어 있다.",
+    "solutionImageCaption": "좌변을 전개하면 4x²−3x이고, 우변을 정리하면 (a+1)²x²+2x이므로 (4−(a+1)²)x²−5x=0이다. 이차방정식이 되려면 x²의 계수가 0이 아니어야 하므로 4−(a+1)²≠0이다. (a+1)²≠4에서 a+1≠2, a+1≠−2이므로 a≠1, a≠−3이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -180,7 +184,11 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "score": 4.6,
-    "image": "assets/images/17_대구오성중_1학기_기말_중3_수학/q9-problem-visual-v2.svg"
+    "image": "assets/images/17_대구오성중_1학기_기말_중3_수학/q9-problem-visual-v2.svg",
+    "solutionImage": "assets/images/17_대구오성중_1학기_기말_중3_수학/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 사다리꼴의 평행한 두 변은 세로 길이이다. 두 높이와 가로 거리를 이용해 넓이 조건을 세운다.",
+    "solutionImageCaption": "사다리꼴의 평행한 두 변은 세로 길이이다. 두 높이와 가로 거리를 이용해 넓이 조건을 세운다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -220,7 +228,11 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "score": 3.6,
-    "image": ""
+    "image": "",
+    "solutionImage": "assets/images/17_대구오성중_1학기_기말_중3_수학/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축 대칭인 두 포물선을 비교한다. 주어진 높이의 수평선과 만나는 점 중 세로축 왼쪽을 선택한다.",
+    "solutionImageCaption": "가로축 대칭인 두 포물선을 비교한다. 주어진 높이의 수평선과 만나는 점 중 세로축 왼쪽을 선택한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -240,7 +252,11 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "score": 3.6,
-    "image": ""
+    "image": "",
+    "solutionImage": "assets/images/17_대구오성중_1학기_기말_중3_수학/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 꼭짓점과 세로축과의 교점을 구별한다. 같은 폭을 유지한 채 가로축에 닿는 포물선의 위치를 살펴본다.",
+    "solutionImageCaption": "꼭짓점과 세로축과의 교점을 구별한다. 같은 폭을 유지한 채 가로축에 닿는 포물선의 위치를 살펴본다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -260,7 +276,11 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "score": 3.6,
-    "image": ""
+    "image": "",
+    "solutionImage": "assets/images/17_대구오성중_1학기_기말_중3_수학/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 주어진 점과 대칭축을 이용하여 꼭짓점의 높이를 정한다.",
+    "solutionImageCaption": "주어진 점과 대칭축을 이용하여 꼭짓점의 높이를 정한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -280,7 +300,11 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "score": 4,
-    "image": ""
+    "image": "",
+    "solutionImage": "assets/images/17_대구오성중_1학기_기말_중3_수학/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 공통 꼭짓점과 세로축에서의 만남을 한 포물선 위에 표시하고 꼭짓점형에 대입한다.",
+    "solutionImageCaption": "공통 꼭짓점과 세로축에서의 만남을 한 포물선 위에 표시하고 꼭짓점형에 대입한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -300,7 +324,11 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "score": 4,
-    "image": ""
+    "image": "",
+    "solutionImage": "assets/images/17_대구오성중_1학기_기말_중3_수학/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 주어진 축을 중심으로 두 가로축 교점이 대칭임을 이용한다.",
+    "solutionImageCaption": "주어진 축을 중심으로 두 가로축 교점이 대칭임을 이용한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -320,7 +348,11 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "score": 4,
-    "image": ""
+    "image": "",
+    "solutionImage": "assets/images/17_대구오성중_1학기_기말_중3_수학/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 최솟값을 나타내는 꼭짓점과 주어진 점의 높이 차이를 꼭짓점형에 대입한다.",
+    "solutionImageCaption": "최솟값을 나타내는 꼭짓점과 주어진 점의 높이 차이를 꼭짓점형에 대입한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -337,7 +369,11 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "score": 3.8,
-    "image": "assets/images/17_대구오성중_1학기_기말_중3_수학/q17-problem-visual-v2.svg"
+    "image": "assets/images/17_대구오성중_1학기_기말_중3_수학/q17-problem-visual-v2.svg",
+    "solutionImage": "assets/images/17_대구오성중_1학기_기말_중3_수학/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 원본의 부호 관계를 만족하는 예시 a=1, b=-2, c=-3이다. 계수의 크기는 원본에서 주어진 값이 아니다. 열리는 방향, 축의 위치, 세로절편의 부호를 읽는다.",
+    "solutionImageCaption": "원본의 부호 관계를 만족하는 예시 a=1, b=-2, c=-3이다. 계수의 크기는 원본에서 주어진 값이 아니다. 열리는 방향, 축의 위치, 세로절편의 부호를 읽는다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -359,7 +395,11 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "score": 4.6,
-    "image": "assets/images/17_대구오성중_1학기_기말_중3_수학/q18-problem-visual-v2.svg"
+    "image": "assets/images/17_대구오성중_1학기_기말_중3_수학/q18-problem-visual-v2.svg",
+    "solutionImage": "assets/images/17_대구오성중_1학기_기말_중3_수학/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 꼭짓점에서 원점으로 보조선을 그어 사각형을 두 삼각형으로 나눈다. 각각의 밑변과 높이를 좌표로 읽는다.",
+    "solutionImageCaption": "꼭짓점에서 원점으로 보조선을 그어 사각형을 두 삼각형으로 나눈다. 각각의 밑변과 높이를 좌표로 읽는다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -381,7 +421,11 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "score": 4.6,
-    "image": "assets/images/17_대구오성중_1학기_기말_중3_수학/q19-problem-visual-v2.svg"
+    "image": "assets/images/17_대구오성중_1학기_기말_중3_수학/q19-problem-visual-v2.svg",
+    "solutionImage": "assets/images/17_대구오성중_1학기_기말_중3_수학/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 같은 높이의 두 꼭짓점 사이 가운데에 대칭축이 있다. 정사각형의 변 길이와 원점을 지나는 조건을 함께 사용한다.",
+    "solutionImageCaption": "같은 높이의 두 꼭짓점 사이 가운데에 대칭축이 있다. 정사각형의 변 길이와 원점을 지나는 조건을 함께 사용한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -421,7 +465,11 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "score": 4.4,
-    "image": ""
+    "image": "",
+    "solutionImage": "assets/images/17_대구오성중_1학기_기말_중3_수학/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 예시 a=1이다. 세로축 왼쪽에서 그래프가 가로축 아래로 내려오는 부분이 있는지 살펴보고, 계수를 바꾸면 세로절편이 어떻게 달라지는지 생각한다.",
+    "solutionImageCaption": "예시 a=1이다. 세로축 왼쪽에서 그래프가 가로축 아래로 내려오는 부분이 있는지 살펴보고, 계수를 바꾸면 세로절편이 어떻게 달라지는지 생각한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -443,7 +491,11 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "score": 4.8,
-    "image": "assets/images/17_대구오성중_1학기_기말_중3_수학/q22-problem-visual-v2.svg"
+    "image": "assets/images/17_대구오성중_1학기_기말_중3_수학/q22-problem-visual-v2.svg",
+    "solutionImage": "assets/images/17_대구오성중_1학기_기말_중3_수학/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 같은 높이에 있는 두 점의 가로좌표 차이가 선분의 길이이다. 이 차이를 이차식으로 정리하여 가장 짧을 때의 두 점을 찾는다.",
+    "solutionImageCaption": "같은 높이에 있는 두 점의 가로좌표 차이가 선분의 길이이다. 이 차이를 이차식으로 정리하여 가장 짧을 때의 두 점을 찾는다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -485,6 +537,10 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "score": 4.4,
-    "image": ""
+    "image": "",
+    "solutionImage": "assets/images/17_대구오성중_1학기_기말_중3_수학/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 자료의 값마다 점을 쌓아 분포를 나타낸 그림이다.",
+    "solutionImageCaption": "자료를 작은 값부터 늘어놓으면 3, 3, 3, 3, 3, 4, 4, 5, 6, 6이다. 평균은 40/10=4, 중앙값은 다섯째와 여섯째 값의 평균인 7/2, 최빈값은 다섯 번 나온 3이다. 따라서 a+b+c=4+7/2+3=21/2=10.5이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   }
 ];

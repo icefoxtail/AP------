@@ -32,7 +32,11 @@ window.questionBank = [
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_왕의중_1학기_기말_중2_기출/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "자연수 해는 (1,8),(2,6),(3,4),(4,2). 표시 직선은 관계의 연속 보조 연장이고 자연수 점만 원문 해이다. 보기 중 (2,6)만 있으므로 ②.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -65,7 +69,11 @@ window.questionBank = [
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_왕의중_1학기_기말_중2_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "③의 두 식은 y=x+1, y=5−3x이다. 공통점 (1,2)가 두 식을 동시에 만족한다. 다른 보기는 한 식 이상 불일치. 정답③.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -131,7 +139,11 @@ window.questionBank = [
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_왕의중_1학기_기말_중2_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "상수없는 두 식 5x+2y40과 x+3y21의 공통점(6,5). a7,b39를 원래 식에 복원하면 차 32,정답⑤.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -164,7 +176,12 @@ window.questionBank = [
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_왕의중_1학기_기말_중2_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "같은 직선 6x−2y14와 3x−y7이 겹친다. a6,b−1이므로 합 5. 한 직선 위 모든 점이 두 식의 해이며 정답④.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 6,
@@ -198,7 +215,11 @@ window.questionBank = [
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
     "subUnit": "연립일차방정식의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_왕의중_1학기_기말_중2_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "x는 핫도그 가격 원,y는 음료 가격 원. 두 구매조건의 교점(2400,1800)이 가격이다. 5배한 첫 식에서 둘째를 빼면 y1800. 정답⑤. 직선은 조건의 연장, 가격은 비음수.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -231,7 +252,11 @@ window.questionBank = [
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
     "subUnit": "연립일차방정식의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_왕의중_1학기_기말_중2_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "가로는 현재 연수 나이,세로는 아버지 나이. 20년 후 조건 y+20=2(x+20)이 y=2x+20으로 바뀐다. 공통점(8,36),정답③.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -305,7 +330,11 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_왕의중_1학기_기말_중2_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 집합의 원소 사이의 대응 관계를 화살표로 나타낸 그림이다.",
+    "solutionImageCaption": "둘레 20인 1×9와 5×5 직사각형은 넓이가 9와 25로 다르다. 같은 입력에 출력 둘이므로④는 함수가 아니다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -338,7 +367,12 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_왕의중_1학기_기말_중2_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "f(−2)=−3에서 k−3,실제함수 y3x+3. (2,9)로 f2=9,정답⑤.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 11,
@@ -371,7 +405,11 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_왕의중_1학기_기말_중2_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 기울기가 같은 두 평행한 직선이 있고, 이동한 직선의 x절편과 y절편의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "y=-2x의 그래프를 y축 방향으로 a만큼 평행이동하면 y=-2x+a이다. x절편이 3/4이므로 0=-2×(3/4)+a에서 a=3/2이다. 두 직선은 평행하고, 이동한 직선은 점 (3/4, 0)을 지난다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -404,7 +442,12 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_왕의중_1학기_기말_중2_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "가로 변화 3에 세로 변화 −6. 기울기 −6/3=−2,정답②.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 13,
@@ -522,7 +565,11 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_왕의중_1학기_기말_중2_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "실제절편(−3,0),(0,−6)에서 y−2x−6. x2의 실제 y−10과 보기⑤(2,−8)을 나란히 비교한다. 정답⑤.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -681,7 +728,11 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_왕의중_1학기_기말_중2_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "원본은 양의기울기/양의 y절편만 정한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -778,7 +829,11 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_왕의중_1학기_기말_중2_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "7분 690L에서 처음 900L. y900−30x는 물이 있는 0≤x≤30의 실제 식이며 이후 음수로 연장하지 않는다. (26,120)에서 정답 26분. 세로축 1/30 배율이나 좌표는 실제 리터.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,

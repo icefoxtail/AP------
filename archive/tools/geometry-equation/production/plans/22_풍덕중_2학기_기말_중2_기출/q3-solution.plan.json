@@ -1,0 +1,57 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "5/3",
+          "-2/3"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ],
+        "label": "2x+3y=5"
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "3",
+          "2"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ],
+        "label": "-2x+y=3"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "-1/2",
+          "y": "2",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "두 식을 더하면 4y=8, y2. 첫 식에 대입하여 2x+6=5, x−1/2. 교점(−1/2,2)이므로 빈칸(마)의 −1이 틀리다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "연립방정식을 더하거나 빼는 방법을 이용하여 푸는 과정이다.<div class=\"question-note-box\">$\\begin{cases}2x+3y=5\\quad\\cdots①\\\\-2x+y=3\\quad\\cdots②\\end{cases}$<br>①과 ②를 변끼리 (가) 을 하면<br>(나) $=8$, $y=$(다)<br>$y=$(다)를 ①에 대입하면<br>$2x+$(라) $=5$, $x=$(마)<br>따라서 해는 $x=$(마), $y=$(다)이다.</div>풀이 과정에 들어갈 빈칸으로 옳지 않은 것은? [4점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "domain",
+      "condition": "직선의 정의역은 모든 실수이며 domain은 핵심 교점과 절편을 담는 표시창이다. 원문 자연수 조건은 별도 caption에서 적용한다.",
+      "mappedTo": "graphPlan.curves"
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "4",
+      "0",
+      "-3",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1.8,
+      3.2
+    ],
+    "viewport": [
+      -1.8,
+      3.2,
+      -12,
+      8
+    ],
+    "formula": "4-3*x^2+x^3",
+    "functionName": "f",
+    "requiredPoints": [],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "-1",
+          "y": "0",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "0",
+          "y": "4",
+          "coordinates": true
+        },
+        {
+          "id": "C",
+          "x": "2",
+          "y": "0",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "조건 (나)에서 g(x)=cx이고, (가)에 넣으면 f(x)=x³+kx²+c/2(x²−4)이다. f(2)=0, f′(2)=0에서 k=−2, c=−2이므로 f(x)=x³−3x²+4이다. 그래프는 점 A(−1, 0)에서 x축을 지나고 점 C(2, 0)에서 x축에 접하며, 극댓점 B(0, 4)를 가진다. 따라서 답은 f(x)=x³−3x²+4이다.",
+  "accessibilityDescription": "삼차함수 그래프가 왼쪽 아래에서 올라와 x축을 지나 극댓점을 이룬 뒤, 오른쪽의 한 점에서 x축에 접한 뒤 다시 올라간다. 그래프 위의 세 점 A, B, C에 이름과 좌표가 표시되어 있다.",
+  "newVisualInformation": [
+    "f(x)=x³−3x²+4의 그래프와 세 점 A(−1, 0), B(0, 4), C(2, 0)을 표시한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형4] 두 다항함수 $f(x)$, $g(x)$에 대하여 다음이 성립할 때, 함수 $f(x)$를 구하시오. [6점]\n(가) $f(x)=x^3+kx^2+\\displaystyle\\int_2^x g(t),dt$가 $(x-2)^2$으로 나누어 떨어진다. (단, $k$는 상수)\n(나) 모든 실수 $x$에 대하여 $\\displaystyle\\int_0^x g(t),dt=\\dfrac{1}{2}xg(x)$가 성립한다.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

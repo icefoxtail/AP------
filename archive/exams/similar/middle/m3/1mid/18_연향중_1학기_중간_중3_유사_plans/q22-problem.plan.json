@@ -1,0 +1,328 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "P"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "W",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "P"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "8"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "Q"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "8"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "Q"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "N",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "R"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "8"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "S",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "R"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "Q"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "P",
+    "Q",
+    "W",
+    "M",
+    "R",
+    "N",
+    "S",
+    "T"
+  ],
+  "displaySegments": [
+    {
+      "id": "sPQ",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    },
+    {
+      "id": "sQM",
+      "refs": [
+        "Q",
+        "M"
+      ]
+    },
+    {
+      "id": "sMW",
+      "refs": [
+        "M",
+        "W"
+      ]
+    },
+    {
+      "id": "sWP",
+      "refs": [
+        "W",
+        "P"
+      ]
+    },
+    {
+      "id": "sQR",
+      "refs": [
+        "Q",
+        "R"
+      ]
+    },
+    {
+      "id": "sRS",
+      "refs": [
+        "R",
+        "S"
+      ]
+    },
+    {
+      "id": "sSN",
+      "refs": [
+        "S",
+        "N"
+      ]
+    },
+    {
+      "id": "sNM",
+      "refs": [
+        "N",
+        "M"
+      ]
+    },
+    {
+      "id": "sTS",
+      "refs": [
+        "T",
+        "S"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "P",
+    "Q",
+    "W",
+    "M",
+    "R",
+    "N",
+    "S",
+    "T"
+  ],
+  "hiddenPointStyle": "NONE",
+  "planeMarks": {
+    "textLabels": [
+      {
+        "id": "lA",
+        "at": [
+          4,
+          4.8
+        ],
+        "labelKind": "MATH",
+        "text": "A",
+        "anchor": "CENTER",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lAreaA",
+        "at": [
+          4,
+          3.4
+        ],
+        "labelKind": "TEXT",
+        "text": "27/5 x",
+        "anchor": "CENTER",
+        "factRole": "GIVEN",
+        "labelWeight": "MATH"
+      },
+      {
+        "id": "lB",
+        "at": [
+          9.5,
+          5.6
+        ],
+        "labelKind": "MATH",
+        "text": "B",
+        "anchor": "CENTER",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lC",
+        "at": [
+          9.5,
+          1.8
+        ],
+        "labelKind": "MATH",
+        "text": "C",
+        "anchor": "CENTER",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lAreaC",
+        "at": [
+          9.5,
+          0.9
+        ],
+        "labelKind": "TEXT",
+        "text": "16-x",
+        "anchor": "CENTER",
+        "factRole": "GIVEN",
+        "labelWeight": "MATH"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 520
+  },
+  "caption": "큰 직사각형이 왼쪽의 정사각형 A, 오른쪽 위의 직사각형 B, 오른쪽 아래의 정사각형 C로 나뉘어 있고 A와 C의 넓이가 적혀 있다.",
+  "accessibilityDescription": "큰 직사각형의 왼쪽에 정사각형 A가 있고, 오른쪽은 위쪽의 직사각형 B와 아래쪽의 정사각형 C로 나뉘어 있다. 정사각형 A에는 5분의 27 곱하기 x, 정사각형 C에는 16 빼기 x라는 넓이 식이 적혀 있다.",
+  "newVisualInformation": [
+    "정사각형 A와 정사각형 C의 넓이 식, 그리고 직사각형 B의 위치가 표시되어 있다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림은 하나의 큰 직사각형을 두 개의 정사각형 $A, C$와 직사각형 $B$로 나눈 것이다. 두 정사각형 $A, C$의 넓이가 각각 $\\dfrac{27}{5}x$, $16 - x$이고 모든 도형의 변의 길이가 자연수일 때, 직사각형 $B$의 넓이를 구하여라. (단, $x$는 자연수) [7점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

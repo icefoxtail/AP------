@@ -1,0 +1,56 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "A",
+        "name": "동전두개",
+        "elements": [
+          "앞앞",
+          "앞뒤",
+          "뒤앞",
+          "뒤뒤"
+        ]
+      },
+      {
+        "id": "B",
+        "name": "주사위",
+        "elements": [
+          "2",
+          "5"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      }
+    ]
+  },
+  "caption": "두동전 4결과×주사위 6결과=24중앞앞과눈 2/5인두쌍만연결. 확률 2/24=1/12,정답⑤.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "동전 두 개와 주사위 한 개를 동시에 던질 때, 동전은 모두 앞면이 나오고 주사위는 2 또는 5의 눈이 나올 확률은? (4점)",
+      "mappedTo": "diagram"
+    }
+  ]
+}

@@ -64,7 +64,11 @@ window.questionBank = [
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/26_왕운중_1학기_기말_중2_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "자연수해(7,1),(5,2),(3,3),(1,4)를 표시한다. 각 x−y는 6,3,0,−3이므로 −6은 불가능. 연속선의 모든점이 자연수해라는 뜻은 아니다. 정답⑤.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -97,7 +101,11 @@ window.questionBank = [
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/26_왕운중_1학기_기말_중2_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "한 해(3,−1)를 대입하면 15+2a+8=7에서 a−8. 이때 5x+16y=−1,즉 y=−5x/16−1/16이고(3,−1)을 지난다. 정답①.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -163,7 +171,11 @@ window.questionBank = [
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/26_왕운중_1학기_기말_중2_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "순환소수 2/3,4/3으로 바꾸고 x+2y3,x−4y12로 정리한다. 교점(6,−3/2)에서 xy−9. 정답④.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -195,7 +207,11 @@ window.questionBank = [
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/26_왕운중_1학기_기말_중2_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "y=x+4를 첫식에 대입하면 −x−12=−14,x2,y6. 두 직선은(2,6)에서 만난다. 정답①.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -228,7 +244,11 @@ window.questionBank = [
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/26_왕운중_1학기_기말_중2_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "④의 첫 식은 수평선 y=−c/b,둘째 식은 수직선 x=−c′/a′이므로 항상 하나의 교점이다. 이 패널은 y2,x1의 설명용 대표값이며 실제 상수의 값을 정하지 않는다. 정답④.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -302,7 +322,11 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/26_왕운중_1학기_기말_중2_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 집합의 원소 사이의 대응 관계를 화살표로 나타낸 그림이다.",
+    "solutionImageCaption": "x12에 소인수 2,3 두 값이 대응하므로⑤는함수가 아니다. x1에는 소인수가 없다는 점도 자연수 전체에서 함수가 안되는 이유지만 이 도식은 복수대응의 반례를 보인다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -335,7 +359,11 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/26_왕운중_1학기_기말_중2_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "f3=3에서 a3. 실제직선 y2x−3의(4,5)에서 b4. ab12,정답④.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -368,7 +396,11 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/26_왕운중_1학기_기말_중2_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "아래로 3 이동한 y−4x+a−3이(−2,0)을 지나므로 a−5. 원래점(−2,3)이(−2,0)으로 내려가는 관계를 보인다. 정답②.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -435,7 +467,12 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/26_왕운중_1학기_기말_중2_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "x0→2에서 y0→−8,기울기 −8/2=−4이다. 해당식 y−4x,정답①.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 14,
@@ -469,7 +506,11 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/26_왕운중_1학기_기말_중2_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "두 주어진점(−1,2),(4,12)에서 기울기 a2. 직선 y2x+4가높이 6인점은(1,6)으로 b1. a+b3,정답③.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -544,7 +585,11 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/26_왕운중_1학기_기말_중2_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "문제의 일정감소 모형에서 4분마다 5%포인트 감소. 100/5=20회,80분후 0%. 실제잔량범위 0~100%와시간 0~80분만 표시한다. 정답 1시간 20분.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -657,7 +702,11 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/26_왕운중_1학기_기말_중2_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "y축에 평행하려면 두 점의 가로 좌표가 같아 2a=−a+9, a3. 실제 두 점 (6,7),(6,5)은 수직선 x6 위에 있다. 수평선 y0은 좌표축 보조일 뿐 원문 직선이 아니다. 정답 ③.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -691,7 +740,11 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/26_왕운중_1학기_기말_중2_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "일치조건에서 a2. 다른식은 y=x/3+b/3이므로 만나지 않으려면 b≠5. a+b=7만불가능,정답④.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -718,7 +771,11 @@ window.questionBank = [
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/26_왕운중_1학기_기말_중2_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "x가 y보다 3작다는것은 y=x+3. 첫식과의교점(−4,−1)을둘째식에넣어 −13=2k−3,k−5.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -746,7 +803,11 @@ window.questionBank = [
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
     "subUnit": "연립일차방정식의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/26_왕운중_1학기_기말_중2_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "가로 x는 서원이 승수, 세로 y는 서원이 패수. 서원이 3x−2y10, 서호 −2x+3y20의 교점 (14,16). 서호가 진 횟수는 x이므로 14회. 실제 횟수는 비음수 정수다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,

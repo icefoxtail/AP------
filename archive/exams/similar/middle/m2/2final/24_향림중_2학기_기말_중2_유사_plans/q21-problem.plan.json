@@ -1,0 +1,48 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "cone",
+      "kind": "CONE",
+      "radius": 6,
+      "height": 8,
+      "names": {
+        "center": "C",
+        "apex": "A"
+      }
+    }
+  ],
+  "dims": [
+    {
+      "solid": "cone",
+      "height": true,
+      "direct": true,
+      "foot": true,
+      "label": "AC"
+    },
+    {
+      "solid": "cone",
+      "radius": "bottom"
+    },
+    {
+      "solid": "cone",
+      "slant": true
+    }
+  ],
+  "solidCaption": {
+    "text": "원뿔"
+  },
+  "caption": "변 AC를 축으로 직각삼각형 ABC를 회전시켜 생기는 원뿔이다. 밑면의 반지름 6 cm와 모선 10 cm, 높이를 나타내는 선분 AC가 표시되어 있다.",
+  "accessibilityDescription": "밑면의 중심 C와 꼭짓점 A가 표시된 원뿔이고, 밑면의 반지름 6 cm, 모선 10 cm, 높이를 나타내는 선분 AC가 보인다.",
+  "newVisualInformation": [
+    "밑면의 중심 C와 꼭짓점 A, 반지름 6 cm, 모선 10 cm, 높이를 나타내는 선분 AC"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 1] $\\angle C = 90^\\circ$인 직각삼각형 $ABC$에서 빗변의 길이가 $\\overline{AB}=10\\rm\\,cm$이고 밑변의 길이가 $\\overline{BC}=6\\rm\\,cm$이다. 변 $AC$의 연장선을 회전축으로 하여 이 직각삼각형을 $1$회전시킬 때 생기는 입체도형의 부피를 구하고, 그 과정을 서술하시오. [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

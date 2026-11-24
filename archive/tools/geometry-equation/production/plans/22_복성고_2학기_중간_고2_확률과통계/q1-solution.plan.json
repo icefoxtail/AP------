@@ -1,0 +1,46 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "DOT_PLOT",
+    "values": [
+      12,
+      14,
+      16,
+      18
+    ],
+    "xTitle": "X",
+    "marks": {
+      "meanLine": {
+        "value": "15",
+        "label": "평균"
+      }
+    }
+  },
+  "caption": "정사면체 네 면의 수의 합은 20이고, 바닥에 닿는 면의 수를 D라 하면 X=20-D이다. D가 2, 4, 6, 8일 때 X는 각각 18, 16, 14, 12이고 네 경우가 같은 확률로 일어난다. X의 평균은 (18+16+14+12)/4=15이다. 따라서 답은 ②이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "※(1~2번) 2, 4, 6, 8의 숫자가 각 면에 하나씩 적혀 있는 정사면체 주사위를 한 번 던지는 시행에서 바닥에 닿는 면을 제외한 세 면의 숫자의 합을 확률변수 $X$라 하자.\n\n1. 확률변수 $X$의 평균을 구하시오. [3.9점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "정사면체 주사위의 네 면에 2, 4, 6, 8이 하나씩 적혀 있음",
+      "mappedTo": "chart.values"
+    },
+    {
+      "id": "c2",
+      "condition": "바닥에 닿는 면을 제외한 세 면의 수의 합이 X",
+      "mappedTo": "chart.xTitle"
+    },
+    {
+      "id": "c3",
+      "condition": "각 면이 바닥에 닿을 확률이 같음",
+      "mappedTo": "chart.marks.meanLine"
+    }
+  ],
+  "newVisualInformation": [
+    "X의 값 12, 14, 16, 18을 수직선 위에 점으로 나타내고 평균 15를 세로 점선으로 표시한 점도표",
+    "네 값이 같은 간격과 같은 확률로 분포함을 보여 줌"
+  ]
+}

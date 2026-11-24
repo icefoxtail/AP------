@@ -1204,7 +1204,7 @@ test("HTTP 502 and network failures keep the same save result unresolved", async
   }
 });
 
-test('Saved Paper revision Draft preserves the immutable source snapshot and lineage parent', async t => {
+test('Saved Paper revision opens with the current question content (2026-11-24) and keeps the lineage parent', async t => {
   const { w, ctx } = harness();
   // Re-saving a revision restores the question's original image path from its source file (the Worker embeds it again),
   // so the fixture question needs a real school-exam image field and the source files must be readable.
@@ -1272,15 +1272,35 @@ test('Saved Paper revision Draft preserves the immutable source snapshot and lin
   assert.equal(persistedDraft.derivationSource.parentId, paper.id);
   assert.equal(Object.hasOwn(persistedDraft, 'derivedBaseQuestions'), false,
     'large immutable source payload stays server-authoritative instead of entering local Draft storage');
+  const [originalQuestion] = await archiveSource.restore([record], catalog);
   const prepared = await w.prepare();
-  assert.equal(prepared[0].questions[0].content, frozenQuestion.content);
-  assert.equal(prepared[0].questions[0].solution, frozenQuestion.solution);
-  assert.equal(prepared[0].questions[0].image, frozenQuestion.image);
+  // the saved copy differs in text and holds an embedded image; the revision shows what the question is NOW
+  assert.equal(prepared[0].questions[0].content, originalQuestion.content);
+  assert.notEqual(prepared[0].questions[0].content, frozenQuestion.content);
+  assert.equal(prepared[0].questions[0].solution, originalQuestion.solution);
+  assert.equal(prepared[0].questions[0].image, originalQuestion.image);
   assert.match(w.renderCompose(), /원본 저장 시험지의 고정된 범위/);
+  assert.equal(w.state.composeNotice, '', 'nothing was fixed since the save: no notice');
 
+  // fixed since the save: opens (never refused), with a one-line notice
   const changedSource = structuredClone(paper);
   changedSource.snapshot.questions[0].sourceFingerprint = 'changed-source-fingerprint';
-  assert.throws(() => w.applySavedPaperRevision(changedSource), /원본 문항이 바뀌어/);
+  w.applySavedPaperRevision(changedSource);
+  assert.deepEqual(plain(w.state.selected.map(row => row.questionUid)), [uid]);
+  assert.match(w.state.composeNotice, /문항 1개가 저장 뒤 고쳐져 최신 내용으로 열었습니다/);
+  // a question that left the archive is the only one left out, and its number is told
+  const withGhost = structuredClone(paper);
+  const ghostUid = 'qid_v1_' + '0'.repeat(64);
+  withGhost.snapshot.questions.push({ ...structuredClone(frozenQuestion), questionUid: ghostUid });
+  withGhost.snapshot.meta.questionUids = [uid, ghostUid];
+  w.applySavedPaperRevision(withGhost);
+  assert.deepEqual(plain(w.state.selected.map(row => row.questionUid)), [uid]);
+  assert.match(w.state.composeNotice, /2번 문항은 아카이브에서 찾을 수 없어 빼고 열었습니다/);
+  const allGone = structuredClone(paper);
+  allGone.snapshot.questions[0].questionUid = ghostUid;
+  allGone.snapshot.meta.questionUids = [ghostUid];
+  assert.throws(() => w.applySavedPaperRevision(allGone), /모두 사라져/);
+  w.applySavedPaperRevision(paper);
 
   ctx.localStorage.setItem("APMATH_SESSION", JSON.stringify({ id: "fixture-teacher", session_token: "fixture-token" }));
   ctx.APMATH_API_BASE = "https://archive.test/api";
@@ -1301,24 +1321,16 @@ test('Saved Paper revision Draft preserves the immutable source snapshot and lin
   assert.equal(savedPayload.papers[0].lineage.parent_id, paper.id);
   assert.equal(savedPayload.papers[0].lineage.parent_snapshot_hash, paper.snapshot_hash);
   assert.equal(savedPayload.papers[0].lineage.derivation_type, "REVISION");
-  assert.equal(savedPayload.papers[0].questions[0].content, frozenQuestion.content);
-  const [originalQuestion] = await archiveSource.restore([record], catalog);
+  assert.equal(savedPayload.papers[0].questions[0].content, originalQuestion.content, 'the current content is what is saved');
   assert.equal(savedPayload.papers[0].questions[0].image, originalQuestion.image,
-    'the image the Worker embedded goes back as its original path (the Worker embeds it again)');
-  assert.notEqual(savedPayload.papers[0].questions[0].image, frozenQuestion.image);
+    'the image goes as its original path (the Worker embeds it)');
 
   w.applyDraft(persistedDraft);
   assert.equal(w.state.derivationSource.parentId, paper.id);
-  assert.equal(w.state.derivedBaseQuestions, null, "Draft restoration keeps only the parent identity locally");
-  ctx.fetch = async (url, init = {}) => {
-    const parsed = new URL(String(url));
-    assert.equal(parsed.pathname, "/api/archive-saved-papers/" + paper.id);
-    assert.equal(init.method, "GET");
-    return { ok: true, status: 200, json: async () => ({ success: true, paper }) };
-  };
+  ctx.fetch = async () => { throw new Error('reopening a revision draft must not need the saved parent paper'); };
   const restoredPrepared = await w.prepare();
-  assert.equal(restoredPrepared[0].questions[0].content, frozenQuestion.content,
-    "Draft reopen reads the immutable parent snapshot instead of rebuilding from current source files");
+  assert.equal(restoredPrepared[0].questions[0].content, originalQuestion.content,
+    "Draft reopen rebuilds from the current source files");
 });
 
 test('multi-word Finder search matches every word in any order against visible exam values', () => {
@@ -1843,46 +1855,23 @@ async function derivedHarness(t) {
   w.state.rows = [{ id: rowId, paths: [rowId], scopeQuestionUids: [record.questionUid], count: 1 }];
   w.state.selected = [{ ...record, rowId }];
   const [original] = await archiveSource.restore([record], catalog);
-  // What the Worker stored at the first save: every school-exam image reference became a data: URL.
-  const embed = value => typeof value === 'string'
-    ? value.replace(/(\bsrc\s*=\s*["'])[^"']*assets\/images\/[^"']*(["'])/gi, '$1data:image/png;base64,AQID$2')
-    : value;
-  const frozen = structuredClone(original);
-  for (const field of ['content', 'question', 'solution']) frozen[field] = embed(frozen[field]);
-  if (typeof frozen.image === 'string' && frozen.image.includes('assets/images/')) frozen.image = 'data:image/png;base64,AQID';
-  if (typeof frozen.solutionImage === 'string' && frozen.solutionImage.includes('assets/images/')) frozen.solutionImage = 'data:image/png;base64,AQID';
-  assert.notDeepEqual(plain(frozen), plain(original), 'the frozen snapshot question carries embedded images');
   w.state.derivationSource = { parentKind: 'SAVED_PAPER', parentId: crypto.randomUUID(), parentRevision: null, parentSnapshotHash: 'a'.repeat(64), derivationType: 'REVISION' };
-  w.state.derivedBaseQuestions = [frozen];
   w.state.prepared = [];
-  return { w, ctx, frozen, original };
+  return { w, ctx, original };
 }
 
-test('수정본 재저장: 내장된 그림은 원래 경로로 되돌려 보내고, 화면·미리보기용 문항은 바뀌지 않는다', async t => {
-  const { w, ctx, frozen, original } = await derivedHarness(t);
+test('수정본 재저장: 저장본의 옛 내용(내장 그림 포함)이 아니라 지금의 원본 내용이 그림 경로 그대로 나간다', async t => {
+  const { w, ctx, original } = await derivedHarness(t);
   const bodies = captureSavePost(ctx);
   await w.savePapers();
   assert.equal(w.state.saveResultState, 'SAVED', w.state.saveError);
   const sent = bodies[0].papers[0].questions[0];
   for (const field of ['content', 'question', 'solution', 'image', 'solutionImage'])
-    if (typeof original[field] === 'string') assert.equal(sent[field], original[field], field + ' goes back with the original image paths');
-  assert.doesNotMatch(JSON.stringify(sent), /data:image\//, 'no embedded image is sent back');
+    if (typeof original[field] === 'string') assert.equal(sent[field], original[field], field + ' goes with the current original content');
+  assert.doesNotMatch(JSON.stringify(sent), /data:image\//, 'no embedded image is sent');
   assert.deepEqual(plain(sent.choices), plain(original.choices));
   assert.equal(sent.answer, original.answer);
-  // the object used for preview/print keeps the saved (embedded) content
-  assert.deepEqual(plain(w.state.prepared[0].questions[0]), plain(frozen));
-});
-
-test('수정본 재저장: 저장본 문항의 본문이 달라졌으면(그림 자리 밖) 조용히 보내지 않고 막는다', async t => {
-  const { w, ctx, frozen } = await derivedHarness(t);
-  const field = ['content', 'solution', 'question'].find(f => typeof frozen[f] === 'string' && frozen[f].includes('data:image/'));
-  assert.ok(field, 'an embedded HTML field exists');
-  frozen[field] += ' 바뀐 문장';
-  const bodies = captureSavePost(ctx);
-  await w.savePapers();
-  assert.notEqual(w.state.saveResultState, 'SAVED');
-  assert.equal(bodies.length, 0, 'nothing was sent');
-  assert.match(w.state.saveError, /원본 문항이 바뀌어/);
+  assert.deepEqual(plain(w.state.prepared[0].questions[0]), plain(original));
 });
 
 // ---- 학년·과목 버튼을 누른 뒤 저장해도 서버가 모르는 조건 키가 실리지 않는다 ----

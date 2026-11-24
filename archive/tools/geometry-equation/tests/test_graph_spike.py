@@ -31,11 +31,16 @@ class GraphSpike(unittest.TestCase):
     def test_repeated_root_cannot_be_lifted_even_with_subpixel_vertex_error(self):
         import xml.etree.ElementTree as ET
         p=plan(coefficients=['1','-2','1']);o=produce(p);self.assertEqual(audit(p,o['svg'],o['transform'])['status'],'PASS')
-        root=ET.fromstring(o['svg'])
-        for curve in root:
-            points=[tuple(map(float,s.split(','))) for s in curve.get('points').split()]
-            curve.set('points',' '.join(f'{x},{y-.1}' for x,y in points))
-        self.assertIn('REQUIRED_ROOT_FEATURE_MISSING',audit(p,ET.tostring(root,encoding='unicode'),o['transform'])['errors'])
+        def lifted(amount):
+            root=ET.fromstring(o['svg'])
+            for curve in root:
+                points=[tuple(map(float,s.split(','))) for s in curve.get('points').split()]
+                curve.set('points',' '.join(f'{x},{y-amount}' for x,y in points))
+            return audit(p,ET.tostring(root,encoding='unicode'),o['transform'])
+        # A subpixel lift touches the axis within the observer tolerance but the lifted curve leaves the frame: still not a PASS.
+        self.assertNotEqual(lifted(.1)['status'],'PASS')
+        # A visible lift (the curve no longer touches the axis) loses the required root.
+        self.assertIn('REQUIRED_ROOT_FEATURE_MISSING',lifted(1)['errors'])
     def test_clustered_root_display_is_unsupported_and_pole_crossing_fails(self):
         p=plan(coefficients=['1000001/1000000','-2000001/1000000','1']);o=produce(p)
         self.assertEqual(audit(p,o['svg'],o['transform'])['status'],'UNSUPPORTED')

@@ -1,0 +1,55 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "TREE",
+    "root": {
+      "children": [
+        {
+          "label": "합4(2)"
+        },
+        {
+          "label": "합5(4)"
+        },
+        {
+          "label": "합6(8)"
+        },
+        {
+          "label": "합7(4)"
+        },
+        {
+          "label": "합8(2)"
+        }
+      ]
+    },
+    "highlightPaths": [
+      {
+        "path": [
+          "합8(2)"
+        ],
+        "color": "BLUE"
+      }
+    ]
+  },
+  "caption": "세 공에 적힌 수의 합 X는 4부터 8까지이고 그 경우의 수는 차례로 2, 4, 8, 4, 2로 모두 20가지이다. 직선과 곡선을 연립하면 Xx²+10x+X/2=0이고, 만나지 않을 조건은 판별식 100−2X²이 0보다 작은 것이다. 이때 X²>50이므로 X=8뿐이고, X=8은 3, 3, 2를 꺼내는 2가지이므로 확률은 2/20=1/10이다. 따라서 답은 ⑤이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "상자 안에 숫자 $1,2,3$이 적힌 공이 각각 $2$개씩 $6$개가 들어 있다. 이 상자에서 동시에 $3$개의 공을 꺼낼 때 $3$개의 공에 적힌 숫자의 합을 확률변수 $X$라고 하자. 이때, 직선 $y=10x-\\dfrac X2$와 곡선 $y=-Xx^2-X$이 만나지 않을 확률은? [4.5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "1, 2, 3이 적힌 공이 각각 2개씩 모두 6개 들어 있다.",
+      "mappedTo": "chart.root.children"
+    },
+    {
+      "id": "c2",
+      "condition": "이 상자에서 3개의 공을 동시에 꺼내 그 수의 합을 X라 한다.",
+      "mappedTo": "chart.root.children"
+    }
+  ],
+  "newVisualInformation": [
+    "합 X의 값 4, 5, 6, 7, 8과 각 경우의 수 2, 4, 8, 4, 2를 수형도의 다섯 가지로 보여 준다.",
+    "X=8이 되는 경우의 가지와 잎을 파란색으로 강조한다."
+  ]
+}

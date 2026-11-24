@@ -1,0 +1,484 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "네 영역 A, B, C, D로 나뉜 도형이며 B는 A, C, D와 이웃하고 A와 C도 이웃한다.",
+  "accessibilityDescription": "가운데의 긴 영역 B를 가운데 두고 왼쪽 위에 A, 왼쪽 아래에 C, 오른쪽에 D가 있으며 B가 A, C, D와 변을 맞대고 A와 C도 변을 맞댄다.",
+  "newVisualInformation": [
+    "영역 A, B, C, D의 배치와 이웃 관계"
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "t0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "t3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "t7",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "t10",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "m0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "m3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "m7",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "m10",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "b0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "b3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "b7",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "b10",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "t0",
+    "t3",
+    "t7",
+    "t10",
+    "m0",
+    "m3",
+    "m7",
+    "m10",
+    "b0",
+    "b3",
+    "b7",
+    "b10"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sTopA",
+      "refs": [
+        "t0",
+        "t3"
+      ]
+    },
+    {
+      "id": "sTopB",
+      "refs": [
+        "t3",
+        "t7"
+      ]
+    },
+    {
+      "id": "sTopD",
+      "refs": [
+        "t7",
+        "t10"
+      ]
+    },
+    {
+      "id": "sRight",
+      "refs": [
+        "t10",
+        "m10"
+      ]
+    },
+    {
+      "id": "sDBot",
+      "refs": [
+        "m10",
+        "m7"
+      ]
+    },
+    {
+      "id": "sBRightLow",
+      "refs": [
+        "m7",
+        "b7"
+      ]
+    },
+    {
+      "id": "sBBot",
+      "refs": [
+        "b7",
+        "b3"
+      ]
+    },
+    {
+      "id": "sCBot",
+      "refs": [
+        "b3",
+        "b0"
+      ]
+    },
+    {
+      "id": "sCLeft",
+      "refs": [
+        "b0",
+        "m0"
+      ]
+    },
+    {
+      "id": "sALeft",
+      "refs": [
+        "m0",
+        "t0"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "m0",
+        "m3"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "m3",
+        "t3"
+      ]
+    },
+    {
+      "id": "sCB",
+      "refs": [
+        "b3",
+        "m3"
+      ]
+    },
+    {
+      "id": "sDB",
+      "refs": [
+        "m7",
+        "t7"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "regions": [
+      {
+        "id": "rA",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "t0",
+              "t3",
+              "m3",
+              "m0"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "rB",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "m3",
+              "t3",
+              "t7",
+              "m7",
+              "b7",
+              "b3"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "rC",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "b0",
+              "b3",
+              "m3",
+              "m0"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "rD",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "m7",
+              "m10",
+              "t10",
+              "t7"
+            ]
+          }
+        ]
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "tA",
+        "at": [
+          1.5,
+          4
+        ],
+        "text": "A"
+      },
+      {
+        "id": "tB",
+        "at": [
+          5,
+          3
+        ],
+        "text": "B"
+      },
+      {
+        "id": "tC",
+        "at": [
+          1.5,
+          1
+        ],
+        "text": "C"
+      },
+      {
+        "id": "tD",
+        "at": [
+          8.5,
+          4
+        ],
+        "text": "D"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 340
+  },
+  "hiddenPointNames": [
+    "t0",
+    "t3",
+    "t7",
+    "t10",
+    "m0",
+    "m3",
+    "m7",
+    "m10",
+    "b0",
+    "b3",
+    "b7",
+    "b10"
+  ],
+  "hiddenPointStyle": "NONE",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "네 영역 $A, B, C, D$로 나누어진 도형이 있다. 영역 $B$는 $A, C, D$ 모두와 이웃하고 $A$와 $C$도 서로 이웃하며, $A$와 $D$, $C$와 $D$는 이웃하지 않는다. 이 도형을 빨강, 파랑, 노랑, 초록, 보라의 $5$가지 색 중 같은 색을 중복하여 사용해도 좋으나 이웃한 영역은 서로 다른 색으로 구분하여 칠할 때, $B$ 영역에 파란색이 칠해질 확률은? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

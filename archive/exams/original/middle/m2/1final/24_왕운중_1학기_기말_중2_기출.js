@@ -32,7 +32,12 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_왕운중_1학기_기말_중2_기출/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "실제함수 y5x−3에서입력 2의점(2,7)을읽어 f2=7. 정답④.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 2,
@@ -65,7 +70,12 @@ window.questionBank = [
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_왕운중_1학기_기말_중2_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "주어진점(3,2)을지나는 2x+y=k의상수 k=8. 실제직선 y8−2x와점을대조,정답④.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 85
   },
   {
     "id": 3,
@@ -98,7 +108,11 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_왕운중_1학기_기말_중2_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "아래로 2이동하면기울기 3유지·절편 −2. a3,b−2의합 1,정답①.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -130,7 +144,11 @@ window.questionBank = [
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_왕운중_1학기_기말_중2_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 기울기가 음수인 파란 직선과 기울기가 양수인 주황 직선이 제2사분면의 한 점에서 만나고, 그 교점의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "x+2y=5를 y에 대해 정리하면 y=5/2-x/2, 3x-2y=-9를 정리하면 y=9/2+3x/2이므로 두 직선의 교점을 구하면 (-1, 3)이다. 두 식을 더하면 4x=-4이므로 x=-1이고, 이를 첫째 식에 대입하면 y=3이다. 따라서 a=-1, b=3이므로 a+b=2이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -163,7 +181,11 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_왕운중_1학기_기말_중2_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 집합의 원소 사이의 대응 관계를 화살표로 나타낸 그림이다.",
+    "solutionImageCaption": "x4에 작은 홀수 1,3이 둘 다 대응하므로 함수가 아니다. 정답 ①.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -196,7 +218,11 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/24_왕운중_1학기_기말_중2_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "절편점(6,0),(0,2)을읽어합 8. 정답④.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -229,7 +255,11 @@ window.questionBank = [
     "subUnitKey": "M2-02-LINEAR_INEQUALITY",
     "subUnit": "일차부등식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_왕운중_1학기_기말_중2_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 위에 범위를 나타낸 그림이다.",
+    "solutionImageCaption": "양변 6배하면 −x<−5,음수로나눠 x>5. 빈경계 5와오른반직선,정답⑤.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -262,7 +292,11 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_왕운중_1학기_기말_중2_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 기울기가 2이고 y절편이 3인 직선과, x축에 나란한 수평선 y=5가 함께 그려져 있다. 직선 위의 점 A와 두 직선이 만나는 점 B가 표시되어 있다.",
+    "solutionImageCaption": "일차함수는 y=ax+b 꼴이고 a는 0이 아니어야 한다. y=5는 기울기가 0인 상수함수이므로 일차함수가 아니고, y=2x+3은 기울기 2, y절편 3인 일차함수이다. y=3/x는 분모에 x가 있어 y=ax+b 꼴로 쓸 수 없다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -294,7 +328,11 @@ window.questionBank = [
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
     "subUnit": "연립일차방정식의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_왕운중_1학기_기말_중2_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "가로 시속 2 시간, 세로 시속 3 시간. x+y3,2x+3y7의 교점 (2,1). 빠른 거리 3×1=3km, 정답 ①. 조건선 연장과 비음수 시간 구별.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -361,7 +399,11 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/24_왕운중_1학기_기말_중2_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "원본두절편(−2,0),(0,4). 변화량 4/2로기울기 2,정답④.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -394,7 +436,11 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/24_왕운중_1학기_기말_중2_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 기울기가 같은 두 평행한 직선이 그려져 있고, 각 직선이 y축과 만나는 두 점의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "4x+y-3=0을 y에 대해 정리하면 y=-4x+3이므로 기울기는 -4이다. 평행한 직선은 기울기가 같아야 하므로 보기 중 기울기가 -4인 y=-4x+5가 알맞다. 두 직선은 기울기가 같고 y절편이 각각 3과 5로 달라 서로 평행하다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -427,7 +473,12 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_왕운중_1학기_기말_중2_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "일치한 두 그래프는 실제 y2x+3 한 직선. a/2=2,b−3이므로 a4,b−3, 합 1. 정답 ③.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 14,
@@ -493,7 +544,11 @@ window.questionBank = [
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_왕운중_1학기_기말_중2_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "y=1, 2, 3, 4, 5일 때 3x+4y=23의 x를 구하면 y=2일 때 x=5, y=5일 때 x=1만 자연수이다. 이어 그린 직선은 관계를 보이는 보조선이고, x와 y가 모두 자연수인 점은 (1, 5)와 (5, 2)뿐이다. 따라서 답은 ② 2개이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -526,7 +581,11 @@ window.questionBank = [
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_왕운중_1학기_기말_중2_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "두 식이 같은 직선이려면 둘째가 첫째의 −1/2배. a−2,b−5의 곱 10. 무수한 공통점을 한 직선으로 표시, 정답 ③.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -563,7 +622,11 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/24_왕운중_1학기_기말_중2_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "원본 내리막·양의 절편에서 b<0,a<0. 새 함수의 기울기/절편 모두 음수라 제1사분면을 지나지 않는다. 두 선은 a=b=−1의 부호 대표형이지 원문 유일 계수 아니다. 정답 ①.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -698,7 +761,11 @@ window.questionBank = [
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_왕운중_1학기_기말_중2_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "첫식에서 x2→y3,둘째 10−3=a+2에서 a5. 실제두선의교점(2,3)을표시한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -725,7 +792,11 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_왕운중_1학기_기말_중2_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "옮긴선은 y−3x/2+k+3이고(4,2)를지난다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -752,7 +823,11 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/24_왕운중_1학기_기말_중2_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "두점(−1,2),(2,8)의기울기 6/3=2. 원래점대입해절편 4,정답 y2x+4.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,
@@ -780,6 +855,10 @@ window.questionBank = [
     "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
     "subUnit": "일차부등식의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_왕운중_1학기_기말_중2_기출/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 위에 범위를 나타낸 그림이다.",
+    "solutionImageCaption": "단체권 30장 90000원과개별 4000x비교. 더싸려면 x>22.5이고학급은 30명미만. 자연수 23..29로최소 23명. 가로 변수 n은 학생 수이다.",
+    "solutionImageSize": "full"
   }
 ];

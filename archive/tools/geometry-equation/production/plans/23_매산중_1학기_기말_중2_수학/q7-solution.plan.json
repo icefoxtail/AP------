@@ -1,0 +1,61 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "자연수 x",
+        "elements": [
+          "5"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "5와 공약수",
+        "elements": [
+          "1",
+          "5"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      }
+    ]
+  },
+  "caption": "x5에서 5와의 공약수 1,5가 동시에 대응해 함수 아니다. 나머지는 원 넓이/가격/거리/남은 쪽수 하나로 정해진다. 정답 ⑤.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>7. 다음에서 $y$가 $x$에 대한 함수가 아닌 것은? (4점)</p>",
+      "mappedTo": "diagram"
+    },
+    {
+      "id": "method",
+      "condition": "x5에서5와의공약수1,5가동시에대응해함수아니다. 나머지는원넓이/가격/거리/남은쪽수하나로정해진다. 정답⑤.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "x5에서5와의공약수1,5가동시에대응해함수아니다. 나머지는원넓이/가격/거리/남은쪽수하나로정해진다. 정답⑤."
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "capability": "construction-spike-v1",
+  "mode": "PLANE_FIGURE_v1",
+  "caption": "벽면 AB를 빗변으로 하고 직각을 낀 두 변 AC, BC에 길이 합 60m인 철망을 두른 직각삼각형 꽃밭",
+  "mathPlan": {
+    "nodes": [
+      {
+        "id": "C",
+        "kind": "SOURCE_POINT",
+        "x": 0,
+        "y": 0,
+        "label": "C"
+      },
+      {
+        "id": "A",
+        "kind": "SOURCE_POINT",
+        "x": 0,
+        "y": 3,
+        "label": "A"
+      },
+      {
+        "id": "B",
+        "kind": "SOURCE_POINT",
+        "x": 3,
+        "y": 0,
+        "label": "B"
+      }
+    ],
+    "segments": [
+      {
+        "from": "A",
+        "to": "B",
+        "label": "벽면",
+        "style": "thick"
+      },
+      {
+        "from": "A",
+        "to": "C",
+        "label": "x"
+      },
+      {
+        "from": "C",
+        "to": "B",
+        "label": "y"
+      }
+    ]
+  }
+}

@@ -1,0 +1,590 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "rational",
+                "numerator": "1",
+                "denominator": "3"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "rational",
+                "numerator": "-1",
+                "denominator": "3"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "33"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "rational",
+                "numerator": "14",
+                "denominator": "3"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              }
+            ]
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "9"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "AB",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "AC",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "N",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bAB",
+        "op": "PERPENDICULAR_THROUGH",
+        "inputs": [
+          "M",
+          "AB"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bAC",
+        "op": "PERPENDICULAR_THROUGH",
+        "inputs": [
+          "N",
+          "AC"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "O",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "bAB",
+          "bAC"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "rational",
+                "numerator": "6",
+                "denominator": "11"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "55"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "BD",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ints",
+        "op": "INTERSECTION",
+        "inputs": [
+          "BD",
+          "circ"
+        ],
+        "args": {},
+        "outputType": "POINT_SET",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "SELECT_POINT",
+        "inputs": [
+          "ints"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "branch": {
+          "kind": "SIDE_OF_ORIENTED_LINE",
+          "refs": [
+            "A",
+            "C"
+          ],
+          "sign": 1
+        }
+      },
+      {
+        "id": "R",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "rational",
+                "numerator": "6",
+                "denominator": "11"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "55"
+                  }
+                ]
+              }
+            ]
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "rational",
+                "numerator": "-6",
+                "denominator": "11"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "55"
+                  }
+                ]
+              }
+            ]
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "rational",
+                "numerator": "6",
+                "denominator": "11"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "55"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "rational",
+                "numerator": "-6",
+                "denominator": "11"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "55"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "O",
+    "L",
+    "R",
+    "U",
+    "V"
+  ],
+  "hiddenPointNames": [
+    "O",
+    "L",
+    "R",
+    "U",
+    "V"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sCE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "2",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lDE",
+        "ownerSegment": "sDE",
+        "text": "5",
+        "factRole": "GIVEN"
+      }
+    ],
+    "angles": [
+      {
+        "id": "ang0",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 73.22134511903964,
+        "noLabel": true,
+        "arcs": 1,
+        "equalGroup": 1,
+        "style": "ARC"
+      },
+      {
+        "id": "ang1",
+        "refs": [
+          "C",
+          "E",
+          "D"
+        ],
+        "value": 73.22134511903964,
+        "noLabel": true,
+        "arcs": 1,
+        "equalGroup": 1,
+        "style": "ARC"
+      },
+      {
+        "id": "ang2",
+        "refs": [
+          "C",
+          "D",
+          "E"
+        ],
+        "value": 39.66403535711893,
+        "noLabel": true,
+        "arcs": 2,
+        "equalGroup": 2,
+        "style": "ARC"
+      },
+      {
+        "id": "ang3",
+        "refs": [
+          "B",
+          "D",
+          "A"
+        ],
+        "value": 39.66403535711893,
+        "noLabel": true,
+        "arcs": 2,
+        "equalGroup": 2,
+        "style": "ARC"
+      }
+    ]
+  },
+  "caption": "같은 현 BC를 보는 ∠CEB와 ∠CAB, 교차하는 두 직선의 맞꼭지각을 비교하여 △CDE와 △BDA의 대응을 확인한다. CE와 AB, DE와 DA가 대응하는 변이다.",
+  "accessibilityDescription": "같은 현 BC를 보는 ∠CEB와 ∠CAB, 교차하는 두 직선의 맞꼭지각을 비교하여 △CDE와 △BDA의 대응을 확인한다. CE와 AB, DE와 DA가 대응하는 변이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "그림과 같이 $\\overline{AB}=2$, $\\cos(\\angle BAC)=\\dfrac{\\sqrt3}{6}$인 삼각형 ABC가 있다. 선분 AC 위의 한 점 D에 대하여 직선 BD가 삼각형 ABC의 외접원과 만나는 점 중 B가 아닌 점을 E라 하자. $\\overline{DE}=5$, $\\overline{CD}+\\overline{CE}=5\\sqrt3$일 때, 삼각형 ABC의 외접원의 넓이를 구하는 풀이과정과 답을 서술하시오.<br>[7점, 부분점수 있음]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "construction",
+      "condition": "실제 기존 문제 SVG는 선명하나 길이/동각 표식이 없어 해설의 두 삼각형 닮음과 대응변을 설명하지 않는다. 원주각 CEB=CAB와 맞꼭지각 CDE=BDA로 CDE~BDA. 코사인법칙에서 CE2√3,CD3√3,닮음에서 AD5/√3. 정규화 A0,AC양의가로,AB길이2·cosA√3/6로 B를 도출했다. AC14/√3, D는5:9 내분, E는 외접원과 BD 교점 중 AC 위쪽. 외접원 넓이 최종값은 숨긴다. A 원점은 임의 평행이동 게이지일 뿐 원문 지정 좌표가 아니다. 숨은 원주 끝점은 프레임 절단 방지용으로 원 반지름을 이용한 파생점이다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "같은 현 BC를 보는 ∠CEB와 ∠CAB, 교차하는 두 직선의 맞꼭지각을 비교하여 △CDE와 △BDA의 대응을 확인한다. CE와 AB, DE와 DA가 대응하는 변이다."
+  ]
+}

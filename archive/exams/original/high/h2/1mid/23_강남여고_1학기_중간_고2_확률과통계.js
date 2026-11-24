@@ -189,7 +189,11 @@ window.questionBank = [
     },
     "semanticSourceScope": "2015/HIGH/확률과통계",
     "semanticScopeRelation": "CURRENT_SCOPE",
-    "projectionStatus": "REUSE"
+    "projectionStatus": "REUSE",
+    "solutionImage": "assets/images/23_강남여고_1학기_중간_고2_확률과통계/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 가운데 원 둘레에 다섯 점 A, B, C, D, E가 같은 간격으로 놓여 있다.",
+    "solutionImageCaption": "원탁에서는 회전하여 일치하는 배열을 같은 것으로 본다. 한 학생의 자리를 고정하면 나머지 네 학생을 배열하는 경우는 4!=24이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "number": 4,
@@ -1031,7 +1035,11 @@ window.questionBank = [
     },
     "semanticSourceScope": "2015/HIGH/확률과통계",
     "semanticScopeRelation": "CURRENT_SCOPE",
-    "projectionStatus": "REUSE"
+    "projectionStatus": "REUSE",
+    "solutionImage": "assets/images/23_강남여고_1학기_중간_고2_확률과통계/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 집합 사이의 포함 관계와 원소가 속한 영역을 벤 다이어그램으로 나타낸 그림이다.",
+    "solutionImageCaption": "A∩B=A이므로 A는 B의 부분집합이고, B−A의 원소는 2개이다. B−A의 원소 2개를 고르는 경우는 6개에서 2개를 고르는 것과 같아 15가지이다. 나머지 4개 원소는 각각 A에 넣거나 B 밖에 둘 수 있고, A가 공집합인 경우를 빼면 2⁴−1가지이다. 따라서 15×(2⁴−1)=225이므로 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "number": 17,
@@ -1293,7 +1301,11 @@ window.questionBank = [
     },
     "semanticSourceScope": "2015/HIGH/확률과통계",
     "semanticScopeRelation": "CURRENT_SCOPE",
-    "projectionStatus": "REUSE"
+    "projectionStatus": "REUSE",
+    "solutionImage": "assets/images/23_강남여고_1학기_중간_고2_확률과통계/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로선 위에 1, 2, 4가 적힌 세 눈금이 있고, 1과 4 사이에 길이 3을 나타내는 치수선이 있다.",
+    "solutionImageCaption": "1과 4의 차가 3이므로 조건에 따라 1과 4는 이웃할 수 없고, 2의 개수에 따라 나누어 센다. 2가 2개, 3개, 4개, 5개일 때 경우의 수는 각각 38, 32, 10, 1이다. 합은 38+32+10+1=81이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "number": 21,

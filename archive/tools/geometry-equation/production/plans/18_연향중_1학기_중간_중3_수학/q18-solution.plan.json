@@ -1,0 +1,146 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Y",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "O",
+    "X",
+    "Y"
+  ],
+  "displaySegments": [
+    {
+      "id": "sOX",
+      "refs": [
+        "O",
+        "X"
+      ]
+    },
+    {
+      "id": "sXY",
+      "refs": [
+        "X",
+        "Y"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dOX",
+        "from": "O",
+        "to": "X",
+        "label": "x",
+        "side": "ABOVE",
+        "style": "ARROW",
+        "offset": 2
+      },
+      {
+        "id": "dXY",
+        "from": "X",
+        "to": "Y",
+        "label": "3−x",
+        "side": "ABOVE",
+        "style": "ARROW",
+        "offset": 3
+      },
+      {
+        "id": "dOY",
+        "from": "O",
+        "to": "Y",
+        "label": "3",
+        "side": "BELOW",
+        "style": "ARROW",
+        "offset": 2
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 320
+  },
+  "hiddenPointNames": [
+    "O",
+    "X",
+    "Y"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "0<x<3이므로 √(x²)=x이고 √(x²−6x+9)=|x−3|=3−x이다. 두 근호의 값을 더하면 x+(3−x)=3이다. 예: x=1이면 1+2=3이다. 따라서 답은 ③이다.",
+  "accessibilityDescription": "가로선 위의 세 점 O, X, Y가 선분을 두 구간으로 나누고 있다. 왼쪽 구간에는 x, 오른쪽 구간에는 3−x, 전체 구간에는 3이라는 길이 표시가 있다.",
+  "newVisualInformation": [
+    "0에서 x까지의 길이와 x에서 3까지의 길이를 더하면 전체 길이 3이 됨을 치수선으로 보여 준다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "18. $0 < x < 3$일 때, $\\sqrt{x^2}+\\sqrt{x^2-6x+9}$를 간단히 하여라.(4점) [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -2,
+      6,
+      -1,
+      12
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "4",
+          "-4",
+          "1"
+        ],
+        "domain": [
+          "-2",
+          "6"
+        ],
+        "label": "f"
+      },
+      {
+        "id": "level",
+        "kind": "LINE",
+        "coefficients": [
+          "10",
+          "0"
+        ],
+        "domain": [
+          "-2",
+          "6"
+        ],
+        "label": "y=10"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "2-sqrt(10)",
+          "y": "10",
+          "coordinates": false
+        },
+        {
+          "id": "B",
+          "x": "2+sqrt(10)",
+          "y": "10",
+          "coordinates": false
+        }
+      ],
+      "segments": [
+        {
+          "id": "AB",
+          "from": "A",
+          "to": "B"
+        }
+      ]
+    }
+  },
+  "caption": "같은 높이 10에서 포물선과 만나는 두 점을 표시한다. 축 x=2에 대한 대칭으로 두 가로좌표를 구한다.",
+  "accessibilityDescription": "같은 높이 10에서 포물선과 만나는 두 점을 표시한다. 축 x=2에 대한 대칭으로 두 가로좌표를 구한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "21. [서술형 4] 이차함수의 그래프가 점 $(k, 10)$을 지난다고 할 때, $k$의 값은 두 개가 나온다. 이 때, 두 $k$값의 차를 구하시오.<br>(풀이과정을 서술하시오.) [7.0점]<br><br><img src=\"assets/images/16_경기은계중_1학기_기말_중3_수학/q21-problem-visual-v2.svg\" alt=\"위로 열린 포물선은 x축의 2에서 꼭짓점을 이루고 세로축의 4를 지난다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "independent",
+      "condition": "꼭짓점(2,0),y절편4에서y=(x−2)². 높이10의교점가로좌표2±√10의차2√10.",
+      "mappedTo": [
+        "graphPlan"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "같은 높이10에서 포물선과 만나는 두 점을 표시한다. 축x=2에 대한 대칭으로 두 가로좌표를 구한다."
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-6",
+          "1/2"
+        ]
+      }
+    ],
+    "domain": [
+      -2,
+      14
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "0",
+        "y": "-6"
+      },
+      {
+        "id": "P1",
+        "x": "6",
+        "y": "-3"
+      },
+      {
+        "id": "P2",
+        "x": "12",
+        "y": "0"
+      }
+    ],
+    "formula": "x/2 - 6"
+  },
+  "caption": "원본 PNG의(0,−6),(6,−3)을보존. 기울기 3/6=1/2,절편 −6이므로 ab−3. 정답②.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림은 일차함수 $y=ax+b$의 그래프이다. $ab$의 값은? [3점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "원본PNG의(0,−6),(6,−3)을보존. 기울기3/6=1/2,절편−6이므로ab−3. 정답②.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "원본PNG의(0,−6),(6,−3)을보존. 기울기3/6=1/2,절편−6이므로ab−3. 정답②."
+  ]
+}

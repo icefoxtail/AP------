@@ -872,7 +872,11 @@ window.questionBank = [
     "projectionReason": "A에서 밑변에 수선을 내려 AH=4,BH=4√3을 얻고 HC=BC−BH를 전달하여 피타고라스로 AC를 구한다.",
     "nullReason": null,
     "semanticStatus": "FINAL",
-    "meaningMeta": {"semanticStatus":"FINAL","rpmPrimaryId":"M3-RPM-066","rpmPrimaryPath":{"majorUnit":"삼각비","midUnit":"삼각비의 활용","l3":"복합도형","l4":"피타고라스 결합"},"rpmL3":"복합도형","rpmL4":"피타고라스 결합","subUnitKey":"M3-05-TRIG_RATIO_APPLICATION","problemTypeKey":"PT_TRIG_RATIO_APPLICATION","templateKey":"TPL_TRIG_APPLICATION_CHAINED_MEASURE","projectionStatus":"PROJECTION_REUSE","projectionReason":"A에서 밑변에 수선을 내려 AH=4,BH=4√3을 얻고 HC=BC−BH를 전달하여 피타고라스로 AC를 구한다."}
+    "meaningMeta": {"semanticStatus":"FINAL","rpmPrimaryId":"M3-RPM-066","rpmPrimaryPath":{"majorUnit":"삼각비","midUnit":"삼각비의 활용","l3":"복합도형","l4":"피타고라스 결합"},"rpmL3":"복합도형","rpmL4":"피타고라스 결합","subUnitKey":"M3-05-TRIG_RATIO_APPLICATION","problemTypeKey":"PT_TRIG_RATIO_APPLICATION","templateKey":"TPL_TRIG_APPLICATION_CHAINED_MEASURE","projectionStatus":"PROJECTION_REUSE","projectionReason":"A에서 밑변에 수선을 내려 AH=4,BH=4√3을 얻고 HC=BC−BH를 전달하여 피타고라스로 AC를 구한다."},
+    "solutionImage": "assets/images/21_금당중_2학기_중간_중3_수학/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC에서 A에서 변 BC에 내린 수선 AH와 발 H가 있고, AB=8센티미터, 각 B=30°, BC=6√3센티미터가 표시되어 있다.",
+    "solutionImageCaption": "A에서 BC에 내린 수선의 발을 H라 하자. 30°인 각을 이용하면 AH=4, BH=4√3이고, BC=6√3이므로 HC=2√3이다. 직각삼각형 AHC에서 AC=√(4²+(2√3)²)=√28=2√7이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,

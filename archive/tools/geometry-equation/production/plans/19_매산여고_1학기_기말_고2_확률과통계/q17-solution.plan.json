@@ -1,0 +1,61 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "TREE",
+    "root": {
+      "children": [
+        {
+          "label": "빨강 있음",
+          "p": "6/7",
+          "children": [
+            {
+              "label": "빨강 B",
+              "p": "1"
+            }
+          ]
+        },
+        {
+          "label": "모두 검정",
+          "p": "1/7",
+          "children": [
+            {
+              "label": "빨강 있음",
+              "p": "1",
+              "children": [
+                {
+                  "label": "빨강 B",
+                  "p": "1"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "showPathProbability": true,
+    "pathColumn": true
+  },
+  "caption": "첫 두 공에 빨간 공이 하나라도 있으면 그대로 B에 들어가 목표가 성립한다. 처음 두 공이 모두 검은색이면 A에는 빨간 공 4개와 검은 공 1개가 남아, 다음 두 공 중 적어도 하나는 반드시 빨간 공이다. 두 경우 모두 B에 빨간 공이 들어가므로 확률은 1이다. 따라서 답은 ⑤이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "상자 A에는 빨간 공 4개와 검은 공 3개가 들어 있고, 상자 B에는 비어 있다. 상자 A에서 임의로 2개의 공을 꺼내어 빨간 공이 나오면 [실행1]을 하고 종료한다. 빨간 공이 나오지 않으면 [실행2]를 할 때, 상자 B에 있는 빨간 공의 개수가 1개 이상 들어 있을 확률은? [4.6점]<br><br><div class=\"exam-box\">[실행1] 꺼낸 공을 상자 B에 넣는다.<br>[실행2] 꺼낸 공을 상자 B에 넣고, 상자 A에서 임의로 2개의 공을 더 꺼내어 상자 B에 넣는다.</div>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "상자 A에는 빨간 공 4개와 검은 공 3개가 있다.",
+      "mappedTo": "chart.root"
+    },
+    {
+      "id": "c2",
+      "condition": "처음 두 공이 모두 검은색이면 상자 A에서 두 공을 더 꺼낸다.",
+      "mappedTo": "chart.root.children[1]"
+    }
+  ],
+  "newVisualInformation": [
+    "첫 갈래에서 빨간 공이 포함될 확률 6/7",
+    "모두 검은색일 확률 1/7",
+    "두 경우 모두 B에 빨간 공이 들어가는 경로"
+  ]
+}

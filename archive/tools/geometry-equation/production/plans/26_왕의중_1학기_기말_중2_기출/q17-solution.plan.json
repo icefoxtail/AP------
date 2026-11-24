@@ -1,0 +1,79 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "9",
+          "-1"
+        ],
+        "domain": [
+          "-4",
+          "10"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "3",
+          "1"
+        ],
+        "domain": [
+          "-4",
+          "10"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "0",
+          "y": "9",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "9",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P2",
+          "x": "-3",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P3",
+          "x": "0",
+          "y": "3",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P4",
+          "x": "3",
+          "y": "6",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "원본 m절편 9/9로 x+y9, l절편 −3/3으로 x−y−3이다. 교점(3,6)이두식의공통해. 정답①.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림과 같은 두 직선 $l,m$의 교점의 좌표 $(a,b)$가 해가 되는 연립방정식은? [4점]",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "f",
+    "domain": [
+      -1.5,
+      1.5
+    ],
+    "viewport": [
+      -2,
+      2,
+      -2,
+      2
+    ],
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": "0",
+        "y": "0"
+      },
+      {
+        "id": "P",
+        "x": "1",
+        "y": "1"
+      },
+      {
+        "id": "R",
+        "x": "-1",
+        "y": "-1"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "referenceCurves": [
+      {
+        "id": "g",
+        "name": "g",
+        "coefficients": [
+          "0",
+          "0",
+          "1"
+        ],
+        "intersectionX": [
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "overlays": {
+      "lines": [
+        {
+          "id": "u",
+          "slope": "0",
+          "intercept": "1"
+        },
+        {
+          "id": "d",
+          "slope": "0",
+          "intercept": "-1"
+        }
+      ]
+    }
+  },
+  "caption": "x의 n제곱=a의 실근은 y=xⁿ의 그래프와 가로선 y=a의 교점의 x좌표이다. 그림은 홀수 거듭제곱의 예 f(x)=x³(n=3)과 짝수 거듭제곱의 예 g(x)=x²(n=2)이고, 가로선은 양수 a와 음수 a의 예로 y=1, y=−1이다(문항의 5, −4와 같은 부호). 홀수 거듭제곱은 증가하여 양수 a, 음수 a 모두 한 점에서 만나므로 5의 n제곱근 중 실수는 한 개이다. 짝수 거듭제곱은 양수 a에서 두 점에서 만나지만 음수 a와는 만나지 않으므로 −4의 짝수 제곱근 중 실수는 없다. 따라서 옳은 것은 ④이다.",
+  "accessibilityDescription": "원점을 지나는 삼차 곡선 f와 이차 곡선 g가 있고, 가로선 y=1과 y=−1이 있다. y=1은 f와 g를 지나고 y=−1은 f만 지난다.",
+  "newVisualInformation": [
+    "홀수 거듭제곱 y=x³과 짝수 거듭제곱 y=x²를 양수·음수 가로선과 비교해 실수인 n제곱근의 개수(홀수 1개, 짝수 양수 2개·음수 0개)를 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 설명 중 옳은 것은? [3.7점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

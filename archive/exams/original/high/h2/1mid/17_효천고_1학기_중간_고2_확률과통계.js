@@ -370,7 +370,11 @@ window.questionBank = [
     "imageStatus": "none",
     "answerStatus": "generated_pending",
     "solutionStatus": "generated_pending",
-    "reviewStatus": "manual_review"
+    "reviewStatus": "manual_review",
+    "solutionImage": "assets/images/17_효천고_1학기_중간_고2_확률과통계/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 6개의 점을 두 개의 세로 막대가 세 구간으로 나누고 있고, 구간 아래에 x, y, z가 적혀 있다. 아래에 방정식과 조합식이 표시되어 있다.",
+    "solutionImageCaption": "x+y+z=6의 음이 아닌 정수해는 별 6개와 막대 2개를 일렬로 놓는 경우와 같다. 8자리 중 막대가 들어갈 2자리를 고르면 되므로 8C2=28이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -615,7 +619,11 @@ window.questionBank = [
     "imageStatus": "none",
     "answerStatus": "generated_pending",
     "solutionStatus": "generated_pending",
-    "reviewStatus": "manual_review"
+    "reviewStatus": "manual_review",
+    "solutionImage": "assets/images/17_효천고_1학기_중간_고2_확률과통계/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 집합 사이의 포함 관계와 원소가 속한 영역을 벤 다이어그램으로 나타낸 그림이다.",
+    "solutionImageCaption": "A⊂B⊂X이므로 X의 각 원소가 갈 수 있는 곳은 세 가지이다. 그림의 안쪽(A에 속함), 가운데 고리(B에는 속하고 A에는 속하지 않음), 바깥 고리(B에 속하지 않음)이다. 원소 5개가 각각 3가지 중 하나를 고르므로 순서쌍 A, B의 개수는 3의 5제곱=243이고 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,

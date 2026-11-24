@@ -1,0 +1,437 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "rational",
+              "numerator": "247",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "75383",
+              "denominator": "10000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "99688",
+              "denominator": "10000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "8874",
+              "denominator": "10000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "87964",
+              "denominator": "10000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "bA",
+        "op": "ANGLE_BISECTOR",
+        "inputs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "args": {
+          "mode": "INTERNAL"
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bB",
+        "op": "ANGLE_BISECTOR",
+        "inputs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "args": {
+          "mode": "INTERNAL"
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "I",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "bA",
+          "bB"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ab",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bc",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ca",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "C",
+          "A"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "I",
+          "ab"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "I",
+          "bc"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "I",
+          "ca"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "I",
+    "D",
+    "E",
+    "F"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sDB",
+      "refs": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "sEC",
+      "refs": [
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "sCF",
+      "refs": [
+        "C",
+        "F"
+      ]
+    },
+    {
+      "id": "sFA",
+      "refs": [
+        "F",
+        "A"
+      ]
+    },
+    {
+      "id": "sID",
+      "refs": [
+        "I",
+        "D"
+      ]
+    },
+    {
+      "id": "sIE",
+      "refs": [
+        "I",
+        "E"
+      ]
+    },
+    {
+      "id": "sIF",
+      "refs": [
+        "I",
+        "F"
+      ]
+    },
+    {
+      "id": "sIA",
+      "refs": [
+        "I",
+        "A"
+      ]
+    },
+    {
+      "id": "sIB",
+      "refs": [
+        "I",
+        "B"
+      ]
+    },
+    {
+      "id": "sIC",
+      "refs": [
+        "I",
+        "C"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "I",
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "I",
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "r2",
+      "refs": [
+        "I",
+        "F",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "eq0",
+        "count": 1,
+        "segments": [
+          "sID",
+          "sIE",
+          "sIF"
+        ]
+      },
+      {
+        "id": "eq1",
+        "count": 2,
+        "segments": [
+          "sAD",
+          "sFA"
+        ]
+      },
+      {
+        "id": "eq2",
+        "count": 3,
+        "segments": [
+          "sDB",
+          "sBE"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "id": "a0",
+        "refs": [
+          "A",
+          "B",
+          "I"
+        ],
+        "value": 20,
+        "label": "20",
+        "arcs": 1,
+        "ring": 1,
+        "equalGroup": 1,
+        "style": "ARC"
+      },
+      {
+        "id": "a1",
+        "refs": [
+          "I",
+          "B",
+          "C"
+        ],
+        "value": 20,
+        "noLabel": true,
+        "arcs": 1,
+        "ring": 1,
+        "equalGroup": 1,
+        "style": "ARC"
+      },
+      {
+        "id": "a2",
+        "refs": [
+          "B",
+          "A",
+          "I"
+        ],
+        "value": 40,
+        "label": "40",
+        "arcs": 2,
+        "ring": 1,
+        "equalGroup": 2,
+        "style": "ARC"
+      },
+      {
+        "id": "a3",
+        "refs": [
+          "I",
+          "A",
+          "C"
+        ],
+        "value": 40,
+        "noLabel": true,
+        "arcs": 2,
+        "ring": 1,
+        "equalGroup": 2,
+        "style": "ARC"
+      },
+      {
+        "id": "a4",
+        "refs": [
+          "B",
+          "C",
+          "I"
+        ],
+        "value": 30,
+        "label": "30",
+        "arcs": 3,
+        "ring": 1,
+        "equalGroup": 3,
+        "style": "ARC"
+      },
+      {
+        "id": "a5",
+        "refs": [
+          "I",
+          "C",
+          "F"
+        ],
+        "value": 30,
+        "noLabel": true,
+        "arcs": 3,
+        "ring": 1,
+        "equalGroup": 3,
+        "style": "ARC"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 460,
+    "height": 420
+  },
+  "caption": "내심 I에서 세 변에 내린 수선의 발이 D, E, F이므로 ID, IE, IF는 내접원의 반지름으로 같다. IA, IB, IC가 세 내각을 이등분하므로 삼각형 IAD와 IAF, IBD와 IBE, ICE와 ICF가 각각 합동이고 각 IBD와 각 IBE도 같다. 그러나 삼각형 IAF와 ICF는 AF와 CF가 일반적으로 같지 않아 합동이 아니며, IA, IB, IC가 모두 같은 것은 외심의 성질이지 내심의 성질이 아니다. 따라서 답은 ②, ④이다.",
+  "accessibilityDescription": "삼각형 ABC 안에 내심 I가 있고 I에서 세 변에 내린 수선의 발 D, E, F가 있으며, D, E, F에 직각 표시가 있다. ID, IE, IF와 AD와 FA, DB와 BE에 각각 같은 길이 표시가 있고, 세 꼭짓각이 이등분된 호와 20도, 40도, 30도가 적혀 있다.",
+  "newVisualInformation": [
+    "내심과 세 변의 수선의 발",
+    "내접원 반지름 ID, IE, IF의 같은 길이 표시",
+    "세 내각의 이등분 표시와 20도, 40도, 30도",
+    "접선 길이 AD와 AF, DB와 BE의 같음 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>7. 오른쪽 그림에서 점 $\\text{I}$는 $\\triangle\\text{ABC}$의 내심이다. 다음 중에서 옳지 않은 것은? (정답 2개) [4점]</p><p><img src=\"assets/images/20_왕의중_2학기_중간_중2_수학/q07.png\" alt=\"삼각형 ABC의 내심 I에서 세 변에 내린 수선의 발 D, E, F를 나타낸 그림\" /></p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

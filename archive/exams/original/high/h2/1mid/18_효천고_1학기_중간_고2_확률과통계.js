@@ -56,7 +56,11 @@ window.questionBank = [
       "sourceIntakeEvidencePath": "archive/analysis/source-only-h2-1mid-20261011-b5/18_효천고_1학기_중간_고2_확률과통계.evidence.json",
       "sourceIntakeEvidenceSha256": "65ED7AA52ED8966A49A22BDD10A0ED76D0EE69B0BDE236F1D1FB25871F283DEE",
       "sourcePdfSha256": "9e5ed63b6a9dd3a6850edc1c28fe734f326e287b4e549bec08c346128735ce81"
-    }
+    },
+    "solutionImage": "assets/images/18_효천고_1학기_중간_고2_확률과통계/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 주사위를 던질 때 나오는 눈의 경우를 표로 나타낸 그림이다.",
+    "solutionImageCaption": "크기가 다른 두 주사위의 눈 (a, b)를 가로세로로 놓은 6×6 표에서 합이 5 또는 7인 칸을 칠했다. 합이 5인 칸은 (1, 4), (2, 3), (3, 2), (4, 1)의 4칸이고 합이 7인 칸은 (1, 6), (2, 5), (3, 4), (4, 3), (5, 2), (6, 1)의 6칸이다. 두 경우는 겹치지 않으므로 4+6=10이고 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,

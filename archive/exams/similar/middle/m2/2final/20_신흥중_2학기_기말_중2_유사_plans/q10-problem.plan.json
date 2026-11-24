@@ -1,0 +1,257 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "43",
+              "denominator": "26"
+            },
+            {
+              "kind": "rational",
+              "numerator": "947",
+              "denominator": "520"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "503",
+              "denominator": "26"
+            },
+            {
+              "kind": "rational",
+              "numerator": "947",
+              "denominator": "520"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "187",
+              "denominator": "20"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3653",
+              "denominator": "400"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "13"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "13"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "I",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "125",
+              "denominator": "13"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "I"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sDB",
+      "refs": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "sEA",
+      "refs": [
+        "E",
+        "A"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sBI",
+      "refs": [
+        "B",
+        "I"
+      ]
+    },
+    {
+      "id": "sIC",
+      "refs": [
+        "I",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "parallels": [
+      {
+        "id": "p1",
+        "count": 1,
+        "segments": [
+          "sDE",
+          "sBC"
+        ]
+      }
+    ],
+    "segmentColors": [
+      {
+        "segments": [
+          "sDE"
+        ],
+        "color": "BLUE"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "a",
+        "ownerSegment": "sAD",
+        "text": "6",
+        "unit": "cm"
+      },
+      {
+        "id": "b",
+        "ownerSegment": "sEA",
+        "text": "7",
+        "unit": "cm"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 360
+  },
+  "caption": "삼각형 ABC의 내심 I를 지나고 변 BC에 평행한 직선이 두 변 AB, AC와 만나는 점이 각각 D, E이다. AD는 6 cm, AE는 7 cm이고 삼각형 ADE의 둘레는 23 cm이다.",
+  "accessibilityDescription": "삼각형 ABC 안에 내심 I가 있고, I를 지나 BC에 평행한 선분 DE가 AB와 AC에 닿는다. AD와 AE의 길이가 표시되어 있다.",
+  "newVisualInformation": [
+    "내심 I를 지나 BC에 평행한 선분 DE가 그려져 있다.",
+    "AD 6 cm와 AE 7 cm가 표시되어 있다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "삼각형 $ABC$에서 점 $I$가 삼각형 $ABC$의 내심이다. 점 $I$를 지나고 변 $BC$에 평행한 직선과 두 변 $AB, AC$의 교점을 각각 $D, E$라 하자. $\\overline{AD} = 6\\text{ cm}, \\overline{AE} = 7\\text{ cm}$이고, 삼각형 $ADE$의 둘레의 길이가 $23\\text{ cm}$일 때, $\\overline{BD} + \\overline{EC}$의 값은? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

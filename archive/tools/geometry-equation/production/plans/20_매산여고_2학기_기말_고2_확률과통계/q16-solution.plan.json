@@ -1,0 +1,59 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "NORMAL_CURVE",
+    "curves": [
+      {
+        "id": "A",
+        "mean": "0",
+        "sd": "1",
+        "label": "n1"
+      },
+      {
+        "id": "B",
+        "mean": "0",
+        "sd": "2",
+        "label": "n2"
+      }
+    ],
+    "ticks": [
+      "-3.92",
+      "-1.96",
+      "0",
+      "1.96",
+      "3.92"
+    ],
+    "shades": [
+      {
+        "curve": "A",
+        "from": "-1.96",
+        "to": "1.96",
+        "color": "BLUE"
+      },
+      {
+        "curve": "B",
+        "from": "-3.92",
+        "to": "3.92",
+        "color": "WARM"
+      }
+    ],
+    "xLabel": "x"
+  },
+  "caption": "95% 신뢰구간의 길이는 3.92σ/√n이므로 l = 3.92σ/√n1, 2l = 3.92σ/√n2에서 l = 1.96σ/√n2이다. 따라서 A = 3.92, B = 1.96이고, 두 식을 같게 놓으면 n1 = 4n2이므로 C = 1/4이다. 200(AC + BC) = 200 × (3.92 + 1.96) × 1/4 = 50 × 5.88 = 294이다. 따라서 답은 ④이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "16. 정규분포 $N(m, \\sigma^2)$을 따르는 모집단에서 크기가 $n_1$, $n_2$인 표본을 임의추출하여 신뢰도 $95\\%$로 추정한 모평균 $m$의 신뢰구간의 길이가 각각 $l$, $2l$ 이라고 할 때, 다음 &lt;설명&gt;을 만족하는 $A, B, C$ 를 구하여 $200(AC+BC)$의 값을 구하면? (단, $P(|Z| \\le 1.96)=0.95$, $P(|Z| \\le 2.58)=0.99$) [4.2점]<br><br>(설명) $l=A \\times \\frac{\\sigma}{\\sqrt{n_1}}$ 이고, $l=B \\times \\frac{\\sigma}{\\sqrt{n_2}}$ 이므로<br>두 식에서 $\\frac{n_2}{n_1}$의 값은 $C$ 이다.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "신뢰도 95%에서 임계값 1.96, 두 신뢰구간의 길이 l과 2l",
+      "mappedTo": "chart.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "가로축이 표준화된 값인 두 정규분포 곡선을 겹쳐 그린다.",
+    "표준편차가 1인 곡선의 95% 구간과 표준편차가 2인 곡선의 95% 구간을 서로 다른 색으로 칠해 길이가 두 배임을 보인다."
+  ]
+}

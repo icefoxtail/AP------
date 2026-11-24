@@ -138,7 +138,11 @@ window.questionBank = [
       "archive/exams/original/middle/m2/1final/25_연향중_1학기_기말_중2_기출.js",
       "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
       "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
-    ]
+    ],
+    "solutionImage": "assets/images/25_연향중_1학기_기말_중2_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "음이 아닌 정수해만 표시한다. (8,0),(5,2),(2,4) 세 점이며 y0도 허용한다. 선 전체가 정수해 집합이라는 뜻은 아니다. 정답 3개.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -206,7 +210,11 @@ window.questionBank = [
       "archive/exams/original/middle/m2/1final/25_연향중_1학기_기말_중2_기출.js",
       "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
       "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
-    ]
+    ],
+    "solutionImage": "assets/images/25_연향중_1학기_기말_중2_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 서로 다른 색의 두 직선이 한 점에서 만나고, 교점의 좌표가 숫자로 표시되어 있다.",
+    "solutionImageCaption": "두 식을 각각 y에 대하여 정리하면 y=x/3+7/3, y=-2x+7이다. 첫째 식을 둘째 식에 대입하면 7y=21이므로 y=3이고, x=2이다. 두 직선의 교점 (2, 3)이 연립방정식의 해임을 그림에서 확인할 수 있다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -275,7 +283,11 @@ window.questionBank = [
       "archive/exams/original/middle/m2/1final/25_연향중_1학기_기말_중2_기출.js",
       "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
       "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
-    ]
+    ],
+    "solutionImage": "assets/images/25_연향중_1학기_기말_중2_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "분모를 없앤 4x−y16과 x+y−6의 교점(2,−8). 가감법 5x10→x2,y−8. a−b=2−(−8)=10. 정답⑤.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -344,7 +356,11 @@ window.questionBank = [
       "archive/exams/original/middle/m2/1final/25_연향중_1학기_기말_중2_기출.js",
       "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
       "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
-    ]
+    ],
+    "solutionImage": "assets/images/25_연향중_1학기_기말_중2_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "두 점(3,4),(−2,−6)의 기울기는 2이고 y절편 −2이다. 직선 y=2x−2와 ax+by=5를 비교하면 a5,b−5/2. ab=−25/2,정답①.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -414,7 +430,11 @@ window.questionBank = [
       "archive/exams/original/middle/m2/1final/25_연향중_1학기_기말_중2_기출.js",
       "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
       "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
-    ]
+    ],
+    "solutionImage": "assets/images/25_연향중_1학기_기말_중2_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "x는 작년 남학생,y는 작년 여학생. 전체 x+y360과 순증가 0.10x−0.05y6에서 2x−y120. 교점(160,200)을 얻은 뒤 올해 남학생 1.1·160=176명. 선은 조건의 보조연장이며 실제 인원은 비음수 정수다. 정답④.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -483,7 +503,11 @@ window.questionBank = [
       "archive/exams/original/middle/m2/1final/25_연향중_1학기_기말_중2_기출.js",
       "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
       "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
-    ]
+    ],
+    "solutionImage": "assets/images/25_연향중_1학기_기말_중2_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "두 조건의 교점(6,4)을 x+ay2에 대입해 6+4a2,a−1. 정답②.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -555,7 +579,11 @@ window.questionBank = [
       "archive/exams/original/middle/m2/1final/25_연향중_1학기_기말_중2_기출.js",
       "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
       "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
-    ]
+    ],
+    "solutionImage": "assets/images/25_연향중_1학기_기말_중2_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축과 세로축이 있는 그래프에 서로 다른 색의 두 직선이 한 점에서 만나고, 교점의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "5% 소금물 x그램과 10% 소금물 y그램을 섞으면 전체 양은 500그램이므로 x+y=500이다. 소금의 양은 변하지 않으므로 (5/100)x+(10/100)y=500×(8/100)=40이다. 두 식을 풀면 x=200, y=300이다. ㉢에는 8/100이 아니라 40이 들어가야 하므로 답은 ③이다.",
+    "solutionImageSize": "full"
   },
 {
     "id": 9,
@@ -624,7 +652,11 @@ window.questionBank = [
       "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
       "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
     ],
-    "semanticBoundaryReason": "GENERAL_FUNCTION_VS_LINEAR_FUNCTION_SCOPE_BOUNDARY: do not project general function judgment onto M2-RPM-165."
+    "semanticBoundaryReason": "GENERAL_FUNCTION_VS_LINEAR_FUNCTION_SCOPE_BOUNDARY: do not project general function judgment onto M2-RPM-165.",
+    "solutionImage": "assets/images/25_연향중_1학기_기말_중2_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 집합의 원소 사이의 대응 관계를 화살표로 나타낸 그림이다.",
+    "solutionImageCaption": "x2를 고정해도 2와 12의 공배수 12,24,36,…으로 y가 여러 값이다. 오른쪽은 무한히 많은 공배수의 일부만 그렸다. 따라서③은 함수가 아니다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -693,7 +725,12 @@ window.questionBank = [
       "archive/exams/original/middle/m2/1final/25_연향중_1학기_기말_중2_기출.js",
       "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
       "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
-    ]
+    ],
+    "solutionImage": "assets/images/25_연향중_1학기_기말_중2_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "f(a)=−11은 직선 위 함숫값 −11인 점의 가로좌표를 찾는 것이다. (−2,−11)에서 a−2. 정답①.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 11,
@@ -761,7 +798,11 @@ window.questionBank = [
       "archive/exams/original/middle/m2/1final/25_연향중_1학기_기말_중2_기출.js",
       "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
       "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
-    ]
+    ],
+    "solutionImage": "assets/images/25_연향중_1학기_기말_중2_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "③을 정리하면 y6x+1로 기울기 6인 일차함수. ⑤는 y10인 수평선으로 상수함수라 일차함수가 아니다. ①은이차,②/④는분모에 x가 있는 유리함수이다. 정답③.",
+    "solutionImageSize": "full"
   },
 {
     "id": 12,
@@ -830,7 +871,11 @@ window.questionBank = [
       "archive/exams/original/middle/m2/1final/25_연향중_1학기_기말_중2_기출.js",
       "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
       "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
-    ]
+    ],
+    "solutionImage": "assets/images/25_연향중_1학기_기말_중2_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "원래 직선을 아래로 4 옮기면 y2x+k−4. 이동후(−1,2)이므로 k8. 원래점(−1,6)이 이동후(−1,2)로 내려간다. 정답⑤.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -1045,7 +1090,11 @@ window.questionBank = [
       "archive/exams/original/middle/m2/1final/25_연향중_1학기_기말_중2_기출.js",
       "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
       "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
-    ]
+    ],
+    "solutionImage": "assets/images/25_연향중_1학기_기말_중2_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "두 주어진 점에서 기울기 2,절편 4이다. 일반점(p,2q)를 대입하면 2q2p+4→q=p+2→p−q=−2. 정답②.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -1115,7 +1164,11 @@ window.questionBank = [
       "archive/exams/original/middle/m2/1final/25_연향중_1학기_기말_중2_기출.js",
       "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
       "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
-    ]
+    ],
+    "solutionImage": "assets/images/25_연향중_1학기_기말_중2_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "평행한 두 직선의 기울기는 4이므로 a4. (k,10)을 y4x+2에 대입해 k2. 따라서 a−k2,정답③.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 17,
@@ -1182,7 +1235,11 @@ window.questionBank = [
       "archive/exams/original/middle/m2/1final/25_연향중_1학기_기말_중2_기출.js",
       "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
       "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
-    ]
+    ],
+    "solutionImage": "assets/images/25_연향중_1학기_기말_중2_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "ab<0이라 부호는 반대이고 a−b>0에서 a>0,b<0이다. 그림은 a1,b−1로 택한 부호 대표형이며 실제계수를 정하지 않는다. 증가하면서 세로축의 원점 아래를 지나는②.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -1327,7 +1384,11 @@ window.questionBank = [
       "archive/exams/original/middle/m2/1final/25_연향중_1학기_기말_중2_기출.js",
       "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
       "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
-    ]
+    ],
+    "solutionImage": "assets/images/25_연향중_1학기_기말_중2_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "주어진 두 점(−2,4),(3,14)에서 기울기 a2. y절편 c8,x절편 b−4이므로 a+b+c6. 두 절편과 원문 두 점을 모두 표시한다. 정답⑤.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -1397,7 +1458,12 @@ window.questionBank = [
       "archive/exams/original/middle/m2/1final/25_연향중_1학기_기말_중2_기출.js",
       "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
       "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
-    ]
+    ],
+    "solutionImage": "assets/images/25_연향중_1학기_기말_중2_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "문제에서 정한 일정 감소 모형에서 20분동안 50°C 감소하므로 기울기 −5/2. y=100−5x/2에 y20을 대입하면 x32분. 0~32분의 필요한 구간만 나타낸다. 정답④.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 21,
@@ -1461,7 +1527,11 @@ window.questionBank = [
     "rpmPrimaryId": "M2-RPM-157",
     "rpmL1": "연립일차방정식",
     "rpmL2": "연립일차방정식의 활용",
-    "courseKey": "M2-1"
+    "courseKey": "M2-1",
+    "solutionImage": "assets/images/25_연향중_1학기_기말_중2_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "가로 x는 처음 주문한 복숭아,세로 y는 포도 수. 총 10개와 금액차 700(x−y)=1400에서 두 조건 x+y10,x−y2의 교점(6,4). 실제개수는 비음수정수. 처음 복숭아 6개가 답이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -1525,7 +1595,11 @@ window.questionBank = [
       "archive/exams/original/middle/m2/1final/25_연향중_1학기_기말_중2_기출.js",
       "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
       "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
-    ]
+    ],
+    "solutionImage": "assets/images/25_연향중_1학기_기말_중2_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "겹친 그래프는 y−3x−5이다. 첫식의절편 1에서 −5로 이동하므로 p−6. 기울기 −3=3a에서 a−1. a−p5. 원래 첫직선과 겹친 직선의 세로이동을 비교한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,

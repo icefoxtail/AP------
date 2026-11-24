@@ -82,7 +82,7 @@ test('E32 regions: plan errors for the name, the unit, the value, the placement 
   const model=await modelOf(rhombus);
   const err=extra=>specError(rhombusPlan({...REGION_LEADER,...extra}),model);
   assert.equal(err({labelName:'△A=BC'}),'REGION_LABEL_NAME_INVALID:rABC');
-  assert.equal(err({unit:'km'}),'MARK_UNIT_INVALID:regions:rABC');
+  assert.equal(err({unit:'furlong'}),'MARK_UNIT_INVALID:regions:rABC');
   assert.equal(err({label:'1/2'}),'REGION_LABEL_VALUE_UNSUPPORTED:rABC');
   assert.equal(err({labelPlacement:'OUTSIDE'}),'REGION_LABEL_PLACEMENT_INVALID:rABC');
   assert.equal(err({labelKind:'MATH'}),'REGION_LABEL_NAME_REQUIRES_TEXT:rABC');

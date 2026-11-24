@@ -1,0 +1,74 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-3"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-3",
+        "4"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      -3,
+      4
+    ],
+    "viewport": [
+      -4,
+      5,
+      -13,
+      10
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "-2",
+          "y": "6",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P",
+          "x": "3",
+          "y": "-9"
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "P": "P"
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "일차함수 y=ax의 그래프가 점 (-2, 6)과 x좌표가 3인 점 P를 지나고, P의 y좌표를 p라 한다.",
+  "accessibilityDescription": "원점을 지나 오른쪽 아래로 내려가는 직선이 점 (-2, 6)과 x좌표가 3인 점 P를 지난다.",
+  "newVisualInformation": [
+    "원점을 지나는 직선",
+    "직선 위의 점 (-2, 6)",
+    "x좌표가 3인 직선 위의 점 P"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차함수 $y=ax$의 그래프가 두 점 $(-2, 6)$, $(3, p)$를 지날 때, 수 $p$의 값은? (단, $a$는 수)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -209,6 +209,11 @@ class PolygonLabel(unittest.TestCase):
 
     def label_svg(self,plan,model,x,y,width=14,height=16,owner='overlay-polygon-R',ident='overlay-polygon-R-label'):
         root=ET.fromstring(model['svg'])
+        # A figure that carries labels is a composed one: the composer gives the region its palette tint, which the observer then reads back.
+        from graph_observer import GRAPH_REGION_FILLS
+        for polygon in plan['overlaysFeatures']['polygons']:
+            tint=root.find(f'.//*[@id="overlay-polygon-{polygon["id"]}-fill"]')
+            if tint is not None and polygon['fill'] in GRAPH_REGION_FILLS:tint.set('fill',GRAPH_REGION_FILLS[polygon['fill']])
         group=ET.SubElement(root,SVG+'g',{'id':ident,'data-label-kind':'EQUATION_LABEL','data-owner':owner,'transform':f'translate({x} {y})'})
         ET.SubElement(ET.SubElement(group,SVG+'svg',{'width':str(width),'height':str(height)}),SVG+'path',{'d':'M0 0'})
         return ET.tostring(root,encoding='unicode')

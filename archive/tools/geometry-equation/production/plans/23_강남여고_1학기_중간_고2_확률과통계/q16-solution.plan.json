@@ -1,0 +1,53 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "universe": {
+      "name": "U",
+      "count": "6",
+      "countUnit": "개"
+    },
+    "sets": [
+      {
+        "id": "A",
+        "name": "A"
+      },
+      {
+        "id": "B",
+        "name": "B"
+      }
+    ],
+    "elements": [
+      {
+        "text": "2개",
+        "in": [
+          "B"
+        ]
+      }
+    ],
+    "shade": "A",
+    "subset": [
+      "A",
+      "B"
+    ]
+  },
+  "caption": "A∩B=A이므로 A는 B의 부분집합이고, B−A의 원소는 2개이다. B−A의 원소 2개를 고르는 경우는 6개에서 2개를 고르는 것과 같아 15가지이다. 나머지 4개 원소는 각각 A에 넣거나 B 밖에 둘 수 있고, A가 공집합인 경우를 빼면 2⁴−1가지이다. 따라서 15×(2⁴−1)=225이므로 답은 ⑤이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "전체집합 $U=\\{1, 2, 3, 4, 5, 6\\}$의 공집합이 아닌 두 부분집합 $A$, $B$에 대하여 $A \\cap B = A$, $n(B - A)=2$를 만족시키는 집합 $A$, $B$의 모든 순서쌍 $(A, B)$의 개수는? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "A는 B의 부분집합이고 B−A의 원소는 2개",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "전체집합 U의 원소 6개를 나타내는 바깥 상자",
+    "A가 B 안에 들어간 포함관계",
+    "B−A 영역에 2개 표시",
+    "A 영역 색칠"
+  ]
+}

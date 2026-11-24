@@ -93,7 +93,11 @@ window.examData = {
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "일차방정식 그래프의 기울기·절편·사분면 판정",
-    "decisiveStep": "y=-2x/3+4로 고쳐 기울기와 두 절편에서 사분면·증감을 판정한다."
+    "decisiveStep": "y=-2x/3+4로 고쳐 기울기와 두 절편에서 사분면·증감을 판정한다.",
+    "solutionImage": "assets/images/18_동산중_2학기_중간_중2_수학/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 오른쪽 아래로 향하는 직선이 x축과 (6,0)에서, y축과 (0,4)에서 만나고 두 점의 좌표가 표시되어 있다. 직선은 제3사분면을 지나지 않는다.",
+    "solutionImageCaption": "2x+3y−12=0은 y=−(2/3)x+4이다. 기울기는 −2/3이고 x절편은 6, y절편은 4이다. 기울기가 음수이고 y절편이 양수이므로 오른쪽 아래로 향하며 제1, 2, 4사분면을 지나고 제3사분면을 지나지 않는다. 따라서 옳은 것은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -140,7 +144,11 @@ window.examData = {
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "그래프에서 기울기·절편을 읽어 계수 부호 역추론",
-    "decisiveStep": "우상향과 음의 y절편을 읽고 y=ax-b에서 -b의 부호를 b의 부호로 바꾼다."
+    "decisiveStep": "우상향과 음의 y절편을 읽고 y=ax-b에서 -b의 부호를 b의 부호로 바꾼다.",
+    "solutionImage": "assets/images/18_동산중_2학기_중간_중2_수학/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 오른쪽 위로 향하는 직선이 y축의 음의 부분 점 (0,−2)에서 만나고 점의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "예: a=1, b=2로 그렸다. y−ax+b=0은 y=ax−b이다. 그래프가 오른쪽 위로 향하므로 기울기 a>0이고 y축의 음의 부분과 만나므로 y절편 −b<0에서 b>0이다. 따라서 a>0, b>0이고 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -189,7 +197,11 @@ window.examData = {
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "함수 교점 좌표에서 수직 밑변과 높이 계산",
-    "decisiveStep": "x=0과 x=3을 대입해 A·B·C를 구하고 BC의 y좌표 차와 A에서 x=3까지의 거리를 쓴다."
+    "decisiveStep": "x=0과 x=3을 대입해 A·B·C를 구하고 BC의 y좌표 차와 A에서 x=3까지의 거리를 쓴다.",
+    "solutionImage": "assets/images/18_동산중_2학기_중간_중2_수학/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 평행한 두 직선 y=x와 y=x+6이 있고 수직선 x=3과 만나는 점 B(3,3), C(3,9)와 y절편의 점 A(0,6)이 삼각형을 이루며 좌표가 표시되어 있다.",
+    "solutionImageCaption": "직선 y=x+6과 y축의 교점은 A(0,6)이다. x=3인 직선과 y=x의 교점은 B(3,3), y=x+6의 교점은 C(3,9)이다. 선분 BC는 x=3 위에 있어 길이가 9−3=6이다. A에서 직선 x=3까지의 거리 3이 삼각형의 높이이므로 넓이는 (1/2)×6×3=9이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -380,7 +392,11 @@ window.examData = {
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "제비뽑기 좌석의 유리한 개수 비",
-    "decisiveStep": "실제 그림에 남은 뒷좌석 다섯 윤곽을 세고 본문의 전체 45석과 비를 구한다."
+    "decisiveStep": "실제 그림에 남은 뒷좌석 다섯 윤곽을 세고 본문의 전체 45석과 비를 구한다.",
+    "solutionImage": "assets/images/18_동산중_2학기_중간_중2_수학/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 버스 좌석 배치를 위에서 본 그림으로, 왼쪽의 40석 구역은 세로줄 10개와 가로 칸으로 나뉜 격자이며 오른쪽 끝의 파란 띠에 다섯 칸이 나란히 붙어 있다. 각 구역의 오른쪽과 아래, 위쪽에 좌석 수를 적은 치수선이 있다.",
+    "solutionImageCaption": "45인승 관광버스는 통로 양옆으로 2석씩 10줄에 40석, 가장 뒷줄에 5석을 두어 모두 45석이다. 해현이가 가장 뒷줄에 앉을 확률은 가장 뒷줄 좌석 수 5를 전체 좌석 수 45로 나눈 값이다. 5/45를 약분하면 1/9이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -509,7 +525,11 @@ window.examData = {
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "두 이등변삼각형의 밑각을 구한 후 차",
-    "decisiveStep": "큰 삼각형의 밑각과 DAB의 밑각을 구해 같은 꼭짓점에서 그 차를 취한다."
+    "decisiveStep": "큰 삼각형의 밑각과 DAB의 밑각을 구해 같은 꼭짓점에서 그 차를 취한다.",
+    "solutionImage": "assets/images/18_동산중_2학기_중간_중2_수학/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 이등변삼각형 ABC의 변 AC 위에 점 D가 있고 선분 BD가 그어져 있다. AD와 BD에 같은 눈금이 있고 각 A와 각 ABD에 50°, 각 DBC에 x=15°가 표시되어 있다.",
+    "solutionImageCaption": "AB=AC이고 ∠A=50°이므로 ∠ABC=(180°−50°)/2=65°이다. DA=DB이므로 ∠ABD=∠A=50°이다. 따라서 x=∠DBC=∠ABC−∠ABD=65°−50°=15°이다. 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -559,7 +579,11 @@ window.examData = {
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "이등변 밑각에서 외각·평각을 연결",
-    "decisiveStep": "ABC의 두 밑각 x로 CAD=2x를 만들고 ACD의 같은 밑각과 외각112를 평각에 넣는다."
+    "decisiveStep": "ABC의 두 밑각 x로 CAD=2x를 만들고 ACD의 같은 밑각과 외각112를 평각에 넣는다.",
+    "solutionImage": "assets/images/18_동산중_2학기_중간_중2_수학/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 한 직선 위에 B, A, D, E가 차례로 있고 점 C에서 A, B, D로 선분이 그어져 있다. AB, AC, CD에 같은 눈금이 있고 각 CDE에 112°, 각 B에 x=34°가 표시되어 있다.",
+    "solutionImageCaption": "B, A, D, E는 한 직선 위에 있다. ∠CDE=112°이므로 ∠ADC=180°−112°=68°이다. AC=CD이므로 ∠CAD=∠CDA=68°이고 ∠BAC=180°−68°=112°이다. AB=AC이므로 △ABC에서 x=∠B=(180°−112°)/2=34°이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -636,7 +660,11 @@ window.examData = {
     "answer": "②",
     "solution": "<p>조건: $\\angle\\text{C}=90^\\circ$인 직각삼각형 $\\text{ABC}$에서 점 $\\text{E}$는 변 $\\text{AC}$ 위의 점이고, $\\overline{\\text{ED}} \\perp \\overline{\\text{AB}}$, $\\overline{\\text{ED}}=\\overline{\\text{EC}}$입니다. $\\angle\\text{A}=54^\\circ$입니다.<br/>구할 대상: $\\angle x$($\\angle\\text{BEC}$)의 크기를 구합니다.</p><p>1) $\\triangle\\text{EBD}$와 $\\triangle\\text{EBC}$에서 $\\angle\\text{EDB}=\\angle\\text{ECB}=90^\\circ$, 빗변 $\\overline{\\text{EB}}$는 공통, $\\overline{\\text{ED}}=\\overline{\\text{EC}}$이므로 $\\text{RHS}$ 합동입니다.<br/>2) 직각삼각형 $\\text{ABC}$에서 $\\angle\\text{B} = 90^\\circ - 54^\\circ = 36^\\circ$임을 이용하여 합동인 두 삼각형의 대응각 $\\angle\\text{EBC}$를 구합니다.<br/>3) 직각삼각형 $\\text{EBC}$에서 $\\angle x$를 구합니다.</p><p>직각삼각형 $\\text{ABC}$에서 두 예각의 합은 $90^\\circ$이므로:<br/>$$\\angle\\text{B} = 90^\\circ - \\angle\\text{A} = 90^\\circ - 54^\\circ = 36^\\circ$$<br/>$\\triangle\\text{EBD}$와 $\\triangle\\text{EBC}$에서:<br/>$$\\angle\\text{EDB} = \\angle\\text{ECB} = 90^\\circ, \\quad \\overline{\\text{EB}}\\text{는 공통}, \\quad \\overline{\\text{ED}} = \\overline{\\text{EC}}$$<br/>따라서 $\\text{RHS}$ 합동에 의해:<br/>$$\\triangle\\text{EBD} \\equiv \\triangle\\text{EBC}$$<br/>대응각의 크기가 같으므로 선분 $\\overline{\\text{BE}}$는 $\\angle\\text{B}$의 이등분선입니다:<br/>$$\\angle\\text{EBC} = \\frac{1}{2}\\angle\\text{B} = \\frac{1}{2} \\times 36^\\circ = 18^\\circ$$<br/>이제 직각삼각형 $\\text{EBC}$에서 세 내각의 합은 $180^\\circ$이므로:<br/>$$\\angle x = \\angle\\text{BEC} = 90^\\circ - \\angle\\text{EBC} = 90^\\circ - 18^\\circ = 72^\\circ$$</p><p>① $70^\\circ$: 거짓<br/>② $72^\\circ$: 참 (계산 결과와 일치)<br/>③ $74^\\circ$: 거짓<br/>④ $76^\\circ$: 거짓<br/>⑤ $80^\\circ$: 거짓</p><p>따라서 정답은 ②입니다.</p>",
     "image": "assets/images/18_동산중_2학기_중간_중2_수학/q14.png",
-    "accessibility": "각 C가 90도인 직각삼각형 ABC에서 선분 ED는 EC이고 ED가 AB에 수직일 때 각 A가 54도인 상태에서 각 x의 크기를 구하는 기하 도형"
+    "accessibility": "각 C가 90도인 직각삼각형 ABC에서 선분 ED는 EC이고 ED가 AB에 수직일 때 각 A가 54도인 상태에서 각 x의 크기를 구하는 기하 도형",
+    "solutionImage": "assets/images/18_동산중_2학기_중간_중2_수학/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 꼭짓점 C에서 직각인 직각삼각형 ABC의 변 AC 위의 점 E에서 빗변 AB로 수선 ED가 내려져 있고 B에서 E로 선분이 그어져 있다. C와 D에 직각 표시가 있고 ED와 EC에 같은 눈금이 있으며 각 A 54°, 각 BEC x=72°가 표시되어 있다.",
+    "solutionImageCaption": "ED=EC이고 ED⊥AB이므로 BE는 ∠B의 이등분선이다(△BDE≡△BCE, RHS 합동). ∠A=54°이므로 ∠B=90°−54°=36°이고 ∠EBC=18°이다. △EBC에서 x=∠BEC=90°−18°=72°이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -735,7 +763,11 @@ window.examData = {
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "빗변의 중점을 외심으로 해석한 후 외각 계산",
-    "decisiveStep": "빗변 중점 M에서 세 꼭짓점까지 거리가 같아 MAB의 밑각을 얻고 AMC를 외각의 합으로 구한다."
+    "decisiveStep": "빗변 중점 M에서 세 꼭짓점까지 거리가 같아 MAB의 밑각을 얻고 AMC를 외각의 합으로 구한다.",
+    "solutionImage": "assets/images/18_동산중_2학기_중간_중2_수학/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 꼭짓점 A에서 직각인 직각삼각형 ABC의 빗변 BC의 중점 M에서 A로 선분이 그어져 있다. MA, MB, MC에 같은 눈금이 있고 각 ABM 42°, 각 AMC x=84°가 표시되어 있다.",
+    "solutionImageCaption": "직각삼각형의 외심은 빗변의 중점이므로 MA=MB=MC이다. △MAB에서 MA=MB이므로 ∠MAB=∠B=42°이다. ∠AMC는 △MAB의 외각이므로 x=∠AMC=42°+42°=84°이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -783,7 +815,11 @@ window.examData = {
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "외심각에서 반지름 이등변의 밑각",
-    "decisiveStep": "중심각을 C의 두 배로 구한 뒤 OA=OB인 삼각형의 밑각을 계산한다."
+    "decisiveStep": "중심각을 C의 두 배로 구한 뒤 OA=OB인 삼각형의 밑각을 계산한다.",
+    "solutionImage": "assets/images/18_동산중_2학기_중간_중2_수학/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 안쪽에 외심 O가 있고 O에서 A와 B로 선분이 그어져 있다. OA와 OB에 같은 눈금이 있고 각 ACB 58°, 각 BAO 32°가 표시되어 있다.",
+    "solutionImageCaption": "외심의 중심각 성질에 의해 ∠AOB=2∠ACB=2×58°=116°이다. OA=OB이므로 △OAB는 이등변삼각형이고 ∠BAO=(180°−116°)/2=32°이다. 따라서 답은 ②이다. 그림은 ∠A=70°, ∠B=52°인 예이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -831,7 +867,11 @@ window.examData = {
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "내심의 반각을 전체 내각으로 환산",
-    "decisiveStep": "두 주어진 반각을 각각 두 배로 한 뒤 삼각형 내각합에서 뺀다."
+    "decisiveStep": "두 주어진 반각을 각각 두 배로 한 뒤 삼각형 내각합에서 뺀다.",
+    "solutionImage": "assets/images/18_동산중_2학기_중간_중2_수학/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 안쪽에 내심 I가 있고 I에서 세 꼭짓점으로 선분이 그어져 있다. 각 IBC 28°, 각 ICB 32°, 꼭짓점 A의 각 60°가 표시되어 있다.",
+    "solutionImageCaption": "내심 I는 세 내각의 이등분선의 교점이므로 ∠B=2∠IBC=56°, ∠C=2∠ICB=64°이다. 삼각형의 내각의 합이 180°이므로 ∠A=180°−56°−64°=60°이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -975,7 +1015,11 @@ window.examData = {
     "subUnit": "삼각형의 성질",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "내접원 접선 조각을 옮겨 세 번째 변 계산",
-    "decisiveStep": "A의 같은 접선 길이를 두 변에서 빼고 B·C의 접선 조각을 BC로 옮겨 더한다."
+    "decisiveStep": "A의 같은 접선 길이를 두 변에서 빼고 B·C의 접선 조각을 BC로 옮겨 더한다.",
+    "solutionImage": "assets/images/18_동산중_2학기_중간_중2_수학/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 내접원이 세 변과 만나는 점 D, E, F와 내심 I가 있고 I에서 세 접점으로 수선이 내려져 있다. 접점에 직각 표시가 있고 같은 접선의 길이에 같은 눈금이 있으며 AD 2, BD 4, CE와 CF 3, BC 전체에 7이 적혀 있다.",
+    "solutionImageCaption": "내접원의 접선의 길이가 같으므로 AD=AF=2cm, BD=BE, CE=CF이다. AB=6cm이므로 BD=6−2=4cm이고 BE=4cm이다. AC=5cm이므로 CF=5−2=3cm이고 CE=3cm이다. 따라서 BC=BE+EC=4+3=7cm이고 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -1016,7 +1060,11 @@ window.examData = {
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "표의 두 측정점에서 일차함수식을 만들고 역대입",
-    "decisiveStep": "표의 증가량 비와 x=0일 때의 값을 기울기·절편으로 읽어 식을 만들고 주어진 출력에서 입력을 구한다."
+    "decisiveStep": "표의 증가량 비와 x=0일 때의 값을 기울기·절편으로 읽어 식을 만들고 주어진 출력에서 입력을 구한다.",
+    "solutionImage": "assets/images/18_동산중_2학기_중간_중2_수학/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축 x(회), 세로축 y(화씨)인 좌표평면에 측정점 다섯 개와 오른쪽 위의 점 P를 잇는 직선이 있다. 측정점들은 x가 커질수록 일정한 간격으로 높아진다.",
+    "solutionImageCaption": "x가 10 증가할 때 y는 2.5씩 일정하게 증가하므로 기울기는 2.5/10=1/4이다. x=0일 때 y=40이므로 관계식은 y=(1/4)x+40이다. y=60일 때 (1/4)x=20에서 x=80이다. 따라서 답은 (1) 1/4, (2) 40, (3) y=(1/4)x+40, (4) 80회이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -1106,7 +1154,12 @@ window.examData = {
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "외접반지름과 접선 조각으로 둘레를 만든 뒤 넓이",
-    "decisiveStep": "빗변을 지름으로 바꾸고 접선 조각의 합 및 직각 꼭짓점의 반지름을 이용해 둘레를 구하여 S=rs에 넣는다."
+    "decisiveStep": "빗변을 지름으로 바꾸고 접선 조각의 합 및 직각 꼭짓점의 반지름을 이용해 둘레를 구하여 S=rs에 넣는다.",
+    "solutionImage": "assets/images/18_동산중_2학기_중간_중2_수학/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 꼭짓점 B에서 직각인 직각삼각형 ABC에 내접원과 외접원이 함께 그려져 있다. 내심 I에서 세 변으로 수선이 내려져 있고 세 접점 D, E, F에 직각 표시가 있으며 반지름 2가 적혀 있고 같은 접선의 길이에 같은 눈금이 있다.",
+    "solutionImageCaption": "내접원의 접선의 길이가 같으므로 AD=AF, CE=CF이고 AD+EC=AF+FC=AC이다. 외접원의 반지름이 5cm이고 외심이 빗변 AC의 중점이므로 AC=10cm이다. (1) AD+EC=10cm이다. (2) BD=BE=r=2cm이므로 AB+BC=(AD+2)+(EC+2)=14cm이고 둘레는 14+10=24cm이다. (3) 넓이는 (1/2)×r×(둘레)=(1/2)×2×24=24cm²이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   }
 ]
 };

@@ -1,0 +1,50 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-4",
+          "-4/5"
+        ]
+      }
+    ],
+    "domain": [
+      -6,
+      1
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "-5",
+        "y": "0"
+      },
+      {
+        "id": "P1",
+        "x": "0",
+        "y": "-4"
+      }
+    ],
+    "formula": "-4*x/5 - 4"
+  },
+  "caption": "기존 두 절편(−5,0),(0,−4)를 보존. 기울기 −4/5에서 y=−4x/5−4, 정답③.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차함수의 그래프가 그림과 같을 때, 일차함수의 식을 구하시오. [4점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "기존 두 절편(−5,0),(0,−4)를 보존. 기울기−4/5에서 y=−4x/5−4, 정답③.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "기존 두 절편(−5,0),(0,−4)를 보존. 기울기−4/5에서 y=−4x/5−4, 정답③."
+  ]
+}

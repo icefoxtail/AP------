@@ -1,0 +1,50 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "6",
+          "-3/2"
+        ]
+      }
+    ],
+    "domain": [
+      -1,
+      5
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "0",
+        "y": "6"
+      },
+      {
+        "id": "P1",
+        "x": "4",
+        "y": "0"
+      }
+    ],
+    "formula": "6 - 3*x/2"
+  },
+  "caption": "y0일때 x4,x0일때 y6. 두 절편점(4,0),(0,6)을 표시한다. 정답 x절편 4/y절편 6.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형4] 일차함수 $y=-\\dfrac{3}{2}x+6$에서 $x$절편과 $y$절편을 각각 구하시오.",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "y0일때x4,x0일때y6. 두 절편점(4,0),(0,6)을 표시한다. 정답x절편4/y절편6.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "y0일때x4,x0일때y6. 두 절편점(4,0),(0,6)을 표시한다. 정답x절편4/y절편6."
+  ]
+}

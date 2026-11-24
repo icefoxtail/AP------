@@ -1,0 +1,289 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "경우 1"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "B"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "9"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "A",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "C",
+                "B"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "6"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "50"
+                },
+                "turn": "CW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "B",
+          "C",
+          "A"
+        ],
+        "displaySegments": [
+          {
+            "id": "AB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "BC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "CA",
+            "refs": [
+              "C",
+              "A"
+            ]
+          }
+        ],
+        "displayCircles": [],
+        "displayLines": [],
+        "planeMarks": {
+          "expressionLabels": [
+            {
+              "id": "vBC",
+              "ownerSegment": "BC",
+              "text": "9",
+              "factRole": "GIVEN"
+            }
+          ],
+          "angles": [
+            {
+              "id": "c",
+              "refs": [
+                "A",
+                "C",
+                "B"
+              ],
+              "value": 50,
+              "label": "50°",
+              "style": "ARC"
+            }
+          ]
+        },
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 320
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "경우 2"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "E",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "F",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "E"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "15"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "D",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "F",
+                "E"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "10"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "50"
+                },
+                "turn": "CW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "E",
+          "F",
+          "D"
+        ],
+        "displaySegments": [
+          {
+            "id": "DE",
+            "refs": [
+              "D",
+              "E"
+            ]
+          },
+          {
+            "id": "EF",
+            "refs": [
+              "E",
+              "F"
+            ]
+          },
+          {
+            "id": "FD",
+            "refs": [
+              "F",
+              "D"
+            ]
+          }
+        ],
+        "displayCircles": [],
+        "displayLines": [],
+        "planeMarks": {
+          "expressionLabels": [
+            {
+              "id": "vBC",
+              "ownerSegment": "EF",
+              "text": "15",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ],
+          "angles": [
+            {
+              "id": "c",
+              "refs": [
+                "D",
+                "F",
+                "E"
+              ],
+              "value": 50,
+              "label": "50°",
+              "style": "ARC"
+            }
+          ]
+        },
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 320
+        }
+      }
+    }
+  ],
+  "caption": "대응 A↔D, B↔E, C↔F. 길이비 3:5여서 BC9→EF15, 각 C=F50°이고 각의 비는 1:1. 잘못된 ③⑤. AC6인 대표형이며 원문이 AC 길이를 정한 것은 아니다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "아래 그림에서 $\\triangle ABC\\sim\\triangle DEF$이고 닮음비가 3:5일 때, 다음 중에서 옳지 않은 것을 모두 고르면? (정답 2개) [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "한 문항 한 장: 2개 그림을 패널로 합쳤다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "대응A↔D,B↔E,C↔F. 길이비3:5여서BC9→EF15,각C=F50°이고각의비는1:1. 잘못된③⑤. AC6인대표형이며원문이AC길이를정한것은아니다."
+  ]
+}

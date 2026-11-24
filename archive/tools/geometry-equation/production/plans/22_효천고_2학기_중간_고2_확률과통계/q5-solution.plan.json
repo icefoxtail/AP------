@@ -1,0 +1,322 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "S",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "60"
+            },
+            {
+              "kind": "integer",
+              "value": "260"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "180"
+            },
+            {
+              "kind": "integer",
+              "value": "360"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "180"
+            },
+            {
+              "kind": "integer",
+              "value": "160"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "UU",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "340"
+            },
+            {
+              "kind": "integer",
+              "value": "430"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "UD",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "340"
+            },
+            {
+              "kind": "integer",
+              "value": "330"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "DU",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "340"
+            },
+            {
+              "kind": "integer",
+              "value": "190"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "DD",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "340"
+            },
+            {
+              "kind": "integer",
+              "value": "90"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "S",
+    "U1",
+    "D1",
+    "UU",
+    "UD",
+    "DU",
+    "DD"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sSU",
+      "refs": [
+        "S",
+        "U1"
+      ]
+    },
+    {
+      "id": "sSD",
+      "refs": [
+        "S",
+        "D1"
+      ]
+    },
+    {
+      "id": "sUU",
+      "refs": [
+        "U1",
+        "UU"
+      ]
+    },
+    {
+      "id": "sUD",
+      "refs": [
+        "U1",
+        "UD"
+      ]
+    },
+    {
+      "id": "sDU",
+      "refs": [
+        "D1",
+        "DU"
+      ]
+    },
+    {
+      "id": "sDD",
+      "refs": [
+        "D1",
+        "DD"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "segmentColors": [
+      {
+        "segments": [
+          "sSU",
+          "sUU"
+        ],
+        "color": "BLUE"
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "tSU",
+        "at": [
+          105,
+          322
+        ],
+        "text": "앞"
+      },
+      {
+        "id": "tSD",
+        "at": [
+          105,
+          198
+        ],
+        "text": "뒤"
+      },
+      {
+        "id": "tUU",
+        "at": [
+          245,
+          405
+        ],
+        "text": "앞"
+      },
+      {
+        "id": "tUD",
+        "at": [
+          245,
+          335
+        ],
+        "text": "뒤"
+      },
+      {
+        "id": "tDU",
+        "at": [
+          245,
+          185
+        ],
+        "text": "앞"
+      },
+      {
+        "id": "tDD",
+        "at": [
+          245,
+          115
+        ],
+        "text": "뒤"
+      },
+      {
+        "id": "lUU",
+        "at": [
+          385,
+          430
+        ],
+        "text": "앞앞 = 1/4"
+      },
+      {
+        "id": "lUD",
+        "at": [
+          385,
+          330
+        ],
+        "text": "앞뒤 = 1/4"
+      },
+      {
+        "id": "lDU",
+        "at": [
+          385,
+          190
+        ],
+        "text": "뒤앞 = 1/4"
+      },
+      {
+        "id": "lDD",
+        "at": [
+          385,
+          90
+        ],
+        "text": "뒤뒤 = 1/4"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 520
+  },
+  "hiddenPointNames": [
+    "S",
+    "U1",
+    "D1",
+    "UU",
+    "UD",
+    "DU",
+    "DD"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "두 동전이 모두 앞면일 확률은 1/2 곱하기 1/2, 즉 1/4이다. 따라서 30번 반복할 때 모두 앞면이 나온 횟수는 이항분포 B(30,1/4)를 따른다. 보기의 B(30,1/2)는 틀리다. 따라서 답은 ②이다.",
+  "accessibilityDescription": "두 단계로 갈라지는 나뭇가지 그림이 있고, 각 가지에 앞과 뒤가 적혀 있으며, 네 끝에 앞앞, 앞뒤, 뒤앞, 뒤뒤와 각각 1/4가 보인다.",
+  "newVisualInformation": [
+    "두 동전의 앞뒤 경우를 나타내는 나뭇가지",
+    "앞앞이 나오는 경우에 1/4 표시",
+    "네 가지 경우가 모두 1/4"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "5. 다음 내용 중 틀린 것을 고르면? [3.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
