@@ -1,0 +1,270 @@
+window.examTitle = "기하_193_공간도형-내분점외분점의활용_고2_유형은행1";
+
+window.questionBank = [
+  {
+    "id": 1,
+    "category": "공간좌표 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-04",
+    "standardUnit": "공간좌표",
+    "standardUnitOrder": 4,
+    "subUnitKey": "H22-GE-04-CORE",
+    "subUnit": "공간좌표 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-04-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "공간좌표 핵심 개념"
+    ],
+    "wide": false,
+    "content": "오른쪽 그림과 같이 한 모서리의 길이가 $5$인 정육면체 $\\mathrm{ABCD-EFGH}$에서 선분 $\\mathrm{CE}$를 $3:2$로 내분하는 점을 $\\mathrm{P}$라 할 때, 두 점 $\\mathrm{F}$, $\\mathrm{P}$ 사이의 거리는? [그림: 한 모서리의 길이가 5인 정육면체 ABCD-EFGH. 밑면은 시계 반대 방향으로 E(앞왼쪽), F(앞오른쪽), G(뒤오른쪽), H(뒤왼쪽), 윗면은 각각 E, F, G, H 바로 위에 A, B, C, D가 위치한다. 공간대각선 CE 위에 CP:PE = 3:2가 되도록 점 P를 표시하고 선분 FP를 점선 또는 실선으로 연결한다.]",
+    "choices": [
+      "$\\sqrt{17}$",
+      "$3\\sqrt{2}$",
+      "$\\sqrt{19}$",
+      "$2\\sqrt{5}$",
+      "$\\sqrt{22}$"
+    ],
+    "answer": "①",
+    "solution": "점 $\\mathrm{H}$를 원점으로 하고, 세 모서리 $\\mathrm{HE}$, $\\mathrm{HG}$, $\\mathrm{HD}$가 각각 $x$축, $y$축, $z$축의 양의 방향에 놓이도록 좌표공간에 정육면체를 배치하자.\n한 모서리의 길이가 $5$이므로 필요한 꼭짓점의 좌표는\n$\\mathrm{C}(0,\\, 5,\\, 5)$, $\\mathrm{E}(5,\\, 0,\\, 0)$, $\\mathrm{F}(5,\\, 5,\\, 0)$\n점 $\\mathrm{P}$는 선분 $\\mathrm{CE}$를 $3:2$로 내분하는 점이므로\n$\\mathrm{P}\\left(\\frac{3 \\cdot 5 + 2 \\cdot 0}{3+2},\\, \\frac{3 \\cdot 0 + 2 \\cdot 5}{3+2},\\, \\frac{3 \\cdot 0 + 2 \\cdot 5}{3+2}\\right) = \\mathrm{P}(3,\\, 2,\\, 2)$\n따라서 두 점 $\\mathrm{F}(5,\\, 5,\\, 0)$, $\\mathrm{P}(3,\\, 2,\\, 2)$ 사이의 거리는\n$\\overline{\\mathrm{FP}} = \\sqrt{(5-3)^2 + (5-2)^2 + (0-2)^2} = \\sqrt{4 + 9 + 4} = \\sqrt{17}$\n따라서 정답은 ①이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-061",
+    "problemTypeKey": "PT_GEO_SPACE_COORDINATE",
+    "templateKey": "TPL_GEO_SPACE_COORD_DIVISION",
+    "crossConceptKeys": [
+      "CC_SPACE_FIGURE",
+      "CC_DISTANCE_TWO_POINTS"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 2,
+    "category": "공간좌표 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-04",
+    "standardUnit": "공간좌표",
+    "standardUnitOrder": 4,
+    "subUnitKey": "H22-GE-04-CORE",
+    "subUnit": "공간좌표 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-04-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "공간좌표 핵심 개념"
+    ],
+    "wide": false,
+    "content": "한 모서리의 길이가 $7$인 정육면체 $\\mathrm{ABCD-EFGH}$가 있다. 선분 $\\mathrm{BH}$를 $2:5$로 내분하는 점을 $\\mathrm{I}$라 할 때, 선분 $\\mathrm{EI}$의 길이는? [그림: 한 모서리의 길이가 7인 정육면체 ABCD-EFGH. 밑면은 E(앞왼쪽), F(앞오른쪽), G(뒤오른쪽), H(뒤왼쪽), 윗면은 그 위에 순서대로 A, B, C, D가 위치한다. 공간대각선 BH 위에 BI:IH = 2:5가 되는 점 I를 찍고 선분 EI를 연결한다.]",
+    "choices": [
+      "$3\\sqrt{6}$",
+      "$\\sqrt{57}$",
+      "$2\\sqrt{15}$",
+      "$3\\sqrt{7}$",
+      "$\\sqrt{66}$"
+    ],
+    "answer": "①",
+    "solution": "점 $\\mathrm{H}$를 원점으로 하고, 세 모서리 $\\mathrm{HE}$, $\\mathrm{HG}$, $\\mathrm{HD}$가 각각 $x$축, $y$축, $z$축의 양의 방향에 놓이도록 정육면체를 좌표공간에 배치하자.\n한 모서리의 길이가 $7$이므로 필요한 꼭짓점의 좌표는\n$\\mathrm{B}(7,\\, 7,\\, 7)$, $\\mathrm{H}(0,\\, 0,\\, 0)$, $\\mathrm{E}(7,\\, 0,\\, 0)$\n점 $\\mathrm{I}$는 선분 $\\mathrm{BH}$를 $2:5$로 내분하는 점이므로\n$\\mathrm{I}\\left(\\frac{2 \\cdot 0 + 5 \\cdot 7}{2+5},\\, \\frac{2 \\cdot 0 + 5 \\cdot 7}{2+5},\\, \\frac{2 \\cdot 0 + 5 \\cdot 7}{2+5}\\right) = \\mathrm{I}(5,\\, 5,\\, 5)$\n따라서 선분 $\\mathrm{EI}$의 길이는\n$\\overline{\\mathrm{EI}} = \\sqrt{(7-5)^2 + (0-5)^2 + (0-5)^2} = \\sqrt{4 + 25 + 25} = \\sqrt{54} = 3\\sqrt{6}$\n따라서 정답은 ①이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-061",
+    "problemTypeKey": "PT_GEO_SPACE_COORDINATE",
+    "templateKey": "TPL_GEO_SPACE_COORD_DIVISION",
+    "crossConceptKeys": [
+      "CC_SPACE_FIGURE",
+      "CC_DISTANCE_TWO_POINTS"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 3,
+    "category": "공간좌표 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-04",
+    "standardUnit": "공간좌표",
+    "standardUnitOrder": 4,
+    "subUnitKey": "H22-GE-04-CORE",
+    "subUnit": "공간좌표 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-04-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "공간좌표 핵심 개념"
+    ],
+    "wide": false,
+    "content": "오른쪽 그림과 같이 한 모서리의 길이가 $8$인 정육면체 $\\mathrm{ABCD-EFGH}$에서 선분 $\\mathrm{BH}$를 $3:1$로 내분하는 점을 $\\mathrm{I}$, 선분 $\\mathrm{AC}$를 $5:3$으로 내분하는 점을 $\\mathrm{J}$라 할 때, 선분 $\\mathrm{IJ}$의 길이는? [그림: 한 모서리의 길이가 8인 정육면체 ABCD-EFGH. 밑면은 E(앞왼쪽), F(앞오른쪽), G(뒤오른쪽), H(뒤왼쪽), 윗면은 그 위에 순서대로 A, B, C, D가 위치한다. 공간대각선 BH 위에 BI:IH = 3:1인 점 I와 윗면의 대각선 AC 위에 AJ:JC = 5:3인 점 J를 표시하고 선분 IJ를 연결한다.]",
+    "choices": [
+      "$\\sqrt{38}$",
+      "$2\\sqrt{10}$",
+      "$\\sqrt{42}$",
+      "$2\\sqrt{11}$",
+      "$\\sqrt{46}$"
+    ],
+    "answer": "⑤",
+    "solution": "점 $\\mathrm{H}$를 원점으로 하고, 세 모서리 $\\mathrm{HE}$, $\\mathrm{HG}$, $\\mathrm{HD}$가 각각 $x$축, $y$축, $z$축의 양의 방향에 놓이도록 정육면체를 좌표공간에 배치하자.\n한 모서리의 길이가 $8$이므로 각 꼭짓점의 좌표는\n$\\mathrm{A}(8,\\, 0,\\, 8)$, $\\mathrm{B}(8,\\, 8,\\, 8)$, $\\mathrm{C}(0,\\, 8,\\, 8)$, $\\mathrm{H}(0,\\, 0,\\, 0)$\n점 $\\mathrm{I}$는 선분 $\\mathrm{BH}$를 $3:1$로 내분하는 점이므로\n$\\mathrm{I}\\left(\\frac{3 \\cdot 0 + 1 \\cdot 8}{3+1},\\, \\frac{3 \\cdot 0 + 1 \\cdot 8}{3+1},\\, \\frac{3 \\cdot 0 + 1 \\cdot 8}{3+1}\\right) = \\mathrm{I}(2,\\, 2,\\, 2)$\n점 $\\mathrm{J}$는 선분 $\\mathrm{AC}$를 $5:3$으로 내분하는 점이므로\n$\\mathrm{J}\\left(\\frac{5 \\cdot 0 + 3 \\cdot 8}{5+3},\\, \\frac{5 \\cdot 8 + 3 \\cdot 0}{5+3},\\, \\frac{5 \\cdot 8 + 3 \\cdot 8}{5+3}\\right) = \\mathrm{J}(3,\\, 5,\\, 8)$\n따라서 선분 $\\mathrm{IJ}$의 길이는\n$\\overline{\\mathrm{IJ}} = \\sqrt{(3-2)^2 + (5-2)^2 + (8-2)^2} = \\sqrt{1 + 9 + 36} = \\sqrt{46}$\n따라서 정답은 ⑤이다.",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-061",
+    "problemTypeKey": "PT_GEO_SPACE_COORDINATE",
+    "templateKey": "TPL_GEO_SPACE_COORD_DIVISION",
+    "crossConceptKeys": [
+      "CC_SPACE_FIGURE",
+      "CC_DISTANCE_TWO_POINTS"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 4,
+    "category": "공간좌표 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-04",
+    "standardUnit": "공간좌표",
+    "standardUnitOrder": 4,
+    "subUnitKey": "H22-GE-04-CORE",
+    "subUnit": "공간좌표 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-04-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "공간좌표 핵심 개념"
+    ],
+    "wide": false,
+    "content": "그림과 같이 $\\overline{\\mathrm{AB}} = 6$, $\\overline{\\mathrm{AD}} = 4$, $\\overline{\\mathrm{AE}} = 3$인 직육면체 $\\mathrm{ABCD-EFGH}$가 있다. 선분 $\\mathrm{BE}$를 $2:1$로 내분하는 점을 $\\mathrm{P}$라 하고, 선분 $\\mathrm{AG}$를 $1:3$으로 내분하는 점을 $\\mathrm{Q}$라 할 때, 선분 $\\mathrm{PQ}$의 길이는? [그림: 가로 AB=6, 세로 AD=4, 높이 AE=3인 직육면체 ABCD-EFGH. 앞면은 ABFE(위 A, B, 아래 E, F), 뒷면은 DCGH(위 D, C, 아래 H, G)이다. 앞면 대각선 BE 위에 BP:PE = 2:1인 점 P, 공간대각선 AG 위에 AQ:QG = 1:3인 점 Q를 표시하고 선분 PQ를 연결한다.]",
+    "choices": [
+      "$\\frac{3\\sqrt{3}}{4}$",
+      "$\\frac{\\sqrt{10}}{2}$",
+      "$\\frac{3\\sqrt{5}}{4}$",
+      "$\\frac{\\sqrt{13}}{2}$",
+      "$\\frac{3\\sqrt{6}}{4}$"
+    ],
+    "answer": "③",
+    "solution": "점 $\\mathrm{H}$를 원점으로 하고, 세 모서리 $\\mathrm{HE}$, $\\mathrm{HG}$, $\\mathrm{HD}$가 각각 $x$축, $y$축, $z$축의 양의 방향에 놓이도록 직육면체를 좌표공간에 배치하자.\n$\\overline{\\mathrm{HE}} = \\overline{\\mathrm{AD}} = 4$, $\\overline{\\mathrm{HG}} = \\overline{\\mathrm{AB}} = 6$, $\\overline{\\mathrm{HD}} = \\overline{\\mathrm{AE}} = 3$이므로 각 꼭짓점의 좌표는\n$\\mathrm{A}(4,\\, 0,\\, 3)$, $\\mathrm{B}(4,\\, 6,\\, 3)$, $\\mathrm{E}(4,\\, 0,\\, 0)$, $\\mathrm{G}(0,\\, 6,\\, 0)$\n점 $\\mathrm{P}$는 선분 $\\mathrm{BE}$를 $2:1$로 내분하는 점이므로\n$\\mathrm{P}\\left(\\frac{2 \\cdot 4 + 1 \\cdot 4}{2+1},\\, \\frac{2 \\cdot 0 + 1 \\cdot 6}{2+1},\\, \\frac{2 \\cdot 0 + 1 \\cdot 3}{2+1}\\right) = \\mathrm{P}(4,\\, 2,\\, 1)$\n점 $\\mathrm{Q}$는 선분 $\\mathrm{AG}$를 $1:3$으로 내분하는 점이므로\n$\\mathrm{Q}\\left(\\frac{1 \\cdot 0 + 3 \\cdot 4}{1+3},\\, \\frac{1 \\cdot 6 + 3 \\cdot 0}{1+3},\\, \\frac{1 \\cdot 0 + 3 \\cdot 3}{1+3}\\right) = \\mathrm{Q}\\left(3,\\, \\frac{3}{2},\\, \\frac{9}{4}\\right)$\n따라서 선분 $\\mathrm{PQ}$의 길이는\n$\\overline{\\mathrm{PQ}} = \\sqrt{(4-3)^2 + \\left(2 - \\frac{3}{2}\\right)^2 + \\left(1 - \\frac{9}{4}\\right)^2} = \\sqrt{1 + \\frac{1}{4} + \\frac{25}{16}} = \\sqrt{\\frac{45}{16}} = \\frac{3\\sqrt{5}}{4}$\n따라서 정답은 ③이다.",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-061",
+    "problemTypeKey": "PT_GEO_SPACE_COORDINATE",
+    "templateKey": "TPL_GEO_SPACE_COORD_DIVISION",
+    "crossConceptKeys": [
+      "CC_SPACE_FIGURE",
+      "CC_DISTANCE_TWO_POINTS"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 5,
+    "category": "공간좌표 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-04",
+    "standardUnit": "공간좌표",
+    "standardUnitOrder": 4,
+    "subUnitKey": "H22-GE-04-CORE",
+    "subUnit": "공간좌표 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-04-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "공간좌표 핵심 개념"
+    ],
+    "wide": false,
+    "content": "그림과 같이 좌표공간에서 두 점 $\\mathrm{A}(4,\\, 0,\\, 0)$, $\\mathrm{B}(0,\\, 4,\\, 0)$과 선분 $\\mathrm{AB}$의 중점 $\\mathrm{M}$, $z$축 위의 점 $\\mathrm{C}$에 대하여 선분 $\\mathrm{CM}$을 $1:3$으로 내분하는 점을 $\\mathrm{D}$라 하자. 삼각형 $\\mathrm{ABC}$의 넓이가 $16$일 때, 원점에서 점 $\\mathrm{D}$까지의 거리는? [그림: 좌표공간의 x축 위에 A(4, 0, 0), y축 위에 B(0, 4, 0), z축의 양의 부분에 점 C를 잡고 삼각형 ABC를 그린다. 선분 AB의 중점 M과 점 C를 잇는 선분 CM 위에 CD:DM = 1:3이 되는 점 D를 표시한다.]",
+    "choices": [
+      "$\\sqrt{10}$",
+      "$\\sqrt{11}$",
+      "$2\\sqrt{3}$",
+      "$\\sqrt{14}$",
+      "$\\sqrt{15}$"
+    ],
+    "answer": "④",
+    "solution": "점 $\\mathrm{M}$은 두 점 $\\mathrm{A}(4,\\, 0,\\, 0)$, $\\mathrm{B}(0,\\, 4,\\, 0)$을 잇는 선분 $\\mathrm{AB}$의 중점이므로 $\\mathrm{M}(2,\\, 2,\\, 0)$이다.\n점 $\\mathrm{C}$의 좌표를 $(0,\\, 0,\\, c)$라 하면 $\\overline{\\mathrm{CA}} = \\overline{\\mathrm{CB}} = \\sqrt{16 + c^2}$이므로 삼각형 $\\mathrm{ABC}$는 이등변삼각형이고 $\\overline{\\mathrm{CM}} \\perp \\overline{\\mathrm{AB}}$이다.\n이때 $\\overline{\\mathrm{AB}} = \\sqrt{4^2 + 4^2} = 4\\sqrt{2}$, $\\overline{\\mathrm{CM}} = \\sqrt{2^2 + 2^2 + c^2} = \\sqrt{c^2 + 8}$이므로 삼각형 $\\mathrm{ABC}$의 넓이는\n$\\frac{1}{2} \\times \\overline{\\mathrm{AB}} \\times \\overline{\\mathrm{CM}} = \\frac{1}{2} \\times 4\\sqrt{2} \\times \\sqrt{c^2 + 8} = 2\\sqrt{2}\\sqrt{c^2 + 8} = 16$\n양변을 $2\\sqrt{2}$로 나누면 $\\sqrt{c^2 + 8} = 4\\sqrt{2}$이고, 양변을 제곱하면\n$c^2 + 8 = 32 \\quad \\therefore\\ c^2 = 24$\n한편, 점 $\\mathrm{D}$는 선분 $\\mathrm{CM}$을 $1:3$으로 내분하는 점이므로\n$\\mathrm{D}\\left(\\frac{1 \\cdot 2 + 3 \\cdot 0}{1+3},\\, \\frac{1 \\cdot 2 + 3 \\cdot 0}{1+3},\\, \\frac{1 \\cdot 0 + 3 \\cdot c}{1+3}\\right) = \\mathrm{D}\\left(\\frac{1}{2},\\, \\frac{1}{2},\\, \\frac{3c}{4}\\right)$\n따라서 원점 $\\mathrm{O}$에서 점 $\\mathrm{D}$까지의 거리는\n$\\overline{\\mathrm{OD}} = \\sqrt{\\left(\\frac{1}{2}\\right)^2 + \\left(\\frac{1}{2}\\right)^2 + \\left(\\frac{3c}{4}\\right)^2} = \\sqrt{\\frac{1}{4} + \\frac{1}{4} + \\frac{9 \\cdot 24}{16}} = \\sqrt{\\frac{1}{2} + \\frac{27}{2}} = \\sqrt{14}$\n따라서 정답은 ④이다.",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-061",
+    "problemTypeKey": "PT_GEO_SPACE_COORDINATE",
+    "templateKey": "TPL_GEO_SPACE_COORD_DIVISION",
+    "crossConceptKeys": [
+      "CC_SPACE_FIGURE",
+      "CC_TRIANGLE_AREA",
+      "CC_MIDPOINT"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 6,
+    "category": "공간좌표 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-04",
+    "standardUnit": "공간좌표",
+    "standardUnitOrder": 4,
+    "subUnitKey": "H22-GE-04-CORE",
+    "subUnit": "공간좌표 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-04-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "공간좌표 핵심 개념"
+    ],
+    "wide": false,
+    "content": "오른쪽 그림과 같이 밑면의 한 변의 길이가 $6$이고 높이가 $9$인 정삼각기둥 $\\mathrm{ABC-DEF}$가 있다. 변 $\\mathrm{DE}$의 중점 $\\mathrm{M}$에 대하여 선분 $\\mathrm{BM}$을 $2:1$로 내분하는 점을 $\\mathrm{P}$라 할 때, $\\overline{\\mathrm{CP}}$의 값은? [그림: 밑면 DEF와 윗면 ABC가 한 변의 길이가 6인 정삼각형이고 높이 AD=BE=CF=9인 정삼각기둥 ABC-DEF. 밑면의 앞쪽 변 DE의 중점 M과 꼭짓점 B를 연결한 선분 BM 위에 BP:PM = 2:1인 점 P를 표시하고 선분 CP를 연결한다.]",
+    "choices": [
+      "$2\\sqrt{14}$",
+      "$8$",
+      "$6\\sqrt{2}$",
+      "$9$",
+      "$3\\sqrt{10}$"
+    ],
+    "answer": "②",
+    "solution": "변 $\\mathrm{DE}$의 중점 $\\mathrm{M}$을 원점으로 하고, 직선 $\\mathrm{DE}$를 $x$축, 직선 $\\mathrm{MF}$를 $y$축, 점 $\\mathrm{M}$을 지나고 밑면 $\\mathrm{DEF}$에 수직인 직선을 $z$축으로 하는 좌표공간을 잡자.\n정삼각형 $\\mathrm{DEF}$의 한 변의 길이가 $6$이므로 높이는 $\\overline{\\mathrm{MF}} = \\frac{\\sqrt{3}}{2} \\times 6 = 3\\sqrt{3}$이고, 정삼각기둥의 높이가 $9$이므로 필요한 점의 좌표는\n$\\mathrm{M}(0,\\, 0,\\, 0)$, $\\mathrm{E}(3,\\, 0,\\, 0)$, $\\mathrm{F}(0,\\, 3\\sqrt{3},\\, 0)$\n$\\mathrm{B}(3,\\, 0,\\, 9)$, $\\mathrm{C}(0,\\, 3\\sqrt{3},\\, 9)$\n점 $\\mathrm{P}$는 선분 $\\mathrm{BM}$을 $2:1$로 내분하는 점이므로\n$\\mathrm{P}\\left(\\frac{2 \\cdot 0 + 1 \\cdot 3}{2+1},\\, \\frac{2 \\cdot 0 + 1 \\cdot 0}{2+1},\\, \\frac{2 \\cdot 0 + 1 \\cdot 9}{2+1}\\right) = \\mathrm{P}(1,\\, 0,\\, 3)$\n따라서 선분 $\\mathrm{CP}$의 길이는\n$\\overline{\\mathrm{CP}} = \\sqrt{(1-0)^2 + (0 - 3\\sqrt{3})^2 + (3-9)^2} = \\sqrt{1 + 27 + 36} = \\sqrt{64} = 8$\n따라서 정답은 ②이다.",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-061",
+    "problemTypeKey": "PT_GEO_SPACE_COORDINATE",
+    "templateKey": "TPL_GEO_SPACE_COORD_DIVISION",
+    "crossConceptKeys": [
+      "CC_SPACE_FIGURE",
+      "CC_EQUILATERAL_TRIANGLE",
+      "CC_DISTANCE_TWO_POINTS"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  }
+];

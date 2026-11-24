@@ -1,0 +1,268 @@
+window.examTitle = "기하_187_도형밖의점에서도형위의점까지거리의최솟값_고2_유형은행1";
+
+window.questionBank = [
+  {
+    "id": 1,
+    "category": "공간좌표 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-04",
+    "standardUnit": "공간좌표",
+    "standardUnitOrder": 4,
+    "subUnitKey": "H22-GE-04-CORE",
+    "subUnit": "공간좌표 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-04-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "공간좌표 핵심 개념"
+    ],
+    "wide": false,
+    "content": "좌표공간에서 $zx$평면 위에 있는 원 $x^2+z^2=4$ 위의 점 $\\mathrm{P}$와 점 $\\mathrm{A}(6,\\,-5,\\,-8)$ 사이의 거리의 최댓값은?",
+    "choices": [
+      "$11$",
+      "$12$",
+      "$13$",
+      "$14$",
+      "$15$"
+    ],
+    "answer": "③",
+    "solution": "점 $\\mathrm{A}(6,\\,-5,\\,-8)$에서 $zx$평면에 내린 수선의 발을 $\\mathrm{H}$라 하면 $\\mathrm{H}(6,\\,0,\\,-8)$이고, $\\overline{\\mathrm{AH}}=|-5|=5$이다.\n원 $x^2+z^2=4$의 중심은 원점 $\\mathrm{O}(0,\\,0,\\,0)$, 반지름의 길이는 $2$이다.\n점 $\\mathrm{H}$와 원의 중심 $\\mathrm{O}$ 사이의 거리는\n$$\\overline{\\mathrm{OH}}=\\sqrt{6^2+(-8)^2}=\\sqrt{36+64}=10$$\n점 $\\mathrm{P}$가 원 위를 움직일 때 선분 $\\mathrm{HP}$의 길이의 최댓값은\n$$\\overline{\\mathrm{OH}}+2=10+2=12$$\n직각삼각형 $\\mathrm{AHP}$에서 피타고라스 정리에 의하여 $\\overline{\\mathrm{AP}}=\\sqrt{\\overline{\\mathrm{AH}}^2+\\overline{\\mathrm{HP}}^2}$이므로 $\\overline{\\mathrm{AP}}$의 최댓값은\n$$\\sqrt{5^2+12^2}=\\sqrt{25+144}=\\sqrt{169}=13$$\n따라서 정답은 ③이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-060",
+    "problemTypeKey": "PT_GEO_SPACE_COORDINATE",
+    "templateKey": "TPL_GEO_SPACE_COORD_MIN_PATH",
+    "crossConceptKeys": [
+      "CC_CIRCLE_EQUATION",
+      "CC_PYTHAGOREAN"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 2,
+    "category": "공간좌표 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-04",
+    "standardUnit": "공간좌표",
+    "standardUnitOrder": 4,
+    "subUnitKey": "H22-GE-04-CORE",
+    "subUnit": "공간좌표 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-04-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "공간좌표 핵심 개념"
+    ],
+    "wide": false,
+    "content": "좌표공간에서 $xy$평면 위의 원 $(x-4)^2+(y-5)^2=9$에 대하여 점 $\\mathrm{A}(1,\\,1,\\,6)$과 원 위를 움직이는 점 $\\mathrm{P}$ 사이의 거리의 최댓값을 $M$, 최솟값을 $m$이라 할 때, $Mm$의 값은? [그림: 원점 $\\mathrm{O}$와 $x$축, $y$축, $z$축으로 이루어진 좌표공간에서 $xy$평면 위에 중심이 $(4,\\,5,\\,0)$이고 반지름의 길이가 $3$인 원 $(x-4)^2+(y-5)^2=9$가 그려져 있으며, 원 위의 점 $\\mathrm{P}$와 공간 위의 점 $\\mathrm{A}(1,\\,1,\\,6)$이 선분으로 연결되어 있다.]",
+    "choices": [
+      "$20\\sqrt{10}$",
+      "$25\\sqrt{10}$",
+      "$30\\sqrt{10}$",
+      "$35\\sqrt{10}$",
+      "$40\\sqrt{10}$"
+    ],
+    "answer": "①",
+    "solution": "점 $\\mathrm{A}(1,\\,1,\\,6)$에서 $xy$평면에 내린 수선의 발을 $\\mathrm{H}$라 하면 $\\mathrm{H}(1,\\,1,\\,0)$이고, $\\overline{\\mathrm{AH}}=6$이다.\n원의 중심을 $\\mathrm{C}$라 하면 $\\mathrm{C}(4,\\,5,\\,0)$이고 반지름의 길이는 $3$이다.\n두 점 $\\mathrm{C}$, $\\mathrm{H}$ 사이의 거리는\n$$\\overline{\\mathrm{CH}}=\\sqrt{(4-1)^2+(5-1)^2}=\\sqrt{9+16}=5$$\n점 $\\mathrm{P}$가 원 위를 움직일 때 선분 $\\mathrm{HP}$의 길이의 최댓값은 $5+3=8$, 최솟값은 $5-3=2$이다.\n직각삼각형 $\\mathrm{AHP}$에서 $\\overline{\\mathrm{AP}}=\\sqrt{\\overline{\\mathrm{AH}}^2+\\overline{\\mathrm{HP}}^2}$이므로\n$$M=\\sqrt{6^2+8^2}=\\sqrt{100}=10, \\quad m=\\sqrt{6^2+2^2}=\\sqrt{40}=2\\sqrt{10}$$\n따라서 $Mm=10\\times 2\\sqrt{10}=20\\sqrt{10}$이다.\n따라서 정답은 ①이다.",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B45",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-060",
+    "problemTypeKey": "PT_GEO_SPACE_COORDINATE",
+    "templateKey": "TPL_GEO_SPACE_COORD_MIN_PATH",
+    "crossConceptKeys": [
+      "CC_CIRCLE_EQUATION",
+      "CC_PYTHAGOREAN"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "INTERDEPENDENT"
+  },
+  {
+    "id": 3,
+    "category": "공간좌표 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-04",
+    "standardUnit": "공간좌표",
+    "standardUnitOrder": 4,
+    "subUnitKey": "H22-GE-04-CORE",
+    "subUnit": "공간좌표 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-04-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "공간좌표 핵심 개념"
+    ],
+    "wide": false,
+    "content": "좌표공간에서 중심이 점 $\\mathrm{C}(2,\\,0,\\,-1)$이고 반지름의 길이가 $3$인 원이 $zx$평면 위에 있다. 이 원 위의 점 $\\mathrm{P}$와 점 $\\mathrm{A}(-2,\\,4,\\,2)$ 사이의 거리의 최댓값을 $M$, 최솟값을 $m$이라 할 때, $Mm$의 값은? [그림: 원점 $\\mathrm{O}$와 $x$축, $y$축, $z$축으로 이루어진 좌표공간에서 $zx$평면 위에 중심이 $\\mathrm{C}(2,\\,0,\\,-1)$이고 반지름의 길이가 $3$인 원이 그려져 있으며, $zx$평면 밖의 점 $\\mathrm{A}(-2,\\,4,\\,2)$에서 원 위의 한 점 $\\mathrm{P}$까지 선분이 이어져 있다.]",
+    "choices": [
+      "$25$",
+      "$30$",
+      "$35$",
+      "$40$",
+      "$45$"
+    ],
+    "answer": "④",
+    "solution": "점 $\\mathrm{A}(-2,\\,4,\\,2)$에서 $zx$평면에 내린 수선의 발을 $\\mathrm{H}$라 하면 $\\mathrm{H}(-2,\\,0,\\,2)$이고, $\\overline{\\mathrm{AH}}=4$이다.\n원의 중심 $\\mathrm{C}(2,\\,0,\\,-1)$과 점 $\\mathrm{H}(-2,\\,0,\\,2)$ 사이의 거리는\n$$\\overline{\\mathrm{CH}}=\\sqrt{(-2-2)^2+\\{2-(-1)\\}^2}=\\sqrt{16+9}=5$$\n원의 반지름의 길이가 $3$이므로 선분 $\\mathrm{HP}$의 길이의 최댓값은 $5+3=8$, 최솟값은 $5-3=2$이다.\n직각삼각형 $\\mathrm{AHP}$에서 피타고라스 정리에 의하여\n$$M=\\sqrt{4^2+8^2}=\\sqrt{80}=4\\sqrt{5}, \\quad m=\\sqrt{4^2+2^2}=\\sqrt{20}=2\\sqrt{5}$$\n따라서 $Mm=4\\sqrt{5}\\times 2\\sqrt{5}=40$이다.\n따라서 정답은 ④이다.",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B45",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-060",
+    "problemTypeKey": "PT_GEO_SPACE_COORDINATE",
+    "templateKey": "TPL_GEO_SPACE_COORD_MIN_PATH",
+    "crossConceptKeys": [
+      "CC_CIRCLE_EQUATION",
+      "CC_PYTHAGOREAN"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "INTERDEPENDENT"
+  },
+  {
+    "id": 4,
+    "category": "공간좌표 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-04",
+    "standardUnit": "공간좌표",
+    "standardUnitOrder": 4,
+    "subUnitKey": "H22-GE-04-CORE",
+    "subUnit": "공간좌표 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-04-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "공간좌표 핵심 개념"
+    ],
+    "wide": false,
+    "content": "점 $\\mathrm{P}(0,\\,2,\\,-1)$을 중심으로 하고 $yz$평면 위에 있는 반지름의 길이가 $\\sqrt{5}$인 원을 $C$라 하자. 점 $\\mathrm{Q}(3,\\,-2,\\,7)$에서 원 $C$에 이르는 최단거리는?",
+    "choices": [
+      "$4\\sqrt{3}$",
+      "$5\\sqrt{2}$",
+      "$2\\sqrt{13}$",
+      "$3\\sqrt{6}$",
+      "$2\\sqrt{14}$"
+    ],
+    "answer": "④",
+    "solution": "점 $\\mathrm{Q}(3,\\,-2,\\,7)$에서 $yz$평면에 내린 수선의 발을 $\\mathrm{H}$라 하면 $\\mathrm{H}(0,\\,-2,\\,7)$이고, $\\overline{\\mathrm{QH}}=3$이다.\n원의 중심 $\\mathrm{P}(0,\\,2,\\,-1)$과 점 $\\mathrm{H}(0,\\,-2,\\,7)$ 사이의 거리는\n$$\\overline{\\mathrm{PH}}=\\sqrt{(-2-2)^2+\\{7-(-1)\\}^2}=\\sqrt{16+64}=\\sqrt{80}=4\\sqrt{5}$$\n원 $C$의 반지름의 길이가 $\\sqrt{5}$이므로 점 $\\mathrm{H}$에서 원 $C$ 위의 점 $\\mathrm{R}$까지의 거리의 최솟값은\n$$\\overline{\\mathrm{PH}}-\\sqrt{5}=4\\sqrt{5}-\\sqrt{5}=3\\sqrt{5}$$\n직각삼각형 $\\mathrm{QHR}$에서 피타고라스 정리에 의하여 점 $\\mathrm{Q}$에서 원 $C$에 이르는 최단거리는\n$$\\sqrt{3^2+(3\\sqrt{5})^2}=\\sqrt{9+45}=\\sqrt{54}=3\\sqrt{6}$$\n따라서 정답은 ④이다.",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B45",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-060",
+    "problemTypeKey": "PT_GEO_SPACE_COORDINATE",
+    "templateKey": "TPL_GEO_SPACE_COORD_MIN_PATH",
+    "crossConceptKeys": [
+      "CC_CIRCLE_EQUATION",
+      "CC_PYTHAGOREAN"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 5,
+    "category": "공간좌표 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-04",
+    "standardUnit": "공간좌표",
+    "standardUnitOrder": 4,
+    "subUnitKey": "H22-GE-04-CORE",
+    "subUnit": "공간좌표 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-04-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "공간좌표 핵심 개념"
+    ],
+    "wide": false,
+    "content": "좌표공간에 점 $\\mathrm{A}(6,\\,0,\\,4)$가 있고, $xy$평면 위에 타원 $\\dfrac{x^2}{9}+\\dfrac{y^2}{36}=1$이 있다. 타원 위의 점 $\\mathrm{P}$에 대하여 $\\overline{\\mathrm{AP}}$의 최댓값은?",
+    "choices": [
+      "$9$",
+      "$10$",
+      "$11$",
+      "$12$",
+      "$13$"
+    ],
+    "answer": "②",
+    "solution": "타원 위의 점 $\\mathrm{P}$의 좌표를 $(x,\\,y,\\,0)$이라 하면\n$$\\dfrac{x^2}{9}+\\dfrac{y^2}{36}=1 \\quad (-3\\le x\\le 3)$$\n이므로 $y^2=36-4x^2$이다.\n두 점 $\\mathrm{A}(6,\\,0,\\,4)$, $\\mathrm{P}(x,\\,y,\\,0)$ 사이의 거리의 제곱을 $x$에 대한 식으로 나타내면\n$$\\overline{\\mathrm{AP}}^2=(x-6)^2+y^2+(0-4)^2=(x^2-12x+36)+(36-4x^2)+16$$\n$$=-3x^2-12x+88=-3(x+2)^2+100$$\n$-3\\le x\\le 3$의 범위에 $x=-2$가 포함되므로 $\\overline{\\mathrm{AP}}^2$은 $x=-2$일 때 최댓값 $100$을 갖는다.\n따라서 $\\overline{\\mathrm{AP}}$의 최댓값은 $\\sqrt{100}=10$이다.\n따라서 정답은 ②이다.",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B45",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-060",
+    "problemTypeKey": "PT_GEO_SPACE_COORDINATE",
+    "templateKey": "TPL_GEO_SPACE_COORD_MIN_PATH",
+    "crossConceptKeys": [
+      "CC_ELLIPSE",
+      "CC_PYTHAGOREAN"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "INTERDEPENDENT"
+  },
+  {
+    "id": 6,
+    "category": "공간좌표 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-04",
+    "standardUnit": "공간좌표",
+    "standardUnitOrder": 4,
+    "subUnitKey": "H22-GE-04-CORE",
+    "subUnit": "공간좌표 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-04-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "공간좌표 핵심 개념"
+    ],
+    "wide": false,
+    "content": "좌표공간 위의 두 점 $\\mathrm{A}(6,\\,1+2\\sqrt{3},\\,8)$, $\\mathrm{B}(6,\\,1-2\\sqrt{3},\\,8)$에 대하여 삼각형 $\\mathrm{ABP}$가 정삼각형이 되도록 점 $\\mathrm{P}$를 잡을 때, 점 $\\mathrm{Q}(0,\\,5,\\,0)$에서 점 $\\mathrm{P}$까지의 거리의 최솟값은?",
+    "choices": [
+      "$3\\sqrt{3}$",
+      "$4\\sqrt{2}$",
+      "$2\\sqrt{10}$",
+      "$3\\sqrt{5}$",
+      "$4\\sqrt{3}$"
+    ],
+    "answer": "②",
+    "solution": "두 점 $\\mathrm{A}$, $\\mathrm{B}$의 $x$좌표와 $z$좌표가 각각 같으므로 선분 $\\mathrm{AB}$는 $y$축에 평행하고, 그 길이는\n$$\\overline{\\mathrm{AB}}=(1+2\\sqrt{3})-(1-2\\sqrt{3})=4\\sqrt{3}$$\n또 선분 $\\mathrm{AB}$의 중점을 $\\mathrm{M}$이라 하면 $\\mathrm{M}(6,\\,1,\\,8)$이다.\n삼각형 $\\mathrm{ABP}$가 정삼각형이 되려면 점 $\\mathrm{P}$는 선분 $\\mathrm{AB}$의 수직이등분면인 평면 $y=1$ 위에 있어야 하고, 정삼각형의 높이는 $\\dfrac{\\sqrt{3}}{2}\\times 4\\sqrt{3}=6$이므로 $\\overline{\\mathrm{MP}}=6$을 만족시켜야 한다.\n즉, 점 $\\mathrm{P}$는 평면 $y=1$ 위의 중심이 $\\mathrm{M}(6,\\,1,\\,8)$이고 반지름의 길이가 $6$인 원 위를 움직인다.\n점 $\\mathrm{Q}(0,\\,5,\\,0)$에서 평면 $y=1$에 내린 수선의 발을 $\\mathrm{H}$라 하면 $\\mathrm{H}(0,\\,1,\\,0)$이고, $\\overline{\\mathrm{QH}}=|5-1|=4$이다.\n두 점 $\\mathrm{M}$, $\\mathrm{H}$ 사이의 거리는\n$$\\overline{\\mathrm{MH}}=\\sqrt{(6-0)^2+(8-0)^2}=\\sqrt{36+64}=10$$\n따라서 선분 $\\mathrm{HP}$의 길이의 최솟값은 $10-6=4$이므로, 직각삼각형 $\\mathrm{QHP}$에서 구하는 $\\overline{\\mathrm{QP}}$의 최솟값은\n$$\\sqrt{4^2+4^2}=\\sqrt{32}=4\\sqrt{2}$$\n따라서 정답은 ②이다.",
+    "difficultyBucket": 5,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B45",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-060",
+    "problemTypeKey": "PT_GEO_SPACE_COORDINATE",
+    "templateKey": "TPL_GEO_SPACE_COORD_MIN_PATH",
+    "crossConceptKeys": [
+      "CC_EQUILATERAL_TRIANGLE",
+      "CC_CIRCLE_EQUATION"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "INTERDEPENDENT"
+  }
+];

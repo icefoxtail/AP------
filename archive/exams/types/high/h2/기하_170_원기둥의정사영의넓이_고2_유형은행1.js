@@ -1,0 +1,271 @@
+window.examTitle = "기하_170_원기둥의정사영의넓이_고2_유형은행1";
+
+window.questionBank = [
+  {
+    "id": 1,
+    "category": "공간도형 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-03",
+    "standardUnit": "공간도형",
+    "standardUnitOrder": 3,
+    "subUnitKey": "H22-GE-03-CORE",
+    "subUnit": "공간도형 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-03-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "공간도형 핵심 개념"
+    ],
+    "wide": false,
+    "content": "그림과 같이 밑면의 반지름의 길이가 $6$인 원기둥을 밑면과 이루는 각의 크기가 $45^{\\circ}$이고 밑면의 중심을 지나는 평면으로 자를 때 생기는 단면은 타원의 일부가 된다. 잘린 단면의 넓이는? [그림: 밑면의 반지름의 길이가 $6$인 원기둥이 수직으로 서 있고, 밑면의 중심을 지나는 지름을 교선으로 하여 밑면과 $45^{\\circ}$의 각을 이루는 평면으로 원기둥을 비스듬히 자른 반타원 모양의 단면이 색칠되어 있다.]",
+    "choices": [
+      "$10\\sqrt{2}\\pi$",
+      "$12\\sqrt{2}\\pi$",
+      "$14\\sqrt{2}\\pi$",
+      "$16\\sqrt{2}\\pi$",
+      "$18\\sqrt{2}\\pi$"
+    ],
+    "answer": "⑤",
+    "solution": "잘린 단면의 넓이를 $S$라 하고, 이 단면의 원기둥의 밑면 위로의 정사영의 넓이를 $S'$이라 하자.\n평면이 밑면의 중심을 지나므로 단면의 밑면 위로의 정사영은 반지름의 길이가 $6$인 반원이다.\n따라서 정사영의 넓이는\n$$S' = \\frac{1}{2} \\times \\pi \\times 6^2 = 18\\pi$$\n단면과 밑면이 이루는 각의 크기가 $45^{\\circ}$이므로 정사영의 넓이 공식에 의하여\n$$S' = S \\cos 45^{\\circ}$$\n$$18\\pi = S \\times \\frac{\\sqrt{2}}{2}$$\n$$S = 18\\sqrt{2}\\pi$$\n따라서 정답은 ⑤이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-056",
+    "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+    "templateKey": "TPL_GEO_SPACE_FIGURE_PROJECTION",
+    "crossConceptKeys": [
+      "CC_SPACE_FIGURE",
+      "CC_ELLIPSE"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "NONE"
+  },
+  {
+    "id": 2,
+    "category": "공간도형 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-03",
+    "standardUnit": "공간도형",
+    "standardUnitOrder": 3,
+    "subUnitKey": "H22-GE-03-CORE",
+    "subUnit": "공간도형 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-03-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "공간도형 핵심 개념"
+    ],
+    "wide": false,
+    "content": "그림과 같이 밑면의 반지름의 길이가 $r$인 원기둥을 밑면과 $60^{\\circ}$의 각을 이루는 평면으로 자를 때 생기는 단면의 넓이가 $50\\pi$일 때, $r$의 값은? [그림: 밑면의 반지름의 길이가 $r$인 원기둥이 수직으로 서 있고, 밑면과 $60^{\\circ}$의 각을 이루는 평면이 원기둥의 옆면 전체를 가로질러 생기는 타원 모양의 단면이 색칠되어 있다.]",
+    "choices": [
+      "$2$",
+      "$3$",
+      "$4$",
+      "$5$",
+      "$6$"
+    ],
+    "answer": "④",
+    "solution": "단면의 넓이를 $S = 50\\pi$라 하면, 이 단면의 밑면 위로의 정사영은 반지름의 길이가 $r$인 원이다.\n정사영의 넓이를 $S'$이라 하면 $S' = \\pi r^2$이고, 단면과 밑면이 이루는 각의 크기가 $60^{\\circ}$이므로\n$$S' = S \\cos 60^{\\circ}$$\n$$\\pi r^2 = 50\\pi \\times \\frac{1}{2} = 25\\pi$$\n$$r^2 = 25$$\n$r > 0$이므로 $r = 5$이다.\n따라서 정답은 ④이다.",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-056",
+    "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+    "templateKey": "TPL_GEO_SPACE_FIGURE_PROJECTION",
+    "crossConceptKeys": [
+      "CC_SPACE_FIGURE",
+      "CC_ELLIPSE"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "NONE"
+  },
+  {
+    "id": 3,
+    "category": "공간도형 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-03",
+    "standardUnit": "공간도형",
+    "standardUnitOrder": 3,
+    "subUnitKey": "H22-GE-03-CORE",
+    "subUnit": "공간도형 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-03-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "공간도형 핵심 개념"
+    ],
+    "wide": false,
+    "content": "밑면의 반지름의 길이가 $3$, 높이가 $4$인 원뿔이 있다. 그림과 같이 원뿔의 꼭짓점 $\\mathrm{A}$가 지면에 닿고 한 모선 $\\mathrm{AB}$가 지면에 수직이 되도록 기울였을 때, 이 원뿔의 밑면의 지면 위로의 정사영의 넓이는? [그림: 꼭짓점 $\\mathrm{A}$가 수평인 지면 위에 놓여 있고 모선 $\\mathrm{AB}$가 지면에 수직으로 서 있는 원뿔. 밑면의 중심을 $\\mathrm{E}$, 점 $\\mathrm{B}$와 대칭인 밑면 둘레 위의 점을 $\\mathrm{C}$라 할 때, $\\overline{\\mathrm{EB}} = 3$, $\\overline{\\mathrm{AE}} = 4$이고 모선 $\\mathrm{AC}$는 지면 위쪽에 비스듬히 놓여 있다.]",
+    "choices": [
+      "$\\dfrac{36}{5}\\pi$",
+      "$\\dfrac{38}{5}\\pi$",
+      "$\\dfrac{42}{5}\\pi$",
+      "$\\dfrac{44}{5}\\pi$",
+      "$\\dfrac{48}{5}\\pi$"
+    ],
+    "answer": "①",
+    "solution": "원뿔의 밑면의 중심을 $\\mathrm{E}$라 하면 직각삼각형 $\\mathrm{AEB}$에서 $\\overline{\\mathrm{EB}} = 3$, $\\overline{\\mathrm{AE}} = 4$이므로\n$$\\overline{\\mathrm{AB}} = \\sqrt{3^2 + 4^2} = 5$$\n선분 $\\mathrm{AE}$는 원뿔의 밑면에 수직이고, 선분 $\\mathrm{AB}$는 지면에 수직이다.\n따라서 원뿔의 밑면과 지면이 이루는 각의 크기 $\\theta$는 두 법선 $\\mathrm{AE}$와 $\\mathrm{AB}$가 이루는 예각 $\\angle \\mathrm{BAE}$의 크기와 같다.\n$$\\cos \\theta = \\cos(\\angle \\mathrm{BAE}) = \\frac{\\overline{\\mathrm{AE}}}{\\overline{\\mathrm{AB}}} = \\frac{4}{5}$$\n원뿔의 밑면의 넓이는 $S = \\pi \\times 3^2 = 9\\pi$이므로, 밑면의 지면 위로의 정사영의 넓이 $S'$은\n$$S' = S \\cos \\theta = 9\\pi \\times \\frac{4}{5} = \\frac{36}{5}\\pi$$\n따라서 정답은 ①이다.",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-056",
+    "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+    "templateKey": "TPL_GEO_SPACE_FIGURE_PROJECTION",
+    "crossConceptKeys": [
+      "CC_SPACE_FIGURE",
+      "CC_ELLIPSE",
+      "CC_PYTHAGOREAN"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 4,
+    "category": "공간도형 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-03",
+    "standardUnit": "공간도형",
+    "standardUnitOrder": 3,
+    "subUnitKey": "H22-GE-03-CORE",
+    "subUnit": "공간도형 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-03-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "공간도형 핵심 개념"
+    ],
+    "wide": false,
+    "content": "밑면의 지름의 길이가 $10$, 높이가 $24$인 원기둥 모양의 그릇에 물을 가득 채운 후 그림과 같이 기울여서 물의 양이 처음의 $\\dfrac{1}{2}$만 남도록 하였다. 이때 수면의 넓이는? (단, 그릇의 두께는 고려하지 않는다.) [그림: 밑면의 지름이 $10$, 높이가 $24$인 원기둥 모양의 그릇이 기울어져 있고, 수면이 아래 밑면의 한 끝점과 위 밑면의 반대쪽 끝점을 지나도록 절반의 물이 차 있다.]",
+    "choices": [
+      "$65\\pi$",
+      "$70\\pi$",
+      "$75\\pi$",
+      "$80\\pi$",
+      "$85\\pi$"
+    ],
+    "answer": "①",
+    "solution": "물의 양이 처음의 $\\dfrac{1}{2}$만 남았으므로 수면은 아래 밑면의 가장 높은 끝점과 위 밑면의 가장 낮은 끝점을 지난다.\n수면과 원기둥의 밑면이 이루는 각의 크기를 $\\theta$라 하자.\n원기둥의 축을 포함하는 단면인 직사각형에서 가로의 길이는 $10$, 세로의 길이는 $24$이므로 대각선의 길이는\n$$\\sqrt{10^2 + 24^2} = \\sqrt{676} = 26$$\n따라서\n$$\\cos \\theta = \\frac{10}{26} = \\frac{5}{13}$$\n수면의 밑면 위로의 정사영은 반지름의 길이가 $5$인 밑면 전체이므로 정사영의 넓이는\n$$S' = \\pi \\times 5^2 = 25\\pi$$\n수면의 넓이를 $S$라 하면 $S \\cos \\theta = S'$이므로\n$$S \\times \\frac{5}{13} = 25\\pi \\implies S = 65\\pi$$\n따라서 정답은 ①이다.",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-056",
+    "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+    "templateKey": "TPL_GEO_SPACE_FIGURE_PROJECTION",
+    "crossConceptKeys": [
+      "CC_SPACE_FIGURE",
+      "CC_ELLIPSE",
+      "CC_PYTHAGOREAN"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 5,
+    "category": "공간도형 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-03",
+    "standardUnit": "공간도형",
+    "standardUnitOrder": 3,
+    "subUnitKey": "H22-GE-03-CORE",
+    "subUnit": "공간도형 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-03-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "공간도형 핵심 개념"
+    ],
+    "wide": false,
+    "content": "그림과 같이 밑면의 반지름의 길이가 $6\\,\\mathrm{cm}$, 높이가 $20\\,\\mathrm{cm}$인 원기둥 모양의 그릇에 $12\\,\\mathrm{cm}$의 높이까지 물이 채워져 있다. 이 그릇을 천천히 기울일 때, 그릇에 들어 있는 물이 쏟아지기 직전의 수면의 넓이는? (단, 그릇의 두께는 고려하지 않으며, 단위는 $\\mathrm{cm}^2$이다.) [그림: 왼쪽에는 반지름 $6\\,\\mathrm{cm}$, 높이 $20\\,\\mathrm{cm}$인 원기둥 그릇에 높이 $12\\,\\mathrm{cm}$까지 물이 차 있는 그림이 있고, 오른쪽 화살표 뒤에는 그릇을 기울여 물이 위쪽 입구 끝에 닿아 쏟아지기 직전인 상태가 그려져 있다.]",
+    "choices": [
+      "$44\\pi$",
+      "$48\\pi$",
+      "$52\\pi$",
+      "$56\\pi$",
+      "$60\\pi$"
+    ],
+    "answer": "⑤",
+    "solution": "그릇을 기울여 물이 쏟아지기 직전일 때, 그릇의 옆면을 따라 측정한 물의 가장 높은 높이는 $20\\,\\mathrm{cm}$이다.\n가장 낮은 높이를 $x\\,\\mathrm{cm}$라 하면, 기울이기 전후의 물의 부피가 같으므로 두 높이의 평균이 처음 물의 높이인 $12\\,\\mathrm{cm}$와 같다.\n$$\\frac{20 + x}{2} = 12 \\implies x = 4$$\n$x = 4 > 0$이므로 물은 밑면 전체를 덮고 있으며, 수면의 밑면 위로의 정사영은 반지름의 길이가 $6\\,\\mathrm{cm}$인 밑면 전체이다.\n밑면의 지름의 길이는 $12\\,\\mathrm{cm}$이고, 양 끝의 높이 차는 $20 - 4 = 16\\,(\\mathrm{cm})$이므로, 수면과 밑면이 이루는 각의 크기 $\\theta$에 대하여\n$$\\sqrt{12^2 + 16^2} = 20, \\quad \\cos \\theta = \\frac{12}{20} = \\frac{3}{5}$$\n밑면의 넓이는 $S' = \\pi \\times 6^2 = 36\\pi$이므로, 구하는 수면의 넓이 $S$는\n$$S = \\frac{S'}{\\cos \\theta} = \\frac{36\\pi}{\\frac{3}{5}} = 60\\pi$$\n따라서 정답은 ⑤이다.",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-056",
+    "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+    "templateKey": "TPL_GEO_SPACE_FIGURE_PROJECTION",
+    "crossConceptKeys": [
+      "CC_SPACE_FIGURE",
+      "CC_ELLIPSE",
+      "CC_PYTHAGOREAN"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 6,
+    "category": "공간도형 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-03",
+    "standardUnit": "공간도형",
+    "standardUnitOrder": 3,
+    "subUnitKey": "H22-GE-03-CORE",
+    "subUnit": "공간도형 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-03-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "공간도형 핵심 개념"
+    ],
+    "wide": false,
+    "content": "밑면의 넓이가 $8\\pi\\,\\mathrm{cm}^2$이고 높이가 $7\\,\\mathrm{cm}$인 원기둥 모양의 컵에 높이 $5\\,\\mathrm{cm}$만큼 물이 채워져 있다. 이 컵을 물이 쏟아지지 않도록 최대한 기울였을 때, 수면의 넓이는? (단, 컵의 두께는 고려하지 않으며, 단위는 $\\mathrm{cm}^2$이다.) [그림: 왼쪽에는 높이 $7\\,\\mathrm{cm}$인 원기둥 컵에 높이 $5\\,\\mathrm{cm}$까지 물이 차 있는 그림이 있고, 오른쪽 화살표 뒤에는 컵을 기울여 물이 윗입구 끝에 닿은 상태가 그려져 있다.]",
+    "choices": [
+      "$3\\sqrt{6}\\pi$",
+      "$4\\sqrt{6}\\pi$",
+      "$5\\sqrt{6}\\pi$",
+      "$6\\sqrt{6}\\pi$",
+      "$8\\sqrt{6}\\pi$"
+    ],
+    "answer": "②",
+    "solution": "원기둥의 밑면의 반지름의 길이를 $r\\,\\mathrm{cm}$라 하면\n$$\\pi r^2 = 8\\pi \\implies r = 2\\sqrt{2}$$\n따라서 밑면의 지름의 길이는 $2r = 4\\sqrt{2}\\,\\mathrm{cm}$이다.\n컵을 최대한 기울였을 때 물의 가장 높은 높이는 $7\\,\\mathrm{cm}$이고, 가장 낮은 높이를 $x\\,\\mathrm{cm}$라 하면 부피가 일정하므로\n$$\\frac{7 + x}{2} = 5 \\implies x = 3$$\n$x = 3 > 0$이므로 수면의 밑면 위로의 정사영은 밑면 전체(넓이 $8\\pi$)이다.\n양 끝의 높이 차는 $7 - 3 = 4\\,(\\mathrm{cm})$이고 밑면의 지름은 $4\\sqrt{2}\\,\\mathrm{cm}$이므로, 수면의 장축의 길이는\n$$\\sqrt{(4\\sqrt{2})^2 + 4^2} = \\sqrt{32 + 16} = 4\\sqrt{3}\\,(\\mathrm{cm})$$\n수면과 밑면이 이루는 각의 크기를 $\\theta$라 하면\n$$\\cos \\theta = \\frac{4\\sqrt{2}}{4\\sqrt{3}} = \\frac{\\sqrt{6}}{3}$$\n따라서 구하는 수면의 넓이 $S$는\n$$S = \\frac{8\\pi}{\\cos \\theta} = \\frac{8\\pi}{\\frac{\\sqrt{6}}{3}} = \\frac{24\\pi}{\\sqrt{6}} = 4\\sqrt{6}\\pi$$\n따라서 정답은 ②이다.",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-056",
+    "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+    "templateKey": "TPL_GEO_SPACE_FIGURE_PROJECTION",
+    "crossConceptKeys": [
+      "CC_SPACE_FIGURE",
+      "CC_ELLIPSE"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  }
+];

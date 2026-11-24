@@ -1,0 +1,323 @@
+window.examTitle = "기하_177_정사각뿔의활용_고2_유형은행1";
+
+window.questionBank = [
+  {
+    "id": 1,
+    "category": "공간도형 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-03",
+    "standardUnit": "공간도형",
+    "standardUnitOrder": 3,
+    "subUnitKey": "H22-GE-03-CORE",
+    "subUnit": "공간도형 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-03-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "공간도형 핵심 개념"
+    ],
+    "wide": false,
+    "content": "그림과 같이 밑면은 한 변의 길이가 $2$인 정사각형이고, 옆면의 모서리의 길이가 모두 $\\sqrt{5}$인 정사각뿔 $A-BCDE$가 있다. 평면 $ABC$와 밑면 $BCDE$가 이루는 각의 크기를 $\\theta$라 할 때, $\\cos\\theta$의 값은? [그림: 밑면이 한 변의 길이가 2인 정사각형 BCDE이고 옆면 모서리의 길이가 모두 루트 5인 정사각뿔 A-BCDE]",
+    "choices": [
+      "\\frac{1}{4}",
+      "\\frac{1}{3}",
+      "\\frac{1}{2}",
+      "\\frac{\\sqrt{3}}{3}",
+      "\\frac{\\sqrt{2}}{2}"
+    ],
+    "answer": "③",
+    "solution": "선분 $BC$의 중점을 $M$이라 하면 이등변삼각형 $ABC$에서 $AM \\perp BC$이다.\n선분 $BM = \\frac{1}{2} \\times 2 = 1$이므로 직각삼각형 $ABM$에서 피타고라스 정리에 의해 $AM = \\sqrt{AB^2 - BM^2} = \\sqrt{(\\sqrt{5})^2 - 1^2} = \\sqrt{4} = 2$이다.\n꼭짓점 $A$에서 밑면 $BCDE$에 내린 수선의 발을 $H$라 하면, $H$는 정사각형 $BCDE$의 중심(두 대각선의 교점)이다.\n점 $H$에서 선분 $BC$에 내린 수선의 발은 중점 $M$과 일치하며, $HM = \\frac{1}{2} \\times 2 = 1$이다.\n삼수선의 정리에 의해 $AH \\perp BC$, $HM \\perp BC$이므로 두 평면 $ABC$와 $BCDE$가 이루는 이면각은 $\\angle AMH = \\theta$이다.\n직각삼각형 $AHM$에서 코사인의 정의에 의해 $\\cos\\theta = \\frac{HM}{AM} = \\frac{1}{2}$이다.\n따라서 정답은 ③이다.",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-056",
+    "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+    "templateKey": "TPL_GEO_SPACE_FIGURE_PROJECTION",
+    "crossConceptKeys": [
+      "CC_SPACE_FIGURE",
+      "CC_MIDPOINT",
+      "CC_PYTHAGOREAN_THEOREM"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 2,
+    "category": "공간도형 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-03",
+    "standardUnit": "공간도형",
+    "standardUnitOrder": 3,
+    "subUnitKey": "H22-GE-03-CORE",
+    "subUnit": "공간도형 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-03-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "공간도형 핵심 개념"
+    ],
+    "wide": false,
+    "content": "그림과 같이 모든 모서리의 길이가 $6$인 정사각뿔 $A-BCDE$가 있다. 정사각형 $BCDE$의 평면 $ABC$ 위로의 정사영의 넓이는? [그림: 모든 모서리의 길이가 6인 정사각뿔 A-BCDE]",
+    "choices": [
+      "10\\sqrt{3}",
+      "12\\sqrt{3}",
+      "14\\sqrt{3}",
+      "16\\sqrt{3}",
+      "18\\sqrt{3}"
+    ],
+    "answer": "②",
+    "solution": "밑면 $BCDE$는 한 변의 길이가 $6$인 정사각형이므로 그 넓이 $S$는 $S = 6^2 = 36$이다.\n옆면 $ABC$는 한 변의 길이가 $6$인 정삼각형이므로 선분 $BC$의 중점을 $M$이라 하면 $AM = \\frac{\\sqrt{3}}{2} \\times 6 = 3\\sqrt{3}$이다.\n꼭짓점 $A$에서 밑면 $BCDE$에 내린 수선의 발 $H$는 정사각형 $BCDE$의 중심이므로 $HM = \\frac{1}{2} \\times 6 = 3$이다.\n삼수선의 정리에 의해 밑면 $BCDE$와 평면 $ABC$가 이루는 이면각의 크기 $\\theta$는 $\\angle AMH$이다.\n직각삼각형 $AHM$에서 코사인의 정의에 의해 $\\cos\\theta = \\frac{HM}{AM} = \\frac{3}{3\\sqrt{3}} = \\frac{\\sqrt{3}}{3}$이다.\n정사영의 넓이 공식에 의해 정사각형 $BCDE$의 평면 $ABC$ 위로의 정사영의 넓이 $S'$은 $S' = S \\cos\\theta$이다.\n식을 계산하면 $S' = 36 \\times \\frac{\\sqrt{3}}{3} = 12\\sqrt{3}$이다.\n따라서 정답은 ②이다.",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-056",
+    "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+    "templateKey": "TPL_GEO_SPACE_FIGURE_PROJECTION",
+    "crossConceptKeys": [
+      "CC_ORTHOGONAL_PROJECTION",
+      "CC_SPACE_FIGURE",
+      "CC_SQUARE_AREA"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 3,
+    "category": "공간도형 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-03",
+    "standardUnit": "공간도형",
+    "standardUnitOrder": 3,
+    "subUnitKey": "H22-GE-03-CORE",
+    "subUnit": "공간도형 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-03-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "공간도형 핵심 개념"
+    ],
+    "wide": false,
+    "content": "그림과 같이 모든 모서리의 길이가 $2$인 정사각뿔 $A-BCDE$에서 밑면의 두 대각선 $BD, CE$의 교점을 $H$라고 할 때, 삼각형 $HDE$의 평면 $ABC$ 위로의 정사영의 넓이는? [그림: 모든 모서리의 길이가 2인 정사각뿔 A-BCDE에서 밑면 대각선의 교점 H와 삼각형 HDE가 표시되어 있음]",
+    "choices": [
+      "\\frac{\\sqrt{3}}{12}",
+      "\\frac{\\sqrt{3}}{6}",
+      "\\frac{\\sqrt{3}}{4}",
+      "\\frac{\\sqrt{3}}{3}",
+      "\\frac{\\sqrt{3}}{2}"
+    ],
+    "answer": "④",
+    "solution": "밑면 $BCDE$는 한 변의 길이가 $2$인 정사각형이므로 전체 넓이는 $2^2 = 4$이다.\n점 $H$는 정사각형의 두 대각선의 교점이므로 삼각형 $HDE$의 넓이 $S$는 밑면 넓이의 $\\frac{1}{4}$인 $S = \\frac{1}{4} \\times 4 = 1$이다.\n삼각형 $HDE$는 밑면 $BCDE$에 포함되므로, 평면 $HDE$와 평면 $ABC$가 이루는 각 $\\theta$는 밑면과 옆면이 이루는 각과 같다.\n선분 $BC$의 중점을 $M$이라 하면 정삼각형 $ABC$에서 $AM = \\frac{\\sqrt{3}}{2} \\times 2 = \\sqrt{3}$이고, 중심 $H$에서 $HM = 1$이다.\n삼수선의 정리에 의해 직각삼각형 $AHM$에서 $\\cos\\theta = \\frac{HM}{AM} = \\frac{1}{\\sqrt{3}} = \\frac{\\sqrt{3}}{3}$이다.\n정사영의 넓이 공식에 의해 삼각형 $HDE$의 평면 $ABC$ 위로의 정사영의 넓이 $S'$은 $S' = S \\cos\\theta$이다.\n대입하여 계산하면 $S' = 1 \\times \\frac{\\sqrt{3}}{3} = \\frac{\\sqrt{3}}{3}$이다.\n따라서 정답은 ④이다.",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-056",
+    "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+    "templateKey": "TPL_GEO_SPACE_FIGURE_PROJECTION",
+    "crossConceptKeys": [
+      "CC_ORTHOGONAL_PROJECTION",
+      "CC_DIAGONALS",
+      "CC_SPACE_FIGURE"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 4,
+    "category": "공간도형 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-03",
+    "standardUnit": "공간도형",
+    "standardUnitOrder": 3,
+    "subUnitKey": "H22-GE-03-CORE",
+    "subUnit": "공간도형 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-03-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "공간도형 핵심 개념"
+    ],
+    "wide": false,
+    "content": "그림과 같이 모든 모서리의 길이가 $6$인 정사각뿔 $O-ABCD$에서 삼각형 $OBC$에 내접하는 원의 밑면 $ABCD$ 위로의 정사영의 넓이는? [그림: 모든 모서리의 길이가 6인 정사각뿔 O-ABCD의 옆면 OBC에 내접원이 그려져 있는 입체도형]",
+    "choices": [
+      "\\frac{\\sqrt{3}}{5}\\pi",
+      "\\frac{\\sqrt{3}}{4}\\pi",
+      "\\frac{\\sqrt{3}}{3}\\pi",
+      "\\frac{\\sqrt{3}}{2}\\pi",
+      "\\sqrt{3}\\pi"
+    ],
+    "answer": "⑤",
+    "solution": "삼각형 $OBC$는 한 변의 길이가 $a=6$인 정삼각형이므로 내접원의 반지름 $r$은 $r = \\frac{\\sqrt{3}}{6} a = \\frac{\\sqrt{3}}{6} \\times 6 = \\sqrt{3}$이다.\n따라서 내접원의 넓이 $S$는 $S = \\pi r^2 = \\pi \\times (\\sqrt{3})^2 = 3\\pi$이다.\n선분 $BC$의 중점을 $M$이라 하면 정삼각형 $OBC$의 높이는 $OM = \\frac{\\sqrt{3}}{2} \\times 6 = 3\\sqrt{3}$이다.\n꼭짓점 $O$에서 밑면 $ABCD$에 내린 수선의 발을 $H$라 하면, $H$는 밑면 정사각형의 중심이므로 $HM = \\frac{1}{2} \\times 6 = 3$이다.\n삼수선의 정리에 의해 옆면 $OBC$와 밑면 $ABCD$가 이루는 각의 크기를 $\\theta$라 하면 $\\cos\\theta = \\frac{HM}{OM} = \\frac{3}{3\\sqrt{3}} = \\frac{\\sqrt{3}}{3}$이다.\n정사영의 넓이 공식에 의해 구하는 정사영의 넓이 $S'$은 $S' = S \\cos\\theta$이다.\n식을 계산하면 $S' = 3\\pi \\times \\frac{\\sqrt{3}}{3} = \\sqrt{3}\\pi$이다.\n따라서 정답은 ⑤이다.",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-056",
+    "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+    "templateKey": "TPL_GEO_SPACE_FIGURE_PROJECTION",
+    "crossConceptKeys": [
+      "CC_ORTHOGONAL_PROJECTION",
+      "CC_INSCRIBED_CIRCLE",
+      "CC_SPACE_FIGURE"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 5,
+    "category": "공간도형 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-03",
+    "standardUnit": "공간도형",
+    "standardUnitOrder": 3,
+    "subUnitKey": "H22-GE-03-CORE",
+    "subUnit": "공간도형 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-03-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "공간도형 핵심 개념"
+    ],
+    "wide": false,
+    "content": "한 모서리의 길이가 $2$인 정육면체 $ABCD-EFGH$의 한 면 $EFGH$ 위에 모든 모서리의 길이가 $2$인 정사각뿔 $P-EFGH$가 그림과 같이 놓여 있다. 평면 $PFG$와 평면 $BFGC$가 이루는 예각의 크기를 $\\theta$라 할 때, $\\cos\\theta$의 값은? [그림: 한 모서리의 길이가 2인 정육면체 ABCD-EFGH의 면 EFGH 위에 모든 모서리의 길이가 2인 정사각뿔 P-EFGH가 결합되어 있고, 면 PFG와 면 BFGC가 표시됨]",
+    "choices": [
+      "\\frac{1}{3}",
+      "\\frac{\\sqrt{3}}{3}",
+      "\\frac{\\sqrt{6}}{3}",
+      "\\frac{\\sqrt{7}}{3}",
+      "\\frac{2\\sqrt{2}}{3}"
+    ],
+    "answer": "③",
+    "solution": "선분 $FG$는 두 평면 $PFG$와 $BFGC$의 교선이다.\n선분 $FG$의 중점을 $M$이라 하면 정삼각형 $PFG$에서 $PM \\perp FG$이고, 높이 공식에 의해 $PM = \\frac{\\sqrt{3}}{2} \\times 2 = \\sqrt{3}$이다.\n정육면체의 면 $BFGC$에서 선분 $BC$의 중점을 $N$이라 하면 사각형 $BFGC$는 정사각형이므로 $MN \\perp FG$이고 $MN = 2$이다.\n따라서 두 평면 $PFG$와 $BFGC$가 이루는 이면각의 크기는 $\\angle PMN = \\theta$이다.\n정사각뿔의 꼭짓점 $P$에서 밑면 $EFGH$에 내린 수선의 발을 $O$라 하면, $O$는 정사각형 $EFGH$의 중심이므로 $OM = 1$이다.\n선분 $OM$의 연장선은 밑면 $EFGH$ 위에 있고 면 $BFGC$와 수직이므로, 면 $PFG$가 밑면 $EFGH$와 이루는 각을 $\\alpha$라 하면 $\\cos\\alpha = \\frac{OM}{PM} = \\frac{1}{\\sqrt{3}} = \\frac{\\sqrt{3}}{3}$이다.\n정육면체의 면 $BFGC$는 밑면 $EFGH$에 수직이므로 두 평면이 이루는 예각 $\\theta$는 $\\theta = 90^\\circ - \\alpha$이다.\n여각 공식에 의해 $\\cos\\theta = \\cos(90^\\circ - \\alpha) = \\sin\\alpha = \\sqrt{1 - \\cos^2\\alpha} = \\sqrt{1 - \\frac{1}{3}} = \\frac{\\sqrt{6}}{3}$이다.\n따라서 정답은 ③이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-056",
+    "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+    "templateKey": "TPL_GEO_SPACE_FIGURE_PROJECTION",
+    "crossConceptKeys": [
+      "CC_SPACE_FIGURE",
+      "CC_MIDPOINT",
+      "CC_PYTHAGOREAN_THEOREM"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "REINTERPRETATION"
+  },
+  {
+    "id": 6,
+    "category": "공간도형 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-03",
+    "standardUnit": "공간도형",
+    "standardUnitOrder": 3,
+    "subUnitKey": "H22-GE-03-CORE",
+    "subUnit": "공간도형 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-03-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "공간도형 핵심 개념"
+    ],
+    "wide": false,
+    "content": "그림과 같이 모든 모서리의 길이가 $2$인 정사각뿔 $P-ABCD$에서 두 옆면 $PAB$와 $PAD$가 이루는 각의 크기를 $\\theta$라 할 때, $\\cos\\theta$의 값은? (단, $90^\\circ < \\theta < 180^\\circ$) [그림: 밑면이 정사각형 ABCD이고 모든 모서리의 길이가 2인 정사각뿔 P-ABCD에서 두 옆면 PAB와 PAD가 표시되어 있음]",
+    "choices": [
+      "-\\frac{\\sqrt{6}}{3}",
+      "-\\frac{\\sqrt{5}}{3}",
+      "-\\frac{2}{3}",
+      "-\\frac{\\sqrt{3}}{3}",
+      "-\\frac{1}{3}"
+    ],
+    "answer": "⑤",
+    "solution": "두 평면 $PAB$와 $PAD$의 교선은 모서리 $AP$이다.\n두 삼각형 $PAB$와 $PAD$는 한 변의 길이가 $2$인 정삼각형이므로 서로 합동이다.\n꼭짓점 $B$에서 모서리 $AP$에 내린 수선의 발을 $M$이라 하면 정삼각형의 높이 공식에 의해 $BM = \\frac{\\sqrt{3}}{2} \\times 2 = \\sqrt{3}$이다.\n합동에 의해 꼭짓점 $D$에서 모서리 $AP$에 내린 수선의 발 역시 점 $M$과 일치하며 $DM = \\sqrt{3}$이다.\n이면각의 정의에 의해 $BM \\perp AP$, $DM \\perp AP$이므로 두 평면 $PAB$와 $PAD$가 이루는 각 $\\theta$는 $\\angle BMD$이다.\n밑면 $ABCD$는 한 변의 길이가 $2$인 정사각형이므로 대각선의 길이는 $BD = 2\\sqrt{2}$이다.\n삼각형 $BMD$에서 제이코사인법칙에 의해 $\\cos\\theta = \\frac{BM^2 + DM^2 - BD^2}{2 \\cdot BM \\cdot DM}$이다.\n값을 대입하면 $\\cos\\theta = \\frac{(\\sqrt{3})^2 + (\\sqrt{3})^2 - (2\\sqrt{2})^2}{2 \\times \\sqrt{3} \\times \\sqrt{3}} = \\frac{3 + 3 - 8}{6} = -\\frac{1}{3}$이다.\n따라서 정답은 ⑤이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-056",
+    "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+    "templateKey": "TPL_GEO_SPACE_FIGURE_PROJECTION",
+    "crossConceptKeys": [
+      "CC_SPACE_FIGURE",
+      "CC_EQUILATERAL_TRIANGLE",
+      "CC_TRIANGLE_CONGRUENCE"
+    ],
+    "conditionKeys": [
+      "COND_RESTRICTED_INTERVAL"
+    ],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 7,
+    "category": "공간도형 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-03",
+    "standardUnit": "공간도형",
+    "standardUnitOrder": 3,
+    "subUnitKey": "H22-GE-03-CORE",
+    "subUnit": "공간도형 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-03-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "공간도형 핵심 개념"
+    ],
+    "wide": false,
+    "content": "그림과 같이 모든 모서리의 길이가 $6$인 정사각뿔 $O-ABCD$가 있다. 네 삼각형 $OAB, OBC, OCD, ODA$에 각각 내접하는 네 원의 밑면 $ABCD$ 위로의 정사영을 각각 $S_1, S_2, S_3, S_4$라 하자. 밑면 $ABCD$의 내부에서 네 도형 $S_1, S_2, S_3, S_4$를 제외한 어두운 부분의 넓이가 $a + b\\sqrt{3}\\pi$일 때, $a + b$의 값은? (단, $a, b$는 유리수이고, 네 원의 정사영은 서로 겹치지 않는다.) [그림: 밑면이 정사각형 ABCD이고 모든 모서리의 길이가 6인 정사각뿔 O-ABCD에서 네 옆면에 각각 내접하는 원이 그려져 있고, 밑면에서 네 원의 정사영을 제외한 부분이 어둡게 칠해져 있음]",
+    "choices": [
+      "24",
+      "28",
+      "32",
+      "36",
+      "40"
+    ],
+    "answer": "③",
+    "solution": "밑면 $ABCD$는 한 변의 길이가 $6$인 정사각형이므로 그 넓이는 $S_{\\text{밑면}} = 6^2 = 36$이다.\n옆면 정삼각형 $OAB$의 한 변의 길이는 $6$이므로 내접원의 반지름 $r$은 $r = \\frac{\\sqrt{3}}{6} \\times 6 = \\sqrt{3}$이다.\n따라서 한 내접원의 넓이 $S_{\\text{원}}$은 $S_{\\text{원}} = \\pi r^2 = \\pi \\times (\\sqrt{3})^2 = 3\\pi$이다.\n선분 $AB$의 중점을 $M$이라 하면 정삼각형의 높이는 $OM = \\frac{\\sqrt{3}}{2} \\times 6 = 3\\sqrt{3}$이고, 밑면 정사각형의 중심 $H$에 대하여 $HM = 3$이다.\n삼수선의 정리에 의해 옆면과 밑면이 이루는 각 $\\theta$에 대하여 $\\cos\\theta = \\frac{HM}{OM} = \\frac{3}{3\\sqrt{3}} = \\frac{\\sqrt{3}}{3}$이다.\n정사영의 넓이 공식에 의해 한 원의 정사영 도형의 넓이는 $S' = S_{\\text{원}} \\cos\\theta = 3\\pi \\times \\frac{\\sqrt{3}}{3} = \\sqrt{3}\\pi$이다.\n네 옆면의 내접원의 정사영 $S_1, S_2, S_3, S_4$는 서로 겹치지 않으므로 네 도형의 넓이의 총합은 $4 \\times \\sqrt{3}\\pi = 4\\sqrt{3}\\pi$이다.\n따라서 밑면에서 네 도형을 제외한 어두운 부분의 넓이는 $S_{\\text{어두운 부분}} = 36 - 4\\sqrt{3}\\pi$이다.\n조건에서 넓이가 $a + b\\sqrt{3}\\pi$이므로 유리수 $a, b$에 대하여 $a = 36$, $b = -4$이다.\n따라서 $a + b = 36 + (-4) = 32$이다.\n따라서 정답은 ③이다.",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-056",
+    "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+    "templateKey": "TPL_GEO_SPACE_FIGURE_PROJECTION",
+    "crossConceptKeys": [
+      "CC_ORTHOGONAL_PROJECTION",
+      "CC_INSCRIBED_CIRCLE",
+      "CC_SQUARE_AREA"
+    ],
+    "conditionKeys": [
+      "COND_RATIONAL"
+    ],
+    "integrationPattern": "SEQUENTIAL"
+  }
+];

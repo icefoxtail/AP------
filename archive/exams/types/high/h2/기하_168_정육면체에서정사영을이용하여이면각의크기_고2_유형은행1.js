@@ -1,0 +1,270 @@
+window.examTitle = "기하_168_정육면체에서정사영을이용하여이면각의크기_고2_유형은행1";
+
+window.questionBank = [
+  {
+    "id": 1,
+    "category": "공간도형 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-03",
+    "standardUnit": "공간도형",
+    "standardUnitOrder": 3,
+    "subUnitKey": "H22-GE-03-CORE",
+    "subUnit": "공간도형 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-03-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "공간도형 핵심 개념"
+    ],
+    "wide": false,
+    "content": "그림과 같이 정육면체 $\\mathrm{ABCD-EFGH}$에서 면 $\\mathrm{DEG}$와 면 $\\mathrm{AEHD}$가 이루는 예각의 크기를 $\\theta$라 할 때, $\\tan\\theta$의 값은? [그림: 위쪽 밑면이 $\\mathrm{ABCD}$(반시계 방향)이고 아래쪽 밑면이 $\\mathrm{EFGH}$(각각 $\\mathrm{A, B, C, D}$의 바로 아래에 $\\mathrm{E, F, G, H}$가 위치)인 정육면체 $\\mathrm{ABCD-EFGH}$에서 삼각형 $\\mathrm{DEG}$의 내부가 색칠되어 있다.]",
+    "choices": [
+      "$1$",
+      "$\\sqrt{2}$",
+      "$\\sqrt{3}$",
+      "$2$",
+      "$\\sqrt{5}$"
+    ],
+    "answer": "②",
+    "solution": "정육면체의 한 모서리의 길이를 $a$라 하자.\n삼각형 $\\mathrm{DEG}$의 평면 $\\mathrm{AEHD}$ 위로의 정사영은 삼각형 $\\mathrm{DEH}$이다.\n$\\overline{\\mathrm{DE}}=\\overline{\\mathrm{EG}}=\\overline{\\mathrm{GD}}=\\sqrt{2}a$이므로 정삼각형 $\\mathrm{DEG}$의 넓이는\n$$\\triangle\\mathrm{DEG}=\\frac{\\sqrt{3}}{4}(\\sqrt{2}a)^2=\\frac{\\sqrt{3}}{2}a^2$$\n직각이등변삼각형 $\\mathrm{DEH}$의 넓이는\n$$\\triangle\\mathrm{DEH}=\\frac{1}{2}a^2$$\n정사영의 넓이 공식에 의하여\n$$\\cos\\theta=\\frac{\\triangle\\mathrm{DEH}}{\\triangle\\mathrm{DEG}}=\\frac{\\frac{1}{2}a^2}{\\frac{\\sqrt{3}}{2}a^2}=\\frac{1}{\\sqrt{3}}=\\frac{\\sqrt{3}}{3}$$\n$0<\\theta<\\dfrac{\\pi}{2}$이므로\n$$\\sin\\theta=\\sqrt{1-\\cos^2\\theta}=\\sqrt{1-\\frac{1}{3}}=\\frac{\\sqrt{6}}{3}$$\n따라서 $\\tan\\theta=\\dfrac{\\sin\\theta}{\\cos\\theta}=\\sqrt{2}$이다.\n따라서 정답은 ②이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-057",
+    "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+    "templateKey": "TPL_GEO_SPACE_FIGURE_ANGLE",
+    "crossConceptKeys": [
+      "CC_SPACE_FIGURE",
+      "CC_PYTHAGOREAN"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "NONE"
+  },
+  {
+    "id": 2,
+    "category": "공간도형 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-03",
+    "standardUnit": "공간도형",
+    "standardUnitOrder": 3,
+    "subUnitKey": "H22-GE-03-CORE",
+    "subUnit": "공간도형 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-03-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "공간도형 핵심 개념"
+    ],
+    "wide": false,
+    "content": "그림과 같이 한 모서리의 길이가 $2$인 정육면체 $\\mathrm{ABCD-EFGH}$에서 모서리 $\\mathrm{DH}$의 중점을 $\\mathrm{M}$이라 할 때, 삼각형 $\\mathrm{EHG}$에 내접하는 원의 평면 $\\mathrm{AMG}$ 위로의 정사영의 넓이는? [그림: 한 모서리의 길이가 $2$인 정육면체 $\\mathrm{ABCD-EFGH}$에서 모서리 $\\mathrm{DH}$의 중점 $\\mathrm{M}$이 표시되어 있고, 삼각형 $\\mathrm{AMG}$의 내부가 색칠되어 있으며, 밑면 $\\mathrm{EFGH}$ 위의 삼각형 $\\mathrm{EHG}$에 내접하는 원이 그려져 있다.]",
+    "choices": [
+      "$\\dfrac{5\\sqrt{6}-7\\sqrt{3}}{3}\\pi$",
+      "$\\dfrac{3\\sqrt{6}-4\\sqrt{3}}{3}\\pi$",
+      "$\\dfrac{\\sqrt{6}-\\sqrt{3}}{3}\\pi$",
+      "$\\dfrac{6\\sqrt{6}-8\\sqrt{3}}{3}\\pi$",
+      "$\\dfrac{4\\sqrt{6}-5\\sqrt{3}}{3}\\pi$"
+    ],
+    "answer": "④",
+    "solution": "직각이등변삼각형 $\\mathrm{EHG}$에서 $\\overline{\\mathrm{EH}}=\\overline{\\mathrm{HG}}=2$, $\\overline{\\mathrm{EG}}=2\\sqrt{2}$이다.\n내접원의 반지름의 길이를 $r$이라 하면\n$$\\frac{1}{2}\\cdot 2\\cdot 2=\\frac{1}{2}r(2+2+2\\sqrt{2}) \\implies r=\\frac{2}{2+\\sqrt{2}}=2-\\sqrt{2}$$\n내접원의 넓이는\n$$S=\\pi(2-\\sqrt{2})^2=(6-4\\sqrt{2})\\pi$$\n한편 평면 $\\mathrm{AMG}$와 평면 $\\mathrm{EFGH}$가 이루는 예각의 크기를 $\\theta$라 하자.\n삼각형 $\\mathrm{AMG}$의 평면 $\\mathrm{EFGH}$ 위로의 정사영은 삼각형 $\\mathrm{EHG}$이고, 그 넓이는 $\\dfrac{1}{2}\\cdot 2\\cdot 2=2$이다.\n삼각형 $\\mathrm{AMG}$에서\n$$\\overline{\\mathrm{AM}}=\\sqrt{2^2+1^2}=\\sqrt{5}, \\quad \\overline{\\mathrm{MG}}=\\sqrt{2^2+1^2}=\\sqrt{5}, \\quad \\overline{\\mathrm{AG}}=\\sqrt{2^2+2^2+2^2}=2\\sqrt{3}$$\n선분 $\\mathrm{AG}$의 중점을 $\\mathrm{N}$이라 하면 $\\overline{\\mathrm{MN}}=\\sqrt{(\\sqrt{5})^2-(\\sqrt{3})^2}=\\sqrt{2}$이므로\n$$\\triangle\\mathrm{AMG}=\\frac{1}{2}\\cdot 2\\sqrt{3}\\cdot\\sqrt{2}=\\sqrt{6}$$\n따라서 $\\cos\\theta=\\dfrac{2}{\\sqrt{6}}=\\dfrac{\\sqrt{6}}{3}$이므로 구하는 정사영의 넓이는\n$$S'=S\\cos\\theta=(6-4\\sqrt{2})\\pi\\cdot\\frac{\\sqrt{6}}{3}=\\frac{6\\sqrt{6}-8\\sqrt{3}}{3}\\pi$$\n따라서 정답은 ④이다.",
+    "difficultyBucket": 5,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B45",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-057",
+    "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+    "templateKey": "TPL_GEO_SPACE_FIGURE_ANGLE",
+    "crossConceptKeys": [
+      "CC_SPACE_FIGURE",
+      "CC_MIDPOINT",
+      "CC_INSCRIBED_CIRCLE"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 3,
+    "category": "공간도형 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-03",
+    "standardUnit": "공간도형",
+    "standardUnitOrder": 3,
+    "subUnitKey": "H22-GE-03-CORE",
+    "subUnit": "공간도형 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-03-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "공간도형 핵심 개념"
+    ],
+    "wide": false,
+    "content": "그림과 같이 한 모서리의 길이가 $4$인 정육면체 $\\mathrm{ABCD-EFGH}$에서 두 모서리 $\\mathrm{AD}$, $\\mathrm{FG}$ 위에 $\\overline{\\mathrm{DP}}=\\overline{\\mathrm{GQ}}=1$인 두 점 $\\mathrm{P}$, $\\mathrm{Q}$가 있다. 평면 $\\mathrm{PBQ}$와 평면 $\\mathrm{EFGH}$가 이루는 예각의 크기를 $\\theta$라 할 때, $\\cos\\theta$의 값은? [그림: 한 모서리의 길이가 $4$인 정육면체 $\\mathrm{ABCD-EFGH}$에서 모서리 $\\mathrm{AD}$ 위에 $\\overline{\\mathrm{DP}}=1$인 점 $\\mathrm{P}$와 모서리 $\\mathrm{FG}$ 위에 $\\overline{\\mathrm{GQ}}=1$인 점 $\\mathrm{Q}$가 표시되어 있고, 삼각형 $\\mathrm{PBQ}$가 그려져 있다.]",
+    "choices": [
+      "$\\dfrac{\\sqrt{34}}{34}$",
+      "$\\dfrac{\\sqrt{34}}{17}$",
+      "$\\dfrac{3\\sqrt{34}}{34}$",
+      "$\\dfrac{2\\sqrt{34}}{17}$",
+      "$\\dfrac{5\\sqrt{34}}{34}$"
+    ],
+    "answer": "③",
+    "solution": "점 $\\mathrm{P}$에서 평면 $\\mathrm{EFGH}$에 내린 수선의 발을 $\\mathrm{P}'$이라 하면 $\\mathrm{P}'$은 모서리 $\\mathrm{EH}$ 위에 있고 $\\overline{\\mathrm{HP}'}=1$, $\\overline{\\mathrm{EP}'}=3$이다.\n삼각형 $\\mathrm{PBQ}$의 평면 $\\mathrm{EFGH}$ 위로의 정사영은 삼각형 $\\mathrm{P}'\\mathrm{FQ}$이다.\n$\\overline{\\mathrm{FQ}}=4-1=3$, $\\overline{\\mathrm{P}'\\mathrm{Q}}=4$이고 $\\angle\\mathrm{P}'\\mathrm{QF}=90^\\circ$이므로\n$$\\triangle\\mathrm{P}'\\mathrm{FQ}=\\frac{1}{2}\\cdot 3\\cdot 4=6$$\n이제 삼각형 $\\mathrm{PBQ}$의 세 변의 길이를 구하면\n$$\\overline{\\mathrm{BP}}=\\sqrt{4^2+3^2}=5, \\quad \\overline{\\mathrm{BQ}}=\\sqrt{4^2+3^2}=5, \\quad \\overline{\\mathrm{PQ}}=\\sqrt{4^2+4^2}=4\\sqrt{2}$$\n선분 $\\mathrm{PQ}$의 중점을 $\\mathrm{M}$이라 하면 $\\overline{\\mathrm{BM}}\\perp\\overline{\\mathrm{PQ}}$이고\n$$\\overline{\\mathrm{BM}}=\\sqrt{5^2-(2\\sqrt{2})^2}=\\sqrt{25-8}=\\sqrt{17}$$\n이므로 삼각형 $\\mathrm{PBQ}$의 넓이는\n$$\\triangle\\mathrm{PBQ}=\\frac{1}{2}\\cdot 4\\sqrt{2}\\cdot\\sqrt{17}=2\\sqrt{34}$$\n따라서 구하는 값은\n$$\\cos\\theta=\\frac{\\triangle\\mathrm{P}'\\mathrm{FQ}}{\\triangle\\mathrm{PBQ}}=\\frac{6}{2\\sqrt{34}}=\\frac{3\\sqrt{34}}{34}$$\n따라서 정답은 ③이다.",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-057",
+    "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+    "templateKey": "TPL_GEO_SPACE_FIGURE_ANGLE",
+    "crossConceptKeys": [
+      "CC_SPACE_FIGURE",
+      "CC_PYTHAGOREAN"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 4,
+    "category": "공간도형 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-03",
+    "standardUnit": "공간도형",
+    "standardUnitOrder": 3,
+    "subUnitKey": "H22-GE-03-CORE",
+    "subUnit": "공간도형 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-03-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "공간도형 핵심 개념"
+    ],
+    "wide": false,
+    "content": "그림과 같이 한 모서리의 길이가 $3$인 정육면체 $\\mathrm{ABCD-EFGH}$에서 모서리 $\\mathrm{AE}$를 $1:2$로 내분하는 점을 $\\mathrm{K}$라 하자. 평면 $\\mathrm{BHK}$와 평면 $\\mathrm{AEFB}$가 이루는 예각의 크기를 $\\theta$라 할 때, $\\cos\\theta$의 값은? [그림: 한 모서리의 길이가 $3$인 정육면체 $\\mathrm{ABCD-EFGH}$에서 모서리 $\\mathrm{AE}$ 위에 $\\overline{\\mathrm{AK}}=1$, $\\overline{\\mathrm{KE}}=2$인 점 $\\mathrm{K}$가 표시되어 있고, 삼각형 $\\mathrm{BHK}$가 그려져 있다.]",
+    "choices": [
+      "$\\dfrac{\\sqrt{7}}{7}$",
+      "$\\dfrac{\\sqrt{14}}{7}$",
+      "$\\dfrac{\\sqrt{21}}{7}$",
+      "$\\dfrac{2\\sqrt{7}}{7}$",
+      "$\\dfrac{\\sqrt{35}}{7}$"
+    ],
+    "answer": "②",
+    "solution": "점 $\\mathrm{K}$는 모서리 $\\mathrm{AE}$를 $1:2$로 내분하므로 $\\overline{\\mathrm{AK}}=1$, $\\overline{\\mathrm{KE}}=2$이다.\n점 $\\mathrm{H}$의 평면 $\\mathrm{AEFB}$ 위로의 정사영은 점 $\\mathrm{E}$이므로 삼각형 $\\mathrm{BHK}$의 평면 $\\mathrm{AEFB}$ 위로의 정사영은 삼각형 $\\mathrm{BEK}$이다.\n삼각형 $\\mathrm{BEK}$의 넓이는 밑변을 $\\overline{\\mathrm{KE}}=2$, 높이를 $\\overline{\\mathrm{AB}}=3$으로 보면\n$$\\triangle\\mathrm{BEK}=\\frac{1}{2}\\cdot 2\\cdot 3=3$$\n이제 삼각형 $\\mathrm{BHK}$의 세 변의 길이를 구하면\n$$\\overline{\\mathrm{BK}}=\\sqrt{3^2+1^2}=\\sqrt{10}, \\quad \\overline{\\mathrm{HK}}=\\sqrt{3^2+2^2}=\\sqrt{13}, \\quad \\overline{\\mathrm{BH}}=\\sqrt{3^2+3^2+3^2}=3\\sqrt{3}$$\n삼각형 $\\mathrm{BHK}$에서 코사인법칙을 이용하면\n$$\\cos(\\angle\\mathrm{BKH})=\\frac{10+13-27}{2\\sqrt{10}\\sqrt{13}}=-\\frac{2}{\\sqrt{130}}$$\n이므로\n$$\\sin(\\angle\\mathrm{BKH})=\\sqrt{1-\\frac{4}{130}}=\\sqrt{\\frac{126}{130}}=\\frac{3\\sqrt{14}}{\\sqrt{130}}$$\n따라서 삼각형 $\\mathrm{BHK}$의 넓이는\n$$\\triangle\\mathrm{BHK}=\\frac{1}{2}\\cdot\\sqrt{10}\\cdot\\sqrt{13}\\cdot\\frac{3\\sqrt{14}}{\\sqrt{130}}=\\frac{3\\sqrt{14}}{2}$$\n구하는 값은\n$$\\cos\\theta=\\frac{\\triangle\\mathrm{BEK}}{\\triangle\\mathrm{BHK}}=\\frac{3}{\\frac{3\\sqrt{14}}{2}}=\\frac{2}{\\sqrt{14}}=\\frac{\\sqrt{14}}{7}$$\n따라서 정답은 ②이다.",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-057",
+    "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+    "templateKey": "TPL_GEO_SPACE_FIGURE_ANGLE",
+    "crossConceptKeys": [
+      "CC_SPACE_FIGURE",
+      "CC_INTERNAL_DIVISION"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 5,
+    "category": "공간도형 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-03",
+    "standardUnit": "공간도형",
+    "standardUnitOrder": 3,
+    "subUnitKey": "H22-GE-03-CORE",
+    "subUnit": "공간도형 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-03-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "공간도형 핵심 개념"
+    ],
+    "wide": false,
+    "content": "그림과 같이 한 모서리의 길이가 $4$인 정육면체 $\\mathrm{ABCD-EFGH}$에서 모서리 $\\mathrm{CD}$를 $1:3$으로 내분하는 점을 $\\mathrm{N}$이라 할 때, 삼각형 $\\mathrm{BGN}$과 사각형 $\\mathrm{BFGC}$가 이루는 예각의 크기 $\\theta$에 대하여 $\\cos\\theta$의 값은? [그림: 한 모서리의 길이가 $4$인 정육면체 $\\mathrm{ABCD-EFGH}$에서 모서리 $\\mathrm{CD}$ 위에 $\\overline{\\mathrm{CN}}=1$, $\\overline{\\mathrm{ND}}=3$인 점 $\\mathrm{N}$이 표시되어 있고, 삼각형 $\\mathrm{BGN}$의 내부가 색칠되어 있다.]",
+    "choices": [
+      "$\\dfrac{\\sqrt{2}}{6}$",
+      "$\\dfrac{\\sqrt{2}}{4}$",
+      "$\\dfrac{\\sqrt{2}}{3}$",
+      "$\\dfrac{\\sqrt{2}}{2}$",
+      "$\\dfrac{2\\sqrt{2}}{3}$"
+    ],
+    "answer": "⑤",
+    "solution": "점 $\\mathrm{N}$은 모서리 $\\mathrm{CD}$를 $1:3$으로 내분하므로 $\\overline{\\mathrm{CN}}=1$, $\\overline{\\mathrm{ND}}=3$이다.\n점 $\\mathrm{N}$의 평면 $\\mathrm{BFGC}$ 위로의 정사영은 점 $\\mathrm{C}$이므로 삼각형 $\\mathrm{BGN}$의 평면 $\\mathrm{BFGC}$ 위로의 정사영은 삼각형 $\\mathrm{BGC}$이다.\n직각이등변삼각형 $\\mathrm{BGC}$의 넓이는\n$$\\triangle\\mathrm{BGC}=\\frac{1}{2}\\cdot 4\\cdot 4=8$$\n삼각형 $\\mathrm{BGN}$의 세 변의 길이를 구하면\n$$\\overline{\\mathrm{BG}}=4\\sqrt{2}, \\quad \\overline{\\mathrm{BN}}=\\sqrt{4^2+1^2}=\\sqrt{17}, \\quad \\overline{\\mathrm{GN}}=\\sqrt{4^2+1^2}=\\sqrt{17}$$\n선분 $\\mathrm{BG}$의 중점을 $\\mathrm{M}$이라 하면 $\\overline{\\mathrm{NM}}\\perp\\overline{\\mathrm{BG}}$이고\n$$\\overline{\\mathrm{NM}}=\\sqrt{(\\sqrt{17})^2-(2\\sqrt{2})^2}=\\sqrt{17-8}=3$$\n이므로 삼각형 $\\mathrm{BGN}$의 넓이는\n$$\\triangle\\mathrm{BGN}=\\frac{1}{2}\\cdot 4\\sqrt{2}\\cdot 3=6\\sqrt{2}$$\n따라서 구하는 값은\n$$\\cos\\theta=\\frac{\\triangle\\mathrm{BGC}}{\\triangle\\mathrm{BGN}}=\\frac{8}{6\\sqrt{2}}=\\frac{4}{3\\sqrt{2}}=\\frac{2\\sqrt{2}}{3}$$\n따라서 정답은 ⑤이다.",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-057",
+    "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+    "templateKey": "TPL_GEO_SPACE_FIGURE_ANGLE",
+    "crossConceptKeys": [
+      "CC_SPACE_FIGURE",
+      "CC_INTERNAL_DIVISION"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 6,
+    "category": "공간도형 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-03",
+    "standardUnit": "공간도형",
+    "standardUnitOrder": 3,
+    "subUnitKey": "H22-GE-03-CORE",
+    "subUnit": "공간도형 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-03-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "공간도형 핵심 개념"
+    ],
+    "wide": false,
+    "content": "그림과 같이 한 모서리의 길이가 $5$인 정육면체 $\\mathrm{ABCD-EFGH}$의 세 모서리 $\\mathrm{AD}$, $\\mathrm{BC}$, $\\mathrm{GF}$ 위에 $\\overline{\\mathrm{DP}}=\\overline{\\mathrm{BQ}}=\\overline{\\mathrm{GR}}=1$인 세 점 $\\mathrm{P}$, $\\mathrm{Q}$, $\\mathrm{R}$이 있다. 평면 $\\mathrm{PQR}$이 평면 $\\mathrm{EFGH}$와 이루는 각의 크기를 $\\theta$라 할 때, $\\cos\\theta$의 값은? (단, $0<\\theta<\\dfrac{\\pi}{2}$) [그림: 한 모서리의 길이가 $5$인 정육면체 $\\mathrm{ABCD-EFGH}$에서 세 모서리 $\\mathrm{AD}$, $\\mathrm{BC}$, $\\mathrm{GF}$ 위에 각각 $\\overline{\\mathrm{DP}}=1$, $\\overline{\\mathrm{BQ}}=1$, $\\overline{\\mathrm{GR}}=1$인 점 $\\mathrm{P}$, $\\mathrm{Q}$, $\\mathrm{R}$이 표시되어 있고, 삼각형 $\\mathrm{PQR}$의 내부가 색칠되어 있다.]",
+    "choices": [
+      "$\\dfrac{2\\sqrt{43}}{43}$",
+      "$\\dfrac{3\\sqrt{43}}{43}$",
+      "$\\dfrac{4\\sqrt{43}}{43}$",
+      "$\\dfrac{5\\sqrt{43}}{43}$",
+      "$\\dfrac{6\\sqrt{43}}{43}$"
+    ],
+    "answer": "②",
+    "solution": "두 점 $\\mathrm{P}$, $\\mathrm{Q}$의 평면 $\\mathrm{EFGH}$ 위로의 정사영을 각각 $\\mathrm{P}'$, $\\mathrm{Q}'$이라 하자.\n점 $\\mathrm{P}'$은 모서리 $\\mathrm{EH}$ 위에 있고 $\\overline{\\mathrm{HP}'}=1$, 점 $\\mathrm{Q}'$은 모서리 $\\mathrm{FG}$ 위에 있고 $\\overline{\\mathrm{FQ}'}=1$이다.\n또한 점 $\\mathrm{R}$은 모서리 $\\mathrm{FG}$ 위에 있고 $\\overline{\\mathrm{GR}}=1$이므로 $\\overline{\\mathrm{Q}'\\mathrm{R}}=5-1-1=3$이며, $\\overline{\\mathrm{P}'\\mathrm{R}}\\perp\\overline{\\mathrm{FG}}$이고 $\\overline{\\mathrm{P}'\\mathrm{R}}=5$이다.\n따라서 삼각형 $\\mathrm{PQR}$의 평면 $\\mathrm{EFGH}$ 위로의 정사영인 삼각형 $\\mathrm{P}'\\mathrm{Q}'\\mathrm{R}$의 넓이는\n$$\\triangle\\mathrm{P}'\\mathrm{Q}'\\mathrm{R}=\\frac{1}{2}\\cdot 3\\cdot 5=\\frac{15}{2}$$\n한편 삼각형 $\\mathrm{PQR}$의 세 변의 길이를 구하면\n$$\\overline{\\mathrm{PQ}}=\\sqrt{5^2+(4-1)^2}=\\sqrt{34}, \\quad \\overline{\\mathrm{QR}}=\\sqrt{(4-1)^2+5^2}=\\sqrt{34}, \\quad \\overline{\\mathrm{PR}}=\\sqrt{5^2+5^2}=5\\sqrt{2}$$\n선분 $\\mathrm{PR}$의 중점을 $\\mathrm{M}$이라 하면 $\\overline{\\mathrm{QM}}\\perp\\overline{\\mathrm{PR}}$이고\n$$\\overline{\\mathrm{QM}}=\\sqrt{34-\\left(\\frac{5\\sqrt{2}}{2}\\right)^2}=\\sqrt{34-\\frac{25}{2}}=\\sqrt{\\frac{43}{2}}$$\n이므로 삼각형 $\\mathrm{PQR}$의 넓이는\n$$\\triangle\\mathrm{PQR}=\\frac{1}{2}\\cdot 5\\sqrt{2}\\cdot\\sqrt{\\frac{43}{2}}=\\frac{5\\sqrt{43}}{2}$$\n따라서 구하는 값은\n$$\\cos\\theta=\\frac{\\triangle\\mathrm{P}'\\mathrm{Q}'\\mathrm{R}}{\\triangle\\mathrm{PQR}}=\\frac{\\frac{15}{2}}{\\frac{5\\sqrt{43}}{2}}=\\frac{3}{\\sqrt{43}}=\\frac{3\\sqrt{43}}{43}$$\n따라서 정답은 ②이다.",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B45",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-057",
+    "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+    "templateKey": "TPL_GEO_SPACE_FIGURE_ANGLE",
+    "crossConceptKeys": [
+      "CC_SPACE_FIGURE"
+    ],
+    "conditionKeys": [
+      "COND_RANGE"
+    ],
+    "integrationPattern": "SEQUENTIAL"
+  }
+];

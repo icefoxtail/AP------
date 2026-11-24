@@ -1,0 +1,282 @@
+window.examTitle = "기하_196_삼각형의무게중심의입체도형활용_고2_유형은행1";
+
+window.questionBank = [
+  {
+    "id": 1,
+    "category": "공간좌표 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-04",
+    "standardUnit": "공간좌표",
+    "standardUnitOrder": 4,
+    "subUnitKey": "H22-GE-04-CORE",
+    "subUnit": "공간좌표 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-04-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "공간좌표 핵심 개념"
+    ],
+    "wide": false,
+    "content": "좌표공간에서 한 모서리의 길이가 $12$인 정사면체 $\\mathrm{OABC}$가 그림과 같이 모서리 $\\mathrm{OA}$는 $x$축 위에, 면 $\\mathrm{OAB}$는 $xy$평면 위에 있다. 점 $\\mathrm{C}$의 좌표를 $(a, b, c)$라 할 때, $a + \\sqrt{3}b + \\sqrt{6}c$의 값은? (단, 점 $\\mathrm{A}$의 $x$좌표와 점 $\\mathrm{B}$의 $y$좌표, 점 $\\mathrm{C}$의 $z$좌표는 모두 양수이고, $\\mathrm{O}$는 원점이다.) [그림: 좌표공간에서 원점 $\\mathrm{O}$와 $x$축의 양의 부분 위의 점 $\\mathrm{A}(12, 0, 0)$, $xy$평면의 제$1$사분면 위의 점 $\\mathrm{B}$로 이루어진 정삼각형 $\\mathrm{OAB}$를 밑면으로 하고, $z>0$인 영역에 꼭짓점 $\\mathrm{C}$가 있는 한 모서리의 길이가 $12$인 정사면체 $\\mathrm{OABC}$]",
+    "choices": [
+      "$36$",
+      "$40$",
+      "$44$",
+      "$48$",
+      "$52$"
+    ],
+    "answer": "①",
+    "solution": "한 모서리의 길이가 $12$인 정삼각형 $\\mathrm{OAB}$가 $xy$평면 위에 있고 $\\mathrm{O}(0, 0, 0)$, $\\mathrm{A}(12, 0, 0)$이며 점 $\\mathrm{B}$의 $y$좌표가 양수이므로\n$\\mathrm{B}\\left(12 \\cos 60^\\circ,\\ 12 \\sin 60^\\circ,\\ 0\\right) = (6, 6\\sqrt{3}, 0)$\n정사면체 $\\mathrm{OABC}$에서 꼭짓점 $\\mathrm{C}(a, b, c)$에서 $xy$평면에 내린 수선의 발 $\\mathrm{H}(a, b, 0)$은 정삼각형 $\\mathrm{OAB}$의 무게중심과 일치한다.\n$\\mathrm{H}\\left(\\frac{0+12+6}{3},\\ \\frac{0+0+6\\sqrt{3}}{3},\\ 0\\right) = (6, 2\\sqrt{3}, 0)$\n따라서 $a = 6$, $b = 2\\sqrt{3}$이다.\n또한 $\\overline{\\mathrm{OC}} = 12$이므로\n$a^2 + b^2 + c^2 = 12^2$\n$36 + 12 + c^2 = 144 \\implies c^2 = 96$\n$c > 0$이므로 $c = 4\\sqrt{6}$이다.\n따라서 $a + \\sqrt{3}b + \\sqrt{6}c = 6 + \\sqrt{3}(2\\sqrt{3}) + \\sqrt{6}(4\\sqrt{6}) = 6 + 6 + 24 = 36$\n따라서 정답은 ①이다.",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-062",
+    "problemTypeKey": "PT_GEO_SPACE_COORDINATE",
+    "templateKey": "TPL_GEO_SPACE_COORD_DIVISION",
+    "primaryMethod": "정사면체의 수선의 발이 밑면 정삼각형의 무게중심임을 이용해 C의 좌표를 정한다",
+    "decisiveStep": "$H(6,2\\sqrt{3},0)$과 $a^2+b^2+c^2=144$에서 $c=4\\sqrt{6}$, 합은 $36$",
+    "crossConceptKeys": [
+      "CC_EQUILATERAL_TRIANGLE",
+      "CC_ORTHOGONAL_PROJECTION",
+      "CC_DISTANCE_TWO_POINTS"
+    ],
+    "conditionKeys": [
+      "COND_POSITIVE"
+    ],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 2,
+    "category": "공간좌표 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-04",
+    "standardUnit": "공간좌표",
+    "standardUnitOrder": 4,
+    "subUnitKey": "H22-GE-04-CORE",
+    "subUnit": "공간좌표 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-04-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "공간좌표 핵심 개념"
+    ],
+    "wide": false,
+    "content": "그림과 같이 한 모서리의 길이가 $6$인 정육면체 $\\mathrm{ABCD-EFGH}$에서 세 모서리 $\\mathrm{AB}$, $\\mathrm{AD}$, $\\mathrm{AE}$의 중점을 각각 $\\mathrm{P}$, $\\mathrm{Q}$, $\\mathrm{R}$이라 하자. 삼각형 $\\mathrm{PQR}$의 무게중심이 대각선 $\\mathrm{AG}$를 $1:m$으로 내분할 때, $m$의 값은? [그림: 한 모서리의 길이가 $6$인 정육면체 $\\mathrm{ABCD-EFGH}$에서 윗면 $\\mathrm{ABCD}$의 아래에 밑면 $\\mathrm{EFGH}$가 $\\mathrm{A-E}$, $\\mathrm{B-F}$, $\\mathrm{C-G}$, $\\mathrm{D-H}$로 대응되게 놓여 있고, 모서리 $\\mathrm{AB}$, $\\mathrm{AD}$, $\\mathrm{AE}$의 중점 $\\mathrm{P}$, $\\mathrm{Q}$, $\\mathrm{R}$을 연결한 삼각형 $\\mathrm{PQR}$과 정육면체의 대각선 $\\mathrm{AG}$가 그려져 있다.]",
+    "choices": [
+      "$3$",
+      "$4$",
+      "$5$",
+      "$6$",
+      "$7$"
+    ],
+    "answer": "③",
+    "solution": "점 $\\mathrm{E}$를 원점으로 하고, 세 모서리 $\\mathrm{EF}$, $\\mathrm{EH}$, $\\mathrm{EA}$가 각각 $x$축, $y$축, $z$축의 양의 부분 위에 놓이도록 좌표공간을 설정하면 각 꼭짓점의 좌표는\n$\\mathrm{A}(0, 0, 6)$, $\\mathrm{B}(6, 0, 6)$, $\\mathrm{D}(0, 6, 6)$, $\\mathrm{E}(0, 0, 0)$, $\\mathrm{G}(6, 6, 0)$\n세 모서리 $\\mathrm{AB}$, $\\mathrm{AD}$, $\\mathrm{AE}$의 중점 $\\mathrm{P}$, $\\mathrm{Q}$, $\\mathrm{R}$의 좌표는\n$\\mathrm{P}(3, 0, 6)$, $\\mathrm{Q}(0, 3, 6)$, $\\mathrm{R}(0, 0, 3)$\n삼각형 $\\mathrm{PQR}$의 무게중심을 $\\mathrm{M}$이라 하면\n$\\mathrm{M}\\left(\\frac{3+0+0}{3},\\ \\frac{0+3+0}{3},\\ \\frac{6+6+3}{3}\\right) = (1, 1, 5)$\n선분 $\\mathrm{AG}$를 $1:m$으로 내분하는 점의 좌표는\n$\\left(\\frac{1 \\cdot 6 + m \\cdot 0}{1+m},\\ \\frac{1 \\cdot 6 + m \\cdot 0}{1+m},\\ \\frac{1 \\cdot 0 + m \\cdot 6}{1+m}\\right) = \\left(\\frac{6}{1+m},\\ \\frac{6}{1+m},\\ \\frac{6m}{1+m}\\right)$\n이 점이 $\\mathrm{M}(1, 1, 5)$와 일치하므로\n$\\frac{6}{1+m} = 1 \\implies m = 5$\n(이때 $z$좌표 $\\frac{6 \\cdot 5}{1+5} = 5$도 일치한다.)\n따라서 정답은 ③이다.",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-062",
+    "problemTypeKey": "PT_GEO_SPACE_COORDINATE",
+    "templateKey": "TPL_GEO_SPACE_COORD_DIVISION",
+    "primaryMethod": "세 중점의 좌표로 무게중심을 구하고 대각선 AG의 1:m 내분점과 비교한다",
+    "decisiveStep": "$\\frac{6}{1+m}=1$에서 $m=5$이고 $z$좌표 $\\frac{6m}{1+m}=5$도 일치한다",
+    "crossConceptKeys": [
+      "CC_MIDPOINT",
+      "CC_INTERNAL_DIVISION"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 3,
+    "category": "공간좌표 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-04",
+    "standardUnit": "공간좌표",
+    "standardUnitOrder": 4,
+    "subUnitKey": "H22-GE-04-CORE",
+    "subUnit": "공간좌표 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-04-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "공간좌표 핵심 개념"
+    ],
+    "wide": false,
+    "content": "그림과 같이 한 모서리의 길이가 $6$인 정육면체 $\\mathrm{ABCD-EFGH}$에서 선분 $\\mathrm{CH}$의 중점을 $\\mathrm{P}$, 모서리 $\\mathrm{EF}$를 $2:1$로 내분하는 점을 $\\mathrm{Q}$, 모서리 $\\mathrm{AB}$의 중점을 $\\mathrm{R}$이라 하자. 삼각형 $\\mathrm{PQR}$의 무게중심을 $\\mathrm{S}$라 할 때, 선분 $\\mathrm{GS}$의 길이는? [그림: 한 모서리의 길이가 $6$인 정육면체 $\\mathrm{ABCD-EFGH}$에서 윗면은 $\\mathrm{ABCD}$, 아랫면은 $\\mathrm{EFGH}$($\\mathrm{A-E}$, $\\mathrm{B-F}$, $\\mathrm{C-G}$, $\\mathrm{D-H}$가 수직 모서리)이고, 면 $\\mathrm{CDHG}$의 대각선 $\\mathrm{CH}$의 중점 $\\mathrm{P}$, 모서리 $\\mathrm{EF}$를 $2:1$로 내분하는 점 $\\mathrm{Q}$, 모서리 $\\mathrm{AB}$의 중점 $\\mathrm{R}$로 이루어진 삼각형 $\\mathrm{PQR}$과 그 무게중심 $\\mathrm{S}$가 표시되어 있다.]",
+    "choices": [
+      "$\\frac{14}{3}$",
+      "$5$",
+      "$\\frac{16}{3}$",
+      "$\\frac{17}{3}$",
+      "$6$"
+    ],
+    "answer": "④",
+    "solution": "점 $\\mathrm{H}$를 원점으로 하고, 세 모서리 $\\mathrm{HE}$, $\\mathrm{HG}$, $\\mathrm{HD}$가 각각 $x$축, $y$축, $z$축의 양의 부분 위에 놓이도록 좌표공간을 설정하면 각 꼭짓점의 좌표는\n$\\mathrm{H}(0, 0, 0)$, $\\mathrm{E}(6, 0, 0)$, $\\mathrm{F}(6, 6, 0)$, $\\mathrm{G}(0, 6, 0)$\n$\\mathrm{D}(0, 0, 6)$, $\\mathrm{A}(6, 0, 6)$, $\\mathrm{B}(6, 6, 6)$, $\\mathrm{C}(0, 6, 6)$\n조건에 따라 세 점 $\\mathrm{P}$, $\\mathrm{Q}$, $\\mathrm{R}$의 좌표를 구하면\n- $\\mathrm{P}$는 $\\overline{\\mathrm{CH}}$의 중점이므로 $\\mathrm{P}\\left(\\frac{0+0}{2},\\ \\frac{6+0}{2},\\ \\frac{6+0}{2}\\right) = (0, 3, 3)$\n- $\\mathrm{Q}$는 $\\overline{\\mathrm{EF}}$를 $2:1$로 내분하므로 $\\mathrm{Q}\\left(6,\\ \\frac{2 \\cdot 6 + 1 \\cdot 0}{3},\\ 0\\right) = (6, 4, 0)$\n- $\\mathrm{R}$은 $\\overline{\\mathrm{AB}}$의 중점이므로 $\\mathrm{R}\\left(\\frac{6+6}{2},\\ \\frac{0+6}{2},\\ \\frac{6+6}{2}\\right) = (6, 3, 6)$\n삼각형 $\\mathrm{PQR}$의 무게중심 $\\mathrm{S}$의 좌표는\n$\\mathrm{S}\\left(\\frac{0+6+6}{3},\\ \\frac{3+4+3}{3},\\ \\frac{3+0+6}{3}\\right) = \\left(4,\\ \\frac{10}{3},\\ 3\\right)$\n따라서 점 $\\mathrm{G}(0, 6, 0)$과 점 $\\mathrm{S}\\left(4, \\frac{10}{3}, 3\\right)$ 사이의 거리는\n$\\overline{\\mathrm{GS}} = \\sqrt{(4-0)^2 + \\left(\\frac{10}{3}-6\\right)^2 + (3-0)^2} = \\sqrt{16 + \\frac{64}{9} + 9} = \\sqrt{\\frac{289}{9}} = \\frac{17}{3}$\n따라서 정답은 ④이다.",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-062",
+    "problemTypeKey": "PT_GEO_SPACE_COORDINATE",
+    "templateKey": "TPL_GEO_SPACE_COORD_DIVISION",
+    "primaryMethod": "중점과 2:1 내분점의 좌표로 무게중심 S를 구한 뒤 G까지의 거리를 계산한다",
+    "decisiveStep": "$S(4,\\frac{10}{3},3)$에서 $GS=\\sqrt{16+\\frac{64}{9}+9}=\\frac{17}{3}$",
+    "crossConceptKeys": [
+      "CC_MIDPOINT",
+      "CC_INTERNAL_DIVISION",
+      "CC_DISTANCE_TWO_POINTS"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 4,
+    "category": "공간좌표 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-04",
+    "standardUnit": "공간좌표",
+    "standardUnitOrder": 4,
+    "subUnitKey": "H22-GE-04-CORE",
+    "subUnit": "공간좌표 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-04-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "공간좌표 핵심 개념"
+    ],
+    "wide": false,
+    "content": "그림과 같이 반지름의 길이가 각각 $8$, $18$, $r$이고 서로 외접하는 세 개의 구가 평면 $\\alpha$ 위에 놓여 있다. 세 구의 중심을 각각 $\\mathrm{A}$, $\\mathrm{B}$, $\\mathrm{C}$라 할 때, 삼각형 $\\mathrm{ABC}$의 무게중심으로부터 평면 $\\alpha$까지의 거리가 $20$이다. 이때 $r$의 값은? [그림: 평면 $\\alpha$ 위에 서로 외접하며 평면 $\\alpha$에 접하는 크기가 다른 세 개의 구가 놓여 있다.]",
+    "choices": [
+      "$26$",
+      "$28$",
+      "$30$",
+      "$32$",
+      "$34$"
+    ],
+    "answer": "⑤",
+    "solution": "평면 $\\alpha$를 $xy$평면($z = 0$)으로 두고 세 구가 $z \\ge 0$인 영역에 놓여 있다고 하자.\n세 구가 모두 $xy$평면에 접하므로 세 구의 중심 $\\mathrm{A}$, $\\mathrm{B}$, $\\mathrm{C}$의 $z$좌표는 각 구의 반지름의 길이와 같다.\n즉, $\\mathrm{A}(x_1, y_1, 8)$, $\\mathrm{B}(x_2, y_2, 18)$, $\\mathrm{C}(x_3, y_3, r)$이라 할 수 있다.\n삼각형 $\\mathrm{ABC}$의 무게중심 $\\mathrm{G}$의 $z$좌표가 점 $\\mathrm{G}$에서 평면 $\\alpha$까지의 거리이므로\n$\\frac{8 + 18 + r}{3} = 20$\n$26 + r = 60 \\implies r = 34$\n(이때 평면 $\\alpha$ 위의 세 접점 사이의 거리는 각각 $2\\sqrt{8 \\cdot 18} = 24$, $2\\sqrt{8 \\cdot 34} = 8\\sqrt{17}$, $2\\sqrt{18 \\cdot 34} = 12\\sqrt{17}$이고 $24 + 8\\sqrt{17} > 12\\sqrt{17}$이므로 세 구는 실제로 존재한다.)\n따라서 정답은 ⑤이다.",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-062",
+    "problemTypeKey": "PT_GEO_SPACE_COORDINATE",
+    "templateKey": "TPL_GEO_SPACE_COORD_DIVISION",
+    "primaryMethod": "구의 중심 높이가 반지름과 같음을 이용해 무게중심의 z좌표를 세운다",
+    "decisiveStep": "$\\frac{8+18+r}{3}=20$에서 $26+r=60$이므로 $r=34$",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 5,
+    "category": "공간좌표 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-04",
+    "standardUnit": "공간좌표",
+    "standardUnitOrder": 4,
+    "subUnitKey": "H22-GE-04-CORE",
+    "subUnit": "공간좌표 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-04-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "공간좌표 핵심 개념"
+    ],
+    "wide": false,
+    "content": "그림과 같이 좌표공간에서 $0 \\le x \\le 6$, $0 \\le y \\le 6$, $0 \\le z \\le 6$인 한 모서리의 길이가 $6$인 정육면체를 한 모서리의 길이가 $3$인 $8$개의 정육면체로 나누었다. 이 중 점 $(6, 0, 0)$, $(6, 6, 6)$, $(0, 6, 0)$을 각각 꼭짓점으로 가지는 세 작은 정육면체 $A$, $B$, $C$ 안에 반지름의 길이가 $\\frac{3}{2}$인 구가 각각 내접하고 있다. $3$개의 구의 중심을 연결한 삼각형의 무게중심의 좌표를 $(p, q, r)$이라 할 때, $p + q + r$의 값은? [그림: 좌표공간의 제$1$팔분면에 원점을 한 꼭짓점으로 두고 $x, y, z$축 위의 눈금이 $6$인 정육면체가 $2 \\times 2 \\times 2$의 $8$개 작은 정육면체로 나뉘어 있으며, 앞쪽-왼쪽-아래 정육면체 $A$, 앞쪽-오른쪽-위 정육면체 $B$, 뒤쪽-오른쪽-아래 정육면체 $C$가 표시되어 있다.]",
+    "choices": [
+      "$\\frac{15}{2}$",
+      "$8$",
+      "$\\frac{17}{2}$",
+      "$9$",
+      "$\\frac{19}{2}$"
+    ],
+    "answer": "⑤",
+    "solution": "한 모서리의 길이가 $3$인 작은 정육면체에 내접하는 구의 중심은 그 작은 정육면체의 중심과 일치한다.\n각 작은 정육면체가 차지하는 범위와 내접구의 중심의 좌표를 구하면\n- $A$는 점 $(6, 0, 0)$을 꼭짓점으로 가지므로 $3 \\le x \\le 6$, $0 \\le y \\le 3$, $0 \\le z \\le 3$이다.\n  중심의 좌표: $\\left(\\frac{9}{2},\\ \\frac{3}{2},\\ \\frac{3}{2}\\right)$\n- $B$는 점 $(6, 6, 6)$을 꼭짓점으로 가지므로 $3 \\le x \\le 6$, $3 \\le y \\le 6$, $3 \\le z \\le 6$이다.\n  중심의 좌표: $\\left(\\frac{9}{2},\\ \\frac{9}{2},\\ \\frac{9}{2}\\right)$\n- $C$는 점 $(0, 6, 0)$을 꼭짓점으로 가지므로 $0 \\le x \\le 3$, $3 \\le y \\le 6$, $0 \\le z \\le 3$이다.\n  중심의 좌표: $\\left(\\frac{3}{2},\\ \\frac{9}{2},\\ \\frac{3}{2}\\right)$\n세 구의 중심을 꼭짓점으로 하는 삼각형의 무게중심 $(p, q, r)$은\n$p = \\frac{\\frac{9}{2} + \\frac{9}{2} + \\frac{3}{2}}{3} = \\frac{7}{2}$\n$q = \\frac{\\frac{3}{2} + \\frac{9}{2} + \\frac{9}{2}}{3} = \\frac{7}{2}$\n$r = \\frac{\\frac{3}{2} + \\frac{9}{2} + \\frac{3}{2}}{3} = \\frac{5}{2}$\n따라서 $p + q + r = \\frac{7}{2} + \\frac{7}{2} + \\frac{5}{2} = \\frac{19}{2}$\n따라서 정답은 ⑤이다.",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-062",
+    "problemTypeKey": "PT_GEO_SPACE_COORDINATE",
+    "templateKey": "TPL_GEO_SPACE_COORD_DIVISION",
+    "primaryMethod": "작은 정육면체의 중심 좌표를 찾아 세 중심이 이루는 삼각형의 무게중심을 계산한다",
+    "decisiveStep": "세 중심의 무게중심이 $(7/2,7/2,5/2)$이므로 합은 $19/2$",
+    "crossConceptKeys": [
+      "CC_SPACE_FIGURE"
+    ],
+    "conditionKeys": [
+      "COND_RANGE"
+    ],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 6,
+    "category": "공간좌표 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-04",
+    "standardUnit": "공간좌표",
+    "standardUnitOrder": 4,
+    "subUnitKey": "H22-GE-04-CORE",
+    "subUnit": "공간좌표 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-04-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "공간좌표 핵심 개념"
+    ],
+    "wide": false,
+    "content": "그림과 같이 한 모서리의 길이가 $4$인 정육면체 $\\mathrm{ABCD-EFGH}$에서 모서리 $\\mathrm{AB}$, 모서리 $\\mathrm{FG}$, 모서리 $\\mathrm{HD}$를 $1:3$으로 내분하는 점을 각각 $\\mathrm{P}$, $\\mathrm{Q}$, $\\mathrm{R}$이라 할 때, 삼각형 $\\mathrm{PQR}$의 무게중심 $\\mathrm{I}$와 점 $\\mathrm{C}$ 사이의 거리는? [그림: 한 모서리의 길이가 $4$인 정육면체 $\\mathrm{ABCD-EFGH}$에서 윗면은 $\\mathrm{ABCD}$, 아랫면은 $\\mathrm{EFGH}$($\\mathrm{A-E}$, $\\mathrm{B-F}$, $\\mathrm{C-G}$, $\\mathrm{D-H}$가 수직 모서리)이고, 모서리 $\\mathrm{AB}$ 위의 점 $\\mathrm{P}$($\\overline{\\mathrm{AP}}:\\overline{\\mathrm{PB}}=1:3$), 모서리 $\\mathrm{FG}$ 위의 점 $\\mathrm{Q}$($\\overline{\\mathrm{FQ}}:\\overline{\\mathrm{QG}}=1:3$), 모서리 $\\mathrm{HD}$ 위의 점 $\\mathrm{R}$($\\overline{\\mathrm{HR}}:\\overline{\\mathrm{RD}}=1:3$)을 연결한 삼각형 $\\mathrm{PQR}$이 그려져 있다.]",
+    "choices": [
+      "$2\\sqrt{3}$",
+      "$\\frac{7\\sqrt{3}}{3}$",
+      "$\\frac{8\\sqrt{3}}{3}$",
+      "$3\\sqrt{3}$",
+      "$\\frac{10\\sqrt{3}}{3}$"
+    ],
+    "answer": "②",
+    "solution": "점 $\\mathrm{E}$를 원점으로 하고, 세 모서리 $\\mathrm{EF}$, $\\mathrm{EH}$, $\\mathrm{EA}$가 각각 $x$축, $y$축, $z$축의 양의 부분 위에 놓이도록 좌표공간을 설정하면 각 꼭짓점의 좌표는\n$\\mathrm{E}(0, 0, 0)$, $\\mathrm{F}(4, 0, 0)$, $\\mathrm{G}(4, 4, 0)$, $\\mathrm{H}(0, 4, 0)$\n$\\mathrm{A}(0, 0, 4)$, $\\mathrm{B}(4, 0, 4)$, $\\mathrm{C}(4, 4, 4)$, $\\mathrm{D}(0, 4, 4)$\n각 모서리를 $1:3$으로 내분하는 세 점 $\\mathrm{P}$, $\\mathrm{Q}$, $\\mathrm{R}$의 좌표는\n- $\\mathrm{P}$는 $\\overline{\\mathrm{AB}}$를 $1:3$으로 내분하므로 $\\mathrm{P}(1, 0, 4)$\n- $\\mathrm{Q}$는 $\\overline{\\mathrm{FG}}$를 $1:3$으로 내분하므로 $\\mathrm{Q}(4, 1, 0)$\n- $\\mathrm{R}$은 $\\overline{\\mathrm{HD}}$를 $1:3$으로 내분하므로 $\\mathrm{R}(0, 4, 1)$\n삼각형 $\\mathrm{PQR}$의 무게중심 $\\mathrm{I}$의 좌표는\n$\\mathrm{I}\\left(\\frac{1+4+0}{3},\\ \\frac{0+1+4}{3},\\ \\frac{4+0+1}{3}\\right) = \\left(\\frac{5}{3},\\ \\frac{5}{3},\\ \\frac{5}{3}\\right)$\n따라서 점 $\\mathrm{I}$와 점 $\\mathrm{C}(4, 4, 4)$ 사이의 거리는\n$\\overline{\\mathrm{IC}} = \\sqrt{\\left(4 - \\frac{5}{3}\\right)^2 + \\left(4 - \\frac{5}{3}\\right)^2 + \\left(4 - \\frac{5}{3}\\right)^2} = \\sqrt{3 \\cdot \\left(\\frac{7}{3}\\right)^2} = \\frac{7\\sqrt{3}}{3}$\n따라서 정답은 ②이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-062",
+    "problemTypeKey": "PT_GEO_SPACE_COORDINATE",
+    "templateKey": "TPL_GEO_SPACE_COORD_DIVISION",
+    "primaryMethod": "세 모서리의 1:3 내분점 좌표로 무게중심 I를 구하고 C까지의 거리를 계산한다",
+    "decisiveStep": "$I(5/3,5/3,5/3)$에서 $IC=\\sqrt{3}\\cdot 7/3=7\\sqrt{3}/3$",
+    "crossConceptKeys": [
+      "CC_INTERNAL_DIVISION",
+      "CC_DISTANCE_TWO_POINTS"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  }
+];

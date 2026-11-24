@@ -1,0 +1,226 @@
+window.examTitle = "기하_166_두평면의교선을알수없을때-두평면의이면각_고2_유형은행1";
+
+window.questionBank = [
+  {
+    "id": 1,
+    "category": "공간도형 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-03",
+    "standardUnit": "공간도형",
+    "standardUnitOrder": 3,
+    "subUnitKey": "H22-GE-03-CORE",
+    "subUnit": "공간도형 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-03-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "공간도형 핵심 개념"
+    ],
+    "wide": false,
+    "content": "그림과 같이 $\\overline{\\mathrm{AB}}=1$, $\\overline{\\mathrm{AD}}=2$, $\\overline{\\mathrm{AE}}=2$인 직육면체 $\\mathrm{ABCD-EFGH}$가 있다. 삼각형 $\\mathrm{EFG}$의 평면 $\\mathrm{BDE}$ 위로의 정사영의 넓이는? [그림: 윗면이 $\\mathrm{ABCD}$, 밑면이 $\\mathrm{EFGH}$이고 수직 모서리가 $\\mathrm{AE}, \\mathrm{BF}, \\mathrm{CG}, \\mathrm{DH}$인 직육면체에서 $\\overline{\\mathrm{AB}}=1$, $\\overline{\\mathrm{AD}}=2$, $\\overline{\\mathrm{AE}}=2$가 표시되어 있으며, 삼각형 $\\mathrm{BDE}$와 밑면의 삼각형 $\\mathrm{EFG}$가 각각 음영으로 강조되어 있다.]",
+    "choices": [
+      "$\\dfrac{\\sqrt{6}}{6}$",
+      "$\\dfrac{\\sqrt{6}}{4}$",
+      "$\\dfrac{\\sqrt{6}}{3}$",
+      "$\\dfrac{\\sqrt{6}}{2}$",
+      "$\\dfrac{2\\sqrt{6}}{3}$"
+    ],
+    "answer": "①",
+    "solution": "두 평면 $\\mathrm{EFGH}$와 $\\mathrm{BDE}$가 이루는 예각의 크기를 $\\theta$라 하자.\n평면 $\\mathrm{EFGH}$와 평면 $\\mathrm{ABCD}$는 서로 평행하므로 두 평면 $\\mathrm{ABCD}$와 $\\mathrm{BDE}$가 이루는 예각의 크기도 $\\theta$이다.\n\n삼각형 $\\mathrm{BDE}$의 평면 $\\mathrm{ABCD}$ 위로의 정사영은 삼각형 $\\mathrm{BDA}$이다.\n① $\\triangle\\mathrm{BDA}$의 넓이:\n$$\\triangle\\mathrm{BDA} = \\dfrac{1}{2} \\times \\overline{\\mathrm{AB}} \\times \\overline{\\mathrm{AD}} = \\dfrac{1}{2} \\times 1 \\times 2 = 1$$\n② $\\triangle\\mathrm{BDE}$의 넓이:\n$$\\overline{\\mathrm{BE}} = \\sqrt{1^2 + 2^2} = \\sqrt{5}, \\quad \\overline{\\mathrm{BD}} = \\sqrt{1^2 + 2^2} = \\sqrt{5}, \\quad \\overline{\\mathrm{DE}} = \\sqrt{2^2 + 2^2} = 2\\sqrt{2}$$\n$\\triangle\\mathrm{BDE}$는 $\\overline{\\mathrm{BE}} = \\overline{\\mathrm{BD}} = \\sqrt{5}$인 이등변삼각형이므로 꼭짓점 $\\mathrm{B}$에서 변 $\\mathrm{DE}$에 내린 수선의 길이는\n$$\\sqrt{(\\sqrt{5})^2 - (\\sqrt{2})^2} = \\sqrt{3}$$\n따라서\n$$\\triangle\\mathrm{BDE} = \\dfrac{1}{2} \\times 2\\sqrt{2} \\times \\sqrt{3} = \\sqrt{6}$$\n③ $\\cos\\theta$의 값:\n$$\\cos\\theta = \\dfrac{\\triangle\\mathrm{BDA}}{\\triangle\\mathrm{BDE}} = \\dfrac{1}{\\sqrt{6}} = \\dfrac{\\sqrt{6}}{6}$$\n\n한편 $\\triangle\\mathrm{EFG} = \\dfrac{1}{2} \\times \\overline{\\mathrm{EF}} \\times \\overline{\\mathrm{FG}} = \\dfrac{1}{2} \\times 1 \\times 2 = 1$이므로, 삼각형 $\\mathrm{EFG}$의 평면 $\\mathrm{BDE}$ 위로의 정사영의 넓이는\n$$\\triangle\\mathrm{EFG} \\cdot \\cos\\theta = 1 \\times \\dfrac{\\sqrt{6}}{6} = \\dfrac{\\sqrt{6}}{6}$$\n따라서 정답은 ①이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-056",
+    "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+    "templateKey": "TPL_GEO_SPACE_FIGURE_PROJECTION",
+    "crossConceptKeys": [
+      "CC_SPACE_FIGURE",
+      "CC_PYTHAGOREAN"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 2,
+    "category": "공간도형 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-03",
+    "standardUnit": "공간도형",
+    "standardUnitOrder": 3,
+    "subUnitKey": "H22-GE-03-CORE",
+    "subUnit": "공간도형 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-03-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "공간도형 핵심 개념"
+    ],
+    "wide": false,
+    "content": "그림과 같이 한 모서리의 길이가 $4$인 정육면체 $\\mathrm{ABCD-EFGH}$에서 모서리 $\\mathrm{AB}$의 중점을 $\\mathrm{M}$이라 할 때, 삼각형 $\\mathrm{MBD}$의 평면 $\\mathrm{BDE}$ 위로의 정사영의 넓이는? [그림: 한 모서리의 길이가 $4$인 정육면체 $\\mathrm{ABCD-EFGH}$에서 윗면 모서리 $\\mathrm{AB}$의 중점 $\\mathrm{M}$이 표시되어 있고, 삼각형 $\\mathrm{MBD}$와 정삼각형 $\\mathrm{BDE}$가 선분 $\\mathrm{BD}$를 공유하며 음영으로 표시되어 있다.]",
+    "choices": [
+      "$\\dfrac{2\\sqrt{3}}{3}$",
+      "$\\sqrt{3}$",
+      "$\\dfrac{4\\sqrt{3}}{3}$",
+      "$\\dfrac{5\\sqrt{3}}{3}$",
+      "$2\\sqrt{3}$"
+    ],
+    "answer": "③",
+    "solution": "두 평면 $\\mathrm{ABCD}$와 $\\mathrm{BDE}$가 이루는 예각의 크기를 $\\theta$라 하자.\n삼각형 $\\mathrm{BDE}$의 평면 $\\mathrm{ABCD}$ 위로의 정사영은 삼각형 $\\mathrm{ABD}$이다.\n\n① $\\triangle\\mathrm{ABD}$의 넓이:\n$$\\triangle\\mathrm{ABD} = \\dfrac{1}{2} \\times 4 \\times 4 = 8$$\n② $\\triangle\\mathrm{BDE}$의 넓이:\n$\\overline{\\mathrm{BD}} = \\overline{\\mathrm{DE}} = \\overline{\\mathrm{EB}} = 4\\sqrt{2}$인 정삼각형이므로\n$$\\triangle\\mathrm{BDE} = \\dfrac{\\sqrt{3}}{4} \\times (4\\sqrt{2})^2 = 8\\sqrt{3}$$\n③ $\\cos\\theta$의 값:\n$$\\cos\\theta = \\dfrac{\\triangle\\mathrm{ABD}}{\\triangle\\mathrm{BDE}} = \\dfrac{8}{8\\sqrt{3}} = \\dfrac{\\sqrt{3}}{3}$$\n\n한편 점 $\\mathrm{M}$은 모서리 $\\mathrm{AB}$의 중점이므로 $\\overline{\\mathrm{MB}} = 2$이고, $\\overline{\\mathrm{AD}} \\perp \\overline{\\mathrm{AB}}$이므로\n$$\\triangle\\mathrm{MBD} = \\dfrac{1}{2} \\times \\overline{\\mathrm{MB}} \\times \\overline{\\mathrm{AD}} = \\dfrac{1}{2} \\times 2 \\times 4 = 4$$\n따라서 삼각형 $\\mathrm{MBD}$의 평면 $\\mathrm{BDE}$ 위로의 정사영의 넓이는\n$$\\triangle\\mathrm{MBD} \\cdot \\cos\\theta = 4 \\times \\dfrac{\\sqrt{3}}{3} = \\dfrac{4\\sqrt{3}}{3}$$\n따라서 정답은 ③이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-056",
+    "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+    "templateKey": "TPL_GEO_SPACE_FIGURE_PROJECTION",
+    "crossConceptKeys": [
+      "CC_SPACE_FIGURE",
+      "CC_MIDPOINT",
+      "CC_EQUILATERAL_TRIANGLE"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 3,
+    "category": "공간도형 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-03",
+    "standardUnit": "공간도형",
+    "standardUnitOrder": 3,
+    "subUnitKey": "H22-GE-03-CORE",
+    "subUnit": "공간도형 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-03-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "공간도형 핵심 개념"
+    ],
+    "wide": false,
+    "content": "그림과 같이 한 모서리의 길이가 $6$인 정육면체 $\\mathrm{ABCD-EFGH}$에서 밑면 $\\mathrm{EFGH}$에 내접하는 원의 평면 $\\mathrm{AFC}$ 위로의 정사영의 넓이는? [그림: 한 모서리의 길이가 $6$인 정육면체 $\\mathrm{ABCD-EFGH}$에서 정삼각형 $\\mathrm{AFC}$가 음영으로 표시되어 있고, 밑면 정사각형 $\\mathrm{EFGH}$의 네 변에 모두 접하는 내접원이 그려져 있다.]",
+    "choices": [
+      "$\\sqrt{3}\\pi$",
+      "$\\dfrac{3\\sqrt{3}}{2}\\pi$",
+      "$2\\sqrt{3}\\pi$",
+      "$\\dfrac{5\\sqrt{3}}{2}\\pi$",
+      "$3\\sqrt{3}\\pi$"
+    ],
+    "answer": "⑤",
+    "solution": "두 평면 $\\mathrm{EFGH}$와 $\\mathrm{AFC}$가 이루는 예각의 크기를 $\\theta$라 하자.\n평면 $\\mathrm{EFGH}$와 평면 $\\mathrm{ABCD}$는 서로 평행하므로 두 평면 $\\mathrm{ABCD}$와 $\\mathrm{AFC}$가 이루는 예각의 크기도 $\\theta$이다.\n\n삼각형 $\\mathrm{AFC}$의 평면 $\\mathrm{ABCD}$ 위로의 정사영은 삼각형 $\\mathrm{ABC}$이다.\n① $\\triangle\\mathrm{ABC} = \\dfrac{1}{2} \\times 6 \\times 6 = 18$\n② $\\triangle\\mathrm{AFC}$는 한 변의 길이가 $6\\sqrt{2}$인 정삼각형이므로\n$$\\triangle\\mathrm{AFC} = \\dfrac{\\sqrt{3}}{4} \\times (6\\sqrt{2})^2 = 18\\sqrt{3}$$\n③ $\\cos\\theta = \\dfrac{\\triangle\\mathrm{ABC}}{\\triangle\\mathrm{AFC}} = \\dfrac{18}{18\\sqrt{3}} = \\dfrac{\\sqrt{3}}{3}$\n\n한편 밑면 $\\mathrm{EFGH}$는 한 변의 길이가 $6$인 정사각형이므로 이에 내접하는 원의 반지름의 길이는 $3$이고, 원의 넓이는\n$$S = \\pi \\times 3^2 = 9\\pi$$\n따라서 구하는 정사영의 넓이는\n$$S' = S\\cos\\theta = 9\\pi \\times \\dfrac{\\sqrt{3}}{3} = 3\\sqrt{3}\\pi$$\n따라서 정답은 ⑤이다.",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-056",
+    "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+    "templateKey": "TPL_GEO_SPACE_FIGURE_PROJECTION",
+    "crossConceptKeys": [
+      "CC_SPACE_FIGURE",
+      "CC_INSCRIBED_CIRCLE",
+      "CC_EQUILATERAL_TRIANGLE"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 4,
+    "category": "공간도형 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-03",
+    "standardUnit": "공간도형",
+    "standardUnitOrder": 3,
+    "subUnitKey": "H22-GE-03-CORE",
+    "subUnit": "공간도형 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-03-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "공간도형 핵심 개념"
+    ],
+    "wide": false,
+    "content": "그림과 같이 한 모서리의 길이가 $4$인 정사면체 $\\mathrm{ABCD}$에서 두 모서리 $\\mathrm{BD}$, $\\mathrm{CD}$의 중점을 각각 $\\mathrm{M}$, $\\mathrm{N}$이라 할 때, 삼각형 $\\mathrm{AMN}$의 평면 $\\mathrm{BCD}$ 위로의 정사영의 넓이는? [그림: 한 모서리의 길이가 $4$인 정사면체 $\\mathrm{ABCD}$에서 밑면 $\\triangle\\mathrm{BCD}$의 두 변 $\\mathrm{BD}$, $\\mathrm{CD}$의 중점 $\\mathrm{M}$, $\\mathrm{N}$이 표시되어 있고, 삼각형 $\\mathrm{AMN}$이 음영으로 표시되어 있다.]",
+    "choices": [
+      "$\\dfrac{\\sqrt{3}}{3}$",
+      "$\\dfrac{2\\sqrt{3}}{3}$",
+      "$\\sqrt{3}$",
+      "$\\dfrac{4\\sqrt{3}}{3}$",
+      "$\\dfrac{5\\sqrt{3}}{3}$"
+    ],
+    "answer": "①",
+    "solution": "점 $\\mathrm{A}$에서 평면 $\\mathrm{BCD}$에 내린 수선의 발을 $\\mathrm{G}$라 하면 $\\mathrm{G}$는 정삼각형 $\\mathrm{BCD}$의 무게중심이다.\n변 $\\mathrm{BC}$의 중점을 $\\mathrm{P}$, 선분 $\\mathrm{MN}$의 중점을 $\\mathrm{Q}$라 하자.\n\n① 두 점 $\\mathrm{M}, \\mathrm{N}$이 각각 $\\overline{\\mathrm{BD}}, \\overline{\\mathrm{CD}}$의 중점이므로\n$$\\overline{\\mathrm{MN}} \\parallel \\overline{\\mathrm{BC}}, \\quad \\overline{\\mathrm{MN}} = \\dfrac{1}{2}\\overline{\\mathrm{BC}} = 2$$\n이고, 점 $\\mathrm{Q}$는 선분 $\\mathrm{DP}$의 중점이다.\n정삼각형 $\\mathrm{BCD}$의 높이 $\\overline{\\mathrm{DP}} = \\dfrac{\\sqrt{3}}{2} \\times 4 = 2\\sqrt{3}$이므로\n$$\\overline{\\mathrm{DQ}} = \\dfrac{1}{2}\\overline{\\mathrm{DP}} = \\sqrt{3}, \\quad \\overline{\\mathrm{DG}} = \\dfrac{2}{3}\\overline{\\mathrm{DP}} = \\dfrac{4\\sqrt{3}}{3}$$\n따라서\n$$\\overline{\\mathrm{QG}} = \\overline{\\mathrm{DG}} - \\overline{\\mathrm{DQ}} = \\dfrac{4\\sqrt{3}}{3} - \\sqrt{3} = \\dfrac{\\sqrt{3}}{3}$$\n\n② 직각삼각형 $\\mathrm{AGD}$에서 정사면체의 높이 $\\overline{\\mathrm{AG}}$는\n$$\\overline{\\mathrm{AG}} = \\sqrt{\\overline{\\mathrm{AD}}^2 - \\overline{\\mathrm{DG}}^2} = \\sqrt{16 - \\dfrac{16}{3}} = \\dfrac{4\\sqrt{6}}{3}$$\n직각삼각형 $\\mathrm{AGQ}$에서\n$$\\overline{\\mathrm{AQ}} = \\sqrt{\\overline{\\mathrm{AG}}^2 + \\overline{\\mathrm{QG}}^2} = \\sqrt{\\dfrac{32}{3} + \\dfrac{1}{3}} = \\sqrt{11}$$\n\n③ $\\overline{\\mathrm{MN}} \\perp \\overline{\\mathrm{DP}}$이고 $\\overline{\\mathrm{AG}} \\perp \\overline{\\mathrm{MN}}$이므로 삼수선의 정리에 의해 $\\overline{\\mathrm{AQ}} \\perp \\overline{\\mathrm{MN}}$이다.\n따라서 두 평면 $\\mathrm{AMN}$과 $\\mathrm{BCD}$가 이루는 예각의 크기를 $\\theta$라 하면 $\\theta = \\angle\\mathrm{AQG}$이므로\n$$\\cos\\theta = \\dfrac{\\overline{\\mathrm{QG}}}{\\overline{\\mathrm{AQ}}} = \\dfrac{\\sqrt{3}}{3\\sqrt{11}} = \\dfrac{1}{\\sqrt{33}}$$\n또한 $\\triangle\\mathrm{AMN} = \\dfrac{1}{2} \\times \\overline{\\mathrm{MN}} \\times \\overline{\\mathrm{AQ}} = \\dfrac{1}{2} \\times 2 \\times \\sqrt{11} = \\sqrt{11}$이므로 구하는 정사영의 넓이는\n$$\\triangle\\mathrm{AMN} \\cdot \\cos\\theta = \\sqrt{11} \\times \\dfrac{1}{\\sqrt{33}} = \\dfrac{\\sqrt{3}}{3}$$\n(참고: 정사영 $\\triangle\\mathrm{GMN}$의 넓이를 직접 구해도 $\\dfrac{1}{2} \\times \\overline{\\mathrm{MN}} \\times \\overline{\\mathrm{QG}} = \\dfrac{1}{2} \\times 2 \\times \\dfrac{\\sqrt{3}}{3} = \\dfrac{\\sqrt{3}}{3}$으로 같다.)\n따라서 정답은 ①이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-056",
+    "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+    "templateKey": "TPL_GEO_SPACE_FIGURE_PROJECTION",
+    "crossConceptKeys": [
+      "CC_SPACE_FIGURE",
+      "CC_MIDPOINT"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 5,
+    "category": "공간도형 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-03",
+    "standardUnit": "공간도형",
+    "standardUnitOrder": 3,
+    "subUnitKey": "H22-GE-03-CORE",
+    "subUnit": "공간도형 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-03-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "공간도형 핵심 개념"
+    ],
+    "wide": false,
+    "content": "그림과 같이 한 모서리의 길이가 $4$인 정사면체 $\\mathrm{ABCD}$의 모서리 $\\mathrm{AD}$를 $1:3$으로 내분하는 점을 $\\mathrm{P}$라 하자. 삼각형 $\\mathrm{BCD}$의 평면 $\\mathrm{PBC}$ 위로의 정사영의 넓이는? [그림: 한 모서리의 길이가 $4$인 정사면체 $\\mathrm{ABCD}$에서 모서리 $\\mathrm{AD}$ 위에 $\\overline{\\mathrm{AP}}:\\overline{\\mathrm{PD}}=1:3$인 점 $\\mathrm{P}$가 표시되어 있고, 삼각형 $\\mathrm{PBC}$와 밑면 삼각형 $\\mathrm{BCD}$가 음영으로 표시되어 있다.]",
+    "choices": [
+      "$\\dfrac{5}{2}$",
+      "$3$",
+      "$\\dfrac{7}{2}$",
+      "$4$",
+      "$\\dfrac{9}{2}$"
+    ],
+    "answer": "④",
+    "solution": "모서리 $\\mathrm{BC}$의 중점을 $\\mathrm{M}$이라 하면 정삼각형 $\\mathrm{ABC}$, $\\mathrm{DBC}$에서\n$$\\overline{\\mathrm{AM}} \\perp \\overline{\\mathrm{BC}}, \\quad \\overline{\\mathrm{DM}} \\perp \\overline{\\mathrm{BC}}$$\n이므로 $\\overline{\\mathrm{BC}} \\perp \\text{(평면 }\\mathrm{AMD}\\text{)}$이다.\n따라서 $\\overline{\\mathrm{PM}} \\perp \\overline{\\mathrm{BC}}$이므로 두 평면 $\\mathrm{PBC}$와 $\\mathrm{BCD}$가 이루는 각의 크기 $\\theta$는 $\\angle\\mathrm{PMD}$이다.\n\n① $\\triangle\\mathrm{AMD}$에서 $\\overline{\\mathrm{AM}} = \\overline{\\mathrm{DM}} = 2\\sqrt{3}$, $\\overline{\\mathrm{AD}} = 4$이므로 꼭짓점 $\\mathrm{M}$에서 $\\overline{\\mathrm{AD}}$에 내린 수선의 발을 이용하면\n$$\\cos(\\angle\\mathrm{MAD}) = \\dfrac{2}{2\\sqrt{3}} = \\dfrac{1}{\\sqrt{3}}$$\n점 $\\mathrm{P}$는 $\\overline{\\mathrm{AD}}$를 $1:3$으로 내분하므로 $\\overline{\\mathrm{AP}} = 1$, $\\overline{\\mathrm{PD}} = 3$이다.\n\n② $\\triangle\\mathrm{AMP}$에서 코사인법칙을 적용하면\n$$\\overline{\\mathrm{PM}}^2 = \\overline{\\mathrm{AM}}^2 + \\overline{\\mathrm{AP}}^2 - 2\\cdot\\overline{\\mathrm{AM}}\\cdot\\overline{\\mathrm{AP}}\\cdot\\cos(\\angle\\mathrm{MAD})$$\n$$= (2\\sqrt{3})^2 + 1^2 - 2 \\times 2\\sqrt{3} \\times 1 \\times \\dfrac{1}{\\sqrt{3}} = 12 + 1 - 4 = 9$$\n따라서 $\\overline{\\mathrm{PM}} = 3$이다.\n\n③ $\\triangle\\mathrm{PMD}$는 $\\overline{\\mathrm{PM}} = \\overline{\\mathrm{PD}} = 3$, $\\overline{\\mathrm{DM}} = 2\\sqrt{3}$인 이등변삼각형이므로\n$$\\cos\\theta = \\cos(\\angle\\mathrm{PMD}) = \\dfrac{\\overline{\\mathrm{DM}}/2}{\\overline{\\mathrm{PM}}} = \\dfrac{\\sqrt{3}}{3}$$\n\n④ 정삼각형 $\\mathrm{BCD}$의 넓이는 $\\dfrac{\\sqrt{3}}{4} \\times 4^2 = 4\\sqrt{3}$이므로 삼각형 $\\mathrm{BCD}$의 평면 $\\mathrm{PBC}$ 위로의 정사영의 넓이는\n$$\\triangle\\mathrm{BCD} \\cdot \\cos\\theta = 4\\sqrt{3} \\times \\dfrac{\\sqrt{3}}{3} = 4$$\n따라서 정답은 ④이다.",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-056",
+    "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+    "templateKey": "TPL_GEO_SPACE_FIGURE_PROJECTION",
+    "crossConceptKeys": [
+      "CC_SPACE_FIGURE",
+      "CC_INTERNAL_DIVISION"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  }
+];

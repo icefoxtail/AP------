@@ -1,0 +1,315 @@
+window.examTitle = "기하_182_도형에서두점사이의거리_고2_유형은행1";
+
+window.questionBank = [
+  {
+    "id": 1,
+    "category": "공간좌표 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-04",
+    "standardUnit": "공간좌표",
+    "standardUnitOrder": 4,
+    "subUnitKey": "H22-GE-04-CORE",
+    "subUnit": "공간좌표 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-04-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "공간좌표 핵심 개념"
+    ],
+    "wide": false,
+    "content": "그림과 같이 한 모서리의 길이가 각각 $3$, $5$인 두 정육면체를 꼭짓점 $\\mathrm{O}$와 두 모서리가 겹치도록 붙여 놓았다. 작은 정육면체에서 꼭짓점 $\\mathrm{O}$와 대각선으로 마주 보는 꼭짓점을 $\\mathrm{A}$, 큰 정육면체에서 꼭짓점 $\\mathrm{O}$와 대각선으로 마주 보는 꼭짓점을 $\\mathrm{B}$라 할 때, 두 점 $\\mathrm{A}$, $\\mathrm{B}$ 사이의 거리는? [그림: 원점 $\\mathrm{O}(0,0,0)$을 공유하고 $x$축과 $z$축 위의 두 모서리가 겹치도록 붙은 두 정육면체. 작은 정육면체는 $0\\le x\\le 3$, $-3\\le y\\le 0$, $0\\le z\\le 3$에 놓여 꼭짓점 $\\mathrm{A}(3,-3,3)$이 표시되어 있고, 큰 정육면체는 $0\\le x\\le 5$, $0\\le y\\le 5$, $0\\le z\\le 5$에 놓여 꼭짓점 $\\mathrm{B}(5,5,5)$가 표시되어 있다.]",
+    "choices": [
+      "$4\\sqrt{3}$",
+      "$5\\sqrt{2}$",
+      "$6\\sqrt{2}$",
+      "$5\\sqrt{3}$",
+      "$6\\sqrt{3}$"
+    ],
+    "answer": "③",
+    "solution": "점 $\\mathrm{O}$를 원점으로 하고, 두 정육면체가 겹치는 두 모서리가 각각 $x$축의 양의 방향, $z$축의 양의 방향에 놓이도록 좌표축을 잡자.\n작은 정육면체(한 모서리의 길이 $3$)는 $y\\le 0$ 영역에, 큰 정육면체(한 모서리의 길이 $5$)는 $y\\ge 0$ 영역에 놓인다.\n두 꼭짓점 $\\mathrm{A}$, $\\mathrm{B}$는 각 정육면체에서 $\\mathrm{O}$와 대각선으로 마주 보는 꼭짓점이므로\n$\\mathrm{A}(3,\\,-3,\\,3)$, $\\mathrm{B}(5,\\,5,\\,5)$\n따라서 두 점 $\\mathrm{A}$, $\\mathrm{B}$ 사이의 거리는\n$\\overline{\\mathrm{AB}} = \\sqrt{(5-3)^2 + \\{5-(-3)\\}^2 + (5-3)^2} = \\sqrt{4 + 64 + 4} = \\sqrt{72} = 6\\sqrt{2}$\n따라서 정답은 ③이다.",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-060",
+    "problemTypeKey": "PT_GEO_SPACE_COORDINATE",
+    "templateKey": "TPL_GEO_SPACE_COORD_DISTANCE",
+    "crossConceptKeys": [
+      "CC_SPACE_FIGURE"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 2,
+    "category": "공간좌표 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-04",
+    "standardUnit": "공간좌표",
+    "standardUnitOrder": 4,
+    "subUnitKey": "H22-GE-04-CORE",
+    "subUnit": "공간좌표 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-04-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "공간좌표 핵심 개념"
+    ],
+    "wide": false,
+    "content": "그림과 같은 모빌에서 두 막대 $l$, $m$이 지면과 평행하고 서로 수직이다. 막대 $l$의 매달린 지점으로부터 왼쪽으로 $5$, 오른쪽으로 $3$만큼 떨어진 양 끝에 각각 수직인 실이 연결되어 있다. 왼쪽 끝에는 길이가 $4$인 실의 끝에 장식 $\\mathrm{A}$가 달려 있고, 오른쪽 끝에는 길이가 $2$인 실의 끝에 막대 $m$의 중점이 연결되어 있다. 막대 $m$의 중점에서 한쪽 끝까지의 길이가 $4$이고 그 끝에는 길이가 $3$인 실의 끝에 장식 $\\mathrm{B}$가 달려 있을 때, 두 장식 $\\mathrm{A}$, $\\mathrm{B}$ 사이의 거리는? (단, 장식의 크기는 무시한다.) [그림: 지면과 평행한 막대 $l$이 매달린 점 $\\mathrm{P}$를 기준으로 왼쪽 $5$, 오른쪽 $3$으로 나뉜다. 왼쪽 끝에서 아래로 길이 $4$인 실 끝에 점 $\\mathrm{A}$가 있고, 오른쪽 끝에서 아래로 길이 $2$인 실 끝에 막대 $l$과 수직인 막대 $m$의 중점이 매달려 있다. 막대 $m$의 중점에서 한쪽 끝까지의 길이는 $4$이며, 그 끝에서 아래로 길이 $3$인 실 끝에 점 $\\mathrm{B}$가 표시되어 있다.]",
+    "choices": [
+      "$6$",
+      "$7$",
+      "$8$",
+      "$9$",
+      "$10$"
+    ],
+    "answer": "④",
+    "solution": "막대 $l$이 매달린 지점을 원점 $\\mathrm{O}(0,\\,0,\\,0)$으로 하고, 막대 $l$의 방향을 $x$축, 막대 $m$의 방향을 $y$축, 지면에 수직인 위쪽 방향을 $z$축으로 잡자.\n점 $\\mathrm{A}$는 막대 $l$의 왼쪽 끝 $(-5,\\,0,\\,0)$에서 아래로 $4$만큼 내려온 점이므로\n$\\mathrm{A}(-5,\\,0,\\,-4)$\n막대 $m$의 중점은 막대 $l$의 오른쪽 끝 $(3,\\,0,\\,0)$에서 아래로 $2$만큼 내려온 점 $(3,\\,0,\\,-2)$이다.\n점 $\\mathrm{B}$는 막대 $m$의 중점에서 $y$축 방향으로 $4$만큼 이동한 뒤 아래로 $3$만큼 내려온 점이므로\n$\\mathrm{B}(3,\\,4,\\,-5)$ (또는 $(3,\\,-4,\\,-5)$)\n따라서 두 점 $\\mathrm{A}$, $\\mathrm{B}$ 사이의 거리는\n$\\overline{\\mathrm{AB}} = \\sqrt{\\{3-(-5)\\}^2 + (4-0)^2 + \\{-5-(-4)\\}^2} = \\sqrt{64 + 16 + 1} = \\sqrt{81} = 9$\n따라서 정답은 ④이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-060",
+    "problemTypeKey": "PT_GEO_SPACE_COORDINATE",
+    "templateKey": "TPL_GEO_SPACE_COORD_DISTANCE",
+    "crossConceptKeys": [
+      "CC_PERPENDICULAR",
+      "CC_SPACE_FIGURE"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 3,
+    "category": "공간좌표 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-04",
+    "standardUnit": "공간좌표",
+    "standardUnitOrder": 4,
+    "subUnitKey": "H22-GE-04-CORE",
+    "subUnit": "공간좌표 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-04-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "공간좌표 핵심 개념"
+    ],
+    "wide": false,
+    "content": "그림과 같은 직육면체 $\\mathrm{ABCD-EFGH}$에서 $\\overline{\\mathrm{AE}}=8$, $\\overline{\\mathrm{EF}}=9$, $\\overline{\\mathrm{FG}}=7$이다. 면 $\\mathrm{ABCD}$ 위의 점 $\\mathrm{P}$가 두 모서리 $\\mathrm{BC}$, $\\mathrm{CD}$로부터 각각 $2$만큼 떨어져 있을 때, 두 점 $\\mathrm{E}$, $\\mathrm{P}$ 사이의 거리는? [그림: 직육면체 $\\mathrm{ABCD-EFGH}$에서 밑면은 $\\mathrm{EFGH}$, 윗면은 $\\mathrm{ABCD}$이며 $\\overline{\\mathrm{AE}}=8$, $\\overline{\\mathrm{EF}}=9$, $\\overline{\\mathrm{FG}}=7$이다. 윗면 $\\mathrm{ABCD}$ 내부에 두 모서리 $\\mathrm{BC}$, $\\mathrm{CD}$로부터 거리가 각각 $2$인 점 $\\mathrm{P}$가 표시되어 있다.]",
+    "choices": [
+      "$\\sqrt{131}$",
+      "$\\sqrt{138}$",
+      "$\\sqrt{145}$",
+      "$\\sqrt{154}$",
+      "$\\sqrt{163}$"
+    ],
+    "answer": "②",
+    "solution": "점 $\\mathrm{H}$를 원점으로 하고 세 모서리 $\\mathrm{HE}$, $\\mathrm{HG}$, $\\mathrm{HD}$가 각각 $x$축, $y$축, $z$축의 양의 방향에 놓이도록 좌표축을 잡자.\n그러면 $\\mathrm{E}(7,\\,0,\\,0)$, $\\mathrm{B}(7,\\,9,\\,8)$, $\\mathrm{C}(0,\\,9,\\,8)$, $\\mathrm{D}(0,\\,0,\\,8)$이다.\n점 $\\mathrm{P}$는 면 $\\mathrm{ABCD}$ ($z=8$) 위에 있고,\n모서리 $\\mathrm{CD}$ ($x=0,\\,z=8$)로부터 거리가 $2$이므로 $x$좌표는 $0+2=2$,\n모서리 $\\mathrm{BC}$ ($y=9,\\,z=8$)로부터 거리가 $2$이므로 $y$좌표는 $9-2=7$이다.\n즉, $\\mathrm{P}(2,\\,7,\\,8)$이므로 두 점 $\\mathrm{E}$, $\\mathrm{P}$ 사이의 거리는\n$\\overline{\\mathrm{EP}} = \\sqrt{(2-7)^2 + (7-0)^2 + (8-0)^2} = \\sqrt{25 + 49 + 64} = \\sqrt{138}$\n따라서 정답은 ②이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-060",
+    "problemTypeKey": "PT_GEO_SPACE_COORDINATE",
+    "templateKey": "TPL_GEO_SPACE_COORD_DISTANCE",
+    "crossConceptKeys": [
+      "CC_SPACE_FIGURE",
+      "CC_POINT_LINE_DISTANCE"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 4,
+    "category": "공간좌표 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-04",
+    "standardUnit": "공간좌표",
+    "standardUnitOrder": 4,
+    "subUnitKey": "H22-GE-04-CORE",
+    "subUnit": "공간좌표 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-04-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "공간좌표 핵심 개념"
+    ],
+    "wide": false,
+    "content": "그림과 같이 좌표공간에 $\\overline{\\mathrm{AB}}=3$, $\\overline{\\mathrm{AD}}=4$, $\\overline{\\mathrm{AE}}=5$인 직육면체 $\\mathrm{ABCD-EFGH}$가 있다. 세 모서리 $\\mathrm{AD}$, $\\mathrm{AB}$, $\\mathrm{AE}$가 각각 $x$축, $y$축, $z$축에 평행하고, 꼭짓점 $\\mathrm{G}$의 좌표가 $(1,\\,6,\\,-1)$일 때, $\\overline{\\mathrm{OA}}$의 값은? (단, $\\mathrm{O}$는 원점이고, 점 $\\mathrm{A}$의 $x$좌표는 점 $\\mathrm{D}$의 $x$좌표보다 크며, 점 $\\mathrm{A}$의 $y$좌표는 점 $\\mathrm{B}$의 $y$좌표보다 작고, 점 $\\mathrm{A}$의 $z$좌표는 점 $\\mathrm{E}$의 $z$좌표보다 크다.) [그림: 좌표공간에 놓인 직육면체 $\\mathrm{ABCD-EFGH}$에서 윗면 $\\mathrm{ABCD}$, 밑면 $\\mathrm{EFGH}$이며 모서리 $\\mathrm{DA}$가 $+x$방향, $\\mathrm{AB}$가 $+y$방향, $\\mathrm{EA}$가 $+z$방향과 평행하고 꼭짓점 $\\mathrm{G}$가 뒤쪽 아래 오른쪽 모서리에 표시되어 있다.]",
+    "choices": [
+      "$2\\sqrt{7}$",
+      "$4\\sqrt{2}$",
+      "$2\\sqrt{10}$",
+      "$3\\sqrt{5}$",
+      "$5\\sqrt{2}$"
+    ],
+    "answer": "⑤",
+    "solution": "직육면체 $\\mathrm{ABCD-EFGH}$에서 세 모서리 $\\mathrm{AD}$, $\\mathrm{AB}$, $\\mathrm{AE}$가 각각 $x$축, $y$축, $z$축에 평행하므로 꼭짓점 $\\mathrm{A}$와 대각선으로 마주 보는 꼭짓점 $\\mathrm{G}(1,\\,6,\\,-1)$로부터 각 좌표를 구할 수 있다.\n(1) 점 $\\mathrm{D}$와 점 $\\mathrm{G}$의 $x$좌표가 같고, 점 $\\mathrm{A}$의 $x$좌표가 점 $\\mathrm{D}$의 $x$좌표보다 $\\overline{\\mathrm{AD}}=4$만큼 크므로\n$x_{\\mathrm{A}} = 1 + 4 = 5$\n(2) 점 $\\mathrm{B}$와 점 $\\mathrm{G}$의 $y$좌표가 같고, 점 $\\mathrm{A}$의 $y$좌표가 점 $\\mathrm{B}$의 $y$좌표보다 $\\overline{\\mathrm{AB}}=3$만큼 작으므로\n$y_{\\mathrm{A}} = 6 - 3 = 3$\n(3) 점 $\\mathrm{E}$와 점 $\\mathrm{G}$의 $z$좌표가 같고, 점 $\\mathrm{A}$의 $z$좌표가 점 $\\mathrm{E}$의 $z$좌표보다 $\\overline{\\mathrm{AE}}=5$만큼 크므로\n$z_{\\mathrm{A}} = -1 + 5 = 4$\n따라서 $\\mathrm{A}(5,\\,3,\\,4)$이므로\n$\\overline{\\mathrm{OA}} = \\sqrt{5^2 + 3^2 + 4^2} = \\sqrt{25 + 9 + 16} = \\sqrt{50} = 5\\sqrt{2}$\n따라서 정답은 ⑤이다.",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-060",
+    "problemTypeKey": "PT_GEO_SPACE_COORDINATE",
+    "templateKey": "TPL_GEO_SPACE_COORD_DISTANCE",
+    "crossConceptKeys": [
+      "CC_SPACE_FIGURE",
+      "CC_COORDINATE_DISPLACEMENT"
+    ],
+    "conditionKeys": [
+      "COND_INEQUALITY_CONSTRAINT"
+    ],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 5,
+    "category": "공간좌표 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-04",
+    "standardUnit": "공간좌표",
+    "standardUnitOrder": 4,
+    "subUnitKey": "H22-GE-04-CORE",
+    "subUnit": "공간좌표 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-04-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "공간좌표 핵심 개념"
+    ],
+    "wide": false,
+    "content": "그림과 같이 $xy$평면 위의 점 $\\mathrm{P}$와 $yz$평면 위의 점 $\\mathrm{Q}$에 대하여 $\\overline{\\mathrm{OP}}=4$, $\\overline{\\mathrm{OQ}}=6$이고 반직선 $\\mathrm{OP}$가 $x$축의 양의 방향과 이루는 각의 크기가 $\\dfrac{\\pi}{3}$, 반직선 $\\mathrm{OQ}$가 $y$축의 양의 방향과 이루는 각의 크기가 $\\dfrac{\\pi}{6}$일 때, 두 점 $\\mathrm{P}$, $\\mathrm{Q}$ 사이의 거리는? (단, 점 $\\mathrm{O}$는 원점이고, 점 $\\mathrm{P}$의 $y$좌표와 점 $\\mathrm{Q}$의 $z$좌표는 모두 양수이다.) [그림: 원점 $\\mathrm{O}$에서 $xy$평면의 제$1$사분면 위에 $\\overline{\\mathrm{OP}}=4$, $x$축의 양의 방향과 이루는 각이 $\\dfrac{\\pi}{3}$인 점 $\\mathrm{P}$가 있고, $yz$평면의 제$1$사분면 위에 $\\overline{\\mathrm{OQ}}=6$, $y$축의 양의 방향과 이루는 각이 $\\dfrac{\\pi}{6}$인 점 $\\mathrm{Q}$가 표시되어 있다.]",
+    "choices": [
+      "$4$",
+      "$5$",
+      "$6$",
+      "$7$",
+      "$8$"
+    ],
+    "answer": "①",
+    "solution": "점 $\\mathrm{P}$는 $xy$평면 위의 점이고 $y$좌표가 양수이므로\n$\\mathrm{P}\\!\\left(4\\cos\\dfrac{\\pi}{3},\\;4\\sin\\dfrac{\\pi}{3},\\;0\\right) = (2,\\;2\\sqrt{3},\\;0)$\n점 $\\mathrm{Q}$는 $yz$평면 위의 점이고 $z$좌표가 양수이므로\n$\\mathrm{Q}\\!\\left(0,\\;6\\cos\\dfrac{\\pi}{6},\\;6\\sin\\dfrac{\\pi}{6}\\right) = (0,\\;3\\sqrt{3},\\;3)$\n따라서 두 점 $\\mathrm{P}$, $\\mathrm{Q}$ 사이의 거리는\n$\\overline{\\mathrm{PQ}} = \\sqrt{(2-0)^2 + (2\\sqrt{3}-3\\sqrt{3})^2 + (0-3)^2} = \\sqrt{4 + 3 + 9} = \\sqrt{16} = 4$\n따라서 정답은 ①이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-060",
+    "problemTypeKey": "PT_GEO_SPACE_COORDINATE",
+    "templateKey": "TPL_GEO_SPACE_COORD_DISTANCE",
+    "crossConceptKeys": [
+      "CC_TRIG_RATIO"
+    ],
+    "conditionKeys": [
+      "COND_POSITIVE"
+    ],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 6,
+    "category": "공간좌표 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-04",
+    "standardUnit": "공간좌표",
+    "standardUnitOrder": 4,
+    "subUnitKey": "H22-GE-04-CORE",
+    "subUnit": "공간좌표 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-04-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "공간좌표 핵심 개념"
+    ],
+    "wide": false,
+    "content": "그림과 같이 꼭짓점이 $\\mathrm{O}$이고 밑면의 반지름의 길이가 $12$, 높이가 $24$인 원뿔이 있다. 이 원뿔의 옆면에 있는 두 점 $\\mathrm{A}$, $\\mathrm{B}$에 대하여 선분 $\\mathrm{OA}$와 선분 $\\mathrm{OB}$의 밑면을 포함하는 평면 위로의 정사영을 각각 $\\overline{\\mathrm{O'A'}}$, $\\overline{\\mathrm{O'B'}}$이라 하자. $\\overline{\\mathrm{O'A'}}=4$, $\\overline{\\mathrm{O'B'}}=6$, $\\angle\\mathrm{A'O'B'}=60^\\circ$일 때, 두 점 $\\mathrm{A}$, $\\mathrm{B}$ 사이의 거리는? [그림: 꼭짓점 $\\mathrm{O}$, 밑면의 중심 $\\mathrm{O'}$, 밑면의 반지름 $12$, 높이 $24$인 원뿔의 옆면에 두 점 $\\mathrm{A}$, $\\mathrm{B}$가 있고, 밑면 위에 수선의 발 $\\mathrm{A'}$, $\\mathrm{B'}$이 $\\overline{\\mathrm{O'A'}}=4$, $\\overline{\\mathrm{O'B'}}=6$, $\\angle\\mathrm{A'O'B'}=60^\\circ$가 되도록 표시되어 있다.]",
+    "choices": [
+      "$2\\sqrt{11}$",
+      "$4\\sqrt{3}$",
+      "$2\\sqrt{13}$",
+      "$2\\sqrt{14}$",
+      "$2\\sqrt{15}$"
+    ],
+    "answer": "①",
+    "solution": "밑면의 중심 $\\mathrm{O'}$을 원점으로 하고, 직선 $\\mathrm{O'A'}$을 $x$축, 밑면을 포함하는 평면을 $xy$평면, 직선 $\\mathrm{O'O}$를 $z$축으로 잡자.\n원뿔의 밑면의 반지름의 길이가 $12$, 높이가 $24$이므로 원뿔의 옆면 위의 점이 밑면의 중심으로부터 수평 거리 $r$만큼 떨어져 있을 때, 그 점의 높이 $z$는 닮음에 의해\n$\\dfrac{24-z}{24} = \\dfrac{r}{12} \\implies z = 24 - 2r$\n이다.\n점 $\\mathrm{A}$는 $\\overline{\\mathrm{O'A'}}=4$이므로 $z_{\\mathrm{A}} = 24 - 2\\times 4 = 16$, 즉 $\\mathrm{A}(4,\\,0,\\,16)$이다.\n점 $\\mathrm{B}$는 $\\overline{\\mathrm{O'B'}}=6$이고 $\\angle\\mathrm{A'O'B'}=60^\\circ$이므로 $z_{\\mathrm{B}} = 24 - 2\\times 6 = 12$이고,\n$\\mathrm{B}(6\\cos 60^\\circ,\\;6\\sin 60^\\circ,\\;12) = (3,\\;3\\sqrt{3},\\;12)$이다.\n따라서 두 점 $\\mathrm{A}$, $\\mathrm{B}$ 사이의 거리는\n$\\overline{\\mathrm{AB}} = \\sqrt{(4-3)^2 + (0-3\\sqrt{3})^2 + (16-12)^2} = \\sqrt{1 + 27 + 16} = \\sqrt{44} = 2\\sqrt{11}$\n따라서 정답은 ①이다.",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B45",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-060",
+    "problemTypeKey": "PT_GEO_SPACE_COORDINATE",
+    "templateKey": "TPL_GEO_SPACE_COORD_DISTANCE",
+    "crossConceptKeys": [
+      "CC_SPACE_FIGURE",
+      "CC_ORTHOGONAL_PROJECTION",
+      "CC_SIMILARITY"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "INTERDEPENDENT"
+  },
+  {
+    "id": 7,
+    "category": "공간좌표 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-04",
+    "standardUnit": "공간좌표",
+    "standardUnitOrder": 4,
+    "subUnitKey": "H22-GE-04-CORE",
+    "subUnit": "공간좌표 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-04-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "공간좌표 핵심 개념"
+    ],
+    "wide": false,
+    "content": "그림과 같이 남북으로 곧게 뻗은 길 위로 높이가 $5\\,\\mathrm{m}$인 육교가 길과 수직으로 놓여 있다. 이 길 위의 한 지점 $\\mathrm{P}$를 지나고 지면에 수직인 직선이 육교와 만나는 점을 $\\mathrm{Q}$라 하자. $\\mathrm{P}$ 지점으로부터 남쪽으로 $7\\,\\mathrm{m}$ 떨어진 지점에서 초속 $2\\,\\mathrm{m}$의 속력으로 북쪽으로 이동하는 사람 $\\mathrm{A}$가 있다. 같은 시각에 $\\mathrm{Q}$ 지점으로부터 서쪽으로 $6\\,\\mathrm{m}$ 떨어진 지점에서 초속 $1\\,\\mathrm{m}$의 속력으로 동쪽으로 이동하는 사람 $\\mathrm{B}$가 있다. 두 사람 $\\mathrm{A}$, $\\mathrm{B}$ 사이의 거리의 최솟값은? [그림: 남북 방향의 직선 도로 위 지점 $\\mathrm{P}$에서 수직으로 $5\\,\\mathrm{m}$ 위에 동서 방향의 육교 위 지점 $\\mathrm{Q}$가 있다. 사람 $\\mathrm{A}$는 $\\mathrm{P}$에서 남쪽으로 $7\\,\\mathrm{m}$ 떨어진 곳에서 북쪽으로, 사람 $\\mathrm{B}$는 $\\mathrm{Q}$에서 서쪽으로 $6\\,\\mathrm{m}$ 떨어진 곳에서 동쪽으로 이동하는 화살표가 표시되어 있다.]",
+    "choices": [
+      "$\\sqrt{26}\\,\\mathrm{m}$",
+      "$\\sqrt{29}\\,\\mathrm{m}$",
+      "$\\sqrt{30}\\,\\mathrm{m}$",
+      "$\\sqrt{31}\\,\\mathrm{m}$",
+      "$\\sqrt{33}\\,\\mathrm{m}$"
+    ],
+    "answer": "③",
+    "solution": "지점 $\\mathrm{P}$를 원점 $(0,\\,0,\\,0)$으로 하고, 동쪽을 $x$축의 양의 방향, 북쪽을 $y$축의 양의 방향, 지면에 수직인 위쪽을 $z$축의 양의 방향으로 잡으면 $\\mathrm{Q}(0,\\,0,\\,5)$이다.\n출발한 지 $t$초 ($t\\ge 0$) 후 두 사람 $\\mathrm{A}$, $\\mathrm{B}$의 위치는 각각\n$\\mathrm{A}(0,\\;-7+2t,\\;0)$, $\\mathrm{B}(-6+t,\\;0,\\;5)$\n이므로 두 사람 사이의 거리의 제곱은\n$\\overline{\\mathrm{AB}}^2 = (-6+t)^2 + \\{0-(-7+2t)\\}^2 + 5^2$\n$= (t^2 - 12t + 36) + (4t^2 - 28t + 49) + 25$\n$= 5t^2 - 40t + 110$\n$= 5(t-4)^2 + 30$\n따라서 $t=4$일 때 $\\overline{\\mathrm{AB}}^2$의 최솟값이 $30$이므로, 구하는 거리의 최솟값은 $\\sqrt{30}\\,\\mathrm{m}$이다.\n따라서 정답은 ③이다.",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B45",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-060",
+    "problemTypeKey": "PT_GEO_SPACE_COORDINATE",
+    "templateKey": "TPL_GEO_SPACE_COORD_DISTANCE",
+    "crossConceptKeys": [
+      "CC_SPACE_FIGURE",
+      "CC_SPATIAL_POSITION_RELATION"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "INTERDEPENDENT"
+  }
+];

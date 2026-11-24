@@ -1,0 +1,410 @@
+window.examTitle = "기하_163_정사영의넓이1_고2_유형은행1";
+
+window.questionBank = [
+  {
+    "id": 1,
+    "category": "공간도형 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-03",
+    "standardUnit": "공간도형",
+    "standardUnitOrder": 3,
+    "subUnitKey": "H22-GE-03-CORE",
+    "subUnit": "공간도형 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-03-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "공간도형 핵심 개념"
+    ],
+    "wide": false,
+    "content": "다음은 평면 $\\alpha$ 위의 삼각형 $\\text{ABC}$의 평면 $\\beta$ 위로의 정사영을 삼각형 $\\text{A'BC}$라 할 때, 두 삼각형의 넓이 사이의 관계를 유도하는 과정이다. (단, 두 평면 $\\alpha, \\beta$가 이루는 각의 크기는 $\\theta$ ($0^\\circ < \\theta < 90^\\circ$)이고, 변 $\\text{BC}$는 두 평면의 교선 $l$ 위에 있다.)\n[그림: 두 평면 $\\alpha, \\beta$가 교선 $l$에서 만난다. 변 $\\text{BC}$는 교선 $l$ 위에 있고 평면 $\\alpha$ 위의 꼭짓점 $\\text{A}$에서 교선 $l$에 내린 수선의 발이 $\\text{H}$이다. 점 $\\text{A}$의 평면 $\\beta$ 위로의 정사영이 $\\text{A}'$이고, 점 $\\text{A}'$과 $\\text{H}$가 연결되어 각 $\\text{AHA}' = \\theta$를 이룬다.]\n\n점 $\\text{A}$에서 교선 $l$에 내린 수선의 발을 $\\text{H}$라 하면\n$\\overline{\\text{AH}} \\perp l$\n점 $\\text{A}$의 평면 $\\beta$ 위로의 정사영을 $\\text{A}'$이라 하면\n$\\overline{\\text{AA}'} \\perp \\beta$\n이므로 삼수선의 정리에 의하여\n(가)\n이다. 따라서 $\\angle\\text{AHA}' = \\theta$이므로 직각삼각형 $\\text{AA'H}$에서\n$\\overline{\\text{A'H}} =$ (나)\n삼각형 $\\text{ABC}$와 삼각형 $\\text{A'BC}$의 넓이를 각각 $S, S'$이라 하면\n$S' = \\frac{1}{2} \\times \\overline{\\text{BC}} \\times \\overline{\\text{A'H}} = \\frac{1}{2} \\times \\overline{\\text{BC}} \\times \\text{[(나)]} = $ (다)\n이다.\n\n위의 (가), (나), (다)에 알맞은 것을 바르게 짝지은 것은?",
+    "choices": [
+      "(가) $\\overline{\\text{A'H}} \\perp \\overline{\\text{AB}}$, (나) $\\overline{\\text{AH}}\\sin\\theta$, (다) $S\\sin\\theta$",
+      "(가) $\\overline{\\text{A'H}} \\perp \\overline{\\text{AB}}$, (나) $\\overline{\\text{AH}}\\cos\\theta$, (다) $S\\cos\\theta$",
+      "(가) $\\overline{\\text{A'H}} \\perp \\overline{\\text{BC}}$, (나) $\\overline{\\text{AH}}\\sin\\theta$, (다) $S\\sin\\theta$",
+      "(가) $\\overline{\\text{A'H}} \\perp \\overline{\\text{BC}}$, (나) $\\overline{\\text{AH}}\\cos\\theta$, (다) $S\\cos\\theta$",
+      "(가) $\\overline{\\text{A'H}} \\perp \\overline{\\text{BC}}$, (나) $\\overline{\\text{AH}}\\tan\\theta$, (다) $S\\tan\\theta$"
+    ],
+    "answer": "④",
+    "solution": "점 $\\text{A}$에서 교선 $l$에 내린 수선의 발을 $\\text{H}$라 하면 $\\overline{\\text{AH}} \\perp l$이고, 점 $\\text{A}$의 평면 $\\beta$ 위로의 정사영 $\\text{A}'$에 대하여 $\\overline{\\text{AA}'} \\perp \\beta$이다.\n교선 $l$은 평면 $\\beta$ 위의 직선이고 선분 $\\text{BC}$가 교선 $l$ 위에 있으므로, 삼수선의 정리에 의하여 $\\overline{\\text{A'H}} \\perp l$, 즉 (가)는 $\\overline{\\text{A'H}} \\perp \\overline{\\text{BC}}$이다.\n이때 평면 $\\alpha$와 평면 $\\beta$가 이루는 각의 크기가 $\\theta$이므로 $\\angle\\text{AHA}' = \\theta$이다.\n직각삼각형 $\\text{AA'H}$에서 (나)는 $\\overline{\\text{A'H}} = \\overline{\\text{AH}}\\cos\\theta$이다.\n삼각형 $\\text{ABC}$의 넓이는 $S = \\frac{1}{2} \\times \\overline{\\text{BC}} \\times \\overline{\\text{AH}}$이므로\n$S' = \\frac{1}{2} \\times \\overline{\\text{BC}} \\times \\overline{\\text{AH}}\\cos\\theta = S\\cos\\theta$\n따라서 (다)는 $S\\cos\\theta$이다.\n따라서 정답은 ④이다.",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-054",
+    "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+    "templateKey": "TPL_GEO_SPACE_FIGURE_PROJECTION",
+    "crossConceptKeys": [
+      "CC_PERPENDICULAR",
+      "CC_TRIG_RATIO"
+    ],
+    "conditionKeys": [
+      "COND_RESTRICTED_INTERVAL"
+    ],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 2,
+    "category": "공간도형 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-03",
+    "standardUnit": "공간도형",
+    "standardUnitOrder": 3,
+    "subUnitKey": "H22-GE-03-CORE",
+    "subUnit": "공간도형 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-03-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "공간도형 핵심 개념"
+    ],
+    "wide": false,
+    "content": "그림과 같이 한 변의 길이가 $12$인 정삼각형 $\\text{ABC}$를 포함하는 평면 $\\alpha$와 평면 $\\beta$가 이루는 각의 크기가 $30^\\circ$일 때, 삼각형 $\\text{ABC}$의 평면 $\\beta$ 위로의 정사영의 넓이는?\n[그림: 두 평면 $\\alpha, \\beta$가 교선을 공유하며 $30^\\circ$의 이면각을 이루고 있다. 평면 $\\alpha$ 위에 한 변의 길이가 12인 정삼각형 $\\text{ABC}$가 있고, 평면 $\\beta$ 위에 삼각형 $\\text{ABC}$의 정사영이 표시되어 있다.]",
+    "choices": [
+      "$36$",
+      "$42$",
+      "$48$",
+      "$54$",
+      "$60$"
+    ],
+    "answer": "④",
+    "solution": "한 변의 길이가 $12$인 정삼각형 $\\text{ABC}$의 넓이를 $S$라 하면\n$S = \\frac{\\sqrt{3}}{4} \\times 12^2 = \\frac{\\sqrt{3}}{4} \\times 144 = 36\\sqrt{3}$\n두 평면 $\\alpha, \\beta$가 이루는 각의 크기가 $30^\\circ$이므로, 삼각형 $\\text{ABC}$의 평면 $\\beta$ 위로의 정사영의 넓이를 $S'$이라 하면\n$S' = S \\cos 30^\\circ = 36\\sqrt{3} \\times \\frac{\\sqrt{3}}{2} = 36 \\times \\frac{3}{2} = 54$\n따라서 정답은 ④이다.",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-054",
+    "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+    "templateKey": "TPL_GEO_SPACE_FIGURE_PROJECTION",
+    "crossConceptKeys": [
+      "CC_EQUILATERAL_TRIANGLE",
+      "CC_TRIANGLE_AREA",
+      "CC_TRIG_RATIO"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 3,
+    "category": "공간도형 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-03",
+    "standardUnit": "공간도형",
+    "standardUnitOrder": 3,
+    "subUnitKey": "H22-GE-03-CORE",
+    "subUnit": "공간도형 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-03-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "공간도형 핵심 개념"
+    ],
+    "wide": false,
+    "content": "두 평면 $\\alpha, \\beta$가 이루는 각의 크기가 $60^\\circ$이고 평면 $\\alpha$ 위에 있는 도형 $F$의 평면 $\\beta$ 위로의 정사영을 $F'$이라고 하자. 도형 $F'$이 한 변의 길이가 $6\\text{ cm}$인 정삼각형일 때, 도형 $F$의 넓이는? (단, 단위는 $\\text{cm}^2$)",
+    "choices": [
+      "$10\\sqrt{3}\\text{ cm}^2$",
+      "$12\\sqrt{3}\\text{ cm}^2$",
+      "$14\\sqrt{3}\\text{ cm}^2$",
+      "$16\\sqrt{3}\\text{ cm}^2$",
+      "$18\\sqrt{3}\\text{ cm}^2$"
+    ],
+    "answer": "⑤",
+    "solution": "도형 $F'$은 한 변의 길이가 $6\\text{ cm}$인 정삼각형이므로 그 넓이를 $S'$이라 하면\n$S' = \\frac{\\sqrt{3}}{4} \\times 6^2 = \\frac{\\sqrt{3}}{4} \\times 36 = 9\\sqrt{3}\\text{ cm}^2$\n도형 $F$의 넓이를 $S$라 하고 두 평면 $\\alpha, \\beta$가 이루는 각의 크기가 $60^\\circ$이므로 정사영의 넓이 관계식에 의하여\n$S' = S \\cos 60^\\circ$\n$9\\sqrt{3} = S \\times \\frac{1}{2} \\implies S = 18\\sqrt{3}\\text{ cm}^2$\n따라서 도형 $F$의 넓이는 $18\\sqrt{3}\\text{ cm}^2$이다.\n따라서 정답은 ⑤이다.",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-054",
+    "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+    "templateKey": "TPL_GEO_SPACE_FIGURE_PROJECTION",
+    "crossConceptKeys": [
+      "CC_EQUILATERAL_TRIANGLE",
+      "CC_TRIANGLE_AREA",
+      "CC_TRIG_RATIO"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 4,
+    "category": "공간도형 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-03",
+    "standardUnit": "공간도형",
+    "standardUnitOrder": 3,
+    "subUnitKey": "H22-GE-03-CORE",
+    "subUnit": "공간도형 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-03-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "공간도형 핵심 개념"
+    ],
+    "wide": false,
+    "content": "평면 $\\alpha$ 위에 세 변의 길이가 각각 $6, 8, 10$인 삼각형 $\\text{ABC}$가 있다. 두 평면 $\\alpha, \\beta$가 이루는 각의 크기가 $30^\\circ$일 때, 삼각형 $\\text{ABC}$의 평면 $\\beta$ 위로의 정사영의 넓이는?",
+    "choices": [
+      "$6\\sqrt{3}$",
+      "$8\\sqrt{3}$",
+      "$12\\sqrt{3}$",
+      "$14\\sqrt{3}$",
+      "$16\\sqrt{3}$"
+    ],
+    "answer": "③",
+    "solution": "삼각형 $\\text{ABC}$의 세 변의 길이 $6, 8, 10$에 대하여\n$6^2 + 8^2 = 36 + 64 = 100 = 10^2$\n이 성립하므로 삼각형 $\\text{ABC}$는 빗변의 길이가 $10$인 직각삼각형이다.\n따라서 삼각형 $\\text{ABC}$의 넓이를 $S$라 하면\n$S = \\frac{1}{2} \\times 6 \\times 8 = 24$\n두 평면 $\\alpha, \\beta$가 이루는 각의 크기가 $30^\\circ$이므로, 삼각형 $\\text{ABC}$의 평면 $\\beta$ 위로의 정사영의 넓이를 $S'$이라 하면\n$S' = S \\cos 30^\\circ = 24 \\times \\frac{\\sqrt{3}}{2} = 12\\sqrt{3}$\n따라서 정답은 ③이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-054",
+    "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+    "templateKey": "TPL_GEO_SPACE_FIGURE_PROJECTION",
+    "crossConceptKeys": [
+      "CC_RIGHT_TRIANGLE",
+      "CC_TRIANGLE_AREA",
+      "CC_TRIG_RATIO"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 5,
+    "category": "공간도형 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-03",
+    "standardUnit": "공간도형",
+    "standardUnitOrder": 3,
+    "subUnitKey": "H22-GE-03-CORE",
+    "subUnit": "공간도형 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-03-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "공간도형 핵심 개념"
+    ],
+    "wide": false,
+    "content": "그림과 같이 평행하지 않은 두 평면 $\\alpha, \\beta$가 있고 평면 $\\alpha$ 위에 $\\overline{\\text{AB}}=\\overline{\\text{AC}}=\\sqrt{7}$, $\\overline{\\text{BC}}=2\\sqrt{3}$인 삼각형 $\\text{ABC}$가 있다. 삼각형 $\\text{ABC}$의 평면 $\\beta$ 위로의 정사영이 한 변의 길이가 $2$인 정삼각형일 때, 두 평면 $\\alpha, \\beta$가 이루는 각의 크기를 $\\theta$ ($0^\\circ < \\theta < 90^\\circ$)라 할 때, $\\tan\\theta$의 값은?\n[그림: 서로 만나는 두 평면 $\\alpha, \\beta$가 있다. 평면 $\\alpha$ 위에 $\\overline{\\text{AB}}=\\overline{\\text{AC}}=\\sqrt{7}$, $\\overline{\\text{BC}}=2\\sqrt{3}$인 이등변삼각형 $\\text{ABC}$가 있고, 평면 $\\beta$ 위에 정사영된 한 변의 길이가 2인 정삼각형이 표시되어 있다.]",
+    "choices": [
+      "$\\frac{\\sqrt{3}}{3}$",
+      "$\\frac{\\sqrt{2}}{2}$",
+      "$1$",
+      "$\\sqrt{2}$",
+      "$\\sqrt{3}$"
+    ],
+    "answer": "⑤",
+    "solution": "삼각형 $\\text{ABC}$는 $\\overline{\\text{AB}}=\\overline{\\text{AC}}=\\sqrt{7}$, $\\overline{\\text{BC}}=2\\sqrt{3}$인 이등변삼각형이므로 꼭짓점 $\\text{A}$에서 변 $\\text{BC}$에 내린 수선의 발을 $\\text{M}$이라 하면 $\\overline{\\text{BM}} = \\sqrt{3}$이다.\n직각삼각형 $\\text{ABM}$에서 삼각형 $\\text{ABC}$의 높이는\n$\\overline{\\text{AM}} = \\sqrt{(\\sqrt{7})^2 - (\\sqrt{3})^2} = \\sqrt{7 - 3} = 2$\n따라서 삼각형 $\\text{ABC}$의 넓이를 $S$라 하면\n$S = \\frac{1}{2} \\times 2\\sqrt{3} \\times 2 = 2\\sqrt{3}$\n삼각형 $\\text{ABC}$의 평면 $\\beta$ 위로의 정사영은 한 변의 길이가 $2$인 정삼각형이므로 그 넓이를 $S'$이라 하면\n$S' = \\frac{\\sqrt{3}}{4} \\times 2^2 = \\sqrt{3}$\n정사영의 넓이 관계식 $S' = S \\cos\\theta$에 대입하면\n$\\sqrt{3} = 2\\sqrt{3} \\cos\\theta \\implies \\cos\\theta = \\frac{1}{2}$\n$0^\\circ < \\theta < 90^\\circ$이므로 $\\theta = 60^\\circ$이다.\n따라서 $\\tan\\theta = \\tan 60^\\circ = \\sqrt{3}$이다.\n따라서 정답은 ⑤이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-054",
+    "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+    "templateKey": "TPL_GEO_SPACE_FIGURE_PROJECTION",
+    "crossConceptKeys": [
+      "CC_ISOSCELES_TRIANGLE",
+      "CC_TRIANGLE_AREA",
+      "CC_TRIG_RATIO"
+    ],
+    "conditionKeys": [
+      "COND_RESTRICTED_INTERVAL"
+    ],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 6,
+    "category": "공간도형 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-03",
+    "standardUnit": "공간도형",
+    "standardUnitOrder": 3,
+    "subUnitKey": "H22-GE-03-CORE",
+    "subUnit": "공간도형 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-03-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "공간도형 핵심 개념"
+    ],
+    "wide": false,
+    "content": "그림과 같이 한 변의 길이가 $4$인 정삼각형을 밑면으로 하는 삼각기둥을 밑면과 $30^\\circ$의 각을 이루면서 밑면의 한 변을 지나는 평면으로 잘랐더니 삼각형이 되었다. 이때 잘린 단면의 넓이는?\n[그림: 밑면이 한 변의 길이 4인 정삼각형인 삼각기둥이 있다. 밑면의 한 변을 포함하면서 밑면과 $30^\\circ$의 각을 이루는 평면으로 잘라 만들어진 삼각형 모양의 단면이 색칠되어 있다.]",
+    "choices": [
+      "$8$",
+      "$6\\sqrt{2}$",
+      "$4\\sqrt{5}$",
+      "$6\\sqrt{3}$",
+      "$12$"
+    ],
+    "answer": "①",
+    "solution": "한 변의 길이가 $4$인 밑면 정삼각형의 넓이를 $S$라 하면\n$S = \\frac{\\sqrt{3}}{4} \\times 4^2 = 4\\sqrt{3}$\n잘린 단면인 삼각형의 밑면 위로의 정사영은 밑면인 정삼각형 전체와 일치한다.\n잘린 단면을 포함하는 평면과 밑면이 이루는 각의 크기가 $30^\\circ$이므로, 잘린 단면의 넓이를 $S'$이라 하면\n$S' \\cos 30^\\circ = S$\n$S' \\times \\frac{\\sqrt{3}}{2} = 4\\sqrt{3} \\implies S' = 4\\sqrt{3} \\times \\frac{2}{\\sqrt{3}} = 8$\n따라서 잘린 단면의 넓이는 $8$이다.\n따라서 정답은 ①이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-054",
+    "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+    "templateKey": "TPL_GEO_SPACE_FIGURE_PROJECTION",
+    "crossConceptKeys": [
+      "CC_SPACE_FIGURE",
+      "CC_EQUILATERAL_TRIANGLE",
+      "CC_TRIG_RATIO"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 7,
+    "category": "공간도형 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-03",
+    "standardUnit": "공간도형",
+    "standardUnitOrder": 3,
+    "subUnitKey": "H22-GE-03-CORE",
+    "subUnit": "공간도형 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-03-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "공간도형 핵심 개념"
+    ],
+    "wide": false,
+    "content": "그림과 같이 한 변의 길이가 $4$인 정사각형 $\\text{ABCD}$에 대하여 네 꼭짓점 $\\text{A, B, C, D}$는 평면 $\\alpha$ 위에 있지 않고, 대각선 $\\text{BD}$는 평면 $\\alpha$와 평행하다. 정사각형 $\\text{ABCD}$의 평면 $\\alpha$ 위로의 정사영이 한 변의 길이가 $\\sqrt{10}$인 마름모 $\\text{A'B'C'D'}$일 때, 정사각형 $\\text{ABCD}$와 평면 $\\alpha$가 이루는 각의 크기를 $\\theta$라 할 때, $\\cos\\theta$의 값은?\n[그림: 한 변의 길이가 4인 정사각형 $\\text{ABCD}$가 공중에 떠 있고, 대각선 $\\text{BD}$는 아래의 평면 $\\alpha$와 평행하다. 정사각형이 평면 $\\alpha$에 정사영되어 한 변의 길이가 $\\sqrt{10}$인 마름모 $\\text{A'B'C'D'}$을 이루고 있다.]",
+    "choices": [
+      "$\\frac{1}{3}$",
+      "$\\frac{1}{2}$",
+      "$\\frac{\\sqrt{3}}{3}$",
+      "$\\frac{\\sqrt{2}}{2}$",
+      "$\\frac{\\sqrt{3}}{2}$"
+    ],
+    "answer": "②",
+    "solution": "정사각형 $\\text{ABCD}$의 한 변의 길이가 $4$이므로 넓이를 $S$라 하면\n$S = 4^2 = 16$\n정사각형의 대각선의 길이는 $\\overline{\\text{BD}} = 4\\sqrt{2}$이다.\n대각선 $\\text{BD}$가 평면 $\\alpha$와 평행하므로 대각선 $\\text{BD}$의 평면 $\\alpha$ 위로의 정사영 $\\overline{\\text{B'D'}}$의 길이는 선분 $\\text{BD}$의 길이와 같다.\n$\\overline{\\text{B'D'}} = \\overline{\\text{BD}} = 4\\sqrt{2}$\n정사영인 마름모 $\\text{A'B'C'D'}$의 두 대각선의 교점을 $\\text{M}'$이라 하면 두 대각선은 서로를 수직이등분하므로\n$\\overline{\\text{B'M'}} = \\frac{1}{2}\\overline{\\text{B'D'}} = 2\\sqrt{2}$\n마름모의 한 변의 길이가 $\\sqrt{10}$이므로 직각삼각형 $\\text{A'B'M'}$에서\n$\\overline{\\text{A'M'}} = \\sqrt{(\\sqrt{10})^2 - (2\\sqrt{2})^2} = \\sqrt{10 - 8} = \\sqrt{2}$\n따라서 다른 대각선의 길이는 $\\overline{\\text{A'C'}} = 2\\overline{\\text{A'M'}} = 2\\sqrt{2}$이다.\n마름모 $\\text{A'B'C'D'}$의 넓이를 $S'$이라 하면\n$S' = \\frac{1}{2} \\times \\overline{\\text{B'D'}} \\times \\overline{\\text{A'C'}} = \\frac{1}{2} \\times 4\\sqrt{2} \\times 2\\sqrt{2} = 8$\n정사영의 넓이 관계식 $S' = S \\cos\\theta$에 대입하면\n$8 = 16 \\cos\\theta \\implies \\cos\\theta = \\frac{1}{2}$\n따라서 정답은 ②이다.",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-054",
+    "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+    "templateKey": "TPL_GEO_SPACE_FIGURE_PROJECTION",
+    "crossConceptKeys": [
+      "CC_SQUARE_PROPERTIES",
+      "CC_RHOMBUS_PROPERTIES",
+      "CC_TRIG_RATIO"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 8,
+    "category": "공간도형 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-03",
+    "standardUnit": "공간도형",
+    "standardUnitOrder": 3,
+    "subUnitKey": "H22-GE-03-CORE",
+    "subUnit": "공간도형 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-03-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "공간도형 핵심 개념"
+    ],
+    "wide": false,
+    "content": "그림과 같이 밑면이 한 변의 길이가 $4$인 정육각형 $\\text{ABCDEF}$이고 옆면은 모두 이등변삼각형인 정육각뿔 $\\text{O-ABCDEF}$가 있다. 평면 $\\text{OAB}$가 밑면 $\\text{ABCDEF}$와 이루는 각의 크기가 $60^\\circ$일 때, 정육각뿔 $\\text{O-ABCDEF}$의 겉넓이는?\n[그림: 밑면이 한 변의 길이가 4인 정육각형 $\\text{ABCDEF}$이고 꼭짓점이 $\\text{O}$인 정육각뿔이다. 옆면 $\\text{OAB}$가 밑면과 이루는 이면각의 크기가 $60^\\circ$로 표시되어 있다.]",
+    "choices": [
+      "$36\\sqrt{3}$",
+      "$48\\sqrt{3}$",
+      "$60\\sqrt{3}$",
+      "$72\\sqrt{3}$",
+      "$84\\sqrt{3}$"
+    ],
+    "answer": "④",
+    "solution": "밑면인 정육각형 $\\text{ABCDEF}$는 한 변의 길이가 $4$인 정삼각형 $6$개로 나누어지므로 그 넓이를 $S_{\\text{밑}}$이라 하면\n$S_{\\text{밑}} = 6 \\times \\left(\\frac{\\sqrt{3}}{4} \\times 4^2\\right) = 6 \\times 4\\sqrt{3} = 24\\sqrt{3}$\n정육각뿔의 $6$개의 옆면은 모두 서로 합동인 이등변삼각형이고, 각 옆면이 밑면과 이루는 각의 크기는 모두 $60^\\circ$로 같다.\n따라서 $6$개의 옆면의 밑면 위로의 정사영의 넓이의 합은 밑면인 정육각형의 넓이와 같다.\n옆면 $6$개의 넓이의 합을 $S_{\\text{옆}}$이라 하면 정사영의 넓이 관계에 의해\n$S_{\\text{옆}} \\cos 60^\\circ = S_{\\text{밑}}$\n$S_{\\text{옆}} \\times \\frac{1}{2} = 24\\sqrt{3} \\implies S_{\\text{옆}} = 48\\sqrt{3}$\n정육각뿔 $\\text{O-ABCDEF}$의 겉넓이는 밑넓이와 옆넓이의 합이므로\n$S_{\\text{겉}} = S_{\\text{밑}} + S_{\\text{옆}} = 24\\sqrt{3} + 48\\sqrt{3} = 72\\sqrt{3}$\n따라서 정답은 ④이다.",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-054",
+    "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+    "templateKey": "TPL_GEO_SPACE_FIGURE_PROJECTION",
+    "crossConceptKeys": [
+      "CC_REGULAR_HEXAGON",
+      "CC_SPACE_FIGURE",
+      "CC_TRIG_RATIO"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 9,
+    "category": "공간도형 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-03",
+    "standardUnit": "공간도형",
+    "standardUnitOrder": 3,
+    "subUnitKey": "H22-GE-03-CORE",
+    "subUnit": "공간도형 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-03-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "공간도형 핵심 개념"
+    ],
+    "wide": false,
+    "content": "그림과 같이 한 직선을 공유하는 세 반평면 $\\alpha, \\beta, \\gamma$가 있다. 반평면 $\\alpha$ 위에 넓이가 $24$인 도형 $A$가 있고 도형 $A$의 반평면 $\\gamma$ 위로의 정사영의 넓이는 $12$이다. 두 반평면 $\\beta, \\gamma$가 이루는 각의 크기가 $30^\\circ$일 때, 도형 $A$의 반평면 $\\beta$ 위로의 정사영의 넓이는?\n[그림: 하나의 교선을 공유하며 부채꼴 모양으로 펼쳐진 세 반평면 $\\alpha, \\beta, \\gamma$가 순서대로 놓여 있다. 반평면 $\\alpha$ 위에 넓이 24인 도형 $A$가 있고, 반평면 $\\beta, \\gamma$ 위에 각각 도형 $A$의 정사영이 나타나 있다. 두 반평면 $\\beta$와 $\\gamma$가 이루는 각의 크기는 $30^\\circ$이다.]",
+    "choices": [
+      "$6\\sqrt{3}$",
+      "$8\\sqrt{3}$",
+      "$9\\sqrt{3}$",
+      "$12\\sqrt{3}$",
+      "$16\\sqrt{3}$"
+    ],
+    "answer": "④",
+    "solution": "도형 $A$가 놓인 반평면 $\\alpha$와 반평면 $\\gamma$가 이루는 각의 크기를 $\\theta_1$ ($0^\\circ < \\theta_1 < 90^\\circ$)이라 하자.\n도형 $A$의 넓이가 $24$이고 반평면 $\\gamma$ 위로의 정사영의 넓이가 $12$이므로\n$12 = 24 \\cos\\theta_1 \\implies \\cos\\theta_1 = \\frac{1}{2}$\n따라서 $\\theta_1 = 60^\\circ$이다.\n그림과 같이 세 반평면이 $\\alpha, \\beta, \\gamma$의 순서로 놓여 있고 두 반평면 $\\beta, \\gamma$가 이루는 각의 크기가 $30^\\circ$이므로, 두 반평면 $\\alpha, \\beta$가 이루는 각의 크기를 $\\theta_2$라 하면\n$\\theta_2 = 60^\\circ - 30^\\circ = 30^\\circ$\n따라서 도형 $A$의 반평면 $\\beta$ 위로의 정사영의 넓이는\n$24 \\cos 30^\\circ = 24 \\times \\frac{\\sqrt{3}}{2} = 12\\sqrt{3}$\n따라서 정답은 ④이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-054",
+    "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+    "templateKey": "TPL_GEO_SPACE_FIGURE_PROJECTION",
+    "crossConceptKeys": [
+      "CC_TRIG_RATIO"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  }
+];

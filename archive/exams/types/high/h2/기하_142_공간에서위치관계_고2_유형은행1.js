@@ -1,0 +1,350 @@
+window.examTitle = "기하_142_공간에서위치관계_고2_유형은행1";
+
+window.questionBank = [
+  {
+    "id": 1,
+    "category": "공간도형 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-03",
+    "standardUnit": "공간도형",
+    "standardUnitOrder": 3,
+    "subUnitKey": "H22-GE-03-CORE",
+    "subUnit": "공간도형 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-03-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "공간도형 핵심 개념"
+    ],
+    "wide": false,
+    "content": "오른쪽 그림과 같은 삼각기둥 $ABC-DEF$에 대한 설명 중 옳지 않은 것은? [그림: 밑면이 삼각형 $ABC, DEF$이고 대응하는 세 옆모서리가 $AD, BE, CF$인 삼각기둥 $ABC-DEF$]",
+    "choices": [
+      "직선 $AD$는 평면 $ADEB$에 포함된다.",
+      "직선 $BC$와 직선 $DF$는 꼬인 위치에 있다.",
+      "직선 $AD$와 직선 $BE$는 꼬인 위치에 있다.",
+      "평면 $ABC$와 평행한 모서리는 $3$개이다.",
+      "직선 $AC$와 평면 $DEF$는 평행하다."
+    ],
+    "answer": "③",
+    "solution": "① 직선 $AD$는 직사각형 $ADEB$의 한 모서리이므로 평면 $ADEB$에 포함된다. (참)\n② 직선 $BC$와 직선 $DF$는 한 평면 위에 있지 않고, 만나지도 평행하지도 않으므로 꼬인 위치에 있다. (참)\n③ 삼각기둥의 두 옆모서리 $AD$와 $BE$는 서로 평행하므로 꼬인 위치가 아니다. (거짓)\n④ 평면 $ABC$와 평행한 모서리는 아래 밑면의 세 모서리 $DE, EF, FD$의 $3$개이다. (참)\n⑤ 직선 $AC$는 평면 $DEF$와 만나지 않으므로 평면 $DEF$와 평행하다. (참)\n따라서 옳지 않은 것은 ③이다.\n따라서 정답은 ③이다.",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-053",
+    "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+    "templateKey": "TPL_GEO_SPACE_FIGURE_RELATION",
+    "crossConceptKeys": [
+      "CC_SPACE_FIGURE"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "NONE"
+  },
+  {
+    "id": 2,
+    "category": "공간도형 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-03",
+    "standardUnit": "공간도형",
+    "standardUnitOrder": 3,
+    "subUnitKey": "H22-GE-03-CORE",
+    "subUnit": "공간도형 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-03-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "공간도형 핵심 개념"
+    ],
+    "wide": false,
+    "content": "밑면이 정삼각형이고 옆면이 모두 직사각형인 삼각기둥 $ABC-DEF$가 있다. 이 삼각기둥의 각 모서리를 포함하는 $9$개의 직선 중에서, 직선 $BC$와 꼬인 위치에 있는 직선의 개수를 $a$, 직선 $AD$와 꼬인 위치에 있는 직선의 개수를 $b$라 할 때, $a+b$의 값은? [그림: 위 밑면이 정삼각형 $ABC$, 아래 밑면이 정삼각형 $DEF$, 세 옆모서리가 $AD, BE, CF$인 삼각기둥 $ABC-DEF$]",
+    "choices": [
+      "4",
+      "5",
+      "6",
+      "7",
+      "8"
+    ],
+    "answer": "②",
+    "solution": "삼각기둥 $ABC-DEF$의 모서리를 포함하는 직선은 총 $9$개이다.\n(1) 직선 $BC$와 꼬인 위치에 있는 직선:\n직선 $BC$와 한 점에서 만나는 모서리는 $AB, CA, BE, CF$의 $4$개,\n직선 $BC$와 평행한 모서리는 $EF$의 $1$개,\n직선 $BC$ 자신 $1$개를 제외하면,\n꼬인 위치에 있는 직선은 $AD, DE, DF$의 $3$개이다. 즉, $a = 3$이다.\n(2) 직선 $AD$와 꼬인 위치에 있는 직선:\n직선 $AD$와 한 점에서 만나는 모서리는 $AB, AC, DE, DF$의 $4$개,\n직선 $AD$와 평행한 모서리는 $BE, CF$의 $2$개,\n직선 $AD$ 자신 $1$개를 제외하면,\n꼬인 위치에 있는 직선은 $BC, EF$의 $2$개이다. 즉, $b = 2$이다.\n따라서 $a + b = 3 + 2 = 5$이다.\n따라서 정답은 ②이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-053",
+    "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+    "templateKey": "TPL_GEO_SPACE_FIGURE_RELATION",
+    "crossConceptKeys": [
+      "CC_SPACE_FIGURE"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 3,
+    "category": "공간도형 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-03",
+    "standardUnit": "공간도형",
+    "standardUnitOrder": 3,
+    "subUnitKey": "H22-GE-03-CORE",
+    "subUnit": "공간도형 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-03-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "공간도형 핵심 개념"
+    ],
+    "wide": false,
+    "content": "밑면이 정사각형 $BCDE$이고 꼭짓점이 $A$인 사각뿔 $A-BCDE$가 있다. 사각뿔의 모서리를 포함하는 $8$개의 직선과 $5$개의 면을 포함하는 평면에 대하여 다음 조건을 만족하는 상수 $a, b, c$에 대하여 $a+b+c$의 값은? [그림: 꼭짓점이 $A$이고 밑면이 정사각형 $BCDE$인 사각뿔 $A-BCDE$]\n\n(가) 직선 $BC$와 평행한 모서리를 포함하는 직선의 개수는 $a$이다.\n(나) 직선 $AC$와 꼬인 위치에 있는 모서리를 포함하는 직선의 개수는 $b$이다.\n(다) 사각뿔의 $5$개의 면을 포함하는 평면 중 직선 $BC$와 평행한 평면의 개수는 $c$이다.",
+    "choices": [
+      "4",
+      "5",
+      "6",
+      "7",
+      "8"
+    ],
+    "answer": "①",
+    "solution": "(가) 밑면 정사각형 $BCDE$에서 변 $BC$와 평행한 변은 $DE$뿐이므로, 직선 $BC$와 평행한 모서리를 포함하는 직선은 직선 $DE$의 $1$개이다. 따라서 $a = 1$이다.\n(나) 사각뿔의 $8$개의 모서리 중 직선 $AC$와 만나는 모서리는 $AB, AD, AE, BC, CD$의 $5$개, 자기 자신 $AC$의 $1$개이다. 남은 모서리 $BE, DE$는 직선 $AC$와 한 평면 위에 있지 않고 만나지 않으므로 꼬인 위치에 있다. 따라서 $b = 2$이다.\n(다) 사각뿔의 $5$개의 면 중 평면 $BCDE$, 평면 $ABC$는 직선 $BC$를 포함하고, 평면 $ACD$는 점 $C$에서, 평면 $ABE$는 점 $B$에서 직선 $BC$와 만난다. 한편 평면 $ADE$는 직선 $BC$와 평행한 직선 $DE$를 포함하고 직선 $BC$를 포함하지 않으므로 직선 $BC$와 평행하다. 따라서 직선 $BC$와 평행한 평면은 평면 $ADE$의 $1$개이므로 $c = 1$이다.\n따라서 $a + b + c = 1 + 2 + 1 = 4$이다.\n따라서 정답은 ①이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-053",
+    "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+    "templateKey": "TPL_GEO_SPACE_FIGURE_RELATION",
+    "crossConceptKeys": [
+      "CC_SPACE_FIGURE"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 4,
+    "category": "공간도형 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-03",
+    "standardUnit": "공간도형",
+    "standardUnitOrder": 3,
+    "subUnitKey": "H22-GE-03-CORE",
+    "subUnit": "공간도형 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-03-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "공간도형 핵심 개념"
+    ],
+    "wide": false,
+    "content": "오른쪽 그림과 같은 정팔면체 $ABCDEF$에 대하여 [보기]에서 옳은 것만을 있는 대로 고른 것은? (단, $A$와 $F$는 마주 보는 꼭짓점이고, $B, C, D, E$는 한 평면 위의 정사각형의 꼭짓점이다.) [그림: 위 꼭짓점 $A$, 아래 꼭짓점 $F$, 가운데 정사각형 $BCDE$의 꼭짓점들을 갖는 정팔면체 $ABCDEF$]\n\n<보기>\nㄱ. 모서리 $AB$와 평행한 모서리의 개수는 $2$이다.\nㄴ. 모서리 $AB$와 꼬인 위치에 있는 모서리의 개수는 $4$이다.\nㄷ. 모서리 $AB$와 한 점에서 만나는 모서리의 개수는 $6$이다.",
+    "choices": [
+      "ㄱ",
+      "ㄴ",
+      "ㄱ, ㄷ",
+      "ㄴ, ㄷ",
+      "ㄱ, ㄴ, ㄷ"
+    ],
+    "answer": "④",
+    "solution": "정팔면체의 모서리는 총 $12$개이다.\nㄱ. 모서리 $AB$와 평행한 모서리는 마주 보는 모서리인 $FD$의 $1$개뿐이다. 따라서 ㄱ은 거짓이다.\nㄷ. 모서리 $AB$와 한 점에서 만나는 모서리는 꼭짓점 $A$에서 만나는 $AC, AD, AE$의 $3$개와 꼭짓점 $B$에서 만나는 $BC, BE, FB$의 $3$개로 총 $6$개이다. 따라서 ㄷ은 참이다.\nㄴ. 전체 $12$개의 모서리 중 자기 자신 $AB$ ($1$개), 한 점에서 만나는 모서리 ($6$개), 평행한 모서리 $FD$ ($1$개)를 제외하면 남은 모서리는 $12 - 1 - 6 - 1 = 4$개이다. 실제로 모서리 $CD, DE, FC, FE$의 $4$개는 $AB$와 꼬인 위치에 있다. 따라서 ㄴ은 참이다.\n따라서 옳은 것은 ㄴ, ㄷ이다.\n따라서 정답은 ④이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-053",
+    "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+    "templateKey": "TPL_GEO_SPACE_FIGURE_RELATION",
+    "crossConceptKeys": [
+      "CC_SPACE_FIGURE"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH"
+  },
+  {
+    "id": 5,
+    "category": "공간도형 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-03",
+    "standardUnit": "공간도형",
+    "standardUnitOrder": 3,
+    "subUnitKey": "H22-GE-03-CORE",
+    "subUnit": "공간도형 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-03-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "공간도형 핵심 개념"
+    ],
+    "wide": false,
+    "content": "오른쪽 그림과 같은 정팔면체 $ABCDEF$에 대하여 [보기]에서 옳은 것만을 있는 대로 고른 것은? (단, $A$와 $F$는 마주 보는 꼭짓점이고, $B, C, D, E$는 한 평면 위의 정사각형의 꼭짓점이다.) [그림: 위 꼭짓점 $A$, 아래 꼭짓점 $F$, 가운데 정사각형 $BCDE$의 꼭짓점들을 갖는 정팔면체 $ABCDEF$]\n\n<보기>\nㄱ. 두 직선 $AB$와 $CF$가 이루는 각의 크기는 $60^\\circ$이다.\nㄴ. 모서리 $AE$와 꼬인 위치에 있는 모서리의 개수는 $4$이다.\nㄷ. 두 직선 $AB$와 $CD$가 이루는 각의 크기를 $\\theta$라 할 때, $\\cos\\theta = \\frac{\\sqrt{3}}{2}$이다.",
+    "choices": [
+      "ㄱ",
+      "ㄴ",
+      "ㄱ, ㄷ",
+      "ㄴ, ㄷ",
+      "ㄱ, ㄴ, ㄷ"
+    ],
+    "answer": "②",
+    "solution": "ㄱ. 정팔면체에서 모서리 $CF$와 평행한 모서리는 $AD$이다. 따라서 두 직선 $AB$와 $CF$가 이루는 각의 크기는 두 직선 $AB$와 $AD$가 이루는 각의 크기와 같다. 이때 사각형 $BCDE$는 정사각형이므로 대각선의 길이는 $BD = \\sqrt{2}AB$이다. $\\triangle ABD$에서 $AB^2 + AD^2 = BD^2$이 성립하므로 $\\angle BAD = 90^\\circ$이다. 따라서 두 직선 $AB$와 $CF$가 이루는 각의 크기는 $90^\\circ$이다. (거짓)\nㄴ. 정팔면체의 임의의 모서리에 대하여, 자기 자신 $1$개, 만나는 모서리 $6$개, 평행한 모서리 $1$개를 제외하면 꼬인 위치에 있는 모서리는 $12 - 1 - 6 - 1 = 4$개이다. 따라서 모서리 $AE$와 꼬인 위치에 있는 모서리의 개수는 $4$이다. (참)\nㄷ. 사각형 $BCDE$는 정사각형이므로 $CD \\parallel BE$이다. 따라서 두 직선 $AB$와 $CD$가 이루는 각의 크기는 두 직선 $AB$와 $BE$가 이루는 각의 크기와 같다. $\\triangle ABE$는 정삼각형이므로 두 직선이 이루는 각의 크기는 $60^\\circ$이다. 따라서 $\\cos\\theta = \\cos 60^\\circ = \\frac{1}{2}$이다. (거짓)\n따라서 옳은 것은 ㄴ이다.\n따라서 정답은 ②이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-053",
+    "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+    "templateKey": "TPL_GEO_SPACE_FIGURE_RELATION",
+    "crossConceptKeys": [
+      "CC_SPACE_FIGURE",
+      "CC_EQUILATERAL_TRIANGLE"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH"
+  },
+  {
+    "id": 6,
+    "category": "공간도형 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-03",
+    "standardUnit": "공간도형",
+    "standardUnitOrder": 3,
+    "subUnitKey": "H22-GE-03-CORE",
+    "subUnit": "공간도형 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-03-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "공간도형 핵심 개념"
+    ],
+    "wide": false,
+    "content": "밑면이 정오각형인 직오각기둥 $ABCDE-FGHIJ$에서 [보기] 중 옳은 것만을 있는 대로 고른 것은? (단, 오각기둥의 각 모서리를 포함하는 직선만을 생각한다.) [그림: 위 밑면이 정오각형 $ABCDE$, 아래 밑면이 정오각형 $FGHIJ$, 옆모서리가 $AF, BG, CH, DI, EJ$인 직오각기둥]\n\n<보기>\nㄱ. 직선 $CH$와 평행한 직선의 개수는 $3$이다.\nㄴ. 직선 $AB$와 수직인 직선의 개수는 $5$이다.\nㄷ. 직선 $AB$와 꼬인 위치에 있는 직선의 개수는 $8$이다.",
+    "choices": [
+      "ㄱ",
+      "ㄴ",
+      "ㄱ, ㄴ",
+      "ㄴ, ㄷ",
+      "ㄱ, ㄴ, ㄷ"
+    ],
+    "answer": "②",
+    "solution": "ㄱ. 옆모서리 $CH$와 평행한 직선은 다른 $4$개의 옆모서리 $AF, BG, DI, EJ$이므로 개수는 $4$이다. 따라서 ㄱ은 거짓이다.\nㄴ. 직오각기둥에서 $5$개의 옆모서리 $AF, BG, CH, DI, EJ$는 모두 밑면 $ABCDE$와 수직이므로 밑면 위의 직선 $AB$와 각각 수직이다. 한편 정오각형의 한 내각의 크기는 $108^\\circ$이므로 밑면의 어떤 모서리도 $AB$와 수직이 아니다. 따라서 직선 $AB$와 수직인 직선은 $5$개의 옆모서리뿐이므로 개수는 $5$이다. 따라서 ㄴ은 참이다.\nㄷ. 오각기둥의 모서리를 포함하는 전체 $15$개의 직선 중 직선 $AB$ 자신 ($1$개), $AB$와 만나는 직선 $EA, AF, BC, BG$ ($4$개), $AB$와 평행한 직선 $GF$ ($1$개), $AB$와 한 평면 위에 있는 직선 $CD, DE$ ($2$개)를 제외하면 직선 $AB$와 꼬인 위치에 있는 직선은 $15 - (1 + 4 + 1 + 2) = 7$개(아래 밑면의 $GH, HI, IJ, JF$와 옆모서리 $CH, DI, EJ$)이다. 따라서 개수가 $8$이라는 것은 거짓이다. (거짓)\n따라서 옳은 것은 ㄴ이다.\n따라서 정답은 ②이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-053",
+    "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+    "templateKey": "TPL_GEO_SPACE_FIGURE_RELATION",
+    "crossConceptKeys": [
+      "CC_SPACE_FIGURE"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH"
+  },
+  {
+    "id": 7,
+    "category": "공간도형 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-03",
+    "standardUnit": "공간도형",
+    "standardUnitOrder": 3,
+    "subUnitKey": "H22-GE-03-CORE",
+    "subUnit": "공간도형 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-03-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "공간도형 핵심 개념"
+    ],
+    "wide": false,
+    "content": "오른쪽 그림과 같이 사면체 $ABCD$의 면 $ABC$, $ACD$의 무게중심을 각각 $P$, $Q$라 하자. 다음 [보기] 중 두 직선이 꼬인 위치에 있는 것만을 있는 대로 고른 것은? [그림: 사면체 $ABCD$에서 면 $ABC$의 무게중심 $P$, 면 $ACD$의 무게중심 $Q$]\n\n<보기>\nㄱ. 직선 $CD$와 직선 $BP$\nㄴ. 직선 $BP$와 직선 $AC$\nㄷ. 직선 $PQ$와 직선 $BD$",
+    "choices": [
+      "ㄱ",
+      "ㄴ",
+      "ㄱ, ㄷ",
+      "ㄴ, ㄷ",
+      "ㄱ, ㄴ, ㄷ"
+    ],
+    "answer": "①",
+    "solution": "ㄱ. 직선 $BP$는 평면 $ABC$ 위에 있고, 직선 $CD$는 평면 $ABC$와 점 $C$에서만 만난다. 그런데 점 $P$는 $\\triangle ABC$의 무게중심이므로 직선 $BP$는 변 $AC$의 중점을 지나며 점 $C$를 지나지 않는다. 따라서 직선 $CD$와 직선 $BP$는 만나지 않고 평행하지도 않으므로 꼬인 위치에 있다. (참)\nㄴ. 점 $P$는 $\\triangle ABC$의 무게중심이므로 직선 $BP$는 꼭짓점 $B$에서 변 $AC$에 그은 중선이다. 따라서 직선 $BP$와 직선 $AC$는 변 $AC$의 중점에서 한 점으로 만나므로 꼬인 위치가 아니다. (거짓)\nㄷ. 선분 $AC$의 중점을 $M$이라 하면 $P$는 선분 $BM$을 $2:1$로 내분하고, $Q$는 선분 $DM$을 $2:1$로 내분한다. 따라서 $\\triangle MBD$에서 $MP : MB = MQ : MD = 1 : 3$이므로 $PQ \\parallel BD$이다. 즉 두 직선 $PQ$와 $BD$는 서로 평행하므로 꼬인 위치가 아니다. (거짓)\n따라서 두 직선이 꼬인 위치에 있는 것은 ㄱ뿐이다.\n따라서 정답은 ①이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-053",
+    "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+    "templateKey": "TPL_GEO_SPACE_FIGURE_RELATION",
+    "crossConceptKeys": [
+      "CC_SPACE_FIGURE",
+      "CC_CENTROID"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "NONE"
+  },
+  {
+    "id": 8,
+    "category": "공간도형 핵심 개념",
+    "standardCourse": "기하",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-GE-03",
+    "standardUnit": "공간도형",
+    "standardUnitOrder": 3,
+    "subUnitKey": "H22-GE-03-CORE",
+    "subUnit": "공간도형 핵심 개념",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "conceptClusterKey": "H22-GE-03-CORE",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "공간도형 핵심 개념"
+    ],
+    "wide": false,
+    "content": "오른쪽 그림과 같은 직육면체 $ABCD-EFGH$에 대하여 [보기]에서 옳은 것만을 있는 대로 고른 것은? [그림: 직육면체 $ABCD-EFGH$]\n\n<보기>\nㄱ. 직선 $DE$와 직선 $CF$는 평행하다.\nㄴ. 직선 $DE$는 평면 $ACF$와 평행하다.\nㄷ. 평면 $ACF$와 평면 $DEG$는 평행하다.\nㄹ. 직선 $BF$와 수직이고 직육면체의 $8$개의 꼭짓점 중 서로 다른 두 점을 지나는 직선의 개수는 $8$이다.",
+    "choices": [
+      "ㄱ, ㄴ",
+      "ㄴ, ㄷ",
+      "ㄱ, ㄴ, ㄷ",
+      "ㄱ, ㄷ, ㄹ",
+      "ㄱ, ㄴ, ㄷ, ㄹ"
+    ],
+    "answer": "③",
+    "solution": "ㄱ. 사각형 $CDEF$에서 $CD \\parallel EF$이고 $CD = EF$이므로 사각형 $CDEF$는 평행사변형이다. 따라서 직선 $DE$와 직선 $CF$는 평행하다. (참)\nㄴ. 직선 $DE$는 평면 $ACF$ 위에 있지 않고, 평면 $ACF$ 위의 직선 $CF$와 평행하므로 직선 $DE$는 평면 $ACF$와 평행하다. (참)\nㄷ. 평면 $DEG$ 위의 만나는 두 직선 $DE, EG$에 대하여 $DE \\parallel CF$이고 $EG \\parallel AC$이다. 이때 두 직선 $CF, AC$는 평면 $ACF$ 위의 만나는 두 직선이므로 평면 $DEG$와 평면 $ACF$는 평행하다. (참)\nㄹ. 모서리 $BF$는 직육면체의 두 밑면 $ABCD$와 $EFGH$에 수직이다. 따라서 직선 $BF$와 수직인 직선은 평면 $ABCD$에 포함되거나 평면 $EFGH$에 포함되어야 한다. 꼭짓점 $A, B, C, D$ 중 두 점을 지나는 직선은 $\\binom{4}{2} = 6$개이고, 꼭짓점 $E, F, G, H$ 중 두 점을 지나는 직선도 $\\binom{4}{2} = 6$개이므로 구하는 직선의 개수는 $6 + 6 = 12$이다. 따라서 개수가 $8$이라는 설명은 거짓이다. (거짓)\n따라서 옳은 것은 ㄱ, ㄴ, ㄷ이다.\n따라서 정답은 ③이다.",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-053",
+    "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+    "templateKey": "TPL_GEO_SPACE_FIGURE_RELATION",
+    "crossConceptKeys": [
+      "CC_SPACE_FIGURE"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH"
+  }
+];
