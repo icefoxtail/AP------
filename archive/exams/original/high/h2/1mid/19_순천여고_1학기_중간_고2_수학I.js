@@ -464,7 +464,11 @@ window.questionBank = [
     "imageStatus": "NOT_REQUIRED",
     "answerStatus": "CREATED",
     "solutionStatus": "CREATED",
-    "reviewStatus": "CREATE_REVIEWED"
+    "reviewStatus": "CREATE_REVIEWED",
+    "solutionImage": "assets/images/19_순천여고_1학기_중간_고2_수학I/q8-solution.svg",
+    "solutionImageAlt": "−1에서 1까지 오른쪽 위로 올라가는 지수 곡선이 그려져 있고 왼쪽 끝 A와 오른쪽 끝 B의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "y=2ˣ⁺²·3⁻ˣ⁺¹은 12·(4/3)ˣ로 정리된다. 밑 4/3이 1보다 크므로 −1≤x≤1에서 증가한다. 그림의 왼쪽 끝 A(−1, 9)가 최솟값 m=9이고 오른쪽 끝 B(1, 16)이 최댓값 M=16이다. 따라서 M+m=25이고 답은 ①이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 9,
@@ -587,7 +591,11 @@ window.questionBank = [
     "imageStatus": "NOT_REQUIRED",
     "answerStatus": "CREATED",
     "solutionStatus": "CREATED",
-    "reviewStatus": "CREATE_REVIEWED"
+    "reviewStatus": "CREATE_REVIEWED",
+    "solutionImage": "assets/images/19_순천여고_1학기_중간_고2_수학I/q10-solution.svg",
+    "solutionImageAlt": "절댓값 지수 곡선이 왼쪽에서 내려와 x축에 닿는 꺾이는 점에서 다시 올라가 y=8에 가까워지며, 가로선 y=4와 두 점에서 만난다.",
+    "solutionImageCaption": "x=4에서 y=log(1/3)(3x−p)가 정의되려면 12−p>0이므로 p<12이다. 그림은 p=8일 때 y=|3^(−x−1)−8|의 그래프로, t=3^(−x−1)>0이라 두면 |t−p|=4에서 y=4와 두 점에서 만나려면 두 해 t=p±4가 모두 양수여야 하므로 p>4이다(꺾이는 점의 x좌표는 약 −2.9). 따라서 4<p<12이고 정수 p는 5, 6, 7, 8, 9, 10, 11의 7개이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -709,7 +717,11 @@ window.questionBank = [
     "imageStatus": "PRESENT",
     "answerStatus": "CREATED",
     "solutionStatus": "CREATED",
-    "reviewStatus": "CREATE_REVIEWED"
+    "reviewStatus": "CREATE_REVIEWED",
+    "solutionImage": "assets/images/19_순천여고_1학기_중간_고2_수학I/q12-solution.svg",
+    "solutionImageAlt": "단위원과 x축 위의 시초선이 있고 x축의 위쪽과 아래쪽에 대칭인 두 동경이 있다. 각각 α와 −α의 각이 표시되어 있다.",
+    "solutionImageCaption": "예: 동경 OP와 OP'(그림의 점 Q)가 x축에 대하여 대칭이다. OP의 기준각은 α°이고 OP'의 기준각은 −α°이다. 따라서 일반각은 ∠XOP=360°×l+α°, ∠XOP'=360°×m−α°이고 합은 360°×(l+m)이다. 따라서 (가) α°, (나) −α°, (다) l+m이므로 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -1004,7 +1016,11 @@ window.questionBank = [
     "imageStatus": "PRESENT",
     "answerStatus": "CREATED",
     "solutionStatus": "CREATED",
-    "reviewStatus": "CREATE_REVIEWED"
+    "reviewStatus": "CREATE_REVIEWED",
+    "solutionImage": "assets/images/19_순천여고_1학기_중간_고2_수학I/q17-solution.svg",
+    "solutionImageAlt": "0에서 2π까지 한 주기의 사인 곡선과 가로선이 위쪽 봉우리 부분에서 두 점에서 만난다. 가로축에 π/4, 3π/4, 2π 눈금이 표시되어 있다.",
+    "solutionImageCaption": "사인 곡선과 가로선 y=√2/2는 0≤x≤2π에서 두 점에서 만나고 그 x좌표는 α=π/4, β=3π/4이다. 두 점은 직선 x=π/2에 대하여 대칭이다. 따라서 β−α=π/2이고 답은 ②이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 18,

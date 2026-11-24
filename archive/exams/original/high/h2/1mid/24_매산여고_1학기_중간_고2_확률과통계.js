@@ -1222,7 +1222,11 @@ window.questionBank = [
     "sourceStatus": "EXTRACTED_JS_ASSETS",
     "answerStatus": "CREATED",
     "solutionStatus": "CREATED",
-    "reviewStatus": "CREATE_PENDING"
+    "reviewStatus": "CREATE_PENDING",
+    "solutionImage": "assets/images/24_매산여고_1학기_중간_고2_확률과통계/q17-solution.svg",
+    "solutionImageAlt": "두 주사위의 표 두 주사위를 던질 때 나오는 눈의 경우를 표로 나타낸 그림이다.",
+    "solutionImageCaption": "8등분한 원판의 두 수를 차례로 (a, b)로 놓은 8×8 표에서 두 수의 차가 4 이상인 칸을 칠했다. 차가 4, 5, 6, 7인 칸은 각각 8, 6, 4, 2칸이므로 모두 20칸이다. 전체 64칸 중 확률은 20/64=5/16이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,

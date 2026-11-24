@@ -773,7 +773,11 @@ window.questionBank = [
       "sourceOrdinal": 9,
       "sourcePage": 2,
       "scopedOriginalReview": null
-    }
+    },
+    "solutionImage": "assets/images/24_순천여고_1학기_중간_고2_확률과통계/q9-solution.svg",
+    "solutionImageAlt": "벤 다이어그램 집합 사이의 포함 관계와 원소가 속한 영역을 벤 다이어그램으로 나타낸 그림이다.",
+    "solutionImageCaption": "합집합에서 빠지는 원소 1개를 고르는 방법은 5C4=5가지이다. 합집합의 4개 원소는 각각 A만, 둘 다, B만 세 곳 중 하나에 들어가 3⁴=81가지이다. 조건 (나)는 색칠한 둘 다 영역이 비어 있지 않은 것이므로 둘 다 영역이 비는 2⁴=16가지를 뺀 65가지이다. 따라서 전체는 5×65=325이고 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,

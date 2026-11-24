@@ -212,7 +212,11 @@ window.questionBank = [
       "metaBindingStatus": "ACTIVE_EXACT_VIA_CROSSWALK",
       "sourceAuthority": "DRIVE_JS_MATCHES_MASTER_PACKET",
       "visualNecessity": "NOT_REQUIRED"
-    }
+    },
+    "solutionImage": "assets/images/22_순천고_1학기_기말_고2_확률과통계/q4-solution.svg",
+    "solutionImageAlt": "확률 나무그림 가지마다 확률을 적어 사건이 일어나는 경우를 나타낸 나무그림이다.",
+    "solutionImageCaption": "첫 추첨에서 B학교 학생 두 명을 뽑을 확률은 6C2/10C2=1/3이다. 이때 남은 8명 중 B학교가 4명이므로 둘째 추첨에서도 B학교 두 명을 뽑을 확률은 4C2/8C2=3/14이다. 무료 참가권을 받은 학생이 모두 B학교이려면 두 단계를 모두 B학교로 뽑아야 하므로 1/3×3/14=1/14이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,

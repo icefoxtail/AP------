@@ -869,7 +869,11 @@ window.questionBank = [
       "순열"
     ],
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/23_순천여고_1학기_중간_고2_확률과통계/q14-solution.svg",
+    "solutionImageAlt": "자리별 경우의 수 칸 자리마다 고를 수 있는 경우의 수를 칸에 적어 곱의 법칙(또는 합의 법칙)을 보여 주는 그림이다.",
+    "solutionImageCaption": "큰 수부터 세므로 5555보다 앞서는 수는 처음으로 7이 나오는 자리에 따라 나뉜다. 첫 자리가 7이면 뒤 세 자리는 자유로워 4³=64개, 첫 자리가 5이고 둘째 자리가 7이면 4²=16개, 앞 두 자리가 55이고 셋째 자리가 7이면 4개, 앞 세 자리가 555이고 마지막 자리가 7이면 1개이다(칸 위의 x는 아무 숫자나 온다는 뜻). 앞서는 수가 64+16+4+1=85개이므로 5555는 86번째이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "number": 15,
@@ -1299,7 +1303,11 @@ window.questionBank = [
       "조합"
     ],
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/23_순천여고_1학기_중간_고2_확률과통계/q21-solution.svg",
+    "solutionImageAlt": "벤 다이어그램 집합 사이의 포함 관계와 원소가 속한 영역을 벤 다이어그램으로 나타낸 그림이다.",
+    "solutionImageCaption": "5, 6, 7은 A와 B에 모두 속하고 1, 2, 3, 4는 어느 집합에도 속하지 않는다. 나머지 원소 8, 9, 10은 각각 A만, B만, C만 중 정확히 한 곳에 속하므로 3³=27가지이다. 이 중 C가 공집합이 되는 2³=8가지와 A=B가 되는 1가지를 빼면 27−8−1=18이다. 따라서 답은 18이다.",
+    "solutionImageSize": "full"
   },
   {
     "number": 22,

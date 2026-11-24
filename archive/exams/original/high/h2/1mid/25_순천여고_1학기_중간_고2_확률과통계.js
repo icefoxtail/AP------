@@ -643,7 +643,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-01-PERMUTATION",
     "subUnit": "순열",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_순천여고_1학기_중간_고2_확률과통계/q17-solution.svg",
+    "solutionImageAlt": "벤 다이어그램 집합 사이의 포함 관계와 원소가 속한 영역을 벤 다이어그램으로 나타낸 그림이다.",
+    "solutionImageCaption": "A∪B=U이므로 U의 각 원소는 A−B, A∩B, B−A 세 영역 중 하나에만 들어가 3⁵=243가지이다. 그중 A∩B=∅인 경우는 모든 원소가 A−B 또는 B−A에만 있는 경우이고 2⁵=32가지이다. 조건 (나)는 색칠한 A∩B가 비어 있지 않은 것이므로 243−32=211이다. 따라서 답은 211이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,

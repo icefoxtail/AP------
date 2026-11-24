@@ -290,7 +290,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
     "subUnit": "삼각함수의 기본",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천고_1학기_중간_고2_대수/q8-solution.svg",
+    "solutionImageAlt": "원점에서 제3사분면의 점 P로 향하는 동경 OP와 P에서 x축으로 내린 점선이 있고, 각 θ와 점 P의 좌표, 세 변의 길이가 표시되어 있다.",
+    "solutionImageCaption": "x≤0이고 원점이 아니므로 P는 직선 y=√3x 위의 제3사분면의 점이다. P(−1, −√3)로 잡으면 가로 1, 세로 √3인 직각삼각형에서 OP=2이다. 따라서 sinθ=−√3/2이고 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -439,7 +443,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-03-LOGARITHMIC_FUNCTION",
     "subUnit": "로그함수",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천고_1학기_중간_고2_대수/q12-solution.svg",
+    "solutionImageAlt": "x=1에서 가장 낮고 양쪽으로 올라가는 V자 모양의 곡선 f가 있고, 왼쪽 끝 A, 꼭짓점 B, 오른쪽 끝 C의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "f는 f(x)=|log(1/2)x|+2의 그래프이다. x=1에서 로그값이 0이라 그래프가 꺾이며 이 점이 최저점이다. 양 끝점은 A(1/4, 4), C(8, 5)이고 최저점은 B(1, 2)이다. 최댓값은 5, 최솟값은 2이므로 합은 7이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -771,7 +779,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
     "subUnit": "삼각함수의 기본",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천고_1학기_중간_고2_대수/q21-solution.svg",
+    "solutionImageAlt": "반지름 1인 단위원 위에 원점에서 나가는 두 동경 OP와 OQ가 있다. P는 아래쪽 왼쪽, Q는 아래쪽 오른쪽에 있고 두 점의 좌표와 각 θ, 3θ가 표시되어 있다.",
+    "solutionImageCaption": "θ와 3θ의 동경이 y축에 대칭이면 θ+3θ=(2n+1)π이므로 θ=π/4, 3π/4, 5π/4, 7π/4 중에서 sinθ+cosθ<0인 것은 θ=5π/4(225°)이다. 이때 3θ=15π/4는 315°의 동경이고, 두 동경 OP, OQ는 y축에 대칭이다. tan(θ+7π/12)=tan(11π/6)=−√3/3이다. 따라서 답은 −√3/3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,

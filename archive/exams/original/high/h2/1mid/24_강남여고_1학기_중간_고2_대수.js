@@ -329,7 +329,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "score": 3.5
+    "score": 3.5,
+    "solutionImage": "assets/images/24_강남여고_1학기_중간_고2_대수/q8-solution.svg",
+    "solutionImageAlt": "반지름 1인 단위원 위 제3사분면에 점 P, 반대쪽 제1사분면에 점 R이 있고 원점을 지나는 지름의 양 끝이다. 각 θ와 두 점의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "sin(−θ)=√7/4에서 sinθ=−√7/4이고 tanθ>0이므로 θ는 제3사분면의 각이다. 단위원에서 P(−3/4, −√7/4)가 θ의 동경 위의 점이므로 cosθ=−3/4이다. 점 R(3/4, √7/4)은 P와 원점에 대하여 대칭이고 각 π+θ의 동경 위의 점이므로 cos(π+θ)=3/4이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -726,7 +730,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "score": 4
+    "score": 4,
+    "solutionImage": "assets/images/24_강남여고_1학기_중간_고2_대수/q17-solution.svg",
+    "solutionImageAlt": "x=8에서 가장 높은 위로 볼록한 산 모양의 파란 곡선 f가 있고, 꼭짓점 V와 가로축과 만나는 두 점 A, B의 좌표가 표시되어 있다. A와 B는 점선으로 이어져 있다.",
+    "solutionImageCaption": "a=8일 때의 그래프 f이다. f(x)=−2의 |x−a|제곱에 a를 더한 값이고 x=8에서 최대인 꼭짓점 V(8, 7)을 갖는다. x축과의 교점은 A(5, 0), B(11, 0)로 a∓log₂a에서 AB=2log₂a=6이므로 a=8이다. p=8, q=7이므로 p+q=15이고 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -1026,7 +1034,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "score": 5,
-    "image": "assets/images/24_강남여고_1학기_중간_고2_대수/q24.png"
+    "image": "assets/images/24_강남여고_1학기_중간_고2_대수/q24.png",
+    "solutionImage": "assets/images/24_강남여고_1학기_중간_고2_대수/q24-solution.svg",
+    "solutionImageAlt": "0에서 2π까지 한 주기의 코사인 곡선이 x=0과 2π에서 가장 낮고 x=π에서 가장 높으며, 가로선 y=1이 곡선과 두 점에서 만난다. 세로축에는 −1, 1, 3의 눈금이 표시되어 있다.",
+    "solutionImageCaption": "그래프의 최댓값은 3, 최솟값은 −1이므로 진폭 a=2, 중심선 y=1에서 c=1이다. 연속한 두 최솟값이 x=0과 x=2π에 있으므로 주기가 2π이고 b=1이다. 따라서 f(x)=2cos(x−π)+1이고 f(4π/3)=2cos(π/3)+1=2이다. 답은 2이다. 최솟값 −1은 그림의 눈금 대신 식 f(x)=2cos(x−π)+1에서 읽는다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 25,
