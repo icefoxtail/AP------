@@ -217,7 +217,14 @@ export function makeCourseBuckets(aliasDoc) {
   const canonical = (value) => { const g = spelling.get(compact(value)); return g ? compact(g.members[0]) : compact(value); };
   const byName = new Map();
   const buckets = new Map();
-  const add = (name, bucket) => { buckets.set(bucket.key, bucket); byName.set(canonical(name), bucket); };
+  // every spelling that resolves to a bucket, so a screen can put a name that is not an exam (a generated question's subject) into the same course
+  const spellings = new Map();
+  const add = (name, bucket) => {
+    buckets.set(bucket.key, bucket); byName.set(canonical(name), bucket);
+    if (!spellings.has(bucket.key)) spellings.set(bucket.key, new Set());
+    const group = spelling.get(compact(name));
+    for (const member of group ? group.members : [name]) spellings.get(bucket.key).add(compact(member));
+  };
   for (const group of aliasDoc?.successorGroups || []) {
     const bucket = { key: keyOfGroupId(group.id), label: group.subject || group.id };
     for (const courses of Object.values(group.curricula || {})) for (const course of courses) add(course, bucket);
@@ -228,7 +235,11 @@ export function makeCourseBuckets(aliasDoc) {
     const bucket = { key: keyOfGroupId(group.id), label: group.members[0] };
     for (const member of group.members) add(member, bucket);
   }
-  return { bucketOf: (name) => byName.get(canonical(name)) || null, all: () => [...buckets.values()] };
+  return {
+    bucketOf: (name) => byName.get(canonical(name)) || null,
+    all: () => [...buckets.values()],
+    namesOf: (key) => [...(spellings.get(key) || [])].sort(),
+  };
 }
 
 const MIDDLE_GRADES = ['중1', '중2', '중3'];
@@ -326,7 +337,9 @@ export function projectCatalogShards(catalog, aliasDoc, { limit = SHARD_RAW_LIMI
   const pending = []; // shards in order: { key, bucket, part, lines, records }
   let recordTotal = 0;
   for (const { bucket, groups } of entries) {
-    const course = { key: bucket.key, label: bucket.label, kind: bucket.kind, ...(bucket.grade ? { grade: bucket.grade } : {}), shards: [] };
+    // `names`: every spelling of the course's name (문제은행 검색 puts a generated question, which has a subject but no exam, into the course of that name)
+    const names = bucket.kind === 'course' ? buckets.namesOf(bucket.key) : [];
+    const course = { key: bucket.key, label: bucket.label, kind: bucket.kind, ...(bucket.grade ? { grade: bucket.grade } : {}), ...(names.length ? { names } : {}), shards: [] };
     for (const part of splitBucketFiles(groups, limit)) {
       const key = `${bucket.key}${part.suffix}`;
       if (!SHARD_KEY_PATTERN.test(key)) throw new Error(`shard key is not a plain file name: ${key}`);

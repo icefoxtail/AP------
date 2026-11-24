@@ -357,6 +357,15 @@ test('middle school is cut by grade, high school by subject with the 2015 and 20
   const buckets = makeCourseBuckets(aliasDoc);
   assert.equal(bucketOfExam({ grade: '고2', subject: '대수c' }, buckets, null).key, 'high2-math1', 'the file-name "c" suffix of a subject is ignored');
   assert.equal(index.recordCount, exams.length * 3);
+  // 문제은행 검색 puts a generated question (a subject name, no exam) into a course by `names`: every spelling of a course an exam resolved to is in it
+  for (const course of index.courses) assert.equal(course.kind === 'course', Array.isArray(course.names) && course.names.length > 0, `${course.key}: only subject courses carry names`);
+  for (const item of exams.filter((e) => /^고/.test(e.grade) && e.subject)) {
+    const course = index.courses.find((c) => c.key === keyOf(item.file));
+    if (!course || course.key === 'etc') continue;
+    const name = item.subject.normalize('NFC').replace(/\s/g, '');
+    const hit = (course.names || []).includes(name) || (course.names || []).includes(name.replace(/c$/, ''));
+    if (item.subject !== '수학') assert.ok(hit, `${item.file}: ${item.subject} is a name of ${course.key}`);
+  }
 });
 
 test('a shard over the size limit is split by semester, then by year; an exam stays whole; the rule is in the index', async () => {

@@ -389,8 +389,25 @@
   // The address says ?shards=0 (or off / false): this document uses the whole bundle, as before stage 2. The default (no parameter) is shards.
   const shardsDisabled = (search) => /[?&]shards=(?:0|off|false)(?:[&#]|$)/.test(String(search || ""));
 
+  // 문제은행 검색 (archive/problem-bank-search.html): the course (`courses[].key` of index.json) a generated question belongs to, or null
+  // (then only the whole-list scope has it). A generated question has a grade and a subject but no exam: a middle school grade is its own course;
+  // a high school subject is looked up in `courses[].names`, every spelling of the course's name the builder knows.
+  const nameKey = (value) => String(value ?? "").normalize("NFC").replace(/\s/g, "");
+  function courseOfGenerated(courses, row) {
+    const grade = text(row && row.grade);
+    const byGrade = (courses || []).find((course) => course.kind === "grade" && course.grade === grade);
+    if (byGrade) return byGrade.key;
+    for (const value of [row && row.subject, row && row.meta && row.meta.standardCourse, row && row.metaProjection && row.metaProjection.standardCourse]) {
+      const name = nameKey(value);
+      if (!name) continue;
+      const hit = (courses || []).find((course) => course.kind === "course" && (course.names || []).some((known) => known === name || known === name.replace(/c$/, "")));
+      if (hit) return hit.key;
+    }
+    return null;
+  }
+
   return {
     SHARD_SCHEMA, COMMON_SCHEMA, AUTHORITY_SCHEMA, INDEX_SCHEMA, STALE_MESSAGE, NETWORK_MESSAGE, UNAVAILABLE_MESSAGE,
-    UNIT_PAST_SCHEMA, FINDER_SCHEMA, assembleFinder, unitPastRows, unitPastRuntime, identityOfRecord, assembleAuthority, assembleCatalog, createLoader, isUnavailable, isShardFailure, isNetworkFailure, shardsDisabled,
+    UNIT_PAST_SCHEMA, FINDER_SCHEMA, assembleFinder, unitPastRows, unitPastRuntime, identityOfRecord, assembleAuthority, assembleCatalog, createLoader, isUnavailable, isShardFailure, isNetworkFailure, shardsDisabled, courseOfGenerated,
   };
 });

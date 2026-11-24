@@ -8,6 +8,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const test = require('node:test');
 const { pathToFileURL } = require('node:url');
+const { isDeepStrictEqual } = require('node:util');
 
 const root = path.resolve(__dirname, '..');
 const lib = () => import(pathToFileURL(path.join(root, 'tools/lib/build-archive2-catalog-shards.mjs')).href);
@@ -316,4 +317,94 @@ test('학교별 기출: the table in the common file gives the finder the same a
   }
   for (const exam of whole.exams) assert.deepEqual([...table.labelsOf(exam.file)].sort(), sorted(byFile.get(exam.file)), `question names of ${exam.file}`);
   assert.deepEqual([...table.uidChars].sort(), [...uidChars].sort());
+});
+
+// ---- 문제은행 검색 (조각 4단계): a scope (학년·과목) holds the rows of the whole list that belong to it, and nothing else ----
+test('문제은행 검색: the rows, their order and every filter answer of a scope are those of the whole list restricted to the scope', async () => {
+  const { files, entries, catalog: full } = await built();
+  const all = new Map(files);
+  all.set('index.json', entries.find((entry) => entry.path.endsWith('/index.json')).content);
+  const ProblemBankMeta = require(path.join(root, 'archive/problem-bank-meta.js'));
+  const { slimRecord } = await lib();
+  const generatedDoc = JSON.parse(read('archive/data/generated-lite-consumer/v1/index.json'));
+  const holds = generatedDoc.userDisabledUids || [];
+  // what problem-bank-search.html does with a catalog and the generated rows (applyInventory)
+  const inventoryOf = (catalog, generatedRows) => {
+    const sha = new Map(catalog.sourceHashes || []);
+    const rows = catalog.records.map((row) => ({ ...row, currentSourceJsSha256: sha.get(row.sourceFile) || '' }));
+    return ProblemBankMeta.buildIndex(rows, generatedRows, { excludedHoldUids: holds });
+  };
+  const wholeInventory = inventoryOf(full, generatedDoc.records);
+  const loader = shards.createLoader({ base: 'https://site.test/archive/data/archive2-catalog-shards-v1/', fetch: fakeFetch(all) });
+  const index = await loader.loadIndex();
+  const courses = loader.courses();
+  const keyOf = (row) => row.uid || row.questionUid;
+  // which scope a row of the whole list belongs to, decided by the index (originals: the shard of their exam; generated: the course of their subject)
+  const generatedByUid = new Map(generatedDoc.records.map((record) => [record.uid, record]));
+  const scopeOf = (row) => (row.sourceKind === 'generated'
+    ? shards.courseOfGenerated(courses, generatedByUid.get(row.uid))
+    : courses.find((course) => course.shards.includes(index.examShard[row.sourceFile]))?.key);
+  const scopes = [...courses.map((course) => course.key), 'all'];
+  // every generated question has a scope (otherwise it would exist only in "전체")
+  for (const record of generatedDoc.records) assert.ok(shards.courseOfGenerated(courses, record), `generated ${record.uid} has a course`);
+  const FIELDS = ['sourceKind', 'standardCourse', 'standardUnitKey', 'subUnitKey', 'nativeL1', 'nativeL2', 'nativeL3', 'nativeL4', 'nativeCurriculum', 'level', 'rpmL1', 'rpmL2', 'rpmL3', 'rpmL4', 'problemTypeKey', 'templateKey', 'integrationPattern', 'difficultyBucket'];
+  const optionValues = (rows, field) => [...new Set(rows.map((row) => row[field]).filter((value) => value !== undefined && value !== null && value !== ''))];
+  const stats = { scopes: 0, rows: 0, queries: 0 };
+  const seen = new Set();
+  for (const scope of scopes) {
+    const keys = scope === 'all' ? index.shards.map((shard) => shard.key) : loader.shardKeysOfCourse(scope);
+    const catalog = shards.assembleCatalog(await loader.loadIndex(), await loader.loadCommon(), await loader.loadShards(keys));
+    const generatedRows = scope === 'all' ? generatedDoc.records : generatedDoc.records.filter((record) => shards.courseOfGenerated(courses, record) === scope);
+    const scoped = inventoryOf(catalog, generatedRows);
+    const inScope = (row) => scope === 'all' || scopeOf(row) === scope;
+    const expected = wholeInventory.filter(inScope);
+    // 1) the rows themselves, in the same order, value for value
+    assert.equal(scoped.length, expected.length, `${scope}: row count`);
+    for (let i = 0; i < expected.length; i += 1) {
+      if (keyOf(scoped[i]) !== keyOf(expected[i])) assert.fail(`${scope}: row ${i} is ${keyOf(scoped[i])}, expected ${keyOf(expected[i])}`);
+      // a row is the record plus what the screen derives from it, so the columns the shards leave out are left out of the whole list's row too:
+      // every derived value (RPM path, status, eligibility ...) must come out the same without them (the screen reads none of them)
+      const want = expected[i].sourceKind === 'generated' ? expected[i] : slimRecord(expected[i]);
+      if (!isDeepStrictEqual(scoped[i], want)) assert.fail(`${scope}: row ${keyOf(expected[i])} differs`);
+      if (scope !== 'all') seen.add(keyOf(expected[i]));
+    }
+    // 2) the filter boxes: the values each box offers; the unit boxes are built from the common list
+    for (const field of [...FIELDS, 'crossConceptKeys', 'conditionKeys']) {
+      const flat = (rows) => [...new Set(rows.flatMap((row) => (Array.isArray(row[field]) ? row[field] : [row[field]])).filter((value) => typeof value === 'string' && value))].sort();
+      assert.deepEqual(flat(scoped), flat(expected), `${scope}: options of ${field}`);
+    }
+    assert.deepEqual(catalog.coreMetaFilterOptions, full.coreMetaFilterOptions, `${scope}: coreMetaFilterOptions`);
+    // 3) the answers: every value of every box alone, and boxes together (value sets some row really has), the same rows in the same order
+    const queries = [{}, { difficultyBucket: 'UNKNOWN' }];
+    for (const field of FIELDS) for (const value of optionValues(expected, field)) queries.push({ [field]: value });
+    for (const field of ['crossConceptKeys', 'conditionKeys']) for (const value of new Set(expected.flatMap((row) => row[field] || []))) queries.push({ [field]: [value] });
+    const step = Math.max(1, Math.floor(expected.length / 400));
+    for (let i = 0; i < expected.length; i += step) {
+      const row = expected[i];
+      const pick = (...fields) => Object.fromEntries(fields.filter((field) => row[field] !== undefined && row[field] !== null && row[field] !== '').map((field) => [field, row[field]]));
+      queries.push(pick('standardCourse', 'standardUnitKey', 'subUnitKey'), pick('sourceKind', 'standardCourse', 'difficultyBucket'), pick('rpmL1', 'rpmL2', 'rpmL3', 'rpmL4'), pick('problemTypeKey', 'templateKey', 'level'), pick('nativeCurriculum', 'nativeL1', 'nativeL2', 'sourceKind'));
+    }
+    // (the rows are equal one by one above, so this also checks the index the scope's rows were built with against a plain scan of the whole list's rows)
+    // (an even sample of the boxes' values: BANK_SEARCH_WIDE=1 runs every one, 28,000 answers in about 100 seconds)
+    const cap = process.env.BANK_SEARCH_WIDE ? Infinity : scope === 'all' ? 150 : 400;
+    const stride = Math.max(1, Math.ceil(queries.length / cap));
+    let answered = 0;
+    for (let q = 0; q < queries.length; q += stride) {
+      answered += 1;
+      const filters = queries[q];
+      const a = ProblemBankMeta.query(scoped, filters).map(keyOf);
+      const b = ProblemBankMeta.query([...expected], filters).map(keyOf);
+      if (a.length !== b.length || a.some((uid, i) => uid !== b[i])) assert.fail(`${scope}: ${JSON.stringify(filters)} gives ${a.length} rows, the whole list gives ${b.length} here`);
+    }
+    // 4) the preview of an original needs the source hash of its file, and it is the one the whole list holds
+    const hashes = new Map(full.sourceHashes || []);
+    const held = new Map(catalog.sourceHashes || []);
+    for (const row of catalog.records) assert.equal(held.get(row.sourceFile), hashes.get(row.sourceFile), `${scope}: hash held for ${row.sourceFile}`);
+    stats.scopes += 1; stats.rows += expected.length; stats.queries += answered;
+  }
+  // the scopes together are the whole list: nothing lost, nothing in two scopes
+  assert.equal(seen.size, wholeInventory.length, 'every row of the whole list is in a scope');
+  assert.equal(stats.rows - wholeInventory.length, wholeInventory.length, 'and in only one (the rows of all scopes add up to the list; "all" is the list itself)');
+  assert.ok(stats.queries > 1000 && stats.rows > 10000, 'a wide comparison was made');
+  console.log(`bank search scopes compared: ${JSON.stringify(stats)}`);
 });

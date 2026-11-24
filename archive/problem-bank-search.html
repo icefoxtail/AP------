@@ -13,6 +13,7 @@ body{font-family:system-ui,'Malgun Gothic',sans-serif;background:#f4f7fb;color:#
 <h1>문항 검색</h1>
 <p>메인에 등록된 기출과 생성문제를 같은 분류·난이도로 찾습니다. 검수 상태와 미지정 정보는 문항별 기록을 따릅니다.</p>
 <div class="filters">
+<label id="scopeLabel" hidden>범위 (학년·과목)<select id="scope"><option value="">범위를 고르세요</option></select></label>
 <label>출처<select id="source"><option value="">전체</option><option value="original">기출</option><option value="generated">생성</option><option value="archive">기타 아카이브</option></select></label>
 <label>과목<select id="course"><option value="">전체</option></select></label>
 <label>표준단원 키<select id="standardUnitKey"><option value="">전체</option></select></label>
@@ -34,7 +35,7 @@ body{font-family:system-ui,'Malgun Gothic',sans-serif;background:#f4f7fb;color:#
 <label>학습수준<select id="level"><option value="">전체</option><option>하</option><option>중</option><option>상</option></select></label>
 <label>난이도<select id="difficulty"><option value="">전체</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option value="UNKNOWN">미지정</option></select></label>
 </div>
-<p id="status" role="status" aria-live="polite">문항 정보를 불러오는 중입니다.</p>
+<p id="status" role="status" aria-live="polite">문항 정보를 불러오는 중입니다.</p><button id="scopeRetry" type="button" hidden>다시 시도</button>
 <p id="keynote" role="status" aria-live="polite"></p>
 <div id="results"></div><button id="more" hidden>더 보기</button>
 <section id="pickbar" class="pickbar" hidden aria-label="선택한 기출 문항">
@@ -57,10 +58,14 @@ body{font-family:system-ui,'Malgun Gothic',sans-serif;background:#f4f7fb;color:#
 <script src="archive2-error-detail.js?v=20261118-error-detail-1"></script>
 <script src="archive2-source.js?v=20261119-verified-rename-1"></script>
 <script src="archive2-key-resolver.js?v=20261030-s14b-1"></script>
+<script src="archive2-catalog-shards.js?v=20261124-bank-search-1"></script>
 <script>
 'use strict';
 const el=id=>document.getElementById(id),shards=new Map();
 let inventory=[],matching=[],limit=40,holds=[],previewRequest=0,coreMetaFilterOptions={},keyResolver=null;
+// 조각 방식(기본): 들어올 때는 조각 색인만 받고, 범위(학년·과목)를 고르면 그 범위의 문항 조각만 받는다. ?shards=0 이거나 조각이 없으면
+// 예전처럼 전체 묶음을 받는다. 범위 안의 문항 목록·순서·필터 칸의 항목은 전체 묶음에서 그 범위만 거른 것과 같다.
+let awaitingScope=false,catalogLoader=null,generatedIndexRequest=null,scopeToken=0,resolverScheduled=false;
 // Per-item selection of ORIGINAL questions (S9). The selection survives filter changes and "더 보기".
 // The compose workspace re-validates every UID, so a stale or unusable UID fails closed there.
 const MAX_PICK=100,picked=new Map(),sourceRecords=new Map();let restoreCatalog=null;
@@ -137,12 +142,15 @@ function relabelKeyOptions(id,kind){
  select.replaceChildren(...children);
  if(values.includes(selected))select.value=selected;
 }
+const KEY_SELECTS=[['problemTypeKey','pt'],['templateKey','tpl'],['crossConceptKey','cross'],['conditionKey','cond'],['rpmL4','l4']];
+function relabelAllKeyOptions(){if(keyResolver)for(const [id,kind] of KEY_SELECTS)relabelKeyOptions(id,kind);}
 function scheduleKeyResolver(){
+ if(resolverScheduled)return;resolverScheduled=true;
  const start=()=>{
   el('keynote').textContent='분류 키의 정식·확장 표시를 불러오는 중입니다.';
   Archive2KeyResolver.load({base:''}).then(({resolver,failedSources,elapsedMs})=>{
    keyResolver=resolver;
-   for(const [id,kind] of [['problemTypeKey','pt'],['templateKey','tpl'],['crossConceptKey','cross'],['conditionKey','cond'],['rpmL4','l4']])relabelKeyOptions(id,kind);
+   relabelAllKeyOptions();
    el('keynote').textContent=`분류 키 표시: 정식 ${resolver.stats.canonicalKeys.toLocaleString()} · 확장 ${resolver.stats.extensionKeys.toLocaleString()} (상위 연결 ${resolver.stats.parentLinked.toLocaleString()})${failedSources.length?' · 일부 자료 없음':''}`;
    window.__keyResolverState={ready:true,elapsedMs,failedSources};
    render();
@@ -151,6 +159,10 @@ function scheduleKeyResolver(){
  if(typeof requestIdleCallback==='function')requestIdleCallback(start,{timeout:1500});else setTimeout(start,50);
 }
 function render(){
+ if(awaitingScope){
+  matching=[];el('status').textContent='범위(학년·과목)를 고르면 그 범위의 문항을 불러옵니다. 전체를 고르면 모든 문항을 받습니다.';
+  el('results').replaceChildren();el('more').hidden=true;return;
+ }
  matching=ProblemBankMeta.query(inventory,filters());
  el('status').textContent=`${matching.length.toLocaleString()}문항 · 기출/아카이브 ${matching.filter(r=>r.sourceKind!=='generated').length.toLocaleString()} · 생성 ${matching.filter(r=>r.sourceKind==='generated').length.toLocaleString()} · 검증 수준은 문항별 근거를 따릅니다.`;
  el('results').replaceChildren();
@@ -318,25 +330,89 @@ for(const id of ['source','course','standardUnitKey','subUnitKey','nativeL1','na
 };
 el('more').onclick=()=>{limit+=40;render();};
 el('pickclear').onclick=()=>{picked.clear();renderPickBar();render();};
-(async()=>{
+const FILTER_IDS=['source','course','standardUnitKey','subUnitKey','nativeL1','nativeL2','nativeL3','nativeL4','nativeCurriculum','level','rpmL1','rpmL2','rpmL3','rpmL4','problemTypeKey','templateKey','crossConceptKey','conditionKey','integrationPattern','difficulty'];
+function generatedIndex(){
+ if(!generatedIndexRequest)generatedIndexRequest=fetch('data/generated-lite-consumer/v1/index.json',{cache:'no-cache'}).then(r=>{if(!r.ok)throw Error('검색 데이터 로드 실패');return r.json();}).catch(e=>{generatedIndexRequest=null;throw e;});
+ return generatedIndexRequest;
+}
+// What the screen shows for one catalog (the whole bundle, or the shards of one scope) and the generated rows that go with it.
+function applyInventory(catalog,index,generatedRows){
+ coreMetaFilterOptions=catalog.coreMetaFilterOptions||{};
+ holds=index.userDisabledUids||[];
+ const sourceShaByFile=new Map(catalog.sourceHashes||[]);
+ const sourceRows=catalog.records.map(row=>({...row,currentSourceJsSha256:sourceShaByFile.get(row.sourceFile)||''}));
+ restoreCatalog={sourceHashes:catalog.sourceHashes||[]};
+ sourceRecords.clear();
+ for(const row of sourceRows)if(row.questionUid)sourceRecords.set(row.questionUid,row);
+ inventory=ProblemBankMeta.buildIndex(sourceRows,generatedRows,{excludedHoldUids:holds});
+ options('course','standardCourse',inventory);
+ refreshCoreMetaKeyOptions();
+ for(const k of ['nativeL1','nativeL2','nativeL3','nativeL4','nativeCurriculum','rpmL1','rpmL2','rpmL3','rpmL4','problemTypeKey','templateKey','integrationPattern'])options(k,k,inventory);
+ metaAxisOptions('crossConceptKey','crossConceptKeys',inventory);metaAxisOptions('conditionKey','conditionKeys',inventory);
+ relabelAllKeyOptions();render();scheduleKeyResolver();
+}
+let retryAction=null;
+function showFailure(error){
+ el('status').textContent=error&&error.message||String(error);
+ el('scopeRetry').hidden=!retryAction;
+}
+async function loadWholeBundle(){
+ awaitingScope=false;el('scopeLabel').hidden=true;window.__bankSearch={mode:'whole',scope:'all'};
+ retryAction=loadWholeBundle;el('scopeRetry').hidden=true;
  try{
   const [bundle,index]=await Promise.all([
     Archive2Canonical.loadInputBundle(url=>fetch(url,{cache:'no-cache'}),document.baseURI),
-    fetch('data/generated-lite-consumer/v1/index.json',{cache:'no-cache'}).then(r=>{if(!r.ok)throw Error('검색 데이터 로드 실패');return r.json();}),
+    generatedIndex(),
   ]);
-  const catalog=Archive2Canonical.resolveCatalog({versionBundle:bundle});
-  coreMetaFilterOptions=catalog.coreMetaFilterOptions||{};
-  holds=index.userDisabledUids||[];
-  const sourceShaByFile=new Map(catalog.sourceHashes||[]);
-  const sourceRows=catalog.records.map(row=>({...row,currentSourceJsSha256:sourceShaByFile.get(row.sourceFile)||''}));
-  restoreCatalog={sourceHashes:catalog.sourceHashes||[]};
-  for(const row of sourceRows)if(row.questionUid)sourceRecords.set(row.questionUid,row);
-  inventory=ProblemBankMeta.buildIndex(sourceRows,index.records,{excludedHoldUids:holds});
-  options('course','standardCourse',inventory);
-  refreshCoreMetaKeyOptions();
-  for(const k of ['nativeL1','nativeL2','nativeL3','nativeL4','nativeCurriculum','rpmL1','rpmL2','rpmL3','rpmL4','problemTypeKey','templateKey','integrationPattern'])options(k,k,inventory);
-  metaAxisOptions('crossConceptKey','crossConceptKeys',inventory);metaAxisOptions('conditionKey','conditionKeys',inventory);render();scheduleKeyResolver();
- }catch(e){el('status').textContent=e.message;}
+  applyInventory(Archive2Canonical.resolveCatalog({versionBundle:bundle}),index,index.records);
+ }catch(e){showFailure(e);}
+}
+async function loadScope(key){
+ const token=++scopeToken;
+ el('scopeRetry').hidden=true;retryAction=()=>loadScope(key);
+ if(!key){awaitingScope=true;inventory=[];window.__bankSearch={mode:'shards',scope:''};render();return;}
+ el('status').textContent='문항 정보를 불러오는 중입니다.';el('results').replaceChildren();el('more').hidden=true;
+ try{
+  const index=await catalogLoader.loadIndex();
+  const keys=key==='all'?index.shards.map(shard=>shard.key):catalogLoader.shardKeysOfCourse(key);
+  let catalog=null,generated=null;
+  for(let attempt=0;!catalog;attempt+=1){
+   const [docs,common,generatedDoc]=await Promise.all([catalogLoader.loadShards(keys),catalogLoader.loadCommon(),generatedIndex()]);
+   try{catalog=Archive2CatalogShards.assembleCatalog(await catalogLoader.loadIndex(),common,docs);generated=generatedDoc;}
+   catch(e){if(e.code!=='CATALOG_SHARD_STALE'||attempt)throw e;}
+  }
+  if(token!==scopeToken)return;
+  const courses=catalogLoader.courses();
+  const generatedRows=key==='all'?generated.records:generated.records.filter(row=>Archive2CatalogShards.courseOfGenerated(courses,row)===key);
+  awaitingScope=false;window.__bankSearch={mode:'shards',scope:key};
+  applyInventory(catalog,generated,generatedRows);
+ }catch(e){
+  if(token!==scopeToken)return;
+  // the files do not match the index (the release is moving) or a piece is missing: the whole bundle, which checks itself, takes over
+  if(Archive2CatalogShards.isShardFailure(e)&&!Archive2CatalogShards.isNetworkFailure(e)){
+   console.warn('catalog shards do not match; using the whole bundle',e);scopeToken+=1;await loadWholeBundle();return;
+  }
+  showFailure(e);
+ }
+}
+function clearFilters(){for(const id of FILTER_IDS)el(id).value='';limit=40;}
+el('scope').onchange=()=>{clearFilters();loadScope(el('scope').value);};
+el('scopeRetry').onclick=()=>{if(retryAction)retryAction();};
+(async()=>{
+ if(Archive2CatalogShards.shardsDisabled(location.search)){await loadWholeBundle();return;}
+ try{
+  catalogLoader=Archive2CatalogShards.createLoader({fetch:(url,init)=>fetch(url,init)});
+  const index=await catalogLoader.loadIndex();
+  el('scope').append(...index.courses.map(course=>new Option(course.label,course.key)),new Option('전체 (모든 문항 받기)','all'));
+  el('scopeLabel').hidden=false;
+  const wanted=new URLSearchParams(location.search).get('scope')||'';
+  if(wanted&&[...el('scope').options].some(option=>option.value===wanted))el('scope').value=wanted;
+  awaitingScope=!el('scope').value;
+  loadScope(el('scope').value);
+ }catch(e){
+  if(Archive2CatalogShards.isUnavailable(e)){console.warn('catalog shards are not available; using the whole bundle');await loadWholeBundle();return;}
+  showFailure(e);
+ }
 })();
 </script>
 <script>window.MathJax={tex:{inlineMath:[['$','$']]},svg:{fontCache:'global'}};</script>
