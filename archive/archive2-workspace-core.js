@@ -379,6 +379,8 @@
     catalog: null,
     // 시험지 목록만 먼저 받은 홈(가벼운 진입, 2026-11-23): { exams, identityDigest }. 전체 카탈로그가 오면 catalog가 우선한다.
     light: null,
+    // 학교별 기출 표(조각 3단계): common.json의 finder 부분을 풀어 둔 것. 있으면 홈·학교별 기출이 조각 없이 시험지 목록만으로 정확히 답한다.
+    finderTable: null,
     // ?assign=legacy(옛 출제 화면으로 되돌리는 스위치)는 페이지를 열 때 읽어 둔다. 시작할 때 routeUrl()이 주소를
     // 다시 쓰면 location.search에서 사라지므로, 이 값을 보고 주소를 다시 쓸 때마다 assign=legacy를 붙여 유지한다.
     assignLegacy: new URLSearchParams(location.search).get("assign") === "legacy",
@@ -728,12 +730,29 @@
   // shared matcher's own subject projection.
   // The exam list the home screen draws from: the full catalog once it is ready, else the small exam list it opened on.
   // Both keep the same order, so an index (data-exam) means the same exam in either.
+  // 목록 모드(조각 3단계): 홈·학교별 기출은 시험지 목록(state.light)에서 그리고, 문항 조각은 눌린 단추가 필요로 할 때만 받는다. 카탈로그가
+  // 아직 없거나, 단추 하나를 위해 받은 일부 조각(complete === false)만 있는 동안이다. 이때 시험지 줄의 순서·번호는 목록의 것이고(일부 조각의
+  // exams는 일부라서 번호가 어긋난다), 학년·과목·검색은 finderTable(없으면 시험지 값만)로 판정한다. 다른 화면(문제지 만들기 등)은 영향 없다.
+  function listMode() {
+    if (!state.light) return false;
+    if (!state.catalog) return true;
+    return state.catalog.complete === false && (state.view === "find" || state.view === "home");
+  }
   function catalogExams() {
+    if (listMode()) return state.light.exams;
     return state.catalog?.exams || state.light?.exams || [];
   }
   function finderIdentityMatch(exam, filters) {
-    // 목록만 있을 때(학교별 기출을 먼저 그리는 중): 학년만 시험지 줄 값으로 가린다(레코드의 출처 학년 대신 시험지의 학년).
-    // 교육과정·과목은 이 화면이 전체 자료가 올 때까지 쓰지 못하게 막아 두므로 여기로 오지 않는다. 전체 자료가 오면 아래 규칙이 다시 판정한다.
+    // 목록 모드: 표가 있으면 아래 전체 규칙과 같은 규칙을 표로 판정하고(교육과정·과목·계열도), 아직 없으면 학년만 시험지 줄 값으로 가린다.
+    if (listMode()) {
+      const table = state.finderTable;
+      if (!table) return C.finderMatches(exam, { grade: filters.grade }, new Map());
+      const subject = filters.semanticSubject || Unified.subjectForFamily(filters.family);
+      const matched = C.finderMatches(exam, { grade: filters.grade, curriculumKey: filters.curriculumKey, courseKey: filters.courseKey, semanticSubject: "" }, table.finderIndex);
+      if (!matched || !subject) return matched;
+      const covered = table.examSubjects.get(C.normalizeFile(exam.file));
+      return covered?.size ? covered.has(subject) : C.finderMatches(exam, { semanticSubject: subject }, table.finderIndex);
+    }
     if (!state.catalog) return C.finderMatches(exam, { grade: filters.grade }, new Map());
     const index = unifiedIndex();
     const subject = index ? filters.semanticSubject || Unified.subjectForFamily(filters.family) : "";
@@ -892,6 +911,7 @@
     computeTaxonomyRowsForFilters,
     state,
     catalogExams,
+    listMode,
     Quick,
     QuickTree,
     quickState,

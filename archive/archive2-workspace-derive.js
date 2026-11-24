@@ -11,14 +11,14 @@
   const Unified = window.Archive2UnifiedUnits;
   // names defined in other parts; WS.link() fills them in before the first call
   let
-    $, api, applyUidRoute, button, ensureShards, esc, generate, rememberCurrentHistoryEntry, replaceUrlState, resetWorkingDraft,
+    $, api, applyUidRoute, button, catalogExams, ensureShards, esc, generate, rememberCurrentHistoryEntry, replaceUrlState, resetWorkingDraft,
     render, routeUrl, save, showDialog, state, status, teacherErrorMessage, unifiedIndex, workspaceEligibility,
-    planRows, savePapers, discardDraftSilently, saveFailureMessage;
+    planRows, savePapers, discardDraftSilently, saveFailureMessage, shardMissing;
   WS.links.push(() => {
     ({
-      $, api, applyUidRoute, button, ensureShards, esc, generate, rememberCurrentHistoryEntry, replaceUrlState, resetWorkingDraft,
+      $, api, applyUidRoute, button, catalogExams, ensureShards, esc, generate, rememberCurrentHistoryEntry, replaceUrlState, resetWorkingDraft,
       render, routeUrl, save, showDialog, state, status, teacherErrorMessage, unifiedIndex, workspaceEligibility,
-      planRows, savePapers, discardDraftSilently, saveFailureMessage
+      planRows, savePapers, discardDraftSilently, saveFailureMessage, shardMissing
     } = WS.api);
   });
   const Derive = () => window.Archive2Derive;
@@ -286,11 +286,13 @@
       .sort((a, b) => (Number(a.sourceOrdinal) || 0) - (Number(b.sourceOrdinal) || 0))
       .map((record) => record.questionUid);
   }
+  // 모의고사 풀은 (학년, 통합 과목) 단위라 그 시험지의 학년 조각과 시험지 자신의 조각이면 된다(조각 3단계, 전체 조각으로 뽑은 것과 같은 문항·순서를 테스트가 지킨다).
+  const mockNeed = (exam) => (exam?.grade ? { grades: [exam.grade], exams: [exam.file] } : { all: true });
   function startMockForExam(exam) {
     if (!exam) return;
-    if (state.catalog?.records && state.catalog.complete === false) {
+    if (state.catalog?.records && state.catalog.complete === false && shardMissing(mockNeed(exam))) {
       status("문항 목록을 불러오는 중입니다.");
-      ensureShards({ all: true }).then(() => { status(""); startMockForExam(exam); }, (error) => status(teacherErrorMessage(error, "문항 목록을 불러오지 못했습니다. 잠시 뒤 다시 시도해 주세요."), true, error));
+      ensureShards(mockNeed(exam)).then(() => { status(""); startMockForExam(exam); }, (error) => status(teacherErrorMessage(error, "문항 목록을 불러오지 못했습니다. 잠시 뒤 다시 시도해 주세요."), true, error));
       return;
     }
     if (!state.catalog?.records) { status("자료를 준비하는 중입니다. 준비가 끝나면 이어서 진행합니다."); V.derive.pendingMock = exam.file; return; }
@@ -905,7 +907,7 @@
     if (name === "derive-again") return again();
     if (name === "derive-edit") { const dlg = V.derive.dlg; if (dlg) { dlg.result = null; dlg.error = ""; if (isMock(dlg)) dlg.choose = true; renderDialog(); } return undefined; }
     if (name === "derive-mock-open") {
-      const exam = state.catalog?.exams?.[Number(element?.dataset?.exam)];
+      const exam = catalogExams()[Number(element?.dataset?.exam)];
       return startMockForExam(exam);
     }
     if (name === "derive-mock-level") return selectMockLevel(element?.dataset?.level);
@@ -921,6 +923,7 @@
     return undefined;
   }
   Object.assign(WS.api, {
+    mockNeed,
     deriveAction,
     deriveNoteMarkup,
     deriveStartFromItems,

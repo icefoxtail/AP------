@@ -138,7 +138,8 @@
     state.undo = [];
     state.rows = [];
     state.ackWarnings = false;
-    state.indexVersion = state.catalog.indexVersion;
+    // 시험지 목록만 받은 첫 진입(catalog 없음)에서도 문항 선택·선택 비우기가 여기를 지난다. 버전은 자료가 오면 채워진다.
+    if (state.catalog) state.indexVersion = state.catalog.indexVersion;
     scheduleSave();
   }
   V.scopeRenderCache = null;

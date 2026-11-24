@@ -21,7 +21,7 @@
   // names defined in other parts; WS.link() fills them in before the first call
   let
     $, ASSESSMENT_RECIPE_KEYS, ASSESSMENT_RECIPE_TITLES, HOME_PRODUCT_REGISTRY, META_FACET_FILTERS, Quick,
-    UNKNOWN_RESULT_ALLOWED_ACTIONS, catalogExams, lightFindUsable, activeAssessmentRecipe, advanceRecentPdfMutationVersion, api,
+    UNKNOWN_RESULT_ALLOWED_ACTIONS, catalogExams, lightFindUsable, findQueryNeedsUids, listMode, activeAssessmentRecipe, advanceRecentPdfMutationVersion, api,
     applyDefaultFinderMaterial, applyDraft, applyFinderFilterChange, applyRecentPdfMutationResult,
     askCancelAssignment, askDeleteDraft, assign, assignmentStatus, button, cancelRecentAssignment,
     changeComposeFilter, changeRecentFilter, composeCountChanged, composeLoadGroups, composeMetaQueryCache,
@@ -41,11 +41,11 @@
     state, status, stepComposeCount, teacherErrorMessage, unifiedIndex, unique, updateOriginalPreview,
     updatePreview, updateRecentResults, withDefaultComposeSubject, withoutShadowedChildren,
     workspaceEligibility, setContentKeepingPreview, rememberComposeConditions, restoreClearedResult, discardClearedResult,
-    deriveAction, openDeriveFromUrl;
+    deriveAction, openDeriveFromUrl, mockNeed;
   WS.links.push(() => {
     ({
       $, ASSESSMENT_RECIPE_KEYS, ASSESSMENT_RECIPE_TITLES, HOME_PRODUCT_REGISTRY, META_FACET_FILTERS, Quick,
-      UNKNOWN_RESULT_ALLOWED_ACTIONS, catalogExams, lightFindUsable, activeAssessmentRecipe, advanceRecentPdfMutationVersion, api,
+      UNKNOWN_RESULT_ALLOWED_ACTIONS, catalogExams, lightFindUsable, findQueryNeedsUids, listMode, activeAssessmentRecipe, advanceRecentPdfMutationVersion, api,
       applyDefaultFinderMaterial, applyDraft, applyFinderFilterChange, applyRecentPdfMutationResult,
       askCancelAssignment, askDeleteDraft, assign, assignmentStatus, button, cancelRecentAssignment,
       changeComposeFilter, changeRecentFilter, composeCountChanged, composeLoadGroups, composeMetaQueryCache,
@@ -65,7 +65,7 @@
       state, status, stepComposeCount, teacherErrorMessage, unifiedIndex, unique, updateOriginalPreview,
       updatePreview, updateRecentResults, withDefaultComposeSubject, withoutShadowedChildren,
       workspaceEligibility, setContentKeepingPreview, rememberComposeConditions, restoreClearedResult, discardClearedResult,
-      deriveAction, openDeriveFromUrl
+      deriveAction, openDeriveFromUrl, mockNeed
     } = WS.api);
   });
   // function declarations are hoisted: export them now so the other parts (and this file's own load-time code) see them
@@ -249,7 +249,7 @@
       if (state.view === "find" && lightFindUsable()) {
         setContentKeepingPreview(renderFind());
         Boot?.refresh?.();
-        startCatalogAfterPaint();
+        afterListFindPaint();
         return;
       }
       $("content").innerHTML = state.view === "home" ? renderHome()
@@ -308,6 +308,8 @@
     }
     if (state.view === "compose" && state.selected.length) updatePreview();
     if (quickFocus) quickFocusRestore(quickFocus);
+    // 조각 몇 개를 받은 뒤에도 학교별 기출은 시험지 목록에서 그린다(조각 3단계): 아직 할 일이 남았는지 본다.
+    if (state.view === "find" && listMode()) afterListFindPaint();
   }
   // A quick-assessment click re-draws the screen; keyboard focus returns to the same button or check box.
   function quickFocusKey() {
@@ -400,7 +402,7 @@
   // 학교별 기출을 시험지 목록만으로 그린 동안(state.light, 카탈로그 아직 없음)의 조건 단추·쪽 넘김·함께 출제 고르기: 시험지 목록만 읽는다.
   const LIGHT_FIND_ACTIONS = new Set([
     "finder-search", "finder-axis-quick", "finder-grade", "finder-publisher", "finder-reset", "material", "page-prev", "page-next",
-    "multi-pick", "multi-pick-clear",
+    "multi-pick", "multi-pick-clear", "finder-subject", "source-toggle", "sources-clear",
   ]);
   let deferredClick = null;
   const DEFERRED_NOTICE = "자료를 준비하는 중입니다. 준비가 끝나면 이어서 진행합니다.";
@@ -409,7 +411,15 @@
     if (state.bootError) { status(state.bootError, true); return; }
     deferredClick = { dataset: { ...b.dataset }, view: state.view };
     status(DEFERRED_NOTICE);
+    // 목록 모드(홈·학교별 기출): 이 단추가 필요한 조각만 받는다(조각 3단계). 조각이 없는 환경이면 예전처럼 전체 묶음.
+    if (listRowsApply()) { loadListRecords(rowNeedOf(b.dataset)); return; }
     ensureCatalog();
+  }
+  // 목록 모드에서 이미 받은 일부 조각에 이 단추가 필요로 하는 조각이 없다: 모자란 조각만 받고 같은 단추를 다시 눌러 준다.
+  function deferUntilRows(b) {
+    deferredClick = { dataset: { ...b.dataset }, view: state.view };
+    status(DEFERRED_NOTICE);
+    loadListRecords(rowNeedOf(b.dataset));
   }
   // Leaving the screen cancels the pending press: it must not fire later when the teacher comes back to
   // that screen, and its notice must not stay on the screen they moved to.
@@ -501,9 +511,16 @@
         if (b.dataset.grade && state.view === "compose") changeComposeFilter("grade", b.dataset.grade); else render();
         return;
       }
-      if (!state.catalog && a && !CATALOG_FREE_ACTIONS.has(a) && !(state.light && LIGHT_FIND_ACTIONS.has(a))) {
-        deferUntilCatalog(b);
-        return;
+      if (a && !CATALOG_FREE_ACTIONS.has(a) && !(state.light && LIGHT_FIND_ACTIONS.has(a))) {
+        if (!state.catalog) {
+          deferUntilCatalog(b);
+          return;
+        }
+        // 일부 조각만 있는 목록 모드: 이 단추의 시험지·학년 조각이 아직 없으면 그것만 더 받는다.
+        if (listMode() && state.catalog.complete === false && shardMissing(rowNeedOf(b.dataset))) {
+          deferUntilRows(b);
+          return;
+        }
       }
       // While a save result is unknown only actions that change the saved contents stay locked.
       // Local output, work backup, closing a dialog and sheet toggles never touch the save identity.
@@ -752,9 +769,7 @@
         if (!state.filters.grade) {
           // A subject chosen without a grade opens compose on the grade that teaches it.
           const subject = findSubject || Unified?.subjectForFamily?.(state.find.family) || "";
-          state.filters.grade = /^COMMON_MATH_/.test(subject) ? "고1"
-            : ["ALGEBRA", "PROB_STATS"].includes(subject) ? "고2"
-            : subject ? "고3" : "고1";
+          state.filters.grade = composeGradeOfSubject(subject);
           findSubject = subject;
         }
         if (C.hasSubjectProjection?.(state.find.grade)) {
@@ -867,15 +882,15 @@
         window.scrollTo(0, 0);
         window.scrollTo(0, 0);
       } else if (a === "source-toggle") {
-        const f = state.catalog.exams[Number(b.dataset.exam)].file;
+        const f = catalogExams()[Number(b.dataset.exam)].file;
         state.sources = state.sources.includes(f)
           ? state.sources.filter((x) => x !== f)
           : [...state.sources, f];
         invalidate();
         render();
       } else if (a === "source-issue") {
-        rememberRecentExam(recentTarget(state.catalog.exams[Number(b.dataset.exam)]));
-        openOriginalAssign(state.catalog.exams[Number(b.dataset.exam)]);
+        rememberRecentExam(recentTarget(catalogExams()[Number(b.dataset.exam)]));
+        openOriginalAssign(catalogExams()[Number(b.dataset.exam)]);
       } else if (a === "multi-pick") {
         toggleMultiPick(catalogExams()[Number(b.dataset.exam)]);
       } else if (a === "multi-pick-clear") {
@@ -1797,7 +1812,7 @@
   function startCatalogAfterPaint() {
     if (!Boot?.catalogDeferred || catalogLoad || catalogStartQueued) return;
     catalogStartQueued = true;
-    const start = () => { catalogStartQueued = false; ensureCatalog(); };
+    const start = () => { catalogStartQueued = false; listNeed = { all: true }; ensureCatalog().finally(() => { listNeed = null; }); };
     if (typeof requestAnimationFrame === "function" && !document.hidden) requestAnimationFrame(() => setTimeout(start, 0));
     else setTimeout(start, 0);
   }
@@ -1899,6 +1914,104 @@
       return true;
     } catch { return false; }
   }
+  // ---- 목록 모드: 홈·학교별 기출은 문항 조각 없이 (조각 3단계) ----
+  // 홈과 학교별 기출은 시험지 목록(state.light)과 학교별 기출 표(state.finderTable)만으로 전체 자료와 같은 줄을 낸다. 문항 조각은 눌린 단추가
+  // 필요로 할 때만, 그 단추의 것만 받는다(출제 = 그 시험지의 조각, 문제지 만들기 = 고른 학년과 고른 시험지의 조각, 그 밖 = 전부).
+  let listNeed = null; // the need of the button that asked for the catalog (read by shardNeed)
+  // 조각 경로가 켜져 있고 홈·학교별 기출이 목록에서 그려지는 중이면 참.
+  const listRowsApply = () => Boolean(state.light) && (state.view === "find" || state.view === "home") && shardsOn();
+  function listRowNeed() {
+    if (!state.light || !(state.view === "find" || state.view === "home")) return null;
+    if (listNeed) return listNeed;
+    // 카탈로그가 아직 없는데 누가 요청했는지 모르면 전부(예전 동작). 이미 일부가 있으면 더 필요한 것이 없다.
+    return state.catalog ? { grades: [], exams: [], all: false } : { grades: [], exams: [], all: true };
+  }
+  // 문제지 만들기로 갈 때 고르는 학년: 학교별 기출에서 고른 학년, 없으면 고른 과목이 가르치는 학년, 없으면 고1(go-compose 핸들러와 같은 규칙, 한 곳).
+  function composeGradeOfSubject(subject) {
+    return /^COMMON_MATH_/.test(subject) ? "고1" : ["ALGEBRA", "PROB_STATS"].includes(subject) ? "고2" : subject ? "고3" : "고1";
+  }
+  function rowNeedOf(data) {
+    const exams = catalogExams();
+    switch (data && data.action) {
+      case "source-issue": {
+        const file = exams[Number(data.exam)]?.file;
+        return file ? { exams: [file] } : { all: true };
+      }
+      case "multi-assign": {
+        const files = multiPickedExams().map((exam) => exam.file).filter(Boolean);
+        return files.length ? { exams: files } : { all: true };
+      }
+      case "go-compose": {
+        const subject = state.find.semanticSubject || Unified?.subjectForFamily?.(state.find.family) || "";
+        const grade = state.find.grade || composeGradeOfSubject(subject);
+        return { grades: [grade], exams: data.useSources === "true" ? [...state.sources] : [] };
+      }
+      case "derive-mock-open": {
+        const exam = exams[Number(data.exam)];
+        return exam ? mockNeed(exam) : { all: true };
+      }
+      default: return { all: true }; // 이름 모를 단추
+    }
+  }
+  // 목록 모드에서 문항이 필요한 단추를 눌렀다: need의 조각을 받고(처음이면 카탈로그를 만들고), 끝나면 눌러 둔 단추를 다시 눌러 준다.
+  let listButtonLoading = false; // a first catalog is being made for a list button: a failure keeps the list on screen (see loadCatalog)
+  async function loadListRecords(need) {
+    listNeed = need;
+    listButtonLoading = true;
+    try {
+      if (!state.catalog) await ensureCatalog();
+      if (state.catalog && state.catalog.complete === false && shardMissing(need)) {
+        await ensureShards(need);
+        if ($("status")?.textContent === DEFERRED_NOTICE) status("");
+        if (state.view === "find") renderKeepingFindPlace();
+        replayDeferredClick();
+      }
+    } catch (error) {
+      deferredClick = null;
+      console.error("[archive2] list shard load failed:", error?.code || "", error);
+      status(teacherErrorMessage(error, "문항 목록을 불러오지 못했습니다. 연결을 확인하고 다시 시도해 주세요."), true, error);
+    } finally {
+      listNeed = null;
+      listButtonLoading = false;
+    }
+  }
+  // 학교별 기출 표: common.json의 finder 부분. 이것이 오면 학교별 기출이 전체 자료 없이 정확해진다(같은 릴리스의 같은 시험지 목록일 때만).
+  let finderTableRequest = null;
+  let finderTableWaiting = false;
+  function loadFinderTable() {
+    if (state.finderTable) return Promise.resolve(true);
+    if (!finderTableRequest) {
+      finderTableRequest = (async () => {
+        if (!state.light || !Unified || !shardsOn() || !(await prefetchShards())) return false;
+        const common = await shardLoader().loadCommon();
+        const table = window.Archive2CatalogShards.assembleFinder(common, C.normalizeFile);
+        const exams = state.light?.exams || [];
+        if (!table || table.identityDigest !== state.light?.identityDigest || table.files.length !== exams.length || !table.files.every((file, i) => file === exams[i].file)) return false;
+        state.finderTable = table;
+        return true;
+      })().catch((error) => { console.warn("[archive2] finder table is not available; using the whole catalog:", error); return false; });
+    }
+    return finderTableRequest;
+  }
+  // 학교별 기출을 목록으로 그린 직후: 표가 없으면 표를 받고(없는 환경이면 예전처럼 전체 카탈로그), 표가 있으면 uid를 찾는 검색어일 때만 조각 전부를 받는다.
+  function afterListFindPaint() {
+    if (!Boot?.catalogDeferred) return;
+    if (!shardsOn()) { startCatalogAfterPaint(); return; }
+    if (!state.finderTable) {
+      if (!catalogLoad) Boot?.standby?.();
+      if (!finderTableWaiting) {
+        finderTableWaiting = true;
+        loadFinderTable().then((ok) => {
+          finderTableWaiting = false;
+          if (state.view !== "find" || !listMode()) return;
+          if (ok) renderKeepingFindPlace(); else startCatalogAfterPaint();
+        });
+      }
+      return;
+    }
+    if (!catalogLoad) Boot?.standby?.();
+    if (findQueryNeedsUids() && !listNeed) loadListRecords({ all: true });
+  }
   // ---- 문항 목록 조각 경로 (2단계 2-4): 문제지 만들기는 고른 학년의 조각만, 나머지 화면은 조각 전부(전체 묶음보다 작다) ----
   // 주소에 ?shards=0 이 있으면 예전 전체 묶음 경로 그대로. 조각이 사이트에 없으면(CATALOG_SHARDS_UNAVAILABLE) 전체 묶음으로 간다.
   // 조각 판정은 archive/archive2-catalog-shards.js(조립·검증)와 색인(browseGrades·examShard)만 본다. 이 파일은 "무엇이 필요한가"만 정한다.
@@ -1931,7 +2044,12 @@
     const need = { grades: [], exams: [], all: false };
     const search = new URLSearchParams(location.search);
     const composeOnly = state.view === "compose" && !state.urlUids?.length && !search.has("derive") && !V.derive?.pendingMock;
-    if (!composeOnly) { need.all = true; return need; }
+    if (!composeOnly) {
+      // 홈·학교별 기출(목록 모드): 아무것도 안 눌렀으면 조각이 필요 없고, 눌린 단추가 있으면 그 단추의 것만(rowNeedOf).
+      const rows = listRowNeed();
+      if (rows) return rows;
+      need.all = true; return need;
+    }
     if (state.editSavedPaperId) return need;
     const grade = state.filters?.grade;
     if (grade) need.grades.push(grade); else need.all = true;
@@ -2012,6 +2130,7 @@
         shardsBroken = true; shardSession = null;
         installCatalogDerived(full);
         state.catalog = full;
+        state.light = null;
       })().finally(() => { wholeBundleSwap = null; });
     }
     return wholeBundleSwap.catch(() => { throw shardError; });
@@ -2038,6 +2157,8 @@
     if (next.shardKeys.every((key) => held.has(key))) return; // a call that started earlier finished later: nothing to add
     installCatalogDerived(next);
     state.catalog = next;
+    // 전부 왔거나 다른 릴리스의 조각이면 시험지 목록(목록 모드)을 내려놓는다.
+    if (state.light && (next.complete || next.identityDigest !== state.light.identityDigest)) { state.light = null; state.finderTable = null; }
   }
   // "n/N" on the waiting screen (updates the text in place: no re-render while files arrive).
   function showShardProgress({ done, total }) {
@@ -2174,8 +2295,9 @@
       state.catalog = catalog;
       // A button pressed on the home's exam list keeps its row number; the catalog lists the same exams in the same
       // order unless the list belongs to another release, in which case the pending press is dropped.
-      if (state.light && state.light.identityDigest !== catalog.identityDigest) deferredClick = null;
-      state.light = null;
+      if (state.light && state.light.identityDigest !== catalog.identityDigest) { deferredClick = null; state.light = null; state.finderTable = null; }
+      // 단추 하나를 위해 받은 일부 조각(complete === false)만 있으면 홈·학교별 기출은 계속 시험지 목록에서 그린다.
+      if (catalog.complete !== false) state.light = null;
       await settleIndexesForView();
       readUrl();
       applySourceRoute();
@@ -2223,6 +2345,15 @@
           ensureCatalog();
           return;
         }
+      }
+      if (listButtonLoading && !state.catalog && state.light && (state.view === "find" || state.view === "home")) {
+        // 목록 모드(조각 3단계): 목록 화면은 그대로 두고 알리기만 한다. 같은 단추를 다시 누르면 처음부터 다시 받는다.
+        console.error("[archive2] catalog preparation for a list button failed:", e?.code || "", e);
+        catalogLoad = null;
+        deferredClick = null;
+        Boot?.standby?.();
+        status(teacherErrorMessage(e, "문항 목록을 불러오지 못했습니다. 연결을 확인하고 다시 시도해 주세요."), true, e);
+        return;
       }
       Boot?.finish?.(true);
       if (state.view === "saved") {
