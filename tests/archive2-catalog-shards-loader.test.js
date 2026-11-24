@@ -333,13 +333,17 @@ test('a need names shards from the index alone: a grade is every shard with a qu
   assert.equal(all.records.length, full.records.length);
 });
 
-test('the shard path is the default of 문제지 만들기 and ?shards=0 is the way back; no other page loads the loader', () => {
+test('the shard path is the default of 문제지 만들기 and 단원별 기출 and ?shards=0 is the way back; no other page loads the loader', () => {
   assert.equal(shards.shardsDisabled('?view=compose'), false);
   for (const search of ['?shards=0', '?view=compose&shards=off', '?a=1&shards=false#x']) assert.equal(shards.shardsDisabled(search), true, search);
   for (const search of ['?shards=1', '?shards=m1', '?shardsx=0']) assert.equal(shards.shardsDisabled(search), false, search);
-  for (const file of fs.readdirSync(path.join(root, 'archive')).filter((name) => name.endsWith('.html') && name !== 'workspace.html')) {
+  for (const file of fs.readdirSync(path.join(root, 'archive')).filter((name) => name.endsWith('.html') && name !== 'workspace.html' && name !== 'unit-past-exams.html')) {
     assert.equal(/archive2-catalog-shards\.js/.test(read(`archive/${file}`)), false, `${file} must not load the shard loader`);
   }
+  // 단원별 기출 (stage 2-3) loads it before its own script, after the canonical core it reads records with
+  const unitHtml = read('archive/unit-past-exams.html');
+  assert.ok(unitHtml.indexOf('archive2-catalog-shards.js') > unitHtml.indexOf('archive2-core.js'));
+  assert.ok(unitHtml.indexOf('archive2-catalog-shards.js') < unitHtml.indexOf('unit-past-exams.js?'), 'the loader is there before the screen code runs');
   const html = read('archive/workspace.html');
   const scripts = [...html.matchAll(/<script[^>]*src="([^"?]+)/g)].map((match) => match[1]);
   assert.ok(scripts.indexOf('archive2-catalog-shards.js') > scripts.indexOf('archive2-canonical.js'));

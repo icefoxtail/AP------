@@ -12,17 +12,26 @@
   <link rel="stylesheet" href="archive2-assign.css?v=20261116-polish-1">
   <link rel="stylesheet" href="archive2-navigation.css?v=20261122-header-calm-1">
   <script src="archive-asset-base.js?v=20261110-teacher-copy-1"></script>
-  <!-- question-index.js(11.6MB)는 표 뼈대가 화면에 올라간 뒤에 이 페이지의 스크립트가 불러와 해석한다. 내려받기만 먼저 시작해 둔다. -->
-  <link rel="preload" as="script" href="question-index.js?v=20261110a">
   <script defer src="archive2-boot.js?v=20261124-compose-1"></script>
   <script defer src="archive2-canonical.js?v=20261119-receipt-row-binding-1"></script>
   <script defer src="rpm-middle-toc.js?v=20261115-m1-dongsan-current-1"></script>
   <script defer src="archive2-core.js?v=20261123-family-catalog-1"></script>
   <script defer src="unit-past-exams-core.js?v=20261117-middle-parent-1"></script>
   <script defer src="archive2-unit-tree.js?v=20261117-middle-parent-1"></script>
-  <script defer src="question-meta.js?v=archive-metadata-v1-phase1b-20260826b"></script>
   <script defer src="archive2-snapshot.js?v=20261123-snapshot-1"></script>
-  <script defer src="meta-foundation-runtime.js?v=20261110-first-paint-1"></script>
+  <!-- 조각 경로(2단계 2-3)가 기본이다: 학년의 문항 조각만 받으므로 문항 색인(question-index.js, 11.6MB)·승인 메타 사본·전체 카탈로그 묶음
+       (question-meta.js, meta-foundation-runtime.js가 받는다)을 부르지 않는다. 주소에 ?shards=0 이 있을 때만 옛 방식 그대로 이 태그들을 쓴다
+       (조각이 틀리거나 없으면 화면 스크립트가 같은 스크립트를 뒤늦게 불러 전체 묶음으로 간다). question-index.js는 표 뼈대가 올라간 뒤에
+       이 페이지의 스크립트가 불러와 해석하고, 내려받기만 먼저 시작해 둔다. -->
+  <script>
+    (function () {
+      if (!/[?&]shards=(?:0|off|false)(?:[&#]|$)/.test(location.search)) return;
+      document.write('<link rel="preload" as="script" href="question-index.js?v=20261110a">');
+      document.write('<script defer src="question-meta.js?v=archive-metadata-v1-phase1b-20260826b"><\/script>');
+      document.write('<script defer src="meta-foundation-runtime.js?v=20261110-first-paint-1"><\/script>');
+    })();
+  </script>
+  <script defer src="archive2-catalog-shards.js?v=20261124-unit-past-1"></script>
   <script defer src="archive2-output-contract.js?v=20261002-output-envelope-v3"></script>
   <script defer src="archive2-output.js?v=20261123-similar-title-1"></script>
   <script defer src="exam-display-title.js?v=20261123-korean-titles-1"></script>
@@ -30,7 +39,7 @@
   <script defer src="archive2-assign.js?v=20261123-gichul-c-1"></script>
   <script defer src="archive2-given-questions.js?v=20261123-given-1"></script>
   <script defer src="exam-source-reader.js?v=20261118-body-1"></script>
-  <script defer src="unit-past-exams.js?v=20261122-ui-quick-4"></script>
+  <script defer src="unit-past-exams.js?v=20261124-shards-1"></script>
   <script>document.addEventListener('DOMContentLoaded', function () {
     if (window.UnitPastExams) window.UnitPastExams.init();
     else document.getElementById('unit-content').innerHTML = '<div class="unit-error unit-fallback"><strong>단원별 출제 도구를 불러오지 못했습니다.</strong><br>새로고침해 다시 시도해 주세요.</div>';
