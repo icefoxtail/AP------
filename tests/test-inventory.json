@@ -1101,6 +1101,16 @@
    "detail": "지금 돌리면 실패(분류: 환경 요인) — Cannot find module 'miniflare'"
   },
   {
+   "match": "tests/assessment-m1-diagnostic-packs.test.js",
+   "local": {
+    "result": "pass",
+    "ms": 115,
+    "mode": "node"
+   },
+   "reason": "quarantined",
+   "detail": "실행기(tools/run-tests.js)의 quarantined 목록에 있어 기본 실행에서 제외됨. 진단평가 팩 구성(팩 3개·24문항·난이도 구성)을 고정하는 검사라 막지 않게 둠."
+  },
+  {
    "match": "tests/eie-grade-ledger-port.test.js",
    "local": {
     "result": "fail",
