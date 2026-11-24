@@ -389,7 +389,11 @@ window.questionBank = [
     "sourceOrdinal": 8,
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/22_매산고_1학기_중간_고2_확률과통계/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 각 교차점에 P에서 오는 최단 경로 수를 왼쪽과 아래에서 오는 수의 합으로 적는다. 막힌 교차점에서는 그 방향의 수를 더하지 않으므로 아래에서 위로 채우면 Q의 수가 66이 된다. 예: 아래쪽 도로를 따라 오른쪽 끝까지 간 뒤 위로 올라가는 최단 경로 하나를 굵은 점선으로 표시했다. 따라서 답은 ②이다.",
+    "solutionImageCaption": "각 교차점에 P에서 오는 최단 경로 수를 왼쪽과 아래에서 오는 수의 합으로 적는다. 막힌 교차점에서는 그 방향의 수를 더하지 않으므로 아래에서 위로 채우면 Q의 수가 66이 된다. 예: 아래쪽 도로를 따라 오른쪽 끝까지 간 뒤 위로 올라가는 최단 경로 하나를 굵은 점선으로 표시했다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,

@@ -471,7 +471,11 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "score": 4.0,
-    "image": ""
+    "image": "",
+    "solutionImage": "assets/images/17_경북창포중_1학기_기말_중3_수학/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 지면을 나타내는 직선 y=0과 공의 높이를 나타내는 포물선 f가 그려져 있다.",
+    "solutionImageCaption": "공의 높이는 y=−4.9(x−1)²+7.9이므로 x=1일 때 최고 높이에 도달한다. 이때 지면으로부터의 높이는 7.9이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,

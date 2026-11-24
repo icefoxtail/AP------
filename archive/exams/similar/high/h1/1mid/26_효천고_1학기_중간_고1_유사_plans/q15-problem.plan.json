@@ -1,0 +1,59 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-10",
+          "7",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "f",
+    "requiredPoints": [
+      {
+        "id": "R1",
+        "x": "2",
+        "y": "0",
+        "marker": "NONE"
+      },
+      {
+        "id": "R2",
+        "x": "5",
+        "y": "0",
+        "marker": "NONE"
+      },
+      {
+        "id": "V",
+        "x": "7/2",
+        "y": "9/4",
+        "marker": "NONE"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "2",
+        "5"
+      ],
+      "y": []
+    }
+  },
+  "caption": "이차함수 y=f(x)의 그래프가 x축과 2, 5에서 만나는 모양을 나타낸 그림이다.",
+  "accessibilityDescription": "위로 볼록한 포물선이 x축의 2와 5를 지나고, 꼭짓점이 두 교점 사이 위쪽에 있다.",
+  "newVisualInformation": [
+    "x축과의 교점 2, 5를 눈금으로 표시한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차함수 $y = f(x)$의 그래프가 $x$축과 두 점 $(2, 0)$, $(5, 0)$에서 만날 때, $x$에 대한 이차방정식 $f(x - a) = 0$의 서로 다른 두 실근의 곱이 $a^2 + 24$가 되도록 하는 상수 $a$의 값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

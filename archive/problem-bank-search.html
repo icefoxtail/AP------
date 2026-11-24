@@ -396,7 +396,11 @@ async function loadScope(key){
  }
 }
 function clearFilters(){for(const id of FILTER_IDS)el(id).value='';limit=40;}
-el('scope').onchange=()=>{clearFilters();loadScope(el('scope').value);};
+// 고른 범위를 주소에 남겨 새로고침·뒤로 오기에서 "범위를 고르세요"로 돌아가지 않게 한다(조각 방식에서만; 다른 주소 인자는 그대로).
+function reflectScope(value){
+ try{const url=new URL(location.href);if(value)url.searchParams.set('scope',value);else url.searchParams.delete('scope');history.replaceState(history.state,'',url.href);}catch(e){}
+}
+el('scope').onchange=()=>{clearFilters();reflectScope(el('scope').value);loadScope(el('scope').value);};
 el('scopeRetry').onclick=()=>{if(retryAction)retryAction();};
 (async()=>{
  if(Archive2CatalogShards.shardsDisabled(location.search)){await loadWholeBundle();return;}

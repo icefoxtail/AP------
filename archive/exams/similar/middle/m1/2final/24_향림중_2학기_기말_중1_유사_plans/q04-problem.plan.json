@@ -1,0 +1,89 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PRISM",
+      "base": {
+        "kind": "POLYGON",
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            3,
+            0
+          ],
+          [
+            0,
+            4
+          ]
+        ]
+      },
+      "height": 12,
+      "names": "......"
+    }
+  ],
+  "dims": [
+    {
+      "solid": "s1",
+      "edge": [
+        "#b0",
+        "#b1"
+      ],
+      "label": "3"
+    },
+    {
+      "solid": "s1",
+      "edge": [
+        "#b0",
+        "#b2"
+      ],
+      "label": "4"
+    },
+    {
+      "solid": "s1",
+      "edge": [
+        "#b1",
+        "#b2"
+      ],
+      "label": "5"
+    },
+    {
+      "solid": "s1",
+      "edge": [
+        "#b0",
+        "#t0"
+      ],
+      "label": "12"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "#b0",
+        "refs": [
+          "#b1",
+          "#b2"
+        ]
+      }
+    ]
+  },
+  "solidCaption": {
+    "text": "삼각기둥"
+  },
+  "caption": "밑면의 세 변이 3 cm, 4 cm, 5 cm인 직각삼각형이고 높이가 12 cm인 삼각기둥",
+  "accessibilityDescription": "밑면이 직각삼각형이고 높이가 12 cm인 삼각기둥이 보인다. 밑면의 세 변에는 3 cm, 4 cm, 5 cm가 표시되어 있다.",
+  "newVisualInformation": [
+    "밑면 직각삼각형의 세 변 3, 4, 5와 기둥의 높이 12"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "밑면의 세 변의 길이가 각각 $3\\text{ cm}, 4\\text{ cm}, 5\\text{ cm}$인 직각삼각형이고 높이가 $12\\text{ cm}$인 삼각기둥의 겉넓이는? [3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

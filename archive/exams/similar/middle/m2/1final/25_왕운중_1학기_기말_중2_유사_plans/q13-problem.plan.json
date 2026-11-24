@@ -1,0 +1,72 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -4,
+      4,
+      -14,
+      9
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "2"
+        ],
+        "domain": [
+          "-4",
+          "4"
+        ],
+        "color": "BLUE",
+        "label": "y=2x"
+      },
+      {
+        "id": "g",
+        "kind": "LINE",
+        "coefficients": [
+          "-5",
+          "2"
+        ],
+        "domain": [
+          "-4",
+          "4"
+        ],
+        "color": "WARM",
+        "label": {
+          "hidden": true,
+          "reason": "ANSWER",
+          "name": "g"
+        }
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-3",
+        "3"
+      ],
+      "y": [
+        "5",
+        "-10"
+      ]
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "y"
+    }
+  },
+  "caption": "원점을 지나 오른쪽 위로 올라가는 직선 y=2x와, 그보다 아래에서 나란히 올라가는 직선이 그려져 있다.",
+  "accessibilityDescription": "x축과 y축, 원점을 지나 오른쪽 위로 올라가는 직선과 그 아래에서 나란히 올라가는 직선이 보인다.",
+  "newVisualInformation": [
+    "원점을 지나는 직선 y=2x와 그 아래의 평행한 직선이 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차함수 $y = 2x$의 그래프를 $y$축의 방향으로 $-5$만큼 평행이동한 직선을 그래프로 하는 일차함수의 식을 구하면?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

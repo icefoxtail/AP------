@@ -1,0 +1,112 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -4,
+      4,
+      -3,
+      3
+    ],
+    "curves": [
+      {
+        "id": "lower",
+        "kind": "LINE",
+        "coefficients": [
+          "-2",
+          "0"
+        ],
+        "domain": [
+          "-5/2",
+          "3"
+        ],
+        "label": "y+2=0"
+      },
+      {
+        "id": "upper",
+        "kind": "LINE",
+        "coefficients": [
+          "2",
+          "0"
+        ],
+        "domain": [
+          "-5/2",
+          "3"
+        ],
+        "label": "8-4y=0"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "y"
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P1",
+          "x": "3",
+          "y": "-2",
+          "unnamed": true
+        },
+        {
+          "id": "P2",
+          "x": "3",
+          "y": "2",
+          "unnamed": true
+        },
+        {
+          "id": "P3",
+          "x": "-5/2",
+          "y": "2",
+          "unnamed": true
+        },
+        {
+          "id": "P4",
+          "x": "-5/2",
+          "y": "-2",
+          "unnamed": true
+        }
+      ],
+      "polygons": [
+        {
+          "id": "rect",
+          "points": [
+            "P1",
+            "P2",
+            "P3",
+            "P4"
+          ],
+          "fill": "LIGHT"
+        }
+      ],
+      "lines": [
+        {
+          "id": "right",
+          "x": "3",
+          "label": "x=3"
+        },
+        {
+          "id": "left",
+          "x": "-5/2",
+          "label": "2x+5=0"
+        }
+      ]
+    }
+  },
+  "caption": "네 직선 x=3, 2x+5=0, y+2=0, 8-4y=0으로 둘러싸인 직사각형이 그려져 있다.",
+  "accessibilityDescription": "x축과 y축, 세로 직선 두 개와 가로 직선 두 개가 만나 만든 직사각형이 보이고 각 직선 옆에 방정식이 적혀 있다.",
+  "newVisualInformation": [
+    "네 직선이 만나 만든 직사각형과 각 직선의 방정식이 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서답형 4] 네 개의 일차방정식 $x - 3 = 0$, $2x + 5 = 0$, $y + 2 = 0$, $8 - 4y = 0$이 주어질 때 다음 물음에 답하시오.  \n(1) 네 직선으로 둘러싸인 도형의 가로의 길이와 세로의 길이를 각각 구하시오. [2점]  \n(2) 네 그래프로 둘러싸인 도형의 넓이를 구하시오. [2점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

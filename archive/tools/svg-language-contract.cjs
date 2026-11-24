@@ -185,7 +185,7 @@ function validateSvgStudentLanguage(svg, options = {}) {
 }
 
 // 문구 품질 미달: 그림이 열리고 읽히는 데는 지장이 없다. 등록기(studentIndexes)에서는 게시를 막지 않고 목록·건수로만 보고한다
-// (options.advisory 배열을 주면 이 코드들은 거기에 쌓고 통과, 나머지 실제 결함(루트 없음·title/desc 없음·참조 깨짐·내부 문구·축척 안내)은 계속 던진다).
+// (options.advisory 배열을 주면 이 코드들은 거기에 쌓고 통과, 나머지 실제 결함(루트 없음·보이는 글의 내부 문구·엔진 그림의 축척 안내·모양이 가리키는 id 중복)은 계속 던진다).
 // 이유: 저장소에 같은 판정에 걸리는 옛 그림이 수천 개라, 그 그림을 건드리거나 새로 연결하는 수정 하나가 게시를 멈췄다.
 const QUALITY_ONLY_CODES = new Set([
   'SVG_ACCESSIBILITY_DESCRIPTION_NOT_SUBSTANTIVE',
@@ -194,18 +194,21 @@ const QUALITY_ONLY_CODES = new Set([
   'SVG_MATH_MARKUP_ACCESSIBILITY_REQUIRES_REVIEW'
 ]);
 
-// 옛 그림의 접근성 표기 누락(title/desc·role·aria 참조 없음): 학생 눈에는 보이지 않는 표기 문제라, 옛 그림이면 막지 않고 목록으로만 남긴다.
-// 새 엔진 산출물은 엔진이 title·desc·role·aria를 항상 넣으므로 빠지면 엔진 회귀이니 계속 막는다. 엔진 표지 = 루트 태그의 data-engine-version
-// (저장소 SVG 16,548개 조사: 표지가 있는 6,661개는 표기 누락 0건. 엔진 svg_composer.py가 항상 넣는다).
-const LEGACY_ACCESSIBILITY_CODES = new Set([
+// 보이지 않는 접근성 표기 누락(title/desc·role·aria 참조 없음): 학생 눈에는 보이지 않는 표기 문제라, 엔진 그림이든 옛 그림이든 막지 않고 목록으로만 남긴다
+// (2026-11-24 방침 변경: 이전에는 엔진 표지가 있는 그림이면 엔진 회귀로 보고 막았다).
+// 이유: 등록 실행 45334205571이 24_매산여고_1학기_중간_고2_확률과통계_유사/q07-problem.svg 한 장의 title/desc 누락 때문에
+// "필수 등록 미완"으로 끝나 학생 사이트 릴리스가 막혔다. 엔진 회귀를 잡는 일은 그림을 만드는 쪽(SVG 라인 게시 단계)의 몫이고,
+// 등록기는 `--quality-report`의 수리 목록(legacy-a11y)으로만 알린다. 색인 행은 title/desc가 없으면 기계 대체 문구를 쓴다.
+const HIDDEN_NOTATION_CODES = new Set([
   'SVG_ACCESSIBILITY_TITLE_DESC_REQUIRED',
   'SVG_ACCESSIBILITY_ROLE_IMG_REQUIRED',
   'SVG_ACCESSIBILITY_ARIA_REFERENCE_INVALID',
-  'SVG_ACCESSIBILITY_TITLE_DESC_ID_INVALID',
-  // 그림 안의 "축척" 안내 문구(한국어 "좌표는 발문과 동일한 축척으로 표시" 등): 학생 피해 없이 읽히는 부가 문구라 옛 그림은 목록으로만(2026-11-24).
-  // 영어 문구는 이 코드와 별개로 ENGLISH_STUDENT_TEXT_REQUIRES_REVIEW 목록에 그대로 남는다. 새 엔진 그림은 계속 막는다.
-  'SVG_SCALE_GUIDANCE_FORBIDDEN'
+  'SVG_ACCESSIBILITY_TITLE_DESC_ID_INVALID'
 ]);
+// 수리 목록의 legacy-a11y 분류에 쓰는 전체 집합: 위 4종 + 그림 안의 "축척" 안내 문구(한국어 "좌표는 발문과 동일한 축척으로 표시" 등).
+// 축척 안내는 학생 눈에 보이는 글이라 옛 그림만 목록으로 두고(학생 피해 없이 읽히는 부가 문구, 2026-11-24), 엔진 그림은 계속 막는다.
+// 영어 문구는 이 코드와 별개로 ENGLISH_STUDENT_TEXT_REQUIRES_REVIEW 목록에 그대로 남는다.
+const LEGACY_ACCESSIBILITY_CODES = new Set([...HIDDEN_NOTATION_CODES, 'SVG_SCALE_GUIDANCE_FORBIDDEN']);
 // 엔진 표지는 두 종류다(저장소 archive/assets SVG 전수 조사, 표지가 있는 그림 수 / 그중 표기 누락 수):
 // - 확정 표지: 있으면 언제나 엔진 산출물로 본다. data-engine-version 6,661/0, data-stat-chart 591/0, data-set-diagram 320/0,
 //   data-publication-profile="geometry-publication-v1" 107/0, data-text-free 18/0, data-number-line 7/0. 이미 저장소에 있는 그림이 새로 막히지 않는다.
@@ -243,6 +246,10 @@ const HIDDEN_TEXT_SURFACES = new Set(['title', 'desc', 'aria-label']);
 function isHiddenInternalTextError(error) {
   return error.code === 'SVG_INTERNAL_STUDENT_TEXT_FORBIDDEN' && HIDDEN_TEXT_SURFACES.has(error.surface);
 }
+// title/desc가 아예 없는 그림인가(색인 행은 기계 대체 문구를 쓴다. 엔진 그림이어도 같다).
+function hasMissingTitleDesc(svg, options = {}) {
+  return validateSvgStudentLanguage(svg, options).errors.some(error => error.code === 'SVG_ACCESSIBILITY_TITLE_DESC_REQUIRED');
+}
 // 색인 행에 쓸 title/desc 글에 내부 용어가 들어 있는가(그렇다면 행은 기계 대체 문구를 쓴다).
 function hasHiddenInternalText(svg, options = {}) {
   const result = validateSvgStudentLanguage(svg, options);
@@ -253,7 +260,7 @@ function hasHiddenInternalText(svg, options = {}) {
 // 겹치는 id를 아무도 가리키지 않으면(오류의 referencedDuplicateIds가 비어 있으면) 학생 그림은 그대로이니 목록으로만 남긴다(엔진 그림 포함).
 // title/desc·aria가 가리키는 id의 중복은 TITLE_DESC_ID_INVALID·ARIA_REFERENCE_INVALID가 따로 잡고, 엔진 그림은 그쪽에서 계속 막힌다.
 function isAdvisoryError(error, legacyAllowed) {
-  if (QUALITY_ONLY_CODES.has(error.code) || (legacyAllowed && LEGACY_ACCESSIBILITY_CODES.has(error.code))) return true;
+  if (QUALITY_ONLY_CODES.has(error.code) || HIDDEN_NOTATION_CODES.has(error.code) || (legacyAllowed && LEGACY_ACCESSIBILITY_CODES.has(error.code))) return true;
   if (isHiddenInternalTextError(error)) return true;
   return error.code === 'SVG_ACCESSIBILITY_DUPLICATE_ID' && Array.isArray(error.referencedDuplicateIds) && error.referencedDuplicateIds.length === 0;
 }
@@ -280,4 +287,4 @@ function assertSvgStudentLanguage(svg, options = {}) {
   return result;
 }
 
-module.exports = { validateSvgStudentLanguage, assertSvgStudentLanguage, QUALITY_ONLY_CODES, LEGACY_ACCESSIBILITY_CODES, isAdvisoryError, isHiddenInternalTextError, hasHiddenInternalText, isEngineSvg, substituteAccessibilityText };
+module.exports = { validateSvgStudentLanguage, assertSvgStudentLanguage, QUALITY_ONLY_CODES, HIDDEN_NOTATION_CODES, LEGACY_ACCESSIBILITY_CODES, isAdvisoryError, isHiddenInternalTextError, hasHiddenInternalText, hasMissingTitleDesc, isEngineSvg, substituteAccessibilityText };

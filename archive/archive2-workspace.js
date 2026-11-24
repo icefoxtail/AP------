@@ -257,7 +257,9 @@
           : preparingMarkup();
       Boot?.refresh?.();
       // The home opened on the small exam list without the catalog; leaving it for a screen that needs the catalog starts it now.
-      if (state.view !== "home" && Boot?.catalogDeferred && !lightPending) ensureCatalog();
+      // 출제 내역은 조각 경로에서 문항 목록 없이 열린다: 시험지 목록(작은 파일)으로 학년·과목을 채우고, 문항이 필요한 단추를 누를 때 받는다.
+      if (state.view === "recent" && lightFirstScreens()) startRecentLight();
+      else if (state.view !== "home" && Boot?.catalogDeferred && !lightPending) ensureCatalog();
       return;
     }
     if (shardGate()) return;
@@ -1751,7 +1753,7 @@
   // The catalog adds the exam lookup the recent rows use for grade/subject: normalize again (cheap).
   function refreshRecentRowsFromCatalog() {
     if (state.view !== "recent" || state.recentLoading || !state.recentAssignments?.length) return;
-    state.recentRows = History.normalizeAssignments(state.recentAssignments, V.classRows, state.catalog.exams, C);
+    state.recentRows = History.normalizeAssignments(state.recentAssignments, V.classRows, state.catalog?.exams || state.light?.exams || [], C);
     rememberRecentSubjectOptions(state.recentRows);
     updateRecentResults();
   }
@@ -1914,6 +1916,19 @@
       return true;
     } catch { return false; }
   }
+  // 출제 내역·보관함이 문항 목록 없이 열리는 조건: 조각 경로가 켜져 있고 이 페이지가 카탈로그를 미루는 주소.
+  const lightFirstScreens = () => Boolean(Boot?.catalogDeferred) && shardsOn();
+  // 출제 내역의 학년·과목은 시험지 목록(state.light.exams = 카탈로그 exams와 같은 행)으로 채운다. 목록을 못 받으면 예전처럼 카탈로그를 받는다.
+  let recentLightRequest = null;
+  function startRecentLight() {
+    if (state.light || state.catalog) return;
+    if (!recentLightRequest) {
+      recentLightRequest = loadLightExamList().then((ok) => {
+        if (!ok) { ensureCatalog(); return; }
+        if (!state.catalog) refreshRecentRowsFromCatalog();
+      });
+    }
+  }
   // ---- 목록 모드: 홈·학교별 기출은 문항 조각 없이 (조각 3단계) ----
   // 홈과 학교별 기출은 시험지 목록(state.light)과 학교별 기출 표(state.finderTable)만으로 전체 자료와 같은 줄을 낸다. 문항 조각은 눌린 단추가
   // 필요로 할 때만, 그 단추의 것만 받는다(출제 = 그 시험지의 조각, 문제지 만들기 = 고른 학년과 고른 시험지의 조각, 그 밖 = 전부).
@@ -2043,7 +2058,8 @@
   function shardNeed() {
     const need = { grades: [], exams: [], all: false };
     const search = new URLSearchParams(location.search);
-    const composeOnly = state.view === "compose" && !state.urlUids?.length && !search.has("derive") && !V.derive?.pendingMock;
+    // 빠른 평가(5분 테스트·소단원·단원·월말)도 문제지 만들기와 같은 학년 안에서 단원을 골라 뽑는다: 고른 학년의 조각만.
+    const composeOnly = (state.view === "compose" || isQuickAssessmentView()) && !state.urlUids?.length && !search.has("derive") && !V.derive?.pendingMock;
     if (!composeOnly) {
       // 홈·학교별 기출(목록 모드): 아무것도 안 눌렀으면 조각이 필요 없고, 눌린 단추가 있으면 그 단추의 것만(rowNeedOf).
       const rows = listRowNeed();
@@ -2051,8 +2067,10 @@
       need.all = true; return need;
     }
     if (state.editSavedPaperId) return need;
-    const grade = state.filters?.grade;
-    if (grade) need.grades.push(grade); else need.all = true;
+    // 빠른 평가는 학년을 quickState.grade로 고른다(처음엔 비어 있고 "학년을 선택하세요"): 고르기 전에는 조각이 필요 없다.
+    const quick = isQuickAssessmentView();
+    const grade = quick ? quickState.grade : state.filters?.grade;
+    if (grade) need.grades.push(grade); else if (!quick) need.all = true;
     const files = [...(state.sources || []), ...(state.urlSources || []), ...(state.selected || []).map((record) => record?.sourceFile)]
       .map((file) => String(file || "").trim()).filter(Boolean);
     need.exams = [...new Set(files)];
@@ -2273,8 +2291,40 @@
         return;
       }
     }
+    // 출제 내역·보관함: 조각 경로에서는 문항 목록을 미리 받지 않는다(예전에는 화면이 뜬 직후 조각 전부 약 8MB를 받았다). 색인·공통 표만 받아 두고,
+    // 문항이 필요한 단추(CATALOG_FREE_ACTIONS 밖)를 누를 때 deferUntilCatalog가 받는다. 조각이 사이트에 없으면 예전처럼 전체 묶음.
+    if ((state.view === "recent" || state.view === "saved") && lightFirstScreens()) {
+      Boot?.standby?.();
+      prefetchShards().then((ok) => { if (!ok) ensureCatalog(); else prefetchComposeShards(); });
+      return;
+    }
     ensureCatalog();
   })();
+  // 출제 내역·보관함에서 가장 흔한 다음 걸음은 문제지 만들기다. 데이터 절약·느린 망·휴대폰·작은 메모리가 아니면(Boot.warmBlocked: 홈 워밍업과 같은 판정)
+  // 그 첫 학년의 조각 파일만 받아 로더에 둔다(카탈로그나 화면은 건드리지 않는다). 누르면 이미 와 있다. 휴대폰은 누를 때 받는다.
+  function prefetchComposeShards() {
+    if (!shardsOn() || Boot?.warmBlocked?.()) return;
+    setTimeout(() => {
+      if (!shardsOn() || Boot?.warmBlocked?.() || state.catalog) return;
+      fetchComposeShards();
+    }, WARM_DELAY_MS);
+  }
+  function fetchComposeShards() {
+    try {
+      const loader = shardLoader();
+      loader.loadShards(loader.keysFor({ grades: [state.filters?.grade || "고1"], exams: [] }).keys).catch(() => {});
+    } catch { /* 미리 받기는 실패해도 눌렀을 때 받는다 */ }
+  }
+  // 출제 내역·보관함에서 "문제지 만들기"로 가려는 손: 터치·마우스를 누르는 순간(pointerdown)은 곧 올 클릭이 받을 것을 조금 일찍 시작할 뿐이라
+  // 휴대폰도 같고, 마우스를 올린 것(pointerover)은 누를지 모르니 미리 받기와 같은 판정(warmBlocked)을 따른다.
+  function startComposeOnIntent(event) {
+    if ((state.view !== "recent" && state.view !== "saved") || state.catalog || !shardsOn()) return;
+    if (!(event.target instanceof Element && event.target.closest('[data-view="compose"]'))) return;
+    if (event.type === "pointerover" && (event.pointerType !== "mouse" || Boot?.warmBlocked?.())) return;
+    fetchComposeShards();
+  }
+  document.addEventListener("pointerover", startComposeOnIntent, { passive: true });
+  document.addEventListener("pointerdown", startComposeOnIntent, { passive: true });
   async function loadCatalog() {
     try {
       if (typeof window.applyArchiveMetaFoundationCatalog !== "function")

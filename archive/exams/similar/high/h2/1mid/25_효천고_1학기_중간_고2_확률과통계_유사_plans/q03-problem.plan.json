@@ -1,0 +1,807 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R10",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R20",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R30",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R40",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R50",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R01",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R11",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R21",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R31",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R41",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R51",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R02",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R12",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R32",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R42",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R52",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R03",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R13",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R23",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R33",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R43",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "R10",
+    "R20",
+    "R30",
+    "R40",
+    "R50",
+    "R01",
+    "R11",
+    "R21",
+    "R31",
+    "R41",
+    "R51",
+    "R02",
+    "R12",
+    "P",
+    "R32",
+    "R42",
+    "R52",
+    "R03",
+    "R13",
+    "R23",
+    "R33",
+    "R43",
+    "B"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sH00",
+      "refs": [
+        "A",
+        "R10"
+      ]
+    },
+    {
+      "id": "sH01",
+      "refs": [
+        "R10",
+        "R20"
+      ]
+    },
+    {
+      "id": "sH02",
+      "refs": [
+        "R20",
+        "R30"
+      ]
+    },
+    {
+      "id": "sH03",
+      "refs": [
+        "R30",
+        "R40"
+      ]
+    },
+    {
+      "id": "sH04",
+      "refs": [
+        "R40",
+        "R50"
+      ]
+    },
+    {
+      "id": "sH10",
+      "refs": [
+        "R01",
+        "R11"
+      ]
+    },
+    {
+      "id": "sH11",
+      "refs": [
+        "R11",
+        "R21"
+      ]
+    },
+    {
+      "id": "sH12",
+      "refs": [
+        "R21",
+        "R31"
+      ]
+    },
+    {
+      "id": "sH13",
+      "refs": [
+        "R31",
+        "R41"
+      ]
+    },
+    {
+      "id": "sH14",
+      "refs": [
+        "R41",
+        "R51"
+      ]
+    },
+    {
+      "id": "sH20",
+      "refs": [
+        "R02",
+        "R12"
+      ]
+    },
+    {
+      "id": "sH21",
+      "refs": [
+        "R12",
+        "P"
+      ]
+    },
+    {
+      "id": "sH22",
+      "refs": [
+        "P",
+        "R32"
+      ]
+    },
+    {
+      "id": "sH23",
+      "refs": [
+        "R32",
+        "R42"
+      ]
+    },
+    {
+      "id": "sH24",
+      "refs": [
+        "R42",
+        "R52"
+      ]
+    },
+    {
+      "id": "sH30",
+      "refs": [
+        "R03",
+        "R13"
+      ]
+    },
+    {
+      "id": "sH31",
+      "refs": [
+        "R13",
+        "R23"
+      ]
+    },
+    {
+      "id": "sH32",
+      "refs": [
+        "R23",
+        "R33"
+      ]
+    },
+    {
+      "id": "sH33",
+      "refs": [
+        "R33",
+        "R43"
+      ]
+    },
+    {
+      "id": "sH34",
+      "refs": [
+        "R43",
+        "B"
+      ]
+    },
+    {
+      "id": "sV00",
+      "refs": [
+        "A",
+        "R01"
+      ]
+    },
+    {
+      "id": "sV01",
+      "refs": [
+        "R01",
+        "R02"
+      ]
+    },
+    {
+      "id": "sV02",
+      "refs": [
+        "R02",
+        "R03"
+      ]
+    },
+    {
+      "id": "sV10",
+      "refs": [
+        "R10",
+        "R11"
+      ]
+    },
+    {
+      "id": "sV11",
+      "refs": [
+        "R11",
+        "R12"
+      ]
+    },
+    {
+      "id": "sV12",
+      "refs": [
+        "R12",
+        "R13"
+      ]
+    },
+    {
+      "id": "sV20",
+      "refs": [
+        "R20",
+        "R21"
+      ]
+    },
+    {
+      "id": "sV21",
+      "refs": [
+        "R21",
+        "P"
+      ]
+    },
+    {
+      "id": "sV22",
+      "refs": [
+        "P",
+        "R23"
+      ]
+    },
+    {
+      "id": "sV30",
+      "refs": [
+        "R30",
+        "R31"
+      ]
+    },
+    {
+      "id": "sV31",
+      "refs": [
+        "R31",
+        "R32"
+      ]
+    },
+    {
+      "id": "sV32",
+      "refs": [
+        "R32",
+        "R33"
+      ]
+    },
+    {
+      "id": "sV40",
+      "refs": [
+        "R40",
+        "R41"
+      ]
+    },
+    {
+      "id": "sV41",
+      "refs": [
+        "R41",
+        "R42"
+      ]
+    },
+    {
+      "id": "sV42",
+      "refs": [
+        "R42",
+        "R43"
+      ]
+    },
+    {
+      "id": "sV50",
+      "refs": [
+        "R50",
+        "R51"
+      ]
+    },
+    {
+      "id": "sV51",
+      "refs": [
+        "R51",
+        "R52"
+      ]
+    },
+    {
+      "id": "sV52",
+      "refs": [
+        "R52",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {},
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 380
+  },
+  "hiddenPointNames": [
+    "R10",
+    "R20",
+    "R30",
+    "R40",
+    "R50",
+    "R01",
+    "R11",
+    "R21",
+    "R31",
+    "R41",
+    "R51",
+    "R02",
+    "R12",
+    "R32",
+    "R42",
+    "R52",
+    "R03",
+    "R13",
+    "R23",
+    "R33",
+    "R43"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "가로 5칸, 세로 3칸의 직사각형 도로망과 세 지점 A, P, B가 표시되어 있다.",
+  "accessibilityDescription": "격자 도로망의 왼쪽 아래에 A, 가운데에 P, 오른쪽 위에 B가 점으로 표시되어 있다.",
+  "newVisualInformation": [
+    "가로 5칸, 세로 3칸 격자 도로망",
+    "A, P, B의 위치"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "그림과 같이 직사각형 모양으로 연결된 도로망이 있다. 이 도로망을 따라 $\\mathrm{A}$지점에서 출발하여 $\\mathrm{P}$지점을 거쳐 $\\mathrm{B}$지점까지 최단 거리로 가는 경우의 수는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

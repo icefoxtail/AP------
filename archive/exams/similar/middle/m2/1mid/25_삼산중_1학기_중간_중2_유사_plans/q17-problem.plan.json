@@ -1,0 +1,49 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "x",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "-1",
+              "state": "OPEN"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "POINTS",
+        "band": false,
+        "points": [
+          {
+            "id": "P1",
+            "value": "1",
+            "hideName": true,
+            "showValue": true,
+            "style": "TICK"
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "경계값 -1을 포함하지 않는 왼쪽 영역"
+  },
+  "caption": "수직선에 -1의 위치에 속이 빈 점이 있고 그 왼쪽으로 영역이 뻗어 있으며, 1의 자리에 눈금이 표시되어 있다.",
+  "accessibilityDescription": "수직선 위 -1의 자리에 속이 빈 점이 있고 왼쪽으로 굵은 영역이 뻗어 있으며, 1의 자리에 눈금과 숫자가 있다.",
+  "newVisualInformation": [
+    "해가 -1보다 작은 범위임을 열린 끝점과 왼쪽 영역으로 나타낸다"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차부등식 $-4x - 3a > 1 + (a - x)$의 해를 수직선 위에 나타내었을 때, 경계값 $-1$을 포함하지 않고 왼쪽 영역($x < -1$)을 가리키는 화살표와 같을 때, 상수 $a$의 값은? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

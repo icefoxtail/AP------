@@ -1,0 +1,104 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "domain": [
+          0,
+          1
+        ],
+        "coefficients": [
+          "0",
+          "2"
+        ],
+        "start": "OPEN",
+        "end": "OPEN"
+      },
+      {
+        "domain": [
+          1,
+          3
+        ],
+        "coefficients": [
+          "1",
+          "1"
+        ],
+        "start": "OPEN",
+        "end": "OPEN"
+      },
+      {
+        "domain": [
+          3,
+          5
+        ],
+        "coefficients": [
+          "-11",
+          "8",
+          "-1"
+        ],
+        "start": "CLOSED",
+        "end": "CLOSED"
+      },
+      {
+        "domain": [
+          5,
+          7
+        ],
+        "coefficients": [
+          "-9",
+          "2"
+        ],
+        "start": "OPEN",
+        "end": "OPEN"
+      }
+    ],
+    "jumpValues": [
+      {
+        "x": "1",
+        "y": "1"
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "4",
+        "y": "5"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "y": [
+        "2",
+        "4"
+      ]
+    },
+    "viewport": [
+      -1,
+      8,
+      -1,
+      6
+    ]
+  },
+  "caption": "0<x<7에서 정의된 함수 y=f(x)의 그래프이다. x=1에서 좌우극한이 같고, x=3에서 뾰족하며, x=4에서 수평 접선을 갖는 극값, x=5에서 좌우 높이가 다른 끊김이 있다.",
+  "accessibilityDescription": "그래프는 x=0과 x=7에서 빈 점으로 끝난다. x=1에서 좌우에서 같은 높이 2로 접근하지만 x=1의 함숫값은 1이다. x=3에서 두 조각이 만나 뾰족하고, x=4에서 높이 5의 둥근 극댓값을 이룬다. x=5에서 왼쪽 높이 4, 오른쪽 높이 1로 끊어진다.",
+  "newVisualInformation": [
+    "x축에 1부터 7까지의 눈금을 두어 문제의 각 x값 위치를 읽을 수 있게 한다.",
+    "x=1의 끊어진 함숫값, x=3의 뾰족한 점, x=4의 수평 접선 위치, x=5의 세로 끊김을 드러나게 그린다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$0<x<7$에서 정의된 함수 $y=f(x)$의 그래프가 아래 그림과 같을 때, 다음 중 함수 $f(x)$에 대한 설명으로 옳지 않은 것은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "l1",
+        "kind": "LINE",
+        "coefficients": [
+          "3",
+          "1"
+        ],
+        "domain": [
+          "-5",
+          "2"
+        ],
+        "color": "BLUE",
+        "label": "y=x+3"
+      },
+      {
+        "id": "l2",
+        "kind": "LINE",
+        "coefficients": [
+          "-6",
+          "-2"
+        ],
+        "domain": [
+          "-5",
+          "2"
+        ],
+        "color": "WARM",
+        "label": "y=-2x-6"
+      }
+    ],
+    "viewport": [
+      -6,
+      3,
+      -11,
+      6
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "0",
+          "y": "4",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "두 직선 y=x+3과 y=-2x-6, 그리고 세 번째 직선 ax-y+4=0이 지나는 점 (0, 4)가 표시되어 있다.",
+  "accessibilityDescription": "좌표평면에 파란 직선 y=x+3과 주황색 직선 y=-2x-6이 왼쪽 아래에서 만나고, 세 번째 직선이 지나는 점 (0, 4)가 표시되어 있다.",
+  "newVisualInformation": [
+    "두 고정 직선 y=x+3과 y=-2x-6",
+    "세 번째 직선이 지나는 점 (0,4)",
+    "두 고정 직선의 교점"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "세 일차방정식 $-x + y - 3 = 0$, $2x + y + 6 = 0$, $ax - y + 4 = 0$의 그래프가 삼각형을 이루지 않도록 하는 수 $a$의 값을 모두 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

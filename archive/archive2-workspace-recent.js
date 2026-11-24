@@ -385,10 +385,10 @@
       const data = await api("/class-exam-assignments/recent-summary?" + params.toString());
       if (!isCurrentRequest()) return false;
       state.recentAssignments = Array.isArray(data.assignments) ? data.assignments : [];
-      // Without the catalog the exam lookup is empty (grade/subject fall back to the saved fields);
-      // refreshRecentRowsFromCatalog() normalizes again when the catalog arrives.
+      // The exam lookup is the catalog's exams, or the exam list (the same rows, a small file) while there is no catalog; with neither it is
+      // empty (grade/subject fall back to the saved fields) and refreshRecentRowsFromCatalog() normalizes again when one arrives.
       state.recentRows = History.normalizeAssignments(
-        state.recentAssignments, V.classRows, state.catalog?.exams || [], C,
+        state.recentAssignments, V.classRows, state.catalog?.exams || state.light?.exams || [], C,
       );
       rememberRecentSubjectOptions(state.recentRows);
       return true;

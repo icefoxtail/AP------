@@ -61,6 +61,9 @@ test('saved and recent screens both mark the one 출제 내역 · 보관함 entr
   const tabs = navigation.libraryTabs('recent');
   assert.match(tabs, /data-view="recent" aria-pressed="true">출제 내역[\s\S]*data-view="saved" aria-pressed="false">보관함/);
   assert.ok(tabs.indexOf('data-view="recent"') < tabs.indexOf('data-view="saved"'));
+  // 시험지 보관함 has a way in from the archive itself (it used to be reachable only from the teacher dashboard).
+  assert.ok(tabs.includes('<a href="assessment/assessment-mvp.html"') && tabs.includes('>시험지 보관함</a>'));
+  assert.ok(navigation.libraryTabs('saved', '../').includes('href="../assessment/assessment-mvp.html"'));
 });
 
 test('quick assessment views keep 빠른 평가 current on PC and phone, and 만들기 only for compose', () => {
