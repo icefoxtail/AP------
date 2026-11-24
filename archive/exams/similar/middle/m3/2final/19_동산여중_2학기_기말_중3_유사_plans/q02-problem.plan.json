@@ -1,0 +1,167 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "24"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "24"
+            },
+            {
+              "kind": "integer",
+              "value": "7"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [],
+    "expressionLabels": [
+      {
+        "id": "lAC",
+        "ownerSegment": "sAC",
+        "text": "24"
+      },
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "25"
+      },
+      {
+        "id": "lBC",
+        "ownerSegment": "sBC",
+        "text": "7"
+      }
+    ],
+    "segmentColors": [
+      {
+        "segments": [
+          "sAC"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "segments": [
+          "sAB"
+        ],
+        "color": "WARM"
+      },
+      {
+        "segments": [
+          "sBC"
+        ],
+        "color": "GREEN"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "r1",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 340
+  },
+  "caption": "세 변의 길이가 각각 24, 25, 7로 주어진 삼각형 ABC가 그려져 있고, 꼭짓점 C의 각이 직각으로 표시되어 있다.",
+  "accessibilityDescription": "점 A, B, C를 잇는 삼각형이 보이고, 변 AC에 24, 변 AB에 25, 변 BC에 7의 길이 라벨이 있으며 꼭짓점 C에 직각 표시가 있다.",
+  "newVisualInformation": [
+    "삼각형 ABC의 세 변 길이 24, 25, 7",
+    "각 C의 직각 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "직각삼각형 $ABC$에서 $\\overline{AC} = 24$, $\\overline{AB} = 25$, $\\overline{BC} = 7$일 때, 다음 중 옳은 것은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

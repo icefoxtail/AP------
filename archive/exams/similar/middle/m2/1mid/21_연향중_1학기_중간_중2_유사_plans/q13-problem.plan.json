@@ -1,0 +1,358 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "L1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "TL1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "TR1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "TL2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "TR2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "L1",
+    "R1",
+    "TL1",
+    "TR1",
+    "C1",
+    "L2",
+    "R2",
+    "TL2",
+    "TR2",
+    "C2"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "b1",
+      "refs": [
+        "L1",
+        "R1"
+      ]
+    },
+    {
+      "id": "t1",
+      "refs": [
+        "TL1",
+        "TR1"
+      ]
+    },
+    {
+      "id": "l1",
+      "refs": [
+        "L1",
+        "TL1"
+      ]
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "R1",
+        "TR1"
+      ]
+    },
+    {
+      "id": "b2",
+      "refs": [
+        "L2",
+        "R2"
+      ]
+    },
+    {
+      "id": "t2",
+      "refs": [
+        "TL2",
+        "TR2"
+      ]
+    },
+    {
+      "id": "l2",
+      "refs": [
+        "L2",
+        "TL2"
+      ]
+    },
+    {
+      "id": "r2",
+      "refs": [
+        "R2",
+        "TR2"
+      ]
+    }
+  ],
+  "rightAngles": [],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "n1",
+        "ownerSegment": "t1",
+        "text": "A"
+      },
+      {
+        "id": "n2",
+        "ownerSegment": "t2",
+        "text": "B"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dR1",
+        "from": "C1",
+        "to": "R1",
+        "label": "2a",
+        "side": "BELOW",
+        "style": "BAR",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dH1",
+        "from": "L1",
+        "to": "TL1",
+        "label": "b",
+        "side": "LEFT",
+        "style": "BAR",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dR2",
+        "from": "C2",
+        "to": "R2",
+        "label": "b",
+        "side": "BELOW",
+        "style": "BAR",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dH2",
+        "from": "L2",
+        "to": "TL2",
+        "label": "2a",
+        "side": "LEFT",
+        "style": "BAR",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 380
+  },
+  "hiddenPointNames": [
+    "L1",
+    "R1",
+    "TL1",
+    "TR1",
+    "C1",
+    "L2",
+    "R2",
+    "TL2",
+    "TR2",
+    "C2"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "왼쪽은 A회사의 원기둥 모양 통조림 캔을 옆에서 본 단면이고, 오른쪽은 B회사의 원기둥 모양 통조림 캔을 옆에서 본 단면이다. A회사 캔의 밑면 반지름은 2a, 높이는 b이고, B회사 캔의 밑면 반지름은 b, 높이는 2a이다.",
+  "accessibilityDescription": "두 개의 직사각형 단면이 나란히 보인다. 왼쪽 사각형에는 반지름 2a와 높이 b, 오른쪽 사각형에는 반지름 b와 높이 2a가 적혀 있다.",
+  "newVisualInformation": [
+    "A회사 캔의 반지름 2a와 높이 b",
+    "B회사 캔의 반지름 b와 높이 2a"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "A회사는 밑면의 반지름의 길이가 $2a$이고 높이가 $b$인 원기둥 모양의 통조림 캔을 만들었고, B회사는 밑면의 반지름의 길이가 $b$이고 높이가 $2a$인 원기둥 모양의 통조림 캔을 만들었다. A회사가 만든 캔의 부피는 B회사가 만든 캔의 부피의 몇 배인가?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

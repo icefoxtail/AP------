@@ -1,0 +1,114 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "value": "1",
+            "kind": "integer"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "value": "4",
+              "kind": "integer"
+            },
+            {
+              "value": "-1",
+              "kind": "integer"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "line",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "c": {
+            "value": "-4",
+            "kind": "integer"
+          },
+          "b": {
+            "value": "0",
+            "kind": "integer"
+          },
+          "a": {
+            "value": "1",
+            "kind": "integer"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "P"
+  ],
+  "hiddenPointNames": [
+    "P"
+  ],
+  "coordinateLabels": [
+    "P"
+  ],
+  "displayLines": [
+    "line"
+  ],
+  "lineLabels": [
+    {
+      "labelAt": 0.5,
+      "nodeId": "line",
+      "text": "3x+2=k"
+    }
+  ],
+  "axisTickValues": {
+    "y": [],
+    "x": []
+  },
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 460
+  },
+  "caption": "일차방정식 3x+2=k의 그래프가 점 (4, -1)을 지나고 y축에 평행한 직선으로 나타난다.",
+  "accessibilityDescription": "점 (4, -1)을 지나고 y축에 평행한 세로선이 그려져 있다.",
+  "newVisualInformation": [
+    "점 (4, -1)을 지나는 y축에 평행한 직선"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차방정식 $3x + 2 = k$의 그래프가 점 $(4, -1)$을 지나고 $y$축에 평행한 직선일 때, 수 $k$의 값은? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

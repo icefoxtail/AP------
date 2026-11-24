@@ -1,0 +1,602 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "한 변의 길이가 3 cm인 정육각형 네 개를 한 변이 겹치도록 이어 붙인 도형이다.",
+  "accessibilityDescription": "정육각형들이 가로로 나란히 붙어 있고 맞닿은 변은 점선으로 표시되어 있으며, 맨 왼쪽 세로변에 3 cm가 적혀 있다.",
+  "newVisualInformation": [
+    "한 변이 3 cm인 정육각형을 이어 붙인 구조"
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1299",
+              "denominator": "500"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1299",
+              "denominator": "500"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-3",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-1299",
+              "denominator": "500"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-3",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A5",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-1299",
+              "denominator": "500"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1299",
+              "denominator": "250"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "3897",
+              "denominator": "500"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "3897",
+              "denominator": "500"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-3",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1299",
+              "denominator": "250"
+            },
+            {
+              "kind": "integer",
+              "value": "-3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1299",
+              "denominator": "125"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1299",
+              "denominator": "100"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1299",
+              "denominator": "100"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-3",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1299",
+              "denominator": "125"
+            },
+            {
+              "kind": "integer",
+              "value": "-3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "3897",
+              "denominator": "250"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "9093",
+              "denominator": "500"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "9093",
+              "denominator": "500"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-3",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "3897",
+              "denominator": "250"
+            },
+            {
+              "kind": "integer",
+              "value": "-3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A0",
+    "A1",
+    "A2",
+    "A3",
+    "A4",
+    "A5",
+    "B0",
+    "B1",
+    "B2",
+    "B3",
+    "C0",
+    "C1",
+    "C2",
+    "C3",
+    "D0",
+    "D1",
+    "D2",
+    "D3"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sA0A1",
+      "refs": [
+        "A0",
+        "A1"
+      ]
+    },
+    {
+      "id": "sA1A2",
+      "refs": [
+        "A1",
+        "A2"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sA2A3",
+      "refs": [
+        "A2",
+        "A3"
+      ]
+    },
+    {
+      "id": "sA3A4",
+      "refs": [
+        "A3",
+        "A4"
+      ]
+    },
+    {
+      "id": "sA4A5",
+      "refs": [
+        "A4",
+        "A5"
+      ]
+    },
+    {
+      "id": "sA5A0",
+      "refs": [
+        "A5",
+        "A0"
+      ]
+    },
+    {
+      "id": "sA1B0",
+      "refs": [
+        "A1",
+        "B0"
+      ]
+    },
+    {
+      "id": "sB0B1",
+      "refs": [
+        "B0",
+        "B1"
+      ]
+    },
+    {
+      "id": "sB1B2",
+      "refs": [
+        "B1",
+        "B2"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sB2B3",
+      "refs": [
+        "B2",
+        "B3"
+      ]
+    },
+    {
+      "id": "sB3A2",
+      "refs": [
+        "B3",
+        "A2"
+      ]
+    },
+    {
+      "id": "sB1C0",
+      "refs": [
+        "B1",
+        "C0"
+      ]
+    },
+    {
+      "id": "sC0C1",
+      "refs": [
+        "C0",
+        "C1"
+      ]
+    },
+    {
+      "id": "sC1C2",
+      "refs": [
+        "C1",
+        "C2"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sC2C3",
+      "refs": [
+        "C2",
+        "C3"
+      ]
+    },
+    {
+      "id": "sC3B2",
+      "refs": [
+        "C3",
+        "B2"
+      ]
+    },
+    {
+      "id": "sC1D0",
+      "refs": [
+        "C1",
+        "D0"
+      ]
+    },
+    {
+      "id": "sD0D1",
+      "refs": [
+        "D0",
+        "D1"
+      ]
+    },
+    {
+      "id": "sD1D2",
+      "refs": [
+        "D1",
+        "D2"
+      ]
+    },
+    {
+      "id": "sD2D3",
+      "refs": [
+        "D2",
+        "D3"
+      ]
+    },
+    {
+      "id": "sD3C2",
+      "refs": [
+        "D3",
+        "C2"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lSide",
+        "ownerSegment": "sA4A5",
+        "text": "3",
+        "unit": "cm"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 360
+  },
+  "hiddenPointNames": [
+    "A0",
+    "A1",
+    "A2",
+    "A3",
+    "A4",
+    "A5",
+    "B0",
+    "B1",
+    "B2",
+    "B3",
+    "C0",
+    "C1",
+    "C2",
+    "C3",
+    "D0",
+    "D1",
+    "D2",
+    "D3"
+  ],
+  "hiddenPointStyle": "NONE",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "한 변의 길이가 $3\\text{ cm}$인 정육각형을 한쪽 방향으로 한 변이 완전히 겹치도록 계속해서 이어 붙여 새로운 도형을 만들려고 한다. 다음 물음에 답하시오. [8점]  \n(1) 처음 정육각형에 정육각형 $1$개를 이어 붙일 때마다 만들어지는 도형의 둘레의 길이는 얼마씩 늘어나는지 구하시오. [3점]  \n(2) $x$개의 정육각형으로 만든 도형의 둘레의 길이를 $y\\text{ cm}$라고 할 때, $y$를 $x$에 대한 식으로 나타내시오. (풀이과정을 자세히 쓰시오.) [3점]  \n(3) $10$개의 정육각형으로 만든 도형의 둘레의 길이를 구하시오. [2점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

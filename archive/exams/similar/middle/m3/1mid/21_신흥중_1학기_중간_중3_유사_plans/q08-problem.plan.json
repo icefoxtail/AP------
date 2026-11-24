@@ -1,0 +1,389 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "V1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "V2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "35"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "V3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "87"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "V4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "167"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "V5",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "35"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "V6",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "35"
+            },
+            {
+              "kind": "integer",
+              "value": "35"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "V7",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "35"
+            },
+            {
+              "kind": "integer",
+              "value": "52"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "V8",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "87"
+            },
+            {
+              "kind": "integer",
+              "value": "52"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "V9",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "87"
+            },
+            {
+              "kind": "integer",
+              "value": "80"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "V10",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "167"
+            },
+            {
+              "kind": "integer",
+              "value": "80"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "V1",
+    "V2",
+    "V3",
+    "V4",
+    "V5",
+    "V6",
+    "V7",
+    "V8",
+    "V9",
+    "V10"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sV1V2",
+      "refs": [
+        "V1",
+        "V2"
+      ]
+    },
+    {
+      "id": "sV2V3",
+      "refs": [
+        "V2",
+        "V3"
+      ]
+    },
+    {
+      "id": "sV3V4",
+      "refs": [
+        "V3",
+        "V4"
+      ]
+    },
+    {
+      "id": "sV1V5",
+      "refs": [
+        "V1",
+        "V5"
+      ]
+    },
+    {
+      "id": "sV5V6",
+      "refs": [
+        "V5",
+        "V6"
+      ]
+    },
+    {
+      "id": "sV6V7",
+      "refs": [
+        "V6",
+        "V7"
+      ]
+    },
+    {
+      "id": "sV7V8",
+      "refs": [
+        "V7",
+        "V8"
+      ]
+    },
+    {
+      "id": "sV8V9",
+      "refs": [
+        "V8",
+        "V9"
+      ]
+    },
+    {
+      "id": "sV9V10",
+      "refs": [
+        "V9",
+        "V10"
+      ]
+    },
+    {
+      "id": "sV10V4",
+      "refs": [
+        "V10",
+        "V4"
+      ]
+    },
+    {
+      "id": "sV2V6",
+      "refs": [
+        "V2",
+        "V6"
+      ]
+    },
+    {
+      "id": "sV3V8",
+      "refs": [
+        "V3",
+        "V8"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "regions": [
+      {
+        "id": "r1",
+        "fill": "WARM",
+        "label": "12",
+        "unit": "cm^2",
+        "labelPlacement": "AUTO_LEADER",
+        "shapes": [
+          {
+            "polygon": [
+              "V1",
+              "V2",
+              "V6",
+              "V5"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "r2",
+        "fill": "BLUE",
+        "label": "27",
+        "unit": "cm^2",
+        "labelPlacement": "AUTO_LEADER",
+        "shapes": [
+          {
+            "polygon": [
+              "V2",
+              "V3",
+              "V8",
+              "V7",
+              "V6"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "r3",
+        "fill": "LIGHT",
+        "label": "64",
+        "unit": "cm^2",
+        "labelPlacement": "AUTO_LEADER",
+        "shapes": [
+          {
+            "polygon": [
+              "V3",
+              "V4",
+              "V10",
+              "V9",
+              "V8"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 520,
+    "height": 340
+  },
+  "hiddenPointNames": [
+    "V1",
+    "V2",
+    "V3",
+    "V4",
+    "V5",
+    "V6",
+    "V7",
+    "V8",
+    "V9",
+    "V10"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "넓이가 각각 12, 27, 64 제곱센티미터인 세 정사각형이 밑변을 맞대어 이어 붙어 있는 그림이다.",
+  "accessibilityDescription": "왼쪽부터 넓이 12, 27, 64가 적힌 세 정사각형이 아래쪽 밑변을 맞대어 붙어 있고, 오른쪽 정사각형이 가장 크다.",
+  "newVisualInformation": [
+    "세 정사각형의 넓이 12, 27, 64를 각각 표시한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같이 넓이가 각각 $12\\text{ cm}^2$, $27\\text{ cm}^2$, $64\\text{ cm}^2$인 세 정사각형을 이어 붙여 새로운 도형을 만들었다. 이 도형의 둘레의 길이는? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
