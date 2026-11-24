@@ -685,6 +685,7 @@ window.questionBank = [
   },
   {
     "id": 15,
+    "image": "assets/images/20_신흥중_2학기_기말_중3_유사/q15-problem.svg",
     "category": "원주각",
     "standardCourse": "중3",
     "curriculum": "2015",
@@ -1015,6 +1016,7 @@ window.questionBank = [
   },
   {
     "id": 22,
+    "image": "assets/images/20_신흥중_2학기_기말_중3_유사/q22-problem.svg",
     "category": "원주각",
     "standardCourse": "중3",
     "curriculum": "2015",

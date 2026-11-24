@@ -478,6 +478,7 @@ window.questionBank = [
   },
   {
     "id": 11,
+    "image": "assets/images/18_연향중_2학기_기말_중3_유사/q11-problem.svg",
     "category": "원주각",
     "standardCourse": "중3",
     "curriculum": "2015",
@@ -571,6 +572,7 @@ window.questionBank = [
   },
   {
     "id": 13,
+    "image": "assets/images/18_연향중_2학기_기말_중3_유사/q13-problem.svg",
     "category": "원주각",
     "standardCourse": "중3",
     "curriculum": "2015",

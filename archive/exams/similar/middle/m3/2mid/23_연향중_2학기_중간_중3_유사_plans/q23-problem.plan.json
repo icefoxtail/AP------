@@ -1,53 +1,293 @@
 {
-  "kind": "geometry",
-  "caption": "반원 O에 내접하는 원 P(지름 10)와 외접하는 반원 Q",
-  "viewBox": [
-    0,
-    0,
-    260,
-    170
-  ],
-  "vertices": {
-    "O": [
-      130,
-      140
-    ],
-    "P": [
-      130,
-      95
-    ],
-    "Q": [
-      190,
-      140
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "20",
+            "denominator": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "10",
+            "denominator": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circO",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circP",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "P"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circQ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "Q"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "10",
+            "denominator": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
     ]
   },
-  "segments": [
-    [
-      "O",
-      "P"
-    ],
-    [
-      "O",
-      "Q"
-    ],
-    [
-      "P",
-      "Q"
-    ]
+  "displayPoints": [
+    "O",
+    "P",
+    "Q",
+    "A",
+    "B",
+    "T",
+    "L"
   ],
-  "arcs": [
+  "hiddenPointNames": [
+    "A",
+    "B",
+    "T",
+    "L"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displayLines": [],
+  "displayCircles": [
+    "circP"
+  ],
+  "displaySegments": [
     {
-      "center": "O",
-      "radius": 90,
-      "startAngle": 0,
-      "endAngle": 180
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "OT",
+      "refs": [
+        "O",
+        "T"
+      ]
+    },
+    {
+      "id": "PQ",
+      "refs": [
+        "P",
+        "Q"
+      ]
     }
   ],
   "rightAngles": [
-    [
-      "P",
-      "O",
-      "Q"
+    {
+      "id": "rO",
+      "refs": [
+        "P",
+        "O",
+        "Q"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "arcO",
+        "circle": "circO",
+        "center": "O",
+        "from": "B",
+        "to": "A",
+        "side": "CCW",
+        "highlight": false
+      },
+      {
+        "id": "arcQ",
+        "circle": "circQ",
+        "center": "Q",
+        "from": "B",
+        "to": "L",
+        "side": "CCW",
+        "highlight": false
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lDiam",
+        "ownerSegment": "OT",
+        "text": "10"
+      }
     ]
+  },
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 380
+  },
+  "caption": "반원 O의 내부에 접하는 원 P와 외접하는 반원 Q를 나타낸 그림이다.",
+  "accessibilityDescription": "반원 O 내부에서 원 P가 밑변과 반원의 최고점에 접하고, 반원 Q는 원 P에 외접하며 밑변 위에 놓여 있다. 원 P의 지름은 10이고, 중심 O에서 선분 OP와 OQ는 서로 수직이다.",
+  "newVisualInformation": [
+    "원 P의 지름은 10이다.",
+    "선분 OP와 선분 OQ는 서로 수직이다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 3] 다음 그림과 같이 원 $P$와 반원 $Q$가 외접하고, 원 $P$가 반원 $O$의 내부에 내접하고 있다. 원 $P$의 지름의 길이가 $10$일 때, $\\overline{PQ}$의 길이를 구하고 그 과정을 서술하시오. (단, $OP \\perp OQ$이다.)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
   ]
 }

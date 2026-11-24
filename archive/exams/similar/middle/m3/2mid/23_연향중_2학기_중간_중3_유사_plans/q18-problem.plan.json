@@ -1,79 +1,261 @@
 {
-  "kind": "geometry",
-  "caption": "원 O에서 OM=ON, ∠C=62°일 때 ∠MON",
-  "viewBox": [
-    0,
-    0,
-    220,
-    220
-  ],
-  "circles": [
-    {
-      "center": "O",
-      "radius": 80
-    }
-  ],
-  "vertices": {
-    "O": [
-      110,
-      110
-    ],
-    "A": [
-      110,
-      30
-    ],
-    "B": [
-      50,
-      163
-    ],
-    "C": [
-      170,
-      163
-    ],
-    "N": [
-      80,
-      96.5
-    ],
-    "M": [
-      140,
-      96.5
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "90"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "214"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "326"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "N",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
     ]
   },
-  "segments": [
-    [
-      "A",
-      "B"
-    ],
-    [
-      "A",
-      "C"
-    ],
-    [
-      "B",
-      "C"
-    ],
-    [
-      "O",
-      "M"
-    ],
-    [
-      "O",
-      "N"
-    ]
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "M",
+    "N"
   ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "ON",
+      "refs": [
+        "O",
+        "N"
+      ]
+    },
+    {
+      "id": "OM",
+      "refs": [
+        "O",
+        "M"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aC",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "value": 62,
+        "label": "62",
+        "factRole": "GIVEN"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "e1",
+        "count": 2,
+        "segments": [
+          "ON",
+          "OM"
+        ]
+      }
+    ]
+  },
   "rightAngles": [
-    [
-      "O",
-      "N",
-      "A"
-    ],
-    [
-      "O",
-      "M",
-      "A"
-    ]
+    {
+      "id": "rN",
+      "refs": [
+        "A",
+        "N",
+        "O"
+      ]
+    },
+    {
+      "id": "rM",
+      "refs": [
+        "A",
+        "M",
+        "O"
+      ]
+    }
   ],
-  "labels": {
-    "C": "62°"
-  }
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 480
+  },
+  "caption": "원 O에 내접하는 이등변삼각형 ABC와 두 변에 내린 수선의 발 M, N을 나타낸 그림이다.",
+  "accessibilityDescription": "원 O에 내접하는 삼각형 ABC에서 원의 중심 O로부터 변 AC와 AB에 각각 내린 수선의 발을 M과 N이라 한다. 선분 OM과 ON의 길이가 같다는 표시가 있고 각 C의 크기는 62도로 표시되어 있다.",
+  "newVisualInformation": [
+    "각 C의 크기는 62도이다.",
+    "선분 OM과 ON의 길이가 같다.",
+    "선분 OM은 AC와 수직이고 선분 ON은 AB와 수직이다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림의 원 $O$에서 $\\overline{AB}\\perp\\overline{ON}$, $\\overline{AC}\\perp\\overline{OM}$이고 $\\overline{OM}=\\overline{ON}$이다. $\\angle C=62^\\circ$일 때, $\\angle MON$의 크기는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
 }
