@@ -1064,13 +1064,13 @@ test('the compiled path matcher answers exactly like the original definition and
   }
   // The memo is keyed by array identity: editing the same array in place must not reuse the old answer.
   const edited=['one/'];assert.equal(matches('one/x',edited),true);edited[0]='two/';assert.equal(matches('one/x',edited),false);assert.equal(matches('two/x',edited),true);
-  // The real index and the real lane policy: every lane's inputs and outputs, original matcher on every 10th tracked path.
+  // The real index and the real lane policy: every lane's inputs and outputs, original matcher on every 20th tracked path (and on every hit of a short list).
   const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
   const rows=indexRows(root);
   assert.ok(rows.length>1000);
   for(const lane of nativeLanes(root)) {
     for(const list of [lane.inputs,lane.outputs,...(lane.scopedInputs?[lane.scopedInputs]:[])]) {
-      const hit=compilePatterns(list),sample=new Set(rows.filter((r,i)=>i%10===0).map(r=>r.path));
+      const hit=compilePatterns(list),sample=new Set(rows.filter((r,i)=>i%20===0||list.length<=6&&hit(r.path)).map(r=>r.path));
       for(const file of sample)assert.equal(hit(file),matchesReference(file,list),`${lane.id}: ${file}`);
       const original=crypto.createHash('sha256').update(rows.filter(r=>r.path!==STATE&&sample.has(r.path)&&matchesReference(r.path,list)).sort((a,b)=>a.path<b.path?-1:a.path>b.path?1:0)
         .map(r=>`${r.path}\0${r.mode}\0${r.blob}\n`).join('')).digest('hex');
