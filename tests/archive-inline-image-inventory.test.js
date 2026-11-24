@@ -79,6 +79,13 @@ test('archive/exams questionBank inline image inventory validates production ima
 
   assert.ok(generated.records.filter(record => record.qImagePresent).every(record => record.relativePathValid));
 
+  // 반입 도구가 쓴 `archive/assets/images/…`도 화면이 같은 주소로 푸므로(tests/archive-asset-base.test.js) 같은 그림으로 센다.
+  const { archiveRelativeImagePath } = await import('../archive/tools/build-inline-image-inventory.mjs');
+  const sample = '24_순천고_1학기_중간_고2_확률과통계/q08-source-correction.png';
+  assert.equal(archiveRelativeImagePath(`archive/assets/images/${sample}`), archiveRelativeImagePath(`assets/images/${sample}`));
+  assert.ok(archiveRelativeImagePath(`assets/images/${sample}`));
+  assert.equal(archiveRelativeImagePath('archive/assets/images/../../etc/passwd'), false);
+
   const check = spawnSync(process.execPath, ['archive/tools/build-inline-image-inventory.mjs', '--check'], {
     cwd: root,
     encoding: 'utf8'

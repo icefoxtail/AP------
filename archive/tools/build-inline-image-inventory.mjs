@@ -21,7 +21,11 @@ function examFiles(directory, out = []) {
   return out;
 }
 
-function archiveRelativeImagePath(src) {
+// 정본 형태는 `assets/images/…`이다. 반입 도구가 저장소 루트 기준으로 쓴 `archive/assets/images/…`도 같은 그림으로 본다:
+// 화면의 그림 주소 풀이(archive-asset-base.js resolveExamImageUrl)가 두 형태를 같은 주소로 풀어 학생 화면에서 똑같이 뜨기 때문이다.
+// 뜨는 그림을 "없는 그림"으로 세면 사후 수리 PR만 늘어난다(#2774·#2798·#2804).
+export function archiveRelativeImagePath(rawSrc) {
+  const src = typeof rawSrc === 'string' && rawSrc.startsWith('archive/assets/images/') ? rawSrc.slice('archive/'.length) : rawSrc;
   if (typeof src !== 'string' || !src.startsWith('assets/images/') || src.includes('\\')) return false;
   const pathname = src.split(/[?#]/, 1)[0];
   const segments = pathname.split('/');
