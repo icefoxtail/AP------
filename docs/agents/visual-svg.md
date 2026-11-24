@@ -70,7 +70,17 @@
 - 전체 요약 `production/exam-figure-queue.md`는 게시 때 고치지 않고, 필요할 때 `figure_ledger.py queue`로 다시 만든다.
 - 이유: 한 파일 장부를 모든 그림 PR이 고쳐 서로 다른 시험지 PR도 하나씩만 병합됐고, 부분 게시가 기존 PUBLISHED를 OPEN으로 덮은 사고(22개 시험지 402문항, PR #1778로 복구)가 있었다.
 
-### 현행 흐름 (2026-11-19) — ① 대규모 캠페인(SVG 라인)
+### 현행 흐름 (2026-11-24) — 공장 자동 흐름 (아래 11-19 흐름보다 우선)
+어느 창에서든 같은 방식으로 이어 간다. 집 PC 공장의 명령·폴더·장부는 `D:/AP-svg-factory/README-PIPELINE.md`에 있다(저장소 밖 작업 도구).
+1. **plan은 외부 저가 모델이 쓴다. Sonnet은 plan을 쓰지 않는다.** 순서는 DeepSeek(`opencode-go/deepseek-v4.1-flash`) → Gemini 3.8 Flash(Antigravity CLI `agy -p … --model gemini-3.8-flash`) → Codex다. 셋 다 한도면 원장님께 묻는다. 결제·업그레이드는 원장님 몫이다. 이유: 비싼 모델을 문항마다 붙이지 않고, 렌더는 한도와 무관하게 계속 돌게 하려는 것이다.
+2. **대량 렌더:** 같은 형태끼리 묶어 엔진에 한 번에 넣는다(재사용 엔진, 동시 4). plan을 다 쓸 때까지 기다리지 않고, 나온 plan부터 주기적으로 렌더한다. 이미 main에 그림이 있는 키는 대기열에서 뺀다.
+3. **통과하면 바로 운영 병합:** 자동 게시(기출 해설·유사)가 30분마다 PR을 만들고, 메인이 언어 계약 사전검사 뒤 즉시 병합한다. 그림을 모아 두지 않는다. 문항은 그림 없이도 먼저 들어간다. 엔진이 못 그린 문항은 빼고 나머지를 넣고, 빈자리는 나중에 채운다.
+4. **정답 노출:** 정답이 보이는 문제 그림만 빼고(HOLD) 시험지는 넣는다. 뺀 그림은 상시 수리 라인이 고쳐 다시 게시한다. 해설 그림은 정보 우선이다.
+5. **엔진이 못 그리면 바로 엔진 업그레이드:** 번호 보고로 끝내지 않는다. 결함 종류 단위의 공통 기능(예제 plan·테스트·AUTHOR_GUIDE)을 넣고, 골든 게이트(REGRESSED·CLIPPED 0)를 거쳐 별도 PR로 올린 뒤 그 문항을 그린다(예: 11-24 관통 구멍 `bore`).
+6. **멈춘 렌더 감시:** 40분 넘게 돌았는데 30분 동안 출력이 없는 렌더 묶음은 감시 스크립트가 끄고, 그 키를 다시 렌더한다. 이유: 11-24에 렌더 하나가 15시간 멈춰 있었다.
+7. **메인의 확인:** PR마다 PNG 표본 1~3장을 발문·정답과 대조한다. 엔진 PR은 별도 Sonnet 검수(바뀐 부분·관련 테스트만) 뒤 병합한다. 병합된 워크트리는 junction을 끊고 바로 지운다.
+
+### 이전 흐름 (2026-11-19) — ① 대규모 캠페인(SVG 라인)
 1. **DeepSeek 초안**(`opencode-go/deepseek-v4.1-flash`, effort 설정 없음). 시험지 단위로 `ops/claude-batch/ds-launch-exam.sh <key> <시험지 JS>`를 띄운다(지시문 `prompts/ds-exam-draft.md`). 전 문항의 그림 필요 여부를 판정하고 item/plan/publish JSON을 쓰고 `node .tmp/work/render.mjs --item <item.json> --plan <plan.json> --out <dir>`로 ARCHIVE_BOUND까지 렌더한 뒤, `node .tmp/svg-m1/svg2png.cjs <svg> <png> 600`으로 만든 PNG를 **직접 보고** 1차로 고친다. DeepSeek은 그림을 본다(2026-11-16 `opencode run -f <png>`로 정육각형 라벨 순서·대각선까지 읽음 확인). 실행 안에서 PNG를 못 열면 메모에 남기고 시각 판단은 Sonnet에 넘긴다.
 2. **Sonnet 검수·마감은 한 번**(effort high, 지시문 `prompts/sonnet-exam-impl.md`). 원문·정답·해설과 PNG를 대조하고 plan을 고쳐 다시 렌더한다(손 SVG 금지). 최종 판정표와 기계 점검(ARCHIVE_BOUND, publish size = sizeClass, alt·caption 비어 있지 않음)을 낸다. 두 번째 Sonnet 검수는 두지 않는다. 메인이 PNG 표본에서 결함을 찾으면 메인이 직접 plan·publish를 고쳐 `render.mjs`로 다시 렌더한다(손 SVG 금지; 이유: 결함 하나에 지시서를 쓰고 Sonnet을 다시 돌리는 것보다 빠르다). 같은 묶음에 결함이 여럿이거나 같은 종류가 반복되면 지적 목록을 붙여 그 묶음을 Sonnet 검수·마감 단계로 돌려보낸다. `sonnet-final.md`는 과거(Sonnet B) 지시서다.
 3. **메인이 PNG 표본을 확인한 뒤 게시하고 PR을 올린다.** 게시 도구는 `ops/svg-m1/publish-exam.py`·`pubflow.py`이고 사용법은 HANDOFF 문서 §3-2·§4다. 시험지 5개쯤을 PR 하나로 묶는다.
