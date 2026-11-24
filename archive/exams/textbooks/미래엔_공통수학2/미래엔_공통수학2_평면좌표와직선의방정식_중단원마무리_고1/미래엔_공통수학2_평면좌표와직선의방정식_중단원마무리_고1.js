@@ -26,8 +26,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 두 점 사이의 거리를 구하시오.\n⑴ $\\mathrm{A}(3)$, $\\mathrm{B}(-7)$\n⑵ $\\mathrm{A}(-5, 1)$, $\\mathrm{B}(-2, 6)$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $10$\n⑵ $\\sqrt{34}$",
+    "solution": "⑴ 수직선 위의 두 점 $\\mathrm{A}(x_1)$, $\\mathrm{B}(x_2)$ 사이의 거리는 $|x_2-x_1|$이므로\n$$\\overline{\\mathrm{AB}}=|-7-3|=10$$\n⑵ 좌표평면 위의 두 점 사이의 거리는 $\\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$이므로\n$$\\overline{\\mathrm{AB}}=\\sqrt{(-2-(-5))^2+(6-1)^2}=\\sqrt{9+25}=\\sqrt{34}$$"
   },
   {
     "id": 2,
@@ -54,8 +54,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 점의 좌표를 구하시오.\n⑴ 두 점 $\\mathrm{A}(-2)$와 $\\mathrm{B}(8)$에 대하여 선분 $\\mathrm{AB}$를 $3:2$로 내분하는 점\n⑵ 두 점 $\\mathrm{A}(6, 2)$와 $\\mathrm{B}(-3, -1)$에 대하여 선분 $\\mathrm{AB}$를 $1:2$로 내분하는 점",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $4$\n⑵ $(3,\\ 1)$",
+    "solution": "선분 $\\mathrm{AB}$를 $m:n$으로 내분하는 점의 좌표는 $\\frac{mx_2+nx_1}{m+n}$ (좌표평면에서는 $x,\\ y$좌표에 각각 적용)이다.\n⑴ $\\mathrm{A}(-2)$, $\\mathrm{B}(8)$이고 $m:n=3:2$이므로\n$$\\frac{3\\times 8+2\\times(-2)}{3+2}=\\frac{24-4}{5}=4$$\n⑵ $\\mathrm{A}(6,\\ 2)$, $\\mathrm{B}(-3,\\ -1)$이고 $m:n=1:2$이므로\n$$x=\\frac{1\\times(-3)+2\\times 6}{1+2}=\\frac{9}{3}=3,\\qquad y=\\frac{1\\times(-1)+2\\times 2}{1+2}=\\frac{3}{3}=1$$\n따라서 내분하는 점은 $(3,\\ 1)$이다."
   },
   {
     "id": 3,
@@ -82,8 +82,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 직선의 방정식을 구하시오.\n⑴ 점 $(-4, 5)$를 지나고 직선 $y=-3x+2$에 평행한 직선\n⑵ 점 $(1, -3)$을 지나고 직선 $y=2x-1$에 수직인 직선",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $y=-3x-7$\n⑵ $x+2y+5=0$ (즉 $y=-\\frac{1}{2}x-\\frac{5}{2}$)",
+    "solution": "⑴ 직선 $y=-3x+2$와 평행하면 기울기가 $-3$으로 같다. 점 $(-4,\\ 5)$를 지나므로\n$$y-5=-3(x+4),\\quad\\text{즉}\\quad y=-3x-7$$\n⑵ 직선 $y=2x-1$과 수직이면 기울기의 곱이 $-1$이므로 기울기는 $-\\frac{1}{2}$이다. 점 $(1,\\ -3)$을 지나므로\n$$y+3=-\\frac{1}{2}(x-1)$$\n양변에 $2$를 곱하여 정리하면 $2y+6=-x+1$, 즉 $x+2y+5=0$"
   },
   {
     "id": 4,
@@ -110,8 +110,8 @@ window.questionBank = [
     "wide": false,
     "content": "점 $(4, 2)$와 직선 $3x-4y+11=0$ 사이의 거리를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$3$",
+    "solution": "점 $(x_1,\\ y_1)$과 직선 $ax+by+c=0$ 사이의 거리는 $\\frac{|ax_1+by_1+c|}{\\sqrt{a^2+b^2}}$이다.\n$$\\frac{|3\\times 4-4\\times 2+11|}{\\sqrt{3^2+(-4)^2}}=\\frac{|12-8+11|}{5}=\\frac{15}{5}=3$$"
   },
   {
     "id": 5,
@@ -138,8 +138,8 @@ window.questionBank = [
     "wide": false,
     "content": "세 점 $\\mathrm{A}(-4, 5)$, $\\mathrm{B}(-2, -3)$, $\\mathrm{C}(1, a)$를 꼭짓점으로 하는 삼각형 $\\mathrm{ABC}$가 $\\angle\\mathrm{C}=90^\\circ$인 직각삼각형일 때, $a$의 값을 모두 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$0,\\ 2$",
+    "solution": "$\\angle\\mathrm{C}=90^\\circ$이므로 직선 $\\mathrm{CA}$와 직선 $\\mathrm{CB}$가 수직이다. (또는 $\\overline{\\mathrm{AB}}^2=\\overline{\\mathrm{CA}}^2+\\overline{\\mathrm{CB}}^2$)\n$\\overline{\\mathrm{AB}}^2=(-2+4)^2+(-3-5)^2=4+64=68$\n$\\overline{\\mathrm{CA}}^2=(1+4)^2+(a-5)^2=25+a^2-10a+25=a^2-10a+50$\n$\\overline{\\mathrm{CB}}^2=(1+2)^2+(a+3)^2=9+a^2+6a+9=a^2+6a+18$\n피타고라스 정리에 의하여\n$$68=(a^2-10a+50)+(a^2+6a+18)=2a^2-4a+68$$\n$2a^2-4a=0$이므로 $2a(a-2)=0$에서 $a=0$ 또는 $a=2$"
   },
   {
     "id": 6,
@@ -166,8 +166,8 @@ window.questionBank = [
     "wide": false,
     "content": "두 점 $\\mathrm{A}(2, -3)$과 $\\mathrm{B}(5, 6)$에 대하여 선분 $\\mathrm{AB}$를 $2:3$으로 내분하는 점이 직선 $y=\\dfrac{1}{2}x+k$ 위에 있을 때, 상수 $k$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-1$",
+    "solution": "선분 $\\mathrm{AB}$를 $2:3$으로 내분하는 점의 좌표는\n$$\\left(\\frac{2\\times 5+3\\times 2}{2+3},\\ \\frac{2\\times 6+3\\times(-3)}{2+3}\\right)=\\left(\\frac{16}{5},\\ \\frac{3}{5}\\right)$$\n이 점이 직선 $y=\\frac{1}{2}x+k$ 위에 있으므로\n$$\\frac{3}{5}=\\frac{1}{2}\\times\\frac{16}{5}+k=\\frac{8}{5}+k$$\n따라서 $k=\\frac{3}{5}-\\frac{8}{5}=-1$"
   },
   {
     "id": 7,
@@ -194,8 +194,8 @@ window.questionBank = [
     "wide": false,
     "content": "세 점 $\\mathrm{A}(-1, 2)$, $\\mathrm{B}(3, 5)$, $\\mathrm{C}(a, b)$를 꼭짓점으로 하는 삼각형 $\\mathrm{ABC}$의 무게중심의 좌표가 $(1, 1)$일 때, $a+b$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-3$",
+    "solution": "세 점 $(x_1,\\ y_1),\\ (x_2,\\ y_2),\\ (x_3,\\ y_3)$을 꼭짓점으로 하는 삼각형의 무게중심의 좌표는 $\\left(\\frac{x_1+x_2+x_3}{3},\\ \\frac{y_1+y_2+y_3}{3}\\right)$이다.\n$$\\frac{-1+3+a}{3}=1\\ \\text{에서}\\ a+2=3,\\ a=1$$\n$$\\frac{2+5+b}{3}=1\\ \\text{에서}\\ b+7=3,\\ b=-4$$\n따라서 $a+b=1+(-4)=-3$"
   },
   {
     "id": 8,
@@ -222,8 +222,8 @@ window.questionBank = [
     "wide": false,
     "content": "평행한 두 직선 $2x+3y-1=0$과 $2x+3y-k=0$ 사이의 거리가 $\\sqrt{13}$일 때, 상수 $k$의 값을 모두 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$k=14,\\ -12$",
+    "solution": "평행한 두 직선 사이의 거리는 한 직선 위의 점과 다른 직선 사이의 거리와 같다.\n직선 $2x+3y-1=0$ 위의 점 $\\left(0,\\ \\frac{1}{3}\\right)$과 직선 $2x+3y-k=0$ 사이의 거리는\n$$\\frac{|2\\times 0+3\\times\\frac{1}{3}-k|}{\\sqrt{2^2+3^2}}=\\frac{|1-k|}{\\sqrt{13}}$$\n이 거리가 $\\sqrt{13}$이므로 $|1-k|=13$\n$1-k=13$ 또는 $1-k=-13$에서 $k=-12$ 또는 $k=14$"
   },
   {
     "id": 9,
@@ -250,8 +250,8 @@ window.questionBank = [
     "wide": false,
     "content": "두 직선 $2x-3y+4=0$과 $3x+y-5=0$의 교점을 지나고 직선 $6x+3y+1=0$과 평행한 직선의 방정식을 구하는 풀이 과정과 답을 쓰시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$2x+y-4=0$",
+    "solution": "두 직선 $2x-3y+4=0$과 $3x+y-5=0$의 교점을 구하면, 둘째 식에서 $y=5-3x$를 첫째 식에 대입하여\n$$2x-3(5-3x)+4=0,\\quad 11x-11=0$$\n이므로 $x=1,\\ y=2$이다. 교점은 $(1,\\ 2)$이다.\n직선 $6x+3y+1=0$과 평행한 직선은 $6x+3y+c=0$ 꼴이다. 점 $(1,\\ 2)$를 지나므로\n$$6+6+c=0$$\n에서 $c=-12$이다. $6x+3y-12=0$의 양변을 $3$으로 나누면 $2x+y-4=0$"
   },
   {
     "id": 10,
@@ -278,8 +278,8 @@ window.questionBank = [
     "wide": false,
     "content": "두 직선 $y=-x+3$과 $y=kx+3k+2$가 제$1$사분면에서 만날 때, 실수 $k$의 값의 범위를 구하는 풀이 과정과 답을 쓰시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-\\frac{1}{3}<k<\\frac{1}{3}$",
+    "solution": "두 직선의 교점을 구한다. $-x+3=kx+3k+2$에서 $(k+1)x=1-3k$이다.\n$k=-1$이면 $0=4$가 되어 교점이 없으므로 $k\\ne -1$이고\n$$x=\\frac{1-3k}{k+1},\\qquad y=-x+3=\\frac{-(1-3k)+3(k+1)}{k+1}=\\frac{6k+2}{k+1}$$\n제$1$사분면에서 만나려면 $x>0,\\ y>0$이어야 한다.\n$x>0$: $\\frac{1-3k}{k+1}>0$이므로 $(1-3k)(k+1)>0$, 즉 $-1<k<\\frac{1}{3}$\n$y>0$: $\\frac{6k+2}{k+1}>0$이므로 $(6k+2)(k+1)>0$, 즉 $k<-1$ 또는 $k>-\\frac{1}{3}$\n공통부분은 $-\\frac{1}{3}<k<\\frac{1}{3}$"
   },
   {
     "id": 11,
@@ -306,7 +306,7 @@ window.questionBank = [
     "wide": false,
     "content": "두 직선 $4x+y-5=0$과 $x-4y+3=0$이 이루는 각을 이등분하는 직선의 방정식을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$3x+5y-8=0$ 또는 $5x-3y-2=0$",
+    "solution": "두 직선이 이루는 각의 이등분선 위의 점 $(x,\\ y)$는 두 직선까지의 거리가 같다.\n$$\\frac{|4x+y-5|}{\\sqrt{4^2+1^2}}=\\frac{|x-4y+3|}{\\sqrt{1^2+(-4)^2}}$$\n분모가 모두 $\\sqrt{17}$이므로 $|4x+y-5|=|x-4y+3|$이다.\n(i) $4x+y-5=x-4y+3$이면 $3x+5y-8=0$\n(ii) $4x+y-5=-(x-4y+3)$이면 $5x-3y-2=0$\n따라서 구하는 직선의 방정식은 $3x+5y-8=0$ 또는 $5x-3y-2=0$이다."
   }
 ];
