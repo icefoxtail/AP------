@@ -15,8 +15,8 @@ window.questionBank = [
       "⑤ $3x - 2$"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "③",
+    "solution": "<p>세 다항식을 각각 인수분해한다.<br>$x^3y-2x^2y-3xy=xy(x^2-2x-3)=xy(x-3)(x+1)$<br>$(3x-2)xy-9xy+6y=y(3x^2-2x-9x+6)=y(3x^2-11x+6)=y(3x-2)(x-3)$<br>$(x+4)^2-8(x+5)+15=x^2+8x+16-8x-40+15=x^2-9=(x+3)(x-3)$<br>세 식에 공통으로 들어 있는 $1$이 아닌 인수는 $x-3$이다.</p>",
     "score": 4,
     "image": ""
   },
@@ -35,8 +35,8 @@ window.questionBank = [
       "⑤ 7개"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "①",
+    "solution": "<p>$x^2-8x-k=(x+a)(x+b)$에서 $a+b=-8$, $ab=-k$이다.<br>$k$가 자연수이므로 $ab<0$이고, $a$와 $b$는 부호가 다르다.<br>$b=-(a+8)$ ($a$는 양의 정수)로 놓으면 $k=a(a+8)$이다.<br>$a=1$이면 $k=9$, $a=2$이면 $k=20$, $a=3$이면 $k=33$, $a=4$이면 $k=48$이다.<br>$40$ 이하의 자연수는 $9,\\ 20,\\ 33$의 $3$개이다.</p>",
     "score": 4.6,
     "image": ""
   },
@@ -55,8 +55,8 @@ window.questionBank = [
       "⑤ $a \\ne -3$ 또는 $a \\ne 1$"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "④",
+    "solution": "<p>좌변은 $x(4x-3)=4x^2-3x$이다.<br>$4x^2-3x=(a+1)^2x^2+2x$에서 $\\{4-(a+1)^2\\}x^2-5x=0$이다.<br>이차방정식이 되려면 $x^2$의 계수가 $0$이 아니어야 하므로 $(a+1)^2\\ne4$이다.<br>$a+1\\ne2$이고 $a+1\\ne-2$이므로 $a\\ne1$이고 $a\\ne-3$이다.</p>",
     "score": 3.8,
     "image": "",
     "solutionImage": "assets/images/17_대구오성중_1학기_기말_중3_수학/q3-solution.svg",
@@ -79,8 +79,8 @@ window.questionBank = [
       "⑤ $x = -\\frac{9}{2}$ 또는 $x = 1$"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "②",
+    "solution": "<p>양변에 $6$을 곱하여 계수를 정수로 만든다.<br>$\\frac{1}{3}x^2+0.5x-\\frac{3}{2}=0\\ \\to\\ 2x^2+3x-9=0$<br>인수분해하면 $(2x-3)(x+3)=0$이다.<br>$x=\\frac{3}{2}$ 또는 $x=-3$이다.</p>",
     "score": 4,
     "image": ""
   },
@@ -99,8 +99,8 @@ window.questionBank = [
       "⑤ $k = -10$ 또는 $k = 14$"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "⑤",
+    "solution": "<p>$4x^2-(k-2)x+9$가 완전제곱식이면 $(2x\\pm3)^2=4x^2\\pm12x+9$이다.<br>$-(k-2)=\\pm12$이므로 $k-2=\\mp12$이다.<br>$k-2=-12$이면 $k=-10$, $k-2=12$이면 $k=14$이다.</p>",
     "score": 3.8,
     "image": ""
   },
@@ -119,8 +119,8 @@ window.questionBank = [
       "⑤ 2"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "③",
+    "solution": "<p>근의 공식으로 $3x^2-6x-a=0$의 근을 구한다.<br>$x=\\frac{6\\pm\\sqrt{36+12a}}{6}=\\frac{3\\pm\\sqrt{9+3a}}{3}$<br>$\\frac{b\\pm\\sqrt{15}}{3}$과 비교하면 $b=3$, $9+3a=15$이므로 $a=2$이다.<br>$a-b=2-3=-1$</p>",
     "score": 3.8,
     "image": ""
   },
@@ -139,8 +139,8 @@ window.questionBank = [
       "⑤ 4"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "⑤",
+    "solution": "<p>$x^2-4x-5=0$에서 $(x-5)(x+1)=0$이므로 두 근은 $5,\\ -1$이고 작은 근은 $-1$이다.<br>따라서 $x^2-4ax-a^2-1=0$의 작은 근이 $-1$이므로 $x=-1$을 대입한다.<br>$1+4a-a^2-1=0$이므로 $a(4-a)=0$, 즉 $a=0$ 또는 $a=4$이다.<br>$a$는 자연수이므로 $a=4$이다.<br>확인: $a=4$이면 $x^2-16x-17=(x-17)(x+1)=0$이므로 작은 근이 $-1$이다.</p>",
     "score": 4.4,
     "image": ""
   },
@@ -159,8 +159,8 @@ window.questionBank = [
       "⑤ 144"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "④",
+    "solution": "<p>$(x-2)^2=\\frac{k}{4}+30$에서 $x=2\\pm\\sqrt{\\frac{k}{4}+30}$이다.<br>두 근이 모두 정수이려면 $\\frac{k}{4}+30$이 어떤 정수의 제곱이어야 한다. $\\frac{k}{4}+30=m^2$이라 하면 $k=4(m^2-30)$이다.<br>$k$가 두 자리 자연수이므로 $10\\le4(m^2-30)\\le99$, 즉 $32.5\\le m^2\\le54.75$이다.<br>$m^2=36$ ($m=6$)일 때 $k=24$, $m^2=49$ ($m=7$)일 때 $k=76$이다.<br>$24+76=100$</p>",
     "score": 4.8,
     "image": ""
   },
@@ -181,8 +181,8 @@ window.questionBank = [
       "⑤ $\\frac{55}{3}$"
     ],
     "images": ["assets/images/17_대구오성중_1학기_기말_중3_수학/q9-problem-visual-v2.svg"],
-    "answer": "",
-    "solution": "",
+    "answer": "①",
+    "solution": "<p>점 $\\mathrm{P}(a,b)$는 직선 위의 점이므로 $b=\\frac{2}{3}a+2$이다.<br>$\\mathrm{B}(0,2)$이고 $\\square\\mathrm{PBOA}$는 $\\overline{\\mathrm{OB}}\\parallel\\overline{\\mathrm{AP}}$인 사다리꼴이다.<br>윗변 $\\overline{\\mathrm{OB}}=2$, 아랫변 $\\overline{\\mathrm{AP}}=b$, 높이 $\\overline{\\mathrm{OA}}=a$이다.<br>넓이는 $\\frac{1}{2}(2+b)a=24$이므로 $(2+b)a=48$이다.<br>$b=\\frac{2}{3}a+2$를 대입하면 $\\left(4+\\frac{2}{3}a\\right)a=48$, $12a+2a^2=144$, $a^2+6a-72=0$이다.<br>$(a+12)(a-6)=0$이고 $a>0$이므로 $a=6$, $b=\\frac{2}{3}\\times6+2=6$이다.<br>$a+b=12$</p>",
     "score": 4.6,
     "image": "assets/images/17_대구오성중_1학기_기말_중3_수학/q9-problem-visual-v2.svg",
     "solutionImage": "assets/images/17_대구오성중_1학기_기말_중3_수학/q9-solution.svg",
@@ -205,8 +205,8 @@ window.questionBank = [
       "⑤ ㄷ, ㄹ, ㅁ"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "③",
+    "solution": "<p>각 식을 정리해서 $x$에 관한 이차식인지 확인한다.<br>ㄱ. $y=-\\frac{1}{2}x^2+3x$ (이차함수)<br>ㄴ. $y=-\\frac{1}{2}x+5$ (일차함수)<br>ㄷ. $y=x^3-2x^2$ (삼차함수)<br>ㄹ. $y=x^2-2x+1$ (이차함수)<br>ㅁ. $y=\\frac{1}{x^2}$ (이차함수가 아님)<br>ㅂ. $y=9x^2+6x+1-3x^2=6x^2+6x+1$ (이차함수)<br>이차함수는 ㄱ, ㄹ, ㅂ이다.</p>",
     "score": 3.6,
     "image": ""
   },
@@ -225,8 +225,8 @@ window.questionBank = [
       "⑤ $-1$"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "④",
+    "solution": "<p>$y=\\frac{1}{3}x^2$의 그래프와 $x$축에 대하여 대칭인 그래프는 $y=-\\frac{1}{3}x^2$이다.<br>점 $(k,-3)$을 지나므로 $-3=-\\frac{1}{3}k^2$, $k^2=9$이다.<br>$k<0$이므로 $k=-3$이다.</p>",
     "score": 3.6,
     "image": "",
     "solutionImage": "assets/images/17_대구오성중_1학기_기말_중3_수학/q11-solution.svg",
@@ -249,8 +249,8 @@ window.questionBank = [
       "⑤ $y = -2x^2$의 그래프를 $x$축 방향으로 $-1$만큼 평행이동한 그래프이다."
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "④",
+    "solution": "<p>$y=-2(x+1)^2$의 꼭짓점은 $(-1,0)$이고 위로 볼록하다.<br>① 최댓값은 $0$이다. (옳다)<br>② $|-2|=|2|$이므로 $y=2x^2$과 폭이 같다. (옳다)<br>③ 꼭짓점의 좌표는 $(-1,0)$이다. (옳다)<br>④ $x=0$일 때 $y=-2(1)^2=-2$이므로 $y$축과 만나는 점은 $(0,-2)$이다. (옳지 않다)<br>⑤ $y=-2x^2$을 $x$축 방향으로 $-1$만큼 평행이동한 것이다. (옳다)</p>",
     "score": 3.6,
     "image": "",
     "solutionImage": "assets/images/17_대구오성중_1학기_기말_중3_수학/q12-solution.svg",
@@ -273,8 +273,8 @@ window.questionBank = [
       "⑤ $(7, 0)$"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "②",
+    "solution": "<p>점 $(-3,-1)$을 대입한다.<br>$-1=-\\frac{2}{3}\\times9+q=-6+q$이므로 $q=5$이다.<br>$y=-\\frac{2}{3}x^2+5$의 꼭짓점의 좌표는 $(0,5)$이다.</p>",
     "score": 3.6,
     "image": "",
     "solutionImage": "assets/images/17_대구오성중_1학기_기말_중3_수학/q13-solution.svg",
@@ -297,8 +297,8 @@ window.questionBank = [
       "⑤ $y = x^2 - 6x + 4$"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "①",
+    "solution": "<p>$y=2(x+3)^2+5$의 꼭짓점은 $(-3,5)$이다.<br>$y=\\frac{1}{4}x^2-2x-4$의 $y$절편은 $-4$이므로 구하는 포물선은 $y$축과 $(0,-4)$에서 만난다.<br>$y=a(x+3)^2+5$로 놓고 $(0,-4)$를 대입하면 $9a+5=-4$, $a=-1$이다.<br>$y=-(x+3)^2+5=-x^2-6x-9+5=-x^2-6x-4$</p>",
     "score": 4,
     "image": "",
     "solutionImage": "assets/images/17_대구오성중_1학기_기말_중3_수학/q14-solution.svg",
@@ -321,8 +321,8 @@ window.questionBank = [
       "⑤ 17"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "④",
+    "solution": "<p>축이 $x=-1$이므로 $y=\\frac{1}{2}(x+1)^2+q$로 놓는다.<br>점 $(3,0)$을 지나므로 $\\frac{1}{2}\\times16+q=0$, $q=-8$이다.<br>$y=\\frac{1}{2}(x^2+2x+1)-8=\\frac{1}{2}x^2+x-\\frac{15}{2}$<br>$b=1$, $c=-\\frac{15}{2}$이므로 $b-2c=1+15=16$이다.</p>",
     "score": 4,
     "image": "",
     "solutionImage": "assets/images/17_대구오성중_1학기_기말_중3_수학/q15-solution.svg",
@@ -345,8 +345,8 @@ window.questionBank = [
       "⑤ 10"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "①",
+    "solution": "<p>$x=1$일 때 최솟값 $-5$이므로 꼭짓점이 $(1,-5)$이다. $p=1$, $q=-5$이고 $a>0$이다.<br>$y=a(x-1)^2-5$가 점 $(4,13)$을 지나므로 $9a-5=13$, $a=2$이다.<br>$apq=2\\times1\\times(-5)=-10$</p>",
     "score": 4,
     "image": "",
     "solutionImage": "assets/images/17_대구오성중_1학기_기말_중3_수학/q16-solution.svg",
@@ -366,8 +366,8 @@ window.questionBank = [
     "content": "17. 이차함수 $y = ax^2 + bx + c$의 그래프가 오른쪽 그림과 같을 때, 이차함수 $y = cx^2 + ax - b$의 그래프는? [3.8점]<br><img src=\"assets/images/17_대구오성중_1학기_기말_중3_수학/q17-problem-visual-v2.svg\" alt=\"위로 열린 파란 곡선의 꼭짓점은 y축의 오른쪽에 있다. 곡선이 x축을 y축 양쪽에서 지나며 y축과 만나는 점은 x축 아래이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
     "choices": ["① <img src=\"assets/images/17_대구오성중_1학기_기말_중3_수학/q17-choice-1-problem-visual-v2.svg\" alt=\"아래로 열린 파란 포물선이다. 꼭짓점은 y축 왼쪽과 x축 위에 있고 y축과 만나는 높이는 양수이다.\" style=\"display:block;width:min(100%,320px);height:auto;margin:0 auto;\">","② <img src=\"assets/images/17_대구오성중_1학기_기말_중3_수학/q17-choice-2-problem-visual-v2.svg\" alt=\"아래로 열린 파란 포물선이다. 꼭짓점은 y축 오른쪽과 x축 위에 있고 y축과 만나는 높이는 양수이다.\" style=\"display:block;width:min(100%,320px);height:auto;margin:0 auto;\">","③ <img src=\"assets/images/17_대구오성중_1학기_기말_중3_수학/q17-choice-3-problem-visual-v2.svg\" alt=\"아래로 열린 파란 포물선이다. 꼭짓점은 y축 오른쪽이며 y축과 만나는 점은 x축 아래에 있다.\" style=\"display:block;width:min(100%,320px);height:auto;margin:0 auto;\">","④ <img src=\"assets/images/17_대구오성중_1학기_기말_중3_수학/q17-choice-4-problem-visual-v2.svg\" alt=\"위로 열린 파란 포물선이다. 꼭짓점은 y축 왼쪽이며 y축과 만나는 점은 x축 위에 있다.\" style=\"display:block;width:min(100%,320px);height:auto;margin:0 auto;\">","⑤ <img src=\"assets/images/17_대구오성중_1학기_기말_중3_수학/q17-choice-5-problem-visual-v2.svg\" alt=\"위로 열린 파란 포물선이다. 꼭짓점은 y축 오른쪽이며 y축과 만나는 점은 x축 위에 있다.\" style=\"display:block;width:min(100%,320px);height:auto;margin:0 auto;\">"],
     "images": ["assets/images/17_대구오성중_1학기_기말_중3_수학/q17-problem-visual-v2.svg","assets/images/17_대구오성중_1학기_기말_중3_수학/q17_1.png","assets/images/17_대구오성중_1학기_기말_중3_수학/q17_2.png","assets/images/17_대구오성중_1학기_기말_중3_수학/q17_3.png","assets/images/17_대구오성중_1학기_기말_중3_수학/q17_4.png","assets/images/17_대구오성중_1학기_기말_중3_수학/q17_5.png"],
-    "answer": "",
-    "solution": "",
+    "answer": "②",
+    "solution": "<p>주어진 그래프는 아래로 볼록하므로 $a>0$이다.<br>축이 $y$축의 오른쪽에 있으므로 $-\\frac{b}{2a}>0$, 즉 $b<0$이다.<br>$y$절편이 음수이므로 $c<0$이다.<br>$y=cx^2+ax-b$에서 $x^2$의 계수 $c<0$이므로 위로 볼록하다.<br>$y$절편은 $-b>0$이므로 양수이다.<br>축은 $-\\frac{a}{2c}$이고 $a>0$, $c<0$이므로 양수, 즉 축이 $y$축의 오른쪽에 있다.<br>위로 볼록하고 $y$절편이 양수이며 축이 $y$축의 오른쪽에 있는 그래프는 ②이다.</p>",
     "score": 3.8,
     "image": "assets/images/17_대구오성중_1학기_기말_중3_수학/q17-problem-visual-v2.svg",
     "solutionImage": "assets/images/17_대구오성중_1학기_기말_중3_수학/q17-solution.svg",
@@ -392,8 +392,8 @@ window.questionBank = [
       "⑤ $\\frac{27}{2}$"
     ],
     "images": ["assets/images/17_대구오성중_1학기_기말_중3_수학/q18-problem-visual-v2.svg"],
-    "answer": "",
-    "solution": "",
+    "answer": "①",
+    "solution": "<p>$y=-x^2-2x+3=-(x+1)^2+4$이므로 꼭짓점은 $\\mathrm{A}(-1,4)$이다.<br>$y=0$이면 $-x^2-2x+3=0$, $(x+3)(x-1)=0$이므로 음의 부분과의 교점은 $\\mathrm{B}(-3,0)$이다.<br>$x=0$이면 $y=3$이므로 $\\mathrm{C}(0,3)$이다.<br>사각형 $\\mathrm{ABOC}$를 대각선 $\\mathrm{AO}$로 나누어 넓이를 구한다.<br>$\\triangle\\mathrm{ABO}=\\frac{1}{2}\\times3\\times4=6$<br>$\\triangle\\mathrm{AOC}=\\frac{1}{2}\\times3\\times1=\\frac{3}{2}$ ($\\overline{\\mathrm{OC}}=3$을 밑변으로 하면 높이는 $\\mathrm{A}$의 $x$좌표의 절댓값 $1$)<br>넓이는 $6+\\frac{3}{2}=\\frac{15}{2}$이다.</p>",
     "score": 4.6,
     "image": "assets/images/17_대구오성중_1학기_기말_중3_수학/q18-problem-visual-v2.svg",
     "solutionImage": "assets/images/17_대구오성중_1학기_기말_중3_수학/q18-solution.svg",
@@ -418,8 +418,8 @@ window.questionBank = [
       "⑤ 9"
     ],
     "images": ["assets/images/17_대구오성중_1학기_기말_중3_수학/q19-problem-visual-v2.svg"],
-    "answer": "",
-    "solution": "",
+    "answer": "③",
+    "solution": "<p>정사각형 $\\mathrm{ABCD}$의 한 변이 $2$이고 $\\mathrm{B}(2,0)$이므로 $\\mathrm{A}(2,2)$, $\\mathrm{C}(4,0)$, $\\mathrm{D}(4,2)$이다.<br>포물선이 $\\mathrm{A},\\ \\mathrm{D}$를 지나므로 축은 두 점의 가운데인 $x=3$이다. $p=3$<br>$y=a(x-3)^2+q$가 원점과 $\\mathrm{A}(2,2)$를 지난다. (그림에서 포물선은 원점을 지난다.)<br>원점: $9a+q=0$<br>$\\mathrm{A}(2,2)$: $a+q=2$<br>두 식을 빼면 $8a=-2$이므로 $a=-\\frac{1}{4}$, $q=\\frac{9}{4}$이다.<br>$a+p+q=-\\frac{1}{4}+3+\\frac{9}{4}=5$</p>",
     "score": 4.6,
     "image": "assets/images/17_대구오성중_1학기_기말_중3_수학/q19-problem-visual-v2.svg",
     "solutionImage": "assets/images/17_대구오성중_1학기_기말_중3_수학/q19-solution.svg",
@@ -442,8 +442,8 @@ window.questionBank = [
       "⑤ 5"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "②",
+    "solution": "<p>늘린 꽃밭의 넓이는 $(12+x)(8+x)$이고 처음 넓이는 $12\\times8=96$이다.<br>$(12+x)(8+x)-96=44$<br>$x^2+20x+96-96-44=0$이므로 $x^2+20x-44=0$이다.<br>$(x+22)(x-2)=0$이고 $x>0$이므로 $x=2$이다.</p>",
     "score": 4.4,
     "image": ""
   },
@@ -462,8 +462,8 @@ window.questionBank = [
       "⑤ $\\frac{3}{2}$"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "⑤",
+    "solution": "<p>$y=ax^2-6ax+9a-12=a(x-3)^2-12$이므로 꼭짓점은 $(3,-12)$이다. (제4사분면)<br>그래프가 제1사분면도 지나려면 아래로 볼록해야 하므로 $a>0$이다.<br>$y$절편은 $9a-12$이다. 제3사분면도 지나려면 $x<0$에서 $y<0$인 점이 있어야 하므로 $y$절편이 음수여야 한다. $9a-12<0$에서 $a<\\frac{4}{3}$이다.<br>(이때 $x\\to-\\infty$에서 $y>0$이 되므로 제2사분면도 지난다.)<br>$0<a<\\frac{4}{3}$이므로 $\\frac{1}{3},\\ \\frac{1}{2},\\ 1,\\ \\frac{5}{4}$는 가능하고 $\\frac{3}{2}$는 불가능하다.</p>",
     "score": 4.4,
     "image": "",
     "solutionImage": "assets/images/17_대구오성중_1학기_기말_중3_수학/q21-solution.svg",
@@ -488,8 +488,8 @@ window.questionBank = [
       "⑤ $-1$"
     ],
     "images": ["assets/images/17_대구오성중_1학기_기말_중3_수학/q22-problem-visual-v2.svg"],
-    "answer": "",
-    "solution": "",
+    "answer": "②",
+    "solution": "<p>점 $\\mathrm{P}$의 좌표를 $(t,\\ t^2-2t-2)$라 한다.<br>$\\mathrm{Q}$는 $\\mathrm{P}$와 $y$좌표가 같고 직선 $y=2x-8$ 위에 있으므로 $x=\\frac{y+8}{2}=\\frac{t^2-2t+6}{2}$이다.<br>$\\overline{\\mathrm{PQ}}=\\frac{t^2-2t+6}{2}-t=\\frac{t^2-4t+6}{2}=\\frac{(t-2)^2+2}{2}$<br>$t=2$일 때 $\\overline{\\mathrm{PQ}}$가 최소($1$)이다.<br>이때 $y=4-4-2=-2$이고 $\\mathrm{Q}$의 $x$좌표는 $\\frac{-2+8}{2}=3$이므로 $\\mathrm{Q}(3,-2)$이다.<br>$ab=3\\times(-2)=-6$</p>",
     "score": 4.8,
     "image": "assets/images/17_대구오성중_1학기_기말_중3_수학/q22-problem-visual-v2.svg",
     "solutionImage": "assets/images/17_대구오성중_1학기_기말_중3_수학/q22-solution.svg",
@@ -514,8 +514,8 @@ window.questionBank = [
       "⑤ 20"
     ],
     "images": ["assets/images/17_대구오성중_1학기_기말_중3_수학/q23-problem-visual-v2.svg"],
-    "answer": "",
-    "solution": "",
+    "answer": "⑤",
+    "solution": "<p>$\\overline{\\mathrm{BC}}=12+4=16$, 높이 $\\overline{\\mathrm{AH}}=4$이다.<br>직사각형의 높이를 $h$라 하면 윗변 $\\overline{\\mathrm{PS}}$는 $\\triangle\\mathrm{ABC}$와 닮음이므로 $\\overline{\\mathrm{PS}}:16=(4-h):4$이다.<br>$\\overline{\\mathrm{PS}}=4(4-h)=16-4h$<br>넓이는 $h(16-4h)=-4h^2+16h=-4(h-2)^2+16$이다.<br>$h=2$일 때 넓이가 최대($16$)이고, 이때 $\\overline{\\mathrm{PS}}=16-8=8$이다.<br>둘레는 $2(8+2)=20$이다.</p>",
     "score": 4.8,
     "image": "assets/images/17_대구오성중_1학기_기말_중3_수학/q23-problem-visual-v2.svg"
   },
@@ -534,8 +534,8 @@ window.questionBank = [
       "⑤ 10.5"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "⑤",
+    "solution": "<p>변량의 합은 $3+6+4+3+3+6+4+5+3+3=40$이고 개수가 $10$이므로 평균 $a=4$이다.<br>크기순으로 나열하면 $3,3,3,3,3,4,4,5,6,6$이다.<br>중앙값은 $5$번째와 $6$번째의 평균 $\\frac{3+4}{2}=3.5$이므로 $b=3.5$이다.<br>최빈값은 $3$ ($5$번 나옴)이므로 $c=3$이다.<br>$a+b+c=4+3.5+3=10.5$</p>",
     "score": 4.4,
     "image": "",
     "solutionImage": "assets/images/17_대구오성중_1학기_기말_중3_수학/q24-solution.svg",

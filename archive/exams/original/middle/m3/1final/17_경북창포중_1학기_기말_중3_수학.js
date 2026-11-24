@@ -15,8 +15,8 @@ window.questionBank = [
       "⑤ 11명"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "④",
+    "solution": "<p>모둠의 학생 수를 $x$명이라 하면 한 사람이 받는 사탕 수는 $x+4$개이다.<br>전체 사탕이 $77$개이므로 $x(x+4)=77$이다.<br>$x^2+4x-77=0$, $(x+11)(x-7)=0$이므로 $x=7$ ($x>0$)이다.</p>",
     "score": 4.0,
     "image": "",
     "solutionImage": "assets/images/17_경북창포중_1학기_기말_중3_수학/q1-solution.svg",
@@ -42,8 +42,8 @@ window.questionBank = [
       "⑤ 9초"
     ],
     "images": ["assets/images/17_경북창포중_1학기_기말_중3_수학/q2-problem-visual-v2.svg"],
-    "answer": "",
-    "solution": "",
+    "answer": "④",
+    "solution": "<p>$t$초 후 가로는 $(6+2t)\\,\\text{cm}$, 세로는 $(10-t)\\,\\text{cm}$이다.<br>처음 넓이는 $6\\times10=60\\,(\\text{cm}^2)$이므로 $(6+2t)(10-t)=60$이다.<br>$60+14t-2t^2=60$이므로 $2t^2-14t=0$, $2t(t-7)=0$이다.<br>$t>0$이므로 $t=7$초이다.</p>",
     "score": 4.0,
     "image": "assets/images/17_경북창포중_1학기_기말_중3_수학/q2-problem-visual-v2.svg",
     "solutionImage": "assets/images/17_경북창포중_1학기_기말_중3_수학/q2-solution.svg",
@@ -66,8 +66,8 @@ window.questionBank = [
       "⑤ $5$"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "③",
+    "solution": "<p>$y=-2x^2+4kx-1=-2(x-k)^2+2k^2-1$이므로 꼭짓점은 $(k,\\ 2k^2-1)$이다.<br>최댓값이 $17$이므로 $2k^2-1=17$, $k^2=9$, $k=\\pm3$이다.<br>꼭짓점이 제1사분면 위에 있으려면 $k>0$이므로 $k=3$이다.</p>",
     "score": 4.0,
     "image": ""
   },
@@ -86,8 +86,8 @@ window.questionBank = [
       "⑤ $x$축 : $-3$, $y$축 : $-2$"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "⑤",
+    "solution": "<p>$y=2x^2+12x+16=2(x^2+6x)+16=2(x+3)^2-18+16=2(x+3)^2-2$<br>$y=2x^2$을 $x$축 방향으로 $-3$, $y$축 방향으로 $-2$만큼 평행이동한 것이다.</p>",
     "score": 3.0,
     "image": "",
     "solutionImage": "assets/images/17_경북창포중_1학기_기말_중3_수학/q4-solution.svg",
@@ -110,8 +110,8 @@ window.questionBank = [
       "⑤ $(3,35)$"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "⑤",
+    "solution": "<p>각 점의 좌표를 $y=-4x^2+1$에 대입한다.<br>① $x=1$: $y=-4+1=-3$ (그래프 위의 점)<br>② $x=-1$: $y=-3$ (그래프 위의 점)<br>③ $x=0$: $y=1$ (그래프 위의 점)<br>④ $x=2$: $y=-16+1=-15$ (그래프 위의 점)<br>⑤ $x=3$: $y=-36+1=-35\\ne35$ (그래프 위의 점이 아니다)</p>",
     "score": 3.0,
     "image": ""
   },
@@ -132,8 +132,8 @@ window.questionBank = [
       "⑤ $14$"
     ],
     "images": ["assets/images/17_경북창포중_1학기_기말_중3_수학/q6-problem-visual-v2.svg"],
-    "answer": "",
-    "solution": "",
+    "answer": "④",
+    "solution": "<p>$y=9$와 $y=x^2$이 만나는 제1사분면의 점은 $x^2=9$에서 $x=3$이므로 $\\mathrm{B}(3,9)$이다. $\\mathrm{A}(0,9)$<br>$\\overline{\\mathrm{AB}}$의 중점 $\\mathrm{C}\\left(\\frac{3}{2},9\\right)$, $\\overline{\\mathrm{AB}}$를 $3$등분하는 점 중 $\\mathrm{A}$에 가까운 점 $\\mathrm{D}(1,9)$이다.<br>$y=ax^2$이 $\\mathrm{C}$를 지나므로 $9=a\\times\\frac{9}{4}$, $a=4$이다.<br>$y=bx^2$이 $\\mathrm{D}$를 지나므로 $9=b\\times1$, $b=9$이다.<br>$a+b=13$</p>",
     "score": 5.0,
     "image": "assets/images/17_경북창포중_1학기_기말_중3_수학/q6-problem-visual-v2.svg",
     "solutionImage": "assets/images/17_경북창포중_1학기_기말_중3_수학/q6-solution.svg",
@@ -156,8 +156,8 @@ window.questionBank = [
       "⑤ $y=\\dfrac{5}{3}x^2$"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "①",
+    "solution": "<p>폭은 $x^2$의 계수의 절댓값이 클수록 좁다. ($y$축 방향 평행이동은 폭에 영향을 주지 않는다.)<br>① $|-5|=5$, ② $4$, ③ $3$, ④ $1$, ⑤ $\\frac{5}{3}$<br>가장 큰 것은 ①이다.</p>",
     "score": 3.0,
     "image": ""
   },
@@ -178,8 +178,8 @@ window.questionBank = [
       "⑤ $14$"
     ],
     "images": ["assets/images/17_경북창포중_1학기_기말_중3_수학/q8-problem-visual-v2.svg"],
-    "answer": "",
-    "solution": "",
+    "answer": "①",
+    "solution": "<p>점 $\\mathrm{B}$의 $x$좌표를 $t$라 하면 $\\mathrm{B}\\left(t,\\ \\frac{1}{3}t^2\\right)$, $\\mathrm{D}\\left(3t,\\ 3t^2\\right)$이다.<br>정사각형의 가로의 길이는 $3t-t=2t$이다.<br>세로의 길이는 $3t^2-\\frac{1}{3}t^2=\\frac{8}{3}t^2$이다.<br>정사각형이므로 $2t=\\frac{8}{3}t^2$, $t=\\frac{3}{4}$이다. ($t>0$)<br>한 변의 길이는 $2t=\\frac{3}{2}$이므로 둘레의 길이는 $4\\times\\frac{3}{2}=6$이다.</p>",
     "score": 5.0,
     "image": "assets/images/17_경북창포중_1학기_기말_중3_수학/q8-problem-visual-v2.svg",
     "solutionImage": "assets/images/17_경북창포중_1학기_기말_중3_수학/q8-solution.svg",
@@ -204,8 +204,8 @@ window.questionBank = [
       "⑤ 제2사분면, 제4사분면"
     ],
     "images": ["assets/images/17_경북창포중_1학기_기말_중3_수학/q9-problem-visual-v2.svg"],
-    "answer": "",
-    "solution": "",
+    "answer": "②",
+    "solution": "<p>그래프가 아래로 볼록하므로 $a>0$이다.<br>원점을 지나므로 $c=0$이다.<br>꼭짓점이 제4사분면에 있고 축이 $y$축의 오른쪽이므로 $-\\frac{b}{2a}>0$, 즉 $b<0$이다.<br>$y=bx^2-ac=bx^2$ ($c=0$)이고 $b<0$이므로 위로 볼록하고 꼭짓점이 원점이다.<br>따라서 제3사분면, 제4사분면을 지난다.</p>",
     "score": 4.0,
     "image": "assets/images/17_경북창포중_1학기_기말_중3_수학/q9-problem-visual-v2.svg",
     "solutionImage": "assets/images/17_경북창포중_1학기_기말_중3_수학/q9-solution.svg",
@@ -230,8 +230,8 @@ window.questionBank = [
       "⑤ $9$"
     ],
     "images": ["assets/images/17_경북창포중_1학기_기말_중3_수학/q10-problem-visual-v2.svg"],
-    "answer": "",
-    "solution": "",
+    "answer": "⑤",
+    "solution": "<p>$y=9$와 $y=x^2$의 교점은 $x=\\pm3$이므로 $\\mathrm{A}(-3,9)$, $\\mathrm{D}(3,9)$이다.<br>$\\mathrm{B},\\ \\mathrm{C}$는 $y$축에 대칭이므로 $\\mathrm{B}(-k,9)$, $\\mathrm{C}(k,9)$ ($k>0$)로 놓는다.<br>$\\overline{\\mathrm{AB}}=3-k$, $\\overline{\\mathrm{BC}}=2k$이고 $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{BC}}$이므로 $3-k=2k$, $k=1$이다.<br>$\\mathrm{C}(1,9)$가 $y=ax^2$ 위에 있으므로 $9=a\\times1^2$, $a=9$이다.</p>",
     "score": 5.0,
     "image": "assets/images/17_경북창포중_1학기_기말_중3_수학/q10-problem-visual-v2.svg",
     "solutionImage": "assets/images/17_경북창포중_1학기_기말_중3_수학/q10-solution.svg",
@@ -254,8 +254,8 @@ window.questionBank = [
       "⑤ $y=x^2-2x+4 \\rightarrow (-1,3)$"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "③",
+    "solution": "<p>① $y=5x^2$의 꼭짓점은 $(0,0)$이다.<br>② $y=-2(x+2)^2$의 꼭짓점은 $(-2,0)$이다.<br>③ $y=3x^2+1$의 꼭짓점은 $(0,1)$이다. (옳다)<br>④ $y=-(x+3)^2+2$의 꼭짓점은 $(-3,2)$이다.<br>⑤ $y=x^2-2x+4=(x-1)^2+3$의 꼭짓점은 $(1,3)$이다.</p>",
     "score": 3.0,
     "image": ""
   },
@@ -274,8 +274,8 @@ window.questionBank = [
       "⑤ $7$"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "⑤",
+    "solution": "<p>$y=a(x-p)^2$의 꼭짓점은 $(p,0)$이고, $x$축 방향으로 $-1$, $y$축 방향으로 $-2$만큼 평행이동하면 꼭짓점은 $(p-1,\\ -2)$이다.<br>이것이 $(3,-2)$이므로 $p-1=3$, $p=4$이다.<br>평행이동한 그래프는 $y=a(x-3)^2-2$이고 점 $(4,1)$을 지나므로 $a-2=1$, $a=3$이다.<br>$a+p=3+4=7$</p>",
     "score": 5.0,
     "image": "",
     "solutionImage": "assets/images/17_경북창포중_1학기_기말_중3_수학/q12-solution.svg",
@@ -298,8 +298,8 @@ window.questionBank = [
       "⑤ $8$"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "④",
+    "solution": "<p>꼭짓점이 $(0,-3)$이므로 $y=ax^2-3$으로 놓는다.<br>점 $(2,-1)$을 지나므로 $4a-3=-1$, $a=\\frac{1}{2}$이다.<br>$y=\\frac{1}{2}x^2-3$에 $x=4$를 대입하면 $m=8-3=5$이다.</p>",
     "score": 4.0,
     "image": "",
     "solutionImage": "assets/images/17_경북창포중_1학기_기말_중3_수학/q13-solution.svg",
@@ -322,8 +322,8 @@ window.questionBank = [
       "⑤ $y=\\dfrac{1}{2}x^2$의 그래프를 $x$축의 방향으로 1만큼, $y$축의 방향으로 3만큼 평행이동한 것과 같다."
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "②",
+    "solution": "<p>$y=\\frac{1}{2}x^2-x+\\frac{7}{2}=\\frac{1}{2}(x-1)^2+3$으로 정리한다.<br>① 축은 $x=1$이다. (옳다)<br>② $x=0$일 때 $y=\\frac{7}{2}$이므로 $y$축과 $\\left(0,\\frac{7}{2}\\right)$에서 만난다. (옳지 않다)<br>③ 꼭짓점은 $(1,3)$이다. (옳다)<br>④ 아래로 볼록하고 꼭짓점이 제1사분면에 있으므로 제1, 2사분면을 지난다. (옳다)<br>⑤ $y=\\frac{1}{2}x^2$을 $x$축 방향으로 $1$, $y$축 방향으로 $3$만큼 평행이동한 것이다. (옳다)</p>",
     "score": 4.0,
     "image": "",
     "solutionImage": "assets/images/17_경북창포중_1학기_기말_중3_수학/q14-solution.svg",
@@ -348,8 +348,8 @@ window.questionBank = [
       "⑤ $y=2(x+1)^2+5$"
     ],
     "images": ["assets/images/17_경북창포중_1학기_기말_중3_수학/q15-problem-visual-v2.svg"],
-    "answer": "",
-    "solution": "",
+    "answer": "①",
+    "solution": "<p>꼭짓점이 $(1,5)$이므로 $y=a(x-1)^2+5$로 놓는다.<br>점 $(0,3)$을 지나므로 $a+5=3$, $a=-2$이다.<br>$y=-2(x-1)^2+5$</p>",
     "score": 3.0,
     "image": "assets/images/17_경북창포중_1학기_기말_중3_수학/q15-problem-visual-v2.svg",
     "solutionImage": "assets/images/17_경북창포중_1학기_기말_중3_수학/q15-solution.svg",
@@ -374,8 +374,8 @@ window.questionBank = [
     "images": [
       "assets/images/17_경북창포중_1학기_기말_중3_수학/q16.png"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "④",
+    "solution": "<p>$y=-2x^2+4x=-2(x-1)^2+2$이므로 꼭짓점은 $\\mathrm{P}(1,2)$이다.<br>$y=-2x^2+12x-16=-2(x-3)^2+2$이므로 꼭짓점은 $\\mathrm{Q}(3,2)$이다. (두 그래프는 모양이 같고 $x$축 방향으로 $2$만큼 떨어져 있다.)<br>같은 높이에서 두 포물선의 가로 거리는 항상 일정하게 $2$이고 높이가 $2$이므로, 처음 색칠한 부분의 넓이는 $2\\times2=4$이다.<br>오른쪽 포물선을 $x$축 방향으로 $p$만큼 평행이동하면 가로 거리가 $2+p$가 되므로 넓이는 $(2+p)\\times2=4+2p$이다.<br>이 넓이가 처음의 $2$배인 $8$이므로 $4+2p=8$, $p=2$이다.<br>평행이동한 식은 $y=-2(x-2-3)^2+2=-2(x-5)^2+2=-2x^2+20x-50+2=-2x^2+20x-48$이다.</p>",
     "score": 5.0,
     "image": "assets/images/17_경북창포중_1학기_기말_중3_수학/q16.png"
   },
@@ -396,8 +396,8 @@ window.questionBank = [
       "⑤ $\\dfrac{6}{5}$"
     ],
     "images": ["assets/images/17_경북창포중_1학기_기말_중3_수학/q17-problem-visual-v2.svg"],
-    "answer": "",
-    "solution": "",
+    "answer": "①",
+    "solution": "<p>$x$축과 만나는 점이 $\\mathrm{C}(-2,0)$, $\\mathrm{D}(6,0)$이므로 $y=a(x+2)(x-6)$으로 놓는다.<br>$\\mathrm{B}(0,6)$을 지나므로 $6=a\\times2\\times(-6)=-12a$, $a=-\\frac{1}{2}$이다.<br>$y=-\\frac{1}{2}(x^2-4x-12)=-\\frac{1}{2}x^2+2x+6$이므로 $a=-\\frac{1}{2}$, $b=2$, $c=6$이다.<br>(확인: 꼭짓점은 $\\mathrm{A}(2,8)$이고 사각형 $\\mathrm{ABCD}$의 넓이는 $36$이다.)<br>$abc=-\\frac{1}{2}\\times2\\times6=-6$</p>",
     "score": 5.0,
     "image": "assets/images/17_경북창포중_1학기_기말_중3_수학/q17-problem-visual-v2.svg",
     "solutionImage": "assets/images/17_경북창포중_1학기_기말_중3_수학/q17-solution.svg",
@@ -420,8 +420,8 @@ window.questionBank = [
       "⑤ $y=-x^2+8x-10$"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "⑤",
+    "solution": "<p>최댓값을 가지려면 위로 볼록해야 하므로 $x^2$의 계수가 음수인 것을 찾는다.<br>①~④의 $x^2$의 계수는 양수이므로 최솟값만 갖는다.<br>⑤ $y=-x^2+8x-10=-(x-4)^2+6$으로 최댓값 $6$을 갖는다.</p>",
     "score": 3.0,
     "image": "",
     "solutionImage": "assets/images/17_경북창포중_1학기_기말_중3_수학/q18-solution.svg",
@@ -444,8 +444,8 @@ window.questionBank = [
       "⑤ $a \\ge -\\dfrac{7}{9}$"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "①",
+    "solution": "<p>$x=3$일 때 최솟값 $-7$이므로 꼭짓점이 $(3,-7)$이고 아래로 볼록하다. $y=a(x-3)^2-7$ ($a>0$)<br>꼭짓점은 제4사분면에 있다. 제3사분면을 지나지 않으려면 $x<0$일 때 $y\\ge0$이어야 한다.<br>$x<0$에서 $y$는 $x=0$일 때 가장 작으므로 $y$절편 $y(0)=9a-7\\ge0$이어야 한다.<br>$a\\ge\\frac{7}{9}$이다.</p>",
     "score": 4.0,
     "image": "",
     "solutionImage": "assets/images/17_경북창포중_1학기_기말_중3_수학/q19-solution.svg",
@@ -468,8 +468,8 @@ window.questionBank = [
       "⑤ $9\\text{ m}$"
     ],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "③",
+    "solution": "<p>$y=-4.9x^2+9.8x+3=-4.9(x-1)^2+7.9$이다.<br>$x=1$일 때 가장 높이 올라가고 높이는 $7.9\\,\\text{m}$이다.</p>",
     "score": 4.0,
     "image": ""
   },
@@ -482,8 +482,8 @@ window.questionBank = [
     "content": "[서술형1] 이차함수 $f(x)=x^2-2x+1$에 대하여 함숫값 $f(-2), f(0), f(2)$의 값을 구하시오. [3.0점]\n(1) $f(-2)$\n(2) $f(0)$\n(3) $f(2)$",
     "choices": [],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "(1) $9$\n(2) $1$\n(3) $1$",
+    "solution": "<p>$f(x)=x^2-2x+1$에 대입한다.<br>(1) $f(-2)=4+4+1=9$<br>(2) $f(0)=0-0+1=1$<br>(3) $f(2)=4-4+1=1$</p>",
     "score": 3.0,
     "image": ""
   },
@@ -496,8 +496,8 @@ window.questionBank = [
     "content": "[서술형2] 이차함수 $y=ax^2$의 그래프는 점 $(-2, b)$를 지나고, 이차함수 $y=-3x^2$의 그래프와 $x$축에 서로 대칭이다. 이 때, 두 상수 $a, b$의 값을 각각 구하시오. [2.0점]",
     "choices": [],
     "images": [],
-    "answer": "",
-    "solution": "",
+    "answer": "$a=3,\\ b=12$",
+    "solution": "<p>$y=ax^2$이 $y=-3x^2$과 $x$축에 대하여 대칭이므로 $a=3$이다.<br>$y=3x^2$이 점 $(-2,b)$를 지나므로 $b=3\\times(-2)^2=12$이다.</p>",
     "score": 2.0,
     "image": "",
     "solutionImage": "assets/images/17_경북창포중_1학기_기말_중3_수학/q22-solution.svg",
@@ -516,8 +516,8 @@ window.questionBank = [
     "content": "[서술형3] 다음 그림과 같이 모양과 크기가 같은 직사각형 모양의 타일 6개를 넓이가 $96\\text{ cm}^2$인 직사각형 모양의 공간에 빈틈없이 붙였더니 가로의 길이가 $2\\text{ cm}$인 직사각형 모양의 공간이 남았다. 이때 타일 1개의 넓이를 구하시오. [4.0점]",
     "choices": [],
     "images": ["assets/images/17_경북창포중_1학기_기말_중3_수학/q23-problem-visual-v2.svg"],
-    "answer": "",
-    "solution": "",
+    "answer": "$15\\,\\text{cm}^2$",
+    "solution": "<p>타일의 짧은 변을 $a$, 긴 변을 $b$라 한다. 위쪽에는 타일 $4$개를 세워서($a$가 가로) 붙이고, 아래쪽에는 $2$개를 눕혀서($b$가 가로) 붙였다.<br>전체 가로의 길이는 같으므로 $4a=2b+2$, 즉 $b=2a-1$이다.<br>전체 높이는 $b+a$이므로 넓이는 $4a(a+b)=96$이다.<br>$a(a+b)=24$에 $b=2a-1$을 대입하면 $a(3a-1)=24$, $3a^2-a-24=0$, $(3a+8)(a-3)=0$이므로 $a=3$이다.<br>$b=5$이다.<br>타일 $1$개의 넓이는 $3\\times5=15\\,(\\text{cm}^2)$이다. (확인: 전체 $12\\times8=96$)</p>",
     "score": 4.0,
     "image": "assets/images/17_경북창포중_1학기_기말_중3_수학/q23-problem-visual-v2.svg"
   },
@@ -532,8 +532,8 @@ window.questionBank = [
     "content": "[서술형4] 다음 그림은 이차함수 $y=x^2-4x-5$의 그래프이다. 이 그래프가 $x$축과 만나는 점을 각각 $\\text{A}, \\text{B}$라 하고 꼭짓점을 $\\text{C}$라고 할 때, 다음 물음에 답하시오. (단, 점 $\\text{A}$의 $x$값은 음수, 점 $\\text{B}$의 $x$값은 양수이다.) [5.0점]\n(1) 이차함수 식 $y=x^2-4x-5$를 $y=a(x-p)^2+q$의 꼴로 고치시오.\n(2) 점 $\\text{A}, \\text{B}, \\text{C}$의 좌표를 각각 구하시오.\n(3) $\\triangle\\text{ACB}$의 넓이를 구하시오.",
     "choices": [],
     "images": ["assets/images/17_경북창포중_1학기_기말_중3_수학/q24-problem-visual-v2.svg"],
-    "answer": "",
-    "solution": "",
+    "answer": "(1) $y=(x-2)^2-9$\n(2) $\\mathrm{A}(-1,0),\\ \\mathrm{B}(5,0),\\ \\mathrm{C}(2,-9)$\n(3) $27$",
+    "solution": "<p>(1) $y=x^2-4x-5=(x^2-4x+4)-4-5=(x-2)^2-9$<br>(2) 꼭짓점은 $\\mathrm{C}(2,-9)$이다.<br>$y=0$이면 $x^2-4x-5=0$, $(x-5)(x+1)=0$이므로 $x=-1$ 또는 $x=5$이다.<br>$\\mathrm{A}$의 $x$값이 음수이므로 $\\mathrm{A}(-1,0)$, $\\mathrm{B}(5,0)$이다.<br>(3) $\\overline{\\mathrm{AB}}=5-(-1)=6$, 높이는 $\\mathrm{C}$의 $y$좌표의 절댓값 $9$이다.<br>$\\triangle\\mathrm{ACB}=\\frac{1}{2}\\times6\\times9=27$</p>",
     "score": 5.0,
     "image": "assets/images/17_경북창포중_1학기_기말_중3_수학/q24-problem-visual-v2.svg",
     "solutionImage": "assets/images/17_경북창포중_1학기_기말_중3_수학/q24-solution.svg",
@@ -552,8 +552,8 @@ window.questionBank = [
     "content": "[서술형5] 아래 그림과 같이 두 점 $\\text{A}, \\text{D}$는 직선 $x=6$를 축으로 하는 이차함수 $y=-x^2+bx$의 그래프 위에 있고, 두 점 $\\text{B}, \\text{C}$는 $x$축 위에 있다. 다음 물음에 답하여라. [6.0점]\n(1) 상수 $b$의 값을 구하시오.\n(2) 점 $\\text{B}$의 좌표를 $\\text{B}(a,0)\\;(a>0)$이라고 할 때, $a$를 사용하여 $\\overline{\\text{AB}}, \\overline{\\text{BC}}$의 길이를 각각 구하시오.\n(3) $\\square\\text{ABCD}$의 둘레의 길이의 최댓값을 구하시오.",
     "choices": [],
     "images": ["assets/images/17_경북창포중_1학기_기말_중3_수학/q25-problem-visual-v2.svg"],
-    "answer": "",
-    "solution": "",
+    "answer": "(1) $b=12$\n(2) $\\overline{\\mathrm{AB}}=-a^2+12a$, $\\overline{\\mathrm{BC}}=12-2a$\n(3) $74$",
+    "solution": "<p>(1) 축이 $x=6$이고 $y=-x^2+bx=-\\left(x-\\frac{b}{2}\\right)^2+\\frac{b^2}{4}$이므로 $\\frac{b}{2}=6$, $b=12$이다.<br>(2) $y=-x^2+12x$이고 $\\mathrm{B}(a,0)$이므로 $\\mathrm{A}$의 $x$좌표는 $a$이다.<br>$\\overline{\\mathrm{AB}}$는 $\\mathrm{A}$의 $y$좌표이므로 $\\overline{\\mathrm{AB}}=-a^2+12a$이다.<br>$\\mathrm{A}$와 $\\mathrm{D}$는 축 $x=6$에 대하여 대칭이므로 $\\mathrm{C}$의 $x$좌표는 $12-a$이다.<br>$\\overline{\\mathrm{BC}}=(12-a)-a=12-2a$이다.<br>(3) 둘레는 $2(\\overline{\\mathrm{AB}}+\\overline{\\mathrm{BC}})=2(-a^2+12a+12-2a)=2(-a^2+10a+12)$이다.<br>$=-2(a^2-10a)+24=-2(a-5)^2+50+24=-2(a-5)^2+74$<br>$a=5$ ($0<a<6$)일 때 둘레의 최댓값은 $74$이다.</p>",
     "score": 6.0,
     "image": "assets/images/17_경북창포중_1학기_기말_중3_수학/q25-problem-visual-v2.svg"
   }
