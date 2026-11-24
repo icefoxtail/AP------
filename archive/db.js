@@ -45472,6 +45472,223 @@ window.mainDB = {
       "primaryStandardCourse": "중3 수학"
     },
     {
+      "file": "types/high/h2/기하_109_OP=mOA+nOB를만족시키는점P가나_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_OP=mOA+nOB를만족시키는점P가나_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 6,
+      "rangeStartUnitKey": "H22-GE-05",
+      "rangeStartUnit": "벡터의 연산",
+      "rangeStartUnitOrder": 5,
+      "rangeEndUnitKey": "H22-GE-05",
+      "rangeEndUnit": "벡터의 연산",
+      "rangeEndUnitOrder": 5,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-05",
+          "rangeStartUnit": "벡터의 연산",
+          "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "H22-GE-05",
+          "rangeEndUnit": "벡터의 연산",
+          "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_110_OP=mOA+nOB를만족시키는점P가나_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_OP=mOA+nOB를만족시키는점P가나_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 6,
+      "rangeStartUnitKey": "H22-GE-05",
+      "rangeStartUnit": "벡터의 연산",
+      "rangeStartUnitOrder": 5,
+      "rangeEndUnitKey": "H22-GE-05",
+      "rangeEndUnit": "벡터의 연산",
+      "rangeEndUnitOrder": 5,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-05",
+          "rangeStartUnit": "벡터의 연산",
+          "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "H22-GE-05",
+          "rangeEndUnit": "벡터의 연산",
+          "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_103_a와방향이같은단위벡터_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_a와방향이같은단위벡터_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 5,
+      "rangeStartUnitKey": "H22-GE-06",
+      "rangeStartUnit": "벡터의 성분",
+      "rangeStartUnitOrder": 6,
+      "rangeEndUnitKey": "H22-GE-06",
+      "rangeEndUnit": "벡터의 성분",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-06",
+          "rangeStartUnit": "벡터의 성분",
+          "rangeStartUnitOrder": 6,
+          "rangeEndUnitKey": "H22-GE-06",
+          "rangeEndUnit": "벡터의 성분",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_085_곡선밖의서로수직인두접선_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_곡선밖의서로수직인두접선_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 4,
+      "rangeStartUnitKey": "H22-GE-02",
+      "rangeStartUnit": "이차곡선의 접선",
+      "rangeStartUnitOrder": 2,
+      "rangeEndUnitKey": "H22-GE-02",
+      "rangeEndUnit": "이차곡선의 접선",
+      "rangeEndUnitOrder": 2,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-02",
+          "rangeStartUnit": "이차곡선의 접선",
+          "rangeStartUnitOrder": 2,
+          "rangeEndUnitKey": "H22-GE-02",
+          "rangeEndUnit": "이차곡선의 접선",
+          "rangeEndUnitOrder": 2
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_084_곡선밖의점에서곡선에그은두접선의접점을지_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_곡선밖의점에서곡선에그은두접선의접점을지_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 3,
+      "rangeStartUnitKey": "H22-GE-02",
+      "rangeStartUnit": "이차곡선의 접선",
+      "rangeStartUnitOrder": 2,
+      "rangeEndUnitKey": "H22-GE-02",
+      "rangeEndUnit": "이차곡선의 접선",
+      "rangeEndUnitOrder": 2,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-02",
+          "rangeStartUnit": "이차곡선의 접선",
+          "rangeStartUnitOrder": 2,
+          "rangeEndUnitKey": "H22-GE-02",
+          "rangeEndUnit": "이차곡선의 접선",
+          "rangeEndUnitOrder": 2
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_119_내적의기하학적인의미_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_내적의기하학적인의미_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 11,
+      "rangeStartUnitKey": "H22-GE-07",
+      "rangeStartUnit": "벡터의 내적",
+      "rangeStartUnitOrder": 7,
+      "rangeEndUnitKey": "H22-GE-07",
+      "rangeEndUnit": "벡터의 내적",
+      "rangeEndUnitOrder": 7,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-07",
+          "rangeStartUnit": "벡터의 내적",
+          "rangeStartUnitOrder": 7,
+          "rangeEndUnitKey": "H22-GE-07",
+          "rangeEndUnit": "벡터의 내적",
+          "rangeEndUnitOrder": 7
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_100_도형에서벡터의연산과실수배_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_도형에서벡터의연산과실수배_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 6,
+      "rangeStartUnitKey": "H22-GE-05",
+      "rangeStartUnit": "벡터의 연산",
+      "rangeStartUnitOrder": 5,
+      "rangeEndUnitKey": "H22-GE-05",
+      "rangeEndUnit": "벡터의 연산",
+      "rangeEndUnitOrder": 5,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-05",
+          "rangeStartUnit": "벡터의 연산",
+          "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "H22-GE-05",
+          "rangeEndUnit": "벡터의 연산",
+          "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
       "file": "types/high/h2/기하_017_도형에서타원의초점장축단축의길이_고2_유형은행1.js",
       "school": "",
       "topic": "기하_도형에서타원의초점장축단축의길이_유형은행1",
@@ -45498,6 +45715,68 @@ window.mainDB = {
           "rangeEndUnitKey": "H22-GE-01",
           "rangeEndUnit": "이차곡선",
           "rangeEndUnitOrder": 1
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_099_두벡터로평면의모든벡터나타내기_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_두벡터로평면의모든벡터나타내기_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 5,
+      "rangeStartUnitKey": "H22-GE-05",
+      "rangeStartUnit": "벡터의 연산",
+      "rangeStartUnitOrder": 5,
+      "rangeEndUnitKey": "H22-GE-05",
+      "rangeEndUnit": "벡터의 연산",
+      "rangeEndUnitOrder": 5,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-05",
+          "rangeStartUnit": "벡터의 연산",
+          "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "H22-GE-05",
+          "rangeEndUnit": "벡터의 연산",
+          "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_079_두이차곡선의교점에서접선이수직일때미지수_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_두이차곡선의교점에서접선이수직일때미지수_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 4,
+      "rangeStartUnitKey": "H22-GE-02",
+      "rangeStartUnit": "이차곡선의 접선",
+      "rangeStartUnitOrder": 2,
+      "rangeEndUnitKey": "H22-GE-02",
+      "rangeEndUnit": "이차곡선의 접선",
+      "rangeEndUnitOrder": 2,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-02",
+          "rangeStartUnit": "이차곡선의 접선",
+          "rangeStartUnitOrder": 2,
+          "rangeEndUnitKey": "H22-GE-02",
+          "rangeEndUnit": "이차곡선의 접선",
+          "rangeEndUnitOrder": 2
         }
       ],
       "primaryStandardCourse": "기하"
@@ -45534,6 +45813,1618 @@ window.mainDB = {
       "primaryStandardCourse": "기하"
     },
     {
+      "file": "types/high/h2/기하_098_벡터가서로같을조건_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_벡터가서로같을조건_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 3,
+      "rangeStartUnitKey": "H22-GE-05",
+      "rangeStartUnit": "벡터의 연산",
+      "rangeStartUnitOrder": 5,
+      "rangeEndUnitKey": "H22-GE-05",
+      "rangeEndUnit": "벡터의 연산",
+      "rangeEndUnitOrder": 5,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-05",
+          "rangeStartUnit": "벡터의 연산",
+          "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "H22-GE-05",
+          "rangeEndUnit": "벡터의 연산",
+          "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_087_벡터의덧셈과뺄셈_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_벡터의덧셈과뺄셈_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 5,
+      "rangeStartUnitKey": "H22-GE-05",
+      "rangeStartUnit": "벡터의 연산",
+      "rangeStartUnitOrder": 5,
+      "rangeEndUnitKey": "H22-GE-05",
+      "rangeEndUnit": "벡터의 연산",
+      "rangeEndUnitOrder": 5,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-05",
+          "rangeStartUnit": "벡터의 연산",
+          "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "H22-GE-05",
+          "rangeEndUnit": "벡터의 연산",
+          "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_091_벡터의덧셈과뺄셈을이용한크기_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_벡터의덧셈과뺄셈을이용한크기_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 12,
+      "rangeStartUnitKey": "H22-GE-05",
+      "rangeStartUnit": "벡터의 연산",
+      "rangeStartUnitOrder": 5,
+      "rangeEndUnitKey": "H22-GE-05",
+      "rangeEndUnit": "벡터의 연산",
+      "rangeEndUnitOrder": 5,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-05",
+          "rangeStartUnit": "벡터의 연산",
+          "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "H22-GE-05",
+          "rangeEndUnit": "벡터의 연산",
+          "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_086_벡터의뜻_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_벡터의뜻_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 5,
+      "rangeStartUnitKey": "H22-GE-05",
+      "rangeStartUnit": "벡터의 연산",
+      "rangeStartUnitOrder": 5,
+      "rangeEndUnitKey": "H22-GE-05",
+      "rangeEndUnit": "벡터의 연산",
+      "rangeEndUnitOrder": 5,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-05",
+          "rangeStartUnit": "벡터의 연산",
+          "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "H22-GE-05",
+          "rangeEndUnit": "벡터의 연산",
+          "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_097_벡터의실수배에대한연산_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_벡터의실수배에대한연산_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 3,
+      "rangeStartUnitKey": "H22-GE-05",
+      "rangeStartUnit": "벡터의 연산",
+      "rangeStartUnitOrder": 5,
+      "rangeEndUnitKey": "H22-GE-05",
+      "rangeEndUnit": "벡터의 연산",
+      "rangeEndUnitOrder": 5,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-05",
+          "rangeStartUnit": "벡터의 연산",
+          "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "H22-GE-05",
+          "rangeEndUnit": "벡터의 연산",
+          "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_095_벡터의크기의최대최소-원의성질을이용하는_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_벡터의크기의최대최소-원의성질을이용하는_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 3,
+      "rangeStartUnitKey": "H22-GE-06",
+      "rangeStartUnit": "벡터의 성분",
+      "rangeStartUnitOrder": 6,
+      "rangeEndUnitKey": "H22-GE-06",
+      "rangeEndUnit": "벡터의 성분",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-06",
+          "rangeStartUnit": "벡터의 성분",
+          "rangeStartUnitOrder": 6,
+          "rangeEndUnitKey": "H22-GE-06",
+          "rangeEndUnit": "벡터의 성분",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_096_벡터의크기의최대최소-중점벡터를이용하는_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_벡터의크기의최대최소-중점벡터를이용하는_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 3,
+      "rangeStartUnitKey": "H22-GE-06",
+      "rangeStartUnit": "벡터의 성분",
+      "rangeStartUnitOrder": 6,
+      "rangeEndUnitKey": "H22-GE-06",
+      "rangeEndUnit": "벡터의 성분",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-06",
+          "rangeStartUnit": "벡터의 성분",
+          "rangeStartUnitOrder": 6,
+          "rangeEndUnitKey": "H22-GE-06",
+          "rangeEndUnit": "벡터의 성분",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_101_벡터의평행_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_벡터의평행_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 6,
+      "rangeStartUnitKey": "H22-GE-05",
+      "rangeStartUnit": "벡터의 연산",
+      "rangeStartUnitOrder": 5,
+      "rangeEndUnitKey": "H22-GE-05",
+      "rangeEndUnit": "벡터의 연산",
+      "rangeEndUnitOrder": 5,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-05",
+          "rangeStartUnit": "벡터의 연산",
+          "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "H22-GE-05",
+          "rangeEndUnit": "벡터의 연산",
+          "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_117_벡터의합의크기의합의최대최소_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_벡터의합의크기의합의최대최소_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 3,
+      "rangeStartUnitKey": "H22-GE-06",
+      "rangeStartUnit": "벡터의 성분",
+      "rangeStartUnitOrder": 6,
+      "rangeEndUnitKey": "H22-GE-06",
+      "rangeEndUnit": "벡터의 성분",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-06",
+          "rangeStartUnit": "벡터의 성분",
+          "rangeStartUnitOrder": 6,
+          "rangeEndUnitKey": "H22-GE-06",
+          "rangeEndUnit": "벡터의 성분",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_106_삼각형의무게중심의위치벡터_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_삼각형의무게중심의위치벡터_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 5,
+      "rangeStartUnitKey": "H22-GE-05",
+      "rangeStartUnit": "벡터의 연산",
+      "rangeStartUnitOrder": 5,
+      "rangeEndUnitKey": "H22-GE-05",
+      "rangeEndUnit": "벡터의 연산",
+      "rangeEndUnitOrder": 5,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-05",
+          "rangeStartUnit": "벡터의 연산",
+          "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "H22-GE-05",
+          "rangeEndUnit": "벡터의 연산",
+          "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_105_선분의내분점과외분점의위치벡터-각의이등_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_선분의내분점과외분점의위치벡터-각의이등_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 3,
+      "rangeStartUnitKey": "H22-GE-05",
+      "rangeStartUnit": "벡터의 연산",
+      "rangeStartUnitOrder": 5,
+      "rangeEndUnitKey": "H22-GE-05",
+      "rangeEndUnit": "벡터의 연산",
+      "rangeEndUnitOrder": 5,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-05",
+          "rangeStartUnit": "벡터의 연산",
+          "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "H22-GE-05",
+          "rangeEndUnit": "벡터의 연산",
+          "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_104_선분의내분점과외분점의위치벡터_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_선분의내분점과외분점의위치벡터_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 8,
+      "rangeStartUnitKey": "H22-GE-05",
+      "rangeStartUnit": "벡터의 연산",
+      "rangeStartUnitOrder": 5,
+      "rangeEndUnitKey": "H22-GE-05",
+      "rangeEndUnit": "벡터의 연산",
+      "rangeEndUnitOrder": 5,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-05",
+          "rangeStartUnit": "벡터의 연산",
+          "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "H22-GE-05",
+          "rangeEndUnit": "벡터의 연산",
+          "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_111_성분으로나타내어진평면벡터의연산_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_성분으로나타내어진평면벡터의연산_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 5,
+      "rangeStartUnitKey": "H22-GE-06",
+      "rangeStartUnit": "벡터의 성분",
+      "rangeStartUnitOrder": 6,
+      "rangeEndUnitKey": "H22-GE-06",
+      "rangeEndUnit": "벡터의 성분",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-06",
+          "rangeStartUnit": "벡터의 성분",
+          "rangeStartUnitOrder": 6,
+          "rangeEndUnitKey": "H22-GE-06",
+          "rangeEndUnit": "벡터의 성분",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_113_성분으로나타내어진평면벡터의연산_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_성분으로나타내어진평면벡터의연산_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 3,
+      "rangeStartUnitKey": "H22-GE-06",
+      "rangeStartUnit": "벡터의 성분",
+      "rangeStartUnitOrder": 6,
+      "rangeEndUnitKey": "H22-GE-06",
+      "rangeEndUnit": "벡터의 성분",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-06",
+          "rangeStartUnit": "벡터의 성분",
+          "rangeStartUnitOrder": 6,
+          "rangeEndUnitKey": "H22-GE-06",
+          "rangeEndUnit": "벡터의 성분",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_112_성분으로나타내어진평면벡터의크기_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_성분으로나타내어진평면벡터의크기_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 6,
+      "rangeStartUnitKey": "H22-GE-06",
+      "rangeStartUnit": "벡터의 성분",
+      "rangeStartUnitOrder": 6,
+      "rangeEndUnitKey": "H22-GE-06",
+      "rangeEndUnit": "벡터의 성분",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-06",
+          "rangeStartUnit": "벡터의 성분",
+          "rangeStartUnitOrder": 6,
+          "rangeEndUnitKey": "H22-GE-06",
+          "rangeEndUnit": "벡터의 성분",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_114_성분의절댓값의최솟값구하기_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_성분의절댓값의최솟값구하기_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 3,
+      "rangeStartUnitKey": "H22-GE-06",
+      "rangeStartUnit": "벡터의 성분",
+      "rangeStartUnitOrder": 6,
+      "rangeEndUnitKey": "H22-GE-06",
+      "rangeEndUnit": "벡터의 성분",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-06",
+          "rangeStartUnit": "벡터의 성분",
+          "rangeStartUnitOrder": 6,
+          "rangeEndUnitKey": "H22-GE-06",
+          "rangeEndUnit": "벡터의 성분",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_102_세직선이한직선위에있을조건_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_세직선이한직선위에있을조건_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 6,
+      "rangeStartUnitKey": "H22-GE-05",
+      "rangeStartUnit": "벡터의 연산",
+      "rangeStartUnitOrder": 5,
+      "rangeEndUnitKey": "H22-GE-05",
+      "rangeEndUnit": "벡터의 연산",
+      "rangeEndUnitOrder": 5,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-05",
+          "rangeStartUnit": "벡터의 연산",
+          "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "H22-GE-05",
+          "rangeEndUnit": "벡터의 연산",
+          "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_054_쌍곡선과원의활용_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_쌍곡선과원의활용_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 9,
+      "rangeStartUnitKey": "H22-GE-01",
+      "rangeStartUnit": "이차곡선",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-GE-01",
+      "rangeEndUnit": "이차곡선",
+      "rangeEndUnitOrder": 1,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-01",
+          "rangeStartUnit": "이차곡선",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-GE-01",
+          "rangeEndUnit": "이차곡선",
+          "rangeEndUnitOrder": 1
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_075_쌍곡선과직선의위치관계_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_쌍곡선과직선의위치관계_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 6,
+      "rangeStartUnitKey": "H22-GE-02",
+      "rangeStartUnit": "이차곡선의 접선",
+      "rangeStartUnitOrder": 2,
+      "rangeEndUnitKey": "H22-GE-02",
+      "rangeEndUnit": "이차곡선의 접선",
+      "rangeEndUnitOrder": 2,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-02",
+          "rangeStartUnit": "이차곡선의 접선",
+          "rangeStartUnitOrder": 2,
+          "rangeEndUnitKey": "H22-GE-02",
+          "rangeEndUnit": "이차곡선의 접선",
+          "rangeEndUnitOrder": 2
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_053_쌍곡선과포물선_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_쌍곡선과포물선_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 4,
+      "rangeStartUnitKey": "H22-GE-01",
+      "rangeStartUnit": "이차곡선",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-GE-01",
+      "rangeEndUnit": "이차곡선",
+      "rangeEndUnitOrder": 1,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-01",
+          "rangeStartUnit": "이차곡선",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-GE-01",
+          "rangeEndUnit": "이차곡선",
+          "rangeEndUnitOrder": 1
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_083_쌍곡선밖의점에서접선의방정식_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_쌍곡선밖의점에서접선의방정식_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 5,
+      "rangeStartUnitKey": "H22-GE-02",
+      "rangeStartUnit": "이차곡선의 접선",
+      "rangeStartUnitOrder": 2,
+      "rangeEndUnitKey": "H22-GE-02",
+      "rangeEndUnit": "이차곡선의 접선",
+      "rangeEndUnitOrder": 2,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-02",
+          "rangeStartUnit": "이차곡선의 접선",
+          "rangeStartUnitOrder": 2,
+          "rangeEndUnitKey": "H22-GE-02",
+          "rangeEndUnit": "이차곡선의 접선",
+          "rangeEndUnitOrder": 2
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_082_쌍곡선에기울기가주어진접선의최단거리_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_쌍곡선에기울기가주어진접선의최단거리_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 4,
+      "rangeStartUnitKey": "H22-GE-02",
+      "rangeStartUnit": "이차곡선의 접선",
+      "rangeStartUnitOrder": 2,
+      "rangeEndUnitKey": "H22-GE-02",
+      "rangeEndUnit": "이차곡선의 접선",
+      "rangeEndUnitOrder": 2,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-02",
+          "rangeStartUnit": "이차곡선의 접선",
+          "rangeStartUnitOrder": 2,
+          "rangeEndUnitKey": "H22-GE-02",
+          "rangeEndUnit": "이차곡선의 접선",
+          "rangeEndUnitOrder": 2
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_044_쌍곡선의두점근선에내린수선의길이의곱_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_쌍곡선의두점근선에내린수선의길이의곱_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 2,
+      "rangeStartUnitKey": "H22-GE-01",
+      "rangeStartUnit": "이차곡선",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-GE-01",
+      "rangeEndUnit": "이차곡선",
+      "rangeEndUnitOrder": 1,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-01",
+          "rangeStartUnit": "이차곡선",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-GE-01",
+          "rangeEndUnit": "이차곡선",
+          "rangeEndUnitOrder": 1
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_043_쌍곡선의방정식-초점과점근선이주어진경우_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_쌍곡선의방정식-초점과점근선이주어진경우_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 9,
+      "rangeStartUnitKey": "H22-GE-01",
+      "rangeStartUnit": "이차곡선",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-GE-01",
+      "rangeEndUnit": "이차곡선",
+      "rangeEndUnitOrder": 1,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-01",
+          "rangeStartUnit": "이차곡선",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-GE-01",
+          "rangeEndUnit": "이차곡선",
+          "rangeEndUnitOrder": 1
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_036_쌍곡선의방정식-초점이주어진경우_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_쌍곡선의방정식-초점이주어진경우_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 5,
+      "rangeStartUnitKey": "H22-GE-01",
+      "rangeStartUnit": "이차곡선",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-GE-01",
+      "rangeEndUnit": "이차곡선",
+      "rangeEndUnitOrder": 1,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-01",
+          "rangeStartUnit": "이차곡선",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-GE-01",
+          "rangeEndUnit": "이차곡선",
+          "rangeEndUnitOrder": 1
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_037_쌍곡선의방정식-타원과쌍곡선의초점을공유_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_쌍곡선의방정식-타원과쌍곡선의초점을공유_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 6,
+      "rangeStartUnitKey": "H22-GE-01",
+      "rangeStartUnit": "이차곡선",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-GE-01",
+      "rangeEndUnit": "이차곡선",
+      "rangeEndUnitOrder": 1,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-01",
+          "rangeStartUnit": "이차곡선",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-GE-01",
+          "rangeEndUnit": "이차곡선",
+          "rangeEndUnitOrder": 1
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_046_쌍곡선의방정식-타원과쌍곡선의초점을공유_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_쌍곡선의방정식-타원과쌍곡선의초점을공유_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 3,
+      "rangeStartUnitKey": "H22-GE-01",
+      "rangeStartUnit": "이차곡선",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-GE-01",
+      "rangeEndUnit": "이차곡선",
+      "rangeEndUnitOrder": 1,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-01",
+          "rangeStartUnit": "이차곡선",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-GE-01",
+          "rangeEndUnit": "이차곡선",
+          "rangeEndUnitOrder": 1
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_045_쌍곡선의방정식-한점을지나고점근선이주어_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_쌍곡선의방정식-한점을지나고점근선이주어_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 3,
+      "rangeStartUnitKey": "H22-GE-01",
+      "rangeStartUnit": "이차곡선",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-GE-01",
+      "rangeEndUnit": "이차곡선",
+      "rangeEndUnitOrder": 1,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-01",
+          "rangeStartUnit": "이차곡선",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-GE-01",
+          "rangeEndUnit": "이차곡선",
+          "rangeEndUnitOrder": 1
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_038_쌍곡선의방정식_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_쌍곡선의방정식_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 4,
+      "rangeStartUnitKey": "H22-GE-01",
+      "rangeStartUnit": "이차곡선",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-GE-01",
+      "rangeEndUnit": "이차곡선",
+      "rangeEndUnitOrder": 1,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-01",
+          "rangeStartUnit": "이차곡선",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-GE-01",
+          "rangeEndUnit": "이차곡선",
+          "rangeEndUnitOrder": 1
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_040_쌍곡선의방정식의일반형_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_쌍곡선의방정식의일반형_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 6,
+      "rangeStartUnitKey": "H22-GE-01",
+      "rangeStartUnit": "이차곡선",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-GE-01",
+      "rangeEndUnit": "이차곡선",
+      "rangeEndUnitOrder": 1,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-01",
+          "rangeStartUnit": "이차곡선",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-GE-01",
+          "rangeEndUnit": "이차곡선",
+          "rangeEndUnitOrder": 1
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_057_쌍곡선의실생활활용_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_쌍곡선의실생활활용_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 4,
+      "rangeStartUnitKey": "H22-GE-01",
+      "rangeStartUnit": "이차곡선",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-GE-01",
+      "rangeEndUnit": "이차곡선",
+      "rangeEndUnitOrder": 1,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-01",
+          "rangeStartUnit": "이차곡선",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-GE-01",
+          "rangeEndUnit": "이차곡선",
+          "rangeEndUnitOrder": 1
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_041_쌍곡선의점근선_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_쌍곡선의점근선_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 3,
+      "rangeStartUnitKey": "H22-GE-01",
+      "rangeStartUnit": "이차곡선",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-GE-01",
+      "rangeEndUnit": "이차곡선",
+      "rangeEndUnitOrder": 1,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-01",
+          "rangeStartUnit": "이차곡선",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-GE-01",
+          "rangeEndUnit": "이차곡선",
+          "rangeEndUnitOrder": 1
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_081_쌍곡선의접선의방정식-기울기가주어진경우_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_쌍곡선의접선의방정식-기울기가주어진경우_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 11,
+      "rangeStartUnitKey": "H22-GE-02",
+      "rangeStartUnit": "이차곡선의 접선",
+      "rangeStartUnitOrder": 2,
+      "rangeEndUnitKey": "H22-GE-02",
+      "rangeEndUnit": "이차곡선의 접선",
+      "rangeEndUnitOrder": 2,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-02",
+          "rangeStartUnit": "이차곡선의 접선",
+          "rangeStartUnitOrder": 2,
+          "rangeEndUnitKey": "H22-GE-02",
+          "rangeEndUnit": "이차곡선의 접선",
+          "rangeEndUnitOrder": 2
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_076_쌍곡선의접선의방정식-접점의좌표가주어진_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_쌍곡선의접선의방정식-접점의좌표가주어진_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 11,
+      "rangeStartUnitKey": "H22-GE-02",
+      "rangeStartUnit": "이차곡선의 접선",
+      "rangeStartUnitOrder": 2,
+      "rangeEndUnitKey": "H22-GE-02",
+      "rangeEndUnit": "이차곡선의 접선",
+      "rangeEndUnitOrder": 2,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-02",
+          "rangeStartUnit": "이차곡선의 접선",
+          "rangeStartUnitOrder": 2,
+          "rangeEndUnitKey": "H22-GE-02",
+          "rangeEndUnit": "이차곡선의 접선",
+          "rangeEndUnitOrder": 2
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_077_쌍곡선의접선의방정식의활용1-접점의좌표_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_쌍곡선의접선의방정식의활용1-접점의좌표_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 4,
+      "rangeStartUnitKey": "H22-GE-02",
+      "rangeStartUnit": "이차곡선의 접선",
+      "rangeStartUnitOrder": 2,
+      "rangeEndUnitKey": "H22-GE-02",
+      "rangeEndUnit": "이차곡선의 접선",
+      "rangeEndUnitOrder": 2,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-02",
+          "rangeStartUnit": "이차곡선의 접선",
+          "rangeStartUnitOrder": 2,
+          "rangeEndUnitKey": "H22-GE-02",
+          "rangeEndUnit": "이차곡선의 접선",
+          "rangeEndUnitOrder": 2
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_078_쌍곡선의접선의방정식의활용2-접점의좌표_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_쌍곡선의접선의방정식의활용2-접점의좌표_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 4,
+      "rangeStartUnitKey": "H22-GE-02",
+      "rangeStartUnit": "이차곡선의 접선",
+      "rangeStartUnitOrder": 2,
+      "rangeEndUnitKey": "H22-GE-02",
+      "rangeEndUnit": "이차곡선의 접선",
+      "rangeEndUnitOrder": 2,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-02",
+          "rangeStartUnit": "이차곡선의 접선",
+          "rangeStartUnitOrder": 2,
+          "rangeEndUnitKey": "H22-GE-02",
+          "rangeEndUnit": "이차곡선의 접선",
+          "rangeEndUnitOrder": 2
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_052_쌍곡선의정의를이용한거리의합의최대최소_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_쌍곡선의정의를이용한거리의합의최대최소_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 5,
+      "rangeStartUnitKey": "H22-GE-01",
+      "rangeStartUnit": "이차곡선",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-GE-01",
+      "rangeEndUnit": "이차곡선",
+      "rangeEndUnitOrder": 1,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-01",
+          "rangeStartUnit": "이차곡선",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-GE-01",
+          "rangeEndUnit": "이차곡선",
+          "rangeEndUnitOrder": 1
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_049_쌍곡선의정의의활용-PF²-PF²_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_쌍곡선의정의의활용-PF²-PF²_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 2,
+      "rangeStartUnitKey": "H22-GE-01",
+      "rangeStartUnit": "이차곡선",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-GE-01",
+      "rangeEndUnit": "이차곡선",
+      "rangeEndUnitOrder": 1,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-01",
+          "rangeStartUnit": "이차곡선",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-GE-01",
+          "rangeEndUnit": "이차곡선",
+          "rangeEndUnitOrder": 1
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_051_쌍곡선의정의의활용-쌍곡선과원이만나는삼_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_쌍곡선의정의의활용-쌍곡선과원이만나는삼_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 5,
+      "rangeStartUnitKey": "H22-GE-01",
+      "rangeStartUnit": "이차곡선",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-GE-01",
+      "rangeEndUnit": "이차곡선",
+      "rangeEndUnitOrder": 1,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-01",
+          "rangeStartUnit": "이차곡선",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-GE-01",
+          "rangeEndUnit": "이차곡선",
+          "rangeEndUnitOrder": 1
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_050_쌍곡선의정의의활용-직각삼각형사각형의넓_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_쌍곡선의정의의활용-직각삼각형사각형의넓_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 8,
+      "rangeStartUnitKey": "H22-GE-01",
+      "rangeStartUnit": "이차곡선",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-GE-01",
+      "rangeEndUnit": "이차곡선",
+      "rangeEndUnitOrder": 1,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-01",
+          "rangeStartUnit": "이차곡선",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-GE-01",
+          "rangeEndUnit": "이차곡선",
+          "rangeEndUnitOrder": 1
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_048_쌍곡선의정의의활용-초점을지나는직선이주_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_쌍곡선의정의의활용-초점을지나는직선이주_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 5,
+      "rangeStartUnitKey": "H22-GE-01",
+      "rangeStartUnit": "이차곡선",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-GE-01",
+      "rangeEndUnit": "이차곡선",
+      "rangeEndUnitOrder": 1,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-01",
+          "rangeStartUnit": "이차곡선",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-GE-01",
+          "rangeEndUnit": "이차곡선",
+          "rangeEndUnitOrder": 1
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_047_쌍곡선의정의의활용-초점이주어진경우_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_쌍곡선의정의의활용-초점이주어진경우_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 13,
+      "rangeStartUnitKey": "H22-GE-01",
+      "rangeStartUnit": "이차곡선",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-GE-01",
+      "rangeEndUnit": "이차곡선",
+      "rangeEndUnitOrder": 1,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-01",
+          "rangeStartUnit": "이차곡선",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-GE-01",
+          "rangeEndUnit": "이차곡선",
+          "rangeEndUnitOrder": 1
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_039_쌍곡선의평행이동_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_쌍곡선의평행이동_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 5,
+      "rangeStartUnitKey": "H22-GE-01",
+      "rangeStartUnit": "이차곡선",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-GE-01",
+      "rangeEndUnit": "이차곡선",
+      "rangeEndUnitOrder": 1,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-01",
+          "rangeStartUnit": "이차곡선",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-GE-01",
+          "rangeEndUnit": "이차곡선",
+          "rangeEndUnitOrder": 1
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_108_위치벡터와삼각형의넓이의비_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_위치벡터와삼각형의넓이의비_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 5,
+      "rangeStartUnitKey": "H22-GE-05",
+      "rangeStartUnit": "벡터의 연산",
+      "rangeStartUnitOrder": 5,
+      "rangeEndUnitKey": "H22-GE-05",
+      "rangeEndUnit": "벡터의 연산",
+      "rangeEndUnitOrder": 5,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-05",
+          "rangeStartUnit": "벡터의 연산",
+          "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "H22-GE-05",
+          "rangeEndUnit": "벡터의 연산",
+          "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_107_위치벡터의활용_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_위치벡터의활용_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 5,
+      "rangeStartUnitKey": "H22-GE-05",
+      "rangeStartUnit": "벡터의 연산",
+      "rangeStartUnitOrder": 5,
+      "rangeEndUnitKey": "H22-GE-05",
+      "rangeEndUnit": "벡터의 연산",
+      "rangeEndUnitOrder": 5,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-05",
+          "rangeStartUnit": "벡터의 연산",
+          "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "H22-GE-05",
+          "rangeEndUnit": "벡터의 연산",
+          "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_094_이차곡선에서벡터의연산과크기_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_이차곡선에서벡터의연산과크기_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 6,
+      "rangeStartUnitKey": "H22-GE-05",
+      "rangeStartUnit": "벡터의 연산",
+      "rangeStartUnitOrder": 5,
+      "rangeEndUnitKey": "H22-GE-05",
+      "rangeEndUnit": "벡터의 연산",
+      "rangeEndUnitOrder": 5,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-05",
+          "rangeStartUnit": "벡터의 연산",
+          "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "H22-GE-05",
+          "rangeEndUnit": "벡터의 연산",
+          "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_080_이차곡선위의한점에서의접선의방정식_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_이차곡선위의한점에서의접선의방정식_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 5,
+      "rangeStartUnitKey": "H22-GE-02",
+      "rangeStartUnit": "이차곡선의 접선",
+      "rangeStartUnitOrder": 2,
+      "rangeEndUnitKey": "H22-GE-02",
+      "rangeEndUnit": "이차곡선의 접선",
+      "rangeEndUnitOrder": 2,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-02",
+          "rangeStartUnit": "이차곡선의 접선",
+          "rangeStartUnitOrder": 2,
+          "rangeEndUnitKey": "H22-GE-02",
+          "rangeEndUnit": "이차곡선의 접선",
+          "rangeEndUnitOrder": 2
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_058_이차곡선정리_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_이차곡선정리_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 5,
+      "rangeStartUnitKey": "H22-GE-01",
+      "rangeStartUnit": "이차곡선",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-GE-01",
+      "rangeEndUnit": "이차곡선",
+      "rangeEndUnitOrder": 1,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-01",
+          "rangeStartUnit": "이차곡선",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-GE-01",
+          "rangeEndUnit": "이차곡선",
+          "rangeEndUnitOrder": 1
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_093_정n각형의벡터와합이0인경우_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_정n각형의벡터와합이0인경우_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 5,
+      "rangeStartUnitKey": "H22-GE-05",
+      "rangeStartUnit": "벡터의 연산",
+      "rangeStartUnitOrder": 5,
+      "rangeEndUnitKey": "H22-GE-05",
+      "rangeEndUnit": "벡터의 연산",
+      "rangeEndUnitOrder": 5,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-05",
+          "rangeStartUnit": "벡터의 연산",
+          "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "H22-GE-05",
+          "rangeEndUnit": "벡터의 연산",
+          "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_088_정육각형의벡터의연산1_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_정육각형의벡터의연산1_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 5,
+      "rangeStartUnitKey": "H22-GE-05",
+      "rangeStartUnit": "벡터의 연산",
+      "rangeStartUnitOrder": 5,
+      "rangeEndUnitKey": "H22-GE-05",
+      "rangeEndUnit": "벡터의 연산",
+      "rangeEndUnitOrder": 5,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-05",
+          "rangeStartUnit": "벡터의 연산",
+          "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "H22-GE-05",
+          "rangeEndUnit": "벡터의 연산",
+          "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_089_정육각형의벡터의연산2_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_정육각형의벡터의연산2_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 3,
+      "rangeStartUnitKey": "H22-GE-05",
+      "rangeStartUnit": "벡터의 연산",
+      "rangeStartUnitOrder": 5,
+      "rangeEndUnitKey": "H22-GE-05",
+      "rangeEndUnit": "벡터의 연산",
+      "rangeEndUnitOrder": 5,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-05",
+          "rangeStartUnit": "벡터의 연산",
+          "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "H22-GE-05",
+          "rangeEndUnit": "벡터의 연산",
+          "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_090_정육각형의벡터의연산3_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_정육각형의벡터의연산3_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 3,
+      "rangeStartUnitKey": "H22-GE-05",
+      "rangeStartUnit": "벡터의 연산",
+      "rangeStartUnitOrder": 5,
+      "rangeEndUnitKey": "H22-GE-05",
+      "rangeEndUnit": "벡터의 연산",
+      "rangeEndUnitOrder": 5,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-05",
+          "rangeStartUnit": "벡터의 연산",
+          "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "H22-GE-05",
+          "rangeEndUnit": "벡터의 연산",
+          "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
       "file": "types/high/h2/기하_020_중심이원점이아닌타원의방정식_고2_유형은행1.js",
       "school": "",
       "topic": "기하_중심이원점이아닌타원의방정식_유형은행1",
@@ -45560,6 +47451,285 @@ window.mainDB = {
           "rangeEndUnitKey": "H22-GE-01",
           "rangeEndUnit": "이차곡선",
           "rangeEndUnitOrder": 1
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_092_직사각형에서덧셈과뺄셈의벡터의크기_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_직사각형에서덧셈과뺄셈의벡터의크기_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 6,
+      "rangeStartUnitKey": "H22-GE-05",
+      "rangeStartUnit": "벡터의 연산",
+      "rangeStartUnitOrder": 5,
+      "rangeEndUnitKey": "H22-GE-05",
+      "rangeEndUnit": "벡터의 연산",
+      "rangeEndUnitOrder": 5,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-05",
+          "rangeStartUnit": "벡터의 연산",
+          "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "H22-GE-05",
+          "rangeEndUnit": "벡터의 연산",
+          "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_055_타원과쌍곡선의활용-초점이일치1_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_타원과쌍곡선의활용-초점이일치1_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 8,
+      "rangeStartUnitKey": "H22-GE-01",
+      "rangeStartUnit": "이차곡선",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-GE-01",
+      "rangeEndUnit": "이차곡선",
+      "rangeEndUnitOrder": 1,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-01",
+          "rangeStartUnit": "이차곡선",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-GE-01",
+          "rangeEndUnit": "이차곡선",
+          "rangeEndUnitOrder": 1
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_056_타원과쌍곡선의활용-초점이일치2_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_타원과쌍곡선의활용-초점이일치2_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 5,
+      "rangeStartUnitKey": "H22-GE-01",
+      "rangeStartUnit": "이차곡선",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-GE-01",
+      "rangeEndUnit": "이차곡선",
+      "rangeEndUnitOrder": 1,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-01",
+          "rangeStartUnit": "이차곡선",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-GE-01",
+          "rangeEndUnit": "이차곡선",
+          "rangeEndUnitOrder": 1
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_032_타원과원1_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_타원과원1_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 3,
+      "rangeStartUnitKey": "H22-GE-01",
+      "rangeStartUnit": "이차곡선",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-GE-01",
+      "rangeEndUnit": "이차곡선",
+      "rangeEndUnitOrder": 1,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-01",
+          "rangeStartUnit": "이차곡선",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-GE-01",
+          "rangeEndUnit": "이차곡선",
+          "rangeEndUnitOrder": 1
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_033_타원과원2_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_타원과원2_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 8,
+      "rangeStartUnitKey": "H22-GE-01",
+      "rangeStartUnit": "이차곡선",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-GE-01",
+      "rangeEndUnit": "이차곡선",
+      "rangeEndUnitOrder": 1,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-01",
+          "rangeStartUnit": "이차곡선",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-GE-01",
+          "rangeEndUnit": "이차곡선",
+          "rangeEndUnitOrder": 1
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_068_타원과직선의위치관계_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_타원과직선의위치관계_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 6,
+      "rangeStartUnitKey": "H22-GE-02",
+      "rangeStartUnit": "이차곡선의 접선",
+      "rangeStartUnitOrder": 2,
+      "rangeEndUnitKey": "H22-GE-02",
+      "rangeEndUnit": "이차곡선의 접선",
+      "rangeEndUnitOrder": 2,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-02",
+          "rangeStartUnit": "이차곡선의 접선",
+          "rangeStartUnitOrder": 2,
+          "rangeEndUnitKey": "H22-GE-02",
+          "rangeEndUnit": "이차곡선의 접선",
+          "rangeEndUnitOrder": 2
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_034_타원과포물선_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_타원과포물선_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 10,
+      "rangeStartUnitKey": "H22-GE-01",
+      "rangeStartUnit": "이차곡선",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-GE-01",
+      "rangeEndUnit": "이차곡선",
+      "rangeEndUnitOrder": 1,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-01",
+          "rangeStartUnit": "이차곡선",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-GE-01",
+          "rangeEndUnit": "이차곡선",
+          "rangeEndUnitOrder": 1
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_074_타원밖의한점에서그은접선의방정식_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_타원밖의한점에서그은접선의방정식_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 5,
+      "rangeStartUnitKey": "H22-GE-02",
+      "rangeStartUnit": "이차곡선의 접선",
+      "rangeStartUnitOrder": 2,
+      "rangeEndUnitKey": "H22-GE-02",
+      "rangeEndUnit": "이차곡선의 접선",
+      "rangeEndUnitOrder": 2,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-02",
+          "rangeStartUnit": "이차곡선의 접선",
+          "rangeStartUnitOrder": 2,
+          "rangeEndUnitKey": "H22-GE-02",
+          "rangeEndUnit": "이차곡선의 접선",
+          "rangeEndUnitOrder": 2
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_073_타원에기울기가주어진접선의최단거리_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_타원에기울기가주어진접선의최단거리_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 5,
+      "rangeStartUnitKey": "H22-GE-02",
+      "rangeStartUnit": "이차곡선의 접선",
+      "rangeStartUnitOrder": 2,
+      "rangeEndUnitKey": "H22-GE-02",
+      "rangeEndUnit": "이차곡선의 접선",
+      "rangeEndUnitOrder": 2,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-02",
+          "rangeStartUnit": "이차곡선의 접선",
+          "rangeStartUnitOrder": 2,
+          "rangeEndUnitKey": "H22-GE-02",
+          "rangeEndUnit": "이차곡선의 접선",
+          "rangeEndUnitOrder": 2
         }
       ],
       "primaryStandardCourse": "기하"
@@ -45627,6 +47797,37 @@ window.mainDB = {
       "primaryStandardCourse": "기하"
     },
     {
+      "file": "types/high/h2/기하_035_타원의실생활활용_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_타원의실생활활용_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 4,
+      "rangeStartUnitKey": "H22-GE-01",
+      "rangeStartUnit": "이차곡선",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-GE-01",
+      "rangeEndUnit": "이차곡선",
+      "rangeEndUnitOrder": 1,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-01",
+          "rangeStartUnit": "이차곡선",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-GE-01",
+          "rangeEndUnit": "이차곡선",
+          "rangeEndUnitOrder": 1
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
       "file": "types/high/h2/기하_022_타원의자취의방정식_고2_유형은행1.js",
       "school": "",
       "topic": "기하_타원의자취의방정식_유형은행1",
@@ -45653,6 +47854,130 @@ window.mainDB = {
           "rangeEndUnitKey": "H22-GE-01",
           "rangeEndUnit": "이차곡선",
           "rangeEndUnitOrder": 1
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_072_타원의접선의방정식-기울기가주어진경우_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_타원의접선의방정식-기울기가주어진경우_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 9,
+      "rangeStartUnitKey": "H22-GE-02",
+      "rangeStartUnit": "이차곡선의 접선",
+      "rangeStartUnitOrder": 2,
+      "rangeEndUnitKey": "H22-GE-02",
+      "rangeEndUnit": "이차곡선의 접선",
+      "rangeEndUnitOrder": 2,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-02",
+          "rangeStartUnit": "이차곡선의 접선",
+          "rangeStartUnitOrder": 2,
+          "rangeEndUnitKey": "H22-GE-02",
+          "rangeEndUnit": "이차곡선의 접선",
+          "rangeEndUnitOrder": 2
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_069_타원의접선의방정식-접점의좌표가주어진경_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_타원의접선의방정식-접점의좌표가주어진경_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 9,
+      "rangeStartUnitKey": "H22-GE-02",
+      "rangeStartUnit": "이차곡선의 접선",
+      "rangeStartUnitOrder": 2,
+      "rangeEndUnitKey": "H22-GE-02",
+      "rangeEndUnit": "이차곡선의 접선",
+      "rangeEndUnitOrder": 2,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-02",
+          "rangeStartUnit": "이차곡선의 접선",
+          "rangeStartUnitOrder": 2,
+          "rangeEndUnitKey": "H22-GE-02",
+          "rangeEndUnit": "이차곡선의 접선",
+          "rangeEndUnitOrder": 2
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_071_타원의접선의방정식의활용-산술평균과기하_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_타원의접선의방정식의활용-산술평균과기하_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 2,
+      "rangeStartUnitKey": "H22-GE-02",
+      "rangeStartUnit": "이차곡선의 접선",
+      "rangeStartUnitOrder": 2,
+      "rangeEndUnitKey": "H22-GE-02",
+      "rangeEndUnit": "이차곡선의 접선",
+      "rangeEndUnitOrder": 2,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-02",
+          "rangeStartUnit": "이차곡선의 접선",
+          "rangeStartUnitOrder": 2,
+          "rangeEndUnitKey": "H22-GE-02",
+          "rangeEndUnit": "이차곡선의 접선",
+          "rangeEndUnitOrder": 2
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_070_타원의접선의방정식의활용-포물선과타원의_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_타원의접선의방정식의활용-포물선과타원의_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 2,
+      "rangeStartUnitKey": "H22-GE-02",
+      "rangeStartUnit": "이차곡선의 접선",
+      "rangeStartUnitOrder": 2,
+      "rangeEndUnitKey": "H22-GE-02",
+      "rangeEndUnit": "이차곡선의 접선",
+      "rangeEndUnitOrder": 2,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-02",
+          "rangeStartUnit": "이차곡선의 접선",
+          "rangeStartUnitOrder": 2,
+          "rangeEndUnitKey": "H22-GE-02",
+          "rangeEndUnit": "이차곡선의 접선",
+          "rangeEndUnitOrder": 2
         }
       ],
       "primaryStandardCourse": "기하"
@@ -46030,6 +48355,223 @@ window.mainDB = {
       "primaryStandardCourse": "기하"
     },
     {
+      "file": "types/high/h2/기하_116_평면벡터에서점P가나타내는도형_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_평면벡터에서점P가나타내는도형_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 5,
+      "rangeStartUnitKey": "H22-GE-06",
+      "rangeStartUnit": "벡터의 성분",
+      "rangeStartUnitOrder": 6,
+      "rangeEndUnitKey": "H22-GE-06",
+      "rangeEndUnit": "벡터의 성분",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-06",
+          "rangeStartUnit": "벡터의 성분",
+          "rangeStartUnitOrder": 6,
+          "rangeEndUnitKey": "H22-GE-06",
+          "rangeEndUnit": "벡터의 성분",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_118_평면벡터의내적-각도제시형_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_평면벡터의내적-각도제시형_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 11,
+      "rangeStartUnitKey": "H22-GE-07",
+      "rangeStartUnit": "벡터의 내적",
+      "rangeStartUnitOrder": 7,
+      "rangeEndUnitKey": "H22-GE-07",
+      "rangeEndUnit": "벡터의 내적",
+      "rangeEndUnitOrder": 7,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-07",
+          "rangeStartUnit": "벡터의 내적",
+          "rangeStartUnitOrder": 7,
+          "rangeEndUnitKey": "H22-GE-07",
+          "rangeEndUnit": "벡터의 내적",
+          "rangeEndUnitOrder": 7
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_115_평면벡터의평행_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_평면벡터의평행_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 5,
+      "rangeStartUnitKey": "H22-GE-05",
+      "rangeStartUnit": "벡터의 연산",
+      "rangeStartUnitOrder": 5,
+      "rangeEndUnitKey": "H22-GE-05",
+      "rangeEndUnit": "벡터의 연산",
+      "rangeEndUnitOrder": 5,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-05",
+          "rangeStartUnit": "벡터의 연산",
+          "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "H22-GE-05",
+          "rangeEndUnit": "벡터의 연산",
+          "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_042_평행이동한쌍곡선의점근선_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_평행이동한쌍곡선의점근선_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 3,
+      "rangeStartUnitKey": "H22-GE-01",
+      "rangeStartUnit": "이차곡선",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-GE-01",
+      "rangeEndUnit": "이차곡선",
+      "rangeEndUnitOrder": 1,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-01",
+          "rangeStartUnit": "이차곡선",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-GE-01",
+          "rangeEndUnit": "이차곡선",
+          "rangeEndUnitOrder": 1
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_066_포물선과직선사이의거리의최솟값_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_포물선과직선사이의거리의최솟값_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 5,
+      "rangeStartUnitKey": "H22-GE-02",
+      "rangeStartUnit": "이차곡선의 접선",
+      "rangeStartUnitOrder": 2,
+      "rangeEndUnitKey": "H22-GE-02",
+      "rangeEndUnit": "이차곡선의 접선",
+      "rangeEndUnitOrder": 2,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-02",
+          "rangeStartUnit": "이차곡선의 접선",
+          "rangeStartUnitOrder": 2,
+          "rangeEndUnitKey": "H22-GE-02",
+          "rangeEndUnit": "이차곡선의 접선",
+          "rangeEndUnitOrder": 2
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_059_포물선과직선의위치관계_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_포물선과직선의위치관계_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 5,
+      "rangeStartUnitKey": "H22-GE-02",
+      "rangeStartUnit": "이차곡선의 접선",
+      "rangeStartUnitOrder": 2,
+      "rangeEndUnitKey": "H22-GE-02",
+      "rangeEndUnit": "이차곡선의 접선",
+      "rangeEndUnitOrder": 2,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-02",
+          "rangeStartUnit": "이차곡선의 접선",
+          "rangeStartUnitOrder": 2,
+          "rangeEndUnitKey": "H22-GE-02",
+          "rangeEndUnit": "이차곡선의 접선",
+          "rangeEndUnitOrder": 2
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_067_포물선밖의한점에서그은접선의방정식_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_포물선밖의한점에서그은접선의방정식_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 5,
+      "rangeStartUnitKey": "H22-GE-02",
+      "rangeStartUnit": "이차곡선의 접선",
+      "rangeStartUnitOrder": 2,
+      "rangeEndUnitKey": "H22-GE-02",
+      "rangeEndUnit": "이차곡선의 접선",
+      "rangeEndUnitOrder": 2,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-02",
+          "rangeStartUnit": "이차곡선의 접선",
+          "rangeStartUnitOrder": 2,
+          "rangeEndUnitKey": "H22-GE-02",
+          "rangeEndUnit": "이차곡선의 접선",
+          "rangeEndUnitOrder": 2
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
       "file": "types/high/h2/기하_001_포물선의방정식1_고2_유형은행1.js",
       "school": "",
       "topic": "기하_포물선의방정식1_유형은행1",
@@ -46087,6 +48629,192 @@ window.mainDB = {
           "rangeEndUnitKey": "H22-GE-01",
           "rangeEndUnit": "이차곡선",
           "rangeEndUnitOrder": 1
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_064_포물선의접선의방정식-기울기가주어진경우_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_포물선의접선의방정식-기울기가주어진경우_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 6,
+      "rangeStartUnitKey": "H22-GE-02",
+      "rangeStartUnit": "이차곡선의 접선",
+      "rangeStartUnitOrder": 2,
+      "rangeEndUnitKey": "H22-GE-02",
+      "rangeEndUnit": "이차곡선의 접선",
+      "rangeEndUnitOrder": 2,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-02",
+          "rangeStartUnit": "이차곡선의 접선",
+          "rangeStartUnitOrder": 2,
+          "rangeEndUnitKey": "H22-GE-02",
+          "rangeEndUnit": "이차곡선의 접선",
+          "rangeEndUnitOrder": 2
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_065_포물선의접선의방정식-기울기가주어진경우_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_포물선의접선의방정식-기울기가주어진경우_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 6,
+      "rangeStartUnitKey": "H22-GE-02",
+      "rangeStartUnit": "이차곡선의 접선",
+      "rangeStartUnitOrder": 2,
+      "rangeEndUnitKey": "H22-GE-02",
+      "rangeEndUnit": "이차곡선의 접선",
+      "rangeEndUnitOrder": 2,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-02",
+          "rangeStartUnit": "이차곡선의 접선",
+          "rangeStartUnitOrder": 2,
+          "rangeEndUnitKey": "H22-GE-02",
+          "rangeEndUnit": "이차곡선의 접선",
+          "rangeEndUnitOrder": 2
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_060_포물선의접선의방정식의활용-접점의좌표가_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_포물선의접선의방정식의활용-접점의좌표가_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 11,
+      "rangeStartUnitKey": "H22-GE-02",
+      "rangeStartUnit": "이차곡선의 접선",
+      "rangeStartUnitOrder": 2,
+      "rangeEndUnitKey": "H22-GE-02",
+      "rangeEndUnit": "이차곡선의 접선",
+      "rangeEndUnitOrder": 2,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-02",
+          "rangeStartUnit": "이차곡선의 접선",
+          "rangeStartUnitOrder": 2,
+          "rangeEndUnitKey": "H22-GE-02",
+          "rangeEndUnit": "이차곡선의 접선",
+          "rangeEndUnitOrder": 2
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_061_포물선의접선의방정식의활용-접점이미지수_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_포물선의접선의방정식의활용-접점이미지수_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 4,
+      "rangeStartUnitKey": "H22-GE-02",
+      "rangeStartUnit": "이차곡선의 접선",
+      "rangeStartUnitOrder": 2,
+      "rangeEndUnitKey": "H22-GE-02",
+      "rangeEndUnit": "이차곡선의 접선",
+      "rangeEndUnitOrder": 2,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-02",
+          "rangeStartUnit": "이차곡선의 접선",
+          "rangeStartUnitOrder": 2,
+          "rangeEndUnitKey": "H22-GE-02",
+          "rangeEndUnit": "이차곡선의 접선",
+          "rangeEndUnitOrder": 2
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_062_포물선의접선의방정식의활용-포물선의정의_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_포물선의접선의방정식의활용-포물선의정의_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 4,
+      "rangeStartUnitKey": "H22-GE-02",
+      "rangeStartUnit": "이차곡선의 접선",
+      "rangeStartUnitOrder": 2,
+      "rangeEndUnitKey": "H22-GE-02",
+      "rangeEndUnit": "이차곡선의 접선",
+      "rangeEndUnitOrder": 2,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-02",
+          "rangeStartUnit": "이차곡선의 접선",
+          "rangeStartUnitOrder": 2,
+          "rangeEndUnitKey": "H22-GE-02",
+          "rangeEndUnit": "이차곡선의 접선",
+          "rangeEndUnitOrder": 2
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_063_포물선의접선의성질_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_포물선의접선의성질_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 7,
+      "rangeStartUnitKey": "H22-GE-02",
+      "rangeStartUnit": "이차곡선의 접선",
+      "rangeStartUnitOrder": 2,
+      "rangeEndUnitKey": "H22-GE-02",
+      "rangeEndUnit": "이차곡선의 접선",
+      "rangeEndUnitOrder": 2,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-02",
+          "rangeStartUnit": "이차곡선의 접선",
+          "rangeStartUnitOrder": 2,
+          "rangeEndUnitKey": "H22-GE-02",
+          "rangeEndUnit": "이차곡선의 접선",
+          "rangeEndUnitOrder": 2
         }
       ],
       "primaryStandardCourse": "기하"
