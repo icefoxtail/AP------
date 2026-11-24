@@ -445,3 +445,50 @@ test("a key bound only to another grade is kept and the row's grade binding is a
   assert.equal(named.requests.length, 1);
   assert.equal(named.requests[0].registryChanges.at(-1).match.standardUnitKey, "M1-03");
 });
+
+// TPL append lane (--append-template): the PT is already approved and the template is empty; the request writes the template alone.
+test("TPL append: only approved-PT rows with an empty template and the same PT become templateOnly items; every other row is skipped with its own reason", () => {
+  const ok = { fieldStatus: { problemType: "approved_direct_judgment", template: "manual_review_pending" } };
+  const recs = [
+    row(1, { problemTypeKey: "PT_A", ...ok }), // append
+    row(2, { problemTypeKey: "PT_HIGH", ...ok }), // approved PT differs from the judged PT_A
+    row(3, { problemTypeKey: "PT_A", templateKey: "TPL_A", fieldStatus: { problemType: "approved_direct_judgment", template: "approved_direct_judgment" } }), // template present
+    row(4, { problemTypeKey: "PT_A" }), // PT is only pending
+    row(5, { problemTypeKey: "PT_A", ...ok }), // judged template belongs to another PT
+    row(6), // blank row: the ordinary lane's business
+    row(7)
+  ];
+  const ctx = makeCtx({ records: recs });
+  const rows = [line(1), line(2), line(3), line(4), line(5, { tpl: "TPL_OTHER" }), line(6)];
+  const { requests, skipped } = planRequests({ ctx, resultRows: rows, approvedBy: "x", appendTemplate: true, draftTemplate: true });
+  assert.equal(requests.length, 1);
+  assert.match(requests[0].requestId, /^ta-/);
+  assert.equal(requests[0].registryChanges, undefined, "no registry change in the append lane");
+  assert.deepEqual(requests[0].items.map(i => i.questionUid), ["uid1"]);
+  const item = requests[0].items[0];
+  assert.deepEqual(item.before, { problemTypeKey: "PT_A", templateKey: "" });
+  assert.deepEqual(item.after, { problemTypeKey: "PT_A", templateKey: "TPL_A" });
+  assert.equal(item.templateOnly, true);
+  assert.equal(item.templateGrade, "draft_single_model");
+  assert.deepEqual(summarize({ requests, skipped, resultLines: rows.length }).skippedByReason,
+    { TPL_APPEND_PT_NOT_APPROVED: 2, TPL_APPEND_PT_DIFFERS: 1, TPL_APPEND_TEMPLATE_PRESENT: 1, TPL_PARENT_DIFFERS_FROM_PT: 1 });
+  // without --draft-template no grade is written (the registrar then uses approved_direct_judgment)
+  const plain = planRequests({ ctx, resultRows: [line(1)], approvedBy: "x", appendTemplate: true });
+  assert.equal(plain.requests[0].items[0].templateOnly, true);
+  assert.equal(plain.requests[0].items[0].templateGrade, undefined);
+});
+
+test("TPL append: a question whose stem changed since the judgment is skipped, and the lane refuses to mix with other options", () => {
+  const ok = { fieldStatus: { problemType: "approved_direct_judgment", template: "manual_review_pending" } };
+  const recs = [row(1, { problemTypeKey: "PT_A", ...ok }), ...[2, 3, 4, 5, 6, 7].map(n => row(n))];
+  const changed = JSON.parse(JSON.stringify(questions)); changed[0].content = "다른 지문";
+  const ctx = makeCtx({ records: recs, ctx: { judgedBank: () => changed } });
+  const r = planRequests({ ctx, resultRows: [line(1)], approvedBy: "x", appendTemplate: true });
+  assert.equal(r.requests.length, 0);
+  assert.deepEqual(r.skipped.map(s => s.reason), ["TPL_APPEND_STEM_CHANGED"]);
+  assert.throws(() => planRequests({ ctx, resultRows: [line(1)], approvedBy: "x", appendTemplate: true, replaceDraft: true }), /APPEND_TEMPLATE_CANNOT_COMBINE/);
+  assert.throws(() => parseCli(["--results", "r", "--append-template", "--replace-draft-types"]), /APPEND_TEMPLATE_CANNOT_COMBINE/);
+  assert.throws(() => parseCli(["--results", "r", "--draft-template"]), /DRAFT_TEMPLATE_NEEDS_APPEND_TEMPLATE/);
+  const both = parseCli(["--results", "r", "--append-template", "--draft-template"]);
+  assert.deepEqual([both.appendTemplate, both.draftTemplate], [true, true]);
+});

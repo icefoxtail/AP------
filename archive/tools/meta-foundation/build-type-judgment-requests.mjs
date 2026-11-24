@@ -9,6 +9,9 @@
 //        [--only-uids <file>]   (only these question UIDs are planned; other PICK rows are neither converted nor counted as skips)
 //        [--max-requests N]   (write only the first N requests in registration order = one batch; run again on the main that holds it for the next)
 //        [--bundles <git ref> | --bundles-dir <dir>] [--bundles-only]   (new PT/TPL keys from the NEW_KEY bundle tables; implies --allow-pack-scope-additions)
+//        [--append-template [--draft-template]]   (TPL append lane: only rows whose PT is already approved and equals the judged PT and whose TPL is empty; the request
+//                                                  writes the TPL alone (item.templateOnly). --draft-template marks it draft_single_model (one model judged it). No registry
+//                                                  changes, no new keys, no grade bindings; cannot be combined with --bundles or --replace-draft-types)
 //
 // Without --out (or with --dry-run) nothing is written: only the summary is printed. With --out <dir> the request files go to
 // <dir>/.archive-meta-register/inbox/ and their evidence ledgers to <dir>/archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/.
@@ -208,7 +211,8 @@ const gitBlob = (root, rel, bytes) => fs.existsSync(path.join(root, ".git"))
 // ---------------------------------------------------------------- planning
 const SKIP_ORDER = ["DUPLICATE_RESULT_LINE", "DECISION_NEW_KEY_NOT_HANDLED", "DECISION_HOLD", "DECISION_UNKNOWN"];
 // ctx: { records: Map uid->row, identity: Map uid->identity, identityCountBySource: Map, registry, readBank(file) -> {bank, bytes}, blobOf(file, bytes) }
-export function planRequests({ ctx, resultRows, exams = null, limit = null, approvedBy, judge = "dots", allowPackAdditions = false, includeReceiptRows = false, replaceDraft = false, approveSameDraft = false, excludeUids = null, onlyUids = null }) {
+export function planRequests({ ctx, resultRows, exams = null, limit = null, approvedBy, judge = "dots", allowPackAdditions = false, includeReceiptRows = false, replaceDraft = false, approveSameDraft = false, excludeUids = null, onlyUids = null, appendTemplate = false, draftTemplate = false }) {
+  if (appendTemplate && (replaceDraft || approveSameDraft || allowPackAdditions || ctx.newKeys)) throw new Error("APPEND_TEMPLATE_CANNOT_COMBINE");
   const skipped = [], stats = { judgedBase: { checked: 0, unverified: 0, changedKept: 0 }, gradeBindingRows: 0 };
   const aliases = ctx.aliases || makeCourseAliases(null);
   const skip = (row, reason, extra = {}) => skipped.push({ uid: row.uid, exam: row.exam ?? null, no: row.no ?? null, decision: row.decision ?? null, reason, ...extra });
@@ -249,7 +253,13 @@ export function planRequests({ ctx, resultRows, exams = null, limit = null, appr
       const holds = { pt: typeFieldHoldsRegisteredValue(ctx.registry, "problemType", m.problemTypeKey), tpl: typeFieldHoldsRegisteredValue(ctx.registry, "template", m.templateKey) };
       const status = { pt: holds.pt ? String(m.fieldStatus?.problemType ?? "") : "", tpl: holds.tpl ? String(m.fieldStatus?.template ?? "") : "" };
       let replace = false;
-      if (holds.pt || holds.tpl || /^approved/i.test(status.pt) || /^approved/i.test(status.tpl)) {
+      if (appendTemplate) {
+        // TPL append lane: the PT is already approved and stays as it is; only an empty TPL is filled. Every other row is skipped with its own reason.
+        if (!holds.pt || !/^approved/i.test(status.pt)) { skip(row, "TPL_APPEND_PT_NOT_APPROVED"); continue; }
+        if ((m.problemTypeKey ?? "") !== row.pt) { skip(row, "TPL_APPEND_PT_DIFFERS", { existing: { pt: m.problemTypeKey ?? "" }, judged: { pt: row.pt } }); continue; }
+        if (!empty(m.templateKey)) { skip(row, "TPL_APPEND_TEMPLATE_PRESENT", { existing: { tpl: m.templateKey } }); continue; }
+        if (!text(row.tpl)) { skip(row, "TPL_APPEND_NO_TEMPLATE"); continue; }
+      } else if (holds.pt || holds.tpl || /^approved/i.test(status.pt) || /^approved/i.test(status.tpl)) {
         // --replace-draft-types: a value that is only a draft (both status fields overwritable) and differs from the judgment is replaced;
         // an approved or adjudicated value stays (counted with its own reason, the list of "differs from dots"); a value equal to the judgment needs nothing.
         const present = holds.pt || holds.tpl;
@@ -264,7 +274,7 @@ export function planRequests({ ctx, resultRows, exams = null, limit = null, appr
         }
         replace = true;
       }
-      if (!OVERWRITABLE_STATUS.has(status.pt) || !OVERWRITABLE_STATUS.has(status.tpl)) { skip(row, "TYPE_STATUS_NOT_OVERWRITABLE"); continue; }
+      if (!appendTemplate && (!OVERWRITABLE_STATUS.has(status.pt) || !OVERWRITABLE_STATUS.has(status.tpl))) { skip(row, "TYPE_STATUS_NOT_OVERWRITABLE"); continue; }
       // 값이 있으면 보인다(2026-11-20): 행 HOLD와 승인 영수증(metadataApprovalType)은 유형 판정을 거르는 이유가 아니다. 이 길은 유형 두 칸만 쓰고
       // 다른 칸과 영수증은 건드리지 않는다(등록기 register-type-judgment.mjs). --include-receipt-rows는 예전 호출을 위해 받기만 한다.
       const pt = ctx.registry.pt.get(row.pt);
@@ -293,13 +303,15 @@ export function planRequests({ ctx, resultRows, exams = null, limit = null, appr
           if (QuestionBinding.bindingSerialize(old) !== QuestionBinding.bindingSerialize(q)) { stats.judgedBase.changedKept++; changedSinceJudgment = true; }
         }
       }
+      // TPL append: the judged TPL belongs to the stem and choices the judge saw; a changed question is not appended (the type alone was kept, the template is not guessed).
+      if (appendTemplate && changedSinceJudgment) { skip(row, "TPL_APPEND_STEM_CHANGED"); continue; }
       if (!id || id.sourceArchiveFile !== m.sourceArchiveFile || id.sourceOrdinal !== m.sourceOrdinal) { skip(row, "IDENTITY_DIFFERS_FROM_ROW"); continue; }
       if (q.questionUid && q.questionUid !== row.uid && !isLegacyPathFormulaUid(q.questionUid, m.sourceArchiveFile, m.sourceOrdinal) &&
           !isUnambiguousLegacySourceUidAlias({ question: q, sourceArchiveFile: m.sourceArchiveFile, sourceOrdinal: m.sourceOrdinal, identityRecord: id, identityMap: ctx.identityDoc, bank })) { skip(row, "SOURCE_UID_DIFFERS_FROM_ROW"); continue; }
       // 시험지 JS에 적힌 유형이 판정과 달라도 거절하지 않는다(2026-11-20, 등록된 판정이 우선; 적힌 값은 등록기가 typeApproval.examEmbeddedType에 기록한다).
       let picked = chooseScope(ctx.registry, aliases, m, row.pt, { allowPackAdditions });
       // 같은 형태의 키가 다른 학년·교육과정에 있으면 그 키를 쓰고 이 문항의 학년 연결을 add-only로 더한다(2026-11-22, grade-bindings.mjs).
-      if (picked.skip && GRADE_BINDING_REASONS.has(picked.skip) && ctx.gradeBindings) {
+      if (picked.skip && GRADE_BINDING_REASONS.has(picked.skip) && ctx.gradeBindings && !appendTemplate) {
         const made = ctx.gradeBindings.plan(m, row, row.pt);
         if (made.skip === null) { /* no tag master in this context: the old reason stands */ }
         else if (made.skip) { skip(row, made.skip, { was: picked.skip }); continue; }
@@ -336,10 +348,10 @@ export function planRequests({ ctx, resultRows, exams = null, limit = null, appr
     for (const { row } of items) { const k = JSON.stringify(row._source); bySource.set(k, (bySource.get(k) || 0) + 1); }
     const best = [...bySource].sort((a, b) => b[1] - a[1] || (a[0] < b[0] ? -1 : 1))[0][0];
     const resultSource = JSON.parse(best);
-    const core = items.map(({ row, m }) => ({ uid: row.uid, o: m.sourceOrdinal, pt: row.pt, tpl: text(row.tpl), step: text(row.step) }));
+    const core = items.map(({ row, m }) => ({ uid: row.uid, o: m.sourceOrdinal, pt: row.pt, tpl: text(row.tpl), step: text(row.step), ...(appendTemplate ? { append: draftTemplate ? "draft" : "approved" } : {}) }));
     // The carrier of the pack changes sorts before every other request ("tc" < "td"): the inbox is registered in name order.
     const carrier = file === carrierFile && !replacing;
-    const requestId = `${carrier ? "tc" : replacing ? "tr" : "td"}-${sha1(file).slice(0, 12)}-${sha256(JSON.stringify(core)).slice(0, 8)}`;
+    const requestId = `${appendTemplate ? "ta" : carrier ? "tc" : replacing ? "tr" : "td"}-${sha1(file).slice(0, 12)}-${sha256(JSON.stringify(core)).slice(0, 8)}`;
     // The judge named on a result line (default passed judge or dots); a request whose lines name different judges is recorded as "mixed".
     const judges = [...new Set(items.map(({ row }) => text(row.judge) || judge || "dots"))];
     const effectiveJudge = judges.length === 1 ? judges[0] : "mixed";
@@ -347,6 +359,7 @@ export function planRequests({ ctx, resultRows, exams = null, limit = null, appr
       rule: "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
       rows: items.map(({ row, m, changedSinceJudgment, gradeBinding }) => ({ questionUid: row.uid, sourceOrdinal: m.sourceOrdinal, decision: row._decision ?? row.decision, problemTypeKey: row.pt, templateKey: text(row.tpl) || null,
         step: row.step ?? null, note: row.note ?? null, figure: row.figure ?? null, check: row.check ?? null, resultFile: row._source.file,
+        ...(appendTemplate ? { templateOnly: true, ...(draftTemplate ? { templateGrade: "draft_single_model" } : {}) } : {}),
         ...(changedSinceJudgment ? { stemChangedSinceJudgment: true } : {}), ...(gradeBinding ? { gradeBindingAdded: true } : {}) })),
       ...(carrier ? { packScopeAdditions: [...additions].sort((a, b) => (a[0] < b[0] ? -1 : 1)).map(([packId, e]) => ({ packId, curricula: [...e.curricula].sort(), standardCourses: [...e.standardCourses].sort() })),
         ...(gradeChanges.length ? { gradeBindingAdditions: gradeChanges.map(c => ({ problemTypeKey: c.after.problemTypeKey, curriculum: c.after.curriculum, standardCourse: c.after.standardCourse, standardUnitKey: c.after.standardUnitKey, subUnitKey: c.after.subUnitKey ?? null })) } : {}) } : {}) };
@@ -365,7 +378,7 @@ export function planRequests({ ctx, resultRows, exams = null, limit = null, appr
       items: items.map(({ row, m, scope, textFp, rationale, tplKey }) => ({ questionUid: row.uid, sourceOrdinal: m.sourceOrdinal,
         before: { problemTypeKey: empty(m.problemTypeKey) ? "" : m.problemTypeKey, templateKey: empty(m.templateKey) ? "" : m.templateKey },
         after: { problemTypeKey: row.pt, ...(tplKey ? { templateKey: tplKey } : {}) },
-        rationale, scope, textBindingFingerprint: textFp, evidenceRefs: [ref] })) };
+        rationale, scope, textBindingFingerprint: textFp, ...(appendTemplate ? { templateOnly: true, ...(draftTemplate ? { templateGrade: "draft_single_model" } : {}) } : {}), evidenceRefs: [ref] })) };
     requests.push(request);
     files.set(`${INBOX_DIR}/${requestId}.json`, json(request));
   }
@@ -485,12 +498,16 @@ export function parseCli(argv) {
     else if (k === "--bundles-only") args.bundlesOnly = true;
     else if (k === "--owner-pack") { const [b, pack] = value().split("="); if (!b || !pack) throw new Error("INVALID_OWNER_PACK"); (args.ownerPackByBundle ||= new Map()).set(b, pack); }
     else if (k === "--replace-draft-types") args.replaceDraft = true;
+    else if (k === "--append-template") args.appendTemplate = true;
+    else if (k === "--draft-template") args.draftTemplate = true;
     else if (k === "--exclude-uids") args.excludeUidsFile = value();
     else if (k === "--only-uids") args.onlyUidsFile = value();
     else if (k === "--max-requests") { args.maxRequests = Number(value()); if (!Number.isInteger(args.maxRequests) || args.maxRequests < 1) throw new Error("INVALID_MAX_REQUESTS"); }
     else throw new Error(`INVALID_ARGUMENT:${k}`);
   }
   if (!args.results.length && !args.resultsDir.length) throw new Error("RESULTS_REQUIRED");
+  if (args.draftTemplate && !args.appendTemplate) throw new Error("DRAFT_TEMPLATE_NEEDS_APPEND_TEMPLATE");
+  if (args.appendTemplate && (args.replaceDraft || args.bundles || args.bundlesDir || args.allowPackAdditions)) throw new Error("APPEND_TEMPLATE_CANNOT_COMBINE");
   if (args.examsFile) args.exams = [...(args.exams || []), ...fs.readFileSync(args.examsFile, "utf8").split(/\r?\n/).map(s => s.trim()).filter(s => s && !s.startsWith("#"))];
   return args;
 }
@@ -513,6 +530,7 @@ export function run(args) {
   planCtx = { ...planCtx, gradeBindings: createGradeBindings({ ctx: planCtx, env: { curriculumGuess, pathGrade } }) };
   const built = planRequests({ ctx: planCtx, resultRows: rows, exams: args.exams, limit: args.limit, approvedBy: args.approvedBy, judge: args.judge || "dots",
     allowPackAdditions: args.allowPackAdditions, includeReceiptRows: args.includeReceiptRows, replaceDraft: args.replaceDraft, approveSameDraft: Boolean(args.approveSameDraft),
+    appendTemplate: Boolean(args.appendTemplate), draftTemplate: Boolean(args.draftTemplate),
     onlyUids: args.onlyUidsFile ? new Set(fs.readFileSync(args.onlyUidsFile, "utf8").split(/\r?\n/).map(s => s.trim()).filter(s => s && !s.startsWith("#"))) : null,
     excludeUids: args.excludeUidsFile ? new Set(fs.readFileSync(args.excludeUidsFile, "utf8").split(/\r?\n/).map(s => s.trim()).filter(s => s && !s.startsWith("#"))) : null });
   // One batch = the first N requests in registration (file name) order; the rest are left for the next run on a main that holds this batch.
@@ -525,7 +543,8 @@ export function run(args) {
   try { head = git(ctx.root, "rev-parse", "HEAD").trim(); } catch { /* not a git checkout */ }
   const summary = summarize({ requests: built.requests, skipped: built.skipped, resultLines: resultRows.length, commits, head });
   summary.options = { allowPackScopeAdditions: args.allowPackAdditions, includeReceiptRows: args.includeReceiptRows, judgedBase: args.judgedBase,
-    bundles: args.bundles || args.bundlesDir || null, bundlesOnly: args.bundlesOnly, replaceDraftTypes: args.replaceDraft, maxRequests: args.maxRequests };
+    bundles: args.bundles || args.bundlesDir || null, bundlesOnly: args.bundlesOnly, replaceDraftTypes: args.replaceDraft, maxRequests: args.maxRequests,
+    appendTemplate: Boolean(args.appendTemplate), draftTemplate: Boolean(args.draftTemplate) };
   if (newKeys) summary.newKeys = { bundleTables: bundleOrigin, bundles: { pt: newKeys.stats.ptBundles, tpl: newKeys.stats.tplBundles }, lines: newKeys.stats.lines, ...built.stats.newKeys };
   if (args.judgedBase) summary.judgedBaseCheck = built.stats.judgedBase; // unverified = judged-time exam not found: the current question is used and counted here; changedKept = stem/choices changed since the judgment, type kept
   summary.gradeBindingRows = built.stats.gradeBindingRows;

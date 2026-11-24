@@ -171,7 +171,9 @@ function deriveUnit(root, doc, file, catalogRowsOf) {
             typeof item.after?.problemTypeKey !== "string" || !item.after.problemTypeKey.trim())
           fail("INVALID_REQUEST", "direct type judgment item needs questionUid, sourceOrdinal and after.problemTypeKey");
         return { ordinal: item.sourceOrdinal, uid: item.questionUid, unchanged: false, gated: false,
-          expect: { problemTypeKey: item.after.problemTypeKey, templateKey: typeof item.after.templateKey === "string" ? item.after.templateKey.trim() : "" } };
+          // templateDraft: a TPL append judged by one model (item.templateGrade draft_single_model) shows as a pending (P) facet by design.
+          expect: { problemTypeKey: item.after.problemTypeKey, templateKey: typeof item.after.templateKey === "string" ? item.after.templateKey.trim() : "",
+            templateDraft: item.templateOnly === true && item.templateGrade === "draft_single_model" } };
       });
       if (new Set(rows.map(r => r.uid)).size !== rows.length || new Set(rows.map(r => r.ordinal)).size !== rows.length)
         fail("INVALID_REQUEST", "direct type judgment UID/ordinal scope is ambiguous");
@@ -571,7 +573,7 @@ function checkTypeRow(consumer, unit, row) {
   if (!same(resolved.metaHintPT, row.expect.problemTypeKey)) mismatches.push(`problemTypeKey: request ${JSON.stringify(row.expect.problemTypeKey)} != consumer ${JSON.stringify(resolved.metaHintPT ?? null)}`);
   if (!same(resolved.metaHintTPL || "", row.expect.templateKey)) mismatches.push(`templateKey: request ${JSON.stringify(row.expect.templateKey)} != consumer ${JSON.stringify(resolved.metaHintTPL ?? null)}`);
   if (status[1] !== "A") mismatches.push(`PT facet is not approved (metaHintStatus=${JSON.stringify(status)})`);
-  if (row.expect.templateKey && status[2] !== "A") mismatches.push(`TPL facet is not approved (metaHintStatus=${JSON.stringify(status)})`);
+  if (row.expect.templateKey && status[2] !== (row.expect.templateDraft ? "P" : "A")) mismatches.push(`TPL facet is not ${row.expect.templateDraft ? "a draft" : "approved"} (metaHintStatus=${JSON.stringify(status)})`);
   return mismatches.length ? { ...out, reason: "VALUE_MISMATCH", detail: mismatches.join("; ") } : out;
 }
 
