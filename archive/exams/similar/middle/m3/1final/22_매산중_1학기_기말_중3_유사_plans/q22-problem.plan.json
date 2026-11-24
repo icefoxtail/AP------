@@ -1,4 +1,209 @@
 {
-  "status": "UNSUPPORTED",
-  "reason": "수준별 2-①·2-②의 문자식 변 길이를 포함한 L자 도형 및 두 문항 비교 도형은 SVG 엔진 지원 범위를 넘는다."
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "hiddenPointNames": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lLeft",
+        "ownerSegment": "sAB",
+        "text": "x+2"
+      }
+    ],
+    "regions": [
+      {
+        "id": "rArea",
+        "shapes": [
+          {
+            "polygon": [
+              "A",
+              "B",
+              "C",
+              "D"
+            ]
+          }
+        ],
+        "label": "x^2+7x+10"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "D",
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "r2",
+      "refs": [
+        "B",
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "r3",
+      "refs": [
+        "C",
+        "D",
+        "A"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 320
+  },
+  "caption": "세로의 길이가 x+2이고 넓이가 x²+7x+10인 직사각형",
+  "accessibilityDescription": "세로의 길이가 x+2로 표시되어 있고, 네 각이 모두 직각이며, 내부 넓이가 x²+7x+10으로 적힌 직사각형이 그려져 있다.",
+  "newVisualInformation": [
+    "직사각형의 세로 x+2, 넓이 x^2+7x+10"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "【서답형 2】 [서술형] 다음 두 수준별 문항 중 하나를 선택하여 풀이 과정과 답을 쓰시오.\n\n**【수준별 2-①】** (4점) 세로의 길이가 $x+2$이고 넓이가 $x^2+7x+10$인 직사각형이 있다. 이 직사각형의 가로의 길이를 구하는 풀이 과정과 답을 쓰시오.\n\n**【수준별 2-②】** (5점) 한 변의 길이가 $3x-1$인 정사각형에서 한 변의 길이가 $4$인 정사각형을 잘라낸 도형 $A$와 세로의 길이가 $3x-5$인 직사각형 $B$의 넓이가 같을 때, 도형 $B$의 가로의 길이를 구하는 풀이 과정과 답을 쓰시오. (단, $x > \\frac{5}{3}$)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
 }

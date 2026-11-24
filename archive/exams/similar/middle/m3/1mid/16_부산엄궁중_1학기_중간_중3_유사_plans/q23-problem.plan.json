@@ -1,6 +1,309 @@
 {
-  "target": "발문",
-  "type": "svg",
-  "description": "바깥 한 변이 104 cm, 안쪽 빈 정사각형 한 변이 96 cm인 색칠된 정사각형 액자 테두리",
-  "svg": "<svg viewBox=\"0 0 220 220\" width=\"220\" height=\"220\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"30\" y=\"30\" width=\"160\" height=\"160\" fill=\"rgba(59,130,246,0.20)\" stroke=\"#111\" stroke-width=\"1.8\"/><rect x=\"55\" y=\"55\" width=\"110\" height=\"110\" fill=\"#fff\" stroke=\"#111\" stroke-width=\"1.6\"/><text x=\"90\" y=\"20\" font-size=\"12\" font-weight=\"bold\" fill=\"#111\">104 cm</text><text x=\"92\" y=\"114\" font-size=\"12\" font-weight=\"bold\" fill=\"#1d4ed8\">96 cm</text></svg>"
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "104"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "104"
+            },
+            {
+              "kind": "integer",
+              "value": "104"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "104"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "I1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "I2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "100"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "I3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "100"
+            },
+            {
+              "kind": "integer",
+              "value": "100"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "I4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "100"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O1",
+    "O2",
+    "O3",
+    "O4",
+    "I1",
+    "I2",
+    "I3",
+    "I4"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sO1O2",
+      "refs": [
+        "O1",
+        "O2"
+      ]
+    },
+    {
+      "id": "sO2O3",
+      "refs": [
+        "O2",
+        "O3"
+      ]
+    },
+    {
+      "id": "sO3O4",
+      "refs": [
+        "O3",
+        "O4"
+      ]
+    },
+    {
+      "id": "sO4O1",
+      "refs": [
+        "O4",
+        "O1"
+      ]
+    },
+    {
+      "id": "sI1I2",
+      "refs": [
+        "I1",
+        "I2"
+      ]
+    },
+    {
+      "id": "sI2I3",
+      "refs": [
+        "I2",
+        "I3"
+      ]
+    },
+    {
+      "id": "sI3I4",
+      "refs": [
+        "I3",
+        "I4"
+      ]
+    },
+    {
+      "id": "sI4I1",
+      "refs": [
+        "I4",
+        "I1"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "O1",
+    "O2",
+    "O3",
+    "O4",
+    "I1",
+    "I2",
+    "I3",
+    "I4"
+  ],
+  "hiddenPointStyle": "NONE",
+  "planeMarks": {
+    "regions": [
+      {
+        "id": "rFrame",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "O1",
+              "O2",
+              "O3",
+              "O4"
+            ]
+          }
+        ],
+        "holes": [
+          {
+            "polygon": [
+              "I1",
+              "I2",
+              "I3",
+              "I4"
+            ]
+          }
+        ]
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dOuter",
+        "from": "O4",
+        "to": "O3",
+        "label": "104",
+        "unit": "cm",
+        "side": "ABOVE",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lblInner",
+        "ownerSegment": "sI3I4",
+        "text": "96 cm"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 420
+  },
+  "caption": "한 변의 길이가 104 cm인 정사각형 모양의 액자 틀에서 한 변의 길이가 96 cm인 정사각형 안쪽을 떼어 낸 테두리 부분의 모습이다.",
+  "accessibilityDescription": "한 변이 104 cm인 큰 정사각형 안에 한 변이 96 cm인 작은 정사각형이 중앙에 있고 둘 사이의 테두리 영역이 색칠되어 있다.",
+  "newVisualInformation": [
+    "큰 정사각형의 위쪽 변에 104 cm 치수선이 있고 안쪽 작은 정사각형의 위쪽 변에 96 cm 라벨이 표시되어 있다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "아래 그림과 같이 한 변의 길이가 $104\\text{ cm}$인 정사각형 모양의 액자 틀에서 한 변의 길이가 $96\\text{ cm}$인 정사각형 모양의 안쪽 부분을 떼어 내었을 때, 색칠한 테두리 부분의 넓이는? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
 }

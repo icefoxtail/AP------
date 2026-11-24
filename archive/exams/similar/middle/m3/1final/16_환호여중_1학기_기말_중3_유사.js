@@ -655,6 +655,7 @@ window.questionBank = [
   },
   {
     "id": 15,
+    "image": "assets/images/16_환호여중_1학기_기말_중3_유사/q15-problem.svg",
     "category": "이차함수의 그래프",
     "standardCourse": "중3",
     "curriculum": "2015",

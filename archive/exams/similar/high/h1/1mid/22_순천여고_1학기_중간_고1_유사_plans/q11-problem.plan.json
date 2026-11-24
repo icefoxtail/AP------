@@ -1,23 +1,9 @@
 {
   "capability": "piecewise-polynomial-spike-v1",
   "graphPlan": {
-    "family": "piecewise_polynomial",
-    "domain": [
-      -3,
-      0
-    ],
-    "viewport": [
-      -4,
-      1,
-      -4,
-      4
-    ],
+    "family": "piecewise-polynomial",
     "pieces": [
       {
-        "domain": [
-          -3,
-          0
-        ],
         "coefficients": [
           "-2",
           "-4",
@@ -25,20 +11,68 @@
         ]
       }
     ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-3",
+        "0"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "functionName": "f",
     "requiredPoints": [
       {
-        "id": "V",
-        "x": "-2",
-        "y": "2",
-        "label": "최댓값(-2, 2)"
+        "id": "A",
+        "x": -3,
+        "y": 1,
+        "marker": "NONE"
       },
       {
-        "id": "R",
-        "x": "0",
-        "y": "-2",
-        "label": "최솟값(0, -2)"
+        "id": "V",
+        "x": -2,
+        "y": 2,
+        "marker": "NONE"
+      },
+      {
+        "id": "B",
+        "x": 0,
+        "y": -2,
+        "marker": "NONE"
       }
-    ]
+    ],
+    "exactCoordinates": {},
+    "axisTickValues": {
+      "x": [
+        "-3",
+        "-2"
+      ],
+      "y": [
+        "-2"
+      ]
+    },
+    "coordinateBand": {
+      "hide": [
+        "A",
+        "V",
+        "B"
+      ]
+    }
   },
-  "caption": "구간 [-3, 0]에서 이차함수 y=-x^2-4x-2의 최솟값 -2와 최댓값 2"
+  "caption": "구간 [-3, 0]에서 정의된 이차함수의 그래프",
+  "accessibilityDescription": "닫힌구간 [-3, 0]에서 위로 볼록한 포물선이 그려져 있고 꼭짓점의 x좌표 -2와 양 끝점 x=-3, x=0 및 최솟값 -2의 눈금이 표시되어 있다.",
+  "newVisualInformation": [
+    "닫힌구간 [-3, 0]에서 정의된 위로 볼록한 포물선",
+    "꼭짓점 x=-2와 최솟값 -2"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$-3\\le x\\le 0$에서 이차함수 $y=-x^2-4x+k$의 최솟값이 $-2$일 때, 이 이차함수의 최댓값은? (단, $k$는 상수이다.)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
 }

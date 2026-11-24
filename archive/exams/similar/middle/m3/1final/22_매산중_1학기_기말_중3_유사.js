@@ -987,6 +987,7 @@ window.questionBank = [
   },
   {
     "id": 22,
+    "image": "assets/images/22_매산중_1학기_기말_중3_유사/q22-problem.svg",
     "category": "인수분해",
     "standardCourse": "중3",
     "curriculum": "2015",
@@ -1077,6 +1078,7 @@ window.questionBank = [
   },
   {
     "id": 24,
+    "image": "assets/images/22_매산중_1학기_기말_중3_유사/q24-problem.svg",
     "category": "이차방정식의 활용",
     "standardCourse": "중3",
     "curriculum": "2015",

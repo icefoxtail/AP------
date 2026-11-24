@@ -1,23 +1,9 @@
 {
   "capability": "piecewise-polynomial-spike-v1",
   "graphPlan": {
-    "family": "piecewise_polynomial",
-    "domain": [
-      -4,
-      4
-    ],
-    "viewport": [
-      -5,
-      5,
-      -1,
-      8
-    ],
+    "family": "piecewise-polynomial",
     "pieces": [
       {
-        "domain": [
-          -4,
-          4
-        ],
         "coefficients": [
           "0",
           "0",
@@ -25,32 +11,86 @@
         ]
       }
     ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "1/2*x^2",
+    "functionName": "f",
     "requiredPoints": [
       {
-        "id": "A",
-        "x": "0",
-        "y": "2",
-        "label": "A(0, 2)"
-      },
-      {
-        "id": "Q",
-        "x": "sqrt(3)",
-        "y": "0",
-        "label": "Q"
-      },
-      {
-        "id": "P",
-        "x": "2*sqrt(3)",
-        "y": "6",
-        "label": "P"
-      },
-      {
-        "id": "R",
-        "x": "-2*sqrt(3)",
-        "y": "6",
-        "label": "R"
+        "id": "O",
+        "x": 0,
+        "y": 0,
+        "marker": "NONE"
       }
-    ]
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "y"
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "0",
+          "y": "2"
+        },
+        {
+          "id": "Q",
+          "x": "sqrt(3)",
+          "y": "0"
+        },
+        {
+          "id": "P",
+          "x": "2*sqrt(3)",
+          "y": "6"
+        },
+        {
+          "id": "R",
+          "x": "-2*sqrt(3)",
+          "y": "6"
+        }
+      ],
+      "segments": [
+        {
+          "id": "sRQ",
+          "from": "R",
+          "to": "Q"
+        },
+        {
+          "id": "sQP",
+          "from": "Q",
+          "to": "P"
+        },
+        {
+          "id": "sPR",
+          "from": "P",
+          "to": "R"
+        }
+      ]
+    }
   },
-  "caption": "포물선 y=(1/2)x^2 위의 점 P, R과 x절편 Q로 이루어진 삼각형 RQP"
+  "pointNames": {
+    "A": "A",
+    "Q": "Q",
+    "P": "P",
+    "R": "R"
+  },
+  "caption": "좌표평면 위에 이차함수 y=f(x)의 그래프와 세 점 P, Q, R로 이루어진 삼각형 RQP가 나타나 있다.",
+  "accessibilityDescription": "가로축은 x축, 세로축은 y축인 좌표평면이다. 원점을 꼭짓점으로 하는 아래로 볼록한 포물선이 그려져 있다. y축 위의 점 A와 포물선 위의 점 P, R, 그리고 x축 위의 점 Q가 표시되어 있고 점 R, Q, P를 꼭짓점으로 하는 삼각형이 그려져 있다.",
+  "newVisualInformation": [
+    "포물선 위의 두 점 P, R과 x축 위의 점 Q를 잇는 삼각형 RQP가 나타나 있고 점 A가 선분 위에 위치한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "좌표평면 위의 점 $A(0, 2)$가 있다. 이차함수 $f(x)=\\dfrac{1}{2}x^2$의 그래프 위의 점 $P\\left(t, \\dfrac{t^2}{2}\\right)$ ($t>0$)를 지나고 기울기가 $t$인 직선이 $x$축과 만나는 점을 $Q$라 하자. 선분 $QA$를 $3:2$로 외분하는 점 $R$이 함수 $y=f(x)$의 그래프 위의 점일 때, 삼각형 $RQP$의 넓이는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
 }
