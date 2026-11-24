@@ -501,6 +501,17 @@
    "detail": "지금 돌리면 실패(분류: 환경 요인 추정(python)) — ✖ Python deterministic numeric generation: quantifier-negation (752.1407ms)"
   },
   {
+   "match": "archive/tools/pipeline-core/tests/gold-work-batch.test.mjs",
+   "local": {
+    "result": "pass",
+    "ms": 9600,
+    "mode": "node --test",
+    "signature": "Error: Command failed: git rev-parse refs/heads/main"
+   },
+   "reason": "fails-now",
+   "detail": "PC에서는 통과하지만 CI에서는 실패(분류: 환경 요인) — Command failed: git rev-parse refs/heads/main (PR 체크아웃에는 로컬 main 브랜치가 없다). 2026-11-24에 켰다가 되돌림."
+  },
+  {
    "match": "archive/tools/pipeline-core/tests/integration.test.mjs",
    "local": {
     "result": "fail",
