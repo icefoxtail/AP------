@@ -480,6 +480,7 @@ window.questionBank = [
   },
   {
     "id": 11,
+    "image": "assets/images/16_왕의중_2학기_기말_중3_유사/q11-problem.svg",
     "category": "원과 직선",
     "standardCourse": "중3",
     "curriculum": "2015",
@@ -763,6 +764,7 @@ window.questionBank = [
   },
   {
     "id": 17,
+    "image": "assets/images/16_왕의중_2학기_기말_중3_유사/q17-problem.svg",
     "category": "원주각",
     "standardCourse": "중3",
     "curriculum": "2015",

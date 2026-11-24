@@ -99,6 +99,7 @@ window.questionBank = [
   },
   {
     "id": 3,
+    "image": "assets/images/20_연향중_2학기_기말_중3_유사/q03-problem.svg",
     "category": "원주각",
     "standardCourse": "중3",
     "curriculum": "2015",
@@ -146,6 +147,7 @@ window.questionBank = [
   },
   {
     "id": 4,
+    "image": "assets/images/20_연향중_2학기_기말_중3_유사/q04-problem.svg",
     "category": "원주각",
     "standardCourse": "중3",
     "curriculum": "2015",
@@ -241,6 +243,7 @@ window.questionBank = [
   },
   {
     "id": 6,
+    "image": "assets/images/20_연향중_2학기_기말_중3_유사/q06-problem.svg",
     "category": "원주각",
     "standardCourse": "중3",
     "curriculum": "2015",
@@ -891,6 +894,7 @@ window.questionBank = [
   },
   {
     "id": 20,
+    "image": "assets/images/20_연향중_2학기_기말_중3_유사/q20-problem.svg",
     "category": "원주각",
     "standardCourse": "중3",
     "curriculum": "2015",

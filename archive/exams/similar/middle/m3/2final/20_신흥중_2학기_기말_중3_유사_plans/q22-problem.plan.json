@@ -1,9 +1,387 @@
 {
   "capability": "construction-spike-v1",
-  "realization": {
-    "recipeId": "PLANE_FIGURE_v1",
-    "unit": "source-length",
-    "reflectionEquivalent": false
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "215"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "325"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "15"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "65"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lBA",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "A"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lCD",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "C",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lBA",
+          "lCD"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lBC",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lAD",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lBC",
+          "lAD"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
   },
-  "caption": "내접사각형 두 연장선 삼각형과 대각합 180도 연립으로 네 내각 계산"
+  "displayLines": [],
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 580
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "hiddenPointNames": [
+    "O"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "BA",
+      "refs": [
+        "B",
+        "A"
+      ]
+    },
+    {
+      "id": "AE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "AD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "DF",
+      "refs": [
+        "D",
+        "F"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CF",
+      "refs": [
+        "C",
+        "F"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aE",
+        "refs": [
+          "A",
+          "E",
+          "D"
+        ],
+        "value": 30,
+        "label": "30",
+        "color": "BLUE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aF",
+        "refs": [
+          "D",
+          "F",
+          "C"
+        ],
+        "value": 50,
+        "label": "50",
+        "color": "WARM",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "iA",
+        "refs": [
+          "D",
+          "A",
+          "B"
+        ],
+        "value": 80,
+        "label": "A",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "labelKind": "NAME"
+      },
+      {
+        "id": "iB",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 50,
+        "label": "B",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "labelKind": "NAME"
+      },
+      {
+        "id": "iC",
+        "refs": [
+          "B",
+          "C",
+          "D"
+        ],
+        "value": 100,
+        "label": "C",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "labelKind": "NAME"
+      },
+      {
+        "id": "iD",
+        "refs": [
+          "C",
+          "D",
+          "A"
+        ],
+        "value": 130,
+        "label": "D",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "labelKind": "NAME"
+      }
+    ]
+  },
+  "caption": "원에 내접하는 사각형과 두 변의 연장선의 교점 E, F에서 이루는 각을 나타낸 그림이다.",
+  "accessibilityDescription": "원 O에 내접하는 사각형에서 변 AB와 DC의 연장선이 만나는 점 E에서의 각이 30도, 변 AD와 BC의 연장선이 만나는 점 F에서의 각이 50도로 표시되어 있다.",
+  "newVisualInformation": [
+    "원에 내접하는 사각형과 두 연장선의 교점에서 생기는 각의 크기를 나타낸다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 2] 그림과 같이 원에 내접하는 사각형 $ABCD$에서 변 $AB, DC$의 연장선의 교점을 $E$, 변 $AD, BC$의 연장선의 교점을 $F$라 하자. $\\angle E = 30^\\circ, \\angle F = 50^\\circ$일 때, 사각형 $ABCD$의 네 내각 $\\angle A, \\angle B, \\angle C, \\angle D$의 크기를 각각 구하는 풀이 과정을 서술하시오. (단, 점 $A$는 선분 $EB$ 위에, 점 $C$는 선분 $FB$ 위에, 점 $D$는 선분 $EC, FA$ 위에 있다.)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "원에 내접하는 사각형에서 ∠E=30°, ∠F=50°이다."
+    }
+  ]
 }

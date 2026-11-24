@@ -1,75 +1,514 @@
 {
-  "kind": "geometry",
-  "caption": "반지름 1인 사분원에서 ∠AOB=x°, ∠OAB=z°, 접선 CD",
-  "viewBox": [
-    0,
-    0,
-    240,
-    220
-  ],
-  "vertices": {
-    "O": [
-      40,
-      180
-    ],
-    "B": [
-      140,
-      180
-    ],
-    "A": [
-      140,
-      80
-    ],
-    "D": [
-      180,
-      180
-    ],
-    "C": [
-      180,
-      40
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "D"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "37"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "axis",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "O",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "A",
+          "axis"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "D"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "l1",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "l2",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "D",
+          "V"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "l1",
+          "l2"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Xneg",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "-3",
+            "denominator": "20"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Xpos",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "D"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "1",
+            "denominator": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Yneg",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "-3",
+            "denominator": "20"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Ypos",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "U"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "1",
+            "denominator": "4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Dbot",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "D"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "-3",
+            "denominator": "20"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Ctop",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "D"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "23",
+            "denominator": "20"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
     ]
   },
-  "segments": [
-    [
-      "O",
-      "D"
-    ],
-    [
-      "D",
-      "C"
-    ],
-    [
-      "O",
-      "C"
-    ],
-    [
-      "A",
-      "B"
-    ]
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "U",
+    "Xneg",
+    "Xpos",
+    "Yneg",
+    "Ypos",
+    "Dbot",
+    "Ctop"
   ],
-  "arcs": [
+  "hiddenPointNames": [
+    "U",
+    "Xneg",
+    "Xpos",
+    "Yneg",
+    "Ypos",
+    "Dbot",
+    "Ctop"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
     {
-      "center": "O",
-      "radius": 140,
-      "startAngle": 0,
-      "endAngle": 90
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sOU",
+      "refs": [
+        "O",
+        "U"
+      ]
+    },
+    {
+      "id": "sXnegO",
+      "refs": [
+        "Xneg",
+        "O"
+      ]
+    },
+    {
+      "id": "sDXpos",
+      "refs": [
+        "D",
+        "Xpos"
+      ],
+      "arrow": "END"
+    },
+    {
+      "id": "sYnegO",
+      "refs": [
+        "Yneg",
+        "O"
+      ]
+    },
+    {
+      "id": "sUYpos",
+      "refs": [
+        "U",
+        "Ypos"
+      ],
+      "arrow": "END"
+    },
+    {
+      "id": "sDDbot",
+      "refs": [
+        "D",
+        "Dbot"
+      ]
+    },
+    {
+      "id": "sCCtop",
+      "refs": [
+        "C",
+        "Ctop"
+      ]
     }
   ],
   "rightAngles": [
-    [
-      "O",
-      "B",
-      "A"
-    ],
-    [
-      "O",
-      "D",
-      "C"
-    ]
+    {
+      "id": "rB",
+      "refs": [
+        "O",
+        "B",
+        "A"
+      ]
+    },
+    {
+      "id": "rD",
+      "refs": [
+        "O",
+        "D",
+        "C"
+      ]
+    }
   ],
-  "labels": {
-    "OA": "1",
-    "O": "x°",
-    "A": "z°"
-  }
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aO",
+        "refs": [
+          "A",
+          "O",
+          "B"
+        ],
+        "value": 37,
+        "label": "x",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aA",
+        "refs": [
+          "O",
+          "A",
+          "B"
+        ],
+        "value": 53,
+        "label": "y",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aC",
+        "refs": [
+          "A",
+          "C",
+          "D"
+        ],
+        "value": 53,
+        "label": "z",
+        "factRole": "GIVEN"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "arcDU",
+        "circle": "circ",
+        "center": "O",
+        "from": "D",
+        "to": "U",
+        "side": "MINOR",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lOU",
+        "ownerSegment": "sOU",
+        "text": "1"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 480
+  },
+  "caption": "반지름이 1인 사분원과 직각삼각형 AOB, COD를 좌표평면 위에 나타낸 그림이다.",
+  "accessibilityDescription": "원점 O를 중심으로 하고 반지름이 1인 사분원이 제1사분면에 그려져 있다. 호 위의 점 A에서 x축에 내린 수선의 발을 B라 하고, 점 D(1, 0)에서의 접선과 동경 OA의 연장선이 만나는 점을 C라 한다. 각 AOB는 x, 각 OAB는 y, 각 ACD는 z로 표시되어 있고 점 B와 D에 직각 표시가 있다.",
+  "newVisualInformation": [
+    "각 AOB는 x이다.",
+    "각 OAB는 y이다.",
+    "각 ACD는 z이다.",
+    "선분 AB는 x축과 수직이다.",
+    "선분 CD는 x축과 수직이다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[12-13] 다음 그림과 같이 반지름의 길이가 $1$인 사분원이 있다. $\\sin x^\\circ$의 값과 길이가 같은 선분은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
 }
