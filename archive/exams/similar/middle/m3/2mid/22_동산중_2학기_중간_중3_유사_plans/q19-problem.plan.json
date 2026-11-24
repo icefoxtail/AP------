@@ -1,142 +1,319 @@
 {
   "capability": "construction-spike-v1",
-  "mode": "PLANE_FIGURE_v1",
-  "mathPlan": [
-    {
-      "id": "B",
-      "op": "SOURCE_POINT",
-      "args": {
-        "x": 0,
-        "y": 0
-      }
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
     },
-    {
-      "id": "C",
-      "op": "SOURCE_POINT",
-      "args": {
-        "x": 4.5,
-        "y": 0
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "add",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "12"
+                },
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "6"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "add",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "12"
+                },
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "8"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
       }
-    },
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
     {
-      "id": "A",
-      "op": "POLAR_POINT",
-      "inputs": [
-        "B"
-      ],
-      "args": {
-        "r": 4,
-        "deg": 60
-      }
-    },
-    {
-      "id": "AB",
-      "op": "SEGMENT",
-      "inputs": [
+      "id": "sAB",
+      "refs": [
         "A",
         "B"
       ]
     },
     {
-      "id": "BC",
-      "op": "SEGMENT",
-      "inputs": [
+      "id": "sBC",
+      "refs": [
         "B",
         "C"
       ]
     },
     {
-      "id": "CA",
-      "op": "SEGMENT",
-      "inputs": [
+      "id": "sCA",
+      "refs": [
         "C",
         "A"
       ]
     },
     {
-      "id": "E",
-      "op": "SOURCE_POINT",
-      "args": {
-        "x": 6.5,
-        "y": 0
-      }
-    },
-    {
-      "id": "F",
-      "op": "SOURCE_POINT",
-      "args": {
-        "x": 11.7,
-        "y": 0
-      }
-    },
-    {
-      "id": "D",
-      "op": "POLAR_POINT",
-      "inputs": [
-        "F"
-      ],
-      "args": {
-        "r": 3.5,
-        "deg": 60
-      }
-    },
-    {
-      "id": "DE",
-      "op": "SEGMENT",
-      "inputs": [
+      "id": "sDE",
+      "refs": [
         "D",
         "E"
       ]
     },
     {
-      "id": "EF",
-      "op": "SEGMENT",
-      "inputs": [
+      "id": "sEF",
+      "refs": [
         "E",
         "F"
       ]
     },
     {
-      "id": "FD",
-      "op": "SEGMENT",
-      "inputs": [
-        "F",
-        "D"
+      "id": "sDF",
+      "refs": [
+        "D",
+        "F"
       ]
     }
   ],
   "planeMarks": {
-    "angleArcs": [
+    "angles": [
       {
-        "vertex": "B",
-        "ray1": "C",
-        "ray2": "A",
-        "label": "60°"
+        "id": "aB",
+        "refs": [
+          "C",
+          "B",
+          "A"
+        ],
+        "value": 60,
+        "label": "60",
+        "arcs": 1,
+        "factRole": "GIVEN"
       },
       {
-        "vertex": "F",
-        "ray1": "D",
-        "ray2": "E",
-        "label": "120°"
+        "id": "aF",
+        "refs": [
+          "E",
+          "F",
+          "D"
+        ],
+        "value": 120,
+        "label": "120",
+        "arcs": 1,
+        "factRole": "GIVEN"
       }
     ],
-    "segmentLabels": [
+    "expressionLabels": [
       {
-        "from": "A",
-        "to": "B",
-        "label": "8"
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "8",
+        "factRole": "GIVEN"
       },
       {
-        "from": "B",
-        "to": "C",
-        "label": "9"
+        "id": "lBC",
+        "ownerSegment": "sBC",
+        "text": "9",
+        "factRole": "GIVEN"
       },
       {
-        "from": "E",
-        "to": "F",
-        "label": "6√3"
+        "id": "lEF",
+        "ownerSegment": "sEF",
+        "text": "6*sqrt(3)",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lDF",
+        "ownerSegment": "sDF",
+        "text": "x",
+        "factRole": "GIVEN"
       }
     ]
   },
-  "caption": "넓이가 같은 예각삼각형 ABC(60도)와 둔각삼각형 DEF(120도)"
+  "coordinateCanvas": {
+    "width": 540,
+    "height": 320
+  },
+  "caption": "넓이가 서로 같은 삼각형 ABC와 삼각형 DEF에서 각 변의 길이와 각의 크기를 나타낸 그림이다.",
+  "accessibilityDescription": "삼각형 ABC에서 변 AB의 길이는 8, 변 BC의 길이는 9이고 각 B의 크기는 60도이다. 삼각형 DEF에서 변 EF의 길이는 6루트3, 변 DF의 길이는 x이고 각 F의 크기는 120도이다.",
+  "newVisualInformation": [
+    "삼각형 ABC의 넓이와 삼각형 DEF의 넓이가 같다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "그림에서 $\\overline{\\mathrm{AB}} = 8$, $\\overline{\\mathrm{BC}} = 9$, $\\angle\\mathrm{ABC} = 60^\\circ$인 $\\triangle\\mathrm{ABC}$의 넓이와 $\\overline{\\mathrm{EF}} = 6\\sqrt{3}$, $\\angle\\mathrm{EFD} = 120^\\circ$인 $\\triangle\\mathrm{DEF}$의 넓이가 같을 때, $\\overline{\\mathrm{DF}}$의 길이는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
 }

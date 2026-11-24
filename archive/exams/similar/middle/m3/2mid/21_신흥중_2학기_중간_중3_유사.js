@@ -620,6 +620,7 @@ window.questionBank = [
   },
   {
     "id": 14,
+    "image": "assets/images/21_신흥중_2학기_중간_중3_유사/q14-problem.svg",
     "category": "원과 직선",
     "standardCourse": "중3",
     "curriculum": "2015",
@@ -713,6 +714,7 @@ window.questionBank = [
   },
   {
     "id": 16,
+    "image": "assets/images/21_신흥중_2학기_중간_중3_유사/q16-problem.svg",
     "category": "원과 직선",
     "standardCourse": "중3",
     "curriculum": "2015",
@@ -761,6 +763,7 @@ window.questionBank = [
   },
   {
     "id": 17,
+    "image": "assets/images/21_신흥중_2학기_중간_중3_유사/q17-problem.svg",
     "category": "원과 직선",
     "standardCourse": "중3",
     "curriculum": "2015",
@@ -858,6 +861,7 @@ window.questionBank = [
   },
   {
     "id": 19,
+    "image": "assets/images/21_신흥중_2학기_중간_중3_유사/q19-problem.svg",
     "category": "원과 직선",
     "standardCourse": "중3",
     "curriculum": "2015",

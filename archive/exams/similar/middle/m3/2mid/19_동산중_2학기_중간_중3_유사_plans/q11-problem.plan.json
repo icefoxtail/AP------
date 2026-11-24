@@ -1,29 +1,360 @@
 {
-  "kind": "geometry",
-  "elements": [
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "51"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-48"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "V1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "51"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "V2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "51"
+            },
+            {
+              "kind": "integer",
+              "value": "51"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-51"
+            },
+            {
+              "kind": "integer",
+              "value": "99"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-99"
+            },
+            {
+              "kind": "integer",
+              "value": "48"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "S1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-48"
+            },
+            {
+              "kind": "integer",
+              "value": "-48"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "S2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-48"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "C",
+    "B",
+    "A",
+    "V1",
+    "V2",
+    "H1",
+    "H2",
+    "S1",
+    "S2"
+  ],
+  "hiddenPointNames": [
+    "C",
+    "B",
+    "A",
+    "V1",
+    "V2",
+    "H1",
+    "H2",
+    "S1",
+    "S2"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
     {
-      "type": "triangle",
-      "vertices": [
+      "id": "sAB",
+      "refs": [
         "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
         "B",
         "C"
-      ],
-      "rightAngle": "A"
+      ]
     },
     {
-      "type": "squareOnSide",
-      "side": "BC",
-      "areaLabel": "100 cm²"
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
     },
     {
-      "type": "squareOnSide",
-      "side": "AB",
-      "areaLabel": "53 cm²"
+      "id": "sCV1",
+      "refs": [
+        "C",
+        "V1"
+      ]
     },
     {
-      "type": "squareOnSide",
-      "side": "AC",
-      "shaded": true
+      "id": "sV1V2",
+      "refs": [
+        "V1",
+        "V2"
+      ]
+    },
+    {
+      "id": "sV2B",
+      "refs": [
+        "V2",
+        "B"
+      ]
+    },
+    {
+      "id": "sBH1",
+      "refs": [
+        "B",
+        "H1"
+      ]
+    },
+    {
+      "id": "sH1H2",
+      "refs": [
+        "H1",
+        "H2"
+      ]
+    },
+    {
+      "id": "sH2A",
+      "refs": [
+        "H2",
+        "A"
+      ]
+    },
+    {
+      "id": "sAS1",
+      "refs": [
+        "A",
+        "S1"
+      ]
+    },
+    {
+      "id": "sS1S2",
+      "refs": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "id": "sS2C",
+      "refs": [
+        "S2",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "textLabels": [
+      {
+        "id": "t1",
+        "at": [
+          -50,
+          50
+        ],
+        "text": "100",
+        "labelKind": "MATH"
+      },
+      {
+        "id": "t2",
+        "at": [
+          26,
+          26
+        ],
+        "text": "53",
+        "labelKind": "MATH"
+      }
+    ],
+    "regions": [
+      {
+        "id": "rg0",
+        "fill": "LIGHT",
+        "pattern": "HATCH",
+        "shapes": [
+          {
+            "polygon": [
+              "A",
+              "S1",
+              "S2",
+              "C"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 420
+  },
+  "caption": "직각삼각형의 각 변을 한 변으로 하는 세 정사각형과 색칠된 정사각형",
+  "accessibilityDescription": "직각삼각형의 빗변 위의 정사각형에 100, 한 직각변 위의 정사각형에 53이 적혀 있고 다른 직각변 위의 정사각형은 빗금으로 칠해져 있다.",
+  "newVisualInformation": [
+    "빗변 위의 정사각형 넓이는 100이고 한 직각변 위의 정사각형 넓이는 53이며 다른 직각변 위의 정사각형이 빗금으로 칠해져 있다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림과 같이 직각삼각형의 각 변을 한 변으로 하는 세 정사각형에서 빗변 위의 정사각형의 넓이가 $100\\text{ cm}^2$, 한 직각변 위의 정사각형의 넓이가 $53\\text{ cm}^2$일 때, 나머지 색칠한 정사각형의 한 변의 길이는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
     }
   ]
 }

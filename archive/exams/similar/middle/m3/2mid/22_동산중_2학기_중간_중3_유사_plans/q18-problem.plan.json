@@ -1,81 +1,163 @@
 {
   "capability": "construction-spike-v1",
-  "mode": "PLANE_FIGURE_v1",
-  "mathPlan": [
-    {
-      "id": "B",
-      "op": "SOURCE_POINT",
-      "args": {
-        "x": 0,
-        "y": 0
-      }
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
     },
-    {
-      "id": "C",
-      "op": "SOURCE_POINT",
-      "args": {
-        "x": 7,
-        "y": 0
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "14"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "284",
+              "denominator": "41"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "858",
+              "denominator": "41"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
       }
-    },
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
     {
-      "id": "A",
-      "op": "SOURCE_POINT",
-      "args": {
-        "x": 3.464,
-        "y": 2
-      }
-    },
-    {
-      "id": "D",
-      "op": "SOURCE_POINT",
-      "args": {
-        "x": 10.464,
-        "y": 2
-      }
-    },
-    {
-      "id": "AB",
-      "op": "SEGMENT",
-      "inputs": [
+      "id": "sAB",
+      "refs": [
         "A",
         "B"
       ]
     },
     {
-      "id": "BC",
-      "op": "SEGMENT",
-      "inputs": [
+      "id": "sBC",
+      "refs": [
         "B",
         "C"
       ]
     },
     {
-      "id": "CD",
-      "op": "SEGMENT",
-      "inputs": [
+      "id": "sCD",
+      "refs": [
         "C",
         "D"
       ]
     },
     {
-      "id": "DA",
-      "op": "SEGMENT",
-      "inputs": [
+      "id": "sDA",
+      "refs": [
         "D",
         "A"
       ]
     }
   ],
   "planeMarks": {
-    "angleArcs": [
+    "angles": [
       {
-        "vertex": "B",
-        "ray1": "C",
-        "ray2": "A",
-        "label": "30°"
+        "id": "aB",
+        "refs": [
+          "C",
+          "B",
+          "A"
+        ],
+        "value": 30,
+        "label": "30",
+        "arcs": 1,
+        "style": "ARC",
+        "factRole": "GIVEN"
       }
     ]
   },
-  "caption": "폭이 4와 7인 두 종이 테이프가 30도로 겹쳐 만들어진 평행사변형 ABCD"
+  "rightAngles": [],
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 320
+  },
+  "caption": "폭이 각각 4와 7인 두 종이 테이프가 30도의 각을 이루며 겹쳐진 평행사변형 ABCD",
+  "accessibilityDescription": "두 테이프가 겹쳐진 평행사변형 ABCD에서 꼭짓점 B의 내각이 30도로 표시되어 있다.",
+  "newVisualInformation": [
+    "평행사변형 ABCD의 꼭짓점 B의 내각 크기는 30도이다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "폭이 각각 $4$, $7$로 일정한 두 종이 테이프가 그림과 같이 $30^\\circ$의 각을 이루며 겹쳐져 있을 때, 겹쳐진 사각형 $\\mathrm{ABCD}$의 둘레의 길이는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
 }

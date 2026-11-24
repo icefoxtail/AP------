@@ -1,31 +1,207 @@
 {
-  "kind": "geometry",
-  "elements": [
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "12"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "300"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "P"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
     {
-      "type": "circle",
-      "center": "O"
+      "id": "OA",
+      "refs": [
+        "O",
+        "A"
+      ]
     },
     {
-      "type": "tangentPair",
-      "from": "P",
-      "touches": [
-        "A",
+      "id": "OB",
+      "refs": [
+        "O",
         "B"
       ]
     },
     {
-      "type": "angle",
-      "at": "P",
-      "arms": [
-        "A",
-        "B"
-      ],
-      "text": "60°"
+      "id": "PA",
+      "refs": [
+        "P",
+        "A"
+      ]
     },
     {
-      "type": "label",
-      "target": "AP",
-      "text": "12 cm"
+      "id": "PB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aP",
+        "refs": [
+          "A",
+          "P",
+          "B"
+        ],
+        "value": 60,
+        "label": "60",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lPA",
+        "ownerSegment": "PA",
+        "text": "12",
+        "unit": "cm"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 520,
+    "height": 480
+  },
+  "caption": "원 O의 외부의 점 P에서 그은 두 접선 PA, PB와 두 반지름 OA, OB를 나타낸 그림이다.",
+  "accessibilityDescription": "원 O와 외부의 점 P가 있고 점 P에서 원에 그은 두 접선의 접점이 A, B이다. 점 P에서 접선 PA, PB가 그어져 있고 중심 O에서 접점 A, B로 반지름 OA, OB가 그어져 있다. 각 APB의 크기는 60도이고 선분 PA의 길이는 12 cm이다.",
+  "newVisualInformation": [
+    "각 APB의 크기는 60도이다.",
+    "선분 PA의 길이는 12 cm이다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림에서 $\\overline{\\text{PA}}$, $\\overline{\\text{PB}}$는 원 $\\text{O}$의 접선이고 두 점 $\\text{A}$, $\\text{B}$는 접점이다. $\\angle\\text{APB}=60^\\circ$, $\\overline{\\text{AP}}=12\\text{ cm}$일 때, 원 $\\text{O}$의 반지름의 길이는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
     }
   ]
 }

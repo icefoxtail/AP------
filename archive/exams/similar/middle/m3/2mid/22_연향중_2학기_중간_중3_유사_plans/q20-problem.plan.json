@@ -1,80 +1,180 @@
 {
   "capability": "construction-spike-v1",
-  "mode": "PLANE_FIGURE_v1",
-  "mathPlan": [
-    {
-      "id": "B",
-      "op": "SOURCE_POINT",
-      "args": {
-        "x": 0,
-        "y": 0
-      }
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
     },
-    {
-      "id": "C",
-      "op": "SOURCE_POINT",
-      "args": {
-        "x": 6.928,
-        "y": 0
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "8"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "3"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
       }
-    },
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
     {
-      "id": "A",
-      "op": "POLAR_POINT",
-      "inputs": [
-        "B"
-      ],
-      "args": {
-        "r": 3,
-        "deg": 30
-      }
-    },
-    {
-      "id": "AB",
-      "op": "SEGMENT",
-      "inputs": [
+      "id": "sAB",
+      "refs": [
         "A",
         "B"
       ]
     },
     {
-      "id": "BC",
-      "op": "SEGMENT",
-      "inputs": [
+      "id": "sBC",
+      "refs": [
         "B",
         "C"
       ]
     },
     {
-      "id": "CA",
-      "op": "SEGMENT",
-      "inputs": [
+      "id": "sCA",
+      "refs": [
         "C",
         "A"
       ]
     }
   ],
   "planeMarks": {
-    "angleArcs": [
+    "angles": [
       {
-        "vertex": "B",
-        "ray1": "C",
-        "ray2": "A",
-        "label": "30°"
+        "id": "aB",
+        "refs": [
+          "C",
+          "B",
+          "A"
+        ],
+        "value": 30,
+        "label": "30",
+        "arcs": 1,
+        "factRole": "GIVEN"
       }
     ],
-    "segmentLabels": [
+    "expressionLabels": [
       {
-        "from": "A",
-        "to": "B",
-        "label": "6 cm"
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "6",
+        "unit": "cm",
+        "factRole": "GIVEN"
       },
       {
-        "from": "B",
-        "to": "C",
-        "label": "8√3 cm"
+        "id": "lBC",
+        "ownerSegment": "sBC",
+        "text": "8*sqrt(3)",
+        "unit": "cm",
+        "factRole": "GIVEN"
       }
     ]
   },
-  "caption": "AB=6cm, BC=8√3 cm, 각 B=30도인 삼각형 ABC"
+  "coordinateCanvas": {
+    "width": 440,
+    "height": 320
+  },
+  "caption": "변 AB의 길이가 6 센티미터, 변 BC의 길이가 8루트3 센티미터이고 각 B가 30도인 삼각형 ABC를 나타낸 그림이다.",
+  "accessibilityDescription": "삼각형 ABC에서 꼭짓점 B에서의 내각은 30도이다. 변 AB의 길이는 6 센티미터, 밑변 BC의 길이는 8루트3 센티미터로 표시되어 있다.",
+  "newVisualInformation": [
+    "삼각형 ABC의 두 변의 길이와 끼인각의 크기가 주어져 있다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "【서술형 2】 다음 $\\triangle\\mathrm{ABC}$에서 $\\overline{\\mathrm{AB}} = 6\\text{ cm}$, $\\overline{\\mathrm{BC}} = 8\\sqrt{3}\\text{ cm}$, $\\angle B = 30^\\circ$일 때, $\\overline{\\mathrm{AC}}$의 길이를 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
 }

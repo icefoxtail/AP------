@@ -447,6 +447,7 @@ window.questionBank = [
   },
   {
     "id": 11,
+    "image": "assets/images/19_동산중_2학기_중간_중3_유사/q11-problem.svg",
     "category": "근호를 포함한 식의 계산",
     "standardCourse": "중3",
     "curriculum": "2015",
@@ -537,6 +538,7 @@ window.questionBank = [
   },
   {
     "id": 13,
+    "image": "assets/images/19_동산중_2학기_중간_중3_유사/q13-problem.svg",
     "category": "근호를 포함한 식의 계산",
     "standardCourse": "중3",
     "curriculum": "2015",

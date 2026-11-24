@@ -1,18 +1,273 @@
 {
-  "capability": "solid-figure-v1",
-  "solidPlan": {
-    "kind": "SQUARE_PYRAMID",
-    "baseSide": 8,
-    "edgeLength": 8,
-    "labels": {
-      "apex": "A",
-      "base": [
-        "B",
-        "C",
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "40"
+            },
+            {
+              "kind": "integer",
+              "value": "60"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "240"
+            },
+            {
+              "kind": "integer",
+              "value": "60"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "120"
+            },
+            {
+              "kind": "integer",
+              "value": "140"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "320"
+            },
+            {
+              "kind": "integer",
+              "value": "140"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "280"
+            },
+            {
+              "kind": "integer",
+              "value": "100"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "N",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "80"
+            },
+            {
+              "kind": "integer",
+              "value": "100"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "180"
+            },
+            {
+              "kind": "integer",
+              "value": "280"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "M",
+    "N"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sED",
+      "refs": [
+        "E",
+        "D"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
         "D",
+        "C"
+      ]
+    },
+    {
+      "id": "sAE",
+      "refs": [
+        "A",
         "E"
       ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sAM",
+      "refs": [
+        "A",
+        "M"
+      ]
+    },
+    {
+      "id": "sEB",
+      "refs": [
+        "E",
+        "B"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sMN",
+      "refs": [
+        "M",
+        "N"
+      ],
+      "dashed": true
     }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aAMN",
+        "refs": [
+          "A",
+          "M",
+          "N"
+        ],
+        "value": 61,
+        "label": "x"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lED",
+        "ownerSegment": "sED",
+        "text": "8",
+        "unit": "cm"
+      }
+    ]
   },
-  "caption": "밑면이 정사각형이고 모든 모서리의 길이가 8인 정사각뿔 A-BCDE"
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 360
+  },
+  "caption": "밑면이 정사각형이고 옆면이 정삼각형인 사각뿔 A-BCDE에서 모서리 CD와 BE의 중점을 각각 M과 N이라 할 때 선분 AM과 MN이 이루는 각이 x인 도형이다.",
+  "accessibilityDescription": "사각뿔 A-BCDE에서 밑면의 모서리 ED의 길이가 8 cm로 표시되어 있고 모서리 CD의 중점 M과 BE의 중점 N을 잇는 선분 MN 및 꼭짓점 A와 M을 잇는 선분 AM이 그어져 있으며 각 AMN의 크기가 x로 표시되어 있다.",
+  "newVisualInformation": [
+    "사각뿔의 모서리 길이가 8 cm이다.",
+    "점 M과 N은 각각 모서리의 중점이다.",
+    "각 AMN의 크기는 x이다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "【서답형 3】 [서술형] 다음 두 수준별 문항 중 하나를 선택하여 풀이 과정과 답을 쓰시오.\n\n**【수준별 3-①】** (4점) $30^\\circ$, $45^\\circ$, $60^\\circ$의 삼각비의 값을 구하여 다음 표의 빈칸을 채우시오.\n\n$$\\begin{array}{|c|c|c|c|} \\hline \\text{삼각비}\\backslash A & 30^\\circ & 45^\\circ & 60^\\circ \\ \\hline \\sin A & & & \\ \\hline \\cos A & & & \\ \\hline \\tan A & & & \\ \\hline \\end{array}$$\n\n**【수준별 3-②】** (5점) 오른쪽 그림과 같이 밑면이 정사각형이고, 옆면이 정삼각형인 사각뿔 $\\mathrm{A-BCDE}$의 한 모서리의 길이가 $8\\text{ cm}$이다. $\\overline{\\mathrm{CD}}$, $\\overline{\\mathrm{BE}}$의 중점을 각각 $\\mathrm{M}, \\mathrm{N}$이라 하고 $\\angle\\mathrm{AMN} = x^\\circ$라 할 때, $\\tan x^\\circ$의 값을 구하는 풀이 과정과 답을 쓰시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
 }

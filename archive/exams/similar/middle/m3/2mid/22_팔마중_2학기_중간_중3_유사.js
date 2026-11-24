@@ -50,6 +50,7 @@ window.questionBank = [
   },
   {
     "id": 2,
+    "image": "assets/images/22_팔마중_2학기_중간_중3_유사/q02-problem.svg",
     "category": "삼각비",
     "standardCourse": "중3",
     "curriculum": "2015",
@@ -95,6 +96,7 @@ window.questionBank = [
   },
   {
     "id": 3,
+    "image": "assets/images/22_팔마중_2학기_중간_중3_유사/q03-problem.svg",
     "category": "삼각비",
     "standardCourse": "중3",
     "curriculum": "2015",

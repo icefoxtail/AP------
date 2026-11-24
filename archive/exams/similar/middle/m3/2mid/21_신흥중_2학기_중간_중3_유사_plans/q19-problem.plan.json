@@ -1,42 +1,254 @@
 {
-  "kind": "geometry",
-  "elements": [
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "8"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-6"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "24",
+            "denominator": "5"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "32",
+            "denominator": "5"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "56",
+            "denominator": "25"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "-192",
+            "denominator": "25"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "88",
+            "denominator": "5"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "-16",
+            "denominator": "5"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "P"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
     {
-      "type": "circle",
-      "center": "O"
+      "id": "PC",
+      "refs": [
+        "P",
+        "C"
+      ]
     },
     {
-      "type": "tangentPair",
-      "from": "P",
-      "touches": [
-        "A",
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "PE",
+      "refs": [
+        "P",
+        "E"
+      ]
+    },
+    {
+      "id": "EB",
+      "refs": [
+        "E",
         "B"
       ]
     },
     {
-      "type": "tangent",
-      "from": "C",
-      "to": "E",
-      "touch": "D",
-      "onRays": [
-        "PA",
-        "PB"
+      "id": "CE",
+      "refs": [
+        "C",
+        "E"
       ]
-    },
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAC",
+        "ownerSegment": "CA",
+        "text": "4"
+      },
+      {
+        "id": "lCE",
+        "ownerSegment": "CE",
+        "text": "10"
+      },
+      {
+        "id": "lPC",
+        "ownerSegment": "PC",
+        "text": "12"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 540,
+    "height": 480
+  },
+  "caption": "원 O 밖의 점 P에서 그은 두 접선 PA, PB와 또 다른 접선 CE를 나타낸 그림이다.",
+  "accessibilityDescription": "원 O에 접하는 세 접선 PA, PB, CE가 있고 접점은 각각 A, B, D이다. 점 C는 선분 PA 위에 있고 점 E는 선분 PB 위에 있다. 선분 AC의 길이는 4이고 선분 CE의 길이는 10이며 선분 PC의 길이는 12이다.",
+  "newVisualInformation": [
+    "선분 AC의 길이는 4이다.",
+    "선분 CE의 길이는 10이다.",
+    "선분 PC의 길이는 12이다."
+  ],
+  "sourceConditions": [
     {
-      "type": "label",
-      "target": "AC",
-      "text": "4"
-    },
-    {
-      "type": "label",
-      "target": "CE",
-      "text": "10"
-    },
-    {
-      "type": "label",
-      "target": "PC",
-      "text": "12"
+      "id": "source",
+      "condition": "다음 그림에서 $\\overline{\\text{PA}}$, $\\overline{\\text{PB}}$, $\\overline{\\text{CE}}$는 원 $\\text{O}$의 접선이고, 세 점 $\\text{A}$, $\\text{B}$, $\\text{D}$는 접점이다. $\\overline{\\text{AC}}=4$, $\\overline{\\text{CE}}=10$, $\\overline{\\text{PC}}=12$일 때, $\\overline{\\text{PE}}$의 길이는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
     }
   ]
 }
