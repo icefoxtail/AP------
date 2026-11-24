@@ -80,8 +80,9 @@
     <script src="concept_map.js" onerror="console.warn('[3B-MIXED] concept_map.js 로드 실패 — conceptClusterKey 비워서 진행')"></script>
     <script src="output-metadata-loader.js?v=20261106-output-performance-1"></script>
     <script src="question-identity.js?v=20260820.2" onerror="console.warn('[identity] question-identity.js 로드 실패 — legacy lookup으로 제한')"></script>
-    <script src="data/svg-accessibility-index.js?v=20261014.1" onerror="console.warn('[svg-accessibility] 색인 로드 실패 — 그림 이름 한국어 기본값 사용')"></script>
     <script src="svg-accessibility.js?v=20261014.1"></script>
+    <!-- 그림 이름 색인(data/svg-accessibility-index.js, 압축 1.4~1.8MB)은 정적으로 받지 않는다: 문제지에 든 시험지들의 그림 몇 개 분량 파일만 받고(svg-alt/<키>.json), 없거나 안 맞으면 예전처럼 전체를 받는다. 본문을 그리기 전에 renderBody가 prepare()로 기다린다. -->
+    <script src="svg-accessibility-lazy.js?v=20261124-lazy-1"></script>
     <script src="print-contract.js?v=20261009.1" onerror="console.warn('[render-authority] print contract 로드 실패 — legacy renderer 유지')"></script>
     <script src="render-authority.js?v=20261014-svg-alt-1" onerror="console.warn('[render-authority] normalizer 로드 실패 — legacy renderer 유지')"></script>
     <script src="layout-authority.js?v=20261009.1" onerror="console.warn('[layout-authority] promotion bridge 로드 실패 — legacy pagination 유지')"></script>
@@ -2842,6 +2843,8 @@ async function renderBody() {
         if (AppState.data !== issuedData) AppState.canonicalData = buildMixedCanonicalData();
     }
     try {
+        // 그림 이름은 본문을 그리기 전에 붙는다(색인 중 문제지에 든 시험지들 몫, 안 되면 전체): 그린 결과와 인쇄 준비 시점은 예전과 같다.
+        if (window.APSvgAccessibilityLazy) await window.APSvgAccessibilityLazy.prepare(AppState.data, (AppState.data || []).map(getMixedQuestionSourceFile));
         await renderMixedBody();
     } finally {
         AppState.data = issuedData;
