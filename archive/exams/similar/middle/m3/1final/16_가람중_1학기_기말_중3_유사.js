@@ -407,6 +407,7 @@ window.questionBank = [
   },
   {
     "id": 10,
+    "image": "assets/images/16_가람중_1학기_기말_중3_유사/q10-problem.svg",
     "category": "이차함수의 활용",
     "standardCourse": "중3",
     "curriculum": "2015",
@@ -452,6 +453,7 @@ window.questionBank = [
   },
   {
     "id": 11,
+    "image": "assets/images/16_가람중_1학기_기말_중3_유사/q11-problem.svg",
     "category": "이차함수의 활용",
     "standardCourse": "중3",
     "curriculum": "2015",

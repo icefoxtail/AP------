@@ -1,15 +1,82 @@
 {
-  "capability": "SOURCE_COORDINATE_AXES_v1",
-  "curve": "x^2 - 4*x - 12",
-  "points": {
-    "A": [
-      -2,
-      0
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-12",
+          "-4",
+          "1"
+        ]
+      }
     ],
-    "B": [
-      6,
-      0
-    ]
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -4,
+      8
+    ],
+    "viewport": [
+      -4,
+      8,
+      -18,
+      6
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 2,
+        "y": -16
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "V"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "-2",
+          "y": "0"
+        },
+        {
+          "id": "B",
+          "x": "6",
+          "y": "0"
+        },
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        }
+      ],
+      "segments": [
+        {
+          "id": "AB",
+          "from": "A",
+          "to": "B"
+        }
+      ]
+    }
   },
-  "caption": "x축과 두 점 A(-2, 0), B(6, 0)에서 만나는 포물선"
+  "caption": "이차함수의 그래프와 x축이 만나는 두 점 A, B를 나타낸 그림이다.",
+  "accessibilityDescription": "좌표평면 위에 아래로 볼록한 포물선이 그려져 있다. 포물선이 x축과 만나는 두 점에 각각 A와 B가 표시되어 있고 원점 O가 나타나 있다.",
+  "newVisualInformation": [
+    "포물선과 x축의 두 교점 A, B의 위치"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차함수 $y = x^2 - 4x - 12$의 그래프가 $x$축과 만나는 두 점을 각각 $\\mathrm{A, B}$라고 할 때, $\\overline{\\mathrm{AB}}$의 길이는? [3.5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
 }

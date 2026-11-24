@@ -1,14 +1,52 @@
 {
-  "capability": "SOURCE_COORDINATE_AXES_v1",
-  "curves": [
-    "-x + 2"
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [],
+    "axisTitles": {
+      "x": "x",
+      "y": "y"
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "O": "O"
+  },
+  "caption": "오른쪽 아래로 향하고 y절편이 양수인 일차함수 y=ax+b의 그래프이다.",
+  "accessibilityDescription": "좌표평면에 기울기가 음수이고 y절편이 양수인 직선이 그려져 있다. 이 직선은 제1사분면, 제2사분면, 제4사분면을 지난다.",
+  "newVisualInformation": [
+    "직선의 기울기 a는 음수이다.",
+    "직선의 y절편 b는 양수이다."
   ],
-  "options": [
-    "① 아래로 볼록, 축 x<0, y절편 >0",
-    "② 위로 볼록, 축 x>0, y절편 <0",
-    "③ 위로 볼록, 축 x<0, y절편 <0",
-    "④ 위로 볼록, 축 x>0, y절편 >0",
-    "⑤ 아래로 볼록, 축 x>0, y절편 <0"
-  ],
-  "caption": "오른쪽 아래로 향하고 y절편이 양수인 일차함수 y=ax+b의 그래프와 5개의 이차함수 보기 그래프"
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차함수 $y = ax + b$의 그래프가 아래 그림과 같을 때, $y = ax^2 + bx + ab$의 그래프로 가능한 것은? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
 }

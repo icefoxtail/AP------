@@ -1,43 +1,96 @@
 {
-  "figureType": "coordinate_parabola_triangle",
-  "axes": {
-    "xRange": [
-      -6,
-      2
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-10",
+          "8",
+          "2"
+        ]
+      }
     ],
-    "yRange": [
-      -20,
-      4
-    ]
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -7,
+      3
+    ],
+    "viewport": [
+      -7,
+      3,
+      -22,
+      10
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": -2,
+        "y": -18,
+        "marker": "NONE"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "V"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "-5"
+        },
+        {
+          "id": "B",
+          "curveX": "1"
+        },
+        {
+          "id": "C",
+          "curveX": "-2"
+        }
+      ],
+      "segments": [
+        {
+          "id": "AB",
+          "from": "A",
+          "to": "B"
+        },
+        {
+          "id": "BC",
+          "from": "B",
+          "to": "C"
+        },
+        {
+          "id": "CA",
+          "from": "C",
+          "to": "A"
+        }
+      ]
+    }
   },
-  "parabola": {
-    "expr": "2*(x+2)^2 - 18",
-    "vertex": [
-      -2,
-      -18
-    ],
-    "xIntercepts": [
-      -5,
-      1
-    ]
+  "pointNames": {
+    "A": "A",
+    "B": "B",
+    "C": "C"
   },
-  "triangle": {
-    "A": [
-      -5,
-      0
-    ],
-    "B": [
-      1,
-      0
-    ],
-    "C": [
-      -2,
-      -18
-    ]
-  },
-  "labels": [
-    "A",
-    "B",
-    "C"
+  "caption": "이차함수 그래프의 꼭짓점 C와 x축과의 교점 A, B로 이루어진 삼각형 ABC이다.",
+  "accessibilityDescription": "좌표평면 위에 아래로 볼록한 포물선이 있고 x축과 만나는 두 점 A, B와 포물선의 꼭짓점 C를 세 꼭짓점으로 하는 삼각형 ABC가 그려져 있다.",
+  "newVisualInformation": [
+    "포물선의 꼭짓점 C와 x축 교점 A, B를 연결한 삼각형 ABC가 표시되어 있다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "서술형 3. 다음 그림과 같이 이차함수 $y=2x^2+8x+a$의 그래프의 꼭짓점을 $\\mathrm{C}$, $x$축과의 교점을 각각 $\\mathrm{A, B}$라고 할 때, $\\overline{\\mathrm{AB}}=6$이다. $\\triangle\\mathrm{ABC}$의 넓이를 구하시오. (단, $a$는 수이다.) [7점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
   ]
 }

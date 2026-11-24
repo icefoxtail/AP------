@@ -1,25 +1,129 @@
 {
-  "figureType": "coordinate_shaded_between_parabolas",
-  "axes": {
-    "xRange": [
-      -1,
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -2,
       4
     ],
-    "yRange": [
+    "viewport": [
+      -2,
+      4,
       -1,
-      12
-    ]
-  },
-  "parabolas": [
-    {
-      "expr": "x^2"
+      13
+    ],
+    "referenceCurves": [
+      {
+        "id": "g",
+        "name": "g",
+        "coefficients": [
+          "0",
+          "0",
+          "1"
+        ],
+        "intersectionX": []
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "V1",
+        "x": 0,
+        "y": 2,
+        "marker": "NONE"
+      },
+      {
+        "id": "V2",
+        "x": 0,
+        "y": 0,
+        "marker": "NONE"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "V1",
+        "V2"
+      ]
     },
-    {
-      "expr": "x^2 + 2"
+    "regions": [
+      {
+        "id": "S",
+        "upper": "f",
+        "lower": "g",
+        "from": "1",
+        "to": "3",
+        "fill": "LIGHT",
+        "label": "S"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "3"
+      ],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P1",
+          "x": "1",
+          "y": "1"
+        },
+        {
+          "id": "P2",
+          "x": "1",
+          "y": "3"
+        },
+        {
+          "id": "Q1",
+          "x": "3",
+          "y": "9"
+        },
+        {
+          "id": "Q2",
+          "x": "3",
+          "y": "11"
+        }
+      ],
+      "segments": [
+        {
+          "id": "L1",
+          "from": "P1",
+          "to": "P2",
+          "dashed": true
+        },
+        {
+          "id": "L2",
+          "from": "Q1",
+          "to": "Q2",
+          "dashed": true
+        }
+      ]
     }
+  },
+  "caption": "두 이차함수의 그래프와 두 직선 x=1, x=3으로 둘러싸인 색칠된 영역이다.",
+  "accessibilityDescription": "좌표평면 위에 두 포물선이 위아래로 놓여 있고 x=1부터 x=3까지 두 곡선 사이의 영역이 밝게 색칠되어 있다.",
+  "newVisualInformation": [
+    "두 포물선과 두 직선 x=1, x=3으로 둘러싸인 영역이 색칠되어 있다."
   ],
-  "xBounds": [
-    1,
-    3
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림은 두 이차함수 $y=x^2$, $y=x^2+2$의 그래프이다. 두 포물선과 두 직선 $x=1$, $x=3$으로 둘러싸인 색칠한 부분의 넓이는? [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
   ]
 }
