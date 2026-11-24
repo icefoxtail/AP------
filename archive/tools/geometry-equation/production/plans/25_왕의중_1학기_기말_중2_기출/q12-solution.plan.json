@@ -1,0 +1,85 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-1",
+          "-2"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      3
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "0",
+        "y": "-1"
+      },
+      {
+        "id": "P1",
+        "x": "3",
+        "y": "-7"
+      }
+    ],
+    "formula": "-2*x - 1",
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "0",
+          "y": "-1"
+        },
+        {
+          "id": "H",
+          "x": "3",
+          "y": "-1"
+        },
+        {
+          "id": "B",
+          "x": "3",
+          "y": "-7"
+        }
+      ],
+      "segments": [
+        {
+          "id": "run",
+          "from": "A",
+          "to": "H",
+          "dashed": true,
+          "length": true
+        },
+        {
+          "id": "rise",
+          "from": "H",
+          "to": "B",
+          "dashed": true,
+          "length": true
+        }
+      ]
+    }
+  },
+  "caption": "가로 변화 3에 세로 변화 −6. 기울기 −6/3=−2,정답②.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차함수 $y=ax-1$의 그래프에서 $x$의 값이 3만큼 증가할 때, $y$의 값은 6만큼 감소한다. 이때 $a$의 값은? [3점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "가로 변화3에 세로 변화−6. 기울기−6/3=−2,정답②.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "가로 변화3에 세로 변화−6. 기울기−6/3=−2,정답②."
+  ]
+}

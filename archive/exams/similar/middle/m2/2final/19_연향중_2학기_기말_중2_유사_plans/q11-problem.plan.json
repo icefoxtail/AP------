@@ -1,0 +1,463 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "음료, 김밥류, 분식류로 나뉜 분식집 메뉴판이며 음료는 콜라, 사이다, 주스 세 가지이고 김밥류는 4가지, 분식류는 5가지이다.",
+  "accessibilityDescription": "세 칸으로 나뉜 표가 있고 왼쪽 음료 칸에는 콜라, 사이다, 주스가 한 줄씩, 가운데 칸에는 4가지, 오른쪽 칸에는 5가지가 적혀 있다.",
+  "newVisualInformation": [
+    "음료 3가지, 김밥류 4가지, 분식류 5가지 메뉴 구성"
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "b0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "b4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "b8",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "b12",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "q0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "q4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "r0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "r4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "s0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "s12",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "t0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "t4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "t8",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "t12",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "b0",
+    "b4",
+    "b8",
+    "b12",
+    "q0",
+    "q4",
+    "r0",
+    "r4",
+    "s0",
+    "s12",
+    "t0",
+    "t4",
+    "t8",
+    "t12"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sBottom",
+      "refs": [
+        "b0",
+        "b12"
+      ]
+    },
+    {
+      "id": "sLeft",
+      "refs": [
+        "b0",
+        "t0"
+      ]
+    },
+    {
+      "id": "sTop",
+      "refs": [
+        "t0",
+        "t12"
+      ]
+    },
+    {
+      "id": "sRight",
+      "refs": [
+        "t12",
+        "b12"
+      ]
+    },
+    {
+      "id": "sDiv1",
+      "refs": [
+        "b4",
+        "t4"
+      ]
+    },
+    {
+      "id": "sDiv2",
+      "refs": [
+        "b8",
+        "t8"
+      ]
+    },
+    {
+      "id": "sHeader",
+      "refs": [
+        "s0",
+        "s12"
+      ]
+    },
+    {
+      "id": "sSep1",
+      "refs": [
+        "q0",
+        "q4"
+      ]
+    },
+    {
+      "id": "sSep2",
+      "refs": [
+        "r0",
+        "r4"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "textLabels": [
+      {
+        "id": "th1",
+        "at": [
+          2,
+          7
+        ],
+        "text": "음료"
+      },
+      {
+        "id": "th2",
+        "at": [
+          6,
+          7
+        ],
+        "text": "김밥류"
+      },
+      {
+        "id": "th3",
+        "at": [
+          10,
+          7
+        ],
+        "text": "분식류"
+      },
+      {
+        "id": "td1",
+        "at": [
+          2,
+          5
+        ],
+        "text": "콜라"
+      },
+      {
+        "id": "td2",
+        "at": [
+          2,
+          3
+        ],
+        "text": "사이다"
+      },
+      {
+        "id": "td3",
+        "at": [
+          2,
+          1
+        ],
+        "text": "주스"
+      },
+      {
+        "id": "tm",
+        "at": [
+          6,
+          3
+        ],
+        "text": "4가지"
+      },
+      {
+        "id": "tr",
+        "at": [
+          10,
+          3
+        ],
+        "text": "5가지"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 360
+  },
+  "hiddenPointNames": [
+    "b0",
+    "b4",
+    "b8",
+    "b12",
+    "q0",
+    "q4",
+    "r0",
+    "r4",
+    "s0",
+    "s12",
+    "t0",
+    "t4",
+    "t8",
+    "t12"
+  ],
+  "hiddenPointStyle": "NONE",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "어느 분식집의 메뉴판에는 음료 $3$가지(콜라, 사이다, 주스), 김밥류 $4$가지, 분식류 $5$가지가 있다. 이 메뉴판에서 음료를 하나 고르고, 나머지 메뉴 중에서 하나를 고르는 모든 경우의 수는? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

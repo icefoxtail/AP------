@@ -1,0 +1,54 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "-2",
+      "0",
+      "3",
+      "4"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1.5,
+      1.5
+    ],
+    "viewport": [
+      -1.5,
+      1.5,
+      -12,
+      20
+    ],
+    "formula": "-2+3*x^2+4*x^3",
+    "functionName": "f",
+    "requiredPoints": [],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "1",
+          "y": "5",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "주어진 식을 미분하면 f(x)=4x³+3x²−2이고, x=1을 대입한 조건에서 a=1이다. 따라서 f(1)=5이고 구하는 극한은 2(a+1)f(a)=20이다. 따라서 답은 ⑤이다.",
+  "accessibilityDescription": "삼차함수 그래프가 왼쪽 아래에서 오른쪽 위로 뻗고, 그래프 위의 점 P에 이름과 좌표가 표시되어 있다.",
+  "newVisualInformation": [
+    "f(x)=4x³+3x²−2의 그래프와 점 P(1, 5)를 표시한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다항함수 $f(x)$가 모든 실수 $x$에 대하여 $\\displaystyle\\int_1^x f(t),dt=x^4+ax^3-2x+\\int_0^1 f(t),dt$를 만족시킬 때, $\\displaystyle\\lim_{h\\to0}\\dfrac{1}{h}\\int_a^{a+2h}(t+1)f(t),dt$의 값은? (단, $a$는 상수이다.) [4.8점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

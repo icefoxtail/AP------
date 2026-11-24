@@ -1,0 +1,93 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "2"
+        ],
+        "domain": [
+          "0",
+          "5"
+        ],
+        "label": "Y=2U"
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "2",
+          "4/3"
+        ],
+        "domain": [
+          "0",
+          "6"
+        ],
+        "label": "Y=2+4U/3"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "0",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "0",
+          "y": "2",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P2",
+          "x": "3",
+          "y": "6",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P3",
+          "x": "5",
+          "y": "10",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P4",
+          "x": "6",
+          "y": "10",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    },
+    "axisTitles": {
+      "x": "U",
+      "y": "Y"
+    }
+  },
+  "caption": "시간 U=x/50(50초 단위), 거리 Y=y/100(100m 단위)로 두 물리량을 정확 정규화한다. 형 Y2U는 0..5, 동생 Y2+4U/3는 0..6. 교점 (U,Y)=(3,6)은 실제 150초 600m. 그 직후 형이 앞서므로 정답 150초 ①.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>20. 동생과 형이 $1000\\,\\text{m}$ 달리기 시합을 하는데 동생이 출발선으로부터 $200\\,\\text{m}$ 앞에서 출발하기로 하였다. 오른쪽 그림은 두 사람이 동시에 출발한 지 $x$초 후에 출발선으로부터의 거리를 $y\\,\\text{m}$라고 할 때, $x$와 $y$ 사이의 관계를 그래프로 나타낸 것이다. 두 사람이 출발한 지 몇 초 후에 형이 동생을 앞지르기 시작했는가? (5점)</p><p><img src=\"assets/images/23_매산중_1학기_기말_중2_수학/q20-problem-visual-v2.svg\" alt=\"거리 그래프에서 형은 0초에 출발선에서 시작해 250초에 1000 m에 닿는다. 동생은 출발선에서 200 m 앞에서 시작해 300초에 1000 m에 닿는다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "시간U=x/50(50초단위),거리Y=y/100(100m단위)로두물리량을정확정규화한다. 형Y2U는0..5,동생Y2+4U/3는0..6. 교점(U,Y)=(3,6)은실제150초600m. 그직후형이앞서므로정답150초①.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "시간U=x/50(50초단위),거리Y=y/100(100m단위)로두물리량을정확정규화한다. 형Y2U는0..5,동생Y2+4U/3는0..6. 교점(U,Y)=(3,6)은실제150초600m. 그직후형이앞서므로정답150초①."
+  ]
+}

@@ -1,0 +1,242 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "사다리꼴 ABCD에서 변 AB와 변 DC가 평행이고 두 대각선 AC와 BD가 점 E에서 만난다. 변 AB의 길이는 10센티미터, 변 CD의 길이는 15센티미터이고 삼각형 ABE의 넓이는 20제곱센티미터로 주어져 있다.",
+  "accessibilityDescription": "사다리꼴 ABCD의 윗변 AB와 아랫변 DC에 평행 표시가 있고 두 대각선 AC와 BD가 점 E에서 만난다. 변 AB 옆에 10센티미터, 변 CD 옆에 15센티미터가 적혀 있고 삼각형 ABE 안에 20제곱센티미터가 적혀 있다. 삼각형 ADE의 넓이는 적혀 있지 않다.",
+  "newVisualInformation": [
+    "사다리꼴 ABCD",
+    "AB와 DC가 평행",
+    "대각선 AC와 BD의 교점 E",
+    "AB=10센티미터",
+    "CD=15센티미터",
+    "삼각형 ABE의 넓이 20제곱센티미터"
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "D"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "15"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "D"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "D"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "13"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ac",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bd",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "ac",
+          "bd"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "D",
+    "C",
+    "A",
+    "B",
+    "E"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "parallels": [
+      {
+        "id": "pABDC",
+        "count": 1,
+        "segments": [
+          "sAB",
+          "sCD"
+        ]
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "ab",
+        "ownerSegment": "sAB",
+        "text": "10",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "cd",
+        "ownerSegment": "sCD",
+        "text": "15",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      }
+    ],
+    "regions": [
+      {
+        "id": "rABE",
+        "fill": "LIGHT",
+        "label": "20",
+        "unit": "cm^2",
+        "labelPlacement": "AUTO_LEADER",
+        "shapes": [
+          {
+            "polygon": [
+              "A",
+              "B",
+              "E"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 600
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "사다리꼴 $ABCD$에서 $\\overline{AB} \\parallel \\overline{DC}$이고, 두 대각선 $AC$와 $BD$의 교점을 $E$라 하자. $\\overline{AB}=10\\rm\\,cm$, $\\overline{CD}=15\\rm\\,cm$이고 삼각형 $ABE$의 넓이가 $20\\rm\\,cm^2$일 때, 삼각형 $ADE$의 넓이는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

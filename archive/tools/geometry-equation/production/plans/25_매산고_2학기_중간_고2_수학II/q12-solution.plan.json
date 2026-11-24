@@ -1,0 +1,86 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "5",
+          "-12",
+          "9",
+          "-2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "1/2",
+        "5/2"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "axisTickValues": {
+      "x": [
+        "1",
+        "2"
+      ],
+      "y": [
+        "1"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "M",
+        "x": "1",
+        "y": "0"
+      },
+      {
+        "id": "N",
+        "x": "2",
+        "y": "1"
+      },
+      {
+        "id": "Q",
+        "x": "4/3",
+        "y": "7/27"
+      }
+    ],
+    "exactCoordinates": {
+      "M": [
+        "1",
+        "0"
+      ],
+      "N": [
+        "2",
+        "1"
+      ],
+      "Q": [
+        "4/3",
+        "7/27"
+      ]
+    },
+    "functionName": "h"
+  },
+  "caption": "점 (2,k)를 지나는 접선의 접점의 x좌표 t는 k=-2t³+9t²-12t+5(=h(t))를 만족한다. h는 t=1에서 극솟값 0, t=2에서 극댓값 1이므로 0<k<1이면 y=k와 세 점에서 만나 서로 다른 접선이 세 개 생긴다. 세 근이 등비수열이면 가운데 근 β=4/3이고 k=h(4/3)=7/27이다 (정답 ③). 그림에는 점 Q(4/3, 7/27)이 이 가운데 근에 해당한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "점 $(2,k)$에서 곡선 $y=x^3-3x^2-x+7$에 서로 다른 세 개의 접선을 그을 때, 세 접점의 $x$좌표는 등비수열을 이룬다고 한다. $k$의 값을 구한 것은? [5.3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "k=-2t³+9t²-12t+5와 수평선 y=7/27의 세 교점이 세 접점의 x좌표임을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "점 (2,k)를 지나는 접선의 접점의 x좌표 t는 k=-2t³+9t²-12t+5(=h(t))를 만족한다. h는 t=1에서 극솟값 0, t=2에서 극댓값 1이므로 0<k<1이면 y=k와 세 점에서 만나 서로 다른 접선이 세 개 생긴다. 세 근이 등비수열이면 가운데 근 β=4/3이고 k=h(4/3)=7/27이다 (정답 ③). 그림에는 점 Q(4/3, 7/27)이 이 가운데 근에 해당한다."
+  ],
+  "accessibilityDescription": "극솟값 0, 극댓값 1을 갖는 삼차함수 h의 그래프와 그 위의 점 Q를 나타낸 그래프이다."
+}

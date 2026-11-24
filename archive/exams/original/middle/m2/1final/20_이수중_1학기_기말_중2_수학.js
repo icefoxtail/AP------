@@ -251,7 +251,11 @@ window.examData = {
       ],
       "answer": "④",
       "solution": "[원문 조건 및 구할 대상]\n직육면체의 밑면 가로가 $5ab$, 세로가 $3ab$이고 부피가 $60a^2b^3$일 때, 직육면체의 높이를 구한다.\n\n[핵심 발상/공식]\n직육면체의 부피 $V = (\\text{가로}) \\times (\\text{세로}) \\times (\\text{높이}) = (\\text{밑넓이}) \\times (\\text{높이})$이다.\n따라서 $(\\text{높이}) = \\dfrac{(\\text{부피})}{(\\text{밑넓이})}$로 계산한다.\n\n[연속 등식 및 중간 계산]\n1단계: 직육면체의 밑면의 넓이를 구한다.\n$(\\text{밑넓이}) = 5ab \\times 3ab = (5 \\times 3) \\times (a \\times a) \\times (b \\times b) = 15a^2b^2$\n2단계: 부피 공식에 대입하여 높이 $h$를 구한다.\n$h = \\dfrac{60a^2b^3}{15a^2b^2}$\n3단계: 계수와 문자를 각각 약분한다.\n$\\dfrac{60}{15} = 4$, $\\dfrac{a^2}{a^2} = 1$, $\\dfrac{b^3}{b^2} = b$\n$\\therefore h = 4b$\n\n[경우 나눔 및 선택지 검토]\n계산 결과 높이는 $4b$이며, 선택지 ④번과 정확히 일치한다.\n\n[결론]\n따라서 직육면체의 높이는 $4b$이며, 정답은 ④이다.",
-      "question": "<p>8. 오른쪽 그림과 같이 밑면의 가로의 길이가 $5ab$, 세로의 길이가 $3ab$인 직육면체의 부피가 $60a^2b^3$일 때, 이 직육면체의 높이를 구하면? (5점)</p><p><img src=\"assets/images/20_이수중_1학기_기말_중2_수학/q08.png\" alt=\"밑면 가로 5ab, 세로 3ab인 직육면체 높이 문제\" class=\"question-image\" /></p>"
+      "question": "<p>8. 오른쪽 그림과 같이 밑면의 가로의 길이가 $5ab$, 세로의 길이가 $3ab$인 직육면체의 부피가 $60a^2b^3$일 때, 이 직육면체의 높이를 구하면? (5점)</p><p><img src=\"assets/images/20_이수중_1학기_기말_중2_수학/q08.png\" alt=\"밑면 가로 5ab, 세로 3ab인 직육면체 높이 문제\" class=\"question-image\" /></p>",
+      "solutionImage": "assets/images/20_이수중_1학기_기말_중2_수학/q8-solution.svg",
+      "solutionImageAlt": "밑면이 직사각형인 직육면체이고 밑면이 색칠되어 있으며 밑면의 가로와 세로, 높이에 길이가 적혀 있다.",
+      "solutionImageCaption": "밑면(색칠)이 가로 5ab, 세로 3ab인 직육면체이고 높이를 h, 부피를 60a²b³이라 한다(길이의 비율은 모양만 나타낸 것이다). 밑넓이는 5ab×3ab=15a²b²이다. 부피 15a²b²×h=60a²b³에서 h=4b이다. 따라서 답은 ④이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 9,

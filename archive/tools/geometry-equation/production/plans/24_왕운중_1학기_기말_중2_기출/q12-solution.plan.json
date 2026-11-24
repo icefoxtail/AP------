@@ -1,0 +1,78 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -2,
+      3,
+      -6,
+      10
+    ],
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "3",
+          "-4"
+        ],
+        "domain": [
+          "-1",
+          "2"
+        ],
+        "color": "BLUE",
+        "label": "y=-4x+3"
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "5",
+          "-4"
+        ],
+        "domain": [
+          "-1",
+          "2"
+        ],
+        "color": "WARM",
+        "label": "y=-4x+5"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "0",
+          "y": "3",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "0",
+          "y": "5",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "4x+y-3=0을 y에 대해 정리하면 y=-4x+3이므로 기울기는 -4이다. 평행한 직선은 기울기가 같아야 하므로 보기 중 기울기가 -4인 y=-4x+5가 알맞다. 두 직선은 기울기가 같고 y절편이 각각 3과 5로 달라 서로 평행하다. 따라서 답은 ⑤이다.",
+  "accessibilityDescription": "기울기가 같은 두 평행한 직선이 그려져 있고, 각 직선이 y축과 만나는 두 점의 좌표가 표시되어 있다.",
+  "newVisualInformation": [
+    "주어진 직선 y=-4x+3과 평행한 직선 y=-4x+5를 같은 좌표평면에 표시",
+    "두 직선의 y절편 (0, 3), (0, 5) 좌표 표시",
+    "두 직선의 기울기가 같아 나란함을 그림으로 확인"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차방정식 $4x+y-3=0$의 그래프와 평행한 일차함수의 식은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,137 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "3"
+      },
+      {
+        "id": "lBC",
+        "ownerSegment": "sBC",
+        "text": "2"
+      },
+      {
+        "id": "lAC",
+        "ownerSegment": "sAC",
+        "text": "2"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 340
+  },
+  "caption": "세 지점 A, B, C와 지점 사이를 잇는 길을 나타낸 그림이다. 각 길 옆의 수는 그 길을 이용하는 방법의 수이다.",
+  "accessibilityDescription": "점 A, B, C가 있고 A와 B, B와 C, A와 C 사이에 길이 그려져 있으며 각 길 옆에 방법의 수가 적혀 있다.",
+  "newVisualInformation": [
+    "A에서 B로 가는 길의 수 3",
+    "B에서 C로 가는 길의 수 2",
+    "A에서 C로 곧바로 가는 길의 수 2"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$A$ 지점에서 $C$ 지점으로 가는 길이 있다. $A$ 지점에서 $C$ 지점으로 곧바로 가는 길은 $2$가지가 있고, $B$ 지점을 거쳐서 가는 길은 $A$에서 $B$까지 $3$가지, $B$에서 $C$까지 $2$가지가 있다. $A$ 지점에서 출발하여 $C$ 지점으로 가는 방법은 모두 몇 가지인가?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

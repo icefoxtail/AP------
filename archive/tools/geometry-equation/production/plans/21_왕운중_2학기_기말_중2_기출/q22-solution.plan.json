@@ -1,0 +1,291 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "경우 1"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "C"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "-4"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "A",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "C"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "0"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "8"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "C",
+          "B",
+          "A"
+        ],
+        "displaySegments": [
+          {
+            "id": "AB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "BC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "CA",
+            "refs": [
+              "C",
+              "A"
+            ]
+          }
+        ],
+        "displayCircles": [],
+        "displayLines": [],
+        "planeMarks": {
+          "expressionLabels": [
+            {
+              "id": "vBC",
+              "ownerSegment": "BC",
+              "text": "4",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "vCA",
+              "ownerSegment": "CA",
+              "text": "8",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "rightAngles": [
+          {
+            "id": "c",
+            "refs": [
+              "A",
+              "C",
+              "B"
+            ]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 320
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "경우 2"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "F",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "E",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "F"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "-5"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "D",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "F"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "0"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "10"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "F",
+          "E",
+          "D"
+        ],
+        "displaySegments": [
+          {
+            "id": "DE",
+            "refs": [
+              "D",
+              "E"
+            ]
+          },
+          {
+            "id": "EF",
+            "refs": [
+              "E",
+              "F"
+            ]
+          },
+          {
+            "id": "FD",
+            "refs": [
+              "F",
+              "D"
+            ]
+          }
+        ],
+        "displayCircles": [],
+        "displayLines": [],
+        "planeMarks": {
+          "expressionLabels": [
+            {
+              "id": "vBC",
+              "ownerSegment": "EF",
+              "text": "5",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "vCA",
+              "ownerSegment": "FD",
+              "text": "10",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "rightAngles": [
+          {
+            "id": "c",
+            "refs": [
+              "D",
+              "F",
+              "E"
+            ]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 320
+        }
+      }
+    }
+  ],
+  "caption": "대응 AC8:DF10=4:5. BC4→EF5이고큰넓이 10×5/2=25.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "서술형 2. 다음 두 삼각형 $\\triangle ABC\\sim\\triangle DEF$일 때, 다음 물음에 답하시오. [5점]\n(1) 두 삼각형 $\\triangle ABC$와 $\\triangle DEF$의 닮음비를 구하시오. [2점]\n(2) $\\overline{EF}$의 길이와 $\\triangle DEF$의 넓이를 구하시오. [3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "한 문항 한 장: 2개 그림을 패널로 합쳤다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "대응AC8:DF10=4:5. BC4→EF5이고큰넓이10×5/2=25."
+  ]
+}

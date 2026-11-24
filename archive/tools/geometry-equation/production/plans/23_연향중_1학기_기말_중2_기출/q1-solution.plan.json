@@ -1,0 +1,72 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "자연수",
+        "elements": [
+          "2"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "배수 일부",
+        "elements": [
+          "2",
+          "4",
+          "6"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        }
+      }
+    ]
+  },
+  "caption": "한 입력 x2에 배수 2,4,6이 동시에 대응하므로 ③은 함수가 아니다. 나머지는 출력이 하나로 정해진다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 중에서 $y$가 $x$의 함수가 아닌 것은? [4점]",
+      "mappedTo": "diagram"
+    },
+    {
+      "id": "method",
+      "condition": "한 입력x2에배수2,4,6이동시에대응하므로③은함수가아니다. 나머지는출력이하나로정해진다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "한 입력x2에배수2,4,6이동시에대응하므로③은함수가아니다. 나머지는출력이하나로정해진다."
+  ]
+}

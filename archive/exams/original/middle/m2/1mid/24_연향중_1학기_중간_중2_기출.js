@@ -544,7 +544,11 @@ window.questionBank = [
     "subUnitKey": "M2-02-LINEAR_INEQUALITY",
     "subUnit": "일차부등식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_연향중_1학기_중간_중2_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선에 4를 포함해 왼쪽으로 뻗는 해집합이 칠해져 있고 그 아래 점 줄에 자연수 1, 2, 3, 4는 해 안의 점으로, 5는 바깥의 ×로 표시되어 있다.",
+    "solutionImageCaption": "2x−4≤8−x에서 3x≤12이므로 x≤4이다. 수직선의 해집합 안에 있는 자연수는 1, 2, 3, 4이고 5는 해가 아니어서 ×로 표시된다. 따라서 해의 개수는 4개이고 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -650,7 +654,11 @@ window.questionBank = [
     "subUnitKey": "M2-02-LINEAR_INEQUALITY",
     "subUnit": "일차부등식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_연향중_1학기_중간_중2_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선에 3/4를 포함하지 않고 왼쪽으로 뻗는 해집합이 칠해져 있고 정수 −1과 0은 해 안의 점으로, 1은 바깥의 ×로 표시되어 있다.",
+    "solutionImageCaption": "0.6=3/5로 바꾸고 양변에 15를 곱하면 9x+6<9+5x이므로 x<3/4이다. 해집합은 3/4를 포함하지 않는 왼쪽 부분이고 그 안의 가장 큰 정수는 0이다. 1은 3/4보다 커서 해가 아니다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -758,7 +766,11 @@ window.questionBank = [
     "subUnitKey": "M2-02-LINEAR_INEQUALITY",
     "subUnit": "일차부등식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_연향중_1학기_중간_중2_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 같은 수직선 위에 첫째 줄과 둘째 줄이 있고 둘 다 3을 포함해 왼쪽으로 뻗는 해집합이 같은 모양으로 칠해져 있다.",
+    "solutionImageCaption": "첫째 부등식은 x≤3이다. 둘째 부등식 3x−a≥5(x−2)+1은 x≤(9−a)/2이다. 두 해가 같으려면 경계 (9−a)/2가 3과 같아야 하므로 a=3이고 그림은 a=3일 때 두 줄이 일치하는 모습이다. 따라서 답은 3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,

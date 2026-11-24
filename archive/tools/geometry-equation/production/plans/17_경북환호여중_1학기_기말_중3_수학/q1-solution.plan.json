@@ -1,0 +1,74 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      0,
+      11,
+      0,
+      45
+    ],
+    "curves": [
+      {
+        "id": "p",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "-3/2",
+          "1/2"
+        ],
+        "domain": [
+          "0",
+          "11"
+        ],
+        "color": "BLUE",
+        "label": "y=n(n-3)/2"
+      },
+      {
+        "id": "l",
+        "kind": "LINE",
+        "coefficients": [
+          "20",
+          "0"
+        ],
+        "domain": [
+          "0",
+          "11"
+        ],
+        "color": "GREEN",
+        "style": "DASHED",
+        "label": "y=20"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "n",
+      "y": "대각선 수"
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "8",
+          "y": "20",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "대각선의 개수가 20개이므로 n(n-3)/2=20이다. 양변에 2를 곱하면 n²-3n-40=0이고, 인수분해하면 (n-8)(n+5)=0이다. n은 자연수이므로 n=8이다. 따라서 답은 ③이다.",
+  "accessibilityDescription": "가로축 n, 세로축 대각선 수를 나타내는 좌표평면에 아래로 볼록한 포물선과 수평선이 만나는 점 하나가 표시되어 있다.",
+  "newVisualInformation": [
+    "포물선 y=n(n-3)/2와 수평선 y=20의 교점 P가 표시된다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "1. 꼭짓점의 개수가 $n$개인 다각형의 대각선의 개수는 $\\dfrac{n(n-3)}{2}$개이다. 대각선의 개수가 20개인 다각형을 구하면? [3.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

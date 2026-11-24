@@ -130,7 +130,14 @@ for (const file of files) {
   let submissionScope = null;
   if (partial.hasScope(d)) {
     try { submissionScope = partial.publicEvidence(root,d,{bank:nativeBank,identity:{records:identities},dictPath:DICT_BY_VERSION[d.dictionaryVersion]}); }
-    catch(e) { bad(e.message); continue; }
+    catch(e) {
+      // 2026-11-24: 그림 파일이 새로 그려져 재결속 검토가 본 그림 바이트와 달라진 것은 실패가 아니라 STALE 안내다(그림이 바뀌어도 판정은 유효,
+      // 새 그림을 게시할 때의 검수가 곧 새 승인). 문항 지문·UID 같은 다른 사유는 그대로 실패한다.
+      if (/PUBLIC_REBIND_(?:RENDERER_REVIEW_CURRENT_ASSETS|UNCHANGED_QUESTION_AND_ASSETS|EXISTING_ASSET_CHANGED)$/.test(e.message)) {
+        stale.push(`${rel}: partial 4slot renderer review saw older figure bytes (${e.message})`); continue;
+      }
+      bad(e.message); continue;
+    }
   }
   for (const it of d.items.filter(x => Object.prototype.hasOwnProperty.call(x, 'registrationHold'))) {
     const index = exam.findIndex(q => Number(q.ordinal) === it.ordinal);

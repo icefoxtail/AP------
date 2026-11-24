@@ -238,7 +238,11 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "score": 4,
-    "image": ""
+    "image": "",
+    "solutionImage": "assets/images/17_대구동도중_1학기_기말_중3_수학/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로가 각각 11, 13, 15인 세 정사각형이 나란히 있고, 각 정사각형의 넓이 121, 169, 225가 적혀 있다.",
+    "solutionImageCaption": "연속하는 세 홀수를 x−4, x−2, x라 하면 가장 큰 수의 제곱이 나머지 두 수의 제곱의 합보다 65만큼 작으므로 x²+65=(x−2)²+(x−4)²이다. 우변을 전개하면 x²+65=2x²−12x+20이고, 정리하면 x²−12x−45=0이다. (x−15)(x+3)=0에서 양수인 홀수는 x=15이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -258,7 +262,11 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "score": 4,
-    "image": ""
+    "image": "",
+    "solutionImage": "assets/images/17_대구동도중_1학기_기말_중3_수학/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 여섯 그래프를 같은 좌표계에서 비교한다. 계수의 부호는 열린 방향, 절댓값은 폭을 정한다.",
+    "solutionImageCaption": "여섯 그래프를 같은 좌표계에서 비교한다. 계수의 부호는 열린 방향, 절댓값은 폭을 정한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -278,7 +286,11 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "score": 4,
-    "image": ""
+    "image": "",
+    "solutionImage": "assets/images/17_대구동도중_1학기_기말_중3_수학/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 꼭짓점과 축을 기준으로 왼쪽·오른쪽의 변화 방향을 읽는다.",
+    "solutionImageCaption": "꼭짓점과 축을 기준으로 왼쪽·오른쪽의 변화 방향을 읽는다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -298,7 +310,11 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "score": 4,
-    "image": ""
+    "image": "",
+    "solutionImage": "assets/images/17_대구동도중_1학기_기말_중3_수학/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 이동 전 꼭짓점 A와 이동 후 꼭짓점 B를 연결해 가로 3, 세로 −2의 평행이동을 확인한다.",
+    "solutionImageCaption": "이동 전 꼭짓점 A와 이동 후 꼭짓점 B를 연결해 가로 3, 세로 −2의 평행이동을 확인한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -342,7 +358,11 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "score": 4,
-    "image": "assets/images/17_대구동도중_1학기_기말_중3_수학/q17-problem-visual-v2.svg"
+    "image": "assets/images/17_대구동도중_1학기_기말_중3_수학/q17-problem-visual-v2.svg",
+    "solutionImage": "assets/images/17_대구동도중_1학기_기말_중3_수학/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: A에서 밑변 CE로 수선 AH를 내려 높이를 만든다.",
+    "solutionImageCaption": "A에서 밑변 CE로 수선 AH를 내려 높이를 만든다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -404,7 +424,11 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "score": 5,
-    "image": "assets/images/17_대구동도중_1학기_기말_중3_수학/q20-problem-visual-v2.svg"
+    "image": "assets/images/17_대구동도중_1학기_기말_중3_수학/q20-problem-visual-v2.svg",
+    "solutionImage": "assets/images/17_대구동도중_1학기_기말_중3_수학/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: AE와 ED의 비로 a를 정한 뒤 반폭 u에 대한 가로 2u와 세로(1+a)u²를 같게 둔다.",
+    "solutionImageCaption": "AE와 ED의 비로 a를 정한 뒤 반폭 u에 대한 가로 2u와 세로(1+a)u²를 같게 둔다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -446,7 +470,11 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "score": 4,
-    "image": "assets/images/17_대구동도중_1학기_기말_중3_수학/q22-problem-visual-v2.svg"
+    "image": "assets/images/17_대구동도중_1학기_기말_중3_수학/q22-problem-visual-v2.svg",
+    "solutionImage": "assets/images/17_대구동도중_1학기_기말_중3_수학/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 대각선 OB로 사각형 OABC를 두 삼각형으로 나눈다. A,B,C의 좌표와 수직인 축을 이용하여 각 넓이를 구하되 최종 합은 숨긴다.",
+    "solutionImageCaption": "대각선 OB로 사각형 OABC를 두 삼각형으로 나눈다. A,B,C의 좌표와 수직인 축을 이용하여 각 넓이를 구하되 최종 합은 숨긴다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -488,6 +516,10 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "score": 5,
-    "image": "assets/images/17_대구동도중_1학기_기말_중3_수학/q24-problem-visual-v2.svg"
+    "image": "assets/images/17_대구동도중_1학기_기말_중3_수학/q24-problem-visual-v2.svg",
+    "solutionImage": "assets/images/17_대구동도중_1학기_기말_중3_수학/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축 t, 세로축 S인 좌표평면에 위로 볼록한 포물선이 t=0부터 t=5까지 그려져 있고, 꼭짓점 V와 양 끝 점 M, N이 표시되어 있다. 세로축에는 16과 25의 눈금이 있다.",
+    "solutionImageCaption": "점 P가 A를 출발한 지 t초 후라고 하면 PB=8−t, BQ=4+2t이므로 삼각형 PBQ의 넓이는 S=1/2(8−t)(4+2t)=−t²+6t+16 (0≤t≤5)이다. 이 그래프는 t=3에서 최댓값 25를 가지며, 양 끝 t=0, t=5에서 각각 16, 21이다. 이므로 최대 넓이는 25cm²이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   }
 ];

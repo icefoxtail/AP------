@@ -1,0 +1,51 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "6",
+          "-5/2"
+        ],
+        "domain": [
+          "1",
+          "4"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "-6",
+          "2"
+        ],
+        "domain": [
+          "1",
+          "4"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "8/3",
+          "y": "-2/3",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "y2x−6대입에서 9x24,x8/3,y−2/3. 정확교점의좌표합 2. 정답⑤.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 일차방정식 $5x+2y=12$, $y=2x-6$을 모두 만족시키는 $x, y$에 대하여 $x+y$의 값은? [4점]",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

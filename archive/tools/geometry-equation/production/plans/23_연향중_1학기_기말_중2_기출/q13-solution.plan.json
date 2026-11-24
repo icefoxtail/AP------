@@ -1,0 +1,59 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "12",
+          "-1"
+        ],
+        "domain": [
+          "0",
+          "12"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "11",
+          "-3/4"
+        ],
+        "domain": [
+          "0",
+          "12"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "4",
+          "y": "8",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "가로 빵 개수 x, 세로 음료 개수 y. 총 12개와 3x+4y44의 교점 (4,8). 실제 개수는 비음수 정수, 직선은 조건의 보조 연장. 빵 4개 정답 ①.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "한 개에 $1200$원인 빵과 한 개에 $1600$원인 음료수를 합하여 $12$개를 사고 $17600$원을 지불하였다. 이때 빵의 개수를 구하면? [4점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "가로빵개수x,세로음료개수y. 총12개와3x+4y44의교점(4,8). 실제개수는비음수정수,직선은조건의보조연장. 빵4개정답①.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "가로빵개수x,세로음료개수y. 총12개와3x+4y44의교점(4,8). 실제개수는비음수정수,직선은조건의보조연장. 빵4개정답①."
+  ]
+}

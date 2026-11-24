@@ -115,8 +115,9 @@ describe('Similar Exam Harness Gate & Fault Injection (Negative Tests)', () => {
 
   test('Fault Injection: Candidate JS blob mismatch against review receipt is blocked', () => {
     const origJs = fs.readFileSync('archive/exams/similar/middle/m1/1mid/23_동산중_1학기_중간_중1_유사.js', 'utf8');
-    // Subtle modification changing comments/whitespace
-    const mutatedJs = origJs + '\n// modified after review receipt was signed';
+    // 2026-11-24: 영수증 blob은 파일 전체가 아니라 문항별 발문·보기로 본다. 주석만 덧붙이는 변경은 통과이므로 첫 문항의 발문을 바꾼다.
+    const mutatedJs = origJs.replace('"content": "', '"content": "수정 ');
+    assert.notEqual(mutatedJs, origJs);
     
     const tmpJs = path.join(TEST_SCRATCH, 'mutated_blob_tampered.js');
     fs.writeFileSync(tmpJs, mutatedJs, 'utf8');
@@ -496,7 +497,7 @@ describe('High school similar exams: grade-aware harness', () => {
     assert.ok(res.errors.some((e) => e.includes('Receipt candidateGitBlobSha1 mismatch')));
   });
 
-  test('Fault Injection: changing an exam answer breaks the blob binding and the receipt answer binding', () => {
+  test('Fault Injection: changing an exam answer breaks the receipt answer binding (answer is not part of the stem/choices blob check)', () => {
     const fx = stageHighFixture(HS, 'answer');
     const js = fs.readFileSync(fx.js, 'utf8');
     const m = js.match(/"answer": "([①②③④⑤])"/);
@@ -504,7 +505,6 @@ describe('High school similar exams: grade-aware harness', () => {
     fs.writeFileSync(fx.js, js.replace(m[0], `"answer": "${swapped}"`), 'utf8');
     const res = fx.run();
     assert.equal(res.ok, false);
-    assert.ok(res.errors.some((e) => e.includes('Receipt candidateGitBlobSha1 mismatch')));
     assert.ok(res.errors.some((e) => e.includes('differs from the exam answer')), 'receipt candidateAnswer must be bound to the exam answer');
   });
 

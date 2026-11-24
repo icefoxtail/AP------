@@ -153,7 +153,11 @@ window.questionBank = [
       "l4": "기울기·절편"
     },
     "primaryMethod": "두 좌표축 교점의 절편 좌표",
-    "decisiveStep": "각 좌표축에서 다른좌표를0으로 놓아 두절편을 정한다."
+    "decisiveStep": "각 좌표축에서 다른좌표를0으로 놓아 두절편을 정한다.",
+    "solutionImage": "assets/images/20_풍덕중_2학기_기말_중2_기출/q3-solution.svg",
+    "solutionImageAlt": "오른쪽 위로 올라가는 직선이 x축과 만나는 점 A(1,0)과 y축과 만나는 점 B(0,−3)을 지나며 두 점의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "x축과 만나는 점은 y=0일 때이므로 0=3x−3에서 x=1이고 A(1,0)이다. y축과 만나는 점은 x=0일 때이므로 y=−3이고 B(0,−3)이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -196,7 +200,11 @@ window.questionBank = [
     "wide": false,
     "curriculum": "2015",
     "primaryMethod": "두 고정점 직선에 세번째점 대입",
-    "decisiveStep": "두 고정점의 직선식을 정하고 미지좌표점이 그 식을 만족하게 한다."
+    "decisiveStep": "두 고정점의 직선식을 정하고 미지좌표점이 그 식을 만족하게 한다.",
+    "solutionImage": "assets/images/20_풍덕중_2학기_기말_중2_기출/q4-solution.svg",
+    "solutionImageAlt": "오른쪽 아래로 내려가는 직선 위에 세 점 (−2,0), (1,−6), (−3,2)가 있고 좌표가 표시되어 있다.",
+    "solutionImageCaption": "(−2,0), (1,−6)을 지나는 직선의 기울기는 (−6−0)/(1−(−2))=−2이고 0=4+b에서 b=−4이므로 y=−2x−4이다. 점 (a,a+5)도 이 직선 위에 있으므로 a+5=−2a−4에서 a=−3이고 점 (−3,2)이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -367,7 +375,11 @@ window.questionBank = [
       "l4": "두 점으로 식 구하기"
     },
     "primaryMethod": "두점으로 직선식 결정",
-    "decisiveStep": "두 좌표의 변화량비로 기울기를 구한 뒤 한점을 대입한다."
+    "decisiveStep": "두 좌표의 변화량비로 기울기를 구한 뒤 한점을 대입한다.",
+    "solutionImage": "assets/images/20_풍덕중_2학기_기말_중2_기출/q7-solution.svg",
+    "solutionImageAlt": "오른쪽 위로 올라가는 직선이 점 (−1,3), (5,9)와 y축 위의 점 (0,4)를 지나며 좌표가 표시되어 있다.",
+    "solutionImageCaption": "두 점 (−1,3), (5,9)를 지나는 직선의 기울기는 (9−3)/(5−(−1))=1이다. y=x+b에 (−1,3)을 대입하면 3=−1+b에서 b=4이다. 따라서 y절편이 4인 y=x+4이고 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -415,7 +427,11 @@ window.questionBank = [
       "l4": "일차방정식의 그래프"
     },
     "primaryMethod": "일차방정식의 두절편으로 그래프 선택",
-    "decisiveStep": "주어진 방정식을 y에 관해 정리하고 x절편3,y절편2를 가지는 보기를 찾는다."
+    "decisiveStep": "주어진 방정식을 y에 관해 정리하고 x절편3,y절편2를 가지는 보기를 찾는다.",
+    "solutionImage": "assets/images/20_풍덕중_2학기_기말_중2_기출/q8-solution.svg",
+    "solutionImageAlt": "오른쪽 아래로 내려가는 직선이 x축과 (3,0)에서, y축과 (0,2)에서 만나며 두 점의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "2x+3y−6=0을 y에 대해 정리하면 y=−(2/3)x+2이다. 기울기가 −2/3이므로 오른쪽으로 갈수록 내려가고, y절편은 2, x절편은 3이다. 따라서 그림에서 y절편 2, x절편 3인 그래프는 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -468,7 +484,11 @@ window.questionBank = [
       "l4": "x축·y축에 평행한 직선"
     },
     "primaryMethod": "x절편을 지나는 수직선",
-    "decisiveStep": "주어진 직선에서 y=0인 x값을 구하고 모든점의x가같은 수직선식으로 옮긴다."
+    "decisiveStep": "주어진 직선에서 y=0인 x값을 구하고 모든점의x가같은 수직선식으로 옮긴다.",
+    "solutionImage": "assets/images/20_풍덕중_2학기_기말_중2_기출/q9-solution.svg",
+    "solutionImageAlt": "오른쪽 아래로 내려가는 직선이 x축과 (1/2,0)에서 만나고 그 점을 지나는 위아래 방향의 수직선이 함께 그려져 있다.",
+    "solutionImageCaption": "점 (a,0)이 y=−2x+1 위에 있으므로 0=−2a+1에서 a=1/2이다. y축에 평행한 직선은 x좌표가 일정하므로 점 (1/2,0)을 지나는 직선은 x=1/2이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -691,7 +711,11 @@ window.questionBank = [
       "l4": "중복 없이 세기"
     },
     "primaryMethod": "두 배수 목록의 겹친 원소 보정",
-    "decisiveStep": "3의배수와5의배수를 센 뒤 공통15를 한 번 제외한다."
+    "decisiveStep": "3의배수와5의배수를 센 뒤 공통15를 한 번 제외한다.",
+    "solutionImage": "assets/images/20_풍덕중_2학기_기말_중2_기출/q13-solution.svg",
+    "solutionImageAlt": "벤 다이어그램 집합 사이의 포함 관계와 원소가 속한 영역을 벤 다이어그램으로 나타낸 그림이다.",
+    "solutionImageCaption": "A를 3의 배수 3, 6, 9, 12, 15(5개), B를 5의 배수 5, 10, 15(3개)의 집합으로 놓는다. 15는 두 집합의 공통 원소이므로 한 번만 세어야 한다. 나머지 1, 2, 4, 7, 8, 11, 13, 14는 두 집합 어디에도 속하지 않는다(그림에서는 생략). 따라서 3의 배수 또는 5의 배수의 개수는 5+3−1=7이고 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,

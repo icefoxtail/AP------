@@ -117,7 +117,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "rpmSemanticStatus": "EVIDENCE_UNVERIFIED_VALIDATOR_NOT_RUN",
-    "metaProjectionStatus": "PROJECTION_REUSE"
+    "metaProjectionStatus": "PROJECTION_REUSE",
+    "solutionImage": "assets/images/22_복성고_2학기_기말_고2_수학II/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 위에 가속도, 속도, 합을 각각 나타내는 세 점이 서로 다른 줄에 표시되어 있고 각 점에는 값이 함께 적혀 있다.",
+    "solutionImageCaption": "속도는 위치의 도함수이므로 v(t)=3t²+4t이고, 가속도는 a(t)=6t+4이다. t=2에서 v(2)=20, a(2)=16이므로 두 값의 합은 20+16=36이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -228,7 +232,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "rpmSemanticStatus": "EVIDENCE_UNVERIFIED_VALIDATOR_NOT_RUN",
-    "metaProjectionStatus": "PROJECTION_REUSE"
+    "metaProjectionStatus": "PROJECTION_REUSE",
+    "solutionImage": "assets/images/22_복성고_2학기_기말_고2_수학II/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "두 교점 사이에서 직선이 위에 있으므로 위 함수에서 아래 함수를 뺀다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -349,7 +357,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "rpmSemanticStatus": "EVIDENCE_UNVERIFIED_VALIDATOR_NOT_RUN",
-    "metaProjectionStatus": "PROJECTION_UNMATERIALIZED"
+    "metaProjectionStatus": "PROJECTION_UNMATERIALIZED",
+    "solutionImage": "assets/images/22_복성고_2학기_기말_고2_수학II/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "구간 양 끝의 함수값이 같을 때 내부에서 수평 접선이 생기는 위치를 살핀다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -634,7 +646,11 @@ window.questionBank = [
     ],
     "integrationPattern": "CASE_BRANCH",
     "rpmSemanticStatus": "EVIDENCE_UNVERIFIED_VALIDATOR_NOT_RUN",
-    "metaProjectionStatus": "PROJECTION_UNMATERIALIZED"
+    "metaProjectionStatus": "PROJECTION_UNMATERIALIZED",
+    "solutionImage": "assets/images/22_복성고_2학기_기말_고2_수학II/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축 −2부터 2까지의 범위에 삼차함수 f의 그래프가 있고, x=−1의 봉우리와 x=1의 골짜기가 표시되어 있다.",
+    "solutionImageCaption": "a=−1일 때 그래프는 M(−1,1)에서 극대, N(1,−3)에서 극소이다. f(−1)=1>0, f(1)=−3<0이므로 f는 부호가 바뀌는 점이 세 번 생긴다. 따라서 F(x)는 0부터 x까지 f(t)를 적분한 함수이므로 극값을 세 개 가져 조건을 만족하지 않는다. 보기 중 −2<a<2에 해당하는 값은 −1뿐이므로 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -673,7 +689,12 @@ window.questionBank = [
     ],
     "integrationPattern": "CASE_BRANCH",
     "rpmSemanticStatus": "EVIDENCE_UNVERIFIED_VALIDATOR_NOT_RUN",
-    "metaProjectionStatus": "PROJECTION_UNMATERIALIZED"
+    "metaProjectionStatus": "PROJECTION_UNMATERIALIZED",
+    "solutionImage": "assets/images/22_복성고_2학기_기말_고2_수학II/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축 0부터 10까지의 범위에 삼차함수 f의 그래프가 있고, x=2의 봉우리와 x=8의 극소점이 표시되어 있다.",
+    "solutionImageCaption": "n=8일 때 그래프는 M(2,216)에서 극대, N(8,0)에서 극소이다. n이 8보다 크면 f(n)=−n(n−8)(n+2)<0이 되어 x≥0에서 f(x)≥0이 성립하지 않는다. n=1부터 8까지 모두 조건을 만족하므로 8개이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 18,

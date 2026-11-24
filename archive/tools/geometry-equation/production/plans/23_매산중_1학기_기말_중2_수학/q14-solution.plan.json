@@ -1,0 +1,50 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-5",
+          "5/3"
+        ]
+      }
+    ],
+    "domain": [
+      -1,
+      4
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "0",
+        "y": "-5"
+      },
+      {
+        "id": "P1",
+        "x": "3",
+        "y": "0"
+      }
+    ],
+    "formula": "5*x/3 - 5"
+  },
+  "caption": "원식은 y5x/3−5,가로절편 3과세로절편 −5. 원본⑤와일치.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>14. 다음에서 일차함수 $y-\\frac{5}{3}x+5=0$의 그래프는? (4점)</p><p><img src=\"assets/images/23_매산중_1학기_기말_중2_수학/q14-problem-visual-v2.svg\" alt=\"①은 가로 절편 5와 세로 절편 3인 내리막이다. ②는 왼쪽 가로축과 세로축의 3을 지나는 오르막이다. ③은 두 음의 절편을 가진 내리막이다. ④는 세로축의 −3을 지나는 오르막이다. ⑤의 직선은 가로 절편 3과 세로 절편 −5를 지나는 오르막이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "원식은y5x/3−5,가로절편3과세로절편−5. 원본⑤와일치.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "원식은y5x/3−5,가로절편3과세로절편−5. 원본⑤와일치."
+  ]
+}

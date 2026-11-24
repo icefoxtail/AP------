@@ -694,7 +694,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-01-PERMUTATION",
     "subUnit": "순열",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천고_1학기_중간_고2_확률과통계/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로로 놓인 네 개의 단위 사이와 양 끝에 다섯 개의 빈칸 번호가 표시되어 있다.",
+    "solutionImageCaption": "순천여고 2명을 한 묶음으로 보면 팔마고가 아닌 단위는 묶음 1개와 제일고 3명으로 모두 4개이다. 이 4개를 배열하는 방법은 4!가지이고 그 사이와 양 끝의 5칸 중 3칸에 팔마고 학생을 한 명씩 넣으면 된다. 따라서 4!×5C3×3!×2!=24×10×6×2=2880이다. 따라서 답은 2880이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,

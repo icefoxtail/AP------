@@ -1,0 +1,50 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "1",
+          "-1"
+        ]
+      }
+    ],
+    "domain": [
+      -2,
+      3
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "0",
+        "y": "1"
+      },
+      {
+        "id": "P1",
+        "x": "1",
+        "y": "0"
+      }
+    ],
+    "formula": "1 - x"
+  },
+  "caption": "a>0,b>0이므로 −b<0,양의절편 a. 원본보기④,정답④.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$a>0$, $b>0$일 때 다음 중 일차함수 $y=-bx+a$의 그래프로 알맞은 것은?",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "a>0,b>0이므로 −b<0,양의절편a. 대표예시a=b1로 내리막·양의절편을 보이며 원래계수를1로 확정하지 않는다. 원본보기④,정답④.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "a>0,b>0이므로 −b<0,양의절편a. 원본보기④,정답④."
+  ]
+}

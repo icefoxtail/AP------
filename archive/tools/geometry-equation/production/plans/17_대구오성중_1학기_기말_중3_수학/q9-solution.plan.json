@@ -1,0 +1,107 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "l",
+        "kind": "LINE",
+        "coefficients": [
+          "2",
+          "2/3"
+        ],
+        "domain": [
+          "0",
+          "8"
+        ],
+        "color": "BLUE",
+        "label": "l"
+      },
+      {
+        "id": "axis",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "0"
+        ],
+        "domain": [
+          "0",
+          "8"
+        ],
+        "color": "WARM",
+        "label": "y=0"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "6",
+          "y": "6",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "0",
+          "y": "2",
+          "coordinates": true
+        },
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0",
+          "coordinates": true
+        },
+        {
+          "id": "A",
+          "x": "6",
+          "y": "0",
+          "coordinates": true
+        }
+      ],
+      "segments": [
+        {
+          "id": "PB",
+          "from": "P",
+          "to": "B"
+        },
+        {
+          "id": "BO",
+          "from": "B",
+          "to": "O"
+        },
+        {
+          "id": "OA",
+          "from": "O",
+          "to": "A"
+        },
+        {
+          "id": "AP",
+          "from": "A",
+          "to": "P"
+        }
+      ]
+    }
+  },
+  "caption": "사다리꼴의 평행한 두 변은 세로 길이이다. 두 높이와 가로 거리를 이용해 넓이 조건을 세운다.",
+  "accessibilityDescription": "사다리꼴의 평행한 두 변은 세로 길이이다. 두 높이와 가로 거리를 이용해 넓이 조건을 세운다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "9. 아래 그림과 같이 직선 $y = \\frac{2}{3}x + 2$위의 한 점 $\\text{P}$에서 $x$축에 내린 수선의 발을 $\\text{A}$라고 하자. 점 $\\text{P}$가 제 1사분면 위의 점이고, $\\square\\text{PBOA}$의 넓이가 24이다. 점 $\\text{P}$의 좌표가 $(a, b)$일 때, $a + b$의 값은? [4.6점]<br><img src=\"assets/images/17_대구오성중_1학기_기말_중3_수학/q9-problem-visual-v2.svg\" alt=\"원점 O 오른쪽의 A에서 수직으로 올라가 직선 위 P에 닿는다. 직선과 y축이 만나는 B 높이는 2이다. 점 P, B, O, A를 이은 사다리꼴을 칠했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "원본SVG직접확인. (b+2)a/2=24,b=2a/3+2→a6,b6. 중간좌표 유지,최종합12숨김.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "사다리꼴의 평행한 두 변은 세로 길이이다. 두 높이와 가로 거리를 이용해 넓이 조건을 세운다."
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "3"
+        ]
+      }
+    ],
+    "domain": [
+      1,
+      4
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "1",
+        "4"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "1",
+        "y": "3"
+      },
+      {
+        "id": "P1",
+        "x": "2",
+        "y": "6"
+      },
+      {
+        "id": "P2",
+        "x": "3",
+        "y": "9"
+      }
+    ],
+    "formula": "(3)*x+(0)"
+  },
+  "caption": "정삼각형의 양수 길이 x>0에서 둘레 y3x는 하나로 정해진다. 여기 1..4는 표시 발췌이며 실제 정의역 끝이 아니다. 정답 ⑤.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 중 함수인 것을 고르면? [4점] 보기: ['자연수 $x$와 서로소인 자연수 $y$', '자연수 $x$보다 큰 짝수 $y$', '나이가 $x$세인 사람의 키 $y\\\\mathrm{cm}$', '자연수 $x$와 2의 공배수 $y$', '둘레의 길이가 $y\\\\mathrm{cm}$인 정삼각형의 한 변의 길이 $x\\\\mathrm{cm}$']",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "정삼각형의양수길이x>0에서둘레y3x는하나로정해진다. 여기1..4는표시발췌이며실제정의역끝이아니다. 정답⑤.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "정삼각형의양수길이x>0에서둘레y3x는하나로정해진다. 여기1..4는표시발췌이며실제정의역끝이아니다. 정답⑤."
+  ]
+}

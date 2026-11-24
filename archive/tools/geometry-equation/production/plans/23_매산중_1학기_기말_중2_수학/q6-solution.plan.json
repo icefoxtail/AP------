@@ -1,0 +1,65 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "3/2",
+          "-1/4"
+        ],
+        "domain": [
+          "0",
+          "4"
+        ],
+        "label": "Y=3/2-X/4"
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "3",
+          "-1"
+        ],
+        "domain": [
+          "0",
+          "4"
+        ],
+        "label": "Y=3-X"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "2",
+          "y": "1",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    },
+    "axisTitles": {
+      "x": "X",
+      "y": "Y"
+    }
+  },
+  "caption": "A/B의 분당 급수량을 물통 전체 1 기준 r,s라 두고 X=12r,Y=12s로 표시. 2r+8s1,4r+4s1의 교점 (X,Y)=(2,1)에서 r1/6,s1/12. A 단독 6분, 정답 ②.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>6. 어떤 물통에 물을 가득 채우는데 $\\text{A}$호스로 2분 동안 넣고 $\\text{B}$호스로 8분 동안 넣었더니 물통이 가득 찼다. 또 같은 물통에 $\\text{A, B}$ 두 호스를 모두 사용하여 4분 동안 넣었더니 물통이 가득 찼을 때, $\\text{A}$호스만을 사용하여 이 물통을 가득 채우는 데 걸리는 시간은? (5점)</p>",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "A/B의분당급수량을물통전체1기준r,s라두고X=12r,Y=12s로표시. 2r+8s1,4r+4s1의교점(X,Y)=(2,1)에서r1/6,s1/12. A단독6분,정답②.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "A/B의분당급수량을물통전체1기준r,s라두고X=12r,Y=12s로표시. 2r+8s1,4r+4s1의교점(X,Y)=(2,1)에서r1/6,s1/12. A단독6분,정답②."
+  ]
+}

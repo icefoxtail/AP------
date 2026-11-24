@@ -1,0 +1,63 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "10",
+          "-1"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      10
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "10"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "0",
+        "y": "10"
+      },
+      {
+        "id": "P1",
+        "x": "9",
+        "y": "1"
+      },
+      {
+        "id": "P2",
+        "x": "10",
+        "y": "0"
+      }
+    ],
+    "formula": "10 - x"
+  },
+  "caption": "자연수 x,y에서 합 10인 격자점 중 보기 ④ (9,1)만 맞는다. (0,10)은 방정식에는 맞지만 자연수 조건에서 제외. 선분은 실수 보조이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>1. $x, y$가 자연수일 때, 다음 일차방정식 $x+y=10$의 해는? (3점)</p>",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "자연수x,y에서합10인격자점중보기④(9,1)만맞는다. (0,10)은방정식에는맞지만자연수조건에서제외. 선분은실수보조이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "자연수x,y에서합10인격자점중보기④(9,1)만맞는다. (0,10)은방정식에는맞지만자연수조건에서제외. 선분은실수보조이다."
+  ]
+}

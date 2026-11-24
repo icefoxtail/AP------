@@ -1,0 +1,68 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "5",
+          "-3"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-4",
+        "2"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      -4,
+      2
+    ],
+    "viewport": [
+      -5.08,
+      3.08,
+      -4.24,
+      20.24
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "-4",
+          "y": "17",
+          "coordinates": true
+        },
+        {
+          "id": "Q",
+          "x": "2",
+          "y": "-1",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "−4<x≤2에서 A=−3x+5의 값의 범위를 구한다. 기울기가 −3이므로 x가 커질수록 A는 작아진다. x=2일 때 A=−1이고 x=2는 포함되므로 −1을 포함한다. x=−4일 때 A=17이지만 x=−4는 포함되지 않으므로 17은 포함되지 않는다. 따라서 −1≤A<17이고 답은 ①이다.",
+  "newVisualInformation": [
+    "x=2일 때 A=−1(포함), x=−4일 때 A=17(미포함)이므로 −1≤A<17"
+  ],
+  "accessibilityDescription": "오른쪽 아래로 향하는 직선 위에 x=−4인 점 P(−4,17)와 x=2인 점 Q(2,−1)가 표시되어 있다. A의 값은 Q의 −1 이상이고 P의 17 미만이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>12. $-4 < x \\le 2$이고 $A=-3x+5$일 때, $A$의 값의 범위는? [4점]</p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

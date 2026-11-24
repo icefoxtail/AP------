@@ -17,7 +17,11 @@ window.questionBank = [
     "images": [],
     "answer": "",
     "solution": "",
-    "score": 3.0
+    "score": 3.0,
+    "solutionImage": "assets/images/18_연향중_1학기_중간_중3_수학/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 한 변이 3인 정사각형이 가로와 세로로 각각 3등분되어 9개의 작은 정사각형으로 나뉘어 있다. 아래쪽 변에는 길이 3을 나타내는 치수선이 있다.",
+    "solutionImageCaption": "(-3)²=9이고 9의 양의 제곱근은 3이므로 ②가 옳다. 0의 제곱근은 0 하나이고, 15의 제곱근은 ±√15이며, 모든 정수의 제곱근이 두 개인 것은 아니다. -10의 제곱근은 실수로 존재하지 않는다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -74,7 +78,11 @@ window.questionBank = [
     "images": [],
     "answer": "",
     "solution": "",
-    "score": 4.0
+    "score": 4.0,
+    "solutionImage": "assets/images/18_연향중_1학기_중간_중3_수학/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 세로로 네 개의 가로 막대가 놓여 있고, 위의 두 막대는 0에서 오른쪽으로, 아래의 두 막대는 0에서 왼쪽으로 뻗는다. 각 막대 위에 √2, √3, √2-√7, √3-√7이 적혀 있다.",
+    "solutionImageCaption": "√2≈1.414, √3≈1.732이므로 √2<√3이다. 같은 수 √7을 빼도 대소 관계는 그대로이므로 √2-√7<√3-√7이다. 나머지 보기의 부등식은 모두 거짓이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -131,7 +139,11 @@ window.questionBank = [
     "images": [],
     "answer": "",
     "solution": "",
-    "score": 4.0
+    "score": 4.0,
+    "solutionImage": "assets/images/18_연향중_1학기_중간_중3_수학/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 위에 범위를 나타낸 그림이다.",
+    "solutionImageCaption": "인접한 두 정수 사이에서 수의 위치를 확인하고 왼쪽 정수에서 떨어진 양을 소수 부분으로 해석한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -213,7 +225,11 @@ window.questionBank = [
     "images": ["assets/images/18_연향중_1학기_중간_중3_수학/q11-problem-visual-v2.svg"],
     "answer": "",
     "solution": "",
-    "score": 5.0
+    "score": 5.0,
+    "solutionImage": "assets/images/18_연향중_1학기_중간_중3_수학/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 윗변을 맞춘 네 정사각형의 넓이가 세 배씩 커지면 변의 길이는 루트 삼 배씩 커진다. 위쪽 네 변을 차례로 더한다.",
+    "solutionImageCaption": "윗변을 맞춘 네 정사각형의 넓이가 세 배씩 커지면 변의 길이는 루트 삼 배씩 커진다. 위쪽 네 변을 차례로 더한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -327,7 +343,11 @@ window.questionBank = [
     "images": [],
     "answer": "",
     "solution": "",
-    "score": 5.0
+    "score": 5.0,
+    "solutionImage": "assets/images/18_연향중_1학기_중간_중3_수학/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: x=2, y=1의 배치 예시이다. 중앙 연못의 넓이를 남은 잔디밭 넓이에 더해 전체 직사각형 넓이를 복원한 뒤 세로 길이로 나눈다.",
+    "solutionImageCaption": "x=2, y=1의 배치 예시이다. 중앙 연못의 넓이를 남은 잔디밭 넓이에 더해 전체 직사각형 넓이를 복원한 뒤 세로 길이로 나눈다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -346,7 +366,11 @@ window.questionBank = [
     "images": [],
     "answer": "",
     "solution": "",
-    "score": 4.0
+    "score": 4.0,
+    "solutionImage": "assets/images/18_연향중_1학기_중간_중3_수학/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로선 위의 세 점 O, X, Y가 선분을 두 구간으로 나누고 있다. 왼쪽 구간에는 x, 오른쪽 구간에는 3−x, 전체 구간에는 3이라는 길이 표시가 있다.",
+    "solutionImageCaption": "0<x<3이므로 √(x²)=x이고 √(x²−6x+9)=|x−3|=3−x이다. 두 근호의 값을 더하면 x+(3−x)=3이다. 예: x=1이면 1+2=3이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -413,7 +437,11 @@ window.questionBank = [
     "images": ["assets/images/18_연향중_1학기_중간_중3_수학/q22-problem-visual-v2.svg"],
     "answer": "",
     "solution": "",
-    "score": 7.0
+    "score": 7.0,
+    "solutionImage": "assets/images/18_연향중_1학기_중간_중3_수학/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 자연수 조건으로 두 정사각형의 변을 구한 뒤 오른쪽 띠의 폭과 큰 변에서 작은 변을 뺀 높이를 곱한다.",
+    "solutionImageCaption": "자연수 조건으로 두 정사각형의 변을 구한 뒤 오른쪽 띠의 폭과 큰 변에서 작은 변을 뺀 높이를 곱한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,

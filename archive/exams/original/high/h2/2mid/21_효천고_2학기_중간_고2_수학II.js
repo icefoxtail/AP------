@@ -49,7 +49,11 @@ window.questionBank = [
       "CC_ABSOLUTE_VALUE_FUNCTION"
     ],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/21_효천고_2학기_중간_고2_수학II/q1-solution.svg",
+    "solutionImageAlt": "x=1에서 끊어지는 그래프로, 아래쪽 수평선과 위쪽 수평선이 x=1에서 각각 열린 점으로 끝나는 모양이다.",
+    "solutionImageCaption": "x>1이면 |x-1|/(x-1)=1이므로 오른쪽은 높이 1의 수평선이고 x→1+에서 우극한 a=1이다. x<1이면 -1이므로 왼쪽은 높이 -1의 수평선이고 x→1-에서 좌극한 b=-1이다. x=1에서는 함수가 정의되지 않아 두 수평선 모두 열린 점으로 끝난다. 따라서 ab=1·(-1)=-1이고 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -469,7 +473,11 @@ window.questionBank = [
     "sourceProvenance": "MASTER_INBOX_SOURCE_PACKET",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/21_효천고_2학기_중간_고2_수학II/q9-solution.svg",
+    "solutionImageAlt": "한 좌표평면에 실선 f와 점선 g가 그려져 있다. 두 직선 모두 x=1에서 열린 점으로 끊기고 x=1 위나 아래에 따로 찍힌 닫힌 점이 있다.",
+    "solutionImageCaption": "예: 해설이 읽은 값에 맞춘 두 그래프이다. f는 x→1에서 열린 점 (1,-1)로 가까워지지만 닫힌 점은 f(1)=2이고, g는 x→1에서 열린 점 (1,2)로 가까워지지만 닫힌 점은 g(1)=-1이다. 합의 극한은 -1+2=1이라 ㄱ은 참이다. 차는 극한 -3이 함수값 3과 달라 ㄴ은 거짓이고, 곱은 극한 -2가 함수값 -2와 같아 ㄷ은 참이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 10,
@@ -831,7 +839,11 @@ window.questionBank = [
     "sourceProvenance": "MASTER_INBOX_SOURCE_PACKET",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/21_효천고_2학기_중간_고2_수학II/q16-solution.svg",
+    "solutionImageAlt": "왼쪽에서 올라와 점 M에서 꼭대기에 이른 뒤 점 N까지 내려가 가장 낮고, 다시 오른쪽 위로 올라가는 삼차곡선 그래프이다.",
+    "solutionImageCaption": "f′(x)=3(x-1)(x+1)이므로 x=-1, 1에서 f′=0이고 그림의 극대점 M(-1,6)과 극소점 N(1,2)에서 접선이 수평이다. x<-1과 x>1에서는 f′>0이라 곡선이 오르고, -1<x<1에서는 f′<0이라 M에서 N까지 곡선이 내려간다. 따라서 감소하는 구간은 [-1,1]이고 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -934,7 +946,11 @@ window.questionBank = [
     "sourceProvenance": "MASTER_INBOX_SOURCE_PACKET",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/21_효천고_2학기_중간_고2_수학II/q18-solution.svg",
+    "solutionImageAlt": "왼쪽 아래에서 올라와 점 A에서 가로축을 지나 꼭대기에 이르렀다가 점 B에서 가로축을 지나 내려가고 점 C에서 다시 가로축을 지나 오른쪽 위로 오르는 곡선 그래프이다.",
+    "solutionImageCaption": "예: 그림은 f′의 그래프이고 원본의 세부 굴곡은 단순화한 예시 곡선이다. f′가 x축을 지나며 부호가 바뀌는 점은 A(-3,0), B(2,0), C(4,0)이다. A와 C에서 f′는 음에서 양으로 바뀌어 f가 극솟값을 갖고, B에서 양에서 음으로 바뀌어 극댓값을 갖는다. [-2,1]에서는 f′>0이라 증가하고 (2,4)에서는 f′<0이라 기울기가 음수이다. f의 극값은 3개이므로 ⑤가 옳지 않다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -1136,6 +1152,10 @@ window.questionBank = [
     "sourceQualityStatus": "ALIVE_REPLACEMENT_NOT_LITERAL_ORIGINAL",
     "replacementReason": "The original only fixes the tangent slope, leaving the line intercept free and both extrema shifted by that free constant. Specified that the line passes through the origin to make the extrema determinate.",
     "replacementStage": "SUPERVISORY_PUBLICATION",
-    "difficultyReviewStatus": "REASSESSED_AFTER_ALIVE_REPLACEMENT"
+    "difficultyReviewStatus": "REASSESSED_AFTER_ALIVE_REPLACEMENT",
+    "solutionImage": "assets/images/21_효천고_2학기_중간_고2_수학II/q22-solution.svg",
+    "solutionImageAlt": "한 번 올랐다 내려가고 다시 오르는 삼차곡선과 오르는 직선이 있고, 직선이 곡선과 왼쪽 점 P에서 접하고 오른쪽 점 Q에서 다시 만나며, 곡선의 꼭대기 M과 바닥 N이 표시된 그래프이다.",
+    "solutionImageCaption": "직선 y=5x가 x=-1에서 접하고 x=3에서 다시 만나므로 f(x)-5x=(x+1)²(x-3)이고 f(x)=x³-x²-3이다. 그림에서 접점은 P(-1,-5), 교점은 Q(3,15)이다. f′(x)=x(3x-2)이라 x=0에서 극대점 M(0,-3), x=2/3에서 극소점 N(2/3,-85/27)이 생긴다. 따라서 극솟값 a=-85/27, 극댓값 b=-3이다.",
+    "solutionImageSize": "full"
   }
 ];

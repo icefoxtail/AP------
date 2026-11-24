@@ -660,6 +660,10 @@ window.questionBank = [
     "subUnitKey": "H22-A-05-CORE",
     "subUnit": "사인법칙과 코사인법칙 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/26_팔마고_1학기_기말_고2_대수/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 같은 현 BC를 보는 ∠CEB와 ∠CAB, 교차하는 두 직선의 맞꼭지각을 비교하여 △CDE와 △BDA의 대응을 확인한다. CE와 AB, DE와 DA가 대응하는 변이다.",
+    "solutionImageCaption": "같은 현 BC를 보는 ∠CEB와 ∠CAB, 교차하는 두 직선의 맞꼭지각을 비교하여 △CDE와 △BDA의 대응을 확인한다. CE와 AB, DE와 DA가 대응하는 변이다.",
+    "solutionImageSize": "full"
   }
 ];

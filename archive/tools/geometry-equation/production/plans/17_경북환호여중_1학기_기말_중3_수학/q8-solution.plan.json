@@ -1,0 +1,116 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "F",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-4",
+          "4"
+        ],
+        "color": "BLUE",
+        "label": "y=x^2"
+      },
+      {
+        "id": "L",
+        "kind": "LINE",
+        "coefficients": [
+          "15",
+          "0"
+        ],
+        "domain": [
+          "-4",
+          "4"
+        ],
+        "color": "WARM",
+        "label": "y=15"
+      }
+    ],
+    "viewport": [
+      -5,
+      5,
+      -1,
+      17
+    ],
+    "axisTickValues": {
+      "x": [
+        "-3",
+        "3"
+      ],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "3",
+          "y": "9",
+          "coordinates": false
+        },
+        {
+          "id": "B",
+          "x": "3",
+          "y": "15",
+          "coordinates": false
+        },
+        {
+          "id": "C",
+          "x": "-3",
+          "y": "15",
+          "coordinates": false
+        },
+        {
+          "id": "D",
+          "x": "-3",
+          "y": "9",
+          "coordinates": false
+        }
+      ],
+      "segments": [
+        {
+          "id": "AB",
+          "from": "A",
+          "to": "B",
+          "length": true
+        },
+        {
+          "id": "BC",
+          "from": "B",
+          "to": "C",
+          "length": true
+        },
+        {
+          "id": "CD",
+          "from": "C",
+          "to": "D"
+        },
+        {
+          "id": "DA",
+          "from": "D",
+          "to": "A"
+        }
+      ]
+    }
+  },
+  "caption": "정사각형의 한 변의 길이를 2t라 하면 A, D가 y=x² 위에 있으므로 높이는 15−t²이다. 2t=15−t²에서 (t+5)(t−3)=0이고 t는 양수이므로 t=3이다. 한 변이 6이므로 넓이는 36이다. 따라서 답은 ⑤이다.",
+  "accessibilityDescription": "포물선 y=x²과 수평선 y=15 사이에 정사각형 ABCD가 놓여 있고, 위의 두 변은 수평선 위에, 아래의 두 꼭짓점은 포물선 위에 있다. 네 변은 각각 수평·수직으로 그려져 있다.",
+  "newVisualInformation": [
+    "정사각형 ABCD의 네 꼭짓점",
+    "한 변의 길이 6",
+    "넓이 36"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "8. 다음 그림과 같이 이차함수 $y=x^2$의 그래프와 직선 $y=15$로 둘러싸인 부분에 내접하는 정사각형 $\\text{ABCD}$의 넓이는? [5.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

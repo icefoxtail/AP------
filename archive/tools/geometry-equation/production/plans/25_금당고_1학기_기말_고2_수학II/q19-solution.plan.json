@@ -1,0 +1,84 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-4",
+          "3"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1,
+      2
+    ],
+    "viewport": [
+      -1,
+      2,
+      -2,
+      8
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "2/3",
+        "y": "-4/3"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "-1",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "curveX": "2",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "left",
+          "x": "-1",
+          "style": "DASHED"
+        },
+        {
+          "id": "right",
+          "x": "2",
+          "style": "DASHED"
+        }
+      ]
+    }
+  },
+  "caption": "a=0인 도함수의 예시이다. 구간 양 끝 높이는 양수이고 꼭짓점 높이는 음수여야 열린구간 안에서 두 번 부호가 바뀐다. 전체 a 범위는 세 높이의 조건을 함께 적용한다.",
+  "accessibilityDescription": "a=0인 도함수의 예시이다. 구간 양 끝 높이는 양수이고 꼭짓점 높이는 음수여야 열린구간 안에서 두 번 부호가 바뀐다. 전체 a 범위는 세 높이의 조건을 함께 적용한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<서·논술형 1> 함수 $f(x)=x^3-2x^2+ax+1$이 열린구간 $(-1, 2)$에서 극댓값과 극솟값을 모두 갖도록 하는 실수 $a$의 값의 범위를 구하는 과정을 서술하시오. [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "solve",
+      "condition": "$f^{\\prime}(x)=3x^2-4x+a$이다. 두 극값이 모두 열린구간 $(-1,2)$ 안에서 생기려면 도함수의 두 근이 그 구간에 있어야 한다. 꼭짓점 $x=\\frac23$은 구간 안에 있고, $f^{\\prime}(-1)=a+7>0$, $f^{\\prime}(2)=a+4>0$이며 꼭짓점에서 음수가 되어야 한다. 꼭짓점의 값은 $a-\\frac43$이므로 $a<\\frac43$이고, 양 끝 값 조건 중 강한 것은 $a>-4$이다. 따라서 $-4<a<\\frac43$이다.",
+      "mappedTo": [
+        "graphPlan"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "a=0인 도함수의 예시이다. 구간 양 끝 높이는 양수이고 꼭짓점 높이는 음수여야 열린구간 안에서 두 번 부호가 바뀐다. 전체 a 범위는 세 높이의 조건을 함께 적용한다."
+  ]
+}

@@ -151,10 +151,7 @@ for (const pack of data.packs.filter((p) => p.questions.some((q) => q._scopeId))
   }
 }
 
-// 도구로 다시 조립한 결과(기본 5회 + 맞춤 팩 + sourceSummary)가 커밋된 자료와 JSON으로 같아야 한다. 카탈로그가 바뀌어 달라지면 다시 조립한다.
-const rebuilt = require(path.join(toolsDir, 'build-m1-2final-mock.cjs')).buildAllPacks();
-const REBUILD_MSG = '자료 파일이 도구로 다시 조립한 결과와 다릅니다. node archive/tools/assessment-mock/build-m1-2final-mock.cjs 로 다시 조립하세요.';
-assert(JSON.stringify(rebuilt.packs) === JSON.stringify(data.packs), `맞춤 팩: ${REBUILD_MSG}`);
-assert(JSON.stringify(rebuilt.summary) === JSON.stringify(data.sourceSummary), `sourceSummary: ${REBUILD_MSG}`);
+// 2026-11-24: "도구로 다시 조립한 결과와 JSON이 같아야 한다" 단언은 없앴다. 원본 시험지·카탈로그는 계속 바뀌고, 그때마다 관계없는 PR이 빨개졌다(#2808).
+// 팩이 실제로 깨졌는지는 위의 검사(원본 문항 존재·정답 일치·그림 파일·범위 판정)가 본다.
 
 console.log(`assessment-scoped-mock-packs.test.js: OK (범위 ${config.scopes.length}개, 팩 ${scopedPackCount}개, 문항 ${scopedQuestionCount}개)`);

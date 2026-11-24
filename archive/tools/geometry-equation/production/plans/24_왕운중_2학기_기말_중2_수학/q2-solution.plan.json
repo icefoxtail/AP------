@@ -1,0 +1,151 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "8"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "hiddenPointNames": [
+    "A",
+    "B",
+    "C"
+  ],
+  "hiddenPointStyle": "NONE",
+  "rightAngles": [
+    {
+      "id": "right",
+      "refs": [
+        "B",
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lenAB",
+        "ownerSegment": "AB",
+        "text": "6",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lenBC",
+        "ownerSegment": "BC",
+        "text": "10",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lenCA",
+        "ownerSegment": "CA",
+        "text": "8",
+        "factRole": "GIVEN"
+      }
+    ],
+    "angles": []
+  },
+  "caption": "가장 긴 변을 빗변으로 보고 두 짧은 변의 제곱의 합이 가장 긴 변의 제곱과 같은지 확인한다. 6²+8²=36+64=100=10²이므로 6, 8, 10인 ③만 직각삼각형이다. 따라서 답은 ③이다.",
+  "accessibilityDescription": "직각이 표시된 직각삼각형의 세 변에 길이가 적혀 있고, 빗변과 두 직각변이 구분되어 있다.",
+  "newVisualInformation": [
+    "직각삼각형의 두 직각변 6과 8, 빗변 10을 보여 준다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "세 변의 길이가 각각 다음과 같은 삼각형 중에서 직각삼각형인 것은? [3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

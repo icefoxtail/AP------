@@ -1,0 +1,57 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "-2",
+          "1"
+        ],
+        "domain": [
+          "0",
+          "10"
+        ],
+        "label": "y=x-2"
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "2",
+          "1/2"
+        ],
+        "domain": [
+          "0",
+          "10"
+        ],
+        "label": "y=x/2+2"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "8",
+          "y": "6",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "두 직선의 교점(8,6)이 연립방정식 해이다. a−b=8−6=2.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "연립방정식 $\\begin{cases}y=x-2\\\\-x+2y=4\\end{cases}$의 해가 $x=a$, $y=b$일 때, $a-b$의 값으로 옳은 것은? [4점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "domain",
+      "condition": "직선의 정의역은 모든 실수이며 domain은 핵심 교점과 절편을 담는 표시창이다. 원문 자연수 조건은 별도 caption에서 적용한다.",
+      "mappedTo": "graphPlan.curves"
+    }
+  ]
+}

@@ -7,22 +7,22 @@ import {fileURLToPath} from 'node:url';
 import {fileRef,readBoundFile} from '../../pipeline-core/canonical.mjs';
 import {loadBank} from '../build-visual-render-matrix.mjs';
 import {recordArchiveEvidence} from '../record-visual-browser-evidence.mjs';
+import {assetIdentity} from '../production/contracts.mjs';
 
 const root=fileURLToPath(new URL('../../../../',import.meta.url));
 const rawHex=ref=>ref.sha256.slice(7);
 
 test('actual Archive solution page loads vendored QRious and MathJax with external requests blocked',async()=>{
-  const previousLedger=JSON.parse(fs.readFileSync(path.join(root,'docs/evidence/apmath-vprod/p3e/measured-panel-repair-v9/measured-panel-repair-ledger.json'),'utf8'));
-  const q1=previousLedger.candidates.find(row=>row.candidate==='q01-geometry');
-  if(!q1?.currentResultRef)throw Error('OFFLINE_ARCHIVE_SOURCE_CANDIDATE_MISSING');
-  const prior=JSON.parse(readBoundFile(root,q1.currentResultRef).toString('utf8'));
+  // A committed exam and a committed solution figure stand in for the measured candidate of the old evidence ledger (kept in Drive, not in git): the page only has to load the figure and its vendored runtime offline.
+  const examSource='archive/exams/original/high/h2/1mid/22_제일고_1학기_중간_고2_수학I.js';
+  const prior={sourceRef:fileRef(root,examSource),identity:assetIdentity(path.basename(examSource,'.js')+'|1','SOLUTION_VISUAL','decisive-relation'),finalSvgRef:fileRef(root,'archive/assets/images/22_제일고_1학기_중간_고2_수학I/q14-solution.svg')};
   const sourceRef=prior.sourceRef,ordinal=1,examUid=path.basename(sourceRef.path,'.js');
   const runId='offline-archive-runtime-'+crypto.randomUUID();
   const examRoot=`.tmp/archive/${runId}/${examUid}`;
   const workRoot=`${examRoot}/visual-engine/production`;
   fs.mkdirSync(workRoot,{recursive:true});
   const raw=readBoundFile(root,sourceRef).toString('utf8'),bank=loadBank(raw),question=bank.find(row=>row.id===ordinal);
-  if(!question||!prior.finalSvgRef)throw Error('OFFLINE_ARCHIVE_CANDIDATE_BINDING_MISSING');
+  if(!question)throw Error('OFFLINE_ARCHIVE_CANDIDATE_BINDING_MISSING');
   const solutionImage=`assets/images/${examUid}/q01-solution.svg`;
   const solutionRelative=`${examRoot}/${solutionImage}`;
   const solutionPath=path.join(root,solutionRelative);
@@ -47,5 +47,5 @@ test('actual Archive solution page loads vendored QRious and MathJax with extern
   assert.equal(row.state.qrRendererAvailable,true);assert.equal(row.state.mathJaxSource,'local');assert.equal(row.state.mathJaxCdnFallback,false);
   assert.ok(qrResponse);assert.equal(qrResponse.status,200);assert.equal(qrResponse.bytes,localQrRef.bytes);assert.equal(qrResponse.sha256,rawHex(localQrRef));
   assert.ok(loadedSolution);assert.equal(loadedSolution.status,200);assert.equal(loadedSolution.sha256,rawHex(solutionRef));
-  console.log('OFFLINE_ARCHIVE_RUNTIME_CAPTURE='+JSON.stringify({runId,examUid,questionUid:prior.identity.questionUid,candidateResultRef:q1.currentResultRef,engineSha256:matrix.engineSha256,localQrRef,qrResponse,solutionAssetRef:solutionRef,loadedSolution,networkPolicy:row.network,qrRendererAvailable:row.state.qrRendererAvailable,mathJaxSource:row.state.mathJaxSource,mathJaxCdnFallback:row.state.mathJaxCdnFallback,captureStatus:capture.status,rowStatus:row.status,files:fs.readdirSync(folder)}));
+  console.log('OFFLINE_ARCHIVE_RUNTIME_CAPTURE='+JSON.stringify({runId,examUid,questionUid:prior.identity.questionUid,engineSha256:matrix.engineSha256,localQrRef,qrResponse,solutionAssetRef:solutionRef,loadedSolution,networkPolicy:row.network,qrRendererAvailable:row.state.qrRendererAvailable,mathJaxSource:row.state.mathJaxSource,mathJaxCdnFallback:row.state.mathJaxCdnFallback,captureStatus:capture.status,rowStatus:row.status,files:fs.readdirSync(folder)}));
 });

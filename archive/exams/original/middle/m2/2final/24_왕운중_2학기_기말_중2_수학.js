@@ -176,7 +176,11 @@ window.questionBank = [
     "solutionVisualReason": "The solution depends only on finite counts, arithmetic, or a probability tree stated completely in text; no spatial, graph, or region relation needs a separate visual.",
     "metaEvidenceDebt": [
       "EVIDENCE_DEBT: The current active MIDDLE_GEOMETRY projection has no exact PT/TPL for converse Pythagorean right-triangle classification."
-    ]
+    ],
+    "solutionImage": "assets/images/24_왕운중_2학기_기말_중2_수학/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각이 표시된 직각삼각형의 세 변에 길이가 적혀 있고, 빗변과 두 직각변이 구분되어 있다.",
+    "solutionImageCaption": "가장 긴 변을 빗변으로 보고 두 짧은 변의 제곱의 합이 가장 긴 변의 제곱과 같은지 확인한다. 6²+8²=36+64=100=10²이므로 6, 8, 10인 ③만 직각삼각형이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -1295,7 +1299,11 @@ window.questionBank = [
     "courseKey": "M2-2",
     "reviewStatus": "reviewed_pass",
     "tagStatus": "reviewed_pass",
-    "tagConfidence": "approved_final_qa"
+    "tagConfidence": "approved_final_qa",
+    "solutionImage": "assets/images/24_왕운중_2학기_기말_중2_수학/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 집합 사이의 포함 관계와 원소가 속한 영역을 벤 다이어그램으로 나타낸 그림이다.",
+    "solutionImageCaption": "A는 앞면 적어도 한 번, B는 모두 뒷면 사건이다. 동전 4번의 전체 16가지 중 모두 뒷면인 1가지가 여사건이다. 적어도 한 번 앞면은 15가지이므로 15/16, 정답 ④. 두 영역 숫자는 원소 이름이 아닌 경우의 수다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,

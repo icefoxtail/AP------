@@ -30,7 +30,11 @@ window.questionBank = [
     "subUnitKey": "M2-02-LINEAR_INEQUALITY",
     "subUnit": "일차부등식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_신흥중_1학기_기말_중2_기출/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 위에 범위를 나타낸 그림이다.",
+    "solutionImageCaption": "−0.4로 나누면 부등호가 뒤집혀 x>3. 경계 3을 제외하고 오른쪽, 원본보기③와 같다. 정답③.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -63,7 +67,11 @@ window.questionBank = [
     "subUnitKey": "M2-02-LINEAR_INEQUALITY",
     "subUnit": "일차부등식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_신흥중_1학기_기말_중2_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 위에 범위를 나타낸 그림이다.",
+    "solutionImageCaption": "x≤2a−6의 최댓값 3이 포함되어 닫힌 x≤3. 2a−6=3에서 a9/2,정답⑤.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -96,7 +104,11 @@ window.questionBank = [
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_신흥중_1학기_기말_중2_기출/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "원래 직선 y=(x+1)/3의 두 점(2,1),(−7,−2)에서 a2,b−2,차 4. 정답⑤.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -129,7 +141,11 @@ window.questionBank = [
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
     "subUnit": "연립일차방정식의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_신흥중_1학기_기말_중2_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "나이 이동 후 갑 x+8/을 y−8로 x−2y−24,반대 이동은 x−y16. 정답 연립식①. 교점(56,40)은 식의 일관성 확인이며 실제 나이는 비음수이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -162,7 +178,11 @@ window.questionBank = [
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_신흥중_1학기_기말_중2_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "② 두 식을 동시에 만족하는 공통점(−2,3). 한 식만 맞는 다른 보기는 해가 아니다. 정답②.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -228,7 +248,11 @@ window.questionBank = [
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_신흥중_1학기_기말_중2_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 직선이 점 (3, −3/2)에서 만나고, 각 직선의 식이 직선 곁에 표시되어 있다.",
+    "solutionImageCaption": "첫째 식의 양변에 6을 곱하면 2x+6y=−3이고, 둘째 식의 양변에 4를 곱하면 x−2y=6이다. 두 직선은 원래 연립방정식의 두 식을 같은 비율로 고친 것이므로 교점 (3, −3/2)을 그대로 지난다. 따라서 바르게 고친 식은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -261,7 +285,11 @@ window.questionBank = [
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_신흥중_1학기_기말_중2_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "둘째식×2/3은 x−2y/3=4. a−2/3일 때 첫식과 같은 y3x/2−6 하나로 겹쳐 무수한 해. 정답①.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -294,7 +322,12 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_신흥중_1학기_기말_중2_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "① 만두 2개의 값 1000원 하나. 한 입력에 여러 출력인③⑤는 함수가 아니다. 각 물량 단위는 원문 그대로이며 숫자 크기를 동일 단위로 비교하지 않는다. ② 쌀 20kg을 2명이 나누면 10kg 하나. ③ 자연수 2의 약수 1과 2 둘 다 가능. ④ 240쪽 중2쪽을 읽으면 238쪽 하나. ⑤ 2보다 큰 홀수 3과 5 등 여러 값.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 94
   },
   {
     "id": 10,
@@ -327,7 +360,11 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_신흥중_1학기_기말_중2_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "주어진(−2,9)에서 a5,실제(3,−1)로 f3−1. 정답①.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -393,7 +430,12 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_신흥중_1학기_기말_중2_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "x1→5의 증가 4에 y−10→−18의 감소 8. 기울기 −2이므로 y−2x−8,정답②.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 13,
@@ -429,7 +471,11 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_신흥중_1학기_기말_중2_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "원본 두 절편(0,−3),(2,0) 보존. 기울기 3/2,식 y3x/2−3,정답①.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -462,7 +508,12 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_신흥중_1학기_기말_중2_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "x절편 −1/2를 대입해 a−2,원식은 y−4x−2. y절편 −2,정답①.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 15,
@@ -495,7 +546,11 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_신흥중_1학기_기말_중2_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "아래로 4 이동해 절편 −2→−6,기울기 −1/3 유지. a−1/3,b−6,곱 2. 정답②.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -528,7 +583,11 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_신흥중_1학기_기말_중2_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "위로 5 이동한 y−3x+5가(2,−1)을 지나므로 k5. 정답⑤.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -561,7 +620,11 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_신흥중_1학기_기말_중2_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "같은 기울기 −2이며 주어진(1,−3)을 지나 절편 −1. y−2x−1,정답④.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -594,7 +657,11 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_신흥중_1학기_기말_중2_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "실제점(−1,−1),절편(−3/2,0),(0,−3)을 표시해 제2·3·4사분면과 오른쪽아래 방향을 읽는다. 정답①③.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -625,7 +692,11 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_신흥중_1학기_기말_중2_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "a>0,b>0이므로 −b<0,양의절편 a. 원본보기④,정답④.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -658,7 +729,11 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_신흥중_1학기_기말_중2_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "가열 전 5°C,2분마다 10°C로 분당 5°C. 실제 끓기전 0≤x≤19분에서(19,100)에 도달,정답 19분. 시간/온도는 다른 양으로 세로 1/5배율.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -712,7 +787,11 @@ window.questionBank = [
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_신흥중_1학기_기말_중2_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "첫식×2와 둘째식을 더해 11x11,x1. 공통점(1,1/2)이며가감법 풀이를 뒷받침한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -739,7 +818,11 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_신흥중_1학기_기말_중2_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "주어진두점(−1,3),(2,−3)에서기울기 −6/3=−2,절편 1. 정답 y−2x+1.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,
@@ -766,6 +849,10 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_신흥중_1학기_기말_중2_기출/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "y0일때 x4,x0일때 y6. 두 절편점(4,0),(0,6)을 표시한다. 정답 x절편 4/y절편 6.",
+    "solutionImageSize": "full"
   }
 ];

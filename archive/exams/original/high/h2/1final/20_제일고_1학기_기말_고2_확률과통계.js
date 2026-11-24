@@ -196,7 +196,11 @@ window.questionBank = [
     "examUid": "20_제일고_1학기_기말_고2_확률과통계",
     "sourceType": "ORIGINAL",
     "curriculum": "H15",
-    "sourceJsSha256": "742e7baed20f424916a5520803fd9b7670c5bc479fded429489c0bc0aa1cb1c8"
+    "sourceJsSha256": "742e7baed20f424916a5520803fd9b7670c5bc479fded429489c0bc0aa1cb1c8",
+    "solutionImage": "assets/images/20_제일고_1학기_기말_고2_확률과통계/q4-solution.svg",
+    "solutionImageAlt": "벤 다이어그램 집합 사이의 포함 관계와 원소가 속한 영역을 벤 다이어그램으로 나타낸 그림이다.",
+    "solutionImageCaption": "A를 대중교통, B를 도보를 이용하는 학생의 집합으로 본다. 그림은 대중교통만 12−3=9명, 둘 다 3명, 도보만 7−3=4명, 어느 쪽도 아닌 35−16=19명이다. 색칠한 합집합은 겹침 3명을 한 번만 세어 9+3+4=16명이고 12+7−3=16과 같다. 따라서 확률은 16/35이고 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -243,7 +247,11 @@ window.questionBank = [
     "examUid": "20_제일고_1학기_기말_고2_확률과통계",
     "sourceType": "ORIGINAL",
     "curriculum": "H15",
-    "sourceJsSha256": "742e7baed20f424916a5520803fd9b7670c5bc479fded429489c0bc0aa1cb1c8"
+    "sourceJsSha256": "742e7baed20f424916a5520803fd9b7670c5bc479fded429489c0bc0aa1cb1c8",
+    "solutionImage": "assets/images/20_제일고_1학기_기말_고2_확률과통계/q5-solution.svg",
+    "solutionImageAlt": "확률 나무그림 가지마다 확률을 적어 사건이 일어나는 경우를 나타낸 나무그림이다.",
+    "solutionImageCaption": "상자를 고를 확률은 각각 1/2이다. A에서 흰 공 2개를 꺼낼 확률은 3C2÷7C2=1/7이고 B에서는 4C2÷6C2=2/5이다. 흰 공 2개가 나오는 두 경로의 확률은 1/2×1/7=1/14(파랑)과 1/2×2/5=1/5(주황)이다. 공 2개가 A에서 나왔을 확률은 (1/14)÷(1/14+1/5)=5/19이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -532,7 +540,11 @@ window.questionBank = [
     "examUid": "20_제일고_1학기_기말_고2_확률과통계",
     "sourceType": "ORIGINAL",
     "curriculum": "H15",
-    "sourceJsSha256": "742e7baed20f424916a5520803fd9b7670c5bc479fded429489c0bc0aa1cb1c8"
+    "sourceJsSha256": "742e7baed20f424916a5520803fd9b7670c5bc479fded429489c0bc0aa1cb1c8",
+    "solutionImage": "assets/images/20_제일고_1학기_기말_고2_확률과통계/q11-solution.svg",
+    "solutionImageAlt": "벤 다이어그램 집합 사이의 포함 관계와 원소가 속한 영역을 벤 다이어그램으로 나타낸 그림이다.",
+    "solutionImageCaption": "B와 C가 독립이므로 B의 여사건과 C도 독립이어서 1/12=P(B의 여사건)×1/4에서 P(B의 여사건)=1/3, P(B)=2/3이다. A와 B가 배반이어서 그림의 겹침은 0이고, 색칠한 바깥이 A의 여사건과 B의 여사건의 교집합 2/9이다. 따라서 P(A)=1−2/3−2/9=1/9이고 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -579,7 +591,11 @@ window.questionBank = [
     "examUid": "20_제일고_1학기_기말_고2_확률과통계",
     "sourceType": "ORIGINAL",
     "curriculum": "H15",
-    "sourceJsSha256": "742e7baed20f424916a5520803fd9b7670c5bc479fded429489c0bc0aa1cb1c8"
+    "sourceJsSha256": "742e7baed20f424916a5520803fd9b7670c5bc479fded429489c0bc0aa1cb1c8",
+    "solutionImage": "assets/images/20_제일고_1학기_기말_고2_확률과통계/q12-solution.svg",
+    "solutionImageAlt": "확률 나무그림 가지마다 확률을 적어 사건이 일어나는 경우를 나타낸 나무그림이다.",
+    "solutionImageCaption": "양성 판정은 감염자와 비감염자 모두에게서 나올 수 있다. 양성이 되는 두 경로(파란색)의 확률은 0.10×0.80=0.08과 0.90×0.05=0.045이고 합은 0.125=1/8이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -626,7 +642,11 @@ window.questionBank = [
     "examUid": "20_제일고_1학기_기말_고2_확률과통계",
     "sourceType": "ORIGINAL",
     "curriculum": "H15",
-    "sourceJsSha256": "742e7baed20f424916a5520803fd9b7670c5bc479fded429489c0bc0aa1cb1c8"
+    "sourceJsSha256": "742e7baed20f424916a5520803fd9b7670c5bc479fded429489c0bc0aa1cb1c8",
+    "solutionImage": "assets/images/20_제일고_1학기_기말_고2_확률과통계/q13-solution.svg",
+    "solutionImageAlt": "확률 나무그림 가지마다 확률을 적어 사건이 일어나는 경우를 나타낸 나무그림이다.",
+    "solutionImageCaption": "생산 비율 3:2는 3/5, 2/5이다. B의 불량률 p/100을 두고 불량품이 B에서 나왔을 확률 (2/5)(p/100)÷{(3/5)(4/100)+(2/5)(p/100)}=1/4를 풀면 p=2이며, 그림은 p=2일 때이다. 불량 경로는 A가 3/5×1/25=3/125(파랑), B가 2/5×1/50=1/125(주황)이고 B의 비율은 (1/125)÷(4/125)=1/4이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -673,7 +693,11 @@ window.questionBank = [
     "examUid": "20_제일고_1학기_기말_고2_확률과통계",
     "sourceType": "ORIGINAL",
     "curriculum": "H15",
-    "sourceJsSha256": "742e7baed20f424916a5520803fd9b7670c5bc479fded429489c0bc0aa1cb1c8"
+    "sourceJsSha256": "742e7baed20f424916a5520803fd9b7670c5bc479fded429489c0bc0aa1cb1c8",
+    "solutionImage": "assets/images/20_제일고_1학기_기말_고2_확률과통계/q14-solution.svg",
+    "solutionImageAlt": "확률 나무그림 가지마다 확률을 적어 사건이 일어나는 경우를 나타낸 나무그림이다.",
+    "solutionImageCaption": "선택 비율은 일본어 0.30, 중국어 0.50, 독일어 0.20이다. 안경을 쓰는 세 경로의 확률은 일본어 0.15(파랑), 중국어 0.20, 독일어 0.05(주황)이고 합은 0.40이다. 안경 쓴 학생 중 일본어일 확률은 0.15÷0.40=3/8이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,

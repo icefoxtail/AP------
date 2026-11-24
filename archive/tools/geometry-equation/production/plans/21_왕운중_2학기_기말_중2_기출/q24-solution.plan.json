@@ -1,0 +1,66 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "A",
+        "name": "첫눈a",
+        "elements": [
+          "2",
+          "4",
+          "6"
+        ]
+      },
+      {
+        "id": "B",
+        "name": "둘째눈b",
+        "elements": [
+          "1",
+          "2",
+          "3"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        }
+      }
+    ]
+  },
+  "caption": "두 식이 같은 직선이려면 a=2b. 가능한 쌍 (2,1),(4,2),(6,3) 세 개. 전체 6×6=36 중 3이므로 1/12. 나머지 눈이 생략된 유리한 사건도 이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "서술형 4. 주사위 한 개를 두 번 던져서 첫 번째, 두 번째에 나오는 눈의 수를 각각 $a$, $b$라고 할 때, 연립방정식 $\\begin{cases}ax+by=5b\\\\2x+y=5\\end{cases}$가 무수히 많은 해를 가질 확률을 구하시오. [6점]",
+      "mappedTo": "diagram"
+    }
+  ]
+}

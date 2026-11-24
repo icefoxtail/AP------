@@ -83,7 +83,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-01-LIMIT",
     "subUnit": "함수의 극한",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_순천고_2학기_중간_고2_수학II/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 세 줄의 수평선이 위아래로 놓여 있고, 각 줄의 한 점 또는 두 점에서 위로 짧은 수직선을 그어 0, −1/2과 1/2, 2/3과 3/2을 적었다.",
+    "solutionImageCaption": "ㄱ은 |x−1|이 0으로 가므로 극한값 0이 존재한다. ㄴ은 x가 1보다 작을 때와 클 때 각각 −1/2, 1/2로 가서 좌극한과 우극한이 다르고, ㄷ도 x가 3보다 작을 때 2/3, 클 때 3/2로 가서 극한값이 없다. 따라서 극한값이 존재하는 것은 ㄱ뿐이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -264,7 +268,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-02-CONTINUITY",
     "subUnit": "함수의 연속",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_순천고_2학기_중간_고2_수학II/q9-solution.svg",
+    "solutionImageAlt": "x=1에서 끊어지는 두 포물선 조각의 그래프이고, 왼쪽 조각은 아래로 볼록하며 오른쪽 조각은 위로 볼록하고, 높이 1에 점 R, P, Q가 표시되어 있다.",
+    "solutionImageCaption": "x=1에서 좌극한 -2, 우극한 2, f(1)=1이므로 |f(x)|→2이고 ㄱ은 참이다. x→2+에서 f(x)는 점 Q(2,1)에서 시작해 1보다 작은 값으로 가까워지므로 바깥 함수의 왼쪽 식으로 f(f(x))→1-2-1=-2이고 ㄴ은 참이다. 안쪽 함수가 1이 되는 x는 1-√3과 2(점 Q)이고 x=1에서도 끊어지므로 f(f(x))의 불연속점은 3개여서 ㄷ은 거짓이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 10,
@@ -292,7 +300,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-05-TANGENT",
     "subUnit": "접선의 방정식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_순천고_2학기_중간_고2_수학II/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 볼록한 포물선과 포물선 바깥의 점 P에서 그은 두 접선 l, m이 접점 T, U에서 접하는 그래프이다.",
+    "solutionImageCaption": "접점을 (t,2t²-3t)라 하면 접선이 (2,0)을 지나는 조건에서 2(t-1)(t-3)=0이다. t=1이면 접점 T(1,-1)에서 y=x-2(그림의 l), t=3이면 접점 U(3,9)에서 y=9x-18(그림의 m)이고 두 접선 모두 점 P(2,0)을 지난다. a+b+c+d=(1-2)+(9-18)=-10이므로 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -533,7 +545,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-03-DERIVATIVE_DEFINITION",
     "subUnit": "미분계수",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_순천고_2학기_중간_고2_수학II/q18-solution.svg",
+    "solutionImageAlt": "점 E에서 오른쪽 위로 가파르게 오르는 삼차곡선이 점 P에서 직선 l에 접하고, 그 위쪽에 더 가파른 삼차곡선 h가 P에서 만나며, 곡선 위에 점 Q가 표시된 그래프이다.",
+    "solutionImageCaption": "x=1에서 아래 경계 직선 y=9x-9(l)와 위 경계 y=3x³-3(h)가 모두 0이므로 f(1)=0이다. f(x)-(9x-9)가 x=1에서 극솟값을 가지므로 f′(1)=9이다. 삼차함수 f(x)=x³+3x²-4가 되어 그림의 곡선은 P(1,0)에서 직선 l에 접하고 h와 만나며 두 경계 사이에 있다. f(2)=16이 점 Q(2,16)이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,

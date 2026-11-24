@@ -1,0 +1,71 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "-2",
+      "0",
+      "3"
+    ],
+    "domain": [
+      -2,
+      3.5
+    ],
+    "viewport": [
+      -2,
+      4,
+      -5,
+      40
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "f",
+    "requiredPoints": [],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "y"
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "-1",
+          "y": "1",
+          "coordinates": true,
+          "labelDirection": "W"
+        },
+        {
+          "id": "B",
+          "x": "2",
+          "y": "10",
+          "coordinates": true,
+          "labelDirection": "NE"
+        },
+        {
+          "id": "C",
+          "x": "3",
+          "y": "25",
+          "coordinates": true,
+          "labelDirection": "N"
+        }
+      ]
+    }
+  },
+  "caption": "주어진 극한은 2/3 f′(x)이므로 f′(x)=3a/2 x이다. 이를 적분하면 f(x)=3a/4 x²+C이고, f(2)=10과 f(−1)=1을 대입하면 a=4, C=−2이다. 따라서 f(x)=3x²−2이므로 f(3)=25이다. 따라서 답은 ⑤이다.",
+  "accessibilityDescription": "포물선 y=3x²−2 위에 세 점 A, B, C가 있고, 각 점 옆에 좌표가 표시되어 있다.",
+  "newVisualInformation": [
+    "포물선 y=3x²−2와 세 점 A, B, C를 좌표와 함께 표시했다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다항함수 $f(x)$가 다음 조건을 만족시킬 때, $f(3)$의 값을 구하면? [4.1점]\n(가) $\\displaystyle\\lim_{h\\to0}\\dfrac{f(x+2h)-f(x)}{3h}=ax$\n(나) $f(2)=10$, $f(-1)=1$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

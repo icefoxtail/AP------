@@ -1,0 +1,71 @@
+{
+  "question": {
+    "status": "EXEMPT",
+    "reason": "발문에 그림이 없는 두 무리함수의 교점 개수 조건 문항이다."
+  },
+  "solution": {
+    "capability": "multi-curve-figure-v1",
+    "graphPlan": {
+      "family": "multi-curve",
+      "curves": [
+        {
+          "id": "f",
+          "kind": "SQRT",
+          "radicand": [
+            "72",
+            "18"
+          ],
+          "amplitude": "1",
+          "sign": -1,
+          "offset": "6",
+          "domain": [
+            "-4",
+            "4"
+          ]
+        },
+        {
+          "id": "g",
+          "kind": "SQRT",
+          "radicand": [
+            "72",
+            "-18"
+          ],
+          "amplitude": "1",
+          "sign": 1,
+          "offset": "-6",
+          "domain": [
+            "-4",
+            "4"
+          ]
+        }
+      ],
+      "overlays": {
+        "points": [
+          {
+            "id": "P",
+            "x": "-4",
+            "y": "6",
+            "label": "P"
+          },
+          {
+            "id": "Q",
+            "x": "4",
+            "y": "-6",
+            "label": "Q"
+          }
+        ]
+      },
+      "axisTickValues": {
+        "x": [
+          "-4",
+          "4"
+        ],
+        "y": [
+          "-6",
+          "6"
+        ]
+      }
+    },
+    "caption": "k=18일 때 두 무리함수는 양 끝점 (-4,6)과 (4,-6)에서 만나 서로 다른 두 교점을 갖는다."
+  }
+}

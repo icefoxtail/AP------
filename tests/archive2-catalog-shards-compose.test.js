@@ -4,6 +4,7 @@
 // grade as from the whole catalog, the same questions are eligible, and the family (original/similar pair) links agree. Real inputs, no
 // counts fixed: the test compares the two ways of loading, and fails on any difference.
 const assert = require('node:assert/strict');
+const fs = require('node:fs');
 const path = require('node:path');
 const test = require('node:test');
 const { pathToFileURL } = require('node:url');
@@ -27,6 +28,7 @@ const fakeFetch = (files) => async (url) => {
   const copy = Buffer.from(bytes);
   return { ok: true, status: 200, arrayBuffer: async () => copy.buffer.slice(copy.byteOffset, copy.byteOffset + copy.length) };
 };
+const read = (file) => fs.readFileSync(path.join(root, file), 'utf8');
 const GRADES = ['중1', '중2', '중3', '고1', '고2', '고3'];
 const SEEDS = ['seed-a', 'seed-b', 'seed-c'];
 
@@ -157,4 +159,92 @@ test('the type filters and the replacement candidates of a grade are the same fr
     }
   }
   assert.ok(facetsCompared > 0 && queriesCompared > 0, JSON.stringify({ facetsCompared, queriesCompared }));
+});
+
+// ---- 단원별 기출 (stage 2-3) -----------------------------------------------------------------------------------------------------------
+// archive/unit-past-exams.js joins two inputs (the question-index.js rows and the approved-metadata rows merged with the foundation runtime)
+// and counts and picks from the joined rows. The shards carry both inputs, so a screen that loads one grade's shards must join to the same
+// rows the whole-bundle path joins. The test runs the real join code (taken from the screen's own file) twice, on the whole-bundle inputs
+// and on the inputs the shards give back, and fails on any row or column that differs. Columns of the question index that no screen script
+// reads (text, tags, image flags, exam subject/grade/course) are not carried; the test below keeps that list honest.
+const UNIT_PAST_UNREAD_COLUMNS = ['contentText', 'choicesText', 'tags', 'hasImage', 'hasSolutionImage', 'questionType', 'subUnitConfidence',
+  'subUnitClassificationDepth', 'grade', 'subject', 'course', 'metadataStatus'];
+const unitPastJoinFrom = (window) => {
+  const source = fs.readFileSync(path.join(root, 'archive/unit-past-exams.js'), 'utf8');
+  const marks = ['  function parseQuestionNo(value)', '  function matchQuestionNo', '  function buildMetaFoundationSelectionAuthority', '  // 문항 배열 찾기 규칙'].map((mark) => source.indexOf(mark));
+  assert.ok(marks.every((at) => at >= 0) && marks[0] < marks[1] && marks[2] < marks[3], 'the join moved in unit-past-exams.js: update this test');
+  const body = source.slice(marks[0], marks[1]) + source.slice(marks[2], marks[3]);
+  const unitCore = require(path.join(root, 'archive/unit-past-exams-core.js'));
+  return new Function('window', 'core', 'state', `${body}\nreturn joinApprovedMetadata;`)(window, unitCore, {});
+};
+const canonicalJson = (value) => JSON.stringify(value, (key, item) => (item && typeof item === 'object' && !Array.isArray(item)
+  ? Object.fromEntries(Object.keys(item).sort().map((name) => [name, item[name]])) : item));
+
+test('단원별 기출: the rows the shards hand to the join equal the rows the whole-bundle path joins, for every question of every grade', async () => {
+  const { files, entries, catalog, bundle, canonical } = await built();
+  const part = await import(pathToFileURL(path.join(root, 'tools/lib/build-archive2-unit-past-part.mjs')).href);
+  const index = JSON.parse(entries.find((entry) => entry.path.endsWith('/index.json')).content.toString('utf8'));
+  const common = JSON.parse(files.get('common.json').toString('utf8'));
+  assert.ok(common.unitPast && common.unitPast.schemaVersion === shards.UNIT_PAST_SCHEMA, 'the build carries the unit-past part (needs archive/data/question_metadata.json: node archive/tools/meta-foundation/question-metadata-format.mjs assemble)');
+  // the whole-bundle side: question-index.js, and the sidecar merged with the foundation runtime by the two browser scripts themselves
+  const ran = await part.runBrowserMetadataScripts(root, { catalog, bundle, canonical, core });
+  const previousLabels = globalThis.ARCHIVE_SUBUNIT_LABELS;
+  globalThis.ARCHIVE_SUBUNIT_LABELS = ran.subUnitLabels;
+  try {
+    const wholeJoin = unitPastJoinFrom({
+      ARCHIVE_QUESTION_METADATA: { records: ran.metaRecords }, ARCHIVE_META_FOUNDATION_RUNTIME: ran.runtime,
+      ARCHIVE2_FINAL_CATALOG: catalog, Archive2Core: core, ARCHIVE_META_FOUNDATION_LABELS: ran.labels,
+    });
+    const whole = wholeJoin(part.readQuestionIndex(root));
+    const wholeByKey = new Map(whole.map((row) => [`${row.sourceFile}#${row.sourceOrdinal}`, row]));
+    assert.ok(whole.length > 1000, 'the whole-bundle join produced rows');
+    // the shard side, one shard file at a time, the way the screen joins what it has loaded
+    const seen = new Set();
+    const differences = [];
+    for (const shard of index.shards) {
+      const doc = JSON.parse(files.get(shard.path).toString('utf8'));
+      const rows = shards.unitPastRows(common.unitPast, doc);
+      const join = unitPastJoinFrom({
+        ARCHIVE_QUESTION_METADATA: { records: rows.metaRecords }, ARCHIVE_META_FOUNDATION_RUNTIME: shards.unitPastRuntime(common.unitPast),
+        ARCHIVE2_FINAL_CATALOG: { records: doc.records }, Archive2Core: core, ARCHIVE_META_FOUNDATION_LABELS: common.labels,
+      });
+      for (const row of join(rows.questionIndex)) {
+        const key = `${row.sourceFile}#${row.sourceOrdinal}`;
+        assert.ok(!seen.has(key), `one row per question: ${key}`);
+        seen.add(key);
+        const expected = wholeByKey.get(key);
+        if (!expected) { differences.push(`extra row ${key}`); continue; }
+        for (const name of new Set([...Object.keys(expected), ...Object.keys(row)])) {
+          if (UNIT_PAST_UNREAD_COLUMNS.includes(name)) continue;
+          if (canonicalJson(expected[name]) !== canonicalJson(row[name])) differences.push(`${key} ${name}: ${canonicalJson(expected[name])} <> ${canonicalJson(row[name])}`);
+        }
+      }
+    }
+    for (const key of wholeByKey.keys()) if (!seen.has(key)) differences.push(`missing row ${key}`);
+    assert.deepEqual(differences.slice(0, 5), [], `${differences.length} differences`);
+    assert.equal(seen.size, wholeByKey.size);
+  } finally {
+    if (previousLabels === undefined) delete globalThis.ARCHIVE_SUBUNIT_LABELS; else globalThis.ARCHIVE_SUBUNIT_LABELS = previousLabels;
+  }
+});
+
+test('단원별 기출: no screen script reads a question-index column the shards do not carry, and the join reads only the metadata fields the shards keep', async () => {
+  const unitPastMetaFields = [...(await import(pathToFileURL(path.join(root, 'tools/lib/build-archive2-unit-past-part.mjs')).href)).META_FIELDS];
+  const unitScripts = ['archive/unit-past-exams.js', 'archive/unit-past-exams-core.js', 'archive/archive2-unit-tree.js'].map(read);
+  const readNames = (text) => new Set([...text.matchAll(/\b(?:record|item|row|candidate|question|paper|meta)\??\.([A-Za-z_][A-Za-z0-9_]*)/g)].map((match) => match[1]));
+  for (const text of unitScripts) {
+    const names = readNames(text);
+    for (const column of ['contentText', 'choicesText', 'tags', 'hasImage', 'hasSolutionImage', 'questionType', 'subUnitConfidence', 'subUnitClassificationDepth'])
+      assert.ok(!names.has(column), `a unit-past script reads ${column}, a question-index column the shards do not carry`);
+  }
+  const source = read('archive/unit-past-exams.js');
+  const join = source.slice(source.indexOf('  function joinApprovedMetadata'), source.indexOf('  // 문항 배열 찾기 규칙'));
+  const carried = new Set(['sourceArchiveFile', 'sourceOrdinal', 'sourceQuestionNo', 'metadataStatus', ...unitPastMetaFields]);
+  for (const name of [...join.matchAll(/\bmeta\.([A-Za-z_][A-Za-z0-9_]*)/g)].map((match) => match[1]))
+    assert.ok(carried.has(name), `joinApprovedMetadata reads meta.${name}, which the shards do not carry (add it to META_FIELDS in tools/lib/build-archive2-unit-past-part.mjs)`);
+  // validateMetaFoundationSelection reads these off the joined metadata row
+  const coreText = read('archive/unit-past-exams-core.js');
+  for (const name of ['metaFoundationStatus', 'metaFoundationPackId', 'curriculumKey', 'courseKey', 'L1', 'L2', 'problemTypeKey', 'templateKey'])
+    assert.ok(unitPastMetaFields.includes(name), name);
+  assert.ok(coreText.includes('META_FOUNDATION_SCOPE_FIELDS') && /\['curriculumKey', 'courseKey', 'L1', 'L2'\]/.test(coreText), 'the scope tuple moved: update META_FIELDS');
 });

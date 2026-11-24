@@ -1,0 +1,59 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "NORMAL_CURVE",
+    "curves": [
+      {
+        "id": "X",
+        "mean": "10",
+        "sd": "2",
+        "meanLine": true
+      }
+    ],
+    "ticks": [
+      {
+        "x": "8"
+      },
+      {
+        "x": "9"
+      },
+      {
+        "x": "10"
+      },
+      {
+        "x": "11"
+      },
+      {
+        "x": "12"
+      }
+    ],
+    "shades": [
+      {
+        "from": "8",
+        "to": "9",
+        "color": "WARM"
+      },
+      {
+        "from": "9",
+        "to": "11",
+        "color": "BLUE"
+      },
+      {
+        "from": "11",
+        "to": "12",
+        "color": "WARM"
+      }
+    ]
+  },
+  "caption": "P(X≥8)=P(X≤12)이므로 8과 12는 평균에서 같은 거리에 있고 평균 m=10이다. 대칭으로 9와 11도 평균에서 같은 거리이다. 따라서 [8, 9]와 [11, 12]의 넓이는 같고(주황), b=P(9≤X≤12)는 [9, 11]과 [11, 12]의 합이다. 그림의 표준편차 2는 예이다. 답은 ③이다.",
+  "newVisualInformation": [
+    "평균 10에 대해 [8, 9]와 [11, 12]가 대칭이라 넓이가 같음이 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "정규분포 $N(m,\\sigma^2)$을 따르는 확률변수 $X$와 두 실수 $a,b$가 다음 조건을 만족시킨다.\n(가) $P(X\\ge8)=P(X\\le12)$\n(나) $P(X\\ge11)=a$, $P(9\\le X\\le12)=b$\n다음 중 $P(8\\le X\\le9)$의 값을 $a,b$를 이용하여 나타낸 것은? [4.5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

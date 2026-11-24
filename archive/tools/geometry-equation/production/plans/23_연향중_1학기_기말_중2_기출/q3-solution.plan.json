@@ -1,0 +1,50 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-3",
+          "5"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      1
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "0",
+        "y": "-3"
+      },
+      {
+        "id": "P1",
+        "x": "3/5",
+        "y": "0"
+      }
+    ],
+    "formula": "5*x - 3"
+  },
+  "caption": "기울기 a5,x절편 b3/5,y절편 c−3. 절편점과식에서 ab+c=0,정답③.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차함수 $y=5x-3$의 그래프의 기울기를 $a$, $x$절편을 $b$, $y$절편을 $c$라고 할 때, $a\\times b+c$의 값은? [3점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "기울기a5,x절편b3/5,y절편c−3. 절편점과식에서ab+c=0,정답③.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "기울기a5,x절편b3/5,y절편c−3. 절편점과식에서ab+c=0,정답③."
+  ]
+}

@@ -1,0 +1,641 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "P00",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P10",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-10"
+            },
+            {
+              "kind": "integer",
+              "value": "-16"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P11",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "-16"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P20",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-20"
+            },
+            {
+              "kind": "integer",
+              "value": "-32"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P21",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-32"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P22",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "20"
+            },
+            {
+              "kind": "integer",
+              "value": "-32"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P30",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-30"
+            },
+            {
+              "kind": "integer",
+              "value": "-48"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P31",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-10"
+            },
+            {
+              "kind": "integer",
+              "value": "-48"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P32",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "-48"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P33",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "30"
+            },
+            {
+              "kind": "integer",
+              "value": "-48"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P40",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-40"
+            },
+            {
+              "kind": "integer",
+              "value": "-64"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P41",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-20"
+            },
+            {
+              "kind": "integer",
+              "value": "-64"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P42",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-64"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P43",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "20"
+            },
+            {
+              "kind": "integer",
+              "value": "-64"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P44",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "40"
+            },
+            {
+              "kind": "integer",
+              "value": "-64"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P50",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-50"
+            },
+            {
+              "kind": "integer",
+              "value": "-80"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P51",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-30"
+            },
+            {
+              "kind": "integer",
+              "value": "-80"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P52",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-10"
+            },
+            {
+              "kind": "integer",
+              "value": "-80"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P53",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "-80"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P54",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "30"
+            },
+            {
+              "kind": "integer",
+              "value": "-80"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P55",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "50"
+            },
+            {
+              "kind": "integer",
+              "value": "-80"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "P00",
+    "P10",
+    "P11",
+    "P20",
+    "P21",
+    "P22",
+    "P30",
+    "P31",
+    "P32",
+    "P33",
+    "P40",
+    "P41",
+    "P42",
+    "P43",
+    "P44",
+    "P50",
+    "P51",
+    "P52",
+    "P53",
+    "P54",
+    "P55"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sA1",
+      "refs": [
+        "P22",
+        "P32"
+      ]
+    },
+    {
+      "id": "sA2",
+      "refs": [
+        "P32",
+        "P42"
+      ]
+    },
+    {
+      "id": "sA3",
+      "refs": [
+        "P42",
+        "P52"
+      ]
+    },
+    {
+      "id": "sB1",
+      "refs": [
+        "P30",
+        "P41"
+      ]
+    },
+    {
+      "id": "sB2",
+      "refs": [
+        "P41",
+        "P52"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "textLabels": [
+      {
+        "id": "tx00",
+        "at": "P00",
+        "text": "1"
+      },
+      {
+        "id": "tx10",
+        "at": "P10",
+        "text": "1"
+      },
+      {
+        "id": "tx11",
+        "at": "P11",
+        "text": "1"
+      },
+      {
+        "id": "tx20",
+        "at": "P20",
+        "text": "1"
+      },
+      {
+        "id": "tx21",
+        "at": "P21",
+        "text": "2"
+      },
+      {
+        "id": "tx22",
+        "at": "P22",
+        "text": "1"
+      },
+      {
+        "id": "tx30",
+        "at": "P30",
+        "text": "1"
+      },
+      {
+        "id": "tx31",
+        "at": "P31",
+        "text": "3"
+      },
+      {
+        "id": "tx32",
+        "at": "P32",
+        "text": "3"
+      },
+      {
+        "id": "tx33",
+        "at": "P33",
+        "text": "1"
+      },
+      {
+        "id": "tx40",
+        "at": "P40",
+        "text": "1"
+      },
+      {
+        "id": "tx41",
+        "at": "P41",
+        "text": "4"
+      },
+      {
+        "id": "tx42",
+        "at": "P42",
+        "text": "6"
+      },
+      {
+        "id": "tx43",
+        "at": "P43",
+        "text": "4"
+      },
+      {
+        "id": "tx44",
+        "at": "P44",
+        "text": "1"
+      },
+      {
+        "id": "tx50",
+        "at": "P50",
+        "text": "1"
+      },
+      {
+        "id": "tx51",
+        "at": "P51",
+        "text": "5"
+      },
+      {
+        "id": "tx52",
+        "at": "P52",
+        "text": "10"
+      },
+      {
+        "id": "tx53",
+        "at": "P53",
+        "text": "10"
+      },
+      {
+        "id": "tx54",
+        "at": "P54",
+        "text": "5"
+      },
+      {
+        "id": "tx55",
+        "at": "P55",
+        "text": "1"
+      }
+    ],
+    "segmentColors": [
+      {
+        "segments": [
+          "sA1",
+          "sA2",
+          "sA3"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "segments": [
+          "sB1",
+          "sB2"
+        ],
+        "color": "WARM"
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "P00",
+    "P10",
+    "P11",
+    "P20",
+    "P21",
+    "P22",
+    "P30",
+    "P31",
+    "P32",
+    "P33",
+    "P40",
+    "P41",
+    "P42",
+    "P43",
+    "P44",
+    "P50",
+    "P51",
+    "P52",
+    "P53",
+    "P54",
+    "P55"
+  ],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 360
+  },
+  "caption": "갑의 합은 하키스틱 항등식으로 A=C(12,3)=220이다. 을의 합은 대각선 합으로 B=C(10,6)=210이고, 병의 합은 이항정리로 C=2의 8제곱=256이다. 따라서 답은 A=220, B=210, C=256이고 B<A<C이다.",
+  "accessibilityDescription": "파스칼의 삼각형 윗부분의 수들이 삼각형 모양으로 늘어서 있고, 두 개의 대각선 무리가 파랑과 주황 선으로 이어져 있다.",
+  "newVisualInformation": [
+    "파스칼의 삼각형 여섯 줄의 수를 배치",
+    "갑의 대각선과 을의 대각선을 서로 다른 색 선으로 이어 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서답형(서술형)2] 다음을 읽고 물음에 답하시오.\n\n갑: 나는 파스칼의 삼각형에서 같은 직선상의 10개의 연속된 수 ${}_2\\mathrm{C}_2, {}_3\\mathrm{C}_2, {}_4\\mathrm{C}_2, \\cdots, {}_{11}\\mathrm{C}_2$를 더했어.\n을: 나는 파스칼의 삼각형에서 같은 직선상의 7개의 연속된 수 ${}_3\\mathrm{C}_0, {}_4\\mathrm{C}_1, {}_5\\mathrm{C}_2, \\cdots, {}_9\\mathrm{C}_6$를 더했어.\n병: 나는 파스칼의 삼각형에서 같은 직선상의 9개의 연속된 수 ${}_8\\mathrm{C}_0, {}_8\\mathrm{C}_1, {}_8\\mathrm{C}_2, \\cdots, {}_8\\mathrm{C}_8$를 더했어.\n\n갑, 을, 병이 구한 값을 각각 $\\mathrm{A, B, C}$라 할 때, 각각의 값을 풀이과정과 함께 구하고 $\\mathrm{A, B, C}$의 대소를 바르게 비교하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

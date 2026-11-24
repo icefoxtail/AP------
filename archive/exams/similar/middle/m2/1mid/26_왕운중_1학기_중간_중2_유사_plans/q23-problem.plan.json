@@ -1,0 +1,303 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "R1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R7",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R5",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R6",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "R1",
+    "R2",
+    "R7",
+    "R3",
+    "R4",
+    "R5",
+    "R6"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "s1",
+      "refs": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "R2",
+        "R7"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "R7",
+        "R3"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "R3",
+        "R4"
+      ]
+    },
+    {
+      "id": "s5",
+      "refs": [
+        "R4",
+        "R1"
+      ]
+    },
+    {
+      "id": "s6",
+      "refs": [
+        "R2",
+        "R5"
+      ]
+    },
+    {
+      "id": "s7",
+      "refs": [
+        "R5",
+        "R6"
+      ]
+    },
+    {
+      "id": "s8",
+      "refs": [
+        "R6",
+        "R7"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "regions": [
+      {
+        "id": "rgA",
+        "fill": "BLUE",
+        "label": "A",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "polygon": [
+              "R1",
+              "R2",
+              "R7",
+              "R3",
+              "R4"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "rgB",
+        "fill": "WARM",
+        "label": "B",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "polygon": [
+              "R2",
+              "R5",
+              "R6",
+              "R7"
+            ]
+          }
+        ]
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lA",
+        "ownerSegment": "s5",
+        "text": "6ab"
+      },
+      {
+        "id": "lB",
+        "ownerSegment": "s7",
+        "text": "4a^2b^2"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dL",
+        "from": "R1",
+        "to": "R5",
+        "label": "L",
+        "side": "BELOW",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 460,
+    "height": 360
+  },
+  "hiddenPointNames": [
+    "R1",
+    "R2",
+    "R7",
+    "R3",
+    "R4",
+    "R5",
+    "R6"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "가로로 붙어 있는 두 직사각형 A, B와 두 가로 길이의 합 L이 표시되어 있다.",
+  "accessibilityDescription": "왼쪽 직사각형 A가 오른쪽 직사각형 B보다 높고, 두 직사각형의 아래쪽에 전체 가로 길이 L의 치수선이 있다.",
+  "newVisualInformation": [
+    "직사각형 A",
+    "직사각형 B",
+    "가로 길이의 합 L"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 3]\n\n넓이가 각각 $12a^2b + 18ab^3$, $20a^3b^2 - 16a^2b^4$인 두 직사각형 $A, B$를 서로 붙여 놓았다. $A$의 세로의 길이가 $6ab$, $B$의 세로의 길이가 $4a^2b^2$이고 두 직사각형의 가로의 길이의 합을 $L$이라고 할 때, $L$의 값을 구하고 그 풀이 과정을 서술하시오. [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

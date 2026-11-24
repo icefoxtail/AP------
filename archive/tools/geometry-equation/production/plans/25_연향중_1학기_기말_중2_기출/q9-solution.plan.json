@@ -1,0 +1,64 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "고정한 x",
+        "elements": [
+          "2"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "공배수의 일부",
+        "elements": [
+          "12",
+          "24",
+          "36"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        }
+      }
+    ]
+  },
+  "caption": "x2를 고정해도 2와 12의 공배수 12,24,36,…으로 y가 여러 값이다. 오른쪽은 무한히 많은 공배수의 일부만 그렸다. 따라서③은 함수가 아니다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 중 $y$가 $x$의 함수가 아닌 것은? [4점]",
+      "mappedTo": "diagram"
+    }
+  ]
+}

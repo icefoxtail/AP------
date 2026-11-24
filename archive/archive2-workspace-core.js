@@ -463,7 +463,6 @@
     saveResultState: "",
     derivationSource: null,
     derive: null,
-    derivedBaseQuestions: null,
     editSavedPaperId: "",
     urlSources: [],
     urlRange: "",

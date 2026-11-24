@@ -1,0 +1,352 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cB",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cC",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ints",
+        "op": "INTERSECTION",
+        "inputs": [
+          "cB",
+          "cC"
+        ],
+        "args": {},
+        "outputType": "POINT_SET",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SELECT_POINT",
+        "inputs": [
+          "ints"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "branch": {
+          "kind": "SIDE_OF_ORIENTED_LINE",
+          "refs": [
+            "B",
+            "C"
+          ],
+          "sign": 1
+        }
+      },
+      {
+        "id": "base",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "A",
+          "base"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "B",
+          "A"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "C",
+          "A"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "U",
+          "base"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "V",
+          "base"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "H",
+    "U",
+    "V",
+    "D",
+    "E"
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "hiddenPointNames": [
+    "H",
+    "U",
+    "V",
+    "D",
+    "E"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAH",
+      "refs": [
+        "A",
+        "H"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sDU",
+      "refs": [
+        "D",
+        "U"
+      ]
+    },
+    {
+      "id": "sUV",
+      "refs": [
+        "U",
+        "V"
+      ]
+    },
+    {
+      "id": "sVE",
+      "refs": [
+        "V",
+        "E"
+      ]
+    },
+    {
+      "id": "sED",
+      "refs": [
+        "E",
+        "D"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rA",
+      "refs": [
+        "B",
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "rD",
+      "refs": [
+        "U",
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "rE",
+      "refs": [
+        "D",
+        "E",
+        "V"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "l0",
+        "ownerSegment": "sAB",
+        "text": "4",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "l1",
+        "ownerSegment": "sAC",
+        "text": "3",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "l2",
+        "ownerSegment": "sAH",
+        "text": "12/5",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "l3",
+        "ownerSegment": "sUV",
+        "text": "5(1-t)",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "l4",
+        "ownerSegment": "sDU",
+        "text": "12t/5",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "caption": "직사각형 높이를 전체 삼각형 높이의 t배로 놓은 t=1/3 배치 예시이며 최적 배치를 뜻하지 않는다. 윗변 위의 작은 삼각형과 원래 삼각형의 닮음으로 가로 5(1-t), 세로 12t/5를 연결한다.",
+  "accessibilityDescription": "직사각형 높이를 전체 삼각형 높이의 t배로 놓은 t=1/3 배치 예시이며 최적 배치를 뜻하지 않는다. 윗변 위의 작은 삼각형과 원래 삼각형의 닮음으로 가로 5(1-t), 세로 12t/5를 연결한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "아래 그림과 같이 $\\overline{AB}=4$, $\\overline{AC}=3$인 직각삼각형 내부에 한 변이 선분 $BC$위에 있고 두 꼭짓점이 각각 선분 $AB$, $AC$위에 있는 직사각형의 넓이의 최댓값은? [4.6점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "피타고라스로BC5,높이12/5. 직사각형높이를전체높이의t배로두면닮음으로윗변5(1−t),넓이12t(1−t),최대3. 새도형은t1/3예시로최적배치아님,중간길이식보존하고최종넓이숨김. B원점은임의평행이동게이지. BC5는피타고라스도출, A는반지름4와3의두원교점, U/V는t1/3내분, D/E/H는수선발. 원문좌표를주어진것처럼기입하지않음.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "직사각형 높이를 전체 삼각형 높이의 t배로 놓은 t=1/3 배치 예시이며 최적 배치를 뜻하지 않는다. 윗변 위의 작은 삼각형과 원래 삼각형의 닮음으로 가로5(1-t), 세로12t/5를 연결한다."
+  ]
+}

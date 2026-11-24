@@ -1,0 +1,96 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "1/10",
+          "1/10"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "3"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "functionName": "p",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "0",
+        "y": "1/10",
+        "marker": "NONE"
+      },
+      {
+        "id": "B",
+        "x": "3",
+        "y": "2/5",
+        "marker": "NONE"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "0",
+          "y": "1/10",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "1",
+          "y": "1/5",
+          "unnamed": true
+        },
+        {
+          "id": "P2",
+          "x": "2",
+          "y": "3/10",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P3",
+          "x": "3",
+          "y": "2/5",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ],
+      "callouts": [
+        {
+          "id": "c1",
+          "point": "P1",
+          "text": "1/5",
+          "direction": "N"
+        }
+      ]
+    }
+  },
+  "caption": "확률질량의 합이 1이므로 (0+a)+(1+a)+(2+a)+(3+a)=6+4a=10에서 a=1이다. 따라서 P(X=2)=(2+1)/10=3/10이다. 따라서 답은 ②이다.",
+  "accessibilityDescription": "x=0, 1, 2, 3의 각 값 위에 확률질량을 나타내는 점이 찍혀 있고, 그 점들을 지나는 증가하는 직선이 그려져 있다.",
+  "newVisualInformation": [
+    "x=0, 1, 2, 3에서의 확률질량값과 그 점들을 지나는 직선"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "6. 확률변수 $X$의 확률질량함수가 $P(X=x) = \\frac{x+a}{10}$ ($x=0, 1, 2, 3$)일 때, $P(X=2)$의 값은? [4.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

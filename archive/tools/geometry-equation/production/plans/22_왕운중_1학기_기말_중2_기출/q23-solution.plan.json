@@ -1,0 +1,59 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "9",
+          "-1"
+        ],
+        "domain": [
+          "0",
+          "9"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "8",
+          "-3/4"
+        ],
+        "domain": [
+          "0",
+          "9"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "4",
+          "y": "5",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "서로 떨어져 있어 삼각형은 3개, 사각형은 4개씩 필요하며 공유변 없음. x+y9,3x+4y32의 교점 (4,5), 삼각형 4개. 원래 성냥 도형 예시는 유지한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 3] 성냥개비 32개를 사용하여 성냥개비 1개를 한 변으로 하고 서로 떨어져 있는 삼각형과 사각형을 합하여 9개를 만들려고 한다. 이때, 만들 수 있는 삼각형의 갯수를 구하시오. (단, 한 번에는 하나의 성냥개비만 사용) [5점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "서로떨어져있어삼각형은3개,사각형은4개씩필요하며공유변없음. x+y9,3x+4y32의교점(4,5),삼각형4개. 원래성냥도형예시는유지한다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "서로떨어져있어삼각형은3개,사각형은4개씩필요하며공유변없음. x+y9,3x+4y32의교점(4,5),삼각형4개. 원래성냥도형예시는유지한다."
+  ]
+}

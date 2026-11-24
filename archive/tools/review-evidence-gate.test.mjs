@@ -90,7 +90,10 @@ function run(examSource, ev) {
 let report = run(goodExam, evidence());
 assert.equal(report.ok, true, JSON.stringify(report));
 const missingCalibration=evidence(); delete missingCalibration.solutionQualityCalibration; report=run(goodExam,missingCalibration); assert.equal(report.ok,false); assert(report.issues.includes('SOLUTION_CALIBRATION_REQUIRED'));
-const staleGolden=evidence(); staleGolden.solutionQualityCalibration.goldenSampleRefs[0].sha256='sha256:'+'0'.repeat(64); report=run(goodExam,staleGolden); assert.equal(report.ok,false); assert(report.issues.some(x=>x.startsWith('GOLDEN_SAMPLE_SHA256_MISMATCH')));
+// 2026-11-24: 골든 표본은 파일 전체 해시가 아니라 문항별 해설 해시·발췌문으로 묶는다. 파일 해시가 옛 값이어도(그림·배치만 바뀐 시험지) 통과하고,
+// 인용한 문항의 해설이 바뀌면(solutionSha256 불일치) 거절한다.
+const staleGolden=evidence(); staleGolden.solutionQualityCalibration.goldenSampleRefs[0].sha256='sha256:'+'0'.repeat(64); staleGolden.solutionQualityCalibration.goldenSampleRefs[0].gitBlobSha='0'.repeat(40); report=run(goodExam,staleGolden); assert.equal(report.ok,true,JSON.stringify(report)); assert(!report.issues.some(x=>x.startsWith('GOLDEN_SAMPLE_SHA256_MISMATCH')||x.startsWith('GOLDEN_SAMPLE_BLOB_SHA_MISMATCH')));
+const changedGoldenSolution=evidence(); changedGoldenSolution.solutionQualityCalibration.goldenSampleQuestionRefs[0].solutionSha256='sha256:'+'0'.repeat(64); report=run(goodExam,changedGoldenSolution); assert.equal(report.ok,false); assert(report.issues.some(x=>x.startsWith('GOLDEN_SAMPLE_SOLUTION_SHA_MISMATCH')));
 const staleExcerpt=evidence(); staleExcerpt.solutionQualityCalibration.goldenSampleQuestionRefs[0].solutionExcerpt='not-present-in-sample'; report=run(goodExam,staleExcerpt); assert.equal(report.ok,false); assert(report.issues.some(x=>x.startsWith('GOLDEN_SAMPLE_SOLUTION_EXCERPT_MISSING_OR_STALE')));
 const missingVisualAxis=evidence(); missingVisualAxis.solutionQualityCalibration.calibrationAxes=missingVisualAxis.solutionQualityCalibration.calibrationAxes.filter(x=>x!=='VISUAL_SEMANTIC_PARITY'); report=run(goodExam,missingVisualAxis); assert.equal(report.ok,false); assert(report.issues.includes('CALIBRATION_AXIS_REQUIRED:VISUAL_SEMANTIC_PARITY'));
 

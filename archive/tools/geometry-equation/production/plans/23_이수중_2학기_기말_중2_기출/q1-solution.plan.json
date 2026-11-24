@@ -1,0 +1,151 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "15"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "8"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "C",
+    "A",
+    "B"
+  ],
+  "displaySegments": [
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "hiddenPointNames": [
+    "A",
+    "B",
+    "C"
+  ],
+  "hiddenPointStyle": "NONE",
+  "rightAngles": [
+    {
+      "id": "right",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lenCA",
+        "ownerSegment": "CA",
+        "text": "15",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lenAB",
+        "ownerSegment": "AB",
+        "text": "17",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lenBC",
+        "ownerSegment": "BC",
+        "text": "8",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "angles": []
+  },
+  "caption": "직각삼각형의 빗변이 17, 한 직각변이 15이므로 x²+15²=17²이다. x²=289−225=64이고 길이는 양수이므로 x=8이다. 따라서 답은 ④이다.",
+  "accessibilityDescription": "직각이 표시된 직각삼각형의 세 변에 길이가 적혀 있고, 빗변은 17, 한 직각변은 15이다.",
+  "newVisualInformation": [
+    "직각삼각형의 두 직각변 15와 8, 빗변 17을 보여 준다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 직각삼각형에서 $x$의 값을 구하시오. [3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

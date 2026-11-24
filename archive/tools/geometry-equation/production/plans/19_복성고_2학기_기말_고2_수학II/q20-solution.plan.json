@@ -1,0 +1,70 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "24",
+          "-3"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        0,
+        8
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      0,
+      8
+    ],
+    "viewport": [
+      0,
+      8,
+      -2,
+      52
+    ],
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": "4",
+        "y": "48"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "2",
+        "6"
+      ],
+      "y": [
+        "24"
+      ]
+    },
+    "axisTitles": {
+      "x": "t",
+      "y": "x"
+    }
+  },
+  "caption": "높이는 x=24t-3t²이고 속도는 x'=24-6t이다. 24-6t=0에서 t=4이고 x(4)=48이므로 최고 높이는 4초 후 48 m이다. 지면에 닿을 때는 t=8이고 x'(8)=-24이므로 속도는 아래 방향으로 24 m/s이다. 따라서 답은 (1) 4초, 48 m, (2) 아래 방향으로 24 m/s이다.",
+  "accessibilityDescription": "가로축 t, 세로축 x인 좌표평면에 0부터 8까지 위로 볼록한 포물선이 그려져 있고, 꼭짓점의 좌표와 x축 눈금이 표시되어 있다.",
+  "newVisualInformation": [
+    "시간에 따른 높이의 꼭짓점과 지면에 닿는 위치를 보여 준다.",
+    "꼭짓점의 좌표와 x축 눈금으로 최고 높이와 걸린 시간을 확인할 수 있게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "서술형 문제 1. [4점]\n지면에서 $24,\\mathrm{m/s}$의 속도로 지면과 수직하게 위로 쏘아 올린 물체의 $t$초 후의 높이를 $x,\\mathrm{m}$라 하면\n$x=24t-3t^2$\n인 관계가 성립한다고 한다. (단위 생략해도 점수 인정)\n(1) 물체가 최고 높이에 도달할 때까지 걸린 시간과 그때의 높이를 구하시오. (2점)\n(2) 물체가 지면에 떨어지는 순간의 속도를 구하시오. (2점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

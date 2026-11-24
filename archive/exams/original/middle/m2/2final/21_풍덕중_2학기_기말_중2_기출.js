@@ -121,7 +121,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "metaNullReason": "NO_EXACT_ACTIVE_M2_PROBLEM_TYPE_AND_TEMPLATE_IN_CURRENT_TAXONOMY",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/21_풍덕중_2학기_기말_중2_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "x−2→1의증가량 3에기울기 4/3을곱해 y증가량 4. 실제끝점(−2,−23/3),(1,−11/3)을표시,정답④.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -244,7 +248,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "metaNullReason": "NO_EXACT_ACTIVE_M2_PROBLEM_TYPE_AND_TEMPLATE_IN_CURRENT_TAXONOMY",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/21_풍덕중_2학기_기말_중2_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "기울기 2/절편 1에서 y2x+1. y5인점의가로좌표 m2,정답②.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -877,7 +885,11 @@ window.questionBank = [
     ],
     "integrationPattern": "NONE",
     "metaNullReason": null,
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/21_풍덕중_2학기_기말_중2_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 집합의 원소 사이의 대응 관계를 화살표로 나타낸 그림이다.",
+    "solutionImageCaption": "철이와 부모님이 붙어 서고 철이가 가운데라고 보는 풀이이다. 부모님이 서는 순서가 2가지이고, 이 묶음과 나머지 두 사람, 모두 세 대상을 한 줄로 세우는 방법이 3!=6가지이므로 2×6=12이다. 따라서 답은 ③ 12가지이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -1123,7 +1135,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "metaNullReason": null,
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/21_풍덕중_2학기_기말_중2_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 집합의 원소 사이의 대응 관계를 화살표로 나타낸 그림이다.",
+    "solutionImageCaption": "두동전 4결과×주사위 6결과=24중앞앞과눈 2/5인두쌍만연결. 확률 2/24=1/12,정답⑤.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -1183,7 +1199,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "CASE_BRANCH",
     "metaNullReason": "EXACT_ACTIVE_BINDING_PENDING",
-    "sourceMode": "ALIVE_REPLACEMENT"
+    "sourceMode": "ALIVE_REPLACEMENT",
+    "solutionImage": "assets/images/21_풍덕중_2학기_기말_중2_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "빨강→파랑의 비복원 추출이라 둘째 분모는 4이다. 서로 겹치지 않는 두 기여 1/5+1/5=2/5, 정답 ③. 파랑→빨강의 비복원 추출이라 둘째 분모는 4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -1248,7 +1268,11 @@ window.questionBank = [
     ],
     "integrationPattern": "REINTERPRETATION",
     "metaNullReason": null,
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/21_풍덕중_2학기_기말_중2_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 집합의 원소 사이의 대응 관계를 화살표로 나타낸 그림이다.",
+    "solutionImageCaption": "백의 자리 0 제외. 전체 5×5×4=100 중 일의 0이면 20, 일의 5이면 16. 총 36/100=9/25, 정답 ②. 화살표는 자리별 선택수의 계산 순서이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -1476,6 +1500,10 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "metaNullReason": null,
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/21_풍덕중_2학기_기말_중2_기출/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "노랑/노랑인 경우. 같은 색은 2/5+2/15=8/15, 다른 색은 여사건 1−8/15=7/15. 두 주머니 독립 무작위 추출의 통상 모형을 쓴다. 파랑/파랑인 경우.",
+    "solutionImageSize": "full"
   }
 ];

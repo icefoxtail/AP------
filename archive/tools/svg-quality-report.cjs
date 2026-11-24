@@ -4,7 +4,7 @@
 // 이유: 등록 실행의 advisory 출력은 바뀐 그림만, 앞 50개까지다. 수리 대상 전체(수천 개)를 일괄 수리에 넣을 수 있게 전체 목록을 따로 뽑는다.
 const fs = require('node:fs');
 const path = require('node:path');
-const { validateSvgStudentLanguage, QUALITY_ONLY_CODES, LEGACY_ACCESSIBILITY_CODES, isEngineSvg, substituteAccessibilityText } = require('./svg-language-contract.cjs');
+const { validateSvgStudentLanguage, LEGACY_ACCESSIBILITY_CODES, isAdvisoryError, isEngineSvg, substituteAccessibilityText } = require('./svg-language-contract.cjs');
 const { collectSvgAccessibilitySourceIndex } = require('./collect-svg-accessibility-source-index.cjs');
 
 // 학생 눈에 보이는 글자 문제일 수 있는 코드를 맨 앞에 둔다.
@@ -51,7 +51,7 @@ function collectQualityRows({ repoRoot, uses } = {}) {
     const codes = [...new Set(result.errors.map(error => error.code))];
     // 등록기가 막는 것(defect)과 목록으로만 남기는 것(quality, legacy-a11y)을 같은 기준으로 가른다.
     const engine = isEngineSvg(source);
-    const blocking = codes.filter(code => !QUALITY_ONLY_CODES.has(code) && !(!engine && LEGACY_ACCESSIBILITY_CODES.has(code)));
+    const blocking = result.errors.filter(error => !isAdvisoryError(error, !engine));
     const found = usesByAsset.get(assetRef) || [];
     rows.push({
       assetRef,

@@ -1,0 +1,87 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -2,
+      5,
+      -2,
+      14
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "LINE",
+        "coefficients": [
+          "4",
+          "2"
+        ],
+        "domain": [
+          "-2",
+          "9/2"
+        ],
+        "color": "BLUE",
+        "label": "y=2x+4"
+      },
+      {
+        "id": "h",
+        "kind": "LINE",
+        "coefficients": [
+          "2",
+          "0"
+        ],
+        "domain": [
+          "-2",
+          "5"
+        ],
+        "color": "GREEN",
+        "label": "y=2"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "-1",
+          "y": "2",
+          "unnamed": true,
+          "coordinates": true,
+          "labelDirection": "SW"
+        },
+        {
+          "id": "B",
+          "x": "0",
+          "y": "4",
+          "unnamed": true,
+          "coordinates": true,
+          "labelDirection": "E"
+        },
+        {
+          "id": "C",
+          "x": "4",
+          "y": "12",
+          "unnamed": true,
+          "coordinates": true,
+          "labelDirection": "NW"
+        }
+      ]
+    }
+  },
+  "caption": "f(-1)=2에서 -2+a=2이므로 a=4이고 f(x)=2x+4이다. 그림에서 수평선 y=2와 직선 y=2x+4의 교점은 (-1,2)이다. f(4)=12, f(0)=4이므로 f(4)-f(0)=12-4=8이다. 따라서 답은 ⑤이다.",
+  "accessibilityDescription": "좌표평면에 일차함수 직선과 수평선 y=2가 그려져 있고, 직선 위의 세 점 (-1,2), (0,4), (4,12)에 좌표가 표시되어 있다.",
+  "newVisualInformation": [
+    "직선 위의 점 (-1,2)와 수평선 y=2를 함께 보여 주어 f(-1)=2를 확인하게 한다.",
+    "점 (0,4)와 (4,12)의 좌표를 표시해 두 함숫값의 차를 비교하게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>4. 일차함수 $f(x)=2x+a$에 대하여 $f(-1)=2$일 때, $f(4)-f(0)$의 값은? (단, $a$는 상수) [4점]</p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

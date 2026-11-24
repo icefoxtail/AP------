@@ -213,7 +213,11 @@ window.examData = {
         "$9a^5b^4$"
       ],
       "answer": "①",
-      "solution": "[키포인트] 원뿔의 부피 공식은 $V = \\dfrac{1}{3} \\pi r^2 h$이다.\n1단계: 밑면의 반지름의 길이가 $r = 3ab^2$이므로 밑넓이 $S$는\n$S = \\pi r^2 = \\pi (3ab^2)^2 = 9\\pi a^2b^4$\n2단계: 원뿔의 높이를 $h$라고 하면 부피 $V$는\n$V = \\dfrac{1}{3} \\times 9\\pi a^2b^4 \\times h = 3\\pi a^2b^4 h$\n3단계: 부피가 $9\\pi a^6b^6$이므로\n$3\\pi a^2b^4 h = 9\\pi a^6b^6$\n$h = \\dfrac{9\\pi a^6b^6}{3\\pi a^2b^4} = 3a^{6-2}b^{6-4} = 3a^4b^2$\n따라서 원뿔의 높이는 $3a^4b^2$이다.\n따라서 정답은 ①이다."
+      "solution": "[키포인트] 원뿔의 부피 공식은 $V = \\dfrac{1}{3} \\pi r^2 h$이다.\n1단계: 밑면의 반지름의 길이가 $r = 3ab^2$이므로 밑넓이 $S$는\n$S = \\pi r^2 = \\pi (3ab^2)^2 = 9\\pi a^2b^4$\n2단계: 원뿔의 높이를 $h$라고 하면 부피 $V$는\n$V = \\dfrac{1}{3} \\times 9\\pi a^2b^4 \\times h = 3\\pi a^2b^4 h$\n3단계: 부피가 $9\\pi a^6b^6$이므로\n$3\\pi a^2b^4 h = 9\\pi a^6b^6$\n$h = \\dfrac{9\\pi a^6b^6}{3\\pi a^2b^4} = 3a^{6-2}b^{6-4} = 3a^4b^2$\n따라서 원뿔의 높이는 $3a^4b^2$이다.\n따라서 정답은 ①이다.",
+      "solutionImage": "assets/images/20_금당중_1학기_기말_중2_수학/q7-solution.svg",
+      "solutionImageAlt": "원뿔이 있고 밑면의 반지름에 3ab², 높이에 h가 적혀 있다.",
+      "solutionImageCaption": "예: 밑면의 반지름이 3ab², 높이가 h, 부피가 9πa⁶b⁶인 원뿔이다(길이의 비율은 모양만 나타낸 것이다). 밑넓이는 π(3ab²)²=9πa²b⁴이다. 부피 (1/3)×9πa²b⁴×h=3πa²b⁴h가 9πa⁶b⁶이므로 h=3a⁴b²이다. 따라서 답은 ①이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 8,

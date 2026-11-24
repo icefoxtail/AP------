@@ -1,8 +1,9 @@
 #!/usr/bin/env node
-// Local identity gate for the SVG engine: renders the golden plans on a base and a head of this PC and compares the SVG bytes.
-//   node archive/tools/geometry-equation/ops/golden-gate/golden-gate.mjs --base <ref> [--head <ref|@worktree>] [--families auto|all|<list>]
-//        [--expected <file>] [--tests [auto|all]] [--slots N] [--no-cache] [--repeat-check] [--list] [--out report.json]
-// See README.md in this folder. Exit 0 = pass, 1 = the gate failed, 2 = could not run (usage, missing dependency).
+// Break gate for the SVG engine (2026-11-24): renders golden plans on a base and a head of this PC and fails only when a figure a student sees is broken
+// (a cut-off, a figure the head cannot draw any more, a failed measurement or a crash). A changed figure is listed and shown side by side, never a failure.
+//   node archive/tools/geometry-equation/ops/golden-gate/golden-gate.mjs [--base <ref>] [--head <ref|@worktree>] [--families auto|<list>] [--all]
+//        [--sample N] [--max-per-kind N] [--exam-batch N] [--expected <file>] [--tests [auto|all]] [--slots N] [--no-cache] [--repeat-check] [--list] [--out report.json]
+// See README.md in this folder. Exit 0 = nothing broke, 1 = a figure breaks, 2 = could not run (usage, missing dependency).
 import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
@@ -13,6 +14,8 @@ import {resolveTarget, ensureSnapshot, changedFiles, pruneSnapshots} from './lib
 import {environmentFingerprint} from './lib/env-fingerprint.mjs';
 import {renderItems, pruneSnapshotRuns} from './lib/render.mjs';
 import {compareItem, parseExpected, applyExpected, summarize, evaluate, decide, testsFail, bytesCompared, removedRow, addedRow} from './lib/judge.mjs';
+import {narrowSelection, DEFAULT_SAMPLE_PER_KIND, DEFAULT_MAX_PER_KIND} from './lib/related.mjs';
+import {sheetPairs, writeSheets, PAIRS_PER_SHEET} from './lib/sheet.mjs';
 import {listTests, selectTests, runTests, compareTests} from './lib/tests-run.mjs';
 import {orderCheck, formatTable, decideOrderCheck} from './lib/order-check.mjs';
 
@@ -20,7 +23,7 @@ const HERE = path.dirname(fileURLToPath(import.meta.url));
 const REPO = path.resolve(HERE, '../../../../..');
 
 function parseArgs(argv) {
-  const a = {families: 'auto', tests: null, slots: Number(process.env.RENDER_SLOTS) || 1, chunk: 10, retries: 2};
+  const a = {families: 'auto', tests: null, slots: Number(process.env.RENDER_SLOTS) || 1, chunk: 10, retries: 2, sample: DEFAULT_SAMPLE_PER_KIND, maxPerKind: DEFAULT_MAX_PER_KIND, perSheet: PAIRS_PER_SHEET, examBatch: Number(process.env.APMS_EXAM_BATCH) || 0};
   for (let i = 0; i < argv.length; i++) {
     const k = argv[i];
     const val = () => argv[++i];
@@ -30,14 +33,18 @@ function parseArgs(argv) {
     else if (k === '--retries') a.retries = Number(val()); else if (k === '--repo') a.repo = val();
     else if (k === '--tests') { const n = argv[i + 1]; a.tests = n && !n.startsWith('--') ? (i++, n) : 'auto'; }
     else if (k === '--order-check') { const n = argv[i + 1]; a.orderCheck = n && !n.startsWith('--') ? (i++, n) : 'default'; }
+    else if (k === '--all') a.families = 'all'; else if (k === '--sample') a.sample = Number(val()); else if (k === '--max-per-kind') a.maxPerKind = Number(val());
+    else if (k === '--exam-batch') a.examBatch = Number(val()); else if (k === '--sheets-dir') a.sheetsDir = val(); else if (k === '--per-sheet') a.perSheet = Number(val()); else if (k === '--no-sheets') a.noSheets = true;
     else if (k === '--no-cache') a.noCache = true; else if (k === '--repeat-check') a.repeat = true; else if (k === '--list') a.list = true;
     else if (k === '--help' || k === '-h') a.help = true; else throw new Error(`unknown option ${k}`);
   }
   return a;
 }
 
-const USAGE = `golden-gate --base <ref> [--head <ref|@worktree>] [--families auto|all|<kind,kind|item|FAM>] [--expected <file>] [--tests [auto|all]]
-  [--slots N] [--chunk-size N] [--no-cache] [--repeat-check] [--order-check [solid,item..:other,item..]] [--list] [--out <report.json>] [--cache <dir>] [--repo <dir>] [--lock-dir <dir>] [--deps <dir>]
+const USAGE = `golden-gate [--base <ref, default: merge-base of origin/main and HEAD>] [--head <ref|@worktree>] [--families auto|all|<kind,kind|item|FAM>] [--all]
+  [--sample N (items per kind when the change reaches shared code, default ${DEFAULT_SAMPLE_PER_KIND})] [--max-per-kind N (default ${DEFAULT_MAX_PER_KIND})] [--exam-batch N]
+  [--expected <file>] [--tests [auto|all]] [--slots N] [--chunk-size N] [--no-cache] [--repeat-check] [--order-check [solid,item..:other,item..]] [--list]
+  [--sheets-dir <dir>] [--per-sheet N] [--no-sheets] [--out <report.json>] [--cache <dir>] [--repo <dir>] [--lock-dir <dir>] [--deps <dir>]
 kinds: ${KINDS.join(', ')}
 env: GOLDEN_GATE_CACHE (cache folder), RENDER_LOCK_DIR (render slot folder shared with other workers), RENDER_SLOTS, GOLDEN_GATE_DEPS, GEOMETRY_BROWSER_EXECUTABLE, GEOMETRY_PYTHON`;
 
@@ -50,8 +57,13 @@ const log = m => console.error(`[${new Date().toTimeString().slice(0, 8)}] ${m}`
 
 async function main() {
   const args = parseArgs(process.argv.slice(2));
-  if (args.help || (!args.base && !args.orderCheck)) { console.log(USAGE); return args.help ? 0 : 2; }
+  if (args.help) { console.log(USAGE); return 0; }
   const repo = path.resolve(args.repo || REPO);
+  if (!args.base && !args.orderCheck) {
+    // the usual use: the pull request against main. The merge-base keeps main's newer commits from looking like the head's changes.
+    try { args.base = gitText(repo, ['merge-base', 'origin/main', args.head && args.head !== '@worktree' ? args.head : 'HEAD']).trim(); } catch { args.base = null; }
+    if (!args.base) { console.log(USAGE); return 2; }
+  }
   const cacheRoot = path.resolve(args.cache || process.env.GOLDEN_GATE_CACHE || path.join(REPO, '.tmp/golden-gate-cache'));
   const lockDir = path.resolve(args.lockDir || process.env.RENDER_LOCK_DIR || path.join(cacheRoot, 'render-locks'));
   const depsDir = path.resolve(args.deps || process.env.GOLDEN_GATE_DEPS || path.join(REPO, '.tmp/apmath-visual-engine/dependencies'));
@@ -72,6 +84,17 @@ async function main() {
   if (args.orderCheck) return orderCheckMain({args, repo, cacheRoot, lockDir, depsDir});
   const baseT = resolveTarget(repo, args.base);
   const headT = resolveTarget(repo, args.head || '@worktree');
+  // nothing changed and nothing asked for by name: nothing can break, and the snapshots (minutes of unpacking) are not needed
+  if (args.families === 'auto' && !args.repeat && !args.list && !expected.entries.length) {
+    let early = null;
+    try { early = changedFiles(repo, baseT, headT); } catch { /* the full path below reports it */ }
+    if (early && early.length === 0) {
+      headline = 'byte compared 0 / selected 0 (base and head do not differ)';
+      say(`GOLDEN GATE UNAFFECTED (nothing compared): base ${baseT.label} and head ${headT.label} do not differ; ${fmtDuration(Date.now() - t0)}`);
+      if (args.out) writeJson(args.out, {base: baseT.label, head: headT.label, outcome: 'UNAFFECTED', reason: 'base and head do not differ', pass: true, wallMs: Date.now() - t0});
+      return 0;
+    }
+  }
   const env = environmentFingerprint({depsDir});
   log(`cache ${cacheRoot}`);
   log(`render slots: ${args.slots} in ${lockDir}`);
@@ -90,19 +113,23 @@ async function main() {
   try {
     changed = changedFiles(repo, baseT, headT);
     sel = chooseItems({families: args.families, changed, baseSnap, headSnap, expectedItems: expected.entries.map(e => e.item)});
-  } catch (e) { headline = 'byte compared 0 / selected 0'; say(`CANNOT VOUCH: the changes could not be classified: ${e.message}`); return 2; }
-  if (sel.unknown.length) { headline = 'byte compared 0 / selected 0'; say(`CANNOT VOUCH: unknown --families word(s): ${sel.unknown.join(', ')}`); return 2; }
-  const {all, kinds, selected, plans} = sel;
+  } catch (e) { headline = 'byte compared 0 / selected 0'; say(`CANNOT RUN: the changes could not be classified: ${e.message}`); return 2; }
+  if (sel.unknown.length) { headline = 'byte compared 0 / selected 0'; say(`CANNOT RUN: unknown --families word(s): ${sel.unknown.join(', ')}`); return 2; }
+  const {all, kinds, plans} = sel;
   const items = headSnap.items;
+  // the related items only: a kind's own change renders that kind, a change to shared code a sample of every kind, --all the whole set (lib/related.mjs)
+  const narrowed = narrowSelection({sel, items, perKind: args.sample, maxPerKind: args.maxPerKind});
+  const selected = narrowed.selected;
   const removedDirs = baseSnap.items.filter(i => !headDirs.has(i.dir)).map(i => i.dir);
   say(`changed files: ${changed.length} (render-relevant ${sel.classes.filter(c => c.effect !== 'NONE').length}, ignored ${sel.classes.filter(c => c.effect === 'NONE').length})`);
   for (const r of sel.reasons.slice(0, 40)) say(`  ${r}`);
   if (sel.reasons.length > 40) say(`  ... ${sel.reasons.length - 40} more`);
-  say(`golden items selected: ${selected.length} of ${items.length}${all ? ' (whole set)' : kinds.size ? ` (kinds: ${[...kinds].join(', ')})` : ''}${removedDirs.length ? `; ${removedDirs.length} item(s) only on base` : ''}`);
+  say(`golden items selected: ${selected.length} of ${items.length}${narrowed.sampled ? ' (a sample)' : all ? ' (whole set)' : kinds.size ? ` (kinds: ${[...kinds].join(', ')})` : ''}${removedDirs.length ? `; ${removedDirs.length} item(s) only on base` : ''}`);
+  if (narrowed.note) say(`  ${narrowed.note}`);
   if (args.list) { say(selected.join(' ')); return 0; }
 
   const report = {base: baseT.label, head: headT.label, env: env.key, selected: selected.length, total: items.length};
-  const renderOpts = {resultsRoot, noCache: args.noCache, slots: args.slots, lockDir, chunkSize: args.chunk, retries: args.retries, log, cacheRoot, depsDir, envKey: env.key};
+  const renderOpts = {resultsRoot, noCache: args.noCache, slots: args.slots, lockDir, chunkSize: args.chunk, retries: args.retries, log, cacheRoot, depsDir, envKey: env.key, examBatch: args.examBatch};
 
   // ---- repeat check: the same snapshot rendered twice, independently ----------------------------------------------------
   if (args.repeat) {
@@ -120,12 +147,13 @@ async function main() {
   }
 
   // ---- render and compare -----------------------------------------------------------------------------------------
-  let rows = [], stats = {};
+  let rows = [], stats = {}, baseRes = null, headRes = null;
   if (selected.length) {
     const baseList = selected.filter(d => baseDirs.has(d));
     const baseR = await renderItems({...renderOpts, snap: baseSnap, itemDirs: baseList, label: 'base'});
     const headR = sameInput && !args.noCache ? baseR : await renderItems({...renderOpts, snap: headSnap, itemDirs: selected, label: 'head'});
     stats = {base: baseR.stats, head: headR.stats};
+    baseRes = baseR.results; headRes = headR.results;
     rows = selected.map(d => baseDirs.has(d) ? compareItem(d, baseR.results.get(d), headR.results.get(d)) : addedRow(d, headR.results.get(d)));
   }
   for (const d of removedDirs) rows.push(removedRow(d)); // a removed golden item always counts, selected or not
@@ -134,12 +162,17 @@ async function main() {
   const byKind = k => [...planKinds(plans[k])].sort()[0];
 
   say('');
-  const order = ['DIFFERENT', 'REGRESSED', 'REMOVED', 'NOT_RUN', 'FIXED', 'ADDED', 'BOTH_FAIL_SAME'];
-  for (const v of order) for (const r of rows.filter(x => x.verdict === v)) say(`${r.accepted ? 'EXPECTED ' : ''}${v.padEnd(14)} ${r.item.padEnd(24)} [${plans[r.item] ? byKind(r.item) : '-'}] ${r.reason ?? ''}${r.accepted ? `  <= expected: ${r.accepted}` : ''}`);
-  if (applied.accepted.length) say(`\nexpected changes accepted: ${applied.accepted.length}`);
-  for (const e of applied.errors) say(`EXPECTED-FILE ERROR: ${e}`);
+  // the ones that fail first, then the changes a person looks at (DIFFERENT is long: the first 40 are printed, all are in the report and on the sheets)
+  const order = ['CLIPPED', 'REGRESSED', 'NOT_RUN', 'DIFFERENT', 'MINOR', 'REMOVED', 'FIXED', 'ADDED', 'BOTH_FAIL_SAME'];
+  for (const v of order) {
+    const list = rows.filter(x => x.verdict === v);
+    for (const r of list.slice(0, v === 'DIFFERENT' || v === 'BOTH_FAIL_SAME' ? 40 : 200)) say(`${r.accepted ? 'EXPECTED ' : ''}${v.padEnd(14)} ${r.item.padEnd(24)} [${plans[r.item] ? byKind(r.item) : '-'}] ${r.reason ?? ''}${r.accepted ? `  <= expected: ${r.accepted}` : ''}`);
+    if (list.length > 40 && (v === 'DIFFERENT' || v === 'BOTH_FAIL_SAME')) say(`  ... ${list.length - 40} more ${v} (see the report)`);
+  }
+  if (applied.accepted.length) say(`\nexpected changes marked: ${applied.accepted.length}`);
+  for (const e of applied.errors) say(`EXPECTED-FILE NOTE (does not fail the gate): ${e}`);
   const c = summary.counts;
-  say(`\nitems ${summary.total}: SAME ${c.SAME ?? 0}, DIFFERENT ${c.DIFFERENT ?? 0}, REGRESSED ${c.REGRESSED ?? 0}, REMOVED ${c.REMOVED ?? 0}, NOT_RUN ${c.NOT_RUN ?? 0}; listed only: FIXED ${c.FIXED ?? 0}, ADDED ${c.ADDED ?? 0}, BOTH_FAIL_SAME ${c.BOTH_FAIL_SAME ?? 0} (all stay in the denominator)`);
+  say(`\nitems ${summary.total}: SAME ${c.SAME ?? 0}, DIFFERENT ${c.DIFFERENT ?? 0} (information, not a failure); FAIL: REGRESSED ${c.REGRESSED ?? 0}, CLIPPED ${c.CLIPPED ?? 0}, NOT_RUN ${c.NOT_RUN ?? 0}; listed: MINOR ${c.MINOR ?? 0}, REMOVED ${c.REMOVED ?? 0}, FIXED ${c.FIXED ?? 0}, ADDED ${c.ADDED ?? 0}, BOTH_FAIL_SAME ${c.BOTH_FAIL_SAME ?? 0} (all stay in the denominator)`);
   if (stats.base) say(`rendered base ${stats.base.rendered} (+${stats.base.cached} cached), head ${stats.head.rendered} (+${stats.head.cached} cached), solo retries ${stats.base.retried + stats.head.retried}`);
   if (stats.base) timingTable(selected, plans, stats);
   report.rows = rows; report.summary = {counts: c, accepted: applied.accepted, expectedErrors: applied.errors}; report.stats = stats;
@@ -147,10 +180,24 @@ async function main() {
   const cover = evaluate(rows, {kinds, kindOf: d => plans[d] ? planKinds(plans[d]) : new Set(), reused: reusedHead});
   headline = `byte compared ${cover.byteCompared} / selected ${cover.selected}${sameInput && !args.noCache && rows.length ? ' (base and head have identical render inputs: nothing to compare)' : ''}`;
   report.coverage = cover;
-  const decision = decide({rows, cover, summary, expectedErrors: applied.errors, changedCount: changed.length, allChangesIgnored: sel.classes.length > 0 && sel.classes.every(c => c.effect === 'NONE'), inputsIdentical: sameInput, explicitSelection: sel.explicit, reusedHead});
+  const decision = decide({rows, summary, changedCount: changed.length, allChangesIgnored: sel.classes.length > 0 && sel.classes.every(c => c.effect === 'NONE'), explicitSelection: sel.explicit, reusedHead});
   let exit = decision.exit, outcome = decision.outcome;
-  if (outcome === 'CANNOT_VOUCH') for (const k of cover.notCovered) say(`NOT_COVERED: kind ${k} changed but no golden item of that kind was compared byte for byte (they all fail or were not run): add an example plan for it.`);
+  for (const k of cover.notCovered) say(`note: kind ${k} changed but no golden item of that kind was drawn on both sides (they all fail or were not run), so nothing of it was compared.`);
   if (cover.wholeUncovered.length) say(`note: no byte comparison for kind(s) ${cover.wholeUncovered.join(', ')} (every golden item of that kind fails or was not run): a change to them is not covered by this run.`);
+
+  // ---- side-by-side sheets of what changed: a person looks, the gate does not block on it ---------------------------------
+  if (!args.noSheets && !reusedHead && stats.base) {
+    const svgOf = (side, item) => { const rec = (side === 'base' ? baseRes : headRes)?.get(item); try { return rec?.svgPath ? fs.readFileSync(rec.svgPath, 'utf8') : null; } catch { return null; } };
+    const pairs = sheetPairs(rows, svgOf);
+    if (pairs.length) {
+      const sheetsDir = path.resolve(args.sheetsDir || path.join(cacheRoot, 'sheets', new Date().toISOString().replace(/[:.]/g, '-')));
+      const sheets = await writeSheets({pairs, outDir: sheetsDir, depsDir, baseLabel: `base ${baseT.label}`, headLabel: `head ${headT.label}`, per: args.perSheet, log});
+      say(`\ncomparison sheets: ${pairs.length} changed figure(s), ${sheets.sheets.length} sheet(s) in ${sheetsDir}`);
+      for (const s of sheets.sheets) say(`  ${s.file} (${s.items.join(' ')})`);
+      if (sheets.note) say(`note: ${sheets.note}`);
+      report.sheets = {dir: sheetsDir, files: sheets.sheets, note: sheets.note};
+    } else say('\ncomparison sheets: no figure changed on both sides, nothing to look at');
+  }
 
   // ---- engine tests -------------------------------------------------------------------------------------------------
   if (args.tests) {
@@ -172,7 +219,7 @@ async function main() {
   report.wallMs = Date.now() - t0; report.pass = exit === 0 && outcome === 'PASS'; report.outcome = outcome; report.reason = decision.reason;
   const reportFile = args.out || path.join(cacheRoot, 'reports', `${new Date().toISOString().replace(/[:.]/g, '-')}.json`);
   writeJson(reportFile, report);
-  const word = outcome === 'PASS' ? 'GOLDEN GATE PASS' : outcome === 'UNAFFECTED' ? 'GOLDEN GATE UNAFFECTED (nothing compared)' : outcome === 'CANNOT_VOUCH' ? `GOLDEN GATE CANNOT VOUCH: ${decision.reason}` : 'GOLDEN GATE FAIL';
+  const word = outcome === 'PASS' ? `GOLDEN GATE PASS (${decision.reason}; ${c.DIFFERENT ?? 0} changed figure(s) are information only)` : outcome === 'UNAFFECTED' ? `GOLDEN GATE UNAFFECTED (nothing compared: ${decision.reason})` : outcome === 'CANNOT_RUN' ? `GOLDEN GATE CANNOT RUN: ${decision.reason}` : `GOLDEN GATE FAIL (${summary.failures.length ? `${summary.failures.length} figure(s) break` : 'engine tests'})`;
   say(`\n${word} in ${fmtDuration(Date.now() - t0)}; report ${reportFile}`);
   return exit;
 }

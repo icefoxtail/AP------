@@ -1222,7 +1222,11 @@ window.questionBank = [
     "sourceStatus": "EXTRACTED_JS_ASSETS",
     "answerStatus": "CREATED",
     "solutionStatus": "CREATED",
-    "reviewStatus": "CREATE_PENDING"
+    "reviewStatus": "CREATE_PENDING",
+    "solutionImage": "assets/images/24_매산여고_1학기_중간_고2_확률과통계/q17-solution.svg",
+    "solutionImageAlt": "두 주사위의 표 두 주사위를 던질 때 나오는 눈의 경우를 표로 나타낸 그림이다.",
+    "solutionImageCaption": "8등분한 원판의 두 수를 차례로 (a, b)로 놓은 8×8 표에서 두 수의 차가 4 이상인 칸을 칠했다. 차가 4, 5, 6, 7인 칸은 각각 8, 6, 4, 2칸이므로 모두 20칸이다. 전체 64칸 중 확률은 20/64=5/16이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -1295,7 +1299,11 @@ window.questionBank = [
     "sourceStatus": "EXTRACTED_JS_ASSETS",
     "answerStatus": "CREATED",
     "solutionStatus": "CREATED",
-    "reviewStatus": "CREATE_PENDING"
+    "reviewStatus": "CREATE_PENDING",
+    "solutionImage": "assets/images/24_매산여고_1학기_중간_고2_확률과통계/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 주사위를 던질 때 나오는 눈의 경우를 표로 나타낸 그림이다.",
+    "solutionImageCaption": "판별식 D=(a−b)²−4<0이므로 |a−b|<2일 때 실근이 없다. 6×6 표에서 대각선 6칸과 그 바로 옆 10칸을 칠했다. 모두 16칸이므로 확률은 16/36=4/9이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -1511,7 +1519,11 @@ window.questionBank = [
     "sourceStatus": "EXTRACTED_JS_ASSETS",
     "answerStatus": "CREATED",
     "solutionStatus": "CREATED",
-    "reviewStatus": "CREATE_PENDING"
+    "reviewStatus": "CREATE_PENDING",
+    "solutionImage": "assets/images/24_매산여고_1학기_중간_고2_확률과통계/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 주사위를 던질 때 나오는 눈의 경우를 표로 나타낸 그림이다.",
+    "solutionImageCaption": "6×6 표에서 |a−5|+|b−3|=3을 만족하는 칸을 칠했다. a=2, 3, 4, 5, 6에서 가능한 b의 개수는 차례로 1, 2, 2, 1, 2이므로 모두 8칸이다. 전체 36칸 중 확률은 8/36=2/9이다. 따라서 답은 2/9이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,

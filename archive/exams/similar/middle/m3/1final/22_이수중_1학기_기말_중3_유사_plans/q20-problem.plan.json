@@ -1,0 +1,140 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "1/1000"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-200",
+        "200"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "viewport": [
+      -250,
+      250,
+      -10,
+      60
+    ],
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": "0",
+        "y": "0"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "L",
+          "x": "-200",
+          "y": "40",
+          "unnamed": true
+        },
+        {
+          "id": "R",
+          "x": "200",
+          "y": "40",
+          "unnamed": true
+        },
+        {
+          "id": "L0",
+          "x": "-200",
+          "y": "0",
+          "unnamed": true
+        },
+        {
+          "id": "R0",
+          "x": "200",
+          "y": "0",
+          "unnamed": true
+        },
+        {
+          "id": "B",
+          "x": "100",
+          "y": "0",
+          "unnamed": true
+        },
+        {
+          "id": "A",
+          "curveX": "100",
+          "unnamed": true
+        },
+        {
+          "id": "M",
+          "x": "150",
+          "y": "0",
+          "unnamed": true
+        }
+      ],
+      "segments": [
+        {
+          "id": "towerL",
+          "from": "L0",
+          "to": "L"
+        },
+        {
+          "id": "towerR",
+          "from": "R0",
+          "to": "R"
+        },
+        {
+          "id": "cableAB",
+          "from": "A",
+          "to": "B"
+        }
+      ],
+      "callouts": [
+        {
+          "id": "c400",
+          "point": "O",
+          "text": "400 m",
+          "direction": "S",
+          "labelKind": "TEXT"
+        },
+        {
+          "id": "c40",
+          "point": "R",
+          "text": "40 m",
+          "direction": "E",
+          "labelKind": "TEXT"
+        },
+        {
+          "id": "c100",
+          "point": "M",
+          "text": "100 m",
+          "direction": "S",
+          "labelKind": "TEXT"
+        }
+      ]
+    }
+  },
+  "caption": "다리 한가운데를 원점으로 잡은 좌표평면에 주탑 사이 거리가 400 m, 주탑 높이가 40 m인 포물선 모양 케이블이 그려져 있다. 오른쪽 주탑에서 100 m 떨어진 지점에서 다리와 케이블을 수직으로 잇는 선분이 보인다.",
+  "accessibilityDescription": "가로축과 세로축이 있는 좌표평면에 왼쪽과 오른쪽에 주탑이 서 있고, 두 주탑 꼭대기를 잇는 포물선 모양 케이블이 가운데에서 가장 낮다. 오른쪽 주탑에서 100 m 떨어진 지점에서 다리와 케이블을 수직으로 잇는 선분이 있으며, 주탑 높이 40 m와 주탑 사이 거리 400 m가 표시되어 있다.",
+  "newVisualInformation": [
+    "주탑 사이 거리 400 m, 주탑 높이 40 m, 오른쪽 주탑에서 100 m 떨어진 지점의 수직 케이블이 표시된다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "어느 대교에서 주탑과 주탑 사이의 거리는 $400\\text{ m}$이고, 다리 위에서 주탑 꼭대기까지의 높이는 $40\\text{ m}$이다. 주탑과 주탑을 잇는 케이블이 다리의 한가운데 지점을 꼭짓점으로 하는 포물선 모양일 때, 한쪽 주탑에서 $100\\text{ m}$ 떨어진 지점에서 다리로부터 케이블까지 위로 곧게 잇는 수직 케이블의 길이는? [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

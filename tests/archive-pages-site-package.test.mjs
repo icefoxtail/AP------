@@ -114,21 +114,14 @@ function qualityHoldFixture(t) {
   return { ...f, hold, state, canonical, save, plan: () => planPagesSite({ sourceRoot: f.root, manifest: f.manifest }) };
 }
 
-test('exact typed source-quality evidence is digest-verified build-only even without loader-fetch mode', async t => {
+// 2026-11-24: a source quality hold is only its ledger file. No evidence document is a build-only input any more,
+// and changing the held exam, its figure, its identity row or its receipt never fails the Pages plan.
+test('the hold ledger is an ordinary canonical input and no hold evidence is build-only', async t => {
   const f = qualityHoldFixture(t), plan = f.plan();
-  const docs = f.state.manifestPaths.filter(p => p.startsWith('../docs/')).map(p => p.slice(3));
-  assert.equal(docs.length, 3);
-  assert.equal(f.manifest.runtimeClosure.canonicalInputs.allowedPrefixes.some(p => p.startsWith('docs/operations/')), false);
-  for (const relative of docs) {
-    assert.ok(plan.buildOnly.some(row => row.path === relative && row.reason === 'source-quality-hold-evidence'));
-    assert.equal(plan.entries.some(row => row.path === relative), false);
-  }
+  assert.deepEqual(f.state.manifestPaths, [f.hold.ledgerPath.slice('archive/'.length)]);
+  assert.equal(plan.buildOnly.some(row => /source-quality-hold/.test(row.reason || '')), false);
   const outputDir = path.join(f.root, '_site');
-  const report = await buildPagesSite({ sourceRoot: f.root, outputDir, manifest: f.manifest });
-  for (const relative of docs) {
-    assert.equal(report.inventory.some(row => row.path === relative), false);
-    assert.equal(fs.existsSync(path.join(outputDir, relative)), false);
-  }
+  await buildPagesSite({ sourceRoot: f.root, outputDir, manifest: f.manifest });
 });
 
 test('typed hold evidence does not authorize other docs or normalized path aliases', t => {
@@ -139,48 +132,20 @@ test('typed hold evidence does not authorize other docs or normalized path alias
   }
 });
 
-test('typed evidence bytes and canonical manifest digests both remain binding', t => {
-  const changedEvidence = qualityHoldFixture(t);
-  fs.appendFileSync(path.join(changedEvidence.root, changedEvidence.hold.row.pendingRootEvidence.path), ' ');
-  const ref = changedEvidence.canonical.files.find(r => r.path === '../' + changedEvidence.hold.row.pendingRootEvidence.path);
-  ref.sha256 = digest(fs.readFileSync(path.join(changedEvidence.root, changedEvidence.hold.row.pendingRootEvidence.path), 'utf8'));
-  changedEvidence.save();
-  assert.throws(changedEvidence.plan, /SOURCE_QUALITY_HOLD:EVIDENCE_DIGEST/);
-  const wrongManifest = qualityHoldFixture(t);
-  wrongManifest.canonical.files.find(r => r.path.startsWith('../docs/operations/')).sha256 = 'b'.repeat(64);
-  wrongManifest.save();
-  assert.throws(wrongManifest.plan, /canonical input digest mismatch/);
+for (const [label, mutate] of [
+  ['source edition', f => fs.appendFileSync(path.join(f.root, 'archive/exams/' + f.hold.row.sourceArchiveFile), '\n')],
+  ['identity', f => { f.hold.identity.records[0].sourceFingerprint = 'c'.repeat(64); put(f.root, 'archive/data/question_identity_map.json', JSON.stringify(f.hold.identity)); }],
+  ['image bytes', f => fs.appendFileSync(path.join(f.root, f.hold.row.image.path), 'x')],
+  ['receipt', f => fs.appendFileSync(path.join(f.root, f.hold.row.originalReceipt.path), ' ')],
+  ['pending evidence', f => fs.appendFileSync(path.join(f.root, f.hold.row.pendingRootEvidence.path), ' ')],
+]) test('changing the held ' + label + ' does not fail the Pages plan', t => {
+  const f = qualityHoldFixture(t); mutate(f); assert.doesNotThrow(f.plan);
 });
 
-for (const [label, mutate, expected] of [
-  ['source edition', f => fs.appendFileSync(path.join(f.root, 'archive/exams/' + f.hold.row.sourceArchiveFile), '\n'), /SOURCE_QUALITY_HOLD:SOURCE_EDITION/],
-  ['identity', f => { f.hold.identity.records[0].sourceFingerprint = 'c'.repeat(64); put(f.root, 'archive/data/question_identity_map.json', JSON.stringify(f.hold.identity)); }, /SOURCE_QUALITY_HOLD:IDENTITY_FINGERPRINT/],
-  ['image bytes', f => fs.appendFileSync(path.join(f.root, f.hold.row.image.path), 'x'), /SOURCE_QUALITY_HOLD:IMAGE_DIGEST/],
-  ['receipt', f => fs.appendFileSync(path.join(f.root, f.hold.row.originalReceipt.path), ' '), /SOURCE_QUALITY_HOLD:EVIDENCE_DIGEST/],
-]) test('build-only source-quality authority rejects changed ' + label, t => {
-  const f = qualityHoldFixture(t); mutate(f); assert.throws(f.plan, expected);
-});
-
-test('canonical closure must bind every typed hold dependency', t => {
+test('a canonical manifest digest still has to match the ledger bytes', t => {
   const f = qualityHoldFixture(t);
-  f.canonical.files = f.canonical.files.filter(r => r.path !== f.hold.ledgerPath.slice('archive/'.length)); f.save();
-  assert.throws(f.plan, /omits a source quality hold dependency/);
-});
-
-test('a symlink cannot provide an otherwise matching typed review dependency', t => {
-  const f = qualityHoldFixture(t), relative = f.hold.row.pendingRootEvidence.path;
-  const original = path.join(f.root, relative), target = path.join(f.root, 'copied-evidence.json');
-  fs.copyFileSync(original, target); fs.unlinkSync(original); fs.symlinkSync(target, original);
-  assert.throws(f.plan, /SOURCE_QUALITY_HOLD:FILE_MODE/);
-});
-
-test('explicit files and later extraFiles cannot republish protected review text', t => {
-  for (const placement of ['files', 'extraFiles']) {
-    const f = qualityHoldFixture(t), relative = f.hold.row.pendingRootEvidence.path;
-    if (placement === 'files') f.manifest.files.push(relative);
-    else f.manifest.runtimeClosure.extraFiles.push(relative);
-    assert.throws(f.plan, /source quality hold evidence must remain build-only/);
-  }
+  f.canonical.files.find(r => r.path === f.hold.ledgerPath.slice('archive/'.length)).sha256 = 'b'.repeat(64); f.save();
+  assert.throws(f.plan, /canonical input digest mismatch/);
 });
 
 test('stages exact frontend files and manifest-declared runtime closure with hashes', async (t) => {

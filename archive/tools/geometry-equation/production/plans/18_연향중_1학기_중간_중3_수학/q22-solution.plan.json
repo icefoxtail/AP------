@@ -1,0 +1,305 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "P"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "W",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "P"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V",
+        "op": "VECTOR_SUM_POINT",
+        "inputs": [
+          "P",
+          "Q",
+          "W"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "Q"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "Q"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "S",
+        "op": "VECTOR_SUM_POINT",
+        "inputs": [
+          "Q",
+          "R",
+          "T"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "VECTOR_SUM_POINT",
+        "inputs": [
+          "Q",
+          "R",
+          "V"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "P",
+    "Q",
+    "R",
+    "S",
+    "T",
+    "U",
+    "V",
+    "W"
+  ],
+  "displaySegments": [
+    {
+      "id": "sPQ",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    },
+    {
+      "id": "sQR",
+      "refs": [
+        "Q",
+        "R"
+      ]
+    },
+    {
+      "id": "sRS",
+      "refs": [
+        "R",
+        "S"
+      ]
+    },
+    {
+      "id": "sSU",
+      "refs": [
+        "S",
+        "U"
+      ]
+    },
+    {
+      "id": "sUV",
+      "refs": [
+        "U",
+        "V"
+      ]
+    },
+    {
+      "id": "sVW",
+      "refs": [
+        "V",
+        "W"
+      ]
+    },
+    {
+      "id": "sWP",
+      "refs": [
+        "W",
+        "P"
+      ]
+    },
+    {
+      "id": "sQT",
+      "refs": [
+        "Q",
+        "T"
+      ]
+    },
+    {
+      "id": "sTV",
+      "refs": [
+        "T",
+        "V"
+      ]
+    },
+    {
+      "id": "sTS",
+      "refs": [
+        "T",
+        "S"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 420
+  },
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lPQ",
+        "ownerSegment": "sPQ",
+        "text": "6",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lQR",
+        "ownerSegment": "sQR",
+        "text": "2",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lSU",
+        "ownerSegment": "sSU",
+        "text": "6-2",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "caption": "자연수 조건으로 두 정사각형의 변을 구한 뒤 오른쪽 띠의 폭과 큰 변에서 작은 변을 뺀 높이를 곱한다.",
+  "accessibilityDescription": "자연수 조건으로 두 정사각형의 변을 구한 뒤 오른쪽 띠의 폭과 큰 변에서 작은 변을 뺀 높이를 곱한다.",
+  "rightAngles": [
+    {
+      "id": "right0",
+      "refs": [
+        "Q",
+        "R",
+        "S"
+      ]
+    },
+    {
+      "id": "right1",
+      "refs": [
+        "V",
+        "U",
+        "S"
+      ]
+    }
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 2] 오른쪽 그림은 하나의 직사각형을 두 개의 정사각형 $\\mathrm{A, C}$와 직사각형 $\\mathrm{B}$로 나눈 것이다. 두 정사각형 $\\mathrm{A, C}$ 넓이가 각각 $\\frac{18}{5}x$, $14-x$이고, 변의 길이가 모두 자연수일 때, 직사각형 $\\mathrm{B}$의 넓이를 구하여라. (단, $x$는 자연수)(7점) [7점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "reason",
+      "condition": "기존 문제 SVG 직접 확인: 큰 정사각형A, 오른쪽 위 직사각형B·아래 정사각형C. 0<x<14 및 5|x로x5,10검토. x10에서A넓이36,C넓이4; 변6,2. B넓이2(6−2)=8은 최종값이므로 표시하지 않는다.",
+      "mappedTo": "derived-method"
+    },
+    {
+      "id": "provenance-repair",
+      "condition": "자연수 제약으로x10, 넓이36/4에서 유도한 변6/2를 평행이동량으로 사용. P만 정규화 원점이고 Q/W/R/T는 변 이동, V/S/U는 벡터합. 정사각형·공유변 관계를 연산으로 보존하며 B넓이8 미표시. PLANE_FIGURE_v1은 NORMALIZATION_ORIGIN을 거절하고 SOURCE_POINT를 요구하므로, 단 하나의 시작 꼭짓점(0,0)은 임의 평행이동 자유도를 고정한 배치 앵커로 사용한다. 원문이 좌표0을 주었다는 뜻이 아니며 모든 길이와 위치관계는 뒤따르는 파생 연산에서 생성한다.",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "newVisualInformation": [
+    "기존 문제 SVG 직접 확인: 큰 정사각형A, 오른쪽 위 직사각형B·아래 정사각형C. 0<x<14 및 5|x로x5,10검토. x10에서A넓이36,C넓이4; 변6,2. B넓이2(6−2)=8은 최종값이므로 표시하지 않는다."
+  ],
+  "hiddenPointNames": [
+    "P",
+    "Q",
+    "R",
+    "S",
+    "T",
+    "U",
+    "V",
+    "W"
+  ],
+  "hiddenPointStyle": "NONE"
+}

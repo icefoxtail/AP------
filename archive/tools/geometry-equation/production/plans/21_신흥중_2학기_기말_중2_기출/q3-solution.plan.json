@@ -1,0 +1,151 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "A",
+        "name": "보기",
+        "elements": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
+      },
+      {
+        "id": "B",
+        "name": "제곱합",
+        "elements": [
+          "25",
+          "169",
+          "353",
+          "676",
+          "625"
+        ]
+      },
+      {
+        "id": "C",
+        "name": "최대제곱",
+        "elements": [
+          "25",
+          "169",
+          "361",
+          "676",
+          "625"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 3
+        },
+        "to": {
+          "column": 1,
+          "element": 3
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 4
+        },
+        "to": {
+          "column": 1,
+          "element": 4
+        }
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 0
+        },
+        "to": {
+          "column": 2,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 1
+        },
+        "to": {
+          "column": 2,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 2
+        },
+        "to": {
+          "column": 2,
+          "element": 2
+        }
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 3
+        },
+        "to": {
+          "column": 2,
+          "element": 3
+        }
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 4
+        },
+        "to": {
+          "column": 2,
+          "element": 4
+        }
+      }
+    ]
+  },
+  "caption": "세 변의 제곱합 비교표. ③만 8²+17²353≠19²361이므로 직각이 아니다. 다른 네 보기는 같음. 화살표는 보기별 비교 행이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "세 변의 길이가 각각 다음과 같은 삼각형 중에서\n 직각삼각형이 아닌 것은? (4점)",
+      "mappedTo": "diagram"
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "-8",
+          "2"
+        ],
+        "domain": [
+          "1",
+          "5"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "-4/5",
+          "-2/5"
+        ],
+        "domain": [
+          "1",
+          "5"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "3",
+          "y": "-2",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "4",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "원본 증가선은(4,0)과(3,−2)를 지나 y=2x−8. 감소선은 y=−2x/5−4/5,교점(3,−2). 두 식을 정리하면 −2x+y=−8,4x+10y=−8. 정답⑤.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그래프를 이용하여 해를 구할 수 있는 연립방정식은?",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

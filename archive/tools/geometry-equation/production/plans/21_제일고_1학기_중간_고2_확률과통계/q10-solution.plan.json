@@ -1,0 +1,53 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A",
+        "count": "8",
+        "countUnit": "개"
+      },
+      {
+        "id": "B",
+        "count": "6",
+        "countUnit": "개"
+      }
+    ],
+    "elements": [
+      {
+        "text": "7",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "8",
+        "in": [
+          "A"
+        ]
+      }
+    ],
+    "shade": "A-B",
+    "subset": [
+      "B",
+      "A"
+    ]
+  },
+  "caption": "A의 부분집합은 모두 2⁸=256개다. B와 겹치지 않으려면 A에서 B를 뺀 7, 8만으로 만든 부분집합 2²=4개를 빼야 한다. 따라서 256−4=252개다. 따라서 답은 ④이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 집합 $A, B$가 $A=\\{1, 2, 3, 4, 5, 6, 7, 8\\}$, $B=\\{1, 2, 3, 4, 5, 6\\}$일 때, $C \\subseteq A$, $B \\cap C \\neq \\varnothing$을 만족시키는 집합 $C$의 개수를 구하면? [4.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "A는 원소 8개, B는 원소 6개이고 B는 A의 부분집합이다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "A 안에 B가 들어가는 포함관계와 A에서 B를 뺀 부분에 놓인 7, 8이 색칠되어 있다."
+  ]
+}

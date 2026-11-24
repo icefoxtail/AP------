@@ -4,6 +4,7 @@ import vm from 'node:vm';
 import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { evaluateAnswerTokens } from '../../archive/tools/similar-import/choice-order-lib.mjs';
+import { reviewedSourceTextUnchanged } from '../../archive/tools/meta-foundation/text-binding-lib.mjs';
 
 // Resolve from this module, independent of cwd, OS and user's home directory.
 const REPO_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
@@ -11,6 +12,14 @@ const REPO_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..
 function gitBlobSha1(contentBytes) {
   const header = Buffer.from(`blob ${contentBytes.length}\0`);
   return crypto.createHash('sha1').update(header).update(contentBytes).digest('hex');
+}
+
+// 영수증·소형 메타가 고정한 blob(pinnedBlob)이 현재 파일과 달라도 발문·보기(text-v1)가 같으면 같은 시험지로 본다
+// (그림 경로·해설·배치만 바뀐 경우). 옛 blob을 git에서 못 읽거나 발문·보기·문항 수가 다르면 전과 같이 어긋난 것이다.
+// 이유: 그림 게시 PR마다 옆 파일의 blob을 손으로 다시 맞춰야 했다(결정 2026-11-24: 문항 단위 UID·발문·보기로 묶는다).
+function pinnedBlobMatches(pinnedBlob, currentBlob, currentBytes) {
+  if (pinnedBlob === currentBlob) return true;
+  return reviewedSourceTextUnchanged({ root: REPO_ROOT, expectedBlobSha1: pinnedBlob, currentBytes }).ok;
 }
 
 function sha256(contentBytes) {
@@ -312,8 +321,8 @@ const normAnswer = (v) => String(v ?? '').replace(/\$/g, '').replace(/\s+/g, '')
 // Receipts name the per-question evidence differently: `questionReviews` {blindAnswer, blindMatch, blindDerivation}
 // (middle) or `questionsReview` {derivedAnswer|blindFrozenAnswer, candidateAnswer, match, method|note} (high);
 // some only carry `blindFirstPass.frozenAnswers`. All are normalized to the same checks.
-function verifyReceipt(receipt, { bank, blobSha1, totalQuestions, errors, warnings }) {
-  if (receipt.candidateGitBlobSha1 !== blobSha1) {
+function verifyReceipt(receipt, { bank, blobSha1, jsBytes, totalQuestions, errors, warnings }) {
+  if (!pinnedBlobMatches(receipt.candidateGitBlobSha1, blobSha1, jsBytes)) {
     errors.push(`Receipt candidateGitBlobSha1 mismatch (receipt has ${receipt.candidateGitBlobSha1}, JS blob is ${blobSha1})`);
   }
 
@@ -590,7 +599,7 @@ export function verifySimilarExam({ stem, jsPath, throwOnError = false, strictAu
   }
   const receiptStatusOk = receiptSignOffIsPass(receipt);
   const receiptAcksVisualDebt = Boolean(receiptStatusOk && /(?:^|_)VISUAL_DEBT(?:_|$)/.test(String(receipt.signOffStatus)) &&
-    receipt.candidateGitBlobSha1 === blobSha1);
+    pinnedBlobMatches(receipt.candidateGitBlobSha1, blobSha1, jsBytes));
 
   // 2. Parse JS
   const sandbox = { window: {}, console };
@@ -922,7 +931,7 @@ export function verifySimilarExam({ stem, jsPath, throwOnError = false, strictAu
     const metaPath = path.join(examDir, metaFiles[0]);
     try {
       const meta = JSON.parse(fs.readFileSync(metaPath, 'utf8'));
-      if (meta.expectedSourceBlobSha1 !== blobSha1) {
+      if (!pinnedBlobMatches(meta.expectedSourceBlobSha1, blobSha1, jsBytes)) {
         errors.push(`Small meta expectedSourceBlobSha1 mismatch (meta has ${meta.expectedSourceBlobSha1}, JS blob is ${blobSha1})`);
       }
       if (!Array.isArray(meta.items) || meta.items.length !== totalQuestions) {
@@ -1001,7 +1010,7 @@ export function verifySimilarExam({ stem, jsPath, throwOnError = false, strictAu
     errors.push(`Failed to parse review receipt: ${receiptParseError.message}`);
   } else {
     try {
-      verifyReceipt(receipt, { bank, blobSha1, totalQuestions, errors, warnings });
+      verifyReceipt(receipt, { bank, blobSha1, jsBytes, totalQuestions, errors, warnings });
     } catch (e) {
       errors.push(`Failed to parse review receipt: ${e.message}`);
     }

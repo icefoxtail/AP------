@@ -80,7 +80,11 @@ window.examData = {
       "assets/images/20_금당중_2학기_중간_중2_수학/q02.png"
     ],
     "answer": "④",
-    "solution": "선분 AC = BC인 이등변삼각형 ABC에서 AB = AD = DE = EF = FC일 때, 각 B의 크기를 구한다.\n\n이등변삼각형의 성질과 외각의 성질을 이용한다.\n- 이등변삼각형의 두 밑각의 크기는 서로 같다.\n- 삼각형의 한 외각의 크기는 그와 이웃하지 않는 두 내각의 크기의 합과 같다.\n- 가장 안쪽의 꼭짓점 C를 기준으로 미지수 ∠C = x로 설정한 후, 외각의 성질을 연속적으로 적용하여 각 꼭짓점에서의 각의 크기를 x로 나타낸다.\n\n1단계: 꼭짓점 C에서 시작하는 각 추적\n∠C = x라 하자.\n△CEF에서 EF = FC이므로 이등변삼각형이다:\n∠FEC = ∠C = x\n△CEF에서 꼭짓점 F의 외각인 ∠EFD의 크기는:\n∠EFD = ∠FEC + ∠C = x + x = 2x\n2단계: △DEF와 외각 계산\n△DEF에서 DE = EF이므로 이등변삼각형이다:\n∠EDF = ∠EFD = 2x\n이제 △CDE에서 점 E의 외각인 ∠AED의 크기를 생각하면, 이웃하지 않는 두 내각은 ∠C와 ∠EDC(즉 ∠EDF)이므로:\n∠AED = ∠C + ∠EDF = x + 2x = 3x\n3단계: △ADE와 외각 계산\n△ADE에서 AD = DE이므로 이등변삼각형이다:\n∠DAE = ∠AED = 3x\n이제 △ADC에서 점 D의 외각인 ∠ADB의 크기를 생각하면, 이웃하지 않는 두 내각은 ∠C와 ∠DAC(즉 ∠DAE)이므로:\n∠ADB = ∠C + ∠DAE = x + 3x = 4x\n4단계: △ABD와 큰 삼각형 ABC의 각 계산\n△ABD에서 AB = AD이므로 이등변삼각형이다:\n∠B = ∠ADB = 4x\n원래 큰 삼각형 ABC에서 AC = BC이므로 이등변삼각형이며, 밑각의 크기가 같다:\n∠A = ∠B = 4x\n5단계: 삼각형 ABC의 세 내각의 합으로 x 구하기\n삼각형 ABC에서 세 내각의 합은 180°이므로:\n∠A + ∠B + ∠C = 180°\n4x + 4x + x = 180°\n9x = 180°\nx = 20°\n따라서 구하는 각 B의 크기는:\n∠B = 4x = 4 × 20° = 80°\n\n각 선지를 확인하면 다음과 같다.\n① 60°: x = 15°일 때의 오답\n② 72°: 정오각형 내각 등 다른 도형 오판 오답\n③ 75°: 계산 착오 오답\n④ 80°: 정확한 연속 외각 계산 결과와 일치 (정답)\n⑤ 84°: 오답\n\n따라서 각 B의 크기는 80°이므로 정답은 ④이다."
+    "solution": "선분 AC = BC인 이등변삼각형 ABC에서 AB = AD = DE = EF = FC일 때, 각 B의 크기를 구한다.\n\n이등변삼각형의 성질과 외각의 성질을 이용한다.\n- 이등변삼각형의 두 밑각의 크기는 서로 같다.\n- 삼각형의 한 외각의 크기는 그와 이웃하지 않는 두 내각의 크기의 합과 같다.\n- 가장 안쪽의 꼭짓점 C를 기준으로 미지수 ∠C = x로 설정한 후, 외각의 성질을 연속적으로 적용하여 각 꼭짓점에서의 각의 크기를 x로 나타낸다.\n\n1단계: 꼭짓점 C에서 시작하는 각 추적\n∠C = x라 하자.\n△CEF에서 EF = FC이므로 이등변삼각형이다:\n∠FEC = ∠C = x\n△CEF에서 꼭짓점 F의 외각인 ∠EFD의 크기는:\n∠EFD = ∠FEC + ∠C = x + x = 2x\n2단계: △DEF와 외각 계산\n△DEF에서 DE = EF이므로 이등변삼각형이다:\n∠EDF = ∠EFD = 2x\n이제 △CDE에서 점 E의 외각인 ∠AED의 크기를 생각하면, 이웃하지 않는 두 내각은 ∠C와 ∠EDC(즉 ∠EDF)이므로:\n∠AED = ∠C + ∠EDF = x + 2x = 3x\n3단계: △ADE와 외각 계산\n△ADE에서 AD = DE이므로 이등변삼각형이다:\n∠DAE = ∠AED = 3x\n이제 △ADC에서 점 D의 외각인 ∠ADB의 크기를 생각하면, 이웃하지 않는 두 내각은 ∠C와 ∠DAC(즉 ∠DAE)이므로:\n∠ADB = ∠C + ∠DAE = x + 3x = 4x\n4단계: △ABD와 큰 삼각형 ABC의 각 계산\n△ABD에서 AB = AD이므로 이등변삼각형이다:\n∠B = ∠ADB = 4x\n원래 큰 삼각형 ABC에서 AC = BC이므로 이등변삼각형이며, 밑각의 크기가 같다:\n∠A = ∠B = 4x\n5단계: 삼각형 ABC의 세 내각의 합으로 x 구하기\n삼각형 ABC에서 세 내각의 합은 180°이므로:\n∠A + ∠B + ∠C = 180°\n4x + 4x + x = 180°\n9x = 180°\nx = 20°\n따라서 구하는 각 B의 크기는:\n∠B = 4x = 4 × 20° = 80°\n\n각 선지를 확인하면 다음과 같다.\n① 60°: x = 15°일 때의 오답\n② 72°: 정오각형 내각 등 다른 도형 오판 오답\n③ 75°: 계산 착오 오답\n④ 80°: 정확한 연속 외각 계산 결과와 일치 (정답)\n⑤ 84°: 오답\n\n따라서 각 B의 크기는 80°이므로 정답은 ④이다.",
+    "solutionImage": "assets/images/20_금당중_2학기_중간_중2_수학/q2-solution.svg",
+    "solutionImageAlt": "이등변삼각형 ABC의 변 BC 위에 점 D, F, 변 CA 위에 점 E가 있고 선분 AD, DE, EF가 그어져 있으며 길이가 같은 다섯 선분 AB, AD, DE, EF, FC에 같은 눈금이 있다. 각 C의 x, 각 EFD의 2x, 각 AED의 3x, 각 ADB의 4x, 각 B의 4x가 표시되어 있다.",
+    "solutionImageCaption": "∠C=x라 하자. EF=FC이므로 ∠FEC=x이고 외각 ∠EFD=2x이다. DE=EF이므로 ∠EDF=2x이고 외각 ∠AED=x+2x=3x이다. AD=DE이므로 ∠DAE=3x이고 외각 ∠ADB=x+3x=4x이다. AB=AD이므로 ∠B=4x이고 AC=BC이므로 ∠A=4x이다. 세 각의 합에서 4x+4x+x=180°이므로 x=20°이고 ∠B=4×20°=80°이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -229,7 +233,11 @@ window.examData = {
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "공통 빗변 RHS로 얻은 각이등분",
-    "decisiveStep": "EBC와EDC의 공통EC 및같은직각변으로RHS를 확인하고 나누어진C각을 직각삼각형 각합으로 옮긴다."
+    "decisiveStep": "EBC와EDC의 공통EC 및같은직각변으로RHS를 확인하고 나누어진C각을 직각삼각형 각합으로 옮긴다.",
+    "solutionImage": "assets/images/20_금당중_2학기_중간_중2_수학/q5-solution.svg",
+    "solutionImageAlt": "직각삼각형 ABC의 변 AB 위에 점 E, 변 AC 위에 점 D가 있고 선분 ED가 AC에 수직이다. BC와 CD에 같은 눈금이 있고 선분 CE가 각 C를 반으로 나누어 두 각 21°가 표시되어 있으며 각 DEC가 x=69°로 표시되어 있다.",
+    "solutionImageCaption": "∠B=90°, ∠A=48°이므로 ∠ACB=90°−48°=42°이다. △EBC와 △EDC에서 ∠EBC=∠EDC=90°, EC는 공통, BC=DC이므로 RHS 합동이다. 따라서 ∠ECD=∠ECB=(1/2)×42°=21°이다. 직각삼각형 EDC에서 ∠DEC=90°−21°=69°이다. 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -1002,7 +1010,11 @@ window.examData = {
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "직각삼각형 내접원 접선길이로 반지름 방정식",
-    "decisiveStep": "같은내접반지름의RHS쌍에서접선길이를전달하고빗변합을r의일차식으로표현해빈칸을완성한다."
+    "decisiveStep": "같은내접반지름의RHS쌍에서접선길이를전달하고빗변합을r의일차식으로표현해빈칸을완성한다.",
+    "solutionImage": "assets/images/20_금당중_2학기_중간_중2_수학/q21-solution.svg",
+    "solutionImageAlt": "꼭짓점 C에서 직각인 직각삼각형 ABC의 내접원이 세 변과 만나는 점 D, E, F가 있고 내심 I에서 세 접점으로 수직인 선분이 그어져 있다. 반지름 r, 접선의 길이 6−r, 8−r이 각 선분에 적혀 있다.",
+    "solutionImageCaption": "내접원의 중심을 I, 접점을 D, E, F라 하자. ID=IE=IF=r이고 접선은 반지름에 수직이므로 사각형 IECF는 한 변이 r인 정사각형이어서 EC=FC=r이다. 따라서 BE=BC−EC=8−r이다. △IAD≡△IAF(RHS 합동)이므로 AD=AF=6−r이고, 같은 방법으로 BD=BE=8−r이다. AB=AD+BD이므로 10=(6−r)+(8−r)이고 14−2r=10에서 r=2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,

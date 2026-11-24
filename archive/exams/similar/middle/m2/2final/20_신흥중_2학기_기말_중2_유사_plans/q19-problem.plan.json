@@ -1,0 +1,309 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "P0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "7"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "7"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P5",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P6",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "P0",
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6"
+  ],
+  "displaySegments": [
+    {
+      "id": "sP0P1",
+      "refs": [
+        "P0",
+        "P1"
+      ]
+    },
+    {
+      "id": "sP1P2",
+      "refs": [
+        "P1",
+        "P2"
+      ]
+    },
+    {
+      "id": "sP2P3",
+      "refs": [
+        "P2",
+        "P3"
+      ]
+    },
+    {
+      "id": "sP3P0",
+      "refs": [
+        "P3",
+        "P0"
+      ]
+    },
+    {
+      "id": "sP1P4",
+      "refs": [
+        "P1",
+        "P4"
+      ]
+    },
+    {
+      "id": "sP4P5",
+      "refs": [
+        "P4",
+        "P5"
+      ]
+    },
+    {
+      "id": "sP5P6",
+      "refs": [
+        "P5",
+        "P6"
+      ]
+    },
+    {
+      "id": "sP6P2",
+      "refs": [
+        "P6",
+        "P2"
+      ]
+    },
+    {
+      "id": "dg",
+      "refs": [
+        "P0",
+        "P5"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "regions": [
+      {
+        "id": "ra",
+        "fill": "WARM",
+        "shapes": [
+          {
+            "polygon": [
+              "P0",
+              "P1",
+              "P2",
+              "P3"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "rb",
+        "fill": "BLUE",
+        "shapes": [
+          {
+            "polygon": [
+              "P1",
+              "P4",
+              "P5",
+              "P6"
+            ]
+          }
+        ]
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lx",
+        "ownerSegment": "dg",
+        "text": "x",
+        "unit": "cm"
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "ta",
+        "at": [
+          2,
+          4.5
+        ],
+        "text": "49cm²",
+        "labelKind": "TEXT"
+      },
+      {
+        "id": "tb",
+        "at": [
+          11.5,
+          2
+        ],
+        "text": "64cm²",
+        "labelKind": "TEXT"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 600
+  },
+  "hiddenPointNames": [
+    "P0",
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "넓이가 각각 49제곱센티미터와 64제곱센티미터인 두 정사각형을 나란히 붙여 놓고, 작은 정사각형의 왼쪽 아래 꼭짓점과 큰 정사각형의 오른쪽 위 꼭짓점을 잇는 대각선을 x로 표시한 그림이다.",
+  "accessibilityDescription": "작은 정사각형과 큰 정사각형이 한 변을 맞대고 나란히 놓여 있고, 각 정사각형 안에 넓이 49제곱센티미터와 64제곱센티미터가 적혀 있다. 작은 정사각형의 왼쪽 아래 꼭짓점에서 큰 정사각형의 오른쪽 위 꼭짓점으로 그은 대각선에 x가 붙어 있다.",
+  "newVisualInformation": [
+    "두 정사각형의 넓이 49와 64가 주어진 값으로 표시됨",
+    "대각선 x가 작은 정사각형의 왼쪽 아래 꼭짓점과 큰 정사각형의 오른쪽 위 꼭짓점을 잇는 선분임이 드러남"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "넓이가 각각 $49\\text{ cm}^2$와 $64\\text{ cm}^2$인 두 개의 정사각형을 아래 그림과 같이 나란히 붙여 놓았을 때, 작은 정사각형의 왼쪽 아래 꼭짓점과 큰 정사각형의 오른쪽 위 꼭짓점을 잇는 대각선 $x$의 값은? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

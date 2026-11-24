@@ -23,6 +23,7 @@ Use with [README_CURRENT.md](README_CURRENT.md). ROLE 바인딩: `role=R3, campa
 
 - 전체 qid에 대해 학생용 발문·보기/답의 유일성·해설 중간 논리·교육과정·필수 problem/solution PNG·SVG/수식 문법·이미지 상대경로/좌표·라벨·클리핑·그래프 사실·문제 정답과 현재 해설 정합·스키마/UID 및 source fidelity 의심점을 final artifact에서 점검한다. qid-by-qid audit 분모/미수행 정확히 기록.
 - 필요한 검증이 이미 같은 artifact SHA에 유효하게 있는 정상 qid는 증거를 승계. 실제 변경·OPEN·SUSPICIOUS/직접 의존 qid만 깊게 재검·same-stage 최소 수정하고 변경 전후 학생 해설·Meta·asset SHA를 연결한다. **R1 전체 blind freeze 반복, R2 정상 qid 전수 설명 재작성, 전부 다시 Golden**을 요청하지 않는다.
+- 2026-11-24 원장님 결정: 이미 들어온 시험지의 수정에서 원본 대조는 참고 근거다(순서: 수정 프로토콜 → 작업자 재량 → 원본 대조). 원본을 보지 못했다고 qid를 확인 대기·판단 불가·NOT_REVIEWABLE로 남기거나 사용자에게 원본 확인을 부탁하지 않고 "수정함/오탐"으로만 분류한다. 원본 대조가 필수인 것은 CREATE·첫 반입뿐이다 → docs/agents/common.md 맨 위 절.
 - 그래프/도형/문항 원본 내용에 source truth 충돌이 있으면 해당 qid에 한하여 Git 원본+Drive Evidence Vault 실제 PDF/PNG를 대조. 원본이 불명확하면 source 확인 시도/미결 사실만 기록, 임의 문제 조건을 학생 해설에 덧씌우지 않는다. 원본 보존 deterministic 수정이나 Repair/ALIVE 증거 기반 대체는 MASTER/qid 소유 규칙으로 연결한다.
 - R3가 발견한 문제/해설/SVG·Meta 결함은 자신의 동일 stage에서 직접 `PINPOINT MINIMAL_REPAIR`하고 바뀐 qid+직접 의존만 재검증. source가 꼭 필요한 원본 PDF/페이지 재확인·재크롭/손상 asset만 scoped SOURCE_REPAIR_REQUIRED로 라우팅 가능. 별도 R3_RETRY/새 R1 블라인드/전 시험지 재시작 금지.
 

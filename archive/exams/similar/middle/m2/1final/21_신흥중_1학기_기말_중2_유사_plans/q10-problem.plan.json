@@ -1,0 +1,49 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-4",
+          "4/3"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "3",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "curveX": "0",
+          "coordinates": true
+        }
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "좌표평면에 x축과 점 (3, 0)에서, y축과 점 (0, -4)에서 만나는 직선이 그려져 있다.",
+  "accessibilityDescription": "좌표평면 위의 직선이 x축과 점 (3, 0)에서, y축과 점 (0, -4)에서 만나며 두 점의 좌표가 표시되어 있다.",
+  "newVisualInformation": [
+    "두 절편 (3, 0)과 (0, -4)를 지나는 직선"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$x$축과 점 $(3, 0)$에서 만나고 $y$축과 점 $(0, -4)$에서 만나는 직선의 방정식은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

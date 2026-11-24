@@ -1,0 +1,145 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-4",
+              "denominator": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "P",
+    "Q"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sP",
+      "refs": [
+        "O",
+        "P"
+      ]
+    },
+    {
+      "id": "sQ",
+      "refs": [
+        "O",
+        "Q"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aO",
+        "refs": [
+          "P",
+          "O",
+          "Q"
+        ],
+        "value": 135,
+        "label": "θ",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lP",
+        "ownerSegment": "sP",
+        "text": "y=3x"
+      },
+      {
+        "id": "lQ",
+        "ownerSegment": "sQ",
+        "text": "y=-2x"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 460,
+    "height": 440
+  },
+  "hiddenPointNames": [
+    "O",
+    "P",
+    "Q"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "한 점에서 만나는 두 직선 y=3x와 y=-2x가 있고, 두 직선이 이루는 둔각을 세타로 표시한 그림이다.",
+  "accessibilityDescription": "한 점에서 갈라지는 두 직선이 있고, 그 사이의 벌어진 각에 세타 표시가 있다. 한 직선에는 y=3x, 다른 직선에는 y=-2x가 적혀 있다.",
+  "newVisualInformation": [
+    "한 점에서 만나는 두 직선 y=3x와 y=-2x",
+    "두 직선 사이 둔각의 세타 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 문제 1] 두 직선 $y = 3x$와 $y = -2x$가 이루는 각의 크기를 $\\theta$ ($90^\\circ < \\theta < 180^\\circ$)라 할 때, $\\theta$의 값을 풀이과정과 함께 서술하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

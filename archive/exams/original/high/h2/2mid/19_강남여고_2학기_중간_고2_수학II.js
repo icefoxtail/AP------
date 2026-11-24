@@ -277,7 +277,11 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "subUnit": "로그함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitClassificationDepth": "complete_documented",
+    "solutionImage": "assets/images/19_강남여고_2학기_중간_고2_수학II/q6-solution.svg",
+    "solutionImageAlt": "왼쪽 세로 점근선 근처에서 가파르게 오르다 완만해지는 두 로그 곡선이 있고, 이동 후 곡선이 원래 곡선보다 오른쪽 아래에 놓여 있는 그래프이다.",
+    "solutionImageCaption": "f: y=log₃(x-2)+3(파란색), g: y=log₃(3x-9)=log₃(x-3)+1(주황색)이다. log₃(3x-9)=log₃{3(x-3)}=log₃(x-3)+1이다. 원래 곡선 log₃(x-2)+3의 점근선 x=2, 이동 후 곡선의 점근선 x=3이므로 오른쪽으로 a=1, 같은 위치에서 높이가 3에서 1로 내려가므로 아래로 2만큼 이동했다. 따라서 a=1, b=-2이고 a+b=-1이다. 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -324,7 +328,11 @@ window.questionBank = [
     "standardUnitOrder": 6,
     "subUnit": "삼각함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitClassificationDepth": "complete_documented",
+    "solutionImage": "assets/images/19_강남여고_2학기_중간_고2_수학II/q7-solution.svg",
+    "solutionImageAlt": "원점의 높이 -1에서 시작해 중심선 위로 오르며 높이 3까지 오르내리는 주기 π의 사인 곡선 그래프이다. 세로축에 3, 1, -1 눈금이 표시되어 있다.",
+    "solutionImageCaption": "sin(bx-π/2)=-cos(bx)이므로 f(x)=-a cos(bx)+c이다. 최댓값 a+c=3과 f(0)=-a+c=-1에서 a=2, c=1이다. 주기가 π이므로 b=2이다. 그림은 y=2sin(2x-π/2)+1=1-2cos2x로 x=0에서 최솟값 -1, 중심선 y=1 위로 최댓값 3까지 오르내리며 주기가 π이다. 따라서 a+b+c=5이고 답은 ①이다. 최솟값 f(0)=−1은 눈금을 생략했으니 식에서 읽는다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 8,
@@ -416,7 +424,11 @@ window.questionBank = [
     "standardUnitOrder": 5,
     "subUnit": "삼각함수의 관계",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitClassificationDepth": "complete_documented",
+    "solutionImage": "assets/images/19_강남여고_2학기_중간_고2_수학II/q9-solution.svg",
+    "solutionImageAlt": "점 A에서 가로축을 따라 점 B로 가는 변과 위쪽의 점 C로 가는 변이 좁은 각 A를 이루는 삼각형이고, 각 A에 호 표시와 두 변의 길이가 적혀 있다.",
+    "solutionImageCaption": "A+B+C=π이므로 sin(B+C)=sinA=1/3이다. 두 변 b=5, c=6 사이의 끼인각이 A이다. 그림은 AB=6, AC=5이고 사잇각 A의 sinA=1/3(약 19.47°)인 삼각형이다. 넓이는 (1/2)·5·6·sinA=(1/2)·5·6·(1/3)=5이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -558,7 +570,11 @@ window.questionBank = [
     "standardUnitOrder": 5,
     "subUnit": "접선의 방정식",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitClassificationDepth": "complete_documented",
+    "solutionImage": "assets/images/19_강남여고_2학기_중간_고2_수학II/q12-solution.svg",
+    "solutionImageAlt": "왼쪽 위에서 내려와 아래로 갔다 올라가고 다시 내려가는 삼차곡선과 곡선 위의 점 T에서 접하는 오르는 직선 l이 나타난 그래프이다.",
+    "solutionImageCaption": "y′=-3x²+4이므로 점 T(1,3)에서의 접선의 기울기는 1이고 접선 l은 y-3=x-1, 즉 y=x+2이다. 따라서 a=1, b=2이고 10a+b=12이다. 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -698,7 +714,11 @@ window.questionBank = [
     "standardUnitOrder": 6,
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitClassificationDepth": "complete_documented",
+    "solutionImage": "assets/images/19_강남여고_2학기_중간_고2_수학II/q15-solution.svg",
+    "solutionImageAlt": "두 패널이 나란히 있다. 첫째 패널에는 계속 오르기만 하는 삼차곡선이, 둘째 패널에는 점 M에서 꼭대기에 이르렀다가 점 N까지 내려가고 다시 오르는 삼차곡선이 그려져 있다.",
+    "solutionImageCaption": "f(x1)=f(x2)이면 x1=x2이려면 f가 일대일, 곧 계속 증가해야 하므로 f′(x)=3x²+2ax+a+6≥0이다. 왼쪽은 a=0일 때 f′>0이라 C(0,3)을 지나며 계속 오르는 곡선이다. 오른쪽은 a=9일 때 f′=3(x+1)(x+5)라 극대점 M(-5,28)에서 극소점 N(-1,-4)까지 내려가는 구간이 있어 같은 높이를 두 번 지나므로 일대일이 아니다. 판별식 4(a-6)(a+3)≤0에서 -3≤a≤6이고 정수 a는 10개이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -886,7 +906,11 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "subUnit": "함수의 극한",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitClassificationDepth": "complete_documented",
+    "solutionImage": "assets/images/19_강남여고_2학기_중간_고2_수학II/q19-solution.svg",
+    "solutionImageAlt": "왼쪽의 오르는 직선이 x=-1에서 높은 열린 점으로 끝나고, 높이 1의 수평선이 x=1에서 열린 점으로 끝나며, 위쪽 닫힌 점이 따로 있고, 다시 오르는 직선이 x=2에서 끊기며 이어지는 그래프이다.",
+    "solutionImageCaption": "예: 해설이 읽은 값에 맞춘 그래프이다. f(0-)=f(0+)=1이고 x=-1에서 왼쪽 3, 오른쪽 1(함숫값은 예로 f(-1)=2인 닫힌 점), x=1에서 닫힌 점 f(1)=3, x=2에서 왼쪽 2, 오른쪽 0, x=3의 왼쪽은 3이다. (가) 1과 (라) 곱의 좌우극한 3, 1이 달라 불연속과 (마) f(f(x))의 극한 3은 참이고, (나)는 f(2-)=2, f(2+)=0이라 거짓이다. (다)의 하강 불연속점은 t=-1, 1, 2의 세 곳이라 거짓이다. 참은 (가), (라), (마) 세 개이므로 답은 ③이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 20,
@@ -1328,7 +1352,11 @@ window.questionBank = [
     "standardUnitOrder": 6,
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitClassificationDepth": "complete_documented",
+    "solutionImage": "assets/images/19_강남여고_2학기_중간_고2_수학II/q29-solution.svg",
+    "solutionImageAlt": "왼쪽 아래에서 올라 점 M에서 꼭대기에 이른 뒤 점 N까지 내려가 가장 낮고 다시 오른쪽 위로 올라가는 삼차곡선 그래프이다.",
+    "solutionImageCaption": "f(1)=-2와 f′(1)=0에서 a=3, b=-12이고 f′(x)=6(x+2)(x-1)이다. 그림에서 f′의 부호가 x=-2에서 +에서 -로 바뀌어 극대점 M(-2,25), x=1에서 -에서 +로 바뀌어 극소점 N(1,-2)가 생긴다. 따라서 극댓값은 25이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 30,

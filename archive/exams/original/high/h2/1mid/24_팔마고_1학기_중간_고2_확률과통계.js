@@ -62,7 +62,11 @@ window.questionBank = [
     "sourceExamUid": "24_팔마고_1학기_중간_고2_확률과통계",
     "projectionStatus": "REUSE",
     "rpmPrimaryRecordId": "H2-PS-RPM-002",
-    "rpmL4Namespace": "RPM_EXISTING"
+    "rpmL4Namespace": "RPM_EXISTING",
+    "solutionImage": "assets/images/24_팔마고_1학기_중간_고2_확률과통계/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 색이 옅게 채워진 정삼각형 탁자 둘레에 좌석 점 여섯 개가 두 개씩 놓여 있고, 각 좌석에 1부터 6까지의 번호가 적혀 있다.",
+    "solutionImageCaption": "정삼각형 탁자의 회전은 세 번 겹쳐 세어지므로 6!을 3으로 나눈다. 6!/3=720/3=240이고 이는 2×5!과 같다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
 {
     "id": 2,
@@ -1269,7 +1273,11 @@ window.questionBank = [
     "projectionStatus": "BINDING_PENDING",
     "projectionReason": "RPM_PRIMARY_MIGRATION_GAP",
     "rpmPrimaryRecordId": "H2-PS-RPM-010",
-    "rpmL4Namespace": "RPM_EXISTING"
+    "rpmL4Namespace": "RPM_EXISTING",
+    "solutionImage": "assets/images/24_팔마고_1학기_중간_고2_확률과통계/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 파스칼의 삼각형 윗부분의 수들이 삼각형 모양으로 늘어서 있고, 두 개의 대각선 무리가 파랑과 주황 선으로 이어져 있다.",
+    "solutionImageCaption": "갑의 합은 하키스틱 항등식으로 A=C(12,3)=220이다. 을의 합은 대각선 합으로 B=C(10,6)=210이고, 병의 합은 이항정리로 C=2의 8제곱=256이다. 따라서 답은 A=220, B=210, C=256이고 B<A<C이다.",
+    "solutionImageSize": "full"
   },
 {
     "id": 21,

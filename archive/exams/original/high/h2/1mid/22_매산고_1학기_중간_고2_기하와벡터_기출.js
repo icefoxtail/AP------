@@ -37,7 +37,11 @@ window.questionBank = [
     "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/22_매산고_1학기_중간_고2_기하와벡터_기출/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 오른쪽으로 열린 포물선과 초점 F, 왼쪽의 준선이 있고 F의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "포물선 y²=8x는 y²=4px에서 p=2이다. 초점은 (p, 0)=(2, 0)이고 준선은 x=−2이다. 따라서 a=2이고 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -158,7 +162,11 @@ window.questionBank = [
     "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/22_매산고_1학기_중간_고2_기하와벡터_기출/q4-solution.svg",
+    "solutionImageAlt": "세로로 긴 타원과 위쪽 왼쪽의 점 P에서 타원에 닿는 오른쪽 위로 올라가는 접선이 있다. P가 표시되어 있다.",
+    "solutionImageCaption": "3x²+y²=9는 x²/3+y²/9=1이다. 점 P(−1, √6)에서의 접선은 x·(−1)/3+y·√6/9=1이고 y=(√6/2)x+3√6/2로 정리된다. 따라서 접선의 기울기는 √6/2이고 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -200,7 +208,11 @@ window.questionBank = [
     "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/22_매산고_1학기_중간_고2_기하와벡터_기출/q5-solution.svg",
+    "solutionImageAlt": "왼쪽으로 열린 포물선과 초점 F, 오른쪽의 준선이 있고 곡선 위의 점 P에서 F와 준선의 수선의 발 H로 가는 선분이 있다. 선분 PH의 길이 5가 표시되어 있다(PF도 5).",
+    "solutionImageCaption": "예: p=−1일 때 y²=−4x의 그림이다. 포물선 위의 점 P에서 초점 F까지의 거리 PF는 준선 x=−p까지의 거리 PH와 같다. PH=5이므로 PF=5이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -242,7 +254,11 @@ window.questionBank = [
     "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/22_매산고_1학기_중간_고2_기하와벡터_기출/q6-solution.svg",
+    "solutionImageAlt": "왼쪽으로 열린 포물선과 초점 F, 오른쪽의 준선이 있다. 곡선 위의 점 P에서 준선으로 내린 수선의 발 H, 준선과 x축이 만나는 점 I가 있고 PH=5, HI=4가 표시되어 있다.",
+    "solutionImageCaption": "p=−1일 때의 그림이다. 준선 x=−p=u 위에서 P=(−ut², −2ut), F=(−u, 0)이고 HI=2u|t|=4, PH=u(1+t²)=5이다. u|t|=2를 대입하면 u+4/u=5이므로 u=1 또는 4이고, P가 F보다 왼쪽이어야 하므로 t²>1에서 u=1이다. 그러므로 p=−1이고 F의 x좌표는 −1이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -325,7 +341,11 @@ window.questionBank = [
     "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/22_매산고_1학기_중간_고2_기하와벡터_기출/q8-solution.svg",
+    "solutionImageAlt": "좌우로 갈라진 쌍곡선과 두 점선 점근선 y=2x, y=−2x가 원점에서 만나고 오른쪽 꼭짓점 V의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "x²/4−y²/16=1에서 a=2, b=4이고 가로 주축 쌍곡선의 점근선은 y=±(b/a)x이다. 따라서 점근선은 y=±2x(점선)이고 꼭짓점은 V(2, 0)이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -411,7 +431,11 @@ window.questionBank = [
     "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/22_매산고_1학기_중간_고2_기하와벡터_기출/q10-solution.svg",
+    "solutionImageAlt": "좌우로 갈라진 쌍곡선과 기울기 2인 두 직선이 있다. 점선은 쌍곡선의 왼쪽 가지에 접점 T에서 닿고, 실선은 쌍곡선과 만나지 않는다.",
+    "solutionImageCaption": "2x²−3y²=6은 x²/3−y²/2=1이다. 직선 y=2x+k를 대입하면 10x²+12kx+3k²+6=0이고 만나지 않으려면 판별식 24k²−240<0, 즉 k²<10이다. 그림의 점선은 k=√10일 때 접하는 경계 직선이고 접점은 T이며, 실선은 k=3으로 쌍곡선과 만나지 않는다. 정수 k는 −3부터 3까지이므로 가장 큰 정수는 3이고 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -665,7 +689,11 @@ window.questionBank = [
     "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/22_매산고_1학기_중간_고2_기하와벡터_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌우로 갈라진 쌍곡선의 오른쪽 가지 위의 점 P에서 닿는 접선이 y축과 만나는 점 N까지 이어져 있고 두 점의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "쌍곡선 x²−y²/2=1 위의 점 P(3, 4)에서의 접선은 3x−4y/2=1, 즉 3x−2y=1이다. y=(3/2)x−1/2로 정리되므로 y절편은 N(0, −1/2)이다. 따라서 답은 −1/2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -775,7 +803,11 @@ window.questionBank = [
     "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/22_매산고_1학기_중간_고2_기하와벡터_기출/q19-solution.svg",
+    "solutionImageAlt": "가로로 긴 타원과 두 초점 F, F′, 곡선 위의 점 P가 있다. P에서 F, F′로 가는 선분과 삼각형 PF′F가 색칠되어 있고 P에서 원점 O로 가는 점선이 있다.",
+    "solutionImageCaption": "x²/36+y²/20=1에서 c²=36−20=16이므로 초점은 F(4, 0), F′(−4, 0)이다. PF+PF′=(PO+OF)+(PO+OF′)=2PO+(OF+OF′)=2PO이므로 (1) k=2이다. (2) |PF+PF′|=2|PO|이고 타원 위에서 OP의 최댓값은 긴 반축 6이므로 최댓값은 12이다. 따라서 답은 (1) 2, (2) 12이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,

@@ -1,0 +1,59 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "10/3",
+          "-2/3"
+        ],
+        "domain": [
+          "0",
+          "4"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "-5/2",
+          "3/2"
+        ],
+        "domain": [
+          "0",
+          "4"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "35/13",
+          "y": "20/13",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "①×3−②×2면 x계수 6이 소거되어 13y20. 각 식에 0 아닌 수를 곱해도 같은 직선이며 교점은 유지된다. 정답 ③.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "연립방정식 $\\begin{cases}2x+3y=10\\quad①\\\\3x-2y=5\\quad②\\end{cases}$에서 $x$를 소거할 때, 필요한 식을 구하면? [3점]",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "①×3−②×2면x계수6이소거되어13y20. 각식에0아닌수를곱해도같은직선이며교점은유지된다. 정답③.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "①×3−②×2면x계수6이소거되어13y20. 각식에0아닌수를곱해도같은직선이며교점은유지된다. 정답③."
+  ]
+}

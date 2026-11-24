@@ -573,7 +573,11 @@ window.questionBank=[
     "subUnitKey": "H15-PS-03-PROBABILITY_APPLICATION",
     "subUnit": "확률의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/24_매산여고_2학기_중간_고2_확률과통계/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 주사위를 던질 때 나오는 눈의 경우를 표로 나타낸 그림이다.",
+    "solutionImageCaption": "주사위 두 번의 눈 (a, b)를 가로세로로 놓은 6×6 표에서 3a>4b인 칸을 칠했다. b=1이면 a=2~6의 5칸, b=2이면 a=3~6의 4칸, b=3이면 a=5, 6의 2칸, b=4이면 a=6의 1칸이고 b≥5에는 없다. 모두 5+4+2+1=12칸이므로 확률은 12/36=1/3이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,

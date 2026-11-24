@@ -1,0 +1,50 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-3",
+          "3/2"
+        ]
+      }
+    ],
+    "domain": [
+      -1,
+      3
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "0",
+        "y": "-3"
+      },
+      {
+        "id": "P1",
+        "x": "2",
+        "y": "0"
+      }
+    ],
+    "formula": "3*x/2 - 3"
+  },
+  "caption": "원본 두 절편(0,−3),(2,0) 보존. 기울기 3/2,식 y3x/2−3,정답①.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림과 같은 직선을 그래프로 하는 일차함수의 식을 구하라.",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "원본 두 절편(0,−3),(2,0) 보존. 기울기3/2,식y3x/2−3,정답①.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "원본 두 절편(0,−3),(2,0) 보존. 기울기3/2,식y3x/2−3,정답①."
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "자연수 x",
+        "elements": [
+          "6"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "약수 y",
+        "elements": [
+          "1",
+          "2",
+          "3",
+          "6"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 3
+        }
+      }
+    ]
+  },
+  "caption": "입력 6 하나에서 약수 1,2,3,6이 여러 개 대응하므로 함수가 아니다. 정답①.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 두 변수 $x$, $y$에 대하여 $y$가 $x$의 함수가 아닌 것을 고르시오. [4점]",
+      "mappedTo": "diagram"
+    },
+    {
+      "id": "method",
+      "condition": "입력6 하나에서 약수1,2,3,6이 여러 개 대응하므로 함수가 아니다. 정답①.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "입력6 하나에서 약수1,2,3,6이 여러 개 대응하므로 함수가 아니다. 정답①."
+  ]
+}

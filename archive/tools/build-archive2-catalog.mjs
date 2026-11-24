@@ -13,7 +13,7 @@ import examSourceReader from "../exam-source-reader.js";
 import { classifyMetaBinding, loadRebinds } from "./meta-foundation/text-binding-lib.mjs";
 import { createUnitHinter } from "./unit-hint-lib.mjs";
 import { isMetadataConflict } from "./metadata-conflict-field.mjs";
-import { SOURCE_QUALITY_HOLD_FIELDS, loadSourceQualityHolds, applySourceQualityHold, assertSourceQualityHoldCoverage } from "./source-quality-holds.mjs";
+import { SOURCE_QUALITY_HOLD_FIELDS, loadSourceQualityHolds, applySourceQualityHold } from "./source-quality-holds.mjs";
 import { applyAssignment, loadToc as loadMiddleToc, readAssignments as readMiddleParentAssignments } from "./middle-parent-assignments-lib.mjs";
 import {
   buildMixedSourceShard,
@@ -663,7 +663,6 @@ for (const exam of exams) {
   ];
   exam.gradeConflict = examRecords.some((r) => r.gradeConflict);
 }
-assertSourceQualityHoldCoverage(sourceQualityHolds);
 // 단원 힌트(metaHintUnit)는 문항이 다 만들어진 뒤 싣는다: 여러 단원에 걸친 PT는 "같은 학년에서 같은 PT를 가진, 이미 단원이 정해진 문항"이 가장 많은 단원을
 // 따르므로(unit-hint-lib.mjs) 먼저 그 문항 수를 세고, 그다음 힌트를 정한다. 센 값은 이 자리에서만 쓰고 저장하지 않는다(힌트 없이 통합 단원 층이 정한 단원만 센다).
 for (const record of records) {

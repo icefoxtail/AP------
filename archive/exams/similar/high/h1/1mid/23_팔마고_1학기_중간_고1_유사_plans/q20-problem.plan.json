@@ -1,0 +1,64 @@
+{
+  "stem": {
+    "status": "EXEMPT",
+    "reason": "발문은 학생이 그래프를 그리도록 요구하므로 정답을 암시하는 그래프를 미리 제시하지 않는다."
+  },
+  "solution": {
+    "capability": "polynomial-spike-v1",
+    "graphPlan": {
+      "family": "polynomial",
+      "coefficients": [
+        "5",
+        "4",
+        "-1"
+      ],
+      "sourceDomain": {
+        "kind": "ALL_REALS"
+      },
+      "domain": [
+        -2,
+        6
+      ],
+      "viewport": [
+        -2,
+        6,
+        -2,
+        11
+      ],
+      "requiredPoints": [
+        {
+          "id": "V",
+          "x": 2,
+          "y": 9
+        },
+        {
+          "id": "A",
+          "x": -1,
+          "y": 0
+        },
+        {
+          "id": "B",
+          "x": 5,
+          "y": 0
+        },
+        {
+          "id": "Y",
+          "x": 0,
+          "y": 5
+        }
+      ],
+      "axisTickValues": {
+        "x": [
+          -1,
+          2,
+          5
+        ],
+        "y": [
+          5,
+          9
+        ]
+      }
+    },
+    "caption": "꼭짓점 (2, 9), x절편 (-1, 0), (5, 0), y절편 (0, 5)인 포물선 y=-x^2+4x+5"
+  }
+}

@@ -37,8 +37,8 @@ function preflight(reader, manifest) {
     assert.equal(question.image, item.assetPath.slice('archive/'.length), 'UI_IMAGE_POINTER_MISMATCH');
     assert.equal(sha256(stable({ imageAlt: question.imageAlt, imageSize: question.imageSize, layoutTag: question.layoutTag })), item.presentationSha256, 'UI_PRESENTATION_DRIFT');
     const asset = reader.read(item.assetPath);
-    assert.equal(sha256(asset), item.assetSha256, 'UI_REVIEWED_ASSET_DRIFT');assert.equal(gitBlob(asset),item.assetGitBlobSha1,'UI_ASSET_GIT_DRIFT');assert.equal(asset.length,item.assetBytes,'UI_ASSET_SIZE_DRIFT');
-    return { key: item.key, questionUid: item.questionUid, sourceOrdinal: item.sourceOrdinal,
+    // 그림 바이트(sha·git blob·길이)는 승인 당시 값에 고정하지 않는다(2026-11-24 사용자 결정). 달라졌으면 assetChangedSinceReview로만 표시한다.
+    return { assetChangedSinceReview: sha256(asset) !== item.assetSha256 || gitBlob(asset) !== item.assetGitBlobSha1 || asset.length !== item.assetBytes, key: item.key, questionUid: item.questionUid, sourceOrdinal: item.sourceOrdinal,
       questionSha256:item.questionSha256, problemPayloadSha256: item.problemPayloadSha256, presentationSha256: item.presentationSha256,
       sourceRef: reader.ref(item.sourcePath, bytes), assetRef: reader.ref(item.assetPath, asset) };
   });

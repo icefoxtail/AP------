@@ -1,0 +1,84 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -4,
+      3,
+      -17,
+      12
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "-2",
+          "0",
+          "-3"
+        ],
+        "domain": [
+          "-11/5",
+          "11/5"
+        ],
+        "color": "BLUE",
+        "label": "y=-3x^2-2"
+      },
+      {
+        "id": "l",
+        "kind": "LINE",
+        "coefficients": [
+          "5",
+          "6"
+        ],
+        "domain": [
+          "-3",
+          "1"
+        ],
+        "color": "WARM",
+        "label": "y=6x+5"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "y"
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "-2",
+          "y": "-14"
+        },
+        {
+          "id": "Q",
+          "x": "-2",
+          "y": "-7"
+        }
+      ],
+      "segments": [
+        {
+          "id": "PQ",
+          "from": "P",
+          "to": "Q"
+        }
+      ]
+    }
+  },
+  "caption": "포물선과 직선, 포물선 위의 점 P에서 y축에 평행하게 그은 선분 PQ가 직선과 만나는 점 Q를 나타낸 그림이다.",
+  "accessibilityDescription": "가로축 x와 세로축 y, 위로 볼록한 포물선과 오른쪽 위로 향하는 직선이 있고, 포물선 위의 점 P와 직선 위의 점 Q를 잇는 세로 선분이 보인다.",
+  "newVisualInformation": [
+    "포물선 위의 점 P, 직선 위의 같은 x좌표의 점 Q, 선분 PQ를 표시한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같이 이차함수 $y = -3x^2 - 2$의 그래프 위의 한 점 $\\mathrm{P}$에서 $y$축과 평행한 직선을 그어 직선 $y = 6x + 5$와 만나는 점을 $\\mathrm{Q}$라고 하자. 이때, $\\overline{\\mathrm{PQ}}$의 길이의 최솟값을 구하여라. [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

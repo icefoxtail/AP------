@@ -1,0 +1,65 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "13/3",
+          "2/3"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "5",
+          "2/3"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "-2",
+          "y": "3",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "1",
+          "y": "5",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P2",
+          "x": "0",
+          "y": "5",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "원래두점기울기 2/3와평행하고절편 5이므로목표 y2x/3+5. 정답①.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 점 $(-2,3)$, $(1,5)$를 지나는 직선의 그래프와 평행하고 $y$절편이 5인 직선을 그래프로 하는 일차함수의 식은? [3점]",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

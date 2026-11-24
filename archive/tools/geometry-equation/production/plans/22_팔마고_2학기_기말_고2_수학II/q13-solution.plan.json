@@ -1,0 +1,75 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "d",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "12",
+          "-3"
+        ],
+        "domain": [
+          "-1",
+          "5"
+        ],
+        "color": "BLUE",
+        "label": "d"
+      },
+      {
+        "id": "axis",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "0"
+        ],
+        "domain": [
+          "-1",
+          "5"
+        ],
+        "color": "WARM",
+        "label": "y=0"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "0",
+          "y": "0",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "4",
+          "y": "0",
+          "coordinates": true
+        }
+      ],
+      "segments": []
+    }
+  },
+  "caption": "도함수와 가로축 사이의 부호를 원함수의 증가·감소와 연결한다. 두 극값의 차이를 도함수의 정적분으로 나타낸다.",
+  "accessibilityDescription": "도함수와 가로축 사이의 부호를 원함수의 증가·감소와 연결한다. 두 극값의 차이를 도함수의 정적분으로 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "13. 삼차함수 $f(x)$의 도함수 $y=f'(x)$의 그래프가 그림과 같다. 함수 $f(x)$의 극댓값이 32, 극솟값이 0일 때, $f(1)$의 값은? [4.4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "PNG직접확인 영점0,4이고위로양수. f′=kx(4−x),극값차32=32k/3→k3. f1=∫0¹3x(4−x)=5 최종미표시.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "도함수와 가로축 사이의 부호를 원함수의 증가·감소와 연결한다. 두 극값의 차이를 도함수의 정적분으로 나타낸다."
+  ]
+}

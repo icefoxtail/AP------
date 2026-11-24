@@ -1,0 +1,69 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "3",
+          "-2",
+          "1/4"
+        ]
+      }
+    ],
+    "domain": [
+      "0",
+      "8"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "4",
+        "y": "-1"
+      },
+      {
+        "id": "A",
+        "x": "2",
+        "y": "0"
+      },
+      {
+        "id": "B",
+        "x": "6",
+        "y": "0"
+      },
+      {
+        "id": "C",
+        "x": "0",
+        "y": "3"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "2",
+        "4",
+        "6",
+        "8"
+      ],
+      "y": [
+        "-1",
+        "3"
+      ]
+    }
+  },
+  "caption": "y=(x−4)²/4−1은 y=x²/4를 오른쪽 4, 아래 1만큼 옮긴 포물선이다. 꼭짓점(4,−1), 대칭축 x=4, y절편 3이며 x절편은 2와 6이다. 판독 가능한 보기①의 꼭짓점과 y절편이 일치한다. 정답①.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 중 이차함수 $y=\\dfrac{1}{4}(x-4)^2-1$의 그래프는? (4점)",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "domain",
+      "condition": "원래 정의역은 모든 실수이며 domain[0,8]은 꼭짓점·양근·y절편을 포함하는 표시용 자르기다. 누락된 보기②④의 함수나 좌표를 추측해 복원하지 않는다.",
+      "mappedTo": "graphPlan.curves.domain"
+    }
+  ]
+}

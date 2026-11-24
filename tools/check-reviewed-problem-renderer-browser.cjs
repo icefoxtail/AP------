@@ -535,8 +535,10 @@ function preflight(reader, manifest) {
     assert.equal(question.image, item.assetPath.slice('archive/'.length), 'UI_IMAGE_POINTER_MISMATCH');
     assert.equal(sha256(stable({ imageAlt: question.imageAlt, imageSize: question.imageSize, layoutTag: question.layoutTag })), item.presentationSha256, 'UI_PRESENTATION_DRIFT');
     const asset = reader.read(item.assetPath);
-    assert.equal(sha256(asset), item.assetSha256, 'UI_REVIEWED_ASSET_DRIFT');
-    return { key: item.key, questionUid: item.questionUid, sourceOrdinal: item.sourceOrdinal,
+    // 그림 파일의 바이트는 승인 당시 값과 같아야 하는 조건이 아니다(2026-11-24 사용자 결정: 그림이 바뀌어도 판정은 유효, 새 그림을 게시할 때의
+    // 검수가 곧 새 승인). 문항(발문·보기)·그림 포인터가 맞으면 현재 그림으로 화면 검사를 한다. 실제 바이트는 아래 assetRef에 그대로 남고,
+    // 승인 당시와 다르면 assetChangedSinceReview로만 표시한다.
+    return { assetChangedSinceReview: sha256(asset) !== item.assetSha256, key: item.key, questionUid: item.questionUid, sourceOrdinal: item.sourceOrdinal,
       problemPayloadSha256: item.problemPayloadSha256, presentationSha256: item.presentationSha256,
       sourceRef: reader.ref(item.sourcePath, bytes), assetRef: reader.ref(item.assetPath, asset) };
   });

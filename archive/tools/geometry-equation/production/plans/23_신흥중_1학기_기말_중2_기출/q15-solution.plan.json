@@ -1,0 +1,66 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "-2",
+          "-1/3"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "-6",
+          "-1/3"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "0",
+          "y": "-2",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "0",
+          "y": "-6",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "아래로 4 이동해 절편 −2→−6,기울기 −1/3 유지. a−1/3,b−6,곱 2. 정답②.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차함수 $y=ax-2$의 그래프를 $y$축의 방향으로 $-4$만큼 평행이동한 그래프의 식이 $y=-\\dfrac{1}{3}x+b$일 때, $ab$의 값을 구하라.",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "아래로4 이동해 절편−2→−6,기울기−1/3 유지. a−1/3,b−6,곱2. 정답②.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "아래로4 이동해 절편−2→−6,기울기−1/3 유지. a−1/3,b−6,곱2. 정답②."
+  ]
+}

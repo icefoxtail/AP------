@@ -66,7 +66,11 @@ window.questionBank = [
       "그래프"
     ],
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/19_순천고_2학기_중간_고2_수학II/q2-solution.svg",
+    "solutionImageAlt": "왼쪽의 오르는 선분이 x=1에서 높은 열린 점으로 끝나고, 오른쪽에서는 낮은 수평선이 열린 점에서 시작하는 끊어진 그래프이다.",
+    "solutionImageCaption": "예: 해설이 읽은 값에 맞춘 그래프이다. x→1+에서 오른쪽 수평선은 높이 1을 따라가므로 a=1이다. 다시 x→a-=1-로 접근하면 왼쪽 곡선이 높이 2의 열린 점 (1,2)로 다가가므로 극한은 2이다. (x=1의 함숫값은 문제에서 주어지지 않아 채운 점 (1,1)은 예시이다.) 따라서 답은 ④이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 3,
@@ -202,7 +206,11 @@ window.questionBank = [
       "그래프"
     ],
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/19_순천고_2학기_중간_고2_수학II/q6-solution.svg",
+    "solutionImageAlt": "원점을 중심으로 대칭인 끊어진 그래프로, 원점에서 왼쪽은 낮은 열린 점 오른쪽은 높은 열린 점이 있고 원점에 닫힌 점이 따로 있으며 x=±1에서도 선분이 끊어진다.",
+    "solutionImageCaption": "예: 해설이 읽은 값에 맞춘 홀함수 그래프이다. x→0+에서 1이고 홀함수이므로 x→0-에서 -1이다. x→1-에서 0, x→1+에서 1이므로 대칭인 x=-1에서는 좌극한 -1, 우극한 0으로 달라 ㄱ은 거짓이다. ㄴ은 1+(-1)=0으로 참이다. x→1에서 f가 유한한 값으로 가까워져 (x-1)f(x)는 0으로 가고 연속이므로 ㄷ은 참이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 7,
@@ -234,7 +242,11 @@ window.questionBank = [
     "conditionKeys": [],
     "tags": [],
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/19_순천고_2학기_중간_고2_수학II/q7-solution.svg",
+    "solutionImageAlt": "x=2의 왼쪽에서는 x축 위의 수평선이 점 (2,0)까지 이어지고, 오른쪽에서는 제곱근 곡선이 (2,0)에서 시작해 오른쪽 위로 올라가며 끊김없이 이어진 그래프이다.",
+    "solutionImageCaption": "① f(x)=0 (x<2), √(x-2) (x≥2)의 그래프이다. x→2-에서 0, x→2+에서 √(x-2)→0이고 f(2)=0으로 세 값이 모두 같아 x=2에서 연속이다. ②는 [x]가 x=2에서 뛰고, ③은 분모가 0이 되며, ④는 좌우극한이 -1, 1로 다르고, ⑤는 극한 0과 함수값 1이 달라 연속이 아니다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -302,7 +314,11 @@ window.questionBank = [
     ],
     "tags": [],
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/19_순천고_2학기_중간_고2_수학II/q9-solution.svg",
+    "solutionImageAlt": "왼쪽에서 높이 4, 3, 2, 1로 내려오고 가운데에서 이어진 뒤 오른쪽에서 2, 3, 4로 올라가는 계단 모양의 그래프이고 각 수평선의 한쪽 끝은 닫힌 점, 다른 쪽 끝은 열린 점이다.",
+    "solutionImageCaption": "x=0에서 f가 연속이라 a=1이다. y=[f(x)]의 그래프로, -2<x<0에서 f=x²+1은 1에서 5까지 변하고 f=2, 3, 4가 되는 x=-1, -√2, -√3에서 계단이 뛴다. 0≤x<2에서 f=2x+1은 f=2, 3, 4가 되는 x=1/2, 1, 3/2에서 뛰고 x=0에서는 양쪽 높이가 모두 1로 이어진다. 불연속점은 6개이므로 답은 ⑤이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 10,
@@ -415,7 +431,11 @@ window.questionBank = [
       "그래프"
     ],
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/19_순천고_2학기_중간_고2_수학II/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축 x, 세로축 y의 좌표평면에 a=0에서 시작해 여러 번 오르내린 곡선 f가 그려져 있다. 곡선은 x=1과 x=3에서 극대, x=2와 x=5에서 극소이고, 점 a, b, c와 두 끝점을 잇는 할선이 표시되어 있다.",
+    "solutionImageCaption": "두 끝점 a=(0,0), c=(8,9/4)를 잇는 할선의 기울기는 9/32이다. 이 기울기와 평행한 접선은 첫 상승 구간에서 2개, 둘째 상승 구간에서 2개, 마지막 상승 구간에서 1개이므로 m=5이다. 롤의 정리를 적용하는 [0,b]에서 수평 접선은 극대 2개와 극소 1개이므로 n=3이다. 따라서 m+n=8이고 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -523,7 +543,11 @@ window.questionBank = [
       "그래프"
     ],
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/19_순천고_2학기_중간_고2_수학II/q15-solution.svg",
+    "solutionImageAlt": "위로 볼록한 곡선과 오르는 직선이 한 점 A에서 만나고, A보다 오른쪽에서는 곡선이 직선 아래로 내려가는 그래프이다.",
+    "solutionImageCaption": "예: 해설이 읽은 값에 맞춘 그래프이다. f(x)=2x-x²를 직선 y=x와 함께 그렸고 곡선이 직선과 A(1,1)에서 만난다. x=a에서 f(a)=a라 f(a)/a=1이어서 ㄱ의 엄격한 부등식은 거짓이다. b=2에서 곡선의 높이 f(b)=0이 직선의 높이 b=2보다 낮아 f(b)-f(a)<b-a이므로 ㄴ은 참이다. 곡선의 기울기가 점점 줄어 f′(a)>f′(b)라 ㄷ도 참이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -555,7 +579,11 @@ window.questionBank = [
     "conditionKeys": [],
     "tags": [],
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/19_순천고_2학기_중간_고2_수학II/q16-solution.svg",
+    "solutionImageAlt": "두 패널이 나란히 있다. 첫째 패널에는 점 P에서 뾰족하게 꺾이는 W 모양의 일부가, 둘째 패널에는 점 Q에서 V자로 꺾이는 그래프가 그려져 있다.",
+    "solutionImageCaption": "ㄴ은 x=0에서 좌우 기울기가 3, -3이고 ㄷ은 -1, 1이라 두 그래프 모두 끊기지 않지만 점 P와 점 Q에서 뾰족하게 꺾여 미분가능하지 않다. ㄱ은 x≥0에서 2x², x<0에서 -2x²이고 양쪽 미분계수가 모두 0이라 미분가능하다. 따라서 연속이면서 미분가능하지 않은 것은 ㄴ, ㄷ이고 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -591,7 +619,11 @@ window.questionBank = [
       "그래프"
     ],
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/19_순천고_2학기_중간_고2_수학II/q17-solution.svg",
+    "solutionImageAlt": "아래로 볼록한 포물선의 꼭짓점 P에서 수평 직선 t가 접하고, 왼쪽 아래에서 오른쪽 위로 완만하게 오르는 직선 G가 점 Q를 지나며 포물선 아래를 지나는 그래프이다.",
+    "solutionImageCaption": "예: F(x)=(x-2)²+3과 G(x)=x/2+1을 그렸다. F는 x=2에서 극솟값 3인 점 P(2,3)을 가져 접선 t가 수평이므로 F′(2)=0이다. G는 (0,1)과 (4,3)을 지나는 직선이라 기울기 1/2이고 G(2)=2인 점 Q가 있다. 곱의 미분법으로 h′(2)=F′(2)G(2)+F(2)G′(2)=0+3·(1/2)=3/2이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -735,6 +767,10 @@ window.questionBank = [
     "conditionKeys": [],
     "tags": [],
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/19_순천고_2학기_중간_고2_수학II/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축과 세로축 위에 오른쪽 위로 향하는 직선이 그려져 있고, 그 위의 두 점 A와 B가 표시되어 있다.",
+    "solutionImageCaption": "예: c=2, d=1일 때 그래프 y=2x+1은 기울기가 항상 2인 직선이다. 임의의 x에 대하여 [a,x]에서 평균값 정리를 쓰면 (f(x)-f(a))/(x-a)=f'(t)=c이므로 f(x)=cx+(f(a)-ca)이다. 따라서 f(x)=cx+d (d=f(a)-ca)이다.",
+    "solutionImageSize": "full"
   }
 ];

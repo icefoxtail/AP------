@@ -1,0 +1,86 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "4/3",
+          "-2/3"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "f",
+    "formula": "-(2/3)*x+4/3",
+    "domain": [
+      -2,
+      5
+    ],
+    "viewport": [
+      -2,
+      5,
+      -1,
+      4
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "0",
+        "y": "4/3"
+      },
+      {
+        "id": "P",
+        "x": "3",
+        "y": "-2/3"
+      }
+    ],
+    "exactCoordinates": {
+      "A": [
+        "0",
+        "4/3"
+      ],
+      "P": [
+        "3",
+        "-2/3"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "g",
+          "slope": "-2/3",
+          "intercept": "3/2"
+        }
+      ],
+      "points": [
+        {
+          "id": "B",
+          "x": "-2",
+          "y": "17/6"
+        }
+      ]
+    }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "첫째 직선을 y에 대하여 정리하면 y=-(2/3)x+4/3이고, a=-4일 때 둘째 직선은 y=-(2/3)x+3/2가 된다. 교점이 존재하지 않으려면 두 직선이 평행해야 하므로 기울기가 같아야 하고, a/6=-2/3에서 a=-4이다. 그림에서도 두 직선의 기울기가 모두 -2/3로 같고 y절편만 4/3과 3/2로 달라 만나지 않는다. 따라서 답은 ③이다.",
+  "accessibilityDescription": "좌표평면에 기울기가 모두 -2/3인 두 평행한 직선이 그려져 있다. 위쪽 직선의 y절편은 3/2이고 아래쪽 직선의 y절편은 4/3이며, 두 직선 위에 점 A와 점 P가 표시되어 있다.",
+  "newVisualInformation": [
+    "두 직선의 기울기가 모두 -2/3로 같아 서로 만나지 않음",
+    "y절편이 3/2과 4/3으로 달라 평행하게 놓임"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 직선 $2x+3y-4=0$, $ax-6y+9=0$의 교점이 존재하지 않을 때, 상수 $a$의 값은? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

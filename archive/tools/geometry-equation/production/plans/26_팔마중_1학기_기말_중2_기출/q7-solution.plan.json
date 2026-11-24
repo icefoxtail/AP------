@@ -1,0 +1,53 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "고정한 x",
+        "elements": [
+          "6"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "y 일부",
+        "elements": [
+          "2",
+          "4"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      }
+    ]
+  },
+  "caption": "x=6일 때 y는 6보다 작은 짝수 2와 4가 모두 가능하다. 하나의 x에 y가 둘 이상 대응하므로 ②는 함수가 아니다. 짝수의 범위를 어떻게 해석해도 이 반례만으로 충분하며, 답은 ②이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 중 $y$가 $x$의 함수가 아닌 것은? [4점]",
+      "mappedTo": "diagram"
+    }
+  ]
+}

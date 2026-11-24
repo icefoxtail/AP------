@@ -1,0 +1,949 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "similar/high/h1/1mid/21_강남여고_1학기_중간_고1_유사.js",
+  "sourceGitBlobSha": "ea61c73b897afea2dcae704596762d7ef6c1988d",
+  "dictionaryVersion": "term-dict-v1.6-2026-11-15",
+  "judgedBy": {
+    "agent": "similar-import-draft",
+    "at": "2026-11-20"
+  },
+  "candidates": [],
+  "selfCheck": {
+    "note": "단일 모델 초안(UNREVIEWED). 인용은 check-judgment 로 원문 포함을 확인했다."
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "$x^3+y^3$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "곱셈공식",
+            "src": "solution",
+            "quote": "곱셈 공식의 변형에 의하여"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "4^3-3\\cdot 3\\cdot 4",
+            "evidenceType": "IMPLIED",
+            "justification": "세제곱의 합 변형 공식에 x+y=4, xy=3을 대입함"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "src": "solution",
+            "quote": "(x^2+x)^2-5(x^2+x)+6"
+          }
+        ],
+        "goal": [
+          {
+            "term": "인수분해",
+            "src": "stem",
+            "quote": "인수분해하면"
+          }
+        ],
+        "method": [
+          {
+            "term": "치환",
+            "src": "solution",
+            "quote": "x^2+x=t$로 치환하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "축",
+            "src": "solution",
+            "quote": "축이 $x=2$이다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "최댓값과 최솟값의 합"
+          }
+        ],
+        "method": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수 $y=x^2-4x+1$",
+            "evidenceType": "IMPLIED",
+            "justification": "표준형 변환으로 꼭짓점 x=2와 양 끝점 함숫값을 비교함"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "x^3-1=(x-1)(x^2+x+1)=0"
+          }
+        ],
+        "goal": [
+          {
+            "term": "허근",
+            "src": "stem",
+            "quote": "한 허근을 $\\omega$라 할 때"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼차방정식",
+            "src": "stem",
+            "quote": "삼차방정식 $x^3=1$",
+            "evidenceType": "IMPLIED",
+            "justification": "ω^3=1과 ω^2+ω+1=0을 이용해 3항씩 0으로 묶어 소거함"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "세 다항식 $A=3x^2-2xy+y^2$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "세 다항식 $A=3x^2-2xy+y^2$"
+          }
+        ],
+        "method": [
+          {
+            "term": "동류항",
+            "src": "solution",
+            "quote": "2A-B+C",
+            "evidenceType": "IMPLIED",
+            "justification": "식을 2A-B+C로 정리한 뒤 x^2, xy, y^2 동류항끼리 계수를 합산함"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "다항식 $f(x)=3x^3-2x^2+5x-4$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "나머지",
+            "src": "stem",
+            "quote": "나눈 나머지를 구하면"
+          }
+        ],
+        "method": [
+          {
+            "term": "나머지정리",
+            "src": "solution",
+            "quote": "나머지정리에 의하여",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "실수부분",
+            "src": "solution",
+            "quote": "-2-11i"
+          }
+        ],
+        "goal": [
+          {
+            "term": "복소수",
+            "src": "stem",
+            "quote": "두 복소수 $\\alpha, \\beta$"
+          }
+        ],
+        "method": [
+          {
+            "term": "켤레복소수",
+            "src": "solution",
+            "quote": "켤레복소수의 성질에 의하여",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수 $y=x^2$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "교점",
+            "src": "solution",
+            "quote": "두 그래프의 교점의 $x$좌표"
+          }
+        ],
+        "method": [
+          {
+            "term": "근과계수의관계",
+            "src": "solution",
+            "quote": "근과 계수의 관계에 의하여",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수 $y=-4x^2+4x+k$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "실수 $k$의 값의 범위"
+          }
+        ],
+        "method": [
+          {
+            "term": "판별식",
+            "src": "solution",
+            "quote": "판별식 $D>0$이다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "다항식 $f(x)$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "나머지",
+            "src": "stem",
+            "quote": "$x-4$로 나눈 나머지는"
+          }
+        ],
+        "method": [
+          {
+            "term": "나머지정리",
+            "src": "solution",
+            "quote": "나머지정리에 의하여",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "허수",
+            "src": "stem",
+            "quote": "i=\\sqrt{-1}"
+          }
+        ],
+        "goal": [
+          {
+            "term": "복소수",
+            "src": "solution",
+            "quote": "i^{2022}+(-i)^{2023}"
+          }
+        ],
+        "method": [
+          {
+            "term": "켤레복소수",
+            "src": "solution",
+            "quote": "분모를 실수화하면",
+            "evidenceType": "IMPLIED",
+            "justification": "분모의 켤레복소수를 곱해 ±i로 정리한 뒤 4주기 성질을 적용함"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "이차방정식 $x^2-4x+1=0$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "대칭식",
+            "src": "solution",
+            "quote": "\\frac{\\alpha^2+\\beta^2}{\\alpha\\beta}"
+          }
+        ],
+        "method": [
+          {
+            "term": "근과계수의관계",
+            "src": "solution",
+            "quote": "근과 계수의 관계에 의하여",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "다항식 $3x^3-x^2-10x+15$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "나머지",
+            "src": "stem",
+            "quote": "몫과 나머지를 차례로"
+          }
+        ],
+        "method": [
+          {
+            "term": "다항식의나눗셈",
+            "src": "solution",
+            "quote": "조립제법을 적용하면",
+            "evidenceType": "IMPLIED",
+            "justification": "x=-2로 조립제법을 수행하여 몫과 나머지를 구함"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "다항식 $(x-1)(x+3)(x-3)(x+5)+35$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "인수분해",
+            "src": "stem",
+            "quote": "인수분해하였더니"
+          }
+        ],
+        "method": [
+          {
+            "term": "치환",
+            "src": "solution",
+            "quote": "x^2+2x=t$로 치환하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "이차방정식 $x^2-(2k-3)x+k^2-4=0$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "자연수 $k$의 최솟값을"
+          }
+        ],
+        "method": [
+          {
+            "term": "판별식",
+            "src": "solution",
+            "quote": "판별식 $D<0$이어야",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "허근",
+            "src": "stem",
+            "quote": "허근을 갖도록"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "직각삼각형 모양의 꽃밭"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "넓이의 최댓값을"
+          }
+        ],
+        "method": [
+          {
+            "term": "이차함수",
+            "src": "solution",
+            "quote": "-\\frac{1}{2}(x-30)^2+450",
+            "evidenceType": "IMPLIED",
+            "justification": "두 변의 길이 합 x+y=60으로 넓이를 x의 이차함수로 나타내 최댓값을 구함"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "나머지",
+            "src": "stem",
+            "quote": "나머지가 $4$이다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "<보기>의 다항식 중"
+          }
+        ],
+        "method": [
+          {
+            "term": "나머지정리",
+            "src": "solution",
+            "quote": "나머지정리에 의하여",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "항등식",
+            "src": "solution",
+            "quote": "항등식 $(x+2)f(x)=(x-3)g(x)$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "이차식",
+            "src": "stem",
+            "quote": "두 이차식 $f(x), g(x)$"
+          }
+        ],
+        "method": [
+          {
+            "term": "인수정리",
+            "src": "solution",
+            "quote": "f(3)=0$이고, $x=-2$를 대입하면",
+            "evidenceType": "IMPLIED",
+            "justification": "항등식에 x=3, -2를 대입해 인수를 찾고 나머지 공통인수 (x-k)를 비교 결정함"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "이차방정식 $x^2+px+q=0$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "계수",
+            "src": "solution",
+            "quote": "근과 계수의 관계를 각각 적용하면"
+          }
+        ],
+        "method": [
+          {
+            "term": "근과계수의관계",
+            "src": "solution",
+            "quote": "근과 계수의 관계를 각각 적용하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼차방정식",
+            "src": "stem",
+            "quote": "삼차방정식 $x^3+ax^2+bx+c=0$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "공통근",
+            "src": "solution",
+            "quote": "공통근 $m$이"
+          }
+        ],
+        "method": [
+          {
+            "term": "켤레복소수",
+            "src": "solution",
+            "quote": "켤레복소수 $1-\\sqrt{3}i$를 근으로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직사각형",
+            "src": "stem",
+            "quote": "내접하는 직사각형 $ABCD$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "직사각형 $ABCD$의 넓이"
+          }
+        ],
+        "method": [
+          {
+            "term": "연립방정식",
+            "src": "solution",
+            "quote": "두 식을 빼면 $2p=2x+6",
+            "evidenceType": "IMPLIED",
+            "justification": "반원 대칭성으로 미지수 p, q를 잡아 조건 (가), (나)를 연립해 넓이 2pq를 구함"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "두 다항식 $P(x), Q(x)$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판별식",
+            "src": "solution",
+            "quote": "판별식을 각각 $D_P, D_Q$"
+          }
+        ],
+        "method": [
+          {
+            "term": "판별식",
+            "src": "solution",
+            "quote": "\\dfrac{D_Q}{4} = \\dfrac{D_P}{4}+8",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "중근",
+            "src": "stem",
+            "quote": "중근을 가지면"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "항등식",
+            "src": "solution",
+            "quote": "x, y$에 대한 항등식이므로"
+          }
+        ],
+        "goal": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "상수 $a, b, c$에 대하여"
+          }
+        ],
+        "method": [
+          {
+            "term": "계수비교",
+            "src": "solution",
+            "quote": "계수비교법에 의하여",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 24,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "실수부분",
+            "src": "solution",
+            "quote": "실수부분과 허수부분으로"
+          }
+        ],
+        "goal": [
+          {
+            "term": "복소수",
+            "src": "stem",
+            "quote": "복소수 $z=a^2(1+i)-a(3+i)-(4+2i)$"
+          }
+        ],
+        "method": [
+          {
+            "term": "순허수",
+            "src": "stem",
+            "quote": "순허수가 되도록",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 25,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수 $y=ax^2+bx+c$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "꼭짓점",
+            "src": "stem",
+            "quote": "꼭짓점의 좌표가 $(3, -2)$"
+          }
+        ],
+        "method": [
+          {
+            "term": "축",
+            "src": "solution",
+            "quote": "대칭축 $x=3$에 대하여",
+            "evidenceType": "IMPLIED",
+            "justification": "대칭축 x=3과 현의 길이 6을 이용해 x절편 (0,0), (6,0)을 구하고 x=1을 대입함"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 26,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "x\\ge 0$, $y\\ge 0$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "최댓값을 $M$, 최솟값을 $m$"
+          }
+        ],
+        "method": [
+          {
+            "term": "이차함수",
+            "src": "solution",
+            "quote": "3\\left(x-\\frac{4}{3}\\right)^2+\\frac{32}{3}",
+            "evidenceType": "IMPLIED",
+            "justification": "y=4-x를 대입하고 0<=x<=4 범위에서 완전제곱식 최대·최소를 구함"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    }
+  ]
+}

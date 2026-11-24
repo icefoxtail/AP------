@@ -1,0 +1,47 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "4",
+          "2"
+        ]
+      }
+    ],
+    "domain": [
+      -2,
+      5
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "-1",
+        "y": "2"
+      },
+      {
+        "id": "P1",
+        "x": "1",
+        "y": "6"
+      },
+      {
+        "id": "P2",
+        "x": "4",
+        "y": "12"
+      }
+    ],
+    "formula": "2*x + 4"
+  },
+  "caption": "두 주어진점(−1,2),(4,12)에서 기울기 a2. 직선 y2x+4가높이 6인점은(1,6)으로 b1. a+b3,정답③.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 점 $(-1,2)$, $(4,12)$를 지나는 직선의 그래프의 기울기가 $a$이고, 점 $(b,6)$을 지날 때, $a+b$의 값을 구하면? [4점]",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

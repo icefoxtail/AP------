@@ -2,7 +2,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const { execFileSync } = require('node:child_process');
 const crypto = require('node:crypto');
-const { assertSvgStudentLanguage, isEngineSvg, substituteAccessibilityText } = require('./svg-language-contract.cjs');
+const { assertSvgStudentLanguage, isEngineSvg, hasHiddenInternalText, substituteAccessibilityText } = require('./svg-language-contract.cjs');
 // 옛 그림에 title/desc가 없어 시험지·문항·역할로 만든 기계 대체 문구를 넣은 행의 표시(textSource). 내용을 추측한 문구가 아니다.
 const TEXT_SOURCE_SUBSTITUTE = 'MACHINE_SUBSTITUTE';
 const { collectSvgAccessibilitySourceIndex, collectChangedSourceScope } = require('./collect-svg-accessibility-source-index.cjs');
@@ -104,7 +104,8 @@ function validateRecord(record, repoRoot, seen, options = {}) {
   const substitute = record.textSource === TEXT_SOURCE_SUBSTITUTE;
   if (record.textSource !== undefined && !substitute) fail('INVALID_SVG_ACCESSIBILITY_TEXT_SOURCE', assetRef);
   // 대체 문구 행은 그림에 쓰인 글이 없다는 뜻이다. 새 엔진 그림(엔진 표지가 있는 그림)은 대체 문구를 받지 않는다.
-  if (substitute && isEngineSvg(bytes.toString('utf8'), { newPath })) fail('SVG_ACCESSIBILITY_SUBSTITUTE_FOR_ENGINE_SVG', assetRef);
+  // 예외: title/desc에 내부 용어가 든 그림은 엔진 그림이어도 그 행만 대체 문구를 쓴다(화면에는 안 보이는 글이라 등록·배포를 세우지 않는다).
+  if (substitute && isEngineSvg(bytes.toString('utf8'), { newPath }) && !hasHiddenInternalText(bytes.toString('utf8'), { assetRef })) fail('SVG_ACCESSIBILITY_SUBSTITUTE_FOR_ENGINE_SVG', assetRef);
   if (!substitute) {
     const svgText = svgAccessibilityText(bytes, assetRef);
     if (svgText.titleKo !== record.titleKo.trim() || svgText.descriptionKo !== record.descriptionKo.trim()) {
@@ -142,7 +143,15 @@ function recordFromCurrentSvg(use, repoRoot, options = {}) {
   if (!assetPath.startsWith(assetRoot + path.sep) || !fs.existsSync(assetPath)) fail('SVG_ACCESSIBILITY_ASSET_NOT_FOUND', assetRef);
   const bytes = fs.readFileSync(assetPath);
   let text;
-  try { text = svgAccessibilityText(bytes, assetRef); }
+  try {
+    text = svgAccessibilityText(bytes, assetRef);
+    // title/desc에 내부 용어(source·svg 등)가 들었으면 그 글을 색인에 싣지 않고 기계 대체 문구를 쓴다. 옛·엔진 그림 구분 없음(학생 화면에는 안 보이는 글).
+    if (Array.isArray(options.advisory) && hasHiddenInternalText(bytes.toString('utf8'), { assetRef })) {
+      const substitute = substituteAccessibilityText(use);
+      text = { titleKo: substitute, descriptionKo: substitute, textSource: TEXT_SOURCE_SUBSTITUTE };
+      options.advisory.push({ assetRef, code: 'SVG_ACCESSIBILITY_INTERNAL_TEXT_SUBSTITUTED', surface: '' });
+    }
+  }
   catch (error) {
     // 옛 그림에 title/desc가 없으면 막지 않고 기계 대체 문구를 넣는다(등록기 advisory 목록에 남는다). 엔진 그림은 계속 막는다.
     if (!Array.isArray(options.advisory) || isEngineSvg(bytes.toString('utf8'), { newPath: options.isNewPath ? () => options.isNewPath(assetRef) : false }) || !String(error.message).startsWith('SVG_ACCESSIBILITY_METADATA_MISSING')) throw error;
@@ -178,6 +187,43 @@ function recordFromCurrentSvg(use, repoRoot, options = {}) {
     answerHintFree,
     semanticClearanceOrigin
   };
+}
+
+// 관리 행(매니페스트에 사람이 확인해 박아 둔 행)의 값이 현재 그림과 달라진 경우를 가르는 오류 코드. 그림은 계속 고쳐지므로 이 불일치는 등록·배포를 막지 않는다.
+const STALE_MANAGED_ROW_RE = /^(SVG_ACCESSIBILITY_HASH_MISMATCH|SVG_ACCESSIBILITY_METADATA_MISMATCH|SVG_ACCESSIBILITY_METADATA_MISSING)(:|$)/;
+const MANAGED_ROW_STALE = 'SVG_ACCESSIBILITY_MANAGED_ROW_STALE';
+
+// 관리 행을 검증하되, 해시·title·desc가 현재 SVG와 다르면 던지지 않고 현재 SVG에서 다시 만든 행을 쓴다(관리 행이 아닌 그림과 같은 경로).
+// 매니페스트 파일은 고치지 않는다. 그림 바이트와 무관한 값(역할, 시험지·문항 연결, ASSET_ONLY 여부)만 물려받고,
+// 그림 내용에 대한 판정(answerHintFree 등)은 다시 만든 행의 기본값(해설 false, 문제는 시험지의 그림 연결로 정한다)으로 돌린다.
+// 파일 없음·깨진 SVG·엔진 그림의 실제 결함은 validateRecord / assertSvgStudentLanguage가 그대로 던진다. null이면 쓸 행이 없다(문제 행인데 시험지 연결이 사라진 경우).
+function validateManagedOrRegenerate(managed, representative, repoRoot, seen, options) {
+  try {
+    // 관리 행의 글(그림에서 따온 title/desc)에 내부 용어가 든 경우도 그대로 싣지 않고 다시 만든다(대체 문구 행).
+    const assetPath = path.resolve(repoRoot, 'archive', String(managed.assetRef));
+    if (fs.existsSync(assetPath) && fs.statSync(assetPath).isFile() && hasHiddenInternalText(fs.readFileSync(assetPath, 'utf8'), { assetRef: managed.assetRef })) {
+      fail('SVG_ACCESSIBILITY_METADATA_MISMATCH', managed.assetRef + ':internal-text');
+    }
+    return validateRecord(managed, repoRoot, seen, { ...options, semanticClearanceOrigin: 'MANAGED_VERIFIED_RECORD' });
+  } catch (error) {
+    if (!STALE_MANAGED_ROW_RE.test(String(error && error.message))) throw error;
+    seen.delete(`${managed.assetRef}\u0000${managed.visualRole}`);
+    options.advisory.push({ assetRef: managed.assetRef, code: MANAGED_ROW_STALE, surface: '' });
+    let derived;
+    if (representative) {
+      derived = recordFromCurrentSvg(representative, repoRoot, options);
+    } else if (managed.visualRole === 'problem') {
+      return null;
+    } else {
+      derived = recordFromCurrentSvg({
+        assetRef: managed.assetRef, visualRole: 'solution', sourceExamRef: managed.sourceExamRef, sourceQid: managed.sourceQid, sourceField: 'solution'
+      }, repoRoot, options);
+      if (managed.provenanceStatus === 'ASSET_ONLY') {
+        derived = { ...derived, provenanceStatus: 'ASSET_ONLY', sourceExamRef: '', sourceQid: '' };
+      }
+    }
+    return validateRecord(derived, repoRoot, seen, { ...options, semanticClearanceOrigin: derived.semanticClearanceOrigin });
+  }
 }
 
 function sourceIndexForCoverage(manifest, sourceIndexPath) {
@@ -247,17 +293,15 @@ function productionRows(manifest, repoRoot, scopeOptions) {
         || roleUses[0];
       if (!representative) {
         if (managed) {
-          rows.push(validateRecord(managed, repoRoot, seen, { semanticClearanceOrigin: 'MANAGED_VERIFIED_RECORD', advisory, isNewPath }));
+          const row = validateManagedOrRegenerate(managed, null, repoRoot, seen, { advisory, isNewPath });
+          if (row) rows.push(row);
         }
         continue;
       }
       const managedSourceStillBound = managed && roleUses.some(use =>
         use.sourceExamRef === managed.sourceExamRef && use.sourceQid === managed.sourceQid);
       if (managed && managedSourceStillBound) {
-        const validated = validateRecord(managed, repoRoot, seen, {
-          semanticClearanceOrigin: 'MANAGED_VERIFIED_RECORD', advisory, isNewPath
-        });
-        rows.push(validated);
+        rows.push(validateManagedOrRegenerate(managed, representative, repoRoot, seen, { advisory, isNewPath }));
       } else {
         const derived = recordFromCurrentSvg(representative, repoRoot, { advisory, isNewPath });
         rows.push(validateRecord(derived, repoRoot, seen, { semanticClearanceOrigin: derived.semanticClearanceOrigin, advisory, isNewPath }));

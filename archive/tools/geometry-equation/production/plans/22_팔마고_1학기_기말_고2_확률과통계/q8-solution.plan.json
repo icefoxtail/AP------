@@ -1,0 +1,100 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "3/20",
+          "1/20"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "4"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      0,
+      4
+    ],
+    "viewport": [
+      -1,
+      5,
+      -0.05,
+      0.42
+    ],
+    "axisTickValues": {
+      "x": [
+        "2",
+        "4"
+      ],
+      "y": [
+        "3/20",
+        "7/20"
+      ]
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "f(x)"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 0,
+        "y": "3/20"
+      },
+      {
+        "id": "M",
+        "x": "2",
+        "y": "1/4"
+      },
+      {
+        "id": "B",
+        "x": "4",
+        "y": "7/20"
+      }
+    ],
+    "regions": [
+      {
+        "id": "part",
+        "upper": "f",
+        "lower": "axis",
+        "from": "0",
+        "to": "2",
+        "fill": "LIGHT"
+      }
+    ],
+    "axisScale": {
+      "x": 1,
+      "y": 12
+    },
+    "coordinateBand": {
+      "hide": [
+        "A",
+        "M",
+        "B"
+      ]
+    }
+  },
+  "caption": "전체 넓이는 ∫₀⁴ a(x+3)dx=20a=1이므로 a=1/20이고 f(x)=(x+3)/20이다. 그림은 이 값으로 그렸다(x=0에서 3/20, x=4에서 7/20). 색칠한 0≤x≤2는 높이 3/20과 1/4, 폭 2인 사다리꼴이고 넓이는 (3/20+1/4)/2×2=2/5이다. 따라서 답은 ①이다.",
+  "accessibilityDescription": "높이 3/20에서 시작해 x=4에서 높이 7/20이 되는 오른쪽 위로 올라가는 선분 모양의 확률밀도함수 그래프이며 x=0부터 x=2까지 아래쪽이 사다리꼴로 칠해져 있다.",
+  "newVisualInformation": [
+    "a=1/20일 때의 직선 f(x)=(x+3)/20과 구간 [0, 2] 아래의 색칠한 사다리꼴이 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "확률변수 $X$의 확률밀도함수가 $f(x)=a(x+3)$ ($0\\le x\\le4$)일 때, $P(0\\le X\\le2)$의 값은? (단, $a$는 상수) [4.2점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-2",
+          "2"
+        ]
+      }
+    ],
+    "domain": [
+      -3,
+      4
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "-2",
+        "y": "-6"
+      },
+      {
+        "id": "P1",
+        "x": "0",
+        "y": "-2"
+      },
+      {
+        "id": "P2",
+        "x": "3",
+        "y": "4"
+      }
+    ],
+    "formula": "2*x - 2"
+  },
+  "caption": "두 점(3,4),(−2,−6)의 기울기는 2이고 y절편 −2이다. 직선 y=2x−2와 ax+by=5를 비교하면 a5,b−5/2. ab=−25/2,정답①.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "순서쌍 $(3, 4), (-2, -6)$이 모두 일차방정식 $ax+by=5$의 해일 때, 상수 $a, b$에 대하여 $ab$의 값은? [4점]",
+      "mappedTo": "graphPlan"
+    }
+  ]
+}

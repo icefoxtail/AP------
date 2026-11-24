@@ -1,0 +1,42 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "7"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "7x",
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": 0,
+        "y": 0
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "①은 원점 O를 지나는 직선 y=7x로 나타나며, x가 정해지면 y가 하나로 정해지므로 함수이다. ②는 x=4일 때 y가 2, 6, 10 등 여러 개이고, ③, ④, ⑤도 y가 하나로 정해지지 않는 경우가 있다. 따라서 답은 ①이다.",
+  "accessibilityDescription": "원점을 지나 오른쪽 위로 뻗는 직선 y=7x가 보인다.",
+  "newVisualInformation": [
+    "정비례 관계 y=7x의 직선을 보여 준다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>9. $y$가 $x$의 함수인 것은? [3점]</p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "-3",
+          "-1/4"
+        ],
+        "domain": [
+          "-6",
+          "0"
+        ]
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "4",
+          "3/2"
+        ],
+        "domain": [
+          "-6",
+          "0"
+        ]
+      },
+      {
+        "id": "f2",
+        "kind": "LINE",
+        "coefficients": [
+          "-2",
+          "0"
+        ],
+        "domain": [
+          "-6",
+          "0"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "-4",
+          "y": "-2",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "원래 두선 교점(−4,−2)을 지나는 수평선은 y−2. 정답⑤.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 일차방정식 $x+4y+12=0,\\ -3x+2y-8=0$의 그래프의 교점을 지나고 $x$축에 평행한 직선의 방정식은? [4점] 보기: ['$x=-4$', '$x=-2$', '$x=-5$', '$y=-4$', '$y=-2$']",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "method",
+      "condition": "원래 두선 교점(−4,−2)을 지나는 수평선은y−2. 정답⑤.",
+      "mappedTo": "solution"
+    }
+  ],
+  "newVisualInformation": [
+    "원래 두선 교점(−4,−2)을 지나는 수평선은y−2. 정답⑤."
+  ]
+}

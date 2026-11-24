@@ -1,0 +1,64 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "3/2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "3/2*x",
+    "functionName": "f",
+    "requiredPoints": [],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "viewport": [
+      -3,
+      8,
+      -5,
+      13
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "-2",
+          "y": "-3",
+          "unnamed": true,
+          "coordinates": true,
+          "labelDirection": "SW"
+        },
+        {
+          "id": "B",
+          "x": "7",
+          "y": "21/2",
+          "unnamed": true,
+          "coordinates": true,
+          "labelDirection": "NW"
+        }
+      ]
+    }
+  },
+  "caption": "예: k=0인 경우를 들면 f(x)=(3/2)x이다. f(7)=21/2, f(-2)=-3이므로 f(7)-f(-2)=21/2+3=27/2이다. 따라서 (f(7)-f(-2))/9=(27/2)/9=3/2이다. 따라서 답은 ④이다.",
+  "accessibilityDescription": "좌표평면에 한 직선과 그 위의 두 점 (-2,-3), (7,21/2)이 있고, 두 점에 좌표가 표시되어 있다.",
+  "newVisualInformation": [
+    "기울기 3/2인 직선 위의 두 점 (-2,-3), (7,21/2)를 표시한다.",
+    "두 점의 함숫값 차와 x의 변화량을 비교할 수 있게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>7. 일차함수 $f(x)=\\frac{3}{2}x+k$에 대하여 $\\frac{f(7)-f(-2)}{9}$의 값은? (단, $k$는 상수) [4점]</p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

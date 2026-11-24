@@ -1,0 +1,75 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "1/2",
+          "-1/3"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -2,
+      6
+    ],
+    "viewport": [
+      -2,
+      6,
+      -3,
+      2
+    ],
+    "formula": "1/2-x/3",
+    "functionName": "f",
+    "requiredPoints": [],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "g",
+          "slope": "3/10",
+          "intercept": "-6/5",
+          "label": "y=3x/10-6/5",
+          "labelAt": "END"
+        }
+      ],
+      "points": [
+        {
+          "id": "A",
+          "curveX": "5",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "-1",
+          "y": "-3/2",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "f(5)=-(1/3)×5+1/2=-5/3+1/2=-7/6이고, g(-1)=0.3×(-1)-1.2=-0.3-1.2=-3/2이다. 따라서 6f(5)+2g(-1)=6×(-7/6)+2×(-3/2)=-7-3=-10이다. 따라서 답은 -10이다.",
+  "accessibilityDescription": "한 좌표평면에 직선 y=1/2-x/3과 직선 y=3x/10-6/5가 서로 다른 색으로 그려져 있고, 첫째 직선 위의 점 A(5, -7/6)와 둘째 직선 위의 점 B(-1, -3/2)가 좌표와 함께 표시되어 있다.",
+  "newVisualInformation": [
+    "직선 y=1/2-x/3의 그래프",
+    "직선 y=3x/10-6/5의 그래프",
+    "x=5에서 f의 값 -7/6을 나타내는 점 A",
+    "x=-1에서 g의 값 -3/2을 나타내는 점 B"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)=-\\dfrac13x+\\dfrac12$, $g(x)=0.3x-1.2$에 대하여 $6f(5)+2g(-1)$의 값을 구하고 그 풀이 과정을 서술하시오. [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

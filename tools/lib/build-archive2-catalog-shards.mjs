@@ -26,6 +26,7 @@ import path from 'node:path';
 import zlib from 'node:zlib';
 import { createRequire } from 'node:module';
 import { fileURLToPath } from 'node:url';
+import { UNIT_PAST_SCHEMA, unitPastExtras } from './build-archive2-unit-past-part.mjs';
 
 export const CATALOG_SHARDS_DIR = 'archive/data/archive2-catalog-shards-v1';
 export const CATALOG_SHARDS_INDEX_PATH = `${CATALOG_SHARDS_DIR}/index.json`;
@@ -37,6 +38,12 @@ export const CATALOG_SHARDS_INPUTS = Object.freeze([
   'archive/data/archive2-catalog.json',
   'archive/data/archive2-canonical-input-manifest.json',
   'archive/data/meta-foundation/course-aliases.v1.json',
+  // stage 2-3 (the unit-past part, build-archive2-unit-past-part.mjs): the legacy question index and the two scripts that merge the approved
+  // metadata with the foundation runtime. The assembled sidecar (archive/data/question_metadata.json) is the assembly of registered shards that the
+  // release identity already checks for the question-metadata browser copy, so it is not listed here (it is not a registered path).
+  'archive/question-index.js',
+  'archive/question-meta.js',
+  'archive/meta-foundation-runtime.js',
 ]);
 export const COURSE_ALIASES_PATH = 'archive/data/meta-foundation/course-aliases.v1.json';
 export const CANONICAL_JS_PATH = 'archive/archive2-canonical.js';
@@ -282,8 +289,8 @@ export function splitBucketFiles(groups, limit = SHARD_RAW_LIMIT_BYTES) {
   return out;
 }
 
-const shardFileText = (key, indexVersion, lines, authority) =>
-  `{"schemaVersion":${JSON.stringify(CATALOG_SHARD_FILE_SCHEMA)},"key":${JSON.stringify(key)},"indexVersion":${JSON.stringify(indexVersion)},"records":[\n${lines.join(',\n')}\n]${authority ? `,"authority":${JSON.stringify(authority)}` : ''}}\n`;
+const shardFileText = (key, indexVersion, lines, authority, unit) =>
+  `{"schemaVersion":${JSON.stringify(CATALOG_SHARD_FILE_SCHEMA)},"key":${JSON.stringify(key)},"indexVersion":${JSON.stringify(indexVersion)},"records":[\n${lines.join(',\n')}\n]${authority ? `,"authority":${JSON.stringify(authority)}` : ''}${unit ? `,"unit":${JSON.stringify(unit)}` : ''}}\n`;
 const sha256Hex = (buffer) => crypto.createHash('sha256').update(buffer).digest('hex');
 
 // catalog: the object resolveCatalog returns (or any object with .records, .exams, .indexVersion, .identityDigest).
@@ -356,7 +363,13 @@ export function projectCatalogShards(catalog, aliasDoc, { limit = SHARD_RAW_LIMI
     const authority = withAuthority
       ? projectShardAuthority(catalog, indexVersion, records, catalog.exams.filter((exam) => examShard[exam.file] === key))
       : null;
-    const content = Buffer.from(shardFileText(key, indexVersion, lines, authority), 'utf8');
+    // STAGE 2-3: the two inputs 단원별 기출 joins (see build-archive2-unit-past-part.mjs), one entry per record of this shard, in its order
+    let unit = null;
+    if (extras.unitPast) {
+      const rows = records.map((record) => extras.unitPast.rowOf(record));
+      unit = { schemaVersion: UNIT_PAST_SCHEMA, index: rows.map((row) => row[0]), meta: rows.map((row) => row[1]) };
+    }
+    const content = Buffer.from(shardFileText(key, indexVersion, lines, authority, unit), 'utf8');
     const rel = `shard-${key}.json`;
     files.set(rel, content);
     shards.push({
@@ -371,6 +384,7 @@ export function projectCatalogShards(catalog, aliasDoc, { limit = SHARD_RAW_LIMI
   let commonInfo = null;
   if (withAuthority) {
     const common = projectCommon(catalog, extras);
+    if (extras.unitPast) common.unitPast = extras.unitPast.common;
     // source hashes of files that belong to no exam of the catalog stay common (none today), so no entry is lost
     const examFiles = new Set(catalog.exams.map((exam) => exam.file));
     const loose = (catalog.sourceHashes || []).filter((entry) => !examFiles.has(entry[0]));
@@ -394,6 +408,7 @@ export function projectCatalogShards(catalog, aliasDoc, { limit = SHARD_RAW_LIMI
     shards,
     examShard: examShardInCatalogOrder,
     ...(commonInfo ? { common: commonInfo, authoritySchema: CATALOG_AUTHORITY_SCHEMA } : {}),
+    ...(extras.unitPast ? { unitPastSchema: UNIT_PAST_SCHEMA } : {}),
   };
   const indexContent = Buffer.from(`${JSON.stringify(index)}\n`, 'utf8');
   return { index, indexContent, files, rawLimit: limit };
@@ -438,8 +453,11 @@ export async function buildCatalogShards(root, { limit = SHARD_RAW_LIMIT_BYTES }
   for (const input of CATALOG_SHARDS_INPUTS) {
     if (!fs.statSync(path.join(root, input), { throwIfNoEntry: false })?.isFile()) throw new Error(`catalog shards input is missing: ${input}`);
   }
-  const { catalog, bundle } = await loadResolvedCatalog(root);
+  const { catalog, bundle, canonical } = await loadResolvedCatalog(root);
   const extras = catalogExtras(root, catalog, bundle);
+  // STAGE 2-3: what 단원별 기출 needs next to the records (null when the assembled metadata sidecar is not there: that screen then keeps the whole bundle)
+  const unitPast = await unitPastExtras(root, { catalog, bundle, canonical, core: createRequire(import.meta.url)(path.join(root, 'archive/archive2-core.js')) });
+  if (unitPast) extras.unitPast = unitPast;
   const projection = projectCatalogShards(catalog, readJsonFile(root, COURSE_ALIASES_PATH), { limit, extras });
   const entries = [{
     path: CATALOG_SHARDS_INDEX_PATH, content: projection.indexContent, bytes: projection.indexContent.length, sourceBytes: 0,
@@ -454,7 +472,7 @@ export async function buildCatalogShards(root, { limit = SHARD_RAW_LIMIT_BYTES }
       reasons: [reason], catalogShardInputs: [...CATALOG_SHARDS_INPUTS],
     });
   }
-  return { entries, index: projection.index, files: projection.files, catalog };
+  return { entries, index: projection.index, files: projection.files, catalog, bundle, canonical };
 }
 
 // Values the browser computes next to resolveCatalog (archive/meta-foundation-runtime.js), computed here once for the whole catalog:

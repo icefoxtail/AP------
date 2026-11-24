@@ -126,7 +126,12 @@ window.examData = {
         "$300\\,\\mathrm{m}$, $900\\,\\mathrm{m}/\\text{분}$"
       ],
       "answer": "",
-      "solution": ""
+      "solution": "",
+      "solutionImage": "assets/images/18_연향중_1학기_기말_중2_수학/q9-solution.svg",
+      "solutionImageAlt": "해설 그림: 위쪽 막대는 터널과 열차를 이어 붙인 구간, 아래쪽 막대는 다리와 열차를 이어 붙인 구간을 나타내고, 각 부분과 전체 길이가 치수선으로 적혀 있는 그림이다.",
+      "solutionImageCaption": "열차의 길이를 L, 속력을 분속 v라 하면 2분 30초는 2.5분, 45초는 0.75분이므로 2.5v=1800+L, 0.75v=400+L이다. 두 식을 변끼리 빼면 1.75v=1400이므로 v=800이고 L=0.75×800-400=200이다. 따라서 열차의 길이는 200 m, 속력은 800 m/분이고 답은 ①이다.",
+      "solutionImageSize": "full",
+      "solutionImageScale": 90
     },
     {
       "id": 10,
@@ -168,7 +173,11 @@ window.examData = {
         "$-24 < -2x+7 \\le -8$"
       ],
       "answer": "",
-      "solution": ""
+      "solution": "",
+      "solutionImage": "assets/images/18_연향중_1학기_기말_중2_수학/q12-solution.svg",
+      "solutionImageAlt": "오른쪽 아래로 향하는 직선 위에 x=−3인 점 A(−3,13)와 x=5인 점 B(5,−3)가 표시되어 있다. y의 값은 B에서 A까지 −3보다 크고 13 이하이다.",
+      "solutionImageCaption": "−3≤x<5에서 y=−2x+7의 값의 범위를 구한다. 기울기가 −2이므로 x가 커질수록 y는 작아진다. x=−3일 때 y=13이고 이때 x=−3을 포함하므로 13을 포함한다. x=5일 때 y=−3이지만 x=5는 포함하지 않으므로 −3은 포함하지 않는다. 따라서 −3<−2x+7≤13이고 답은 ①이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 13,

@@ -110,7 +110,11 @@ window.questionBank = [
       "함수의 연속"
     ],
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_매산여고_2학기_중간_고2_수학II/q2-solution.svg",
+    "solutionImageAlt": "두 패널이 나란히 있다. 첫째 패널에는 x=2에서 낮은 수평선이 열린 점으로 끝나고 높은 수평선이 닫힌 점에서 시작하는 계단이, 둘째 패널에는 점 P에서 V자로 꺾이는 그래프가 그려져 있다.",
+    "solutionImageCaption": "ㄴ은 x=2에서 왼쪽 높이 3, 오른쪽 높이 4로 끊어져 좌우극한이 달라 연속이 아니다. ㄷ은 점 P(2,0)에서 꺾이지만 양쪽이 모두 P로 이어지므로 연속이다. ㄱ은 다항함수라 연속이고, ㄹ은 x=2에서 분모가 0이라 함숫값이 없어 연속이 아니다. 따라서 연속인 것은 ㄱ, ㄷ이고 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -572,7 +576,11 @@ window.questionBank = [
       "접선의 방정식"
     ],
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_매산여고_2학기_중간_고2_수학II/q10-solution.svg",
+    "solutionImageAlt": "한 번 올랐다 내려가고 다시 오르는 삼차곡선과 곡선 위의 점 T에서 접하는 내려가는 직선 l, 그리고 l이 세로축과 만나는 점 I가 나타난 그래프이다.",
+    "solutionImageCaption": "f′(x)=6x²-12x=-6에서 6(x-1)²=0이므로 접점은 T(1,5)이다. 이 점에서의 접선 l은 y=-6x+11이고 y축과 만나는 점 I(0,11)의 높이가 y절편이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -1049,7 +1057,11 @@ window.questionBank = [
       "접선의 방정식"
     ],
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_매산여고_2학기_중간_고2_수학II/q18-solution.svg",
+    "solutionImageAlt": "위로 볼록한 포물선과 포물선 바깥의 점 K가 있고, K를 지나는 두 직선이 포물선의 점 A와 점 B에서 각각 접하는 그래프이다.",
+    "solutionImageCaption": "예: k=-7일 때를 그렸다. 접점의 x좌표 t는 (t-1)²=k+8=1에서 t=0, 2이다. 접점 A(0,-5)에서의 접선 l1(기울기 -2)과 접점 B(2,-13)에서의 접선 l2(기울기 -6)가 모두 점 K(1,-7)을 지난다. k+8>0이면 접점이 두 개이므로 k>-8이고 정수 k의 최솟값은 -7이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -1102,7 +1114,11 @@ window.questionBank = [
       "도함수의 활용"
     ],
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_매산여고_2학기_중간_고2_수학II/q19-solution.svg",
+    "solutionImageAlt": "왼쪽 위의 열린 점 A에서 시작해 가로축을 한 번 지나 오른쪽 아래의 열린 점 B에서 끝나는 계속 내려가는 곡선 그래프이다.",
+    "solutionImageCaption": "예: a=-5일 때 g(x)=x²-2x-5를 열린구간 (-3,1)에서 그렸다. g′(x)=2x-2<0이라 곡선은 계속 내려가고 양 끝은 열린 점 (-3,10), (1,-6)이다. 왼쪽 끝 높이 g(-3)=15+a는 양수, 오른쪽 끝 높이 g(1)=a-1은 음수여야 곡선이 구간 안에서 x축을 한 번 지난다. 그래서 -15<a<1이고 경계 -15, 1은 제외한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -1307,6 +1323,10 @@ window.questionBank = [
       "접선의 방정식"
     ],
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_매산여고_2학기_중간_고2_수학II/q23-solution.svg",
+    "solutionImageAlt": "왼쪽에서 내려오다 올랐다 다시 내려가는 삼차곡선과 서로 평행한 두 내려가는 직선이 있고, 두 직선이 곡선의 점 A와 점 B에서 각각 접하는 그래프이다.",
+    "solutionImageCaption": "접점의 x좌표의 합 4, 곱 3에서 두 점은 x=1, 3이다. f′(1)=1+2a와 f′(3)=25+6a가 같아야 하므로 a=-6이다. 그림은 f(x)=x³-6x²-2x+4이고 A(1,-3), B(3,-29)에서의 접선 l1, l2가 기울기 -11로 서로 평행하다. 따라서 a=-6, m=-11이다.",
+    "solutionImageSize": "full"
   }
 ];
