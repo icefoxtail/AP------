@@ -28,6 +28,11 @@ Claude·GPT·Codex 모든 라인 공통이다. 상세 원문은 [metadata.md](me
 7. 보고에는 한 일, 확인 근거(실행한 명령과 결과), 남은 일, 사용자 결정이 필요한 것을 쓴다. 돌리지 않은 검사는 NOT_RUN으로 적는다.
 8. 원본 시험지 JS·메타를 고치는 PR은 생성물(카탈로그·manifest·source-verification index·runtime-bridge-receipt·readiness 등)을 커밋하지 않는다. 병합 뒤 등록기(archive-main-auto-meta)가 만들어 스냅숏으로 커밋한다. PR 검사는 임시 체크아웃에서 생성한 뒤 같은 검증을 한다(Archive2 save round trip은 PR에서 기본 빌드, main·배포는 `--package-only`). 깨진 JS는 이 빌드에서, 중복 questionUid는 PR 등록 투영의 verify-archive-registration에서 여전히 빨갛다. 이유: main이 움직일 때마다 생성물이 충돌해 PR을 세 번씩 다시 만들었다(#2598).
 
+9. **시험지 파일 전체 blob·해시는 "같은 문항인가"의 기준이 아니다 (2026-11-24, 사용자 결정).** 원장님: "변한다고 문항 자체가 날아가는 게 아니면 고정시킬 필요가 있냐. 우린 UID로 각 문항별로 관리하고 있다." 같은 문항인지는 문항 단위(UID + 발문·보기 지문 text-v1, `archive/question-binding.js`)로 판정한다. 그림 경로·해설·배치·`imageSize`만 바꾸는 PR은 옆 파일의 blob 고정값(`<시험지>.meta-*.json`의 `expectedSourceBlobSha1`, `<시험지>.review-receipt.json`의 `candidateGitBlobSha1`, `<시험지>.4slot.json`의 `sourceGitBlobSha`)을 고치지 않는다. 그림 게시 때 blob 치환 스크립트는 필요 없다. 이 칸들은 만든 시점의 기록으로 남기고 지우지 않는다.
+   - 코드 쪽 적용: 하네스(`tools/harness/verify_similar_exam.mjs`)의 소형 메타·검수 영수증 blob 비교는 `text-binding-lib.mjs`의 `reviewedSourceTextUnchanged`(고정된 옛 blob을 git에서 읽어 문항별 text-v1 대조)로 통과시킨다. 발문·보기·문항 수가 바뀌었거나 옛 blob을 git에서 못 읽으면 전처럼 거절한다. 솔루션 보정 게이트(`solution-calibration-gate.mjs`)의 골든 표본은 파일 전체 sha256·gitBlobSha를 비교하지 않고 문항별 `solutionSha256`·발췌문으로만 묶는다(위 5번의 골든 표본 재결속은 더 이상 필요 없다. 도구는 남겨 둔다).
+   - 계속 막는 것: 같은 실행 안에서 양쪽을 계산하는 대조(중복 UID, 깨진 JS, 깨진 그림 참조, 문항 수 불일치, Pages 봉인), 발문·보기가 바뀐 문항의 낡은 판정 처리(재결속 기록 `text-binding-rebinds` 흐름), 다른 학년 키 같은 실제 결함.
+   - 이 칸을 읽는 곳 가운데 이번에 손대지 않은 것(META_PIPELINE_AUDIT·승인 보존·재결속 계열 등록 요청, 4칸 `build-4slot-runtime.cjs`의 15칸 해시 기준선)은 [metadata.md](metadata.md)의 같은 날짜 절에 현황을 적었다.
+
 ## CURRENT — 판본 장부: 승인은 그대로 두고 "같은 판본"만 덧붙인다 (2026-11-18, 사용자 결정)
 
 - `docs/operations/edition-ledger/ledger-v1.json`은 추가 전용 장부다. "이 새 판본은 승인된 판본과 같은 것으로 본다"를 행으로 적는다. 기존 승인 기록(영수증·4칸·UI 승인 proof)은 봉인이라 고치지 않는다.

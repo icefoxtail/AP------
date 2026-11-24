@@ -51,7 +51,10 @@ function resolveRef(root, refPath) {
   return { rel, absolute };
 }
 
-function bindRef(root, ref, issues, prefix, predicate = null) {
+// fileBound=false: 파일 전체의 sha256·gitBlobSha는 비교하지 않는다(파일이 있고 경로 조건만 만족하면 된다).
+// 골든 표본이 그렇다: 표본은 문항별 해설 해시(solutionSha256)와 발췌문으로 묶여 있고, 시험지 파일은 해설 그림·배치가 바뀌며 고쳐진다.
+// 이유: 골든 표본 시험지의 그림 경로 한 줄만 고쳐도 파일 해시가 어긋나 CREATE 게이트 시험 10개가 깨졌고, 사람이 고정값을 다시 묶었다(결정 2026-11-24).
+function bindRef(root, ref, issues, prefix, predicate = null, { fileBound = true } = {}) {
   if (!ref || !nonEmpty(ref.path) || !nonEmpty(ref.sha256) || !nonEmpty(ref.gitBlobSha)) {
     issues.push(prefix + '_REF_INCOMPLETE');
     return null;
@@ -68,8 +71,10 @@ function bindRef(root, ref, issues, prefix, predicate = null) {
     return null;
   }
   const bytes = fs.readFileSync(resolved.absolute);
-  if (sha256(bytes) !== ref.sha256) issues.push(prefix + '_SHA256_MISMATCH:' + resolved.rel);
-  if (gitBlobSha(bytes) !== ref.gitBlobSha) issues.push(prefix + '_BLOB_SHA_MISMATCH:' + resolved.rel);
+  if (fileBound) {
+    if (sha256(bytes) !== ref.sha256) issues.push(prefix + '_SHA256_MISMATCH:' + resolved.rel);
+    if (gitBlobSha(bytes) !== ref.gitBlobSha) issues.push(prefix + '_BLOB_SHA_MISMATCH:' + resolved.rel);
+  }
   return { ...resolved, bytes };
 }
 
@@ -131,7 +136,7 @@ function validateBinding({ examFile, questions, evidence, stage, requireCompare 
   const banks = new Map();
   for (const ref of golden) {
     const bound = bindRef(root, ref, issues, 'GOLDEN_SAMPLE',
-      p => /^archive\/exams\/original\/.+\.js$/.test(p) && p !== targetRel);
+      p => /^archive\/exams\/original\/.+\.js$/.test(p) && p !== targetRel, { fileBound: false });
     if (!bound) continue;
     try { banks.set(bound.rel, loadQuestions(bound.absolute)); }
     catch (error) { issues.push('GOLDEN_SAMPLE_JS_INVALID:' + bound.rel + ':' + error.message); }
