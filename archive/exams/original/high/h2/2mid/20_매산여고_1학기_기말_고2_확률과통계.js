@@ -790,7 +790,11 @@ window.questionBank = [
     "problemTypeKey": "PT_PROBABILITY_REPEATED_TRIALS",
     "templateKey": "TPL_INDEPENDENT_TRIAL_PROBABILITY",
     "rpmL3": "독립시행",
-    "rpmL4": "반복 시행의 확률"
+    "rpmL4": "반복 시행의 확률",
+    "solutionImage": "assets/images/20_매산여고_1학기_기말_고2_확률과통계/q18-solution.svg",
+    "solutionImageAlt": "자리별 경우의 수 칸 자리마다 고를 수 있는 경우의 수를 칸에 적어 곱의 법칙(또는 합의 법칙)을 보여 주는 그림이다.",
+    "solutionImageCaption": "사실이는 앞으로 3승, 진실이는 2승이 필요하다. 앞으로 4경기를 모두 한다고 가정해도(중간에 끝난 뒤의 경기는 결과에 영향이 없다) 사실이 3승 이상이면 사실이 먼저 7승에 도달한다. 4경기 중 사실이 3승 1패인 경우는 4가지, 4승인 경우는 1가지이고 칸의 4와 1을 더해 5가지이다. 전체는 2⁴=16가지이므로 사실이가 상금을 모두 가질 확률은 5/16이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -868,7 +872,11 @@ window.questionBank = [
     "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
     "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
     "rpmL3": "확률의 기본",
-    "rpmL4": "확률 계산"
+    "rpmL4": "확률 계산",
+    "solutionImage": "assets/images/20_매산여고_1학기_기말_고2_확률과통계/q20-solution.svg",
+    "solutionImageAlt": "벤 다이어그램 집합 사이의 포함 관계와 원소가 속한 영역을 벤 다이어그램으로 나타낸 그림이다.",
+    "solutionImageCaption": "A를 1학년, B를 여학생의 집합으로 본다. 전체 16명 중 2명을 뽑는 경우는 16C2=120가지이다. 1학년이 한 명도 없는 경우는 2학년 10명에서 10C2=45가지이고, 여학생이 한 명도 없는 경우는 남학생 10명에서 10C2=45가지이다. 두 경우가 겹치는 것은 색칠한 2학년 남학생 6명에서만 뽑는 6C2=15가지이므로 한 번 더해야 한다. 따라서 120−45−45+15=45가지이고 확률은 45/120=3/8이다. 그림의 수는 A만(1학년 남학생) 4명, 겹침(1학년 여학생) 2명, B만(2학년 여학생) 4명, 바깥(2학년 남학생) 6명이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -992,6 +1000,10 @@ window.questionBank = [
     "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
     "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
     "rpmL3": "확률의 기본",
-    "rpmL4": "확률 계산"
+    "rpmL4": "확률 계산",
+    "solutionImage": "assets/images/20_매산여고_1학기_기말_고2_확률과통계/q23-solution.svg",
+    "solutionImageAlt": "벤 다이어그램 집합 사이의 포함 관계와 원소가 속한 영역을 벤 다이어그램으로 나타낸 그림이다.",
+    "solutionImageCaption": "15x²−8mx+m²=(3x−m)(5x−m)이므로 근은 m/3, m/5이고 정수해가 있으려면 m이 3의 배수이거나 5의 배수이다. A를 3의 배수, B를 5의 배수의 집합으로 보면 1부터 100까지에서 A는 33개, B는 20개, 겹치는 15의 배수는 6개이다. 그림은 A만 27개, 겹침 6개, B만 14개, 나머지 53개이다. 색칠한 합집합은 33+20−6=47개이므로 확률은 47/100이다.",
+    "solutionImageSize": "full"
   }
 ];

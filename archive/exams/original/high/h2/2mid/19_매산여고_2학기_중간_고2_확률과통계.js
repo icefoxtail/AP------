@@ -367,7 +367,11 @@ window.questionBank = [
     "rpmL3": "정규분포",
     "rpmL4": "표준정규분포",
     "rpmProjectionStatus": "PROJECTION_REUSE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/19_매산여고_2학기_중간_고2_확률과통계/q7-solution.svg",
+    "solutionImageAlt": "정규분포 곡선 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "X는 N(100, 100)이므로 평균 100, 표준편차 10이다. 80은 z=−2, 110은 z=1이다. 평균을 경계로 −2부터 0까지는 대칭으로 0부터 2까지와 같아 0.48이고 0부터 1까지는 0.35이다. 합은 0.48+0.35=0.83이다. 표의 (a)~(e)는 차례로 100, 10, −2, 1, 0.83이므로 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -855,7 +859,11 @@ window.questionBank = [
     "rpmL3": "정규분포",
     "rpmL4": "정규분포 확률",
     "rpmProjectionStatus": "PROJECTION_REUSE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/19_매산여고_2학기_중간_고2_확률과통계/q16-solution.svg",
+    "solutionImageAlt": "정규분포 곡선 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "응답자 수 X는 B(1600, 0.8)이고 평균 1280, 표준편차 16인 정규분포로 근사한다. P(X≥k)=0.84이면 경계의 왼쪽 넓이는 0.16이어서 z가 음수이다. 표에서 P(0≤Z≤1)=0.34이므로 P(Z≤−1)=0.5−0.34=0.16이고 (k−1280)/16=−1에서 k=1264이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -909,7 +917,11 @@ window.questionBank = [
     "rpmL3": "정규분포",
     "rpmL4": "정규분포 확률",
     "rpmProjectionStatus": "PROJECTION_REUSE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/19_매산여고_2학기_중간_고2_확률과통계/q17-solution.svg",
+    "solutionImageAlt": "정규분포 곡선 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "입사하지 않는 사람 수 Y는 B(100, 1/5)이고 평균 20, 표준편차 4이다. 14번째 예비 후보에게 자리가 오려면 적어도 14명이 입사하지 않아야 하므로 P(Y≥14)이다. 14는 z=(14−20)/4=−1.5이다. 색칠한 오른쪽 전체의 넓이는 0.43+0.5=0.93이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -1145,6 +1157,10 @@ window.questionBank = [
     "rpmL3": "정규분포",
     "rpmL4": "정규분포 확률",
     "rpmProjectionStatus": "PROJECTION_REUSE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/19_매산여고_2학기_중간_고2_확률과통계/q22-solution.svg",
+    "solutionImageAlt": "정규분포 곡선 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "제품 하나가 불량일 확률은 양쪽 꼬리 0.02+0.02=0.04이다. 하루 불량품 수 Y는 B(3750, 0.04)이고 평균 150, 표준편차 12인 정규분포로 근사한다. 120개 이하는 z=(120−150)/12=−2.5의 왼쪽이며 색칠한 꼬리의 넓이는 0.5−0.49=0.01이다. 따라서 구하는 확률은 0.01이다.",
+    "solutionImageSize": "full"
   }
 ];

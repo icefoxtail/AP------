@@ -515,7 +515,11 @@ window.questionBank = [
       "campaign": "HIGH_DYNAMIC_INTAKE_20261017",
       "examUid": "21_강남여고_2학기_중간_고2_수학II",
       "sourceJsSha256": "9e30c9ca32c6069b2880191ecef62f770269103a476c4b2f6618ca06dcff3cc0"
-    }
+    },
+    "solutionImage": "assets/images/21_강남여고_2학기_중간_고2_수학II/q10-solution.svg",
+    "solutionImageAlt": "왼쪽의 오른쪽 아래로 내려가는 직선과 오른쪽의 오르는 제곱근 곡선이 한 점 P에서 만나 이어지는 그래프이다.",
+    "solutionImageCaption": "x>1에서 분모가 0으로 가므로 분자 x+b도 x=1에서 0이어야 하고 b=-1이다. 그러면 (x-1)/(√(x+3)-2)=√(x+3)+2이고 x→1+에서 극한은 4이다. 직선 -3x+a는 x=1에서 4가 되어야 하므로 a=7이고, 곡선 y=√(x+3)+2와 같은 점 P(1,4)에서 이어진다. 따라서 a+b=6이고 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,

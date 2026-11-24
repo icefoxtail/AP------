@@ -171,7 +171,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "answer": "⑤"
+    "answer": "⑤",
+    "solutionImage": "assets/images/22_금당고_2학기_중간_고2_기하_기출/q4-solution.svg",
+    "solutionImageAlt": "오른쪽으로 열린 포물선과 아래쪽 접점 T에서 닿는 기울기 −2의 접선이 있다. 접선이 x축과 만나는 점 Q와 접점 T의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "포물선 y²=8x에서 p=2이고 기울기가 m인 접선은 y=mx+p/m이다. m=−2이면 접선은 y=−2x−1이고 접점은 T(1/2, −2)이다. 접선이 x축과 만나는 점은 0=−2x−1에서 Q(−1/2, 0)이다. 따라서 x절편은 −1/2이고 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -302,7 +306,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "answer": "②"
+    "answer": "②",
+    "solutionImage": "assets/images/22_금당고_2학기_중간_고2_기하_기출/q7-solution.svg",
+    "solutionImageAlt": "가로로 긴 타원과 두 초점 F, F′, 오른쪽 꼭짓점 A, 위쪽 꼭짓점 B가 있다. 기울기 1인 두 접선이 타원에 위쪽 왼쪽 접점 P와 아래쪽 오른쪽 접점 Q에서 닿아 있다.",
+    "solutionImageCaption": "3x²+4y²=12는 x²/4+y²/3=1이다. 중심은 (0, 0), 장반경 2, 단반경 √3이어서 초점은 F(1, 0), F′(−1, 0)이고 장축의 길이는 4, 단축의 길이는 2√3이다. 타원 위의 한 점에서 두 초점까지의 거리의 합은 2a=4로 일정하다. 기울기 1인 두 접선은 y=x±√7이다. 거리의 합이 30이라는 ②만 옳지 않으므로 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -439,7 +447,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "answer": "②"
+    "answer": "②",
+    "solutionImage": "assets/images/22_금당고_2학기_중간_고2_기하_기출/q10-solution.svg",
+    "solutionImageAlt": "가로로 긴 타원과 두 초점 F, F′가 있다. 오른쪽 초점 F를 지나는 세로 현의 위아래 끝점 A, B와 왼쪽 초점 F′를 잇는 삼각형이 색칠되어 있고 길이가 표시되어 있다.",
+    "solutionImageCaption": "예: a=5, b=3인 타원에서 F를 지나는 세로 현의 끝점을 A, B로 한 그림이다. F가 현 AB 위에 있으므로 AB=AF+FB이다. 타원의 정의 AF+AF′=2a, BF+BF′=2a를 더하면 삼각형 ABF′의 둘레는 4a이다. 4a=20이므로 a=5이고 c=4에서 b²=25−16=9이므로 b=3이다. 따라서 a+b=8이고 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -481,7 +493,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "answer": "③"
+    "answer": "③",
+    "solutionImage": "assets/images/22_금당고_2학기_중간_고2_기하_기출/q11-solution.svg",
+    "solutionImageAlt": "오른쪽으로 열린 아주 가는 포물선과 초점 F, 왼쪽의 준선 l이 있다. 점 A에서 곡선 위의 점 P까지와 P에서 준선까지의 수평 선분이 한 직선 위에 있고, P에서 F로 가는 선분이 있다.",
+    "solutionImageCaption": "y²=x/2에서 p=1/8이므로 F(1/8, 0)이고 준선은 x=−1/8이다. 포물선 위의 점에서 PF는 준선까지의 거리 PH와 같으므로 AP+PF=AP+PH이다. 이 값은 A에서 준선까지의 수선(수평선) 위에 P가 놓일 때 최소이므로 y좌표가 2이고 P(8, 2)이다. 이때 AP=10, PF=PH=65/8이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -523,7 +539,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "answer": "④"
+    "answer": "④",
+    "solutionImage": "assets/images/22_금당고_2학기_중간_고2_기하_기출/q12-solution.svg",
+    "solutionImageAlt": "좌우로 갈라진 쌍곡선 C2와 그것을 둘러싼 타원 C1이 같은 초점 F, F′를 가진다. 두 곡선이 만나는 점 P에서 두 초점으로 가는 선분과 길이가 표시되어 있다.",
+    "solutionImageCaption": "C1은 x²/36+y²/11=1, C2는 x²/a²−y²/9=1이다. 타원에서 c²=36−11=25이므로 공통 초점은 F(5, 0), F′(−5, 0)이고 쌍곡선에서 a²=25−9=16이다. 두 식에서 교점 P의 x좌표는 |x|=24/5이다. 그림의 P에서 PF=2, PF′=10이어서 |PF²−PF′²|=|4−100|=96이다. 따라서 96−16=80이고 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -894,7 +914,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "answer": "④"
+    "answer": "④",
+    "solutionImage": "assets/images/22_금당고_2학기_중간_고2_기하_기출/q20-solution.svg",
+    "solutionImageAlt": "가로로 긴 가는 타원 C1과 그 위쪽의 작은 원 C2가 있고, 원 위의 점 A에서 타원에 접하는 두 직선이 그려져 있다. 접선이 원과 다시 만나는 점 U, V가 원의 가운데 높이에 표시되어 있다.",
+    "solutionImageCaption": "A(0, 4)는 원 C2 위의 점이다. 직선 AP의 기울기 m이 타원과 만나려면 |m|≥1(또는 수직선)이어서 방향각 θ가 π/4≤θ≤3π/4이다. 그림의 두 접선 k1, k2는 타원에 접하는 한계의 직선으로 접점은 S, T이고 원과 만나는 점은 U(−1, 3), V(1, 3)이다. 다른 교점 Q는 (−sin2θ, 3+cos2θ)이므로 θ가 π/4에서 3π/4까지 변하면 원의 아래쪽 반원을 한 번 돈다. 길이는 π이고 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -930,7 +954,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "answer": "5"
+    "answer": "5",
+    "solutionImage": "assets/images/22_금당고_2학기_중간_고2_기하_기출/q21-solution.svg",
+    "solutionImageAlt": "가로로 긴 타원과 기울기 −1인 접선이 있고 접점 P가 표시되어 있다. 접선이 x축, y축과 만나는 점 A, B와 원점 O로 만든 삼각형이 색칠되어 있다.",
+    "solutionImageCaption": "타원 x²/4+y²=1에 접하고 y=x에 수직인 접선은 기울기 −1인 y=−x+c이다. 접할 조건 D=0에서 c²=5이고 y절편이 양수이므로 c=√5이며 접점은 P이다. 이 접선이 x축, y축과 만나는 점은 A(√5, 0), B(0, √5)이고 삼각형 OAB가 색칠되어 있다. OA×OB=√5×√5=5이다. 따라서 답은 5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,

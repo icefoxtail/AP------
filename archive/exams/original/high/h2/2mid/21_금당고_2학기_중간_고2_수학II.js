@@ -1285,7 +1285,11 @@ window.questionBank = [
       "2022Equivalent": "2022 미적분Ⅰ 대응 단원 존재",
       "mappingStatus": "NOT_ASSERTED_AS_CANONICAL_FOR_2021"
     },
-    "metaCanonicalBindingPass": false
+    "metaCanonicalBindingPass": false,
+    "solutionImage": "assets/images/21_금당고_2학기_중간_고2_수학II/q19-solution.svg",
+    "solutionImageAlt": "두 패널이 나란히 있다. 첫째 패널에는 점 P와 점 Q에서 꺾이는 꺾은선이, 둘째 패널에는 점 R, P, Q에서 꺾이는 꺾은선이 그려져 있다.",
+    "solutionImageCaption": "g(0)=9이므로 (3/2)f(k)=(9/2)|k-3|=9에서 k=1, 5이다. 두 패널은 g가 x=0에서 연속인 k=1, 5의 경우이고 g의 꺾이는 점에서 g(x)h(x)가 미분가능하려면 h가 그 점에서 0이어야 한다. k=1이면 g는 P(0,9)와 Q(3,0)에서 꺾여 h(0)=h(3)=0이고 h(x)=x(x-3)(x+2)로 h(1)=-6이다. k=5이면 R(-2,0), P, Q에서 꺾여 같은 h를 쓰며 h(5)=70이다. 합은 64이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,

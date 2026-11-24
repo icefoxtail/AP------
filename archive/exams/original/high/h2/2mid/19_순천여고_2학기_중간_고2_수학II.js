@@ -62,7 +62,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RANGE"
     ],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/19_순천여고_2학기_중간_고2_수학II/q2-solution.svg",
+    "solutionImageAlt": "x=1과 x=2에서 수평선과 선분이 끊어지고, x=3에서는 양쪽 선분이 가로축의 한 점으로 모이는데 위쪽에 닫힌 점이 따로 찍혀 있는 그래프이다.",
+    "solutionImageCaption": "예: 해설이 읽은 값에 맞춘 그래프이다. x=1에서 좌극한 1, 우극한 2로 다르고, x=2에서 좌극한 2, 우극한 1로 달라 극한이 없는 점은 2개이다(a=2). x=3에서는 양쪽 모두 0으로 가까워져 극한은 있지만 닫힌 점 f(3)=1이 따로 있어 불연속이다. 불연속인 점은 x=1, 2, 3의 3개이다(b=3). x=1, 2의 함숫값은 문제에서 주어지지 않아 채운 점은 예시이다. 따라서 a+b=5이고 답은 ②이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 3,
@@ -213,7 +217,11 @@ window.questionBank = [
     "metaStatus": "R2_RPM_REVIEWED_ACTIVE_EXACT; UID_PENDING",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/19_순천여고_2학기_중간_고2_수학II/q7-solution.svg",
+    "solutionImageAlt": "왼쪽 아래에서 오른쪽 위로 오르는 두 곡선이 한 점에서 만나고, 그 점에서 두 곡선 모두 접하는 점선 직선이 하나 그려진 그래프이다.",
+    "solutionImageCaption": "f(1)=g(1)=3이라 두 곡선이 점 (1,3)에서 만난다. 분자 f(1+h)-g(1-h)=[f(1+h)-f(1)]+[g(1)-g(1-h)]이므로 극한은 f′(1)+g′(1)이다. 두 곡선 모두 x=1에서의 접선의 기울기가 3이라 점선 y=3x에 접한다. 따라서 3+3=6이고 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -337,7 +345,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RANGE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "solutionImage": "assets/images/19_순천여고_2학기_중간_고2_수학II/q11-solution.svg",
+    "solutionImageAlt": "왼쪽 아래 점 A에서 시작해 올라가 꼭대기를 지나 내려갔다 다시 오르는 삼차곡선과 점 A, B를 잇는 오르는 직선 l, 그리고 점 T에서 접하며 l과 평행한 직선 m이 나타난 그래프이다.",
+    "solutionImageCaption": "롤의 정리에서 f(0)=f(2)이므로 a=-2이고 f(x)=x³-2x²+1이다. 구간 [-2,2]의 양 끝점 A(-2,-15), B(2,1)을 잇는 할선 l의 기울기는 4이다. f′(c)=3c²-4c=4에서 c=-2/3 또는 c=2인데 c=2는 구간의 끝점이라 열린구간 밖이다. 접점 T(-2/3,-5/27)에서의 접선 m이 l과 평행하다. 모든 c의 합은 -2/3이므로 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,

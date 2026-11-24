@@ -658,7 +658,11 @@ window.questionBank = [
         "reason": "f'(2)=3에 계수 -3/2를 적용하지 않았습니다."
       }
     ],
-    "questionUid": "qid_v1_66503d2b235064dd6692dd4ecbea05b09b6d51b48a283fb1c0b9e96f8a9b47a2"
+    "questionUid": "qid_v1_66503d2b235064dd6692dd4ecbea05b09b6d51b48a283fb1c0b9e96f8a9b47a2",
+    "solutionImage": "assets/images/19_제일고_2학기_중간_고2_수학II/q10-solution.svg",
+    "solutionImageAlt": "아래로 볼록한 포물선 위의 점 T에서 접하는 가파르게 오르는 직선 l과, T에서 l에 수직으로 완만하게 내려가는 직선 n이 나타난 그래프이다.",
+    "solutionImageCaption": "예: f(x)=x²-x일 때를 그렸다. 점 T(2,2)에서의 접선 l의 기울기가 3이고 l에 수직인 직선 n의 기울기는 -1/3이다. 그래서 f′(2)=3이다. h→0에서 [f(2-3h)-f(2)]/(2h)=(-3/2)·[f(2+u)-f(2)]/u (u=-3h)이므로 극한은 (-3/2)·3=-9/2이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -1242,7 +1246,11 @@ window.questionBank = [
     "metaProjectionStatus": "EXACT_ACTIVE_BINDING_FOUND_CROSSWALK_STALE",
     "questionUid": "qid_v1_9db35dafd4afe35acdd96753af6ee152bd1cfc77a7254c7d952666d19bdd14d1",
     "rpmL3": "미분계수",
-    "rpmL4": "정의로 미분계수"
+    "rpmL4": "정의로 미분계수",
+    "solutionImage": "assets/images/19_제일고_2학기_중간_고2_수학II/q19-solution.svg",
+    "solutionImageAlt": "왼쪽의 아래로 볼록한 포물선이 가로축 위의 점 P에서 오른쪽의 완만하게 오르는 직선으로 꺾여 이어지는 그래프이다.",
+    "solutionImageCaption": "f(2)=0이고 x→2-, x→2+의 극한도 모두 0이라 x=2에서 연속이다. 그림에서 왼쪽 포물선과 오른쪽 직선이 x축 위의 점 P(2,0)에서 만난다. 좌미분계수는 2·2-1=3, 우미분계수는 1로 서로 달라 P에서 뾰족하게 꺾이므로 미분가능하지 않다. 따라서 연속이지만 미분가능하지 않다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,

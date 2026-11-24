@@ -101,7 +101,11 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "uid": "22_매산고_2학기_중간_고2_수학II:q03"
+    "uid": "22_매산고_2학기_중간_고2_수학II:q03",
+    "solutionImage": "assets/images/22_매산고_2학기_중간_고2_수학II/q3-solution.svg",
+    "solutionImageAlt": "점 A에서 내려가 한 번 꺾여 다시 올라가는 삼차곡선과, 곡선 위의 두 점 A, B를 잇는 오른쪽 아래로 내려가는 직선 l이 그려진 그래프이다.",
+    "solutionImageCaption": "예: a=-6일 때의 f(x)=x³-6x+3이다. x가 0에서 2까지 변할 때의 평균변화율은 (f(2)-f(0))/2=((8+2a+3)-3)/2=4+a이고 이것이 -2이므로 a=-6이다. 그림의 직선 l은 두 점 A(0,3), B(2,-1)을 잇는 직선으로 기울기가 평균변화율 -2이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -698,6 +702,10 @@ window.questionBank = [
       "COND_PIECEWISE_DOMAIN_PARTITION",
       "COND_UNIVERSAL_INPUTS"
     ],
-    "uid": "22_매산고_2학기_중간_고2_수학II:q21"
+    "uid": "22_매산고_2학기_중간_고2_수학II:q21",
+    "solutionImage": "assets/images/22_매산고_2학기_중간_고2_수학II/q21-solution.svg",
+    "solutionImageAlt": "두 패널이 나란히 있다. 첫째 패널에는 x=-1에서 끊기고 x=1에서 이어지는 절댓값 모양의 조각 그래프가, 둘째 패널에는 꼭짓점 V가 가장 낮은 아래로 볼록한 포물선과 점 Z가 그려져 있다.",
+    "solutionImageCaption": "a=-1일 때 g(x)=|x| (|x|≤1), 2x-1 (|x|>1)이고 x=-1에서만 높이 -3(좌극한)과 1(함숫값)로 뛰며 x=1에서는 이어진다. h=f′는 최고차항 계수 1/4인 이차함수로 h(-3)=h(1)에서 대칭축이 x=-1이므로 h(x)=(x+1)²/4-1이고 최솟값이 -1이라 h(x)≥-1이어서 g∘h가 g의 점프 u<-1을 지나지 않는다. 그림의 점 Z(1,0)이 h(1)=f′(1)=0이다. 따라서 답은 0이다.",
+    "solutionImageSize": "full"
   }
 ];

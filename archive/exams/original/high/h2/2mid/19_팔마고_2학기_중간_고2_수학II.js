@@ -295,7 +295,11 @@ window.questionBank = [
     "difficultyReason": "그래프 열린 점과 채워진 점 세 가지를 방향별로 읽어야 한다.",
     "levelReason": "그래프 열린 점과 채워진 점 세 가지를 방향별로 읽어야 한다.",
     "sourceProvenance": "ORIGINAL_SOURCE_ONLY_MASTER_READY_CREATE",
-    "sourceExamUid": "19_팔마고_2학기_중간_고2_수학II"
+    "sourceExamUid": "19_팔마고_2학기_중간_고2_수학II",
+    "solutionImage": "assets/images/19_팔마고_2학기_중간_고2_수학II/q5-solution.svg",
+    "solutionImageAlt": "x=-1에서 내려오는 선분이 높은 열린 점으로 끝나고 x=0에서는 오른쪽 수평선이 위쪽 열린 점에서 시작하며 아래쪽에 닫힌 점이 따로 있는 끊어진 그래프이다.",
+    "solutionImageCaption": "예: 해설이 읽은 값에 맞춘 그래프이다. x→-1-에서 왼쪽 선분은 높이 2의 열린 점 (-1,2)로 가까워지므로 좌극한은 2이다. x→0+에서 오른쪽 선분은 높이 -1의 열린 점 (0,-1)에서 시작하므로 우극한은 -1이고 x=0의 닫힌 점은 f(0)=-2이다. 합은 2+(-1)+(-2)=-1이다(x=-1의 함숫값은 문제에서 필요 없어 닫힌 점은 예시이다). 따라서 답은 ②이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 6,
@@ -605,7 +609,11 @@ window.questionBank = [
     "difficultyReason": "부등식을 x로 나누는 방향과 정규화 변수 u=f/x의 극한을 선택한다.",
     "levelReason": "부등식을 x로 나누는 방향과 정규화 변수 u=f/x의 극한을 선택한다.",
     "sourceProvenance": "ORIGINAL_SOURCE_ONLY_MASTER_READY_CREATE",
-    "sourceExamUid": "19_팔마고_2학기_중간_고2_수학II"
+    "sourceExamUid": "19_팔마고_2학기_중간_고2_수학II",
+    "solutionImage": "assets/images/19_팔마고_2학기_중간_고2_수학II/q10-solution.svg",
+    "solutionImageAlt": "원점에서 만나는 아래로 볼록한 포물선과 위로 볼록한 포물선 사이에 오르는 직선이 끼어 있는 그래프이다.",
+    "solutionImageCaption": "예: f(x)=x일 때를 그렸다. 곡선 y=-x²+x와 y=x²+x 사이에 f가 놓인다. x>0에서 x로 나누면 1-x≤f(x)/x≤1+x이고 x→0+에서 양쪽이 모두 1로 가까워지므로 u=f(x)/x→1이다. 구하는 식은 u²/(2+u)이므로 극한은 1/3이고 p=1, q=3, p+q=4이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -1019,7 +1027,11 @@ window.questionBank = [
     "difficultyReason": "도함수 대입과 점기울기 접선 방정식을 바로 적용한다.",
     "levelReason": "도함수 대입과 점기울기 접선 방정식을 바로 적용한다.",
     "sourceProvenance": "ORIGINAL_SOURCE_ONLY_MASTER_READY_CREATE",
-    "sourceExamUid": "19_팔마고_2학기_중간_고2_수학II"
+    "sourceExamUid": "19_팔마고_2학기_중간_고2_수학II",
+    "solutionImage": "assets/images/19_팔마고_2학기_중간_고2_수학II/q17-solution.svg",
+    "solutionImageAlt": "왼쪽 아래에서 올라 꼭대기를 지나 내려가는 삼차곡선과 곡선 위의 점 T에서 접하는 내려가는 직선 l, 그리고 l이 세로축과 만나는 점 I가 나타난 그래프이다.",
+    "solutionImageCaption": "y′=-6x²+5이므로 점 T(1,3)에서의 접선의 기울기는 -1이고 접선 l은 y-3=-(x-1), 즉 y=-x+4이다. l이 y축과 만나는 점 I(0,4)의 높이가 y절편이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -1142,7 +1154,11 @@ window.questionBank = [
     "difficultyReason": "두 정리의 적용 구간과 접선 기울기 개수를 그래프에서 구분한다.",
     "levelReason": "두 정리의 적용 구간과 접선 기울기 개수를 그래프에서 구분한다.",
     "sourceProvenance": "ORIGINAL_SOURCE_ONLY_MASTER_READY_CREATE",
-    "sourceExamUid": "19_팔마고_2학기_중간_고2_수학II"
+    "sourceExamUid": "19_팔마고_2학기_중간_고2_수학II",
+    "solutionImage": "assets/images/19_팔마고_2학기_중간_고2_수학II/q19-solution.svg",
+    "solutionImageAlt": "가운데가 솟은 W 모양의 곡선으로 왼쪽과 오른쪽에 극소점, 가운데에 극대점이 있고, 곡선 위의 두 끝점을 잇는 오르는 직선과 높이가 같은 두 점을 지나는 수평선이 그려진 그래프이다.",
+    "solutionImageCaption": "예: f(x)=(x²-1)²일 때를 그렸다. 왼쪽 극소점 M1, 가운데 극대점 M2, 오른쪽 극소점 M3이 있다. 할선 l은 양 끝점 A, D를 잇는 직선으로 기울기가 양수이고, 이와 평행한 접선은 M1에서 M2로 올라가는 부분에 2개, M3에서 D로 올라가는 부분에 1개 있어 p=3이다. 수평선 h는 f(b)=f(c)인 B, C를 지나고 (b,c) 안에서 수평 접선이 세 극점 M1, M2, M3에 있어 q=3이다. 따라서 p+q=6이고 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -1195,7 +1211,11 @@ window.questionBank = [
     "difficultyReason": "정의역·좌극한·우극한의 기본 연속 조건을 확인한다.",
     "levelReason": "정의역·좌극한·우극한의 기본 연속 조건을 확인한다.",
     "sourceProvenance": "ORIGINAL_SOURCE_ONLY_MASTER_READY_CREATE",
-    "sourceExamUid": "19_팔마고_2학기_중간_고2_수학II"
+    "sourceExamUid": "19_팔마고_2학기_중간_고2_수학II",
+    "solutionImage": "assets/images/19_팔마고_2학기_중간_고2_수학II/q20-solution.svg",
+    "solutionImageAlt": "x=0에서 끊어지는 그래프로, 아래쪽 수평선과 위쪽 수평선이 x=0에서 각각 열린 점으로 끝나는 모양이다.",
+    "solutionImageCaption": "f(x)=|x|/x의 그래프이다. x>0이면 1, x<0이면 -1이므로 x→0-에서 좌극한 -1, x→0+에서 우극한 1로 다르다. x=0에서는 분모가 0이라 f(0)이 정의되지 않아 양쪽 수평선이 모두 열린 점으로 끝난다. 함숫값이 없고 좌우극한도 달라 x=0에서 불연속이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -1303,7 +1323,11 @@ window.questionBank = [
     "difficultyReason": "원 반지름, 직선의 절편, 유리화, 극한을 연결하는 여러 단계의 기하 모델링이다.",
     "levelReason": "원 반지름, 직선의 절편, 유리화, 극한을 연결하는 여러 단계의 기하 모델링이다.",
     "sourceProvenance": "ORIGINAL_SOURCE_ONLY_MASTER_READY_CREATE",
-    "sourceExamUid": "19_팔마고_2학기_중간_고2_수학II"
+    "sourceExamUid": "19_팔마고_2학기_중간_고2_수학II",
+    "solutionImage": "assets/images/19_팔마고_2학기_중간_고2_수학II/q22-solution.svg",
+    "solutionImageAlt": "아래로 볼록한 포물선 위의 점 A를 지나는 원점 중심의 원이 가로축의 점 B와 만나고, A와 B를 지나는 내려가는 직선이 세로축의 점 C와 만나는 그래프이다.",
+    "solutionImageCaption": "예: t=1일 때를 그린다. A(1,1)이고 원점 중심의 원은 A를 지나므로 반지름은 OA=√2, 양의 x축과 만나는 점은 B(√2,0)이다. 직선 AB가 y축과 만나는 점 C의 높이는 2+√2이다. 일반적으로 C의 높이는 √(1+t²)(√(1+t²)+1)이고 A가 원점에 가까워지는 t→0+에서 2에 가까워진다. 따라서 α=2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,

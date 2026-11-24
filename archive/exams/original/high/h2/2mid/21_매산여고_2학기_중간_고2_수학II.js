@@ -52,7 +52,11 @@ window.questionBank = [
       "sourceQid": "q01",
       "uidResolution": "PENDING_OFFICIAL_RESOLVER",
       "localIdentitySha256": "7a7c4afdbe24e63052d1d6c7031b53ec1081fc148c099207a8b6e90c5636558f"
-    }
+    },
+    "solutionImage": "assets/images/21_매산여고_2학기_중간_고2_수학II/q1-solution.svg",
+    "solutionImageAlt": "왼쪽 점 A에서 내려가 점 C에서 가장 낮고 점 D에서 가로축에 닿은 뒤 점 E로 내려갔다가 오른쪽 끝 점 F로 올라가는 꺾은선 그래프이다.",
+    "solutionImageCaption": "예: 주어진 여섯 값 A(-1,2), B(0,-1), C(1,-3), D(2,0), E(3,-2), F(4,1)을 꺾은선으로 이은 연속함수이다. A에서 B로 갈 때 부호가 +에서 -로 바뀌어 (-1,0)에서 x축을 지난다. D(2,0)은 x축 위의 점이라 그 자체로 근이다. E에서 F로 갈 때 부호가 -에서 +로 바뀌어 (3,4)에서 x축을 지난다. 이 세 근은 서로 다른 위치에 있으므로 적어도 3개이고 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -265,7 +269,11 @@ window.questionBank = [
       "sourceQid": "q05",
       "uidResolution": "PENDING_OFFICIAL_RESOLVER",
       "localIdentitySha256": "4f7535e7332adcc961d9b1def509432fdd0290bb6b8ca059a7b40c3b9ef2bdb2"
-    }
+    },
+    "solutionImage": "assets/images/21_매산여고_2학기_중간_고2_수학II/q5-solution.svg",
+    "solutionImageAlt": "두 패널이 나란히 있다. 첫째 패널에는 원점 P에서 V자로 꺾이는 그래프가, 둘째 패널에는 점 Q에서 뾰족하게 꺾이며 양쪽이 올라가는 W 모양 일부의 그래프가 그려져 있다.",
+    "solutionImageCaption": "여섯 함수 중 x=0에서 연속이면서 뾰족하게 꺾이는 두 함수를 그렸다. ㄴ은 √(x²)=|x|라 원점 P에서 좌미분계수 -1, 우미분계수 1로 꺾인다. ㄹ은 x<0에서 x²+2x-3, x>0에서 x²-2x-3이라 Q(0,-3)에서 값은 같지만 좌미분계수 2와 우미분계수 -2가 달라 꺾인다. 나머지 ㄱ, ㄷ, ㅁ, ㅂ은 x=0 근방에서 매끄러워 미분가능하다. 따라서 답은 ④(ㄴ, ㄹ)이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -1010,7 +1018,11 @@ window.questionBank = [
       "sourceQid": "q18",
       "uidResolution": "PENDING_OFFICIAL_RESOLVER",
       "localIdentitySha256": "d1c002d40689e82ac17f353287a9c08e6b5f31648f3c8e0f447d31fdf659baa4"
-    }
+    },
+    "solutionImage": "assets/images/21_매산여고_2학기_중간_고2_수학II/q18-solution.svg",
+    "solutionImageAlt": "가운데가 뾰족하게 솟은 삼각형 모양의 꼭대기가 있고, 양쪽 끝에서 아래로 내려온 닫힌 점과 그보다 높은 곳의 수평선이 끊어져 있는 그래프이다.",
+    "solutionImageCaption": "g는 |x|≤2에서 -|x|+3이고 밖에서 2이다. x=±2에서 안쪽 값은 1(닫힌 점)이고 바깥쪽 극한은 2(열린 점)라 불연속이다. f(x)g(x)가 연속이려면 f(-2)=f(2)=0이어야 하므로 f(x)=x²-4이다. f(x-a)g(x)가 x=2에서 연속이려면 f(2-a)=0이라 a=0 또는 4, x=-2에서 연속이려면 f(-2-a)=0이라 a=0 또는 -4이다. 정확히 한 점에서만 불연속이려면 a=±4이고 곱은 -16이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 19,
@@ -1270,6 +1282,10 @@ window.questionBank = [
       "sourceQid": "q23",
       "uidResolution": "PENDING_OFFICIAL_RESOLVER",
       "localIdentitySha256": "6e455536363a14bab27f6aacf7eb0efea6416efd0df3fccc6fd66136cdaab626"
-    }
+    },
+    "solutionImage": "assets/images/21_매산여고_2학기_중간_고2_수학II/q23-solution.svg",
+    "solutionImageAlt": "위로 올라가는 삼차곡선과 아래로 볼록한 포물선이 가운데에서 서로 접하고 왼쪽에서 한 번 더 만나며 오른쪽에서는 삼차곡선이 포물선 위로 벌어지는 그래프이다.",
+    "solutionImageCaption": "예: 조건에 맞는 한 쌍 f(x)=x³+2x²+4x-24, g(x)=3x²+12x-36을 그렸다. g′(x)=6x+12이고 h=f-g로 놓으면 h=(x-2)²(x+3)이다. x=2에서 값과 기울기가 같아 두 곡선이 접하고, x=-3에서는 서로 만난다(두 점은 T(2,0), U(-3,-45)이고 g의 꼭짓점은 V(-2,-48)이다). x=4에서 f(4)=88, g(4)=60이므로 f(4)-g(4)=h(4)=28이다. 이 차이는 f, g를 각각 구하지 않아도 h에서 얻는다.",
+    "solutionImageSize": "full"
   }
 ];
