@@ -382,6 +382,7 @@ window.questionBank = [
   },
   {
     "id": 9,
+    "image": "assets/images/21_풍덕중_1학기_중간_중3_유사/q09-problem.svg",
     "category": "수직선 위의 실수 표현",
     "standardCourse": "중3",
     "curriculum": "2015",

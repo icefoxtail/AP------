@@ -52,6 +52,7 @@ window.questionBank = [
   },
   {
     "id": 2,
+    "image": "assets/images/25_왕운중_2학기_기말_중3_유사/q02-problem.svg",
     "category": "원과 직선",
     "standardCourse": "중3",
     "curriculum": "2015",
@@ -145,6 +146,7 @@ window.questionBank = [
   },
   {
     "id": 4,
+    "image": "assets/images/25_왕운중_2학기_기말_중3_유사/q04-problem.svg",
     "category": "원주각",
     "standardCourse": "중3",
     "curriculum": "2015",
@@ -192,6 +194,7 @@ window.questionBank = [
   },
   {
     "id": 5,
+    "image": "assets/images/25_왕운중_2학기_기말_중3_유사/q05-problem.svg",
     "category": "원주각",
     "standardCourse": "중3",
     "curriculum": "2015",
@@ -478,6 +481,7 @@ window.questionBank = [
   },
   {
     "id": 11,
+    "image": "assets/images/25_왕운중_2학기_기말_중3_유사/q11-problem.svg",
     "category": "원주각",
     "standardCourse": "중3",
     "curriculum": "2015",

@@ -364,6 +364,7 @@ window.questionBank = [
   },
   {
     "id": 9,
+    "image": "assets/images/23_금당고_2학기_기말_고1_유사/q09-problem.svg",
     "category": "조합",
     "standardCourse": "수학(하)",
     "curriculum": "2015",

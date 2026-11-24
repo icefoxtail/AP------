@@ -1,10 +1,335 @@
 {
-  "question": {
-    "status": "UNSUPPORTED",
-    "reason": "정오각형의 5개 꼭짓점과 내부 별 모양 대각선 교점 5개를 함께 그리는 전용 다각형-대각선 교점 모드가 지원되지 않는다."
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "300"
+            },
+            {
+              "kind": "integer",
+              "value": "470"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "110"
+            },
+            {
+              "kind": "integer",
+              "value": "332"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "182"
+            },
+            {
+              "kind": "integer",
+              "value": "108"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "S",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "418"
+            },
+            {
+              "kind": "integer",
+              "value": "108"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "490"
+            },
+            {
+              "kind": "integer",
+              "value": "332"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lnPR",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "P",
+          "R"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lnPS",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "P",
+          "S"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lnQS",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "Q",
+          "S"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lnQT",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "Q",
+          "T"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lnRT",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "R",
+          "T"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "I1",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lnPR",
+          "lnQT"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "I2",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lnPR",
+          "lnQS"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "I3",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lnPS",
+          "lnQS"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "I4",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lnPS",
+          "lnRT"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "I5",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lnQT",
+          "lnRT"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
   },
-  "solution": {
-    "status": "EXEMPT",
-    "reason": "전체 조합에서 대각선 5개 위 일직선 3점 조합을 빼는 여사건 계산이므로 별도 해설 그림은 필요하지 않다."
-  }
+  "displayLines": [],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 560
+  },
+  "displayPoints": [
+    "P",
+    "Q",
+    "R",
+    "S",
+    "T",
+    "I1",
+    "I2",
+    "I3",
+    "I4",
+    "I5"
+  ],
+  "hiddenPointNames": [
+    "I1",
+    "I2",
+    "I3",
+    "I4",
+    "I5"
+  ],
+  "pointNames": {
+    "P": "P",
+    "Q": "Q",
+    "R": "R",
+    "S": "S",
+    "T": "T"
+  },
+  "displaySegments": [
+    {
+      "id": "sPQ",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    },
+    {
+      "id": "sQR",
+      "refs": [
+        "Q",
+        "R"
+      ]
+    },
+    {
+      "id": "sRS",
+      "refs": [
+        "R",
+        "S"
+      ]
+    },
+    {
+      "id": "sST",
+      "refs": [
+        "S",
+        "T"
+      ]
+    },
+    {
+      "id": "sTP",
+      "refs": [
+        "T",
+        "P"
+      ]
+    },
+    {
+      "id": "sPR",
+      "refs": [
+        "P",
+        "R"
+      ]
+    },
+    {
+      "id": "sPS",
+      "refs": [
+        "P",
+        "S"
+      ]
+    },
+    {
+      "id": "sQS",
+      "refs": [
+        "Q",
+        "S"
+      ]
+    },
+    {
+      "id": "sQT",
+      "refs": [
+        "Q",
+        "T"
+      ]
+    },
+    {
+      "id": "sRT",
+      "refs": [
+        "R",
+        "T"
+      ]
+    }
+  ],
+  "planeMarks": {},
+  "caption": "정오각형의 5개 꼭짓점과 5개 대각선, 그리고 대각선들의 교점 5개가 나타나 있는 그림이다.",
+  "accessibilityDescription": "정오각형의 변과 대각선들이 모두 그려져 있으며, 5개의 꼭짓점과 내부에서 대각선들이 서로 만나 생기는 5개의 교점을 포함하여 총 10개의 점이 표시되어 있다.",
+  "newVisualInformation": [
+    "정오각형의 꼭짓점 5개",
+    "대각선들의 교점 5개"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림과 같이 정오각형의 꼭짓점 $\\mathrm{P}$, $\\mathrm{Q}$, $\\mathrm{R}$, $\\mathrm{S}$, $\\mathrm{T}$와 대각선들의 교점 $5$개가 있다. 서로 다른 점 $10$개 중에서 세 점을 꼭짓점으로 하는 모든 삼각형의 개수는? [4.2점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
 }

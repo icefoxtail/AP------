@@ -1,0 +1,313 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "직각삼각형 ABC에서 변 AB 위의 점 E와 변 BC 위의 점 D를 잡고 선분 DE와 선분 AD를 그은 그림이다.",
+  "accessibilityDescription": "각 C가 직각인 직각삼각형 ABC에서 빗변 AB 위에 점 E, 밑변 BC 위에 점 D가 있다. 선분 DE는 선분 AB와 수직이고 선분 AD가 그어져 있다. 선분 AC와 선분 AE의 길이가 같고 선분 AB는 13cm, 선분 BC는 12cm, 선분 AC는 5cm이다.",
+  "newVisualInformation": [
+    "선분 AB는 13 cm이다.",
+    "선분 BC는 12 cm이다.",
+    "선분 AC는 5 cm이다.",
+    "각 C와 각 BED는 직각이다.",
+    "선분 AC와 선분 AE의 길이는 같다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "26",
+              "denominator": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "96",
+              "denominator": "13"
+            },
+            {
+              "kind": "rational",
+              "numerator": "40",
+              "denominator": "13"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Zpad1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "76",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "5",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Zpad2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-16",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "Zpad1",
+    "Zpad2"
+  ],
+  "displaySegments": [
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "sEA",
+      "refs": [
+        "E",
+        "A"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDB",
+      "refs": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "e0",
+        "count": 1,
+        "segments": [
+          "sEA",
+          "sAC"
+        ],
+        "color": "BLUE"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "d0",
+        "from": "B",
+        "to": "C",
+        "label": "12\\,cm",
+        "side": "BELOW",
+        "style": "ARROW",
+        "offset": 2
+      },
+      {
+        "id": "d1",
+        "from": "A",
+        "to": "C",
+        "label": "5\\,cm",
+        "side": "RIGHT",
+        "style": "ARROW",
+        "offset": 1
+      }
+    ],
+    "callouts": [
+      {
+        "id": "k1",
+        "kind": "SEGMENT",
+        "path": [
+          "B",
+          "A"
+        ],
+        "at": "ABOVE",
+        "link": "ENDS",
+        "dimensions": [
+          {
+            "id": "kd1",
+            "from": "B",
+            "to": "A",
+            "label": "13",
+            "unit": "cm",
+            "side": "ABOVE",
+            "offset": "AUTO"
+          }
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 384,
+    "height": 320
+  },
+  "rightAngles": [
+    {
+      "id": "ra0",
+      "refs": [
+        "A",
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "ra1",
+      "refs": [
+        "B",
+        "E",
+        "D"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "Zpad1",
+    "Zpad2"
+  ],
+  "hiddenPointStyle": "NONE",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\angle C = 90^\\circ$인 직각삼각형 $ABC$에서 변 $AB$ 위의 점 $E$와 변 $BC$ 위의 점 $D$에 대하여 $\\overline{AC} = \\overline{AE}$, $\\overline{AB} \\perp \\overline{DE}$이다. $\\overline{AB} = 13\\text{ cm}, \\overline{BC} = 12\\text{ cm}, \\overline{AC} = 5\\text{ cm}$일 때, 다음 물음에 답하시오. [5점]  \n(1) $\\triangle AED \\equiv \\triangle ACD$임을 설명하여라. [2점]  \n(2) $\\triangle BDE$의 둘레의 길이를 구하여라. [3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

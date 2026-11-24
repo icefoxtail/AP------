@@ -99,6 +99,7 @@ window.questionBank = [
   },
   {
     "id": 3,
+    "image": "assets/images/23_신흥중_2학기_중간_중2_유사/q03-problem.svg",
     "category": "일차함수와 일차방정식의 관계",
     "standardCourse": "중2",
     "curriculum": "2015",
@@ -146,6 +147,7 @@ window.questionBank = [
   },
   {
     "id": 4,
+    "image": "assets/images/23_신흥중_2학기_중간_중2_유사/q04-problem.svg",
     "category": "삼각형의 성질",
     "standardCourse": "중2",
     "curriculum": "2015",
@@ -193,6 +195,7 @@ window.questionBank = [
   },
   {
     "id": 5,
+    "image": "assets/images/23_신흥중_2학기_중간_중2_유사/q05-problem.svg",
     "category": "삼각형의 성질",
     "standardCourse": "중2",
     "curriculum": "2015",
@@ -574,6 +577,7 @@ window.questionBank = [
   },
   {
     "id": 13,
+    "image": "assets/images/23_신흥중_2학기_중간_중2_유사/q13-problem.svg",
     "category": "사각형의 성질",
     "standardCourse": "중2",
     "curriculum": "2015",
@@ -903,6 +907,7 @@ window.questionBank = [
   },
   {
     "id": 20,
+    "image": "assets/images/23_신흥중_2학기_중간_중2_유사/q20-problem.svg",
     "category": "삼각형의 성질",
     "standardCourse": "중2",
     "curriculum": "2015",

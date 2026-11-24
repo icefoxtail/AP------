@@ -1,0 +1,253 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "0",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "0",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-1368",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-3759",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "8632",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-3759",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "10000",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "0",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-2394",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-26313",
+              "denominator": "4000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "2553",
+              "denominator": "875"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-3759",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "sBF",
+      "refs": [
+        "B",
+        "F"
+      ]
+    },
+    {
+      "id": "sFC",
+      "refs": [
+        "F",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "sFD",
+      "refs": [
+        "F",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lBF",
+        "ownerSegment": "sBF",
+        "text": "x"
+      },
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "4"
+      },
+      {
+        "id": "lBE",
+        "ownerSegment": "sBE",
+        "text": "3"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dAD",
+        "from": "A",
+        "to": "D",
+        "label": "10",
+        "side": "ABOVE",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 340
+  },
+  "caption": "평행사변형 ABCD와 변 AB의 연장선 위의 점 E, 선분 ED와 변 BC의 교점 F를 나타낸 그림이다.",
+  "accessibilityDescription": "평행사변형 ABCD에서 변 AB를 연장한 선 위에 점 E가 있고 선분 ED가 변 BC와 점 F에서 만난다. 선분 AB의 길이는 4, 선분 BE의 길이는 3, 선분 AD의 길이는 10이고 선분 BF에는 x가 표시되어 있다.",
+  "newVisualInformation": [
+    "점 E, B, A가 일직선 위에 있고 선분 ED와 선분 BC의 교점이 F이다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "평행사변형 $ABCD$에서 변 $AB$의 연장선 위에 점 $E$가 있고(점 $E, B, A$가 차례로 한 직선 위에 있음), 선분 $ED$와 변 $BC$의 교점을 $F$라 하자. $\\overline{AB} = 4, \\overline{AD} = 10, \\overline{BE} = 3$일 때, $\\overline{BF}$의 길이는? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

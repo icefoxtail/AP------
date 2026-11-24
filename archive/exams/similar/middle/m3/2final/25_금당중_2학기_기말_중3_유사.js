@@ -718,6 +718,7 @@ window.questionBank = [
   },
   {
     "id": 16,
+    "image": "assets/images/25_금당중_2학기_기말_중3_유사/q16-problem.svg",
     "category": "대푯값과 산포도",
     "standardCourse": "중3",
     "curriculum": "2015",

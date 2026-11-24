@@ -1,0 +1,251 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "100"
+            },
+            {
+              "kind": "integer",
+              "value": "120"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "30"
+            },
+            {
+              "kind": "integer",
+              "value": "120"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "86"
+            },
+            {
+              "kind": "integer",
+              "value": "23"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "170"
+            },
+            {
+              "kind": "integer",
+              "value": "120"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "114"
+            },
+            {
+              "kind": "integer",
+              "value": "217"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "O"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAO",
+      "refs": [
+        "A",
+        "O"
+      ]
+    },
+    {
+      "id": "sOC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "sBO",
+      "refs": [
+        "B",
+        "O"
+      ]
+    },
+    {
+      "id": "sOD",
+      "refs": [
+        "O",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dAB",
+        "from": "A",
+        "to": "B",
+        "label": "8",
+        "unit": "cm",
+        "side": "LEFT",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      }
+    ],
+    "callouts": [
+      {
+        "id": "kAC",
+        "kind": "SEGMENT",
+        "path": [
+          "A",
+          "C"
+        ],
+        "at": "ABOVE",
+        "dimensions": [
+          {
+            "id": "dAC",
+            "from": "A",
+            "to": "C",
+            "label": "10",
+            "unit": "cm",
+            "side": "ABOVE",
+            "style": "ARROW",
+            "offset": "AUTO"
+          }
+        ]
+      },
+      {
+        "id": "kBD",
+        "kind": "SEGMENT",
+        "path": [
+          "B",
+          "D"
+        ],
+        "at": "RIGHT",
+        "dimensions": [
+          {
+            "id": "dBD",
+            "from": "B",
+            "to": "D",
+            "label": "14",
+            "unit": "cm",
+            "side": "BELOW",
+            "style": "ARROW",
+            "offset": "AUTO"
+          }
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 440,
+    "height": 360
+  },
+  "caption": "평행사변형 ABCD에서 두 대각선 AC와 BD의 교점을 점 O라 하고 변 AB와 두 대각선의 길이가 주어진 그림이다.",
+  "accessibilityDescription": "평행사변형 ABCD에서 두 대각선 AC와 BD가 점 O에서 만나고 선분 AB의 길이는 8 cm, 대각선 AC의 길이는 10 cm, 대각선 BD의 길이는 14 cm로 표시되어 있다.",
+  "newVisualInformation": [
+    "선분 AB의 길이는 8 cm이다.",
+    "선분 AC의 길이는 10 cm이다.",
+    "선분 BD의 길이는 14 cm이다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "평행사변형 $ABCD$에서 두 대각선 $AC$, $BD$의 교점을 $O$라 하자. $\\overline{AB}=8\\text{ cm}$, $\\overline{AC}=10\\text{ cm}$, $\\overline{BD}=14\\text{ cm}$일 때, $\\triangle ABO$의 둘레의 길이는? [3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1072,6 +1072,7 @@ window.questionBank = [
   },
   {
     "id": 23,
+    "image": "assets/images/26_신흥중_2학기_중간_중2_유사/q23-problem.svg",
     "category": "삼각형의 성질",
     "standardCourse": "중2",
     "curriculum": "2022",

@@ -1,12 +1,250 @@
 {
-  "target": "수직선 위 B(2), C(5)에서 수직 높이 CA=1인 직각삼각형 BCA와 B 중심 호 AP",
-  "type": "svg",
-  "width": 340,
-  "height": 160,
-  "elements": [
-    "수직선과 눈금 점 P, B(2), C(5)",
-    "직각삼각형 BCA (밑변 BC=3, 높이 CA=1)",
-    "B 중심 반지름 BA로 수직선 왼쪽 교점 P를 잇는 호"
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "neg",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "10"
+                  }
+                ]
+              }
+            ]
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "10"
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "C",
+    "A",
+    "P",
+    "L1",
+    "L2"
   ],
-  "svgCode": "<svg viewBox=\"0 0 340 160\" xmlns=\"http://www.w3.org/2000/svg\">\n  <line x1=\"15\" y1=\"125\" x2=\"325\" y2=\"125\" stroke=\"#1e293b\" stroke-width=\"1.6\"/>\n  <polygon points=\"325,125 317,121 317,129\" fill=\"#1e293b\"/>\n  <polygon points=\"160,125 265,125 265,90\" fill=\"#e0f2fe\" fill-opacity=\"0.65\" stroke=\"#1e40af\" stroke-width=\"1.8\"/>\n  <polyline points=\"257,125 257,117 265,117\" fill=\"none\" stroke=\"#1e40af\" stroke-width=\"1.2\"/>\n  <path d=\"M 265 90 A 110.7 110.7 0 0 0 49.3 125\" fill=\"none\" stroke=\"#dc2626\" stroke-width=\"1.4\" stroke-dasharray=\"4,3\"/>\n  <circle cx=\"49.3\" cy=\"125\" r=\"3\" fill=\"#dc2626\"/>\n  <circle cx=\"160\" cy=\"125\" r=\"2.8\" fill=\"#1e293b\"/>\n  <circle cx=\"265\" cy=\"125\" r=\"2.8\" fill=\"#1e293b\"/>\n  <text x=\"49.3\" y=\"145\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"bold\" fill=\"#dc2626\">P</text>\n  <text x=\"160\" y=\"145\" text-anchor=\"middle\" font-size=\"12\">B(2)</text>\n  <text x=\"265\" y=\"145\" text-anchor=\"middle\" font-size=\"12\">C(5)</text>\n  <text x=\"272\" y=\"88\" font-size=\"12\">A</text>\n  <text x=\"274\" y=\"110\" font-size=\"11\" fill=\"#1e40af\">1</text>\n</svg>"
+  "hiddenPointNames": [
+    "L1",
+    "L2"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sLine",
+      "refs": [
+        "L1",
+        "L2"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sBA",
+      "refs": [
+        "B",
+        "A"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rC",
+      "refs": [
+        "B",
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "aAP",
+        "circle": "circ",
+        "center": "B",
+        "from": "A",
+        "to": "P",
+        "side": "CCW"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lCA",
+        "ownerSegment": "sCA",
+        "text": "1"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 320
+  },
+  "caption": "수직선 위의 두 점 B, C와 직각삼각형 BCA 및 점 B를 중심으로 하고 선분 BA를 반지름으로 하는 컴퍼스 호가 수직선과 만나는 점 P",
+  "accessibilityDescription": "수직선 위에 점 B와 점 C가 있고 선분 BC에 수직인 선분 CA가 위쪽으로 그어져 직각삼각형 BCA를 이룬다. 점 B를 중심으로 하고 선분 BA를 반지름으로 하는 원호가 점 A에서 수직선 왼쪽으로 내려와 점 P와 만난다.",
+  "newVisualInformation": [
+    "직각삼각형 BCA의 빗변 BA를 반지름으로 하는 호가 수직선 위의 점 P와 만난다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "수직선 위의 두 점 $B$, $C$가 나타내는 수는 각각 $2$, $5$이다. 선분 $BC$에 수직이고 수직선 위쪽에 있는 선분 $CA$의 길이는 $1$이다. 점 $B$를 중심으로 하고 $\\overline{BA}$를 반지름으로 하는 원이 수직선과 만나는 두 점 중, $B$의 왼쪽에 있는 점을 $P$라 하자. 점 $P$가 나타내는 수는? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
 }

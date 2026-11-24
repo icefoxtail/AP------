@@ -407,6 +407,7 @@ window.questionBank = [
   },
   {
     "id": 10,
+    "image": "assets/images/20_왕의중_2학기_기말_중2_유사/q10-problem.svg",
     "category": "평행선 사이의 선분의 길이의 비",
     "standardCourse": "중2",
     "curriculum": "2015",
@@ -540,6 +541,7 @@ window.questionBank = [
   },
   {
     "id": 13,
+    "image": "assets/images/20_왕의중_2학기_기말_중2_유사/q13-problem.svg",
     "category": "평행선 사이의 선분의 길이의 비",
     "standardCourse": "중2",
     "curriculum": "2015",
@@ -584,6 +586,7 @@ window.questionBank = [
   },
   {
     "id": 14,
+    "image": "assets/images/20_왕의중_2학기_기말_중2_유사/q14-problem.svg",
     "category": "삼각형의 무게중심의 성질",
     "standardCourse": "중2",
     "curriculum": "2015",
@@ -716,6 +719,7 @@ window.questionBank = [
   },
   {
     "id": 17,
+    "image": "assets/images/20_왕의중_2학기_기말_중2_유사/q17-problem.svg",
     "category": "피타고라스 정리",
     "standardCourse": "중2",
     "curriculum": "2015",
@@ -760,6 +764,7 @@ window.questionBank = [
   },
   {
     "id": 18,
+    "image": "assets/images/20_왕의중_2학기_기말_중2_유사/q18-problem.svg",
     "category": "피타고라스 정리의 활용",
     "standardCourse": "중2",
     "curriculum": "2015",
@@ -849,6 +854,7 @@ window.questionBank = [
   },
   {
     "id": 20,
+    "image": "assets/images/20_왕의중_2학기_기말_중2_유사/q20-problem.svg",
     "category": "피타고라스 정리의 활용",
     "standardCourse": "중2",
     "curriculum": "2015",

@@ -1044,6 +1044,7 @@ window.questionBank = [
   },
   {
     "id": 23,
+    "image": "assets/images/25_왕운중_2학기_중간_중2_유사/q23-problem.svg",
     "category": "일차함수와 일차방정식의 관계",
     "standardCourse": "중2",
     "curriculum": "2015",
@@ -1126,6 +1127,7 @@ window.questionBank = [
   },
   {
     "id": 25,
+    "image": "assets/images/25_왕운중_2학기_중간_중2_유사/q25-problem.svg",
     "category": "사각형의 성질",
     "standardCourse": "중2",
     "curriculum": "2015",

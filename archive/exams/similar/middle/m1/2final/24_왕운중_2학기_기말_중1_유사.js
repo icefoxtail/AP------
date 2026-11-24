@@ -234,6 +234,7 @@ window.questionBank = [
   },
   {
     "id": 6,
+    "image": "assets/images/24_왕운중_2학기_기말_중1_유사/q06-problem.svg",
     "category": "평면도형의 측정",
     "standardCourse": "중1",
     "curriculum": "2015",
@@ -648,6 +649,7 @@ window.questionBank = [
   },
   {
     "id": 15,
+    "image": "assets/images/24_왕운중_2학기_기말_중1_유사/q15-problem.svg",
     "category": "입체도형의 측정",
     "standardCourse": "중1",
     "curriculum": "2015",
@@ -873,6 +875,7 @@ window.questionBank = [
   },
   {
     "id": 20,
+    "image": "assets/images/24_왕운중_2학기_기말_중1_유사/q20-problem.svg",
     "category": "입체도형의 측정",
     "standardCourse": "중1",
     "curriculum": "2015",
@@ -999,6 +1002,7 @@ window.questionBank = [
   },
   {
     "id": 23,
+    "image": "assets/images/24_왕운중_2학기_기말_중1_유사/q23-problem.svg",
     "category": "입체도형의 측정",
     "standardCourse": "중1",
     "curriculum": "2015",

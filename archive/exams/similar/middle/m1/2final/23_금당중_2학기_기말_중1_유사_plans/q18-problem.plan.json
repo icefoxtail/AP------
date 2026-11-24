@@ -6,10 +6,7 @@
       "kind": "CONE",
       "radius": 4,
       "height": 9,
-      "orientation": "APEX_DOWN",
-      "names": {
-        "apex": "."
-      }
+      "orientation": "APEX_DOWN"
     },
     {
       "kind": "CYLINDER",
@@ -28,17 +25,24 @@
       "side": "LEFT"
     },
     {
-      "radius": "bottom",
+      "radius": "top",
       "solid": "s2"
     }
   ],
-  "caption": "반지름 4cm, 높이 9cm인 원뿔 그릇과 반지름 6cm인 원기둥 그릇",
+  "caption": "밑면 반지름의 길이가 4 cm이고 높이가 9 cm인 원뿔 모양 그릇과 밑면 반지름의 길이가 6 cm인 원기둥 모양 그릇을 나타낸 그림이다.",
+  "accessibilityDescription": "꼭짓점이 아래로 향한 원뿔 모양 그릇과 원기둥 모양 그릇이 나란히 놓여 있다. 원뿔 그릇에는 윗면 반지름 4 cm와 높이 9 cm가 표시되어 있고 원기둥 그릇에는 윗면 반지름 6 cm가 표시되어 있다.",
+  "newVisualInformation": [
+    "원뿔의 밑면 반지름 4 cm, 높이 9 cm와 원기둥의 밑면 반지름 6 cm"
+  ],
   "sourceConditions": [
     {
-      "id": "c1",
-      "condition": "원뿔(r=4, h=9)에서 원기둥(r=6)으로 물 옮김",
+      "id": "source",
+      "condition": "다음 그림과 같이 밑면의 반지름의 길이가 $4,\\mathrm{cm}$, 높이가 $9,\\mathrm{cm}$인 원뿔 모양의 그릇에 물을 가득 채워서 밑면의 반지름의 길이가 $6,\\mathrm{cm}$인 원기둥 모양의 그릇에 옮겼을 때, 물의 높이는? (단, 그릇의 두께는 생각하지 않는다.)",
       "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "원뿔(r=4, h=9)에서 원기둥(r=6)으로 물 옮김"
     }
-  ],
-  "newVisualInformation": []
+  ]
 }

@@ -1,0 +1,52 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-2",
+          "3"
+        ]
+      }
+    ],
+    "domain": [
+      -2,
+      3
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "names": [
+        {
+          "id": "lineLabel",
+          "text": "y=(a-b)x+ab",
+          "labelKind": "MATH",
+          "curveX": "0",
+          "labelValues": {
+            "a": "2",
+            "b": "-1"
+          }
+        }
+      ]
+    }
+  },
+  "caption": "일차함수 y=(a-b)x+ab의 그래프가 오른쪽 위로 향하고 y절편이 음수인 모양이다.",
+  "accessibilityDescription": "좌표평면 위에 오른쪽 위로 향하고 y절편이 음수인 일차함수 y=(a-b)x+ab의 직선이 그려져 있다.",
+  "newVisualInformation": [
+    "일차함수 y=(a-b)x+ab의 그래프는 오른쪽 위로 향하고 y절편은 음수이다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차함수 $y = (a - b)x + ab$의 그래프가 오른쪽 위로 향하고 $y$절편이 음수일 때, 일차함수 $y = ax + b$의 그래프가 지나지 않는 사분면은? (단, $a$, $b$는 상수)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

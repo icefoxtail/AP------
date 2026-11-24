@@ -332,6 +332,7 @@ window.questionBank = [
   },
   {
     "id": 8,
+    "image": "assets/images/25_왕의중_1학기_기말_중2_유사/q08-problem.svg",
     "category": "연립일차방정식의 활용",
     "standardCourse": "중2",
     "curriculum": "2015",

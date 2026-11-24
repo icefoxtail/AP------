@@ -330,6 +330,7 @@ window.questionBank = [
   },
   {
     "id": 8,
+    "image": "assets/images/19_왕운중_1학기_기말_중2_유사/q08-problem.svg",
     "category": "일차함수와 일차방정식의 관계",
     "standardCourse": "중2",
     "curriculum": "2015",
@@ -424,6 +425,7 @@ window.questionBank = [
   },
   {
     "id": 10,
+    "image": "assets/images/19_왕운중_1학기_기말_중2_유사/q10-problem.svg",
     "category": "일차함수의 뜻과 그래프",
     "standardCourse": "중2",
     "curriculum": "2015",
@@ -802,6 +804,7 @@ window.questionBank = [
   },
   {
     "id": 18,
+    "image": "assets/images/19_왕운중_1학기_기말_중2_유사/q18-problem.svg",
     "category": "일차함수의 뜻과 그래프",
     "standardCourse": "중2",
     "curriculum": "2015",
@@ -849,6 +852,7 @@ window.questionBank = [
   },
   {
     "id": 19,
+    "image": "assets/images/19_왕운중_1학기_기말_중2_유사/q19-problem.svg",
     "category": "일차함수와 일차방정식의 관계",
     "standardCourse": "중2",
     "curriculum": "2015",

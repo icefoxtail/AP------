@@ -1,0 +1,46 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-4",
+          "4/3"
+        ]
+      }
+    ],
+    "domain": [
+      -1,
+      5
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "0",
+        "y": "-4"
+      },
+      {
+        "id": "P1",
+        "x": "3",
+        "y": "0"
+      }
+    ],
+    "formula": "4*x/3 - 4"
+  },
+  "caption": "일차함수 그래프의 개형을 나타낸다.",
+  "accessibilityDescription": "좌표평면 위에 오른쪽 위로 향하는 일차함수의 직선 그래프가 그려져 있다.",
+  "newVisualInformation": [
+    "일차함수 그래프의 개형"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차함수 $y-\\dfrac{4}{3}x+4=0$의 그래프의 $x$절편, $y$절편, 기울기를 순서대로 바르게 나타낸 것은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

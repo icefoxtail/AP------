@@ -1,0 +1,49 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "1/2"
+        ]
+      }
+    ],
+    "domain": [
+      -6,
+      3
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P0",
+        "x": "-4",
+        "y": "0"
+      },
+      {
+        "id": "P1",
+        "x": "0",
+        "y": "2"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "x절편이 -4이고 y절편이 2인 일차방정식의 그래프이다.",
+  "accessibilityDescription": "좌표평면 위에 x절편이 -4이고 y절편이 2인 직선이 그려져 있다.",
+  "newVisualInformation": [
+    "직선의 x절편은 -4이고 y절편은 2이다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차방정식 $x + by + c = 0$의 그래프의 $x$절편이 $-4$이고 $y$절편이 $2$일 때, $bc$의 값은? (단, $b$, $c$는 상수)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

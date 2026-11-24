@@ -1,0 +1,96 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -4,
+      42,
+      -200,
+      2100
+    ],
+    "axisScale": {
+      "x": 1,
+      "y": "1/50"
+    },
+    "curves": [
+      {
+        "id": "c1",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "50"
+        ],
+        "domain": [
+          "0",
+          "36"
+        ],
+        "color": "BLUE",
+        "hideLabel": true
+      },
+      {
+        "id": "c2",
+        "kind": "LINE",
+        "coefficients": [
+          "-1800",
+          "150"
+        ],
+        "domain": [
+          "12",
+          "24"
+        ],
+        "color": "WARM",
+        "hideLabel": true
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "12",
+        "24",
+        "36"
+      ],
+      "y": [
+        "1800"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "24",
+          "y": "1800",
+          "unnamed": true
+        },
+        {
+          "id": "B",
+          "x": "36",
+          "y": "1800",
+          "unnamed": true
+        }
+      ],
+      "guides": [
+        {
+          "id": "gA",
+          "from": "A",
+          "axis": "BOTH"
+        },
+        {
+          "id": "gB",
+          "from": "B",
+          "axis": "BOTH"
+        }
+      ]
+    }
+  },
+  "caption": "동생과 형이 이동한 시간과 거리 사이의 관계를 나타낸 그래프이다.",
+  "accessibilityDescription": "가로축은 시간(분)을 나타내고 12, 24, 36 눈금이 표시되어 있다. 세로축은 거리(m)를 나타내고 1800 눈금이 표시되어 있다. 원점에서 (36, 1800)까지 이어진 직선과 (12, 0)에서 (24, 1800)까지 이어진 직선이 그려져 있다.",
+  "newVisualInformation": [
+    "형과 동생의 이동 거리를 나타낸 두 직선이 한 점에서 만난다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "집에서 $1800\\text{ m}$ 떨어져 있는 도서관까지 가는 데 동생은 일정한 속력으로 걸어가고, 형은 동생이 출발한 지 $12$분 후에 같은 길을 자전거를 타고 일정한 속력으로 따라갔다. 동생은 출발한 지 $36$분 만에 도서관에 도착하고, 형은 동생이 출발한 지 $24$분 만에 도서관에 도착한다고 할 때, 형과 동생이 처음으로 만나는 것은 동생이 출발한 지 몇 분 후인가? [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

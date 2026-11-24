@@ -1,0 +1,52 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "-1"
+        ]
+      }
+    ],
+    "domain": [
+      -2,
+      4
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "names": [
+        {
+          "id": "lineLabel",
+          "text": "y=ax+b",
+          "labelKind": "MATH",
+          "curveX": "0",
+          "labelValues": {
+            "a": "-1",
+            "b": "2"
+          }
+        }
+      ]
+    }
+  },
+  "caption": "일차함수 y=ax+b의 그래프가 오른쪽 아래로 향하고 y축과 양의 부분에서 만나는 모양이다.",
+  "accessibilityDescription": "좌표평면 위에 오른쪽 아래로 향하고 y절편이 양수인 일차함수 y=ax+b의 직선이 그려져 있다.",
+  "newVisualInformation": [
+    "일차함수 y=ax+b의 그래프는 오른쪽 아래로 향하고 y절편은 양수이다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차함수 $y = ax + b$의 그래프가 오른쪽 아래로 향하고 $y$축과 양의 부분에서 만날 때, $a$, $b$의 부호는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

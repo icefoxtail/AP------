@@ -4,6 +4,7 @@ window.examDisplayTitle = "26년 왕의중 중2 2학기 중간 유사문제";
 window.questionBank = [
   {
     "id": 1,
+    "image": "assets/images/26_왕의중_2학기_중간_중2_유사/q01-problem.svg",
     "category": "삼각형의 성질",
     "standardCourse": "중2",
     "curriculum": "2022",

@@ -939,6 +939,7 @@ window.questionBank = [
   },
   {
     "id": 20,
+    "image": "assets/images/25_삼산중_1학기_중간_중2_유사/q20-problem.svg",
     "category": "다항식의 계산",
     "standardCourse": "중2",
     "curriculum": "2015",
