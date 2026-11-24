@@ -45565,6 +45565,68 @@ window.mainDB = {
       "primaryStandardCourse": "기하"
     },
     {
+      "file": "types/high/h2/기하_192_각의이등분선-내분점외분점의활용_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_각의이등분선-내분점외분점의활용_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 3,
+      "rangeStartUnitKey": "H22-GE-04",
+      "rangeStartUnit": "공간좌표",
+      "rangeStartUnitOrder": 4,
+      "rangeEndUnitKey": "H22-GE-04",
+      "rangeEndUnit": "공간좌표",
+      "rangeEndUnitOrder": 4,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-04",
+          "rangeStartUnit": "공간좌표",
+          "rangeStartUnitOrder": 4,
+          "rangeEndUnitKey": "H22-GE-04",
+          "rangeEndUnit": "공간좌표",
+          "rangeEndUnitOrder": 4
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_180_같은거리에있는점_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_같은거리에있는점_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 5,
+      "rangeStartUnitKey": "H22-GE-04",
+      "rangeStartUnit": "공간좌표",
+      "rangeStartUnitOrder": 4,
+      "rangeEndUnitKey": "H22-GE-04",
+      "rangeEndUnit": "공간좌표",
+      "rangeEndUnitOrder": 4,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-04",
+          "rangeStartUnit": "공간좌표",
+          "rangeStartUnitOrder": 4,
+          "rangeEndUnitKey": "H22-GE-04",
+          "rangeEndUnit": "공간좌표",
+          "rangeEndUnitOrder": 4
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
       "file": "types/high/h2/기하_085_곡선밖의서로수직인두접선_고2_유형은행1.js",
       "school": "",
       "topic": "기하_곡선밖의서로수직인두접선_유형은행1",
@@ -45627,6 +45689,533 @@ window.mainDB = {
       "primaryStandardCourse": "기하"
     },
     {
+      "file": "types/high/h2/기하_193_공간도형-내분점외분점의활용_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_공간도형-내분점외분점의활용_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 6,
+      "rangeStartUnitKey": "H22-GE-04",
+      "rangeStartUnit": "공간좌표",
+      "rangeStartUnitOrder": 4,
+      "rangeEndUnitKey": "H22-GE-04",
+      "rangeEndUnit": "공간좌표",
+      "rangeEndUnitOrder": 4,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-04",
+          "rangeStartUnit": "공간좌표",
+          "rangeStartUnitOrder": 4,
+          "rangeEndUnitKey": "H22-GE-04",
+          "rangeEndUnit": "공간좌표",
+          "rangeEndUnitOrder": 4
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_142_공간에서위치관계_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_공간에서위치관계_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 8,
+      "rangeStartUnitKey": "H22-GE-03",
+      "rangeStartUnit": "공간도형",
+      "rangeStartUnitOrder": 3,
+      "rangeEndUnitKey": "H22-GE-03",
+      "rangeEndUnit": "공간도형",
+      "rangeEndUnitOrder": 3,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-03",
+          "rangeStartUnit": "공간도형",
+          "rangeStartUnitOrder": 3,
+          "rangeEndUnitKey": "H22-GE-03",
+          "rangeEndUnit": "공간도형",
+          "rangeEndUnitOrder": 3
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_146_공간에서위치관계의거짓인명제_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_공간에서위치관계의거짓인명제_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 9,
+      "rangeStartUnitKey": "H22-GE-03",
+      "rangeStartUnit": "공간도형",
+      "rangeStartUnitOrder": 3,
+      "rangeEndUnitKey": "H22-GE-03",
+      "rangeEndUnit": "공간도형",
+      "rangeEndUnitOrder": 3,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-03",
+          "rangeStartUnit": "공간도형",
+          "rangeStartUnitOrder": 3,
+          "rangeEndUnitKey": "H22-GE-03",
+          "rangeEndUnit": "공간도형",
+          "rangeEndUnitOrder": 3
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_145_공간에서위치관계의참인명제_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_공간에서위치관계의참인명제_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 5,
+      "rangeStartUnitKey": "H22-GE-03",
+      "rangeStartUnit": "공간도형",
+      "rangeStartUnitOrder": 3,
+      "rangeEndUnitKey": "H22-GE-03",
+      "rangeEndUnit": "공간도형",
+      "rangeEndUnitOrder": 3,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-03",
+          "rangeStartUnit": "공간도형",
+          "rangeStartUnitOrder": 3,
+          "rangeEndUnitKey": "H22-GE-03",
+          "rangeEndUnit": "공간도형",
+          "rangeEndUnitOrder": 3
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_162_교선에수직이아닌정사영의길이_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_교선에수직이아닌정사영의길이_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 5,
+      "rangeStartUnitKey": "H22-GE-03",
+      "rangeStartUnit": "공간도형",
+      "rangeStartUnitOrder": 3,
+      "rangeEndUnitKey": "H22-GE-03",
+      "rangeEndUnit": "공간도형",
+      "rangeEndUnitOrder": 3,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-03",
+          "rangeStartUnit": "공간도형",
+          "rangeStartUnitOrder": 3,
+          "rangeEndUnitKey": "H22-GE-03",
+          "rangeEndUnit": "공간도형",
+          "rangeEndUnitOrder": 3
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_205_구가평면과만나는곡선과곡선밖의점에서최단_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_구가평면과만나는곡선과곡선밖의점에서최단_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 3,
+      "rangeStartUnitKey": "H22-GE-04",
+      "rangeStartUnit": "공간좌표",
+      "rangeStartUnitOrder": 4,
+      "rangeEndUnitKey": "H22-GE-04",
+      "rangeEndUnit": "공간좌표",
+      "rangeEndUnitOrder": 4,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-04",
+          "rangeStartUnit": "공간좌표",
+          "rangeStartUnitOrder": 4,
+          "rangeEndUnitKey": "H22-GE-04",
+          "rangeEndUnit": "공간좌표",
+          "rangeEndUnitOrder": 4
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_199_구밖의한점과구위의점을이은선분의길이의최_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_구밖의한점과구위의점을이은선분의길이의최_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 5,
+      "rangeStartUnitKey": "H22-GE-04",
+      "rangeStartUnit": "공간좌표",
+      "rangeStartUnitOrder": 4,
+      "rangeEndUnitKey": "H22-GE-04",
+      "rangeEndUnit": "공간좌표",
+      "rangeEndUnitOrder": 4,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-04",
+          "rangeStartUnit": "공간좌표",
+          "rangeStartUnitOrder": 4,
+          "rangeEndUnitKey": "H22-GE-04",
+          "rangeEndUnit": "공간좌표",
+          "rangeEndUnitOrder": 4
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_201_구밖의한점에서구에그은접선의길이1_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_구밖의한점에서구에그은접선의길이1_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 3,
+      "rangeStartUnitKey": "H22-GE-04",
+      "rangeStartUnit": "공간좌표",
+      "rangeStartUnitOrder": 4,
+      "rangeEndUnitKey": "H22-GE-04",
+      "rangeEndUnit": "공간좌표",
+      "rangeEndUnitOrder": 4,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-04",
+          "rangeStartUnit": "공간좌표",
+          "rangeStartUnitOrder": 4,
+          "rangeEndUnitKey": "H22-GE-04",
+          "rangeEndUnit": "공간좌표",
+          "rangeEndUnitOrder": 4
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_202_구밖의한점에서구에그은접선의길이2_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_구밖의한점에서구에그은접선의길이2_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 3,
+      "rangeStartUnitKey": "H22-GE-04",
+      "rangeStartUnit": "공간좌표",
+      "rangeStartUnitOrder": 4,
+      "rangeEndUnitKey": "H22-GE-04",
+      "rangeEndUnit": "공간좌표",
+      "rangeEndUnitOrder": 4,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-04",
+          "rangeStartUnit": "공간좌표",
+          "rangeStartUnitOrder": 4,
+          "rangeEndUnitKey": "H22-GE-04",
+          "rangeEndUnit": "공간좌표",
+          "rangeEndUnitOrder": 4
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_203_구와좌표축의교점_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_구와좌표축의교점_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 3,
+      "rangeStartUnitKey": "H22-GE-04",
+      "rangeStartUnit": "공간좌표",
+      "rangeStartUnitOrder": 4,
+      "rangeEndUnitKey": "H22-GE-04",
+      "rangeEndUnit": "공간좌표",
+      "rangeEndUnitOrder": 4,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-04",
+          "rangeStartUnit": "공간좌표",
+          "rangeStartUnitOrder": 4,
+          "rangeEndUnitKey": "H22-GE-04",
+          "rangeEndUnit": "공간좌표",
+          "rangeEndUnitOrder": 4
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_204_구와좌표평면의교선_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_구와좌표평면의교선_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 6,
+      "rangeStartUnitKey": "H22-GE-04",
+      "rangeStartUnit": "공간좌표",
+      "rangeStartUnitOrder": 4,
+      "rangeEndUnitKey": "H22-GE-04",
+      "rangeEndUnit": "공간좌표",
+      "rangeEndUnitOrder": 4,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-04",
+          "rangeStartUnit": "공간좌표",
+          "rangeStartUnitOrder": 4,
+          "rangeEndUnitKey": "H22-GE-04",
+          "rangeEndUnit": "공간좌표",
+          "rangeEndUnitOrder": 4
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_197_구의방정식_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_구의방정식_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 11,
+      "rangeStartUnitKey": "H22-GE-04",
+      "rangeStartUnit": "공간좌표",
+      "rangeStartUnitOrder": 4,
+      "rangeEndUnitKey": "H22-GE-04",
+      "rangeEndUnit": "공간좌표",
+      "rangeEndUnitOrder": 4,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-04",
+          "rangeStartUnit": "공간좌표",
+          "rangeStartUnitOrder": 4,
+          "rangeEndUnitKey": "H22-GE-04",
+          "rangeEndUnit": "공간좌표",
+          "rangeEndUnitOrder": 4
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_175_기울어진그릇의지면과이루는각크기를이용한_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_기울어진그릇의지면과이루는각크기를이용한_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 5,
+      "rangeStartUnitKey": "H22-GE-03",
+      "rangeStartUnit": "공간도형",
+      "rangeStartUnitOrder": 3,
+      "rangeEndUnitKey": "H22-GE-03",
+      "rangeEndUnit": "공간도형",
+      "rangeEndUnitOrder": 3,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-03",
+          "rangeStartUnit": "공간도형",
+          "rangeStartUnitOrder": 3,
+          "rangeEndUnitKey": "H22-GE-03",
+          "rangeEndUnit": "공간도형",
+          "rangeEndUnitOrder": 3
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_143_꼬인위치에있는두직선이이루는각1_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_꼬인위치에있는두직선이이루는각1_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 10,
+      "rangeStartUnitKey": "H22-GE-03",
+      "rangeStartUnit": "공간도형",
+      "rangeStartUnitOrder": 3,
+      "rangeEndUnitKey": "H22-GE-03",
+      "rangeEndUnit": "공간도형",
+      "rangeEndUnitOrder": 3,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-03",
+          "rangeStartUnit": "공간도형",
+          "rangeStartUnitOrder": 3,
+          "rangeEndUnitKey": "H22-GE-03",
+          "rangeEndUnit": "공간도형",
+          "rangeEndUnitOrder": 3
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_144_꼬인위치에있는두직선이이루는각2_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_꼬인위치에있는두직선이이루는각2_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 4,
+      "rangeStartUnitKey": "H22-GE-03",
+      "rangeStartUnit": "공간도형",
+      "rangeStartUnitOrder": 3,
+      "rangeEndUnitKey": "H22-GE-03",
+      "rangeEndUnit": "공간도형",
+      "rangeEndUnitOrder": 3,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-03",
+          "rangeStartUnit": "공간도형",
+          "rangeStartUnitOrder": 3,
+          "rangeEndUnitKey": "H22-GE-03",
+          "rangeEndUnit": "공간도형",
+          "rangeEndUnitOrder": 3
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_195_내분점무게중심-좌표평면위로의정사영_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_내분점무게중심-좌표평면위로의정사영_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 3,
+      "rangeStartUnitKey": "H22-GE-04",
+      "rangeStartUnit": "공간좌표",
+      "rangeStartUnitOrder": 4,
+      "rangeEndUnitKey": "H22-GE-04",
+      "rangeEndUnit": "공간좌표",
+      "rangeEndUnitOrder": 4,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-04",
+          "rangeStartUnit": "공간좌표",
+          "rangeStartUnitOrder": 4,
+          "rangeEndUnitKey": "H22-GE-04",
+          "rangeEndUnit": "공간좌표",
+          "rangeEndUnitOrder": 4
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_120_내적사이의관계_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_내적사이의관계_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 2,
+      "rangeStartUnitKey": "H22-GE-07",
+      "rangeStartUnit": "벡터의 내적",
+      "rangeStartUnitOrder": 7,
+      "rangeEndUnitKey": "H22-GE-07",
+      "rangeEndUnit": "벡터의 내적",
+      "rangeEndUnitOrder": 7,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-07",
+          "rangeStartUnit": "벡터의 내적",
+          "rangeStartUnitOrder": 7,
+          "rangeEndUnitKey": "H22-GE-07",
+          "rangeEndUnit": "벡터의 내적",
+          "rangeEndUnitOrder": 7
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
       "file": "types/high/h2/기하_119_내적의기하학적인의미_고2_유형은행1.js",
       "school": "",
       "topic": "기하_내적의기하학적인의미_유형은행1",
@@ -45653,6 +46242,192 @@ window.mainDB = {
           "rangeEndUnitKey": "H22-GE-07",
           "rangeEndUnit": "벡터의 내적",
           "rangeEndUnitOrder": 7
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_132_내적의최대최소-내적의정의를이용하는경우_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_내적의최대최소-내적의정의를이용하는경우_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 10,
+      "rangeStartUnitKey": "H22-GE-06",
+      "rangeStartUnit": "벡터의 성분",
+      "rangeStartUnitOrder": 6,
+      "rangeEndUnitKey": "H22-GE-06",
+      "rangeEndUnit": "벡터의 성분",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-06",
+          "rangeStartUnit": "벡터의 성분",
+          "rangeStartUnitOrder": 6,
+          "rangeEndUnitKey": "H22-GE-06",
+          "rangeEndUnit": "벡터의 성분",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_133_내적의최대최소-벡터를분해하여구하는경우_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_내적의최대최소-벡터를분해하여구하는경우_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 5,
+      "rangeStartUnitKey": "H22-GE-06",
+      "rangeStartUnit": "벡터의 성분",
+      "rangeStartUnitOrder": 6,
+      "rangeEndUnitKey": "H22-GE-06",
+      "rangeEndUnit": "벡터의 성분",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-06",
+          "rangeStartUnit": "벡터의 성분",
+          "rangeStartUnitOrder": 6,
+          "rangeEndUnitKey": "H22-GE-06",
+          "rangeEndUnit": "벡터의 성분",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_172_단면인원의정사영의넓이_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_단면인원의정사영의넓이_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 4,
+      "rangeStartUnitKey": "H22-GE-03",
+      "rangeStartUnit": "공간도형",
+      "rangeStartUnitOrder": 3,
+      "rangeEndUnitKey": "H22-GE-03",
+      "rangeEndUnit": "공간도형",
+      "rangeEndUnitOrder": 3,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-03",
+          "rangeStartUnit": "공간도형",
+          "rangeStartUnitOrder": 3,
+          "rangeEndUnitKey": "H22-GE-03",
+          "rangeEndUnit": "공간도형",
+          "rangeEndUnitOrder": 3
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_187_도형밖의점에서도형위의점까지거리의최솟값_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_도형밖의점에서도형위의점까지거리의최솟값_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 6,
+      "rangeStartUnitKey": "H22-GE-04",
+      "rangeStartUnit": "공간좌표",
+      "rangeStartUnitOrder": 4,
+      "rangeEndUnitKey": "H22-GE-04",
+      "rangeEndUnit": "공간좌표",
+      "rangeEndUnitOrder": 4,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-04",
+          "rangeStartUnit": "공간좌표",
+          "rangeStartUnitOrder": 4,
+          "rangeEndUnitKey": "H22-GE-04",
+          "rangeEndUnit": "공간좌표",
+          "rangeEndUnitOrder": 4
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_130_도형에서내적의연산법칙의활용_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_도형에서내적의연산법칙의활용_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 6,
+      "rangeStartUnitKey": "H22-GE-06",
+      "rangeStartUnit": "벡터의 성분",
+      "rangeStartUnitOrder": 6,
+      "rangeEndUnitKey": "H22-GE-06",
+      "rangeEndUnit": "벡터의 성분",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-06",
+          "rangeStartUnit": "벡터의 성분",
+          "rangeStartUnitOrder": 6,
+          "rangeEndUnitKey": "H22-GE-06",
+          "rangeEndUnit": "벡터의 성분",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_182_도형에서두점사이의거리_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_도형에서두점사이의거리_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 7,
+      "rangeStartUnitKey": "H22-GE-04",
+      "rangeStartUnit": "공간좌표",
+      "rangeStartUnitOrder": 4,
+      "rangeEndUnitKey": "H22-GE-04",
+      "rangeEndUnit": "공간좌표",
+      "rangeEndUnitOrder": 4,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-04",
+          "rangeStartUnit": "공간좌표",
+          "rangeStartUnitOrder": 4,
+          "rangeEndUnitKey": "H22-GE-04",
+          "rangeEndUnit": "공간좌표",
+          "rangeEndUnitOrder": 4
         }
       ],
       "primaryStandardCourse": "기하"
@@ -45720,6 +46495,68 @@ window.mainDB = {
       "primaryStandardCourse": "기하"
     },
     {
+      "file": "types/high/h2/기하_206_두구의위치관계_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_두구의위치관계_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 3,
+      "rangeStartUnitKey": "H22-GE-04",
+      "rangeStartUnit": "공간좌표",
+      "rangeStartUnitOrder": 4,
+      "rangeEndUnitKey": "H22-GE-04",
+      "rangeEndUnit": "공간좌표",
+      "rangeEndUnitOrder": 4,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-04",
+          "rangeStartUnit": "공간좌표",
+          "rangeStartUnitOrder": 4,
+          "rangeEndUnitKey": "H22-GE-04",
+          "rangeEndUnit": "공간좌표",
+          "rangeEndUnitOrder": 4
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_128_두벡터가이루는각의크기구하기-내적의연산_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_두벡터가이루는각의크기구하기-내적의연산_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 9,
+      "rangeStartUnitKey": "H22-GE-07",
+      "rangeStartUnit": "벡터의 내적",
+      "rangeStartUnitOrder": 7,
+      "rangeEndUnitKey": "H22-GE-07",
+      "rangeEndUnit": "벡터의 내적",
+      "rangeEndUnitOrder": 7,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-07",
+          "rangeStartUnit": "벡터의 내적",
+          "rangeStartUnitOrder": 7,
+          "rangeEndUnitKey": "H22-GE-07",
+          "rangeEndUnit": "벡터의 내적",
+          "rangeEndUnitOrder": 7
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
       "file": "types/high/h2/기하_099_두벡터로평면의모든벡터나타내기_고2_유형은행1.js",
       "school": "",
       "topic": "기하_두벡터로평면의모든벡터나타내기_유형은행1",
@@ -45782,6 +46619,254 @@ window.mainDB = {
       "primaryStandardCourse": "기하"
     },
     {
+      "file": "types/high/h2/기하_179_두점사이의거리_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_두점사이의거리_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 3,
+      "rangeStartUnitKey": "H22-GE-04",
+      "rangeStartUnit": "공간좌표",
+      "rangeStartUnitOrder": 4,
+      "rangeEndUnitKey": "H22-GE-04",
+      "rangeEndUnit": "공간좌표",
+      "rangeEndUnitOrder": 4,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-04",
+          "rangeStartUnit": "공간좌표",
+          "rangeStartUnitOrder": 4,
+          "rangeEndUnitKey": "H22-GE-04",
+          "rangeEndUnit": "공간좌표",
+          "rangeEndUnitOrder": 4
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_137_두직선의평행수직조건_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_두직선의평행수직조건_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 10,
+      "rangeStartUnitKey": "H22-GE-08",
+      "rangeStartUnit": "도형의 방정식",
+      "rangeStartUnitOrder": 8,
+      "rangeEndUnitKey": "H22-GE-08",
+      "rangeEndUnit": "도형의 방정식",
+      "rangeEndUnitOrder": 8,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-08",
+          "rangeStartUnit": "도형의 방정식",
+          "rangeStartUnitOrder": 8,
+          "rangeEndUnitKey": "H22-GE-08",
+          "rangeEndUnit": "도형의 방정식",
+          "rangeEndUnitOrder": 8
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_136_두직선이이루는각의크기_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_두직선이이루는각의크기_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 6,
+      "rangeStartUnitKey": "H22-GE-08",
+      "rangeStartUnit": "도형의 방정식",
+      "rangeStartUnitOrder": 8,
+      "rangeEndUnitKey": "H22-GE-08",
+      "rangeEndUnit": "도형의 방정식",
+      "rangeEndUnitOrder": 8,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-08",
+          "rangeStartUnit": "도형의 방정식",
+          "rangeStartUnitOrder": 8,
+          "rangeEndUnitKey": "H22-GE-08",
+          "rangeEndUnit": "도형의 방정식",
+          "rangeEndUnitOrder": 8
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_166_두평면의교선을알수없을때-두평면의이면각_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_두평면의교선을알수없을때-두평면의이면각_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 5,
+      "rangeStartUnitKey": "H22-GE-03",
+      "rangeStartUnit": "공간도형",
+      "rangeStartUnitOrder": 3,
+      "rangeEndUnitKey": "H22-GE-03",
+      "rangeEndUnit": "공간도형",
+      "rangeEndUnitOrder": 3,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-03",
+          "rangeStartUnit": "공간도형",
+          "rangeStartUnitOrder": 3,
+          "rangeEndUnitKey": "H22-GE-03",
+          "rangeEndUnit": "공간도형",
+          "rangeEndUnitOrder": 3
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_164_두평면의교선이주어질때-두평면의이면각을_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_두평면의교선이주어질때-두평면의이면각을_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 10,
+      "rangeStartUnitKey": "H22-GE-03",
+      "rangeStartUnit": "공간도형",
+      "rangeStartUnitOrder": 3,
+      "rangeEndUnitKey": "H22-GE-03",
+      "rangeEndUnit": "공간도형",
+      "rangeEndUnitOrder": 3,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-03",
+          "rangeStartUnit": "공간도형",
+          "rangeStartUnitOrder": 3,
+          "rangeEndUnitKey": "H22-GE-03",
+          "rangeEndUnit": "공간도형",
+          "rangeEndUnitOrder": 3
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_165_두평면의교선이주어질때-두평면의이면각을_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_두평면의교선이주어질때-두평면의이면각을_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 5,
+      "rangeStartUnitKey": "H22-GE-03",
+      "rangeStartUnit": "공간도형",
+      "rangeStartUnitOrder": 3,
+      "rangeEndUnitKey": "H22-GE-03",
+      "rangeEndUnit": "공간도형",
+      "rangeEndUnitOrder": 3,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-03",
+          "rangeStartUnit": "공간도형",
+          "rangeStartUnitOrder": 3,
+          "rangeEndUnitKey": "H22-GE-03",
+          "rangeEndUnit": "공간도형",
+          "rangeEndUnitOrder": 3
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_157_두평면이이루는각-이면각의크기구하기1_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_두평면이이루는각-이면각의크기구하기1_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 11,
+      "rangeStartUnitKey": "H22-GE-03",
+      "rangeStartUnit": "공간도형",
+      "rangeStartUnitOrder": 3,
+      "rangeEndUnitKey": "H22-GE-03",
+      "rangeEndUnit": "공간도형",
+      "rangeEndUnitOrder": 3,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-03",
+          "rangeStartUnit": "공간도형",
+          "rangeStartUnitOrder": 3,
+          "rangeEndUnitKey": "H22-GE-03",
+          "rangeEndUnit": "공간도형",
+          "rangeEndUnitOrder": 3
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_158_두평면이이루는각-이면각의크기구하기2_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_두평면이이루는각-이면각의크기구하기2_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 5,
+      "rangeStartUnitKey": "H22-GE-03",
+      "rangeStartUnit": "공간도형",
+      "rangeStartUnitOrder": 3,
+      "rangeEndUnitKey": "H22-GE-03",
+      "rangeEndUnit": "공간도형",
+      "rangeEndUnitOrder": 3,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-03",
+          "rangeStartUnit": "공간도형",
+          "rangeStartUnitOrder": 3,
+          "rangeEndUnitKey": "H22-GE-03",
+          "rangeEndUnit": "공간도형",
+          "rangeEndUnitOrder": 3
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
       "file": "types/high/h2/기하_013_두포물선이이루는선분의길이_고2_유형은행1.js",
       "school": "",
       "topic": "기하_두포물선이이루는선분의길이_유형은행1",
@@ -45808,6 +46893,99 @@ window.mainDB = {
           "rangeEndUnitKey": "H22-GE-01",
           "rangeEndUnit": "이차곡선",
           "rangeEndUnitOrder": 1
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_134_방향벡터를이용한직선의방정식_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_방향벡터를이용한직선의방정식_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 5,
+      "rangeStartUnitKey": "H22-GE-08",
+      "rangeStartUnit": "도형의 방정식",
+      "rangeStartUnitOrder": 8,
+      "rangeEndUnitKey": "H22-GE-08",
+      "rangeEndUnit": "도형의 방정식",
+      "rangeEndUnitOrder": 8,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-08",
+          "rangeStartUnit": "도형의 방정식",
+          "rangeStartUnitOrder": 8,
+          "rangeEndUnitKey": "H22-GE-08",
+          "rangeEndUnit": "도형의 방정식",
+          "rangeEndUnitOrder": 8
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_138_방향벡터와법선벡터의위치관계_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_방향벡터와법선벡터의위치관계_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 5,
+      "rangeStartUnitKey": "H22-GE-08",
+      "rangeStartUnit": "도형의 방정식",
+      "rangeStartUnitOrder": 8,
+      "rangeEndUnitKey": "H22-GE-08",
+      "rangeEndUnit": "도형의 방정식",
+      "rangeEndUnitOrder": 8,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-08",
+          "rangeStartUnit": "도형의 방정식",
+          "rangeStartUnitOrder": 8,
+          "rangeEndUnitKey": "H22-GE-08",
+          "rangeEndUnit": "도형의 방정식",
+          "rangeEndUnitOrder": 8
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_135_법선벡터를이용한직선의방정식_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_법선벡터를이용한직선의방정식_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 11,
+      "rangeStartUnitKey": "H22-GE-08",
+      "rangeStartUnit": "도형의 방정식",
+      "rangeStartUnitOrder": 8,
+      "rangeEndUnitKey": "H22-GE-08",
+      "rangeEndUnit": "도형의 방정식",
+      "rangeEndUnitOrder": 8,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-08",
+          "rangeStartUnit": "도형의 방정식",
+          "rangeStartUnitOrder": 8,
+          "rangeEndUnitKey": "H22-GE-08",
+          "rangeEndUnit": "도형의 방정식",
+          "rangeEndUnitOrder": 8
         }
       ],
       "primaryStandardCourse": "기하"
@@ -46092,6 +47270,68 @@ window.mainDB = {
       "primaryStandardCourse": "기하"
     },
     {
+      "file": "types/high/h2/기하_181_삼각형의모양구하기_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_삼각형의모양구하기_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 8,
+      "rangeStartUnitKey": "H22-GE-04",
+      "rangeStartUnit": "공간좌표",
+      "rangeStartUnitOrder": 4,
+      "rangeEndUnitKey": "H22-GE-04",
+      "rangeEndUnit": "공간좌표",
+      "rangeEndUnitOrder": 4,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-04",
+          "rangeStartUnit": "공간좌표",
+          "rangeStartUnitOrder": 4,
+          "rangeEndUnitKey": "H22-GE-04",
+          "rangeEndUnit": "공간좌표",
+          "rangeEndUnitOrder": 4
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_194_삼각형의무게중심_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_삼각형의무게중심_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 9,
+      "rangeStartUnitKey": "H22-GE-04",
+      "rangeStartUnit": "공간좌표",
+      "rangeStartUnitOrder": 4,
+      "rangeEndUnitKey": "H22-GE-04",
+      "rangeEndUnit": "공간좌표",
+      "rangeEndUnitOrder": 4,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-04",
+          "rangeStartUnit": "공간좌표",
+          "rangeStartUnitOrder": 4,
+          "rangeEndUnitKey": "H22-GE-04",
+          "rangeEndUnit": "공간좌표",
+          "rangeEndUnitOrder": 4
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
       "file": "types/high/h2/기하_106_삼각형의무게중심의위치벡터_고2_유형은행1.js",
       "school": "",
       "topic": "기하_삼각형의무게중심의위치벡터_유형은행1",
@@ -46118,6 +47358,378 @@ window.mainDB = {
           "rangeEndUnitKey": "H22-GE-05",
           "rangeEndUnit": "벡터의 연산",
           "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_196_삼각형의무게중심의입체도형활용_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_삼각형의무게중심의입체도형활용_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 6,
+      "rangeStartUnitKey": "H22-GE-04",
+      "rangeStartUnit": "공간좌표",
+      "rangeStartUnitOrder": 4,
+      "rangeEndUnitKey": "H22-GE-04",
+      "rangeEndUnit": "공간좌표",
+      "rangeEndUnitOrder": 4,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-04",
+          "rangeStartUnit": "공간좌표",
+          "rangeStartUnitOrder": 4,
+          "rangeEndUnitKey": "H22-GE-04",
+          "rangeEndUnit": "공간좌표",
+          "rangeEndUnitOrder": 4
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_150_삼수선의정리1_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_삼수선의정리1_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 7,
+      "rangeStartUnitKey": "H22-GE-03",
+      "rangeStartUnit": "공간도형",
+      "rangeStartUnitOrder": 3,
+      "rangeEndUnitKey": "H22-GE-03",
+      "rangeEndUnit": "공간도형",
+      "rangeEndUnitOrder": 3,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-03",
+          "rangeStartUnit": "공간도형",
+          "rangeStartUnitOrder": 3,
+          "rangeEndUnitKey": "H22-GE-03",
+          "rangeEndUnit": "공간도형",
+          "rangeEndUnitOrder": 3
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_151_삼수선의정리2_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_삼수선의정리2_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 5,
+      "rangeStartUnitKey": "H22-GE-03",
+      "rangeStartUnit": "공간도형",
+      "rangeStartUnitOrder": 3,
+      "rangeEndUnitKey": "H22-GE-03",
+      "rangeEndUnit": "공간도형",
+      "rangeEndUnitOrder": 3,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-03",
+          "rangeStartUnit": "공간도형",
+          "rangeStartUnitOrder": 3,
+          "rangeEndUnitKey": "H22-GE-03",
+          "rangeEndUnit": "공간도형",
+          "rangeEndUnitOrder": 3
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_184_삼수선의정리와거리_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_삼수선의정리와거리_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 5,
+      "rangeStartUnitKey": "H22-GE-03",
+      "rangeStartUnit": "공간도형",
+      "rangeStartUnitOrder": 3,
+      "rangeEndUnitKey": "H22-GE-03",
+      "rangeEndUnit": "공간도형",
+      "rangeEndUnitOrder": 3,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-03",
+          "rangeStartUnit": "공간도형",
+          "rangeStartUnitOrder": 3,
+          "rangeEndUnitKey": "H22-GE-03",
+          "rangeEndUnit": "공간도형",
+          "rangeEndUnitOrder": 3
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_155_삼수선의정리의활용-두직선이이루는각_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_삼수선의정리의활용-두직선이이루는각_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 8,
+      "rangeStartUnitKey": "H22-GE-03",
+      "rangeStartUnit": "공간도형",
+      "rangeStartUnitOrder": 3,
+      "rangeEndUnitKey": "H22-GE-03",
+      "rangeEndUnit": "공간도형",
+      "rangeEndUnitOrder": 3,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-03",
+          "rangeStartUnit": "공간도형",
+          "rangeStartUnitOrder": 3,
+          "rangeEndUnitKey": "H22-GE-03",
+          "rangeEndUnit": "공간도형",
+          "rangeEndUnitOrder": 3
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_152_삼수선의정리의활용-삼각형의넓이_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_삼수선의정리의활용-삼각형의넓이_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 6,
+      "rangeStartUnitKey": "H22-GE-03",
+      "rangeStartUnit": "공간도형",
+      "rangeStartUnitOrder": 3,
+      "rangeEndUnitKey": "H22-GE-03",
+      "rangeEndUnit": "공간도형",
+      "rangeEndUnitOrder": 3,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-03",
+          "rangeStartUnit": "공간도형",
+          "rangeStartUnitOrder": 3,
+          "rangeEndUnitKey": "H22-GE-03",
+          "rangeEndUnit": "공간도형",
+          "rangeEndUnitOrder": 3
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_154_삼수선의정리의활용-서로직교하는세선분_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_삼수선의정리의활용-서로직교하는세선분_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 10,
+      "rangeStartUnitKey": "H22-GE-03",
+      "rangeStartUnit": "공간도형",
+      "rangeStartUnitOrder": 3,
+      "rangeEndUnitKey": "H22-GE-03",
+      "rangeEndUnit": "공간도형",
+      "rangeEndUnitOrder": 3,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-03",
+          "rangeStartUnit": "공간도형",
+          "rangeStartUnitOrder": 3,
+          "rangeEndUnitKey": "H22-GE-03",
+          "rangeEndUnit": "공간도형",
+          "rangeEndUnitOrder": 3
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_156_삼수선의정리의활용-실생활활용_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_삼수선의정리의활용-실생활활용_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 3,
+      "rangeStartUnitKey": "H22-GE-03",
+      "rangeStartUnit": "공간도형",
+      "rangeStartUnitOrder": 3,
+      "rangeEndUnitKey": "H22-GE-03",
+      "rangeEndUnit": "공간도형",
+      "rangeEndUnitOrder": 3,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-03",
+          "rangeStartUnit": "공간도형",
+          "rangeStartUnitOrder": 3,
+          "rangeEndUnitKey": "H22-GE-03",
+          "rangeEndUnit": "공간도형",
+          "rangeEndUnitOrder": 3
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_153_삼수선의정리의활용-여러가지도형_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_삼수선의정리의활용-여러가지도형_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 6,
+      "rangeStartUnitKey": "H22-GE-03",
+      "rangeStartUnit": "공간도형",
+      "rangeStartUnitOrder": 3,
+      "rangeEndUnitKey": "H22-GE-03",
+      "rangeEndUnit": "공간도형",
+      "rangeEndUnitOrder": 3,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-03",
+          "rangeStartUnit": "공간도형",
+          "rangeStartUnitOrder": 3,
+          "rangeEndUnitKey": "H22-GE-03",
+          "rangeEndUnit": "공간도형",
+          "rangeEndUnitOrder": 3
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_185_선분의길이와합의최솟값1_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_선분의길이와합의최솟값1_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 5,
+      "rangeStartUnitKey": "H22-GE-04",
+      "rangeStartUnit": "공간좌표",
+      "rangeStartUnitOrder": 4,
+      "rangeEndUnitKey": "H22-GE-04",
+      "rangeEndUnit": "공간좌표",
+      "rangeEndUnitOrder": 4,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-04",
+          "rangeStartUnit": "공간좌표",
+          "rangeStartUnitOrder": 4,
+          "rangeEndUnitKey": "H22-GE-04",
+          "rangeEndUnit": "공간좌표",
+          "rangeEndUnitOrder": 4
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_186_선분의길이와합의최솟값2_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_선분의길이와합의최솟값2_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 3,
+      "rangeStartUnitKey": "H22-GE-04",
+      "rangeStartUnit": "공간좌표",
+      "rangeStartUnitOrder": 4,
+      "rangeEndUnitKey": "H22-GE-04",
+      "rangeEndUnit": "공간좌표",
+      "rangeEndUnitOrder": 4,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-04",
+          "rangeStartUnit": "공간좌표",
+          "rangeStartUnitOrder": 4,
+          "rangeEndUnitKey": "H22-GE-04",
+          "rangeEndUnit": "공간좌표",
+          "rangeEndUnitOrder": 4
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_188_선분의내분점과외분점_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_선분의내분점과외분점_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 9,
+      "rangeStartUnitKey": "H22-GE-04",
+      "rangeStartUnit": "공간좌표",
+      "rangeStartUnitOrder": 4,
+      "rangeEndUnitKey": "H22-GE-04",
+      "rangeEndUnit": "공간좌표",
+      "rangeEndUnitOrder": 4,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-04",
+          "rangeStartUnit": "공간좌표",
+          "rangeStartUnitOrder": 4,
+          "rangeEndUnitKey": "H22-GE-04",
+          "rangeEndUnit": "공간좌표",
+          "rangeEndUnitOrder": 4
         }
       ],
       "primaryStandardCourse": "기하"
@@ -46278,6 +47890,37 @@ window.mainDB = {
       "primaryStandardCourse": "기하"
     },
     {
+      "file": "types/high/h2/기하_125_성분으로주어진경우-두벡터의수직조건과평_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_성분으로주어진경우-두벡터의수직조건과평_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 5,
+      "rangeStartUnitKey": "H22-GE-06",
+      "rangeStartUnit": "벡터의 성분",
+      "rangeStartUnitOrder": 6,
+      "rangeEndUnitKey": "H22-GE-06",
+      "rangeEndUnit": "벡터의 성분",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-06",
+          "rangeStartUnit": "벡터의 성분",
+          "rangeStartUnitOrder": 6,
+          "rangeEndUnitKey": "H22-GE-06",
+          "rangeEndUnit": "벡터의 성분",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
       "file": "types/high/h2/기하_114_성분의절댓값의최솟값구하기_고2_유형은행1.js",
       "school": "",
       "topic": "기하_성분의절댓값의최솟값구하기_유형은행1",
@@ -46304,6 +47947,37 @@ window.mainDB = {
           "rangeEndUnitKey": "H22-GE-06",
           "rangeEndUnit": "벡터의 성분",
           "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_124_성분이주어진경우-두평면벡터가이루는각의_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_성분이주어진경우-두평면벡터가이루는각의_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 5,
+      "rangeStartUnitKey": "H22-GE-07",
+      "rangeStartUnit": "벡터의 내적",
+      "rangeStartUnitOrder": 7,
+      "rangeEndUnitKey": "H22-GE-07",
+      "rangeEndUnit": "벡터의 내적",
+      "rangeEndUnitOrder": 7,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-07",
+          "rangeStartUnit": "벡터의 내적",
+          "rangeStartUnitOrder": 7,
+          "rangeEndUnitKey": "H22-GE-07",
+          "rangeEndUnit": "벡터의 내적",
+          "rangeEndUnitOrder": 7
         }
       ],
       "primaryStandardCourse": "기하"
@@ -47146,6 +48820,37 @@ window.mainDB = {
       "primaryStandardCourse": "기하"
     },
     {
+      "file": "types/high/h2/기하_170_원기둥의정사영의넓이_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_원기둥의정사영의넓이_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 6,
+      "rangeStartUnitKey": "H22-GE-03",
+      "rangeStartUnit": "공간도형",
+      "rangeStartUnitOrder": 3,
+      "rangeEndUnitKey": "H22-GE-03",
+      "rangeEndUnit": "공간도형",
+      "rangeEndUnitOrder": 3,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-03",
+          "rangeStartUnit": "공간도형",
+          "rangeStartUnitOrder": 3,
+          "rangeEndUnitKey": "H22-GE-03",
+          "rangeEndUnit": "공간도형",
+          "rangeEndUnitOrder": 3
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
       "file": "types/high/h2/기하_108_위치벡터와삼각형의넓이의비_고2_유형은행1.js",
       "school": "",
       "topic": "기하_위치벡터와삼각형의넓이의비_유형은행1",
@@ -47301,6 +49006,37 @@ window.mainDB = {
       "primaryStandardCourse": "기하"
     },
     {
+      "file": "types/high/h2/기하_200_자취의방정식_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_자취의방정식_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 3,
+      "rangeStartUnitKey": "H22-GE-04",
+      "rangeStartUnit": "공간좌표",
+      "rangeStartUnitOrder": 4,
+      "rangeEndUnitKey": "H22-GE-04",
+      "rangeEndUnit": "공간좌표",
+      "rangeEndUnitOrder": 4,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-04",
+          "rangeStartUnit": "공간좌표",
+          "rangeStartUnitOrder": 4,
+          "rangeEndUnitKey": "H22-GE-04",
+          "rangeEndUnit": "공간좌표",
+          "rangeEndUnitOrder": 4
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
       "file": "types/high/h2/기하_093_정n각형의벡터와합이0인경우_고2_유형은행1.js",
       "school": "",
       "topic": "기하_정n각형의벡터와합이0인경우_유형은행1",
@@ -47327,6 +49063,285 @@ window.mainDB = {
           "rangeEndUnitKey": "H22-GE-05",
           "rangeEndUnit": "벡터의 연산",
           "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_177_정사각뿔의활용_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_정사각뿔의활용_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 7,
+      "rangeStartUnitKey": "H22-GE-03",
+      "rangeStartUnit": "공간도형",
+      "rangeStartUnitOrder": 3,
+      "rangeEndUnitKey": "H22-GE-03",
+      "rangeEndUnit": "공간도형",
+      "rangeEndUnitOrder": 3,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-03",
+          "rangeStartUnit": "공간도형",
+          "rangeStartUnitOrder": 3,
+          "rangeEndUnitKey": "H22-GE-03",
+          "rangeEndUnit": "공간도형",
+          "rangeEndUnitOrder": 3
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_159_정사면체_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_정사면체_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 6,
+      "rangeStartUnitKey": "H22-GE-03",
+      "rangeStartUnit": "공간도형",
+      "rangeStartUnitOrder": 3,
+      "rangeEndUnitKey": "H22-GE-03",
+      "rangeEndUnit": "공간도형",
+      "rangeEndUnitOrder": 3,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-03",
+          "rangeStartUnit": "공간도형",
+          "rangeStartUnitOrder": 3,
+          "rangeEndUnitKey": "H22-GE-03",
+          "rangeEndUnit": "공간도형",
+          "rangeEndUnitOrder": 3
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_176_정사면체의활용_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_정사면체의활용_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 8,
+      "rangeStartUnitKey": "H22-GE-03",
+      "rangeStartUnit": "공간도형",
+      "rangeStartUnitOrder": 3,
+      "rangeEndUnitKey": "H22-GE-03",
+      "rangeEndUnit": "공간도형",
+      "rangeEndUnitOrder": 3,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-03",
+          "rangeStartUnit": "공간도형",
+          "rangeStartUnitOrder": 3,
+          "rangeEndUnitKey": "H22-GE-03",
+          "rangeEndUnit": "공간도형",
+          "rangeEndUnitOrder": 3
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_171_정사영을이용하여타원의넓이구하기_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_정사영을이용하여타원의넓이구하기_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 5,
+      "rangeStartUnitKey": "H22-GE-03",
+      "rangeStartUnit": "공간도형",
+      "rangeStartUnitOrder": 3,
+      "rangeEndUnitKey": "H22-GE-03",
+      "rangeEndUnit": "공간도형",
+      "rangeEndUnitOrder": 3,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-03",
+          "rangeStartUnit": "공간도형",
+          "rangeStartUnitOrder": 3,
+          "rangeEndUnitKey": "H22-GE-03",
+          "rangeEndUnit": "공간도형",
+          "rangeEndUnitOrder": 3
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_161_정사영의길이-각의크기구하기_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_정사영의길이-각의크기구하기_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 3,
+      "rangeStartUnitKey": "H22-GE-03",
+      "rangeStartUnit": "공간도형",
+      "rangeStartUnitOrder": 3,
+      "rangeEndUnitKey": "H22-GE-03",
+      "rangeEndUnit": "공간도형",
+      "rangeEndUnitOrder": 3,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-03",
+          "rangeStartUnit": "공간도형",
+          "rangeStartUnitOrder": 3,
+          "rangeEndUnitKey": "H22-GE-03",
+          "rangeEndUnit": "공간도형",
+          "rangeEndUnitOrder": 3
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_160_정사영의길이_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_정사영의길이_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 7,
+      "rangeStartUnitKey": "H22-GE-03",
+      "rangeStartUnit": "공간도형",
+      "rangeStartUnitOrder": 3,
+      "rangeEndUnitKey": "H22-GE-03",
+      "rangeEndUnit": "공간도형",
+      "rangeEndUnitOrder": 3,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-03",
+          "rangeStartUnit": "공간도형",
+          "rangeStartUnitOrder": 3,
+          "rangeEndUnitKey": "H22-GE-03",
+          "rangeEndUnit": "공간도형",
+          "rangeEndUnitOrder": 3
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_163_정사영의넓이1_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_정사영의넓이1_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 9,
+      "rangeStartUnitKey": "H22-GE-03",
+      "rangeStartUnit": "공간도형",
+      "rangeStartUnitOrder": 3,
+      "rangeEndUnitKey": "H22-GE-03",
+      "rangeEndUnit": "공간도형",
+      "rangeEndUnitOrder": 3,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-03",
+          "rangeStartUnit": "공간도형",
+          "rangeStartUnitOrder": 3,
+          "rangeEndUnitKey": "H22-GE-03",
+          "rangeEndUnit": "공간도형",
+          "rangeEndUnitOrder": 3
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_167_정사영의넓이를이용한이면각구하기_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_정사영의넓이를이용한이면각구하기_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 5,
+      "rangeStartUnitKey": "H22-GE-03",
+      "rangeStartUnit": "공간도형",
+      "rangeStartUnitOrder": 3,
+      "rangeEndUnitKey": "H22-GE-03",
+      "rangeEndUnit": "공간도형",
+      "rangeEndUnitOrder": 3,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-03",
+          "rangeStartUnit": "공간도형",
+          "rangeStartUnitOrder": 3,
+          "rangeEndUnitKey": "H22-GE-03",
+          "rangeEndUnit": "공간도형",
+          "rangeEndUnitOrder": 3
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_169_정육각기둥에서이면각구하기_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_정육각기둥에서이면각구하기_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 3,
+      "rangeStartUnitKey": "H22-GE-03",
+      "rangeStartUnit": "공간도형",
+      "rangeStartUnitOrder": 3,
+      "rangeEndUnitKey": "H22-GE-03",
+      "rangeEndUnit": "공간도형",
+      "rangeEndUnitOrder": 3,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-03",
+          "rangeStartUnit": "공간도형",
+          "rangeStartUnitOrder": 3,
+          "rangeEndUnitKey": "H22-GE-03",
+          "rangeEndUnit": "공간도형",
+          "rangeEndUnitOrder": 3
         }
       ],
       "primaryStandardCourse": "기하"
@@ -47425,6 +49440,192 @@ window.mainDB = {
       "primaryStandardCourse": "기하"
     },
     {
+      "file": "types/high/h2/기하_168_정육면체에서정사영을이용하여이면각의크기_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_정육면체에서정사영을이용하여이면각의크기_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 6,
+      "rangeStartUnitKey": "H22-GE-03",
+      "rangeStartUnit": "공간도형",
+      "rangeStartUnitOrder": 3,
+      "rangeEndUnitKey": "H22-GE-03",
+      "rangeEndUnit": "공간도형",
+      "rangeEndUnitOrder": 3,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-03",
+          "rangeStartUnit": "공간도형",
+          "rangeStartUnitOrder": 3,
+          "rangeEndUnitKey": "H22-GE-03",
+          "rangeEndUnit": "공간도형",
+          "rangeEndUnitOrder": 3
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_178_좌표공간에서의점의좌표_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_좌표공간에서의점의좌표_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 8,
+      "rangeStartUnitKey": "H22-GE-04",
+      "rangeStartUnit": "공간좌표",
+      "rangeStartUnitOrder": 4,
+      "rangeEndUnitKey": "H22-GE-04",
+      "rangeEndUnit": "공간좌표",
+      "rangeEndUnitOrder": 4,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-04",
+          "rangeStartUnit": "공간좌표",
+          "rangeStartUnitOrder": 4,
+          "rangeEndUnitKey": "H22-GE-04",
+          "rangeEndUnit": "공간좌표",
+          "rangeEndUnitOrder": 4
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_189_좌표축에의한내분점과외분점_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_좌표축에의한내분점과외분점_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 3,
+      "rangeStartUnitKey": "H22-GE-04",
+      "rangeStartUnit": "공간좌표",
+      "rangeStartUnitOrder": 4,
+      "rangeEndUnitKey": "H22-GE-04",
+      "rangeEndUnit": "공간좌표",
+      "rangeEndUnitOrder": 4,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-04",
+          "rangeStartUnit": "공간좌표",
+          "rangeStartUnitOrder": 4,
+          "rangeEndUnitKey": "H22-GE-04",
+          "rangeEndUnit": "공간좌표",
+          "rangeEndUnitOrder": 4
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_198_좌표평면또는좌표축에접하는구의방정식_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_좌표평면또는좌표축에접하는구의방정식_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 11,
+      "rangeStartUnitKey": "H22-GE-04",
+      "rangeStartUnit": "공간좌표",
+      "rangeStartUnitOrder": 4,
+      "rangeEndUnitKey": "H22-GE-04",
+      "rangeEndUnit": "공간좌표",
+      "rangeEndUnitOrder": 4,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-04",
+          "rangeStartUnit": "공간좌표",
+          "rangeStartUnitOrder": 4,
+          "rangeEndUnitKey": "H22-GE-04",
+          "rangeEndUnit": "공간좌표",
+          "rangeEndUnitOrder": 4
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_190_좌표평면에의한내분점과외분점_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_좌표평면에의한내분점과외분점_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 5,
+      "rangeStartUnitKey": "H22-GE-04",
+      "rangeStartUnit": "공간좌표",
+      "rangeStartUnitOrder": 4,
+      "rangeEndUnitKey": "H22-GE-04",
+      "rangeEndUnit": "공간좌표",
+      "rangeEndUnitOrder": 4,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-04",
+          "rangeStartUnit": "공간좌표",
+          "rangeStartUnitOrder": 4,
+          "rangeEndUnitKey": "H22-GE-04",
+          "rangeEndUnit": "공간좌표",
+          "rangeEndUnitOrder": 4
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_183_좌표평면위로의정사영_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_좌표평면위로의정사영_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 8,
+      "rangeStartUnitKey": "H22-GE-04",
+      "rangeStartUnit": "공간좌표",
+      "rangeStartUnitOrder": 4,
+      "rangeEndUnitKey": "H22-GE-04",
+      "rangeEndUnit": "공간좌표",
+      "rangeEndUnitOrder": 4,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-04",
+          "rangeStartUnit": "공간좌표",
+          "rangeStartUnitOrder": 4,
+          "rangeEndUnitKey": "H22-GE-04",
+          "rangeEndUnit": "공간좌표",
+          "rangeEndUnitOrder": 4
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
       "file": "types/high/h2/기하_020_중심이원점이아닌타원의방정식_고2_유형은행1.js",
       "school": "",
       "topic": "기하_중심이원점이아닌타원의방정식_유형은행1",
@@ -47482,6 +49683,99 @@ window.mainDB = {
           "rangeEndUnitKey": "H22-GE-05",
           "rangeEndUnit": "벡터의 연산",
           "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_148_직선과평면의수직관계-빈칸추론_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_직선과평면의수직관계-빈칸추론_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 4,
+      "rangeStartUnitKey": "H22-GE-03",
+      "rangeStartUnit": "공간도형",
+      "rangeStartUnitOrder": 3,
+      "rangeEndUnitKey": "H22-GE-03",
+      "rangeEndUnit": "공간도형",
+      "rangeEndUnitOrder": 3,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-03",
+          "rangeStartUnit": "공간도형",
+          "rangeStartUnitOrder": 3,
+          "rangeEndUnitKey": "H22-GE-03",
+          "rangeEndUnit": "공간도형",
+          "rangeEndUnitOrder": 3
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_147_직선과평면의수직에대한정리-꼬인위치에있_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_직선과평면의수직에대한정리-꼬인위치에있_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 5,
+      "rangeStartUnitKey": "H22-GE-03",
+      "rangeStartUnit": "공간도형",
+      "rangeStartUnitOrder": 3,
+      "rangeEndUnitKey": "H22-GE-03",
+      "rangeEndUnit": "공간도형",
+      "rangeEndUnitOrder": 3,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-03",
+          "rangeStartUnit": "공간도형",
+          "rangeStartUnitOrder": 3,
+          "rangeEndUnitKey": "H22-GE-03",
+          "rangeEndUnit": "공간도형",
+          "rangeEndUnitOrder": 3
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_149_직선과평면이이루는각_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_직선과평면이이루는각_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 6,
+      "rangeStartUnitKey": "H22-GE-03",
+      "rangeStartUnit": "공간도형",
+      "rangeStartUnitOrder": 3,
+      "rangeEndUnitKey": "H22-GE-03",
+      "rangeEndUnit": "공간도형",
+      "rangeEndUnitOrder": 3,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-03",
+          "rangeStartUnit": "공간도형",
+          "rangeStartUnitOrder": 3,
+          "rangeEndUnitKey": "H22-GE-03",
+          "rangeEndUnit": "공간도형",
+          "rangeEndUnitOrder": 3
         }
       ],
       "primaryStandardCourse": "기하"
@@ -48355,6 +50649,130 @@ window.mainDB = {
       "primaryStandardCourse": "기하"
     },
     {
+      "file": "types/high/h2/기하_173_태양광선이비스듬히비출때정사영과그림자의_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_태양광선이비스듬히비출때정사영과그림자의_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 5,
+      "rangeStartUnitKey": "H22-GE-03",
+      "rangeStartUnit": "공간도형",
+      "rangeStartUnitOrder": 3,
+      "rangeEndUnitKey": "H22-GE-03",
+      "rangeEndUnit": "공간도형",
+      "rangeEndUnitOrder": 3,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-03",
+          "rangeStartUnit": "공간도형",
+          "rangeStartUnitOrder": 3,
+          "rangeEndUnitKey": "H22-GE-03",
+          "rangeEndUnit": "공간도형",
+          "rangeEndUnitOrder": 3
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_174_태양광선이비스듬히비출때정사영과그림자의_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_태양광선이비스듬히비출때정사영과그림자의_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 3,
+      "rangeStartUnitKey": "H22-GE-03",
+      "rangeStartUnit": "공간도형",
+      "rangeStartUnitOrder": 3,
+      "rangeEndUnitKey": "H22-GE-03",
+      "rangeEndUnit": "공간도형",
+      "rangeEndUnitOrder": 3,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-03",
+          "rangeStartUnit": "공간도형",
+          "rangeStartUnitOrder": 3,
+          "rangeEndUnitKey": "H22-GE-03",
+          "rangeEndUnit": "공간도형",
+          "rangeEndUnitOrder": 3
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_121_평면벡터내적의부호의활용_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_평면벡터내적의부호의활용_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 2,
+      "rangeStartUnitKey": "H22-GE-07",
+      "rangeStartUnit": "벡터의 내적",
+      "rangeStartUnitOrder": 7,
+      "rangeEndUnitKey": "H22-GE-07",
+      "rangeEndUnit": "벡터의 내적",
+      "rangeEndUnitOrder": 7,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-07",
+          "rangeStartUnit": "벡터의 내적",
+          "rangeStartUnitOrder": 7,
+          "rangeEndUnitKey": "H22-GE-07",
+          "rangeEndUnit": "벡터의 내적",
+          "rangeEndUnitOrder": 7
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_139_평면벡터를이용한원의방정식_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_평면벡터를이용한원의방정식_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 17,
+      "rangeStartUnitKey": "H22-GE-08",
+      "rangeStartUnit": "도형의 방정식",
+      "rangeStartUnitOrder": 8,
+      "rangeEndUnitKey": "H22-GE-08",
+      "rangeEndUnit": "도형의 방정식",
+      "rangeEndUnitOrder": 8,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-08",
+          "rangeStartUnit": "도형의 방정식",
+          "rangeStartUnitOrder": 8,
+          "rangeEndUnitKey": "H22-GE-08",
+          "rangeEndUnit": "도형의 방정식",
+          "rangeEndUnitOrder": 8
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
       "file": "types/high/h2/기하_116_평면벡터에서점P가나타내는도형_고2_유형은행1.js",
       "school": "",
       "topic": "기하_평면벡터에서점P가나타내는도형_유형은행1",
@@ -48417,6 +50835,192 @@ window.mainDB = {
       "primaryStandardCourse": "기하"
     },
     {
+      "file": "types/high/h2/기하_123_평면벡터의내적-성분표시형_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_평면벡터의내적-성분표시형_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 11,
+      "rangeStartUnitKey": "H22-GE-07",
+      "rangeStartUnit": "벡터의 내적",
+      "rangeStartUnitOrder": 7,
+      "rangeEndUnitKey": "H22-GE-07",
+      "rangeEndUnit": "벡터의 내적",
+      "rangeEndUnitOrder": 7,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-07",
+          "rangeStartUnit": "벡터의 내적",
+          "rangeStartUnitOrder": 7,
+          "rangeEndUnitKey": "H22-GE-07",
+          "rangeEndUnit": "벡터의 내적",
+          "rangeEndUnitOrder": 7
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_131_평면벡터의내적과삼각형의넓이_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_평면벡터의내적과삼각형의넓이_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 11,
+      "rangeStartUnitKey": "H22-GE-06",
+      "rangeStartUnit": "벡터의 성분",
+      "rangeStartUnitOrder": 6,
+      "rangeEndUnitKey": "H22-GE-06",
+      "rangeEndUnit": "벡터의 성분",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-06",
+          "rangeStartUnit": "벡터의 성분",
+          "rangeStartUnitOrder": 6,
+          "rangeEndUnitKey": "H22-GE-06",
+          "rangeEndUnit": "벡터의 성분",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_122_평면벡터의내적의성질과수직_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_평면벡터의내적의성질과수직_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 5,
+      "rangeStartUnitKey": "H22-GE-06",
+      "rangeStartUnit": "벡터의 성분",
+      "rangeStartUnitOrder": 6,
+      "rangeEndUnitKey": "H22-GE-06",
+      "rangeEndUnit": "벡터의 성분",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-06",
+          "rangeStartUnit": "벡터의 성분",
+          "rangeStartUnitOrder": 6,
+          "rangeEndUnitKey": "H22-GE-06",
+          "rangeEndUnit": "벡터의 성분",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_127_평면벡터의내적의연산법칙-두벡터가이루는_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_평면벡터의내적의연산법칙-두벡터가이루는_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 6,
+      "rangeStartUnitKey": "H22-GE-07",
+      "rangeStartUnit": "벡터의 내적",
+      "rangeStartUnitOrder": 7,
+      "rangeEndUnitKey": "H22-GE-07",
+      "rangeEndUnit": "벡터의 내적",
+      "rangeEndUnitOrder": 7,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-07",
+          "rangeStartUnit": "벡터의 내적",
+          "rangeStartUnitOrder": 7,
+          "rangeEndUnitKey": "H22-GE-07",
+          "rangeEndUnit": "벡터의 내적",
+          "rangeEndUnitOrder": 7
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_129_평면벡터의내적의연산법칙-두벡터의수직이_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_평면벡터의내적의연산법칙-두벡터의수직이_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 9,
+      "rangeStartUnitKey": "H22-GE-06",
+      "rangeStartUnit": "벡터의 성분",
+      "rangeStartUnitOrder": 6,
+      "rangeEndUnitKey": "H22-GE-06",
+      "rangeEndUnit": "벡터의 성분",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-06",
+          "rangeStartUnit": "벡터의 성분",
+          "rangeStartUnitOrder": 6,
+          "rangeEndUnitKey": "H22-GE-06",
+          "rangeEndUnit": "벡터의 성분",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_126_평면벡터의내적의연산법칙_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_평면벡터의내적의연산법칙_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 6,
+      "rangeStartUnitKey": "H22-GE-07",
+      "rangeStartUnit": "벡터의 내적",
+      "rangeStartUnitOrder": 7,
+      "rangeEndUnitKey": "H22-GE-07",
+      "rangeEndUnit": "벡터의 내적",
+      "rangeEndUnitOrder": 7,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-07",
+          "rangeStartUnit": "벡터의 내적",
+          "rangeStartUnitOrder": 7,
+          "rangeEndUnitKey": "H22-GE-07",
+          "rangeEndUnit": "벡터의 내적",
+          "rangeEndUnitOrder": 7
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
       "file": "types/high/h2/기하_115_평면벡터의평행_고2_유형은행1.js",
       "school": "",
       "topic": "기하_평면벡터의평행_유형은행1",
@@ -48443,6 +51047,99 @@ window.mainDB = {
           "rangeEndUnitKey": "H22-GE-05",
           "rangeEndUnit": "벡터의 연산",
           "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_141_평면의개수_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_평면의개수_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 3,
+      "rangeStartUnitKey": "H22-GE-03",
+      "rangeStartUnit": "공간도형",
+      "rangeStartUnitOrder": 3,
+      "rangeEndUnitKey": "H22-GE-03",
+      "rangeEndUnit": "공간도형",
+      "rangeEndUnitOrder": 3,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-03",
+          "rangeStartUnit": "공간도형",
+          "rangeStartUnitOrder": 3,
+          "rangeEndUnitKey": "H22-GE-03",
+          "rangeEndUnit": "공간도형",
+          "rangeEndUnitOrder": 3
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_140_평면의결정조건_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_평면의결정조건_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 5,
+      "rangeStartUnitKey": "H22-GE-03",
+      "rangeStartUnit": "공간도형",
+      "rangeStartUnitOrder": 3,
+      "rangeEndUnitKey": "H22-GE-03",
+      "rangeEndUnit": "공간도형",
+      "rangeEndUnitOrder": 3,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-03",
+          "rangeStartUnit": "공간도형",
+          "rangeStartUnitOrder": 3,
+          "rangeEndUnitKey": "H22-GE-03",
+          "rangeEndUnit": "공간도형",
+          "rangeEndUnitOrder": 3
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "types/high/h2/기하_191_평행사변형-선분의중점의활용_고2_유형은행1.js",
+      "school": "",
+      "topic": "기하_평행사변형-선분의중점의활용_유형은행1",
+      "grade": "고2",
+      "year": "",
+      "semester": "",
+      "examType": "",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 3,
+      "rangeStartUnitKey": "H22-GE-04",
+      "rangeStartUnit": "공간좌표",
+      "rangeStartUnitOrder": 4,
+      "rangeEndUnitKey": "H22-GE-04",
+      "rangeEndUnit": "공간좌표",
+      "rangeEndUnitOrder": 4,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-04",
+          "rangeStartUnit": "공간좌표",
+          "rangeStartUnitOrder": 4,
+          "rangeEndUnitKey": "H22-GE-04",
+          "rangeEndUnit": "공간좌표",
+          "rangeEndUnitOrder": 4
         }
       ],
       "primaryStandardCourse": "기하"
