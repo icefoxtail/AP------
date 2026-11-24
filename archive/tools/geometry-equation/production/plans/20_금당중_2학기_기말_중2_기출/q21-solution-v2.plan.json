@@ -3,7 +3,7 @@
   "panels": [
     {
       "caption": {
-        "text": "문제 그림 (비례 아님, 단위 m)"
+        "text": "AC∥DF (비례 아님, 단위 m)"
       },
       "plan": {
         "capability": "construction-spike-v1",
@@ -35,45 +35,26 @@
               "factRole": "GIVEN"
             },
             {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
               "id": "C",
-              "op": "SOURCE_POINT",
-              "inputs": [],
-              "args": {
-                "coordinates": [
-                  {
-                    "kind": "integer",
-                    "value": "0"
-                  },
-                  {
-                    "kind": "integer",
-                    "value": "0"
-                  }
-                ]
-              },
-              "outputType": "POINT",
-              "factRole": "GIVEN"
-            },
-            {
-              "id": "E",
-              "op": "SOURCE_POINT",
-              "inputs": [],
-              "args": {
-                "coordinates": [
-                  {
-                    "kind": "integer",
-                    "value": "9"
-                  },
-                  {
-                    "kind": "integer",
-                    "value": "0"
-                  }
-                ]
-              },
-              "outputType": "POINT",
-              "factRole": "GIVEN"
-            },
-            {
-              "id": "F",
               "op": "SOURCE_POINT",
               "inputs": [],
               "args": {
@@ -92,6 +73,44 @@
               "factRole": "GIVEN"
             },
             {
+              "id": "E",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "18"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "F",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "24"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
               "id": "D",
               "op": "SOURCE_POINT",
               "inputs": [],
@@ -99,7 +118,7 @@
                 "coordinates": [
                   {
                     "kind": "integer",
-                    "value": "9"
+                    "value": "18"
                   },
                   {
                     "kind": "integer",
@@ -112,20 +131,48 @@
             }
           ]
         },
+        "displayLines": [],
+        "displayCircles": [],
+        "caption": "문제의 그림",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "피라미드 높이 AB=x m, 밑면 중심 B에서 그림자 끝 C까지 BC=220.5 m, 막대기 DE=1 m, 막대기의 그림자 EF=1.5 m, AC와 DF는 평행.",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+        ],
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 320
+        },
         "displayPoints": [
           "A",
+          "B",
           "C",
           "E",
           "F",
           "D"
         ],
-        "displayLines": [],
-        "displayCircles": [],
         "displaySegments": [
           {
-            "id": "sAC",
+            "id": "sAB",
             "refs": [
               "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
               "C"
             ]
           },
@@ -144,17 +191,10 @@
             ]
           },
           {
-            "id": "sFD",
+            "id": "sAC",
             "refs": [
-              "F",
-              "D"
-            ]
-          },
-          {
-            "id": "sDA",
-            "refs": [
-              "D",
-              "A"
+              "A",
+              "C"
             ]
           },
           {
@@ -163,14 +203,79 @@
               "D",
               "E"
             ]
+          },
+          {
+            "id": "sDF",
+            "refs": [
+              "D",
+              "F"
+            ]
+          }
+        ],
+        "rightAngles": [
+          {
+            "id": "r0",
+            "refs": [
+              "A",
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "r1",
+            "refs": [
+              "D",
+              "E",
+              "F"
+            ]
           }
         ],
         "planeMarks": {
+          "angles": [
+            {
+              "id": "aC",
+              "refs": [
+                "A",
+                "C",
+                "B"
+              ],
+              "value": 33.690067525979785,
+              "arcs": 1,
+              "equalGroup": 1,
+              "noLabel": true,
+              "color": "ROSE",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "aF",
+              "refs": [
+                "D",
+                "F",
+                "E"
+              ],
+              "value": 33.690067525979785,
+              "arcs": 1,
+              "equalGroup": 1,
+              "noLabel": true,
+              "color": "ROSE",
+              "factRole": "GIVEN"
+            }
+          ],
+          "parallels": [
+            {
+              "id": "pAC",
+              "count": 1,
+              "segments": [
+                "sAC",
+                "sDF"
+              ]
+            }
+          ],
           "dimensions": [
             {
-              "id": "dCF",
-              "from": "C",
-              "to": "F",
+              "id": "dBC",
+              "from": "B",
+              "to": "C",
               "label": "220.5",
               "side": "BELOW",
               "style": "ARROW",
@@ -179,8 +284,8 @@
               "offsetPx": 64
             },
             {
-              "id": "dCA",
-              "from": "C",
+              "id": "dBA",
+              "from": "B",
               "to": "A",
               "label": "x",
               "side": "LEFT",
@@ -202,50 +307,12 @@
               "labelKind": "MATH"
             }
           ]
-        },
-        "caption": "문제의 그림",
-        "sourceConditions": [
-          {
-            "id": "c1",
-            "condition": "피라미드 높이 AC=x m, 막대기 DE=1m, 막대기의 그림자 EF=1.5m, CF=220.5m.",
-            "mappedTo": [
-              "mathPlan.nodes",
-              "displaySegments",
-              "planeMarks",
-              "caption"
-            ]
-          }
-        ],
-        "newVisualInformation": [
-          "도형의 각·길이와 관계를 색과 표식으로 구별한다."
-        ],
-        "rightAngles": [
-          {
-            "id": "r0",
-            "refs": [
-              "A",
-              "C",
-              "E"
-            ]
-          },
-          {
-            "id": "r1",
-            "refs": [
-              "D",
-              "E",
-              "F"
-            ]
-          }
-        ],
-        "coordinateCanvas": {
-          "width": 420,
-          "height": 320
         }
       }
     },
     {
       "caption": {
-        "text": "삼각형 ACF (단위 m)"
+        "text": "삼각형 ABC (단위 m)"
       },
       "plan": {
         "capability": "construction-spike-v1",
@@ -277,7 +344,7 @@
               "factRole": "GIVEN"
             },
             {
-              "id": "C",
+              "id": "B",
               "op": "SOURCE_POINT",
               "inputs": [],
               "args": {
@@ -296,7 +363,7 @@
               "factRole": "GIVEN"
             },
             {
-              "id": "F",
+              "id": "C",
               "op": "SOURCE_POINT",
               "inputs": [],
               "args": {
@@ -316,97 +383,13 @@
             }
           ]
         },
-        "displayPoints": [
-          "A",
-          "C",
-          "F"
-        ],
         "displayLines": [],
         "displayCircles": [],
-        "displaySegments": [
-          {
-            "id": "sAC",
-            "refs": [
-              "A",
-              "C"
-            ]
-          },
-          {
-            "id": "sCF",
-            "refs": [
-              "C",
-              "F"
-            ]
-          },
-          {
-            "id": "sFA",
-            "refs": [
-              "F",
-              "A"
-            ]
-          }
-        ],
-        "planeMarks": {
-          "angles": [
-            {
-              "id": "a0CFA",
-              "refs": [
-                "C",
-                "F",
-                "A"
-              ],
-              "value": 33.690067525979785,
-              "noLabel": true,
-              "color": "ROSE",
-              "factRole": "GIVEN"
-            }
-          ],
-          "segmentColors": [
-            {
-              "segments": [
-                "sAC"
-              ],
-              "color": "BLUE"
-            },
-            {
-              "segments": [
-                "sCF"
-              ],
-              "color": "WARM"
-            },
-            {
-              "segments": [
-                "sFA"
-              ],
-              "color": "GREEN"
-            }
-          ],
-          "dimensions": [
-            {
-              "id": "dCF",
-              "from": "C",
-              "to": "F",
-              "label": "220.5",
-              "side": "BELOW",
-              "style": "ARROW",
-              "factRole": "GIVEN"
-            },
-            {
-              "id": "dCA",
-              "from": "C",
-              "to": "A",
-              "label": "x",
-              "side": "LEFT",
-              "style": "ARROW",
-              "factRole": "GIVEN"
-            }
-          ]
-        },
-        "caption": "삼각형 ACF",
+        "caption": "삼각형 ABC",
         "sourceConditions": [
           {
             "id": "c1",
-            "condition": "큰 직각삼각형 ACF의 높이 AC=x m, 밑변 CF=220.5m.",
+            "condition": "큰 직각삼각형 ABC의 높이 AB=x m, 밑변 BC=220.5 m.",
             "mappedTo": [
               "mathPlan.nodes",
               "displaySegments",
@@ -418,19 +401,106 @@
         "newVisualInformation": [
           "도형의 각·길이와 관계를 색과 표식으로 구별한다."
         ],
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 320
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sCA",
+            "refs": [
+              "C",
+              "A"
+            ]
+          }
+        ],
         "rightAngles": [
           {
             "id": "r0",
             "refs": [
               "A",
-              "C",
-              "F"
+              "B",
+              "C"
             ]
           }
         ],
-        "coordinateCanvas": {
-          "width": 420,
-          "height": 320
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "a0",
+              "refs": [
+                "A",
+                "C",
+                "B"
+              ],
+              "value": 33.690067525979785,
+              "arcs": 1,
+              "equalGroup": 1,
+              "noLabel": true,
+              "color": "ROSE",
+              "factRole": "GIVEN"
+            }
+          ],
+          "parallels": [],
+          "segmentColors": [
+            {
+              "segments": [
+                "sAB"
+              ],
+              "color": "BLUE"
+            },
+            {
+              "segments": [
+                "sBC"
+              ],
+              "color": "WARM"
+            },
+            {
+              "segments": [
+                "sCA"
+              ],
+              "color": "GREEN"
+            }
+          ],
+          "dimensions": [
+            {
+              "id": "dBC",
+              "from": "B",
+              "to": "C",
+              "label": "220.5",
+              "side": "BELOW",
+              "style": "ARROW",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "dBA",
+              "from": "B",
+              "to": "A",
+              "label": "x",
+              "side": "LEFT",
+              "style": "ARROW",
+              "factRole": "GIVEN"
+            }
+          ]
         }
       }
     },
@@ -507,13 +577,33 @@
             }
           ]
         },
+        "displayLines": [],
+        "displayCircles": [],
+        "caption": "삼각형 DEF",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "작은 직각삼각형 DEF의 높이 DE=1 m, 밑변 EF=1.5 m.",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments",
+              "planeMarks",
+              "caption"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "도형의 각·길이와 관계를 색과 표식으로 구별한다."
+        ],
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 320
+        },
         "displayPoints": [
           "D",
           "E",
           "F"
         ],
-        "displayLines": [],
-        "displayCircles": [],
         "displaySegments": [
           {
             "id": "sDE",
@@ -537,21 +627,34 @@
             ]
           }
         ],
+        "rightAngles": [
+          {
+            "id": "r0",
+            "refs": [
+              "D",
+              "E",
+              "F"
+            ]
+          }
+        ],
         "planeMarks": {
           "angles": [
             {
-              "id": "a0EFD",
+              "id": "a0",
               "refs": [
-                "E",
+                "D",
                 "F",
-                "D"
+                "E"
               ],
-              "value": 33.6900675259798,
+              "value": 33.690067525979785,
+              "arcs": 1,
+              "equalGroup": 1,
               "noLabel": true,
               "color": "ROSE",
               "factRole": "GIVEN"
             }
           ],
+          "parallels": [],
           "segmentColors": [
             {
               "segments": [
@@ -592,45 +695,15 @@
               "factRole": "GIVEN"
             }
           ]
-        },
-        "caption": "삼각형 DEF",
-        "sourceConditions": [
-          {
-            "id": "c1",
-            "condition": "작은 직각삼각형 DEF의 높이 DE=1m, 밑변 EF=1.5m.",
-            "mappedTo": [
-              "mathPlan.nodes",
-              "displaySegments",
-              "planeMarks",
-              "caption"
-            ]
-          }
-        ],
-        "newVisualInformation": [
-          "도형의 각·길이와 관계를 색과 표식으로 구별한다."
-        ],
-        "rightAngles": [
-          {
-            "id": "r0",
-            "refs": [
-              "D",
-              "E",
-              "F"
-            ]
-          }
-        ],
-        "coordinateCanvas": {
-          "width": 420,
-          "height": 320
         }
       }
     }
   ],
-  "caption": "피라미드와 막대기를 각각 지면에 수직이고 그림자 끝점 F를 공통으로 하는 직각삼각형으로 나타냈다. 파란색은 높이 AC와 DE, 주황색은 밑변 CF와 EF, 초록색은 AF와 DF이고 분홍색 각 F는 공통이다. 길이는 비례대로 그리지 않았고 실제로는 삼각형 DEF가 삼각형 ACF보다 훨씬 작다.",
+  "caption": "피라미드와 막대기를 각각 지면에 수직인 직각삼각형 ABC와 DEF로 나타냈다. 파란색은 높이 AB와 DE, 주황색은 밑변 BC와 EF, 초록색은 AC와 DF이고, AC와 DF는 평행하므로 분홍색으로 표시한 각 C와 각 F는 같다. 길이는 비례대로 그리지 않았고 실제로는 삼각형 DEF가 삼각형 ABC보다 훨씬 작다.",
   "sourceConditions": [
     {
       "id": "c1",
-      "condition": "피라미드와 막대기를 각각 지면에 수직이고 그림자 끝점 F를 공통으로 하는 직각삼각형으로 나타냈다. 파란색은 높이 AC와 DE, 주황색은 밑변 CF와 EF, 초록색은 AF와 DF이고 분홍색 각 F는 공통이다. 길이는 비례대로 그리지 않았고 실제로는 삼각형 DEF가 삼각형 ACF보다 훨씬 작다.",
+      "condition": "피라미드와 막대기를 각각 지면에 수직인 직각삼각형 ABC와 DEF로 나타냈다. 파란색은 높이 AB와 DE, 주황색은 밑변 BC와 EF, 초록색은 AC와 DF이고, AC와 DF는 평행하므로 분홍색으로 표시한 각 C와 각 F는 같다. 길이는 비례대로 그리지 않았고 실제로는 삼각형 DEF가 삼각형 ABC보다 훨씬 작다.",
       "mappedTo": [
         "panels",
         "caption"

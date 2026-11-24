@@ -1254,6 +1254,7 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 피라미드 꼭대기 A, 밑면 중심 B, 그림자 끝 C와 막대기 DE, 막대기 그림자 끝 F이다. 직각삼각형 ABC와 DEF에서 AB가 x m, BC가 220.5 m, DE가 1 m, EF가 1.5 m이고 AC와 DF는 평행하다. 그림은 비례가 아니며 실제로는 작은 삼각형이 훨씬 더 작다.",
     "solutionImageCaption": "(1) 막대기와 피라미드는 지면에 수직이므로 각 B와 각 E가 직각이고, AC와 DF가 평행하므로 각 C와 각 F가 같다. 두 삼각형은 AA 닮음이므로 삼각형 ABC와 삼각형 DEF는 닮음이다. (2) 피라미드의 높이를 x m라 하면 높이의 비와 밑변의 비가 같으므로 x 대 1은 220.5 대 1.5이고 x는 220.5를 1.5로 나눈 값이다. 그림은 비례가 아니며 실제로는 막대기 삼각형이 피라미드 삼각형보다 훨씬 작다. 정답은 (1) 삼각형 ABC와 삼각형 DEF의 닮음, (2) 147 m이다.",
     "solutionImageSize": "full",
+    "solutionImageScale": 94,
     "curriculum": "2015",
     "rpmL1": "도형의 닮음과 피타고라스 정리",
     "rpmL2": "도형의 닮음",
