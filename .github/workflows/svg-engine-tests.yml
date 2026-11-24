@@ -76,6 +76,9 @@ jobs:
           PYTHONPATH: ${{ github.workspace }}/.tmp/apmath-visual-engine/dependencies/python
           PYTHONUTF8: '1'
           GEOMETRY_BROWSER_EXECUTABLE: ${{ steps.chrome.outputs.chrome-path }}
+          # The engine's python worker kills a request after 10 s. Four test files run at once on a shared runner, so a heavy figure can need longer
+          # than that without being wrong: the timeout is a hang guard here, not a performance check.
+          GEOMETRY_WORKER_TIMEOUT_MS: '120000'
         run: >-
           node tools/ci/svg-engine-shard-run.mjs --suite node --shard "${{ matrix.shard }}"
           --out "$RUNNER_TEMP/svg-engine-result" --jobs 4

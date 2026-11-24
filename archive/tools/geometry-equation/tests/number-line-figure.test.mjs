@@ -120,7 +120,7 @@ test('SET row palette uses the real SVG strokes and keeps hollow endpoints, labe
   assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
   assert.equal(composed.staticAudit.status,'PASS');
   assert.equal(composed.renderedLayout.status,'PASS');
-  const attribute=(id,name)=>new RegExp(`(id="${id}"[^>]*?\b${name}=")([^"]*)"`);
+  const attribute=(id,name)=>new RegExp(`(id="${id}"[^>]*?\\b${name}=")([^"]*)"`);
   const read=(id,name)=>composed.svg.match(attribute(id,name))?.[2];
   assert.equal(read('r1-band-1','stroke'),'#1f5fa8');
   assert.equal(read('r1-band-2','stroke'),'#1f5fa8');

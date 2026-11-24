@@ -6321,7 +6321,7 @@ def curve_name_audit(plan,svg,transform):
     try:
         root=ET.fromstring(svg);groups={node.get('id'):node for node in root.iter() if node.tag.split('}')[-1]=='g' and node.get('id')}
         if variable is not None:
-            if not isinstance(variable,str) or not re.fullmatch(r'[a-xz]',variable):return {'status':'UNSUPPORTED','errors':['INVALID_AXIS_VARIABLE']}
+            if not isinstance(variable,str) or not re.fullmatch(r'[A-XZa-xz]' if plan.get('applicationAxes') is True else r'[a-xz]',variable):return {'status':'UNSUPPORTED','errors':['INVALID_AXIS_VARIABLE']}   # the same alphabet as the framer: an application axis may be named with a capital (P, S)
             node=groups.get('axis-x')
             if node is None or _ov_glyph_codes(node)!=_letter_codes(variable):errors.append('AXIS_VARIABLE_LABEL_MISMATCH')
             name=plan.get('functionName')
