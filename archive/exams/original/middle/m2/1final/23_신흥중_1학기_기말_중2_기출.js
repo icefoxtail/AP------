@@ -215,7 +215,11 @@ window.questionBank = [
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_신흥중_1학기_기말_중2_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 세 직선이 한 점에서 만나고, 그 교점 옆에 좌표 (−4, 2)가 적혀 있다. 수평선 y=2가 함께 지나간다.",
+    "solutionImageCaption": "x+5y=6에 y=2를 대입하면 x=−4이다. ax−y=10에 x=−4, y=2를 대입하면 −4a−2=10이므로 a=−3이다. 그림에서 기울기 −1/5인 직선과 기울기 −3인 직선, 수평선 y=2가 점 (−4, 2)에서 만나는 것을 확인할 수 있다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,

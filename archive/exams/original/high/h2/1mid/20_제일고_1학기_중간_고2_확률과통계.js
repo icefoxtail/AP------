@@ -44,7 +44,11 @@ window.questionBank = [
     "tagConfidence": "medium",
     "tagStatus": "manual_review",
     "reviewStatus": "manual_review",
-    "sourceType": "past_exam"
+    "sourceType": "past_exam",
+    "solutionImage": "assets/images/20_제일고_1학기_중간_고2_확률과통계/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 모양의 탁자 둘레에 여섯 개의 점이 같은 간격으로 놓여 있고, 중심에서 각 점으로 점선이 뻗어 있으며 그 점선마다 1부터 6까지의 번호가 붙어 있다. 한 자리 옆의 파란 호에는 고정, 이웃한 자리 사이의 보라색 호에는 회전이라고 적혀 있다.",
+    "solutionImageCaption": "원탁에서는 회전하여 같은 자리가 되는 배치를 한 가지로 센다. 한 학생의 자리를 고정하면 나머지 5명의 자리를 배열하는 방법만 세면 된다. 이때 경우의 수는 5! = 5×4×3×2×1 = 120이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,

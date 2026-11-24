@@ -757,7 +757,11 @@ window.questionBank = [
     "rpmL3": "정적분과 함수",
     "rpmL4": "미분과 적분 관계",
     "rpmSemanticStatus": "FINAL",
-    "semanticSourceScope": "RPM_H15_M2"
+    "semanticSourceScope": "RPM_H15_M2",
+    "solutionImage": "assets/images/22_효천고_2학기_기말_고2_수학II/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 볼록한 포물선과 x=0부터 x=1까지 색칠된 영역, 영역 안의 넓이 값, 두 끝점 A와 B가 보인다.",
+    "solutionImageCaption": "f(x)=3x²+2x+K로 두면 f(1)-f(0)=5이므로 K=5이다. 따라서 f(x)=3x²+2x+5이고 0부터 1까지의 정적분은 7이다. 그림은 그 영역을 색칠하고 넓이 7을 표시한 것이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -1353,7 +1357,11 @@ window.questionBank = [
     "rpmL3": "정적분과 함수",
     "rpmL4": "미분과 적분 관계",
     "rpmSemanticStatus": "FINAL",
-    "semanticSourceScope": "RPM_H15_M2"
+    "semanticSourceScope": "RPM_H15_M2",
+    "solutionImage": "assets/images/22_효천고_2학기_기말_고2_수학II/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 기울기 3인 직선이 그려져 있고, 왼쪽 아래의 점 P에 좌표가 표시되어 있다.",
+    "solutionImageCaption": "양변을 x에 대하여 세 번 미분하면 2f(x)=6x+2a이므로 f(x)=3x+a이다. x=1에서 왼쪽의 함숫값과 두 도함숫값이 모두 0이므로 세 식을 연립하면 a=-9/4, b=3/2, c=-1/4이다. 따라서 f(a)=3a+a=4a=-9이고 f(a)+10=1이다. 따라서 답은 1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,

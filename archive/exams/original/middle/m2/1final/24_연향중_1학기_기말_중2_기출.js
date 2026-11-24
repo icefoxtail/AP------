@@ -65,7 +65,11 @@ window.questionBank = [
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_연향중_1학기_기말_중2_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 두 직선이 제4사분면의 점 (4, -5)에서 만나고, 교점의 좌표가 표시되어 있다. 파란 직선과 주황 직선이 서로 다른 기울기로 그려져 있다.",
+    "solutionImageCaption": "두 식의 그래프는 점 (4, -5)에서 만난다. 둘째 식에 x=4, y=b를 대입하면 8+3b=-7이므로 b=-5이다. 첫째 식에 4a-2(-5)=2를 대입하면 4a=-8이므로 a=-2이다. 따라서 ab=(-2)(-5)=10이므로 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -214,7 +218,12 @@ window.questionBank = [
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
     "subUnit": "연립일차방정식의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_연향중_1학기_기말_중2_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽에는 세로로 긴 직사각형 세 개와 그 오른쪽 아래에 가로로 긴 직사각형 두 개가 붙어 있고, 왼쪽 바깥 치수선에 19가 적혀 있다. 오른쪽에는 가로로 긴 직사각형 세 개 위에 세로로 긴 직사각형 하나가 놓여 있고, 왼쪽 바깥 치수선에 21이 적혀 있다.",
+    "solutionImageCaption": "왼쪽에는 세로로 긴 직사각형 세 개와 그 오른쪽 아래에 가로로 긴 직사각형 두 개가 붙어 있고, 왼쪽 바깥 치수선에 19가 적혀 있다. 오른쪽에는 가로로 긴 직사각형 세 개 위에 세로로 긴 직사각형 하나가 놓여 있고, 왼쪽 바깥 치수선에 21이 적혀 있다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 7,

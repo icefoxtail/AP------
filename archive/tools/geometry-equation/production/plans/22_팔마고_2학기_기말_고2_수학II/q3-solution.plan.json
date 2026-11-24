@@ -1,0 +1,123 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "3",
+          "4",
+          "1"
+        ]
+      },
+      {
+        "coefficients": [
+          "1",
+          "0",
+          "-1"
+        ]
+      },
+      {
+        "coefficients": [
+          "3",
+          "-4",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "-1",
+        "y": "0"
+      },
+      {
+        "x": "1",
+        "y": "0"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-3",
+        "y": "0"
+      },
+      {
+        "id": "B",
+        "x": "-2",
+        "y": "-1"
+      },
+      {
+        "id": "C",
+        "x": "-1",
+        "y": "0"
+      },
+      {
+        "id": "D",
+        "x": "0",
+        "y": "1"
+      },
+      {
+        "id": "E",
+        "x": "1",
+        "y": "0"
+      },
+      {
+        "id": "F",
+        "x": "2",
+        "y": "-1"
+      },
+      {
+        "id": "G",
+        "x": "3",
+        "y": "0"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "y"
+    },
+    "coordinateBand": {
+      "hide": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G"
+      ]
+    },
+    "overlays": {
+      "callouts": [
+        {
+          "id": "cf",
+          "point": "D",
+          "text": "y=f′(x)",
+          "labelKind": "MATH",
+          "direction": "N"
+        }
+      ]
+    }
+  },
+  "caption": "도함수 f′(x)의 부호가 A에서 +에서 −로, C에서 −에서 +로, E에서 +에서 −로, G에서 −에서 +로 바뀐다. 따라서 f는 A, E에서 극대이고 C, G에서 극소이므로 극값은 네 개다. D는 f′의 극대점일 뿐 f′의 부호가 바뀌지 않으므로 f의 극대가 아니고, 닫힌구간 [B, D]에는 f′이 감소하는 부분이 있어 f가 계속 증가하지 않는다. 그러므로 옳은 것은 ㄷ, ㄹ이고 따라서 답은 ④이다.",
+  "accessibilityDescription": "도함수의 그래프가 세 개의 이차곡선 조각으로 이어져 있고, x축과 네 점 A, C, E, G에서 만난다. B와 F에서는 아래로 볼록한 극소, D에서는 위로 볼록한 극대를 이룬다.",
+  "newVisualInformation": [
+    "도함수의 x축 교점 A, C, E, G를 표시했다.",
+    "도함수의 극값 B, D, F를 표시했다.",
+    "각 구간에서 도함수의 부호가 바뀌는 지점을 점으로 표시했다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "3. 함수 $f(x)$의 도함수 $y=f'(x)$의 그래프가 다음 그림과 같을 때, <보기>에서 옳은 것만을 있는 대로 고른 것은? [3.6점]\n\n<보기>\nㄱ. $f(x)$는 닫힌구간 $[B, D]$에서 증가한다.\nㄴ. $f(x)$는 $x=D$에서 극대이다.\nㄷ. $f(x)$의 극값은 4개이다.\nㄹ. $f(x)$가 극소가 되는 $x$의 값은 $C$와 $G$이다.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

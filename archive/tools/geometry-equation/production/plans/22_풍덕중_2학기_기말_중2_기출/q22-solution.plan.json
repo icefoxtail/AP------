@@ -1,0 +1,88 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "A",
+        "name": "끝수",
+        "elements": [
+          "0",
+          "2또는4"
+        ]
+      },
+      {
+        "id": "B",
+        "name": "경우",
+        "elements": [
+          "20",
+          "32"
+        ]
+      },
+      {
+        "id": "C",
+        "name": "합",
+        "elements": [
+          "52"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 0
+        },
+        "to": {
+          "column": 2,
+          "element": 0
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 1
+        },
+        "to": {
+          "column": 2,
+          "element": 0
+        },
+        "style": "SOLID"
+      }
+    ]
+  },
+  "caption": "두 자리 자연수는 십의 자리 5가지와 일의 자리 5가지로 5×5=25가지이다. 세 자리 짝수에서 일의 자리가 0이면 5×4=20가지이고, 일의 자리가 2 또는 4이면 2×4×4=32가지이다. 따라서 20+32=52가지이다. 따라서 답은 (1) 25, (2) 52이다.",
+  "newVisualInformation": [
+    "끝수가 0인 경우 20가지와 끝수가 2 또는 4인 경우 32가지가 합 52로 모이는 대응도이다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 2] 상자 안에 $0$,$1$,$2$,$3$,$4$,$5$가 적힌 $6$장의 카드가 있다. 다음 물음에 답하시오\n(1) 서로 다른 두 장 뽑아 두자리 자연수를 만들 수 있는 경우의 수를 구하시오. (단답형) [2점]\n(2) 세 장을 뽑아 세 자리 자연수를 만들 때 짝수가 되는 경우의 수를 구하시오. (풀이과정 서술) [3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

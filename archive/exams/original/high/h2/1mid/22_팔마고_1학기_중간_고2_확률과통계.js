@@ -999,7 +999,11 @@ window.questionBank = [
     "metaDebtFields": [
       "templateKey"
     ],
-    "metaDebtReason": "현재 활성 crosswalk에서 이 문항 구조에 정확히 일치하는 templateKey binding을 확인하지 못해 null로 보존한다. 정답과 해설은 완료했고 key를 추정하지 않는다."
+    "metaDebtReason": "현재 활성 crosswalk에서 이 문항 구조에 정확히 일치하는 templateKey binding을 확인하지 못해 null로 보존한다. 정답과 해설은 완료했고 key를 추정하지 않는다.",
+    "solutionImage": "assets/images/22_팔마고_1학기_중간_고2_확률과통계/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 세 점 A, B, C가 같은 간격으로 한 직선 위에 놓여 있고, 그 직선이 세 점을 지나며 그려져 있다.",
+    "solutionImageCaption": "예: (a, b, c)=(2, 3, 4)이면 세 점 (1, 2), (2, 3), (3, 4)가 한 직선 위에 놓인다. 세 점이 한 직선 위에 있으려면 a+c=2b이고, a+b+c=9와 함께 쓰면 b=3, a+c=6이므로 (a, c)는 5가지이다. 전체 양의 정수해가 28가지이므로 한 직선 위에 있지 않은 경우는 28−5=23가지이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,

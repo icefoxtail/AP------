@@ -1,0 +1,416 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "X0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-3",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-1"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-3",
+              "denominator": "4"
+            },
+            {
+              "kind": "rational",
+              "numerator": "35",
+              "denominator": "16"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-1",
+              "denominator": "2"
+            },
+            {
+              "kind": "rational",
+              "numerator": "9",
+              "denominator": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-1",
+              "denominator": "4"
+            },
+            {
+              "kind": "rational",
+              "numerator": "35",
+              "denominator": "16"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C5",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1",
+              "denominator": "4"
+            },
+            {
+              "kind": "rational",
+              "numerator": "27",
+              "denominator": "16"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C6",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1",
+              "denominator": "2"
+            },
+            {
+              "kind": "rational",
+              "numerator": "5",
+              "denominator": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C7",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "4"
+            },
+            {
+              "kind": "rational",
+              "numerator": "11",
+              "denominator": "16"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C8",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "X0",
+    "X1",
+    "C0",
+    "C1",
+    "C2",
+    "C3",
+    "C4",
+    "C5",
+    "C6",
+    "C7",
+    "C8"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAxis",
+      "refs": [
+        "X0",
+        "X1"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "s0",
+      "refs": [
+        "C0",
+        "C1"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "C1",
+        "C2"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "C2",
+        "C3"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "C3",
+        "C4"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "C4",
+        "C5"
+      ]
+    },
+    {
+      "id": "s5",
+      "refs": [
+        "C5",
+        "C6"
+      ]
+    },
+    {
+      "id": "s6",
+      "refs": [
+        "C6",
+        "C7"
+      ]
+    },
+    {
+      "id": "s7",
+      "refs": [
+        "C7",
+        "C8"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "textLabels": [
+      {
+        "id": "tL1",
+        "at": [
+          -1,
+          -0.55
+        ],
+        "text": "-1",
+        "labelKind": "TEXT"
+      },
+      {
+        "id": "tL2",
+        "at": [
+          1,
+          -0.55
+        ],
+        "text": "1",
+        "labelKind": "TEXT"
+      },
+      {
+        "id": "tL3",
+        "at": [
+          -0.5,
+          -0.95
+        ],
+        "text": "-1/2",
+        "labelKind": "TEXT"
+      },
+      {
+        "id": "tL4",
+        "at": [
+          -0.5,
+          2.75
+        ],
+        "text": "최대 9/4",
+        "labelKind": "TEXT"
+      },
+      {
+        "id": "tL5",
+        "at": [
+          1.2,
+          0.15
+        ],
+        "text": "0",
+        "labelKind": "TEXT"
+      },
+      {
+        "id": "tL6",
+        "at": [
+          -1.35,
+          2.15
+        ],
+        "text": "2",
+        "labelKind": "TEXT"
+      },
+      {
+        "id": "tL7",
+        "at": [
+          1.05,
+          2.5
+        ],
+        "text": "k=-t²-t+2",
+        "labelKind": "TEXT"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 520,
+    "height": 460
+  },
+  "hiddenPointNames": [
+    "X0",
+    "X1",
+    "C0",
+    "C1",
+    "C2",
+    "C3",
+    "C4",
+    "C5",
+    "C6",
+    "C7",
+    "C8"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "sin x = t로 치환하면 -1 ≤ t ≤ 1이고, 주어진 식은 k = -t² - t + 2가 된다. 이 이차함수는 t = -1/2에서 최대 9/4, t = 1에서 최소 0이므로 k의 범위는 0 ≤ k ≤ 9/4이다. 따라서 b - a = 9/4 - 0 = 9/4이다. 따라서 답은 ⑤이다.",
+  "newVisualInformation": [
+    "t = -1/2에서 최댓값 9/4를 갖는 이차함수 k = -t² - t + 2의 그래프",
+    "t = -1에서 k = 2, t = 1에서 k = 0인 양 끝값",
+    "k의 범위 0 이상 9/4 이하"
+  ],
+  "accessibilityDescription": "가로로 놓인 t축 위에 이차함수 k = -t² - t + 2의 그래프가 아래로 볼록한 모양으로 그려져 있고, 꼭짓점에 최대 9/4, 오른쪽 끝에 1과 0, 왼쪽 끝에 -1과 2가 표시된 그림이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "방정식 $\\cos^{2}x - \\sin x + 1 - k = 0$ 이 실근을 갖도록 하는 실수 $k$ 의 범위가 $a \\le k \\le b$ 일 때, $b-a$ 의 값은? [4.9점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

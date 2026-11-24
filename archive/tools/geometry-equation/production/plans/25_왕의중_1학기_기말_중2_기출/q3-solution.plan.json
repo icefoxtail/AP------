@@ -1,0 +1,70 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -5,
+      1,
+      -4,
+      5
+    ],
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "-1/4",
+          "1/4"
+        ],
+        "domain": [
+          "-4",
+          "0"
+        ],
+        "color": "BLUE",
+        "label": "x=4y+1"
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "4",
+          "5/3"
+        ],
+        "domain": [
+          "-4",
+          "0"
+        ],
+        "color": "WARM",
+        "label": "5x-3y=-12"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "-3",
+          "y": "-1",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "두 직선의 교점은 (-3, -1)이다. x=4y+1을 5x-3y=-12에 대입하면 17y=-17이므로 y=-1이다. 이때 x=4(-1)+1=-3이다. 따라서 a+b=-3+(-1)=-4이므로 답은 ①이다.",
+  "accessibilityDescription": "좌표평면에 두 직선이 제3사분면의 점 (-3, -1)에서 만나고, 교점의 좌표가 표시되어 있다. 파란 직선과 주황 직선이 서로 다른 기울기로 그려져 있다.",
+  "newVisualInformation": [
+    "두 직선 x=4y+1과 5x-3y=-12",
+    "교점 (-3, -1)의 좌표"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "연립방정식 $\\begin{cases} x=4y+1 \\\\ 5x-3y=-12 \\end{cases}$의 해가 $(a, b)$일 때, $a+b$의 값은? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

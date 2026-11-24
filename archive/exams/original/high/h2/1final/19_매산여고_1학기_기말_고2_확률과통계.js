@@ -375,7 +375,12 @@ window.questionBank = [
       "midUnit": "순열과 조합",
       "l3": "중복조합",
       "l4": "중복을 허용한 선택"
-    }
+    },
+    "solutionImage": "assets/images/19_매산여고_1학기_기말_고2_확률과통계/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 점 하나가 빨강·파랑·노랑 리본 개수의 색 구성 한 가지를 나타내고, 행마다 노란 리본 개수가 0부터 5까지 늘어선다. 오른쪽에 행마다 가능한 구성 수와 전체 합계가 적혀 있다.",
+    "solutionImageCaption": "빨강·파랑·노랑의 개수를 r, b, y라 하면 r+b+y=5이고 점 하나가 색 구성 한 가지이다. 색 구성은 모두 21가지이고, 노랑을 사지 않는 경우는 r+b=5인 6가지뿐이다. 노랑을 하나 이상 사는 구성은 15가지이므로 확률은 15/21=5/7이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 7,
@@ -559,7 +564,12 @@ window.questionBank = [
       "midUnit": "조건부확률",
       "l3": "독립시행",
       "l4": "반복 시행의 확률"
-    }
+    },
+    "solutionImage": "assets/images/19_매산여고_1학기_기말_고2_확률과통계/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로로 놓인 하나의 큰 직사각형이 세 칸으로 나뉘어 있고, 왼쪽부터 파란색 칸에 15, 주황색 칸에 7, 보라색 칸에 42가 적혀 있다. 첫 두 칸 위를 가로지르는 치수선에는 22, 세 칸 전체 아래를 가로지르는 치수선에는 64가 적혀 있다.",
+    "solutionImageCaption": "6번 중 앞면이 4번, 5번, 6번 나오는 경우를 센다. 그 수는 15+6+1=22이고 전체는 64가지이므로 확률은 22/64=11/32이다. 그림은 64가지를 한 막대로 보고 앞면이 4번 이상인 22가지를 15와 7로 나누어 표시한 것이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 10,

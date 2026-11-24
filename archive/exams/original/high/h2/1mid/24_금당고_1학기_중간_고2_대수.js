@@ -554,7 +554,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-11-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/24_금당고_1학기_중간_고2_대수/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 코사인 곡선이 위아래로 되풀이되고, 두 수평선 y=1/2과 y=-1/2이 서로 다른 색으로 그려져 있다. 곡선과 두 직선이 만나는 여섯 개의 교점이 표시되어 있다.",
+    "solutionImageCaption": "사인(x+π/2)=코사인 x이므로 주어진 식은 5코사인²x-사인²x+코사인2x=0이다. 코사인2x=코사인²x-사인²x를 이용하면 6코사인²x-2사인²x=0, 즉 3코사인²x-사인²x=0이고 사인²x=1-코사인²x를 대입하면 4코사인²x-1=0이므로 코사인 x=±1/2이다. 해는 ±π/3, ±2π/3, ±4π/3, …이므로 서로 다른 6개의 근을 갖는 최소 a는 4π/3이고 p=3, q=4에서 p+q=7이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 16,
@@ -643,9 +647,9 @@ window.questionBank = [
   },
   {
     "id": 18,
-    "solutionImage": "assets/images/24_금당고_1학기_중간_고2_대수/q18-solution.svg",
-    "solutionImageAlt": "y=log₂x의 그래프와, 이를 아래로 3만큼 평행이동한 뒤 x축에 대칭이동한 그래프 y=−log₂x+3=log₁/₂(x/8)을 같은 좌표평면에 그린 그림이다.",
-    "solutionImageCaption": "log_transform",
+    "solutionImage": "assets/images/24_금당고_1학기_중간_고2_대수/q18-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 파란 로그곡선 f, 주황색 로그곡선 g, 초록색 로그곡선 h가 세로선 x=1 근처에서 각각 0, -3, 3의 높이를 지난다. x축에는 8 눈금이 보이고 세 점의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "원래 그래프를 f, 아래로 3만큼 옮긴 그래프를 g, g를 x축에 대하여 대칭이동한 그래프를 h라 하자. h는 밑이 2분의 1이고 진수가 x/8인 로그 그래프이므로 a=1/2, b=1/8이다. 따라서 a+b=5/8이다. 따라서 답은 5/8이다.",
     "solutionImageSize": "full",
     "solutionImageStatus": "asset_verified",
     "content": "<div class=\"box\">함수 $y=\\log_2 x$의 그래프를 $y$축의 방향으로 $-3$만큼 평행이동한 후 $x$축에 대하여 대칭이동한 그래프가 함수 $y=\\log_a bx$의 그래프와 일치할 때, $a+b$의 값을 구하시오. (단, $a \\ne 1$, $a>0$, $b>0$이고, $a, b$는 상수이다.) [4.0]</div>",
@@ -742,9 +746,9 @@ window.questionBank = [
   },
   {
     "id": 21,
-    "solutionImage": "assets/images/24_금당고_1학기_중간_고2_대수/q21-solution.svg",
-    "solutionImageAlt": "역함수 관계인 두 곡선 y=a^(x−3), y=log_a(x−3)과 기울기 −1인 직선, 점 A(7/2,9/2)와 C(3,0)을 표시해 a=81/4를 구하는 그림이다.",
-    "solutionImageCaption": "exp_log_triangle",
+    "solutionImage": "assets/images/24_금당고_1학기_중간_고2_대수/q21-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 가로축과 세로축 위에 파란 지수곡선 f, 주황 로그곡선 g, 초록 직선 y=8−x가 있고, 세로 점선 x=3과 세 점 A, B, C를 잇는 연한 회색 삼각형이 보인다.",
+    "solutionImageCaption": "편의상 지수곡선을 f, 로그곡선을 g라 하자. u=x−3으로 두면 두 곡선은 서로 역함수이고 직선은 y=8−x이다. 중점의 x좌표가 11/2이므로 두 교점의 u좌표의 합은 5이고, 삼각형의 넓이 10에서 10u−25의 절댓값이 20이므로 u=1/2 또는 9/2이다. a>2인 경우는 u=1/2이고 A=(7/2,9/2)에서 a의 1/2제곱=9/2이므로 a=81/4이다. 따라서 답은 81/4이다.",
     "solutionImageSize": "full",
     "solutionImageStatus": "asset_verified",
     "content": "<div class=\"box\">$a>2$인 실수 $a$에 대하여 기울기가 $-1$인 직선이 두 곡선 $y=a^{x-3}$, $y=\\log_a(x-3)$과 만나는 점을 각각 A, B라 하자. 점 C(3, 0)에 대하여 삼각형 ABC의 넓이가 10이고 선분 AB의 중점의 $x$좌표가 $\\frac{11}{2}$일 때, $a$의 값을 구하시오. [10]</div>",

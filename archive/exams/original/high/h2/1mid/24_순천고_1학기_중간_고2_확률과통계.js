@@ -619,9 +619,9 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/24_순천고_1학기_중간_고2_확률과통계/q14-solution.svg",
-    "solutionImageAlt": "두 주사위 순서쌍의 표본공간에서 눈의 차가 4 이상인 여섯 칸을 표시한 표",
-    "solutionImageCaption": "두 주사위 순서쌍의 표본공간에서 눈의 차가 4 이상인 여섯 칸을 표시한 표",
+    "solutionImage": "assets/images/24_순천고_1학기_중간_고2_확률과통계/q14-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 두 주사위를 던질 때 나오는 눈의 경우를 표로 나타낸 그림이다.",
+    "solutionImageCaption": "두 주사위 A, B의 눈을 순서쌍 (a, b)로 가로세로에 놓은 6×6 표에서 눈의 차가 4 이상인 칸을 칠했다. 차가 4인 칸은 (1,5), (5,1), (2,6), (6,2)의 4칸이고 차가 5인 칸은 (1,6), (6,1)의 2칸이다. 모두 6칸이므로 확률은 6/36=1/6이다. 따라서 답은 ②이다.",
     "solutionImageSize": "full"
   },
   {

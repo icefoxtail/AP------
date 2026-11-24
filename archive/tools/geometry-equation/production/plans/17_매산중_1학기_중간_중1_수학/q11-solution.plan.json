@@ -1,0 +1,72 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "axisVariable": false,
+    "rows": [
+      {
+        "kind": "POINTS",
+        "label": "이동",
+        "band": false,
+        "points": [
+          {
+            "id": "P0",
+            "value": "-2",
+            "hideName": true,
+            "showValue": true
+          },
+          {
+            "id": "P1",
+            "value": "0",
+            "hideName": true,
+            "showValue": true
+          },
+          {
+            "id": "P2",
+            "value": "3",
+            "hideName": true,
+            "showValue": true
+          }
+        ],
+        "spans": [
+          {
+            "from": "P0",
+            "to": "P2",
+            "label": "+5",
+            "style": "ARROW",
+            "side": "ABOVE"
+          },
+          {
+            "from": "P1",
+            "to": "P2",
+            "label": "+3",
+            "style": "ARROW",
+            "side": "BELOW"
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "두 화살표의 덧셈"
+  },
+  "caption": "수직선에서 −2에서 3까지 +5만큼 이동하고, 0에서 3까지 +3만큼 이동한다. 두 화살표가 같은 점 3에서 끝나므로 (−2)+(+5)=+3이다. 따라서 답은 ⑤이다.",
+  "accessibilityDescription": "수직선 위 −2, 0, 3에 점이 있고, −2에서 3으로 가는 위쪽 화살표에 +5, 0에서 3으로 가는 아래쪽 화살표에 +3이 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 수직선으로 설명할 수 있는 덧셈 식은? (4점)<br><img src=\"assets/images/17_매산중_1학기_중간_중1_수학/17_매산중_1학기_중간_중1_수학_q11_img01.png\">",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "−2에서 3까지 +5만큼, 0에서 3까지 +3만큼 이동한다",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "−2에서 3까지의 이동 +5와 0에서 3까지의 이동 +3을 화살표로 나타낸다"
+  ]
+}

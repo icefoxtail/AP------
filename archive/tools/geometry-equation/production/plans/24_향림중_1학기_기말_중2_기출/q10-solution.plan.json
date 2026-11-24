@@ -1,0 +1,79 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-15/7",
+          "3/7"
+        ]
+      }
+    ],
+    "domain": [
+      -4,
+      7
+    ],
+    "viewport": [
+      -4,
+      7,
+      -4,
+      4
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-2",
+        "y": "-3"
+      },
+      {
+        "id": "D",
+        "x": "5",
+        "y": "0"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "B",
+          "curveX": "7/3",
+          "unnamed": true
+        },
+        {
+          "id": "C",
+          "curveX": "5/2",
+          "unnamed": true
+        },
+        {
+          "id": "N",
+          "x": "2",
+          "y": "3",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "3x−7y=15를 정리하면 y=(3/7)x−15/7인 직선이다. 이 직선 위의 점 A(−2,−3)와 D(5,0), 그리고 (7/3,−8/7), (5/2,−15/14)를 표시하면 네 점이 모두 해가 된다. 각 순서쌍을 3x−7y에 대입하면 ②만 −15이고 나머지는 모두 15이다. 따라서 답은 ②이다.",
+  "accessibilityDescription": "좌표평면에 오른쪽 위로 향하는 직선이 그려져 있고, 직선 위에 네 개의 점, 직선 위쪽에 한 점이 표시되어 있다. 직선 위의 두 점은 서로 가까이 붙어 있다.",
+  "newVisualInformation": [
+    "직선 y=(3/7)x−15/7",
+    "직선 위의 점 (−2,−3), (7/3,−8/7), (5/2,−15/14), (5,0)",
+    "직선 밖의 점 (2,3)"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 중 $3x-7y=15$의 해가 아닌 것은? [3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1200,7 +1200,7 @@ window.questionBank = [
     "answer": "$64\\sqrt{3}\\,\\mathrm{cm}^2$",
     "solution": "접점에서는 반지름과 접선이 수직이므로\n$OA\\perp AP$이다.\n\n직각삼각형 $AOP$에서\n$OP=16$, $\\angle APO=30^\\circ$이므로\n$OA=16\\sin30^\\circ=8$,\n$AP=16\\cos30^\\circ=8\\sqrt3$이다.\n\n점 $P$에서 원에 그은 두 접선의 길이는 같으므로\n$AP=BP$이다.\n또 $OA$, $OB$는 같은 원의 반지름이므로\n$OA=OB=8$이다.\n\n따라서 $\\triangle AOP$와 $\\triangle BOP$는\n합동인 직각삼각형이고,\n$\\square APBO$의 넓이는\n\n$2\\times\\dfrac12\\times8\\times8\\sqrt3\n=64\\sqrt3\\,\\mathrm{cm}^2$이다.",
     "image": "assets/images/25_풍덕중_2학기_중간_중3_수학/q24.png",
-    "solutionImage": "assets/images/25_풍덕중_2학기_중간_중3_수학/q24-solution.svg",
+    "solutionImage": "assets/images/25_풍덕중_2학기_중간_중3_수학/q24-solution-v2.svg",
     "solutionImageSize": "full",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
@@ -1219,7 +1219,9 @@ window.questionBank = [
   ,
     "conceptClusterKey": "CIRCLE_LINE",
     "primaryMethod": "접점에서 생긴 직각삼각형의sin·cos로 두 변을 구하고 동일 접선길이와 반지름으로 합동인 두 삼각형 넓이를 합한다.",
-    "decisiveStep": "접점에서 생긴 직각삼각형의sin·cos로 두 변을 구하고 동일 접선길이와 반지름으로 합동인 두 삼각형 넓이를 합한다."
+    "decisiveStep": "접점에서 생긴 직각삼각형의sin·cos로 두 변을 구하고 동일 접선길이와 반지름으로 합동인 두 삼각형 넓이를 합한다.",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "반지름과접선은수직이다. OP=16,∠APO=30°에서 OA=16sin30°=8, AP=16cos30°=8√3. 두접선길이 AP=BP와반지름 OA=OB로 두직각삼각형은합동이다. APBO넓이=2·(1/2)·8·8√3=64√3 cm². 정답 64√3."
   },
   {
     "id": 25,

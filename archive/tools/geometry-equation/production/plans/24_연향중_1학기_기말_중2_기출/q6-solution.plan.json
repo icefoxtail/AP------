@@ -1,0 +1,876 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A1",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A2",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "9"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A3",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "9"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A4",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "18"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A5",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "18"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A6",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "27"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A7",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "27"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A8",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "13"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A9",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "13"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A10",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A11",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "13"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "8"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A12",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "8"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "X1",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "8"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "O2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "20"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B1",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O2"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "9"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B2",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O2"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "9"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B3",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O2"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B4",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O2"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "9"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "8"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B5",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O2"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "8"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B6",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O2"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "9"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "12"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B7",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O2"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "12"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B8",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O2"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "5",
+            "denominator": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "12"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B9",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O2"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "13",
+            "denominator": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "12"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B10",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O2"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "13",
+            "denominator": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "21"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B11",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O2"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "5",
+            "denominator": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "21"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Y2",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O2"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "21"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A1",
+    "A2",
+    "A3",
+    "A4",
+    "A5",
+    "A6",
+    "A7",
+    "A8",
+    "A9",
+    "A10",
+    "A11",
+    "A12",
+    "X1",
+    "O2",
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7",
+    "B8",
+    "B9",
+    "B10",
+    "B11",
+    "Y2"
+  ],
+  "displaySegments": [
+    {
+      "id": "sA01",
+      "refs": [
+        "O",
+        "A1"
+      ]
+    },
+    {
+      "id": "sA12",
+      "refs": [
+        "A1",
+        "A2"
+      ]
+    },
+    {
+      "id": "sA23",
+      "refs": [
+        "A2",
+        "A3"
+      ]
+    },
+    {
+      "id": "sA30",
+      "refs": [
+        "A3",
+        "O"
+      ]
+    },
+    {
+      "id": "sA24",
+      "refs": [
+        "A2",
+        "A4"
+      ]
+    },
+    {
+      "id": "sA45",
+      "refs": [
+        "A4",
+        "A5"
+      ]
+    },
+    {
+      "id": "sA53",
+      "refs": [
+        "A5",
+        "A3"
+      ]
+    },
+    {
+      "id": "sA46",
+      "refs": [
+        "A4",
+        "A6"
+      ]
+    },
+    {
+      "id": "sA67",
+      "refs": [
+        "A6",
+        "A7"
+      ]
+    },
+    {
+      "id": "sA75",
+      "refs": [
+        "A7",
+        "A5"
+      ]
+    },
+    {
+      "id": "sA18",
+      "refs": [
+        "A1",
+        "A8"
+      ]
+    },
+    {
+      "id": "sA89",
+      "refs": [
+        "A8",
+        "A9"
+      ]
+    },
+    {
+      "id": "sA910",
+      "refs": [
+        "A9",
+        "A10"
+      ]
+    },
+    {
+      "id": "sA101",
+      "refs": [
+        "A10",
+        "A1"
+      ]
+    },
+    {
+      "id": "sA911",
+      "refs": [
+        "A9",
+        "A11"
+      ]
+    },
+    {
+      "id": "sA1112",
+      "refs": [
+        "A11",
+        "A12"
+      ]
+    },
+    {
+      "id": "sA1210",
+      "refs": [
+        "A12",
+        "A10"
+      ]
+    },
+    {
+      "id": "sB01",
+      "refs": [
+        "O2",
+        "B1"
+      ]
+    },
+    {
+      "id": "sB12",
+      "refs": [
+        "B1",
+        "B2"
+      ]
+    },
+    {
+      "id": "sB23",
+      "refs": [
+        "B2",
+        "B3"
+      ]
+    },
+    {
+      "id": "sB30",
+      "refs": [
+        "B3",
+        "O2"
+      ]
+    },
+    {
+      "id": "sB24",
+      "refs": [
+        "B2",
+        "B4"
+      ]
+    },
+    {
+      "id": "sB45",
+      "refs": [
+        "B4",
+        "B5"
+      ]
+    },
+    {
+      "id": "sB53",
+      "refs": [
+        "B5",
+        "B3"
+      ]
+    },
+    {
+      "id": "sB46",
+      "refs": [
+        "B4",
+        "B6"
+      ]
+    },
+    {
+      "id": "sB67",
+      "refs": [
+        "B6",
+        "B7"
+      ]
+    },
+    {
+      "id": "sB75",
+      "refs": [
+        "B7",
+        "B5"
+      ]
+    },
+    {
+      "id": "sB89",
+      "refs": [
+        "B8",
+        "B9"
+      ]
+    },
+    {
+      "id": "sB910",
+      "refs": [
+        "B9",
+        "B10"
+      ]
+    },
+    {
+      "id": "sB1011",
+      "refs": [
+        "B10",
+        "B11"
+      ]
+    },
+    {
+      "id": "sB118",
+      "refs": [
+        "B11",
+        "B8"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "O",
+    "A1",
+    "A2",
+    "A3",
+    "A4",
+    "A5",
+    "A6",
+    "A7",
+    "A8",
+    "A9",
+    "A10",
+    "A11",
+    "A12",
+    "X1",
+    "O2",
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7",
+    "B8",
+    "B9",
+    "B10",
+    "B11",
+    "Y2"
+  ],
+  "hiddenPointStyle": "NONE",
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lblx1",
+        "ownerSegment": "sA01",
+        "text": "x",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lbly1",
+        "ownerSegment": "sA24",
+        "text": "y",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lblx2",
+        "ownerSegment": "sB12",
+        "text": "x",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lbly2",
+        "ownerSegment": "sB01",
+        "text": "y",
+        "factRole": "GIVEN"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "d19",
+        "from": "X1",
+        "to": "A7",
+        "label": "19",
+        "style": "BAR",
+        "side": "LEFT",
+        "value": "19",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "d21",
+        "from": "O2",
+        "to": "Y2",
+        "label": "21",
+        "style": "BAR",
+        "side": "LEFT",
+        "value": "21",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 600
+  },
+  "caption": "왼쪽에는 세로로 긴 직사각형 세 개와 그 오른쪽 아래에 가로로 긴 직사각형 두 개가 붙어 있고, 왼쪽 바깥 치수선에 19가 적혀 있다. 오른쪽에는 가로로 긴 직사각형 세 개 위에 세로로 긴 직사각형 하나가 놓여 있고, 왼쪽 바깥 치수선에 21이 적혀 있다.",
+  "accessibilityDescription": "왼쪽에는 세로로 긴 직사각형 세 개와 그 오른쪽 아래에 가로로 긴 직사각형 두 개가 붙어 있고, 왼쪽 바깥 치수선에 19가 적혀 있다. 오른쪽에는 가로로 긴 직사각형 세 개 위에 세로로 긴 직사각형 하나가 놓여 있고, 왼쪽 바깥 치수선에 21이 적혀 있다.",
+  "newVisualInformation": [
+    "그림 1에는 짧은 변 4, 긴 변 9인 직사각형 5개를 배치하고, 전체 높이 차 19를 왼쪽 치수선으로 표시한다.",
+    "그림 2에는 같은 직사각형 4개를 배치하고, 전체 높이 21을 왼쪽 치수선으로 표시한다.",
+    "각 직사각형의 짧은 변과 긴 변에 x, y를 붙인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "모양과 크기가 같은 직사각형 여러 개를 이어 붙이려고 한다. [그림1]은 직사각형 5개, [그림2]는 직사각형 4개를 이어 붙인 것일 때, 직사각형의 하나의 넓이를 구하면? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

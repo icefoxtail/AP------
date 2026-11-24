@@ -1,0 +1,57 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "NORMAL_CURVE",
+    "curves": [
+      {
+        "id": "X",
+        "mean": "180",
+        "sd": "6",
+        "label": "X"
+      }
+    ],
+    "ticks": [
+      {
+        "x": "174"
+      },
+      {
+        "x": "180"
+      }
+    ],
+    "shades": [
+      {
+        "from": "174",
+        "to": null,
+        "color": "BLUE"
+      }
+    ],
+    "areaLabels": [
+      {
+        "shade": 0,
+        "text": "0.8413"
+      }
+    ]
+  },
+  "caption": "성공확률이 4/5인 이항분포에서 평균이 180이므로 시행 횟수는 225이다. 분산은 36이므로 표준편차는 6이고, 174의 표준점수는 −1이다. 따라서 P(X≥174)는 0.5+0.3413=0.8413이다. 따라서 답은 ②이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "자연수 $n$에 대하여 확률변수 $X$가 다음 조건을 만족시킨다.<div style=\"border:1px solid #555; padding:6px 8px; margin:6px 0;\">(가) $P(X=x)={}_nC_x\\dfrac{4^x}{5^n}$ $(x=0,1,2,\\cdots,n)$<br>(나) $\\displaystyle\\sum_{k=0}^{n} k\\,{}_nC_k\\dfrac{4^k}{5^n}=180$</div>$\\displaystyle\\sum_{k=174}^{n}{}_nC_k\\dfrac{4^k}{5^n}$의 값을 오른쪽 표준정규분포표를 이용하여 구하면? (단, $n>174$) [4.2점]<table class=\"question-table\"><thead><tr><th>$z$</th><th>$P(0 \\le Z \\le z)$</th></tr></thead><tbody><tr><td>$0.5$</td><td>$0.1915$</td></tr><tr><td>$1.0$</td><td>$0.3413$</td></tr><tr><td>$1.5$</td><td>$0.4332$</td></tr><tr><td>$2.0$</td><td>$0.4772$</td></tr></tbody></table>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "X는 시행 횟수 225, 성공확률 4/5인 이항분포를 따르고 평균은 180이다.",
+      "mappedTo": "chart.curves[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "구하는 값은 174 이상일 확률이다.",
+      "mappedTo": "chart.shades"
+    }
+  ],
+  "newVisualInformation": [
+    "평균 180, 표준편차 6인 정규분포 곡선과 174의 경계를 표시",
+    "174보다 큰 쪽 영역을 칠하고 그 넓이 0.8413을 표시"
+  ]
+}

@@ -439,7 +439,12 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "image": "assets/images/20_매산여고_1학기_중간_고2_확률과통계/q10.png"
+    "image": "assets/images/20_매산여고_1학기_중간_고2_확률과통계/q10.png",
+    "solutionImage": "assets/images/20_매산여고_1학기_중간_고2_확률과통계/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로 6칸, 세로 3칸의 격자 위에 오른쪽 위로 3칸이 더 붙은 도로망이 보이고, 왼쪽 아래에 A, 오른쪽 위에 B가 있다. 모든 칸은 같은 크기의 사각형이다.",
+    "solutionImageCaption": "최단 경로는 오른쪽과 위쪽으로만 움직인다. 윗줄에 처음 들어가는 열을 k=3, 4, 5, 6으로 나누면 각 경우의 경로 수는 20, 35, 56, 84이고 서로 겹치지 않는다. 따라서 20+35+56+84=195이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "questionNumber": 11,

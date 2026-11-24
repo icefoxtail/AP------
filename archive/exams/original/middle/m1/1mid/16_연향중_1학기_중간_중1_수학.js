@@ -56,7 +56,12 @@ window.examData = {
       ],
       "answer": "",
       "solution": "",
-      "score": 4.0
+      "score": 4.0,
+      "solutionImage": "assets/images/16_연향중_1학기_중간_중1_수학/q4-solution.svg",
+      "solutionImageAlt": "해설 그림: 두 개의 수평선 위에 형의 도착 시각 0, 60, 120, 180, 240, 300초와 동생의 도착 시각 0, 75, 150, 225, 300초가 표시되어 있고, 300초 지점이 세로 점선으로 이어져 있다.",
+      "solutionImageCaption": "형은 60초마다, 동생은 75초마다 출발점으로 돌아온다. 60과 75의 최소공배수는 300이므로 두 사람은 출발한 지 300초 뒤에 처음으로 출발점에서 다시 만난다. 이때 동생이 돈 바퀴 수는 300÷75=4이다. 따라서 답은 ③이다.",
+      "solutionImageSize": "full",
+      "solutionImageScale": 90
     },
     {
       "id": 5,
@@ -70,7 +75,11 @@ window.examData = {
       ],
       "answer": "",
       "solution": "",
-      "score": 3.0
+      "score": 3.0,
+      "solutionImage": "assets/images/16_연향중_1학기_중간_중1_수학/q5-solution.svg",
+      "solutionImageAlt": "해설 그림: 세 줄의 수직선 A, B, C가 있다. A 줄에는 -19와 -8/3, B 줄에는 -2.3과 0, C 줄에는 2/7과 6이 왼쪽부터 표시되어 있다.",
+      "solutionImageCaption": "그림의 A, B, C는 수를 왼쪽에서 오른쪽으로 늘어놓은 세 줄의 수직선이다. 주어진 수 가운데 정수는 -19, 0, 6의 3개이고, 유리수는 여섯 수 모두이다. 양의 유리수는 2/7, 6의 2개, 음의 유리수는 -2.3, -8/3, -19의 3개이며 자연수는 6 하나이다. 따라서 답은 ⑤이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 6,

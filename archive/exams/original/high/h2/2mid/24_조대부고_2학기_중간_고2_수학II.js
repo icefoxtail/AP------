@@ -465,7 +465,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-02-CONTINUITY",
     "subUnit": "함수의 연속",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/24_조대부고_2학기_중간_고2_수학II/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽의 직선 y=x−3/4가 점 (1, 1/4)까지 올라오고, 그 점에서 오른쪽으로 완만히 내려가는 곡선이 이어져 있다. 점 (1, 1/4)에 1/4 지시선이 붙어 있다.",
+    "solutionImageCaption": "d=2일 때 오른쪽 식은 1/(√(x+3)+2)로 간단히 되고 우극한은 1/4이다. 왼쪽 분자가 x−1로 나누어떨어져야 하므로 b=−a−1이고, 왼쪽 가지는 y=x+a+1로 간단히 된다. 연속 조건에서 c=1/4, a+2=1/4이므로 a=−7/4, b=3/4이다. 따라서 a+b+c+d=5/4이고 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,

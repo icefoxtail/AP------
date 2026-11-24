@@ -1,0 +1,219 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "P1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P5",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P6",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-14"
+            },
+            {
+              "kind": "integer",
+              "value": "-14"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P7",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "14"
+            },
+            {
+              "kind": "integer",
+              "value": "14"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6",
+    "P7"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [],
+  "planeMarks": {
+    "textLabels": [
+      {
+        "id": "t1",
+        "at": "P1",
+        "text": "① 8.141414… 순환마디 14, 맞음",
+        "labelKind": "TEXT"
+      },
+      {
+        "id": "t2",
+        "at": "P2",
+        "text": "② 0.9656565… 순환마디 65, 틀림",
+        "labelKind": "TEXT"
+      },
+      {
+        "id": "t3",
+        "at": "P3",
+        "text": "③ 5.125125125… 순환마디 125, 틀림",
+        "labelKind": "TEXT"
+      },
+      {
+        "id": "t4",
+        "at": "P4",
+        "text": "④ 2.345234523452… 순환마디 3452, 틀림",
+        "labelKind": "TEXT"
+      },
+      {
+        "id": "t5",
+        "at": "P5",
+        "text": "⑤ 0.374374374… 순환마디 374, 틀림",
+        "labelKind": "TEXT"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 600
+  },
+  "hiddenPointNames": [
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6",
+    "P7"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "순환소수는 순환마디의 처음 숫자와 끝 숫자 위에 점을 하나씩 찍는다. ①은 마디 14의 처음과 끝인 1과 4에 점을 찍었으므로 바르다. ②는 9 다음의 65가 마디이므로 6과 5에, ③은 125가 마디이므로 1과 5에, ④는 3452가 마디이므로 3과 2에, ⑤는 374가 마디이므로 3과 4에 점을 찍어야 한다. 따라서 답은 ①이다.",
+  "accessibilityDescription": "다섯 개의 순환소수와 각각의 순환마디를 한 줄씩 적은 목록 그림이다. 각 줄 끝에 맞음 또는 틀림 표시가 붙어 있다.",
+  "newVisualInformation": [
+    "다섯 보기의 순환마디 14, 65, 125, 3452, 374 표시",
+    "각 보기의 맞음과 틀림 판정"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<div>다음 중에서 순환소수를 바르게 나타낸 것을 고르면?</div>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

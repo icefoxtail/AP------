@@ -1,0 +1,69 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "COS",
+    "coefficients": [
+      "1",
+      "1",
+      "0"
+    ],
+    "phasePi": "0",
+    "sourceDomain": {
+      "kind": "INTERVAL_PI",
+      "rangePi": [
+        "-3/2",
+        "3/2"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      -5,
+      5
+    ],
+    "viewport": [
+      -5.2,
+      5.2,
+      -2,
+      2
+    ],
+    "referenceLines": [
+      {
+        "id": "p",
+        "y": "1/2",
+        "intersectionCount": 2,
+        "color": "BLUE"
+      },
+      {
+        "id": "n",
+        "y": "-1/2",
+        "intersectionCount": 4,
+        "color": "WARM"
+      }
+    ],
+    "keyPoints": true,
+    "axisTickPi": true,
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "사인(x+π/2)=코사인 x이므로 주어진 식은 5코사인²x-사인²x+코사인2x=0이다. 코사인2x=코사인²x-사인²x를 이용하면 6코사인²x-2사인²x=0, 즉 3코사인²x-사인²x=0이고 사인²x=1-코사인²x를 대입하면 4코사인²x-1=0이므로 코사인 x=±1/2이다. 해는 ±π/3, ±2π/3, ±4π/3, …이므로 서로 다른 6개의 근을 갖는 최소 a는 4π/3이고 p=3, q=4에서 p+q=7이다. 따라서 답은 ①이다.",
+  "accessibilityDescription": "코사인 곡선이 위아래로 되풀이되고, 두 수평선 y=1/2과 y=-1/2이 서로 다른 색으로 그려져 있다. 곡선과 두 직선이 만나는 여섯 개의 교점이 표시되어 있다.",
+  "newVisualInformation": [
+    "코사인 곡선과 수평선 y=1/2, y=-1/2",
+    "두 직선과 곡선의 교점 여섯 개",
+    "가로축 범위 -3π/2에서 3π/2",
+    "근 ±π/3, ±2π/3, ±4π/3의 위치"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<div class=\"box\">$-a \\le x \\le a$에서 방정식 $5\\sin^2\\left(x+\\frac{\\pi}{2}\\right)-\\sin^2 x+\\cos 2x=0$이 서로 다른 6개의 근을 갖도록 하는 양수 $a$의 최솟값은 $\\frac{q}{p}\\pi$이다. $p+q$의 값을 구하시오. (단, $p$와 $q$는 서로소인 자연수이다.)</div>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

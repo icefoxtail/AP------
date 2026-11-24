@@ -764,7 +764,12 @@ window.questionBank = [
     "imageStatus": "none",
     "answerStatus": "generated_pending",
     "solutionStatus": "generated_pending",
-    "reviewStatus": "manual_review"
+    "reviewStatus": "manual_review",
+    "solutionImage": "assets/images/18_매산고_1학기_중간_고2_확률과통계/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 1부터 10까지 수가 적힌 카드가 한 줄로 놓여 있고, 연속한 두 수와 연속한 세 수의 묶음이 각각 다른 색으로 표시되어 있다. 아래에는 f(10), g(8)과 확률식을 구하는 과정이 적혀 있다.",
+    "solutionImageCaption": "세 수 중 정확히 한 쌍만 연속하는 경우는 f(n)=(n-3)(n-4)가지이고 f(10)=42이다. 세 수가 모두 연속하는 경우는 g(n)=n-2가지이고 g(8)=6이다. 이를 이용하면 확률 p(n)은 6(n-2)/(n(n-1))이고, 90×합은 16이므로 구하는 값은 42/6+16=23이다. 따라서 답은 23이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 17,

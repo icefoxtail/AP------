@@ -1,0 +1,93 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "5",
+          "2",
+          "0",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -2,
+      2
+    ],
+    "viewport": [
+      -2.5,
+      2.8,
+      -2,
+      10
+    ],
+    "requiredPoints": [
+      {
+        "id": "E",
+        "x": "-sqrt(6)/3",
+        "y": "5-4*sqrt(6)/9"
+      },
+      {
+        "id": "F",
+        "x": "sqrt(6)/3",
+        "y": "5+4*sqrt(6)/9"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisScale": {
+      "x": 2,
+      "y": 1
+    },
+    "coordinateBand": {
+      "hide": [
+        "E",
+        "F"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "T",
+          "curveX": "-1",
+          "coordinates": true
+        },
+        {
+          "id": "P",
+          "x": "2",
+          "y": "1",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "l",
+          "slope": "-1",
+          "intercept": "3",
+          "label": "l"
+        }
+      ]
+    }
+  },
+  "caption": "a=f(−1)=4이고 f′(x)=−3x²+2이므로 접선의 기울기는 f′(−1)=−1이다. 접선은 y−4=−(x+1), 즉 y=3−x이고, 이 접선이 (b,1)을 지나므로 b=2이다. 따라서 a+b=6이다. 따라서 답은 ⑤이다.",
+  "accessibilityDescription": "삼차곡선 y=−x³+2x+5와 점 T(−1,4)에서 접하는 직선 l이 있고, 직선 l이 점 P(2,1)을 지난다. 곡선에는 두 극점 E, F가 표시되어 있다.",
+  "newVisualInformation": [
+    "삼차곡선 y=−x³+2x+5와 접선 l을 그린다.",
+    "접점 T(−1,4)와 직선 위의 점 P(2,1), 두 극점 E, F를 표시한다.",
+    "가로축과 세로축의 눈금은 두지 않고 T, P의 좌표를 쓴다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "12. 곡선 $y=-x^3+2x+5$ 위의 점 $(-1, a)$에서의 접선이 점 $(b, 1)$을 지날 때, $a+b$의 값은? [3.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

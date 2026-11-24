@@ -378,7 +378,12 @@ window.questionBank = [
     ],
     "answer": "",
     "solution": "",
-    "content": "<div>다음 중에서 순환소수를 바르게 나타낸 것을 고르면?</div>"
+    "content": "<div>다음 중에서 순환소수를 바르게 나타낸 것을 고르면?</div>",
+    "solutionImage": "assets/images/23_신흥중_1학기_중간_중2_수학/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 다섯 개의 순환소수와 각각의 순환마디를 한 줄씩 적은 목록 그림이다. 각 줄 끝에 맞음 또는 틀림 표시가 붙어 있다.",
+    "solutionImageCaption": "순환소수는 순환마디의 처음 숫자와 끝 숫자 위에 점을 하나씩 찍는다. ①은 마디 14의 처음과 끝인 1과 4에 점을 찍었으므로 바르다. ②는 9 다음의 65가 마디이므로 6과 5에, ③은 125가 마디이므로 1과 5에, ④는 3452가 마디이므로 3과 2에, ⑤는 374가 마디이므로 3과 4에 점을 찍어야 한다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 5,

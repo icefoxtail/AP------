@@ -1,0 +1,214 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "V0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "V1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "V2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "14"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "V3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "14"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "V0",
+    "V1",
+    "V2",
+    "V3"
+  ],
+  "hiddenPointNames": [
+    "V0",
+    "V1",
+    "V2",
+    "V3"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "sV0V1",
+      "refs": [
+        "V0",
+        "V1"
+      ]
+    },
+    {
+      "id": "sV1V2",
+      "refs": [
+        "V1",
+        "V2"
+      ]
+    },
+    {
+      "id": "sV2V3",
+      "refs": [
+        "V2",
+        "V3"
+      ]
+    },
+    {
+      "id": "sV3V0",
+      "refs": [
+        "V3",
+        "V0"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "regions": [
+      {
+        "id": "rRect",
+        "fill": "LIGHT",
+        "label": "126",
+        "labelName": "넓이",
+        "unit": "cm^2",
+        "shapes": [
+          {
+            "polygon": [
+              "V0",
+              "V1",
+              "V2",
+              "V3"
+            ]
+          }
+        ]
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dWidth",
+        "from": "V0",
+        "to": "V1",
+        "label": "x",
+        "unit": "cm",
+        "side": "BELOW",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dHeight",
+        "from": "V1",
+        "to": "V2",
+        "label": "x+5",
+        "unit": "cm",
+        "side": "RIGHT",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 600
+  },
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "V3",
+        "V0",
+        "V1"
+      ]
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "V0",
+        "V1",
+        "V2"
+      ]
+    }
+  ],
+  "caption": "가로의 길이를 x cm라 하면 세로의 길이는 x+5 cm이고, 넓이가 126 cm²이므로 x(x+5)=126이다. x²+5x−126=0을 풀면 (x+14)(x−9)=0이므로 x=9이다. 따라서 답은 ①이다.",
+  "accessibilityDescription": "세로로 긴 직사각형의 아랫변 아래에 x cm, 오른쪽 변 오른쪽에 x+5 cm의 길이 표시가 있고, 직사각형 내부에 넓이 126 cm²가 적혀 있다.",
+  "newVisualInformation": [
+    "가로 x cm",
+    "세로 x+5 cm",
+    "넓이 126 cm²",
+    "x=9"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "2. 세로의 길이가 가로의 길이보다 $5\\text{ cm}$ 더 긴 직사각형의 넓이가 $126\\text{ cm}^2$일 때, 가로의 길이를 구하면? [4.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

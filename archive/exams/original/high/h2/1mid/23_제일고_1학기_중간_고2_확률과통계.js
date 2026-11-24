@@ -1287,7 +1287,10 @@ window.questionBank = [
     "sourceChoiceEncoding": "SOURCE_CHOICES_EXTRACTED_WITHOUT_LABELS; canonical choices are exact; the engine supplies objective labels.",
     "category": "최단경로",
     "originalCategory": "최단경로",
-    "solutionImage": "assets/images/23_제일고_1학기_중간_고2_확률과통계/q15-solution.svg"
+    "solutionImage": "assets/images/23_제일고_1학기_중간_고2_확률과통계/q15-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 가로 6칸, 세로 4칸 격자 도로망에서 출발점 A부터 각 교차점까지 갈 수 있는 최단 경로의 수를 적었다. 중앙의 막힌 교차점 두 곳은 비어 있고, 도착점 B에는 80이 적혀 있다.",
+    "solutionImageCaption": "중앙의 막힌 교차점 두 곳은 지나갈 수 없으므로 경로 수 0으로 둔다. 나머지 교차점은 왼쪽 점과 아래쪽 점의 경로 수를 더해 채운다. 이렇게 채우면 B에 80이 적힌다. 따라서 최단 경로는 80가지이고 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,

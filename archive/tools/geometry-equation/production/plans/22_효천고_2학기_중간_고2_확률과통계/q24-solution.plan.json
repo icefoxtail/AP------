@@ -1,0 +1,69 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "NORMAL_CURVE",
+    "curves": [
+      {
+        "id": "Z",
+        "mean": "0",
+        "sd": "1",
+        "label": "Z",
+        "meanLine": false
+      }
+    ],
+    "ticks": [
+      {
+        "x": "-0.5"
+      },
+      {
+        "x": "0.5"
+      },
+      {
+        "x": "1"
+      }
+    ],
+    "shades": [
+      {
+        "from": "-0.5",
+        "to": "0.5",
+        "color": "WARM"
+      },
+      {
+        "from": "1",
+        "to": null,
+        "color": "BLUE"
+      }
+    ],
+    "areaLabels": [
+      {
+        "shade": 0,
+        "text": "0.3830"
+      },
+      {
+        "shade": 1,
+        "text": "0.1587"
+      }
+    ]
+  },
+  "caption": "f(m+a)+f(m+2a)+…의 합은 X가 m+a 이상일 확률과 같고 그 값이 0.1587이다. 표준화하면 P(Z≥a/2)=0.1587이고 표에서 a/2=1이므로 a=2이다. 길이 2인 구간은 평균을 중심으로 [m-1,m+1]일 때 확률이 최대이며 그 값은 2×0.1915=0.3830이다. 따라서 답은 a=2, 최댓값 0.3830이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 4] 확률변수 $X$가 평균이 $m$, 표준편차가 $2$인 정규분포를 따른다고 할 때, 실수 전체에서 정의된 함수 $f(t)$는 $f(t) = P(t \\le X \\le t+a)$ 이다. $f(m+a) + f(m+2a) + f(m+3a) + \\cdots = 0.1587$ 일 때, $a$값을 구하고 $f(t)$의 최댓값을 구하시오. (단, 표준정규분포를 따르는 확률변수 $Z$에 대하여 $P(0 \\le Z \\le 0.5) = 0.1915$, $P(0 \\le Z \\le 1) = 0.3413$ 로 계산한다.) [5.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "확률변수 X는 평균 m, 표준편차 2인 정규분포를 따른다.",
+      "mappedTo": "chart.curves"
+    },
+    {
+      "id": "c2",
+      "condition": "f(m+a)+f(m+2a)+…=0.1587이고 표준정규분포표에서 P(0≤Z≤0.5)=0.1915, P(0≤Z≤1)=0.3413이다.",
+      "mappedTo": "chart.shades"
+    }
+  ],
+  "newVisualInformation": [
+    "표준정규분포 곡선에서 -0.5부터 0.5까지를 주황색으로 칠해 0.3830을, 1 이상 오른쪽 꼬리를 파란색으로 칠해 0.1587을 보여 준다."
+  ]
+}

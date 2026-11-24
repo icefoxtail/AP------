@@ -653,7 +653,11 @@ window.questionBank = [
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/26_신흥중_1학기_기말_중2_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 직선이 한 점에서 만나며, 그 교점이 점과 좌표로 표시되어 있다.",
+    "solutionImageCaption": "두 식의 y 계수를 각각 6으로 같게 만든 뒤 빼면 x=1이다. x=1을 3x-2y=7에 대입하면 y=-2이다. 따라서 답은 x=1, y=-2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -707,9 +711,9 @@ window.questionBank = [
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/26_신흥중_1학기_기말_중2_기출/q23-solution.svg",
-    "solutionImageAlt": "해설 그림: 좌표평면에 직각삼각형이 색칠되어 있다. 점 B에서 직각을 이루며, 밑변 AB는 y=-8 위에 있고 세로 변은 2(a+4), 점 (a,2a)와 A를 잇는 빗변에는 기울기 -(a+4)/7이 적혀 있다.",
-    "solutionImageCaption": "밑변 AB는 y=-8 위, 세로 변은 2(a+4)이고 빗변의 기울기는 -(a+4)/7이다.",
-    "solutionImageSize": "medium"
+    "solutionImage": "assets/images/26_신흥중_1학기_기말_중2_기출/q23-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
+    "solutionImageCaption": "a>0이므로 세로변 2(a+4),기울기절댓값(a+4)/7에서 밑변 AB14. 넓이 140=14(a+4)로 a6,b144를 얻는다. 여기는 확정값의 실제좌표 P(6,12),B(6,−8),A(20,−8)를 그려 높이 20과 넓이 140을 확인한다.",
+    "solutionImageSize": "full"
   }
 ];

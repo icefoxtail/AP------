@@ -1,0 +1,55 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "HYPERBOLA",
+    "center": [
+      "0",
+      "0"
+    ],
+    "aSquared": "16/25",
+    "bSquared": "16",
+    "transverse": "X"
+  },
+  "points": [
+    {
+      "id": "V",
+      "kind": "VERTEX",
+      "side": 1,
+      "coordinates": true
+    },
+    {
+      "id": "V'",
+      "kind": "VERTEX",
+      "side": -1,
+      "coordinates": true
+    }
+  ],
+  "lines": [
+    {
+      "id": "s1",
+      "role": "ASYMPTOTE",
+      "sign": 1,
+      "dashed": true
+    },
+    {
+      "id": "s2",
+      "role": "ASYMPTOTE",
+      "sign": -1,
+      "dashed": true
+    }
+  ],
+  "caption": "쌍곡선 x²/a² − y²/16 = 1의 점근선은 y = ±4x/a이고, a = 4/5이면 y = ±5x가 된다. 점근선의 기울기의 크기가 5이므로 4/a = 5에서 a = 4/5이다. a > 0이므로 조건을 만족한다. 따라서 답은 ⑤이다.",
+  "accessibilityDescription": "가로축을 따라 좌우로 벌어진 쌍곡선의 두 가지와, 원점에서 엇갈리며 뻗는 두 점근선이 점선으로 보인다. 가로축 위의 두 꼭짓점 옆에 각각의 좌표가 적혀 있다.",
+  "newVisualInformation": [
+    "점근선 두 개가 각각 기울기 5와 -5로 그려짐",
+    "두 꼭짓점의 좌표 (-4/5, 0)과 (4/5, 0)",
+    "가로축을 따라 놓인 쌍곡선의 두 가지"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "쌍곡선 $\\dfrac{x^2}{a^2}-\\dfrac{y^2}{16}=1$의 점근선 중 하나의 기울기가 $5$일 때, 양수 $a$의 값은? [4.1점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

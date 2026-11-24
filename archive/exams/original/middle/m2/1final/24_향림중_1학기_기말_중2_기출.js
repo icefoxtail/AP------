@@ -353,7 +353,11 @@ window.questionBank = [
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_향림중_1학기_기말_중2_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 오른쪽 위로 향하는 직선이 그려져 있고, 직선 위에 네 개의 점, 직선 위쪽에 한 점이 표시되어 있다. 직선 위의 두 점은 서로 가까이 붙어 있다.",
+    "solutionImageCaption": "3x−7y=15를 정리하면 y=(3/7)x−15/7인 직선이다. 이 직선 위의 점 A(−2,−3)와 D(5,0), 그리고 (7/3,−8/7), (5/2,−15/14)를 표시하면 네 점이 모두 해가 된다. 각 순서쌍을 3x−7y에 대입하면 ②만 −15이고 나머지는 모두 15이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,

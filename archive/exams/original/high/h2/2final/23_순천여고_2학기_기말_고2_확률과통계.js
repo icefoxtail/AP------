@@ -447,7 +447,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
     "subUnit": "확률의 뜻과 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_순천여고_2학기_기말_고2_확률과통계/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선에 0부터 5까지의 눈금이 있고 0부터 2까지의 구간이 굵게 표시되어 있으며, 0, 1, 2에는 고리가, 3, 4, 5에는 ×가 그려져 있다.",
+    "solutionImageCaption": "예: 0,0,0,1,1을 00011로 배열하면 2를 넣을 수 있는 안전한 틈은 0, 1, 2번이고 3, 4, 5번에는 2를 놓을 수 없다. 전체 나열은 7!/(3!2!2!)=210가지이고, 00011, 00110, 01100, 11000의 4가지 배열에서는 안전한 틈이 3개라 두 개의 2를 넣는 방법이 각각 3가지, 나머지 6가지 배열에서는 1가지이다. 조건을 만족하는 나열은 4×3+6×1=18가지이므로 확률은 18/210=3/35이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -909,7 +913,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
     "subUnit": "통계적 추정",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_순천여고_2학기_기말_고2_확률과통계/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "블루베리 한 개의 무게 X는 정규분포를 따르고, 100개의 전체 무게 W는 평균 100μ, 표준편차 10σ인 정규분포를 따른다. 전체 무게가 144 이상일 확률 0.9987에서 (100μ − 144)/(10σ) = 3이므로 μ = 1.44 + 0.3σ이다. 한 개의 무게가 1.44 미만일 확률은 표준화하면 Z < −0.3이고 그 넓이는 0.5 − 0.1179 = 0.3821이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,

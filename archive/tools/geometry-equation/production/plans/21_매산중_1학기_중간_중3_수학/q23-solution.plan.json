@@ -1,0 +1,402 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "P",
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "Q"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sPA",
+      "refs": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCP",
+      "refs": [
+        "C",
+        "P"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "sFC",
+      "refs": [
+        "F",
+        "C"
+      ]
+    },
+    {
+      "id": "sFG",
+      "refs": [
+        "F",
+        "G"
+      ]
+    },
+    {
+      "id": "sGH",
+      "refs": [
+        "G",
+        "H"
+      ]
+    },
+    {
+      "id": "sHQ",
+      "refs": [
+        "H",
+        "Q"
+      ]
+    },
+    {
+      "id": "sQF",
+      "refs": [
+        "Q",
+        "F"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H"
+  ],
+  "hiddenPointStyle": "NONE",
+  "planeMarks": {
+    "regions": [
+      {
+        "id": "r1",
+        "fill": "BLUE",
+        "shapes": [
+          {
+            "polygon": [
+              "P",
+              "A",
+              "B",
+              "C"
+            ]
+          }
+        ],
+        "label": "108",
+        "unit": "cm^2",
+        "labelPlacement": "AUTO_LEADER",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "r2",
+        "fill": "WARM",
+        "shapes": [
+          {
+            "polygon": [
+              "C",
+              "D",
+              "E",
+              "F"
+            ]
+          }
+        ],
+        "label": "48",
+        "unit": "cm^2",
+        "labelPlacement": "AUTO_LEADER",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "r3",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "F",
+              "G",
+              "H",
+              "Q"
+            ]
+          }
+        ],
+        "label": "12",
+        "unit": "cm^2",
+        "labelPlacement": "AUTO_LEADER",
+        "factRole": "GIVEN"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dPQ",
+        "from": "P",
+        "to": "Q",
+        "label": "12√3",
+        "unit": "cm",
+        "side": "BELOW",
+        "style": "ARROW",
+        "offset": "AUTO",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 420
+  },
+  "caption": "3-①의 세 정사각형의 한 변은 각각 6√3 cm, 4√3 cm, 2√3 cm이다. 따라서 PQ=6√3+4√3+2√3=12√3 cm이다. 3-②는 한 변이 4√3 cm, 2√6 cm, 2√3 cm인 세 정사각형이므로 둘레는 2(4√3+2√6)+2(2√6+2√3)=12√3+8√6 cm이다. 따라서 답은 3-① 12√3 cm, 3-② 12√3+8√6 cm이다.",
+  "accessibilityDescription": "왼쪽부터 넓이 108, 48, 12인 정사각형 세 개가 같은 밑변 위에 나란히 붙어 있고, 밑변 전체의 왼쪽 끝 P와 오른쪽 끝 Q 사이에 치수선이 있다.",
+  "newVisualInformation": [
+    "세 정사각형의 넓이 108, 48, 12를 각각 표시",
+    "밑변 PQ에 12√3 cm 치수선을 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>【서답형 3】[서술형]<br />【수준별 3-①】 다음 그림과 같이 세 정사각형의 넓이가 각각 $108\\text{ cm}^2$, $48\\text{ cm}^2$, $12\\text{ cm}^2$일 때, $\\overline{\\mathrm{PQ}}$의 길이를 구하시오. (4점)<br /><img src=\"assets/images/21_매산중_1학기_중간_중3_수학/s03_1.png\" alt=\"세 정사각형이 일직선 상에 붙어있는 그림 1\" /><br />【수준별 3-②】 다음 그림과 같이 넓이가 각각 $48\\text{ cm}^2$, $24\\text{ cm}^2$, $12\\text{ cm}^2$인 $3$개의 정사각형 모양의 꽃밭이 서로 붙어있을 때, 꽃밭 전체의 둘레의 길이를 구하시오. (5점)<br /><img src=\"assets/images/21_매산중_1학기_중간_중3_수학/s03_2.png\" alt=\"넓이가 48, 24, 12인 세 정사각형 꽃밭 그림 2\" /></p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

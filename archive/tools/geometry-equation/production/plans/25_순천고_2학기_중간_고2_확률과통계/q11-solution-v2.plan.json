@@ -1,0 +1,63 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "NORMAL_CURVE",
+    "curves": [
+      {
+        "id": "X",
+        "mean": "9",
+        "sd": "2",
+        "label": "X"
+      }
+    ],
+    "ticks": [
+      {
+        "x": "4"
+      },
+      {
+        "x": "5"
+      },
+      {
+        "x": "9"
+      },
+      {
+        "x": "11"
+      }
+    ],
+    "shades": [
+      {
+        "from": "4",
+        "to": "11",
+        "color": "BLUE"
+      }
+    ],
+    "areaLabels": [
+      {
+        "shade": 0,
+        "text": "0.8351"
+      }
+    ]
+  },
+  "caption": "5 이하일 확률이 0.0228이므로 5의 표준화 값은 -2이고, 이를 풀면 평균 m=9이다. 4와 11의 표준화 값은 각각 -2.5와 1이다. 4 이상 11 이하의 넓이는 0.4938과 0.3413의 합인 0.8351이다. 따라서 답은 ④이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "확률변수 $X$가 평균이 $m$, 표준편차가 $2$인 정규분포를 따르고 $P(X\\le5)=0.0228$일 때, $P(4\\le X\\le11)$의 값을 오른쪽 표준정규분포표를 이용하여 구하면? [3.8점]<table class=\"question-table\"><thead><tr><th>$z$</th><th>$P(0 \\le Z \\le z)$</th></tr></thead><tbody><tr><td>$1.0$</td><td>$0.3413$</td></tr><tr><td>$1.5$</td><td>$0.4332$</td></tr><tr><td>$2.0$</td><td>$0.4772$</td></tr><tr><td>$2.5$</td><td>$0.4938$</td></tr></tbody></table>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "X는 평균 m, 표준편차 2인 정규분포이고 5 이하일 확률은 0.0228이다.",
+      "mappedTo": "chart.curves[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "4와 11 사이의 영역을 칠하고, 표준화 값 -2.5와 1에 대응한다.",
+      "mappedTo": "chart.shades"
+    }
+  ],
+  "newVisualInformation": [
+    "평균 9, 표준편차 2인 정규분포 곡선과 4, 5, 9, 11 눈금을 표시",
+    "4 이상 11 이하 영역을 파란색으로 칠하고 넓이 0.8351을 표시"
+  ]
+}

@@ -1,0 +1,299 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "S0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "S1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "S2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "S3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "S4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "S5",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "S6",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "S7",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "S8",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "S9",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "S0",
+    "S1",
+    "S2",
+    "S3",
+    "S4",
+    "S5",
+    "S6",
+    "S7",
+    "S8",
+    "S9"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sLine",
+      "refs": [
+        "S0",
+        "S9"
+      ],
+      "dashed": false
+    }
+  ],
+  "planeMarks": {
+    "textLabels": [
+      {
+        "id": "tW",
+        "at": [
+          1.5,
+          0.9
+        ],
+        "text": "흰 4개",
+        "labelKind": "TEXT"
+      },
+      {
+        "id": "tB",
+        "at": [
+          6.5,
+          0.9
+        ],
+        "text": "검 6개",
+        "labelKind": "TEXT"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dW",
+        "from": "S0",
+        "to": "S3",
+        "label": "4",
+        "side": "BELOW",
+        "style": "BAR",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dB",
+        "from": "S3",
+        "to": "S9",
+        "label": "6",
+        "side": "BELOW",
+        "style": "BAR",
+        "offset": "AUTO",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 320
+  },
+  "hiddenPointNames": [
+    "S0",
+    "S1",
+    "S2",
+    "S3",
+    "S4",
+    "S5",
+    "S6",
+    "S7",
+    "S8",
+    "S9"
+  ],
+  "caption": "그림에서 흰 바둑돌 4개와 검은 바둑돌 6개가 한 주기 10개로 반복된다. 200 = 10 × 20이므로 200번째 바둑돌은 한 주기의 마지막인 검은 돌이다. 한 주기에 흰 돌 4개, 검은 돌 6개이므로 200개 중 흰 돌은 4 × 20 = 80개, 검은 돌은 6 × 20 = 120개이다. 따라서 200번째는 검은 돌이고, 흰 돌 80개, 검은 돌 120개이다.",
+  "newVisualInformation": [
+    "한 주기를 이루는 흰 돌 4개와 검은 돌 6개",
+    "흰 돌 묶음의 길이 4, 검은 돌 묶음의 길이 6을 나타내는 치수선"
+  ],
+  "accessibilityDescription": "가로로 늘어놓은 바둑돌 열 개를 보여 주며, 앞쪽 흰 돌 네 개와 뒤쪽 검은 돌 여섯 개를 각각 치수선과 함께 구분한 그림이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "서술형 3. 흰 바둑돌과 검은 바둑돌을 다음과 같은 규칙으로 늘어놓을 때, 다음 물음에 답하여라. [5점]<br><img src=\"assets/images/17_삼산중_1학기_중간_중1_수학/17_삼산중_1학기_중간_중1_수학_q23_img01.png\"><br>(1) 왼쪽에서 200번째의 바둑돌은 무슨 색인가?<br>(2) 200번째까지 바둑돌을 늘어놓을 때, 200개의 바둑돌 중 검은 색과 흰색은 각각 몇 개인가?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

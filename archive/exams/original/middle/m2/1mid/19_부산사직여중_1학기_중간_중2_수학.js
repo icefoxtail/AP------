@@ -64,7 +64,12 @@ window.examData = {
         "유한소수로 나타낼 수 없는 분수는 모두 순환소수로 나타낼 수 있다."
       ],
       answer: "",
-      solution: ""
+      solution: "",
+      "solutionImage": "assets/images/19_부산사직여중_1학기_중간_중2_수학/q5-solution.svg",
+      "solutionImageAlt": "해설 그림: 가로선 위에 순환소수 0.333..., 유한소수 0.5, 무리수 π가 왼쪽부터 놓여 있고, 앞의 두 수 아래에 유리수라는 묶음 표시가 있다.",
+      "solutionImageCaption": "순환소수는 모두 분수로 나타낼 수 있으므로 유리수이다. 유한소수로 나타낼 수 없는 분수도 모두 순환소수로 나타낼 수 있다. 모든 유리수가 유한소수인 것은 아니고, 무한소수 중에는 순환소수가 아닌 무리수도 있다. 따라서 답은 ②, ⑤이다.",
+      "solutionImageSize": "full",
+      "solutionImageScale": 90
     },
     {
       id: 6,

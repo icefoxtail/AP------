@@ -766,7 +766,11 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "$AB=AC$인 이등변삼각형에서 $\\angle A$의 이등분선 $AD$는 $BC$를 수직이등분한다.\n$BD=\\frac{8}{2}=4$이므로 $x=4$이다.\n$\\triangle ABD$에서 $\\angle ADB=90^\\circ$, $\\angle B=68^\\circ$이므로 $\\angle BAD=22^\\circ$, 즉 $y=22$이다.\n따라서 $x+y=26$",
-    "content": "<div>14. 오른쪽 그림과 같이 $\\overline{\\text{AB}} = \\overline{\\text{AC}}$인 이등변삼각형 $\\text{ABC}$에서 $\\angle\\text{A}$의 이등분선과 $\\overline{\\text{BC}}$의 교점이 $\\text{D}$이다. $\\overline{\\text{BD}}$의 길이를 $x\\text{ cm}$, $\\angle\\text{BAD}$의 크기를 $y^\\circ$라 할 때, $x + y$의 값을 구하면? [3점]</div><div><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q14-problem-visual-v2.svg\" alt=\"AB와 AC가 같은 이등변삼각형 ABC. 각 B는 68°이고 변 BC의 길이는 8 cm이다. 점 A에서 BC 위의 점 D까지 각 A의 이등분선이 그어져 있다.\" style=\"display:block;width:min(100%,280px);height:auto;margin:0 auto;\"></div>"
+    "content": "<div>14. 오른쪽 그림과 같이 $\\overline{\\text{AB}} = \\overline{\\text{AC}}$인 이등변삼각형 $\\text{ABC}$에서 $\\angle\\text{A}$의 이등분선과 $\\overline{\\text{BC}}$의 교점이 $\\text{D}$이다. $\\overline{\\text{BD}}$의 길이를 $x\\text{ cm}$, $\\angle\\text{BAD}$의 크기를 $y^\\circ$라 할 때, $x + y$의 값을 구하면? [3점]</div><div><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q14-problem-visual-v2.svg\" alt=\"AB와 AC가 같은 이등변삼각형 ABC. 각 B는 68°이고 변 BC의 길이는 8 cm이다. 점 A에서 BC 위의 점 D까지 각 A의 이등분선이 그어져 있다.\" style=\"display:block;width:min(100%,280px);height:auto;margin:0 auto;\"></div>",
+    "solutionImage": "assets/images/21_향림중_2학기_중간_중2_수학/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 꼭짓점 A와 밑변 BC로 이루어진 이등변삼각형에 꼭짓각의 이등분선 AD가 그려져 있고, D에 직각 표시와 두 변 AB, AC의 같은 길이 표시가 있다. B의 각에는 68도, A의 두 각에는 같은 크기의 각 표시가 있고, 밑변 아래에는 두 변 BD, DC의 길이 표시가 나란히 있다.",
+    "solutionImageCaption": "AB = AC인 이등변삼각형에서 꼭짓각 A의 이등분선 AD는 밑변 BC를 수직이등분하므로 BD = 8 ÷ 2 = 4, 즉 x = 4이다. 직각삼각형 ABD에서 각 ADB = 90도이고 각 B = 68도이므로 각 BAD = 180도 − 90도 − 68도 = 22도, 즉 y = 22이다. 따라서 x + y = 4 + 22 = 26이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,

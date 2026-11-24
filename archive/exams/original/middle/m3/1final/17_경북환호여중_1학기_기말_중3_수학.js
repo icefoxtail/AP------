@@ -42,7 +42,12 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "score": 4.0,
-    "image": ""
+    "image": "",
+    "solutionImage": "assets/images/17_경북환호여중_1학기_기말_중3_수학/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 세로로 긴 직사각형의 아랫변 아래에 x cm, 오른쪽 변 오른쪽에 x+5 cm의 길이 표시가 있고, 직사각형 내부에 넓이 126 cm²가 적혀 있다.",
+    "solutionImageCaption": "가로의 길이를 x cm라 하면 세로의 길이는 x+5 cm이고, 넓이가 126 cm²이므로 x(x+5)=126이다. x²+5x−126=0을 풀면 (x+14)(x−9)=0이므로 x=9이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 3,
@@ -150,7 +155,11 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "score": 3.0,
-    "image": ""
+    "image": "",
+    "solutionImage": "assets/images/17_경북환호여중_1학기_기말_중3_수학/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 위로 볼록한 포물선이 있고, 왼쪽 위의 꼭짓점 V에 좌표가 표시되어 있다.",
+    "solutionImageCaption": "② y=-(x+1)²+1은 위로 볼록하고 꼭짓점이 (-1, 1)이므로 제2사분면에 있다. ①의 꼭짓점은 (0, -1), ③은 (2, 2), ④는 (2, -2), ⑤는 (-2, 0)이므로 제2사분면의 꼭짓점이 아니다. 그림은 ②의 그래프와 꼭짓점 V를 나타낸다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -335,7 +344,12 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "score": 3.0,
-    "image": ""
+    "image": "",
+    "solutionImage": "assets/images/17_경북환호여중_1학기_기말_중3_수학/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 과일별 학생 수를 나타낸 막대그래프이다. 왼쪽부터 복숭아, 바나나, 포도, 수박, 참외 막대가 있고, 각각 3명, 7명, 7명, 8명, 5명을 나타낸다.",
+    "solutionImageCaption": "표에서 학생 수가 가장 많은 과일은 수박으로 8명이다. 최빈값은 자료에서 가장 많이 나타나는 값이므로 수박이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 16,
@@ -471,7 +485,11 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "score": 5.0,
-    "image": ""
+    "image": "",
+    "solutionImage": "assets/images/17_경북환호여중_1학기_기말_중3_수학/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 위에 -3, -1, 1의 편차가 점으로 표시되고, 그 양쪽 바깥에 점 A와 B가 있다.",
+    "solutionImageCaption": "다섯 편차의 합이 0이므로 a+b=3이고, 표준편차가 2√3이므로 편차 제곱의 합은 5×12=60에서 a²+b²=49이다. 따라서 (a+b)²=a²+2ab+b²에 대입하면 9=49+2ab이므로 ab=-20이다. a와 b는 (3±√89)/2에 위치하고, 수직선에는 주어진 편차 -3, -1, 1과 함께 나타내었다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -485,7 +503,11 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "score": 3.0,
-    "image": ""
+    "image": "",
+    "solutionImage": "assets/images/17_경북환호여중_1학기_기말_중3_수학/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 아래로 볼록한 포물선이 그려져 있고, 가장 낮은 점인 꼭짓점 V에 좌표 (2, -6)이 표시되어 있다.",
+    "solutionImageCaption": "y=x²-4x-2를 완전제곱식으로 고치면 y=(x-2)²-6이다. 이때 꼭짓점의 좌표는 (2, -6)이다. 따라서 답은 (2, -6)이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -529,7 +551,11 @@ window.questionBank = [
     "answer": "",
     "solution": "",
     "score": 4.0,
-    "image": ""
+    "image": "",
+    "solutionImage": "assets/images/17_경북환호여중_1학기_기말_중3_수학/q25-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 변량의 값을 점으로 나타내 두 변량 사이의 관계를 보여 주는 그래프이다.",
+    "solutionImageCaption": "다섯 변량에 더한 값은 -2, -1, 3, 6, -1이고 그 합은 5이므로 더한 값의 평균은 1이다. 원래 다섯 변량의 평균이 10이므로 새 변량의 평균은 10+1=11이다. 예: a=b=c=d=e=10일 때 새 변량은 8, 9, 13, 16, 9이고 그 평균이 가로 기준선 11이다. 따라서 답은 11이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 26,

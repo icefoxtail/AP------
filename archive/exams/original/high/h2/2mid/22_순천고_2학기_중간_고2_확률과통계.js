@@ -291,7 +291,11 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:883ae50f4053f20a0e45f08f9814c9723ecef98bda83cd8d02944e700f5d68d2"
+    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:883ae50f4053f20a0e45f08f9814c9723ecef98bda83cd8d02944e700f5d68d2",
+    "solutionImage": "assets/images/22_순천고_2학기_중간_고2_확률과통계/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.",
+    "solutionImageCaption": "X는 평균 10, 표준편차 6이고 13의 표준화 값은 0.5이다. Y는 평균 28, 표준편차 6이며 25의 표준화 값은 -0.5이므로 두 확률이 같아진다. 따라서 k=28-3=25이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
