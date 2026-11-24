@@ -772,8 +772,12 @@
       ? covered.has(subject)
       : C.finderMatches(exam, { semanticSubject: subject }, state.finderIndex);
   }
+  // 유형 · 시험대비 칸(material=types): archive/exams/types/ 아래 세트만. 유사 시험지(similar/)는 들어가지 않는다.
+  // 종류 판정(O.materialKind)은 Worker 번들이라 건드리지 않고 이 칸만 파일 경로로 가른다.
+  const isTypesSet = (exam) => String(exam?.file || "").startsWith("types/");
+  const matchesFindMaterial = (exam, material) => (material === "types" ? isTypesSet(exam) : O.matchesMaterial(exam, material));
   function finderUpstreamMatch(exam, filters) {
-    if (!O.matchesMaterial(exam, filters.material)) return false;
+    if (!matchesFindMaterial(exam, filters.material)) return false;
     return finderIdentityMatch(exam, filters);
   }
   function finderSchoolValues(filters = state.find) {
@@ -929,6 +933,8 @@
     filterMarkup,
     finderIdentityMatch,
     finderUpstreamMatch,
+    isTypesSet,
+    matchesFindMaterial,
     finderSchoolValues,
     reconcileFinderSchool,
     originalSettingsForExam,
