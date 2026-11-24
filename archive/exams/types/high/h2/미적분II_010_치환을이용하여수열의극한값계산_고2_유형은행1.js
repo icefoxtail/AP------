@@ -1,0 +1,222 @@
+window.examTitle = "미적분II_010_치환을이용하여수열의극한값계산_고2_유형은행1";
+
+window.questionBank = [
+  {
+    "id": 1,
+    "category": "수열의 극한",
+    "standardCourse": "미적분II",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-M2-01",
+    "standardUnit": "수열의 극한",
+    "standardUnitOrder": 1,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "수열의 극한"
+    ],
+    "wide": false,
+    "content": "$\\lim_{n\\to\\infty}((5n-2)a_n)=15$일 때 $\\lim_{n\\to\\infty}((2n+3)a_n)$은?",
+    "choices": [
+      "$2$",
+      "$4$",
+      "$6$",
+      "$8$",
+      "$10$"
+    ],
+    "answer": "③",
+    "solution": "$a_n=\\dfrac{(5n-2)a_n}{5n-2}$이고 $(5n-2)a_n\\to15$, $5n-2\\to\\infty$이므로 $a_n\\to0$이다.\n$5na_n=(5n-2)a_n+2a_n\\to15+0=15$이므로 $na_n\\to3$이다.\n구하는 식을 전개하면 $(2n+3)a_n=2na_n+3a_n$이다.\n$na_n\\to3$, $a_n\\to0$을 대입하면 $2\\cdot3+3\\cdot0=6$이다.\n주의: $a_n\\to0$만으로는 값을 알 수 없고 $na_n$의 극한이 필요하다.\n따라서 정답은 ③이다.",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-CALC-RPM-058",
+    "problemTypeKey": "PT_CALCULUS_SEQUENCE_LIMIT",
+    "templateKey": "TPL_CALCULUS_SEQ_LIMIT_ALGEBRAIC",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE"
+  },
+  {
+    "id": 2,
+    "category": "수열의 극한",
+    "standardCourse": "미적분II",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-M2-01",
+    "standardUnit": "수열의 극한",
+    "standardUnitOrder": 1,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "수열의 극한"
+    ],
+    "wide": false,
+    "content": "$\\lim_{n\\to\\infty}((n^2+4)a_n)=2$일 때 $\\lim_{n\\to\\infty}(1/((3n^2+2)a_n))$은?",
+    "choices": [
+      "$1/6$",
+      "$1/5$",
+      "$1/4$",
+      "$1/3$",
+      "$1/2$"
+    ],
+    "answer": "①",
+    "solution": "$(3n^2+2)a_n=\\{(n^2+4)a_n\\}\\cdot\\dfrac{3n^2+2}{n^2+4}$로 묶는다.\n$(n^2+4)a_n\\to2$이고, $\\dfrac{3n^2+2}{n^2+4}=\\dfrac{3+2/n^2}{1+4/n^2}\\to3$이다.\n따라서 $(3n^2+2)a_n\\to2\\cdot3=6$이다.\n구하는 식은 그 역수이므로 $\\lim_{n\\to\\infty}\\dfrac{1}{(3n^2+2)a_n}=\\dfrac16$이다.\n주의: $a_n\\to0$이어도 $n^2a_n\\to2$이므로 분모의 극한은 0이 아니라 6이다.\n따라서 정답은 ①이다.",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-CALC-RPM-058",
+    "problemTypeKey": "PT_CALCULUS_SEQUENCE_LIMIT",
+    "templateKey": "TPL_CALCULUS_SEQ_LIMIT_ALGEBRAIC",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE"
+  },
+  {
+    "id": 3,
+    "category": "수열의 극한",
+    "standardCourse": "미적분II",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-M2-01",
+    "standardUnit": "수열의 극한",
+    "standardUnitOrder": 1,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "수열의 극한"
+    ],
+    "wide": false,
+    "content": "$\\lim_{n\\to\\infty}((2n^2+n+4)a_n)=4$일 때 $\\lim_{n\\to\\infty}((3n^2-2n)a_n)$은?",
+    "choices": [
+      "$4$",
+      "$6$",
+      "$8$",
+      "$10$",
+      "$12$"
+    ],
+    "answer": "②",
+    "solution": "$(3n^2-2n)a_n=\\{(2n^2+n+4)a_n\\}\\cdot\\dfrac{3n^2-2n}{2n^2+n+4}$로 묶는다.\n$\\dfrac{3n^2-2n}{2n^2+n+4}=\\dfrac{3-2/n}{2+1/n+4/n^2}\\to\\dfrac32$이다.\n$(2n^2+n+4)a_n\\to4$이므로 곱의 극한 성질에 의해 극한은 $4\\cdot\\dfrac32=6$이다.\n검산: $n^2a_n\\to2$, $na_n\\to0$이므로 $3n^2a_n-2na_n\\to3\\cdot2-2\\cdot0=6$이다.\n따라서 정답은 ②이다.",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-CALC-RPM-058",
+    "problemTypeKey": "PT_CALCULUS_SEQUENCE_LIMIT",
+    "templateKey": "TPL_CALCULUS_SEQ_LIMIT_ALGEBRAIC",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE"
+  },
+  {
+    "id": 4,
+    "category": "수열의 극한",
+    "standardCourse": "미적분II",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-M2-01",
+    "standardUnit": "수열의 극한",
+    "standardUnitOrder": 1,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "수열의 극한"
+    ],
+    "wide": false,
+    "content": "$\\lim_{n\\to\\infty}(a_n/(4n+1))=2$, $\\lim_{n\\to\\infty}(b_n/(5n-2))=3$일 때 $\\lim_{n\\to\\infty}(a_nb_n/(30n^2+1))$은?",
+    "choices": [
+      "$4$",
+      "$6$",
+      "$8$",
+      "$10$",
+      "$12$"
+    ],
+    "answer": "①",
+    "solution": "구하는 식을 주어진 두 비의 곱으로 분해한다.\n$\\dfrac{a_nb_n}{30n^2+1}=\\dfrac{a_n}{4n+1}\\cdot\\dfrac{b_n}{5n-2}\\cdot\\dfrac{(4n+1)(5n-2)}{30n^2+1}$.\n분자 전개: $(4n+1)(5n-2)=20n^2-8n+5n-2=20n^2-3n-2$.\n$\\dfrac{20n^2-3n-2}{30n^2+1}=\\dfrac{20-3/n-2/n^2}{30+1/n^2}\\to\\dfrac{20}{30}=\\dfrac23$.\n두 비의 극한은 각각 2, 3이므로 전체 극한은 $2\\cdot3\\cdot\\dfrac23=4$이다.\n따라서 정답은 ①이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-CALC-RPM-058",
+    "problemTypeKey": "PT_CALCULUS_SEQUENCE_LIMIT",
+    "templateKey": "TPL_CALCULUS_SEQ_LIMIT_ALGEBRAIC",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 5,
+    "category": "수열의 극한",
+    "standardCourse": "미적분II",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-M2-01",
+    "standardUnit": "수열의 극한",
+    "standardUnitOrder": 1,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "수열의 극한"
+    ],
+    "wide": false,
+    "content": "$\\lim_{n\\to\\infty}((3n+2)a_n)=6$, $\\lim_{n\\to\\infty}((n^2+1)b_n)=4$이고 $a_n\\ne0$이다. $\\lim_{n\\to\\infty}((3n-1)b_n/a_n)$은?",
+    "choices": [
+      "$2$",
+      "$3$",
+      "$4$",
+      "$5$",
+      "$6$"
+    ],
+    "answer": "⑤",
+    "solution": "구하는 식을 주어진 두 식과 다항식 비로 분해한다.\n$\\dfrac{(3n-1)b_n}{a_n}=\\dfrac{(n^2+1)b_n}{(3n+2)a_n}\\cdot\\dfrac{(3n-1)(3n+2)}{n^2+1}$.\n분자 전개: $(3n-1)(3n+2)=9n^2+6n-3n-2=9n^2+3n-2$.\n$\\dfrac{9n^2+3n-2}{n^2+1}=\\dfrac{9+3/n-2/n^2}{1+1/n^2}\\to9$.\n$(n^2+1)b_n\\to4$, $(3n+2)a_n\\to6$이므로 $\\dfrac{(n^2+1)b_n}{(3n+2)a_n}\\to\\dfrac46=\\dfrac23$.\n따라서 극한은 $\\dfrac23\\cdot9=6$이다.\n주의: $a_n\\ne0$이므로 $b_n/a_n$을 다루는 데 문제가 없고, 분모 $(3n+2)a_n$의 극한은 6으로 0이 아니다.\n따라서 정답은 ⑤이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-CALC-RPM-058",
+    "problemTypeKey": "PT_CALCULUS_SEQUENCE_LIMIT",
+    "templateKey": "TPL_CALCULUS_SEQ_LIMIT_ALGEBRAIC",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_NONZERO"
+    ],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 6,
+    "category": "수열의 극한",
+    "standardCourse": "미적분II",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-M2-01",
+    "standardUnit": "수열의 극한",
+    "standardUnitOrder": 1,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "수열의 극한"
+    ],
+    "wide": false,
+    "content": "$\\lim_{n\\to\\infty}(a_n/n)=1/3$일 때 $\\lim_{n\\to\\infty}((\\sqrt{16n^2+n}-2n)/a_n)$은?",
+    "choices": [
+      "$2$",
+      "$3$",
+      "$4$",
+      "$5$",
+      "$6$"
+    ],
+    "answer": "⑤",
+    "solution": "분자를 유리화하기 위해 $\\sqrt{16n^2+n}+2n$을 분자·분모에 곱한다.\n$\\sqrt{16n^2+n}-2n=\\dfrac{(16n^2+n)-4n^2}{\\sqrt{16n^2+n}+2n}=\\dfrac{12n^2+n}{\\sqrt{16n^2+n}+2n}$.\n분자·분모를 $n$으로 나누면 $\\dfrac{12n+1}{\\sqrt{16+1/n}+2}$이다.\n원식을 $n$으로 정리하면 $\\dfrac{\\sqrt{16+1/n}-2}{a_n/n}$이고, $\\sqrt{16+1/n}\\to4$이므로 분자는 $4-2=2$로 간다.\n$\\lim\\dfrac{a_n}{n}=\\dfrac13$을 대입하면 $\\dfrac{2}{1/3}=6$이다.\n주의: 유리화 없이 분자를 그대로 두면 $\\infty-\\infty$ 꼴이므로 $n$으로 나누어 극한을 비교해야 한다.\n따라서 정답은 ⑤이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-CALC-RPM-058",
+    "problemTypeKey": "PT_CALCULUS_SEQUENCE_LIMIT",
+    "templateKey": "TPL_CALCULUS_SEQ_LIMIT_ALGEBRAIC",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  }
+];

@@ -1,0 +1,148 @@
+window.examTitle = "미적분II_019_정다각형에서수열의극한의활용_고2_유형은행1";
+
+window.questionBank = [
+  {
+    "id": 1,
+    "category": "수열의 극한",
+    "standardCourse": "미적분II",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-M2-01",
+    "standardUnit": "수열의 극한",
+    "standardUnitOrder": 1,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "수열의 극한"
+    ],
+    "wide": false,
+    "content": "한 변의 길이가 $2n$인 정삼각형의 각 변을 단위 길이로 나누고 각 분할점에서 나머지 두 변에 평행한 격자선을 긋는다. 격자 꼭짓점 개수를 $a_n$이라 할 때 $\\lim_{n\\to\\infty}(a_n/(n^2+1))$은? [그림: 정삼각형에 단위 정삼각형 격자를 그리고 각 꼭짓점을 점으로 표시한다.]",
+    "choices": [
+      "$1$",
+      "$2$",
+      "$3$",
+      "$4$",
+      "$5$"
+    ],
+    "answer": "②",
+    "solution": "위에서부터 $k$번째 가로줄의 점의 수를 세면 $k$개이다(단, $k=1,2,\\ldots,2n+1$).\n등차수열의 합 공식으로 $a_n=1+2+\\cdots+(2n+1)=\\frac{(2n+1)(2n+2)}{2}=(2n+1)(n+1)$이다.\n분자를 전개하면 $a_n=2n^2+3n+1$이다.\n구하는 식을 분모·분자의 최고차항 $n^2$으로 나누면 $\\frac{a_n}{n^2+1}=\\frac{2+\\frac{3}{n}+\\frac{1}{n^2}}{1+\\frac{1}{n^2}}$이다.\n$n\\to\\infty$일 때 $\\frac{1}{n}\\to0$, $\\frac{1}{n^2}\\to0$이므로 극한값은 $\\frac{2}{1}=2$이다.\n따라서 정답은 ②이다.",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-CALC-RPM-058",
+    "problemTypeKey": "PT_CALCULUS_SEQUENCE_LIMIT",
+    "templateKey": "TPL_CALCULUS_SEQ_LIMIT_ALGEBRAIC",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 2,
+    "category": "수열의 극한",
+    "standardCourse": "미적분II",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-M2-01",
+    "standardUnit": "수열의 극한",
+    "standardUnitOrder": 1,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "수열의 극한"
+    ],
+    "wide": false,
+    "content": "가로 $2n$, 세로 $n$인 직사각형에 단위 정사각형 격자를 그린다. 단위 정사각형 수가 $a_n$, 격자 꼭짓점 수가 $b_n$일 때 $\\lim_{n\\to\\infty}(b_n/a_n)$은? [그림: $0\\le x\\le2n$, $0\\le y\\le n$에서 정수 격자선을 긋고 꼭짓점을 표시한다.]",
+    "choices": [
+      "$1/5$",
+      "$2/5$",
+      "$3/5$",
+      "$4/5$",
+      "$1$"
+    ],
+    "answer": "⑤",
+    "solution": "단위 정사각형의 수는 가로 $2n$칸, 세로 $n$칸이므로 $a_n=2n\\cdot n=2n^2$이다.\n격자 꼭짓점은 가로 방향 $2n+1$개, 세로 방향 $n+1$개이므로 $b_n=(2n+1)(n+1)$이다.\n$b_n$을 전개하면 $b_n=2n^2+3n+1$이다.\n비를 정리하면 $\\frac{b_n}{a_n}=\\frac{2n^2+3n+1}{2n^2}=1+\\frac{3}{2n}+\\frac{1}{2n^2}$이다.\n$n\\to\\infty$일 때 $\\frac{1}{n}\\to0$, $\\frac{1}{n^2}\\to0$이므로 극한값은 $1$이다.\n따라서 정답은 ⑤이다.",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-CALC-RPM-058",
+    "problemTypeKey": "PT_CALCULUS_SEQUENCE_LIMIT",
+    "templateKey": "TPL_CALCULUS_SEQ_LIMIT_ALGEBRAIC",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 3,
+    "category": "수열의 극한",
+    "standardCourse": "미적분II",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-M2-01",
+    "standardUnit": "수열의 극한",
+    "standardUnitOrder": 1,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "수열의 극한"
+    ],
+    "wide": false,
+    "content": "가로 $n$칸, 세로 2칸인 단위 정사각형 격자의 꼭짓점 수를 $a_n$, 길이 1인 격자 선분 수를 $b_n$이라 하자. $\\lim_{n\\to\\infty}(a_n/b_n)$은? [그림: 가로 $n$, 세로 2인 직사각형을 단위 정사각형으로 나누고 모든 격자점을 표시한다.]",
+    "choices": [
+      "$3/5$",
+      "$2/3$",
+      "$3/4$",
+      "$4/5$",
+      "$1$"
+    ],
+    "answer": "①",
+    "solution": "격자 꼭짓점은 가로 방향 $n+1$개, 세로 방향 $3$개이므로 $a_n=(n+1)\\cdot3=3n+3$이다.\n가로 선분은 $3$개의 가로줄마다 $n$개씩이므로 $3n$개이다.\n세로 선분은 $n+1$개의 세로줄마다 $2$개씩이므로 $2(n+1)=2n+2$개이다.\n따라서 $b_n=3n+(2n+2)=5n+2$이다.\n비를 쓰면 $\\frac{a_n}{b_n}=\\frac{3n+3}{5n+2}$이다.\n분모·분자를 $n$으로 나누면 $\\frac{3+\\frac{3}{n}}{5+\\frac{2}{n}}$이고, $n\\to\\infty$일 때 $\\frac{1}{n}\\to0$이므로 극한값은 $\\frac{3}{5}$이다.\n따라서 정답은 ①이다.",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-CALC-RPM-058",
+    "problemTypeKey": "PT_CALCULUS_SEQUENCE_LIMIT",
+    "templateKey": "TPL_CALCULUS_SEQ_LIMIT_ALGEBRAIC",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 4,
+    "category": "수열의 극한",
+    "standardCourse": "미적분II",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-M2-01",
+    "standardUnit": "수열의 극한",
+    "standardUnitOrder": 1,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "수열의 극한"
+    ],
+    "wide": false,
+    "content": "단위 정사각형들을 왼쪽부터 높이 $2,4,\\ldots,2n$인 열로 쌓고 밑변을 맞춘다. 정사각형 개수를 $b_n$, 겹친 변을 한 번씩 센 단위 선분 개수를 $a_n$이라 하자. $\\lim_{n\\to\\infty}(6b_n/a_n)$은? [그림: 제 $k$열은 $k-1\\le x\\le k$, $0\\le y\\le2k$에 놓고 정수 높이마다 가로선을 긋는다.]",
+    "choices": [
+      "$3/2$",
+      "$2$",
+      "$5/2$",
+      "$3$",
+      "$7/2$"
+    ],
+    "answer": "④",
+    "solution": "제 $k$열의 높이는 $2k$이므로 $b_n=\\sum_{k=1}^{n}2k=2\\cdot\\frac{n(n+1)}{2}=n(n+1)$이다.\n각 단위 정사각형의 네 변을 모두 세면 $4b_n$개이다.\n세로로 붙은 두 정사각형이 공유하는 가로 변의 수는 제 $k$열에서 $2k-1$개이므로 합은 $\\sum_{k=1}^{n}(2k-1)=n^2=b_n-n$이다.\n제 $j$열과 제 $j+1$열 사이에서 공유하는 세로 변은 낮은 쪽 높이만큼인 $2j$개이므로 합은 $\\sum_{j=1}^{n-1}2j=n(n-1)=b_n-2n$이다.\n공유 변은 두 번 세어졌으므로 한 번씩만 세도록 빼면 $a_n=4b_n-\\{(b_n-n)+(b_n-2n)\\}=2b_n+3n$이다.\n$b_n=n(n+1)$을 대입하면 $a_n=2n(n+1)+3n=2n^2+5n$이다.\n따라서 $\\frac{6b_n}{a_n}=\\frac{6n(n+1)}{2n^2+5n}=\\frac{6n^2+6n}{2n^2+5n}$이다.\n분모·분자를 $n^2$으로 나누면 $\\frac{6+\\frac{6}{n}}{2+\\frac{5}{n}}$이다.\n$n\\to\\infty$일 때 $\\frac{1}{n}\\to0$이므로 극한값은 $\\frac{6}{2}=3$이다.\n주의: 겹친 변은 두 번 세지 않고 한 번만 세어야 한다.\n따라서 정답은 ④이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-CALC-RPM-058",
+    "problemTypeKey": "PT_CALCULUS_SEQUENCE_LIMIT",
+    "templateKey": "TPL_CALCULUS_SEQ_LIMIT_ALGEBRAIC",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  }
+];

@@ -1,0 +1,372 @@
+window.examTitle = "미적분II_007_∞-∞꼴의극한_고2_유형은행1";
+
+window.questionBank = [
+  {
+    "id": 1,
+    "category": "수열의 극한",
+    "standardCourse": "미적분II",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-M2-01",
+    "standardUnit": "수열의 극한",
+    "standardUnitOrder": 1,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "수열의 극한"
+    ],
+    "wide": false,
+    "content": "$a=\\lim_{n\\to\\infty}(\\sqrt{n^2+6n}-n)$, $b=\\lim_{n\\to\\infty}(1/(\\sqrt{n^2+4n}-n))$일 때 $a+4b$는?",
+    "choices": [
+      "$2$",
+      "$3$",
+      "$4$",
+      "$5$",
+      "$6$"
+    ],
+    "answer": "④",
+    "solution": "유리화(분모의 켤레식 곱)로 $a$를 계산한다.\n$$a=\\lim_{n\\to\\infty}\\frac{(\\sqrt{n^2+6n}-n)(\\sqrt{n^2+6n}+n)}{\\sqrt{n^2+6n}+n}$$\n분자를 전개·약분하면 $$a=\\lim_{n\\to\\infty}\\frac{6n}{\\sqrt{n^2+6n}+n}=\\lim_{n\\to\\infty}\\frac{6}{\\sqrt{1+6/n}+1}=\\frac{6}{2}=3.$$\n같은 방법으로 $b$의 분모를 유리화한다.\n$$\\sqrt{n^2+4n}-n=\\frac{4n}{\\sqrt{n^2+4n}+n}\\to\\frac{4}{2}=2.$$\n따라서 $b=1/2$이고 $$a+4b=3+4\\cdot\\frac12=5.$$\n따라서 정답은 ④이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-CALC-RPM-058",
+    "problemTypeKey": "PT_CALCULUS_SEQUENCE_LIMIT",
+    "templateKey": "TPL_CALCULUS_SEQ_LIMIT_ALGEBRAIC",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 2,
+    "category": "수열의 극한",
+    "standardCourse": "미적분II",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-M2-01",
+    "standardUnit": "수열의 극한",
+    "standardUnitOrder": 1,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "수열의 극한"
+    ],
+    "wide": false,
+    "content": "$\\lim_{n\\to\\infty}(\\sqrt{n+2}(\\sqrt{n+5}-\\sqrt{n+1}))$은?",
+    "choices": [
+      "$2$",
+      "$3$",
+      "$4$",
+      "$5$",
+      "$6$"
+    ],
+    "answer": "①",
+    "solution": "주어진 식을 유리화하기 위해 $\\sqrt{n+5}-\\sqrt{n+1}$에 켤레식을 곱한다.\n$$\\sqrt{n+2}(\\sqrt{n+5}-\\sqrt{n+1})=\\frac{\\sqrt{n+2}\\cdot 4}{\\sqrt{n+5}+\\sqrt{n+1}}.$$\n분모를 $\\sqrt n$으로 묶으면 $$\\sqrt{n+5}+\\sqrt{n+1}=\\sqrt n\\left(\\sqrt{1+5/n}+\\sqrt{1+1/n}\\right).$$\n분자도 $\\sqrt{n+2}=\\sqrt n\\sqrt{1+2/n}$로 묶는다.\n$$\\text{식}=\\frac{4\\sqrt{1+2/n}}{\\sqrt{1+5/n}+\\sqrt{1+1/n}}.$$\n$n\\to\\infty$일 때 각 근호가 1로 가므로 극한은 $$\\frac{4}{1+1}=2.$$\n따라서 정답은 ①이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-CALC-RPM-058",
+    "problemTypeKey": "PT_CALCULUS_SEQUENCE_LIMIT",
+    "templateKey": "TPL_CALCULUS_SEQ_LIMIT_ALGEBRAIC",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE"
+  },
+  {
+    "id": 3,
+    "category": "수열의 극한",
+    "standardCourse": "미적분II",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-M2-01",
+    "standardUnit": "수열의 극한",
+    "standardUnitOrder": 1,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "수열의 극한"
+    ],
+    "wide": false,
+    "content": "$\\lim_{n\\to\\infty}((n-\\sqrt{n^2+9})/(\\sqrt{n^2+12}-n))$은?",
+    "choices": [
+      "$-3/2$",
+      "$-5/4$",
+      "$-1$",
+      "$-4/5$",
+      "$-3/4$"
+    ],
+    "answer": "⑤",
+    "solution": "분자와 분모를 각각 켤레식으로 유리화한다.\n$$n-\\sqrt{n^2+9}=\\frac{n^2-(n^2+9)}{n+\\sqrt{n^2+9}}=-\\frac{9}{n+\\sqrt{n^2+9}}.$$\n$$\\sqrt{n^2+12}-n=\\frac{(n^2+12)-n^2}{\\sqrt{n^2+12}+n}=\\frac{12}{\\sqrt{n^2+12}+n}.$$\n두 결과의 비를 세우면 $$\\frac{n-\\sqrt{n^2+9}}{\\sqrt{n^2+12}-n}=-\\frac{9}{12}\\cdot\\frac{\\sqrt{n^2+12}+n}{n+\\sqrt{n^2+9}}.$$\n분모·분자를 $n$으로 나누면 $$\\frac{\\sqrt{1+12/n^2}+1}{1+\\sqrt{1+9/n^2}}\\to\\frac{2}{2}=1.$$\n따라서 극한은 $$-\\frac{9}{12}=-\\frac34.$$\n따라서 정답은 ⑤이다.",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-CALC-RPM-058",
+    "problemTypeKey": "PT_CALCULUS_SEQUENCE_LIMIT",
+    "templateKey": "TPL_CALCULUS_SEQ_LIMIT_ALGEBRAIC",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 4,
+    "category": "수열의 극한",
+    "standardCourse": "미적분II",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-M2-01",
+    "standardUnit": "수열의 극한",
+    "standardUnitOrder": 1,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "수열의 극한"
+    ],
+    "wide": false,
+    "content": "방정식 $x^2-4x+\\sqrt{n^2+4n}-n=0$의 두 근이 $\\alpha_n,\\beta_n$일 때 $\\lim_{n\\to\\infty}(1/\\alpha_n+1/\\beta_n)$은?",
+    "choices": [
+      "$-1$",
+      "$0$",
+      "$1$",
+      "$2$",
+      "$3$"
+    ],
+    "answer": "④",
+    "solution": "근과 계수의 관계에서 $$\\alpha_n+\\beta_n=4,\\qquad \\alpha_n\\beta_n=\\sqrt{n^2+4n}-n.$$\n구하는 식을 통분하면 $$\\frac1{\\alpha_n}+\\frac1{\\beta_n}=\\frac{\\alpha_n+\\beta_n}{\\alpha_n\\beta_n}=\\frac{4}{\\sqrt{n^2+4n}-n}.$$\n분모를 유리화한다.\n$$\\sqrt{n^2+4n}-n=\\frac{4n}{\\sqrt{n^2+4n}+n}\\to\\frac{4}{2}=2.$$\n따라서 극한은 $$\\frac{4}{2}=2.$$\n따라서 정답은 ④이다.",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-CALC-RPM-058",
+    "problemTypeKey": "PT_CALCULUS_SEQUENCE_LIMIT",
+    "templateKey": "TPL_CALCULUS_SEQ_LIMIT_ALGEBRAIC",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 5,
+    "category": "수열의 극한",
+    "standardCourse": "미적분II",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-M2-01",
+    "standardUnit": "수열의 극한",
+    "standardUnitOrder": 1,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "수열의 극한"
+    ],
+    "wide": false,
+    "content": "방정식 $x^2+3nx-12n=0$의 양의 근을 $a_n$이라 할 때 $\\lim_{n\\to\\infty}(a_n)$은?",
+    "choices": [
+      "$1$",
+      "$2$",
+      "$3$",
+      "$4$",
+      "$5$"
+    ],
+    "answer": "④",
+    "solution": "이차방정식의 근의 공식으로 양의 근을 구한다.\n$$a_n=\\frac{-3n+\\sqrt{9n^2+48n}}{2}.$$\n분모·분자를 $n$으로 묶으면 $$a_n=\\frac{n\\left(\\sqrt{9+48/n}-3\\right)}{2}.$$\n분자를 유리화한다.\n$$\\sqrt{9+\\frac{48}{n}}-3=\\frac{\\frac{48}{n}}{\\sqrt{9+\\frac{48}{n}}+3}.$$\n따라서 $$a_n=\\frac n2\\cdot\\frac{48/n}{\\sqrt{9+48/n}+3}=\\frac{24}{\\sqrt{9+48/n}+3}.$$\n$n\\to\\infty$이면 $$\\lim a_n=\\frac{24}{3+3}=4.$$\n따라서 정답은 ④이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-CALC-RPM-058",
+    "problemTypeKey": "PT_CALCULUS_SEQUENCE_LIMIT",
+    "templateKey": "TPL_CALCULUS_SEQ_LIMIT_ALGEBRAIC",
+    "crossConceptKeys": [
+      "CC_QUADRATIC_FORMULA"
+    ],
+    "conditionKeys": [
+      "COND_POSITIVE"
+    ],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 6,
+    "category": "수열의 극한",
+    "standardCourse": "미적분II",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-M2-01",
+    "standardUnit": "수열의 극한",
+    "standardUnitOrder": 1,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "수열의 극한"
+    ],
+    "wide": false,
+    "content": "점 $(3,1)$, $(n,5)$ 사이의 거리를 $d_n$이라 할 때 $\\lim_{n\\to\\infty}(d_n-n)$은?",
+    "choices": [
+      "$-4$",
+      "$-3$",
+      "$-2$",
+      "$-1$",
+      "$0$"
+    ],
+    "answer": "②",
+    "solution": "두 점 사이의 거리 공식으로 $$d_n=\\sqrt{(n-3)^2+(5-1)^2}=\\sqrt{(n-3)^2+16}.$$\n$d_n-n$을 유리화한다.\n$$d_n-n=\\frac{d_n^2-n^2}{d_n+n}=\\frac{(n-3)^2+16-n^2}{d_n+n}.$$\n분자를 전개·정리한다.\n$$(n-3)^2+16-n^2=n^2-6n+9+16-n^2=-6n+25.$$\n따라서 $$d_n-n=\\frac{-6n+25}{d_n+n}.$$\n분모·분자를 $n$으로 나누면 $d_n/n\\to1$이므로 $$\\lim(d_n-n)=\\frac{-6}{1+1}=-3.$$\n따라서 정답은 ②이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-CALC-RPM-058",
+    "problemTypeKey": "PT_CALCULUS_SEQUENCE_LIMIT",
+    "templateKey": "TPL_CALCULUS_SEQ_LIMIT_ALGEBRAIC",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 7,
+    "category": "수열의 극한",
+    "standardCourse": "미적분II",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-M2-01",
+    "standardUnit": "수열의 극한",
+    "standardUnitOrder": 1,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "수열의 극한"
+    ],
+    "wide": false,
+    "content": "첫째항이 2, 공차가 4인 등차수열 $a_n$에 대해 $\\lim_{n\\to\\infty}(\\sqrt n(\\sqrt{a_{n+1}}-\\sqrt{a_n}))$은?",
+    "choices": [
+      "$1/4$",
+      "$1/2$",
+      "$3/4$",
+      "$1$",
+      "$5/4$"
+    ],
+    "answer": "④",
+    "solution": "등차수열의 일반항은 $a_n=2+4(n-1)=4n-2$이다.\n따라서 $a_{n+1}=4n+2$이고 $a_{n+1}-a_n=4$이다.\n차를 유리화한다.\n$$\\sqrt{a_{n+1}}-\\sqrt{a_n}=\\frac{a_{n+1}-a_n}{\\sqrt{a_{n+1}}+\\sqrt{a_n}}=\\frac{4}{\\sqrt{4n+2}+\\sqrt{4n-2}}.$$\n주어진 식은 $$\\sqrt n\\cdot\\frac{4}{\\sqrt{4n+2}+\\sqrt{4n-2}}.$$\n분모를 $\\sqrt n$으로 나누면 $$=\\frac{4}{\\sqrt{4+2/n}+\\sqrt{4-2/n}}.$$\n$n\\to\\infty$일 때 $$\\frac{4}{2+2}=1.$$\n따라서 정답은 ④이다.",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-CALC-RPM-058",
+    "problemTypeKey": "PT_CALCULUS_SEQUENCE_LIMIT",
+    "templateKey": "TPL_CALCULUS_SEQ_LIMIT_ALGEBRAIC",
+    "crossConceptKeys": [
+      "CC_GENERAL_TERM"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 8,
+    "category": "수열의 극한",
+    "standardCourse": "미적분II",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-M2-01",
+    "standardUnit": "수열의 극한",
+    "standardUnitOrder": 1,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "수열의 극한"
+    ],
+    "wide": false,
+    "content": "첫째항이 5, 공차가 18인 등차수열의 첫 $n$항의 합을 $S_n$이라 하자. $\\lim_{n\\to\\infty}(\\sqrt{S_{n+1}}-\\sqrt{S_n})$은?",
+    "choices": [
+      "$2$",
+      "$3$",
+      "$4$",
+      "$5$",
+      "$6$"
+    ],
+    "answer": "②",
+    "solution": "등차수열의 첫 $n$항의 합 공식으로 $$S_n=\\frac n2\\{2\\cdot5+(n-1)\\cdot18\\}=\\frac n2(18n-8)=9n^2-4n.$$\n$S_{n+1}-S_n$은 $(n+1)$째 항이므로 $$S_{n+1}-S_n=a_{n+1}=5+18n.$$\n차를 유리화한다.\n$$\\sqrt{S_{n+1}}-\\sqrt{S_n}=\\frac{S_{n+1}-S_n}{\\sqrt{S_{n+1}}+\\sqrt{S_n}}=\\frac{18n+5}{\\sqrt{S_{n+1}}+\\sqrt{S_n}}.$$\n분모를 $n$으로 묶으면 $$\\sqrt{S_{n+1}}+\\sqrt{S_n}=n\\left(\\sqrt{9+\\frac{14}{n}+\\frac{5}{n^2}}+\\sqrt{9-\\frac4n}\\right).$$\n따라서 주어진 식은 $$=\\frac{18+5/n}{\\sqrt{9+14/n+5/n^2}+\\sqrt{9-4/n}}.$$\n$n\\to\\infty$이면 $$\\frac{18}{3+3}=3.$$\n따라서 정답은 ②이다.",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-CALC-RPM-058",
+    "problemTypeKey": "PT_CALCULUS_SEQUENCE_LIMIT",
+    "templateKey": "TPL_CALCULUS_SEQ_LIMIT_ALGEBRAIC",
+    "crossConceptKeys": [
+      "CC_SERIES_SUM"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
+  },
+  {
+    "id": 9,
+    "category": "수열의 극한",
+    "standardCourse": "미적분II",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-M2-01",
+    "standardUnit": "수열의 극한",
+    "standardUnitOrder": 1,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "수열의 극한"
+    ],
+    "wide": false,
+    "content": "다음 중 옳지 않은 극한 등식은?",
+    "choices": [
+      "$\\lim_{n\\to\\infty}((3n-1)(n+4)/(n^2+n))=3$",
+      "$\\lim_{n\\to\\infty}((2-3n^2)/(6n^2+1))=-1/2$",
+      "$\\lim_{n\\to\\infty}((8n-1)/(\\sqrt{9n^2+1}+\\sqrt{16n^2+1}))=1$",
+      "$\\lim_{n\\to\\infty}(\\sqrt n(\\sqrt{n+4}-\\sqrt n))=2$",
+      "$\\lim_{n\\to\\infty}((8n+(-1)^n)/(2n))=4$"
+    ],
+    "answer": "③",
+    "solution": "각 보기의 극한을 최고차항과 유리화로 계산한다.\n① 분모·분자를 $n^2$으로 나누면 $\\frac{(3-1/n)(1+4/n)}{1+1/n}\\to3$이다.\n② 분모·분자를 $n^2$으로 나누면 $\\frac{2/n^2-3}{6+1/n^2}\\to-\\frac12$이다.\n③ 분모·분자를 $n$으로 나누면 $$\\frac{8-1/n}{\\sqrt{9+1/n^2}+\\sqrt{16+1/n^2}}\\to\\frac{8}{3+4}=\\frac87.$$\n④ 유리화하면 $\\frac{4\\sqrt n}{\\sqrt{n+4}+\\sqrt n}\\to\\frac{4}{1+1}=2$이다.\n⑤ $\\frac{8n+(-1)^n}{2n}=4+\\frac{(-1)^n}{2n}\\to4$이다.\n주의: ③의 극한은 $1$이 아니라 $8/7$이다.\n따라서 정답은 ③이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-CALC-RPM-058",
+    "problemTypeKey": "PT_CALCULUS_SEQUENCE_LIMIT",
+    "templateKey": "TPL_CALCULUS_SEQ_LIMIT_ALGEBRAIC",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE"
+  },
+  {
+    "id": 10,
+    "category": "수열의 극한",
+    "standardCourse": "미적분II",
+    "curriculum": "2022",
+    "standardUnitKey": "H22-M2-01",
+    "standardUnit": "수열의 극한",
+    "standardUnitOrder": 1,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "수열의 극한"
+    ],
+    "wide": false,
+    "content": "다음 중 옳지 않은 극한 등식은?",
+    "choices": [
+      "$\\lim_{n\\to\\infty}(1/(\\sqrt{n^2+8n}-n))=1/2$",
+      "$\\lim_{n\\to\\infty}(\\sqrt{n^2+5n}-\\sqrt{n^2+n})=2$",
+      "$\\lim_{n\\to\\infty}(\\sqrt n(\\sqrt{9n+6}-\\sqrt{9n}))=1$",
+      "$\\lim_{n\\to\\infty}((3-2n^2)/((n+1)(n+2)))=-2$",
+      "$\\lim_{n\\to\\infty}((-1)^n(3n-1)/(n^2+1))=0$"
+    ],
+    "answer": "①",
+    "solution": "각 보기의 극한을 유리화와 차수 비교로 계산한다.\n① 분모를 유리화하면 $$\\frac1{\\sqrt{n^2+8n}-n}=\\frac{\\sqrt{n^2+8n}+n}{8n}\\to\\frac{2n}{8n}=\\frac14.$$\n② 유리화하면 $$\\frac{4n}{\\sqrt{n^2+5n}+\\sqrt{n^2+n}}\\to\\frac{4}{1+1}=2.$$\n③ 유리화하면 $$\\sqrt n\\cdot\\frac{6}{\\sqrt{9n+6}+\\sqrt{9n}}=\\frac{6\\sqrt n}{3\\sqrt n\\left(\\sqrt{1+\\frac{2}{3n}}+1\\right)}\\to\\frac{6}{3(1+1)}=1.$$\n④ 분모를 전개하면 $(n+1)(n+2)=n^2+3n+2$이므로 $\\frac{3-2n^2}{n^2+3n+2}\\to-2$이다.\n⑤ $\\left|\\frac{(-1)^n(3n-1)}{n^2+1}\\right|\\le\\frac{3n}{n^2}\\to0$이므로 극한은 0이다.\n주의: ①의 실제 극한은 $1/2$가 아니라 $1/4$이다.\n따라서 정답은 ①이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "H2-CALC-RPM-058",
+    "problemTypeKey": "PT_CALCULUS_SEQUENCE_LIMIT",
+    "templateKey": "TPL_CALCULUS_SEQ_LIMIT_ALGEBRAIC",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE"
+  }
+];
