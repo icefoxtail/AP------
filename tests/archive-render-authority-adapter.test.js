@@ -15,7 +15,9 @@ const examExecutor = fs.readFileSync(path.join(root, 'archive', 'exam-render-exe
 test('Archive adapter records opt-in canonical dual-run evidence while retaining legacy render paths', () => {
   assertLoads(engine, 'print-contract.js', 'engine');
   assertLoads(engine, 'render-authority.js', 'engine');
-  assertLoads(engine, 'data/svg-accessibility-index.js', 'engine');
+  // the compiled index is no static script any more: svg-accessibility-lazy.js reads the exam's few records (or the whole index when it cannot) before the first question is drawn
+  assert.doesNotMatch(engine, /<script[^>]*\ssrc="data\/svg-accessibility-index\.js/);
+  assertLoads(engine, 'svg-accessibility-lazy.js', 'engine');
   assertLoads(engine, 'svg-accessibility.js', 'engine');
   assertLoads(engine, 'archive2-preview-mobile.css', 'engine');
   assert.match(engine, /canonicalData: \[\]/);

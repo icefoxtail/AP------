@@ -8,7 +8,6 @@ const read = relative => fs.readFileSync(path.join(root, relative), 'utf8');
 
 test('original, mixed, and clinic engines load the compiled index and shared resolver before render authority', () => {
   const cases = [
-    ['archive/engine.html', 'data/svg-accessibility-index.js', 'svg-accessibility.js', 'render-authority.js'],
     ['archive/mixed_engine.html', 'data/svg-accessibility-index.js', 'svg-accessibility.js', 'render-authority.js'],
     ['apmath/wrong_print_engine.html', '../archive/data/svg-accessibility-index.js', '../archive/svg-accessibility.js', '../archive/render-authority.js']
   ];
@@ -23,6 +22,19 @@ test('original, mixed, and clinic engines load the compiled index and shared res
     assert.match(html, /ARCHIVE_ASSET_CACHE_VERSION = '20261014\.1'/, `${file} cache version`);
     assert.match(html, /generated-lite/, `${file} includes Generated SVG assets`);
   }
+});
+
+test('the original engine loads the resolver and then the lazy index loader before render authority, and not the whole index as a script', () => {
+  const html = read('archive/engine.html');
+  const helper = html.indexOf('svg-accessibility.js');
+  const lazy = html.indexOf('svg-accessibility-lazy.js');
+  const authority = html.indexOf('render-authority.js');
+  assert.ok(helper >= 0 && lazy > helper && authority > lazy, 'resolver, then lazy loader, then render authority');
+  assert.doesNotMatch(html, /<script[^>]*\ssrc="data\/svg-accessibility-index\.js/, 'the 1.4 MB compiled index is not a static script of the engine');
+  assert.match(html, /APSvgAccessibilityLazy\.prepare\(loadedQuestions/, 'the questions wait for their figure names before they are drawn');
+  const adapter = read('archive/screen-runtime-adapter.js');
+  assert.match(adapter, /APSvgAccessibilityLazy\.prepare\(raw/, 'a source loaded by the runtime waits too');
+  assert.match(adapter, /APSvgAccessibilityLazy\.prepare\(snapshot\.questionBank/);
 });
 
 test('legacy render paths provide Korean image fallbacks and do not expose generic answer labels', () => {
