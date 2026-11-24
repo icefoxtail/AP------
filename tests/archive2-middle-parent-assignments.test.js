@@ -178,3 +178,12 @@ test('실제 자료: 지정표가 실린 문항은 모두 지정된 중단원 �
     }
   }
 });
+test('a stale assignment fingerprint is still applied when a rebind record confirmed the same stem and choices', async () => {
+  const { applyAssignment, loadToc } = await lib();
+  const toc = loadToc();
+  const assignment = { parentKey: CIRCLE_ANGLE, assignmentFingerprint: fp('a') };
+  const record = { effectiveBrowseGrade: '중3', assignmentFingerprint: fp('b') };
+  assert.deepEqual(applyAssignment(assignment, record, toc), { stale: true });
+  assert.deepEqual(applyAssignment(assignment, record, toc, { textBound: true }), { key: CIRCLE_ANGLE });
+  assert.equal(applyAssignment(assignment, { ...record, effectiveBrowseGrade: '중2' }, toc, { textBound: true }), null, '학년이 다르면 확인이 있어도 쓰지 않는다');
+});

@@ -489,3 +489,23 @@ test("reviewedSourceTextUnchanged: figure/solution-only edits keep the pinned bl
   assert.equal(same(v1.slice(0, 2)).ok, false, "question count differs");
   assert.equal(reviewedSourceTextUnchanged({ root, expectedBlobSha1: "0".repeat(40), currentBytes: Buffer.from(exam(v1)) }).ok, false, "unreadable pinned blob is never a pass");
 });
+// 번호 밀림 감지(한 겹): 중간 문항을 지운 뒤 재번호하면 UID(자리 번호)에 다른 문제의 판정이 붙을 수 있다. 판정이 지금 발문·보기에 묶이지 않은 문항만 대상이다.
+test("shifted judgment: a question whose current text equals another UID's old judged text loses the borrowed judgment", async () => {
+  const { movedAnchorOwners, isShiftedJudgment } = await import("../archive/tools/meta-foundation/shifted-judgment-lib.mjs");
+  // 문항 3이 지워져 옛 4번이 3번 자리로 왔다: u3의 행은 옛 3번 지문(A3)을 보았고, 지금 3번 자리의 지문은 옛 4번(A4)이다.
+  // u4의 행은 옛 4번 지문(A4)을 보았는데 4번 자리는 이제 옛 5번(A5)이다.
+  const rows = [
+    { uid: "u1", anchorFp: "A1", currentFp: "A1" },
+    { uid: "u2", anchorFp: "A2", currentFp: "A2" },
+    { uid: "u3", anchorFp: "A3", currentFp: "A4" },
+    { uid: "u4", anchorFp: "A4", currentFp: "A5" },
+    { uid: "u5", anchorFp: "A5", currentFp: "A6" },
+  ];
+  const owners = movedAnchorOwners(rows);
+  assert.equal(isShiftedJudgment(owners, "A4", "u3"), true, "u3 now holds the question u4 was judged on");
+  assert.equal(isShiftedJudgment(owners, "A5", "u4"), true);
+  assert.equal(isShiftedJudgment(owners, "A1", "u1"), false, "an untouched question is never shifted");
+  assert.equal(isShiftedJudgment(owners, "A9", "u6"), false, "brand-new text matches no old judgment");
+  // 자기 행이 본 지문이 그대로면(수정 안 함) 움직인 행이 아니다. 같은 문항 자신의 지문과 겹쳐도 밀림이 아니다.
+  assert.equal(isShiftedJudgment(movedAnchorOwners([{ uid: "u1", anchorFp: "A1", currentFp: "A2" }]), "A1", "u1"), false);
+});

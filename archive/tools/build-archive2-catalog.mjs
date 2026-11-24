@@ -10,7 +10,8 @@ import catalogEvidence from "./archive2-catalog-evidence.cjs";
 import { isDeepStrictEqual } from "node:util";
 import problemBankMeta from "../problem-bank-meta.js";
 import examSourceReader from "../exam-source-reader.js";
-import { classifyMetaBinding, loadRebinds } from "./meta-foundation/text-binding-lib.mjs";
+import { classifyMetaBinding, loadRebinds, rebindHolds, textFingerprint } from "./meta-foundation/text-binding-lib.mjs";
+import { movedAnchorOwners, isShiftedJudgment } from "./meta-foundation/shifted-judgment-lib.mjs";
 import { createUnitHinter } from "./unit-hint-lib.mjs";
 import { isMetadataConflict } from "./metadata-conflict-field.mjs";
 import { SOURCE_QUALITY_HOLD_FIELDS, loadSourceQualityHolds, applySourceQualityHold } from "./source-quality-holds.mjs";
@@ -117,6 +118,10 @@ const hintActiveProblemTypes = new Map(foundationTaxonomy.problemTypes
   .filter((row) => row.status === "ACTIVE").map((row) => [row.problemTypeKey, row]));
 const hintActiveTemplates = new Map(foundationTaxonomy.templates
   .filter((row) => row.status === "ACTIVE").map((row) => [row.templateKey, row]));
+// 행 승인 상태가 approved_*가 아니어도 쓰는 한 가지: main 병합 등록(registered_merged_source)이 행을 "검토 대기"로 내렸어도 칸 단위 승인(standardUnit·subUnit 등)은
+// 그대로 남는다(등록기는 값이 바뀐 칸만 registered_main_merge로 내린다). 이런 행이 지금의 발문·보기에 묶여 있으면(binding "row") 남은 칸 승인을 그대로 쓴다.
+// 이유: 정식 수정한 문항이 단원·교육과정 판정을 잃고 필터에서 빠졌다(2026-11-24). 호출하는 쪽이 binding "row"를 이미 확인한 자리에서만 부른다.
+const rowStatusUsable = (status) => /^approved_/.test(String(status || "")) || String(status || "") === "registered_merged_source";
 const hintFieldStatus = (value) => /^approved(_|$)/i.test(String(value || ""))
   ? "A" : /hold/i.test(String(value || "")) ? "H" : "P";
 // 메타 힌트를 보여 줄 근거는 하나: 행(또는 유형 판정)이 지금과 같은 발문+보기에 대한 것인가(text-binding-lib.mjs classifyMetaBinding).
@@ -124,7 +129,7 @@ const hintFieldStatus = (value) => /^approved(_|$)/i.test(String(value || ""))
 const textRebinds = loadRebinds(root);
 const hintStats = { joined: 0, row: 0, type: 0, unbound: 0, staleTypeShown: 0,
   pt: 0, tpl: 0, l3: 0, curriculum: 0, ptUnregistered: 0, tplUnregistered: 0, tplParentMismatch: 0,
-  unit: 0, unitByRule: {}, unitNotHinted: {} };
+  unit: 0, unitByRule: {}, unitNotHinted: {}, shifted: 0, shiftedList: [] };
 // 단원 힌트(metaHintUnit): 승인된 유형(PT)이 있는 행에, 그 PT의 ACTIVE 연결(curriculum_bindings)이 같은 학년에서 통합 단원 하나만 가리키면 그 단원을
 // 표시 전용으로 싣는다(여러 단원에 걸치면 옛 대단원으로 좁히고, 이미 단원이 정해진 같은 PT 문항이 가장 많은 단원, 없으면 프로필 순서상 마지막 단원. 과목이 여럿인 학년은 문항 과목 안에서만. 사용자 결정 2026-11-22, 규칙은 unit-hint-lib.mjs). 승인·정본 값은 만들지 않고 단원 선택·묶기만 읽는다(archive2-unified-units.js unitFor:
 // 원본의 단원 값으로 단원을 못 정한 문항에만 쓰고, 원본으로 정해지는 문항의 결과는 바꾸지 않는다). 규칙·학년별 켬/끔은 unit-hint-lib.mjs 한 곳이며,
@@ -159,7 +164,7 @@ function buildMetaHint(meta, binding) {
   }
   // 발문·보기 지문이 판정 당시와 달라진 행(binding "stale")도 유형(PT/TPL)은 싣는다(2026-11-22 사용자 결정). L3·교육과정은 "row"일 때만 싣는다.
   const l3 = l3Value && !l3Held && binding === "row" ? l3Value : "";
-  const approvedStandard = String(meta.metadataStatus || "").startsWith("approved_") &&
+  const approvedStandard = rowStatusUsable(meta.metadataStatus) &&
     /^approved(_|$)/i.test(String(status.standardUnit || ""));
   const recordedCurriculum = String(meta.curriculumKey || meta.curriculum || "").trim();
   const curriculum = approvedStandard && binding === "row" && ["2015", "2022"].includes(recordedCurriculum) ? recordedCurriculum : "";
@@ -307,7 +312,8 @@ function verifiedBasicAssignment({ id, meta, sourceFile, sourceOrdinal, sourceGr
       !String(metadata.approvalStatus || "").startsWith("APPROVED") ||
       !/^[a-f0-9]{64}$/i.test(String(metadata.sourceDigests?.completeClassification || "")))
     return fail("assignment_review_evidence_missing");
-  if (!metadataStatus.startsWith("approved_") && !reviewedMetadataStatuses.has(metadataStatus))
+  // rowBound(발문·보기 결속)는 위에서 확인했고 칸 단위 승인·근거도 위에서 확인했다: main 병합 등록이 행 상태만 내린 행은 남은 칸 승인으로 통과한다.
+  if (!rowStatusUsable(metadataStatus) && !reviewedMetadataStatuses.has(metadataStatus))
     return fail("assignment_not_approved");
 
   const targets = new Map(candidates.map((link) => [
@@ -396,6 +402,15 @@ for (const exam of exams) {
   if (bank.length !== Number(exam.qCount))
     throw new Error("catalog/source cardinality mismatch: " + file);
   const examRecords = [];
+  // 번호 밀림(중간 문항 삭제 뒤 재번호) 감지의 재료: 같은 시험지에서 "행이 판정 당시에 본 지문(contentFingerprint)이 더는 자기 문항의 지금 지문이 아닌" 행의 UID와, 시험지 문항마다의 지금 지문.
+  // UID가 자리 번호라 이런 행의 옛 지문이 다른 자리의 지금 지문과 같으면, 그 자리의 판정은 다른 문제에 대한 것이다(아래 shifted).
+  const examCurrentFp = bank.map((q) => hash(JSON.stringify({
+    content: q.content ?? null, choices: Array.isArray(q.choices) ? q.choices : null, image: q.image ?? null })));
+  const movedOwners = movedAnchorOwners(examCurrentFp.map((currentFp, i) => {
+    const row = identityBySource.get(file + "#" + (i + 1));
+    const m = row && metaByUid.get(row.questionUid);
+    return { uid: m?.questionUid, anchorFp: m?.contentFingerprint, currentFp };
+  }));
   for (const [index, question] of bank.entries()) {
     const ordinal = index + 1;
     const id = identityBySource.get(file + "#" + ordinal);
@@ -488,7 +503,11 @@ for (const exam of exams) {
     }
     const metaBinding = bindingKind ? "text" : "";
     // 결속(지문)이 어긋난 행("stale")도 등록된 유형은 화면에 쓴다. metaBinding은 그대로 비워 두고 unbound로 센다(나중에 볼 수 있게).
-    const metaHint = buildMetaHint(meta, bindingKind || (validJoin ? "stale" : ""));
+    // 번호 밀림 감지(한 겹): 이 문항의 판정이 지금 발문·보기에 묶이지 않았는데(bindingKind 없음), 지금 지문이 같은 시험지의 다른 UID 행이 판정 당시에 본 지문과 같다면
+    // 문항이 지워지거나 순서가 바뀌어 이 자리에 다른 문제가 들어온 것이다. 이 UID에 붙은 옛 판정은 다른 문제에 대한 것이므로 힌트를 싣지 않는다(목록은 빌더 출력 metaHint.shiftedList).
+    const shifted = validJoin && !bindingKind && isShiftedJudgment(movedOwners, assignmentFingerprint, id.questionUid);
+    if (shifted) { hintStats.shifted++; hintStats.shiftedList.push(id.questionUid + " " + file + "#" + ordinal); }
+    const metaHint = shifted ? {} : buildMetaHint(meta, bindingKind || (validJoin ? "stale" : ""));
     const assignmentResult = identityStatus === "VERIFIED" && sourceGradeEvidence.status === "VALID"
       ? verifiedBasicAssignment({
           id,
@@ -535,7 +554,13 @@ for (const exam of exams) {
       assignmentFingerprint,
       ...(() => {
         const applied = middleParentAssignments
-          ? applyAssignment(middleParentAssignments.byUid.get(id?.questionUid || ""), { effectiveBrowseGrade: sourceGradeEvidence.grade, assignmentFingerprint }, middleToc)
+          ? (() => {
+              // 지정표의 지문(발문+보기+그림)이 판정 당시와 달라도, 재결속 기록이 "그 지문이 가리키던 발문·보기가 지금과 같다"고 하면 지정을 쓴다(그림만 바뀐 정식 수정 포함).
+              const assigned = middleParentAssignments.byUid.get(id?.questionUid || "");
+              const textBound = Boolean(assigned && assigned.assignmentFingerprint !== assignmentFingerprint &&
+                rebindHolds(textRebinds, id?.questionUid, assigned.assignmentFingerprint, textFingerprint(question)));
+              return applyAssignment(assigned, { effectiveBrowseGrade: sourceGradeEvidence.grade, assignmentFingerprint }, middleToc, { textBound });
+            })()
           : null;
         if (applied?.stale) reviewedMiddleStats.stale += 1;
         if (!applied?.key) return {};

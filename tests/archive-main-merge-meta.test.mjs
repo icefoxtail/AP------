@@ -1931,3 +1931,25 @@ test('a merge mark left on an entry that was already attempted (kept by an older
   assert.equal(f.state().pending[key].origin,undefined);assert.equal(f.state().pending[key].mergeHead,undefined);
   assert.equal(f.state().pending[key].attemptSignature,state.pending[key].attemptSignature,'nothing else about the entry changes');
 }));
+// 결속은 발문+보기뿐이다: 정답·그림만 바뀌거나, 발문·보기가 바뀌어도 재결속 기록으로 같은 문제임이 확인된 문항은 이미 한 판정과 승인 이력을 그대로 둔다(2026-11-24).
+// 확인되지 않은 발문·보기 수정만 예전처럼 "검토 대기"로 내린다. 이유: 정식 수정한 문항이 단원·교육과정 판정을 잃고 필터에서 빠졌다.
+test('answer-only and figure-only edits keep the reviewed judgment (no demotion to review_required)',()=>{
+  for(const edit of [q=>{q.answer='b';},q=>{q.image='new-figure.png';}]) {
+    const f=fixture();f.previous=structuredClone(f.question);edit(f.question);
+    f.identity.sourceFingerprint=sourceFingerprint(f.question);
+    f.current={...f.current,metadataStatus:'approved_semantic_review',reviewStatus:'reviewed_pass',metadataApprovalType:'REVIEW2',problemTypeKey:'PT_ROOT',templateKey:'TPL_ROOT',contentFingerprint:contentFingerprint(f.previous)};
+    const r=planQuestion({...f,textRebinds:rebindsFor(uid,f.current.contentFingerprint,f.question)});
+    assert.equal(r.status,'APPLY');assert.equal(r.coreChanged,false);assert.equal(r.preserveReview,true);
+    assert.equal(r.final.metadataStatus,'approved_semantic_review');assert.equal(r.final.reviewStatus,'reviewed_pass');
+  }
+});
+test('a stem edit confirmed by a rebind record keeps the judgment; the same edit without one is still demoted',()=>{
+  const f=fixture();f.previous=structuredClone(f.question);f.question.content='question (corrected wording)';
+  f.identity.sourceFingerprint=sourceFingerprint(f.question);
+  const anchor=contentFingerprint(f.previous);
+  f.current={...f.current,metadataStatus:'approved_semantic_review',reviewStatus:'reviewed_pass',metadataApprovalType:'REVIEW2',problemTypeKey:'PT_ROOT',templateKey:'TPL_ROOT',contentFingerprint:anchor};
+  const bound=planQuestion({...f,textRebinds:rebindsFor(uid,anchor,f.question)});
+  assert.equal(bound.status,'APPLY');assert.equal(bound.coreChanged,false);assert.equal(bound.final.reviewStatus,'reviewed_pass');
+  const unbound=planQuestion({...f,current:{...f.current,sourceFingerprint:sourceFingerprint(f.question)}});
+  assert.equal(unbound.status,'APPLY');assert.equal(unbound.coreChanged,true);assert.equal(unbound.final.reviewStatus,'review_required');
+});
