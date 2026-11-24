@@ -26,8 +26,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 각 함수에 대하여 그래프를 그리고, 점근선을 구하시오.\n⑴ $y=-5^x$\n⑵ $y=\\log_2 (-x)$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ 그래프: $y=5^x$의 그래프를 $x$축에 대하여 대칭이동한 곡선(점 $(0,\\ -1)$을 지나며 $x$가 증가할수록 $y$가 감소), 점근선 $y=0$\n⑵ 그래프: $y=\\log_2 x$의 그래프를 $y$축에 대하여 대칭이동한 곡선($x<0$에서 정의, 점 $(-1,\\ 0),\\ (-2,\\ 1)$을 지남), 점근선 $x=0$",
+    "solution": "⑴ $y=-5^x$의 그래프는 $y=5^x$의 그래프를 $x$축에 대하여 대칭이동한 것이다.\n$y=5^x$의 그래프는 점 $(0,\\ 1)$을 지나므로 $y=-5^x$의 그래프는 점 $(0,\\ -1)$을 지나고, $y$의 값은 항상 음수이며 $x$가 증가할수록 $y$의 값은 감소한다. $x$가 한없이 작아지면 $y$의 값은 $0$에 가까워지므로 점근선은 $x$축, 즉 직선 $y=0$이다.\n⑵ $y=\\log_2(-x)$의 그래프는 $y=\\log_2 x$의 그래프를 $y$축에 대하여 대칭이동한 것이다.\n정의역은 $x<0$이고 점 $(-1,\\ 0),\\ (-2,\\ 1)$을 지나며 $x$가 증가할수록 $y$의 값은 감소한다. $x$가 $0$에 가까워지면 $y$의 값이 한없이 커지므로 점근선은 $y$축, 즉 직선 $x=0$이다."
   },
   {
     "id": 2,
@@ -54,8 +54,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 두 수의 대소를 비교하시오.\n⑴ $\\sqrt{2},\\ \\sqrt[5]{4}$\n⑵ $\\log_{\\frac{1}{3}} 6,\\ 2\\log_{\\frac{1}{3}} 2$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $\\sqrt{2}>\\sqrt[5]{4}$\n⑵ $\\log_{\\frac{1}{3}}6<2\\log_{\\frac{1}{3}}2$",
+    "solution": "⑴ 밑을 $2$로 같게 하면 $\\sqrt{2}=2^{\\frac{1}{2}}$, $\\sqrt[5]{4}=2^{\\frac{2}{5}}$이다. 밑이 $1$보다 크므로 지수가 클수록 크다. $\\frac{1}{2}>\\frac{2}{5}$이므로 $\\sqrt{2}>\\sqrt[5]{4}$\n⑵ $2\\log_{\\frac{1}{3}}2=\\log_{\\frac{1}{3}}2^2=\\log_{\\frac{1}{3}}4$이다. 밑 $\\frac{1}{3}$이 $1$보다 작으므로 진수가 클수록 로그의 값은 작다. $6>4$이므로 $\\log_{\\frac{1}{3}}6<\\log_{\\frac{1}{3}}4=2\\log_{\\frac{1}{3}}2$"
   },
   {
     "id": 3,
@@ -82,8 +82,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 방정식을 푸시오.\n⑴ $3^{x-1}=81$\n⑵ $\\left(\\frac{3}{4}\\right)^{x^2} = \\left(\\frac{4}{3}\\right)^{2x-3}$\n⑶ $\\log_2 (x+1) = -3$\n⑷ $\\log(x+1) + \\log(x-1) = 0$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $x=5$\n⑵ $x=1$ 또는 $x=-3$\n⑶ $x=-\\frac{7}{8}$\n⑷ $x=\\sqrt{2}$",
+    "solution": "⑴ $3^{x-1}=81=3^4$이므로 $x-1=4$에서 $x=5$\n⑵ $\\left(\\frac{4}{3}\\right)^{2x-3}=\\left(\\frac{3}{4}\\right)^{-(2x-3)}=\\left(\\frac{3}{4}\\right)^{3-2x}$이므로 $x^2=3-2x$\n$x^2+2x-3=0$에서 $(x+3)(x-1)=0$이므로 $x=-3$ 또는 $x=1$\n⑶ $x+1=2^{-3}=\\frac{1}{8}$이므로 $x=-\\frac{7}{8}$ (진수 $x+1=\\frac{1}{8}>0$ 이므로 조건 만족)\n⑷ 진수의 조건에서 $x+1>0,\\ x-1>0$이므로 $x>1$이다.\n$\\log(x+1)+\\log(x-1)=\\log(x^2-1)=0$이므로 $x^2-1=1$, $x^2=2$\n$x>1$이므로 $x=\\sqrt{2}$"
   },
   {
     "id": 4,
@@ -110,8 +110,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음 부등식을 푸시오.\n⑴ $2^{x+1} \\le 16$\n⑵ $\\left(\\frac{1}{5}\\right)^{2x} > \\frac{1}{125}$\n⑶ $\\log_3(x+2) < 3$\n⑷ $\\log_{\\frac{1}{2}}(x-1) \\ge 3$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ $x\\le 3$\n⑵ $x<\\frac{3}{2}$\n⑶ $-2<x<25$\n⑷ $1<x\\le\\frac{9}{8}$",
+    "solution": "⑴ $2^{x+1}\\le 16=2^4$에서 밑 $2>1$이므로 $x+1\\le 4$, 즉 $x\\le 3$\n⑵ $\\left(\\frac{1}{5}\\right)^{2x}>\\frac{1}{125}=\\left(\\frac{1}{5}\\right)^3$에서 밑 $\\frac{1}{5}<1$이므로 부등호의 방향이 바뀌어 $2x<3$, 즉 $x<\\frac{3}{2}$\n⑶ 진수의 조건: $x+2>0$이므로 $x>-2$\n$\\log_3(x+2)<3=\\log_3 27$에서 밑이 $1$보다 크므로 $x+2<27$, 즉 $x<25$\n따라서 $-2<x<25$\n⑷ 진수의 조건: $x-1>0$이므로 $x>1$\n$3=\\log_{\\frac{1}{2}}\\left(\\frac{1}{2}\\right)^3=\\log_{\\frac{1}{2}}\\frac{1}{8}$이므로 $\\log_{\\frac{1}{2}}(x-1)\\ge\\log_{\\frac{1}{2}}\\frac{1}{8}$\n밑이 $1$보다 작으므로 $x-1\\le\\frac{1}{8}$, 즉 $x\\le\\frac{9}{8}$\n따라서 $1<x\\le\\frac{9}{8}$"
   },
   {
     "id": 5,
@@ -138,8 +138,8 @@ window.questionBank = [
     "wide": false,
     "content": "함수 $y=2^x$의 그래프를 $x$축의 방향으로 $3$만큼, $y$축의 방향으로 $m$만큼 평행이동한 그래프가 원점을 지날 때, $m$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-\\frac{1}{8}$",
+    "solution": "$y=2^x$의 그래프를 $x$축의 방향으로 $3$만큼, $y$축의 방향으로 $m$만큼 평행이동한 그래프의 식은\n$$y=2^{x-3}+m$$\n이 그래프가 원점 $(0,\\ 0)$을 지나므로\n$$0=2^{-3}+m=\\frac{1}{8}+m$$\n따라서 $m=-\\frac{1}{8}$"
   },
   {
     "id": 6,
@@ -166,8 +166,8 @@ window.questionBank = [
     "wide": false,
     "content": "함수 $y=\\left(\\frac{1}{5}\\right)^{x-1}+k$의 그래프가 제$1$사분면을 지나지 않도록 하는 상수 $k$의 최댓값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$-5$",
+    "solution": "$y=\\left(\\frac{1}{5}\\right)^{x-1}+k$는 감소함수이다. 제$1$사분면을 지나지 않으려면 $x>0$일 때 항상 $y\\le 0$이어야 한다.\n$x>0$에서 $y$의 값은 $x\\to 0$일 때 $\\left(\\frac{1}{5}\\right)^{-1}+k=5+k$에 가까워지고 $x$가 커질수록 작아진다. 따라서 $x>0$에서 $y<5+k$이므로 $5+k\\le 0$이면 $y<0$이 되어 제$1$사분면을 지나지 않는다.\n$5+k\\le 0$에서 $k\\le -5$\n따라서 $k$의 최댓값은 $-5$"
   },
   {
     "id": 7,
@@ -194,8 +194,8 @@ window.questionBank = [
     "wide": false,
     "content": "<img src=\"q07.png\" />\n오른쪽 그림과 같이 지수함수 $y=a^x\\ (0<a<1)$의 그래프가 $y$축과 만나는 점을 $\\mathrm{A}$, 직선 $x=3$과 만나는 점을 $\\mathrm{B}$라 하자. 원점 $\\mathrm{O}$와 점 $\\mathrm{C}(3, 0)$에 대하여 $\\square\\mathrm{OCBA}$의 넓이가 $2$일 때, 상수 $a$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\left(\\frac{1}{3}\\right)^{\\frac{1}{3}}$ (즉 $\\frac{\\sqrt[3]{9}}{3}$)",
+    "solution": "$\\mathrm{A}(0,\\ 1)$, $\\mathrm{B}(3,\\ a^3)$, $\\mathrm{C}(3,\\ 0)$, $\\mathrm{O}(0,\\ 0)$이다.\n$\\square\\mathrm{OCBA}$는 $\\overline{\\mathrm{OA}}\\parallel\\overline{\\mathrm{CB}}$인 사다리꼴이고 윗변과 아랫변의 길이는 $\\overline{\\mathrm{OA}}=1$, $\\overline{\\mathrm{CB}}=a^3$, 높이는 $\\overline{\\mathrm{OC}}=3$이다.\n$$\\frac{1}{2}(1+a^3)\\times 3=2$$\n이므로 $1+a^3=\\frac{4}{3}$에서 $a^3=\\frac{1}{3}$\n따라서 $a=\\left(\\frac{1}{3}\\right)^{\\frac{1}{3}}=\\frac{1}{\\sqrt[3]{3}}=\\frac{\\sqrt[3]{9}}{3}$ ($0<a<1$을 만족시킨다.)"
   },
   {
     "id": 8,
@@ -222,8 +222,8 @@ window.questionBank = [
     "wide": false,
     "content": "<img src=\"q08.png\" />\n함수 $y=\\log_3 (x+a)+b$의 그래프가 오른쪽 그림과 같을 때, 두 상수 $a$와 $b$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$a=3,\\ b=1$",
+    "solution": "$y=\\log_3(x+a)+b$의 그래프의 점근선은 직선 $x=-a$이다. 그림에서 점근선이 $x=-3$이므로 $a=3$\n그래프가 $y$축과 점 $(0,\\ 2)$에서 만나므로 $x=0,\\ y=2$를 대입하면\n$$2=\\log_3 3+b=1+b$$\n이므로 $b=1$\n(확인: $y=\\log_3(x+3)+1$에서 $x$절편은 $\\log_3(x+3)=-1$일 때 $x=-\\frac{8}{3}$이므로 그림의 $x$절편(약 $-3$과 $0$ 사이)과 일치한다.)"
   },
   {
     "id": 9,
@@ -250,8 +250,8 @@ window.questionBank = [
     "wide": false,
     "content": "정의역이 $\\{x \\mid -1 \\le x \\le 3\\}$일 때, 다음 함수의 최댓값과 최솟값을 구하시오.\n⑴ $y=\\left(\\frac{1}{2}\\right)^{-x+1}-4$\n⑵ $y=\\log_{\\frac{1}{3}}(2x+3)-1$",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "⑴ 최댓값 $0$, 최솟값 $-\\frac{15}{4}$\n⑵ 최댓값 $-1$, 최솟값 $-3$",
+    "solution": "⑴ $y=\\left(\\frac{1}{2}\\right)^{-x+1}-4=2^{x-1}-4$이고 밑 $2>1$이므로 증가함수이다.\n$x=-1$일 때 $y=2^{-2}-4=\\frac{1}{4}-4=-\\frac{15}{4}$ (최솟값)\n$x=3$일 때 $y=2^2-4=0$ (최댓값)\n⑵ $y=\\log_{\\frac{1}{3}}(2x+3)-1$은 밑이 $\\frac{1}{3}<1$이므로 감소함수이다. ($-1\\le x\\le 3$에서 $2x+3>0$이므로 정의된다.)\n$x=-1$일 때 $y=\\log_{\\frac{1}{3}}1-1=-1$ (최댓값)\n$x=3$일 때 $y=\\log_{\\frac{1}{3}}9-1=-2-1=-3$ (최솟값)"
   },
   {
     "id": 10,
@@ -278,8 +278,8 @@ window.questionBank = [
     "wide": false,
     "content": "[서술형]\n함수 $y=\\log_a x+b\\ (a>1)$의 그래프와 그 역함수 $y=f^{-1}(x)$의 그래프가 두 점에서 만나고, 두 교점의 $x$좌표가 $1$과 $3$일 때, 두 상수 $a$와 $b$에 대하여 $ab$의 값을 구하는 풀이 과정과 답을 쓰시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\sqrt{3}$",
+    "solution": "$y=\\log_a x+b$ ($a>1$)의 역함수는 $y=a^{x-b}$이다. 두 함수는 모두 증가함수이므로 두 그래프의 교점은 직선 $y=x$ 위에 있다. (증가함수 $f$와 역함수 $f^{-1}$의 교점이 $y=x$ 위에 있음)\n따라서 두 교점은 $(1,\\ 1),\\ (3,\\ 3)$이고 이 점들은 $y=\\log_a x+b$ 위의 점이다.\n$(1,\\ 1)$에서 $\\log_a 1+b=1$이므로 $b=1$\n$(3,\\ 3)$에서 $\\log_a 3+1=3$이므로 $\\log_a 3=2$, 즉 $a^2=3$이고 $a>1$이므로 $a=\\sqrt{3}$\n따라서 $ab=\\sqrt{3}\\times 1=\\sqrt{3}$"
   },
   {
     "id": 11,
@@ -306,8 +306,8 @@ window.questionBank = [
     "wide": false,
     "content": "화재가 발생한 건물의 온도는 시간에 따라 변한다. 어떤 건물의 초기 온도를 $T_0\\ ^\\circ\\mathrm{C}$, 화재가 발생한 지 $t$분 후의 온도를 $T\\ ^\\circ\\mathrm{C}$라 할 때, 다음이 성립한다고 한다.\n$$T=T_0+k\\log(8t+1)\\quad (\\text{단, } k\\text{는 상수})$$\n초기 온도가 $25\\ ^\\circ\\mathrm{C}$인 이 건물에서 화재가 발생한 지 $\\frac{9}{8}$분 후의 온도가 $235\\ ^\\circ\\mathrm{C}$이었을 때, 온도가 $445\\ ^\\circ\\mathrm{C}$가 되는 것은 화재가 발생한 지 몇 분 후인지 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{99}{8}$분 후",
+    "solution": "$t=\\frac{9}{8}$일 때 $8t+1=10$이고 온도가 $235$이므로\n$$235=25+k\\log 10=25+k$$\n이므로 $k=210$\n온도가 $445\\,^\\circ\\mathrm{C}$가 되는 시각을 $t$라 하면\n$$445=25+210\\log(8t+1)$$\n$\\log(8t+1)=2$이므로 $8t+1=100$, $t=\\frac{99}{8}$\n따라서 화재가 발생한 지 $\\frac{99}{8}$분 후이다."
   },
   {
     "id": 12,
@@ -334,8 +334,8 @@ window.questionBank = [
     "wide": false,
     "content": "$0<a<1$일 때, 정의역이 $\\{x \\mid -2 \\le x \\le 3\\}$인 두 함수 $f(x)=a^x$과 $g(x)=\\left(\\frac{1}{a^2}\\right)^x$에 대하여 $f(x)$의 최댓값을 $M$, $g(x)$의 최솟값을 $m$이라 하자. $Mm=\\frac{1}{4}$일 때, $a$의 값을 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$\\frac{1}{2}$",
+    "solution": "$0<a<1$이므로 $f(x)=a^x$은 감소함수이고 $-2\\le x\\le 3$에서 최댓값은 $M=f(-2)=a^{-2}$이다.\n$g(x)=\\left(\\frac{1}{a^2}\\right)^x=a^{-2x}$에서 $\\frac{1}{a^2}>1$이므로 $g(x)$는 증가함수이고 최솟값은 $m=g(-2)=a^{4}$이다.\n$$Mm=a^{-2}\\times a^4=a^2=\\frac{1}{4}$$\n$0<a<1$이므로 $a=\\frac{1}{2}$"
   },
   {
     "id": 13,
@@ -362,8 +362,8 @@ window.questionBank = [
     "wide": false,
     "content": "<img src=\"q13.png\" />\n[서술형]\n다음 그림과 같이 두 함수 $y=\\log_2 \\sqrt{kx}$와 $y=\\log_4 \\frac{x}{k}$의 그래프가 직선 $y=1$과 만나는 점을 각각 $\\mathrm{P}$와 $\\mathrm{Q}$라 하고, 두 점 $\\mathrm{P}$와 $\\mathrm{Q}$를 지나면서 $y$축에 평행한 두 직선이 다른 함수의 그래프와 만나는 점을 각각 $\\mathrm{R}$과 $\\mathrm{S}$라 하자. $\\overline{\\mathrm{PQ}}=6$일 때, 선분 $\\mathrm{RS}$의 길이를 구하는 풀이 과정과 답을 쓰시오. (단, $k>0$)",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$2\\sqrt{10}$",
+    "solution": "$y=\\log_2\\sqrt{kx}=\\frac{1}{2}\\log_2 kx$이고 $y=\\log_4\\frac{x}{k}=\\frac{1}{2}\\log_2\\frac{x}{k}$이다.\n점 $\\mathrm{P}$는 $y=\\log_2\\sqrt{kx}$와 $y=1$의 교점이므로 $\\log_2\\sqrt{kx}=1$에서 $\\sqrt{kx}=2$, $kx=4$이므로 $x_{\\mathrm{P}}=\\frac{4}{k}$\n점 $\\mathrm{Q}$는 $y=\\log_4\\frac{x}{k}$와 $y=1$의 교점이므로 $\\frac{x}{k}=4$에서 $x_{\\mathrm{Q}}=4k$\n그림에서 $\\mathrm{P}$가 $\\mathrm{Q}$의 왼쪽에 있으므로 $\\overline{\\mathrm{PQ}}=4k-\\frac{4}{k}=6$이다.\n$4k^2-6k-4=0$이므로 $2k^2-3k-2=0$, $(2k+1)(k-2)=0$에서 $k>0$이므로 $k=2$\n따라서 $x_{\\mathrm{P}}=2,\\ x_{\\mathrm{Q}}=8$이다.\n점 $\\mathrm{R}$은 $x=2$인 직선이 $y=\\log_4\\frac{x}{2}$와 만나는 점이므로 $\\mathrm{R}(2,\\ \\log_4 1)=(2,\\ 0)$\n점 $\\mathrm{S}$는 $x=8$인 직선이 $y=\\log_2\\sqrt{2x}$와 만나는 점이므로 $\\mathrm{S}(8,\\ \\log_2\\sqrt{16})=(8,\\ 2)$\n$$\\overline{\\mathrm{RS}}=\\sqrt{(8-2)^2+(2-0)^2}=\\sqrt{40}=2\\sqrt{10}$$"
   },
   {
     "id": 14,
@@ -390,8 +390,8 @@ window.questionBank = [
     "wide": false,
     "content": "모든 실수 $x$에 대하여 이차부등식\n$$x^2 - (3^a - 1)x + 3^a + 7 > 0$$\n이 성립하도록 하는 실수 $a$의 값의 범위를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$a<2$",
+    "solution": "모든 실수 $x$에 대하여 $x^2-(3^a-1)x+3^a+7>0$이려면 이차방정식의 판별식 $D<0$이어야 한다.\n$3^a=t$ ($t>0$)로 놓으면\n$$D=(t-1)^2-4(t+7)=t^2-6t-27=(t-9)(t+3)<0$$\n이므로 $-3<t<9$이다. $t>0$이므로 $0<3^a<9$에서 $3^a<3^2$이므로 $a<2$"
   },
   {
     "id": 15,
@@ -418,7 +418,7 @@ window.questionBank = [
     "wide": false,
     "content": "<img src=\"q15.png\" />\n이차함수 $y=f(x)$의 그래프가 오른쪽 그림과 같을 때, 부등식\n$$\\log_{\\frac{1}{4}} f(x) \\ge -1$$\n을 만족시키는 정수 $x$의 개수를 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$4$",
+    "solution": "그래프에서 $f(x)$는 $x=2,\\ 4$에서 $x$축과 만나므로 $f(x)=c(x-2)(x-4)$이고, $f(0)=4$에서 $8c=4$이므로 $c=\\frac{1}{2}$\n$$f(x)=\\frac{1}{2}(x-2)(x-4)$$\n진수의 조건: $f(x)>0$에서 $x<2$ 또는 $x>4$\n$\\log_{\\frac{1}{4}}f(x)\\ge-1=\\log_{\\frac{1}{4}}4$이고 밑이 $1$보다 작으므로 $f(x)\\le 4$이다.\n$\\frac{1}{2}(x^2-6x+8)\\le 4$에서 $x^2-6x+8\\le 8$이므로 $x^2-6x\\le 0$, 즉 $0\\le x\\le 6$\n두 조건의 공통부분은 $0\\le x<2$ 또는 $4<x\\le 6$이므로 정수 $x$는 $0,\\ 1,\\ 5,\\ 6$의 $4$개이다."
   }
 ];
