@@ -1,0 +1,115 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "axisScale": {
+      "x": "1",
+      "y": "1/4"
+    },
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1,
+      5
+    ],
+    "viewport": [
+      -1,
+      5,
+      -2,
+      18
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "0",
+        "y": "0"
+      },
+      {
+        "id": "B",
+        "x": "4",
+        "y": "16"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "A",
+        "B"
+      ]
+    },
+    "axisTickValues": {
+      "x": [
+        "2",
+        "4"
+      ],
+      "y": [
+        "16"
+      ]
+    },
+    "referenceCurves": [
+      {
+        "id": "g",
+        "coefficients": [
+          "0",
+          "8",
+          "-1"
+        ],
+        "intersectionX": [
+          "0",
+          "4"
+        ],
+        "name": "g"
+      }
+    ],
+    "functionName": "f",
+    "regions": [
+      {
+        "id": "L",
+        "upper": "g",
+        "lower": "f",
+        "from": "0",
+        "to": "2",
+        "fill": "LIGHT"
+      },
+      {
+        "id": "R",
+        "upper": "g",
+        "lower": "f",
+        "from": "2",
+        "to": "4",
+        "fill": "MEDIUM"
+      }
+    ],
+    "overlays": {
+      "lines": [
+        {
+          "id": "a",
+          "x": "2"
+        }
+      ]
+    }
+  },
+  "caption": "두 곡선 y=x²과 y=−x²+8x의 교점은 x=0, 4이고, 두 곡선 사이의 전체 넓이는 64/3이다. 직선 x=a가 넓이를 이등분할 때 왼쪽 넓이는 32/3이고, 이를 만족하는 a는 2이다. 따라서 답은 ④이다.",
+  "accessibilityDescription": "아래로 볼록한 포물선 f와 위로 볼록한 포물선 g가 두 점에서 만나고, 두 곡선 사이 영역이 세로선에 의해 왼쪽과 오른쪽으로 나뉘어 서로 다른 색으로 칠해져 있다.",
+  "newVisualInformation": [
+    "두 포물선 y=x²과 y=−x²+8x의 교점 두 곳과 그 사이 영역을 보여 준다.",
+    "세로선이 영역을 같은 넓이로 나누는 모습을 두 색으로 확인하게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 곡선 $y=x^2$과 $y=-x^2+8x$로 둘러싸인 부분의 넓이를 직선 $x=a$가 이등분할 때, 상수 $a$의 값을 구하면? [3.9점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
