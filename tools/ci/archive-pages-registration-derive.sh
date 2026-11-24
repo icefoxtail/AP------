@@ -2,7 +2,7 @@
 # Pages registration derivation: materialize reviewed META_V2 payloads, rebuild registration data, verify.
 #   archive-pages-registration-derive.sh materialize   (steps 1-2)
 #   archive-pages-registration-derive.sh verify        (verification list)
-#   archive-pages-registration-derive.sh all           (the --regenerate command of the race-safe push helper)
+#   archive-pages-registration-derive.sh all           (materialize, then verify)
 # Logs are tee'd into $RELEASE_EVIDENCE_DIR exactly like the workflow steps always did.
 set -euo pipefail
 : "${RELEASE_EVIDENCE_DIR:?RELEASE_EVIDENCE_DIR is required}"

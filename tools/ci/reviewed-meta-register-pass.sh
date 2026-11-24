@@ -4,8 +4,8 @@
 # Check actual changed-UID consumer values before consuming requests, so attributable failures can use
 # the same fail-closed rejection/rebuild path as projection refusals. The independent final consumer gate
 # (tools/ci/verify-registered-consumer-approval.sh) still checks the kept copies after all writer lanes converge.
-# It is the workflow's first pass AND the --regenerate command of git-push-derived-with-retry.mjs, so
-# a push that lost a race to another main writer re-runs ALL of this on the new base.
+# It is the workflow's first pass. A push that lost a race to another main commit no longer re-runs it: the finished result is written onto the new tip
+# (git-push-derived-with-retry.mjs) and the run queued by that commit registers the new inputs.
 # Inputs: RUNNER_TEMP (required), ARCHIVE_META_SCOPED=true when the push touched a scoped exam input.
 # It discovers the inbox from the checkout itself and never commits or pushes.
 # Per-request isolation (tools/ci/register-reviewed-meta-requests.mjs): each request is registered on its

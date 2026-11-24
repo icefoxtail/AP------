@@ -30,12 +30,12 @@ test("the main writer receives every main push and retains all native reviewed i
   assert.match(compatibility, /gh workflow run archive-main-auto-meta\.yml/);
 });
 
-test("one writer retries the complete native transaction while Pages and compatibility dispatch do not write Git", () => {
+test("one writer writes the complete native transaction onto the newest main while Pages and compatibility dispatch do not write Git", () => {
   const register = read(".github/workflows/archive-main-auto-meta.yml");
   const compatibility = read(".github/workflows/archive-reviewed-exam-meta-register.yml");
   const pages = read(".github/workflows/archive-pages-release.yml");
   assert.equal((register.match(/node tools\/ci\/git-push-derived-with-retry\.mjs/g) || []).length, 2, 'required-lane save, then the full save');
-  assert.match(register, /--regenerate 'node tools\/ci\/archive-registration-writer\.mjs --work-dir "\$WRITER_WORK_DIR"'/);
+  assert.doesNotMatch(register, /--regenerate|--reapply-check|--race-fetch-scope/, 'a lost race writes the finished result onto the new tip and never recomputes');
   assert.doesNotMatch(register, /git push origin HEAD:main|--force|HEAD\^ HEAD/);
   for (const [name, text] of [["compatibility", compatibility], ["pages", pages]]) {
     assert.doesNotMatch(text, /git-push-derived-with-retry|git\s+(?:commit|push)\b|contents: write/, `${name} cannot persist shared registration output`);

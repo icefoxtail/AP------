@@ -1,42 +1,35 @@
 #!/usr/bin/env node
-// Pushes generated ("derived") data to a shared branch without ever forcing or merging.
+// Pushes generated ("derived") data to a shared branch without ever forcing, merging or rebasing.
 //
-// The derived files are a pure function of the checked-in inputs, so when another
-// writer moved the branch first we do NOT rebase/merge our stale output: we reset to
-// the new tip, re-run the caller's regenerate-and-validate command on that base, and
-// push the fresh result (3 attempts by default, at most 6 when explicitly requested).
-// The caller's existing step/job timeouts still bound the entire operation. If the competitor already
-// published an identical tree, that is success without any extra commit.
+// Single-writer rule: the derived paths (--paths-file) are written only by this registrar, and their content is a pure
+// function of the inputs it computed them from. So when another commit moved the branch while we were computing,
+// we do NOT compute again. If the competing range did not touch any derived path, we write the very same derived files
+// as one new commit whose parent is the new tip (a fast-forward push) and the files keep the content that was
+// computed and verified on our base. The derived state records which inputs each lane was proven for, so the next
+// registration run, which every competing push already queued, sees the newer inputs as not yet registered and
+// computes them from the latest main. Nothing is lost and nothing is computed twice.
+// If the competing range DID touch a derived path, nothing is pushed: result HANDED_OVER, and the next run starts
+// from the latest main.
 //
-// Optional --reapply-check "<command>": the single shortcut. If this attempt created a local commit and the
-// check (env DERIVED_BASE_SHA=<our base>, COMPETITOR_HEAD_SHA=<remote tip>) exits 0, the competing range is
-// provably unrelated to the producers, so the already-verified derived commit is cherry-picked onto the new
-// tip instead of re-running --regenerate; --verify-command then runs again on the new base..head before the
-// push. A failing check, a cherry-pick conflict or a staged path outside --paths-file falls back to
-// regenerate. Without the option the behaviour is unchanged.
+// A candidate is always checked by --verify-command (DERIVED_BASE_SHA=<its parent>, DERIVED_HEAD_SHA=<candidate>)
+// before it is pushed. If the competitor already published an identical tree, that is success without a commit.
 //
-// Optional --race-fetch-scope all-heads is limited to origin/main. Before a race
-// retry it also fetches the other origin heads, so immutable review commits
-// published after checkout are available to the unchanged regenerate/verify
-// commands. The already captured origin/main ref and working tree are not changed
-// by that evidence fetch. Its fixed refspec cannot be supplied by the caller.
-//
-//   node tools/ci/git-push-derived-with-retry.mjs --paths-file <file> --message <msg> \
-//     [--regenerate "<command run through the platform shell>"] [--remote origin] \
+//   node tools/ci/git-push-derived-with-retry.mjs --paths-file <file> --message <msg> [--remote origin] \
 //     [--branch main] [--max-attempts 3] [--summary-file <md>] [--label <name>] \
-//     [--race-fetch-scope branch|all-heads] \
-//     [--verify-command "<candidate check before each push>"] \
-//     [--reapply-check "<exit 0 only if the competing range is provably unrelated>"]
+//     [--verify-command "<candidate check before each push>"]
 //
 // --paths-file: git pathspecs relative to the repository root, one per line
 //               ('#' comments and blank lines ignored). Only these are staged/cleaned.
-// Environment: writes result/main_sha/registered_sha/attempts to $GITHUB_OUTPUT when set. The caller
+// Environment: writes result/main_sha/registered_sha/attempts/overlaid to $GITHUB_OUTPUT when set. The caller
 // configures git user.name/user.email. Run it from the repository root.
 // main_sha is the observed remote tip; registered_sha is the exact verified tree's commit.
-// They differ when another main commit lands after a successful push. Publish registered_sha only.
-// Success (exit 0): PUSHED (also after a successful retry), ALREADY_CURRENT, ALREADY_REFLECTED.
-// Failure (exit 1): PUSH_REJECTED (remote did not move), REGENERATE_FAILED, RETRY_EXHAUSTED,
-// READBACK_MISMATCH, FETCH_FAILED, COMMIT_FAILED, STAGE_FAILED, NO_REGENERATE, VERIFICATION_FAILED.
+// They differ when another main commit lands after a successful push. Publish registered_sha only, and only
+// after checking that its required proofs match its own tree (overlaid=true means the tree holds inputs newer
+// than the ones the derived files were computed from).
+// Success (exit 0): PUSHED (also when written onto a newer tip), ALREADY_CURRENT, ALREADY_REFLECTED.
+// Failure (exit 1): PUSH_REJECTED (remote did not move), HANDED_OVER (a competing commit touched a derived path),
+// RETRY_EXHAUSTED (the tip kept moving between our write and our push), READBACK_MISMATCH, FETCH_FAILED,
+// COMMIT_FAILED, STAGE_FAILED, VERIFICATION_FAILED.
 import fs from "node:fs";
 import path from "node:path";
 import { spawnSync } from "node:child_process";
@@ -46,36 +39,27 @@ const DEFAULT_ATTEMPTS = 3;
 const HARD_CAP = 6;
 const SUCCESS = new Set(["PUSHED", "ALREADY_CURRENT", "ALREADY_REFLECTED"]);
 
-function resolveRaceFetchScope(opt) {
-  const scope = opt.raceFetchScope === undefined ? "branch" : opt.raceFetchScope;
-  if (scope !== "branch" && scope !== "all-heads") throw new Error("--race-fetch-scope must be branch or all-heads");
-  if (scope === "all-heads" && (opt.remote !== "origin" || opt.branch !== "main")) throw new Error("all-heads race fetch requires origin/main");
-  return scope;
-}
-
 function parseArgs(argv) {
-  const opt = { remote: "origin", branch: "main", maxAttempts: DEFAULT_ATTEMPTS, raceFetchScope: "branch", label: "derived data", regenerate: "", verifyCommand: "", reapplyCheck: "", summaryFile: "", pathsFile: "", message: "" };
-  const names = { "--paths-file": "pathsFile", "--regenerate": "regenerate", "--message": "message", "--remote": "remote", "--branch": "branch",
-    "--max-attempts": "maxAttempts", "--race-fetch-scope": "raceFetchScope", "--summary-file": "summaryFile", "--label": "label", "--verify-command": "verifyCommand", "--reapply-check": "reapplyCheck" };
+  const opt = { remote: "origin", branch: "main", maxAttempts: DEFAULT_ATTEMPTS, label: "derived data", verifyCommand: "", summaryFile: "", pathsFile: "", message: "" };
+  const names = { "--paths-file": "pathsFile", "--message": "message", "--remote": "remote", "--branch": "branch",
+    "--max-attempts": "maxAttempts", "--summary-file": "summaryFile", "--label": "label", "--verify-command": "verifyCommand" };
   for (let i = 0; i < argv.length; i += 2) {
     const key = names[argv[i]];
     if (!key || argv[i + 1] === undefined) throw new Error(`unknown or valueless argument: ${argv[i]}`);
     opt[key] = argv[i + 1];
   }
   opt.maxAttempts = Math.min(HARD_CAP, Math.max(1, Number.parseInt(opt.maxAttempts, 10) || DEFAULT_ATTEMPTS));
-  resolveRaceFetchScope(opt);
   if (!opt.pathsFile || !opt.message) throw new Error("--paths-file and --message are required");
   return opt;
 }
 
 export function pushDerivedWithRetry(opt, { cwd = process.cwd(), log = console.log } = {}) {
-  const raceFetchScope = resolveRaceFetchScope(opt);
   const pathspecs = fs.readFileSync(opt.pathsFile, "utf8").split(/\r?\n/).map(l => l.trim()).filter(l => l && !l.startsWith("#"));
   if (!pathspecs.length) throw new Error("paths file has no pathspecs");
   const remoteRef = `${opt.remote}/${opt.branch}`;
   const git = (args, extra = {}) => {
-    const r = spawnSync("git", args, { cwd, encoding: "utf8", ...extra });
-    return { status: r.status ?? 1, stdout: (r.stdout || "").trim(), stderr: (r.stderr || "").trim() };
+    const r = spawnSync("git", args, { cwd, encoding: "utf8", maxBuffer: 256 * 1024 * 1024, ...extra });
+    return { status: r.status ?? 1, stdout: (r.stdout || "").trim(), stderr: (r.stderr || "").trim(), raw: r.stdout || "" };
   };
   const rev = ref => { const r = git(["rev-parse", "--verify", "--quiet", ref]); return r.status === 0 ? r.stdout : ""; };
   const isAncestor = (a, b) => git(["merge-base", "--is-ancestor", a, b]).status === 0;
@@ -83,7 +67,7 @@ export function pushDerivedWithRetry(opt, { cwd = process.cwd(), log = console.l
   const attempts = [];
   const outcome = (result, extra = {}) => {
     const mainSha = extra.mainSha || rev(remoteRef) || rev("HEAD");
-    return { result, ok: SUCCESS.has(result), attempts: attempts.length, mainSha, registeredSha: "", attemptLog: attempts, ...extra };
+    return { result, ok: SUCCESS.has(result), attempts: attempts.length, mainSha, registeredSha: "", attemptLog: attempts, overlaid: attempts.some(a => a.overlaid), ...extra };
   };
   const competitor = () => {
     const r = git(["log", "-1", "--format=%h %an: %s", remoteRef]);
@@ -91,7 +75,7 @@ export function pushDerivedWithRetry(opt, { cwd = process.cwd(), log = console.l
   };
 
   while (true) {
-    const attempt = { n: attempts.length + 1, base: rev("HEAD"), pushed: "", remoteAfter: "", cause: "" };
+    const attempt = { n: attempts.length + 1, base: rev("HEAD"), pushed: "", remoteAfter: "", cause: "", overlaid: false };
     attempts.push(attempt);
 
     for (const spec of pathspecs) {
@@ -123,7 +107,7 @@ export function pushDerivedWithRetry(opt, { cwd = process.cwd(), log = console.l
         const remote = rev(remoteRef);
         attempt.remoteAfter = remote;
         if (remote === attempt.pushed) {
-          attempt.cause = "pushed";
+          attempt.cause = attempt.overlaid ? "pushed on top of the newer tip" : "pushed";
           if (git(["diff", "--quiet", attempt.pushed, remote, "--", ...pathspecs]).status !== 0) return outcome("READBACK_MISMATCH", { error: "remote tip differs from pushed commit for the derived paths" });
           return outcome("PUSHED", { mainSha: remote, registeredSha: attempt.pushed });
         }
@@ -142,6 +126,7 @@ export function pushDerivedWithRetry(opt, { cwd = process.cwd(), log = console.l
     const remote = rev(remoteRef);
     attempt.remoteAfter = remote;
     if (!staged) {
+      // Nothing of ours to write: the derived tree already equals our base. Whatever moved the branch is the next run's input.
       if (remote === attempt.base) { attempt.cause = "nothing to commit; local HEAD equals remote tip"; return outcome("ALREADY_CURRENT", { mainSha: remote, registeredSha: remote }); }
       attempt.cause = "nothing to commit but the remote branch moved";
     }
@@ -156,54 +141,49 @@ export function pushDerivedWithRetry(opt, { cwd = process.cwd(), log = console.l
       attempt.cause += "remote tip already contains an identical tree";
       return outcome("ALREADY_REFLECTED", { mainSha: remote, registeredSha: remote, treeSha: theirTree });
     }
+    if (!staged) { // moved while we had nothing to write: nothing to hand over either, the next run reads the new tip
+      git(["reset", "--hard", "-q", remoteRef]);
+      return outcome("ALREADY_CURRENT", { mainSha: remote, registeredSha: attempt.base, note: "nothing to write; the branch moved on and the next run reads it" });
+    }
     if (attempts.length >= opt.maxAttempts) return outcome("RETRY_EXHAUSTED", { competitor: competitor() });
-    if (!opt.regenerate) return outcome("NO_REGENERATE", { error: "branch moved and no --regenerate command was given", competitor: competitor() });
 
-    if (raceFetchScope === "all-heads") {
-      // main was fetched above and is the exact retry base. Do not move that ref
-      // again while hydrating the other heads; a later main advance must still
-      // lose the ordinary push race and re-enter the existing validation path.
-      const hydrated = git(["fetch", "--no-tags", "origin", "+refs/heads/*:refs/remotes/origin/*", "^refs/heads/main"]);
-      if (hydrated.status !== 0) return outcome("FETCH_FAILED", { error: `race evidence heads: ${hydrated.stderr}` });
+    // Did the competing range touch anything this registrar owns?
+    const owned = git(["diff", "--name-only", "--no-renames", "-z", attempt.base, remote, "--", ...pathspecs]);
+    const touched = owned.raw.split("\0").filter(Boolean);
+    if (owned.status !== 0) return outcome("FETCH_FAILED", { error: `cannot compare ${attempt.base}..${remote}: ${owned.stderr}` });
+    if (touched.length) {
+      attempt.cause += `${attempt.cause ? "; " : ""}a competing commit changed ${touched.length} registrar-owned path(s): ${touched.slice(0, 5).join(", ")}`;
+      git(["reset", "--hard", "-q", remoteRef]);
+      return outcome("HANDED_OVER", { competitor: competitor(), touched: touched.slice(0, 20) });
     }
 
-    if (opt.reapplyCheck && attempt.pushed) {
-      const unrelated = spawnSync(opt.reapplyCheck, { cwd, shell: true, stdio: "inherit",
-        env: { ...process.env, DERIVED_BASE_SHA: attempt.base, COMPETITOR_HEAD_SHA: remote } });
-      if (unrelated.status === 0) {
-        git(["reset", "--hard", "-q", remoteRef]);
-        const pick = git(["cherry-pick", "--no-commit", attempt.pushed]);
-        let reapplied = pick.status === 0;
-        if (reapplied) {
-          const names = args => git(["diff", "--cached", "--name-only", "-z", ...args]).stdout.split("\0").filter(Boolean);
-          const inside = new Set(names(["--", ...pathspecs]));
-          reapplied = names([]).every(f => inside.has(f));
-        } else git(["cherry-pick", "--abort"]);
-        if (reapplied) {
-          attempt.cause += `${attempt.cause ? "; " : ""}competitor range unrelated, re-applied verified derived commit`;
-          log(`[${opt.label}] attempt ${attempt.n} lost the race to ${remote}; competing range is unrelated, re-applying the verified derived commit`);
-          continue;
-        }
-        git(["reset", "--hard", "-q", remoteRef]);
-      }
-    }
-
+    // Write the same derived files onto the new tip. Added and modified files take the exact blobs of our verified commit;
+    // deleted files are removed. The competing range left every one of these paths as it was on our base.
+    const changes = git(["diff", "--name-status", "--no-renames", "-z", attempt.base, attempt.pushed]).raw.split("\0").filter(Boolean);
+    const writes = [], removes = [];
+    for (let i = 0; i + 1 < changes.length; i += 2) (changes[i] === "D" ? removes : writes).push(changes[i + 1]);
     git(["reset", "--hard", "-q", remoteRef]);
-    for (const spec of pathspecs) git(["clean", "-fdq", "--", spec]); // stale untracked output only inside the pathspecs
-    log(`[${opt.label}] attempt ${attempt.n} lost the race to ${remote}; regenerating on the new base`);
-    const regenerate = spawnSync(opt.regenerate, { cwd, shell: true, stdio: "inherit" });
-    if ((regenerate.status ?? 1) !== 0) {
-      attempt.cause += "; regenerate failed on the new base";
-      return outcome("REGENERATE_FAILED", { error: `regenerate command exited ${regenerate.status ?? regenerate.signal} on base ${remote}`, competitor: competitor() });
+    let failed = "";
+    for (let i = 0; i < writes.length && !failed; i += 200) {
+      const r = git(["--literal-pathspecs", "checkout", attempt.pushed, "--", ...writes.slice(i, i + 200)]);
+      if (r.status !== 0) failed = r.stderr;
     }
+    for (let i = 0; i < removes.length && !failed; i += 200) {
+      const r = git(["--literal-pathspecs", "rm", "-q", "-f", "--ignore-unmatch", "--", ...removes.slice(i, i + 200)]);
+      if (r.status !== 0) failed = r.stderr;
+    }
+    if (failed) { git(["reset", "--hard", "-q", remoteRef]); return outcome("STAGE_FAILED", { error: `writing the derived files onto ${remote}: ${failed}` }); }
+    attempt.overlaid = true;
+    attempt.cause += `${attempt.cause ? "; " : ""}competing range left every registrar-owned path alone, writing the same derived files onto the new tip`;
+    log(`[${opt.label}] attempt ${attempt.n} lost the race to ${remote}; competing range touched no registrar-owned path, writing the verified derived files onto the new tip`);
+    // The files are staged (as the loop expects); the next pass commits them on the new tip, verifies and pushes.
   }
 }
 
 const NEXT_ACTION = {
-  RETRY_EXHAUSTED: r => `Nothing was pushed; the next push or hourly run redoes it on the newer main. Re-run this workflow via workflow_dispatch after main settles to do it sooner; competing writer = ${r.competitor}.`,
+  HANDED_OVER: r => `Nothing was pushed. A commit that landed first changed registrar-owned paths (${(r.touched || []).slice(0, 3).join(", ") || "see attempt log"}), so this result is not written on top of it. The next registration run starts from the latest main and computes it; competing writer = ${r.competitor}.`,
+  RETRY_EXHAUSTED: r => `Nothing was pushed; main moved again each time between writing and pushing. The next registration run starts from the latest main; competing writer = ${r.competitor}.`,
   PUSH_REJECTED: () => "The push was rejected although main did not move (permissions, branch protection or network). Fix the cause in the error above, then re-run this workflow via workflow_dispatch.",
-  REGENERATE_FAILED: r => `Regeneration/validation failed on the new main base (${r.error}). Read the step log above, fix the input data it names, then re-run via workflow_dispatch. Competing writer = ${r.competitor}.`,
-  NO_REGENERATE: r => `Main moved first and no regenerate command is configured; re-run via workflow_dispatch. Competing writer = ${r.competitor}.`,
   READBACK_MISMATCH: () => "The remote branch does not hold the pushed derived data; inspect the remote history, then re-run via workflow_dispatch.",
   FETCH_FAILED: () => "Could not fetch the remote branch; check network/credentials, then re-run via workflow_dispatch.",
   COMMIT_FAILED: () => "git commit failed; check that git user.name/user.email are configured before this step.",
@@ -216,6 +196,7 @@ export function renderSummary(opt, r) {
   for (const a of r.attemptLog) lines.push(`- attempt ${a.n}: base \`${a.base || "-"}\`, pushed \`${a.pushed || "-"}\`, remote after \`${a.remoteAfter || "-"}\`, cause: ${a.cause || "-"}`);
   lines.push(`- final remote \`${opt.remote}/${opt.branch}\`: \`${r.mainSha || "-"}\``);
   if (r.registeredSha) lines.push(`- exact registered commit: \`${r.registeredSha}\``);
+  if (r.overlaid) lines.push("- written onto a newer main tip: the derived files were computed on an older base; lanes whose inputs changed since are not registered yet and the next run computes them");
   if (r.note) lines.push(`- note: ${r.note}`);
   if (r.treeSha) lines.push(`- identical tree already on remote: \`${r.treeSha}\``);
   if (!r.ok) {
@@ -227,12 +208,12 @@ export function renderSummary(opt, r) {
 
 function main() {
   let opt;
-  try { opt = parseArgs(process.argv.slice(2)); } catch (error) { console.error(`${error.message}\nusage: git-push-derived-with-retry.mjs --paths-file <f> --message <m> [--regenerate <cmd>] [--verify-command <cmd>] [--reapply-check <cmd>] [--remote origin] [--branch main] [--max-attempts 3] [--race-fetch-scope branch|all-heads] [--summary-file <md>] [--label <name>]`); process.exit(2); }
+  try { opt = parseArgs(process.argv.slice(2)); } catch (error) { console.error(`${error.message}\nusage: git-push-derived-with-retry.mjs --paths-file <f> --message <m> [--verify-command <cmd>] [--remote origin] [--branch main] [--max-attempts 3] [--summary-file <md>] [--label <name>]`); process.exit(2); }
   let result;
-  try { result = pushDerivedWithRetry(opt); } catch (error) { result = { result: "STAGE_FAILED", ok: false, attempts: 0, mainSha: "", registeredSha: "", attemptLog: [], error: error.message }; }
-  console.log(`[${opt.label}] result=${result.result} attempts=${result.attempts} main_sha=${result.mainSha} registered_sha=${result.registeredSha}${result.error ? ` error=${result.error}` : ""}`);
+  try { result = pushDerivedWithRetry(opt); } catch (error) { result = { result: "STAGE_FAILED", ok: false, attempts: 0, mainSha: "", registeredSha: "", attemptLog: [], overlaid: false, error: error.message }; }
+  console.log(`[${opt.label}] result=${result.result} attempts=${result.attempts} main_sha=${result.mainSha} registered_sha=${result.registeredSha} overlaid=${result.overlaid}${result.error ? ` error=${result.error}` : ""}`);
   if (opt.summaryFile) fs.appendFileSync(opt.summaryFile, renderSummary(opt, result), "utf8");
-  if (process.env.GITHUB_OUTPUT) fs.appendFileSync(process.env.GITHUB_OUTPUT, `result=${result.result}\nmain_sha=${result.mainSha}\nregistered_sha=${result.registeredSha}\nattempts=${result.attempts}\n`, "utf8");
+  if (process.env.GITHUB_OUTPUT) fs.appendFileSync(process.env.GITHUB_OUTPUT, `result=${result.result}\nmain_sha=${result.mainSha}\nregistered_sha=${result.registeredSha}\nattempts=${result.attempts}\noverlaid=${result.overlaid}\n`, "utf8");
   process.exit(result.ok ? 0 : 1);
 }
 
