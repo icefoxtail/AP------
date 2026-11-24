@@ -1,0 +1,211 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3767770",
+              "denominator": "1000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "5109263",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "10027494",
+              "denominator": "1000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "O"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sOC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aB",
+        "refs": [
+          "A",
+          "B",
+          "O"
+        ],
+        "value": 26,
+        "label": "26",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aC",
+        "refs": [
+          "O",
+          "C",
+          "B"
+        ],
+        "value": 37,
+        "label": "37",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aX",
+        "refs": [
+          "O",
+          "A",
+          "C"
+        ],
+        "value": 27,
+        "label": "x",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "eR",
+        "count": 1,
+        "segments": [
+          "sOA",
+          "sOB",
+          "sOC"
+        ],
+        "color": "VIOLET"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 460
+  },
+  "caption": "O가 외심이므로 OA=OB=OC이다. 각 ABO=26°에서 각 AOB=180°−2·26°=128°이고, 각 OCB=37°에서 각 BOC=180°−2·37°=106°이다. 따라서 각 AOC=360°−128°−106°=126°이고, 이등변삼각형 AOC에서 x=(180°−126°)/2=27°이다. 따라서 답은 ①이다.",
+  "accessibilityDescription": "삼각형 ABC의 내부에 외심 O가 있고 OA, OB, OC가 그려져 있다. 각 ABO=26°, 각 OCB=37°, 각 OAC=x가 표시되어 있다.",
+  "newVisualInformation": [
+    "외심 O와 OA, OB, OC",
+    "각 ABO=26, 각 OCB=37, 각 OAC=x",
+    "같은 반지름 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>6. 아래 그림에서 점 $\\text{O}$가 $\\triangle \\text{ABC}$의 외심일 때, $\\angle x$의 크기는? [4점]</p><p><img src=\"assets/images/19_이수중_2학기_중간_중2_수학/q06.png\" /></p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

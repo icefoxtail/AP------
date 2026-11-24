@@ -857,7 +857,11 @@ window.questionBank = [
       "sourceRawSha256": "1EE67A6441C9FC1C9951072BF39D7062DA0B34DACB256E2D0056C025270305AE",
       "sourceIntakeEvidencePath": "archive/analysis/source-only-h2-1mid-20261011-b5/18_강남여고_1학기_중간_고2_확률과통계.evidence.json",
       "sourceIntakeEvidenceSha256": "9E10CCFBEF105B8B037DDE989AC596D3DD8FA92C34B058516A0E5EAA1D023D9D"
-    }
+    },
+    "solutionImage": "assets/images/18_강남여고_1학기_중간_고2_확률과통계/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 주사위를 던질 때 나오는 눈의 경우를 표로 나타낸 그림이다.",
+    "solutionImageCaption": "두 주사위의 눈 (a, b)를 가로세로로 놓은 6×6 표에서 합이 10 이상인 칸을 칠했다. (4, 6), (5, 5), (6, 4), (5, 6), (6, 5), (6, 6)의 6칸이고 전체는 36칸이다. 따라서 확률은 6/36=1/6이고 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -1019,7 +1023,11 @@ window.questionBank = [
       "sourceRawSha256": "1EE67A6441C9FC1C9951072BF39D7062DA0B34DACB256E2D0056C025270305AE",
       "sourceIntakeEvidencePath": "archive/analysis/source-only-h2-1mid-20261011-b5/18_강남여고_1학기_중간_고2_확률과통계.evidence.json",
       "sourceIntakeEvidenceSha256": "9E10CCFBEF105B8B037DDE989AC596D3DD8FA92C34B058516A0E5EAA1D023D9D"
-    }
+    },
+    "solutionImage": "assets/images/18_강남여고_1학기_중간_고2_확률과통계/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 가지마다 확률을 적어 사건이 일어나는 경우를 나타낸 나무그림이다.",
+    "solutionImageCaption": "제비를 다시 넣지 않으므로 수영이가 당첨을 뽑은 뒤에는 남은 19장 중 당첨이 4장이다. 수영이가 당첨일 확률은 5/20=1/4이고 그때 종찬이가 당첨일 확률은 4/19이다. 파란색으로 표시한 두 사람 모두 당첨인 경로의 확률은 1/4×4/19=1/19이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,

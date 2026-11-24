@@ -1,0 +1,219 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "outputType": "POINT",
+        "factRole": "GIVEN",
+        "inputs": [],
+        "args": {}
+      },
+      {
+        "id": "U",
+        "op": "NORMALIZATION_AXIS",
+        "outputType": "POINT",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "S1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "S2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "S3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "S4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [
+      "5",
+      "10"
+    ],
+    "y": [
+      "6"
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sLine",
+      "refs": [
+        "Q1",
+        "Q0"
+      ],
+      "emphasis": "BOLD"
+    }
+  ],
+  "displayPoints": [
+    "S1",
+    "S2",
+    "S3",
+    "S4",
+    "Q0",
+    "Q1"
+  ],
+  "coordinateLabels": [
+    "S1",
+    "S2",
+    "S3",
+    "S4"
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lEq",
+        "ownerSegment": "sLine",
+        "text": "x+3y=15",
+        "ownership": "NEAREST",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 420
+  },
+  "hiddenPointNames": [
+    "S1",
+    "S2",
+    "S3",
+    "S4",
+    "Q0",
+    "Q1"
+  ],
+  "caption": "직선 x+3y=15 위에서 x와 y가 모두 자연수인 점은 (12, 1), (9, 2), (6, 3), (3, 4)의 네 곳이다. y가 5 이상이면 x가 0 이하가 되어 자연수가 될 수 없다. 따라서 답은 ④이다.",
+  "accessibilityDescription": "좌표축과 눈금이 있는 평면에 아래로 기울어진 굵은 직선이 그려져 있고, 그 위에 네 개의 점이 표시되어 있다. 각 점 옆에 (12, 1), (9, 2), (6, 3), (3, 4)의 좌표가 적혀 있다.",
+  "newVisualInformation": [
+    "직선 x+3y=15 위의 네 점 (12,1), (9,2), (6,3), (3,4)가 좌표와 함께 표시된다.",
+    "직선이 x축과 y축을 지나는 두 끝점이 점으로 표시된다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>2. $x$, $y$가 자연수일 때, $x+3y=15$ 를 만족시키는 해의 개수는?[3.5점]</p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "1",
+          "1/2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-4",
+        "2"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "requiredPoints": [],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "-2",
+          "y": "0",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "0",
+          "y": "1",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "그래프가 x절편 -2와 y절편 1을 지난다. 기울기는 (1-0)/(0-(-2))=1/2이고 식은 y=x/2+1, 즉 x-2y+2=0이다. 따라서 b=-2, c=2이므로 bc=-4이다. 따라서 답은 ① -4이다.",
+  "accessibilityDescription": "좌표평면에 x절편 -2와 y절편 1을 지나는 직선이 그려져 있고, 두 절편의 좌표가 표시되어 있다.",
+  "newVisualInformation": [
+    "x절편 -2와 y절편 1을 지나는 직선",
+    "두 절편의 좌표"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>8. 일차방정식 $x+by+c=0$의 그래프가 오른쪽 그림과 같을 때, $bc$의 값은? (단, $b$, $c$는 상수) [4점]</p><p><img src=\"assets/images/19_왕운중_1학기_기말_중2_수학/q08.png\" /></p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

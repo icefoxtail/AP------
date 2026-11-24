@@ -1,0 +1,78 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "-6"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "1"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "0",
+        "y": "2"
+      },
+      {
+        "id": "R",
+        "x": "1/3",
+        "y": "0"
+      },
+      {
+        "id": "B",
+        "x": "1",
+        "y": "-4"
+      }
+    ],
+    "exactCoordinates": {
+      "A": [
+        "0",
+        "2"
+      ],
+      "R": [
+        "1/3",
+        "0"
+      ],
+      "B": [
+        "1",
+        "-4"
+      ]
+    }
+  },
+  "caption": "예: k=0이고 g(x)=f(x)-x를 직선으로 그렸다. g(0)=k+2=2>0, g(1)=k-4=-4<0이라 구간 양 끝 A(0,2), B(1,-4)에서 부호가 다르고 곡선이 x축을 R에서 지난다. 사잇값 정리로 근이 (0,1)에 보장되려면 k+2>0이고 k-4<0, 곧 -2<k<4이다. 이를 만족하는 정수 k는 -1, 0, 1, 2, 3의 5개이다. 따라서 답은 ⑤이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다항함수 $f(x)$가 $f(0)=k+2$, $f(1)=k-3$을 만족시킬 때, 주어진 조건만으로 방정식 $f(x)=x$가 열린구간 $(0,1)$에서 적어도 하나의 실근을 갖는다고 <strong>반드시 보장할 수 있는</strong> 정수 $k$의 개수를 구한 것은? [4.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "g(0)>0, g(1)<0인 예에서 양 끝의 부호가 달라 구간 안에서 x축을 지남을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "g(0)>0, g(1)<0인 예에서 연속함수가 구간 안에서 x축을 지나는 점 R을 보인다."
+  ],
+  "accessibilityDescription": "왼쪽 위의 점 A에서 내려가 가로축을 점 R에서 지나 오른쪽 아래의 점 B에 이르는 그래프이다."
+}

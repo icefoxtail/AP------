@@ -1,0 +1,90 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-12",
+          "1",
+          "1"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -5,
+      4
+    ],
+    "viewport": [
+      -5,
+      4,
+      -14,
+      10
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "-1/2",
+        "y": "-49/4"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "coordinateBand": {
+      "hide": [
+        "V"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "-4",
+          "y": "0",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "3",
+          "y": "0",
+          "coordinates": true
+        }
+      ],
+      "segments": [
+        {
+          "id": "AB",
+          "from": "A",
+          "to": "B"
+        }
+      ]
+    },
+    "axisScale": {
+      "x": "1",
+      "y": "1/3"
+    }
+  },
+  "caption": "근의 합과 거리 7로 A와 B를 정하고 중점의 가로좌표가 대칭축임을 확인한다. 두 근은 중간값으로 표시하되 꼭짓점의 세로좌표인 최솟값은 숨긴다.",
+  "accessibilityDescription": "근의 합과 거리 7로 A와 B를 정하고 중점의 가로좌표가 대칭축임을 확인한다. 두 근은 중간값으로 표시하되 꼭짓점의 세로좌표인 최솟값은 숨긴다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "16. 이차함수 $y = x^2 + x + a$의 그래프에서 $x$축과의 교점을 $\\mathrm{A}$, $\\mathrm{B}$라 하자. $\\overline{\\mathrm{AB}} = 7$일 때, 이 이차함수의 최솟값은? [5.0점]<br><br><img src=\"assets/images/16_경기은계중_1학기_기말_중3_수학/q16-problem-visual-v2.svg\" alt=\"위로 열린 포물선이 x축을 왼쪽에서 A, 오른쪽에서 B로 만난다. 두 점의 가운데보다 아래쪽에 꼭짓점이 놓인다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "independent",
+      "condition": "근차7과근합−1에서근−4,3;꼭짓점(−1/2,−49/4).",
+      "mappedTo": [
+        "graphPlan"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "근의 합과 거리7로 A와 B를 정하고 중점의 가로좌표가 대칭축임을 확인한다. 두 근은 중간값으로 표시하되 꼭짓점의 세로좌표인 최솟값은 숨긴다."
+  ]
+}

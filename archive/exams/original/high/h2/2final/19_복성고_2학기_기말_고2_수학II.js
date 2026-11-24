@@ -131,7 +131,12 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "wide": false,
     "smallBoardContinuityStatus": "PASS",
-    "solutionSha256": "68b624f8bc865cb142385186f9665f9e1f198a6ae3e0b46bd0d5cda5f2aae8eb"
+    "solutionSha256": "68b624f8bc865cb142385186f9665f9e1f198a6ae3e0b46bd0d5cda5f2aae8eb",
+    "solutionImage": "assets/images/19_복성고_2학기_기말_고2_수학II/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 가파르게 증가하는 삼차곡선과 그 위의 점 P(1, 10)이 표시되어 있다.",
+    "solutionImageCaption": "f(1)=10이므로 분자는 x³+5x−6=(x−1)(x²+x+6)으로 인수분해된다. 분모는 (x−1)(x+1)이므로 약분하면 극한은 (1+1+6)/(1+1)=4이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 94
   },
   {
     "id": 4,
@@ -550,7 +555,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "wide": false,
     "smallBoardContinuityStatus": "PASS",
-    "solutionSha256": "c56f767888527ed237faab3e89c2cd12bd43b304be7c0e0b514cdcdeebe5d910"
+    "solutionSha256": "c56f767888527ed237faab3e89c2cd12bd43b304be7c0e0b514cdcdeebe5d910",
+    "solutionImage": "assets/images/19_복성고_2학기_기말_고2_수학II/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 위로 볼록한 이차함수 그래프가 y축과 만나고, 오른쪽의 꼭짓점에서 최고점을 이룬다. 두 점에 이름과 좌표가 표시되어 있다.",
+    "solutionImageCaption": "부분적분으로 정리하면 f′(x)=6−3x이고, f(0)=3에서 f(x)=6x−3/2x²+3이다. 이 그래프는 x=2에서 최댓값 9를 가지므로 f(2)=9이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -594,7 +603,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "wide": false,
     "smallBoardContinuityStatus": "PASS",
-    "solutionSha256": "44425e5c89466ccf5e042e429a37bf5113122cca75f5e0b4ee9f6fc2c3a9dc9e"
+    "solutionSha256": "44425e5c89466ccf5e042e429a37bf5113122cca75f5e0b4ee9f6fc2c3a9dc9e",
+    "solutionImage": "assets/images/19_복성고_2학기_기말_고2_수학II/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 세로로 긴 삼차함수 그래프가 y축 위의 극점 M과 그 오른쪽 아래의 극점 m을 가진다. 두 극점이 곡선 위에 표시되어 있다.",
+    "solutionImageCaption": "F를 미분하면 f(x)=f(x)+xf′(x)-12x³+6x²이므로 xf′(x)=12x³-6x², f′(x)=12x²-6x이다. f(x)=4x³-3x²+C에 f(1)=3을 대입하면 C=2이다. 따라서 f(0)=2이고 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -640,7 +653,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "wide": false,
     "smallBoardContinuityStatus": "PASS",
-    "solutionSha256": "25f11be9b53ed244f4bed423b4fd929b5760f5c1acb44eaf668f1610eae2590f"
+    "solutionSha256": "25f11be9b53ed244f4bed423b4fd929b5760f5c1acb44eaf668f1610eae2590f",
+    "solutionImage": "assets/images/19_복성고_2학기_기말_고2_수학II/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축 r인 좌표평면에 0부터 6까지 위로 볼록한 삼차곡선이 그려져 있고, 봉우리의 좌표와 눈금이 표시되어 있다.",
+    "solutionImageCaption": "원기둥의 반지름을 r, 높이를 h라 하면 닮음으로 h=18-3r이다. 부피 V=πr²(18-3r)를 π로 나눈 값 18r²-3r³은 r=4에서 최대 96이다. 따라서 부피가 최대인 원기둥의 밑면의 반지름은 4이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -729,7 +746,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "wide": false,
     "smallBoardContinuityStatus": "PASS",
-    "solutionSha256": "15a96234c9913c3248390f21afce988eed3fc02114696b75f46ed29d01bcff2a"
+    "solutionSha256": "15a96234c9913c3248390f21afce988eed3fc02114696b75f46ed29d01bcff2a",
+    "solutionImage": "assets/images/19_복성고_2학기_기말_고2_수학II/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 원점을 지나고 기울기가 2인 직선이 그려져 있으며, 원점과 점 (1,2)가 표시되어 있다.",
+    "solutionImageCaption": "주어진 식에 y=0을 넣으면 f(0)=0이다. 식을 y에 대하여 미분하고 y=0을 넣으면 f'(x)=f'(0)=2이므로 f(x)=2x이다. 따라서 f(1)=2이고 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -823,7 +844,12 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "wide": false,
     "smallBoardContinuityStatus": "PASS",
-    "solutionSha256": "87ecd035d13e6a88cf4fe4fbbe413e3c52655e3a82b9fbb294e46d4eb0becd6d"
+    "solutionSha256": "87ecd035d13e6a88cf4fe4fbbe413e3c52655e3a82b9fbb294e46d4eb0becd6d",
+    "solutionImage": "assets/images/19_복성고_2학기_기말_고2_수학II/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 원점을 꼭짓점으로 하는 위로 열린 포물선, 0부터 1까지 곡선 아래에 색칠된 영역 S, 서로 대칭인 두 점 A와 B가 보인다.",
+    "solutionImageCaption": "예: f(x)=12x²라 하면 우함수이고 0부터 1까지의 정적분은 4이다. (x⁵−2x³)f(x)는 홀함수이므로 −1부터 1까지의 적분은 0이고, 상수항 부분은 4이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 94
   },
   {
     "id": 19,
@@ -911,7 +937,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "wide": false,
     "smallBoardContinuityStatus": "PASS",
-    "solutionSha256": "45016caec20aa0306ff1e362866847ccb399750d2e20df839b6365b72ee2ecf9"
+    "solutionSha256": "45016caec20aa0306ff1e362866847ccb399750d2e20df839b6365b72ee2ecf9",
+    "solutionImage": "assets/images/19_복성고_2학기_기말_고2_수학II/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축 t, 세로축 x인 좌표평면에 0부터 8까지 위로 볼록한 포물선이 그려져 있고, 꼭짓점의 좌표와 x축 눈금이 표시되어 있다.",
+    "solutionImageCaption": "높이는 x=24t-3t²이고 속도는 x'=24-6t이다. 24-6t=0에서 t=4이고 x(4)=48이므로 최고 높이는 4초 후 48 m이다. 지면에 닿을 때는 t=8이고 x'(8)=-24이므로 속도는 아래 방향으로 24 m/s이다. 따라서 답은 (1) 4초, 48 m, (2) 아래 방향으로 24 m/s이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -951,7 +981,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "wide": false,
     "smallBoardContinuityStatus": "PASS",
-    "solutionSha256": "20014171c4fc8528f1309e6593744e692ed4d2fbef26774411b2a3cc8cfd7413"
+    "solutionSha256": "20014171c4fc8528f1309e6593744e692ed4d2fbef26774411b2a3cc8cfd7413",
+    "solutionImage": "assets/images/19_복성고_2학기_기말_고2_수학II/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 도함수 포물선의 축은 x=−2이다. 증가 조건을 지키며 도함수를 가장 낮추면 꼭짓점이 x축에 닿는다. x=1에서의 구하는 높이는 표시하지 않는다.",
+    "solutionImageCaption": "도함수 포물선의 축은 x=−2이다. 증가 조건을 지키며 도함수를 가장 낮추면 꼭짓점이 x축에 닿는다. x=1에서의 구하는 높이는 표시하지 않는다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,

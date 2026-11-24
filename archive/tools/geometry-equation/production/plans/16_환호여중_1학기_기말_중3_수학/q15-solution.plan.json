@@ -1,0 +1,59 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "1",
+          "2",
+          "1"
+        ]
+      }
+    ],
+    "domain": [
+      "-3",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "-1",
+        "y": "0"
+      },
+      {
+        "id": "Y",
+        "x": "0",
+        "y": "1"
+      }
+    ],
+    "formula": "(x+1)^2",
+    "axisTickValues": {
+      "x": [
+        "-1"
+      ],
+      "y": [
+        "1"
+      ]
+    }
+  },
+  "caption": "원본처럼 위로 열린 포물선이므로 a>0이다. 꼭짓점은(−p,0)이고 원점 왼쪽에 있으므로 −p<0,즉 p>0이다. 이 보조 그래프 y=(x+1)²는 a=p=1로 정한 대표 예시이며 원문의 실제 수치를 뜻하지 않는다. 예시 꼭짓점(−1,0)이 보여 주는 왼쪽 위치와 위로 열림을 원래(−p,0)에 대응한다. 정답① a>0,p>0.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>15. 이차함수 $y=a(x+p)^2$의 그래프가 다음 그림과 같을 때, $a, p$의 부호는? [4점]</p><p><img src=\"assets/images/16_환호여중_1학기_기말_중3_수학/q15.png\" alt=\"아래로 볼록하고 꼭짓점이 x축 음의 부분에 접하는 이차함수 그래프\" class=\"question-image\" /></p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "PNG 직접 확인: 두 가지 위로 열리고 꼭짓점은 x축 음의 부분. 본문은 a,p의 부호만 지정하므로 구체 계수는 결정되지 않는다. 예시a=p=1은 방향과 부호만 보존한 보조 그림, 원본 대체나 실제값 추정이 아니다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "꼭짓점 x좌표−p의 음수와 p의 양수 부호 반전을 실제 좌표 예시와 연결"
+  ]
+}

@@ -582,7 +582,11 @@ window.questionBank = [
       "sourceRawSha256": "26D1545C7ECD7A3ADA4E93E124CE429C4A90E3A96BFD3D10BAF5C5AAB5B1B0A1",
       "sourceIntakeEvidencePath": "archive/analysis/source-only-h2-1mid-20261011-b5/18_금당고_1학기_중간_고2_확률과통계.evidence.json",
       "sourceIntakeEvidenceSha256": "ED9A20E7789CE4A1D22B53B7D32BD906030D543AE0BAD91EECF59BCBA40BA518"
-    }
+    },
+    "solutionImage": "assets/images/18_금당고_1학기_중간_고2_확률과통계/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 12개의 점을 두 개의 세로 막대가 세 구간으로 나누고 있고, 구간 아래에 X, Y, Z가 적혀 있다. 오른쪽에 조합을 구하는 식이 표시되어 있다.",
+    "solutionImageCaption": "X=x+2, Y=y+1, Z=z로 놓으면 X, Y, Z는 음이 아닌 정수이고 X+Y+Z=12이다. 12개의 별과 2개의 막대로 나타내면 14자리 중 막대가 들어갈 2자리를 고르는 경우이므로 91이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -1327,7 +1331,11 @@ window.questionBank = [
       "sourceRawSha256": "26D1545C7ECD7A3ADA4E93E124CE429C4A90E3A96BFD3D10BAF5C5AAB5B1B0A1",
       "sourceIntakeEvidencePath": "archive/analysis/source-only-h2-1mid-20261011-b5/18_금당고_1학기_중간_고2_확률과통계.evidence.json",
       "sourceIntakeEvidenceSha256": "ED9A20E7789CE4A1D22B53B7D32BD906030D543AE0BAD91EECF59BCBA40BA518"
-    }
+    },
+    "solutionImage": "assets/images/18_금당고_1학기_중간_고2_확률과통계/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 12개의 점을 세 개의 세로 막대가 네 구간으로 나누고 있고, 구간 아래에 u, v, w, t가 적혀 있다. 아래에 방정식과 조합식이 표시되어 있다.",
+    "solutionImageCaption": "빨강, 파랑, 노랑을 각각 r, b, y개 고르면 r, b, y는 1 이상이고 r+b+y≤15이다. u=r-1, v=b-1, w=y-1로 놓으면 u+v+w≤12이고, 남는 수 t=12-(u+v+w)를 더해 u+v+w+t=12로 바꿀 수 있다. 12개의 점을 4개의 칸으로 나누는 경우의 수는 15C3=455이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -1384,7 +1392,11 @@ window.questionBank = [
       "sourceRawSha256": "26D1545C7ECD7A3ADA4E93E124CE429C4A90E3A96BFD3D10BAF5C5AAB5B1B0A1",
       "sourceIntakeEvidencePath": "archive/analysis/source-only-h2-1mid-20261011-b5/18_금당고_1학기_중간_고2_확률과통계.evidence.json",
       "sourceIntakeEvidenceSha256": "ED9A20E7789CE4A1D22B53B7D32BD906030D543AE0BAD91EECF59BCBA40BA518"
-    }
+    },
+    "solutionImage": "assets/images/18_금당고_1학기_중간_고2_확률과통계/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 기울기 1인 직선의 일부가 그려져 있고, 그 위에 (1, 0), (2, 1), (3, 2) 세 점이 표시되어 있다.",
+    "solutionImageCaption": "세 점이 한 직선 위에 있으려면 c(a−1)=b(b−1)이어야 한다. 예를 들어 (a, b, c)=(3, 2, 1)이면 세 점 (3, 2), (2, 1), (1, 0)이 직선 y=x−1 위에 있다. b=1, 2, 3, 4인 경우를 세고 앞의 두 점이 같은 경우를 빼면 10+1+3+3=17이다. 따라서 답은 17이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,

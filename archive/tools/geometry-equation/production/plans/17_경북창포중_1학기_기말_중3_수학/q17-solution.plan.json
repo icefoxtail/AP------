@@ -1,0 +1,113 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "6",
+          "2",
+          "-1/2"
+        ],
+        "domain": [
+          "-3",
+          "7"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "axis",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "0"
+        ],
+        "domain": [
+          "-3",
+          "7"
+        ],
+        "color": "WARM",
+        "label": "y=0"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "2",
+          "y": "8",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "0",
+          "y": "6",
+          "coordinates": true
+        },
+        {
+          "id": "C",
+          "x": "-2",
+          "y": "0",
+          "coordinates": true
+        },
+        {
+          "id": "D",
+          "x": "6",
+          "y": "0",
+          "coordinates": true
+        }
+      ],
+      "segments": [
+        {
+          "id": "AB",
+          "from": "A",
+          "to": "B"
+        },
+        {
+          "id": "BC",
+          "from": "B",
+          "to": "C"
+        },
+        {
+          "id": "CD",
+          "from": "C",
+          "to": "D"
+        },
+        {
+          "id": "DA",
+          "from": "D",
+          "to": "A"
+        },
+        {
+          "id": "AC",
+          "from": "A",
+          "to": "C"
+        }
+      ]
+    }
+  },
+  "caption": "가로축의 두 점과 꼭짓점의 대칭 관계를 이용하고 사각형을 삼각형으로 나누어 넓이를 확인한다.",
+  "accessibilityDescription": "가로축의 두 점과 꼭짓점의 대칭 관계를 이용하고 사각형을 삼각형으로 나누어 넓이를 확인한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "17. 아래 그림은 이차함수 $y=ax^2+bx+c$의 그래프이다. 이 그래프의 꼭짓점을 $\\text{A}$라 하고, 포물선이 $y$축과 만나는 점을 $\\text{B}(0,6)$, $x$축과 만나는 두 점을 각각 $\\text{C}(-2,0), \\text{D}(6,0)$라고 하자. 사각형 $\\text{ABCD}$의 넓이가 36일 때, $abc$의 값은? [5.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "SVG직접확인. y=a(x+2)(x−6),절편6→a−1/2,b2,c6. A2,8, shoelace36과일치. abc−6 미표시.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "가로축의 두 점과 꼭짓점의 대칭 관계를 이용하고 사각형을 삼각형으로 나누어 넓이를 확인한다."
+  ]
+}

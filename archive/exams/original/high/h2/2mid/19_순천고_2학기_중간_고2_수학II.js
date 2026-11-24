@@ -431,7 +431,11 @@ window.questionBank = [
       "그래프"
     ],
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/19_순천고_2학기_중간_고2_수학II/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축 x, 세로축 y의 좌표평면에 a=0에서 시작해 여러 번 오르내린 곡선 f가 그려져 있다. 곡선은 x=1과 x=3에서 극대, x=2와 x=5에서 극소이고, 점 a, b, c와 두 끝점을 잇는 할선이 표시되어 있다.",
+    "solutionImageCaption": "두 끝점 a=(0,0), c=(8,9/4)를 잇는 할선의 기울기는 9/32이다. 이 기울기와 평행한 접선은 첫 상승 구간에서 2개, 둘째 상승 구간에서 2개, 마지막 상승 구간에서 1개이므로 m=5이다. 롤의 정리를 적용하는 [0,b]에서 수평 접선은 극대 2개와 극소 1개이므로 n=3이다. 따라서 m+n=8이고 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -763,6 +767,10 @@ window.questionBank = [
     "conditionKeys": [],
     "tags": [],
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/19_순천고_2학기_중간_고2_수학II/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축과 세로축 위에 오른쪽 위로 향하는 직선이 그려져 있고, 그 위의 두 점 A와 B가 표시되어 있다.",
+    "solutionImageCaption": "예: c=2, d=1일 때 그래프 y=2x+1은 기울기가 항상 2인 직선이다. 임의의 x에 대하여 [a,x]에서 평균값 정리를 쓰면 (f(x)-f(a))/(x-a)=f'(t)=c이므로 f(x)=cx+(f(a)-ca)이다. 따라서 f(x)=cx+d (d=f(a)-ca)이다.",
+    "solutionImageSize": "full"
   }
 ];

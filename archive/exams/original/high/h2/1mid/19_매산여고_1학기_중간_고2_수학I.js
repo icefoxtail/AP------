@@ -29,7 +29,11 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "먼저 $n$제곱근은 $x^n=a$를 만족하는 수라는 뜻입니다. 보기마다 실수 해의 개수를 구별합니다.<br>① $x^3=8$은 실수 해 $2$뿐 아니라 복소수 범위의 다른 두 해도 가지므로 ‘세제곱근이 하나뿐’이라는 말은 틀립니다.<br>② $(-3)^3=-27$이므로 $-27$의 실수 세제곱근은 $-3$입니다.<br>③ $2^4=16$이고 $(-2)^4=16$이므로 실수 네제곱근은 $2,-2$ 두 개입니다.<br>④ 홀수 $n$에 대해 $x^n$은 실수 범위에서 증가하므로 $x^n=5$의 실수 해는 $\\sqrt[n]{5}$ 한 개입니다.<br>⑤ 짝수 $n$에 대해 모든 실수 $x$에서 $x^n\\ge0$이므로 $x^n=-4$를 만족하는 실수는 없습니다.<br>따라서 옳은 것은 ④입니다.",
-    "provenance": "SOURCE_DRAFT_AUDIT_PENDING"
+    "provenance": "SOURCE_DRAFT_AUDIT_PENDING",
+    "solutionImage": "assets/images/19_매산여고_1학기_중간_고2_수학I/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 원점을 지나는 삼차 곡선 f와 이차 곡선 g가 있고, 가로선 y=1과 y=−1이 있다. y=1은 f와 g를 지나고 y=−1은 f만 지난다.",
+    "solutionImageCaption": "x의 n제곱=a의 실근은 y=xⁿ의 그래프와 가로선 y=a의 교점의 x좌표이다. 그림은 홀수 거듭제곱의 예 f(x)=x³(n=3)과 짝수 거듭제곱의 예 g(x)=x²(n=2)이고, 가로선은 양수 a와 음수 a의 예로 y=1, y=−1이다(문항의 5, −4와 같은 부호). 홀수 거듭제곱은 증가하여 양수 a, 음수 a 모두 한 점에서 만나므로 5의 n제곱근 중 실수는 한 개이다. 짝수 거듭제곱은 양수 a에서 두 점에서 만나지만 음수 a와는 만나지 않으므로 −4의 짝수 제곱근 중 실수는 없다. 따라서 옳은 것은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -238,7 +242,11 @@ window.questionBank = [
     "solution": "먼저 제곱근이 **실수**로 정의되는 조건부터 확인합니다.<br>분모 $\\sqrt{\\sin\\theta}$가 $0$이 아니어야 하므로 $\\sin\\theta>0$입니다.<br>또한 $\\sqrt{\\cos\\theta}$가 실수이고 $\\sin\\theta\\cos\\theta\\ne0$이므로 $\\cos\\theta>0$입니다.<br>따라서 $\\sin\\theta>0$, $\\cos\\theta>0$을 동시에 만족하는 **제1사분면**의 각만 가능합니다.<br>이때 $\\sqrt{\\sin\\theta}>0$이므로 제곱근의 몫을 하나로 합칠 수 있습니다.<br>$\\dfrac{\\sqrt{\\cos\\theta}}{\\sqrt{\\sin\\theta}}=\\sqrt{\\dfrac{\\cos\\theta}{\\sin\\theta}}$<br>주어진 범위 $-\\pi\\le\\theta\\le\\pi$에서 제1사분면인 보기는 $\\theta=\\pi/3$뿐입니다.<br>따라서 정답은 ①입니다.",
     "provenance": "AUDITED_REPAIR",
     "sourceMode": "AUDITED_REPAIR",
-    "sourcePage": 4
+    "sourcePage": 4,
+    "solutionImage": "assets/images/19_매산여고_1학기_중간_고2_수학I/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 원점을 중심으로 하는 단위원 위의 제1사분면 점에서 x축에 수선을 내리고 직각을 표시하였다. 빗변의 길이는 1, 수선의 길이는 √3/2, 밑변의 길이는 1/2이고 양의 x축과 반지름이 이루는 각 π/3이 표시되어 있다.",
+    "solutionImageCaption": "제곱근이 실수이고 분모가 0이 아니려면 sinθ>0, cosθ>0이어야 한다. 따라서 θ는 제1사분면의 각이고 −π≤θ≤π에서 보기 중 가능한 값은 π/3이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -286,7 +294,11 @@ window.questionBank = [
     "choices": [],
     "answer": "-7",
     "solution": "로그함수 $y=\\log_a x$의 정의역·치역·증감·지나는 점·점근선을 차례로 확인합니다.<br>**㉠ 정의역:** 로그의 진수는 $x>0$이어야 하므로 양의 실수 전체, 보기 ⑥입니다.<br>**㉡ 치역:** $x$가 양수 범위에서 변하면 로그값은 모든 실숫값을 가질 수 있으므로 보기 ⑤입니다.<br>**㉢ $a>1$일 때:** $x$가 커질수록 $y$도 커지는 증가함수이므로 보기 ⑦입니다.<br>**㉣ $0<a<1$일 때:** $x$가 커질수록 $y$가 작아지는 감소함수이므로 보기 ⑧입니다.<br>**㉤ 지나는 점:** $\\log_a1=0$이므로 $(1,0)$, 보기 ③입니다.<br>**㉥ 점근선:** $x$는 $0$보다 커야 하고 그래프는 $x=0$인 $y$축에 가까워지므로 보기 ⑩입니다.<br>따라서 번호를 문제에서 정한 순서와 부호대로 계산하면<br>$6-5+7-8+3-10$<br>$=1+7-8+3-10$<br>$=8-8+3-10$<br>$=0+3-10=-7$입니다.",
-    "provenance": "SOURCE_DRAFT_AUDIT_PENDING"
+    "provenance": "SOURCE_DRAFT_AUDIT_PENDING",
+    "solutionImage": "assets/images/19_매산여고_1학기_중간_고2_수학I/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 증가 로그곡선과 주황 감소 로그곡선이 y축에 가까워지며 그려져 있다. 두 곡선이 함께 지나는 점 P(1,0)가 표시되어 있다.",
+    "solutionImageCaption": "a가 1보다 큰 로그곡선은 증가하고, 0보다 크고 1보다 작은 밑의 로그곡선은 감소한다. 두 곡선 모두 (1,0)을 지나고 y축이 점근선이다. 보기 번호를 차례로 계산하면 6−5+7−8+3−10=−7이다. 따라서 답은 −7이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -304,7 +316,11 @@ window.questionBank = [
     "choices": [],
     "answer": "(1) $\\log_2 13<x<8$; (2) $x\\ge4$; (3) 22",
     "solution": "**(1) (가)의 해:** 로그의 진수는 양수이므로 $2^x-13>0$, 즉 $2^x>13$이 먼저 필요합니다.<br>밑 $3>1$인 로그함수는 증가하므로<br>$\\log_3(2^x-13)<5$는 $2^x-13<3^5=243$과 같습니다.<br>진수 조건까지 합치면 $0<2^x-13<243$이므로 $13<2^x<256=2^8$입니다.<br>밑 $2>1$인 지수함수도 증가하므로 $\\log_2 13<x<8$입니다.<br>**(2) (나)의 해:** 두 로그의 진수가 모두 양수여야 하므로 $x>0$, $x-2>0$에서 $x>2$입니다.<br>이 범위에서 $\\log_2x+\\log_2(x-2)=\\log_2[x(x-2)]$이므로<br>$\\log_2[x(x-2)]\\ge3=\\log_2 8$입니다.<br>밑 $2>1$이므로 $x(x-2)\\ge8$, 즉 $x^2-2x-8\\ge0$입니다.<br>$(x-4)(x+2)\\ge0$의 해는 $x\\le-2$ 또는 $x\\ge4$이지만, 진수 조건 $x>2$를 함께 만족하는 것은 $x\\ge4$뿐입니다.<br>**(3) 공통 정수의 합:** 두 해를 겹치면 $\\max(4,\\log_2 13)\\le x<8$입니다. $2^3=8<13<16=2^4$이므로 $3<\\log_2 13<4$이고, 따라서 $4\\le x<8$입니다.<br>정수 $x$는 $4,5,6,7$ 네 개이며 합은 $4+5+6+7=22$입니다.",
-    "provenance": "SOURCE_DRAFT_AUDIT_PENDING"
+    "provenance": "SOURCE_DRAFT_AUDIT_PENDING",
+    "solutionImage": "assets/images/19_매산여고_1학기_중간_고2_수학I/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 같은 수직선 위에 세 줄이 있다. 첫 줄은 약 3.7과 8 사이의 열린 구간, 둘째 줄은 4 이상의 반직선, 셋째 줄은 4 이상 8 미만의 구간이며 정수 점이 표시되어 있다.",
+    "solutionImageCaption": "(1) 가: 13<2ˣ<256이므로 log₂13<x<8이고 log₂13은 약 3.70이다. (2) 나: x>2에서 x(x−2)≥8이므로 x≥4이다. (3) 수직선에서 두 해의 공통 범위는 4≤x<8이고 이 범위의 정수는 4, 5, 6, 7이므로 합은 22이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,

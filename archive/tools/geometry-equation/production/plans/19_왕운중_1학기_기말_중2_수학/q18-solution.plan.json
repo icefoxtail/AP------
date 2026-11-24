@@ -1,0 +1,84 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -4,
+      4,
+      -5,
+      5
+    ],
+    "curves": [
+      {
+        "id": "g1",
+        "kind": "LINE",
+        "coefficients": [
+          "-2",
+          "-3"
+        ],
+        "domain": [
+          "-2",
+          "1"
+        ],
+        "color": "BLUE",
+        "label": "y=(a-b)x+ab"
+      },
+      {
+        "id": "g2",
+        "kind": "LINE",
+        "coefficients": [
+          "2",
+          "-1"
+        ],
+        "domain": [
+          "-2",
+          "3"
+        ],
+        "color": "WARM",
+        "label": "y=ax+b"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "quadrants": [
+        {
+          "id": "q1",
+          "quadrant": 1,
+          "label": "제1사분면"
+        },
+        {
+          "id": "q2",
+          "quadrant": 2,
+          "label": "제2사분면"
+        },
+        {
+          "id": "q3",
+          "quadrant": 3,
+          "label": "제3사분면"
+        },
+        {
+          "id": "q4",
+          "quadrant": 4,
+          "label": "제4사분면"
+        }
+      ]
+    }
+  },
+  "caption": "주어진 그래프에서 기울기 a-b는 0보다 작고 y절편 ab도 0보다 작다. 따라서 a는 b보다 작고 a와 b는 서로 다른 부호이므로 a는 음수, b는 양수이다. 그러면 y=ax+b는 기울기가 음수이고 y절편이 양수이므로 제1,2,4사분면을 지나고 제3사분면은 지나지 않는다. 따라서 답은 ③이다.",
+  "accessibilityDescription": "두 직선과 제1사분면부터 제4사분면까지의 이름이 표시되어 있다. 한 직선은 기울기와 y절편이 모두 음수이고, 다른 직선은 기울기가 음수이며 y절편이 양수이다.",
+  "newVisualInformation": [
+    "기울기와 y절편이 모두 음수인 직선 y=(a-b)x+ab",
+    "기울기가 음수이고 y절편이 양수인 직선 y=ax+b",
+    "네 사분면의 이름"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>18. 일차함수 $y=(a-b)x+ab$의 그래프가 오른쪽 그림과 같을 때, 일차함수 $y=ax+b$의 그래프가 지나지 않는 사분면은? (단, $a$, $b$는 상수) [5점]</p><p><img src=\"assets/images/19_왕운중_1학기_기말_중2_수학/q18.png\" /></p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

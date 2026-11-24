@@ -1,0 +1,108 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-6",
+          "-3"
+        ]
+      },
+      {
+        "coefficients": [
+          "0",
+          "6",
+          "3"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "-2",
+        "y": "0"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-3",
+        "0"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      -3,
+      0
+    ],
+    "viewport": [
+      -3,
+      0,
+      -10,
+      1
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-2",
+        "y": "0"
+      },
+      {
+        "id": "B",
+        "x": "-1",
+        "y": "-3"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "A",
+        "B"
+      ]
+    },
+    "axisTickValues": {
+      "x": [
+        "-3",
+        "-2"
+      ],
+      "y": []
+    },
+    "regions": [
+      {
+        "id": "L",
+        "upper": "axis",
+        "lower": "f",
+        "from": "-3",
+        "to": "-2",
+        "label": "L"
+      },
+      {
+        "id": "R",
+        "upper": "axis",
+        "lower": "f",
+        "from": "-2",
+        "to": "0",
+        "label": "R"
+      }
+    ]
+  },
+  "caption": "절댓값 안의 부호가 바뀌는 지점에서 두 적분 구간을 나누며 두 영역 모두 축 아래에 놓인다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)=3x|x+2|$일 때, $\\displaystyle\\int_{-3}^0 f(x),dx$의 값은? [4.4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "분기−2,각 부호적분−4+−4. 최종−8과넓이합은숨김.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "분기−2,각 부호적분−4+−4. 최종−8과넓이합은숨김."
+  ]
+}

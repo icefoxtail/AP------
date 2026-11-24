@@ -1,0 +1,312 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P1",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "45"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P2",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "135"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P3",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "225"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P4",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "315"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q1",
+        "op": "MIDPOINT",
+        "inputs": [
+          "P1",
+          "P2"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q2",
+        "op": "MIDPOINT",
+        "inputs": [
+          "P2",
+          "P3"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q3",
+        "op": "MIDPOINT",
+        "inputs": [
+          "P3",
+          "P4"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q4",
+        "op": "MIDPOINT",
+        "inputs": [
+          "P4",
+          "P1"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [
+    "k"
+  ],
+  "displayPoints": [
+    "O",
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "Q1",
+    "Q2",
+    "Q3",
+    "Q4"
+  ],
+  "displaySegments": [
+    {
+      "id": "sP1P2",
+      "refs": [
+        "P1",
+        "P2"
+      ]
+    },
+    {
+      "id": "sP2P3",
+      "refs": [
+        "P2",
+        "P3"
+      ]
+    },
+    {
+      "id": "sP3P4",
+      "refs": [
+        "P3",
+        "P4"
+      ]
+    },
+    {
+      "id": "sP4P1",
+      "refs": [
+        "P4",
+        "P1"
+      ]
+    },
+    {
+      "id": "sQ1Q2",
+      "refs": [
+        "Q1",
+        "Q2"
+      ]
+    },
+    {
+      "id": "sQ2Q3",
+      "refs": [
+        "Q2",
+        "Q3"
+      ]
+    },
+    {
+      "id": "sQ3Q4",
+      "refs": [
+        "Q3",
+        "Q4"
+      ]
+    },
+    {
+      "id": "sQ4Q1",
+      "refs": [
+        "Q4",
+        "Q1"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "rot90",
+        "circle": "k",
+        "center": "O",
+        "from": "P1",
+        "to": "P2",
+        "side": "MINOR",
+        "label": "90",
+        "labelKind": "DEGREE",
+        "color": "BLUE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 440,
+    "height": 440
+  },
+  "hiddenPointNames": [
+    "O",
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "Q1",
+    "Q2",
+    "Q3",
+    "Q4"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "두 정사각형과 원이 만드는 영역은 큰 정사각형 안쪽의 네 삼각형과 가운데 마름모, 원과 큰 정사각형 사이의 네 활꼴을 합해 9개이다. 9가지 색을 모두 한 번씩 쓰는 배치는 9!가지이고, 90도씩 회전한 네 배치가 같은 문양이 된다. 모든 색이 달라 90도, 180도, 270도 회전이 색 배치를 그대로 두지 않으므로 9!을 4로 나눈다. 따라서 답은 ①이다.",
+  "accessibilityDescription": "원 안에 정사각형이 내접하고, 그 정사각형의 각 변의 중점을 이은 마름모가 있으며, 원 위의 한 사분원에 90도 호가 표시되어 있다.",
+  "newVisualInformation": [
+    "원과 정사각형, 안쪽 마름모를 겹쳐 9개 영역 구분",
+    "90도 회전을 나타내는 호 표시"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "7. 그림과 같은 서로 내접하는 관계에 있는 원과 2개의 정사각형 모양으로 문양을 만들어 서로 다른 9가지의 색을 모두 칠하여 만들 수 있는 회전하여 겹치는 문양은 같은 것으로 볼 때, 구별할 수 있는 문양을 모두 몇 개인가? [3.9점]\n<img src=\"assets/images/19_복성고_2학기_중간_고2_확률과통계/q07.png\" alt=\"19_복성고_2학기_중간_고2_확률과통계 Q7\" />",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

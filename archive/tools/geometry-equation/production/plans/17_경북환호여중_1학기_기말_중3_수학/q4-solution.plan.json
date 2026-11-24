@@ -1,0 +1,82 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -3,
+      3,
+      -5,
+      5
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ],
+        "label": "y=x^2"
+      },
+      {
+        "id": "g",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "2"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ],
+        "label": "y=2x^2"
+      },
+      {
+        "id": "h",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "-1"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ],
+        "label": "y=-x^2"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "1"
+      ],
+      "y": []
+    }
+  },
+  "caption": "a=1,2인 대표 그래프로 폭을 비교하고 y=−x²로 x축 대칭을 확인한다.",
+  "accessibilityDescription": "a=1,2인 대표 그래프로 폭을 비교하고 y=−x²로 x축 대칭을 확인한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "4. 다음 <보기> 중에서 이차함수 $y=ax^2\\;(a>0)$의 그래프에 대한 설명으로 옳은 것을 모두 고른 것은? [4.0점]\n\n<table class=\"exam-table\"><tr><td><보기><br>㉠ 꼭짓점은 $(0, 0)$이다.<br>㉡ 직선 $y=0$을 축으로 한다.<br>㉢ $y=-ax^2$의 그래프와 $x$축에 서로 대칭이다.<br>㉣ $a$의 절댓값이 클수록 그래프의 폭이 넓어진다.<br>㉤ 아래로 볼록한 포물선이다.<br>㉥ $x<0$일 때, $x$의 값이 증가하면 $y$의 값도 증가한다.</td></tr></table>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "independent",
+      "condition": "a>0이면 원점 꼭짓점·축x=0, x축 반전, |a|가 크면 폭이 좁고 왼쪽에서 감소한다. ㉠㉢㉤이 맞아①.",
+      "mappedTo": [
+        "graphPlan"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "a=1,2인 대표 그래프로 폭을 비교하고 y=−x²로 x축 대칭을 확인한다."
+  ]
+}

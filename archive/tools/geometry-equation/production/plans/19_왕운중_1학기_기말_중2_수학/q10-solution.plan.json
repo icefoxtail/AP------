@@ -1,0 +1,64 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "1/2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "f",
+    "formula": "x/2+2",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-4",
+        "y": "0"
+      },
+      {
+        "id": "B",
+        "x": "0",
+        "y": "2"
+      },
+      {
+        "id": "P",
+        "x": "4",
+        "y": "4"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "domain": [
+      -5,
+      5
+    ],
+    "viewport": [
+      -5,
+      5,
+      -1,
+      5
+    ]
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "그래프가 x축과 만나는 점은 (-4, 0), y축과 만나는 점은 (0, 2)이고, 점 (4, 4)도 지난다. 기울기는 1/2이고 식은 y=1/2x+2이므로 y절편은 2이다. 따라서 답은 ③이다.",
+  "accessibilityDescription": "좌표평면에 y축의 2와 x축의 -4를 지나는 오르막 직선이 있고, 두 절편 A, B와 점 P가 표시되어 있다.",
+  "newVisualInformation": [
+    "직선이 두 절편 A, B와 점 P를 지나며 y절편이 2임을 보여 준다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>10. 일차함수의 그래프가 오른쪽 그림과 같을 때, 다음 중 옳은 것은? [4점]</p><p><img src=\"assets/images/19_왕운중_1학기_기말_중2_수학/q10.png\" /></p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
