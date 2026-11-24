@@ -362,10 +362,10 @@ window.questionBank = [
       "조건해석"
     ],
     "wide": false,
-    "solutionImage": "assets/images/25_순천여고_1학기_중간_고2_대수/q10-solution.svg",
-    "solutionImageAlt": "로그함수 y=2log(x+1)+1의 그래프가 점 (0,1)을 지나고 수직점근선 x=−1을 가지는 모습을 그린 그림. 그래프가 제4사분면을 지나지 않아 옳은 명제가 ㄱ, ㄷ임을 보여준다.",
-    "solutionImageCaption": "log_statements",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/25_순천여고_1학기_중간_고2_대수/q10-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 로그곡선이 x=-1에 수직점근선을 가지며 오른쪽 위로 증가하고, 점 (0, 1)을 지난다. 그래프는 제1, 2, 3사분면을 지나고 제4사분면에는 들어가지 않는다.",
+    "solutionImageCaption": "x=0을 대입하면 함숫값이 1이므로 그래프는 점 (0, 1)을 지나고, 진수 조건 x+1>0에서 점근선은 x=-1이다. 그래프는 제4사분면을 지나지 않는다. 정의역이 x≠-1인 로그 (x+1)²와는 정의역이 달라 ㄹ은 옳지 않으므로 옳은 것은 ㄱ, ㄷ이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "medium",
     "solutionImageStatus": "asset_verified",
     "content": "함수 $y=2\\log(x+1)+1$에 대한 설명으로 옳은 것만을 <보기>\\n에서 있는대로 모두 고른 것은? [4점]\\n<보기>\\nㄱ. 그래프는 점 $(0, 1)$을 지난다.\\nㄴ. 그래프의 점근선은 직선 $y=1$이다.\\nㄷ. 그래프는 제 $4$사분면을 지나지 않는다.\\nㄹ. 그래프는 함수 $y=\\log(x+1)^2$를 $y$축의 방향으로 $1$만큼\\n    평행이동 한 것이다.",
     "choices": [

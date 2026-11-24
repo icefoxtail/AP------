@@ -1,0 +1,121 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "kind": "REGULAR_POLYHEDRON",
+      "faces": 4,
+      "side": 4,
+      "names": "ABCD",
+      "points": [
+        {
+          "id": "M",
+          "at": {
+            "midpoint": [
+              "C",
+              "D"
+            ]
+          }
+        },
+        {
+          "id": "N",
+          "at": {
+            "midpoint": [
+              "A",
+              "B"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "A",
+      "to": "M",
+      "style": "AUTO",
+      "role": "ACCENT"
+    },
+    {
+      "from": "B",
+      "to": "M",
+      "style": "AUTO",
+      "role": "ACCENT"
+    },
+    {
+      "from": "C",
+      "to": "N",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "M",
+      "to": "N",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "N",
+      "to": "A",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "dims": [
+    {
+      "from": "C",
+      "to": "N",
+      "label": "2\\sqrt{3}"
+    },
+    {
+      "from": "M",
+      "to": "N",
+      "label": "2\\sqrt{2}"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "N",
+        "refs": [
+          "C",
+          "A"
+        ]
+      },
+      {
+        "at": "N",
+        "refs": [
+          "M",
+          "A"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "refs": [
+          "C",
+          "N",
+          "M"
+        ],
+        "arcs": 2,
+        "label": "\\phi"
+      }
+    ]
+  },
+  "solidCaption": {
+    "text": "정사면체와 평면 ABM"
+  },
+  "caption": "정사면체 ABCD에서 M은 CD의 중점, N은 AB의 중점이다. AB에 수직인 단면에서 NC와 NM이 이루는 각 φ가 두 평면 ABC와 ABM이 이루는 이면각이다. CN=2√3, MN=2√2에서 cosφ=(4√3/3)/(2√2)=√6/3이고 삼각형 ABC의 넓이는 4√3이므로 정사영의 넓이는 4√3×√6/3=4√2이다. 따라서 답은 ③이다.",
+  "accessibilityDescription": "정사면체 ABCD에서 CD의 중점 M과 AB의 중점 N이 잡혀 있고 AM, BM, CN, MN이 그려져 있다. N에 AB와 NC, AB와 NM이 이루는 두 직각 표시와 각 φ가 있고, CN 옆에 2√3, MN 옆에 2√2가 적혀 있다.",
+  "newVisualInformation": [
+    "M은 CD의 중점, N은 AB의 중점",
+    "CN=2√3, MN=2√2, 이면각 φ",
+    "삼각형 ABC의 넓이 4√3과 정사영의 넓이 4√2"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림과 같이 한 모서리의 길이가 $4$인 정사면체 $ABCD$에서 모서리 $CD$의 중점을 $M$이라고 할 때, 삼각형 $ABC$의 평면 $ABM$ 위로의 정사영의 넓이를 구하면? [4.6점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
