@@ -1,0 +1,130 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "ta-32aa3017bc78-b86759d4",
+  "requestSha256": "d8022ddd7c9f3057a7ca082418576af713c04ac093868f1c8227a32de6f1c0b9",
+  "examUid": "비상_대수_지수함수와로그함수_익힘책_고2",
+  "sourceArchiveFile": "textbooks/비상교육_대수/비상_대수_지수함수와로그함수_익힘책_고2/비상_대수_지수함수와로그함수_익힘책_고2.js",
+  "sourceBlobSha1": "761f0e530716fc758f23ae3e1ff20dbed43b7e01",
+  "sourceRawSha256": "7a1419cdbed09428ffbd0a7cc9bfdcbf61974853961727abb9180c45211f4b4e",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "2026-11-24 TPL 덧붙이기(관제 지시): 해설 채우기 작업자(claude-sonnet) 단일 모델 판정, TPL 칸에 초안 등급 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "local",
+      "commit": "0000000000000000000000000000000000000000",
+      "file": "sol-fill-a.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/ta-32aa3017bc78-b86759d4.type-ledger.json",
+        "sha256": "df6d15c9a9a8ed145e216a4c4fc275ba04fa8a92991dfcb03b04959daf5943c5"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 0,
+    "content": 1,
+    "stale": 0
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_cd858313c7235e589a45deb94309eee21e4baaa4960f323bda3dc4558750d74b",
+      "sourceArchiveFile": "textbooks/비상교육_대수/비상_대수_지수함수와로그함수_익힘책_고2/비상_대수_지수함수와로그함수_익힘책_고2.js",
+      "sourceOrdinal": 18,
+      "problemTypeKey": "PT_H22A_02_EXP_EQUATION",
+      "templateKey": "TPL_H22A_02_EXP_EQUATION_081",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "draft_single_model"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-32aa3017bc78-48d64a10",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "지수방정식 4^x=1/32의 밑을 통일해 a를 구하고 로그부등식의 해를 구해 b를 얻은 뒤 a+b를 계산한다.",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "대수",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "89ea05cd8dc6ffedb7f99d2b090d10e87b30e083c5b07e998219d90da2c856b2",
+        "judgedContentFingerprint": "322795c5b2b24ebd92775e60c65827232ee2c996edc9aaf78a24c27accf2d52d",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "7d19d4ef05be508139840a771f5585ffa40e4c8c2dfa1fc42f7158229ad93851",
+        "resultSource": {
+          "branch": "data/type-judgment-u-20261122",
+          "commit": "4587587b2a3c12c4453f3c57220b754ec7e50e85",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-32aa3017bc78-48d64a10.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      },
+      "templateApproval": {
+        "schemaVersion": "archive-template-append-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "ta-32aa3017bc78-b86759d4",
+        "judge": "claude-sonnet",
+        "rationale": "4^x=1/32를 밑 2로 통일해 지수를 비교한다",
+        "grade": "draft_single_model",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "대수",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "1e45261e27240beb1c69155eacf73244f8e16ec068fb88d19f3bf74529902054",
+        "judgedContentFingerprint": "322795c5b2b24ebd92775e60c65827232ee2c996edc9aaf78a24c27accf2d52d",
+        "rowBinding": "content",
+        "textBindingFingerprint": "7d19d4ef05be508139840a771f5585ffa40e4c8c2dfa1fc42f7158229ad93851",
+        "resultSource": {
+          "branch": "local",
+          "commit": "0000000000000000000000000000000000000000",
+          "file": "sol-fill-a.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/ta-32aa3017bc78-b86759d4.json",
+        "priorTemplate": {
+          "templateKey": "",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 29
+}

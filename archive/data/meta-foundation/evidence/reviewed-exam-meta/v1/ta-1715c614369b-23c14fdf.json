@@ -1,0 +1,206 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "ta-1715c614369b-23c14fdf",
+  "requestSha256": "4abc80c09174048378399fc518dafd8092dc5b750d7d7628fc7cb01b735b15e9",
+  "examUid": "비상_대수_삼각함수_익힘책_고2",
+  "sourceArchiveFile": "textbooks/비상교육_대수/비상_대수_삼각함수_익힘책_고2/비상_대수_삼각함수_익힘책_고2.js",
+  "sourceBlobSha1": "c6181fc36112805d5a736324cb9123a420f04a06",
+  "sourceRawSha256": "725c72fa2c761346f9b36cd82a331467e502507350c9485c0510c28729875b59",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "2026-11-24 TPL 덧붙이기(관제 지시): 해설 채우기 작업자(claude-sonnet) 단일 모델 판정, TPL 칸에 초안 등급 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "local",
+      "commit": "0000000000000000000000000000000000000000",
+      "file": "sol-fill-a.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/ta-1715c614369b-23c14fdf.type-ledger.json",
+        "sha256": "2e5328d6cf4e01c2a6f857a744b0a45c78baa4da1519d2ac4da63046eb3c9782"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 2,
+  "registryChanges": [],
+  "typeApprovals": 2,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 0,
+    "content": 2,
+    "stale": 0
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_43278d0ef76e1e71a35706a5caf8ad751465df3b401a3c7964d322cafc983e7c",
+      "sourceArchiveFile": "textbooks/비상교육_대수/비상_대수_삼각함수_익힘책_고2/비상_대수_삼각함수_익힘책_고2.js",
+      "sourceOrdinal": 11,
+      "problemTypeKey": "PT_H22A_04_TRIG_EQUATION",
+      "templateKey": "TPL_H22A_04_TRIG_EQUATION_102",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "draft_single_model"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-1715c614369b-f938aa5d",
+        "judge": "dots",
+        "rationale": "sin(πx/2.7)≥1/2. 한 주기 안에서 π/6≤πx/2.7≤5π/6.",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "대수",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "56e4a4988c231d6aebf41e6114cbcae10fbb9af27f06725c93e3ab3ce6438ac4",
+        "judgedContentFingerprint": "bb41e1e58d3029fd3ee2a98d1344ffbdfc31e0e3244e798b27ba515ca0bf76d9",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "5618287ea4130ec07be4f86f14f77cc7df2c8020446739dc6d98984cad384d9c",
+        "resultSource": {
+          "branch": "data/type-judgment-t-20261116",
+          "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_대수.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-1715c614369b-f938aa5d.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      },
+      "templateApproval": {
+        "schemaVersion": "archive-template-append-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "ta-1715c614369b-23c14fdf",
+        "judge": "claude-sonnet",
+        "rationale": "sin t ≥ 1/2를 t의 범위 0≤t≤2π에서 풀어 x의 범위로 되돌린다",
+        "grade": "draft_single_model",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "대수",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "bb0f0fd545bb2307fe1cbf45e46852bd9200818622eaa1a372f9324bb884ab92",
+        "judgedContentFingerprint": "bb41e1e58d3029fd3ee2a98d1344ffbdfc31e0e3244e798b27ba515ca0bf76d9",
+        "rowBinding": "content",
+        "textBindingFingerprint": "5618287ea4130ec07be4f86f14f77cc7df2c8020446739dc6d98984cad384d9c",
+        "resultSource": {
+          "branch": "local",
+          "commit": "0000000000000000000000000000000000000000",
+          "file": "sol-fill-a.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/ta-1715c614369b-23c14fdf.json",
+        "priorTemplate": {
+          "templateKey": "",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_d52caf375451b879fa6790de377673172bd367d78edb0df61267f4fbd222e5dd",
+      "sourceArchiveFile": "textbooks/비상교육_대수/비상_대수_삼각함수_익힘책_고2/비상_대수_삼각함수_익힘책_고2.js",
+      "sourceOrdinal": 14,
+      "problemTypeKey": "PT_H22A_04_TRIG_EQUATION",
+      "templateKey": "TPL_H22A_04_TRIG_EQUATION_102",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "draft_single_model"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-1715c614369b-f938aa5d",
+        "judge": "dots",
+        "rationale": "첫 부등식은 (2cos x-1)(cos x+1)>0 즉 cos x>1/2. sin x<cos x의 해와 교집합을 취한다.",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "대수",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "7ec404c64dd4f435626f377cdf55ca146f90f08da28b7e887a829450b8afa20f",
+        "judgedContentFingerprint": "2abecf7be43f633c511eea22ceb62f417d4e53a78571d596c939d4f2fffb74eb",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "39855daa5ac5256f0936c5efbc5c37bedb29bd3afa25b60869eaeee6e171063d",
+        "resultSource": {
+          "branch": "data/type-judgment-t-20261116",
+          "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_대수.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-1715c614369b-f938aa5d.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      },
+      "templateApproval": {
+        "schemaVersion": "archive-template-append-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "ta-1715c614369b-23c14fdf",
+        "judge": "claude-sonnet",
+        "rationale": "cos x에 대한 이차부등식과 sin x<cos x의 해 구간을 0<x<2π에서 구해 공통부분을 잡는다",
+        "grade": "draft_single_model",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "대수",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "8d471fec0bbf2b9de49f43c1355a9d7218306f1027e89d8ccd6cd4f94949d0bd",
+        "judgedContentFingerprint": "2abecf7be43f633c511eea22ceb62f417d4e53a78571d596c939d4f2fffb74eb",
+        "rowBinding": "content",
+        "textBindingFingerprint": "39855daa5ac5256f0936c5efbc5c37bedb29bd3afa25b60869eaeee6e171063d",
+        "resultSource": {
+          "branch": "local",
+          "commit": "0000000000000000000000000000000000000000",
+          "file": "sol-fill-a.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/ta-1715c614369b-23c14fdf.json",
+        "priorTemplate": {
+          "templateKey": "",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 2,
+  "expectedQuestionCount": 28
+}

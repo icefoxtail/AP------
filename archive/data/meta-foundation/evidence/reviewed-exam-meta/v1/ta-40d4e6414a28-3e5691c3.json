@@ -1,0 +1,130 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "ta-40d4e6414a28-3e5691c3",
+  "requestSha256": "27c1db1f6b4b2a9e03c2b3f736e015d15acf624c8911360ca2375955e039de11",
+  "examUid": "동아_공통수학1_다항식_대단원평가_고1",
+  "sourceArchiveFile": "textbooks/동아출판_공통수학1/동아_공통수학1_다항식_대단원평가_고1/동아_공통수학1_다항식_대단원평가_고1.js",
+  "sourceBlobSha1": "d341239506bc13ea98707e930e40bc3d58856687",
+  "sourceRawSha256": "0fcc5c0433ba32d5989ecc0e919854af8bb748c2de1043129213c398ba8729a7",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "2026-11-24 TPL 덧붙이기(관제 지시): 해설 채우기 작업자(claude-sonnet) 단일 모델 판정, TPL 칸에 초안 등급 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "local",
+      "commit": "0000000000000000000000000000000000000000",
+      "file": "sol-fill-b.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/ta-40d4e6414a28-3e5691c3.type-ledger.json",
+        "sha256": "88f9f5ca62722727d87da71ba4f3909d1b47534a60c5674aa1e30711ec8ac99f"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 0,
+    "content": 1,
+    "stale": 0
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_44a110beffcdc22010ed6c96ca0e6b5a03cfee0b2bf7cf3ce0fb1c8cd02fd875",
+      "sourceArchiveFile": "textbooks/동아출판_공통수학1/동아_공통수학1_다항식_대단원평가_고1/동아_공통수학1_다항식_대단원평가_고1.js",
+      "sourceOrdinal": 10,
+      "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+      "templateKey": "TPL_H1_REMAINDER_DIRECT_SUBSTITUTION",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "draft_single_model"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-40d4e6414a28-b948c93a",
+        "judge": "dots",
+        "rationale": "P(−2)−Q(−2)=3과 세제곱의 차 36을 결합해 P(−2)Q(−2)=1을 구한다.",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "공통수학1",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "8047199e9e6eb49aacc31bd58d30f55e45273b1e0cf4a4821c258427b330bfac",
+        "judgedContentFingerprint": "18d0a31a0b4b68dc3ac8d535f260a2b351305ffb6913df057e3e7316769a70a6",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "9a38b55049260b50fda49fa4413b2e309b3f3b829e49b4e90d2e940147c49124",
+        "resultSource": {
+          "branch": "data/type-judgment-t-20261116",
+          "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-t/동아출판_공통수학1.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-40d4e6414a28-b948c93a.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      },
+      "templateApproval": {
+        "schemaVersion": "archive-template-append-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "ta-40d4e6414a28-3e5691c3",
+        "judge": "claude-sonnet",
+        "rationale": "x=-2 대입값 p,q로 놓고 나머지정리로 곱의 나머지를 구한다",
+        "grade": "draft_single_model",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "공통수학1",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "f78963cd868bca56fad6ffa06dfdd6fdae7d6f475d1dfb51c84130856ebf386b",
+        "judgedContentFingerprint": "18d0a31a0b4b68dc3ac8d535f260a2b351305ffb6913df057e3e7316769a70a6",
+        "rowBinding": "content",
+        "textBindingFingerprint": "9a38b55049260b50fda49fa4413b2e309b3f3b829e49b4e90d2e940147c49124",
+        "resultSource": {
+          "branch": "local",
+          "commit": "0000000000000000000000000000000000000000",
+          "file": "sol-fill-b.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/ta-40d4e6414a28-3e5691c3.json",
+        "priorTemplate": {
+          "templateKey": "",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 15
+}

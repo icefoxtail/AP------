@@ -1,0 +1,130 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "ta-be06b9cac689-6b5d5e4c",
+  "requestSha256": "a7b2599346081d457480cca1f0bd1cf08def3c919d51593effa30f6306e96b5e",
+  "examUid": "비상_공통수학1_방정식과부등식_대단원학습평가_고1",
+  "sourceArchiveFile": "textbooks/비상교육_공통수학1/비상_공통수학1_방정식과부등식_대단원학습평가_고1/비상_공통수학1_방정식과부등식_대단원학습평가_고1.js",
+  "sourceBlobSha1": "b981e0551a5bbe003be67606b89b57cee085e276",
+  "sourceRawSha256": "0f1b6df373ff71f4f10f1a58d2d9c21f67f2c4133bdace851896ff9c245ef54e",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "2026-11-24 TPL 덧붙이기(관제 지시): 해설 채우기 작업자(claude-sonnet) 단일 모델 판정, TPL 칸에 초안 등급 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "local",
+      "commit": "0000000000000000000000000000000000000000",
+      "file": "sol-fill-a.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/ta-be06b9cac689-6b5d5e4c.type-ledger.json",
+        "sha256": "946478c088fc7da132caaaed5715e280f93af9a8bf0d60dbf927930d9004acf7"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 0,
+    "content": 0,
+    "stale": 1
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_88188eaf32ce81dab5af00c4b694869a66cf116a83841e35f0fe4ae6e2f4f4fd",
+      "sourceArchiveFile": "textbooks/비상교육_공통수학1/비상_공통수학1_방정식과부등식_대단원학습평가_고1/비상_공통수학1_방정식과부등식_대단원학습평가_고1.js",
+      "sourceOrdinal": 18,
+      "problemTypeKey": "PT_H1_QUADRATIC_INEQUALITY",
+      "templateKey": "TPL_H1_QUADRATIC_INEQUALITY_SIGN_INTERVAL",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "draft_single_model"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-be06b9cac689-65c72c25",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "두 이차부등식의 해구간을 구하고 공통 구간이 주어진 구간이 되도록 매개변수의 범위를 정한다.",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "공통수학1",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "03d1789d51ce83ce20b5760f946ea658f52a47b7539a87cf2981026d7ad7dce3",
+        "judgedContentFingerprint": "58c9cb84508a55c0529e4b24a1b87a936459bea0aea03c3f0f023f8655eb21bc",
+        "rowBinding": "stale",
+        "textBindingFingerprint": "ffb12518850de9341b9e3b01b50205ab65e272bc1eb85bae9c4a10a3c6ea1b3a",
+        "resultSource": {
+          "branch": "data/type-judgment-u-20261122",
+          "commit": "4587587b2a3c12c4453f3c57220b754ec7e50e85",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-be06b9cac689-65c72c25.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      },
+      "templateApproval": {
+        "schemaVersion": "archive-template-append-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "ta-be06b9cac689-6b5d5e4c",
+        "judge": "claude-sonnet",
+        "rationale": "두 부등식의 근과 부호 구간으로 해 2<x≤3이 되는 a의 범위를 정한다",
+        "grade": "draft_single_model",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "공통수학1",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "03d1789d51ce83ce20b5760f946ea658f52a47b7539a87cf2981026d7ad7dce3",
+        "judgedContentFingerprint": "58c9cb84508a55c0529e4b24a1b87a936459bea0aea03c3f0f023f8655eb21bc",
+        "rowBinding": "stale",
+        "textBindingFingerprint": "ffb12518850de9341b9e3b01b50205ab65e272bc1eb85bae9c4a10a3c6ea1b3a",
+        "resultSource": {
+          "branch": "local",
+          "commit": "0000000000000000000000000000000000000000",
+          "file": "sol-fill-a.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/ta-be06b9cac689-6b5d5e4c.json",
+        "priorTemplate": {
+          "templateKey": "",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 18
+}

@@ -1,0 +1,130 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "ta-cb22da83d47a-a4adce80",
+  "requestSha256": "35a3b6e9fa9fa82bff75eb5e97b65f50d58fad52b589e49db7a085153bc89acc",
+  "examUid": "미래엔_대수_등차수열과등비수열_중단원마무리_고2",
+  "sourceArchiveFile": "textbooks/미래엔_대수/미래엔_대수_등차수열과등비수열_중단원마무리_고2/미래엔_대수_등차수열과등비수열_중단원마무리_고2.js",
+  "sourceBlobSha1": "2c47db2ac07aac6ee1106523e42d35c0c21f7df8",
+  "sourceRawSha256": "7721e538327526a2b128244668c959a89ddea4b6993002f76340c0892c17cbc3",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "2026-11-24 TPL 덧붙이기(관제 지시): 해설 채우기 작업자(claude-sonnet) 단일 모델 판정, TPL 칸에 초안 등급 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "local",
+      "commit": "0000000000000000000000000000000000000000",
+      "file": "sol-fill-a.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/ta-cb22da83d47a-a4adce80.type-ledger.json",
+        "sha256": "cf0498e01f206e2f46bf411b842c19c6f3c2bec8b888d7475f7b98a185e98401"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 0,
+    "content": 1,
+    "stale": 0
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_9de828318aba83a5433c978264cb45571b4a81a36678374c7a159b5d88b9af6d",
+      "sourceArchiveFile": "textbooks/미래엔_대수/미래엔_대수_등차수열과등비수열_중단원마무리_고2/미래엔_대수_등차수열과등비수열_중단원마무리_고2.js",
+      "sourceOrdinal": 5,
+      "problemTypeKey": "PT_H22A_06_ARITHMETIC_SEQUENCE",
+      "templateKey": "TPL_H22A_06_ARITHMETIC_SEQUENCE_117",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "draft_single_model"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-cb22da83d47a-6e3f6c2b",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "등차수열과 등비수열의 첫째항·공차·공비를 읽어 각각 합 공식으로 첫째항부터 10항까지 합을 구한다.",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "대수",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "45135a83e69d14b5feb6bf24a63f2b8d41dce704baa1387856fdfc3d2264efa9",
+        "judgedContentFingerprint": "8718d209b3cce1638eed589a976c9998f09f1699b0588951c23e18996df074e5",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "42369cc0ba53a2a9e704e1bb3e1eb7fe92d26d4ae39713e1ada2d6a2f6164594",
+        "resultSource": {
+          "branch": "data/type-judgment-w-20261122",
+          "commit": "4111b9298564d9e7095216194d47737640427bfe",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-cb22da83d47a-6e3f6c2b.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      },
+      "templateApproval": {
+        "schemaVersion": "archive-template-append-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "ta-cb22da83d47a-a4adce80",
+        "judge": "claude-sonnet",
+        "rationale": "첫째항과 공차로 등차수열의 합 공식 S_n=n{2a+(n-1)d}/2을 적용한다",
+        "grade": "draft_single_model",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "대수",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "94ba42a063e0c73fdebfd0d5990193411ba842553ac9897626545d0bd93644bf",
+        "judgedContentFingerprint": "8718d209b3cce1638eed589a976c9998f09f1699b0588951c23e18996df074e5",
+        "rowBinding": "content",
+        "textBindingFingerprint": "42369cc0ba53a2a9e704e1bb3e1eb7fe92d26d4ae39713e1ada2d6a2f6164594",
+        "resultSource": {
+          "branch": "local",
+          "commit": "0000000000000000000000000000000000000000",
+          "file": "sol-fill-a.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/ta-cb22da83d47a-a4adce80.json",
+        "priorTemplate": {
+          "templateKey": "",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 16
+}

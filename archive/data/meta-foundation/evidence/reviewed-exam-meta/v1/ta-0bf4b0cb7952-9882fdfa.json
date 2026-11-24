@@ -1,0 +1,206 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "ta-0bf4b0cb7952-9882fdfa",
+  "requestSha256": "3aac18a84f71f14bf0ada63b6604b059bc92f8ee93bf19ac08788abf3cc89296",
+  "examUid": "동아_공통수학1_방정식과부등식_대단원평가_고1",
+  "sourceArchiveFile": "textbooks/동아출판_공통수학1/동아_공통수학1_방정식과부등식_대단원평가_고1/동아_공통수학1_방정식과부등식_대단원평가_고1.js",
+  "sourceBlobSha1": "be6978546c4bc48c832628cb301c6855e58b7ebf",
+  "sourceRawSha256": "1508609c36e6cf0a2ac8bdb7e821b47251b54b1235b9813cee5b2beacfcc9383",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "2026-11-24 TPL 덧붙이기(관제 지시): 해설 채우기 작업자(claude-sonnet) 단일 모델 판정, TPL 칸에 초안 등급 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "local",
+      "commit": "0000000000000000000000000000000000000000",
+      "file": "sol-fill-b.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/ta-0bf4b0cb7952-9882fdfa.type-ledger.json",
+        "sha256": "7ee9e44536c19ffd45d3569269dac59d802a5e2239b452f55966827256274fac"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 2,
+  "registryChanges": [],
+  "typeApprovals": 2,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 0,
+    "content": 2,
+    "stale": 0
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_84202dda6be94d3aa3e6cba7590f8c4bacf9d9d895288f5fcdb8055a8b0314cc",
+      "sourceArchiveFile": "textbooks/동아출판_공통수학1/동아_공통수학1_방정식과부등식_대단원평가_고1/동아_공통수학1_방정식과부등식_대단원평가_고1.js",
+      "sourceOrdinal": 39,
+      "problemTypeKey": "PT_H1_QUADRATIC_INEQUALITY",
+      "templateKey": "TPL_H1_QUADRATIC_INEQUALITY_SIGN_INTERVAL",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "draft_single_model"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-0bf4b0cb7952-af2669e8",
+        "judge": "dots",
+        "rationale": "공통 해집합의 열린 경계 2와 닫힌 경계 1을 각각의 이차식의 근으로 삼아 계수를 정하고 구간을 확인한다.",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "공통수학1",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "ea2a7854ab4be2274211b52ab954655291f19cb5a7d57969fe5894350e628f79",
+        "judgedContentFingerprint": "5af1060a60e0e13adac1895edd621312adc76d9e5fbf9869928fca3c84d58935",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "0e70addeabb557e9199440481e63ea4a216d739a78c2036a21f0512aca90a2c0",
+        "resultSource": {
+          "branch": "data/type-judgment-t-20261116",
+          "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-t/동아출판_공통수학1.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-0bf4b0cb7952-af2669e8.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      },
+      "templateApproval": {
+        "schemaVersion": "archive-template-append-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "ta-0bf4b0cb7952-9882fdfa",
+        "judge": "claude-sonnet",
+        "rationale": "해구간의 끝점이 이차식의 근임을 이용해 계수를 정한다",
+        "grade": "draft_single_model",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "공통수학1",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "1d89db319181fbbb924151063d9f633c3f6d6e4d49d4942b4406cc5ccd628548",
+        "judgedContentFingerprint": "5af1060a60e0e13adac1895edd621312adc76d9e5fbf9869928fca3c84d58935",
+        "rowBinding": "content",
+        "textBindingFingerprint": "0e70addeabb557e9199440481e63ea4a216d739a78c2036a21f0512aca90a2c0",
+        "resultSource": {
+          "branch": "local",
+          "commit": "0000000000000000000000000000000000000000",
+          "file": "sol-fill-b.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/ta-0bf4b0cb7952-9882fdfa.json",
+        "priorTemplate": {
+          "templateKey": "",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_d559627f73d05e2d31f1ac28c3a435591fe2768c24bb9037de2c05ecbcce2dd0",
+      "sourceArchiveFile": "textbooks/동아출판_공통수학1/동아_공통수학1_방정식과부등식_대단원평가_고1/동아_공통수학1_방정식과부등식_대단원평가_고1.js",
+      "sourceOrdinal": 44,
+      "problemTypeKey": "PT_H1_HIGHER_DEGREE_EQUATION",
+      "templateKey": "TPL_H1_HIGHER_FACTOR_ROOT",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "draft_single_model"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-0bf4b0cb7952-af2669e8",
+        "judge": "dots",
+        "rationale": "식을 (x−1)(x²+2ax+4a)로 인수분해하고 중근 또는 공통근으로 서로 다른 실근이 두 개가 되는 경우를 나눈다.",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "공통수학1",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "4a4b1cb806de3a1a5d891bdbcac27eae12f614657b17bdfdd21e2e9c5fe12266",
+        "judgedContentFingerprint": "85b2482cc9e29c7e5f2754ad5811c04708838849aaa1604fb6440e355f61d25c",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "28d3addd5052c5b16a353e4a6811ce7e417c3b46f14d9aaa57410eb7c592f2fb",
+        "resultSource": {
+          "branch": "data/type-judgment-t-20261116",
+          "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-t/동아출판_공통수학1.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-0bf4b0cb7952-af2669e8.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      },
+      "templateApproval": {
+        "schemaVersion": "archive-template-append-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "ta-0bf4b0cb7952-9882fdfa",
+        "judge": "claude-sonnet",
+        "rationale": "x=1 인수정리로 인수분해해 서로 다른 실근 개수 조건을 푼다",
+        "grade": "draft_single_model",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "공통수학1",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "b104bebc2a28ad202dfbb5f0748ff11b2abaf7884c777326a4d5293353988e40",
+        "judgedContentFingerprint": "85b2482cc9e29c7e5f2754ad5811c04708838849aaa1604fb6440e355f61d25c",
+        "rowBinding": "content",
+        "textBindingFingerprint": "28d3addd5052c5b16a353e4a6811ce7e417c3b46f14d9aaa57410eb7c592f2fb",
+        "resultSource": {
+          "branch": "local",
+          "commit": "0000000000000000000000000000000000000000",
+          "file": "sol-fill-b.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/ta-0bf4b0cb7952-9882fdfa.json",
+        "priorTemplate": {
+          "templateKey": "",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 2,
+  "expectedQuestionCount": 45
+}

@@ -1,0 +1,206 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "ta-2e91598c7bf6-fc6bf54a",
+  "requestSha256": "4d5194d355174e4b94038792105cc7859c2cd2d79826dd7b7f59b4ec47064297",
+  "examUid": "비상_대수_등차수열과등비수열_중단원학습점검_고2",
+  "sourceArchiveFile": "textbooks/비상교육_대수/비상_대수_등차수열과등비수열_중단원학습점검_고2/비상_대수_등차수열과등비수열_중단원학습점검_고2.js",
+  "sourceBlobSha1": "693982721f4474d4fed915f40627dab5a9b73c44",
+  "sourceRawSha256": "f5de737653569c183415125563c8f4398a0724e5cdc8fc601e5c125d2d9c6b36",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "2026-11-24 TPL 덧붙이기(관제 지시): 해설 채우기 작업자(claude-sonnet) 단일 모델 판정, TPL 칸에 초안 등급 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "local",
+      "commit": "0000000000000000000000000000000000000000",
+      "file": "sol-fill-a.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/ta-2e91598c7bf6-fc6bf54a.type-ledger.json",
+        "sha256": "110d3f04cecaf8561c095baa0f2088adfcdcb15a6d9990e59b7c64ff7045a7ed"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 2,
+  "registryChanges": [],
+  "typeApprovals": 2,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 0,
+    "content": 2,
+    "stale": 0
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_6af6260718ef07b5f4bf1f24f5941babf5ea5d5636f39a043e87a9cd29e201c4",
+      "sourceArchiveFile": "textbooks/비상교육_대수/비상_대수_등차수열과등비수열_중단원학습점검_고2/비상_대수_등차수열과등비수열_중단원학습점검_고2.js",
+      "sourceOrdinal": 2,
+      "problemTypeKey": "PT_H22A_06_SEQUENCE_APPLICATION",
+      "templateKey": "TPL_H22A_06_SEQUENCE_APPLICATION_121",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "draft_single_model"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-2e91598c7bf6-72eccd83",
+        "judge": "dots",
+        "rationale": "등차수열 a+(n-1)d와 등비수열 ar^(n-1)를 각 소문항에 적용한다.",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "대수",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "e9d90447e9139fa19ba75cdeb5794cb5e408c32b31992eba9272b53c92ce3117",
+        "judgedContentFingerprint": "f87f5287ac05086f08e8ea6f1b49b2d6679dcb86f2fc7ab3e64685109700fd41",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "46c1f34c3a0a24c7b46a42e76234a9b04a347a79ca00616df511eb1e57f6bf4b",
+        "resultSource": {
+          "branch": "data/type-judgment-t-20261116",
+          "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_대수.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2e91598c7bf6-72eccd83.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      },
+      "templateApproval": {
+        "schemaVersion": "archive-template-append-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "ta-2e91598c7bf6-fc6bf54a",
+        "judge": "claude-sonnet",
+        "rationale": "첫째항과 공차·공비 조건으로 수열을 정해 일반항을 구한다",
+        "grade": "draft_single_model",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "대수",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "329f5f3be5cf74fbefdd5737e4b3fd0e924f464ccfee24be9aa6197c08a530dd",
+        "judgedContentFingerprint": "f87f5287ac05086f08e8ea6f1b49b2d6679dcb86f2fc7ab3e64685109700fd41",
+        "rowBinding": "content",
+        "textBindingFingerprint": "46c1f34c3a0a24c7b46a42e76234a9b04a347a79ca00616df511eb1e57f6bf4b",
+        "resultSource": {
+          "branch": "local",
+          "commit": "0000000000000000000000000000000000000000",
+          "file": "sol-fill-a.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/ta-2e91598c7bf6-fc6bf54a.json",
+        "priorTemplate": {
+          "templateKey": "",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_69de3070fc13760f686834bb71eb9af89a4febf85a0969cb226a825ca86fc821",
+      "sourceArchiveFile": "textbooks/비상교육_대수/비상_대수_등차수열과등비수열_중단원학습점검_고2/비상_대수_등차수열과등비수열_중단원학습점검_고2.js",
+      "sourceOrdinal": 3,
+      "problemTypeKey": "PT_H22A_06_SEQUENCE_APPLICATION",
+      "templateKey": "TPL_H22A_06_SEQUENCE_APPLICATION_121",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "draft_single_model"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-2e91598c7bf6-72eccd83",
+        "judge": "dots",
+        "rationale": "등차수열 합 n(2a+(n-1)d)/2와 등비수열 합 a(1-r^n)/(1-r)를 각각 적용한다.",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "대수",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "eb1d1498f88b98b11fe48bb15ac4c4c3b88f8edabece98f589ea7b764f1fbce4",
+        "judgedContentFingerprint": "1b42dcc9c3080147f056f2bdf8c8216bc85dda46320efa116cd9661d955588ac",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "0ecb9ad65b3a7c1e0ae439e236ca7964a6df2b2e7ae5b1f11f721173634c85a3",
+        "resultSource": {
+          "branch": "data/type-judgment-t-20261116",
+          "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_대수.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2e91598c7bf6-72eccd83.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      },
+      "templateApproval": {
+        "schemaVersion": "archive-template-append-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "ta-2e91598c7bf6-fc6bf54a",
+        "judge": "claude-sonnet",
+        "rationale": "첫째항과 공차·공비 조건으로 수열을 정해 첫째항부터 제10항까지의 합을 구한다",
+        "grade": "draft_single_model",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "대수",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "21f5a00bde6f364a2813a5eaf84bf441d0c83ab8cd36cfcc69c3c5f640374654",
+        "judgedContentFingerprint": "1b42dcc9c3080147f056f2bdf8c8216bc85dda46320efa116cd9661d955588ac",
+        "rowBinding": "content",
+        "textBindingFingerprint": "0ecb9ad65b3a7c1e0ae439e236ca7964a6df2b2e7ae5b1f11f721173634c85a3",
+        "resultSource": {
+          "branch": "local",
+          "commit": "0000000000000000000000000000000000000000",
+          "file": "sol-fill-a.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/ta-2e91598c7bf6-fc6bf54a.json",
+        "priorTemplate": {
+          "templateKey": "",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 2,
+  "expectedQuestionCount": 17
+}

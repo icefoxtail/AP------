@@ -1,0 +1,130 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "ta-55f90bb3a01d-997631ae",
+  "requestSha256": "3eb8710838a1235a10ecaedb5c098933591db90ad522f67943b8e0fe24c414ae",
+  "examUid": "미래엔_공통수학1_다항식_대단원마무리_고1",
+  "sourceArchiveFile": "textbooks/미래엔_공통수학1/미래엔_공통수학1_다항식_대단원마무리_고1/미래엔_공통수학1_다항식_대단원마무리_고1.js",
+  "sourceBlobSha1": "3d51adffe380200cf811c3b9fadfb507686b9f7e",
+  "sourceRawSha256": "608adb174c2edc7df3be0353fff17c9fcef19d3b3dd520c5d7b4d7fbcddfbacf",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "2026-11-24 TPL 덧붙이기(관제 지시): 해설 채우기 작업자(claude-sonnet) 단일 모델 판정, TPL 칸에 초안 등급 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "local",
+      "commit": "0000000000000000000000000000000000000000",
+      "file": "sol-fill-b.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/ta-55f90bb3a01d-997631ae.type-ledger.json",
+        "sha256": "f3491bba33dd890b9385823ed32ec40a76b0d47410255df1cb4bab9b51a1cbf9"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 0,
+    "content": 1,
+    "stale": 0
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_82fddfb8c583aeda5f7fc85c0ef6dbfb9a4333fc574c7e65b134a3c12e6b3b73",
+      "sourceArchiveFile": "textbooks/미래엔_공통수학1/미래엔_공통수학1_다항식_대단원마무리_고1/미래엔_공통수학1_다항식_대단원마무리_고1.js",
+      "sourceOrdinal": 9,
+      "problemTypeKey": "PT_H1_FACTOR_THEOREM",
+      "templateKey": "TPL_H1_FACTOR_THEOREM_REPEATED",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "draft_single_model"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-55f90bb3a01d-e3f4f5a3",
+        "judge": "dots",
+        "rationale": "f(x)=(x−1)²(ax+b)−8로 놓고 f(2)=f(−2)=1에서 a=2,b=5를 얻어 f(3)을 계산한다.",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "공통수학1",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "a12222d9d691c0049db054c6ba9fc68bbdd93c0c8bd4f3dc948bd0238e519717",
+        "judgedContentFingerprint": "ac8222c1b3fa537a8ac454b5b51fc45c5e5a371e823b4d06fc8e37911e285d64",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "a4bb5f835e3992cced1408186201fcd9a870b081130fbf366bcef210366f7dd5",
+        "resultSource": {
+          "branch": "data/type-judgment-t-20261116",
+          "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학1.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-55f90bb3a01d-e3f4f5a3.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      },
+      "templateApproval": {
+        "schemaVersion": "archive-template-append-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "ta-55f90bb3a01d-997631ae",
+        "judge": "claude-sonnet",
+        "rationale": "(x-1)^2 중복인수를 놓고 나머지 조건으로 계수를 정한다",
+        "grade": "draft_single_model",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "공통수학1",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "964f25cb1a980972b3bb834e8b7548581994e56c6d3072fbefa658a1bec21206",
+        "judgedContentFingerprint": "ac8222c1b3fa537a8ac454b5b51fc45c5e5a371e823b4d06fc8e37911e285d64",
+        "rowBinding": "content",
+        "textBindingFingerprint": "a4bb5f835e3992cced1408186201fcd9a870b081130fbf366bcef210366f7dd5",
+        "resultSource": {
+          "branch": "local",
+          "commit": "0000000000000000000000000000000000000000",
+          "file": "sol-fill-b.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/ta-55f90bb3a01d-997631ae.json",
+        "priorTemplate": {
+          "templateKey": "",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 17
+}
