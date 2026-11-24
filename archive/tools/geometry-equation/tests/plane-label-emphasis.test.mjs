@@ -97,7 +97,7 @@ test('a TEXT or unit trace label is drawn outside its arc and read back (an orde
   const traced=clone(marks);
   traced.traces=[{id:'tO',center:'O',radius:{point:'C'},through:['C','D'],spanDeg:30,label:'㉡',labelKind:'TEXT'}];
   // a roomier canvas than the default 640x380: the order sign stands beside point C's name, and whether the two fit on the default canvas is a matter of a pixel or two of measured text width
-  const roomy={canvas:{width:760,height:460}};
+  const roomy={canvas:{width:720,height:460}};
   const plan=planOf(traced,roomy),result=await composeConstructionCandidate({plan,model,identity,typographyPolicy:policy,browser});
   assert.equal(result.status,'COMPOSED',JSON.stringify(result.detail));assert.equal(result.staticAudit.planeMarks.status,'PASS',JSON.stringify(result.staticAudit.planeMarks.errors));
   assert.match(groupOf(result.svg,'tO-label'),/data-text="㉡"/);
