@@ -48,6 +48,7 @@ window.questionBank = [
   },
   {
     "id": 2,
+    "image": "assets/images/21_매산중_2학기_중간_중3_유사/q02-problem.svg",
     "category": "삼각비",
     "standardCourse": "중3",
     "curriculum": "2015",
@@ -880,6 +881,7 @@ window.questionBank = [
   },
   {
     "id": 20,
+    "image": "assets/images/21_매산중_2학기_중간_중3_유사/q20-problem.svg",
     "category": "원과 직선",
     "standardCourse": "중3",
     "curriculum": "2015",
@@ -927,6 +929,7 @@ window.questionBank = [
   },
   {
     "id": 21,
+    "image": "assets/images/21_매산중_2학기_중간_중3_유사/q21-problem.svg",
     "category": "삼각비의 활용",
     "standardCourse": "중3",
     "curriculum": "2015",
@@ -967,6 +970,7 @@ window.questionBank = [
   },
   {
     "id": 22,
+    "image": "assets/images/21_매산중_2학기_중간_중3_유사/q22-problem.svg",
     "category": "삼각비의 활용",
     "standardCourse": "중3",
     "curriculum": "2015",

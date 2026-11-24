@@ -1,11 +1,111 @@
 {
-  "kind": "coordinate",
-  "elements": [
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "5",
+          "-4",
+          "-1/2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -10,
+      3
+    ],
+    "viewport": [
+      -11,
+      4,
+      -3,
+      16
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": -4,
+        "y": 13,
+        "marker": "NONE"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        },
+        {
+          "id": "A",
+          "curveX": "-4"
+        },
+        {
+          "id": "B",
+          "curveX": "0"
+        }
+      ],
+      "polygons": [
+        {
+          "id": "triAOB",
+          "points": [
+            "A",
+            "O",
+            "B"
+          ],
+          "fill": "LIGHT"
+        }
+      ],
+      "segments": [
+        {
+          "id": "sOA",
+          "from": "O",
+          "to": "A"
+        },
+        {
+          "id": "sAB",
+          "from": "A",
+          "to": "B"
+        },
+        {
+          "id": "sOB",
+          "from": "O",
+          "to": "B"
+        }
+      ]
+    },
+    "coordinateBand": {
+      "hide": [
+        "V"
+      ]
+    }
+  },
+  "pointNames": {
+    "A": "A",
+    "B": "B",
+    "O": "O"
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "좌표평면에 위로 볼록한 이차함수의 그래프가 있고, 그 꼭짓점 A와 y축과의 교점 B, 원점 O로 이루어진 삼각형 AOB의 내부가 색칠되어 있다.",
+  "accessibilityDescription": "좌표평면 위에 위로 볼록한 포물선이 그려져 있다. 포물선의 꼭짓점 A는 제2사분면에 있고, y축과의 교점 B는 양의 y축에 있다. 원점 O와 두 점 A, B를 잇는 삼각형 AOB의 내부가 어둡게 칠해져 있다.",
+  "newVisualInformation": [
+    "포물선의 꼭짓점 A",
+    "포물선과 y축의 교점 B",
+    "색칠된 삼각형 AOB"
+  ],
+  "sourceConditions": [
     {
-      "type": "parabola",
-      "vertex": "A",
-      "yIntercept": "B",
-      "opens": "down"
+      "id": "source",
+      "condition": "다음 그림과 같이 이차함수 $y = -\\frac{1}{2}x^2 - 4x + k$의 그래프의 꼭짓점을 $\\text{A}$, $y$축과의 교점을 $\\text{B}$라 하자.\n\n(1) 이차함수를 $y = a(x-p)^2 + q$의 꼴로 변형하시오. (3점, 변형 과정을 모두 서술하시오.) (2) 꼭짓점 $\\text{A}$의 좌표를 구하시오. (1점) (3) $\\triangle\\text{AOB}$의 넓이가 $10$일 때, 상수 $k$의 값을 구하시오. (2점, 단 $\\text{O}$는 원점이고 $k>0$)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
     }
   ]
 }

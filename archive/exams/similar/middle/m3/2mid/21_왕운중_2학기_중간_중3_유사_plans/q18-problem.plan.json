@@ -1,42 +1,249 @@
 {
-  "kind": "geometry",
-  "elements": [
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "12"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "pB",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "35"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "pC",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "C",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "65"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lnB",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "pB"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lnC",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "C",
+          "pC"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lnB",
+          "lnC"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lnBC",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "A",
+          "lnBC"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 480
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "H"
+  ],
+  "displaySegments": [
     {
-      "type": "triangle",
-      "vertices": [
+      "id": "AB",
+      "refs": [
         "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
         "B",
         "C"
       ]
     },
     {
-      "type": "perpendicular",
-      "from": "A",
-      "to": "BC",
-      "foot": "H"
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
     },
     {
-      "type": "angle",
-      "at": "B",
-      "arms": [
+      "id": "AH",
+      "refs": [
         "A",
         "H"
-      ],
-      "text": "35°"
-    },
+      ]
+    }
+  ],
+  "rightAngles": [
     {
-      "type": "angle",
-      "at": "C",
-      "arms": [
+      "id": "rH",
+      "refs": [
         "A",
-        "H"
-      ],
-      "text": "65°"
-    },
+        "H",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aB",
+        "refs": [
+          "C",
+          "B",
+          "A"
+        ],
+        "value": 35,
+        "label": "35",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aC",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "value": 65,
+        "label": "65",
+        "factRole": "GIVEN"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dBC",
+        "from": "B",
+        "to": "C",
+        "label": "12",
+        "side": "BELOW"
+      }
+    ]
+  },
+  "caption": "삼각형 ABC의 꼭짓점 A에서 밑변 BC에 내린 수선의 발이 H이고, 각 B는 35도, 각 C는 65도, 선분 BC의 길이는 12이다.",
+  "accessibilityDescription": "삼각형 ABC의 꼭짓점 A에서 밑변 BC에 내린 수선 AH와 수직 기호가 표시되어 있다. 밑변 양 끝의 각 B는 35도, 각 C는 65도로 표시되어 있고, 선분 BC의 길이는 12로 표시되어 있다.",
+  "newVisualInformation": [
+    "선분 BC의 길이 12",
+    "각 B의 크기 35도",
+    "각 C의 크기 65도",
+    "수선의 발 H"
+  ],
+  "sourceConditions": [
     {
-      "type": "label",
-      "target": "BC",
-      "text": "12"
+      "id": "source",
+      "condition": "오른쪽 그림과 같이 $\\triangle\\text{ABC}$의 꼭짓점 $\\text{A}$에서 $\\overline{\\text{BC}}$에 내린 수선의 발을 $\\text{H}$라 할 때, $\\angle\\text{B}=35^\\circ$, $\\angle\\text{C}=65^\\circ$, $\\overline{\\text{BC}}=12$이면 다음 중 $\\overline{\\text{AH}}$의 길이를 나타내는 식은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
     }
   ]
 }

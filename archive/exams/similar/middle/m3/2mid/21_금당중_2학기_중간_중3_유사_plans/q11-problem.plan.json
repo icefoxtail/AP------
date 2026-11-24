@@ -1,19 +1,148 @@
 {
-  "kind": "geometry",
-  "elements": [
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "16"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "16"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displaySegments": [
     {
-      "type": "triangle",
-      "vertices": [
+      "id": "sAC",
+      "refs": [
         "A",
-        "B",
         "C"
-      ],
-      "rightAngle": "C"
+      ]
     },
     {
-      "type": "label",
-      "target": "AB",
-      "text": "c"
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aA",
+        "refs": [
+          "C",
+          "A",
+          "B"
+        ],
+        "noLabel": true
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lc",
+        "ownerSegment": "sAB",
+        "text": "c"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 384,
+    "height": 320
+  },
+  "rightAngles": [
+    {
+      "id": "raC",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    }
+  ],
+  "caption": "각 C가 직각인 직각삼각형 ABC에서 빗변 AB의 길이 c와 각 A가 표시된 그림",
+  "accessibilityDescription": "직각삼각형 ABC에서 꼭짓점 C에 직각 표시가 있고 빗변 AB의 길이는 c로 표시되어 있으며 각 A에 각 표시가 되어 있다.",
+  "newVisualInformation": [
+    "각 C는 직각이다.",
+    "빗변 AB의 길이는 c이다.",
+    "각 A가 표시되어 있다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "아래 그림과 같은 $\\angle\\text{C}=90^\\circ$인 직각삼각형 $\\text{ABC}$에서 $\\angle\\text{A}$의 크기와 선분 $\\text{AB}$의 길이 $c$가 주어졌을 때, 다음 중 $\\overline{\\text{AC}}$와 $\\overline{\\text{BC}}$의 길이를 순서대로 바르게 짝지은 것은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
     }
   ]
 }

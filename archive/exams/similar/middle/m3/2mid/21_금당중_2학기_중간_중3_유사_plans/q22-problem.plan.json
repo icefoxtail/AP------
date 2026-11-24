@@ -1,42 +1,154 @@
 {
-  "kind": "geometry",
-  "elements": [
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "672"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "795"
+            },
+            {
+              "kind": "integer",
+              "value": "459"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displaySegments": [
     {
-      "type": "triangle",
-      "vertices": [
+      "id": "sAB",
+      "refs": [
         "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
         "B",
         "C"
       ]
     },
     {
-      "type": "perpendicular",
-      "from": "C",
-      "to": "AB",
-      "foot": "H"
-    },
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aB",
+        "refs": [
+          "C",
+          "B",
+          "A"
+        ],
+        "value": 30,
+        "label": "30"
+      },
+      {
+        "id": "aC",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "value": 105,
+        "label": "105"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dBC",
+        "from": "B",
+        "to": "C",
+        "label": "12",
+        "unit": "cm",
+        "side": "BELOW",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 340
+  },
+  "caption": "삼각형 ABC에서 변 BC의 길이와 두 각 B, ACB의 크기가 주어진 그림",
+  "accessibilityDescription": "삼각형 ABC가 있고 변 BC의 길이는 12cm이며 각 B는 30도, 각 ACB는 105도이다.",
+  "newVisualInformation": [
+    "변 BC의 길이는 12cm이다.",
+    "각 B는 30도이다.",
+    "각 ACB는 105도이다."
+  ],
+  "sourceConditions": [
     {
-      "type": "angle",
-      "at": "B",
-      "arms": [
-        "A",
-        "C"
-      ],
-      "text": "30°"
-    },
-    {
-      "type": "angle",
-      "at": "C",
-      "arms": [
-        "A",
-        "B"
-      ],
-      "text": "105°"
-    },
-    {
-      "type": "label",
-      "target": "BC",
-      "text": "12 cm"
+      "id": "source",
+      "condition": "아래 그림과 같이 $\\angle\\text{B}=30^\\circ$, $\\angle\\text{ACB}=105^\\circ$, $\\overline{\\text{BC}}=12\\text{ cm}$인 $\\triangle\\text{ABC}$의 넓이를 구하려고 한다. 점 $\\text{C}$에서 변 $\\text{AB}$에 내린 수선의 발을 $\\text{H}$라고 할 때, 다음 물음에 답하시오.\n\n(1) 삼각비를 이용하여 $\\overline{\\text{AB}}$의 길이를 구하시오. (5점) (2) $\\triangle\\text{ABC}$의 넓이를 구하시오. (2점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
     }
   ]
 }

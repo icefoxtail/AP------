@@ -1,30 +1,186 @@
 {
-  "kind": "geometry",
-  "elements": [
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "integer",
+              "value": "20"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "27",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "36",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
     {
-      "type": "triangle",
-      "vertices": [
+      "id": "sAC",
+      "refs": [
         "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
         "B",
         "C"
-      ],
-      "rightAngle": "C"
+      ]
     },
     {
-      "type": "perpendicular",
-      "from": "C",
-      "to": "AB",
-      "foot": "D"
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
     },
     {
-      "type": "label",
-      "target": "BC",
-      "text": "20"
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
     },
     {
-      "type": "label",
-      "target": "BD",
-      "text": "16"
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lBC",
+        "ownerSegment": "sBC",
+        "text": "20"
+      },
+      {
+        "id": "lBD",
+        "ownerSegment": "sBD",
+        "text": "16"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 340
+  },
+  "rightAngles": [
+    {
+      "id": "rC",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "rD",
+      "refs": [
+        "B",
+        "D",
+        "C"
+      ]
+    }
+  ],
+  "caption": "직각삼각형 ABC에서 꼭짓점 C에서 빗변 AB에 내린 수선의 발 D와 변의 길이가 주어진 그림",
+  "accessibilityDescription": "각 C가 직각인 직각삼각형 ABC가 있고 선분 AB 위에 점 D가 있어 선분 CD와 선분 AB가 수직을 이룬다. 선분 BC의 길이는 20이고 선분 BD의 길이는 16으로 표시되어 있다.",
+  "newVisualInformation": [
+    "선분 BC의 길이는 20이다.",
+    "선분 BD의 길이는 16이다.",
+    "각 C와 각 BDC는 직각이다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "아래 그림과 같은 $\\angle\\text{C}=90^\\circ$인 직각삼각형 $\\text{ABC}$에서 $\\overline{\\text{AB}} \\perp \\overline{\\text{CD}}$이고 $\\overline{\\text{BC}}=20$, $\\overline{\\text{BD}}=16$일 때, $\\sin A$의 값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
     }
   ]
 }

@@ -1,36 +1,201 @@
 {
-  "kind": "geometry",
-  "caption": "반지름 8인 원 O의 원주 위의 점이 중심 O에 겹치도록 접은 현 AB",
-  "viewBox": [
-    0,
-    0,
-    220,
-    220
-  ],
-  "circles": [
-    {
-      "center": "O",
-      "radius": 80
-    }
-  ],
-  "vertices": {
-    "O": [
-      110,
-      110
-    ],
-    "A": [
-      41,
-      150
-    ],
-    "B": [
-      179,
-      150
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-8"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "-4"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "O1",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-4"
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "-4"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "8"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circFolded",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O1"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "8"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
     ]
   },
-  "segments": [
-    [
-      "A",
-      "B"
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "O1"
+  ],
+  "hiddenPointNames": [
+    "O1"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "rightAngles": [],
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "arcFolded",
+        "circle": "circFolded",
+        "center": "O1",
+        "from": "A",
+        "to": "B",
+        "side": "MINOR",
+        "factRole": "GIVEN"
+      }
     ]
+  },
+  "caption": "반지름의 길이가 8인 원 O에서 원주 위의 한 점이 중심 O에 겹치도록 현 AB를 따라 접은 모양을 나타낸 그림이다.",
+  "accessibilityDescription": "원 O의 현 AB를 접는 선으로 하여 원주의 일부가 중심 O를 지나도록 접혀 있고, 점 O, A, B가 표시되어 있다.",
+  "newVisualInformation": [
+    "현 AB를 따라 접은 호가 원의 중심 O를 지난다.",
+    "원의 중심은 점 O이다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같이 반지름의 길이가 $8$인 원 $O$의 원주 위의 한 점이 원의 중심 $O$에 겹쳐지도록 현 $AB$를 접는 선으로 하여 접었을 때, $\\overline{AB}$의 길이는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
   ]
 }
