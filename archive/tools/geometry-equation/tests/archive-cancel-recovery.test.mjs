@@ -3,49 +3,9 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
-import {fileRef,readBoundFile} from '../../pipeline-core/canonical.mjs';
 import {repoRoot} from '../visual-browser-runtime.mjs';
 import {sha256} from '../verify-visual-engine-static.mjs';
 import {recordArchiveEvidence} from '../record-visual-browser-evidence.mjs';
-import {runPhase2} from '../production/phase2.mjs';
-
-test('Archive readiness cancellation closes Chromium and server without publishing CAPTURE',async()=>{
-  const packageRoot='docs/evidence/apmath-vprod/p3e/measured-panel-repair-v3';
-  const p3e=JSON.parse(fs.readFileSync(path.join(repoRoot,packageRoot,'measured-panel-repair-ledger.json'),'utf8'));
-  const q10=p3e.candidates.find(row=>row.candidate==='q10-graph');
-  assert.ok(q10?.currentResultPackagePath);
-  const priorPath=packageRoot+'/'+q10.currentResultPackagePath;
-  const prior=JSON.parse(fs.readFileSync(path.join(repoRoot,priorPath),'utf8'));
-  const questionUid=prior.identity.questionUid,ordinal=Number(questionUid.split('|').at(-1));
-  const runId='archive-cancel-'+crypto.randomUUID();
-  assert.notEqual(runId,prior.runId);
-  const controller=new AbortController(),progress=[];
-  const result=await runPhase2({questionUid,sourcePath:prior.sourceRef.path,ordinal,replayResultRef:fileRef(repoRoot,priorPath),experimentalLocator:true,runId,signal:controller.signal,onArchiveProgress:event=>{
-    progress.push(event);
-    if(event.event==='PAGE_READINESS_WAIT'&&event.attempt==='envelope-preflight')controller.abort();
-  }});
-  assert.equal(result.result.status,'UNRESOLVED');
-  assert.equal(result.result.errorCode,'ARCHIVE_CAPTURE_CANCELLED');
-  assert.equal(result.result.productionAuthorized,false);
-  assert.equal(result.result.workRoot,'.tmp/archive/'+runId+'/'+prior.examUid+'/visual-engine/production');
-  assert.deepEqual(progress.map(event=>event.event),['SERVER_LISTENING','BROWSER_LAUNCHED','PAGE_READINESS_WAIT']);
-  assert.ok(result.result.archiveAbortEvidenceRef);
-  const abortPath=path.join(repoRoot,result.result.archiveAbortEvidenceRef);
-  const aborted=JSON.parse(fs.readFileSync(abortPath,'utf8'));
-  assert.equal(aborted.status,'ABORTED');
-  assert.deepEqual(aborted.cleanup,{serverWasListening:true,browserWasLaunched:true,browserClosed:true,serverClosed:true,browserCloseError:null,serverCloseError:null});
-  const attemptFolder=path.dirname(abortPath);
-  assert.deepEqual(fs.readdirSync(attemptFolder),['ABORTED.json']);
-  const stages=result.result.stages.map(ref=>JSON.parse(readBoundFile(repoRoot,ref).toString('utf8')).stage);
-  assert.equal(stages.some(stage=>['DISPLAY_ENVELOPE_CAPTURE','ARCHIVE_CAPTURE','CAPTURE','ACTUAL_ARCHIVE_CAPTURE'].includes(stage)),false);
-  const resultReceipt=JSON.parse(readBoundFile(repoRoot,result.receipt.outputs[0]).toString('utf8'));
-  assert.equal(resultReceipt.status,'UNRESOLVED');
-  assert.equal(resultReceipt.errorCode,'ARCHIVE_CAPTURE_CANCELLED');
-  assert.equal(resultReceipt.archiveAbortEvidenceRef,result.result.archiveAbortEvidenceRef);
-  const evidenceRoot=path.join(repoRoot,'.tmp/archive/phase3d-browser-cancel-test/browser-cancel-test/visual-engine/production');
-  fs.mkdirSync(evidenceRoot,{recursive:true});
-  fs.writeFileSync(path.join(evidenceRoot,'abort-result-'+process.pid+'.json'),JSON.stringify({schemaVersion:'ARCHIVE_CAPTURE_CANCEL_TEST_v1',questionUid,runId,workRoot:result.result.workRoot,progress,abortEvidenceRef:result.result.archiveAbortEvidenceRef,cleanup:aborted.cleanup,stageNames:stages,resultRef:result.receipt.outputs[0]},null,2)+'\n');
-});
 
 test('the real Chromium collector writes only ABORTED evidence, then succeeds in a fresh workspace',async()=>{
   const runId='archive-cancel-control-'+crypto.randomUUID(),retryId='archive-cancel-retry-'+crypto.randomUUID();

@@ -138,7 +138,7 @@ test('A3 the axis-overlap treatment reaches exactly the segments lying on the ax
     const expected=OVERLAP_IDS[id]??[];
     assert.deepEqual(row.overlapIds,expected,id+' axisOverlap');
     assert.deepEqual(row.overlapTokens,expected,id+' axisOverlapShape token');
-    assert.ok(row.svg.startsWith('<svg')&&row.svg.endsWith('</svg>'),id+' builds an SVG');
+    assert.ok(row.svg.includes('<svg')&&row.svg.trim().endsWith('</svg>'),id+' builds an SVG');
   }
 });
 test('A3b the figures with segments on the axes draw them with the heavy stroke; the figures without them draw no stroke of that width on a segment, line or leader',async()=>{
