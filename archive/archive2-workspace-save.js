@@ -659,12 +659,30 @@
     const scopeQuestionUids = Array.isArray(selectionFilters.scopeQuestionUids) && selectionFilters.scopeQuestionUids.length
       ? [...new Set(selectionFilters.scopeQuestionUids.map(String))]
       : records.map(record => record.questionUid);
+    // 넓은 범위(단원 두 개로도 필터가 150KB를 넘는 경우)는 저장할 때 목록이 사용한 문항만으로 줄어든다(compactSaveFilters).
+    // 그 목록 그대로 열면 교체 후보가 저장 문항뿐이라 "같은 조건으로 교체할 새 문항이 없습니다"가 된다. 목록이 사용 문항 안에 다 들어 있으면
+    // (줄어든 목록이거나 목록이 없던 저장본) 저장해 둔 경로·조건으로 지금 카탈로그에서 범위를 다시 만든다. 저장할 때는 다시 줄어들고,
+    // 서버는 줄어든 목록(교체한 문항 포함)과 경로 조건으로 대조한다.
+    const usedUids = new Set(snapshot.questions.map(question => question.questionUid));
+    const scopeWasCompacted = scopeQuestionUids.every(uid => usedUids.has(uid));
     // 저장 뒤 분류가 고쳐져 옛 범위에 안 맞는 문항도 거절하지 않고, 그 문항의 지금 단원을 범위에 보탠다(서버는 이 범위로 다시 대조한다).
     // 맞는지 미리 판정하지 않고 모든 문항의 원시 키·일반 키를 둘 다 보탠다: 저장본 범위에 원시 모드로는 맞는 빈 키가 이미 들어 있어도,
     // 실제 판정(C.review)과 서버(core.matches)는 일반 모드라 그 키로 맞지 않을 수 있다. 범위는 scopeQuestionUids가 함께 좁힌다.
     for (const record of records) {
       if (!scopeQuestionUids.includes(record.questionUid)) scopeQuestionUids.push(record.questionUid);
       for (const key of [C.pathKey(record, 4), C.generalPathKey(record, 4)]) if (!paths.includes(key)) paths.push(key);
+    }
+    if (scopeWasCompacted) {
+      const rangeFilters = { ...selectionFilters, primaryPaths: paths };
+      delete rangeFilters.scopeQuestionUids;
+      delete rangeFilters.difficultyBuckets;
+      const have = new Set(scopeQuestionUids);
+      for (const record of state.catalog.records) {
+        if (!have.has(record.questionUid) && C.matches(record, rangeFilters, workspaceMatchOptions())) {
+          have.add(record.questionUid);
+          scopeQuestionUids.push(record.questionUid);
+        }
+      }
     }
     const row = {
       id: "saved-paper-revision",
