@@ -1,0 +1,113 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PRISM",
+      "base": {
+        "kind": "POLYGON",
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            6
+          ],
+          [
+            8,
+            0
+          ]
+        ]
+      },
+      "height": 10,
+      "names": "DEFABC"
+    },
+    {
+      "id": "s2",
+      "kind": "PRISM",
+      "base": {
+        "kind": "POLYGON",
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            9
+          ],
+          [
+            12,
+            0
+          ]
+        ]
+      },
+      "height": 15,
+      "names": "D′E′F′A′B′C′"
+    }
+  ],
+  "dims": [
+    {
+      "solid": "s1",
+      "from": "A",
+      "to": "C",
+      "label": "8",
+      "side": "TOP"
+    },
+    {
+      "solid": "s1",
+      "from": "A",
+      "to": "B",
+      "label": "6"
+    },
+    {
+      "solid": "s1",
+      "from": "A",
+      "to": "D",
+      "label": "x"
+    },
+    {
+      "solid": "s2",
+      "from": "A′",
+      "to": "C′",
+      "label": "12",
+      "side": "TOP"
+    },
+    {
+      "solid": "s2",
+      "from": "A′",
+      "to": "B′",
+      "label": "y"
+    },
+    {
+      "solid": "s2",
+      "from": "A′",
+      "to": "D′",
+      "label": "15"
+    }
+  ],
+  "caption": "서로 닮은 두 삼각기둥에서 첫 번째는 밑면의 변 AC가 8 cm, AB가 6 cm이고 높이가 x cm이며, 두 번째는 대응하는 변 A′C′가 12 cm, A′B′가 y cm이고 높이가 15 cm이다.",
+  "accessibilityDescription": "왼쪽 삼각기둥에는 AC 8, AB 6, 높이 x가, 오른쪽의 더 큰 삼각기둥에는 A′C′ 12, A′B′ y, 높이 15가 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "서로 닮은 두 삼각기둥이 있다. 첫 번째 삼각기둥은 밑면의 두 변이 $\\overline{AC} = 8\\text{ cm}, \\overline{AB} = 6\\text{ cm}$, 높이가 $x\\text{ cm}$이고, 두 번째 삼각기둥은 이에 대응하는 밑면의 두 변이 $\\overline{A'C'} = 12\\text{ cm}, \\overline{A'B'} = y\\text{ cm}$, 높이가 $15\\text{ cm}$일 때, $x + y$의 값은? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "두 삼각기둥은 서로 닮은 도형이고, AC는 8 cm, AB는 6 cm, 높이는 x cm이며, A′C′는 12 cm, A′B′는 y cm, 높이는 15 cm이다.",
+      "mappedTo": [
+        "solids",
+        "dims",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 삼각기둥의 대응하는 밑면의 변과 높이를 각각의 모서리 옆에 표시한다."
+  ]
+}

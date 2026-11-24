@@ -1,0 +1,351 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "9"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "O2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "16"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "20"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "16"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "c1",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O1"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "c2",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O2"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "O1",
+    "L1",
+    "R1",
+    "A1",
+    "O2",
+    "L2",
+    "R2",
+    "A2"
+  ],
+  "displaySegments": [
+    {
+      "id": "s1L",
+      "refs": [
+        "A1",
+        "L1"
+      ]
+    },
+    {
+      "id": "s1R",
+      "refs": [
+        "A1",
+        "R1"
+      ]
+    },
+    {
+      "id": "h1",
+      "refs": [
+        "A1",
+        "O1"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "b1",
+      "refs": [
+        "L1",
+        "R1"
+      ]
+    },
+    {
+      "id": "s2L",
+      "refs": [
+        "A2",
+        "L2"
+      ]
+    },
+    {
+      "id": "s2R",
+      "refs": [
+        "A2",
+        "R2"
+      ]
+    },
+    {
+      "id": "h2",
+      "refs": [
+        "A2",
+        "O2"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "b2",
+      "refs": [
+        "L2",
+        "R2"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "arc1",
+        "circle": "c1",
+        "center": "O1",
+        "from": "L1",
+        "to": "R1",
+        "side": "CCW",
+        "highlight": false
+      },
+      {
+        "id": "arc2",
+        "circle": "c2",
+        "center": "O2",
+        "from": "L2",
+        "to": "R2",
+        "side": "CCW",
+        "highlight": false
+      }
+    ],
+    "regions": [
+      {
+        "id": "base1",
+        "fill": "LIGHT",
+        "label": "36pi",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "loop": {
+              "start": "L1",
+              "steps": [
+                {
+                  "to": "R1",
+                  "arc": {
+                    "center": "O1",
+                    "side": "CCW"
+                  }
+                },
+                {
+                  "to": "L1"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "hSmall",
+        "ownerSegment": "h2",
+        "text": "6",
+        "unit": "cm"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 660,
+    "height": 430
+  },
+  "hiddenPointNames": [
+    "O1",
+    "L1",
+    "R1",
+    "A1",
+    "O2",
+    "L2",
+    "R2",
+    "A2"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "닮음비가 3:2인 두 원뿔을 나란히 나타낸 그림이다. 큰 원뿔의 밑면의 넓이는 36π cm², 작은 원뿔의 높이는 6 cm로 주어져 있다.",
+  "accessibilityDescription": "왼쪽에 밑면이 더 큰 원뿔, 오른쪽에 작은 원뿔이 있고, 각 원뿔의 꼭짓점에서 밑면의 중심까지 점선 높이가 그려져 있다. 왼쪽 밑면에는 36π, 오른쪽 높이에는 6 cm가 적혀 있다.",
+  "newVisualInformation": [
+    "두 원뿔의 크기 관계와 주어진 밑면의 넓이, 작은 원뿔의 높이를 보여 준다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "서로 닮은 두 원뿔의 닮음비가 $3:2$이고, 큰 원뿔의 밑면의 넓이가 $36\\pi\\text{ cm}^2$, 작은 원뿔의 높이가 $6\\text{ cm}$이다. 큰 원뿔의 부피를 $A\\text{ cm}^3$, 작은 원뿔의 부피를 $B\\text{ cm}^3$라 할 때, $A-B$의 값은? [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

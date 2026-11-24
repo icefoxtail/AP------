@@ -1,0 +1,202 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "S",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "P",
+    "Q",
+    "R",
+    "S"
+  ],
+  "displaySegments": [
+    {
+      "id": "sPQ",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    },
+    {
+      "id": "sQR",
+      "refs": [
+        "Q",
+        "R"
+      ]
+    },
+    {
+      "id": "sRS",
+      "refs": [
+        "R",
+        "S"
+      ]
+    },
+    {
+      "id": "sSP",
+      "refs": [
+        "S",
+        "P"
+      ]
+    },
+    {
+      "id": "sPR",
+      "refs": [
+        "P",
+        "R"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "parallels": [
+      {
+        "id": "p1",
+        "count": 1,
+        "segments": [
+          "sPQ",
+          "sRS"
+        ]
+      },
+      {
+        "id": "p2",
+        "count": 2,
+        "segments": [
+          "sQR",
+          "sSP"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "id": "a1",
+        "refs": [
+          "Q",
+          "P",
+          "R"
+        ],
+        "value": 81.16,
+        "noLabel": true,
+        "color": "BLUE",
+        "equalGroup": 1,
+        "arcs": 1,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a2",
+        "refs": [
+          "S",
+          "R",
+          "P"
+        ],
+        "value": 81.16,
+        "noLabel": true,
+        "color": "BLUE",
+        "equalGroup": 1,
+        "arcs": 1,
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 320
+  },
+  "caption": "평행사변형 PQRS와 대각선 PR을 그린 그림이다. 두 쌍의 대변에 평행 표시가 있고, 엇각인 두 각에 같은 색의 같은 호 표시가 있다.",
+  "accessibilityDescription": "평행사변형 PQRS에 대각선 PR이 그려져 있다. 변 PQ와 RS, 변 QR과 PS에 평행 표시가 있고, 꼭짓점 P와 R의 엇각 두 개에 같은 호와 같은 색 표시가 있다.",
+  "newVisualInformation": [
+    "사각형 PQRS는 평행사변형이다.",
+    "대각선 PR이 그려져 있다.",
+    "두 쌍의 대변에 평행 표시가 있다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "서술형 1) 다음 보기는 「평행사변형 $PQRS$의 두 쌍의 대변의 길이가 각각 같음」을 설명한 것이다. 빈칸 (1), (2), (3)에 알맞은 기호 또는 문장을 정확하게 쓰시오. [5점]\n\n<보기>  \n평행사변형 $PQRS$에서 대각선 $PR$을 그으면 $\\triangle PQR$와 $\\triangle RSP$에서  \n$\\overline{PQ} \\parallel \\overline{SR}$이므로 $\\angle QPR = \\angle SRP$ (엇각) …… ㉠  \n(1) [빈칸] (엇각) …… ㉡ [2점]  \n$\\overline{PR}$은 공통인 변 …… ㉢  \n이다. ㉠, ㉡, ㉢에 의해 한 대응변의 길이가 같고, 그 양 끝 각의 크기가 각각 같으므로 (2) [빈칸]이다. [1점]  \n따라서 $\\overline{PQ} = \\overline{RS}$, $\\overline{QR} = \\overline{SP}$이므로 평행사변형 $PQRS$의 두 쌍의 (3) [빈칸]. [2점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

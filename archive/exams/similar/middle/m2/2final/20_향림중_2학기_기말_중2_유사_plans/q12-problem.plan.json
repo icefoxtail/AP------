@@ -1,0 +1,233 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "28",
+              "denominator": "3"
+            },
+            {
+              "kind": "rational",
+              "numerator": "94281",
+              "denominator": "12500"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "7",
+              "denominator": "3"
+            },
+            {
+              "kind": "rational",
+              "numerator": "94281",
+              "denominator": "50000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "34",
+              "denominator": "3"
+            },
+            {
+              "kind": "rational",
+              "numerator": "94281",
+              "denominator": "50000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sDB",
+      "refs": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "sEA",
+      "refs": [
+        "E",
+        "A"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "parallels": [
+      {
+        "id": "p1",
+        "count": 1,
+        "segments": [
+          "sDE",
+          "sBC"
+        ]
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAD",
+        "ownerSegment": "sAD",
+        "text": "9"
+      },
+      {
+        "id": "lDB",
+        "ownerSegment": "sDB",
+        "text": "3"
+      },
+      {
+        "id": "lBC",
+        "ownerSegment": "sBC",
+        "text": "12"
+      },
+      {
+        "id": "lEA",
+        "ownerSegment": "sEA",
+        "text": "6"
+      },
+      {
+        "id": "lDE",
+        "ownerSegment": "sDE",
+        "text": "x"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dAC",
+        "from": "A",
+        "to": "C",
+        "label": "y",
+        "side": "RIGHT",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 520,
+    "height": 360
+  },
+  "caption": "삼각형 ABC의 두 변 AB, AC 위에 각각 점 D, E가 있고 DE와 BC가 평행인 그림이다. AD, DB, BC, AE의 길이와 DE, AC를 나타내는 x, y가 표시되어 있다.",
+  "accessibilityDescription": "삼각형 ABC 안에서 D는 AB 위, E는 AC 위에 있고 DE는 BC와 평행하다. AD는 9, DB는 3, BC는 12, AE는 6, DE는 x, AC는 y로 표시되어 있다.",
+  "newVisualInformation": [
+    "평행한 DE와 BC, 두 변 위의 점 D와 E, 주어진 길이 및 x, y의 위치를 보여 준다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\triangle ABC$의 두 변 $AB, AC$ 위에 각각 점 $D, E$가 있고 $\\overline{BC} \\parallel \\overline{DE}$이다. $\\overline{AD} = 9, \\overline{DB} = 3, \\overline{BC} = 12, \\overline{AE} = 6$이고 $\\overline{DE} = x, \\overline{AC} = y$일 때, $x + y$의 값은? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

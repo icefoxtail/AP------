@@ -1,12 +1,63 @@
 {
-  "target": "수직선 위 기준점 2를 중심으로 한 변 길이 1인 정사각형 대각선 √2를 오른쪽으로 내린 P(2+√2)와 왼쪽으로 내린 Q(2-√2)",
-  "type": "svg",
-  "width": 300,
-  "height": 135,
-  "elements": [
-    "수직선 (0 ~ 4)",
-    "한 변 1 정사각형과 양방향 대각선 호",
-    "점 Q(2-√2)와 점 P(2+√2)"
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "points": [
+          {
+            "id": "P0",
+            "value": "-1",
+            "hideName": true
+          },
+          {
+            "id": "P1",
+            "value": "0",
+            "hideName": true
+          },
+          {
+            "id": "P2",
+            "value": "1",
+            "hideName": true
+          },
+          {
+            "id": "P3",
+            "value": "2",
+            "hideName": true
+          },
+          {
+            "id": "P4",
+            "value": "3",
+            "hideName": true
+          },
+          {
+            "id": "P5",
+            "value": "4",
+            "hideName": true
+          },
+          {
+            "id": "P6",
+            "value": "5",
+            "hideName": true
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "수직선"
+  },
+  "caption": "수직선 위에 -1부터 5까지의 정수가 일정한 간격으로 표시된 그림이다.",
+  "accessibilityDescription": "수직선 위에 -1부터 5까지의 정수 눈금이 표시되어 있고 각 눈금 아래에 정수가 적혀 있다.",
+  "newVisualInformation": [
+    "정수 눈금이 표시된 수직선을 보인다"
   ],
-  "svgCode": "<svg viewBox=\"0 0 300 135\" xmlns=\"http://www.w3.org/2000/svg\">\n  <rect x=\"150\" y=\"45\" width=\"50\" height=\"50\" fill=\"#e0f2fe\" stroke=\"#0369a1\" stroke-width=\"1.4\"/>\n  <line x1=\"150\" y1=\"95\" x2=\"200\" y2=\"45\" stroke=\"#dc2626\" stroke-width=\"1.2\" stroke-dasharray=\"3,2\"/>\n  <path d=\"M 200 45 A 70.71 70.71 0 0 1 220.71 95\" fill=\"none\" stroke=\"#16a34a\" stroke-width=\"1.4\" stroke-dasharray=\"4,3\"/>\n  <path d=\"M 100 45 A 70.71 70.71 0 0 0 79.29 95\" fill=\"none\" stroke=\"#dc2626\" stroke-width=\"1.4\" stroke-dasharray=\"4,3\"/>\n  <line x1=\"20\" y1=\"95\" x2=\"280\" y2=\"95\" stroke=\"#0f172a\" stroke-width=\"1.8\"/>\n  <circle cx=\"79.29\" cy=\"95\" r=\"3\" fill=\"#dc2626\"/>\n  <circle cx=\"220.71\" cy=\"95\" r=\"3\" fill=\"#16a34a\"/>\n  <g font-size=\"10\" text-anchor=\"middle\">\n    <text x=\"50\" y=\"112\">0</text><text x=\"100\" y=\"112\">1</text>\n    <text x=\"150\" y=\"112\">2</text><text x=\"200\" y=\"112\">3</text>\n    <text x=\"250\" y=\"112\">4</text>\n  </g>\n  <text x=\"79.29\" y=\"128\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"bold\" fill=\"#dc2626\">Q</text>\n  <text x=\"220.71\" y=\"128\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"bold\" fill=\"#16a34a\">P</text>\n</svg>"
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "수직선 위에 $2 + \\sqrt{2}$, $2 - \\sqrt{2}$에 대응하는 점을 각각 $P, Q$라 할 때, 점 $P, Q$를 각각 수직선 위에 나타내고 선분 $PQ$의 길이를 구하시오. [10점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
 }

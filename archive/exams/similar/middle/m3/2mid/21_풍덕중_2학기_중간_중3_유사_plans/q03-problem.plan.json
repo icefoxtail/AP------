@@ -1,0 +1,41 @@
+{
+  "kind": "geometry",
+  "elements": [
+    {
+      "type": "quarterCircle",
+      "center": "A",
+      "radius": 1,
+      "points": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "type": "triangle",
+      "vertices": [
+        "A",
+        "B",
+        "C"
+      ],
+      "rightAngle": "B"
+    },
+    {
+      "type": "triangle",
+      "vertices": [
+        "A",
+        "D",
+        "E"
+      ],
+      "rightAngle": "D"
+    },
+    {
+      "type": "angle",
+      "at": "A",
+      "arms": [
+        "B",
+        "C"
+      ],
+      "text": "x"
+    }
+  ]
+}

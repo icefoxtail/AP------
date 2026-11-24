@@ -1,0 +1,119 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PYRAMID",
+      "base": {
+        "kind": "POLYGON",
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            5,
+            0
+          ],
+          [
+            5,
+            4
+          ]
+        ]
+      },
+      "height": 4.8,
+      "apex": [
+        2.88,
+        2.16
+      ],
+      "names": "BCDA"
+    },
+    {
+      "id": "s2",
+      "kind": "PYRAMID",
+      "base": {
+        "kind": "POLYGON",
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            15,
+            0
+          ],
+          [
+            15,
+            12
+          ]
+        ]
+      },
+      "height": 14.4,
+      "apex": [
+        8.64,
+        6.48
+      ],
+      "names": "FGHE"
+    }
+  ],
+  "dims": [
+    {
+      "solid": "s1",
+      "from": "A",
+      "to": "B",
+      "label": "x"
+    },
+    {
+      "solid": "s1",
+      "from": "B",
+      "to": "C",
+      "label": "5"
+    },
+    {
+      "solid": "s1",
+      "from": "C",
+      "to": "D",
+      "label": "4"
+    },
+    {
+      "solid": "s2",
+      "from": "E",
+      "to": "F",
+      "label": "18"
+    },
+    {
+      "solid": "s2",
+      "from": "F",
+      "to": "G",
+      "label": "15"
+    },
+    {
+      "solid": "s2",
+      "from": "G",
+      "to": "H",
+      "label": "y"
+    }
+  ],
+  "caption": "삼각형 BCD와 FGH가 대응하는 면인 서로 닮은 두 사면체 ABCD와 EFGH에서 AB는 x cm, BC는 5 cm, CD는 4 cm, EF는 18 cm, FG는 15 cm, GH는 y cm이다.",
+  "accessibilityDescription": "왼쪽 사면체 ABCD에는 AB x, BC 5, CD 4가, 오른쪽의 더 큰 사면체 EFGH에는 EF 18, FG 15, GH y가 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 2] 두 사면체 $ABCD$와 $EFGH$가 서로 닮은 도형이다. $\\triangle BCD$와 $\\triangle FGH$가 서로 대응하는 면이고 $\\overline{BC} = 5\\text{ cm}, \\overline{FG} = 15\\text{ cm}, \\overline{EF} = 18\\text{ cm}, \\overline{CD} = 4\\text{ cm}$이다. $\\overline{AB} = x\\text{ cm}, \\overline{GH} = y\\text{ cm}$일 때, $xy$의 값을 구하시오. (풀이 과정과 정답을 명확하게 쓰시오.) [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "두 사면체 ABCD와 EFGH는 서로 닮은 도형이고 삼각형 BCD와 FGH가 대응하며, BC는 5 cm, FG는 15 cm, EF는 18 cm, CD는 4 cm, AB는 x cm, GH는 y cm이다.",
+      "mappedTo": [
+        "solids",
+        "dims",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 사면체의 대응하는 모서리와 주어진 길이를 각 모서리 옆에 표시한다."
+  ]
+}
