@@ -790,7 +790,7 @@ window.questionBank = [
       "도형",
       "원의 성질"
     ],
-    "image": "assets/images/21_왕운중_2학기_기말_중3_기출/q17.png",
+    "image": "assets/images/21_왕운중_2학기_기말_중3_기출/q17-diagram-only.png",
     "decisiveStep": "내접 사각형의 대각 합을 삼각형 각식으로 표현하는 단계",
     "questionType": "객관식",
     "layoutTag": "grid",
