@@ -1,0 +1,612 @@
+{
+  "schemaVersion": "gpt-finalqa-evidence-v1",
+  "examUid": "26_연향중_1학기_중간_중3_유사2",
+  "sourcePath": "archive/exams/similar/middle/m3/1mid/26_연향중_1학기_중간_중3_유사2.js",
+  "blindPackDigest": "e247f98c4174701fd0f4de565abc8494e48569d0f78118d9aea363e31106ad18",
+  "reviewer": {
+    "id": "gpt-first-formal-stem-first-blind-20261125",
+    "blindFirstPass": "CONFIRMED",
+    "independentEvidence": "공식 blind-pack에서 문항 1~23의 발문과 보기만 본 뒤 별도 원시 JSON으로 답과 계산 근거를 고정했다. 이후 JS 답·해설·객관식 오답 유일성·교육과정·메타·4슬롯 의미를 개별 대조해 수학적 불일치 0건을 확인했다. 구성도형 6개 플랜은 원문 sourceQuote 결속을 추가하고 학생용 단서 비노출을 재검했다. 외부 사람이나 별도 에이전트가 검토했다고 주장하지 않는다.",
+    "blindArtifactRef": "/workspace/scratch/3847fbe145fa/yeonhyang-qa-evidence/26_연향중_1학기_중간_중3_유사2.blind-reasoning.json"
+  },
+  "questions": [
+    {
+      "qid": 1,
+      "sourceFingerprint": "c9002c7d11eefb260f47bcc74d9371ecd6889771b307becd0ecdc779bcc48b01",
+      "blindAnswer": "②",
+      "blindReasoning": "√((-7)²)=√49=7이므로 -7이라는 ②만 거짓이다. 두 제곱근의 합과 0의 제곱근 등 나머지 선택지는 참이다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "시각자료 면제 판정: √((-7)²)=√49=7이므로 -7이라는 ②만 거짓이다. 두 제곱근의 합과 0의 제곱근 등 나머지 선택지는 참이다. problem 축은 추가 그림 없이 발문·수식만으로 충분히 풀이와 의미가 명확하다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "시각자료 면제 판정: √((-7)²)=√49=7이므로 -7이라는 ②만 거짓이다. 두 제곱근의 합과 0의 제곱근 등 나머지 선택지는 참이다. solution 축은 추가 그림 없이 발문·수식만으로 충분히 풀이와 의미가 명확하다."
+        }
+      }
+    },
+    {
+      "qid": 2,
+      "sourceFingerprint": "3772db29afa0d166962f51ba341dee71381c5edcddc1f093b61ed70bc2cf13f6",
+      "blindAnswer": "②",
+      "blindReasoning": "m>0이므로 √((-m)²)=m, (-√20)²√(1/25)=20/5=4. m+4=10에서 m=6이다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "시각자료 면제 판정: m>0이므로 √((-m)²)=m, (-√20)²√(1/25)=20/5=4. m+4=10에서 m=6이다. problem 축은 추가 그림 없이 발문·수식만으로 충분히 풀이와 의미가 명확하다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "시각자료 면제 판정: m>0이므로 √((-m)²)=m, (-√20)²√(1/25)=20/5=4. m+4=10에서 m=6이다. solution 축은 추가 그림 없이 발문·수식만으로 충분히 풀이와 의미가 명확하다."
+        }
+      }
+    },
+    {
+      "qid": 3,
+      "sourceFingerprint": "6abcd1a01840cc6184a37d7469d283bca07688a4825fe5a2b029c785ade9eb7a",
+      "blindAnswer": "③",
+      "blindReasoning": "√(72x)=6√(2x)가 자연수이려면 x=2t²이다. 150 이하에서는 t=1..8, 최소 x=2, 최대 x=128, 합=130이다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "시각자료 면제 판정: √(72x)=6√(2x)가 자연수이려면 x=2t²이다. 150 이하에서는 t=1..8, 최소 x=2, 최대 x=128, 합=130이다. problem 축은 추가 그림 없이 발문·수식만으로 충분히 풀이와 의미가 명확하다."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "2c97091315b3acefeb6c6018651120577a647d16f003ad973a4c43df8f775afc",
+          "reasoning": "문제 조건·독립 계산·학생 단서를 각 축 플랜과 대조: 72x가 완전제곱수인 x=2,8,18,32,50,72,98,128의 수직선 위치와 범위 150을 확인했다. 두 끝값 합 130이다. 실행 형식 및 인용 출처의 유효성도 확인했다."
+        }
+      }
+    },
+    {
+      "qid": 4,
+      "sourceFingerprint": "e56bf429276d3093c8cabb68c6f74ba944af541af716a7324fb71dad7e60816b",
+      "blindAnswer": "②",
+      "blindReasoning": "0<a<1에서 a<√a와 a²<a가 참(㉠,㉢)이다. b>1이면 √b<b와 b<b², √a<1이므로 나머지 세 진술은 거짓이다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "시각자료 면제 판정: 0<a<1에서 a<√a와 a²<a가 참(㉠,㉢)이다. b>1이면 √b<b와 b<b², √a<1이므로 나머지 세 진술은 거짓이다. problem 축은 추가 그림 없이 발문·수식만으로 충분히 풀이와 의미가 명확하다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "시각자료 면제 판정: 0<a<1에서 a<√a와 a²<a가 참(㉠,㉢)이다. b>1이면 √b<b와 b<b², √a<1이므로 나머지 세 진술은 거짓이다. solution 축은 추가 그림 없이 발문·수식만으로 충분히 풀이와 의미가 명확하다."
+        }
+      }
+    },
+    {
+      "qid": 5,
+      "sourceFingerprint": "c4926f9fdd2d0dbaa8fdd7cc69ae26d72dd7ffc6667699403444f1a9adcc5136",
+      "blindAnswer": "③",
+      "blindReasoning": "첫 세 수와 √2·√8=4는 유리수다. √12−√3=√3, π−3, √5−√20=−√5의 세 수만 무리수다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "시각자료 면제 판정: 첫 세 수와 √2·√8=4는 유리수다. √12−√3=√3, π−3, √5−√20=−√5의 세 수만 무리수다. problem 축은 추가 그림 없이 발문·수식만으로 충분히 풀이와 의미가 명확하다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "시각자료 면제 판정: 첫 세 수와 √2·√8=4는 유리수다. √12−√3=√3, π−3, √5−√20=−√5의 세 수만 무리수다. solution 축은 추가 그림 없이 발문·수식만으로 충분히 풀이와 의미가 명확하다."
+        }
+      }
+    },
+    {
+      "qid": 6,
+      "sourceFingerprint": "b7369ca228e89947b1af59ac779fd60c636adf6a1f74addebabf4ca6f63bd798",
+      "blindAnswer": "⑤",
+      "blindReasoning": "서로 다른 두 무리수 √2와 2−√2의 합은 유리수 2가 될 수 있어 반드시 무리수라는 ⑤가 거짓이다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "시각자료 면제 판정: 서로 다른 두 무리수 √2와 2−√2의 합은 유리수 2가 될 수 있어 반드시 무리수라는 ⑤가 거짓이다. problem 축은 추가 그림 없이 발문·수식만으로 충분히 풀이와 의미가 명확하다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "시각자료 면제 판정: 서로 다른 두 무리수 √2와 2−√2의 합은 유리수 2가 될 수 있어 반드시 무리수라는 ⑤가 거짓이다. solution 축은 추가 그림 없이 발문·수식만으로 충분히 풀이와 의미가 명확하다."
+        }
+      }
+    },
+    {
+      "qid": 7,
+      "sourceFingerprint": "51fb467a17d15b424b7f20cc7cb0a72a05484e2e1adadf9cc4a57c91fdc7b365",
+      "blindAnswer": "②",
+      "blindReasoning": "2+√6≈4.449, 7−√7≈4.354, 3√2≈4.243 순이다. 세 수 중 두 번째 값은 7−√7이다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "시각자료 면제 판정: 2+√6≈4.449, 7−√7≈4.354, 3√2≈4.243 순이다. 세 수 중 두 번째 값은 7−√7이다. problem 축은 추가 그림 없이 발문·수식만으로 충분히 풀이와 의미가 명확하다."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "a4c4e06ff98ac8f37b9c795d8f6b5104d64cf8e3cee1712881d064ffe1250e04",
+          "reasoning": "문제 조건·독립 계산·학생 단서를 각 축 플랜과 대조: c=3√2≈4.24, b=7−√7≈4.35, a=2+√6≈4.45를 수직선에 오름차순 배열해 b가 중간값임을 확인했다. 실행 형식 및 인용 출처의 유효성도 확인했다."
+        }
+      }
+    },
+    {
+      "qid": 8,
+      "sourceFingerprint": "3e46f74de1badb75e69202d9f3261e3457607e79a5b7da7336b40612cca001ea",
+      "blindAnswer": "⑤",
+      "blindReasoning": "√676=26, √0.0676=0.26이므로 a÷b=26/0.26=100이다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "시각자료 면제 판정: √676=26, √0.0676=0.26이므로 a÷b=26/0.26=100이다. problem 축은 추가 그림 없이 발문·수식만으로 충분히 풀이와 의미가 명확하다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "시각자료 면제 판정: √676=26, √0.0676=0.26이므로 a÷b=26/0.26=100이다. solution 축은 추가 그림 없이 발문·수식만으로 충분히 풀이와 의미가 명확하다."
+        }
+      }
+    },
+    {
+      "qid": 9,
+      "sourceFingerprint": "3114c94733b619dc3454e1c9dedbae4303f2fa54e0be47d63e86193a1bfa5a42",
+      "blindAnswer": "⑤",
+      "blindReasoning": "√27+√3=3√3+√3=4√3이므로 2√3이라 적은 ⑤가 틀렸다. 앞의 네 등식은 각각 직접 단순화하면 참이다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "시각자료 면제 판정: √27+√3=3√3+√3=4√3이므로 2√3이라 적은 ⑤가 틀렸다. 앞의 네 등식은 각각 직접 단순화하면 참이다. problem 축은 추가 그림 없이 발문·수식만으로 충분히 풀이와 의미가 명확하다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "시각자료 면제 판정: √27+√3=3√3+√3=4√3이므로 2√3이라 적은 ⑤가 틀렸다. 앞의 네 등식은 각각 직접 단순화하면 참이다. solution 축은 추가 그림 없이 발문·수식만으로 충분히 풀이와 의미가 명확하다."
+        }
+      }
+    },
+    {
+      "qid": 10,
+      "sourceFingerprint": "b263f3a5e79612a8bfa33108101824e3c09498b8e5507c3f2bbceeacc6968ee4",
+      "blindAnswer": "④",
+      "blindReasoning": "직사각형 넓이 √45·√8=6√10, 삼각형 넓이는 (√20/2)h=√5h. h=6√10/√5=6√2이다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "PASS",
+          "planDigest": "df6d130841e2afb8c18ffc763aee766a5ceb8072fffc70db798a4191cfb2a596",
+          "reasoning": "문제 조건·독립 계산·학생 단서를 각 축 플랜과 대조: 밑변 √20·높이 h인 삼각형과 가로 √45·세로 √8인 직사각형을 분리해 표시했다. 넓이가 같다는 조건을 유지하고 미지 높이의 답은 노출하지 않는다. 실행 형식 및 인용 출처의 유효성도 확인했다."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "70db1ff8be38665dc858ae1e55c18801dfb9d929771271983393d7bbd1cd7351",
+          "reasoning": "문제 조건·독립 계산·학생 단서를 각 축 플랜과 대조: 직사각형 면적 6√10과 삼각형 면적 √5h의 동치를 대조해 h=6√2에 이르는 높이 계산과 도형 방향이 맞는다. 실행 형식 및 인용 출처의 유효성도 확인했다."
+        }
+      }
+    },
+    {
+      "qid": 11,
+      "sourceFingerprint": "da677e0643eba28a1ba64cd1ba1e353fb00eaee2f5accb5903990e7cc4961b69",
+      "blindAnswer": "④",
+      "blindReasoning": "양수조건에서 세 항은 각각 2√(3abc), −√(3abc), 3√(3abc), 합은 4√(3abc)=40√3. 따라서 √abc=10, abc=100이다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "시각자료 면제 판정: 양수조건에서 세 항은 각각 2√(3abc), −√(3abc), 3√(3abc), 합은 4√(3abc)=40√3. 따라서 √abc=10, abc=100이다. problem 축은 추가 그림 없이 발문·수식만으로 충분히 풀이와 의미가 명확하다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "시각자료 면제 판정: 양수조건에서 세 항은 각각 2√(3abc), −√(3abc), 3√(3abc), 합은 4√(3abc)=40√3. 따라서 √abc=10, abc=100이다. solution 축은 추가 그림 없이 발문·수식만으로 충분히 풀이와 의미가 명확하다."
+        }
+      }
+    },
+    {
+      "qid": 12,
+      "sourceFingerprint": "b92eb732d029c0da27c751217ddf6bf53232c8be7b2480ae66162dca4325e1a9",
+      "blindAnswer": "①",
+      "blindReasoning": "첫 분수 4√2+2√3, 뒤 분수 √2+√3이므로 차는 3√2+√3. a=3, b=1, a²−b²=8이다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "시각자료 면제 판정: 첫 분수 4√2+2√3, 뒤 분수 √2+√3이므로 차는 3√2+√3. a=3, b=1, a²−b²=8이다. problem 축은 추가 그림 없이 발문·수식만으로 충분히 풀이와 의미가 명확하다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "시각자료 면제 판정: 첫 분수 4√2+2√3, 뒤 분수 √2+√3이므로 차는 3√2+√3. a=3, b=1, a²−b²=8이다. solution 축은 추가 그림 없이 발문·수식만으로 충분히 풀이와 의미가 명확하다."
+        }
+      }
+    },
+    {
+      "qid": 13,
+      "sourceFingerprint": "fcc5b93ffff2c819e7154ee8cc44ddd73f5d60d1cb26c0088e0025105fcce5d0",
+      "blindAnswer": "④",
+      "blindReasoning": "두 밑변 √12+√75=7√3, 넓이 (7√3/2)h=21√6/2에서 h=3√2이다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "PASS",
+          "planDigest": "ebf3ad39c3ae0c880b14d9f655c318b79b300497879686e43a4ff1a796818b2b",
+          "reasoning": "문제 조건·독립 계산·학생 단서를 각 축 플랜과 대조: 윗변 √12, 아랫변 √75의 평행 관계와 오른쪽 변의 수직 표시, 넓이 21√6/2를 발문과 대조했고 h는 미지수로 유지했다. 실행 형식 및 인용 출처의 유효성도 확인했다."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "dfae69e98e787f104086dad7789cb6ae6f7f7d3bf561f71516eef335732fce19",
+          "reasoning": "문제 조건·독립 계산·학생 단서를 각 축 플랜과 대조: 평행 두 변의 합 7√3, 넓이식 (7√3h)/2=21√6/2, 높이 3√2를 오른쪽 수직변에 대응시켰다. 실행 형식 및 인용 출처의 유효성도 확인했다."
+        }
+      }
+    },
+    {
+      "qid": 14,
+      "sourceFingerprint": "f3c89ac754467ca5fd0bc789003001715ba1c39da7cf3b1ff2e47b436bffd579",
+      "blindAnswer": "④",
+      "blindReasoning": "(2x−3)(x+4)=2x²+5x−12, (x−1)²=x²−2x+1을 더해 3x²+3x−11이므로 x의 계수는 3이다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "시각자료 면제 판정: (2x−3)(x+4)=2x²+5x−12, (x−1)²=x²−2x+1을 더해 3x²+3x−11이므로 x의 계수는 3이다. problem 축은 추가 그림 없이 발문·수식만으로 충분히 풀이와 의미가 명확하다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "시각자료 면제 판정: (2x−3)(x+4)=2x²+5x−12, (x−1)²=x²−2x+1을 더해 3x²+3x−11이므로 x의 계수는 3이다. solution 축은 추가 그림 없이 발문·수식만으로 충분히 풀이와 의미가 명확하다."
+        }
+      }
+    },
+    {
+      "qid": 15,
+      "sourceFingerprint": "883d96b71f0e87b6994ceba85ee73b16be80c1bb567ff7227b2dca4bfc6035bb",
+      "blindAnswer": "⑤",
+      "blindReasoning": "97×103=(100−3)(100+3)=10000−9=9991이다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "시각자료 면제 판정: 97×103=(100−3)(100+3)=10000−9=9991이다. problem 축은 추가 그림 없이 발문·수식만으로 충분히 풀이와 의미가 명확하다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "시각자료 면제 판정: 97×103=(100−3)(100+3)=10000−9=9991이다. solution 축은 추가 그림 없이 발문·수식만으로 충분히 풀이와 의미가 명확하다."
+        }
+      }
+    },
+    {
+      "qid": 16,
+      "sourceFingerprint": "c53769801663c00fee6096eb6334fd30f702223a1ca5256b07b92ad0fe2ec53c",
+      "blindAnswer": "③",
+      "blindReasoning": "분모를 유리화하면 x=√11−√10, y=√11+√10. y²−x²=(2√10)(2√11)=4√110이다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "시각자료 면제 판정: 분모를 유리화하면 x=√11−√10, y=√11+√10. y²−x²=(2√10)(2√11)=4√110이다. problem 축은 추가 그림 없이 발문·수식만으로 충분히 풀이와 의미가 명확하다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "시각자료 면제 판정: 분모를 유리화하면 x=√11−√10, y=√11+√10. y²−x²=(2√10)(2√11)=4√110이다. solution 축은 추가 그림 없이 발문·수식만으로 충분히 풀이와 의미가 명확하다."
+        }
+      }
+    },
+    {
+      "qid": 17,
+      "sourceFingerprint": "ec4d9b39060aadaf6fd32dad0694edbeb2b56163ef372c8651e4ea9465eddc0c",
+      "blindAnswer": "③",
+      "blindReasoning": "빗변 길이는 각각 √13, √10이므로 P=5−√13, Q=7+√10. Q−P=2+√13+√10이다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "PASS",
+          "planDigest": "29c0c5316ca641b4674be7835de6826d0e11bdf48664efe73b94cedc2015d65c",
+          "reasoning": "문제 조건·독립 계산·학생 단서를 각 축 플랜과 대조: A=5에서 왼쪽으로 √13만큼 P, C=7에서 오른쪽으로 √10만큼 Q가 생기는 두 이동을 표시하고 계산된 PQ 길이는 숨겼다. 실행 형식 및 인용 출처의 유효성도 확인했다."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "c4b1bcac37f6026182aac7dbcef6fb861b84454d426ac7261588178e7e80d3b0",
+          "reasoning": "문제 조건·독립 계산·학생 단서를 각 축 플랜과 대조: P=5−√13과 Q=7+√10의 수직선 순서 및 거리 2+√13+√10을 표시해 부호·방향을 확인했다. 실행 형식 및 인용 출처의 유효성도 확인했다."
+        }
+      }
+    },
+    {
+      "qid": 18,
+      "sourceFingerprint": "a17c3cafb9998324a4900084ef5a67272993d2824c31ebdfa7df9e8bcf649e13",
+      "blindAnswer": "①",
+      "blindReasoning": "x²−(y−4)²=(x−y+4)(x+y−4)=0이고 x+y−4≠0이므로 x−y=−4이다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "시각자료 면제 판정: x²−(y−4)²=(x−y+4)(x+y−4)=0이고 x+y−4≠0이므로 x−y=−4이다. problem 축은 추가 그림 없이 발문·수식만으로 충분히 풀이와 의미가 명확하다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "시각자료 면제 판정: x²−(y−4)²=(x−y+4)(x+y−4)=0이고 x+y−4≠0이므로 x−y=−4이다. solution 축은 추가 그림 없이 발문·수식만으로 충분히 풀이와 의미가 명확하다."
+        }
+      }
+    },
+    {
+      "qid": 19,
+      "sourceFingerprint": "3fa1f9623cfb55efdb9b8bff10b1c2e89d1c1216e75fc4b363e92853968a7c49",
+      "blindAnswer": "②",
+      "blindReasoning": "타일 총넓이는 2x²+5x+2=(2x+1)(x+2)이다. 둘레 2((2x+1)+(x+2))=6x+6=42로 x=6이며 x>1을 만족한다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "PASS",
+          "planDigest": "ef3e0a11311114e2ad4baac88aa8f6ee23df06ada04d0eb3589b5a65f62630f5",
+          "reasoning": "문제 조건·독립 계산·학생 단서를 각 축 플랜과 대조: x×x 정사각형 2개, x×1 직사각형 5개, 1×1 정사각형 2개를 빈틈 없는 직사각형 개념도로 분할했다. 축척은 예시이며 x=6 답은 선공개하지 않았다. 실행 형식 및 인용 출처의 유효성도 확인했다."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "30479290802e7b0126b0d8567125635e0b87934bbb5085f6154012dfebf6d34c",
+          "reasoning": "문제 조건·독립 계산·학생 단서를 각 축 플랜과 대조: 면적 2x²+5x+2=(2x+1)(x+2)의 변 길이와 둘레 6x+6=42, x=6을 분할 개념도에 대조했다. 학생용 축척 고지는 유지했다. 실행 형식 및 인용 출처의 유효성도 확인했다."
+        }
+      }
+    },
+    {
+      "qid": 20,
+      "sourceFingerprint": "7778b17b83344fc3fe3d272d715f8d1391a8ab731b172d6d00e70430367f8c31",
+      "blindAnswer": "③",
+      "blindReasoning": "(x−5)(x+9)+k=x²+4x−45+k=(x+a)². 2a=4로 a=2, a²=4로 k=49, a+k=51이다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "시각자료 면제 판정: (x−5)(x+9)+k=x²+4x−45+k=(x+a)². 2a=4로 a=2, a²=4로 k=49, a+k=51이다. problem 축은 추가 그림 없이 발문·수식만으로 충분히 풀이와 의미가 명확하다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "시각자료 면제 판정: (x−5)(x+9)+k=x²+4x−45+k=(x+a)². 2a=4로 a=2, a²=4로 k=49, a+k=51이다. solution 축은 추가 그림 없이 발문·수식만으로 충분히 풀이와 의미가 명확하다."
+        }
+      }
+    },
+    {
+      "qid": 21,
+      "sourceFingerprint": "64cdea10e7a2f87df180d4299c016ec52eb28f56b76195828024a48bcd58d082",
+      "blindAnswer": "-4a",
+      "blindReasoning": "a<0, b>0, a+b>0이므로 |2a|=−2a, |b−a|=b−a, |a+b|=a+b. 전체는 −2a+b−a−a−b=−4a이다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "NOT_APPLICABLE"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "시각자료 면제 판정: a<0, b>0, a+b>0이므로 |2a|=−2a, |b−a|=b−a, |a+b|=a+b. 전체는 −2a+b−a−a−b=−4a이다. problem 축은 추가 그림 없이 발문·수식만으로 충분히 풀이와 의미가 명확하다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "시각자료 면제 판정: a<0, b>0, a+b>0이므로 |2a|=−2a, |b−a|=b−a, |a+b|=a+b. 전체는 −2a+b−a−a−b=−4a이다. solution 축은 추가 그림 없이 발문·수식만으로 충분히 풀이와 의미가 명확하다."
+        }
+      }
+    },
+    {
+      "qid": 22,
+      "sourceFingerprint": "aab7b36261ae645c6e969bd61cc114e6fe72796631ddd988a91e83dbb6f3829d",
+      "blindAnswer": "50",
+      "blindReasoning": "분자는 a²(a−b)+b²(a−b)=(a−b)(a²+b²). a≠b로 약분하고 (a+b)²−2ab=64−14=50이다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "NOT_APPLICABLE"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "시각자료 면제 판정: 분자는 a²(a−b)+b²(a−b)=(a−b)(a²+b²). a≠b로 약분하고 (a+b)²−2ab=64−14=50이다. problem 축은 추가 그림 없이 발문·수식만으로 충분히 풀이와 의미가 명확하다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "시각자료 면제 판정: 분자는 a²(a−b)+b²(a−b)=(a−b)(a²+b²). a≠b로 약분하고 (a+b)²−2ab=64−14=50이다. solution 축은 추가 그림 없이 발문·수식만으로 충분히 풀이와 의미가 명확하다."
+        }
+      }
+    },
+    {
+      "qid": 23,
+      "sourceFingerprint": "952db56dbe84e95a9d301941a350fdd97d39ec07271f5a671b534f865aa8e691",
+      "blindAnswer": "-2",
+      "blindReasoning": "인수분해 (x−2)(x−8)에 x=5−√7을 넣으면 (3−√7)(−3−√7)=−2. 완전제곱 (x−5)²−9=7−9=−2로 일치한다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "NOT_APPLICABLE"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "시각자료 면제 판정: 인수분해 (x−2)(x−8)에 x=5−√7을 넣으면 (3−√7)(−3−√7)=−2. 완전제곱 (x−5)²−9=7−9=−2로 일치한다. problem 축은 추가 그림 없이 발문·수식만으로 충분히 풀이와 의미가 명확하다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "시각자료 면제 판정: 인수분해 (x−2)(x−8)에 x=5−√7을 넣으면 (3−√7)(−3−√7)=−2. 완전제곱 (x−5)²−9=7−9=−2로 일치한다. solution 축은 추가 그림 없이 발문·수식만으로 충분히 풀이와 의미가 명확하다."
+        }
+      }
+    }
+  ]
+}
