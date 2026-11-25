@@ -1,0 +1,81 @@
+{
+  "capability": "rational-spike-v1",
+  "graphPlan": {
+    "family": "rational",
+    "numerator": [
+      "2",
+      "2"
+    ],
+    "denominator": [
+      "-2",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      3.0,
+      5.0
+    ],
+    "viewport": [
+      2.0,
+      6.0,
+      2.0,
+      10.0
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "LeftEnd",
+          "curveX": "3",
+          "unnamed": true,
+          "coordinates": true
+        },
+        {
+          "id": "RightEnd",
+          "curveX": "5",
+          "unnamed": true,
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "정의역의 양 끝 x=3, x=5에서 함수값은 각각 8, 4이다. 이 구간에서 함수가 단조이므로 최댓값과 최솟값은 양 끝점에서 결정된다.",
+  "accessibilityDescription": "유리함수의 닫힌구간 그래프. 왼쪽 끝점은 (3, 8), 오른쪽 끝점은 (5, 4)이며 두 끝은 포함된다.",
+  "sourceConditions": [
+    {
+      "id": "given-function",
+      "condition": "정의역이 $\\{x \\mid 3 \\le x \\le a\\}$인 함수 $f(x) = \\frac{2x+2}{x-2}$의 치역이 $\\{y \\mid b \\le y \\le 8\\}$이고 치역의 최솟값이 $4$일 때, $a+b$의 ",
+      "mappedTo": [
+        "graphPlan.numerator",
+        "graphPlan.denominator"
+      ]
+    },
+    {
+      "id": "interval",
+      "condition": "풀이에서 확정된 닫힌구간 [3, 5]",
+      "mappedTo": [
+        "graphPlan.domain",
+        "graphPlan.overlays.points"
+      ]
+    },
+    {
+      "id": "endpoint-values",
+      "condition": "f(3)=8, f(5)=4",
+      "mappedTo": [
+        "graphPlan.overlays.points[0].curveX",
+        "graphPlan.overlays.points[1].curveX",
+        "graphPlan.overlays.points[0].coordinates",
+        "graphPlan.overlays.points[1].coordinates"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "양 끝점 (3, 8), (5, 4)을 실좌표로 표시하고 닫힌 끝점을 그린다.",
+    "증가·감소 방향을 실제 그래프의 좌우 높이 비교로 보인다."
+  ]
+}

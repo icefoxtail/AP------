@@ -1,0 +1,86 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A"
+      },
+      {
+        "id": "B"
+      }
+    ],
+    "showUniverse": false,
+    "elements": [
+      {
+        "text": "2",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "3",
+        "in": [
+          "B"
+        ]
+      },
+      {
+        "text": "4",
+        "in": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "text": "5",
+        "in": [
+          "B"
+        ]
+      },
+      {
+        "text": "6",
+        "in": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "text": "8",
+        "in": [
+          "A"
+        ]
+      }
+    ],
+    "shade": "A∩B"
+  },
+  "caption": "두 원의 실제 원소 소속을 표시하고 공통 영역에 해당하는 원소를 확인한다.",
+  "accessibilityDescription": "집합 A와 B의 벤다이어그램. 원소 2, 3, 4, 5, 6, 8의 소속과 A∩B 영역을 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "set-A",
+      "condition": "A={2, 4, 6, 8}",
+      "mappedTo": [
+        "diagram.sets[0]",
+        "diagram.elements"
+      ]
+    },
+    {
+      "id": "set-B",
+      "condition": "B={3, 4, 5, 6}",
+      "mappedTo": [
+        "diagram.sets[1]",
+        "diagram.elements"
+      ]
+    },
+    {
+      "id": "target-operation",
+      "condition": "구하는 집합 A∩B",
+      "mappedTo": [
+        "diagram.shade"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 집합에 공통·고유한 원소가 놓일 영역과 연산 대상 영역을 직접 드러낸다."
+  ]
+}
