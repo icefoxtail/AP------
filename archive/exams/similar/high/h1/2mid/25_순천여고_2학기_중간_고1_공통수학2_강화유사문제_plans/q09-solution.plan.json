@@ -1,0 +1,167 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {"length":{"kind":"integer","value":"1"}},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "M",
+          "G"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "mode": "EXTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 680,
+    "height": 500
+  },
+  "displayPoints": [
+    "O",
+    "M",
+    "G",
+    "A"
+  ],
+  "displaySegments": [
+    {
+      "id": "sMG",
+      "refs": [
+        "M",
+        "G"
+      ]
+    },
+    {
+      "id": "sGA",
+      "refs": [
+        "G",
+        "A"
+      ]
+    },
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "t",
+        "ownerSegment": "sMG",
+        "text": "t"
+      },
+      {
+        "id": "twoT",
+        "ownerSegment": "sGA",
+        "text": "2t"
+      }
+    ]
+  },
+  "coordinateLabels": [
+    "M",
+    "G",
+    "A"
+  ],
+  "caption": "무게중심은 중선 AM을 AG:GM=2:1로 나누므로 A=3G−2M=(8,−1)이다. 원점 O에서 A까지의 거리 OA=√65이다.",
+  "accessibilityDescription": "좌표평면에 M(2,5), G(4,3), A(8,-1)가 한 직선에 놓이고 MG 길이를 t, GA 길이를 2t로 표시한 중선과 OA 선분이 있다.",
+  "sourceConditions": [
+    {
+      "id": "SCM-09-1",
+      "condition": "BC의 중점 M=(2,5), 무게중심 G=(4,3)",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "coordinateLabels"
+      ]
+    },
+    {
+      "id": "SCM-09-2",
+      "condition": "AG:GM=2:1, A=3G−2M=(8,−1)",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks.expressionLabels"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "중선 위 무게중심의 2:1 내분 관계",
+    "구한 A와 원점 사이 거리"
+  ]
+}

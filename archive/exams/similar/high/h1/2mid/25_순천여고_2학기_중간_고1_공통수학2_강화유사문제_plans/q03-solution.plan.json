@@ -1,0 +1,180 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "7",
+              "denominator": "2"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "POINT_REFLECTION",
+        "inputs": [
+          "B",
+          "M"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 680,
+    "height": 500
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "M",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBM",
+      "refs": [
+        "B",
+        "M"
+      ]
+    },
+    {
+      "id": "sMC",
+      "refs": [
+        "M",
+        "C"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "rightAngles": [
+    {
+      "id": "raA",
+      "refs": [
+        "B",
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "eSides",
+        "count": 1,
+        "segments": [
+          "sAB",
+          "sAC"
+        ]
+      },
+      {
+        "id": "eMid",
+        "count": 2,
+        "segments": [
+          "sBM",
+          "sMC"
+        ]
+      }
+    ]
+  },
+  "caption": "B(3,4)와 M(7/2,1/2)을 기준으로 C=2M−B=(4,−3)이다. AB=AC=5이고 ∠BAC=90°이므로 A에서 직각인 이등변삼각형이다.",
+  "accessibilityDescription": "삼각형 ABC의 변 BC 위에 중점 M이 있고 AB와 AC에 같은 길이 눈금, A에 직각 표시가 있다.",
+  "sourceConditions": [
+    {
+      "id": "SCM-03-1",
+      "condition": "A(0,0),B(3,4),M=(7/2,1/2)는 BC의 중점",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "planeMarks.equalLengths"
+      ]
+    },
+    {
+      "id": "SCM-03-2",
+      "condition": "C=(4,−3),AB=AC, AB⊥AC",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "rightAngles",
+        "planeMarks.equalLengths"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "중점에서 복원한 C",
+    "직각과 두 변의 같은 길이 표시"
+  ]
+}

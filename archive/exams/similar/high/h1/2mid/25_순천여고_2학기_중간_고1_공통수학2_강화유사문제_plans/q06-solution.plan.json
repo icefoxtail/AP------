@@ -1,0 +1,184 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "-2"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Ar",
+        "op": "LINE_REFLECTION",
+        "inputs": [
+          "A",
+          "L"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "direct",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "Ar",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "L",
+          "direct"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 680,
+    "height": 500
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "Ar",
+    "P"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAP",
+      "refs": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "sArP",
+      "refs": [
+        "Ar",
+        "P"
+      ]
+    },
+    {
+      "id": "sPB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    }
+  ],
+  "displayLines": [
+    "L"
+  ],
+  "displayCircles": [],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "eMirror",
+        "count": 1,
+        "segments": [
+          "sAP",
+          "sArP"
+        ]
+      }
+    ]
+  },
+  "coordinateLabels": [
+    "A",
+    "B",
+    "Ar"
+  ],
+  "caption": "A(4,2)를 x+y=2에 대하여 대칭이동한 A′=(0,−2)와 B(6,6)을 직선으로 잇는다. PA=PA′이므로 PA+PB=PA′+PB≥A′B=10이고, A′,P,B가 일직선일 때 최소이다.",
+  "accessibilityDescription": "직선 x+y=2에 대하여 A와 A′이 대칭이며 P에서 PA와 PA′에 같은 길이 눈금이 있고 A′,P,B가 한 직선으로 연결되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "SCM-06-S1",
+      "condition": "A′은 A를 x+y=2에 대해 대칭이동한 점 (0,−2)",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "coordinateLabels"
+      ]
+    },
+    {
+      "id": "SCM-06-S2",
+      "condition": "최솟값에서 P는 A′B와 x+y=2의 교점이고 PA=PA′",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks.equalLengths"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "대칭이동을 이용한 최단 경로",
+    "PA와 PA′의 거리 보존 표식"
+  ]
+}

@@ -1,0 +1,247 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "-6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 680,
+    "height": 500
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "P",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAP",
+      "refs": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "sPB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sCP",
+      "refs": [
+        "C",
+        "P"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "rightAngles": [
+    {
+      "id": "raD",
+      "refs": [
+        "C",
+        "D",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "eLeg",
+        "count": 1,
+        "segments": [
+          "sAC",
+          "sBC"
+        ]
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dAB",
+        "from": "A",
+        "to": "B",
+        "label": "10",
+        "unit": "m",
+        "side": "ABOVE"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "h",
+        "ownerSegment": "sCD",
+        "text": "6",
+        "unit": "m"
+      },
+      {
+        "id": "cp",
+        "ownerSegment": "sCP",
+        "text": "sqrt(37)",
+        "unit": "m"
+      },
+      {
+        "id": "ap",
+        "ownerSegment": "sAP",
+        "text": "6",
+        "unit": "m"
+      },
+      {
+        "id": "pb",
+        "ownerSegment": "sPB",
+        "text": "4",
+        "unit": "m"
+      }
+    ],
+    "textLabels": [{"id":"area","at":[4,-3],"text":"넓이 30m²","labelKind":"TEXT"}]
+  },
+  "caption": "AC=BC이므로 중점 D(5,0)에 내린 높이 CD는 6m이고, AP:PB=3:2이므로 P=(6,0)이다. 따라서 CP=√(1²+6²)=√37m이며 그림에 수선과 직각, 두 등변 눈금이 있다.",
+  "accessibilityDescription": "등변삼각형에서 C에서 AB의 중점 D로 내린 수선 CD의 직각과 높이 6m, A와 B를 3대 2로 나눈 P까지의 선분 CP 및 길이 루트37미터가 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "SCM-08-S1",
+      "condition": "AB=10m, AC=BC, 넓이 30m²에서 높이 CD=6m",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "planeMarks.equalLengths",
+        "planeMarks.expressionLabels",
+        "planeMarks.textLabels",
+        "rightAngles"
+      ]
+    },
+    {
+      "id": "SCM-08-S2",
+      "condition": "AP:PB=3:2로 P=(6,0), CP=√37m",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks.expressionLabels"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "중점 D에 내린 높이와 직각",
+    "P까지의 거리 √37m"
+  ]
+}

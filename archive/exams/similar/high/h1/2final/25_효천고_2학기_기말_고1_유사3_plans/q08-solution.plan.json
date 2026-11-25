@@ -1,0 +1,92 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -6,
+      3,
+      -2,
+      5
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "3/2",
+        "2"
+      ],
+      "y": [
+        "-1",
+        "1"
+      ]
+    },
+    "curves": [
+      {
+        "id": "g",
+        "kind": "SQRT",
+        "radicand": [
+          "0",
+          "-2"
+        ],
+        "offset": "0",
+        "domain": [
+          "-6",
+          "0"
+        ],
+        "style": "DASHED",
+        "color": "WARM",
+        "label": "y=sqrt(-2x)"
+      },
+      {
+        "id": "f",
+        "kind": "SQRT",
+        "radicand": [
+          "4",
+          "-2"
+        ],
+        "offset": "-1",
+        "domain": [
+          "-6",
+          "2"
+        ],
+        "color": "BLUE",
+        "label": "y=sqrt(4-2x)-1"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "Z",
+          "x": "3/2",
+          "y": "0",
+          "unnamed": true,
+          "coordinates": true
+        },
+        {
+          "id": "S",
+          "x": "2",
+          "y": "-1",
+          "unnamed": true,
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "파란 무리함수 y=√(4−2x)−1은 (2,−1)에서 시작해 왼쪽 위로 뻗고, x절편은 (3/2,0)이다. 주황색 점선 y=√(−2x)에서 오른쪽 2, 아래 1만큼 이동한 곡선이므로 제3사분면을 지나지 않는다.",
+  "accessibilityDescription": "왼쪽 위로 뻗는 두 제곱근 그래프, 오른쪽으로 2와 아래로 1만큼 옮긴 파란 곡선의 시작점 (2,-1)과 x절편 (3/2,0)이 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "HC3-08-1",
+      "condition": "y=√(4−2x)−1, x≤2, y≥−1",
+      "mappedTo": "graphPlan.curves"
+    },
+    {
+      "id": "HC3-08-2",
+      "condition": "x절편 (3/2,0), 끝점 (2,−1)",
+      "mappedTo": "graphPlan.overlays.points"
+    }
+  ],
+  "newVisualInformation": [
+    "정의역 방향과 시작점",
+    "x절편과 제3사분면 부재"
+  ]
+}

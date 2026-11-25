@@ -1,0 +1,89 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A"
+      },
+      {
+        "id": "B"
+      }
+    ],
+    "elements": [
+      {
+        "text": "1",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "2",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "3",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "9",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "6",
+        "in": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "text": "18",
+        "in": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "text": "12",
+        "in": [
+          "B"
+        ]
+      },
+      {
+        "text": "24",
+        "in": [
+          "B"
+        ]
+      },
+      {
+        "text": "30",
+        "in": [
+          "B"
+        ]
+      }
+    ]
+  },
+  "caption": "A={1,2,3,6,9,18}, B={6,12,18,24,30}이다. 조건 X⊆A, X∩B=∅을 동시에 만족시키려면 A−B={1,2,3,9}에서 원소를 고른다. 가능한 X는 2⁴=16개다.",
+  "accessibilityDescription": "두 집합 A와 B의 교집합에는 6과 18, A에만 속하는 영역에는 1,2,3,9, B에만 속하는 영역에는 12,24,30이 있다.",
+  "sourceConditions": [
+    {
+      "id": "SCM-11-1",
+      "condition": "A는 18의 양의 약수",
+      "mappedTo": "diagram.elements"
+    },
+    {
+      "id": "SCM-11-2",
+      "condition": "B는 30 이하의 6의 배수",
+      "mappedTo": "diagram.elements"
+    }
+  ],
+  "newVisualInformation": [
+    "X가 선택할 수 있는 원소가 A−B의 네 원소임을 표시"
+  ]
+}

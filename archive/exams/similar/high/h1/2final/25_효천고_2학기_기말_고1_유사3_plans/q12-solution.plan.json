@@ -1,0 +1,98 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -11,
+      17,
+      -13,
+      15
+    ],
+    "axisTickValues": {
+      "x": [
+        "3"
+      ],
+      "y": [
+        "1"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "RATIONAL",
+        "numerator": [
+          "7",
+          "1"
+        ],
+        "denominator": [
+          "-3",
+          "1"
+        ],
+        "color": "BLUE",
+        "hideLabel": true
+      },
+      {
+        "id": "s1",
+        "kind": "LINE",
+        "coefficients": [
+          "-2",
+          "1"
+        ],
+        "domain": [
+          "-8",
+          "13"
+        ],
+        "style": "DASHED",
+        "color": "GREEN",
+        "label": "y=x-2"
+      },
+      {
+        "id": "s2",
+        "kind": "LINE",
+        "coefficients": [
+          "4",
+          "-1"
+        ],
+        "domain": [
+          "-8",
+          "13"
+        ],
+        "style": "DASHED",
+        "color": "WARM",
+        "label": "y=-x+4"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "C",
+          "x": "3",
+          "y": "1",
+          "unnamed": true,
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "유리함수 y=(x+7)/(x−3)=1+10/(x−3)은 점근선 x=3, y=1의 교점 C(3,1)를 중심으로 대칭이다. 두 점선 y=x−2와 y=−x+4는 모두 C를 지난다.",
+  "accessibilityDescription": "세로 점근선 x=3과 가로 점근선 y=1의 교점 (3,1)을 중심으로 놓인 유리함수와 서로 수직인 두 대칭축이 보인다.",
+  "sourceConditions": [
+    {
+      "id": "HC3-12-1",
+      "condition": "대칭선 y=x−2와 y=−x+4의 교점 (3,1)",
+      "mappedTo": [
+        "graphPlan.curves",
+        "graphPlan.overlays.points"
+      ]
+    },
+    {
+      "id": "HC3-12-2",
+      "condition": "a=1,b=−3에서 y=(x+7)/(x−3), 점근선 x=3,y=1",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "수직·수평 점근선과 그 중심",
+    "중심을 지나는 기울기 ±1의 두 대칭선"
+  ]
+}

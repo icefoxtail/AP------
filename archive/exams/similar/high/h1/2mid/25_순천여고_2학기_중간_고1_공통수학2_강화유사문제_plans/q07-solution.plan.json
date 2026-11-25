@@ -1,0 +1,235 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "AXIS",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "-1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Ar",
+        "op": "LINE_REFLECTION",
+        "inputs": [
+          "A",
+          "AXIS"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ORIG",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "TRANS",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "Ar",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "C",
+          "TRANS"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circle",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "45"
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 680,
+    "height": 500
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "Ar",
+    "C",
+    "H"
+  ],
+  "displaySegments": [
+    {
+      "id": "sCH",
+      "refs": [
+        "C",
+        "H"
+      ]
+    }
+  ],
+  "displayLines": [
+    "AXIS",
+    "ORIG",
+    "TRANS"
+  ],
+  "displayCircles": [
+    "circle"
+  ],
+  "rightAngles": [
+    {
+      "id": "raH",
+      "refs": [
+        "C",
+        "H",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "radiusK",
+        "ownerSegment": "sCH",
+        "text": "k"
+      }
+    ]
+  },
+  "coordinateLabels": [
+    "A",
+    "B",
+    "C"
+  ],
+  "caption": "원래 직선은 2x−y−5=0이고 y=x 대칭 후 접선은 x−2y+5=0이다. 중심 C(6,−2)에서 접선으로 내린 수선 CH는 반지름이므로 k=15/√5=3√5이다.",
+  "accessibilityDescription": "직선 y=x에 대한 두 직선의 대칭과 원의 중심 C(6,-2), 접점 H까지의 수선 및 직각 표식, 원의 반지름 k를 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "SCM-07-1",
+      "condition": "원래 직선은 (0,−5), (5,5)를 지나고 y=x에 대칭",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayLines"
+      ]
+    },
+    {
+      "id": "SCM-07-2",
+      "condition": "대칭 접선과 원의 중심 (6,−2), 접촉 반지름 k=3√5",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayCircles",
+        "displaySegments",
+        "rightAngles",
+        "planeMarks.expressionLabels"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "y=x 반사 후 접선 관계",
+    "반지름과 접선의 직각 표식"
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MEMBERSHIP_TABLE",
+    "sets": [
+      {
+        "id": "P"
+      },
+      {
+        "id": "Q"
+      }
+    ],
+    "elements": [
+      {
+        "text": "ㄱ (0，0)",
+        "in": [
+          "P",
+          "Q"
+        ]
+      },
+      {
+        "text": "ㄱ (1，0)",
+        "in": []
+      },
+      {
+        "text": "ㄴ (1，1)",
+        "in": [
+          "P",
+          "Q"
+        ]
+      },
+      {
+        "text": "ㄴ (1，-1)",
+        "in": [
+          "P"
+        ]
+      },
+      {
+        "text": "ㄷ (1，1)",
+        "in": [
+          "P",
+          "Q"
+        ]
+      },
+      {
+        "text": "ㄷ (3，-1)",
+        "in": [
+          "Q"
+        ]
+      }
+    ]
+  },
+  "caption": "예: 보기별 두 조건 p,q의 진리집합을 각각 P,Q로 나타낸다. ㄱ은 두 조건이 모두 a=b=0과 같고, ㄴ은 (1,-1)이 P에만 있으며, ㄷ은 (3,-1)이 Q에만 있다. 따라서 필요충분조건은 ㄱ뿐이다.",
+  "accessibilityDescription": "두 집합 P와 Q에 대해 ㄱ, ㄴ, ㄷ의 참인 사례와 반례 여섯 행의 소속 여부를 표시한 표이다.",
+  "sourceConditions": [
+    {
+      "id": "HC3-07-1",
+      "condition": "ㄱ에서 p와 q는 모두 a=b=0",
+      "mappedTo": "diagram.elements"
+    },
+    {
+      "id": "HC3-07-2",
+      "condition": "ㄴ에서 (1,-1)은 x²=y²이지만 x≠y",
+      "mappedTo": "diagram.elements"
+    },
+    {
+      "id": "HC3-07-3",
+      "condition": "ㄷ에서 (3,-1)은 합이 양수이나 둘 다 양수가 아님",
+      "mappedTo": "diagram.elements"
+    }
+  ],
+  "newVisualInformation": [
+    "각 선택지의 역방향 함의가 깨지는 반례를 집합 소속으로 구별"
+  ]
+}
