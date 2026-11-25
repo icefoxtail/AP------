@@ -1,0 +1,588 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "P00",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P10",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1",
+              "denominator": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P20",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "2",
+              "denominator": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P30",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P01",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1",
+              "denominator": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P11",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1",
+              "denominator": "3"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1",
+              "denominator": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P21",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "2",
+              "denominator": "3"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1",
+              "denominator": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P31",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1",
+              "denominator": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P02",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2",
+              "denominator": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P12",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1",
+              "denominator": "3"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2",
+              "denominator": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P22",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "2",
+              "denominator": "3"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2",
+              "denominator": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P32",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2",
+              "denominator": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P03",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P13",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1",
+              "denominator": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P23",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "2",
+              "denominator": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P33",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 540,
+    "height": 520
+  },
+  "displayPoints": [
+    "P00",
+    "P10",
+    "P20",
+    "P30",
+    "P01",
+    "P11",
+    "P21",
+    "P31",
+    "P02",
+    "P12",
+    "P22",
+    "P32",
+    "P03",
+    "P13",
+    "P23",
+    "P33"
+  ],
+  "hiddenPointNames": [
+    "P00",
+    "P10",
+    "P20",
+    "P30",
+    "P01",
+    "P11",
+    "P21",
+    "P31",
+    "P02",
+    "P12",
+    "P22",
+    "P32",
+    "P03",
+    "P13",
+    "P23",
+    "P33"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "h00",
+      "refs": [
+        "P00",
+        "P10"
+      ]
+    },
+    {
+      "id": "h10",
+      "refs": [
+        "P10",
+        "P20"
+      ]
+    },
+    {
+      "id": "h20",
+      "refs": [
+        "P20",
+        "P30"
+      ]
+    },
+    {
+      "id": "h01",
+      "refs": [
+        "P01",
+        "P11"
+      ]
+    },
+    {
+      "id": "h11",
+      "refs": [
+        "P11",
+        "P21"
+      ]
+    },
+    {
+      "id": "h21",
+      "refs": [
+        "P21",
+        "P31"
+      ]
+    },
+    {
+      "id": "h02",
+      "refs": [
+        "P02",
+        "P12"
+      ]
+    },
+    {
+      "id": "h12",
+      "refs": [
+        "P12",
+        "P22"
+      ]
+    },
+    {
+      "id": "h22",
+      "refs": [
+        "P22",
+        "P32"
+      ]
+    },
+    {
+      "id": "h03",
+      "refs": [
+        "P03",
+        "P13"
+      ]
+    },
+    {
+      "id": "h13",
+      "refs": [
+        "P13",
+        "P23"
+      ]
+    },
+    {
+      "id": "h23",
+      "refs": [
+        "P23",
+        "P33"
+      ]
+    },
+    {
+      "id": "v00",
+      "refs": [
+        "P00",
+        "P01"
+      ]
+    },
+    {
+      "id": "v01",
+      "refs": [
+        "P01",
+        "P02"
+      ]
+    },
+    {
+      "id": "v02",
+      "refs": [
+        "P02",
+        "P03"
+      ]
+    },
+    {
+      "id": "v10",
+      "refs": [
+        "P10",
+        "P11"
+      ]
+    },
+    {
+      "id": "v11",
+      "refs": [
+        "P11",
+        "P12"
+      ]
+    },
+    {
+      "id": "v12",
+      "refs": [
+        "P12",
+        "P13"
+      ]
+    },
+    {
+      "id": "v20",
+      "refs": [
+        "P20",
+        "P21"
+      ]
+    },
+    {
+      "id": "v21",
+      "refs": [
+        "P21",
+        "P22"
+      ]
+    },
+    {
+      "id": "v22",
+      "refs": [
+        "P22",
+        "P23"
+      ]
+    },
+    {
+      "id": "v30",
+      "refs": [
+        "P30",
+        "P31"
+      ]
+    },
+    {
+      "id": "v31",
+      "refs": [
+        "P31",
+        "P32"
+      ]
+    },
+    {
+      "id": "v32",
+      "refs": [
+        "P32",
+        "P33"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {"id":"unitSide","from":"P00","to":"P30","label":"1","side":"BELOW","factRole":"GIVEN"}
+    ],
+    "regions": [
+      {
+        "id": "center",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "P11",
+              "P21",
+              "P22",
+              "P12"
+            ]
+          }
+        ],
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "한 변이 1인 정사각형의 각 변을 3등분해 만든 3×3 격자에서 첫 시행의 가운데 작은 정사각형만 연한 회색으로 표시했다.",
+  "accessibilityDescription": "정사각형의 가로세로를 각각 정확히 삼등분한 3 곱하기 3 격자. 가운데 칸 하나만 색칠되어 있다. 이후 반복 방식은 표시하지 않았다.",
+  "sourceConditions": [
+    {
+      "id": "unit",
+      "condition": "original square has side 1",
+      "mappedTo": "mathPlan.nodes[all] coordinates 0,1/3,2/3,1"
+    },
+    {
+      "id": "trisect",
+      "condition": "each side is trisected",
+      "mappedTo": "displaySegments[h00..h23,v00..v32]"
+    },
+    {
+      "id": "color",
+      "condition": "central square shaded in first operation",
+      "mappedTo": "planeMarks.regions[center]"
+    }
+  ],
+  "newVisualInformation": [
+    "반복 시행의 선택 규칙이 원문에 명시되지 않아 첫 시행만 표기한다. 풀이의 공비나 정답은 드러내지 않는다."
+  ]
+}
