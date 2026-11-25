@@ -1,0 +1,664 @@
+{
+  "schemaVersion": "gpt-finalqa-evidence-v1",
+  "examUid": "26_강남여고_1학기_중간_고2_대수_유사2",
+  "sourcePath": "archive/exams/similar/high/h2/1mid/26_강남여고_1학기_중간_고2_대수_유사2.js",
+  "blindPackDigest": "218f53f78d212d977c76853608fb945ef12a7b8d9cc4c7690d93a080e1bc8d08",
+  "reviewer": {
+    "id": "GPT independent post-merge FIRST_FORMAL reviewer 2026-11-26 KST",
+    "blindFirstPass": "CONFIRMED",
+    "independentEvidence": "Official answer-free --blind-pack independently solved and all 25 worked calculations frozen at SHA-256 6fc1a388d5d6a3a21b423b422b02f15b7cf6aec095f882e11fe44bd12c1287f1 before reading source answer, solution, metadata or prior receipt; followed by per-question human cross-check and corrected q19 problem picture.",
+    "blindArtifactRef": "scratch:/workspace/scratch/17915ca620e5/qa-gangnam-h2-blind-20261126.json#sha256=6fc1a388d5d6a3a21b423b422b02f15b7cf6aec095f882e11fe44bd12c1287f1"
+  },
+  "questions": [
+    {
+      "qid": 1,
+      "sourceFingerprint": "e570a0b223f5d054132f768dc5c5882e1293aec4caa0aebf74992b897ef03024",
+      "blindAnswer": "④",
+      "blindReasoning": "홀수 제곱근은 부호를 보존하므로 5제곱근(-32)=-2이다. 나머지 네 근호·거듭제곱 등식은 참.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "근호의 참·거짓을 숫자와 부호 규칙으로 판정한다. 형상·위치 정보가 없어 문제 그림 불필요."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "①②③⑤의 실제 근값과 ④의 -2를 각각 대조한다. 짝수·홀수 근호의 부호가 핵심으로 그림 중복."
+        }
+      }
+    },
+    {
+      "qid": 2,
+      "sourceFingerprint": "8300bf90e8f13637cbc5b1c1c23e6f6735f6101041810d516f86e71a97095245",
+      "blindAnswer": "①",
+      "blindReasoning": "(-2)^(-4)=1/16. 다른 선지는 차례대로 sqrt(6), 1, 5, 1/9로 제시값과 다르다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "음수 거듭제곱·영제곱·근호를 식으로 모두 제시해 도형이나 좌표축이 풀이에 개입하지 않는다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "나머지 보기의 실제 값 √6,1,5,1/9를 일렬로 계산해 오답을 배제한다. 시각 보조 불필요."
+        }
+      }
+    },
+    {
+      "qid": 3,
+      "sourceFingerprint": "46a2dcae518455cee182ec88c82951d9feca016639774325ea4366dc8e9230cd",
+      "blindAnswer": "②",
+      "blindReasoning": "a^4=81과 로그의 밑 조건에서 a=3, (1/2)^b=16에서 b=-4, 합 -1.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "두 로그의 정의와 밑 조건만으로 미지수를 정한다. 그래프나 도형 조건이 없다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "a=3,b=-4를 로그 정의로 도출하는 두 단계 산술이 작은칠판에 충분하다."
+        }
+      }
+    },
+    {
+      "qid": 4,
+      "sourceFingerprint": "f2d2451b95ca9c8639762bec5fd82d80560d2606ffe3500d944cae4956d6942f",
+      "blindAnswer": "①",
+      "blindReasoning": "-19π/6 ≡ 5π/6 (mod 2π)만 제2사분면. 나머지는 7π/6, π/6, 5π/3, 7π/4이다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "일반각은 주어진 다섯 각을 2π로 환산해 정확히 판정하며 동경도 추가 정보는 제공하지 않는다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "각을 5π/6,7π/6,π/6,5π/3,7π/4로 환산해 다섯 사분면을 판정한다. 동경 그림은 수식 반복."
+        }
+      }
+    },
+    {
+      "qid": 5,
+      "sourceFingerprint": "24766fc5f8848a7734a30ff61f0af774e3965bed69d164a51cd9e7fec55bd57c",
+      "blindAnswer": "③",
+      "blindReasoning": "OP 길이 5로 cos=3/5, sin=-4/5, tan=-4/3; cos(tan+sin)=-4/5-12/25=-32/25.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "점 (3,-4)의 좌표가 주어져 삼각비·부호가 유일하다. 필수 도형 단서가 없다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "OP=5, sin=-4/5, cos=3/5, tan=-4/3을 써 -32/25를 산출한다. 이 3-4-5 좌표 계산에 도형 필요 없음."
+        }
+      }
+    },
+    {
+      "qid": 6,
+      "sourceFingerprint": "6266a0b42f89881f50f2400e9994911708c0a8f5c30e130fe51c7987f7925990",
+      "blindAnswer": "⑤",
+      "blindReasoning": "log7320=3.8645, log0.0732=-1.1355이므로 합 2.7290.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "상용로그 계산의 입력이 숫자로 완결되어 있어 소수점 위치 그림은 장식이다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "7.32×10³과 7.32×10^-2에 대한 로그를 각각 구해 합을 계산한다. 도표 없음."
+        }
+      }
+    },
+    {
+      "qid": 7,
+      "sourceFingerprint": "351c1da5b17838c23158d1fc4028354859176a80e8b4a043b2d1d0f4b896d0ec",
+      "blindAnswer": "②",
+      "blindReasoning": "sin x의 기본주기는 2π이고 π가 아니다. 기함수·cos 주기·치역·보각 대칭은 참.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "각 선택지의 함수 성질이 수식과 문장으로 명시되어 있어 그래프 판독을 요구하지 않는다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "sin(x+π)=-sin x 반례와 cos의 주기·치역을 문자로 검증할 수 있다. 필수 그래프 없음."
+        }
+      }
+    },
+    {
+      "qid": 8,
+      "sourceFingerprint": "96546a7638f0cd193a7d9886f59b58903ae54dff786a0a36448932f7600cd387",
+      "blindAnswer": "②",
+      "blindReasoning": "수평 방향 두 곡선 사이 폭 log_2(m)은 y=1~9에서 일정. 넓이 8 log_2(m)=24이므로 m=2^3=8.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "두 지수함수와 수평선 y=1,9 및 m>1이 영역을 완전하게 규정하며 그림 없이도 좌우 순서가 정해진다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "높이 y=1..9 전체에서 가로 간격 log₂m이 일정하므로 8log₂m=24임을 해설이 직접 설명한다. 면적 적분·모양 판독이 아닌 항등식이라 그래프 생략 가능."
+        }
+      }
+    },
+    {
+      "qid": 9,
+      "sourceFingerprint": "2c7d218e17723b1e70b7eba49e9bc564b976834c348e2ca5084a1914b521dac4",
+      "blindAnswer": "⑤",
+      "blindReasoning": "역함수 y=log_4 x를 (a,b) 평행이동하면 y=log_4(x-a)+b; 점근선 x=a=3, 점(7,5)에서 b=4, 합 9+16=25.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "역함수·평행이동·점근선과 점 (7,5) 조건이 수식으로 완결되어 있다. 원도표 판독을 요구하지 않는다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "y=log₄(x-a)+b에서 점근선 a=3과 점 (7,5)를 대입한다. x=3 열린 정의역 경계를 이미 수식으로 보존."
+        }
+      }
+    },
+    {
+      "qid": 10,
+      "sourceFingerprint": "b09781fc3f22d140ccd0ad4350686fb1b6d2fa28e8ac8ad870fb25be0405708b",
+      "blindAnswer": "④",
+      "blindReasoning": "f(n)=a^((n+5)/6). f2*f4/f3의 지수 (7+9-8)/6=4/3.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "중첩 근호의 a>1 조건과 f(n) 정의만 쓰며 수의 지수 계산에 시각 요소가 없다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "f(n)=a^((n+5)/6)로 바꿔 세 지수를 더하고 빼는 연쇄이다. 그래프 없음."
+        }
+      }
+    },
+    {
+      "qid": 11,
+      "sourceFingerprint": "7b1c34145c8dce8d96b70758c06416bca5b40fbf1f684372a52fe58bbb80bd88",
+      "blindAnswer": "⑤",
+      "blindReasoning": "432=2^4*3^3. 정수 세제곱수 m^3이 432의 약수인 m=1,2,3,6. n=432,54,16,2 중 차 430.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "자연수 n의 세제곱 나눗셈 조건이며 수의 약수 관계만 요구한다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "432=2⁴3³의 세제곱 약수 1,8,27,216을 열거해 최댓값·최솟값을 확정한다. 표나 그림 불필요."
+        }
+      }
+    },
+    {
+      "qid": 12,
+      "sourceFingerprint": "0b2e0c7aec91da08c6e7d27e1b25bc14934e5bde3c8538933972855b23212b3e",
+      "blindAnswer": "③",
+      "blindReasoning": "밑변환으로 log_b(a)=3/2, log_a(b)=2/3, 합 13/6.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "로그의 밑변환 식과 1이 아닌 양수 조건이 주어져 도형 정보가 필요하지 않다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "밑변환 비율 2/3,3/2를 더한다. 산술 과정 외 도식 이득 없음."
+        }
+      }
+    },
+    {
+      "qid": 13,
+      "sourceFingerprint": "4ed7d3922aabbb83d769a3a65dc52b9c122114f2952f46112d4b025afc87a1b5",
+      "blindAnswer": "③",
+      "blindReasoning": "log18=log2+2log3=1.2552, 8log18=10.0416로 10^10≤18^8<10^11.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "지표를 정하는 10^n 부등식과 주어진 로그 근삿값이 모든 데이터를 제공한다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "8log18=10.0416을 직접 계산해 10과 11 사이임을 판정한다. 로그 그림은 중복."
+        }
+      }
+    },
+    {
+      "qid": 14,
+      "sourceFingerprint": "0141cc6af2b0e302077c354300c06e743c3a84a7977fd30a6ad2aa444bc313e4",
+      "blindAnswer": "④",
+      "blindReasoning": "(sinθ−cosθ)^2=2−(sinθ+cosθ)^2=7/4; 제2사분면이라 양수.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "제2사분면 부호와 sin+cos=1/2가 문장·수식으로 정해져 그림에서 추가 조건을 읽지 않는다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "(sin-cos)²=7/4와 제2사분면 양수 조건으로 √7/2를 고른다. 부호 논리가 글로 충분하다."
+        }
+      }
+    },
+    {
+      "qid": 15,
+      "sourceFingerprint": "cff860400edb3b61ccb90e9d3c44dba917ddabc07e9a21ac7281831cae467338",
+      "blindAnswer": "③",
+      "blindReasoning": "오른쪽 π/6 이동은 2x−π/3, 기본주기 π/2. 수직점근선 x=π/4+nπ/2이고 tan 치역은 모든 실수이므로 ㄷ·ㄹ 거짓.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "tan(2x)의 평행이동·주기·점근선·치역을 보기 문장으로 직접 비교하므로 문제용 그래프가 필수 아님."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "shift π/6·period π/2·asymptote π/4+nπ/2·tan의 비유계성을 항목별로 보인다. 그래프 없이도 모든 보기 판별 가능."
+        }
+      }
+    },
+    {
+      "qid": 16,
+      "sourceFingerprint": "08b6137dfae70b1a019cb3fdc7e3dc7e9d19e03e7290ff78104ed22dd5e63ea8",
+      "blindAnswer": "④",
+      "blindReasoning": "경계를 제외해 x=1,2,3만, 0<y<2^x인 양의 정수는 각각 1,3,7개이므로 11개.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "정수격자 문제지만 범위 0<x<4와 0<y<2^x 및 경계 제외가 전부 명시돼 점의 좌표를 그림에서 읽지 않는다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "x=1,2,3에서 허용되는 y의 수 1·3·7을 전부 열거한다. 11개 점을 따로 그리면 오히려 복잡하다."
+        }
+      }
+    },
+    {
+      "qid": 17,
+      "sourceFingerprint": "ab5a9d7a90fae37846f74b0435b5922e578c2df61385a746752f837d5ce08797",
+      "blindAnswer": "②",
+      "blindReasoning": "A=(1,0),B=(a²,2),C=(a²,0),D=(0,2). 사다리꼴 넓이 2a²−1=7에서 a=2; 변 AC,CB,BD,DA 길이 3,2,4,√5이므로 b=9, a²+b=13.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "A,B와 수선의 발 C,D는 로그함수·두 좌표축·y=2로 정확하게 정의된다. 그림의 추가 수치는 불필요."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "A(1,0),B(4,2),C(4,0),D(0,2) 좌표와 사다리꼴 두 평행변 3·4, 높이2, 빗변√5가 해설에 정량적으로 표시된다. 별도 그림은 수식 중복."
+        }
+      }
+    },
+    {
+      "qid": 18,
+      "sourceFingerprint": "22a9010254bad1f98aa30772ae2376c22f4d03f4b945db2f0fb769f152f68d4e",
+      "blindAnswer": "⑤",
+      "blindReasoning": "5^(9/a)=125=5^3에서 a=3. 25=5²까지 x/a=2, x=6시간.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "세균 증가 배율·시간의 수식이 완전하며 실제 데이터 차트 판독을 요구하지 않는다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "초깃값 k를 배율로 소거하고 5^(9/a)=5³, 5^(t/a)=5²를 순서대로 풀어 t=6을 얻는다."
+        }
+      }
+    },
+    {
+      "qid": 19,
+      "sourceFingerprint": "27f962d1c26779f9ca8a1a243958601c078004b54eac807cee0c1831781f768e",
+      "blindAnswer": "④",
+      "blindReasoning": "둘레 (3/2)rθ+r=12, 넓이 (3/8)r²θ=5. 소거하면 r(12−r)=20, r=2 또는10. θ=10/3 또는2/15로 모두 (0,2π)여서 합12.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "PASS",
+          "planDigest": "c71559db86a4c6ad50945214c728d5ba627f4f15b845c97891612560d7709591",
+          "reasoning": "바깥 부채꼴·동심 작은 부채꼴·반지름 r/2·두 호·두 선분 경계가 발문에 명시돼 독립 풀이 가능. 다만 두 호와 r: r/2 관계의 오독을 막는 바른 모식도가 유익하여 문제용 공식 플랜을 작성했다."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "fbfceec36948b71f2772a4af9669f298c04c6c7cc25b05023e71e0a7c5974ae7",
+          "reasoning": "기존 해설 SVG가 정확한 8:4 동심 부채꼴·두 호·두 연결 선분을 보여 주며, 둘레 3rθ/2+r·넓이 3r²θ/8과 두 해의 θ 범위를 독립 확인했다. 원문 인용 결속을 교정."
+        }
+      }
+    },
+    {
+      "qid": 20,
+      "sourceFingerprint": "a83e4127faf2b337aadbc3933cc2a00759533f116c8625be9073029aab338676",
+      "blindAnswer": "①",
+      "blindReasoning": "기울기 tanθ=-3/4, 제2사분면 sinθ=3/5,cosθ=-4/5. sin(π−θ)cos(π+θ)=(3/5)(4/5)=12/25, 12+25=37.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "직선 기울기 -3/4와 둔각 조건이 sin·cos 부호를 정하며 문제용 보조 삼각형은 필수 아님."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "제2사분면의 3:4:5 부호와 sin(π−θ),cos(π+θ) 대칭을 분수로 명시해 12/25를 산출한다."
+        }
+      }
+    },
+    {
+      "qid": 21,
+      "sourceFingerprint": "a9062cc248388f525c648e35ba06977e7eb39adf2b30ca352a775d3b2c88505c",
+      "blindAnswer": "①",
+      "blindReasoning": "cos2x=1의 x=0,π 합 π; cos2x=-1/2의 x=π/3,2π/3,4π/3,5π/3 합4π; 전체5π.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "삼각방정식과 반열린 정의역이 수식으로 주어져 교점·근의 위치를 그림에서 새로 읽지 않는다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "cos2x=1과 -1/2의 전체 여섯 해 0,π,π/3,2π/3,4π/3,5π/3을 순서대로 열거해 근 누락이 없다."
+        }
+      }
+    },
+    {
+      "qid": 22,
+      "sourceFingerprint": "91f9092f31e8bede438cb8540cad4bb714724cd72aa6d8ad4991c34436ae6486",
+      "blindAnswer": "제2사분면·제4사분면",
+      "blindReasoning": "θ∈(π+2kπ,3π/2+2kπ)이면 θ/2∈(π/2+kπ,3π/4+kπ). 짝수 k에서 제2, 홀수 k에서 제4사분면.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "NOT_APPLICABLE"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "θ의 제3사분면 일반각 조건만 있어 θ/2의 범위는 정수 k의 짝·홀수로 정확히 정할 수 있다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "π/2+kπ<θ/2<3π/4+kπ로 써 k의 짝수·홀수에 따른 제2·제4사분면을 완전히 판정한다."
+        }
+      }
+    },
+    {
+      "qid": 23,
+      "sourceFingerprint": "0e966e092ca2bd0b80dd6ebf2f26ee4615637f5aa0e8fc22fb7a6030113f3efc",
+      "blindAnswer": "18",
+      "blindReasoning": "ab=10²×18=1800=2³3²5², 양의 약수 4×3×3=36개. 1800은 제곱수 아님, a<b인 짝은 36/2=18개.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "NOT_APPLICABLE"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "로그 합·자연수·a<b 조건에서 정수 곱 ab=1800이 유일하게 정해져 시각 정보가 없다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "1800=2³3²5²의 약수 36개를 제곱수 아님·a<b 조건으로 절반으로 나눈다. 도형 중복."
+        }
+      }
+    },
+    {
+      "qid": 24,
+      "sourceFingerprint": "321584e6f5ba42bb1e8364bb7080abcf5167cd2c0de1df69031452d7ec554654",
+      "blindAnswer": "216",
+      "blindReasoning": "abc=2^(1/4)3^(1/6)5^(1/9). 자연수 조건은 n이 lcm(4,6,9)=36의 배수. n≤120은 36,72,108으로 합216.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "NOT_APPLICABLE"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "세 소수의 거듭제곱근과 n≤120 조건이 완결돼 소인수별 배수 조건만 사용한다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "각 소수의 지수가 정수가 되려면 n이 4,6,9의 최소공배수 36의 배수여야 함을 모두 설명한다."
+        }
+      }
+    },
+    {
+      "qid": 25,
+      "sourceFingerprint": "9ba33d8feaae47d0ecd017a6f815af396c511741186573687076b4c3aa2284e9",
+      "blindAnswer": "(π/4,π/2)∪(π/2,7π/6)",
+      "blindReasoning": "cos2x+sin x=(1−sin x)(2sin x+1)>0이므로 −1/2<sin x<1. cos x<sin x는 π/4<x<5π/4. 교집합에서 x=π/2 및 x≥7π/6 제외.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "NOT_APPLICABLE"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "연립 삼각부등식·구간 [0,2π)이 수식으로 주어져 도형 없이는 풀 수 없는 교점 조건이 없다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "(1−sin x)(2sin x+1)>0, cos x<sin x에서 (π/4,5π/4)를 취한 뒤 x=π/2와 [7π/6,5π/4)를 제외한 두 열린 구간을 직접 산출한다. 구간 끝점 포함 여부를 식으로 충분히 검증한다."
+        }
+      }
+    }
+  ]
+}
