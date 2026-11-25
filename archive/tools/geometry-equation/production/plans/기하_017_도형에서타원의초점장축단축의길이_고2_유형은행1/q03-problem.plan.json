@@ -1,0 +1,21 @@
+{
+  "capability": "ellipse-figure-v1",
+  "ellipse": {"center": ["0", "0"], "semiAxisSquared": {"major": "16", "minor": "12"}, "majorAxis": "X"},
+  "points": [
+    {"id": "F", "kind": "FOCUS", "side": 1},
+    {"id": "F'", "kind": "FOCUS", "side": -1},
+    {"id": "P", "kind": "ON_ELLIPSE", "x": "0", "branch": "POS"}
+  ],
+  "segments": [
+    {"id": "sPF", "from": "P", "to": "F"},
+    {"id": "sPFp", "from": "P", "to": "F'"},
+    {"id": "sFFp", "from": "F", "to": "F'"}
+  ],
+  "caption": "타원 위 점 P와 두 초점 F,F′로 이루어진 정삼각형 PF′F",
+  "accessibilityDescription": "가로로 긴 타원의 안쪽에 두 초점 F, F′가 가로로 놓이고, 그 위쪽의 타원 점 P를 두 초점과 이으면 세 변이 똑같은 정삼각형이 된다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "F,F′는 타원의 두 초점, P는 타원 위에 있고 세 점의 삼각형은 정삼각형이다. 세 실제 길이가 4인 내부 배치이되 길이 4는 문제 그림에 공개하지 않는다.", "mappedTo": ["ellipse", "F", "F'", "P", "sPF", "sPFp", "sFFp"]},
+    {"id": "c2", "condition": "정삼각형의 넓이는 4√3이고 미지 단축 길이는 표시하지 않는다. 시각적으로 명시해야 할 세 변의 동일 눈금은 ellipse-figure-v1에 필드가 없어 ENGINE_CAPABILITY_PENDING으로 넘긴다.", "mappedTo": ["sPF", "sPFp", "sFFp"]}
+  ],
+  "newVisualInformation": ["세 초점 연결 선분의 실제 기하 길이가 모두 같게 배치됨; 눈금 표식은 엔진 기능 미지원으로 추후 보강 필요"]
+}
