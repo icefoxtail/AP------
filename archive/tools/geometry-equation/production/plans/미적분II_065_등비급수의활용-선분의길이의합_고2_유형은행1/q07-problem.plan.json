@@ -1,0 +1,243 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "24"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "18"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "E",
+        "F"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "caption": "첫 구간 [0,24], 가운데 [6,18], 다음 [9,15]를 길이24·12·6의 세 줄로 정렬 표시한다.",
+  "accessibilityDescription": "세 높이에 놓인 수평선분이 단계마다 절반으로 짧아지며 해당 시작·끝 좌표를 적었다.",
+  "sourceQuote": "[그림: 수직선에 첫 선분 $[0,24]$와 그 가운데 선분 $[6,18]$, $[9,15]$를 표시한다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "첫째 선분 [0,24]",
+      "mappedTo": "mathPlan.nodes[0..1];displaySegments[0];planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "가운데 [6,18], [9,15] 단계",
+      "mappedTo": "mathPlan.nodes[2..5];displaySegments[1..2];planeMarks.expressionLabels[1..2]"
+    }
+  ],
+  "newVisualInformation": [
+    "대표 첫 단계만 표시하며 급수 결과는 표기하지 않는다."
+  ],
+  "hiddenPointNames": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "len24",
+        "ownerSegment": "s0",
+        "text": "24"
+      },
+      {
+        "id": "len12",
+        "ownerSegment": "s1",
+        "text": "12"
+      },
+      {
+        "id": "len6",
+        "ownerSegment": "s2",
+        "text": "6"
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "t0",
+        "at": "A",
+        "text": "0",
+        "anchor": "SW"
+      },
+      {
+        "id": "t24",
+        "at": "B",
+        "text": "24",
+        "anchor": "SE"
+      },
+      {
+        "id": "t6",
+        "at": "C",
+        "text": "6",
+        "anchor": "SW"
+      },
+      {
+        "id": "t18",
+        "at": "D",
+        "text": "18",
+        "anchor": "SE"
+      },
+      {
+        "id": "t9",
+        "at": "E",
+        "text": "9",
+        "anchor": "SW"
+      },
+      {
+        "id": "t15",
+        "at": "F",
+        "text": "15",
+        "anchor": "SE"
+      }
+    ]
+  }
+}

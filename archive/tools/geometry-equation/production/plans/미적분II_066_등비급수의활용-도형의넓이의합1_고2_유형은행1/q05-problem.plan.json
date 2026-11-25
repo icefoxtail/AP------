@@ -1,0 +1,431 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "3"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "3"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "3"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "3"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "c1",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "c2",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "3"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "C",
+        "O"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "O",
+        "D"
+      ]
+    },
+    {
+      "id": "s5",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "s6",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "s7",
+      "refs": [
+        "F",
+        "O"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "caption": "한 변6 정사각형과 반지름6 사분원, 다음 한 변3√2 정사각형과 사분원. 호 밖 부분은 옅게 칠한다.",
+  "accessibilityDescription": "원점 공유 두 정사각형 각각의 오른쪽 위 구석에서 사분원 바깥쪽 곡선 영역을 칠했다.",
+  "sourceQuote": "[그림: 원점에서 $(6,6)$까지의 축평행 정사각형과 반지름 $6$인 사분원 호를 그린다. 오른쪽 위 꼭짓점이 $(3\\sqrt2,3\\sqrt2)$인 정사각형에서도 같은 작도를 한다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "첫 정사각형 좌표 (0,0)–(6,6)",
+      "mappedTo": "mathPlan.nodes[0..3];displaySegments[0..3]"
+    },
+    {
+      "id": "c2",
+      "condition": "반지름6 첫 사분원 및 밖 영역",
+      "mappedTo": "mathPlan.nodes[7];planeMarks.arcs[0];planeMarks.regions[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "(3√2,3√2) 다음 정사각형과 호",
+      "mappedTo": "mathPlan.nodes[4..6];displaySegments[4..7];mathPlan.nodes[8];planeMarks.arcs[1];planeMarks.regions[1]"
+    }
+  ],
+  "newVisualInformation": [
+    "그림은 첫 두세 단계만 보이며 구하는 무한급수 답은 표시하지 않는다."
+  ],
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "a1",
+        "circle": "c1",
+        "center": "O",
+        "from": "A",
+        "to": "C",
+        "side": "CCW",
+        "highlight": false
+      },
+      {
+        "id": "a2",
+        "circle": "c2",
+        "center": "O",
+        "from": "D",
+        "to": "F",
+        "side": "CCW",
+        "highlight": false
+      }
+    ],
+    "regions": [
+      {
+        "id": "outside1",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "loop": {
+              "start": "A",
+              "steps": [
+                {
+                  "to": "C",
+                  "arc": {
+                    "center": "O",
+                    "side": "CCW"
+                  }
+                },
+                {
+                  "to": "B"
+                },
+                {
+                  "to": "A"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "id": "outside2",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "loop": {
+              "start": "D",
+              "steps": [
+                {
+                  "to": "F",
+                  "arc": {
+                    "center": "O",
+                    "side": "CCW"
+                  }
+                },
+                {
+                  "to": "E"
+                },
+                {
+                  "to": "D"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "side6",
+        "ownerSegment": "s0",
+        "text": "6"
+      }
+    ]
+  }
+}

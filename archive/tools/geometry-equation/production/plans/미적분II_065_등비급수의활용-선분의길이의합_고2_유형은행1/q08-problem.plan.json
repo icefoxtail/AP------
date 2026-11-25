@@ -1,0 +1,281 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "28",
+              "denominator": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "20",
+              "denominator": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "c1",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "M1"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "c2",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "M2"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "c3",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "M3"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "8",
+            "denominator": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A1",
+    "A2",
+    "A3",
+    "A4",
+    "M1",
+    "M2",
+    "M3"
+  ],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "A1",
+        "A2"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "caption": "A₁=0,A₂=12,A₃=4,A₄=28/3를 잇는 위·아래·위의 세 반원호.",
+  "accessibilityDescription": "한 수평선 위 네 점의 첫·둘째, 둘째·셋째, 셋째·넷째를 지름으로 하여 반원을 위아래 번갈아 그렸다.",
+  "sourceQuote": "[그림: 수평선에 $0,12,4,28/3$을 각각 $A_1,A_2,A_3,A_4$로 표시하고 연속한 두 점을 지름 끝으로 하는 반원을 위, 아래, 위 순서로 그린다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "A1..A4의 정확한 네 값",
+      "mappedTo": "mathPlan.nodes[0..3];displayPoints[0..3]"
+    },
+    {
+      "id": "c2",
+      "condition": "위·아래·위 3개의 서로 다른 반원",
+      "mappedTo": "mathPlan.nodes[4..9];planeMarks.arcs[0..2]"
+    }
+  ],
+  "newVisualInformation": [
+    "대표 첫 단계만 표시하며 급수 결과는 표기하지 않는다."
+  ],
+  "hiddenPointNames": [
+    "M1",
+    "M2",
+    "M3"
+  ],
+  "pointNames": {
+    "A1": "A_1",
+    "A2": "A_2",
+    "A3": "A_3",
+    "A4": "A_4"
+  },
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "arc1",
+        "circle": "c1",
+        "center": "M1",
+        "from": "A1",
+        "to": "A2",
+        "side": "CW",
+        "highlight": false
+      },
+      {
+        "id": "arc2",
+        "circle": "c2",
+        "center": "M2",
+        "from": "A2",
+        "to": "A3",
+        "side": "CW",
+        "highlight": false
+      },
+      {
+        "id": "arc3",
+        "circle": "c3",
+        "center": "M3",
+        "from": "A3",
+        "to": "A4",
+        "side": "CW",
+        "highlight": false
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "d12",
+        "ownerSegment": "s0",
+        "text": "12"
+      }
+    ]
+  }
+}

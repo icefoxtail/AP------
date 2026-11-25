@@ -1,0 +1,255 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "9",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "9",
+              "denominator": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "c1",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "M1"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "c2",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "M2"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "c3",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "M3"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "9",
+            "denominator": "4"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B1",
+    "B2",
+    "B3",
+    "M1",
+    "M2",
+    "M3"
+  ],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "A",
+        "B1"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "c1",
+    "c2",
+    "c3"
+  ],
+  "caption": "공통 지름 끝 A=0, B₁=8, B₂=6, B₃=9/2인 원 세 개.",
+  "accessibilityDescription": "수평선 왼쪽 A를 모두 지나지만 중심과 반지름은 서로 다른 세 원을 그렸다.",
+  "sourceQuote": "[그림: 수평선 위에 $A=0,B_1=8,B_2=6,B_3=9/2$를 표시하고 $A$를 공통 지름 끝점으로 하는 원 세 개를 그린다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "A,B1,B2,B3 지름 양끝",
+      "mappedTo": "mathPlan.nodes[0..3];displayPoints[0..3]"
+    },
+    {
+      "id": "c2",
+      "condition": "지름8,6,9/2의 세 원",
+      "mappedTo": "mathPlan.nodes[4..9];displayCircles[0..2]"
+    }
+  ],
+  "newVisualInformation": [
+    "그림은 첫 두세 단계만 보이며 구하는 무한급수 답은 표시하지 않는다."
+  ],
+  "hiddenPointNames": [
+    "M1",
+    "M2",
+    "M3"
+  ],
+  "pointNames": {
+    "B1": "B_1",
+    "B2": "B_2",
+    "B3": "B_3"
+  },
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "d8",
+        "ownerSegment": "s0",
+        "text": "8"
+      }
+    ]
+  }
+}

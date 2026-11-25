@@ -1,0 +1,237 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "c1",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "c2",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "rational",
+                "numerator": "3",
+                "denominator": "2"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "T",
+    "R",
+    "B",
+    "L"
+  ],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "T",
+        "R"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "R",
+        "B"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "B",
+        "L"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "L",
+        "T"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "O",
+        "T"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "c1",
+    "c2"
+  ],
+  "caption": "반지름3 외접원, 상하좌우 꼭짓점의 내접 정사각형, 반지름 3/√2의 동심 내접원.",
+  "accessibilityDescription": "중심이 같은 큰 원과 작은 원 사이에 원둘레 네 점을 꼭짓점으로 한 정사각형이 있다.",
+  "sourceQuote": "[그림: 반지름 $3$인 원, 꼭짓점이 원의 상하좌우에 있는 정사각형, 네 변에 접하는 동심원을 차례로 그린다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "반지름3인 원과 네 꼭짓점",
+      "mappedTo": "mathPlan.nodes[0..4];mathPlan.nodes[5];displayCircles[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "정사각형의 네 변과 동심 내접원",
+      "mappedTo": "displaySegments[0..3];mathPlan.nodes[6];displayCircles[1]"
+    }
+  ],
+  "newVisualInformation": [
+    "대표 첫 단계만 표시하며 급수 결과는 표기하지 않는다."
+  ],
+  "hiddenPointNames": [
+    "T",
+    "R",
+    "B",
+    "L"
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "rad3",
+        "ownerSegment": "s4",
+        "text": "3"
+      }
+    ]
+  }
+}

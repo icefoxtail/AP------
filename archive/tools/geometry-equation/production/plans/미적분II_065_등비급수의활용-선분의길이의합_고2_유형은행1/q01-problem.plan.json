@@ -1,0 +1,284 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "X",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "3"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Y",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1",
+              "denominator": "2"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "1",
+                  "denominator": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "X",
+    "Y",
+    "P0",
+    "P1",
+    "P2"
+  ],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "O",
+        "X"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "O",
+        "Y"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "P0",
+        "P1"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "P1",
+        "P2"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "O",
+        "P0"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "pointNames": {"P1": "P_1", "P2": "P_2"},
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a60",
+        "refs": [
+          "Y",
+          "O",
+          "X"
+        ],
+        "value": 60,
+        "label": "60°",
+        "arcs": 1
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "d4",
+        "ownerSegment": "s4",
+        "text": "4"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "r1",
+      "refs": [
+        "P0",
+        "P1",
+        "O"
+      ]
+    },
+    {
+      "id": "r2",
+      "refs": [
+        "P1",
+        "P2",
+        "O"
+      ]
+    }
+  ],
+  "caption": "첫 두 단계: ∠XOY=60°, OP₀=4, P₀P₁⊥OY, P₁P₂⊥OX.",
+  "accessibilityDescription": "원점에서 오른쪽으로 수평 OY와 위쪽 60도 OX가 뻗고 각 반직선 위로 연속해서 수선을 내려 P0,P1,P2를 연결한다.",
+  "sourceQuote": "[그림: $OY$를 오른쪽 수평으로, $OX$를 그 위로 $60^\\circ$ 기울여 그리고 $P_0,P_1,P_2$를 수직 표시와 함께 잇는다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 반직선 OX, OY의 끼인각 60°",
+      "mappedTo": "displaySegments[0..1];planeMarks.angles[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "OP0=4와 P0,P1,P2의 번갈아 수선",
+      "mappedTo": "mathPlan.nodes[3..5];displaySegments[2..3];rightAngles[0..1]"
+    }
+  ],
+  "newVisualInformation": [
+    "첫 단계 이후의 극한 길이·최종 정답은 표기하지 않는다.",
+    "ENGINE_CAPABILITY_PENDING: 점 P₀의 아래첨자 0 이름은 현재 pointNames에서 거부되어 좌표·수선은 실제 표시하되 이름은 완전 대응하지 못한다."
+  ]
+}

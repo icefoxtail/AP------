@@ -1,0 +1,230 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "neg",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "-3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "3"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "-3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "c0",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "c1",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "T",
+    "L",
+    "R"
+  ],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "T",
+        "L"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "L",
+        "R"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "R",
+        "T"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "O",
+        "T"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "c0",
+    "c1"
+  ],
+  "caption": "반지름6인 외접원에 꼭짓점 하나가 위인 정삼각형을 내접시키고 그 안에 반지름3 내접원을 그린다.",
+  "accessibilityDescription": "큰 원둘레 위 세 점의 정삼각형과 세 변에 접하는 작은 동심원.",
+  "sourceQuote": "[그림: 원에 꼭짓점 하나가 맨 위인 정삼각형을 내접시키고 그 세 변에 접하는 동심원을 그린다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "반지름6 외접원",
+      "mappedTo": "mathPlan.nodes[0];mathPlan.nodes[4];displayCircles[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "정삼각형 3변 및 반지름3 내접원",
+      "mappedTo": "mathPlan.nodes[1..3];displaySegments[0..2];mathPlan.nodes[5];displayCircles[1]"
+    }
+  ],
+  "newVisualInformation": [
+    "그림은 첫 두세 단계만 보이며 구하는 무한급수 답은 표시하지 않는다."
+  ],
+  "hiddenPointNames": [
+    "T",
+    "L",
+    "R"
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "r6",
+        "ownerSegment": "s3",
+        "text": "6"
+      }
+    ]
+  }
+}
