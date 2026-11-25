@@ -1,0 +1,27 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": ["0", "-2", "1"],
+    "sourceDomain": { "kind": "ALL_REALS" },
+    "domain": [-2, 4],
+    "viewport": [-2, 4, -2, 8],
+    "requiredPoints": [
+      { "id": "L", "x": -1, "y": 3 },
+      { "id": "A", "x": 0, "y": 0 },
+      { "id": "V", "x": 1, "y": -1 },
+      { "id": "B", "x": 2, "y": 0 },
+      { "id": "R", "x": 3, "y": 3 }
+    ],
+    "axisTickValues": { "x": [-1, 1, 3], "y": [] }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "허용되는 정수 p 중 p=0인 대표 사례에서 -1과 3에서는 양수, 축 x=1에서는 음수이다.",
+  "accessibilityDescription": "위로 열린 포물선 y=x제곱-2x가 x=-1과 x=3에서 높이 3을 지나고 꼭짓점은 (1,-1)에 있다.",
+  "sourceQuote": "두 실근 α, β가 -1<α<1<β<3을 만족",
+  "sourceConditions": [
+    { "id": "c1", "condition": "f(x)=x²-2x+p, 축 x=1", "mappedTo": ["graphPlan.coefficients", "graphPlan.requiredPoints"] },
+    { "id": "c2", "condition": "대표 p=0에서 f(-1)=f(3)=3>0, f(1)=-1<0, 두 근은 0과 2", "mappedTo": ["graphPlan.requiredPoints"] }
+  ],
+  "newVisualInformation": ["p=0인 정수 허용 사례 한 개만 그림에 나타냈으며 p=-2,-1의 별도 그래프를 대신하지 않는다", "실근이 두 경계 -1과 3의 안쪽에 위치하는 이유가 부호와 축에 의해 설명된다"]
+}

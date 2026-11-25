@@ -1,0 +1,36 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "O", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "4" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "B", "op": "POLAR_POINT", "inputs": ["O", "A"], "args": { "length": { "kind": "integer", "value": "4" }, "angleDeg": { "kind": "integer", "value": "45" }, "turn": "CCW" }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "C", "op": "POLAR_POINT", "inputs": ["O", "A"], "args": { "length": { "kind": "integer", "value": "4" }, "angleDeg": { "kind": "integer", "value": "90" }, "turn": "CCW" }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "D", "op": "POLAR_POINT", "inputs": ["O", "A"], "args": { "length": { "kind": "integer", "value": "4" }, "angleDeg": { "kind": "integer", "value": "135" }, "turn": "CCW" }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "E", "op": "POLAR_POINT", "inputs": ["O", "A"], "args": { "length": { "kind": "integer", "value": "4" }, "angleDeg": { "kind": "integer", "value": "180" }, "turn": "CCW" }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "F", "op": "POLAR_POINT", "inputs": ["O", "A"], "args": { "length": { "kind": "integer", "value": "4" }, "angleDeg": { "kind": "integer", "value": "225" }, "turn": "CCW" }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "G", "op": "POLAR_POINT", "inputs": ["O", "A"], "args": { "length": { "kind": "integer", "value": "4" }, "angleDeg": { "kind": "integer", "value": "270" }, "turn": "CCW" }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "H", "op": "POLAR_POINT", "inputs": ["O", "A"], "args": { "length": { "kind": "integer", "value": "4" }, "angleDeg": { "kind": "integer", "value": "315" }, "turn": "CCW" }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "cir", "op": "CIRCLE_CENTER_RADIUS", "inputs": ["O"], "args": { "radius": { "kind": "integer", "value": "4" } }, "outputType": "CIRCLE", "factRole": "DERIVED_INTERMEDIATE" }
+    ]
+  },
+  "displayPoints": ["O", "A", "B", "C", "D", "E", "F", "G", "H"],
+  "hiddenPointNames": ["O", "A", "B", "C", "D", "E", "F", "G", "H"],
+  "unmarkedPointNames": ["O"],
+  "displayLines": [],
+  "displayCircles": ["cir"],
+  "displaySegments": [],
+  "coordinateCanvas": { "width": 520, "height": 440 },
+  "planeMarks": { "textLabels": [{ "id": "note8", "at": [0, 5], "text": "일정한 간격의 8점", "labelKind": "TEXT", "factRole": "GIVEN" }] },
+  "caption": "원둘레에 같은 간격으로 놓인 이름 없는 여덟 점",
+  "accessibilityDescription": "하나의 원둘레 위에 같은 간격으로 배치한 여덟 개의 점이 있다. 어떤 점 사이도 아직 연결하지 않았다.",
+  "sourceQuote": "원 위에 일정한 간격으로 놓인 8개의 점이 있다",
+  "sourceConditions": [
+    { "id": "c1", "condition": "한 원 위의 서로 다른 점 여덟 개", "mappedTo": ["displayCircles", "displayPoints"] },
+    { "id": "c2", "condition": "연속한 점의 중심각이 45°로 모두 같음", "mappedTo": ["mathPlan.nodes"] },
+    { "id": "c3", "condition": "반지름 4는 동일한 배열을 보여 주는 대표 축척이며 문제의 수치가 아님", "mappedTo": ["mathPlan.nodes"] }
+  ],
+  "newVisualInformation": ["원둘레의 점 간격만 나타내며 지름·삼각형·직각 등 풀이 정보는 표시하지 않는다", "발문에 없는 점 이름을 화면에 추가하지 않는다"]
+}

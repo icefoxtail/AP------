@@ -1,0 +1,21 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": ["1", "-2", "1"],
+    "sourceDomain": { "kind": "ALL_REALS" },
+    "domain": [-2, 4],
+    "viewport": [-2, 4, -1, 10],
+    "requiredPoints": [{ "id": "T", "x": 1, "y": 0 }],
+    "axisTickValues": { "x": [1], "y": [] }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "가능한 주사위 결과 중 (a,b)=(2,1)이면 포물선이 (1,0)에서 x축에 접한다.",
+  "accessibilityDescription": "포물선 y=x제곱-2x+1의 꼭짓점 T(1,0)가 x축에 닿고 다른 곳에서는 x축 위에 있다.",
+  "sourceQuote": "이차함수 y=x²-ax+b의 그래프가 x축과 접할 때 그 접점의 x좌표가 정수",
+  "sourceConditions": [
+    { "id": "c1", "condition": "a=2,b=1인 허용 표본의 이차함수 y=(x-1)²", "mappedTo": ["graphPlan.coefficients"] },
+    { "id": "c2", "condition": "판별식 0의 중근에 대응하는 접점 x=a/2=1", "mappedTo": ["graphPlan.requiredPoints"] }
+  ],
+  "newVisualInformation": ["(a,b)=(2,1)인 접점 예시만 그림으로 나타냈다", "다른 허용 쌍 (4,4)는 동일한 접선 구조로 식을 대조한다"]
+}

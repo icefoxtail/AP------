@@ -1,0 +1,27 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      { "coefficients": ["12", "-2"] },
+      { "coefficients": ["4"] },
+      { "coefficients": ["-12", "2"] }
+    ],
+    "breakpoints": [{ "x": "4", "y": "4" }, { "x": "8", "y": "4" }],
+    "sourceDomain": { "kind": "ALL_REALS" },
+    "requiredPoints": [
+      { "id": "A", "x": 4, "y": 4 },
+      { "id": "B", "x": 8, "y": 4 }
+    ],
+    "axisTickValues": { "x": [4, 8], "y": [4] }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "a=4인 경계 사례: x=4부터 x=8까지 함수값이 4로 일정하다.",
+  "accessibilityDescription": "두 꺾임점 A(4,4), B(8,4) 사이가 수평이고 좌우에서는 함수값이 증가하는 절댓값 합의 그래프이다.",
+  "sourceQuote": "모든 실수 x에 대하여 |x-a|+|x-2a|≥4가 항상 성립하도록 하는 양수 a의 최솟값",
+  "sourceConditions": [
+    { "id": "c1", "condition": "a>0인 f(x)=|x-a|+|x-2a|의 그래프", "mappedTo": ["graphPlan.pieces", "graphPlan.breakpoints"] },
+    { "id": "c2", "condition": "a=4일 때 경계점 x=a,2a에서 함수값은 a=4", "mappedTo": ["graphPlan.breakpoints", "graphPlan.requiredPoints"] }
+  ],
+  "newVisualInformation": ["해설에서 구한 최소 허용 매개변수 a=4를 대입한 대표 그래프이며 일반 a의 모든 그래프를 뜻하지 않는다", "최솟값이 한 점이 아니라 닫힌 구간에서 일정하다는 사실"]
+}

@@ -1,0 +1,42 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "O", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "4" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "B", "op": "POLAR_POINT", "inputs": ["O", "A"], "args": { "length": { "kind": "integer", "value": "4" }, "angleDeg": { "kind": "integer", "value": "45" }, "turn": "CCW" }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "C", "op": "POLAR_POINT", "inputs": ["O", "A"], "args": { "length": { "kind": "integer", "value": "4" }, "angleDeg": { "kind": "integer", "value": "90" }, "turn": "CCW" }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "D", "op": "POLAR_POINT", "inputs": ["O", "A"], "args": { "length": { "kind": "integer", "value": "4" }, "angleDeg": { "kind": "integer", "value": "135" }, "turn": "CCW" }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "E", "op": "POLAR_POINT", "inputs": ["O", "A"], "args": { "length": { "kind": "integer", "value": "4" }, "angleDeg": { "kind": "integer", "value": "180" }, "turn": "CCW" }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "F", "op": "POLAR_POINT", "inputs": ["O", "A"], "args": { "length": { "kind": "integer", "value": "4" }, "angleDeg": { "kind": "integer", "value": "225" }, "turn": "CCW" }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "G", "op": "POLAR_POINT", "inputs": ["O", "A"], "args": { "length": { "kind": "integer", "value": "4" }, "angleDeg": { "kind": "integer", "value": "270" }, "turn": "CCW" }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "H", "op": "POLAR_POINT", "inputs": ["O", "A"], "args": { "length": { "kind": "integer", "value": "4" }, "angleDeg": { "kind": "integer", "value": "315" }, "turn": "CCW" }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "cir", "op": "CIRCLE_CENTER_RADIUS", "inputs": ["O"], "args": { "radius": { "kind": "integer", "value": "4" } }, "outputType": "CIRCLE", "factRole": "DERIVED_INTERMEDIATE" }
+    ]
+  },
+  "displayPoints": ["O", "A", "B", "C", "D", "E", "F", "G", "H"],
+  "hiddenPointNames": ["O", "A", "B", "C", "D", "E", "F", "G", "H"],
+  "unmarkedPointNames": ["O"],
+  "displayLines": [],
+  "displayCircles": ["cir"],
+  "displaySegments": [
+    { "id": "sAE", "refs": ["A", "E"], "emphasis": "BOLD" },
+    { "id": "sAB", "refs": ["A", "B"] },
+    { "id": "sBE", "refs": ["B", "E"] }
+  ],
+  "rightAngles": [{ "id": "rB", "refs": ["A", "B", "E"] }],
+  "coordinateCanvas": { "width": 540, "height": 440 },
+  "planeMarks": { "textLabels": [{ "id": "diamNote", "at": [0, -1], "text": "지름", "labelKind": "TEXT", "factRole": "DERIVED_INTERMEDIATE" }] },
+  "caption": "서로 마주 보는 두 점을 지름의 양끝으로 고르면 세 번째 원주 점에서 직각을 이룬다.",
+  "accessibilityDescription": "여덟 점이 일정 간격으로 놓인 원 위에 지름 하나와 원주점으로 향하는 선분 두 개가 그려져 직각삼각형을 이룬다.",
+  "sourceQuote": "원에 내접하는 삼각형이 직각삼각형이 되려면 한 변이 반드시 원의 지름",
+  "sourceConditions": [
+    { "id": "c1", "condition": "정팔각형의 꼭짓점 위치와 같은 원주상의 8점", "mappedTo": ["displayPoints", "displayCircles", "mathPlan.nodes"] },
+    { "id": "c2", "condition": "대표 지름의 양 끝을 연결하고 다른 원주점 하나를 선택", "mappedTo": ["displaySegments"] },
+    { "id": "c3", "condition": "지름에 대한 원주각 90°", "mappedTo": ["rightAngles"] },
+    { "id": "c4", "condition": "반지름 4와 점의 내부 id는 대표 작도용이며 발문에 제시된 실제 수치·이름이 아님", "mappedTo": ["mathPlan.nodes", "hiddenPointNames"] }
+  ],
+  "newVisualInformation": ["지름 하나를 정했을 때 남은 여섯 점 각각과 직각삼각형을 만들 수 있다는 핵심 원주각 관계의 한 사례", "여덟 점의 이름을 학생에게 표시하지 않고 면색을 채우지 않는다"]
+}
