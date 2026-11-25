@@ -1,0 +1,185 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "-4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "K1",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O1"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "K2",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O2"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "-1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O1",
+    "O2"
+  ],
+  "displayCircles": [
+    "K1",
+    "K2"
+  ],
+  "displayLines": [
+    "D"
+  ],
+  "pointNames": {
+    "O1": "O₁",
+    "O2": "O₂"
+  },
+  "coordinateLabels": [
+    "O1",
+    "O2"
+  ],
+  "coordinatePlacement": "PANEL",
+  "lineLabels": [
+    {
+      "nodeId": "D",
+      "form": "SLOPE_INTERCEPT"
+    }
+  ],
+  "caption": "주어진 두 원과 두 경유 직선의 위치",
+  "accessibilityDescription": "첫째 원의 중심 4,2와 둘째 원의 중심 4,-4, 공통 반지름 1, 경유축 x축과 직선 y=x만 나타낸다. 미지점 A,B,P,Q 및 최솟값은 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "circle1",
+      "condition": "첫째 원 중심 4,2, 반지름 1",
+      "mappedTo": [
+        "O1",
+        "K1"
+      ]
+    },
+    {
+      "id": "circle2",
+      "condition": "둘째 원 중심 4,-4, 반지름 1",
+      "mappedTo": [
+        "O2",
+        "K2"
+      ]
+    },
+    {
+      "id": "diagonal",
+      "condition": "y=x",
+      "mappedTo": "D"
+    },
+    {
+      "id": "via",
+      "condition": "첫 경유축 x축, 둘째 경유축 y=x",
+      "mappedTo": [
+        "O",
+        "D"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 중심과 같은 반지름의 원 두 개 및 y=x를 원문 수치대로 그린다. 답·접점·최단경로는 문제 그림에 그리지 않는다."
+  ]
+}

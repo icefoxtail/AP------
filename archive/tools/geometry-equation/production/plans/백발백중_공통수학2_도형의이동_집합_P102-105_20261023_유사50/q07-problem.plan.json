@@ -1,0 +1,122 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "K",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "C",
+    "B"
+  ],
+  "displayCircles": [
+    "K"
+  ],
+  "coordinateLabels": [
+    "C",
+    "B"
+  ],
+  "coordinatePlacement": "PANEL",
+  "pointNames": {
+    "C": "O"
+  },
+  "caption": "중심 O(3,4)의 단위원과 외부점 B(6,0)",
+  "accessibilityDescription": "중심 O(3,4), 반지름 1인 원과 원 밖의 점 B(6,0)만 그린다. 최단점 또는 최장점 A와 그 거리는 가려 둔다.",
+  "sourceConditions": [
+    {
+      "id": "circle",
+      "condition": "원 중심 (3,4), 반지름 1",
+      "mappedTo": [
+        "C",
+        "K"
+      ]
+    },
+    {
+      "id": "external",
+      "condition": "점 B(6,0)",
+      "mappedTo": "B"
+    }
+  ],
+  "newVisualInformation": [
+    "원과 외부점의 상대적 위치 및 문제에서 주어진 두 좌표만 제시한다."
+  ]
+}

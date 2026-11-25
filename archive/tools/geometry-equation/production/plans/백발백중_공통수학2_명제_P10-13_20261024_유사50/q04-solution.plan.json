@@ -1,0 +1,73 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "p",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-2",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "4",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "~q",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "0",
+              "state": "CLOSED"
+            }
+          },
+          {
+            "lo": {
+              "value": "5",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ]
+      },
+      {
+        "kind": "RESULT",
+        "label": "공통 범위"
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "부정 조건의 진리집합"
+  },
+  "caption": "p와 q의 부정의 교집합을 수직선 세 줄로 비교하고 최종 구간 [-2,0]의 두 닫힌 끝점을 표시한다.",
+  "accessibilityDescription": "p와 q의 부정의 교집합을 수직선 세 줄로 비교하고 최종 구간 [-2,0]의 두 닫힌 끝점을 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "range1",
+      "condition": "P=[-2,4]",
+      "mappedTo": "numberLine.rows"
+    },
+    {
+      "id": "range2",
+      "condition": "Q의 부정=(-∞,0]∪(5,∞)",
+      "mappedTo": "numberLine.rows"
+    },
+    {
+      "id": "range3",
+      "condition": "P∩Qᶜ=[-2,0]",
+      "mappedTo": "numberLine.rows"
+    }
+  ],
+  "newVisualInformation": [
+    "원문의 여집합과 공통 구간을 실제 열린·닫힌 점 및 수평 구간으로 나타낸다."
+  ]
+}
