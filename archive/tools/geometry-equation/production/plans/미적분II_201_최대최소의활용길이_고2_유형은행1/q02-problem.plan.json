@@ -1,0 +1,152 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "45"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "70"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "25"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "P",
+    "A",
+    "B",
+    "Q"
+  ],
+  "hiddenPointNames": [],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "A",
+        "Q"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "Q",
+        "B"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "caption": "AP=45 m, PB=70 m인 직각 배치와 도로 위 대표점 Q를 정확한 길이 비율로 보인다.",
+  "accessibilityDescription": "AP=45 m, PB=70 m인 직각 배치와 도로 위 대표점 Q를 정확한 길이 비율로 보인다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "P=(0,0), A=(0,45), B=(70,0)",
+      "mappedTo": "mathPlan.nodes[0..2]"
+    },
+    {
+      "id": "c2",
+      "condition": "도로 PB와 Q(t,0), 0≤t≤70 (대표 t=25)",
+      "mappedTo": "mathPlan.nodes[3];displaySegments[2..3];ENGINE_CAPABILITY_PENDING: VARIABLE_ROAD_POINT_LABEL: Q(t,0)의 미지 t를 일반 기호좌표로 점 옆에 직접 인쇄하는 PLANE_FIGURE 필드 미지원"
+    },
+    {
+      "id": "c3",
+      "condition": "AP는 도로 PB에 수직, 이동 경로 A→Q→B",
+      "mappedTo": "displaySegments[0..1];displaySegments[3]"
+    }
+  ],
+  "newVisualInformation": [
+    "ENGINE_CAPABILITY_PENDING: VARIABLE_ROAD_POINT_LABEL: Q(t,0)의 미지 t를 일반 기호좌표로 점 옆에 직접 인쇄하는 PLANE_FIGURE 필드 미지원",
+    "원문 원본 JS 불변. 임의의 수치 대체로 미지원 기하조건을 채우지 않는다."
+  ],
+  "sourceQuote": "[그림: P$(0,0)$, A$(0,45)$, B$(70,0)$, Q$(t,0)$를 표시하고 AP, AQ, PB를 잇는다.]"
+}

@@ -1,0 +1,86 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -1.3,
+      4.3,
+      -2.8,
+      1.8
+    ],
+    "curves": [
+      {
+        "id": "left",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "2",
+          "-1"
+        ],
+        "domain": [
+          "-1",
+          "2"
+        ],
+        "label": "y=2x-x^2"
+      },
+      {
+        "id": "right",
+        "kind": "LINE",
+        "coefficients": [
+          "-3",
+          "1"
+        ],
+        "domain": [
+          "2",
+          "4"
+        ],
+        "domainStates": [
+          "OPEN",
+          "NONE"
+        ],
+        "label": "y=x-3"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "2",
+        "3"
+      ],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "y"
+    }
+  },
+  "caption": "x<2의 포물선 가지와 x>2의 직선 가지를 분리하고 x=2의 (2,0),(2,-1)에 빈 점을 보인다.",
+  "accessibilityDescription": "x<2의 포물선 가지와 x>2의 직선 가지를 분리하고 x=2의 (2,0),(2,-1)에 빈 점을 보인다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "x<2에서 f'(x)=1-(x-1)²",
+      "mappedTo": "graphPlan.curves[0].coefficients;graphPlan.curves[0].domain"
+    },
+    {
+      "id": "c2",
+      "condition": "x>2에서 f'(x)=x-3",
+      "mappedTo": "graphPlan.curves[1].coefficients;graphPlan.curves[1].domain"
+    },
+    {
+      "id": "c3",
+      "condition": "x=2에서 미분계수 존재하지 않음, 두 끝점 (2,0),(2,-1)은 빈 점",
+      "mappedTo": "graphPlan.curves[1].domainStates;ENGINE_CAPABILITY_PENDING: QUADRATIC_ENDPOINT_OPEN_MARKER: multi-curve의 Y_OF_X 왼쪽 가지 (2,0)에 OPEN 끝점 지정 미지원"
+    },
+    {
+      "id": "c4",
+      "condition": "원문 y=f′(x) 도함수 표기의 프라임 글리프",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: DERIVATIVE_FUNCTION_LABEL: 축 제목의 f′(x) 프라임 글리프를 AXIS_TITLE_INVALID:y가 거절함"
+    }
+  ],
+  "newVisualInformation": [
+    "ENGINE_CAPABILITY_PENDING: QUADRATIC_ENDPOINT_OPEN_MARKER: multi-curve의 Y_OF_X 왼쪽 가지 (2,0)에 OPEN 끝점 지정 미지원 | ENGINE_CAPABILITY_PENDING: DERIVATIVE_FUNCTION_LABEL: 축 제목의 f′(x) 프라임 글리프를 AXIS_TITLE_INVALID:y가 거절함",
+    "원문 원본 JS 불변. 임의의 수치 대체로 미지원 기하조건을 채우지 않는다."
+  ],
+  "sourceQuote": "[그림: $x<2$에서는 $y=1-(x-1)^2$, $x>2$에서는 $y=x-3$을 해당 범위 내에서 그린다. $(2,0),(2,-1)$에는 빈 점을 표시한다.]"
+}

@@ -1,0 +1,238 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "X",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Y",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "54",
+              "denominator": "25"
+            },
+            {
+              "kind": "rational",
+              "numerator": "72",
+              "denominator": "25"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "24",
+              "denominator": "25"
+            },
+            {
+              "kind": "rational",
+              "numerator": "32",
+              "denominator": "25"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "X",
+    "Y",
+    "Q",
+    "P"
+  ],
+  "hiddenPointNames": [
+    "X",
+    "Y"
+  ],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "O",
+        "X"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "O",
+        "Y"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "O",
+        "Q"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "k"
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "theta",
+        "refs": [
+          "X",
+          "O",
+          "Q"
+        ],
+        "value": 53.130102354,
+        "label": "θ",
+        "arcs": 1,
+        "style": "ARC",
+        "labelKind": "MATH"
+      }
+    ]
+  },
+  "caption": "중심 A(3,0), 반지름 3인 원과 동경 OQ, P∈OQ, PQ=2인 대표 도형(예: cosθ=3/5).",
+  "accessibilityDescription": "중심 A(3,0), 반지름 3인 원과 동경 OQ, P∈OQ, PQ=2인 대표 도형(예: cosθ=3/5).",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "중심 A(3,0), 반지름 3인 원",
+      "mappedTo": "mathPlan.nodes[1];mathPlan.nodes[6];displayCircles[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "원점 O, 양의 x축과 각 θ를 이루는 반직선 OQ",
+      "mappedTo": "mathPlan.nodes[0];displaySegments[0];displaySegments[2];planeMarks.angles[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "P∈OQ, PQ=2 (대표 cosθ=3/5)",
+      "mappedTo": "mathPlan.nodes[4..5];displaySegments[3]"
+    },
+    {
+      "id": "c4",
+      "condition": "일반식 Q:r=6cosθ, P:r=6cosθ-2",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: SYMBOLIC_RADIAL_LABEL: Q의 r=6cosθ, P의 r=6cosθ-2를 점 옆 일반식으로 인쇄하는 기하 작도 라벨 미지원"
+    }
+  ],
+  "newVisualInformation": [
+    "ENGINE_CAPABILITY_PENDING: SYMBOLIC_RADIAL_LABEL: Q의 r=6cosθ, P의 r=6cosθ-2를 점 옆 일반식으로 인쇄하는 기하 작도 라벨 미지원",
+    "원문 원본 JS 불변. 임의의 수치 대체로 미지원 기하조건을 채우지 않는다."
+  ],
+  "sourceQuote": "[그림: $(x-3)^2+y^2=9$와 반직선 $(r\\cos\\theta,r\\sin\\theta)$를 그린다. Q에 $r=6\\cos\\theta$, P에 $r=6\\cos\\theta-2$를 표시한다.]"
+}

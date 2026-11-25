@@ -1,0 +1,56 @@
+{
+  "capability": "exponential-affine-spike-v1",
+  "graphPlan": {
+    "family": "exponential-affine",
+    "coefficients": [
+      "2",
+      "1",
+      "0"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -3,
+      0.2
+    ],
+    "viewport": [
+      -4.2,
+      1,
+      -0.5,
+      4.5
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "y"
+    }
+  },
+  "caption": "원문의 자연지수·자연로그 곡선만 정확히 작도한다. 미지 접점과 보조도형은 capability 대기 중이다.",
+  "accessibilityDescription": "원문의 자연지수·자연로그 곡선만 정확히 작도한다. 미지 접점과 보조도형은 capability 대기 중이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "y=2e^x의 제2사분면 가지",
+      "mappedTo": "graphPlan.coefficients;graphPlan.domain"
+    },
+    {
+      "id": "c2",
+      "condition": "A(t,2e^t), t<0 (대표 t=-1)",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: EXP_TANGENT_AT_NEGATIVE_T: t<0의 접선 기울기 2e^t, 절편 t-1 및 2(1-t)e^t 정확 overlay 식/좌표 미지원"
+    },
+    {
+      "id": "c3",
+      "condition": "A의 접선과 두 절편 (t-1,0),(0,2(1-t)e^t), 삼각형",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: EXP_TANGENT_AT_NEGATIVE_T: t<0의 접선 기울기 2e^t, 절편 t-1 및 2(1-t)e^t 정확 overlay 식/좌표 미지원"
+    }
+  ],
+  "newVisualInformation": [
+    "ENGINE_CAPABILITY_PENDING: EXP_TANGENT_AT_NEGATIVE_T: t<0의 접선 기울기 2e^t, 절편 t-1 및 2(1-t)e^t 정확 overlay 식/좌표 미지원",
+    "원문 원본 JS 불변. 임의의 수치 대체로 미지원 기하조건을 채우지 않는다."
+  ],
+  "sourceQuote": "[그림: A$(t,2e^t)$ ($t<0$)의 접선과 절편 $(t-1,0)$, $(0,2(1-t)e^t)$를 표시한다.]"
+}

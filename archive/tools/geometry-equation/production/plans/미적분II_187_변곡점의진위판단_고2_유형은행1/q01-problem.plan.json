@@ -1,0 +1,84 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "0",
+      "9",
+      "-6",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -2,
+      5
+    ],
+    "viewport": [
+      -2.3,
+      5.3,
+      -8,
+      8
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 1,
+        "y": 4
+      },
+      {
+        "id": "B",
+        "x": 3,
+        "y": 0
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "y"
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "Z",
+          "x": "0",
+          "y": "0",
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "도함수 또는 함수의 주어진 다항곡선과 원문에 명시된 특징점을 보인다.",
+  "accessibilityDescription": "도함수 또는 함수의 주어진 다항곡선과 원문에 명시된 특징점을 보인다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "y=f'(x)=x(x-3)²",
+      "mappedTo": "graphPlan.coefficients"
+    },
+    {
+      "id": "c2",
+      "condition": "영점 0과 3",
+      "mappedTo": "graphPlan.overlays.points[0];graphPlan.requiredPoints[1]"
+    },
+    {
+      "id": "c3",
+      "condition": "극대 (1,4), 극소 (3,0)",
+      "mappedTo": "graphPlan.requiredPoints[0..1]"
+    },
+    {
+      "id": "c4",
+      "condition": "원문 y=f′(x) 도함수 표기의 프라임 글리프",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: DERIVATIVE_FUNCTION_LABEL: 축 제목의 f′(x) 프라임 글리프를 AXIS_TITLE_INVALID:y가 거절함"
+    }
+  ],
+  "newVisualInformation": [
+    "ENGINE_CAPABILITY_PENDING: DERIVATIVE_FUNCTION_LABEL: 축 제목의 f′(x) 프라임 글리프를 AXIS_TITLE_INVALID:y가 거절함",
+    "원문 원본 JS 불변. 임의의 수치 대체로 미지원 기하조건을 채우지 않는다."
+  ],
+  "sourceQuote": "[그림: $y=x(x-3)^2$를 그린다. 영점 $0,3$, 극대점 $(1,4)$, 극소점 $(3,0)$을 표시한다.]"
+}

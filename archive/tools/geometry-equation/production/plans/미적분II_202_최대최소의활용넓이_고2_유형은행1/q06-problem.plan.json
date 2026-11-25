@@ -1,0 +1,26 @@
+{
+  "status": "UNSUPPORTED",
+  "reason": "ENGINE_CAPABILITY_PENDING: PIECEWISE_NATURAL_EXP_PAIR: 같은 축에서 x<0의 2e^(4x), x>0의 2e^(-4x)와 x=±t 직사각형 정확 작도 미지원",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "x<0에서 y=2e^(4x)",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: PIECEWISE_NATURAL_EXP_PAIR: 같은 축에서 x<0의 2e^(4x), x>0의 2e^(-4x)와 x=±t 직사각형 정확 작도 미지원"
+    },
+    {
+      "id": "c2",
+      "condition": "x>0에서 y=2e^(-4x)",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: PIECEWISE_NATURAL_EXP_PAIR: 같은 축에서 x<0의 2e^(4x), x>0의 2e^(-4x)와 x=±t 직사각형 정확 작도 미지원"
+    },
+    {
+      "id": "c3",
+      "condition": "x=-t,t에서 같은 높이 2e^(-4t)의 직사각형",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: PIECEWISE_NATURAL_EXP_PAIR: 같은 축에서 x<0의 2e^(4x), x>0의 2e^(-4x)와 x=±t 직사각형 정확 작도 미지원"
+    }
+  ],
+  "newVisualInformation": [
+    "ENGINE_CAPABILITY_PENDING: PIECEWISE_NATURAL_EXP_PAIR: 같은 축에서 x<0의 2e^(4x), x>0의 2e^(-4x)와 x=±t 직사각형 정확 작도 미지원",
+    "원문 원본 JS 불변. 임의의 수치 대체로 미지원 기하조건을 채우지 않는다."
+  ],
+  "sourceQuote": "[그림: $x=-t,t$에서 같은 높이 $2e^{-4t}$에 꼭짓점을 표시하고 $x$축까지 수직선을 내린다.]"
+}

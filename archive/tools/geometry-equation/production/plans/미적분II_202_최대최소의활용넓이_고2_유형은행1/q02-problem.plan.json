@@ -1,0 +1,57 @@
+{
+  "capability": "logarithmic-affine-spike-v1",
+  "graphPlan": {
+    "family": "logarithmic-affine",
+    "coefficients": [
+      "2",
+      "1",
+      "0",
+      "0"
+    ],
+    "sourceDomain": {
+      "kind": "NATURAL_LOG_AFFINE"
+    },
+    "domain": [
+      0.1,
+      1.2
+    ],
+    "viewport": [
+      -0.4,
+      1.5,
+      -5,
+      1
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "y"
+    }
+  },
+  "caption": "원문의 자연지수·자연로그 곡선만 정확히 작도한다. 미지 접점과 보조도형은 capability 대기 중이다.",
+  "accessibilityDescription": "원문의 자연지수·자연로그 곡선만 정확히 작도한다. 미지 접점과 보조도형은 capability 대기 중이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "y=2ln x, 0<t<1",
+      "mappedTo": "graphPlan.coefficients;graphPlan.domain"
+    },
+    {
+      "id": "c2",
+      "condition": "P(t,2ln t) (대표 t=1/2)",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: LOG_TANGENT_VARIABLE_INTERCEPTS: P(1/2,-2ln2)의 접선 및 Q(t(1-ln t),0),R(0,2ln t-2) exact overlay 미지원"
+    },
+    {
+      "id": "c3",
+      "condition": "접선, x절편 Q(t(1-ln t),0), y절편 R(0,2ln t-2)",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: LOG_TANGENT_VARIABLE_INTERCEPTS: P(1/2,-2ln2)의 접선 및 Q(t(1-ln t),0),R(0,2ln t-2) exact overlay 미지원"
+    }
+  ],
+  "newVisualInformation": [
+    "ENGINE_CAPABILITY_PENDING: LOG_TANGENT_VARIABLE_INTERCEPTS: P(1/2,-2ln2)의 접선 및 Q(t(1-ln t),0),R(0,2ln t-2) exact overlay 미지원",
+    "원문 원본 JS 불변. 임의의 수치 대체로 미지원 기하조건을 채우지 않는다."
+  ],
+  "sourceQuote": "[그림: P에서의 접선과 절편 Q$(t(1-\\ln t),0)$, R$(0,2\\ln t-2)$를 표시한다.]"
+}
