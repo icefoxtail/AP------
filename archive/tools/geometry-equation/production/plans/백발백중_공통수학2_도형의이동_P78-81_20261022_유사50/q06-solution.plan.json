@@ -1,0 +1,282 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Y",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "-1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M1",
+        "op": "LINE_REFLECTION",
+        "inputs": [
+          "C",
+          "Y"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "LINE_REFLECTION",
+        "inputs": [
+          "M1",
+          "D"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "K",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "M"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "10"
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "I",
+        "op": "INTERSECTION",
+        "inputs": [
+          "X",
+          "K"
+        ],
+        "args": {},
+        "outputType": "POINT_SET",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SELECT_POINT",
+        "inputs": [
+          "I"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "CONCLUSION",
+        "branch": {
+          "kind": "SIDE_OF_ORIENTED_LINE",
+          "refs": [
+            "O",
+            "M"
+          ],
+          "sign": 1
+        }
+      },
+      {
+        "id": "B",
+        "op": "SELECT_POINT",
+        "inputs": [
+          "I"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "CONCLUSION",
+        "branch": {
+          "kind": "SIDE_OF_ORIENTED_LINE",
+          "refs": [
+            "O",
+            "M"
+          ],
+          "sign": -1
+        }
+      }
+    ]
+  },
+  "displayPoints": [
+    "C",
+    "M1",
+    "M",
+    "A",
+    "B"
+  ],
+  "displayLines": [
+    "D"
+  ],
+  "displayCircles": [
+    "K"
+  ],
+  "displaySegments": [
+    {
+      "id": "chord",
+      "refs": [
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "coordinateLabels": [
+    "C",
+    "M1",
+    "M",
+    "A",
+    "B"
+  ],
+  "coordinatePlacement": "PANEL",
+  "lineLabels": [
+    {
+      "nodeId": "D",
+      "form": "SLOPE_INTERCEPT"
+    }
+  ],
+  "caption": "y축 대칭 후 y=x 대칭 후 원과 x축의 교점",
+  "accessibilityDescription": "처음 중심 (-1,0)에서 y축 대칭 후 y=x 대칭으로 중심이 (0,1)가 된다. 반지름 sqrt(10)인 원의 두 x축 교점 A, B와 현을 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "center",
+      "condition": "원래 중심 (-1,0)",
+      "mappedTo": "C"
+    },
+    {
+      "id": "first",
+      "condition": "y축에 대한 대칭이동",
+      "mappedTo": "M1"
+    },
+    {
+      "id": "second",
+      "condition": "y=x에 대한 대칭이동",
+      "mappedTo": [
+        "D",
+        "M"
+      ]
+    },
+    {
+      "id": "radius",
+      "condition": "원의 반지름 sqrt(10)",
+      "mappedTo": "K"
+    },
+    {
+      "id": "chord",
+      "condition": "x축과 만나는 두 점의 거리",
+      "mappedTo": [
+        "A",
+        "B",
+        "chord"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "대칭으로 바뀐 원의 중심과 두 교점·현 AB를 보인다.",
+    "현의 길이는 그려진 교점 좌표로 계산한다."
+  ]
+}
