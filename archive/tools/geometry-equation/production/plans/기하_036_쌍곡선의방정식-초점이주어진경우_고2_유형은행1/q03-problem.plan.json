@@ -1,0 +1,19 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {"kind":"HYPERBOLA","center":["0","0"],"aSquared":"16","bSquared":"20","transverse":"X"},
+  "points": [
+    {"id":"A","kind":"VERTEX","side":-1},
+    {"id":"B","kind":"VERTEX","side":1},
+    {"id":"F'","kind":"FOCUS","side":-1},
+    {"id":"F","kind":"FOCUS","side":1},
+    {"id":"O","kind":"ORIGIN"}
+  ],
+  "caption": "원점 대칭인 쌍곡선의 두 꼭짓점 A·B와 두 초점 F′·F",
+  "accessibilityDescription": "좌우로 열린 쌍곡선의 x축 위에 왼쪽부터 F′, A, 원점 O, B, F가 순서대로 놓여 있다. 두 꼭짓점 사이의 거리는 8, 두 초점 사이의 거리는 12이다.",
+  "sourceConditions": [
+    {"id":"c1","condition":"x²/a²−y²/b²=1(a,b>0), AB=2a=8이고 FF′=2c=12이므로 a=4, c=6, c²=a²+b²에서 b²=20이다. 숫자는 도형의 좌표에만 사용하며 원문에 없는 겹침 선분은 그리지 않는다.","mappedTo":["A","B","F'","F"]},
+    {"id":"c2","condition":"원문 그림의 F′(-c,0), A(-a,0), O, B(a,0), F(c,0) 순서가 쌍곡선의 양쪽 가지와 일치한다.","mappedTo":["F'","A","O","B","F"]},
+    {"id":"c3","condition":"발문의 b²−a²는 묻는 값이므로 문제 그림에 표시하지 않는다. 원문 요구 기호좌표 A(-a,0),B(a,0),F′(-c,0),F(c,0)는 현행 엔진의 symbolic coordinate label 기능이 없어 추후 보완한다.","mappedTo":["A","B","F'","F"]}
+  ],
+  "newVisualInformation": ["실제 2a=8과 2c=12를 만족하는 좌우 쌍곡선과 x축상의 꼭짓점·초점·원점 위치", "기호 좌표 라벨은 엔진 지원 대기; 미지 정답 미노출"]
+}

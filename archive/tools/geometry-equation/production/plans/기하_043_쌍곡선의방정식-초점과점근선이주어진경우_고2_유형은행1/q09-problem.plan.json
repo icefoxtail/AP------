@@ -1,0 +1,35 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conics": [{"id":"h","kind":"HYPERBOLA","center":["0","0"],"aSquared":"4","bSquared":"12","transverse":"X","label":"H"}],
+  "points": [
+    {"id":"A","kind":"FOCUS","curve":"h","side":1},
+    {"id":"B","kind":"POINT","x":"2","y":"2*sqrt(3)"},
+    {"id":"C","kind":"POINT","x":"-2","y":"2*sqrt(3)"},
+    {"id":"D","kind":"FOCUS","curve":"h","side":-1},
+    {"id":"E","kind":"POINT","x":"-2","y":"-2*sqrt(3)"},
+    {"id":"F","kind":"POINT","x":"2","y":"-2*sqrt(3)"},
+    {"id":"O","kind":"ORIGIN"},
+    {"id":"P","kind":"LINE_CONIC","curve":"h","line":"sideAB","which":1}
+  ],
+  "lines": [
+    {"id":"asymBE","curve":"h","role":"ASYMPTOTE","sign":1,"dashed":true,"label":"BE"},
+    {"id":"asymCF","curve":"h","role":"ASYMPTOTE","sign":-1,"dashed":true,"label":"CF"},
+    {"id":"sideAB","through":["A","B"],"hidden":true}
+  ],
+  "segments": [
+    {"id":"AB","from":"A","to":"B"},
+    {"id":"BC","from":"B","to":"C"},
+    {"id":"CD","from":"C","to":"D"},
+    {"id":"DE","from":"D","to":"E"},
+    {"id":"EF","from":"E","to":"F"},
+    {"id":"FA","from":"F","to":"A"}
+  ],
+  "caption": "정육각형 ABCDEF의 마주 보는 꼭짓점 A·D를 초점으로 하는 쌍곡선 H",
+  "accessibilityDescription": "가로 대각선 AD가 x축과 일치하는 정육각형의 꼭짓점 A와 D는 쌍곡선의 두 초점이다. 대각선 BE와 CF 위에 두 점근선이 놓이고, 오른쪽 위 변 AB에서 쌍곡선 오른쪽 가지가 만나는 점 P가 표시되어 있다.",
+  "sourceConditions": [
+    {"id":"c1","condition":"한 변 4인 정육각형의 외접반지름도 4. A(4,0), B(2,2√3), C(-2,2√3), D(-4,0), E(-2,-2√3), F(2,-2√3)가 순서대로 인접한다.","mappedTo":["A","B","C","D","E","F","AB","BC","CD","DE","EF","FA"]},
+    {"id":"c2","condition":"AD가 초점쌍이므로 c=4. BE와 CF는 각각 y=√3x,y=-√3x인 점근선이므로 b²/a²=3, a²+b²=16에서 a²=4,b²=12이다.","mappedTo":["A","D","asymBE","asymCF"]},
+    {"id":"c3","condition":"변 AB의 직선 y=-√3(x-4)와 x²/4−y²/12=1의 유일한 교점 P=(5/2,3√3/2)은 AB 안에 있으며 원문은 점 이름 P만 보여 준다. DP−AP라는 정답 값은 그림에 노출하지 않는다.","mappedTo":["sideAB","P","AB"]}
+  ],
+  "newVisualInformation": ["실제 변 길이 4의 정육각형 여섯 꼭짓점과 쌍곡선 초점 A·D", "대각선 BE·CF와 같은 두 점근선 및 AB 내부의 정확한 교점 P; 거리 차 정답 미표시"]
+}
