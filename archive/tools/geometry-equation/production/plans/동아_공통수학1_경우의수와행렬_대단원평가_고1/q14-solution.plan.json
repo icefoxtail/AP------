@@ -1,0 +1,18 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "SLOTS",
+    "slots": [
+      {"count":"6","title":"공통"},
+      {"count":"5","title":"A만"},
+      {"count":"4","title":"B만"}
+    ]
+  },
+  "caption": "공통 과목 하나, A만 듣는 과목 하나, B만 듣는 과목 하나를 차례로 선택하는 경우의 수",
+  "accessibilityDescription": "공통 과목 선택 여섯 가지, A 학생만 수강할 과목 선택 다섯 가지, B 학생만 수강할 과목 선택 네 가지가 세 칸에 나열되어 있다.",
+  "sourceConditions": [
+    {"id":"S1","condition":"서로 다른 6과목 중 A와 B가 각각 2과목을 선택하고 정확히 1과목을 공통으로 수강한다.","mappedTo":"chart.slots[0..2]: 공통 6가지, A만 5가지, B만 4가지"},
+    {"id":"S2","condition":"A만 듣는 과목과 B만 듣는 과목은 달라야 한다.","mappedTo":"chart.slots[2].count=4: 앞의 2과목을 제외한 나머지 중 선택"}
+  ],
+  "newVisualInformation": ["세 번의 선택에서 이미 고른 과목을 제외하면 6, 5, 4가지로 줄어든다는 과정"]
+}
