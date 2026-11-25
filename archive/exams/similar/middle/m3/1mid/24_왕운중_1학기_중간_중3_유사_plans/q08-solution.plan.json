@@ -1,0 +1,26 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {"kind":"POINTS","points":[
+        {"id":"Q","value":"-2-sqrt(13)"},
+        {"id":"A","value":"-2","showValue":false},
+        {"id":"B","value":"0","showValue":false},
+        {"id":"P","value":"-2+sqrt(13)"}
+      ]}
+    ],
+    "constructions": [
+      {"id":"la","center":"A","radius":{"value":"sqrt(13)"},"arc":{"side":"LEFT"},"hits":[{"id":"Q","branch":"LEFT"}]},
+      {"id":"ra","center":"A","radius":{"value":"sqrt(13)"},"arc":{"side":"RIGHT"},"hits":[{"id":"P","branch":"RIGHT"}]}
+    ]
+  },
+  "numberLineCaption": {"text":"A에서 양쪽으로 √13만큼"},
+  "caption": "AB=2, BC=3이므로 반지름 AC=√13이다. 중심 A=−2에서 좌우로 √13만큼 떨어진 Q=−2−√13, P=−2+√13을 호로 나타낸다.",
+  "accessibilityDescription": "수직선 위 A 마이너스 이에서 왼쪽으로 루트 십삼만큼 간 Q와 오른쪽으로 루트 십삼만큼 간 P를 호 두 개로 나타낸다.",
+  "sourceConditions": [
+    {"id":"M08-1","condition":"기존 문제 인라인 그림의 직각삼각형 AB=2,BC=3, ∠ABC=90°에서 AC=√13","mappedTo":"numberLine.constructions[*].radius"},
+    {"id":"M08-2","condition":"수직선 점 A의 좌표는 −2","mappedTo":"numberLine.rows[0].points[A]"},
+    {"id":"M08-3","condition":"수직선 위 교점 P=−2+√13,Q=−2−√13","mappedTo":"numberLine.rows[0].points[P,Q],numberLine.constructions[*].hits"}
+  ],
+  "newVisualInformation": ["기존 문제 그림의 모눈 직각삼각형은 유지하고, 해설 축에서는 두 교점의 정확한 근호 위치와 좌우 호를 추가한다."]
+}

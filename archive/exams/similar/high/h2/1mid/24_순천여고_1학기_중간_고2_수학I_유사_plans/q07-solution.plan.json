@@ -1,0 +1,24 @@
+{
+  "capability": "logarithmic-affine-spike-v1",
+  "graphPlan": {
+    "family": "logarithmic-affine",
+    "base": "2",
+    "coefficients": ["1", "1", "4", "3"],
+    "sourceDomain": {"kind":"NATURAL_LOG_AFFINE"},
+    "domain": [-3.875, 4],
+    "viewport": [-5, 5, -1, 7],
+    "axisTickValues": {"x":["-4"],"y":["5"]},
+    "overlays": {
+      "lines": [{"id":"a","x":"-4","label":"x=-4"}],
+      "points": [{"id":"I","x":"0","y":"5","coordinates":true}]
+    }
+  },
+  "sourceQuote": "y=log_2(x+a)+b의 점근선 x=−4, y절편 5",
+  "caption": "밑 2인 로그함수의 수직 점근선 x=−4와 y절편 (0,5)를 동시에 확인한다. a=4,b=3.",
+  "accessibilityDescription": "로그곡선 y=log_2(x+4)+3은 직선 x=−4의 오른쪽에만 존재하고 점 (0,5)를 지난다.",
+  "sourceConditions": [
+    {"id":"S07-1","condition":"점근선 x=−4이므로 a=4","mappedTo":"graphPlan.coefficients[2],overlays.lines[a],axisTickValues"},
+    {"id":"S07-2","condition":"f(0)=log_2(4)+b=5이므로 b=3","mappedTo":"graphPlan.coefficients[3],overlays.points[I]"}
+  ],
+  "newVisualInformation": ["점근선이 x축 값인 점과 y절편이 높이값인 점을 서로 다른 선·점으로 확인한다."]
+}

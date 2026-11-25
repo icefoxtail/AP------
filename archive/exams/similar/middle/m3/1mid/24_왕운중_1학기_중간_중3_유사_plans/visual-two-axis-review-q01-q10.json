@@ -1,0 +1,29 @@
+{
+  "schema": "visual-two-axis-review-v1",
+  "batch": "suncheon-girls-h2-s1math1-q01-q12-wangun-m3-q01-q10-20261126",
+  "sourceFile": "archive/exams/similar/middle/m3/1mid/24_왕운중_1학기_중간_중3_유사.js",
+  "sourceGitBlobSha": "dd0b64119e9e227d760415219cb1f4a655f3b020",
+  "sourceSha256": "996181c08cc91a027b76088342b1c8eb4ea58beb80ba3418995c236405daf3f1",
+  "questionRange": "q01-q10",
+  "questionCount": 10,
+  "axisCount": {"problem":10,"solution":10},
+  "renderPolicy": "PLAN_ONLY: actual SVG render, PNG visual check, student UI and A4 NOT_RUN",
+  "visualPolicy": "Do not rewrite the pre-existing q08 inline SVG by hand; no new hand SVG and no default fills.",
+  "parityMethod": "Compare existing q08 grid AB=2/BC=3/right angle/A=−2 with exact P,Q radial construction; other algebra-only axes assessed individually.",
+  "rows": [
+    {"qid":"q01","problem":{"decision":"EXEMPT","reason":"5의 제곱근과 제곱근 5의 정의를 언어·기호로 구별하는 선택형"},"solution":{"decision":"EXEMPT","reason":"±√5와 √5의 기호 정의를 직접 확인하면 완결"}},
+    {"qid":"q02","problem":{"decision":"EXEMPT","reason":"근호를 없앨 수 있는 수 5개가 이미 식으로 주어져 있어 별도 그림 중복"},"solution":{"decision":"EXEMPT","reason":"144,1/9,0.49가 유리수 제곱인지를 각각 검사"}},
+    {"qid":"q03","problem":{"decision":"EXEMPT","reason":"√(x²)=|x|의 부호 조건에 관한 ㄱ~ㄹ 참거짓 판별"},"solution":{"decision":"EXEMPT","reason":"주어진 x의 부호를 대입한 절댓값 정의로 충분"}},
+    {"qid":"q04","problem":{"decision":"EXEMPT","reason":"√(7²)+(-√5)²의 값을 구하는 단순 계산"},"solution":{"decision":"EXEMPT","reason":"각 항을 7과 5로 환원해 합하는 한 줄 풀이"}},
+    {"qid":"q05","problem":{"decision":"EXEMPT","reason":"낙하 높이 h와 속력 v의 제곱근 식이 주어진 정수 조건 문제"},"solution":{"decision":"EXEMPT","reason":"v²=98h/5의 완전제곱수·정수 조건 분석으로 해결하며 낙하 장면 그림은 장식"}},
+    {"qid":"q06","problem":{"decision":"EXEMPT","reason":"유리수·무리수의 정의에 관한 서술 선택형"},"solution":{"decision":"EXEMPT","reason":"반례·정의 설명만으로 참거짓을 판별 가능"}},
+    {"qid":"q07","problem":{"decision":"EXEMPT","reason":"정삼각형 높이·정사각형 대각선·바퀴의 원주 계산을 각각 보기에서 요구"},"solution":{"decision":"EXEMPT","reason":"높이 3√3, 대각선 2, 주행거리 12π를 공식으로 판정하므로 세 개의 장식 그림을 반복할 필요가 없음"}},
+    {"qid":"q08","problem":{"decision":"EXEMPT","reason":"기존 JS 인라인 SVG가 이미 1칸=1 모눈, A(−2),B(0),C의 직각삼각형과 P/Q 교점을 제공; 새 문제용 수작업·중복 그림은 만들지 않음"},"solution":{"decision":"BENEFICIAL","reason":"기존 문제의 직각삼각형으로 얻은 반지름 √13을 중심 −2에서 왼쪽 Q·오른쪽 P로 옮기는 수직선 호와 정확한 근호값을 별도 해설 시각화","plan":"q08-solution.plan.json"}},
+    {"qid":"q09","problem":{"decision":"EXEMPT","reason":"근호 포함 두 실수의 대소를 보기별 부등식으로 검사하는 단순 계산"},"solution":{"decision":"EXEMPT","reason":"양변 정리로 √3,√5 등의 대소를 비교하면 완결"}},
+    {"qid":"q10","problem":{"decision":"EXEMPT","reason":"7−3√2의 정수 부분을 구하는 수치 범위 계산"},"solution":{"decision":"EXEMPT","reason":"1.4<√2<1.5를 사용한 구간 범위로 유일한 정수 부분이 정해짐"}}
+  ],
+  "planResults": [
+    {"qid":"q08","axis":"solution","capability":"number-line-figure-v1","plan":"q08-solution.plan.json","planLintShallow":"PASS","planLintFull":"PASS","sourceVsPlan":"REVIEWED","drawnFeatureParity":"PASS","drawnFields":["original JS inline diagram supplies 1-unit grid, AB=2,BC=3 and right angle at B","numberLine.rows POINTS A=−2,B=0,Q=−2−√13,P=−2+√13","constructions la and ra use center A, radius √13, LEFT/RIGHT hits Q/P"],"scopeNote":"Solution plan supplements, rather than duplicates, the existing original inline problem geometry; no new problem graphic necessary.","render":"NOT_RUN","png":"NOT_RUN","student":"NOT_RUN","a4":"NOT_RUN"}
+  ],
+  "summary": {"questions":10,"axisJudgments":20,"beneficialAxes":1,"requiredAxes":0,"exemptAxes":19,"plans":1,"shallowPass":1,"fullPass":1,"drawnFeatureParityPass":1,"engineCapabilityPending":0,"sourceFixes":0,"renderNotRun":1}
+}
