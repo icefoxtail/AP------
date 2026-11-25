@@ -1,0 +1,143 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "5"
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "-1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "O",
+          "L"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayCircles": [
+    "C"
+  ],
+  "displayLines": [
+    "L"
+  ],
+  "displayPoints": [
+    "O"
+  ],
+  "coordinateLabels": [
+    "O"
+  ],
+  "lineLabels": [
+    {
+      "nodeId": "L",
+      "form": "GENERAL"
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 510
+  },
+  "caption": "원의 중심 (0,0)과 반지름 √5, 직선 2x - y + k = 0의 위치관계를 k=0인 실제 표본으로 보여 준다. 두 교점 조건은 -5<k<5이다. 이 표본에서 수선의 발 H는 중심 O와 같으므로 중복 이름표를 붙이지 않는다.",
+  "accessibilityDescription": "원의 중심 O와 원, k=0일 때의 실제 직선(중심을 통과)을 보여 준다.",
+  "sourceConditions": [
+    {
+      "id": "circle",
+      "condition": "x^2 + y^2 = 5",
+      "mappedTo": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "line",
+      "condition": "2x - y + k = 0 (k=0)",
+      "mappedTo": [
+        "L"
+      ]
+    },
+    {
+      "id": "relation",
+      "condition": "d=0/√5, r²=5; -5<k<5",
+      "mappedTo": [
+        "O",
+        "H",
+        "L"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원의 실제 중심과 반지름·직선 및 위치관계",
+    "중심과 수선발의 일치를 실제 엔진 좌표로 처리"
+  ]
+}

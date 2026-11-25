@@ -1,0 +1,260 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "2"
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L1",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "-1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H1",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "O",
+          "L1"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T1",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "H1"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L2",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "-1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "-2"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H2",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "O",
+          "L2"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T2",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "H2"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayCircles": [
+    "C"
+  ],
+  "displayLines": [
+    "L1",
+    "L2"
+  ],
+  "displaySegments": [
+    {
+      "id": "sOH1",
+      "refs": [
+        "O",
+        "H1"
+      ]
+    },
+    {
+      "id": "sH1T1",
+      "refs": [
+        "H1",
+        "T1"
+      ]
+    },
+    {
+      "id": "sOH2",
+      "refs": [
+        "O",
+        "H2"
+      ]
+    },
+    {
+      "id": "sH2T2",
+      "refs": [
+        "H2",
+        "T2"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "O",
+    "H1",
+    "T1",
+    "H2",
+    "T2"
+  ],
+  "coordinateLabels": [
+    "O"
+  ],
+  "rightAngles": [
+    {
+      "id": "rH1",
+      "refs": [
+        "O",
+        "H1",
+        "T1"
+      ]
+    },
+    {
+      "id": "rH2",
+      "refs": [
+        "O",
+        "H2",
+        "T2"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "T1",
+    "T2"
+  ],
+  "caption": "원의 중심 (0,0), r²=2. 접선 조건 d=r로 k=2 또는 -2를 얻고 양쪽 접선을 모두 표시한다.",
+  "accessibilityDescription": "원의 둘레에 접하는 2개 직선과 접점, 중심에서 접점까지의 반지름, 수선 직각표식이 보인다.",
+  "sourceConditions": [
+    {
+      "id": "circle",
+      "condition": "x^2 + y^2 = 2",
+      "mappedTo": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "line",
+      "condition": "x - y + k = 0",
+      "mappedTo": [
+        "L1",
+        "L2"
+      ]
+    },
+    {
+      "id": "contact",
+      "condition": "|0+1k|²=4",
+      "mappedTo": [
+        "rH1",
+        "rH2"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "반지름이 각 접선에 수직인 접점의 실제 위치",
+    "두 가지 접선 모두 표시"
+  ]
+}

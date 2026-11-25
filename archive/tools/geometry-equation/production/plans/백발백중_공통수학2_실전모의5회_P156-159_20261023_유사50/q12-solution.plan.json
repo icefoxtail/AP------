@@ -1,0 +1,171 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "-3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayCircles": [
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "O"
+  ],
+  "coordinateLabels": [
+    "A",
+    "B",
+    "O"
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "radii",
+        "count": 1,
+        "segments": [
+          "sOA",
+          "sOB"
+        ]
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "r2",
+        "ownerSegment": "sOA",
+        "text": "r^2=25"
+      }
+    ]
+  },
+  "caption": "지름 양 끝점 A(-4,5), B(2,-3)의 중점 O를 원의 중심으로 잡고 반지름 제곱 r²=25를 표시한다.",
+  "accessibilityDescription": "두 지름 끝점 A,B와 이들의 중점 O, 이 점들을 지나는 원과 같은 두 반지름이 표시된다.",
+  "sourceConditions": [
+    {
+      "id": "diameter",
+      "condition": "두 점 $A(-4,5), B(2,-3)$를 지름의 양 끝점으로 하는 원의 방정식은?",
+      "mappedTo": [
+        "A",
+        "B",
+        "sAB"
+      ]
+    },
+    {
+      "id": "midpoint",
+      "condition": "O=(A+B)/2",
+      "mappedTo": [
+        "O",
+        "sOA",
+        "sOB"
+      ]
+    },
+    {
+      "id": "radius",
+      "condition": "r²=25",
+      "mappedTo": [
+        "C",
+        "radii",
+        "r2"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "정확한 지름 AB, 중점 O와 원",
+    "양쪽 반지름 등분표식 및 r² 라벨"
+  ]
+}

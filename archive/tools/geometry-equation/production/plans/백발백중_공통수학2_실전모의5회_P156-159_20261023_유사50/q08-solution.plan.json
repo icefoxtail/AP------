@@ -1,0 +1,200 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O2",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O1"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-5"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C1",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O1"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C2",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O2"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L1",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "-6"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L2",
+        "op": "TRANSLATE_LINE",
+        "inputs": [
+          "L1"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-5"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayCircles": [
+    "C1",
+    "C2"
+  ],
+  "displayLines": [
+    "L1",
+    "L2"
+  ],
+  "displaySegments": [
+    {
+      "id": "move",
+      "refs": [
+        "O1",
+        "O2"
+      ],
+      "arrow": "END"
+    }
+  ],
+  "displayPoints": [
+    "O1",
+    "O2"
+  ],
+  "coordinateLabels": [
+    "O1",
+    "O2"
+  ],
+  "lineLabels": [
+    {
+      "nodeId": "L1",
+      "form": "GENERAL"
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 660,
+    "height": 530
+  },
+  "caption": "원의 중심 O1(4,-2)→O2(-1,1) 이동량은 (-5,3). 직선 4x+(1)y+(-6)=0을 같은 벡터로 옮기면 4x+(1)y+(11)=0.",
+  "accessibilityDescription": "원 두 개의 중심이 화살표로 연결되고, 평행이동 전후 두 직선이 평행하게 표시된다.",
+  "sourceConditions": [
+    {
+      "id": "circle1",
+      "condition": "(x-4)^2+(y+2)^2=9",
+      "mappedTo": [
+        "O1",
+        "C1"
+      ]
+    },
+    {
+      "id": "circle2",
+      "condition": "(x+1)^2+(y-1)^2=9",
+      "mappedTo": [
+        "O2",
+        "C2"
+      ]
+    },
+    {
+      "id": "line",
+      "condition": "4x+y-6=0",
+      "mappedTo": [
+        "L1"
+      ]
+    },
+    {
+      "id": "translation",
+      "condition": "(dx,dy)=(-5,3); 변환 직선 상수항 11",
+      "mappedTo": [
+        "move",
+        "L2"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "평행이동 전후의 두 원과 중심 연결 화살표",
+    "정확한 TRANSLATE_LINE으로 새 직선의 위치와 기울기 유지"
+  ]
+}

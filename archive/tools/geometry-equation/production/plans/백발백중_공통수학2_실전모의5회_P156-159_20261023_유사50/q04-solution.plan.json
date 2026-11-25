@@ -1,0 +1,305 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ABline",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "perp",
+        "op": "PERPENDICULAR_THROUGH",
+        "inputs": [
+          "M",
+          "ABline"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "xAxis",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "yAxis",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "perp",
+          "xAxis"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "perp",
+          "yAxis"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [
+    "perp"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sMP",
+      "refs": [
+        "M",
+        "P"
+      ]
+    },
+    {
+      "id": "sMQ",
+      "refs": [
+        "M",
+        "Q"
+      ]
+    },
+    {
+      "id": "sPQ",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    },
+    {
+      "id": "sAP",
+      "refs": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "sBP",
+      "refs": [
+        "B",
+        "P"
+      ]
+    },
+    {
+      "id": "sAQ",
+      "refs": [
+        "A",
+        "Q"
+      ]
+    },
+    {
+      "id": "sBQ",
+      "refs": [
+        "B",
+        "Q"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "M",
+    "P",
+    "Q"
+  ],
+  "coordinateLabels": [
+    "A",
+    "B",
+    "P",
+    "Q"
+  ],
+  "rightAngles": [
+    {
+      "id": "rightM",
+      "refs": [
+        "A",
+        "M",
+        "P"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "eqP",
+        "count": 1,
+        "segments": [
+          "sAP",
+          "sBP"
+        ]
+      },
+      {
+        "id": "eqQ",
+        "count": 2,
+        "segments": [
+          "sAQ",
+          "sBQ"
+        ]
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "vPQ",
+        "ownerSegment": "sPQ",
+        "text": "sqrt(2)"
+      }
+    ]
+  },
+  "caption": "PA=PB 및 QA=QB이므로 P,Q 모두 AB의 수직이등분선 위에 있다. P=(1,0), Q=(0,-1), PQ=1√2.",
+  "accessibilityDescription": "점 A,B, 중점 M, 수직이등분선 위 두 축 교점 P,Q 및 같은 거리·직각 표시가 보인다.",
+  "sourceConditions": [
+    {
+      "id": "givens",
+      "condition": "두 점 $A(5, 0), B(1, 4)$에서 같은 거리에 있는 $x$축 위의 점을 $P$, $y$축 위의 점을 $Q$라 할 때, 선분 $PQ$의 길이는?",
+      "mappedTo": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "bisector",
+      "condition": "AB 중점을 지나 AB에 수직인 직선",
+      "mappedTo": [
+        "M",
+        "perp",
+        "rightM"
+      ]
+    },
+    {
+      "id": "axes",
+      "condition": "P=1,0, Q=0,-1",
+      "mappedTo": [
+        "P",
+        "Q",
+        "sPQ"
+      ]
+    },
+    {
+      "id": "equality",
+      "condition": "PA=PB, QA=QB",
+      "mappedTo": [
+        "eqP",
+        "eqQ"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "수직이등분선과 두 좌표축의 교점 P/Q",
+    "양쪽 등거리 표식, 직각 및 PQ 길이"
+  ]
+}

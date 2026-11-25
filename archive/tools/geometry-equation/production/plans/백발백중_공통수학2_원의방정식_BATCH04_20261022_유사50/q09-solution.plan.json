@@ -1,0 +1,194 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "13"
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "-2"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "14"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "O",
+          "L"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "H"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayCircles": [
+    "C"
+  ],
+  "displayLines": [
+    "L"
+  ],
+  "displayPoints": [
+    "O",
+    "H",
+    "T"
+  ],
+  "coordinateLabels": [
+    "O"
+  ],
+  "lineLabels": [
+    {
+      "nodeId": "L",
+      "form": "GENERAL"
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 510
+  },
+  "hiddenPointNames": [
+    "T"
+  ],
+  "displaySegments": [
+    {
+      "id": "sOH",
+      "refs": [
+        "O",
+        "H"
+      ]
+    },
+    {
+      "id": "sHT",
+      "refs": [
+        "H",
+        "T"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rH",
+      "refs": [
+        "O",
+        "H",
+        "T"
+      ]
+    }
+  ],
+  "caption": "원의 중심 (0,0)과 반지름 √13, 직선 3x - 2y + k = 0의 위치관계를 k=14인 실제 표본으로 보여 준다. 교점 없음 조건은 k<-13 또는 k>13이다.",
+  "accessibilityDescription": "원의 중심 O와 원, k=14일 때의 실제 직선과 수선의 발 H, 중심과 H를 잇는 수선 및 직각 표식을 보여 준다.",
+  "sourceConditions": [
+    {
+      "id": "circle",
+      "condition": "x^2 + y^2 = 13",
+      "mappedTo": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "line",
+      "condition": "3x - 2y + k = 0 (k=14)",
+      "mappedTo": [
+        "L"
+      ]
+    },
+    {
+      "id": "relation",
+      "condition": "d=14/√13, r²=13; k<-13 또는 k>13",
+      "mappedTo": [
+        "O",
+        "H",
+        "sOH",
+        "rH"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원의 실제 중심과 반지름·직선 및 위치관계",
+    "중심에서 직선에 내린 수선과 직각 표시"
+  ]
+}
