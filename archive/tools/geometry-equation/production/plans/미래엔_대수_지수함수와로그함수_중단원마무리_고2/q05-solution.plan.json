@@ -1,0 +1,27 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-1, 6, -1, 6],
+    "curves": [
+      { "id": "base", "kind": "EXPONENTIAL", "base": "2", "coefficients": ["1", "1", "0"], "domain": ["-1", "2"], "color": "BLUE", "label": "y=2^x" },
+      { "id": "moved", "kind": "EXPONENTIAL", "base": "2", "coefficients": ["1", "1", "-1/8"], "shiftX": "3", "domain": ["0", "5"], "color": "WARM", "label": "y=2^(x-3)-1/8" }
+    ],
+    "axisTickValues": { "x": ["3"], "y": ["1"] },
+    "overlays": {
+      "points": [
+        { "id": "O", "x": "0", "y": "0", "coordinates": true },
+        { "id": "A", "x": "0", "y": "1", "coordinates": true }
+      ]
+    }
+  },
+  "caption": "y=2^x를 오른쪽 3, 아래 1/8만큼 이동하면 원점을 지난다.",
+  "accessibilityDescription": "파란 y=2^x 곡선이 오른쪽으로 세 칸, 아래로 1/8칸 이동하여 주황 곡선이 되며 이동한 곡선은 원점에 닿는다.",
+  "sourceConditions": [
+    { "text": "원함수 y=2^x", "mappedTo": "graphPlan.curves[base]" },
+    { "text": "오른쪽 3만큼 평행이동", "mappedTo": "graphPlan.curves[moved].shiftX=3" },
+    { "text": "원점 통과", "mappedTo": "graphPlan.overlays.points[O]=(0,0); moved at x=0 equals 0" },
+    { "text": "해설에서 얻은 m=-1/8", "mappedTo": "graphPlan.curves[moved].coefficients[2]=-1/8" }
+  ],
+  "newVisualInformation": ["기준곡선과 이동한 곡선의 상대 위치, 원점 통과 조건을 대조한다."]
+}

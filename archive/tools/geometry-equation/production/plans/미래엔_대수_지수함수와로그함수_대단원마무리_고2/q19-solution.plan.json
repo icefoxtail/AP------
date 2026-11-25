@@ -1,0 +1,34 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "지수",
+        "color": "BLUE",
+        "pieces": [
+          { "lo": { "value": "0", "state": "OPEN" }, "hi": { "value": "2", "state": "OPEN" } }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "로그",
+        "color": "WARM",
+        "pieces": [
+          { "lo": { "value": "1", "state": "OPEN" }, "hi": { "value": "3", "state": "OPEN" } }
+        ]
+      },
+      { "kind": "RESULT", "label": "공통" }
+    ]
+  },
+  "numberLineCaption": { "text": "두 부등식의 공통 범위" },
+  "caption": "지수부등식 0<x<2와 로그부등식 1<x<3의 공통 해집합은 1<x<2이다.",
+  "accessibilityDescription": "첫 번째 열린 구간은 0과 2 사이, 두 번째 열린 구간은 1과 3 사이이며 공통인 마지막 구간은 1과 2 사이이다.",
+  "sourceConditions": [
+    { "text": "4^(-x^2)>(1/2)^(4x)에서 0<x<2", "mappedTo": "numberLine.rows[0].pieces[0] (both OPEN)" },
+    { "text": "로그 진수조건과 비교에서 1<x<3", "mappedTo": "numberLine.rows[1].pieces[0] (both OPEN)" },
+    { "text": "두 범위의 교집합", "mappedTo": "numberLine.rows[2].kind=RESULT; engine derives 1<x<2" }
+  ],
+  "newVisualInformation": ["각 부등식의 해집합과 교집합을 동일 눈금 수직선에 세 줄로 표시한다."]
+}
