@@ -1,0 +1,406 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "add",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "div",
+                  "args": [
+                    {
+                      "kind": "expression",
+                      "op": "mul",
+                      "args": [
+                        {
+                          "kind": "expression",
+                          "op": "sub",
+                          "args": [
+                            {
+                              "kind": "expression",
+                              "op": "sqrt",
+                              "args": [
+                                {
+                                  "kind": "integer",
+                                  "value": "15"
+                                }
+                              ]
+                            },
+                            {
+                              "kind": "expression",
+                              "op": "sqrt",
+                              "args": [
+                                {
+                                  "kind": "integer",
+                                  "value": "3"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "kind": "expression",
+                          "op": "sqrt",
+                          "args": [
+                            {
+                              "kind": "integer",
+                              "value": "3"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "sub",
+                  "args": [
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "15"
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "2"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "add",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "div",
+                  "args": [
+                    {
+                      "kind": "expression",
+                      "op": "mul",
+                      "args": [
+                        {
+                          "kind": "expression",
+                          "op": "sub",
+                          "args": [
+                            {
+                              "kind": "integer",
+                              "value": "0"
+                            },
+                            {
+                              "kind": "expression",
+                              "op": "add",
+                              "args": [
+                                {
+                                  "kind": "expression",
+                                  "op": "sqrt",
+                                  "args": [
+                                    {
+                                      "kind": "integer",
+                                      "value": "3"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "kind": "expression",
+                                  "op": "sqrt",
+                                  "args": [
+                                    {
+                                      "kind": "integer",
+                                      "value": "15"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "kind": "expression",
+                          "op": "sqrt",
+                          "args": [
+                            {
+                              "kind": "integer",
+                              "value": "3"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "sub",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "0"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "add",
+                      "args": [
+                        {
+                          "kind": "expression",
+                          "op": "sqrt",
+                          "args": [
+                            {
+                              "kind": "integer",
+                              "value": "3"
+                            }
+                          ]
+                        },
+                        {
+                          "kind": "expression",
+                          "op": "sqrt",
+                          "args": [
+                            {
+                              "kind": "integer",
+                              "value": "15"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "2"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "c",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "R",
+    "P",
+    "Q"
+  ],
+  "hiddenPointNames": [
+    "R"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "Q",
+        "A"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "A",
+        "R"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "c"
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a0",
+        "refs": [
+          "R",
+          "A",
+          "P"
+        ],
+        "value": 30,
+        "label": "θ",
+        "arcs": 1,
+        "style": "ARC",
+        "labelKind": "MATH"
+      }
+    ]
+  },
+  "caption": "반지름 4인 원 안의 A(2,0)를 지나는 직선 QAP와 양의 x축에 대한 θ를 그린다.",
+  "accessibilityDescription": "반지름 4인 원 안의 A(2,0)를 지나는 직선 QAP와 양의 x축에 대한 θ를 그린다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문의 이름 점·좌표·동일한 길이 및 원/변의 소속 관계",
+      "mappedTo": "mathPlan.nodes[0..4]"
+    },
+    {
+      "id": "c2",
+      "condition": "실제로 그릴 선분과 연결 관계",
+      "mappedTo": "displaySegments[0..2]"
+    },
+    {
+      "id": "c3",
+      "condition": "원의 중심·반지름과 원주",
+      "mappedTo": "mathPlan.nodes[5..5];displayCircles[0..0]"
+    },
+    {
+      "id": "c4",
+      "condition": "기준 동경·주어진 각의 구분",
+      "mappedTo": "planeMarks.angles[0..0]"
+    }
+  ],
+  "newVisualInformation": [
+    "θ=π/6의 대표 선에서 원과의 두 교점은 근호식으로 정확히 계산했으며 현의 길이·미분계수는 라벨로 내지 않는다."
+  ],
+  "sourceQuote": "[그림: 원점 중심의 반지름 4인 원, 점 $A(2,0)$, $A$에서 양의 $x$축 기준 반시계 방향으로 $\\theta$를 이루는 직선과 두 교점 $P,Q$를 표시한다.]"
+}

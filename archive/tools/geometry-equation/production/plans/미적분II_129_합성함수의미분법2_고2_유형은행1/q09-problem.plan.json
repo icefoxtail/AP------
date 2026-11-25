@@ -1,0 +1,124 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "5",
+          "-2"
+        ]
+      },
+      {
+        "coefficients": [
+          "-1",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "2",
+        "y": "1"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "6"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "functionName": "f",
+    "referenceCurves": [
+      {
+        "id": "g",
+        "name": "g",
+        "pieces": [
+          {
+            "coefficients": [
+              "2",
+              "2"
+            ]
+          },
+          {
+            "coefficients": [
+              "8",
+              "-1"
+            ]
+          }
+        ],
+        "breakpoints": [
+          {
+            "x": "2",
+            "y": "6"
+          }
+        ],
+        "sourceDomain": {
+          "kind": "INTERVAL",
+          "range": [
+            "0",
+            "6"
+          ],
+          "states": [
+            "CLOSED",
+            "CLOSED"
+          ]
+        },
+        "intersectionX": [
+          "3/4",
+          "9/2"
+        ],
+        "color": "WARM"
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "F2",
+        "x": 2,
+        "y": 1
+      },
+      {
+        "id": "G2",
+        "x": 2,
+        "y": 6
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "두 꺾은선 f:(0,5)–(2,1)–(6,5), g:(0,2)–(2,6)–(6,2)를 같은 축에 구별해 그린다.",
+  "accessibilityDescription": "두 꺾은선 f:(0,5)–(2,1)–(6,5), g:(0,2)–(2,6)–(6,2)를 같은 축에 구별해 그린다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문 곡선 식과 좌표축·그림 범위",
+      "mappedTo": "graphPlan.pieces;graphPlan.breakpoints;graphPlan.referenceCurves[0].pieces;graphPlan.referenceCurves[0].breakpoints"
+    },
+    {
+      "id": "c2",
+      "condition": "f: (0,5)→(2,1)→(6,5) 기울기 -2,+1",
+      "mappedTo": "graphPlan.pieces;graphPlan.breakpoints;graphPlan.sourceDomain"
+    },
+    {
+      "id": "c3",
+      "condition": "g: (0,2)→(2,6)→(6,2) 기울기 +2,-1",
+      "mappedTo": "graphPlan.referenceCurves[0].pieces;graphPlan.referenceCurves[0].breakpoints"
+    },
+    {
+      "id": "c4",
+      "condition": "함수 이름 y=f(x), y=g(x) 구별",
+      "mappedTo": "graphPlan.functionName;graphPlan.referenceCurves[0].name"
+    }
+  ],
+  "newVisualInformation": [
+    "점 x=1·x=4에서 미분계수의 답을 그림에 쓰지 않는다."
+  ],
+  "sourceQuote": "[그림: 좌표평면에서 $y=f(x)$는 $(0,5),(2,1),(6,5)$를 순서대로 연결하고, $y=g(x)$는 $(0,2),(2,6),(6,2)$를 순서대로 연결한다. 각 꺾은선에 함수 이름을 표시한다.]"
+}

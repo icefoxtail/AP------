@@ -1,0 +1,74 @@
+{
+  "capability": "logarithmic-affine-spike-v1",
+  "graphPlan": {
+    "family": "logarithmic-affine",
+    "coefficients": [
+      "1",
+      "1",
+      "0",
+      "2"
+    ],
+    "sourceDomain": {
+      "kind": "NATURAL_LOG_AFFINE"
+    },
+    "domain": [
+      0.16,
+      4
+    ],
+    "viewport": [
+      -3,
+      5,
+      -3,
+      8
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "t",
+          "slope": "1",
+          "intercept": "1",
+          "label": "y=x+1"
+        }
+      ],
+      "points": [
+        {
+          "id": "A",
+          "x": "0",
+          "y": "1"
+        },
+        {
+          "id": "T",
+          "curveX": "1"
+        }
+      ]
+    }
+  },
+  "caption": "곡선 y=ln x+2와 a=1의 접선 y=x+1, 접점 (1,2) 및 y절편 A(0,1)를 나타낸다.",
+  "accessibilityDescription": "곡선 y=ln x+2와 a=1의 접선 y=x+1, 접점 (1,2) 및 y절편 A(0,1)를 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문 곡선 식과 좌표축·그림 범위",
+      "mappedTo": "graphPlan.family;graphPlan.coefficients;graphPlan.sourceDomain;graphPlan.domain;graphPlan.viewport"
+    },
+    {
+      "id": "c2",
+      "condition": "y=ln x+2와 a=1인 접선 y=x+1, 접점 (1,2)",
+      "mappedTo": "graphPlan.coefficients;graphPlan.overlays.lines[0];graphPlan.overlays.points[1]"
+    },
+    {
+      "id": "c3",
+      "condition": "A=(0,1), P=(−1,0) 양축 절편",
+      "mappedTo": "graphPlan.overlays.points[0];ENGINE_CAPABILITY_PENDING: P=(-1,0)는 로그 자동 프레임 밖"
+    }
+  ],
+  "newVisualInformation": [
+    "a=1은 원문이 직접 명시한 대표값이다. 구하는 극한값은 쓰지 않는다.",
+    "ENGINE_CAPABILITY_PENDING: 원문 P=(-1,0)은 로그 자동 프레임 바깥이라 점의 표시가 없다."
+  ],
+  "sourceQuote": "[그림: 곡선 $y=\\ln x+2$를 그리고, 예시로 $a=1$일 때의 접선 $y=x+1$과 그 접점 $(1,2)$를 표시한다. 두 절편에 $A(0,1)$과 $P(-1,0)$을 표시한다.]"
+}

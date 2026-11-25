@@ -1,0 +1,77 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "SIN",
+    "ratePi": "1/6",
+    "coefficients": [
+      "4",
+      "0"
+    ],
+    "phasePi": "0",
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "6"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      0,
+      6
+    ],
+    "viewport": [
+      -0.4,
+      6.4,
+      -0.6,
+      4.8
+    ],
+    "keyPoints": true,
+    "axisTickValues": {
+      "x": [
+        "1",
+        "3",
+        "6"
+      ],
+      "y": [
+        "2",
+        "4"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "curveX": "1"
+        }
+      ]
+    }
+  },
+  "caption": "0≤x≤6의 사인 반주기 그래프, (0,0),(1,2),(3,4),(6,0)를 그린다.",
+  "accessibilityDescription": "0≤x≤6의 사인 반주기 그래프, (0,0),(1,2),(3,4),(6,0)를 그린다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문 곡선 식과 좌표축·그림 범위",
+      "mappedTo": "graphPlan.function;graphPlan.ratePi;graphPlan.coefficients;graphPlan.sourceDomain;graphPlan.overlays.points"
+    },
+    {
+      "id": "c2",
+      "condition": "f(x)=4sin(πx/6), 닫힌 구간 [0,6], (0,0)→(3,4)→(6,0)",
+      "mappedTo": "graphPlan.ratePi;graphPlan.coefficients;graphPlan.sourceDomain;graphPlan.keyPoints"
+    },
+    {
+      "id": "c3",
+      "condition": "왼쪽 가지 (1,2)",
+      "mappedTo": "graphPlan.overlays.points[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "문제에서 결정할 일차함수 g의 기울기를 그래프 라벨로 노출하지 않는다."
+  ],
+  "sourceQuote": "[그림: $y=f(x)$가 $(0,0)$에서 $(3,4)$를 지나 $(6,0)$까지 이어지고, 왼쪽 가지에 점 $(1,2)$를 표시한다.]"
+}
