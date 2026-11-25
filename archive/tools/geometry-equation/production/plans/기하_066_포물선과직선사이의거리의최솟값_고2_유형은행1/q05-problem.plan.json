@@ -1,0 +1,18 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"PARABOLA","vertex":["0","0"],"p":"1","axis":"X"},
+  "points":[
+    {"id":"A","kind":"POINT","x":"-1","y":"4","coordinates":true},
+    {"id":"B","kind":"POINT","x":"1","y":"6","coordinates":true},
+    {"id":"P","kind":"ON_CONIC","x":"4","branch":"POS"}
+  ],
+  "segments":[{"id":"AB","from":"A","to":"B"},{"id":"BP","from":"B","to":"P"},{"id":"PA","from":"P","to":"A"}],
+  "polygons":[{"id":"tri","points":["A","B","P"],"fill":"NONE"}],
+  "caption":"고정된 A,B와 포물선 위 임의 점 P로 만든 삼각형(비최소 예시)",
+  "accessibilityDescription":"오른쪽으로 열린 포물선 y²=4x와 고정점 A(-1,4),B(1,6)가 있다. 위쪽 가지의 점 P를 한 예로 잡아 A-B-P의 삼각형을 이었으며 P는 최솟값을 주는 접점으로 지정한 것이 아니다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"원문은 A=(-1,4),B=(1,6)만 고정하고 P는 포물선 y²=4x의 임의 점이다. 예시로 P=(4,4)를 골라 세 점이 실제 비퇴화 삼각형이 되도록 한다. 최솟값을 주는 P=(1,2)를 문제 그림에 미리 표시하지 않는다.","mappedTo":["A","B","P"]},
+    {"id":"c2","condition":"AB는 원문 기지 선분이다. 그림의 삼각형은 임의 위치의 도형이고 대표값 넓이 5는 답이 아니다. 구하는 최솟값과 풀이 접선 y=x+1, 최단거리 수선은 모두 문제 그림에 비표시한다.","mappedTo":["AB","BP","PA","tri"]}
+  ],
+  "newVisualInformation":["최적화 질문에서 의도적으로 답을 나타내지 않는 일반 예시점으로 삼각형 구성","최소 위치·최소 넓이·해설 보조선을 미표시"]
+}

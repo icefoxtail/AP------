@@ -1,0 +1,19 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"PARABOLA","vertex":["0","0"],"p":"2","axis":"X"},
+  "points":[
+    {"id":"P","kind":"POINT","x":"-1","y":"1","coordinates":true},
+    {"id":"A","kind":"ON_CONIC","x":"1/2","branch":"NEG","coordinates":true},
+    {"id":"B","kind":"ON_CONIC","x":"2","branch":"POS","coordinates":true}
+  ],
+  "lines":[{"id":"t1","tangent":true,"at":"A"},{"id":"t2","tangent":true,"at":"B"}],
+  "segments":[{"id":"PA","from":"P","to":"A"},{"id":"PB","from":"P","to":"B"},{"id":"AB","from":"A","to":"B"}],
+  "polygons":[{"id":"tri","points":["P","A","B"],"fill":"LIGHT"}],
+  "caption":"외부점 P에서 두 접점을 잇는 색칠 삼각형 PAB",
+  "accessibilityDescription":"오른쪽으로 열린 포물선 y²=8x 밖의 점 P(-1,1)에서 두 접선이 내려쪽 접점 A(1/2,-2), 위쪽 접점 B(2,4)에 닿는다. 세 점 P,A,B를 이은 삼각형의 내부가 옅은 색으로 칠해져 있다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"외부점 P=(-1,1), 접점 A=(1/2,-2)와 B=(2,4)는 y²=8x를 만족하며 각 접선 y=-2x-1, y=x+2가 동시에 P를 지난다. 원문의 모든 좌표를 실제 라벨 필드에 표시한다.","mappedTo":["P","A","B","t1","t2"]},
+    {"id":"c2","condition":"P-A-B 삼각형의 원문 음영은 polygons.fill=LIGHT로 실제 구현한다. 면적 27/4는 질문의 정답이므로 길이·면적 라벨에 쓰지 않는다.","mappedTo":["PA","PB","AB","tri"]}
+  ],
+  "newVisualInformation":["두 실제 접점의 원문 좌표와 외부점에서 그은 접선을 정확히 매핑","원문 색칠 영역만 LIGHT로 채우고 면적 정답 비표시"]
+}

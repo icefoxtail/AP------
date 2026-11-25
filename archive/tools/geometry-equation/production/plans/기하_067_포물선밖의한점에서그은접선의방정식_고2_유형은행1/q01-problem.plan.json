@@ -1,0 +1,18 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"PARABOLA","vertex":["0","0"],"p":"2","axis":"X"},
+  "points":[
+    {"id":"A","kind":"POINT","x":"-2","y":"3","coordinates":true},
+    {"id":"U","kind":"ON_CONIC","x":"8","branch":"POS","label":false},
+    {"id":"V","kind":"ON_CONIC","x":"1/2","branch":"NEG","label":false}
+  ],
+  "lines":[{"id":"t1","tangent":true,"at":"U"},{"id":"t2","tangent":true,"at":"V"}],
+  "segments":[{"id":"AU","from":"A","to":"U"},{"id":"AV","from":"A","to":"V"}],
+  "caption":"준선 위의 점 A(-2,3)에서 포물선에 그은 서로 다른 두 접선",
+  "accessibilityDescription":"오른쪽으로 열린 포물선 y²=8x의 왼쪽 점 A(-2,3)에서 두 접선을 그렸다. 한 접선은 오른쪽 위의 포물선 점에 닿고 다른 접선은 오른쪽 아래의 포물선 점에 닿는다. 각 접점은 원문에서 이름을 지정하지 않아 숫자나 문자를 붙이지 않았다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"포물선 y²=8x의 p=2, 준선 x=-2에 A=(-2,3)이 놓인다. A에서 그은 두 접선은 계산상 기울기 1/2와 -2이고 접점 U=(8,8),V=(1/2,-2)이다. 이 점들의 이름과 기울기 값은 질문의 답이 아니더라도 원문 그림에 없어서 비표시한다.","mappedTo":["A","U","V","t1","t2"]},
+    {"id":"c2","condition":"두 접선은 모두 A를 지나고 U·V에서 실제 포물선에 접한다. AU와 AV를 추가해 A에서 접점까지의 관계를 분명히 하되 기울기 곱이나 직각호를 학생용 문제 그림에 노출하지 않는다.","mappedTo":["AU","AV","t1","t2"]}
+  ],
+  "newVisualInformation":["서로 다른 두 접선을 포물선의 실제 접점에서 계산하도록 설계","기울기 곱 정답은 직선 라벨로 미표시"]
+}

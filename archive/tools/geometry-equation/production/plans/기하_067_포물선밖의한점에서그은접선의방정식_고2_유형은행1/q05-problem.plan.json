@@ -1,0 +1,18 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"PARABOLA","vertex":["0","0"],"p":"-2","axis":"X"},
+  "points":[
+    {"id":"E","kind":"POINT","x":"2","y":"0"},
+    {"id":"U","kind":"ON_CONIC","x":"-2","branch":"POS","label":false},
+    {"id":"V","kind":"ON_CONIC","x":"-2","branch":"NEG","label":false}
+  ],
+  "lines":[{"id":"t1","tangent":true,"at":"U"},{"id":"t2","tangent":true,"at":"V"}],
+  "segments":[{"id":"EU","from":"E","to":"U"},{"id":"EV","from":"E","to":"V"}],
+  "caption":"n=2인 대표 경우: (n,0)에서 왼쪽 포물선에 그은 상하 대칭 접선",
+  "accessibilityDescription":"왼쪽으로 열린 포물선 y²=-8x와 양의 x축 위 외부점이 있다. 외부점에서 위쪽·아래쪽 가지로 그은 두 접선이 x축에 대하여 대칭이다. 자연수 n의 여러 경우 중 n=2일 때를 한 예로 그렸다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"원문은 임의의 자연수 n=1~10을 다룬다. 대표 n=2로 외부점 E=(2,0)을 잡고 왼쪽 포물선 y²=-8x(p=-2)의 위·아래 접점 U=(-2,4),V=(-2,-4)를 엔진에서 계산한다. 두 직선은 y=-x+2와 y=x-2이며 모두 E를 지난다.","mappedTo":["E","U","V","t1","t2"]},
+    {"id":"c2","condition":"문자 좌표 (n,0)를 점에 일반식 그대로 쓸 수 없어 실제 화면은 대표 위치로만 나타낸다. 외부점 E의 이름은 도식용이며 원문에 없는 기호다. 모든 n에서 두 접선의 상하 대칭은 유지되며 기울기 곱, 일반항, 구하는 합은 문제 그림에 비표시한다.","mappedTo":["E","EU","EV","t1","t2"]}
+  ],
+  "newVisualInformation":["왼쪽 포물선의 실제 상하 대칭 접점과 동일한 외부점 통과 구현","n 전체를 대표값 하나로 시각화하되 문자 좌표 표시는 ENGINE_CAPABILITY_PENDING"]
+}
