@@ -1,0 +1,24 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {"kind": "ELLIPSE", "center": ["0", "0"], "aSquared": "36", "bSquared": "20", "major": "X"},
+  "points": [
+    {"id": "A", "kind": "FOCUS", "side": 1, "coordinates": true},
+    {"id": "B", "kind": "FOCUS", "side": -1, "coordinates": true},
+    {"id": "P", "kind": "LINE_CONIC", "line": "k", "which": 2},
+    {"id": "Q", "kind": "LINE_CONIC", "line": "k", "which": 1}
+  ],
+  "lines": [{"id": "k", "slope": "1/2", "intercept": "-2", "hidden": true}],
+  "segments": [
+    {"id": "sPQ", "from": "P", "to": "Q"},
+    {"id": "sPB", "from": "P", "to": "B"},
+    {"id": "sQB", "from": "Q", "to": "B"}
+  ],
+  "caption": "타원 x²/36+y²/20=1에서 초점 A(4,0)를 지나는 비수평 현 PQ와 다른 초점 B(-4,0)를 연결한 삼각형 PQB",
+  "accessibilityDescription": "가로로 긴 타원의 두 초점 A(4,0), B(-4,0)가 x축 위에 있다. A를 지나는 비수평 직선이 타원과 위쪽 P, 아래쪽 Q에서 만나며 세 점 P,Q,B가 삼각형을 만든다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "타원 x²/36+y²/20=1, 초점거리 c=4; A=(4,0), B=(-4,0)는 문제에서 주어진 두 좌표다.", "mappedTo": ["conic", "A", "B"]},
+    {"id": "c2", "condition": "대표 할선 y=x/2−2는 초점 A를 지나고 P,Q 두 교점의 y값은 모두 0이 아니며 A는 선분 PQ 내부에 있다.", "mappedTo": ["k", "P", "Q", "A", "sPQ"]},
+    {"id": "c3", "condition": "PQ, PB, QB를 잇는 삼각형만 그리고 둘레의 물음 답 24는 드러내지 않는다.", "mappedTo": ["sPQ", "sPB", "sQB"]}
+  ],
+  "newVisualInformation": ["주어진 두 초점 좌표의 정확한 시각 표기와 x축에 놓이지 않은 양 끝점의 초점현"]
+}
