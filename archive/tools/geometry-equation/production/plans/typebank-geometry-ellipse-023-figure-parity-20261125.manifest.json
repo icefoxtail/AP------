@@ -1,0 +1,95 @@
+{
+  "campaign": "typebank-high2-geometry-problem-svg",
+  "typeGroup": "타원: 초점을 지나는 직선과 초점현·평행선·둘레 (기하 023)",
+  "auditKind": "SOURCE_FIGURE_TO_ENGINE_PLAN_PRE_RENDER",
+  "auditedAtKst": "2026-11-25",
+  "sourceOfTruth": "archive/exams/types/high/h2/기하_023_타원의정의의활용-초점을지나는직선이주어_고2_유형은행1.js questionBank[id]의 원문 발문·[그림]·해설·정답",
+  "sourceSha256": "ba41e680dd2af72ecbea524faabeef4838db667edd19d9aa39a47e7acd734732",
+  "scope": {
+    "distinctJsFiles": 1,
+    "sourceFigures": 6,
+    "actualPlans": 6,
+    "sourceVsPlanReviewed": 6,
+    "lintShallowPass": 6,
+    "lintFullPass": 6,
+    "featureParityPreRenderPass": 5,
+    "engineCapabilityPending": 1
+  },
+  "validation": {
+    "lintCommand": "node archive/tools/geometry-equation/ops/claude-batch/plan-lint.cjs <기하_023/q01~q06-problem.plan.json>",
+    "dependencySetup": "공식 production/setup-spikes.mjs로 고정 버전 npm·Python·NotoSansKR.ttf 의존성 설치; 해당 엔진 동일한 main 기반",
+    "independentMathCheck": "SymPy 별도 계산으로 q01~q04 현 두 교점·초점이 현 내부·삼각형 둘레, q05 사분면·평행선·직각 수선 길이6·거리합, q06 F′-P-Q 공선 순서·PF=3 검산: 6/6 VERIFIED",
+    "render": "NOT_RUN",
+    "pngVisualReview": "NOT_RUN",
+    "studentScreenReview": "NOT_RUN",
+    "a4PrintReview": "NOT_RUN",
+    "jsImageLink": "NOT_RUN"
+  },
+  "items": [
+    {
+      "stem": "기하_023_타원의정의의활용-초점을지나는직선이주어_고2_유형은행1",
+      "qid": 1,
+      "sourceVsPlan": "REVIEWED",
+      "planLintShallow": "PASS",
+      "planLintFull": "PASS",
+      "featureParity": "PASS_PRE_RENDER",
+      "verified": "세로 장축 x²/9+y²/25=1, F=(0,4), F′=(0,-4). 비수평 할선 F′∈AB, 다른 초점 F를 포함하는 삼각형 ABF의 세 변과 실제 둘레20을 별도 재계산; 물음 답은 그림 비노출"
+    },
+    {
+      "stem": "기하_023_타원의정의의활용-초점을지나는직선이주어_고2_유형은행1",
+      "qid": 2,
+      "sourceVsPlan": "REVIEWED",
+      "planLintShallow": "PASS",
+      "planLintFull": "PASS",
+      "featureParity": "PASS_PRE_RENDER",
+      "verified": "가로 장축 타원 x²/36+y²/20=1, 주어진 A(4,0), B(-4,0)를 좌표 점 라벨로 표현. A∈PQ 내부, P·Q 둘 다 x축 밖, 삼각형 PQB의 둘레24 별도 검증, 답 비노출"
+    },
+    {
+      "stem": "기하_023_타원의정의의활용-초점을지나는직선이주어_고2_유형은행1",
+      "qid": 3,
+      "sourceVsPlan": "REVIEWED",
+      "planLintShallow": "PASS",
+      "planLintFull": "PASS",
+      "featureParity": "ENGINE_CAPABILITY_PENDING",
+      "verified": "가로 장축 타원 a²=9,b²=4와 두 초점 F=(√5,0),F′=(-√5,0), F를 지나는 비수평 현 AB와 삼각형 ABF′의 수학적 관계 및 둘레12는 검증. 단 양쪽 초점의 좌표 숫자 라벨을 모두 켠 변형과 세로 현 변형이 모두 ELLIPSE_LABEL_NO_ROOM:point-F로 실패해 현재는 점 이름 F,F′만 표시",
+      "missingVisual": "그림 설명에 있는 F(√5,0), F′(-√5,0)의 좌표를 초점별로 직접 표시하는 겹침 없는 점-소유 좌표 라벨"
+    },
+    {
+      "stem": "기하_023_타원의정의의활용-초점을지나는직선이주어_고2_유형은행1",
+      "qid": 4,
+      "sourceVsPlan": "REVIEWED",
+      "planLintShallow": "PASS",
+      "planLintFull": "PASS",
+      "featureParity": "PASS_PRE_RENDER",
+      "verified": "가로 장축 타원 C 곡선 이름과 주어진 A(0,2) 좌표를 필드로 직접 표기. 미지 c는 공개하지 않고 F/F′는 x축 초점, A-F′-B 현 순서와 삼각형 ABF, 둘레20 별도 계산"
+    },
+    {
+      "stem": "기하_023_타원의정의의활용-초점을지나는직선이주어_고2_유형은행1",
+      "qid": 5,
+      "sourceVsPlan": "REVIEWED",
+      "planLintShallow": "PASS",
+      "planLintFull": "PASS",
+      "featureParity": "PASS_PRE_RENDER",
+      "verified": "타원 x²/49+y²/24=1, F=(5,0),F′=(-5,0), P 제3사분면, Q 제1사분면. 실제 평행한 직선 l/m과 수선 DE 길이6을 직접 라벨·직각으로 표현. 구하는 QF,PF′에 6을 붙이면 답 유출이므로 별도 DE에 표시"
+    },
+    {
+      "stem": "기하_023_타원의정의의활용-초점을지나는직선이주어_고2_유형은행1",
+      "qid": 6,
+      "sourceVsPlan": "REVIEWED",
+      "planLintShallow": "PASS",
+      "planLintFull": "PASS",
+      "featureParity": "PASS_PRE_RENDER",
+      "verified": "타원 x²/25+y²/9=1, F=(4,0),F′=(-4,0). 제1사분면 P=(8/5,9/5)는 PF=3, Q≈(3.189,2.311)는 타원 위의 제1사분면 교점, F′-P-Q 공선 순서. 두 삼각형의 다섯 고유 변과 주어진 3 라벨, 미지 둘레합 비노출"
+    }
+  ],
+  "engineHandoff": [
+    {
+      "stemNumber": 23,
+      "qid": 3,
+      "kind": "FOCUS_COORDINATE_LABEL_NO_ROOM",
+      "target": "ellipse-figure-v1/conic",
+      "request": "점 F와 F′의 주어진 좌표 F(√5,0), F′(-√5,0)를 각각 해당 초점에 소유시키는 겹침 없는 외부 점 라벨/지시선 지원. 현재 두 초점 coordinates:true면 ELLIPSE_LABEL_NO_ROOM:point-F; 현 방향을 세로로 바꾸어도 동일. 후속 엔진 개선 후 q03 plan 재검사 및 PNG 실제 관측. 핵심 도형은 full lint PASS"
+    }
+  ],
+  "handoffNote": "이 묶음은 6문항의 원문과 현행 엔진 plan 수학·시각 필드를 직접 대조한 사전 감사다. full lint 6/6은 모든 시각 라벨의 완성을 뜻하지 않는다. q03 초점 좌표 라벨은 엔진 보강 대기이므로 완료 항목은 5/6으로 기록한다. SVG/PNG 실물·학생 화면·A4 검수 및 JS 게시·연결은 안티그래비티 후속 작업으로 NOT_RUN이다."
+}

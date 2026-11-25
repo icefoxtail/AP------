@@ -1,0 +1,27 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {"kind": "ELLIPSE", "center": ["0", "0"], "aSquared": "25", "bSquared": "9", "major": "X"},
+  "points": [
+    {"id": "F", "kind": "FOCUS", "side": 1},
+    {"id": "F'", "kind": "FOCUS", "side": -1},
+    {"id": "P", "kind": "POINT", "x": "8/5", "y": "9/5"},
+    {"id": "Q", "kind": "LINE_CONIC", "line": "k", "which": 2}
+  ],
+  "lines": [{"id": "k", "through": ["F'", "P"], "hidden": true}],
+  "segments": [
+    {"id": "sFpP", "from": "F'", "to": "P"},
+    {"id": "sPQ", "from": "P", "to": "Q"},
+    {"id": "sPF", "from": "P", "to": "F", "label": "3"},
+    {"id": "sQF", "from": "Q", "to": "F"},
+    {"id": "sFFp", "from": "F", "to": "F'"}
+  ],
+  "caption": "타원 x²/25+y²/9=1의 초점 F,F′와 제1사분면의 내부점 P, 타원 위 점 Q가 F′-P-Q 순서로 놓이며 PF=3인 두 삼각형 PFQ와 PF′F",
+  "accessibilityDescription": "가로로 긴 타원의 두 초점 F와 F′ 사이에 내부점 P가 제1사분면에 있다. P에서 오른쪽 초점 F까지 선분 길이가 3이다. 왼쪽 초점 F′에서 P를 지나 연장한 직선이 타원 제1사분면에서 Q를 만나며 두 삼각형 PFQ와 PF′F가 보인다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "타원 x²/25+y²/9=1, 초점 F=(4,0), F′=(-4,0)이다.", "mappedTo": ["conic", "F", "F'"]},
+    {"id": "c2", "condition": "대표 내부점 P=(8/5,9/5)은 제1사분면이고 PF=√((8/5−4)²+(9/5)²)=3을 정확히 만족한다. 실제 주어진 3을 PF 선분에 표기한다.", "mappedTo": ["P", "F", "sPF"]},
+    {"id": "c3", "condition": "Q는 숨긴 직선 k=F′P와 타원의 x가 더 큰 교점이다. Q는 제1사분면 타원 위에 있고 F′-P-Q 순서가 성립한다. F′P, PQ는 두 조각으로만 그려 중복 선을 피한다.", "mappedTo": ["F'", "P", "Q", "k", "sFpP", "sPQ"]},
+    {"id": "c4", "condition": "삼각형 PFQ의 변 PF,PQ,QF와 삼각형 PF′F의 변 PF,F′P,F′F를 겹침 없이 모두 보여 준다. 둘레 합은 물음의 답이므로 표시하지 않는다.", "mappedTo": ["sPF", "sPQ", "sQF", "sFpP", "sFFp"]}
+  ],
+  "newVisualInformation": ["제1사분면의 내부점 P와 타원점 Q의 올바른 순서·길이 3을 실제 선분 라벨로 제시, 두 삼각형의 공유변 PF"]
+}
