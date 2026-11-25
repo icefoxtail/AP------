@@ -1,0 +1,26 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conics": [
+    {"id": "e", "kind": "ELLIPSE", "center": ["0", "0"], "aSquared": "6", "bSquared": "3", "major": "Y"},
+    {"id": "p", "kind": "PARABOLA", "vertex": ["0", "0"], "p": "2", "axis": "X"}
+  ],
+  "points": [
+    {"id": "P", "kind": "CONIC_CONIC", "curves": ["e", "p"], "which": 2}
+  ],
+  "lines": [
+    {"id": "te", "curve": "e", "tangent": true, "at": "P"},
+    {"id": "tp", "curve": "p", "tangent": true, "at": "P"}
+  ],
+  "caption": "타원과 오른쪽 포물선의 제1사분면 교점 P에서 만나는 두 접선 (매개변수의 대표 도식)",
+  "accessibilityDescription": "세로로 긴 타원과 오른쪽으로 열린 포물선이 제1사분면의 P에서 만난다. 타원의 접선과 포물선의 접선이 P에서 수직을 이룬다. 미정 매개변수의 특정 양수 사례로만 두 곡선의 형태를 나타냈다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "원문은 x²/k+y²/6=1에서 미지의 양수 k를 요구한다. 그림 계산을 위해 접선 수직 조건을 만족하는 매개변수를 내부적으로 선택하되, 화면에는 그 값이나 수치 좌표를 쓰지 않는다. 장축은 y축이다.", "mappedTo": ["conics", "e"]},
+    {"id": "c2", "condition": "포물선 y²=8x는 꼭짓점 원점, 초점방향 +x, p=2이고 타원과의 제1사분면 교점 P를 엔진 CONIC_CONIC 교차 노드로 계산한다.", "mappedTo": ["p", "P"]},
+    {"id": "c3", "condition": "P에서 두 접선은 각각 해당 곡선의 tangent 계산으로 구성되어 실제 기울기의 곱이 -1이다. 원문의 직각 표식은 conic 엔진이 직접 그릴 수 없어 ENGINE_CAPABILITY_PENDING이다.", "mappedTo": ["te", "tp", "P"]},
+    {"id": "c4", "condition": "원문의 P(x₁,y₁)은 문자 좌표이며 현재 엔진의 좌표 라벨은 숫자만 지원한다. 기호 좌표를 그림에 표시하는 기능은 별도 보강 필요, 정답 누출은 방지한다.", "mappedTo": ["P"]}
+  ],
+  "newVisualInformation": [
+    "타원과 포물선의 정확한 공동 교점과 각 곡선의 접선",
+    "두 접선 사이 직각 표식과 P의 문자 좌표는 ENGINE_CAPABILITY_PENDING"
+  ]
+}
