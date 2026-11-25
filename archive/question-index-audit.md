@@ -2,12 +2,12 @@
 
 - 생성기: archive/tools/build-question-index.mjs
 - 인덱싱 범위(SCOPE): git-tracked + db-listed production (parity-gated)
-  - git 버전관리에 등재된 시험지 JS만 인덱싱(2099파일).
+  - git 버전관리에 등재된 시험지 JS만 인덱싱(2100파일).
   - 교과서 파일은 `textbooks/<book>/<title>.js` 경로와 db.js의 명시 등록이 모두 있을 때만 포함한다.
   - DB 미등록 교재 파일과 미추적 _pro 드래프트는 제외한다.
 - 공식 마스터 키 수: 143 (중등 23 + H22 56 + H15 64)
-- 원본 문항 수: 42347
-- 최종 인덱스 문항 수: 42347
+- 원본 문항 수: 42367
+- 최종 인덱스 문항 수: 42367
 - 중복 qKey 그룹: 0 / 제외 레코드(duplicate_skipped): 0
 - 최종 인덱스 중복 qKey: 0 (0이어야 정상)
 
@@ -78,14 +78,14 @@
 
 ---
 
-## 5. 필드 누락 (최종 인덱스 42347건 기준)
+## 5. 필드 누락 (최종 인덱스 42367건 기준)
 
 | 필드 | 누락 수 |
 |------|--------:|
 | id | 0 |
 | content | 1496 |
 | choices(배열) | 36 |
-| level | 16682 |
+| level | 16702 |
 | standardUnit | 1962 |
 | standardUnitKey | 1790 |
 | standardCourse | 3623 |
