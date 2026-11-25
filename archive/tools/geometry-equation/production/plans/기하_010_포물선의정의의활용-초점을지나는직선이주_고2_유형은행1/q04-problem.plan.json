@@ -1,0 +1,10 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"PARABOLA","vertex":["0","0"],"p":"4","axis":"X"},
+  "points":[{"id":"O","kind":"ORIGIN"},{"id":"F","kind":"FOCUS"},{"id":"A","kind":"ON_CONIC","x":"2","branch":"POS"},{"id":"B","kind":"ON_CONIC","x":"2","branch":"NEG"},{"id":"C","kind":"ON_CONIC","x":"8","branch":"NEG"},{"id":"D","kind":"ON_CONIC","x":"8","branch":"POS"}],
+  "segments":[{"id":"AB","from":"A","to":"B"},{"id":"BC","from":"B","to":"C"},{"id":"CD","from":"C","to":"D"},{"id":"DA","from":"D","to":"A"},{"id":"AC","from":"A","to":"C"},{"id":"BD","from":"B","to":"D"},{"id":"DF","from":"D","to":"F","label":"12"}],
+  "caption":"y²=16x 위 사다리꼴 ABCD의 두 세로변 AB,CD와 초점 F에서 교차하는 두 대각선. DF=12.",
+  "accessibilityDescription":"포물선 위 왼쪽 위·아래 A,B와 오른쪽 아래·위 C,D를 잇는 사다리꼴에서 대각선 AC와 BD가 초점 F에서 교차하고 선분 DF의 길이는 12이다.",
+  "sourceConditions":[{"id":"c1","condition":"y²=16x의 초점 F=(4,0), 원점 O=(0,0)이다.","mappedTo":["conic","F","O"]},{"id":"c2","condition":"AB,CD는 y축 평행이고 AC,BD는 F에서 교차한다. DF=12를 충족하는 A,B의 x=2 및 C,D의 x=8을 내부 배치에 쓰되 구하는 넓이는 표시하지 않는다.","mappedTo":["A","B","C","D","AB","CD","AC","BD","DF"]}],
+  "newVisualInformation":["두 평행 세로변과 초점에서 교차하는 사다리꼴 대각선"]
+}
