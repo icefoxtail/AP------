@@ -1,0 +1,1191 @@
+{
+  "source": "archive/exams/textbooks/백발백중_공통수학2/백발백중_공통수학2_원의방정식_도형의이동_P26-29_20261022_유사50.js",
+  "sourceSha": "2afcb1033f5be190e90cbb67639d9e42932eaa81",
+  "batch": "2026-11-26 geometry relocation and rational P26–29/P85–88 20-qid plan generation",
+  "selection": {
+    "sourceOrdinals": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "count": 10
+  },
+  "judgementAxes": {
+    "problem": 10,
+    "solution": 10
+  },
+  "records": [
+    {
+      "qid": "BV-BAKBAL-H-COM2-P26-Q01-T1-R2",
+      "sourceOrdinal": 1,
+      "source": "archive/exams/textbooks/백발백중_공통수학2/백발백중_공통수학2_원의방정식_도형의이동_P26-29_20261022_유사50.js",
+      "sourceSha": "2afcb1033f5be190e90cbb67639d9e42932eaa81",
+      "content": "두 원 $x^2 + y^2 = 4$와 $(x-3)^2 + (y-4)^2 = r^2$이 외접할 때, 양수 $r$의 값은?",
+      "solutionText": "[1단계] 조건 식별: 원 1은 중심 (0, 0), 반지름 2이고 원 2는 중심 (3, 4), 반지름 r (r > 0)일 때 두 원이 외접하는 양수 r의 값을 구한다.\n[2단계] 핵심 공식: 두 원이 외접할 필요충분조건은 두 원의 중심 사이 거리 d가 두 반지름의 합과 같은 것(d = r1 + r2)이다.\n[3단계] 연속 연산 전개:\n1) 중심거리 d 계산: d = sqrt((3-0)^2 + (4-0)^2) = sqrt(9 + 16) = sqrt(25) = 5\n2) 외접 조건 대입: 5 = 2 + r\n3) 일차방정식 풀이: r = 5 - 2 = 3\n4) 양수 조건 검토: r = 3 > 0 만족.\n[4단계] 선지 판정: 계산된 r = 3은 선지 ⑤과 정확히 일치함.\n[5단계] 결론: 따라서 구하는 정답은 ⑤이다.",
+      "answer": "⑤",
+      "sourceVsPlan": "REVIEWED",
+      "render": "NOT_RUN",
+      "pngVisual": "NOT_RUN",
+      "studentScreen": "NOT_RUN",
+      "a4": "NOT_RUN",
+      "problem": {
+        "judgement": "EXEMPT",
+        "reason": "반지름 r를 미리 정해 그려야 외접 원을 정확히 그릴 수 있어 문제 그림이 답을 노출하므로 해설에만 제작.",
+        "sourceAsset": null,
+        "sourceAssetPresentInGit": null,
+        "featureParity": "NOT_APPLICABLE",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE"
+      },
+      "solution": {
+        "judgement": "BENEFICIAL",
+        "reason": "두 원의 위치, 접점·공통현·중심선 또는 직각삼각형이 해설의 기하 관계를 설명한다.",
+        "sourceAsset": "assets/images/백발백중_공통수학2_원의방정식_도형의이동_P26-29_20261022_유사50/BV-BAKBAL-H-COM2-P26-Q01-T1-R2-solution.svg",
+        "sourceAssetPresentInGit": false,
+        "featureParity": "PASS",
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "plan": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_원의방정식_도형의이동_P26-29_20261022_유사50/q01-solution.plan.json",
+        "drawnFieldInventory": {
+          "points": [
+            "O1",
+            "O2",
+            "T"
+          ],
+          "circles": [
+            "C1",
+            "C2"
+          ],
+          "lines": [],
+          "segments": [
+            {
+              "id": "sO1T",
+              "refs": [
+                "O1",
+                "T"
+              ]
+            },
+            {
+              "id": "sTO2",
+              "refs": [
+                "T",
+                "O2"
+              ]
+            },
+            {
+              "id": "sCenters",
+              "refs": [
+                "O1",
+                "O2"
+              ],
+              "dashed": true
+            }
+          ],
+          "coordinates": [
+            "O1",
+            "O2"
+          ],
+          "rightAngles": [],
+          "scalarLabels": [
+            {
+              "nodeId": "d",
+              "ownerSegment": "sCenters",
+              "prefix": "",
+              "value": "5"
+            },
+            {
+              "nodeId": "r1",
+              "ownerSegment": "sO1T",
+              "prefix": "",
+              "value": "2"
+            },
+            {
+              "nodeId": "r2",
+              "ownerSegment": "sTO2",
+              "prefix": "",
+              "value": "3"
+            }
+          ],
+          "angleArcs": [],
+          "faceFills": []
+        }
+      }
+    },
+    {
+      "qid": "BV-BAKBAL-H-COM2-P26-Q01-S1-R1",
+      "sourceOrdinal": 2,
+      "source": "archive/exams/textbooks/백발백중_공통수학2/백발백중_공통수학2_원의방정식_도형의이동_P26-29_20261022_유사50.js",
+      "sourceSha": "2afcb1033f5be190e90cbb67639d9e42932eaa81",
+      "content": "두 원 $x^2 + y^2 = 25$와 $(x-3)^2 + y^2 = r^2$ ($r < 5$)이 내접할 때, 양수 $r$의 값은?",
+      "solutionText": "[1단계] 주어진 조건: 두 원 $x^2 + y^2 = 25$와 $(x-3)^2 + y^2 = r^2$ ($r < 5$)이 내접할 때, 양수 $r$의 값은?\n[2단계] 반지름이 각각 $R>r$인 두 원이 내접하면 중심거리 $d=R-r$이다. 큰 원의 반지름이 $5$, 중심거리가 $3$이므로 $3=5-r$을 사용한다.\n[3단계] 연산 전개: 중심거리는 (0, 0)과 (3, 0) 사이의 거리로 d = 3이다. r < 5이므로 내접할 조건은 d = 5 - r -> 3 = 5 - r -> r = 2이다.\n[4단계] 결과값 도출 및 선지 비교: 계산 결과 도출된 값은 선지 ③과 정확히 일치함.\n[5단계] 따라서 정답은 ③이다.",
+      "answer": "③",
+      "sourceVsPlan": "REVIEWED",
+      "render": "NOT_RUN",
+      "pngVisual": "NOT_RUN",
+      "studentScreen": "NOT_RUN",
+      "a4": "NOT_RUN",
+      "problem": {
+        "judgement": "EXEMPT",
+        "reason": "내접하는 작은 원의 반지름이 바로 미지 답이어서 문제 그림의 정확한 반지름을 그리지 않는다.",
+        "sourceAsset": null,
+        "sourceAssetPresentInGit": null,
+        "featureParity": "NOT_APPLICABLE",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE"
+      },
+      "solution": {
+        "judgement": "BENEFICIAL",
+        "reason": "두 원의 위치, 접점·공통현·중심선 또는 직각삼각형이 해설의 기하 관계를 설명한다.",
+        "sourceAsset": "assets/images/백발백중_공통수학2_원의방정식_도형의이동_P26-29_20261022_유사50/BV-BAKBAL-H-COM2-P26-Q01-S1-R1-solution.svg",
+        "sourceAssetPresentInGit": false,
+        "featureParity": "PASS",
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "plan": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_원의방정식_도형의이동_P26-29_20261022_유사50/q02-solution.plan.json",
+        "drawnFieldInventory": {
+          "points": [
+            "O1",
+            "O2",
+            "T"
+          ],
+          "circles": [
+            "C1",
+            "C2"
+          ],
+          "lines": [],
+          "segments": [
+            {
+              "id": "sCenters",
+              "refs": [
+                "O1",
+                "O2"
+              ],
+              "dashed": true
+            },
+            {
+              "id": "sOuter",
+              "refs": [
+                "O1",
+                "T"
+              ]
+            },
+            {
+              "id": "sInner",
+              "refs": [
+                "O2",
+                "T"
+              ]
+            }
+          ],
+          "coordinates": [
+            "O1",
+            "O2"
+          ],
+          "rightAngles": [],
+          "scalarLabels": [
+            {
+              "nodeId": "d",
+              "ownerSegment": "sCenters",
+              "prefix": "",
+              "value": "3"
+            },
+            {
+              "nodeId": "rOuter",
+              "ownerSegment": "sOuter",
+              "prefix": "",
+              "value": "5"
+            },
+            {
+              "nodeId": "rInner",
+              "ownerSegment": "sInner",
+              "prefix": "",
+              "value": "2"
+            }
+          ],
+          "angleArcs": [],
+          "faceFills": []
+        }
+      }
+    },
+    {
+      "qid": "BV-BAKBAL-H-COM2-P26-Q01-S2-R1",
+      "sourceOrdinal": 3,
+      "source": "archive/exams/textbooks/백발백중_공통수학2/백발백중_공통수학2_원의방정식_도형의이동_P26-29_20261022_유사50.js",
+      "sourceSha": "2afcb1033f5be190e90cbb67639d9e42932eaa81",
+      "content": "두 원 $x^2 + y^2 = 9$와 $(x-k)^2 + y^2 = 4$ ($k > 0$)가 만나지 않고 서로의 외부에 있도록 하는 정수 $k$의 최솟값은?",
+      "solutionText": "[1단계] 주어진 조건: 두 원 $x^2 + y^2 = 9$와 $(x-k)^2 + y^2 = 4$ ($k > 0$)가 만나지 않고 서로의 외부에 있도록 하는 정수 $k$의 최솟값은?\n[2단계] 두 원이 서로의 외부에 있고 만나지 않으려면 중심거리 $d$가 두 반지름의 합보다 커야 한다($d>r_1+r_2$). 여기서는 $d=k$, $r_1=3$, $r_2=2$이다.\n[3단계] 연산 전개: 두 원의 중심 사이 거리는 k이다. 서로의 외부에 있어 만나지 않을 조건은 d > r1 + r2이므로 k > 3 + 2 = 5이다. 따라서 정수 k의 최솟값은 6이다.\n[4단계] 결과값 도출 및 선지 비교: 계산 결과 도출된 값은 선지 ①과 정확히 일치함.\n[5단계] 따라서 정답은 ①이다.",
+      "answer": "①",
+      "sourceVsPlan": "REVIEWED",
+      "render": "NOT_RUN",
+      "pngVisual": "NOT_RUN",
+      "studentScreen": "NOT_RUN",
+      "a4": "NOT_RUN",
+      "problem": {
+        "judgement": "EXEMPT",
+        "reason": "최소 정수 k가 미지 조건이므로 한 수치의 이격 그림은 원문 조건 전체를 대표할 수 없다.",
+        "sourceAsset": null,
+        "sourceAssetPresentInGit": null,
+        "featureParity": "NOT_APPLICABLE",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE"
+      },
+      "solution": {
+        "judgement": "BENEFICIAL",
+        "reason": "두 원의 위치, 접점·공통현·중심선 또는 직각삼각형이 해설의 기하 관계를 설명한다.",
+        "sourceAsset": "assets/images/백발백중_공통수학2_원의방정식_도형의이동_P26-29_20261022_유사50/BV-BAKBAL-H-COM2-P26-Q01-S2-R1-solution.svg",
+        "sourceAssetPresentInGit": false,
+        "featureParity": "PASS",
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "plan": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_원의방정식_도형의이동_P26-29_20261022_유사50/q03-solution.plan.json",
+        "drawnFieldInventory": {
+          "points": [
+            "O1",
+            "O2"
+          ],
+          "circles": [
+            "C1",
+            "C2"
+          ],
+          "lines": [],
+          "segments": [
+            {
+              "id": "sCenters",
+              "refs": [
+                "O1",
+                "O2"
+              ],
+              "dashed": true
+            }
+          ],
+          "coordinates": [
+            "O1",
+            "O2"
+          ],
+          "rightAngles": [],
+          "scalarLabels": [
+            {
+              "nodeId": "d",
+              "ownerSegment": "sCenters",
+              "prefix": "",
+              "value": "6"
+            }
+          ],
+          "angleArcs": [],
+          "faceFills": []
+        }
+      }
+    },
+    {
+      "qid": "BV-BAKBAL-H-COM2-P26-Q02-T1-R2",
+      "sourceOrdinal": 4,
+      "source": "archive/exams/textbooks/백발백중_공통수학2/백발백중_공통수학2_원의방정식_도형의이동_P26-29_20261022_유사50.js",
+      "sourceSha": "2afcb1033f5be190e90cbb67639d9e42932eaa81",
+      "content": "두 원 $x^2 + y^2 = 10$과 $x^2 + y^2 - 2x - 4y + 2 = 0$의 공통현의 $x$절편은?",
+      "solutionText": "[1단계] 조건 식별: 두 원의 교점을 지나는 공통현의 직선방정식의 x절편을 구한다.\n[2단계] 핵심 공식: 두 원의 공통현의 방정식은 두 원의 방정식을 변변 뺀 식 (a - a')x + (b - b')y + (c - c') = 0이다. x절편은 y = 0을 대입한다.\n[3단계] 연속 연산 전개:\n1) 두 원의 일반형 식 빼기: (x^2 + y^2 - 10) - (x^2 + y^2 - 2x - 4y + 2) = 0\n2) 식 정리: 2x + 4y - 12 = 0 => x + 2y - 6 = 0\n3) x절편 구하기: y = 0 대입 => x - 6 = 0 => x = 6.\n[4단계] 선지 판정: 계산된 x = 6은 선지 ①과 정확히 일치함.\n[5단계] 결론: 따라서 구하는 정답은 ①이다.",
+      "answer": "①",
+      "sourceVsPlan": "REVIEWED",
+      "render": "NOT_RUN",
+      "pngVisual": "NOT_RUN",
+      "studentScreen": "NOT_RUN",
+      "a4": "NOT_RUN",
+      "problem": {
+        "judgement": "EXEMPT",
+        "reason": "공통현의 x절편을 직선의 식 소거만으로 구한다. 문제 그림의 x절편은 정답을 노출한다.",
+        "sourceAsset": null,
+        "sourceAssetPresentInGit": null,
+        "featureParity": "NOT_APPLICABLE",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE"
+      },
+      "solution": {
+        "judgement": "BENEFICIAL",
+        "reason": "두 원의 위치, 접점·공통현·중심선 또는 직각삼각형이 해설의 기하 관계를 설명한다.",
+        "sourceAsset": "assets/images/백발백중_공통수학2_원의방정식_도형의이동_P26-29_20261022_유사50/BV-BAKBAL-H-COM2-P26-Q02-T1-R2-solution.svg",
+        "sourceAssetPresentInGit": false,
+        "featureParity": "PASS",
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "plan": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_원의방정식_도형의이동_P26-29_20261022_유사50/q04-solution.plan.json",
+        "drawnFieldInventory": {
+          "points": [
+            "O1",
+            "O2",
+            "A",
+            "B",
+            "H",
+            "X"
+          ],
+          "circles": [
+            "C1",
+            "C2"
+          ],
+          "lines": [
+            "CH"
+          ],
+          "segments": [
+            {
+              "id": "sChord",
+              "refs": [
+                "A",
+                "B"
+              ]
+            },
+            {
+              "id": "sCenters",
+              "refs": [
+                "O1",
+                "O2"
+              ],
+              "dashed": true
+            },
+            {
+              "id": "sH",
+              "refs": [
+                "O1",
+                "H"
+              ],
+              "dashed": true
+            }
+          ],
+          "coordinates": [
+            "O1",
+            "O2",
+            "X"
+          ],
+          "rightAngles": [
+            {
+              "id": "perpH",
+              "refs": [
+                "A",
+                "H",
+                "O1"
+              ],
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ],
+          "scalarLabels": [],
+          "angleArcs": [],
+          "faceFills": []
+        }
+      }
+    },
+    {
+      "qid": "BV-BAKBAL-H-COM2-P26-Q02-S1-R1",
+      "sourceOrdinal": 5,
+      "source": "archive/exams/textbooks/백발백중_공통수학2/백발백중_공통수학2_원의방정식_도형의이동_P26-29_20261022_유사50.js",
+      "sourceSha": "2afcb1033f5be190e90cbb67639d9e42932eaa81",
+      "content": "두 원 $x^2 + y^2 - 4 = 0$과 $x^2 + y^2 - 2ax - 2y + 1 = 0$의 공통현의 기울기가 $-3$일 때, 상수 $a$의 값은?",
+      "solutionText": "[1단계] 주어진 조건: 두 원 $x^2 + y^2 - 4 = 0$과 $x^2 + y^2 - 2ax - 2y + 1 = 0$의 공통현의 기울기가 $-3$일 때, 상수 $a$의 값은?\n[2단계] 두 원의 방정식을 변변 빼면 이차항이 소거되어 공통현을 포함하는 직선의 방정식이 나온다. 직선의 기울기·절편은 이 일차식에서 구한다.\n[3단계] 연산 전개: 두 식을 빼면 공통현의 방정식은 2ax + 2y - 5 = 0 -> y = -ax + 5/2. 기울기가 -a이므로 -a = -3 -> a = 3이다.\n[4단계] 결과값 도출 및 선지 비교: 계산 결과 도출된 값은 선지 ⑤과 정확히 일치함.\n[5단계] 따라서 정답은 ⑤이다.",
+      "answer": "⑤",
+      "sourceVsPlan": "REVIEWED",
+      "render": "NOT_RUN",
+      "pngVisual": "NOT_RUN",
+      "studentScreen": "NOT_RUN",
+      "a4": "NOT_RUN",
+      "problem": {
+        "judgement": "EXEMPT",
+        "reason": "기울기 -3에서 아직 미지 a를 정해야 원 둘째 중심을 배치할 수 있어 문제용 그림은 불필요하다.",
+        "sourceAsset": null,
+        "sourceAssetPresentInGit": null,
+        "featureParity": "NOT_APPLICABLE",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE"
+      },
+      "solution": {
+        "judgement": "BENEFICIAL",
+        "reason": "두 원의 위치, 접점·공통현·중심선 또는 직각삼각형이 해설의 기하 관계를 설명한다.",
+        "sourceAsset": "assets/images/백발백중_공통수학2_원의방정식_도형의이동_P26-29_20261022_유사50/BV-BAKBAL-H-COM2-P26-Q02-S1-R1-solution.svg",
+        "sourceAssetPresentInGit": false,
+        "featureParity": "PASS",
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "plan": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_원의방정식_도형의이동_P26-29_20261022_유사50/q05-solution.plan.json",
+        "drawnFieldInventory": {
+          "points": [
+            "O1",
+            "O2",
+            "A",
+            "B",
+            "H"
+          ],
+          "circles": [
+            "C1",
+            "C2"
+          ],
+          "lines": [
+            "CH"
+          ],
+          "segments": [
+            {
+              "id": "sChord",
+              "refs": [
+                "A",
+                "B"
+              ]
+            },
+            {
+              "id": "sCenters",
+              "refs": [
+                "O1",
+                "O2"
+              ],
+              "dashed": true
+            },
+            {
+              "id": "sH",
+              "refs": [
+                "O1",
+                "H"
+              ],
+              "dashed": true
+            }
+          ],
+          "coordinates": [
+            "O1",
+            "O2"
+          ],
+          "rightAngles": [
+            {
+              "id": "perpH",
+              "refs": [
+                "A",
+                "H",
+                "O1"
+              ],
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ],
+          "scalarLabels": [],
+          "angleArcs": [],
+          "faceFills": []
+        }
+      }
+    },
+    {
+      "qid": "BV-BAKBAL-H-COM2-P26-Q03-T1-R1",
+      "sourceOrdinal": 7,
+      "source": "archive/exams/textbooks/백발백중_공통수학2/백발백중_공통수학2_원의방정식_도형의이동_P26-29_20261022_유사50.js",
+      "sourceSha": "2afcb1033f5be190e90cbb67639d9e42932eaa81",
+      "content": "두 원 $(x-1)^2 + (y-2)^2 = 5$와 $(x-3)^2 + (y-6)^2 = 10$의 공통현의 수직이등분선이 점 $(k, 6)$을 지날 때, 상수 $k$의 값은?",
+      "solutionText": "[1단계] 주어진 조건: 두 원 $(x-1)^2 + (y-2)^2 = 5$와 $(x-3)^2 + (y-6)^2 = 10$의 공통현의 수직이등분선이 점 $(k, 6)$을 지날 때, 상수 $k$의 값은?\n[2단계] 두 원의 공통현은 두 중심을 잇는 직선에 수직이다. 따라서 공통현의 수직이등분선은 두 중심을 잇는 직선이며, 두 중심 좌표로 그 방정식을 구한다.\n[3단계] 연산 전개: 두 원의 공통현의 수직이등분선은 두 원의 중심 (1, 2)와 (3, 6)을 잇는 직선이다. 기울기는 (6-2)/(3-1) = 2이고, 원점을 지나므로 직선의 방정식은 y = 2x이다. 점 (k, 6)을 대입하면 6 = 2k -> k = 3이다.\n[4단계] 결과값 도출 및 선지 비교: 계산 결과 도출된 값은 선지 ③과 정확히 일치함.\n[5단계] 따라서 정답은 ③이다.",
+      "answer": "③",
+      "sourceVsPlan": "REVIEWED",
+      "render": "NOT_RUN",
+      "pngVisual": "NOT_RUN",
+      "studentScreen": "NOT_RUN",
+      "a4": "NOT_RUN",
+      "problem": {
+        "judgement": "EXEMPT",
+        "reason": "중심과 수직이등분선 관계는 해설에 도식화하면 충분하며 문제에서 중심을 연결하면 정답을 쉽게 노출한다.",
+        "sourceAsset": null,
+        "sourceAssetPresentInGit": null,
+        "featureParity": "NOT_APPLICABLE",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE"
+      },
+      "solution": {
+        "judgement": "BENEFICIAL",
+        "reason": "두 원의 위치, 접점·공통현·중심선 또는 직각삼각형이 해설의 기하 관계를 설명한다.",
+        "sourceAsset": "assets/images/백발백중_공통수학2_원의방정식_도형의이동_P26-29_20261022_유사50/BV-BAKBAL-H-COM2-P26-Q03-T1-R1-solution.svg",
+        "sourceAssetPresentInGit": false,
+        "featureParity": "PASS",
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "plan": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_원의방정식_도형의이동_P26-29_20261022_유사50/q07-solution.plan.json",
+        "drawnFieldInventory": {
+          "points": [
+            "O1",
+            "O2",
+            "A",
+            "B",
+            "H"
+          ],
+          "circles": [
+            "C1",
+            "C2"
+          ],
+          "lines": [
+            "CH"
+          ],
+          "segments": [
+            {
+              "id": "sChord",
+              "refs": [
+                "A",
+                "B"
+              ]
+            },
+            {
+              "id": "sCenters",
+              "refs": [
+                "O1",
+                "O2"
+              ],
+              "dashed": true
+            },
+            {
+              "id": "sH",
+              "refs": [
+                "O1",
+                "H"
+              ],
+              "dashed": true
+            }
+          ],
+          "coordinates": [
+            "O1",
+            "O2"
+          ],
+          "rightAngles": [
+            {
+              "id": "perpH",
+              "refs": [
+                "A",
+                "H",
+                "O1"
+              ],
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ],
+          "scalarLabels": [],
+          "angleArcs": [],
+          "faceFills": []
+        }
+      }
+    },
+    {
+      "qid": "BV-BAKBAL-H-COM2-P26-Q03-S1-R1",
+      "sourceOrdinal": 8,
+      "source": "archive/exams/textbooks/백발백중_공통수학2/백발백중_공통수학2_원의방정식_도형의이동_P26-29_20261022_유사50.js",
+      "sourceSha": "2afcb1033f5be190e90cbb67639d9e42932eaa81",
+      "content": "원점 $(0, 0)$을 중심으로 하는 원과 점 $(2, 4)$를 중심으로 하는 원이 서로 다른 두 점에서 만날 때, 두 원의 공통현의 기울기는?",
+      "solutionText": "[1단계] 주어진 조건: 원점 $(0, 0)$을 중심으로 하는 원과 점 $(2, 4)$를 중심으로 하는 원이 서로 다른 두 점에서 만날 때, 두 원의 공통현의 기울기는?\n[2단계] 두 원의 공통현은 두 중심을 잇는 직선에 수직이다. 따라서 공통현의 수직이등분선은 두 중심을 잇는 직선이며, 두 중심 좌표로 그 방정식을 구한다.\n[3단계] 연산 전개: 두 원의 중심을 잇는 직선의 기울기는 (4-0)/(2-0) = 2이다. 공통현은 중심선과 서로 수직이므로 공통현의 기울기는 -1/2이다.\n[4단계] 결과값 도출 및 선지 비교: 계산 결과 도출된 값은 선지 ②과 정확히 일치함.\n[5단계] 따라서 정답은 ②이다.",
+      "answer": "②",
+      "sourceVsPlan": "REVIEWED",
+      "render": "NOT_RUN",
+      "pngVisual": "NOT_RUN",
+      "studentScreen": "NOT_RUN",
+      "a4": "NOT_RUN",
+      "problem": {
+        "judgement": "EXEMPT",
+        "reason": "반지름이 미지정이라 정확한 두 원을 문제용으로 그릴 수 없고, 해설에 대표 도식으로 설명한다.",
+        "sourceAsset": null,
+        "sourceAssetPresentInGit": null,
+        "featureParity": "NOT_APPLICABLE",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE"
+      },
+      "solution": {
+        "judgement": "BENEFICIAL",
+        "reason": "두 원의 위치, 접점·공통현·중심선 또는 직각삼각형이 해설의 기하 관계를 설명한다.",
+        "sourceAsset": "assets/images/백발백중_공통수학2_원의방정식_도형의이동_P26-29_20261022_유사50/BV-BAKBAL-H-COM2-P26-Q03-S1-R1-solution.svg",
+        "sourceAssetPresentInGit": false,
+        "featureParity": "PASS",
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "plan": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_원의방정식_도형의이동_P26-29_20261022_유사50/q08-solution.plan.json",
+        "drawnFieldInventory": {
+          "points": [
+            "O1",
+            "O2",
+            "A",
+            "B",
+            "H"
+          ],
+          "circles": [
+            "C1",
+            "C2"
+          ],
+          "lines": [
+            "CH"
+          ],
+          "segments": [
+            {
+              "id": "sChord",
+              "refs": [
+                "A",
+                "B"
+              ]
+            },
+            {
+              "id": "sCenters",
+              "refs": [
+                "O1",
+                "O2"
+              ],
+              "dashed": true
+            },
+            {
+              "id": "sH",
+              "refs": [
+                "O1",
+                "H"
+              ],
+              "dashed": true
+            }
+          ],
+          "coordinates": [
+            "O1",
+            "O2"
+          ],
+          "rightAngles": [
+            {
+              "id": "perpH",
+              "refs": [
+                "A",
+                "H",
+                "O1"
+              ],
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ],
+          "scalarLabels": [],
+          "angleArcs": [],
+          "faceFills": []
+        }
+      }
+    },
+    {
+      "qid": "BV-BAKBAL-H-COM2-P26-Q03-S2-R1",
+      "sourceOrdinal": 9,
+      "source": "archive/exams/textbooks/백발백중_공통수학2/백발백중_공통수학2_원의방정식_도형의이동_P26-29_20261022_유사50.js",
+      "sourceSha": "2afcb1033f5be190e90cbb67639d9e42932eaa81",
+      "content": "두 원 $(x-1)^2 + y^2 = 8$과 $(x-5)^2 + y^2 = 8$의 공통현의 방정식이 $x = k$일 때, 상수 $k$의 값은?",
+      "solutionText": "[1단계] 주어진 조건: 두 원 $(x-1)^2 + y^2 = 8$과 $(x-5)^2 + y^2 = 8$의 공통현의 방정식이 $x = k$일 때, 상수 $k$의 값은?\n[2단계] 두 원의 공통현은 두 중심을 잇는 직선에 수직이다. 따라서 공통현의 수직이등분선은 두 중심을 잇는 직선이며, 두 중심 좌표로 그 방정식을 구한다.\n[3단계] 연산 전개: 두 원의 반지름이 같으므로 공통현은 두 중심 (1, 0)과 (5, 0)의 중점 (3, 0)을 지나며 중심선에 수직인 직선 x = 3이다. 따라서 k = 3.\n[4단계] 결과값 도출 및 선지 비교: 계산 결과 도출된 값은 선지 ②과 정확히 일치함.\n[5단계] 따라서 정답은 ②이다.",
+      "answer": "②",
+      "sourceVsPlan": "REVIEWED",
+      "render": "NOT_RUN",
+      "pngVisual": "NOT_RUN",
+      "studentScreen": "NOT_RUN",
+      "a4": "NOT_RUN",
+      "problem": {
+        "judgement": "BENEFICIAL",
+        "reason": "공통현 또는 외접선이 두 원에 닿는 상대 위치를 문제 풀이 전에 파악하는 데 유익하다; 미지 수치는 숨긴다.",
+        "sourceAsset": null,
+        "sourceAssetPresentInGit": null,
+        "featureParity": "PASS",
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "plan": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_원의방정식_도형의이동_P26-29_20261022_유사50/q09-problem.plan.json",
+        "drawnFieldInventory": {
+          "points": [
+            "O1",
+            "O2",
+            "A",
+            "B"
+          ],
+          "circles": [
+            "C1",
+            "C2"
+          ],
+          "lines": [
+            "CH"
+          ],
+          "segments": [
+            {
+              "id": "sChord",
+              "refs": [
+                "A",
+                "B"
+              ]
+            }
+          ],
+          "coordinates": [],
+          "rightAngles": [],
+          "scalarLabels": [],
+          "angleArcs": [],
+          "faceFills": []
+        }
+      },
+      "solution": {
+        "judgement": "BENEFICIAL",
+        "reason": "두 원의 위치, 접점·공통현·중심선 또는 직각삼각형이 해설의 기하 관계를 설명한다.",
+        "sourceAsset": "assets/images/백발백중_공통수학2_원의방정식_도형의이동_P26-29_20261022_유사50/BV-BAKBAL-H-COM2-P26-Q03-S2-R1-solution.svg",
+        "sourceAssetPresentInGit": false,
+        "featureParity": "PASS",
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "plan": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_원의방정식_도형의이동_P26-29_20261022_유사50/q09-solution.plan.json",
+        "drawnFieldInventory": {
+          "points": [
+            "O1",
+            "O2",
+            "A",
+            "B",
+            "H"
+          ],
+          "circles": [
+            "C1",
+            "C2"
+          ],
+          "lines": [
+            "CH"
+          ],
+          "segments": [
+            {
+              "id": "sChord",
+              "refs": [
+                "A",
+                "B"
+              ]
+            },
+            {
+              "id": "sCenters",
+              "refs": [
+                "O1",
+                "O2"
+              ],
+              "dashed": true
+            },
+            {
+              "id": "sH",
+              "refs": [
+                "O1",
+                "H"
+              ],
+              "dashed": true
+            }
+          ],
+          "coordinates": [
+            "O1",
+            "O2",
+            "H"
+          ],
+          "rightAngles": [
+            {
+              "id": "perpH",
+              "refs": [
+                "A",
+                "H",
+                "O1"
+              ],
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ],
+          "scalarLabels": [],
+          "angleArcs": [],
+          "faceFills": []
+        }
+      }
+    },
+    {
+      "qid": "BV-BAKBAL-H-COM2-P26-Q04-T1-R1",
+      "sourceOrdinal": 10,
+      "source": "archive/exams/textbooks/백발백중_공통수학2/백발백중_공통수학2_원의방정식_도형의이동_P26-29_20261022_유사50.js",
+      "sourceSha": "2afcb1033f5be190e90cbb67639d9e42932eaa81",
+      "content": "중심 사이의 거리가 $13$이고 반지름의 길이가 각각 $7, 2$인 두 원의 공통외접선의 길이는?",
+      "solutionText": "[1단계] 주어진 조건: 중심 사이의 거리가 $13$이고 반지름의 길이가 각각 $7, 2$인 두 원의 공통외접선의 길이는?\n[2단계] 중심거리 $d$, 반지름 $r_1,r_2$인 두 원의 공통외접선에서 접점 사이 길이 $L$은 $L^2=d^2-(r_1-r_2)^2$이다.\n[3단계] 연산 전개: 공통외접선의 길이 공식 L = sqrt(d^2 - (r1 - r2)^2)에서 d = 13, r1 - r2 = 7 - 2 = 5이다. 따라서 L = sqrt(13^2 - 5^2) = sqrt(169 - 25) = sqrt(144) = 12.\n[4단계] 결과값 도출 및 선지 비교: 계산 결과 도출된 값은 선지 ⑤과 정확히 일치함.\n[5단계] 따라서 정답은 ⑤이다.",
+      "answer": "⑤",
+      "sourceVsPlan": "REVIEWED",
+      "render": "NOT_RUN",
+      "pngVisual": "NOT_RUN",
+      "studentScreen": "NOT_RUN",
+      "a4": "NOT_RUN",
+      "problem": {
+        "judgement": "BENEFICIAL",
+        "reason": "공통현 또는 외접선이 두 원에 닿는 상대 위치를 문제 풀이 전에 파악하는 데 유익하다; 미지 수치는 숨긴다.",
+        "sourceAsset": null,
+        "sourceAssetPresentInGit": null,
+        "featureParity": "PASS",
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "plan": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_원의방정식_도형의이동_P26-29_20261022_유사50/q10-problem.plan.json",
+        "drawnFieldInventory": {
+          "points": [
+            "O1",
+            "O2",
+            "A",
+            "B"
+          ],
+          "circles": [
+            "C1",
+            "C2"
+          ],
+          "lines": [],
+          "segments": [
+            {
+              "id": "sCenters",
+              "refs": [
+                "O1",
+                "O2"
+              ],
+              "dashed": true
+            },
+            {
+              "id": "sR1",
+              "refs": [
+                "O1",
+                "A"
+              ]
+            },
+            {
+              "id": "sR2",
+              "refs": [
+                "O2",
+                "B"
+              ]
+            },
+            {
+              "id": "sTangent",
+              "refs": [
+                "A",
+                "B"
+              ]
+            }
+          ],
+          "coordinates": [],
+          "rightAngles": [
+            {
+              "id": "angleA",
+              "refs": [
+                "O1",
+                "A",
+                "B"
+              ],
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "angleB",
+              "refs": [
+                "O2",
+                "B",
+                "A"
+              ],
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ],
+          "scalarLabels": [],
+          "angleArcs": [],
+          "faceFills": []
+        }
+      },
+      "solution": {
+        "judgement": "BENEFICIAL",
+        "reason": "두 원의 위치, 접점·공통현·중심선 또는 직각삼각형이 해설의 기하 관계를 설명한다.",
+        "sourceAsset": "assets/images/백발백중_공통수학2_원의방정식_도형의이동_P26-29_20261022_유사50/BV-BAKBAL-H-COM2-P26-Q04-T1-R1-solution.svg",
+        "sourceAssetPresentInGit": false,
+        "featureParity": "PASS",
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "plan": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_원의방정식_도형의이동_P26-29_20261022_유사50/q10-solution.plan.json",
+        "drawnFieldInventory": {
+          "points": [
+            "O1",
+            "O2",
+            "A",
+            "B"
+          ],
+          "circles": [
+            "C1",
+            "C2"
+          ],
+          "lines": [],
+          "segments": [
+            {
+              "id": "sCenters",
+              "refs": [
+                "O1",
+                "O2"
+              ],
+              "dashed": true
+            },
+            {
+              "id": "sR1",
+              "refs": [
+                "O1",
+                "A"
+              ]
+            },
+            {
+              "id": "sR2",
+              "refs": [
+                "O2",
+                "B"
+              ]
+            },
+            {
+              "id": "sTangent",
+              "refs": [
+                "A",
+                "B"
+              ]
+            }
+          ],
+          "coordinates": [],
+          "rightAngles": [
+            {
+              "id": "angleA",
+              "refs": [
+                "O1",
+                "A",
+                "B"
+              ],
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "angleB",
+              "refs": [
+                "O2",
+                "B",
+                "A"
+              ],
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ],
+          "scalarLabels": [
+            {
+              "nodeId": "lenT",
+              "ownerSegment": "sTangent",
+              "prefix": "",
+              "value": "12"
+            },
+            {
+              "nodeId": "lenR1",
+              "ownerSegment": "sR1",
+              "prefix": "",
+              "value": "7"
+            },
+            {
+              "nodeId": "lenR2",
+              "ownerSegment": "sR2",
+              "prefix": "",
+              "value": "2"
+            }
+          ],
+          "angleArcs": [],
+          "faceFills": []
+        }
+      }
+    },
+    {
+      "qid": "BV-BAKBAL-H-COM2-P26-Q04-S1-R1",
+      "sourceOrdinal": 11,
+      "source": "archive/exams/textbooks/백발백중_공통수학2/백발백중_공통수학2_원의방정식_도형의이동_P26-29_20261022_유사50.js",
+      "sourceSha": "2afcb1033f5be190e90cbb67639d9e42932eaa81",
+      "content": "두 점 $O_1(0, 0), O_2(3, 4)$를 중심으로 하고 반지름이 각각 $4, 1$인 두 원의 공통외접선의 길이는?",
+      "solutionText": "[1단계] 주어진 조건: 두 점 $O_1(0, 0), O_2(3, 4)$를 중심으로 하고 반지름이 각각 $4, 1$인 두 원의 공통외접선의 길이는?\n[2단계] 중심거리 $d$, 반지름 $r_1,r_2$인 두 원의 공통외접선에서 접점 사이 길이 $L$은 $L^2=d^2-(r_1-r_2)^2$이다.\n[3단계] 연산 전개: 두 중심 사이 거리 d = sqrt(3^2 + 4^2) = 5이다. r1 - r2 = 4 - 1 = 3이므로 L = sqrt(5^2 - 3^2) = sqrt(25 - 9) = 4.\n[4단계] 결과값 도출 및 선지 비교: 계산 결과 도출된 값은 선지 ⑤과 정확히 일치함.\n[5단계] 따라서 정답은 ⑤이다.",
+      "answer": "⑤",
+      "sourceVsPlan": "REVIEWED",
+      "render": "NOT_RUN",
+      "pngVisual": "NOT_RUN",
+      "studentScreen": "NOT_RUN",
+      "a4": "NOT_RUN",
+      "problem": {
+        "judgement": "BENEFICIAL",
+        "reason": "공통현 또는 외접선이 두 원에 닿는 상대 위치를 문제 풀이 전에 파악하는 데 유익하다; 미지 수치는 숨긴다.",
+        "sourceAsset": null,
+        "sourceAssetPresentInGit": null,
+        "featureParity": "PASS",
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "plan": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_원의방정식_도형의이동_P26-29_20261022_유사50/q11-problem.plan.json",
+        "drawnFieldInventory": {
+          "points": [
+            "O1",
+            "O2",
+            "A",
+            "B"
+          ],
+          "circles": [
+            "C1",
+            "C2"
+          ],
+          "lines": [],
+          "segments": [
+            {
+              "id": "sCenters",
+              "refs": [
+                "O1",
+                "O2"
+              ],
+              "dashed": true
+            },
+            {
+              "id": "sR1",
+              "refs": [
+                "O1",
+                "A"
+              ]
+            },
+            {
+              "id": "sR2",
+              "refs": [
+                "O2",
+                "B"
+              ]
+            },
+            {
+              "id": "sTangent",
+              "refs": [
+                "A",
+                "B"
+              ]
+            }
+          ],
+          "coordinates": [
+            "O1",
+            "O2"
+          ],
+          "rightAngles": [
+            {
+              "id": "angleA",
+              "refs": [
+                "O1",
+                "A",
+                "B"
+              ],
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "angleB",
+              "refs": [
+                "O2",
+                "B",
+                "A"
+              ],
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ],
+          "scalarLabels": [],
+          "angleArcs": [],
+          "faceFills": []
+        }
+      },
+      "solution": {
+        "judgement": "BENEFICIAL",
+        "reason": "두 원의 위치, 접점·공통현·중심선 또는 직각삼각형이 해설의 기하 관계를 설명한다.",
+        "sourceAsset": "assets/images/백발백중_공통수학2_원의방정식_도형의이동_P26-29_20261022_유사50/BV-BAKBAL-H-COM2-P26-Q04-S1-R1-solution.svg",
+        "sourceAssetPresentInGit": false,
+        "featureParity": "PASS",
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "plan": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_원의방정식_도형의이동_P26-29_20261022_유사50/q11-solution.plan.json",
+        "drawnFieldInventory": {
+          "points": [
+            "O1",
+            "O2",
+            "A",
+            "B"
+          ],
+          "circles": [
+            "C1",
+            "C2"
+          ],
+          "lines": [],
+          "segments": [
+            {
+              "id": "sCenters",
+              "refs": [
+                "O1",
+                "O2"
+              ],
+              "dashed": true
+            },
+            {
+              "id": "sR1",
+              "refs": [
+                "O1",
+                "A"
+              ]
+            },
+            {
+              "id": "sR2",
+              "refs": [
+                "O2",
+                "B"
+              ]
+            },
+            {
+              "id": "sTangent",
+              "refs": [
+                "A",
+                "B"
+              ]
+            }
+          ],
+          "coordinates": [
+            "O1",
+            "O2"
+          ],
+          "rightAngles": [
+            {
+              "id": "angleA",
+              "refs": [
+                "O1",
+                "A",
+                "B"
+              ],
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "angleB",
+              "refs": [
+                "O2",
+                "B",
+                "A"
+              ],
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ],
+          "scalarLabels": [
+            {
+              "nodeId": "lenT",
+              "ownerSegment": "sTangent",
+              "prefix": "",
+              "value": "4"
+            },
+            {
+              "nodeId": "lenR1",
+              "ownerSegment": "sR1",
+              "prefix": "",
+              "value": "4"
+            },
+            {
+              "nodeId": "lenR2",
+              "ownerSegment": "sR2",
+              "prefix": "",
+              "value": "1"
+            }
+          ],
+          "angleArcs": [],
+          "faceFills": []
+        }
+      }
+    }
+  ],
+  "downstream": {
+    "svgRender": "NOT_RUN",
+    "png": "NOT_RUN",
+    "studentScreen": "NOT_RUN",
+    "a4": "NOT_RUN",
+    "jsWiring": "NOT_RUN"
+  },
+  "verification": {
+    "sourceVsPlan": "REVIEWED",
+    "problemAxes": 10,
+    "solutionAxes": 10,
+    "executablePlans": 13,
+    "planLintShallow": "PASS",
+    "planLintFull": "PASS",
+    "drawnFeatureParity": "PASS",
+    "mathematicalCheck": "INDEPENDENT_SOURCE_FIELDS_RECALCULATED",
+    "engineCapabilityPending": 0,
+    "svgRender": "NOT_RUN",
+    "png": "NOT_RUN",
+    "studentScreen": "NOT_RUN",
+    "a4": "NOT_RUN"
+  },
+  "excludedAdjacentCandidate": {
+    "sourceOrdinal": 6,
+    "qid": "BV-BAKBAL-H-COM2-P26-Q02-S2-R1",
+    "reason": "원점이 x²+y²=4 위에 없으므로 두 원의 실제 공통현이 원점을 지난다는 원문 조건은 불가능하다. 대상 20문항에서 제외하고 원본 수정 권한 밖의 결함으로 보고한다."
+  }
+}

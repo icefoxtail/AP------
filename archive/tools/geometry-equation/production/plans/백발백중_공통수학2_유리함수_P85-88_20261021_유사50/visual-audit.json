@@ -1,0 +1,861 @@
+{
+  "source": "archive/exams/textbooks/백발백중_공통수학2/백발백중_공통수학2_유리함수_P85-88_20261021_유사50.js",
+  "sourceSha": "e4ee501b06b3a4d9df36564a68a4dad4128679e4",
+  "batch": "2026-11-26 geometry relocation and rational P26–29/P85–88 20-qid plan generation",
+  "selection": {
+    "sourceOrdinals": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "count": 10
+  },
+  "judgementAxes": {
+    "problem": 10,
+    "solution": 10
+  },
+  "records": [
+    {
+      "qid": "BV-BAKBAL-H-COM2-P85-Q11-T1-R1",
+      "sourceOrdinal": 1,
+      "source": "archive/exams/textbooks/백발백중_공통수학2/백발백중_공통수학2_유리함수_P85-88_20261021_유사50.js",
+      "sourceSha": "e4ee501b06b3a4d9df36564a68a4dad4128679e4",
+      "content": "함수 $y=\\frac{ax+b}{x+c}$의 그래프가 오른쪽 그림과 같을 때, 상수 $a,b,c$에 대하여 $abc$의 값은?",
+      "solutionText": "함수 $y = \\frac{ax+b}{x+c}$의 점근선의 방정식은 분모가 $0$이 되는 $x = -c$와 $x$의 계수의 비인 $y = a$이다.\n점근선이 $x = 1, y = 3$이므로 $-c = 1 \\implies c = -1$이고 $a = 3$이다.\n$y$절편이 $-1$이므로 $x = 0$을 대입하면 $\\frac{b}{c} = \\frac{b}{-1} = -1 \\implies b = 1$이다.\n따라서 $abc = 3 \\times 1 \\times (-1) = -3$이다.",
+      "answer": "③",
+      "sourceVsPlan": "REVIEWED",
+      "render": "NOT_RUN",
+      "pngVisual": "NOT_RUN",
+      "studentScreen": "NOT_RUN",
+      "a4": "NOT_RUN",
+      "problem": {
+        "judgement": "REQUIRED",
+        "reason": "원문이 바로 옆 그래프를 이용해 a,b,c를 묻고 있어 시각 자료가 필수다.",
+        "sourceAsset": "assets/images/백발백중_공통수학2_유리함수_P85-88_20261021_유사50/BV-BAKBAL-H-COM2-P85-Q11-T1-R1-problem.svg",
+        "sourceAssetPresentInGit": true,
+        "featureParity": "PASS",
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "plan": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_유리함수_P85-88_20261021_유사50/q01-problem.plan.json",
+        "drawnFieldInventory": {
+          "curve": {
+            "family": "rational",
+            "numerator": [
+              "1",
+              "3"
+            ],
+            "denominator": [
+              "-1",
+              "1"
+            ]
+          },
+          "axisTickValues": {
+            "x": [
+              "1"
+            ],
+            "y": [
+              "-1",
+              "3"
+            ]
+          },
+          "points": [
+            {
+              "id": "Intercept",
+              "curveX": "0",
+              "unnamed": true,
+              "coordinates": true
+            }
+          ],
+          "guides": [],
+          "lines": [],
+          "hideLabels": [
+            "formula"
+          ],
+          "equalUnits": true,
+          "faceFills": []
+        }
+      },
+      "solution": {
+        "judgement": "BENEFICIAL",
+        "reason": "정확한 유리함수의 점근선·두 가지 및 절편·구간 끝값을 그림으로 대조하면 풀이 이해에 유익하다.",
+        "sourceAsset": "assets/images/백발백중_공통수학2_유리함수_P85-88_20261021_유사50/BV-BAKBAL-H-COM2-P85-Q11-T1-R1-solution.svg",
+        "sourceAssetPresentInGit": true,
+        "featureParity": "PASS",
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "plan": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_유리함수_P85-88_20261021_유사50/q01-solution.plan.json",
+        "drawnFieldInventory": {
+          "curve": {
+            "family": "rational",
+            "numerator": [
+              "1",
+              "3"
+            ],
+            "denominator": [
+              "-1",
+              "1"
+            ]
+          },
+          "axisTickValues": {
+            "x": [
+              "1"
+            ],
+            "y": [
+              "-1",
+              "3"
+            ]
+          },
+          "points": [
+            {
+              "id": "Point1",
+              "curveX": "0",
+              "unnamed": true,
+              "coordinates": true
+            }
+          ],
+          "guides": [],
+          "lines": [],
+          "hideLabels": [],
+          "equalUnits": true,
+          "faceFills": []
+        }
+      }
+    },
+    {
+      "qid": "BV-BAKBAL-H-COM2-P85-Q11-S1-R2",
+      "sourceOrdinal": 2,
+      "source": "archive/exams/textbooks/백발백중_공통수학2/백발백중_공통수학2_유리함수_P85-88_20261021_유사50.js",
+      "sourceSha": "e4ee501b06b3a4d9df36564a68a4dad4128679e4",
+      "content": "함수 $y = \\frac{ax+b}{x+c}$의 그래프의 점근선의 방정식이 $x = -3, y = 2$이고 점 $(0, 1)$을 지날 때, $a + b + c$의 값은? (단, $a, b, c$는 상수이다.)",
+      "solutionText": "점근선의 방정식이 $x = -3, y = 2$이므로 $c = 3, a = 2$이다.\n점 $(0, 1)$을 지나므로 $\\frac{b}{3} = 1 \\implies b = 3$이다.\n따라서 $a + b + c = 2 + 3 + 3 = 8$이다.",
+      "answer": "③",
+      "sourceVsPlan": "REVIEWED",
+      "render": "NOT_RUN",
+      "pngVisual": "NOT_RUN",
+      "studentScreen": "NOT_RUN",
+      "a4": "NOT_RUN",
+      "problem": {
+        "judgement": "EXEMPT",
+        "reason": "점근선·지나는 점의 좌표가 발문에 모두 제시되어 있어 문제용 곡선은 계수를 미리 계산해 노출한다.",
+        "sourceAsset": null,
+        "sourceAssetPresentInGit": null,
+        "featureParity": "NOT_APPLICABLE",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE"
+      },
+      "solution": {
+        "judgement": "BENEFICIAL",
+        "reason": "정확한 유리함수의 점근선·두 가지 및 절편·구간 끝값을 그림으로 대조하면 풀이 이해에 유익하다.",
+        "sourceAsset": "assets/images/백발백중_공통수학2_유리함수_P85-88_20261021_유사50/BV-BAKBAL-H-COM2-P85-Q11-S1-R2-solution.svg",
+        "sourceAssetPresentInGit": true,
+        "featureParity": "PASS",
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "plan": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_유리함수_P85-88_20261021_유사50/q02-solution.plan.json",
+        "drawnFieldInventory": {
+          "curve": {
+            "family": "rational",
+            "numerator": [
+              "3",
+              "2"
+            ],
+            "denominator": [
+              "3",
+              "1"
+            ]
+          },
+          "axisTickValues": {
+            "x": [
+              "-3"
+            ],
+            "y": [
+              "1",
+              "2"
+            ]
+          },
+          "points": [
+            {
+              "id": "Point1",
+              "curveX": "0",
+              "unnamed": true,
+              "coordinates": true
+            }
+          ],
+          "guides": [],
+          "lines": [],
+          "hideLabels": [],
+          "equalUnits": true,
+          "faceFills": []
+        }
+      }
+    },
+    {
+      "qid": "BV-BAKBAL-H-COM2-P85-Q11-S2-R1",
+      "sourceOrdinal": 3,
+      "source": "archive/exams/textbooks/백발백중_공통수학2/백발백중_공통수학2_유리함수_P85-88_20261021_유사50.js",
+      "sourceSha": "e4ee501b06b3a4d9df36564a68a4dad4128679e4",
+      "content": "함수 $y = \\frac{ax+b}{x+c}$의 그래프의 두 점근선의 교점의 좌표가 $(2, -1)$이고 $y$절편이 $-2$일 때, $abc$의 값은? (단, $a, b, c$는 상수이다.)",
+      "solutionText": "점근선의 교점이 $(2, -1)$이므로 점근선은 $x = 2, y = -1$이다.\n따라서 $-c = 2 \\implies c = -2$이고 $a = -1$이다.\n$y$절편이 $-2$이므로 $x = 0$일 때 $\\frac{b}{-2} = -2 \\implies b = 4$이다.\n따라서 $abc = (-1) \\times 4 \\times (-2) = 8$이다.",
+      "answer": "②",
+      "sourceVsPlan": "REVIEWED",
+      "render": "NOT_RUN",
+      "pngVisual": "NOT_RUN",
+      "studentScreen": "NOT_RUN",
+      "a4": "NOT_RUN",
+      "problem": {
+        "judgement": "EXEMPT",
+        "reason": "점근선·지나는 점의 좌표가 발문에 모두 제시되어 있어 문제용 곡선은 계수를 미리 계산해 노출한다.",
+        "sourceAsset": null,
+        "sourceAssetPresentInGit": null,
+        "featureParity": "NOT_APPLICABLE",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE"
+      },
+      "solution": {
+        "judgement": "BENEFICIAL",
+        "reason": "정확한 유리함수의 점근선·두 가지 및 절편·구간 끝값을 그림으로 대조하면 풀이 이해에 유익하다.",
+        "sourceAsset": "assets/images/백발백중_공통수학2_유리함수_P85-88_20261021_유사50/BV-BAKBAL-H-COM2-P85-Q11-S2-R1-solution.svg",
+        "sourceAssetPresentInGit": true,
+        "featureParity": "PASS",
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "plan": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_유리함수_P85-88_20261021_유사50/q03-solution.plan.json",
+        "drawnFieldInventory": {
+          "curve": {
+            "family": "rational",
+            "numerator": [
+              "4",
+              "-1"
+            ],
+            "denominator": [
+              "-2",
+              "1"
+            ]
+          },
+          "axisTickValues": {
+            "x": [
+              "2"
+            ],
+            "y": [
+              "-2",
+              "-1"
+            ]
+          },
+          "points": [
+            {
+              "id": "Point1",
+              "curveX": "0",
+              "unnamed": true,
+              "coordinates": true
+            }
+          ],
+          "guides": [],
+          "lines": [],
+          "hideLabels": [],
+          "equalUnits": true,
+          "faceFills": []
+        }
+      }
+    },
+    {
+      "qid": "BV-BAKBAL-H-COM2-P85-Q12-T1-R1",
+      "sourceOrdinal": 4,
+      "source": "archive/exams/textbooks/백발백중_공통수학2/백발백중_공통수학2_유리함수_P85-88_20261021_유사50.js",
+      "sourceSha": "e4ee501b06b3a4d9df36564a68a4dad4128679e4",
+      "content": "함수 $y = \\frac{3x+1}{x-1}$의 그래프에 대한 설명으로 옳지 않은 것은?",
+      "solutionText": "$y=\\frac{3x+1}{x-1}=\\frac{4}{x-1}+3$이다.\n① $x\\ne1$이므로 정의역은 $\\{x\\in\\mathbb{R}\\mid x\\ne1\\}$이다. (참)\n② $y=3$을 제외한 모든 실숫값을 가지므로 치역은 $\\{y\\in\\mathbb{R}\\mid y\\ne3\\}$이다. 따라서 ②는 거짓이다.\n③ 점근선은 $x=1$, $y=3$이다. (참)\n④ $x=2$이면 $y=7$ (제1사분면), $x=-1$이면 $y=1$ (제2사분면), $x=-\\frac16$이면 $y=-\\frac37$ (제3사분면), $x=\\frac12$이면 $y=-5$ (제4사분면)이다. 따라서 네 사분면을 모두 지난다. (참)\n⑤ $y=\\frac4x$의 그래프를 오른쪽으로 $1$, 위쪽으로 $3$만큼 평행이동한 것이다. (참)\n따라서 정답은 ②이다.",
+      "answer": "②",
+      "sourceVsPlan": "REVIEWED",
+      "render": "NOT_RUN",
+      "pngVisual": "NOT_RUN",
+      "studentScreen": "NOT_RUN",
+      "a4": "NOT_RUN",
+      "problem": {
+        "judgement": "EXEMPT",
+        "reason": "선지별 설명의 참·거짓을 묻는 문자·식 기반 판정이므로 문제 그림은 제공 정보를 늘리지 않는다.",
+        "sourceAsset": null,
+        "sourceAssetPresentInGit": null,
+        "featureParity": "NOT_APPLICABLE",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE"
+      },
+      "solution": {
+        "judgement": "BENEFICIAL",
+        "reason": "정확한 유리함수의 점근선·두 가지 및 절편·구간 끝값을 그림으로 대조하면 풀이 이해에 유익하다.",
+        "sourceAsset": "assets/images/백발백중_공통수학2_유리함수_P85-88_20261021_유사50/BV-BAKBAL-H-COM2-P85-Q12-T1-R1-solution.svg",
+        "sourceAssetPresentInGit": true,
+        "featureParity": "PASS",
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "plan": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_유리함수_P85-88_20261021_유사50/q04-solution.plan.json",
+        "drawnFieldInventory": {
+          "curve": {
+            "family": "rational",
+            "numerator": [
+              "1",
+              "3"
+            ],
+            "denominator": [
+              "-1",
+              "1"
+            ]
+          },
+          "axisTickValues": {
+            "x": [
+              "1",
+              "2"
+            ],
+            "y": [
+              "3"
+            ]
+          },
+          "points": [
+            {
+              "id": "Point1",
+              "curveX": "2",
+              "unnamed": true,
+              "coordinates": true
+            },
+            {
+              "id": "Point2",
+              "curveX": "-1",
+              "unnamed": true,
+              "coordinates": true
+            },
+            {
+              "id": "Point3",
+              "curveX": "-1/6",
+              "unnamed": true,
+              "coordinates": true
+            },
+            {
+              "id": "Point4",
+              "curveX": "1/2",
+              "unnamed": true,
+              "coordinates": true
+            }
+          ],
+          "guides": [],
+          "lines": [],
+          "hideLabels": [],
+          "equalUnits": true,
+          "faceFills": []
+        }
+      }
+    },
+    {
+      "qid": "BV-BAKBAL-H-COM2-P85-Q12-S1-R1",
+      "sourceOrdinal": 5,
+      "source": "archive/exams/textbooks/백발백중_공통수학2/백발백중_공통수학2_유리함수_P85-88_20261021_유사50.js",
+      "sourceSha": "e4ee501b06b3a4d9df36564a68a4dad4128679e4",
+      "content": "함수 $y = \\frac{x+3}{x-2}$의 그래프에 대한 설명으로 옳지 않은 것은?",
+      "solutionText": "$y=\\frac{x+3}{x-2}=\\frac5{x-2}+1$이다.\n① 점근선의 교점은 $(2,1)$이므로 $(1,2)$라는 설명은 거짓이다.\n② 점근선은 $x=2$, $y=1$이다. (참)\n③ 분모가 $0$이 될 수 없으므로 정의역은 $x\\ne2$인 실수 전체이다. (참)\n④ $y=1$을 제외한 모든 실숫값을 가지므로 치역은 $y\\ne1$인 실수 전체이다. (참)\n⑤ $y=\\frac5x$의 그래프를 오른쪽으로 $2$, 위쪽으로 $1$만큼 평행이동한 것이다. (참)\n따라서 정답은 ①이다.",
+      "answer": "①",
+      "sourceVsPlan": "REVIEWED",
+      "render": "NOT_RUN",
+      "pngVisual": "NOT_RUN",
+      "studentScreen": "NOT_RUN",
+      "a4": "NOT_RUN",
+      "problem": {
+        "judgement": "EXEMPT",
+        "reason": "선지별 설명의 참·거짓을 묻는 문자·식 기반 판정이므로 문제 그림은 제공 정보를 늘리지 않는다.",
+        "sourceAsset": null,
+        "sourceAssetPresentInGit": null,
+        "featureParity": "NOT_APPLICABLE",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE"
+      },
+      "solution": {
+        "judgement": "BENEFICIAL",
+        "reason": "정확한 유리함수의 점근선·두 가지 및 절편·구간 끝값을 그림으로 대조하면 풀이 이해에 유익하다.",
+        "sourceAsset": "assets/images/백발백중_공통수학2_유리함수_P85-88_20261021_유사50/BV-BAKBAL-H-COM2-P85-Q12-S1-R1-solution.svg",
+        "sourceAssetPresentInGit": true,
+        "featureParity": "PASS",
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "plan": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_유리함수_P85-88_20261021_유사50/q05-solution.plan.json",
+        "drawnFieldInventory": {
+          "curve": {
+            "family": "rational",
+            "numerator": [
+              "3",
+              "1"
+            ],
+            "denominator": [
+              "-2",
+              "1"
+            ]
+          },
+          "axisTickValues": {
+            "x": [
+              "2"
+            ],
+            "y": [
+              "1"
+            ]
+          },
+          "points": [],
+          "guides": [],
+          "lines": [],
+          "hideLabels": [],
+          "equalUnits": true,
+          "faceFills": []
+        }
+      }
+    },
+    {
+      "qid": "BV-BAKBAL-H-COM2-P85-Q12-S2-R1",
+      "sourceOrdinal": 6,
+      "source": "archive/exams/textbooks/백발백중_공통수학2/백발백중_공통수학2_유리함수_P85-88_20261021_유사50.js",
+      "sourceSha": "e4ee501b06b3a4d9df36564a68a4dad4128679e4",
+      "content": "함수 $y = \\frac{2x+5}{x+2}$의 그래프에 대한 설명으로 옳지 않은 것은?",
+      "solutionText": "$y=\\frac{2x+5}{x+2}=2+\\frac{1}{x+2}$이다.\n① 수직·수평 점근선은 각각 $x=-2$, $y=2$이므로 참이다.\n② $x=0$이면 $y=\\frac52$이므로 참이다.\n③ 점근선의 교점 $(-2,2)$가 그래프의 대칭중심이므로 참이다.\n④ 중심을 원점으로 옮긴 좌표 $u=x+2$, $v=y-2$에서는 $uv=1$이다. $v=u$에 대하여 대칭이므로 원래 좌표의 직선 $y=x+4$에 대하여 대칭이다. (참)\n⑤ $y=\\frac3x$를 평행이동해도 분자의 상수 $3$은 변하지 않는다. 주어진 함수의 해당 상수는 $1$이므로 평행이동만으로 일치시킬 수 없다. (거짓)\n따라서 정답은 ⑤이다.",
+      "answer": "⑤",
+      "sourceVsPlan": "REVIEWED",
+      "render": "NOT_RUN",
+      "pngVisual": "NOT_RUN",
+      "studentScreen": "NOT_RUN",
+      "a4": "NOT_RUN",
+      "problem": {
+        "judgement": "EXEMPT",
+        "reason": "선지별 설명의 참·거짓을 묻는 문자·식 기반 판정이므로 문제 그림은 제공 정보를 늘리지 않는다.",
+        "sourceAsset": null,
+        "sourceAssetPresentInGit": null,
+        "featureParity": "NOT_APPLICABLE",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE"
+      },
+      "solution": {
+        "judgement": "BENEFICIAL",
+        "reason": "정확한 유리함수의 점근선·두 가지 및 절편·구간 끝값을 그림으로 대조하면 풀이 이해에 유익하다.",
+        "sourceAsset": "assets/images/백발백중_공통수학2_유리함수_P85-88_20261021_유사50/BV-BAKBAL-H-COM2-P85-Q12-S2-R1-solution.svg",
+        "sourceAssetPresentInGit": true,
+        "featureParity": "PASS",
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "plan": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_유리함수_P85-88_20261021_유사50/q06-solution.plan.json",
+        "drawnFieldInventory": {
+          "curve": {
+            "family": "rational",
+            "numerator": [
+              "5",
+              "2"
+            ],
+            "denominator": [
+              "2",
+              "1"
+            ]
+          },
+          "axisTickValues": {
+            "x": [
+              "-2"
+            ],
+            "y": [
+              "2",
+              "5/2"
+            ]
+          },
+          "points": [
+            {
+              "id": "Point1",
+              "curveX": "0",
+              "unnamed": true,
+              "coordinates": true
+            }
+          ],
+          "guides": [],
+          "lines": [
+            {
+              "id": "symmetry",
+              "slope": "1",
+              "intercept": "4",
+              "label": "y=x+4",
+              "style": "DASHED"
+            }
+          ],
+          "hideLabels": [],
+          "equalUnits": true,
+          "faceFills": []
+        }
+      }
+    },
+    {
+      "qid": "BV-BAKBAL-H-COM2-P85-Q13-T1-R2",
+      "sourceOrdinal": 7,
+      "source": "archive/exams/textbooks/백발백중_공통수학2/백발백중_공통수학2_유리함수_P85-88_20261021_유사50.js",
+      "sourceSha": "e4ee501b06b3a4d9df36564a68a4dad4128679e4",
+      "content": "닫힌구간 $[1, a]$에서 함수 $y = \\frac{3x-1}{x+1}$의 최댓값이 $2$, 최솟값이 $b$일 때, $a + b$의 값은? (단, $a > 1$)",
+      "solutionText": "$y = \\frac{3x-1}{x+1} = \\frac{3(x+1)-4}{x+1} = -\\frac{4}{x+1} + 3$이다.\n$x > -1$에서 $x$의 값이 증가하면 $y$의 값도 증가하므로, 함수는 $x = a$에서 최댓값을 갖고 $x = 1$에서 최솟값을 갖는다.\n최댓값이 $2$이므로 $\\frac{3a-1}{a+1} = 2 \\implies 3a - 1 = 2a + 2 \\implies a = 3$이다.\n최솟값 $b = \\frac{3(1)-1}{1+1} = \\frac{2}{2} = 1$이다.\n따라서 $a + b = 3 + 1 = 4$이다.",
+      "answer": "③",
+      "sourceVsPlan": "REVIEWED",
+      "render": "NOT_RUN",
+      "pngVisual": "NOT_RUN",
+      "studentScreen": "NOT_RUN",
+      "a4": "NOT_RUN",
+      "problem": {
+        "judgement": "EXEMPT",
+        "reason": "발문의 구간·함수·미지 계수는 식으로 완결되고, 구간 끝값을 찍으면 미지 결과를 노출할 수 있다.",
+        "sourceAsset": null,
+        "sourceAssetPresentInGit": null,
+        "featureParity": "NOT_APPLICABLE",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE"
+      },
+      "solution": {
+        "judgement": "BENEFICIAL",
+        "reason": "정확한 유리함수의 점근선·두 가지 및 절편·구간 끝값을 그림으로 대조하면 풀이 이해에 유익하다.",
+        "sourceAsset": "assets/images/백발백중_공통수학2_유리함수_P85-88_20261021_유사50/BV-BAKBAL-H-COM2-P85-Q13-T1-R2-solution.svg",
+        "sourceAssetPresentInGit": true,
+        "featureParity": "PASS",
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "plan": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_유리함수_P85-88_20261021_유사50/q07-solution.plan.json",
+        "drawnFieldInventory": {
+          "curve": {
+            "family": "rational",
+            "numerator": [
+              "-1",
+              "3"
+            ],
+            "denominator": [
+              "1",
+              "1"
+            ]
+          },
+          "axisTickValues": {
+            "x": [
+              "1",
+              "3"
+            ],
+            "y": [
+              "1",
+              "2"
+            ]
+          },
+          "points": [
+            {
+              "id": "Point1",
+              "curveX": "1",
+              "unnamed": true,
+              "coordinates": true
+            },
+            {
+              "id": "Point2",
+              "curveX": "3",
+              "unnamed": true,
+              "coordinates": true
+            }
+          ],
+          "guides": [
+            {
+              "id": "guide1",
+              "from": "Point1",
+              "axis": "x"
+            },
+            {
+              "id": "guide2",
+              "from": "Point2",
+              "axis": "x"
+            }
+          ],
+          "lines": [],
+          "hideLabels": [],
+          "equalUnits": true,
+          "faceFills": []
+        }
+      }
+    },
+    {
+      "qid": "BV-BAKBAL-H-COM2-P85-Q13-S1-R1",
+      "sourceOrdinal": 8,
+      "source": "archive/exams/textbooks/백발백중_공통수학2/백발백중_공통수학2_유리함수_P85-88_20261021_유사50.js",
+      "sourceSha": "e4ee501b06b3a4d9df36564a68a4dad4128679e4",
+      "content": "닫힌구간 $[0, a]$에서 함수 $y = \\frac{4x+1}{x+2}$의 최댓값이 $3$, 최솟값이 $b$일 때, $2a + 2b$의 값은? (단, $a > 0$)",
+      "solutionText": "$y = \\frac{4x+1}{x+2} = 4 - \\frac{7}{x+2}$는 $x > -2$에서 증가함수이다.\n최댓값은 $x = a$일 때이므로 $\\frac{4a+1}{a+2} = 3 \\implies 4a + 1 = 3a + 6 \\implies a = 5$이다.\n최솟값 $b$는 $x = 0$일 때이므로 $b = \\frac{1}{2}$이다.\n따라서 $2a + 2b = 2(5) + 2\\left(\\frac{1}{2}\\right) = 10 + 1 = 11$이다.",
+      "answer": "①",
+      "sourceVsPlan": "REVIEWED",
+      "render": "NOT_RUN",
+      "pngVisual": "NOT_RUN",
+      "studentScreen": "NOT_RUN",
+      "a4": "NOT_RUN",
+      "problem": {
+        "judgement": "EXEMPT",
+        "reason": "발문의 구간·함수·미지 계수는 식으로 완결되고, 구간 끝값을 찍으면 미지 결과를 노출할 수 있다.",
+        "sourceAsset": null,
+        "sourceAssetPresentInGit": null,
+        "featureParity": "NOT_APPLICABLE",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE"
+      },
+      "solution": {
+        "judgement": "BENEFICIAL",
+        "reason": "정확한 유리함수의 점근선·두 가지 및 절편·구간 끝값을 그림으로 대조하면 풀이 이해에 유익하다.",
+        "sourceAsset": "assets/images/백발백중_공통수학2_유리함수_P85-88_20261021_유사50/BV-BAKBAL-H-COM2-P85-Q13-S1-R1-solution.svg",
+        "sourceAssetPresentInGit": true,
+        "featureParity": "PASS",
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "plan": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_유리함수_P85-88_20261021_유사50/q08-solution.plan.json",
+        "drawnFieldInventory": {
+          "curve": {
+            "family": "rational",
+            "numerator": [
+              "1",
+              "4"
+            ],
+            "denominator": [
+              "2",
+              "1"
+            ]
+          },
+          "axisTickValues": {
+            "x": [
+              "5"
+            ],
+            "y": [
+              "1/2",
+              "3"
+            ]
+          },
+          "points": [
+            {
+              "id": "Point1",
+              "curveX": "0",
+              "unnamed": true,
+              "coordinates": true
+            },
+            {
+              "id": "Point2",
+              "curveX": "5",
+              "unnamed": true,
+              "coordinates": true
+            }
+          ],
+          "guides": [
+            {
+              "id": "guide1",
+              "from": "Point1",
+              "axis": "x"
+            },
+            {
+              "id": "guide2",
+              "from": "Point2",
+              "axis": "x"
+            }
+          ],
+          "lines": [],
+          "hideLabels": [],
+          "equalUnits": true,
+          "faceFills": []
+        }
+      }
+    },
+    {
+      "qid": "BV-BAKBAL-H-COM2-P85-Q13-S2-R1",
+      "sourceOrdinal": 9,
+      "source": "archive/exams/textbooks/백발백중_공통수학2/백발백중_공통수학2_유리함수_P85-88_20261021_유사50.js",
+      "sourceSha": "e4ee501b06b3a4d9df36564a68a4dad4128679e4",
+      "content": "닫힌구간 $[2, a]$에서 함수 $y = \\frac{x+4}{x-1}$의 최댓값을 $M$, 최솟값을 $2$라 할 때, $a + M$의 값은? (단, $a > 2$)",
+      "solutionText": "$y = \\frac{x+4}{x-1} = 1 + \\frac{5}{x-1}$은 $x > 1$에서 감소함수이다.\n따라서 $x = 2$에서 최댓값 $M$을 갖고, $x = a$에서 최솟값 $2$를 갖는다.\n$M = \\frac{2+4}{2-1} = 6$이다.\n$x = a$일 때 최솟값이 $2$이므로 $\\frac{a+4}{a-1} = 2 \\implies a + 4 = 2a - 2 \\implies a = 6$이다.\n따라서 $a + M = 6 + 6 = 12$이다.",
+      "answer": "③",
+      "sourceVsPlan": "REVIEWED",
+      "render": "NOT_RUN",
+      "pngVisual": "NOT_RUN",
+      "studentScreen": "NOT_RUN",
+      "a4": "NOT_RUN",
+      "problem": {
+        "judgement": "EXEMPT",
+        "reason": "발문의 구간·함수·미지 계수는 식으로 완결되고, 구간 끝값을 찍으면 미지 결과를 노출할 수 있다.",
+        "sourceAsset": null,
+        "sourceAssetPresentInGit": null,
+        "featureParity": "NOT_APPLICABLE",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE"
+      },
+      "solution": {
+        "judgement": "BENEFICIAL",
+        "reason": "정확한 유리함수의 점근선·두 가지 및 절편·구간 끝값을 그림으로 대조하면 풀이 이해에 유익하다.",
+        "sourceAsset": "assets/images/백발백중_공통수학2_유리함수_P85-88_20261021_유사50/BV-BAKBAL-H-COM2-P85-Q13-S2-R1-solution.svg",
+        "sourceAssetPresentInGit": true,
+        "featureParity": "PASS",
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "plan": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_유리함수_P85-88_20261021_유사50/q09-solution.plan.json",
+        "drawnFieldInventory": {
+          "curve": {
+            "family": "rational",
+            "numerator": [
+              "4",
+              "1"
+            ],
+            "denominator": [
+              "-1",
+              "1"
+            ]
+          },
+          "axisTickValues": {
+            "x": [
+              "2",
+              "6"
+            ],
+            "y": [
+              "2",
+              "6"
+            ]
+          },
+          "points": [
+            {
+              "id": "Point1",
+              "curveX": "2",
+              "unnamed": true,
+              "coordinates": true
+            },
+            {
+              "id": "Point2",
+              "curveX": "6",
+              "unnamed": true,
+              "coordinates": true
+            }
+          ],
+          "guides": [
+            {
+              "id": "guide1",
+              "from": "Point1",
+              "axis": "x"
+            },
+            {
+              "id": "guide2",
+              "from": "Point2",
+              "axis": "x"
+            }
+          ],
+          "lines": [],
+          "hideLabels": [],
+          "equalUnits": true,
+          "faceFills": []
+        }
+      }
+    },
+    {
+      "qid": "BV-BAKBAL-H-COM2-P85-Q14-T1-R1",
+      "sourceOrdinal": 10,
+      "source": "archive/exams/textbooks/백발백중_공통수학2/백발백중_공통수학2_유리함수_P85-88_20261021_유사50.js",
+      "sourceSha": "e4ee501b06b3a4d9df36564a68a4dad4128679e4",
+      "content": "함수 $y = \\frac{ax+b}{x+1}$의 그래프가 점 $(-2, 5)$를 지나고 점근선이 $y = 2$일 때, 닫힌구간 $[1, 5]$에서 이 함수의 최댓값 $M$과 최솟값 $m$의 합 $M + m$의 값은? (단, $a, b$는 상수이다.)",
+      "solutionText": "점근선이 $y = 2$이므로 $a = 2$이다.\n그래프가 점 $(-2, 5)$를 지나므로 $\\frac{2(-2)+b}{-2+1} = 5 \\implies \\frac{-4+b}{-1} = 5 \\implies 4 - b = 5 \\implies b = -1$이다.\n따라서 $y = \\frac{2x-1}{x+1} = 2 - \\frac{3}{x+1}$이다.\n이 함수는 $x > -1$에서 증가하므로 닫힌구간 $[1, 5]$에서\n최댓값 $M = y(5) = \\frac{2(5)-1}{5+1} = \\frac{9}{6} = \\frac{3}{2}$,\n최솟값 $m = y(1) = \\frac{2(1)-1}{1+1} = \\frac{1}{2}$이다.\n따라서 $M + m = \\frac{3}{2} + \\frac{1}{2} = 2$이다.",
+      "answer": "②",
+      "sourceVsPlan": "REVIEWED",
+      "render": "NOT_RUN",
+      "pngVisual": "NOT_RUN",
+      "studentScreen": "NOT_RUN",
+      "a4": "NOT_RUN",
+      "problem": {
+        "judgement": "EXEMPT",
+        "reason": "발문의 구간·함수·미지 계수는 식으로 완결되고, 구간 끝값을 찍으면 미지 결과를 노출할 수 있다.",
+        "sourceAsset": null,
+        "sourceAssetPresentInGit": null,
+        "featureParity": "NOT_APPLICABLE",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE"
+      },
+      "solution": {
+        "judgement": "BENEFICIAL",
+        "reason": "정확한 유리함수의 점근선·두 가지 및 절편·구간 끝값을 그림으로 대조하면 풀이 이해에 유익하다.",
+        "sourceAsset": "assets/images/백발백중_공통수학2_유리함수_P85-88_20261021_유사50/BV-BAKBAL-H-COM2-P85-Q14-T1-R1-solution.svg",
+        "sourceAssetPresentInGit": true,
+        "featureParity": "PASS",
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "plan": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_유리함수_P85-88_20261021_유사50/q10-solution.plan.json",
+        "drawnFieldInventory": {
+          "curve": {
+            "family": "rational",
+            "numerator": [
+              "-1",
+              "2"
+            ],
+            "denominator": [
+              "1",
+              "1"
+            ]
+          },
+          "axisTickValues": {
+            "x": [
+              "1",
+              "5"
+            ],
+            "y": [
+              "1/2",
+              "3/2"
+            ]
+          },
+          "points": [
+            {
+              "id": "Point1",
+              "curveX": "-2",
+              "unnamed": true,
+              "coordinates": true
+            },
+            {
+              "id": "Point2",
+              "curveX": "1",
+              "unnamed": true,
+              "coordinates": true
+            },
+            {
+              "id": "Point3",
+              "curveX": "5",
+              "unnamed": true,
+              "coordinates": true
+            }
+          ],
+          "guides": [
+            {
+              "id": "guide2",
+              "from": "Point2",
+              "axis": "x"
+            },
+            {
+              "id": "guide3",
+              "from": "Point3",
+              "axis": "x"
+            }
+          ],
+          "lines": [],
+          "hideLabels": [],
+          "equalUnits": true,
+          "faceFills": []
+        }
+      }
+    }
+  ],
+  "downstream": {
+    "svgRender": "NOT_RUN",
+    "png": "NOT_RUN",
+    "studentScreen": "NOT_RUN",
+    "a4": "NOT_RUN",
+    "jsWiring": "NOT_RUN"
+  },
+  "verification": {
+    "sourceVsPlan": "REVIEWED",
+    "problemAxes": 10,
+    "solutionAxes": 10,
+    "executablePlans": 11,
+    "planLintShallow": "PASS",
+    "planLintFull": "PASS",
+    "drawnFeatureParity": "PASS",
+    "mathematicalCheck": "INDEPENDENT_SOURCE_FIELDS_RECALCULATED",
+    "engineCapabilityPending": 0,
+    "svgRender": "NOT_RUN",
+    "png": "NOT_RUN",
+    "studentScreen": "NOT_RUN",
+    "a4": "NOT_RUN"
+  }
+}

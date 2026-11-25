@@ -1,0 +1,63 @@
+{
+  "capability": "rational-spike-v1",
+  "graphPlan": {
+    "family": "rational",
+    "numerator": [
+      "3",
+      "1"
+    ],
+    "denominator": [
+      "-2",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -3,
+      7
+    ],
+    "viewport": [
+      -4,
+      8,
+      -5,
+      8
+    ],
+    "equalUnits": true,
+    "axisTickValues": {
+      "x": [
+        "2"
+      ],
+      "y": [
+        "1"
+      ]
+    },
+    "overlays": {
+      "points": []
+    }
+  },
+  "caption": "점근선의 교점 (2,1)과 그래프의 평행이동을 본다.",
+  "accessibilityDescription": "점근선의 교점 (2,1)과 그래프의 평행이동을 본다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "유리함수의 정확한 곡선: (1x+3)/(x+-2)",
+      "mappedTo": [
+        "graphPlan.numerator",
+        "graphPlan.denominator"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "점근선 x=2, y=1",
+      "mappedTo": [
+        "graphPlan.numerator",
+        "graphPlan.denominator",
+        "graphPlan.axisTickValues"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "계수로 계산된 두 가지와 점근선, 풀이에 필요한 실제 점·위치 정보를 엔진의 그래프 필드로 표시한다."
+  ]
+}

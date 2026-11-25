@@ -1,0 +1,266 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C1",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O1"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "5"
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C2",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O2"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "10"
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "IS",
+        "op": "INTERSECTION",
+        "inputs": [
+          "C1",
+          "C2"
+        ],
+        "args": {},
+        "outputType": "POINT_SET",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SELECT_POINT",
+        "inputs": [
+          "IS"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "branch": {
+          "kind": "SIDE_OF_ORIENTED_LINE",
+          "refs": [
+            "O1",
+            "O2"
+          ],
+          "sign": 1
+        }
+      },
+      {
+        "id": "B",
+        "op": "SELECT_POINT",
+        "inputs": [
+          "IS"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "branch": {
+          "kind": "SIDE_OF_ORIENTED_LINE",
+          "refs": [
+            "O1",
+            "O2"
+          ],
+          "sign": -1
+        }
+      },
+      {
+        "id": "CH",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "O1",
+          "CH"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O1",
+    "O2",
+    "A",
+    "B",
+    "H"
+  ],
+  "displayCircles": [
+    "C1",
+    "C2"
+  ],
+  "displayLines": [
+    "CH"
+  ],
+  "displaySegments": [
+    {
+      "id": "sChord",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sCenters",
+      "refs": [
+        "O1",
+        "O2"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sH",
+      "refs": [
+        "O1",
+        "H"
+      ],
+      "dashed": true
+    }
+  ],
+  "coordinateLabels": [
+    "O1",
+    "O2"
+  ],
+  "coordinatePlacement": "PANEL",
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "coordinateCanvas": {
+    "width": 680,
+    "height": 540
+  },
+  "caption": "두 원의 공통현과 중심선",
+  "accessibilityDescription": "두 원의 중심과 교점에서 그은 공통현을 보여 주는 좌표평면이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 중심 (1, 2), (3, 6)",
+      "mappedTo": [
+        "O1",
+        "O2"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "두 반지름 ('sqrt', 5), ('sqrt', 10)",
+      "mappedTo": [
+        "C1",
+        "C2"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "공통현은 두 중심을 이은 직선에 수직이다",
+      "mappedTo": [
+        "CH",
+        "sCenters",
+        "sH",
+        "perpH"
+      ]
+    },
+    {
+      "id": "c4",
+      "condition": "점 (k,6)은 O2=(3,6)와 같아 k=3이다",
+      "mappedTo": [
+        "O2",
+        "sCenters"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "공통현 수직이등분선은 중심 (1,2)와 (3,6)을 잇는 y=2x이다."
+  ],
+  "rightAngles": [
+    {
+      "id": "perpH",
+      "refs": [
+        "A",
+        "H",
+        "O1"
+      ],
+      "factRole": "DERIVED_INTERMEDIATE"
+    }
+  ]
+}

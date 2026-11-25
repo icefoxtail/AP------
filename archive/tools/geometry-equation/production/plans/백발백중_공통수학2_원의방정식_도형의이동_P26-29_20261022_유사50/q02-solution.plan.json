@@ -1,0 +1,237 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C1",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O1"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C2",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O2"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "O1",
+          "O2"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "mode": "EXTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "d",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "O1",
+          "O2"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "rOuter",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "O1",
+          "T"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "rInner",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "O2",
+          "T"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O1",
+    "O2",
+    "T"
+  ],
+  "displayCircles": [
+    "C1",
+    "C2"
+  ],
+  "displayLines": [],
+  "displaySegments": [
+    {
+      "id": "sCenters",
+      "refs": [
+        "O1",
+        "O2"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sOuter",
+      "refs": [
+        "O1",
+        "T"
+      ]
+    },
+    {
+      "id": "sInner",
+      "refs": [
+        "O2",
+        "T"
+      ]
+    }
+  ],
+  "coordinateLabels": [
+    "O1",
+    "O2"
+  ],
+  "coordinatePlacement": "PANEL",
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "coordinateCanvas": {
+    "width": 680,
+    "height": 540
+  },
+  "caption": "큰 원 안에 내접한 작은 원",
+  "accessibilityDescription": "중심 (0,0)의 큰 원과 중심 (3,0)의 작은 원이 오른쪽 점 T에서 내접한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 중심 (0, 0), (3, 0)",
+      "mappedTo": [
+        "O1",
+        "O2"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "두 반지름 5, 2",
+      "mappedTo": [
+        "C1",
+        "C2"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "내접 조건 5=3+r",
+      "mappedTo": [
+        "sCenters",
+        "sOuter",
+        "sInner",
+        "d",
+        "rOuter",
+        "rInner"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 중심과 접점이 일직선에 있는 내접 구조."
+  ],
+  "scalarLabels": [
+    {
+      "nodeId": "d",
+      "ownerSegment": "sCenters",
+      "prefix": "",
+      "value": "3"
+    },
+    {
+      "nodeId": "rOuter",
+      "ownerSegment": "sOuter",
+      "prefix": "",
+      "value": "5"
+    },
+    {
+      "nodeId": "rInner",
+      "ownerSegment": "sInner",
+      "prefix": "",
+      "value": "2"
+    }
+  ]
+}
