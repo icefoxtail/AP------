@@ -1,0 +1,1127 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "similar/middle/m3/1mid/26_왕운중_1학기_중간_중3_유사2.js",
+  "sourceGitBlobSha": "00993e528a417ebcabd5e0278d8b253d1eba8b8d",
+  "dictionaryVersion": "term-dict-v1.6-2026-11-15",
+  "judgedBy": {
+    "agent": "GPT-direct-similar2-draft",
+    "at": "2026-11-25"
+  },
+  "candidates": [],
+  "selfCheck": {
+    "note": "최종 JS와 23개 qid를 결속한 모델 초안. 외부 독립 4칸 심사·승인은 아직 수행하지 않음."
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "src": "stem",
+            "quote": "두 표현 ‘$49$의 제곱근’과 ‘제곱근 $49$’의 의미를 비교한 설명으로 옳은 것은? [3점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "두 표현 ‘$49$의 제곱근’과 ‘제곱근 $49$’의 의미를 비교한 설명으로 옳은 것은? [3점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "[키포인트] ‘어떤 수의 제곱근’은 두 수를 가리키고, 기호 $\\sqrt{49}$는 음이 아닌 한 수를 가리킨다.",
+            "evidenceType": "IMPLIED",
+            "justification": "Q1의 결정적 풀이 근거: [키포인트] ‘어떤 수의 제곱근’은 두 수를 가리키고, 기호 $\\sqrt{49}$는 음이 아닌 한 수를 가리킨다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        {
+          "source": "solution",
+          "quote": "1단계. $7^2=(-7)^2=49$이므로 ‘$49$의 제곱근’은 $7$과 $-7$이다."
+        }
+      ],
+      "scenarioNote": "서로 다른 수의 집합/단일 값을 비교하도록 질문 목표 변경",
+      "reasons": {
+        "given": "발문에서 풀이에 필요한 조건을 확인",
+        "goal": "발문이 요구하는 값 판단",
+        "method": "현재 작은칠판 해설의 제곱근 적용",
+        "condition": "기본 문제 조건 외에 독립 조건 제한 없음"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "작성자 자체 점검, 별도 독립 검수 필요"
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "src": "stem",
+            "quote": "다음 <보기>에서 옳은 식만을 있는 대로 고른 것은? [3점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "다음 <보기>에서 옳은 식만을 있는 대로 고른 것은? [3점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "절댓값",
+            "src": "solution",
+            "quote": "[키포인트] $\\sqrt{t^2}=|t|$이고, 제곱근을 제곱하면 근호 안의 양수가 된다.",
+            "evidenceType": "IMPLIED",
+            "justification": "Q2의 결정적 풀이 근거: [키포인트] $\\sqrt{t^2}=|t|$이고, 제곱근을 제곱하면 근호 안의 양수가 된다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        {
+          "source": "solution",
+          "quote": "ㄱ. $\\sqrt{(-4)^2}=|-4|=4$이므로 거짓이다."
+        }
+      ],
+      "scenarioNote": "근호-제곱 부호를 식 안팎에 배치하여 참/거짓 구성 변경",
+      "reasons": {
+        "given": "발문에서 풀이에 필요한 조건을 확인",
+        "goal": "발문이 요구하는 값 판단",
+        "method": "현재 작은칠판 해설의 절댓값 적용",
+        "condition": "기본 문제 조건 외에 독립 조건 제한 없음"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "작성자 자체 점검, 별도 독립 검수 필요"
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "다음 중 반드시 무리수인 것은? [4점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "무리수",
+            "src": "stem",
+            "quote": "다음 중 반드시 무리수인 것은? [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "유리수",
+            "src": "solution",
+            "quote": "[키포인트] 근호의 존재만으로 무리수인지 판단하지 말고, 계산한 수가 유리수인지 구별한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "Q3의 결정적 풀이 근거: [키포인트] 근호의 존재만으로 무리수인지 판단하지 말고, 계산한 수가 유리수인지 구별한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        {
+          "source": "solution",
+          "quote": "① $\\sqrt{64}/4=8/4=2$로 유리수이다."
+        }
+      ],
+      "scenarioNote": "진술 참거짓에서 수식 간 유리수 분류로 전환",
+      "reasons": {
+        "given": "발문에서 풀이에 필요한 조건을 확인",
+        "goal": "발문이 요구하는 무리수 판단",
+        "method": "현재 작은칠판 해설의 유리수 적용",
+        "condition": "기본 문제 조건 외에 독립 조건 제한 없음"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "작성자 자체 점검, 별도 독립 검수 필요"
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "src": "stem",
+            "quote": "다음 중 계산 결과가 음수인 것은? [4점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "다음 중 계산 결과가 음수인 것은? [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "절댓값",
+            "src": "solution",
+            "quote": "[키포인트] 근호 밖의 마이너스 기호와 근호 안의 음수 제곱을 서로 구별한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "Q4의 결정적 풀이 근거: [키포인트] 근호 밖의 마이너스 기호와 근호 안의 음수 제곱을 서로 구별한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        {
+          "source": "solution",
+          "quote": "① $\\sqrt{(-5)^2}=5>0$이다."
+        }
+      ],
+      "scenarioNote": "등식의 오류 찾기에서 최종 부호 판단으로 전환",
+      "reasons": {
+        "given": "발문에서 풀이에 필요한 조건을 확인",
+        "goal": "발문이 요구하는 값 판단",
+        "method": "현재 작은칠판 해설의 절댓값 적용",
+        "condition": "기본 문제 조건 외에 독립 조건 제한 없음"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "작성자 자체 점검, 별도 독립 검수 필요"
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "세 실수 $A=4-\\sqrt7$, $B=4-\\sqrt5$, $C=4-\\sqrt3$을 작은 것부터 차례로 나열한 것은?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "대소비교",
+            "src": "stem",
+            "quote": "$A=4-\\sqrt7$, $B=4-\\sqrt5$, $C=4-\\sqrt3$을 작은 것부터 차례로 나열한 것은? [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "[키포인트] 제곱근이 클수록 그것을 뺀 값은 작아진다.",
+            "evidenceType": "IMPLIED",
+            "justification": "Q5의 결정적 풀이 근거: [키포인트] 제곱근이 클수록 그것을 뺀 값은 작아진다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        {
+          "source": "solution",
+          "quote": "1단계. $7>5>3$이므로 $\\sqrt7>\\sqrt5>\\sqrt3$이다."
+        }
+      ],
+      "scenarioNote": "다섯 참거짓 식 대신 세 실수의 전체 순서 결정",
+      "reasons": {
+        "given": "발문에서 풀이에 필요한 조건을 확인",
+        "goal": "발문이 요구하는 대소비교 판단",
+        "method": "현재 작은칠판 해설의 제곱근 적용",
+        "condition": "기본 문제 조건 외에 독립 조건 제한 없음"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "작성자 자체 점검, 별도 독립 검수 필요"
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "src": "stem",
+            "quote": "양수 $a$에 대하여 $\\sqrt3\\times\\sqrt{12}\\times\\sqrt a\\times\\sqrt{3a}\\ti"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "sqrt a\\times\\sqrt{3a}\\times\\sqrt4=60\\sqrt3$이다. 이때 $a^2$의 값은? [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "[키포인트] $a>0$일 때 $\\sqrt{a}\\sqrt{3a}=a\\sqrt3$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "Q6의 결정적 풀이 근거: [키포인트] $a>0$일 때 $\\sqrt{a}\\sqrt{3a}=a\\sqrt3$이다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        {
+          "source": "solution",
+          "quote": "1단계. $\\sqrt3\\sqrt{12}=\\sqrt{36}=6$, $\\sqrt4=2$이다."
+        }
+      ],
+      "scenarioNote": "곱 전체의 조건에서 매개변수를 찾은 뒤 제곱값 결정",
+      "reasons": {
+        "given": "발문에서 풀이에 필요한 조건을 확인",
+        "goal": "발문이 요구하는 값 판단",
+        "method": "현재 작은칠판 해설의 제곱근 적용",
+        "condition": "기본 문제 조건 외에 독립 조건 제한 없음"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "작성자 자체 점검, 별도 독립 검수 필요"
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "수직선",
+            "src": "stem",
+            "quote": "한 변의 길이가 $1$인 정사각형의 대각선 길이만큼 수직선에서 이동하여 다음 다섯 점을 찍었다. $0$보다 크고 $1"
+          }
+        ],
+        "goal": [
+          {
+            "term": "점",
+            "src": "stem",
+            "quote": " 길이만큼 수직선에서 이동하여 다음 다섯 점을 찍었다. $0$보다 크고 $1$보다 작은 수를 나타내는 점은? [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "[키포인트] 정사각형 대각선 길이는 $\\sqrt2$이고, $1<\\sqrt2<2$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "Q7의 결정적 풀이 근거: [키포인트] 정사각형 대각선 길이는 $\\sqrt2$이고, $1<\\sqrt2<2$이다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        {
+          "source": "solution",
+          "quote": "1단계. 피타고라스 정리에 의하여 대각선 길이는 $\\sqrt{1^2+1^2}=\\sqrt2$이다."
+        }
+      ],
+      "scenarioNote": "특정 근호 좌표 식 읽기에서 다섯 점의 구간 판정으로 전환",
+      "reasons": {
+        "given": "발문에서 풀이에 필요한 조건을 확인",
+        "goal": "발문이 요구하는 점 판단",
+        "method": "현재 작은칠판 해설의 피타고라스정리 적용",
+        "condition": "기본 문제 조건 외에 독립 조건 제한 없음"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "작성자 자체 점검, 별도 독립 검수 필요"
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "근호",
+            "src": "stem",
+            "quote": "$(\\sqrt{75}-\\sqrt{20})-\\sqrt3(\\sqrt{15}-2)=a\\sqrt3+b\\sqrt5$일 때, $"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "sqrt{15}-2)=a\\sqrt3+b\\sqrt5$일 때, $2a+b$의 값은? (단, $a,b$는 유리수) [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "동류항",
+            "src": "solution",
+            "quote": "[키포인트] 먼저 근호를 간단히 하고 동류항끼리 묶는다.",
+            "evidenceType": "IMPLIED",
+            "justification": "Q8의 결정적 풀이 근거: [키포인트] 먼저 근호를 간단히 하고 동류항끼리 묶는다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "조건",
+            "src": "stem",
+            "quote": "(단, $a,b$는 유리수)"
+          }
+        ]
+      },
+      "steps": [
+        {
+          "source": "solution",
+          "quote": "1단계. $\\sqrt{75}-\\sqrt{20}=5\\sqrt3-2\\sqrt5$이다."
+        }
+      ],
+      "scenarioNote": "근호 나눗셈에서 분배와 계수 결합의 목표 변경",
+      "reasons": {
+        "given": "발문에서 풀이에 필요한 조건을 확인",
+        "goal": "발문이 요구하는 값 판단",
+        "method": "현재 작은칠판 해설의 동류항 적용",
+        "condition": "발문에 별도로 제한된 조건"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "작성자 자체 점검, 별도 독립 검수 필요"
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "자연수 $n$의 양의 제곱근 $\\sqrt n$의 정수부분이 $31$ 또는 $32$이다. 이 조건을 만족하는 자연수 $"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "곱근 $\\sqrt n$의 정수부분이 $31$ 또는 $32$이다. 이 조건을 만족하는 자연수 $n$의 개수는? [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "[키포인트] 제곱근의 정수부분을 구간으로 바꾸고, 양 끝 포함 여부를 확인한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "Q9의 결정적 풀이 근거: [키포인트] 제곱근의 정수부분을 구간으로 바꾸고, 양 끝 포함 여부를 확인한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        {
+          "source": "solution",
+          "quote": "1단계. 정수부분이 $31$ 또는 $32$라는 것은 $31\\le\\sqrt n<33$이라는 뜻이다."
+        }
+      ],
+      "scenarioNote": "양쪽 제곱근 경계 대신 정수부분의 합집합 조건에서 역산",
+      "reasons": {
+        "given": "발문에서 풀이에 필요한 조건을 확인",
+        "goal": "발문이 요구하는 개수 판단",
+        "method": "현재 작은칠판 해설의 제곱근 적용",
+        "condition": "기본 문제 조건 외에 독립 조건 제한 없음"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "작성자 자체 점검, 별도 독립 검수 필요"
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "src": "stem",
+            "quote": "$\\sqrt x$ 이하의 자연수의 개수를 $N(x)$라고 할 때, 다음 조건을 모두 만족시키는 자연수 $x$의 개수는"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": " x$ 이하의 자연수의 개수를 $N(x)$라고 할 때, 다음 조건을 모두 만족시키는 자연수 $x$의 개수는? [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "부등식",
+            "src": "solution",
+            "quote": "[키포인트] 정수부분과 소수부분을 각각 부등식으로 나타낸다.",
+            "evidenceType": "IMPLIED",
+            "justification": "Q10의 결정적 풀이 근거: [키포인트] 정수부분과 소수부분을 각각 부등식으로 나타낸다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "조건",
+            "src": "stem",
+            "quote": "소수부분이 $0.5$ 이상"
+          }
+        ]
+      },
+      "steps": [
+        {
+          "source": "solution",
+          "quote": "1단계. $N(x)=8$이므로 $8\\le\\sqrt x<9$이고 $64\\le x<81$이다."
+        }
+      ],
+      "scenarioNote": "소수부분 상한 쪽의 포함 경계를 이용한 정수 집계",
+      "reasons": {
+        "given": "발문에서 풀이에 필요한 조건을 확인",
+        "goal": "발문이 요구하는 개수 판단",
+        "method": "현재 작은칠판 해설의 부등식 적용",
+        "condition": "발문에 별도로 제한된 조건"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "작성자 자체 점검, 별도 독립 검수 필요"
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "src": "stem",
+            "quote": "다음 표는 몇 자연수 $n$의 제곱을 나타낸 것이다. 이를 이용하여 $\\sqrt{2.7}$, $\\sqrt{27}$을 "
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "t{27}$을 소수로 적었을 때 소수점 아래 둘째 자리의 숫자를 각각 $a,b$라 하자. $a+b$의 값은? [5점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "[키포인트] 제곱표의 수를 $10^4$, $10^4$로 나누어 소수 두 자리의 제곱과 비교한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "Q11의 결정적 풀이 근거: [키포인트] 제곱표의 수를 $10^4$, $10^4$로 나누어 소수 두 자리의 제곱과 비교한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        {
+          "source": "solution",
+          "quote": "1단계. $164^2=26896<27000<27225=165^2$이므로 $1.64^2<2.7<1.65^2$이다. 따라서 $1.64<\\sqrt{2.7}<1.65$에서 $a=4$이다."
+        }
+      ],
+      "scenarioNote": "제곱표의 두 숫자 추출에서 숫자 합의 목표로 변경",
+      "reasons": {
+        "given": "발문에서 풀이에 필요한 조건을 확인",
+        "goal": "발문이 요구하는 값 판단",
+        "method": "현재 작은칠판 해설의 제곱근 적용",
+        "condition": "기본 문제 조건 외에 독립 조건 제한 없음"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "작성자 자체 점검, 별도 독립 검수 필요"
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "같은 모양의 포스터 3종류 A, B, C의 넓이는 각각 $S$, $3S$, $2S$이다. 가장 큰 B 포스터를 C 포"
+          }
+        ],
+        "goal": [
+          {
+            "term": "비율",
+            "src": "stem",
+            "quote": "이 배율을 소수점 아래 첫째 자리까지 백분율로 나타낸 것은? (단, $\\sqrt6=2.449$로 계산한다.) [5점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "닮음",
+            "src": "solution",
+            "quote": "[키포인트] 닮음에서 넓이비는 길이비의 제곱이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "Q12의 결정적 풀이 근거: [키포인트] 닮음에서 넓이비는 길이비의 제곱이다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "조건",
+            "src": "stem",
+            "quote": "(단, $\\sqrt6=2.449$로 계산한다.)"
+          }
+        ]
+      },
+      "steps": [
+        {
+          "source": "solution",
+          "quote": "1단계. 원본 B의 넓이는 $3S$, 복사할 C의 넓이는 $2S$이므로 넓이의 비(결과/원본)는 $2S/(3S)=2/3$이다."
+        }
+      ],
+      "scenarioNote": "종이 규격 대화에서 세 넓이 중 두 크기의 축소 비율을 선택",
+      "reasons": {
+        "given": "발문에서 풀이에 필요한 조건을 확인",
+        "goal": "발문이 요구하는 비율 판단",
+        "method": "현재 작은칠판 해설의 닮음 적용",
+        "condition": "발문에 별도로 제한된 조건"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "작성자 자체 점검, 별도 독립 검수 필요"
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "좌표평면에서 두 직선 $y=\\sqrt2x-7$, $y=-\\sqrt2x+7$과 $y$축으로 둘러싸인 삼각형의 내부에 있"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": " 중 $x,y$좌표가 모두 정수이고 $y>0$인 점은 몇 개인가? (삼각형의 변 위에 있는 점은 제외한다.) [5점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "부등식",
+            "src": "solution",
+            "quote": "[키포인트] 정수 $x$별로 영역 안에 있는 양의 정수 $y$의 개수를 센다.",
+            "evidenceType": "IMPLIED",
+            "justification": "Q13의 결정적 풀이 근거: [키포인트] 정수 $x$별로 영역 안에 있는 양의 정수 $y$의 개수를 센다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "조건",
+            "src": "stem",
+            "quote": "$y>0$"
+          }
+        ]
+      },
+      "steps": [
+        {
+          "source": "solution",
+          "quote": "1단계. 두 사선은 $\\sqrt2x-7=-\\sqrt2x+7$에서 만나므로 $x=7/\\sqrt2$이다. $4<7/\\sqrt2<5$이므로 내부의 정수 $x$는 $1,2,3,4$이다."
+        }
+      ],
+      "scenarioNote": "전체 격자점 대신 양의 y조건의 부분영역 계수",
+      "reasons": {
+        "given": "발문에서 풀이에 필요한 조건을 확인",
+        "goal": "발문이 요구하는 개수 판단",
+        "method": "현재 작은칠판 해설의 부등식 적용",
+        "condition": "발문에 별도로 제한된 조건"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "작성자 자체 점검, 별도 독립 검수 필요"
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "다음 다항식을 각각 전개했을 때 $x$의 계수가 $-8$인 것은? [3점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "다음 다항식을 각각 전개했을 때 $x$의 계수가 $-8$인 것은? [3점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "전개",
+            "src": "solution",
+            "quote": "[키포인트] 전개한 식의 일차항 계수만 비교하면 된다.",
+            "evidenceType": "IMPLIED",
+            "justification": "Q14의 결정적 풀이 근거: [키포인트] 전개한 식의 일차항 계수만 비교하면 된다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        {
+          "source": "solution",
+          "quote": "① $(x-3)(x+5)=x^2+2x-15$에서 계수는 $2$이다."
+        }
+      ],
+      "scenarioNote": "전개 등식의 진위 대신 특정 차수 계수 찾기",
+      "reasons": {
+        "given": "발문에서 풀이에 필요한 조건을 확인",
+        "goal": "발문이 요구하는 값 판단",
+        "method": "현재 작은칠판 해설의 전개 적용",
+        "condition": "기본 문제 조건 외에 독립 조건 제한 없음"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "작성자 자체 점검, 별도 독립 검수 필요"
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "다항식 $P=12a^2b-8ab^2$를 다음 식으로 나누었을 때 몫이 다항식이 되지 않는 것은? [4점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "다항식 $P=12a^2b-8ab^2$를 다음 식으로 나누었을 때 몫이 다항식이 되지 않는 것은? [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "[키포인트] 먼저 공통인수를 꺼내어 원래 다항식을 곱의 꼴로 쓴다.",
+            "evidenceType": "IMPLIED",
+            "justification": "Q15의 결정적 풀이 근거: [키포인트] 먼저 공통인수를 꺼내어 원래 다항식을 곱의 꼴로 쓴다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        {
+          "source": "solution",
+          "quote": "1단계. $P=12a^2b-8ab^2=4ab(3a-2b)$이다."
+        }
+      ],
+      "scenarioNote": "인수의 이름 묻기에서 나눗셈의 몫 판정으로 변경",
+      "reasons": {
+        "given": "발문에서 풀이에 필요한 조건을 확인",
+        "goal": "발문이 요구하는 값 판단",
+        "method": "현재 작은칠판 해설의 인수분해 적용",
+        "condition": "기본 문제 조건 외에 독립 조건 제한 없음"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "작성자 자체 점검, 별도 독립 검수 필요"
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "다항식 $16x^2+(m-1)xy+9y^2$가 완전제곱식이 되도록 하는 두 실수 $m$의 곱은? [4점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "다항식 $16x^2+(m-1)xy+9y^2$가 완전제곱식이 되도록 하는 두 실수 $m$의 곱은? [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "[키포인트] 완전제곱식의 가운데 항은 양끝 제곱항 밑의 곱에 $\\pm2$를 곱한 것이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "Q16의 결정적 풀이 근거: [키포인트] 완전제곱식의 가운데 항은 양끝 제곱항 밑의 곱에 $\\pm2$를 곱한 것이다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        {
+          "source": "solution",
+          "quote": "1단계. $16x^2=(4x)^2$, $9y^2=(3y)^2$이다."
+        }
+      ],
+      "scenarioNote": "가능한 m 쌍 선택에서 두 해의 곱으로 요구 변경",
+      "reasons": {
+        "given": "발문에서 풀이에 필요한 조건을 확인",
+        "goal": "발문이 요구하는 값 판단",
+        "method": "현재 작은칠판 해설의 완전제곱식 적용",
+        "condition": "기본 문제 조건 외에 독립 조건 제한 없음"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "작성자 자체 점검, 별도 독립 검수 필요"
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "곱셈",
+            "src": "stem",
+            "quote": "다음 다섯 계산 결과 중 가장 작은 값은? [4점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "다음 다섯 계산 결과 중 가장 작은 값은? [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "합차공식",
+            "src": "solution",
+            "quote": "[키포인트] 큰 수의 곱셈은 합차공식 또는 분배법칙으로 계산한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "Q17의 결정적 풀이 근거: [키포인트] 큰 수의 곱셈은 합차공식 또는 분배법칙으로 계산한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        {
+          "source": "solution",
+          "quote": "① $50^2=2500$이다."
+        }
+      ],
+      "scenarioNote": "최댓값에서 최솟값으로 목표와 계산식 기준 변경",
+      "reasons": {
+        "given": "발문에서 풀이에 필요한 조건을 확인",
+        "goal": "발문이 요구하는 값 판단",
+        "method": "현재 작은칠판 해설의 합차공식 적용",
+        "condition": "기본 문제 조건 외에 독립 조건 제한 없음"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "작성자 자체 점검, 별도 독립 검수 필요"
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "다음은 다섯 학생이 식을 변형한 결과이다. 옳게 계산한 학생은 몇 명인가? [4점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "다음은 다섯 학생이 식을 변형한 결과이다. 옳게 계산한 학생은 몇 명인가? [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "곱셈공식",
+            "src": "solution",
+            "quote": "[키포인트] 곱셈공식과 공통인수로 묶는 인수분해를 각 문장에 직접 적용한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "Q18의 결정적 풀이 근거: [키포인트] 곱셈공식과 공통인수로 묶는 인수분해를 각 문장에 직접 적용한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        {
+          "source": "solution",
+          "quote": "가영: $(x-5)^2=x^2-10x+25$이므로 옳다."
+        }
+      ],
+      "scenarioNote": "계산 오개념의 종류와 참인 학생 수를 바꾸어 재판정",
+      "reasons": {
+        "given": "발문에서 풀이에 필요한 조건을 확인",
+        "goal": "발문이 요구하는 개수 판단",
+        "method": "현재 작은칠판 해설의 곱셈공식 적용",
+        "condition": "기본 문제 조건 외에 독립 조건 제한 없음"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "작성자 자체 점검, 별도 독립 검수 필요"
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "src": "stem",
+            "quote": "$x=\\dfrac1{\\sqrt{13}+2\\sqrt3}$, $y=\\dfrac1{\\sqrt{13}-2\\sqrt3}$일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "13}+2\\sqrt3}$, $y=\\dfrac1{\\sqrt{13}-2\\sqrt3}$일 때, $x+y$의 값은? [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "유리화",
+            "src": "solution",
+            "quote": "[키포인트] 두 분모의 곱이 합차공식으로 $1$이 된다는 점을 이용한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "Q19의 결정적 풀이 근거: [키포인트] 두 분모의 곱이 합차공식으로 $1$이 된다는 점을 이용한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        {
+          "source": "solution",
+          "quote": "1단계. $(\\sqrt{13}+2\\sqrt3)(\\sqrt{13}-2\\sqrt3)=13-(2\\sqrt3)^2=13-12=1$이다."
+        }
+      ],
+      "scenarioNote": "유리화 후 차의 제곱에서 합의 근호식으로 질문 목표 변경",
+      "reasons": {
+        "given": "발문에서 풀이에 필요한 조건을 확인",
+        "goal": "발문이 요구하는 값 판단",
+        "method": "현재 작은칠판 해설의 유리화 적용",
+        "condition": "기본 문제 조건 외에 독립 조건 제한 없음"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "작성자 자체 점검, 별도 독립 검수 필요"
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정사각형",
+            "src": "stem",
+            "quote": "한 변의 길이가 각각 $x+4$, $x-4$인 두 정사각형이 있다. 큰 정사각형과 작은 정사각형의 넓이의 차가 $96"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": " 있다. 큰 정사각형과 작은 정사각형의 넓이의 차가 $96$일 때, 양수 $x$의 값은? (단, $x>4$) [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "합차공식",
+            "src": "solution",
+            "quote": "[키포인트] 정사각형의 넓이 차에 합차공식을 적용하여 일차방정식으로 만든다.",
+            "evidenceType": "IMPLIED",
+            "justification": "Q20의 결정적 풀이 근거: [키포인트] 정사각형의 넓이 차에 합차공식을 적용하여 일차방정식으로 만든다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "조건",
+            "src": "stem",
+            "quote": "(단, $x>4$)"
+          }
+        ]
+      },
+      "steps": [
+        {
+          "source": "solution",
+          "quote": "1단계. 넓이의 차는 $(x+4)^2-(x-4)^2$이다."
+        }
+      ],
+      "scenarioNote": "넓이 식의 직접 선택에서 넓이 차를 통한 미지수 역산",
+      "reasons": {
+        "given": "발문에서 풀이에 필요한 조건을 확인",
+        "goal": "발문이 요구하는 값 판단",
+        "method": "현재 작은칠판 해설의 합차공식 적용",
+        "condition": "발문에 별도로 제한된 조건"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "작성자 자체 점검, 별도 독립 검수 필요"
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "src": "stem",
+            "quote": "$\\sqrt{72x}$가 자연수가 되도록 하는 자연수 $x$ 중 두 자리인 $x$의 값을 모두 구하고, 그 합을 구하"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "가 되도록 하는 자연수 $x$ 중 두 자리인 $x$의 값을 모두 구하고, 그 합을 구하는 과정을 서술하시오. [7점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "소인수분해",
+            "src": "solution",
+            "quote": "[키포인트] $72x$가 완전제곱수가 되려면 소인수의 지수가 모두 짝수여야 한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "Q21의 결정적 풀이 근거: [키포인트] $72x$가 완전제곱수가 되려면 소인수의 지수가 모두 짝수여야 한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        {
+          "source": "solution",
+          "quote": "1단계. $72=2^3\\cdot3^2$이므로 $72x$가 제곱수가 되려면 $x=2k^2$ ($k$는 자연수)꼴이어야 한다. 그러면 $72x=144k^2=(12k)^2$이다. [2점"
+        }
+      ],
+      "scenarioNote": "두 자리 제곱수 조건을 만족하는 수의 개수에서 합으로 변경",
+      "reasons": {
+        "given": "발문에서 풀이에 필요한 조건을 확인",
+        "goal": "발문이 요구하는 합 판단",
+        "method": "현재 작은칠판 해설의 소인수분해 적용",
+        "condition": "기본 문제 조건 외에 독립 조건 제한 없음"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "작성자 자체 점검, 별도 독립 검수 필요"
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "사다리꼴",
+            "src": "stem",
+            "quote": "넓이가 $\\sqrt{10}$이고 한 변의 길이가 $\\sqrt2$인 직사각형이 있다. 이 직사각형의 다른 한 변을 공통"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": ". 두 사다리꼴 A, B의 넓이를 각각 구하고 A의 넓이가 B의 넓이의 몇 배인지 구하는 과정을 서술하시오. [6점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "사다리꼴",
+            "src": "solution",
+            "quote": "[키포인트] 직사각형의 넓이에서 공통 높이를 찾고, 사다리꼴 넓이의 비를 간단히 한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "Q22의 결정적 풀이 근거: [키포인트] 직사각형의 넓이에서 공통 높이를 찾고, 사다리꼴 넓이의 비를 간단히 한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        {
+          "source": "solution",
+          "quote": "1단계. 직사각형의 다른 한 변의 길이는 $\\sqrt{10}/\\sqrt2=\\sqrt5$이다. 따라서 두 사다리꼴의 공통 높이 $h=\\sqrt5$이다. [1점]"
+        }
+      ],
+      "scenarioNote": "꼭짓점 관계 그림에서 공통 높이와 두 밑변을 명시한 비교 문제로 구조 전환",
+      "reasons": {
+        "given": "발문에서 풀이에 필요한 조건을 확인",
+        "goal": "발문이 요구하는 넓이 판단",
+        "method": "현재 작은칠판 해설의 사다리꼴 적용",
+        "condition": "기본 문제 조건 외에 독립 조건 제한 없음"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "작성자 자체 점검, 별도 독립 검수 필요"
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "$a=5+\\sqrt5$일 때, 다항식 $a^2-10a+k$의 값이 $1$이 되도록 하는 정수 $k$를 구하시오. 이어"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "분해한 뒤 대입하는 방법과 (나) 완전제곱식으로 바꾼 뒤 대입하는 방법으로 각각 계산하는 과정을 서술하시오. [7점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "[키포인트] 완전제곱식으로 바꾸면 미지의 상수 $k$를 먼저 쉽게 결정할 수 있다.",
+            "evidenceType": "IMPLIED",
+            "justification": "Q23의 결정적 풀이 근거: [키포인트] 완전제곱식으로 바꾸면 미지의 상수 $k$를 먼저 쉽게 결정할 수 있다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        {
+          "source": "solution",
+          "quote": "1단계. $a^2-10a+k=(a-5)^2+k-25$이다. 주어진 $a=5+\\sqrt5$에서 $(a-5)^2=(\\sqrt5)^2=5$이므로 식의 값은 $k-20$이다."
+        }
+      ],
+      "scenarioNote": "두 대입 방법은 유지하되 식의 상수를 역으로 결정하도록 목표 변경",
+      "reasons": {
+        "given": "발문에서 풀이에 필요한 조건을 확인",
+        "goal": "발문이 요구하는 값 판단",
+        "method": "현재 작은칠판 해설의 완전제곱식 적용",
+        "condition": "기본 문제 조건 외에 독립 조건 제한 없음"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "작성자 자체 점검, 별도 독립 검수 필요"
+      }
+    }
+  ]
+}
