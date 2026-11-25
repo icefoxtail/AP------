@@ -1,0 +1,19 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-0.5, 2.5, -1, 33],
+    "curves": [
+      {"id": "f", "kind": "EXPONENTIAL", "base": "3", "coefficients": ["1", "1", "0"], "shiftX": "-1", "domain": ["0", "2"], "color": "BLUE", "label": "y=3^(x+1)"},
+      {"id": "g", "kind": "EXPONENTIAL", "base": "1/3", "coefficients": ["9", "1", "2"], "shiftX": "1", "domain": ["0", "2"], "color": "WARM", "label": "y=9*(1/3)^(x-1)+2"}
+    ],
+    "axisTickValues": {"x": [], "y": []}
+  },
+  "caption": "문제에 주어진 두 지수함수의 일부 개형을 비교한다. 구해야 할 평행이동량 m, n과 그 합은 표시하지 않는다.",
+  "accessibilityDescription": "주어진 증가 지수함수와 감소 지수함수가 같은 좌표평면에 두 색의 곡선으로 그려져 있고, 미지 이동량이나 답은 표기되지 않았다.",
+  "sourceConditions": [
+    {"id": "q07p-a", "condition": "처음 함수 y=3^(x+1)", "mappedTo": "graphPlan.curves[0]"},
+    {"id": "q07p-b", "condition": "목표 함수 y=9(1/3)^(x−1)+2", "mappedTo": "graphPlan.curves[1]"}
+  ],
+  "newVisualInformation": ["발문에 이미 주어진 두 함수의 증가·감소 형태를 나란히 비교"]
+}

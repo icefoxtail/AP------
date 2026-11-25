@@ -1,0 +1,30 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "axisVariable": false,
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "연속 구간",
+        "pieces": [{
+          "lo": {"value": "0", "state": "CLOSED"},
+          "hi": {"value": "3/4", "state": "CLOSED"}
+        }]
+      },
+      {
+        "kind": "POINTS",
+        "label": "고립점",
+        "band": false,
+        "points": [{"id": "G", "value": "5/4", "hideName": true, "valueSide": "BELOW"}]
+      }
+    ]
+  },
+  "numberLineCaption": {"text": "t=θ/π로 환산한 A∪B"},
+  "caption": "t=θ/π로 환산하면 A∪B는 0≤t≤3/4인 구간과 별도의 고립점 t=5/4의 합집합이다.",
+  "accessibilityDescription": "수직선에 0부터 3/4까지 양끝을 포함하는 구간과 그 오른쪽에 떨어진 5/4의 점을 각각 표시했다.",
+  "sourceConditions": [
+    {"id": "q13-a", "condition": "풀이에서 얻은 A∪B=[0,3π/4]∪{5π/4}의 연속 부분과 고립점", "mappedTo": "numberLine.rows[0].pieces,numberLine.rows[1].points"},
+    {"id": "q13-b", "condition": "A∪B=[0,3π/4]∪{5π/4}, t=θ/π로 정규화", "mappedTo": "numberLine.rows,numberLineCaption"}
+  ],
+  "newVisualInformation": ["A∪B에서 이어진 구간과 떨어진 고립점을 분리 표시", "0, 3/4, 5/4의 포함 관계"]
+}

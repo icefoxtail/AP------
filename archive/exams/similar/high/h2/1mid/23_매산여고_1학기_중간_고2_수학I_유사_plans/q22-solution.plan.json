@@ -1,0 +1,29 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "COS",
+    "ratePi": "1/3",
+    "coefficients": ["2", "3"],
+    "phasePi": "-1/12",
+    "sourceDomain": {"kind": "INTERVAL", "range": ["1/4", "25/4"], "states": ["CLOSED", "CLOSED"]},
+    "domain": [0.25, 6.25],
+    "viewport": [0, 6.5, 0, 6],
+    "keyPoints": true,
+    "axisTickValues": {"x": ["1/4", "5/4", "13/4", "25/4"], "y": ["1", "3", "4", "5"]},
+    "overlays": {
+      "points": [{"id": "P", "curveX": "5/4"}],
+      "guides": [{"id": "Py", "from": "P", "axis": "BOTH"}],
+      "callouts": [{"id": "p4", "point": "P", "text": "f=4", "direction": "NE"}]
+    },
+    "axisTitles": {"x": "u", "y": "f"}
+  },
+  "caption": "u=x/π로 가로축을 환산하면 f(πu)=2cos(πu/3−π/12)+3이고 한 주기는 u의 길이 6이다. u=5/4에서 f=4이다.",
+  "accessibilityDescription": "주기 6, 중심 높이 3, 진폭 2인 코사인 그래프가 한 주기 그려져 있다. 가로축 u가 5/4인 점 P에서 함수값은 4이다.",
+  "sourceConditions": [
+    {"id": "q22-a", "condition": "f의 주기 6π와 최댓값 5, 위쪽 평행이동 3", "mappedTo": "graphPlan.ratePi,graphPlan.coefficients,graphPlan.sourceDomain"},
+    {"id": "q22-b", "condition": "x방향 π/4 이동과 f(5π/4) 계산", "mappedTo": "graphPlan.phasePi,graphPlan.overlays.points,graphPlan.overlays.guides"},
+    {"id": "q22-c", "condition": "원래 x가 아니라 u=x/π를 가로좌표로 사용", "mappedTo": "graphPlan.axisTitles.x,graphPlan.domain,caption"}
+  ],
+  "newVisualInformation": ["높이 3을 중심으로 1부터 5까지 진동하는 코사인 곡선", "한 주기와 평가점 u=5/4에서의 높이 4"]
+}

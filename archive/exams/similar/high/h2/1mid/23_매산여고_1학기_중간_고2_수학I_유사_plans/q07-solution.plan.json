@@ -1,0 +1,29 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-0.5, 2.5, -1, 33],
+    "curves": [
+      {
+        "id": "f", "kind": "EXPONENTIAL", "base": "3", "coefficients": ["1", "1", "0"],
+        "shiftX": "-1", "domain": ["0", "2"], "color": "BLUE", "label": "y=3^(x+1)"
+      },
+      {
+        "id": "g", "kind": "EXPONENTIAL", "base": "1/3", "coefficients": ["9", "1", "2"],
+        "shiftX": "1", "domain": ["0", "2"], "color": "WARM", "label": "y=9*(1/3)^(x-1)+2"
+      }
+    ],
+    "axisTickValues": {"x": ["1", "2"], "y": ["2", "3", "9", "27"]},
+    "overlays": {
+      "lines": [{"id": "asym", "slope": "0", "intercept": "2", "style": "DASHED", "label": "y=2"}]
+    }
+  },
+  "caption": "원래 y=3^(x+1)와 이동·y축 대칭 후의 y=9(1/3)^(x−1)+2를 비교한다. 목표 곡선의 수평점근선은 y=2이다.",
+  "accessibilityDescription": "증가하는 원래 지수곡선과 감소하는 목표 지수곡선이 다른 색으로 표시되고, 목표 곡선 아래에 y=2 수평점근선이 점선으로 그려져 있다.",
+  "sourceConditions": [
+    {"id": "q07-a", "condition": "이동 전 y=3^(x+1)", "mappedTo": "graphPlan.curves[0].base,graphPlan.curves[0].shiftX,graphPlan.curves[0].coefficients"},
+    {"id": "q07-b", "condition": "최종 y=9(1/3)^(x−1)+2", "mappedTo": "graphPlan.curves[1].base,graphPlan.curves[1].shiftX,graphPlan.curves[1].coefficients"},
+    {"id": "q07-c", "condition": "y축 대칭이 증가곡선을 감소곡선으로 바꿈; 위쪽 이동량은 2", "mappedTo": "graphPlan.curves,graphPlan.overlays.lines"}
+  ],
+  "newVisualInformation": ["이동과 y축 대칭 전후 그래프의 증가·감소 방향 비교", "최종 그래프의 수평점근선 y=2"]
+}

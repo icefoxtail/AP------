@@ -1,0 +1,35 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-0.7, 7.2, -0.7, 7.2],
+    "curves": [
+      {"id": "f", "kind": "EXPONENTIAL", "base": "6", "coefficients": ["1", "1", "0"], "domain": ["0", "1"], "color": "BLUE", "label": "y=6^x"},
+      {"id": "g", "kind": "LOGARITHMIC", "base": "6", "coefficients": ["1", "1", "0", "0"], "domain": ["1", "6"], "color": "WARM"},
+      {"id": "line", "kind": "LINE", "coefficients": ["7", "-1"], "domain": ["0", "7"], "label": "y=-x+7"},
+      {"id": "bisector", "kind": "LINE", "coefficients": ["0", "1"], "domain": ["0", "7"], "style": "DASHED", "label": "y=x"}
+    ],
+    "axisTickValues": {"x": ["1", "6"], "y": ["1", "6"]},
+    "overlays": {
+      "points": [
+        {"id": "A", "x": "1", "y": "6", "coordinates": true},
+        {"id": "B", "x": "6", "y": "1", "coordinates": true},
+        {"id": "C", "x": "0", "y": "1", "coordinates": true},
+        {"id": "D", "x": "1", "y": "0", "coordinates": true}
+      ],
+      "polygons": [{"id": "trap", "points": ["A", "C", "D", "B"], "fill": "NONE", "label": "18"}],
+      "segments": [
+        {"id": "AB", "from": "A", "to": "B", "length": true},
+        {"id": "CD", "from": "C", "to": "D", "length": true}
+      ]
+    }
+  },
+  "caption": "해설에서 구한 a=6일 때 지수·로그 역함수의 교점 A(1,6), B(6,1)는 y=x 대칭이다. AB∥CD인 사다리꼴 ACDB의 밑변은 각각 5√2와 √2이다.",
+  "accessibilityDescription": "증가하는 지수곡선과 그 역함수인 로그곡선, 대칭선 y=x, 감소 직선 y=−x+7이 보인다. A, C, D, B가 둘러싼 사다리꼴의 평행한 두 밑변과 길이가 표시돼 있다.",
+  "sourceConditions": [
+    {"id": "q21-a", "condition": "해설에서 구한 a=6 및 두 역함수 y=6^x, y=log_6 x", "mappedTo": "graphPlan.curves[0],graphPlan.curves[1]"},
+    {"id": "q21-b", "condition": "두 교점은 직선 x+y=7 위이고 y=x에 대칭", "mappedTo": "graphPlan.curves[2],graphPlan.curves[3],graphPlan.overlays.points[0],graphPlan.overlays.points[1]"},
+    {"id": "q21-c", "condition": "C=(0,1), D=(1,0); 사다리꼴 ACDB의 밑변 AB, CD와 면적 18", "mappedTo": "graphPlan.overlays.points[2],graphPlan.overlays.points[3],graphPlan.overlays.polygons[0].label,graphPlan.overlays.segments"}
+  ],
+  "newVisualInformation": ["역함수 두 교점의 대칭과 AB∥CD의 사다리꼴 관계", "풀이에서 계산한 A, B, C, D의 좌표와 두 밑변 길이"]
+}

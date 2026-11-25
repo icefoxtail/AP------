@@ -1,0 +1,24 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": ["19/4", "-1", "-1"],
+    "sourceDomain": {"kind": "INTERVAL", "range": [-1, 1]},
+    "domain": [-1, 1],
+    "axisFold": false,
+    "viewport": [-1.5, 1.5, -1, 6],
+    "requiredPoints": [
+      {"id": "V", "x": -0.5, "y": 5},
+      {"id": "L", "x": -1, "y": 4.75},
+      {"id": "R", "x": 1, "y": 2.75}
+    ],
+    "axisTickValues": {"x": [-1, -0.5, 1], "y": [2.75, 5]}
+  },
+  "caption": "u=cos(x−π/3), −1≤u≤1에서 f=−u²−u+19/4의 꼭짓점은 최대 5, 오른쪽 끝점은 최소 11/4이다.",
+  "accessibilityDescription": "치환변수 u가 −1부터 1까지 변할 때 아래로 볼록한 포물선의 꼭짓점과 양끝점이 나타나 있으며, 꼭짓점의 높이가 5이다.",
+  "sourceConditions": [
+    {"id": "q20-a", "condition": "u=cos(x−π/3), −1≤u≤1", "mappedTo": "graphPlan.sourceDomain,graphPlan.domain"},
+    {"id": "q20-b", "condition": "최댓값 5로부터 k=15/4, 따라서 f=−u²−u+19/4", "mappedTo": "graphPlan.coefficients,graphPlan.requiredPoints"}
+  ],
+  "newVisualInformation": ["치환된 포물선의 꼭짓점과 정의역 끝점의 상대 높이", "최댓값과 최솟값의 위치"]
+}
