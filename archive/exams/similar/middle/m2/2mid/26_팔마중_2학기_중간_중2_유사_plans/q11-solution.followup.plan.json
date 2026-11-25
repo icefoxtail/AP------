@@ -1,0 +1,339 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "36"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "W",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "36"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ac",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bd",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "W"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "ac",
+          "bd"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cCD",
+        "op": "CIRCLE_THROUGH_POINT",
+        "inputs": [
+          "C",
+          "D"
+        ],
+        "args": {},
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "hits",
+        "op": "INTERSECTION",
+        "inputs": [
+          "bd",
+          "cCD"
+        ],
+        "args": {},
+        "outputType": "POINT_SET",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "SELECT_POINT",
+        "inputs": [
+          "hits"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "branch": {
+          "kind": "SIDE_OF_ORIENTED_LINE",
+          "refs": [
+            "A",
+            "C"
+          ],
+          "sign": -1
+        }
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sCE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 410
+  },
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "abAc",
+        "count": 1,
+        "segments": [
+          "sAB",
+          "sCA"
+        ]
+      },
+      {
+        "id": "bcBd",
+        "count": 2,
+        "segments": [
+          "sBC",
+          "sBD"
+        ]
+      },
+      {
+        "id": "cdCe",
+        "count": 3,
+        "segments": [
+          "sCD",
+          "sCE"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "id": "angle36",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 36,
+        "label": "36",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "angleC72",
+        "refs": [
+          "B",
+          "C",
+          "D"
+        ],
+        "value": 72,
+        "label": "72",
+        "style": "ARC",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "angleD72",
+        "refs": [
+          "C",
+          "D",
+          "E"
+        ],
+        "value": 72,
+        "label": "72",
+        "style": "ARC",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "angleC36",
+        "refs": [
+          "D",
+          "C",
+          "E"
+        ],
+        "value": 36,
+        "label": "36",
+        "style": "ARC",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "caption": "△BCD와 △CDE가 각각 이등변이므로 밑각들이 72°이고 ∠DCE=36°이다.",
+  "accessibilityDescription": "△BCD와 △CDE가 각각 이등변이므로 밑각들이 72°이고 ∠DCE=36°이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AB=AC, ∠A=36°",
+      "mappedTo": [
+        "abAc",
+        "angle36"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "D가 AC 위, BC=BD",
+      "mappedTo": [
+        "D",
+        "bcBd"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "E가 BD 위, CD=CE",
+      "mappedTo": [
+        "E",
+        "cdCe"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "72°인 두 밑각과 결론 ∠DCE=36°를 별도의 각 호로 표시한다."
+  ]
+}

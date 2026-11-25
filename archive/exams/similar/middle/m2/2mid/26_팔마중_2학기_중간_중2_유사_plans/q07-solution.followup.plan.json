@@ -1,0 +1,300 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sAP",
+      "refs": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "sBP",
+      "refs": [
+        "B",
+        "P"
+      ]
+    },
+    {
+      "id": "sPC",
+      "refs": [
+        "P",
+        "C"
+      ]
+    },
+    {
+      "id": "sOD",
+      "refs": [
+        "O",
+        "D"
+      ]
+    },
+    {
+      "id": "sOC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "O",
+    "P"
+  ],
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 410
+  },
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "bpPc",
+        "count": 1,
+        "segments": [
+          "sBP",
+          "sPC"
+        ]
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "d5",
+        "ownerSegment": "sOD",
+        "text": "5cm"
+      },
+      {
+        "id": "c4",
+        "ownerSegment": "sOC",
+        "text": "4cm"
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "area10",
+        "at": [
+          -1.3,
+          2.5
+        ],
+        "text": "10"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rO",
+      "refs": [
+        "A",
+        "O",
+        "B"
+      ]
+    }
+  ],
+  "caption": "두 대각선의 길이로 마름모 넓이를 구하고 BC의 중점 P를 통해 △ABP 넓이 10을 확인한다.",
+  "accessibilityDescription": "두 대각선의 길이로 마름모 넓이를 구하고 BC의 중점 P를 통해 △ABP 넓이 10을 확인한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "ABCD 마름모, 대각선 AC와 BD는 O에서 수직 이등분",
+      "mappedTo": [
+        "sAB",
+        "sBC",
+        "sCD",
+        "sDA",
+        "sAC",
+        "sBD"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "OD=5cm, OC=4cm",
+      "mappedTo": [
+        "d5",
+        "c4"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "BP=PC",
+      "mappedTo": [
+        "bpPc"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "△ABP 안에 구한 넓이 10을 표시하고 BP=PC 및 수직 대각선 관계를 유지한다."
+  ]
+}

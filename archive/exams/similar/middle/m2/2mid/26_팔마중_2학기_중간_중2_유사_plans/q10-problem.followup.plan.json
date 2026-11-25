@@ -1,0 +1,219 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-9",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "9",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "9",
+                  "denominator": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "B",
+    "C",
+    "D",
+    "A"
+  ],
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 410
+  },
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "equalABAC",
+        "count": 1,
+        "segments": [
+          "sAB",
+          "sCA"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "id": "halfA",
+        "refs": [
+          "B",
+          "A",
+          "D"
+        ],
+        "value": 30,
+        "label": "30",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "bd45",
+        "ownerSegment": "sBD",
+        "text": "4.5cm"
+      }
+    ]
+  },
+  "caption": "AB=AC인 이등변삼각형 ABC에서 AD는 꼭짓각의 이등분선, ∠BAD=30°, BD=4.5cm이다.",
+  "accessibilityDescription": "AB=AC인 이등변삼각형 ABC에서 AD는 꼭짓각의 이등분선, ∠BAD=30°, BD=4.5cm이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AB=AC",
+      "mappedTo": [
+        "equalABAC"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "AD가 ∠BAC를 이등분, ∠BAD=30°",
+      "mappedTo": [
+        "sAD",
+        "halfA"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "BD=4.5cm",
+      "mappedTo": [
+        "bd45"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "이등변삼각형의 꼭짓각 이등분선과 길이 4.5cm를 정답 값 없이 표시한다."
+  ]
+}

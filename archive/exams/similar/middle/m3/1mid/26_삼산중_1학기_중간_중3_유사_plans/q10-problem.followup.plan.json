@@ -1,0 +1,600 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "△ABC의 밑변·높이"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "expression",
+                    "op": "mul",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "3"
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "5"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "H",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "expression",
+                    "op": "sqrt",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "5"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "expression",
+                    "op": "sqrt",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "5"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "mul",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "2"
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "6"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "sAH",
+            "refs": [
+              "A",
+              "H"
+            ]
+          },
+          {
+            "id": "sHB",
+            "refs": [
+              "H",
+              "B"
+            ]
+          },
+          {
+            "id": "sAC",
+            "refs": [
+              "A",
+              "C"
+            ]
+          },
+          {
+            "id": "sCB",
+            "refs": [
+              "C",
+              "B"
+            ]
+          },
+          {
+            "id": "sCH",
+            "refs": [
+              "C",
+              "H"
+            ]
+          }
+        ],
+        "displayPoints": [
+          "A",
+          "B",
+          "H",
+          "C"
+        ],
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 320
+        },
+        "planeMarks": {
+          "dimensions": [
+            {
+              "id": "base45",
+              "from": "A",
+              "to": "B",
+              "label": "sqrt(45)",
+              "side": "BELOW",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "height24",
+              "from": "C",
+              "to": "H",
+              "label": "sqrt(24)",
+              "side": "RIGHT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "rightAngles": [
+          {
+            "id": "rightH",
+            "refs": [
+              "A",
+              "H",
+              "C"
+            ]
+          }
+        ],
+        "caption": "삼각형 ABC의 밑변 AB=√45, 높이 CH=√24이며 CH는 AB에 수직이다.",
+        "accessibilityDescription": "삼각형 ABC의 밑변 AB=√45, 높이 CH=√24이며 CH는 AB에 수직이다.",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "AB=√45",
+            "mappedTo": [
+              "base45"
+            ]
+          },
+          {
+            "id": "c2",
+            "condition": "CH=√24, CH⊥AB",
+            "mappedTo": [
+              "height24",
+              "rightH"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "밑변과 높이의 근호 치수 및 높이의 발 H."
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "마름모 DEFG"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "expression",
+                    "op": "neg",
+                    "args": [
+                      {
+                        "kind": "expression",
+                        "op": "mul",
+                        "args": [
+                          {
+                            "kind": "rational",
+                            "numerator": "3",
+                            "denominator": "2"
+                          },
+                          {
+                            "kind": "expression",
+                            "op": "sqrt",
+                            "args": [
+                              {
+                                "kind": "integer",
+                                "value": "10"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "F",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "expression",
+                    "op": "mul",
+                    "args": [
+                      {
+                        "kind": "rational",
+                        "numerator": "3",
+                        "denominator": "2"
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "10"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "G",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "mul",
+                    "args": [
+                      {
+                        "kind": "rational",
+                        "numerator": "1",
+                        "denominator": "2"
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "3"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "E",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "neg",
+                    "args": [
+                      {
+                        "kind": "expression",
+                        "op": "mul",
+                        "args": [
+                          {
+                            "kind": "rational",
+                            "numerator": "1",
+                            "denominator": "2"
+                          },
+                          {
+                            "kind": "expression",
+                            "op": "sqrt",
+                            "args": [
+                              {
+                                "kind": "integer",
+                                "value": "3"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "sDG",
+            "refs": [
+              "D",
+              "G"
+            ]
+          },
+          {
+            "id": "sGF",
+            "refs": [
+              "G",
+              "F"
+            ]
+          },
+          {
+            "id": "sFE",
+            "refs": [
+              "F",
+              "E"
+            ]
+          },
+          {
+            "id": "sED",
+            "refs": [
+              "E",
+              "D"
+            ]
+          },
+          {
+            "id": "sDO",
+            "refs": [
+              "D",
+              "O"
+            ],
+            "dashed": true
+          },
+          {
+            "id": "sOF",
+            "refs": [
+              "O",
+              "F"
+            ],
+            "dashed": true
+          },
+          {
+            "id": "sGO",
+            "refs": [
+              "G",
+              "O"
+            ]
+          },
+          {
+            "id": "sOE",
+            "refs": [
+              "O",
+              "E"
+            ]
+          }
+        ],
+        "displayPoints": [
+          "D",
+          "F",
+          "G",
+          "E",
+          "O"
+        ],
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 320
+        },
+        "planeMarks": {
+          "expressionLabels": [
+            {
+              "id": "diagX",
+              "ownerSegment": "sOF",
+              "text": "x"
+            }
+          ],
+          "dimensions": [
+            {
+              "id": "diag3",
+              "from": "G",
+              "to": "E",
+              "label": "sqrt(3)",
+              "side": "RIGHT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "rightAngles": [
+          {
+            "id": "rightO",
+            "refs": [
+              "D",
+              "O",
+              "G"
+            ]
+          }
+        ],
+        "caption": "마름모 DEFG의 두 대각선 DF=x, GE=√3은 O에서 수직이다.",
+        "accessibilityDescription": "마름모 DEFG의 두 대각선 DF=x, GE=√3은 O에서 수직이다.",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "DEFG는 마름모, 두 대각선 DF와 GE는 수직",
+            "mappedTo": [
+              "sDG",
+              "sGF",
+              "sFE",
+              "sED",
+              "rightO"
+            ]
+          },
+          {
+            "id": "c2",
+            "condition": "DF=x, GE=√3",
+            "mappedTo": [
+              "diagX",
+              "diag3"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "마름모 대각선의 미지수 x와 주어진 √3 치수."
+        ]
+      }
+    }
+  ],
+  "caption": "삼각형 ABC와 마름모 DEFG의 넓이를 비교하기 위한 두 도형.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "삼각형 밑변 √45, 높이 √24",
+      "mappedTo": [
+        "0:base45",
+        "0:height24"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "마름모 대각선 √3과 x",
+      "mappedTo": [
+        "1:diag3",
+        "1:diagX"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "삼각형 넓이는 마름모 넓이의 2배",
+      "mappedTo": [
+        "0:sAH",
+        "0:sHB",
+        "0:sCH",
+        "1:sDO",
+        "1:sOF",
+        "1:sGO",
+        "1:sOE"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 영역의 밑변·높이/대각선을 독립 패널에서 비교한다."
+  ]
+}
