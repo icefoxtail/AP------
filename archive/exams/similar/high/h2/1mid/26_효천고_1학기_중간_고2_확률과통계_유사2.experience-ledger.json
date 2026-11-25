@@ -1,0 +1,819 @@
+{
+  "schemaVersion": "alive-exam-followup-source-balanced-v1",
+  "examUid": "26_효천고_1학기_중간_고2_확률과통계_유사2",
+  "mode": "ALIVE EXAM_FOLLOWUP",
+  "followupKind": "CONFIRMATION",
+  "difficultyProfile": "SOURCE_BALANCED",
+  "originalFile": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계.js",
+  "originalGitBlobSha1": "8e7c7cca523487809b215d96fbbc8cafe243cd40",
+  "existingVariantFile": "archive/exams/similar/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계_유사.js",
+  "existingVariantGitBlobSha1": "68e57023dd8f4f6799ab51e57f1ff798407867e6",
+  "sourceArchiveFile": "archive/exams/similar/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계_유사2.js",
+  "sourceGitBlobSha": "3ccfd44da60c6e82b3b61cdf1bd8e0caa31abf38",
+  "approvalStatus": "DRAFT_SINGLE_MODEL",
+  "independentHumanOrModelReview": "NOT_RUN",
+  "sourceProblemCount": 23,
+  "totalPoints": 100,
+  "objectiveQuestions": 19,
+  "writtenQuestions": 4,
+  "sourceBalance": {
+    "originalQuestionCount": 23,
+    "siblingQuestionCount": 23,
+    "itemsPreserved": 23,
+    "sourcePointsTotal": 100,
+    "formatMaintained": "19 objective / 4 written",
+    "difficultyBuckets": "same as 2022 sibling with explicit per-question judgment"
+  },
+  "items": [
+    {
+      "sourceQid": 1,
+      "originalReference": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계.js#q1",
+      "existingVariantReference": "archive/exams/similar/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계_유사.js#q1",
+      "lockedPrimaryL3": "H2-PS-RPM-036",
+      "originalSummary": "중복조합의 수 ${}_{3}H_{2}$의 값은? [3.4점]",
+      "siblingSummary": "중복조합의 수 ${}_{4}H_{3}$의 값은? [3.4점]",
+      "conditionAndTargetShift": "중복조합의 값을 제시하고 첫 매개변수를 역산",
+      "decisiveCore": "C(n+2,3)=10=>n=3",
+      "variationType": "CONFIRMATION",
+      "addedDecision": "원본·유사1과 다른 조건 또는 목표를 읽고 계산의 분기점을 재구성",
+      "sourceBucketJudgment": 1,
+      "newBucketJudgment": 1,
+      "difficultyBasis": "원본·기존 유사1의 문항 위치와 계산 분기를 고려한 source-balanced 동등 난도 판단; 공식 2차 검수는 대기",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+      "semanticDuplicateResult": "CONDITION_OR_GOAL_SHIFT",
+      "mathCheck": "SEPARATE_BRUTE_FORCE_I1_PASS",
+      "choiceCheck": "OFFICIAL_CHOICE_ORDER_PASS",
+      "visual": {
+        "qid": 1,
+        "problem": {
+          "decision": "EXEMPT",
+          "reason": "문장·수식·조건 상자에 필요한 모든 정보가 완결되어 별도 도형 없음",
+          "existingAsset": null
+        },
+        "solution": {
+          "decision": "EXEMPT",
+          "reason": "조합·이항계수·경우 나눔·조건부확률의 계산식과 설명만으로 추론 가능",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        }
+      }
+    },
+    {
+      "sourceQid": 2,
+      "originalReference": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계.js#q2",
+      "existingVariantReference": "archive/exams/similar/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계_유사.js#q2",
+      "lockedPrimaryL3": "H2-PS-RPM-040",
+      "originalSummary": "${}_{3}C_{0}+{}_{3}C_{1}+{}_{3}C_{2}+{}_{3}C_{3}$의 값은? [3.5점]",
+      "siblingSummary": "${}_{5}C_{1}+{}_{5}C_{2}+{}_{5}C_{3}+{}_{5}C_{4}$의 값은? [3.5점]",
+      "conditionAndTargetShift": "이항계수의 전체 합에서 가운데 항을 빼는 보수 계산",
+      "decisiveCore": "2^4-C(4,2)=10",
+      "variationType": "CONFIRMATION",
+      "addedDecision": "원본·유사1과 다른 조건 또는 목표를 읽고 계산의 분기점을 재구성",
+      "sourceBucketJudgment": 1,
+      "newBucketJudgment": 1,
+      "difficultyBasis": "원본·기존 유사1의 문항 위치와 계산 분기를 고려한 source-balanced 동등 난도 판단; 공식 2차 검수는 대기",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "templateKey": "TPL_BINOMIAL_COEFFICIENT_IDENTITY",
+      "semanticDuplicateResult": "CONDITION_OR_GOAL_SHIFT",
+      "mathCheck": "SEPARATE_BRUTE_FORCE_I1_PASS",
+      "choiceCheck": "OFFICIAL_CHOICE_ORDER_PASS",
+      "visual": {
+        "qid": 2,
+        "problem": {
+          "decision": "EXEMPT",
+          "reason": "문장·수식·조건 상자에 필요한 모든 정보가 완결되어 별도 도형 없음",
+          "existingAsset": null
+        },
+        "solution": {
+          "decision": "EXEMPT",
+          "reason": "조합·이항계수·경우 나눔·조건부확률의 계산식과 설명만으로 추론 가능",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        }
+      }
+    },
+    {
+      "sourceQid": 3,
+      "originalReference": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계.js#q3",
+      "existingVariantReference": "archive/exams/similar/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계_유사.js#q3",
+      "lockedPrimaryL3": "H2-PS-RPM-033",
+      "originalSummary": "영어단어 'school'에 있는 6개의 문자를 모두 일렬로 나열하는 경우의 수는? [3.6점]",
+      "siblingSummary": "영어단어 'letter'에 있는 6개의 문자를 모두 일렬로 나열하는 경우의 수는? [3.6점]",
+      "conditionAndTargetShift": "같은 문자가 연속해야 하는 순열로 조건을 추가",
+      "decisiveCore": "5!=120",
+      "variationType": "CONFIRMATION",
+      "addedDecision": "원본·유사1과 다른 조건 또는 목표를 읽고 계산의 분기점을 재구성",
+      "sourceBucketJudgment": 2,
+      "newBucketJudgment": 2,
+      "difficultyBasis": "원본·기존 유사1의 문항 위치와 계산 분기를 고려한 source-balanced 동등 난도 판단; 공식 2차 검수는 대기",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_IDENTICAL_OBJECT_PERMUTATION",
+      "semanticDuplicateResult": "CONDITION_OR_GOAL_SHIFT",
+      "mathCheck": "SEPARATE_BRUTE_FORCE_I1_PASS",
+      "choiceCheck": "OFFICIAL_CHOICE_ORDER_PASS",
+      "visual": {
+        "qid": 3,
+        "problem": {
+          "decision": "EXEMPT",
+          "reason": "문장·수식·조건 상자에 필요한 모든 정보가 완결되어 별도 도형 없음",
+          "existingAsset": null
+        },
+        "solution": {
+          "decision": "EXEMPT",
+          "reason": "조합·이항계수·경우 나눔·조건부확률의 계산식과 설명만으로 추론 가능",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        }
+      }
+    },
+    {
+      "sourceQid": 4,
+      "originalReference": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계.js#q4",
+      "existingVariantReference": "archive/exams/similar/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계_유사.js#q4",
+      "lockedPrimaryL3": "H2-PS-RPM-039",
+      "originalSummary": "$(-2a+b)^3$의 전개식에서 $a^2b$의 계수는? [3.7점]",
+      "siblingSummary": "$(3a-b)^4$의 전개식에서 $a^3b$의 계수는? [3.7점]",
+      "conditionAndTargetShift": "특정 항의 지수를 a²b에서 ab²로 변경",
+      "decisiveCore": "3*(-2)=-6",
+      "variationType": "CONFIRMATION",
+      "addedDecision": "원본·유사1과 다른 조건 또는 목표를 읽고 계산의 분기점을 재구성",
+      "sourceBucketJudgment": 2,
+      "newBucketJudgment": 2,
+      "difficultyBasis": "원본·기존 유사1의 문항 위치와 계산 분기를 고려한 source-balanced 동등 난도 판단; 공식 2차 검수는 대기",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "templateKey": "TPL_BINOMIAL_TERM_COEFFICIENT",
+      "semanticDuplicateResult": "CONDITION_OR_GOAL_SHIFT",
+      "mathCheck": "SEPARATE_BRUTE_FORCE_I1_PASS",
+      "choiceCheck": "OFFICIAL_CHOICE_ORDER_PASS",
+      "visual": {
+        "qid": 4,
+        "problem": {
+          "decision": "EXEMPT",
+          "reason": "문장·수식·조건 상자에 필요한 모든 정보가 완결되어 별도 도형 없음",
+          "existingAsset": null
+        },
+        "solution": {
+          "decision": "EXEMPT",
+          "reason": "조합·이항계수·경우 나눔·조건부확률의 계산식과 설명만으로 추론 가능",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        }
+      }
+    },
+    {
+      "sourceQid": 5,
+      "originalReference": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계.js#q5",
+      "existingVariantReference": "archive/exams/similar/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계_유사.js#q5",
+      "lockedPrimaryL3": "H2-PS-RPM-046",
+      "originalSummary": "주머니에 흰 공 5개, 검은 공 3개가 들어 있다. 학생 A, 학생 B가 차례로 이 주머니에서 임의로 1개의 공을 각각 1번 꺼낼 때, 두 사람 모두 검은 공을 뽑을 확률은? [3.8점]\n(단, 꺼낸 공은 주머니에 다시 넣지 않는다.)",
+      "siblingSummary": "주머니에 흰 공 4개, 검은 공 6개가 들어 있다. 학생 A, 학생 B가 차례로 이 주머니에서 임의로 1개의 공을 각각 1번 꺼낼 때, 두 사람 모두 흰 공을 뽑을 확률은? [3.8점]<br>(단, 꺼낸 공은 주머니에 다시 넣지 않는다.)",
+      "conditionAndTargetShift": "둘 다 특정 색에서 서로 다른 색을 뽑는 확률로 목표 변경",
+      "decisiveCore": "2*5*3/(8*7)=15/28",
+      "variationType": "CONFIRMATION",
+      "addedDecision": "원본·유사1과 다른 조건 또는 목표를 읽고 계산의 분기점을 재구성",
+      "sourceBucketJudgment": 1,
+      "newBucketJudgment": 1,
+      "difficultyBasis": "원본·기존 유사1의 문항 위치와 계산 분기를 고려한 source-balanced 동등 난도 판단; 공식 2차 검수는 대기",
+      "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+      "templateKey": "TPL_CONDITIONAL_PROBABILITY_DIRECT",
+      "semanticDuplicateResult": "CONDITION_OR_GOAL_SHIFT",
+      "mathCheck": "SEPARATE_BRUTE_FORCE_I1_PASS",
+      "choiceCheck": "OFFICIAL_CHOICE_ORDER_PASS",
+      "visual": {
+        "qid": 5,
+        "problem": {
+          "decision": "EXEMPT",
+          "reason": "문장·수식·조건 상자에 필요한 모든 정보가 완결되어 별도 도형 없음",
+          "existingAsset": null
+        },
+        "solution": {
+          "decision": "EXEMPT",
+          "reason": "조합·이항계수·경우 나눔·조건부확률의 계산식과 설명만으로 추론 가능",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        }
+      }
+    },
+    {
+      "sourceQid": 6,
+      "originalReference": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계.js#q6",
+      "existingVariantReference": "archive/exams/similar/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계_유사.js#q6",
+      "lockedPrimaryL3": "H2-PS-RPM-049",
+      "originalSummary": "한 개의 동전을 6번 던져서 앞면이 5번 이상 나올 확률은? [3.9점]",
+      "siblingSummary": "한 개의 동전을 8번 던져서 앞면이 7번 이상 나올 확률은? [3.9점]",
+      "conditionAndTargetShift": "적어도 다섯 앞면의 여사건을 이용",
+      "decisiveCore": "(64-(6+1))/64=57/64",
+      "variationType": "CONFIRMATION",
+      "addedDecision": "원본·유사1과 다른 조건 또는 목표를 읽고 계산의 분기점을 재구성",
+      "sourceBucketJudgment": 2,
+      "newBucketJudgment": 2,
+      "difficultyBasis": "원본·기존 유사1의 문항 위치와 계산 분기를 고려한 source-balanced 동등 난도 판단; 공식 2차 검수는 대기",
+      "problemTypeKey": "PT_PROBABILITY_REPEATED_TRIALS",
+      "templateKey": "TPL_INDEPENDENT_TRIAL_PROBABILITY",
+      "semanticDuplicateResult": "CONDITION_OR_GOAL_SHIFT",
+      "mathCheck": "SEPARATE_BRUTE_FORCE_I1_PASS",
+      "choiceCheck": "OFFICIAL_CHOICE_ORDER_PASS",
+      "visual": {
+        "qid": 6,
+        "problem": {
+          "decision": "EXEMPT",
+          "reason": "문장·수식·조건 상자에 필요한 모든 정보가 완결되어 별도 도형 없음",
+          "existingAsset": null
+        },
+        "solution": {
+          "decision": "EXEMPT",
+          "reason": "조합·이항계수·경우 나눔·조건부확률의 계산식과 설명만으로 추론 가능",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        }
+      }
+    },
+    {
+      "sourceQid": 7,
+      "originalReference": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계.js#q7",
+      "existingVariantReference": "archive/exams/similar/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계_유사.js#q7",
+      "lockedPrimaryL3": "H2-PS-RPM-039",
+      "originalSummary": "$(2x-a)^5$의 전개식에서 $x$의 계수와 상수항이 서로 같을 때, 음수 $a$의 값은? [4점]",
+      "siblingSummary": "다항식 $(ax+2)^6$의 전개식에서 $x^2$의 계수와 $x^3$의 계수가 서로 같을 때, 0이 아닌 상수 $a$의 값은? [4점]",
+      "conditionAndTargetShift": "계수 동일 대신 x² 계수가 x³ 계수의 세 배인 비율 조건",
+      "decisiveCore": "40a^3=240a^2=>a=6",
+      "variationType": "CONFIRMATION",
+      "addedDecision": "원본·유사1과 다른 조건 또는 목표를 읽고 계산의 분기점을 재구성",
+      "sourceBucketJudgment": 3,
+      "newBucketJudgment": 3,
+      "difficultyBasis": "원본·기존 유사1의 문항 위치와 계산 분기를 고려한 source-balanced 동등 난도 판단; 공식 2차 검수는 대기",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "templateKey": "TPL_BINOMIAL_TERM_COEFFICIENT",
+      "semanticDuplicateResult": "CONDITION_OR_GOAL_SHIFT",
+      "mathCheck": "SEPARATE_BRUTE_FORCE_I1_PASS",
+      "choiceCheck": "OFFICIAL_CHOICE_ORDER_PASS",
+      "visual": {
+        "qid": 7,
+        "problem": {
+          "decision": "EXEMPT",
+          "reason": "문장·수식·조건 상자에 필요한 모든 정보가 완결되어 별도 도형 없음",
+          "existingAsset": null
+        },
+        "solution": {
+          "decision": "EXEMPT",
+          "reason": "조합·이항계수·경우 나눔·조건부확률의 계산식과 설명만으로 추론 가능",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        }
+      }
+    },
+    {
+      "sourceQid": 8,
+      "originalReference": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계.js#q8",
+      "existingVariantReference": "archive/exams/similar/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계_유사.js#q8",
+      "lockedPrimaryL3": "H2-PS-RPM-039",
+      "originalSummary": "다항식 $(x-3)^4(-3x+2)^2$의 전개식에서 $x^5$의 계수는? [4.1점]",
+      "siblingSummary": "다항식 $(x-2)^4(3x+1)^2$의 전개식에서 $x^5$의 계수는? [4.1점]",
+      "conditionAndTargetShift": "복합 다항식에서 차상위 항 대신 그 아래 x⁴의 계수 추출",
+      "decisiveCore": "4+144+486=634",
+      "variationType": "CONFIRMATION",
+      "addedDecision": "원본·유사1과 다른 조건 또는 목표를 읽고 계산의 분기점을 재구성",
+      "sourceBucketJudgment": 3,
+      "newBucketJudgment": 3,
+      "difficultyBasis": "원본·기존 유사1의 문항 위치와 계산 분기를 고려한 source-balanced 동등 난도 판단; 공식 2차 검수는 대기",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "templateKey": "TPL_BINOMIAL_TERM_COEFFICIENT",
+      "semanticDuplicateResult": "CONDITION_OR_GOAL_SHIFT",
+      "mathCheck": "SEPARATE_BRUTE_FORCE_I1_PASS",
+      "choiceCheck": "OFFICIAL_CHOICE_ORDER_PASS",
+      "visual": {
+        "qid": 8,
+        "problem": {
+          "decision": "EXEMPT",
+          "reason": "문장·수식·조건 상자에 필요한 모든 정보가 완결되어 별도 도형 없음",
+          "existingAsset": null
+        },
+        "solution": {
+          "decision": "EXEMPT",
+          "reason": "조합·이항계수·경우 나눔·조건부확률의 계산식과 설명만으로 추론 가능",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        }
+      }
+    },
+    {
+      "sourceQid": 9,
+      "originalReference": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계.js#q9",
+      "existingVariantReference": "archive/exams/similar/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계_유사.js#q9",
+      "lockedPrimaryL3": "H2-PS-RPM-033",
+      "originalSummary": "두 집합 $X=\\{1,2,3,4\\}$, $Y=\\{1,2,3\\}$에 대하여 함수 $f:X\\to Y$의 치역과 공역이 같을 때, 함수 $f$의 개수는? [4.2점]",
+      "siblingSummary": "두 집합 $X=\\{1,2,3,4,5\\}$, $Y=\\{1,2,3\\}$에 대하여 함수 $f:X\\to Y$의 치역과 공역이 같을 때, 함수 $f$의 개수는? [4.2점]",
+      "conditionAndTargetShift": "전사 함수에서 치역이 정확히 두 원소인 함수로 조건 전환",
+      "decisiveCore": "C(3,2)*(2^4-2)=42",
+      "variationType": "CONFIRMATION",
+      "addedDecision": "원본·유사1과 다른 조건 또는 목표를 읽고 계산의 분기점을 재구성",
+      "sourceBucketJudgment": 3,
+      "newBucketJudgment": 3,
+      "difficultyBasis": "원본·기존 유사1의 문항 위치와 계산 분기를 고려한 source-balanced 동등 난도 판단; 공식 2차 검수는 대기",
+      "problemTypeKey": "PT_FUNCTION_COUNTING",
+      "templateKey": "TPL_CONSTRAINED_FUNCTION_COUNT",
+      "semanticDuplicateResult": "CONDITION_OR_GOAL_SHIFT",
+      "mathCheck": "SEPARATE_BRUTE_FORCE_I1_PASS",
+      "choiceCheck": "OFFICIAL_CHOICE_ORDER_PASS",
+      "visual": {
+        "qid": 9,
+        "problem": {
+          "decision": "EXEMPT",
+          "reason": "문장·수식·조건 상자에 필요한 모든 정보가 완결되어 별도 도형 없음",
+          "existingAsset": null
+        },
+        "solution": {
+          "decision": "EXEMPT",
+          "reason": "조합·이항계수·경우 나눔·조건부확률의 계산식과 설명만으로 추론 가능",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        }
+      }
+    },
+    {
+      "sourceQid": 10,
+      "originalReference": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계.js#q10",
+      "existingVariantReference": "archive/exams/similar/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계_유사.js#q10",
+      "lockedPrimaryL3": "H2-PS-RPM-032",
+      "originalSummary": "어느 택배 회사의 본사에서 동네의 가게 5곳으로 물건을 배송하려고 합니다. 본사에서 각 가게까지의 거리는 아래 표와 같다.\n본사에서는 5명의 택배 기사 금희, 정원, 태성, 근오, 익승을 각 가게에 한 명씩 배정하려고 한다. 이때 정원이 태성보다 본사에서 더 멀리 떨어진 가게를 담당하도록 배정하는 경우의 수는? [4.3점]",
+      "siblingSummary": "어느 택배 회사의 본사에서 동네의 가게 6곳으로 물건을 배송하려고 합니다. 본사에서 각 가게까지의 거리는 아래 표와 같다.\n\n| 가게 | $A$ | $B$ | $C$ | $D$ | $E$ | $F$ |\n| :---: | :---: | :---: | :---: | :---: | :---: | :---: |\n| 거리(km) | 20 | 30 | 30 | 40 | 50 | 50 |\n\n본사에서는 6명의 택배 기사 지호, 서연, 민준, 하은, 도윤, 수아를 각 가게에 한 명씩 배정하려고 한다. 이때 서연이 민준보다 본사에서 더 멀리 떨어진 가게를 담당하도록 배정하는 경우의 수는? [4.3점]",
+      "conditionAndTargetShift": "거리의 엄격한 비교를 동거리 허용 ≥로 변경",
+      "decisiveCore": "(C(5,2)-1+2)*3!=66",
+      "variationType": "CONFIRMATION",
+      "addedDecision": "원본·유사1과 다른 조건 또는 목표를 읽고 계산의 분기점을 재구성",
+      "sourceBucketJudgment": 3,
+      "newBucketJudgment": 3,
+      "difficultyBasis": "원본·기존 유사1의 문항 위치와 계산 분기를 고려한 source-balanced 동등 난도 판단; 공식 2차 검수는 대기",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+      "semanticDuplicateResult": "CONDITION_OR_GOAL_SHIFT",
+      "mathCheck": "SEPARATE_BRUTE_FORCE_I1_PASS",
+      "choiceCheck": "OFFICIAL_CHOICE_ORDER_PASS",
+      "visual": {
+        "qid": 10,
+        "problem": {
+          "decision": "REQUIRED",
+          "reason": "원본과 동일한 거리표·수직선의 점 위치를 문제 자료로 제시하며 main 원본 PNG 실제 확인",
+          "existingAsset": {
+            "path": "archive/assets/images/26_효천고_1학기_중간_고2_확률과통계/q10.png",
+            "blob": "185ff3572ab34aab6b2916c2ed7c1a6eb49fa46b",
+            "source": "CURRENT_MAIN_FETCHED_AND_VISUALLY_INSPECTED"
+          }
+        },
+        "solution": {
+          "decision": "EXEMPT",
+          "reason": "조합·이항계수·경우 나눔·조건부확률의 계산식과 설명만으로 추론 가능",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        }
+      }
+    },
+    {
+      "sourceQid": 11,
+      "originalReference": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계.js#q11",
+      "existingVariantReference": "archive/exams/similar/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계_유사.js#q11",
+      "lockedPrimaryL3": "H2-PS-RPM-033",
+      "originalSummary": "집합 $X=\\{-3,-1,1,2,3\\}$에 대하여 다음 조건을 만족시키는 함수 $f:X\\to X$의 개수는? [4.4점]\n",
+      "siblingSummary": "집합 $X=\\{-2,-1,1,2,3\\}$에 대하여 다음 조건을 만족시키는 함수 $f:X\\to X$의 개수는? [4.4점]<br><div style='border:1px solid #555; border-radius:4px; padding:5px 8px; margin:5px 0 6px 0; line-height:1.45; display:inline-block;'>$f(-2)\\times f(-1)\\times f(1)\\times f(2)\\times f(3)=12$</div>",
+      "conditionAndTargetShift": "함숫값의 곱 조건에 정확히 두 음수라는 부호 조건 추가",
+      "decisiveCore": "two qualifying multisets, 60+60=120",
+      "variationType": "CONFIRMATION",
+      "addedDecision": "원본·유사1과 다른 조건 또는 목표를 읽고 계산의 분기점을 재구성",
+      "sourceBucketJudgment": 4,
+      "newBucketJudgment": 4,
+      "difficultyBasis": "원본·기존 유사1의 문항 위치와 계산 분기를 고려한 source-balanced 동등 난도 판단; 공식 2차 검수는 대기",
+      "problemTypeKey": "PT_FUNCTION_COUNTING",
+      "templateKey": "TPL_CONSTRAINED_FUNCTION_COUNT",
+      "semanticDuplicateResult": "CONDITION_OR_GOAL_SHIFT",
+      "mathCheck": "SEPARATE_BRUTE_FORCE_I1_PASS",
+      "choiceCheck": "OFFICIAL_CHOICE_ORDER_PASS",
+      "visual": {
+        "qid": 11,
+        "problem": {
+          "decision": "EXEMPT",
+          "reason": "문장·수식·조건 상자에 필요한 모든 정보가 완결되어 별도 도형 없음",
+          "existingAsset": null
+        },
+        "solution": {
+          "decision": "EXEMPT",
+          "reason": "조합·이항계수·경우 나눔·조건부확률의 계산식과 설명만으로 추론 가능",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        }
+      }
+    },
+    {
+      "sourceQid": 12,
+      "originalReference": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계.js#q12",
+      "existingVariantReference": "archive/exams/similar/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계_유사.js#q12",
+      "lockedPrimaryL3": "H2-PS-RPM-043",
+      "originalSummary": "한 개의 주사위를 세 번 던져서 나오는 눈의 수를 차례로 $x,y,z$라 할 때, $(x-2)^2+(y-2)^2+(z-3)^2=3$이 성립할 확률은? [4.4점]",
+      "siblingSummary": "한 개의 주사위를 세 번 던져서 나오는 눈의 수를 차례로 $x,y,z$라 할 때, $(x-1)^2+(y-4)^2+(z-3)^2=3$이 성립할 확률은? [4.4점]",
+      "conditionAndTargetShift": "주사위 제곱합 목표를 3에서 2로 바꾸어 가능한 0·1 제곱 패턴을 구분",
+      "decisiveCore": "3*4/216=1/18",
+      "variationType": "CONFIRMATION",
+      "addedDecision": "원본·유사1과 다른 조건 또는 목표를 읽고 계산의 분기점을 재구성",
+      "sourceBucketJudgment": 3,
+      "newBucketJudgment": 3,
+      "difficultyBasis": "원본·기존 유사1의 문항 위치와 계산 분기를 고려한 source-balanced 동등 난도 판단; 공식 2차 검수는 대기",
+      "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+      "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+      "semanticDuplicateResult": "CONDITION_OR_GOAL_SHIFT",
+      "mathCheck": "SEPARATE_BRUTE_FORCE_I1_PASS",
+      "choiceCheck": "OFFICIAL_CHOICE_ORDER_PASS",
+      "visual": {
+        "qid": 12,
+        "problem": {
+          "decision": "EXEMPT",
+          "reason": "문장·수식·조건 상자에 필요한 모든 정보가 완결되어 별도 도형 없음",
+          "existingAsset": null
+        },
+        "solution": {
+          "decision": "EXEMPT",
+          "reason": "조합·이항계수·경우 나눔·조건부확률의 계산식과 설명만으로 추론 가능",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        }
+      }
+    },
+    {
+      "sourceQid": 13,
+      "originalReference": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계.js#q13",
+      "existingVariantReference": "archive/exams/similar/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계_유사.js#q13",
+      "lockedPrimaryL3": "H2-PS-RPM-046",
+      "originalSummary": "어느 식당에서 손님에게 사탕 또는 초콜릿 중 한 개를 무료로 제공한다. 이 식당의 전체 손님 중 $\\dfrac{1}{4}$은 여자이고, 사탕을 고른 여자 손님은 전체 손님의 $\\dfrac{1}{12}$이다. 또, 사탕을 선택한 남자 손님은 초콜릿을 선택한 남자손님의 2배이다. 이 식당의 손님 중 임의로 택한 1명이 초콜릿을 선택했을 때, 이 손님이 남자일 확률은? [4.5점]\n(단, 모든 손님은 사탕 또는 초콜릿 중 한 가지만 선택하였다.)",
+      "siblingSummary": "어느 동아리의 전체 회원 중 $\\dfrac25$는 여자이고, 김밥을 선택한 여자 회원은 전체 회원의 $\\dfrac{1}{10}$이다. 이 동아리에서 회원들에게 점심으로 김밥 또는 샌드위치 중 한 가지를 선택하게 하였다. 또, 샌드위치를 선택한 남자 회원은 김밥을 선택한 남자 회원의 3배이다. 이 동아리의 회원 중 임의로 택한 1명이 샌드위치를 선택했을 때, 이 회원이 여자일 확률은? [4.5점]<br>(단, 모든 회원은 김밥 또는 샌드위치 중 한 가지만 선택하였다.)",
+      "conditionAndTargetShift": "초콜릿을 택한 남자에서 사탕을 택한 여자라는 베이즈 역조건",
+      "decisiveCore": "P(W∩C)=1/12, P(M∩C)=1/2 =>1/7",
+      "variationType": "CONFIRMATION",
+      "addedDecision": "원본·유사1과 다른 조건 또는 목표를 읽고 계산의 분기점을 재구성",
+      "sourceBucketJudgment": 3,
+      "newBucketJudgment": 3,
+      "difficultyBasis": "원본·기존 유사1의 문항 위치와 계산 분기를 고려한 source-balanced 동등 난도 판단; 공식 2차 검수는 대기",
+      "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+      "templateKey": "TPL_CONDITIONAL_PROBABILITY_DIRECT",
+      "semanticDuplicateResult": "CONDITION_OR_GOAL_SHIFT",
+      "mathCheck": "SEPARATE_BRUTE_FORCE_I1_PASS",
+      "choiceCheck": "OFFICIAL_CHOICE_ORDER_PASS",
+      "visual": {
+        "qid": 13,
+        "problem": {
+          "decision": "EXEMPT",
+          "reason": "문장·수식·조건 상자에 필요한 모든 정보가 완결되어 별도 도형 없음",
+          "existingAsset": null
+        },
+        "solution": {
+          "decision": "EXEMPT",
+          "reason": "조합·이항계수·경우 나눔·조건부확률의 계산식과 설명만으로 추론 가능",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        }
+      }
+    },
+    {
+      "sourceQid": 14,
+      "originalReference": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계.js#q14",
+      "existingVariantReference": "archive/exams/similar/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계_유사.js#q14",
+      "lockedPrimaryL3": "H2-PS-RPM-047",
+      "originalSummary": "근원사건 전체의 집합 $S$의 두 부분집합 $A,B$에 대한 옳은 설명을 보기에서 있는 대로 고른 것은? [4.6점]\n(단, $P(A)\\ne 0$, $P(B)\\ne 0$)\n<br><div style='border:1px solid #555; border-radius:4px; padding:5px 8px; margin:5px 0 6px 0; line-height:1.5;'><b>&lt;보기&gt;</b><br>ㄱ. $A,B$가 서로 배반사건이면, $A,B$는 서로 독립이다.<br>ㄴ. $A,B$가 서로 배반사건이면, $P(B^c\\mid A)=1$이다.<br>ㄷ. $A,B$가 서로 독립이면, $P(A\\mid B)=1-P(A^c)$이다.</div>",
+      "siblingSummary": "근원사건 전체의 집합 $S$의 두 부분집합 $A,B$에 대한 옳은 설명을 보기에서 있는 대로 고른 것은? [4.6점]<br>(단, $P(A)\\ne 0$, $P(B)\\ne 0$)<br><div style='border:1px solid #555; border-radius:4px; padding:5px 8px; margin:5px 0 6px 0; line-height:1.5;'><b>&lt;보기&gt;</b><br>ㄱ. $A,B$가 서로 독립이면, $A^c,B^c$도 서로 독립이다.<br>ㄴ. $A,B$가 서로 배반사건이면, $P(A\\mid B)=P(A)$이다.<br>ㄷ. $A,B$가 서로 독립이면, $P(A\\cup B)=1-P(A^c)P(B^c)$이다.</div>",
+      "conditionAndTargetShift": "독립·배반에서 여사건과 합사건의 참거짓 판정",
+      "decisiveCore": "T,T,F",
+      "variationType": "CONFIRMATION",
+      "addedDecision": "원본·유사1과 다른 조건 또는 목표를 읽고 계산의 분기점을 재구성",
+      "sourceBucketJudgment": 3,
+      "newBucketJudgment": 3,
+      "difficultyBasis": "원본·기존 유사1의 문항 위치와 계산 분기를 고려한 source-balanced 동등 난도 판단; 공식 2차 검수는 대기",
+      "problemTypeKey": "PT_EVENT_INDEPENDENCE",
+      "templateKey": "TPL_EVENT_INDEPENDENCE_JUDGMENT",
+      "semanticDuplicateResult": "CONDITION_OR_GOAL_SHIFT",
+      "mathCheck": "SEPARATE_BRUTE_FORCE_I1_PASS",
+      "choiceCheck": "OFFICIAL_CHOICE_ORDER_PASS",
+      "visual": {
+        "qid": 14,
+        "problem": {
+          "decision": "EXEMPT",
+          "reason": "문장·수식·조건 상자에 필요한 모든 정보가 완결되어 별도 도형 없음",
+          "existingAsset": null
+        },
+        "solution": {
+          "decision": "EXEMPT",
+          "reason": "조합·이항계수·경우 나눔·조건부확률의 계산식과 설명만으로 추론 가능",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        }
+      }
+    },
+    {
+      "sourceQid": 15,
+      "originalReference": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계.js#q15",
+      "existingVariantReference": "archive/exams/similar/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계_유사.js#q15",
+      "lockedPrimaryL3": "H2-PS-RPM-037",
+      "originalSummary": "다음 조건을 만족시키는 음이 아닌 정수 $x,y,z$의 모든 순서쌍 $(x,y,z)$의 개수는? [4.6점]<br><div style='border:1px solid #555; border-radius:4px; padding:5px 8px; margin:5px 0 6px 0; line-height:1.45; display:inline-block;'>(가) $x+y-2z=10$<br>(나) $z\\le3$이고 $y\\ge z$</div>",
+      "siblingSummary": "다음 조건을 만족시키는 음이 아닌 정수 $x,y,z$의 모든 순서쌍 $(x,y,z)$의 개수는? [4.6점]<br><div style='border:1px solid #555; border-radius:4px; padding:5px 8px; margin:5px 0 6px 0; line-height:1.45; display:inline-block;'>(가) $x+y-3z=9$<br>(나) $z\\le3$이고 $y\\ge2z$</div>",
+      "conditionAndTargetShift": "음이 아닌 정수해 조건에 x<y를 추가한 제한 분배",
+      "decisiveCore": "Σ(z+5),z=0..3=26",
+      "variationType": "CONFIRMATION",
+      "addedDecision": "원본·유사1과 다른 조건 또는 목표를 읽고 계산의 분기점을 재구성",
+      "sourceBucketJudgment": 3,
+      "newBucketJudgment": 3,
+      "difficultyBasis": "원본·기존 유사1의 문항 위치와 계산 분기를 고려한 source-balanced 동등 난도 판단; 공식 2차 검수는 대기",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+      "semanticDuplicateResult": "CONDITION_OR_GOAL_SHIFT",
+      "mathCheck": "SEPARATE_BRUTE_FORCE_I1_PASS",
+      "choiceCheck": "OFFICIAL_CHOICE_ORDER_PASS",
+      "visual": {
+        "qid": 15,
+        "problem": {
+          "decision": "EXEMPT",
+          "reason": "문장·수식·조건 상자에 필요한 모든 정보가 완결되어 별도 도형 없음",
+          "existingAsset": null
+        },
+        "solution": {
+          "decision": "EXEMPT",
+          "reason": "조합·이항계수·경우 나눔·조건부확률의 계산식과 설명만으로 추론 가능",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        }
+      }
+    },
+    {
+      "sourceQid": 16,
+      "originalReference": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계.js#q16",
+      "existingVariantReference": "archive/exams/similar/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계_유사.js#q16",
+      "lockedPrimaryL3": "H2-PS-RPM-037",
+      "originalSummary": "흰 공 3개와 검은 공 5개를 서로 다른 세 상자 X, Y, Z에 남김 없이 나누어 넣을 때, 각 상자에 공이 2개 이상씩 들어가도록 나누어 넣는 경우의 수는? [4.7점]\n(단, 같은 색의 공은 구별하지 않는다.)",
+      "siblingSummary": "흰 공 4개와 검은 공 4개를 서로 다른 세 상자 X, Y, Z에 남김 없이 나누어 넣을 때, 각 상자에 공이 2개 이상씩 들어가도록 나누어 넣는 경우의 수는? [4.7점]<br>(단, 같은 색의 공은 구별하지 않는다.)",
+      "conditionAndTargetShift": "각 상자 최소 공 수 조건에 X의 흰 공 정확히 한 개 추가",
+      "decisiveCore": "3*H(3,2)=18",
+      "variationType": "CONFIRMATION",
+      "addedDecision": "원본·유사1과 다른 조건 또는 목표를 읽고 계산의 분기점을 재구성",
+      "sourceBucketJudgment": 4,
+      "newBucketJudgment": 4,
+      "difficultyBasis": "원본·기존 유사1의 문항 위치와 계산 분기를 고려한 source-balanced 동등 난도 판단; 공식 2차 검수는 대기",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+      "semanticDuplicateResult": "CONDITION_OR_GOAL_SHIFT",
+      "mathCheck": "SEPARATE_BRUTE_FORCE_I1_PASS",
+      "choiceCheck": "OFFICIAL_CHOICE_ORDER_PASS",
+      "visual": {
+        "qid": 16,
+        "problem": {
+          "decision": "EXEMPT",
+          "reason": "문장·수식·조건 상자에 필요한 모든 정보가 완결되어 별도 도형 없음",
+          "existingAsset": null
+        },
+        "solution": {
+          "decision": "EXEMPT",
+          "reason": "조합·이항계수·경우 나눔·조건부확률의 계산식과 설명만으로 추론 가능",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        }
+      }
+    },
+    {
+      "sourceQid": 17,
+      "originalReference": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계.js#q17",
+      "existingVariantReference": "archive/exams/similar/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계_유사.js#q17",
+      "lockedPrimaryL3": "H2-PS-RPM-050",
+      "originalSummary": "아래 그림과 같이 수직선 위의 원점에 점 P가 있다.<br>1~5까지 적힌 카드 5장을 한 개씩 뽑을 때마다 다음 규칙에 따라 점 P를 이동시킨다. (뽑은 카드는 다시 넣는다.)<br><div style='border:1px solid #555; border-radius:4px; padding:5px 8px; margin:5px 0 6px 0; line-height:1.45; display:inline-block;'>뽑은 카드에 적힌 숫자가<br>· 4의 약수이면, 점 P를 양의 방향으로 2만큼 이동한다.<br>· 4의 약수가 아니면, 점 P를 음의 방향으로 1만큼 이동한다.</div><br>이 시행을 5번 반복할 때, 점 P와 원점 사이의 거리가 3 이하일 확률은?",
+      "siblingSummary": "아래 그림과 같이 수직선 위에 두 점 $A(-3)$, $B(3)$이 있고, 점 $P$가 원점에 놓여 있다.<br>1부터 6까지의 자연수가 하나씩 적힌 6장의 카드가 들어 있는 주머니에서 카드를 한 장 꺼내어 확인한 후 다시 넣는다. 꺼낸 카드에 적힌 수에 따라 점 $P$를 다음 규칙으로 이동시킨다.<br><div style='border:1px solid #555; border-radius:4px; padding:5px 8px; margin:5px 0 6px 0; line-height:1.45; display:inline-block;'>· 3의 배수이면, 점 $P$를 양의 방향으로 2만큼 이동한다.<br>· 3의 배수가 아니면, 점 $P$를 음의 방향으로 1만큼 이동한다.</div><br>이 시행을 6번 반복한 후 점 $P$가 선분 $AB$ ",
+      "conditionAndTargetShift": "종점의 절댓값 상한에서 거리 2 이상 4 이하인 양쪽 위치로 구간 변경",
+      "decisiveCore": "C5,1*3*2^4 + C5,3*3^3*2^2 = 1320 / 3125 =264/625",
+      "variationType": "CONFIRMATION",
+      "addedDecision": "원본·유사1과 다른 조건 또는 목표를 읽고 계산의 분기점을 재구성",
+      "sourceBucketJudgment": 4,
+      "newBucketJudgment": 4,
+      "difficultyBasis": "원본·기존 유사1의 문항 위치와 계산 분기를 고려한 source-balanced 동등 난도 판단; 공식 2차 검수는 대기",
+      "problemTypeKey": "PT_PROBABILITY_REPEATED_TRIALS",
+      "templateKey": "TPL_INDEPENDENT_TRIAL_PROBABILITY",
+      "semanticDuplicateResult": "CONDITION_OR_GOAL_SHIFT",
+      "mathCheck": "SEPARATE_BRUTE_FORCE_I1_PASS",
+      "choiceCheck": "OFFICIAL_CHOICE_ORDER_PASS",
+      "visual": {
+        "qid": 17,
+        "problem": {
+          "decision": "REQUIRED",
+          "reason": "원본과 동일한 거리표·수직선의 점 위치를 문제 자료로 제시하며 main 원본 PNG 실제 확인",
+          "existingAsset": {
+            "path": "archive/assets/images/26_효천고_1학기_중간_고2_확률과통계/q17.png",
+            "blob": "66d14830176ce9bb5a5d4492558aac274adaaf09",
+            "source": "CURRENT_MAIN_FETCHED_AND_VISUALLY_INSPECTED"
+          }
+        },
+        "solution": {
+          "decision": "BENEFICIAL",
+          "reason": "가능한 최종 위치 6개 중 확률 계산에 들어가는 두 위치를 수직선에 표시",
+          "planRef": "archive/exams/similar/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계_유사2_plans/q17-solution.plan.json",
+          "engineStatus": "PLAN_JSON_ONLY; OFFICIAL_ENGINE_LINT_AND_RENDER_NOT_RUN"
+        }
+      }
+    },
+    {
+      "sourceQid": 18,
+      "originalReference": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계.js#q18",
+      "existingVariantReference": "archive/exams/similar/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계_유사.js#q18",
+      "lockedPrimaryL3": "H2-PS-RPM-043",
+      "originalSummary": "1부터 10까지의 자연수가 하나씩 적혀 있는 10개의 공이 주머니에 들어 있다. 이 주머니에서 임의로 4개의 공을 동시에 꺼낼 때, 꺼낸 공에 적혀 있는 수 중에서 가장 큰 수와 가장 작은 수의 합이 8 이상이고 10 이하일 확률은? [4.8점]",
+      "siblingSummary": "1부터 9까지의 자연수가 하나씩 적혀 있는 9개의 공이 주머니에 들어 있다. 이 주머니에서 임의로 4개의 공을 동시에 꺼낼 때, 꺼낸 공에 적혀 있는 수 중에서 가장 큰 수와 가장 작은 수의 합이 9 이상이고 11 이하일 확률은? [4.8점]",
+      "conditionAndTargetShift": "최댓값·최솟값의 합의 구간에 짝수 제약을 추가",
+      "decisiveCore": "sum8:13,sum10:34,47/C10,4=47/210",
+      "variationType": "CONFIRMATION",
+      "addedDecision": "원본·유사1과 다른 조건 또는 목표를 읽고 계산의 분기점을 재구성",
+      "sourceBucketJudgment": 4,
+      "newBucketJudgment": 4,
+      "difficultyBasis": "원본·기존 유사1의 문항 위치와 계산 분기를 고려한 source-balanced 동등 난도 판단; 공식 2차 검수는 대기",
+      "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+      "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+      "semanticDuplicateResult": "CONDITION_OR_GOAL_SHIFT",
+      "mathCheck": "SEPARATE_BRUTE_FORCE_I1_PASS",
+      "choiceCheck": "OFFICIAL_CHOICE_ORDER_PASS",
+      "visual": {
+        "qid": 18,
+        "problem": {
+          "decision": "EXEMPT",
+          "reason": "문장·수식·조건 상자에 필요한 모든 정보가 완결되어 별도 도형 없음",
+          "existingAsset": null
+        },
+        "solution": {
+          "decision": "EXEMPT",
+          "reason": "조합·이항계수·경우 나눔·조건부확률의 계산식과 설명만으로 추론 가능",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        }
+      }
+    },
+    {
+      "sourceQid": 19,
+      "originalReference": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계.js#q19",
+      "existingVariantReference": "archive/exams/similar/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계_유사.js#q19",
+      "lockedPrimaryL3": "H2-PS-RPM-046",
+      "originalSummary": "하나의 주머니와 두 상자 A, B가 있다. 주머니에는 숫자 1, 2, 3, 4, 5가 하나씩 적힌 5장의 카드가 들어 있고, 상자 A에는 흰 공과 검은 공이 각각 8개 이상 들어 있고, 상자 B는 비어 있다. 이 주머니와 두 상자 A, B를 사용하여 다음 시행을 한다.<br><div style='border:1px solid #555; border-radius:4px; padding:5px 8px; margin:5px 0 6px 0; line-height:1.45; display:inline-block;'>주머니에서 임의로 한 장의 카드를 꺼내어 카드에 적힌 수를 확인한 후 다시 주머니에 넣는다.<br>확인한 수가 3이면 상자 A에 있는 흰 공 1개를 상자 B에 넣고,<br>확인한 수가 5이면 상자 A에 있는 흰 공 1개와 검은 공 1개를 상",
+      "siblingSummary": "하나의 주머니와 두 상자 A, B가 있다. 주머니에는 숫자 1, 2, 3, 4, 5가 하나씩 적힌 5장의 카드가 들어 있고, 상자 A에는 흰 공과 검은 공이 각각 8개 이상 들어 있고, 상자 B는 비어 있다. 이 주머니와 두 상자 A, B를 사용하여 다음 시행을 한다.<br><div style='border:1px solid #555; border-radius:4px; padding:5px 8px; margin:5px 0 6px 0; line-height:1.45; display:inline-block;'>주머니에서 임의로 한 장의 카드를 꺼내어 카드에 적힌 수를 확인한 후 다시 주머니에 넣는다.<br>확인한 수가 1이면 상자 A에 있는 흰 공 1개를 상자 B에 넣고,<br>확인한 수가 2 또는 3이면 상자 A에 있는 흰 공 1개와 검은 공 ",
+      "conditionAndTargetShift": "옮긴 공의 전체 짝수 조건을 홀수로, 검은 공 목표를 다섯 개로 변경",
+      "decisiveCore": "Y odd=272/625, black5=120/625=>15/34",
+      "variationType": "CONFIRMATION",
+      "addedDecision": "원본·유사1과 다른 조건 또는 목표를 읽고 계산의 분기점을 재구성",
+      "sourceBucketJudgment": 5,
+      "newBucketJudgment": 5,
+      "difficultyBasis": "원본·기존 유사1의 문항 위치와 계산 분기를 고려한 source-balanced 동등 난도 판단; 공식 2차 검수는 대기",
+      "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+      "templateKey": "TPL_CONDITIONAL_PROBABILITY_DIRECT",
+      "semanticDuplicateResult": "CONDITION_OR_GOAL_SHIFT",
+      "mathCheck": "SEPARATE_BRUTE_FORCE_I1_PASS",
+      "choiceCheck": "OFFICIAL_CHOICE_ORDER_PASS",
+      "visual": {
+        "qid": 19,
+        "problem": {
+          "decision": "EXEMPT",
+          "reason": "문장·수식·조건 상자에 필요한 모든 정보가 완결되어 별도 도형 없음",
+          "existingAsset": null
+        },
+        "solution": {
+          "decision": "EXEMPT",
+          "reason": "조합·이항계수·경우 나눔·조건부확률의 계산식과 설명만으로 추론 가능",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        }
+      }
+    },
+    {
+      "sourceQid": 20,
+      "originalReference": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계.js#q20",
+      "existingVariantReference": "archive/exams/similar/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계_유사.js#q20",
+      "lockedPrimaryL3": "H2-PS-RPM-038",
+      "originalSummary": "[서술형1] 다항식 $(2a-b+c)^5$의 전개식에서 서로 다른 항의 개수를 구하고 그 과정을 서술하시오. [4점]",
+      "siblingSummary": "[서술형 1] 다항식 $(a-2b+c-3d)^4$의 전개식에서 서로 다른 항의 개수를 구하고 그 과정을 서술하시오. [4점]",
+      "conditionAndTargetShift": "전개식 전체 항 수 대신 세 문자 모두 포함된 항의 수",
+      "decisiveCore": "positive compositions of 5 into3 ->C4,2=6",
+      "variationType": "CONFIRMATION",
+      "addedDecision": "원본·유사1과 다른 조건 또는 목표를 읽고 계산의 분기점을 재구성",
+      "sourceBucketJudgment": 3,
+      "newBucketJudgment": 3,
+      "difficultyBasis": "원본·기존 유사1의 문항 위치와 계산 분기를 고려한 source-balanced 동등 난도 판단; 공식 2차 검수는 대기",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "templateKey": "TPL_BINOMIAL_TERM_COEFFICIENT",
+      "semanticDuplicateResult": "CONDITION_OR_GOAL_SHIFT",
+      "mathCheck": "SEPARATE_BRUTE_FORCE_I1_PASS",
+      "choiceCheck": "OFFICIAL_CHOICE_ORDER_PASS",
+      "visual": {
+        "qid": 20,
+        "problem": {
+          "decision": "EXEMPT",
+          "reason": "문장·수식·조건 상자에 필요한 모든 정보가 완결되어 별도 도형 없음",
+          "existingAsset": null
+        },
+        "solution": {
+          "decision": "EXEMPT",
+          "reason": "조합·이항계수·경우 나눔·조건부확률의 계산식과 설명만으로 추론 가능",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        }
+      }
+    },
+    {
+      "sourceQid": 21,
+      "originalReference": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계.js#q22",
+      "existingVariantReference": "archive/exams/similar/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계_유사.js#q21",
+      "lockedPrimaryL3": "H2-PS-RPM-050",
+      "originalSummary": "한 개의 주사위를 A는 6번 던지고 B는 4번 던질 때, 짝수의 눈이 나오는 횟수를 각각 $a,b$라 하자. $a+b$의 값이 8이 될 확률을 구하고 그 과정을 서술하시오. [5점]",
+      "siblingSummary": "[서술형 2] 한 개의 주사위를 A는 4번, B는 3번 던질 때, 3의 배수의 눈이 나오는 횟수를 각각 $a,b$라 하자. $a+b$의 값이 5가 될 확률을 구하고 그 과정을 서술하시오. [5점]",
+      "conditionAndTargetShift": "정확히 여덟 번에서 두 사람이 나온 짝수 횟수의 합이 2 이하로 목표 변경",
+      "decisiveCore": "C10,0+C10,1+C10,2=56 /1024=7/128",
+      "variationType": "CONFIRMATION",
+      "addedDecision": "원본·유사1과 다른 조건 또는 목표를 읽고 계산의 분기점을 재구성",
+      "sourceBucketJudgment": 3,
+      "newBucketJudgment": 3,
+      "difficultyBasis": "원본·기존 유사1의 문항 위치와 계산 분기를 고려한 source-balanced 동등 난도 판단; 공식 2차 검수는 대기",
+      "problemTypeKey": "PT_PROBABILITY_REPEATED_TRIALS",
+      "templateKey": "TPL_INDEPENDENT_TRIAL_PROBABILITY",
+      "semanticDuplicateResult": "CONDITION_OR_GOAL_SHIFT",
+      "mathCheck": "SEPARATE_BRUTE_FORCE_I1_PASS",
+      "choiceCheck": "OFFICIAL_CHOICE_ORDER_PASS",
+      "visual": {
+        "qid": 21,
+        "problem": {
+          "decision": "EXEMPT",
+          "reason": "문장·수식·조건 상자에 필요한 모든 정보가 완결되어 별도 도형 없음",
+          "existingAsset": null
+        },
+        "solution": {
+          "decision": "EXEMPT",
+          "reason": "조합·이항계수·경우 나눔·조건부확률의 계산식과 설명만으로 추론 가능",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        }
+      }
+    },
+    {
+      "sourceQid": 22,
+      "originalReference": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계.js#q23",
+      "existingVariantReference": "archive/exams/similar/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계_유사.js#q22",
+      "lockedPrimaryL3": "H2-PS-RPM-046",
+      "originalSummary": "두 사건 $A,B$에 대하여 $P(A\\mid B)=\\dfrac{1}{5}$,<br>$P(B\\mid A)=\\dfrac{2}{3}$일 때, $P(A\\cap B)$의 최댓값을 $\\dfrac{q}{p}$라 할 때, $p+q$의 값을 구하고 그 과정을 서술하시오. [5점]\n(단, $p,q$는 서로소인 자연수이다.)",
+      "siblingSummary": "[서술형 3] 두 사건 $A,B$에 대하여 $P(A\\mid B)=\\dfrac{1}{4}$,<br>$P(B\\mid A)=\\dfrac{3}{5}$일 때, $P(A\\cap B)$의 최댓값을 $\\dfrac{q}{p}$라 할 때, $p+q$의 값을 구하고 그 과정을 서술하시오. [5점]<br>(단, $p,q$는 서로소인 자연수이다.)",
+      "conditionAndTargetShift": "두 조건부확률에서 교집합 대신 A의 최댓값을 구함",
+      "decisiveCore": "P(A)=2t, P(B)=2.5t, union3.5t<=1 => max A=4/7=>11",
+      "variationType": "CONFIRMATION",
+      "addedDecision": "원본·유사1과 다른 조건 또는 목표를 읽고 계산의 분기점을 재구성",
+      "sourceBucketJudgment": 4,
+      "newBucketJudgment": 4,
+      "difficultyBasis": "원본·기존 유사1의 문항 위치와 계산 분기를 고려한 source-balanced 동등 난도 판단; 공식 2차 검수는 대기",
+      "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+      "templateKey": "TPL_CONDITIONAL_PROBABILITY_DIRECT",
+      "semanticDuplicateResult": "CONDITION_OR_GOAL_SHIFT",
+      "mathCheck": "SEPARATE_BRUTE_FORCE_I1_PASS",
+      "choiceCheck": "OFFICIAL_CHOICE_ORDER_PASS",
+      "visual": {
+        "qid": 22,
+        "problem": {
+          "decision": "EXEMPT",
+          "reason": "문장·수식·조건 상자에 필요한 모든 정보가 완결되어 별도 도형 없음",
+          "existingAsset": null
+        },
+        "solution": {
+          "decision": "EXEMPT",
+          "reason": "조합·이항계수·경우 나눔·조건부확률의 계산식과 설명만으로 추론 가능",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        }
+      }
+    },
+    {
+      "sourceQid": 23,
+      "originalReference": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계.js#q24",
+      "existingVariantReference": "archive/exams/similar/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계_유사.js#q23",
+      "lockedPrimaryL3": "H2-PS-RPM-033",
+      "originalSummary": "세 명의 학생 정원이, 근오, 익승에게 서로 다른 종류의 빵 6개를 다음 규칙에 따라 남김없이 나누어 주는 경우의 수를 구하고 그 과정을 서술하시오. [6점]\n(단, 빵을 받지 못하는 학생이 있을 수 있다.)\n(가) 학생 정원이는 적어도 하나의 빵을 받는다.\n(나) 학생 근오가 받는 빵의 개수는 1개 이하이다.",
+      "siblingSummary": "[서술형 4] 세 명의 학생 하준, 서윤, 지우에게 서로 다른 종류의 연필 6자루를 다음 규칙에 따라 남김없이 나누어 주는 경우의 수를 구하고 그 과정을 서술하시오. [6점]<br>(단, 연필을 받지 못하는 학생이 있을 수 있다.)<br>(가) 학생 하준이는 적어도 한 자루의 연필을 받는다.<br>(나) 학생 서윤이가 받는 연필의 수는 2자루 이하이다.",
+      "conditionAndTargetShift": "받는 사람 A의 최소 수를 하나에서 둘로 강화",
+      "decisiveCore": "(2^6-1-6)+6*(2^5-1-5)=213",
+      "variationType": "CONFIRMATION",
+      "addedDecision": "원본·유사1과 다른 조건 또는 목표를 읽고 계산의 분기점을 재구성",
+      "sourceBucketJudgment": 4,
+      "newBucketJudgment": 4,
+      "difficultyBasis": "원본·기존 유사1의 문항 위치와 계산 분기를 고려한 source-balanced 동등 난도 판단; 공식 2차 검수는 대기",
+      "problemTypeKey": "PT_COUNTING_REPEATED_ASSIGNMENT",
+      "templateKey": "TPL_REPEATED_PERMUTATION_ASSIGNMENT",
+      "semanticDuplicateResult": "CONDITION_OR_GOAL_SHIFT",
+      "mathCheck": "SEPARATE_BRUTE_FORCE_I1_PASS",
+      "choiceCheck": "OFFICIAL_CHOICE_ORDER_PASS",
+      "visual": {
+        "qid": 23,
+        "problem": {
+          "decision": "EXEMPT",
+          "reason": "문장·수식·조건 상자에 필요한 모든 정보가 완결되어 별도 도형 없음",
+          "existingAsset": null
+        },
+        "solution": {
+          "decision": "EXEMPT",
+          "reason": "조합·이항계수·경우 나눔·조건부확률의 계산식과 설명만으로 추론 가능",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        }
+      }
+    }
+  ]
+}
