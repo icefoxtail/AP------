@@ -1,0 +1,11 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"HYPERBOLA","center":["0","0"],"aSquared":"9","bSquared":"16","transverse":"X"},
+  "points":[{"id":"F","kind":"FOCUS","side":1,"coordinates":true},{"id":"F'","kind":"FOCUS","side":-1,"coordinates":true},{"id":"A","kind":"POINT","x":"10","y":"8","coordinates":true},{"id":"P","kind":"LINE_CONIC","line":"aux","which":2}],
+  "lines":[{"id":"aux","through":["A","F'"],"hidden":true}],
+  "segments":[{"id":"AP","from":"A","to":"P"},{"id":"PF","from":"P","to":"F"}],
+  "caption":"제1사분면 쌍곡선 위의 P와 고정점 A(10,8), 초점 F(5,0)를 잇는 두 선분",
+  "accessibilityDescription":"쌍곡선 x²/9−y²/16=1의 두 초점 F′(-5,0), F(5,0)가 있다. 제1사분면의 A(10,8)와 쌍곡선 오른쪽 가지 위의 P가 선분 AP로 연결되고 P는 초점 F와 선분 PF로 연결된다. P는 두 거리 합이 최소인 배치다.",
+  "sourceConditions":[{"id":"c1","condition":"주어진 쌍곡선의 초점 F=(5,0),F′=(-5,0)와 고정점 A=(10,8)를 그대로 배치한다.","mappedTo":["conic","F","F'","A"]},{"id":"c2","condition":"오른쪽 가지에서는 PF′−PF=6이므로 AP+PF=AP+PF′−6≥AF′−6이다. 등호는 A,P,F′가 일직선일 때 성립한다. 숨긴 보조선 AF′와 쌍곡선 오른쪽 가지의 교점을 P로 둔다.","mappedTo":["aux","P","AP","PF"]},{"id":"c3","condition":"구하는 최소 거리의 정답 값은 라벨·좌표에 노출하지 않는다.","mappedTo":["AP","PF"]}],
+  "newVisualInformation":["최단거리 조건을 만족하는 직선 AF′와 쌍곡선의 실제 교점에 P를 배치","원본에 보이지 않는 최적화 보조선은 hidden 처리하고 요구한 AP,PF만 그림"]
+}

@@ -1,0 +1,11 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"HYPERBOLA","center":["0","0"],"aSquared":"11","bSquared":"25","transverse":"X"},
+  "points":[{"id":"O","kind":"ORIGIN"},{"id":"F","kind":"FOCUS","side":1},{"id":"F'","kind":"FOCUS","side":-1},{"id":"P","kind":"ON_CONIC","y":"25/6","branch":"POS"}],
+  "segments":[{"id":"OP","from":"O","to":"P","label":"6"},{"id":"OF","from":"O","to":"F","label":"6"},{"id":"PF","from":"P","to":"F"},{"id":"PFp","from":"P","to":"F'"},{"id":"FFp","from":"F","to":"F'"}],
+  "polygons":[{"id":"tri","points":["P","F","F'"],"fill":"NONE"}],
+  "caption":"원점 O에서 P와 초점 F까지 거리가 같은 쌍곡선의 초점 삼각형",
+  "accessibilityDescription":"쌍곡선 x²/11−y²/25=1의 초점 F′(-6,0),F(6,0), 원점 O와 제1사분면 P가 있다. 원점에서 P와 F를 잇는 두 선분 길이는 모두 6이며 P,F,F′를 잇는 삼각형이 그려져 있다.",
+  "sourceConditions":[{"id":"c1","condition":"쌍곡선은 초점 F=(6,0), F′=(-6,0)을 갖는다. O=(0,0)이다.","mappedTo":["conic","F","F'","O"]},{"id":"c2","condition":"OP=OF=6과 P가 제1사분면의 쌍곡선 위라는 조건에서 P=(√671/6,25/6)으로 결정된다. 두 주어진 길이 6을 각각 선분 라벨로 실제 표시한다.","mappedTo":["P","OP","OF"]},{"id":"c3","condition":"삼각형 PFF′의 넓이는 미지 답으로 비노출한다.","mappedTo":["tri","PF","PFp","FFp"]}],
+  "newVisualInformation":["OP=OF를 두 실선과 두 독립 길이 라벨로 표현","원점에서 거리 6인 점을 임의배치하지 않고 쌍곡선과 원의 교차조건으로 산출"]
+}

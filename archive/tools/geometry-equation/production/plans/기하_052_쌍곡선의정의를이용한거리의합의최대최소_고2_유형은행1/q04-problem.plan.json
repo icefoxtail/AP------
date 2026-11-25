@@ -1,0 +1,11 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conics":[{"id":"h","kind":"HYPERBOLA","center":["0","0"],"aSquared":"6","bSquared":"10","transverse":"X"},{"id":"C","kind":"CIRCLE","center":["4","5*sqrt(6)/3"],"rSquared":"50/3","label":"C"}],
+  "points":[{"id":"F","kind":"FOCUS","curve":"h","side":1,"coordinates":true},{"id":"F'","kind":"FOCUS","curve":"h","side":-1,"coordinates":true},{"id":"P","kind":"ON_CONIC","curve":"h","x":"4","sign":"POS"},{"id":"T","kind":"LINE_CONIC","curve":"C","line":"rad","which":1,"label":false}],
+  "lines":[{"id":"rad","through":["F'","P"],"hidden":true}],
+  "segments":[{"id":"PF","from":"P","to":"F"},{"id":"PT","from":"P","to":"T","dashed":true},{"id":"FpT","from":"F'","to":"T","label":"l"}],
+  "caption":"초점 F에서 x축과 접하는 P 중심의 원 C와 초점 F′에서 원까지의 최단 거리 l",
+  "accessibilityDescription":"쌍곡선 x²/6−y²/10=1의 양쪽 초점 F′(-4,0),F(4,0)가 있다. 제1사분면 쌍곡선 위 P를 중심으로 하는 원 C는 F에서 x축에 접한다. 초점 F′에서 원 C의 가까운 접촉 방향 점 T까지 선분을 그어 거리 l을 보였다.",
+  "sourceConditions":[{"id":"c1","condition":"쌍곡선 초점은 ±4이다. P 중심 원이 x축에 F=(4,0)에서 접하려면 P의 x=4, y>0이고 쌍곡선 식에서 P=(4,5√6/3)이므로 원 C 반지름 제곱은 50/3이다.","mappedTo":["h","C","F","F'","P","PF"]},{"id":"c2","condition":"F′에서 원 C 위 점까지의 거리는 중심선 F′P와 원의 가까운 쪽 교점 T에서 최소다. 엔진 LINE_CONIC으로 T를 정하고 F′T를 l로 표시한다.","mappedTo":["rad","T","PT","FpT"]},{"id":"c3","condition":"최솟값의 실제 정답 수치는 그림에 표시하지 않는다. 원이 F에서 x축에 접한다는 말은 좌표와 원의 반지름으로 충족하지만 접점 기호 자체는 ENGINE_CAPABILITY_PENDING이다.","mappedTo":["C","F","PF"]}],
+  "newVisualInformation":["원의 중심을 실제 쌍곡선 위 P와 정확히 일치시켜 F에서 x축 접함을 구현","F′와 원의 최단 거리 선분을 실제 원과 중심선의 교점으로 구성","원-축 접점 기호는 엔진 보강 대상"]
+}

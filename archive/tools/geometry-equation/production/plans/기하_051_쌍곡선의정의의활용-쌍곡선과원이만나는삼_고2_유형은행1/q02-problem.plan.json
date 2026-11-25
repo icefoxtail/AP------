@@ -1,0 +1,12 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conics":[{"id":"h","kind":"HYPERBOLA","center":["0","0"],"aSquared":"20","bSquared":"16","transverse":"X"},{"id":"c","kind":"CIRCLE","center":["0","0"],"rSquared":"36"}],
+  "points":[{"id":"O","kind":"ORIGIN"},{"id":"F","kind":"FOCUS","curve":"h","side":1},{"id":"F'","kind":"FOCUS","curve":"h","side":-1},{"id":"P","kind":"LINE_CONIC","curve":"c","line":"as1","which":2}],
+  "lines":[{"id":"as1","role":"ASYMPTOTE","curve":"h","sign":1,"dashed":true}],
+  "segments":[{"id":"OP","from":"O","to":"P"},{"id":"PF","from":"P","to":"F"},{"id":"OF","from":"O","to":"F"}],
+  "polygons":[{"id":"tri","points":["O","P","F"],"fill":"LIGHT"}],
+  "caption":"초점을 지나는 원과 쌍곡선의 양의 기울기 점근선 교점 P, 색칠된 삼각형 OPF",
+  "accessibilityDescription":"쌍곡선 x²/20−y²/16=1의 두 초점을 지나는 원점 중심 원과 오른쪽 위로 기울어진 점근선이 있다. 제1사분면에서 원과 점근선이 만나는 점 P 및 O,F를 잇는 삼각형이 색칠되어 있다.",
+  "sourceConditions":[{"id":"c1","condition":"쌍곡선 초점 c²=36이므로 원점 중심 원은 반지름6이고 F=(6,0),F′=(-6,0)이다.","mappedTo":["h","c","F","F'","O"]},{"id":"c2","condition":"점근선 y=(2/√5)x와 원 x²+y²=36의 제1사분면 교점은 P=(2√5,4)이다. as1과 LINE_CONIC으로 실제 교점을 보장한다.","mappedTo":["as1","P"]},{"id":"c3","condition":"원본은 삼각형 OPF를 색칠하며 그 넓이는 정답이므로 별도 숫자를 쓰지 않는다.","mappedTo":["OP","PF","OF","tri"]}],
+  "newVisualInformation":["점근선을 실제 ASYMPTOTE 엔진 선으로 생성, 원과 교차시킨 P를 계산","원본의 색칠 대상인 삼각형 OPF만 채움"]
+}

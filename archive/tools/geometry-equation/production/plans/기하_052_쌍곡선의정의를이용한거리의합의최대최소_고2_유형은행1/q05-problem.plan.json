@@ -1,0 +1,11 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conics":[{"id":"h","kind":"HYPERBOLA","center":["0","0"],"aSquared":"4","bSquared":"12","transverse":"X"},{"id":"C","kind":"CIRCLE","center":["0","3"],"rSquared":"1","label":"C"}],
+  "points":[{"id":"F","kind":"FOCUS","curve":"h","side":1},{"id":"F'","kind":"FOCUS","curve":"h","side":-1},{"id":"A","kind":"POINT","x":"0","y":"3","coordinates":true},{"id":"P","kind":"LINE_CONIC","curve":"h","line":"af","which":2},{"id":"Q","kind":"LINE_CONIC","curve":"C","line":"af","which":2}],
+  "lines":[{"id":"af","through":["A","F"],"hidden":true}],
+  "segments":[{"id":"PQ","from":"P","to":"Q"},{"id":"PFp","from":"P","to":"F'"},{"id":"AQ","from":"A","to":"Q","label":"1","dashed":true}],
+  "caption":"주축 길이 4인 쌍곡선 위 P와 A(0,3) 중심 반지름 1인 원 C 위 Q를 연결한 최소거리 도식",
+  "accessibilityDescription":"초점 F,F′을 가진 쌍곡선과 중심 A(0,3), 반지름 1인 원 C가 있다. 제1사분면의 쌍곡선 위 P와 원 위 Q를 잇는 선분 PQ, P와 왼쪽 초점을 잇는 PF′가 있다. 원의 반지름 AQ에는 1이 표시된다.",
+  "sourceConditions":[{"id":"c1","condition":"쌍곡선의 주축 길이4이므로 a=2이다. 원 C의 중심 A=(0,3), 반지름1은 원문 그대로이다.","mappedTo":["h","C","A","AQ"]},{"id":"c2","condition":"PQ+PF′ 최소는 PA−1+PF+4≥AF+3이다. 주어진 최솟값8에서 AF=5, A=(0,3)으로 c=4가 되고 b²=c²−a²=12가 된다. F=(4,0),F′=(-4,0)을 그림에만 쓴다.","mappedTo":["h","F","F'"]},{"id":"c3","condition":"등호는 A,Q,P,F가 같은 직선에 있고 Q는 A와 P 사이에 있을 때다. 숨긴 직선 AF의 쌍곡선·원 교점을 각각 P,Q로 선택해 주어진 두 선분이 실제로 최소 상태를 보여 준다.","mappedTo":["af","P","Q","PQ","PFp"]},{"id":"c4","condition":"구하는 a²+2b²의 답은 숫자로 노출하지 않는다.","mappedTo":["h"]}],
+  "newVisualInformation":["최솟값8을 만족하도록 내부 계산한 쌍곡선 모양을 실제 표기값 노출 없이 모델링","P,Q를 동일한 숨긴 직선 위 두 conic 교점으로 배치하고 원의 주어진 반지름 1을 시각 라벨로 표시"]
+}
