@@ -1,0 +1,231 @@
+{
+  "capability": "solid-figure-v1",
+  "space": {
+    "points": [
+      {
+        "id": "Q",
+        "at": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "P",
+        "at": [
+          0,
+          8,
+          0
+        ]
+      },
+      {
+        "id": "A",
+        "at": [
+          3,
+          8,
+          0
+        ]
+      },
+      {
+        "id": "B",
+        "at": [
+          0,
+          0,
+          6
+        ]
+      },
+      {
+        "id": "C",
+        "at": [
+          6,
+          0,
+          6
+        ]
+      }
+    ],
+    "planes": [
+      {
+        "id": "alpha",
+        "name": "\\alpha",
+        "through": [
+          "Q",
+          "P",
+          "A"
+        ]
+      },
+      {
+        "id": "beta",
+        "name": "\\beta",
+        "through": [
+          "Q",
+          "B",
+          "C"
+        ]
+      }
+    ],
+    "lines": [
+      {
+        "id": "l",
+        "name": "l",
+        "intersection": [
+          "alpha",
+          "beta"
+        ]
+      },
+      {
+        "id": "m",
+        "name": "m",
+        "through": [
+          "A",
+          "P"
+        ]
+      },
+      {
+        "id": "n",
+        "name": "n",
+        "through": [
+          "B",
+          "C"
+        ]
+      }
+    ],
+    "segments": [
+      {
+        "from": "A",
+        "to": "P",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "P",
+        "to": "Q",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "Q",
+        "to": "B",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "B",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "C",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "B",
+        "to": "C",
+        "style": "AUTO",
+        "role": "REF"
+      }
+    ]
+  },
+  "dims": [
+    {
+      "from": "A",
+      "to": "P",
+      "label": "3"
+    },
+    {
+      "from": "P",
+      "to": "Q",
+      "label": "8"
+    },
+    {
+      "from": "Q",
+      "to": "B",
+      "label": "6"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "Q",
+        "refs": [
+          "P",
+          "B"
+        ]
+      },
+      {
+        "at": "Q",
+        "refs": [
+          "B",
+          "P"
+        ]
+      }
+    ],
+    "equalLengths": [
+      {
+        "count": 1,
+        "segments": [
+          [
+            "A",
+            "B"
+          ],
+          [
+            "A",
+            "C"
+          ]
+        ]
+      }
+    ]
+  },
+  "caption": "직교 평면과 교선에 나란한 m,n 위 이등변삼각형 ABC",
+  "accessibilityDescription": "직교 평면과 교선에 나란한 m,n 위 이등변삼각형 ABC. 두 평면의 수직 교선과 평행 직선; 동일한 두 변 AB와 AC의 실제 동등 표식. 미지 정답은 숫자로 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "α⊥β, 교선 l",
+      "mappedTo": [
+        "space.planes[0]",
+        "space.planes[1]",
+        "space.lines[0]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "m∥l, n∥l",
+      "mappedTo": [
+        "space.lines[1]",
+        "space.lines[2]"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "AP=3",
+      "mappedTo": [
+        "dims[0]"
+      ]
+    },
+    {
+      "id": "c4",
+      "condition": "PQ=8, QB=6",
+      "mappedTo": [
+        "dims[1]",
+        "dims[2]"
+      ]
+    },
+    {
+      "id": "c5",
+      "condition": "AB=AC",
+      "mappedTo": [
+        "marks.equalLengths[0]",
+        "space.segments[3]",
+        "space.segments[4]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 평면의 수직 교선과 평행 직선",
+    "동일한 두 변 AB와 AC의 실제 동등 표식"
+  ],
+  "sourceQuote": "[그림: 직교하는 두 평면 $\\alpha, \\beta$의 교선 $l$에 평행한 두 직선 $m(\\subset \\alpha), n(\\subset \\beta)$이 있다. 직선 $m$ 위의 점 $\\mathrm{A, P}$에 대해 $\\overline{\\mathrm{AP}}=3$이다. $\\mathrm{P}$에서 $l$에 내린 수선의"
+}

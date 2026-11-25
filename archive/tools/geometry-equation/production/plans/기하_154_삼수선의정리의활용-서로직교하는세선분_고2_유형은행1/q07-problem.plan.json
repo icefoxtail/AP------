@@ -1,0 +1,140 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 1,
+        "depth": 2
+      },
+      "height": 1,
+      "names": "EFGHABCD",
+      "points": [
+        {
+          "id": "I",
+          "at": {
+            "footOnLine": {
+              "from": "D",
+              "line": [
+                "E",
+                "G"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "E",
+      "to": "G",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "D",
+      "to": "I",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "H",
+      "to": "I",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "I",
+      "to": "E",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "dims": [
+    {
+      "from": "A",
+      "to": "B",
+      "label": "1"
+    },
+    {
+      "from": "A",
+      "to": "D",
+      "label": "2"
+    },
+    {
+      "from": "A",
+      "to": "E",
+      "label": "1"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "I",
+        "refs": [
+          "D",
+          "E"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "refs": [
+          "D",
+          "I",
+          "H"
+        ],
+        "arcs": 1,
+        "label": "\\theta"
+      }
+    ]
+  },
+  "solidCaption": {
+    "text": "직육면체"
+  },
+  "caption": "1×2×1 직육면체의 DI와 밑면 정사영 HI가 이루는 각 θ",
+  "accessibilityDescription": "1×2×1 직육면체의 DI와 밑면 정사영 HI가 이루는 각 θ. 실제 각 ∠DIH에 θ 호 라벨; 정답 cosθ는 표시하지 않음. 미지 정답은 숫자로 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AB=1, AD=2, AE=1",
+      "mappedTo": [
+        "dims[0]",
+        "dims[1]",
+        "dims[2]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "I는 D에서 EG에 내린 수선의 발",
+      "mappedTo": [
+        "solids[0].points[0]",
+        "segments[0]",
+        "segments[1]",
+        "marks.rightAngles[0]"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "HI 정사영",
+      "mappedTo": [
+        "segments[2]"
+      ]
+    },
+    {
+      "id": "c4",
+      "condition": "DI와 밑면 사이 각 θ",
+      "mappedTo": [
+        "marks.angles[0]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "실제 각 ∠DIH에 θ 호 라벨",
+    "정답 cosθ는 표시하지 않음"
+  ],
+  "sourceQuote": "[그림: 직육면체 $\\mathrm{ABCD-EFGH}$에서 $\\overline{\\mathrm{AB}}=1, \\overline{\\mathrm{AD}}=2, \\overline{\\mathrm{AE}}=1$. 꼭짓점 $\\mathrm{D}$에서 밑면 대각선 $\\overline{\\mathrm{EG}}$에 수선 $\\mathrm{DI}"
+}

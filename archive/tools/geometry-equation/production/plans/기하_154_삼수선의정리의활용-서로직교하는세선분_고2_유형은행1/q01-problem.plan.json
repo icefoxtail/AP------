@@ -1,0 +1,115 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 2,
+        "depth": 4
+      },
+      "height": 2,
+      "names": "EFGHABCD",
+      "points": [
+        {
+          "id": "K",
+          "at": {
+            "footOnLine": {
+              "from": "C",
+              "line": [
+                "H",
+                "F"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "H",
+      "to": "F",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "C",
+      "to": "K",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "K",
+      "to": "H",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "dims": [
+    {
+      "from": "E",
+      "to": "H",
+      "label": "4"
+    },
+    {
+      "from": "E",
+      "to": "F",
+      "label": "2"
+    },
+    {
+      "from": "A",
+      "to": "E",
+      "label": "2"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "K",
+        "refs": [
+          "C",
+          "H"
+        ]
+      }
+    ]
+  },
+  "solidCaption": {
+    "text": "직육면체"
+  },
+  "caption": "가로 2·세로 4·높이 2 직육면체의 C에서 HF로 내린 수선",
+  "accessibilityDescription": "가로 2·세로 4·높이 2 직육면체의 C에서 HF로 내린 수선. C-K가 실제 공간 수선; HF에 놓인 정확한 발 K. 미지 정답은 숫자로 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AD=EH=4, CD=EF=2, AE=2",
+      "mappedTo": [
+        "dims[0]",
+        "dims[1]",
+        "dims[2]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "EFGH 밑면의 대각선 HF",
+      "mappedTo": [
+        "segments[0]"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "K는 C에서 HF에 내린 수선의 발",
+      "mappedTo": [
+        "solids[0].points[0]",
+        "segments[1]",
+        "marks.rightAngles[0]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "C-K가 실제 공간 수선",
+    "HF에 놓인 정확한 발 K"
+  ],
+  "sourceQuote": "[그림: 가로 $\\overline{\\mathrm{EF}}=2$, 세로 $\\overline{\\mathrm{EH}}=4$, 높이 $\\overline{\\mathrm{AE}}=2$인 직육면체 $\\mathrm{ABCD-EFGH}$. 밑면 $\\mathrm{EFGH}$의 대각선 $\\mathrm{HF}$가 그어져 있고, 꼭짓점 $\\ma"
+}

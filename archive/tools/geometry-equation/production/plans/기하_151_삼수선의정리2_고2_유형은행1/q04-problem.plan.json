@@ -1,0 +1,150 @@
+{
+  "capability": "solid-figure-v1",
+  "space": {
+    "points": [
+      {
+        "id": "A",
+        "at": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "B",
+        "at": [
+          -3,
+          "3*sqrt(3)",
+          0
+        ]
+      },
+      {
+        "id": "C",
+        "at": [
+          3,
+          "3*sqrt(3)",
+          0
+        ]
+      },
+      {
+        "id": "P",
+        "at": [
+          0,
+          0,
+          6
+        ]
+      },
+      {
+        "id": "Q",
+        "at": [
+          1,
+          "3*sqrt(3)",
+          0
+        ]
+      }
+    ],
+    "planes": [
+      {
+        "id": "alpha",
+        "name": "\\alpha",
+        "through": [
+          "A",
+          "B",
+          "C"
+        ]
+      }
+    ],
+    "segments": [
+      {
+        "from": "A",
+        "to": "B",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "B",
+        "to": "C",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "C",
+        "to": "A",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "P",
+        "to": "A",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "P",
+        "to": "Q",
+        "style": "AUTO",
+        "role": "REF"
+      }
+    ]
+  },
+  "dims": [
+    {
+      "from": "P",
+      "to": "A",
+      "label": "6"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "A",
+        "refs": [
+          "P",
+          "B"
+        ]
+      }
+    ]
+  },
+  "caption": "정삼각형 ABC의 변 BC 위 임의 Q와 공간 선분 PQ",
+  "accessibilityDescription": "정삼각형 ABC의 변 BC 위 임의 Q와 공간 선분 PQ. Q는 최대·최소가 아닌 임의 위치로 표시; 최솟값에서 역산한 한 변 길이 6은 그림에 비표시. 미지 정답은 숫자로 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "ABC는 정삼각형",
+      "mappedTo": [
+        "space.points[0]",
+        "space.points[1]",
+        "space.points[2]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "PA=6, PA⊥α",
+      "mappedTo": [
+        "dims[0]",
+        "marks.rightAngles[0]",
+        "space.planes[0]"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "Q∈BC (임의 대표 위치)",
+      "mappedTo": [
+        "space.points[4]",
+        "space.segments[1]"
+      ]
+    },
+    {
+      "id": "c4",
+      "condition": "P-Q 연결",
+      "mappedTo": [
+        "space.segments[4]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "Q는 최대·최소가 아닌 임의 위치로 표시",
+    "최솟값에서 역산한 한 변 길이 6은 그림에 비표시"
+  ],
+  "sourceQuote": "[그림: 평면 $\\alpha$ 위에 정삼각형 $\\mathrm{ABC}$가 놓여 있고, 평면 밖의 점 $\\mathrm{P}$에서 평면에 내린 수선의 발이 꼭짓점 $\\mathrm{A}$이다. 점 $\\mathrm{P}$와 $\\mathrm{A}$를 잇는 수선의 길이는 $6$이다. 선분 $\\mathrm{BC}$ 위의 임의의 점 $"
+}

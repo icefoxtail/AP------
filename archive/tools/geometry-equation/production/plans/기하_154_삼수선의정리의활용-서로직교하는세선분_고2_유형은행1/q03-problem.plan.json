@@ -1,0 +1,129 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 2.23606797749979,
+        "depth": 2
+      },
+      "height": 2,
+      "names": "EFGHABCD",
+      "points": [
+        {
+          "id": "P",
+          "at": {
+            "footOnLine": {
+              "from": "D",
+              "line": [
+                "E",
+                "G"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "D",
+      "to": "E",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "E",
+      "to": "G",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "G",
+      "to": "D",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "D",
+      "to": "P",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "P",
+      "to": "E",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "dims": [
+    {
+      "from": "C",
+      "to": "D",
+      "label": "\\sqrt{5}"
+    },
+    {
+      "from": "A",
+      "to": "D",
+      "label": "2"
+    },
+    {
+      "from": "A",
+      "to": "E",
+      "label": "2"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "P",
+        "refs": [
+          "D",
+          "E"
+        ]
+      }
+    ]
+  },
+  "solidCaption": {
+    "text": "직육면체"
+  },
+  "caption": "밑면 가로 √5·세로 2·높이 2인 직육면체의 삼각형 DEG",
+  "accessibilityDescription": "밑면 가로 √5·세로 2·높이 2인 직육면체의 삼각형 DEG. EFGH 대각선 EG를 기반으로 한 공간 수선; 면적 정답 비표시. 미지 정답은 숫자로 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "CD=√5, AD=2, AE=2",
+      "mappedTo": [
+        "dims[0]",
+        "dims[1]",
+        "dims[2]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "삼각형 DEG",
+      "mappedTo": [
+        "segments[0]",
+        "segments[1]",
+        "segments[2]"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "DP⊥EG, P∈EG",
+      "mappedTo": [
+        "solids[0].points[0]",
+        "segments[3]",
+        "marks.rightAngles[0]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "EFGH 대각선 EG를 기반으로 한 공간 수선",
+    "면적 정답 비표시"
+  ],
+  "sourceQuote": "[그림: 밑면 가로 $\\overline{\\mathrm{CD}}=\\sqrt{5}$, 세로 $\\overline{\\mathrm{AD}}=2$, 높이 $\\overline{\\mathrm{AE}}=2$인 직육면체 $\\mathrm{ABCD-EFGH}$. 점 $\\mathrm{D}, \\mathrm{E}, \\mathrm{G}$를 꼭짓점으로"
+}

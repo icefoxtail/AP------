@@ -1,0 +1,189 @@
+{
+  "capability": "solid-figure-v1",
+  "space": {
+    "points": [
+      {
+        "id": "H",
+        "at": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "Q",
+        "at": [
+          "3*sqrt(7)",
+          0,
+          0
+        ]
+      },
+      {
+        "id": "A",
+        "at": [
+          0,
+          6,
+          0
+        ]
+      },
+      {
+        "id": "B",
+        "at": [
+          "3*sqrt(7)",
+          6,
+          0
+        ]
+      },
+      {
+        "id": "P",
+        "at": [
+          0,
+          0,
+          8
+        ]
+      }
+    ],
+    "planes": [
+      {
+        "id": "alpha",
+        "name": "\\alpha",
+        "through": [
+          "H",
+          "A",
+          "B"
+        ]
+      },
+      {
+        "id": "beta",
+        "name": "\\beta",
+        "through": [
+          "H",
+          "Q",
+          "P"
+        ]
+      }
+    ],
+    "lines": [
+      {
+        "id": "l",
+        "name": "l",
+        "intersection": [
+          "alpha",
+          "beta"
+        ]
+      }
+    ],
+    "segments": [
+      {
+        "from": "A",
+        "to": "B",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "P",
+        "to": "A",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "P",
+        "to": "B",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "H",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "P",
+        "to": "H",
+        "style": "AUTO",
+        "role": "REF"
+      }
+    ]
+  },
+  "dims": [
+    {
+      "from": "A",
+      "to": "B",
+      "label": "3\\sqrt{7}"
+    },
+    {
+      "from": "A",
+      "to": "H",
+      "label": "6"
+    },
+    {
+      "from": "P",
+      "to": "H",
+      "label": "8"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "H",
+        "refs": [
+          "A",
+          "P"
+        ]
+      }
+    ]
+  },
+  "caption": "직교 평면 α·β의 교선 l과 평행한 AB",
+  "accessibilityDescription": "직교 평면 α·β의 교선 l과 평행한 AB. α 및 β의 수직 교차; 교선 방향과 AB의 평행 관계. 미지 정답은 숫자로 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "α⊥β, 교선 l",
+      "mappedTo": [
+        "space.planes[0]",
+        "space.planes[1]",
+        "space.lines[0]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "AB∥l, AB=3√7",
+      "mappedTo": [
+        "space.segments[0]",
+        "dims[0]"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "A에서 β까지 거리 6",
+      "mappedTo": [
+        "space.segments[3]",
+        "dims[1]"
+      ]
+    },
+    {
+      "id": "c4",
+      "condition": "P에서 α까지 거리 8",
+      "mappedTo": [
+        "space.segments[4]",
+        "dims[2]",
+        "marks.rightAngles[0]"
+      ]
+    },
+    {
+      "id": "c5",
+      "condition": "PAB 삼각형",
+      "mappedTo": [
+        "space.segments[0]",
+        "space.segments[1]",
+        "space.segments[2]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "α 및 β의 수직 교차",
+    "교선 방향과 AB의 평행 관계"
+  ],
+  "sourceQuote": "[그림: 서로 수직인 두 평면 $\\alpha, \\beta$의 교선을 $l$이라 할 때, 평면 $\\alpha$ 위의 선분 $\\mathrm{AB}$는 교선 $l$과 평행하고 $\\overline{\\mathrm{AB}}=3\\sqrt{7}$이다. 점 $\\mathrm{A}$에서 교선 $l$에 내린 수선의 길이는 $6$이고, 평면 $"
+}

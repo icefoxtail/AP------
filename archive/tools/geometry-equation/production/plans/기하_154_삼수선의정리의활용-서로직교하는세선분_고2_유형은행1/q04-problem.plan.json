@@ -1,0 +1,195 @@
+{
+  "capability": "solid-figure-v1",
+  "space": {
+    "points": [
+      {
+        "id": "O",
+        "at": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "A",
+        "at": [
+          "2*sqrt(2)",
+          0,
+          0
+        ]
+      },
+      {
+        "id": "B",
+        "at": [
+          0,
+          "2*sqrt(2)",
+          0
+        ]
+      },
+      {
+        "id": "C",
+        "at": [
+          0,
+          0,
+          "2*sqrt(2)"
+        ]
+      },
+      {
+        "id": "H",
+        "at": {
+          "footOnLine": {
+            "from": "C",
+            "line": [
+              "A",
+              "B"
+            ]
+          }
+        }
+      }
+    ],
+    "segments": [
+      {
+        "from": "O",
+        "to": "A",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "O",
+        "to": "B",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "O",
+        "to": "C",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "B",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "B",
+        "to": "C",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "C",
+        "to": "A",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "C",
+        "to": "H",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "H",
+        "to": "A",
+        "style": "AUTO",
+        "role": "REF"
+      }
+    ]
+  },
+  "dims": [
+    {
+      "from": "O",
+      "to": "A",
+      "label": "2\\sqrt{2}"
+    },
+    {
+      "from": "O",
+      "to": "B",
+      "label": "2\\sqrt{2}"
+    },
+    {
+      "from": "O",
+      "to": "C",
+      "label": "2\\sqrt{2}"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "O",
+        "refs": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "at": "O",
+        "refs": [
+          "A",
+          "C"
+        ]
+      },
+      {
+        "at": "O",
+        "refs": [
+          "B",
+          "C"
+        ]
+      },
+      {
+        "at": "H",
+        "refs": [
+          "C",
+          "A"
+        ]
+      }
+    ]
+  },
+  "caption": "O에서 세 선분이 직교하는 사면체와 C에서 AB에 내린 수선",
+  "accessibilityDescription": "O에서 세 선분이 직교하는 사면체와 C에서 AB에 내린 수선. 정확한 직교 길이로 구성한 사면체; 문제에서 요구한 공간 수선 CH. 미지 정답은 숫자로 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "OA=OB=OC=2√2",
+      "mappedTo": [
+        "dims[0]",
+        "dims[1]",
+        "dims[2]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "세 선분은 O에서 서로 직교",
+      "mappedTo": [
+        "marks.rightAngles[0]",
+        "marks.rightAngles[1]",
+        "marks.rightAngles[2]"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "CAB 삼각형",
+      "mappedTo": [
+        "space.segments[3]",
+        "space.segments[4]",
+        "space.segments[5]"
+      ]
+    },
+    {
+      "id": "c4",
+      "condition": "CH⊥AB",
+      "mappedTo": [
+        "space.points[4]",
+        "space.segments[6]",
+        "marks.rightAngles[3]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "정확한 직교 길이로 구성한 사면체",
+    "문제에서 요구한 공간 수선 CH"
+  ],
+  "sourceQuote": "[그림: 점 $\\mathrm{O}$에서 서로 직교하는 세 선분 $\\mathrm{OA}, \\mathrm{OB}, \\mathrm{OC}$가 사면체를 이루고 있으며 $\\overline{\\mathrm{OA}}=\\overline{\\mathrm{OB}}=\\overline{\\mathrm{OC}}=2\\sqrt{2}$이다. 점 $\\mat"
+}

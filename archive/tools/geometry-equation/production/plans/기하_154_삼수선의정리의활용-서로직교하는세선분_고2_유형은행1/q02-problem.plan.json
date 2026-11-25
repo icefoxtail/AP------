@@ -1,0 +1,129 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 3,
+        "depth": 2
+      },
+      "height": 2,
+      "names": "EFGHABCD",
+      "points": [
+        {
+          "id": "M",
+          "at": {
+            "footOnLine": {
+              "from": "C",
+              "line": [
+                "F",
+                "H"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "C",
+      "to": "H",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "H",
+      "to": "F",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "F",
+      "to": "C",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "C",
+      "to": "M",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "M",
+      "to": "F",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "dims": [
+    {
+      "from": "A",
+      "to": "B",
+      "label": "3"
+    },
+    {
+      "from": "A",
+      "to": "D",
+      "label": "2"
+    },
+    {
+      "from": "A",
+      "to": "E",
+      "label": "2"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "M",
+        "refs": [
+          "C",
+          "F"
+        ]
+      }
+    ]
+  },
+  "solidCaption": {
+    "text": "직육면체"
+  },
+  "caption": "3×2×2 직육면체 안 삼각형 CHF와 수선 CM",
+  "accessibilityDescription": "3×2×2 직육면체 안 삼각형 CHF와 수선 CM. 삼각형 CHF의 공간 배치; 대각선 FH 위의 수선 발 M. 미지 정답은 숫자로 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AB=3, AD=2, AE=2",
+      "mappedTo": [
+        "dims[0]",
+        "dims[1]",
+        "dims[2]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "삼각형 CHF",
+      "mappedTo": [
+        "segments[0]",
+        "segments[1]",
+        "segments[2]"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "CM⊥FH, M∈FH",
+      "mappedTo": [
+        "solids[0].points[0]",
+        "segments[3]",
+        "marks.rightAngles[0]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "삼각형 CHF의 공간 배치",
+    "대각선 FH 위의 수선 발 M"
+  ],
+  "sourceQuote": "[그림: 가로 $\\overline{\\mathrm{AB}}=3$, 세로 $\\overline{\\mathrm{AD}}=2$, 높이 $\\overline{\\mathrm{AE}}=2$인 직육면체 $\\mathrm{ABCD-EFGH}$. 점 $\\mathrm{C}, \\mathrm{H}, \\mathrm{F}$를 연결한 삼각형 $\\mathr"
+}

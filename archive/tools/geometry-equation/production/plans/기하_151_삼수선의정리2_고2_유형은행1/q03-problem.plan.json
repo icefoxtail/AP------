@@ -1,0 +1,193 @@
+{
+  "capability": "solid-figure-v1",
+  "space": {
+    "points": [
+      {
+        "id": "A",
+        "at": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "B",
+        "at": [
+          15,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "C",
+        "at": [
+          0,
+          20,
+          0
+        ]
+      },
+      {
+        "id": "P",
+        "at": [
+          0,
+          0,
+          5
+        ]
+      },
+      {
+        "id": "H",
+        "at": [
+          "48/5",
+          "36/5",
+          0
+        ]
+      }
+    ],
+    "planes": [
+      {
+        "id": "alpha",
+        "name": "\\alpha",
+        "through": [
+          "A",
+          "B",
+          "C"
+        ]
+      }
+    ],
+    "segments": [
+      {
+        "from": "A",
+        "to": "B",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "B",
+        "to": "C",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "C",
+        "to": "A",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "P",
+        "to": "A",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "H",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "P",
+        "to": "H",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "H",
+        "to": "B",
+        "style": "AUTO",
+        "role": "REF"
+      }
+    ]
+  },
+  "dims": [
+    {
+      "from": "A",
+      "to": "B",
+      "label": "15"
+    },
+    {
+      "from": "A",
+      "to": "C",
+      "label": "20"
+    },
+    {
+      "from": "P",
+      "to": "A",
+      "label": "5"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "A",
+        "refs": [
+          "B",
+          "C"
+        ]
+      },
+      {
+        "at": "A",
+        "refs": [
+          "P",
+          "B"
+        ]
+      },
+      {
+        "at": "H",
+        "refs": [
+          "P",
+          "B"
+        ]
+      }
+    ]
+  },
+  "caption": "직각삼각형 ABC와 평면 위 수선 AH, 공간 수선 PH",
+  "accessibilityDescription": "직각삼각형 ABC와 평면 위 수선 AH, 공간 수선 PH. 두 수선이 동일한 BC 위 H에 닿는 공간 배치; 직각삼각형의 실제 15:20 비례. 미지 정답은 숫자로 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "A=90°",
+      "mappedTo": [
+        "marks.rightAngles[0]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "AB=15, AC=20",
+      "mappedTo": [
+        "dims[0]",
+        "dims[1]"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "PA=5, PA⊥α",
+      "mappedTo": [
+        "dims[2]",
+        "marks.rightAngles[1]",
+        "space.planes[0]"
+      ]
+    },
+    {
+      "id": "c4",
+      "condition": "AH⊥BC",
+      "mappedTo": [
+        "space.segments[4]",
+        "space.points[4]"
+      ]
+    },
+    {
+      "id": "c5",
+      "condition": "PH⊥BC",
+      "mappedTo": [
+        "space.segments[5]",
+        "marks.rightAngles[2]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 수선이 동일한 BC 위 H에 닿는 공간 배치",
+    "직각삼각형의 실제 15:20 비례"
+  ],
+  "sourceQuote": "[그림: 평면 $\\alpha$ 위에 $\\angle\\mathrm{A}=90^\\circ$인 직각삼각형 $\\mathrm{ABC}$가 놓여 있고, 평면 밖의 점 $\\mathrm{P}$에서 평면 $\\alpha$에 내린 수선의 발이 꼭짓점 $\\mathrm{A}$이다. 점 $\\mathrm{A}$에서 변 $\\mathrm{BC}$에 내린"
+}

@@ -1,0 +1,177 @@
+{
+  "capability": "solid-figure-v1",
+  "space": {
+    "points": [
+      {
+        "id": "D",
+        "at": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "B",
+        "at": [
+          3,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "C",
+        "at": [
+          3,
+          4,
+          0
+        ]
+      },
+      {
+        "id": "A",
+        "at": [
+          0,
+          0,
+          "sqrt(7)"
+        ]
+      }
+    ],
+    "segments": [
+      {
+        "from": "D",
+        "to": "B",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "B",
+        "to": "C",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "C",
+        "to": "D",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "B",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "C",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "D",
+        "style": "AUTO",
+        "role": "REF"
+      }
+    ]
+  },
+  "dims": [
+    {
+      "from": "B",
+      "to": "C",
+      "label": "4"
+    },
+    {
+      "from": "C",
+      "to": "D",
+      "label": "5"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "B",
+        "refs": [
+          "A",
+          "C"
+        ]
+      },
+      {
+        "at": "D",
+        "refs": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "at": "D",
+        "refs": [
+          "A",
+          "C"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "arcs": 1,
+        "value": 45,
+        "label": "45^\\circ"
+      }
+    ]
+  },
+  "caption": "AD가 밑면 BCD에 수직인 사면체 ABCD",
+  "accessibilityDescription": "AD가 밑면 BCD에 수직인 사면체 ABCD. 직각 관계와 45도 호를 실제 3D 점에 결속; 부피 정답은 표시하지 않음. 미지 정답은 숫자로 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AB⊥BC",
+      "mappedTo": [
+        "marks.rightAngles[0]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "AD⊥BD, AD⊥CD",
+      "mappedTo": [
+        "marks.rightAngles[1]",
+        "marks.rightAngles[2]"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "∠ACB=45°",
+      "mappedTo": [
+        "marks.angles[0]"
+      ]
+    },
+    {
+      "id": "c4",
+      "condition": "BC=4, CD=5",
+      "mappedTo": [
+        "dims[0]",
+        "dims[1]"
+      ]
+    },
+    {
+      "id": "c5",
+      "condition": "사면체 ABCD의 여섯 모서리",
+      "mappedTo": [
+        "space.segments[0]",
+        "space.segments[1]",
+        "space.segments[2]",
+        "space.segments[3]",
+        "space.segments[4]",
+        "space.segments[5]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "직각 관계와 45도 호를 실제 3D 점에 결속",
+    "부피 정답은 표시하지 않음"
+  ],
+  "sourceQuote": "[그림: 사면체 $\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AD}}$는 밑면 $\\mathrm{BCD}$의 두 모서리 $\\overline{\\mathrm{BD}}, \\overline{\\mathrm{CD}}$와 각각 수직이다. 삼각형 $\\mathrm{ABC}$는 $\\angle\\mathrm{B}=90^\\c"
+}

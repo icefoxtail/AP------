@@ -1,0 +1,140 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 4,
+        "depth": 4
+      },
+      "height": 4,
+      "names": "EFGHABCD",
+      "points": [
+        {
+          "id": "M",
+          "at": {
+            "midpoint": [
+              "F",
+              "G"
+            ]
+          }
+        },
+        {
+          "id": "I",
+          "at": {
+            "footOnLine": {
+              "from": "A",
+              "line": [
+                "H",
+                "M"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "H",
+      "to": "M",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "A",
+      "to": "I",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "E",
+      "to": "I",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "I",
+      "to": "H",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "dims": [
+    {
+      "from": "A",
+      "to": "B",
+      "label": "4"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "I",
+        "refs": [
+          "A",
+          "H"
+        ]
+      },
+      {
+        "at": "I",
+        "refs": [
+          "E",
+          "H"
+        ]
+      }
+    ]
+  },
+  "solidCaption": {
+    "text": "직육면체"
+  },
+  "caption": "모서리 4 정육면체에서 FG 중점 M과 두 수선 AI·EI",
+  "accessibilityDescription": "모서리 4 정육면체에서 FG 중점 M과 두 수선 AI·EI. A와 E에서 같은 I로 이어지는 삼수선 관계; AI의 미지 정답 수치 미표시. 미지 정답은 숫자로 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "모서리 길이 4",
+      "mappedTo": [
+        "dims[0]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "M은 FG 중점",
+      "mappedTo": [
+        "solids[0].points[0]"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "HM 연결",
+      "mappedTo": [
+        "segments[0]"
+      ]
+    },
+    {
+      "id": "c4",
+      "condition": "AI⊥HM",
+      "mappedTo": [
+        "solids[0].points[1]",
+        "segments[1]",
+        "marks.rightAngles[0]"
+      ]
+    },
+    {
+      "id": "c5",
+      "condition": "EI 연결과 직각",
+      "mappedTo": [
+        "segments[2]",
+        "marks.rightAngles[1]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "A와 E에서 같은 I로 이어지는 삼수선 관계",
+    "AI의 미지 정답 수치 미표시"
+  ],
+  "sourceQuote": "[그림: 한 모서리의 길이가 4인 정육면체 $\\mathrm{ABCD-EFGH}$. 밑면 모서리 $\\mathrm{FG}$의 중점 $\\mathrm{M}$과 꼭짓점 $\\mathrm{H}$를 잇는 선분 $\\mathrm{HM}$이 있고, 꼭짓점 $\\mathrm{A}$에서 선분 $\\mathrm{HM}$에 수선 $\\mathrm{AI}"
+}

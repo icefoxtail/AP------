@@ -1,0 +1,165 @@
+{
+  "capability": "solid-figure-v1",
+  "space": {
+    "points": [
+      {
+        "id": "A",
+        "at": [
+          -5,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "B",
+        "at": [
+          5,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "H",
+        "at": [
+          0,
+          "4*sqrt(5)",
+          0
+        ]
+      },
+      {
+        "id": "P",
+        "at": [
+          0,
+          "4*sqrt(5)",
+          8
+        ]
+      }
+    ],
+    "planes": [
+      {
+        "id": "alpha",
+        "name": "\\alpha",
+        "through": [
+          "A",
+          "B",
+          "H"
+        ]
+      }
+    ],
+    "lines": [
+      {
+        "id": "l",
+        "name": "l",
+        "through": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "segments": [
+      {
+        "from": "A",
+        "to": "B",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "P",
+        "to": "A",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "P",
+        "to": "B",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "P",
+        "to": "H",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "H",
+        "to": "A",
+        "style": "AUTO",
+        "role": "REF"
+      }
+    ]
+  },
+  "dims": [
+    {
+      "from": "A",
+      "to": "B",
+      "label": "10"
+    },
+    {
+      "from": "P",
+      "to": "A",
+      "label": "13"
+    },
+    {
+      "from": "P",
+      "to": "B",
+      "label": "13"
+    },
+    {
+      "from": "P",
+      "to": "H",
+      "label": "8"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "H",
+        "refs": [
+          "P",
+          "A"
+        ]
+      }
+    ]
+  },
+  "caption": "평면 α의 직선 l 위 AB와 점 P의 수선 PH",
+  "accessibilityDescription": "평면 α의 직선 l 위 AB와 점 P의 수선 PH. 주어진 길이를 만족하는 이등변삼각형 PAB; 점 H를 지나는 평면 수선 PH. 미지 정답은 숫자로 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AB=10",
+      "mappedTo": [
+        "dims[0]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "PA=PB=13",
+      "mappedTo": [
+        "dims[1]",
+        "dims[2]"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "PH=8, PH⊥α",
+      "mappedTo": [
+        "dims[3]",
+        "space.planes[0]",
+        "marks.rightAngles[0]"
+      ]
+    },
+    {
+      "id": "c4",
+      "condition": "A,B가 l 위",
+      "mappedTo": [
+        "space.lines[0]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "주어진 길이를 만족하는 이등변삼각형 PAB",
+    "점 H를 지나는 평면 수선 PH"
+  ],
+  "sourceQuote": "[그림: 평면 $\\alpha$ 위에 두 점 $\\mathrm{A, B}$를 지나는 직선 $l$이 있고, 평면 밖의 점 $\\mathrm{P}$에서 평면 $\\alpha$에 내린 수선의 발이 $\\mathrm{H}$이다. 점 $\\mathrm{P}$에서 점 $\\mathrm{A, B}$로 각각 선분이 그어져 이등변삼각형 $\\mathr"
+}
