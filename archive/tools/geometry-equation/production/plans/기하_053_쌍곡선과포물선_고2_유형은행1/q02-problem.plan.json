@@ -1,0 +1,10 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conics":[{"id":"h","kind":"HYPERBOLA","center":["0","0"],"aSquared":"1","bSquared":"8","transverse":"X"},{"id":"p","kind":"PARABOLA","vertex":["0","0"],"p":"3","axis":"X"}],
+  "points":[{"id":"F","kind":"FOCUS","curve":"h","side":1},{"id":"F'","kind":"FOCUS","curve":"h","side":-1},{"id":"P","kind":"CONIC_CONIC","curves":["h","p"],"which":2},{"id":"Q","kind":"CONIC_CONIC","curves":["h","p"],"which":1}],
+  "segments":[{"id":"PQ","from":"P","to":"Q","label":"4\\sqrt{6}"}],
+  "caption":"공통 초점 F를 갖는 쌍곡선과 포물선의 위·아래 교점 P,Q와 길이 4√6인 현",
+  "accessibilityDescription":"오른쪽 초점 F(3,0)를 공유하는 쌍곡선 x²−y²/8=1과 오른쪽으로 열리는 포물선 y²=12x가 있다. 두 곡선의 교점 P(위),Q(아래)는 x축 대칭이고 x좌표는 F보다 작다. 세로 현 PQ의 주어진 길이는 4√6이다.",
+  "sourceConditions":[{"id":"c1","condition":"공유 초점의 좌표를 c라고 놓으면 쌍곡선의 a_h²=1,b_h²=c²−1이고 포물선 p=c다. PQ=4√6에서 y_P²=24, x_P=6/c를 얻는다.","mappedTo":["h","p","F","P","Q","PQ"]},{"id":"c2","condition":"두 곡선 식에서 c²=4 또는9이며 원문 x_P<c가 c²=9만 허용하므로 c=3, b_h²=8, 포물선 y²=12x이다. 엔진의 두 교점은 (2,±2√6)이다.","mappedTo":["h","p","F","F'","P","Q"]},{"id":"c3","condition":"a+b의 최종 답과 이 도식에서 역산된 문자 계수값은 문제 그림에 별도 표기하지 않는다.","mappedTo":["h","p"]}],
+  "newVisualInformation":["쌍곡선 초점과 포물선 초점이 계산상 완전히 동일하도록 두 conic 정의","두 공통 교점 P,Q를 임의 점 대신 CONIC_CONIC으로 구하고 현 길이4√6을 실선 라벨로 표시"]
+}

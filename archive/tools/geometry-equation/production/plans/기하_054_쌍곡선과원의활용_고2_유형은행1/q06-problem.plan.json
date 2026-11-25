@@ -1,0 +1,12 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conics":[{"id":"h","kind":"HYPERBOLA","center":["0","0"],"aSquared":"25","bSquared":"36","transverse":"X"},{"id":"c","kind":"CIRCLE","center":["5","4"],"rSquared":"16"}],
+  "points":[{"id":"F","kind":"FOCUS","curve":"h","side":1},{"id":"F'","kind":"FOCUS","curve":"h","side":-1},{"id":"O","kind":"ORIGIN"},{"id":"P","kind":"ON_CONIC","curve":"h","x":"13","sign":"POS"},{"id":"Q","kind":"CENTER","curve":"c"},{"id":"T","kind":"FOOT","from":"Q","onto":"ax","rightAngle":true,"label":false}],
+  "lines":[{"id":"ax","y":"0","hidden":true,"tangent":true,"curve":"c"},{"id":"l1","through":["P","F'"],"hidden":true,"tangent":true,"curve":"c"},{"id":"l2","through":["P","F"],"hidden":true,"tangent":true,"curve":"c"}],
+  "segments":[{"id":"PF","from":"P","to":"F"},{"id":"PFp","from":"P","to":"F'"},{"id":"FFp","from":"F","to":"F'"},{"id":"OQ","from":"O","to":"Q"},{"id":"QT","from":"Q","to":"T","label":"4","dashed":true}],
+  "polygons":[{"id":"tri","points":["P","F'","F"],"fill":"NONE"}],
+  "caption":"초점 삼각형 PF′F의 반지름 4인 내접원, 중심 Q와 원점 O 사이의 선분 OQ",
+  "accessibilityDescription":"쌍곡선 x²/25−y²/36=1의 두 초점 F,F′ 및 제1사분면 P가 만드는 삼각형 내부에 반지름 4인 원이 세 변과 접한다. 원의 중심 Q에서 원점 O를 잇는 선분 OQ와 Q에서 x축 접점에 내린 반지름이 보인다.",
+  "sourceConditions":[{"id":"c1","condition":"쌍곡선 초점 ±√61과 오른쪽 가지 P에 대해 내접원 반지름4로부터 축 접점 T=(5,0), 내심 Q=(5,4), P=(13,72/5)를 얻는다.","mappedTo":["h","c","F","F'","P","Q","T","QT"]},{"id":"c2","condition":"원의 반지름4 및 PF,PF′,FF′ 세 변 접함을 x축 접선 ax, 보조 접선 l1,l2의 tangent:true로 실제 검증한다.","mappedTo":["ax","l1","l2","PF","PFp","FFp","tri"]},{"id":"c3","condition":"OQ의 제곱은 물음의 최종 답이므로 선분 OQ에는 수치 길이 라벨을 표시하지 않는다.","mappedTo":["O","Q","OQ"]}],
+  "newVisualInformation":["세 삼각형 변에 닿는 내접원을 임의 크기 원이 아니라 좌표/접선 계산으로 구현","원의 주어진 반지름4만 표시하고 원점 거리 제곱의 정답은 비노출"]
+}

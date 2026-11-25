@@ -1,0 +1,12 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conics":[{"id":"h","kind":"HYPERBOLA","center":["0","0"],"aSquared":"9","bSquared":"16","transverse":"X"},{"id":"c","kind":"CIRCLE","center":["5","0"],"rSquared":"36"}],
+  "points":[{"id":"A","kind":"FOCUS","curve":"h","side":-1,"coordinates":true},{"id":"C","kind":"CENTER","curve":"c","coordinates":true},{"id":"B","kind":"TANGENT_FROM","curve":"c","from":"A","which":2},{"id":"P","kind":"LINE_CONIC","curve":"h","line":"l","which":1}],
+  "lines":[{"id":"l","through":["A","B"],"hidden":true,"tangent":true,"curve":"c"}],
+  "segments":[{"id":"AB","from":"A","to":"B"},{"id":"BC","from":"B","to":"C","label":"6"},{"id":"PB","from":"P","to":"B"},{"id":"PC","from":"P","to":"C"}],
+  "polygons":[{"id":"tri","points":["P","B","C"],"fill":"NONE"}],
+  "caption":"A(-5,0)에서 C(5,0) 중심의 원에 그은 접선 위 P,B와 삼각형 PBC",
+  "accessibilityDescription":"쌍곡선 x²/9−y²/16=1의 왼쪽 초점 A(-5,0)에서 원 (x−5)²+y²=36에 위쪽 접선 l을 긋는다. 제1사분면의 접점 B에서 중심 C로 반지름 6의 선분을 이었고, 같은 직선이 왼쪽 쌍곡선 가지와 제2사분면 P에서 만난다. P,B,C를 잇는 삼각형이 있다.",
+  "sourceConditions":[{"id":"c1","condition":"쌍곡선 두 초점 ±5 중 왼쪽을 A, 오른쪽을 원의 중심 C로 사용하며 원 반지름6은 주어진 값이다.","mappedTo":["h","c","A","C","BC"]},{"id":"c2","condition":"A에서 원에 그은 위쪽 접점 B=(7/5,24/5)를 TANGENT_FROM으로 계산하고, AB 직선 위 제2사분면 쌍곡선 교점 P를 LINE_CONIC으로 계산한다.","mappedTo":["B","l","P","AB"]},{"id":"c3","condition":"원본 접선과 반지름의 직각이 좌표상 성립하나 접점 직각호 전용 필드는 ENGINE_CAPABILITY_PENDING이다. 구하는 삼각형 둘레는 비노출한다.","mappedTo":["AB","BC","PB","PC","tri"]}],
+  "newVisualInformation":["원-접선 접점 B를 공식 접점 계산으로 도출","원본의 A,B,P 공선성과 BC 수직·반지름6을 실제 도형/라벨로 구현"]
+}

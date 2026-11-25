@@ -1,0 +1,10 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conics":[{"id":"e","kind":"ELLIPSE","center":["0","0"],"aSquared":"49","bSquared":"16","major":"X"},{"id":"h","kind":"HYPERBOLA","center":["0","0"],"aSquared":"9","bSquared":"24","transverse":"X"}],
+  "points":[{"id":"F","kind":"FOCUS","curve":"e","side":1},{"id":"F'","kind":"FOCUS","curve":"e","side":-1},{"id":"P","kind":"CONIC_CONIC","curves":["e","h"],"which":4}],
+  "segments":[{"id":"PF","from":"P","to":"F","label":"4"},{"id":"PFp","from":"P","to":"F'"}],
+  "caption":"공유 초점 F,F′을 갖는 타원과 쌍곡선의 첫사분면 공통 교점 P, 주어진 PF=4",
+  "accessibilityDescription":"타원 x²/a²+y²/16=1과 쌍곡선 x²/9−y²/b²=1은 두 초점을 공유한다. 제1사분면의 공통 교점 P는 오른쪽 초점 F에 거리 4이며 왼쪽 초점 F′에도 선분으로 연결되어 있다.",
+  "sourceConditions":[{"id":"c1","condition":"쌍곡선 주축 길이6, PF=4에서 PF′=10이고 타원 장축 길이14로 a_e²=49이다. 두 곡선의 초점거리 제곱 c²=49−16=33, 쌍곡선 b_h²=33−9=24이다.","mappedTo":["e","h","F","F'"]},{"id":"c2","condition":"엔진 CONIC_CONIC으로 두 곡선의 제1사분면 교점 P를 지정하고 실제 PF=4임을 확인한다. 답 a²+b²는 비노출한다.","mappedTo":["P","PF","PFp"]}],
+  "newVisualInformation":["두 곡선의 공통 초점거리 제곱33을 엔진에 정확히 결속","주어진 PF=4만 실제 길이 라벨로 표기"]
+}

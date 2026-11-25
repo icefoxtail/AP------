@@ -1,0 +1,10 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conics":[{"id":"h","kind":"HYPERBOLA","center":["0","0"],"aSquared":"9","bSquared":"55","transverse":"X"},{"id":"c","kind":"CIRCLE","center":["-8","0"],"rSquared":"25","label":"C"}],
+  "points":[{"id":"F","kind":"FOCUS","curve":"h","side":1},{"id":"F'","kind":"FOCUS","curve":"h","side":-1},{"id":"P","kind":"ON_CONIC","curve":"h","x":"15/4","sign":"POS"},{"id":"Q","kind":"TANGENT_FROM","curve":"c","from":"P","which":1}],
+  "segments":[{"id":"PF","from":"P","to":"F"},{"id":"PFp","from":"P","to":"F'"},{"id":"PQ","from":"P","to":"Q","label":"12"},{"id":"FpQ","from":"F'","to":"Q","dashed":true}],
+  "caption":"왼쪽 초점 F′ 중심의 접원 C에 제1사분면 P에서 그은 길이 12의 접선 PQ",
+  "accessibilityDescription":"쌍곡선 x²/9−y²/55=1의 초점 F′(-8,0),F(8,0)가 있다. F′ 중심 반지름 5인 원 C가 쌍곡선의 좌측 꼭짓점에서 한 번 만난다. 제1사분면의 쌍곡선 위 P에서 원 위의 접점 Q로 그은 선분 PQ의 길이는 12다.",
+  "sourceConditions":[{"id":"c1","condition":"초점거리는 c=8, 주축 반길이3이다. 원 C는 F′ 중심에서 왼쪽 꼭짓점(-3,0)까지 거리5인 실제 원이다.","mappedTo":["h","c","F","F'"]},{"id":"c2","condition":"PQ=12와 원 반지름5에서 PF′=13, 쌍곡선 정의상 PF=7이므로 P=(15/4,3√55/4)이다. Q는 원에 그은 실제 접점으로 TANGENT_FROM을 사용한다.","mappedTo":["P","Q","PQ","PF","PFp","FpQ"]},{"id":"c3","condition":"PQ와 F′Q의 직각호는 현재 표식 필드가 없어 ENGINE_CAPABILITY_PENDING. 구하는 PF′+PF는 비노출한다.","mappedTo":["PQ","FpQ"]}],
+  "newVisualInformation":["원 C가 쌍곡선 좌측 꼭짓점에서 실제 한 점 접하도록 모델링","길이12 접선을 실제 접점 엔진 기능으로 생성하고 삼각형 정답은 가림"]
+}

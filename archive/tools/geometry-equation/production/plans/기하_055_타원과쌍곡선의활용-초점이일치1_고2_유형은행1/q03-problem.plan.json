@@ -1,0 +1,10 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conics":[{"id":"e","kind":"ELLIPSE","center":["0","0"],"aSquared":"49","bSquared":"24","major":"X"},{"id":"h","kind":"HYPERBOLA","center":["0","0"],"aSquared":"4","bSquared":"21","transverse":"X"}],
+  "points":[{"id":"F","kind":"FOCUS","curve":"e","side":1},{"id":"F'","kind":"FOCUS","curve":"e","side":-1},{"id":"P","kind":"CONIC_CONIC","curves":["e","h"],"which":4},{"id":"A","kind":"VERTEX","curve":"h","side":1},{"id":"B","kind":"VERTEX","curve":"e","side":1}],
+  "segments":[{"id":"PF","from":"P","to":"F"},{"id":"PFp","from":"P","to":"F'"},{"id":"AB","from":"A","to":"B"}],
+  "caption":"공유 초점을 갖는 타원과 쌍곡선의 양의 x축 꼭짓점 A,B 사이 선분 AB와 공통 교점 P",
+  "accessibilityDescription":"두 초점 F,F′을 공유하는 타원과 쌍곡선이 제1사분면 P에서 만난다. 쌍곡선의 양의 x축 꼭짓점 A는 원점에 더 가깝고 타원의 양의 x축 꼭짓점 B가 오른쪽에 있으며, 두 꼭짓점 사이 선분 AB가 표시된다. P에서 두 초점으로 선분을 그었다.",
+  "sourceConditions":[{"id":"c1","condition":"PF′+PF=14에서 타원 장반경7, PF′−PF=4에서 쌍곡선 주축 반길이2다. 공유 초점 c는 2<c<7 중 대표 c=5로 잡아 타원 b²24, 쌍곡선 b²21을 선택한다.","mappedTo":["e","h","F","F'"]},{"id":"c2","condition":"제1사분면 공통 교점 P=(14/5,6√14/5), 양의 x축 쌍곡선 꼭짓점 A=(2,0), 타원 꼭짓점 B=(7,0)을 엔진의 계산 점으로 얻는다.","mappedTo":["P","A","B","PF","PFp","AB"]},{"id":"c3","condition":"대표 초점거리 선택은 원문이 정하지 않은 자유도를 설명하기 위함이다. AB의 정답 길이는 표시하지 않는다.","mappedTo":["AB"]}],
+  "newVisualInformation":["두 곡선의 공통 초점과 교점을 정확한 수학 노드로 구성","A,B를 실제 양의 x축 꼭짓점으로 배치하고 구하는 길이 AB는 비표시"]
+}

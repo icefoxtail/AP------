@@ -1,0 +1,10 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conics":[{"id":"h","kind":"HYPERBOLA","center":["0","0"],"aSquared":"16","bSquared":"128","transverse":"X"},{"id":"c","kind":"CIRCLE","center":["12","0"],"rSquared":"64","label":"C"}],
+  "points":[{"id":"F","kind":"FOCUS","curve":"h","side":1},{"id":"F'","kind":"FOCUS","curve":"h","side":-1},{"id":"P","kind":"ON_CONIC","curve":"h","x":"-13/3","sign":"POS"},{"id":"Q","kind":"TANGENT_FROM","curve":"c","from":"P","which":2}],
+  "segments":[{"id":"PF","from":"P","to":"F"},{"id":"PFp","from":"P","to":"F'"},{"id":"PQ","from":"P","to":"Q","label":"15"},{"id":"FQ","from":"F","to":"Q","dashed":true}],
+  "caption":"오른쪽 초점 F 중심의 접원 C에 제2사분면 P에서 그은 길이 15의 접선 PQ",
+  "accessibilityDescription":"쌍곡선 x²/16−y²/128=1의 초점 F′(-12,0),F(12,0)가 있다. F 중심 반지름 8인 원 C는 오른쪽 쌍곡선 꼭짓점에서 한 번 만나고, 제2사분면 쌍곡선 위의 P에서 원 위의 Q로 그은 접선 PQ의 길이는 15다.",
+  "sourceConditions":[{"id":"c1","condition":"쌍곡선 c=12,a=4로 F 중심의 접원 C는 오른쪽 꼭짓점(4,0)을 지나고 반지름8이다.","mappedTo":["h","c","F","F'"]},{"id":"c2","condition":"PQ=15와 반지름8에서 PF=17이다. 왼쪽 가지이므로 PF−PF′=8, 따라서 PF′=9이고 P=(-13/3,10√2/3)이다. 실제 TANGENT_FROM 접점을 Q로 선택한다.","mappedTo":["P","Q","PQ","PF","PFp","FQ"]},{"id":"c3","condition":"접선 PQ와 반지름 FQ의 직각호는 별도 필드가 없어 ENGINE_CAPABILITY_PENDING. PF′의 미지 길이는 라벨 없이 둔다.","mappedTo":["PQ","FQ"]}],
+  "newVisualInformation":["원과 쌍곡선의 단일 접점을 진짜 반지름/꼭짓점 위치로 구현","P→Q 접선을 실제 TANGENT_FROM으로 구성하고 주어진 길이15만 표시"]
+}

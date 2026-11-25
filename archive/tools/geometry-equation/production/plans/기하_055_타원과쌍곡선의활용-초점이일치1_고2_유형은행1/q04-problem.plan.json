@@ -1,0 +1,10 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conics":[{"id":"e","kind":"ELLIPSE","center":["0","0"],"aSquared":"59/2+3*sqrt(109)/2","bSquared":"9/2+3*sqrt(109)/2","major":"X"},{"id":"h","kind":"HYPERBOLA","center":["0","0"],"aSquared":"59/2-3*sqrt(109)/2","bSquared":"3*sqrt(109)/2-9/2","transverse":"X"}],
+  "points":[{"id":"F","kind":"FOCUS","curve":"e","side":1},{"id":"F'","kind":"FOCUS","curve":"e","side":-1},{"id":"P","kind":"CONIC_CONIC","curves":["e","h"],"which":4,"coordinates":true},{"id":"A","kind":"VERTEX","curve":"h","side":1},{"id":"B","kind":"VERTEX","curve":"e","side":1}],
+  "segments":[{"id":"PF","from":"P","to":"F"},{"id":"PFp","from":"P","to":"F'"},{"id":"FFp","from":"F","to":"F'"},{"id":"AB","from":"A","to":"B"}],
+  "caption":"F(5,0),F′(-5,0)을 공유하는 타원과 쌍곡선, 공통 점 P(5,3), 두 양의 x축 꼭짓점 A,B",
+  "accessibilityDescription":"타원과 쌍곡선의 두 초점은 F(5,0),F′(-5,0)이며 두 곡선은 주어진 P(5,3)에서 만난다. P와 F를 잇는 선분은 세로이고, 두 초점 사이 선분은 가로라 서로 직각이다. 쌍곡선 양의 x축 꼭짓점 A와 타원 꼭짓점 B 사이 선분 AB가 있다.",
+  "sourceConditions":[{"id":"c1","condition":"주어진 F=(5,0),F′=(-5,0),P=(5,3)에서 PF=3,PF′=√109이다. 타원의 장반경=(√109+3)/2, 쌍곡선 주축 반길이=(√109−3)/2다.","mappedTo":["e","h","F","F'","P"]},{"id":"c2","condition":"타원 a²=(59+3√109)/2,b²=(9+3√109)/2; 쌍곡선 a²=(59−3√109)/2,b²=(3√109−9)/2는 초점거리5를 공유하며 P를 교점으로 갖는다.","mappedTo":["e","h","P"]},{"id":"c3","condition":"A,B를 각 곡선의 x축 양의 꼭짓점으로 만들고 AB 길이는 숨긴다. F의 직각호는 별도 엔진 각 표식이 없어 ENGINE_CAPABILITY_PENDING이다.","mappedTo":["A","B","AB","PF","FFp"]}],
+  "newVisualInformation":["무리수 포함 두 곡선 식을 정확한 필드로 모델링하여 주어진 P(5,3)를 실제 두 곡선 교점으로 생성","정답 AB 길이 비노출, F 위치의 직각호는 엔진 보강 대기"]
+}

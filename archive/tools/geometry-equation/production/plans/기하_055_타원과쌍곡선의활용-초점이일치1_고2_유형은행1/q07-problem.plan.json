@@ -1,0 +1,10 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conics":[{"id":"e","kind":"ELLIPSE","center":["0","0"],"aSquared":"64","bSquared":"16","major":"X"},{"id":"h","kind":"HYPERBOLA","center":["0","0"],"aSquared":"16","bSquared":"32","transverse":"X"}],
+  "points":[{"id":"F","kind":"FOCUS","curve":"e","side":1},{"id":"F'","kind":"FOCUS","curve":"e","side":-1},{"id":"P","kind":"CONIC_CONIC","curves":["e","h"],"which":4}],
+  "segments":[{"id":"PF","from":"P","to":"F","label":"t"},{"id":"PFp","from":"P","to":"F'","label":"3t"}],
+  "caption":"공유 초점의 타원과 쌍곡선 제1사분면 교점 P, PF′가 PF의 세 배인 조건",
+  "accessibilityDescription":"타원 x²/a²+y²/16=1과 쌍곡선 x²/16−y²/b²=1은 초점 F,F′을 공유하고 제1사분면 P에서 만난다. 선분 PF에는 t, PF′에는 3t가 표시되어 주어진 세 배 관계를 나타낸다.",
+  "sourceConditions":[{"id":"c1","condition":"쌍곡선 주축 길이8과 PF′=3PF에서 PF=4,PF′=12이고 타원 장반경8, a_e²64이다. 공유 초점 c²=64−16=48, 쌍곡선 b²=48−16=32가 된다.","mappedTo":["e","h","F","F'"]},{"id":"c2","condition":"두 conic의 실제 제1사분면 교점에 P를 두고 PF′:PF=3:1을 각각 3t,t 길이 라벨로 표시한다. a²+b² 정답은 노출하지 않는다.","mappedTo":["P","PF","PFp"]}],
+  "newVisualInformation":["공유 초점거리 제곱48을 가진 실제 타원·쌍곡선 교점을 사용","PF′=3PF라는 주어진 관계를 두 선분의 별도 라벨에 구현"]
+}

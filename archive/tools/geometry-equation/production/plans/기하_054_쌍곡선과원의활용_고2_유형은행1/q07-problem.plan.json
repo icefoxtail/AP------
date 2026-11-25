@@ -1,0 +1,11 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conics":[{"id":"h","kind":"HYPERBOLA","center":["0","0"],"aSquared":"9","bSquared":"16","transverse":"X"},{"id":"c","kind":"CIRCLE","center":["0","5*sqrt(39)/4"],"rSquared":"351/16","label":"C"}],
+  "points":[{"id":"F","kind":"FOCUS","curve":"h","side":1},{"id":"F'","kind":"FOCUS","curve":"h","side":-1},{"id":"P","kind":"ON_CONIC","curve":"h","x":"-24/5","sign":"POS"},{"id":"Q","kind":"TANGENT_FROM","curve":"c","from":"F'","which":1}],
+  "lines":[{"id":"lp","through":["F'","P"],"hidden":true,"tangent":true,"curve":"c"},{"id":"rp","through":["F","P"],"hidden":true,"tangent":true,"curve":"c"}],
+  "segments":[{"id":"PF","from":"P","to":"F"},{"id":"PFp","from":"P","to":"F'"},{"id":"FpQ","from":"F'","to":"Q","label":"8"},{"id":"PQ","from":"P","to":"Q"}],
+  "caption":"y축 위 중심의 원 C가 두 초점 연결선 PF,PF′에 접하고 F′Q=8인 그림",
+  "accessibilityDescription":"쌍곡선 x²/9−y²/16=1 왼쪽 위 가지의 P와 두 초점 F′(-5,0),F(5,0)가 있다. y축 위 중심의 원 C는 두 직선 PF와 PF′에 접하며 F′P의 연장선에서 만나는 접점 Q까지 F′Q=8이다.",
+  "sourceConditions":[{"id":"c1","condition":"PF′<PF와 쌍곡선 거리차6, 양쪽 초점에서의 접선 길이8로부터 PF′=5,PF=11, P=(-24/5,4√39/5)이다.","mappedTo":["h","F","F'","P","PF","PFp"]},{"id":"c2","condition":"y축 중심 원의 중심 (0,5√39/4), 반지름 제곱351/16을 선택하면 직선 PF와 PF′ 모두 진짜 접선이다. F′에서 가까운 접점 Q는 (-117/25,32√39/25)이고 F′Q=8이다.","mappedTo":["c","lp","rp","Q","FpQ","PQ"]},{"id":"c3","condition":"접점 Q의 직각호는 tangent 및 좌표가 참이어도 별도 glyph가 없어 ENGINE_CAPABILITY_PENDING. 최종 두 거리 제곱합은 비노출한다.","mappedTo":["Q","FpQ"]}],
+  "newVisualInformation":["동일 원에 대한 PF,PF′의 이중 접선 성립을 두 tangent:true 주장으로 엔진 검증","연장선 위 접점 Q와 주어진 F′Q=8을 실제 세그먼트로 표시"]
+}

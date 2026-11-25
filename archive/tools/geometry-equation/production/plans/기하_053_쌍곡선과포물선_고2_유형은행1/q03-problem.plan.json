@@ -1,0 +1,10 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conics":[{"id":"h","kind":"HYPERBOLA","center":["0","0"],"aSquared":"4","bSquared":"12","transverse":"X"},{"id":"p","kind":"PARABOLA","vertex":["0","0"],"p":"4","axis":"X"}],
+  "points":[{"id":"F","kind":"FOCUS","curve":"h","side":1},{"id":"F'","kind":"FOCUS","curve":"h","side":-1},{"id":"A","kind":"CONIC_CONIC","curves":["h","p"],"which":2}],
+  "segments":[{"id":"AF","from":"A","to":"F","label":"10"},{"id":"FFp","from":"F","to":"F'"}],
+  "caption":"포물선·쌍곡선의 공통 초점 F와 제1사분면 교점 A를 이은 길이 10인 선분",
+  "accessibilityDescription":"포물선 y²=16x와 쌍곡선 x²/4−y²/12=1은 양의 x축 초점 F(4,0)를 공유한다. 제1사분면 교점 A에서 F까지 선분 길이는 10이고, F에서 왼쪽 초점 F′를 향한 방향과 FA 사이 각의 코사인은 -1/5이다.",
+  "sourceConditions":[{"id":"c1","condition":"AF=10과 포물선 정의에서 x_A+p=10이고, cos∠AFF′=−1/5에서 x_A−p=2이므로 p=4,A=(6,4√6)이다.","mappedTo":["p","A","AF","F","F'"]},{"id":"c2","condition":"AF′=14와 AF=10으로 쌍곡선 주축 길이4, a_h²=4,b_h²=12,c=4이다. A는 두 conic의 실제 제1사분면 교점이다.","mappedTo":["h","p","A","F","F'"]},{"id":"c3","condition":"−1/5인 코사인 각을 점 F에 각호/문자로 그리는 필드는 현재 없어 ENGINE_CAPABILITY_PENDING. 구하는 ab의 정답은 비노출한다.","mappedTo":["AF","FFp"]}],
+  "newVisualInformation":["초점 공유와 교점 A, 선분 AF=10을 수학적으로 동시에 구현","코사인 각도 표시는 엔진 기능 보강 필요로 구분"]
+}
