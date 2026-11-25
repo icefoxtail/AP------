@@ -2,7 +2,7 @@
   "capability": "number-line-figure-v1",
   "numberLine": {
     "rows": [
-      {"kind": "SET", "label": "k 범위", "color": "BLUE", "pieces": [{"lo": {"value": "-1", "state": "OPEN"}, "hi": {"value": "-1/2", "state": "OPEN"}}]},
+      {"kind": "SET", "label": "k의 필요범위", "color": "BLUE", "pieces": [{"lo": {"value": "-1", "state": "OPEN"}, "hi": {"value": "-1/2", "state": "OPEN"}}]},
       {"kind": "POINTS", "label": "정수 a", "band": false, "points": [
         {"id": "A", "value": "-3", "hideName": true},
         {"id": "B", "value": "-2", "hideName": true},
@@ -12,10 +12,10 @@
     ]
   },
   "numberLineCaption": {"text": "분기점 k와 정수 a 후보"},
-  "caption": "전단사성을 만드는 분기점 -1<k<-1/2와, 역함수의 분기별 교점을 세는 a=-3,-2,-1,0을 구분한다.",
+  "caption": "일대일 대응에서 유도되는 k의 필요범위 -1<k<-1/2와 정수 a=-3,-2,-1,0을 구분한다. 실제 k는 두 가지의 경계값이 같은 조건도 만족해야 한다.",
   "sourceConditions": [
-    {"id": "S1", "condition": "전단사 조건은 -1<k<-1/2", "mappedTo": ["numberLine.rows[0]"]},
+    {"id": "S1", "condition": "일대일 대응에서 -1<k<-1/2가 필요하지만 구간 안의 모든 k가 조건을 만족하는 것은 아니다", "mappedTo": ["numberLine.rows[0]"]},
     {"id": "S2", "condition": "교점 개수를 따지는 정수 a는 -3,-2,-1,0", "mappedTo": ["numberLine.rows[1]"]}
   ],
-  "newVisualInformation": ["k의 열린 구간과 a의 정수 후보를 같은 수직선 눈금으로 구분하되 두 변수의 역할은 줄 라벨로 구별한다."]
+  "newVisualInformation": ["k의 필요범위(전체 해집합이 아님)와 정수 a 후보를 구분하며, 가지 선택에 필요한 상대적 위치를 보인다."]
 }
