@@ -1,0 +1,84 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "parameter": {
+      "name": "a",
+      "value": "0"
+    },
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "이동",
+        "pieces": [
+          {
+            "lo": {
+              "param": {
+                "mul": "1",
+                "add": "-2"
+              },
+              "state": "CLOSED"
+            },
+            "hi": {
+              "param": {
+                "mul": "1",
+                "add": "3"
+              },
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "color": "BLUE"
+      },
+      {
+        "kind": "SET",
+        "label": "고정",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-3",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "4",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "color": "GREEN"
+      },
+      {
+        "kind": "RESULT",
+        "label": "공통"
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "어떤 x의 존재와 구간 교집합"
+  },
+  "caption": "해설 예시 a=0: 이동 구간 [-2,3]와 고정 구간 [-3,4]의 교집합은 [-2,3]이다. 실제로 어떤 x가 존재하는 모든 정수 a의 범위는 -6≤a≤6이다.",
+  "accessibilityDescription": "세 줄 수직선. 첫 줄은 a-2부터 a+3까지 이동 구간, 둘째 줄은 -3부터 4까지 고정 구간, 셋째 줄은 그 교집합이다.",
+  "sourceConditions": [
+    {
+      "id": "moving",
+      "condition": "a-2≤x≤a+3",
+      "mappedTo": [
+        "numberLine.parameter",
+        "numberLine.rows[0].pieces"
+      ]
+    },
+    {
+      "id": "fixed",
+      "condition": "-3≤x≤4",
+      "mappedTo": "numberLine.rows[1].pieces"
+    },
+    {
+      "id": "some",
+      "condition": "∃x iff 두 닫힌구간 교집합≠∅; 정수 a -6≤a≤6",
+      "mappedTo": "numberLine.rows[2]"
+    }
+  ],
+  "newVisualInformation": [
+    "예시 a=0에서 이동·고정 구간의 네 CLOSED 끝점과 공통구간을 함께 보여 준다. 접점에서만 만나는 경우도 포함된다."
+  ]
+}

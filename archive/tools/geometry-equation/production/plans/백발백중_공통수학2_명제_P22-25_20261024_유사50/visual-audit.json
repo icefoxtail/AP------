@@ -1,0 +1,500 @@
+{
+  "schema": "textbook-figure-plan-audit-v1",
+  "sourcePath": "archive/exams/textbooks/백발백중_공통수학2/백발백중_공통수학2_명제_P22-25_20261024_유사50.js",
+  "sourceBlobSha": "aac01f437ae9e09ed8d5bae93594dd3ec492a478",
+  "sourceMainBaseSha": "32e72d290a76b90975ddec2f8a667813aded6cd9",
+  "selectedQids": "q13–q24",
+  "scope": "교과서·문제집 12문항 / 문제·해설 24축만 검수. JS, 기출(original/similar), 유형은행(types), 기존 SVG 미변경.",
+  "method": "원문 JS 발문·해설 및 참조 solution.svg의 수직선 끝점·열림/닫힘·구간 라벨과 엔진 numberLine.rows SET/RESULT 실제 그려지는 필드를 독립 검사한다. 매개변수는 해설 예시값만 사용한다.",
+  "count": {
+    "questions": 12,
+    "problemAssessed": 12,
+    "solutionAssessed": 12,
+    "problemExempt": 12,
+    "solutionBeneficial": 12,
+    "solutionExempt": 0,
+    "renderablePlans": 12,
+    "lintShallowPass": 12,
+    "lintFullPass": 12,
+    "drawnFeatureParityPass": 12,
+    "engineCapabilityPending": 0
+  },
+  "visualPolicy": "문제용 정답 비노출, 면 채움 없음, 손 SVG 없음. 실제 렌더·PNG·학생 보기·A4는 별도 NOT_RUN.",
+  "postMergeRemaining": "q01–q12 및 q25–q50 (38문항)",
+  "items": [
+    {
+      "qid": "q13",
+      "questionUid": "BV-BAKBAL-H-COM2-HA-P23-Q03-T1-R1",
+      "sourceOrdinal": 13,
+      "category": "명제의 역과 진리집합의 포함 관계",
+      "sourceAsset": {
+        "problem": null,
+        "solution": "assets/images/백발백중_공통수학2_명제_P22-25_20261024_유사50/BV-BAKBAL-H-COM2-HA-P23-Q03-T1-R1-solution.svg"
+      },
+      "problem": {
+        "judgement": "EXEMPT",
+        "reason": "문제 발문은 수식·문장만으로 완결되어 있고, 해설의 매개변수 표본이나 교집합 그림을 문제 축에 미리 제공하면 풀이 단서 또는 정답이 노출될 수 있어 그림을 면제한다.",
+        "plan": null
+      },
+      "solution": {
+        "judgement": "BENEFICIAL",
+        "reason": "역 q→p의 참을 두 진리집합 Q⊆P의 끝점 포함 관계로 드러낸다.",
+        "plan": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_명제_P22-25_20261024_유사50/q13-solution.plan.json"
+      },
+      "problemCapability": null,
+      "capability": "number-line-figure-v1",
+      "sourceVsPlan": "REVIEWED",
+      "problemDrawnFeatures": [],
+      "drawnFeatures": [
+        "row1 SET P: [{\"lo\":{\"value\":\"-3\",\"state\":\"CLOSED\"},\"hi\":{\"value\":\"5\",\"state\":\"CLOSED\"}}]",
+        "row2 SET Q: [{\"lo\":{\"param\":{\"mul\":\"1\",\"add\":\"-2\"},\"state\":\"CLOSED\"},\"hi\":{\"param\":{\"mul\":\"1\",\"add\":\"2\"},\"state\":\"CLOSED\"}}]",
+        "row3 RESULT 공통: engine-computed intersection"
+      ],
+      "problemPlanLintShallow": "NOT_APPLICABLE",
+      "problemPlanLintFull": "NOT_APPLICABLE",
+      "problemDrawnFeatureParity": "NOT_APPLICABLE",
+      "planLintShallow": "PASS",
+      "planLintFull": "PASS",
+      "drawnFeatureParity": "PASS",
+      "engineCapabilityPending": [],
+      "render": "NOT_RUN",
+      "png": "NOT_RUN",
+      "studentView": "NOT_RUN",
+      "a4": "NOT_RUN"
+    },
+    {
+      "qid": "q14",
+      "questionUid": "BV-BAKBAL-H-COM2-HA-P23-Q03-S1-R1",
+      "sourceOrdinal": 14,
+      "category": "명제의 역과 진리집합의 포함 관계",
+      "sourceAsset": {
+        "problem": null,
+        "solution": "assets/images/백발백중_공통수학2_명제_P22-25_20261024_유사50/BV-BAKBAL-H-COM2-HA-P23-Q03-S1-R1-solution.svg"
+      },
+      "problem": {
+        "judgement": "EXEMPT",
+        "reason": "문제 발문은 수식·문장만으로 완결되어 있고, 해설의 매개변수 표본이나 교집합 그림을 문제 축에 미리 제공하면 풀이 단서 또는 정답이 노출될 수 있어 그림을 면제한다.",
+        "plan": null
+      },
+      "solution": {
+        "judgement": "BENEFICIAL",
+        "reason": "역 q→p의 참을 두 진리집합 Q⊆P의 끝점 포함 관계로 드러낸다.",
+        "plan": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_명제_P22-25_20261024_유사50/q14-solution.plan.json"
+      },
+      "problemCapability": null,
+      "capability": "number-line-figure-v1",
+      "sourceVsPlan": "REVIEWED",
+      "problemDrawnFeatures": [],
+      "drawnFeatures": [
+        "row1 SET P: [{\"lo\":{\"value\":\"-2\",\"state\":\"CLOSED\"},\"hi\":{\"value\":\"5\",\"state\":\"CLOSED\"}}]",
+        "row2 SET Q: [{\"lo\":{\"param\":{\"mul\":\"1\",\"add\":\"-1\"},\"state\":\"CLOSED\"},\"hi\":{\"param\":{\"mul\":\"1\",\"add\":\"1\"},\"state\":\"CLOSED\"}}]",
+        "row3 RESULT 공통: engine-computed intersection"
+      ],
+      "problemPlanLintShallow": "NOT_APPLICABLE",
+      "problemPlanLintFull": "NOT_APPLICABLE",
+      "problemDrawnFeatureParity": "NOT_APPLICABLE",
+      "planLintShallow": "PASS",
+      "planLintFull": "PASS",
+      "drawnFeatureParity": "PASS",
+      "engineCapabilityPending": [],
+      "render": "NOT_RUN",
+      "png": "NOT_RUN",
+      "studentView": "NOT_RUN",
+      "a4": "NOT_RUN"
+    },
+    {
+      "qid": "q15",
+      "questionUid": "BV-BAKBAL-H-COM2-HA-P23-Q03-S2-R1",
+      "sourceOrdinal": 15,
+      "category": "명제의 역과 진리집합의 포함 관계",
+      "sourceAsset": {
+        "problem": null,
+        "solution": "assets/images/백발백중_공통수학2_명제_P22-25_20261024_유사50/BV-BAKBAL-H-COM2-HA-P23-Q03-S2-R1-solution.svg"
+      },
+      "problem": {
+        "judgement": "EXEMPT",
+        "reason": "문제 발문은 수식·문장만으로 완결되어 있고, 해설의 매개변수 표본이나 교집합 그림을 문제 축에 미리 제공하면 풀이 단서 또는 정답이 노출될 수 있어 그림을 면제한다.",
+        "plan": null
+      },
+      "solution": {
+        "judgement": "BENEFICIAL",
+        "reason": "역 q→p의 참을 두 진리집합 Q⊆P의 끝점 포함 관계로 드러낸다.",
+        "plan": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_명제_P22-25_20261024_유사50/q15-solution.plan.json"
+      },
+      "problemCapability": null,
+      "capability": "number-line-figure-v1",
+      "sourceVsPlan": "REVIEWED",
+      "problemDrawnFeatures": [],
+      "drawnFeatures": [
+        "row1 SET P: [{\"lo\":{\"value\":\"-2\",\"state\":\"CLOSED\"},\"hi\":{\"value\":\"3\",\"state\":\"CLOSED\"}}]",
+        "row2 SET Q: [{\"lo\":{\"param\":{\"mul\":\"1\",\"add\":\"-1\"},\"state\":\"CLOSED\"},\"hi\":{\"param\":{\"mul\":\"1\",\"add\":\"1\"},\"state\":\"CLOSED\"}}]",
+        "row3 RESULT 공통: engine-computed intersection"
+      ],
+      "problemPlanLintShallow": "NOT_APPLICABLE",
+      "problemPlanLintFull": "NOT_APPLICABLE",
+      "problemDrawnFeatureParity": "NOT_APPLICABLE",
+      "planLintShallow": "PASS",
+      "planLintFull": "PASS",
+      "drawnFeatureParity": "PASS",
+      "engineCapabilityPending": [],
+      "render": "NOT_RUN",
+      "png": "NOT_RUN",
+      "studentView": "NOT_RUN",
+      "a4": "NOT_RUN"
+    },
+    {
+      "qid": "q16",
+      "questionUid": "BV-BAKBAL-H-COM2-HA-P23-Q03-S3-R1",
+      "sourceOrdinal": 16,
+      "category": "명제의 역과 진리집합의 포함 관계",
+      "sourceAsset": {
+        "problem": null,
+        "solution": "assets/images/백발백중_공통수학2_명제_P22-25_20261024_유사50/BV-BAKBAL-H-COM2-HA-P23-Q03-S3-R1-solution.svg"
+      },
+      "problem": {
+        "judgement": "EXEMPT",
+        "reason": "문제 발문은 수식·문장만으로 완결되어 있고, 해설의 매개변수 표본이나 교집합 그림을 문제 축에 미리 제공하면 풀이 단서 또는 정답이 노출될 수 있어 그림을 면제한다.",
+        "plan": null
+      },
+      "solution": {
+        "judgement": "BENEFICIAL",
+        "reason": "역 q→p의 참을 두 진리집합 Q⊆P의 끝점 포함 관계로 드러낸다.",
+        "plan": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_명제_P22-25_20261024_유사50/q16-solution.plan.json"
+      },
+      "problemCapability": null,
+      "capability": "number-line-figure-v1",
+      "sourceVsPlan": "REVIEWED",
+      "problemDrawnFeatures": [],
+      "drawnFeatures": [
+        "row1 SET P: [{\"lo\":{\"value\":\"-2\",\"state\":\"CLOSED\"},\"hi\":{\"value\":\"6\",\"state\":\"CLOSED\"}}]",
+        "row2 SET Q: [{\"lo\":{\"param\":{\"mul\":\"1\",\"add\":\"-2\"},\"state\":\"CLOSED\"},\"hi\":{\"param\":{\"mul\":\"1\",\"add\":\"2\"},\"state\":\"CLOSED\"}}]",
+        "row3 RESULT 공통: engine-computed intersection"
+      ],
+      "problemPlanLintShallow": "NOT_APPLICABLE",
+      "problemPlanLintFull": "NOT_APPLICABLE",
+      "problemDrawnFeatureParity": "NOT_APPLICABLE",
+      "planLintShallow": "PASS",
+      "planLintFull": "PASS",
+      "drawnFeatureParity": "PASS",
+      "engineCapabilityPending": [],
+      "render": "NOT_RUN",
+      "png": "NOT_RUN",
+      "studentView": "NOT_RUN",
+      "a4": "NOT_RUN"
+    },
+    {
+      "qid": "q17",
+      "questionUid": "BV-BAKBAL-H-COM2-HA-P23-Q03-S4-R1",
+      "sourceOrdinal": 17,
+      "category": "명제의 역과 진리집합의 포함 관계",
+      "sourceAsset": {
+        "problem": null,
+        "solution": "assets/images/백발백중_공통수학2_명제_P22-25_20261024_유사50/BV-BAKBAL-H-COM2-HA-P23-Q03-S4-R1-solution.svg"
+      },
+      "problem": {
+        "judgement": "EXEMPT",
+        "reason": "문제 발문은 수식·문장만으로 완결되어 있고, 해설의 매개변수 표본이나 교집합 그림을 문제 축에 미리 제공하면 풀이 단서 또는 정답이 노출될 수 있어 그림을 면제한다.",
+        "plan": null
+      },
+      "solution": {
+        "judgement": "BENEFICIAL",
+        "reason": "역 q→p의 참을 두 진리집합 Q⊆P의 끝점 포함 관계로 드러낸다.",
+        "plan": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_명제_P22-25_20261024_유사50/q17-solution.plan.json"
+      },
+      "problemCapability": null,
+      "capability": "number-line-figure-v1",
+      "sourceVsPlan": "REVIEWED",
+      "problemDrawnFeatures": [],
+      "drawnFeatures": [
+        "row1 SET P: [{\"lo\":{\"value\":\"-2\",\"state\":\"CLOSED\"},\"hi\":{\"value\":\"4\",\"state\":\"CLOSED\"}}]",
+        "row2 SET Q: [{\"lo\":{\"param\":{\"mul\":\"1\",\"add\":\"-1\"},\"state\":\"CLOSED\"},\"hi\":{\"param\":{\"mul\":\"1\",\"add\":\"1\"},\"state\":\"CLOSED\"}}]",
+        "row3 RESULT 공통: engine-computed intersection"
+      ],
+      "problemPlanLintShallow": "NOT_APPLICABLE",
+      "problemPlanLintFull": "NOT_APPLICABLE",
+      "problemDrawnFeatureParity": "NOT_APPLICABLE",
+      "planLintShallow": "PASS",
+      "planLintFull": "PASS",
+      "drawnFeatureParity": "PASS",
+      "engineCapabilityPending": [],
+      "render": "NOT_RUN",
+      "png": "NOT_RUN",
+      "studentView": "NOT_RUN",
+      "a4": "NOT_RUN"
+    },
+    {
+      "qid": "q18",
+      "questionUid": "BV-BAKBAL-H-COM2-HA-P23-Q03-S5-R1",
+      "sourceOrdinal": 18,
+      "category": "명제의 역과 진리집합의 포함 관계",
+      "sourceAsset": {
+        "problem": null,
+        "solution": "assets/images/백발백중_공통수학2_명제_P22-25_20261024_유사50/BV-BAKBAL-H-COM2-HA-P23-Q03-S5-R1-solution.svg"
+      },
+      "problem": {
+        "judgement": "EXEMPT",
+        "reason": "문제 발문은 수식·문장만으로 완결되어 있고, 해설의 매개변수 표본이나 교집합 그림을 문제 축에 미리 제공하면 풀이 단서 또는 정답이 노출될 수 있어 그림을 면제한다.",
+        "plan": null
+      },
+      "solution": {
+        "judgement": "BENEFICIAL",
+        "reason": "역 q→p의 참을 두 진리집합 Q⊆P의 끝점 포함 관계로 드러낸다.",
+        "plan": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_명제_P22-25_20261024_유사50/q18-solution.plan.json"
+      },
+      "problemCapability": null,
+      "capability": "number-line-figure-v1",
+      "sourceVsPlan": "REVIEWED",
+      "problemDrawnFeatures": [],
+      "drawnFeatures": [
+        "row1 SET P: [{\"lo\":{\"value\":\"1\",\"state\":\"CLOSED\"},\"hi\":{\"value\":\"4\",\"state\":\"CLOSED\"}}]",
+        "row2 SET Q: [{\"lo\":{\"param\":{\"mul\":\"1\",\"add\":\"-1\"},\"state\":\"CLOSED\"},\"hi\":{\"param\":{\"mul\":\"1\",\"add\":\"1\"},\"state\":\"CLOSED\"}}]",
+        "row3 RESULT 공통: engine-computed intersection"
+      ],
+      "problemPlanLintShallow": "NOT_APPLICABLE",
+      "problemPlanLintFull": "NOT_APPLICABLE",
+      "problemDrawnFeatureParity": "NOT_APPLICABLE",
+      "planLintShallow": "PASS",
+      "planLintFull": "PASS",
+      "drawnFeatureParity": "PASS",
+      "engineCapabilityPending": [],
+      "render": "NOT_RUN",
+      "png": "NOT_RUN",
+      "studentView": "NOT_RUN",
+      "a4": "NOT_RUN"
+    },
+    {
+      "qid": "q19",
+      "questionUid": "BV-BAKBAL-H-COM2-HA-P23-Q04-T1-R1",
+      "sourceOrdinal": 19,
+      "category": "명제의 역·대우와 필요충분조건",
+      "sourceAsset": {
+        "problem": null,
+        "solution": "assets/images/백발백중_공통수학2_명제_P22-25_20261024_유사50/BV-BAKBAL-H-COM2-HA-P23-Q04-T1-R1-solution.svg"
+      },
+      "problem": {
+        "judgement": "EXEMPT",
+        "reason": "문제 발문은 수식·문장만으로 완결되어 있고, 해설의 매개변수 표본이나 교집합 그림을 문제 축에 미리 제공하면 풀이 단서 또는 정답이 노출될 수 있어 그림을 면제한다.",
+        "plan": null
+      },
+      "solution": {
+        "judgement": "BENEFICIAL",
+        "reason": "역과 대우의 참으로 얻는 P=Q를 같은 숫자·열린/닫힌 두 구간으로 검증한다.",
+        "plan": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_명제_P22-25_20261024_유사50/q19-solution.plan.json"
+      },
+      "problemCapability": null,
+      "capability": "number-line-figure-v1",
+      "sourceVsPlan": "REVIEWED",
+      "problemDrawnFeatures": [],
+      "drawnFeatures": [
+        "row1 SET P: [{\"lo\":{\"value\":\"5\",\"state\":\"OPEN\"},\"hi\":{\"value\":\"8\",\"state\":\"OPEN\"}}]",
+        "row2 SET Q: [{\"lo\":{\"value\":\"5\",\"state\":\"OPEN\"},\"hi\":{\"value\":\"8\",\"state\":\"OPEN\"}}]"
+      ],
+      "problemPlanLintShallow": "NOT_APPLICABLE",
+      "problemPlanLintFull": "NOT_APPLICABLE",
+      "problemDrawnFeatureParity": "NOT_APPLICABLE",
+      "planLintShallow": "PASS",
+      "planLintFull": "PASS",
+      "drawnFeatureParity": "PASS",
+      "engineCapabilityPending": [],
+      "render": "NOT_RUN",
+      "png": "NOT_RUN",
+      "studentView": "NOT_RUN",
+      "a4": "NOT_RUN"
+    },
+    {
+      "qid": "q20",
+      "questionUid": "BV-BAKBAL-H-COM2-HA-P23-Q04-S1-R1",
+      "sourceOrdinal": 20,
+      "category": "명제의 역·대우와 필요충분조건",
+      "sourceAsset": {
+        "problem": null,
+        "solution": "assets/images/백발백중_공통수학2_명제_P22-25_20261024_유사50/BV-BAKBAL-H-COM2-HA-P23-Q04-S1-R1-solution.svg"
+      },
+      "problem": {
+        "judgement": "EXEMPT",
+        "reason": "문제 발문은 수식·문장만으로 완결되어 있고, 해설의 매개변수 표본이나 교집합 그림을 문제 축에 미리 제공하면 풀이 단서 또는 정답이 노출될 수 있어 그림을 면제한다.",
+        "plan": null
+      },
+      "solution": {
+        "judgement": "BENEFICIAL",
+        "reason": "역과 대우의 참으로 얻는 P=Q를 같은 숫자·열린/닫힌 두 구간으로 검증한다.",
+        "plan": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_명제_P22-25_20261024_유사50/q20-solution.plan.json"
+      },
+      "problemCapability": null,
+      "capability": "number-line-figure-v1",
+      "sourceVsPlan": "REVIEWED",
+      "problemDrawnFeatures": [],
+      "drawnFeatures": [
+        "row1 SET P: [{\"lo\":{\"value\":\"7\",\"state\":\"CLOSED\"},\"hi\":{\"value\":\"12\",\"state\":\"CLOSED\"}}]",
+        "row2 SET Q: [{\"lo\":{\"value\":\"7\",\"state\":\"CLOSED\"},\"hi\":{\"value\":\"12\",\"state\":\"CLOSED\"}}]"
+      ],
+      "problemPlanLintShallow": "NOT_APPLICABLE",
+      "problemPlanLintFull": "NOT_APPLICABLE",
+      "problemDrawnFeatureParity": "NOT_APPLICABLE",
+      "planLintShallow": "PASS",
+      "planLintFull": "PASS",
+      "drawnFeatureParity": "PASS",
+      "engineCapabilityPending": [],
+      "render": "NOT_RUN",
+      "png": "NOT_RUN",
+      "studentView": "NOT_RUN",
+      "a4": "NOT_RUN"
+    },
+    {
+      "qid": "q21",
+      "questionUid": "BV-BAKBAL-H-COM2-HA-P23-Q04-S2-R1",
+      "sourceOrdinal": 21,
+      "category": "명제의 역·대우와 필요충분조건",
+      "sourceAsset": {
+        "problem": null,
+        "solution": "assets/images/백발백중_공통수학2_명제_P22-25_20261024_유사50/BV-BAKBAL-H-COM2-HA-P23-Q04-S2-R1-solution.svg"
+      },
+      "problem": {
+        "judgement": "EXEMPT",
+        "reason": "문제 발문은 수식·문장만으로 완결되어 있고, 해설의 매개변수 표본이나 교집합 그림을 문제 축에 미리 제공하면 풀이 단서 또는 정답이 노출될 수 있어 그림을 면제한다.",
+        "plan": null
+      },
+      "solution": {
+        "judgement": "BENEFICIAL",
+        "reason": "역과 대우의 참으로 얻는 P=Q를 같은 숫자·열린/닫힌 두 구간으로 검증한다.",
+        "plan": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_명제_P22-25_20261024_유사50/q21-solution.plan.json"
+      },
+      "problemCapability": null,
+      "capability": "number-line-figure-v1",
+      "sourceVsPlan": "REVIEWED",
+      "problemDrawnFeatures": [],
+      "drawnFeatures": [
+        "row1 SET P: [{\"lo\":{\"value\":\"6\",\"state\":\"CLOSED\"},\"hi\":{\"value\":\"10\",\"state\":\"CLOSED\"}}]",
+        "row2 SET Q: [{\"lo\":{\"value\":\"6\",\"state\":\"CLOSED\"},\"hi\":{\"value\":\"10\",\"state\":\"CLOSED\"}}]"
+      ],
+      "problemPlanLintShallow": "NOT_APPLICABLE",
+      "problemPlanLintFull": "NOT_APPLICABLE",
+      "problemDrawnFeatureParity": "NOT_APPLICABLE",
+      "planLintShallow": "PASS",
+      "planLintFull": "PASS",
+      "drawnFeatureParity": "PASS",
+      "engineCapabilityPending": [],
+      "render": "NOT_RUN",
+      "png": "NOT_RUN",
+      "studentView": "NOT_RUN",
+      "a4": "NOT_RUN"
+    },
+    {
+      "qid": "q22",
+      "questionUid": "BV-BAKBAL-H-COM2-HA-P23-Q04-S3-R1",
+      "sourceOrdinal": 22,
+      "category": "명제의 역·대우와 필요충분조건",
+      "sourceAsset": {
+        "problem": null,
+        "solution": "assets/images/백발백중_공통수학2_명제_P22-25_20261024_유사50/BV-BAKBAL-H-COM2-HA-P23-Q04-S3-R1-solution.svg"
+      },
+      "problem": {
+        "judgement": "EXEMPT",
+        "reason": "문제 발문은 수식·문장만으로 완결되어 있고, 해설의 매개변수 표본이나 교집합 그림을 문제 축에 미리 제공하면 풀이 단서 또는 정답이 노출될 수 있어 그림을 면제한다.",
+        "plan": null
+      },
+      "solution": {
+        "judgement": "BENEFICIAL",
+        "reason": "역과 대우의 참으로 얻는 P=Q를 같은 숫자·열린/닫힌 두 구간으로 검증한다.",
+        "plan": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_명제_P22-25_20261024_유사50/q22-solution.plan.json"
+      },
+      "problemCapability": null,
+      "capability": "number-line-figure-v1",
+      "sourceVsPlan": "REVIEWED",
+      "problemDrawnFeatures": [],
+      "drawnFeatures": [
+        "row1 SET P: [{\"lo\":{\"value\":\"3\",\"state\":\"CLOSED\"},\"hi\":{\"value\":\"4\",\"state\":\"CLOSED\"}}]",
+        "row2 SET Q: [{\"lo\":{\"value\":\"3\",\"state\":\"CLOSED\"},\"hi\":{\"value\":\"4\",\"state\":\"CLOSED\"}}]"
+      ],
+      "problemPlanLintShallow": "NOT_APPLICABLE",
+      "problemPlanLintFull": "NOT_APPLICABLE",
+      "problemDrawnFeatureParity": "NOT_APPLICABLE",
+      "planLintShallow": "PASS",
+      "planLintFull": "PASS",
+      "drawnFeatureParity": "PASS",
+      "engineCapabilityPending": [],
+      "render": "NOT_RUN",
+      "png": "NOT_RUN",
+      "studentView": "NOT_RUN",
+      "a4": "NOT_RUN"
+    },
+    {
+      "qid": "q23",
+      "questionUid": "BV-BAKBAL-H-COM2-HA-P23-Q04-S4-R1",
+      "sourceOrdinal": 23,
+      "category": "명제의 역·대우와 필요충분조건",
+      "sourceAsset": {
+        "problem": null,
+        "solution": "assets/images/백발백중_공통수학2_명제_P22-25_20261024_유사50/BV-BAKBAL-H-COM2-HA-P23-Q04-S4-R1-solution.svg"
+      },
+      "problem": {
+        "judgement": "EXEMPT",
+        "reason": "문제 발문은 수식·문장만으로 완결되어 있고, 해설의 매개변수 표본이나 교집합 그림을 문제 축에 미리 제공하면 풀이 단서 또는 정답이 노출될 수 있어 그림을 면제한다.",
+        "plan": null
+      },
+      "solution": {
+        "judgement": "BENEFICIAL",
+        "reason": "역과 대우의 참으로 얻는 P=Q를 같은 숫자·열린/닫힌 두 구간으로 검증한다.",
+        "plan": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_명제_P22-25_20261024_유사50/q23-solution.plan.json"
+      },
+      "problemCapability": null,
+      "capability": "number-line-figure-v1",
+      "sourceVsPlan": "REVIEWED",
+      "problemDrawnFeatures": [],
+      "drawnFeatures": [
+        "row1 SET P: [{\"lo\":{\"value\":\"8\",\"state\":\"CLOSED\"},\"hi\":{\"value\":\"10\",\"state\":\"CLOSED\"}}]",
+        "row2 SET Q: [{\"lo\":{\"value\":\"8\",\"state\":\"CLOSED\"},\"hi\":{\"value\":\"10\",\"state\":\"CLOSED\"}}]"
+      ],
+      "problemPlanLintShallow": "NOT_APPLICABLE",
+      "problemPlanLintFull": "NOT_APPLICABLE",
+      "problemDrawnFeatureParity": "NOT_APPLICABLE",
+      "planLintShallow": "PASS",
+      "planLintFull": "PASS",
+      "drawnFeatureParity": "PASS",
+      "engineCapabilityPending": [],
+      "render": "NOT_RUN",
+      "png": "NOT_RUN",
+      "studentView": "NOT_RUN",
+      "a4": "NOT_RUN"
+    },
+    {
+      "qid": "q24",
+      "questionUid": "BV-BAKBAL-H-COM2-HA-P23-Q04-S5-R1",
+      "sourceOrdinal": 24,
+      "category": "명제의 역·대우와 필요충분조건",
+      "sourceAsset": {
+        "problem": null,
+        "solution": "assets/images/백발백중_공통수학2_명제_P22-25_20261024_유사50/BV-BAKBAL-H-COM2-HA-P23-Q04-S5-R1-solution.svg"
+      },
+      "problem": {
+        "judgement": "EXEMPT",
+        "reason": "문제 발문은 수식·문장만으로 완결되어 있고, 해설의 매개변수 표본이나 교집합 그림을 문제 축에 미리 제공하면 풀이 단서 또는 정답이 노출될 수 있어 그림을 면제한다.",
+        "plan": null
+      },
+      "solution": {
+        "judgement": "BENEFICIAL",
+        "reason": "역과 대우의 참으로 얻는 P=Q를 같은 숫자·열린/닫힌 두 구간으로 검증한다.",
+        "plan": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_명제_P22-25_20261024_유사50/q24-solution.plan.json"
+      },
+      "problemCapability": null,
+      "capability": "number-line-figure-v1",
+      "sourceVsPlan": "REVIEWED",
+      "problemDrawnFeatures": [],
+      "drawnFeatures": [
+        "row1 SET P: [{\"lo\":{\"value\":\"3\",\"state\":\"CLOSED\"},\"hi\":{\"value\":\"4\",\"state\":\"CLOSED\"}}]",
+        "row2 SET Q: [{\"lo\":{\"value\":\"3\",\"state\":\"CLOSED\"},\"hi\":{\"value\":\"4\",\"state\":\"CLOSED\"}}]"
+      ],
+      "problemPlanLintShallow": "NOT_APPLICABLE",
+      "problemPlanLintFull": "NOT_APPLICABLE",
+      "problemDrawnFeatureParity": "NOT_APPLICABLE",
+      "planLintShallow": "PASS",
+      "planLintFull": "PASS",
+      "drawnFeatureParity": "PASS",
+      "engineCapabilityPending": [],
+      "render": "NOT_RUN",
+      "png": "NOT_RUN",
+      "studentView": "NOT_RUN",
+      "a4": "NOT_RUN"
+    }
+  ]
+}

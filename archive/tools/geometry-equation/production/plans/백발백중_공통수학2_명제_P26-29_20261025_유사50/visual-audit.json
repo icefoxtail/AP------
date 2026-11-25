@@ -1,0 +1,530 @@
+{
+  "schema": "textbook-figure-plan-audit-v1",
+  "sourcePath": "archive/exams/textbooks/백발백중_공통수학2/백발백중_공통수학2_명제_P26-29_20261025_유사50.js",
+  "sourceBlobSha": "c56eea7b44ed432a525c435904a854bd04fe4484",
+  "sourceMainBaseSha": "32e72d290a76b90975ddec2f8a667813aded6cd9",
+  "selectedQids": "q01–q13",
+  "scope": "교과서·문제집 13문항 / 문제·해설 26축만 검수. JS, 기출(original/similar), 유형은행(types), 기존 SVG 미변경.",
+  "method": "원문 JS 발문·해설 및 참조 solution.svg의 수직선 끝점·열림/닫힘·구간 라벨과 엔진 numberLine.rows SET/RESULT 실제 그려지는 필드를 독립 검사한다. 매개변수는 해설 예시값만 사용한다.",
+  "count": {
+    "questions": 13,
+    "problemAssessed": 13,
+    "solutionAssessed": 13,
+    "problemExempt": 13,
+    "solutionBeneficial": 9,
+    "solutionExempt": 4,
+    "renderablePlans": 9,
+    "lintShallowPass": 9,
+    "lintFullPass": 9,
+    "drawnFeatureParityPass": 9,
+    "engineCapabilityPending": 0
+  },
+  "visualPolicy": "문제용 정답 비노출, 면 채움 없음, 손 SVG 없음. 실제 렌더·PNG·학생 보기·A4는 별도 NOT_RUN.",
+  "postMergeRemaining": "q14–q50 (37문항)",
+  "items": [
+    {
+      "qid": "q01",
+      "questionUid": "BV-BAKBAL-H-COM2-HA-P26-Q01-T1-R1",
+      "sourceOrdinal": 1,
+      "category": "이차부등식과 일차부등식 진리집합 교집합의 원소의 개수",
+      "sourceAsset": {
+        "problem": null,
+        "solution": "assets/images/백발백중_공통수학2_명제_P26-29_20261025_유사50/BV-BAKBAL-H-COM2-HA-P26-Q01-T1-R1-solution.svg"
+      },
+      "problem": {
+        "judgement": "EXEMPT",
+        "reason": "문제 발문은 수식·문장만으로 완결되어 있고, 해설의 매개변수 표본이나 교집합 그림을 문제 축에 미리 제공하면 풀이 단서 또는 정답이 노출될 수 있어 그림을 면제한다.",
+        "plan": null
+      },
+      "solution": {
+        "judgement": "BENEFICIAL",
+        "reason": "자연수 전체집합에서 이차·일차부등식의 진리집합을 나란히 놓고 교집합을 표시한다.",
+        "plan": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_명제_P26-29_20261025_유사50/q01-solution.plan.json"
+      },
+      "problemCapability": null,
+      "capability": "number-line-figure-v1",
+      "sourceVsPlan": "REVIEWED",
+      "problemDrawnFeatures": [],
+      "drawnFeatures": [
+        "row1 SET P: [{\"lo\":{\"value\":\"1\",\"state\":\"CLOSED\"},\"hi\":{\"value\":\"9\",\"state\":\"CLOSED\"}}]",
+        "row2 SET Q: [{\"lo\":{\"value\":\"4\",\"state\":\"CLOSED\"},\"hi\":{\"value\":\"20\",\"state\":\"CLOSED\"}}]",
+        "row3 RESULT 공통: engine-computed intersection"
+      ],
+      "problemPlanLintShallow": "NOT_APPLICABLE",
+      "problemPlanLintFull": "NOT_APPLICABLE",
+      "problemDrawnFeatureParity": "NOT_APPLICABLE",
+      "planLintShallow": "PASS",
+      "planLintFull": "PASS",
+      "drawnFeatureParity": "PASS",
+      "engineCapabilityPending": [],
+      "render": "NOT_RUN",
+      "png": "NOT_RUN",
+      "studentView": "NOT_RUN",
+      "a4": "NOT_RUN"
+    },
+    {
+      "qid": "q02",
+      "questionUid": "BV-BAKBAL-H-COM2-HA-P26-Q01-S1-R1",
+      "sourceOrdinal": 2,
+      "category": "이차부등식과 일차부등식 진리집합 교집합의 원소의 개수",
+      "sourceAsset": {
+        "problem": null,
+        "solution": "assets/images/백발백중_공통수학2_명제_P26-29_20261025_유사50/BV-BAKBAL-H-COM2-HA-P26-Q01-S1-R1-solution.svg"
+      },
+      "problem": {
+        "judgement": "EXEMPT",
+        "reason": "문제 발문은 수식·문장만으로 완결되어 있고, 해설의 매개변수 표본이나 교집합 그림을 문제 축에 미리 제공하면 풀이 단서 또는 정답이 노출될 수 있어 그림을 면제한다.",
+        "plan": null
+      },
+      "solution": {
+        "judgement": "BENEFICIAL",
+        "reason": "자연수 전체집합에서 이차·일차부등식의 진리집합을 나란히 놓고 교집합을 표시한다.",
+        "plan": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_명제_P26-29_20261025_유사50/q02-solution.plan.json"
+      },
+      "problemCapability": null,
+      "capability": "number-line-figure-v1",
+      "sourceVsPlan": "REVIEWED",
+      "problemDrawnFeatures": [],
+      "drawnFeatures": [
+        "row1 SET P: [{\"lo\":{\"value\":\"1\",\"state\":\"CLOSED\"},\"hi\":{\"value\":\"11\",\"state\":\"CLOSED\"}}]",
+        "row2 SET Q: [{\"lo\":{\"value\":\"4\",\"state\":\"CLOSED\"},\"hi\":{\"value\":\"25\",\"state\":\"CLOSED\"}}]",
+        "row3 RESULT 공통: engine-computed intersection"
+      ],
+      "problemPlanLintShallow": "NOT_APPLICABLE",
+      "problemPlanLintFull": "NOT_APPLICABLE",
+      "problemDrawnFeatureParity": "NOT_APPLICABLE",
+      "planLintShallow": "PASS",
+      "planLintFull": "PASS",
+      "drawnFeatureParity": "PASS",
+      "engineCapabilityPending": [],
+      "render": "NOT_RUN",
+      "png": "NOT_RUN",
+      "studentView": "NOT_RUN",
+      "a4": "NOT_RUN"
+    },
+    {
+      "qid": "q03",
+      "questionUid": "BV-BAKBAL-H-COM2-HA-P26-Q01-S2-R1",
+      "sourceOrdinal": 3,
+      "category": "이차부등식과 일차부등식 진리집합 교집합의 원소의 개수",
+      "sourceAsset": {
+        "problem": null,
+        "solution": "assets/images/백발백중_공통수학2_명제_P26-29_20261025_유사50/BV-BAKBAL-H-COM2-HA-P26-Q01-S2-R1-solution.svg"
+      },
+      "problem": {
+        "judgement": "EXEMPT",
+        "reason": "문제 발문은 수식·문장만으로 완결되어 있고, 해설의 매개변수 표본이나 교집합 그림을 문제 축에 미리 제공하면 풀이 단서 또는 정답이 노출될 수 있어 그림을 면제한다.",
+        "plan": null
+      },
+      "solution": {
+        "judgement": "BENEFICIAL",
+        "reason": "자연수 전체집합에서 이차·일차부등식의 진리집합을 나란히 놓고 교집합을 표시한다.",
+        "plan": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_명제_P26-29_20261025_유사50/q03-solution.plan.json"
+      },
+      "problemCapability": null,
+      "capability": "number-line-figure-v1",
+      "sourceVsPlan": "REVIEWED",
+      "problemDrawnFeatures": [],
+      "drawnFeatures": [
+        "row1 SET P: [{\"lo\":{\"value\":\"1\",\"state\":\"CLOSED\"},\"hi\":{\"value\":\"8\",\"state\":\"CLOSED\"}}]",
+        "row2 SET Q: [{\"lo\":{\"value\":\"4\",\"state\":\"CLOSED\"},\"hi\":{\"value\":\"30\",\"state\":\"CLOSED\"}}]",
+        "row3 RESULT 공통: engine-computed intersection"
+      ],
+      "problemPlanLintShallow": "NOT_APPLICABLE",
+      "problemPlanLintFull": "NOT_APPLICABLE",
+      "problemDrawnFeatureParity": "NOT_APPLICABLE",
+      "planLintShallow": "PASS",
+      "planLintFull": "PASS",
+      "drawnFeatureParity": "PASS",
+      "engineCapabilityPending": [],
+      "render": "NOT_RUN",
+      "png": "NOT_RUN",
+      "studentView": "NOT_RUN",
+      "a4": "NOT_RUN"
+    },
+    {
+      "qid": "q04",
+      "questionUid": "BV-BAKBAL-H-COM2-HA-P26-Q02-T1-R1",
+      "sourceOrdinal": 4,
+      "category": "수와 식 및 약수·배수·무리수 명제의 참·거짓 판정",
+      "sourceAsset": {
+        "problem": null,
+        "solution": null
+      },
+      "problem": {
+        "judgement": "EXEMPT",
+        "reason": "문제 발문은 수식·문장만으로 완결되어 있고, 해설의 매개변수 표본이나 교집합 그림을 문제 축에 미리 제공하면 풀이 단서 또는 정답이 노출될 수 있어 그림을 면제한다.",
+        "plan": null
+      },
+      "solution": {
+        "judgement": "EXEMPT",
+        "reason": "보기별 명제의 참·거짓은 반례와 논리식으로 충분히 완결되며, 도식은 해설을 되풀이하는 장식이다.",
+        "plan": null
+      },
+      "problemCapability": null,
+      "capability": null,
+      "sourceVsPlan": "REVIEWED",
+      "problemDrawnFeatures": [],
+      "drawnFeatures": [],
+      "problemPlanLintShallow": "NOT_APPLICABLE",
+      "problemPlanLintFull": "NOT_APPLICABLE",
+      "problemDrawnFeatureParity": "NOT_APPLICABLE",
+      "planLintShallow": "NOT_APPLICABLE",
+      "planLintFull": "NOT_APPLICABLE",
+      "drawnFeatureParity": "NOT_APPLICABLE",
+      "engineCapabilityPending": [],
+      "render": "NOT_RUN",
+      "png": "NOT_RUN",
+      "studentView": "NOT_RUN",
+      "a4": "NOT_RUN"
+    },
+    {
+      "qid": "q05",
+      "questionUid": "BV-BAKBAL-H-COM2-HA-P26-Q02-S1-R1",
+      "sourceOrdinal": 5,
+      "category": "수와 식 및 약수·배수·무리수 명제의 참·거짓 판정",
+      "sourceAsset": {
+        "problem": null,
+        "solution": null
+      },
+      "problem": {
+        "judgement": "EXEMPT",
+        "reason": "문제 발문은 수식·문장만으로 완결되어 있고, 해설의 매개변수 표본이나 교집합 그림을 문제 축에 미리 제공하면 풀이 단서 또는 정답이 노출될 수 있어 그림을 면제한다.",
+        "plan": null
+      },
+      "solution": {
+        "judgement": "EXEMPT",
+        "reason": "보기별 명제의 참·거짓은 반례와 논리식으로 충분히 완결되며, 도식은 해설을 되풀이하는 장식이다.",
+        "plan": null
+      },
+      "problemCapability": null,
+      "capability": null,
+      "sourceVsPlan": "REVIEWED",
+      "problemDrawnFeatures": [],
+      "drawnFeatures": [],
+      "problemPlanLintShallow": "NOT_APPLICABLE",
+      "problemPlanLintFull": "NOT_APPLICABLE",
+      "problemDrawnFeatureParity": "NOT_APPLICABLE",
+      "planLintShallow": "NOT_APPLICABLE",
+      "planLintFull": "NOT_APPLICABLE",
+      "drawnFeatureParity": "NOT_APPLICABLE",
+      "engineCapabilityPending": [],
+      "render": "NOT_RUN",
+      "png": "NOT_RUN",
+      "studentView": "NOT_RUN",
+      "a4": "NOT_RUN"
+    },
+    {
+      "qid": "q06",
+      "questionUid": "BV-BAKBAL-H-COM2-HA-P26-Q02-S2-R1",
+      "sourceOrdinal": 6,
+      "category": "수와 식 및 약수·배수·무리수 명제의 참·거짓 판정",
+      "sourceAsset": {
+        "problem": null,
+        "solution": null
+      },
+      "problem": {
+        "judgement": "EXEMPT",
+        "reason": "문제 발문은 수식·문장만으로 완결되어 있고, 해설의 매개변수 표본이나 교집합 그림을 문제 축에 미리 제공하면 풀이 단서 또는 정답이 노출될 수 있어 그림을 면제한다.",
+        "plan": null
+      },
+      "solution": {
+        "judgement": "EXEMPT",
+        "reason": "보기별 명제의 참·거짓은 반례와 논리식으로 충분히 완결되며, 도식은 해설을 되풀이하는 장식이다.",
+        "plan": null
+      },
+      "problemCapability": null,
+      "capability": null,
+      "sourceVsPlan": "REVIEWED",
+      "problemDrawnFeatures": [],
+      "drawnFeatures": [],
+      "problemPlanLintShallow": "NOT_APPLICABLE",
+      "problemPlanLintFull": "NOT_APPLICABLE",
+      "problemDrawnFeatureParity": "NOT_APPLICABLE",
+      "planLintShallow": "NOT_APPLICABLE",
+      "planLintFull": "NOT_APPLICABLE",
+      "drawnFeatureParity": "NOT_APPLICABLE",
+      "engineCapabilityPending": [],
+      "render": "NOT_RUN",
+      "png": "NOT_RUN",
+      "studentView": "NOT_RUN",
+      "a4": "NOT_RUN"
+    },
+    {
+      "qid": "q07",
+      "questionUid": "BV-BAKBAL-H-COM2-HA-P26-Q03-T1-R1",
+      "sourceOrdinal": 7,
+      "category": "어떤이 들어 있는 부등식 명제가 참이 되는 미정계수의 범위",
+      "sourceAsset": {
+        "problem": null,
+        "solution": null
+      },
+      "problem": {
+        "judgement": "EXEMPT",
+        "reason": "문제 발문은 수식·문장만으로 완결되어 있고, 해설의 매개변수 표본이나 교집합 그림을 문제 축에 미리 제공하면 풀이 단서 또는 정답이 노출될 수 있어 그림을 면제한다.",
+        "plan": null
+      },
+      "solution": {
+        "judgement": "BENEFICIAL",
+        "reason": "존재명제에서 움직이는 닫힌구간과 고정 닫힌구간의 비어 있지 않은 교집합을 표시한다.",
+        "plan": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_명제_P26-29_20261025_유사50/q07-solution.plan.json"
+      },
+      "problemCapability": null,
+      "capability": "number-line-figure-v1",
+      "sourceVsPlan": "REVIEWED",
+      "problemDrawnFeatures": [],
+      "drawnFeatures": [
+        "row1 SET 이동: [{\"lo\":{\"param\":{\"mul\":\"1\",\"add\":\"-2\"},\"state\":\"CLOSED\"},\"hi\":{\"param\":{\"mul\":\"1\",\"add\":\"3\"},\"state\":\"CLOSED\"}}]",
+        "row2 SET 고정: [{\"lo\":{\"value\":\"-3\",\"state\":\"CLOSED\"},\"hi\":{\"value\":\"4\",\"state\":\"CLOSED\"}}]",
+        "row3 RESULT 공통: engine-computed intersection"
+      ],
+      "problemPlanLintShallow": "NOT_APPLICABLE",
+      "problemPlanLintFull": "NOT_APPLICABLE",
+      "problemDrawnFeatureParity": "NOT_APPLICABLE",
+      "planLintShallow": "PASS",
+      "planLintFull": "PASS",
+      "drawnFeatureParity": "PASS",
+      "engineCapabilityPending": [],
+      "render": "NOT_RUN",
+      "png": "NOT_RUN",
+      "studentView": "NOT_RUN",
+      "a4": "NOT_RUN"
+    },
+    {
+      "qid": "q08",
+      "questionUid": "BV-BAKBAL-H-COM2-HA-P26-Q03-S1-R1",
+      "sourceOrdinal": 8,
+      "category": "어떤이 들어 있는 부등식 명제가 참이 되는 미정계수의 범위",
+      "sourceAsset": {
+        "problem": null,
+        "solution": null
+      },
+      "problem": {
+        "judgement": "EXEMPT",
+        "reason": "문제 발문은 수식·문장만으로 완결되어 있고, 해설의 매개변수 표본이나 교집합 그림을 문제 축에 미리 제공하면 풀이 단서 또는 정답이 노출될 수 있어 그림을 면제한다.",
+        "plan": null
+      },
+      "solution": {
+        "judgement": "BENEFICIAL",
+        "reason": "존재명제에서 움직이는 닫힌구간과 고정 닫힌구간의 비어 있지 않은 교집합을 표시한다.",
+        "plan": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_명제_P26-29_20261025_유사50/q08-solution.plan.json"
+      },
+      "problemCapability": null,
+      "capability": "number-line-figure-v1",
+      "sourceVsPlan": "REVIEWED",
+      "problemDrawnFeatures": [],
+      "drawnFeatures": [
+        "row1 SET 이동: [{\"lo\":{\"param\":{\"mul\":\"1\",\"add\":\"-2\"},\"state\":\"CLOSED\"},\"hi\":{\"param\":{\"mul\":\"1\",\"add\":\"1\"},\"state\":\"CLOSED\"}}]",
+        "row2 SET 고정: [{\"lo\":{\"value\":\"0\",\"state\":\"CLOSED\"},\"hi\":{\"value\":\"7\",\"state\":\"CLOSED\"}}]",
+        "row3 RESULT 공통: engine-computed intersection"
+      ],
+      "problemPlanLintShallow": "NOT_APPLICABLE",
+      "problemPlanLintFull": "NOT_APPLICABLE",
+      "problemDrawnFeatureParity": "NOT_APPLICABLE",
+      "planLintShallow": "PASS",
+      "planLintFull": "PASS",
+      "drawnFeatureParity": "PASS",
+      "engineCapabilityPending": [],
+      "render": "NOT_RUN",
+      "png": "NOT_RUN",
+      "studentView": "NOT_RUN",
+      "a4": "NOT_RUN"
+    },
+    {
+      "qid": "q09",
+      "questionUid": "BV-BAKBAL-H-COM2-HA-P26-Q03-S2-R1",
+      "sourceOrdinal": 9,
+      "category": "어떤이 들어 있는 부등식 명제가 참이 되는 미정계수의 범위",
+      "sourceAsset": {
+        "problem": null,
+        "solution": null
+      },
+      "problem": {
+        "judgement": "EXEMPT",
+        "reason": "문제 발문은 수식·문장만으로 완결되어 있고, 해설의 매개변수 표본이나 교집합 그림을 문제 축에 미리 제공하면 풀이 단서 또는 정답이 노출될 수 있어 그림을 면제한다.",
+        "plan": null
+      },
+      "solution": {
+        "judgement": "BENEFICIAL",
+        "reason": "존재명제에서 움직이는 닫힌구간과 고정 닫힌구간의 비어 있지 않은 교집합을 표시한다.",
+        "plan": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_명제_P26-29_20261025_유사50/q09-solution.plan.json"
+      },
+      "problemCapability": null,
+      "capability": "number-line-figure-v1",
+      "sourceVsPlan": "REVIEWED",
+      "problemDrawnFeatures": [],
+      "drawnFeatures": [
+        "row1 SET 이동: [{\"lo\":{\"param\":{\"mul\":\"1\",\"add\":\"-1\"},\"state\":\"CLOSED\"},\"hi\":{\"param\":{\"mul\":\"1\",\"add\":\"3\"},\"state\":\"CLOSED\"}}]",
+        "row2 SET 고정: [{\"lo\":{\"value\":\"2\",\"state\":\"CLOSED\"},\"hi\":{\"value\":\"6\",\"state\":\"CLOSED\"}}]",
+        "row3 RESULT 공통: engine-computed intersection"
+      ],
+      "problemPlanLintShallow": "NOT_APPLICABLE",
+      "problemPlanLintFull": "NOT_APPLICABLE",
+      "problemDrawnFeatureParity": "NOT_APPLICABLE",
+      "planLintShallow": "PASS",
+      "planLintFull": "PASS",
+      "drawnFeatureParity": "PASS",
+      "engineCapabilityPending": [],
+      "render": "NOT_RUN",
+      "png": "NOT_RUN",
+      "studentView": "NOT_RUN",
+      "a4": "NOT_RUN"
+    },
+    {
+      "qid": "q10",
+      "questionUid": "BV-BAKBAL-H-COM2-HA-P26-Q04-T1-R1",
+      "sourceOrdinal": 10,
+      "category": "모든과 어떤이 포함된 이차부등식 명제의 판별식과 미정계수",
+      "sourceAsset": {
+        "problem": null,
+        "solution": "assets/images/백발백중_공통수학2_명제_P26-29_20261025_유사50/BV-BAKBAL-H-COM2-HA-P26-Q04-T1-R1-solution.svg"
+      },
+      "problem": {
+        "judgement": "EXEMPT",
+        "reason": "문제 발문은 수식·문장만으로 완결되어 있고, 해설의 매개변수 표본이나 교집합 그림을 문제 축에 미리 제공하면 풀이 단서 또는 정답이 노출될 수 있어 그림을 면제한다.",
+        "plan": null
+      },
+      "solution": {
+        "judgement": "BENEFICIAL",
+        "reason": "전칭과 존재의 판별식 조건을 a축에서 교차시켜 부등호의 엄격·비엄격 경계를 보여 준다.",
+        "plan": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_명제_P26-29_20261025_유사50/q10-solution.plan.json"
+      },
+      "problemCapability": null,
+      "capability": "number-line-figure-v1",
+      "sourceVsPlan": "REVIEWED",
+      "problemDrawnFeatures": [],
+      "drawnFeatures": [
+        "row1 SET 전칭: [{\"lo\":{\"value\":\"-2\",\"state\":\"OPEN\"},\"hi\":{\"value\":\"3\",\"state\":\"OPEN\"}}]",
+        "row2 SET 존재: [{\"lo\":null,\"hi\":{\"value\":\"1\",\"state\":\"CLOSED\"}}]",
+        "row3 RESULT 공통: engine-computed intersection"
+      ],
+      "problemPlanLintShallow": "NOT_APPLICABLE",
+      "problemPlanLintFull": "NOT_APPLICABLE",
+      "problemDrawnFeatureParity": "NOT_APPLICABLE",
+      "planLintShallow": "PASS",
+      "planLintFull": "PASS",
+      "drawnFeatureParity": "PASS",
+      "engineCapabilityPending": [],
+      "render": "NOT_RUN",
+      "png": "NOT_RUN",
+      "studentView": "NOT_RUN",
+      "a4": "NOT_RUN"
+    },
+    {
+      "qid": "q11",
+      "questionUid": "BV-BAKBAL-H-COM2-HA-P26-Q04-S1-R1",
+      "sourceOrdinal": 11,
+      "category": "모든과 어떤이 포함된 이차부등식 명제의 판별식과 미정계수",
+      "sourceAsset": {
+        "problem": null,
+        "solution": "assets/images/백발백중_공통수학2_명제_P26-29_20261025_유사50/BV-BAKBAL-H-COM2-HA-P26-Q04-S1-R1-solution.svg"
+      },
+      "problem": {
+        "judgement": "EXEMPT",
+        "reason": "문제 발문은 수식·문장만으로 완결되어 있고, 해설의 매개변수 표본이나 교집합 그림을 문제 축에 미리 제공하면 풀이 단서 또는 정답이 노출될 수 있어 그림을 면제한다.",
+        "plan": null
+      },
+      "solution": {
+        "judgement": "BENEFICIAL",
+        "reason": "전칭과 존재의 판별식 조건을 a축에서 교차시켜 부등호의 엄격·비엄격 경계를 보여 준다.",
+        "plan": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_명제_P26-29_20261025_유사50/q11-solution.plan.json"
+      },
+      "problemCapability": null,
+      "capability": "number-line-figure-v1",
+      "sourceVsPlan": "REVIEWED",
+      "problemDrawnFeatures": [],
+      "drawnFeatures": [
+        "row1 SET 전칭: [{\"lo\":{\"value\":\"-2\",\"state\":\"OPEN\"},\"hi\":{\"value\":\"4\",\"state\":\"OPEN\"}}]",
+        "row2 SET 존재: [{\"lo\":null,\"hi\":{\"value\":\"9\",\"state\":\"CLOSED\"}}]",
+        "row3 RESULT 공통: engine-computed intersection"
+      ],
+      "problemPlanLintShallow": "NOT_APPLICABLE",
+      "problemPlanLintFull": "NOT_APPLICABLE",
+      "problemDrawnFeatureParity": "NOT_APPLICABLE",
+      "planLintShallow": "PASS",
+      "planLintFull": "PASS",
+      "drawnFeatureParity": "PASS",
+      "engineCapabilityPending": [],
+      "render": "NOT_RUN",
+      "png": "NOT_RUN",
+      "studentView": "NOT_RUN",
+      "a4": "NOT_RUN"
+    },
+    {
+      "qid": "q12",
+      "questionUid": "BV-BAKBAL-H-COM2-HA-P26-Q04-S2-R1",
+      "sourceOrdinal": 12,
+      "category": "모든과 어떤이 포함된 이차부등식 명제의 판별식과 미정계수",
+      "sourceAsset": {
+        "problem": null,
+        "solution": "assets/images/백발백중_공통수학2_명제_P26-29_20261025_유사50/BV-BAKBAL-H-COM2-HA-P26-Q04-S2-R1-solution.svg"
+      },
+      "problem": {
+        "judgement": "EXEMPT",
+        "reason": "문제 발문은 수식·문장만으로 완결되어 있고, 해설의 매개변수 표본이나 교집합 그림을 문제 축에 미리 제공하면 풀이 단서 또는 정답이 노출될 수 있어 그림을 면제한다.",
+        "plan": null
+      },
+      "solution": {
+        "judgement": "BENEFICIAL",
+        "reason": "전칭과 존재의 판별식 조건을 a축에서 교차시켜 부등호의 엄격·비엄격 경계를 보여 준다.",
+        "plan": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_명제_P26-29_20261025_유사50/q12-solution.plan.json"
+      },
+      "problemCapability": null,
+      "capability": "number-line-figure-v1",
+      "sourceVsPlan": "REVIEWED",
+      "problemDrawnFeatures": [],
+      "drawnFeatures": [
+        "row1 SET 전칭: [{\"lo\":{\"value\":\"-1\",\"state\":\"OPEN\"},\"hi\":{\"value\":\"4\",\"state\":\"OPEN\"}}]",
+        "row2 SET 존재: [{\"lo\":null,\"hi\":{\"value\":\"1\",\"state\":\"CLOSED\"}}]",
+        "row3 RESULT 공통: engine-computed intersection"
+      ],
+      "problemPlanLintShallow": "NOT_APPLICABLE",
+      "problemPlanLintFull": "NOT_APPLICABLE",
+      "problemDrawnFeatureParity": "NOT_APPLICABLE",
+      "planLintShallow": "PASS",
+      "planLintFull": "PASS",
+      "drawnFeatureParity": "PASS",
+      "engineCapabilityPending": [],
+      "render": "NOT_RUN",
+      "png": "NOT_RUN",
+      "studentView": "NOT_RUN",
+      "a4": "NOT_RUN"
+    },
+    {
+      "qid": "q13",
+      "questionUid": "BV-BAKBAL-H-COM2-HA-P26-Q05-T1-R1",
+      "sourceOrdinal": 13,
+      "category": "역과 대우가 모두 참인 동치 명제 판별",
+      "sourceAsset": {
+        "problem": null,
+        "solution": null
+      },
+      "problem": {
+        "judgement": "EXEMPT",
+        "reason": "문제 발문은 수식·문장만으로 완결되어 있고, 해설의 매개변수 표본이나 교집합 그림을 문제 축에 미리 제공하면 풀이 단서 또는 정답이 노출될 수 있어 그림을 면제한다.",
+        "plan": null
+      },
+      "solution": {
+        "judgement": "EXEMPT",
+        "reason": "보기별 명제의 참·거짓은 반례와 논리식으로 충분히 완결되며, 도식은 해설을 되풀이하는 장식이다.",
+        "plan": null
+      },
+      "problemCapability": null,
+      "capability": null,
+      "sourceVsPlan": "REVIEWED",
+      "problemDrawnFeatures": [],
+      "drawnFeatures": [],
+      "problemPlanLintShallow": "NOT_APPLICABLE",
+      "problemPlanLintFull": "NOT_APPLICABLE",
+      "problemDrawnFeatureParity": "NOT_APPLICABLE",
+      "planLintShallow": "NOT_APPLICABLE",
+      "planLintFull": "NOT_APPLICABLE",
+      "drawnFeatureParity": "NOT_APPLICABLE",
+      "engineCapabilityPending": [],
+      "render": "NOT_RUN",
+      "png": "NOT_RUN",
+      "studentView": "NOT_RUN",
+      "a4": "NOT_RUN"
+    }
+  ]
+}
