@@ -37,9 +37,9 @@ window.questionBank = [
     "points": 3,
     "difficultyBucket": 1,
     "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
-    "templateKey": "",
+    "templateKey": "TPL_M3_ROOT_PROPERTY_DEFINITION",
     "crossConceptKeys": [
-      "CC_SQUARE_ROOT_NOTATION"
+      "CC_PRINCIPAL_SQUARE_ROOT"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
@@ -83,13 +83,13 @@ window.questionBank = [
     "points": 3,
     "difficultyBucket": 1,
     "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
-    "templateKey": "",
+    "templateKey": "TPL_M3_SQUARE_ROOT_PROPERTY_AUDIT",
     "crossConceptKeys": [
-      "CC_ABSOLUTE_VALUE_OF_RADICAL"
+      "CC_RADICAL_SQUARE_ABSOLUTE_VALUE"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
-    "rpmPrimaryRecordId": "M3-RPM-001",
+    "rpmPrimaryRecordId": "M3-RPM-002",
     "sourceQid": 2,
     "variationType": "EXAM_FOLLOWUP",
     "followupKind": "CONFIRMATION"
@@ -103,8 +103,8 @@ window.questionBank = [
     "standardUnitKey": "M3-01",
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
-    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
-    "subUnit": "제곱근과 실수",
+    "subUnitKey": "M3-01-REAL_NUMBER",
+    "subUnit": "무리수와 실수",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "conceptClusterKey": "SQUARE_ROOT_REAL_NUMBER",
@@ -129,13 +129,13 @@ window.questionBank = [
     "points": 4,
     "difficultyBucket": 2,
     "problemTypeKey": "PT_M3_REAL_NUMBER_CLASSIFICATION",
-    "templateKey": "",
+    "templateKey": "TPL_M3_REAL_NUMBER_CLASSIFICATION_AUDIT",
     "crossConceptKeys": [
-      "CC_RATIONAL_IRRATIONAL_SEPARATION"
+      "CC_REPEATING_DECIMAL_RATIONAL"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
-    "rpmPrimaryRecordId": "M3-RPM-001",
+    "rpmPrimaryRecordId": "M3-RPM-003",
     "sourceQid": 3,
     "variationType": "EXAM_FOLLOWUP",
     "followupKind": "CONFIRMATION"
@@ -175,13 +175,13 @@ window.questionBank = [
     "points": 4,
     "difficultyBucket": 2,
     "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
-    "templateKey": "",
+    "templateKey": "TPL_M3_ROOT_PROPERTY_ROOT_VALUE",
     "crossConceptKeys": [
-      "CC_RADICAL_SIGN_SUBTRACTION"
+      "CC_RADICAL_SIGN_PROPERTIES"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
-    "rpmPrimaryRecordId": "M3-RPM-007",
+    "rpmPrimaryRecordId": "M3-RPM-002",
     "sourceQid": 4,
     "variationType": "EXAM_FOLLOWUP",
     "followupKind": "CONFIRMATION"
@@ -195,8 +195,8 @@ window.questionBank = [
     "standardUnitKey": "M3-01",
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
-    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
-    "subUnit": "제곱근과 실수",
+    "subUnitKey": "M3-01-REAL_NUMBER_COMPARISON",
+    "subUnit": "실수의 대소",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "conceptClusterKey": "SQUARE_ROOT_REAL_NUMBER",
@@ -221,13 +221,13 @@ window.questionBank = [
     "points": 4,
     "difficultyBucket": 2,
     "problemTypeKey": "PT_M3_REAL_NUMBER_COMPARISON",
-    "templateKey": "",
+    "templateKey": "TPL_M3_REAL_COMPARISON_ORDER",
     "crossConceptKeys": [
-      "CC_INEQUALITY_SIGN_REVERSAL"
+      "CC_RADICAL_COMPARISON"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
-    "rpmPrimaryRecordId": "M3-RPM-001",
+    "rpmPrimaryRecordId": "M3-RPM-004",
     "sourceQid": 5,
     "variationType": "EXAM_FOLLOWUP",
     "followupKind": "CONFIRMATION"
@@ -267,9 +267,9 @@ window.questionBank = [
     "points": 4,
     "difficultyBucket": 2,
     "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
-    "templateKey": "",
+    "templateKey": "TPL_M3_RADICAL_MIXED_OPERATION",
     "crossConceptKeys": [
-      "CC_PERFECT_SQUARE_RADICAL_EXTRACTION"
+      "CC_RADICAL_MULTIPLICATION_DIVISION"
     ],
     "conditionKeys": [
       "COND_POSITIVE_REAL"
@@ -315,14 +315,14 @@ window.questionBank = [
     "points": 4,
     "difficultyBucket": 2,
     "problemTypeKey": "PT_M3_REAL_NUMBER_LINE",
-    "templateKey": "",
+    "templateKey": "TPL_M3_NUMBER_LINE_SQUARE_ROTATION",
     "crossConceptKeys": [
-      "CC_PYTHAGOREAN_DIAGONAL",
-      "CC_NUMBER_LINE_DISPLACEMENT"
+      "CC_PYTHAGOREAN_THEOREM",
+      "CC_NUMBER_LINE_COORDINATE_SHIFT"
     ],
     "conditionKeys": [],
     "integrationPattern": "GEOMETRY_ALGEBRA_FUSION",
-    "rpmPrimaryRecordId": "M3-RPM-001",
+    "rpmPrimaryRecordId": "M3-RPM-005",
     "sourceQid": 7,
     "variationType": "EXAM_FOLLOWUP",
     "followupKind": "CONFIRMATION",
@@ -363,15 +363,16 @@ window.questionBank = [
     "points": 4,
     "difficultyBucket": 2,
     "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
-    "templateKey": "",
+    "templateKey": "TPL_M3_RADICAL_MIXED_OPERATION",
     "crossConceptKeys": [
-      "CC_RADICAL_COEFFICIENT_MATCHING"
+      "CC_RADICAL_ADDITION_SUBTRACTION",
+      "CC_RADICAL_DISTRIBUTIVE_LAW"
     ],
     "conditionKeys": [
       "COND_RATIONAL_COEFFICIENTS"
     ],
     "integrationPattern": "NONE",
-    "rpmPrimaryRecordId": "M3-RPM-007",
+    "rpmPrimaryRecordId": "M3-RPM-010",
     "sourceQid": 8,
     "variationType": "EXAM_FOLLOWUP",
     "followupKind": "CONFIRMATION"
@@ -411,15 +412,15 @@ window.questionBank = [
     "points": 4,
     "difficultyBucket": 2,
     "problemTypeKey": "PT_M3_REAL_NUMBER_COMPARISON",
-    "templateKey": "",
+    "templateKey": "TPL_M3_REAL_COMPARISON_STEP_FUNCTION",
     "crossConceptKeys": [
-      "CC_INTEGER_COUNT_BETWEEN_BOUNDS"
+      "CC_SQUARE_ROOT_APPROXIMATION"
     ],
     "conditionKeys": [
       "COND_NATURAL_NUMBER"
     ],
     "integrationPattern": "NONE",
-    "rpmPrimaryRecordId": "M3-RPM-007",
+    "rpmPrimaryRecordId": "M3-RPM-004",
     "sourceQid": 9,
     "variationType": "EXAM_FOLLOWUP",
     "followupKind": "CONFIRMATION"
@@ -459,15 +460,15 @@ window.questionBank = [
     "points": 4,
     "difficultyBucket": 3,
     "problemTypeKey": "PT_M3_REAL_NUMBER_COMPARISON",
-    "templateKey": "",
+    "templateKey": "TPL_M3_REAL_COMPARISON_STEP_FUNCTION",
     "crossConceptKeys": [
-      "CC_INTEGER_DECIMAL_DECOMPOSITION"
+      "CC_SQUARE_ROOT_APPROXIMATION"
     ],
     "conditionKeys": [
       "COND_NATURAL_NUMBER"
     ],
     "integrationPattern": "NONE",
-    "rpmPrimaryRecordId": "M3-RPM-007",
+    "rpmPrimaryRecordId": "M3-RPM-004",
     "sourceQid": 10,
     "variationType": "EXAM_FOLLOWUP",
     "followupKind": "CONFIRMATION"
@@ -509,11 +510,12 @@ window.questionBank = [
     "problemTypeKey": "PT_M3_SQUARE_ROOT_TABLE",
     "templateKey": "",
     "crossConceptKeys": [
-      "CC_DECIMAL_PLACE_SHIFT"
+      "CC_RADICAL_DECIMAL_SHIFT",
+      "CC_SQUARE_ROOT_APPROXIMATION"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
-    "rpmPrimaryRecordId": "M3-RPM-007",
+    "rpmPrimaryRecordId": "M3-RPM-006",
     "sourceQid": 11,
     "variationType": "EXAM_FOLLOWUP",
     "followupKind": "CONFIRMATION"
@@ -553,37 +555,36 @@ window.questionBank = [
     "points": 5,
     "difficultyBucket": 3,
     "problemTypeKey": "PT_M3_SQUARE_ROOT_APPLICATION",
-    "templateKey": "",
+    "templateKey": "TPL_M3_SQUARE_AREA_SIDE_RATIO",
     "crossConceptKeys": [
-      "CC_SIMILARITY_AREA_RATIO",
-      "CC_PERCENTAGE_CONVERSION"
+      "CC_SIMILARITY_RATIO"
     ],
     "conditionKeys": [],
     "integrationPattern": "REAL_WORLD_MODELING",
-    "rpmPrimaryRecordId": "M3-RPM-007",
+    "rpmPrimaryRecordId": "M3-RPM-008",
     "sourceQid": 12,
     "variationType": "EXAM_FOLLOWUP",
     "followupKind": "CONFIRMATION"
   },
   {
     "id": 13,
-    "category": "근호를 포함한 식의 계산",
+    "category": "제곱근과 실수",
     "standardCourse": "중3",
     "curriculum": "2015",
     "courseKey": "MID-MATH-3",
     "standardUnitKey": "M3-01",
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
-    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
-    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnit": "제곱근과 실수",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "REAL_NUMBER_OPERATIONS",
+    "conceptClusterKey": "SQUARE_ROOT_REAL_NUMBER",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "근호를 포함한 식의 계산"
+      "제곱근과 실수"
     ],
     "wide": false,
     "content": "좌표평면에서 두 직선 $y=\\sqrt2x-7$, $y=-\\sqrt2x+7$과 $y$축으로 둘러싸인 삼각형의 내부에 있는 점 중 $x,y$좌표가 모두 정수이고 $y>0$인 점은 몇 개인가? (삼각형의 변 위에 있는 점은 제외한다.) [5점]",
@@ -602,15 +603,15 @@ window.questionBank = [
     "problemTypeKey": "PT_M3_INTEGER_POINTS",
     "templateKey": "",
     "crossConceptKeys": [
-      "CC_LINEAR_EQUATION_GRAPH",
-      "CC_LATTICE_POINTS_IN_POLYGON"
+      "CC_LATTICE_POINT_COUNTING",
+      "CC_LATTICE_POINTS_COORDINATES"
     ],
     "conditionKeys": [
       "COND_EXCLUDE_BOUNDARY",
       "COND_INTEGER_COORDINATES"
     ],
     "integrationPattern": "GEOMETRY_ALGEBRA_FUSION",
-    "rpmPrimaryRecordId": "M3-RPM-007",
+    "rpmPrimaryRecordId": "M3-RPM-004",
     "sourceQid": 13,
     "variationType": "EXAM_FOLLOWUP",
     "followupKind": "CONFIRMATION",
@@ -651,13 +652,13 @@ window.questionBank = [
     "points": 3,
     "difficultyBucket": 1,
     "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
-    "templateKey": "",
+    "templateKey": "TPL_M3_POLY_EXPANSION_COEFFICIENT",
     "crossConceptKeys": [
-      "CC_RADICAL_BINOMIAL_SQUARE"
+      "CC_POLYNOMIAL_EXPANSION"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
-    "rpmPrimaryRecordId": "M3-RPM-015",
+    "rpmPrimaryRecordId": "M3-RPM-017",
     "sourceQid": 14,
     "variationType": "EXAM_FOLLOWUP",
     "followupKind": "CONFIRMATION"
@@ -697,13 +698,13 @@ window.questionBank = [
     "points": 4,
     "difficultyBucket": 2,
     "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
-    "templateKey": "",
+    "templateKey": "TPL_M3_COMMON_FACTOR_IDENTIFICATION",
     "crossConceptKeys": [
-      "CC_CONSTANT_MULTIPLE_FACTOR"
+      "CC_COMMON_FACTOR"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
-    "rpmPrimaryRecordId": "M3-RPM-015",
+    "rpmPrimaryRecordId": "M3-RPM-021",
     "sourceQid": 15,
     "variationType": "EXAM_FOLLOWUP",
     "followupKind": "CONFIRMATION"
@@ -743,9 +744,9 @@ window.questionBank = [
     "points": 4,
     "difficultyBucket": 2,
     "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
-    "templateKey": "",
+    "templateKey": "TPL_M3_MULTIPLICATION_COEFFICIENT",
     "crossConceptKeys": [
-      "CC_DUAL_SIGN_PERFECT_SQUARE"
+      "CC_PERFECT_SQUARE_TRINOMIAL"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
@@ -789,13 +790,13 @@ window.questionBank = [
     "points": 4,
     "difficultyBucket": 2,
     "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
-    "templateKey": "",
+    "templateKey": "TPL_M3_MULTIPLICATION_NUMERIC",
     "crossConceptKeys": [
-      "CC_DIFFERENCE_OF_SQUARES_NUMERICAL"
+      "CC_DIFFERENCE_OF_SQUARES_EVALUATION"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
-    "rpmPrimaryRecordId": "M3-RPM-015",
+    "rpmPrimaryRecordId": "M3-RPM-018",
     "sourceQid": 17,
     "variationType": "EXAM_FOLLOWUP",
     "followupKind": "CONFIRMATION"
@@ -835,36 +836,37 @@ window.questionBank = [
     "points": 4,
     "difficultyBucket": 2,
     "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
-    "templateKey": "",
+    "templateKey": "TPL_M3_MULTIPLICATION_FORMULA_NUMERICAL_AUDIT",
     "crossConceptKeys": [
-      "CC_FACTORIZATION_PRODUCT_FORM_DEFINITION"
+      "CC_POLYNOMIAL_EXPANSION",
+      "CC_COMMON_FACTOR"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
-    "rpmPrimaryRecordId": "M3-RPM-015",
+    "rpmPrimaryRecordId": "M3-RPM-017",
     "sourceQid": 18,
     "variationType": "EXAM_FOLLOWUP",
     "followupKind": "CONFIRMATION"
   },
   {
     "id": 19,
-    "category": "다항식의 곱셈",
+    "category": "근호를 포함한 식의 계산",
     "standardCourse": "중3",
     "curriculum": "2015",
     "courseKey": "MID-MATH-3",
-    "standardUnitKey": "M3-02",
-    "standardUnit": "다항식의 곱셈과 인수분해",
-    "standardUnitOrder": 2,
-    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
-    "subUnit": "다항식의 곱셈",
+    "standardUnitKey": "M3-01",
+    "standardUnit": "실수와 그 계산",
+    "standardUnitOrder": 1,
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "POLYNOMIAL_MULTIPLICATION",
+    "conceptClusterKey": "RADICAL_OPERATION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "다항식의 곱셈"
+      "근호를 포함한 식의 계산"
     ],
     "wide": false,
     "content": "$x=\\dfrac1{\\sqrt{13}+2\\sqrt3}$, $y=\\dfrac1{\\sqrt{13}-2\\sqrt3}$일 때, $x+y$의 값은? [4점]",
@@ -880,14 +882,14 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 2,
-    "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
-    "templateKey": "",
+    "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+    "templateKey": "TPL_M3_RADICAL_RATIONALIZATION",
     "crossConceptKeys": [
       "CC_DENOMINATOR_RATIONALIZATION_CONJUGATE"
     ],
     "conditionKeys": [],
-    "integrationPattern": "RADICAL_POLYNOMIAL_FUSION",
-    "rpmPrimaryRecordId": "M3-RPM-015",
+    "integrationPattern": "NONE",
+    "rpmPrimaryRecordId": "M3-RPM-012",
     "sourceQid": 19,
     "variationType": "EXAM_FOLLOWUP",
     "followupKind": "CONFIRMATION"
@@ -927,15 +929,15 @@ window.questionBank = [
     "points": 4,
     "difficultyBucket": 2,
     "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
-    "templateKey": "",
+    "templateKey": "TPL_M3_MULTIPLICATION_FORMULA_GEOMETRIC_MODELING",
     "crossConceptKeys": [
-      "CC_GEOMETRIC_AREA_SUBTRACTION"
+      "CC_DIFFERENCE_OF_SQUARES"
     ],
     "conditionKeys": [
       "COND_DOMAIN_RESTRICTION"
     ],
     "integrationPattern": "GEOMETRY_ALGEBRA_FUSION",
-    "rpmPrimaryRecordId": "M3-RPM-015",
+    "rpmPrimaryRecordId": "M3-RPM-016",
     "sourceQid": 20,
     "variationType": "EXAM_FOLLOWUP",
     "followupKind": "CONFIRMATION"
@@ -969,15 +971,16 @@ window.questionBank = [
     "points": 7,
     "difficultyBucket": 2,
     "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
-    "templateKey": "",
+    "templateKey": "TPL_M3_RADICAL_NATURAL_NUMBER_CONDITION",
     "crossConceptKeys": [
-      "CC_PRIME_FACTORIZATION_POWER_PARITY"
+      "CC_PRIME_FACTORIZATION",
+      "CC_RADICAL_SQUARE_EXTRACTION"
     ],
     "conditionKeys": [
       "COND_TWO_DIGIT_NATURAL_NUMBER"
     ],
     "integrationPattern": "NONE",
-    "rpmPrimaryRecordId": "M3-RPM-007",
+    "rpmPrimaryRecordId": "M3-RPM-002",
     "sourceQid": 21,
     "variationType": "EXAM_FOLLOWUP",
     "followupKind": "CONFIRMATION"
@@ -1010,15 +1013,15 @@ window.questionBank = [
     "score": 6,
     "points": 6,
     "difficultyBucket": 4,
-    "problemTypeKey": "PT_M3_SQUARE_ROOT_APPLICATION",
-    "templateKey": "",
+    "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+    "templateKey": "TPL_M3_RADICAL_GEOMETRY",
     "crossConceptKeys": [
-      "CC_TRAPEZOID_AREA_FORMULA",
-      "CC_RADICAL_FRACTION_RATIONALIZATION"
+      "CC_TRAPEZOIDAL_AREA_PROPERTY",
+      "CC_RADICAL_RATIONALIZATION"
     ],
     "conditionKeys": [],
     "integrationPattern": "GEOMETRY_ALGEBRA_FUSION",
-    "rpmPrimaryRecordId": "M3-RPM-007",
+    "rpmPrimaryRecordId": "M3-RPM-008",
     "sourceQid": 22,
     "variationType": "EXAM_FOLLOWUP",
     "followupKind": "CONFIRMATION",
@@ -1053,13 +1056,14 @@ window.questionBank = [
     "points": 7,
     "difficultyBucket": 3,
     "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
-    "templateKey": "",
+    "templateKey": "TPL_M3_FACTORIZATION_VALUE",
     "crossConceptKeys": [
-      "CC_DUAL_ALGEBRAIC_STRATEGIES"
+      "CC_PERFECT_SQUARE_TRINOMIAL",
+      "CC_QUADRATIC_FACTORIZATION"
     ],
     "conditionKeys": [],
     "integrationPattern": "RADICAL_POLYNOMIAL_FUSION",
-    "rpmPrimaryRecordId": "M3-RPM-015",
+    "rpmPrimaryRecordId": "M3-RPM-027",
     "sourceQid": 23,
     "variationType": "EXAM_FOLLOWUP",
     "followupKind": "CONFIRMATION"

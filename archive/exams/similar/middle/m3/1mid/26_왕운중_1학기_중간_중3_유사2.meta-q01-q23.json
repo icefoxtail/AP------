@@ -3,7 +3,7 @@
   "requestId": "26_왕운중_1학기_중간_중3_유사2-candidate-v1",
   "examUid": "26_왕운중_1학기_중간_중3_유사2",
   "sourceArchiveFile": "archive/exams/similar/middle/m3/1mid/26_왕운중_1학기_중간_중3_유사2.js",
-  "expectedSourceBlobSha1": "00993e528a417ebcabd5e0278d8b253d1eba8b8d",
+  "expectedSourceBlobSha1": "40a24dee78b06015c7e925d3562368576a8c45ba",
   "expectedQuestionCount": 23,
   "approval": {
     "type": "CANDIDATE_CREATION_GATE",
@@ -30,9 +30,9 @@
         "subUnit": "제곱근과 실수",
         "conceptClusterKey": "SQUARE_ROOT_REAL_NUMBER",
         "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
-        "templateKey": "",
+        "templateKey": "TPL_M3_ROOT_PROPERTY_DEFINITION",
         "crossConceptKeys": [
-          "CC_SQUARE_ROOT_NOTATION"
+          "CC_PRINCIPAL_SQUARE_ROOT"
         ],
         "conditionKeys": [],
         "integrationPattern": "NONE",
@@ -54,13 +54,13 @@
         "rpmPrimaryRecordId": "M3-RPM-001",
         "metaRationale": {
           "draftTier": "SINGLE_MODEL_DRAFT",
-          "curriculum": "중3 1학기, M3-01 M3-01-SQUARE_ROOT_REAL_NUMBER의 결정적 풀이: [키포인트] ‘어떤 수의 제곱근’은 두 수를 가리키고, 기호 $\\sqrt{49}$는 음이 아닌 한 수를 가리킨다.",
-          "problemType": "ACTIVE PT_M3_SQUARE_ROOT_PROPERTY: 제곱근의 성질 판별. 서로 다른 수의 집합/단일 값을 비교하도록 질문 목표 변경",
-          "templateKey": "EVIDENCE_DEBT: 현재 해당 ACTIVE PT의 ACTIVE TPL 후보 없음. 새 TPL 등록/선정 후 결속 필요.",
+          "curriculum": "중3 1학기 M3-01/M3-01-SQUARE_ROOT_REAL_NUMBER: [키포인트] ‘어떤 수의 제곱근’은 두 수를 가리키고, 기호 $\\sqrt{49}$는 음이 아닌 한 수를 가리킨다.",
+          "problemType": "독립 전수검수: PT_M3_SQUARE_ROOT_PROPERTY는 M3-01-SQUARE_ROOT_REAL_NUMBER와 ACTIVE 바인딩. 판별법은 해설의 결정적 계산 단계에 대응.",
+          "templateKey": "독립 전수검수: TPL_M3_ROOT_PROPERTY_DEFINITION는 ACTIVE이며 PT_M3_SQUARE_ROOT_PROPERTY에 직접 결속.",
           "difficulty": "원본 동일 개념·배점·풀이 판단 수를 유지한 1단계. 서로 다른 수의 집합/단일 값을 비교하도록 질문 목표 변경",
           "condition": "별도의 등록 Condition key는 필수 아님",
-          "crossConcept": "기존 L3 맥락의 보조 역할: CC_SQUARE_ROOT_NOTATION",
-          "integration": "통합 패턴 불필요"
+          "crossConcept": "등록된 ACTIVE concept keys로 재결속: CC_PRINCIPAL_SQUARE_ROOT",
+          "integration": "풀이의 독립된 이종 대단원 결합 없음"
         },
         "visualNecessity": {
           "problem": "EXEMPT",
@@ -93,9 +93,9 @@
         "subUnit": "제곱근과 실수",
         "conceptClusterKey": "SQUARE_ROOT_REAL_NUMBER",
         "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
-        "templateKey": "",
+        "templateKey": "TPL_M3_SQUARE_ROOT_PROPERTY_AUDIT",
         "crossConceptKeys": [
-          "CC_ABSOLUTE_VALUE_OF_RADICAL"
+          "CC_RADICAL_SQUARE_ABSOLUTE_VALUE"
         ],
         "conditionKeys": [],
         "integrationPattern": "NONE",
@@ -114,16 +114,16 @@
           "createdAt": "2026-11-25",
           "createdAtSource": "GPT direct 1-exam instruction"
         },
-        "rpmPrimaryRecordId": "M3-RPM-001",
+        "rpmPrimaryRecordId": "M3-RPM-002",
         "metaRationale": {
           "draftTier": "SINGLE_MODEL_DRAFT",
-          "curriculum": "중3 1학기, M3-01 M3-01-SQUARE_ROOT_REAL_NUMBER의 결정적 풀이: [키포인트] $\\sqrt{t^2}=|t|$이고, 제곱근을 제곱하면 근호 안의 양수가 된다.",
-          "problemType": "ACTIVE PT_M3_SQUARE_ROOT_PROPERTY: 제곱근의 성질 판별. 근호-제곱 부호를 식 안팎에 배치하여 참/거짓 구성 변경",
-          "templateKey": "EVIDENCE_DEBT: 현재 해당 ACTIVE PT의 ACTIVE TPL 후보 없음. 새 TPL 등록/선정 후 결속 필요.",
+          "curriculum": "중3 1학기 M3-01/M3-01-SQUARE_ROOT_REAL_NUMBER: [키포인트] $\\sqrt{t^2}=|t|$이고, 제곱근을 제곱하면 근호 안의 양수가 된다.",
+          "problemType": "독립 전수검수: PT_M3_SQUARE_ROOT_PROPERTY는 M3-01-SQUARE_ROOT_REAL_NUMBER와 ACTIVE 바인딩. 판별법은 해설의 결정적 계산 단계에 대응.",
+          "templateKey": "독립 전수검수: TPL_M3_SQUARE_ROOT_PROPERTY_AUDIT는 ACTIVE이며 PT_M3_SQUARE_ROOT_PROPERTY에 직접 결속.",
           "difficulty": "원본 동일 개념·배점·풀이 판단 수를 유지한 1단계. 근호-제곱 부호를 식 안팎에 배치하여 참/거짓 구성 변경",
           "condition": "별도의 등록 Condition key는 필수 아님",
-          "crossConcept": "기존 L3 맥락의 보조 역할: CC_ABSOLUTE_VALUE_OF_RADICAL",
-          "integration": "통합 패턴 불필요"
+          "crossConcept": "등록된 ACTIVE concept keys로 재결속: CC_RADICAL_SQUARE_ABSOLUTE_VALUE",
+          "integration": "풀이의 독립된 이종 대단원 결합 없음"
         },
         "visualNecessity": {
           "problem": "EXEMPT",
@@ -152,13 +152,13 @@
         "standardUnitKey": "M3-01",
         "standardUnit": "실수와 그 계산",
         "standardUnitOrder": 1,
-        "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
-        "subUnit": "제곱근과 실수",
+        "subUnitKey": "M3-01-REAL_NUMBER",
+        "subUnit": "무리수와 실수",
         "conceptClusterKey": "SQUARE_ROOT_REAL_NUMBER",
         "problemTypeKey": "PT_M3_REAL_NUMBER_CLASSIFICATION",
-        "templateKey": "",
+        "templateKey": "TPL_M3_REAL_NUMBER_CLASSIFICATION_AUDIT",
         "crossConceptKeys": [
-          "CC_RATIONAL_IRRATIONAL_SEPARATION"
+          "CC_REPEATING_DECIMAL_RATIONAL"
         ],
         "conditionKeys": [],
         "integrationPattern": "NONE",
@@ -177,16 +177,16 @@
           "createdAt": "2026-11-25",
           "createdAtSource": "GPT direct 1-exam instruction"
         },
-        "rpmPrimaryRecordId": "M3-RPM-001",
+        "rpmPrimaryRecordId": "M3-RPM-003",
         "metaRationale": {
           "draftTier": "SINGLE_MODEL_DRAFT",
-          "curriculum": "중3 1학기, M3-01 M3-01-SQUARE_ROOT_REAL_NUMBER의 결정적 풀이: [키포인트] 근호의 존재만으로 무리수인지 판단하지 말고, 계산한 수가 유리수인지 구별한다.",
-          "problemType": "ACTIVE PT_M3_REAL_NUMBER_CLASSIFICATION: 유리수와 무리수의 판별. 진술 참거짓에서 수식 간 유리수 분류로 전환",
-          "templateKey": "EVIDENCE_DEBT: 현재 해당 ACTIVE PT의 ACTIVE TPL 후보 없음. 새 TPL 등록/선정 후 결속 필요.",
+          "curriculum": "중3 1학기 M3-01/M3-01-REAL_NUMBER: [키포인트] 근호의 존재만으로 무리수인지 판단하지 말고, 계산한 수가 유리수인지 구별한다.",
+          "problemType": "독립 전수검수: PT_M3_REAL_NUMBER_CLASSIFICATION는 M3-01-REAL_NUMBER와 ACTIVE 바인딩. 판별법은 해설의 결정적 계산 단계에 대응.",
+          "templateKey": "독립 전수검수: TPL_M3_REAL_NUMBER_CLASSIFICATION_AUDIT는 ACTIVE이며 PT_M3_REAL_NUMBER_CLASSIFICATION에 직접 결속.",
           "difficulty": "원본 동일 개념·배점·풀이 판단 수를 유지한 2단계. 진술 참거짓에서 수식 간 유리수 분류로 전환",
           "condition": "별도의 등록 Condition key는 필수 아님",
-          "crossConcept": "기존 L3 맥락의 보조 역할: CC_RATIONAL_IRRATIONAL_SEPARATION",
-          "integration": "통합 패턴 불필요"
+          "crossConcept": "등록된 ACTIVE concept keys로 재결속: CC_REPEATING_DECIMAL_RATIONAL",
+          "integration": "풀이의 독립된 이종 대단원 결합 없음"
         },
         "visualNecessity": {
           "problem": "EXEMPT",
@@ -219,9 +219,9 @@
         "subUnit": "근호를 포함한 식의 계산",
         "conceptClusterKey": "REAL_NUMBER_OPERATIONS",
         "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
-        "templateKey": "",
+        "templateKey": "TPL_M3_ROOT_PROPERTY_ROOT_VALUE",
         "crossConceptKeys": [
-          "CC_RADICAL_SIGN_SUBTRACTION"
+          "CC_RADICAL_SIGN_PROPERTIES"
         ],
         "conditionKeys": [],
         "integrationPattern": "NONE",
@@ -240,16 +240,16 @@
           "createdAt": "2026-11-25",
           "createdAtSource": "GPT direct 1-exam instruction"
         },
-        "rpmPrimaryRecordId": "M3-RPM-007",
+        "rpmPrimaryRecordId": "M3-RPM-002",
         "metaRationale": {
           "draftTier": "SINGLE_MODEL_DRAFT",
-          "curriculum": "중3 1학기, M3-01 M3-01-REAL_NUMBER_OPERATIONS의 결정적 풀이: [키포인트] 근호 밖의 마이너스 기호와 근호 안의 음수 제곱을 서로 구별한다.",
-          "problemType": "ACTIVE PT_M3_SQUARE_ROOT_PROPERTY: 제곱근의 성질 판별. 등식의 오류 찾기에서 최종 부호 판단으로 전환",
-          "templateKey": "EVIDENCE_DEBT: 현재 해당 ACTIVE PT의 ACTIVE TPL 후보 없음. 새 TPL 등록/선정 후 결속 필요.",
+          "curriculum": "중3 1학기 M3-01/M3-01-REAL_NUMBER_OPERATIONS: [키포인트] 근호 밖의 마이너스 기호와 근호 안의 음수 제곱을 서로 구별한다.",
+          "problemType": "독립 전수검수: PT_M3_SQUARE_ROOT_PROPERTY는 M3-01-REAL_NUMBER_OPERATIONS와 ACTIVE 바인딩. 판별법은 해설의 결정적 계산 단계에 대응.",
+          "templateKey": "독립 전수검수: TPL_M3_ROOT_PROPERTY_ROOT_VALUE는 ACTIVE이며 PT_M3_SQUARE_ROOT_PROPERTY에 직접 결속.",
           "difficulty": "원본 동일 개념·배점·풀이 판단 수를 유지한 2단계. 등식의 오류 찾기에서 최종 부호 판단으로 전환",
           "condition": "별도의 등록 Condition key는 필수 아님",
-          "crossConcept": "기존 L3 맥락의 보조 역할: CC_RADICAL_SIGN_SUBTRACTION",
-          "integration": "통합 패턴 불필요"
+          "crossConcept": "등록된 ACTIVE concept keys로 재결속: CC_RADICAL_SIGN_PROPERTIES",
+          "integration": "풀이의 독립된 이종 대단원 결합 없음"
         },
         "visualNecessity": {
           "problem": "EXEMPT",
@@ -278,13 +278,13 @@
         "standardUnitKey": "M3-01",
         "standardUnit": "실수와 그 계산",
         "standardUnitOrder": 1,
-        "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
-        "subUnit": "제곱근과 실수",
+        "subUnitKey": "M3-01-REAL_NUMBER_COMPARISON",
+        "subUnit": "실수의 대소",
         "conceptClusterKey": "SQUARE_ROOT_REAL_NUMBER",
         "problemTypeKey": "PT_M3_REAL_NUMBER_COMPARISON",
-        "templateKey": "",
+        "templateKey": "TPL_M3_REAL_COMPARISON_ORDER",
         "crossConceptKeys": [
-          "CC_INEQUALITY_SIGN_REVERSAL"
+          "CC_RADICAL_COMPARISON"
         ],
         "conditionKeys": [],
         "integrationPattern": "NONE",
@@ -303,16 +303,16 @@
           "createdAt": "2026-11-25",
           "createdAtSource": "GPT direct 1-exam instruction"
         },
-        "rpmPrimaryRecordId": "M3-RPM-001",
+        "rpmPrimaryRecordId": "M3-RPM-004",
         "metaRationale": {
           "draftTier": "SINGLE_MODEL_DRAFT",
-          "curriculum": "중3 1학기, M3-01 M3-01-SQUARE_ROOT_REAL_NUMBER의 결정적 풀이: [키포인트] 제곱근이 클수록 그것을 뺀 값은 작아진다.",
-          "problemType": "ACTIVE PT_M3_REAL_NUMBER_COMPARISON: 실수의 대소와 범위 판단. 다섯 참거짓 식 대신 세 실수의 전체 순서 결정",
-          "templateKey": "EVIDENCE_DEBT: 현재 해당 ACTIVE PT의 ACTIVE TPL 후보 없음. 새 TPL 등록/선정 후 결속 필요.",
+          "curriculum": "중3 1학기 M3-01/M3-01-REAL_NUMBER_COMPARISON: [키포인트] 제곱근이 클수록 그것을 뺀 값은 작아진다.",
+          "problemType": "독립 전수검수: PT_M3_REAL_NUMBER_COMPARISON는 M3-01-REAL_NUMBER_COMPARISON와 ACTIVE 바인딩. 판별법은 해설의 결정적 계산 단계에 대응.",
+          "templateKey": "독립 전수검수: TPL_M3_REAL_COMPARISON_ORDER는 ACTIVE이며 PT_M3_REAL_NUMBER_COMPARISON에 직접 결속.",
           "difficulty": "원본 동일 개념·배점·풀이 판단 수를 유지한 2단계. 다섯 참거짓 식 대신 세 실수의 전체 순서 결정",
           "condition": "별도의 등록 Condition key는 필수 아님",
-          "crossConcept": "기존 L3 맥락의 보조 역할: CC_INEQUALITY_SIGN_REVERSAL",
-          "integration": "통합 패턴 불필요"
+          "crossConcept": "등록된 ACTIVE concept keys로 재결속: CC_RADICAL_COMPARISON",
+          "integration": "풀이의 독립된 이종 대단원 결합 없음"
         },
         "visualNecessity": {
           "problem": "EXEMPT",
@@ -345,9 +345,9 @@
         "subUnit": "근호를 포함한 식의 계산",
         "conceptClusterKey": "REAL_NUMBER_OPERATIONS",
         "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
-        "templateKey": "",
+        "templateKey": "TPL_M3_RADICAL_MIXED_OPERATION",
         "crossConceptKeys": [
-          "CC_PERFECT_SQUARE_RADICAL_EXTRACTION"
+          "CC_RADICAL_MULTIPLICATION_DIVISION"
         ],
         "conditionKeys": [
           "COND_POSITIVE_REAL"
@@ -371,13 +371,13 @@
         "rpmPrimaryRecordId": "M3-RPM-007",
         "metaRationale": {
           "draftTier": "SINGLE_MODEL_DRAFT",
-          "curriculum": "중3 1학기, M3-01 M3-01-REAL_NUMBER_OPERATIONS의 결정적 풀이: [키포인트] $a>0$일 때 $\\sqrt{a}\\sqrt{3a}=a\\sqrt3$이다.",
-          "problemType": "ACTIVE PT_M3_RADICAL_CALCULATION: 근호를 포함한 식의 계산. 곱 전체의 조건에서 매개변수를 찾은 뒤 제곱값 결정",
-          "templateKey": "EVIDENCE_DEBT: 현재 해당 ACTIVE PT의 ACTIVE TPL 후보 없음. 새 TPL 등록/선정 후 결속 필요.",
+          "curriculum": "중3 1학기 M3-01/M3-01-REAL_NUMBER_OPERATIONS: [키포인트] $a>0$일 때 $\\sqrt{a}\\sqrt{3a}=a\\sqrt3$이다.",
+          "problemType": "독립 전수검수: PT_M3_RADICAL_CALCULATION는 M3-01-REAL_NUMBER_OPERATIONS와 ACTIVE 바인딩. 판별법은 해설의 결정적 계산 단계에 대응.",
+          "templateKey": "독립 전수검수: TPL_M3_RADICAL_MIXED_OPERATION는 ACTIVE이며 PT_M3_RADICAL_CALCULATION에 직접 결속.",
           "difficulty": "원본 동일 개념·배점·풀이 판단 수를 유지한 2단계. 곱 전체의 조건에서 매개변수를 찾은 뒤 제곱값 결정",
           "condition": "필요 조건: COND_POSITIVE_REAL",
-          "crossConcept": "기존 L3 맥락의 보조 역할: CC_PERFECT_SQUARE_RADICAL_EXTRACTION",
-          "integration": "통합 패턴 불필요"
+          "crossConcept": "등록된 ACTIVE concept keys로 재결속: CC_RADICAL_MULTIPLICATION_DIVISION",
+          "integration": "풀이의 독립된 이종 대단원 결합 없음"
         },
         "visualNecessity": {
           "problem": "EXEMPT",
@@ -410,10 +410,10 @@
         "subUnit": "제곱근과 실수",
         "conceptClusterKey": "SQUARE_ROOT_REAL_NUMBER",
         "problemTypeKey": "PT_M3_REAL_NUMBER_LINE",
-        "templateKey": "",
+        "templateKey": "TPL_M3_NUMBER_LINE_SQUARE_ROTATION",
         "crossConceptKeys": [
-          "CC_PYTHAGOREAN_DIAGONAL",
-          "CC_NUMBER_LINE_DISPLACEMENT"
+          "CC_PYTHAGOREAN_THEOREM",
+          "CC_NUMBER_LINE_COORDINATE_SHIFT"
         ],
         "conditionKeys": [],
         "integrationPattern": "GEOMETRY_ALGEBRA_FUSION",
@@ -432,16 +432,16 @@
           "createdAt": "2026-11-25",
           "createdAtSource": "GPT direct 1-exam instruction"
         },
-        "rpmPrimaryRecordId": "M3-RPM-001",
+        "rpmPrimaryRecordId": "M3-RPM-005",
         "metaRationale": {
           "draftTier": "SINGLE_MODEL_DRAFT",
-          "curriculum": "중3 1학기, M3-01 M3-01-SQUARE_ROOT_REAL_NUMBER의 결정적 풀이: [키포인트] 정사각형 대각선 길이는 $\\sqrt2$이고, $1<\\sqrt2<2$이다.",
-          "problemType": "ACTIVE PT_M3_REAL_NUMBER_LINE: 수직선 위 실수의 위치 결정. 특정 근호 좌표 식 읽기에서 다섯 점의 구간 판정으로 전환",
-          "templateKey": "EVIDENCE_DEBT: 현재 해당 ACTIVE PT의 ACTIVE TPL 후보 없음. 새 TPL 등록/선정 후 결속 필요.",
+          "curriculum": "중3 1학기 M3-01/M3-01-SQUARE_ROOT_REAL_NUMBER: [키포인트] 정사각형 대각선 길이는 $\\sqrt2$이고, $1<\\sqrt2<2$이다.",
+          "problemType": "독립 전수검수: PT_M3_REAL_NUMBER_LINE는 M3-01-SQUARE_ROOT_REAL_NUMBER와 ACTIVE 바인딩. 판별법은 해설의 결정적 계산 단계에 대응.",
+          "templateKey": "독립 전수검수: TPL_M3_NUMBER_LINE_SQUARE_ROTATION는 ACTIVE이며 PT_M3_REAL_NUMBER_LINE에 직접 결속.",
           "difficulty": "원본 동일 개념·배점·풀이 판단 수를 유지한 2단계. 특정 근호 좌표 식 읽기에서 다섯 점의 구간 판정으로 전환",
           "condition": "별도의 등록 Condition key는 필수 아님",
-          "crossConcept": "기존 L3 맥락의 보조 역할: CC_PYTHAGOREAN_DIAGONAL, CC_NUMBER_LINE_DISPLACEMENT",
-          "integration": "GEOMETRY_ALGEBRA_FUSION은 풀이의 보조 연결에 한정"
+          "crossConcept": "등록된 ACTIVE concept keys로 재결속: CC_PYTHAGOREAN_THEOREM, CC_NUMBER_LINE_COORDINATE_SHIFT",
+          "integration": "현재 GEOMETRY_ALGEBRA_FUSION로 분류"
         },
         "visualNecessity": {
           "problem": "EXEMPT",
@@ -474,9 +474,10 @@
         "subUnit": "근호를 포함한 식의 계산",
         "conceptClusterKey": "REAL_NUMBER_OPERATIONS",
         "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
-        "templateKey": "",
+        "templateKey": "TPL_M3_RADICAL_MIXED_OPERATION",
         "crossConceptKeys": [
-          "CC_RADICAL_COEFFICIENT_MATCHING"
+          "CC_RADICAL_ADDITION_SUBTRACTION",
+          "CC_RADICAL_DISTRIBUTIVE_LAW"
         ],
         "conditionKeys": [
           "COND_RATIONAL_COEFFICIENTS"
@@ -497,16 +498,16 @@
           "createdAt": "2026-11-25",
           "createdAtSource": "GPT direct 1-exam instruction"
         },
-        "rpmPrimaryRecordId": "M3-RPM-007",
+        "rpmPrimaryRecordId": "M3-RPM-010",
         "metaRationale": {
           "draftTier": "SINGLE_MODEL_DRAFT",
-          "curriculum": "중3 1학기, M3-01 M3-01-REAL_NUMBER_OPERATIONS의 결정적 풀이: [키포인트] 먼저 근호를 간단히 하고 동류항끼리 묶는다.",
-          "problemType": "ACTIVE PT_M3_RADICAL_CALCULATION: 근호를 포함한 식의 계산. 근호 나눗셈에서 분배와 계수 결합의 목표 변경",
-          "templateKey": "EVIDENCE_DEBT: 현재 해당 ACTIVE PT의 ACTIVE TPL 후보 없음. 새 TPL 등록/선정 후 결속 필요.",
+          "curriculum": "중3 1학기 M3-01/M3-01-REAL_NUMBER_OPERATIONS: [키포인트] 먼저 근호를 간단히 하고 동류항끼리 묶는다.",
+          "problemType": "독립 전수검수: PT_M3_RADICAL_CALCULATION는 M3-01-REAL_NUMBER_OPERATIONS와 ACTIVE 바인딩. 판별법은 해설의 결정적 계산 단계에 대응.",
+          "templateKey": "독립 전수검수: TPL_M3_RADICAL_MIXED_OPERATION는 ACTIVE이며 PT_M3_RADICAL_CALCULATION에 직접 결속.",
           "difficulty": "원본 동일 개념·배점·풀이 판단 수를 유지한 2단계. 근호 나눗셈에서 분배와 계수 결합의 목표 변경",
           "condition": "필요 조건: COND_RATIONAL_COEFFICIENTS",
-          "crossConcept": "기존 L3 맥락의 보조 역할: CC_RADICAL_COEFFICIENT_MATCHING",
-          "integration": "통합 패턴 불필요"
+          "crossConcept": "등록된 ACTIVE concept keys로 재결속: CC_RADICAL_ADDITION_SUBTRACTION, CC_RADICAL_DISTRIBUTIVE_LAW",
+          "integration": "풀이의 독립된 이종 대단원 결합 없음"
         },
         "visualNecessity": {
           "problem": "EXEMPT",
@@ -539,9 +540,9 @@
         "subUnit": "근호를 포함한 식의 계산",
         "conceptClusterKey": "REAL_NUMBER_OPERATIONS",
         "problemTypeKey": "PT_M3_REAL_NUMBER_COMPARISON",
-        "templateKey": "",
+        "templateKey": "TPL_M3_REAL_COMPARISON_STEP_FUNCTION",
         "crossConceptKeys": [
-          "CC_INTEGER_COUNT_BETWEEN_BOUNDS"
+          "CC_SQUARE_ROOT_APPROXIMATION"
         ],
         "conditionKeys": [
           "COND_NATURAL_NUMBER"
@@ -562,16 +563,16 @@
           "createdAt": "2026-11-25",
           "createdAtSource": "GPT direct 1-exam instruction"
         },
-        "rpmPrimaryRecordId": "M3-RPM-007",
+        "rpmPrimaryRecordId": "M3-RPM-004",
         "metaRationale": {
           "draftTier": "SINGLE_MODEL_DRAFT",
-          "curriculum": "중3 1학기, M3-01 M3-01-REAL_NUMBER_OPERATIONS의 결정적 풀이: [키포인트] 제곱근의 정수부분을 구간으로 바꾸고, 양 끝 포함 여부를 확인한다.",
-          "problemType": "ACTIVE PT_M3_REAL_NUMBER_COMPARISON: 실수의 대소와 범위 판단. 양쪽 제곱근 경계 대신 정수부분의 합집합 조건에서 역산",
-          "templateKey": "EVIDENCE_DEBT: 현재 해당 ACTIVE PT의 ACTIVE TPL 후보 없음. 새 TPL 등록/선정 후 결속 필요.",
+          "curriculum": "중3 1학기 M3-01/M3-01-REAL_NUMBER_OPERATIONS: [키포인트] 제곱근의 정수부분을 구간으로 바꾸고, 양 끝 포함 여부를 확인한다.",
+          "problemType": "독립 전수검수: PT_M3_REAL_NUMBER_COMPARISON는 M3-01-REAL_NUMBER_OPERATIONS와 ACTIVE 바인딩. 판별법은 해설의 결정적 계산 단계에 대응.",
+          "templateKey": "독립 전수검수: TPL_M3_REAL_COMPARISON_STEP_FUNCTION는 ACTIVE이며 PT_M3_REAL_NUMBER_COMPARISON에 직접 결속.",
           "difficulty": "원본 동일 개념·배점·풀이 판단 수를 유지한 2단계. 양쪽 제곱근 경계 대신 정수부분의 합집합 조건에서 역산",
           "condition": "필요 조건: COND_NATURAL_NUMBER",
-          "crossConcept": "기존 L3 맥락의 보조 역할: CC_INTEGER_COUNT_BETWEEN_BOUNDS",
-          "integration": "통합 패턴 불필요"
+          "crossConcept": "등록된 ACTIVE concept keys로 재결속: CC_SQUARE_ROOT_APPROXIMATION",
+          "integration": "풀이의 독립된 이종 대단원 결합 없음"
         },
         "visualNecessity": {
           "problem": "EXEMPT",
@@ -604,9 +605,9 @@
         "subUnit": "근호를 포함한 식의 계산",
         "conceptClusterKey": "REAL_NUMBER_OPERATIONS",
         "problemTypeKey": "PT_M3_REAL_NUMBER_COMPARISON",
-        "templateKey": "",
+        "templateKey": "TPL_M3_REAL_COMPARISON_STEP_FUNCTION",
         "crossConceptKeys": [
-          "CC_INTEGER_DECIMAL_DECOMPOSITION"
+          "CC_SQUARE_ROOT_APPROXIMATION"
         ],
         "conditionKeys": [
           "COND_NATURAL_NUMBER"
@@ -627,16 +628,16 @@
           "createdAt": "2026-11-25",
           "createdAtSource": "GPT direct 1-exam instruction"
         },
-        "rpmPrimaryRecordId": "M3-RPM-007",
+        "rpmPrimaryRecordId": "M3-RPM-004",
         "metaRationale": {
           "draftTier": "SINGLE_MODEL_DRAFT",
-          "curriculum": "중3 1학기, M3-01 M3-01-REAL_NUMBER_OPERATIONS의 결정적 풀이: [키포인트] 정수부분과 소수부분을 각각 부등식으로 나타낸다.",
-          "problemType": "ACTIVE PT_M3_REAL_NUMBER_COMPARISON: 실수의 대소와 범위 판단. 소수부분 상한 쪽의 포함 경계를 이용한 정수 집계",
-          "templateKey": "EVIDENCE_DEBT: 현재 해당 ACTIVE PT의 ACTIVE TPL 후보 없음. 새 TPL 등록/선정 후 결속 필요.",
+          "curriculum": "중3 1학기 M3-01/M3-01-REAL_NUMBER_OPERATIONS: [키포인트] 정수부분과 소수부분을 각각 부등식으로 나타낸다.",
+          "problemType": "독립 전수검수: PT_M3_REAL_NUMBER_COMPARISON는 M3-01-REAL_NUMBER_OPERATIONS와 ACTIVE 바인딩. 판별법은 해설의 결정적 계산 단계에 대응.",
+          "templateKey": "독립 전수검수: TPL_M3_REAL_COMPARISON_STEP_FUNCTION는 ACTIVE이며 PT_M3_REAL_NUMBER_COMPARISON에 직접 결속.",
           "difficulty": "원본 동일 개념·배점·풀이 판단 수를 유지한 3단계. 소수부분 상한 쪽의 포함 경계를 이용한 정수 집계",
           "condition": "필요 조건: COND_NATURAL_NUMBER",
-          "crossConcept": "기존 L3 맥락의 보조 역할: CC_INTEGER_DECIMAL_DECOMPOSITION",
-          "integration": "통합 패턴 불필요"
+          "crossConcept": "등록된 ACTIVE concept keys로 재결속: CC_SQUARE_ROOT_APPROXIMATION",
+          "integration": "풀이의 독립된 이종 대단원 결합 없음"
         },
         "visualNecessity": {
           "problem": "EXEMPT",
@@ -671,7 +672,8 @@
         "problemTypeKey": "PT_M3_SQUARE_ROOT_TABLE",
         "templateKey": "",
         "crossConceptKeys": [
-          "CC_DECIMAL_PLACE_SHIFT"
+          "CC_RADICAL_DECIMAL_SHIFT",
+          "CC_SQUARE_ROOT_APPROXIMATION"
         ],
         "conditionKeys": [],
         "integrationPattern": "NONE",
@@ -690,16 +692,16 @@
           "createdAt": "2026-11-25",
           "createdAtSource": "GPT direct 1-exam instruction"
         },
-        "rpmPrimaryRecordId": "M3-RPM-007",
+        "rpmPrimaryRecordId": "M3-RPM-006",
         "metaRationale": {
           "draftTier": "SINGLE_MODEL_DRAFT",
-          "curriculum": "중3 1학기, M3-01 M3-01-REAL_NUMBER_OPERATIONS의 결정적 풀이: [키포인트] 제곱표의 수를 $10^4$, $10^4$로 나누어 소수 두 자리의 제곱과 비교한다.",
-          "problemType": "ACTIVE PT_M3_SQUARE_ROOT_TABLE: 제곱근표. 제곱표의 두 숫자 추출에서 숫자 합의 목표로 변경",
-          "templateKey": "EVIDENCE_DEBT: 현재 해당 ACTIVE PT의 ACTIVE TPL 후보 없음. 새 TPL 등록/선정 후 결속 필요.",
+          "curriculum": "중3 1학기 M3-01/M3-01-REAL_NUMBER_OPERATIONS: [키포인트] 제곱표의 수를 $10^4$, $10^4$로 나누어 소수 두 자리의 제곱과 비교한다.",
+          "problemType": "독립 전수검수: PT_M3_SQUARE_ROOT_TABLE는 M3-01-REAL_NUMBER_OPERATIONS와 ACTIVE 바인딩. 판별법은 해설의 결정적 계산 단계에 대응.",
+          "templateKey": "ACTIVE PT_M3_SQUARE_ROOT_TABLE에 동일 PT의 ACTIVE template 없음; 임의 TPL 생성·타 유형 매핑 없이 빈 값 보존(추가 등록 후 재검토).",
           "difficulty": "원본 동일 개념·배점·풀이 판단 수를 유지한 3단계. 제곱표의 두 숫자 추출에서 숫자 합의 목표로 변경",
           "condition": "별도의 등록 Condition key는 필수 아님",
-          "crossConcept": "기존 L3 맥락의 보조 역할: CC_DECIMAL_PLACE_SHIFT",
-          "integration": "통합 패턴 불필요"
+          "crossConcept": "등록된 ACTIVE concept keys로 재결속: CC_RADICAL_DECIMAL_SHIFT, CC_SQUARE_ROOT_APPROXIMATION",
+          "integration": "풀이의 독립된 이종 대단원 결합 없음"
         },
         "visualNecessity": {
           "problem": "EXEMPT",
@@ -732,10 +734,9 @@
         "subUnit": "근호를 포함한 식의 계산",
         "conceptClusterKey": "REAL_NUMBER_OPERATIONS",
         "problemTypeKey": "PT_M3_SQUARE_ROOT_APPLICATION",
-        "templateKey": "",
+        "templateKey": "TPL_M3_SQUARE_AREA_SIDE_RATIO",
         "crossConceptKeys": [
-          "CC_SIMILARITY_AREA_RATIO",
-          "CC_PERCENTAGE_CONVERSION"
+          "CC_SIMILARITY_RATIO"
         ],
         "conditionKeys": [],
         "integrationPattern": "REAL_WORLD_MODELING",
@@ -754,16 +755,16 @@
           "createdAt": "2026-11-25",
           "createdAtSource": "GPT direct 1-exam instruction"
         },
-        "rpmPrimaryRecordId": "M3-RPM-007",
+        "rpmPrimaryRecordId": "M3-RPM-008",
         "metaRationale": {
           "draftTier": "SINGLE_MODEL_DRAFT",
-          "curriculum": "중3 1학기, M3-01 M3-01-REAL_NUMBER_OPERATIONS의 결정적 풀이: [키포인트] 닮음에서 넓이비는 길이비의 제곱이다.",
-          "problemType": "ACTIVE PT_M3_SQUARE_ROOT_APPLICATION: 제곱근의 기하 활용. 종이 규격 대화에서 세 넓이 중 두 크기의 축소 비율을 선택",
-          "templateKey": "EVIDENCE_DEBT: 현재 해당 ACTIVE PT의 ACTIVE TPL 후보 없음. 새 TPL 등록/선정 후 결속 필요.",
+          "curriculum": "중3 1학기 M3-01/M3-01-REAL_NUMBER_OPERATIONS: [키포인트] 닮음에서 넓이비는 길이비의 제곱이다.",
+          "problemType": "독립 전수검수: PT_M3_SQUARE_ROOT_APPLICATION는 M3-01-REAL_NUMBER_OPERATIONS와 ACTIVE 바인딩. 판별법은 해설의 결정적 계산 단계에 대응.",
+          "templateKey": "독립 전수검수: TPL_M3_SQUARE_AREA_SIDE_RATIO는 ACTIVE이며 PT_M3_SQUARE_ROOT_APPLICATION에 직접 결속.",
           "difficulty": "원본 동일 개념·배점·풀이 판단 수를 유지한 3단계. 종이 규격 대화에서 세 넓이 중 두 크기의 축소 비율을 선택",
           "condition": "별도의 등록 Condition key는 필수 아님",
-          "crossConcept": "기존 L3 맥락의 보조 역할: CC_SIMILARITY_AREA_RATIO, CC_PERCENTAGE_CONVERSION",
-          "integration": "REAL_WORLD_MODELING은 풀이의 보조 연결에 한정"
+          "crossConcept": "등록된 ACTIVE concept keys로 재결속: CC_SIMILARITY_RATIO",
+          "integration": "현재 REAL_WORLD_MODELING로 분류"
         },
         "visualNecessity": {
           "problem": "EXEMPT",
@@ -792,14 +793,14 @@
         "standardUnitKey": "M3-01",
         "standardUnit": "실수와 그 계산",
         "standardUnitOrder": 1,
-        "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
-        "subUnit": "근호를 포함한 식의 계산",
-        "conceptClusterKey": "REAL_NUMBER_OPERATIONS",
+        "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+        "subUnit": "제곱근과 실수",
+        "conceptClusterKey": "SQUARE_ROOT_REAL_NUMBER",
         "problemTypeKey": "PT_M3_INTEGER_POINTS",
         "templateKey": "",
         "crossConceptKeys": [
-          "CC_LINEAR_EQUATION_GRAPH",
-          "CC_LATTICE_POINTS_IN_POLYGON"
+          "CC_LATTICE_POINT_COUNTING",
+          "CC_LATTICE_POINTS_COORDINATES"
         ],
         "conditionKeys": [
           "COND_EXCLUDE_BOUNDARY",
@@ -821,16 +822,16 @@
           "createdAt": "2026-11-25",
           "createdAtSource": "GPT direct 1-exam instruction"
         },
-        "rpmPrimaryRecordId": "M3-RPM-007",
+        "rpmPrimaryRecordId": "M3-RPM-004",
         "metaRationale": {
           "draftTier": "SINGLE_MODEL_DRAFT",
-          "curriculum": "중3 1학기, M3-01 M3-01-REAL_NUMBER_OPERATIONS의 결정적 풀이: [키포인트] 정수 $x$별로 영역 안에 있는 양의 정수 $y$의 개수를 센다.",
-          "problemType": "ACTIVE PT_M3_INTEGER_POINTS: 격자점. 전체 격자점 대신 양의 y조건의 부분영역 계수",
-          "templateKey": "EVIDENCE_DEBT: 현재 해당 ACTIVE PT의 ACTIVE TPL 후보 없음. 새 TPL 등록/선정 후 결속 필요.",
+          "curriculum": "중3 1학기 M3-01/M3-01-SQUARE_ROOT_REAL_NUMBER: [키포인트] 정수 $x$별로 영역 안에 있는 양의 정수 $y$의 개수를 센다.",
+          "problemType": "독립 전수검수: PT_M3_INTEGER_POINTS는 M3-01-SQUARE_ROOT_REAL_NUMBER와 ACTIVE 바인딩. 판별법은 해설의 결정적 계산 단계에 대응.",
+          "templateKey": "ACTIVE PT_M3_INTEGER_POINTS에 동일 PT의 ACTIVE template 없음; 임의 TPL 생성·타 유형 매핑 없이 빈 값 보존(추가 등록 후 재검토).",
           "difficulty": "원본 동일 개념·배점·풀이 판단 수를 유지한 4단계. 전체 격자점 대신 양의 y조건의 부분영역 계수",
           "condition": "필요 조건: COND_EXCLUDE_BOUNDARY, COND_INTEGER_COORDINATES",
-          "crossConcept": "기존 L3 맥락의 보조 역할: CC_LINEAR_EQUATION_GRAPH, CC_LATTICE_POINTS_IN_POLYGON",
-          "integration": "GEOMETRY_ALGEBRA_FUSION은 풀이의 보조 연결에 한정"
+          "crossConcept": "등록된 ACTIVE concept keys로 재결속: CC_LATTICE_POINT_COUNTING, CC_LATTICE_POINTS_COORDINATES",
+          "integration": "현재 GEOMETRY_ALGEBRA_FUSION로 분류"
         },
         "visualNecessity": {
           "problem": "EXEMPT",
@@ -863,9 +864,9 @@
         "subUnit": "다항식의 곱셈",
         "conceptClusterKey": "POLYNOMIAL_MULTIPLICATION",
         "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
-        "templateKey": "",
+        "templateKey": "TPL_M3_POLY_EXPANSION_COEFFICIENT",
         "crossConceptKeys": [
-          "CC_RADICAL_BINOMIAL_SQUARE"
+          "CC_POLYNOMIAL_EXPANSION"
         ],
         "conditionKeys": [],
         "integrationPattern": "NONE",
@@ -884,16 +885,16 @@
           "createdAt": "2026-11-25",
           "createdAtSource": "GPT direct 1-exam instruction"
         },
-        "rpmPrimaryRecordId": "M3-RPM-015",
+        "rpmPrimaryRecordId": "M3-RPM-017",
         "metaRationale": {
           "draftTier": "SINGLE_MODEL_DRAFT",
-          "curriculum": "중3 1학기, M3-02 M3-02-POLYNOMIAL_MULTIPLICATION의 결정적 풀이: [키포인트] 전개한 식의 일차항 계수만 비교하면 된다.",
-          "problemType": "ACTIVE PT_M3_POLY_MULTIPLICATION: 다항식의 곱셈과 곱셈공식. 전개 등식의 진위 대신 특정 차수 계수 찾기",
-          "templateKey": "EVIDENCE_DEBT: 현재 해당 ACTIVE PT의 ACTIVE TPL 후보 없음. 새 TPL 등록/선정 후 결속 필요.",
+          "curriculum": "중3 1학기 M3-02/M3-02-POLYNOMIAL_MULTIPLICATION: [키포인트] 전개한 식의 일차항 계수만 비교하면 된다.",
+          "problemType": "독립 전수검수: PT_M3_POLY_MULTIPLICATION는 M3-02-POLYNOMIAL_MULTIPLICATION와 ACTIVE 바인딩. 판별법은 해설의 결정적 계산 단계에 대응.",
+          "templateKey": "독립 전수검수: TPL_M3_POLY_EXPANSION_COEFFICIENT는 ACTIVE이며 PT_M3_POLY_MULTIPLICATION에 직접 결속.",
           "difficulty": "원본 동일 개념·배점·풀이 판단 수를 유지한 1단계. 전개 등식의 진위 대신 특정 차수 계수 찾기",
           "condition": "별도의 등록 Condition key는 필수 아님",
-          "crossConcept": "기존 L3 맥락의 보조 역할: CC_RADICAL_BINOMIAL_SQUARE",
-          "integration": "통합 패턴 불필요"
+          "crossConcept": "등록된 ACTIVE concept keys로 재결속: CC_POLYNOMIAL_EXPANSION",
+          "integration": "풀이의 독립된 이종 대단원 결합 없음"
         },
         "visualNecessity": {
           "problem": "EXEMPT",
@@ -926,9 +927,9 @@
         "subUnit": "다항식의 곱셈",
         "conceptClusterKey": "POLYNOMIAL_MULTIPLICATION",
         "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
-        "templateKey": "",
+        "templateKey": "TPL_M3_COMMON_FACTOR_IDENTIFICATION",
         "crossConceptKeys": [
-          "CC_CONSTANT_MULTIPLE_FACTOR"
+          "CC_COMMON_FACTOR"
         ],
         "conditionKeys": [],
         "integrationPattern": "NONE",
@@ -947,16 +948,16 @@
           "createdAt": "2026-11-25",
           "createdAtSource": "GPT direct 1-exam instruction"
         },
-        "rpmPrimaryRecordId": "M3-RPM-015",
+        "rpmPrimaryRecordId": "M3-RPM-021",
         "metaRationale": {
           "draftTier": "SINGLE_MODEL_DRAFT",
-          "curriculum": "중3 1학기, M3-02 M3-02-POLYNOMIAL_MULTIPLICATION의 결정적 풀이: [키포인트] 먼저 공통인수를 꺼내어 원래 다항식을 곱의 꼴로 쓴다.",
-          "problemType": "ACTIVE PT_M3_POLY_FACTORIZATION: 다항식의 인수분해와 활용. 인수의 이름 묻기에서 나눗셈의 몫 판정으로 변경",
-          "templateKey": "EVIDENCE_DEBT: 현재 해당 ACTIVE PT의 ACTIVE TPL 후보 없음. 새 TPL 등록/선정 후 결속 필요.",
+          "curriculum": "중3 1학기 M3-02/M3-02-POLYNOMIAL_MULTIPLICATION: [키포인트] 먼저 공통인수를 꺼내어 원래 다항식을 곱의 꼴로 쓴다.",
+          "problemType": "독립 전수검수: PT_M3_POLY_FACTORIZATION는 M3-02-POLYNOMIAL_MULTIPLICATION와 ACTIVE 바인딩. 판별법은 해설의 결정적 계산 단계에 대응.",
+          "templateKey": "독립 전수검수: TPL_M3_COMMON_FACTOR_IDENTIFICATION는 ACTIVE이며 PT_M3_POLY_FACTORIZATION에 직접 결속.",
           "difficulty": "원본 동일 개념·배점·풀이 판단 수를 유지한 2단계. 인수의 이름 묻기에서 나눗셈의 몫 판정으로 변경",
           "condition": "별도의 등록 Condition key는 필수 아님",
-          "crossConcept": "기존 L3 맥락의 보조 역할: CC_CONSTANT_MULTIPLE_FACTOR",
-          "integration": "통합 패턴 불필요"
+          "crossConcept": "등록된 ACTIVE concept keys로 재결속: CC_COMMON_FACTOR",
+          "integration": "풀이의 독립된 이종 대단원 결합 없음"
         },
         "visualNecessity": {
           "problem": "EXEMPT",
@@ -989,9 +990,9 @@
         "subUnit": "다항식의 곱셈",
         "conceptClusterKey": "POLYNOMIAL_MULTIPLICATION",
         "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
-        "templateKey": "",
+        "templateKey": "TPL_M3_MULTIPLICATION_COEFFICIENT",
         "crossConceptKeys": [
-          "CC_DUAL_SIGN_PERFECT_SQUARE"
+          "CC_PERFECT_SQUARE_TRINOMIAL"
         ],
         "conditionKeys": [],
         "integrationPattern": "NONE",
@@ -1013,13 +1014,13 @@
         "rpmPrimaryRecordId": "M3-RPM-015",
         "metaRationale": {
           "draftTier": "SINGLE_MODEL_DRAFT",
-          "curriculum": "중3 1학기, M3-02 M3-02-POLYNOMIAL_MULTIPLICATION의 결정적 풀이: [키포인트] 완전제곱식의 가운데 항은 양끝 제곱항 밑의 곱에 $\\pm2$를 곱한 것이다.",
-          "problemType": "ACTIVE PT_M3_POLY_MULTIPLICATION: 다항식의 곱셈과 곱셈공식. 가능한 m 쌍 선택에서 두 해의 곱으로 요구 변경",
-          "templateKey": "EVIDENCE_DEBT: 현재 해당 ACTIVE PT의 ACTIVE TPL 후보 없음. 새 TPL 등록/선정 후 결속 필요.",
+          "curriculum": "중3 1학기 M3-02/M3-02-POLYNOMIAL_MULTIPLICATION: [키포인트] 완전제곱식의 가운데 항은 양끝 제곱항 밑의 곱에 $\\pm2$를 곱한 것이다.",
+          "problemType": "독립 전수검수: PT_M3_POLY_MULTIPLICATION는 M3-02-POLYNOMIAL_MULTIPLICATION와 ACTIVE 바인딩. 판별법은 해설의 결정적 계산 단계에 대응.",
+          "templateKey": "독립 전수검수: TPL_M3_MULTIPLICATION_COEFFICIENT는 ACTIVE이며 PT_M3_POLY_MULTIPLICATION에 직접 결속.",
           "difficulty": "원본 동일 개념·배점·풀이 판단 수를 유지한 2단계. 가능한 m 쌍 선택에서 두 해의 곱으로 요구 변경",
           "condition": "별도의 등록 Condition key는 필수 아님",
-          "crossConcept": "기존 L3 맥락의 보조 역할: CC_DUAL_SIGN_PERFECT_SQUARE",
-          "integration": "통합 패턴 불필요"
+          "crossConcept": "등록된 ACTIVE concept keys로 재결속: CC_PERFECT_SQUARE_TRINOMIAL",
+          "integration": "풀이의 독립된 이종 대단원 결합 없음"
         },
         "visualNecessity": {
           "problem": "EXEMPT",
@@ -1052,9 +1053,9 @@
         "subUnit": "다항식의 곱셈",
         "conceptClusterKey": "POLYNOMIAL_MULTIPLICATION",
         "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
-        "templateKey": "",
+        "templateKey": "TPL_M3_MULTIPLICATION_NUMERIC",
         "crossConceptKeys": [
-          "CC_DIFFERENCE_OF_SQUARES_NUMERICAL"
+          "CC_DIFFERENCE_OF_SQUARES_EVALUATION"
         ],
         "conditionKeys": [],
         "integrationPattern": "NONE",
@@ -1073,16 +1074,16 @@
           "createdAt": "2026-11-25",
           "createdAtSource": "GPT direct 1-exam instruction"
         },
-        "rpmPrimaryRecordId": "M3-RPM-015",
+        "rpmPrimaryRecordId": "M3-RPM-018",
         "metaRationale": {
           "draftTier": "SINGLE_MODEL_DRAFT",
-          "curriculum": "중3 1학기, M3-02 M3-02-POLYNOMIAL_MULTIPLICATION의 결정적 풀이: [키포인트] 큰 수의 곱셈은 합차공식 또는 분배법칙으로 계산한다.",
-          "problemType": "ACTIVE PT_M3_POLY_MULTIPLICATION: 다항식의 곱셈과 곱셈공식. 최댓값에서 최솟값으로 목표와 계산식 기준 변경",
-          "templateKey": "EVIDENCE_DEBT: 현재 해당 ACTIVE PT의 ACTIVE TPL 후보 없음. 새 TPL 등록/선정 후 결속 필요.",
+          "curriculum": "중3 1학기 M3-02/M3-02-POLYNOMIAL_MULTIPLICATION: [키포인트] 큰 수의 곱셈은 합차공식 또는 분배법칙으로 계산한다.",
+          "problemType": "독립 전수검수: PT_M3_POLY_MULTIPLICATION는 M3-02-POLYNOMIAL_MULTIPLICATION와 ACTIVE 바인딩. 판별법은 해설의 결정적 계산 단계에 대응.",
+          "templateKey": "독립 전수검수: TPL_M3_MULTIPLICATION_NUMERIC는 ACTIVE이며 PT_M3_POLY_MULTIPLICATION에 직접 결속.",
           "difficulty": "원본 동일 개념·배점·풀이 판단 수를 유지한 2단계. 최댓값에서 최솟값으로 목표와 계산식 기준 변경",
           "condition": "별도의 등록 Condition key는 필수 아님",
-          "crossConcept": "기존 L3 맥락의 보조 역할: CC_DIFFERENCE_OF_SQUARES_NUMERICAL",
-          "integration": "통합 패턴 불필요"
+          "crossConcept": "등록된 ACTIVE concept keys로 재결속: CC_DIFFERENCE_OF_SQUARES_EVALUATION",
+          "integration": "풀이의 독립된 이종 대단원 결합 없음"
         },
         "visualNecessity": {
           "problem": "EXEMPT",
@@ -1115,9 +1116,10 @@
         "subUnit": "다항식의 곱셈",
         "conceptClusterKey": "POLYNOMIAL_MULTIPLICATION",
         "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
-        "templateKey": "",
+        "templateKey": "TPL_M3_MULTIPLICATION_FORMULA_NUMERICAL_AUDIT",
         "crossConceptKeys": [
-          "CC_FACTORIZATION_PRODUCT_FORM_DEFINITION"
+          "CC_POLYNOMIAL_EXPANSION",
+          "CC_COMMON_FACTOR"
         ],
         "conditionKeys": [],
         "integrationPattern": "NONE",
@@ -1136,16 +1138,16 @@
           "createdAt": "2026-11-25",
           "createdAtSource": "GPT direct 1-exam instruction"
         },
-        "rpmPrimaryRecordId": "M3-RPM-015",
+        "rpmPrimaryRecordId": "M3-RPM-017",
         "metaRationale": {
           "draftTier": "SINGLE_MODEL_DRAFT",
-          "curriculum": "중3 1학기, M3-02 M3-02-POLYNOMIAL_MULTIPLICATION의 결정적 풀이: [키포인트] 곱셈공식과 공통인수로 묶는 인수분해를 각 문장에 직접 적용한다.",
-          "problemType": "ACTIVE PT_M3_POLY_MULTIPLICATION: 다항식의 곱셈과 곱셈공식. 계산 오개념의 종류와 참인 학생 수를 바꾸어 재판정",
-          "templateKey": "EVIDENCE_DEBT: 현재 해당 ACTIVE PT의 ACTIVE TPL 후보 없음. 새 TPL 등록/선정 후 결속 필요.",
+          "curriculum": "중3 1학기 M3-02/M3-02-POLYNOMIAL_MULTIPLICATION: [키포인트] 곱셈공식과 공통인수로 묶는 인수분해를 각 문장에 직접 적용한다.",
+          "problemType": "독립 전수검수: PT_M3_POLY_MULTIPLICATION는 M3-02-POLYNOMIAL_MULTIPLICATION와 ACTIVE 바인딩. 판별법은 해설의 결정적 계산 단계에 대응.",
+          "templateKey": "독립 전수검수: TPL_M3_MULTIPLICATION_FORMULA_NUMERICAL_AUDIT는 ACTIVE이며 PT_M3_POLY_MULTIPLICATION에 직접 결속.",
           "difficulty": "원본 동일 개념·배점·풀이 판단 수를 유지한 2단계. 계산 오개념의 종류와 참인 학생 수를 바꾸어 재판정",
           "condition": "별도의 등록 Condition key는 필수 아님",
-          "crossConcept": "기존 L3 맥락의 보조 역할: CC_FACTORIZATION_PRODUCT_FORM_DEFINITION",
-          "integration": "통합 패턴 불필요"
+          "crossConcept": "등록된 ACTIVE concept keys로 재결속: CC_POLYNOMIAL_EXPANSION, CC_COMMON_FACTOR",
+          "integration": "풀이의 독립된 이종 대단원 결합 없음"
         },
         "visualNecessity": {
           "problem": "EXEMPT",
@@ -1171,19 +1173,19 @@
         "standardCourse": "중3",
         "curriculum": "2015",
         "courseKey": "MID-MATH-3",
-        "standardUnitKey": "M3-02",
-        "standardUnit": "다항식의 곱셈과 인수분해",
-        "standardUnitOrder": 2,
-        "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
-        "subUnit": "다항식의 곱셈",
-        "conceptClusterKey": "POLYNOMIAL_MULTIPLICATION",
-        "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
-        "templateKey": "",
+        "standardUnitKey": "M3-01",
+        "standardUnit": "실수와 그 계산",
+        "standardUnitOrder": 1,
+        "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+        "subUnit": "근호를 포함한 식의 계산",
+        "conceptClusterKey": "RADICAL_OPERATION",
+        "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+        "templateKey": "TPL_M3_RADICAL_RATIONALIZATION",
         "crossConceptKeys": [
           "CC_DENOMINATOR_RATIONALIZATION_CONJUGATE"
         ],
         "conditionKeys": [],
-        "integrationPattern": "RADICAL_POLYNOMIAL_FUSION",
+        "integrationPattern": "NONE",
         "difficultyBucket": 2,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
@@ -1199,16 +1201,16 @@
           "createdAt": "2026-11-25",
           "createdAtSource": "GPT direct 1-exam instruction"
         },
-        "rpmPrimaryRecordId": "M3-RPM-015",
+        "rpmPrimaryRecordId": "M3-RPM-012",
         "metaRationale": {
           "draftTier": "SINGLE_MODEL_DRAFT",
-          "curriculum": "중3 1학기, M3-02 M3-02-POLYNOMIAL_MULTIPLICATION의 결정적 풀이: [키포인트] 두 분모의 곱이 합차공식으로 $1$이 된다는 점을 이용한다.",
-          "problemType": "ACTIVE PT_M3_POLY_MULTIPLICATION: 다항식의 곱셈과 곱셈공식. 유리화 후 차의 제곱에서 합의 근호식으로 질문 목표 변경",
-          "templateKey": "EVIDENCE_DEBT: 현재 해당 ACTIVE PT의 ACTIVE TPL 후보 없음. 새 TPL 등록/선정 후 결속 필요.",
+          "curriculum": "중3 1학기 M3-01/M3-01-REAL_NUMBER_OPERATIONS: [키포인트] 두 분모의 곱이 합차공식으로 $1$이 된다는 점을 이용한다.",
+          "problemType": "독립 전수검수: PT_M3_RADICAL_CALCULATION는 M3-01-REAL_NUMBER_OPERATIONS와 ACTIVE 바인딩. 판별법은 해설의 결정적 계산 단계에 대응.",
+          "templateKey": "독립 전수검수: TPL_M3_RADICAL_RATIONALIZATION는 ACTIVE이며 PT_M3_RADICAL_CALCULATION에 직접 결속.",
           "difficulty": "원본 동일 개념·배점·풀이 판단 수를 유지한 2단계. 유리화 후 차의 제곱에서 합의 근호식으로 질문 목표 변경",
           "condition": "별도의 등록 Condition key는 필수 아님",
-          "crossConcept": "기존 L3 맥락의 보조 역할: CC_DENOMINATOR_RATIONALIZATION_CONJUGATE",
-          "integration": "RADICAL_POLYNOMIAL_FUSION은 풀이의 보조 연결에 한정"
+          "crossConcept": "등록된 ACTIVE concept keys로 재결속: CC_DENOMINATOR_RATIONALIZATION_CONJUGATE",
+          "integration": "풀이의 독립된 이종 대단원 결합 없음"
         },
         "visualNecessity": {
           "problem": "EXEMPT",
@@ -1241,9 +1243,9 @@
         "subUnit": "다항식의 곱셈",
         "conceptClusterKey": "POLYNOMIAL_MULTIPLICATION",
         "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
-        "templateKey": "",
+        "templateKey": "TPL_M3_MULTIPLICATION_FORMULA_GEOMETRIC_MODELING",
         "crossConceptKeys": [
-          "CC_GEOMETRIC_AREA_SUBTRACTION"
+          "CC_DIFFERENCE_OF_SQUARES"
         ],
         "conditionKeys": [
           "COND_DOMAIN_RESTRICTION"
@@ -1264,16 +1266,16 @@
           "createdAt": "2026-11-25",
           "createdAtSource": "GPT direct 1-exam instruction"
         },
-        "rpmPrimaryRecordId": "M3-RPM-015",
+        "rpmPrimaryRecordId": "M3-RPM-016",
         "metaRationale": {
           "draftTier": "SINGLE_MODEL_DRAFT",
-          "curriculum": "중3 1학기, M3-02 M3-02-POLYNOMIAL_MULTIPLICATION의 결정적 풀이: [키포인트] 정사각형의 넓이 차에 합차공식을 적용하여 일차방정식으로 만든다.",
-          "problemType": "ACTIVE PT_M3_POLY_MULTIPLICATION: 다항식의 곱셈과 곱셈공식. 넓이 식의 직접 선택에서 넓이 차를 통한 미지수 역산",
-          "templateKey": "EVIDENCE_DEBT: 현재 해당 ACTIVE PT의 ACTIVE TPL 후보 없음. 새 TPL 등록/선정 후 결속 필요.",
+          "curriculum": "중3 1학기 M3-02/M3-02-POLYNOMIAL_MULTIPLICATION: [키포인트] 정사각형의 넓이 차에 합차공식을 적용하여 일차방정식으로 만든다.",
+          "problemType": "독립 전수검수: PT_M3_POLY_MULTIPLICATION는 M3-02-POLYNOMIAL_MULTIPLICATION와 ACTIVE 바인딩. 판별법은 해설의 결정적 계산 단계에 대응.",
+          "templateKey": "독립 전수검수: TPL_M3_MULTIPLICATION_FORMULA_GEOMETRIC_MODELING는 ACTIVE이며 PT_M3_POLY_MULTIPLICATION에 직접 결속.",
           "difficulty": "원본 동일 개념·배점·풀이 판단 수를 유지한 2단계. 넓이 식의 직접 선택에서 넓이 차를 통한 미지수 역산",
           "condition": "필요 조건: COND_DOMAIN_RESTRICTION",
-          "crossConcept": "기존 L3 맥락의 보조 역할: CC_GEOMETRIC_AREA_SUBTRACTION",
-          "integration": "GEOMETRY_ALGEBRA_FUSION은 풀이의 보조 연결에 한정"
+          "crossConcept": "등록된 ACTIVE concept keys로 재결속: CC_DIFFERENCE_OF_SQUARES",
+          "integration": "현재 GEOMETRY_ALGEBRA_FUSION로 분류"
         },
         "visualNecessity": {
           "problem": "EXEMPT",
@@ -1306,9 +1308,10 @@
         "subUnit": "근호를 포함한 식의 계산",
         "conceptClusterKey": "REAL_NUMBER_OPERATIONS",
         "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
-        "templateKey": "",
+        "templateKey": "TPL_M3_RADICAL_NATURAL_NUMBER_CONDITION",
         "crossConceptKeys": [
-          "CC_PRIME_FACTORIZATION_POWER_PARITY"
+          "CC_PRIME_FACTORIZATION",
+          "CC_RADICAL_SQUARE_EXTRACTION"
         ],
         "conditionKeys": [
           "COND_TWO_DIGIT_NATURAL_NUMBER"
@@ -1329,16 +1332,16 @@
           "createdAt": "2026-11-25",
           "createdAtSource": "GPT direct 1-exam instruction"
         },
-        "rpmPrimaryRecordId": "M3-RPM-007",
+        "rpmPrimaryRecordId": "M3-RPM-002",
         "metaRationale": {
           "draftTier": "SINGLE_MODEL_DRAFT",
-          "curriculum": "중3 1학기, M3-01 M3-01-REAL_NUMBER_OPERATIONS의 결정적 풀이: [키포인트] $72x$가 완전제곱수가 되려면 소인수의 지수가 모두 짝수여야 한다.",
-          "problemType": "ACTIVE PT_M3_SQUARE_ROOT_PROPERTY: 제곱근의 성질 판별. 두 자리 제곱수 조건을 만족하는 수의 개수에서 합으로 변경",
-          "templateKey": "EVIDENCE_DEBT: 현재 해당 ACTIVE PT의 ACTIVE TPL 후보 없음. 새 TPL 등록/선정 후 결속 필요.",
+          "curriculum": "중3 1학기 M3-01/M3-01-REAL_NUMBER_OPERATIONS: [키포인트] $72x$가 완전제곱수가 되려면 소인수의 지수가 모두 짝수여야 한다.",
+          "problemType": "독립 전수검수: PT_M3_SQUARE_ROOT_PROPERTY는 M3-01-REAL_NUMBER_OPERATIONS와 ACTIVE 바인딩. 판별법은 해설의 결정적 계산 단계에 대응.",
+          "templateKey": "독립 전수검수: TPL_M3_RADICAL_NATURAL_NUMBER_CONDITION는 ACTIVE이며 PT_M3_SQUARE_ROOT_PROPERTY에 직접 결속.",
           "difficulty": "원본 동일 개념·배점·풀이 판단 수를 유지한 2단계. 두 자리 제곱수 조건을 만족하는 수의 개수에서 합으로 변경",
           "condition": "필요 조건: COND_TWO_DIGIT_NATURAL_NUMBER",
-          "crossConcept": "기존 L3 맥락의 보조 역할: CC_PRIME_FACTORIZATION_POWER_PARITY",
-          "integration": "통합 패턴 불필요"
+          "crossConcept": "등록된 ACTIVE concept keys로 재결속: CC_PRIME_FACTORIZATION, CC_RADICAL_SQUARE_EXTRACTION",
+          "integration": "풀이의 독립된 이종 대단원 결합 없음"
         },
         "visualNecessity": {
           "problem": "EXEMPT",
@@ -1370,11 +1373,11 @@
         "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
         "subUnit": "근호를 포함한 식의 계산",
         "conceptClusterKey": "REAL_NUMBER_OPERATIONS",
-        "problemTypeKey": "PT_M3_SQUARE_ROOT_APPLICATION",
-        "templateKey": "",
+        "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+        "templateKey": "TPL_M3_RADICAL_GEOMETRY",
         "crossConceptKeys": [
-          "CC_TRAPEZOID_AREA_FORMULA",
-          "CC_RADICAL_FRACTION_RATIONALIZATION"
+          "CC_TRAPEZOIDAL_AREA_PROPERTY",
+          "CC_RADICAL_RATIONALIZATION"
         ],
         "conditionKeys": [],
         "integrationPattern": "GEOMETRY_ALGEBRA_FUSION",
@@ -1393,16 +1396,16 @@
           "createdAt": "2026-11-25",
           "createdAtSource": "GPT direct 1-exam instruction"
         },
-        "rpmPrimaryRecordId": "M3-RPM-007",
+        "rpmPrimaryRecordId": "M3-RPM-008",
         "metaRationale": {
           "draftTier": "SINGLE_MODEL_DRAFT",
-          "curriculum": "중3 1학기, M3-01 M3-01-REAL_NUMBER_OPERATIONS의 결정적 풀이: [키포인트] 직사각형의 넓이에서 공통 높이를 찾고, 사다리꼴 넓이의 비를 간단히 한다.",
-          "problemType": "ACTIVE PT_M3_SQUARE_ROOT_APPLICATION: 제곱근의 기하 활용. 꼭짓점 관계 그림에서 공통 높이와 두 밑변을 명시한 비교 문제로 구조 전환",
-          "templateKey": "EVIDENCE_DEBT: 현재 해당 ACTIVE PT의 ACTIVE TPL 후보 없음. 새 TPL 등록/선정 후 결속 필요.",
+          "curriculum": "중3 1학기 M3-01/M3-01-REAL_NUMBER_OPERATIONS: [키포인트] 직사각형의 넓이에서 공통 높이를 찾고, 사다리꼴 넓이의 비를 간단히 한다.",
+          "problemType": "독립 전수검수: PT_M3_RADICAL_CALCULATION는 M3-01-REAL_NUMBER_OPERATIONS와 ACTIVE 바인딩. 판별법은 해설의 결정적 계산 단계에 대응.",
+          "templateKey": "독립 전수검수: TPL_M3_RADICAL_GEOMETRY는 ACTIVE이며 PT_M3_RADICAL_CALCULATION에 직접 결속.",
           "difficulty": "원본 동일 개념·배점·풀이 판단 수를 유지한 4단계. 꼭짓점 관계 그림에서 공통 높이와 두 밑변을 명시한 비교 문제로 구조 전환",
           "condition": "별도의 등록 Condition key는 필수 아님",
-          "crossConcept": "기존 L3 맥락의 보조 역할: CC_TRAPEZOID_AREA_FORMULA, CC_RADICAL_FRACTION_RATIONALIZATION",
-          "integration": "GEOMETRY_ALGEBRA_FUSION은 풀이의 보조 연결에 한정"
+          "crossConcept": "등록된 ACTIVE concept keys로 재결속: CC_TRAPEZOIDAL_AREA_PROPERTY, CC_RADICAL_RATIONALIZATION",
+          "integration": "현재 GEOMETRY_ALGEBRA_FUSION로 분류"
         },
         "visualNecessity": {
           "problem": "EXEMPT",
@@ -1435,9 +1438,10 @@
         "subUnit": "다항식의 곱셈",
         "conceptClusterKey": "POLYNOMIAL_MULTIPLICATION",
         "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
-        "templateKey": "",
+        "templateKey": "TPL_M3_FACTORIZATION_VALUE",
         "crossConceptKeys": [
-          "CC_DUAL_ALGEBRAIC_STRATEGIES"
+          "CC_PERFECT_SQUARE_TRINOMIAL",
+          "CC_QUADRATIC_FACTORIZATION"
         ],
         "conditionKeys": [],
         "integrationPattern": "RADICAL_POLYNOMIAL_FUSION",
@@ -1456,16 +1460,16 @@
           "createdAt": "2026-11-25",
           "createdAtSource": "GPT direct 1-exam instruction"
         },
-        "rpmPrimaryRecordId": "M3-RPM-015",
+        "rpmPrimaryRecordId": "M3-RPM-027",
         "metaRationale": {
           "draftTier": "SINGLE_MODEL_DRAFT",
-          "curriculum": "중3 1학기, M3-02 M3-02-POLYNOMIAL_MULTIPLICATION의 결정적 풀이: [키포인트] 완전제곱식으로 바꾸면 미지의 상수 $k$를 먼저 쉽게 결정할 수 있다.",
-          "problemType": "ACTIVE PT_M3_POLY_FACTORIZATION: 다항식의 인수분해와 활용. 두 대입 방법은 유지하되 식의 상수를 역으로 결정하도록 목표 변경",
-          "templateKey": "EVIDENCE_DEBT: 현재 해당 ACTIVE PT의 ACTIVE TPL 후보 없음. 새 TPL 등록/선정 후 결속 필요.",
+          "curriculum": "중3 1학기 M3-02/M3-02-POLYNOMIAL_MULTIPLICATION: [키포인트] 완전제곱식으로 바꾸면 미지의 상수 $k$를 먼저 쉽게 결정할 수 있다.",
+          "problemType": "독립 전수검수: PT_M3_POLY_FACTORIZATION는 M3-02-POLYNOMIAL_MULTIPLICATION와 ACTIVE 바인딩. 판별법은 해설의 결정적 계산 단계에 대응.",
+          "templateKey": "독립 전수검수: TPL_M3_FACTORIZATION_VALUE는 ACTIVE이며 PT_M3_POLY_FACTORIZATION에 직접 결속.",
           "difficulty": "원본 동일 개념·배점·풀이 판단 수를 유지한 3단계. 두 대입 방법은 유지하되 식의 상수를 역으로 결정하도록 목표 변경",
           "condition": "별도의 등록 Condition key는 필수 아님",
-          "crossConcept": "기존 L3 맥락의 보조 역할: CC_DUAL_ALGEBRAIC_STRATEGIES",
-          "integration": "RADICAL_POLYNOMIAL_FUSION은 풀이의 보조 연결에 한정"
+          "crossConcept": "등록된 ACTIVE concept keys로 재결속: CC_PERFECT_SQUARE_TRINOMIAL, CC_QUADRATIC_FACTORIZATION",
+          "integration": "현재 RADICAL_POLYNOMIAL_FUSION로 분류"
         },
         "visualNecessity": {
           "problem": "EXEMPT",
