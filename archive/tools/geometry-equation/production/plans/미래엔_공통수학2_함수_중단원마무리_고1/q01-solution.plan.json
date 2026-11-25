@@ -1,0 +1,59 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {"text":"⑴ y=x+2"},
+      "plan": {
+        "capability":"set-diagram-figure-v1",
+        "diagram": {
+          "kind":"MAPPING",
+          "columns":[{"id":"X","elements":["-1","0","1"]},{"id":"Y","elements":["0","1","2","3"]}],
+          "arrows":[
+            {"from":{"column":0,"element":0},"to":{"column":1,"element":1}},
+            {"from":{"column":0,"element":1},"to":{"column":1,"element":2}},
+            {"from":{"column":0,"element":2},"to":{"column":1,"element":3}}
+          ]
+        }
+      }
+    },
+    {
+      "caption": {"text":"⑶ y=|x−1|"},
+      "plan": {
+        "capability":"set-diagram-figure-v1",
+        "diagram": {
+          "kind":"MAPPING",
+          "columns":[{"id":"X","elements":["-1","0","1"]},{"id":"Y","elements":["0","1","2","3"]}],
+          "arrows":[
+            {"from":{"column":0,"element":0},"to":{"column":1,"element":2}},
+            {"from":{"column":0,"element":1},"to":{"column":1,"element":1}},
+            {"from":{"column":0,"element":2},"to":{"column":1,"element":0}}
+          ]
+        }
+      }
+    },
+    {
+      "caption": {"text":"⑷ y=3|x|"},
+      "plan": {
+        "capability":"set-diagram-figure-v1",
+        "diagram": {
+          "kind":"MAPPING",
+          "columns":[{"id":"X","elements":["-1","0","1"]},{"id":"Y","elements":["0","1","2","3"]}],
+          "arrows":[
+            {"from":{"column":0,"element":0},"to":{"column":1,"element":3}},
+            {"from":{"column":0,"element":1},"to":{"column":1,"element":0}},
+            {"from":{"column":0,"element":2},"to":{"column":1,"element":3}}
+          ]
+        }
+      }
+    }
+  ],
+  "caption": "X={−1,0,1}에서 Y={0,1,2,3}으로의 함수는 ⑴, ⑶, ⑷다. ⑵에서는 x=0의 함숫값 −1이 Y에 없으므로 함수가 아니다.",
+  "accessibilityDescription": "세 개의 대응도에서 X의 각 원소 −1, 0, 1은 Y의 0, 1, 2, 3 중 정확히 하나로 향한다. 첫째는 1, 2, 3에, 둘째는 2, 1, 0에, 셋째는 3, 0, 3에 각각 대응한다.",
+  "sourceConditions": [
+    {"id":"F01-1","condition":"X={−1,0,1}, Y={0,1,2,3}","mappedTo":"panels[0,1,2].plan.diagram.columns"},
+    {"id":"F01-2","condition":"⑴ −1→1, 0→2, 1→3","mappedTo":"panels[0].plan.diagram.arrows"},
+    {"id":"F01-3","condition":"⑶ −1→2, 0→1, 1→0","mappedTo":"panels[1].plan.diagram.arrows"},
+    {"id":"F01-4","condition":"⑷ −1→3, 0→0, 1→3","mappedTo":"panels[2].plan.diagram.arrows"}
+  ],
+  "newVisualInformation": ["⑴·⑶·⑷가 Y 안의 각 원소를 하나씩 지정한다는 사실과 서로 다른 두 x가 같은 y로 갈 수 있다는 사실을 비교한다."]
+}

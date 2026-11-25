@@ -1,0 +1,29 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {"recipeId":"SOURCE_COORDINATE_AXES_v1","unit":"source-coordinate","reflectionEquivalent":false},
+    "nodes": [
+      {"id":"P","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"4"},{"kind":"integer","value":"2"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"L","op":"SOURCE_LINE","inputs":[],"args":{"a":{"kind":"integer","value":"3"},"b":{"kind":"integer","value":"-4"},"c":{"kind":"integer","value":"11"}},"outputType":"LINE","factRole":"GIVEN"},
+      {"id":"H","op":"PERPENDICULAR_FOOT","inputs":["P","L"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"Q","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-1"},{"kind":"integer","value":"2"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "displayPoints": ["P","H","Q"],
+  "hiddenPointNames": ["Q"],
+  "displayLines": ["L"],
+  "lineLabels": [{"nodeId":"L","form":"GENERAL"}],
+  "displaySegments": [{"id":"PH","refs":["P","H"]}],
+  "rightAngles": [{"id":"rFoot","refs":["P","H","Q"]}],
+  "planeMarks": {"expressionLabels":[{"id":"distance","ownerSegment":"PH","text":"3"}]},
+  "coordinateLabels": ["P","H"],
+  "coordinateCanvas": {"width":650,"height":450},
+  "caption": "점 P(4,2)에서 직선 3x−4y+11=0에 내린 수선 PH의 길이는 15/5=3이다.",
+  "accessibilityDescription": "좌표평면에서 P(4,2)에서 직선 3x−4y+11=0에 내린 수선과 발 H(11/5,22/5)가 보이며 수선에 직각 표식과 길이 3이 있다.",
+  "sourceConditions": [
+    {"id":"C04-1","condition":"점 (4,2)와 직선 3x−4y+11=0","mappedTo":"mathPlan.nodes[P,L],displayLines[L]"},
+    {"id":"C04-2","condition":"계산된 수선의 발 H=(11/5,22/5), PH=3, PH⊥L","mappedTo":"mathPlan.nodes[H,Q],displaySegments[PH],rightAngles[rFoot],planeMarks.expressionLabels"}
+  ],
+  "newVisualInformation": ["점과 직선 사이 최단거리가 수직선분의 길이임을 직각 표식으로 나타낸다."]
+}

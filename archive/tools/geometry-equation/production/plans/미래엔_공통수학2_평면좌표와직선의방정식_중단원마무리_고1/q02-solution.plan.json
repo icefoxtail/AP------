@@ -1,0 +1,26 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {"recipeId": "SOURCE_COORDINATE_AXES_v1", "unit": "source-coordinate", "reflectionEquivalent": false},
+    "nodes": [
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"6"},{"kind":"integer","value":"2"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-3"},{"kind":"integer","value":"-1"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"P","op":"DIVISION_POINT","inputs":["A","B"],"args":{"m":{"kind":"integer","value":"1"},"n":{"kind":"integer","value":"2"},"mode":"INTERNAL"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"Q","op":"MIDPOINT","inputs":["P","B"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "displayPoints": ["A","B","P","Q"],
+  "hiddenPointNames": ["Q"],
+  "displaySegments": [{"id":"AP","refs":["A","P"]},{"id":"PQ","refs":["P","Q"]},{"id":"QB","refs":["Q","B"]}],
+  "planeMarks": {"equalLengths":[{"id":"ratioTicks","count":1,"segments":["AP","PQ","QB"]}]},
+  "coordinateLabels": ["A","B","P"],
+  "coordinateCanvas": {"width":650,"height":430},
+  "caption": "⑵ A(6,2)에서 B(−3,−1)까지 세 등분한 첫 점 P는 AP:PB=1:2, P(3,1)이다. 세 작은 선분의 동일 눈금이 내분비를 나타낸다.",
+  "accessibilityDescription": "좌표평면의 A(6,2)와 B(−3,−1) 사이에 P(3,1)와 이름 없는 보조 분할점이 차례로 놓이고 세 조각에 동일한 길이 표식이 있다.",
+  "sourceConditions": [
+    {"id":"C02-1","condition":"⑵ A(6,2), B(−3,−1), AP:PB=1:2","mappedTo":"mathPlan.nodes[A,B,P]"},
+    {"id":"C02-2","condition":"P=(3,1), 보조점은 PB의 중점이어서 AP=PQ=QB","mappedTo":"mathPlan.nodes[Q],displaySegments[AP,PQ,QB],planeMarks.equalLengths[ratioTicks]"}
+  ],
+  "newVisualInformation": ["직접 좌표를 추정하지 않고 DIVISION_POINT로 P를 계산하며 1:2를 세 동일 길이 눈금으로 확인한다."]
+}

@@ -1,0 +1,50 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {"text":"a=0, C(1,0)"},
+      "plan": {
+        "capability":"construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion":"construction-spike-v1",
+          "realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+          "nodes":[
+            {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-4"},{"kind":"integer","value":"5"}]},"outputType":"POINT","factRole":"GIVEN"},
+            {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-2"},{"kind":"integer","value":"-3"}]},"outputType":"POINT","factRole":"GIVEN"},
+            {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"1"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+          ]
+        },
+        "displayPoints":["A","B","C"],
+        "displaySegments":[{"id":"AB","refs":["A","B"]},{"id":"AC","refs":["A","C"]},{"id":"BC","refs":["B","C"]}],
+        "rightAngles":[{"id":"r0","refs":["A","C","B"]}],
+        "coordinateCanvas":{"width":392,"height":330}
+      }
+    },
+    {
+      "caption": {"text":"a=2, C(1,2)"},
+      "plan": {
+        "capability":"construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion":"construction-spike-v1",
+          "realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+          "nodes":[
+            {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-4"},{"kind":"integer","value":"5"}]},"outputType":"POINT","factRole":"GIVEN"},
+            {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-2"},{"kind":"integer","value":"-3"}]},"outputType":"POINT","factRole":"GIVEN"},
+            {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"1"},{"kind":"integer","value":"2"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+          ]
+        },
+        "displayPoints":["A","B","C"],
+        "displaySegments":[{"id":"AB","refs":["A","B"]},{"id":"AC","refs":["A","C"]},{"id":"BC","refs":["B","C"]}],
+        "rightAngles":[{"id":"r2","refs":["A","C","B"]}],
+        "coordinateCanvas":{"width":392,"height":330}
+      }
+    }
+  ],
+  "caption": "A(−4,5), B(−2,−3), C(1,a)에서 ∠ACB=90°이려면 a(a−2)=0이다. a=0과 a=2인 두 삼각형 모두 C에서 직각이다.",
+  "accessibilityDescription": "두 패널에 같은 A와 B를 두고 C를 각각 (1,0)과 (1,2)에 놓아 두 가능한 직각삼각형을 비교한다. 양쪽 모두 C의 직각 표식이 보인다.",
+  "sourceConditions": [
+    {"id":"C05-1","condition":"A(−4,5), B(−2,−3) 공통, C=(1,a)","mappedTo":"panels[0,1].plan.mathPlan.nodes[A,B,C]"},
+    {"id":"C05-2","condition":"AB²=68, CA²+CB²=2a²−4a+68; a=0 또는 2","mappedTo":"panels[0,1].caption,panels[0,1].plan.rightAngles"}
+  ],
+  "newVisualInformation": ["해가 두 개인 이유를 동일한 AB에 대해 C가 다른 두 위치에서 직각을 만든다는 두 그림으로 설명한다."]
+}

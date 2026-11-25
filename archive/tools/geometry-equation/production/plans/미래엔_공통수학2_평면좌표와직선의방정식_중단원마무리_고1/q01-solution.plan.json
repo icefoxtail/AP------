@@ -1,0 +1,26 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {"recipeId": "SOURCE_COORDINATE_AXES_v1", "unit": "source-coordinate", "reflectionEquivalent": false},
+    "nodes": [
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-5"},{"kind":"integer","value":"1"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-2"},{"kind":"integer","value":"6"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"V","op":"SOURCE_LINE","inputs":[],"args":{"a":{"kind":"integer","value":"1"},"b":{"kind":"integer","value":"0"},"c":{"kind":"integer","value":"2"}},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"H","op":"PERPENDICULAR_FOOT","inputs":["A","V"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "displayPoints": ["A","B","H"],
+  "displaySegments": [{"id":"AH","refs":["A","H"]},{"id":"HB","refs":["H","B"]},{"id":"AB","refs":["A","B"]}],
+  "rightAngles": [{"id":"rAHB","refs":["A","H","B"]}],
+  "planeMarks": {"expressionLabels":[{"id":"dx","ownerSegment":"AH","text":"3"},{"id":"dy","ownerSegment":"HB","text":"5"}]},
+  "coordinateLabels": ["A","B","H"],
+  "coordinateCanvas": {"width":620,"height":470},
+  "caption": "⑵ A(−5,1), B(−2,6)의 수평·수직 좌표 차는 각각 3과 5이다. 직각삼각형의 빗변 AB=√34.",
+  "accessibilityDescription": "좌표평면 위 A와 B를 잇는 선분 AB와 수선의 발 H(−2,1)가 직각삼각형을 이루며 수평변 3, 수직변 5가 표시된다.",
+  "sourceConditions": [
+    {"id":"C01-1","condition":"⑵ A(−5,1), B(−2,6)","mappedTo":"mathPlan.nodes[A,B],coordinateLabels"},
+    {"id":"C01-2","condition":"풀이의 Δx=3, Δy=5, 직각은 H=(−2,1)","mappedTo":"mathPlan.nodes[V,H],displaySegments[AH,HB,AB],planeMarks.expressionLabels,rightAngles[rAHB]"}
+  ],
+  "newVisualInformation": ["거리 공식의 두 제곱항 3², 5²가 어느 직각변에 대응하는지 보여 준다."]
+}
