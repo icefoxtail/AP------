@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "textbook-figure-plan-audit-v1",
+  "auditDate": "2026-11-25",
+  "sourcePath": "archive/exams/textbooks/동아출판_공통수학1/동아_공통수학1_다항식_대단원평가_고1/동아_공통수학1_다항식_대단원평가_고1.js",
+  "sourceGitBlobSha": "d341239506bc13ea98707e930e40bc3d58856687",
+  "mainBaseline": "ad2f9db49539e334c0c507fa30f2322d20d2e0b5",
+  "scope": { "firstQid": "q01", "lastQid": "q15", "questionCount": 15, "axesPerQuestion": 2 },
+  "validationPolicy": {
+    "problemAnswerExposure": "NO_ANSWER_IN_PROBLEM_PLANS",
+    "defaultFill": "NONE_EXCEPT_SOURCE_HIGHLIGHTED_AFC",
+    "render": "NOT_RUN",
+    "pngReview": "SOURCE_PNG_MANUALLY_INSPECTED",
+    "studentScreen": "NOT_RUN",
+    "a4": "NOT_RUN",
+    "planLintShallow": "PASS_4_OF_4",
+    "planLintFull": "PASS_4_OF_4",
+    "parityScope": "SOURCE_PNG_VS_DECLARED_DRAWN_FIELDS_NOT_RASTERIZED_PIXELS",
+    "solidRepresentativeDimensions": { "width": 2.5, "depth": 0.6909830056250525, "height": 1.8090169943749475, "allEdgesSum": 20, "afcSquaredSidesSum": 20 }
+  },
+  "items": [
+    { "qid": "q01", "problem": { "decision": "EXEMPT", "reason": "두 다항식 A, B의 합·차만 계산하며 그림·배치 조건이 없다." }, "solution": { "decision": "EXEMPT", "reason": "괄호 전개와 x², xy, y² 동류항 정리만 수행한다." } },
+    { "qid": "q02", "problem": { "decision": "EXEMPT", "reason": "세제곱 합·차 공식에 직접 대입하는 단순식이다." }, "solution": { "decision": "EXEMPT", "reason": "(2a)³±3³로 바꾸어 상쇄시키는 식 전개가 전부다." } },
+    { "qid": "q03", "problem": { "decision": "EXEMPT", "reason": "나머지정리의 P(-2) 값만 제시한 순수 대수 문제다." }, "solution": { "decision": "EXEMPT", "reason": "4a−9=−5라는 일차 방정식의 계산만 필요하다." } },
+    { "qid": "q04", "problem": { "decision": "EXEMPT", "reason": "두 다항식의 인수분해로 원문에 기하적 배치가 없다." }, "solution": { "decision": "EXEMPT", "reason": "치환 X=x²+3x 및 P(2)=0에 따른 인수 추출은 식으로 충분하고 조립제법 도표는 원문에 없다." } },
+    { "qid": "q05", "problem": { "decision": "EXEMPT", "reason": "곱의 전개에서 두 계수가 0인 조건을 찾는 식 문제다." }, "solution": { "decision": "EXEMPT", "reason": "x³·x의 계수를 비교해 a,b를 정하는 문자식 전개가 전부다." } },
+    { "qid": "q06", "existingSourcePng": "q06.png", "problem": {
+      "decision": "REQUIRED", "reason": "조립제법 원문 PNG의 c, a, b, d, e의 상대 위치와 계수·몫/나머지 구획이 풀이의 입력이다.", "capability": "construction-spike-v1", "planPath": "archive/tools/geometry-equation/production/plans/동아_공통수학1_다항식_대단원평가_고1/q06-problem.plan.json", "sourceVsPlan": "REVIEWED", "planLintShallow": "PASS", "planLintFull": "PASS", "featureParity": "PASS",
+      "drawnFeatureCheck": ["SOURCE_POINT 6개로 구획선 끝 좌표를 정의", "왼쪽 세로선·긴 가로선·오른쪽 아래 ㄴ자선 4개", "첫 행 c | 3 a b -1, 둘째 d e 4, 마지막 3 3 -6 3 총 12라벨", "각 행의 계수 열 정렬과 나머지 3 구획", "c, a, b, d, e 정답 미노출", "각·직각표식·넓이·비율 라벨 원문에 없음"]
+    }, "solution": {
+      "decision": "BENEFICIAL", "reason": "해설이 계산한 c=−2/3, d=e=−2, a=5, b=−4를 동일한 조립제법 칸에 대응시키면 과정 검증에 도움이 된다.", "capability": "construction-spike-v1", "planPath": "archive/tools/geometry-equation/production/plans/동아_공통수학1_다항식_대단원평가_고1/q06-solution.plan.json", "sourceVsPlan": "REVIEWED", "planLintShallow": "PASS", "planLintFull": "PASS", "featureParity": "PASS",
+      "drawnFeatureCheck": ["문제 그림 구획선 4개·계수 위치 12개 유지", "원문의 문자 c,a,b,d,e 위치에 해설 도출값 -2/3,5,-4,-2,-2를 치환", "원문 결과 3 3 -6 3을 보존", "몫·나머지 구획 유지", "새 직각·각·비율 표식 없음"]
+    } },
+    { "qid": "q07", "problem": { "decision": "EXEMPT", "reason": "삼차식의 세 함수값과 이차식 나눗셈은 모두 대수 조건이다." }, "solution": { "decision": "EXEMPT", "reason": "P(x)−3의 세 일차인수와 다항식 나눗셈만 계산한다." } },
+    { "qid": "q08", "problem": { "decision": "EXEMPT", "reason": "x−1 인수 조건의 계수 판별과 인수분해만 요구한다." }, "solution": { "decision": "EXEMPT", "reason": "P(1)=0과 나머지 이차식 인수분해를 글·수식으로 전개한다." } },
+    { "qid": "q09", "problem": { "decision": "EXEMPT", "reason": "13³+3³+3·16·39에 세제곱합 항등식을 대입하는 수치식이다." }, "solution": { "decision": "EXEMPT", "reason": "a³+b³+3ab(a+b)=(a+b)³를 적용해 제곱근을 구한다." } },
+    { "qid": "q10", "problem": { "decision": "EXEMPT", "reason": "두 다항식의 나머지를 정수 p,q로 치환하는 순수 식 조건이다." }, "solution": { "decision": "EXEMPT", "reason": "p−q, p³−q³에서 p q의 곱을 구하는 항등식 계산이다." } },
+    { "qid": "q11", "problem": { "decision": "EXEMPT", "reason": "x²+2에 관한 다항식 나머지의 기호 연산 문제다." }, "solution": { "decision": "EXEMPT", "reason": "P≡x−1(mod x²+2) 이후 차수 낮추기만 수행한다." } },
+    { "qid": "q12", "problem": { "decision": "EXEMPT", "reason": "정수 a,b 및 n≤30의 인수분해 조건은 식으로 정의된다." }, "solution": { "decision": "EXEMPT", "reason": "계수 비교와 정수 약수 조건 탐색에 독립 그림이 필요 없다." } },
+    { "qid": "q13", "existingSourcePng": "q13.png", "problem": {
+      "decision": "REQUIRED", "reason": "직육면체의 A~H 꼭짓점과 AFC의 세 면 대각선 관계는 원문 입체 그림에서 읽어야 한다.", "capability": "solid-figure-v1", "planPath": "archive/tools/geometry-equation/production/plans/동아_공통수학1_다항식_대단원평가_고1/q13-problem.plan.json", "sourceVsPlan": "REVIEWED", "planLintShallow": "PASS", "planLintFull": "PASS", "featureParity": "PASS",
+      "drawnFeatureCheck": ["직육면체 8꼭짓점 A B C D / E F G H 모두 대응", "직육면체 모서리 12개 및 가려진 모서리 점선 자동 계산", "윗면 대각선 AC, 오른쪽 면 대각선 CF, 앞면 대각선 FA 3개 파랑", "삼각형 AFC 1개 원문과 같이 연한 강조면", "대표 가로·깊이·높이 2.5,(5−√5)/4,(5+√5)/4의 비가 원문 모양과 부합", "4(a+b+c)=20, 2(a²+b²+c²)=20 수치 만족", "원문 없는 변 숫자·겉넓이 정답·직각 표식 미추가"]
+    }, "solution": {
+      "decision": "BENEFICIAL", "reason": "해설이 새로 명명한 a,b,c를 가로·깊이·높이 모서리에 표기해 AFC 세 면 대각선의 제곱식을 읽을 수 있다.", "capability": "solid-figure-v1", "planPath": "archive/tools/geometry-equation/production/plans/동아_공통수학1_다항식_대단원평가_고1/q13-solution.plan.json", "sourceVsPlan": "REVIEWED", "planLintShallow": "PASS", "planLintFull": "PASS", "featureParity": "PASS",
+      "drawnFeatureCheck": ["문제 그림의 8꼭짓점·12모서리·3면 대각선·삼각형 색 강조 보존", "가로 EF=a, 깊이 FG=b, 높이 AE=c로 해설 문자 3개만 추가", "AF²=a²+c², FC²=b²+c², AC²=a²+b²를 좌표 구조로 대조", "수치 관계 및 입체 길이 비율 그대로", "최종 겉넓이 15는 도형에 중복 노출하지 않음"]
+    } },
+    { "qid": "q14", "problem": { "decision": "EXEMPT", "reason": "P(x)를 (x+1)의 거듭제곱으로 다시 쓰는 형식적 계산이다." }, "solution": { "decision": "EXEMPT", "reason": "x+1로 반복 나누는 다항식 계수 조작과 99 대입이 전부다." } },
+    { "qid": "q15", "problem": { "decision": "EXEMPT", "reason": "P−Q=k와 P Q의 항등식 조건으로 해를 정하는 대수 문제다." }, "solution": { "decision": "EXEMPT", "reason": "x²+5x 치환과 곱의 인수 배분, 특정 함수값 대입을 계산한다." } }
+  ],
+  "summary": { "questions": 15, "axes": 30, "required": 2, "beneficial": 2, "exempt": 26, "plansWritten": 4, "shallowPass": 4, "fullPass": 4, "drawnFeatureParityPass": 4, "engineCapabilityPending": 0 }
+}

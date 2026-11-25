@@ -1,0 +1,30 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "cuboid",
+      "kind": "PRISM",
+      "base": { "kind": "RECT", "width": 2.5, "depth": 0.6909830056250525 },
+      "height": 1.8090169943749475,
+      "names": "EFGHABCD"
+    }
+  ],
+  "segments": [
+    { "from": "A", "to": "C", "style": "SOLID", "color": "BLUE" },
+    { "from": "C", "to": "F", "style": "SOLID", "color": "BLUE" },
+    { "from": "F", "to": "A", "style": "SOLID", "color": "BLUE" }
+  ],
+  "highlights": [
+    { "polygon": ["A", "F", "C"], "fill": "LIGHT" }
+  ],
+  "caption": "직육면체 ABCD-EFGH의 서로 다른 세 면 대각선으로 이루어진 삼각형 AFC",
+  "accessibilityDescription": "앞쪽 윗면 꼭짓점 A, B, 뒤쪽 윗면 꼭짓점 C, D와 아래 꼭짓점 E, F, G, H가 표시된 직육면체이다. 파란색 선분 AC는 윗면 대각선, AF는 앞면 대각선, FC는 오른쪽 면 대각선이고, 삼각형 AFC의 내부만 연하게 강조되어 있다. 보이지 않는 모서리는 점선이다.",
+  "sourceConditions": [
+    { "id": "P1", "condition": "원문 그림의 윗면 꼭짓점 순서는 A-B-C-D, 아랫면은 E-F-G-H이다.", "mappedTo": "solids[cuboid].names=EFGHABCD" },
+    { "id": "P2", "condition": "원문에서 삼각형 AFC의 세 변 AC, CF, FA가 세 직사각형 면의 대각선으로 파란색 표시된다.", "mappedTo": "segments[A-C,C-F,F-A]" },
+    { "id": "P3", "condition": "모든 12모서리 길이 합은 20이며 AFC의 세 변 길이 제곱 합도 20이다.", "mappedTo": "문자 없는 대표 치수 width=5/2, depth=(5-√5)/4, height=(5+√5)/4로 두 조건을 수치 오차 이하에서 만족하고 길이 수치는 그림에 쓰지 않음" },
+    { "id": "P4", "condition": "원문에서 삼각형 AFC가 옅은 청색으로 강조된다.", "mappedTo": "highlights[polygon:A-F-C] 및 segments[A-C,C-F,F-A]" },
+    { "id": "P5", "condition": "원문은 아직 직육면체의 겉넓이를 알려 주지 않는다.", "mappedTo": "겉넓이 값, a/b/c 길이 및 해설용 계산식은 그림에서 미표시" }
+  ],
+  "newVisualInformation": ["서로 다른 세 면의 대각선 AC, CF, FA가 연결된 하나의 삼각형임을 입체 모델 위에서 보인다."]
+}
