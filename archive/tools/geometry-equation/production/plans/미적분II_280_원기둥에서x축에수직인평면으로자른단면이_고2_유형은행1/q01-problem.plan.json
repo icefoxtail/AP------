@@ -1,0 +1,49 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "kind": "CYLINDER",
+      "radius": 2,
+      "height": 5
+    }
+  ],
+  "dims": [
+    {
+      "radius": "bottom"
+    },
+    {
+      "height": true
+    }
+  ],
+  "solidCaption": {
+    "text": "원기둥"
+  },
+  "caption": "원기둥의 반지름 2, 높이 5만 정확히 나타낸 부분 그림. 밑면 60° 경사 절단과 쐐기는 엔진 보류.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "반지름 2의 원기둥",
+      "mappedTo": "solids[0].radius"
+    },
+    {
+      "id": "c2",
+      "condition": "높이 5",
+      "mappedTo": "solids[0].height"
+    },
+    {
+      "id": "c3",
+      "condition": "밑면 지름을 지나고 밑면과 60°를 이루는 절단 평면",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: OBLIQUE_DIAMETER_CUT_PLANE_AT_60_DEGREES"
+    },
+    {
+      "id": "c4",
+      "condition": "작은 쪽 쐐기 입체 강조",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: CYLINDER_OBLIQUE_WEDGE_SOLID"
+    }
+  ],
+  "newVisualInformation": [
+    "단순 원기둥이 원래 잘린 입체를 완성해 보여 주는 것은 아니다."
+  ],
+  "sourceQuote": "[그림: 밑면의 반지름의 길이가 2이고 높이가 5인 원기둥에서, 밑면의 중심을 지나는 지름을 교선으로 하고 밑면과 60°의 각을 이루며 원기둥의 옆면을 자르는 평면에 의해 생기는 작은 쪽의 쐐기 모양 입체도형]",
+  "accessibilityDescription": "원기둥의 반지름 2, 높이 5만 정확히 나타낸 부분 그림. 밑면 60° 경사 절단과 쐐기는 엔진 보류."
+}

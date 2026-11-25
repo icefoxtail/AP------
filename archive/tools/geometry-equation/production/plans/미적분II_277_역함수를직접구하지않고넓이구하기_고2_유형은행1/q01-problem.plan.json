@@ -1,0 +1,78 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "SIN",
+    "coefficients": [
+      "1",
+      "2",
+      "0"
+    ],
+    "phasePi": "0",
+    "sourceDomain": {
+      "kind": "INTERVAL_PI",
+      "rangePi": [
+        "0",
+        "1/4"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "axisTickPi": true,
+    "axisTickValues": {
+      "x": [
+        "1/12"
+      ],
+      "y": [
+        "1/2",
+        "1"
+      ]
+    },
+    "referenceLines": [
+      {
+        "id": "lower",
+        "y": "1/2",
+        "intersectionCount": 1
+      }
+    ],
+    "overlays": {
+      "lines": [
+        {
+          "id": "upper",
+          "slope": "0",
+          "intercept": "1"
+        }
+      ]
+    }
+  },
+  "caption": "y=sin(2x)와 y=1/2, y=1의 정확한 두 수평선·교점. 세 경계의 색칠 면만 미지원.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "y=sin2x, 0≤x≤π/4",
+      "mappedTo": "graphPlan.function;graphPlan.coefficients;graphPlan.sourceDomain"
+    },
+    {
+      "id": "c2",
+      "condition": "y=1/2, 교점 x=π/12",
+      "mappedTo": "graphPlan.referenceLines[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "y=1, 교점 x=π/4",
+      "mappedTo": "graphPlan.overlays.lines[0];graphPlan.sourceDomain.rangePi[1]"
+    },
+    {
+      "id": "c4",
+      "condition": "y축과 두 수평선, 곡선으로 둘러싸인 색칠 영역",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: TRIGONOMETRIC_HORIZONTAL_BAND_REGIONS: 삼각함수-수평선-축으로 닫힌 면의 fill 불가"
+    }
+  ],
+  "newVisualInformation": [
+    "원문의 두 수평선은 실제 참조선으로 표시된다."
+  ],
+  "sourceQuote": "[그림: 좌표평면의 제1사분면에 곡선 $y=\\sin 2x$ $\\left(0 \\le x \\le \\frac{\\pi}{4}\\right)$가 원점 $(0,0)$에서 시작하여 점 $\\left(\\frac{\\pi}{4}, 1\\right)$까지 증가하는 모양으로 그려져 있다. $y$축 위의 점 $\\left(0, \\frac{1}{2}\\right)$과 $(0, 1)$을 지나고 $x$축에 평행한 두 직선 $y=\\frac{1}{2}$, $y=1$이 곡선과 만나는 점의 $x$좌표는 각각 $\\frac{\\pi}{12}$, $\\frac{\\pi}{4}$이다. 곡선 $y=\\sin 2x$와 $y$축 및 두 직선 $y=\\frac{1}{2}$, $y=1$로 둘러싸인 도형이 색칠되어 있다.]",
+  "accessibilityDescription": "y=sin(2x)와 y=1/2, y=1의 정확한 두 수평선·교점. 세 경계의 색칠 면만 미지원."
+}

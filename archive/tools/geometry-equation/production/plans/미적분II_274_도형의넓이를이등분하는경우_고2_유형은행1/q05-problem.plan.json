@@ -1,0 +1,54 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "SIN",
+    "coefficients": [
+      "3",
+      "1",
+      "0"
+    ],
+    "phasePi": "0",
+    "sourceDomain": {
+      "kind": "INTERVAL_PI",
+      "rangePi": [
+        "0",
+        "1/2"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "axisTickPi": true,
+    "axisTickValues": {
+      "x": [],
+      "y": [
+        "3"
+      ]
+    }
+  },
+  "caption": "원문 y=3sin x는 정확한 0≤x≤π/2 구간. 미지 kcos x와 이등분 면은 엔진 보류.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "y=3sin x (0≤x≤π/2)",
+      "mappedTo": "graphPlan.function;graphPlan.coefficients;graphPlan.sourceDomain"
+    },
+    {
+      "id": "c2",
+      "condition": "y=kcos x, (0,k)부터 (π/2,0)",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: TWO_TRIG_CURVES_ONE_AXIS_WITH_SYMBOLIC_AMPLITUDE"
+    },
+    {
+      "id": "c3",
+      "condition": "교점 (α,y0) 및 두 면의 같은 넓이",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: TRIGONOMETRIC_EQUAL_BISECTION_REGIONS"
+    }
+  ],
+  "newVisualInformation": [
+    "곡선 1개만 실필드로 완성; 두 곡선을 하나로 근사하지 않았다."
+  ],
+  "sourceQuote": "[그림: 좌표평면의 제1사분면에서 $y$축의 점 $(0, k)$에서 시작하여 $x$축의 점 $(\\pi/2, 0)$으로 내려가는 곡선 $y=k\\cos x$가 있고, 원점 $(0,0)$에서 시작하여 점 $(\\pi/2, 3)$으로 올라가는 곡선 $y=3\\sin x$가 있다. 두 곡선은 한 점 $(\\alpha, y_0)$에서 만나며, 원래 $y=k\\cos x$와 두 축으로 둘러싸인 영역이 두 부분으로 나뉘어 있다.]",
+  "accessibilityDescription": "원문 y=3sin x는 정확한 0≤x≤π/2 구간. 미지 kcos x와 이등분 면은 엔진 보류."
+}

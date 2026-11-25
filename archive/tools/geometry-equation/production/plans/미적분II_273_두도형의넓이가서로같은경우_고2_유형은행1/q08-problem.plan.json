@@ -1,0 +1,27 @@
+{
+  "status": "UNSUPPORTED",
+  "reason": "PRODUCT_TRIGONOMETRIC_CURVE_AND_EQUAL_AREAS: y=2x sin x 원곡선과 (π,0)을 지나는 미지 음의 기울기 직선의 두 면 경계 미지원",
+  "caption": "273/q08: 엔진 미지원 — PRODUCT_TRIGONOMETRIC_CURVE_AND_EQUAL_AREAS: y=2x sin x 원곡선과 (π,0)을 지나는 미지 음의 기울기 직선의 두 면 경계 미지원",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "0≤x≤π의 y=2x sin x",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: PRODUCT_TRIGONOMETRIC_CURVE"
+    },
+    {
+      "id": "c2",
+      "condition": "(π,0)을 지나는 음의 기울기의 직선 l",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: IRRATIONAL_PI_POINT_AND_SYMBOLIC_SLOPE"
+    },
+    {
+      "id": "c3",
+      "condition": "A/B 두 면이 같다",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: SYMBOLIC_EQUAL_AREAS_ON_PRODUCT_TRIGONOMETRIC_CURVE"
+    }
+  ],
+  "newVisualInformation": [
+    "원문의 수학적 형상을 근사·대체하지 않고 미지원 기능을 지정하였다."
+  ],
+  "sourceQuote": "[그림: 좌표평면에 $0 \\le x \\le \\pi$에서 곡선 $y=2x\\sin x$가 아치 모양으로 그려져 있고, 점 $(\\pi, 0)$을 지나는 기울기가 음수인 직선 $l$이 곡선과 교점을 가지며 $y$축의 양의 부분을 지난다. $y$축, 직선 $l$, 곡선으로 둘러싸인 영역이 $A$, 곡선과 직선 $l$로 둘러싸인 영역이 $B$로 표시되어 있다.]",
+  "accessibilityDescription": "273/q08: 실제 엔진에서 지원하지 않는 도형을 임의로 그리지 않았다."
+}

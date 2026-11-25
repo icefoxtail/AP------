@@ -1,0 +1,22 @@
+{
+  "status": "UNSUPPORTED",
+  "reason": "LOGARITHMIC_SQUARE_CROSS_SECTION_VESSEL: 높이 e²-1의 곡면 사각뿔형 용기 및 sqrt(ln(x+1))의 단면 미지원",
+  "caption": "279/q06: 엔진 미지원 — LOGARITHMIC_SQUARE_CROSS_SECTION_VESSEL: 높이 e²-1의 곡면 사각뿔형 용기 및 sqrt(ln(x+1))의 단면 미지원",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "전체 높이 e²-1인 곡면 그릇",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: TRANSCENDENTAL_HEIGHT_CURVED_SQUARE_VESSEL"
+    },
+    {
+      "id": "c2",
+      "condition": "물깊이 x의 정사각형 변 sqrt(ln(x+1))",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: LOGARITHMIC_VARIABLE_SQUARE_CROSS_SECTION"
+    }
+  ],
+  "newVisualInformation": [
+    "원문의 수학적 형상을 근사·대체하지 않고 미지원 기능을 지정하였다."
+  ],
+  "sourceQuote": "[그림: 거꾸로 세운 사각뿔 형태의 곡면 그릇. 그릇의 전체 높이는 $e^2 - 1$이고, 바닥으로부터 깊이(높이)가 $x$인 지점의 수면은 한 변의 길이가 $\\sqrt{\\ln(x+1)}$인 정사각형 단면으로 표시되어 있다.]",
+  "accessibilityDescription": "279/q06: 실제 엔진에서 지원하지 않는 도형을 임의로 그리지 않았다."
+}

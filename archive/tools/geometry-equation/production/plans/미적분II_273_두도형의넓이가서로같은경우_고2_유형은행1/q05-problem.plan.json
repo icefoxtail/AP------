@@ -1,0 +1,65 @@
+{
+  "capability": "exponential-affine-spike-v1",
+  "graphPlan": {
+    "family": "exponential-affine",
+    "coefficients": [
+      "1",
+      "-1",
+      "0"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1,
+      1.5
+    ],
+    "viewport": [
+      -1.1,
+      1.6,
+      -0.3,
+      3
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "edge",
+          "x": "1",
+          "label": "x=k"
+        }
+      ]
+    }
+  },
+  "caption": "곡선 y=e^(-x)와 대표 x=k=1의 위치만 표시. 정확 y=√e와 A/B 면은 보류.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "곡선 y=e^(-x) 및 y축",
+      "mappedTo": "graphPlan.coefficients"
+    },
+    {
+      "id": "c2",
+      "condition": "x=k (k>0) 오른쪽 경계 예 k=1",
+      "mappedTo": "graphPlan.overlays.lines[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "y=√e와 (-1/2,√e) 교점",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: IRRATIONAL_EXPONENTIAL_HORIZONTAL_LINE: e^(1/2)는 지원되는 유리수/단일 근호 계수가 아님"
+    },
+    {
+      "id": "c4",
+      "condition": "왼쪽 A와 오른쪽 B 면, A=B",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: EXPONENTIAL_TWO_REGIONS_WITH_UNKNOWN_K: 미지 k를 답으로 고정하지 않고 두 영역의 실제 면 채움을 표시할 수 없음"
+    }
+  ],
+  "newVisualInformation": [
+    "x=k는 위치 예시 k=1이며 면이 같다는 주장은 아니다."
+  ],
+  "sourceQuote": "[그림: 좌표평면에 곡선 $y=e^{-x}$가 그려져 있고, 직선 $y=\\sqrt{e}$가 곡선과 제2사분면의 점 $(-\\frac{1}{2}, \\sqrt{e})$에서 만난다. $y$축, 곡선, 직선 $y=\\sqrt{e}$로 둘러싸인 영역이 $A$, $0 \\le x \\le k$에서 곡선 아래와 $x$축, $y$축, 직선 $x=k$로 둘러싸인 영역이 $B$로 표시되어 있다.]",
+  "accessibilityDescription": "곡선 y=e^(-x)와 대표 x=k=1의 위치만 표시. 정확 y=√e와 A/B 면은 보류."
+}

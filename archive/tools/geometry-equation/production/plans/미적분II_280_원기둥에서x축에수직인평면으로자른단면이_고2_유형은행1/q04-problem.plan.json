@@ -1,0 +1,46 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "kind": "CYLINDER",
+      "radius": 3,
+      "height": 5.196152422706632
+    }
+  ],
+  "dims": [
+    {
+      "radius": "bottom"
+    }
+  ],
+  "solidCaption": {
+    "text": "원기둥"
+  },
+  "caption": "반지름 3, 높이 3√3의 근사 투영 원기둥. 60° 기울임 수면과 남은 물은 미지원.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "반지름 3",
+      "mappedTo": "solids[0].radius"
+    },
+    {
+      "id": "c2",
+      "condition": "높이 3√3",
+      "mappedTo": "solids[0].height;ENGINE_CAPABILITY_PENDING: SOLID_IRRATIONAL_HEIGHT_EXACT: 길이는 실수 모델 5.1961524…로 근사, 3√3 정확 대수 길이 좌표 계약 없음"
+    },
+    {
+      "id": "c3",
+      "condition": "60° 기울임, 수면이 밑면 중심을 통과",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: TILTED_WATER_SURFACE_AT_60_DEGREES"
+    },
+    {
+      "id": "c4",
+      "condition": "남아 있는 물의 채움",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: HEMISPACE_WATER_IN_TILTED_CYLINDER"
+    }
+  ],
+  "newVisualInformation": [
+    "기울이지 않은 원기둥 외형만 지원되며 수면을 그렸다고 주장하지 않는다."
+  ],
+  "sourceQuote": "[그림: 밑면의 반지름의 길이가 3, 높이가 3√3인 원기둥 모양의 그릇을 60° 기울였을 때, 수면이 밑면의 중심을 지나며 그릇 안에 물이 남아 있는 모습]",
+  "accessibilityDescription": "반지름 3, 높이 3√3의 근사 투영 원기둥. 60° 기울임 수면과 남은 물은 미지원."
+}
