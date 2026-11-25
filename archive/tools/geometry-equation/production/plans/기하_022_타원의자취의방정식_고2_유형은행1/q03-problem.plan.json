@@ -1,0 +1,36 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {"recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false},
+    "nodes": [
+      {"id": "S", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "integer", "value": "-1"}, {"kind": "integer", "value": "0"}]}, "outputType": "POINT", "factRole": "GIVEN"},
+      {"id": "L", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "integer", "value": "5"}, {"kind": "integer", "value": "0"}]}, "outputType": "POINT", "factRole": "GIVEN"},
+      {"id": "K", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "integer", "value": "-3"}, {"kind": "integer", "value": "0"}]}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE"},
+      {"id": "J", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "integer", "value": "13"}, {"kind": "integer", "value": "0"}]}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE"},
+      {"id": "P", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "integer", "value": "2"}, {"kind": "integer", "value": "4"}]}, "outputType": "POINT", "factRole": "GIVEN"},
+      {"id": "cSmall", "op": "CIRCLE_CENTER_RADIUS", "inputs": ["S"], "args": {"radius": {"kind": "integer", "value": "2"}}, "outputType": "CIRCLE", "factRole": "GIVEN"},
+      {"id": "cLarge", "op": "CIRCLE_CENTER_RADIUS", "inputs": ["L"], "args": {"radius": {"kind": "integer", "value": "8"}}, "outputType": "CIRCLE", "factRole": "GIVEN"},
+      {"id": "cMoving", "op": "CIRCLE_CENTER_RADIUS", "inputs": ["P"], "args": {"radius": {"kind": "integer", "value": "3"}}, "outputType": "CIRCLE", "factRole": "GIVEN"}
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": ["cSmall", "cLarge", "cMoving"],
+  "displaySegments": [
+    {"id": "sSK", "refs": ["S", "K"]},
+    {"id": "sLJ", "refs": ["L", "J"]}
+  ],
+  "displayPoints": ["S", "L", "K", "J", "P"],
+  "hiddenPointNames": ["S", "L", "K", "J"],
+  "unmarkedPointNames": ["K", "J"],
+  "planeMarks": {"expressionLabels": [{"id": "tSK", "ownerSegment": "sSK", "text": "2"}, {"id": "tLJ", "ownerSegment": "sLJ", "text": "8"}]},
+  "coordinateCanvas": {"width": 640, "height": 480},
+  "caption": "중심 (−1,0), 반지름 2인 작은 원과 중심 (5,0), 반지름 8인 큰 원, 양쪽에 각각 외접·내접하는 움직이는 원의 한 배치와 중심 P",
+  "accessibilityDescription": "큰 원 안에 왼쪽 작은 원과 위쪽에 놓인 움직이는 원이 있다. 작은 원의 반지름은 2, 큰 원의 반지름은 8로 표시된다. 움직이는 원은 작은 원에 외접하고 큰 원의 안쪽에 내접하며 중심은 P이다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "작은 고정 원 중심 S=(-1,0), 반지름 SK=2, 방정식 (x+1)²+y²=4. 중심·보조 끝점의 문자 이름은 원문 그림에 없으므로 화면에 숨긴다.", "mappedTo": ["S", "K", "sSK", "tSK", "cSmall"]},
+    {"id": "c2", "condition": "큰 고정 원 중심 L=(5,0), 반지름 LJ=8, 방정식 (x−5)²+y²=64. 두 고정 원은 거리 6=8−2로 한 점에서 내접한다.", "mappedTo": ["L", "J", "sLJ", "tLJ", "cLarge", "cSmall"]},
+    {"id": "c3", "condition": "대표 움직이는 원 중심 P=(2,4), 반지름 r=3이다. PS=5=r+2이므로 작은 원에 외접하고 PL=5=8−r이므로 큰 원에 내접한다. P의 자취인 타원을 정답으로 미리 그리지 않는다.", "mappedTo": ["P", "cMoving", "cSmall", "cLarge"]}
+  ],
+  "newVisualInformation": ["세 개 원의 정확한 접촉 관계와 고정 원의 주어진 반지름 2·8을 직접 표시하되 답인 중심의 타원 자취는 생략"]
+}
