@@ -1,0 +1,17 @@
+{
+  "capability": "quadratic-inequality-chain-v1",
+  "inequality": {
+    "coefficients": ["-6", "-1", "1"],
+    "comparator": "<=",
+    "variable": "a"
+  },
+  "graphCaption": { "text": "D/4=(a−3)(a+2)" },
+  "numberLineCaption": { "text": "판별식이 0 이하인 범위" },
+  "caption": "원래 이차부등식의 해가 없으려면 판별식 D/4=(a−3)(a+2)가 0 이하여야 하므로 −2≤a≤3이다.",
+  "accessibilityDescription": "판별식의 이차함수 그래프가 a축 아래 또는 위가 아닌 두 근 사이와 그 두 근을 수직선으로 나타낸다.",
+  "sourceConditions": [
+    { "id": "original", "condition": "−x²+2(a−3)x+5(a−3)>0의 해가 없음", "mappedTo": ["inequality.comparator"] },
+    { "id": "discriminant", "condition": "D/4=(a−3)(a+2)=a²−a−6≤0", "mappedTo": ["inequality.coefficients", "inequality.variable"] }
+  ],
+  "newVisualInformation": ["판별식의 이차함수가 0 이하인 두 근 사이를 그래프와 수직선에서 연결한다."]
+}

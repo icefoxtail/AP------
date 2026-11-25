@@ -1,0 +1,38 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "1" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "2" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "D", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "3" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "E", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "1" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "F", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "1" }, { "kind": "integer", "value": "1" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "G", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "2" }, { "kind": "integer", "value": "1" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "H", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "3" }, { "kind": "integer", "value": "1" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "I", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "2" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "J", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "1" }, { "kind": "integer", "value": "2" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "K", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "2" }, { "kind": "integer", "value": "2" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "L", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "3" }, { "kind": "integer", "value": "2" }] }, "outputType": "POINT", "factRole": "GIVEN" }
+    ]
+  },
+  "displayPoints": ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L"],
+  "hiddenPointNames": ["B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L"],
+  "displaySegments": [
+    { "id": "d1", "refs": ["A", "K"], "emphasis": "BOLD" },
+    { "id": "d2", "refs": ["B", "L"], "emphasis": "BOLD" },
+    { "id": "d3", "refs": ["I", "C"], "emphasis": "BOLD" },
+    { "id": "d4", "refs": ["J", "D"], "emphasis": "BOLD" }
+  ],
+  "coordinateCanvas": { "width": 560, "height": 390 },
+  "caption": "가로 네 점, 세로 세 점의 배열에서 왼쪽 아래 점을 A라 부르고 세 점이 한 직선 위에 놓이는 네 대각선을 굵게 표시하였다.",
+  "accessibilityDescription": "세 행 네 열의 검은 점 열두 개 중 왼쪽 아래 점만 A로 표시하고 기울기 양수인 대각선 두 개, 음수인 대각선 두 개를 그렸다.",
+  "sourceConditions": [
+    { "id": "dots", "condition": "가로 4개 세로 3개인 같은 간격의 12점", "mappedTo": ["mathPlan.nodes", "displayPoints"] },
+    { "id": "diagonals", "condition": "세 점이 일직선인 대각선이 두 방향 각각 두 개", "mappedTo": ["displaySegments[0]", "displaySegments[1]", "displaySegments[2]", "displaySegments[3]"] },
+    { "id": "aid", "condition": "해설의 방향 구분을 위해 왼쪽 아래 점만 보조 이름 A로 표기", "mappedTo": ["displayPoints", "hiddenPointNames"] }
+  ],
+  "newVisualInformation": ["가로줄과 세로줄 외에 따로 빼야 하는 네 대각선의 정확한 점 조합을 보인다."]
+}

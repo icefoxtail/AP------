@@ -1,0 +1,52 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": { "text": "⑴ 서로 다른 두 실근" },
+      "plan": {
+        "capability": "polynomial-spike-v1",
+        "graphPlan": {
+          "family": "polynomial",
+          "coefficients": ["-3", "-4", "2"],
+          "sourceDomain": { "kind": "ALL_REALS" },
+          "domain": [-2, 4],
+          "viewport": [-2, 4, -6, 15]
+        }
+      }
+    },
+    {
+      "caption": { "text": "⑵ 중근" },
+      "plan": {
+        "capability": "polynomial-spike-v1",
+        "graphPlan": {
+          "family": "polynomial",
+          "coefficients": ["4", "-12", "9"],
+          "sourceDomain": { "kind": "ALL_REALS" },
+          "domain": [-0.5, 2],
+          "viewport": [-1, 2.5, -1, 17]
+        }
+      }
+    },
+    {
+      "caption": { "text": "⑶ 서로 다른 두 허근" },
+      "plan": {
+        "capability": "polynomial-spike-v1",
+        "graphPlan": {
+          "family": "polynomial",
+          "coefficients": ["4", "-1", "3"],
+          "sourceDomain": { "kind": "ALL_REALS" },
+          "domain": [-1, 1],
+          "viewport": [-1.5, 1.5, -1, 10]
+        }
+      }
+    }
+  ],
+  "caption": "판별식의 부호에 따라 이차함수 그래프가 x축과 두 점에서 만나거나, 한 점에서 접하거나, 만나지 않는다.",
+  "accessibilityDescription": "첫째 그래프는 x축을 두 번 지나고, 둘째는 x축에 접하고, 셋째는 x축 위에만 놓인 세 이차함수 그래프이다.",
+  "sourceConditions": [
+    { "id": "part1", "condition": "2x²−4x−3=0, D/4=10>0", "mappedTo": ["panels[0].plan.graphPlan.coefficients"] },
+    { "id": "part2", "condition": "9x²−12x+4=0, D/4=0", "mappedTo": ["panels[1].plan.graphPlan.coefficients"] },
+    { "id": "part3", "condition": "3x²−x+4=0, D=−47<0", "mappedTo": ["panels[2].plan.graphPlan.coefficients"] }
+  ],
+  "newVisualInformation": ["x축과의 교점 수가 각각 2개, 1개, 0개임을 한눈에 비교한다."]
+}

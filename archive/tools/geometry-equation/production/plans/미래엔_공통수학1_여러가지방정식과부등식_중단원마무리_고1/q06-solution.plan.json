@@ -1,0 +1,33 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "첫째",
+        "pieces": [
+          { "lo": null, "hi": { "value": "1", "state": "CLOSED" } },
+          { "lo": { "value": "3", "state": "CLOSED" }, "hi": null }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "둘째",
+        "pieces": [
+          { "lo": { "value": "-1/4", "state": "OPEN" }, "hi": { "value": "2", "state": "OPEN" } }
+        ]
+      },
+      { "kind": "RESULT", "label": "공통" }
+    ]
+  },
+  "numberLineCaption": { "text": "두 해집합의 공통부분" },
+  "caption": "x≤1 또는 x≥3과 −1/4<x<2를 겹치면 공통부분은 −1/4<x≤1이다.",
+  "accessibilityDescription": "세 수직선에 두 이차부등식 각각의 해와 그 공통 구간을 차례로 표시한 그림이다.",
+  "sourceConditions": [
+    { "id": "first", "condition": "(x−1)(x−3)≥0", "mappedTo": ["numberLine.rows[0].pieces"] },
+    { "id": "second", "condition": "(4x+1)(x−2)<0", "mappedTo": ["numberLine.rows[1].pieces"] },
+    { "id": "intersection", "condition": "두 부등식을 동시에 만족", "mappedTo": ["numberLine.rows[2].kind"] }
+  ],
+  "newVisualInformation": ["엔진이 두 집합의 교집합을 계산해 열린 끝 −1/4와 닫힌 끝 1을 나타낸다."]
+}
