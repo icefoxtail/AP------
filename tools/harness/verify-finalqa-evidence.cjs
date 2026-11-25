@@ -15,6 +15,7 @@ const AXES = ['problem', 'solution'];
 const CHECKS = ['math', 'answerUniqueness', 'solution', 'curriculum', 'metadata', 'choices'];
 const SEMANTIC_FIELDS = [
   'id', 'content', 'choices', 'answer', 'solution', 'questionType', 'points',
+  'image', 'imageAlt', 'imageCaption',
   'curriculum', 'standardCourse', 'standardUnitKey', 'subUnitKey',
   'rpmPrimaryRecordId', 'problemTypeKey', 'templateKey',
   'difficultyBucket', 'crossConceptKeys', 'conditionKeys', 'integrationPattern'
@@ -77,7 +78,7 @@ function examPaths(root, examRel) {
 // actual independent solving and a per-QID reviewer record.
 function inspectPlans({ root = ROOT, examRel, questions, issues = [] }) {
   const { examUid, ledgerPath } = examPaths(root, examRel);
-  const result = { totalAxes: questions.length * 2, inspectedAxes: 0, exempt: 0, executable: 0, unsupported: 0, planFiles: [], axes: new Map() };
+  const result = { totalAxes: questions.length * 2, inspectedAxes: 0, exempt: 0, assetBacked: 0, executable: 0, unsupported: 0, planFiles: [], axes: new Map() };
   if (!fs.existsSync(ledgerPath)) {
     issue(issues, 'MISSING_AXIS_LEDGER', ledgerPath);
     return result;
@@ -93,7 +94,7 @@ function inspectPlans({ root = ROOT, examRel, questions, issues = [] }) {
   const byId = new Map(questions.map(q => [q.id, q]));
   const seen = new Set();
   for (const axisRecord of ledger.axes) {
-    const { qid, axis, necessity, planPath, planStatus } = axisRecord || {};
+    const { qid, axis, necessity, planPath, planStatus, assetPath, assetGitBlobSha1 } = axisRecord || {};
     const key = qidKey(qid, axis);
     if (!byId.has(qid) || !AXES.includes(axis) || seen.has(key)) {
       issue(issues, 'BAD_AXIS_ID_OR_DUPLICATE', key);
@@ -109,9 +110,42 @@ function inspectPlans({ root = ROOT, examRel, questions, issues = [] }) {
     if (!nonblank(axisRecord.reason, 8)) issue(issues, 'AXIS_REASON_MISSING', key);
     if (necessity === 'EXEMPT') {
       result.exempt++;
-      if (planStatus !== 'EXEMPT' || planPath) issue(issues, 'EXEMPT_WITH_PLAN', key);
+      if (planStatus !== 'EXEMPT' || planPath || assetPath) issue(issues, 'EXEMPT_WITH_PLAN', key);
       continue;
     }
+    // A REQUIRED problem figure may be an existing, immutable source PNG.
+    // This is asset provenance, not a newly authored executable SVG plan.
+    if (planStatus === 'EXISTING_SOURCE_ASSET_VERIFIED') {
+      if (axis !== 'problem' || necessity !== 'REQUIRED' || planPath) {
+        issue(issues, 'INVALID_SOURCE_ASSET_AXIS', key);
+        continue;
+      }
+      let absolute;
+      try { absolute = resolveRepoPath(root, assetPath); }
+      catch (err) { issue(issues, 'BAD_SOURCE_ASSET_PATH', key + ':' + err.message); continue; }
+      if (!fs.existsSync(absolute)) {
+        issue(issues, 'SOURCE_ASSET_MISSING', key);
+        continue;
+      }
+      const file = fs.readFileSync(absolute);
+      if (!assetPath.endsWith('.png') ||
+          !file.subarray(0, 8).equals(Buffer.from('89504e470d0a1a0a', 'hex'))) {
+        issue(issues, 'SOURCE_ASSET_NOT_PNG', key);
+        continue;
+      }
+      if ('archive/' + String(byId.get(qid).image || '') !== assetPath) {
+        issue(issues, 'SOURCE_ASSET_NOT_REFERENCED_BY_QUESTION', key);
+      }
+      const gitBlobSha1 = crypto.createHash('sha1')
+        .update('blob ' + file.length + '\0').update(file).digest('hex');
+      if (gitBlobSha1 !== assetGitBlobSha1) {
+        issue(issues, 'SOURCE_ASSET_BLOB_MISMATCH', key);
+      }
+      result.assetBacked++;
+      result.axes.get(key).planDigest = sha256(file);
+      continue;
+    }
+    if (assetPath) issue(issues, 'PLAN_AXIS_UNEXPECTED_ASSET', key);
     if (!nonblank(planPath)) {
       issue(issues, 'REQUIRED_PLAN_MISSING', key);
       continue;
@@ -183,6 +217,7 @@ function inspectPlans({ root = ROOT, examRel, questions, issues = [] }) {
 function expectedAxisStatus(axis) {
   if (!axis) return 'NOT_RUN';
   if (axis.necessity === 'EXEMPT') return 'EXEMPT';
+  if (axis.planStatus === 'EXISTING_SOURCE_ASSET_VERIFIED') return 'SOURCE_ASSET_VERIFIED';
   if (axis.planStatus === 'ENGINE_CAPABILITY_PENDING') return 'ENGINE_PENDING';
   return 'PASS';
 }
@@ -198,6 +233,9 @@ function makeBlindPack({ root = ROOT, examRel }) {
   function givenFigure(qid) {
     const found = axes.find(a => a.qid === qid && a.axis === 'problem' && a.necessity === 'REQUIRED');
     if (!found) return null;
+    if (found.planStatus === 'EXISTING_SOURCE_ASSET_VERIFIED') {
+      return { status: 'SOURCE_ASSET', assetPath: found.assetPath };
+    }
     if (found.planStatus !== 'VALID_OFFICIAL_PLAN' || !found.planPath) {
       return { status: 'REQUIRED_FIGURE_UNAVAILABLE' };
     }
@@ -331,7 +369,7 @@ function verifyEvidence({ root = ROOT, examRel, evidence, lint = false }) {
     rendering: 'NOT_RUN_BY_DESIGN',
     questions: questions.length,
     reviewerQids: seen.size,
-    axes: { expected: planReport.totalAxes, checked: planReport.inspectedAxes, exempt: planReport.exempt, executable: planReport.executable, unsupported: planReport.unsupported },
+    axes: { expected: planReport.totalAxes, checked: planReport.inspectedAxes, exempt: planReport.exempt, assetBacked: planReport.assetBacked, executable: planReport.executable, unsupported: planReport.unsupported },
     lint: lint ? lintResults.map(({ mode, exitCode }) => ({ mode, exitCode })) : 'NOT_RUN',
     issues,
   };

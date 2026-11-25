@@ -44,7 +44,7 @@
           ]
         },
         "outputType": "POINT",
-        "factRole": "GIVEN"
+        "factRole": "DERIVED_INTERMEDIATE"
       },
       {
         "id": "V",
@@ -63,7 +63,7 @@
           ]
         },
         "outputType": "POINT",
-        "factRole": "GIVEN"
+        "factRole": "DERIVED_INTERMEDIATE"
       },
       {
         "id": "ray",
@@ -130,8 +130,15 @@
   },
   "displayPoints": [
     "O",
-    "P"
+    "P",
+    "Q",
+    "V"
   ],
+  "hiddenPointNames": [
+    "Q",
+    "V"
+  ],
+  "hiddenPointStyle": "NONE",
   "displayCircles": [
     "circle"
   ],
@@ -160,5 +167,5 @@
   "newVisualInformation": [
     "제4사분면이므로 x>0, y<0이며 tanθ=−1/2이다."
   ],
-  "sourceQuote": "직선 $y=2x$에 수직"
+  "sourceQuote": "$y=2x$와 수직인 직선의 기울기는 $-1/2$"
 }
