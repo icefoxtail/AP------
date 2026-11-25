@@ -1,0 +1,43 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "kind": "REGULAR_POLYHEDRON",
+      "faces": 4,
+      "side": 18,
+      "names": "BCDA"
+    }
+  ],
+  "dims": [
+    {
+      "edge": "BC"
+    }
+  ],
+  "caption": "기하 176 유형 q07: 모서리 18인 정사면체. 세 면의 내접원과 가장 가까운 점·삼각형 미표시.",
+  "solidCaption": {
+    "text": "기하 176 입체"
+  },
+  "accessibilityDescription": "모서리 18인 정사면체. 세 면의 내접원과 가장 가까운 점·삼각형 미표시.",
+  "sourceQuote": "[그림: 한 모서리의 길이가 18인 정사면체 ABCD의 세 면 ABC, ACD, ABD에 내접원 C1, C2, C3이 있고 점 A에 가장 가까운 세 점 P1, P2, P3을 연결한 삼각형이 표시되어 있음]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "정사면체 ABCD 한 모서리 18",
+      "mappedTo": "solids[0];dims[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "ABC,ACD,ABD 각 면에 내접한 원 C1~C3",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:THREE_FACE_INCIRCLES"
+    },
+    {
+      "id": "c3",
+      "condition": "각 원에서 A에 가장 가까운 P1,P2,P3, 그 삼각형",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:THREE_POINTS_NEAREST_TO_APEX"
+    }
+  ],
+  "newVisualInformation": [
+    "공식 엔진으로 그릴 수 있는 기본 구조까지만 표시. 미지원 필수 요소는 ENGINE_CAPABILITY_PENDING 인계"
+  ]
+}

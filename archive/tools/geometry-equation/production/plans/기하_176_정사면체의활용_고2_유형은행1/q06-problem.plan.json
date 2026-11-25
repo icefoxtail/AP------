@@ -1,0 +1,43 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "kind": "REGULAR_POLYHEDRON",
+      "faces": 4,
+      "side": 2.449489742783178,
+      "names": "BCDA"
+    }
+  ],
+  "dims": [
+    {
+      "edge": "CD"
+    }
+  ],
+  "caption": "기하 176 유형 q06: 한 모서리 √6인 정사면체. 공유 모서리 정육면체와 내접원은 미표시.",
+  "solidCaption": {
+    "text": "기하 176 입체"
+  },
+  "accessibilityDescription": "한 모서리 √6인 정사면체. 공유 모서리 정육면체와 내접원은 미표시.",
+  "sourceQuote": "[그림: 평면 알파 위에 한 모서리 CD를 공유하는 정사면체 ABCD와 정육면체 CDEF-GHIJ가 놓여 있고, 면 ACD에 내접원이 그려져 있음]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "정사면체 ABCD의 모서리 CD 길이 √6",
+      "mappedTo": "solids[0].side;dims[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "정육면체 CDEF-GHIJ와 CD를 공유, α 위에 놓임",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:TETRAHEDRON_CUBE_EDGE_JOIN"
+    },
+    {
+      "id": "c3",
+      "condition": "면 ACD에 내접하는 원, 그 원의 평면 HGCD 정사영",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:FACE_INCIRCLE_PROJECTION"
+    }
+  ],
+  "newVisualInformation": [
+    "공식 엔진으로 그릴 수 있는 기본 구조까지만 표시. 미지원 필수 요소는 ENGINE_CAPABILITY_PENDING 인계"
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "kind": "CONE",
+      "radius": 1.7320508075688772,
+      "height": 2.449489742783178
+    }
+  ],
+  "caption": "기하 175 유형 q01: 반지름 √3 높이 √6 원뿔 기본 형태. α 위 기울기와 빛/그림자 누락.",
+  "solidCaption": {
+    "text": "기하 175 입체"
+  },
+  "accessibilityDescription": "반지름 √3 높이 √6 원뿔 기본 형태. α 위 기울기와 빛/그림자 누락.",
+  "sourceQuote": "[그림: 밑면의 반지름이 $\\sqrt{3}$, 높이가 $\\sqrt{6}$인 원뿔이 한 모선이 평면 $\\alpha$에 놓이도록 기울어져 있고, 위에서 평면 $\\alpha$에 수직인 방향으로 태양광선이 비추는 모습]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원뿔 반지름 √3, 높이 √6",
+      "mappedTo": "solids[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "원뿔의 모선 하나가 평면 α 위에 놓인 기울기",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:TILTED_CONE_GENERATRIX_ON_PLANE"
+    },
+    {
+      "id": "c3",
+      "condition": "α에 수직인 태양광선과 원뿔의 정사영",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:CONE_ORTHOGRAPHIC_SHADOW"
+    }
+  ],
+  "newVisualInformation": [
+    "공식 엔진으로 그릴 수 있는 기본 구조까지만 표시. 미지원 필수 요소는 ENGINE_CAPABILITY_PENDING 인계"
+  ]
+}

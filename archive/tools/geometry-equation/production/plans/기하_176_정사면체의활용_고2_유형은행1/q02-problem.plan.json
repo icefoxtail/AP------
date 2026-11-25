@@ -1,0 +1,38 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "kind": "REGULAR_POLYHEDRON",
+      "faces": 4,
+      "side": 6,
+      "names": "BCDA"
+    }
+  ],
+  "dims": [
+    {
+      "edge": "BC"
+    }
+  ],
+  "caption": "기하 176 유형 q02: 한 모서리 길이가 6인 정사면체 ABCD (A가 꼭대기, BCD가 밑면).",
+  "solidCaption": {
+    "text": "기하 176 입체"
+  },
+  "accessibilityDescription": "한 모서리 길이가 6인 정사면체 ABCD (A가 꼭대기, BCD가 밑면).",
+  "sourceQuote": "[그림: 한 모서리의 길이가 6인 정사면체 ABCD]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "모든 모서리 길이가 6인 정사면체 ABCD",
+      "mappedTo": "solids[0];dims[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "삼각형 ABC 및 바닥 BCD",
+      "mappedTo": "solids[0].names;solids[0].faces"
+    }
+  ],
+  "newVisualInformation": [
+    "한 모서리 길이가 6인 정사면체 ABCD (A가 꼭대기, BCD가 밑면)."
+  ]
+}

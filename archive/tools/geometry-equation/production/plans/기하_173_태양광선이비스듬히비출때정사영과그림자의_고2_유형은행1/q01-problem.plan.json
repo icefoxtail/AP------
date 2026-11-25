@@ -1,0 +1,36 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "kind": "SPHERE",
+      "radius": 8
+    }
+  ],
+  "caption": "기하 173 유형 q01: 반지름 8인 구 기본 모형. 지름 16 표식과 45도 광선·그림자 타원은 미표시.",
+  "solidCaption": {
+    "text": "기하 173 입체"
+  },
+  "accessibilityDescription": "반지름 8인 구 기본 모형. 지름 16 표식과 45도 광선·그림자 타원은 미표시.",
+  "sourceQuote": "[그림: 지름의 길이가 16cm인 구 모양의 공이 지면 위에 있고, 평행한 태양광선이 지면과 45도의 각을 이루며 비추어 지면에 타원 모양의 그림자가 생겨 있다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "지름 16인 공은 반지름 8 구",
+      "mappedTo": "solids[0].radius"
+    },
+    {
+      "id": "c2",
+      "condition": "태양광선과 지면의 각 45도",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:SUN_RAYS"
+    },
+    {
+      "id": "c3",
+      "condition": "지면 위의 공의 타원 그림자",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:SPHERE_CAST_ELLIPSE"
+    }
+  ],
+  "newVisualInformation": [
+    "공식 엔진으로 그릴 수 있는 기본 구조까지만 표시. 미지원 필수 요소는 ENGINE_CAPABILITY_PENDING 인계"
+  ]
+}

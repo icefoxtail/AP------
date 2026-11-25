@@ -1,0 +1,44 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "kind": "HEMISPHERE",
+      "radius": 3,
+      "names": {
+        "center": "O"
+      }
+    }
+  ],
+  "dims": [
+    {
+      "radius": "center"
+    }
+  ],
+  "caption": "기하 175 유형 q04: 반지름 3인 반구. α와의 45도 관계 및 투영 영역은 미표시.",
+  "solidCaption": {
+    "text": "기하 175 입체"
+  },
+  "accessibilityDescription": "반지름 3인 반구. α와의 45도 관계 및 투영 영역은 미표시.",
+  "sourceQuote": "[그림: 평면 $\\alpha$ 위에 반지름의 길이가 $3$인 반구가 놓여 있고, 반구의 밑면을 포함하는 평면과 평면 $\\alpha$가 이루는 이면각의 크기가 $45^\\circ$인 모습]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "반지름 3인 반구",
+      "mappedTo": "solids[0];dims"
+    },
+    {
+      "id": "c2",
+      "condition": "밑면이 속한 평면과 α의 이면각 45도",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:TILTED_HEMISPHERE_BASE"
+    },
+    {
+      "id": "c3",
+      "condition": "α 위로의 정사영 도형",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:HEMISPHERE_OBLIQUE_PROJECTION"
+    }
+  ],
+  "newVisualInformation": [
+    "공식 엔진으로 그릴 수 있는 기본 구조까지만 표시. 미지원 필수 요소는 ENGINE_CAPABILITY_PENDING 인계"
+  ]
+}

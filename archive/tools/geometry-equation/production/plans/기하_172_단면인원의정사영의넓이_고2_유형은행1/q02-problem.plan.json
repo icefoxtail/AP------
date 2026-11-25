@@ -1,0 +1,40 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "kind": "HEMISPHERE",
+      "radius": 3,
+      "names": {
+        "center": "O"
+      }
+    }
+  ],
+  "dims": [
+    {
+      "radius": "center",
+      "label": "a"
+    }
+  ],
+  "caption": "기하 172 유형 q02: 반지름이 a로 표시된 반구 기본 형상. 경사 60도 단면은 누락.",
+  "solidCaption": {
+    "text": "기하 172 입체"
+  },
+  "accessibilityDescription": "반지름이 a로 표시된 반구 기본 형상. 경사 60도 단면은 누락.",
+  "sourceQuote": "[그림: 중심이 O이고 반지름의 길이가 a인 반구가 그려져 있다. 밑면인 원의 경계 위의 한 점을 지나며 밑면과 60도의 각을 이루는 평면으로 반구를 잘라 생긴 원 모양의 단면이 색칠되어 있다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "반구 반지름 a: 기호 a를 붙인 동형 대표 반구(반지름 3)",
+      "mappedTo": "solids[0].radius;dims[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "밑원 경계 한 점을 지나는 60도 경사 절단",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:HEMISPHERE_OBLIQUE_CUT"
+    }
+  ],
+  "newVisualInformation": [
+    "공식 엔진으로 그릴 수 있는 기본 구조까지만 표시. 미지원 필수 요소는 ENGINE_CAPABILITY_PENDING 인계"
+  ]
+}

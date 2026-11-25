@@ -1,0 +1,95 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "kind": "REGULAR_POLYHEDRON",
+      "faces": 4,
+      "side": 4.898979485566356,
+      "names": "BCDA",
+      "points": [
+        {
+          "id": "F",
+          "at": {
+            "centroid": [
+              "B",
+              "C",
+              "D"
+            ]
+          }
+        },
+        {
+          "id": "G",
+          "at": {
+            "centroid": [
+              "A",
+              "C",
+              "D"
+            ]
+          }
+        },
+        {
+          "id": "O",
+          "at": {
+            "divide": [
+              "A",
+              "F"
+            ],
+            "ratio": "3:1"
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "A",
+      "to": "F",
+      "style": "DASHED",
+      "role": "REF"
+    },
+    {
+      "from": "B",
+      "to": "G",
+      "style": "DASHED",
+      "role": "REF"
+    },
+    {
+      "from": "A",
+      "to": "O",
+      "style": "DASHED",
+      "role": "REF"
+    }
+  ],
+  "caption": "기하 176 유형 q08: 외접구 반지름 3인 정사면체의 중심 O 및 면 무게중심 F,G; 구의 윤곽은 미표시.",
+  "solidCaption": {
+    "text": "기하 176 입체"
+  },
+  "accessibilityDescription": "외접구 반지름 3인 정사면체의 중심 O 및 면 무게중심 F,G; 구의 윤곽은 미표시.",
+  "sourceQuote": "[그림: 구의 중심 O에 내접하는 정사면체 ABCD와 두 면 BCD, ACD의 무게중심 F, G가 표시되어 있음]\n<보기>\nㄱ. 두 직선 $AF$와 $BG$는 꼬인 위치에 있다.\nㄴ. 삼각형 $ABC$의 넓이는 $6\\sqrt{3}$이다.\nㄷ. $\\angle AOG = \\theta$라 할 때, $\\cos\\theta = \\frac{1}{2}$이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "정사면체 ABCD가 반지름 3인 구에 내접: 정사면체 외접구 반지름 R=sqrt(6)/4*side=3, 따라서 변 2√6",
+      "mappedTo": "solids[0].side"
+    },
+    {
+      "id": "c2",
+      "condition": "F는 BCD의 무게중심, G는 ACD의 무게중심",
+      "mappedTo": "solids[0].points[0..1]"
+    },
+    {
+      "id": "c3",
+      "condition": "O는 외접구 중심으로 AF 위 3:1 내분",
+      "mappedTo": "solids[0].points[2]"
+    },
+    {
+      "id": "c4",
+      "condition": "구 S와 정사면체 내접 배치",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:SPHERE_TETRAHEDRON_SAME_ORIGIN"
+    }
+  ],
+  "newVisualInformation": [
+    "공식 엔진으로 그릴 수 있는 기본 구조까지만 표시. 미지원 필수 요소는 ENGINE_CAPABILITY_PENDING 인계"
+  ]
+}

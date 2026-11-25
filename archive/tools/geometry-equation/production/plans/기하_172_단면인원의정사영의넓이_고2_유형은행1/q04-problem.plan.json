@@ -1,0 +1,39 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "kind": "HEMISPHERE",
+      "radius": 4.47213595499958,
+      "names": {
+        "center": "O"
+      }
+    }
+  ],
+  "caption": "기하 172 유형 q04: 반지름 2√5인 반구의 기본 형태. 경사 절단·큰 활꼴은 미표시.",
+  "solidCaption": {
+    "text": "기하 172 입체"
+  },
+  "accessibilityDescription": "반지름 2√5인 반구의 기본 형태. 경사 절단·큰 활꼴은 미표시.",
+  "sourceQuote": "[그림: 평면 α 위에 중심이 O이고 반지름의 길이가 2√5인 반구가 놓여 있다. 평면 α와 60도의 각을 이루는 평면 β가 반구를 자르고 있으며, O에서 평면 β에 내린 수선의 발 O'가 반구 내부의 단면 위에 있고 선분 OO'의 길이가 2√3으로 표시되어 있다. 반구와 평면 β가 만나서 생긴 활꼴 모양의 단면(중심 O'를 포함하는 큰 활꼴)이 색칠",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "반구 반지름 2√5",
+      "mappedTo": "solids[0].radius"
+    },
+    {
+      "id": "c2",
+      "condition": "β가 α와 60도, O에서 β로 내린 수선의 발 O′, OO′=2√3",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:OBLIQUE_SECTION_FOOT"
+    },
+    {
+      "id": "c3",
+      "condition": "반구와 β가 만드는 중심 O′ 포함 큰 활꼴 단면 색칠",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:SPHERICAL_SEGMENT_SECTION"
+    }
+  ],
+  "newVisualInformation": [
+    "공식 엔진으로 그릴 수 있는 기본 구조까지만 표시. 미지원 필수 요소는 ENGINE_CAPABILITY_PENDING 인계"
+  ]
+}

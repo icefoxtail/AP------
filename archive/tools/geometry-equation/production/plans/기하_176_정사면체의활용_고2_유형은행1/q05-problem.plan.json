@@ -1,0 +1,104 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "kind": "REGULAR_POLYHEDRON",
+      "faces": 4,
+      "side": 6,
+      "names": "BCDA",
+      "points": [
+        {
+          "id": "P",
+          "at": {
+            "midpoint": [
+              "C",
+              "D"
+            ]
+          }
+        },
+        {
+          "id": "Q",
+          "at": {
+            "divide": [
+              "A",
+              "C"
+            ],
+            "ratio": "2:1"
+          }
+        },
+        {
+          "id": "R",
+          "at": {
+            "divide": [
+              "A",
+              "D"
+            ],
+            "ratio": "1:2"
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "P",
+      "to": "Q",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "Q",
+      "to": "R",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "R",
+      "to": "P",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "dims": [
+    {
+      "edge": "BC"
+    }
+  ],
+  "caption": "기하 176 유형 q05: 정사면체 CD 중점 P와 AC(2:1)의 Q, AD(1:2)의 R을 이은 삼각형 PQR.",
+  "solidCaption": {
+    "text": "기하 176 입체"
+  },
+  "accessibilityDescription": "정사면체 CD 중점 P와 AC(2:1)의 Q, AD(1:2)의 R을 이은 삼각형 PQR.",
+  "sourceQuote": "[그림: 한 모서리의 길이가 6인 정사면체 ABCD에서 선분 CD의 중점 P, 선분 AC 위의 내분점 Q, 선분 AD 위의 내분점 R로 이루어진 삼각형 PQR이 표시되어 있음]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "정사면체 ABCD 모서리 길이 6",
+      "mappedTo": "solids[0];dims[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "P는 CD 중점",
+      "mappedTo": "solids[0].points[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "Q는 AC의 A쪽 2:1 내분점",
+      "mappedTo": "solids[0].points[1]"
+    },
+    {
+      "id": "c4",
+      "condition": "R은 AD의 A쪽 1:2 내분점",
+      "mappedTo": "solids[0].points[2]"
+    },
+    {
+      "id": "c5",
+      "condition": "삼각형 PQR",
+      "mappedTo": "segments"
+    }
+  ],
+  "newVisualInformation": [
+    "정사면체 CD 중점 P와 AC(2:1)의 Q, AD(1:2)의 R을 이은 삼각형 PQR."
+  ]
+}

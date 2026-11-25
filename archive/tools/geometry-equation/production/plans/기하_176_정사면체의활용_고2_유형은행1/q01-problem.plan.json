@@ -1,0 +1,74 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "kind": "REGULAR_POLYHEDRON",
+      "faces": 4,
+      "side": 6,
+      "names": "BCDA",
+      "points": [
+        {
+          "id": "M",
+          "at": {
+            "midpoint": [
+              "A",
+              "D"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "B",
+      "to": "C",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "C",
+      "to": "M",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "M",
+      "to": "B",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "dims": [
+    {
+      "edge": "BC"
+    }
+  ],
+  "caption": "기하 176 유형 q01: 모든 모서리 6인 정사면체의 AD 중점 M과 삼각형 BCM.",
+  "solidCaption": {
+    "text": "기하 176 입체"
+  },
+  "accessibilityDescription": "모든 모서리 6인 정사면체의 AD 중점 M과 삼각형 BCM.",
+  "sourceQuote": "[그림: 한 모서리의 길이가 6인 정사면체 ABCD에서 선분 AD의 중점 M과 삼각형 BCM이 표시되어 있음]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "정사면체 ABCD 모든 모서리 길이 6",
+      "mappedTo": "solids[0];dims[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "M은 AD의 중점",
+      "mappedTo": "solids[0].points[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "삼각형 BCM",
+      "mappedTo": "segments"
+    }
+  ],
+  "newVisualInformation": [
+    "모든 모서리 6인 정사면체의 AD 중점 M과 삼각형 BCM."
+  ]
+}

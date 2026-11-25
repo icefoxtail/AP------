@@ -1,0 +1,112 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "space": {
+    "points": [
+      {
+        "id": "A",
+        "at": [
+          0,
+          0,
+          0
+        ],
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "B",
+        "at": [
+          6,
+          0,
+          0
+        ],
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "C",
+        "at": [
+          6,
+          0,
+          5
+        ],
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "D",
+        "at": [
+          0,
+          0,
+          5
+        ],
+        "hideName": true,
+        "hideDot": true
+      }
+    ],
+    "segments": [
+      {
+        "from": "A",
+        "to": "B",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "B",
+        "to": "C",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "C",
+        "to": "D",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "D",
+        "to": "A",
+        "style": "AUTO",
+        "role": "REF"
+      }
+    ]
+  },
+  "dims": [
+    {
+      "from": "A",
+      "to": "B",
+      "label": "6"
+    },
+    {
+      "from": "B",
+      "to": "C",
+      "label": "5"
+    }
+  ],
+  "caption": "기하 174 유형 q03: 가로 6 세로 5인 수직 판만 표시. 반지름 2 원형 구멍과 기울인 그림자 형태는 미구현.",
+  "solidCaption": {
+    "text": "그림자 도식"
+  },
+  "accessibilityDescription": "가로 6 세로 5인 수직 판만 표시. 반지름 2 원형 구멍과 기울인 그림자 형태는 미구현.",
+  "sourceQuote": "[그림: 지면과 $45^\\circ$의 각을 이루며 비추는 태양광선 아래, 가로 $6$, 세로 $5$인 직사각형 판의 중앙에 반지름 $2$인 원 모양 구멍이 뚫린 채 지면에 수직으로 서 있고, 밑변이 지면에 고정되어 그림자 쪽으로 기울일 수 있는 모습]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "판 가로 6 세로 5의 초기 수직 직사각형",
+      "mappedTo": "space.points;space.segments;dims"
+    },
+    {
+      "id": "c2",
+      "condition": "판 중앙에 반지름 2의 원형 구멍",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:PERFORATED_PLANE_CIRCLE"
+    },
+    {
+      "id": "c3",
+      "condition": "판은 햇빛 45도 아래 그림자 방향으로 기울일 수 있음",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:TILTED_BOARD_AND_SHADOW"
+    }
+  ],
+  "newVisualInformation": [
+    "공식 엔진으로 그릴 수 있는 기본 구조까지만 표시. 미지원 필수 요소는 ENGINE_CAPABILITY_PENDING 인계"
+  ]
+}

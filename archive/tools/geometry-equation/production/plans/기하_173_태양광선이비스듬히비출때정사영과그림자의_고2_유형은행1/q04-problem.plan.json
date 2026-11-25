@@ -1,0 +1,146 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "space": {
+    "points": [
+      {
+        "id": "O",
+        "at": [
+          0,
+          0,
+          0
+        ],
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "P",
+        "at": [
+          -6,
+          0,
+          "2*sqrt(3)"
+        ],
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "Q",
+        "at": [
+          -12,
+          0,
+          0
+        ],
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "M",
+        "at": [
+          -3,
+          0,
+          "sqrt(3)"
+        ],
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "N",
+        "at": [
+          -6,
+          0,
+          0
+        ],
+        "hideName": true,
+        "hideDot": true
+      }
+    ],
+    "segments": [
+      {
+        "from": "O",
+        "to": "P",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "P",
+        "to": "Q",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "O",
+        "to": "Q",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "M",
+        "to": "N",
+        "style": "AUTO",
+        "role": "REF"
+      }
+    ]
+  },
+  "dims": [
+    {
+      "from": "O",
+      "to": "P",
+      "label": "4\\sqrt{3}"
+    }
+  ],
+  "marks": {
+    "angles": [
+      {
+        "refs": [
+          "P",
+          "O",
+          "Q"
+        ],
+        "arcs": 1,
+        "equalGroup": "same30",
+        "label": "30^\\circ"
+      },
+      {
+        "refs": [
+          "P",
+          "Q",
+          "O"
+        ],
+        "arcs": 1,
+        "equalGroup": "same30",
+        "label": "30^\\circ"
+      }
+    ]
+  },
+  "caption": "기하 173 유형 q04: 지면 위 막대 길이 4√3, 왼쪽 30도 기울기, 오른쪽 위에서 오는 30도 광선과 왼쪽 그림자.",
+  "solidCaption": {
+    "text": "햇빛과 그림자"
+  },
+  "accessibilityDescription": "지면 위 막대 길이 4√3, 왼쪽 30도 기울기, 오른쪽 위에서 오는 30도 광선과 왼쪽 그림자.",
+  "sourceQuote": "[그림: 수평인 지면 위에 막대의 한 끝이 닿아 있고, 막대는 왼쪽 위 방향으로 지면과 30도의 각을 이루며 길이가 4√3으로 표시되어 있다. 오른쪽 위에서 왼쪽 아래로 평행한 태양광선이 지면과 30도의 각을 이루며 비추어, 막대의 아래쪽 왼쪽 지면에 그림자가 생겨 있다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "막대 길이 4√3",
+      "mappedTo": "space.points[O,P];dims[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "막대가 그림자 방향 왼쪽 위로 지면과 30도",
+      "mappedTo": "space.segments[0];marks.angles[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "오른쪽 위에서 왼쪽 아래 평행 태양광선과 지면 각 30도",
+      "mappedTo": "space.segments[1,3];marks.angles[1]"
+    },
+    {
+      "id": "c4",
+      "condition": "막대와 광선·그림자는 동일 수직 평면",
+      "mappedTo": "space.points;space.segments[2]"
+    }
+  ],
+  "newVisualInformation": [
+    "지면 위 막대 길이 4√3, 왼쪽 30도 기울기, 오른쪽 위에서 오는 30도 광선과 왼쪽 그림자."
+  ]
+}

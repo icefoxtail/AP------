@@ -1,0 +1,49 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "kind": "SPHERE",
+      "radius": 5,
+      "names": {
+        "center": "O"
+      }
+    }
+  ],
+  "dims": [
+    {
+      "radius": "center"
+    }
+  ],
+  "caption": "기하 172 유형 q03: 반지름 5인 구의 기본 형상. α/β 평면, O′, 절단원 C와 정사영 타원은 미표시.",
+  "solidCaption": {
+    "text": "기하 172 입체"
+  },
+  "accessibilityDescription": "반지름 5인 구의 기본 형상. α/β 평면, O′, 절단원 C와 정사영 타원은 미표시.",
+  "sourceQuote": "[그림: 중심이 O이고 반지름의 길이가 5인 구 S가 평면 α 위에 접해 있다. 평면 β가 구 S를 비스듬히 자르며 교선인 원 C를 만들고, 구의 중심 O에서 평면 β에 내린 수선의 발 O'가 원 C의 중심으로 표시되어 있다. 원 C의 평면 α 위로의 정사영인 타원이 평면 α 위에 그려져 있다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "반지름 5인 구 S, 중심 O",
+      "mappedTo": "solids[0];dims[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "구와 평면 α 접함",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:TANGENT_PLANE_TO_SPHERE"
+    },
+    {
+      "id": "c3",
+      "condition": "β 평면의 절단원 C, 수선발 O′, OO′=√10",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:OBLIQUE_SPHERE_SECTION_FOOT"
+    },
+    {
+      "id": "c4",
+      "condition": "절단원 C의 α 평면 정사영 타원 넓이 9π",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:SECTION_PROJECTION_ELLIPSE"
+    }
+  ],
+  "newVisualInformation": [
+    "공식 엔진으로 그릴 수 있는 기본 구조까지만 표시. 미지원 필수 요소는 ENGINE_CAPABILITY_PENDING 인계"
+  ]
+}

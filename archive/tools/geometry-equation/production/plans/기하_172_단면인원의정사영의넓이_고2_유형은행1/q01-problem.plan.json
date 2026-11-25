@@ -1,0 +1,44 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "kind": "HEMISPHERE",
+      "radius": 6,
+      "names": {
+        "center": "O"
+      }
+    }
+  ],
+  "dims": [
+    {
+      "radius": "center"
+    }
+  ],
+  "caption": "기하 172 유형 q01: 반지름 6인 반구와 중심 O 기본 형상. A,B·45도 단면은 아직 그려지지 않음.",
+  "solidCaption": {
+    "text": "기하 172 입체"
+  },
+  "accessibilityDescription": "반지름 6인 반구와 중심 O 기본 형상. A,B·45도 단면은 아직 그려지지 않음.",
+  "sourceQuote": "[그림: 반지름의 길이가 6인 반구가 놓여 있고, 밑면인 원의 중심 O와 지름의 양 끝점 A, B가 표시되어 있다. 점 B를 지나며 밑면과 45도의 각을 이루는 평면으로 반구를 잘라 생긴 원 모양의 단면이 색칠되어 있다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "반구 반지름 6, 밑면의 중심 O",
+      "mappedTo": "solids[0];dims[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "지름 양 끝 A,B, B를 지나는 경사 45도 절단평면",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:HEMISPHERE_OBLIQUE_CUT_RIM_POINTS"
+    },
+    {
+      "id": "c3",
+      "condition": "경사 평면 위 원형 단면 색칠",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:HEMISPHERE_OBLIQUE_SECTION_FILL"
+    }
+  ],
+  "newVisualInformation": [
+    "공식 엔진으로 그릴 수 있는 기본 구조까지만 표시. 미지원 필수 요소는 ENGINE_CAPABILITY_PENDING 인계"
+  ]
+}
