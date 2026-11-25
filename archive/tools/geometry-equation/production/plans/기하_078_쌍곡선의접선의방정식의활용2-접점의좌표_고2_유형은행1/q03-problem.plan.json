@@ -1,0 +1,23 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"HYPERBOLA","center":["0","0"],"aSquared":"3","bSquared":"12","transverse":"X"},
+  "points":[
+    {"id":"O","kind":"ORIGIN"},{"id":"T","kind":"ON_CONIC","x":"2","sign":"POS","label":false},
+    {"id":"P","kind":"LINE_LINE","lines":["t","s1"],"coordinates":true},
+    {"id":"Q","kind":"LINE_LINE","lines":["t","s2"]}
+  ],
+  "lines":[
+    {"id":"t","tangent":true,"at":"T"},
+    {"id":"s1","role":"ASYMPTOTE","sign":1,"dashed":true},
+    {"id":"s2","role":"ASYMPTOTE","sign":-1,"dashed":true}
+  ],
+  "segments":[{"id":"OP","from":"O","to":"P"},{"id":"OQ","from":"O","to":"Q"},{"id":"PQ","from":"P","to":"Q"}],
+  "polygons":[{"id":"OPQ","points":["O","P","Q"],"fill":"LIGHT"}],
+  "caption":"쌍곡선의 두 점근선과 접선이 만드는 음영 삼각형 OPQ",
+  "accessibilityDescription":"쌍곡선 x²/3−y²/12=1과 제1사분면의 주어진 무명 접점 (2,2), 접선 및 점근선 y=2x, y=−2x가 있고, 두 교점 P(3,6), Q(1,−2)와 원점 O를 이은 삼각형만 연하게 칠했다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"원문 쌍곡선 x²/3−y²/12=1, 주어진 접점 (2,2)의 접선 y=4x−6과 두 점근선 y=±2x를 기울기와 점선으로 정확히 표시한다. 원문 무명 접점 T를 숨긴다. 점근선 식 라벨은 ELLIPSE_LABEL_NO_ROOM 때문에 생략하고 문제 문장·설명에서만 유지한다.","mappedTo":["conic","T","t","s1","s2"]},
+    {"id":"c2","condition":"원문 그림에 명시된 교점 P(3,6), Q(1,−2), O와 삼각형 OPQ 음영을 실제 좌표로 구성하되 Q(1,−2) 텍스트는 full lint ELLIPSE_LABEL_NO_ROOM으로 현행 엔진이 거절하여 점 이름 Q만 표시한다. 좌표 라벨은 ENGINE_CAPABILITY_PENDING; 묻는 넓이 6은 표기하지 않는다.","mappedTo":["P","Q","O","OP","OQ","PQ","OPQ"]}
+  ],
+  "newVisualInformation":["실제 접선과 두 점근선의 교점 계산 노드","원문 지정 OPQ 내부 음영, P(3,6) 좌표 라벨","Q(1,−2) 시각 좌표 레이블 ENGINE_CAPABILITY_PENDING: ELLIPSE_LABEL_NO_ROOM"]
+}

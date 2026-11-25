@@ -1,0 +1,20 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"HYPERBOLA","center":["0","0"],"aSquared":"3","bSquared":"9","transverse":"X"},
+  "points":[
+    {"id":"O","kind":"ORIGIN"},
+    {"id":"T","kind":"ON_CONIC","x":"3*sqrt(2)/2","sign":"POS","label":false},
+    {"id":"B","kind":"LINE_LINE","lines":["t","xaxis"]},
+    {"id":"C","kind":"LINE_LINE","lines":["t","yaxis"]}
+  ],
+  "lines":[{"id":"t","tangent":true,"at":"T"},{"id":"xaxis","y":"0","hidden":true},{"id":"yaxis","x":"0","hidden":true}],
+  "segments":[{"id":"OB","from":"O","to":"B"},{"id":"OC","from":"O","to":"C"},{"id":"BC","from":"B","to":"C"}],
+  "polygons":[{"id":"OBC","points":["O","B","C"],"fill":"LIGHT"}],
+  "caption":"기울기 m인 쌍곡선 접선과 두 좌표축이 만드는 음영 직각삼각형",
+  "accessibilityDescription":"쌍곡선 3x²−y²=9의 제1사분면 한 점에서 접선이 양의 x축 B, 음의 y축 C와 만나 원점 O를 포함한 음영 직각삼각형을 이룬다. 접선의 기울기 값은 그림에 표시하지 않았다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"원문 3x²−y²=9의 제1사분면 접선은 면적 3 조건에서 m=3, 접점 T=(3√2/2,3√2/2), 두 절편 B=(√2,0), C=(0,−3√2)이다. 이 값들은 내부 검산에만 쓰고 묻는 m은 그림에 쓰지 않는다.","mappedTo":["conic","T","t","B","C"]},
+    {"id":"c2","condition":"문항의 삼각형은 접선 t와 양의 x축, 음의 y축으로 둘러싸인 OBC이다. 원문의 음영만 칠하고 면적값 3은 발문에 있으나 그림 라벨에는 필요 없으며 기울기는 답으로 노출하지 않는다.","mappedTo":["O","OB","OC","BC","OBC"]}
+  ],
+  "newVisualInformation":["면적 3과 사분면 조건을 만족하는 실제 접선 배치","원문 삼각형의 면 채움"]
+}

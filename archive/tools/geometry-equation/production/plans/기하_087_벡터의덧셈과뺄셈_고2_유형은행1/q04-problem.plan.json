@@ -1,0 +1,30 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{
+    "schemaVersion":"construction-spike-v1",
+    "realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes":[
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"3"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"3"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"3"},{"kind":"integer","value":"3"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"M","op":"DIVISION_POINT","inputs":["A","B"],"args":{"m":{"kind":"integer","value":"1"},"n":{"kind":"integer","value":"2"},"mode":"INTERNAL"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"P","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"3"},{"kind":"integer","value":"1"}]},"outputType":"POINT","factRole":"GIVEN"}
+    ]
+  },
+  "displayPoints":["A","B","C","D","M","P"],
+  "displaySegments":[{"id":"AB","refs":["A","B"]},{"id":"BC","refs":["B","C"]},{"id":"CD","refs":["C","D"]},{"id":"DA","refs":["D","A"]}],
+  "planeMarks":{"dimensions":[
+    {"id":"dAM","from":"A","to":"M","label":"1","side":"LEFT","style":"ARROW","value":1,"factRole":"GIVEN"},
+    {"id":"dMB","from":"M","to":"B","label":"2","side":"LEFT","style":"ARROW","value":2,"factRole":"GIVEN"},
+    {"id":"dBC","from":"B","to":"C","label":"3","side":"BELOW","style":"ARROW","value":3,"factRole":"GIVEN"}
+  ]},
+  "coordinateCanvas":{"width":650,"height":530},
+  "caption":"한 변 3인 정사각형에서 AB를 1:2로 나누는 M과 이동점 P",
+  "accessibilityDescription":"한 변의 길이가 3인 정사각형 ABCD의 왼쪽 변 AB 위 점 M이 AM=1, MB=2로 나누고 오른쪽 변 위에 움직이는 점 P의 한 위치를 나타냈다. X의 자취나 정답 둘레는 그리지 않았다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"원문에 주어진 정사각형을 A=(0,3),B=(0,0),C=(3,0),D=(3,3)의 정확한 직각·같은 길이 구조로 그리며 BC=3은 길이 치수선으로 명시한다.","mappedTo":["A","B","C","D","AB","BC","CD","DA","dBC"]},
+    {"id":"c2","condition":"M은 DIVISION_POINT(A,B,1:2)로 생성하여 AM=1, MB=2를 실제 치수선에 표시한다. P는 둘레 위를 움직이므로 비특수 대표 P=(3,1)을 한 위치로만 표시하고, 묻는 X의 자취나 둘레 24는 보이지 않는다.","mappedTo":["M","P","dAM","dMB"]}
+  ],
+  "newVisualInformation":["내분 연산과 두 구간 길이 1·2의 실제 치수선","정사각형 한 변 3과 동점 P의 예시 위치"]
+}

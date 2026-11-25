@@ -1,0 +1,24 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conics":[
+    {"id":"e","kind":"ELLIPSE","center":["0","0"],"aSquared":"6","bSquared":"3","major":"X"},
+    {"id":"h","kind":"HYPERBOLA","center":["0","0"],"aSquared":"2","bSquared":"1","transverse":"X"}
+  ],
+  "points":[
+    {"id":"T","kind":"CONIC_CONIC","curves":["e","h"],"which":3,"label":false},
+    {"id":"B","kind":"LINE_LINE","lines":["te","xaxis"],"label":false},
+    {"id":"P","kind":"FOOT","from":"B","onto":"th","rightAngle":true,"coordinates":true}
+  ],
+  "lines":[
+    {"id":"te","tangent":true,"at":"T","curve":"e"},
+    {"id":"th","tangent":true,"at":"T","curve":"h"},
+    {"id":"xaxis","y":"0","hidden":true}
+  ],
+  "caption":"두 이차곡선이 P(2,−1)에서 만나고 접선 두 개가 직교하는 그림",
+  "accessibilityDescription":"가로축 중심의 타원과 쌍곡선이 제4사분면 P(2,−1)에서 만나며 타원의 접선과 쌍곡선의 접선은 P에서 직각 표시를 갖는다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"원문 쌍곡선 x²/2−y²=1과 P(2,−1)은 고정이다. 미지 타원은 교점·접선 수직을 만족하는 내부 a²=6,b²=3으로 계산하여 그리되 미지수나 합 9는 표시하지 않는다.","mappedTo":["conics","T"]},
+    {"id":"c2","condition":"타원과 쌍곡선의 접선 기울기는 각 1과 −1이다. te 상 보조점 B에서 th까지의 FOOT P는 T와 같고, 원문에 주어진 좌표 P(2,−1) 및 직각 표식만 공개한다.","mappedTo":["te","th","B","P"]}
+  ],
+  "newVisualInformation":["공통 교점 P의 주어진 좌표 레이블","두 접선의 직각 사각 기호"]
+}

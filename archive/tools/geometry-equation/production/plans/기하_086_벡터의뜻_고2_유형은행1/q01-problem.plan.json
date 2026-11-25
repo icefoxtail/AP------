@@ -1,0 +1,36 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{
+    "schemaVersion":"construction-spike-v1",
+    "realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes":[
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"2"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"1"},{"kind":"integer","value":"2"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"2"},{"kind":"integer","value":"2"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"1"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"E","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"1"},{"kind":"integer","value":"1"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"F","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"2"},{"kind":"integer","value":"1"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"G","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"H","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"1"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"I","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"2"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"}
+    ]
+  },
+  "displayPoints":["A","B","C","D","E","F","G","H","I"],
+  "displaySegments":[
+    {"id":"AB","refs":["A","B"]},{"id":"BC","refs":["B","C"]},
+    {"id":"DE","refs":["D","E"]},{"id":"EF","refs":["E","F"]},
+    {"id":"GH","refs":["G","H"]},{"id":"HI","refs":["H","I"]},
+    {"id":"AD","refs":["A","D"]},{"id":"DG","refs":["D","G"]},
+    {"id":"BE","refs":["B","E"]},{"id":"EH","refs":["E","H"]},
+    {"id":"CF","refs":["C","F"]},{"id":"FI","refs":["F","I"]}
+  ],
+  "planeMarks":{"dimensions":[{"id":"dAB","from":"A","to":"B","label":"1","side":"ABOVE","style":"ARROW","factRole":"GIVEN"}]},
+  "coordinateCanvas":{"width":600,"height":510},
+  "caption":"단위 정사각형 네 개로 만든 2×2 격자의 아홉 꼭짓점",
+  "accessibilityDescription":"길이가 1인 정사각형 네 개가 2×2로 배열되어 있다. 윗줄에는 A B C, 가운데에는 D E F, 아랫줄에는 G H I가 왼쪽부터 차례로 배치되었다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"원문 네 단위 정사각형의 꼭짓점 좌표는 윗줄 A(0,2),B(1,2),C(2,2), 중간 D(0,1),E(1,1),F(2,1), 아래 G(0,0),H(1,0),I(2,0)이고 12개 단위 격자 선분을 잇는다.","mappedTo":["A","B","C","D","E","F","G","H","I","AB","BC","DE","EF","GH","HI","AD","DG","BE","EH","CF","FI"]},
+    {"id":"c2","condition":"단위 길이 1을 AB에 표시한다. 원문 문제는 여러 벡터 서술 중 틀린 것을 고르게 하므로 특정 보기의 벡터 경로·개수는 그림에 강조하지 않는다.","mappedTo":["dAB"]}
+  ],
+  "newVisualInformation":["원문 9점의 정확한 3행·3열 대응","AB 길이 1로 축척 검증 가능한 네 정사각형"]
+}

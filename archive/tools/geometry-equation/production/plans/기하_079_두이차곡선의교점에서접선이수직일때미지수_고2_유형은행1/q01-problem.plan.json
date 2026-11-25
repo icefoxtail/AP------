@@ -1,0 +1,25 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conics":[
+    {"id":"e","kind":"ELLIPSE","center":["0","0"],"aSquared":"9","bSquared":"2","major":"X"},
+    {"id":"h","kind":"HYPERBOLA","center":["0","0"],"aSquared":"4","bSquared":"3","transverse":"X"}
+  ],
+  "points":[
+    {"id":"T","kind":"CONIC_CONIC","curves":["e","h"],"which":4,"label":false},
+    {"id":"B","kind":"LINE_LINE","lines":["te","xaxis"],"label":false},
+    {"id":"P","kind":"FOOT","from":"B","onto":"th","rightAngle":true}
+  ],
+  "lines":[
+    {"id":"te","tangent":true,"at":"T","curve":"e"},
+    {"id":"th","tangent":true,"at":"T","curve":"h"},
+    {"id":"xaxis","y":"0","hidden":true}
+  ],
+  "caption":"두 이차곡선이 만나는 제1사분면 점 P에서 서로 수직인 접선",
+  "accessibilityDescription":"x²/9+y²/2=1과 가로로 열린 쌍곡선이 제1사분면의 P에서 만나고 각 곡선의 접선이 P에서 직각 표시를 이룬다. 구하는 a 값과 문자 좌표식은 쓰지 않았다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"타원은 x²/9+y²/2=1이다. 미정 쌍곡선 x²/a²−y²/3=1은 접선 수직 조건을 만족하는 내부 대표 a²=4로 구성하되 a의 숫자·곡선 식 라벨은 문제 그림에 쓰지 않는다.","mappedTo":["conics","T","te","th"]},
+    {"id":"c2","condition":"두 접선의 기울기 곱 −1을 독립 검산하고, 타원의 접선 위 보조점 B에서 쌍곡선 접선으로 내린 FOOT P에 rightAngle을 실제 그린다. B,T는 시각 표시하지 않는다.","mappedTo":["B","P","te","th"]},
+    {"id":"c3","condition":"원문 P(x₁,y₁)의 기호 좌표 레이블은 현행 conic 좌표 필드가 지원하지 않아 ENGINE_CAPABILITY_PENDING. 숫자 좌표로 임의 치환하지 않는다.","mappedTo":["P"]}
+  ],
+  "newVisualInformation":["교점 기반 두 접선과 FOOT.rightAngle 표시","P(x₁,y₁) 기호 레이블은 ENGINE_CAPABILITY_PENDING"]
+}
