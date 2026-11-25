@@ -1,0 +1,24 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conics": [{"id": "c1", "kind": "ELLIPSE", "center": ["0", "0"], "aSquared": "25", "bSquared": "4", "major": "X", "label": "C"}],
+  "points": [
+    {"id": "F", "kind": "FOCUS", "curve": "c1", "side": 1},
+    {"id": "F'", "kind": "FOCUS", "curve": "c1", "side": -1},
+    {"id": "A", "kind": "ON_CONIC", "curve": "c1", "y": "2", "branch": "POS", "coordinates": true},
+    {"id": "B", "kind": "LINE_CONIC", "curve": "c1", "line": "k", "which": 1}
+  ],
+  "lines": [{"id": "k", "through": ["A", "F'"], "hidden": true}],
+  "segments": [
+    {"id": "sAB", "from": "A", "to": "B"},
+    {"id": "sAF", "from": "A", "to": "F"},
+    {"id": "sBF", "from": "B", "to": "F"}
+  ],
+  "caption": "타원 C의 y축 위 점 A(0,2)를 지나 왼쪽 초점 F′까지 잇는 현 AB와 오른쪽 초점 F로 이룬 삼각형 ABF",
+  "accessibilityDescription": "가로 장축의 타원 C에서 A(0,2)는 y축 위쪽에 있다. A와 왼쪽 초점 F′를 지나는 선이 타원 왼쪽 아래 B까지 이어지고, A와 B를 오른쪽 초점 F에 연결해 삼각형을 만든다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "타원 중심 원점, F=(c,0), F′=(-c,0), c>0, A=(0,2)이다. 내부 풀이로 얻은 a²=25, b²=4, c²=21은 배치에만 쓰고 미지 c와 FF′의 답은 표시하지 않는다.", "mappedTo": ["conics", "F", "F'", "A"]},
+    {"id": "c2", "condition": "A와 F′를 지나는 할선 k의 다른 타원 교점 B는 x가 더 작은 교점이다. A-F′-B 순서 및 ABF 삼각형이 성립한다.", "mappedTo": ["k", "A", "F'", "B", "sAB", "sAF", "sBF"]},
+    {"id": "c3", "condition": "문제의 삼각형 둘레 20은 발문에 있으며, 구하는 FF′ 길이는 문제 그림의 수치 라벨로 공개하지 않는다.", "mappedTo": ["F", "F'", "sAB", "sAF", "sBF"]}
+  ],
+  "newVisualInformation": ["타원 C 이름과 A(0,2) 좌표를 실제 곡선/점 라벨로 표현하고, 미지 초점거리 비노출"]
+}
