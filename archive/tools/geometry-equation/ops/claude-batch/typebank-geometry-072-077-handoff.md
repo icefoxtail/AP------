@@ -33,7 +33,7 @@
 | **073 q05** | x²+4y²=16의 양의 축 교점 A(4,0),B(0,2), OAPB 볼록사각형 | `O`, `A/B:ON_CONIC(coordinates)`, `P:ON_CONIC(x=2,POS)` 대표점, OA/AP/PB/BO, `polygon(fill=NONE)` | P=(2,√3)로 사각형이 볼록·비퇴화; 전체 최대 넓이는 4√2, 대표 P는 미최적 | **PASS** |
 | **074 q04** | x²/2+y²/5=1, 수평선 y=3의 P(k,3), 두 접선 | 세로 타원, `given(y=3,label)`, `P:POINT`, `T1/T2:TANGENT_FROM`, 접선 t1/t2, PT1/PT2 | 양수 대표 k=√10, 두 접선의 기울기 곱 4/(k²−2)=1/2 | **ENGINE_CAPABILITY_PENDING** (P(k,3) 문자 좌표 라벨) |
 | **074 q05** | (0,4) 외부점에서 접점 P,Q, 왼쪽 초점 F로 PFQ 삼각형 | `E:POINT(coordinates)`(원문 무명점을 보조 E로 명명), `P/Q:TANGENT_FROM`, `F:FOCUS(side=-1)`, EP/EQ·PF/FQ/QP, polygon NONE | 접점 P=(−3,1),Q=(3,1); F=(−2√2,0), 둘레 4√3+6; 답 숫자 비표시 | **PASS** |
-| **076 q02** | x²−3y²=1, A(2,1), 접선 B(0,−1/3), 법선 C(0,4), 음영 삼각형 ABC | `HYPERBOLA`, `A:ON_CONIC(coordinates)`, `t:tangent`, `n(slope=-3/2)`, `B/C:LINE_LINE(coordinates)`, triangle `fill=LIGHT` | 접선 기울기 2/3, 법선 −3/2, 곱 −1; ABC 넓이 13/3 | **ENGINE_CAPABILITY_PENDING** (접선·법선의 90° 표식) |
+| **076 q02** | x²−3y²=1, A(2,1), 접선 B(0,−1/3), 법선 C(0,4), 음영 삼각형 ABC | `HYPERBOLA`, 라벨 없는 `T:ON_CONIC`, `t:tangent(at=T)`, `A:FOOT(from=B,onto=n,rightAngle=true,coordinates)`, `n(slope=-3/2)`, `B/C:LINE_LINE(coordinates)`, triangle `fill=LIGHT` | 접선 기울기 2/3, 법선 −3/2, 곱 −1; B를 법선 n에 정사영하면 A=(2,1)이 되어 원문 직각 표식까지 구현; ABC 넓이 13/3 | **PASS** (기존 FOOT를 재조합해 90° 표시 복구) |
 | **076 q08** | x²−6y²=12의 P(6,−2) 접선이 포물선 y²=ax의 초점 F를 통과 | `conics.h:HYPERBOLA`, `conics.p:PARABOLA`, `P:ON_CONIC(coordinates)`, `F:FOCUS(curve=p)`, `t:tangent(curve=h)`, PF | 쌍곡선 식 성립, 접선 x+2y=2, 포물선 초점 (2,0)에서 접선 식 2=2 | **PASS** |
 | **077 q01** | x²/6−y²/2=1의 (3,1) 접선 l, 초점 F,F′에서 수선 발 P,Q | `T:ON_CONIC(coordinates)` 보조명, `F/F':FOCUS(coordinates)`, `l:tangent`, `P/Q:FOOT(rightAngle=true)`, FP/F′Q | 접선 x−y=2; 초점 ±2√2; 두 거리 2∓√2, 곱 2 | **PASS** |
 | **077 q02** | x²/8−y²/4=1의 (4,2) 접선 l과 초점 F,F′에서 내린 수선, PQ가 이루는 사다리꼴 | `T:ON_CONIC(coordinates)`, 두 FOCUS, `P/Q:FOOT(rightAngle=true)`, FP/F′Q/PQ/F′F 실선 | 접선 x−y=2, 초점 ±2√3, 두 높이 √6∓√2, PQ=2√6, 합 4√6 | **PASS** |
@@ -43,7 +43,7 @@
 ### 공통 판정
 
 - `sourceVsPlan: REVIEWED` **16/16**. `planLintShallow: PASS` **16/16**, `planLintFull: PASS` **16/16**.
-- `featureParity: PASS` **11/16**; `ENGINE_CAPABILITY_PENDING` **5/16**: **072 q08**(60°), **074 q04**(P(k,3)), **076 q02**(접선-법선 직각), **077 q03**(P(4,k)), **077 q04**(P(5,k)). 원문에 실제로 쓰라고 한 문자·각도 표식을 캡션만으로 완료 취급하지 않음.
+- `featureParity: PASS` **12/16**; `ENGINE_CAPABILITY_PENDING` **4/16**: **072 q08**(60°), **074 q04**(P(k,3)), **077 q03**(P(4,k)), **077 q04**(P(5,k)). **076 q02는 2026-11-25 재검토에서 실제 `FOOT.rightAngle`로 수정하고 shallow/full PASS를 재검증함**. 나머지 네 문항의 문자·각도 표식은 캡션만으로 완료 취급하지 않음.
 - 077 q03의 3과 1은 절대거리 3·1이 아닌 **비례 표식**이다. 실제 길이 15/2·5/2를 가진 두 선분에 그 비율로만 표시한다.
 - 072 q08은 구하는 PA 길이의 계산 좌표를 내부에 썼지만 학생용 좌표 라벨/길이는 넣지 않았다. 073은 움직이는 P의 **비최적 대표점**으로 정답 노출을 피했다. 074 q04, 076 q08, 077 q03·q04의 미지 계수도 내부 실제 도형 구성에만 쓰고 답 수치 라벨을 넣지 않음. **answerLeak: PASS 16/16**.
 - 모든 SVG, PNG, 실제 폰트 배치 실물, 학생용 화면, A4 인쇄, JS `image`/`solutionImage` 연결은 **NOT_RUN**. `featureParity: PASS`는 JSON *필드 대조 결과*이지 렌더링 시각 품질 PASS가 아님.

@@ -2,12 +2,13 @@
   "capability":"ellipse-figure-v1",
   "conic":{"kind":"HYPERBOLA","center":["0","0"],"aSquared":"1","bSquared":"1/3","transverse":"X"},
   "points":[
-    {"id":"A","kind":"ON_CONIC","x":"2","sign":"POS","coordinates":true},
+    {"id":"T","kind":"ON_CONIC","x":"2","sign":"POS","label":false},
     {"id":"B","kind":"LINE_LINE","lines":["t","yaxis"],"coordinates":true},
+    {"id":"A","kind":"FOOT","from":"B","onto":"n","rightAngle":true,"coordinates":true},
     {"id":"C","kind":"LINE_LINE","lines":["n","yaxis"],"coordinates":true}
   ],
   "lines":[
-    {"id":"t","tangent":true,"at":"A"},
+    {"id":"t","tangent":true,"at":"T"},
     {"id":"n","slope":"-3/2","intercept":"4"},
     {"id":"yaxis","x":"0","hidden":true}
   ],
@@ -16,9 +17,9 @@
   "caption":"쌍곡선 접선·법선과 y축의 교점 B,C를 연결한 음영 삼각형 ABC",
   "accessibilityDescription":"가로로 열린 쌍곡선의 오른쪽 위 점 A(2,1)에서 접선이 y축 아래쪽 B(0,-1/3)를, 이에 수직인 법선이 y축 위쪽 C(0,4)를 만난다. 세 점으로 만든 삼각형 ABC가 옅게 칠해져 있다.",
   "sourceConditions":[
-    {"id":"c1","condition":"x²−3y²=1은 transverse X인 a²=1,b²=1/3의 쌍곡선이다. A=(2,1)은 그 위이고 원문이 준 정확한 좌표를 표시한다.","mappedTo":["conic","A"]},
+    {"id":"c1","condition":"x²−3y²=1은 transverse X인 a²=1,b²=1/3의 쌍곡선이다. 보조 접점 T=(2,1)은 라벨을 숨기고, B에서 법선 n에 내린 수선의 발 A가 같은 좌표 (2,1)에 생기도록 계산한다. 따라서 원문의 A 좌표 라벨과 P에서의 직각 표식을 함께 보존한다.","mappedTo":["conic","T","A"]},
     {"id":"c2","condition":"A 접선은 y=2x/3−1/3, 법선은 y=−3x/2+4라 기울기 곱이 −1이다. y축과의 교점 B=(0,−1/3), C=(0,4)를 실제 좌표 라벨로 표시한다.","mappedTo":["t","n","B","C","yaxis"]},
-    {"id":"c3","condition":"원문 음영 ABC는 polygons.fill LIGHT로 그리며 넓이의 수치 답을 노출하지 않는다. 접선과 법선의 90° 표식은 conic 엔진 미지원으로 ENGINE_CAPABILITY_PENDING.","mappedTo":["AB","AC","BC","ABC"]}
+    {"id":"c3","condition":"원문 음영 ABC는 polygons.fill LIGHT로 그리며 넓이의 수치 답을 노출하지 않는다. B에서 법선에 내린 FOOT의 rightAngle:true가 A에서 AB(접선)와 AC(법선)의 90° 표식을 실제로 렌더한다.","mappedTo":["A","AB","AC","BC","ABC"]}
   ],
-  "newVisualInformation":["주어진 세 점의 정확한 좌표·법선/접선 연결·삼각형 음영","A에서 직각 표시는 ENGINE_CAPABILITY_PENDING"]
+  "newVisualInformation":["주어진 세 점의 정확한 좌표·법선/접선 연결·삼각형 음영","수선의 발 A에서 FOOT.rightAngle로 접선·법선의 실제 직각 표식 구현"]
 }
