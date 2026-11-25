@@ -1,0 +1,66 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "~p",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-2",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "3",
+              "state": "OPEN"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "~q",
+        "pieces": [
+          {
+            "lo": {
+              "value": "1",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ]
+      },
+      {
+        "kind": "RESULT",
+        "label": "공통 범위"
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "부정 조건의 진리집합"
+  },
+  "caption": "~p와 ~q의 공통부분 (1,3)을 수직선에 열린 끝점 1과 3으로 나타낸다.",
+  "accessibilityDescription": "~p와 ~q의 공통부분 (1,3)을 수직선에 열린 끝점 1과 3으로 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "range1",
+      "condition": "Pᶜ=[-2,3)",
+      "mappedTo": "numberLine.rows"
+    },
+    {
+      "id": "range2",
+      "condition": "Qᶜ=(1,∞)",
+      "mappedTo": "numberLine.rows"
+    },
+    {
+      "id": "range3",
+      "condition": "Pᶜ∩Qᶜ=(1,3)",
+      "mappedTo": "numberLine.rows"
+    }
+  ],
+  "newVisualInformation": [
+    "원문의 여집합과 공통 구간을 실제 열린·닫힌 점 및 수평 구간으로 나타낸다."
+  ]
+}

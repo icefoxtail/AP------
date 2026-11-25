@@ -1,0 +1,408 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "-4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "K1",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O1"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "K2",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O2"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "X",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "-1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U1",
+        "op": "LINE_REFLECTION",
+        "inputs": [
+          "O1",
+          "X"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U2",
+        "op": "LINE_REFLECTION",
+        "inputs": [
+          "O2",
+          "D"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R1",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "U1"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R2",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "U2"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "J1",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "U1",
+          "U2"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "9"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "J2",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "U1",
+          "U2"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "9"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "U1",
+          "U2"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "T",
+          "X"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "T",
+          "D"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O1",
+    "O2",
+    "U1",
+    "U2",
+    "J1",
+    "J2",
+    "P",
+    "Q"
+  ],
+  "displayCircles": [
+    "K1",
+    "K2",
+    "R1",
+    "R2"
+  ],
+  "displayLines": [
+    "D",
+    "X"
+  ],
+  "displaySegments": [
+    {
+      "id": "r1",
+      "refs": [
+        "U1",
+        "J1"
+      ]
+    },
+    {
+      "id": "closest",
+      "refs": [
+        "J1",
+        "J2"
+      ]
+    },
+    {
+      "id": "r2",
+      "refs": [
+        "J2",
+        "U2"
+      ]
+    }
+  ],
+  "pointNames": {
+    "O1": "O₁",
+    "O2": "O₂",
+    "U1": "M′",
+    "U2": "N′",
+    "J1": "A′",
+    "J2": "B′"
+  },
+  "coordinateLabels": [
+    "U1",
+    "U2"
+  ],
+  "coordinatePlacement": "PANEL",
+  "lineLabels": [
+    {
+      "nodeId": "D",
+      "form": "SLOPE_INTERCEPT"
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "rad1",
+        "ownerSegment": "r1",
+        "text": "1",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "gap",
+        "ownerSegment": "closest",
+        "text": "8",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "rad2",
+        "ownerSegment": "r2",
+        "text": "1",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "caption": "반사된 두 원의 중심 연결선과 경유 교점 P,Q",
+  "accessibilityDescription": "첫째 원을 x축에, 둘째 원을 y=x에 반사한 뒤 두 반사 원의 가까운 원주점 A′,B′를 이었다. 중심거리 10, 반지름 1 두 개와 경유점 P,Q의 순서를 보여 준다.",
+  "sourceConditions": [
+    {
+      "id": "ref1",
+      "condition": "첫째 원 중심 4,2를 x축에 반사",
+      "mappedTo": [
+        "U1",
+        "R1"
+      ]
+    },
+    {
+      "id": "ref2",
+      "condition": "둘째 원 중심 4,-4를 y=x에 반사",
+      "mappedTo": [
+        "U2",
+        "R2",
+        "D"
+      ]
+    },
+    {
+      "id": "radii",
+      "condition": "반사한 원의 반지름 각각 1",
+      "mappedTo": [
+        "r1",
+        "r2",
+        "rad1",
+        "rad2"
+      ]
+    },
+    {
+      "id": "nearest",
+      "condition": "중심거리 10에서 반지름 둘을 뺀 8",
+      "mappedTo": [
+        "J1",
+        "J2",
+        "closest",
+        "gap"
+      ]
+    },
+    {
+      "id": "crossings",
+      "condition": "P는 x축, Q는 y=x와 중심선의 교점이고 A′–P–Q–B′ 순서",
+      "mappedTo": [
+        "P",
+        "Q",
+        "D"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 반사 원, 두 원주점, 경유축 교점 P와 Q, 중심선의 반지름·원 사이 길이를 그려 등호 성립 순서를 확인한다."
+  ]
+}
