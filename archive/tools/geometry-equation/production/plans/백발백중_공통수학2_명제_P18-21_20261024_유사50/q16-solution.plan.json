@@ -1,0 +1,101 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "P",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "0",
+              "state": "CLOSED"
+            }
+          },
+          {
+            "lo": {
+              "value": "5",
+              "state": "CLOSED"
+            },
+            "hi": null
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "p의 부정",
+        "pieces": [
+          {
+            "lo": {
+              "value": "0",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "5",
+              "state": "OPEN"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "Q",
+        "pieces": [
+          {
+            "lo": {
+              "value": "0",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "8",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "R",
+        "pieces": [
+          {
+            "lo": {
+              "value": "5",
+              "state": "CLOSED"
+            },
+            "hi": null
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "네 진리집합의 포함"
+  },
+  "caption": "풀이의 극값 예시 a=4, b=5. p의 부정 (0,5)은 Q=[0,8]에 포함되고 R=[5,∞)은 P=(-∞,0]∪[5,∞)에 포함된다.",
+  "accessibilityDescription": "네 줄 수직선. P는 0 이하 또는 5 이상이고, p의 부정은 그 사이 열린 구간이며, Q는 0부터 8까지, R은 5 이상이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "p: x≤0 또는 x≥5",
+      "mappedTo": [
+        "numberLine.rows[0].pieces",
+        "numberLine.rows[1].pieces"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "q: |x-a|≤4, 풀이의 최댓값 a=4",
+      "mappedTo": "numberLine.rows[2].pieces"
+    },
+    {
+      "id": "c3",
+      "condition": "r: x≥b, 풀이의 최솟값 b=5",
+      "mappedTo": "numberLine.rows[3].pieces"
+    }
+  ],
+  "newVisualInformation": [
+    "네 구간의 열린·닫힌 끝과, ~P⊆Q 및 R⊆P 두 포함관계를 같은 x축 눈금의 줄들로 비교한다."
+  ]
+}

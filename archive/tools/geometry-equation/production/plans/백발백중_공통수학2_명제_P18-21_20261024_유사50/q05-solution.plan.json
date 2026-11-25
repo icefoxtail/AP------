@@ -1,0 +1,77 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "parameter": {
+      "name": "k",
+      "value": "3"
+    },
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "이동 구간",
+        "pieces": [
+          {
+            "lo": {
+              "param": {
+                "mul": "1",
+                "add": "-2"
+              },
+              "state": "CLOSED"
+            },
+            "hi": {
+              "param": {
+                "mul": "1",
+                "add": "4"
+              },
+              "state": "CLOSED"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "주어진 구간",
+        "pieces": [
+          {
+            "lo": {
+              "value": "3",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "7",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "RESULT",
+        "label": "공통"
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "어떤 조건의 교집합"
+  },
+  "caption": "예: k=3일 때 이동 구간 [1,7]와 주어진 구간 [3,7]의 교집합은 [3,7]이다. 어떤 x가 존재하려면 교집합이 비어 있지 않아야 한다.",
+  "accessibilityDescription": "세 줄 수직선. k=3이라는 예시에서 주어진 구간과 이동하는 구간 및 공통 구간을 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "이동 구간 [k-2,k+4]",
+      "mappedTo": [
+        "numberLine.parameter",
+        "numberLine.rows[0].pieces"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "고정 구간 [3,7]",
+      "mappedTo": "numberLine.rows[1].pieces"
+    }
+  ],
+  "newVisualInformation": [
+    "k=3일 때 이동 구간과 고정 구간의 실제 끝점 1, 7, 3, 7 및 공통구간 3~7를 수직선에 표시한다."
+  ]
+}
