@@ -1,0 +1,23 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"PARABOLA","vertex":["0","0"],"p":"4","axis":"X"},
+  "points":[
+    {"id":"P","kind":"ON_CONIC","x":"16","branch":"POS"},
+    {"id":"T","kind":"LINE_LINE","lines":["t","axis"]},
+    {"id":"N","kind":"LINE_LINE","lines":["n","axis"]},
+    {"id":"M","kind":"POINT","x":"4","y":"0","coordinates":true}
+  ],
+  "lines":[
+    {"id":"t","tangent":true,"at":"P"},
+    {"id":"n","slope":"-2","intercept":"48"},
+    {"id":"axis","y":"0","hidden":true}
+  ],
+  "segments":[{"id":"PT","from":"P","to":"T"},{"id":"PN","from":"P","to":"N"},{"id":"TN","from":"T","to":"N"}],
+  "caption":"포물선 y²=2ax 위 접점 P의 접선 PT·법선 PN과 주어진 중점 M(4,0)",
+  "accessibilityDescription":"포물선 위 P에서 접선 PT와 이에 수직인 법선 PN이 x축의 T,N을 각각 지난다. T,N 사이 선분에서 좌표 (4,0)인 중점 M이 표시된다. 구하는 매개변수 a의 값은 글자로 드러내지 않는다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"원문 y²=2ax, P=(2a,2a), T=(-2a,0), N=(3a,0), 중점(4,0)에서 a=8이 유일하게 정해진다. 따라서 잠재 계산 좌표 P=(16,16),T=(-16,0),N=(24,0), M=(4,0), p=a/2=4를 사용하되 a=8의 답을 그림에 표시하지 않는다.","mappedTo":["P","T","N","M"]},
+    {"id":"c2","condition":"접선 기울기 1/2, 법선 기울기 -2이므로 실제 기하상 두 직선은 P에서 수직이다. 단 conic plan에는 두 직선 사이 직각호 표시 primitive가 없어 ENGINE_CAPABILITY_PENDING으로 별도 후속 검수한다.","mappedTo":["t","n","PT","PN","TN"]}
+  ],
+  "newVisualInformation":["P·T·N·M의 수학적 위치 관계를 확정하고 정확한 중점 M(4,0)을 실제 점 좌표 라벨로 표시","접선·법선의 직각호는 엔진 미지원으로 보완 대기; 답 a=8은 비노출"]
+}

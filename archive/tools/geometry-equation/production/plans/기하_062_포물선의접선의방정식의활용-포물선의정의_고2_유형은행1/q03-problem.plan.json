@@ -1,0 +1,19 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"PARABOLA","vertex":["0","0"],"p":"5-sqrt(21)","axis":"X"},
+  "points":[
+    {"id":"F","kind":"FOCUS"},
+    {"id":"A","kind":"ON_CONIC","x":"5+sqrt(21)","branch":"POS"},
+    {"id":"B","kind":"LINE_LINE","lines":["t","axis"]}
+  ],
+  "lines":[{"id":"t","tangent":true,"at":"A"},{"id":"axis","y":"0","hidden":true}],
+  "segments":[{"id":"AB","from":"A","to":"B"},{"id":"AF","from":"A","to":"F","label":"10"},{"id":"BF","from":"B","to":"F"}],
+  "polygons":[{"id":"tri","points":["A","B","F"],"fill":"LIGHT"}],
+  "caption":"포물선의 접선·초점으로 둘러싸인 색칠 삼각형 ABF",
+  "accessibilityDescription":"오른쪽으로 열린 포물선 위의 점 A에서 그은 접선이 음의 x축에서 B와 만나며, 초점 F는 양의 x축 위에 있다. A와 F를 이은 선분의 길이는 10이고 삼각형 ABF 내부가 옅게 색칠되어 있다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"원문 y²=4px(p>0), A=(a,4), FA=10을 만족하므로 ap=4, a+p=10이다. 양의 두 근 5±√21 중 대표 구도 p=5−√21, a=5+√21로 둔다. 두 근을 교환한 대칭적 수치 경우도 동일 넓이이며 원문은 단일 p를 지정하지 않는다.","mappedTo":["F","A","AB","AF","BF"]},
+    {"id":"c2","condition":"A에서의 접선은 x축과 B=(-a,0)에서 만나고 F=(p,0)이다. FA=10은 원문 기지 길이, ABF는 원문 색칠 삼각형이다. 구하는 넓이 값은 라벨에 쓰지 않는다.","mappedTo":["t","B","F","AF","tri"]}
+  ],
+  "newVisualInformation":["원문의 허용된 두 수치 가지 중 한 가지를 명시하고 정확 좌표로 그리기","넓이를 묻는 색칠 삼각형만 LIGHT 채움, 미지 넓이 비표시"]
+}

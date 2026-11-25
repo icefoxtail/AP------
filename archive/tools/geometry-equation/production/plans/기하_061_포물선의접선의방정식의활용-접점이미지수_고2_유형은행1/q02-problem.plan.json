@@ -1,0 +1,23 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"PARABOLA","vertex":["0","0"],"p":"3","axis":"X"},
+  "points":[
+    {"id":"A","kind":"POINT","x":"-3","y":"-2*sqrt(3)"},
+    {"id":"B","kind":"ON_CONIC","x":"1","branch":"POS"},
+    {"id":"H","kind":"FOOT","from":"B","onto":"d","rightAngle":true},
+    {"id":"C","kind":"LINE_LINE","lines":["d","axis"],"coordinates":true}
+  ],
+  "lines":[
+    {"id":"d","role":"DIRECTRIX","label":"x=-3"},
+    {"id":"t","tangent":true,"at":"B"},
+    {"id":"axis","y":"0","hidden":true}
+  ],
+  "segments":[{"id":"AB","from":"A","to":"B"},{"id":"AH","from":"A","to":"H"},{"id":"BH","from":"B","to":"H"},{"id":"AC","from":"A","to":"C"},{"id":"CH","from":"C","to":"H"}],
+  "caption":"준선 위의 A와 접점 B, 준선으로 내린 수선의 발 H 및 C(-3,0)",
+  "accessibilityDescription":"오른쪽으로 열린 포물선과 준선 x=-3이 있다. 제3사분면에서 준선 위에 있는 A에서 포물선 위 B까지 접선을 긋고, B에서 준선에 내린 수선의 발 H에 직각 표시가 있다. C는 준선과 x축의 교점이며 삼각형 ABH의 세 변이 표시된다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"y²=12x에서 p=3, 준선 x=-3이다. AC·CH=12와 A가 제3사분면이고 접선 기울기가 양수인 조건으로 A=(-3,-2√3), B=(1,2√3), H=(-3,2√3), C=(-3,0)임을 독립 계산한다. 답인 삼각형 넓이는 표시하지 않는다.","mappedTo":["d","A","B","H","C","AC","CH"]},
+    {"id":"c2","condition":"B의 접선 y=√3(x+1)은 A를 지나며 BH는 준선에 수직이다. 직각은 FOOT.rightAngle로 실제 표시되고 AB,AH,BH가 삼각형 변을 이룬다.","mappedTo":["t","AB","AH","BH","H"]}
+  ],
+  "newVisualInformation":["준선·접선의 정확한 상대 위치 및 ABH 삼각형을 원문 조건으로 실측 구성","직각호는 실제 FOOT 필드에 포함하고 미지 넓이는 비표시"]
+}

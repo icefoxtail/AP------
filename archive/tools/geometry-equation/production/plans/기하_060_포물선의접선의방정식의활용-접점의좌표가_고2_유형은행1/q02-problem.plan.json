@@ -1,0 +1,21 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"PARABOLA","vertex":["0","0"],"p":"3","axis":"X"},
+  "points":[
+    {"id":"P","kind":"ON_CONIC","x":"3","branch":"POS","coordinates":true},
+    {"id":"F","kind":"FOCUS","coordinates":true},
+    {"id":"A","kind":"LINE_LINE","lines":["t","axis"],"coordinates":true}
+  ],
+  "lines":[
+    {"id":"t","tangent":true,"at":"P"},
+    {"id":"axis","y":"0","hidden":true}
+  ],
+  "segments":[{"id":"PF","from":"P","to":"F"},{"id":"PA","from":"P","to":"A"},{"id":"FA","from":"F","to":"A"}],
+  "caption":"포물선 y²=12x, 접점 P(3,6), 초점 F(3,0), 접선의 x축 교점 A(-3,0)",
+  "accessibilityDescription":"오른쪽으로 열린 포물선 위의 P(3,6)에서 접선이 그어져 x축의 A(-3,0)와 만나고, 초점 F(3,0)과 P,A를 연결해 삼각형 PFA를 이룬다. 구하는 삼각형의 넓이는 표시하지 않는다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"주어진 y²=12x에서 p=3이므로 엔진 초점은 F=(3,0), 접점 P=(3,6)은 포물선 위의 제1사분면 점이다.","mappedTo":["P","F"]},
+    {"id":"c2","condition":"P에서의 접선 y=x+3을 엔진이 계산하고, 숨긴 x축과의 교점을 A=(-3,0)로 얻는다. 세 변을 실제 P,F,A에 연결하되 넓이 정답 18은 화면에 쓰지 않는다.","mappedTo":["t","axis","A","PF","PA","FA"]}
+  ],
+  "newVisualInformation":["문제에서 이미 정한 접점·초점과 접선 x절편을 실제 계산 노드로 결속","삼각형의 세 변을 실선으로 표시하고 넓이 정답은 비노출"]
+}
