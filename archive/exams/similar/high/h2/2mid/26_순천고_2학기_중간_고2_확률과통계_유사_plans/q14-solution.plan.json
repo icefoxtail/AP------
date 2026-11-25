@@ -2,11 +2,12 @@
   "capability": "lattice-path-figure-v1",
   "caption": "최단 경로에서 C의 유일한 진입 구간 (0,2)→C를 제외하면 C를 지나지 않는 경우와 동치이다.",
   "accessibilityDescription": "왼쪽 아래 A에서 오른쪽 위 B까지의 5×5 격자. C로 들어오는 유일한 도로가 끊겼고 교차점별 경로 수가 표시된다.",
+  "sourceQuote": "최단 경로에서는 오른쪽으로 5번, 위쪽으로 5번 이동한다.",
   "sourceConditions": [
     {
       "id": "q14",
-      "condition": "가로 $5$칸, 세로 $5$칸인 직사각형 도로망에서 왼쪽 아래 교점을 $A=(0,0)$, 오른쪽 위 교점을 $B=(5,5)$라 하자. $A$에서 $B$까지 최단 거리로 이동할 때 왼쪽 변의 교점 $C=(0,3)$을 지나지 않는 경로의 수는? (각 좌표는 왼쪽·아래에서부터 센 격자 칸 수이다.) [4.3점]",
-      "mappedTo": "STUDENT_PROBLEM"
+      "condition": "최단 경로는 오른쪽 5번과 위쪽 5번이며, C를 지나는 경로는 처음 세 번 위로 가는 경우뿐이다.",
+      "mappedTo": "STUDENT_SOLUTION"
     }
   ],
   "newVisualInformation": [
