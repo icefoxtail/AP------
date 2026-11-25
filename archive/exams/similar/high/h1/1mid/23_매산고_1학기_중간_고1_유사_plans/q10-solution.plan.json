@@ -1,0 +1,24 @@
+{
+  "capability":"polynomial-spike-v1",
+  "graphPlan":{
+    "family":"polynomial",
+    "applicationAxes":true,
+    "axisVariable":"x",
+    "coefficients":["0","90","-3/2"],
+    "sourceDomain":{"kind":"INTERVAL","range":[0,36],"states":["OPEN","OPEN"]},
+    "domain":[0,36],
+    "viewport":[-5,42,-100,1500],
+    "requiredPoints":[{"id":"V","x":30,"y":1350}],
+    "axisTickValues":{"x":[10,20,30],"y":[500,1000,1500]}
+  },
+  "coordinatePlacement":"PANEL",
+  "sourceQuote":"3x+2y=180, S(x)=xy=−3/2x²+90x의 최대",
+  "caption":"0<x<36에서 S(x)=−1.5x²+90x는 꼭짓점 x=30에서 최대 1350m²를 갖고 이때 전체 가로 y=45이다.",
+  "accessibilityDescription":"아래로 열린 넓이의 이차함수는 x가 30일 때 꼭짓점에서 최대 1350을 갖는다.",
+  "sourceConditions":[
+    {"id":"H110s-1","condition":"3x+2y=180에서 y=90−3x/2, S=xy=90x−3x²/2","mappedTo":"graphPlan.coefficients"},
+    {"id":"H110s-2","condition":"두 영역 너비가 양수여야 하므로 x>0,y−x>0에서 0<x<36","mappedTo":"graphPlan.sourceDomain,domain"},
+    {"id":"H110s-3","condition":"S의 꼭짓점은 (30,1350)","mappedTo":"graphPlan.requiredPoints[V],axisTickValues"}
+  ],
+  "newVisualInformation":["공용 칸막이 모형에서 얻은 넓이 포물선과 최대 지점을 연계한다."]
+}

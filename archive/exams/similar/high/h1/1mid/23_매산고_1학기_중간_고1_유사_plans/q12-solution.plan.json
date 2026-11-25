@@ -1,0 +1,21 @@
+{
+  "capability":"polynomial-spike-v1",
+  "graphPlan":{
+    "family":"polynomial",
+    "coefficients":["5","-4","1"],
+    "sourceDomain":{"kind":"INTERVAL","range":[1,5],"states":["CLOSED","CLOSED"]},
+    "domain":[1,5],
+    "viewport":[0,6,0,12],
+    "requiredPoints":[{"id":"L","x":1,"y":2},{"id":"V","x":2,"y":1},{"id":"R","x":5,"y":10}],
+    "axisTickValues":{"x":["1","2","5"],"y":["1","2","10"]}
+  },
+  "sourceQuote":"t=(x−1)²+1, 1≤t≤5, y=(t−2)²+1에서 M+m",
+  "caption":"치환한 함수 y=t²−4t+5는 구간 [1,5]의 꼭짓점 (2,1)에서 최소 1, 오른쪽 끝 (5,10)에서 최대 10이며 합은 11이다.",
+  "accessibilityDescription":"가로축은 원래 x가 아닌 치환변수 t이며 닫힌 구간 1부터 5까지 포물선이 꼭짓점 2에서 최솟값 1, 오른쪽 끝 5에서 최댓값 10을 갖는다.",
+  "sourceConditions":[
+    {"id":"H112-1","condition":"치환변수 t=(x−1)²+1은 x∈[−1,3]에서 정확히 [1,5]를 지난다","mappedTo":"graphPlan.sourceDomain,domain"},
+    {"id":"H112-2","condition":"y=(t−2)²+1=t²−4t+5","mappedTo":"graphPlan.coefficients"},
+    {"id":"H112-3","condition":"y(1)=2,y(2)=1,y(5)=10, 수정된 답 M+m=11","mappedTo":"graphPlan.requiredPoints,axisTickValues"}
+  ],
+  "newVisualInformation":["치환변수 t의 정의역과 꼭짓점·끝점이 극값을 결정하는 구조를 보여 준다."]
+}
