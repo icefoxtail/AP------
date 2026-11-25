@@ -1,0 +1,28 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [{ "coefficients": ["5", "4", "-1"] }],
+    "breakpoints": [],
+    "sourceDomain": { "kind": "ALL_REALS" },
+    "domain": [-2, 4],
+    "viewport": [-2, 4, -2, 11],
+    "requiredPoints": [
+      { "id": "L", "x": -1, "y": 0 },
+      { "id": "R", "x": 1, "y": 8 },
+      { "id": "V", "x": 2, "y": 9 }
+    ],
+    "overlays": { "lines": [{ "id": "sym", "x": "2", "style": "DASHED" }] },
+    "axisTickValues": { "x": [-1, 1, 2], "y": [8, 9] }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "정의역 비교 [-1,1]에서 오른쪽 끝 (1,8)이 최대, 왼쪽 끝 (-1,0)이 최소이며 축 x=2는 구간 밖에 있다.",
+  "accessibilityDescription": "아래로 열린 포물선 y=-x제곱+4x+5와 점선 대칭축 x=2가 나타난다. 원래 비교구간의 끝점 (-1,0)과 (1,8), 전체 포물선의 꼭짓점 (2,9)가 찍힌다.",
+  "sourceQuote": "-1≤x≤1에서 y=-x²+4x+5의 최댓값과 최솟값의 합",
+  "sourceConditions": [
+    { "id": "c1", "condition": "이차함수 y=-x²+4x+5=-(x-2)²+9", "mappedTo": ["graphPlan.pieces", "graphPlan.requiredPoints"] },
+    { "id": "c2", "condition": "축 x=2는 비교 구간 [-1,1]의 오른쪽에 있다", "mappedTo": ["graphPlan.overlays.lines", "graphPlan.requiredPoints"] },
+    { "id": "c3", "condition": "끝점 값 y(-1)=0, y(1)=8", "mappedTo": ["graphPlan.requiredPoints", "graphPlan.axisTickValues"] }
+  ],
+  "newVisualInformation": ["실제 x=2 대칭축과 범위 양 끝점의 상대 위치를 좌표와 점선으로 보인다", "포물선 전체는 풀이상 축의 위치를 설명하기 위한 것이며 최댓값 비교는 [-1,1]의 두 끝점에서만 한다"]
+}

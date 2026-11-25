@@ -1,0 +1,37 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "t",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "t 범위",
+        "pieces": [{ "lo": { "value": "3", "state": "CLOSED" }, "hi": { "value": "7", "state": "CLOSED" } }]
+      },
+      {
+        "kind": "POINTS",
+        "label": "a 후보",
+        "band": false,
+        "points": [
+          { "id": "A", "value": "1", "hideName": true },
+          { "id": "L", "value": "3", "hideName": true },
+          { "id": "R", "value": "7", "hideName": true },
+          { "id": "B", "value": "9", "hideName": true }
+        ],
+        "spans": [
+          { "from": "A", "to": "L", "label": "2", "style": "BRACE", "side": "ABOVE" },
+          { "from": "R", "to": "B", "label": "2", "style": "BRACE", "side": "ABOVE" }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": { "text": "치환값 t의 범위와 a의 두 후보" },
+  "caption": "t=(x-2)²+3의 범위는 [3,7]이다. (t-a)²+1의 최솟값이 5이려면 a가 구간의 왼쪽 또는 오른쪽에서 거리 2만큼 떨어진 1 또는 9다.",
+  "accessibilityDescription": "수직선 위의 닫힌 구간 3부터 7이 치환변수 t의 범위로 표시된다. 왼쪽 1과 3 사이, 오른쪽 7과 9 사이에는 길이가 각각 2인 괄호가 그려진다.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "0≤x≤3에서 t=(x-2)²+3이므로 3≤t≤7", "mappedTo": ["numberLine.rows[0].pieces"] },
+    { "id": "c2", "condition": "y=(t-a)²+1의 최솟값 5는 t구간과 a 사이 최단 거리 2를 뜻함", "mappedTo": ["numberLine.rows[1].points", "numberLine.rows[1].spans"] },
+    { "id": "c3", "condition": "a가 왼쪽이면 a=1, 오른쪽이면 a=9", "mappedTo": ["numberLine.rows[1].points"] }
+  ],
+  "newVisualInformation": ["최솟값 조건을 구간 양쪽의 같은 거리 2로 해석하는 구조를 표시한다", "점 이름을 새로 붙이지 않고 수치와 괄호만 보이므로 발문의 변수 a를 임의 점 이름으로 혼동시키지 않는다"]
+}

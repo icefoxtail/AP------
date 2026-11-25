@@ -1,0 +1,366 @@
+{
+  "schema": "visual-two-axis-review-v1",
+  "batch": "suncheon-girls-h1-1mid-similar-20261126-q01-q22",
+  "sourceFile": "archive/exams/similar/high/h1/1mid/25_순천여고_1학기_중간_고1_유사.js",
+  "sourceGitBlobSha": "fdfa6fd043c1babbb4ef1d7cafaba0552afbc42a",
+  "sourceSha256": "60855fc8c6b412822631a352d1b429c06c678f3c43c2128354879fd9fdc7dff",
+  "questionRange": "q01-q22",
+  "questionCount": 22,
+  "axisCount": {
+    "problem": 22,
+    "solution": 22
+  },
+  "renderPolicy": "PLAN_ONLY: official engine SVG/PNG, student and A4 display and JS binding NOT_RUN",
+  "visualPolicy": "Problem plan does not reveal the AP/PB roots or their equation, nor the other problem answers; no default area filling",
+  "parityMethod": "Independently read all 22 JS content/solution/solutionImageAlt fields and compare with actual graphPlan coefficients, requiredPoints, tick/line geometry, numberLine exact endpoints/point values/spans, and construction mathPlan points/circle/segments/dimension labels. Verify circle length equations numerically and algebraically; caption alone is not a drawn feature. Full plan-lint is a plan validator, not a render, so render QA status remains NOT_RUN.",
+  "rows": [
+    {
+      "qid": "q01",
+      "problem": {
+        "decision": "EXEMPT",
+        "reason": "항등식 3x+a=bx+5의 계수 비교 문제로 도형·그래프 정보가 없다"
+      },
+      "solution": {
+        "decision": "EXEMPT",
+        "reason": "x항과 상수항을 대응하여 a=5,b=3을 구하는 두 단계 대수 풀이"
+      }
+    },
+    {
+      "qid": "q02",
+      "problem": {
+        "decision": "EXEMPT",
+        "reason": "다항식 (3x+2)^3의 계수 계산만 묻고 위치·비율 관계가 없다"
+      },
+      "solution": {
+        "decision": "EXEMPT",
+        "reason": "이항정리 또는 전개식을 이용한 계수 산출; 새 그림은 계산에 기여하지 않는다"
+      }
+    },
+    {
+      "qid": "q03",
+      "problem": {
+        "decision": "EXEMPT",
+        "reason": "다항식이 (x-1)(x+2)로 나누어떨어진다는 인수조건이 식으로 완전하다"
+      },
+      "solution": {
+        "decision": "EXEMPT",
+        "reason": "P(1)=P(-2)=0의 연립일차식으로 미지 계수를 정하는 대수 풀이"
+      }
+    },
+    {
+      "qid": "q04",
+      "problem": {
+        "decision": "EXEMPT",
+        "reason": "x+1로 나눈 나머지가 10이라는 수치 대입 조건"
+      },
+      "solution": {
+        "decision": "EXEMPT",
+        "reason": "나머지정리 P(-1)=10 한 번으로 k를 계산하므로 시각화 불필요"
+      }
+    },
+    {
+      "qid": "q05",
+      "problem": {
+        "decision": "EXEMPT",
+        "reason": "범위 [-1,1]와 함수식이 문제에 모두 있으며 최고·최저 위치를 미리 찍으면 값을 노출한다"
+      },
+      "solution": {
+        "decision": "BENEFICIAL",
+        "reason": "기존 해설 그림의 포물선 하향 개형, x=2 축과 [-1,1] 비교구간 및 양 끝점 값 0·8을 정확한 좌표로 드러낸다",
+        "plan": "q05-solution.plan.json"
+      }
+    },
+    {
+      "qid": "q06",
+      "problem": {
+        "decision": "EXEMPT",
+        "reason": "다항식 나눗셈의 몫·나머지에 관한 수식 조건만 있다"
+      },
+      "solution": {
+        "decision": "EXEMPT",
+        "reason": "다항식 장제법 또는 계수비교 계산으로 완결되고 공간 도형 관계가 없다"
+      }
+    },
+    {
+      "qid": "q07",
+      "problem": {
+        "decision": "EXEMPT",
+        "reason": "나머지정리와 인수정리의 대입 조건을 물으며 그래프를 읽지 않는다"
+      },
+      "solution": {
+        "decision": "EXEMPT",
+        "reason": "특정 인수의 근을 대입하는 나머지 계산으로 충분하다"
+      }
+    },
+    {
+      "qid": "q08",
+      "problem": {
+        "decision": "EXEMPT",
+        "reason": "x-y=2와 x²+y²=10이 주어지고 대칭식의 값을 구하는 문제"
+      },
+      "solution": {
+        "decision": "EXEMPT",
+        "reason": "xy와 x+y 또는 세제곱 항등식으로 환원하는 대수 연산"
+      }
+    },
+    {
+      "qid": "q09",
+      "problem": {
+        "decision": "EXEMPT",
+        "reason": "2×2 행렬의 정의와 성분별 명제의 참거짓 판단이 식으로 완결됨"
+      },
+      "solution": {
+        "decision": "EXEMPT",
+        "reason": "행렬 곱과 항등관계를 성분 대조해 검증하는 계산이므로 도형 불필요"
+      }
+    },
+    {
+      "qid": "q10",
+      "problem": {
+        "decision": "EXEMPT",
+        "reason": "이차방정식의 실근 조건을 매개변수 k에 대하여 묻는 문항"
+      },
+      "solution": {
+        "decision": "EXEMPT",
+        "reason": "판별식 부호의 임계조건 계산으로 끝나며 임의 k 그래프는 범위를 오도한다"
+      }
+    },
+    {
+      "qid": "q11",
+      "problem": {
+        "decision": "EXEMPT",
+        "reason": "복소수 단위 i의 거듭제곱 및 분수식 단순화"
+      },
+      "solution": {
+        "decision": "EXEMPT",
+        "reason": "i²=-1의 주기적 환원과 유리화 계산이 결정적"
+      }
+    },
+    {
+      "qid": "q12",
+      "problem": {
+        "decision": "EXEMPT",
+        "reason": "켤레복소수의 대수적 성질을 사용하는 문제"
+      },
+      "solution": {
+        "decision": "EXEMPT",
+        "reason": "켤레연산과 실수·허수 계수 비교로 해결하며 복소평면 배치가 요구되지 않는다"
+      }
+    },
+    {
+      "qid": "q13",
+      "problem": {
+        "decision": "EXEMPT",
+        "reason": "다항식의 전개에서 특정 차수의 계수 계산"
+      },
+      "solution": {
+        "decision": "EXEMPT",
+        "reason": "항별 차수 조합과 곱셈으로 계수를 구하므로 시각 요소 없음"
+      }
+    },
+    {
+      "qid": "q14",
+      "problem": {
+        "decision": "EXEMPT",
+        "reason": "두 근을 변환한 이차방정식 조건이 합·곱으로 직접 주어진다"
+      },
+      "solution": {
+        "decision": "EXEMPT",
+        "reason": "근과 계수의 관계를 이용해 새 이차식을 계산하는 대수 풀이"
+      }
+    },
+    {
+      "qid": "q15",
+      "problem": {
+        "decision": "EXEMPT",
+        "reason": "x²−4x−2=0을 만족하는 수의 식값을 구하는 문항"
+      },
+      "solution": {
+        "decision": "EXEMPT",
+        "reason": "주어진 등식을 이용한 고차식 차수 감소와 직접 대입 계산"
+      }
+    },
+    {
+      "qid": "q16",
+      "problem": {
+        "decision": "EXEMPT",
+        "reason": "세 모서리 x−2,x+1,x+3이 문자식으로 주어져 표면적 식에 필요한 치수가 텍스트에 전부 있다; 임의 x 입체 모형은 실제 비를 특정하지 못함"
+      },
+      "solution": {
+        "decision": "EXEMPT",
+        "reason": "표면적 S(x)=6x²+8x−10과 x≥2에서의 최소를 수식으로 계산; 입체도형 그림은 추가 제약을 제공하지 않음"
+      }
+    },
+    {
+      "qid": "q17",
+      "problem": {
+        "decision": "EXEMPT",
+        "reason": "소수·행렬의 성분 조건으로 구성된 문제이며 도형 관계는 없다"
+      },
+      "solution": {
+        "decision": "EXEMPT",
+        "reason": "조건을 충족하는 소수/성분을 대수식으로 구하고 행렬 연산으로 마무리한다"
+      }
+    },
+    {
+      "qid": "q18",
+      "problem": {
+        "decision": "EXEMPT",
+        "reason": "두 최고차항 계수 1인 이차식의 연속 자연수 근 관계"
+      },
+      "solution": {
+        "decision": "EXEMPT",
+        "reason": "연속된 정수근 및 계수항 조건을 대응하는 정수론·대수 계산"
+      }
+    },
+    {
+      "qid": "q19",
+      "problem": {
+        "decision": "EXEMPT",
+        "reason": "k별 이차식의 중근과 다항식 인수 조건을 묻는다"
+      },
+      "solution": {
+        "decision": "EXEMPT",
+        "reason": "판별식 0과 인수 조건의 결합 계산이며 해설 내용 자체가 도형을 요구하지 않음"
+      }
+    },
+    {
+      "qid": "q20",
+      "problem": {
+        "decision": "BENEFICIAL",
+        "reason": "반지름 13인 원 O의 지름 AB와 현 CD가 P에서 교차하며 CP=10,DP=8임을 답 AP,PB·방정식 비노출 상태로 시각화",
+        "plan": "q20-problem.plan.json"
+      },
+      "solution": {
+        "decision": "BENEFICIAL",
+        "reason": "AB=26이 된 지름과 CP·PD=80인 교차하는 현의 곱·합 관계를 정확한 기하 길이로 보인다",
+        "plan": "q20-solution.plan.json"
+      }
+    },
+    {
+      "qid": "q21",
+      "problem": {
+        "decision": "EXEMPT",
+        "reason": "0≤x≤3과 미정 a의 사차식이 주어졌으며 후보 1,9를 문제 단계에서 나타내면 정답 누설"
+      },
+      "solution": {
+        "decision": "BENEFICIAL",
+        "reason": "t=(x−2)²+3의 닫힌 범위 [3,7]와 좌우 거리 2에 있는 a=1,9를 수직선의 두 괄호로 표시",
+        "plan": "q21-solution.plan.json"
+      }
+    },
+    {
+      "qid": "q22",
+      "problem": {
+        "decision": "EXEMPT",
+        "reason": "a와 k에 따라 달라지는 포물선·직선의 교점을 미리 그리면 경우별 정수조건 결과를 암시한다"
+      },
+      "solution": {
+        "decision": "EXEMPT",
+        "reason": "a=1,2,3에 대하여 판별식과 비음이 아닌 정수 k의 경우 수를 직접 센다; 단순한 세 사례 비교"
+      }
+    }
+  ],
+  "planResults": [
+    {
+      "qid": "q05",
+      "axis": "solution",
+      "capability": "piecewise-polynomial-spike-v1",
+      "plan": "q05-solution.plan.json",
+      "drawnFields": [
+        "pieces coefficients [5,4,-1] => y=−x²+4x+5; downward opening parabola",
+        "sourceDomain ALL_REALS; task comparison domain x∈[-1,1] stated in caption",
+        "requiredPoints L=(−1,0), R=(1,8), V=(2,9); exact numeric evaluation",
+        "overlays.lines sym x=2 DASHED; x ticks −1,1,2 expose axis distances 3 and 1",
+        "no angle/right-angle/ratio/area-fill fields"
+      ],
+      "assumption": "Source defines a quadratic with the x-range restricted for optimization. The graph shows whole-parabola context to locate the axis outside that range.",
+      "planLintShallow": "PASS",
+      "planLintFull": "PASS",
+      "sourceVsPlan": "REVIEWED",
+      "drawnFeatureParity": "PASS",
+      "render": "NOT_RUN",
+      "png": "NOT_RUN",
+      "student": "NOT_RUN",
+      "a4": "NOT_RUN"
+    },
+    {
+      "qid": "q20",
+      "axis": "problem",
+      "capability": "construction-spike-v1",
+      "plan": "q20-problem.plan.json",
+      "drawnFields": [
+        "PLANE_FIGURE_v1, circle cir center O=(0,0) radius13; A=(−13,0),B=(13,0)",
+        "C=(79/√89,20√22/√89),D=(97/√89,−16√22/√89) normalized on circle; P=AB∩CD=(√89,0)",
+        "displaySegments A−P,P−B,C−P,P−D; all exact intersections and no duplicate strokes",
+        "planeMarks.dimensions A−O 13, C−P 10, P−D 8, all GIVEN",
+        "no AP/PB numerals, no diameter 26 numeral, no quadratic answer, no angles/rightAngles/regions/fill"
+      ],
+      "assumption": "Geometric source gives lengths and point incidence but no coordinates: exact radical coordinates are a source-equivalent representative embedding, not additional given facts.",
+      "planLintShallow": "PASS",
+      "planLintFull": "PASS",
+      "sourceVsPlan": "REVIEWED",
+      "drawnFeatureParity": "PASS",
+      "render": "NOT_RUN",
+      "png": "NOT_RUN",
+      "student": "NOT_RUN",
+      "a4": "NOT_RUN"
+    },
+    {
+      "qid": "q20",
+      "axis": "solution",
+      "capability": "construction-spike-v1",
+      "plan": "q20-solution.plan.json",
+      "drawnFields": [
+        "identical circle and exact points/segments as q20 problem",
+        "P=(√89,0), CP=10, PD=8, |OC|=|OD|=13 independently checked",
+        "planeMarks.dimensions AB=26 (derived), CP=10, PD=8",
+        "AP=13+√89, BP=13−√89, AP+BP=26, AP×BP=80 checked but AP/PB remain unlabeled",
+        "no angles/rightAngles/regions/fill"
+      ],
+      "assumption": "Only solution axis reveals derived diameter 26; the problem axis does not show this numeral.",
+      "planLintShallow": "PASS",
+      "planLintFull": "PASS",
+      "sourceVsPlan": "REVIEWED",
+      "drawnFeatureParity": "PASS",
+      "render": "NOT_RUN",
+      "png": "NOT_RUN",
+      "student": "NOT_RUN",
+      "a4": "NOT_RUN"
+    },
+    {
+      "qid": "q21",
+      "axis": "solution",
+      "capability": "number-line-figure-v1",
+      "plan": "q21-solution.plan.json",
+      "drawnFields": [
+        "numberLine SET [3,7] CLOSED/CLOSED from t=(x−2)²+3, 0≤x≤3",
+        "POINTS positions t=1,3,7,9, no invented visible point names",
+        "spans BRACE t=1 to3 label 2; t=7 to9 label 2",
+        "left and right candidate a=1,9 only in solution; no arbitrary curve/angles/area fills"
+      ],
+      "assumption": "The source solution partitions a<3, 3≤a≤7 and a>7; the central case is excluded by the nonzero minimum 5.",
+      "planLintShallow": "PASS",
+      "planLintFull": "PASS",
+      "sourceVsPlan": "REVIEWED",
+      "drawnFeatureParity": "PASS",
+      "render": "NOT_RUN",
+      "png": "NOT_RUN",
+      "student": "NOT_RUN",
+      "a4": "NOT_RUN"
+    }
+  ],
+  "summary": {
+    "questions": 22,
+    "axisJudgments": 44,
+    "beneficialAxes": 4,
+    "requiredAxes": 0,
+    "exemptAxes": 40,
+    "plans": 4,
+    "shallowPass": 4,
+    "fullPass": 4,
+    "drawnFeatureParityPass": 4,
+    "engineCapabilityPending": 0,
+    "renderNotRun": 4
+  }
+}
