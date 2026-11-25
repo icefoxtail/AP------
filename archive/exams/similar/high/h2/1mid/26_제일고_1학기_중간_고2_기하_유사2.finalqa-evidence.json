@@ -1,0 +1,612 @@
+{
+  "schemaVersion": "gpt-finalqa-evidence-v1",
+  "examUid": "26_제일고_1학기_중간_고2_기하_유사2",
+  "sourcePath": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_기하_유사2.js",
+  "blindPackDigest": "abbf2e3dece80e79477285cedfb1f6d536ef1e49c393741c4c588abd98570b42",
+  "reviewer": {
+    "id": "GPT-independent-finalqa-20261125",
+    "blindFirstPass": "CONFIRMED",
+    "independentEvidence": "생성자 자가검수와 분리된 세션에서 정답·해설을 가린 발문·보기만으로 23문항 전부 재풀이를 먼저 기록하고 정답·해설과 이후 대조하였다. 정식 수학 진실성은 별도 수작업 검토 결과이며 하네스가 증명하는 것은 증거 무결성이다.",
+    "blindArtifactRef": "/workspace/scratch/3847fbe145fa/jeil-qa-evidence/26_제일고_1학기_중간_고2_기하_유사2.blind-reasoning.json"
+  },
+  "questions": [
+    {
+      "qid": 1,
+      "sourceFingerprint": "eb8aa306e410c7a5f905d2dfec3c8301552228e1d2f41a784f57cdb889faae8c",
+      "blindAnswer": "⑤",
+      "blindReasoning": "초점 (0,-3)이므로 p=-3, x²=4py=-12y가 유일하게 맞는다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "1번 problem 축: 발문에 이미 제공된 좌표·식과 조건만으로 개별 선분·곡선을 특정할 수 있고, 별도 SVG 없이도 객관식의 풀이 의미를 유지한다. 포물선의 꼭짓점·초점·준선 위치와 음의 y축 개구 방향이 원문 초점 (0,-3)에 정확히 대응한다."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "02f3f188916470c901c240c644803b4b3990908bb5a8832ae6b7897cfe257f25",
+          "reasoning": "1번 solution 축: 포물선의 꼭짓점·초점·준선 위치와 음의 y축 개구 방향이 원문 초점 (0,-3)에 정확히 대응한다."
+        }
+      }
+    },
+    {
+      "qid": 2,
+      "sourceFingerprint": "3a1dbcd6b55ae748e2c425cb78c6634f57f97aa3170a0e6eb71e96545624d67f",
+      "blindAnswer": "③",
+      "blindReasoning": "초점에서 같은 점의 준선까지 거리 AF=AM, BF=BN, AB=AM+BN=20, 3:2 분할은 AM=12이다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "PASS",
+          "planDigest": "2dc6934a818d0003efba8fc3057810e0d8a2f4bb9110c4bbdc9249d5519293b9",
+          "reasoning": "2번 problem 축: 포물선의 초점 현 AB, 준선 수선 AM·BN, 초점 분할 3:2를 같은 좌표계로 재현하고 정답 길이 숫자를 문제 축에 쓰지 않는다."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "1edc741dd3fae16def4b35bf4ad42a2b5b27d105ce4bed070688e330182cc20e",
+          "reasoning": "2번 solution 축: 포물선의 초점 현 AB, 준선 수선 AM·BN, 초점 분할 3:2를 같은 좌표계로 재현하고 정답 길이 숫자를 문제 축에 쓰지 않는다."
+        }
+      }
+    },
+    {
+      "qid": 3,
+      "sourceFingerprint": "b2c14a988fb4c4b46c982c5dd8c65579243f2e9c5905502c83ca3f99dfbbc65a",
+      "blindAnswer": "②",
+      "blindReasoning": "타원 장반축 a=5, 초점거리 c=3이므로 b²=a²-c²=16이다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "3번 problem 축: 발문에 이미 제공된 좌표·식과 조건만으로 개별 선분·곡선을 특정할 수 있고, 별도 SVG 없이도 객관식의 풀이 의미를 유지한다. 장반축 5, 초점거리 3, 단반축 4를 가진 수평 타원과 축 이름이 일치한다."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "6a6183af620482a55c1c22d2083366f1e3c6c9c5214701b3ff4efef93ed6dd61",
+          "reasoning": "3번 solution 축: 장반축 5, 초점거리 3, 단반축 4를 가진 수평 타원과 축 이름이 일치한다."
+        }
+      }
+    },
+    {
+      "qid": 4,
+      "sourceFingerprint": "f1e7fa9faad82be55159b76f555b52128e0f465794fad845c2681289ab97ad26",
+      "blindAnswer": "③",
+      "blindReasoning": "접점 (3,16/5)의 타원 접선은 3x/25+y/5=1이므로 y절편 5이다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "4번 problem 축: 발문에 이미 제공된 좌표·식과 조건만으로 개별 선분·곡선을 특정할 수 있고, 별도 SVG 없이도 객관식의 풀이 의미를 유지한다. 타원 접점 (3,16/5)의 접선 및 y절편 5가 실제 해설 접선식과 맞는다."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "5dedbe2e0b3734fc1ed749ce3ffaf3138129e4a2a3b34e1fc72c6d69f970df29",
+          "reasoning": "4번 solution 축: 타원 접점 (3,16/5)의 접선 및 y절편 5가 실제 해설 접선식과 맞는다."
+        }
+      }
+    },
+    {
+      "qid": 5,
+      "sourceFingerprint": "125422a644b8126fe4001c799ac8d0e668e3ac43b487b257034faeb8d8dc7a81",
+      "blindAnswer": "①",
+      "blindReasoning": "평행이동 쌍곡선의 a=3,b=4이므로 점근선 기울기는 ±4/3, ±3/4 주장은 틀리다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "5번 problem 축: 발문에 이미 제공된 좌표·식과 조건만으로 개별 선분·곡선을 특정할 수 있고, 별도 SVG 없이도 객관식의 풀이 의미를 유지한다. 중심 (-2,3), a=3,b=4인 평행이동 쌍곡선의 점근선 경사가 4/3으로 구성된다."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "4943eed03ca99058efd981a508af2b642a9606f1416eb8d494a8b4db2614a525",
+          "reasoning": "5번 solution 축: 중심 (-2,3), a=3,b=4인 평행이동 쌍곡선의 점근선 경사가 4/3으로 구성된다."
+        }
+      }
+    },
+    {
+      "qid": 6,
+      "sourceFingerprint": "a4b4ab568d632a8796757447b357efc288e3bfdd59b4d57b01c7b1af937e6cec",
+      "blindAnswer": "③",
+      "blindReasoning": "일직선 위에 있지 않은 세 점은 평면을 정확히 하나 결정하고, 나머지는 무한히 많다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "6번 problem 축: 발문에 이미 제공된 좌표·식과 조건만으로 개별 선분·곡선을 특정할 수 있고, 별도 SVG 없이도 객관식의 풀이 의미를 유지한다. 하나의 평면을 결정하는 세 점의 비공선성은 언어적 조건만으로 판정할 수 있다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "6번 solution 축: 해설의 식과 좌표 전개만으로 계산을 검증할 수 있어 별도 SVG 없이도 객관식의 풀이 의미를 유지한다. 하나의 평면을 결정하는 세 점의 비공선성은 언어적 조건만으로 판정할 수 있다."
+        }
+      }
+    },
+    {
+      "qid": 7,
+      "sourceFingerprint": "2f4917547609132fd26562d51a38aa26344813f65d6cfb73f9521b43914f9e26",
+      "blindAnswer": "②",
+      "blindReasoning": "쌍곡선 c=5,a=4에서 b=3, 양의 점근선의 기울기는 b/a=3/4이다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "7번 problem 축: 발문에 이미 제공된 좌표·식과 조건만으로 개별 선분·곡선을 특정할 수 있고, 별도 SVG 없이도 객관식의 풀이 의미를 유지한다. 쌍곡선 a=4,b=3, 초점거리 5와 점근선 양의 기울기 3/4가 정확하다."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "a780af6c4a3b170167db1cd724e92f21252d7316d6cf3f85d42666bdd35221f3",
+          "reasoning": "7번 solution 축: 쌍곡선 a=4,b=3, 초점거리 5와 점근선 양의 기울기 3/4가 정확하다."
+        }
+      }
+    },
+    {
+      "qid": 8,
+      "sourceFingerprint": "099f9d16428c780d03d82b4c88954efd8dca97e53c2d84ad9a8fb90d9e4b3636",
+      "blindAnswer": "①",
+      "blindReasoning": "a=5,b=4인 타원에서 수직 현의 길이 8√(1-t²/25)=24/5를 풀면 t=4이다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "8번 problem 축: 발문에 이미 제공된 좌표·식과 조건만으로 개별 선분·곡선을 특정할 수 있고, 별도 SVG 없이도 객관식의 풀이 의미를 유지한다. 타원의 반축 5,4와 수직 현 x=4가 해설의 현 길이 24/5에 부합한다."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "ef17b5b837443a02ed2febb3d75ac4c7efb7b4b31d208a7dcea723f09c6dff4c",
+          "reasoning": "8번 solution 축: 타원의 반축 5,4와 수직 현 x=4가 해설의 현 길이 24/5에 부합한다."
+        }
+      }
+    },
+    {
+      "qid": 9,
+      "sourceFingerprint": "a734389434cafbcbb2c47f6693cf4be4fb24003b56ee92c4ecc984b03805de48",
+      "blindAnswer": "①",
+      "blindReasoning": "포물선의 접선 by=4(x+a)가 타원 중심 (-2,0)을 지나므로 a=2, b=4, b-a=2이다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "9번 problem 축: 발문에 이미 제공된 좌표·식과 조건만으로 개별 선분·곡선을 특정할 수 있고, 별도 SVG 없이도 객관식의 풀이 의미를 유지한다. 포물선 y²=8x의 접선이 타원 중심 (-2,0)을 통과하는 조건을 표현한다."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "1cbc53c0134d07bb32aa8599aaec96957607f97c3a0cef722acd360afc3f0183",
+          "reasoning": "9번 solution 축: 포물선 y²=8x의 접선이 타원 중심 (-2,0)을 통과하는 조건을 표현한다."
+        }
+      }
+    },
+    {
+      "qid": 10,
+      "sourceFingerprint": "58f76e1bb1d7e7afe1246dc416f335e7519d8348e41a91b3ff1ee704605d9139",
+      "blindAnswer": "⑤",
+      "blindReasoning": "AB=(0,-2,-2), CD=(0,-2,2) 내적 0이라 sinθ1=1; EF=(-1,1,0), GH=(-1,0,-1) 코사인 1/2, 합 3/2이다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "10번 problem 축: 발문에 이미 제공된 좌표·식과 조건만으로 개별 선분·곡선을 특정할 수 있고, 별도 SVG 없이도 객관식의 풀이 의미를 유지한다. 두 다면체의 꼭짓점 좌표 및 벡터 내적 계산이 발문에 모두 수치로 주어져 별도 도형 없이 판단 가능하다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "10번 solution 축: 해설의 식과 좌표 전개만으로 계산을 검증할 수 있어 별도 SVG 없이도 객관식의 풀이 의미를 유지한다. 두 다면체의 꼭짓점 좌표 및 벡터 내적 계산이 발문에 모두 수치로 주어져 별도 도형 없이 판단 가능하다."
+        }
+      }
+    },
+    {
+      "qid": 11,
+      "sourceFingerprint": "fb4959ff86e787588dc49642b82fc656e272c02b0fc69ba1c935f97e7959bc27",
+      "blindAnswer": "③",
+      "blindReasoning": "거리 제곱 차는 (x-c)²-(x+c)²=-4cx, 쌍곡선 b²=c²-a², 표준형 첫 분모 a²이다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "11번 problem 축: 발문에 이미 제공된 좌표·식과 조건만으로 개별 선분·곡선을 특정할 수 있고, 별도 SVG 없이도 객관식의 풀이 의미를 유지한다. 초점거리 제곱 차와 b²=c²-a²의 기호 전개가 문제와 해설에 완전히 명시되어 있다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "11번 solution 축: 해설의 식과 좌표 전개만으로 계산을 검증할 수 있어 별도 SVG 없이도 객관식의 풀이 의미를 유지한다. 초점거리 제곱 차와 b²=c²-a²의 기호 전개가 문제와 해설에 완전히 명시되어 있다."
+        }
+      }
+    },
+    {
+      "qid": 12,
+      "sourceFingerprint": "6f8296465a4e1084d37b92943bb5c0a6671dd213abe179bf59023e2e589775ce",
+      "blindAnswer": "②",
+      "blindReasoning": "지름 FF’=20인 원에서 ∠FPF’=90°, PF:PF’=3:4라 두 길이는 12,16, 주축 2a=4이다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "PASS",
+          "planDigest": "36870462453a24b4bc1806f4bd1137b225e5cdb63256140d17475dc5c25dfe52",
+          "reasoning": "12번 problem 축: 지름 20 원의 초점 F,F’와 제1사분면 교점 P의 직각 관계 및 3:4:5 길이 대응이 일관적이다."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "fcd10cdbcd6905ed31e6ed15f165de7a8199f5522e25cd173bd55c1d1bc1d06c",
+          "reasoning": "12번 solution 축: 지름 20 원의 초점 F,F’와 제1사분면 교점 P의 직각 관계 및 3:4:5 길이 대응이 일관적이다."
+        }
+      }
+    },
+    {
+      "qid": 13,
+      "sourceFingerprint": "39145fdf160e607504d36db34376882abb5ef57e4a7ebbcc0577f74376b41e59",
+      "blindAnswer": "①",
+      "blindReasoning": "쌍곡선 초점거리 c²=9+16=25와 타원 c²=36-k가 같으므로 k=11이다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "13번 problem 축: 발문에 이미 제공된 좌표·식과 조건만으로 개별 선분·곡선을 특정할 수 있고, 별도 SVG 없이도 객관식의 풀이 의미를 유지한다. 같은 중심 (2,-1)과 초점거리 5를 가진 타원·쌍곡선의 공초점 구성을 표시한다."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "916390bbad6318993fa8643f821b607870a48241854f42a781cda8b52464cbca",
+          "reasoning": "13번 solution 축: 같은 중심 (2,-1)과 초점거리 5를 가진 타원·쌍곡선의 공초점 구성을 표시한다."
+        }
+      }
+    },
+    {
+      "qid": 14,
+      "sourceFingerprint": "224f1bf787370b9dfbdcb48b50e3ccaebc01eb5f3145e85fcb4ac37891388097",
+      "blindAnswer": "④",
+      "blindReasoning": "타원 x²/9+y²/4=1에서 x+2y의 최댓값은 √(9+4·4)=5이고, 평행선 거리 (k-5)/√5=1/√5라 k=6이다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "14번 problem 축: 발문에 이미 제공된 좌표·식과 조건만으로 개별 선분·곡선을 특정할 수 있고, 별도 SVG 없이도 객관식의 풀이 의미를 유지한다. 타원에서 x+2y 최대값 5인 접선과 평행 직선 x+2y=6 사이의 최단거리를 표시한다."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "773635b0a23ee8a4270daf1bdc315abb3123e5c09d633897171e731751c17f4c",
+          "reasoning": "14번 solution 축: 타원에서 x+2y 최대값 5인 접선과 평행 직선 x+2y=6 사이의 최단거리를 표시한다."
+        }
+      }
+    },
+    {
+      "qid": 15,
+      "sourceFingerprint": "d1d93f67a0a60d5c95d78780d272a9dbfd196dc16c0a36d918349bdc5ea413ce",
+      "blindAnswer": "②",
+      "blindReasoning": "쌍곡선 접선 y=4x-15의 원점 거리 15/√17, 수선 위 쌍곡선 교점 Q=(-4,1)의 길이 √17, 곱 15이다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "PASS",
+          "planDigest": "cadb3167c483a190a30eec769bc173f5cd283b9cd2e53abdd30a63571c56dd81",
+          "reasoning": "15번 problem 축: 쌍곡선 x²-y²=15의 접선 y=4x-15, 원점 수선과 Q(-4,1)이 대수해와 일치한다."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "c3390e4f4ac7a212711bb314d3e94c9b84aacfe75b5316be049e6330c7f490f2",
+          "reasoning": "15번 solution 축: 쌍곡선 x²-y²=15의 접선 y=4x-15, 원점 수선과 Q(-4,1)이 대수해와 일치한다."
+        }
+      }
+    },
+    {
+      "qid": 16,
+      "sourceFingerprint": "7c8423b90e42dee86ed5cb603c46c80c8f24b7b0884d5001e4ca1d78d011badf",
+      "blindAnswer": "④",
+      "blindReasoning": "포물선 y²=4px에서 접선/점 조건 xA=9p, yA=6p=12이므로 p=2, 준선 x=-2이다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "16번 problem 축: 발문에 이미 제공된 좌표·식과 조건만으로 개별 선분·곡선을 특정할 수 있고, 별도 SVG 없이도 객관식의 풀이 의미를 유지한다. 포물선 p=2와 준선 x=-2, 접점 A의 x좌표 18이 발문 및 해설 관계와 부합한다."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "4f4744e22394c84e74c85db734fff6e15bdd65e477fe37509b2ff7662fc7dfff",
+          "reasoning": "16번 solution 축: 포물선 p=2와 준선 x=-2, 접점 A의 x좌표 18이 발문 및 해설 관계와 부합한다."
+        }
+      }
+    },
+    {
+      "qid": 17,
+      "sourceFingerprint": "3bcf6d088cf8b01fbcce1a277345041d6d1597d79dd84298874c6b3802dff833",
+      "blindAnswer": "④",
+      "blindReasoning": "외부점 (25/4,0)의 타원 접점 x=4,y=±12/5, 접점 잇는 PQ=24/5, 초점에서 접점선까지 거리 1이라 면적 12/5이다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "PASS",
+          "planDigest": "c57b4bc279e9b707799f1f698c171153dc36cf2f71bbdd6860616c5f0662280c",
+          "reasoning": "17번 problem 축: 타원 외부점에서 그은 양쪽 접선의 접점 x=4,y=±12/5 및 초점-접점현 거리 1이 맞는다."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "3076dbb71eceaf1e22a013c3fee67704f26c571b6321f0ed72732a249246f5e2",
+          "reasoning": "17번 solution 축: 타원 외부점에서 그은 양쪽 접선의 접점 x=4,y=±12/5 및 초점-접점현 거리 1이 맞는다."
+        }
+      }
+    },
+    {
+      "qid": 18,
+      "sourceFingerprint": "00fe3acf15d58362bf1bb79d659e7f4cf9674f87df0a51cdb51470cbef9e7981",
+      "blindAnswer": "⑤",
+      "blindReasoning": "공초점 조건과 F,P,F’의 정삼각형 성질에서 P=(±3√3,-2), 내분점 Q=(±√3,0); 새 타원 a²=3,b²=4, 합 7이다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "PASS",
+          "planDigest": "f33154dc0de6d701ada68b03ae583fbb523aaf57eb870293fc1902cf7572627c",
+          "reasoning": "18번 problem 축: 공초점 타원, 정삼각형 위치 P 및 1:2 내분점 Q의 기하 관계가 원문 조건과 맞는다."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "4b962cf9a85d4fd612cd0a7459340254a02543e775faf4e00a70161bedc51379",
+          "reasoning": "18번 solution 축: 공초점 타원, 정삼각형 위치 P 및 1:2 내분점 Q의 기하 관계가 원문 조건과 맞는다."
+        }
+      }
+    },
+    {
+      "qid": 19,
+      "sourceFingerprint": "33478e379425ec2f75d5f15ad90434a3e8fad433ca925eb01958667c08932f50",
+      "blindAnswer": "⑤",
+      "blindReasoning": "삼각형 AFF’ 넓이 60과 AF=8에서 FF’=15, 타원 a²=(15/2)²+16=(17/2)², 둘레 2a+FF’=32이다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "PASS",
+          "planDigest": "df6638bb2a194137b5b855297ea419b3ffba22f2da65dd11c2255393be46e50f",
+          "reasoning": "19번 problem 축: 타원 초점 거리 15와 AF=8, 교점 P의 삼각형 둘레가 수학 해설과 대응한다."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "73a2dde5606211ee7c213836cdb525fee7c684eb8519bd7865d5d535903dfd94",
+          "reasoning": "19번 solution 축: 타원 초점 거리 15와 AF=8, 교점 P의 삼각형 둘레가 수학 해설과 대응한다."
+        }
+      }
+    },
+    {
+      "qid": 20,
+      "sourceFingerprint": "e8a2ec936002bddad481527ab2074efba682033cd0944e39fde2c9a9cd14576f",
+      "blindAnswer": "④",
+      "blindReasoning": "포물선 초점과 준선에 대한 최단 경로로 PF+PF’ 최소 m=10, 쌍곡선 2a=m/5=2, c=4에서 b²=16-1=15이다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "PASS",
+          "planDigest": "a6cdcbcf4c53e82061e8628495e6c2dc11c79caa1c8a152f535c81053448bf52",
+          "reasoning": "20번 problem 축: 포물선과 최단 경로의 초점-준선 관계 및 P=(4,-9/5) 선택이 정답 유도와 일치한다."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "243aa9941ad8220fff8eb6705d1b693344c30ef7cdca5ed6c1f3434a796d7823",
+          "reasoning": "20번 solution 축: 포물선과 최단 경로의 초점-준선 관계 및 P=(4,-9/5) 선택이 정답 유도와 일치한다."
+        }
+      }
+    },
+    {
+      "qid": 21,
+      "sourceFingerprint": "3dd1131487551244fe6f6c3914940e694a1c8ac3f0bd0f98853e261bfc070825",
+      "blindAnswer": "8",
+      "blindReasoning": "PQ=4√(ap)=8√3에서 ap=12, 접선 교점 A=(-a,0), tan∠APQ=√(a/p)=1/√3에서 a=p/3, 따라서 p=6,a=2, 합 8이다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "NOT_APPLICABLE"
+      },
+      "plan": {
+        "problem": {
+          "status": "PASS",
+          "planDigest": "ef13d0e235ed22a68150c1affaa33fb2ae2dc8ac519753e8ccf6375e46af9f4f",
+          "reasoning": "21번 problem 축: 포물선 y²=4px의 수직 현 PQ, 두 접선 교점 A=(-a,0)와 30° 위치가 정확하며 잘못 중복된 AP 선분은 제거했다."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "5bdf80498ce3e843e1014437874135f71a0c15e77bd5be16090fd010d054cb32",
+          "reasoning": "21번 solution 축: 포물선 y²=4px의 수직 현 PQ, 두 접선 교점 A=(-a,0)와 30° 위치가 정확하며 잘못 중복된 AP 선분은 제거했다."
+        }
+      }
+    },
+    {
+      "qid": 22,
+      "sourceFingerprint": "b8f2aff38d247b07c1113e235deaad6bd45bb00317d4020991e2b1af0b459165",
+      "blindAnswer": "3",
+      "blindReasoning": "타원 접선의 x절편 25/x1, 접선 수직선의 x절편 x1(25-b²)/25의 곱은 25-b²=16, b=3이다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "NOT_APPLICABLE"
+      },
+      "plan": {
+        "problem": {
+          "status": "PASS",
+          "planDigest": "2dddaf54f50c10b3cf782d7b128216fbb6c826e6e84a475db5de67cf996dca00",
+          "reasoning": "22번 problem 축: 타원 접선 및 그 법선의 x절편 Q,R이 달라야 하며 b=3일 때 두 절편의 곱 16을 만족한다."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "178c59402f74745bc5f699a534287eda7d3819c89f4c087f4ff332b68171d4e6",
+          "reasoning": "22번 solution 축: 타원 접선 및 그 법선의 x절편 Q,R이 달라야 하며 b=3일 때 두 절편의 곱 16을 만족한다."
+        }
+      }
+    },
+    {
+      "qid": 23,
+      "sourceFingerprint": "4ebdeb6cb3579fa5a5268c752d5d0b35871815552bff4775721cc2c410999d4c",
+      "blindAnswer": "33",
+      "blindReasoning": "타원 PF+PF’=14, 쌍곡선 PF’-PF=6에서 PF=4, PF’=10, 거리 제곱 차 20x=84에서 x=21/5, y²=384/25, OP²=33이다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "NOT_APPLICABLE"
+      },
+      "plan": {
+        "problem": {
+          "status": "PASS",
+          "planDigest": "070ae9184072908dab170039f3c7b4b74de11fa20ff1c6acb7980148d24d68ed",
+          "reasoning": "23번 problem 축: 공초점 타원과 쌍곡선의 제1사분면 교점 P=(21/5,8√6/5), 두 초점과의 거리 4·10을 반영한다."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "1273c4c26d1ae2deae87d3c7d5cdfc750f07e148e78e8470fb570bcd037aa8b9",
+          "reasoning": "23번 solution 축: 공초점 타원과 쌍곡선의 제1사분면 교점 P=(21/5,8√6/5), 두 초점과의 거리 4·10을 반영한다."
+        }
+      }
+    }
+  ]
+}
