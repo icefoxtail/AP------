@@ -1,0 +1,50 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PRISM",
+      "base": {
+        "kind": "REGULAR",
+        "n": 5,
+        "side": 3
+      },
+      "height": 4,
+      "names": "FGHIJABCDE"
+    }
+  ],
+  "caption": "위 정오각형 ABCDE, 아래 정오각형 FGHIJ, AF·BG·CH·DI·EJ가 옆모서리인 직오각기둥",
+  "accessibilityDescription": "위 정오각형 ABCDE, 아래 정오각형 FGHIJ, AF·BG·CH·DI·EJ가 옆모서리인 직오각기둥. 정오각기둥의 15개 모서리. 다섯 대응 꼭짓점과 가림선.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 밑면이 각각 정오각형",
+      "mappedTo": [
+        "solids[0].base.kind",
+        "solids[0].base.n"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "위 ABCDE·아래 FGHIJ와 대응하는 다섯 옆모서리",
+      "mappedTo": [
+        "solids[0].names"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "두 밑면에 수직인 옆모서리를 가진 직기둥",
+      "mappedTo": [
+        "solids[0].kind"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "정오각기둥의 15개 모서리",
+    "다섯 대응 꼭짓점과 가림선"
+  ],
+  "solidCaption": {
+    "text": "직오각기둥"
+  },
+  "sourceQuote": "[그림: 위 밑면이 정오각형 $ABCDE$, 아래 밑면이 정오각형 $FGHIJ$, 옆모서리가 $AF, BG, CH, DI, EJ$인 직오각기둥]"
+}

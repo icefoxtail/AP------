@@ -1,0 +1,89 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 6,
+        "depth": 6
+      },
+      "height": 6,
+      "names": "EFGHABCD",
+      "points": [
+        {
+          "id": "P",
+          "at": {
+            "divide": [
+              "A",
+              "C"
+            ],
+            "ratio": "2:1"
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "A",
+      "to": "C",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "P",
+      "to": "F",
+      "style": "DASHED",
+      "role": "REF"
+    }
+  ],
+  "dims": [
+    {
+      "edge": "AB"
+    }
+  ],
+  "caption": "모서리 6인 정육면체의 상면 AC 위 AP:PC=2:1인 P와 PF",
+  "accessibilityDescription": "모서리 6인 정육면체의 상면 AC 위 AP:PC=2:1인 P와 PF. AC의 2:1 내분점 P. 내부를 통과하는 PF는 가림 점선으로 처리.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "정육면체 한 모서리 길이 6",
+      "mappedTo": [
+        "solids[0].base",
+        "solids[0].height",
+        "dims[0]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "윗면 선분 AC",
+      "mappedTo": [
+        "segments[0]"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "P는 AC를 2:1로 내분",
+      "mappedTo": [
+        "solids[0].points[0]"
+      ]
+    },
+    {
+      "id": "c4",
+      "condition": "점 P와 바닥 꼭짓점 F를 잇는 PF",
+      "mappedTo": [
+        "segments[1]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "AC의 2:1 내분점 P",
+    "내부를 통과하는 PF는 가림 점선으로 처리"
+  ],
+  "solidCaption": {
+    "text": "정육면체"
+  },
+  "sourceQuote": "[그림: 한 모서리의 길이가 6인 정육면체 ABCD-EFGH에서, 윗면의 선분 AC를 2:1로 내분하는 점 P가 표시되어 있고, 점 P와 밑면의 꼭짓점 F를 이은 선분 PF가 그어져 있다.]"
+}

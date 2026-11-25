@@ -1,0 +1,84 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 4,
+        "depth": 4
+      },
+      "height": 2,
+      "names": "EFGHABCD"
+    }
+  ],
+  "segments": [
+    {
+      "from": "B",
+      "to": "E",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "F",
+      "to": "H",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "dims": [
+    {
+      "edge": "AB"
+    },
+    {
+      "edge": "AD"
+    },
+    {
+      "edge": "BF"
+    }
+  ],
+  "caption": "밑변 4×4, 높이 2인 직육면체의 면 대각선 BE와 FH",
+  "accessibilityDescription": "밑변 4×4, 높이 2인 직육면체의 면 대각선 BE와 FH. 윗면 측면 대각선 BE·아랫면 대각선 FH. 사잇각 θ의 숫자는 표시하지 않음.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "직육면체 ABCD-EFGH, AB=AD=4",
+      "mappedTo": [
+        "solids[0].base",
+        "dims[0]",
+        "dims[1]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "높이 BF=2",
+      "mappedTo": [
+        "solids[0].height",
+        "dims[2]"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "선분 BE가 표시",
+      "mappedTo": [
+        "segments[0]"
+      ]
+    },
+    {
+      "id": "c4",
+      "condition": "선분 FH가 표시",
+      "mappedTo": [
+        "segments[1]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "윗면 측면 대각선 BE·아랫면 대각선 FH",
+    "사잇각 θ의 숫자는 표시하지 않음"
+  ],
+  "solidCaption": {
+    "text": "직육면체"
+  },
+  "sourceQuote": "[그림: 밑면의 가로와 세로의 길이가 4이고 높이가 2인 직육면체 ABCD-EFGH에서, 점 B와 점 E를 이은 선분 BE, 점 F와 점 H를 이은 선분 FH가 표시되어 있다.]"
+}

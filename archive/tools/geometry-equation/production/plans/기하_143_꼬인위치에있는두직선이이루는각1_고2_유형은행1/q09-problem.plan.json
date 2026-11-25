@@ -1,0 +1,56 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "REGULAR_POLYHEDRON",
+      "faces": 4,
+      "side": 4,
+      "names": "BCDA",
+      "points": [
+        {
+          "id": "M",
+          "at": {
+            "midpoint": [
+              "C",
+              "D"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "dims": [
+    {
+      "edge": "BC"
+    }
+  ],
+  "caption": "모든 모서리 길이 4인 정사면체 ABCD, CD의 중점 M",
+  "accessibilityDescription": "모든 모서리 길이 4인 정사면체 ABCD, CD의 중점 M. 정사면체의 중점 M. 해설 중 보조점 N·중점연결선은 비노출.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "모든 모서리 길이 4인 정사면체 ABCD",
+      "mappedTo": [
+        "solids[0].kind",
+        "solids[0].side",
+        "dims[0]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "점 M은 CD의 중점",
+      "mappedTo": [
+        "solids[0].points[0]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "정사면체의 중점 M",
+    "해설 중 보조점 N·중점연결선은 비노출"
+  ],
+  "solidCaption": {
+    "text": "정사면체"
+  },
+  "sourceQuote": "[그림: 한 모서리의 길이가 $4$인 정사면체 $ABCD$에서 모서리 $CD$의 중점 $M$]"
+}

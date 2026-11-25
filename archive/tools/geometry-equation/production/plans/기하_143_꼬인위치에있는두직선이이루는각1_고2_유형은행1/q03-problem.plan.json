@@ -1,0 +1,42 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 1,
+        "depth": 1
+      },
+      "height": 1,
+      "names": "EFGHABCD"
+    }
+  ],
+  "dims": [
+    {
+      "edge": "AB"
+    }
+  ],
+  "caption": "한 모서리가 1인 정육면체 ABCD-EFGH",
+  "accessibilityDescription": "한 모서리가 1인 정육면체 ABCD-EFGH. 모서리 길이 1 표시. 보기의 코사인 값·각도는 노출하지 않음.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "정육면체 ABCD-EFGH의 동일한 모서리 길이 1",
+      "mappedTo": [
+        "solids[0].base",
+        "solids[0].height",
+        "dims[0]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "모서리 길이 1 표시",
+    "보기의 코사인 값·각도는 노출하지 않음"
+  ],
+  "solidCaption": {
+    "text": "정육면체"
+  },
+  "sourceQuote": "[그림: 한 모서리의 길이가 $1$인 정육면체 $ABCD-EFGH$]"
+}

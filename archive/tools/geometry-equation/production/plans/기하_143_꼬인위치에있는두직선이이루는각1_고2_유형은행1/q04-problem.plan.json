@@ -1,0 +1,67 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 2,
+        "depth": 3
+      },
+      "height": 6,
+      "names": "EFGHABCD"
+    }
+  ],
+  "dims": [
+    {
+      "edge": "AB"
+    },
+    {
+      "edge": "AD"
+    },
+    {
+      "edge": "AE"
+    }
+  ],
+  "caption": "AB=2, AD=3, AE=6인 직육면체 ABCD-EFGH",
+  "accessibilityDescription": "AB=2, AD=3, AE=6인 직육면체 ABCD-EFGH. 가로·세로·높이 세 길이를 모서리에 표시. 정답인 코사인 값은 비노출.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "직육면체 ABCD-EFGH의 꼭짓점 대응",
+      "mappedTo": [
+        "solids[0].names"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "AB 길이 2",
+      "mappedTo": [
+        "dims[0]"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "AD 길이 3",
+      "mappedTo": [
+        "dims[1]"
+      ]
+    },
+    {
+      "id": "c4",
+      "condition": "AE 길이 6",
+      "mappedTo": [
+        "dims[2]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "가로·세로·높이 세 길이를 모서리에 표시",
+    "정답인 코사인 값은 비노출"
+  ],
+  "solidCaption": {
+    "text": "직육면체"
+  },
+  "sourceQuote": "[그림: 가로 $AB=2$, 세로 $AD=3$, 높이 $AE=6$인 직육면체 $ABCD-EFGH$]"
+}
