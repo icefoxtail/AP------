@@ -1,0 +1,47 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {"recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false},
+    "nodes": [
+      {
+        "id": "A", "op": "SOURCE_POINT", "inputs": [],
+        "args": {"coordinates": [{"kind": "integer", "value": "0"}, {"kind": "integer", "value": "0"}]},
+        "outputType": "POINT", "factRole": "GIVEN"
+      },
+      {
+        "id": "B", "op": "SOURCE_POINT", "inputs": [],
+        "args": {"coordinates": [{"kind": "integer", "value": "10"}, {"kind": "integer", "value": "0"}]},
+        "outputType": "POINT", "factRole": "GIVEN"
+      },
+      {
+        "id": "P", "op": "SOURCE_POINT", "inputs": [],
+        "args": {"coordinates": [
+          {"kind": "rational", "numerator": "216", "denominator": "25"},
+          {"kind": "rational", "numerator": "288", "denominator": "25"}
+        ]},
+        "outputType": "POINT", "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {"id": "sAB", "refs": ["A", "B"]},
+    {"id": "sAP", "refs": ["A", "P"]},
+    {"id": "sBP", "refs": ["B", "P"]}
+  ],
+  "displayPoints": ["A", "B", "P"],
+  "planeMarks": {
+    "dimensions": [{"id": "dAB", "from": "A", "to": "B", "label": "10", "side": "BELOW", "style": "ARROW", "offset": 3, "factRole": "GIVEN"}]
+  },
+  "coordinateCanvas": {"width": 600, "height": 460},
+  "caption": "가로 밑변 AB=10 위쪽에 움직이는 점 P를 잡아 만든 삼각형 PAB의 한 대표 배치",
+  "accessibilityDescription": "가로 선분 AB 아래에 10의 길이 치수가 표시되어 있고 그 위쪽의 점 P와 A,B를 연결해 삼각형 PAB를 이룬다. 곡선이나 최고점 표시는 없다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "AB=10, P는 가로 밑변 위에 있는 삼각형의 위쪽 꼭짓점이다.", "mappedTo": ["A", "B", "P", "sAB", "sAP", "sBP", "dAB"]},
+    {"id": "c2", "condition": "움직이는 P의 AP+BP=26 조건을 정확히 지키는 비최대 대표점 P=(216/25,288/25)을 선택: AP=72/5, BP=58/5, 합 26이다. 이 내부 값들은 그림에 표시하지 않는다.", "mappedTo": ["P", "sAP", "sBP"]},
+    {"id": "c3", "condition": "원문 문제 그림은 삼각형만 요청하므로 풀이에서 나오는 타원·단축·최대 높이·최대 넓이 값은 노출하지 않는다.", "mappedTo": ["sAB", "sAP", "sBP"]}
+  ],
+  "newVisualInformation": ["밑변 10만 치수선으로 보이고 초점 거리합 26을 만족하는 비최대 위치의 P를 사용한 삼각형"]
+}
