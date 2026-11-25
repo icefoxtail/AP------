@@ -1,0 +1,197 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "mirror",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "-1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [
+    "mirror"
+  ],
+  "lineLabels": [
+    {
+      "nodeId": "mirror",
+      "text": "y=x"
+    }
+  ],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "coordinateLabels": [
+    "A"
+  ],
+  "caption": "A(4,2), B∈y=x, C∈x축인 삼각형 ABC의 길이 AB+BC+CA를 보여 준다. B와 C의 위치는 임의 예시이며 최솟값 위치가 아니다.",
+  "accessibilityDescription": "A(4,2)와 대각선 y=x 위의 이동점 B, x축 위의 이동점 C 사이 삼각형 경로를 표시했다. B,C는 임의 배치이고 최소가 되는 점이나 길이는 나타내지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문에서 주어진 고정점 A(4,2)",
+      "mappedTo": [
+        "A"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "점 B는 직선 y=x 위를 이동; 그려진 B는 해답이 아닌 예시 위치",
+      "mappedTo": [
+        "B",
+        "mirror"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "점 C는 x축 위를 이동; 그려진 C는 해답이 아닌 예시 위치",
+      "mappedTo": [
+        "C",
+        "O",
+        "U"
+      ]
+    },
+    {
+      "id": "c4",
+      "condition": "AB+BC+CA의 최솟값을 묻되 문제 그림에서는 결과·반사점·최소 경로를 보이지 않음",
+      "mappedTo": [
+        "sAB",
+        "sBC",
+        "sCA"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원문에 나온 두 이동점 B,C의 허용 직선과 삼각형 경로를 분리해서 읽을 수 있다. 최소화용 대칭점과 결과는 제외한다."
+  ]
+}
