@@ -1,0 +1,225 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "MIDPOINT",
+        "inputs": [
+          "O",
+          "P"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "CIRCLE_THROUGH_POINT",
+        "inputs": [
+          "M",
+          "O"
+        ],
+        "args": {},
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "I",
+        "op": "INTERSECTION",
+        "inputs": [
+          "C",
+          "D"
+        ],
+        "args": {},
+        "outputType": "POINT_SET",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "SELECT_POINT",
+        "inputs": [
+          "I"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "branch": {
+          "kind": "SIDE_OF_ORIENTED_LINE",
+          "refs": [
+            "O",
+            "P"
+          ],
+          "sign": 1
+        }
+      },
+      {
+        "id": "lenPT",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "P",
+          "T"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "P",
+    "T"
+  ],
+  "displayCircles": [
+    "C"
+  ],
+  "displayLines": [],
+  "displaySegments": [
+    {
+      "id": "sOT",
+      "refs": [
+        "O",
+        "T"
+      ]
+    },
+    {
+      "id": "sPT",
+      "refs": [
+        "P",
+        "T"
+      ]
+    },
+    {
+      "id": "sOP",
+      "refs": [
+        "O",
+        "P"
+      ]
+    }
+  ],
+  "coordinateLabels": [
+    "O",
+    "P"
+  ],
+  "coordinatePlacement": "PANEL",
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "coordinateCanvas": {
+    "width": 680,
+    "height": 540
+  },
+  "caption": "원 밖 점 P에서 접점을 이은 접선과 반지름의 직각을 나타낸다.",
+  "accessibilityDescription": "원 밖 점 P와 원의 중심 O, 접점에서의 직각이 표시된 접선 도형이다.",
+  "sourceConditions": [
+    {
+      "id": "circle",
+      "condition": "원 중심 (2, 3), 반지름 제곱 9",
+      "mappedTo": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "outside",
+      "condition": "원 밖 점 P=(5, 5)",
+      "mappedTo": [
+        "P"
+      ]
+    },
+    {
+      "id": "tangent",
+      "condition": "접점에서 반지름과 접선의 직각",
+      "mappedTo": [
+        "rT",
+        "sOT",
+        "sPT",
+        "sOP"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "외부점과 접점 사이 접선",
+    "접선과 반지름이 이루는 직각"
+  ],
+  "scalarLabels": [
+    {
+      "nodeId": "lenPT",
+      "ownerSegment": "sPT",
+      "prefix": "",
+      "value": "2"
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rT",
+      "refs": [
+        "O",
+        "T",
+        "P"
+      ],
+      "factRole": "DERIVED_INTERMEDIATE"
+    }
+  ]
+}

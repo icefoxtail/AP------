@@ -1,0 +1,258 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C1",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O1"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "20"
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C2",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O2"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "15"
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "I",
+        "op": "INTERSECTION",
+        "inputs": [
+          "C1",
+          "C2"
+        ],
+        "args": {},
+        "outputType": "POINT_SET",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SELECT_POINT",
+        "inputs": [
+          "I"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "branch": {
+          "kind": "SIDE_OF_ORIENTED_LINE",
+          "refs": [
+            "O1",
+            "O2"
+          ],
+          "sign": 1
+        }
+      },
+      {
+        "id": "B",
+        "op": "SELECT_POINT",
+        "inputs": [
+          "I"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "branch": {
+          "kind": "SIDE_OF_ORIENTED_LINE",
+          "refs": [
+            "O1",
+            "O2"
+          ],
+          "sign": -1
+        }
+      },
+      {
+        "id": "lenRadius",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "O2",
+          "A"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O1",
+    "O2",
+    "A",
+    "B"
+  ],
+  "displayCircles": [
+    "C1",
+    "C2"
+  ],
+  "displayLines": [],
+  "displaySegments": [
+    {
+      "id": "sChord",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sCenter",
+      "refs": [
+        "O1",
+        "O2"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sRadius",
+      "refs": [
+        "O2",
+        "A"
+      ]
+    }
+  ],
+  "coordinateLabels": [
+    "O1",
+    "O2"
+  ],
+  "coordinatePlacement": "PANEL",
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "coordinateCanvas": {
+    "width": 680,
+    "height": 540
+  },
+  "caption": "두 원의 공통현은 두 번째 원의 지름이므로 그 원의 넓이가 최소이다.",
+  "accessibilityDescription": "교차하는 두 원의 공통현은 두 번째 원의 중심 O2를 지나며 중심선과 직각이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "x²+y²=20",
+      "mappedTo": [
+        "O1",
+        "C1"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "x²+y²−4x−2y−10=0",
+      "mappedTo": [
+        "O2",
+        "C2"
+      ]
+    },
+    {
+      "id": "min",
+      "condition": "교점 A,B를 지나는 원 중 반지름이 가장 작은 원",
+      "mappedTo": [
+        "A",
+        "B",
+        "O2",
+        "C2",
+        "sChord",
+        "sRadius"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 교점을 지름 양끝으로 하는 원 C2",
+    "공통현과 중심선의 직각"
+  ],
+  "scalarLabels": [
+    {
+      "nodeId": "lenRadius",
+      "ownerSegment": "sRadius",
+      "prefix": "",
+      "value": "sqrt(15)"
+    }
+  ],
+  "hiddenPointNames": [
+    "A",
+    "B"
+  ],
+  "rightAngles": [
+    {
+      "id": "rM",
+      "refs": [
+        "O1",
+        "O2",
+        "A"
+      ],
+      "factRole": "DERIVED_INTERMEDIATE"
+    }
+  ]
+}

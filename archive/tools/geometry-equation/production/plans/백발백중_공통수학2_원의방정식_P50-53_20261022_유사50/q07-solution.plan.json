@@ -1,0 +1,340 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C1",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O1"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C2",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O2"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "8"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "XH",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "O1",
+          "O2"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "mode": "EXTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "XM",
+        "op": "MIDPOINT",
+        "inputs": [
+          "O1",
+          "XH"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "XD",
+        "op": "CIRCLE_THROUGH_POINT",
+        "inputs": [
+          "XM",
+          "O1"
+        ],
+        "args": {},
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "XI",
+        "op": "INTERSECTION",
+        "inputs": [
+          "C1",
+          "XD"
+        ],
+        "args": {},
+        "outputType": "POINT_SET",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SELECT_POINT",
+        "inputs": [
+          "XI"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "branch": {
+          "kind": "SIDE_OF_ORIENTED_LINE",
+          "refs": [
+            "O1",
+            "O2"
+          ],
+          "sign": 1
+        }
+      },
+      {
+        "id": "XLA",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "XH",
+          "A"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "O2",
+          "XLA"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lenAB",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lenR1",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "O1",
+          "A"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lenR2",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "O2",
+          "B"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O1",
+    "O2",
+    "A",
+    "B"
+  ],
+  "displayCircles": [
+    "C1",
+    "C2"
+  ],
+  "displayLines": [],
+  "displaySegments": [
+    {
+      "id": "sCenters",
+      "refs": [
+        "O1",
+        "O2"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sARadius",
+      "refs": [
+        "O1",
+        "A"
+      ]
+    },
+    {
+      "id": "sBRadius",
+      "refs": [
+        "O2",
+        "B"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "coordinateLabels": [
+    "O1",
+    "O2"
+  ],
+  "coordinatePlacement": "PANEL",
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "coordinateCanvas": {
+    "width": 680,
+    "height": 540
+  },
+  "caption": "중심 O1, O2와 두 원의 공통외접선 접점·접선과 반지름의 직각 관계를 나타낸다.",
+  "accessibilityDescription": "두 원의 중심을 잇는 선, 접점에서의 반지름과 공통접선의 직각 관계가 그려져 있다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "첫째 원 중심 (0, 0), 반지름 3",
+      "mappedTo": [
+        "O1",
+        "C1"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "둘째 원 중심 (5, 12), 반지름 8",
+      "mappedTo": [
+        "O2",
+        "C2"
+      ]
+    },
+    {
+      "id": "tangent",
+      "condition": "공통외접선",
+      "mappedTo": [
+        "sCenters",
+        "sARadius",
+        "sBRadius",
+        "sAB",
+        "rA",
+        "rB"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 원의 위치와 반지름",
+    "접선 및 접점에서의 수직관계",
+    "중심 사이 선분과 접점 사이 선분의 직각삼각형 관계"
+  ],
+  "scalarLabels": [
+    {
+      "nodeId": "lenAB",
+      "ownerSegment": "sAB",
+      "prefix": "",
+      "value": "12"
+    },
+    {
+      "nodeId": "lenR1",
+      "ownerSegment": "sARadius",
+      "prefix": "",
+      "value": "3"
+    },
+    {
+      "nodeId": "lenR2",
+      "ownerSegment": "sBRadius",
+      "prefix": "",
+      "value": "8"
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rA",
+      "refs": [
+        "O1",
+        "A",
+        "B"
+      ],
+      "factRole": "DERIVED_INTERMEDIATE"
+    },
+    {
+      "id": "rB",
+      "refs": [
+        "O2",
+        "B",
+        "A"
+      ],
+      "factRole": "DERIVED_INTERMEDIATE"
+    }
+  ]
+}

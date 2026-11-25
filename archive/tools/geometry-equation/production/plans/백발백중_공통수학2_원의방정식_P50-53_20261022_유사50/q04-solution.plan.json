@@ -1,0 +1,254 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C1",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O1"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C2",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O2"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "O1",
+          "O2"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "I",
+        "op": "INTERSECTION",
+        "inputs": [
+          "C1",
+          "C2"
+        ],
+        "args": {},
+        "outputType": "POINT_SET",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SELECT_POINT",
+        "inputs": [
+          "I"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "branch": {
+          "kind": "SIDE_OF_ORIENTED_LINE",
+          "refs": [
+            "O1",
+            "O2"
+          ],
+          "sign": 1
+        }
+      },
+      {
+        "id": "B",
+        "op": "SELECT_POINT",
+        "inputs": [
+          "I"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "branch": {
+          "kind": "SIDE_OF_ORIENTED_LINE",
+          "refs": [
+            "O1",
+            "O2"
+          ],
+          "sign": -1
+        }
+      },
+      {
+        "id": "K",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "L",
+          "K"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O1",
+    "O2",
+    "A",
+    "B",
+    "M"
+  ],
+  "displayCircles": [
+    "C1",
+    "C2"
+  ],
+  "displayLines": [],
+  "displaySegments": [
+    {
+      "id": "sCenters",
+      "refs": [
+        "O1",
+        "O2"
+      ]
+    },
+    {
+      "id": "sChord",
+      "refs": [
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "coordinateLabels": [
+    "O1",
+    "O2"
+  ],
+  "coordinatePlacement": "PANEL",
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "coordinateCanvas": {
+    "width": 680,
+    "height": 540
+  },
+  "caption": "두 원의 공통현과 두 중심의 연결선은 서로 수직이다.",
+  "accessibilityDescription": "교차하는 두 원과 공통현 및 중심선의 직각표시를 보여 준다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "첫 원 중심(1, 2), 반지름 제곱 4",
+      "mappedTo": [
+        "O1",
+        "C1"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "둘째 원 중심(5, 5), 반지름 제곱 16",
+      "mappedTo": [
+        "O2",
+        "C2"
+      ]
+    },
+    {
+      "id": "chord",
+      "condition": "두 원의 공통현과 그 수직이등분선",
+      "mappedTo": [
+        "A",
+        "B",
+        "M",
+        "sChord",
+        "sCenters",
+        "rM"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "공통현 양끝과 두 중심선의 교차",
+    "교점 직각 표식"
+  ],
+  "hiddenPointNames": [
+    "A",
+    "B",
+    "M"
+  ],
+  "rightAngles": [
+    {
+      "id": "rM",
+      "refs": [
+        "O1",
+        "M",
+        "A"
+      ],
+      "factRole": "DERIVED_INTERMEDIATE"
+    }
+  ]
+}
