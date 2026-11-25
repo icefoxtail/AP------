@@ -1,0 +1,638 @@
+{
+  "schemaVersion": "gpt-finalqa-evidence-v1",
+  "examUid": "26_순천고_2학기_중간_고2_확률과통계_유사2",
+  "sourcePath": "archive/exams/similar/high/h2/2mid/26_순천고_2학기_중간_고2_확률과통계_유사2.js",
+  "blindPackDigest": "c15e7ffda538e1232cecaf4b9f3ea19da4add740c4017315b37224ae5e4032c3",
+  "reviewer": {
+    "id": "independent-blind-agent:/root/suncheon_sim2_blind",
+    "blindFirstPass": "CONFIRMED",
+    "independentEvidence": "별도 에이전트(fork_turns=none)가 동일 정확 경로 --blind-pack의 발문·선지만 열람해 24문항을 독립 풀이·계산 후 QID별 답과 근거를 전달함. 작성 정답·해설·메타·다른 시험지·원본 JS는 열람하지 않음. Q1·Q21의 다항식→식 용어 수정 후 새 블라인드 팩으로 답·수식 동일성 재확인. Q16 격자, Q20 정육각형 원본 PNG는 현재 JS 연결·조건과 본 검수자가 별도 확인. 별도 PDF/HWP 전수 대조 및 SVG 렌더·PNG 시각 QA는 실행하지 않음.",
+    "blindArtifactRef": "conversation-agent:/root/suncheon_sim2_blind/2026-11-25-independent-24q-plus-q1-q21-reblind"
+  },
+  "questions": [
+    {
+      "qid": 1,
+      "sourceFingerprint": "f29f8f9e29b95115fcfab1cc0320840388ab3daff99f2c6594e74ecc89b4b68b",
+      "blindAnswer": "⑤",
+      "blindReasoning": "일반항 C(6,r)3^r x^(6−2r), x⁻²에는 r=4, x²에는 r=2이므로 1215/135=9.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "유리식 거듭제곱의 계수 비교 조건을 수식으로 명시함"
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "일반항의 x 지수 비교와 계수비 계산은 수식으로 충분함"
+        }
+      }
+    },
+    {
+      "qid": 2,
+      "sourceFingerprint": "c3bcf8f18ecffafd8739fa386b1b26f85f74fe774b51b7686c458ccc6c57fe51",
+      "blindAnswer": "④",
+      "blindReasoning": "P(A)=1/2이고 배반합으로 P(B)=3/8, 따라서 P(Bᶜ)=5/8.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "배반 두 사건의 확률 조건이 모두 텍스트로 정의됨"
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "여사건과 배반 덧셈정리를 순차적으로 계산함"
+        }
+      }
+    },
+    {
+      "qid": 3,
+      "sourceFingerprint": "2313db391cdb6fb1a52cb3919231b6acfb4ba5eb378174bff1b8872190e74fc4",
+      "blindAnswer": "③",
+      "blindReasoning": "순서 있는 선택은 3⁴=81, 색별 개수는 3H4=C(6,2)=15여서 비는 27/5.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "순서 있는 색 선택과 순서 없는 색별 개수의 차이가 분명함"
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "3⁴과 중복조합 3H4의 비교를 식으로 설명함"
+        }
+      }
+    },
+    {
+      "qid": 4,
+      "sourceFingerprint": "86a5f9f72f558928d20981aa35e9fc1363cfab946a8a681a0b0f6fafe4712a04",
+      "blindAnswer": "②",
+      "blindReasoning": "A는 A∩B와 A∩Bᶜ의 서로소 합집합이므로 P(A∩Bᶜ)=P(A)−P(A∩B).",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "임의 사건 A,B의 집합 관계와 선택지가 글과 수식으로 완결됨"
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "A=(A∩B)∪(A∩Bᶜ)인 분할 관계를 식으로 설명함"
+        }
+      }
+    },
+    {
+      "qid": 5,
+      "sourceFingerprint": "a391f206c825ac9daf5ac3633865fd37da7ba0ade58896cc92ca52eae36586a6",
+      "blindAnswer": "④",
+      "blindReasoning": "57/300=.19라 ㄱ 거짓, 30회와 150회 오차 비교에서 ㄴ 참, 150/900=1/6이고 309/1800은 달라 ㄷ 참.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "여러 시행 수와 상대도수 자료가 표와 텍스트로 제공됨"
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "57/300과 각 오차 수치를 비교하며 ㄴ·ㄷ을 판정함"
+        }
+      }
+    },
+    {
+      "qid": 6,
+      "sourceFingerprint": "b81c3e898df7c63810cfc14a1c5157926ef25f1a233612560ec0385cc2cdf54d",
+      "blindAnswer": "③",
+      "blindReasoning": "P(B|A)=P(A∩B)/P(A)=(1/5)/(2/5)=1/2.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "A,B의 조건부확률과 교집합 숫자가 발문에 제시됨"
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "1/5÷(2/5)=1/2의 조건부확률 계산으로 충분함"
+        }
+      }
+    },
+    {
+      "qid": 7,
+      "sourceFingerprint": "076752b28dea65c02099273505ff64abe54aa21199d4b9f46b36194715d9c84f",
+      "blindAnswer": "⑤",
+      "blindReasoning": "짝수항 계수합은 2⁹=512, 제외하는 홀수항 합은 2⁷=128, 차 384.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "이항계수의 짝홀 조건과 제외조건이 수식으로 완결됨"
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "짝수합 512에서 제외항 128을 빼는 구조를 설명함"
+        }
+      }
+    },
+    {
+      "qid": 8,
+      "sourceFingerprint": "a26283603fcd87ffac8b2f327c590dd11cf3381adc3dc61cad5a890ff36f3971",
+      "blindAnswer": "④",
+      "blindReasoning": "Σ C(k,2)=C(m+1,3)=84=C(9,3)이므로 m=8.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "연속 이항계수 합과 목표 수 84가 명시됨"
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "하키스틱 항등식 C(m+1,3)=84로 결정함"
+        }
+      }
+    },
+    {
+      "qid": 9,
+      "sourceFingerprint": "bd8d855b4d97323406cedc8403c6c3df8adae596b00d93eea63e2f08bf3bcba0",
+      "blindAnswer": "②",
+      "blindReasoning": "조건을 만족하는 지원자 중 선택 분모 8+4, 분자 8로 2/3.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "동아리 지원자 구분과 조건부 사건이 문자로 분명함"
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "조건부 표본 8+4명 중 8명을 뽑는 비로 설명함"
+        }
+      }
+    },
+    {
+      "qid": 10,
+      "sourceFingerprint": "f6e37798045cb5463ab494bb8184521b45d63d788df3710fba202da2c85e9230",
+      "blindAnswer": "⑤",
+      "blindReasoning": "13⁸≡721, 7⁸≡801 (mod 1000), 합의 나머지 522.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "13⁸+7⁸의 세 자리 끝수라는 정량 문제임"
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "각 수의 1000 나머지와 합 522로 충분함"
+        }
+      }
+    },
+    {
+      "qid": 11,
+      "sourceFingerprint": "42af70a96bdbb62669de9263dc0399d12fb8fbce4815cc030a3272fdd4c73e54",
+      "blindAnswer": "②",
+      "blindReasoning": "천의 자리 1~4에서 나머지 세 자릿수 합 경우는 C(10,2)+C(9,2)+C(8,2)+C(7,2)=130.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "네 자리 수의 첫 자리 제한과 자릿수 합 조건이 명시됨"
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "첫 자리 1,2,3,4에 따른 조합 수를 더함"
+        }
+      }
+    },
+    {
+      "qid": 12,
+      "sourceFingerprint": "f95f5bfe8ea4865816d3b7296804fef9f15035c8ab1550b2dec8e228a8706b13",
+      "blindAnswer": "③",
+      "blindReasoning": "중복 글자 L의 두 위치는 C(6,2)=15쌍, 정확히 두 칸 떨어진 4쌍이므로 4/15.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "중복 두 글자의 자리 거리 조건이 텍스트에 있음"
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "15개 자리쌍 중 거리 2인 4개로 충분함"
+        }
+      }
+    },
+    {
+      "qid": 13,
+      "sourceFingerprint": "63465df430ba471d94a8220954bb9abb6732c8949893accb2d50c1b6f6c4ce90",
+      "blindAnswer": "②",
+      "blindReasoning": "곱이 6의 배수인 2인자·3인자 교차 총 12쌍 / 9²=81, 즉 4/27.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "공약수 조건인 6의 배수 판정이 수식·집합 조건으로 완결됨"
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "배수의 합집합·교집합 포함배제 12/81을 계산함"
+        }
+      }
+    },
+    {
+      "qid": 14,
+      "sourceFingerprint": "3a319f7cc89c60c5596ac3e4a465006b69fe1d0ab92d4c43b37427fc662b6ad5",
+      "blindAnswer": "①",
+      "blindReasoning": "5×5 격자의 전체 C(10,5)=252, C 통과는 C(4,2)C(6,3)=120, 회피 132.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "PASS",
+          "planDigest": "c644207846a00f559a56363d89a72ef4b1b4d65e00fdbd743a015e905eb23993",
+          "reasoning": "5×5 격자에서 내부 금지 교점 C=(2,2)와 양 끝점 A,B를 표시하며 경로 수나 정답은 노출하지 않는 공식 문제 도형"
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "30e1c7cb6516a245ee10e941f804652bc0cf4911a3df378e9f3a2f64f54489b0",
+          "reasoning": "내부 교점 C로 향하는 두 개의 유입 간선을 모두 차단한 누적 경로 수가 252−120=132와 일치함"
+        }
+      }
+    },
+    {
+      "qid": 15,
+      "sourceFingerprint": "98845fb6f0ff1abe01bd295a077a07c3cc3050ca8a1336cb9b518fdb6f44d2ec",
+      "blindAnswer": "④",
+      "blindReasoning": "3개 추출 흰공 2개 15/56, 4개 추출 흰공 2개 3/7, 반반 평균 39/112.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "8개 공 가운데 흰 공 3개와 시행 수 3/4의 조건이 명확함"
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "초기 시행 선택에 따른 두 초기하분포 확률을 평균함"
+        }
+      }
+    },
+    {
+      "qid": 16,
+      "sourceFingerprint": "492a0a6374cbc10b8da0d1336e01d139a904fc55dee848809fc8bd399c2df479",
+      "blindAnswer": "①",
+      "blindReasoning": "4×5 격자의 내부 교점 3×4에서 대각 접촉이 각 2쌍, 전체 C(20,2), 확률 24/190.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "SOURCE_ASSET_VERIFIED",
+          "planDigest": "0ca664b59e23117fb0ca1e62dfc5c53ffe46a14315e810093eafb5083e1c0fe2",
+          "reasoning": "원본 문제 PNG가 4열×5행의 빈 정사각형 칸 20개를 보여 대각 접촉 조건을 독자가 확인할 수 있고 JS image 경로와 연결됨"
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "4×5 인접 셀의 대각 접촉 쌍 24/190을 수로 설명 가능함"
+        }
+      }
+    },
+    {
+      "qid": 17,
+      "sourceFingerprint": "7c7f1276b76a32f28b9adae12a606705f48318530a3ecadef9bdb6010dc847e5",
+      "blindAnswer": "①",
+      "blindReasoning": "짝수 자리에 엄격증가 3개를 1~6에서 고르는 C(6,3)=20, 나머지 양수합 10은 C(9,3)=84로 1680.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "세 짝수 위치의 값 순서와 홀수 위치의 양수 합 조건이 명시됨"
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "C(6,3)×C(9,3)=1680을 조합으로 설명함"
+        }
+      }
+    },
+    {
+      "qid": 18,
+      "sourceFingerprint": "6c220180e3ba10a13ce8f4001a72be04a2f5c3ef112a413cb39ebf6116f64919",
+      "blindAnswer": "⑤",
+      "blindReasoning": "C⊆A일 때 원소별 가능한 상태 6개 중 A∪B에 속하는 5개, 정확히 4개 포함 C(5,4)5⁴/6⁵=3125/7776.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "집합 C⊆A와 합집합 크기 4가 직접 주어짐"
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "원소마다 가능한 상태 6개 중 포함 5개를 이용함"
+        }
+      }
+    },
+    {
+      "qid": 19,
+      "sourceFingerprint": "bb80a044e35f73aae63c2e4205889d2b7cf397b36875ce355770ccc013c7e957",
+      "blindAnswer": "①",
+      "blindReasoning": "순서 없는 총84개, 합이 3배수 30, 곱이 3배수 64, 교집합 28, XOR=(30+64−2×28)/84=19/42.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "세 카드의 합 또는 곱이 3의 배수인 사건 정의가 명확함"
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "ebe355aab91a1aa1806f98725e9b677ced18e57d0c6cecea82194c5fc630fb7e",
+          "reasoning": "두 사건 합의 3배수와 곱의 3배수의 대칭차 양쪽만 음영 처리한 집합 도형으로 396−168=228을 설명함"
+        }
+      }
+    },
+    {
+      "qid": 20,
+      "sourceFingerprint": "f8d2403227e50355bb77cc731599d1836d0bee71dfa38b9eeed0864ab247e672",
+      "blindAnswer": "③",
+      "blindReasoning": "A 고정 10개 삼각형, 직각 6·예각 ACE 1·둔각 ABC,ABF,AEF 3, 순서쌍 20 중 6으로 3/10.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "SOURCE_ASSET_VERIFIED",
+          "planDigest": "b2f5bb90ea4fe4b57d1008d731e6f3786da169378c94897f6dfc30c4d69e7608",
+          "reasoning": "원본 문제 PNG가 원에 내접한 A~F 시계 방향 동일 간격 6점인 것을 보여 주사위 이동과 내접각 해석에 필요한 학생용 그림임"
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "4549ef17834476fd1bf42a3acb8a3916b008961d24cd736bd52ff1d5c31a511b",
+          "reasoning": "정육각형 ABC의 둔각 내접각 ∠ABC=120°가 실제 둔각 예시와 일치하며 O,X 중간점 표시를 숨김"
+        }
+      }
+    },
+    {
+      "qid": 21,
+      "sourceFingerprint": "ca60685c164843998161cadb910621003c1860e236b81cce9b08f2355b0b9224",
+      "blindAnswer": "7",
+      "blindReasoning": "x²계수 3k²−9k=30, (k−5)(k+2)=0, 실근 두 개의 차 7.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "NOT_APPLICABLE"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "음수 지수 유리식의 x²계수와 미지수 k를 직접 제시함"
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "3k²−9k=30의 두 실근 차 7을 식으로 설명함"
+        }
+      }
+    },
+    {
+      "qid": 22,
+      "sourceFingerprint": "721e5d3b7f75c3bb45c37c88f2477cfd6e212d34e14f85fba7e87e85608493f8",
+      "blindAnswer": "89",
+      "blindReasoning": "a=3c 분모는 c=0,1,2에서 55+21+3=79, a=2b도 만족하려면 c=b=0, d+e=9로 10개, p+q=89.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "NOT_APPLICABLE"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "음이 아닌 다섯 변수의 합과 비례 조건을 수식으로 제시함"
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "조건부 경우 79개 중 10개를 셈하여 89를 산출함"
+        }
+      }
+    },
+    {
+      "qid": 23,
+      "sourceFingerprint": "c98757feabd8f8aa191387e756b6f080bfa33e6d6e4a75a6bd27ab592754174c",
+      "blindAnswer": "유지 1/5, 교체 2/5 (교체 유리)",
+      "blindReasoning": "처음 상품 선택은 1/5로 유지 당첨; 처음 빈 문은 4/5, 그 조건에서 바꾸어 성공 1/2이므로 교체 2/5.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "NOT_APPLICABLE"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "문 5개·빈 문 2개 개방·바꿀 문 2개가 문자로 명료함"
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "549eb493f3fb8ef2f6ec08b78706375cbef5111ab27f85d4d18916acea27b356",
+          "reasoning": "다섯 문에서 최초 선택 1/5·4/5 분기와 교체 조건부 0·1/2를 보이는 공식 나무 그림"
+        }
+      }
+    },
+    {
+      "qid": 24,
+      "sourceFingerprint": "b3160490fa219018024524d7b5ad576528026ab2f468ca5becc7012a64b00a61",
+      "blindAnswer": "18",
+      "blindReasoning": "b=2u,c=2v와 gcd(u,v)=1에서 a²uv=300. a=1,2,5,10 순서쌍 수가 8,4,4,2이므로 18.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "NOT_APPLICABLE"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "a²bc=1200, 최대공약수(b,c)=2의 정수 제약이 분명함"
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "a=1,2,5,10에서 서로소 순서쌍 8+4+4+2=18을 설명함"
+        }
+      }
+    }
+  ]
+}
