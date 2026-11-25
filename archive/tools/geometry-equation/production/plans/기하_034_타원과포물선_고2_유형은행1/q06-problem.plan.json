@@ -1,0 +1,24 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conics":[
+    {"id":"e","kind":"ELLIPSE","center":["0","0"],"aSquared":"49","bSquared":"40","major":"X"},
+    {"id":"p","kind":"PARABOLA","vertex":["0","0"],"p":"-3","axis":"X"}
+  ],
+  "points":[
+    {"id":"F'","kind":"FOCUS","curve":"e","side":-1,"coordinates":true},
+    {"id":"B","kind":"POINT","x":"3","y":"0","coordinates":true},
+    {"id":"A","kind":"CONIC_CONIC","curves":["e","p"],"which":2},
+    {"id":"C","kind":"FOOT","from":"A","onto":"d","rightAngle":true}
+  ],
+  "lines":[{"id":"d","role":"DIRECTRIX","curve":"p","dashed":true,"label":"x=3"}],
+  "segments":[{"id":"sAB","from":"A","to":"B"},{"id":"sAC","from":"A","to":"C"}],
+  "caption":"타원 x²/49+y²/40과 포물선 y²=−12x, 공통점 A에서 준선 발 C와 x축 교점 B",
+  "accessibilityDescription":"타원과 원점에서 왼쪽으로 열린 포물선이 제2사분면 A에서 만난다. 포물선 초점 F′(−3,0), 준선 x=3 위에는 x축과의 교점 B(3,0)와 수선 발 C가 있으며 A에서 두 선분을 이었다. B는 타원의 오른쪽 초점 F와 같은 자리다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"타원 초점 ±3, 포물선 y²=−12x의 초점은 F′=(-3,0)이며 준선은 x=3이다. 원문 B=(3,0)는 오른쪽 타원 초점 F와 같은 점이므로 B만 도형에 표기한다.","mappedTo":["e","p","F'","B","d"]},
+    {"id":"c2","condition":"위쪽 공통점 A=(-14/5,2√210/5)은 두 방정식을 만족하고 CONIC_CONIC which2에 해당한다.","mappedTo":["A"]},
+    {"id":"c3","condition":"C=(3,2√210/5)은 A의 준선 수선 발, AC는 수평이고 BC는 수직이며 두 선분 AB,AC가 원문의 미지 거리 대상이다. 합 14는 문제 그림에 직접 쓰지 않는다.","mappedTo":["C","sAB","sAC"]},
+    {"id":"c4","condition":"F와 B는 동일 좌표의 이명이며 현행 엔진에서 좌표 라벨 충돌을 피하기 위해 B만 보여 준다. F=B 동등 라벨은 기능 보강 인계 대상이다.","mappedTo":["B"]}
+  ],
+  "newVisualInformation":["타원·왼쪽 포물선의 실제 제2사분면 교점과 준선 수선의 발 구현", "중복 라벨 F=B를 정직하게 기록"]
+}

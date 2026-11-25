@@ -1,0 +1,24 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conics":[
+    {"id":"e","kind":"ELLIPSE","center":["0","0"],"aSquared":"36","bSquared":"11","major":"X"},
+    {"id":"p","kind":"PARABOLA","vertex":["0","0"],"p":"5","axis":"X"}
+  ],
+  "points":[
+    {"id":"F","kind":"FOCUS","curve":"e","side":1},
+    {"id":"Q","kind":"POINT","x":"-5","y":"0"},
+    {"id":"P","kind":"CONIC_CONIC","curves":["e","p"],"which":2},
+    {"id":"R","kind":"FOOT","from":"P","onto":"d","rightAngle":true}
+  ],
+  "lines":[{"id":"d","role":"DIRECTRIX","curve":"p","dashed":true,"label":"x=-5"}],
+  "segments":[{"id":"sPQ","from":"P","to":"Q"},{"id":"sPR","from":"P","to":"R"}],
+  "caption":"타원 x²/36+y²/11과 포물선 y²=20x의 공통점 P, 준선 발 R과 Q(−5,0)",
+  "accessibilityDescription":"타원과 오른쪽 열린 포물선이 제1사분면 P에서 만난다. 포물선의 초점은 x축 위 F(5,0)이고 준선 x=−5에 Q(−5,0), P의 수선 발 R이 있다. P에서 Q와 R로 선분을 이었고 R에 직각 표식이 있다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"타원의 초점은 F=(5,0),F′=(-5,0), 포물선 y²=20x의 초점은 동일 F, 준선은 x=-5이다. 준선과 x축의 교점 Q=(-5,0)는 F′와 일치하므로 별도 F′ 라벨을 중복 표기하지 않는다.","mappedTo":["e","p","F","Q","d"]},
+    {"id":"c2","condition":"제1사분면 공통점 P=(6/11,2√330/11)는 타원·포물선 방정식을 모두 만족한다. 두 실수 교점 중 위쪽 which2이다.","mappedTo":["P"]},
+    {"id":"c3","condition":"R=(-5,2√330/11)은 P에서 준선 d로 내린 정확한 수선의 발이며 PR⊥QR. PQ=PF′, PR=PF는 참이지만 최종 합 12를 그림에 쓰지 않는다.","mappedTo":["R","sPQ","sPR"]},
+    {"id":"c4","condition":"Q와 F′가 같은 위치의 다른 이름이라는 원문 정보는 현재 엔진이 하나의 점에 두 라벨을 안정적으로 배치하지 못하므로 Q만 화면에 쓰고 F′=Q는 인계 기록으로 남긴다. Q.coordinates:true도 ELLIPSE_LABEL_NO_ROOM이어서 점 이름만 표시한다.","mappedTo":["Q"]}
+  ],
+  "newVisualInformation":["포물선 공식 DIRECTRIX와 FOOT 직각 표시", "원문 Q와 타원 음의 초점 중복 사실을 정확히 기록하고 답 비노출"]
+}

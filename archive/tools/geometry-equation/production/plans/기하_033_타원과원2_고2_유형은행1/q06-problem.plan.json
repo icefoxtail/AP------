@@ -1,0 +1,27 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conics":[
+    {"id":"e","kind":"ELLIPSE","center":["0","0"],"aSquared":"25","bSquared":"9","major":"X"},
+    {"id":"k","kind":"CIRCLE","center":["-50/17","9*sqrt(21)/17"],"rSquared":"15625/289"}
+  ],
+  "points":[
+    {"id":"F","kind":"FOCUS","curve":"e","side":1},
+    {"id":"F'","kind":"FOCUS","curve":"e","side":-1},
+    {"id":"A","kind":"POINT","x":"0","y":"2*sqrt(21)"},
+    {"id":"P","kind":"ON_CONIC","curve":"e","x":"-50/17","branch":"POS"}
+  ],
+  "segments":[
+    {"id":"sAFp","from":"A","to":"F'"},
+    {"id":"sAP","from":"A","to":"P"},
+    {"id":"sPF","from":"P","to":"F"},
+    {"id":"sPFp","from":"P","to":"F'"}
+  ],
+  "caption":"타원 위 P를 중심으로 A(0,k)와 초점 F를 지나는 원과 선분 AF′",
+  "accessibilityDescription":"타원 내부 x축에 F′와 F가 있으며 y축 위쪽 높은 지점 A에서 왼쪽 초점 F′로 선분을 이었다. 그 선분 위 타원점 P를 중심으로 하는 큰 원이 A와 오른쪽 초점 F를 통과한다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"타원 x²/25+y²/9=1의 F=(4,0),F′=(-4,0). 미지 A=(0,k),k>3에 대해 PA=PF, P∈AF′, 타원 정의를 이용하면 AF′=10과 내부 계산 좌표 k=2√21을 얻지만 k의 숫자는 그림에 쓰지 않는다.","mappedTo":["e","F","F'","A"]},
+    {"id":"c2","condition":"A와 F′를 이은 선분 위의 실제 타원교점은 P=(-50/17,9√21/17). PF′=45/17, PA=PF=125/17, AF′=10이므로 P는 선분 A F′ 내부에 있다.","mappedTo":["P","sAFp","sAP","sPF","sPFp"]},
+    {"id":"c3","condition":"원 k의 중심은 P, 반지름의 제곱은 15625/289. A와 F가 둘 다 원 위이고 P는 타원 위임을 독립 계산했다. 원문의 A(0,k)는 계산된 숫자가 아닌 기호 좌표여서 엔진 표시 보강 대상으로 남긴다.","mappedTo":["k","P","A","F"]}
+  ],
+  "newVisualInformation":["미지 원의 중심과 반지름을 정확한 타원·선분 관계에서 직접 구해 두 실제 점을 원 위에 배치", "k 정답 미표시"]
+}
