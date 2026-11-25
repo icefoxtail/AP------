@@ -1,0 +1,69 @@
+{
+  "capability": "ellipse-figure-v1",
+  "ellipse": {
+    "center": [
+      "0",
+      "0"
+    ],
+    "semiAxisSquared": {
+      "major": "25",
+      "minor": "9"
+    },
+    "majorAxis": "X"
+  },
+  "points": [
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    },
+    {
+      "id": "F",
+      "kind": "FOCUS",
+      "side": 1
+    },
+    {
+      "id": "F'",
+      "kind": "FOCUS",
+      "side": -1
+    },
+    {
+      "id": "P",
+      "kind": "ON_ELLIPSE",
+      "x": "5/2",
+      "branch": "POS"
+    }
+  ],
+  "segments": [
+    {
+      "id": "OP",
+      "from": "O",
+      "to": "P"
+    }
+  ],
+  "caption": "타원 9x²+25y²=225와 두 초점 F·F′, 원점 O, 제1사분면 P 및 OP 선분",
+  "accessibilityDescription": "타원 9x²+25y²=225와 두 초점 F·F′, 원점 O, 제1사분면 P 및 OP 선분. 그림의 길이·방향과 원문에 주어진 점 이름을 유지하며, 문제에서 구할 값은 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "타원 장반경 제곱 25·단반경 제곱 9, 두 초점은 (+4,0)·(−4,0)이며 P는 원문 크기 7을 만족한다.",
+      "mappedTo": [
+        "ellipse",
+        "F",
+        "F'",
+        "P",
+        "O"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "원문은 OP를 벡터 화살표로 지정했으나 ellipse-figure-v1의 segments에는 arrow 필드가 없어 화살촉은 표현되지 않는다. 충실도 PENDING.",
+      "mappedTo": [
+        "OP"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "타원 축척·초점 및 제1사분면의 실제 점",
+    "ENGINE_CAPABILITY_PENDING: OP 화살촉"
+  ]
+}

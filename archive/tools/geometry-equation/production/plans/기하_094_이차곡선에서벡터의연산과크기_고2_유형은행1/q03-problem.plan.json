@@ -1,0 +1,67 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "HYPERBOLA",
+    "center": [
+      "0",
+      "0"
+    ],
+    "aSquared": "16",
+    "bSquared": "20",
+    "transverse": "X"
+  },
+  "points": [
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    },
+    {
+      "id": "F",
+      "kind": "FOCUS",
+      "side": 1,
+      "coordinates": true
+    },
+    {
+      "id": "P",
+      "kind": "ON_CONIC",
+      "x": "22/3",
+      "sign": "POS"
+    }
+  ],
+  "segments": [
+    {
+      "id": "OP",
+      "from": "O",
+      "to": "P"
+    },
+    {
+      "id": "PF",
+      "from": "P",
+      "to": "F"
+    }
+  ],
+  "caption": "쌍곡선 x²/16−y²/20=1, 초점 F(6,0)·제1사분면 점 P와 OP·PF",
+  "accessibilityDescription": "쌍곡선 x²/16−y²/20=1, 초점 F(6,0)·제1사분면 점 P와 OP·PF. 그림의 길이·방향과 원문에 주어진 점 이름을 유지하며, 문제에서 구할 값은 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "쌍곡선의 a²=16, b²=20과 오른쪽 초점 (6,0); P는 원문의 벡터합 크기 15를 만족한다.",
+      "mappedTo": [
+        "conic",
+        "F",
+        "P"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "원점 O와 P를 이은 선분, P와 F를 이은 선분을 포함하며 구하는 길이는 쓰지 않는다.",
+      "mappedTo": [
+        "OP",
+        "PF"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "쌍곡선 양 가지·주어진 초점 좌표·두 선분"
+  ]
+}
