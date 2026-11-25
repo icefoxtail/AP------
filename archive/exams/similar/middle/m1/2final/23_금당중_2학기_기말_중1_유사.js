@@ -365,6 +365,7 @@ window.questionBank = [
   },
   {
     "id": 9,
+    "image": "assets/images/23_금당중_2학기_기말_중1_유사/q09-problem.svg",
     "category": "다각형과 원",
     "standardCourse": "중1",
     "curriculum": "2015",

@@ -320,6 +320,7 @@ window.questionBank = [
   },
   {
     "id": 8,
+    "image": "assets/images/23_동산중_2학기_중간_중3_유사/q08-problem.svg",
     "category": "삼각비",
     "standardCourse": "",
     "curriculum": "2015",

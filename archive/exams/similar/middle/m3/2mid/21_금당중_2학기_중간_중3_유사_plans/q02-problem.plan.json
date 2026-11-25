@@ -1,29 +1,162 @@
 {
-  "kind": "geometry",
-  "elements": [
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "15"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "50"
+            },
+            {
+              "kind": "integer",
+              "value": "15"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "50"
+            },
+            {
+              "kind": "rational",
+              "numerator": "95",
+              "denominator": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displaySegments": [
     {
-      "type": "triangle",
-      "vertices": [
+      "id": "sAB",
+      "refs": [
         "A",
-        "B",
-        "C"
-      ],
-      "rightAngle": "C"
+        "B"
+      ]
     },
     {
-      "type": "label",
-      "target": "AB",
-      "text": "13 cm"
+      "id": "sBC",
+      "refs": [
+        "C",
+        "B"
+      ]
     },
     {
-      "type": "label",
-      "target": "BC",
-      "text": "5 cm"
-    },
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aA",
+        "refs": [
+          "C",
+          "A",
+          "B"
+        ],
+        "arcs": 1,
+        "noLabel": true
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "13",
+        "unit": "cm"
+      },
+      {
+        "id": "lBC",
+        "ownerSegment": "sBC",
+        "text": "5",
+        "unit": "cm"
+      },
+      {
+        "id": "lCA",
+        "ownerSegment": "sCA",
+        "text": "12",
+        "unit": "cm"
+      }
+    ]
+  },
+  "rightAngles": [
     {
-      "type": "label",
-      "target": "CA",
-      "text": "12 cm"
+      "id": "rC",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 340
+  },
+  "caption": "각 C가 직각인 직각삼각형 ABC에서 변 AB의 길이는 13 센티미터, 변 BC의 길이는 5 센티미터, 변 CA의 길이는 12 센티미터로 나타낸 그림이다.",
+  "accessibilityDescription": "직각삼각형 ABC의 꼭짓점 C에 직각 기호가 있고 꼭짓점 A에 각 표시가 되어 있다. 빗변 AB의 길이는 13 센티미터, 높이 BC의 길이는 5 센티미터, 밑변 CA의 길이는 12 센티미터이다.",
+  "newVisualInformation": [
+    "직각삼각형 ABC에서 각 C는 90도이다.",
+    "변 AB는 13 cm, 변 BC는 5 cm, 변 CA는 12 cm이다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같이 $\\triangle\\text{ABC}$는 $\\angle\\text{C}=90^\\circ$인 직각삼각형이고, $\\overline{\\text{AB}}=13\\text{ cm}$, $\\overline{\\text{BC}}=5\\text{ cm}$, $\\overline{\\text{CA}}=12\\text{ cm}$이다. $\\sin A \\times \\cos A$의 값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
     }
   ]
 }

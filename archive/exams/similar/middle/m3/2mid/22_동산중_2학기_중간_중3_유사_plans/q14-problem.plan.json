@@ -1,100 +1,190 @@
 {
   "capability": "construction-spike-v1",
-  "mode": "PLANE_FIGURE_v1",
-  "mathPlan": [
-    {
-      "id": "B",
-      "op": "SOURCE_POINT",
-      "args": {
-        "x": 0,
-        "y": 0
-      }
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
     },
-    {
-      "id": "C",
-      "op": "SOURCE_POINT",
-      "args": {
-        "x": 0,
-        "y": 2
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "D",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "2"
+              }
+            ]
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "180"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
       }
-    },
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "D",
+    "B",
+    "C"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
     {
-      "id": "D",
-      "op": "SOURCE_POINT",
-      "args": {
-        "x": -2,
-        "y": 0
-      }
-    },
-    {
-      "id": "A",
-      "op": "SOURCE_POINT",
-      "args": {
-        "x": -4.828,
-        "y": 0
-      }
-    },
-    {
-      "id": "AB",
-      "op": "SEGMENT",
-      "inputs": [
+      "id": "sAD",
+      "refs": [
         "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sDB",
+      "refs": [
+        "D",
         "B"
       ]
     },
     {
-      "id": "BC",
-      "op": "SEGMENT",
-      "inputs": [
+      "id": "sBC",
+      "refs": [
         "B",
         "C"
       ]
     },
     {
-      "id": "CA",
-      "op": "SEGMENT",
-      "inputs": [
+      "id": "sCD",
+      "refs": [
         "C",
-        "A"
+        "D"
       ]
     },
     {
-      "id": "CD",
-      "op": "SEGMENT",
-      "inputs": [
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "ra0",
+      "refs": [
         "C",
+        "B",
         "D"
       ]
     }
   ],
   "planeMarks": {
-    "rightAngles": [
+    "angles": [
       {
-        "vertex": "B",
-        "ray1": "C",
-        "ray2": "A"
-      }
-    ],
-    "angleArcs": [
-      {
-        "vertex": "D",
-        "ray1": "B",
-        "ray2": "C",
-        "label": "45°"
-      }
-    ],
-    "equalSegments": [
-      [
-        [
-          "A",
-          "D"
-        ],
-        [
+        "id": "aCDB",
+        "refs": [
+          "C",
           "D",
-          "C"
+          "B"
+        ],
+        "value": 45,
+        "label": "45",
+        "arcs": 1
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "e0",
+        "count": 2,
+        "segments": [
+          "sAD",
+          "sCD"
         ]
-      ]
+      }
     ]
   },
-  "caption": "각 B가 직각이고 AD=DC, 각 CDB=45도인 직각삼각형 ABC"
+  "caption": "각 B가 직각이고 선분 AD와 선분 DC의 길이가 같으며 각 CDB가 45도인 직각삼각형 ABC이다.",
+  "accessibilityDescription": "직각삼각형 ABC의 변 AB 위에 점 D가 있고 각 B는 직각이다. 선분 AD와 선분 DC에 길이가 같음을 나타내는 두 줄의 눈금 표시가 있고 각 CDB의 크기는 45도로 표시되어 있다.",
+  "newVisualInformation": [
+    "각 CDB의 크기는 45도이다.",
+    "선분 AD와 선분 DC의 길이가 같다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "그림은 각 $B$가 직각인 직각삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AD}} = \\overline{\\mathrm{DC}}$이고 $\\angle\\mathrm{CDB} = 45^\\circ$일 때, $\\tan 22.5^\\circ$의 값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
 }

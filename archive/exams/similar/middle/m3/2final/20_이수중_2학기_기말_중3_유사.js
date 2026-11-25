@@ -850,6 +850,7 @@ window.questionBank = [
   },
   {
     "id": 19,
+    "image": "assets/images/20_이수중_2학기_기말_중3_유사/q19-problem.svg",
     "category": "원과 직선",
     "standardCourse": "중3",
     "curriculum": "2015",

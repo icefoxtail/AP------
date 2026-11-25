@@ -1,0 +1,84 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "90",
+          "10"
+        ]
+      }
+    ],
+    "domain": [
+      0,
+      9
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "9"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "B",
+        "x": "0",
+        "y": "90"
+      },
+      {
+        "id": "C",
+        "x": "9",
+        "y": "180"
+      }
+    ],
+    "axisScale": {
+      "x": "1",
+      "y": "1/20"
+    },
+    "axisTickValues": {
+      "x": [
+        "9"
+      ],
+      "y": [
+        "90",
+        "140",
+        "180"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "5",
+          "y": "140"
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "B": "B",
+    "C": "C",
+    "P": "P"
+  },
+  "caption": "직사각형에서 점 P가 점 B를 출발하여 점 C까지 움직일 때 사다리꼴 ABPD의 넓이 변화를 나타낸 그래프이다.",
+  "accessibilityDescription": "가로축은 시간 세로축은 사다리꼴의 넓이이며 점 B에서 점 C로 갈수록 넓이가 증가하는 일차함수 직선과 그 위의 점 P가 표시되어 있다.",
+  "newVisualInformation": [
+    "점 P의 이동에 따른 사다리꼴 ABPD의 넓이 그래프"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "직사각형 $ABCD$에서 $\\overline{AB} = 10\\text{ cm}$, $\\overline{BC} = 18\\text{ cm}$이고, 점 $P$는 점 $B$를 출발하여 점 $C$까지 변 $BC$를 따라 초속 $2\\text{ cm}$로 일정하게 움직이고 있다. 사각형 $ABPD$의 넓이가 $140\\text{ cm}^{2}$가 되는 것은 점 $P$가 꼭짓점 $B$를 출발한 지 몇 초 후인가?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ],
+  "coordinateLeader": [
+    "C"
+  ]
+}

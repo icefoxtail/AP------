@@ -1,12 +1,438 @@
 {
-  "target": "왼쪽 한 변 3x+2 정사각형에서 오른쪽 위 귀퉁이 한 변 2 정사각형을 잘라낸 도형 A와 오른쪽 세로 3x인 직사각형 B",
-  "type": "svg",
-  "width": 290,
-  "height": 170,
-  "elements": [
-    "도형 A (L자형 정사각형 차)",
-    "변 길이 3x+2, 2 표시",
-    "직사각형 B (세로 3x)"
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "7"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "7"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A5",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A6",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "16"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "26"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "26"
+            },
+            {
+              "kind": "integer",
+              "value": "9"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "16"
+            },
+            {
+              "kind": "integer",
+              "value": "9"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A1",
+    "A2",
+    "A3",
+    "A4",
+    "A5",
+    "A6",
+    "C0",
+    "B1",
+    "B2",
+    "B3",
+    "B4"
   ],
-  "svgCode": "<svg viewBox=\"0 0 290 170\" xmlns=\"http://www.w3.org/2000/svg\">\n  <path d=\"M 30 30 L 95 30 L 95 58 L 123 58 L 123 123 L 30 123 Z\" fill=\"#e0f2fe\" stroke=\"#0369a1\" stroke-width=\"1.8\"/>\n  <rect x=\"95\" y=\"30\" width=\"28\" height=\"28\" fill=\"none\" stroke=\"#64748b\" stroke-width=\"1.2\" stroke-dasharray=\"4,3\"/>\n  <text x=\"76\" y=\"140\" text-anchor=\"middle\" font-size=\"12\">3x+2</text>\n  <text x=\"16\" y=\"78\" text-anchor=\"middle\" font-size=\"12\">3x+2</text>\n  <text x=\"109\" y=\"23\" text-anchor=\"middle\" font-size=\"11\" fill=\"#475569\">2</text>\n  <text x=\"132\" y=\"48\" font-size=\"11\" fill=\"#475569\">2</text>\n  <text x=\"72\" y=\"92\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"bold\" fill=\"#0c4a6e\">A</text>\n  <rect x=\"175\" y=\"40\" width=\"95\" height=\"75\" fill=\"#fef3c7\" stroke=\"#b45309\" stroke-width=\"1.8\"/>\n  <text x=\"163\" y=\"82\" text-anchor=\"middle\" font-size=\"12\">3x</text>\n  <text x=\"222\" y=\"82\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"bold\" fill=\"#78350f\">B</text>\n</svg>"
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sA12",
+      "refs": [
+        "A1",
+        "A2"
+      ]
+    },
+    {
+      "id": "sA23",
+      "refs": [
+        "A2",
+        "A3"
+      ]
+    },
+    {
+      "id": "sA34",
+      "refs": [
+        "A3",
+        "A4"
+      ]
+    },
+    {
+      "id": "sA45",
+      "refs": [
+        "A4",
+        "A5"
+      ]
+    },
+    {
+      "id": "sA56",
+      "refs": [
+        "A5",
+        "A6"
+      ]
+    },
+    {
+      "id": "sA61",
+      "refs": [
+        "A6",
+        "A1"
+      ]
+    },
+    {
+      "id": "sA5C",
+      "refs": [
+        "A5",
+        "C0"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sA3C",
+      "refs": [
+        "A3",
+        "C0"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sB12",
+      "refs": [
+        "B1",
+        "B2"
+      ]
+    },
+    {
+      "id": "sB23",
+      "refs": [
+        "B2",
+        "B3"
+      ]
+    },
+    {
+      "id": "sB34",
+      "refs": [
+        "B3",
+        "B4"
+      ]
+    },
+    {
+      "id": "sB41",
+      "refs": [
+        "B4",
+        "B1"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "regions": [
+      {
+        "id": "rgA",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "A1",
+              "A2",
+              "A3",
+              "A4",
+              "A5",
+              "A6"
+            ]
+          }
+        ],
+        "label": "A",
+        "labelKind": "TEXT",
+        "labelPlacement": "AUTO_LEADER"
+      },
+      {
+        "id": "rgB",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "B1",
+              "B2",
+              "B3",
+              "B4"
+            ]
+          }
+        ],
+        "label": "B",
+        "labelKind": "TEXT",
+        "labelPlacement": "AUTO_LEADER"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dA_bot",
+        "from": "A1",
+        "to": "A2",
+        "label": "3x+2",
+        "side": "BELOW",
+        "style": "ARROW"
+      },
+      {
+        "id": "dA_left",
+        "from": "A1",
+        "to": "A6",
+        "label": "3x+2",
+        "side": "LEFT",
+        "style": "ARROW"
+      },
+      {
+        "id": "dA_cut_top",
+        "from": "A5",
+        "to": "C0",
+        "label": "2",
+        "side": "ABOVE",
+        "style": "BAR"
+      },
+      {
+        "id": "dA_cut_right",
+        "from": "A3",
+        "to": "C0",
+        "label": "2",
+        "side": "RIGHT",
+        "style": "BAR"
+      },
+      {
+        "id": "dB_left",
+        "from": "B1",
+        "to": "B4",
+        "label": "3x",
+        "side": "RIGHT",
+        "style": "ARROW"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 320
+  },
+  "hiddenPointNames": [
+    "A1",
+    "A2",
+    "A3",
+    "A4",
+    "A5",
+    "A6",
+    "C0",
+    "B1",
+    "B2",
+    "B3",
+    "B4"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "정사각형에서 작은 정사각형을 잘라낸 도형 A와 세로의 길이가 주어진 직사각형 B를 나타낸 그림이다.",
+  "accessibilityDescription": "왼쪽에는 한 변의 길이가 3x+2인 정사각형의 한 모퉁이에서 한 변의 길이가 2인 정사각형을 잘라낸 도형 A가 있고, 오른쪽에는 세로의 길이가 3x인 직사각형 B가 나란히 놓여 있다.",
+  "newVisualInformation": [
+    "도형 A는 한 변이 3x+2인 정사각형에서 2인 정사각형을 잘라낸 모양이다.",
+    "직사각형 B의 세로는 3x이다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같이 한 변의 길이가 $3x+2$인 정사각형 모양의 색종이에서 한 변의 길이가 $2$인 정사각형 부분을 잘라낸 도형 $A$와 세로의 길이가 $3x$인 직사각형 $B$의 넓이가 서로 같을 때, 직사각형 $B$의 가로의 길이는? (단, $x > 0$) [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
 }

@@ -1,0 +1,247 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "40"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "40"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2240",
+              "denominator": "97"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "250900",
+              "denominator": "9409"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "20"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1120",
+              "denominator": "97"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "M"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sBM",
+      "refs": [
+        "M",
+        "B"
+      ]
+    },
+    {
+      "id": "sMA",
+      "refs": [
+        "M",
+        "A"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sMD",
+      "refs": [
+        "M",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "eM",
+        "count": 1,
+        "segments": [
+          "sBM",
+          "sMA"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "id": "a1",
+        "refs": [
+          "D",
+          "A",
+          "M"
+        ],
+        "value": 30,
+        "arcs": 1,
+        "style": "ARC",
+        "equalGroup": 1,
+        "noLabel": true
+      },
+      {
+        "id": "a2",
+        "refs": [
+          "C",
+          "A",
+          "D"
+        ],
+        "value": 30,
+        "arcs": 1,
+        "style": "ARC",
+        "equalGroup": 1,
+        "noLabel": true
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rC",
+      "refs": [
+        "B",
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "rM",
+      "refs": [
+        "B",
+        "M",
+        "D"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 320
+  },
+  "caption": "각 C가 직각인 직각삼각형 ABC에서 각 A의 이등분선과 변 BC의 교점 D, 점 D에서 빗변 AB에 내린 수선의 발 M을 나타낸 그림이다.",
+  "accessibilityDescription": "직각삼각형 ABC에서 점 C는 직각이고 각 A는 선분 AD에 의해 이등분된다. 빗변 AB 위의 점 M은 수선의 발이며 선분 AM과 선분 BM의 길이가 같다.",
+  "newVisualInformation": [
+    "선분 AM과 선분 BM의 길이가 같다.",
+    "각 C와 각 BMD는 직각이다.",
+    "선분 AD는 각 A를 이등분한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\angle C=90^\\circ$인 직각삼각형 $ABC$에서 $\\angle A$의 이등분선이 변 $BC$와 만나는 점을 $D$, 점 $D$에서 빗변 $AB$에 내린 수선의 발을 $M$이라 하자. $\\overline{AM}=\\overline{BM}$일 때, 다음 중 옳지 **않은** 것은? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

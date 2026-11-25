@@ -804,6 +804,7 @@ window.questionBank = [
   },
   {
     "id": 18,
+    "image": "assets/images/25_왕의중_1학기_기말_중2_유사/q18-problem.svg",
     "category": "일차함수의 뜻과 그래프",
     "standardCourse": "중2",
     "curriculum": "2015",

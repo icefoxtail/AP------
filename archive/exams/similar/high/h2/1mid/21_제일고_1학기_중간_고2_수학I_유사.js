@@ -620,6 +620,7 @@ window.questionBank = [
   },
   {
     "id": 15,
+    "image": "assets/images/21_제일고_1학기_중간_고2_수학I_유사/q15-problem.svg",
     "category": "지수함수의 활용",
     "standardCourse": "",
     "curriculum": "2015",

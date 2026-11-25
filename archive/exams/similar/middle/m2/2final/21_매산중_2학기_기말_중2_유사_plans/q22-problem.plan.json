@@ -1,0 +1,774 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "세 정사각형"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "12"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "9"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "-12"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "E",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "-12"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "12"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "F",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "12"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "21"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "G",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "21"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "9"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "H",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "9"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "-9"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "I",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "-9"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayLines": [],
+        "displayCircles": [],
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H",
+          "I"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sCA",
+            "refs": [
+              "C",
+              "A"
+            ]
+          },
+          {
+            "id": "sBF",
+            "refs": [
+              "B",
+              "F"
+            ]
+          },
+          {
+            "id": "sFG",
+            "refs": [
+              "F",
+              "G"
+            ]
+          },
+          {
+            "id": "sGC",
+            "refs": [
+              "G",
+              "C"
+            ]
+          },
+          {
+            "id": "sAI",
+            "refs": [
+              "A",
+              "I"
+            ]
+          },
+          {
+            "id": "sIH",
+            "refs": [
+              "I",
+              "H"
+            ]
+          },
+          {
+            "id": "sHC",
+            "refs": [
+              "H",
+              "C"
+            ]
+          },
+          {
+            "id": "sBE",
+            "refs": [
+              "B",
+              "E"
+            ]
+          },
+          {
+            "id": "sED",
+            "refs": [
+              "E",
+              "D"
+            ]
+          },
+          {
+            "id": "sDA",
+            "refs": [
+              "D",
+              "A"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "regions": [
+            {
+              "id": "rBig",
+              "fill": "BLUE",
+              "label": "225",
+              "shapes": [
+                {
+                  "polygon": [
+                    "B",
+                    "C",
+                    "G",
+                    "F"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "rSmall",
+              "fill": "GREEN",
+              "label": "81",
+              "shapes": [
+                {
+                  "polygon": [
+                    "A",
+                    "I",
+                    "H",
+                    "C"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "rAns",
+              "fill": "WARM",
+              "label": "S",
+              "shapes": [
+                {
+                  "polygon": [
+                    "A",
+                    "B",
+                    "E",
+                    "D"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "rightAngles": [
+          {
+            "id": "ra0",
+            "refs": [
+              "B",
+              "A",
+              "C"
+            ]
+          }
+        ],
+        "hiddenPointNames": [
+          "D",
+          "E",
+          "F",
+          "G",
+          "H",
+          "I"
+        ],
+        "hiddenPointStyle": "NONE",
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 380
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "테오도로스 나선"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "1"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "Q1",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "A",
+                "O"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "90"
+                },
+                "turn": "CW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "Q2",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "Q1",
+                "O"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "90"
+                },
+                "turn": "CW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "Q3",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "Q2",
+                "O"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "90"
+                },
+                "turn": "CW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "Q4",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "Q3",
+                "O"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "90"
+                },
+                "turn": "CW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "Q5",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "Q4",
+                "O"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "90"
+                },
+                "turn": "CW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "Q6",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "Q5",
+                "O"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "90"
+                },
+                "turn": "CW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "B",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "Q6",
+                "O"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "90"
+                },
+                "turn": "CW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayLines": [],
+        "displayCircles": [],
+        "displayPoints": [
+          "O",
+          "A",
+          "Q1",
+          "Q2",
+          "Q3",
+          "Q4",
+          "Q5",
+          "Q6",
+          "B"
+        ],
+        "displaySegments": [
+          {
+            "id": "sOA",
+            "refs": [
+              "O",
+              "A"
+            ]
+          },
+          {
+            "id": "sAQ1",
+            "refs": [
+              "A",
+              "Q1"
+            ]
+          },
+          {
+            "id": "sOQ1",
+            "refs": [
+              "O",
+              "Q1"
+            ]
+          },
+          {
+            "id": "sQ1Q2",
+            "refs": [
+              "Q1",
+              "Q2"
+            ]
+          },
+          {
+            "id": "sOQ2",
+            "refs": [
+              "O",
+              "Q2"
+            ]
+          },
+          {
+            "id": "sQ2Q3",
+            "refs": [
+              "Q2",
+              "Q3"
+            ]
+          },
+          {
+            "id": "sOQ3",
+            "refs": [
+              "O",
+              "Q3"
+            ]
+          },
+          {
+            "id": "sQ3Q4",
+            "refs": [
+              "Q3",
+              "Q4"
+            ]
+          },
+          {
+            "id": "sOQ4",
+            "refs": [
+              "O",
+              "Q4"
+            ]
+          },
+          {
+            "id": "sQ4Q5",
+            "refs": [
+              "Q4",
+              "Q5"
+            ]
+          },
+          {
+            "id": "sOQ5",
+            "refs": [
+              "O",
+              "Q5"
+            ]
+          },
+          {
+            "id": "sQ5Q6",
+            "refs": [
+              "Q5",
+              "Q6"
+            ]
+          },
+          {
+            "id": "sOQ6",
+            "refs": [
+              "O",
+              "Q6"
+            ]
+          },
+          {
+            "id": "sQ6B",
+            "refs": [
+              "Q6",
+              "B"
+            ]
+          },
+          {
+            "id": "sOB",
+            "refs": [
+              "O",
+              "B"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "expressionLabels": [
+            {
+              "id": "l1",
+              "ownerSegment": "sAQ1",
+              "text": "1",
+              "ownership": "NEAREST"
+            },
+            {
+              "id": "esOA",
+              "ownerSegment": "sOA",
+              "text": "1",
+              "ownership": "NEAREST"
+            },
+            {
+              "id": "esQ1Q2",
+              "ownerSegment": "sQ1Q2",
+              "text": "1",
+              "ownership": "NEAREST"
+            },
+            {
+              "id": "esQ2Q3",
+              "ownerSegment": "sQ2Q3",
+              "text": "1",
+              "ownership": "NEAREST"
+            },
+            {
+              "id": "esQ3Q4",
+              "ownerSegment": "sQ3Q4",
+              "text": "1",
+              "ownership": "NEAREST"
+            },
+            {
+              "id": "esQ4Q5",
+              "ownerSegment": "sQ4Q5",
+              "text": "1",
+              "ownership": "NEAREST"
+            },
+            {
+              "id": "esQ5Q6",
+              "ownerSegment": "sQ5Q6",
+              "text": "1",
+              "ownership": "NEAREST"
+            },
+            {
+              "id": "esQ6B",
+              "ownerSegment": "sQ6B",
+              "text": "1",
+              "ownership": "NEAREST"
+            }
+          ]
+        },
+        "rightAngles": [
+          {
+            "id": "ra0",
+            "refs": [
+              "O",
+              "A",
+              "Q1"
+            ]
+          }
+        ],
+        "hiddenPointNames": [
+          "Q1",
+          "Q2",
+          "Q3",
+          "Q4",
+          "Q5",
+          "Q6"
+        ],
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 380
+        }
+      }
+    }
+  ],
+  "caption": "직각삼각형의 세 변에 붙은 정사각형과 직각삼각형 7개로 이루어진 테오도로스 나선이다.",
+  "accessibilityDescription": "첫 번째 패널에는 직각삼각형 ABC의 세 변에 정사각형이 각각 붙어 있고 빗변과 한 변의 정사각형 넓이가 225, 81로 주어져 있다. 두 번째 패널에는 길이가 1인 직각변이 7개 연속으로 붙어 있는 테오도로스 나선이 나타나 있다.",
+  "newVisualInformation": [
+    "직각삼각형 ABC의 세 변에 그려진 정사각형의 넓이와 바깥쪽 직각변의 길이가 1인 직각삼각형 7개로 이루어진 나선이 각각 패널로 제시되어 있다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "【서답형 2】  \n【수준별 2-①】 직각삼각형 $ABC$($\\angle A = 90^\\circ$)의 세 변을 각각 한 변으로 하는 세 정사각형이 있다. 빗변 $BC$ 위의 정사각형의 넓이가 $225\\text{ cm}^2$이고, 변 $AC$ 위의 정사각형의 넓이가 $81\\text{ cm}^2$일 때, 변 $AB$ 위의 정사각형의 넓이를 구하는 풀이과정과 답을 쓰시오. [4점]  \n【수준별 2-②】 $\\overline{OA} = 1$이고 다른 한 직각변의 길이가 $1$인 직각이등변삼각형을 시작으로 하여, 빗변을 다음 직각삼각형의 한 변으로 하고 나머지 한 변의 길이를 $1$로 하는 직각삼각형을 연속하여 덧붙여 나가는 테오도로스 나선이 있다. 길이가 $1$인 바깥쪽 직각변이 총 $7$개 붙어 있을 때, 마지막 빗변 $\\overline{OB}$에 대하여 $\\overline{OB}^2$의 값을 구하는 풀이과정과 답을 쓰시오. [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

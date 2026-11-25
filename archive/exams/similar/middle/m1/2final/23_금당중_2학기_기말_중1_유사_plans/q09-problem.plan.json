@@ -1,4 +1,314 @@
 {
-  "status": "UNSUPPORTED",
-  "reason": "육각형의 다섯 내각과 한 외각 45°가 표시된 다각형 그림"
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "11000",
+              "denominator": "283"
+            },
+            {
+              "kind": "rational",
+              "numerator": "18320",
+              "denominator": "283"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "6000",
+              "denominator": "283"
+            },
+            {
+              "kind": "rational",
+              "numerator": "13320",
+              "denominator": "283"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "6000",
+              "denominator": "283"
+            },
+            {
+              "kind": "rational",
+              "numerator": "9200",
+              "denominator": "283"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "10720",
+              "denominator": "283"
+            },
+            {
+              "kind": "rational",
+              "numerator": "7000",
+              "denominator": "283"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "14720",
+              "denominator": "283"
+            },
+            {
+              "kind": "rational",
+              "numerator": "9800",
+              "denominator": "283"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "15440",
+              "denominator": "283"
+            },
+            {
+              "kind": "rational",
+              "numerator": "13880",
+              "denominator": "283"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "16720",
+              "denominator": "283"
+            },
+            {
+              "kind": "rational",
+              "numerator": "11200",
+              "denominator": "283"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayLines": [],
+  "coordinateCanvas": {
+    "width": 550,
+    "height": 550
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "X"
+  ],
+  "hiddenPointNames": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "X"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "sFA",
+      "refs": [
+        "A",
+        "F"
+      ]
+    },
+    {
+      "id": "sEX",
+      "refs": [
+        "E",
+        "X"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rA",
+      "refs": [
+        "B",
+        "A",
+        "F"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aB",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 135,
+        "label": "135"
+      },
+      {
+        "id": "aC",
+        "refs": [
+          "B",
+          "C",
+          "D"
+        ],
+        "value": 115,
+        "label": "115"
+      },
+      {
+        "id": "aD",
+        "refs": [
+          "C",
+          "D",
+          "E"
+        ],
+        "value": 120,
+        "label": "x",
+        "labelKind": "MATH"
+      },
+      {
+        "id": "aE",
+        "refs": [
+          "X",
+          "E",
+          "F"
+        ],
+        "value": 45,
+        "label": "45"
+      },
+      {
+        "id": "aF",
+        "refs": [
+          "E",
+          "F",
+          "A"
+        ],
+        "value": 125,
+        "label": "125"
+      }
+    ]
+  },
+  "caption": "네 내각과 한 외각의 크기가 주어진 육각형에서 나머지 한 내각의 크기 x를 구하는 그림이다.",
+  "accessibilityDescription": "육각형의 꼭짓점들에 90도 직각 표시와 135도, 115도, 125도의 세 내각, 45도의 한 외각이 표시되어 있고, 아래쪽 내각에 x가 표시되어 있다.",
+  "newVisualInformation": [
+    "육각형의 직각 표시",
+    "내각 135도, 115도, 125도",
+    "외각 45도",
+    "구해야 하는 내각 x"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림과 같은 육각형에서 네 내각의 크기가 각각 $115^\\circ$, $135^\\circ$, $90^\\circ$, $125^\\circ$이고, 한 꼭짓점의 외각의 크기가 $45^\\circ$일 때, 나머지 한 내각 $\\angle x$의 크기는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
 }

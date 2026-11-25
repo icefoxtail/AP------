@@ -665,6 +665,7 @@ window.questionBank = [
   },
   {
     "id": 16,
+    "image": "assets/images/23_매산고_1학기_기말_고2_수학I_유사/q16-problem.svg",
     "category": "로그함수의 그래프",
     "standardCourse": "",
     "curriculum": "2015",

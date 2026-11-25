@@ -931,6 +931,7 @@ window.questionBank = [
   },
   {
     "id": 22,
+    "image": "assets/images/21_매산중_2학기_기말_중2_유사/q22-problem.svg",
     "category": "피타고라스 정리",
     "standardCourse": "중2",
     "curriculum": "2015",

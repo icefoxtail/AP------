@@ -1,48 +1,138 @@
 {
-  "kind": "geometry",
-  "caption": "∠C=90°, cos A=2/3, AB=6cm인 직각삼각형 ABC",
-  "viewBox": [
-    0,
-    0,
-    260,
-    170
-  ],
-  "vertices": {
-    "A": [
-      30,
-      140
-    ],
-    "C": [
-      180,
-      140
-    ],
-    "B": [
-      180,
-      40
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "5760",
+              "denominator": "161"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "5760",
+              "denominator": "161"
+            },
+            {
+              "kind": "integer",
+              "value": "40"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
     ]
   },
-  "segments": [
-    [
-      "A",
-      "C"
-    ],
-    [
-      "C",
-      "B"
-    ],
-    [
-      "A",
-      "B"
-    ]
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
   ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAC",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sCB",
+      "refs": [
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "6",
+        "unit": "cm"
+      }
+    ]
+  },
   "rightAngles": [
-    [
-      "A",
-      "C",
-      "B"
-    ]
+    {
+      "id": "rC",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    }
   ],
-  "labels": {
-    "AB": "6cm"
-  }
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 340
+  },
+  "caption": "직각삼각형 ABC에서 각 C가 직각이고 빗변 AB의 길이는 6 센티미터인 도형이다.",
+  "accessibilityDescription": "직각삼각형 ABC가 그려져 있고 꼭짓점 C에 직각 표시가 있으며 빗변 AB에 6 센티미터 길이가 표시되어 있다.",
+  "newVisualInformation": [
+    "직각삼각형 ABC의 꼭짓점 C에 직각 표시가 있고 빗변 AB의 길이는 6 센티미터이다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\angle C=90^\\circ$인 직각삼각형 $ABC$에서 $\\cos A=\\dfrac{2}{3}$, $AB=6,\\mathrm{cm}$일 때, $\\tan A$의 값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
 }

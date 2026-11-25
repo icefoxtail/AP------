@@ -4,6 +4,7 @@ window.examDisplayTitle = "23년 신흥중 중2 2학기 중간 유사문제";
 window.questionBank = [
   {
     "id": 1,
+    "image": "assets/images/23_신흥중_2학기_중간_중2_유사/q01-problem.svg",
     "category": "일차함수와 일차방정식의 관계",
     "standardCourse": "중2",
     "curriculum": "2015",

@@ -240,6 +240,7 @@ window.questionBank = [
   },
   {
     "id": 6,
+    "image": "assets/images/22_동산중_1학기_중간_중3_유사/q06-problem.svg",
     "category": "수직선 위의 실수 표현",
     "standardCourse": "중3",
     "curriculum": "2015",
