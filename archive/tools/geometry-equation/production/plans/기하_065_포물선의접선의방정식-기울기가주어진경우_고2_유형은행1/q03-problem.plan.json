@@ -1,0 +1,19 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"PARABOLA","vertex":["0","0"],"p":"1","axis":"X"},
+  "points":[
+    {"id":"F","kind":"FOCUS","coordinates":true},
+    {"id":"P","kind":"ON_CONIC","x":"4","branch":"POS","label":false},
+    {"id":"A","kind":"LINE_LINE","lines":["l","axis"],"coordinates":true},
+    {"id":"H","kind":"FOOT","from":"F","onto":"l","rightAngle":true}
+  ],
+  "lines":[{"id":"l","tangent":true,"at":"P","label":"l"},{"id":"axis","y":"0","hidden":true}],
+  "segments":[{"id":"AF","from":"A","to":"F"},{"id":"AH","from":"A","to":"H"},{"id":"FH","from":"F","to":"H"}],
+  "caption":"포물선의 기울기 1/2 접선 l과 직각삼각형 AFH",
+  "accessibilityDescription":"오른쪽으로 열린 포물선의 제1사분면 접선 l이 음의 x축의 A(-4,0)와 만나며, 포물선의 초점 F(1,0)에서 접선으로 내린 수선의 발 H에는 직각 표시가 있다. A,F,H를 세 변으로 이은 삼각형을 보여 준다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"y²=4x에서 p=1,F=(1,0)이다. 기울기 1/2인 접선은 y=x/2+2이고 정확한 접점 (4,4)을 계산 노드로 구성한다. x축과 교점 A=(-4,0)는 그림의 기지 좌표이다.","mappedTo":["F","P","l","A"]},
+    {"id":"c2","condition":"F에서 l로 내린 수선의 발 H=(0,2)이고 AH⊥FH다. A,F,H의 세 변 및 H의 FOOT.rightAngle로 실제 직각을 그린다. 구하는 넓이는 라벨에 표시하지 않는다.","mappedTo":["H","AF","AH","FH"]}
+  ],
+  "newVisualInformation":["기울기가 지정된 접선의 실제 접점과 x축 교점·초점·수선의 발을 계산 노드로 표시","삼각형 직각은 FOOT.rightAngle로 시각화하고 넓이 정답 비표시"]
+}
