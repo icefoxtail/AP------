@@ -1,7 +1,7 @@
 {
   "schemaVersion": "similar-exam-review-receipt-v2",
   "examUid": "26_순천고_1학기_중간_고2_대수_유사2",
-  "candidateGitBlobSha1": "8e955a5e0226d1656899a7addab52f4c0c10697c",
+  "candidateGitBlobSha1": "9852237cf252bf85419f3c17bb2f2f5df1e6b302",
   "createdAt": "2026-11-25",
   "signOffStatus": "PASS_WITH_NOTES",
   "overallVerdict": "PASS_WITH_NOTES",
@@ -14,7 +14,9 @@
     "Every student-visible problem was re-solved in a separate Python process using independently transcribed conditions, without loading the authoring solutions or answers.",
     "No independent external reviewer took part. This receipt records verified arithmetic and self-review; it is not a human or second-model approval.",
     "Q20 has a complete written explanation. The engine does not support its optional combined six-curve explanatory drawing; SVG remains follow-up visual debt.",
-    "All 24 problem illustrations are EXEMPT because their data are supplied in the problem text; optional Q05/Q15 explanation plans are not yet rendered."
+    "All 24 problem illustrations are EXEMPT because their data are supplied in the problem text; Q05/Q15 optional explanation SVGs were subsequently rendered and linked by the separate official SVG-engine workflow on main.",
+    "A subsequent separate-conversation content audit repaired Q23's undefined f(12) boundary; the 24 mathematical answer values remained unchanged. The original I1 calculation record remains a same-operator review, not external teacher approval.",
+    "Latest main included linked Q05/Q15 optional solution SVGs with canonical solution plans still marked EXEMPT. Strict release gate reports two inherited plan/image consistency errors; do not represent this newer whole-exam gate as PASS until the SVG workflow repairs them."
   ],
   "blindFirstPass": {
     "method": "separate Python exact-enumeration and symbolic formula re-solve",
@@ -247,8 +249,25 @@
       "id": "Q19-METHOD-REWRITE",
       "status": "VERIFIED_REPAIRED",
       "description": "Replaced a Cauchy-Schwarz invocation with an elementary AM-GM proof of the exact same minimum."
+    },
+    {
+      "id": "Q23-FUNCTION-DOMAIN",
+      "status": "VERIFIED_REPAIRED",
+      "description": "Original wording only defined f(n) for 4<=n<=11 while the solution evaluated f(12). Defined f(n) for all natural n>=4 and explicitly limited the count to 4<=n<=11; answer and difficulty unchanged."
     }
   ],
+  "postCreationOperationalQa": {
+    "reviewDate": "2026-11-25",
+    "reviewRole": "SEPARATE_CONVERSATION_Q01_Q24_CONTENT_AND_METADATA_AUDIT",
+    "verifiedQids": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+    "mathResult": "24_ANSWERS_MATCH_AFTER_Q23_STEM_CORRECTION",
+    "correction": "Q23_FUNCTION_DOMAIN_ONLY",
+    "metadata": "PT_TPL_4SLOT_REVIEWED_CANDIDATE_APPROVAL_STILL_REVIEW_REQUIRED",
+    "svg": "Q05_Q15_LINKED_BY_SEPARATE_ENGINE_WORKFLOW_Q20_ENGINE_PENDING",
+    "strictReleaseGate": "INHERITED_FAIL_Q05_Q15_CANONICAL_SOLUTION_PLAN_EXEMPT_WITH_ACTIVE_IMAGE",
+    "firstVisualFollowup": "SVG line must align q05/q15 canonical solution plans with published engine evidence and validate q15 multi-curve capability; do not disable or weaken harness",
+    "humanTeacherApproval": "NOT_RUN"
+  },
   "visualDebt": {
     "q20": "ENGINE_CAPABILITY_PENDING",
     "q05": "OPTIONAL_NOT_RENDERED",
