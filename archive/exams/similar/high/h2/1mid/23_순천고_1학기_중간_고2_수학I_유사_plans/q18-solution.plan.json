@@ -1,0 +1,12 @@
+{
+  "capability":"logarithmic-affine-spike-v1",
+  "graphPlan":{"family":"logarithmic-affine","base":"4","coefficients":["1","1","0","0"],"sourceDomain":{"kind":"NATURAL_LOG_AFFINE"},"domain":[0.15,4.5],"viewport":[-0.7,5,-2.6,2.6],"equalUnits":true,"axisTickValues":{"x":["1/4","4"],"y":["-1","1"]},"overlays":{
+    "circles":[{"id":"C","center":["17/8","0"],"radiusSquared":"289/64"}],
+    "points":[{"id":"P","curveX":"1/4","onCircle":"C","coordinates":true},{"id":"Q","curveX":"4","onCircle":"C","coordinates":true},{"id":"M","x":"17/8","y":"0"}],
+    "segments":[{"id":"PQ","from":"P","to":"Q"}]
+  }},
+  "caption":"해설로 얻은 밑 a=4의 로그곡선과 중심 (17/8,0), 반지름 17/8인 원 C를 정확히 겹친다. 원과 곡선 교점 P(1/4,−1), Q(4,1)를 잇는 PQ는 원의 중심 M을 지나 지름이다.",
+  "accessibilityDescription":"수평축에 접하는 원 C와 증가 로그곡선 y=log_4 x가 P(1/4,−1), Q(4,1)에서 만나고 두 점의 연결 선분이 원의 지름을 이룬다.",
+  "sourceConditions":[{"id":"q18s-circle","condition":"(x−17/8)²+y²=289/64","mappedTo":"graphPlan.overlays.circles[0]"},{"id":"q18s-log","condition":"a=4, y=log_4 x","mappedTo":"graphPlan.base,graphPlan.coefficients"},{"id":"q18s-diameter","condition":"P(1/4,−1), Q(4,1), 중심 M(17/8,0)","mappedTo":"graphPlan.overlays.points[0],graphPlan.overlays.points[1],graphPlan.overlays.points[2],graphPlan.overlays.segments[0]"}],
+  "newVisualInformation":["로그곡선과 원의 실제 교점 좌표","교점을 연결한 선분이 원 중심을 관통함"]
+}

@@ -1,0 +1,8 @@
+{
+  "capability":"polynomial-spike-v1",
+  "graphPlan":{"family":"polynomial","coefficients":["-2","6","-1"],"sourceDomain":{"kind":"ALL_REALS"},"domain":[0,6],"viewport":[-1,7,-3,8],"requiredPoints":[{"id":"V","x":3,"y":7}],"axisTickValues":{"x":[3],"y":[7]}},
+  "caption":"t=log x로 바꾸면 원래 함수 y=x^(6−log x)/100의 상용로그 지수는 q(t)=−t²+6t−2이다. 정점 (3,7)은 q의 최대이고 실제 y는 10^q이다. 이것은 원래 y(x)곡선이 아니다.",
+  "accessibilityDescription":"가로축 t 위로 볼록한 포물선 q(t)=−t제곱+6t−2, 최고점 (3,7)을 표시하여 지수의 최댓값을 보여 준다.",
+  "sourceConditions":[{"id":"q11s-transform","condition":"t=log x, y=10^(−t²+6t−2)","mappedTo":"graphPlan.coefficients"},{"id":"q11s-vertex","condition":"최대 t=3, q=7","mappedTo":"graphPlan.requiredPoints[0],graphPlan.axisTickValues"}],
+  "newVisualInformation":["치환 변수 t의 포물선 정점","원래 함수와 지수함수 내부 q의 구별"]
+}

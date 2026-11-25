@@ -1,0 +1,8 @@
+{
+  "capability":"exponential-affine-spike-v1",
+  "graphPlan":{"family":"exponential-affine","base":"3","shiftX":"2","coefficients":["1","1","4"],"sourceDomain":{"kind":"ALL_REALS"},"domain":[-1,4],"viewport":[-2,5,0,32],"axisTickValues":{"x":[0,2,3],"y":[4,5,7]},"overlays":{"lines":[{"id":"asym","slope":"0","intercept":"4"}]}},
+  "caption":"y=3^(x−2)+4는 y=3^x를 오른쪽 2, 위쪽 4만큼 이동한 증가곡선이며 y=4는 닿지 않는 수평 점근선이다.",
+  "accessibilityDescription":"오른쪽으로 증가하는 지수곡선과 y=4 점선, y=5 기준점이 있고 정의역은 실수 전체, 치역은 y>4이다.",
+  "sourceConditions":[{"id":"q02s-f","condition":"y=3^(x−2)+4","mappedTo":"graphPlan.base,graphPlan.shiftX,graphPlan.coefficients"},{"id":"q02s-asym","condition":"치역 y>4, 점근선 y=4","mappedTo":"graphPlan.overlays.lines[0],graphPlan.axisTickValues.y"}],
+  "newVisualInformation":["평행이동 후 증가하는 가지","점근선에 닿지 않는 치역"]
+}

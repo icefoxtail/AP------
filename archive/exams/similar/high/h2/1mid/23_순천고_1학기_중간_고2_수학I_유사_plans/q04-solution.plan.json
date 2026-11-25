@@ -1,0 +1,11 @@
+{
+  "capability":"multi-curve-figure-v1",
+  "graphPlan":{"family":"multi-curve","viewport":[-11,11,-2.7,2.7],"curves":[
+    {"id":"left","kind":"LOGARITHMIC","base":"10","coefficients":["2","-1","0","0"],"domain":["-10","-1/10"],"color":"BLUE"},
+    {"id":"right","kind":"LOGARITHMIC","base":"10","coefficients":["2","1","0","0"],"domain":["1/10","10"],"color":"BLUE"}
+  ],"axisTickValues":{"x":["-10","-1","1","10"],"y":["-2","2"]}},
+  "caption":"log(x²)=2log|x|이며 x=0만 제외한다. x<0과 x>0에서 두 로그 가지가 y축에 대칭이고 x=0이 공통 수직 점근선이다.",
+  "accessibilityDescription":"원점의 왼쪽과 오른쪽에 각각 한 개씩 놓인 로그 곡선은 y축 대칭이며 x=0에서 정의되지 않는다.",
+  "sourceConditions":[{"id":"q04s-domain","condition":"f(x)=log x², x≠0","mappedTo":"graphPlan.curves[0].domain,graphPlan.curves[1].domain"},{"id":"q04s-symmetry","condition":"f(-x)=f(x), 2log|x|","mappedTo":"graphPlan.curves[0].coefficients,graphPlan.curves[1].coefficients"}],
+  "newVisualInformation":["0 양쪽 로그 가지의 y축 대칭","x=0에서 정의되지 않는 두 열린 가지"]
+}

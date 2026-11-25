@@ -1,0 +1,23 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"5"},{"kind":"integer","value":"5"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"P","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"4"},{"kind":"integer","value":"6"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"M","op":"MIDPOINT","inputs":["O","P"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"k0","op":"CIRCLE_CENTER_RADIUS","inputs":["O"],"args":{"radius":{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"2"}]}},"outputType":"CIRCLE","factRole":"GIVEN"},
+    {"id":"k1","op":"CIRCLE_CENTER_RADIUS","inputs":["C"],"args":{"radius":{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"2"}]}},"outputType":"CIRCLE","factRole":"GIVEN"},
+    {"id":"hk","op":"CIRCLE_CENTER_RADIUS","inputs":["M"],"args":{"radius":{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"13"}]}},"outputType":"CIRCLE","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"s","op":"INTERSECTION","inputs":["k0","hk"],"args":{},"outputType":"POINT_SET","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"A","op":"SELECT_POINT","inputs":["s"],"args":{},"outputType":"POINT","branch":{"kind":"SIDE_OF_ORIENTED_LINE","refs":["O","P"],"sign":-1},"factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "displayPoints":["O","C","P","A"],"displayCircles":["k0","k1"],
+  "displaySegments":[{"id":"sOA","refs":["O","A"]},{"id":"sAP","refs":["A","P"]},{"id":"sOP","refs":["O","P"]},{"id":"sCP","refs":["C","P"]}],
+  "rightAngles":[{"id":"rA","refs":["O","A","P"]}],
+  "planeMarks":{"expressionLabels":[{"id":"rad","ownerSegment":"sOA","text":"sqrt(2)"}],"facts":[{"kind":"TANGENT_PERPENDICULAR","center":"O","contact":"A","tangent":"sAP"}]},
+  "coordinateCanvas":{"width":600,"height":560},
+  "caption":"n≥5의 대표 사례 n=5로, C=(5,5), P=(4,6)은 중심 C 반지름 √2인 원 위의 점이다. O 중심 반지름 √2인 원에 P에서 접선을 그어 A에 닿게 하고 OA⊥AP를 표시한다. P는 최대·최소를 만드는 특수점이 아닌 예시이며 f(n)이나 합의 정답은 표시하지 않는다.",
+  "accessibilityDescription":"원점 O의 작은 원과 오른쪽 위 C(5,5)의 같은 크기 원, 두 번째 원의 일반점 P에서 첫째 원에 그은 접선 AP, 접점 A의 직각 표시가 있다.",
+  "sourceConditions":[{"id":"q19p-circles","condition":"원 x²+y²=2와 (x−n)²+(y−n)²=2, 대표 n=5","mappedTo":"mathPlan.nodes[1],mathPlan.nodes[4],mathPlan.nodes[5],displayCircles"},{"id":"q19p-point","condition":"P_5=(4,6), C=(5,5), |CP|=√2","mappedTo":"mathPlan.nodes[2],displaySegments[3]"},{"id":"q19p-tangent","condition":"OA⊥AP, |OA|=√2","mappedTo":"mathPlan.nodes[8],displaySegments[0],displaySegments[1],rightAngles[0],planeMarks.expressionLabels[0]"}],
+  "newVisualInformation":["두 원의 상대 위치와 대표 n=5","접선 AP와 반지름 OA가 수직인 관계"]
+}

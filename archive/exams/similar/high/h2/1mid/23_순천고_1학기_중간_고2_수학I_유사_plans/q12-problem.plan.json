@@ -1,0 +1,13 @@
+{
+  "capability":"multi-curve-figure-v1",
+  "graphPlan":{"family":"multi-curve","viewport":[-1,8,-7,8],"curves":[
+    {"id":"g1","kind":"LOGARITHMIC","base":"3","coefficients":["1","1","1","2"],"domain":["-9/10","7"],"color":"BLUE"},
+    {"id":"g2","kind":"LOGARITHMIC","base":"3","coefficients":["1","1","-2","-2"],"domain":["21/10","8"],"color":"GREEN"},
+    {"id":"l1","kind":"LINE","coefficients":["5/3","-4/3"],"domain":["-1","8"],"color":"WARM","label":"4x+3y=5"},
+    {"id":"l2","kind":"LINE","coefficients":["20/3","-4/3"],"domain":["-1","8"],"color":"ROSE","label":"4x+3y=20"}
+  ],"axisTickValues":{"x":["-1","2","4","6"],"y":["-2","2"]}},
+  "caption":"log₃(9(x+1))=log₃(x+1)+2와 log₃(x−2)−2 두 증가 로그곡선, 4x+3y=5와 4x+3y=20 두 평행선을 함께 그린다. 내부의 넓이 수치는 표시하지 않으며 별도 면 채움도 없다.",
+  "accessibilityDescription":"오른쪽으로 이동해 아래로 내려간 두 번째 로그곡선과 평행한 대각선 두 개가 유계 영역을 둘러싸고 있다. 면색은 없다.",
+  "sourceConditions":[{"id":"q12p-log1","condition":"y=log₃(9(x+1))","mappedTo":"graphPlan.curves[0]"},{"id":"q12p-log2","condition":"y=log₃(x−2)−2","mappedTo":"graphPlan.curves[1]"},{"id":"q12p-lines","condition":"4x+3y=5 및 20","mappedTo":"graphPlan.curves[2],graphPlan.curves[3]"}],
+  "newVisualInformation":["로그곡선 둘 사이의 이동 방향","평행 직선 두 개가 둘러싸는 영역의 상대적 위치"]
+}
