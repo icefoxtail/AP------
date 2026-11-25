@@ -1,0 +1,76 @@
+{
+  "capability": "exponential-affine-spike-v1",
+  "graphPlan": {
+    "family": "exponential-affine",
+    "coefficients": [
+      "1",
+      "2",
+      "0"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -0.4,
+      1.1
+    ],
+    "viewport": [
+      -0.5,
+      1.2,
+      -0.5,
+      10
+    ],
+    "axisTickValues": {
+      "x": [
+        "1"
+      ],
+      "y": [
+        "1"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "0",
+          "y": "4"
+        },
+        {
+          "id": "B",
+          "x": "0",
+          "y": "1"
+        }
+      ],
+      "segments": [
+        {
+          "id": "AB",
+          "from": "A",
+          "to": "B"
+        }
+      ]
+    }
+  },
+  "caption": "자연지수 y=e^(2x)와 A=(0,4),B=(0,1); C와 P 연결선은 ENGINE_CAPABILITY_PENDING.",
+  "accessibilityDescription": "자연지수 곡선, y축 위의 A와 B 및 AB만 있다. 오른쪽 점 C, P 및 삼각형의 변들은 보이지 않는다.",
+  "sourceQuote": "[그림: $A,B$를 $y$축에 두고 $C$를 $B$의 오른쪽에 둔다. $y=e^{2x}$ 위의 $B$ 오른쪽 가까이에 $P$를 두고 $AP,BP,CP,AB,BC$를 그린다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "자연지수 y=e^(2x)",
+      "mappedTo": "graphPlan.coefficients;graphPlan.sourceDomain"
+    },
+    {
+      "id": "c2",
+      "condition": "A=(0,4), B=(0,1), C=(2,1), AB와 BC",
+      "mappedTo": "graphPlan.overlays.points[0..1];graphPlan.overlays.segments[0];ENGINE_CAPABILITY_PENDING:C=(2,1) 표시창 바깥"
+    },
+    {
+      "id": "c3",
+      "condition": "P=(t,e^(2t))와 AP,BP,CP",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: 자연지수 초월함수값 e^(2t)의 exact overlay point 미지원"
+    }
+  ],
+  "newVisualInformation": [
+    "ENGINE_CAPABILITY_PENDING: e^(2t)의 정확 곡선 위 P와 AP,BP,CP가 지원되지 않는다. 또한 C=(2,1)을 단일 자연지수 플롯에 overlay하면 OVERLAY_POINT_OUTSIDE_VIEWPORT:C가 발생하므로 C·BC도 미표시."
+  ]
+}

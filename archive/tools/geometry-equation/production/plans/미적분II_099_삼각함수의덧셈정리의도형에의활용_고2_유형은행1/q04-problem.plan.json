@@ -1,0 +1,284 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "7"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "hiddenPointNames": [],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "D",
+        "F"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "F",
+        "A"
+      ]
+    },
+    {
+      "id": "s5",
+      "refs": [
+        "F",
+        "E"
+      ]
+    },
+    {
+      "id": "s6",
+      "refs": [
+        "F",
+        "C"
+      ]
+    },
+    {
+      "id": "s7",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "s8",
+      "refs": [
+        "A",
+        "D"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "EFC",
+        "refs": [
+          "E",
+          "F",
+          "C"
+        ],
+        "value": 74.93151184050778,
+        "label": "θ",
+        "arcs": 1
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "AB10",
+        "ownerSegment": "s0",
+        "text": "10"
+      },
+      {
+        "id": "AD8",
+        "ownerSegment": "s8",
+        "text": "8"
+      },
+      {
+        "id": "AE3",
+        "ownerSegment": "s7",
+        "text": "3"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "eqAFDF",
+        "count": 1,
+        "segments": [
+          "s3",
+          "s4"
+        ]
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rA",
+      "refs": [
+        "B",
+        "A",
+        "D"
+      ]
+    }
+  ],
+  "caption": "AB=10, AD=8인 직사각형에서 E는 AB 위 AE=3, F는 AD의 중점. F에서 E와 C를 잇는 도형.",
+  "accessibilityDescription": "AB=10, AD=8인 직사각형에서 E는 AB 위 AE=3, F는 AD의 중점. F에서 E와 C를 잇는 도형.",
+  "sourceQuote": "[그림: $A(0,10),B(0,0),C(8,0),D(8,10),E(0,7),F(4,10)$을 놓고 $FE,FC$ 표시]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "A(0,10),B(0,0),C(8,0),D(8,10),E(0,7),F(4,10)",
+      "mappedTo": "mathPlan.nodes[0..5]"
+    },
+    {
+      "id": "c2",
+      "condition": "직사각형 ABCD, FE, FC",
+      "mappedTo": "displaySegments[0..8];rightAngles[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "AB=10 AD=8 AE=3, AF=FD",
+      "mappedTo": "planeMarks.expressionLabels[0..2];planeMarks.equalLengths[0]"
+    },
+    {
+      "id": "c4",
+      "condition": "∠EFC",
+      "mappedTo": "planeMarks.angles[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "원문 그림 설명에 대응하는 좌표·선·표식을 실제 렌더 필드에 지정했다. 정답 수치는 표기하지 않는다."
+  ]
+}
+

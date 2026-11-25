@@ -1,0 +1,180 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "X",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "P",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "6"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              }
+            ]
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "45"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "P",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "9"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "75"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "P",
+    "X",
+    "A",
+    "B"
+  ],
+  "hiddenPointNames": [
+    "X"
+  ],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "B",
+        "A"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "PB9",
+        "ownerSegment": "s1",
+        "text": "9"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rB",
+      "refs": [
+        "P",
+        "B",
+        "A"
+      ]
+    }
+  ],
+  "caption": "P=(0,2)의 기울기1과 2+√3인 두 반직선 위의 A,B, PB=9와 B에서 직각.",
+  "accessibilityDescription": "점 P에서 45도와 75도 방향으로 두 반직선이 뻗고 B에서 A로 내린 수선 및 직각, 길이 9가 표시된다.",
+  "sourceQuote": "[그림: $P(0,2)$에서 위쪽 두 반직선을 그리고 가파른 쪽의 $B$에서 완만한 쪽으로 수선을 내려 교점 $A$ 표시]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "P(0,2), 두 직선의 기울기1, 2+sqrt3",
+      "mappedTo": "mathPlan.nodes[0..3];displaySegments[0..1]"
+    },
+    {
+      "id": "c2",
+      "condition": "PB=9, BA⊥PB",
+      "mappedTo": "displaySegments[2];planeMarks.expressionLabels[0];rightAngles[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "구하는 PA의 길이 및 풀이로 얻는 예각 30°는 표시하지 않는다."
+  ]
+}

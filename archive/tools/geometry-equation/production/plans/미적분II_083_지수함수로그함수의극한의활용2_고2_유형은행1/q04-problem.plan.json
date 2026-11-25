@@ -1,0 +1,90 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -0.3,
+      1.5,
+      -0.3,
+      3
+    ],
+    "curves": [
+      {
+        "id": "parabola",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "4"
+        ],
+        "domain": [
+          "0",
+          "4/5"
+        ],
+        "label": "y=ax^2"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1"
+      ],
+      "y": [
+        "2"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        },
+        {
+          "id": "B",
+          "x": "1",
+          "y": "0"
+        },
+        {
+          "id": "C",
+          "x": "0",
+          "y": "2"
+        }
+      ],
+      "segments": [
+        {
+          "id": "OB",
+          "from": "O",
+          "to": "B"
+        },
+        {
+          "id": "OC",
+          "from": "O",
+          "to": "C"
+        }
+      ]
+    }
+  },
+  "caption": "대표 포물선 y=4x²와 O,B,C; 자연로그 곡선·제1사분면 교점 P는 ENGINE_CAPABILITY_PENDING.",
+  "accessibilityDescription": "첫사분면의 포물선 예시와 원점, 두 축 위 B,C만 있다. 함께 그려야 할 자연로그 곡선 및 교점 P, 연결선이 빠졌다.",
+  "sourceQuote": "[그림: 두 곡선의 원점과 제1사분면 교점 $P$를 표시한다. 좌표축 위의 $B,C$와 $P$를 연결하고 $OP$를 긋는다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "a>0인 포물선 y=ax², 대표 a=4",
+      "mappedTo": "graphPlan.curves[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "로그곡선 y=ln(1+4x), 제1사분면 두 곡선의 교점 P",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: multi-curve 자연로그 밑 e 및 초월 교점 불가"
+    },
+    {
+      "id": "c3",
+      "condition": "O=(0,0), B=(1,0), C=(0,2)와 OP,BP,CP",
+      "mappedTo": "graphPlan.overlays.points[0..2];ENGINE_CAPABILITY_PENDING: P 관련 세 선분"
+    }
+  ],
+  "newVisualInformation": [
+    "ENGINE_CAPABILITY_PENDING: multi-curve는 LOGARITHMIC의 유리 밑만 지원해 ln(1+4x)과 포물선을 같은 좌표계에 겹칠 수 없으며 정확 교점 P도 지원하지 않는다."
+  ]
+}

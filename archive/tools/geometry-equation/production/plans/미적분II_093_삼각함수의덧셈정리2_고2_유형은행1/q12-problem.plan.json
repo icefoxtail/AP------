@@ -1,0 +1,282 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-13"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "13"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "K",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "13"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "P",
+    "Q",
+    "H",
+    "K"
+  ],
+  "hiddenPointNames": [
+    "A",
+    "B",
+    "H",
+    "K"
+  ],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "O",
+        "P"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "O",
+        "Q"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "P",
+        "H"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "Q",
+        "K"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "semi",
+        "circle": "k",
+        "center": "O",
+        "from": "B",
+        "to": "A",
+        "side": "CCW",
+        "highlight": false
+      }
+    ],
+    "angles": [
+      {
+        "id": "POQ",
+        "refs": [
+          "Q",
+          "O",
+          "P"
+        ],
+        "value": 44.760270103919154,
+        "label": "θ",
+        "arcs": 1
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rP",
+      "refs": [
+        "O",
+        "H",
+        "P"
+      ]
+    },
+    {
+      "id": "rQ",
+      "refs": [
+        "O",
+        "K",
+        "Q"
+      ]
+    }
+  ],
+  "caption": "반지름13 위쪽 반원 P(5,12),Q(12,5)와 각각 x축에 내린 수선.",
+  "accessibilityDescription": "반지름13 위쪽 반원 P(5,12),Q(12,5)와 각각 x축에 내린 수선.",
+  "sourceQuote": "[그림: 지름을 $x$축 위에 두고 $P(5,12),Q(12,5)$와 각 점에서 $x$축에 내린 수선을 표시]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "수평 지름·위쪽 반원",
+      "mappedTo": "mathPlan.nodes[0..2,7];displaySegments[0];planeMarks.arcs[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "P,Q와 x축 수선·직각",
+      "mappedTo": "mathPlan.nodes[3..6];displaySegments[3..4];rightAngles[0..1]"
+    },
+    {
+      "id": "c3",
+      "condition": "O와 ∠POQ의 두 반지름",
+      "mappedTo": "displaySegments[1..2];planeMarks.angles[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "답은 표기하지 않고 원문 도형만 구성한다."
+  ]
+}

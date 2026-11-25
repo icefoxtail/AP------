@@ -1,0 +1,196 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "H",
+    "B",
+    "C"
+  ],
+  "hiddenPointNames": [],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "A",
+        "H"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "H",
+        "B"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "H",
+        "C"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "ACB",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "value": 63.43494882292201,
+        "label": "θ",
+        "arcs": 1
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "CH4",
+        "ownerSegment": "s2",
+        "text": "4m"
+      },
+      {
+        "id": "HB2",
+        "ownerSegment": "s1",
+        "text": "2m"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rH",
+      "refs": [
+        "A",
+        "H",
+        "C"
+      ]
+    }
+  ],
+  "caption": "수평 지면 A-H-B와 수직 CH, C에서 A,B로 연결한 시선. CH=4m, HB=2m, ∠ACB의 탄젠트는 2.",
+  "accessibilityDescription": "수평 지면 A-H-B와 수직 CH, C에서 A,B로 연결한 시선. CH=4m, HB=2m, ∠ACB의 탄젠트는 2.",
+  "sourceQuote": "[그림: $A,H,B$를 수평선에 놓고 $CH$를 수직으로 세우며 $CA,CB$와 $\\angle ACB$를 표시]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "A,H,B 순서의 수평 지면, C는 H 수직 위",
+      "mappedTo": "mathPlan.nodes[0..3];displaySegments[0..4];rightAngles[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "CH=4m, HB=2m",
+      "mappedTo": "planeMarks.expressionLabels[0..1]"
+    },
+    {
+      "id": "c3",
+      "condition": "tan ∠ACB=2",
+      "mappedTo": "planeMarks.angles[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "정답 AB의 길이는 표기하지 않고 조건을 만족시키는 대표 배치만 렌더한다."
+  ]
+}
+

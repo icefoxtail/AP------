@@ -1,0 +1,72 @@
+{
+  "capability": "logarithmic-affine-spike-v1",
+  "graphPlan": {
+    "family": "logarithmic-affine",
+    "coefficients": [
+      "1",
+      "1/2",
+      "0",
+      "0"
+    ],
+    "sourceDomain": {
+      "kind": "NATURAL_LOG_AFFINE"
+    },
+    "domain": [
+      0.1,
+      4
+    ],
+    "viewport": [
+      0,
+      4,
+      -3,
+      3
+    ],
+    "axisTickValues": {
+      "x": [
+        "2"
+      ],
+      "y": [
+        "1"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        }
+      ],
+      "lines": [
+        {
+          "id": "ell",
+          "slope": "-1",
+          "intercept": "1"
+        }
+      ]
+    }
+  },
+  "caption": "자연로그 y=ln(x/2)와 t=1의 x+y=t 직선; P,H,Q·y=e^x는 ENGINE_CAPABILITY_PENDING.",
+  "accessibilityDescription": "자연로그 곡선과 기울기 −1인 직선이 교차하고 원점이 표시되지만 수선과 지수곡선은 없고 P가 표시되지 않는다.",
+  "sourceQuote": "[그림: $y=\\ln(x/2)$와 $x+y=t$의 교점 $P=(u,\\ln(u/2))$를 $x$축 아래에 그린다. 직선 $x=u$ 위에 $H=(u,0)$, $Q=(u,e^u)$를 표시하고 원점과 $H,Q$를 연결한다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "자연로그 y=ln(x/2)",
+      "mappedTo": "graphPlan.coefficients;graphPlan.sourceDomain"
+    },
+    {
+      "id": "c2",
+      "condition": "x+y=t의 t<2 표본 t=1",
+      "mappedTo": "graphPlan.overlays.lines[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "두 곡선 교점 P=(u,ln(u/2)), H=(u,0), Q=(u,e^u), 삼각형 OHQ",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: 자연로그 초월 교점 및 별도 e^x 곡선과의 동시 오버레이"
+    }
+  ],
+  "newVisualInformation": [
+    "ENGINE_CAPABILITY_PENDING: 자연로그·자연지수 두 곡선을 한 좌표계에 혼합하고 초월 교점 P,H,Q 정확표시 및 OHQ 선분을 생성하는 capability 필요."
+  ]
+}
