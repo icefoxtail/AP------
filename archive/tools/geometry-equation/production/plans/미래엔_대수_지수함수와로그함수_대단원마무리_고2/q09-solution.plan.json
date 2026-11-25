@@ -1,0 +1,26 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-4, 2, -2, 7],
+    "curves": [
+      { "id": "f", "kind": "EXPONENTIAL", "base": "3", "coefficients": ["1", "1", "-1"], "shiftX": "-1", "domain": ["-4", "2"], "color": "BLUE", "label": "y=3^(x+1)-1" }
+    ],
+    "axisTickValues": { "x": ["-1"], "y": ["-1", "2"] },
+    "overlays": {
+      "points": [
+        { "id": "P", "x": "-1", "y": "0", "coordinates": true },
+        { "id": "Q", "x": "0", "y": "2", "coordinates": true }
+      ]
+    }
+  },
+  "caption": "x절편과 점근선으로 지수함수의 평행이동량을 결정한 해설 그래프",
+  "accessibilityDescription": "지수함수 y=3^(x+1)-1은 점 (-1,0)과 (0,2)를 지나고 점근선은 y=-1이다.",
+  "sourceConditions": [
+    { "text": "밑 3, 주어진 지수함수", "mappedTo": "graphPlan.curves[f].base=3" },
+    { "text": "원그림의 x절편 -1", "mappedTo": "graphPlan.overlays.points[P]; x=-1,y=0" },
+    { "text": "원그림의 점근선 -1", "mappedTo": "graphPlan.curves[f].coefficients[2]=-1" },
+    { "text": "해설에서 확정한 a=-1,b=-1", "mappedTo": "graphPlan.curves[f].shiftX=-1 and C=-1; label" }
+  ],
+  "newVisualInformation": ["풀이 후에 얻은 평행이동 식, 두 확인점과 점근선을 일치시킨다."]
+}

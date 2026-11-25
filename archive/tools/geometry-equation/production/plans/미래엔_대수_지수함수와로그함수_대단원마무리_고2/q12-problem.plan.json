@@ -1,0 +1,42 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-1, 5, -1, 3],
+    "curves": [
+      { "id": "log", "kind": "LOGARITHMIC", "base": "2", "coefficients": ["1", "1", "0", "0"], "domain": ["1/4", "5"], "color": "BLUE" },
+      { "id": "diag", "kind": "LINE", "coefficients": ["0", "1"], "domain": ["-1", "3"], "color": "WARM", "label": "y=x" }
+    ],
+    "axisTickValues": { "x": [], "y": [] },
+    "overlays": {
+      "points": [
+        { "id": "a", "x": "1", "y": "0" },
+        { "id": "b", "x": "2", "y": "0" },
+        { "id": "c", "x": "4", "y": "0" },
+        { "id": "u", "x": "1", "y": "1", "unnamed": true },
+        { "id": "v", "x": "2", "y": "1", "unnamed": true },
+        { "id": "w", "x": "2", "y": "2", "unnamed": true },
+        { "id": "z", "x": "4", "y": "2", "unnamed": true },
+        { "id": "p", "x": "0", "y": "1", "unnamed": true },
+        { "id": "q", "x": "0", "y": "2", "unnamed": true }
+      ],
+      "segments": [
+        { "id": "au", "from": "a", "to": "u", "dashed": true },
+        { "id": "pv", "from": "p", "to": "v", "dashed": true },
+        { "id": "bw", "from": "b", "to": "w", "dashed": true },
+        { "id": "qz", "from": "q", "to": "z", "dashed": true },
+        { "id": "cz", "from": "c", "to": "z", "dashed": true }
+      ]
+    }
+  },
+  "caption": "로그곡선과 직선 y=x 사이의 수평·수직 점선 대응과 미지 눈금 a,b,c",
+  "accessibilityDescription": "x축에 a,b,c가 왼쪽부터 놓이고, a에서 y=x의 높이로 올린 점선이 로그곡선의 b와 연결되며, b에서 같은 방법으로 c와 연결된다.",
+  "sourceConditions": [
+    { "text": "y=log_2x", "mappedTo": "graphPlan.curves[log]" },
+    { "text": "y=x", "mappedTo": "graphPlan.curves[diag]" },
+    { "text": "a에서 위로, 다시 b로 점선 연결", "mappedTo": "overlays.segments[au,pv]; a,u,v,b" },
+    { "text": "b에서 위로, 다시 c로 점선 연결", "mappedTo": "overlays.segments[bw,qz,cz]; b,w,z,c" },
+    { "text": "a,b,c는 구할 미지수", "mappedTo": "overlays.points[a,b,c] names without coordinate text" }
+  ],
+  "newVisualInformation": ["원본 그림의 두 함수, 미지 눈금 3개, 직교 점선 5개를 재현한다. 문제 그림에는 a,b,c의 수치와 합을 쓰지 않는다."]
+}

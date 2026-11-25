@@ -1,0 +1,28 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-4, 2, -2, 7],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "EXPONENTIAL",
+        "base": "3",
+        "coefficients": ["1", "1", "-1"],
+        "shiftX": "-1",
+        "domain": ["-4", "2"],
+        "color": "BLUE",
+        "label": "y=3^(x-a)+b"
+      }
+    ],
+    "axisTickValues": { "x": ["-1"], "y": ["-1"] }
+  },
+  "caption": "x축과 -1에서 만나고 y=-1에 가까워지는 주어진 지수함수 그래프",
+  "accessibilityDescription": "증가하는 지수함수의 그래프가 x축의 -1을 지나며 왼쪽으로 갈수록 점선 y=-1에 가까워진다.",
+  "sourceConditions": [
+    { "text": "y=3^(x-a)+b", "mappedTo": "graphPlan.curves[f] (symbolic label; numerical geometry from supplied graph)" },
+    { "text": "그래프의 x절편 -1", "mappedTo": "curve f: x=-1,y=0; graphPlan.axisTickValues.x" },
+    { "text": "점근선 y=-1", "mappedTo": "curve f coefficient C=-1; graphPlan.axisTickValues.y" }
+  ],
+  "newVisualInformation": ["원문 그림의 증가 방향, x절편 -1, 수평 점근선 -1을 보존한다. 식의 미지수 a,b는 수치로 표기하지 않는다."]
+}

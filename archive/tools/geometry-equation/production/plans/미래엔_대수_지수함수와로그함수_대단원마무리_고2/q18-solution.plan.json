@@ -1,0 +1,22 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-1, 9, -1, 8],
+    "curves": [
+      { "id": "f", "kind": "LOGARITHMIC", "base": "2", "coefficients": ["1", "1", "-2", "3"], "domain": ["9/4", "9"], "color": "BLUE", "label": "f(x)" },
+      { "id": "g", "kind": "EXPONENTIAL", "base": "2", "coefficients": ["1", "1", "2"], "shiftX": "3", "domain": ["-1", "5"], "color": "WARM", "label": "g(x)" },
+      { "id": "d", "kind": "LINE", "coefficients": ["0", "1"], "domain": ["-1", "8"], "style": "DASHED", "label": "y=x" }
+    ],
+    "axisTickValues": { "x": ["2", "3"], "y": ["2", "3"] }
+  },
+  "caption": "y=log_2(x-2)+3과 y=2^(x-3)+2는 y=x에 대칭인 역함수",
+  "accessibilityDescription": "로그함수와 지수함수의 그래프가 점선 y=x에 대하여 서로 거울대칭이므로 지수함수의 x방향 이동량은 3이다.",
+  "sourceConditions": [
+    { "text": "y=log_2 8x를 오른쪽 2 이동", "mappedTo": "graphPlan.curves[f]; log_2(x-2)+3" },
+    { "text": "로그함수의 역함수", "mappedTo": "graphPlan.curves[g]; 2^(x-3)+2" },
+    { "text": "직선 y=x에 대한 대칭", "mappedTo": "graphPlan.curves[d]" },
+    { "text": "지수함수의 오른쪽 이동량 m=3", "mappedTo": "graphPlan.curves[g].shiftX=3" }
+  ],
+  "newVisualInformation": ["서로 다른 색의 역함수 쌍과 대칭선으로 x축 평행이동 관계를 나타낸다."]
+}
