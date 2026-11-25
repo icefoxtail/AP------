@@ -1,0 +1,44 @@
+{
+  "schema": "visual-two-axis-review-v1",
+  "batch": "suncheon-girls-h2-s1math1-q01-q12-wangun-m3-q01-q10-20261126",
+  "sourceFile": "archive/exams/similar/high/h2/1mid/24_순천여고_1학기_중간_고2_수학I_유사.js",
+  "sourceMainGitBlobBeforeFix": "348f6096289844e9e803c4669fd591b228f41612",
+  "sourceWorkingSha256AfterFix": "26062d8df66cc0d22170c0b254f998fe449216db3615eb98e8b47a160c51a0c9",
+  "questionRange": "q01-q12",
+  "questionCount": 12,
+  "axisCount": {"problem":12,"solution":12},
+  "renderPolicy": "PLAN_ONLY: actual SVG render, PNG visual check, student UI and A4 NOT_RUN",
+  "visualPolicy": "Do not expose unknown answer values in problem diagrams; no default fills; no handcrafted SVG.",
+  "parityMethod": "Independently calculate functions, asymptotes, points, geometric lengths/right angle and interval endpoints; compare each with engine-drawn graphPlan fields. Caption alone is insufficient.",
+  "sourceCorrections": [
+    {
+      "qid":"q05",
+      "field":"solution",
+      "kind":"MATH_EXPLANATION_TYPO_FIXED",
+      "before":"⑤ y=2이다. (거짓)",
+      "after":"⑤ 실제 점근선은 y=2이고 보기의 x=2는 점근선이 아니므로 거짓.",
+      "answerUnchanged":"⑤"
+    }
+  ],
+  "rows": [
+    {"qid":"q01","problem":{"decision":"EXEMPT","reason":"한 지수방정식 5^(x+1)=√125의 밑 맞추기만 요구하는 계산"},"solution":{"decision":"EXEMPT","reason":"√125=5^(3/2)로 바꿔 지수 x+1=3/2를 비교하면 완결"}},
+    {"qid":"q02","problem":{"decision":"EXEMPT","reason":"발문에 상용로그표 HTML 표 자체가 이미 제공되어 별도 그림이 중복"},"solution":{"decision":"EXEMPT","reason":"표의 5.9행·4열 값에 10²의 상용로그 2를 더하는 한 단계 계산"}},
+    {"qid":"q03","problem":{"decision":"EXEMPT","reason":"중첩 세제곱근·제곱근의 지수 환산을 묻는 순수 대수식"},"solution":{"decision":"EXEMPT","reason":"a,b 각 유리수 지수의 합을 구하는 규칙 적용으로 충분"}},
+    {"qid":"q04","problem":{"decision":"EXEMPT","reason":"log_x(7−x)의 밑·진수 존재 조건을 정수 x에 적용하는 짧은 범위 문제"},"solution":{"decision":"EXEMPT","reason":"0<x<7,x≠1의 정수 2,3,4,5,6을 직접 열거할 수 있어 수직선 중복"}},
+    {"qid":"q05","problem":{"decision":"EXEMPT","reason":"문제 보기 중 참·거짓을 고르는 문항으로 정답에 해당하는 x=2의 잘못된 점근선 설명을 그림으로 미리 배제하지 않음"},"solution":{"decision":"BENEFICIAL","reason":"증가 지수곡선의 점 (2,3) 및 실제 수평 점근선 y=2를 보여 보기 x=2와 시각 대조","plan":"q05-solution.plan.json"}},
+    {"qid":"q06","problem":{"decision":"EXEMPT","reason":"제2사분면과 tan θ=−1/3 조건만으로 해결 가능하며 구할 삼각비를 그림에 미리 표시하지 않음"},"solution":{"decision":"BENEFICIAL","reason":"동경 P(−3,1)과 가로 3·높이 1·빗변 √10의 직각삼각형 및 사분면 부호를 한 눈에 보여 줌","plan":"q06-solution.plan.json"}},
+    {"qid":"q07","problem":{"decision":"EXEMPT","reason":"미지 a,b를 구하는 점근선·절편 조건의 원 그래프를 수치 완성해 제시하면 a+b의 답을 노출"},"solution":{"decision":"BENEFICIAL","reason":"x=−4 점근선과 y절편 (0,5)를 서로 다른 수직선·점 표기로 확인","plan":"q07-solution.plan.json"}},
+    {"qid":"q08","problem":{"decision":"EXEMPT","reason":"음수의 짝수근·양의 짝수근·홀수근의 정의를 묻는 참거짓 식 문제"},"solution":{"decision":"EXEMPT","reason":"각 진술에 제곱근 부호와 절댓값 정의를 대입하면 끝남"}},
+    {"qid":"q09","problem":{"decision":"EXEMPT","reason":"주어진 로그 등식에서 a,b를 지수로 계산하는 순수 대수식"},"solution":{"decision":"EXEMPT","reason":"a=27,b=3을 얻어 밑 변환식으로 직접 계산"}},
+    {"qid":"q10","problem":{"decision":"EXEMPT","reason":"0<a<b<1이라는 주어진 대소에서 세 로그량 비교를 요구하는 식 판별"},"solution":{"decision":"EXEMPT","reason":"0<C<1, B=C−1<0, A=1/C>1을 연쇄부등식으로 완전히 설명"}},
+    {"qid":"q11","problem":{"decision":"EXEMPT","reason":"구해야 하는 최댓값·최솟값 M,m을 문제용 그래프 점으로 미리 명시하면 수치 답 노출"},"solution":{"decision":"BENEFICIAL","reason":"증가함수 3^u로의 단조 변환 전에 지수 u=(x−1)²−2의 닫힌 구간 극값 위치를 시각화","plan":"q11-solution.plan.json"}},
+    {"qid":"q12","problem":{"decision":"EXEMPT","reason":"상용로그 등식과 두 자연수 x,y를 정수 조건으로 연립하는 계산"},"solution":{"decision":"EXEMPT","reason":"로그 결합 후 (7x−2)y=10x인 정수 관계를 분석하면 해결"}}
+  ],
+  "planResults": [
+    {"qid":"q05","axis":"solution","capability":"exponential-affine-spike-v1","plan":"q05-solution.plan.json","planLintShallow":"PASS","planLintFull":"PASS","sourceVsPlan":"REVIEWED","drawnFeatureParity":"PASS","drawnFields":["base=4, shiftX=2, coefficients [1,1,2] mean y=4^(x−2)+2","overlays.lines[L] horizontal slope=0/intercept=2 with visible label y=2","overlays.points[P]=(2,3), axis ticks x=2/y=2,3"],"render":"NOT_RUN","png":"NOT_RUN","student":"NOT_RUN","a4":"NOT_RUN"},
+    {"qid":"q06","axis":"solution","capability":"construction-spike-v1","plan":"q06-solution.plan.json","planLintShallow":"PASS","planLintFull":"PASS","sourceVsPlan":"REVIEWED","drawnFeatureParity":"PASS","drawnFields":["displayPoints O=(0,0),H=(−3,0),P=(−3,1)","displaySegments sOH=3,sHP=1,sOP=√10 linked to scalarLabels","rightAngles[raH] at H, coordinate label P and ticks x=−3/y=1"],"render":"NOT_RUN","png":"NOT_RUN","student":"NOT_RUN","a4":"NOT_RUN"},
+    {"qid":"q07","axis":"solution","capability":"logarithmic-affine-spike-v1","plan":"q07-solution.plan.json","planLintShallow":"PASS","planLintFull":"PASS","sourceVsPlan":"REVIEWED","drawnFeatureParity":"PASS","drawnFields":["base=2 coefficients [1,1,4,3] mean log_2(x+4)+3","overlays.lines[a] is visibly drawn vertical x=−4","overlays.points[I]=(0,5), x-axis tick −4, y-axis tick 5"],"render":"NOT_RUN","png":"NOT_RUN","student":"NOT_RUN","a4":"NOT_RUN"},
+    {"qid":"q11","axis":"solution","capability":"polynomial-spike-v1","plan":"q11-solution.plan.json","planLintShallow":"PASS","planLintFull":"PASS","sourceVsPlan":"REVIEWED","drawnFeatureParity":"PASS","drawnFields":["coefficients [−1,−2,1] mean u(x)=x²−2x−1","sourceDomain [-1,2] with CLOSED/CLOSED endpoint states","requiredPoints M=(−1,2), V=(1,−2), R=(2,−1); x/y ticks"],"render":"NOT_RUN","png":"NOT_RUN","student":"NOT_RUN","a4":"NOT_RUN"}
+  ],
+  "summary": {"questions":12,"axisJudgments":24,"beneficialAxes":4,"requiredAxes":0,"exemptAxes":20,"plans":4,"shallowPass":4,"fullPass":4,"drawnFeatureParityPass":4,"engineCapabilityPending":0,"sourceFixes":1,"renderNotRun":4}
+}

@@ -1,0 +1,21 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": ["-1","-2","1"],
+    "sourceDomain": {"kind":"INTERVAL","range":[-1,2],"states":["CLOSED","CLOSED"]},
+    "domain": [-1,2],
+    "viewport": [-2,3,-3,4],
+    "requiredPoints": [{"id":"M","x":-1,"y":2},{"id":"V","x":1,"y":-2},{"id":"R","x":2,"y":-1}],
+    "axisTickValues": {"x":["-1","1","2"],"y":["-2","2"]}
+  },
+  "sourceQuote": "−1≤x≤2에서 y=3^(x²−2x−1)의 최댓값 M과 최솟값 m의 차",
+  "caption": "지수 3^u가 증가하므로 u=x²−2x−1의 구간 [-1,2] 최대 2, 최소 −2가 원함수의 최대 9와 최소 1/9를 결정한다.",
+  "accessibilityDescription": "지수에 들어가는 이차식 u=(x−1)²−2의 닫힌 구간 그래프에서 왼쪽 끝 (-1,2)이 최대이고 꼭짓점 (1,-2)가 최소이다.",
+  "sourceConditions": [
+    {"id":"S11-1","condition":"u(x)=x²−2x−1=(x−1)²−2","mappedTo":"graphPlan.coefficients"},
+    {"id":"S11-2","condition":"x의 정의역은 닫힌 구간 [-1,2]","mappedTo":"graphPlan.sourceDomain,domain"},
+    {"id":"S11-3","condition":"u(-1)=2,u(1)=−2,u(2)=−1","mappedTo":"graphPlan.requiredPoints,axisTickValues"}
+  ],
+  "newVisualInformation": ["직접 그리는 대상은 원함수 y=3^u가 아니라 풀이에서 사용한 지수 u(x)임을 명시하고, 단조변환으로 극값을 읽는다."]
+}
