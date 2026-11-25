@@ -1,0 +1,24 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "sourceQuote": "이차함수는 아래로 열리고 꼭짓점은 $(1,8)$이다.",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [{"coefficients": ["7", "2", "-1"]}],
+    "sourceDomain": {"kind": "INTERVAL", "range": [-1, 4], "states": ["CLOSED", "CLOSED"]},
+    "domain": [-1, 4],
+    "viewport": [-2, 5, -3, 10],
+    "requiredPoints": [
+      {"id": "L", "x": -1, "y": 4},
+      {"id": "V", "x": 1, "y": 8},
+      {"id": "R", "x": 4, "y": -1}
+    ],
+    "exactCoordinates": {"L": ["-1", "4"], "V": ["1", "8"], "R": ["4", "-1"]},
+    "axisTickValues": {"x": [], "y": []}
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "-1≤x≤4에서 꼭짓점 V(1,8)이 최댓값이고 오른쪽 끝점 R(4,-1)이 최솟값이다.",
+  "sourceConditions": [
+    {"id": "q07-S1", "condition": "-1≤x≤4에서 f(x)=-(x-1)²+8", "mappedTo": "graphPlan.pieces, graphPlan.sourceDomain"}
+  ],
+  "newVisualInformation": ["아래로 열린 포물선에서 양 끝점의 높이가 서로 다르므로 최소는 오른쪽 끝점에서 나옴을 보여 준다."]
+}
