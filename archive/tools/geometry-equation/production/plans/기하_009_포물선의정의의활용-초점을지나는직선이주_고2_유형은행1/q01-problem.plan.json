@@ -1,0 +1,12 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"PARABOLA","vertex":["0","0"],"p":"36/17","axis":"X"},
+  "points":[{"id":"O","kind":"ORIGIN"},{"id":"F","kind":"FOCUS"},{"id":"P","kind":"ON_CONIC","x":"(217+17*sqrt(145))/34","branch":"POS"},{"id":"Q","kind":"ON_CONIC","x":"(217-17*sqrt(145))/34","branch":"NEG"},{"id":"H","kind":"FOOT","from":"P","onto":"d","rightAngle":true},{"id":"H'","kind":"FOOT","from":"Q","onto":"d","rightAngle":true}],
+  "lines":[{"id":"d","role":"DIRECTRIX","label":"l"}],
+  "segments":[{"id":"PF","from":"P","to":"F"},{"id":"FQ","from":"F","to":"Q"},{"id":"PH","from":"P","to":"H"},{"id":"QH","from":"Q","to":"H'"},{"id":"HH","from":"H","to":"H'"}],
+  "polygons":[{"id":"trap","points":["H","H'","Q","P"],"fill":"LIGHT"}],
+  "caption":"초점 현 PQ=17과 준선 l에 내린 두 수선 PH,QH′가 이루는 넓이 102의 사다리꼴",
+  "accessibilityDescription":"초점 F를 지나는 선분 PQ의 양 끝에서 왼쪽 준선 l에 내린 수선으로 사다리꼴 HH'QP를 이루고 내부가 연하게 칠해져 있다.",
+  "sourceConditions":[{"id":"c1","condition":"원문은 포물선의 수치를 주지 않으므로 초점 현 길이 17, 사다리꼴 높이 미지수와 넓이 102를 만족하는 동형 대표의 내부 p=36/17을 쓴다. p나 구하는 높이를 그림에 표기하지 않는다.","mappedTo":["conic","F","P","Q","PF","FQ"]},{"id":"c2","condition":"준선 l과 P,Q의 수선 발 H,H'가 사다리꼴을 만들며, 실제 조건 PQ=17·넓이 102와 일치한다.","mappedTo":["d","H","H'","PH","QH","HH","trap"]}],
+  "newVisualInformation":["초점 현과 두 평행 수선이 만드는 음영 사다리꼴"]
+}
