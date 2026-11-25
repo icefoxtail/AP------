@@ -1,0 +1,83 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": { "coordinates": [{ "kind": "integer", "value": "4" }, { "kind": "integer", "value": "0" }] },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "3" }] },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "axisTickValues": { "x": [], "y": [] },
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    { "id": "sPQ", "refs": ["P", "Q"] },
+    { "id": "sPR", "refs": ["P", "R"] },
+    { "id": "sRQ", "refs": ["R", "Q"] }
+  ],
+  "displayPoints": ["P", "Q", "R"],
+  "hiddenPointNames": ["P", "Q", "R"],
+  "hiddenPointStyle": "NONE",
+  "rightAngles": [
+    { "id": "rP", "refs": ["Q", "P", "R"] }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      { "id": "lA", "ownerSegment": "sPQ", "text": "a", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "lC", "ownerSegment": "sPR", "text": "c", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "lB", "ownerSegment": "sRQ", "text": "b", "factRole": "CONCLUSION" }
+    ]
+  },
+  "caption": "인수분해로 얻은 변의 길이 관계를 직각삼각형으로 나타낸 개념도이다.",
+  "accessibilityDescription": "세 꼭짓점에 이름이나 점 표식이 없는 직각삼각형. 두 직각변에는 a, c가, 빗변에는 b가 표시되고 직각 꼭짓점에는 작은 네모 표식이 있다. 길이 비율은 임의의 도식이며 실제 주어진 수치를 뜻하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "원문에서 a, b, c는 삼각형의 세 변의 양의 길이이며 (a+c)(a²+c²-b²)=0이다.",
+      "mappedTo": ["displaySegments.sPQ", "displaySegments.sPR", "displaySegments.sRQ", "planeMarks.expressionLabels"]
+    },
+    {
+      "id": "S2",
+      "condition": "a+c>0이므로 a²+c²=b², 피타고라스 정리의 역에 따라 a와 c가 직각변이고 b가 빗변이다.",
+      "mappedTo": ["rightAngles.rP", "planeMarks.expressionLabels.lA", "planeMarks.expressionLabels.lC", "planeMarks.expressionLabels.lB"]
+    },
+    {
+      "id": "S3",
+      "condition": "원문은 변의 구체적인 길이, 꼭짓점 이름, 길이 비를 정하지 않았다.",
+      "mappedTo": ["mathPlan.nodes.P", "mathPlan.nodes.Q", "mathPlan.nodes.R", "hiddenPointNames"]
+    }
+  ],
+  "newVisualInformation": [
+    "a와 c가 서로 직각을 이루는 두 변이고, b는 그 맞은편의 빗변이라는 해설의 결론을 직접 표시한다.",
+    "4:3:5는 화면 배치를 위한 대표 좌표일 뿐 원문의 변 길이 비율을 뜻하지 않는다."
+  ],
+  "sourceQuote": "피타고라스 정리의 역에 의하여 이 삼각형은 $b$가 빗변인 직각삼각형이다.",
+  "coordinateCanvas": { "width": 560, "height": 400 }
+}
