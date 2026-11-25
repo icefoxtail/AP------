@@ -841,7 +841,11 @@ window.questionBank = [
     "rpmPrimaryRecordId": "H2-M2-RPM-053",
     "sourceQid": null,
     "variationType": "NUMERIC",
-    "problemPlanRef": "archive/exams/similar/high/h2/2mid/26_제일고_2학기_중간_고2_미적분I_유사_plans/q19-problem.plan.json"
+    "problemPlanRef": "archive/exams/similar/high/h2/2mid/26_제일고_2학기_중간_고2_미적분I_유사_plans/q19-problem.plan.json",
+    "image": "assets/images/26_제일고_2학기_중간_고2_미적분I_유사/q19-problem.svg",
+    "imageAlt": "곡선 y=x²-3과 직선 y=tx의 교점 P₁, P₂ 및 각 점에서 직선에 수직인 직선의 y절편 Q₁, Q₂.",
+    "imageSize": "full",
+    "imageScale": 90
   },
   {
     "id": 20,

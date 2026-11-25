@@ -1,24 +1,40 @@
 {
-  "family": "coordinate-geometry-v1",
-  "caption": "포물선 y=4-x^2 위의 제1사분면 점 P에서의 접선 l이 x축과 만나는 점 C와 직선 OP 위의 수선 교점 R",
-  "sourceQuote": "제1사분면에서 포물선 위를 움직이는 점 P에서의 접선 l이 x축과 만나는 점을 C",
-  "objects": [
-    "parabola y=4-x^2",
-    "A(-2,0)",
-    "B(2,0)",
-    "P(1,3)",
-    "tangent l at P",
-    "C(2.5,0)",
-    "line OP",
-    "R(2.5,7.5)"
-  ],
-  "rightAngles": [
-    {
-      "at": "C",
-      "from": [
-        "B",
-        "R"
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      { "coefficients": ["4", "0", "-1"] }
+    ],
+    "sourceDomain": { "kind": "ALL_REALS" },
+    "formula": "4-x^2",
+    "domain": [-3, 3.5],
+    "viewport": [-3, 3.5, -1.5, 8.5],
+    "requiredPoints": [
+      { "id": "V", "x": 0, "y": 4, "marker": "NONE" }
+    ],
+    "axisTickValues": { "x": [], "y": [] },
+    "overlays": {
+      "lines": [
+        { "id": "l", "slope": "-2", "intercept": "5", "label": "l" }
+      ],
+      "points": [
+        { "id": "O", "x": "0", "y": "0" },
+        { "id": "A", "axis": "x", "value": "-2", "coordinates": true },
+        { "id": "B", "axis": "x", "value": "2", "coordinates": true },
+        { "id": "P", "curveX": "1" },
+        { "id": "C", "axis": "x", "value": "5/2" },
+        { "id": "R", "x": "5/2", "y": "15/2" }
+      ],
+      "segments": [
+        { "id": "sOR", "from": "O", "to": "R" },
+        { "id": "sCR", "from": "C", "to": "R" }
+      ],
+      "rightAngles": [
+        { "at": "C", "from": ["B", "R"] }
       ]
     }
-  ]
+  },
+  "pointNames": { "O": "O", "A": "A", "B": "B", "P": "P", "C": "C", "R": "R" },
+  "caption": "포물선 y=4-x² 위의 제1사분면 점 P에서의 접선 l이 x축과 만나는 점 C와 수선 CR이 직선 OP와 만나는 점 R.",
+  "accessibilityDescription": "x축과 A(-2, 0), B(2, 0)에서 만나는 포물선 y=4-x^2 위의 제1사분면 점 P에서의 접선 l이 x축과 점 C에서 만나고, 점 C에서 x축에 수직인 선분 CR이 직선 OP의 연장과 점 R에서 만나는 그림이다."
 }

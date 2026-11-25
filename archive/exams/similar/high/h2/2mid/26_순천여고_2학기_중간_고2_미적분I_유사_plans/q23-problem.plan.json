@@ -1,9 +1,100 @@
 {
-  "figureType": "square_area_by_line",
-  "description": "O(0,0), A(4,0), B(4,4), C(0,4) 정사각형과 원점을 지나는 직선 y=tx",
-  "elements": [
-    "square OABC side 4",
-    "ray y=tx from O",
-    "shaded region containing A"
-  ]
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      { "id": "O", "op": "NORMALIZATION_ORIGIN", "inputs": [], "args": {}, "outputType": "POINT", "factRole": "GIVEN" },
+      {
+        "id": "X",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": { "length": { "kind": "integer", "value": "1" } },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": { "coordinates": [{ "kind": "integer", "value": "4" }, { "kind": "integer", "value": "0" }] },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": { "coordinates": [{ "kind": "integer", "value": "4" }, { "kind": "integer", "value": "4" }] },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "4" }] },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "TRANSLATE_POINT",
+        "inputs": ["O"],
+        "args": {
+          "dx": { "kind": "rational", "numerator": "8", "denominator": "3" },
+          "dy": { "kind": "integer", "value": "4" }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Rend",
+        "op": "TRANSLATE_POINT",
+        "inputs": ["O"],
+        "args": {
+          "dx": { "kind": "integer", "value": "4" },
+          "dy": { "kind": "integer", "value": "6" }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": ["O", "X", "A", "B", "C", "E", "Rend"],
+  "pointNames": { "O": "O", "A": "A", "B": "B", "C": "C" },
+  "hiddenPointNames": ["X", "E", "Rend"],
+  "unmarkedPointNames": ["X", "E", "Rend"],
+  "axisTickValues": { "x": [], "y": [] },
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    { "id": "sOA", "refs": ["O", "A"] },
+    { "id": "sAB", "refs": ["A", "B"] },
+    { "id": "sBE", "refs": ["B", "E"] },
+    { "id": "sEC", "refs": ["E", "C"] },
+    { "id": "sOC", "refs": ["O", "C"] },
+    { "id": "sOR", "refs": ["O", "Rend"], "arrow": "END" }
+  ],
+  "coordinateLabels": ["A", "B", "C"],
+  "planeMarks": {
+    "regions": [
+      { "id": "rA", "fill": "LIGHT", "shapes": [{ "polygon": ["O", "A", "B", "E"] }], "factRole": "GIVEN" }
+    ],
+    "expressionLabels": [
+      { "id": "lytx", "ownerSegment": "sOR", "text": "y=tx", "labelAt": "END", "factRole": "GIVEN" }
+    ]
+  },
+  "caption": "정사각형 OABC와 직선 y=tx로 나누어진 두 영역 중 점 A를 포함하는 영역.",
+  "accessibilityDescription": "좌표평면 위의 원점 O와 A(4, 0), B(4, 4), C(0, 4)를 꼭짓점으로 하는 정사각형 OABC가 원점을 지나는 직선 y=tx에 의해 나뉘며, 점 A를 포함하는 아래쪽 영역이 연한 회색으로 칠해져 있다.",
+  "sourceQuote": "정사각형 OABC가 있다. 양수 t에 대하여 직선 y=tx에 의해 나누어지는 정사각형 OABC의 두 영역 중 점 A를 포함하는 영역의 넓이를 S(t)라 하자.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "정사각형 O(0,0), A(4,0), B(4,4), C(0,4)", "mappedTo": ["O", "A", "B", "C", "sOA", "sAB", "sBE", "sEC", "sOC"] },
+    { "id": "c2", "condition": "직선 y=tx와 점 A를 포함하는 영역", "mappedTo": ["sOR", "lytx", "rA"] }
+  ],
+  "newVisualInformation": ["직선 y=tx가 정사각형 OABC를 나누는 대표 모습과 점 A를 포함하는 색칠 영역을 나타낸 문제 그림이다."]
 }

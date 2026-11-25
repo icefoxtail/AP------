@@ -449,7 +449,11 @@ window.questionBank = [
     "rpmPrimaryRecordId": "H2-M2-RPM-049",
     "sourceQid": null,
     "variationType": "NUMERIC",
-    "problemPlanRef": "archive/exams/similar/high/h2/2mid/26_강남여고_2학기_중간_고2_미적분I_유사_plans/q10-problem.plan.json"
+    "problemPlanRef": "archive/exams/similar/high/h2/2mid/26_강남여고_2학기_중간_고2_미적분I_유사_plans/q10-problem.plan.json",
+    "image": "assets/images/26_강남여고_2학기_중간_고2_미적분I_유사/q10-problem.svg",
+    "imageAlt": "x=0과 x=1에서 불연속인 두 함수 y=f(x)와 y=g(x)의 그래프.",
+    "imageSize": "full",
+    "imageScale": 94
   },
   {
     "id": 11,
@@ -727,7 +731,11 @@ window.questionBank = [
     "rpmPrimaryRecordId": "H2-M2-RPM-049",
     "sourceQid": null,
     "variationType": "NUMERIC",
-    "problemPlanRef": "archive/exams/similar/high/h2/2mid/26_강남여고_2학기_중간_고2_미적분I_유사_plans/q16-problem.plan.json"
+    "problemPlanRef": "archive/exams/similar/high/h2/2mid/26_강남여고_2학기_중간_고2_미적분I_유사_plans/q16-problem.plan.json",
+    "image": "assets/images/26_강남여고_2학기_중간_고2_미적분I_유사/q16-problem.svg",
+    "imageAlt": "포물선 y=4-x² 위의 제1사분면 점 P에서의 접선 l이 x축과 만나는 점 C와 수선 CR이 직선 OP와 만나는 점 R.",
+    "imageSize": "full",
+    "imageScale": 90
   },
   {
     "id": 17,

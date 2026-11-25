@@ -484,7 +484,10 @@ window.questionBank = [
     "rpmPrimaryRecordId": "M3-RPM-061",
     "sourceQid": 10,
     "variationType": "NUMERIC",
-    "problemPlanRef": "archive/exams/similar/middle/m3/2mid/26_왕운중_2학기_중간_중3_유사_plans/q10-problem.plan.json"
+    "problemPlanRef": "archive/exams/similar/middle/m3/2mid/26_왕운중_2학기_중간_중3_유사_plans/q10-problem.plan.json",
+    "image": "assets/images/26_왕운중_2학기_중간_중3_유사/q10-problem.svg",
+    "imageAlt": "원점 O에서 제2사분면을 지나는 직선 AB에 내린 수선의 발 H와 OH=3, 각 BAO=α를 나타낸 그림.",
+    "imageSize": "full"
   },
   {
     "id": 11,

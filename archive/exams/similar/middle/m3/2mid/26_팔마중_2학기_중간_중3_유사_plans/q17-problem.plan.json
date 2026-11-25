@@ -1,16 +1,146 @@
 {
-  "capability": "SOURCE_PLANE_FIGURE_v1",
-  "circle": {
-    "center": "O"
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "0" },
+            { "kind": "integer", "value": "0" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "TRANSLATE_POINT",
+        "inputs": ["P"],
+        "args": {
+          "dx": { "kind": "integer", "value": "1" },
+          "dy": { "kind": "integer", "value": "0" }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": ["P", "X"],
+        "args": {
+          "length": { "kind": "integer", "value": "8" },
+          "angleDeg": { "kind": "integer", "value": "30" },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": ["P", "X"],
+        "args": {
+          "length": { "kind": "integer", "value": "8" },
+          "angleDeg": { "kind": "integer", "value": "30" },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Qtmp",
+        "op": "POLAR_POINT",
+        "inputs": ["A", "P"],
+        "args": {
+          "length": { "kind": "integer", "value": "1" },
+          "angleDeg": { "kind": "integer", "value": "90" },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lPerpA",
+        "op": "LINE_THROUGH",
+        "inputs": ["A", "Qtmp"],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lPX",
+        "op": "LINE_THROUGH",
+        "inputs": ["P", "X"],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "O",
+        "op": "LINE_INTERSECTION",
+        "inputs": ["lPerpA", "lPX"],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": ["O"],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "div",
+            "args": [
+              { "kind": "integer", "value": "8" },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [{ "kind": "integer", "value": "3" }]
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
   },
-  "tangents": {
-    "from": "P",
-    "points": [
-      "A",
-      "B"
+  "displayPoints": ["O", "P", "A", "B"],
+  "displayLines": [],
+  "displayCircles": ["circ"],
+  "displaySegments": [
+    { "id": "sPA", "refs": ["P", "A"] },
+    { "id": "sPB", "refs": ["P", "B"] },
+    { "id": "sAB", "refs": ["A", "B"] }
+  ],
+  "planeMarks": {
+    "angles": [
+      { "id": "aAPB", "refs": ["A", "P", "B"], "value": 60, "label": "60", "arcs": 1, "factRole": "GIVEN" }
     ],
-    "PA": 8,
-    "angleAPB": 60
+    "expressionLabels": [
+      { "id": "ePA", "ownerSegment": "sPA", "text": "8", "unit": "cm", "factRole": "GIVEN" }
+    ],
+    "facts": [
+      { "kind": "ON_CIRCLE", "circle": "circ", "points": ["A", "B"] },
+      { "kind": "TANGENT_PERPENDICULAR", "center": "O", "contact": "A", "tangent": "sPA" }
+    ]
   },
-  "caption": "원 O에 점 P에서 그은 두 접선 PA, PB (PA=8cm, ∠APB=60°)"
+  "caption": "점 P에서 원 O에 그은 두 접선 PA, PB와 PA=8 cm, 각 APB=60°를 나타낸 그림.",
+  "accessibilityDescription": "원 O 밖의 점 P에서 원 O에 그은 두 접선의 접점이 A, B이고, 접선 PA의 길이는 8 cm, 각 APB의 크기는 60도로 표시되어 있으며 현 AB가 연결되어 있다.",
+  "sourceQuote": "두 점 A와 B는 점 P에서 원 O에 그은 두 접선의 접점이다. PA=8 cm, ∠APB=60°",
+  "sourceConditions": [
+    { "id": "c1", "condition": "PA, PB는 점 P에서 원 O에 그은 두 접선이다.", "mappedTo": ["circ", "sPA", "sPB"] },
+    { "id": "c2", "condition": "PA=8 cm, ∠APB=60°", "mappedTo": ["ePA", "aAPB"] }
+  ],
+  "newVisualInformation": ["접선 PA, PB와 현 AB, 길이 8 cm, 각 60°를 배치한 문제 그림이다."]
 }

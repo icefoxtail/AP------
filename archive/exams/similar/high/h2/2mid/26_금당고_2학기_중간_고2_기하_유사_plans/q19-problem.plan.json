@@ -1,12 +1,27 @@
 {
-  "family": "coordinate-geometry-v1",
-  "caption": "원점 O가 꼭짓점이고 A(15,0)이 초점인 포물선 y^2=60x와 점 B(18,4), 최소 경로 점 P",
-  "sourceQuote": "해안 기지국 A를 초점으로 하고 항구 O를 꼭짓점으로 하는 포물선",
-  "objects": [
-    "parabola y^2=60x",
-    "O(0,0)",
-    "A(15,0)",
-    "B(18,4)",
-    "P(4/15,4)"
-  ]
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-2, 20, -12, 12],
+    "curves": [
+      { "id": "par", "kind": "X_OF_Y", "coefficients": ["0", "0", "1/60"], "domain": ["-12", "12"], "branch": "BOTH" },
+      { "id": "lAB", "kind": "LINE", "coefficients": ["-20", "4/3"], "domain": ["15", "18"], "style": "DASHED", "hideLabel": true }
+    ],
+    "axisTickValues": { "x": [], "y": [] },
+    "overlays": {
+      "points": [
+        { "id": "O", "x": "0", "y": "0" },
+        { "id": "A", "x": "15", "y": "0" },
+        { "id": "B", "x": "18", "y": "4" },
+        { "id": "P", "x": "4/15", "y": "4" }
+      ],
+      "segments": [
+        { "id": "sBP", "from": "B", "to": "P" },
+        { "id": "sPA", "from": "P", "to": "A" }
+      ]
+    }
+  },
+  "pointNames": { "O": "O", "A": "A", "B": "B", "P": "P" },
+  "caption": "원점 O가 꼭짓점이고 A가 초점인 포물선과 외부의 점 B, 포물선 위의 점 P를 잇는 경로 B-P-A.",
+  "accessibilityDescription": "원점 O를 꼭짓점으로 하고 x축의 양의 부분 위의 점 A를 초점으로 하는 포물선 위의 점 P에 대하여 점 B에서 점 P를 거쳐 점 A로 연결되는 선분 BP, PA와 점선 선분 BA가 그려져 있다."
 }

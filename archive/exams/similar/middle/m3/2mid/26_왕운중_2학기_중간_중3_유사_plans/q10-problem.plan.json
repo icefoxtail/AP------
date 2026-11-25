@@ -1,27 +1,167 @@
 {
-  "capability": "SOURCE_COORDINATE_AXES_v1",
-  "line": "0.75*x + 3.75",
-  "points": {
-    "O": [
-      0,
-      0
-    ],
-    "A": [
-      -5,
-      0
-    ],
-    "B": [
-      0,
-      3.75
-    ],
-    "H": [
-      -1.8,
-      2.4
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "0" },
+            { "kind": "integer", "value": "0" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "-5" },
+            { "kind": "integer", "value": "0" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "0" },
+            { "kind": "rational", "numerator": "15", "denominator": "4" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lAB",
+        "op": "LINE_THROUGH",
+        "inputs": ["A", "B"],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": ["O", "lAB"],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L1",
+        "op": "TRANSLATE_POINT",
+        "inputs": ["O"],
+        "args": {
+          "dx": { "kind": "integer", "value": "-6" },
+          "dy": { "kind": "rational", "numerator": "-3", "denominator": "4" }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L2",
+        "op": "TRANSLATE_POINT",
+        "inputs": ["O"],
+        "args": {
+          "dx": { "kind": "integer", "value": "1" },
+          "dy": { "kind": "rational", "numerator": "9", "denominator": "2" }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Xl",
+        "op": "TRANSLATE_POINT",
+        "inputs": ["O"],
+        "args": {
+          "dx": { "kind": "rational", "numerator": "-13", "denominator": "2" },
+          "dy": { "kind": "integer", "value": "0" }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Xr",
+        "op": "TRANSLATE_POINT",
+        "inputs": ["O"],
+        "args": {
+          "dx": { "kind": "integer", "value": "2" },
+          "dy": { "kind": "integer", "value": "0" }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Yb",
+        "op": "TRANSLATE_POINT",
+        "inputs": ["O"],
+        "args": {
+          "dx": { "kind": "integer", "value": "0" },
+          "dy": { "kind": "rational", "numerator": "-3", "denominator": "2" }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Yt",
+        "op": "TRANSLATE_POINT",
+        "inputs": ["O"],
+        "args": {
+          "dx": { "kind": "integer", "value": "0" },
+          "dy": { "kind": "integer", "value": "5" }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
     ]
   },
-  "segment": [
-    "O",
-    "H"
+  "displayPoints": ["O", "A", "B", "H", "L1", "L2", "Xl", "Xr", "Yb", "Yt"],
+  "pointNames": { "O": "O", "A": "A", "B": "B", "H": "H" },
+  "hiddenPointNames": ["L1", "L2", "Xl", "Xr", "Yb", "Yt"],
+  "unmarkedPointNames": ["L1", "L2", "Xl", "Xr", "Yb", "Yt"],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    { "id": "sXaxis", "refs": ["Xl", "Xr"], "arrow": "END" },
+    { "id": "sYaxis", "refs": ["Yb", "Yt"], "arrow": "END" },
+    { "id": "sLineAB", "refs": ["L1", "L2"] },
+    { "id": "sOH", "refs": ["O", "H"] }
   ],
-  "caption": "직선 y=mx+n의 절편 A, B와 원점에서 내린 수선 OH=3, ∠BAO=α"
+  "rightAngles": [
+    { "id": "rH", "refs": ["O", "H", "A"] }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      { "id": "lx", "ownerSegment": "sXaxis", "text": "x" },
+      { "id": "ly", "ownerSegment": "sYaxis", "text": "y" },
+      { "id": "eOH", "ownerSegment": "sOH", "text": "3", "factRole": "GIVEN" }
+    ],
+    "angles": [
+      { "id": "aBAO", "refs": ["O", "A", "B"], "value": 36.87, "label": "α", "labelKind": "MATH", "arcs": 1, "factRole": "GIVEN" }
+    ]
+  },
+  "caption": "원점 O에서 제2사분면을 지나는 직선 AB에 내린 수선의 발 H와 OH=3, 각 BAO=α를 나타낸 그림.",
+  "accessibilityDescription": "좌표평면 위의 원점 O에서 x축 위의 점 A와 y축 위의 점 B를 지나는 직선에 내린 수선의 발이 H이고, 선분 OH의 길이는 3, 각 BAO의 크기는 α로 표시되어 있다.",
+  "sourceQuote": "그림에서 두 점 A, B는 각각 직선 y=mx+n과 x축, y축의 교점이고 AB⊥OH, OH=3이다. ∠BAO=α",
+  "sourceConditions": [
+    { "id": "c1", "condition": "직선 AB는 x축, y축과 각각 점 A, B에서 만나며 제2사분면을 지난다.", "mappedTo": ["A", "B", "sLineAB"] },
+    { "id": "c2", "condition": "AB⊥OH, OH=3, ∠BAO=α", "mappedTo": ["H", "rH", "eOH", "aBAO"] }
+  ],
+  "newVisualInformation": ["문제 조건에 맞는 좌표축 위 직선, 수선의 발 H, 길이 3, 각 α를 배치한 문제 그림이다."]
 }

@@ -1,13 +1,28 @@
 {
-  "family": "coordinate-geometry-v1",
-  "caption": "타원 x^2/32+y^2/8=1 위의 접점 P, Q와 사각형 OPAQ가 마름모가 되는 점 A(0,4), 절편 R, S",
-  "sourceQuote": "사각형 OPAQ가 마름모일 때, 삼각형 ARS의 넓이를 구하고",
-  "objects": [
-    "ellipse x^2/32+y^2/8=1",
-    "A(0,4)",
-    "P(4,2)",
-    "Q(-4,2)",
-    "R(8,0)",
-    "S(-8,0)"
-  ]
+  "capability": "ellipse-figure-v1",
+  "conic": { "kind": "ELLIPSE", "center": ["0", "0"], "aSquared": "32", "bSquared": "8", "major": "X" },
+  "points": [
+    { "id": "O", "kind": "ORIGIN" },
+    { "id": "A", "kind": "POINT", "x": "0", "y": "4" },
+    { "id": "P", "kind": "ON_CONIC", "x": "4", "branch": "POS" },
+    { "id": "Q", "kind": "ON_CONIC", "x": "-4", "branch": "POS" },
+    { "id": "R", "kind": "POINT", "x": "8", "y": "0" },
+    { "id": "S", "kind": "POINT", "x": "-8", "y": "0" }
+  ],
+  "lines": [
+    { "id": "t1", "through": ["A", "R"], "tangent": true },
+    { "id": "t2", "through": ["A", "S"], "tangent": true }
+  ],
+  "segments": [
+    { "id": "sOP", "from": "O", "to": "P" },
+    { "id": "sOQ", "from": "O", "to": "Q" }
+  ],
+  "caption": "y축 위의 점 A에서 타원 x²/32+y²/8=1에 그은 두 접선의 접점 P, Q와 x축 교점 R, S 및 마름모 OPAQ.",
+  "accessibilityDescription": "타원 x^2/32+y^2/8=1 위의 제1사분면 점 P와 제2사분면 점 Q에서의 두 접선이 y축 위의 점 A에서 만나고 x축과 각각 R, S에서 만나며, 원점 O와 함께 사각형 OPAQ를 이루고 있다.",
+  "sourceQuote": "점 A(0,k)에서 타원 x^2/32+y^2/8=1에 그은 두 접선의 접점을 각각 P, Q라 하고, 직선 AP와 AQ가 x축과 만나는 점을 각각 R, S라 하자. 사각형 OPAQ가 마름모일 때",
+  "sourceConditions": [
+    { "id": "c1", "condition": "점 A에서 타원 x^2/32+y^2/8=1에 그은 두 접선의 접점 P, Q와 x축 교점 R, S", "mappedTo": ["conic", "A", "P", "Q", "R", "S", "t1", "t2"] },
+    { "id": "c2", "condition": "사각형 OPAQ", "mappedTo": ["O", "sOP", "sOQ"] }
+  ],
+  "newVisualInformation": ["접선 AR, AS와 마름모 OPAQ, 삼각형 ARS의 위치 관계를 나타낸 문제 그림이다."]
 }

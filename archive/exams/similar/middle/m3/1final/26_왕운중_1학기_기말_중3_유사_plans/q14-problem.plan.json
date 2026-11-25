@@ -1,6 +1,24 @@
 {
-  "target": "발문",
-  "type": "svg",
-  "description": "꼭짓점이 (2, 0)이고 y축과 (0, -3)에서 만나는 위로 볼록 포물선",
-  "svg": "<svg viewBox=\"0 0 220 180\" width=\"220\" height=\"180\" xmlns=\"http://www.w3.org/2000/svg\"><line x1=\"20\" y1=\"45\" x2=\"200\" y2=\"45\" stroke=\"#111\" stroke-width=\"1.4\"/><line x1=\"70\" y1=\"15\" x2=\"70\" y2=\"165\" stroke=\"#111\" stroke-width=\"1.4\"/><path d=\"M 54 165 Q 130 -75 206 165\" fill=\"none\" stroke=\"#1d4ed8\" stroke-width=\"2\"/><circle cx=\"130\" cy=\"45\" r=\"3\" fill=\"#dc2626\"/><circle cx=\"70\" cy=\"120\" r=\"3\" fill=\"#dc2626\"/><text x=\"126\" y=\"36\" font-size=\"10\" fill=\"#111\">2</text><text x=\"48\" y=\"124\" font-size=\"10\" fill=\"#111\">-3</text><text x=\"58\" y=\"58\" font-size=\"10\" fill=\"#111\">O</text></svg>"
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      { "coefficients": ["-3", "3", "-3/4"] }
+    ],
+    "sourceDomain": { "kind": "ALL_REALS" },
+    "domain": [-2, 6],
+    "viewport": [-2, 6, -6, 2],
+    "requiredPoints": [
+      { "id": "V", "x": 2, "y": 0, "marker": "NONE" }
+    ],
+    "axisTickValues": { "x": ["2"], "y": ["-3"] },
+    "overlays": {
+      "points": [
+        { "id": "P1", "axis": "x", "value": "2", "unnamed": true },
+        { "id": "P2", "axis": "y", "value": "-3", "unnamed": true }
+      ]
+    }
+  },
+  "caption": "꼭짓점이 x축 위 2에 있고 y축과 -3에서 만나는 위로 볼록한 포물선의 그래프.",
+  "accessibilityDescription": "좌표평면 위에 꼭짓점이 (2, 0)에서 x축에 접하고 y축과 (0, -3)에서 만나는 위로 볼록한 포물선이 그려져 있다."
 }

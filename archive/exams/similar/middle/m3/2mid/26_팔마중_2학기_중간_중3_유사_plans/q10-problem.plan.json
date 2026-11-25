@@ -1,18 +1,120 @@
 {
-  "capability": "SOURCE_PLANE_FIGURE_v1",
-  "triangle": {
-    "vertices": [
-      "A",
-      "B",
-      "C"
-    ],
-    "angleB": 90,
-    "angleA": 30,
-    "AC": 16
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "0" },
+            { "kind": "integer", "value": "0" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "TRANSLATE_POINT",
+        "inputs": ["A"],
+        "args": {
+          "dx": { "kind": "integer", "value": "1" },
+          "dy": { "kind": "integer", "value": "0" }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": ["A", "U"],
+        "args": {
+          "length": { "kind": "integer", "value": "16" },
+          "angleDeg": { "kind": "integer", "value": "30" },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lAU",
+        "op": "LINE_THROUGH",
+        "inputs": ["A", "U"],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": ["C", "lAU"],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lAC",
+        "op": "LINE_THROUGH",
+        "inputs": ["A", "C"],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": ["B", "lAC"],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": ["D", "lAU"],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
   },
-  "altitudes": [
-    "BD_to_AC",
-    "DE_to_AB"
+  "displayPoints": ["A", "B", "C", "D", "E"],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    { "id": "sAB", "refs": ["A", "B"] },
+    { "id": "sBC", "refs": ["B", "C"] },
+    { "id": "sAC", "refs": ["A", "C"] },
+    { "id": "sBD", "refs": ["B", "D"] },
+    { "id": "sDE", "refs": ["D", "E"] }
   ],
-  "caption": "∠B=90°, ∠A=30°, AC=16인 △ABC에서 BD⊥AC, DE⊥AB"
+  "rightAngles": [
+    { "id": "rB", "refs": ["A", "B", "C"] },
+    { "id": "rD", "refs": ["B", "D", "A"] },
+    { "id": "rE", "refs": ["D", "E", "A"] }
+  ],
+  "planeMarks": {
+    "angles": [
+      { "id": "aA", "refs": ["B", "A", "C"], "value": 30, "label": "30", "arcs": 1, "factRole": "GIVEN" }
+    ],
+    "dimensions": [
+      { "id": "dAC", "from": "A", "to": "C", "label": "16", "side": "ABOVE", "style": "BAR", "factRole": "GIVEN" }
+    ]
+  },
+  "caption": "각 B=90°, 각 A=30°, AC=16인 직각삼각형 ABC에서 수선 BD와 DE를 내린 그림.",
+  "accessibilityDescription": "직각삼각형 ABC에서 각 B는 직각, 각 A는 30도, 빗변 AC의 길이는 16이고, 점 B에서 변 AC에 내린 수선의 발 D와 점 D에서 변 AB에 내린 수선의 발 E가 표시되어 있다.",
+  "sourceQuote": "∠B=90°, ∠A=30°, AC=16인 직각삼각형 ABC에서 AC⊥BD, AB⊥DE",
+  "sourceConditions": [
+    { "id": "c1", "condition": "∠B=90°, ∠A=30°, AC=16", "mappedTo": ["B", "C", "rB", "aA", "dAC"] },
+    { "id": "c2", "condition": "BD⊥AC, DE⊥AB", "mappedTo": ["D", "E", "rD", "rE"] }
+  ],
+  "newVisualInformation": ["주어진 각과 길이 16, 두 수선의 발 D, E를 표시한 문제 도형이다."]
 }
