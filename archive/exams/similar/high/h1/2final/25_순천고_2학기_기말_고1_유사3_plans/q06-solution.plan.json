@@ -1,0 +1,17 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      { "id": "A", "name": "P^{c}" },
+      { "id": "Q", "name": "Q" }
+    ],
+    "subset": ["A", "Q"]
+  },
+  "caption": "¬p가 q의 충분조건이므로 Pᶜ⊆Q이다. Pᶜ의 전 영역이 Q 안에 있다는 포함관계에서 Qᶜ⊆P, P∪Q=U, Pᶜ∩Qᶜ=∅가 따라온다. 따라서 항상 옳은 보기는 ⑤이다.",
+  "accessibilityDescription": "집합 Q를 나타내는 큰 원 안에 여집합 Pᶜ을 나타내는 작은 원이 완전히 들어 있다. 이는 Pᶜ⊆Q를 직접 나타내며, 집합 전체를 불필요하게 칠하지 않는다.",
+  "sourceConditions": [
+    { "id": "implication", "condition": "¬p가 q의 충분조건이므로 P^c⊆Q", "mappedTo": ["diagram.sets[A,Q]", "diagram.subset[A,Q]"] }
+  ],
+  "newVisualInformation": ["거짓 오독을 유발하는 P∪Q의 두 겹친 원 음영 대신 실제 주어진 포함관계 Pᶜ⊆Q를 중첩 원으로 직접 나타낸다."]
+}

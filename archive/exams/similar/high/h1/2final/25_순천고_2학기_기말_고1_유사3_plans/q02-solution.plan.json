@@ -1,0 +1,32 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "a=4일 때 p",
+        "pieces": [{ "lo": { "value": "-2", "state": "CLOSED" }, "hi": { "value": "6", "state": "CLOSED" } }],
+        "color": "BLUE"
+      },
+      {
+        "kind": "POINTS",
+        "label": "q의 두 근과 중심",
+        "points": [
+          { "id": "A", "value": "-1", "hideName": true, "showValue": true, "style": "FILLED" },
+          { "id": "B", "value": "2", "hideName": true, "showValue": true, "style": "TICK" },
+          { "id": "C", "value": "6", "hideName": true, "showValue": true, "style": "FILLED" }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": { "text": "두 근을 모두 포함하는 최소 범위" },
+  "caption": "q의 진리집합은 {-1, 6}이다. p는 중심 2에서 거리 a 이내의 구간이므로 두 근까지의 거리는 각각 3, 4이다. 둘 다 포함하는 최소 정수 a는 4이며 이때 p의 범위는 [-2, 6]이다.",
+  "accessibilityDescription": "첫 수직선은 -2부터 6까지 양끝이 포함된 구간이고, 아래 수직선에는 q의 두 근 -1과 6, 절댓값의 중심 2가 표시된다. 중심 2에서 더 먼 근은 6이다.",
+  "sourceConditions": [
+    { "id": "p", "condition": "p: |x-2|≤a, 최소 정수 a=4일 때 -2≤x≤6", "mappedTo": "numberLine.rows[0].pieces[0]" },
+    { "id": "q", "condition": "q: x²-5x-6=0의 두 근은 -1, 6", "mappedTo": "numberLine.rows[1].points[A,C]" },
+    { "id": "center", "condition": "절댓값 거리의 중심 x=2", "mappedTo": "numberLine.rows[1].points[B]" }
+  ],
+  "newVisualInformation": ["두 근의 위치와 중심 2를 실수축에 정렬하여 더 먼 근 6이 필요한 반지름 a=4를 결정함을 보여 준다."]
+}
