@@ -1,0 +1,68 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "ELLIPSE",
+    "center": [
+      "0",
+      "0"
+    ],
+    "aSquared": "9",
+    "bSquared": "4",
+    "major": "X"
+  },
+  "points": [
+    {
+      "id": "T",
+      "kind": "POINT",
+      "x": "9/5",
+      "y": "8/5"
+    },
+    {
+      "id": "D",
+      "kind": "FOOT",
+      "from": "T",
+      "onto": "g",
+      "rightAngle": true
+    }
+  ],
+  "lines": [
+    {
+      "id": "t",
+      "slope": "-1/2",
+      "intercept": "5/2",
+      "tangent": true
+    },
+    {
+      "id": "g",
+      "slope": "-1/2",
+      "intercept": "3",
+      "dashed": true
+    }
+  ],
+  "segments": [
+    {
+      "id": "sTD",
+      "from": "T",
+      "to": "D",
+      "label": "1/\\sqrt{5}"
+    }
+  ],
+  "polygons": [],
+  "caption": "Q14 풀이에 쓰이는 점·선분·곡선 관계를 표시한 해설 그림: 타원 지지접선과 평행 직선의 최단 거리를 확인할 수 있다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "타원의 선형식 최댓값과 평행한 접선 거리",
+      "mappedTo": [
+        "conic",
+        "points",
+        "lines",
+        "segments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "타원 지지접선과 평행 직선의 최단 거리를 확인할 수 있다."
+  ],
+  "sourceQuote": "타원 $\\dfrac{x^2}{9}+\\dfrac{y^2}{4}=1$과 직선 $x+2y=k$ 사이의 최단거리가 $\\dfrac1{\\sqrt5}$이고 $k>5$이다. $k$의 값은? (4점)"
+}

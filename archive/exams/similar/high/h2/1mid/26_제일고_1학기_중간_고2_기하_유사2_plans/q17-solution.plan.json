@@ -1,0 +1,98 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "ELLIPSE",
+    "center": [
+      "0",
+      "0"
+    ],
+    "aSquared": "25",
+    "bSquared": "16",
+    "major": "X"
+  },
+  "points": [
+    {
+      "id": "F",
+      "kind": "FOCUS",
+      "side": 1
+    },
+    {
+      "id": "R",
+      "kind": "POINT",
+      "x": "25/4",
+      "y": "0"
+    },
+    {
+      "id": "P",
+      "kind": "ON_CONIC",
+      "x": "4",
+      "branch": "POS"
+    },
+    {
+      "id": "Q",
+      "kind": "ON_CONIC",
+      "x": "4",
+      "branch": "NEG"
+    }
+  ],
+  "lines": [
+    {
+      "id": "t1",
+      "slope": "-16/15",
+      "intercept": "20/3",
+      "tangent": true
+    },
+    {
+      "id": "t2",
+      "slope": "16/15",
+      "intercept": "-20/3",
+      "tangent": true
+    }
+  ],
+  "segments": [
+    {
+      "id": "sPQ",
+      "from": "P",
+      "to": "Q",
+      "label": "24/5"
+    },
+    {
+      "id": "sFP",
+      "from": "F",
+      "to": "P"
+    },
+    {
+      "id": "sFQ",
+      "from": "F",
+      "to": "Q"
+    }
+  ],
+  "polygons": [
+    {
+      "id": "tri",
+      "points": [
+        "P",
+        "Q",
+        "F"
+      ],
+      "fill": "LIGHT"
+    }
+  ],
+  "caption": "Q17 풀이에 쓰이는 점·선분·곡선 관계를 표시한 해설 그림: 접선 접점 두 개와 초점에 대한 삼각형의 높이를 확인할 수 있다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "타원 밖 한 점에서의 접점의 접선 조건과 초점",
+      "mappedTo": [
+        "conic",
+        "points",
+        "lines",
+        "segments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "접선 접점 두 개와 초점에 대한 삼각형의 높이를 확인할 수 있다."
+  ],
+  "sourceQuote": "타원 $\\dfrac{x^2}{25}+\\dfrac{y^2}{16}=1$ 밖의 점 $R\\left(\\dfrac{25}{4},0\\right)$에서 그은 두 접선의 접점을 $P,Q$라 하자. 두 초점 중 $F(3,0)$을 택할 때 삼각형 $PQF$의 넓이는? "
+}

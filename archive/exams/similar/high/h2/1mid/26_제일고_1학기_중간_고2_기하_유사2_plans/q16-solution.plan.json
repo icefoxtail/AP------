@@ -1,0 +1,75 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "PARABOLA",
+    "vertex": [
+      "0",
+      "0"
+    ],
+    "p": "2",
+    "axis": "X"
+  },
+  "points": [
+    {
+      "id": "A",
+      "kind": "ON_CONIC",
+      "x": "18",
+      "branch": "POS"
+    },
+    {
+      "id": "B",
+      "kind": "POINT",
+      "x": "-2",
+      "y": "0"
+    },
+    {
+      "id": "H",
+      "kind": "FOOT",
+      "from": "A",
+      "onto": "x",
+      "rightAngle": true
+    }
+  ],
+  "lines": [
+    {
+      "id": "d",
+      "role": "DIRECTRIX",
+      "label": "d"
+    },
+    {
+      "id": "x",
+      "y": "0"
+    }
+  ],
+  "segments": [
+    {
+      "id": "sAH",
+      "from": "A",
+      "to": "H",
+      "label": "12"
+    },
+    {
+      "id": "sBH",
+      "from": "B",
+      "to": "H"
+    }
+  ],
+  "polygons": [],
+  "caption": "Q16 풀이에 쓰이는 점·선분·곡선 관계를 표시한 해설 그림: 교점 A, x축 발 H, 준선의 상대 위치를 확인할 수 있다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "포물선 준선 x=−p와 x=kp 교점의 높이",
+      "mappedTo": [
+        "conic",
+        "points",
+        "lines",
+        "segments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "교점 A, x축 발 H, 준선의 상대 위치를 확인할 수 있다."
+  ],
+  "sourceQuote": "양수 $p$에 대하여 포물선 $y^2=4px$와 직선 $x=9p$가 제1사분면에서 만나는 점을 $A$라 하자. $A$에서 $x$축에 내린 수선의 발을 $H$, 포물선의 준선과 $x$축의 교점을 $B$라 하자. $AH=12$일 때 준선의 방정식은? (4"
+}

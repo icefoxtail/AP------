@@ -1,0 +1,87 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "PARABOLA",
+    "vertex": [
+      "0",
+      "0"
+    ],
+    "p": "24/5",
+    "axis": "X"
+  },
+  "points": [
+    {
+      "id": "F",
+      "kind": "FOCUS"
+    },
+    {
+      "id": "A",
+      "kind": "ON_CONIC",
+      "x": "36/5",
+      "branch": "POS"
+    },
+    {
+      "id": "B",
+      "kind": "ON_CONIC",
+      "x": "16/5",
+      "branch": "NEG"
+    },
+    {
+      "id": "M",
+      "kind": "FOOT",
+      "from": "A",
+      "onto": "l",
+      "rightAngle": true
+    },
+    {
+      "id": "N",
+      "kind": "FOOT",
+      "from": "B",
+      "onto": "l",
+      "rightAngle": true
+    }
+  ],
+  "lines": [
+    {
+      "id": "l",
+      "role": "DIRECTRIX",
+      "label": "l"
+    }
+  ],
+  "segments": [
+    {
+      "id": "sAB",
+      "from": "A",
+      "to": "B",
+      "label": "20"
+    },
+    {
+      "id": "sAM",
+      "from": "A",
+      "to": "M"
+    },
+    {
+      "id": "sBN",
+      "from": "B",
+      "to": "N"
+    }
+  ],
+  "polygons": [],
+  "caption": "Q02 문제에서 주어진 도형과 위치 관계만 표시한 예시: 포물선 위 초점현과 준선의 상대 위치를 시각화하면 비의 적용 순서가 보인다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "포물선의 초점 $F$를 지나는 직선이 포물선과 서로 다른 두 점 $A,B$에서 만나고 $F$는 선분 $AB$ 위에 있다. $A,B$에서 준선 $l$에 내린 수선의 발을 $M,N$이라 하자. $AM:BN=3:2$, $AB=20$일 때, $AM$의 길이는? (3.6점)",
+      "mappedTo": [
+        "conic",
+        "points",
+        "lines",
+        "segments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "포물선 위 초점현과 준선의 상대 위치를 시각화하면 비의 적용 순서가 보인다."
+  ],
+  "sourceQuote": "포물선의 초점 $F$를 지나는 직선이 포물선과 서로 다른 두 점 $A,B$에서 만나고 $F$는 선분 $AB$ 위에 있다. $A,B$에서 준선 $l$에 내린 수선의 발을 $M,N$이라 하자. $AM:BN=3:2$, $AB=20$일 때, $AM$의 길이는"
+}

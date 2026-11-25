@@ -1,0 +1,72 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "ELLIPSE",
+    "center": [
+      "0",
+      "0"
+    ],
+    "aSquared": "25",
+    "bSquared": "16",
+    "major": "X"
+  },
+  "points": [
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    },
+    {
+      "id": "F",
+      "kind": "FOCUS",
+      "side": 1
+    },
+    {
+      "id": "F'",
+      "kind": "FOCUS",
+      "side": -1
+    },
+    {
+      "id": "A",
+      "kind": "VERTEX",
+      "side": 1
+    },
+    {
+      "id": "B",
+      "kind": "VERTEX",
+      "side": -1
+    }
+  ],
+  "lines": [],
+  "segments": [
+    {
+      "id": "sOF",
+      "from": "O",
+      "to": "F",
+      "label": "3"
+    },
+    {
+      "id": "sOA",
+      "from": "O",
+      "to": "A",
+      "label": "5"
+    }
+  ],
+  "polygons": [],
+  "caption": "Q03 풀이에 쓰이는 점·선분·곡선 관계를 표시한 해설 그림: 장반축·단반축·초점거리의 직각 관계를 확인할 수 있다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "타원 c²=a²−b²",
+      "mappedTo": [
+        "conic",
+        "points",
+        "lines",
+        "segments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "장반축·단반축·초점거리의 직각 관계를 확인할 수 있다."
+  ],
+  "sourceQuote": "타원의 장축 끝점이 $(5,0),(-5,0)$이고 두 초점이 $(3,0),(-3,0)$이다. 이 타원의 방정식 $\\dfrac{x^2}{25}+\\dfrac{y^2}{k}=1$에서 양수 $k$의 값은? (3.7점)"
+}

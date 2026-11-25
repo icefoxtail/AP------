@@ -1,0 +1,95 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "PARABOLA",
+    "vertex": [
+      "0",
+      "0"
+    ],
+    "p": "24/5",
+    "axis": "X"
+  },
+  "points": [
+    {
+      "id": "F",
+      "kind": "FOCUS"
+    },
+    {
+      "id": "A",
+      "kind": "ON_CONIC",
+      "x": "36/5",
+      "branch": "POS"
+    },
+    {
+      "id": "B",
+      "kind": "ON_CONIC",
+      "x": "16/5",
+      "branch": "NEG"
+    },
+    {
+      "id": "M",
+      "kind": "FOOT",
+      "from": "A",
+      "onto": "l",
+      "rightAngle": true
+    },
+    {
+      "id": "N",
+      "kind": "FOOT",
+      "from": "B",
+      "onto": "l",
+      "rightAngle": true
+    }
+  ],
+  "lines": [
+    {
+      "id": "l",
+      "role": "DIRECTRIX",
+      "label": "l"
+    }
+  ],
+  "segments": [
+    {
+      "id": "sAF",
+      "from": "A",
+      "to": "F",
+      "label": "12"
+    },
+    {
+      "id": "sFB",
+      "from": "F",
+      "to": "B",
+      "label": "8"
+    },
+    {
+      "id": "sAM",
+      "from": "A",
+      "to": "M",
+      "label": "12"
+    },
+    {
+      "id": "sBN",
+      "from": "B",
+      "to": "N",
+      "label": "8"
+    }
+  ],
+  "polygons": [],
+  "caption": "Q02 풀이에 쓰이는 점·선분·곡선 관계를 표시한 해설 그림: 초점현 AF·FB의 길이와 준선 거리 AM·BN의 일치 관계를 드러낸다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AF=AM, BF=BN, AB=AF+FB",
+      "mappedTo": [
+        "conic",
+        "points",
+        "lines",
+        "segments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "초점현 AF·FB의 길이와 준선 거리 AM·BN의 일치 관계를 드러낸다."
+  ],
+  "sourceQuote": "포물선의 초점 $F$를 지나는 직선이 포물선과 서로 다른 두 점 $A,B$에서 만나고 $F$는 선분 $AB$ 위에 있다. $A,B$에서 준선 $l$에 내린 수선의 발을 $M,N$이라 하자. $AM:BN=3:2$, $AB=20$일 때, $AM$의 길이는"
+}

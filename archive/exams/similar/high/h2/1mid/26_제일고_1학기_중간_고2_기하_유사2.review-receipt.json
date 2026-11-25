@@ -1,0 +1,78 @@
+{
+  "schemaVersion": "similar-exam-review-receipt-v2",
+  "examUid": "26_제일고_1학기_중간_고2_기하_유사2",
+  "candidateGitBlobSha1": "10d8c47deac66c60c09da36eb444982ca3deadf4",
+  "createdAt": "2026-11-25",
+  "signOffStatus": "I1_SELF_REVIEW_COMPLETE_I2_EXTERNAL_PENDING",
+  "overallVerdict": "I1_23_OF_23_PASS; CHOICE_CHECK_PASS; ENGINE_SHALLOW_30_OF_30_PASS; I2_NOT_RUN; FULL_ENGINE_BLOCKED_MISSING_FONT; SVG_RENDER_NOT_RUN",
+  "reviewerRole": "SELF_RECOMPUTE_ONLY",
+  "independenceLevel": "I1_SEPARATE_PROCESS_SAME_AUTHOR",
+  "independentHumanOrModelReviewer": "NOT_RUN",
+  "blindFirstPass": {
+    "method": "별도 Node 프로세스의 독립 계산식으로 전 문항 답을 다시 산출했으나 동일 작성자이므로 I1",
+    "totalSolved": 23,
+    "answerMatches": 23,
+    "answerMismatches": 0,
+    "evidenceFile": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_기하_유사2.math-i1-audit.json",
+    "externalIndependentStatus": "NOT_RUN"
+  },
+  "answerDistribution": {
+    "①": 4,
+    "②": 4,
+    "③": 4,
+    "④": 4,
+    "⑤": 4
+  },
+  "examChecks": {
+    "sourceCount": 23,
+    "producedCount": 23,
+    "objective": 20,
+    "shortAnswer": 0,
+    "constructed": 3,
+    "totalPoints": 100,
+    "choiceOrderTool": "PASS_ZERO_DEFECTS_20_OF_20_ZERO_LEAK_WARNINGS",
+    "nodeCheck": "PASS",
+    "blindEnumeration": "PASS_23_OF_23_I1",
+    "tableStaticCheck": "NOT_APPLICABLE"
+  },
+  "visualChecks": {
+    "twoAxisDecisions": 46,
+    "problemRequired": 0,
+    "problemBeneficial": 10,
+    "problemExempt": 13,
+    "solutionRequired": 0,
+    "solutionBeneficial": 20,
+    "solutionExempt": 3,
+    "newProblemPlanJsonWritten": 10,
+    "newSolutionPlanJsonWritten": 20,
+    "engineLintShallow": "PASS_30_OF_30",
+    "engineLintFull": "BLOCKED_FONT_DEPENDENCY_NOT_INSTALLED",
+    "engineRender": "NOT_RUN",
+    "pngVisualQa": "NOT_RUN",
+    "svgReferencesInQuestionJs": 0
+  },
+  "openHolds": [
+    {
+      "kind": "INDEPENDENT_I2",
+      "status": "NOT_RUN"
+    },
+    {
+      "kind": "OFFICIAL_META_REGISTRY",
+      "status": "SIDECAR_DRAFT_REVIEW_REQUIRED"
+    },
+    {
+      "kind": "ENGINE_DEPENDENCY_FONT",
+      "status": "NOT_INSTALLED; FULL_LINT_BLOCKED"
+    },
+    {
+      "kind": "SVG_RENDER_AND_PNG_QA",
+      "status": "PLAN_ONLY_RENDER_NOT_RUN"
+    },
+    {
+      "kind": "CI_WORKFLOW",
+      "status": "NOT_RUN_AT_RECEIPT_CREATION"
+    }
+  ],
+  "mergeReady": true,
+  "mergeReadyScope": "GIT_MAIN_CANDIDATE_DATA_ONLY; NOT_RELEASE_NOT_STUDENT_QA"
+}

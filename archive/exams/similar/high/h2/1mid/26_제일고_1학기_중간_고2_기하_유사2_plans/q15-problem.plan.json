@@ -1,0 +1,76 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "HYPERBOLA",
+    "center": [
+      "0",
+      "0"
+    ],
+    "aSquared": "15",
+    "bSquared": "15",
+    "transverse": "X"
+  },
+  "points": [
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    },
+    {
+      "id": "P",
+      "kind": "ON_CONIC",
+      "x": "4",
+      "sign": "POS"
+    },
+    {
+      "id": "Q",
+      "kind": "ON_CONIC",
+      "x": "-4",
+      "sign": "POS"
+    },
+    {
+      "id": "H",
+      "kind": "FOOT",
+      "from": "O",
+      "onto": "t",
+      "rightAngle": true
+    }
+  ],
+  "lines": [
+    {
+      "id": "t",
+      "slope": "4",
+      "intercept": "-15",
+      "tangent": true
+    }
+  ],
+  "segments": [
+    {
+      "id": "sOH",
+      "from": "O",
+      "to": "H"
+    },
+    {
+      "id": "sOQ",
+      "from": "O",
+      "to": "Q"
+    }
+  ],
+  "polygons": [],
+  "caption": "Q15 문제에서 주어진 도형과 위치 관계만 표시한 예시: 접선, 원점에서의 수선, 제2사분면 교점의 위치 관계를 확인할 수 있다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "쌍곡선 $x^2-y^2=15$ 위의 점 $P(4,1)$에서 그은 접선을 $l$이라 하자. 원점 $O$에서 $l$에 내린 수선의 발을 $H$라 하고, 직선 $OH$가 쌍곡선과 제2사분면에서 만나는 점을 $Q$라 한다. $OH\\times OQ$의 값은? (4.4점)",
+      "mappedTo": [
+        "conic",
+        "points",
+        "lines",
+        "segments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "접선, 원점에서의 수선, 제2사분면 교점의 위치 관계를 확인할 수 있다."
+  ],
+  "sourceQuote": "쌍곡선 $x^2-y^2=15$ 위의 점 $P(4,1)$에서 그은 접선을 $l$이라 하자. 원점 $O$에서 $l$에 내린 수선의 발을 $H$라 하고, 직선 $OH$가 쌍곡선과 제2사분면에서 만나는 점을 $Q$라 한다. $OH\\times OQ$의 값은? "
+}

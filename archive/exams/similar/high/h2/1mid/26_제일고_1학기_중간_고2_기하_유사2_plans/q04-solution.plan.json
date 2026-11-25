@@ -1,0 +1,60 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "ELLIPSE",
+    "center": [
+      "0",
+      "0"
+    ],
+    "aSquared": "25",
+    "bSquared": "16",
+    "major": "X"
+  },
+  "points": [
+    {
+      "id": "P",
+      "kind": "ON_CONIC",
+      "x": "3",
+      "branch": "POS"
+    },
+    {
+      "id": "Q",
+      "kind": "POINT",
+      "x": "0",
+      "y": "5"
+    }
+  ],
+  "lines": [
+    {
+      "id": "t",
+      "slope": "-3/5",
+      "intercept": "5",
+      "tangent": true
+    }
+  ],
+  "segments": [
+    {
+      "id": "sPQ",
+      "from": "P",
+      "to": "Q"
+    }
+  ],
+  "polygons": [],
+  "caption": "Q04 풀이에 쓰이는 점·선분·곡선 관계를 표시한 해설 그림: 타원 접선과 y절편의 관계를 그래프에서 확인할 수 있다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "이차곡선 위 접점에서 접선 방정식 구성",
+      "mappedTo": [
+        "conic",
+        "points",
+        "lines",
+        "segments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "타원 접선과 y절편의 관계를 그래프에서 확인할 수 있다."
+  ],
+  "sourceQuote": "타원 $\\dfrac{x^2}{25}+\\dfrac{y^2}{16}=1$ 위의 점 $P\\left(3,\\dfrac{16}{5}\\right)$에서 그은 접선이 $y$축과 만나는 점의 $y$좌표는? (3.7점)"
+}

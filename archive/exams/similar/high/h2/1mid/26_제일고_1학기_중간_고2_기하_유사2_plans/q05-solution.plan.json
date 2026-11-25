@@ -1,0 +1,71 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "HYPERBOLA",
+    "center": [
+      "-2",
+      "3"
+    ],
+    "aSquared": "9",
+    "bSquared": "16",
+    "transverse": "X"
+  },
+  "points": [
+    {
+      "id": "C",
+      "kind": "CENTER"
+    },
+    {
+      "id": "F",
+      "kind": "FOCUS",
+      "side": 1
+    },
+    {
+      "id": "F'",
+      "kind": "FOCUS",
+      "side": -1
+    }
+  ],
+  "lines": [
+    {
+      "id": "u",
+      "role": "ASYMPTOTE",
+      "sign": 1,
+      "dashed": true,
+      "label": "u"
+    },
+    {
+      "id": "v",
+      "role": "ASYMPTOTE",
+      "sign": -1,
+      "dashed": true,
+      "label": "v"
+    }
+  ],
+  "segments": [
+    {
+      "id": "sCF",
+      "from": "C",
+      "to": "F",
+      "label": "5"
+    }
+  ],
+  "polygons": [],
+  "caption": "Q05 풀이에 쓰이는 점·선분·곡선 관계를 표시한 해설 그림: 중심 이동과 점근선의 정확한 기울기를 비교할 수 있다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "쌍곡선 중심·축·초점·점근선 관계",
+      "mappedTo": [
+        "conic",
+        "points",
+        "lines",
+        "segments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "중심 이동과 점근선의 정확한 기울기를 비교할 수 있다."
+  ],
+  "sourceQuote": "쌍곡선 $\\dfrac{(x+2)^2}{9}-\\dfrac{(y-3)^2}{16}=1$에 관한 설명 중 옳지 않은 것은? (3.7점)"
+}
