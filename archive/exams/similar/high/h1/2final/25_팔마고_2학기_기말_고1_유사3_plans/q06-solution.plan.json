@@ -1,0 +1,101 @@
+{
+ "capability": "multi-curve-figure-v1",
+ "graphPlan": {
+  "family": "multi-curve",
+  "viewport": [
+   -15.02,
+   22.03,
+   -15.02,
+   22.03
+  ],
+  "curves": [
+   {
+    "id": "f",
+    "kind": "RATIONAL",
+    "numerator": [
+     "-1",
+     "2"
+    ],
+    "denominator": [
+     "-3",
+     "1"
+    ],
+    "domain": [
+     "-3",
+     "10"
+    ],
+    "color": "BLUE",
+    "label": "y=f(x)"
+   },
+   {
+    "id": "g",
+    "inverseOf": "f",
+    "color": "WARM",
+    "hideLabels": [
+     "formula"
+    ]
+   },
+   {
+    "id": "yx",
+    "kind": "LINE",
+    "coefficients": [
+     "0",
+     "1"
+    ],
+    "domain": [
+     "-3",
+     "10"
+    ],
+    "style": "DASHED",
+    "label": "y=x"
+   }
+  ],
+  "overlays": {
+   "points": [
+    {
+     "id": "A",
+     "x": "4",
+     "y": "7",
+     "coordinates": true
+    },
+    {
+     "id": "B",
+     "x": "7",
+     "y": "4",
+     "coordinates": true
+    },
+    {
+     "id": "G0",
+     "x": "9",
+     "y": "26/7",
+     "unnamed": true
+    }
+   ],
+   "callouts": [
+    {
+     "id": "cg",
+     "point": "G0",
+     "text": "y=f^(-1)(x)",
+     "labelKind": "MATH",
+     "direction": "NE"
+    }
+   ]
+  },
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  }
+ },
+ "caption": "f(x)=(2x+k)/(x−3)의 점근선은 x=3, y=2이고, 역함수의 그래프는 직선 y=x에 대칭이므로 점근선이 x=2, y=3이다. 그래서 a=2, b=3이고 2a+b=7이다. f⁻¹(7)=4에서 f(4)=7이므로 점 A(4,7)이 곡선 위에 있고 (그림에서 파랑 곡선은 k=−1일 때의 y=f(x), 주황 곡선은 그 역함수 y=f⁻¹(x)), 8+k=7에서 k=−1이다. 따라서 답은 ④이다.",
+ "sourceConditions": [
+  {
+   "id": "method",
+   "condition": "k=−1일 때 f와 역함수, 직선 y=x, 점 (4,7)과 (7,4)를 보인다.",
+   "mappedTo": ["graphPlan.curves", "graphPlan.overlays"]
+  }
+ ],
+ "newVisualInformation": [
+  "f와 역함수의 점근선이 y=x에 대칭임과 f(4)=7, f⁻¹(7)=4를 두 점으로 보인다."
+ ],
+ "accessibilityDescription": "두 유리함수 곡선과 점선 y=x가 그려져 있고 y=x에 대칭인 점 A와 점 B가 표시되어 있다."
+}
