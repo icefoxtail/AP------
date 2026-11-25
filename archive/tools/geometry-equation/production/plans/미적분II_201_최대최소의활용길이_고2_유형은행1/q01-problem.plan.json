@@ -1,0 +1,99 @@
+{
+  "capability": "exponential-affine-spike-v1",
+  "graphPlan": {
+    "family": "exponential-affine",
+    "coefficients": [
+      "2",
+      "1",
+      "0"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -2,
+      2
+    ],
+    "viewport": [
+      -2.4,
+      2.4,
+      -6,
+      12
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "y"
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "L",
+          "slope": "2",
+          "intercept": "-1",
+          "label": "y=2x-1"
+        },
+        {
+          "id": "T",
+          "x": "0",
+          "label": "x=t"
+        }
+      ],
+      "points": [
+        {
+          "id": "P",
+          "curveX": "0"
+        },
+        {
+          "id": "Q",
+          "x": "0",
+          "y": "-1"
+        }
+      ],
+      "segments": [
+        {
+          "id": "PQ",
+          "from": "P",
+          "to": "Q"
+        }
+      ]
+    }
+  },
+  "caption": "자연지수곡선을 정확히 그리고, 기호 t의 대표값에서 곡선 위 점을 표시한다.",
+  "accessibilityDescription": "자연지수곡선을 정확히 그리고, 기호 t의 대표값에서 곡선 위 점을 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "지수곡선 y=2e^x",
+      "mappedTo": "graphPlan.coefficients"
+    },
+    {
+      "id": "c2",
+      "condition": "직선 y=2x-1",
+      "mappedTo": "graphPlan.overlays.lines[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "수직선 x=t (대표 t=0)",
+      "mappedTo": "graphPlan.overlays.lines[1]"
+    },
+    {
+      "id": "c4",
+      "condition": "두 교점 P,Q와 수직 선분 PQ (대표 t=0)",
+      "mappedTo": "graphPlan.overlays.points[0..1];graphPlan.overlays.segments[0]"
+    },
+    {
+      "id": "c5",
+      "condition": "일반식 P(t,2e^t), Q(t,2t-1)의 기호 좌표",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: VARIABLE_T_LABELS: t=0 대표 수직선은 작도되나 일반식 P(t,2e^t),Q(t,2t-1)의 기호좌표 점 라벨은 미지원"
+    }
+  ],
+  "newVisualInformation": [
+    "ENGINE_CAPABILITY_PENDING: VARIABLE_T_LABELS: t=0 대표 수직선은 작도되나 일반식 P(t,2e^t),Q(t,2t-1)의 기호좌표 점 라벨은 미지원",
+    "원문 원본 JS 불변. 임의의 수치 대체로 미지원 기하조건을 채우지 않는다."
+  ],
+  "sourceQuote": "[그림: 두 그래프를 그리고 수직선 $x=t$의 교점을 P$(t,2e^t)$, Q$(t,2t-1)$로 표시한다.]"
+}

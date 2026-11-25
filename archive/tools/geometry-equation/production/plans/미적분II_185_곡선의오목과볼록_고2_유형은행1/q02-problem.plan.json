@@ -1,0 +1,70 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "9",
+          "-6",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -0.5,
+      4.5
+    ],
+    "viewport": [
+      -0.7,
+      4.7,
+      -1.5,
+      5.5
+    ],
+    "functionName": "f",
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 1,
+        "y": 4
+      },
+      {
+        "id": "B",
+        "x": 2,
+        "y": 2
+      },
+      {
+        "id": "C",
+        "x": 3,
+        "y": 0
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "f(x)=x³-6x²+9x의 극대·변곡·극소점을 표시한다.",
+  "accessibilityDescription": "f(x)=x³-6x²+9x의 극대·변곡·극소점을 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "y=f(x)=x³-6x²+9x",
+      "mappedTo": "graphPlan.pieces[0].coefficients;graphPlan.functionName"
+    },
+    {
+      "id": "c2",
+      "condition": "극대 (1,4), 변곡 (2,2), 극소 (3,0)",
+      "mappedTo": "graphPlan.requiredPoints[0..2]"
+    }
+  ],
+  "newVisualInformation": [
+    "답 또는 최적 t를 노출하지 않고 원문 작도 요소만 배치했다."
+  ],
+  "sourceQuote": "[그림: $y=x^3-6x^2+9x$를 $y=f(x)$로 표시하고 극대점 $(1,4)$, 변곡점 $(2,2)$, 극소점 $(3,0)$을 표시한다.]"
+}

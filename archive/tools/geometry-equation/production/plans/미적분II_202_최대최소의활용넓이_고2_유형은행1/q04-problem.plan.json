@@ -1,0 +1,56 @@
+{
+  "capability": "exponential-affine-spike-v1",
+  "graphPlan": {
+    "family": "exponential-affine",
+    "coefficients": [
+      "3",
+      "-2",
+      "0"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      0,
+      2
+    ],
+    "viewport": [
+      -0.5,
+      2.5,
+      -0.5,
+      4
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "y"
+    }
+  },
+  "caption": "원문의 자연지수·자연로그 곡선만 정확히 작도한다. 미지 접점과 보조도형은 capability 대기 중이다.",
+  "accessibilityDescription": "원문의 자연지수·자연로그 곡선만 정확히 작도한다. 미지 접점과 보조도형은 capability 대기 중이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "y=3e^(-2x), t>0",
+      "mappedTo": "graphPlan.coefficients;graphPlan.domain"
+    },
+    {
+      "id": "c2",
+      "condition": "P(t,3e^(-2t)) (대표 t=1)",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: EXP_VERTICAL_INTERCEPTS: A(0,3e^-2t), B(0,3(1+2t)e^-2t), 접선 및 삼각형 APB의 정확 overlay 좌표 미지원"
+    },
+    {
+      "id": "c3",
+      "condition": "A(0,3e^(-2t)), B(0,3(1+2t)e^(-2t)), APB 삼각형",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: EXP_VERTICAL_INTERCEPTS: A(0,3e^-2t), B(0,3(1+2t)e^-2t), 접선 및 삼각형 APB의 정확 overlay 좌표 미지원"
+    }
+  ],
+  "newVisualInformation": [
+    "ENGINE_CAPABILITY_PENDING: EXP_VERTICAL_INTERCEPTS: A(0,3e^-2t), B(0,3(1+2t)e^-2t), 접선 및 삼각형 APB의 정확 overlay 좌표 미지원",
+    "원문 원본 JS 불변. 임의의 수치 대체로 미지원 기하조건을 채우지 않는다."
+  ],
+  "sourceQuote": "[그림: A$(0,3e^{-2t})$, B$(0,3(1+2t)e^{-2t})$와 P를 이어 표시한다.]"
+}

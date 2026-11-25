@@ -1,0 +1,91 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "0",
+      "0",
+      "2",
+      "-1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1.5,
+      3
+    ],
+    "viewport": [
+      -1.7,
+      3.2,
+      -3,
+      3
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 1.3333333333333333,
+        "y": 1.1851851851851851
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "y"
+    },
+    "exactCoordinates": {
+      "A": [
+        "4/3",
+        "32/27"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0",
+          "unnamed": true
+        },
+        {
+          "id": "Z",
+          "x": "2",
+          "y": "0",
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "도함수 또는 함수의 주어진 다항곡선과 원문에 명시된 특징점을 보인다.",
+  "accessibilityDescription": "도함수 또는 함수의 주어진 다항곡선과 원문에 명시된 특징점을 보인다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f'(x)=x²(2-x)",
+      "mappedTo": "graphPlan.coefficients"
+    },
+    {
+      "id": "c2",
+      "condition": "x축 접점 (0,0), 교점 (2,0)",
+      "mappedTo": "graphPlan.overlays.points[0..1]"
+    },
+    {
+      "id": "c3",
+      "condition": "극대 (4/3,32/27)",
+      "mappedTo": "graphPlan.requiredPoints[0];graphPlan.exactCoordinates.A"
+    },
+    {
+      "id": "c4",
+      "condition": "원문 y=f′(x) 도함수 표기의 프라임 글리프",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: DERIVATIVE_FUNCTION_LABEL: 축 제목의 f′(x) 프라임 글리프를 AXIS_TITLE_INVALID:y가 거절함"
+    }
+  ],
+  "newVisualInformation": [
+    "ENGINE_CAPABILITY_PENDING: DERIVATIVE_FUNCTION_LABEL: 축 제목의 f′(x) 프라임 글리프를 AXIS_TITLE_INVALID:y가 거절함",
+    "원문 원본 JS 불변. 임의의 수치 대체로 미지원 기하조건을 채우지 않는다."
+  ],
+  "sourceQuote": "[그림: $y=x^2(2-x)$를 그린다. $x$축에 접하는 $(0,0)$, 극대점 $(4/3,32/27)$과 교점 $(2,0)$을 표시한다.]"
+}

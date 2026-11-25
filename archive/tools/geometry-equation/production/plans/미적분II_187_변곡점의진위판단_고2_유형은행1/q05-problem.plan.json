@@ -1,0 +1,80 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "0",
+      "-1",
+      "0",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -2,
+      2
+    ],
+    "viewport": [
+      -2.3,
+      2.3,
+      -6.5,
+      6.5
+    ],
+    "requiredPoints": [],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "y"
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "-1",
+          "y": "0",
+          "unnamed": true
+        },
+        {
+          "id": "B",
+          "x": "0",
+          "y": "0",
+          "unnamed": true
+        },
+        {
+          "id": "C",
+          "x": "1",
+          "y": "0",
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "도함수 또는 함수의 주어진 다항곡선과 원문에 명시된 특징점을 보인다.",
+  "accessibilityDescription": "도함수 또는 함수의 주어진 다항곡선과 원문에 명시된 특징점을 보인다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "[-2,2]에서 f'(x)=x(x²-1)",
+      "mappedTo": "graphPlan.coefficients;graphPlan.domain"
+    },
+    {
+      "id": "c2",
+      "condition": "x축 영점 -1,0,1",
+      "mappedTo": "graphPlan.overlays.points[0..2]"
+    },
+    {
+      "id": "c3",
+      "condition": "원문 y=f′(x) 도함수 표기의 프라임 글리프",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: DERIVATIVE_FUNCTION_LABEL: 축 제목의 f′(x) 프라임 글리프를 AXIS_TITLE_INVALID:y가 거절함"
+    }
+  ],
+  "newVisualInformation": [
+    "ENGINE_CAPABILITY_PENDING: DERIVATIVE_FUNCTION_LABEL: 축 제목의 f′(x) 프라임 글리프를 AXIS_TITLE_INVALID:y가 거절함",
+    "원문 원본 JS 불변. 임의의 수치 대체로 미지원 기하조건을 채우지 않는다."
+  ],
+  "sourceQuote": "[그림: $y=x(x^2-1)$을 $[-2,2]"
+}
