@@ -1,0 +1,105 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "REGULAR_POLYHEDRON",
+      "faces": 4,
+      "side": 6,
+      "names": "BCDA",
+      "points": [
+        {
+          "id": "E",
+          "at": {
+            "midpoint": [
+              "A",
+              "D"
+            ]
+          }
+        },
+        {
+          "id": "P",
+          "at": {
+            "projection": {
+              "from": "E",
+              "plane": [
+                "B",
+                "C",
+                "D"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "C",
+      "to": "E",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "E",
+      "to": "P",
+      "style": "DASHED",
+      "role": "REF"
+    },
+    {
+      "from": "C",
+      "to": "P",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "dims": [
+    {
+      "from": "B",
+      "to": "C",
+      "label": "6"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "P",
+        "refs": [
+          "E",
+          "C"
+        ]
+      }
+    ]
+  },
+  "caption": "정사면체 CE의 정사영",
+  "solidCaption": {
+    "text": "정사면체 CE의 정사영"
+  },
+  "accessibilityDescription": "정사면체 CE의 정사영. 정사면체 한 모서리 6; AD 중점 E; CE 선분; CE의 밑면 정사영 CP 관계를 표시한 공간도형.",
+  "sourceQuote": "[그림: 한 모서리의 길이가 $6$인 정사면체 $\\mathrm{ABCD}$에서 모서리 $\\mathrm{AD}$의 중점 $\\mathrm{E}$와 꼭짓점 $\\mathrm{C}$를 이은 선분 $\\mathrm{CE}$가 표시되어 있다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "정사면체 한 모서리 6",
+      "mappedTo": "solids[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "AD 중점 E",
+      "mappedTo": "solids[0].points[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "CE 선분",
+      "mappedTo": "segments[0]"
+    },
+    {
+      "id": "c4",
+      "condition": "CE의 밑면 정사영 CP",
+      "mappedTo": "segments[2]"
+    }
+  ],
+  "newVisualInformation": [
+    "문제의 CE 원선을 유지하며 정사영 수선발 P를 보조한다."
+  ]
+}

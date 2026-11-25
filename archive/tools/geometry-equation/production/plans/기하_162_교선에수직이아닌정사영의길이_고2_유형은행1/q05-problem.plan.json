@@ -1,0 +1,159 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 1.7320508075688772,
+        "depth": 1
+      },
+      "height": 1,
+      "names": "EFGHABCD",
+      "points": [
+        {
+          "id": "I",
+          "at": {
+            "footOnLine": {
+              "from": "D",
+              "line": [
+                "E",
+                "G"
+              ]
+            }
+          }
+        },
+        {
+          "id": "J",
+          "at": {
+            "projection": {
+              "from": "I",
+              "plane": [
+                "B",
+                "F",
+                "G"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "E",
+      "to": "G",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "D",
+      "to": "I",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "I",
+      "to": "J",
+      "style": "DASHED",
+      "role": "REF"
+    },
+    {
+      "from": "C",
+      "to": "J",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "I",
+      "to": "G",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "dims": [
+    {
+      "from": "A",
+      "to": "B",
+      "label": "\\sqrt{3}"
+    },
+    {
+      "from": "A",
+      "to": "D",
+      "label": "1"
+    },
+    {
+      "from": "A",
+      "to": "E",
+      "label": "1"
+    }
+  ],
+  "highlights": [
+    {
+      "polygon": [
+        "B",
+        "F",
+        "G",
+        "C"
+      ]
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "I",
+        "refs": [
+          "D",
+          "G"
+        ]
+      }
+    ]
+  },
+  "caption": "직육면체 DI의 옆면 정사영",
+  "solidCaption": {
+    "text": "직육면체 DI의 옆면 정사영"
+  },
+  "accessibilityDescription": "직육면체 DI의 옆면 정사영. AB=√3; AD=1; AE=1; 밑면 대각선 EG; D에서 EG의 수선발 I; DI 선분; 투영 대상 옆면 BFGC 관계를 표시한 공간도형.",
+  "sourceQuote": "[그림: 직육면체 $\\text{ABCD-EFGH}$에서 $\\overline{\\text{AB}}=\\sqrt{3}$, $\\overline{\\text{AD}}=1$, $\\overline{\\text{AE}}=1$이다. 밑면의 대각선 $\\text{EG}$가 그어져 있고, 꼭짓점 $\\text{D}$에서 직선 $\\text{EG}$에 내린 수선의 발이 ",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AB=√3",
+      "mappedTo": "dims[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "AD=1",
+      "mappedTo": "dims[1]"
+    },
+    {
+      "id": "c3",
+      "condition": "AE=1",
+      "mappedTo": "dims[2]"
+    },
+    {
+      "id": "c4",
+      "condition": "밑면 대각선 EG",
+      "mappedTo": "segments[0]"
+    },
+    {
+      "id": "c5",
+      "condition": "D에서 EG의 수선발 I",
+      "mappedTo": "solids[0].points[0]"
+    },
+    {
+      "id": "c6",
+      "condition": "DI 선분",
+      "mappedTo": "segments[1]"
+    },
+    {
+      "id": "c7",
+      "condition": "투영 대상 옆면 BFGC",
+      "mappedTo": "highlights[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "I의 옆면 정사영 J와 D의 정사영 C를 연결한 CJ."
+  ]
+}

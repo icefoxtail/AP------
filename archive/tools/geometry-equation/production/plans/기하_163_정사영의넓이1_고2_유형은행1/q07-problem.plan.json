@@ -1,0 +1,238 @@
+{
+  "capability": "solid-figure-v1",
+  "space": {
+    "points": [
+      {
+        "id": "A",
+        "at": [
+          0,
+          -1.4142135623730951,
+          1.5505102572168221
+        ]
+      },
+      {
+        "id": "B",
+        "at": [
+          2.8284271247461903,
+          0,
+          4
+        ]
+      },
+      {
+        "id": "C",
+        "at": [
+          0,
+          1.4142135623730951,
+          6.449489742783178
+        ]
+      },
+      {
+        "id": "D",
+        "at": [
+          -2.8284271247461903,
+          0,
+          4
+        ]
+      },
+      {
+        "id": "A′",
+        "at": [
+          0,
+          -1.4142135623730951,
+          0
+        ]
+      },
+      {
+        "id": "B′",
+        "at": [
+          2.8284271247461903,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "C′",
+        "at": [
+          0,
+          1.4142135623730951,
+          0
+        ]
+      },
+      {
+        "id": "D′",
+        "at": [
+          -2.8284271247461903,
+          0,
+          0
+        ]
+      }
+    ],
+    "planes": [
+      {
+        "id": "source",
+        "through": [
+          "A",
+          "B",
+          "C"
+        ],
+        "fill": "WARM"
+      },
+      {
+        "id": "alpha",
+        "name": "\\alpha",
+        "through": [
+          "A′",
+          "B′",
+          "C′"
+        ]
+      }
+    ],
+    "segments": [
+      {
+        "from": "A",
+        "to": "B",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "B",
+        "to": "C",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "C",
+        "to": "D",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "D",
+        "to": "A",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A′",
+        "to": "B′",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "B′",
+        "to": "C′",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "C′",
+        "to": "D′",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "D′",
+        "to": "A′",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "B",
+        "to": "D",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "A′",
+        "style": "DASHED",
+        "role": "REF"
+      },
+      {
+        "from": "B",
+        "to": "B′",
+        "style": "DASHED",
+        "role": "REF"
+      },
+      {
+        "from": "C",
+        "to": "C′",
+        "style": "DASHED",
+        "role": "REF"
+      },
+      {
+        "from": "D",
+        "to": "D′",
+        "style": "DASHED",
+        "role": "REF"
+      }
+    ]
+  },
+  "dims": [
+    {
+      "from": "A",
+      "to": "B",
+      "label": "4"
+    },
+    {
+      "from": "A′",
+      "to": "B′",
+      "label": "\\sqrt{10}"
+    }
+  ],
+  "highlights": [
+    {
+      "polygon": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "fill": "WARM"
+    },
+    {
+      "polygon": [
+        "A′",
+        "B′",
+        "C′",
+        "D′"
+      ]
+    }
+  ],
+  "caption": "정사각형의 마름모 정사영",
+  "solidCaption": {
+    "text": "정사각형의 마름모 정사영"
+  },
+  "accessibilityDescription": "정사각형의 마름모 정사영. 한 변 4의 정사각형 ABCD; BD는 평면 α와 평행; 목표 평면 α; 정사영 A′B′C′D′; 마름모 한 변 √10 관계를 표시한 공간도형.",
+  "sourceQuote": "[그림: 한 변의 길이가 4인 정사각형 $\\text{ABCD}$가 공중에 떠 있고, 대각선 $\\text{BD}$는 아래의 평면 $\\alpha$와 평행하다. 정사각형이 평면 $\\alpha$에 정사영되어 한 변의 길이가 $\\sqrt{10}$인 마름모 $\\text{A'B'C'D'}$을 이루고 있다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "한 변 4의 정사각형 ABCD",
+      "mappedTo": "dims[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "BD는 평면 α와 평행",
+      "mappedTo": "space.segments[8]"
+    },
+    {
+      "id": "c3",
+      "condition": "목표 평면 α",
+      "mappedTo": "space.planes[1]"
+    },
+    {
+      "id": "c4",
+      "condition": "정사영 A′B′C′D′",
+      "mappedTo": "highlights[1]"
+    },
+    {
+      "id": "c5",
+      "condition": "마름모 한 변 √10",
+      "mappedTo": "dims[1]"
+    }
+  ],
+  "newVisualInformation": [
+    "원문 목표 평면 α, 정확한 프라임 이름, 한 변 √10의 마름모 정사영."
+  ]
+}

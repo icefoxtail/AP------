@@ -1,0 +1,283 @@
+{
+  "capability": "solid-figure-v1",
+  "space": {
+    "points": [
+      {
+        "id": "A",
+        "at": [
+          -3,
+          5.656854249492381,
+          5.656854249492381
+        ]
+      },
+      {
+        "id": "B",
+        "at": [
+          -3,
+          1.4142135623730951,
+          1.4142135623730951
+        ]
+      },
+      {
+        "id": "C",
+        "at": [
+          3,
+          1.4142135623730951,
+          1.4142135623730951
+        ]
+      },
+      {
+        "id": "D",
+        "at": [
+          3,
+          5.656854249492381,
+          5.656854249492381
+        ]
+      },
+      {
+        "id": "A′",
+        "at": [
+          -3,
+          5.656854249492381,
+          0
+        ]
+      },
+      {
+        "id": "B′",
+        "at": [
+          -3,
+          1.4142135623730951,
+          0
+        ]
+      },
+      {
+        "id": "C′",
+        "at": [
+          3,
+          1.4142135623730951,
+          0
+        ]
+      },
+      {
+        "id": "D′",
+        "at": [
+          3,
+          5.656854249492381,
+          0
+        ]
+      },
+      {
+        "id": "I",
+        "at": [
+          0,
+          0,
+          0
+        ],
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "J",
+        "at": [
+          0,
+          4.242640687119286,
+          4.242640687119286
+        ],
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "K",
+        "at": [
+          0,
+          4.242640687119286,
+          0
+        ],
+        "hideName": true,
+        "hideDot": true
+      }
+    ],
+    "planes": [
+      {
+        "id": "alpha",
+        "name": "\\alpha",
+        "through": [
+          "A",
+          "B",
+          "C"
+        ]
+      },
+      {
+        "id": "beta",
+        "name": "\\beta",
+        "through": [
+          "A′",
+          "B′",
+          "C′"
+        ]
+      }
+    ],
+    "lines": [
+      {
+        "id": "l",
+        "name": "l",
+        "intersection": [
+          "alpha",
+          "beta"
+        ]
+      }
+    ],
+    "segments": [
+      {
+        "from": "A",
+        "to": "B",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "B",
+        "to": "C",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "C",
+        "to": "D",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "D",
+        "to": "A",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A′",
+        "to": "B′",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "B′",
+        "to": "C′",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "C′",
+        "to": "D′",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "D′",
+        "to": "A′",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "A′",
+        "style": "DASHED",
+        "role": "REF"
+      },
+      {
+        "from": "B",
+        "to": "B′",
+        "style": "DASHED",
+        "role": "REF"
+      },
+      {
+        "from": "C",
+        "to": "C′",
+        "style": "DASHED",
+        "role": "REF"
+      },
+      {
+        "from": "D",
+        "to": "D′",
+        "style": "DASHED",
+        "role": "REF"
+      },
+      {
+        "from": "I",
+        "to": "J",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "I",
+        "to": "K",
+        "style": "AUTO",
+        "role": "REF"
+      }
+    ]
+  },
+  "dims": [
+    {
+      "from": "B",
+      "to": "C",
+      "label": "6"
+    },
+    {
+      "from": "A",
+      "to": "B",
+      "label": "6"
+    }
+  ],
+  "marks": {
+    "angles": [
+      {
+        "refs": [
+          "J",
+          "I",
+          "K"
+        ],
+        "arcs": 1,
+        "label": "45^\\circ"
+      }
+    ]
+  },
+  "caption": "두 평면 사이 정사각형의 정사영",
+  "solidCaption": {
+    "text": "두 평면 사이 정사각형의 정사영"
+  },
+  "accessibilityDescription": "두 평면 사이 정사각형의 정사영. 평면 α; 평면 β; 원래 정사각형 ABCD; 정사영 A′B′C′D′; BC는 교선 평행; 이면각 45° 관계를 표시한 공간도형.",
+  "sourceQuote": "[그림: 두 평면 $\\alpha$와 $\\beta$가 교선을 공유하며 $45^\\circ$의 각을 이루고 있다. 평면 $\\alpha$ 위에 한 변의 길이가 $6$인 정사각형 $\\mathrm{ABCD}$가 놓여 있고 선분 $\\mathrm{BC}$는 두 평면의 교선과 평행하다. 정사각형 $\\mathrm{ABCD}$의 평면 $\\beta$ 위로의 정",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "평면 α",
+      "mappedTo": "space.planes[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "평면 β",
+      "mappedTo": "space.planes[1]"
+    },
+    {
+      "id": "c3",
+      "condition": "원래 정사각형 ABCD",
+      "mappedTo": "space.segments[0]"
+    },
+    {
+      "id": "c4",
+      "condition": "정사영 A′B′C′D′",
+      "mappedTo": "space.segments[4]"
+    },
+    {
+      "id": "c5",
+      "condition": "BC는 교선 평행",
+      "mappedTo": "space.segments[1]"
+    },
+    {
+      "id": "c6",
+      "condition": "이면각 45°",
+      "mappedTo": "marks.angles[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "프라임 점 이름과 두 사각형의 실제 정사영을 그대로 표시한다."
+  ]
+}

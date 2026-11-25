@@ -1,0 +1,214 @@
+{
+  "capability": "solid-figure-v1",
+  "space": {
+    "points": [
+      {
+        "id": "B",
+        "at": [
+          -2,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "C",
+        "at": [
+          2,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "A",
+        "at": [
+          0,
+          2.298133329356934,
+          1.9283628290596178
+        ]
+      },
+      {
+        "id": "A′",
+        "at": [
+          0,
+          2.298133329356934,
+          0
+        ]
+      },
+      {
+        "id": "H",
+        "at": [
+          0,
+          0,
+          0
+        ]
+      }
+    ],
+    "planes": [
+      {
+        "id": "alpha",
+        "name": "\\alpha",
+        "through": [
+          "A",
+          "B",
+          "C"
+        ]
+      },
+      {
+        "id": "beta",
+        "name": "\\beta",
+        "through": [
+          "B",
+          "C",
+          "A′"
+        ]
+      }
+    ],
+    "lines": [
+      {
+        "id": "l",
+        "name": "l",
+        "intersection": [
+          "alpha",
+          "beta"
+        ]
+      }
+    ],
+    "segments": [
+      {
+        "from": "A",
+        "to": "B",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "B",
+        "to": "C",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "C",
+        "to": "A",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "B",
+        "to": "A′",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "C",
+        "to": "A′",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "H",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A′",
+        "to": "H",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "A′",
+        "style": "DASHED",
+        "role": "REF"
+      }
+    ]
+  },
+  "highlights": [
+    {
+      "polygon": [
+        "A",
+        "B",
+        "C"
+      ],
+      "fill": "WARM"
+    },
+    {
+      "polygon": [
+        "A′",
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "H",
+        "refs": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "at": "H",
+        "refs": [
+          "A′",
+          "B"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "refs": [
+          "A",
+          "H",
+          "A′"
+        ],
+        "arcs": 1,
+        "label": "\\theta"
+      }
+    ]
+  },
+  "caption": "두 평면 사이 삼각형 정사영의 넓이",
+  "solidCaption": {
+    "text": "두 평면 사이 삼각형 정사영의 넓이"
+  },
+  "accessibilityDescription": "두 평면 사이 삼각형 정사영의 넓이. 평면 α와 β; BC는 교선 l; 삼각형 ABC; 정사영 A′BC; AH⊥l; ∠AHA′=θ 관계를 표시한 공간도형.",
+  "sourceQuote": "[그림: 두 평면 $\\alpha, \\beta$가 교선 $l$에서 만난다. 변 $\\text{BC}$는 교선 $l$ 위에 있고 평면 $\\alpha$ 위의 꼭짓점 $\\text{A}$에서 교선 $l$에 내린 수선의 발이 $\\text{H}$이다. 점 $\\text{A}$의 평면 $\\beta$ 위로의 정사영이 $\\text{A}'$이고, 점 $\\text",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "평면 α와 β",
+      "mappedTo": "space.planes[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "BC는 교선 l",
+      "mappedTo": "space.lines[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "삼각형 ABC",
+      "mappedTo": "highlights[0]"
+    },
+    {
+      "id": "c4",
+      "condition": "정사영 A′BC",
+      "mappedTo": "highlights[1]"
+    },
+    {
+      "id": "c5",
+      "condition": "AH⊥l",
+      "mappedTo": "marks.rightAngles[0]"
+    },
+    {
+      "id": "c6",
+      "condition": "∠AHA′=θ",
+      "mappedTo": "marks.angles[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "θ는 미정 기호이므로 40° 기울기로 예시한 모식도이며 A′ 이름은 그대로 둔다."
+  ]
+}

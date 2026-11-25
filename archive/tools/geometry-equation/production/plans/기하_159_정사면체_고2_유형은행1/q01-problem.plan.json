@@ -1,0 +1,146 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "REGULAR_POLYHEDRON",
+      "faces": 4,
+      "side": 6,
+      "names": "BCDA",
+      "points": [
+        {
+          "id": "M",
+          "at": {
+            "midpoint": [
+              "A",
+              "D"
+            ]
+          }
+        },
+        {
+          "id": "H",
+          "at": {
+            "projection": {
+              "from": "A",
+              "plane": [
+                "B",
+                "C",
+                "D"
+              ]
+            }
+          }
+        },
+        {
+          "id": "H′",
+          "at": {
+            "projection": {
+              "from": "M",
+              "plane": [
+                "B",
+                "C",
+                "D"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "B",
+      "to": "M",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "M",
+      "to": "H′",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "B",
+      "to": "H′",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "A",
+      "to": "H",
+      "style": "DASHED",
+      "role": "REF"
+    },
+    {
+      "from": "H",
+      "to": "H′",
+      "style": "DASHED",
+      "role": "REF"
+    }
+  ],
+  "dims": [
+    {
+      "from": "B",
+      "to": "C",
+      "label": "6"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "H′",
+        "refs": [
+          "M",
+          "B"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "refs": [
+          "M",
+          "B",
+          "H′"
+        ],
+        "arcs": 1,
+        "label": "\\theta"
+      }
+    ]
+  },
+  "caption": "정사면체의 중점과 정사영",
+  "solidCaption": {
+    "text": "정사면체의 중점과 정사영"
+  },
+  "accessibilityDescription": "정사면체의 중점과 정사영. 정사면체 모든 모서리 6; AD 중점 M; A의 밑면 수선발 H; M의 밑면 수선발 H′; ∠MBH′=θ 관계를 표시한 공간도형.",
+  "sourceQuote": "[그림: 한 모서리의 길이가 6인 정사면체 ABCD에서 모서리 AD의 중점이 M이고, 꼭짓점 A에서 밑면 BCD에 내린 수선의 발이 H이며, M에서 밑면 BCD에 내린 수선의 발이 H'일 때 직선 BM과 평면 BCD가 이루는 각은 ∠MBH'=θ이다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "정사면체 모든 모서리 6",
+      "mappedTo": "solids[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "AD 중점 M",
+      "mappedTo": "solids[0].points[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "A의 밑면 수선발 H",
+      "mappedTo": "solids[0].points[1]"
+    },
+    {
+      "id": "c4",
+      "condition": "M의 밑면 수선발 H′",
+      "mappedTo": "solids[0].points[2]"
+    },
+    {
+      "id": "c5",
+      "condition": "∠MBH′=θ",
+      "mappedTo": "marks.angles[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "원문과 같은 H 및 H′ 수선발을 정사면체 밑면에 정확히 둔다."
+  ]
+}

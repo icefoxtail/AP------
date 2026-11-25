@@ -1,0 +1,84 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 1,
+        "depth": 1
+      },
+      "height": 1,
+      "names": "EFGHABCD"
+    }
+  ],
+  "segments": [
+    {
+      "from": "A",
+      "to": "F",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "F",
+      "to": "H",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "H",
+      "to": "A",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "A",
+      "to": "G",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "dims": [
+    {
+      "from": "A",
+      "to": "B",
+      "label": "1"
+    }
+  ],
+  "highlights": [
+    {
+      "polygon": [
+        "A",
+        "F",
+        "H"
+      ]
+    }
+  ],
+  "caption": "정육면체 AFH와 공간대각선",
+  "solidCaption": {
+    "text": "정육면체 AFH와 공간대각선"
+  },
+  "accessibilityDescription": "정육면체 AFH와 공간대각선. 한 모서리 길이 1 정육면체; 평면 AFH; 입체대각선 AG 관계를 표시한 공간도형.",
+  "sourceQuote": "[그림: 한 모서리의 길이가 $1$인 정육면체 $\\mathrm{ABCD-EFGH}$에서 세 꼭짓점 $\\mathrm{A, F, H}$를 지나는 평면 $\\mathrm{AFH}$와 입체대각선 $\\mathrm{AG}$가 표시되어 있다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "한 모서리 길이 1 정육면체",
+      "mappedTo": "solids[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "평면 AFH",
+      "mappedTo": "highlights[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "입체대각선 AG",
+      "mappedTo": "segments[3]"
+    }
+  ],
+  "newVisualInformation": [
+    "AFH를 삼각형 면으로 칠해 직선 AG의 기준 평면을 드러낸다."
+  ]
+}

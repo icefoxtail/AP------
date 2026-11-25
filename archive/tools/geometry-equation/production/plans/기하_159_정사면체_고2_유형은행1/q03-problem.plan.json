@@ -1,0 +1,104 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "REGULAR_POLYHEDRON",
+      "faces": 4,
+      "side": 6,
+      "names": "BCDA",
+      "points": [
+        {
+          "id": "E",
+          "at": {
+            "midpoint": [
+              "B",
+              "C"
+            ]
+          }
+        },
+        {
+          "id": "F",
+          "at": {
+            "midpoint": [
+              "C",
+              "D"
+            ]
+          }
+        },
+        {
+          "id": "G",
+          "at": {
+            "divide": [
+              "B",
+              "D"
+            ],
+            "ratio": "3:1"
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "A",
+      "to": "E",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "F",
+      "to": "G",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "dims": [
+    {
+      "from": "A",
+      "to": "B",
+      "label": "6"
+    }
+  ],
+  "caption": "정사면체의 모서리 내분점",
+  "solidCaption": {
+    "text": "정사면체의 모서리 내분점"
+  },
+  "accessibilityDescription": "정사면체의 모서리 내분점. 모서리 6 정사면체; E는 BC 중점; F는 CD 중점; BG:GD=3:1; AE 표시; FG 표시 관계를 표시한 공간도형.",
+  "sourceQuote": "[그림: 한 모서리의 길이가 6인 정사면체 ABCD에서 BC의 중점 E, CD의 중점 F, 모서리 BD를 3:1로 내분하는 점 G가 있고 선분 AE와 선분 FG가 연결되어 있다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "모서리 6 정사면체",
+      "mappedTo": "solids[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "E는 BC 중점",
+      "mappedTo": "solids[0].points[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "F는 CD 중점",
+      "mappedTo": "solids[0].points[1]"
+    },
+    {
+      "id": "c4",
+      "condition": "BG:GD=3:1",
+      "mappedTo": "solids[0].points[2]"
+    },
+    {
+      "id": "c5",
+      "condition": "AE 표시",
+      "mappedTo": "segments[0]"
+    },
+    {
+      "id": "c6",
+      "condition": "FG 표시",
+      "mappedTo": "segments[1]"
+    }
+  ],
+  "newVisualInformation": [
+    "비교 대상은 만나지 않는 두 직선 AE와 FG다."
+  ]
+}

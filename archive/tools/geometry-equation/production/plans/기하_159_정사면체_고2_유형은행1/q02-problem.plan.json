@@ -1,0 +1,134 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "REGULAR_POLYHEDRON",
+      "faces": 4,
+      "side": 6,
+      "names": "BCDA",
+      "points": [
+        {
+          "id": "G",
+          "at": {
+            "centroid": [
+              "A",
+              "B",
+              "C"
+            ]
+          }
+        },
+        {
+          "id": "H",
+          "at": {
+            "projection": {
+              "from": "A",
+              "plane": [
+                "B",
+                "C",
+                "D"
+              ]
+            }
+          }
+        },
+        {
+          "id": "G′",
+          "at": {
+            "projection": {
+              "from": "G",
+              "plane": [
+                "B",
+                "C",
+                "D"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "D",
+      "to": "G",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "G",
+      "to": "G′",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "D",
+      "to": "G′",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "A",
+      "to": "H",
+      "style": "DASHED",
+      "role": "REF"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "G′",
+        "refs": [
+          "G",
+          "D"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "refs": [
+          "G",
+          "D",
+          "G′"
+        ],
+        "arcs": 1,
+        "label": "\\theta"
+      }
+    ]
+  },
+  "caption": "정사면체의 무게중심과 평면각",
+  "solidCaption": {
+    "text": "정사면체의 무게중심과 평면각"
+  },
+  "accessibilityDescription": "정사면체의 무게중심과 평면각. 정사면체 ABCD; ABC의 무게중심 G; A의 정사영 H; G의 정사영 G′; DG와 BCD의 각 θ 관계를 표시한 공간도형.",
+  "sourceQuote": "[그림: 정사면체 ABCD에서 삼각형 ABC의 무게중심 G가 있고, 직선 DG와 밑면 BCD가 이루는 각의 크기는 θ이며, 꼭짓점 A에서 밑면 BCD에 내린 수선의 발은 H, 점 G에서 밑면 BCD에 내린 수선의 발은 G'이다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "정사면체 ABCD",
+      "mappedTo": "solids[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "ABC의 무게중심 G",
+      "mappedTo": "solids[0].points[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "A의 정사영 H",
+      "mappedTo": "solids[0].points[1]"
+    },
+    {
+      "id": "c4",
+      "condition": "G의 정사영 G′",
+      "mappedTo": "solids[0].points[2]"
+    },
+    {
+      "id": "c5",
+      "condition": "DG와 BCD의 각 θ",
+      "mappedTo": "marks.angles[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "원문 G′ 수선발과 DG의 밑면 투영을 함께 표시한다."
+  ]
+}

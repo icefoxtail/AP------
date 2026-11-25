@@ -1,0 +1,123 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PYRAMID",
+      "base": {
+        "kind": "REGULAR",
+        "n": 6,
+        "side": 4
+      },
+      "height": 6,
+      "names": "ABCDEFO",
+      "points": [
+        {
+          "id": "M",
+          "at": {
+            "midpoint": [
+              "A",
+              "B"
+            ]
+          }
+        },
+        {
+          "id": "H",
+          "at": {
+            "base": "center"
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "O",
+      "to": "M",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "M",
+      "to": "H",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "O",
+      "to": "H",
+      "style": "DASHED",
+      "role": "REF"
+    }
+  ],
+  "dims": [
+    {
+      "from": "A",
+      "to": "B",
+      "label": "4"
+    }
+  ],
+  "highlights": [
+    {
+      "polygon": [
+        "O",
+        "A",
+        "B"
+      ],
+      "fill": "WARM"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "H",
+        "refs": [
+          "O",
+          "M"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "refs": [
+          "O",
+          "M",
+          "H"
+        ],
+        "arcs": 1,
+        "label": "60^\\circ"
+      }
+    ]
+  },
+  "caption": "정육각뿔 옆면의 이면각",
+  "solidCaption": {
+    "text": "정육각뿔 옆면의 이면각"
+  },
+  "accessibilityDescription": "정육각뿔 옆면의 이면각. 정육각형 ABCDEF 한 변 4; 정육각뿔 O-ABCDEF; 옆면 OAB; 밑면과 이면각 60° 관계를 표시한 공간도형.",
+  "sourceQuote": "[그림: 밑면이 한 변의 길이가 4인 정육각형 $\\text{ABCDEF}$이고 꼭짓점이 $\\text{O}$인 정육각뿔이다. 옆면 $\\text{OAB}$가 밑면과 이루는 이면각의 크기가 $60^\\circ$로 표시되어 있다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "정육각형 ABCDEF 한 변 4",
+      "mappedTo": "solids[0].base"
+    },
+    {
+      "id": "c2",
+      "condition": "정육각뿔 O-ABCDEF",
+      "mappedTo": "solids[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "옆면 OAB",
+      "mappedTo": "highlights[0]"
+    },
+    {
+      "id": "c4",
+      "condition": "밑면과 이면각 60°",
+      "mappedTo": "marks.angles[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "밑면 내접원의 반지름 2√3, 꼭짓점 높이 6이므로 이면각 60°다."
+  ]
+}

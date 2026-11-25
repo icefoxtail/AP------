@@ -1,0 +1,118 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 6,
+        "depth": 6
+      },
+      "height": 6,
+      "names": "EFGHABCD",
+      "points": [
+        {
+          "id": "M",
+          "at": {
+            "midpoint": [
+              "B",
+              "D"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "C",
+      "to": "F",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "F",
+      "to": "H",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "B",
+      "to": "D",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "C",
+      "to": "M",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "M",
+      "to": "F",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "dims": [
+    {
+      "from": "A",
+      "to": "B",
+      "label": "6"
+    }
+  ],
+  "highlights": [
+    {
+      "polygon": [
+        "B",
+        "F",
+        "H",
+        "D"
+      ]
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "M",
+        "refs": [
+          "C",
+          "F"
+        ]
+      }
+    ]
+  },
+  "caption": "정육면체 대각면에 내린 정사영",
+  "solidCaption": {
+    "text": "정육면체 대각면에 내린 정사영"
+  },
+  "accessibilityDescription": "정육면체 대각면에 내린 정사영. 정육면체 모서리 6; CF 대각선; 평면 BFHD; 수선발 M 및 MF 정사영 관계를 표시한 공간도형.",
+  "sourceQuote": "[그림: 한 모서리의 길이가 $6$인 정육면체 $\\mathrm{ABCD-EFGH}$에서 꼭짓점 $\\mathrm{B, F, H, D}$를 지나는 평면 $\\mathrm{BFHD}$와 앞면의 대각선 $\\mathrm{CF}$가 표시되어 있다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "정육면체 모서리 6",
+      "mappedTo": "solids[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "CF 대각선",
+      "mappedTo": "segments[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "평면 BFHD",
+      "mappedTo": "highlights[0]"
+    },
+    {
+      "id": "c4",
+      "condition": "수선발 M 및 MF 정사영",
+      "mappedTo": "solids[0].points[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "BFHD 면을 칠하고 C의 정사영 M, F의 정사영 F를 잇는다."
+  ]
+}

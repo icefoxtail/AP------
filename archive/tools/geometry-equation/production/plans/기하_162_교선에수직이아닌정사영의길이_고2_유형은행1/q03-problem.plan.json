@@ -1,0 +1,209 @@
+{
+  "capability": "solid-figure-v1",
+  "space": {
+    "points": [
+      {
+        "id": "A",
+        "at": [
+          0,
+          1,
+          1.7320508075688772
+        ]
+      },
+      {
+        "id": "B",
+        "at": [
+          10.392304845413264,
+          4,
+          6.928203230275509
+        ]
+      },
+      {
+        "id": "A′",
+        "at": [
+          0,
+          1,
+          0
+        ]
+      },
+      {
+        "id": "B′",
+        "at": [
+          10.392304845413264,
+          4,
+          0
+        ]
+      },
+      {
+        "id": "H",
+        "at": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "T",
+        "at": [
+          10.392304845413264,
+          1,
+          1.7320508075688772
+        ]
+      },
+      {
+        "id": "J",
+        "at": [
+          -3,
+          0,
+          0
+        ],
+        "hideName": true,
+        "hideDot": true
+      }
+    ],
+    "planes": [
+      {
+        "id": "alpha",
+        "name": "\\alpha",
+        "through": [
+          "A",
+          "B",
+          "H"
+        ]
+      },
+      {
+        "id": "beta",
+        "name": "\\beta",
+        "through": [
+          "A′",
+          "B′",
+          "H"
+        ]
+      }
+    ],
+    "lines": [
+      {
+        "id": "l",
+        "name": "l",
+        "intersection": [
+          "alpha",
+          "beta"
+        ]
+      }
+    ],
+    "segments": [
+      {
+        "from": "A",
+        "to": "B",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A′",
+        "to": "B′",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "A′",
+        "style": "DASHED",
+        "role": "REF"
+      },
+      {
+        "from": "B",
+        "to": "B′",
+        "style": "DASHED",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "T",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "H",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A′",
+        "to": "H",
+        "style": "AUTO",
+        "role": "REF"
+      }
+    ]
+  },
+  "dims": [
+    {
+      "from": "A",
+      "to": "B",
+      "label": "12"
+    }
+  ],
+  "marks": {
+    "angles": [
+      {
+        "refs": [
+          "B",
+          "A",
+          "T"
+        ],
+        "arcs": 1,
+        "label": "30^\\circ"
+      },
+      {
+        "refs": [
+          "A",
+          "H",
+          "A′"
+        ],
+        "arcs": 2,
+        "label": "60^\\circ"
+      }
+    ]
+  },
+  "caption": "교선과 30도인 선분의 정사영",
+  "solidCaption": {
+    "text": "교선과 30도인 선분의 정사영"
+  },
+  "accessibilityDescription": "교선과 30도인 선분의 정사영. 두 평면 α·β; 교선 l; AB=12; AB와 교선 30°; 이면각 60°; A′B′ 정사영 관계를 표시한 공간도형.",
+  "sourceQuote": "[그림: 두 평면 $\\alpha, \\beta$가 교선 $l$에서 $60^\\circ$의 각을 이루고 있다. 평면 $\\alpha$ 위에 길이가 12인 선분 $\\text{AB}$가 놓여 있고, 직선 $\\text{AB}$와 교선 $l$이 이루는 각의 크기는 $30^\\circ$이다. 선분 $\\text{AB}$의 평면 $\\beta$ 위로의 정사영이 ",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 평면 α·β",
+      "mappedTo": "space.planes[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "교선 l",
+      "mappedTo": "space.lines[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "AB=12",
+      "mappedTo": "dims[0]"
+    },
+    {
+      "id": "c4",
+      "condition": "AB와 교선 30°",
+      "mappedTo": "marks.angles[0]"
+    },
+    {
+      "id": "c5",
+      "condition": "이면각 60°",
+      "mappedTo": "marks.angles[1]"
+    },
+    {
+      "id": "c6",
+      "condition": "A′B′ 정사영",
+      "mappedTo": "space.segments[1]"
+    }
+  ],
+  "newVisualInformation": [
+    "원문 A′B′ 정사영과 원선 AB를 기울어진 두 평면에 각각 둔다."
+  ]
+}
