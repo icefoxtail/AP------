@@ -1,0 +1,11 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conics":[{"id":"c1","kind":"PARABOLA","vertex":["0","0"],"p":"4","axis":"X"},{"id":"c2","kind":"CIRCLE","center":["4","0"],"rSquared":"64"}],
+  "points":[{"id":"O","kind":"ORIGIN"},{"id":"F","kind":"FOCUS","curve":"c1"},{"id":"P","kind":"CONIC_CONIC","curves":["c1","c2"],"which":2}],
+  "lines":[{"id":"d","role":"DIRECTRIX","curve":"c1"}],
+  "segments":[{"id":"OF","from":"O","to":"F"},{"id":"FP","from":"F","to":"P"},{"id":"OP","from":"O","to":"P"}],
+  "caption":"포물선 y²=16x와 초점 F 중심의 원이 제1사분면의 P에서 만나는 그림",
+  "accessibilityDescription":"포물선의 초점 F(4,0)를 중심으로 한 반지름 8의 원이 준선 x=-4에 접하며, 원과 포물선의 위쪽 교점 P를 O,F와 연결한 삼각형이다.",
+  "sourceConditions":[{"id":"c1","condition":"y²=16x의 초점 F=(4,0), 준선 x=-4이며 F와 준선의 거리가 원의 반지름 8이다.","mappedTo":["c1","c2","F","d"]},{"id":"c2","condition":"제1사분면 원·포물선 교점은 P=(4,8), 둘 다 동일 좌표의 해를 공유하며 삼각형 POF의 넓이 수치는 그림에 넣지 않는다.","mappedTo":["P","OF","FP","OP"]}],
+  "newVisualInformation":["준선에 접하는 원과 포물선의 교차 및 삼각형 POF"]
+}
