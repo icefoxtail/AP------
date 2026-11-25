@@ -1,0 +1,29 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conics": [
+    {"id":"e","kind":"ELLIPSE","center":["0","0"],"aSquared":"48","bSquared":"4","major":"Y"},
+    {"id":"h","kind":"HYPERBOLA","center":["0","0"],"aSquared":"4","bSquared":"12","transverse":"X"}
+  ],
+  "points": [
+    {"id":"F","kind":"FOCUS","curve":"h","side":1,"coordinates":true},
+    {"id":"F'","kind":"FOCUS","curve":"h","side":-1,"coordinates":true},
+    {"id":"P","kind":"VERTEX","curve":"e","side":1},
+    {"id":"Q","kind":"VERTEX","curve":"e","side":-1},
+    {"id":"O","kind":"ORIGIN"},
+    {"id":"T1","kind":"FOCUS","curve":"e","side":1,"label":false},
+    {"id":"T2","kind":"FOCUS","curve":"e","side":-1,"label":false}
+  ],
+  "segments": [
+    {"id":"FP","from":"F","to":"P"},
+    {"id":"FpP","from":"F'","to":"P"},
+    {"id":"FFp","from":"F","to":"F'"}
+  ],
+  "caption": "공유되지 않는 초점을 갖는 가로 쌍곡선과 세로 타원 및 정삼각형 FPF′ (포물선은 엔진 확장 대기)",
+  "accessibilityDescription": "쌍곡선의 초점 F(4,0), F′(-4,0)를 양 끝점으로 하는 정삼각형 FPF′과 y축을 장축으로 하는 타원이 있다. 타원의 위아래 꼭짓점은 P와 Q이고, 포물선 y²=22(x+a)는 세 곡선 동시 지원이 없어 이 그림에 아직 빠져 있다.",
+  "sourceConditions": [
+    {"id":"c1","condition":"쌍곡선 초점이 (±4,0)이고 장축(주축)이 타원의 단축이므로 aₕ=2, 타원 단반축=2다. 정삼각형 FPF′이므로 P=(0,4√3), Q=(0,-4√3), 타원 장반축 제곱48이다.","mappedTo":["h","e","F","F'","P","Q","FP","FpP","FFp"]},
+    {"id":"c2","condition":"타원 초점 T1,T2=(0,±2√11)은 포물선 y²=22(x+2)를 정확히 만족한다. 그러나 공식 conics는 최대 두 곡선만 허용하여 그 포물선을 이 plan에는 넣지 못했다. 반드시 ENGINE_CAPABILITY_PENDING:THIRD_CONIC_PARABOLA로 후속 보강한다.","mappedTo":["T1","T2","e"]},
+    {"id":"c3","condition":"FP=F′P=FF′의 정삼각형 동일변 표식도 현재 conic plan에 없으므로 ENGINE_CAPABILITY_PENDING:EQUAL_SIDE_MARKS다. 구하는 주축+장축의 합은 비표시한다.","mappedTo":["FP","FpP","FFp"]}
+  ],
+  "newVisualInformation": ["두 실곡선·정삼각형과 타원 꼭짓점을 수학적으로 일치하도록 구성", "세 번째 포물선 및 세 변 같음 표시의 엔진 미지원 사실을 명시한 부분 플랜; 시각정보 완성으로 집계 금지"]
+}

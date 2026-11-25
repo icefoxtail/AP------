@@ -1,0 +1,26 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {"kind":"HYPERBOLA","center":["0","0"],"aSquared":"144","bSquared":"81","transverse":"X"},
+  "points": [
+    {"id":"O","kind":"ORIGIN"},
+    {"id":"A","kind":"FOCUS","side":-1},
+    {"id":"B","kind":"FOCUS","side":1},
+    {"id":"P","kind":"ON_CONIC","y":"9","branch":"NEG"},
+    {"id":"Q","kind":"ON_CONIC","y":"9","branch":"POS"},
+    {"id":"T","kind":"FOOT","from":"P","onto":"coast","rightAngle":true,"label":false}
+  ],
+  "lines": [{"id":"coast","y":"0","hidden":true}],
+  "segments": [
+    {"id":"AB","from":"A","to":"B","label":"30"},
+    {"id":"PQ","from":"P","to":"Q"},
+    {"id":"PT","from":"P","to":"T","label":"9"}
+  ],
+  "caption": "30 km 간격 두 등대와 해안선에 평행한 배의 경로 PQ (해안선과 9 km 간격)",
+  "accessibilityDescription": "해안선인 x축 위 두 등대 A,B는 30 km 떨어져 있다. 해안선에서 9 km 위에 평행한 선분 PQ가 있고 P와 Q는 쌍곡선의 서로 다른 분기와 만난다. P에서 해안선으로 내린 수선에는 9 km와 직각 표시가 있다.",
+  "sourceConditions": [
+    {"id":"c1","condition":"등대는 초점 A=(-15,0),B=(15,0), 간격30 km이다. 각 지점의 초점거리 차가24 km이므로 쌍곡선 a=12,b²=81이며 두 분기 모두 사용된다.","mappedTo":["A","B","AB"]},
+    {"id":"c2","condition":"두 지점은 y=9의 왼쪽·오른쪽 분기에서 각각 P=(-12√2,9), Q=(12√2,9)이다. 이 좌표·길이 PQ=24√2와 구하는 통과시간은 풀이 결과라 라벨에 쓰지 않는다. 수선 PT 길이9와 FOOT 직각만 실제 표시한다.","mappedTo":["P","Q","PQ","T","PT"]},
+    {"id":"c3","condition":"분속 0.6 km라는 조건은 움직임·시간 관계이며 그림의 치수 필드로 렌더하지 않는다. 문제에 주어진 속력은 발문 자체로 전달된다.","mappedTo":["PQ"]}
+  ],
+  "newVisualInformation": ["두 등대의 간격30, 해안선까지 거리9를 실제 선분 길이 라벨로 그리기", "P와 Q의 높이 일치, 배 경로와 해안선의 평행성, 직각을 점·선·FOOT에 결속", "PQ 및 통과시간의 구하는 값은 비공개"]
+}
