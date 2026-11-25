@@ -3,7 +3,7 @@
   "requestId": "26_삼산중_1학기_기말_중3_유사2-candidate-v1",
   "examUid": "26_삼산중_1학기_기말_중3_유사2",
   "sourceArchiveFile": "archive/exams/similar/middle/m3/1final/26_삼산중_1학기_기말_중3_유사2.js",
-  "expectedSourceBlobSha1": "9a4bdee437aeb3cd59c85942f3f706d24f7ace03",
+  "expectedSourceBlobSha1": "2a47e2806e5e10c60a9a939d374ce6b3667e7844",
   "expectedQuestionCount": 24,
   "approval": {
     "type": "CANDIDATE_CREATION_GATE",
@@ -29,11 +29,11 @@
         "subUnitKey": "M3-03-QUADRATIC_EQUATION",
         "subUnit": "이차방정식",
         "conceptClusterKey": "QUADRATIC_EQUATION",
-        "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_ROOT_IDENTIFICATION",
+        "problemTypeKey": "PT_M3_QUADRATIC_EQUATION",
         "templateKey": "",
         "crossConceptKeys": [],
         "conditionKeys": [],
-        "integrationPattern": "이차방정식 정의 판별",
+        "integrationPattern": "NONE",
         "difficultyBucket": 1,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
@@ -52,13 +52,13 @@
         "rpmPrimaryRecordId": "M3-RPM-029",
         "metaRationale": {
           "draftTier": "SINGLE_MODEL_DRAFT",
-          "curriculum": "중3 1학기 M3-03/M3-03-QUADRATIC_EQUATION의 핵심 풀이: [키포인트] 이차방정식인지 판단하려면 등식의 양변을 한쪽으로 모아 $x^2$항이 남는지 확인한다.",
-          "problemType": "ACTIVE 이차방정식의 해 판별 (PT_M3_QUADRATIC_EQUATION_ROOT_IDENTIFICATION). 변형축: 이차방정식 선택에서 전개 후 이차항 소거 예외 찾기로 역방향 판정",
-          "templateKey": "EVIDENCE_DEBT: 현행 ACTIVE PT에 대해 검증된 ACTIVE TPL 결속 후보를 확인하지 못해 공란 유지; 추후 검수 필요.",
+          "curriculum": "중3 1학기 M3-03/M3-03-QUADRATIC_EQUATION: [키포인트] 이차방정식인지 판단하려면 등식의 양변을 한쪽으로 모아 $x^2$항이 남는지 확인한다.",
+          "problemType": "FIRST_FORMAL 재검수: PT_M3_QUADRATIC_EQUATION는 M3-03/M3-03-QUADRATIC_EQUATION에 ACTIVE 바인딩. 결정적 계산 및 물음의 목표 확인.",
+          "templateKey": "FIRST_FORMAL 재검수: 이 풀이와 일치하는 정확한 ACTIVE TPL 결속이 없어 빈 값 보존. 신규 공용 템플릿 임의 생성 금지.",
           "difficulty": "원본 배점 3점, 원본 난도 1단계를 유지. 이차방정식 선택에서 전개 후 이차항 소거 예외 찾기로 역방향 판정",
           "condition": "추가 등록 조건 키 없음",
           "crossConcept": "추가 CrossConcept 없음",
-          "integration": "이차방정식 정의 판별을 원본과 동일하게 유지"
+          "integration": "대단원 간 융합 없이 해당 유형 풀이로 완결."
         },
         "visualNecessity": {
           "problem": "EXEMPT",
@@ -91,12 +91,12 @@
         "subUnit": "이차방정식",
         "conceptClusterKey": "QUADRATIC_EQUATION",
         "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_DOUBLE_ROOT",
-        "templateKey": "",
+        "templateKey": "TPL_M3_QUADRATIC_EQUATION_DOUBLE_ROOT_IDENTIFY",
         "crossConceptKeys": [
           "CC_BINOMIAL_SQUARE_EXPANSION"
         ],
         "conditionKeys": [],
-        "integrationPattern": "완전제곱식 중근 판별",
+        "integrationPattern": "NONE",
         "difficultyBucket": 1,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
@@ -112,16 +112,16 @@
           "createdAt": "2026-11-25",
           "createdAtSource": "GPT direct one-exam instruction"
         },
-        "rpmPrimaryRecordId": "M3-RPM-029",
+        "rpmPrimaryRecordId": "M3-RPM-034",
         "metaRationale": {
           "draftTier": "SINGLE_MODEL_DRAFT",
-          "curriculum": "중3 1학기 M3-03/M3-03-QUADRATIC_EQUATION의 핵심 풀이: [키포인트] 중근 $-2$를 갖는 이차방정식은 상수배를 제외하면 $(x+2)^2=0$의 꼴이다.",
-          "problemType": "ACTIVE 중근 조건 판정 (PT_M3_QUADRATIC_EQUATION_DOUBLE_ROOT). 변형축: 중근 방정식 모양 판별에 지정된 중근의 값을 추가해 후보 구조 대비",
-          "templateKey": "EVIDENCE_DEBT: 현행 ACTIVE PT에 대해 검증된 ACTIVE TPL 결속 후보를 확인하지 못해 공란 유지; 추후 검수 필요.",
+          "curriculum": "중3 1학기 M3-03/M3-03-QUADRATIC_EQUATION: [키포인트] 중근 $-2$를 갖는 이차방정식은 상수배를 제외하면 $(x+2)^2=0$의 꼴이다.",
+          "problemType": "FIRST_FORMAL 재검수: PT_M3_QUADRATIC_EQUATION_DOUBLE_ROOT는 M3-03/M3-03-QUADRATIC_EQUATION에 ACTIVE 바인딩. 결정적 계산 및 물음의 목표 확인.",
+          "templateKey": "FIRST_FORMAL 재검수: ACTIVE TPL_M3_QUADRATIC_EQUATION_DOUBLE_ROOT_IDENTIFY는 PT_M3_QUADRATIC_EQUATION_DOUBLE_ROOT의 자식이며 현재 해설에 적합.",
           "difficulty": "원본 배점 3점, 원본 난도 1단계를 유지. 중근 방정식 모양 판별에 지정된 중근의 값을 추가해 후보 구조 대비",
           "condition": "추가 등록 조건 키 없음",
           "crossConcept": "보조 L3 역할: CC_BINOMIAL_SQUARE_EXPANSION",
-          "integration": "완전제곱식 중근 판별을 원본과 동일하게 유지"
+          "integration": "대단원 간 융합 없이 해당 유형 풀이로 완결."
         },
         "visualNecessity": {
           "problem": "EXEMPT",
@@ -154,10 +154,10 @@
         "subUnit": "이차함수의 그래프",
         "conceptClusterKey": "QUADRATIC_FUNCTION_GRAPH",
         "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_DEFINITION",
-        "templateKey": "",
+        "templateKey": "TPL_M3_SELECT_QUADRATIC_FUNCTION_WORD_PROBLEM",
         "crossConceptKeys": [],
         "conditionKeys": [],
-        "integrationPattern": "이차함수 정의 판별",
+        "integrationPattern": "NONE",
         "difficultyBucket": 1,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
@@ -176,13 +176,13 @@
         "rpmPrimaryRecordId": "M3-RPM-043",
         "metaRationale": {
           "draftTier": "SINGLE_MODEL_DRAFT",
-          "curriculum": "중3 1학기 M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH의 핵심 풀이: [키포인트] $y$를 $x$에 관한 식으로 썼을 때 $x^2$의 계수가 $0$이 아니어야 한다.",
-          "problemType": "ACTIVE 이차함수의 판별 (PT_M3_QUADRATIC_FUNCTION_DEFINITION). 변형축: 단순 식 다섯 개 대신 상황의 길이·둘레·넓이를 수식화하는 변형",
-          "templateKey": "EVIDENCE_DEBT: 현행 ACTIVE PT에 대해 검증된 ACTIVE TPL 결속 후보를 확인하지 못해 공란 유지; 추후 검수 필요.",
+          "curriculum": "중3 1학기 M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH: [키포인트] $y$를 $x$에 관한 식으로 썼을 때 $x^2$의 계수가 $0$이 아니어야 한다.",
+          "problemType": "FIRST_FORMAL 재검수: PT_M3_QUADRATIC_FUNCTION_DEFINITION는 M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH에 ACTIVE 바인딩. 결정적 계산 및 물음의 목표 확인.",
+          "templateKey": "FIRST_FORMAL 재검수: ACTIVE TPL_M3_SELECT_QUADRATIC_FUNCTION_WORD_PROBLEM는 PT_M3_QUADRATIC_FUNCTION_DEFINITION의 자식이며 현재 해설에 적합.",
           "difficulty": "원본 배점 3점, 원본 난도 1단계를 유지. 단순 식 다섯 개 대신 상황의 길이·둘레·넓이를 수식화하는 변형",
           "condition": "추가 등록 조건 키 없음",
           "crossConcept": "추가 CrossConcept 없음",
-          "integration": "이차함수 정의 판별을 원본과 동일하게 유지"
+          "integration": "대단원 간 융합 없이 해당 유형 풀이로 완결."
         },
         "visualNecessity": {
           "problem": "EXEMPT",
@@ -215,10 +215,10 @@
         "subUnit": "이차함수의 그래프",
         "conceptClusterKey": "QUADRATIC_FUNCTION_GRAPH",
         "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
-        "templateKey": "",
+        "templateKey": "TPL_M3_VERTEX_FORM_READ_VERTEX",
         "crossConceptKeys": [],
         "conditionKeys": [],
-        "integrationPattern": "표준형 꼭짓점 판독",
+        "integrationPattern": "NONE",
         "difficultyBucket": 1,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
@@ -234,16 +234,16 @@
           "createdAt": "2026-11-25",
           "createdAtSource": "GPT direct one-exam instruction"
         },
-        "rpmPrimaryRecordId": "M3-RPM-043",
+        "rpmPrimaryRecordId": "M3-RPM-050",
         "metaRationale": {
           "draftTier": "SINGLE_MODEL_DRAFT",
-          "curriculum": "중3 1학기 M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH의 핵심 풀이: [키포인트] 꼭짓점의 가로좌표의 절댓값이 그 점과 $y$축 사이의 거리이다.",
-          "problemType": "ACTIVE 꼭짓점·일반형 상호 변환으로 식 결정 (PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM). 변형축: 꼭짓점 좌표를 직접 묻던 문항을 좌표의 기하적 거리 목표로 변경",
-          "templateKey": "EVIDENCE_DEBT: 현행 ACTIVE PT에 대해 검증된 ACTIVE TPL 결속 후보를 확인하지 못해 공란 유지; 추후 검수 필요.",
+          "curriculum": "중3 1학기 M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH: [키포인트] 꼭짓점의 가로좌표의 절댓값이 그 점과 $y$축 사이의 거리이다.",
+          "problemType": "FIRST_FORMAL 재검수: PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM는 M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH에 ACTIVE 바인딩. 결정적 계산 및 물음의 목표 확인.",
+          "templateKey": "FIRST_FORMAL 재검수: ACTIVE TPL_M3_VERTEX_FORM_READ_VERTEX는 PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM의 자식이며 현재 해설에 적합.",
           "difficulty": "원본 배점 3점, 원본 난도 1단계를 유지. 꼭짓점 좌표를 직접 묻던 문항을 좌표의 기하적 거리 목표로 변경",
           "condition": "추가 등록 조건 키 없음",
           "crossConcept": "추가 CrossConcept 없음",
-          "integration": "표준형 꼭짓점 판독을 원본과 동일하게 유지"
+          "integration": "대단원 간 융합 없이 해당 유형 풀이로 완결."
         },
         "visualNecessity": {
           "problem": "EXEMPT",
@@ -279,7 +279,7 @@
         "templateKey": "",
         "crossConceptKeys": [],
         "conditionKeys": [],
-        "integrationPattern": "근으로부터 이차방정식 작성",
+        "integrationPattern": "NONE",
         "difficultyBucket": 2,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
@@ -295,16 +295,16 @@
           "createdAt": "2026-11-25",
           "createdAtSource": "GPT direct one-exam instruction"
         },
-        "rpmPrimaryRecordId": "M3-RPM-029",
+        "rpmPrimaryRecordId": "M3-RPM-031",
         "metaRationale": {
           "draftTier": "SINGLE_MODEL_DRAFT",
-          "curriculum": "중3 1학기 M3-03/M3-03-QUADRATIC_EQUATION의 핵심 풀이: [키포인트] 이차항의 계수와 두 근을 함께 이용해 식을 인수분해 꼴로 복원한다.",
-          "problemType": "ACTIVE 이차방정식의 해 판별 (PT_M3_QUADRATIC_EQUATION_ROOT_IDENTIFICATION). 변형축: 두 근 중 하나를 음의 정수로 바꾸고 목표를 a−b에서 a−2b로 변형",
-          "templateKey": "EVIDENCE_DEBT: 현행 ACTIVE PT에 대해 검증된 ACTIVE TPL 결속 후보를 확인하지 못해 공란 유지; 추후 검수 필요.",
+          "curriculum": "중3 1학기 M3-03/M3-03-QUADRATIC_EQUATION: [키포인트] 이차항의 계수와 두 근을 함께 이용해 식을 인수분해 꼴로 복원한다.",
+          "problemType": "FIRST_FORMAL 재검수: PT_M3_QUADRATIC_EQUATION_ROOT_IDENTIFICATION는 M3-03/M3-03-QUADRATIC_EQUATION에 ACTIVE 바인딩. 결정적 계산 및 물음의 목표 확인.",
+          "templateKey": "FIRST_FORMAL 재검수: 이 풀이와 일치하는 정확한 ACTIVE TPL 결속이 없어 빈 값 보존. 신규 공용 템플릿 임의 생성 금지.",
           "difficulty": "원본 배점 4점, 원본 난도 2단계를 유지. 두 근 중 하나를 음의 정수로 바꾸고 목표를 a−b에서 a−2b로 변형",
           "condition": "추가 등록 조건 키 없음",
           "crossConcept": "추가 CrossConcept 없음",
-          "integration": "근으로부터 이차방정식 작성을 원본과 동일하게 유지"
+          "integration": "대단원 간 융합 없이 해당 유형 풀이로 완결."
         },
         "visualNecessity": {
           "problem": "EXEMPT",
@@ -337,14 +337,14 @@
         "subUnit": "이차방정식",
         "conceptClusterKey": "QUADRATIC_EQUATION",
         "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_SQUARE_ROOT_METHOD",
-        "templateKey": "",
+        "templateKey": "TPL_M3_QUADRATIC_EQUATION_SQUARE_ROOT_METHOD_AUDIT",
         "crossConceptKeys": [
           "CC_RADICAL_ADDITION_SUBTRACTION"
         ],
         "conditionKeys": [
           "COND_POSITIVE"
         ],
-        "integrationPattern": "제곱근 풀이 + 양수 근 선택 + 무리수 합",
+        "integrationPattern": "NONE",
         "difficultyBucket": 2,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
@@ -360,16 +360,16 @@
           "createdAt": "2026-11-25",
           "createdAtSource": "GPT direct one-exam instruction"
         },
-        "rpmPrimaryRecordId": "M3-RPM-029",
+        "rpmPrimaryRecordId": "M3-RPM-033",
         "metaRationale": {
           "draftTier": "SINGLE_MODEL_DRAFT",
-          "curriculum": "중3 1학기 M3-03/M3-03-QUADRATIC_EQUATION의 핵심 풀이: [키포인트] 제곱근을 이용한 두 식의 해에서 각각 양수인 해만 선택한다.",
-          "problemType": "ACTIVE 제곱근을 이용한 이차방정식 풀이 (PT_M3_QUADRATIC_EQUATION_SQUARE_ROOT_METHOD). 변형축: 양의 두 해의 합 대신 두 식 구조를 다르게 하고 차를 물음",
-          "templateKey": "EVIDENCE_DEBT: 현행 ACTIVE PT에 대해 검증된 ACTIVE TPL 결속 후보를 확인하지 못해 공란 유지; 추후 검수 필요.",
+          "curriculum": "중3 1학기 M3-03/M3-03-QUADRATIC_EQUATION: [키포인트] 제곱근을 이용한 두 식의 해에서 각각 양수인 해만 선택한다.",
+          "problemType": "FIRST_FORMAL 재검수: PT_M3_QUADRATIC_EQUATION_SQUARE_ROOT_METHOD는 M3-03/M3-03-QUADRATIC_EQUATION에 ACTIVE 바인딩. 결정적 계산 및 물음의 목표 확인.",
+          "templateKey": "FIRST_FORMAL 재검수: ACTIVE TPL_M3_QUADRATIC_EQUATION_SQUARE_ROOT_METHOD_AUDIT는 PT_M3_QUADRATIC_EQUATION_SQUARE_ROOT_METHOD의 자식이며 현재 해설에 적합.",
           "difficulty": "원본 배점 4점, 원본 난도 2단계를 유지. 양의 두 해의 합 대신 두 식 구조를 다르게 하고 차를 물음",
           "condition": "등록 조건: COND_POSITIVE",
           "crossConcept": "보조 L3 역할: CC_RADICAL_ADDITION_SUBTRACTION",
-          "integration": "제곱근 풀이 + 양수 근 선택 + 무리수 합을 원본과 동일하게 유지"
+          "integration": "대단원 간 융합 없이 해당 유형 풀이로 완결."
         },
         "visualNecessity": {
           "problem": "EXEMPT",
@@ -405,7 +405,7 @@
         "templateKey": "",
         "crossConceptKeys": [],
         "conditionKeys": [],
-        "integrationPattern": "근의 공식 + 계수 비교",
+        "integrationPattern": "NONE",
         "difficultyBucket": 2,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
@@ -421,16 +421,16 @@
           "createdAt": "2026-11-25",
           "createdAtSource": "GPT direct one-exam instruction"
         },
-        "rpmPrimaryRecordId": "M3-RPM-029",
+        "rpmPrimaryRecordId": "M3-RPM-036",
         "metaRationale": {
           "draftTier": "SINGLE_MODEL_DRAFT",
-          "curriculum": "중3 1학기 M3-03/M3-03-QUADRATIC_EQUATION의 핵심 풀이: [키포인트] 두 근의 평균은 $3$이고 그 차가 $4$이면 근은 평균에서 각각 $2$만큼 떨어져 있다.",
-          "problemType": "ACTIVE 판별식으로 근의 유리수 여부 판정 (PT_M3_QUADRATIC_EQUATION_DISCRIMINANT). 변형축: 근의 공식 제시형에서 두 근 사이의 거리와 판별식으로 역추적",
-          "templateKey": "EVIDENCE_DEBT: 현행 ACTIVE PT에 대해 검증된 ACTIVE TPL 결속 후보를 확인하지 못해 공란 유지; 추후 검수 필요.",
+          "curriculum": "중3 1학기 M3-03/M3-03-QUADRATIC_EQUATION: [키포인트] 두 근의 평균은 $3$이고 그 차가 $4$이면 근은 평균에서 각각 $2$만큼 떨어져 있다.",
+          "problemType": "FIRST_FORMAL 재검수: PT_M3_QUADRATIC_EQUATION_DISCRIMINANT는 M3-03/M3-03-QUADRATIC_EQUATION에 ACTIVE 바인딩. 결정적 계산 및 물음의 목표 확인.",
+          "templateKey": "FIRST_FORMAL 재검수: 이 풀이와 일치하는 정확한 ACTIVE TPL 결속이 없어 빈 값 보존. 신규 공용 템플릿 임의 생성 금지.",
           "difficulty": "원본 배점 4점, 원본 난도 2단계를 유지. 근의 공식 제시형에서 두 근 사이의 거리와 판별식으로 역추적",
           "condition": "추가 등록 조건 키 없음",
           "crossConcept": "추가 CrossConcept 없음",
-          "integration": "근의 공식 + 계수 비교을 원본과 동일하게 유지"
+          "integration": "대단원 간 융합 없이 해당 유형 풀이로 완결."
         },
         "visualNecessity": {
           "problem": "EXEMPT",
@@ -466,7 +466,7 @@
         "templateKey": "",
         "crossConceptKeys": [],
         "conditionKeys": [],
-        "integrationPattern": "기본형 그래프 성질 판별",
+        "integrationPattern": "NONE",
         "difficultyBucket": 1,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
@@ -482,16 +482,16 @@
           "createdAt": "2026-11-25",
           "createdAtSource": "GPT direct one-exam instruction"
         },
-        "rpmPrimaryRecordId": "M3-RPM-043",
+        "rpmPrimaryRecordId": "M3-RPM-045",
         "metaRationale": {
           "draftTier": "SINGLE_MODEL_DRAFT",
-          "curriculum": "중3 1학기 M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH의 핵심 풀이: [키포인트] $y=ax^2$에서 $|a|$가 같으면 폭이 같고, $a$의 부호가 반대이면 열리는 방향이 반대이다.",
-          "problemType": "ACTIVE y=ax^2 꼴 이차함수 식의 결정 (PT_M3_QUADRATIC_FUNCTION_BASIC_FORM). 변형축: 그래프 진술 참거짓에서 폭·방향 두 조건을 만족하는 함수 선택으로 변경",
-          "templateKey": "EVIDENCE_DEBT: 현행 ACTIVE PT에 대해 검증된 ACTIVE TPL 결속 후보를 확인하지 못해 공란 유지; 추후 검수 필요.",
+          "curriculum": "중3 1학기 M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH: [키포인트] $y=ax^2$에서 $|a|$가 같으면 폭이 같고, $a$의 부호가 반대이면 열리는 방향이 반대이다.",
+          "problemType": "FIRST_FORMAL 재검수: PT_M3_QUADRATIC_FUNCTION_BASIC_FORM는 M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH에 ACTIVE 바인딩. 결정적 계산 및 물음의 목표 확인.",
+          "templateKey": "FIRST_FORMAL 재검수: 이 풀이와 일치하는 정확한 ACTIVE TPL 결속이 없어 빈 값 보존. 신규 공용 템플릿 임의 생성 금지.",
           "difficulty": "원본 배점 4점, 원본 난도 1단계를 유지. 그래프 진술 참거짓에서 폭·방향 두 조건을 만족하는 함수 선택으로 변경",
           "condition": "추가 등록 조건 키 없음",
           "crossConcept": "추가 CrossConcept 없음",
-          "integration": "기본형 그래프 성질 판별을 원본과 동일하게 유지"
+          "integration": "대단원 간 융합 없이 해당 유형 풀이로 완결."
         },
         "visualNecessity": {
           "problem": "EXEMPT",
@@ -524,10 +524,10 @@
         "subUnit": "이차함수의 그래프",
         "conceptClusterKey": "QUADRATIC_FUNCTION_GRAPH",
         "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_BASIC_FORM",
-        "templateKey": "",
+        "templateKey": "TPL_M3_DETERMINE_EQUATION_FROM_GRAPH_POINT",
         "crossConceptKeys": [],
         "conditionKeys": [],
-        "integrationPattern": "대칭이동 + 점 대입",
+        "integrationPattern": "NONE",
         "difficultyBucket": 2,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
@@ -543,16 +543,16 @@
           "createdAt": "2026-11-25",
           "createdAtSource": "GPT direct one-exam instruction"
         },
-        "rpmPrimaryRecordId": "M3-RPM-043",
+        "rpmPrimaryRecordId": "M3-RPM-047",
         "metaRationale": {
           "draftTier": "SINGLE_MODEL_DRAFT",
-          "curriculum": "중3 1학기 M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH의 핵심 풀이: [키포인트] $x$축 대칭은 모든 함수값의 부호를 반대로 바꾸므로 $y=2x^2$이 된다.",
-          "problemType": "ACTIVE y=ax^2 꼴 이차함수 식의 결정 (PT_M3_QUADRATIC_FUNCTION_BASIC_FORM). 변형축: 매개변수 a를 구하는 유형을 점의 양의 가로좌표 역산으로 변경",
-          "templateKey": "EVIDENCE_DEBT: 현행 ACTIVE PT에 대해 검증된 ACTIVE TPL 결속 후보를 확인하지 못해 공란 유지; 추후 검수 필요.",
+          "curriculum": "중3 1학기 M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH: [키포인트] $x$축 대칭은 모든 함수값의 부호를 반대로 바꾸므로 $y=2x^2$이 된다.",
+          "problemType": "FIRST_FORMAL 재검수: PT_M3_QUADRATIC_FUNCTION_BASIC_FORM는 M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH에 ACTIVE 바인딩. 결정적 계산 및 물음의 목표 확인.",
+          "templateKey": "FIRST_FORMAL 재검수: ACTIVE TPL_M3_DETERMINE_EQUATION_FROM_GRAPH_POINT는 PT_M3_QUADRATIC_FUNCTION_BASIC_FORM의 자식이며 현재 해설에 적합.",
           "difficulty": "원본 배점 4점, 원본 난도 2단계를 유지. 매개변수 a를 구하는 유형을 점의 양의 가로좌표 역산으로 변경",
           "condition": "추가 등록 조건 키 없음",
           "crossConcept": "추가 CrossConcept 없음",
-          "integration": "대칭이동 + 점 대입을 원본과 동일하게 유지"
+          "integration": "대단원 간 융합 없이 해당 유형 풀이로 완결."
         },
         "visualNecessity": {
           "problem": "EXEMPT",
@@ -588,7 +588,7 @@
         "templateKey": "",
         "crossConceptKeys": [],
         "conditionKeys": [],
-        "integrationPattern": "계수 부호·절댓값 조건 개수 세기",
+        "integrationPattern": "NONE",
         "difficultyBucket": 2,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
@@ -604,16 +604,16 @@
           "createdAt": "2026-11-25",
           "createdAtSource": "GPT direct one-exam instruction"
         },
-        "rpmPrimaryRecordId": "M3-RPM-043",
+        "rpmPrimaryRecordId": "M3-RPM-045",
         "metaRationale": {
           "draftTier": "SINGLE_MODEL_DRAFT",
-          "curriculum": "중3 1학기 M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH의 핵심 풀이: [키포인트] $a>0$이면 위로 열리고, $|a|$가 클수록 그래프의 폭이 좁다.",
-          "problemType": "ACTIVE y=ax^2 꼴 이차함수 식의 결정 (PT_M3_QUADRATIC_FUNCTION_BASIC_FORM). 변형축: 그림 6개 판정 대신 계수표의 부호·절댓값 비교와 복합 목표로 변경",
-          "templateKey": "EVIDENCE_DEBT: 현행 ACTIVE PT에 대해 검증된 ACTIVE TPL 결속 후보를 확인하지 못해 공란 유지; 추후 검수 필요.",
+          "curriculum": "중3 1학기 M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH: [키포인트] $a>0$이면 위로 열리고, $|a|$가 클수록 그래프의 폭이 좁다.",
+          "problemType": "FIRST_FORMAL 재검수: PT_M3_QUADRATIC_FUNCTION_BASIC_FORM는 M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH에 ACTIVE 바인딩. 결정적 계산 및 물음의 목표 확인.",
+          "templateKey": "FIRST_FORMAL 재검수: 이 풀이와 일치하는 정확한 ACTIVE TPL 결속이 없어 빈 값 보존. 신규 공용 템플릿 임의 생성 금지.",
           "difficulty": "원본 배점 4점, 원본 난도 2단계를 유지. 그림 6개 판정 대신 계수표의 부호·절댓값 비교와 복합 목표로 변경",
           "condition": "추가 등록 조건 키 없음",
           "crossConcept": "추가 CrossConcept 없음",
-          "integration": "계수 부호·절댓값 조건 개수 세기을 원본과 동일하게 유지"
+          "integration": "대단원 간 융합 없이 해당 유형 풀이로 완결."
         },
         "visualNecessity": {
           "problem": "EXEMPT",
@@ -646,10 +646,10 @@
         "subUnit": "이차함수의 그래프",
         "conceptClusterKey": "QUADRATIC_FUNCTION_GRAPH",
         "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_TRANSLATION",
-        "templateKey": "",
+        "templateKey": "TPL_M3_TRANSLATION_POINT",
         "crossConceptKeys": [],
         "conditionKeys": [],
-        "integrationPattern": "평행이동 식 작성 + 점 대입",
+        "integrationPattern": "NONE",
         "difficultyBucket": 2,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
@@ -665,16 +665,16 @@
           "createdAt": "2026-11-25",
           "createdAtSource": "GPT direct one-exam instruction"
         },
-        "rpmPrimaryRecordId": "M3-RPM-043",
+        "rpmPrimaryRecordId": "M3-RPM-049",
         "metaRationale": {
           "draftTier": "SINGLE_MODEL_DRAFT",
-          "curriculum": "중3 1학기 M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH의 핵심 풀이: [키포인트] 오른쪽으로 $p$만큼, 위쪽으로 $1$만큼 이동하면 $y=2(x-p)^2+1$이다.",
-          "problemType": "ACTIVE 이차함수 그래프의 평행이동 (PT_M3_QUADRATIC_FUNCTION_TRANSLATION). 변형축: 이동량이 주어진 상태의 계수 결정에서 부등식 제약으로 이동량의 후보를 소거",
-          "templateKey": "EVIDENCE_DEBT: 현행 ACTIVE PT에 대해 검증된 ACTIVE TPL 결속 후보를 확인하지 못해 공란 유지; 추후 검수 필요.",
+          "curriculum": "중3 1학기 M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH: [키포인트] 오른쪽으로 $p$만큼, 위쪽으로 $1$만큼 이동하면 $y=2(x-p)^2+1$이다.",
+          "problemType": "FIRST_FORMAL 재검수: PT_M3_QUADRATIC_FUNCTION_TRANSLATION는 M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH에 ACTIVE 바인딩. 결정적 계산 및 물음의 목표 확인.",
+          "templateKey": "FIRST_FORMAL 재검수: ACTIVE TPL_M3_TRANSLATION_POINT는 PT_M3_QUADRATIC_FUNCTION_TRANSLATION의 자식이며 현재 해설에 적합.",
           "difficulty": "원본 배점 4점, 원본 난도 2단계를 유지. 이동량이 주어진 상태의 계수 결정에서 부등식 제약으로 이동량의 후보를 소거",
           "condition": "추가 등록 조건 키 없음",
           "crossConcept": "추가 CrossConcept 없음",
-          "integration": "평행이동 식 작성 + 점 대입을 원본과 동일하게 유지"
+          "integration": "대단원 간 융합 없이 해당 유형 풀이로 완결."
         },
         "visualNecessity": {
           "problem": "EXEMPT",
@@ -707,10 +707,10 @@
         "subUnit": "이차함수의 그래프",
         "conceptClusterKey": "QUADRATIC_FUNCTION_GRAPH",
         "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_TRANSLATION",
-        "templateKey": "",
+        "templateKey": "TPL_M3_TRANSLATION_DISPLACEMENT",
         "crossConceptKeys": [],
         "conditionKeys": [],
-        "integrationPattern": "꼭짓점 비교 + 평행이동량",
+        "integrationPattern": "NONE",
         "difficultyBucket": 2,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
@@ -726,16 +726,16 @@
           "createdAt": "2026-11-25",
           "createdAtSource": "GPT direct one-exam instruction"
         },
-        "rpmPrimaryRecordId": "M3-RPM-043",
+        "rpmPrimaryRecordId": "M3-RPM-049",
         "metaRationale": {
           "draftTier": "SINGLE_MODEL_DRAFT",
-          "curriculum": "중3 1학기 M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH의 핵심 풀이: [키포인트] 평행이동량은 이동 전후 꼭짓점의 좌표를 비교하면 구할 수 있다.",
-          "problemType": "ACTIVE 이차함수 그래프의 평행이동 (PT_M3_QUADRATIC_FUNCTION_TRANSLATION). 변형축: 부호 있는 이동량 p+q 계산을 방향·거리 언어 판단으로 전환",
-          "templateKey": "EVIDENCE_DEBT: 현행 ACTIVE PT에 대해 검증된 ACTIVE TPL 결속 후보를 확인하지 못해 공란 유지; 추후 검수 필요.",
+          "curriculum": "중3 1학기 M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH: [키포인트] 평행이동량은 이동 전후 꼭짓점의 좌표를 비교하면 구할 수 있다.",
+          "problemType": "FIRST_FORMAL 재검수: PT_M3_QUADRATIC_FUNCTION_TRANSLATION는 M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH에 ACTIVE 바인딩. 결정적 계산 및 물음의 목표 확인.",
+          "templateKey": "FIRST_FORMAL 재검수: ACTIVE TPL_M3_TRANSLATION_DISPLACEMENT는 PT_M3_QUADRATIC_FUNCTION_TRANSLATION의 자식이며 현재 해설에 적합.",
           "difficulty": "원본 배점 4점, 원본 난도 2단계를 유지. 부호 있는 이동량 p+q 계산을 방향·거리 언어 판단으로 전환",
           "condition": "추가 등록 조건 키 없음",
           "crossConcept": "추가 CrossConcept 없음",
-          "integration": "꼭짓점 비교 + 평행이동량을 원본과 동일하게 유지"
+          "integration": "대단원 간 융합 없이 해당 유형 풀이로 완결."
         },
         "visualNecessity": {
           "problem": "EXEMPT",
@@ -768,12 +768,12 @@
         "subUnit": "이차함수의 그래프",
         "conceptClusterKey": "QUADRATIC_FUNCTION_GRAPH",
         "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_PROPERTIES",
-        "templateKey": "",
+        "templateKey": "TPL_M3_QUADRATIC_PROPERTIES_INTERCEPT",
         "crossConceptKeys": [
           "CC_BINOMIAL_SQUARE_EXPANSION"
         ],
         "conditionKeys": [],
-        "integrationPattern": "일반형→표준형 변환 + x축 조건",
+        "integrationPattern": "NONE",
         "difficultyBucket": 2,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
@@ -789,16 +789,16 @@
           "createdAt": "2026-11-25",
           "createdAtSource": "GPT direct one-exam instruction"
         },
-        "rpmPrimaryRecordId": "M3-RPM-043",
+        "rpmPrimaryRecordId": "M3-RPM-053",
         "metaRationale": {
           "draftTier": "SINGLE_MODEL_DRAFT",
-          "curriculum": "중3 1학기 M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH의 핵심 풀이: [키포인트] 위로 열린 포물선이 $x$축과 만나지 않으려면 꼭짓점의 $y$좌표가 양수여야 한다.",
-          "problemType": "ACTIVE 이차함수 그래프의 성질 비교 (PT_M3_QUADRATIC_FUNCTION_PROPERTIES). 변형축: x축에 접하는 특정 k에서 만나지 않는 k의 열린 범위로 경계 비교",
-          "templateKey": "EVIDENCE_DEBT: 현행 ACTIVE PT에 대해 검증된 ACTIVE TPL 결속 후보를 확인하지 못해 공란 유지; 추후 검수 필요.",
+          "curriculum": "중3 1학기 M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH: [키포인트] 위로 열린 포물선이 $x$축과 만나지 않으려면 꼭짓점의 $y$좌표가 양수여야 한다.",
+          "problemType": "FIRST_FORMAL 재검수: PT_M3_QUADRATIC_FUNCTION_PROPERTIES는 M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH에 ACTIVE 바인딩. 결정적 계산 및 물음의 목표 확인.",
+          "templateKey": "FIRST_FORMAL 재검수: ACTIVE TPL_M3_QUADRATIC_PROPERTIES_INTERCEPT는 PT_M3_QUADRATIC_FUNCTION_PROPERTIES의 자식이며 현재 해설에 적합.",
           "difficulty": "원본 배점 4점, 원본 난도 2단계를 유지. x축에 접하는 특정 k에서 만나지 않는 k의 열린 범위로 경계 비교",
           "condition": "추가 등록 조건 키 없음",
           "crossConcept": "보조 L3 역할: CC_BINOMIAL_SQUARE_EXPANSION",
-          "integration": "일반형→표준형 변환 + x축 조건을 원본과 동일하게 유지"
+          "integration": "대단원 간 융합 없이 해당 유형 풀이로 완결."
         },
         "visualNecessity": {
           "problem": "EXEMPT",
@@ -831,10 +831,10 @@
         "subUnit": "이차함수의 그래프",
         "conceptClusterKey": "QUADRATIC_FUNCTION_GRAPH",
         "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
-        "templateKey": "",
+        "templateKey": "TPL_M3_VERTEX_FORM_VERTEX_LOCUS",
         "crossConceptKeys": [],
         "conditionKeys": [],
-        "integrationPattern": "꼭짓점 좌표 + 직선의 기울기",
+        "integrationPattern": "NONE",
         "difficultyBucket": 2,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
@@ -850,16 +850,16 @@
           "createdAt": "2026-11-25",
           "createdAtSource": "GPT direct one-exam instruction"
         },
-        "rpmPrimaryRecordId": "M3-RPM-043",
+        "rpmPrimaryRecordId": "M3-RPM-050",
         "metaRationale": {
           "draftTier": "SINGLE_MODEL_DRAFT",
-          "curriculum": "중3 1학기 M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH의 핵심 풀이: [키포인트] 두 꼭짓점의 좌표를 먼저 읽고 두 점을 지나는 직선의 기울기를 쓴다.",
-          "problemType": "ACTIVE 꼭짓점·일반형 상호 변환으로 식 결정 (PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM). 변형축: 꼭짓점 연결직선의 양의 기울기를 음의 기울기·선형결합 목표로 변경",
-          "templateKey": "EVIDENCE_DEBT: 현행 ACTIVE PT에 대해 검증된 ACTIVE TPL 결속 후보를 확인하지 못해 공란 유지; 추후 검수 필요.",
+          "curriculum": "중3 1학기 M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH: [키포인트] 두 꼭짓점의 좌표를 먼저 읽고 두 점을 지나는 직선의 기울기를 쓴다.",
+          "problemType": "FIRST_FORMAL 재검수: PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM는 M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH에 ACTIVE 바인딩. 결정적 계산 및 물음의 목표 확인.",
+          "templateKey": "FIRST_FORMAL 재검수: ACTIVE TPL_M3_VERTEX_FORM_VERTEX_LOCUS는 PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM의 자식이며 현재 해설에 적합.",
           "difficulty": "원본 배점 4점, 원본 난도 2단계를 유지. 꼭짓점 연결직선의 양의 기울기를 음의 기울기·선형결합 목표로 변경",
           "condition": "추가 등록 조건 키 없음",
           "crossConcept": "추가 CrossConcept 없음",
-          "integration": "꼭짓점 좌표 + 직선의 기울기을 원본과 동일하게 유지"
+          "integration": "대단원 간 융합 없이 해당 유형 풀이로 완결."
         },
         "visualNecessity": {
           "problem": "EXEMPT",
@@ -892,12 +892,12 @@
         "subUnit": "이차함수의 그래프",
         "conceptClusterKey": "QUADRATIC_FUNCTION_GRAPH",
         "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_GRAPH_GEOMETRY",
-        "templateKey": "",
+        "templateKey": "TPL_M3_FIND_COEFFICIENT_FROM_TRIANGLE_AREA_WITH_VERTEX",
         "crossConceptKeys": [
           "CC_GEOMETRIC_AREA_VOLUME_FORMULA"
         ],
         "conditionKeys": [],
-        "integrationPattern": "x절편 식 세우기 + 꼭짓점 높이 + 삼각형 넓이",
+        "integrationPattern": "GEOMETRY_ALGEBRA_FUSION",
         "difficultyBucket": 2,
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "NONE",
@@ -913,16 +913,16 @@
           "createdAt": "2026-11-25",
           "createdAtSource": "GPT direct one-exam instruction"
         },
-        "rpmPrimaryRecordId": "M3-RPM-043",
+        "rpmPrimaryRecordId": "M3-RPM-054",
         "metaRationale": {
           "draftTier": "SINGLE_MODEL_DRAFT",
-          "curriculum": "중3 1학기 M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH의 핵심 풀이: [키포인트] 두 $x$절편이 주어지면 꼭짓점의 $x$좌표는 절편의 중점이다.",
-          "problemType": "ACTIVE 포물선과 도형의 융합 (PT_M3_QUADRATIC_FUNCTION_GRAPH_GEOMETRY). 변형축: 그래프의 넓이를 구하던 발문에서 절편·꼭짓점·삼각형 넓이로 계수 역산",
-          "templateKey": "EVIDENCE_DEBT: 현행 ACTIVE PT에 대해 검증된 ACTIVE TPL 결속 후보를 확인하지 못해 공란 유지; 추후 검수 필요.",
+          "curriculum": "중3 1학기 M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH: [키포인트] 두 $x$절편이 주어지면 꼭짓점의 $x$좌표는 절편의 중점이다.",
+          "problemType": "FIRST_FORMAL 재검수: PT_M3_QUADRATIC_FUNCTION_GRAPH_GEOMETRY는 M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH에 ACTIVE 바인딩. 결정적 계산 및 물음의 목표 확인.",
+          "templateKey": "FIRST_FORMAL 재검수: ACTIVE TPL_M3_FIND_COEFFICIENT_FROM_TRIANGLE_AREA_WITH_VERTEX는 PT_M3_QUADRATIC_FUNCTION_GRAPH_GEOMETRY의 자식이며 현재 해설에 적합.",
           "difficulty": "원본 배점 4점, 원본 난도 2단계를 유지. 그래프의 넓이를 구하던 발문에서 절편·꼭짓점·삼각형 넓이로 계수 역산",
           "condition": "추가 등록 조건 키 없음",
           "crossConcept": "보조 L3 역할: CC_GEOMETRIC_AREA_VOLUME_FORMULA",
-          "integration": "x절편 식 세우기 + 꼭짓점 높이 + 삼각형 넓이을 원본과 동일하게 유지"
+          "integration": "도형 조건과 이차방정식/이차함수 해석의 결합."
         },
         "visualNecessity": {
           "problem": "EXEMPT",
@@ -955,12 +955,12 @@
         "subUnit": "이차함수의 그래프",
         "conceptClusterKey": "QUADRATIC_FUNCTION_GRAPH",
         "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
-        "templateKey": "",
+        "templateKey": "TPL_M3_CONVERT_GENERAL_TO_VERTEX_FORM_DESCRIPTIVE",
         "crossConceptKeys": [
           "CC_BINOMIAL_SQUARE_EXPANSION"
         ],
         "conditionKeys": [],
-        "integrationPattern": "완전제곱식 표준형 변환",
+        "integrationPattern": "NONE",
         "difficultyBucket": 2,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
@@ -976,16 +976,16 @@
           "createdAt": "2026-11-25",
           "createdAtSource": "GPT direct one-exam instruction"
         },
-        "rpmPrimaryRecordId": "M3-RPM-043",
+        "rpmPrimaryRecordId": "M3-RPM-051",
         "metaRationale": {
           "draftTier": "SINGLE_MODEL_DRAFT",
-          "curriculum": "중3 1학기 M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH의 핵심 풀이: [키포인트] 이차항의 계수 $2$를 먼저 묶어 완전제곱식을 만든다.",
-          "problemType": "ACTIVE 꼭짓점·일반형 상호 변환으로 식 결정 (PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM). 변형축: 완전제곱식의 세 계수 합 대신 부호를 다르게 결합한 ap+q 계산",
-          "templateKey": "EVIDENCE_DEBT: 현행 ACTIVE PT에 대해 검증된 ACTIVE TPL 결속 후보를 확인하지 못해 공란 유지; 추후 검수 필요.",
+          "curriculum": "중3 1학기 M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH: [키포인트] 이차항의 계수 $2$를 먼저 묶어 완전제곱식을 만든다.",
+          "problemType": "FIRST_FORMAL 재검수: PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM는 M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH에 ACTIVE 바인딩. 결정적 계산 및 물음의 목표 확인.",
+          "templateKey": "FIRST_FORMAL 재검수: ACTIVE TPL_M3_CONVERT_GENERAL_TO_VERTEX_FORM_DESCRIPTIVE는 PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM의 자식이며 현재 해설에 적합.",
           "difficulty": "원본 배점 4점, 원본 난도 2단계를 유지. 완전제곱식의 세 계수 합 대신 부호를 다르게 결합한 ap+q 계산",
           "condition": "추가 등록 조건 키 없음",
           "crossConcept": "보조 L3 역할: CC_BINOMIAL_SQUARE_EXPANSION",
-          "integration": "완전제곱식 표준형 변환을 원본과 동일하게 유지"
+          "integration": "대단원 간 융합 없이 해당 유형 풀이로 완결."
         },
         "visualNecessity": {
           "problem": "EXEMPT",
@@ -1017,8 +1017,8 @@
         "subUnitKey": "M3-03-QUADRATIC_EQUATION_WORD",
         "subUnit": "이차방정식의 활용",
         "conceptClusterKey": "QUADRATIC_EQUATION_WORD_PROBLEM",
-        "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_SQUARE_ROOT_METHOD",
-        "templateKey": "",
+        "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_WORD_PROBLEM",
+        "templateKey": "TPL_M3_QUADRATIC_EQUATION_WORD_PROBLEM_GEOMETRY",
         "crossConceptKeys": [
           "CC_BINOMIAL_SQUARE_EXPANSION",
           "CC_GEOMETRIC_AREA_VOLUME_FORMULA"
@@ -1026,7 +1026,7 @@
         "conditionKeys": [
           "COND_POSITIVE"
         ],
-        "integrationPattern": "기하 넓이 모델 + 완전제곱식 풀이",
+        "integrationPattern": "GEOMETRY_ALGEBRA_FUSION",
         "difficultyBucket": 3,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
@@ -1042,16 +1042,16 @@
           "createdAt": "2026-11-25",
           "createdAtSource": "GPT direct one-exam instruction"
         },
-        "rpmPrimaryRecordId": "M3-RPM-037",
+        "rpmPrimaryRecordId": "M3-RPM-039",
         "metaRationale": {
           "draftTier": "SINGLE_MODEL_DRAFT",
-          "curriculum": "중3 1학기 M3-03/M3-03-QUADRATIC_EQUATION_WORD의 핵심 풀이: [키포인트] $x^2+10x$에 $5^2$을 더해야 한 변이 $x+5$인 정사각형의 넓이가 된다.",
-          "problemType": "ACTIVE 제곱근을 이용한 이차방정식 풀이 (PT_M3_QUADRATIC_EQUATION_SQUARE_ROOT_METHOD). 변형축: 고전 기하적 빈칸 선택을 완성정사각형의 추가 넓이·양의 해 동시 판단으로 변형",
-          "templateKey": "EVIDENCE_DEBT: 현행 ACTIVE PT에 대해 검증된 ACTIVE TPL 결속 후보를 확인하지 못해 공란 유지; 추후 검수 필요.",
+          "curriculum": "중3 1학기 M3-03/M3-03-QUADRATIC_EQUATION_WORD: [키포인트] $x^2+10x$에 $5^2$을 더해야 한 변이 $x+5$인 정사각형의 넓이가 된다.",
+          "problemType": "FIRST_FORMAL 재검수: PT_M3_QUADRATIC_EQUATION_WORD_PROBLEM는 M3-03/M3-03-QUADRATIC_EQUATION_WORD에 ACTIVE 바인딩. 결정적 계산 및 물음의 목표 확인.",
+          "templateKey": "FIRST_FORMAL 재검수: ACTIVE TPL_M3_QUADRATIC_EQUATION_WORD_PROBLEM_GEOMETRY는 PT_M3_QUADRATIC_EQUATION_WORD_PROBLEM의 자식이며 현재 해설에 적합.",
           "difficulty": "원본 배점 5점, 원본 난도 3단계를 유지. 고전 기하적 빈칸 선택을 완성정사각형의 추가 넓이·양의 해 동시 판단으로 변형",
           "condition": "등록 조건: COND_POSITIVE",
           "crossConcept": "보조 L3 역할: CC_BINOMIAL_SQUARE_EXPANSION, CC_GEOMETRIC_AREA_VOLUME_FORMULA",
-          "integration": "기하 넓이 모델 + 완전제곱식 풀이을 원본과 동일하게 유지"
+          "integration": "도형 조건과 이차방정식/이차함수 해석의 결합."
         },
         "visualNecessity": {
           "problem": "EXEMPT",
@@ -1084,7 +1084,7 @@
         "subUnit": "이차방정식의 활용",
         "conceptClusterKey": "QUADRATIC_EQUATION_WORD_PROBLEM",
         "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_WORD_PROBLEM",
-        "templateKey": "",
+        "templateKey": "TPL_M3_QUADRATIC_EQUATION_WORD_PROBLEM_GEOMETRY",
         "crossConceptKeys": [
           "CC_GEOMETRIC_AREA_VOLUME_FORMULA",
           "CC_CROSS_MULTIPLICATION_FACTORIZATION"
@@ -1092,7 +1092,7 @@
         "conditionKeys": [
           "COND_POSITIVE"
         ],
-        "integrationPattern": "도형 넓이 합 식 세우기 + 이차방정식 풀이",
+        "integrationPattern": "GEOMETRY_ALGEBRA_FUSION",
         "difficultyBucket": 3,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
@@ -1108,16 +1108,16 @@
           "createdAt": "2026-11-25",
           "createdAtSource": "GPT direct one-exam instruction"
         },
-        "rpmPrimaryRecordId": "M3-RPM-037",
+        "rpmPrimaryRecordId": "M3-RPM-039",
         "metaRationale": {
           "draftTier": "SINGLE_MODEL_DRAFT",
-          "curriculum": "중3 1학기 M3-03/M3-03-QUADRATIC_EQUATION_WORD의 핵심 풀이: [키포인트] 세 정사각형의 넓이를 더해 이차방정식을 세운다.",
-          "problemType": "ACTIVE 이차방정식의 실생활 활용 (PT_M3_QUADRATIC_EQUATION_WORD_PROBLEM). 변형축: 세 정사각형 넓이 합의 미지수 x를 찾은 후 가장 큰 변으로 목표 재설정",
-          "templateKey": "EVIDENCE_DEBT: 현행 ACTIVE PT에 대해 검증된 ACTIVE TPL 결속 후보를 확인하지 못해 공란 유지; 추후 검수 필요.",
+          "curriculum": "중3 1학기 M3-03/M3-03-QUADRATIC_EQUATION_WORD: [키포인트] 세 정사각형의 넓이를 더해 이차방정식을 세운다.",
+          "problemType": "FIRST_FORMAL 재검수: PT_M3_QUADRATIC_EQUATION_WORD_PROBLEM는 M3-03/M3-03-QUADRATIC_EQUATION_WORD에 ACTIVE 바인딩. 결정적 계산 및 물음의 목표 확인.",
+          "templateKey": "FIRST_FORMAL 재검수: ACTIVE TPL_M3_QUADRATIC_EQUATION_WORD_PROBLEM_GEOMETRY는 PT_M3_QUADRATIC_EQUATION_WORD_PROBLEM의 자식이며 현재 해설에 적합.",
           "difficulty": "원본 배점 5점, 원본 난도 3단계를 유지. 세 정사각형 넓이 합의 미지수 x를 찾은 후 가장 큰 변으로 목표 재설정",
           "condition": "등록 조건: COND_POSITIVE",
           "crossConcept": "보조 L3 역할: CC_GEOMETRIC_AREA_VOLUME_FORMULA, CC_CROSS_MULTIPLICATION_FACTORIZATION",
-          "integration": "도형 넓이 합 식 세우기 + 이차방정식 풀이을 원본과 동일하게 유지"
+          "integration": "도형 조건과 이차방정식/이차함수 해석의 결합."
         },
         "visualNecessity": {
           "problem": "EXEMPT",
@@ -1146,16 +1146,16 @@
         "standardUnitKey": "M3-04",
         "standardUnit": "이차함수와 그래프",
         "standardUnitOrder": 4,
-        "subUnitKey": "M3-04-QUADRATIC_FUNCTION_APPLICATION",
-        "subUnit": "이차함수의 활용",
-        "conceptClusterKey": "QUADRATIC_FUNCTION_APPLICATION",
+        "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+        "subUnit": "이차함수의 그래프",
+        "conceptClusterKey": "QUADRATIC_FUNCTION_GRAPH",
         "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_GRAPH_GEOMETRY",
-        "templateKey": "",
+        "templateKey": "TPL_M3_GRAPH_GEOMETRY_RATIO",
         "crossConceptKeys": [
           "CC_GEOMETRIC_AREA_VOLUME_FORMULA"
         ],
         "conditionKeys": [],
-        "integrationPattern": "포물선 대칭 + 삼각형 넓이 + 선분 비",
+        "integrationPattern": "GEOMETRY_ALGEBRA_FUSION",
         "difficultyBucket": 3,
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "NONE",
@@ -1171,16 +1171,16 @@
           "createdAt": "2026-11-25",
           "createdAtSource": "GPT direct one-exam instruction"
         },
-        "rpmPrimaryRecordId": "M3-RPM-043",
+        "rpmPrimaryRecordId": "M3-RPM-054",
         "metaRationale": {
           "draftTier": "SINGLE_MODEL_DRAFT",
-          "curriculum": "중3 1학기 M3-04/M3-04-QUADRATIC_FUNCTION_APPLICATION의 핵심 풀이: [키포인트] 삼각형 넓이로 $a$를 먼저 구한 뒤 같은 세로선 위의 길이비로 $b$를 구한다.",
-          "problemType": "ACTIVE 포물선과 도형의 융합 (PT_M3_QUADRATIC_FUNCTION_GRAPH_GEOMETRY). 변형축: 두 포물선의 넓이·길이비 원리를 보존하고 a+b 대신 부호에 주의한 a−b 목표",
-          "templateKey": "EVIDENCE_DEBT: 현행 ACTIVE PT에 대해 검증된 ACTIVE TPL 결속 후보를 확인하지 못해 공란 유지; 추후 검수 필요.",
+          "curriculum": "중3 1학기 M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH: [키포인트] 삼각형 넓이로 $a$를 먼저 구한 뒤 같은 세로선 위의 길이비로 $b$를 구한다.",
+          "problemType": "FIRST_FORMAL 재검수: PT_M3_QUADRATIC_FUNCTION_GRAPH_GEOMETRY는 M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH에 ACTIVE 바인딩. 결정적 계산 및 물음의 목표 확인.",
+          "templateKey": "FIRST_FORMAL 재검수: ACTIVE TPL_M3_GRAPH_GEOMETRY_RATIO는 PT_M3_QUADRATIC_FUNCTION_GRAPH_GEOMETRY의 자식이며 현재 해설에 적합.",
           "difficulty": "원본 배점 5점, 원본 난도 3단계를 유지. 두 포물선의 넓이·길이비 원리를 보존하고 a+b 대신 부호에 주의한 a−b 목표",
           "condition": "추가 등록 조건 키 없음",
           "crossConcept": "보조 L3 역할: CC_GEOMETRIC_AREA_VOLUME_FORMULA",
-          "integration": "포물선 대칭 + 삼각형 넓이 + 선분 비을 원본과 동일하게 유지"
+          "integration": "도형 조건과 이차방정식/이차함수 해석의 결합."
         },
         "visualNecessity": {
           "problem": "EXEMPT",
@@ -1213,12 +1213,12 @@
         "subUnit": "이차함수의 그래프",
         "conceptClusterKey": "QUADRATIC_FUNCTION_GRAPH",
         "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_COEFFICIENT_SIGNS",
-        "templateKey": "",
+        "templateKey": "TPL_M3_QUADRATIC_FUNCTION_COEFFICIENT_SIGNS_CONDITION",
         "crossConceptKeys": [],
         "conditionKeys": [
           "COND_NEGATIVE"
         ],
-        "integrationPattern": "대칭축 + x절편 + 계수 부호 판별",
+        "integrationPattern": "NONE",
         "difficultyBucket": 3,
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "NONE",
@@ -1234,16 +1234,16 @@
           "createdAt": "2026-11-25",
           "createdAtSource": "GPT direct one-exam instruction"
         },
-        "rpmPrimaryRecordId": "M3-RPM-043",
+        "rpmPrimaryRecordId": "M3-RPM-053",
         "metaRationale": {
           "draftTier": "SINGLE_MODEL_DRAFT",
-          "curriculum": "중3 1학기 M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH의 핵심 풀이: [키포인트] 열리는 방향에서 $a$의 부호를 정하고 인수분해 꼴을 전개하여 나머지 계수의 부호를 찾는다.",
-          "problemType": "ACTIVE 그래프 개형에서 계수·상수 부호 판정 (PT_M3_QUADRATIC_FUNCTION_COEFFICIENT_SIGNS). 변형축: 그래프에서 특정 대입식의 양음 판정 대신 절편·축에 연결된 세 계수의 부호 판단",
-          "templateKey": "EVIDENCE_DEBT: 현행 ACTIVE PT에 대해 검증된 ACTIVE TPL 결속 후보를 확인하지 못해 공란 유지; 추후 검수 필요.",
+          "curriculum": "중3 1학기 M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH: [키포인트] 열리는 방향에서 $a$의 부호를 정하고 인수분해 꼴을 전개하여 나머지 계수의 부호를 찾는다.",
+          "problemType": "FIRST_FORMAL 재검수: PT_M3_QUADRATIC_FUNCTION_COEFFICIENT_SIGNS는 M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH에 ACTIVE 바인딩. 결정적 계산 및 물음의 목표 확인.",
+          "templateKey": "FIRST_FORMAL 재검수: ACTIVE TPL_M3_QUADRATIC_FUNCTION_COEFFICIENT_SIGNS_CONDITION는 PT_M3_QUADRATIC_FUNCTION_COEFFICIENT_SIGNS의 자식이며 현재 해설에 적합.",
           "difficulty": "원본 배점 5점, 원본 난도 3단계를 유지. 그래프에서 특정 대입식의 양음 판정 대신 절편·축에 연결된 세 계수의 부호 판단",
           "condition": "등록 조건: COND_NEGATIVE",
           "crossConcept": "추가 CrossConcept 없음",
-          "integration": "대칭축 + x절편 + 계수 부호 판별을 원본과 동일하게 유지"
+          "integration": "대단원 간 융합 없이 해당 유형 풀이로 완결."
         },
         "visualNecessity": {
           "problem": "EXEMPT",
@@ -1276,13 +1276,13 @@
         "subUnit": "이차방정식",
         "conceptClusterKey": "QUADRATIC_EQUATION",
         "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_SQUARE_ROOT_METHOD",
-        "templateKey": "",
+        "templateKey": "TPL_M3_QUADRATIC_EQUATION_SQUARE_ROOT_METHOD_AUDIT",
         "crossConceptKeys": [
           "CC_CROSS_MULTIPLICATION_FACTORIZATION",
           "CC_BINOMIAL_SQUARE_EXPANSION"
         ],
         "conditionKeys": [],
-        "integrationPattern": "인수분해 풀이 + 완전제곱식 풀이",
+        "integrationPattern": "NONE",
         "difficultyBucket": 2,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
@@ -1298,16 +1298,16 @@
           "createdAt": "2026-11-25",
           "createdAtSource": "GPT direct one-exam instruction"
         },
-        "rpmPrimaryRecordId": "M3-RPM-029",
+        "rpmPrimaryRecordId": "M3-RPM-034",
         "metaRationale": {
           "draftTier": "SINGLE_MODEL_DRAFT",
-          "curriculum": "중3 1학기 M3-03/M3-03-QUADRATIC_EQUATION의 핵심 풀이: [키포인트] (1)은 두 일차식의 곱으로, (2)는 제곱식으로 바꾼다.",
-          "problemType": "ACTIVE 제곱근을 이용한 이차방정식 풀이 (PT_M3_QUADRATIC_EQUATION_SQUARE_ROOT_METHOD). 변형축: 각기 서로 다른 인수분해·완전제곱 풀이를 고정한 채 계수 구조 재구성",
-          "templateKey": "EVIDENCE_DEBT: 현행 ACTIVE PT에 대해 검증된 ACTIVE TPL 결속 후보를 확인하지 못해 공란 유지; 추후 검수 필요.",
+          "curriculum": "중3 1학기 M3-03/M3-03-QUADRATIC_EQUATION: [키포인트] (1)은 두 일차식의 곱으로, (2)는 제곱식으로 바꾼다.",
+          "problemType": "FIRST_FORMAL 재검수: PT_M3_QUADRATIC_EQUATION_SQUARE_ROOT_METHOD는 M3-03/M3-03-QUADRATIC_EQUATION에 ACTIVE 바인딩. 결정적 계산 및 물음의 목표 확인.",
+          "templateKey": "FIRST_FORMAL 재검수: ACTIVE TPL_M3_QUADRATIC_EQUATION_SQUARE_ROOT_METHOD_AUDIT는 PT_M3_QUADRATIC_EQUATION_SQUARE_ROOT_METHOD의 자식이며 현재 해설에 적합.",
           "difficulty": "원본 배점 5점, 원본 난도 2단계를 유지. 각기 서로 다른 인수분해·완전제곱 풀이를 고정한 채 계수 구조 재구성",
           "condition": "추가 등록 조건 키 없음",
           "crossConcept": "보조 L3 역할: CC_CROSS_MULTIPLICATION_FACTORIZATION, CC_BINOMIAL_SQUARE_EXPANSION",
-          "integration": "인수분해 풀이 + 완전제곱식 풀이을 원본과 동일하게 유지"
+          "integration": "대단원 간 융합 없이 해당 유형 풀이로 완결."
         },
         "visualNecessity": {
           "problem": "EXEMPT",
@@ -1340,14 +1340,14 @@
         "subUnit": "이차방정식의 활용",
         "conceptClusterKey": "QUADRATIC_EQUATION_WORD_PROBLEM",
         "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_WORD_PROBLEM",
-        "templateKey": "",
+        "templateKey": "TPL_M3_QUADRATIC_EQUATION_WORD_PROBLEM_GEOMETRY",
         "crossConceptKeys": [
           "CC_GEOMETRIC_AREA_VOLUME_FORMULA"
         ],
         "conditionKeys": [
           "COND_INEQUALITY_CONSTRAINT"
         ],
-        "integrationPattern": "상자 부피 식 세우기 + 이차방정식 풀이",
+        "integrationPattern": "GEOMETRY_ALGEBRA_FUSION",
         "difficultyBucket": 2,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
@@ -1363,16 +1363,16 @@
           "createdAt": "2026-11-25",
           "createdAtSource": "GPT direct one-exam instruction"
         },
-        "rpmPrimaryRecordId": "M3-RPM-037",
+        "rpmPrimaryRecordId": "M3-RPM-039",
         "metaRationale": {
           "draftTier": "SINGLE_MODEL_DRAFT",
-          "curriculum": "중3 1학기 M3-03/M3-03-QUADRATIC_EQUATION_WORD의 핵심 풀이: [키포인트] 잘라낸 정사각형의 변이 상자의 높이가 되고, 밑면의 가로·세로는 각각 그 두 배만큼 짧아진다.",
-          "problemType": "ACTIVE 이차방정식의 실생활 활용 (PT_M3_QUADRATIC_EQUATION_WORD_PROBLEM). 변형축: 상자 부피에서 긴 변 대신 자르기 전 종이 둘레를 구하도록 추가 결정",
-          "templateKey": "EVIDENCE_DEBT: 현행 ACTIVE PT에 대해 검증된 ACTIVE TPL 결속 후보를 확인하지 못해 공란 유지; 추후 검수 필요.",
+          "curriculum": "중3 1학기 M3-03/M3-03-QUADRATIC_EQUATION_WORD: [키포인트] 잘라낸 정사각형의 변이 상자의 높이가 되고, 밑면의 가로·세로는 각각 그 두 배만큼 짧아진다.",
+          "problemType": "FIRST_FORMAL 재검수: PT_M3_QUADRATIC_EQUATION_WORD_PROBLEM는 M3-03/M3-03-QUADRATIC_EQUATION_WORD에 ACTIVE 바인딩. 결정적 계산 및 물음의 목표 확인.",
+          "templateKey": "FIRST_FORMAL 재검수: ACTIVE TPL_M3_QUADRATIC_EQUATION_WORD_PROBLEM_GEOMETRY는 PT_M3_QUADRATIC_EQUATION_WORD_PROBLEM의 자식이며 현재 해설에 적합.",
           "difficulty": "원본 배점 5점, 원본 난도 2단계를 유지. 상자 부피에서 긴 변 대신 자르기 전 종이 둘레를 구하도록 추가 결정",
           "condition": "등록 조건: COND_INEQUALITY_CONSTRAINT",
           "crossConcept": "보조 L3 역할: CC_GEOMETRIC_AREA_VOLUME_FORMULA",
-          "integration": "상자 부피 식 세우기 + 이차방정식 풀이을 원본과 동일하게 유지"
+          "integration": "도형 조건과 이차방정식/이차함수 해석의 결합."
         },
         "visualNecessity": {
           "problem": "EXEMPT",
@@ -1405,10 +1405,10 @@
         "subUnit": "이차함수의 그래프",
         "conceptClusterKey": "QUADRATIC_FUNCTION_GRAPH",
         "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_THREE_POINTS",
-        "templateKey": "",
+        "templateKey": "TPL_M3_QUADRATIC_FUNCTION_THREE_POINTS_INTERCEPT",
         "crossConceptKeys": [],
         "conditionKeys": [],
-        "integrationPattern": "x절편 인수형 + 점 대입",
+        "integrationPattern": "NONE",
         "difficultyBucket": 2,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
@@ -1424,16 +1424,16 @@
           "createdAt": "2026-11-25",
           "createdAtSource": "GPT direct one-exam instruction"
         },
-        "rpmPrimaryRecordId": "M3-RPM-043",
+        "rpmPrimaryRecordId": "M3-RPM-054",
         "metaRationale": {
           "draftTier": "SINGLE_MODEL_DRAFT",
-          "curriculum": "중3 1학기 M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH의 핵심 풀이: [키포인트] $x$절편 두 개를 알면 이차함수는 $y=a(x-r_1)(x-r_2)$의 꼴이다.",
-          "problemType": "ACTIVE 세 점으로 이차함수 식 결정 (PT_M3_QUADRATIC_FUNCTION_THREE_POINTS). 변형축: 두 대칭 절편·y절편에서 비대칭 절편·축 밖의 추가점을 이용한 계수 결정",
-          "templateKey": "EVIDENCE_DEBT: 현행 ACTIVE PT에 대해 검증된 ACTIVE TPL 결속 후보를 확인하지 못해 공란 유지; 추후 검수 필요.",
+          "curriculum": "중3 1학기 M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH: [키포인트] $x$절편 두 개를 알면 이차함수는 $y=a(x-r_1)(x-r_2)$의 꼴이다.",
+          "problemType": "FIRST_FORMAL 재검수: PT_M3_QUADRATIC_FUNCTION_THREE_POINTS는 M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH에 ACTIVE 바인딩. 결정적 계산 및 물음의 목표 확인.",
+          "templateKey": "FIRST_FORMAL 재검수: ACTIVE TPL_M3_QUADRATIC_FUNCTION_THREE_POINTS_INTERCEPT는 PT_M3_QUADRATIC_FUNCTION_THREE_POINTS의 자식이며 현재 해설에 적합.",
           "difficulty": "원본 배점 4점, 원본 난도 2단계를 유지. 두 대칭 절편·y절편에서 비대칭 절편·축 밖의 추가점을 이용한 계수 결정",
           "condition": "추가 등록 조건 키 없음",
           "crossConcept": "추가 CrossConcept 없음",
-          "integration": "x절편 인수형 + 점 대입을 원본과 동일하게 유지"
+          "integration": "대단원 간 융합 없이 해당 유형 풀이로 완결."
         },
         "visualNecessity": {
           "problem": "EXEMPT",
@@ -1466,13 +1466,13 @@
         "subUnit": "이차함수의 그래프",
         "conceptClusterKey": "QUADRATIC_FUNCTION_GRAPH",
         "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_QUADRANT_CONDITION",
-        "templateKey": "",
+        "templateKey": "TPL_M3_FIND_PARAMETER_RANGE_AVOIDING_SPECIFIC_QUADRANT",
         "crossConceptKeys": [],
         "conditionKeys": [
           "COND_POSITIVE",
           "COND_INEQUALITY_CONSTRAINT"
         ],
-        "integrationPattern": "표준형 전개 + 사분면 경계 부등식",
+        "integrationPattern": "NONE",
         "difficultyBucket": 4,
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "NONE",
@@ -1488,16 +1488,16 @@
           "createdAt": "2026-11-25",
           "createdAtSource": "GPT direct one-exam instruction"
         },
-        "rpmPrimaryRecordId": "M3-RPM-043",
+        "rpmPrimaryRecordId": "M3-RPM-053",
         "metaRationale": {
           "draftTier": "SINGLE_MODEL_DRAFT",
-          "curriculum": "중3 1학기 M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH의 핵심 풀이: [키포인트] 꼭짓점이 $x$축 아래에 있으며 제4사분면을 지나지 않는 조건을 $x>0$인 부분의 함수값으로 해석한다.",
-          "problemType": "ACTIVE 이차함수 그래프의 사분면 통과 판정 (PT_M3_QUADRATIC_FUNCTION_QUADRANT_CONDITION). 변형축: 원본의 사분면 조건을 좌우 반전하고 경계 a 조건을 독립적으로 증명",
-          "templateKey": "EVIDENCE_DEBT: 현행 ACTIVE PT에 대해 검증된 ACTIVE TPL 결속 후보를 확인하지 못해 공란 유지; 추후 검수 필요.",
+          "curriculum": "중3 1학기 M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH: [키포인트] 꼭짓점이 $x$축 아래에 있으며 제4사분면을 지나지 않는 조건을 $x>0$인 부분의 함수값으로 해석한다.",
+          "problemType": "FIRST_FORMAL 재검수: PT_M3_QUADRATIC_FUNCTION_QUADRANT_CONDITION는 M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH에 ACTIVE 바인딩. 결정적 계산 및 물음의 목표 확인.",
+          "templateKey": "FIRST_FORMAL 재검수: ACTIVE TPL_M3_FIND_PARAMETER_RANGE_AVOIDING_SPECIFIC_QUADRANT는 PT_M3_QUADRATIC_FUNCTION_QUADRANT_CONDITION의 자식이며 현재 해설에 적합.",
           "difficulty": "원본 배점 6점, 원본 난도 4단계를 유지. 원본의 사분면 조건을 좌우 반전하고 경계 a 조건을 독립적으로 증명",
           "condition": "등록 조건: COND_POSITIVE, COND_INEQUALITY_CONSTRAINT",
           "crossConcept": "추가 CrossConcept 없음",
-          "integration": "표준형 전개 + 사분면 경계 부등식을 원본과 동일하게 유지"
+          "integration": "대단원 간 융합 없이 해당 유형 풀이로 완결."
         },
         "visualNecessity": {
           "problem": "EXEMPT",
