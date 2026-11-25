@@ -1,0 +1,238 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "D",
+    "C",
+    "A",
+    "E"
+  ],
+  "hiddenPointNames": [],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "s5",
+      "refs": [
+        "E",
+        "C"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a",
+        "refs": [
+          "D",
+          "B",
+          "A"
+        ],
+        "value": 53.13010235415598,
+        "label": "a",
+        "arcs": 1
+      },
+      {
+        "id": "b",
+        "refs": [
+          "D",
+          "C",
+          "E"
+        ],
+        "value": 38.659808254090095,
+        "label": "b",
+        "arcs": 1
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "AB10",
+        "ownerSegment": "s3",
+        "text": "10"
+      },
+      {
+        "id": "AC89",
+        "ownerSegment": "s4",
+        "text": "sqrt(89)"
+      },
+      {
+        "id": "EC41",
+        "ownerSegment": "s5",
+        "text": "sqrt(41)"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rD",
+      "refs": [
+        "B",
+        "D",
+        "A"
+      ]
+    }
+  ],
+  "caption": "B−D−C 수평선에 A와 AD 중점 E, AB=10, AC=√89, EC=√41.",
+  "accessibilityDescription": "B−D−C 수평선에 A와 AD 중점 E, AB=10, AC=√89, EC=√41.",
+  "sourceQuote": "[그림: $D$를 사이에 둔 수평선 $BC$, 위쪽의 $A$, $AD$의 중점 $E$를 표시하고 $AB,AC,EC$를 연결]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "D는 BC 내부, AD⊥BC, E는 AD 중점",
+      "mappedTo": "mathPlan.nodes[0..4];displaySegments[0..2];rightAngles[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "AB=10,AC=sqrt(89),EC=sqrt(41)",
+      "mappedTo": "displaySegments[3..5];planeMarks.expressionLabels[0..2]"
+    },
+    {
+      "id": "c3",
+      "condition": "a=∠ABD,b=∠DCE",
+      "mappedTo": "planeMarks.angles[0..1]"
+    }
+  ],
+  "newVisualInformation": [
+    "답은 표기하지 않고 원문 도형만 구성한다."
+  ]
+}

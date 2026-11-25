@@ -1,0 +1,359 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "C",
+    "D",
+    "A",
+    "G",
+    "L1",
+    "U1",
+    "L2",
+    "U2",
+    "L3"
+  ],
+  "hiddenPointNames": [
+    "L1",
+    "U1",
+    "L2",
+    "U2",
+    "L3"
+  ],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "D",
+        "G"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "G",
+        "U2"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "U2",
+        "U1"
+      ]
+    },
+    {
+      "id": "s5",
+      "refs": [
+        "U1",
+        "A"
+      ]
+    },
+    {
+      "id": "s6",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "s7",
+      "refs": [
+        "L1",
+        "U1"
+      ]
+    },
+    {
+      "id": "s8",
+      "refs": [
+        "L2",
+        "U2"
+      ]
+    },
+    {
+      "id": "s9",
+      "refs": [
+        "L3",
+        "G"
+      ]
+    },
+    {
+      "id": "s10",
+      "refs": [
+        "B",
+        "G"
+      ]
+    },
+    {
+      "id": "s11",
+      "refs": [
+        "B",
+        "D"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a",
+        "refs": [
+          "C",
+          "B",
+          "G"
+        ],
+        "value": 18.43494882292201,
+        "label": "a",
+        "arcs": 1
+      },
+      {
+        "id": "b",
+        "refs": [
+          "C",
+          "B",
+          "D"
+        ],
+        "value": 14.036243467926477,
+        "label": "b",
+        "arcs": 2
+      }
+    ]
+  },
+  "caption": "4×1 직사각형 ABCD를 네 정사각형으로 나누고 G(3,1), BG·BD를 표시.",
+  "accessibilityDescription": "4×1 직사각형 ABCD를 네 정사각형으로 나누고 G(3,1), BG·BD를 표시.",
+  "sourceQuote": "[그림: $B(0,0),C(4,0),D(4,1),A(0,1)$을 잇고 $x=1,2,3$으로 분할하며 $G(3,1)$과 $BG,BD$ 표시]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "B(0,0),C(4,0),D(4,1),A(0,1)",
+      "mappedTo": "mathPlan.nodes[0..3];displaySegments[0..6]"
+    },
+    {
+      "id": "c2",
+      "condition": "x=1,2,3 세로 분할",
+      "mappedTo": "mathPlan.nodes[5..9];displaySegments[7..9]"
+    },
+    {
+      "id": "c3",
+      "condition": "G(3,1), BG·BD, 각 a,b",
+      "mappedTo": "mathPlan.nodes[4];displaySegments[10..11];planeMarks.angles[0..1]"
+    }
+  ],
+  "newVisualInformation": [
+    "답은 표기하지 않고 원문 도형만 구성한다."
+  ]
+}

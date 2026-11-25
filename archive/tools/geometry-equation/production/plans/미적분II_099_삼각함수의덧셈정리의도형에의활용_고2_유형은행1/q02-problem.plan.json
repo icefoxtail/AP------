@@ -1,0 +1,199 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "C",
+    "D",
+    "A"
+  ],
+  "hiddenPointNames": [],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "B",
+        "A"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "B",
+        "D"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "ABD",
+        "refs": [
+          "A",
+          "B",
+          "D"
+        ],
+        "value": 15.255118703057777,
+        "label": "θ",
+        "arcs": 1
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "eqADCD",
+        "count": 1,
+        "segments": [
+          "s1",
+          "s2"
+        ]
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rC",
+      "refs": [
+        "B",
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "caption": "∠C가 직각인 △ABC. AC=3BC이고 D는 AC의 중점, BA와 BD가 그려진 그림.",
+  "accessibilityDescription": "∠C가 직각인 △ABC. AC=3BC이고 D는 AC의 중점, BA와 BD가 그려진 그림.",
+  "sourceQuote": "[그림: $B(0,0),C(2,0),D(2,3),A(2,6)$을 놓고 $BA,BD,BC$를 긋는다]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "B(0,0), C(2,0), D(2,3), A(2,6)",
+      "mappedTo": "mathPlan.nodes[0..3]"
+    },
+    {
+      "id": "c2",
+      "condition": "BA,BD,BC와 수직 AC",
+      "mappedTo": "displaySegments[0..4];rightAngles[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "AD=DC, AC=3BC",
+      "mappedTo": "planeMarks.equalLengths[0];mathPlan.nodes[0..3]"
+    },
+    {
+      "id": "c4",
+      "condition": "∠ABD",
+      "mappedTo": "planeMarks.angles[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "원문 그림 설명에 대응하는 좌표·선·표식을 실제 렌더 필드에 지정했다. 정답 수치는 표기하지 않는다."
+  ]
+}
+

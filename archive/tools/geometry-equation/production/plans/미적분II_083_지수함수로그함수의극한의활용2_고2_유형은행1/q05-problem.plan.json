@@ -1,0 +1,59 @@
+{
+  "capability": "exponential-affine-spike-v1",
+  "graphPlan": {
+    "family": "exponential-affine",
+    "coefficients": [
+      "1",
+      "3",
+      "0"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -0.4,
+      0.8
+    ],
+    "viewport": [
+      -0.5,
+      1,
+      -0.5,
+      12
+    ],
+    "axisTickValues": {
+      "x": [
+        "1"
+      ],
+      "y": [
+        "1"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "0",
+          "y": "1"
+        }
+      ]
+    }
+  },
+  "caption": "자연지수 y=e^(3x)와 A=(0,1); P·중점 M·수직이등분선 Q는 ENGINE_CAPABILITY_PENDING.",
+  "accessibilityDescription": "자연지수 곡선 위 A=(0,1)만 보이며 비영 t의 P와 수직이등분선은 표시되지 않는다.",
+  "sourceQuote": "[그림: $A$와 $P$를 잇고 중점 $M=(t/2,(1+e^{3t})/2)$을 표시한다. $M$에서 $AP$에 수직인 직선을 그어 양의 $x$축과 만나는 점을 $Q$로 표시한다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "A=(0,1), y=e^(3x)",
+      "mappedTo": "graphPlan.coefficients;graphPlan.overlays.points[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "P=(t,e^(3t))와 AP, M=(t/2,(1+e^(3t))/2), 수직이등분선 및 양의 x축 교점 Q",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: 정확 지수값 overlay point와 파생 수직이등분선"
+    }
+  ],
+  "newVisualInformation": [
+    "ENGINE_CAPABILITY_PENDING: e^(3t)를 symbolic exact overlay.point로 표현하고 midpoint·perpendicular-bisector·x-intersection을 생성하는 그래프 기능 필요."
+  ]
+}

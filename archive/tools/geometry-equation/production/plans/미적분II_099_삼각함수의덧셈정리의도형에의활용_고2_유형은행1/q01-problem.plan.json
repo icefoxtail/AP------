@@ -1,0 +1,253 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "D",
+    "C",
+    "E"
+  ],
+  "hiddenPointNames": [],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "s5",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "s6",
+      "refs": [
+        "A",
+        "D"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "CAE",
+        "refs": [
+          "C",
+          "A",
+          "E"
+        ],
+        "value": 29.74488129694223,
+        "label": "θ",
+        "arcs": 1
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "AB4",
+        "ownerSegment": "s0",
+        "text": "4"
+      },
+      {
+        "id": "BC6",
+        "ownerSegment": "s2",
+        "text": "6"
+      },
+      {
+        "id": "AD6",
+        "ownerSegment": "s6",
+        "text": "6"
+      },
+      {
+        "id": "DE3",
+        "ownerSegment": "s3",
+        "text": "3"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rB",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "rD",
+      "refs": [
+        "A",
+        "D",
+        "E"
+      ]
+    }
+  ],
+  "caption": "A-B-D가 일직선, C와 E는 위쪽에 있는 두 직각삼각형 ABC와 ADE. AB=4, BC=6, AD=6, DE=3.",
+  "accessibilityDescription": "A-B-D가 일직선, C와 E는 위쪽에 있는 두 직각삼각형 ABC와 ADE. AB=4, BC=6, AD=6, DE=3.",
+  "sourceQuote": "[그림: $A(0,0),B(4,0),D(6,0),C(4,6),E(6,3)$을 두고 두 직각삼각형 표시]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "A(0,0),B(4,0),D(6,0),C(4,6),E(6,3)",
+      "mappedTo": "mathPlan.nodes[0..4]"
+    },
+    {
+      "id": "c2",
+      "condition": "A-B-D, A-C, A-E, B-C, D-E",
+      "mappedTo": "displaySegments[0..6]"
+    },
+    {
+      "id": "c3",
+      "condition": "B와 D의 직각",
+      "mappedTo": "rightAngles[0..1]"
+    },
+    {
+      "id": "c4",
+      "condition": "AB4 BC6 AD6 DE3, angle CAE",
+      "mappedTo": "planeMarks.expressionLabels[0..3];planeMarks.angles[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "원문 그림 설명에 대응하는 좌표·선·표식을 실제 렌더 필드에 지정했다. 정답 수치는 표기하지 않는다."
+  ]
+}
+

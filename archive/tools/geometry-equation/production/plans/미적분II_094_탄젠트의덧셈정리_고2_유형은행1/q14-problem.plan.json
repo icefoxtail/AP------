@@ -1,0 +1,212 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "46",
+              "denominator": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-8"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "T",
+    "E",
+    "H"
+  ],
+  "hiddenPointNames": [],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "B",
+        "T"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "E",
+        "B"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "E",
+        "T"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "E",
+        "H"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "H",
+        "B"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "alpha",
+        "refs": [
+          "B",
+          "E",
+          "H"
+        ],
+        "value": 14.036243467926477,
+        "label": "α",
+        "arcs": 1
+      },
+      {
+        "id": "beta",
+        "refs": [
+          "H",
+          "E",
+          "T"
+        ],
+        "value": 59.03624346792648,
+        "label": "β",
+        "arcs": 1
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "dist",
+        "ownerSegment": "s3",
+        "text": "8"
+      },
+      {
+        "id": "eyeheight",
+        "ownerSegment": "s4",
+        "text": "2"
+      },
+      {
+        "id": "towerheight",
+        "ownerSegment": "s0",
+        "text": "h"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rH",
+      "refs": [
+        "E",
+        "H",
+        "B"
+      ]
+    }
+  ],
+  "caption": "등대 밑 B, 꼭대기 T, 눈 E와 눈높이 수평선 EH 및 각 α,β.",
+  "accessibilityDescription": "8 m 떨어진 눈 E에서 등대 밑·꼭대기로 향하는 두 시선, 눈높이 수평선과 위·아래 각호. 높이는 미지 h로 표기.",
+  "sourceQuote": "[그림: 등대 밑 $(0,0)$, 꼭대기 $(0,h)$, 눈 $(-8,2)$를 두고 두 시선과 눈높이 수평선 표시]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "등대 밑(0,0), 꼭대기(0,h), 눈(-8,2)",
+      "mappedTo": "mathPlan.nodes[0..3];displaySegments[0..2]"
+    },
+    {
+      "id": "c2",
+      "condition": "수평거리8, 눈높이2, 직각",
+      "mappedTo": "displaySegments[3..4];planeMarks.expressionLabels[0..1];rightAngles[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "내려다보는 α보다 올려다보는 β가45° 더 큼",
+      "mappedTo": "planeMarks.angles[0..1]"
+    }
+  ],
+  "newVisualInformation": [
+    "미지 h의 실제 수치는 점 배치에만 이용하고 그림에는 h로 표기하여 답을 노출하지 않는다."
+  ]
+}

@@ -1,0 +1,107 @@
+{
+  "capability": "exponential-affine-spike-v1",
+  "graphPlan": {
+    "family": "exponential-affine",
+    "base": "3",
+    "coefficients": [
+      "1",
+      "1",
+      "-1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -0.5,
+      2.2
+    ],
+    "viewport": [
+      -1,
+      2.5,
+      -1,
+      10
+    ],
+    "axisTickValues": {
+      "x": [
+        "1"
+      ],
+      "y": [
+        "1"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        },
+        {
+          "id": "A",
+          "x": "2",
+          "y": "0"
+        },
+        {
+          "id": "B",
+          "x": "0",
+          "y": "1"
+        },
+        {
+          "id": "P",
+          "x": "1",
+          "y": "2"
+        }
+      ],
+      "segments": [
+        {
+          "id": "OA",
+          "from": "O",
+          "to": "A"
+        },
+        {
+          "id": "OB",
+          "from": "O",
+          "to": "B"
+        },
+        {
+          "id": "OP",
+          "from": "O",
+          "to": "P"
+        },
+        {
+          "id": "AP",
+          "from": "A",
+          "to": "P"
+        },
+        {
+          "id": "BP",
+          "from": "B",
+          "to": "P"
+        }
+      ]
+    }
+  },
+  "caption": "y=3^x−1 위 P=(1,2), O(0,0),A(2,0),B(0,1)의 두 삼각형.",
+  "accessibilityDescription": "제1사분면 지수곡선과 원점 O, x축 A, y축 B, 곡선 위 P 및 P에서 O,A,B로 연결한 선분을 보인다.",
+  "sourceQuote": "[그림: 두 좌표축 위에 $A,B$를 표시한다. 곡선 위의 $P=(t,3^t-1)$를 $O,A,B$와 연결한다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "곡선 y=3^x−1",
+      "mappedTo": "graphPlan.coefficients;graphPlan.base"
+    },
+    {
+      "id": "c2",
+      "condition": "O=(0,0),A=(2,0),B=(0,1)",
+      "mappedTo": "graphPlan.overlays.points[0..2];graphPlan.overlays.segments[0..1]"
+    },
+    {
+      "id": "c3",
+      "condition": "대표 t=1의 P=(1,2)와 OP,AP,BP",
+      "mappedTo": "graphPlan.overlays.points[3];graphPlan.overlays.segments[2..4]"
+    }
+  ],
+  "newVisualInformation": [
+    "미지 극한·넓이의 값은 그림에서 숨긴다."
+  ]
+}

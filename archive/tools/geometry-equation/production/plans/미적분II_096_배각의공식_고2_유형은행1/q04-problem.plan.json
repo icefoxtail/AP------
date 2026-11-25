@@ -1,0 +1,232 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "7",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-24",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-527",
+              "denominator": "125"
+            },
+            {
+              "kind": "rational",
+              "numerator": "336",
+              "denominator": "125"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "P",
+    "Q"
+  ],
+  "hiddenPointNames": [],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "A",
+        "Q"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "B",
+        "P"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "B",
+        "Q"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "k"
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a",
+        "refs": [
+          "B",
+          "A",
+          "P"
+        ],
+        "value": 36.86989764584402,
+        "label": "a",
+        "arcs": 1
+      },
+      {
+        "id": "twice",
+        "refs": [
+          "B",
+          "A",
+          "Q"
+        ],
+        "value": 73.73979529168804,
+        "label": "2a",
+        "arcs": 2
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "AP8",
+        "ownerSegment": "s2",
+        "text": "8"
+      }
+    ]
+  },
+  "caption": "지름 AB=10인 원에서 P는 아래 호, Q는 위 호, AP=8와 ∠QAB=2∠PAB.",
+  "accessibilityDescription": "지름 AB=10인 원에서 P는 아래 호, Q는 위 호, AP=8와 ∠QAB=2∠PAB.",
+  "sourceQuote": "[그림: 수평 지름 $A(-5,0),B(5,0)$, 아래쪽 호에 $P$, 위쪽 호에 $Q$를 두고 $AP,AQ,BP,BQ$를 연결]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "A(-5,0), B(5,0), 지름10의 원",
+      "mappedTo": "mathPlan.nodes[0..2,5];displayCircles[0];displaySegments[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "P는 아래 호, Q는 위 호, AP·AQ·BP·BQ",
+      "mappedTo": "mathPlan.nodes[3..4];displaySegments[1..4]"
+    },
+    {
+      "id": "c3",
+      "condition": "AP=8, ∠QAB=2∠PAB",
+      "mappedTo": "planeMarks.expressionLabels[0];planeMarks.angles[0..1]"
+    }
+  ],
+  "newVisualInformation": [
+    "원문 도형의 실제 관계를 그리되 구하는 답을 인쇄하지 않는다."
+  ]
+}

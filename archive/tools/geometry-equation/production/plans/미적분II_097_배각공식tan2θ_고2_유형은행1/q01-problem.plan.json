@@ -1,0 +1,171 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "X",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "X",
+    "M",
+    "R"
+  ],
+  "hiddenPointNames": [
+    "X",
+    "M",
+    "R"
+  ],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "O",
+        "X"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "O",
+        "M"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "O",
+        "R"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a1",
+        "refs": [
+          "X",
+          "O",
+          "M"
+        ],
+        "value": 18.43494882292201,
+        "label": "α",
+        "arcs": 1,
+        "equalGroup": 1
+      },
+      {
+        "id": "a2",
+        "refs": [
+          "M",
+          "O",
+          "R"
+        ],
+        "value": 18.43494882292201,
+        "noLabel": true,
+        "arcs": 1,
+        "equalGroup": 1
+      }
+    ]
+  },
+  "caption": "y=(3/4)x와 양의 x축 사이에서 y=mx가 두 인접각을 이등분.",
+  "accessibilityDescription": "y=(3/4)x와 양의 x축 사이에서 y=mx가 두 인접각을 이등분.",
+  "sourceQuote": "[그림: 원점에서 $y=(3/4)x$, $y=mx$, 양의 $x$축의 세 반직선을 그리고 인접한 두 각의 크기가 같음을 표시]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "양의 x축, y=mx, y=3x/4의 세 반직선",
+      "mappedTo": "mathPlan.nodes[0..3];displaySegments[0..2]"
+    },
+    {
+      "id": "c2",
+      "condition": "인접한 두 각의 크기 같음",
+      "mappedTo": "planeMarks.angles[0..1]"
+    }
+  ],
+  "newVisualInformation": [
+    "기울기 m의 숫자는 답이므로 인쇄하지 않고 같은 크기 각호로만 표시."
+  ]
+}
