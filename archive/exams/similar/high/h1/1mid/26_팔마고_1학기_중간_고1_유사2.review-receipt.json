@@ -127,5 +127,65 @@
     }
   },
   "svgPendingPath": "archive/exams/similar/high/h1/1mid/26_팔마고_1학기_중간_고1_유사2_plans/SVG_PENDING.md",
-  "experienceLedgerPath": "archive/exams/similar/high/h1/1mid/26_팔마고_1학기_중간_고1_유사2_plans/EXPERIENCE_LEDGER.json"
+  "experienceLedgerPath": "archive/exams/similar/high/h1/1mid/26_팔마고_1학기_중간_고1_유사2_plans/EXPERIENCE_LEDGER.json",
+  "independentR1": {
+    "date": "2026-11-25",
+    "reviewer": "GPT independent R1 after creation PR #2923; independently calculated before consulting candidate solutions and metadata",
+    "reviewedCurrentSourceBlobSha1": "be4f3e46242d8993a9b34382ca07f3ebcb5c052b",
+    "reviewedCurrentSourceSha256": "45cc893c6d1cd44830699da5b49f8c57d4cd80a605eae41d7109a559d720a1d0",
+    "frozenCreationSourceBlobSha1": "366f43f6e677ab4c6c521fde000cdbadc891cd7b",
+    "contentAndChoicesUnchangedFromCreationBlob": true,
+    "questionCount": 22,
+    "independentMathematicalCheck": {
+      "status": "PASS",
+      "count": 22,
+      "mathAnswerErrors": 0
+    },
+    "smallBoard": {
+      "revisedCount": 3,
+      "revisedQuestionIds": [4, 16, 22],
+      "keptCount": 19,
+      "studentReproducibilityAssessedCount": 22,
+      "studentStructureAssessedCount": 22
+    },
+    "metadata": {
+      "semanticAndRegistryAssessedCount": 22,
+      "revisedQuestionIds": [1, 2, 3, 6, 7, 10, 11, 12, 14, 15, 16, 17, 18, 19, 20, 22],
+      "rpmPtTplCurriculumAndFourSlot": "R1_SEMANTIC_CHECK_PASS_22",
+      "formalApproval": "review_required",
+      "registration": "NOT_RUN"
+    },
+    "goldenAndNegativeCalibration": {
+      "status": "PASS",
+      "goldenFiles": 2,
+      "representativeQuestions": 6,
+      "negativeCasesFile": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "preflight": "PASS",
+      "closure": "PASS"
+    },
+    "evidence": {
+      "path": "archive/exams/similar/high/h1/1mid/26_팔마고_1학기_중간_고1_유사2_plans/R1_PHYSICAL_EVIDENCE.json",
+      "questionRows": 22,
+      "metaRows": 22,
+      "reviewEvidenceGateR1": "PASS_WITH_ITEM_HOLDS",
+      "itemHoldQids": [9, 22]
+    },
+    "validation": {
+      "nodeCheck": "PASS",
+      "choiceOrder18": "PASS",
+      "svgPlanLintShallow2": "PASS",
+      "fullSvgLint": "ENVIRONMENT_BLOCKED_MISSING_NOTOSANSKR_TTF",
+      "svgRenderAndPngVisualReview": "NOT_RUN",
+      "browserMathJaxPixelReview": "NOT_RUN",
+      "releaseHarnessDraft": "FAIL_VISUAL_PENDING_4_ERRORS",
+      "releaseHarnessOtherErrors": 0,
+      "ci": "NOT_RUN"
+    },
+    "operationalMergeReady": false,
+    "remainingRequiredActions": [
+      "Q09, Q22 공식 엔진 해설 SVG를 실제 생성하고 캡션/좌표/레이아웃을 실물 검수",
+      "Q09, Q22 solutionImage 및 엔진 evidence 연결 후 release harness 재검증",
+      "미승인 메타는 별도의 정식 승인·등록 절차 완료 전 활성 승인으로 간주하지 않음"
+    ]
+  }
 }

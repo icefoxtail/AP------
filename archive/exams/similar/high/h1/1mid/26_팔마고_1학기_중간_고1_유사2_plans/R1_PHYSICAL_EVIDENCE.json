@@ -1,0 +1,2444 @@
+{
+  "schemaVersion": "JS_ARCHIVE_PHYSICAL_REVIEW_EVIDENCE_v1",
+  "stage": "R1",
+  "examPath": "archive/exams/similar/high/h1/1mid/26_팔마고_1학기_중간_고1_유사2.js",
+  "examUid": "26_팔마고_1학기_중간_고1_유사2",
+  "examSha256": "sha256:45cc893c6d1cd44830699da5b49f8c57d4cd80a605eae41d7109a559d720a1d0",
+  "questionCount": 22,
+  "independence": {
+    "createReceiptUsedAsAuthority": false,
+    "blindAnswerCalculationPath": "R1 independent result frozen before comparison with original candidate solutions/meta"
+  },
+  "solutionQualityCalibration": {
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:539862fd5ec28c90d66c8138a4f83d9bb2e1fc03068b6f08f069c65c0e41ec1f",
+        "gitBlobSha": "c17f60fb6499657e57f2eb2468d4f4aa3412c64f"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:1ec07522c83739635560297ccf11442ac363c0f37fdb4a893de22496f4aa049f",
+        "gitBlobSha": "144b5b81770601f624355e333da25ebcda555610"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+        "solutionExcerpt": "먼저 내분점 $P$의 좌표를 구한다.",
+        "observation": "내분비 반대쪽 계수 적용부터 좌표 및 거리까지 별도 단계; 학생 재현 가능"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "sha256:b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba",
+        "solutionExcerpt": "두 직선이 평행하므로 기울기가 서로 같다.",
+        "observation": "기울기 결정→점 대입→상수 결정→결론의 판서 경계"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 3,
+        "solutionSha256": "sha256:77b762f1e35e5f530421cb7eb1d987ec0935ad0b9e2058a665c07fe6f930e5f0",
+        "solutionExcerpt": "원의 중심과 반지름을 읽으려면",
+        "observation": "완전제곱에 추가한 상수를 좌우에 반영하는 이유가 명시됨"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+        "solutionExcerpt": "두 점 사이의 거리는 두 점의",
+        "observation": "좌표 차와 거리 공식 대입을 분리해 산술 단계를 드러냄"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "sha256:84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+        "solutionExcerpt": "두 직선이 서로 수직이므로",
+        "observation": "수직의 이유, 두 기울기 계산, 곱조건과 해를 차례로 구분"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 3,
+        "solutionSha256": "sha256:14da6e5de553ba66fa844aeac03ccb7fef8ba496759cd01906cb417185d22370",
+        "solutionExcerpt": "원의 중심과 반지름을 구하려면",
+        "observation": "완전제곱 계산→표준형 비교→중심과 반지름을 명확히 판정"
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "sha256:dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+        "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa"
+      }
+    ],
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "INDEPENDENT_REVIEW",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_TARGET_BLIND_THEN_COMPARE",
+    "qualityCompareCount": "22/22"
+  },
+  "questionRows": [
+    {
+      "qid": 1,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "원본 candidate blob 366f43f6e677ab4c6c521fde000cdbadc891cd7b의 Q1 발문·보기 바이트가 최종 JS와 일치; UID qid_v1_61f3ae090f02c3f62ffeaef2f7de4f66d3b6fda1435d074b3594090e2d94cb9e; 원본 기출 대비 두 다항식의 차로 미지 다항식을 역산한 뒤 특정 입력값 대입"
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "발문을 선해석·독립 검산: B=A-(x²+4x-6)=2x²-6x+10; B(1)=6. 정답 ⑤; 보기·응답 형식 확인"
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "최종 해설과 독립 계산 대조: B=A-(x²+4x-6)=2x²-6x+10; B(1)=6. KEEP"
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "학생 재현 경로 다항식의 뺄셈 후 함수값 대입; 3개 판서 줄, 조건→전개→계산→결론 구성 확인. PASS: 3개 독립 판서 줄; 주요 조건과 식·결론의 각 단계 확인"
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "2022 공통수학1 H22-C-01/H22-C-01-POLYNOMIAL_BASIC; 풀이 다항식의 뺄셈 후 함수값 대입은 표제 단원 안의 방법"
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "문항/해설의 필수 도형 자산 없음; 좌표/식/조건은 텍스트에 모두 제공. solutionImage 없이 수식으로 재현 가능"
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM H1-RPM-135, 활성 PT PT_H1_POLY_OPERATION_EXPANSION, 부모-하위 활성 TPL TPL_H1_POLY_OPERATION_DIRECT; 4slot given/goal/method/condition 실제 검증; CC/COND 활성 레지스트리 대조"
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "SOURCE_BALANCED 원본 1→후속 1; 두 다항식의 차로 미지 다항식을 역산한 뒤 특정 입력값 대입; 해법 부담에 맞는 상대 등급, 단순 숫자 치환 아님"
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "VM 로드·해설 문자열 수식 이중 백슬래시 부재 및 TeX 구문 정적 확인; 모든 링크되지 않은 그림은 열지 않음. 브라우저 픽셀 출력은 검증 범위 밖"
+      }
+    },
+    {
+      "qid": 2,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "원본 candidate blob 366f43f6e677ab4c6c521fde000cdbadc891cd7b의 Q2 발문·보기 바이트가 최종 JS와 일치; UID qid_v1_1d3efba9858d701a08b4388572427bb4e9ab478a9736003a52cbb30fa62dad29; 원본 기출 대비 허수부 계산 뒤 i를 곱한 실수값을 요구해 질문 대상을 전환"
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "발문을 선해석·독립 검산: sqrt(-18)sqrt2=6i, sqrt(-50)/sqrt2=5i, 6/i=-6i; z=-5i and iz=5. 정답 ④; 보기·응답 형식 확인"
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "최종 해설과 독립 계산 대조: sqrt(-18)sqrt2=6i, sqrt(-50)/sqrt2=5i, 6/i=-6i; z=-5i and iz=5. KEEP"
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "학생 재현 경로 허수 제곱근과 i의 역수를 정리; 3개 판서 줄, 조건→전개→계산→결론 구성 확인. PASS: 3개 독립 판서 줄; 주요 조건과 식·결론의 각 단계 확인"
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "2022 공통수학1 H22-C-04/H22-C-04-COMPLEX_OPERATION; 풀이 허수 제곱근과 i의 역수를 정리은 표제 단원 안의 방법"
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "문항/해설의 필수 도형 자산 없음; 좌표/식/조건은 텍스트에 모두 제공. solutionImage 없이 수식으로 재현 가능"
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM H1-RPM-156, 활성 PT PT_H1_COMPLEX_OPERATION, 부모-하위 활성 TPL TPL_H1_COMPLEX_COMPONENT_OPERATION; 4slot given/goal/method/condition 실제 검증; CC/COND 활성 레지스트리 대조"
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "SOURCE_BALANCED 원본 2→후속 2; 허수부 계산 뒤 i를 곱한 실수값을 요구해 질문 대상을 전환; 해법 부담에 맞는 상대 등급, 단순 숫자 치환 아님"
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "VM 로드·해설 문자열 수식 이중 백슬래시 부재 및 TeX 구문 정적 확인; 모든 링크되지 않은 그림은 열지 않음. 브라우저 픽셀 출력은 검증 범위 밖"
+      }
+    },
+    {
+      "qid": 3,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "원본 candidate blob 366f43f6e677ab4c6c521fde000cdbadc891cd7b의 Q3 발문·보기 바이트가 최종 JS와 일치; UID qid_v1_74340af19e4ab59fcb07cf4041a9b6413e904e464738b8c125c81716ddca3f27; 원본 기출 대비 근의 차의 제곱에서 두 근의 제곱합으로 대칭식 목표 변경"
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "발문을 선해석·독립 검산: α+β=-2, αβ=-2/3; α²+β²=4+4/3=16/3. 정답 ③; 보기·응답 형식 확인"
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "최종 해설과 독립 계산 대조: α+β=-2, αβ=-2/3; α²+β²=4+4/3=16/3. KEEP"
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "학생 재현 경로 근과 계수의 관계 및 제곱합 항등식; 2개 판서 줄, 조건→전개→계산→결론 구성 확인. PASS: 2개 독립 판서 줄; 주요 조건과 식·결론의 각 단계 확인"
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "2022 공통수학1 H22-C-05/H22-C-05-QUADRATIC_EQUATION; 풀이 근과 계수의 관계 및 제곱합 항등식은 표제 단원 안의 방법"
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "문항/해설의 필수 도형 자산 없음; 좌표/식/조건은 텍스트에 모두 제공. solutionImage 없이 수식으로 재현 가능"
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM H1-RPM-162, 활성 PT PT_H1_ROOT_COEFFICIENT_RELATION, 부모-하위 활성 TPL TPL_H1_VIETA_SYMMETRIC_VALUE; 4slot given/goal/method/condition 실제 검증; CC/COND 활성 레지스트리 대조"
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "SOURCE_BALANCED 원본 2→후속 2; 근의 차의 제곱에서 두 근의 제곱합으로 대칭식 목표 변경; 해법 부담에 맞는 상대 등급, 단순 숫자 치환 아님"
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "VM 로드·해설 문자열 수식 이중 백슬래시 부재 및 TeX 구문 정적 확인; 모든 링크되지 않은 그림은 열지 않음. 브라우저 픽셀 출력은 검증 범위 밖"
+      }
+    },
+    {
+      "qid": 4,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "원본 candidate blob 366f43f6e677ab4c6c521fde000cdbadc891cd7b의 Q4 발문·보기 바이트가 최종 JS와 일치; UID qid_v1_7cb7508562cc8f89db363cb80474463f6fd7c590353d8e48d99d5d482b949fae; 원본 기출 대비 위로 열린 그래프의 정수 최솟값에서 아래로 열린 그래프의 정수 최댓값 판정"
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "발문을 선해석·독립 검산: y=-2(x-2)²+k+3, maximum k+3<0 implies greatest integer k=-4. 정답 ④; 보기·응답 형식 확인"
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "최종 해설과 독립 계산 대조: y=-2(x-2)²+k+3, maximum k+3<0 implies greatest integer k=-4. 수정 뒤 재확인"
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "학생 재현 경로 완전제곱식으로 x축과의 비교; 4개 판서 줄, 조건→전개→계산→결론 구성 확인. PASS: 4개 독립 판서 줄; 주요 조건과 식·결론의 각 단계 확인"
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "2022 공통수학1 H22-C-05/H22-C-05-QUADRATIC_FUNCTION_GRAPH; 풀이 완전제곱식으로 x축과의 비교은 표제 단원 안의 방법"
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "문항/해설의 필수 도형 자산 없음; 좌표/식/조건은 텍스트에 모두 제공. solutionImage 없이 수식으로 재현 가능"
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM H1-RPM-167, 활성 PT PT_H1_QUADRATIC_DISCRIMINANT, 부모-하위 활성 TPL TPL_H1_DISCRIMINANT_ROOT_EXISTENCE; 4slot given/goal/method/condition 실제 검증; CC/COND 활성 레지스트리 대조"
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "SOURCE_BALANCED 원본 2→후속 2; 위로 열린 그래프의 정수 최솟값에서 아래로 열린 그래프의 정수 최댓값 판정; 해법 부담에 맞는 상대 등급, 단순 숫자 치환 아님"
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "VM 로드·해설 문자열 수식 이중 백슬래시 부재 및 TeX 구문 정적 확인; 모든 링크되지 않은 그림은 열지 않음. 브라우저 픽셀 출력은 검증 범위 밖"
+      }
+    },
+    {
+      "qid": 5,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "원본 candidate blob 366f43f6e677ab4c6c521fde000cdbadc891cd7b의 Q5 발문·보기 바이트가 최종 JS와 일치; UID qid_v1_7910b1c4d3a0dfa165738a6a04a42f7fcfe08a1ffb255a711a0bfba660fefb30; 원본 기출 대비 고정 기울기의 절편 대신 고정 통과점의 접선 기울기 두 개를 찾음"
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "발문을 선해석·독립 검산: y=mx+1 intersects parabola via x²-(m+2)x+1=0; discriminant 0 gives m=0,-4 and sum -4. 정답 ①; 보기·응답 형식 확인"
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "최종 해설과 독립 계산 대조: y=mx+1 intersects parabola via x²-(m+2)x+1=0; discriminant 0 gives m=0,-4 and sum -4. KEEP"
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "학생 재현 경로 접선의 판별식 조건; 4개 판서 줄, 조건→전개→계산→결론 구성 확인. PASS: 4개 독립 판서 줄; 주요 조건과 식·결론의 각 단계 확인"
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "2022 공통수학1 H22-C-05/H22-C-05-QUADRATIC_FUNCTION_GRAPH; 풀이 접선의 판별식 조건은 표제 단원 안의 방법"
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "문항/해설의 필수 도형 자산 없음; 좌표/식/조건은 텍스트에 모두 제공. solutionImage 없이 수식으로 재현 가능"
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM H1-RPM-169, 활성 PT PT_H1_QUADRATIC_GRAPH_INTERSECTION, 부모-하위 활성 TPL TPL_H1_QUADRATIC_INTERSECTION_TANGENCY; 4slot given/goal/method/condition 실제 검증; CC/COND 활성 레지스트리 대조"
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "SOURCE_BALANCED 원본 2→후속 2; 고정 기울기의 절편 대신 고정 통과점의 접선 기울기 두 개를 찾음; 해법 부담에 맞는 상대 등급, 단순 숫자 치환 아님"
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "VM 로드·해설 문자열 수식 이중 백슬래시 부재 및 TeX 구문 정적 확인; 모든 링크되지 않은 그림은 열지 않음. 브라우저 픽셀 출력은 검증 범위 밖"
+      }
+    },
+    {
+      "qid": 6,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "원본 candidate blob 366f43f6e677ab4c6c521fde000cdbadc891cd7b의 Q6 발문·보기 바이트가 최종 JS와 일치; UID qid_v1_f924bdfad0caa2429c30deb20fb68e210766460f16865f0b8f864df46e7e71d9; 원본 기출 대비 일차인수 네 개의 상수 합 대신 두 이차인수에서 x³·x² 계수를 함께 활용"
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "발문을 선해석·독립 검산: product expansion gives a+c=-3, ac-5=-3, so a+c+ac=-1. 정답 ②; 보기·응답 형식 확인"
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "최종 해설과 독립 계산 대조: product expansion gives a+c=-3, ac-5=-3, so a+c+ac=-1. KEEP"
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "학생 재현 경로 인수 곱 전개 후 계수 비교; 3개 판서 줄, 조건→전개→계산→결론 구성 확인. PASS: 3개 독립 판서 줄; 주요 조건과 식·결론의 각 단계 확인"
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "2022 공통수학1 H22-C-01/H22-C-01-POLYNOMIAL_BASIC; 풀이 인수 곱 전개 후 계수 비교은 표제 단원 안의 방법"
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "문항/해설의 필수 도형 자산 없음; 좌표/식/조건은 텍스트에 모두 제공. solutionImage 없이 수식으로 재현 가능"
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM H1-RPM-137, 활성 PT PT_H1_POLY_OPERATION_EXPANSION, 부모-하위 활성 TPL TPL_H1_POLY_COEFFICIENT_EXTRACTION; 4slot given/goal/method/condition 실제 검증; CC/COND 활성 레지스트리 대조"
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "SOURCE_BALANCED 원본 2→후속 2; 일차인수 네 개의 상수 합 대신 두 이차인수에서 x³·x² 계수를 함께 활용; 해법 부담에 맞는 상대 등급, 단순 숫자 치환 아님"
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "VM 로드·해설 문자열 수식 이중 백슬래시 부재 및 TeX 구문 정적 확인; 모든 링크되지 않은 그림은 열지 않음. 브라우저 픽셀 출력은 검증 범위 밖"
+      }
+    },
+    {
+      "qid": 7,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "원본 candidate blob 366f43f6e677ab4c6c521fde000cdbadc891cd7b의 Q7 발문·보기 바이트가 최종 JS와 일치; UID qid_v1_fbbde6b3383058ee034045c51e28e5710f380a8eb130cd71dd6e5074eefc4404; 원본 기출 대비 분자·분모 역할을 바꾼 변형근으로 공통 분모를 먼저 구성"
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "발문을 선해석·독립 검산: α+β=5, αβ=1; transformed roots sum (α²+β²+5)/7=28/7=4, product 1/7; p=-4, q=1/7, 7(p+q)=-27. 정답 ②; 보기·응답 형식 확인"
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "최종 해설과 독립 계산 대조: α+β=5, αβ=1; transformed roots sum (α²+β²+5)/7=28/7=4, product 1/7; p=-4, q=1/7, 7(p+q)=-27. KEEP"
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "학생 재현 경로 분수형 변형근의 합·곱 계산; 5개 판서 줄, 조건→전개→계산→결론 구성 확인. PASS: 5개 독립 판서 줄; 주요 조건과 식·결론의 각 단계 확인"
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "2022 공통수학1 H22-C-05/H22-C-05-QUADRATIC_EQUATION; 풀이 분수형 변형근의 합·곱 계산은 표제 단원 안의 방법"
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "문항/해설의 필수 도형 자산 없음; 좌표/식/조건은 텍스트에 모두 제공. solutionImage 없이 수식으로 재현 가능"
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM H1-RPM-163, 활성 PT PT_H1_ROOT_COEFFICIENT_RELATION, 부모-하위 활성 TPL TPL_H1_VIETA_TRANSFORMED_ROOT; 4slot given/goal/method/condition 실제 검증; CC/COND 활성 레지스트리 대조"
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "SOURCE_BALANCED 원본 3→후속 3; 분자·분모 역할을 바꾼 변형근으로 공통 분모를 먼저 구성; 해법 부담에 맞는 상대 등급, 단순 숫자 치환 아님"
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "VM 로드·해설 문자열 수식 이중 백슬래시 부재 및 TeX 구문 정적 확인; 모든 링크되지 않은 그림은 열지 않음. 브라우저 픽셀 출력은 검증 범위 밖"
+      }
+    },
+    {
+      "qid": 8,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "원본 candidate blob 366f43f6e677ab4c6c521fde000cdbadc891cd7b의 Q8 발문·보기 바이트가 최종 JS와 일치; UID qid_v1_a34b9da6d2a91dbfcef9ef8dde7be7ca254674f38f68e5bfcc462d2eeb8b1cca; 원본 기출 대비 좌변 제곱식의 완전제곱 구성과 최고차항 부호로 다항식 부호 가지 판정"
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "발문을 선해석·독립 검산: (2P+3)²=(x²-4x+1)² as polynomial identity; positive leading coefficient selects plus, P=(x²-4x-2)/2; P(-1)=3/2. 정답 ①; 보기·응답 형식 확인"
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "최종 해설과 독립 계산 대조: (2P+3)²=(x²-4x+1)² as polynomial identity; positive leading coefficient selects plus, P=(x²-4x-2)/2; P(-1)=3/2. KEEP"
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "학생 재현 경로 다항식 제곱의 항등식·최고차항 부호; 4개 판서 줄, 조건→전개→계산→결론 구성 확인. PASS: 4개 독립 판서 줄; 주요 조건과 식·결론의 각 단계 확인"
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "2022 공통수학1 H22-C-02/H22-C-02-CORE; 풀이 다항식 제곱의 항등식·최고차항 부호은 표제 단원 안의 방법"
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "문항/해설의 필수 도형 자산 없음; 좌표/식/조건은 텍스트에 모두 제공. solutionImage 없이 수식으로 재현 가능"
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM H1-RPM-140, 활성 PT PT_H1_POLY_IDENTITY_COEFFICIENT, 부모-하위 활성 TPL TPL_H1_IDENTITY_COEFFICIENT_COMPARE; 4slot given/goal/method/condition 실제 검증; CC/COND 활성 레지스트리 대조"
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "SOURCE_BALANCED 원본 4→후속 4; 좌변 제곱식의 완전제곱 구성과 최고차항 부호로 다항식 부호 가지 판정; 해법 부담에 맞는 상대 등급, 단순 숫자 치환 아님"
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "VM 로드·해설 문자열 수식 이중 백슬래시 부재 및 TeX 구문 정적 확인; 모든 링크되지 않은 그림은 열지 않음. 브라우저 픽셀 출력은 검증 범위 밖"
+      }
+    },
+    {
+      "qid": 9,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "원본 candidate blob 366f43f6e677ab4c6c521fde000cdbadc891cd7b의 Q9 발문·보기 바이트가 최종 JS와 일치; UID qid_v1_fe494be817c18ea58d5ee700bc8018c77071a322fbfb819b228818843e031d84; 원본 기출 대비 원본 그림의 기하 관계를 네 꼭짓점 좌표로 명시하고 가로·세로를 직접 추출"
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "발문을 선해석·독립 검산: width=2t, height=10-2t² for 0<t<sqrt5; perimeter=20+4t-4t²=21-4(t-1/2)², max 21 at t=1/2. 정답 ①; 보기·응답 형식 확인"
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "최종 해설과 독립 계산 대조: width=2t, height=10-2t² for 0<t<sqrt5; perimeter=20+4t-4t²=21-4(t-1/2)², max 21 at t=1/2. KEEP"
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "학생 재현 경로 둘레의 이차식 최대값; 4개 판서 줄, 조건→전개→계산→결론 구성 확인. PASS: 4개 독립 판서 줄; 주요 조건과 식·결론의 각 단계 확인"
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "2022 공통수학1 H22-C-05/H22-C-05-QUADRATIC_FUNCTION_APPLICATION; 풀이 둘레의 이차식 최대값은 표제 단원 안의 방법"
+      },
+      "visualNecessity": {
+        "status": "HOLD",
+        "holdEvidence": {
+          "reason": "학생 해설에 유용한 SVG 계획은 존재하지만 실제 그림은 아직 제작되지 않았다.",
+          "observedEvidence": "Q09 solutionImage 없음; SVG_TO_CREATE; shallow plan-lint PASS; 렌더/PNG 검수 NOT_RUN",
+          "unresolvedPoint": "요구 의미를 담은 해설 SVG의 실물 시각적 의미·가독성을 확인할 수 없다.",
+          "nextRequiredEvidenceOrCapability": "공식 엔진의 full plan-lint, SVG/PNG 실물 렌더와 실제 픽셀·좌표 검수, 자산 연결, 하네스 재실행",
+          "repairAttempted": "기존 계획을 검토했으나 제작·연결은 본 R1 범위에서 실행하지 않음",
+          "authorityLookupAttempted": "SVG_PENDING.md, q09/q22 solution plan, 공식 plan-lint --shallow 확인",
+          "whyDeterministicClosureImpossible": "실제 산출물 파일 및 렌더 결과가 존재하지 않아 픽셀·레이아웃 관찰이 불가능함"
+        }
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM H1-RPM-171, 활성 PT PT_H1_QUADRATIC_EXTREMA, 부모-하위 활성 TPL TPL_H1_QUADRATIC_EXTREMA_MODEL; 4slot given/goal/method/condition 실제 검증; CC/COND 활성 레지스트리 대조"
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "SOURCE_BALANCED 원본 4→후속 4; 원본 그림의 기하 관계를 네 꼭짓점 좌표로 명시하고 가로·세로를 직접 추출; 해법 부담에 맞는 상대 등급, 단순 숫자 치환 아님"
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "VM 로드·해설 문자열 수식 이중 백슬래시 부재 및 TeX 구문 정적 확인; 모든 링크되지 않은 그림은 열지 않음. 브라우저 픽셀 출력은 검증 범위 밖"
+      }
+    },
+    {
+      "qid": 10,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "원본 candidate blob 366f43f6e677ab4c6c521fde000cdbadc891cd7b의 Q10 발문·보기 바이트가 최종 JS와 일치; UID qid_v1_c7fd1115b19e12b96a7bb8cfa8097fb8554cce9dc7144f2c1a3d5569fa1c61eb; 원본 기출 대비 치환 이후 실근이 가능한 가지를 판별하고 실근 합으로 질문 이동"
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "발문을 선해석·독립 검산: u=x²-2x yields (u-3)(u+2)=0. u=-2 gives no real x, u=3 yields x=3,-1; sum 2. 정답 ③; 보기·응답 형식 확인"
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "최종 해설과 독립 계산 대조: u=x²-2x yields (u-3)(u+2)=0. u=-2 gives no real x, u=3 yields x=3,-1; sum 2. KEEP"
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "학생 재현 경로 치환한 이차방정식과 실근 판별; 4개 판서 줄, 조건→전개→계산→결론 구성 확인. PASS: 4개 독립 판서 줄; 주요 조건과 식·결론의 각 단계 확인"
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "2022 공통수학1 H22-C-06/H22-C-06-HIGHER_EQUATION; 풀이 치환한 이차방정식과 실근 판별은 표제 단원 안의 방법"
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "문항/해설의 필수 도형 자산 없음; 좌표/식/조건은 텍스트에 모두 제공. solutionImage 없이 수식으로 재현 가능"
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM H1-RPM-173, 활성 PT PT_H1_HIGHER_DEGREE_EQUATION, 부모-하위 활성 TPL TPL_H1_HIGHER_SUBSTITUTION_REDUCTION; 4slot given/goal/method/condition 실제 검증; CC/COND 활성 레지스트리 대조"
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "SOURCE_BALANCED 원본 3→후속 3; 치환 이후 실근이 가능한 가지를 판별하고 실근 합으로 질문 이동; 해법 부담에 맞는 상대 등급, 단순 숫자 치환 아님"
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "VM 로드·해설 문자열 수식 이중 백슬래시 부재 및 TeX 구문 정적 확인; 모든 링크되지 않은 그림은 열지 않음. 브라우저 픽셀 출력은 검증 범위 밖"
+      }
+    },
+    {
+      "qid": 11,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "원본 candidate blob 366f43f6e677ab4c6c521fde000cdbadc891cd7b의 Q11 발문·보기 바이트가 최종 JS와 일치; UID qid_v1_8ca186fe242f075970a0ebf825b1606bc26d6531b933fc240a43bf6cd3ecbdae; 원본 기출 대비 두 나머지 조건을 ±1 대입으로 연결하여 미지 일차 나머지를 결정"
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "발문을 선해석·독립 검산: f(1)=6, f(-1)=-2 and Q(-1)=6 imply remainder R(x)=16x-10; f(2)=18+22=40. 정답 ⑤; 보기·응답 형식 확인"
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "최종 해설과 독립 계산 대조: f(1)=6, f(-1)=-2 and Q(-1)=6 imply remainder R(x)=16x-10; f(2)=18+22=40. KEEP"
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "학생 재현 경로 두 나머지 정리로 일차 나머지 확정; 6개 판서 줄, 조건→전개→계산→결론 구성 확인. PASS: 6개 독립 판서 줄; 주요 조건과 식·결론의 각 단계 확인"
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "2022 공통수학1 H22-C-02/H22-C-02-CORE; 풀이 두 나머지 정리로 일차 나머지 확정은 표제 단원 안의 방법"
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "문항/해설의 필수 도형 자산 없음; 좌표/식/조건은 텍스트에 모두 제공. solutionImage 없이 수식으로 재현 가능"
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM H1-RPM-143, 활성 PT PT_H1_REMAINDER_THEOREM, 부모-하위 활성 TPL TPL_H1_REMAINDER_COMPOSITE_DIVISOR; 4slot given/goal/method/condition 실제 검증; CC/COND 활성 레지스트리 대조"
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "SOURCE_BALANCED 원본 4→후속 4; 두 나머지 조건을 ±1 대입으로 연결하여 미지 일차 나머지를 결정; 해법 부담에 맞는 상대 등급, 단순 숫자 치환 아님"
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "VM 로드·해설 문자열 수식 이중 백슬래시 부재 및 TeX 구문 정적 확인; 모든 링크되지 않은 그림은 열지 않음. 브라우저 픽셀 출력은 검증 범위 밖"
+      }
+    },
+    {
+      "qid": 12,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "원본 candidate blob 366f43f6e677ab4c6c521fde000cdbadc891cd7b의 Q12 발문·보기 바이트가 최종 JS와 일치; UID qid_v1_92029edd7d5f9ec7a74514487d9fc834be8c5a4351012328a81109ae7f6d5159; 원본 기출 대비 두 일차식의 서로 다른 근을 합성함수 입력으로 역연결하여 부호 두 가지 비교"
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "발문을 선해석·독립 검산: at x=1/3, f=2g and fg=18, giving g=±3, f=±6; at x=2/3 target remainder=5f(1/3)=±30, minimum -30. 정답 ②; 보기·응답 형식 확인"
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "최종 해설과 독립 계산 대조: at x=1/3, f=2g and fg=18, giving g=±3, f=±6; at x=2/3 target remainder=5f(1/3)=±30, minimum -30. KEEP"
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "학생 재현 경로 나머지 정리·인수관계·부호 경우분리; 5개 판서 줄, 조건→전개→계산→결론 구성 확인. PASS: 5개 독립 판서 줄; 주요 조건과 식·결론의 각 단계 확인"
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "2022 공통수학1 H22-C-02/H22-C-02-CORE; 풀이 나머지 정리·인수관계·부호 경우분리은 표제 단원 안의 방법"
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "문항/해설의 필수 도형 자산 없음; 좌표/식/조건은 텍스트에 모두 제공. solutionImage 없이 수식으로 재현 가능"
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM H1-RPM-143, 활성 PT PT_H1_REMAINDER_THEOREM, 부모-하위 활성 TPL TPL_H1_REMAINDER_COMPOSITE_DIVISOR; 4slot given/goal/method/condition 실제 검증; CC/COND 활성 레지스트리 대조"
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "SOURCE_BALANCED 원본 4→후속 4; 두 일차식의 서로 다른 근을 합성함수 입력으로 역연결하여 부호 두 가지 비교; 해법 부담에 맞는 상대 등급, 단순 숫자 치환 아님"
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "VM 로드·해설 문자열 수식 이중 백슬래시 부재 및 TeX 구문 정적 확인; 모든 링크되지 않은 그림은 열지 않음. 브라우저 픽셀 출력은 검증 범위 밖"
+      }
+    },
+    {
+      "qid": 13,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "원본 candidate blob 366f43f6e677ab4c6c521fde000cdbadc891cd7b의 Q13 발문·보기 바이트가 최종 JS와 일치; UID qid_v1_2f268d4258bb975f145495bdbb9eb5c022d312c4d7d2671ff0cf218c192588f9; 원본 기출 대비 변의 길이를 직접 구하는 대신 합·차 대칭식으로 둘레 차를 계산"
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "발문을 선해석·독립 검산: a+b=22, a²+b²=250, ab=117, (a-b)²=16; a>b gives a-b=4 and perimeter difference 16. 정답 ①; 보기·응답 형식 확인"
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "최종 해설과 독립 계산 대조: a+b=22, a²+b²=250, ab=117, (a-b)²=16; a>b gives a-b=4 and perimeter difference 16. KEEP"
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "학생 재현 경로 정사각형 둘레·넓이에서 합과 차; 4개 판서 줄, 조건→전개→계산→결론 구성 확인. PASS: 4개 독립 판서 줄; 주요 조건과 식·결론의 각 단계 확인"
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "2022 공통수학1 H22-C-01/H22-C-01-POLYNOMIAL_BASIC; 풀이 정사각형 둘레·넓이에서 합과 차은 표제 단원 안의 방법"
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "문항/해설의 필수 도형 자산 없음; 좌표/식/조건은 텍스트에 모두 제공. solutionImage 없이 수식으로 재현 가능"
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM H1-RPM-136, 활성 PT PT_H1_POLY_FORMULA_SYMMETRIC, 부모-하위 활성 TPL TPL_H1_FORMULA_SYMMETRIC; 4slot given/goal/method/condition 실제 검증; CC/COND 활성 레지스트리 대조"
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "SOURCE_BALANCED 원본 3→후속 3; 변의 길이를 직접 구하는 대신 합·차 대칭식으로 둘레 차를 계산; 해법 부담에 맞는 상대 등급, 단순 숫자 치환 아님"
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "VM 로드·해설 문자열 수식 이중 백슬래시 부재 및 TeX 구문 정적 확인; 모든 링크되지 않은 그림은 열지 않음. 브라우저 픽셀 출력은 검증 범위 밖"
+      }
+    },
+    {
+      "qid": 14,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "원본 candidate blob 366f43f6e677ab4c6c521fde000cdbadc891cd7b의 Q14 발문·보기 바이트가 최종 JS와 일치; UID qid_v1_22115f3162eb3d312b79d76202b6880e25db730ab73e21f4281cda0ed4ca81cf; 원본 기출 대비 교대 부호를 -ω의 세 주기 묶음으로 전환한 뒤 a+b 산출"
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "발문을 선해석·독립 검산: r=-ω has r³=1 and 1+r+r²=0; sum k r^k (k=1..12) =30+22r+26r²=4-4r=4+4ω, so a+b=8. 정답 ③; 보기·응답 형식 확인"
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "최종 해설과 독립 계산 대조: r=-ω has r³=1 and 1+r+r²=0; sum k r^k (k=1..12) =30+22r+26r²=4-4r=4+4ω, so a+b=8. KEEP"
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "학생 재현 경로 허근 주기성을 이용한 등비·계수 묶기; 5개 판서 줄, 조건→전개→계산→결론 구성 확인. PASS: 5개 독립 판서 줄; 주요 조건과 식·결론의 각 단계 확인"
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "2022 공통수학1 H22-C-04/H22-C-04-COMPLEX_OPERATION; 풀이 허근 주기성을 이용한 등비·계수 묶기은 표제 단원 안의 방법"
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "문항/해설의 필수 도형 자산 없음; 좌표/식/조건은 텍스트에 모두 제공. solutionImage 없이 수식으로 재현 가능"
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM H1-RPM-158, 활성 PT PT_H1_COMPLEX_POWER_ROOT, 부모-하위 활성 TPL TPL_H1_COMPLEX_ROOT_OF_UNITY_PERIOD; 4slot given/goal/method/condition 실제 검증; CC/COND 활성 레지스트리 대조"
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "SOURCE_BALANCED 원본 3→후속 3; 교대 부호를 -ω의 세 주기 묶음으로 전환한 뒤 a+b 산출; 해법 부담에 맞는 상대 등급, 단순 숫자 치환 아님"
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "VM 로드·해설 문자열 수식 이중 백슬래시 부재 및 TeX 구문 정적 확인; 모든 링크되지 않은 그림은 열지 않음. 브라우저 픽셀 출력은 검증 범위 밖"
+      }
+    },
+    {
+      "qid": 15,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "원본 candidate blob 366f43f6e677ab4c6c521fde000cdbadc891cd7b의 Q15 발문·보기 바이트가 최종 JS와 일치; UID qid_v1_b96c3b9d3ce51a771cbbf5f91e0e861fa1ad415a9ee0f624b635b17ca7b04249; 원본 기출 대비 두 수평선 교점과 한정구간 최댓값을 역산해 전 구간 꼭짓점 최솟값을 구함"
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "발문을 선해석·독립 검산: axis x=1, f=a(x-1)²+c; f(-1)=4 gives 4a+c=4. max at x=-2 is 9a+c=19, yielding a=3, c=-8. 정답 ②; 보기·응답 형식 확인"
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "최종 해설과 독립 계산 대조: axis x=1, f=a(x-1)²+c; f(-1)=4 gives 4a+c=4. max at x=-2 is 9a+c=19, yielding a=3, c=-8. KEEP"
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "학생 재현 경로 이차함수 대칭축과 구간 끝점 최댓값; 4개 판서 줄, 조건→전개→계산→결론 구성 확인. PASS: 4개 독립 판서 줄; 주요 조건과 식·결론의 각 단계 확인"
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "2022 공통수학1 H22-C-05/H22-C-05-QUADRATIC_FUNCTION_APPLICATION; 풀이 이차함수 대칭축과 구간 끝점 최댓값은 표제 단원 안의 방법"
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "문항/해설의 필수 도형 자산 없음; 좌표/식/조건은 텍스트에 모두 제공. solutionImage 없이 수식으로 재현 가능"
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM H1-RPM-170, 활성 PT PT_H1_QUADRATIC_EXTREMA, 부모-하위 활성 TPL TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL; 4slot given/goal/method/condition 실제 검증; CC/COND 활성 레지스트리 대조"
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "SOURCE_BALANCED 원본 4→후속 4; 두 수평선 교점과 한정구간 최댓값을 역산해 전 구간 꼭짓점 최솟값을 구함; 해법 부담에 맞는 상대 등급, 단순 숫자 치환 아님"
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "VM 로드·해설 문자열 수식 이중 백슬래시 부재 및 TeX 구문 정적 확인; 모든 링크되지 않은 그림은 열지 않음. 브라우저 픽셀 출력은 검증 범위 밖"
+      }
+    },
+    {
+      "qid": 16,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "원본 candidate blob 366f43f6e677ab4c6c521fde000cdbadc891cd7b의 Q16 발문·보기 바이트가 최종 JS와 일치; UID qid_v1_27cddbb82639d6f0b9983814b52eca675b2a34f95f578585ebe4c270c98921ac; 원본 기출 대비 최대 지수합 대신 두 주기의 합동 조건에 맞는 순서쌍 개수를 셈"
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "발문을 선해석·독립 검산: sum of two unit complex numbers must equal ±(1+i), hence pairs (1,i),(i,1),(-1,-i),(-i,-1). Counts m classes 6,7,6,6 and n classes 12,12,13,13; total 312. 정답 ④; 보기·응답 형식 확인"
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "최종 해설과 독립 계산 대조: sum of two unit complex numbers must equal ±(1+i), hence pairs (1,i),(i,1),(-1,-i),(-i,-1). Counts m classes 6,7,6,6 and n classes 12,12,13,13; total 312. 수정 뒤 재확인"
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "학생 재현 경로 복소수 단위원 각도·나머지류 조합계수; 10개 판서 줄, 조건→전개→계산→결론 구성 확인. PASS: 10개 독립 판서 줄; 주요 조건과 식·결론의 각 단계 확인"
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "2022 공통수학1 H22-C-04/H22-C-04-COMPLEX_OPERATION; 풀이 복소수 단위원 각도·나머지류 조합계수은 표제 단원 안의 방법"
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "문항/해설의 필수 도형 자산 없음; 좌표/식/조건은 텍스트에 모두 제공. solutionImage 없이 수식으로 재현 가능"
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM H1-RPM-158, 활성 PT PT_H1_COMPLEX_POWER_ROOT, 부모-하위 활성 TPL TPL_H1_COMPLEX_I_PERIOD; 4slot given/goal/method/condition 실제 검증; CC/COND 활성 레지스트리 대조"
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "SOURCE_BALANCED 원본 5→후속 5; 최대 지수합 대신 두 주기의 합동 조건에 맞는 순서쌍 개수를 셈; 해법 부담에 맞는 상대 등급, 단순 숫자 치환 아님"
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "VM 로드·해설 문자열 수식 이중 백슬래시 부재 및 TeX 구문 정적 확인; 모든 링크되지 않은 그림은 열지 않음. 브라우저 픽셀 출력은 검증 범위 밖"
+      }
+    },
+    {
+      "qid": 17,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "원본 candidate blob 366f43f6e677ab4c6c521fde000cdbadc891cd7b의 Q17 발문·보기 바이트가 최종 JS와 일치; UID qid_v1_8adfdd13dae0d893ef389771fbe8b39ddad5feb779c8240557476621c0b8bf69; 원본 기출 대비 복소근을 갖는 이차인수의 귀속과 Q의 부호·기울기 조건으로 역복원"
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "발문을 선해석·독립 검산: real irreducible x²-2x+2 and x-3 divide P, so P=(x²-2x+2)(x-3)=x³-5x²+8x-6. Let Q=ux+v; u²=4, u>0=>u=2; v²+4v-5=0, v>0=>v=1; a=12, P(0)Q(2)/a=-30/12=-5/2. 정답 ①; 보기·응답 형식 확인"
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "최종 해설과 독립 계산 대조: real irreducible x²-2x+2 and x-3 divide P, so P=(x²-2x+2)(x-3)=x³-5x²+8x-6. Let Q=ux+v; u²=4, u>0=>u=2; v²+4v-5=0, v>0=>v=1; a=12, P(0)Q(2)/a=-30/12=-5/2. KEEP"
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "학생 재현 경로 실수계수 인수분해 및 다항식 계수 비교; 8개 판서 줄, 조건→전개→계산→결론 구성 확인. PASS: 8개 독립 판서 줄; 주요 조건과 식·결론의 각 단계 확인"
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "2022 공통수학1 H22-C-02/H22-C-02-CORE; 풀이 실수계수 인수분해 및 다항식 계수 비교은 표제 단원 안의 방법"
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "문항/해설의 필수 도형 자산 없음; 좌표/식/조건은 텍스트에 모두 제공. solutionImage 없이 수식으로 재현 가능"
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM H1-RPM-143, 활성 PT PT_H1_REMAINDER_THEOREM, 부모-하위 활성 TPL TPL_H1_REMAINDER_COMPOSITE_DIVISOR; 4slot given/goal/method/condition 실제 검증; CC/COND 활성 레지스트리 대조"
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "SOURCE_BALANCED 원본 5→후속 5; 복소근을 갖는 이차인수의 귀속과 Q의 부호·기울기 조건으로 역복원; 해법 부담에 맞는 상대 등급, 단순 숫자 치환 아님"
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "VM 로드·해설 문자열 수식 이중 백슬래시 부재 및 TeX 구문 정적 확인; 모든 링크되지 않은 그림은 열지 않음. 브라우저 픽셀 출력은 검증 범위 밖"
+      }
+    },
+    {
+      "qid": 18,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "원본 candidate blob 366f43f6e677ab4c6c521fde000cdbadc891cd7b의 Q18 발문·보기 바이트가 최종 JS와 일치; UID qid_v1_309988d002c61ecc652558ac12781719ab307774880b88f3a0c93b89cbc93905; 원본 기출 대비 네 근의 외측 곱 합에서 내측·외측 교차곱으로 조건을 변경해 t근의 곱을 사용"
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "발문을 선해석·독립 검산: roots ±sqrt(u),±sqrt(v), u>v>0. ac+bd=-2sqrt(uv)=-8 implies uv=m²+7=16; m=3 positive. Discriminant and positivity hold. 정답 ②; 보기·응답 형식 확인"
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "최종 해설과 독립 계산 대조: roots ±sqrt(u),±sqrt(v), u>v>0. ac+bd=-2sqrt(uv)=-8 implies uv=m²+7=16; m=3 positive. Discriminant and positivity hold. KEEP"
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "학생 재현 경로 짝수차 치환 및 네 근의 곱 관계; 5개 판서 줄, 조건→전개→계산→결론 구성 확인. PASS: 5개 독립 판서 줄; 주요 조건과 식·결론의 각 단계 확인"
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "2022 공통수학1 H22-C-06/H22-C-06-HIGHER_EQUATION; 풀이 짝수차 치환 및 네 근의 곱 관계은 표제 단원 안의 방법"
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "문항/해설의 필수 도형 자산 없음; 좌표/식/조건은 텍스트에 모두 제공. solutionImage 없이 수식으로 재현 가능"
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM H1-RPM-173, 활성 PT PT_H1_HIGHER_DEGREE_EQUATION, 부모-하위 활성 TPL TPL_H1_HIGHER_SUBSTITUTION_REDUCTION; 4slot given/goal/method/condition 실제 검증; CC/COND 활성 레지스트리 대조"
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "SOURCE_BALANCED 원본 4→후속 4; 네 근의 외측 곱 합에서 내측·외측 교차곱으로 조건을 변경해 t근의 곱을 사용; 해법 부담에 맞는 상대 등급, 단순 숫자 치환 아님"
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "VM 로드·해설 문자열 수식 이중 백슬래시 부재 및 TeX 구문 정적 확인; 모든 링크되지 않은 그림은 열지 않음. 브라우저 픽셀 출력은 검증 범위 밖"
+      }
+    },
+    {
+      "qid": 19,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "원본 candidate blob 366f43f6e677ab4c6c521fde000cdbadc891cd7b의 Q19 발문·보기 바이트가 최종 JS와 일치; UID qid_v1_327cbfd668beffeeb7e71e8e55efbc1f9a759bbbe6c0cc0268a132d8f202ece5; 원본 기출 대비 a≠b인 추가 조건으로 이중 인수 중 하나를 배제한 뒤 직각 판정"
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "발문을 선해석·독립 검산: given cubic equals (a-b)(a²+b²-c²). Since a>b, a²+b²=c². Pythagoras converse: side c=AB is opposite C, so angle C right. 정답 각 C가 직각인 직각삼각형; 보기·응답 형식 확인"
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "최종 해설과 독립 계산 대조: given cubic equals (a-b)(a²+b²-c²). Since a>b, a²+b²=c². Pythagoras converse: side c=AB is opposite C, so angle C right. KEEP"
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "학생 재현 경로 공통인수 (a-b) 인수분해와 피타고라스 역; 4개 판서 줄, 조건→전개→계산→결론 구성 확인. PASS: 4개 독립 판서 줄; 주요 조건과 식·결론의 각 단계 확인"
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "2022 공통수학1 H22-C-03/H22-C-03-FACTORIZATION; 풀이 공통인수 (a-b) 인수분해와 피타고라스 역은 표제 단원 안의 방법"
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "문항/해설의 필수 도형 자산 없음; 좌표/식/조건은 텍스트에 모두 제공. solutionImage 없이 수식으로 재현 가능"
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM H1-RPM-153, 활성 PT PT_H1_POLY_FACTORIZATION, 부모-하위 활성 TPL TPL_H1_FACTORIZATION_APPLICATION; 4slot given/goal/method/condition 실제 검증; CC/COND 활성 레지스트리 대조"
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "SOURCE_BALANCED 원본 3→후속 3; a≠b인 추가 조건으로 이중 인수 중 하나를 배제한 뒤 직각 판정; 해법 부담에 맞는 상대 등급, 단순 숫자 치환 아님"
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "VM 로드·해설 문자열 수식 이중 백슬래시 부재 및 TeX 구문 정적 확인; 모든 링크되지 않은 그림은 열지 않음. 브라우저 픽셀 출력은 검증 범위 밖"
+      }
+    },
+    {
+      "qid": 20,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "원본 candidate blob 366f43f6e677ab4c6c521fde000cdbadc891cd7b의 Q20 발문·보기 바이트가 최종 JS와 일치; UID qid_v1_10483554535034b7444de6705596624292edf309619ea1e0d7b2bc4a121e058b; 원본 기출 대비 차의 거듭제곱을 구하는 원본 대신 대칭식의 제곱합·세제곱합·여섯제곱합 연결"
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "발문을 선해석·독립 검산: x²+y²=3²-2=7; x³+y³=3³-3·1·3=18; x⁶+y⁶=(x³+y³)²-2(xy)³=324-2=322. 정답 (1) $7$ (2) $18$ (3) $322$; 보기·응답 형식 확인"
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "최종 해설과 독립 계산 대조: x²+y²=3²-2=7; x³+y³=3³-3·1·3=18; x⁶+y⁶=(x³+y³)²-2(xy)³=324-2=322. KEEP"
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "학생 재현 경로 대칭식 항등식 단계별 적용; 4개 판서 줄, 조건→전개→계산→결론 구성 확인. PASS: 4개 독립 판서 줄; 주요 조건과 식·결론의 각 단계 확인"
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "2022 공통수학1 H22-C-01/H22-C-01-POLYNOMIAL_BASIC; 풀이 대칭식 항등식 단계별 적용은 표제 단원 안의 방법"
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "문항/해설의 필수 도형 자산 없음; 좌표/식/조건은 텍스트에 모두 제공. solutionImage 없이 수식으로 재현 가능"
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM H1-RPM-136, 활성 PT PT_H1_POLY_FORMULA_SYMMETRIC, 부모-하위 활성 TPL TPL_H1_FORMULA_SYMMETRIC; 4slot given/goal/method/condition 실제 검증; CC/COND 활성 레지스트리 대조"
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "SOURCE_BALANCED 원본 3→후속 3; 차의 거듭제곱을 구하는 원본 대신 대칭식의 제곱합·세제곱합·여섯제곱합 연결; 해법 부담에 맞는 상대 등급, 단순 숫자 치환 아님"
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "VM 로드·해설 문자열 수식 이중 백슬래시 부재 및 TeX 구문 정적 확인; 모든 링크되지 않은 그림은 열지 않음. 브라우저 픽셀 출력은 검증 범위 밖"
+      }
+    },
+    {
+      "qid": 21,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "원본 candidate blob 366f43f6e677ab4c6c521fde000cdbadc891cd7b의 Q21 발문·보기 바이트가 최종 JS와 일치; UID qid_v1_2f789b2afb174162ca2d26a312e3e98e2c23022ed6734f9873d71c7ba5d53aec; 원본 기출 대비 일차식의 x:y 비를 바꾸고 해쌍별 제곱 차의 최댓값을 판정"
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "발문을 선해석·독립 검산: x=10-2y gives y²-8y+15=0, y=3 or 5. Points (4,3),(0,5); x²-y² respectively 7,-25, maximum 7. 정답 (1) $(4,3)$, $(0,5)$ (2) $7$; 보기·응답 형식 확인"
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "최종 해설과 독립 계산 대조: x=10-2y gives y²-8y+15=0, y=3 or 5. Points (4,3),(0,5); x²-y² respectively 7,-25, maximum 7. KEEP"
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "학생 재현 경로 연립식 대입·해 전체 열거·후속 값 비교; 5개 판서 줄, 조건→전개→계산→결론 구성 확인. PASS: 5개 독립 판서 줄; 주요 조건과 식·결론의 각 단계 확인"
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "2022 공통수학1 H22-C-06/H22-C-06-SYSTEM_OF_EQUATIONS; 풀이 연립식 대입·해 전체 열거·후속 값 비교은 표제 단원 안의 방법"
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "문항/해설의 필수 도형 자산 없음; 좌표/식/조건은 텍스트에 모두 제공. solutionImage 없이 수식으로 재현 가능"
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM H1-RPM-174, 활성 PT PT_H1_SYSTEM_EQUATION, 부모-하위 활성 TPL TPL_H1_SYSTEM_DIRECT; 4slot given/goal/method/condition 실제 검증; CC/COND 활성 레지스트리 대조"
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "SOURCE_BALANCED 원본 2→후속 2; 일차식의 x:y 비를 바꾸고 해쌍별 제곱 차의 최댓값을 판정; 해법 부담에 맞는 상대 등급, 단순 숫자 치환 아님"
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "VM 로드·해설 문자열 수식 이중 백슬래시 부재 및 TeX 구문 정적 확인; 모든 링크되지 않은 그림은 열지 않음. 브라우저 픽셀 출력은 검증 범위 밖"
+      }
+    },
+    {
+      "qid": 22,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "원본 candidate blob 366f43f6e677ab4c6c521fde000cdbadc891cd7b의 Q22 발문·보기 바이트가 최종 JS와 일치; UID qid_v1_df5bdb2c5a012da196207a924abb907dcbca08bb9a9dbdc94f51a0562d97da3b; 원본 기출 대비 두 포물선을 대칭 구간으로 배치해 경계·중근에서만 정확히 세 교점을 갖게 설계"
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "발문을 선해석·독립 검산: x=0 always; inner second x=-m exists if 0<|m|<1; outer roots of x²-mx-2=0 are both allowed precisely -1≤m≤1. Three distinct intersections occur m=-1,0,1, whose squared sum is 2. 정답 2; 보기·응답 형식 확인"
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "최종 해설과 독립 계산 대조: x=0 always; inner second x=-m exists if 0<|m|<1; outer roots of x²-mx-2=0 are both allowed precisely -1≤m≤1. Three distinct intersections occur m=-1,0,1, whose squared sum is 2. 수정 뒤 재확인"
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "학생 재현 경로 조각함수의 구간별 교점 개수 및 경계 포함 여부; 10개 판서 줄, 조건→전개→계산→결론 구성 확인. PASS: 10개 독립 판서 줄; 주요 조건과 식·결론의 각 단계 확인"
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "2022 공통수학1 H22-C-05/H22-C-05-QUADRATIC_FUNCTION_GRAPH; 풀이 조각함수의 구간별 교점 개수 및 경계 포함 여부은 표제 단원 안의 방법"
+      },
+      "visualNecessity": {
+        "status": "HOLD",
+        "holdEvidence": {
+          "reason": "학생 해설에 유용한 SVG 계획은 존재하지만 실제 그림은 아직 제작되지 않았다.",
+          "observedEvidence": "Q22 solutionImage 없음; SVG_TO_CREATE; shallow plan-lint PASS; 렌더/PNG 검수 NOT_RUN",
+          "unresolvedPoint": "요구 의미를 담은 해설 SVG의 실물 시각적 의미·가독성을 확인할 수 없다.",
+          "nextRequiredEvidenceOrCapability": "공식 엔진의 full plan-lint, SVG/PNG 실물 렌더와 실제 픽셀·좌표 검수, 자산 연결, 하네스 재실행",
+          "repairAttempted": "기존 계획을 검토했으나 제작·연결은 본 R1 범위에서 실행하지 않음",
+          "authorityLookupAttempted": "SVG_PENDING.md, q09/q22 solution plan, 공식 plan-lint --shallow 확인",
+          "whyDeterministicClosureImpossible": "실제 산출물 파일 및 렌더 결과가 존재하지 않아 픽셀·레이아웃 관찰이 불가능함"
+        }
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "RPM H1-RPM-168, 활성 PT PT_H1_QUADRATIC_GRAPH_INTERSECTION, 부모-하위 활성 TPL TPL_H1_QUADRATIC_INTERSECTION_TANGENCY; 4slot given/goal/method/condition 실제 검증; CC/COND 활성 레지스트리 대조"
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "SOURCE_BALANCED 원본 5→후속 5; 두 포물선을 대칭 구간으로 배치해 경계·중근에서만 정확히 세 교점을 갖게 설계; 해법 부담에 맞는 상대 등급, 단순 숫자 치환 아님"
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "VM 로드·해설 문자열 수식 이중 백슬래시 부재 및 TeX 구문 정적 확인; 모든 링크되지 않은 그림은 열지 않음. 브라우저 픽셀 출력은 검증 범위 밖"
+      }
+    }
+  ],
+  "visualRows": [],
+  "metaRows": [
+    {
+      "qid": 1,
+      "result": "PASS",
+      "questionUid": "qid_v1_61f3ae090f02c3f62ffeaef2f7de4f66d3b6fda1435d074b3594090e2d94cb9e",
+      "sourceOrdinal": 1,
+      "primaryMethod": "다항식의 뺄셈 후 함수값 대입",
+      "decisiveStep": "B=A-(x²+4x-6)=2x²-6x+10; B(1)=6.",
+      "rpmDisposition": "DIRECT_ACTIVE:H1-RPM-135; 다항식의 덧셈과 뺄셈/다항식의 덧셈·뺄셈",
+      "projectionDisposition": "RPM_DIRECT_ACTIVE_EXACT",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+        "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "archive/data/meta-foundation/compiled/concept_registry.json",
+        "archive/data/meta-foundation/compiled/condition_registry.json",
+        "docs/architecture/4slot/term-dictionary-v1.6.json"
+      ],
+      "problemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
+      "templateKey": "TPL_H1_POLY_OPERATION_DIRECT",
+      "fourSlot": {
+        "ordinal": 1,
+        "format": "단일 정답",
+        "given": [
+          35,
+          48
+        ],
+        "goal": [
+          100
+        ],
+        "method": [
+          41,
+          53
+        ],
+        "condition": [],
+        "candidates": []
+      },
+      "identityBinding": {
+        "contentHash": "302046000352d5636d458f5a4efb4086d44c27c560389a765435d73b94b6906d",
+        "choicesHash": "62da08d981958fd116bfbe233c0b79e979e401b0cc337342c5b31ee3ff0a00cc",
+        "sourceFingerprint": "567a47e9917e7f4b66737cc74e1b668c091238916e1dd406c6bb76bbb818d633",
+        "candidateGitBlobSha1": "be4f3e46242d8993a9b34382ca07f3ebcb5c052b"
+      }
+    },
+    {
+      "qid": 2,
+      "result": "PASS",
+      "questionUid": "qid_v1_1d3efba9858d701a08b4388572427bb4e9ab478a9736003a52cbb30fa62dad29",
+      "sourceOrdinal": 2,
+      "primaryMethod": "허수 제곱근과 i의 역수를 정리",
+      "decisiveStep": "sqrt(-18)sqrt2=6i, sqrt(-50)/sqrt2=5i, 6/i=-6i; z=-5i and iz=5.",
+      "rpmDisposition": "DIRECT_ACTIVE:H1-RPM-156; 복소수의 연산/사칙연산",
+      "projectionDisposition": "RPM_DIRECT_ACTIVE_EXACT",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+        "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "archive/data/meta-foundation/compiled/concept_registry.json",
+        "archive/data/meta-foundation/compiled/condition_registry.json",
+        "docs/architecture/4slot/term-dictionary-v1.6.json"
+      ],
+      "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+      "templateKey": "TPL_H1_COMPLEX_COMPONENT_OPERATION",
+      "fourSlot": {
+        "ordinal": 2,
+        "format": "단일 정답",
+        "given": [
+          6,
+          22
+        ],
+        "goal": [
+          61
+        ],
+        "method": [
+          22,
+          691
+        ],
+        "condition": [],
+        "candidates": []
+      },
+      "identityBinding": {
+        "contentHash": "87330a858e3d2800db10a58109484f38f45c842533bbde412c43b5cfc8bcb4c6",
+        "choicesHash": "986401949b1cb791c2296a384e52dd43274692f532d109a3c7ea937fa40a238b",
+        "sourceFingerprint": "c9d63f2753f6e72d55e61be698573afe8c5e984e0faeb51066d0a8526ab0d042",
+        "candidateGitBlobSha1": "be4f3e46242d8993a9b34382ca07f3ebcb5c052b"
+      }
+    },
+    {
+      "qid": 3,
+      "result": "PASS",
+      "questionUid": "qid_v1_74340af19e4ab59fcb07cf4041a9b6413e904e464738b8c125c81716ddca3f27",
+      "sourceOrdinal": 3,
+      "primaryMethod": "근과 계수의 관계 및 제곱합 항등식",
+      "decisiveStep": "α+β=-2, αβ=-2/3; α²+β²=4+4/3=16/3.",
+      "rpmDisposition": "DIRECT_ACTIVE:H1-RPM-162; 근과 계수의 관계/근의 합·곱",
+      "projectionDisposition": "RPM_DIRECT_ACTIVE_EXACT",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+        "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "archive/data/meta-foundation/compiled/concept_registry.json",
+        "archive/data/meta-foundation/compiled/condition_registry.json",
+        "docs/architecture/4slot/term-dictionary-v1.6.json"
+      ],
+      "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+      "templateKey": "TPL_H1_VIETA_SYMMETRIC_VALUE",
+      "fourSlot": {
+        "ordinal": 3,
+        "format": "단일 정답",
+        "given": [
+          65
+        ],
+        "goal": [
+          336
+        ],
+        "method": [
+          54,
+          60
+        ],
+        "condition": [],
+        "candidates": []
+      },
+      "identityBinding": {
+        "contentHash": "fdf9d391e62be3e5574b554fd20c61013097f7dbfe1ffa7cffde9e234c178f91",
+        "choicesHash": "4b49bd993faf767ccf88bee37962c36df3ea969fcd0ccd069f790c76cd8c43f2",
+        "sourceFingerprint": "0aae4c89d1dbbcebf5192b391599e11d7eb4aecaa03f20b72691bbf28218a579",
+        "candidateGitBlobSha1": "be4f3e46242d8993a9b34382ca07f3ebcb5c052b"
+      }
+    },
+    {
+      "qid": 4,
+      "result": "PASS",
+      "questionUid": "qid_v1_7cb7508562cc8f89db363cb80474463f6fd7c590353d8e48d99d5d482b949fae",
+      "sourceOrdinal": 4,
+      "primaryMethod": "완전제곱식으로 x축과의 비교",
+      "decisiveStep": "y=-2(x-2)²+k+3, maximum k+3<0 implies greatest integer k=-4.",
+      "rpmDisposition": "DIRECT_ACTIVE:H1-RPM-167; 그래프와 근/판별식과 위치",
+      "projectionDisposition": "RPM_GRAPH_SCOPE_WITH_ACTIVE_ANALYTIC_PT_PROJECTION",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+        "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "archive/data/meta-foundation/compiled/concept_registry.json",
+        "archive/data/meta-foundation/compiled/condition_registry.json",
+        "docs/architecture/4slot/term-dictionary-v1.6.json"
+      ],
+      "problemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
+      "templateKey": "TPL_H1_DISCRIMINANT_ROOT_EXISTENCE",
+      "fourSlot": {
+        "ordinal": 4,
+        "format": "단일 정답",
+        "given": [
+          91,
+          2
+        ],
+        "goal": [
+          2
+        ],
+        "method": [
+          55,
+          127
+        ],
+        "condition": [
+          181
+        ],
+        "candidates": []
+      },
+      "identityBinding": {
+        "contentHash": "a78eddb1808de870f177a9b7d337f7b184f553379571a39b1b5a9e98363e499e",
+        "choicesHash": "54672cfd391ee0dadf5d98f69c67716f9bf6b055ca072b18992d748e505e2fdc",
+        "sourceFingerprint": "b0413b2fcdd75dbfb436c04277e4d0a35e080070f559bcf610208678a28a4fb5",
+        "candidateGitBlobSha1": "be4f3e46242d8993a9b34382ca07f3ebcb5c052b"
+      }
+    },
+    {
+      "qid": 5,
+      "result": "PASS",
+      "questionUid": "qid_v1_7910b1c4d3a0dfa165738a6a04a42f7fcfe08a1ffb255a711a0bfba660fefb30",
+      "sourceOrdinal": 5,
+      "primaryMethod": "접선의 판별식 조건",
+      "decisiveStep": "y=mx+1 intersects parabola via x²-(m+2)x+1=0; discriminant 0 gives m=0,-4 and sum -4.",
+      "rpmDisposition": "DIRECT_ACTIVE:H1-RPM-169; 직선과 포물선/접선 조건",
+      "projectionDisposition": "RPM_DIRECT_ACTIVE_EXACT",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+        "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "archive/data/meta-foundation/compiled/concept_registry.json",
+        "archive/data/meta-foundation/compiled/condition_registry.json",
+        "docs/architecture/4slot/term-dictionary-v1.6.json"
+      ],
+      "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+      "templateKey": "TPL_H1_QUADRATIC_INTERSECTION_TANGENCY",
+      "fourSlot": {
+        "ordinal": 5,
+        "format": "단일 정답",
+        "given": [
+          91,
+          148
+        ],
+        "goal": [
+          286
+        ],
+        "method": [
+          55,
+          444
+        ],
+        "condition": [
+          182
+        ],
+        "candidates": []
+      },
+      "identityBinding": {
+        "contentHash": "4559329981eb42ec4a77733e8b4131fd8891d641cecd3e04aceb04ad939bdb7c",
+        "choicesHash": "7e8d74a4b361377e0e1f7753958f50ff02298d52440dfa17510c554334880369",
+        "sourceFingerprint": "f44eab3e822a7e991d6c4f241345bd284053d4a300c1e2a1559cabdd52c10e3b",
+        "candidateGitBlobSha1": "be4f3e46242d8993a9b34382ca07f3ebcb5c052b"
+      }
+    },
+    {
+      "qid": 6,
+      "result": "PASS",
+      "questionUid": "qid_v1_f924bdfad0caa2429c30deb20fb68e210766460f16865f0b8f864df46e7e71d9",
+      "sourceOrdinal": 6,
+      "primaryMethod": "인수 곱 전개 후 계수 비교",
+      "decisiveStep": "product expansion gives a+c=-3, ac-5=-3, so a+c+ac=-1.",
+      "rpmDisposition": "DIRECT_ACTIVE:H1-RPM-137; 다항식의 곱셈/고차식 전개",
+      "projectionDisposition": "RPM_ACTIVE_TEMPLATE_VARIANT_SEMANTICALLY_CONFIRMED",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+        "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "archive/data/meta-foundation/compiled/concept_registry.json",
+        "archive/data/meta-foundation/compiled/condition_registry.json",
+        "docs/architecture/4slot/term-dictionary-v1.6.json"
+      ],
+      "problemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
+      "templateKey": "TPL_H1_POLY_COEFFICIENT_EXTRACTION",
+      "fourSlot": {
+        "ordinal": 6,
+        "format": "단일 정답",
+        "given": [
+          35,
+          42
+        ],
+        "goal": [
+          286
+        ],
+        "method": [
+          696,
+          40
+        ],
+        "condition": [
+          48
+        ],
+        "candidates": []
+      },
+      "identityBinding": {
+        "contentHash": "2d769cc649e3622742966edf5ed801a1dc2e8ed5a0efb31469a8bbaf27f29ca5",
+        "choicesHash": "e0a2d515b9432b7ce272fe4d09d2234810d327b803650316fda86b74a012a5e6",
+        "sourceFingerprint": "afc23865e2667a44a46c1f77b505cc952326db5cd21f883c84ec55c0066b7fd0",
+        "candidateGitBlobSha1": "be4f3e46242d8993a9b34382ca07f3ebcb5c052b"
+      }
+    },
+    {
+      "qid": 7,
+      "result": "PASS",
+      "questionUid": "qid_v1_fbbde6b3383058ee034045c51e28e5710f380a8eb130cd71dd6e5074eefc4404",
+      "sourceOrdinal": 7,
+      "primaryMethod": "분수형 변형근의 합·곱 계산",
+      "decisiveStep": "α+β=5, αβ=1; transformed roots sum (α²+β²+5)/7=28/7=4, product 1/7; p=-4, q=1/7, 7(p+q)=-27.",
+      "rpmDisposition": "DIRECT_ACTIVE:H1-RPM-163; 근과 계수의 관계/근으로 방정식 구성",
+      "projectionDisposition": "RPM_DIRECT_ACTIVE_EXACT",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+        "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "archive/data/meta-foundation/compiled/concept_registry.json",
+        "archive/data/meta-foundation/compiled/condition_registry.json",
+        "docs/architecture/4slot/term-dictionary-v1.6.json"
+      ],
+      "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+      "templateKey": "TPL_H1_VIETA_TRANSFORMED_ROOT",
+      "fourSlot": {
+        "ordinal": 7,
+        "format": "단일 정답",
+        "given": [
+          65
+        ],
+        "goal": [
+          61
+        ],
+        "method": [
+          54,
+          60
+        ],
+        "condition": [],
+        "candidates": []
+      },
+      "identityBinding": {
+        "contentHash": "47cf05cc1320ac98e4ea9baf9f3151808925260dc6fbc14a6dbdad4791107e62",
+        "choicesHash": "a0c7a09e3189d44ff998cd86dc9edd184b73879e6bd142074a960d8d43d2d461",
+        "sourceFingerprint": "be5178dcb3775e8190c908d887619bac14f49392d901730d194bb416e4801278",
+        "candidateGitBlobSha1": "be4f3e46242d8993a9b34382ca07f3ebcb5c052b"
+      }
+    },
+    {
+      "qid": 8,
+      "result": "PASS",
+      "questionUid": "qid_v1_a34b9da6d2a91dbfcef9ef8dde7be7ca254674f38f68e5bfcc462d2eeb8b1cca",
+      "sourceOrdinal": 8,
+      "primaryMethod": "다항식 제곱의 항등식·최고차항 부호",
+      "decisiveStep": "(2P+3)²=(x²-4x+1)² as polynomial identity; positive leading coefficient selects plus, P=(x²-4x-2)/2; P(-1)=3/2.",
+      "rpmDisposition": "DIRECT_ACTIVE:H1-RPM-140; 항등식/미정계수법",
+      "projectionDisposition": "RPM_DIRECT_ACTIVE_EXACT",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+        "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "archive/data/meta-foundation/compiled/concept_registry.json",
+        "archive/data/meta-foundation/compiled/condition_registry.json",
+        "docs/architecture/4slot/term-dictionary-v1.6.json"
+      ],
+      "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+      "templateKey": "TPL_H1_IDENTITY_COEFFICIENT_COMPARE",
+      "fourSlot": {
+        "ordinal": 8,
+        "format": "단일 정답",
+        "given": [
+          35,
+          48
+        ],
+        "goal": [
+          100
+        ],
+        "method": [
+          59,
+          338
+        ],
+        "condition": [
+          387
+        ],
+        "candidates": []
+      },
+      "identityBinding": {
+        "contentHash": "cc1d7934e1faaeeb470f8e1e74d66d909eab9ce0cca8d1bb4e905f247ecc5e21",
+        "choicesHash": "fdc95674fdbeb4deea4a7421b1d7fcddac39820042d28b3d329e7f81e152d573",
+        "sourceFingerprint": "920ec1e32a2184ada90d7382140d8559caf3ba0812d49a8805b31302eae9c12d",
+        "candidateGitBlobSha1": "be4f3e46242d8993a9b34382ca07f3ebcb5c052b"
+      }
+    },
+    {
+      "qid": 9,
+      "result": "PASS",
+      "questionUid": "qid_v1_fe494be817c18ea58d5ee700bc8018c77071a322fbfb819b228818843e031d84",
+      "sourceOrdinal": 9,
+      "primaryMethod": "둘레의 이차식 최대값",
+      "decisiveStep": "width=2t, height=10-2t² for 0<t<sqrt5; perimeter=20+4t-4t²=21-4(t-1/2)², max 21 at t=1/2.",
+      "rpmDisposition": "DIRECT_ACTIVE:H1-RPM-171; 최대·최소/조건식 활용",
+      "projectionDisposition": "RPM_DIRECT_ACTIVE_EXACT",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+        "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "archive/data/meta-foundation/compiled/concept_registry.json",
+        "archive/data/meta-foundation/compiled/condition_registry.json",
+        "docs/architecture/4slot/term-dictionary-v1.6.json"
+      ],
+      "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+      "templateKey": "TPL_H1_QUADRATIC_EXTREMA_MODEL",
+      "fourSlot": {
+        "ordinal": 9,
+        "format": "단일 정답",
+        "given": [
+          148,
+          91
+        ],
+        "goal": [
+          127,
+          214
+        ],
+        "method": [
+          127,
+          59
+        ],
+        "condition": [
+          296
+        ],
+        "candidates": []
+      },
+      "identityBinding": {
+        "contentHash": "ff2df613f75951f5b118a86797035c1934f31a523458e6ea7f71c98b7da0281a",
+        "choicesHash": "d624e20738eaf25ef0a6e417170c9eedf8b6c37ba382c3b642a21e11c6eab530",
+        "sourceFingerprint": "ba763892bb47b8eb1f308096ded75d5fe66dadaafadf18e4a284760ec23900ab",
+        "candidateGitBlobSha1": "be4f3e46242d8993a9b34382ca07f3ebcb5c052b"
+      }
+    },
+    {
+      "qid": 10,
+      "result": "PASS",
+      "questionUid": "qid_v1_c7fd1115b19e12b96a7bb8cfa8097fb8554cce9dc7144f2c1a3d5569fa1c61eb",
+      "sourceOrdinal": 10,
+      "primaryMethod": "치환한 이차방정식과 실근 판별",
+      "decisiveStep": "u=x²-2x yields (u-3)(u+2)=0. u=-2 gives no real x, u=3 yields x=3,-1; sum 2.",
+      "rpmDisposition": "DIRECT_ACTIVE:H1-RPM-173; 삼차·사차방정식/치환형",
+      "projectionDisposition": "RPM_DIRECT_ACTIVE_EXACT",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+        "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "archive/data/meta-foundation/compiled/concept_registry.json",
+        "archive/data/meta-foundation/compiled/condition_registry.json",
+        "docs/architecture/4slot/term-dictionary-v1.6.json"
+      ],
+      "problemTypeKey": "PT_H1_HIGHER_DEGREE_EQUATION",
+      "templateKey": "TPL_H1_HIGHER_SUBSTITUTION_REDUCTION",
+      "fourSlot": {
+        "ordinal": 10,
+        "format": "단일 정답",
+        "given": [
+          567
+        ],
+        "goal": [
+          286
+        ],
+        "method": [
+          52,
+          79
+        ],
+        "condition": [
+          79
+        ],
+        "candidates": []
+      },
+      "identityBinding": {
+        "contentHash": "3ebd2cb3a84fad3e45a58e340e61da80af7777947726d0879a3d69aa17af9510",
+        "choicesHash": "f36d5b99631836fa8f02c4849519f04204969a1115add3ca6cb981d0a09cc6b0",
+        "sourceFingerprint": "7e8cdbc3ab27a34532423265f38122cc65ac8ca311437efc165e57e149035f93",
+        "candidateGitBlobSha1": "be4f3e46242d8993a9b34382ca07f3ebcb5c052b"
+      }
+    },
+    {
+      "qid": 11,
+      "result": "PASS",
+      "questionUid": "qid_v1_8ca186fe242f075970a0ebf825b1606bc26d6531b933fc240a43bf6cd3ecbdae",
+      "sourceOrdinal": 11,
+      "primaryMethod": "두 나머지 정리로 일차 나머지 확정",
+      "decisiveStep": "f(1)=6, f(-1)=-2 and Q(-1)=6 imply remainder R(x)=16x-10; f(2)=18+22=40.",
+      "rpmDisposition": "FAMILY_ACTIVE:H1-RPM-143; 나머지정리/고차식 조건",
+      "projectionDisposition": "RPM_ACTIVE_TEMPLATE_VARIANT_SEMANTICALLY_CONFIRMED",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+        "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "archive/data/meta-foundation/compiled/concept_registry.json",
+        "archive/data/meta-foundation/compiled/condition_registry.json",
+        "docs/architecture/4slot/term-dictionary-v1.6.json"
+      ],
+      "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+      "templateKey": "TPL_H1_REMAINDER_COMPOSITE_DIVISOR",
+      "fourSlot": {
+        "ordinal": 11,
+        "format": "단일 정답",
+        "given": [
+          35,
+          46,
+          47
+        ],
+        "goal": [
+          100
+        ],
+        "method": [
+          53,
+          45
+        ],
+        "condition": [
+          47
+        ],
+        "candidates": []
+      },
+      "identityBinding": {
+        "contentHash": "ce85d5d7b1b1e3c8e711b7dae7d589d9431a624fc59db5c043bab6f9ee72d59b",
+        "choicesHash": "4ec961f0310ca90259ca175196ce174bb63c3cdeae98087144490508cf75618b",
+        "sourceFingerprint": "e73940d1a07b161f3820264991404022cb77064607d2e0dd5c9d84ce2f5699b6",
+        "candidateGitBlobSha1": "be4f3e46242d8993a9b34382ca07f3ebcb5c052b"
+      }
+    },
+    {
+      "qid": 12,
+      "result": "PASS",
+      "questionUid": "qid_v1_92029edd7d5f9ec7a74514487d9fc834be8c5a4351012328a81109ae7f6d5159",
+      "sourceOrdinal": 12,
+      "primaryMethod": "나머지 정리·인수관계·부호 경우분리",
+      "decisiveStep": "at x=1/3, f=2g and fg=18, giving g=±3, f=±6; at x=2/3 target remainder=5f(1/3)=±30, minimum -30.",
+      "rpmDisposition": "FAMILY_ACTIVE:H1-RPM-143; 나머지정리/고차식 조건",
+      "projectionDisposition": "RPM_ACTIVE_TEMPLATE_VARIANT_SEMANTICALLY_CONFIRMED",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+        "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "archive/data/meta-foundation/compiled/concept_registry.json",
+        "archive/data/meta-foundation/compiled/condition_registry.json",
+        "docs/architecture/4slot/term-dictionary-v1.6.json"
+      ],
+      "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+      "templateKey": "TPL_H1_REMAINDER_COMPOSITE_DIVISOR",
+      "fourSlot": {
+        "ordinal": 12,
+        "format": "단일 정답",
+        "given": [
+          35,
+          47
+        ],
+        "goal": [
+          128,
+          47
+        ],
+        "method": [
+          53,
+          45
+        ],
+        "condition": [
+          5,
+          387
+        ],
+        "candidates": []
+      },
+      "identityBinding": {
+        "contentHash": "b604ece3e55c636b15b5ac7f450c08c3f6b5d6320d8a01e107383d9dd176e4e5",
+        "choicesHash": "1f971f95011b2ac58b3ebccbd93e84ec82a2871c1956f69ba243fd7c171f5447",
+        "sourceFingerprint": "ddd1dece37aa2e53abeb7c9c5c31d2943ce43a48d1e096a9cb224c3777b9a020",
+        "candidateGitBlobSha1": "be4f3e46242d8993a9b34382ca07f3ebcb5c052b"
+      }
+    },
+    {
+      "qid": 13,
+      "result": "PASS",
+      "questionUid": "qid_v1_2f268d4258bb975f145495bdbb9eb5c022d312c4d7d2671ff0cf218c192588f9",
+      "sourceOrdinal": 13,
+      "primaryMethod": "정사각형 둘레·넓이에서 합과 차",
+      "decisiveStep": "a+b=22, a²+b²=250, ab=117, (a-b)²=16; a>b gives a-b=4 and perimeter difference 16.",
+      "rpmDisposition": "DIRECT_ACTIVE:H1-RPM-136; 다항식의 곱셈/곱셈공식",
+      "projectionDisposition": "RPM_DIRECT_ACTIVE_EXACT",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+        "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "archive/data/meta-foundation/compiled/concept_registry.json",
+        "archive/data/meta-foundation/compiled/condition_registry.json",
+        "docs/architecture/4slot/term-dictionary-v1.6.json"
+      ],
+      "problemTypeKey": "PT_H1_POLY_FORMULA_SYMMETRIC",
+      "templateKey": "TPL_H1_FORMULA_SYMMETRIC",
+      "fourSlot": {
+        "ordinal": 13,
+        "format": "단일 정답",
+        "given": [
+          213,
+          215
+        ],
+        "goal": [
+          214
+        ],
+        "method": [
+          60,
+          694
+        ],
+        "condition": [
+          215
+        ],
+        "candidates": []
+      },
+      "identityBinding": {
+        "contentHash": "5fd4c6b48cc68b4d6f10f62ab1a25116323ad5f766979c8e917ca93a5d3c6c5c",
+        "choicesHash": "6ae33b3ab1596f3623ebc33f326a985cdc07a652d0328da0c239cbc8c95c8e9e",
+        "sourceFingerprint": "edb7ce83d93ac1b6cc821be808b3c9a3ce7964355edf928b8c2011b04326213e",
+        "candidateGitBlobSha1": "be4f3e46242d8993a9b34382ca07f3ebcb5c052b"
+      }
+    },
+    {
+      "qid": 14,
+      "result": "PASS",
+      "questionUid": "qid_v1_22115f3162eb3d312b79d76202b6880e25db730ab73e21f4281cda0ed4ca81cf",
+      "sourceOrdinal": 14,
+      "primaryMethod": "허근 주기성을 이용한 등비·계수 묶기",
+      "decisiveStep": "r=-ω has r³=1 and 1+r+r²=0; sum k r^k (k=1..12) =30+22r+26r²=4-4r=4+4ω, so a+b=8.",
+      "rpmDisposition": "DIRECT_ACTIVE:H1-RPM-158; i의 거듭제곱/주기성",
+      "projectionDisposition": "RPM_ACTIVE_TEMPLATE_VARIANT_SEMANTICALLY_CONFIRMED",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+        "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "archive/data/meta-foundation/compiled/concept_registry.json",
+        "archive/data/meta-foundation/compiled/condition_registry.json",
+        "docs/architecture/4slot/term-dictionary-v1.6.json"
+      ],
+      "problemTypeKey": "PT_H1_COMPLEX_POWER_ROOT",
+      "templateKey": "TPL_H1_COMPLEX_ROOT_OF_UNITY_PERIOD",
+      "fourSlot": {
+        "ordinal": 14,
+        "format": "단일 정답",
+        "given": [
+          566,
+          80
+        ],
+        "goal": [
+          286
+        ],
+        "method": [
+          20,
+          109
+        ],
+        "condition": [
+          5
+        ],
+        "candidates": []
+      },
+      "identityBinding": {
+        "contentHash": "2cc9ab22f5315b8629325d542571fa237c7f0628bb52c0d6bab46997c149eaaf",
+        "choicesHash": "7902343db6017867e9638429144e773c70efc9268091923d9ecd25b391a903bf",
+        "sourceFingerprint": "39c553e9f5438711ef2e7bc6b2ac3d7b8c5afdf7819eebd6f04e925ee8943b2b",
+        "candidateGitBlobSha1": "be4f3e46242d8993a9b34382ca07f3ebcb5c052b"
+      }
+    },
+    {
+      "qid": 15,
+      "result": "PASS",
+      "questionUid": "qid_v1_b96c3b9d3ce51a771cbbf5f91e0e861fa1ad415a9ee0f624b635b17ca7b04249",
+      "sourceOrdinal": 15,
+      "primaryMethod": "이차함수 대칭축과 구간 끝점 최댓값",
+      "decisiveStep": "axis x=1, f=a(x-1)²+c; f(-1)=4 gives 4a+c=4. max at x=-2 is 9a+c=19, yielding a=3, c=-8.",
+      "rpmDisposition": "DIRECT_ACTIVE:H1-RPM-170; 최대·최소/구간 최대·최소",
+      "projectionDisposition": "RPM_DIRECT_ACTIVE_EXACT",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+        "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "archive/data/meta-foundation/compiled/concept_registry.json",
+        "archive/data/meta-foundation/compiled/condition_registry.json",
+        "docs/architecture/4slot/term-dictionary-v1.6.json"
+      ],
+      "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+      "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+      "fourSlot": {
+        "ordinal": 15,
+        "format": "단일 정답",
+        "given": [
+          91,
+          127
+        ],
+        "goal": [
+          128
+        ],
+        "method": [
+          311,
+          127
+        ],
+        "condition": [
+          296,
+          338
+        ],
+        "candidates": []
+      },
+      "identityBinding": {
+        "contentHash": "699379f4a0ca2c0a09e0a7f847dfc8571084cd3d23cb452548bd102c081f1f7a",
+        "choicesHash": "4b5ef0f7517696a997376da589a73e56603b3c02c747cb9a9c0b3ef8cced117d",
+        "sourceFingerprint": "484e62820a7f8691b04b6dd33e92f6eb0d2b1cb5f700ee5a4b63c353a2a34d7e",
+        "candidateGitBlobSha1": "be4f3e46242d8993a9b34382ca07f3ebcb5c052b"
+      }
+    },
+    {
+      "qid": 16,
+      "result": "PASS",
+      "questionUid": "qid_v1_27cddbb82639d6f0b9983814b52eca675b2a34f95f578585ebe4c270c98921ac",
+      "sourceOrdinal": 16,
+      "primaryMethod": "복소수 단위원 각도·나머지류 조합계수",
+      "decisiveStep": "sum of two unit complex numbers must equal ±(1+i), hence pairs (1,i),(i,1),(-1,-i),(-i,-1). Counts m classes 6,7,6,6 and n classes 12,12,13,13; total 312.",
+      "rpmDisposition": "DIRECT_ACTIVE:H1-RPM-158; i의 거듭제곱/주기성",
+      "projectionDisposition": "RPM_DIRECT_ACTIVE_EXACT",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+        "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "archive/data/meta-foundation/compiled/concept_registry.json",
+        "archive/data/meta-foundation/compiled/condition_registry.json",
+        "docs/architecture/4slot/term-dictionary-v1.6.json"
+      ],
+      "problemTypeKey": "PT_H1_COMPLEX_POWER_ROOT",
+      "templateKey": "TPL_H1_COMPLEX_I_PERIOD",
+      "fourSlot": {
+        "ordinal": 16,
+        "format": "단일 정답",
+        "given": [
+          6,
+          20
+        ],
+        "goal": [
+          129
+        ],
+        "method": [
+          109,
+          293,
+          371
+        ],
+        "condition": [
+          1
+        ],
+        "candidates": []
+      },
+      "identityBinding": {
+        "contentHash": "0b4245ed3835cc482738fe828930b5791c0b6bf5c19a1dfdced8e69e6f067aae",
+        "choicesHash": "e5064c128eee4e64024073de79a0f6175ad7b767a97ab5f4fcb7c31c06a46ae6",
+        "sourceFingerprint": "f5b3252fae076c16c492e75a8e62f609d7c936bdb9e1686348557a6132de6e67",
+        "candidateGitBlobSha1": "be4f3e46242d8993a9b34382ca07f3ebcb5c052b"
+      }
+    },
+    {
+      "qid": 17,
+      "result": "PASS",
+      "questionUid": "qid_v1_8adfdd13dae0d893ef389771fbe8b39ddad5feb779c8240557476621c0b8bf69",
+      "sourceOrdinal": 17,
+      "primaryMethod": "실수계수 인수분해 및 다항식 계수 비교",
+      "decisiveStep": "real irreducible x²-2x+2 and x-3 divide P, so P=(x²-2x+2)(x-3)=x³-5x²+8x-6. Let Q=ux+v; u²=4, u>0=>u=2; v²+4v-5=0, v>0=>v=1; a=12, P(0)Q(2)/a=-30/12=-5/2.",
+      "rpmDisposition": "FAMILY_ACTIVE:H1-RPM-143; 나머지정리/고차식 조건",
+      "projectionDisposition": "RPM_ACTIVE_TEMPLATE_VARIANT_SEMANTICALLY_CONFIRMED",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+        "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "archive/data/meta-foundation/compiled/concept_registry.json",
+        "archive/data/meta-foundation/compiled/condition_registry.json",
+        "docs/architecture/4slot/term-dictionary-v1.6.json"
+      ],
+      "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+      "templateKey": "TPL_H1_REMAINDER_COMPOSITE_DIVISOR",
+      "fourSlot": {
+        "ordinal": 17,
+        "format": "단일 정답",
+        "given": [
+          35,
+          43,
+          48
+        ],
+        "goal": [
+          61
+        ],
+        "method": [
+          42,
+          696
+        ],
+        "condition": [
+          5,
+          25
+        ],
+        "candidates": []
+      },
+      "identityBinding": {
+        "contentHash": "65fba26e9291a7c6af334905697596bc38ce68f4b9bd941828e0f47efa5acb73",
+        "choicesHash": "902a1086003527341c93642f7e8d529031b60286f95c9a0df98dad0df9f27674",
+        "sourceFingerprint": "3b09ad58876f2eec030aef14bf05d609f65afd37a49852631ed82db30c113764",
+        "candidateGitBlobSha1": "be4f3e46242d8993a9b34382ca07f3ebcb5c052b"
+      }
+    },
+    {
+      "qid": 18,
+      "result": "PASS",
+      "questionUid": "qid_v1_309988d002c61ecc652558ac12781719ab307774880b88f3a0c93b89cbc93905",
+      "sourceOrdinal": 18,
+      "primaryMethod": "짝수차 치환 및 네 근의 곱 관계",
+      "decisiveStep": "roots ±sqrt(u),±sqrt(v), u>v>0. ac+bd=-2sqrt(uv)=-8 implies uv=m²+7=16; m=3 positive. Discriminant and positivity hold.",
+      "rpmDisposition": "DIRECT_ACTIVE:H1-RPM-173; 삼차·사차방정식/치환형",
+      "projectionDisposition": "RPM_DIRECT_ACTIVE_EXACT",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+        "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "archive/data/meta-foundation/compiled/concept_registry.json",
+        "archive/data/meta-foundation/compiled/condition_registry.json",
+        "docs/architecture/4slot/term-dictionary-v1.6.json"
+      ],
+      "problemTypeKey": "PT_H1_HIGHER_DEGREE_EQUATION",
+      "templateKey": "TPL_H1_HIGHER_SUBSTITUTION_REDUCTION",
+      "fourSlot": {
+        "ordinal": 18,
+        "format": "단일 정답",
+        "given": [
+          567,
+          79
+        ],
+        "goal": [
+          131
+        ],
+        "method": [
+          52,
+          54
+        ],
+        "condition": [
+          25
+        ],
+        "candidates": []
+      },
+      "identityBinding": {
+        "contentHash": "6638d3c0564967006e1769a5adcd1292c679e9ee0b71bdb1d137bf81b90fbc0e",
+        "choicesHash": "d601fd23445f2769d635c0f649aaf6d04b385a7d56c029a78b68ab105d958e27",
+        "sourceFingerprint": "a57881c47582f1c17a97251b1db966f2e2c74b801b92ce9ce25642f13e928b3b",
+        "candidateGitBlobSha1": "be4f3e46242d8993a9b34382ca07f3ebcb5c052b"
+      }
+    },
+    {
+      "qid": 19,
+      "result": "PASS",
+      "questionUid": "qid_v1_327cbfd668beffeeb7e71e8e55efbc1f9a759bbbe6c0cc0268a132d8f202ece5",
+      "sourceOrdinal": 19,
+      "primaryMethod": "공통인수 (a-b) 인수분해와 피타고라스 역",
+      "decisiveStep": "given cubic equals (a-b)(a²+b²-c²). Since a>b, a²+b²=c². Pythagoras converse: side c=AB is opposite C, so angle C right.",
+      "rpmDisposition": "DIRECT_ACTIVE:H1-RPM-153; 인수분해의 활용/조건식",
+      "projectionDisposition": "RPM_DIRECT_ACTIVE_EXACT",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+        "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "archive/data/meta-foundation/compiled/concept_registry.json",
+        "archive/data/meta-foundation/compiled/condition_registry.json",
+        "docs/architecture/4slot/term-dictionary-v1.6.json"
+      ],
+      "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+      "templateKey": "TPL_H1_FACTORIZATION_APPLICATION",
+      "fourSlot": {
+        "ordinal": 19,
+        "format": "서술형",
+        "given": [
+          158,
+          35
+        ],
+        "goal": [
+          161
+        ],
+        "method": [
+          42,
+          195
+        ],
+        "condition": [
+          28
+        ],
+        "candidates": []
+      },
+      "identityBinding": {
+        "contentHash": "80f7e82bdfe3b7797d9cf4325855b6a77db7d28df66541a003790224dcd6c033",
+        "choicesHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "sourceFingerprint": "43c50d7fb745d909b7c51bce048c425a63bdef567b10d052044feb7c4fc9c8f1",
+        "candidateGitBlobSha1": "be4f3e46242d8993a9b34382ca07f3ebcb5c052b"
+      }
+    },
+    {
+      "qid": 20,
+      "result": "PASS",
+      "questionUid": "qid_v1_10483554535034b7444de6705596624292edf309619ea1e0d7b2bc4a121e058b",
+      "sourceOrdinal": 20,
+      "primaryMethod": "대칭식 항등식 단계별 적용",
+      "decisiveStep": "x²+y²=3²-2=7; x³+y³=3³-3·1·3=18; x⁶+y⁶=(x³+y³)²-2(xy)³=324-2=322.",
+      "rpmDisposition": "DIRECT_ACTIVE:H1-RPM-136; 다항식의 곱셈/곱셈공식",
+      "projectionDisposition": "RPM_DIRECT_ACTIVE_EXACT",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+        "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "archive/data/meta-foundation/compiled/concept_registry.json",
+        "archive/data/meta-foundation/compiled/condition_registry.json",
+        "docs/architecture/4slot/term-dictionary-v1.6.json"
+      ],
+      "problemTypeKey": "PT_H1_POLY_FORMULA_SYMMETRIC",
+      "templateKey": "TPL_H1_FORMULA_SYMMETRIC",
+      "fourSlot": {
+        "ordinal": 20,
+        "format": "서술형",
+        "given": [
+          286,
+          287
+        ],
+        "goal": [
+          587
+        ],
+        "method": [
+          60,
+          40
+        ],
+        "condition": [
+          5
+        ],
+        "candidates": []
+      },
+      "identityBinding": {
+        "contentHash": "cee4aef36b88c217cd3615ae5ca53a7f99e6bd89e399b06aca2c3b65a38fab0b",
+        "choicesHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "sourceFingerprint": "bb891ed6503d60148971252c7cd25cc2bc643161d05ca09b82ef7d83f739ae32",
+        "candidateGitBlobSha1": "be4f3e46242d8993a9b34382ca07f3ebcb5c052b"
+      }
+    },
+    {
+      "qid": 21,
+      "result": "PASS",
+      "questionUid": "qid_v1_2f789b2afb174162ca2d26a312e3e98e2c23022ed6734f9873d71c7ba5d53aec",
+      "sourceOrdinal": 21,
+      "primaryMethod": "연립식 대입·해 전체 열거·후속 값 비교",
+      "decisiveStep": "x=10-2y gives y²-8y+15=0, y=3 or 5. Points (4,3),(0,5); x²-y² respectively 7,-25, maximum 7.",
+      "rpmDisposition": "DIRECT_ACTIVE:H1-RPM-174; 연립방정식/이차식이 포함된 연립방정식",
+      "projectionDisposition": "RPM_DIRECT_ACTIVE_EXACT",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+        "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "archive/data/meta-foundation/compiled/concept_registry.json",
+        "archive/data/meta-foundation/compiled/condition_registry.json",
+        "docs/architecture/4slot/term-dictionary-v1.6.json"
+      ],
+      "problemTypeKey": "PT_H1_SYSTEM_EQUATION",
+      "templateKey": "TPL_H1_SYSTEM_DIRECT",
+      "fourSlot": {
+        "ordinal": 21,
+        "format": "서술형",
+        "given": [
+          67,
+          569
+        ],
+        "goal": [
+          127
+        ],
+        "method": [
+          435,
+          293
+        ],
+        "condition": [
+          79
+        ],
+        "candidates": []
+      },
+      "identityBinding": {
+        "contentHash": "62d49997c0fb0f2a4bb85feea3c2d565fff954605443a815ba09942fecb25b7a",
+        "choicesHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "sourceFingerprint": "7082f284e9ea5e4b4479b8751dc9b2caf00d50d29fbc8179729388334c62bac2",
+        "candidateGitBlobSha1": "be4f3e46242d8993a9b34382ca07f3ebcb5c052b"
+      }
+    },
+    {
+      "qid": 22,
+      "result": "PASS",
+      "questionUid": "qid_v1_df5bdb2c5a012da196207a924abb907dcbca08bb9a9dbdc94f51a0562d97da3b",
+      "sourceOrdinal": 22,
+      "primaryMethod": "조각함수의 구간별 교점 개수 및 경계 포함 여부",
+      "decisiveStep": "x=0 always; inner second x=-m exists if 0<|m|<1; outer roots of x²-mx-2=0 are both allowed precisely -1≤m≤1. Three distinct intersections occur m=-1,0,1, whose squared sum is 2.",
+      "rpmDisposition": "DIRECT_ACTIVE:H1-RPM-168; 직선과 포물선/교점 개수",
+      "projectionDisposition": "RPM_DIRECT_ACTIVE_EXACT",
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+        "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "archive/data/meta-foundation/compiled/concept_registry.json",
+        "archive/data/meta-foundation/compiled/condition_registry.json",
+        "docs/architecture/4slot/term-dictionary-v1.6.json"
+      ],
+      "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+      "templateKey": "TPL_H1_QUADRATIC_INTERSECTION_TANGENCY",
+      "fourSlot": {
+        "ordinal": 22,
+        "format": "서술형",
+        "given": [
+          98,
+          91,
+          90
+        ],
+        "goal": [
+          129
+        ],
+        "method": [
+          181,
+          293
+        ],
+        "condition": [
+          359,
+          296
+        ],
+        "candidates": []
+      },
+      "identityBinding": {
+        "contentHash": "e5647fe74bb7f76bb6bc9768dc59a1fc5c09b7c657fede8acb8aa60787afda8f",
+        "choicesHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "sourceFingerprint": "96d967830e5299c3b81b8e8e6313dc1a7b3d66a11ab41aa3f0b0480292509777",
+        "candidateGitBlobSha1": "be4f3e46242d8993a9b34382ca07f3ebcb5c052b"
+      }
+    }
+  ],
+  "summary": {
+    "questionCount": 22,
+    "questionEvidenceRows": 22,
+    "linkedSolutionVisualCount": 0,
+    "visualEvidenceRows": 0,
+    "metaEvidenceRows": 22,
+    "itemHoldCount": 2
+  },
+  "unresolvedRequiredVisuals": [
+    {
+      "qid": 9,
+      "status": "SVG_TO_CREATE",
+      "render": "NOT_RUN",
+      "visualReview": "NOT_RUN"
+    },
+    {
+      "qid": 22,
+      "status": "SVG_TO_CREATE",
+      "render": "NOT_RUN",
+      "visualReview": "NOT_RUN"
+    }
+  ],
+  "reviewDetails": [
+    {
+      "qid": 1,
+      "solutionDisposition": "KEEP",
+      "metadataDisposition": "REVISED",
+      "answerVerified": "⑤",
+      "studentEffect": "기존 해설만으로 독립 풀이 재현 가능",
+      "sourceComparison": {
+        "originalFile": "$(2x^2+3x+2)-(x^2+4x-3)=ax^2+bx+c$를 만족할 때, $a+b+c$의 값은? (단, $a, b, c$는 실수)",
+        "finalFile": "다항식 $A(x)=3x^2-2x+4$와 $B(x)$가 $A(x)-B(x)=x^2+4x-6$을 만족한다. $B(1)$의 값은? [3.5점]",
+        "changeAxis": "두 다항식의 차로 미지 다항식을 역산한 뒤 특정 입력값 대입",
+        "structuralVerdict": "CONCEPT_PRESERVING_REDESIGN_NOT_ONLY_NUMBER_REPLACEMENT"
+      },
+      "qualityAxes": {
+        "STUDENT_REPRODUCIBILITY": "PASS: B=A-(x²+4x-6)=2x²-6x+10; B(1)=6.",
+        "SMALL_BOARD_STRUCTURE": "PASS: 3개 독립 판서 줄; 주요 조건과 식·결론의 각 단계 확인",
+        "EXPLANATION_DENSITY": "KEEP: 생략된 필수 판단 없이 목표 식과 결론의 연결을 검토함",
+        "VISUAL_SEMANTIC_PARITY": "PASS: 해설 외부 그림 참조 없음, 텍스트 수식 대조",
+        "VISUAL_READABILITY": "PASS: 작은칠판의 텍스트 단계 분리 확인(브라우저 실물 캡처 미실시)"
+      },
+      "svg": "EXEMPT"
+    },
+    {
+      "qid": 2,
+      "solutionDisposition": "KEEP",
+      "metadataDisposition": "REVISED",
+      "answerVerified": "④",
+      "studentEffect": "기존 해설만으로 독립 풀이 재현 가능",
+      "sourceComparison": {
+        "originalFile": "$(\\sqrt{-7} \\times \\sqrt{7}) - \\left(\\dfrac{\\sqrt{128}}{\\sqrt{-8}}\\right) + (\\sqrt{-3} \\times \\sqrt{-3}) \\times i$의 값은?\n(단, $i=\\sqrt{-1}$) [4점]",
+        "finalFile": "복소수 $z=\\sqrt{-18}\\,\\sqrt2-\\dfrac{\\sqrt{-50}}{\\sqrt2}+\\dfrac6i$라 하자. $iz$의 값은? (단, $i=\\sqrt{-1}$) [4점]",
+        "changeAxis": "허수부 계산 뒤 i를 곱한 실수값을 요구해 질문 대상을 전환",
+        "structuralVerdict": "CONCEPT_PRESERVING_REDESIGN_NOT_ONLY_NUMBER_REPLACEMENT"
+      },
+      "qualityAxes": {
+        "STUDENT_REPRODUCIBILITY": "PASS: sqrt(-18)sqrt2=6i, sqrt(-50)/sqrt2=5i, 6/i=-6i; z=-5i and iz=5.",
+        "SMALL_BOARD_STRUCTURE": "PASS: 3개 독립 판서 줄; 주요 조건과 식·결론의 각 단계 확인",
+        "EXPLANATION_DENSITY": "KEEP: 생략된 필수 판단 없이 목표 식과 결론의 연결을 검토함",
+        "VISUAL_SEMANTIC_PARITY": "PASS: 해설 외부 그림 참조 없음, 텍스트 수식 대조",
+        "VISUAL_READABILITY": "PASS: 작은칠판의 텍스트 단계 분리 확인(브라우저 실물 캡처 미실시)"
+      },
+      "svg": "EXEMPT"
+    },
+    {
+      "qid": 3,
+      "solutionDisposition": "KEEP",
+      "metadataDisposition": "REVISED",
+      "answerVerified": "③",
+      "studentEffect": "기존 해설만으로 독립 풀이 재현 가능",
+      "sourceComparison": {
+        "originalFile": "이차방정식 $x^2-3x-6=0$의 두 근을 $\\alpha, \\beta$라 할 때, $(\\alpha-\\beta)^2$의 값은?",
+        "finalFile": "이차방정식 $3x^2+6x-2=0$의 두 근을 $\\alpha,\\beta$라 하자. $\\alpha^2+\\beta^2$의 값은? [3.8점]",
+        "changeAxis": "근의 차의 제곱에서 두 근의 제곱합으로 대칭식 목표 변경",
+        "structuralVerdict": "CONCEPT_PRESERVING_REDESIGN_NOT_ONLY_NUMBER_REPLACEMENT"
+      },
+      "qualityAxes": {
+        "STUDENT_REPRODUCIBILITY": "PASS: α+β=-2, αβ=-2/3; α²+β²=4+4/3=16/3.",
+        "SMALL_BOARD_STRUCTURE": "PASS: 2개 독립 판서 줄; 주요 조건과 식·결론의 각 단계 확인",
+        "EXPLANATION_DENSITY": "KEEP: 생략된 필수 판단 없이 목표 식과 결론의 연결을 검토함",
+        "VISUAL_SEMANTIC_PARITY": "PASS: 해설 외부 그림 참조 없음, 텍스트 수식 대조",
+        "VISUAL_READABILITY": "PASS: 작은칠판의 텍스트 단계 분리 확인(브라우저 실물 캡처 미실시)"
+      },
+      "svg": "EXEMPT"
+    },
+    {
+      "qid": 4,
+      "solutionDisposition": "REVISED",
+      "metadataDisposition": "KEEP",
+      "answerVerified": "④",
+      "studentEffect": "판별식 기준으로 한 줄씩 검산 가능",
+      "sourceComparison": {
+        "originalFile": "$x$에 대한 이차함수 $y=x^2-2x+k-6$의 그래프와 $x$축이 만나지 않도록 하는 정수 $k$의 최솟값은?",
+        "finalFile": "이차함수 $y=-2x^2+8x+k-5$의 그래프가 $x$축과 만나지 않도록 하는 정수 $k$의 최댓값은? [3.8점]",
+        "changeAxis": "위로 열린 그래프의 정수 최솟값에서 아래로 열린 그래프의 정수 최댓값 판정",
+        "structuralVerdict": "CONCEPT_PRESERVING_REDESIGN_NOT_ONLY_NUMBER_REPLACEMENT"
+      },
+      "qualityAxes": {
+        "STUDENT_REPRODUCIBILITY": "PASS: y=-2(x-2)²+k+3, maximum k+3<0 implies greatest integer k=-4.",
+        "SMALL_BOARD_STRUCTURE": "PASS: 4개 독립 판서 줄; 주요 조건과 식·결론의 각 단계 확인",
+        "EXPLANATION_DENSITY": "REVISED: 핵심 조건/계산 연결을 보완, 중간 단계를 독립 줄로 배치",
+        "VISUAL_SEMANTIC_PARITY": "PASS: 해설 외부 그림 참조 없음, 텍스트 수식 대조",
+        "VISUAL_READABILITY": "PASS: 작은칠판의 텍스트 단계 분리 확인(브라우저 실물 캡처 미실시)"
+      },
+      "svg": "EXEMPT"
+    },
+    {
+      "qid": 5,
+      "solutionDisposition": "KEEP",
+      "metadataDisposition": "KEEP",
+      "answerVerified": "①",
+      "studentEffect": "기존 해설만으로 독립 풀이 재현 가능",
+      "sourceComparison": {
+        "originalFile": "이차함수 $y=2x^2+3x-1$의 그래프와 직선 $y=-2x+k$가 한 점에서 만나도록 하는 $k$에 대해 $\\dfrac{8}{11}|k|$의 값은?",
+        "finalFile": "이차함수 $y=x^2-2x+2$의 그래프에 접하며 점 $(0,1)$을 지나는 직선의 기울기를 모두 구했다. 그 기울기의 합은? [4점]",
+        "changeAxis": "고정 기울기의 절편 대신 고정 통과점의 접선 기울기 두 개를 찾음",
+        "structuralVerdict": "CONCEPT_PRESERVING_REDESIGN_NOT_ONLY_NUMBER_REPLACEMENT"
+      },
+      "qualityAxes": {
+        "STUDENT_REPRODUCIBILITY": "PASS: y=mx+1 intersects parabola via x²-(m+2)x+1=0; discriminant 0 gives m=0,-4 and sum -4.",
+        "SMALL_BOARD_STRUCTURE": "PASS: 4개 독립 판서 줄; 주요 조건과 식·결론의 각 단계 확인",
+        "EXPLANATION_DENSITY": "KEEP: 생략된 필수 판단 없이 목표 식과 결론의 연결을 검토함",
+        "VISUAL_SEMANTIC_PARITY": "PASS: 해설 외부 그림 참조 없음, 텍스트 수식 대조",
+        "VISUAL_READABILITY": "PASS: 작은칠판의 텍스트 단계 분리 확인(브라우저 실물 캡처 미실시)"
+      },
+      "svg": "EXEMPT"
+    },
+    {
+      "qid": 6,
+      "solutionDisposition": "KEEP",
+      "metadataDisposition": "REVISED",
+      "answerVerified": "②",
+      "studentEffect": "기존 해설만으로 독립 풀이 재현 가능",
+      "sourceComparison": {
+        "originalFile": "다항식 $3x^4+5x^3-x^2-5x-2$를 인수분해 하면\n$3 \\times (x+a)(x+b)(x+c)(x+d)$이다.\n이때, $a+b+c+d$의 값은? (단, $a, b, c, d$는 실수이다.)",
+        "finalFile": "다항식 $x^4-3x^3-3x^2+7x+6$이 $(x^2+ax-3)(x^2+cx-2)$로 인수분해된다. 실수 $a,c$에 대하여 $a+c+ac$의 값은? [4.2점]",
+        "changeAxis": "일차인수 네 개의 상수 합 대신 두 이차인수에서 x³·x² 계수를 함께 활용",
+        "structuralVerdict": "CONCEPT_PRESERVING_REDESIGN_NOT_ONLY_NUMBER_REPLACEMENT"
+      },
+      "qualityAxes": {
+        "STUDENT_REPRODUCIBILITY": "PASS: product expansion gives a+c=-3, ac-5=-3, so a+c+ac=-1.",
+        "SMALL_BOARD_STRUCTURE": "PASS: 3개 독립 판서 줄; 주요 조건과 식·결론의 각 단계 확인",
+        "EXPLANATION_DENSITY": "KEEP: 생략된 필수 판단 없이 목표 식과 결론의 연결을 검토함",
+        "VISUAL_SEMANTIC_PARITY": "PASS: 해설 외부 그림 참조 없음, 텍스트 수식 대조",
+        "VISUAL_READABILITY": "PASS: 작은칠판의 텍스트 단계 분리 확인(브라우저 실물 캡처 미실시)"
+      },
+      "svg": "EXEMPT"
+    },
+    {
+      "qid": 7,
+      "solutionDisposition": "KEEP",
+      "metadataDisposition": "REVISED",
+      "answerVerified": "②",
+      "studentEffect": "기존 해설만으로 독립 풀이 재현 가능",
+      "sourceComparison": {
+        "originalFile": "이차방정식 $x^2+5x+1=0$의 두 근을 $\\alpha, \\beta$라 할 때,\n$x^2$의 계수가 1이고 두 수 $\\dfrac{\\beta+1}{\\alpha}, \\dfrac{\\alpha+1}{\\beta}$를 두 근으로 하는 이차방정식을 $x^2+px+q=0$이라 할 때, $p+q$의 값은?\n(단, $p, q$는 실수이다.)",
+        "finalFile": "이차방정식 $x^2-5x+1=0$의 두 근을 $\\alpha,\\beta$라 하자. $\\dfrac{\\alpha}{\\beta+1}$, $\\dfrac{\\beta}{\\alpha+1}$을 두 근으로 하고 $x^2$의 계수가 $1$인 방정식이 $x^2+px+q=0$이다. $7(p+q)$의 값은? [4.4점]",
+        "changeAxis": "분자·분모 역할을 바꾼 변형근으로 공통 분모를 먼저 구성",
+        "structuralVerdict": "CONCEPT_PRESERVING_REDESIGN_NOT_ONLY_NUMBER_REPLACEMENT"
+      },
+      "qualityAxes": {
+        "STUDENT_REPRODUCIBILITY": "PASS: α+β=5, αβ=1; transformed roots sum (α²+β²+5)/7=28/7=4, product 1/7; p=-4, q=1/7, 7(p+q)=-27.",
+        "SMALL_BOARD_STRUCTURE": "PASS: 5개 독립 판서 줄; 주요 조건과 식·결론의 각 단계 확인",
+        "EXPLANATION_DENSITY": "KEEP: 생략된 필수 판단 없이 목표 식과 결론의 연결을 검토함",
+        "VISUAL_SEMANTIC_PARITY": "PASS: 해설 외부 그림 참조 없음, 텍스트 수식 대조",
+        "VISUAL_READABILITY": "PASS: 작은칠판의 텍스트 단계 분리 확인(브라우저 실물 캡처 미실시)"
+      },
+      "svg": "EXEMPT"
+    },
+    {
+      "qid": 8,
+      "solutionDisposition": "KEEP",
+      "metadataDisposition": "KEEP",
+      "answerVerified": "①",
+      "studentEffect": "기존 해설만으로 독립 풀이 재현 가능",
+      "sourceComparison": {
+        "originalFile": "최고차항의 계수가 양수인 다항식 $P(x)$가 모든 실수 $x$에 대하여\n$9\\{P(x)\\}^2=12P(x)+4x^4-12x^3+9x^2-4$를 만족할 때, $P(1)$의 값은?",
+        "finalFile": "최고차항의 계수가 양수인 다항식 $P(x)$가 모든 실수 $x$에 대하여\n$4\\{P(x)\\}^2+12P(x)=(x^2-4x+1)^2-9$\n를 만족한다. $P(-1)$의 값은? [4.5점]",
+        "changeAxis": "좌변 제곱식의 완전제곱 구성과 최고차항 부호로 다항식 부호 가지 판정",
+        "structuralVerdict": "CONCEPT_PRESERVING_REDESIGN_NOT_ONLY_NUMBER_REPLACEMENT"
+      },
+      "qualityAxes": {
+        "STUDENT_REPRODUCIBILITY": "PASS: (2P+3)²=(x²-4x+1)² as polynomial identity; positive leading coefficient selects plus, P=(x²-4x-2)/2; P(-1)=3/2.",
+        "SMALL_BOARD_STRUCTURE": "PASS: 4개 독립 판서 줄; 주요 조건과 식·결론의 각 단계 확인",
+        "EXPLANATION_DENSITY": "KEEP: 생략된 필수 판단 없이 목표 식과 결론의 연결을 검토함",
+        "VISUAL_SEMANTIC_PARITY": "PASS: 해설 외부 그림 참조 없음, 텍스트 수식 대조",
+        "VISUAL_READABILITY": "PASS: 작은칠판의 텍스트 단계 분리 확인(브라우저 실물 캡처 미실시)"
+      },
+      "svg": "EXEMPT"
+    },
+    {
+      "qid": 9,
+      "solutionDisposition": "KEEP",
+      "metadataDisposition": "KEEP",
+      "answerVerified": "①",
+      "studentEffect": "기존 해설만으로 독립 풀이 재현 가능",
+      "sourceComparison": {
+        "originalFile": "다음 그림과 같이 직사각형 $ABCD$의 두 꼭짓점 $A, B$는 이차함수 $y=-\\dfrac{1}{3}x^2+3$의 그래프 위에 있고, 두 꼭짓점 $C, D$는 이차함수 $y=x^2-9$의 그래프 위에 있다. 이때 직사각형 $ABCD$의 둘레의 길이에 대한 최댓값은?\n(단, 점 $A$는 제1사분면, 점 $D$는 제4사분면 위의 점이다.)",
+        "finalFile": "실수 $t$가 $0<t<\\sqrt5$를 만족할 때, 네 점\n$A(t,-t^2+6)$, $B(-t,-t^2+6)$, $C(-t,t^2-4)$, $D(t,t^2-4)$를 꼭짓점으로 하는 직사각형 $ABCD$가 있다. 이 직사각형의 둘레의 길이의 최댓값은? [4.5점]",
+        "changeAxis": "원본 그림의 기하 관계를 네 꼭짓점 좌표로 명시하고 가로·세로를 직접 추출",
+        "structuralVerdict": "CONCEPT_PRESERVING_REDESIGN_NOT_ONLY_NUMBER_REPLACEMENT"
+      },
+      "qualityAxes": {
+        "STUDENT_REPRODUCIBILITY": "PASS: width=2t, height=10-2t² for 0<t<sqrt5; perimeter=20+4t-4t²=21-4(t-1/2)², max 21 at t=1/2.",
+        "SMALL_BOARD_STRUCTURE": "PASS: 4개 독립 판서 줄; 주요 조건과 식·결론의 각 단계 확인",
+        "EXPLANATION_DENSITY": "KEEP: 생략된 필수 판단 없이 목표 식과 결론의 연결을 검토함",
+        "VISUAL_SEMANTIC_PARITY": "HOLD: 해설 그림 미제작으로 실물 의미 동일성 NOT_RUN",
+        "VISUAL_READABILITY": "HOLD: SVG/PNG 시각검수 NOT_RUN"
+      },
+      "svg": "SVG_TO_CREATE / NOT_RUN"
+    },
+    {
+      "qid": 10,
+      "solutionDisposition": "KEEP",
+      "metadataDisposition": "REVISED",
+      "answerVerified": "③",
+      "studentEffect": "기존 해설만으로 독립 풀이 재현 가능",
+      "sourceComparison": {
+        "originalFile": "사차방정식 $(x^2-4x)(x^2-4x+7)+10=0$의 서로 다른 두 실근을 $\\alpha, \\beta$라 할 때, $\\alpha\\beta$의 값은? [4.4점]",
+        "finalFile": "사차방정식 $(x^2-2x+1)(x^2-2x-2)-4=0$의 서로 다른 두 실근을 $\\alpha,\\beta$라 하자. $\\alpha+\\beta$의 값은? [4.4점]",
+        "changeAxis": "치환 이후 실근이 가능한 가지를 판별하고 실근 합으로 질문 이동",
+        "structuralVerdict": "CONCEPT_PRESERVING_REDESIGN_NOT_ONLY_NUMBER_REPLACEMENT"
+      },
+      "qualityAxes": {
+        "STUDENT_REPRODUCIBILITY": "PASS: u=x²-2x yields (u-3)(u+2)=0. u=-2 gives no real x, u=3 yields x=3,-1; sum 2.",
+        "SMALL_BOARD_STRUCTURE": "PASS: 4개 독립 판서 줄; 주요 조건과 식·결론의 각 단계 확인",
+        "EXPLANATION_DENSITY": "KEEP: 생략된 필수 판단 없이 목표 식과 결론의 연결을 검토함",
+        "VISUAL_SEMANTIC_PARITY": "PASS: 해설 외부 그림 참조 없음, 텍스트 수식 대조",
+        "VISUAL_READABILITY": "PASS: 작은칠판의 텍스트 단계 분리 확인(브라우저 실물 캡처 미실시)"
+      },
+      "svg": "EXEMPT"
+    },
+    {
+      "qid": 11,
+      "solutionDisposition": "KEEP",
+      "metadataDisposition": "REVISED",
+      "answerVerified": "⑤",
+      "studentEffect": "기존 해설만으로 독립 풀이 재현 가능",
+      "sourceComparison": {
+        "originalFile": "다항식 $f(x)$를 $x^4+x^3+4x+2$로 나누었을 때, 나머지는 $x^3+2x^2-5x+4$이고, $x^2+2x+1$로 나누었을 때, 몫은 $x^3+3x^2-2x+7$이다. 이때, $f(1)$의 값은?",
+        "finalFile": "다항식 $f(x)$를 $(x-1)^2$로 나누었을 때 몫은 $x^3+2x^2-x+4$이고 나머지는 일차식이다. 또 $f(x)$를 $x^2-1$로 나누었을 때 나머지는 $4x+2$이다. $f(2)$의 값은? [4.7점]",
+        "changeAxis": "두 나머지 조건을 ±1 대입으로 연결하여 미지 일차 나머지를 결정",
+        "structuralVerdict": "CONCEPT_PRESERVING_REDESIGN_NOT_ONLY_NUMBER_REPLACEMENT"
+      },
+      "qualityAxes": {
+        "STUDENT_REPRODUCIBILITY": "PASS: f(1)=6, f(-1)=-2 and Q(-1)=6 imply remainder R(x)=16x-10; f(2)=18+22=40.",
+        "SMALL_BOARD_STRUCTURE": "PASS: 6개 독립 판서 줄; 주요 조건과 식·결론의 각 단계 확인",
+        "EXPLANATION_DENSITY": "KEEP: 생략된 필수 판단 없이 목표 식과 결론의 연결을 검토함",
+        "VISUAL_SEMANTIC_PARITY": "PASS: 해설 외부 그림 참조 없음, 텍스트 수식 대조",
+        "VISUAL_READABILITY": "PASS: 작은칠판의 텍스트 단계 분리 확인(브라우저 실물 캡처 미실시)"
+      },
+      "svg": "EXEMPT"
+    },
+    {
+      "qid": 12,
+      "solutionDisposition": "KEEP",
+      "metadataDisposition": "REVISED",
+      "answerVerified": "②",
+      "studentEffect": "기존 해설만으로 독립 풀이 재현 가능",
+      "sourceComparison": {
+        "originalFile": "두 다항식 $f(x), g(x)$가 다음 조건을 만족시킨다.\n<div class=\"question-table-wrap\">\n<table class=\"question-table\">\n<tr><td>(가) 모든 실수 $x$에 대하여 $f(x)=xg(x)$이다.</td></tr>\n<tr><td>(나) 다항식 $f(x)g(x)$를 $3x+2$로 나눈 나머지는 $-\\dfrac{2}{3}$이다.</td></tr>\n</table>\n</div>\n다항식 $(9x^2+\\dfrac{3}{4}) \\times f(2x-3)$을 $6x-7$로 나눈 나머지의 최솟값은?",
+        "finalFile": "두 다항식 $f(x),g(x)$가 다음을 만족한다.\n(가) 모든 실수 $x$에서 $f(x)=(3x+1)g(x)$이다.\n(나) 다항식 $f(x)g(x)$를 $3x-1$로 나눈 나머지는 $18$이다.\n다항식 $(9x^2+1)f(2x-1)$을 $3x-2$로 나눈 나머지로 가능한 값 중 최솟값은? [4.7점]",
+        "changeAxis": "두 일차식의 서로 다른 근을 합성함수 입력으로 역연결하여 부호 두 가지 비교",
+        "structuralVerdict": "CONCEPT_PRESERVING_REDESIGN_NOT_ONLY_NUMBER_REPLACEMENT"
+      },
+      "qualityAxes": {
+        "STUDENT_REPRODUCIBILITY": "PASS: at x=1/3, f=2g and fg=18, giving g=±3, f=±6; at x=2/3 target remainder=5f(1/3)=±30, minimum -30.",
+        "SMALL_BOARD_STRUCTURE": "PASS: 5개 독립 판서 줄; 주요 조건과 식·결론의 각 단계 확인",
+        "EXPLANATION_DENSITY": "KEEP: 생략된 필수 판단 없이 목표 식과 결론의 연결을 검토함",
+        "VISUAL_SEMANTIC_PARITY": "PASS: 해설 외부 그림 참조 없음, 텍스트 수식 대조",
+        "VISUAL_READABILITY": "PASS: 작은칠판의 텍스트 단계 분리 확인(브라우저 실물 캡처 미실시)"
+      },
+      "svg": "EXEMPT"
+    },
+    {
+      "qid": 13,
+      "solutionDisposition": "KEEP",
+      "metadataDisposition": "KEEP",
+      "answerVerified": "①",
+      "studentEffect": "기존 해설만으로 독립 풀이 재현 가능",
+      "sourceComparison": {
+        "originalFile": "길이가 $80\\text{cm}$인 철사를 잘라서 한 변의 길이가 각각 $a\\text{cm}, b\\text{cm}$ ($a>b$)인 두 개의 정사각형을 만들었다. 이 두 정사각형의 넓이의 합이 $218\\text{cm}^2$일 때, $a$의 값은?\n(단, 철사는 모두 사용하고 굵기는 무시한다.) [4.7점]",
+        "finalFile": "길이 $88\\,\\mathrm{cm}$의 철사를 남김없이 잘라 한 변의 길이가 각각 $a\\,\\mathrm{cm}$, $b\\,\\mathrm{cm}$ ($a>b$)인 두 정사각형을 만들었다. 두 정사각형의 넓이의 합이 $250\\,\\mathrm{cm}^2$일 때, 두 정사각형의 둘레의 길이의 차는 몇 $\\mathrm{cm}$인가? [4.7점]",
+        "changeAxis": "변의 길이를 직접 구하는 대신 합·차 대칭식으로 둘레 차를 계산",
+        "structuralVerdict": "CONCEPT_PRESERVING_REDESIGN_NOT_ONLY_NUMBER_REPLACEMENT"
+      },
+      "qualityAxes": {
+        "STUDENT_REPRODUCIBILITY": "PASS: a+b=22, a²+b²=250, ab=117, (a-b)²=16; a>b gives a-b=4 and perimeter difference 16.",
+        "SMALL_BOARD_STRUCTURE": "PASS: 4개 독립 판서 줄; 주요 조건과 식·결론의 각 단계 확인",
+        "EXPLANATION_DENSITY": "KEEP: 생략된 필수 판단 없이 목표 식과 결론의 연결을 검토함",
+        "VISUAL_SEMANTIC_PARITY": "PASS: 해설 외부 그림 참조 없음, 텍스트 수식 대조",
+        "VISUAL_READABILITY": "PASS: 작은칠판의 텍스트 단계 분리 확인(브라우저 실물 캡처 미실시)"
+      },
+      "svg": "EXEMPT"
+    },
+    {
+      "qid": 14,
+      "solutionDisposition": "KEEP",
+      "metadataDisposition": "REVISED",
+      "answerVerified": "③",
+      "studentEffect": "기존 해설만으로 독립 풀이 재현 가능",
+      "sourceComparison": {
+        "originalFile": "삼차방정식 $x^3=-1$의 한 허근을 $\\omega$라 할 때,\n$\\omega+2\\omega^2+3\\omega^3+4\\omega^4+5\\omega^5+6\\omega^6+7\\omega^7+8\\omega^8+9\\omega^9=a+b\\omega$\n를 만족시키는 두 실수 $a, b$에 대하여 $b-a$의 값은? [4.7점]",
+        "finalFile": "$x^3=-1$의 한 허근을 $\\omega$라 한다. 실수 $a,b$가\n$-\\omega+2\\omega^2-3\\omega^3+4\\omega^4-\\cdots+12\\omega^{12}=a+b\\omega$\n를 만족할 때 $a+b$의 값은? [4.7점]",
+        "changeAxis": "교대 부호를 -ω의 세 주기 묶음으로 전환한 뒤 a+b 산출",
+        "structuralVerdict": "CONCEPT_PRESERVING_REDESIGN_NOT_ONLY_NUMBER_REPLACEMENT"
+      },
+      "qualityAxes": {
+        "STUDENT_REPRODUCIBILITY": "PASS: r=-ω has r³=1 and 1+r+r²=0; sum k r^k (k=1..12) =30+22r+26r²=4-4r=4+4ω, so a+b=8.",
+        "SMALL_BOARD_STRUCTURE": "PASS: 5개 독립 판서 줄; 주요 조건과 식·결론의 각 단계 확인",
+        "EXPLANATION_DENSITY": "KEEP: 생략된 필수 판단 없이 목표 식과 결론의 연결을 검토함",
+        "VISUAL_SEMANTIC_PARITY": "PASS: 해설 외부 그림 참조 없음, 텍스트 수식 대조",
+        "VISUAL_READABILITY": "PASS: 작은칠판의 텍스트 단계 분리 확인(브라우저 실물 캡처 미실시)"
+      },
+      "svg": "EXEMPT"
+    },
+    {
+      "qid": 15,
+      "solutionDisposition": "KEEP",
+      "metadataDisposition": "REVISED",
+      "answerVerified": "②",
+      "studentEffect": "기존 해설만으로 독립 풀이 재현 가능",
+      "sourceComparison": {
+        "originalFile": "최고차항의 계수가 양수인 이차함수 $f(x)$가 다음 조건을 만족시킬 때, $f(3)$의 값은?\n<div class=\"question-table-wrap\">\n<table class=\"question-table\">\n<tr><td>(가) 함수 $y=f(x)$의 그래프와 직선 $y=7$이 만나는 두 점의 $x$좌표는 각각 $-3, 1$이다.</td></tr>\n<tr><td>(나) $-2 \\le x \\le 2$에서 이차함수 $f(x)$의 최댓값은 22이다.</td></tr>\n</table>\n</div>",
+        "finalFile": "최고차항의 계수가 양수인 이차함수 $f(x)$가 $f(-1)=f(3)=4$를 만족한다. 구간 $-2\\le x\\le3$에서 $f(x)$의 최댓값이 $19$일 때, $f(x)$의 최솟값은? [4.6점]",
+        "changeAxis": "두 수평선 교점과 한정구간 최댓값을 역산해 전 구간 꼭짓점 최솟값을 구함",
+        "structuralVerdict": "CONCEPT_PRESERVING_REDESIGN_NOT_ONLY_NUMBER_REPLACEMENT"
+      },
+      "qualityAxes": {
+        "STUDENT_REPRODUCIBILITY": "PASS: axis x=1, f=a(x-1)²+c; f(-1)=4 gives 4a+c=4. max at x=-2 is 9a+c=19, yielding a=3, c=-8.",
+        "SMALL_BOARD_STRUCTURE": "PASS: 4개 독립 판서 줄; 주요 조건과 식·결론의 각 단계 확인",
+        "EXPLANATION_DENSITY": "KEEP: 생략된 필수 판단 없이 목표 식과 결론의 연결을 검토함",
+        "VISUAL_SEMANTIC_PARITY": "PASS: 해설 외부 그림 참조 없음, 텍스트 수식 대조",
+        "VISUAL_READABILITY": "PASS: 작은칠판의 텍스트 단계 분리 확인(브라우저 실물 캡처 미실시)"
+      },
+      "svg": "EXEMPT"
+    },
+    {
+      "qid": 16,
+      "solutionDisposition": "REVISED",
+      "metadataDisposition": "REVISED",
+      "answerVerified": "④",
+      "studentEffect": "홀수 지수 제외 이유와 나머지류별 세기가 명료함",
+      "sourceComparison": {
+        "originalFile": "$\\left\\{(\\dfrac{1-i}{\\sqrt{2}})^m + (-i)^n\\right\\}^2 = -2i$를 만족하는 100이하의 자연수 $m, n$에 대하여 $m+n$의 최댓값은? (단, $i=\\sqrt{-1}$) [4.8점]",
+        "finalFile": "$\\left\\{\\left(\\dfrac{1+i}{\\sqrt2}\\right)^m+(-i)^n\\right\\}^2=2i$를 만족하는 $50$ 이하의 자연수 $m,n$의 순서쌍 $(m,n)$은 모두 몇 개인가? (단, $i=\\sqrt{-1}$) [4.8점]",
+        "changeAxis": "최대 지수합 대신 두 주기의 합동 조건에 맞는 순서쌍 개수를 셈",
+        "structuralVerdict": "CONCEPT_PRESERVING_REDESIGN_NOT_ONLY_NUMBER_REPLACEMENT"
+      },
+      "qualityAxes": {
+        "STUDENT_REPRODUCIBILITY": "PASS: sum of two unit complex numbers must equal ±(1+i), hence pairs (1,i),(i,1),(-1,-i),(-i,-1). Counts m classes 6,7,6,6 and n classes 12,12,13,13; total 312.",
+        "SMALL_BOARD_STRUCTURE": "PASS: 10개 독립 판서 줄; 주요 조건과 식·결론의 각 단계 확인",
+        "EXPLANATION_DENSITY": "REVISED: 핵심 조건/계산 연결을 보완, 중간 단계를 독립 줄로 배치",
+        "VISUAL_SEMANTIC_PARITY": "PASS: 해설 외부 그림 참조 없음, 텍스트 수식 대조",
+        "VISUAL_READABILITY": "PASS: 작은칠판의 텍스트 단계 분리 확인(브라우저 실물 캡처 미실시)"
+      },
+      "svg": "EXEMPT"
+    },
+    {
+      "qid": 17,
+      "solutionDisposition": "KEEP",
+      "metadataDisposition": "REVISED",
+      "answerVerified": "①",
+      "studentEffect": "기존 해설만으로 독립 풀이 재현 가능",
+      "sourceComparison": {
+        "originalFile": "계수가 각각 실수인 삼차다항식 $P(x)$, 일차다항식 $Q(x)$가 아래의 조건을 만족할 때, $\\dfrac{P(0) \\times Q(1)}{a}$의 값은?\n\n(가) $P(x) \\times Q(x)$는 $(x^2-6x+10)(x-2)$로 나누어 떨어진다.\n\n(나) 모든 $x$에 대하여 $x^3-4x^2+ax-a-1=P(x)+\\{Q(x)\\}^2$\n\n(다) $Q(0)>0,\\ Q(1)>0,\\ P(0)<0,\\ P(2)=0$",
+        "finalFile": "실수 계수인 삼차다항식 $P(x)$와 일차다항식 $Q(x)$가 다음 조건을 만족한다.\n(가) $P(x)Q(x)$는 $(x^2-2x+2)(x-3)$으로 나누어떨어진다.\n(나) 모든 실수 $x$에 대해 $x^3-x^2+ax+7-a=P(x)+\\{Q(x)\\}^2$이다.\n(다) $P(3)=0$, $P(0)<0$, $Q(0)>0$, $Q(1)>Q(0)$이다.\n이때 $\\dfrac{P(0)Q(2)}a$의 값은? [4.9점]",
+        "changeAxis": "복소근을 갖는 이차인수의 귀속과 Q의 부호·기울기 조건으로 역복원",
+        "structuralVerdict": "CONCEPT_PRESERVING_REDESIGN_NOT_ONLY_NUMBER_REPLACEMENT"
+      },
+      "qualityAxes": {
+        "STUDENT_REPRODUCIBILITY": "PASS: real irreducible x²-2x+2 and x-3 divide P, so P=(x²-2x+2)(x-3)=x³-5x²+8x-6. Let Q=ux+v; u²=4, u>0=>u=2; v²+4v-5=0, v>0=>v=1; a=12, P(0)Q(2)/a=-30/12=-5/2.",
+        "SMALL_BOARD_STRUCTURE": "PASS: 8개 독립 판서 줄; 주요 조건과 식·결론의 각 단계 확인",
+        "EXPLANATION_DENSITY": "KEEP: 생략된 필수 판단 없이 목표 식과 결론의 연결을 검토함",
+        "VISUAL_SEMANTIC_PARITY": "PASS: 해설 외부 그림 참조 없음, 텍스트 수식 대조",
+        "VISUAL_READABILITY": "PASS: 작은칠판의 텍스트 단계 분리 확인(브라우저 실물 캡처 미실시)"
+      },
+      "svg": "EXEMPT"
+    },
+    {
+      "qid": 18,
+      "solutionDisposition": "KEEP",
+      "metadataDisposition": "REVISED",
+      "answerVerified": "②",
+      "studentEffect": "기존 해설만으로 독립 풀이 재현 가능",
+      "sourceComparison": {
+        "originalFile": "$x$에 대한 사차방정식 $x^4-(2m+3)x^2+m^2+2=0$이 서로 다른 네 실근 $a, b, c, d$를 갖고, $ad+bc=-11$의 관계가 성립할 때, 양수 $m$의 값은? (단, $a<b<c<d$이다.) [5점]",
+        "finalFile": "사차방정식 $x^4-(m+6)x^2+m^2+7=0$이 서로 다른 네 실근 $a<b<c<d$를 갖는다. $ac+bd=-8$일 때 양수 $m$의 값은? [5점]",
+        "changeAxis": "네 근의 외측 곱 합에서 내측·외측 교차곱으로 조건을 변경해 t근의 곱을 사용",
+        "structuralVerdict": "CONCEPT_PRESERVING_REDESIGN_NOT_ONLY_NUMBER_REPLACEMENT"
+      },
+      "qualityAxes": {
+        "STUDENT_REPRODUCIBILITY": "PASS: roots ±sqrt(u),±sqrt(v), u>v>0. ac+bd=-2sqrt(uv)=-8 implies uv=m²+7=16; m=3 positive. Discriminant and positivity hold.",
+        "SMALL_BOARD_STRUCTURE": "PASS: 5개 독립 판서 줄; 주요 조건과 식·결론의 각 단계 확인",
+        "EXPLANATION_DENSITY": "KEEP: 생략된 필수 판단 없이 목표 식과 결론의 연결을 검토함",
+        "VISUAL_SEMANTIC_PARITY": "PASS: 해설 외부 그림 참조 없음, 텍스트 수식 대조",
+        "VISUAL_READABILITY": "PASS: 작은칠판의 텍스트 단계 분리 확인(브라우저 실물 캡처 미실시)"
+      },
+      "svg": "EXEMPT"
+    },
+    {
+      "qid": 19,
+      "solutionDisposition": "KEEP",
+      "metadataDisposition": "REVISED",
+      "answerVerified": "각 C가 직각인 직각삼각형",
+      "studentEffect": "기존 해설만으로 독립 풀이 재현 가능",
+      "sourceComparison": {
+        "originalFile": "[서답형(서술형) 1]\n실수 $a, b, c$에 대해서 삼각형 $ABC$가 다음을 만족할 때,\n$a^3+a^2b-ab^2-b^3-ac^2-bc^2=0$ 삼각형 $ABC$가 무슨 삼각형인지 정확하게 풀이과정과 함께 쓰시오.",
+        "finalFile": "[서답형(서술형) 1]\n삼각형 $ABC$의 세 변의 길이를 $BC=a$, $CA=b$, $AB=c$라 하자. $a>b$이고\n$a^3-a^2b+ab^2-b^3-ac^2+bc^2=0$\n일 때 삼각형 $ABC$의 종류를 인수분해를 이용하여 설명하시오. [4.8점]",
+        "changeAxis": "a≠b인 추가 조건으로 이중 인수 중 하나를 배제한 뒤 직각 판정",
+        "structuralVerdict": "CONCEPT_PRESERVING_REDESIGN_NOT_ONLY_NUMBER_REPLACEMENT"
+      },
+      "qualityAxes": {
+        "STUDENT_REPRODUCIBILITY": "PASS: given cubic equals (a-b)(a²+b²-c²). Since a>b, a²+b²=c². Pythagoras converse: side c=AB is opposite C, so angle C right.",
+        "SMALL_BOARD_STRUCTURE": "PASS: 4개 독립 판서 줄; 주요 조건과 식·결론의 각 단계 확인",
+        "EXPLANATION_DENSITY": "KEEP: 생략된 필수 판단 없이 목표 식과 결론의 연결을 검토함",
+        "VISUAL_SEMANTIC_PARITY": "PASS: 해설 외부 그림 참조 없음, 텍스트 수식 대조",
+        "VISUAL_READABILITY": "PASS: 작은칠판의 텍스트 단계 분리 확인(브라우저 실물 캡처 미실시)"
+      },
+      "svg": "EXEMPT"
+    },
+    {
+      "qid": 20,
+      "solutionDisposition": "KEEP",
+      "metadataDisposition": "REVISED",
+      "answerVerified": "(1) $7$ (2) $18$ (3) $322$",
+      "studentEffect": "기존 해설만으로 독립 풀이 재현 가능",
+      "sourceComparison": {
+        "originalFile": "[서답형(서술형) 2]\n실수 $x, y$에 대하여 $x>y$이고 다음을 만족한다.\n$x+y=-3$이고 $xy=1$이다.\n(1) $x-y$의 값을 구하시오.\n(2) $x^3-y^3$의 값을 구하시오.\n(3) $x^6-y^6$의 값을 구하시오.",
+        "finalFile": "[서답형(서술형) 2]\n두 실수 $x,y$가 $x+y=3$, $xy=1$을 만족한다. 다음을 풀이 과정과 함께 구하시오.\n(1) $x^2+y^2$\n(2) $x^3+y^3$\n(3) $x^6+y^6$ [5점]",
+        "changeAxis": "차의 거듭제곱을 구하는 원본 대신 대칭식의 제곱합·세제곱합·여섯제곱합 연결",
+        "structuralVerdict": "CONCEPT_PRESERVING_REDESIGN_NOT_ONLY_NUMBER_REPLACEMENT"
+      },
+      "qualityAxes": {
+        "STUDENT_REPRODUCIBILITY": "PASS: x²+y²=3²-2=7; x³+y³=3³-3·1·3=18; x⁶+y⁶=(x³+y³)²-2(xy)³=324-2=322.",
+        "SMALL_BOARD_STRUCTURE": "PASS: 4개 독립 판서 줄; 주요 조건과 식·결론의 각 단계 확인",
+        "EXPLANATION_DENSITY": "KEEP: 생략된 필수 판단 없이 목표 식과 결론의 연결을 검토함",
+        "VISUAL_SEMANTIC_PARITY": "PASS: 해설 외부 그림 참조 없음, 텍스트 수식 대조",
+        "VISUAL_READABILITY": "PASS: 작은칠판의 텍스트 단계 분리 확인(브라우저 실물 캡처 미실시)"
+      },
+      "svg": "EXEMPT"
+    },
+    {
+      "qid": 21,
+      "solutionDisposition": "KEEP",
+      "metadataDisposition": "KEEP",
+      "answerVerified": "(1) $(4,3)$, $(0,5)$ (2) $7$",
+      "studentEffect": "기존 해설만으로 독립 풀이 재현 가능",
+      "sourceComparison": {
+        "originalFile": "[서답형(서술형) 3]\n연립방정식 $\\begin{cases} x-y=3 \\\\ x^2+y^2=17 \\end{cases}$의 해를 $x=\\alpha, y=\\beta$라 할 때, 다음의 물음에 답하시오.\n(1) $\\alpha, \\beta$의 값을 모두 구하시오. (단, 한 쌍씩 정확하게 쓰시오.)\n(2) $\\alpha+\\beta$의 최댓값을 구하시오. [총 5점] [부분점수 부여] (1) [4점], (2) [1점]",
+        "finalFile": "[서답형(서술형) 3]\n연립방정식 $\\begin{cases}x+2y=10\\\\x^2+y^2=25\\end{cases}$의 모든 실수해 $(x,y)$에 대하여 다음을 구하시오.\n(1) 순서쌍 $(x,y)$를 모두 구하시오. [4점]\n(2) $x^2-y^2$의 최댓값을 구하시오. [1점] [총 5점]",
+        "changeAxis": "일차식의 x:y 비를 바꾸고 해쌍별 제곱 차의 최댓값을 판정",
+        "structuralVerdict": "CONCEPT_PRESERVING_REDESIGN_NOT_ONLY_NUMBER_REPLACEMENT"
+      },
+      "qualityAxes": {
+        "STUDENT_REPRODUCIBILITY": "PASS: x=10-2y gives y²-8y+15=0, y=3 or 5. Points (4,3),(0,5); x²-y² respectively 7,-25, maximum 7.",
+        "SMALL_BOARD_STRUCTURE": "PASS: 5개 독립 판서 줄; 주요 조건과 식·결론의 각 단계 확인",
+        "EXPLANATION_DENSITY": "KEEP: 생략된 필수 판단 없이 목표 식과 결론의 연결을 검토함",
+        "VISUAL_SEMANTIC_PARITY": "PASS: 해설 외부 그림 참조 없음, 텍스트 수식 대조",
+        "VISUAL_READABILITY": "PASS: 작은칠판의 텍스트 단계 분리 확인(브라우저 실물 캡처 미실시)"
+      },
+      "svg": "EXEMPT"
+    },
+    {
+      "qid": 22,
+      "solutionDisposition": "REVISED",
+      "metadataDisposition": "REVISED",
+      "answerVerified": "2",
+      "studentEffect": "경계 양끝의 포함 여부와 외측 두 근 판정이 명시됨",
+      "sourceComparison": {
+        "originalFile": "[서답형(서술형) 4]\n두 이차함수 $f(x)=x^2+4x+4$,<br>$g(x)=-(x+1)^2+5$\n$h(x) = \\begin{cases} f(x) (x \\le -3 \\text{ 또는 } x \\ge 0) \\\\ g(x) (-3 < x < 0) \\end{cases}$\n이라 하자. 직선 $y=mx+7$과 $y=h(x)$의 그래프가 서로 다른 세 점에서 만나도록 하는 실수 $m$의 값의 합을 $S$라 할 때, $10S^2$의 값을 구하시오. [총 6점] [부분점수 부여]",
+        "finalFile": "[서답형(서술형) 4]\n두 이차함수 $f(x)=x^2$, $g(x)=2-x^2$로 함수 $h$를\n$h(x)=\\begin{cases}f(x)&(x\\le-1\\text{ 또는 }x\\ge1)\\\\g(x)&(-1<x<1)\\end{cases}$\n와 같이 정한다. 직선 $y=mx+2$와 $y=h(x)$의 그래프가 서로 다른 세 점에서 만나도록 하는 모든 실수 $m$에 대하여, 그 $m^2$의 합을 구하시오. [총 6점]",
+        "changeAxis": "두 포물선을 대칭 구간으로 배치해 경계·중근에서만 정확히 세 교점을 갖게 설계",
+        "structuralVerdict": "CONCEPT_PRESERVING_REDESIGN_NOT_ONLY_NUMBER_REPLACEMENT"
+      },
+      "qualityAxes": {
+        "STUDENT_REPRODUCIBILITY": "PASS: x=0 always; inner second x=-m exists if 0<|m|<1; outer roots of x²-mx-2=0 are both allowed precisely -1≤m≤1. Three distinct intersections occur m=-1,0,1, whose squared sum is 2.",
+        "SMALL_BOARD_STRUCTURE": "PASS: 10개 독립 판서 줄; 주요 조건과 식·결론의 각 단계 확인",
+        "EXPLANATION_DENSITY": "REVISED: 핵심 조건/계산 연결을 보완, 중간 단계를 독립 줄로 배치",
+        "VISUAL_SEMANTIC_PARITY": "HOLD: 해설 그림 미제작으로 실물 의미 동일성 NOT_RUN",
+        "VISUAL_READABILITY": "HOLD: SVG/PNG 시각검수 NOT_RUN"
+      },
+      "svg": "SVG_TO_CREATE / NOT_RUN"
+    }
+  ],
+  "releaseGuard": "R1 PASS_WITH_ITEM_HOLDS is not release/visual completion; do not set reviewed registration approval without authority"
+}

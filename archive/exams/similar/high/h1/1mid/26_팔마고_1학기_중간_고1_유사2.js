@@ -35,7 +35,7 @@ window.questionBank = [
     "rpmPrimaryRecordId": "H1-RPM-135",
     "crossConceptKeys": [
       "CC_POLYNOMIAL_ADDITION_SUBTRACTION",
-      "CC_COEFFICIENT_COMPARISON"
+      "CC_POLYNOMIAL_EVALUATION"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
@@ -108,14 +108,14 @@ window.questionBank = [
   },
   {
     "id": 3,
-    "category": "복소수와 이차방정식",
+    "category": "이차방정식과 이차함수",
     "standardCourse": "공통수학1",
     "curriculum": "2022",
-    "standardUnitKey": "H22-C-04",
-    "standardUnit": "복소수와 이차방정식",
-    "standardUnitOrder": 4,
-    "subUnitKey": "H22-C-04-COMPLEX_ROOT",
-    "subUnit": "복소수와 이차방정식",
+    "standardUnitKey": "H22-C-05",
+    "standardUnit": "이차방정식과 이차함수",
+    "standardUnitOrder": 5,
+    "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
+    "subUnit": "이차방정식",
     "subUnitClassificationDepth": "complete_active_binding",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -182,7 +182,7 @@ window.questionBank = [
       "$-3$"
     ],
     "answer": "④",
-    "solution": "$y=-2(x-2)^2+k+3$으로 정리한다.\n아래로 열린 포물선이 $x$축과 만나지 않으려면 꼭짓점의 $y$좌표인 $k+3$이 $0$보다 작아야 한다.\n따라서 $k<-3$이므로 정수 $k$의 최댓값은 $-4$이다.\n판별식으로도 $D=8^2-4(-2)(k-5)=8(k+3)<0$을 확인할 수 있다.",
+    "solution": "그래프가 $x$축과 만나지 않으려면 $-2x^2+8x+k-5=0$이 실근을 갖지 않아야 한다.\n따라서 판별식 $D$가 $0$보다 작아야 한다.\n$D=8^2-4(-2)(k-5)=64+8k-40=8(k+3)<0$이다.\n그러므로 $k<-3$이고, 정수 $k$의 최댓값은 $-4$이다.",
     "score": 3.8,
     "points": 3.8,
     "difficultyBucket": 2,
@@ -266,14 +266,14 @@ window.questionBank = [
   },
   {
     "id": 6,
-    "category": "인수분해",
+    "category": "다항식의 연산",
     "standardCourse": "공통수학1",
     "curriculum": "2022",
-    "standardUnitKey": "H22-C-03",
-    "standardUnit": "인수분해",
-    "standardUnitOrder": 3,
-    "subUnitKey": "H22-C-03-FACTORIZATION",
-    "subUnit": "인수분해",
+    "standardUnitKey": "H22-C-01",
+    "standardUnit": "다항식의 연산",
+    "standardUnitOrder": 1,
+    "subUnitKey": "H22-C-01-POLYNOMIAL_BASIC",
+    "subUnit": "다항식의 연산",
     "subUnitClassificationDepth": "complete_active_binding",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -294,10 +294,10 @@ window.questionBank = [
     "difficultyBucket": 2,
     "problemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
     "templateKey": "TPL_H1_POLY_COEFFICIENT_EXTRACTION",
-    "rpmPrimaryRecordId": "H1-RPM-152",
+    "rpmPrimaryRecordId": "H1-RPM-137",
     "crossConceptKeys": [
       "CC_COEFFICIENT_EXTRACTION_SELECTIVE",
-      "CC_POLYNOMIAL_FACTORIZATION"
+      "CC_POLYNOMIAL_MULTIPLICATION"
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
@@ -318,14 +318,14 @@ window.questionBank = [
   },
   {
     "id": 7,
-    "category": "복소수와 이차방정식",
+    "category": "이차방정식과 이차함수",
     "standardCourse": "공통수학1",
     "curriculum": "2022",
-    "standardUnitKey": "H22-C-04",
-    "standardUnit": "복소수와 이차방정식",
-    "standardUnitOrder": 4,
-    "subUnitKey": "H22-C-04-COMPLEX_ROOT",
-    "subUnit": "복소수와 이차방정식",
+    "standardUnitKey": "H22-C-05",
+    "standardUnit": "이차방정식과 이차함수",
+    "standardUnitOrder": 5,
+    "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
+    "subUnit": "이차방정식",
     "subUnitClassificationDepth": "complete_active_binding",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -510,7 +510,6 @@ window.questionBank = [
     "rpmPrimaryRecordId": "H1-RPM-173",
     "crossConceptKeys": [
       "CC_VARIABLE_SUBSTITUTION",
-      "CC_DISCRIMINANT_APPLICATION",
       "CC_SYMMETRIC_SUM_PRODUCT"
     ],
     "conditionKeys": [],
@@ -558,12 +557,12 @@ window.questionBank = [
     "score": 4.7,
     "points": 4.7,
     "difficultyBucket": 4,
-    "problemTypeKey": "PT_H1_POLY_DIVISION",
-    "templateKey": "TPL_H1_POLY_DIVISION_EXECUTION",
-    "rpmPrimaryRecordId": "H1-RPM-139",
+    "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+    "templateKey": "TPL_H1_REMAINDER_COMPOSITE_DIVISOR",
+    "rpmPrimaryRecordId": "H1-RPM-143",
     "crossConceptKeys": [
       "CC_DIVISION_ALGORITHM",
-      "CC_POLYNOMIAL_DEGREE_INFERENCE"
+      "CC_REMAINDER_SUBSTITUTION"
     ],
     "conditionKeys": [],
     "integrationPattern": "INTERDEPENDENT",
@@ -819,7 +818,7 @@ window.questionBank = [
       "$324$"
     ],
     "answer": "④",
-    "solution": "$z=\\dfrac{1+i}{\\sqrt2}$로 놓으면 $z^8=1$이고 $z^2=i$이다. 또 제곱한 값이 $2i$이려면 두 단위 복소수의 합은 $1+i$ 또는 $-1-i$여야 한다.\n$z^m+(-i)^n=1+i$가 되려면 $(z^m,(-i)^n)=(1,i)$ 또는 $(i,1)$이고, $-1-i$이면 $(-1,-i)$ 또는 $(-i,-1)$이다.\n따라서 $(m\\bmod8,n\\bmod4)$는 $(0,3),(2,0),(4,1),(6,2)$의 네 경우뿐이다.\n$1\\le m\\le50$에서 해당 $m$의 개수는 순서대로 $6,7,6,6$개이고, $1\\le n\\le50$에서 $n$의 개수는 $12,12,13,13$개이다.\n순서쌍의 개수는 $6\\cdot12+7\\cdot12+6\\cdot13+6\\cdot13=72+84+78+78=312$이다.",
+    "solution": "$z=\\dfrac{1+i}{\\sqrt2}$로 놓으면 $z^2=i$, $z^8=1$이다.\n주어진 식에서 제곱하기 전의 합은 $1+i$ 또는 $-1-i$이다.\n$(-i)^n$은 $1,i,-1,-i$ 중 하나이고, 실수부와 허수부가 각각 정수이다.\n$m$이 홀수이면 $z^m$의 실수부와 허수부는 각각 $\\pm\\dfrac1{\\sqrt2}$이므로 합이 $1+i$나 $-1-i$가 될 수 없다.\n$m$이 짝수일 때 $z^m$은 $1,i,-1,-i$ 중 하나이다.\n합이 $1+i$이면 $(z^m,(-i)^n)=(1,i),(i,1)$이고, 합이 $-1-i$이면 $(-1,-i),(-i,-1)$이다.\n따라서 $(m\\bmod8,n\\bmod4)$는 $(0,3),(2,0),(4,1),(6,2)$이다.\n$1\\le m\\le50$에서 각 나머지류의 $m$은 차례로 $6,7,6,6$개이다.\n$1\\le n\\le50$에서 대응하는 $n$은 차례로 $12,12,13,13$개이다.\n곱의 법칙에 의해 순서쌍은 $6\\cdot12+7\\cdot12+6\\cdot13+6\\cdot13=312$개이다.",
     "score": 4.8,
     "points": 4.8,
     "difficultyBucket": 5,
@@ -990,10 +989,10 @@ window.questionBank = [
     "rpmPrimaryRecordId": "H1-RPM-153",
     "crossConceptKeys": [
       "CC_TRIANGLE_SIDE_FACTORIZATION",
-      "CC_ISOSCELES_CONVERSE"
+      "CC_PYTHAGOREAN"
     ],
     "conditionKeys": [
-      "COND_POSITIVE"
+      "COND_INEQUALITY_CONSTRAINT"
     ],
     "integrationPattern": "SEQUENTIAL",
     "difficultyConfidence": "medium",
@@ -1038,12 +1037,10 @@ window.questionBank = [
     "rpmPrimaryRecordId": "H1-RPM-136",
     "crossConceptKeys": [
       "CC_TWO_VARIABLE_SQUARE_SUM_IDENTITY",
-      "CC_CUBIC_FACTORIZATION_DIFFERENCE",
+      "CC_CUBIC_SUM_FORMULA",
       "CC_CUBIC_SUM_SYMMETRIC_EVALUATION"
     ],
-    "conditionKeys": [
-      "COND_POSITIVE"
-    ],
+    "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
@@ -1124,7 +1121,7 @@ window.questionBank = [
     "content": "[서답형(서술형) 4]\n두 이차함수 $f(x)=x^2$, $g(x)=2-x^2$로 함수 $h$를\n$h(x)=\\begin{cases}f(x)&(x\\le-1\\text{ 또는 }x\\ge1)\\\\g(x)&(-1<x<1)\\end{cases}$\n와 같이 정한다. 직선 $y=mx+2$와 $y=h(x)$의 그래프가 서로 다른 세 점에서 만나도록 하는 모든 실수 $m$에 대하여, 그 $m^2$의 합을 구하시오. [총 6점]",
     "choices": [],
     "answer": "2",
-    "solution": "바깥 구간 $x\\le-1$ 또는 $x\\ge1$에서는 $x^2=mx+2$, 즉 $x^2-mx-2=0$을 푼다. 두 실근은 부호가 다르다. 양의 근이 $1$ 이상일 조건은 $m\\ge-1$, 음의 근이 $-1$ 이하일 조건은 $m\\le1$이다. 따라서 바깥 교점은 $-1\\le m\\le1$일 때 $2$개이고, $|m|>1$이면 $1$개이다.\n안쪽 구간 $-1<x<1$에서는 $2-x^2=mx+2$이므로 $x(x+m)=0$이다. $x=0$은 항상 안쪽 교점이고, 두 번째 근 $x=-m$은 $0<|m|<1$일 때에만 별개의 안쪽 교점이다. 따라서 $0<|m|<1$에서는 안쪽 교점이 $2$개, 그 밖에는 $1$개이다.\n모든 교점 수를 합하면 $0<|m|<1$에서는 $4$개, $m=-1,0,1$에서는 $3$개, $|m|>1$에서는 $2$개이다. 안쪽의 끝점 $x=\\pm1$은 제외되고 바깥쪽에 포함되어 있으므로 중복 계산은 없다.\n구하는 모든 기울기는 $m=-1,0,1$이고, 제곱의 합은 $(-1)^2+0^2+1^2=2$이다.",
+    "solution": "바깥 구간 $x\\le-1$ 또는 $x\\ge1$에서는 $x^2-mx-2=0$을 푼다. 두 실근은 부호가 다르다.\n이 식의 왼쪽을 $F(x)$라 하면 $F(0)=-2<0$이므로 $0$은 두 근 사이에 있다.\n$F(1)=-m-1\\le0$일 때 양의 근이 $1$ 이상이므로 $m\\ge-1$이다.\n$F(-1)=m-1\\le0$일 때 음의 근이 $-1$ 이하이므로 $m\\le1$이다.\n따라서 바깥 교점은 $-1\\le m\\le1$일 때 $2$개이고 $|m|>1$일 때 $1$개이다.\n안쪽 구간 $-1<x<1$에서는 $2-x^2=mx+2$이므로 $x(x+m)=0$이다.\n$x=0$은 항상 교점이고, $x=-m$은 $0<|m|<1$일 때만 별개의 안쪽 교점이다.\n그러므로 $0<|m|<1$에서는 총 $4$개, $m=-1,0,1$에서는 총 $3$개, $|m|>1$에서는 총 $2$개이다.\n끝점 $x=\\pm1$은 바깥 구간에만 포함되므로 중복은 없다.\n따라서 $m=-1,0,1$이고, $m^2$의 합은 $1+0+1=2$이다.",
     "score": 6,
     "points": 6,
     "difficultyBucket": 5,
@@ -1133,8 +1130,8 @@ window.questionBank = [
     "rpmPrimaryRecordId": "H1-RPM-168",
     "crossConceptKeys": [
       "CC_QUADRATIC_LINE_INTERSECTION_EQUATION",
-      "CC_PARABOLA_LINE_TANGENCY",
-      "CC_TANGENT_LINE_DISCRIMINANT"
+      "CC_PIECEWISE_FUNCTION",
+      "CC_GRAPH_INTERSECTION_COUNT"
     ],
     "conditionKeys": [
       "COND_EXACT_INTERSECTION_COUNT",
