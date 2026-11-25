@@ -1,0 +1,21 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-1, 5, -7, 13],
+    "curves": [
+      {"id": "first", "kind": "LINE", "coefficients": ["6", "-3/2"], "domain": ["-1", "5"], "color": "BLUE", "label": "y=6-3x/2"},
+      {"id": "second", "kind": "LINE", "coefficients": ["-3", "3"], "domain": ["-1", "5"], "color": "WARM", "label": "y=3x-3"}
+    ],
+    "axisTickValues": {"x": ["2"], "y": ["3"]},
+    "overlays": {"points": [{"id": "I", "x": "2", "y": "3", "coordinates": true}]}
+  },
+  "caption": "3x+2y=12와 y=3x-3의 교점은 (2,3)이며 x+y=5이다.",
+  "accessibilityDescription": "감소하는 직선 y=6-3x/2와 증가하는 직선 y=3x-3이 점 (2,3)에서 만난다.",
+  "sourceConditions": [
+    {"id": "sc1", "condition": "3x+2y=12는 y=6-3x/2로 변형", "mappedTo": ["graphPlan.curves.first"]},
+    {"id": "sc2", "condition": "또 다른 일차방정식 y=3x-3", "mappedTo": ["graphPlan.curves.second"]},
+    {"id": "sc3", "condition": "두 방정식의 공통 해 (2,3)", "mappedTo": ["graphPlan.overlays.points.I"]}
+  ],
+  "newVisualInformation": ["연립방정식의 공통 해를 두 직선의 한 교점으로 표현"]
+}

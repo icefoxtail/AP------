@@ -1,0 +1,23 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-5, 4, -16, 13],
+    "curves": [
+      {"id": "original", "kind": "LINE", "coefficients": ["-5", "2"], "domain": ["-5", "4"], "color": "BLUE", "label": "y=2x-5"},
+      {"id": "shifted", "kind": "LINE", "coefficients": ["2", "2"], "domain": ["-5", "4"], "color": "WARM", "label": "y=2x+2"}
+    ],
+    "axisTickValues": {"x": ["-3"], "y": ["-4", "2", "-5"]},
+    "overlays": {"points": [
+      {"id": "P", "x": "-3", "y": "-4", "coordinates": true},
+      {"id": "Q", "x": "-3", "y": "-11", "unnamed": true}
+    ], "segments": [{"id": "rise", "from": "Q", "to": "P", "dashed": true}]}
+  },
+  "caption": "y=2x-5를 위로 7만큼 평행이동한 y=2x+2는 (-3,-4)를 지난다.",
+  "accessibilityDescription": "서로 평행한 두 직선과 이동된 직선 위의 점 (-3,-4), 같은 x에서 두 직선 사이 수직 이동 거리 7.",
+  "sourceConditions": [
+    {"id": "sc1", "condition": "원래 그래프 y=2x-5", "mappedTo": ["graphPlan.curves.original"]},
+    {"id": "sc2", "condition": "y방향으로 k만큼 이동한 그래프가 (-3,-4)를 지남; k=7", "mappedTo": ["graphPlan.curves.shifted", "graphPlan.overlays.points.P", "graphPlan.overlays.segments.rise"]}
+  ],
+  "newVisualInformation": ["기울기를 바꾸지 않고 평행하게 올라간 두 직선", "x=-3에서 수직 이동량 7을 점선으로 연결"]
+}

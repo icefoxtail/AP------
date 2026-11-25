@@ -1,0 +1,25 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-1, 7, -4, 22],
+    "curves": [
+      {"id": "first", "kind": "LINE", "coefficients": ["6", "2"], "domain": ["-1", "7"], "color": "BLUE", "label": "y=2x+6"},
+      {"id": "second", "kind": "LINE", "coefficients": ["-1", "2"], "domain": ["-1", "7"], "color": "WARM", "label": "y=2x-1"}
+    ],
+    "axisTickValues": {"x": ["1", "2", "3", "5"], "y": ["3", "8", "9", "12"]},
+    "overlays": {"points": [
+      {"id": "A", "x": "1", "y": "8", "coordinates": true},
+      {"id": "B", "x": "3", "y": "12", "coordinates": true},
+      {"id": "C", "x": "2", "y": "3", "coordinates": true},
+      {"id": "D", "x": "5", "y": "9", "coordinates": true}
+    ]}
+  },
+  "caption": "(1,8),(3,12)를 지나는 직선과 (2,3),(5,9)를 지나는 직선은 기울기 2로 서로 평행하다.",
+  "accessibilityDescription": "기울기 2가 같은 평행한 두 직선에 주어진 네 점이 정확한 좌표로 표시된다.",
+  "sourceConditions": [
+    {"id": "sc1", "condition": "(1,a),(3,12)를 지나는 직선에서 a=8", "mappedTo": ["graphPlan.curves.first", "graphPlan.overlays.points.A", "graphPlan.overlays.points.B"]},
+    {"id": "sc2", "condition": "(2,3),(5,9)를 지나는 기준 직선의 기울기는 2", "mappedTo": ["graphPlan.curves.second", "graphPlan.overlays.points.C", "graphPlan.overlays.points.D"]}
+  ],
+  "newVisualInformation": ["두 점의 세로 변화량 대 가로 변화량 2인 평행 관계", "해설에서 정해진 a=8을 점 좌표에 반영"]
+}

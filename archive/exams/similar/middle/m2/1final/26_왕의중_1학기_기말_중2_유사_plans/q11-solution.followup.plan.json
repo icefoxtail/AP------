@@ -1,0 +1,23 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-3, 11, -5, 10],
+    "curves": [
+      {"id": "f", "kind": "LINE", "coefficients": ["4", "-2/3"], "domain": ["-3", "11"], "color": "BLUE", "label": "y=-2x/3+4"}
+    ],
+    "axisTickValues": {"x": ["3", "6", "9"], "y": ["4", "2", "-2"]},
+    "overlays": {"points": [
+      {"id": "P", "x": "3", "y": "2", "coordinates": true},
+      {"id": "Q", "x": "9", "y": "-2", "coordinates": true}
+    ]}
+  },
+  "caption": "기울기 -2/3, y절편 4인 직선은 (3,2)를 지나며 x가 6 증가하면 y는 4 감소한다. 9 감소한다는 ⑤가 거짓이다.",
+  "accessibilityDescription": "오른쪽 아래로 향하고 1·2·4사분면을 지나는 직선에 (3,2)와 (9,-2)를 표시한 그림.",
+  "sourceConditions": [
+    {"id": "sc1", "condition": "y=-2x/3+4", "mappedTo": ["graphPlan.curves.f"]},
+    {"id": "sc2", "condition": "(3,2)를 통과하고 y절편 4, 기울기 음수", "mappedTo": ["graphPlan.overlays.points.P", "graphPlan.axisTickValues.y"]},
+    {"id": "sc3", "condition": "x가 6 증가하면 y는 4 감소하여 (3,2)에서 (9,-2)", "mappedTo": ["graphPlan.overlays.points.P", "graphPlan.overlays.points.Q"]}
+  ],
+  "newVisualInformation": ["기울기 -2/3의 하강과 축 절편", "x변화 +6, y변화 -4를 두 점으로 대조"]
+}

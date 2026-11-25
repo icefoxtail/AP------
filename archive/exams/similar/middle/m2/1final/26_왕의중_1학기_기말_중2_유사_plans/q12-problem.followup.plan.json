@@ -1,0 +1,28 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-6, 4, -4, 12],
+    "curves": [
+      {"id": "unknown", "kind": "LINE", "coefficients": ["8", "2"], "domain": ["-6", "2"], "color": "BLUE", "label": {"hidden": true, "reason": "ANSWER", "name": "f"}},
+      {"id": "given", "kind": "LINE", "coefficients": ["8", "-4"], "domain": ["-1", "4"], "color": "WARM", "label": "y=-4x+8"}
+    ],
+    "axisTickValues": {"x": ["2"], "y": ["8"]},
+    "overlays": {
+      "points": [
+        {"id": "A", "x": "-4", "y": "0"},
+        {"id": "B", "x": "0", "y": "8"},
+        {"id": "C", "x": "2", "y": "0"}
+      ],
+      "polygons": [{"id": "triangle", "points": ["A", "B", "C"], "fill": "NONE"}]
+    }
+  },
+  "caption": "y=ax+8(a>0), y=-4x+8과 x축으로 이루어진 삼각형의 넓이는 24이다. 미지수 a의 값은 그림에 쓰지 않았다.",
+  "accessibilityDescription": "y축에서 높이 8을 공유하는 두 직선이 x축의 왼쪽과 오른쪽을 만나 삼각형을 만드는 그림. 미지 기울기는 f로 표기.",
+  "sourceConditions": [
+    {"id": "sc1", "condition": "y=ax+8, a>0: 좌측에서 x축과 만나고 (0,8)을 지남; 영역 조건까지 만족하는 정확한 모델은 a=2이나 문제에 미표시", "mappedTo": ["graphPlan.curves.unknown", "graphPlan.overlays.points.A", "graphPlan.overlays.points.B"]},
+    {"id": "sc2", "condition": "y=-4x+8은 (0,8), (2,0)을 지남", "mappedTo": ["graphPlan.curves.given", "graphPlan.overlays.points.B", "graphPlan.overlays.points.C"]},
+    {"id": "sc3", "condition": "두 직선과 x축으로 이루어진 삼각형의 넓이 24", "mappedTo": ["graphPlan.overlays.polygons.triangle"]}
+  ],
+  "newVisualInformation": ["x축 양쪽 절편과 공통 y절편으로 만드는 삼각형", "문제용은 f라는 중립 곡선명으로 미지 기울기와 좌측 절편 수치를 숨김", "삼각형 내부 채움 없음"]
+}

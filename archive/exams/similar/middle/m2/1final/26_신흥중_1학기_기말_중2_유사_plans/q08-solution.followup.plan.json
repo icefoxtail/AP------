@@ -1,0 +1,19 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-3, 3, -12, 15],
+    "curves": [
+      {"id": "first", "kind": "LINE", "coefficients": ["-2", "3"], "domain": ["-3", "3"], "color": "BLUE", "label": "y=3x-2"},
+      {"id": "second", "kind": "LINE", "coefficients": ["5/2", "3"], "domain": ["-3", "3"], "color": "WARM", "label": "y=3x+5/2"}
+    ],
+    "axisTickValues": {"x": [], "y": ["-2", "5/2"]}
+  },
+  "caption": "a=9일 때 두 직선은 모두 기울기가 3이지만 y절편이 -2와 5/2로 달라 만나지 않는다.",
+  "accessibilityDescription": "같은 기울기 3을 갖고 y절편은 서로 다른 평행한 두 직선.",
+  "sourceConditions": [
+    {"id": "sc1", "condition": "ax-3y=6, -6x+2y=5의 그래프가 서로 만나지 않는다", "mappedTo": ["graphPlan.curves.first", "graphPlan.curves.second"]},
+    {"id": "sc2", "condition": "계수비에서 a=9; y=3x-2와 y=3x+5/2는 평행", "mappedTo": ["graphPlan.curves.first.coefficients", "graphPlan.curves.second.coefficients", "graphPlan.axisTickValues.y"]}
+  ],
+  "newVisualInformation": ["기울기 같음과 y절편 다름을 두 직선으로 구분", "해가 없는 경우가 평행한 경우임을 확인"]
+}
