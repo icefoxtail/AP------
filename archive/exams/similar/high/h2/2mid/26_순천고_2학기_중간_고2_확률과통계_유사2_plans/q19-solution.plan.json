@@ -1,0 +1,26 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "E"
+      },
+      {
+        "id": "F"
+      }
+    ],
+    "shade": "(E-F)∪(F-E)"
+  },
+  "caption": "E는 세 카드의 합이 3의 배수, F는 곱이 3의 배수라는 사건이다. 정확히 하나만 참인 영역은 E와 F의 대칭차다. 전체 504개에서 합집합 396, 교집합 168을 계산하면 대칭차 228개이므로 19/42이다.",
+  "newVisualInformation": [
+    "E와 F가 겹친 부분은 제외하고 좌우의 대칭차 영역만 색칠"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$1$부터 $9$까지의 수가 하나씩 적힌 카드 $9$장에서 서로 다른 카드 $3$장을 순서대로 뽑아 수를 $a,b,c$라 하자. $a+b+c$가 $3$의 배수인 조건과 $abc$가 $3$의 배수인 조건 중 정확히 하나만 성립할 확률은? [4.7점]",
+      "mappedTo": "PRESERVED_NEW_FOLLOWUP_STEM"
+    }
+  ]
+}
