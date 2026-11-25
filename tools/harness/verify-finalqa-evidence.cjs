@@ -20,7 +20,10 @@ const SEMANTIC_FIELDS = [
   'rpmPrimaryRecordId', 'problemTypeKey', 'templateKey',
   'difficultyBucket', 'crossConceptKeys', 'conditionKeys', 'integrationPattern'
 ];
-const QUOTE_UNSUPPORTED = new Set(['number-line-figure-v1']);
+// These official engines reject an extra top-level sourceQuote field. Bind their
+// sourceConditions to the live item stem instead of requiring an invalid plan.
+const QUOTE_UNSUPPORTED = new Set(['number-line-figure-v1', 'set-diagram-figure-v1', 'stat-chart-figure-v1']);
+const STEM_CONDITION_PROVENANCE = new Set(['set-diagram-figure-v1', 'stat-chart-figure-v1']);
 
 const sha256 = (value) => crypto.createHash('sha256').update(value).digest('hex');
 const issue = (issues, code, detail) => issues.push({ code, detail });
@@ -184,6 +187,11 @@ function inspectPlans({ root = ROOT, examRel, questions, issues = [] }) {
     }
     if (QUOTE_UNSUPPORTED.has(plan.capability)) {
       if (own(plan, 'sourceQuote')) issue(issues, 'PLAN_QUOTE_NOT_SUPPORTED_BY_ENGINE', key);
+      if (STEM_CONDITION_PROVENANCE.has(plan.capability) &&
+          !plan.sourceConditions.some(condition =>
+            nonblank(condition?.condition, 12) && byId.get(qid).content.includes(condition.condition))) {
+        issue(issues, 'PLAN_SOURCE_CONDITIONS_MISMATCH', key);
+      }
     } else if (!nonblank(plan.sourceQuote, 12)) {
       issue(issues, 'PLAN_SOURCE_QUOTE_MISSING', key);
     } else if (!source.includes(plan.sourceQuote)) {
