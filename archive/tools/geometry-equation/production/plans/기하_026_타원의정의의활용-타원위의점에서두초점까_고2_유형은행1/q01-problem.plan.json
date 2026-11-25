@@ -1,0 +1,31 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conics": [
+    {"id": "c1", "kind": "ELLIPSE", "center": ["-8/5", "0"], "aSquared": "64", "bSquared": "1536/25", "major": "X", "label": "장축 16"},
+    {"id": "c2", "kind": "ELLIPSE", "center": ["5", "0"], "aSquared": "121", "bSquared": "96", "major": "X", "label": "장축 22"}
+  ],
+  "points": [
+    {"id": "F1", "kind": "FOCUS", "curve": "c1", "side": -1},
+    {"id": "F", "kind": "FOCUS", "curve": "c1", "side": 1},
+    {"id": "F2", "kind": "FOCUS", "curve": "c2", "side": 1},
+    {"id": "A", "kind": "CONIC_CONIC", "curves": ["c1", "c2"], "which": 2},
+    {"id": "B", "kind": "CONIC_CONIC", "curves": ["c1", "c2"], "which": 1}
+  ],
+  "segments": [
+    {"id": "sAF1", "from": "A", "to": "F1"},
+    {"id": "sF1B", "from": "F1", "to": "B"},
+    {"id": "sBF2", "from": "B", "to": "F2"},
+    {"id": "sF2A", "from": "F2", "to": "A"},
+    {"id": "sAF", "from": "A", "to": "F"},
+    {"id": "sBF", "from": "B", "to": "F"}
+  ],
+  "caption": "왼쪽 장축 길이 16·오른쪽 장축 길이 22인 두 타원이 공통초점 F를 갖고 A·B에서 만나는 사각형 AF₁BF₂",
+  "accessibilityDescription": "왼쪽 타원의 나머지 초점 F1과 오른쪽 타원의 나머지 초점 F2 사이에 공통초점 F가 한 직선 위에 있다. 타원 둘은 위쪽 A와 아래쪽 B에서 만나며 사각형 AF1BF2의 네 변과 A 및 B에서 F로 잇는 두 선분이 보인다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "원문 두 타원의 공통초점 F와 나머지 초점 F1,F2는 F1-F-F2 순서로 한 직선 위에 있다. 대표 좌표 F1=(-16/5,0), F=(0,0), F2=(10,0)이며 두 곡선의 장축 길이는 각각 16과 22이다.", "mappedTo": ["c1", "c2", "F1", "F", "F2"]},
+    {"id": "c2", "condition": "왼쪽 타원은 중심 (-8/5,0), 장반지름 8, 단반지름 제곱 1536/25, 초점 (-16/5,0),(0,0); 오른쪽 타원은 중심 (5,0), 장반지름 11, 단반지름 제곱 96, 초점 (0,0),(10,0)이다. 두 그림 곡선 모두 공통초점 F를 정확히 공유한다.", "mappedTo": ["c1", "c2", "F1", "F", "F2"]},
+    {"id": "c3", "condition": "두 타원의 유한한 교점은 A=(-8/5,+16√6/5)와 B=(-8/5,-16√6/5)이다. 실제 |AF|=|BF|=8, |AF1|=|BF1|=8, |AF2|=|BF2|=14이고 네 외곽변의 합은 8+8+14+14=44이다. 정답 AF+BF=16은 그리지 않는다.", "mappedTo": ["A", "B", "c1", "c2", "sAF1", "sF1B", "sBF2", "sF2A", "sAF", "sBF"]},
+    {"id": "c4", "condition": "학생에게 보이는 네 외곽 변은 A-F1-B-F2-A 순서로 닫히고, F는 외곽 사각형의 꼭짓점이 아니라 내부 공통초점이다. 둘레 44는 원문 텍스트 조건이며 각 변 길이로 임의 분배해 쓰지 않는다.", "mappedTo": ["sAF1", "sF1B", "sBF2", "sF2A", "F", "sAF", "sBF"]}
+  ],
+  "newVisualInformation": ["두 타원의 정확한 공통초점과 두 실제 교점 A·B를 계산 노드 CONIC_CONIC으로 고정", "외곽 사각형의 네 변과 공통초점 연결선의 구분, 물음 AF+BF의 답 비노출", "두 곡선 라벨에 원문 장축 길이 16·22를 각각 소유시켜 표시"]
+}

@@ -1,0 +1,32 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conics": [
+    {"id": "c1", "kind": "ELLIPSE", "center": ["-3", "0"], "aSquared": "49", "bSquared": "40", "major": "X", "label": "장축 14"},
+    {"id": "c2", "kind": "ELLIPSE", "center": ["5/2", "0"], "aSquared": "16", "bSquared": "39/4", "major": "X", "label": "장축 8"}
+  ],
+  "points": [
+    {"id": "F1", "kind": "FOCUS", "curve": "c1", "side": -1},
+    {"id": "F", "kind": "FOCUS", "curve": "c1", "side": 1},
+    {"id": "F2", "kind": "FOCUS", "curve": "c2", "side": 1},
+    {"id": "P", "kind": "CONIC_CONIC", "curves": ["c1", "c2"], "which": 2},
+    {"id": "Q", "kind": "CONIC_CONIC", "curves": ["c1", "c2"], "which": 1}
+  ],
+  "segments": [
+    {"id": "sPQ", "from": "P", "to": "Q"},
+    {"id": "sPF1", "from": "P", "to": "F1"},
+    {"id": "sQF1", "from": "Q", "to": "F1"},
+    {"id": "sPF2", "from": "P", "to": "F2"},
+    {"id": "sQF2", "from": "Q", "to": "F2"},
+    {"id": "sPF", "from": "P", "to": "F"},
+    {"id": "sQF", "from": "Q", "to": "F"}
+  ],
+  "caption": "공통초점 F를 지닌 장축 14·8의 두 타원과 교점 P·Q, 공통현 PQ를 밑변으로 하는 두 삼각형 PQF₁·PQF₂",
+  "accessibilityDescription": "왼쪽의 긴 타원은 초점 F1과 F, 오른쪽의 작은 타원은 초점 F와 F2를 갖는다. 두 타원이 만나는 위쪽 P와 아래쪽 Q를 공통현으로 연결하고, P와 Q를 각각 F1, F2 및 공통초점 F에 연결해 양쪽 삼각형을 나타낸다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "왼쪽 타원 장축 14, 초점 F1=(-6,0),F=(0,0), 중심(-3,0), 장반지름 7, 단반지름 제곱40. 오른쪽 타원 장축8, 공통초점 F=(0,0),F2=(5,0), 중심(5/2,0), 장반지름4, 단반지름 제곱39/4. 대표 배치는 F1-F-F2 순서로 collinear이다.", "mappedTo": ["c1", "c2", "F1", "F", "F2"]},
+    {"id": "c2", "condition": "두 타원 식을 동시에 풀면 유일한 실수 x좌표 367/118에 대하여 y=±√33150/59인 교점 P=(367/118,+√33150/59), Q=(367/118,-√33150/59)를 얻는다. 다른 형식상 x근 -83/2는 y²<0이므로 실제 교점이 아니다.", "mappedTo": ["P", "Q", "c1", "c2"]},
+    {"id": "c3", "condition": "PQ는 원문 공통현이며 △PQF1의 변 PQ,PF1,QF1와 △PQF2의 변 PQ,PF2,QF2를 정확히 표시한다. 공통초점 선분 PF,QF는 정의 설명을 위한 별도 선분이다.", "mappedTo": ["sPQ", "sPF1", "sQF1", "sPF2", "sQF2", "sPF", "sQF"]},
+    {"id": "c4", "condition": "어느 교점 X∈{P,Q}도 XF1+XF=14, XF2+XF=8이므로 두 삼각형 둘레 차는 2(14−8)=12이다. 물음의 정답 12는 그림의 선분/라벨에 표기하지 않는다.", "mappedTo": ["P", "Q", "F1", "F", "F2", "c1", "c2"]}
+  ],
+  "newVisualInformation": ["두 타원의 실제 공통초점·상하 교점과 공통현 PQ를 해석 계산으로 검증", "공유하는 선분 PQ를 중복 그리지 않으며 두 삼각형의 네 외곽 변·공통초점 보조 선분을 모두 표시", "원문 장축 14·8을 각각 해당 곡선 라벨로 소유"]
+}
