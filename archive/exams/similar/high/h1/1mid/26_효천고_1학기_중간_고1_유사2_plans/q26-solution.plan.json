@@ -1,0 +1,27 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "sourceQuote": "x=-1,2에서 두 포물선의 함수값이 같고, 안쪽 구간에는 x=0에서 최솟값 -4가 있다.",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "functionName": "h",
+    "pieces": [
+      { "coefficients": ["0", "2", "-1"], "domain": [null, -1], "end": "CLOSED" },
+      { "coefficients": ["-4", "0", "1"], "domain": [-1, 2], "start": "OPEN", "end": "OPEN" },
+      { "coefficients": ["0", "2", "-1"], "domain": [2, null], "start": "CLOSED" }
+    ],
+    "requiredPoints": [
+      { "id": "A", "x": -1, "y": -3 },
+      { "id": "V", "x": 0, "y": -4 },
+      { "id": "B", "x": 2, "y": 0 }
+    ],
+    "axisTickValues": { "x": [], "y": [] }
+  },
+  "caption": "x=-1과 x=2에서 바깥 포물선이 포함되고 안쪽 포물선은 열린 끝점이다. 안쪽 꼭짓점 V(0,-4)를 확인한다.",
+  "sourceConditions": [
+    { "id": "q26-c1", "condition": "x<=-1 또는 x>=2에서 h(x)=-(x-1)^2+1", "mappedTo": "graphPlan.pieces" },
+    { "id": "q26-c2", "condition": "-1<x<2에서 h(x)=x^2-4", "mappedTo": "graphPlan.pieces" }
+  ],
+  "newVisualInformation": [
+    "경계 포함 여부와 안쪽 포물선의 꼭짓점이 교점 개수 분기를 바꾸는 이유를 표시한다."
+  ]
+}

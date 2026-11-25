@@ -1,0 +1,121 @@
+{
+  "schemaVersion": "gpt-similar-exam-create-review-receipt-v1",
+  "examUid": "26_효천고_1학기_중간_고1_유사2",
+  "sourceArchiveFile": "archive/exams/similar/high/h1/1mid/26_효천고_1학기_중간_고1_유사2.js",
+  "sourceGitBlobSha": "efd1b30e6e60d7a60fbf4d1985c20cacae36a0ad",
+  "createdAt": "2026-11-25",
+  "reviewer": "GPT author self-check + separate-process exact arithmetic; independent meta reviewer NOT_RUN",
+  "mode": "ALIVE EXAM_FOLLOWUP",
+  "difficultyMixer": "SOURCE_BALANCED",
+  "sourceOriginalFile": "archive/exams/original/high/h1/1mid/26_효천고_1학기_중간_고1_기출c.js",
+  "comparedVariants": [
+    "archive/exams/similar/high/h1/1mid/26_효천고_1학기_중간_고1_유사.js"
+  ],
+  "questionCount": 26,
+  "questionTypeCounts": {
+    "객관식": 18,
+    "단답형": 4,
+    "서술형": 4
+  },
+  "totalPoints": 100,
+  "originalBuckets": {
+    "1": 5,
+    "2": 11,
+    "3": 6,
+    "4": 4,
+    "5": 0
+  },
+  "newBuckets": {
+    "1": 5,
+    "2": 11,
+    "3": 6,
+    "4": 4,
+    "5": 0
+  },
+  "bucketSourceNote": "기출 JS 정수 난도 칸 없음. 원본 26개 문항의 실제 풀이 요구를 보고 정수 1~5 판정; 기존 level에서 환산하지 않음.",
+  "followupCounts": {
+    "CONFIRMATION": 26,
+    "ADVANCED": 0
+  },
+  "answerDistribution": {
+    "①": 2,
+    "②": 3,
+    "③": 3,
+    "④": 5,
+    "⑤": 5
+  },
+  "checkResults": {
+    "sourceAndExistingRead": {
+      "status": "PASS",
+      "count": 26
+    },
+    "mathBlindFromFinalStatements": {
+      "status": "AUTHOR_RECHECK_PASS",
+      "count": 26,
+      "independenceLevel": "I1",
+      "note": "최종 발문에 대한 별도 Python/SymPy process exact 검산 26/26. 외부 독립 모델 검수는 수행하지 않음"
+    },
+    "arithmeticScript": {
+      "status": "PASS",
+      "count": 26
+    },
+    "nodeCheck": {
+      "status": "PASS",
+      "count": 1
+    },
+    "choiceOrderAndAnswerDistribution": {
+      "status": "PASS",
+      "objectiveCount": 18,
+      "defects": 0,
+      "note": "archive/tools/similar-import/choice-order-check.mjs judge — 1개 시험지 중 결함 0개"
+    },
+    "ptTplAndCurriculumBindings": {
+      "status": "AUTHOR_DIRECT_CHECK_PASS",
+      "count": 26,
+      "note": "ACTIVE PT/TPL-parent, 2022 공통수학1 H22 unit/subunit bindings; Q13 복소수 소단원으로 직접 보정"
+    },
+    "fourSlotTermsAndUidBlobBinding": {
+      "status": "AUTHOR_CHECK_PASS",
+      "count": 26,
+      "note": "46개 사용 어휘 모두 term-dictionary-v1.6-2026-11-15에 존재; Git blob SHA 및 qid 자체 교차검사"
+    },
+    "problemVisual": {
+      "status": "EXEMPT",
+      "count": 26
+    },
+    "solutionVisual": {
+      "status": "SVG_TO_CREATE",
+      "count": 2,
+      "exemptCount": 24
+    },
+    "svgPlanLintShallow": {
+      "status": "PASS",
+      "count": 2,
+      "note": "공식 plan-lint.cjs --shallow: Q18/Q26 OK 2, FAIL 0"
+    },
+    "svgPlanLintFull": {
+      "status": "NOT_RUN",
+      "count": 0
+    },
+    "svgRender": {
+      "status": "NOT_RUN",
+      "count": 0
+    },
+    "svgPngVisualReview": {
+      "status": "NOT_RUN",
+      "count": 0
+    },
+    "independentMetaApproval": {
+      "status": "review_required",
+      "count": 0
+    },
+    "metadataRegistration": {
+      "status": "NOT_RUN"
+    },
+    "ciAndDeployment": {
+      "status": "NOT_RUN"
+    }
+  },
+  "svgPendingPath": "archive/exams/similar/high/h1/1mid/26_효천고_1학기_중간_고1_유사2_plans/SVG_PENDING.md",
+  "experienceLedgerPath": "archive/exams/similar/high/h1/1mid/26_효천고_1학기_중간_고1_유사2_plans/EXPERIENCE_LEDGER.json"
+}

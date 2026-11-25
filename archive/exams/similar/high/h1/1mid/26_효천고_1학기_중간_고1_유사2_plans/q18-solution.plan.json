@@ -1,0 +1,29 @@
+{
+  "capability": "polynomial-spike-v1",
+  "sourceQuote": "a=2m일 때 B를 지나 PA와 평행한 직선은 y=-m(x-a)이며, Q의 x좌표는 -m이다.",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": ["0", "-4", "1"],
+    "domain": [-3, 5],
+    "viewport": [-3, 5, -6, 14],
+    "sourceDomain": { "kind": "ALL_REALS" },
+    "requiredPoints": [
+      { "id": "A", "x": 0, "y": 0 },
+      { "id": "B", "x": 4, "y": 0 },
+      { "id": "P", "x": 2, "y": -4 },
+      { "id": "Q", "x": -2, "y": 12 }
+    ],
+    "lines": [
+      { "id": "BQ", "slope": "-2", "intercept": "8", "through": ["B", "Q"] }
+    ],
+    "axisTickValues": { "x": [], "y": [] }
+  },
+  "caption": "a=4, m=2인 예시. B를 지나 PA에 평행한 직선이 포물선과 다시 만나는 점 Q의 위치를 확인한다.",
+  "sourceConditions": [
+    { "id": "q18-c1", "condition": "두 영점 A(0,0), B(a,0)와 최고차항 계수 1", "mappedTo": "graphPlan.coefficients" },
+    { "id": "q18-c2", "condition": "직선 BQ는 PA에 평행", "mappedTo": "graphPlan.lines" }
+  ],
+  "newVisualInformation": [
+    "숫자 a=4는 일반 풀이를 설명하기 위한 예시이며, P·Q의 위치와 BQ의 방향을 표시한다."
+  ]
+}
