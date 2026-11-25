@@ -51,11 +51,11 @@
 | 12/S | 꼭짓점 (4,3)→(4,-3)→(4,0), 마지막 x축 접촉 | `panels[0..2].graphPlan.coefficients`가 각각 `[19,-8,1]`, `[-19,8,-1]`, `[-16,8,-1]`; `requiredPoints[V,V,T]` | PASS |
 | 13/P | f 삼각형 (1,2),(4,2),(4,6) → g (-5,1),(-2,1),(-2,-3), x-6, 3-y 변환 | 기존 `archive/assets/images/25_효천고_2학기_중간_고1_유사문제/q13.png`에서 6꼭짓점·6선분·4개 x눈금·4개 y눈금·f/g 라벨 확인 | PASS_ASSET |
 | 14/P | A(1,4), B(-2,0), C(7,-4) | 기존 `archive/assets/images/25_효천고_2학기_중간_고1_유사문제/q14.png`의 세 좌표·삼각형 3변·두 축 확인 | PASS_ASSET |
-| 14/S | AB=5, AC=10; BD:DC=1:2 → D=(1,-4/3) | `nodes[A,B,C,D]`, `DIVISION_POINT(B,C,1:2)`, `displaySegments[sAB,sAC,sBD,sDC,sAD]`, `coordinateLabels`, `expressionLabels[ratioBD,ratioDC]` | PASS |
+| 14/S | AB=5, AC=10; ∠BAD=∠DAC, BD:DC=1:2 → D=(1,-4/3) | `nodes[A,B,C,D]`, `DIVISION_POINT(B,C,1:2)`, `displaySegments[sAB,sAC,sBD,sDC,sAD]`, `coordinateLabels`, `expressionLabels[ratioBD,ratioDC]`, `planeMarks.angles[aBAD,aDAC]`, `equalAngles` | PASS |
 | 18/P | O(0,0),A(0,11),B(-14,11),C(-14,0),P(-2,3) | 기존 `archive/assets/images/25_효천고_2학기_중간_고1_유사문제/q18.png`의 네 변·5라벨·-14,-2,3,11 눈금·점선 좌표보조선 확인 | PASS_ASSET |
 | 18/S | P_i: (2,3),(-2,19),(-26,3),(-2,-3); Q=(-12,8); R_i 네 변 내부; 입사·반사각 70.3462°,47.7263° 대응 | `LINE_REFLECTION`×4, `MIDPOINT`×2, `PERPENDICULAR_THROUGH`×2, `LINE_INTERSECTION`×5, `displaySegments` 16개(원본 사각형·반사 경로·점선), `planeMarks.angles` 8개 및 `equalAngles` 색 모둠 2개 | PASS |
-| 19/S | A=(4,3) 대표 예; B=(4,-3), C=(-4,3), D=(-4,-3), AB=6 AC=8 AD=10 | `POINT_REFLECTION`×3, `displaySegments[sAB,sAC,sBD,sCD,sAD]`, `coordinateLabels[A,B,C,D]` | PASS |
-| 21/S | A(-5,2),B(5,7), AC:CB=3:2, C₁(1,5), C₂(25,17) | `DIVISION_POINT` 2개 모드 INTERNAL/EXTERNAL, `displaySegments[sAC1,sC1B,sBC2,sAC2]`, `pointNames[C1,C2]`, `coordinateLabels` | PASS |
+| 19/S | A=(4,3) 대표 예; B=(4,-3), C=(-4,3), D=(-4,-3), AB=6 AC=8 AD=10 | `POINT_REFLECTION`×3, `displaySegments[sAB,sAC,sBD,sCD,sAD]`, `coordinateLabels[A,B,C,D]`, `expressionLabels[lenAB,lenAC]`, `rightAngles[aBAC]` | PASS |
+| 21/S | A(-5,2),B(5,7), AC:CB=3:2, C₁(1,5), C₂(25,17) | `DIVISION_POINT` 2개 모드 INTERNAL/EXTERNAL, `displaySegments[sAC1,sC1B,sBC2,sAC2]`, `pointNames[C1,C2]`, `coordinateLabels`, `expressionLabels[ratioAC1,ratioC1B]` | PASS |
 | 22/S | r=7±2√6; 중심(-r,r), P(-3,4); 거리8√3 | `TRANSLATE_POINT`×2의 근호 좌표, `CIRCLE_CENTER_RADIUS`×2의 근호 반지름, `displayCircles`, `displaySegments[sCenters,sC1P,sC2P]` | PASS |
 | 23/S | 원 K(3,1), r=2; 유효 예 V(1,-1); 가지 기울기 -1,+1; |KV|=2√2>2 | `nodes[K,circle,V,L,R]`, `displayCircles[circle]`, `displaySegments[sLV,sVR]`, `coordinateLabels[K,V]` (L,R 이름/점표식 숨김; 선분은 보임) | PASS |
 

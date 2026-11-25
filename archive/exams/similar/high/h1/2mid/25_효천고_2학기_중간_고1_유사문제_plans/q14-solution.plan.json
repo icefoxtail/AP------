@@ -21,17 +21,22 @@
   ],
   "coordinateLabels": ["A", "B", "C", "D"],
   "planeMarks": {
+    "angles": [
+      { "id": "aBAD", "refs": ["B", "A", "D"], "value": 36.86989765, "noLabel": true, "style": "ARC", "color": "BLUE" },
+      { "id": "aDAC", "refs": ["D", "A", "C"], "value": 36.86989765, "noLabel": true, "style": "ARC", "color": "BLUE" }
+    ],
+    "equalAngles": [{ "angles": ["aBAD", "aDAC"], "color": "BLUE" }],
     "expressionLabels": [
       { "id": "ratioBD", "ownerSegment": "sBD", "text": "1" },
       { "id": "ratioDC", "ownerSegment": "sDC", "text": "2" }
     ]
   },
-  "caption": "각의 이등분선 AD가 BC를 BD:DC=1:2로 나누는 해설용 좌표 그림이다.",
+  "caption": "A의 같은 파란 각 호가 AD의 이등분을, BD·DC의 길이 라벨 1:2가 각의 이등분선 정리를 보인다.",
   "accessibilityDescription": "A(1,4), B(-2,0), C(7,-4)의 삼각형에서 D는 BC를 1대2로 내분하고 선분 AD가 그려져 있다.",
   "sourceConditions": [
     { "id": "vertex", "condition": "A(1,4), B(-2,0), C(7,-4)", "mappedTo": "mathPlan.nodes[A,B,C]; displaySegments[sAB,sAC,sBD,sDC]" },
-    { "id": "bisector", "condition": "AB=5, AC=10이므로 BD:DC=1:2", "mappedTo": "mathPlan.nodes[D].op=DIVISION_POINT; planeMarks.expressionLabels[ratioBD,ratioDC]; displaySegments[sAD]" },
+    { "id": "bisector", "condition": "AB=5, AC=10이므로 ∠BAD=∠DAC 및 BD:DC=1:2", "mappedTo": "mathPlan.nodes[D].op=DIVISION_POINT; planeMarks.angles[aBAD,aDAC]; planeMarks.equalAngles; planeMarks.expressionLabels[ratioBD,ratioDC]; displaySegments[sAD]" },
     { "id": "D", "condition": "D=(1,-4/3) (해설에서 구한 점)", "mappedTo": "mathPlan.nodes[D]; coordinateLabels[D]" }
   ],
-  "newVisualInformation": ["원본의 좌표 세 점과 세 변을 그대로 두고, 풀이에서 구한 내분점 D와 AD 및 1:2 표기를 추가한다."]
+  "newVisualInformation": ["원본의 좌표 세 점과 세 변을 그대로 두고, 내분점 D·AD·1:2의 실제 변 라벨과 각 A의 같은 파란 각 호 2개를 추가한다."]
 }
