@@ -1,0 +1,26 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {"kind": "ELLIPSE", "center": ["0", "0"], "aSquared": "64", "bSquared": "36", "major": "X"},
+  "points": [
+    {"id": "F", "kind": "FOCUS", "side": 1},
+    {"id": "F'", "kind": "FOCUS", "side": -1},
+    {"id": "P", "kind": "ON_CONIC", "x": "-8*sqrt(7)/7", "branch": "POS"},
+    {"id": "H", "kind": "FOOT", "from": "F", "onto": "k", "rightAngle": true}
+  ],
+  "lines": [{"id": "k", "through": ["P", "F'"], "hidden": true}],
+  "segments": [
+    {"id": "sFP", "from": "F", "to": "P", "label": "10"},
+    {"id": "sPH", "from": "P", "to": "H"},
+    {"id": "sHFp", "from": "H", "to": "F'"},
+    {"id": "sFH", "from": "F", "to": "H", "label": "4\\sqrt{6}"}
+  ],
+  "caption": "x²/64+y²/a=1인 타원의 초점 F·F′, 제2사분면 점 P와 선분 PF′ 위 수선의 발 H 및 직각 FH⊥PH",
+  "accessibilityDescription": "가로로 긴 타원 위 제2사분면의 점 P와 양의 x축 초점 F를 이은 선분에 길이 10이 쓰였다. P에서 음의 x축 초점 F′로 이어진 선분 위에 H가 있고, F에서 H로 내린 수선에는 길이 4√6과 직각 표시가 있다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "x²/64+y²/a=1, 0<a<64이고 두 초점이 x축에 있다. 조건에 의해 a=36,c²=28로 도형을 정밀 구성하지만 묻는 a는 곡선·점 좌표 라벨에 공개하지 않는다.", "mappedTo": ["conic", "F", "F'"]},
+    {"id": "c2", "condition": "P=(-8√7/7,6√42/7)은 실제 타원 위 제2사분면 점이다. F=(2√7,0)로부터의 거리 FP는 √((−22√7/7)²+(6√42/7)²)=10이다.", "mappedTo": ["P", "F", "sFP"]},
+    {"id": "c3", "condition": "F′=(-2√7,0), PF′=6. k는 P,F′를 지나는 숨은 계산 직선이며, H는 F에서 k에 내린 수선의 발이다. PH=2, HF′=4로 P-H-F′ 순서가 성립하고 FH=4√6이다.", "mappedTo": ["F'", "k", "H", "sPH", "sHFp", "sFH"]},
+    {"id": "c4", "condition": "∠FHP=90°는 H의 FOOT.rightAngle을 통해 직접 그려야 한다. 원문에서 주지 않은 PH=2·HF′=4·미지 a=36은 화면에 쓰지 않는다.", "mappedTo": ["H", "sFH", "sPH"]}
+  ],
+  "newVisualInformation": ["수선의 발 H를 실제 PF′ 선분 내부에 배치하고 직각 표식을 엔진 FOOT에 명시", "주어진 FP=10과 FH=4√6만 실제 선분 길이 라벨로 표시"]
+}
