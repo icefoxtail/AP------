@@ -839,7 +839,7 @@ window.questionBank = [
       "도형",
       "원의 넓이"
     ],
-    "image": "assets/images/21_왕운중_2학기_기말_중3_기출/q18-r1.png",
+    "image": "assets/images/21_왕운중_2학기_기말_중3_기출/q18-diagram-only.png",
     "decisiveStep": "접선-현 관계로 중심각을 구하고 부채꼴과 삼각형을 더하는 단계",
     "questionType": "객관식",
     "layoutTag": "grid",
