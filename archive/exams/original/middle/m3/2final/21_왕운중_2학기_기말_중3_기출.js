@@ -152,7 +152,7 @@ window.questionBank = [
       "도형",
       "원의 성질"
     ],
-    "image": "assets/images/21_왕운중_2학기_기말_중3_기출/q04.png",
+    "image": "assets/images/21_왕운중_2학기_기말_중3_기출/q04-diagram-only.png",
     "decisiveStep": "중심에서 현까지 거리와 현의 반길이로 반지름을 구하는 단계",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -203,7 +203,7 @@ window.questionBank = [
       "통계",
       "산점도"
     ],
-    "image": "assets/images/21_왕운중_2학기_기말_중3_기출/q05.png",
+    "image": "assets/images/21_왕운중_2학기_기말_중3_기출/q05-diagram-only.png",
     "decisiveStep": "산점도에서 x>y인 점을 직접 세는 단계",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -296,7 +296,7 @@ window.questionBank = [
       "도형",
       "원의 성질"
     ],
-    "image": "assets/images/21_왕운중_2학기_기말_중3_기출/q07.png",
+    "image": "assets/images/21_왕운중_2학기_기말_중3_기출/q07-diagram-only.png",
     "decisiveStep": "같은 현 AD를 보는 원주각의 크기가 같은 점",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -347,7 +347,7 @@ window.questionBank = [
       "도형",
       "원의 성질"
     ],
-    "image": "assets/images/21_왕운중_2학기_기말_중3_기출/q08.png",
+    "image": "assets/images/21_왕운중_2학기_기말_중3_기출/q08-diagram-only.png",
     "decisiveStep": "교차하는 현의 각과 호의 합 관계",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -398,7 +398,7 @@ window.questionBank = [
       "도형",
       "원의 성질"
     ],
-    "image": "assets/images/21_왕운중_2학기_기말_중3_기출/q09.png",
+    "image": "assets/images/21_왕운중_2학기_기말_중3_기출/q09-diagram-only.png",
     "decisiveStep": "같은 중심 거리의 현이 같아지는 점",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -449,7 +449,7 @@ window.questionBank = [
       "도형",
       "원의 성질"
     ],
-    "image": "assets/images/21_왕운중_2학기_기말_중3_기출/q10.png",
+    "image": "assets/images/21_왕운중_2학기_기말_중3_기출/q10-diagram-only.png",
     "decisiveStep": "내접각으로 각 호를 구한 뒤 접선-현 각으로 연결하는 점",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -550,7 +550,6 @@ window.questionBank = [
       "통계",
       "평균과 분산"
     ],
-    "image": "assets/images/21_왕운중_2학기_기말_중3_기출/q12.png",
     "decisiveStep": "분산을 반별 분산의 인원수 가중평균으로 계산하는 단계",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -595,7 +594,7 @@ window.questionBank = [
       "도형",
       "원의 성질"
     ],
-    "image": "assets/images/21_왕운중_2학기_기말_중3_기출/q13.png",
+    "image": "assets/images/21_왕운중_2학기_기말_중3_기출/q13-diagram-only.png",
     "decisiveStep": "접선의 중심거리로 현의 반을 구하는 단계",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -646,7 +645,7 @@ window.questionBank = [
       "도형",
       "원의 성질"
     ],
-    "image": "assets/images/21_왕운중_2학기_기말_중3_기출/q14.png",
+    "image": "assets/images/21_왕운중_2학기_기말_중3_기출/q14-diagram-only.png",
     "decisiveStep": "작은 호 AB를 3등분 비율로 나누는 단계",
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -884,7 +883,7 @@ window.questionBank = [
       "도형",
       "원의 성질"
     ],
-    "image": "assets/images/21_왕운중_2학기_기말_중3_기출/q19.png",
+    "image": "assets/images/21_왕운중_2학기_기말_중3_기출/q19-diagram-only.png",
     "decisiveStep": "같은 호에 대한 원주각과 교차현 각 관계",
     "questionType": "서술형",
     "layoutTag": "grid",
@@ -929,7 +928,7 @@ window.questionBank = [
       "도형",
       "삼각형의 성질"
     ],
-    "image": "assets/images/21_왕운중_2학기_기말_중3_기출/q20.png",
+    "image": "assets/images/21_왕운중_2학기_기말_중3_기출/q20-diagram-only.png",
     "decisiveStep": "각의 이등분선 정리와 직각삼각형 피타고라스 관계",
     "questionType": "서술형",
     "layoutTag": "grid",
@@ -974,7 +973,6 @@ window.questionBank = [
       "통계",
       "편차와 표준편차"
     ],
-    "image": "assets/images/21_왕운중_2학기_기말_중3_기출/q21.png",
     "decisiveStep": "편차 합 0과 편차제곱 평균을 차례로 쓰는 단계",
     "questionType": "서술형",
     "layoutTag": "grid",
@@ -1056,7 +1054,7 @@ window.questionBank = [
       "도형",
       "원의 성질"
     ],
-    "image": "assets/images/21_왕운중_2학기_기말_중3_기출/q23.png",
+    "image": "assets/images/21_왕운중_2학기_기말_중3_기출/q23-diagram-only.png",
     "decisiveStep": "평행한 끝점 접선 사이의 거리와 공통접선 길이로 지름을 구하는 단계",
     "questionType": "서술형",
     "layoutTag": "grid",
