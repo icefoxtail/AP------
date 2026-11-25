@@ -1,0 +1,39 @@
+{
+  "capability": "lattice-path-figure-v1",
+  "caption": "왼쪽 아래 A에서 오른쪽 위 B로 가는 5×5 도로망과 왼쪽 변의 C(0,3).",
+  "accessibilityDescription": "오른쪽과 위쪽으로 이동하는 5×5 도로망. A는 왼쪽 아래, B는 오른쪽 위, C는 왼쪽 변에서 위로 세 칸이다.",
+  "sourceConditions": [
+    {
+      "id": "q14",
+      "condition": "가로 $5$칸, 세로 $5$칸인 직사각형 도로망에서 왼쪽 아래 교점을 $A=(0,0)$, 오른쪽 위 교점을 $B=(5,5)$라 하자. $A$에서 $B$까지 최단 거리로 이동할 때 왼쪽 변의 교점 $C=(0,3)$을 지나지 않는 경로의 수는? (각 좌표는 왼쪽·아래에서부터 센 격자 칸 수이다.) [4.3점]",
+      "mappedTo": "STUDENT_PROBLEM"
+    }
+  ],
+  "newVisualInformation": [
+    "A(0,0), B(5,5), C(0,3)을 서로 다른 격자 교점으로 표시"
+  ],
+  "lattice": {
+    "grid": {
+      "cols": 5,
+      "rows": 5
+    },
+    "points": {
+      "A": [
+        0,
+        0
+      ],
+      "B": [
+        5,
+        5
+      ],
+      "C": [
+        0,
+        3
+      ]
+    },
+    "from": "A",
+    "to": "B",
+    "counts": false,
+    "hideTargetCount": true
+  }
+}
