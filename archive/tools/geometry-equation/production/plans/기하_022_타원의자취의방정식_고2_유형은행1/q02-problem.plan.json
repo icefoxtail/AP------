@@ -1,0 +1,24 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {"kind": "CIRCLE", "center": ["0", "0"], "rSquared": "64"},
+  "points": [
+    {"id": "F", "kind": "CENTER", "coordinates": true},
+    {"id": "F'", "kind": "POINT", "x": "0", "y": "-6", "coordinates": true},
+    {"id": "A", "kind": "ON_CONIC", "x": "8", "branch": "POS"},
+    {"id": "P", "kind": "POINT", "x": "7/4", "y": "0"},
+    {"id": "M", "kind": "FOOT", "from": "A", "onto": "l", "rightAngle": true, "label": false}
+  ],
+  "lines": [{"id": "l", "slope": "-4/3", "intercept": "7/3"}],
+  "segments": [
+    {"id": "sAF", "from": "A", "to": "F", "label": "8"},
+    {"id": "sAFp", "from": "A", "to": "F'"}
+  ],
+  "caption": "원 F(0,0) 중심 반지름 8인 원 위 점 A와 내부 정점 F′(0,−6), 선분 AF′의 수직이등분선과 AF가 만나는 점 P",
+  "accessibilityDescription": "반지름 8인 원의 중심 F는 원점이고 F′는 아래쪽 (0,-6)에 있다. 오른쪽 원 위 A에서 F 및 F′로 선을 이었으며 AF′의 수직이등분선이 AF의 내부 점 P를 지난다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "원 x²+y²=64, 중심 F=(0,0), 내부 정점 F′=(0,-6). 원 위 대표점 A=(8,0)으로 선택했다.", "mappedTo": ["conic", "F", "F'", "A", "sAF"]},
+    {"id": "c2", "condition": "선분 AF′의 중점 M=(4,-3), 수직이등분선 l: y=-4x/3+7/3이며 선분 AF′와 직각이다. M 이름은 원문 그림에 없으므로 숨긴다.", "mappedTo": ["l", "M", "sAFp"]},
+    {"id": "c3", "condition": "P=(7/4,0)는 선분 AF 내부에서 수직이등분선 l과 만난다. PA=PF′=25/4 및 PF+PF′=8을 충족하며 구하는 자취 타원의 식은 문제 그림에 그리거나 쓰지 않는다.", "mappedTo": ["P", "l", "sAF"]}
+  ],
+  "newVisualInformation": ["원·AF′ 수직이등분선·AF 교점의 정확한 대표 배치; 답이 되는 타원은 생략"]
+}
