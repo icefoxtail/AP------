@@ -1,0 +1,109 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 4,
+        "depth": 4
+      },
+      "height": 4,
+      "names": "EFGHABCD",
+      "points": [
+        {
+          "id": "M",
+          "at": {
+            "midpoint": [
+              "A",
+              "E"
+            ]
+          }
+        },
+        {
+          "id": "N",
+          "at": {
+            "midpoint": [
+              "D",
+              "H"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "B",
+      "to": "M",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "M",
+      "to": "N",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "N",
+      "to": "C",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "highlights": [
+    {
+      "polygon": [
+        "B",
+        "C",
+        "N",
+        "M"
+      ],
+      "fill": "LIGHT"
+    },
+    {
+      "polygon": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "fill": "WARM"
+    }
+  ],
+  "dims": [
+    {
+      "from": "A",
+      "to": "B",
+      "label": "4"
+    }
+  ],
+  "caption": "모서리 BC를 공유하는 윗면 ABCD와 기울어진 평면 BCNM",
+  "solidCaption": {
+    "text": "164번 유형 · 2번 그림"
+  },
+  "accessibilityDescription": "모서리 BC를 공유하는 윗면 ABCD와 기울어진 평면 BCNM. 정육면체 한 모서리 4; AE와 DH의 중점 M,N; 두 평면의 공통 모서리 BC.",
+  "sourceQuote": "[그림: 한 모서리의 길이가 4인 정육면체 $\\mathrm{ABCD-EFGH}$에서 윗면 $\\mathrm{ABCD}$와 모서리 $\\mathrm{AE, DH}$의 중점 $\\mathrm{M, N}$을 지나는 기울어진 평면 $\\mathrm{BCNM}$이 표시된 입체도형]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "정육면체 한 모서리 4",
+      "mappedTo": "solids[0].base.width"
+    },
+    {
+      "id": "c2",
+      "condition": "AE와 DH의 중점 M,N",
+      "mappedTo": "solids[0].points"
+    },
+    {
+      "id": "c3",
+      "condition": "두 평면의 공통 모서리 BC",
+      "mappedTo": "highlights"
+    }
+  ],
+  "newVisualInformation": [
+    "중점 두 개와 교선 BC를 공유하는 두 평면의 실제 기울기"
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 4,
+        "depth": 4
+      },
+      "height": 4,
+      "names": "EFGHABCD",
+      "points": [
+        {
+          "id": "I",
+          "at": {
+            "midpoint": [
+              "C",
+              "G"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "F",
+      "to": "H",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "F",
+      "to": "I",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "H",
+      "to": "I",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "highlights": [
+    {
+      "polygon": [
+        "F",
+        "G",
+        "H"
+      ],
+      "fill": "LIGHT"
+    },
+    {
+      "polygon": [
+        "F",
+        "H",
+        "I"
+      ],
+      "fill": "WARM"
+    }
+  ],
+  "dims": [
+    {
+      "from": "A",
+      "to": "B",
+      "label": "4"
+    }
+  ],
+  "caption": "정육면체의 밑면 삼각형 FGH와 CG 중점 I의 삼각형 FHI",
+  "solidCaption": {
+    "text": "164번 유형 · 6번 그림"
+  },
+  "accessibilityDescription": "정육면체의 밑면 삼각형 FGH와 CG 중점 I의 삼각형 FHI. 정육면체 한 모서리 4; I는 CG 중점; 공유선 FH와 두 삼각형.",
+  "sourceQuote": "[그림: 정육면체 $\\mathrm{ABCD-EFGH}$에서 밑면 삼각형 $\\mathrm{FGH}$와 모서리 $\\mathrm{CG}$의 중점 $\\mathrm{I}$를 연결하여 만든 삼각형 $\\mathrm{FHI}$가 표시된 입체도형]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "정육면체 한 모서리 4",
+      "mappedTo": "solids[0].height"
+    },
+    {
+      "id": "c2",
+      "condition": "I는 CG 중점",
+      "mappedTo": "solids[0].points"
+    },
+    {
+      "id": "c3",
+      "condition": "공유선 FH와 두 삼각형",
+      "mappedTo": "highlights"
+    }
+  ],
+  "newVisualInformation": [
+    "중점 I로 기울어진 면 FHI와 밑면 삼각형 FGH"
+  ]
+}

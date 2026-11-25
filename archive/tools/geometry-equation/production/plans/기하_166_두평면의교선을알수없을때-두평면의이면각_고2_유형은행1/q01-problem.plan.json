@@ -1,0 +1,98 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 1,
+        "depth": 2
+      },
+      "height": 2,
+      "names": "EFGHABCD"
+    }
+  ],
+  "segments": [
+    {
+      "from": "B",
+      "to": "D",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "D",
+      "to": "E",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "E",
+      "to": "B",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "E",
+      "to": "G",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "highlights": [
+    {
+      "polygon": [
+        "B",
+        "D",
+        "E"
+      ],
+      "fill": "LIGHT"
+    },
+    {
+      "polygon": [
+        "E",
+        "F",
+        "G"
+      ],
+      "fill": "WARM"
+    }
+  ],
+  "dims": [
+    {
+      "from": "A",
+      "to": "B",
+      "label": "1"
+    },
+    {
+      "from": "A",
+      "to": "D",
+      "label": "2"
+    },
+    {
+      "from": "A",
+      "to": "E",
+      "label": "2"
+    }
+  ],
+  "caption": "AB=1, AD=2, AE=2 직육면체에서 삼각형 BDE와 EFG",
+  "solidCaption": {
+    "text": "166번 유형 · 1번 그림"
+  },
+  "accessibilityDescription": "AB=1, AD=2, AE=2 직육면체에서 삼각형 BDE와 EFG. AB=1 AD=2 AE=2; 삼각형 BDE와 EFG.",
+  "sourceQuote": "[그림: 윗면이 $\\mathrm{ABCD}$, 밑면이 $\\mathrm{EFGH}$이고 수직 모서리가 $\\mathrm{AE}, \\mathrm{BF}, \\mathrm{CG}, \\mathrm{DH}$인 직육면체에서 $\\overline{\\mathrm{AB}}=1$, $\\overline{\\mathrm{AD}}=2$, $\\overline{\\mathrm{AE}}=2$가",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AB=1 AD=2 AE=2",
+      "mappedTo": "dims"
+    },
+    {
+      "id": "c2",
+      "condition": "삼각형 BDE와 EFG",
+      "mappedTo": "highlights"
+    }
+  ],
+  "newVisualInformation": [
+    "두 삼각형이 서로 다른 공간 평면에 놓이는 직육면체"
+  ]
+}

@@ -1,0 +1,131 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 4,
+        "depth": 4
+      },
+      "height": 6,
+      "names": "EFGHABCD",
+      "points": [
+        {
+          "id": "P",
+          "at": {
+            "divide": [
+              "C",
+              "G"
+            ],
+            "ratio": "1:2"
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "P",
+      "to": "F",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "P",
+      "to": "H",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "F",
+      "to": "H",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "C",
+      "to": "P",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "P",
+      "to": "G",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "highlights": [
+    {
+      "polygon": [
+        "P",
+        "F",
+        "H"
+      ],
+      "fill": "LIGHT"
+    },
+    {
+      "polygon": [
+        "F",
+        "G",
+        "H"
+      ],
+      "fill": "WARM"
+    }
+  ],
+  "dims": [
+    {
+      "from": "E",
+      "to": "F",
+      "label": "4"
+    },
+    {
+      "from": "A",
+      "to": "E",
+      "label": "6"
+    },
+    {
+      "from": "C",
+      "to": "P",
+      "label": "2"
+    },
+    {
+      "from": "P",
+      "to": "G",
+      "label": "4"
+    }
+  ],
+  "caption": "밑변 4, 높이 6 직육면체에서 CP:PG=1:2인 P와 삼각형 PFH",
+  "solidCaption": {
+    "text": "164번 유형 · 7번 그림"
+  },
+  "accessibilityDescription": "밑변 4, 높이 6 직육면체에서 CP:PG=1:2인 P와 삼각형 PFH. EFGH 정사각형 한 변 4; 높이 6; CP=2 PG=4; 삼각형 PFH와 밑면 FGH.",
+  "sourceQuote": "[그림: 밑면 $\\mathrm{EFGH}$가 한 변의 길이 4인 정사각형이고 높이가 6인 직육면체에서, 모서리 $\\mathrm{CG}$ 위의 점 $\\mathrm{P}$($\\overline{\\mathrm{CP}}=2, \\overline{\\mathrm{PG}}=4$)와 밑면 대각선의 양 끝점 $\\mathrm{F, H}$를 잇는 삼각형 $\\mathrm{PFH}$",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "EFGH 정사각형 한 변 4",
+      "mappedTo": "solids[0].base.width"
+    },
+    {
+      "id": "c2",
+      "condition": "높이 6",
+      "mappedTo": "solids[0].height"
+    },
+    {
+      "id": "c3",
+      "condition": "CP=2 PG=4",
+      "mappedTo": "dims"
+    },
+    {
+      "id": "c4",
+      "condition": "삼각형 PFH와 밑면 FGH",
+      "mappedTo": "highlights"
+    }
+  ],
+  "newVisualInformation": [
+    "내분점 P와 삼각형 PFH의 교선 FH"
+  ]
+}

@@ -1,0 +1,129 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 4,
+        "depth": 4
+      },
+      "height": 2.449489742783178,
+      "names": "EFGHABCD",
+      "points": [
+        {
+          "id": "M",
+          "at": {
+            "midpoint": [
+              "A",
+              "D"
+            ]
+          }
+        },
+        {
+          "id": "N",
+          "at": {
+            "midpoint": [
+              "C",
+              "D"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "B",
+      "to": "M",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "B",
+      "to": "N",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "M",
+      "to": "N",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "F",
+      "to": "M",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "F",
+      "to": "N",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "highlights": [
+    {
+      "polygon": [
+        "B",
+        "N",
+        "M"
+      ],
+      "fill": "LIGHT"
+    },
+    {
+      "polygon": [
+        "F",
+        "N",
+        "M"
+      ],
+      "fill": "WARM"
+    }
+  ],
+  "dims": [
+    {
+      "from": "A",
+      "to": "E",
+      "label": "sqrt(6)"
+    },
+    {
+      "from": "M",
+      "to": "N",
+      "label": "2sqrt(2)"
+    }
+  ],
+  "caption": "직육면체의 AD·CD 중점 M,N과 평면 BNM·FNM",
+  "solidCaption": {
+    "text": "164번 유형 · 10번 그림"
+  },
+  "accessibilityDescription": "직육면체의 AD·CD 중점 M,N과 평면 BNM·FNM. 윗면의 넓이 16; 높이 AE=√6; M,N은 AD,CD 중점; 삼각형 BNM과 FNM.",
+  "sourceQuote": "[그림: 직육면체 $\\mathrm{ABCD-EFGH}$에서 윗면 모서리 $\\mathrm{AD, CD}$의 중점 $\\mathrm{M, N}$과 꼭짓점 $\\mathrm{B}$를 잇는 삼각형 $\\mathrm{BNM}$, 그리고 밑면 꼭짓점 $\\mathrm{F}$와 연결한 평면 $\\mathrm{FNM}$이 표시된 입체도형]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "윗면의 넓이 16",
+      "mappedTo": "solids[0].base.width"
+    },
+    {
+      "id": "c2",
+      "condition": "높이 AE=√6",
+      "mappedTo": "dims"
+    },
+    {
+      "id": "c3",
+      "condition": "M,N은 AD,CD 중점",
+      "mappedTo": "solids[0].points"
+    },
+    {
+      "id": "c4",
+      "condition": "삼각형 BNM과 FNM",
+      "mappedTo": "highlights"
+    }
+  ],
+  "newVisualInformation": [
+    "공유변 MN을 갖는 공간의 두 삼각형"
+  ]
+}

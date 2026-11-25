@@ -1,0 +1,110 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 4,
+        "depth": 4
+      },
+      "height": 4,
+      "names": "EFGHABCD",
+      "points": [
+        {
+          "id": "M",
+          "at": {
+            "midpoint": [
+              "A",
+              "B"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "M",
+      "to": "D",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "B",
+      "to": "D",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "B",
+      "to": "E",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "D",
+      "to": "E",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "M",
+      "to": "B",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "highlights": [
+    {
+      "polygon": [
+        "M",
+        "B",
+        "D"
+      ],
+      "fill": "LIGHT"
+    },
+    {
+      "polygon": [
+        "B",
+        "D",
+        "E"
+      ],
+      "fill": "WARM"
+    }
+  ],
+  "dims": [
+    {
+      "from": "A",
+      "to": "B",
+      "label": "4"
+    }
+  ],
+  "caption": "정육면체 한 변 4에서 M은 AB 중점, 삼각형 MBD와 BDE",
+  "solidCaption": {
+    "text": "166번 유형 · 2번 그림"
+  },
+  "accessibilityDescription": "정육면체 한 변 4에서 M은 AB 중점, 삼각형 MBD와 BDE. 한 모서리 길이 4; M은 AB 중점; 공유변 BD와 두 삼각형.",
+  "sourceQuote": "[그림: 한 모서리의 길이가 $4$인 정육면체 $\\mathrm{ABCD-EFGH}$에서 윗면 모서리 $\\mathrm{AB}$의 중점 $\\mathrm{M}$이 표시되어 있고, 삼각형 $\\mathrm{MBD}$와 정삼각형 $\\mathrm{BDE}$가 선분 $\\mathrm{BD}$를 공유하며 음영으로 표시되어 있다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "한 모서리 길이 4",
+      "mappedTo": "solids[0].height"
+    },
+    {
+      "id": "c2",
+      "condition": "M은 AB 중점",
+      "mappedTo": "solids[0].points"
+    },
+    {
+      "id": "c3",
+      "condition": "공유변 BD와 두 삼각형",
+      "mappedTo": "highlights"
+    }
+  ],
+  "newVisualInformation": [
+    "교선 BD를 공유하는 두 삼각형 MBD·BDE"
+  ]
+}

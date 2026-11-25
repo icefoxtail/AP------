@@ -1,0 +1,145 @@
+{
+  "capability": "solid-figure-v1",
+  "space": {
+    "points": [
+      {
+        "id": "D",
+        "at": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "A",
+        "at": [
+          3,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "B",
+        "at": [
+          0,
+          3,
+          0
+        ]
+      },
+      {
+        "id": "C",
+        "at": [
+          0,
+          0,
+          3
+        ]
+      }
+    ],
+    "segments": [
+      {
+        "from": "D",
+        "to": "A",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "D",
+        "to": "B",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "D",
+        "to": "C",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "B",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "C",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "B",
+        "to": "C",
+        "style": "AUTO",
+        "role": "REF"
+      }
+    ]
+  },
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "D",
+        "refs": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "at": "D",
+        "refs": [
+          "B",
+          "C"
+        ]
+      },
+      {
+        "at": "D",
+        "refs": [
+          "C",
+          "A"
+        ]
+      }
+    ]
+  },
+  "dims": [
+    {
+      "from": "D",
+      "to": "A",
+      "label": "3"
+    },
+    {
+      "from": "D",
+      "to": "B",
+      "label": "3"
+    },
+    {
+      "from": "D",
+      "to": "C",
+      "label": "3"
+    }
+  ],
+  "caption": "D에서 세 모서리가 서로 직교하는 사면체 ABCD",
+  "solidCaption": {
+    "text": "164번 유형 · 5번 그림"
+  },
+  "accessibilityDescription": "D에서 세 모서리가 서로 직교하는 사면체 ABCD. DA·DB·DC의 상호 직교; 세 모서리의 길이 3; 네 꼭짓점 A B C D.",
+  "sourceQuote": "[그림: 점 $\\mathrm{D}$에서 세 모서리 $\\mathrm{DA, DB, DC}$가 서로 직교하고 세 변의 길이가 모두 3인 사면체 $\\mathrm{ABCD}$]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "DA·DB·DC의 상호 직교",
+      "mappedTo": "space.points"
+    },
+    {
+      "id": "c2",
+      "condition": "세 모서리의 길이 3",
+      "mappedTo": "dims"
+    },
+    {
+      "id": "c3",
+      "condition": "네 꼭짓점 A B C D",
+      "mappedTo": "space.segments"
+    }
+  ],
+  "newVisualInformation": [
+    "원점 D에서 세 좌표축으로 뻗는 직교 모서리 세 개"
+  ]
+}

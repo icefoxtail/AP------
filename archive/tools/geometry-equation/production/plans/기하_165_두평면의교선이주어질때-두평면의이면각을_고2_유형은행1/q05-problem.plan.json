@@ -1,0 +1,260 @@
+{
+  "capability": "solid-figure-v1",
+  "space": {
+    "points": [
+      {
+        "id": "E",
+        "at": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "F",
+        "at": [
+          "sqrt(6)+sqrt(2)",
+          0,
+          0
+        ]
+      },
+      {
+        "id": "G",
+        "at": [
+          "sqrt(6)+sqrt(2)",
+          "sqrt(6)+sqrt(2)",
+          0
+        ]
+      },
+      {
+        "id": "H",
+        "at": [
+          0,
+          "sqrt(6)+sqrt(2)",
+          0
+        ]
+      },
+      {
+        "id": "A",
+        "at": [
+          0,
+          0,
+          "4*sqrt(6)"
+        ]
+      },
+      {
+        "id": "B",
+        "at": [
+          "sqrt(6)+sqrt(2)",
+          0,
+          "4*sqrt(6)"
+        ]
+      },
+      {
+        "id": "C",
+        "at": [
+          "sqrt(6)+sqrt(2)",
+          "sqrt(6)+sqrt(2)",
+          "4*sqrt(6)"
+        ]
+      },
+      {
+        "id": "D",
+        "at": [
+          0,
+          "sqrt(6)+sqrt(2)",
+          "4*sqrt(6)"
+        ]
+      },
+      {
+        "id": "P",
+        "at": [
+          "sqrt(6)+sqrt(2)",
+          "2*sqrt(2)",
+          "4*sqrt(6)"
+        ]
+      },
+      {
+        "id": "Q",
+        "at": [
+          "sqrt(6)-sqrt(2)",
+          0,
+          0
+        ]
+      },
+      {
+        "id": "P′",
+        "at": [
+          "sqrt(6)+sqrt(2)",
+          "2*sqrt(2)",
+          0
+        ]
+      }
+    ],
+    "segments": [
+      {
+        "from": "E",
+        "to": "F",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "F",
+        "to": "G",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "G",
+        "to": "H",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "H",
+        "to": "E",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "B",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "B",
+        "to": "C",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "C",
+        "to": "D",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "D",
+        "to": "A",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "E",
+        "to": "A",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "F",
+        "to": "B",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "P",
+        "to": "H",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "P",
+        "to": "Q",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "H",
+        "to": "Q",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "P′",
+        "to": "H",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "P′",
+        "to": "Q",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "P",
+        "to": "P′",
+        "style": "DASHED",
+        "role": "REF"
+      }
+    ]
+  },
+  "highlights": [
+    {
+      "polygon": [
+        "P",
+        "H",
+        "Q"
+      ],
+      "fill": "LIGHT"
+    },
+    {
+      "polygon": [
+        "P′",
+        "H",
+        "Q"
+      ],
+      "fill": "WARM"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "P′",
+        "refs": [
+          "P",
+          "H"
+        ]
+      }
+    ]
+  },
+  "dims": [
+    {
+      "from": "A",
+      "to": "E",
+      "label": "4sqrt(6)"
+    }
+  ],
+  "caption": "정사각형 밑면 EFGH 위로 삼각형 PHQ를 정사영한 P′HQ",
+  "solidCaption": {
+    "text": "165번 유형 · 5번 그림"
+  },
+  "accessibilityDescription": "정사각형 밑면 EFGH 위로 삼각형 PHQ를 정사영한 P′HQ. 직육면체 ABCD-EFGH의 정사각형 밑면; P∈BC, Q∈EF; PHQ의 밑면 정사영은 P′HQ; 정사영 P′HQ는 한 변 4의 정삼각형.",
+  "sourceQuote": "[그림: 직육면체 $\\mathrm{ABCD-EFGH}$에서 $\\overline{\\mathrm{BC}}$ 위의 점 $\\mathrm{P}$와 $\\overline{\\mathrm{EF}}$ 위의 점 $\\mathrm{Q}$를 잇는 평면 $\\mathrm{PHQ}$ 및 그 정사영 삼각형을 나타낸 입체도형]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "직육면체 ABCD-EFGH의 정사각형 밑면",
+      "mappedTo": "space.points"
+    },
+    {
+      "id": "c2",
+      "condition": "P∈BC, Q∈EF",
+      "mappedTo": "space.points"
+    },
+    {
+      "id": "c3",
+      "condition": "PHQ의 밑면 정사영은 P′HQ",
+      "mappedTo": "highlights"
+    },
+    {
+      "id": "c4",
+      "condition": "정사영 P′HQ는 한 변 4의 정삼각형",
+      "mappedTo": "space.points"
+    }
+  ],
+  "newVisualInformation": [
+    "P′H=P′Q=HQ=4인 정삼각형과 그 위의 PHQ"
+  ]
+}

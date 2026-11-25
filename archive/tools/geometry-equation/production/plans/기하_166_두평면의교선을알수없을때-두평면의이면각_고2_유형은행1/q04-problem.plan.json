@@ -1,0 +1,95 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "REGULAR_POLYHEDRON",
+      "faces": 4,
+      "side": 4,
+      "names": "BCDA",
+      "points": [
+        {
+          "id": "M",
+          "at": {
+            "midpoint": [
+              "B",
+              "D"
+            ]
+          }
+        },
+        {
+          "id": "N",
+          "at": {
+            "midpoint": [
+              "C",
+              "D"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "A",
+      "to": "M",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "A",
+      "to": "N",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "M",
+      "to": "N",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "highlights": [
+    {
+      "polygon": [
+        "A",
+        "M",
+        "N"
+      ],
+      "fill": "LIGHT"
+    }
+  ],
+  "dims": [
+    {
+      "from": "B",
+      "to": "C",
+      "label": "4"
+    }
+  ],
+  "caption": "한 모서리 4인 정사면체에서 BD·CD의 중점 M,N과 삼각형 AMN",
+  "solidCaption": {
+    "text": "166번 유형 · 4번 그림"
+  },
+  "accessibilityDescription": "한 모서리 4인 정사면체에서 BD·CD의 중점 M,N과 삼각형 AMN. 정사면체 한 모서리 4; M,N은 BD,CD 중점; 삼각형 AMN 음영.",
+  "sourceQuote": "[그림: 한 모서리의 길이가 $4$인 정사면체 $\\mathrm{ABCD}$에서 밑면 $\\triangle\\mathrm{BCD}$의 두 변 $\\mathrm{BD}$, $\\mathrm{CD}$의 중점 $\\mathrm{M}$, $\\mathrm{N}$이 표시되어 있고, 삼각형 $\\mathrm{AMN}$이 음영으로 표시되어 있다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "정사면체 한 모서리 4",
+      "mappedTo": "solids[0].side"
+    },
+    {
+      "id": "c2",
+      "condition": "M,N은 BD,CD 중점",
+      "mappedTo": "solids[0].points"
+    },
+    {
+      "id": "c3",
+      "condition": "삼각형 AMN 음영",
+      "mappedTo": "highlights"
+    }
+  ],
+  "newVisualInformation": [
+    "중점 삼각형 AMN의 기하적 평면"
+  ]
+}

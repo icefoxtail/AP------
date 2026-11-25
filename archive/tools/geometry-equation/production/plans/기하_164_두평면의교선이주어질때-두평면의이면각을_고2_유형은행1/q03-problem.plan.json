@@ -1,0 +1,128 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 6,
+        "depth": 6
+      },
+      "height": 6,
+      "names": "EFGHABCD",
+      "points": [
+        {
+          "id": "I",
+          "at": {
+            "divide": [
+              "A",
+              "E"
+            ],
+            "ratio": "2:1"
+          }
+        },
+        {
+          "id": "J",
+          "at": {
+            "divide": [
+              "D",
+              "H"
+            ],
+            "ratio": "2:1"
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "I",
+      "to": "F",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "J",
+      "to": "G",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "I",
+      "to": "J",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "A",
+      "to": "I",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "I",
+      "to": "E",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "highlights": [
+    {
+      "polygon": [
+        "I",
+        "F",
+        "G",
+        "J"
+      ],
+      "fill": "LIGHT"
+    },
+    {
+      "polygon": [
+        "B",
+        "F",
+        "G",
+        "C"
+      ],
+      "fill": "WARM"
+    }
+  ],
+  "dims": [
+    {
+      "from": "A",
+      "to": "I",
+      "label": "4"
+    },
+    {
+      "from": "I",
+      "to": "E",
+      "label": "2"
+    }
+  ],
+  "caption": "AE·DH 위 2:1 내분점 I,J와 평면 IFGJ, 면 BFGC",
+  "solidCaption": {
+    "text": "164번 유형 · 3번 그림"
+  },
+  "accessibilityDescription": "AE·DH 위 2:1 내분점 I,J와 평면 IFGJ, 면 BFGC. 한 모서리 6인 정육면체; AI=4, IE=2 및 J의 같은 내분비; 면 IFGJ와 오른쪽 면 BFGC.",
+  "sourceQuote": "[그림: 정육면체 $\\mathrm{ABCD-EFGH}$에서 $\\overline{\\mathrm{AE}}, \\overline{\\mathrm{DH}}$ 위에 $\\overline{\\mathrm{AI}}=4, \\overline{\\mathrm{IE}}=2$인 점 $\\mathrm{I, J}$가 잡혀 있고, 밑면 앞쪽 모서리 $\\mathrm{FG}$와 연결된 평면 $\\m",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "한 모서리 6인 정육면체",
+      "mappedTo": "solids[0].height"
+    },
+    {
+      "id": "c2",
+      "condition": "AI=4, IE=2 및 J의 같은 내분비",
+      "mappedTo": "solids[0].points"
+    },
+    {
+      "id": "c3",
+      "condition": "면 IFGJ와 오른쪽 면 BFGC",
+      "mappedTo": "highlights"
+    }
+  ],
+  "newVisualInformation": [
+    "교선 FG와 두 면 사이의 사면체 투영 관계"
+  ]
+}
