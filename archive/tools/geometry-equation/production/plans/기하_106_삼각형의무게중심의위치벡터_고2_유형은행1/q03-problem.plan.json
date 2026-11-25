@@ -1,0 +1,194 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "MIDPOINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "N",
+        "op": "MIDPOINT",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G",
+        "op": "CENTROID",
+        "inputs": [
+          "O",
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "M",
+    "N",
+    "G"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAN",
+      "refs": [
+        "A",
+        "N"
+      ]
+    },
+    {
+      "id": "sBM",
+      "refs": [
+        "B",
+        "M"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 560
+  },
+  "caption": "삼각형 OAB의 두 중선 AN·BM과 교점 G",
+  "accessibilityDescription": "OA·OB 위치벡터 a·b가 있는 삼각형에서 OA 중점 M, OB 중점 N과 두 중선의 교점 G가 표시된다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "M=OA 중점, N=OB 중점은 MIDPOINT 연산을 사용한다.",
+      "mappedTo": [
+        "O",
+        "A",
+        "B",
+        "M",
+        "N"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "G=CENTROID(O,A,B)는 AN·BM 위의 공통 교점이며 실제 중선 두 개를 모두 그린다.",
+      "mappedTo": [
+        "G",
+        "sAN",
+        "sBM"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "OA=a, OB=b는 두 방향 화살표로 표시하고 최종 계수 값은 적지 않는다.",
+      "mappedTo": [
+        "va",
+        "vb"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 중선 교차와 정확한 중점·무게중심"
+  ],
+  "planeMarks": {
+    "vectors": [
+      {
+        "id": "va",
+        "from": "O",
+        "to": "A",
+        "label": "vec(a)",
+        "side": "RIGHT",
+        "labelAt": 0.5
+      },
+      {
+        "id": "vb",
+        "from": "O",
+        "to": "B",
+        "label": "vec(b)",
+        "side": "LEFT",
+        "labelAt": 0.5
+      }
+    ]
+  }
+}

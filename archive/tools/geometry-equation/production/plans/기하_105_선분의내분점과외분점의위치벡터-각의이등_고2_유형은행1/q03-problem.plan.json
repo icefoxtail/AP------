@@ -1,0 +1,261 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "4"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "7"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "I",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "A",
+          "D"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "I"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "3"
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "I"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 560
+  },
+  "caption": "세 변 7·8·5의 삼각형에 내접하는 원과 벡터 AI",
+  "accessibilityDescription": "AB=7, AC=8, BC=5인 삼각형 ABC와 그 안의 내접원 중심 I가 있고 A에서 I로 향하는 벡터가 표시된다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "B(0,0),C(5,0),A(1,4√3)의 대표 좌표는 AB=7·AC=8·BC=5를 정확하게 만족한다.",
+      "mappedTo": [
+        "A",
+        "B",
+        "C",
+        "dAB",
+        "dAC",
+        "dBC"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "BD:DC=7:8인 D와 AI:ID=3:1인 I는 DIVISION_POINT 결과다. 원 반지름 √3이 실제 세 변의 접거리를 이룬다.",
+      "mappedTo": [
+        "D",
+        "I",
+        "k"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "A→I의 방향을 벡터 표식에 표시하되 구하는 계수 p+q는 노출하지 않는다.",
+      "mappedTo": [
+        "vAI"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "정확한 7·8·5 치수선, 내접원, A→I 화살표"
+  ],
+  "planeMarks": {
+    "vectors": [
+      {
+        "id": "vAI",
+        "from": "A",
+        "to": "I",
+        "label": "vec(AI)",
+        "side": "RIGHT",
+        "labelAt": 0.5
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dAB",
+        "from": "A",
+        "to": "B",
+        "label": "7",
+        "side": "LEFT",
+        "style": "BAR",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dAC",
+        "from": "A",
+        "to": "C",
+        "label": "8",
+        "side": "RIGHT",
+        "style": "BAR",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dBC",
+        "from": "B",
+        "to": "C",
+        "label": "5",
+        "side": "BELOW",
+        "style": "BAR",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayCircles": [
+    "k"
+  ]
+}

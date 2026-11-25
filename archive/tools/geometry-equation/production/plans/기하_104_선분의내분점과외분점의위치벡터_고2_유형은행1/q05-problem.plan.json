@@ -1,0 +1,234 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "N",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "M",
+    "N"
+  ],
+  "displaySegments": [
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sAM",
+      "refs": [
+        "A",
+        "M"
+      ]
+    },
+    {
+      "id": "sMB",
+      "refs": [
+        "M",
+        "B"
+      ]
+    },
+    {
+      "id": "sBN",
+      "refs": [
+        "B",
+        "N"
+      ]
+    },
+    {
+      "id": "sNC",
+      "refs": [
+        "N",
+        "C"
+      ]
+    },
+    {
+      "id": "sCO",
+      "refs": [
+        "C",
+        "O"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 560
+  },
+  "caption": "직사각형 OABC와 두 변의 내분점 M·N",
+  "accessibilityDescription": "O에서 오른쪽으로 A, 위쪽으로 C가 놓인 직사각형 OABC의 AB에는 M, BC에는 N이 각각 지정된 비로 배치된다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "가로 6·세로 4는 원문의 길이 조건이 아닌 직사각형 대표 배율이다.",
+      "mappedTo": [
+        "O",
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "AM:MB=2:1을 실제 AB의 분할 위치로 나타낸다.",
+      "mappedTo": [
+        "A",
+        "M",
+        "B",
+        "sAM",
+        "sMB",
+        "ratioM"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "BN:NC=1:2를 실제 BC의 분할 위치로 나타낸다. 미지 x,y는 표시하지 않는다.",
+      "mappedTo": [
+        "B",
+        "N",
+        "C",
+        "sBN",
+        "sNC",
+        "ratioN"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "서로 다른 두 변의 정확한 2:1·1:2 분할"
+  ],
+  "planeMarks": {
+    "textLabels": [
+      {"id":"ratioM","at":"M","text":"AM:MB=2:1","anchor":"E","labelKind":"TEXT","factRole":"GIVEN"},
+      {"id":"ratioN","at":"N","text":"BN:NC=1:2","anchor":"N","labelKind":"TEXT","factRole":"GIVEN"}
+    ]
+  }
+}

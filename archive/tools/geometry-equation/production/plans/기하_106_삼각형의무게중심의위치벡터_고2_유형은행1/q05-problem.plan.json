@@ -1,0 +1,211 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "15"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "P"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "P",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "120"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "P",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "120"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "P"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "P",
+    "A",
+    "B",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sOP",
+      "refs": [
+        "O",
+        "P"
+      ],
+      "dashed": true
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 560
+  },
+  "caption": "좌표 P(8,15)를 중심으로 하는 원과 내접 정삼각형 ABC",
+  "accessibilityDescription": "원점 O에서 좌표 (8,15)의 점 P로 점선이 향하고, P가 중심인 원 위에 정삼각형 A·B·C가 같은 간격으로 놓여 있다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "O=(0,0), P=(8,15)는 발문에 주어진 실제 좌표이며 수치 라벨을 P에 표시한다.",
+      "mappedTo": [
+        "O",
+        "P",
+        "sOP"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "반지름 4는 원문에 주어지지 않아 비율을 나타내기 위한 선택이며, A·B·C는 P 중심 120° 회전으로 만든 실제 내접 정삼각형이다.",
+      "mappedTo": [
+        "P",
+        "A",
+        "B",
+        "C",
+        "k"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "문제의 벡터합 크기 및 삼각형 무게중심이라는 결론은 그림 텍스트에 넣지 않는다.",
+      "mappedTo": [
+        "A",
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "P 좌표 (8,15)의 실제 라벨과 원 위 120° 간격의 세 꼭짓점"
+  ],
+  "displayCircles": [
+    "k"
+  ],
+  "coordinateLabels": [
+    "P"
+  ]
+}

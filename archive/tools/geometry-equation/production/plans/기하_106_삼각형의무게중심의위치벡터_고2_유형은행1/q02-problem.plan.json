@@ -1,0 +1,165 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-5"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-6"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-5"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G",
+        "op": "CENTROID",
+        "inputs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "G"
+  ],
+  "displaySegments": [
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 560
+  },
+  "caption": "삼각형 ABC와 무게중심 G를 향하는 벡터 BG",
+  "accessibilityDescription": "A에서 B와 C로 향하는 화살표 p와 q, B에서 무게중심 G로 향하는 BG 화살표가 삼각형 위에 있다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "A·B·C는 지정 좌표가 없어 서로 다른 세 꼭짓점의 대표 그림으로 선택한다.",
+      "mappedTo": [
+        "A",
+        "B",
+        "C",
+        "vp",
+        "vq",
+        "sBC"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "G=CENTROID(A,B,C)는 실제 무게중심이고 B에서 G를 향하는 벡터를 표시한다.",
+      "mappedTo": [
+        "G",
+        "vBG"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "구하는 벡터의 p·q 계수 식은 표시하지 않는다.",
+      "mappedTo": [
+        "vp",
+        "vq",
+        "vBG"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "세 벡터의 실제 화살촉 방향과 정확한 무게중심 G"
+  ],
+  "planeMarks": {
+    "vectors": [
+      {
+        "id": "vp",
+        "from": "A",
+        "to": "B",
+        "label": "vec(p)",
+        "side": "RIGHT",
+        "labelAt": 0.5
+      },
+      {
+        "id": "vq",
+        "from": "A",
+        "to": "C",
+        "label": "vec(q)",
+        "side": "LEFT",
+        "labelAt": 0.5
+      },
+      {
+        "id": "vBG",
+        "from": "B",
+        "to": "G",
+        "label": "vec(BG)",
+        "side": "RIGHT",
+        "labelAt": 0.5
+      }
+    ]
+  }
+}

@@ -1,0 +1,816 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "V0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "VA",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "V0"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "VB",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "V0"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "VC",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "V0"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G1A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-1"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G1B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-1"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G2A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G2B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G3A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G3B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G4A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G4B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G5A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G5B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G6A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G6B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G7A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-1"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G7B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G8A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-1"
+            },
+            {
+              "kind": "integer",
+              "value": "-1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G8B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "-1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G9A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G9B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G10A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-1"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G10B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G11A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-1"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G11B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G12A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-1"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G12B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G13A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-1"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G13B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "V0",
+    "VA",
+    "VB",
+    "VC",
+    "G1A",
+    "G1B",
+    "G2A",
+    "G2B",
+    "G3A",
+    "G3B",
+    "G4A",
+    "G4B",
+    "G5A",
+    "G5B",
+    "G6A",
+    "G6B",
+    "G7A",
+    "G7B",
+    "G8A",
+    "G8B",
+    "G9A",
+    "G9B",
+    "G10A",
+    "G10B",
+    "G11A",
+    "G11B",
+    "G12A",
+    "G12B",
+    "G13A",
+    "G13B"
+  ],
+  "displaySegments": [
+    {
+      "id": "sG1AG1B",
+      "refs": [
+        "G1A",
+        "G1B"
+      ]
+    },
+    {
+      "id": "sG2AG2B",
+      "refs": [
+        "G2A",
+        "G2B"
+      ]
+    },
+    {
+      "id": "sG3AG3B",
+      "refs": [
+        "G3A",
+        "G3B"
+      ]
+    },
+    {
+      "id": "sG4AG4B",
+      "refs": [
+        "G4A",
+        "G4B"
+      ]
+    },
+    {
+      "id": "sG5AG5B",
+      "refs": [
+        "G5A",
+        "G5B"
+      ]
+    },
+    {
+      "id": "sG6AG6B",
+      "refs": [
+        "G6A",
+        "G6B"
+      ]
+    },
+    {
+      "id": "sG7AG7B",
+      "refs": [
+        "G7A",
+        "G7B"
+      ]
+    },
+    {
+      "id": "sG8AG8B",
+      "refs": [
+        "G8A",
+        "G8B"
+      ]
+    },
+    {
+      "id": "sG9AG9B",
+      "refs": [
+        "G9A",
+        "G9B"
+      ]
+    },
+    {
+      "id": "sG10AG10B",
+      "refs": [
+        "G10A",
+        "G10B"
+      ]
+    },
+    {
+      "id": "sG11AG11B",
+      "refs": [
+        "G11A",
+        "G11B"
+      ]
+    },
+    {
+      "id": "sG12AG12B",
+      "refs": [
+        "G12A",
+        "G12B"
+      ]
+    },
+    {
+      "id": "sG13AG13B",
+      "refs": [
+        "G13A",
+        "G13B"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 560
+  },
+  "caption": "한 칸 1인 모눈과 a=(2,1), b=(1,-1), c=(3,3) 벡터",
+  "accessibilityDescription": "가로와 세로 한 칸이 1인 모눈 격자 위에서 벡터 a는 (2,1)만큼 이동, 벡터 b는 (1,-1)만큼 이동, 벡터 c는 (3,3)만큼 이동한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "실제 가로·세로 1칸 간격의 모눈을 x=-1~4, y=-2~4 범위에 13개의 displaySegments로 표시한다.",
+      "mappedTo": [
+        "sG1AG1B",
+        "sG2AG2B",
+        "sG3AG3B",
+        "sG4AG4B",
+        "sG5AG5B",
+        "sG6AG6B",
+        "sG7AG7B",
+        "sG8AG8B",
+        "sG9AG9B",
+        "sG10AG10B",
+        "sG11AG11B",
+        "sG12AG12B",
+        "sG13AG13B"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "모눈의 실제 시점→종점 변위 a=(2,1), b=(1,-1), c=(3,3)을 각각 정확히 그린다.",
+      "mappedTo": [
+        "V0",
+        "va",
+        "vb",
+        "vc"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "벡터의 미지 선형결합·크기는 문제에서 구하는 값이므로 도형에 표시하지 않는다.",
+      "mappedTo": [
+        "V0"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "실제 모눈 직선 13개와 각 성분에 정확히 대응한 세 개의 화살표"
+  ],
+  "planeMarks": {
+    "vectors": [
+      {
+        "id": "va",
+        "from": "V0",
+        "to": "VA",
+        "label": "vec(a)",
+        "side": "LEFT",
+        "labelAt": 0.5
+      },
+      {
+        "id": "vb",
+        "from": "V0",
+        "to": "VB",
+        "label": "vec(b)",
+        "side": "RIGHT",
+        "labelAt": 0.65
+      },
+      {
+        "id": "vc",
+        "from": "V0",
+        "to": "VC",
+        "label": "vec(c)",
+        "side": "LEFT",
+        "labelAt": 0.72
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "V0",
+    "VA",
+    "VB",
+    "VC",
+    "G1A",
+    "G1B",
+    "G2A",
+    "G2B",
+    "G3A",
+    "G3B",
+    "G4A",
+    "G4B",
+    "G5A",
+    "G5B",
+    "G6A",
+    "G6B",
+    "G7A",
+    "G7B",
+    "G8A",
+    "G8B",
+    "G9A",
+    "G9B",
+    "G10A",
+    "G10B",
+    "G11A",
+    "G11B",
+    "G12A",
+    "G12B",
+    "G13A",
+    "G13B"
+  ],
+  "hiddenPointStyle": "NONE"
+}
