@@ -1944,10 +1944,10 @@ window.questionBank = [
     "subUnit": "피타고라스 정리의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "content": "[서술형 1] 아래 그림은 $\\angle A=\\angle C=90^\\circ, \\overline{AB}=10, \\overline{BC}=4, \\overline{AD}=6, \\overline{CD}=x$인 사각형 $ABCD$일 때, $x$의 값[2점]을 구하고 그 과정[2점]을 서술하시오. [총 4점]<br><br>",
+    "content": "[서술형 1] 아래 그림은 $\\angle A=\\angle C=90^\\circ, \\overline{AB}=10, \\overline{BC}=4, \\overline{AD}=6, \\overline{CD}=x$인 사각형 $ABCD$일 때, $x^2$의 값[2점]을 구하고 그 과정[2점]을 서술하시오. [총 4점]<br><br>",
     "choices": [],
-    "answer": "$2\\sqrt{30}$",
-    "solution": "대각선 $BD$를 그으면 $\\triangle ABD$와 $\\triangle BCD$는 각각 직각삼각형이다.\n$BD^2=AB^2+AD^2=10^2+6^2=136$이다.\n또 $BD^2=BC^2+CD^2=4^2+x^2$이므로 $136=16+x^2$, $x^2=120$이다.\n길이는 양수이므로 $x=\\sqrt{120}=2\\sqrt{30}$이다.",
+    "answer": "$120$",
+    "solution": "대각선 $BD$를 그으면 $\\triangle ABD$와 $\\triangle BCD$는 각각 직각삼각형이다.\n$BD^2=AB^2+AD^2=10^2+6^2=136$이다.\n또 $BD^2=BC^2+CD^2=4^2+x^2$이므로 $136=16+x^2$, 따라서 $x^2=120$이다.",
     "image": "assets/images/24_왕운중_2학기_기말_중2_수학/q21-problem-visual-v2.svg",
     "level": "중",
     "difficultyBucket": 3,
@@ -1991,7 +1991,7 @@ window.questionBank = [
     ],
     "solutionImage": "assets/images/24_왕운중_2학기_기말_중2_수학/q21-solution.svg",
     "solutionImageAlt": "해설 그림: ∠A=∠C=90°인 사각형 ABCD에 대각선 BD를 그어 직각삼각형 ABD(AB=10, AD=6, 파랑)와 BCD(BC=4, CD=x, 주황)로 나누고 공통 빗변 BD²=136을 표시했다.",
-    "solutionImageCaption": "BD²=136=4²+x²에서 x²=120이므로 x=√120=2√30이다.",
+    "solutionImageCaption": "BD²=136=4²+x²에서 x²=120이다.",
     "solutionImageSize": "medium"
   },
   {
