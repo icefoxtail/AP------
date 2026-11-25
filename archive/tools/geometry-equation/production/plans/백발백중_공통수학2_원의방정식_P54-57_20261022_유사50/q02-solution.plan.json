@@ -1,0 +1,397 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "3"
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L1",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "-1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H1",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "O",
+          "L1"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "I1",
+        "op": "INTERSECTION",
+        "inputs": [
+          "L1",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT_SET",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A1",
+        "op": "SELECT_POINT",
+        "inputs": [
+          "I1"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "branch": {
+          "kind": "SIDE_OF_ORIENTED_LINE",
+          "refs": [
+            "O",
+            "H1"
+          ],
+          "sign": 1
+        }
+      },
+      {
+        "id": "B1",
+        "op": "SELECT_POINT",
+        "inputs": [
+          "I1"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "branch": {
+          "kind": "SIDE_OF_ORIENTED_LINE",
+          "refs": [
+            "O",
+            "H1"
+          ],
+          "sign": -1
+        }
+      },
+      {
+        "id": "len1Chord",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "A1",
+          "B1"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L2",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "-1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "7"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H2",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "O",
+          "L2"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "I2",
+        "op": "INTERSECTION",
+        "inputs": [
+          "L2",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT_SET",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A2",
+        "op": "SELECT_POINT",
+        "inputs": [
+          "I2"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "branch": {
+          "kind": "SIDE_OF_ORIENTED_LINE",
+          "refs": [
+            "O",
+            "H2"
+          ],
+          "sign": 1
+        }
+      },
+      {
+        "id": "B2",
+        "op": "SELECT_POINT",
+        "inputs": [
+          "I2"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "branch": {
+          "kind": "SIDE_OF_ORIENTED_LINE",
+          "refs": [
+            "O",
+            "H2"
+          ],
+          "sign": -1
+        }
+      },
+      {
+        "id": "len2Chord",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "A2",
+          "B2"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "H1",
+    "A1",
+    "B1",
+    "H2",
+    "A2",
+    "B2"
+  ],
+  "displayCircles": [
+    "C"
+  ],
+  "displayLines": [
+    "L1",
+    "L2"
+  ],
+  "displaySegments": [
+    {
+      "id": "sA1B1",
+      "refs": [
+        "A1",
+        "B1"
+      ]
+    },
+    {
+      "id": "sOH1",
+      "refs": [
+        "O",
+        "H1"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sOA1",
+      "refs": [
+        "O",
+        "A1"
+      ]
+    },
+    {
+      "id": "sA2B2",
+      "refs": [
+        "A2",
+        "B2"
+      ]
+    },
+    {
+      "id": "sOH2",
+      "refs": [
+        "O",
+        "H2"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sOA2",
+      "refs": [
+        "O",
+        "A2"
+      ]
+    }
+  ],
+  "coordinateLabels": [
+    "O"
+  ],
+  "coordinatePlacement": "PANEL",
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "coordinateCanvas": {
+    "width": 680,
+    "height": 540
+  },
+  "caption": "원과 현을 이루는 직선, 중심에서 현에 내린 수선의 발을 보인다.",
+  "accessibilityDescription": "원의 중심과 직선이 만나는 현, 현의 중점 및 직각삼각형이 그려져 있다.",
+  "sourceConditions": [
+    {
+      "id": "circle",
+      "condition": "원 중심 (-3, 2), 반지름 제곱 3",
+      "mappedTo": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "line",
+      "condition": "y=x+k; k=3 또는 7",
+      "mappedTo": [
+        "L1",
+        "L2"
+      ]
+    },
+    {
+      "id": "chord",
+      "condition": "현의 전체 길이 2, 중심-현 수직거리 관계",
+      "mappedTo": [
+        "sA1B1",
+        "sOH1",
+        "sOA1",
+        "sA2B2",
+        "sOH2",
+        "sOA2",
+        "rH1",
+        "rH2"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "현의 양 끝과 중심에서 내린 수선",
+    "현 반길이·반지름·중심거리의 직각삼각형 관계"
+  ],
+  "lineLabels": [
+    {
+      "nodeId": "L1",
+      "form": "GENERAL"
+    },
+    {
+      "nodeId": "L2",
+      "form": "GENERAL"
+    }
+  ],
+  "scalarLabels": [
+    {
+      "nodeId": "len1Chord",
+      "ownerSegment": "sA1B1",
+      "prefix": "",
+      "value": "2"
+    },
+    {
+      "nodeId": "len2Chord",
+      "ownerSegment": "sA2B2",
+      "prefix": "",
+      "value": "2"
+    }
+  ],
+  "hiddenPointNames": [
+    "A1",
+    "B1",
+    "H1",
+    "A2",
+    "B2",
+    "H2"
+  ],
+  "rightAngles": [
+    {
+      "id": "rH1",
+      "refs": [
+        "O",
+        "H1",
+        "A1"
+      ],
+      "factRole": "DERIVED_INTERMEDIATE"
+    },
+    {
+      "id": "rH2",
+      "refs": [
+        "O",
+        "H2",
+        "A2"
+      ],
+      "factRole": "DERIVED_INTERMEDIATE"
+    }
+  ]
+}
