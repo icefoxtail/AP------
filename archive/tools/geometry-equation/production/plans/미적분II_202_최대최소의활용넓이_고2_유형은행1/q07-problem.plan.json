@@ -1,0 +1,51 @@
+{
+  "capability": "logarithmic-affine-spike-v1",
+  "graphPlan": {
+    "family": "logarithmic-affine",
+    "coefficients": [
+      "1",
+      "2",
+      "0",
+      "0"
+    ],
+    "sourceDomain": {
+      "kind": "NATURAL_LOG_AFFINE"
+    },
+    "domain": [
+      0.08,
+      0.85
+    ],
+    "viewport": [
+      -0.15,
+      1,
+      -3,
+      1
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "y"
+    }
+  },
+  "caption": "y=ln(2x)의 제4사분면 곡선; 미지 점의 정확한 직사각형은 후속 구현 필요",
+  "accessibilityDescription": "y=ln(2x)의 제4사분면 곡선; 미지 점의 정확한 직사각형은 후속 구현 필요",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "곡선 y=ln(2x) 및 제4사분면의 0<t<1/2",
+      "mappedTo": "graphPlan.coefficients;graphPlan.domain"
+    },
+    {
+      "id": "c2",
+      "condition": "P(t,ln(2t)) 및 축 투영 직사각형",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: LOG_RECT_VARIABLE_COORDS: 자연로그 값이 있는 미지 점과 사각형 정점·수선의 정확한 오버레이"
+    }
+  ],
+  "newVisualInformation": [
+    "자연로그 곡선의 부호와 정의역을 시각화한다."
+  ],
+  "sourceQuote": "[그림: P$(t,\\ln(2t))$, $(t,0)$, $(0,\\ln(2t))$, $(0,0)$을 잇는다.]"
+}

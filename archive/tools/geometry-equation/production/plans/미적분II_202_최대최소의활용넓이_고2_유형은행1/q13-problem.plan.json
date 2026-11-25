@@ -1,0 +1,233 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "13",
+              "denominator": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "13",
+              "denominator": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "C",
+    "D",
+    "A",
+    "B",
+    "E",
+    "F",
+    "G"
+  ],
+  "hiddenPointNames": [],
+  "displaySegments": [
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCE",
+      "refs": [
+        "C",
+        "E"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sFG",
+      "refs": [
+        "F",
+        "G"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "caption": "가로 6, 세로 3인 직사각형과 접는 선 FG 및 점 E를 표시한다.",
+  "accessibilityDescription": "가로 6, 세로 3인 직사각형과 접는 선 FG 및 점 E를 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "C(0,0),D(0,3),A(6,3),B(6,0)의 직사각형",
+      "mappedTo": "mathPlan.nodes[0..3];displaySegments[0..3]"
+    },
+    {
+      "id": "c2",
+      "condition": "E(u,3)는 AD 위; 대표 u=2",
+      "mappedTo": "mathPlan.nodes[4];displaySegments[4]"
+    },
+    {
+      "id": "c3",
+      "condition": "FG가 CE의 수직이등분선: 4x+6y=13",
+      "mappedTo": "mathPlan.nodes[5..6];displaySegments[5]"
+    },
+    {
+      "id": "c4",
+      "condition": "F∈CD, G∈BC",
+      "mappedTo": "mathPlan.nodes[5..6];displaySegments[0];displaySegments[3]"
+    }
+  ],
+  "newVisualInformation": [
+    "대표 u=2: CE 중점(1,3/2)이 FG 위, 기울기 CE=3/2, FG=-2/3; 답 u=√3은 표시하지 않음."
+  ],
+  "sourceQuote": "[그림: C$(0,0)$, D$(0,3)$, A$(6,3)$, B$(6,0)$, E$(u,3)$을 표시하고 CE의 수직이등분선과 CD, BC의 교점을 각각 F, G라 한다.]"
+}

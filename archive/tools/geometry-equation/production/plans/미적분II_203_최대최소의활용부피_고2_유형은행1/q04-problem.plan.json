@@ -1,0 +1,222 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "L",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "36",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "V",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "K",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "L",
+    "R",
+    "T",
+    "O",
+    "V"
+  ],
+  "hiddenPointNames": [
+    "L",
+    "R",
+    "T",
+    "O",
+    "V"
+  ],
+  "displaySegments": [
+    {
+      "id": "sLR",
+      "refs": [
+        "L",
+        "R"
+      ]
+    },
+    {
+      "id": "sLT",
+      "refs": [
+        "L",
+        "T"
+      ]
+    },
+    {
+      "id": "sTR",
+      "refs": [
+        "T",
+        "R"
+      ]
+    },
+    {
+      "id": "sOV",
+      "refs": [
+        "O",
+        "V"
+      ]
+    },
+    {
+      "id": "sTV",
+      "refs": [
+        "T",
+        "V"
+      ],
+      "dashed": true
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "K"
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lbase",
+        "ownerSegment": "sLR",
+        "text": "2r"
+      },
+      {
+        "id": "lheight",
+        "ownerSegment": "sTV",
+        "text": "h"
+      },
+      {
+        "id": "lradius",
+        "ownerSegment": "sOV",
+        "text": "2"
+      }
+    ]
+  },
+  "caption": "축 단면의 이등변삼각형과 반지름 2인 내접원을 표시한다.",
+  "accessibilityDescription": "축 단면의 이등변삼각형과 반지름 2인 내접원을 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "단면은 밑변 2r, 높이 h인 이등변삼각형",
+      "mappedTo": "mathPlan.nodes[0..2];displaySegments[0..2];displaySegments[4]"
+    },
+    {
+      "id": "c2",
+      "condition": "반지름 2인 내접원",
+      "mappedTo": "mathPlan.nodes[3];mathPlan.nodes[5];displayCircles[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "내접원의 반지름 선분 OV=2",
+      "mappedTo": "displaySegments[3];planeMarks.expressionLabels[2]"
+    }
+  ],
+  "newVisualInformation": [
+    "대표 r=3, h=36/5(최솟값 h=8은 감춤), 등변 길이 √(9+(36/5)²)=39/5, 반둘레 54/5, 넓이 108/5이므로 내접 반지름은 2."
+  ],
+  "sourceQuote": "[그림: 축을 포함하는 단면에 밑변 $2r$, 높이 $h$인 이등변삼각형과 그 내접원인 반지름 2의 원을 표시한다.]"
+}

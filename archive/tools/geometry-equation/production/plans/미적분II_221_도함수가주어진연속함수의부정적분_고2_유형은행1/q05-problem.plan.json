@@ -1,0 +1,31 @@
+{
+  "status": "UNSUPPORTED",
+  "reason": "ENGINE_CAPABILITY_PENDING: MIXED_SIN_HORIZONTAL_RAYS: x<-2의 y=2, -2<x<2의 y=sin(πx/4), x>2의 y=-2를 하나의 좌표계에서 끊긴 구간과 네 빈 점으로 나타낼 혼합 조각 그래프 기능 필요",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "좌측 수평 반직선 y=2, x<-2",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: MIXED_SIN_HORIZONTAL_RAYS: x<-2의 y=2, -2<x<2의 y=sin(πx/4), x>2의 y=-2를 하나의 좌표계에서 끊긴 구간과 네 빈 점으로 나타낼 혼합 조각 그래프 기능 필요"
+    },
+    {
+      "id": "c2",
+      "condition": "사인곡선 y=sin(πx/4), -2<x<2",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: MIXED_SIN_HORIZONTAL_RAYS: x<-2의 y=2, -2<x<2의 y=sin(πx/4), x>2의 y=-2를 하나의 좌표계에서 끊긴 구간과 네 빈 점으로 나타낼 혼합 조각 그래프 기능 필요"
+    },
+    {
+      "id": "c3",
+      "condition": "우측 수평 반직선 y=-2, x>2",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: MIXED_SIN_HORIZONTAL_RAYS: x<-2의 y=2, -2<x<2의 y=sin(πx/4), x>2의 y=-2를 하나의 좌표계에서 끊긴 구간과 네 빈 점으로 나타낼 혼합 조각 그래프 기능 필요"
+    },
+    {
+      "id": "c4",
+      "condition": "경계 네 빈 점 및 x=±2 수직 점선",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: MIXED_SIN_HORIZONTAL_RAYS: x<-2의 y=2, -2<x<2의 y=sin(πx/4), x>2의 y=-2를 하나의 좌표계에서 끊긴 구간과 네 빈 점으로 나타낼 혼합 조각 그래프 기능 필요"
+    }
+  ],
+  "newVisualInformation": [
+    "ENGINE_CAPABILITY_PENDING: MIXED_SIN_HORIZONTAL_RAYS: x<-2의 y=2, -2<x<2의 y=sin(πx/4), x>2의 y=-2를 하나의 좌표계에서 끊긴 구간과 네 빈 점으로 나타낼 혼합 조각 그래프 기능 필요",
+    "미지원 도형을 임의의 근사 그림으로 대체하지 않는다."
+  ],
+  "sourceQuote": "[그림: 좌표평면에 $y=f'(x)$의 그래프를 그린다. $x<-2$에서는 높이 $2$, $x>2$에서는 높이 $-2$인 수평 반직선을 그린다. $-2<x<2$에서는 원점 $(0,0)$을 지나는 증가하는 사인 곡선 $y=\\sin(\\frac{\\pi x}{4})$를 그린다. $(-2,2),(-2,-1),(2,1),(2,-2)$에는 빈 원을 표시하고, $x=\\pm2$에는 수직 점선을 그린다.]"
+}

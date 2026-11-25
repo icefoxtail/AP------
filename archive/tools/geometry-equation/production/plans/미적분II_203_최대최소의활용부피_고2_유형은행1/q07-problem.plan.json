@@ -1,0 +1,50 @@
+{
+  "capability": "exponential-affine-spike-v1",
+  "graphPlan": {
+    "family": "exponential-affine",
+    "coefficients": [
+      "1",
+      "3",
+      "2"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -0.2,
+      0.8
+    ],
+    "viewport": [
+      -0.5,
+      1.2,
+      -0.5,
+      14
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "y"
+    }
+  },
+  "caption": "y=e^(3x)+2의 곡선; 직선과 수선 발은 엔진 확장 대상",
+  "accessibilityDescription": "y=e^(3x)+2의 곡선; 직선과 수선 발은 엔진 확장 대상",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "곡선 y=e^(3x)+2",
+      "mappedTo": "graphPlan.coefficients"
+    },
+    {
+      "id": "c2",
+      "condition": "직선 y=3ex-1과 곡선 x=1/3점에서의 수선",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: EXP_TANGENT_DISTANCE_E: 기울기에 자연상수 e를 포함한 직선과 정확한 수선 발의 오버레이"
+    }
+  ],
+  "newVisualInformation": [
+    "곡선만 원문 계수와 정확히 일치."
+  ],
+  "sourceQuote": "[그림: 두 그래프와 $x=1/3$인 곡선 위의 점에서 직선으로 내린 수선을 표시한다.]"
+}

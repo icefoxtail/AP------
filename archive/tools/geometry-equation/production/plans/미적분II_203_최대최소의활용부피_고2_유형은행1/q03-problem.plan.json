@@ -1,0 +1,52 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "kind": "CONE",
+      "radius": 3.6,
+      "height": 4.8,
+      "names": {
+        "center": "O",
+        "apex": "T"
+      }
+    }
+  ],
+  "dims": [
+    {
+      "slant": true,
+      "label": "6"
+    },
+    {
+      "radius": "bottom",
+      "label": "r"
+    }
+  ],
+  "solidCaption": {
+    "text": "모선 6인 원뿔의 한 예"
+  },
+  "caption": "반지름 6의 부채꼴을 말아 만든 원뿔의 대표 모양. 펼친 부채꼴은 후속 그림.",
+  "accessibilityDescription": "모선 6인 원뿔과 밑면 반지름 r을 보여준다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "부채꼴의 반지름=원뿔 모선=6",
+      "mappedTo": "solids[0].radius;solids[0].height;dims[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "원뿔 밑면 반지름 r, 대표 r=18/5",
+      "mappedTo": "solids[0].radius;dims[1]"
+    },
+    {
+      "id": "c3",
+      "condition": "부채꼴 중심각 θ 및 부채꼴 자체",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: CONE_NET_SAME_CANVAS: 원뿔 본체와 부채꼴 펼침을 같은 그림의 두 패널에 나타내는 결합 기능/검수"
+    }
+  ],
+  "newVisualInformation": [
+    "대표 r=18/5, h=24/5이면 모선 √(r²+h²)=6, 펼친 부채꼴 중심각 6π/5; 최대 r은 표시하지 않음.",
+    "ENGINE_CAPABILITY_PENDING: CONE_NET_SAME_CANVAS: 부채꼴 중심각 호와 원뿔의 연결이 미작성"
+  ],
+  "sourceQuote": "[그림: 반지름 6인 부채꼴의 중심각을 $\\theta$로 표시하고, 완성된 원뿔의 모선 6과 밑면 반지름 $r$을 표시한다.]"
+}

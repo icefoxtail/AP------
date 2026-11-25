@@ -1,0 +1,143 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "Q",
+    "R",
+    "P"
+  ],
+  "hiddenPointNames": [],
+  "displaySegments": [
+    {
+      "id": "sQR",
+      "refs": [
+        "Q",
+        "R"
+      ]
+    },
+    {
+      "id": "sRP",
+      "refs": [
+        "R",
+        "P"
+      ]
+    },
+    {
+      "id": "sPQ",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "l1",
+        "ownerSegment": "sQR",
+        "text": "t*ln(t)"
+      },
+      {
+        "id": "l2",
+        "ownerSegment": "sRP",
+        "text": "2*ln(t)"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "raR",
+      "refs": [
+        "Q",
+        "R",
+        "P"
+      ]
+    }
+  ],
+  "caption": "P, Q, R이 이루는 직각삼각형의 길이 비를 보여준다.",
+  "accessibilityDescription": "P, Q, R이 이루는 직각삼각형의 길이 비를 보여준다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "Q, R은 x축 위; PR은 수선",
+      "mappedTo": "displaySegments[0..2];rightAngles[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "P(t,2ln t), Q(t-tln t,0), R(t,0)",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: LOG_VARIABLE_POINT_COORDS: 대표 닮은 직각삼각형으로 PR:QR=2:t만 보존; 자연로그 점의 절대좌표 미지원"
+    }
+  ],
+  "newVisualInformation": [
+    "대표 t=2의 PR:QR=2:t=1:1을 닮음으로 정규화해 2:2 직각삼각형을 그림."
+  ],
+  "sourceQuote": "[그림: Q$(t-t\\ln t,0)$, R$(t,0)$, P$(t,2\\ln t)$를 이어 직각삼각형을 표시한다.]"
+}
