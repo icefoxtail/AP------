@@ -1,0 +1,439 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "9"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "9",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "9",
+              "denominator": "2"
+            },
+            {
+              "kind": "rational",
+              "numerator": "9",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "9",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "27",
+              "denominator": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "27",
+              "denominator": "4"
+            },
+            {
+              "kind": "rational",
+              "numerator": "9",
+              "denominator": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "9",
+              "denominator": "2"
+            },
+            {
+              "kind": "rational",
+              "numerator": "9",
+              "denominator": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "63",
+              "denominator": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "63",
+              "denominator": "8"
+            },
+            {
+              "kind": "rational",
+              "numerator": "9",
+              "denominator": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "27",
+              "denominator": "4"
+            },
+            {
+              "kind": "rational",
+              "numerator": "9",
+              "denominator": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "B",
+    "A",
+    "R1",
+    "T1",
+    "L1",
+    "R2",
+    "T2",
+    "L2",
+    "R3",
+    "T3",
+    "L3"
+  ],
+  "hiddenPointNames": [
+    "O",
+    "B",
+    "A",
+    "R1",
+    "T1",
+    "L1",
+    "R2",
+    "T2",
+    "L2",
+    "R3",
+    "T3",
+    "L3"
+  ],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "O",
+        "R1"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "R1",
+        "T1"
+      ]
+    },
+    {
+      "id": "s5",
+      "refs": [
+        "T1",
+        "L1"
+      ]
+    },
+    {
+      "id": "s6",
+      "refs": [
+        "L1",
+        "O"
+      ]
+    },
+    {
+      "id": "s7",
+      "refs": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "id": "s8",
+      "refs": [
+        "R2",
+        "T2"
+      ]
+    },
+    {
+      "id": "s9",
+      "refs": [
+        "T2",
+        "L2"
+      ]
+    },
+    {
+      "id": "s10",
+      "refs": [
+        "L2",
+        "R1"
+      ]
+    },
+    {
+      "id": "s11",
+      "refs": [
+        "R2",
+        "R3"
+      ]
+    },
+    {
+      "id": "s12",
+      "refs": [
+        "R3",
+        "T3"
+      ]
+    },
+    {
+      "id": "s13",
+      "refs": [
+        "T3",
+        "L3"
+      ]
+    },
+    {
+      "id": "s14",
+      "refs": [
+        "L3",
+        "R2"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "base",
+        "ownerSegment": "s0",
+        "text": "9"
+      },
+      {
+        "id": "height",
+        "ownerSegment": "s1",
+        "text": "9"
+      }
+    ]
+  },
+  "rightAngles": [
+      {
+        "id": "right",
+        "refs": [
+          "A",
+          "O",
+          "B"
+        ]
+      }
+    ],
+  "caption": "밑변 9, 높이 9인 직각삼각형과 오른쪽으로 이어지는 정사각형 3단계.",
+  "accessibilityDescription": "원점의 직각삼각형 빗변에 잇닿은 세 정사각형을 수평 밑변 위에 차례로 그려, 변의 길이와 닮음 반복을 나타낸다.",
+  "sourceQuote": "[그림: 밑변이 양의 $x$축, 높이가 양의 $y$축 위에 놓인 직각삼각형을 그리고, 빗변에 오른쪽 위 꼭짓점이 닿는 정사각형을 밑변을 따라 왼쪽부터 이어 그린다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 직각변의 길이와 양의 좌표축 배치",
+      "mappedTo": "mathPlan.nodes[0..2];displaySegments[0..2];planeMarks.expressionLabels[0..1]"
+    },
+    {
+      "id": "c2",
+      "condition": "각 단계 오른쪽 남은 직각삼각형에 내접하는 정사각형 3개",
+      "mappedTo": "mathPlan.nodes[3..11];displaySegments[3..14]"
+    },
+    {
+      "id": "c3",
+      "condition": "원점의 직각",
+      "mappedTo": "planeMarks.rightAngles[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "처음 세 단계만 명시해 무한 반복을 나타내며 질문의 넓이 합은 나타내지 않는다."
+  ]
+}

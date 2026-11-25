@@ -1,0 +1,73 @@
+{
+  "capability": "logarithmic-affine-spike-v1",
+  "graphPlan": {
+    "family": "logarithmic-affine",
+    "coefficients": [
+      "1",
+      "1/2",
+      "0",
+      "0"
+    ],
+    "sourceDomain": {
+      "kind": "NATURAL_LOG_AFFINE"
+    },
+    "domain": [
+      0.1,
+      7
+    ],
+    "viewport": [
+      0,
+      7,
+      -3.2,
+      2
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "2",
+          "y": "0"
+        },
+        {
+          "id": "B",
+          "x": "6",
+          "y": "0"
+        }
+      ],
+      "segments": [
+        {
+          "id": "AB",
+          "from": "A",
+          "to": "B"
+        }
+      ]
+    }
+  },
+  "caption": "로그곡선 y=ln(x/2)와 x축의 A,B; 곡선 위 P와 삼각형은 ENGINE_CAPABILITY_PENDING.",
+  "accessibilityDescription": "x축 위 A=(2,0), B=(6,0)과 자연로그 곡선만 있고, P 및 선분 AP·BP는 존재하지 않는다.",
+  "sourceQuote": "[그림: $x$축 위에 $A,B$를 표시한다. $2<t<6$인 $P$를 곡선 위에 잡고 $PAB$를 연결한다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "로그곡선 y=ln(x/2)",
+      "mappedTo": "graphPlan.coefficients;graphPlan.sourceDomain"
+    },
+    {
+      "id": "c2",
+      "condition": "A=(2,0), B=(6,0)",
+      "mappedTo": "graphPlan.overlays.points[0..1]"
+    },
+    {
+      "id": "c3",
+      "condition": "2<t<6의 표본 t=4에서 P=(t,ln(t/2))와 삼각형 세 변",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: ln2가 초월수여서 t=4의 P overlay.point 및 AP,BP 정확구성 불가"
+    }
+  ],
+  "newVisualInformation": [
+    "ENGINE_CAPABILITY_PENDING: 자연로그의 비대수적 overlay 점 좌표(예: P=(4,ln2))가 수학적으로 지원되지 않아, 삼각형 PAB는 아직 그려지지 않는다."
+  ]
+}

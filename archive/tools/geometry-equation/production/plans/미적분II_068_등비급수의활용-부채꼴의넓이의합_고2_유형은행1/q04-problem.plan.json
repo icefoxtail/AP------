@@ -1,0 +1,497 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "2"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "3",
+                  "denominator": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "3"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "3"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "8",
+              "denominator": "3"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "2",
+                  "denominator": "3"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "10",
+              "denominator": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "2",
+                  "denominator": "3"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "arc1",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "arc2",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "E"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "4",
+            "denominator": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "C",
+    "A",
+    "D",
+    "E",
+    "F",
+    "D2",
+    "E2",
+    "F2"
+  ],
+  "hiddenPointNames": [
+    "D2",
+    "E2",
+    "F2"
+  ],
+  "displayLines": [],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "D",
+        "F"
+      ]
+    },
+    {
+      "id": "s5",
+      "refs": [
+        "F",
+        "E"
+      ]
+    },
+    {
+      "id": "s6",
+      "refs": [
+        "E",
+        "B"
+      ]
+    },
+    {
+      "id": "s7",
+      "refs": [
+        "E",
+        "D2"
+      ]
+    },
+    {
+      "id": "s8",
+      "refs": [
+        "D2",
+        "F2"
+      ]
+    },
+    {
+      "id": "s9",
+      "refs": [
+        "F2",
+        "E2"
+      ]
+    },
+    {
+      "id": "s10",
+      "refs": [
+        "E2",
+        "E"
+      ]
+    },
+    {
+      "id": "s11",
+      "refs": [
+        "F",
+        "C"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "first",
+        "circle": "arc1",
+        "center": "B",
+        "from": "E",
+        "to": "D",
+        "side": "CCW",
+        "highlight": false
+      },
+      {
+        "id": "next",
+        "circle": "arc2",
+        "center": "E",
+        "from": "E2",
+        "to": "D2",
+        "side": "CCW",
+        "highlight": false
+      }
+    ],
+    "regions": [
+      {
+        "id": "shade1",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "loop": {
+              "start": "D",
+              "steps": [
+                {
+                  "to": "F"
+                },
+                {
+                  "to": "E"
+                },
+                {
+                  "to": "D",
+                  "arc": {
+                    "center": "B",
+                    "side": "CCW"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "id": "shade2",
+        "fill": "MEDIUM",
+        "shapes": [
+          {
+            "loop": {
+              "start": "D2",
+              "steps": [
+                {
+                  "to": "F2"
+                },
+                {
+                  "to": "E2"
+                },
+                {
+                  "to": "D2",
+                  "arc": {
+                    "center": "E",
+                    "side": "CCW"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "id": "angle60",
+        "refs": [
+          "C",
+          "B",
+          "A"
+        ],
+        "value": 60,
+        "label": "60°",
+        "arcs": 1
+      }
+    ]
+  },
+  "caption": "삼각형 ABC에서 BDFE 마름모, B 중심 호 DE, FEC 내부의 다음 마름모와 색칠.",
+  "accessibilityDescription": "삼각형 ABC에서 BDFE 마름모, B 중심 호 DE, FEC 내부의 다음 마름모와 색칠.",
+  "sourceQuote": "[그림: $B=(0,0),C=(6,0),A=(3/2,3\\sqrt3/2)$를 잇는다. $D=(1,\\sqrt3),E=(2,0),F=(3,\\sqrt3)$인 마름모와 $B$ 중심의 호 $DE$를 그린다. $FEC$ 안에 다음 마름모를 그린다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "삼각형 AB=3, BC=6, ∠ABC=60°",
+      "mappedTo": "mathPlan.nodes[0..2];displaySegments[0..2];planeMarks.angles[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "BDFE 마름모와 부채꼴 DE 외부 색칠",
+      "mappedTo": "mathPlan.nodes[3..5,9];displaySegments[3..6];planeMarks.arcs[0];planeMarks.regions[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "FEC의 두 번째 마름모·호와 색칠",
+      "mappedTo": "mathPlan.nodes[6..8,10];displaySegments[7..11];planeMarks.arcs[1];planeMarks.regions[1]"
+    }
+  ],
+  "newVisualInformation": [
+    "원문이 요청한 호·점·선의 기하 관계만 구현하고 계산해야 할 넓이의 합은 그림에 제시하지 않는다."
+  ]
+}

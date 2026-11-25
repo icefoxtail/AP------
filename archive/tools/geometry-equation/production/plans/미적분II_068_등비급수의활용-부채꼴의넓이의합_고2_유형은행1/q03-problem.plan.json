@@ -1,0 +1,409 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "O2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "O3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "O4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "3"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "expression",
+              "op": "neg",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "add",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "6"
+                },
+                {
+                  "kind": "expression",
+                  "op": "neg",
+                  "args": [
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "add",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "6"
+                },
+                {
+                  "kind": "expression",
+                  "op": "neg",
+                  "args": [
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "-1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "c1",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O1"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "c2",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O2"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "c3",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O3"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "c4",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O4"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O1",
+    "O2",
+    "O3",
+    "O4",
+    "P1",
+    "Q1",
+    "P2",
+    "Q2"
+  ],
+  "hiddenPointNames": [],
+  "displayLines": [],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "P1",
+        "O3"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "Q1",
+        "O3"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "P1",
+        "O2"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "Q1",
+        "O2"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "P2",
+        "O3"
+      ]
+    },
+    {
+      "id": "s5",
+      "refs": [
+        "Q2",
+        "O3"
+      ]
+    }
+  ],
+  "displayCircles": [
+    "c1",
+    "c2",
+    "c3",
+    "c4"
+  ],
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "sec1",
+        "circle": "c2",
+        "center": "O2",
+        "from": "P1",
+        "to": "Q1",
+        "side": "CCW",
+        "highlight": false
+      },
+      {
+        "id": "sec2",
+        "circle": "c3",
+        "center": "O3",
+        "from": "P2",
+        "to": "Q2",
+        "side": "CCW",
+        "highlight": false
+      }
+    ]
+  },
+  "pointNames": {
+    "P1": "P_1",
+    "Q1": "Q_1",
+    "P2": "P_2",
+    "Q2": "Q_2",
+    "O1": "O_1",
+    "O2": "O_2",
+    "O3": "O_3",
+    "O4": "O_4"
+  },
+  "caption": "x축 위 중심 (2,0),(4,0),(6,0),(8,0), 반지름2의 원 4개와 첫 교점·연속 교점.",
+  "accessibilityDescription": "x축 위 중심 (2,0),(4,0),(6,0),(8,0), 반지름2의 원 4개와 첫 교점·연속 교점.",
+  "sourceQuote": "[그림: 중심이 $(2,0),(4,0),(6,0),(8,0)$인 반지름 $2$의 원을 그린다. 첫 교점 $(3,\\pm\\sqrt3)$에서 $(6,0)$으로 선분을 그려 새 원과 만나는 점을 표시한다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "4개 원 중심과 반지름2",
+      "mappedTo": "mathPlan.nodes[0..3,8..11];displayCircles[0..3]"
+    },
+    {
+      "id": "c2",
+      "condition": "첫 교점 (3,+-sqrt3) 및 다음 원까지 연결",
+      "mappedTo": "mathPlan.nodes[4..5];displaySegments[0..3]"
+    },
+    {
+      "id": "c3",
+      "condition": "다음 교점 (6-sqrt3,+-1)과 부채꼴 호",
+      "mappedTo": "mathPlan.nodes[6..7];displaySegments[4..5];planeMarks.arcs[0..1]"
+    },
+    {
+      "id": "c4",
+      "condition": "원문 O_n,P_n,Q_n 첨자",
+      "mappedTo": "pointNames"
+    }
+  ],
+  "newVisualInformation": [
+    "원문이 요청한 호·점·선의 기하 관계만 구현하고 계산해야 할 넓이의 합은 그림에 제시하지 않는다."
+  ]
+}

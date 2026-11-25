@@ -1,0 +1,203 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R60",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "R0"
+        ],
+        "args": {
+        "length": {"kind":"integer","value":"3"},
+        "angleDeg": {"kind":"integer","value":"60"},
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R80",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "R0"
+        ],
+        "args": {
+        "length": {"kind":"integer","value":"3"},
+        "angleDeg": {"kind":"integer","value":"80"},
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "R0",
+    "R60",
+    "R80"
+  ],
+  "hiddenPointNames": [
+    "R0",
+    "R60",
+    "R80"
+  ],
+  "displayLines": [],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "O",
+        "R0"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "O",
+        "R60"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "O",
+        "R80"
+      ]
+    }
+  ],
+  "displayCircles": [
+    "k"
+  ],
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "a60",
+        "circle": "k",
+        "center": "O",
+        "from": "R0",
+        "to": "R60",
+        "side": "CCW",
+        "highlight": false
+      },
+      {
+        "id": "a20",
+        "circle": "k",
+        "center": "O",
+        "from": "R60",
+        "to": "R80",
+        "side": "CCW",
+        "highlight": false
+      }
+    ],
+    "angles": [
+      {
+        "id": "angle60",
+        "refs": [
+          "R0",
+          "O",
+          "R60"
+        ],
+        "value": 60,
+        "label": "60°",
+        "arcs": 1
+      },
+      {
+        "id": "angle20",
+        "refs": [
+          "R60",
+          "O",
+          "R80"
+        ],
+        "value": 20,
+        "label": "20°",
+        "arcs": 1
+      }
+    ]
+  },
+  "caption": "반지름 3인 원에서 60°, 이어 20°씩 회전한 세 반지름과 두 부채꼴 호.",
+  "accessibilityDescription": "반지름 3인 원에서 60°, 이어 20°씩 회전한 세 반지름과 두 부채꼴 호.",
+  "sourceQuote": "[그림: 중심 $O$인 반지름 $3$의 원에서 오른쪽 수평 반지름을 그린 뒤 반시계로 $60^\\circ$, 이어 $20^\\circ$ 회전한 반지름을 그린다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "반지름3인 O 중심 원",
+      "mappedTo": "mathPlan.nodes[0..4];displayCircles[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "오른쪽 반지름과 60°/20° 회전 반지름",
+      "mappedTo": "mathPlan.nodes[1..3];displaySegments[0..2];planeMarks.angles[0..1]"
+    },
+    {
+      "id": "c3",
+      "condition": "연속 부채꼴 호",
+      "mappedTo": "planeMarks.arcs[0..1]"
+    }
+  ],
+  "newVisualInformation": [
+    "원문이 요청한 호·점·선의 기하 관계만 구현하고 계산해야 할 넓이의 합은 그림에 제시하지 않는다."
+  ]
+}

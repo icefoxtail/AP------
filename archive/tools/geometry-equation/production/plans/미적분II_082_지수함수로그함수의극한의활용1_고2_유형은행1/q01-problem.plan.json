@@ -1,0 +1,61 @@
+{
+  "capability": "logarithmic-affine-spike-v1",
+  "graphPlan": {
+    "family": "logarithmic-affine",
+    "coefficients": [
+      "1",
+      "6",
+      "1",
+      "0"
+    ],
+    "sourceDomain": {
+      "kind": "NATURAL_LOG_AFFINE"
+    },
+    "domain": [
+      -0.15,
+      1.3
+    ],
+    "viewport": [
+      -0.3,
+      1.5,
+      -1,
+      3
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        }
+      ]
+    }
+  },
+  "caption": "자연로그 y=ln(1+6x)와 원점 O; 비정수 로그값 P·OP·θ는 ENGINE_CAPABILITY_PENDING.",
+  "accessibilityDescription": "자연로그 곡선과 원점 O만 있다. 제1사분면 P에서 원점까지의 선분과 각 θ는 아직 표시되지 않았다.",
+  "sourceQuote": "[그림: 원점 $O$와 양의 $x$축을 표시한다. 곡선 $y=\\ln(1+6x)$에 $P=(t,\\ln(1+6t))$를 두고 $OP$를 그린 뒤 원점에 각 $\\theta$를 표시한다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "자연로그 y=ln(1+6x)",
+      "mappedTo": "graphPlan.coefficients;graphPlan.sourceDomain"
+    },
+    {
+      "id": "c2",
+      "condition": "P=(t,ln(1+6t))의 표본 t=1/3 및 OP",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: 자연로그에서 t≠0의 ln(1+6t) 정확값을 가진 점 P"
+    },
+    {
+      "id": "c3",
+      "condition": "x축 양의 방향과 OP의 각 θ",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: P 부재로 OP·θ 기호도 미표시"
+    }
+  ],
+  "newVisualInformation": [
+    "ENGINE_CAPABILITY_PENDING: NATURAL_LOG_AFFINE의 비대수적 함수값을 overlays.points의 정확좌표로 표현 불가(PIECEWISE_POLY_IRRATIONAL_FORM_UNSUPPORTED). 그리기 필드에는 곡선과 원점만 존재한다."
+  ]
+}

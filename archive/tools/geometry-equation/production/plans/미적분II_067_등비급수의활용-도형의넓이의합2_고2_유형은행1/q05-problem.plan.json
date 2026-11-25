@@ -1,0 +1,609 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "3",
+                  "denominator": "1"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "3"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "9",
+              "denominator": "2"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "3",
+                  "denominator": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "2"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "3",
+                  "denominator": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "9",
+              "denominator": "4"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "3",
+                  "denominator": "4"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "15",
+              "denominator": "4"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "3",
+                  "denominator": "4"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "3",
+                  "denominator": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "outer",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "3"
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "inner",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "rational",
+                "numerator": "1",
+                "denominator": "2"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "O",
+    "T0",
+    "T1",
+    "T2",
+    "V0",
+    "V1",
+    "V2"
+  ],
+  "hiddenPointNames": [
+    "O",
+    "T0",
+    "T1",
+    "T2",
+    "V0",
+    "V1",
+    "V2"
+  ],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "T0",
+        "T1"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "T1",
+        "T2"
+      ]
+    },
+    {
+      "id": "s5",
+      "refs": [
+        "T2",
+        "T0"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "outer",
+    "inner"
+  ],
+  "planeMarks": {
+    "regions": [
+      {
+        "id": "caps1",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "loop": {
+              "start": "A",
+              "steps": [
+                {
+                  "to": "T0"
+                },
+                {
+                  "to": "T2",
+                  "arc": {
+                    "center": "O",
+                    "side": "CW"
+                  }
+                },
+                {
+                  "to": "A"
+                }
+              ]
+            }
+          },
+          {
+            "loop": {
+              "start": "B",
+              "steps": [
+                {
+                  "to": "T1"
+                },
+                {
+                  "to": "T0",
+                  "arc": {
+                    "center": "O",
+                    "side": "CW"
+                  }
+                },
+                {
+                  "to": "B"
+                }
+              ]
+            }
+          },
+          {
+            "loop": {
+              "start": "C",
+              "steps": [
+                {
+                  "to": "T2"
+                },
+                {
+                  "to": "T1",
+                  "arc": {
+                    "center": "O",
+                    "side": "CW"
+                  }
+                },
+                {
+                  "to": "C"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "id": "caps2",
+        "fill": "MEDIUM",
+        "shapes": [
+          {
+            "loop": {
+              "start": "T0",
+              "steps": [
+                {
+                  "to": "V1"
+                },
+                {
+                  "to": "V0",
+                  "arc": {
+                    "center": "O",
+                    "side": "CW"
+                  }
+                },
+                {
+                  "to": "T0"
+                }
+              ]
+            }
+          },
+          {
+            "loop": {
+              "start": "T1",
+              "steps": [
+                {
+                  "to": "V2"
+                },
+                {
+                  "to": "V1",
+                  "arc": {
+                    "center": "O",
+                    "side": "CW"
+                  }
+                },
+                {
+                  "to": "T1"
+                }
+              ]
+            }
+          },
+          {
+            "loop": {
+              "start": "T2",
+              "steps": [
+                {
+                  "to": "V0"
+                },
+                {
+                  "to": "V2",
+                  "arc": {
+                    "center": "O",
+                    "side": "CW"
+                  }
+                },
+                {
+                  "to": "T2"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "side",
+        "ownerSegment": "s0",
+        "text": "6"
+      }
+    ]
+  },
+  "caption": "한 변 6인 정삼각형과 내접원, 거꾸로 내접하는 다음 정삼각형의 두 단계.",
+  "accessibilityDescription": "큰 정삼각형 안의 내접원, 그 원 안에 거꾸로 놓인 정삼각형과 작은 내접원, 두 삼각형 꼭짓점 바깥쪽의 밝고 진한 색칠 조각을 나타낸다.",
+  "sourceQuote": "[그림: 정삼각형과 세 변에 접하는 원을 그리고 그 원에 거꾸로 된 정삼각형을 내접시킨다. 각 삼각형의 꼭짓점 주변에서 내접원 바깥인 곳을 색칠한다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "변 길이 6인 정삼각형",
+      "mappedTo": "mathPlan.nodes[0..2];displaySegments[0..2];planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "세 변에 접하는 첫 원",
+      "mappedTo": "mathPlan.nodes[3..4,10];displayCircles[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "첫 원에 내접한 뒤집힌 정삼각형과 두 번째 내접원",
+      "mappedTo": "mathPlan.nodes[4..11];displaySegments[3..5];displayCircles[1]"
+    },
+    {
+      "id": "c4",
+      "condition": "내접원 바깥 각 꼭짓점 색칠",
+      "mappedTo": "planeMarks.regions[0..1]"
+    }
+  ],
+  "newVisualInformation": [
+    "두 단계의 색칠을 직접 호 경계로 표현하고 전체 합을 표시하지 않는다."
+  ]
+}
