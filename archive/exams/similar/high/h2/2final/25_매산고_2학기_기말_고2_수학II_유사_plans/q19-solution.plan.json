@@ -1,0 +1,92 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "-3",
+          "1"
+        ]
+      },
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "3",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "3",
+        "y": "0"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -0.7,
+      3.8
+    ],
+    "viewport": [
+      -1.5,
+      4.5,
+      -9,
+      5
+    ],
+    "functionName": "g",
+    "axisTickValues": {
+      "x": [
+        2,
+        3
+      ],
+      "y": [
+        -4
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "G",
+        "x": 2,
+        "y": -4
+      },
+      {
+        "id": "B",
+        "x": 3,
+        "y": 0
+      }
+    ]
+  },
+  "caption": "평행이동한 대표 예 f(x)=x²(x−3), t=3에서는 g=f (x≤3), g=−f (x>3)이다. 극댓점 (0,0)·(3,0) 사이에 극솟점 (2,−4)이 놓인다.",
+  "accessibilityDescription": "g는 x=3에서 연속으로 부호가 바뀌는 조각 삼차함수이다. (0,0)에서 극대, (2,−4)에서 극소, (3,0)의 접합점에서 극대를 갖는다.",
+  "sourceConditions": [
+    {
+      "id": "continuity",
+      "condition": "g=f left of t and g=−f right of t with f(t)=0",
+      "mappedTo": "graphPlan.pieces[0,1];graphPlan.breakpoints[0]={x:3,y:0} for translated representative"
+    },
+    {
+      "id": "extrema",
+      "condition": "three extrema, two levels 0 and third −4",
+      "mappedTo": "graphPlan.requiredPoints[A,G,B] under representative f=x²(x−3)"
+    },
+    {
+      "id": "distance",
+      "condition": "β−α=3 invariant under horizontal translation",
+      "mappedTo": "graphPlan.requiredPoints[A.x=0,B.x=3]"
+    }
+  ],
+  "newVisualInformation": [
+    "해설의 평행이동에 불변인 거리 3만 고정한 대표 예다. 원문이 특정한 절대 좌표 α,β,t를 부여한 것으로 주장하지 않으며, 점 A/B/G는 이 해설 도식의 이름이다. 면 채움 없음."
+  ]
+}

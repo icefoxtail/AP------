@@ -1,0 +1,94 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [{"coefficients":["37/2","-7","1"]}],
+    "breakpoints": [],
+    "axisTitles":{"x":"a","y":"F(a)"},
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "2",
+        "5"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      2,
+      5
+    ],
+    "viewport": [
+      -0.5,
+      5.6,
+      -0.5,
+      10
+    ],
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": 2,
+        "y": 8.5
+      },
+      {
+        "id": "V",
+        "x": 3.5,
+        "y": 6.25
+      },
+      {
+        "id": "R",
+        "x": 5,
+        "y": 8.5
+      }
+    ],
+    "exactCoordinates": {
+      "L": [
+        "2",
+        "17/2"
+      ],
+      "V": [
+        "7/2",
+        "25/4"
+      ],
+      "R": [
+        "5",
+        "17/2"
+      ]
+    },
+    "axisTickValues": {
+      "x": [
+        "2",
+        "7/2",
+        "5"
+      ],
+      "y": [
+        "25/4",
+        "17/2"
+      ]
+    }
+  },
+  "caption": "a=2x, F(a)=f(a/2)로 놓으면 2≤a≤5에서 F(a)=a²−7a+37/2이고, 꼭짓점 (7/2,25/4)과 양 끝점 (2,17/2), (5,17/2)을 비교한다.",
+  "accessibilityDescription": "닫힌 구간 a=2부터 5까지 위로 열린 이차함수. 가운데 최솟값은 25/4, 좌우 끝의 최댓값은 각각 17/2이다.",
+  "sourceConditions": [
+    {
+      "id": "param",
+      "condition": "1≤x≤5/2 ⇒ a=2x∈[2,5]",
+      "mappedTo": "graphPlan.sourceDomain;graphPlan.domain"
+    },
+    {
+      "id": "integral",
+      "condition": "∫_1^6 |t−a|dt=(a−1)²/2+(6−a)²/2",
+      "mappedTo": "graphPlan.pieces[0].coefficients"
+    },
+    {
+      "id": "extrema",
+      "condition": "minimum 25/4 at a=7/2; maximum 17/2 at a=2 or 5",
+      "mappedTo": "graphPlan.requiredPoints[L,V,R]"
+    }
+  ],
+  "newVisualInformation": [
+    "절댓값 적분의 계산 결과를 이차함수로 그려 주어진 a구간의 꼭짓점과 양 끝을 모두 나타낸다. 면 채움은 없다."
+  ]
+}

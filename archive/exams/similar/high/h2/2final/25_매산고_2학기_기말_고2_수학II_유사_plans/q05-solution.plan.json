@@ -1,0 +1,93 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "0",
+          "-3",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1.6,
+      3.6
+    ],
+    "viewport": [
+      -2,
+      4,
+      -6,
+      6
+    ],
+    "referenceLines": [
+      {
+        "id": "max",
+        "y": "2",
+        "intersectionX": [
+          "0",
+          "3"
+        ]
+      },
+      {
+        "id": "min",
+        "y": "-2",
+        "intersectionX": [
+          "-1",
+          "2"
+        ]
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "H",
+        "x": 0,
+        "y": 2
+      },
+      {
+        "id": "L",
+        "x": 2,
+        "y": -2
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        -1,
+        2,
+        3
+      ],
+      "y": [
+        -2,
+        2
+      ]
+    }
+  },
+  "caption": "y=x³−3x²+2의 극댓값 2와 극솟값 −2를 수평선으로 나타냈다. y=−a가 두 높이 사이에 있으면 실근이 세 개다.",
+  "accessibilityDescription": "삼차곡선은 x=0에서 극댓값 2, x=2에서 극솟값 마이너스 2이며, y=2 및 y=−2 수평선이 각각 곡선과 두 점에서 만난다.",
+  "sourceConditions": [
+    {
+      "id": "transform",
+      "condition": "x³−x²+2=2x²−a ⇒ y=x³−3x²+2 intersects y=−a",
+      "mappedTo": "graphPlan.pieces[0].coefficients;graphPlan.referenceLines"
+    },
+    {
+      "id": "extrema",
+      "condition": "g(0)=2 and g(2)=−2",
+      "mappedTo": "graphPlan.requiredPoints[H,L]"
+    },
+    {
+      "id": "range",
+      "condition": "−2<−a<2 for three distinct real roots",
+      "mappedTo": "graphPlan.referenceLines[max,min] as boundary levels"
+    }
+  ],
+  "newVisualInformation": [
+    "극댓값과 극솟값의 두 경계 높이를 따로 그려 수평선이 곡선을 세 번 가로지르는 이유를 보여준다. 두 직선은 파라미터 범위의 경계선이며 동일한 y=−a를 동시에 주장하지 않는다."
+  ]
+}
