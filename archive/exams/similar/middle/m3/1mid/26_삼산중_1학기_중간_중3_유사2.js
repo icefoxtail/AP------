@@ -223,7 +223,7 @@ window.questionBank = [
     "subUnit": "제곱근과 그 활용",
     "questionType": "객관식",
     "crossConceptKeys": [
-      "CC_RADICAL_SIMPLIFY",
+      "CC_RADICAL_COMPARISON",
       "CC_SQUARE_ROOT_DEFINITION"
     ],
     "conditionKeys": [
@@ -238,8 +238,8 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "content": "$0<a<1<b$인 두 실수 $a,b$에 대하여 항상 옳은 대소 관계는?",
     "solution": "$0<a<1$이면 제곱하여 더 작아지므로 $a^2<a$이고, 양의 제곱근을 취하면 $a<\\sqrt a<1$이다.\n$b>1$이면 $b^2>b$이고 따라서 $1<\\sqrt b<b$이다.\n두 관계를 합치면 $a<\\sqrt a<1<\\sqrt b<b$이므로 ③이다.",
-    "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
-    "templateKey": "TPL_M3_RADICAL_VARIABLE_SIMPLIFY",
+    "problemTypeKey": "PT_M3_REAL_NUMBER_COMPARISON",
+    "templateKey": "TPL_M3_POWER_ROOT_INEQUALITY_ORDER",
     "rpmPrimaryRecordId": "M3-RPM-004",
     "difficultyBucket": 3,
     "score": 3.9,
@@ -324,7 +324,7 @@ window.questionBank = [
     "content": "자연수 $n$에 대하여 $\\dfrac{\\sqrt{12n}}{\\sqrt3}=4$일 때 $n$의 값은?",
     "solution": "근호의 나눗셈 성질로 $\\dfrac{\\sqrt{12n}}{\\sqrt3}=\\sqrt{4n}=2\\sqrt n$이다.\n$2\\sqrt n=4$에서 $\\sqrt n=2$이고, 양변을 제곱하면 $n=4$이다.",
     "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
-    "templateKey": "TPL_M3_RADICAL_RATIONALIZATION",
+    "templateKey": "TPL_M3_RADICAL_POWER_DIVISION",
     "rpmPrimaryRecordId": "M3-RPM-008",
     "difficultyBucket": 2,
     "score": 3.7,
@@ -351,8 +351,7 @@ window.questionBank = [
     "subUnit": "근호를 포함한 식의 계산",
     "questionType": "객관식",
     "crossConceptKeys": [
-      "CC_PRIME_FACTORIZATION",
-      "CC_RADICAL_EXPRESSION"
+      "CC_RADICAL_ARITHMETIC"
     ],
     "conditionKeys": [
       "COND_POSITIVE"
@@ -367,7 +366,7 @@ window.questionBank = [
     "content": "$A=\\dfrac{\\sqrt{450}}{\\sqrt{18}}$, $B=\\sqrt{12}\\times\\sqrt{27}$일 때 $B-A$의 값은?",
     "solution": "$A=\\sqrt{450\\div18}=\\sqrt{25}=5$이다.\n$B=\\sqrt{12\\times27}=\\sqrt{324}=18$이다.\n따라서 $B-A=18-5=13$이다.",
     "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
-    "templateKey": "TPL_M3_RADICAL_LETTER_REPRESENTATION",
+    "templateKey": "TPL_M3_RADICAL_MIXED_OPERATION",
     "rpmPrimaryRecordId": "M3-RPM-007",
     "difficultyBucket": 3,
     "score": 3.9,
@@ -535,7 +534,7 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "subUnitConfidence": "candidate_evidence",
     "content": "같은 평면에서 다음 네 삼각형의 변끼리 서로 겹치지 않게 이어 붙여 하나의 도형을 만든다. 서로 합동인 두 직각삼각형은 각각 직각을 낀 변이 2, 3이고, 서로 합동인 두 이등변삼각형은 각각 밑변이 4, 나머지 두 변이 $\\sqrt{13}$이다. 세 쌍의 변을 길이가 같은 변끼리 전부 붙이고 그 외에는 변의 내부가 겹치지 않는다. 만들어진 도형의 둘레가 $10+2\\sqrt{13}$인 방법은? (이어 붙인 변은 둘레에 포함하지 않는다.)",
-    "solution": "직각삼각형 하나의 둘레는 $2+3+\\sqrt{13}=5+\\sqrt{13}$이고 이등변삼각형 하나의 둘레는 $4+2\\sqrt{13}$이다.\n네 삼각형의 둘레의 합은 $2(5+\\sqrt{13})+2(4+2\\sqrt{13})=18+6\\sqrt{13}$이다.\n붙이는 변은 각 도형의 둘레에서 한 번씩, 합계 두 번 제외된다.\n목표 둘레 $10+2\\sqrt{13}$을 얻으려면 붙인 세 쌍의 변 길이 합이 $\\dfrac{(18+6\\sqrt{13})-(10+2\\sqrt{13})}{2}=4+2\\sqrt{13}$이어야 한다.\n④는 길이 4인 밑변 한 쌍과 길이 $\\sqrt{13}$인 변 두 쌍을 붙여 이 조건에 맞는다.",
+    "solution": "직각삼각형 하나의 둘레는 $2+3+\\sqrt{13}=5+\\sqrt{13}$이고 이등변삼각형 하나의 둘레는 $4+2\\sqrt{13}$이다.\n네 삼각형의 둘레의 합은 $2(5+\\sqrt{13})+2(4+2\\sqrt{13})=18+6\\sqrt{13}$이다.\n붙이는 변은 각 도형의 둘레에서 한 번씩, 합계 두 번 제외된다.\n목표 둘레 $10+2\\sqrt{13}$을 얻으려면 붙인 세 쌍의 변 길이 합이 $\\dfrac{(18+6\\sqrt{13})-(10+2\\sqrt{13})}{2}=4+2\\sqrt{13}$이어야 한다.\n①은 두 이등변삼각형의 밑변 4를 서로 붙이고, 각 직각삼각형의 빗변 $\\sqrt{13}$을 이등변삼각형의 남은 변에 하나씩 붙여 이 조건에 맞는다. 반면 ④는 길이 $\\sqrt{13}$인 변 세 쌍을 붙이므로 조건에 맞지 않는다.",
     "problemTypeKey": "PT_M3_SQUARE_ROOT_APPLICATION",
     "templateKey": "TPL_M3_GEOMETRIC_PERIMETER_RADICAL_APPLICATION",
     "rpmPrimaryRecordId": "M3-RPM-009",
@@ -936,8 +935,7 @@ window.questionBank = [
     "subUnit": "인수분해",
     "questionType": "서술형",
     "crossConceptKeys": [
-      "CC_DIFFERENCE_OF_SQUARES",
-      "CC_PERFECT_SQUARE"
+      "CC_QUADRATIC_FACTORIZATION"
     ],
     "conditionKeys": [
       "COND_INTEGER"

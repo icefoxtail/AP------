@@ -1,0 +1,638 @@
+{
+  "schemaVersion": "gpt-finalqa-evidence-v1",
+  "examUid": "26_삼산중_1학기_중간_중3_유사2",
+  "sourcePath": "archive/exams/similar/middle/m3/1mid/26_삼산중_1학기_중간_중3_유사2.js",
+  "blindPackDigest": "71d43d452b36e710f2986fab0aa3a271c4d851186629dccfc3ecd8f4e8c9e7c2",
+  "reviewer": {
+    "id": "gpt-first-formal-blind-pass-20261125",
+    "blindFirstPass": "CONFIRMED",
+    "independentEvidence": "공식 --blind-pack의 발문과 보기만 보고 Q1~Q24 답과 계산 근거를 Git 외 별도 원본으로 먼저 고정했다. 이후 기존 정답·해설·메타와 일대일 대조, 객관식 오답 유일성, 두 도형 축 의미·sourceQuote를 검수했고 Q13 해설 결론 및 Q6·Q8·Q9·Q23 메타 대응을 수정한 뒤 영향 범위를 재검했다. 별도 사람/에이전트 검수라고 주장하지 않는다.",
+    "blindArtifactRef": "/workspace/scratch/3847fbe145fa/samsan-qa-evidence/26_삼산중_1학기_중간_중3_유사2.blind-reasoning.json"
+  },
+  "questions": [
+    {
+      "qid": 1,
+      "sourceFingerprint": "b31541c129d4a28802fff1f4eef38a982c155a55d381cac18fbaf9baf26e2f71",
+      "blindAnswer": "⑤",
+      "blindReasoning": "√((-5)²)=√25=5이며 -5가 아니다. 다른 네 설명은 모두 참이다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "도형 면제 확인: √((-5)²)=√25=5이며 -5가 아니다. 다른 네 설명은 모두 참이다. problem 축은 필수 도형 없이 식과 글만으로 의미가 보존된다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "도형 면제 확인: √((-5)²)=√25=5이며 -5가 아니다. 다른 네 설명은 모두 참이다. solution 축은 필수 도형 없이 식과 글만으로 의미가 보존된다."
+        }
+      }
+    },
+    {
+      "qid": 2,
+      "sourceFingerprint": "26378b514003e8a14f3d7bfdcd3483be55dde290bee61e899030356bccd483a4",
+      "blindAnswer": "②",
+      "blindReasoning": "다섯 결과는 순서대로 7,2,4,5,6이므로 2가 최솟값이다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "도형 면제 확인: 다섯 결과는 순서대로 7,2,4,5,6이므로 2가 최솟값이다. problem 축은 필수 도형 없이 식과 글만으로 의미가 보존된다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "도형 면제 확인: 다섯 결과는 순서대로 7,2,4,5,6이므로 2가 최솟값이다. solution 축은 필수 도형 없이 식과 글만으로 의미가 보존된다."
+        }
+      }
+    },
+    {
+      "qid": 3,
+      "sourceFingerprint": "89191d151d5bef9cd327c5c024fc2f81162964ff936ea9fd4da04953ba13110c",
+      "blindAnswer": "⑤",
+      "blindReasoning": "√12≈3.46, √45≈6.71 사이 자연수 4,5,6의 합은 15다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "도형 면제 확인: √12≈3.46, √45≈6.71 사이 자연수 4,5,6의 합은 15다. problem 축은 필수 도형 없이 식과 글만으로 의미가 보존된다."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "a3cc5d6fcb9d4440efffcfdda02343dadc942d975477699f0589b7b599e876ac",
+          "reasoning": "원문·해설 대조: 제곱근 경계 √12와 √45 사이의 자연수 4·5·6을 눈금에 올려 합 15를 읽도록 구성했다. 해당 축의 실행 플랜과 원문 인용, 표시된 주어진 점·답 유출 여부를 확인했다."
+        }
+      }
+    },
+    {
+      "qid": 4,
+      "sourceFingerprint": "c748467c8af8593c5d212eecf3b910b5eef5ac48ebe7a41c00c17d566f9d33fc",
+      "blindAnswer": "④",
+      "blindReasoning": "a≈3.464, b≈4.162, c≈3.586이므로 최댓값 b, 최솟값 a; 차 1+√10-2√3이다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "도형 면제 확인: a≈3.464, b≈4.162, c≈3.586이므로 최댓값 b, 최솟값 a; 차 1+√10-2√3이다. problem 축은 필수 도형 없이 식과 글만으로 의미가 보존된다."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "67097fc3e92d9acf11d69c9cb6bc39f04b26db72e3f0d641e11fe4620eabfcce",
+          "reasoning": "원문·해설 대조: a=2√3, b=1+√10, c=5−√2의 대략적인 크기를 오름차순으로 배열하여 최대 b와 최소 a의 차를 확인했다. 해당 축의 실행 플랜과 원문 인용, 표시된 주어진 점·답 유출 여부를 확인했다."
+        }
+      }
+    },
+    {
+      "qid": 5,
+      "sourceFingerprint": "dc8ad4d227b77552e8c478c30fbfd757facd2b0ff3dc36b050de13740d767d7c",
+      "blindAnswer": "④",
+      "blindReasoning": "두 번째 직각삼각형 빗변은 √(1²+4²)=√17, O=-2에서 오른쪽으로 이동한 Q는 √17-2다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "PASS",
+          "planDigest": "c3caa779859de4f1aa4a1264a9091aaec6d0be1eb342c25dcfd7788a0db23a0f",
+          "reasoning": "원문·해설 대조: O=-2에서 시작해 빗변 √13과 √17을 연달아 수직삼각형으로 수직선에 옮기는 주어진 작도관계를 보였다. Q의 값 자체는 표시하지 않았다. 해당 축의 실행 플랜과 원문 인용, 표시된 주어진 점·답 유출 여부를 확인했다."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "00d4e5e8db3c85e14cc3035e7e7f174649fd9c12c876384bdba05aa279b9d2b2",
+          "reasoning": "원문·해설 대조: 두 피타고라스 빗변 √13, √17의 길이 전달을 추적한 후 Q=√17−2 위치를 해설 눈금에서 확인했다. 해당 축의 실행 플랜과 원문 인용, 표시된 주어진 점·답 유출 여부를 확인했다."
+        }
+      }
+    },
+    {
+      "qid": 6,
+      "sourceFingerprint": "8617b8b9d3404cd8181790d79297e735ff06a05e0c67777a89443e21d9d448ff",
+      "blindAnswer": "③",
+      "blindReasoning": "0<a<1이면 a<√a<1, b>1이면 1<√b<b이므로 결합하여 ③만 참이다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "도형 면제 확인: 0<a<1이면 a<√a<1, b>1이면 1<√b<b이므로 결합하여 ③만 참이다. problem 축은 필수 도형 없이 식과 글만으로 의미가 보존된다."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "a7c737199047aa3afb6639dc61f416b8d09a9c07df3fc644204a97e8d35d044c",
+          "reasoning": "원문·해설 대조: 0<a<1<b에서 a<√a<1<√b<b가 되는 순서를 다섯 점의 수직선 배치로 검산했다. 해당 축의 실행 플랜과 원문 인용, 표시된 주어진 점·답 유출 여부를 확인했다."
+        }
+      }
+    },
+    {
+      "qid": 7,
+      "sourceFingerprint": "91b42704bcc3ac2a9b119708d16283d7d7630bd1c68efe387a7013611388e97b",
+      "blindAnswer": "⑤",
+      "blindReasoning": "1~7의 비제곱수는 2,3,5,6,7, 서로 달라 합이 제곱수인 순서쌍은 (2,7),(7,2),(3,6),(6,3) 네 개다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "도형 면제 확인: 1~7의 비제곱수는 2,3,5,6,7, 서로 달라 합이 제곱수인 순서쌍은 (2,7),(7,2),(3,6),(6,3) 네 개다. problem 축은 필수 도형 없이 식과 글만으로 의미가 보존된다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "도형 면제 확인: 1~7의 비제곱수는 2,3,5,6,7, 서로 달라 합이 제곱수인 순서쌍은 (2,7),(7,2),(3,6),(6,3) 네 개다. solution 축은 필수 도형 없이 식과 글만으로 의미가 보존된다."
+        }
+      }
+    },
+    {
+      "qid": 8,
+      "sourceFingerprint": "4e9f4a2b9b132c5e281ba1b78556a60cf4c1cec30a1112233a2316025af689e0",
+      "blindAnswer": "①",
+      "blindReasoning": "√(12n)/√3=√(4n)=2√n=4에서 √n=2, n=4다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "도형 면제 확인: √(12n)/√3=√(4n)=2√n=4에서 √n=2, n=4다. problem 축은 필수 도형 없이 식과 글만으로 의미가 보존된다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "도형 면제 확인: √(12n)/√3=√(4n)=2√n=4에서 √n=2, n=4다. solution 축은 필수 도형 없이 식과 글만으로 의미가 보존된다."
+        }
+      }
+    },
+    {
+      "qid": 9,
+      "sourceFingerprint": "b11b6c2f8e5a987e536fffbf1636efd05ab1590b0a6b233745c3d3b2e6779c53",
+      "blindAnswer": "⑤",
+      "blindReasoning": "A=√(450/18)=5, B=√(12·27)=18이므로 B-A=13이다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "도형 면제 확인: A=√(450/18)=5, B=√(12·27)=18이므로 B-A=13이다. problem 축은 필수 도형 없이 식과 글만으로 의미가 보존된다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "도형 면제 확인: A=√(450/18)=5, B=√(12·27)=18이므로 B-A=13이다. solution 축은 필수 도형 없이 식과 글만으로 의미가 보존된다."
+        }
+      }
+    },
+    {
+      "qid": 10,
+      "sourceFingerprint": "837df2ab126583a0514a816f2cdf33074593013928464b1130b73242f65e0b76",
+      "blindAnswer": "①",
+      "blindReasoning": "마름모 면적은 (2√3·3√15)/2=9√5, 삼각형 면적은 18√5. 높이 2·18√5/√10=18√2다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "PASS",
+          "planDigest": "0c6dec0d2437adba7d6c955eafd226be88d991de17e440d2d046edc0d1e8e258",
+          "reasoning": "원문·해설 대조: 마름모의 직교 대각선 길이 2√3과 3√15를 주어진 형상에 결속했다. 미지 높이는 표시하지 않았다. 해당 축의 실행 플랜과 원문 인용, 표시된 주어진 점·답 유출 여부를 확인했다."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "085ced94c8f5bb58974c12da976e25d63feae933d9a39ea34787c47baf42fc02",
+          "reasoning": "원문·해설 대조: 마름모 대각선 넓이 9√5 및 두 배인 삼각형 넓이 18√5 관계를 함께 시각화한 뒤 높이 18√2 계산과 일치함을 확인했다. 해당 축의 실행 플랜과 원문 인용, 표시된 주어진 점·답 유출 여부를 확인했다."
+        }
+      }
+    },
+    {
+      "qid": 11,
+      "sourceFingerprint": "bf0a8a4c711b23e71644eb9ee390ad4438e46cc25845d5dafc2fdc9a7afd20fc",
+      "blindAnswer": "④",
+      "blindReasoning": "√3과 √5 계수 비교로 2a-1=7, b+2=-1, 따라서 a=4,b=-3, a²-b²=7이다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "도형 면제 확인: √3과 √5 계수 비교로 2a-1=7, b+2=-1, 따라서 a=4,b=-3, a²-b²=7이다. problem 축은 필수 도형 없이 식과 글만으로 의미가 보존된다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "도형 면제 확인: √3과 √5 계수 비교로 2a-1=7, b+2=-1, 따라서 a=4,b=-3, a²-b²=7이다. solution 축은 필수 도형 없이 식과 글만으로 의미가 보존된다."
+        }
+      }
+    },
+    {
+      "qid": 12,
+      "sourceFingerprint": "52f17bbbe90137aea6a510483f82ad12d343e878534d32202eb4d16858e4be11",
+      "blindAnswer": "③",
+      "blindReasoning": "√6√24-√6√2-√75/√3=12-2√3-5=7-2√3이므로 a-b=7-(-2)=9다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "도형 면제 확인: √6√24-√6√2-√75/√3=12-2√3-5=7-2√3이므로 a-b=7-(-2)=9다. problem 축은 필수 도형 없이 식과 글만으로 의미가 보존된다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "도형 면제 확인: √6√24-√6√2-√75/√3=12-2√3-5=7-2√3이므로 a-b=7-(-2)=9다. solution 축은 필수 도형 없이 식과 글만으로 의미가 보존된다."
+        }
+      }
+    },
+    {
+      "qid": 13,
+      "sourceFingerprint": "e17903a5c2d7189a658acde6685a19ff64de107ed0be2e46f4e065720ac3487a",
+      "blindAnswer": "①",
+      "blindReasoning": "두 직각삼각형 둘레 합 10+2√13, 두 이등변삼각형 둘레 합 8+4√13, 합 18+6√13. 최종 둘레 10+2√13이 되려면 세 접합 길이 합 4+2√13이므로 밑변 4끼리, 빗변 √13 각각을 등변 √13에 붙이는 ①이다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "PASS",
+          "planDigest": "24f5706075ec7c2af47a866d727d4cafc92e17aa257f04f7d3f00269340c1603",
+          "reasoning": "원문·해설 대조: 직각변 2·3인 직각삼각형 두 개와 밑변 4, 등변 √13인 이등변삼각형 두 개를 분리해 제시하고 정답 접합을 미리 노출하지 않았다. 해당 축의 실행 플랜과 원문 인용, 표시된 주어진 점·답 유출 여부를 확인했다."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "cfa86142c2c414a5caa83bb043e5021105a98e96cdb5188623587cf21b0cb09c",
+          "reasoning": "원문·해설 대조: 밑변 4 한 쌍과 빗변 √13 두 쌍의 접합으로 원둘레 18+6√13에서 두 배의 접합 길이를 제외한다. ①의 실제 구성과 일치하며 ④는 제외했다. 해당 축의 실행 플랜과 원문 인용, 표시된 주어진 점·답 유출 여부를 확인했다."
+        }
+      }
+    },
+    {
+      "qid": 14,
+      "sourceFingerprint": "d8046af24f331643f261711343aff0e64f2109fe54c16fe7f093c6106259fb39",
+      "blindAnswer": "⑤",
+      "blindReasoning": "(3x-2y)(ax+5y)의 xy계수 15-2a=9이므로 a=3, x²계수 3a=9다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "도형 면제 확인: (3x-2y)(ax+5y)의 xy계수 15-2a=9이므로 a=3, x²계수 3a=9다. problem 축은 필수 도형 없이 식과 글만으로 의미가 보존된다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "도형 면제 확인: (3x-2y)(ax+5y)의 xy계수 15-2a=9이므로 a=3, x²계수 3a=9다. solution 축은 필수 도형 없이 식과 글만으로 의미가 보존된다."
+        }
+      }
+    },
+    {
+      "qid": 15,
+      "sourceFingerprint": "c37f50fcebbaef78424ec2385ee48f7daeb7e4815f67869012004f7918c5104c",
+      "blindAnswer": "③",
+      "blindReasoning": "두 역수의 차는 ((3+√5)-(3-√5))/(9-5)=2√5/4=√5/2다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "도형 면제 확인: 두 역수의 차는 ((3+√5)-(3-√5))/(9-5)=2√5/4=√5/2다. problem 축은 필수 도형 없이 식과 글만으로 의미가 보존된다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "도형 면제 확인: 두 역수의 차는 ((3+√5)-(3-√5))/(9-5)=2√5/4=√5/2다. solution 축은 필수 도형 없이 식과 글만으로 의미가 보존된다."
+        }
+      }
+    },
+    {
+      "qid": 16,
+      "sourceFingerprint": "1ca3e5f9affa6f47bd7f8602a8a217d824b0f273e5bae3d75e8143df5ac881a3",
+      "blindAnswer": "③",
+      "blindReasoning": "98²의 실제값 9604에 대한 첫 학생의 오차는 400, 51·49=2499에 대한 둘째 오차는 2, 합 402다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "도형 면제 확인: 98²의 실제값 9604에 대한 첫 학생의 오차는 400, 51·49=2499에 대한 둘째 오차는 2, 합 402다. problem 축은 필수 도형 없이 식과 글만으로 의미가 보존된다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "도형 면제 확인: 98²의 실제값 9604에 대한 첫 학생의 오차는 400, 51·49=2499에 대한 둘째 오차는 2, 합 402다. solution 축은 필수 도형 없이 식과 글만으로 의미가 보존된다."
+        }
+      }
+    },
+    {
+      "qid": 17,
+      "sourceFingerprint": "20a2ced99b9061c83b16d76158c0b27d10692d78a17d2d0a4c6f35e1483b216e",
+      "blindAnswer": "⑤",
+      "blindReasoning": "전체 폭 2x+2a, 높이 3x+4, 넓이 6x²+(8+6a)x+8a. 일차항 계수 20에서 a=2, 상수항은 16이다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "PASS",
+          "planDigest": "08fd870122a6e84604e5aa8eec7626f69c2fe6910b3485a3f3c699be7a6e2fbc",
+          "reasoning": "원문·해설 대조: 한 변 x인 사진 여섯 장의 2열·3행, 좌우 폭 a, 위아래 폭 2인 프레임을 조건 그대로 묘사한다. a의 값을 선공개하지 않았다. 해당 축의 실행 플랜과 원문 인용, 표시된 주어진 점·답 유출 여부를 확인했다."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "81f93278a6ff208b8487f591461b321a4fa661316997a05afb276949e1ad2007",
+          "reasoning": "원문·해설 대조: 프레임 가로 2x+2a, 세로 3x+4를 확인해 넓이 전개 계수 8+6a=20과 상수항 8a=16에 맞는 형상이다. 해당 축의 실행 플랜과 원문 인용, 표시된 주어진 점·답 유출 여부를 확인했다."
+        }
+      }
+    },
+    {
+      "qid": 18,
+      "sourceFingerprint": "0fe2fd835820876287c7e151c7abe5cbf9d7e02dcfd7c236c235b683aac4c660",
+      "blindAnswer": "④",
+      "blindReasoning": "12x²-7x-10=(3x+2)(4x-5), a=3,b=2,c=4,d=-5의 합은 4다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "도형 면제 확인: 12x²-7x-10=(3x+2)(4x-5), a=3,b=2,c=4,d=-5의 합은 4다. problem 축은 필수 도형 없이 식과 글만으로 의미가 보존된다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "도형 면제 확인: 12x²-7x-10=(3x+2)(4x-5), a=3,b=2,c=4,d=-5의 합은 4다. solution 축은 필수 도형 없이 식과 글만으로 의미가 보존된다."
+        }
+      }
+    },
+    {
+      "qid": 19,
+      "sourceFingerprint": "afa6c44dd3fa6b235f04ef371287c08a03a2869215db111d94008e54ae9a2961",
+      "blindAnswer": "④",
+      "blindReasoning": "a+b=11, a²+b²=65에서 2ab=121-65=56, k=ab=28이다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "도형 면제 확인: a+b=11, a²+b²=65에서 2ab=121-65=56, k=ab=28이다. problem 축은 필수 도형 없이 식과 글만으로 의미가 보존된다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "도형 면제 확인: a+b=11, a²+b²=65에서 2ab=121-65=56, k=ab=28이다. solution 축은 필수 도형 없이 식과 글만으로 의미가 보존된다."
+        }
+      }
+    },
+    {
+      "qid": 20,
+      "sourceFingerprint": "ea465e924479fbdfae51684906a4d4938818dc3d419cffabfa5549cf9f2f75ca",
+      "blindAnswer": "②",
+      "blindReasoning": "공통 인수 x+3에서 x=-3 대입하면 39-3m=0으로 m=13, 9-3n-18=0으로 n=-3, 차 16이다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "도형 면제 확인: 공통 인수 x+3에서 x=-3 대입하면 39-3m=0으로 m=13, 9-3n-18=0으로 n=-3, 차 16이다. problem 축은 필수 도형 없이 식과 글만으로 의미가 보존된다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "도형 면제 확인: 공통 인수 x+3에서 x=-3 대입하면 39-3m=0으로 m=13, 9-3n-18=0으로 n=-3, 차 16이다. solution 축은 필수 도형 없이 식과 글만으로 의미가 보존된다."
+        }
+      }
+    },
+    {
+      "qid": 21,
+      "sourceFingerprint": "0c9f6359d65999aff75c4f9813884804668128a7a849f37b88315e4006735ef7",
+      "blindAnswer": "(1) 7,8,9,10,11 및 합 45; (2) 13개",
+      "blindReasoning": "√47< n≤√135에서 n=7..11로 합45. √m≤n<10인 자연수 n이 7,8,9 세 개만 되려면 6<√m≤7, 즉 36<m≤49이므로 m=37..49 총13개다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "NOT_APPLICABLE"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "도형 면제 확인: √47< n≤√135에서 n=7..11로 합45. √m≤n<10인 자연수 n이 7,8,9 세 개만 되려면 6<√m≤7, 즉 36<m≤49이므로 m=37..49 총13개다. problem 축은 필수 도형 없이 식과 글만으로 의미가 보존된다."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "b18e91dde222e974c5df50f9741ed1c61698d73ff8485df5f66e54271cc04809",
+          "reasoning": "원문·해설 대조: 제곱수 경계 사이의 정수 n=7..11과 m=37..49를 수직선 범위로 표시해 합 45와 개수 13을 확인했다. 해당 축의 실행 플랜과 원문 인용, 표시된 주어진 점·답 유출 여부를 확인했다."
+        }
+      }
+    },
+    {
+      "qid": 22,
+      "sourceFingerprint": "55a21e79ec1187c92389a778e6472894da7022efe8708edcdbe70b6d53e3a089",
+      "blindAnswer": "A=5, B=8, C=3, 5x²+37x-24",
+      "blindReasoning": "(x+A)(x+2)의 x계수 A+2=7에서 A5; (x+5)(x+C)의 상수 5C=15에서 C3, B=8. (5x-3)(x+8)=5x²+37x-24다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "NOT_APPLICABLE"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "도형 면제 확인: (x+A)(x+2)의 x계수 A+2=7에서 A5; (x+5)(x+C)의 상수 5C=15에서 C3, B=8. (5x-3)(x+8)=5x²+37x-24다. problem 축은 필수 도형 없이 식과 글만으로 의미가 보존된다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "도형 면제 확인: (x+A)(x+2)의 x계수 A+2=7에서 A5; (x+5)(x+C)의 상수 5C=15에서 C3, B=8. (5x-3)(x+8)=5x²+37x-24다. solution 축은 필수 도형 없이 식과 글만으로 의미가 보존된다."
+        }
+      }
+    },
+    {
+      "qid": 23,
+      "sourceFingerprint": "5d1ea7b6f75a7311fef2f4610930cb5dfe1a0cac0e00fd463c35df1240e189a1",
+      "blindAnswer": "(x-8)(x+3); 9090",
+      "blindReasoning": "-8+3=-5, -8·3=-24이므로 (x-8)(x+3). x=98일 때 90·101=9090이다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "NOT_APPLICABLE"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "도형 면제 확인: -8+3=-5, -8·3=-24이므로 (x-8)(x+3). x=98일 때 90·101=9090이다. problem 축은 필수 도형 없이 식과 글만으로 의미가 보존된다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "도형 면제 확인: -8+3=-5, -8·3=-24이므로 (x-8)(x+3). x=98일 때 90·101=9090이다. solution 축은 필수 도형 없이 식과 글만으로 의미가 보존된다."
+        }
+      }
+    },
+    {
+      "qid": 24,
+      "sourceFingerprint": "ba7c8af377e5ee3ba9b36c7cbed8a6e8f8b7b263eabceed20a81a5e92e9f50e3",
+      "blindAnswer": "x=4, 사다리꼴 넓이 5√2/2",
+      "blindReasoning": "원본 직사각형 폭 x, 높이 h=√8, 절반 직사각형 폭 x/2 높이 h가 회전 닮음이므로 x/h=h/(x/2), x²=2h²=16, x4. AB=h, E=(2,0), F=(2,h/2), K=(2,h/4), EK=h/4, 두 평행변 거리2. 넓이 ((h+h/4)/2)·2=5h/4=5√2/2이다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "NOT_APPLICABLE"
+      },
+      "plan": {
+        "problem": {
+          "status": "PASS",
+          "planDigest": "c07d877121f62bfd35b000d8592797c9fec9a8066ccb579047bc4043fe1f8020",
+          "reasoning": "원문·해설 대조: AB=√8, AD=x인 직사각형, 중점 E·H 및 EH 위의 중점 F·K를 정확한 순서로 배치했다. x의 해답은 숨겼다. 해당 축의 실행 플랜과 원문 인용, 표시된 주어진 점·답 유출 여부를 확인했다."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "0429ffb70e30386ea40550e98d60e1802d9cf4358de238ae13ca6bb781c25115",
+          "reasoning": "원문·해설 대조: 두 직사각형의 회전 닮음 비율로 x=4, EK=√2/2, 사다리꼴 ABKE의 넓이 5√2/2를 도형의 대응변과 대조했다. 해당 축의 실행 플랜과 원문 인용, 표시된 주어진 점·답 유출 여부를 확인했다."
+        }
+      }
+    }
+  ]
+}
