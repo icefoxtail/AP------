@@ -1,0 +1,230 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "-3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "-3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "hiddenPointNames": [
+    "O"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displayCircles": [
+    "k"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "caption": "원에 내접한 직사각형의 대각선은 지름인 10m이고 두 변 x,y는 직각을 이룬다.",
+  "accessibilityDescription": "원에 내접한 직사각형의 가로에 x, 세로에 y, 대각선에 10m가 적혀 있으며, 한 꼭짓점에 직각 표식이 있다. x와 y의 최종 값은 그림에 쓰지 않았다.",
+  "sourceQuote": "직사각형의 대각선의 길이는 원의 지름과 같은",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "원의 둘레 10πm이므로 지름은 10m다.",
+      "mappedTo": "mathPlan.nodes[k] 반지름 5 및 displaySegments[AC], planeMarks.expressionLabels[d]의 10m"
+    },
+    {
+      "id": "S2",
+      "condition": "원에 내접한 직사각형은 각 변이 수직이고 대각선이 지름이다.",
+      "mappedTo": "displaySegments[AB,BC,CD,DA,AC] 및 rightAngles[rightB]"
+    },
+    {
+      "id": "S3",
+      "condition": "해설에서 가로 x>세로 y, x+y=14, x²+y²=100을 쓴다.",
+      "mappedTo": "planeMarks.expressionLabels[w,h] 각각 가로·세로; 대각선 10과 직각 표식; 미지 x,y 실제 해 숫자는 표시하지 않음"
+    }
+  ],
+  "newVisualInformation": [
+    "풀이의 결정적 관계인 지름 10m의 대각선과 가로 x·세로 y의 직각삼각형을 추가한다."
+  ],
+  "rightAngles": [
+    {
+      "id": "rightB",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "w",
+        "ownerSegment": "AB",
+        "text": "x",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "h",
+        "ownerSegment": "BC",
+        "text": "y",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "d",
+        "ownerSegment": "AC",
+        "text": "10",
+        "unit": "m",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  }
+}

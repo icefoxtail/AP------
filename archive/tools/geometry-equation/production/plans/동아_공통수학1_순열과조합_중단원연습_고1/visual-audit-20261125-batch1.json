@@ -1,0 +1,236 @@
+{
+  "schemaVersion": "textbook-figure-plan-audit-v1",
+  "auditDate": "2026-11-25",
+  "sourcePath": "archive/exams/textbooks/동아출판_공통수학1/동아_공통수학1_순열과조합_중단원연습_고1/동아_공통수학1_순열과조합_중단원연습_고1.js",
+  "sourceGitBlobSha": "133789a76e14d37b4259ce40e743059a2cf99dc9",
+  "mainBaseline": "312fb4f9409bf0b8fd391b3739d8dce61ba46b1",
+  "scope": {
+    "firstQid": "q01",
+    "lastQid": "q14",
+    "questionCount": 14,
+    "sourceQuestionCount": 18,
+    "axesPerQuestion": 2,
+    "deferredQids": "q15..q18"
+  },
+  "validationPolicy": {
+    "problemAnswerExposure": "NO_ANSWER_IN_PROBLEM_PLANS",
+    "defaultFill": "NONE",
+    "render": "NOT_RUN",
+    "pngReview": "SOURCE_PNG_MANUALLY_INSPECTED",
+    "studentScreen": "NOT_RUN",
+    "a4": "NOT_RUN",
+    "planLintShallow": "PASS_3_OF_3",
+    "planLintFull": "PASS_3_OF_3",
+    "parityScope": "SOURCE_PNG_VS_DECLARED_DRAWN_FIELDS_NOT_RASTERIZED_PIXELS",
+    "originalPngTreatment": "SOURCE_PICTORIAL_DECORATION_OMITTED_BUT_MATHEMATICAL_TOPOLOGY_PRESERVED"
+  },
+  "items": [
+    {
+      "qid": "q01",
+      "problem": {
+        "decision": "EXEMPT",
+        "reason": "메뉴 3종과 2종을 고르는 가짓수는 수량을 더하거나 곱하는 문자 조건이다."
+      },
+      "solution": {
+        "decision": "EXEMPT",
+        "reason": "합의 법칙 3+2와 곱의 법칙 3×2를 직접 적용하며 나무 그림은 계산을 중복한다."
+      }
+    },
+    {
+      "qid": "q02",
+      "problem": {
+        "decision": "EXEMPT",
+        "reason": "48과 120의 약수 개수만 물어 기하적 배치나 위치 조건이 없다."
+      },
+      "solution": {
+        "decision": "EXEMPT",
+        "reason": "소인수분해 지수에 각각 1을 더해 곱하는 순수 수식이다."
+      }
+    },
+    {
+      "qid": "q03",
+      "problem": {
+        "decision": "EXEMPT",
+        "reason": "자연수 순서쌍과 x+y≤5가 부등식으로 완전히 주어진다."
+      },
+      "solution": {
+        "decision": "EXEMPT",
+        "reason": "x+y=2,3,4,5의 순서쌍을 이미 해설에서 모두 열거하므로 좌표 격자는 중복이다."
+      }
+    },
+    {
+      "qid": "q04",
+      "problem": {
+        "decision": "EXEMPT",
+        "reason": "세 자리 수의 각 자리 홀짝 조건은 수의 자리별 선택 규칙으로 제시된다."
+      },
+      "solution": {
+        "decision": "EXEMPT",
+        "reason": "백·십·일 각 5가지로 계산되어 별도의 3칸 도식이 새 관계를 보여 주지 않는다."
+      }
+    },
+    {
+      "qid": "q05",
+      "problem": {
+        "decision": "REQUIRED",
+        "reason": "정문·정원·분수·후문 사이의 다중 산책로 개수가 원본 그림에만 있으며 방문 순서별 경우의 수를 결정한다.",
+        "capability": "construction-spike-v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/동아_공통수학1_순열과조합_중단원연습_고1/q05-problem.plan.json",
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "featureParity": "PASS",
+        "drawnFeatureCheck": [
+          "원문 네 장소 정문·정원·분수·후문이 평면 위치로 구분되고 한글 textLabels 4개가 그려지는 필드에 존재",
+          "정문↔정원 독립 3개 경로 각 2개 선분, 정문↔분수 2개 경로, 정원↔분수 1개 선분",
+          "정원↔후문 2개 경로, 분수↔후문 2개 경로; 13 SOURCE_POINT, 19 displaySegments 연속 연결",
+          "원문 곡선 도로를 직선 꺾인 경로로 단순화했으나 다중간선 위상·모든 수가 그대로임",
+          "원문 PNG에 좌표·각·직각표식·길이·비율 수치 없음; 면 채움·답 10·선택된 경로 없음"
+        ]
+      },
+      "solution": {
+        "decision": "EXEMPT",
+        "reason": "정원·분수 방문 순서 두 경우와 각 갈래 수를 3×1×2, 2×1×2로 직접 계산하므로 동일 산책로 그림의 중복 제작은 불필요하다."
+      },
+      "existingSourcePng": "q05.png"
+    },
+    {
+      "qid": "q06",
+      "problem": {
+        "decision": "REQUIRED",
+        "reason": "A·B·C·D 영역의 실제 경계 인접 관계가 색칠의 허용 여부를 결정하며 원문 PNG가 없으면 그래프가 불명확하다.",
+        "capability": "construction-spike-v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/동아_공통수학1_순열과조합_중단원연습_고1/q06-problem.plan.json",
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "featureParity": "PASS",
+        "drawnFeatureCheck": [
+          "원문 네 지역의 시계 방향 배열 A(좌상), D(우상), C(우하), B(좌하)과 각각 문자 textLabels 4개",
+          "경계 12개: 바깥 둘레 8개와 내부 경계 A-B, B-C, C-D, D-A 네 개가 실제 displaySegments",
+          "중앙 교차점에서 A-C, B-D는 점만 만나고 공통 변이 없음을 필드의 네 구역 위상으로 검증",
+          "원문 곡선 테두리는 직선형 2x2로 바뀌었으나 인접성 보존, 원문 없는 각·치수·비율·직각표식 없음",
+          "실제 색칠·면 채움·색 배정·정답 84 미표시"
+        ]
+      },
+      "solution": {
+        "decision": "EXEMPT",
+        "reason": "A=C 또는 A≠C로 나눈 각 영역의 색 선택 수가 단계별 곱셈으로 전부 기록되어 동일한 무색 구획의 반복은 중복이다."
+      },
+      "existingSourcePng": "q06.png"
+    },
+    {
+      "qid": "q07",
+      "problem": {
+        "decision": "EXEMPT",
+        "reason": "순열 _7P_3과 _5P_5의 값을 요구하는 계산식이다."
+      },
+      "solution": {
+        "decision": "EXEMPT",
+        "reason": "7×6×5와 5!의 직접 전개로 끝나며 위치 그림이 계산을 돕지 않는다."
+      }
+    },
+    {
+      "qid": "q08",
+      "problem": {
+        "decision": "EXEMPT",
+        "reason": "11팀 중 공연할 3팀의 순서를 세는 문장만으로 대상과 배열 조건이 정해진다."
+      },
+      "solution": {
+        "decision": "EXEMPT",
+        "reason": "서로 다른 세 자리 선택을 _11P_3으로 정확히 계산하므로 번호표 그림은 장식이다."
+      }
+    },
+    {
+      "qid": "q09",
+      "problem": {
+        "decision": "EXEMPT",
+        "reason": "숫자 1~5를 각각 한 번씩 쓰는 다섯 자리 홀수 개수는 일의 자리 조건이 명시된다."
+      },
+      "solution": {
+        "decision": "EXEMPT",
+        "reason": "일의 자리 3가지와 나머지 4!가지의 곱이므로 자리 칸 그림이 불필요하다."
+      }
+    },
+    {
+      "qid": "q10",
+      "problem": {
+        "decision": "REQUIRED",
+        "reason": "통로를 기준으로 좌측 2자리와 우측 3자리의 이웃 가능 쌍이 달라지므로 원본 좌석 배치가 문제 풀이 조건이다.",
+        "capability": "construction-spike-v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/동아_공통수학1_순열과조합_중단원연습_고1/q10-problem.plan.json",
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "featureParity": "PASS",
+        "drawnFeatureCheck": [
+          "원문 좌측 2석·통로·우측 3석의 순서를 5개의 독립 닫힌 사각 좌석(20 displaySegments)으로 표현",
+          "좌측 두 좌석 사이와 우측 연속 세 좌석의 간격은 같고, 두 묶음 사이 빈 구간은 두 배 이상 크며 planeMarks.textLabels[aisle]에 통로를 표시",
+          "A,B,C,D,E의 자리 배정이나 원문에 없는 좌석 번호·정답 36을 그리지 않음",
+          "좌석 색·배경은 장식으로 제외하고 면 채움 없음; 길이·각·직각 표식·비율은 원문에 없음"
+        ]
+      },
+      "solution": {
+        "decision": "EXEMPT",
+        "reason": "좌석 그림의 2+3 배열로 이웃한 쌍 세 곳을 센 뒤 2!×3!를 곱한다. 다시 그리면 문제 그림 반복이다."
+      },
+      "existingSourcePng": "q10.png"
+    },
+    {
+      "qid": "q11",
+      "problem": {
+        "decision": "EXEMPT",
+        "reason": "a,b 또는 b,c가 이웃하는 문자 나열 조건이 텍스트로 완전히 지정된다."
+      },
+      "solution": {
+        "decision": "EXEMPT",
+        "reason": "두 묶음의 교집합이 abc/cba 두 방향임을 해설이 명시하고 포함배제 240+240−48을 계산한다."
+      }
+    },
+    {
+      "qid": "q12",
+      "problem": {
+        "decision": "EXEMPT",
+        "reason": "일반 순열 항등식 _nP_r의 증명이 목적이고 공간 관계가 없다."
+      },
+      "solution": {
+        "decision": "EXEMPT",
+        "reason": "두 팩토리얼 분모 통분으로 항등식을 보이는 대수 증명만 필요하다."
+      }
+    },
+    {
+      "qid": "q13",
+      "problem": {
+        "decision": "EXEMPT",
+        "reason": "조합 _7C_3과 _5C_5의 값을 직접 계산하는 두 항목이다."
+      },
+      "solution": {
+        "decision": "EXEMPT",
+        "reason": "7×6×5/(3×2×1), _5C_5=1의 계산이 전부이다."
+      }
+    },
+    {
+      "qid": "q14",
+      "problem": {
+        "decision": "EXEMPT",
+        "reason": "11팀에서 순서 없이 3팀을 고르는 조건이 완전히 서술된다."
+      },
+      "solution": {
+        "decision": "EXEMPT",
+        "reason": "조합 _11C_3을 공식에 대입하는 계산으로 팀 도식은 중복이다."
+      }
+    }
+  ],
+  "summary": {
+    "questions": 14,
+    "axes": 28,
+    "required": 3,
+    "beneficial": 0,
+    "exempt": 25,
+    "plansWritten": 3,
+    "shallowPass": 3,
+    "fullPass": 3,
+    "drawnFeatureParityPass": 3,
+    "engineCapabilityPending": 0
+  }
+}

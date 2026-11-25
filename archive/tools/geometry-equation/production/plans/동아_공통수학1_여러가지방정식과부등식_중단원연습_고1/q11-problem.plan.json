@@ -1,0 +1,195 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "-3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "-3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "hiddenPointNames": [
+    "O"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displayCircles": [
+    "k"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    }
+  ],
+  "caption": "원 모양 울타리 안에 내접한 직사각형 화단",
+  "accessibilityDescription": "원 둘레 위의 네 꼭짓점을 가진 직사각형이 원 안에 놓여 있다. 원의 둘레는 10π m이고 직사각형의 둘레는 28 m이며, 가로가 세로보다 길다. 직사각형의 변 길이나 정답은 그림에 적지 않았다.",
+  "sourceQuote": "원 모양의 울타리에 직사각형 모양의 화단이 내접하고 있다.",
+  "sourceConditions": [
+    {
+      "id": "P1",
+      "condition": "원의 둘레 10πm로부터 반지름이 5m인 원이다.",
+      "mappedTo": "mathPlan.nodes[k]의 중심 O 및 반지름 5, displayCircles[k]; 그림에는 지름·가로·세로의 수치가 표시되지 않음"
+    },
+    {
+      "id": "P2",
+      "condition": "직사각형 화단 네 꼭짓점이 원 위에 있다.",
+      "mappedTo": "displaySegments[AB,BC,CD,DA] 및 5²=4²+3²에 의한 네 꼭짓점의 원 위 위치"
+    },
+    {
+      "id": "P3",
+      "condition": "화단 둘레는 28m이고 가로가 세로보다 길다.",
+      "mappedTo": "변의 내부 대표 좌표는 (가로 8, 세로 6)이며, 원문과 같이 미지 길이 숫자·해를 그림에 쓰지 않음"
+    },
+    {
+      "id": "P4",
+      "condition": "원문 PNG는 꽃과 울타리 질감이 장식이며 수학 조건은 원-직사각형 내접 관계다.",
+      "mappedTo": "displayCircles[k]와 displaySegments[AB,BC,CD,DA]; 영역 면 채움 없음"
+    }
+  ],
+  "newVisualInformation": [
+    "원 위의 네 꼭짓점을 따라 내접하는 가로가 긴 직사각형 화단을 배치한다."
+  ]
+}
