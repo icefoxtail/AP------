@@ -1,0 +1,95 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conics": [
+    {
+      "id": "e",
+      "kind": "ELLIPSE",
+      "center": [
+        "0",
+        "0"
+      ],
+      "aSquared": "25",
+      "bSquared": "9",
+      "major": "X"
+    },
+    {
+      "id": "k",
+      "kind": "CIRCLE",
+      "center": [
+        "0",
+        "0"
+      ],
+      "rSquared": "19"
+    }
+  ],
+  "points": [
+    {
+      "id": "F",
+      "kind": "FOCUS",
+      "curve": "e",
+      "side": 1
+    },
+    {
+      "id": "F'",
+      "kind": "FOCUS",
+      "curve": "e",
+      "side": -1
+    },
+    {
+      "id": "P",
+      "kind": "CONIC_CONIC",
+      "curves": [
+        "e",
+        "k"
+      ],
+      "which": 4
+    }
+  ],
+  "segments": [
+    {
+      "id": "sPF",
+      "from": "P",
+      "to": "F"
+    },
+    {
+      "id": "sPFp",
+      "from": "P",
+      "to": "F'"
+    }
+  ],
+  "caption": "타원 x²/25+y²/9=1과 원 x²+y²=19의 1사분면 교점 P",
+  "accessibilityDescription": "장축이 가로인 타원과 원점 중심 원이 네 곳에서 만난다. 제1사분면의 교점 P와 타원의 두 초점 F, F′를 선분으로 연결하며 F는 양의 x축에 있다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "타원 a²=25,b²=9의 초점은 F=(4,0), F′=(-4,0)이고 원 반지름 제곱은 19이다.",
+      "mappedTo": [
+        "e",
+        "k",
+        "F",
+        "F'"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "P는 원과 타원의 정확한 제1사분면 교점으로 CONIC_CONIC으로 연산되며 x=5sqrt(10)/4,y=3sqrt(6)/4이다. 정답 내적 3은 그림에 쓰지 않는다.",
+      "mappedTo": [
+        "P",
+        "sPF",
+        "sPFp"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "원문 벡터 PF와 PF′의 선분 경로는 있으나 conic 세그먼트 API에는 화살표·벡터 라벨이 없어 ENGINE_CAPABILITY_PENDING이다.",
+      "mappedTo": [
+        "sPF",
+        "sPFp"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원과 타원의 정확한 두 곡선 교차",
+    "초점과 1사분면 교점으로 잇는 두 선분"
+  ]
+}

@@ -1,0 +1,221 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "K",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "5",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "21",
+              "denominator": "5"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "2",
+                  "denominator": "5"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "21"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "K"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "5",
+            "denominator": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "K"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 560
+  },
+  "caption": "지름 AB=5인 반원과 호 위 C, 현 BC=2",
+  "accessibilityDescription": "선분 AB를 지름으로 하여 윗쪽에 반원 호 하나만 표시한다. 호 위 점 C를 양 끝점 A,B와 잇고 지름 5와 현 BC 2를 각각 실제 치수선으로 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "중심 K=(5/2,0), 반지름 5/2인 원의 위쪽 반원 호 AB만 표시하고 원 전체는 그리지 않는다.",
+      "mappedTo": [
+        "K",
+        "k",
+        "semi"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "C=(21/5,2sqrt(21)/5)는 정확히 반원 위에 있고 BC=2, AB=5이다.",
+      "mappedTo": [
+        "C",
+        "d5",
+        "d2",
+        "sAC",
+        "sBC"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "완전한 원이 아닌 위쪽 반원만의 호",
+    "지름 5와 현 2 치수선"
+  ],
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "semi",
+        "circle": "k",
+        "center": "K",
+        "from": "B",
+        "to": "A",
+        "side": "CCW"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "d5",
+        "from": "A",
+        "to": "B",
+        "label": "5",
+        "side": "BELOW",
+        "style": "BAR",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "d2",
+        "from": "B",
+        "to": "C",
+        "label": "2",
+        "side": "RIGHT",
+        "style": "BAR",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "K"
+  ],
+  "hiddenPointStyle": "NONE"
+}

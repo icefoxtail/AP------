@@ -1,0 +1,167 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 560
+  },
+  "caption": "밑변 AB=8이고 양쪽 밑각 A=B인 이등변삼각형",
+  "accessibilityDescription": "밑변 AB가 8인 이등변삼각형 ABC에 A와 B의 두 밑각이 같음을 동일한 호 모양으로 표시한다. 나머지 길이와 각의 숫자는 쓰지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AB=8의 실제 길이를 표시하고 AC=BC라 A와 B 각이 같다.",
+      "mappedTo": [
+        "A",
+        "B",
+        "C",
+        "d8"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "같은 크기의 A,B 각을 equalGroup=1인 두 호 표식으로 표시한다.",
+      "mappedTo": [
+        "aA",
+        "aB"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "밑변 8 치수선",
+    "두 밑각의 동일 호 표식"
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "d8",
+        "from": "A",
+        "to": "B",
+        "label": "8",
+        "side": "BELOW",
+        "style": "BAR",
+        "factRole": "GIVEN"
+      }
+    ],
+    "angles": [
+      {
+        "id": "aA",
+        "refs": [
+          "C",
+          "A",
+          "B"
+        ],
+        "value": 51.34019174590991,
+        "arcs": 1,
+        "equalGroup": 1,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aB",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 51.34019174590991,
+        "arcs": 1,
+        "equalGroup": 1,
+        "factRole": "GIVEN"
+      }
+    ]
+  }
+}
