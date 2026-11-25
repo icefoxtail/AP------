@@ -1,0 +1,638 @@
+{
+  "schemaVersion": "gpt-finalqa-evidence-v1",
+  "examUid": "26_복성고_1학기_중간_고1_유사2",
+  "sourcePath": "archive/exams/similar/high/h1/1mid/26_복성고_1학기_중간_고1_유사2.js",
+  "blindPackDigest": "14a3f60d9a2ab7852d15c87c7488ec199f6385846abe8a191ee351a42e4c9bbf",
+  "reviewer": {
+    "id": "separate-blind-reviewer-bokseong-h1-20261125",
+    "blindFirstPass": "CONFIRMED",
+    "independentEvidence": "별도 AI 수학 검수자는 공식 --blind-pack 발문·보기만 먼저 확인해 Q01–Q24의 독립 계산과 답을 고정하였으며 원래 JS 정답·해설·메타·플랜은 열람하지 않았음. QA 조정자가 이후 24/24 답과 객관식20/20 유일성을 비교하고 Q14/15 용어, Q19 메타 결함 수정·재검. 소형 계산 기록을 Git에 보존함.",
+    "blindArtifactRef": "archive/exams/similar/high/h1/1mid/26_복성고_1학기_중간_고1_유사2.blind-i2.md"
+  },
+  "questions": [
+    {
+      "qid": 1,
+      "sourceFingerprint": "4382a97982d447335bd6fa8583fd619459053e8e0a420d8f810f86955e467c3d",
+      "blindAnswer": "④",
+      "blindReasoning": "(가)는 (x-2)²=0, (나)는 (x-3)²=0으로 접함. (다)는 두 근이므로 (가),(나)만 해당.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "이차함수와 세 직선의 식이 모두 주어져 접선 판별 조건을 수식으로 직접 확인할 수 있음"
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "(가),(나)는 중근, (다)는 두 근임을 각 교점 방정식으로 보여 도형 없이 판정 가능"
+        }
+      }
+    },
+    {
+      "qid": 2,
+      "sourceFingerprint": "c8cdef0d14afc9178a6213e7d938272f13dff3aa43eda7adcfd43637b6e37a1b",
+      "blindAnswer": "③",
+      "blindReasoning": "B=5x²+9x-1-2(x²+3x-2)=3x²+3x+3이므로 x계수 3.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "2A+B의 항등식과 구할 x계수가 모두 문자로 제시되어 공간·그래프 정보가 없음"
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "x계수 9-2·3=3의 계수 비교만으로 해설이 완결됨"
+        }
+      }
+    },
+    {
+      "qid": 3,
+      "sourceFingerprint": "a802d73553ec8abc8bb0dab96c449017051b5dc9f172112fd99c75e0dc1c922e",
+      "blindAnswer": "④",
+      "blindReasoning": "x²계수 2+b=5에서 b=3, 상수항 -4a-3b=-17에서 a=2; 2a+b=7.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "다항식의 x²계수와 상수항 제약 두 개를 수식으로 모두 정의함"
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "b=3과 a=2의 계수비교 대입으로 2a+b=7을 도출함"
+        }
+      }
+    },
+    {
+      "qid": 4,
+      "sourceFingerprint": "77e9887f660031d88095b4987e405a20f246020a08d652866d8782774f99c9b8",
+      "blindAnswer": "②",
+      "blindReasoning": "(1+i)³=-2+2i, [2/(1-i)]²=2i, [(1-i)/(1+i)]⁴=1. 전체 -1+4i로 a-b=-5.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "복소수 세 거듭제곱을 계산해 실수부·허수부를 구하는 대수 문제"
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "세 항이 -2+2i, 2i, 1임을 전개하여 합 -1+4i의 성분을 명시함"
+        }
+      }
+    },
+    {
+      "qid": 5,
+      "sourceFingerprint": "8192e9215d69d494cbde2e6eb0bb571629ba37651c33fe49c29f32c1c672164b",
+      "blindAnswer": "③",
+      "blindReasoning": "4(a+b+c)=48, a²+b²+c²=50. 겉넓이 2(ab+bc+ca)=144-50=94.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "직육면체의 모서리 합과 대각선 길이를 변수 a,b,c로 직접 정의함"
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "a+b+c=12 및 a²+b²+c²=50을 곱셈공식에 대입해 겉넓이94를 얻음"
+        }
+      }
+    },
+    {
+      "qid": 6,
+      "sourceFingerprint": "86a591174e860203d67af1d681d1f14c2758869b9ab82ae2e5704d978a31bbce",
+      "blindAnswer": "⑤",
+      "blindReasoning": "항등식에서 b=c, a-b=c+t, -2a-2b=24; a=b=-6에서 t=6.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "모든 x에 대한 항등식과 a=b 조건만으로 미정계수를 결정하는 문제"
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "x=0,-1 대입 및 이차항 계수 비교로 t=6을 직접 구함"
+        }
+      }
+    },
+    {
+      "qid": 7,
+      "sourceFingerprint": "9c6d441c73ade209b3f6c789e30f9ab705356468c216b84b70fc0eb17b446474",
+      "blindAnswer": "③",
+      "blindReasoning": "첫 교점 판별식 k≥1, 둘째 판별식 k≤17/4. 가능한 정수 k=1,2,3,4로 4개.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "두 이차함수와 한 직선의 방정식이 모두 주어져 실교점 수를 판별식으로 셈"
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "k≥1 및 k≤17/4의 교집합에서 정수 네 개를 나열하면 충분함"
+        }
+      }
+    },
+    {
+      "qid": 8,
+      "sourceFingerprint": "005fbd89ae2b46f75f36c142f683fdbd8086d68b202e337722ee44616d252af8",
+      "blindAnswer": "①",
+      "blindReasoning": "15⁸+30≡1+2=3 (mod 7), 목요일 3일 전은 월요일.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "15⁸+30일과 목요일 조건은 나머지·요일의 합동식 문제로 시각 자산이 불필요함"
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "15≡1 (mod 7)과 30≡2를 써서 3일 전 월요일을 구함"
+        }
+      }
+    },
+    {
+      "qid": 9,
+      "sourceFingerprint": "d9f58c538212110962f15fc2bf6fdcf431b3b34634757665d6aab986044a73fc",
+      "blindAnswer": "③",
+      "blindReasoning": "g-f=-3(x-1)²+12, 교점 -1,3 사이에서 최대값 12.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "두 포물선의 함수식과 교점 사이 수직거리의 최대를 정확한 수식으로 정의함"
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "fda8471e4b722e436a32c325b098d772cd246f04e16898b5e31e89dd5f8e62aa",
+          "reasoning": "두 교점 x=-1,3과 차이함수의 꼭짓점 (1,12)을 한 그래프로 보여 내부 최대점 확인을 돕는 공식 실행 계획 공식 계획 h(x)=-3x²+6x+9 및 좌표 (-1,0),(1,12),(3,0), 해설 출처 구절 일치."
+        }
+      }
+    },
+    {
+      "qid": 10,
+      "sourceFingerprint": "7d89d7aa34f664f7957c0d0c0be23816742513da4a4ece3f4a2f0330dfb455af",
+      "blindAnswer": "⑤",
+      "blindReasoning": "f(-1)=2, Q(3)=7이므로 f(3)=30; R(-1)=2,R(3)=30에서 R=7x+9.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "몫 Q의 나머지 x+4와 최종 제수의 인수 -1,3이 전부 문자로 주어짐"
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "R(-1)=2,R(3)=30을 만족하는 일차식의 상수항9를 연립으로 결정함"
+        }
+      }
+    },
+    {
+      "qid": 11,
+      "sourceFingerprint": "b0aa198ef27dcaeb18d8e0a1b1903964d273a0f5781c9a22751bdc55fb04e56e",
+      "blindAnswer": "④",
+      "blindReasoning": "D/4=24(a-3)k+9a²-b가 모든 k에서 음수이므로 a=3,b>81; 최소합 3+82=85.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "매개변수 k에 대한 이차방정식 판별식의 부호 조건이며 좌표도형 자료가 없음"
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "D/4=(24a-72)k+9a²-b의 항등 부호 조건으로 a=3,b≥82를 산출함"
+        }
+      }
+    },
+    {
+      "qid": 12,
+      "sourceFingerprint": "a8a26fd0c6e48a6a33950928caeca25ff1c518c641633bd4a786cfd439b1b5f1",
+      "blindAnswer": "④",
+      "blindReasoning": "w=(1+i)/√2, w²=i,w⁸=1. iⁿ+wⁿ=0은 wⁿ=-1, n≡4 mod 8; 100이하 13개.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "복소수 두 거듭제곱의 합이 0인 자연수 지수 주기를 계산하는 문제"
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "w²=i,w⁸=1에서 n≡4 (mod 8)인 100이하 지수13개를 셈"
+        }
+      }
+    },
+    {
+      "qid": 13,
+      "sourceFingerprint": "d9d8707263d6657c3c00f575a9f2cbe5f326a6453b157432267d8846666c203d",
+      "blindAnswer": "①",
+      "blindReasoning": "f=(x-h)²-16, f(3)=9로 h=8,-2. 양의 두 영점은 h=8만 가능하므로 합 2h=16.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "최고차항계수·양의 두 영점·꼭짓점값 및 한 점의 함수값이 수식으로 지정됨"
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "f(x)=(x-m)²-16과 두 근 양수 조건에서 m=8을 고르면 충분함"
+        }
+      }
+    },
+    {
+      "qid": 14,
+      "sourceFingerprint": "5182ddd42e0bf23a51d1a0088f721aeb697982612069f6e2723bf66d4a0f5608",
+      "blindAnswer": "③",
+      "blindReasoning": "c=1,2,3에 대해 a>b,a+b≥0 및 세 카드 상이 조건을 세면 각각 8,7,6개로 21.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "카드 일곱 장의 값과 세 수에 대한 제곱근·절댓값 조건이 완전하게 문자로 주어짐"
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "c=1,2,3 경우별로 8+7+6 순서삼중쌍을 열거하는 검산이 그림보다 명확함"
+        }
+      }
+    },
+    {
+      "qid": 15,
+      "sourceFingerprint": "78acb4b5a5815fe68a83a0ae33198e4416480d656f2da13a3d0d950641d6c3b4",
+      "blindAnswer": "①",
+      "blindReasoning": "14025=3·5²·11·17. a<b<c인 두 자리 세 수는 (11,15,85),(11,17,75),(11,25,51),(15,17,55),(17,25,33) 다섯 가지.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "두 자리 a<b<c의 정수 곱 조건은 소인수분해와 약수 배열만 요구함"
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "14025의 두 자리 약수로 가능한 다섯 삼중쌍을 빠짐없이 기재함"
+        }
+      }
+    },
+    {
+      "qid": 16,
+      "sourceFingerprint": "5bb6484900ce9b29943c186365faf3380aafb90005e050bf73b13791b8a5455c",
+      "blindAnswer": "②",
+      "blindReasoning": "이차식 근이 2,5. 직사각형 v=2-2u/5, 최대넓이 u=5/2,v=1에서 둘레 7.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "직각삼각형의 두 직각변과 직사각형 네 점 위치를 서술하여 닮음 제약을 복원할 수 있음"
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "54de18538af339387db216a5b5b993aaf7f76f97581ff244734123b5dadc9872",
+          "reasoning": "최대 넓이일 때 BP=5/2,BQ=1인 직사각형의 좌표와 빗변 위 D를 보여 도형 모델을 보완하는 공식 구성 계획 공식 구성 노드 B(0,0),A(0,2),C(5,0),D(5/2,1),P(5/2,0),Q(0,1) 모두 직사각형 조건·해설 일치."
+        }
+      }
+    },
+    {
+      "qid": 17,
+      "sourceFingerprint": "aa621ff3933cce8dc652e95602e49cf792803742d24a954a583f750938612d36",
+      "blindAnswer": "③",
+      "blindReasoning": "s=z+z̄,p=zz̄로 두면 s²-2p=6,s²+p=21; p=5,s²=16, m²+n²=16+25=41.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "허근 z와 켤레 z̄의 합·곱 관계 및 두 등식이 기호로 주어짐"
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "s²-2p=6,s²+p=21 연립으로 p=5,s²=16, 값41이 직접 결정됨"
+        }
+      }
+    },
+    {
+      "qid": 18,
+      "sourceFingerprint": "b1e0d5605d37cd0c3f41dae11c344c90fdab5e5d15eda178835ef5c7d85e05da",
+      "blindAnswer": "⑤",
+      "blindReasoning": "교점 C=(-2,a+2), B=(-1,0), D=(0,a). S1=a²/2,S2=(3a+2)/2; 비1:2에서 a=2, 합6.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "포물선·직선 식과 A,B,C,D,O 점의 정의로 두 영역 S₁,S₂를 재구성할 수 있음"
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "5dd156226e513fa5e4326415e883c272fde7d1bd9ab00632016c3a3ad6153b5c",
+          "reasoning": "A(2,0),B(-1,0),C(-2,4),D(0,2),O(0,0) 및 S₁ 삼각형·S₂ 사각형의 면적 분할을 공식 겹침 그림으로 표시 공식 포물선 계수 [-2,-1,1], 선 y=-x+2, 면적 S1=AOD,S2=BODC 및 보조선 OC가 수학적 조건·해설 출처와 일치."
+        }
+      }
+    },
+    {
+      "qid": 19,
+      "sourceFingerprint": "fc15f968cca01341962f565e784a050abf84923fa172dc65e99291f4ded9c84a",
+      "blindAnswer": "②",
+      "blindReasoning": "원 중심 (r,5-r), BQ=4에서 r+√(10r-25)=4, r²-18r+41=0. 유효 r=9-2√10; 주어진 다항식=2r+9=27-4√10 ⇒ p-q=31.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "정사각형 네 꼭짓점 좌표, 접하는 변과 BC 위 두 교점을 완전히 지정해 중심을 (r,5-r)로 계산할 수 있음"
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "중심 (r,5-r), Q=(4,0)의 직각거리 조건으로 이차방정식을 만들고 r³ 차수를 낮추는 수식 해설로 재현됨"
+        }
+      }
+    },
+    {
+      "qid": 20,
+      "sourceFingerprint": "969c2ac1c741d496397b822d21f29cdc5a3cc1c8422755e07f886cbf949b2892",
+      "blindAnswer": "①",
+      "blindReasoning": "P,Q는 A=x²-4x+5, B=x²-4x-2의 P(2)<Q(2)를 만족하는 두 배정. P=Q(x+k)의 중근은 10-k²=0 ⇒ k=±√10, 제곱합20.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "두 이차다항식의 곱, 계수 조건 및 중근 조건이 대수식으로 명시되어 있음"
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "A=x²-4x+5,B=x²-4x-2의 두 배정에서 D=0을 판별해 k=±√10을 직접 얻음"
+        }
+      }
+    },
+    {
+      "qid": 21,
+      "sourceFingerprint": "cddb6fdedeec3213970e13aa7e607c2fd35d7f0006e887637a96a9280695b174",
+      "blindAnswer": "3x²-24x+12=0",
+      "blindReasoning": "기존 두 근 α+β=4,αβ=1. 새 근 (α-1)²,(β-1)²의 합8, 곱4; 최고차항계수3인 식은 3x²-24x+12=0.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "NOT_APPLICABLE"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "두 기존 근 α,β와 근 변환 (α-1)²,(β-1)²가 수식으로 정의됨"
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "변환된 근의 합8·곱4를 계산해 3x²-24x+12=0을 도출함"
+        }
+      }
+    },
+    {
+      "qid": 22,
+      "sourceFingerprint": "054baafafd5bea46bca0500333e60208415fdeed2029c3c0367ff265718c9f76",
+      "blindAnswer": "81/2",
+      "blindReasoning": "f(1)=-2+6a,f(5)=-50+30a, 최소16에서 a=3. f=-2(x-9/2)²+81/2이고 꼭짓점이 [1,5]에 있음.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "NOT_APPLICABLE"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "닫힌 구간 [1,5], 이차함수식과 최솟값16이 주어져 최댓값 결정에 별도 그림이 필수 아님"
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "c10fcf6b5962e573042628ba4f70c55a0195286a88c07a868a0f6da35df3f1df",
+          "reasoning": "a=3인 f=-2x²+18x의 두 끝점 (1,16),(5,40)과 구간 안 꼭짓점 (9/2,81/2)을 비교하는 공식 그래프 계획 공식 포물선 계수 [0,18,-2], 양 끝점 (1,16),(5,40), 꼭짓점 (9/2,81/2) 및 해설 출처 구절 일치."
+        }
+      }
+    },
+    {
+      "qid": 23,
+      "sourceFingerprint": "5f8379399b24ac93ea49c1aea87d17eac1636f8f9297b22bd718ea91f698bb70",
+      "blindAnswer": "13/3",
+      "blindReasoning": "두 구간 최대값 같으므로 2≤p≤3,q=m+8. [0,3] 최소에서 p²=4 ⇒ p=2; [2,5] 최소에서 m=1/3,q=25/3, f(4)=13/3.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "NOT_APPLICABLE"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "두 닫힌 구간의 극대·극소 및 대칭축 변수 p,q,m을 완전한 수식으로 명시함"
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "공통 꼭짓점 구간 [2,3]과 두 구간의 끝점 비교로 p=2,q=25/3을 도출함"
+        }
+      }
+    },
+    {
+      "qid": 24,
+      "sourceFingerprint": "a1da77fdf8667014d506ebc9a6185be8dfab35fa4d14e9c32000f3d61fc77443",
+      "blindAnswer": "100",
+      "blindReasoning": "나머지 차수에서 g,Q는 일차, g(1)=0,Q(3)=0. x=3 대입에서 g(3)=12로 g=6(x-1), Q=2(x-3)/3. x=4 대입에서 f(4)²=100.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "NOT_APPLICABLE"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "다항식 나눗셈 항등식, 인수 조건과 g(3)>0이 모두 문장·수식으로 주어짐"
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "g=6(x-1), Q=2(x-3)/3을 차수·계수·x=3 조건으로 확정하여 f(4)²=100 검산 가능"
+        }
+      }
+    }
+  ]
+}
