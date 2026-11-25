@@ -1,0 +1,31 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "⑴",
+        "pieces": [
+          { "lo": null, "hi": { "value": "-2", "state": "OPEN" } },
+          { "lo": { "value": "4/3", "state": "OPEN" }, "hi": null }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "⑵",
+        "pieces": [
+          { "lo": { "value": "-1/2", "state": "CLOSED" }, "hi": { "value": "11/2", "state": "CLOSED" } }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": { "text": "절댓값 부등식의 두 해집합" },
+  "caption": "⑴의 해는 −2와 4/3 바깥쪽 두 구간, ⑵의 해는 −1/2부터 11/2까지 양 끝을 포함하는 구간이다.",
+  "accessibilityDescription": "첫째 수직선은 −2보다 작거나 4/3보다 큰 열린 구간, 둘째 수직선은 −1/2부터 11/2까지의 닫힌 구간을 보인다.",
+  "sourceConditions": [
+    { "id": "part1", "condition": "|3x+1|>5", "mappedTo": ["numberLine.rows[0].pieces"] },
+    { "id": "part2", "condition": "|x−1|+|x−4|≤6", "mappedTo": ["numberLine.rows[1].pieces"] }
+  ],
+  "newVisualInformation": ["두 절댓값 부등식의 서로 다른 해집합 형태와 끝점 포함 여부를 구분한다."]
+}

@@ -1,0 +1,34 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "parameter": { "name": "a", "value": "-1" },
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "첫째",
+        "pieces": [
+          { "lo": { "value": "-1", "state": "CLOSED" }, "hi": { "value": "5", "state": "CLOSED" } }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "둘째",
+        "pieces": [
+          { "lo": null, "hi": { "param": { "mul": "1", "add": "0" }, "state": "OPEN" } },
+          { "lo": { "value": "3", "state": "OPEN" }, "hi": null }
+        ]
+      },
+      { "kind": "RESULT", "label": "공통" }
+    ]
+  },
+  "numberLineCaption": { "text": "경계값 a=−1인 경우" },
+  "caption": "a=−1인 경계 상황에서 첫째 해집합 −1≤x≤5와 둘째 해집합 x<a 또는 x>3의 공통부분은 3<x≤5이다. a가 더 작아져도 공통부분은 같다.",
+  "accessibilityDescription": "a를 −1로 놓은 세 수직선에 첫째 부등식의 해, 둘째 부등식의 해, 두 해의 교집합을 나타낸다.",
+  "sourceConditions": [
+    { "id": "first", "condition": "(x−5)(x+1)≤0", "mappedTo": ["numberLine.rows[0].pieces"] },
+    { "id": "second", "condition": "a<3일 때 (x−a)(x−3)>0은 x<a 또는 x>3", "mappedTo": ["numberLine.rows[1].pieces"] },
+    { "id": "boundary", "condition": "요구된 해집합이 3<x≤5가 되는 경계 a=−1을 대표 예로 선택", "mappedTo": ["numberLine.parameter", "numberLine.rows[2].kind"] }
+  ],
+  "newVisualInformation": ["매개변수 a의 경계 위치와 두 해집합의 공통부분을 엔진이 계산해 표시한다."]
+}

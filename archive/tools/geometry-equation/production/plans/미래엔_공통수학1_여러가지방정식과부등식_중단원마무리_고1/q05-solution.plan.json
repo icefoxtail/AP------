@@ -1,0 +1,31 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "⑴",
+        "pieces": [
+          { "lo": { "value": "-1", "state": "OPEN" }, "hi": { "value": "9", "state": "OPEN" } }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "⑵",
+        "pieces": [
+          { "lo": null, "hi": { "value": "2", "state": "CLOSED" } },
+          { "lo": { "value": "5", "state": "CLOSED" }, "hi": null }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": { "text": "이차부등식의 해 비교" },
+  "caption": "⑴은 두 근 −1과 9 사이, ⑵는 두 근 2와 5의 바깥쪽이 해가 됨을 구별한다.",
+  "accessibilityDescription": "첫째 수직선은 −1과 9 사이의 열린 구간, 둘째 수직선은 2 이하와 5 이상의 두 닫힌 끝점이 있는 구간을 나타낸다.",
+  "sourceConditions": [
+    { "id": "part1", "condition": "(x−9)(x+1)<0", "mappedTo": ["numberLine.rows[0].pieces"] },
+    { "id": "part2", "condition": "(x−2)(x−5)≥0", "mappedTo": ["numberLine.rows[1].pieces"] }
+  ],
+  "newVisualInformation": ["이차식이 음수인 근 사이와 음수가 아닌 근 바깥 구간을 비교한다."]
+}
