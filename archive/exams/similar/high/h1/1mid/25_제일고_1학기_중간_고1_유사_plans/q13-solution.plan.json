@@ -1,0 +1,36 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "axisVariable": false,
+    "rows": [
+      {
+        "kind": "POINTS",
+        "label": "f(x)=0",
+        "band": false,
+        "points": [
+          { "id": "A", "value": "-3", "hideName": true },
+          { "id": "B", "value": "6", "hideName": true }
+        ]
+      },
+      {
+        "kind": "POINTS",
+        "label": "f(x+2)=0",
+        "band": false,
+        "points": [
+          { "id": "C", "value": "-5", "hideName": true },
+          { "id": "D", "value": "4", "hideName": true }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": { "text": "근을 왼쪽으로 2만큼 이동" },
+  "caption": "f(x)=0의 두 근 −3, 6이 f(x+2)=0에서는 각각 −5, 4로 이동한다.",
+  "accessibilityDescription": "위 수직선은 −3과 6을, 아래 수직선은 각각 2만큼 작은 −5와 4를 표시한다.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "f(x)=0의 실근은 −3, 6", "mappedTo": "numberLine.rows[0].points: A=-3, B=6" },
+    { "id": "c2", "condition": "f(x+2)=0은 x+2가 원래 근일 조건", "mappedTo": "numberLine.rows[1].points: C=-5, D=4" }
+  ],
+  "newVisualInformation": [
+    "같은 눈금에서 원래 근 −3·6과 왼쪽으로 2 이동한 근 −5·4의 상대적 위치를 비교한다."
+  ]
+}
