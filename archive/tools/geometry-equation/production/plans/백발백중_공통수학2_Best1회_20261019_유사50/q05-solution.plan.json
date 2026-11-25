@@ -1,0 +1,39 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "SOURCE_COORDINATE_AXES_v1", "unit": "source-coordinate", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "O", "op": "NORMALIZATION_ORIGIN", "inputs": [], "args": {}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "U", "op": "NORMALIZATION_AXIS", "inputs": [], "args": { "length": { "kind": "integer", "value": "1" } }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "1" }, { "kind": "integer", "value": "2" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "5" }, { "kind": "integer", "value": "6" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "M", "op": "MIDPOINT", "inputs": ["A", "B"], "args": {}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "lAB", "op": "LINE_THROUGH", "inputs": ["A", "B"], "args": {}, "outputType": "LINE", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "pb", "op": "PERPENDICULAR_THROUGH", "inputs": ["M", "lAB"], "args": {}, "outputType": "LINE", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "diag", "op": "SOURCE_LINE", "inputs": [], "args": { "a": { "kind": "integer", "value": "1" }, "b": { "kind": "integer", "value": "-1" }, "c": { "kind": "integer", "value": "0" } }, "outputType": "LINE", "factRole": "GIVEN" },
+      { "id": "P", "op": "LINE_INTERSECTION", "inputs": ["pb", "diag"], "args": {}, "outputType": "POINT", "factRole": "CONCLUSION" }
+    ]
+  },
+  "axisTickValues": { "x": [], "y": [] },
+  "displayLines": ["diag"],
+  "lineLabels": [{ "nodeId": "diag", "text": "y=x" }],
+  "displayCircles": [],
+  "displaySegments": [
+    { "id": "sAB", "refs": ["A", "B"] },
+    { "id": "sAP", "refs": ["A", "P"] },
+    { "id": "sBP", "refs": ["B", "P"] },
+    { "id": "sMP", "refs": ["M", "P"], "dashed": true }
+  ],
+  "displayPoints": ["A", "B", "M", "P"],
+  "coordinateLabels": ["A", "B", "P"],
+  "rightAngles": [{ "id": "rM", "refs": ["A", "M", "P"] }],
+  "planeMarks": { "equalLengths": [{ "id": "eAPBP", "segments": ["sAP", "sBP"], "count": 1 }] },
+  "caption": "y=x와 AB의 수직이등분선이 만나는 점 P는 AP=BP를 만족한다.",
+  "accessibilityDescription": "직선 y=x 위의 점 P(7/2,7/2)가 A(1,2)와 B(5,6)에서 같은 거리에 있으며, 두 점의 중점 M을 지나는 수직이등분선이 P를 통과한다.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "A(1,2), B(5,6)", "mappedTo": ["A", "B"] },
+    { "id": "c2", "condition": "P는 y=x 위에서 AP=BP", "mappedTo": ["diag", "P", "sAP", "sBP", "planeMarks.equalLengths"] }
+  ],
+  "newVisualInformation": ["두 점에서 등거리인 자취와 직선 y=x의 교점 P(7/2,7/2)를 정확히 작도해 표시한다."]
+}

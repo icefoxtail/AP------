@@ -1,0 +1,37 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "SOURCE_COORDINATE_AXES_v1", "unit": "source-coordinate", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "O", "op": "NORMALIZATION_ORIGIN", "inputs": [], "args": {}, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "U", "op": "NORMALIZATION_AXIS", "inputs": [], "args": { "length": { "kind": "integer", "value": "1" } }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "6" }, { "kind": "integer", "value": "8" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "M", "op": "MIDPOINT", "inputs": ["O", "A"], "args": {}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "lOA", "op": "LINE_THROUGH", "inputs": ["O", "A"], "args": {}, "outputType": "LINE", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "pb", "op": "PERPENDICULAR_THROUGH", "inputs": ["M", "lOA"], "args": {}, "outputType": "LINE", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "xax", "op": "SOURCE_LINE", "inputs": [], "args": { "a": { "kind": "integer", "value": "0" }, "b": { "kind": "integer", "value": "1" }, "c": { "kind": "integer", "value": "0" } }, "outputType": "LINE", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "P", "op": "LINE_INTERSECTION", "inputs": ["pb", "xax"], "args": {}, "outputType": "POINT", "factRole": "CONCLUSION" }
+    ]
+  },
+  "axisTickValues": { "x": [], "y": [] },
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    { "id": "sOA", "refs": ["O", "A"] },
+    { "id": "sOP", "refs": ["O", "P"] },
+    { "id": "sAP", "refs": ["A", "P"] },
+    { "id": "sMP", "refs": ["M", "P"], "dashed": true }
+  ],
+  "displayPoints": ["O", "A", "M", "P"],
+  "coordinateLabels": ["A", "P"],
+  "rightAngles": [{ "id": "rM", "refs": ["O", "M", "P"] }],
+  "planeMarks": { "equalLengths": [{ "id": "eOPAP", "segments": ["sOP", "sAP"], "count": 1 }] },
+  "caption": "OP=AP이므로 P는 선분 OA의 수직이등분선과 x축의 교점이다.",
+  "accessibilityDescription": "O와 A를 잇는 선분의 중점 M에서 수직으로 그은 선이 x축과 P에서 만나고, OP와 AP가 같은 길이이다.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "O(0,0), A(6,8)", "mappedTo": ["O", "A"] },
+    { "id": "c2", "condition": "P는 x축 위에서 OP=AP", "mappedTo": ["xax", "P", "sOP", "sAP", "planeMarks.equalLengths"] }
+  ],
+  "newVisualInformation": ["등거리점 P(25/3,0)를 OA의 수직이등분선과 x축의 교점으로 작도하고 두 거리의 같음과 직각을 표시한다."]
+}

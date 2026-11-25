@@ -1,0 +1,35 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "SOURCE_COORDINATE_AXES_v1", "unit": "source-coordinate", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "O", "op": "NORMALIZATION_ORIGIN", "inputs": [], "args": {}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "U", "op": "NORMALIZATION_AXIS", "inputs": [], "args": { "length": { "kind": "integer", "value": "1" } }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "1" }, { "kind": "integer", "value": "4" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "3" }, { "kind": "integer", "value": "1" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "C", "op": "TRANSLATE_POINT", "inputs": ["A"], "args": { "dx": { "kind": "integer", "value": "1" }, "dy": { "kind": "integer", "value": "0" } }, "outputType": "POINT", "factRole": "CONCLUSION" },
+      { "id": "M", "op": "MIDPOINT", "inputs": ["A", "B"], "args": {}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "G", "op": "CENTROID", "inputs": ["A", "B", "C"], "args": {}, "outputType": "POINT", "factRole": "GIVEN" }
+    ]
+  },
+  "axisTickValues": { "x": [], "y": [] },
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    { "id": "sAB", "refs": ["A", "B"] },
+    { "id": "sBC", "refs": ["B", "C"] },
+    { "id": "sCA", "refs": ["C", "A"] },
+    { "id": "sCM", "refs": ["C", "M"], "dashed": true }
+  ],
+  "displayPoints": ["A", "B", "C", "M", "G"],
+  "coordinateLabels": ["A", "B", "C", "G"],
+  "caption": "주어진 무게중심 G(2,3)을 만족하도록 구한 세 번째 꼭짓점 C(2,4)와 중선 CM을 표시한다.",
+  "accessibilityDescription": "A(1,4), B(3,1), 구한 C(2,4)의 삼각형에서 AB의 중점 M과 무게중심 G(2,3)가 중선 CM 위에 놓인다.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "A(1,4), B(3,1)", "mappedTo": ["A", "B"] },
+    { "id": "c2", "condition": "ABC의 무게중심 G(2,3)", "mappedTo": ["G", "sCM"] },
+    { "id": "c3", "condition": "해설에서 계산된 C(2,4)", "mappedTo": ["C"] }
+  ],
+  "newVisualInformation": ["완성된 삼각형의 세 번째 꼭짓점 C와 주어진 무게중심 G가 중선 CM 위에서 2:1로 나뉘는 위치를 실제 좌표로 확인한다."]
+}

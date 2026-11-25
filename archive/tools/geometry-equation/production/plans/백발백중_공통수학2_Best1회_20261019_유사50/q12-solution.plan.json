@@ -1,0 +1,31 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "SOURCE_COORDINATE_AXES_v1", "unit": "source-coordinate", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "O", "op": "NORMALIZATION_ORIGIN", "inputs": [], "args": {}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "U", "op": "NORMALIZATION_AXIS", "inputs": [], "args": { "length": { "kind": "integer", "value": "1" } }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "1" }, { "kind": "integer", "value": "2" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "P", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "4" }, { "kind": "integer", "value": "5" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "B", "op": "TRANSLATE_POINT", "inputs": ["P"], "args": { "dx": { "kind": "integer", "value": "2" }, "dy": { "kind": "integer", "value": "2" } }, "outputType": "POINT", "factRole": "CONCLUSION" }
+    ]
+  },
+  "axisTickValues": { "x": [], "y": [] },
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    { "id": "sAP", "refs": ["A", "P"] },
+    { "id": "sPB", "refs": ["P", "B"] }
+  ],
+  "displayPoints": ["A", "P", "B"],
+  "coordinateLabels": ["A", "P", "B"],
+  "planeMarks": { "expressionLabels": [{ "id": "ratio", "ownerSegment": "sAP", "text": "AP:PB=3:2", "labelKind": "TEXT", "labelWeight": "MATH" }] },
+  "caption": "A(1,2)에서 P(4,5)까지의 변위를 2/3배 더하면 B(6,7)이 되고 AP:PB=3:2이다.",
+  "accessibilityDescription": "A(1,2), 내분점 P(4,5), 구한 끝점 B(6,7)이 한 직선 위에 놓이고 P는 선분 AB를 3 대 2로 나눈다.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "A(1,2), 내분점 P(4,5)", "mappedTo": ["A", "P"] },
+    { "id": "c2", "condition": "AP:PB=3:2", "mappedTo": ["B", "sAP", "sPB", "planeMarks.expressionLabels"] }
+  ],
+  "newVisualInformation": ["선분 AB 위의 내분점 P와 AB의 3:2 분할을 실제 선분·라벨로 보이고, 계산한 B(6,7)를 표시한다."]
+}

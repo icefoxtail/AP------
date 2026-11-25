@@ -1,0 +1,34 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "SOURCE_COORDINATE_AXES_v1", "unit": "source-coordinate", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "O", "op": "NORMALIZATION_ORIGIN", "inputs": [], "args": {}, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "U", "op": "NORMALIZATION_AXIS", "inputs": [], "args": { "length": { "kind": "integer", "value": "1" } }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "6" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "3" }, { "kind": "integer", "value": "6" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "M", "op": "MIDPOINT", "inputs": ["O", "A"], "args": {}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "G", "op": "CENTROID", "inputs": ["O", "A", "B"], "args": {}, "outputType": "POINT", "factRole": "CONCLUSION" }
+    ]
+  },
+  "axisTickValues": { "x": [], "y": [] },
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    { "id": "sOA", "refs": ["O", "A"] },
+    { "id": "sAB", "refs": ["A", "B"] },
+    { "id": "sBO", "refs": ["B", "O"] },
+    { "id": "sBM", "refs": ["B", "M"], "dashed": true },
+    { "id": "sOG", "refs": ["O", "G"] }
+  ],
+  "displayPoints": ["O", "A", "B", "M", "G"],
+  "coordinateLabels": ["A", "B", "G"],
+  "caption": "삼각형 OAB의 무게중심 G(3,2)와 구할 길이 OG를 표시한다.",
+  "accessibilityDescription": "O(0,0), A(6,0), B(3,6)의 삼각형에서 OA의 중점 M을 지나는 중선과 무게중심 G(3,2), 선분 OG가 그려져 있다.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "O(0,0), A(6,0), B(3,6)", "mappedTo": ["O", "A", "B"] },
+    { "id": "c2", "condition": "G는 삼각형 OAB의 무게중심, OG의 길이를 구함", "mappedTo": ["G", "sBM", "sOG"] }
+  ],
+  "newVisualInformation": ["주어진 삼각형에 중선 BM과 무게중심 G(3,2)를 더하고 거리 공식의 대상 OG를 선분으로 강조한다."]
+}
