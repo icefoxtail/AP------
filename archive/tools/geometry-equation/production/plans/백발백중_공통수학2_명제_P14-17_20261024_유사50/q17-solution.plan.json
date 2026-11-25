@@ -1,0 +1,77 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "parameter": {
+      "name": "k",
+      "value": "4"
+    },
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "P",
+        "pieces": [
+          {
+            "lo": {
+              "param": {
+                "mul": "1",
+                "add": "-1"
+              },
+              "state": "CLOSED"
+            },
+            "hi": {
+              "param": {
+                "mul": "1",
+                "add": "1"
+              },
+              "state": "CLOSED"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "q의 부정",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-2",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "5",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "RESULT",
+        "label": "공통"
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "P와 q의 부정"
+  },
+  "caption": "예: k=4일 때 P=[3,5], q의 부정=(-2,5]이다. 두 구간이 포함될 때 왼쪽 경계는 엄격하고 오른쪽 경계는 등호를 허용한다.",
+  "accessibilityDescription": "세 줄 수직선. 첫째 줄은 k-1에서 k+1까지 닫힌 구간, 둘째 줄은 -2에서 열린 5까지 닫힌 구간, 셋째 줄은 교집합이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "p: |x-k|≤1, P=[k-1,k+1]",
+      "mappedTo": [
+        "numberLine.parameter",
+        "numberLine.rows[0].pieces"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "q: x≤-2 또는 x>5; ~q: -2<x≤5",
+      "mappedTo": "numberLine.rows[1].pieces"
+    }
+  ],
+  "newVisualInformation": [
+    "k=4 예시에서 P가 q의 부정 구간 안에 들어가고 -2은 제외, 5은 포함됨을 수직선으로 보여 준다."
+  ]
+}

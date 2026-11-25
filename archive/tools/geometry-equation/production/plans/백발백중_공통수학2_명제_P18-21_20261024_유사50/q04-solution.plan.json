@@ -1,0 +1,77 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "parameter": {
+      "name": "a",
+      "value": "0"
+    },
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "주어진 구간",
+        "pieces": [
+          {
+            "lo": {
+              "value": "1",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "4",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "이동 구간",
+        "pieces": [
+          {
+            "lo": {
+              "param": {
+                "mul": "1",
+                "add": "-2"
+              },
+              "state": "CLOSED"
+            },
+            "hi": {
+              "param": {
+                "mul": "1",
+                "add": "6"
+              },
+              "state": "CLOSED"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "RESULT",
+        "label": "공통"
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "모든 조건의 포함 관계"
+  },
+  "caption": "예: a=0일 때 이동 구간 [-2,6]와 주어진 구간 [1,4]의 교집합은 [1,4]이다. 모든 x에 성립하려면 주어진 구간 전체가 이동 구간에 포함되어야 한다.",
+  "accessibilityDescription": "세 줄 수직선. a=0이라는 예시에서 주어진 구간과 이동하는 구간 및 공통 구간을 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "이동 구간 [a-2,a+6]",
+      "mappedTo": [
+        "numberLine.parameter",
+        "numberLine.rows[1].pieces"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "고정 구간 [1,4]",
+      "mappedTo": "numberLine.rows[0].pieces"
+    }
+  ],
+  "newVisualInformation": [
+    "a=0일 때 이동 구간과 고정 구간의 실제 끝점 -2, 6, 1, 4 및 공통구간 1~4를 수직선에 표시한다."
+  ]
+}

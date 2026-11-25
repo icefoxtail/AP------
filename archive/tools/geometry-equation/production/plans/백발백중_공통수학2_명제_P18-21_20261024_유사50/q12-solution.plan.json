@@ -1,0 +1,45 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "k",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "가능한 k",
+        "pieces": [
+          {
+            "lo": {
+              "value": "1",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "4",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "integerPoints": true
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "반례가 있는 자연수 k"
+  },
+  "caption": "p: x≥k와 q: 1≤x≤4가 동시에 성립하는 x가 있어야 전칭명제가 거짓이다. 그러므로 자연수 k는 1≤k≤4이다.",
+  "accessibilityDescription": "자연수 k의 가능한 범위를 1부터 4까지 수직선에 나타내며 4의 끝점은 닫혀 있다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "p: x≥k, q: 1≤x≤4",
+      "mappedTo": "numberLine.rows[0].pieces"
+    },
+    {
+      "id": "c2",
+      "condition": "모든 x에서 p→~q가 거짓 iff p∩q가 비지 않음, k는 자연수",
+      "mappedTo": "numberLine.rows[0].integerPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "허용되는 자연수 k와 4 끝점의 포함 여부를 구별해서 나타낸다."
+  ]
+}
