@@ -1,0 +1,69 @@
+{
+  "capability": "exponential-affine-spike-v1",
+  "graphPlan": {
+    "family": "exponential-affine",
+    "coefficients": [
+      "2",
+      "1",
+      "0"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      0,
+      2.4
+    ],
+    "viewport": [
+      -0.2,
+      2.5,
+      -1,
+      17
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "3/2",
+        "2"
+      ],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        },
+        {
+          "id": "X",
+          "x": "3/2",
+          "y": "0"
+        }
+      ]
+    }
+  },
+  "caption": "y=2eˣ 곡선과 대표 분점 xₖ=3/2의 x축 발을 표시한다. 삼각형의 위쪽 꼭짓점과 색칠은 엔진 공백이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "곡선 y=2e^x",
+      "mappedTo": "graphPlan.coefficients;graphPlan.family"
+    },
+    {
+      "id": "c2",
+      "condition": "x_k의 수선으로 된 직각삼각형",
+      "mappedTo": "graphPlan.overlays.points[0..1];ENGINE_CAPABILITY_PENDING: EXP_CURVE_EXACT_TRIANGLE_POLYGON: 곡선 위 2e^(3/2) 초월값 꼭짓점의 polygon과 직각 표식 미지원"
+    },
+    {
+      "id": "c3",
+      "condition": "[1,2]의 n등분점 x_0…x_n",
+      "mappedTo": "graphPlan.axisTickValues;ENGINE_CAPABILITY_PENDING: VARIABLE_N_TICKS: n개의 등분점과 일반식 xk=1+k/n의 전체 라벨 미지원"
+    }
+  ],
+  "newVisualInformation": [
+    "예시 xk=3/2는 최종 답과 무관하며 점 P 높이는 엔진이 곡선에서 직접 계산한다."
+  ],
+  "sourceQuote": "[그림: 좌표평면 위에 함수 $y=2e^x$의 그래프가 그려져 있다. $x$축 위의 닫힌구간 $[1, 2]$가 $n$등분되어 분점 $1=x_0, x_1, x_2, \\cdots, x_n=2$가 표시되어 있고, 원점 $(0, 0)$, 점 $(x_k, 0)$, 점 $(x_k, 2e^{x_k})$를 꼭짓점으로 하는 직각삼각형이 색칠되어 있다.]",
+  "accessibilityDescription": "y=2eˣ 곡선과 대표 분점 xₖ=3/2의 x축 발을 표시한다. 삼각형의 위쪽 꼭짓점과 색칠은 엔진 공백이다."
+}

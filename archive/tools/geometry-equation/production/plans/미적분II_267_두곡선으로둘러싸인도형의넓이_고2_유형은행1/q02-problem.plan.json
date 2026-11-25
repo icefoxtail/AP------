@@ -1,0 +1,56 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "COS",
+    "coefficients": [
+      "1",
+      "1",
+      "0"
+    ],
+    "phasePi": "0",
+    "sourceDomain": {
+      "kind": "INTERVAL_PI",
+      "rangePi": [
+        "-1/2",
+        "1/2"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "axisTickPi": true,
+    "axisTickValues": {
+      "x": [
+        "1/6"
+      ],
+      "y": [
+        "1"
+      ]
+    }
+  },
+  "caption": "원문 곡선 y=cos x의 정확한 구간 그래프. 동축 y=sin(2x)와 영역 라벨은 엔진 기능 추가 전 미완료.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "곡선 y=cos x와 π 눈금",
+      "mappedTo": "graphPlan.function;graphPlan.coefficients;graphPlan.sourceDomain;graphPlan.axisTickValues"
+    },
+    {
+      "id": "c2",
+      "condition": "곡선 y=sin(2x)와 cos x의 세 교점 혹은 π/6 교점",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: TWO_TRIG_CURVES_SAME_AXES: 서로 다른 주기 삼각함수의 동일 축 작도 미지원"
+    },
+    {
+      "id": "c3",
+      "condition": "두 곡선 사이 A/B 또는 S1/S2 색칠",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: TWO_TRIGONOMETRIC_REGIONS: 두 삼각곡선의 정확한 교점으로 제한된 영역 필드 미지원"
+    }
+  ],
+  "newVisualInformation": [
+    "실제 cos 함수만 엔진에 선언하였다. sin2x를 다항식·임의 꺾은선으로 대체하지 않음."
+  ],
+  "sourceQuote": "[그림: 좌표평면에서 닫힌구간 $[-\\pi/2, \\pi/2]$일 때 곡선 $y=\\cos x$와 곡선 $y=\\sin 2x$가 세 점 $(-\\pi/2, 0)$, $(\\pi/6, \\sqrt{3}/2)$, $(\\pi/2, 0)$에서 만나며, 두 곡선으로 둘러싸인 두 영역이 색칠되어 있다.]",
+  "accessibilityDescription": "원문 곡선 y=cos x의 정확한 구간 그래프. 동축 y=sin(2x)와 영역 라벨은 엔진 기능 추가 전 미완료."
+}

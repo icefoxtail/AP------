@@ -1,0 +1,93 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "15/8",
+          "-1/4",
+          "3/8"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "1",
+        "5"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      1,
+      5
+    ],
+    "viewport": [
+      0,
+      5.6,
+      -0.4,
+      11
+    ],
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": 1,
+        "y": 2
+      },
+      {
+        "id": "Q",
+        "x": 5,
+        "y": 10
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "5"
+      ],
+      "y": [
+        "2",
+        "10"
+      ]
+    },
+    "functionName": "f",
+    "regions": [
+      {
+        "id": "givenArea",
+        "upper": "f",
+        "lower": "axis",
+        "from": "1",
+        "to": "5",
+        "fill": "LIGHT"
+      }
+    ]
+  },
+  "caption": "주어진 양 끝점과 적분 넓이 20을 만족하는 한 증가곡선의 대표 개형이며, 구간 [1,5] 아래 영역을 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f(1)=2 및 f(5)=10",
+      "mappedTo": "graphPlan.requiredPoints[0..1];graphPlan.pieces[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "[1,5]에서 증가하고 그래프가 제1사분면에 있음",
+      "mappedTo": "graphPlan.pieces[0];graphPlan.sourceDomain"
+    },
+    {
+      "id": "c3",
+      "condition": "곡선과 x축 사이의 구간 [1,5] 영역",
+      "mappedTo": "graphPlan.regions[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "독립 계산: f′=(3x−1)/4>0 (1≤x≤5); ∫f=20. 주어진 f의 식이 유일하지 않아 대표곡선으로만 표시하며 문제 답 28은 쓰지 않음."
+  ],
+  "sourceQuote": "[그림: 좌표평면의 제1사분면에서 증가하는 곡선 $y=f(x)$가 두 점 $(1, 2)$, $(5, 10)$을 지나고, $x=1$부터 $x=5$까지 곡선과 $x$축 사이의 영역이 나타나 있다.]",
+  "accessibilityDescription": "주어진 양 끝점과 적분 넓이 20을 만족하는 한 증가곡선의 대표 개형이며, 구간 [1,5] 아래 영역을 표시한다."
+}

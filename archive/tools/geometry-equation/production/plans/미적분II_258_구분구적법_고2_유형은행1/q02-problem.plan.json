@@ -1,0 +1,144 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "3"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      0,
+      3
+    ],
+    "viewport": [
+      -0.3,
+      3.4,
+      -0.5,
+      10
+    ],
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "E",
+        "x": 3,
+        "y": 9
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "3/2",
+        "3"
+      ],
+      "y": [
+        "9/4",
+        "9"
+      ]
+    },
+    "functionName": "f",
+    "overlays": {
+      "points": [
+        {
+          "id": "B0",
+          "x": "0",
+          "y": "0"
+        },
+        {
+          "id": "B1",
+          "x": "3/2",
+          "y": "0"
+        },
+        {
+          "id": "B2",
+          "x": "3",
+          "y": "0"
+        },
+        {
+          "id": "L1",
+          "x": "0",
+          "y": "9/4"
+        },
+        {
+          "id": "R1",
+          "x": "3/2",
+          "y": "9/4"
+        },
+        {
+          "id": "L2",
+          "x": "3/2",
+          "y": "9"
+        },
+        {
+          "id": "R2",
+          "x": "3",
+          "y": "9"
+        }
+      ],
+      "polygons": [
+        {
+          "id": "Rect1",
+          "points": [
+            "B0",
+            "B1",
+            "R1",
+            "L1"
+          ],
+          "fill": "LIGHT"
+        },
+        {
+          "id": "Rect2",
+          "points": [
+            "B1",
+            "B2",
+            "R2",
+            "L2"
+          ],
+          "fill": "LIGHT"
+        }
+      ]
+    }
+  },
+  "caption": "원문 n등분의 대표 예 n=2: 각 소구간의 오른쪽 끝점에서 구한 높이의 직사각형 두 개를 연하게 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "곡선 y=1x²과 지정된 양 끝점",
+      "mappedTo": "graphPlan.pieces[0];graphPlan.requiredPoints[0..1]"
+    },
+    {
+      "id": "c2",
+      "condition": "n등분 오른쪽 끝점 직사각형",
+      "mappedTo": "graphPlan.overlays.points[0..6];graphPlan.overlays.polygons[0..1];ENGINE_CAPABILITY_PENDING: SYMBOLIC_N_RECTANGLES: 가변 n개 직사각형의 개수 자체를 독립 엔진 필드로 선언할 수 없음"
+    },
+    {
+      "id": "c3",
+      "condition": "분점 x_1…x_n의 n 일반식 눈금",
+      "mappedTo": "graphPlan.axisTickValues;ENGINE_CAPABILITY_PENDING: SYMBOLIC_N_TICKS: x_k=k/n 또는 3k/n의 기호 눈금 라벨 미지원"
+    }
+  ],
+  "newVisualInformation": [
+    "색칠은 면적을 구하기 위한 원문 명시 요소이고 정답 면적 값을 라벨로 쓰지 않음."
+  ],
+  "sourceQuote": "[그림: 좌표평면에서 곡선 $y=x^2$이 원점 $(0, 0)$을 지나 점 $(3, 9)$까지 제1사분면에서 증가한다. 닫힌구간 $[0, 3]$이 $n$등분되어 $x_1, x_2, \\cdots, x_k, \\cdots, x_n=3$으로 나뉘어 있고, 각 소구간의 오른쪽 끝점에서의 함숫값을 높이로 하는 $n$개의 직사각형들이 곡선과 함께 그려져 있다.]",
+  "accessibilityDescription": "원문 n등분의 대표 예 n=2: 각 소구간의 오른쪽 끝점에서 구한 높이의 직사각형 두 개를 연하게 표시한다."
+}

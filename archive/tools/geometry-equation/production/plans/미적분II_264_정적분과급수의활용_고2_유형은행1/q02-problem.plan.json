@@ -1,0 +1,282 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "9",
+              "denominator": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1",
+              "denominator": "4"
+            },
+            {
+              "kind": "rational",
+              "numerator": "9",
+              "denominator": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1",
+              "denominator": "2"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "4"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "B1",
+    "B2",
+    "B3",
+    "C1",
+    "C2",
+    "C3"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "B1",
+        "C1"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "B2",
+        "C2"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "B3",
+        "C3"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "3"
+      },
+      {
+        "id": "lBC",
+        "ownerSegment": "sBC",
+        "text": "1"
+      }
+    ]
+  },
+  "caption": "직각삼각형 ABC에 n=4일 때 세 평행선 B₁C₁, B₂C₂, B₃C₃를 넣은 대표 그림.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AB=3, BC=1 및 ∠B=90°",
+      "mappedTo": "displaySegments[0..1];planeMarks.expressionLabels[0..1];ENGINE_CAPABILITY_PENDING: RIGHT_ANGLE_MARKER: 현재 construction planeMarks에 B의 직각 네모 표시 필드가 없음"
+    },
+    {
+      "id": "c2",
+      "condition": "AB의 n등분점과 BC에 평행한 선분",
+      "mappedTo": "mathPlan.nodes[3..8];displaySegments[3..5];ENGINE_CAPABILITY_PENDING: VARIABLE_N_PARTITIONS: 임의의 n개 분할을 구조적으로 가변 표현하는 기능 없음"
+    }
+  ],
+  "newVisualInformation": [
+    "n=4 대표 위치: B1(0,9/4),B2(0,3/2),B3(0,3/4); Ck의 같은 y에서 BC와 평행하고 길이는 k/4."
+  ],
+  "sourceQuote": "[그림: $\\overline{\\mathrm{AB}}=3$, $\\overline{\\mathrm{BC}}=1$, $\\angle\\mathrm{B}=90^\\circ$인 직각삼각형 $\\mathrm{ABC}$가 있다. 변 $\\mathrm{AB}$ 위에 점 $\\mathrm{A}$로부터 차례로 $n$등분점 $\\mathrm{B}_1, \\mathrm{B}_2, \\cdots, \\mathrm{B}_{n-1}$이 있고, 각 점에서 변 $\\mathrm{BC}$에 평행하게 선분을 그어 변 $\\mathrm{AC}$와 만나는 점을 각각 $\\mathrm{C}_1, \\mathrm{C}_2, \\cdots, \\mathrm{C}_{n-1}$이라 한다.]",
+  "accessibilityDescription": "직각삼각형 ABC에 n=4일 때 세 평행선 B₁C₁, B₂C₂, B₃C₃를 넣은 대표 그림."
+}

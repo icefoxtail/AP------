@@ -1,0 +1,63 @@
+{
+  "capability": "exponential-affine-spike-v1",
+  "graphPlan": {
+    "family": "exponential-affine",
+    "coefficients": [
+      "2",
+      "1",
+      "0"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      0,
+      3.2
+    ],
+    "viewport": [
+      -0.4,
+      3.4,
+      -1,
+      55
+    ],
+    "axisTickValues": {
+      "x": [
+        "2",
+        "3"
+      ],
+      "y": []
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "edgeB",
+          "x": "3",
+          "style": "DASHED"
+        }
+      ]
+    }
+  },
+  "caption": "y=2eˣ와 x=3의 경계만 정확히 표시한 부분 plan. 둘째 곡선 xeˣ 및 A/B 영역은 미지원.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "y=2e^x와 교차점 x=2",
+      "mappedTo": "graphPlan.coefficients;ENGINE_CAPABILITY_PENDING: EXP_CURVE_PRODUCT_INTERSECTION_POINT: 둘째 xe^x 없이 공통 교점을 엔진 계산점으로 선언할 수 없음"
+    },
+    {
+      "id": "c2",
+      "condition": "x=3 경계선",
+      "mappedTo": "graphPlan.overlays.lines[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "같은 축 y=xe^x, A/B 영역",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: PRODUCT_EXPONENTIAL_SECOND_CURVE: x*e^x 및 그 곡선과 2e^x 사이의 2개 면 경계를 정확히 표현할 수 없음"
+    }
+  ],
+  "newVisualInformation": [
+    "교점의 y=2e² 수치는 문제 조건에 이미 주어졌지만 답 b−a=3은 보이지 않음."
+  ],
+  "sourceQuote": "[그림: 좌표평면에서 두 곡선 $y=2e^x$와 $y=xe^x$가 점 $(2, 2e^2)$에서 만난다. $y$축과 두 곡선으로 둘러싸인 영역을 $A$, 두 곡선과 직선 $x=3$으로 둘러싸인 영역을 $B$로 나타낸다.]",
+  "accessibilityDescription": "y=2eˣ와 x=3의 경계만 정확히 표시한 부분 plan. 둘째 곡선 xeˣ 및 A/B 영역은 미지원."
+}
