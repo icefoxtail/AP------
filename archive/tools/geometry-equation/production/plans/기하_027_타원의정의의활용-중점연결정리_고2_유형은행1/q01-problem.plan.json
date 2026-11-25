@@ -1,0 +1,28 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {"kind": "ELLIPSE", "center": ["0", "0"], "aSquared": "49", "bSquared": "24", "major": "X"},
+  "points": [
+    {"id": "F", "kind": "FOCUS", "side": 1, "coordinates": true},
+    {"id": "F'", "kind": "FOCUS", "side": -1, "coordinates": true},
+    {"id": "O", "kind": "ORIGIN"},
+    {"id": "P", "kind": "ON_CONIC", "x": "-7/5", "branch": "POS"},
+    {"id": "H", "kind": "FOOT", "from": "O", "onto": "l", "rightAngle": true}
+  ],
+  "lines": [{"id": "l", "through": ["P", "F'"], "hidden": true}],
+  "segments": [
+    {"id": "sPF", "from": "P", "to": "F"},
+    {"id": "sPH", "from": "P", "to": "H"},
+    {"id": "sHFp", "from": "H", "to": "F'"},
+    {"id": "sOH", "from": "O", "to": "H"},
+    {"id": "sFFp", "from": "F", "to": "F'"}
+  ],
+  "caption": "타원의 초점 F(5,0), F′(-5,0)과 제2사분면 P, PF′의 중점 H에 내린 수선 OH를 나타낸 도형",
+  "accessibilityDescription": "가로로 긴 타원에 F′는 왼쪽, F는 오른쪽 초점이다. 제2사분면의 P에서 F와 F′를 연결했고, PF′ 위 중점 H까지 원점 O에서 내린 수선에 직각 표식이 보인다. 중점 동등 눈금은 엔진 기능 보강 대상이다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "원문 초점 F=(5,0), F′=(-5,0)이며 O는 두 초점의 중점이다. 독립 풀이로 PF=8, PF′=6, 장축 14를 얻으므로 대표 타원 x²/49+y²/24=1을 정확히 사용한다. 구하는 단축의 길이는 그림에 쓰지 않는다.", "mappedTo": ["conic", "F", "F'", "O"]},
+    {"id": "c2", "condition": "제2사분면 P=(-7/5,24/5)는 타원 위에 있고 PF=8, PF′=6, FF′=10이며 ∠FPF′=90°이다.", "mappedTo": ["P", "F", "F'", "sPF", "sPH", "sHFp"]},
+    {"id": "c3", "condition": "H=(-16/5,12/5)는 PF′의 중점이며 OH=4, PH=HF′=3이다. FOOT는 숨은 PF′ 직선에 O의 수선의 발을 계산하고 H 직각 표식을 직접 그린다.", "mappedTo": ["l", "H", "sPH", "sHFp", "sOH"]},
+    {"id": "c4", "condition": "원문 조건 PF′−OH=2는 6−4=2로 만족한다. H의 PH=HF′ 동등 눈금은 현행 conic capability에서 지원하지 않아 별도 ENGINE_CAPABILITY_PENDING으로 기록한다.", "mappedTo": ["sPH", "sHFp", "sOH"]}
+  ],
+  "newVisualInformation": ["FOOT 노드로 OH⊥PF′와 H의 정확한 위치를 도형 필드로 구현", "PF′−OH=2와 H 중점은 수학 검산에만 쓰고 미지 단축 길이·중간값을 화면에 누설하지 않음"]
+}

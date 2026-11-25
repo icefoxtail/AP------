@@ -1,0 +1,136 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "ELLIPSE",
+    "center": [
+      "0",
+      "0"
+    ],
+    "aSquared": "81",
+    "bSquared": "63",
+    "major": "X"
+  },
+  "points": [
+    {
+      "id": "F",
+      "kind": "FOCUS",
+      "side": 1
+    },
+    {
+      "id": "F'",
+      "kind": "FOCUS",
+      "side": -1
+    },
+    {
+      "id": "P",
+      "kind": "ON_CONIC",
+      "x": "-9*sqrt(2)/2",
+      "branch": "POS"
+    },
+    {
+      "id": "R",
+      "kind": "POINT",
+      "x": "-2*sqrt(2)",
+      "y": "sqrt(14)"
+    },
+    {
+      "id": "Q",
+      "kind": "FOOT",
+      "from": "R",
+      "onto": "l",
+      "rightAngle": true
+    }
+  ],
+  "lines": [
+    {
+      "id": "l",
+      "through": [
+        "P",
+        "F'"
+      ],
+      "hidden": true
+    }
+  ],
+  "segments": [
+    {
+      "id": "sPQ",
+      "from": "P",
+      "to": "Q"
+    },
+    {
+      "id": "sQFp",
+      "from": "Q",
+      "to": "F'"
+    },
+    {
+      "id": "sPR",
+      "from": "P",
+      "to": "R"
+    },
+    {
+      "id": "sRF",
+      "from": "R",
+      "to": "F",
+      "label": "8"
+    },
+    {
+      "id": "sQR",
+      "from": "Q",
+      "to": "R",
+      "label": "\\sqrt{7}"
+    },
+    {
+      "id": "sFFp",
+      "from": "F",
+      "to": "F'"
+    }
+  ],
+  "caption": "타원의 제2사분면 P에서 초점 F′ 방향 중점 Q와 PF의 1:2 내분점 R 및 직각 PQR",
+  "accessibilityDescription": "x축에 F′와 F가 있는 타원의 제2사분면 점 P를 양 초점에 연결한다. PF′ 위 중점 Q와 PF 위 1:2 내분점 R을 이어 직각삼각형 PQR을 만들고, QR에는 √7, RF에는 8이 표시된다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문 QR=√7, RF=8, PR:RF=1:2, Q는 PF′ 중점, ∠PQR=90°를 풀면 PF=12, PF′=6, 장축18, 초점 거리2c=6√2이므로 a²=81,b²=63이다. 정답 a²+b²=144는 숨긴다.",
+      "mappedTo": [
+        "conic",
+        "F",
+        "F'"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "P=(-9√2/2,3√14/2)는 제2사분면 타원 위이다. R=(-2√2,√14)는 PR=4, RF=8인 실제 내분점이다.",
+      "mappedTo": [
+        "P",
+        "R",
+        "sPR",
+        "sRF"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "Q=(-15√2/4,3√14/4)는 PF′의 정확한 중점이고, R에서 숨은 직선 PF′에 내린 수선의 발이다. QR=√7, ∠PQR=90°를 FOOT.rightAngle로 표시한다.",
+      "mappedTo": [
+        "Q",
+        "l",
+        "sPQ",
+        "sQFp",
+        "sQR"
+      ]
+    },
+    {
+      "id": "c4",
+      "condition": "QR·RF의 원문 주어진 수치는 실제 해당 선분 label에 적는다. Q 중점의 같은 눈금과 PR:RF=1:2 비표식은 엔진 미지원이므로 ENGINE_CAPABILITY_PENDING으로 별도 인계한다.",
+      "mappedTo": [
+        "sPQ",
+        "sQFp",
+        "sPR",
+        "sRF"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "R 내분점과 Q 중점의 정확한 좌표 및 FOOT 직각을 독립 계산",
+    "주어진 QR=√7, RF=8을 실제 길이 라벨로 표시하되 정답 144는 숨김"
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "ELLIPSE",
+    "center": [
+      "0",
+      "0"
+    ],
+    "aSquared": "25",
+    "bSquared": "9",
+    "major": "X"
+  },
+  "points": [
+    {
+      "id": "F",
+      "kind": "FOCUS",
+      "side": 1,
+      "coordinates": true
+    },
+    {
+      "id": "F'",
+      "kind": "FOCUS",
+      "side": -1,
+      "coordinates": true
+    },
+    {
+      "id": "P",
+      "kind": "ON_CONIC",
+      "x": "5/4",
+      "branch": "POS"
+    }
+  ],
+  "segments": [
+    {
+      "id": "sPF",
+      "from": "P",
+      "to": "F"
+    },
+    {
+      "id": "sPFp",
+      "from": "P",
+      "to": "F'"
+    },
+    {
+      "id": "sFFp",
+      "from": "F",
+      "to": "F'"
+    }
+  ],
+  "polygons": [
+    {
+      "id": "tri",
+      "points": [
+        "P",
+        "F",
+        "F'"
+      ],
+      "fill": "LIGHT"
+    }
+  ],
+  "caption": "타원 x²/25+y²/9=1 위 점 P와 초점 F(4,0), F′(-4,0)로 이루어진 삼각형",
+  "accessibilityDescription": "가로로 긴 타원의 두 초점 F′와 F는 x축 위에 있으며, 제1사분면의 점 P와 두 초점을 연결해 삼각형을 만들었다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "타원 x²/25+y²/9=1의 두 초점은 F=(4,0),F′=(-4,0)이고 초점 간 거리는 8이다.",
+      "mappedTo": [
+        "conic",
+        "F",
+        "F'",
+        "sFFp"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "제1사분면의 P=(5/4,3√15/4)는 타원 위에 있으며 PF=4, PF′=6을 독립 검산했다. 따라서 원문 PF:PF′=2:3을 만족한다.",
+      "mappedTo": [
+        "P",
+        "sPF",
+        "sPFp"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "물음 cos∠FPF′=−1/4은 선분·각 라벨로 표시하지 않는다. 문제 [그림]에는 각도 숫자나 길이 숫자 라벨이 지정되지 않았다.",
+      "mappedTo": [
+        "tri"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "PF:PF′=2:3인 실재 P를 선택하여 비례 관계와 타원 좌표를 동시에 충족",
+    "정답 코사인값 및 풀이용 거리값은 화면에 쓰지 않음"
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {"kind": "ELLIPSE", "center": ["0", "0"], "aSquared": "30", "bSquared": "14", "major": "X"},
+  "points": [
+    {"id": "F", "kind": "FOCUS", "side": 1, "coordinates": true},
+    {"id": "F'", "kind": "FOCUS", "side": -1, "coordinates": true},
+    {"id": "O", "kind": "ORIGIN"},
+    {"id": "P", "kind": "ON_CONIC", "x": "sqrt(15)/2", "branch": "POS"},
+    {"id": "H", "kind": "FOOT", "from": "O", "onto": "l1", "rightAngle": true},
+    {"id": "I", "kind": "FOOT", "from": "O", "onto": "l2", "rightAngle": true}
+  ],
+  "lines": [
+    {"id": "l1", "through": ["P", "F"], "hidden": true},
+    {"id": "l2", "through": ["P", "F'"], "hidden": true}
+  ],
+  "segments": [
+    {"id": "sPF", "from": "P", "to": "F"},
+    {"id": "sPFp", "from": "P", "to": "F'"},
+    {"id": "sOH", "from": "O", "to": "H"},
+    {"id": "sOI", "from": "O", "to": "I"},
+    {"id": "sFFp", "from": "F", "to": "F'"}
+  ],
+  "polygons": [{"id": "rect", "points": ["O", "H", "P", "I"], "fill": "LIGHT"}],
+  "caption": "타원의 두 초점 F(4,0), F′(-4,0)과 제1사분면 P, 두 수선의 발 H·I로 이루어진 직사각형 OHPI",
+  "accessibilityDescription": "F′와 F는 x축 위에서 원점을 사이에 둔다. P는 타원의 제1사분면에 있고, PF의 중점 H 및 PF′의 중점 I로 향한 OH와 OI에는 각각 직각 표식이 있다. OHPI 직사각형을 옅게 구분했다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "두 초점 F=(4,0), F′=(-4,0). OHPI의 넓이 7과 중점 조건으로 PF·PF′=28, PF²+PF′²=64, 장축 제곱 120을 얻는다. 따라서 대표 타원 x²/30+y²/14=1이며 정답 120을 그림에 쓰지 않는다.", "mappedTo": ["conic", "F", "F'", "O"]},
+    {"id": "c2", "condition": "제1사분면 P=(√15/2,7/2)는 타원 위, 원점 중심 반지름 4인 원 위에 있다. H=(2+√15/4,7/4), I=(-2+√15/4,7/4)는 각각 PF, PF′의 정확한 중점이자 O에서의 수선의 발이다.", "mappedTo": ["P", "H", "I", "l1", "l2"]},
+    {"id": "c3", "condition": "OH·OI=7, OH⊥OI, OH∥PF′ 및 OI∥PF이므로 O-H-P-I는 정확히 직사각형이다. OH≠OI는 x=√15/2≠0에서 성립한다. 두 FOOT가 직각 표식을 그린다.", "mappedTo": ["rect", "H", "I", "sOH", "sOI", "sPF", "sPFp"]},
+    {"id": "c4", "condition": "H가 PF의 중점, I가 PF′의 중점이라는 같은 길이 눈금 두 쌍은 현행 타원 엔진이 지원하지 않으므로 시각 필드 사전 일치와 별도로 엔진 보강 필요로 판정한다.", "mappedTo": ["sPF", "sPFp", "H", "I"]}
+  ],
+  "newVisualInformation": ["직사각형 OHPI를 실제 4점 다각형으로 구현하고 두 FOOT 직각 표식 생성", "답 l²=120이나 계산으로 얻은 PF,PF′의 개별 길이는 표시하지 않음"]
+}

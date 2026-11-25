@@ -1,0 +1,130 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "ELLIPSE",
+    "center": [
+      "0",
+      "0"
+    ],
+    "aSquared": "72",
+    "bSquared": "36",
+    "major": "X"
+  },
+  "points": [
+    {
+      "id": "F",
+      "kind": "FOCUS",
+      "side": 1
+    },
+    {
+      "id": "F'",
+      "kind": "FOCUS",
+      "side": -1
+    },
+    {
+      "id": "Q",
+      "kind": "ON_CONIC",
+      "x": "-8",
+      "branch": "NEG"
+    },
+    {
+      "id": "P",
+      "kind": "FOOT",
+      "from": "F",
+      "onto": "l",
+      "rightAngle": true
+    }
+  ],
+  "lines": [
+    {
+      "id": "l",
+      "through": [
+        "F'",
+        "Q"
+      ],
+      "hidden": true
+    }
+  ],
+  "segments": [
+    {
+      "id": "sFP",
+      "from": "F",
+      "to": "P"
+    },
+    {
+      "id": "sPFp",
+      "from": "P",
+      "to": "F'"
+    },
+    {
+      "id": "sFpQ",
+      "from": "F'",
+      "to": "Q"
+    },
+    {
+      "id": "sFQ",
+      "from": "F",
+      "to": "Q"
+    }
+  ],
+  "polygons": [
+    {
+      "id": "tri",
+      "points": [
+        "F",
+        "P",
+        "Q"
+      ],
+      "fill": "LIGHT"
+    }
+  ],
+  "caption": "직각이등변 삼각형 FPF′의 P에서 F′를 지나 타원에 다시 닿는 Q와 삼각형 FPQ",
+  "accessibilityDescription": "수평 장축 타원의 초점 F′는 왼쪽, F는 오른쪽이다. 양의 y축 위 P는 두 초점과 직각이등변삼각형을 이룬다. P-F′-Q가 순서대로 한 직선 위에 있고 Q는 타원의 왼쪽 아래에 있다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문 직각이등변삼각형 PFF′와 둘레24√2로부터 c=b=6, a=6√2인 타원 x²/72+y²/36=1을 정확하게 복원하되 미지 넓이 48은 숨긴다.",
+      "mappedTo": [
+        "conic",
+        "F",
+        "F'",
+        "P"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "P=(0,6), F=(6,0), F′=(-6,0)에서 PF=PF′=6√2, PF⊥PF′이다. l은 F′,Q를 통과하고 P는 F에서 l에 내린 FOOT이므로 P의 직각 표식이 실제로 생긴다.",
+      "mappedTo": [
+        "F",
+        "F'",
+        "P",
+        "l",
+        "sFP",
+        "sPFp"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "P-F′-Q 순서, Q=(-8,-2)는 y=x+6과 타원의 두 번째 실제 교점이다. Q가 타원 위이며 삼각형 FPQ의 둘레24√2를 만족한다.",
+      "mappedTo": [
+        "Q",
+        "sPFp",
+        "sFpQ",
+        "sFQ",
+        "tri"
+      ]
+    },
+    {
+      "id": "c4",
+      "condition": "Q 좌표와 중간 도출값 c=b=6, 최종 답 넓이48을 라벨링하지 않는다. 원문 문항의 점 이름·상대 위치만 보여 준다.",
+      "mappedTo": [
+        "Q",
+        "tri"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "P=FOOT를 통해 ∠FPF′의 실제 90° 마크를 생성",
+    "직선 PF′의 연장선 Q가 타원의 실제 교점이 되도록 고정"
+  ]
+}

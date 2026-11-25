@@ -1,0 +1,135 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "ELLIPSE",
+    "center": [
+      "0",
+      "0"
+    ],
+    "aSquared": "49",
+    "bSquared": "24",
+    "major": "X"
+  },
+  "points": [
+    {
+      "id": "F",
+      "kind": "FOCUS",
+      "side": 1,
+      "coordinates": true
+    },
+    {
+      "id": "F'",
+      "kind": "FOCUS",
+      "side": -1,
+      "coordinates": true
+    },
+    {
+      "id": "Q",
+      "kind": "POINT",
+      "x": "-11/5",
+      "y": "48/5"
+    },
+    {
+      "id": "P",
+      "kind": "FOOT",
+      "from": "F'",
+      "onto": "l",
+      "rightAngle": true
+    }
+  ],
+  "lines": [
+    {
+      "id": "l",
+      "through": [
+        "F",
+        "Q"
+      ],
+      "hidden": true
+    }
+  ],
+  "segments": [
+    {
+      "id": "sFP",
+      "from": "F",
+      "to": "P"
+    },
+    {
+      "id": "sPQ",
+      "from": "P",
+      "to": "Q"
+    },
+    {
+      "id": "sPFp",
+      "from": "P",
+      "to": "F'"
+    },
+    {
+      "id": "sQFp",
+      "from": "Q",
+      "to": "F'",
+      "label": "10"
+    },
+    {
+      "id": "sFFp",
+      "from": "F",
+      "to": "F'"
+    }
+  ],
+  "polygons": [
+    {
+      "id": "tri",
+      "points": [
+        "Q",
+        "F'",
+        "F"
+      ],
+      "fill": "LIGHT"
+    }
+  ],
+  "caption": "타원의 제1사분면 P에서 FP를 연장한 Q와 F′Q=10, P에서의 직각을 나타낸 삼각형 QF′F",
+  "accessibilityDescription": "타원 x²/49+y²/24=1의 초점 F(5,0), F′(-5,0)와 제1사분면 P가 있다. F-P-Q가 순서대로 일직선이고 Q는 타원 바깥에 있으며 F′Q에는 길이 10이 붙어 있다. P의 직각이 표시된다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문 타원 x²/49+y²/24=1, 초점 F=(5,0),F′=(-5,0). P=(7/5,24/5)는 제1사분면 타원 위에서 PF=6, PF′=8이고 ∠FPF′=90°이다.",
+      "mappedTo": [
+        "conic",
+        "F",
+        "F'",
+        "P"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "연장선의 Q=(-11/5,48/5)는 F-P-Q 순서, PQ=6, F′Q=10을 만족한다. Q는 타원 밖의 점이므로 POINT로 선언한다.",
+      "mappedTo": [
+        "Q",
+        "P",
+        "sFP",
+        "sPQ",
+        "sQFp"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "숨은 l은 F,Q를 잇는 직선이다. F′에서 l로 내린 수선의 발 P는 정확히 타원 위이고 FOOT.rightAngle로 직각을 표시한다.",
+      "mappedTo": [
+        "l",
+        "P",
+        "sPFp"
+      ]
+    },
+    {
+      "id": "c4",
+      "condition": "선분 F′Q에 원문에서 주어진 길이 10을 표시하고, 삼각형 QF′F의 넓이 48 및 유도값 PF,PQ는 정답/풀이 노출을 피하려고 그림에 쓰지 않는다.",
+      "mappedTo": [
+        "sQFp",
+        "tri"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "Q가 F-P-Q 순서로 PF의 올바른 연장에 위치하도록 정확한 분수 좌표를 사용",
+    "QF′=10 길이 라벨과 P의 직각을 직접 도형 필드로 구현"
+  ]
+}
