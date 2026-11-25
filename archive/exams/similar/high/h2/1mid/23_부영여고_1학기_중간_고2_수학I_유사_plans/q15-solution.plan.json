@@ -1,0 +1,18 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial", "coefficients": ["-20", "12", "-1"],
+    "sourceDomain": {"kind": "INTERVAL", "range": [2, 10], "states": ["OPEN", "OPEN"]},
+    "domain": [2, 10], "axisFold": false, "viewport": [0, 12, -2, 18],
+    "requiredPoints": [{"id": "V", "x": 6, "y": 16}],
+    "axisTickValues": {"x": [2, 6, 10], "y": [16]}
+  },
+  "caption": "원래 로그함수의 진수 q(x)=(x−2)(10−x)=16−(x−6)²만을 그린다. 진수 조건 2<x<10과 꼭짓점 q(6)=16에서 원래 y=log₂q(x)의 최댓값은 4다.",
+  "accessibilityDescription": "정의역의 열린 양 끝 x=2,10에서 0으로 향하고 x=6에서 최대 16인 아래로 열린 진수 포물선 q(x)의 그림이다. 원래 로그곡선과 혼동되지 않게 구분했다.",
+  "sourceConditions": [
+    {"id": "q15s-argument", "condition": "q(x)=(x−2)(10−x)=−x²+12x−20", "mappedTo": "graphPlan.coefficients"},
+    {"id": "q15s-domain", "condition": "진수 조건 2<x<10", "mappedTo": "graphPlan.sourceDomain"},
+    {"id": "q15s-vertex", "condition": "q(6)=16, 원래 로그함수 최대 4", "mappedTo": "graphPlan.requiredPoints"}
+  ],
+  "newVisualInformation": ["양 끝이 열려 있는 로그 진수의 범위", "진수 최대가 원래 로그 최대를 결정함"]
+}

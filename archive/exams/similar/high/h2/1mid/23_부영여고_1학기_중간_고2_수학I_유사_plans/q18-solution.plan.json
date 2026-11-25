@@ -1,0 +1,17 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric", "function": "SIN", "coefficients": ["1", "1", "0"], "phasePi": "0",
+    "sourceDomain": {"kind": "INTERVAL_PI", "rangePi": ["-7/6", "5/6"], "states": ["CLOSED", "CLOSED"]},
+    "referenceLines": [{"id": "level", "y": "-1/2", "intersectionCount": 2, "color": "WARM"}],
+    "axisTickPi": true, "axisTickValues": {"x": ["-5/6", "-1/6"], "y": ["-1/2"]}, "displaySize": "full"
+  },
+  "caption": "θ=x−π/6로 치환하면 −7π/6≤θ≤5π/6에서 sinθ≤−1/2이다. 두 교점 θ=−5π/6,−π/6 사이가 해이므로 원래 x는 −2π/3≤x≤0이다.",
+  "accessibilityDescription": "θ의 허용 구간에서 사인곡선과 높이 −1/2인 수평선을 그렸다. 그 교점 두 개 사이에서 사인곡선이 수평선 아래로 내려간다.",
+  "sourceConditions": [
+    {"id": "q18s-transform", "condition": "θ=x−π/6, θ∈[−7π/6,5π/6]", "mappedTo": "graphPlan.sourceDomain"},
+    {"id": "q18s-threshold", "condition": "−1≤sinθ≤−1/2", "mappedTo": "graphPlan.referenceLines[0]"},
+    {"id": "q18s-intersection", "condition": "θ=−5π/6, −π/6에서 수평선과 교차", "mappedTo": "graphPlan.axisTickValues,graphPlan.referenceLines[0]"}
+  ],
+  "newVisualInformation": ["사인 곡선과 높이 −1/2 수평선의 실제 교점", "해가 두 교점 사이 한 구간이라는 점"]
+}

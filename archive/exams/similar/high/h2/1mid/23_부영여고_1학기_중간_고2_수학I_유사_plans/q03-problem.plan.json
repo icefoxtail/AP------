@@ -1,0 +1,16 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve", "viewport": [1.5, 4.5, 4, 10],
+    "curves": [{"id": "f", "kind": "EXPONENTIAL", "base": "1/2", "coefficients": ["1", "1", "5"], "shiftX": "4", "domain": ["2", "4"], "color": "BLUE", "label": "f(x)"}],
+    "axisTickValues": {"x": ["2", "4"], "y": []},
+    "overlays": {"points": [{"id": "A", "x": "2", "y": "9"}, {"id": "B", "x": "4", "y": "6"}]}
+  },
+  "caption": "2≤x≤4에서 감소하는 지수함수의 곡선과 두 닫힌 끝점을 표시한다. M, m, M−m의 수치는 표시하지 않는다.",
+  "accessibilityDescription": "x=2부터 x=4까지 계속 감소하는 지수곡선의 양 끝점이 표시되어 있으나 높이 숫자와 정답은 쓰이지 않았다.",
+  "sourceConditions": [
+    {"id": "q03p-f", "condition": "y=(1/2)^(x−4)+5", "mappedTo": "graphPlan.curves[0]"},
+    {"id": "q03p-domain", "condition": "2≤x≤4", "mappedTo": "graphPlan.curves[0].domain,graphPlan.overlays.points"}
+  ],
+  "newVisualInformation": ["지수함수의 감소와 정의역 두 끝점"]
+}

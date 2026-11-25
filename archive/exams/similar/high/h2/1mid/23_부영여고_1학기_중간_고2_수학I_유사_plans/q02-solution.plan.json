@@ -1,0 +1,15 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {"rows": [
+    {"kind": "SET", "label": "자연수 해", "pieces": [{"lo": {"value": "2", "state": "OPEN"}, "hi": {"value": "6", "state": "OPEN"}}], "integerPoints": true}
+  ]},
+  "numberLineCaption": {"text": "2<x<6에서 자연수 3,4,5"},
+  "caption": "진수 조건 x>2와 로그부등식 x<6의 공통 범위에서 자연수는 3, 4, 5의 세 개다.",
+  "accessibilityDescription": "수직선의 2와 6에는 열린 끝점이 있고 그 사이 자연수 3, 4, 5에 점이 표시됐다.",
+  "sourceConditions": [
+    {"id": "q02s-domain", "condition": "진수 조건 x>2", "mappedTo": "numberLine.rows[0].pieces[0].lo"},
+    {"id": "q02s-bound", "condition": "로그부등식 x<6", "mappedTo": "numberLine.rows[0].pieces[0].hi"},
+    {"id": "q02s-integers", "condition": "자연수 해 3,4,5", "mappedTo": "numberLine.rows[0].integerPoints"}
+  ],
+  "newVisualInformation": ["두 경계의 개폐 관계", "범위 안의 자연수 세 개"]
+}

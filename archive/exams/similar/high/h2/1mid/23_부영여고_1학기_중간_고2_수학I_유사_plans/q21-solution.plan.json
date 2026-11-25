@@ -1,0 +1,20 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "axisVariable": false,
+    "rows": [{"kind": "POINTS", "label": "가능한 n", "band": false, "points": [
+      {"id": "N4", "value": "4", "hideName": true},
+      {"id": "N5", "value": "5", "hideName": true},
+      {"id": "N6", "value": "6", "hideName": true},
+      {"id": "N7", "value": "7", "hideName": true}
+    ]}]
+  },
+  "numberLineCaption": {"text": "조건을 만족하는 연속된 정수 n 네 개"},
+  "caption": "로그를 취하면 길이 4인 구간에 들어가는 정수 n은 네 개이며 합이 22이므로 n=4,5,6,7이다. 이에 대응하는 8≤b/a<16에서 최소 자연수쌍은 a=1,b=8이다.",
+  "accessibilityDescription": "한 수직선에 연속된 정수점 4, 5, 6, 7이 각각 표시돼 있으며 네 점의 합이 22이다.",
+  "sourceConditions": [
+    {"id": "q21s-four", "condition": "길이 4인 로그구간 내 정수 n 네 개", "mappedTo": "numberLine.rows[0].points"},
+    {"id": "q21s-values", "condition": "n=4,5,6,7의 합이 22", "mappedTo": "numberLine.rows[0].points,numberLineCaption"}
+  ],
+  "newVisualInformation": ["연속된 네 정수의 구성", "합이 22인 정수점의 위치"]
+}

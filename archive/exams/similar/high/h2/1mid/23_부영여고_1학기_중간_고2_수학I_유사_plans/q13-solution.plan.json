@@ -1,0 +1,17 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric", "function": "COS", "coefficients": ["4", "3", "0"], "phasePi": "-3/4",
+    "sourceDomain": {"kind": "INTERVAL_PI", "rangePi": ["-1/12", "11/12"], "states": ["OPEN", "OPEN"]},
+    "axisTickPi": true, "axisTickValues": {"x": ["1/4"], "y": ["-4", "4"]},
+    "keyPoints": true
+  },
+  "caption": "해설에서 정해진 함수 f(x)=4cos(3x−3π/4)는 진폭 4, 주기 2π/3, x=π/4에서 최댓값 4를 갖는다. 이 조건을 만족하는 최소 양수 c는 3π/4이다.",
+  "accessibilityDescription": "−4에서 4까지 진동하는 코사인곡선이 π/4 눈금에서 꼭대기에 닿고, 짧은 주기를 가진다.",
+  "sourceConditions": [
+    {"id": "q13s-amplitude", "condition": "최댓값 4, 최솟값 −4이므로 a=4", "mappedTo": "graphPlan.coefficients"},
+    {"id": "q13s-period", "condition": "주기 2π/3이므로 b=3; 구간은 원함수 정의역이 아닌 표시 창", "mappedTo": "graphPlan.coefficients,graphPlan.sourceDomain"},
+    {"id": "q13s-max", "condition": "x=π/4에서 최대이므로 c=3π/4", "mappedTo": "graphPlan.phasePi,graphPlan.axisTickValues"}
+  ],
+  "newVisualInformation": ["진폭과 주기를 한 화면에서 비교", "π/4에서의 최고점과 위상 이동"]
+}
