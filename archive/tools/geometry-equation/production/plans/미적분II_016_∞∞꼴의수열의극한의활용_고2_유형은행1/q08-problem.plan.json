@@ -1,0 +1,112 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "3*sqrt(5)",
+          "2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -8,
+      4
+    ],
+    "viewport": [
+      -8,
+      4,
+      -5,
+      10
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "circles": [
+        {
+          "id": "K",
+          "center": [
+            "0",
+            "0"
+          ],
+          "radiusSquared": "9"
+        }
+      ],
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        },
+        {
+          "id": "T",
+          "x": "-6*sqrt(5)/5",
+          "y": "3*sqrt(5)/5",
+          "onCircle": "K"
+        },
+        {
+          "id": "A",
+          "axis": "x",
+          "value": "-3*sqrt(5)/2"
+        },
+        {
+          "id": "B",
+          "axis": "y",
+          "value": "3*sqrt(5)"
+        }
+      ],
+      "segments": [
+        {
+          "id": "OT",
+          "from": "O",
+          "to": "T"
+        }
+      ],
+      "rightAngles": [
+        {
+          "at": "T",
+          "from": [
+            "O",
+            "A"
+          ]
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "O": "O",
+    "T": "T",
+    "A": "A",
+    "B": "B"
+  },
+  "caption": "n=1 대표 도식: 원점 중심의 원과 제2사분면의 접점 T에서 양의 y절편·음의 x절편을 가진 접선을 표시한다.",
+  "accessibilityDescription": "원점 중심 반지름 3인 원의 왼쪽 위 제2사분면 점 T에 기울기 2인 접선이 닿는다. 접선은 음의 x축 A와 양의 y축 B를 지나며, OT는 접선에 수직이다.",
+  "sourceQuote": "기울기 2n, 양의 y절편인 원 x²+y²=9n²의 제2사분면 접선 및 두 절편",
+  "sourceConditions": [
+    {
+      "id": "c",
+      "condition": "원점 중심 반지름 3n의 원",
+      "mappedTo": "graphPlan.overlays.circles[0]"
+    },
+    {
+      "id": "t",
+      "condition": "접선의 기울기 2n, 접점이 제2사분면",
+      "mappedTo": "graphPlan.pieces[0].coefficients;graphPlan.overlays.points[1];graphPlan.overlays.rightAngles[0]"
+    },
+    {
+      "id": "ab",
+      "condition": "음의 x절편 A, 양의 y절편 B",
+      "mappedTo": "graphPlan.overlays.points[2..3]"
+    }
+  ],
+  "newVisualInformation": [
+    "그림에서 n=1이므로 접선은 y=2x+3√5다. 절편·접점 좌표는 풀이를 대신하지 않게 숫자 라벨로 표기하지 않는다."
+  ]
+}

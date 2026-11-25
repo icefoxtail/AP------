@@ -1,0 +1,146 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "3/4"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1,
+      6
+    ],
+    "viewport": [
+      -1,
+      6,
+      -1,
+      5
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        },
+        {
+          "id": "A",
+          "curveX": "4",
+          "unnamed": true
+        },
+        {
+          "id": "B",
+          "axis": "x",
+          "value": "4",
+          "unnamed": true
+        },
+        {
+          "id": "C",
+          "x": "3",
+          "y": "1",
+          "unnamed": true
+        }
+      ],
+      "callouts": [
+        { "id": "an", "point": "A", "text": "A_n", "labelKind": "MATH", "direction": "NE" },
+        { "id": "bn", "point": "B", "text": "B_n", "labelKind": "MATH", "direction": "SE" },
+        { "id": "cn", "point": "C", "text": "C_n", "labelKind": "MATH", "direction": "W" }
+      ],
+      "segments": [
+        {
+          "id": "AB",
+          "from": "A",
+          "to": "B"
+        },
+        {
+          "id": "BO",
+          "from": "B",
+          "to": "O"
+        },
+        {
+          "id": "AC",
+          "from": "A",
+          "to": "C"
+        },
+        {
+          "id": "CO",
+          "from": "C",
+          "to": "O"
+        }
+      ],
+      "polygons": [
+        {
+          "id": "OAC",
+          "points": [
+            "O",
+            "A",
+            "C"
+          ],
+          "fill": "NONE"
+        }
+      ],
+      "circles": [
+        {
+          "id": "I",
+          "center": [
+            "3",
+            "1"
+          ],
+          "radiusSquared": "1"
+        }
+      ],
+      "rightAngles": [
+        {
+          "at": "B",
+          "from": [
+            "A",
+            "O"
+          ]
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "O": "O"
+  },
+  "caption": "n=2 대표 삼각형 OAB와 중심 C인 내접원, 넓이를 구하는 삼각형 OAC를 표시한다.",
+  "accessibilityDescription": "원점 O, 오른쪽 아래 B, 오른쪽 위 A인 직각삼각형에 밑변·세로변·빗변에 닿는 내접원이 있고 그 중심 C에서 A와 O로 두 선분을 그어 작은 삼각형 OAC를 나타낸다.",
+  "sourceQuote": "O=(0,0), A_n=(2n,3), B_n=(2n,0), 내심 C_n, 삼각형 OA_nC_n의 넓이",
+  "sourceConditions": [
+    {
+      "id": "ab",
+      "condition": "n=2일 때 O=(0,0), A=(4,3), B=(4,0)",
+      "mappedTo": "graphPlan.overlays.points[0..2];graphPlan.overlays.callouts[0..1];graphPlan.pieces[0].coefficients;graphPlan.overlays.segments[0..1]"
+    },
+    {
+      "id": "inc",
+      "condition": "세 변에 접하는 내접원과 중심 C_n",
+      "mappedTo": "graphPlan.overlays.circles[0];graphPlan.overlays.points[3];graphPlan.overlays.callouts[2]"
+    },
+    {
+      "id": "small",
+      "condition": "삼각형 OA_nC_n",
+      "mappedTo": "graphPlan.overlays.polygons[0];graphPlan.overlays.segments[2..3]"
+    },
+    {
+      "id": "right",
+      "condition": "B에서 직각",
+      "mappedTo": "graphPlan.overlays.rightAngles[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "n=2에서는 중심 (3,1), 반지름 1의 실제 내접원을 사용한다. C는 명시된 내심이며 숫자 좌표와 넓이·극한의 답은 쓰지 않는다."
+  ]
+}

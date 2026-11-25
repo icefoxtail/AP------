@@ -1,0 +1,118 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "2/3"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1,
+      8
+    ],
+    "viewport": [
+      -1,
+      8,
+      -2,
+      6
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        },
+        {
+          "id": "P",
+          "curveX": "6",
+          "unnamed": true
+        },
+        {
+          "id": "Q",
+          "axis": "x",
+          "value": "6",
+          "unnamed": true
+        }
+      ],
+      "callouts": [
+        { "id": "pn", "point": "P", "text": "P_n", "labelKind": "MATH", "direction": "NE" },
+        { "id": "qn", "point": "Q", "text": "Q_n", "labelKind": "MATH", "direction": "SE" }
+      ],
+      "segments": [
+        {
+          "id": "PQ",
+          "from": "P",
+          "to": "Q"
+        },
+        {
+          "id": "QO",
+          "from": "Q",
+          "to": "O"
+        }
+      ],
+      "circles": [
+        {
+          "id": "I",
+          "center": [
+            "1+sqrt(13)",
+            "5-sqrt(13)"
+          ],
+          "radiusSquared": "38-10*sqrt(13)"
+        }
+      ],
+      "rightAngles": [
+        {
+          "at": "Q",
+          "from": [
+            "P",
+            "O"
+          ]
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "O": "O"
+  },
+  "caption": "n=2 대표 직각삼각형 OQP의 세 변에 접하는 내접원을 표시한다.",
+  "accessibilityDescription": "원점 O와 오른쪽 아래 Q, 오른쪽 위 P가 직각삼각형을 이루며 Q에 직각 표시가 있다. 삼각형 안의 원 하나가 밑변, 오른쪽 변, 빗변 모두에 접한다.",
+  "sourceQuote": "O=(0,0), P_n=(3n,4), Q_n=(3n,0)인 삼각형의 내심 y좌표; 세 변에 모두 접하는 내접원",
+  "sourceConditions": [
+    {
+      "id": "o",
+      "condition": "O=(0,0)",
+      "mappedTo": "graphPlan.overlays.points[0]"
+    },
+    {
+      "id": "pq",
+      "condition": "P_n=(3n,4), Q_n=(3n,0); n=2",
+      "mappedTo": "graphPlan.overlays.points[1..2];graphPlan.overlays.callouts[0..1];graphPlan.overlays.segments[0..1];graphPlan.pieces[0].coefficients"
+    },
+    {
+      "id": "right",
+      "condition": "Q가 직각",
+      "mappedTo": "graphPlan.overlays.rightAngles[0]"
+    },
+    {
+      "id": "inc",
+      "condition": "내접원은 세 변에 접한다",
+      "mappedTo": "graphPlan.overlays.circles[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "n=2일 때 반지름 5−√13과 중심 (1+√13,5−√13)은 접원 작도용 수치로만 썼다. 모든 조건을 만족하며 극한값은 표기하지 않는다."
+  ]
+}

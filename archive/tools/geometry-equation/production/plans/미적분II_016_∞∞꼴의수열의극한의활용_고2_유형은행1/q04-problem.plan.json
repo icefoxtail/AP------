@@ -1,0 +1,107 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1,
+      4
+    ],
+    "viewport": [
+      -1,
+      4,
+      -10,
+      32
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "0",
+        "y": "0",
+        "marker": "NONE"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "TAN",
+          "slope": "8",
+          "intercept": "-8",
+          "label": "t"
+        }
+      ],
+      "points": [
+        {
+          "id": "T",
+          "curveX": "2"
+        },
+        {
+          "id": "A",
+          "axis": "x",
+          "value": "1"
+        },
+        {
+          "id": "B",
+          "axis": "y",
+          "value": "-8"
+        }
+      ],
+      "segments": [
+        {
+          "id": "AB",
+          "from": "A",
+          "to": "B"
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "T": "T",
+    "A": "A",
+    "B": "B"
+  },
+  "caption": "n=2인 대표 도식에서 포물선의 접점 T, 접선과 x축·y축의 절편 A, B를 표시한다.",
+  "accessibilityDescription": "위로 열린 포물선 y=2x²에 접선이 오른쪽의 T에서 접하고, 접선은 양의 x축과 음의 y축에서 각각 A, B를 지난다.",
+  "sourceQuote": "y=2x²에 접하고 기울기가 4n인 직선의 두 축과의 교점. 포물선과 (n,2n²)에서의 접선, 두 절편",
+  "sourceConditions": [
+    {
+      "id": "p",
+      "condition": "y=2x² 포물선",
+      "mappedTo": "graphPlan.pieces[0].coefficients"
+    },
+    {
+      "id": "t",
+      "condition": "(n,2n²)에서 기울기가 4n인 접선",
+      "mappedTo": "graphPlan.overlays.points[0];graphPlan.overlays.lines[0]"
+    },
+    {
+      "id": "a",
+      "condition": "접선과 두 축의 교점",
+      "mappedTo": "graphPlan.overlays.points[1..2];graphPlan.overlays.segments[0]"
+    },
+    {
+      "id": "n",
+      "condition": "n=2인 대표 좌표이며 n 일반항은 기호 그대로",
+      "mappedTo": "caption;graphPlan.overlays"
+    }
+  ],
+  "newVisualInformation": [
+    "표시된 T(2,8), A(1,0), B(0,-8)은 예시 n=2의 작도용 수치이며 문제에 좌표값으로 쓰지 않는다."
+  ]
+}

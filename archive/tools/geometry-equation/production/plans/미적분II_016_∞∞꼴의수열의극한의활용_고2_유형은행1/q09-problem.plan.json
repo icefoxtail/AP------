@@ -1,0 +1,129 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "3/4"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1,
+      4
+    ],
+    "viewport": [
+      -2,
+      4,
+      -1,
+      4
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "circles": [
+        {
+          "id": "K",
+          "center": [
+            "1",
+            "2"
+          ],
+          "radiusSquared": "1"
+        }
+      ],
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        },
+        {
+          "id": "C",
+          "x": "1",
+          "y": "2"
+        },
+        {
+          "id": "V",
+          "axis": "y",
+          "value": "2"
+        },
+        {
+          "id": "T",
+          "x": "8/5",
+          "y": "6/5",
+          "onCircle": "K"
+        }
+      ],
+      "segments": [
+        {
+          "id": "CV",
+          "from": "C",
+          "to": "V"
+        },
+        {
+          "id": "CT",
+          "from": "C",
+          "to": "T"
+        },
+        {
+          "id": "OV",
+          "from": "O",
+          "to": "V"
+        }
+      ],
+      "rightAngles": [
+        {
+          "at": "V",
+          "from": [
+            "C",
+            "O"
+          ]
+        },
+        {
+          "at": "T",
+          "from": [
+            "C",
+            "O"
+          ]
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "O": "O",
+    "C": "C",
+    "V": "V",
+    "T": "T"
+  },
+  "caption": "n=1 대표 도식: 중심 C인 원과 y축, 원점에서 나오는 다른 접선 및 두 접점을 표시한다.",
+  "accessibilityDescription": "중심 C=(1,2), 반지름 1인 원은 y축에 왼쪽 V에서 접한다. 원점 O에서 왼쪽의 y축과 오른쪽 위로 향하는 다른 직선이 각각 원에 접하고 반지름 CV, CT는 접선에 직각이다.",
+  "sourceQuote": "중심 (n,2n²), 반지름 n이며 y축에 접하는 원과 원점에서 그은 두 접선",
+  "sourceConditions": [
+    {
+      "id": "c",
+      "condition": "원 중심 (n,2n²), 반지름 n",
+      "mappedTo": "graphPlan.overlays.points[1];graphPlan.overlays.circles[0]"
+    },
+    {
+      "id": "y",
+      "condition": "원은 y축과 V에서 접하고 O를 지나는 첫 접선은 y축",
+      "mappedTo": "graphPlan.overlays.points[0,2];graphPlan.overlays.segments[0,2];graphPlan.overlays.rightAngles[0]"
+    },
+    {
+      "id": "l",
+      "condition": "원점에서 그은 다른 직선이 T에서 접한다",
+      "mappedTo": "graphPlan.pieces[0].coefficients;graphPlan.overlays.points[3];graphPlan.overlays.segments[1];graphPlan.overlays.rightAngles[1]"
+    }
+  ],
+  "newVisualInformation": [
+    "n=1의 대표 접점 T=(8/5,6/5), V=(0,2)이다. 원의 중심 C와 접점 명칭은 이해를 위한 보조 기호이며 기울기 m_n 및 극한값은 그림에 쓰지 않는다."
+  ]
+}
