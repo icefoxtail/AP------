@@ -934,10 +934,10 @@ window.questionBank = [
       "지수법칙"
     ],
     "wide": false,
-    "content": "[서술형 1] 사각형 $ABCD$에서 $\\angle A = \\angle C = 90^\\circ$이고 $\\overline{AB}=8\\,\\text{cm}$, $\\overline{AD}=4\\,\\text{cm}$, $\\overline{BC}=2\\,\\text{cm}$, $\\overline{CD}=x\\,\\text{cm}$일 때, $x$의 값을 구하고 그 과정을 서술하시오. [4점]",
+    "content": "[서술형 1] 사각형 $ABCD$에서 $\\angle A = \\angle C = 90^\\circ$이고 $\\overline{AB}=8\\,\\text{cm}$, $\\overline{AD}=4\\,\\text{cm}$, $\\overline{BC}=2\\,\\text{cm}$, $\\overline{CD}=x\\,\\text{cm}$일 때, $x^2$의 값을 구하고 그 과정을 서술하시오. [4점]",
     "choices": [],
-    "answer": "$2\\sqrt{19}\\,\\text{cm}$",
-    "solution": "대각선 $\\overline{BD}$를 그으면 $\\triangle ABD$와 $\\triangle BCD$는 각각 빗변이 $\\overline{BD}$인 직각삼각형이다. 직각삼각형 $ABD$에서 피타고라스 정리에 의해 $$\n\\begin{aligned}\n\\overline{BD}^2 &= \\overline{AB}^2 + \\overline{AD}^2 \\\n&= 8^2 + 4^2 \\\n&= 64 + 16 \\\n&= 80\n\\end{aligned}\n$$ 직각삼각형 $BCD$에서 피타고라스 정리에 의해 $$\n\\overline{BD}^2 = \\overline{BC}^2 + \\overline{CD}^2\n$$ 위에서 구한 $\\overline{BD}^2 = 80$을 대입하면 $$\n\\begin{aligned}\n80 &= 2^2 + x^2 \\\n80 &= 4 + x^2 \\\nx^2 &= 76\n\\end{aligned}\n$$\n길이는 양수이므로\n$$\nx = \\sqrt{76} = 2\\sqrt{19}\\,\\text{cm}\n$$ 따라서 $x$의 값은 $2\\sqrt{19}\\,\\text{cm}$이다.",
+    "answer": "$76$",
+    "solution": "대각선 $\\overline{BD}$를 그으면 $\\triangle ABD$와 $\\triangle BCD$는 각각 빗변이 $\\overline{BD}$인 직각삼각형이다. 직각삼각형 $ABD$에서 피타고라스 정리에 의해 $$\n\\begin{aligned}\n\\overline{BD}^2 &= \\overline{AB}^2 + \\overline{AD}^2 \\\n&= 8^2 + 4^2 \\\n&= 64 + 16 \\\n&= 80\n\\end{aligned}\n$$ 직각삼각형 $BCD$에서 피타고라스 정리에 의해 $$\n\\overline{BD}^2 = \\overline{BC}^2 + \\overline{CD}^2\n$$ 위에서 구한 $\\overline{BD}^2 = 80$을 대입하면 $$\n\\begin{aligned}\n80 &= 2^2 + x^2 \\\n80 &= 4 + x^2 \\\nx^2 &= 76\n\\end{aligned}\n$$\n따라서 $x^2$의 값은 $76$이다.",
     "score": 4,
     "points": 4,
     "difficultyBucket": 4,
