@@ -1,0 +1,40 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "kind": "SPHERE",
+      "radius": 7
+    }
+  ],
+  "solidCaption": {
+    "text": "기하 197 문제 q10"
+  },
+  "caption": "기하 197 q10: 반지름 7 구의 기본형. 두 원형 단면과 평면 간 6 거리는 미표시.",
+  "accessibilityDescription": "반지름 7 구의 기본형. 두 원형 단면과 평면 간 6 거리는 미표시.",
+  "sourceQuote": "[그림: 하나의 구를 서로 평행한 두 평면 $\\alpha$, $\\beta$가 자르며 두 개의 원형 단면이 생긴 모습]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "구의 반지름 7(구방정식을 완전제곱)",
+      "mappedTo": "solids[0].radius"
+    },
+    {
+      "id": "c2",
+      "condition": "구의 절대 중심좌표 (-2,4,-5)",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:ABSOLUTE_SPHERE_CENTER_COORDINATES"
+    },
+    {
+      "id": "c3",
+      "condition": "두 평행 평면 α,β가 구를 다른 높이에서 자름",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:TWO_PARALLEL_SPHERE_CUT_PLANES"
+    },
+    {
+      "id": "c4",
+      "condition": "두 원형 단면과 단면 사이 수직 PQ=6",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:TWO_CIRCULAR_SECTIONS_SEPARATION"
+    }
+  ],
+  "newVisualInformation": [
+    "이 플랜은 엔진이 가능한 기본 형태까지만 렌더하며 중요 시각정보는 ENGINE_CAPABILITY_PENDING"
+  ]
+}

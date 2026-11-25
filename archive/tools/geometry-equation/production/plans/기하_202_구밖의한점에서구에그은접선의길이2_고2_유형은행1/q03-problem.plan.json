@@ -1,0 +1,54 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "kind": "SPHERE",
+      "radius": 2.8284271247461903,
+      "names": {
+        "center": "C"
+      }
+    }
+  ],
+  "dims": [
+    {
+      "radius": "center",
+      "label": "2\\sqrt{2}"
+    }
+  ],
+  "solidCaption": {
+    "text": "기하 202 문제 q03"
+  },
+  "caption": "기하 202 q03: 중심 C·반지름 2√2 구 기본형; 광원·접광원뿔·지면 그림자 미표시.",
+  "accessibilityDescription": "중심 C·반지름 2√2 구 기본형; 광원·접광원뿔·지면 그림자 미표시.",
+  "sourceQuote": "[그림: $xyz$ 공간좌표에서 $z$축 위의 점 $\\mathrm{P}(0,0,7)$을 꼭짓점으로 하고 중심이 $\\mathrm{C}(0,0,3)$, 반지름의 길이가 $2\\sqrt{2}$인 구에 접하는 원뿔 모양의 빛이 아래쪽 $xy$평면에 원 모양의 그림자를 만드는 입체도형. 원점 $\\mathrm{O}$가 $xy$평면 위 그림자 원의 중심이다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "구 반지름 2√2, 중심의 이름 C",
+      "mappedTo": "solids[0].radius;solids[0].names.center;dims[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "구 중심 C의 공간좌표 (0,0,3)",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:ABSOLUTE_SPHERE_CENTER_COORDINATES"
+    },
+    {
+      "id": "c3",
+      "condition": "광원 P=(0,0,7), 구에 접하는 빛 원뿔",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:POINT_LIGHT_TANGENT_CONE_TO_SPHERE"
+    },
+    {
+      "id": "c4",
+      "condition": "xy평면 원형 그림자, 중심 O",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:SPHERE_CAST_CIRCULAR_SHADOW"
+    },
+    {
+      "id": "c5",
+      "condition": "z축과 원점·광원 위치 라벨",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:Z_AXIS_LIGHT_AND_SHADOW_CENTER"
+    }
+  ],
+  "newVisualInformation": [
+    "이 플랜은 엔진이 가능한 기본 형태까지만 렌더하며 중요 시각정보는 ENGINE_CAPABILITY_PENDING"
+  ]
+}

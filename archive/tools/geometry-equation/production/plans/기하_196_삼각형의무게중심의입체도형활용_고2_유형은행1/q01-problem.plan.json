@@ -1,0 +1,177 @@
+{
+  "capability": "solid-figure-v1",
+  "space": {
+    "points": [
+      {
+        "id": "O",
+        "at": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "A",
+        "at": [
+          12,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "B",
+        "at": [
+          6,
+          10.392304845413264,
+          0
+        ]
+      },
+      {
+        "id": "C",
+        "at": [
+          6,
+          3.4641016151377544,
+          9.797958971132712
+        ]
+      },
+      {
+        "id": "X",
+        "at": [
+          16,
+          0,
+          0
+        ],
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "Y",
+        "at": [
+          0,
+          14,
+          0
+        ],
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "Z",
+        "at": [
+          0,
+          0,
+          13
+        ],
+        "hideName": true,
+        "hideDot": true
+      }
+    ],
+    "segments": [
+      {
+        "from": "O",
+        "to": "A",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "B",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "B",
+        "to": "O",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "O",
+        "to": "C",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "C",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "B",
+        "to": "C",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "O",
+        "to": "X",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "O",
+        "to": "Y",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "O",
+        "to": "Z",
+        "style": "AUTO",
+        "role": "REF"
+      }
+    ]
+  },
+  "dims": [
+    {
+      "from": "O",
+      "to": "A",
+      "label": "12"
+    }
+  ],
+  "labels": [
+    {
+      "text": "x",
+      "at": "X"
+    },
+    {
+      "text": "y",
+      "at": "Y"
+    },
+    {
+      "text": "z",
+      "at": "Z"
+    }
+  ],
+  "solidCaption": {
+    "text": "기하 196 문제 q01"
+  },
+  "caption": "기하 196 q01: 한 모서리 12인 정사면체 OABC의 정확한 좌표 모델; 원문 좌표축은 보류.",
+  "accessibilityDescription": "한 모서리 12인 정사면체 OABC의 정확한 좌표 모델; 원문 좌표축은 보류.",
+  "sourceQuote": "[그림: 좌표공간에서 원점 $\\mathrm{O}$와 $x$축의 양의 부분 위의 점 $\\mathrm{A}(12, 0, 0)$, $xy$평면의 제$1$사분면 위의 점 $\\mathrm{B}$로 이루어진 정삼각형 $\\mathrm{OAB}$를 밑면으로 하고, $z>0$인 영역에 꼭짓점 $\\mathrm{C}$가 있는 한 모서리의 길이가 $12$인 정사면체 $\\m",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "정사면체 OABC 모든 모서리 12",
+      "mappedTo": "space.points[O,A,B,C];space.segments[0..5];dims[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "OAB는 xy평면, OA는 x 양의 방향, B는 xy 제1사분면",
+      "mappedTo": "space.points[O,A,B];space.segments[6..8]"
+    },
+    {
+      "id": "c3",
+      "condition": "C는 z>0, 외접 관계를 만족하는 높이 4√6",
+      "mappedTo": "space.points[C]"
+    },
+    {
+      "id": "c4",
+      "condition": "x,y,z 축 화살표·A(12,0,0) 좌표 텍스트",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:3D_AXES_AND_COORDINATE_LABELS"
+    }
+  ],
+  "newVisualInformation": [
+    "이 플랜은 엔진이 가능한 기본 형태까지만 렌더하며 중요 시각정보는 ENGINE_CAPABILITY_PENDING"
+  ]
+}

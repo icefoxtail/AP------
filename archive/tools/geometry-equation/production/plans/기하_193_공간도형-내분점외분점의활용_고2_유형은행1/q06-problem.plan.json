@@ -1,0 +1,91 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "kind": "PRISM",
+      "base": {
+        "kind": "REGULAR",
+        "n": 3,
+        "side": 6
+      },
+      "height": 9,
+      "names": "DEFABC",
+      "points": [
+        {
+          "id": "M",
+          "at": {
+            "midpoint": [
+              "D",
+              "E"
+            ]
+          }
+        },
+        {
+          "id": "P",
+          "at": {
+            "divide": [
+              "B",
+              "M"
+            ],
+            "ratio": "2:1"
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "B",
+      "to": "M",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "C",
+      "to": "P",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "dims": [
+    {
+      "edge": "DE",
+      "label": "6"
+    },
+    {
+      "edge": "AD",
+      "label": "9"
+    }
+  ],
+  "solidCaption": {
+    "text": "기하 193 문제 q06"
+  },
+  "caption": "기하 193 q06: 정삼각기둥의 DE 중점 M과 BM 내분점 P, CP.",
+  "accessibilityDescription": "정삼각기둥의 DE 중점 M과 BM 내분점 P, CP.",
+  "sourceQuote": "[그림: 밑면 DEF와 윗면 ABC가 한 변의 길이가 6인 정삼각형이고 높이 AD=BE=CF=9인 정삼각기둥 ABC-DEF. 밑면의 앞쪽 변 DE의 중점 M과 꼭짓점 B를 연결한 선분 BM 위에 BP:PM = 2:1인 점 P를 표시하고 선분 CP를 연결한다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "정삼각기둥 ABC-DEF 밑변6 높이9",
+      "mappedTo": "solids[0];dims[0..1]"
+    },
+    {
+      "id": "c2",
+      "condition": "DE의 중점 M",
+      "mappedTo": "solids[0].points[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "BM 위 BP:PM=2:1인 P",
+      "mappedTo": "solids[0].points[1];segments[0]"
+    },
+    {
+      "id": "c4",
+      "condition": "선분 CP",
+      "mappedTo": "segments[1]"
+    }
+  ],
+  "newVisualInformation": [
+    "원문 조건에 대응하는 실제 엔진 점·선·치수 플랜"
+  ]
+}

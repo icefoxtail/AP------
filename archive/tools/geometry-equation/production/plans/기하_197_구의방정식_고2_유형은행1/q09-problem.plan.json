@@ -1,0 +1,246 @@
+{
+  "capability": "solid-figure-v1",
+  "space": {
+    "points": [
+      {
+        "id": "O",
+        "at": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "A",
+        "at": [
+          5,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "B",
+        "at": [
+          0,
+          12,
+          0
+        ]
+      },
+      {
+        "id": "C",
+        "at": [
+          12,
+          17,
+          0
+        ]
+      },
+      {
+        "id": "D",
+        "at": [
+          17,
+          5,
+          0
+        ]
+      },
+      {
+        "id": "E",
+        "at": [
+          5,
+          0,
+          13
+        ]
+      },
+      {
+        "id": "F",
+        "at": [
+          0,
+          12,
+          13
+        ]
+      },
+      {
+        "id": "G",
+        "at": [
+          12,
+          17,
+          13
+        ]
+      },
+      {
+        "id": "H",
+        "at": [
+          17,
+          5,
+          13
+        ]
+      },
+      {
+        "id": "X",
+        "at": [
+          21,
+          0,
+          0
+        ],
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "Y",
+        "at": [
+          0,
+          21,
+          0
+        ],
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "Z",
+        "at": [
+          0,
+          0,
+          17
+        ],
+        "hideName": true,
+        "hideDot": true
+      }
+    ],
+    "segments": [
+      {
+        "from": "A",
+        "to": "B",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "B",
+        "to": "C",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "C",
+        "to": "D",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "D",
+        "to": "A",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "E",
+        "to": "F",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "F",
+        "to": "G",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "G",
+        "to": "H",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "H",
+        "to": "E",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "E",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "B",
+        "to": "F",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "C",
+        "to": "G",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "D",
+        "to": "H",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "O",
+        "to": "X",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "O",
+        "to": "Y",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "O",
+        "to": "Z",
+        "style": "AUTO",
+        "role": "REF"
+      }
+    ]
+  },
+  "labels": [
+    {
+      "text": "x",
+      "at": "X"
+    },
+    {
+      "text": "y",
+      "at": "Y"
+    },
+    {
+      "text": "z",
+      "at": "Z"
+    }
+  ],
+  "solidCaption": {
+    "text": "기하 197 문제 q09"
+  },
+  "caption": "기하 197 q09: 제1팔분면 정육면체의 원문 좌표 A,B와 완전한 변 길이 13 모델.",
+  "accessibilityDescription": "제1팔분면 정육면체의 원문 좌표 A,B와 완전한 변 길이 13 모델.",
+  "sourceQuote": "[그림: 좌표공간의 제$1$팔분면에 놓인 정육면체 $\\mathrm{ABCD-EFGH}$로, 밑면 $\\mathrm{ABCD}$는 $xy$평면 위에 있고 $\\mathrm{A}(5, 0, 0)$은 $x$축 위, $\\mathrm{B}(0, 12, 0)$은 $y$축 위에 있으며, $\\mathrm{C}$, $\\mathrm{D}$는 $xy$평면의 제$1$사분면에 ",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "A=(5,0,0), B=(0,12,0), AB=13",
+      "mappedTo": "space.points[A,B];space.segments[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "xy평면의 정사각형 ABCD의 나머지 점은 제1사분면",
+      "mappedTo": "space.points[C,D];space.segments[1..3]"
+    },
+    {
+      "id": "c3",
+      "condition": "위쪽 EFGH는 z 양의 방향으로 13, ABFE는 z축 평행",
+      "mappedTo": "space.points[E,F,G,H];space.segments[4..11]"
+    },
+    {
+      "id": "c4",
+      "condition": "x,y,z축 전용 화살표 및 A/B 전체 좌표 라벨",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:AXES_AND_COORDINATE_LABELS"
+    }
+  ],
+  "newVisualInformation": [
+    "이 플랜은 엔진이 가능한 기본 형태까지만 렌더하며 중요 시각정보는 ENGINE_CAPABILITY_PENDING"
+  ]
+}

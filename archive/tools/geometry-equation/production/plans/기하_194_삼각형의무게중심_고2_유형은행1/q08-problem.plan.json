@@ -1,0 +1,147 @@
+{
+  "capability": "solid-figure-v1",
+  "space": {
+    "points": [
+      {
+        "id": "O",
+        "at": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "A",
+        "at": [
+          5,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "B",
+        "at": [
+          0,
+          10,
+          0
+        ]
+      },
+      {
+        "id": "C",
+        "at": [
+          0,
+          0,
+          20
+        ]
+      },
+      {
+        "id": "X",
+        "at": [
+          8,
+          0,
+          0
+        ],
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "Y",
+        "at": [
+          0,
+          13,
+          0
+        ],
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "Z",
+        "at": [
+          0,
+          0,
+          23
+        ],
+        "hideName": true,
+        "hideDot": true
+      }
+    ],
+    "segments": [
+      {
+        "from": "A",
+        "to": "B",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "B",
+        "to": "C",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "C",
+        "to": "A",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "O",
+        "to": "X",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "O",
+        "to": "Y",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "O",
+        "to": "Z",
+        "style": "AUTO",
+        "role": "REF"
+      }
+    ]
+  },
+  "labels": [
+    {
+      "text": "x",
+      "at": "X"
+    },
+    {
+      "text": "y",
+      "at": "Y"
+    },
+    {
+      "text": "z",
+      "at": "Z"
+    }
+  ],
+  "solidCaption": {
+    "text": "기하 194 문제 q08"
+  },
+  "caption": "기하 194 q08: 양의 세 좌표축 절편 A,B,C를 이은 삼각형. 화살표와 좌표표시 미완성.",
+  "accessibilityDescription": "양의 세 좌표축 절편 A,B,C를 이은 삼각형. 화살표와 좌표표시 미완성.",
+  "sourceQuote": "[그림: 원점 O를 중심으로 x축, y축, z축이 그려진 좌표공간에서 x축 위의 점 A(5, 0, 0), y축 위의 점 B(0, 10, 0), z축 위의 점 C(0, 0, 20)을 이어 만든 삼각형 ABC가 그려져 있다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "A=(5,0,0), B=(0,10,0), C=(0,0,20)",
+      "mappedTo": "space.points[A,B,C]"
+    },
+    {
+      "id": "c2",
+      "condition": "세 좌표축 위의 점을 이은 삼각형 ABC",
+      "mappedTo": "space.segments[0..2]"
+    },
+    {
+      "id": "c3",
+      "condition": "x,y,z 좌표축 화살표·점 좌표 문자열",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:3D_AXIS_ARROWS_AND_POINT_LABELS"
+    }
+  ],
+  "newVisualInformation": [
+    "이 플랜은 엔진이 가능한 기본 형태까지만 렌더하며 중요 시각정보는 ENGINE_CAPABILITY_PENDING"
+  ]
+}

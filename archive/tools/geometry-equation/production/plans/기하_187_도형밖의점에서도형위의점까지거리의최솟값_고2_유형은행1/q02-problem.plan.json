@@ -1,0 +1,164 @@
+{
+  "capability": "solid-figure-v1",
+  "space": {
+    "points": [
+      {
+        "id": "O",
+        "at": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "C",
+        "at": [
+          4,
+          5,
+          0
+        ]
+      },
+      {
+        "id": "P",
+        "at": [
+          7,
+          5,
+          0
+        ]
+      },
+      {
+        "id": "A",
+        "at": [
+          1,
+          1,
+          6
+        ]
+      },
+      {
+        "id": "X",
+        "at": [
+          10,
+          0,
+          0
+        ],
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "Y",
+        "at": [
+          0,
+          10,
+          0
+        ],
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "Z",
+        "at": [
+          0,
+          0,
+          10
+        ],
+        "hideName": true,
+        "hideDot": true
+      }
+    ],
+    "segments": [
+      {
+        "from": "C",
+        "to": "P",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "P",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "O",
+        "to": "X",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "O",
+        "to": "Y",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "O",
+        "to": "Z",
+        "style": "AUTO",
+        "role": "REF"
+      }
+    ],
+    "planes": [
+      {
+        "id": "xy",
+        "through": [
+          "O",
+          "X",
+          "Y"
+        ],
+        "fill": "LIGHT"
+      }
+    ]
+  },
+  "dims": [
+    {
+      "from": "C",
+      "to": "P",
+      "label": "3"
+    }
+  ],
+  "labels": [
+    {
+      "text": "x",
+      "at": "X"
+    },
+    {
+      "text": "y",
+      "at": "Y"
+    },
+    {
+      "text": "z",
+      "at": "Z"
+    }
+  ],
+  "solidCaption": {
+    "text": "기하 187 문제 q02"
+  },
+  "caption": "기하 187 q02: xy평면 원의 중심·반지름과 원 밖 A, 대표 P. 원형 호는 미구현.",
+  "accessibilityDescription": "xy평면 원의 중심·반지름과 원 밖 A, 대표 P. 원형 호는 미구현.",
+  "sourceQuote": "[그림: 원점 $\\mathrm{O}$와 $x$축, $y$축, $z$축으로 이루어진 좌표공간에서 $xy$평면 위에 중심이 $(4,\\,5,\\,0)$이고 반지름의 길이가 $3$인 원 $(x-4)^2+(y-5)^2=9$가 그려져 있으며, 원 위의 점 $\\mathrm{P}$와 공간 위의 점 $\\mathrm{A}(1,\\,1,\\,6)$이 선분으로 연결되어 있다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "중심 C=(4,5,0) 반지름3인 xy평면의 원",
+      "mappedTo": "space.points[C];dims[0];ENGINE_CAPABILITY_PENDING:CIRCLE_IN_SPACE_PLANE"
+    },
+    {
+      "id": "c2",
+      "condition": "원 위 P는 임의 대표점(7,5,0)",
+      "mappedTo": "space.points[P]"
+    },
+    {
+      "id": "c3",
+      "condition": "평면 밖 A=(1,1,6)와 P를 연결",
+      "mappedTo": "space.points[A];space.segments[1]"
+    },
+    {
+      "id": "c4",
+      "condition": "3D 좌표축과 원의 전체 호",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:3D_CIRCLE_AND_AXES"
+    }
+  ],
+  "newVisualInformation": [
+    "이 플랜은 엔진이 가능한 기본 형태까지만 렌더하며 중요 시각정보는 ENGINE_CAPABILITY_PENDING"
+  ]
+}

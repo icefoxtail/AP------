@@ -1,0 +1,177 @@
+{
+  "capability": "solid-figure-v1",
+  "space": {
+    "points": [
+      {
+        "id": "O",
+        "at": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "A",
+        "at": [
+          4,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "B",
+        "at": [
+          0,
+          4,
+          0
+        ]
+      },
+      {
+        "id": "C",
+        "at": [
+          0,
+          0,
+          4.898979485566356
+        ]
+      },
+      {
+        "id": "M",
+        "at": {
+          "midpoint": [
+            "A",
+            "B"
+          ]
+        }
+      },
+      {
+        "id": "D",
+        "at": {
+          "divide": [
+            "C",
+            "M"
+          ],
+          "ratio": "1:3"
+        }
+      },
+      {
+        "id": "X",
+        "at": [
+          8,
+          0,
+          0
+        ],
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "Y",
+        "at": [
+          0,
+          8,
+          0
+        ],
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "Z",
+        "at": [
+          0,
+          0,
+          8
+        ],
+        "hideName": true,
+        "hideDot": true
+      }
+    ],
+    "segments": [
+      {
+        "from": "A",
+        "to": "B",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "B",
+        "to": "C",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "C",
+        "to": "A",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "C",
+        "to": "M",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "O",
+        "to": "X",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "O",
+        "to": "Y",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "O",
+        "to": "Z",
+        "style": "AUTO",
+        "role": "REF"
+      }
+    ]
+  },
+  "labels": [
+    {
+      "text": "x",
+      "at": "X"
+    },
+    {
+      "text": "y",
+      "at": "Y"
+    },
+    {
+      "text": "z",
+      "at": "Z"
+    }
+  ],
+  "solidCaption": {
+    "text": "기하 193 문제 q05"
+  },
+  "caption": "기하 193 q05: ABC 삼각형과 중점 M, CM의 내분점 D, 좌표축 보조선.",
+  "accessibilityDescription": "ABC 삼각형과 중점 M, CM의 내분점 D, 좌표축 보조선.",
+  "sourceQuote": "[그림: 좌표공간의 x축 위에 A(4, 0, 0), y축 위에 B(0, 4, 0), z축의 양의 부분에 점 C를 잡고 삼각형 ABC를 그린다. 선분 AB의 중점 M과 점 C를 잇는 선분 CM 위에 CD:DM = 1:3이 되는 점 D를 표시한다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "A=(4,0,0), B=(0,4,0), C는 z>0",
+      "mappedTo": "space.points[A,B,C]"
+    },
+    {
+      "id": "c2",
+      "condition": "삼각형 ABC 넓이16 조건에서 높이 OC=2√6",
+      "mappedTo": "space.points[C];space.segments[0..2]"
+    },
+    {
+      "id": "c3",
+      "condition": "M은 AB 중점, D는 CM을 CD:DM=1:3 내분",
+      "mappedTo": "space.points[M,D];space.segments[3]"
+    },
+    {
+      "id": "c4",
+      "condition": "정확한 좌표축 화살표·원문 좌표 문자열",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:3D_AXES_COORDINATE_LABELS"
+    }
+  ],
+  "newVisualInformation": [
+    "이 플랜은 엔진이 가능한 기본 형태까지만 렌더하며 중요 시각정보는 ENGINE_CAPABILITY_PENDING"
+  ]
+}

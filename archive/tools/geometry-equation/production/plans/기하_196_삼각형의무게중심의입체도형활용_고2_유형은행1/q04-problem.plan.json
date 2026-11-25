@@ -1,0 +1,67 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "kind": "SPHERE",
+      "radius": 8,
+      "names": {
+        "center": "A"
+      }
+    },
+    {
+      "kind": "SPHERE",
+      "radius": 18,
+      "names": {
+        "center": "B"
+      }
+    }
+  ],
+  "dims": [
+    {
+      "solid": "s1",
+      "radius": "center",
+      "label": "8"
+    },
+    {
+      "solid": "s2",
+      "radius": "center",
+      "label": "18"
+    }
+  ],
+  "solidCaption": {
+    "text": "기하 196 문제 q04"
+  },
+  "caption": "기하 196 q04: 반지름 8·18인 두 구의 비접촉 예시. 미지 반지름 r의 구, 접촉 및 높이20은 미표시.",
+  "accessibilityDescription": "반지름 8·18인 두 구의 비접촉 예시. 미지 반지름 r의 구, 접촉 및 높이20은 미표시.",
+  "sourceQuote": "[그림: 평면 $\\alpha$ 위에 서로 외접하며 평면 $\\alpha$에 접하는 크기가 다른 세 개의 구가 놓여 있다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 알려진 구의 반지름 8과 18",
+      "mappedTo": "solids[0..1];dims[0..1]"
+    },
+    {
+      "id": "c2",
+      "condition": "세 번째 구의 반지름 r은 미지량",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:UNKNOWN_THIRD_SPHERE_RADIUS"
+    },
+    {
+      "id": "c3",
+      "condition": "세 구가 서로 외접함",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:THREE_PAIRWISE_TANGENT_SPHERES"
+    },
+    {
+      "id": "c4",
+      "condition": "세 구 모두 평면 α에 접함",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:SPHERES_TANGENT_TO_COMMON_PLANE"
+    },
+    {
+      "id": "c5",
+      "condition": "중심 ABC의 무게중심과 α까지 거리 20",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:CENTROID_TO_PLANE_HEIGHT"
+    }
+  ],
+  "newVisualInformation": [
+    "이 플랜은 엔진이 가능한 기본 형태까지만 렌더하며 중요 시각정보는 ENGINE_CAPABILITY_PENDING"
+  ]
+}
