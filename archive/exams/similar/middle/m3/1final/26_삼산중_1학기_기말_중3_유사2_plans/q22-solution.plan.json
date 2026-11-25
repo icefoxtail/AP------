@@ -1,0 +1,375 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "22×16 원본 직사각형의 네 모서리에서 한 변 2인 정사각형을 제거한 상자 전개도",
+  "accessibilityDescription": "가로 22, 세로 16인 직사각형에서 네 모서리의 2×2 정사각형을 제거한 십자 모양 도형이다. 접으면 높이 2, 밑면 18×12인 상자가 된다.",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "p0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "20"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "20"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "22"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "22"
+            },
+            {
+              "kind": "integer",
+              "value": "14"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p5",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "20"
+            },
+            {
+              "kind": "integer",
+              "value": "14"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p6",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "20"
+            },
+            {
+              "kind": "integer",
+              "value": "16"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p7",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "16"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p8",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "14"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p9",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "14"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p10",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p11",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "p0",
+    "p1",
+    "p2",
+    "p3",
+    "p4",
+    "p5",
+    "p6",
+    "p7",
+    "p8",
+    "p9",
+    "p10",
+    "p11"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "seg0",
+      "refs": [
+        "p0",
+        "p1"
+      ]
+    },
+    {
+      "id": "seg1",
+      "refs": [
+        "p1",
+        "p2"
+      ]
+    },
+    {
+      "id": "seg2",
+      "refs": [
+        "p2",
+        "p3"
+      ]
+    },
+    {
+      "id": "seg3",
+      "refs": [
+        "p3",
+        "p4"
+      ]
+    },
+    {
+      "id": "seg4",
+      "refs": [
+        "p4",
+        "p5"
+      ]
+    },
+    {
+      "id": "seg5",
+      "refs": [
+        "p5",
+        "p6"
+      ]
+    },
+    {
+      "id": "seg6",
+      "refs": [
+        "p6",
+        "p7"
+      ]
+    },
+    {
+      "id": "seg7",
+      "refs": [
+        "p7",
+        "p8"
+      ]
+    },
+    {
+      "id": "seg8",
+      "refs": [
+        "p8",
+        "p9"
+      ]
+    },
+    {
+      "id": "seg9",
+      "refs": [
+        "p9",
+        "p10"
+      ]
+    },
+    {
+      "id": "seg10",
+      "refs": [
+        "p10",
+        "p11"
+      ]
+    },
+    {
+      "id": "seg11",
+      "refs": [
+        "p11",
+        "p0"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "p0",
+    "p1",
+    "p2",
+    "p3",
+    "p4",
+    "p5",
+    "p6",
+    "p7",
+    "p8",
+    "p9",
+    "p10",
+    "p11"
+  ],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 540
+  },
+  "sourceQuote": "[키포인트] 잘라낸 정사각형의 변이 상자의 높이가 되고, 밑면의",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "가로가 세로보다 $6$ cm 긴 직사각형 종이의 네 모퉁이에서 한 변이 $2$ cm인 정사각형을 잘라낸 뒤, 남은 부분을 접어 뚜껑 없는 직육면체 상자를 만들었다. 상자의 부피가 $432$ cm$^3$일 때, **자르기 전 종이의 둘레의 길이**를 구하고 과정을 서술하시오. [5점]\n\n(단, 자르기 전 종이의 세로 길이는 $4$ cm보다 길다.)",
+      "mappedTo": "CURRENT_FOLLOWUP_JS"
+    }
+  ],
+  "newVisualInformation": [
+    "가로 22, 세로 16인 직사각형에서 네 모서리의 2×2 정사각형을 제거한 십자 모양 도형이다. 접으면 높이 2, 밑면 18×12인 상자가 된다."
+  ]
+}
