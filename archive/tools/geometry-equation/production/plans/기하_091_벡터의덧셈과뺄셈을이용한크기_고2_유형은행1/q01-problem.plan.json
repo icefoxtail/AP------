@@ -1,0 +1,159 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "3"
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "3"
+              }
+            ]
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 680,
+    "height": 530
+  },
+  "caption": "변의 길이가 √3인 정삼각형의 벡터 a, b",
+  "accessibilityDescription": "한 변의 길이가 √3인 정삼각형 ABC의 A에서 B로 가는 벡터 a와 A에서 C로 가는 벡터 b가 화살표로 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AB=BC=CA=√3은 정확한 POLAR_POINT 60° 구성으로 보장된다.",
+      "mappedTo": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "주어진 길이 √3을 BC에 표시하고 A→B, A→C의 이름을 각각 a,b로 쓴다. 구하는 합벡터의 크기 3은 숨긴다.",
+      "mappedTo": [
+        "dBC",
+        "va",
+        "vb"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "한 꼭짓점에서 뻗는 60°의 두 유향변",
+    "변 BC에 √3의 실제 치수선"
+  ],
+  "planeMarks": {
+    "vectors": [
+      {
+        "id": "va",
+        "from": "A",
+        "to": "B",
+        "label": "vec(a)",
+        "side": "RIGHT",
+        "labelAt": 0.5
+      },
+      {
+        "id": "vb",
+        "from": "A",
+        "to": "C",
+        "label": "vec(b)",
+        "side": "LEFT",
+        "labelAt": 0.5
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dBC",
+        "from": "B",
+        "to": "C",
+        "label": "sqrt(3)",
+        "side": "RIGHT",
+        "style": "BAR",
+        "factRole": "GIVEN"
+      }
+    ]
+  }
+}

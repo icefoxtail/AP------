@@ -1,0 +1,201 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "l",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "-6"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "C",
+    "P",
+    "Q",
+    "A"
+  ],
+  "displaySegments": [
+    {
+      "id": "CP",
+      "refs": [
+        "C",
+        "P"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 680,
+    "height": 530
+  },
+  "caption": "반지름 6 원 C의 접점 P, 접선 l과 원 위의 점 Q",
+  "accessibilityDescription": "중심 C인 원의 위쪽 P에서 수평 접선 l이 지나고, 그 접선 위에 A가 있다. 반지름 CP=6과 직각 표시가 있고 Q는 오른쪽 원둘레의 일반적인 위치에 있다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원 C의 반지름은 6, 접점 P=(0,6), 접선 l은 y=6이며 CP와 수직이다.",
+      "mappedTo": [
+        "C",
+        "P",
+        "circ",
+        "l",
+        "rP",
+        "dCP"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "A는 접선 위 임의의 점이고 Q=(6,0)는 극값을 주는 P의 맞은편 점이 아닌 원둘레의 한 예시 점이다. 구하려는 최댓값 12는 그리지 않는다.",
+      "mappedTo": [
+        "A",
+        "Q"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원에 한 점에서 닿는 수평 접선과 수직 표시",
+    "반지름 6을 보여주는 실제 치수선"
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dCP",
+        "from": "C",
+        "to": "P",
+        "label": "6",
+        "side": "LEFT",
+        "style": "BAR",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rP",
+      "refs": [
+        "C",
+        "P",
+        "A"
+      ]
+    }
+  ],
+  "displayCircles": [
+    "circ"
+  ],
+  "displayLines": [
+    "l"
+  ]
+}

@@ -1,0 +1,178 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "MIDPOINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "A",
+          "T"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "G"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "GB",
+      "refs": [
+        "G",
+        "B"
+      ]
+    },
+    {
+      "id": "GC",
+      "refs": [
+        "G",
+        "C"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 680,
+    "height": 530
+  },
+  "caption": "정삼각형 ABC의 무게중심 G와 GB, GC",
+  "accessibilityDescription": "정삼각형 ABC의 내부에서 세 중선의 교점에 해당하는 무게중심 G가 있고 G에서 B와 C를 잇는 두 선분이 그려져 있다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문의 정삼각형 ABC는 한 변의 숫자 라벨이 없는 60° 구조로 그린다. 내부 좌표는 주어진 벡터 크기와 양립하는 예시 길이 6이지만 학생에게 표시하지 않는다.",
+      "mappedTo": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "G는 BC 중점 T에 대해 A→T를 2:1 내분한 공식 계산 점이며 GB와 GC 선분만 그린다. 원문 값 2√3 또는 넓이 9√3를 그림에 답 형태로 노출하지 않는다.",
+      "mappedTo": [
+        "T",
+        "G",
+        "GB",
+        "GC"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "중점과 내분으로 계산되는 진짜 무게중심 G",
+    "G에서 B·C로 향하는 두 선분"
+  ]
+}

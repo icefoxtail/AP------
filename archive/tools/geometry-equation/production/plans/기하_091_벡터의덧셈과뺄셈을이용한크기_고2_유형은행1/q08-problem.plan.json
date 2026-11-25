@@ -1,0 +1,170 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 680,
+    "height": 530
+  },
+  "caption": "정사각형 A에서 시작해 B,C,D로 향하는 세 벡터",
+  "accessibilityDescription": "정사각형 ABCD에서 같은 꼭짓점 A를 시작점으로 B, C, D를 향하는 세 화살표가 있고 각각 AB, AC, AD 벡터 이름이 적혀 있다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "주어진 벡터 합의 크기 4√2에 맞도록 실제 한 변을 2로 계산해 정사각형을 생성하되, 학생 그림에 그 수치나 넓이를 적지 않는다.",
+      "mappedTo": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "세 화살표가 모두 A에서 시작하여 B,C,D로 향한다. 주어진 합벡터 값 4√2와 묻는 넓이 4는 표시하지 않는다.",
+      "mappedTo": [
+        "va",
+        "vb",
+        "vc"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "같은 시작점에서 세 방향으로 뻗는 정확한 벡터 화살표",
+    "대각선 AC의 방향을 변 AB·AD와 구분"
+  ],
+  "planeMarks": {
+    "vectors": [
+      {
+        "id": "va",
+        "from": "A",
+        "to": "B",
+        "label": "vec(AB)",
+        "side": "RIGHT",
+        "labelAt": 0.5
+      },
+      {
+        "id": "vb",
+        "from": "A",
+        "to": "C",
+        "label": "vec(AC)",
+        "side": "LEFT",
+        "labelAt": 0.5
+      },
+      {
+        "id": "vc",
+        "from": "A",
+        "to": "D",
+        "label": "vec(AD)",
+        "side": "LEFT",
+        "labelAt": 0.5
+      }
+    ]
+  }
+}
