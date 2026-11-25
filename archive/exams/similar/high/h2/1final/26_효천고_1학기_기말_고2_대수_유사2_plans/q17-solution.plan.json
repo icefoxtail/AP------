@@ -1,0 +1,276 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "20"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "D",
+          "C"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "d18",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "D"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "18"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "e12",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "E"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "12"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "hitsB",
+        "op": "INTERSECTION",
+        "inputs": [
+          "d18",
+          "e12"
+        ],
+        "args": {},
+        "outputType": "POINT_SET",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SELECT_POINT",
+        "inputs": [
+          "hitsB"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "branch": {
+          "kind": "SIDE_OF_ORIENTED_LINE",
+          "refs": [
+            "D",
+            "C"
+          ],
+          "sign": -1
+        }
+      },
+      {
+        "id": "dc",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "D",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bc",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "parallelB",
+        "op": "PARALLEL_THROUGH",
+        "inputs": [
+          "B",
+          "dc"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "parallelD",
+        "op": "PARALLEL_THROUGH",
+        "inputs": [
+          "D",
+          "bc"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "parallelB",
+          "parallelD"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "BD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "BE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "DE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "DEequalsBE",
+        "count": 1,
+        "segments": [
+          "DE",
+          "BE"
+        ]
+      }
+    ]
+  },
+  "caption": "넓이비에서 CE=8, DE=12; 접기에서 EB=12, 등비중항에서 BD=18이다. 높이는 BD·sin∠BDE.",
+  "accessibilityDescription": "평행사변형 ABCD의 위쪽 변 DC 위에 E가 있고 삼각형 DBE에서 DE=EB=12, BD=18을 표시한 해설 도식이다.",
+  "sourceConditions": [
+    {
+      "id": "G1",
+      "condition": "AB=DC=20, E∈DC, [EBC]/[ABCD]=1/5, CE·BD=EB², 접기에 의해 EB=DE.",
+      "mappedTo": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "코사인법칙으로 구한 ∠BDE의 사인에서 평행사변형 높이 h와 전체 넓이 90√7을 회복한다."
+  ],
+  "sourceQuote": "$\\overline{AB}=20$인 평행사변형"
+}
