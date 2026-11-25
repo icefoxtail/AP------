@@ -1,0 +1,159 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "coordinateLabels": [
+    "A",
+    "B",
+    "C"
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "e",
+        "count": 1,
+        "segments": [
+          "sAB",
+          "sBC"
+        ]
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "vAB",
+        "ownerSegment": "sAB",
+        "text": "5"
+      },
+      {
+        "id": "vBC",
+        "ownerSegment": "sBC",
+        "text": "5"
+      }
+    ]
+  },
+  "caption": "A(0,0), B(3,4), C(8,4)이므로 AB²=BC²=25, CA²=80이다. AB=BC=5인 이등변삼각형을 표시한다.",
+  "accessibilityDescription": "세 꼭짓점 A, B, C의 좌표와 삼각형 세 변 중 AB와 BC의 동일 길이 표시 및 각각의 길이 5가 보인다.",
+  "sourceConditions": [
+    {
+      "id": "vertices",
+      "condition": "A(0,0), B(3,4), C(8,4)",
+      "mappedTo": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sides",
+      "condition": "AB²=BC²=25, CA²=80",
+      "mappedTo": [
+        "sAB",
+        "sBC",
+        "sCA",
+        "e",
+        "vAB",
+        "vBC"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "정확한 세 좌표와 변 AB·BC의 동일 길이 표식 및 5 라벨"
+  ]
+}

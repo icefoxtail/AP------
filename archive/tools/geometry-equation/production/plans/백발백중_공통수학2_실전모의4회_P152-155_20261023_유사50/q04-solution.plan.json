@@ -1,0 +1,52 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "5",
+      "8",
+      "10"
+    ],
+    "domain": [
+      -2,
+      2
+    ],
+    "viewport": [
+      -2.5,
+      2.5,
+      0,
+      65
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": -0.4,
+        "y": 3.4
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "수평축을 매개변수 a로 읽으면 r²=10a²+8a+5; 꼭짓점 a=-0.4에서 최소 r²=3.4이고 그때 원의 중심은 (0.4,-1.2)이다.",
+  "accessibilityDescription": "양의 최고차항을 가진 포물선 r²(a)와 꼭짓점 (-0.4,3.4)가 표시되고 최소 반지름 제곱을 확인할 수 있다.",
+  "sourceConditions": [
+    {
+      "id": "quadratic",
+      "condition": "원 넓이 πr², r²=10a²+8a+5",
+      "mappedTo": "graphPlan.coefficients"
+    },
+    {
+      "id": "minimum",
+      "condition": "꼭짓점 a=-0.4, r²=3.4, 중심 (0.4,-1.2)",
+      "mappedTo": "graphPlan.requiredPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "위로 볼록한 이차함수와 최솟값인 꼭짓점 V를 실제 좌표 필드로 표시"
+  ]
+}

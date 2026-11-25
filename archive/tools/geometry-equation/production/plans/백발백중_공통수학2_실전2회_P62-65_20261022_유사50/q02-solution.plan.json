@@ -1,0 +1,255 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "K",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "K"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "CENTROID",
+        "inputs": [
+          "A",
+          "B",
+          "K"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G",
+        "op": "CENTROID",
+        "inputs": [
+          "A",
+          "B",
+          "P"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "givenCircle",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "K"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "locusCircle",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "H"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayCircles": [
+    "givenCircle",
+    "locusCircle"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAP",
+      "refs": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "sBP",
+      "refs": [
+        "B",
+        "P"
+      ]
+    },
+    {
+      "id": "sKP",
+      "refs": [
+        "K",
+        "P"
+      ]
+    },
+    {
+      "id": "sHG",
+      "refs": [
+        "H",
+        "G"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "K",
+    "P",
+    "H",
+    "G"
+  ],
+  "coordinateLabels": [
+    "A",
+    "B",
+    "K",
+    "H",
+    "G"
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "rK",
+        "ownerSegment": "sKP",
+        "text": "6"
+      },
+      {
+        "id": "rG",
+        "ownerSegment": "sHG",
+        "text": "2"
+      }
+    ]
+  },
+  "caption": "원래 원의 중심은 (0,0), 반지름 6이다. G=(A+B+P)/3으로 자취 원의 중심 (1,2), 반지름 2을 얻어 둘레가 4π임을 보여 준다.",
+  "accessibilityDescription": "점 A와 B 및 움직이는 점 P의 삼각형, P가 그리는 원과 무게중심 G가 그리는 반지름 1/3배의 원이 각각 보인다.",
+  "sourceConditions": [
+    {
+      "id": "fixed",
+      "condition": "문제에서 A=(3,1), B=(0,5)",
+      "mappedTo": [
+        "A",
+        "B",
+        "sAB"
+      ]
+    },
+    {
+      "id": "moving",
+      "condition": "원 위 P, 중심 K=(0,0), 반지름 6",
+      "mappedTo": [
+        "K",
+        "P",
+        "givenCircle",
+        "sKP"
+      ]
+    },
+    {
+      "id": "centroid",
+      "condition": "G=(A+B+P)/3; H=(1,2)이고 자취 반지름 2",
+      "mappedTo": [
+        "H",
+        "G",
+        "locusCircle",
+        "sHG",
+        "rG"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원래 원과 무게중심 자취 원을 각각 실제 중심·반지름으로 표시",
+    "표본 삼각형 APB와 무게중심 G, 반지름의 3:1 비를 실선 라벨로 표현"
+  ]
+}

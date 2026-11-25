@@ -1,0 +1,305 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "l1",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "l2",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "-4"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "-3"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "l3",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "-4"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "l1",
+          "l2"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "X"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "X"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "W",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Z",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "W"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [
+    "l1",
+    "l2",
+    "l3"
+  ],
+  "displaySegments": [
+    {
+      "id": "sXU",
+      "refs": [
+        "X",
+        "U"
+      ]
+    },
+    {
+      "id": "sXV",
+      "refs": [
+        "X",
+        "V"
+      ]
+    },
+    {
+      "id": "sWZ",
+      "refs": [
+        "W",
+        "Z"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "X",
+    "U",
+    "V",
+    "W",
+    "Z"
+  ],
+  "hiddenPointNames": [
+    "U",
+    "V",
+    "W",
+    "Z"
+  ],
+  "rightAngles": [
+    {
+      "id": "atX",
+      "refs": [
+        "U",
+        "X",
+        "V"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "parallels": [
+      {
+        "id": "par13",
+        "count": 1,
+        "segments": [
+          "sXU",
+          "sWZ"
+        ]
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "name1",
+        "ownerSegment": "sXU",
+        "text": "l_1"
+      },
+      {
+        "id": "name2",
+        "ownerSegment": "sXV",
+        "text": "l_2"
+      },
+      {
+        "id": "name3",
+        "ownerSegment": "sWZ",
+        "text": "l_3"
+      }
+    ]
+  },
+  "lineLabels": [
+    {
+      "nodeId": "l1",
+      "text": "2x+y+2=0"
+    },
+    {
+      "nodeId": "l2",
+      "text": "2x-4y-3=0"
+    },
+    {
+      "nodeId": "l3",
+      "text": "2x+y-4=0"
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 560
+  },
+  "caption": "해설의 a=2, b=-4를 대입한 l₁, l₂, l₃를 표시한다. 두 직선 l₁⊥l₂는 교점 X의 직각표식, l₁∥l₃는 같은 평행표식으로 확인한다.",
+  "accessibilityDescription": "세 직선 l1, l2, l3 중 두 직선은 직각으로 만나고 첫 번째·세 번째 직선은 평행하다. 직각 표시와 평행 표시를 각각 갖는다.",
+  "sourceConditions": [
+    {
+      "id": "l1",
+      "condition": "l₁: 2x+y+2=0",
+      "mappedTo": [
+        "l1",
+        "sXU"
+      ]
+    },
+    {
+      "id": "l2",
+      "condition": "l₂: 2x-4y-3=0",
+      "mappedTo": [
+        "l2",
+        "sXV"
+      ]
+    },
+    {
+      "id": "l3",
+      "condition": "l₃: 2x+y-4=0",
+      "mappedTo": [
+        "l3",
+        "sWZ"
+      ]
+    },
+    {
+      "id": "relations",
+      "condition": "l₁⊥l₂ 및 l₁∥l₃",
+      "mappedTo": [
+        "atX",
+        "par13"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "세 직선의 실제 기울기와 위치",
+    "l₁·l₂ 직각 표식과 l₁·l₃ 공통 평행 표식을 그려지는 필드로 표시"
+  ]
+}

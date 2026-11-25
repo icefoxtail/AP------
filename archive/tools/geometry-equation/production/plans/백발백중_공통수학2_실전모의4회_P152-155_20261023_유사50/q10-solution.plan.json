@@ -1,0 +1,247 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ABline",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "perpBisector",
+        "op": "PERPENDICULAR_THROUGH",
+        "inputs": [
+          "M",
+          "ABline"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "diagonal",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "-1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "perpBisector",
+          "diagonal"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G",
+        "op": "CENTROID",
+        "inputs": [
+          "A",
+          "B",
+          "P"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [
+    "diagonal",
+    "perpBisector"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAP",
+      "refs": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "sBP",
+      "refs": [
+        "B",
+        "P"
+      ]
+    },
+    {
+      "id": "sMP",
+      "refs": [
+        "M",
+        "P"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "M",
+    "P",
+    "G"
+  ],
+  "coordinateLabels": [
+    "A",
+    "B",
+    "P",
+    "G"
+  ],
+  "rightAngles": [
+    {
+      "id": "rM",
+      "refs": [
+        "A",
+        "M",
+        "P"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "eAPBP",
+        "count": 1,
+        "segments": [
+          "sAP",
+          "sBP"
+        ]
+      }
+    ]
+  },
+  "lineLabels": [
+    {
+      "nodeId": "diagonal",
+      "text": "y=x"
+    }
+  ],
+  "caption": "A=(2,4), B=(-2,6)에서 등거리인 P=(-5,-5)는 수직이등분선과 y=x의 교점이다. 삼각형 ABP의 무게중심은 G=(-1.6666666666666667,1.6666666666666667)이다.",
+  "accessibilityDescription": "좌표평면의 점 A,B와 y=x 위의 P, PA와 PB의 같은 길이 표식, AB의 수직이등분선 및 직각 표식이 표시된다. 삼각형의 무게중심 G도 표시된다.",
+  "sourceConditions": [
+    {
+      "id": "A",
+      "condition": "점 A=(2,4)",
+      "mappedTo": [
+        "A"
+      ]
+    },
+    {
+      "id": "B",
+      "condition": "점 B=(-2,6)",
+      "mappedTo": [
+        "B"
+      ]
+    },
+    {
+      "id": "same",
+      "condition": "PA=PB, P는 y=x 위",
+      "mappedTo": [
+        "perpBisector",
+        "diagonal",
+        "P",
+        "sAP",
+        "sBP",
+        "eAPBP",
+        "rM"
+      ]
+    },
+    {
+      "id": "G",
+      "condition": "G=(A+B+P)/3=(-1.6666666666666667,1.6666666666666667)",
+      "mappedTo": "G"
+    }
+  ],
+  "newVisualInformation": [
+    "PA=PB의 등거리와 직각 수직이등분선",
+    "무게중심이 필요한 경우 A,B,P에서 엔진 CENTROID 노드로 도출한 G"
+  ]
+}
