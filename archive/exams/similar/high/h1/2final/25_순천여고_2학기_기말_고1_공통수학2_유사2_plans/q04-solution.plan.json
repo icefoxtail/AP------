@@ -1,0 +1,26 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      { "id": "P", "name": "P" },
+      { "id": "R", "name": "R" },
+      { "id": "Q", "name": "Q" }
+    ],
+    "subset": ["P", "R", "Q"],
+    "elements": [
+      { "text": "(0,0)", "math": true, "in": ["P", "R", "Q"] },
+      { "text": "(1,1)", "math": true, "in": ["Q"] }
+    ]
+  },
+  "caption": "p의 진리집합 P={(0,0)}는 R에, R은 Q에 포함된다. (1,1)은 Q에 속하지만 R에는 속하지 않으므로 R은 Q의 필요조건이 아니다. ㄱ, ㄷ, ㄹ이 참이다.",
+  "accessibilityDescription": "세 집합 P, R, Q가 순서대로 포개져 있다. 가장 안쪽 P에 (0,0)이 있고, 바깥쪽 Q에서 R 밖의 영역에 (1,1)이 표시되어 있다.",
+  "sourceConditions": [
+    { "id": "S1", "condition": "P={(0,0)}이고 P⊂R⊂Q", "mappedTo": ["diagram.subset", "diagram.elements[0]"] },
+    { "id": "S2", "condition": "(1,1)∈Q이고 (1,1)∉R", "mappedTo": "diagram.elements[1]" }
+  ],
+  "newVisualInformation": [
+    "조건 p, r, q의 함의 관계를 P⊂R⊂Q로 보인다.",
+    "(0,0)은 세 집합 모두에 속하고 (1,1)은 Q에만 속함을 원소 라벨로 표시한다."
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-2, 5, -1, 4],
+    "axisTickValues": { "x": [], "y": [] },
+    "curves": [
+      { "id": "s", "kind": "SQRT", "radicand": ["4", "-1"], "domain": ["-2", "4"], "color": "BLUE", "hideLabel": true },
+      { "id": "l1", "kind": "LINE", "coefficients": ["4", "-1"], "domain": ["-2", "5"], "color": "WARM", "label": "y=-x+4" },
+      { "id": "l2", "kind": "LINE", "coefficients": ["17/4", "-1"], "domain": ["-2", "5"], "color": "GREEN", "style": "DASHED", "label": "y=-x+17/4" }
+    ],
+    "overlays": {
+      "points": [
+        { "id": "E", "x": "4", "y": "0", "unnamed": true, "coordinates": true, "labelDirection": "SE" },
+        { "id": "B", "x": "3", "y": "1", "unnamed": true, "coordinates": true, "labelDirection": "NE" },
+        { "id": "T", "x": "15/4", "y": "1/2", "unnamed": true, "coordinates": false }
+      ],
+      "callouts": [
+        { "id": "tangent", "point": "T", "text": "(15/4,1/2)", "labelKind": "MATH", "direction": "E" }
+      ]
+    }
+  },
+  "caption": "k=4에서는 무리함수의 끝점 (4,0)과 (3,1)에서 두 번 만난다. k=17/4에서는 (15/4,1/2)에서 접해 한 번만 만난다. 따라서 두 교점이 생기는 범위는 4≤k<17/4이다.",
+  "accessibilityDescription": "무리함수 y=√(4−x), 두 직선 y=−x+4와 y=−x+17/4를 겹쳐 그렸다. 끝점 (4,0), 교점 (3,1), 접점 (15/4,1/2)을 각각 표시한다.",
+  "sourceQuote": "함수 y=√(4-x)와 y=-x+k의 그래프의 교점의 개수가 2개",
+  "sourceConditions": [
+    { "id": "S1", "condition": "무리함수 y=√(4−x)의 끝점은 (4,0)", "mappedTo": ["graphPlan.curves[0]", "graphPlan.overlays.points[0]"] },
+    { "id": "S2", "condition": "k=4에서 교점은 (4,0), (3,1)", "mappedTo": ["graphPlan.curves[1]", "graphPlan.overlays.points[0]", "graphPlan.overlays.points[1]"] },
+    { "id": "S3", "condition": "k=17/4에서 접점은 (15/4,1/2)", "mappedTo": ["graphPlan.curves[2]", "graphPlan.overlays.points[2]", "graphPlan.overlays.callouts[0]"] }
+  ],
+  "newVisualInformation": [
+    "두 교점을 만드는 k=4의 경계와 하나의 접점만 만드는 k=17/4의 경계를 비교한다.",
+    "무리함수의 닫힌 끝점 (4,0)을 그려지는 좌표 라벨로 직접 표시한다."
+  ]
+}

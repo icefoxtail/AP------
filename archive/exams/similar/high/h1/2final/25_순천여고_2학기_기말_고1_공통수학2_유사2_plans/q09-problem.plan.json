@@ -1,0 +1,36 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      { "id": "X", "name": "X", "elements": ["1", "2", "3", "4"] },
+      { "id": "Y", "name": "X", "elements": ["1", "2", "3", "4"] },
+      { "id": "Z", "name": "X", "elements": ["1", "2", "3", "4"] }
+    ],
+    "arrows": [
+      { "from": { "column": 0, "element": 0 }, "to": { "column": 1, "element": 2 } },
+      { "from": { "column": 0, "element": 1 }, "to": { "column": 1, "element": 0 } },
+      { "from": { "column": 0, "element": 2 }, "to": { "column": 1, "element": 3 } },
+      { "from": { "column": 0, "element": 3 }, "to": { "column": 1, "element": 1 } },
+      { "from": { "column": 1, "element": 0 }, "to": { "column": 2, "element": 1 } },
+      { "from": { "column": 1, "element": 1 }, "to": { "column": 2, "element": 3 } },
+      { "from": { "column": 1, "element": 2 }, "to": { "column": 2, "element": 0 } },
+      { "from": { "column": 1, "element": 3 }, "to": { "column": 2, "element": 2 } }
+    ],
+    "arrowGroups": [
+      { "name": "f", "from": "X", "to": "Y", "color": "BLUE" },
+      { "name": "g", "from": "Y", "to": "Z", "color": "WARM" }
+    ]
+  },
+  "caption": "X={1,2,3,4}에서 X로의 두 함수 f, g. 왼쪽에서 가운데로 향하는 파란 화살표는 f, 가운데에서 오른쪽으로 향하는 주황 화살표는 g이다.",
+  "accessibilityDescription": "각각 1,2,3,4가 있는 집합 X 세 열과 그 사이의 함수 화살표. f는 1→3, 2→1, 3→4, 4→2이며 g는 1→2, 2→4, 3→1, 4→3이다.",
+  "sourceConditions": [
+    { "id": "S1", "condition": "정의역과 공역 X={1,2,3,4}", "mappedTo": "diagram.columns" },
+    { "id": "S2", "condition": "f(1)=3, f(2)=1, f(3)=4, f(4)=2", "mappedTo": ["diagram.arrows[0]", "diagram.arrows[1]", "diagram.arrows[2]", "diagram.arrows[3]", "diagram.arrowGroups[0]"] },
+    { "id": "S3", "condition": "g(1)=2, g(2)=4, g(3)=1, g(4)=3", "mappedTo": ["diagram.arrows[4]", "diagram.arrows[5]", "diagram.arrows[6]", "diagram.arrows[7]", "diagram.arrowGroups[1]"] }
+  ],
+  "newVisualInformation": [
+    "양쪽 화살표 묶음에 f와 g를 직접 붙여 어느 대응이 어느 함수인지 문제에서 구분한다.",
+    "정답 계산값과 역함수 값은 문제 그림에 강조하거나 기입하지 않는다."
+  ]
+}
