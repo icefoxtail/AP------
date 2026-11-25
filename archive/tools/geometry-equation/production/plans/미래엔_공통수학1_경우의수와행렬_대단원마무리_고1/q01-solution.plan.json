@@ -1,0 +1,26 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "DICE_TABLE",
+    "faces": 6,
+    "colVar": "a",
+    "rowVar": "b",
+    "cell": "SUM",
+    "highlightGroups": [
+      { "highlight": { "expr": "a+b", "in": [5, 5] }, "tone": 1 },
+      { "highlight": { "expr": "a+b", "in": [10, 10] }, "tone": 2 }
+    ]
+  },
+  "caption": "서로 다른 두 주사위의 합을 36칸에 나타냈다. 합이 5인 네 칸과 합이 10인 세 칸이 서로 겹치지 않아 모두 7가지다.",
+  "accessibilityDescription": "가로는 첫째 주사위 a, 세로는 둘째 주사위 b의 눈이다. 6행 6열 합계 표에서 합이 5와 10인 칸을 서로 다른 진하기로 표시했다.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "서로 다른 주사위 두 개의 눈 a, b는 각각 1부터 6까지이다.", "mappedTo": "chart.faces, chart.colVar, chart.rowVar, chart.cell" },
+    { "id": "c2", "condition": "두 눈의 합이 5의 배수이고 가능한 합은 5 또는 10이다.", "mappedTo": "chart.highlightGroups[0].highlight, chart.highlightGroups[1].highlight" },
+    { "id": "c3", "condition": "합이 5인 순서쌍 4개, 10인 순서쌍 3개가 있다.", "mappedTo": "chart.highlightGroups[0], chart.highlightGroups[1]" }
+  ],
+  "newVisualInformation": [
+    "순서쌍 (1,4), (2,3), (3,2), (4,1)이 합 5인 네 칸임을 보인다.",
+    "순서쌍 (4,6), (5,5), (6,4)가 합 10인 세 칸임을 보인다.",
+    "두 조건의 칸이 서로 겹치지 않는다는 합의 법칙을 보여 준다."
+  ]
+}

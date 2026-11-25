@@ -1,0 +1,37 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "TREE",
+    "root": {
+      "label": "오름차순",
+      "children": [
+        { "label": "2천대 24개" },
+        { "label": "40백대 6개" },
+        {
+          "label": "42백대",
+          "children": [
+            { "label": "420_", "children": [{ "label": "4206" }, { "label": "4208" }] },
+            { "label": "426_", "children": [{ "label": "4260" }, { "label": "4268" }] },
+            { "label": "428_", "children": [{ "label": "4280" }, { "label": "4286" }] }
+          ]
+        }
+      ]
+    },
+    "highlightPaths": [
+      { "path": ["42백대", "428_", "4280"], "color": "BLUE" }
+    ]
+  },
+  "caption": "작은 수부터 첫 24개는 천의 자리가 2, 다음 6개는 40으로 시작한다. 35번째는 42로 시작하는 여섯 수 중 다섯 번째인 4280이다.",
+  "accessibilityDescription": "네 자리 수를 오름차순으로 묶었다. 처음 24개와 다음 6개를 지나면 4206, 4208, 4260, 4268, 4280, 4286 순서이며 4280에 파란 강조 가지가 이어진다.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "0, 2, 4, 6, 8에서 서로 다른 네 숫자로 네 자리 자연수를 만든다. 천의 자리 0은 불가하다.", "mappedTo": "chart.root.children (첫 번째 두 천의 자리 묶음)" },
+    { "id": "c2", "condition": "천의 자리가 2인 24개를 먼저 지나간다.", "mappedTo": "chart.root.children[0].label" },
+    { "id": "c3", "condition": "천의 자리가 4이고 백의 자리가 0인 여섯 수를 그다음에 지나간다.", "mappedTo": "chart.root.children[1].label" },
+    { "id": "c4", "condition": "천의 자리가 4이고 백의 자리가 2인 여섯 수는 4206, 4208, 4260, 4268, 4280, 4286 순서다.", "mappedTo": "chart.root.children[2].children[0..2].children[0..1]" },
+    { "id": "c5", "condition": "35번째 수는 24개와 6개를 지나 42로 시작하는 수 중 다섯 번째다.", "mappedTo": "chart.highlightPaths[0]" }
+  ],
+  "newVisualInformation": [
+    "앞선 24개와 다음 6개를 하나의 묶음씩 지나며 35번째 순위가 남은 여섯 숫자 중 다섯 번째임을 강조한다.",
+    "모든 네 자리 수를 나열하지 않고 필요한 앞부분만 보여 준다."
+  ]
+}

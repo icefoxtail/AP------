@@ -1,0 +1,687 @@
+{
+  "schema": "textbook-problem-solution-plan-field-audit-v1",
+  "auditDateKST": "2026-11-26",
+  "batch": "mirae-h1-combinatorics-and-matrix-final-20261126",
+  "sourceJs": "archive/exams/textbooks/미래엔_공통수학1/미래엔_공통수학1_경우의수와행렬_대단원마무리_고1/미래엔_공통수학1_경우의수와행렬_대단원마무리_고1.js",
+  "sourceGitBlobSha": "5c2a111027ba7e6648ccb861246e894d5a7ad149",
+  "baseMainSha": "c371cb077515b6ac5f58585b1bda0846d079b9bf",
+  "scope": {
+    "fileQuestionCount": 22,
+    "uniqueMathQuestionsAcrossBothFiles": 22,
+    "duplicatedIdsWithOtherStem": "q01..q12",
+    "axesPerItem": [
+      "problem",
+      "solution"
+    ]
+  },
+  "policies": {
+    "answerExposure": "신규 문제 그림 없음. 기존 q04/q20 PNG에 정답 새 표기 없음",
+    "surfaceFill": "주사위 해설 표의 사건 구분 칸만 옅게 강조. TREE는 면 채움 없음",
+    "sourceJsEdited": false,
+    "svgRendered": "NOT_RUN",
+    "pngRendered": "NOT_RUN",
+    "studentView": "NOT_RUN",
+    "jsImageBinding": "NOT_RUN",
+    "engineCapabilityPending": []
+  },
+  "items": [
+    {
+      "qid": "q01",
+      "id": 1,
+      "reusedMathFromOtherStem": "미래엔_공통수학1_경우의수_대단원마무리_고1/q01",
+      "problem": {
+        "judgment": "EXEMPT",
+        "reason": "서로 다른 두 주사위의 눈과 5의 배수라는 조건은 글만으로 완전하다. 해설에서 셀을 미리 칠해 문제에 붙이면 답의 개수를 암시한다.",
+        "capability": null,
+        "planPath": null,
+        "planLint": {
+          "shallow": "N/A_EXEMPT",
+          "full": "N/A_EXEMPT"
+        },
+        "drawnFeatureParity": "N/A_NO_DRAWN_FIELDS"
+      },
+      "solution": {
+        "judgment": "BENEFICIAL",
+        "reason": "합이 5인 순서쌍 네 개와 10인 순서쌍 세 개를 6×6 표에서 구별하면 두 사건의 배타성과 순서의 차이가 분명해진다.",
+        "capability": "stat-chart-figure-v1/DICE_TABLE",
+        "planPath": "archive/tools/geometry-equation/production/plans/미래엔_공통수학1_경우의수와행렬_대단원마무리_고1/q01-solution.plan.json",
+        "planLint": {
+          "shallow": "PASS",
+          "full": "PASS"
+        },
+        "drawnFeatureParity": "PASS_PLAN_FIELDS_ONLY",
+        "fieldParityReviewKey": "q01-solution"
+      }
+    },
+    {
+      "qid": "q02",
+      "id": 2,
+      "reusedMathFromOtherStem": "미래엔_공통수학1_경우의수_대단원마무리_고1/q02",
+      "problem": {
+        "judgment": "EXEMPT",
+        "reason": "다항식의 두 괄호가 이미 네 항과 두 항을 전부 보여 준다. 별도 도식은 곱을 장식적으로 반복한다.",
+        "capability": null,
+        "planPath": null,
+        "planLint": {
+          "shallow": "N/A_EXEMPT",
+          "full": "N/A_EXEMPT"
+        },
+        "drawnFeatureParity": "N/A_NO_DRAWN_FIELDS"
+      },
+      "solution": {
+        "judgment": "EXEMPT",
+        "reason": "4×2 곱의 법칙과 서로 다른 여덟 단항식이 해설 식으로 완결된다.",
+        "capability": null,
+        "planPath": null,
+        "planLint": {
+          "shallow": "N/A_EXEMPT",
+          "full": "N/A_EXEMPT"
+        },
+        "drawnFeatureParity": "N/A_NO_DRAWN_FIELDS"
+      }
+    },
+    {
+      "qid": "q03",
+      "id": 3,
+      "reusedMathFromOtherStem": "미래엔_공통수학1_경우의수_대단원마무리_고1/q03",
+      "problem": {
+        "judgment": "EXEMPT",
+        "reason": "225의 약수 개수를 묻는 산술 문제로 도형·공간·그래프 조건이 없다.",
+        "capability": null,
+        "planPath": null,
+        "planLint": {
+          "shallow": "N/A_EXEMPT",
+          "full": "N/A_EXEMPT"
+        },
+        "drawnFeatureParity": "N/A_NO_DRAWN_FIELDS"
+      },
+      "solution": {
+        "judgment": "EXEMPT",
+        "reason": "225=3²×5² 및 (2+1)(2+1)=9를 그림으로 옮겨도 인수분해 설명이 중복된다.",
+        "capability": null,
+        "planPath": null,
+        "planLint": {
+          "shallow": "N/A_EXEMPT",
+          "full": "N/A_EXEMPT"
+        },
+        "drawnFeatureParity": "N/A_NO_DRAWN_FIELDS"
+      }
+    },
+    {
+      "qid": "q04",
+      "id": 4,
+      "reusedMathFromOtherStem": "미래엔_공통수학1_경우의수_대단원마무리_고1/q04",
+      "problem": {
+        "judgment": "REQUIRED",
+        "reason": "입구·매점·출구와 서로 다른 산책로를 구분해야 하는 필수 문제 그림이다. 기존 q04.png가 이 세 지점과 4·3·2개의 산책로를 보여 주어 신규 제작을 생략한다.",
+        "capability": "EXISTING_SOURCE_PNG",
+        "existingAsset": "archive/exams/textbooks/미래엔_공통수학1/미래엔_공통수학1_경우의수와행렬_대단원마무리_고1/q04.png",
+        "planPath": null,
+        "planLint": {
+          "shallow": "N/A_EXISTING_PNG",
+          "full": "N/A_EXISTING_PNG"
+        },
+        "drawnFeatureParity": "N/A_NO_NEW_PLAN",
+        "sourceAssetCheck": "VISUAL_CHECKED_SOURCE_PNG"
+      },
+      "solution": {
+        "judgment": "BENEFICIAL",
+        "reason": "직행 네 갈래와 매점을 거치는 3×2 갈래를 별도 수형도로 펼치면 합의 법칙과 곱의 법칙의 순서가 보인다.",
+        "capability": "stat-chart-figure-v1/TREE",
+        "planPath": "archive/tools/geometry-equation/production/plans/미래엔_공통수학1_경우의수와행렬_대단원마무리_고1/q04-solution.plan.json",
+        "planLint": {
+          "shallow": "PASS",
+          "full": "PASS"
+        },
+        "drawnFeatureParity": "PASS_PLAN_FIELDS_ONLY",
+        "fieldParityReviewKey": "q04-solution"
+      }
+    },
+    {
+      "qid": "q05",
+      "id": 5,
+      "reusedMathFromOtherStem": "미래엔_공통수학1_경우의수_대단원마무리_고1/q05",
+      "problem": {
+        "judgment": "EXEMPT",
+        "reason": "정차역 11개에서 출발역과 도착역의 순서를 구별하는 조건만으로 완전하다.",
+        "capability": null,
+        "planPath": null,
+        "planLint": {
+          "shallow": "N/A_EXEMPT",
+          "full": "N/A_EXEMPT"
+        },
+        "drawnFeatureParity": "N/A_NO_DRAWN_FIELDS"
+      },
+      "solution": {
+        "judgment": "EXEMPT",
+        "reason": "11P2=11×10의 단순 순서 선택이며 역 배치 그림은 실제 열차 노선으로 오해하게 한다.",
+        "capability": null,
+        "planPath": null,
+        "planLint": {
+          "shallow": "N/A_EXEMPT",
+          "full": "N/A_EXEMPT"
+        },
+        "drawnFeatureParity": "N/A_NO_DRAWN_FIELDS"
+      }
+    },
+    {
+      "qid": "q06",
+      "id": 6,
+      "reusedMathFromOtherStem": "미래엔_공통수학1_경우의수_대단원마무리_고1/q06",
+      "problem": {
+        "judgment": "EXEMPT",
+        "reason": "0,1,2,3,4의 서로 다른 숫자 세 개로 만든 짝수라는 자리값 조건은 글로 주어져 있다.",
+        "capability": null,
+        "planPath": null,
+        "planLint": {
+          "shallow": "N/A_EXEMPT",
+          "full": "N/A_EXEMPT"
+        },
+        "drawnFeatureParity": "N/A_NO_DRAWN_FIELDS"
+      },
+      "solution": {
+        "judgment": "EXEMPT",
+        "reason": "일의 자리 0과 2·4로 경우를 나누고 백의 자리 0을 금지하는 해설이 4×3과 2×3×3으로 정확히 완결된다. 이를 같은 식의 칸 그림으로 반복하지 않는다.",
+        "capability": null,
+        "planPath": null,
+        "planLint": {
+          "shallow": "N/A_EXEMPT",
+          "full": "N/A_EXEMPT"
+        },
+        "drawnFeatureParity": "N/A_NO_DRAWN_FIELDS"
+      }
+    },
+    {
+      "qid": "q07",
+      "id": 7,
+      "reusedMathFromOtherStem": "미래엔_공통수학1_경우의수_대단원마무리_고1/q07",
+      "problem": {
+        "judgment": "EXEMPT",
+        "reason": "nC3=3nC2 식을 푸는 대수·조합 계산 문제다.",
+        "capability": null,
+        "planPath": null,
+        "planLint": {
+          "shallow": "N/A_EXEMPT",
+          "full": "N/A_EXEMPT"
+        },
+        "drawnFeatureParity": "N/A_NO_DRAWN_FIELDS"
+      },
+      "solution": {
+        "judgment": "EXEMPT",
+        "reason": "두 조합식을 인수분해·약분하는 산술 풀이가 완결되며 별도 경우 열거는 필요 없다.",
+        "capability": null,
+        "planPath": null,
+        "planLint": {
+          "shallow": "N/A_EXEMPT",
+          "full": "N/A_EXEMPT"
+        },
+        "drawnFeatureParity": "N/A_NO_DRAWN_FIELDS"
+      }
+    },
+    {
+      "qid": "q08",
+      "id": 8,
+      "reusedMathFromOtherStem": "미래엔_공통수학1_경우의수_대단원마무리_고1/q08",
+      "problem": {
+        "judgment": "EXEMPT",
+        "reason": "남자 여섯·여자 넷 중 각각 두 명을 뽑는 순수 선택 조건이다.",
+        "capability": null,
+        "planPath": null,
+        "planLint": {
+          "shallow": "N/A_EXEMPT",
+          "full": "N/A_EXEMPT"
+        },
+        "drawnFeatureParity": "N/A_NO_DRAWN_FIELDS"
+      },
+      "solution": {
+        "judgment": "EXEMPT",
+        "reason": "6C2×4C2는 해설 식 그 자체이며 15×6 칸 그림이 새 정보를 보태지 않는다.",
+        "capability": null,
+        "planPath": null,
+        "planLint": {
+          "shallow": "N/A_EXEMPT",
+          "full": "N/A_EXEMPT"
+        },
+        "drawnFeatureParity": "N/A_NO_DRAWN_FIELDS"
+      }
+    },
+    {
+      "qid": "q09",
+      "id": 9,
+      "reusedMathFromOtherStem": "미래엔_공통수학1_경우의수_대단원마무리_고1/q09",
+      "problem": {
+        "judgment": "EXEMPT",
+        "reason": "사과·배 필수, 바나나 제외라는 선택 제한이 문장에 명확하다.",
+        "capability": null,
+        "planPath": null,
+        "planLint": {
+          "shallow": "N/A_EXEMPT",
+          "full": "N/A_EXEMPT"
+        },
+        "drawnFeatureParity": "N/A_NO_DRAWN_FIELDS"
+      },
+      "solution": {
+        "judgment": "EXEMPT",
+        "reason": "필수 두 과일을 빼고 남은 다섯 중 둘을 뽑는 5C2 계산이 완결된다.",
+        "capability": null,
+        "planPath": null,
+        "planLint": {
+          "shallow": "N/A_EXEMPT",
+          "full": "N/A_EXEMPT"
+        },
+        "drawnFeatureParity": "N/A_NO_DRAWN_FIELDS"
+      }
+    },
+    {
+      "qid": "q10",
+      "id": 10,
+      "reusedMathFromOtherStem": "미래엔_공통수학1_경우의수_대단원마무리_고1/q10",
+      "problem": {
+        "judgment": "EXEMPT",
+        "reason": "여섯 육상 선수 중 특정 두 명의 정확히 한 명만 포함하는 문장 조건이다.",
+        "capability": null,
+        "planPath": null,
+        "planLint": {
+          "shallow": "N/A_EXEMPT",
+          "full": "N/A_EXEMPT"
+        },
+        "drawnFeatureParity": "N/A_NO_DRAWN_FIELDS"
+      },
+      "solution": {
+        "judgment": "EXEMPT",
+        "reason": "2×4C3×4!의 선발·순서 결정이 글과 식에 충분히 구분되어 있어 별도 나열은 중복된다.",
+        "capability": null,
+        "planPath": null,
+        "planLint": {
+          "shallow": "N/A_EXEMPT",
+          "full": "N/A_EXEMPT"
+        },
+        "drawnFeatureParity": "N/A_NO_DRAWN_FIELDS"
+      }
+    },
+    {
+      "qid": "q11",
+      "id": 11,
+      "reusedMathFromOtherStem": "미래엔_공통수학1_경우의수_대단원마무리_고1/q11",
+      "problem": {
+        "judgment": "EXEMPT",
+        "reason": "35번째 수의 접두 숫자·순위를 학생이 직접 찾아야 하므로 문제에 답의 접두 트리를 미리 보여 주지 않는다.",
+        "capability": null,
+        "planPath": null,
+        "planLint": {
+          "shallow": "N/A_EXEMPT",
+          "full": "N/A_EXEMPT"
+        },
+        "drawnFeatureParity": "N/A_NO_DRAWN_FIELDS"
+      },
+      "solution": {
+        "judgment": "BENEFICIAL",
+        "reason": "천의 자리 2의 24개, 40으로 시작하는 여섯 개, 42로 시작하는 여섯 개라는 순서 블록을 펼치고 4280까지의 위치를 추적하는 수형도가 유익하다.",
+        "capability": "stat-chart-figure-v1/TREE",
+        "planPath": "archive/tools/geometry-equation/production/plans/미래엔_공통수학1_경우의수와행렬_대단원마무리_고1/q11-solution.plan.json",
+        "planLint": {
+          "shallow": "PASS",
+          "full": "PASS"
+        },
+        "drawnFeatureParity": "PASS_PLAN_FIELDS_ONLY",
+        "fieldParityReviewKey": "q11-solution"
+      }
+    },
+    {
+      "qid": "q12",
+      "id": 12,
+      "reusedMathFromOtherStem": "미래엔_공통수학1_경우의수_대단원마무리_고1/q12",
+      "problem": {
+        "judgment": "EXEMPT",
+        "reason": "두 근과 이항계수·순열계수가 주어진 대수적 관계 문제다.",
+        "capability": null,
+        "planPath": null,
+        "planLint": {
+          "shallow": "N/A_EXEMPT",
+          "full": "N/A_EXEMPT"
+        },
+        "drawnFeatureParity": "N/A_NO_DRAWN_FIELDS"
+      },
+      "solution": {
+        "judgment": "EXEMPT",
+        "reason": "근과 계수의 관계로 nCr=3, nPr=6을 얻는 식 풀이에 그래프·공간 도형이 관여하지 않는다.",
+        "capability": null,
+        "planPath": null,
+        "planLint": {
+          "shallow": "N/A_EXEMPT",
+          "full": "N/A_EXEMPT"
+        },
+        "drawnFeatureParity": "N/A_NO_DRAWN_FIELDS"
+      }
+    },
+    {
+      "qid": "q13",
+      "id": 13,
+      "reusedMathFromOtherStem": null,
+      "problem": {
+        "judgment": "EXEMPT",
+        "reason": "2×2 행렬 네 성분을 i,j에 대입하는 식이 자료의 전부다.",
+        "capability": null,
+        "planPath": null,
+        "planLint": {
+          "shallow": "N/A_EXEMPT",
+          "full": "N/A_EXEMPT"
+        },
+        "drawnFeatureParity": "N/A_NO_DRAWN_FIELDS"
+      },
+      "solution": {
+        "judgment": "EXEMPT",
+        "reason": "네 성분 5,4,7,6의 계산과 합은 행렬 표기 안에 이미 있으므로 도식이 중복된다.",
+        "capability": null,
+        "planPath": null,
+        "planLint": {
+          "shallow": "N/A_EXEMPT",
+          "full": "N/A_EXEMPT"
+        },
+        "drawnFeatureParity": "N/A_NO_DRAWN_FIELDS"
+      }
+    },
+    {
+      "qid": "q14",
+      "id": 14,
+      "reusedMathFromOtherStem": null,
+      "problem": {
+        "judgment": "EXEMPT",
+        "reason": "두 행렬의 대응 성분이 서로 같다는 대수 조건이다.",
+        "capability": null,
+        "planPath": null,
+        "planLint": {
+          "shallow": "N/A_EXEMPT",
+          "full": "N/A_EXEMPT"
+        },
+        "drawnFeatureParity": "N/A_NO_DRAWN_FIELDS"
+      },
+      "solution": {
+        "judgment": "EXEMPT",
+        "reason": "2a−1=b+2와 2b=5a+2를 풀면 충분하며 위치 그림이 불필요하다.",
+        "capability": null,
+        "planPath": null,
+        "planLint": {
+          "shallow": "N/A_EXEMPT",
+          "full": "N/A_EXEMPT"
+        },
+        "drawnFeatureParity": "N/A_NO_DRAWN_FIELDS"
+      }
+    },
+    {
+      "qid": "q15",
+      "id": 15,
+      "reusedMathFromOtherStem": null,
+      "problem": {
+        "judgment": "EXEMPT",
+        "reason": "주어진 두 2×2 행렬의 선형결합을 계산하는 문제다.",
+        "capability": null,
+        "planPath": null,
+        "planLint": {
+          "shallow": "N/A_EXEMPT",
+          "full": "N/A_EXEMPT"
+        },
+        "drawnFeatureParity": "N/A_NO_DRAWN_FIELDS"
+      },
+      "solution": {
+        "judgment": "EXEMPT",
+        "reason": "3A/2−3B의 각 성분을 해설에 이미 명시했으므로 별도 행렬 그림은 반복이다.",
+        "capability": null,
+        "planPath": null,
+        "planLint": {
+          "shallow": "N/A_EXEMPT",
+          "full": "N/A_EXEMPT"
+        },
+        "drawnFeatureParity": "N/A_NO_DRAWN_FIELDS"
+      }
+    },
+    {
+      "qid": "q16",
+      "id": 16,
+      "reusedMathFromOtherStem": null,
+      "problem": {
+        "judgment": "EXEMPT",
+        "reason": "kA+lB의 대응 성분 방정식을 푸는 문제다.",
+        "capability": null,
+        "planPath": null,
+        "planLint": {
+          "shallow": "N/A_EXEMPT",
+          "full": "N/A_EXEMPT"
+        },
+        "drawnFeatureParity": "N/A_NO_DRAWN_FIELDS"
+      },
+      "solution": {
+        "judgment": "EXEMPT",
+        "reason": "네 성분의 등식을 풀이에 빠짐없이 적어 두었으므로 새로운 수학적 시각 관계가 없다.",
+        "capability": null,
+        "planPath": null,
+        "planLint": {
+          "shallow": "N/A_EXEMPT",
+          "full": "N/A_EXEMPT"
+        },
+        "drawnFeatureParity": "N/A_NO_DRAWN_FIELDS"
+      }
+    },
+    {
+      "qid": "q17",
+      "id": 17,
+      "reusedMathFromOtherStem": null,
+      "problem": {
+        "judgment": "EXEMPT",
+        "reason": "AB=O의 행렬 곱 연산만 해석하면 된다.",
+        "capability": null,
+        "planPath": null,
+        "planLint": {
+          "shallow": "N/A_EXEMPT",
+          "full": "N/A_EXEMPT"
+        },
+        "drawnFeatureParity": "N/A_NO_DRAWN_FIELDS"
+      },
+      "solution": {
+        "judgment": "EXEMPT",
+        "reason": "곱의 네 성분을 0과 비교하는 해설 식이 이미 정확한 표이다.",
+        "capability": null,
+        "planPath": null,
+        "planLint": {
+          "shallow": "N/A_EXEMPT",
+          "full": "N/A_EXEMPT"
+        },
+        "drawnFeatureParity": "N/A_NO_DRAWN_FIELDS"
+      }
+    },
+    {
+      "qid": "q18",
+      "id": 18,
+      "reusedMathFromOtherStem": null,
+      "problem": {
+        "judgment": "EXEMPT",
+        "reason": "(A+B)²의 성분 대응은 수식 안에서 주어진다.",
+        "capability": null,
+        "planPath": null,
+        "planLint": {
+          "shallow": "N/A_EXEMPT",
+          "full": "N/A_EXEMPT"
+        },
+        "drawnFeatureParity": "N/A_NO_DRAWN_FIELDS"
+      },
+      "solution": {
+        "judgment": "EXEMPT",
+        "reason": "a,b를 각 성분 식으로 계산하고 나머지를 대조하는 절차가 식으로 완결된다.",
+        "capability": null,
+        "planPath": null,
+        "planLint": {
+          "shallow": "N/A_EXEMPT",
+          "full": "N/A_EXEMPT"
+        },
+        "drawnFeatureParity": "N/A_NO_DRAWN_FIELDS"
+      }
+    },
+    {
+      "qid": "q19",
+      "id": 19,
+      "reusedMathFromOtherStem": null,
+      "problem": {
+        "judgment": "EXEMPT",
+        "reason": "AB=BA의 행렬 교환 조건을 대입하는 문제다.",
+        "capability": null,
+        "planPath": null,
+        "planLint": {
+          "shallow": "N/A_EXEMPT",
+          "full": "N/A_EXEMPT"
+        },
+        "drawnFeatureParity": "N/A_NO_DRAWN_FIELDS"
+      },
+      "solution": {
+        "judgment": "EXEMPT",
+        "reason": "AB와 BA를 모두 행렬식으로 전개해 성분을 대조하므로 도식이 그 정보를 반복한다.",
+        "capability": null,
+        "planPath": null,
+        "planLint": {
+          "shallow": "N/A_EXEMPT",
+          "full": "N/A_EXEMPT"
+        },
+        "drawnFeatureParity": "N/A_NO_DRAWN_FIELDS"
+      }
+    },
+    {
+      "qid": "q20",
+      "id": 20,
+      "reusedMathFromOtherStem": null,
+      "problem": {
+        "judgment": "REQUIRED",
+        "reason": "두 편의점의 빵·우유 가격 및 두 사람의 구매 수량을 교차 읽는 표가 필수이다. 기존 q20.png는 원문 각 셀을 선명하게 보존하므로 SVG로 표를 재작성하지 않는다.",
+        "capability": "EXISTING_SOURCE_PNG",
+        "existingAsset": "archive/exams/textbooks/미래엔_공통수학1/미래엔_공통수학1_경우의수와행렬_대단원마무리_고1/q20.png",
+        "planPath": null,
+        "planLint": {
+          "shallow": "N/A_EXISTING_PNG",
+          "full": "N/A_EXISTING_PNG"
+        },
+        "drawnFeatureParity": "N/A_NO_NEW_PLAN",
+        "sourceAssetCheck": "VISUAL_CHECKED_SOURCE_PNG"
+      },
+      "solution": {
+        "judgment": "EXEMPT",
+        "reason": "가격행렬과 수량행렬의 곱 AB 및 P·Q 총비용의 계산이 해설 식과 기존 문제 표에 완결되어 있어 추가 SVG는 장식이다.",
+        "capability": null,
+        "planPath": null,
+        "planLint": {
+          "shallow": "N/A_EXEMPT",
+          "full": "N/A_EXEMPT"
+        },
+        "drawnFeatureParity": "N/A_NO_DRAWN_FIELDS"
+      }
+    },
+    {
+      "qid": "q21",
+      "id": 21,
+      "reusedMathFromOtherStem": null,
+      "problem": {
+        "judgment": "EXEMPT",
+        "reason": "A=2B+C라는 성분 등식의 대수 계산 문제다.",
+        "capability": null,
+        "planPath": null,
+        "planLint": {
+          "shallow": "N/A_EXEMPT",
+          "full": "N/A_EXEMPT"
+        },
+        "drawnFeatureParity": "N/A_NO_DRAWN_FIELDS"
+      },
+      "solution": {
+        "judgment": "EXEMPT",
+        "reason": "a+b와 ab를 얻어 제곱합을 만드는 과정은 해설에 모두 수식으로 있다.",
+        "capability": null,
+        "planPath": null,
+        "planLint": {
+          "shallow": "N/A_EXEMPT",
+          "full": "N/A_EXEMPT"
+        },
+        "drawnFeatureParity": "N/A_NO_DRAWN_FIELDS"
+      }
+    },
+    {
+      "qid": "q22",
+      "id": 22,
+      "reusedMathFromOtherStem": null,
+      "problem": {
+        "judgment": "EXEMPT",
+        "reason": "상삼각 행렬의 거듭제곱 패턴을 찾는 대수 문제다.",
+        "capability": null,
+        "planPath": null,
+        "planLint": {
+          "shallow": "N/A_EXEMPT",
+          "full": "N/A_EXEMPT"
+        },
+        "drawnFeatureParity": "N/A_NO_DRAWN_FIELDS"
+      },
+      "solution": {
+        "judgment": "EXEMPT",
+        "reason": "A²,A³,An의 행렬식과 2n=30을 보여 주는 해설만으로 규칙이 명확하다.",
+        "capability": null,
+        "planPath": null,
+        "planLint": {
+          "shallow": "N/A_EXEMPT",
+          "full": "N/A_EXEMPT"
+        },
+        "drawnFeatureParity": "N/A_NO_DRAWN_FIELDS"
+      }
+    }
+  ],
+  "drawnFieldReviews": {
+    "q11-solution": {
+      "sourceEvidence": "천의 자리2인 24개 다음, 40으로 시작하는 6개, 42로 시작하는 6개: 4206,4208,4260,4268,4280,4286; 35번째",
+      "actualEngineFields": {
+        "coordinates": "해당 없음: 수형도의 선택 순서만 그림",
+        "segments": "오름차순 첫 두 묶음(24,6)과 42 계열의 세 십의 자리 접두 묶음, 각 두 숫자로 총 여섯 개의 말단",
+        "labels": "2천대 24개, 40백대 6개, 42백대, 420_/426_/428_, 4206/4208/4260/4268/4280/4286",
+        "angles": "없음",
+        "rightAngleMarkers": "없음",
+        "ratios": "개수 24와 6은 가지 숫자 라벨; 임의의 기하 비율 없음",
+        "fill": "없음, 4280 선택 경로의 선 색 BLUE만 사용"
+      },
+      "independentCheck": "전체 세 자리 순열 블록 4P3=24, 40__ 블록 3P2=6. 35−24−6=5이므로 42__ 집합 중 오름차순 다섯째 4280. 다른 앞자릿수 묶음은 필요 없어 표시하지 않음.",
+      "drawnFeatureParity": "PASS_PLAN_FIELDS_ONLY"
+    },
+    "q01-solution": {
+      "sourceEvidence": "a,b∈{1,2,3,4,5,6}, a+b∈{5,10}; (1,4),(2,3),(3,2),(4,1),(4,6),(5,5),(6,4)",
+      "actualEngineFields": {
+        "coordinates": "해당 없음: 좌표평면 아닌 순서쌍의 표",
+        "segments": "6열×6행 격자선, 행·열은 각각 1..6",
+        "labels": "a,b; 행·열 눈 1..6; 각 36칸의 a+b",
+        "angles": "없음",
+        "rightAngleMarkers": "없음",
+        "ratios": "없음",
+        "fill": "원문 사건 5와 10의 칸 그룹만 명시적으로 강조, 나머지는 무채움",
+        "counts": "합5 정확히 4칸, 합10 정확히 3칸, 중복0칸"
+      },
+      "independentCheck": "36 순서쌍을 직접 열거하여 5:4개, 10:3개 확인. 5배수는 두 합뿐, 정답 7과 일치.",
+      "drawnFeatureParity": "PASS_PLAN_FIELDS_ONLY"
+    },
+    "q04-solution": {
+      "sourceEvidence": "기존 q04.png의 입구·매점·출구 세 지점, 입구→출구 4개, 입구→매점 3개, 매점→출구 2개; 같은 지점 재방문 제외",
+      "actualEngineFields": {
+        "coordinates": "해당 없음: 원본 공원 내 실제 물리 좌표를 수형도에 임의 투영하지 않음",
+        "segments": "직행 경우의 수형도 가지 4개, 매점 경유 3×2=6개, 총 10 끝경로",
+        "labels": "입구, 직행, 매점 경유, 직행길1~4, 매점길1~3, 출구길1~2(각 매점길별)",
+        "angles": "없음",
+        "rightAngleMarkers": "없음",
+        "ratios": "해설의 경로 곱 3×2만 가지 수로 표현, 길이 비율을 만들지 않음",
+        "fill": "없음"
+      },
+      "independentCheck": "그래프 단순 경로를 경유지 0개/1개로 분해하여 4+(3×2)=10. 도식의 길1 등의 번호는 원문에 없는 길이·순서를 가정하지 않는 구분용.",
+      "drawnFeatureParity": "PASS_PLAN_FIELDS_ONLY"
+    }
+  },
+  "summary": {
+    "questionCount": 22,
+    "axisCount": 44,
+    "requiredExistingPng": 2,
+    "beneficialExecutablePlans": 3,
+    "exemptAxes": 39,
+    "lintShallowPass": 3,
+    "lintFullPass": 3,
+    "drawnFieldParityPass": 3,
+    "engineCapabilityPending": 0,
+    "renderAndPublication": "NOT_RUN"
+  }
+}
