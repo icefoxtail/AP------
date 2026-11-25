@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "textbook-figure-plan-audit-v1",
+  "auditDate": "2026-11-25",
+  "sourcePath": "archive/exams/textbooks/동아출판_공통수학1/동아_공통수학1_복소수와이차방정식_중단원연습_고1/동아_공통수학1_복소수와이차방정식_중단원연습_고1.js",
+  "sourceGitBlobSha": "75ded78b84b6b99ec19169d376d2136ea74239ce",
+  "mainBaseline": "32438323065029948863763e46e306bf10ef8b1e",
+  "scope": { "firstQid": "q01", "lastQid": "q10", "questionCount": 10, "sourceQuestionCount": 18, "axesPerQuestion": 2, "deferredQids": "q11..q18" },
+  "validationPolicy": {
+    "problemAnswerExposure": "NO_ANSWER_IN_PROBLEM_PLANS",
+    "defaultFill": "NONE",
+    "render": "NOT_RUN",
+    "pngReview": "SOURCE_q06_PNG_MANUALLY_INSPECTED",
+    "studentScreen": "NOT_RUN",
+    "a4": "NOT_RUN",
+    "planLintShallow": "PASS_1_OF_1",
+    "planLintFull": "PASS_1_OF_1",
+    "parityScope": "SOURCE_PNG_VS_DECLARED_DRAWN_FIELDS_NOT_RASTERIZED_PIXELS"
+  },
+  "items": [
+    { "qid": "q01", "problem": { "decision": "EXEMPT", "reason": "복소수 등식 세 개의 실수·허수 비교 문제다." }, "solution": { "decision": "EXEMPT", "reason": "각 실수부분과 허수부분을 비교하여 일차식·연립식을 계산한다." } },
+    { "qid": "q02", "problem": { "decision": "EXEMPT", "reason": "네 복소수의 켤레를 직접 쓰는 기호 계산으로 도형이 필요 없다." }, "solution": { "decision": "EXEMPT", "reason": "허수부분 부호를 바꾸는 규칙을 각 항에 적용한 단순식이다." } },
+    { "qid": "q03", "problem": { "decision": "EXEMPT", "reason": "두 복소수의 사칙연산 네 항을 a+bi 꼴로 쓰는 계산이다." }, "solution": { "decision": "EXEMPT", "reason": "실수부·허수부 정리와 분모 실수화 과정이 모두 수식으로 완결된다." } },
+    { "qid": "q04", "problem": { "decision": "EXEMPT", "reason": "음의 제곱근이 있는 세 항의 복소수 계산이다." }, "solution": { "decision": "EXEMPT", "reason": "i²=−1을 사용한 곱셈과 나눗셈만 수행한다." } },
+    { "qid": "q05", "problem": { "decision": "EXEMPT", "reason": "z=1+x(i−1)의 제곱이 음의 실수라는 조건을 식으로 판단한다." }, "solution": { "decision": "EXEMPT", "reason": "실수부 부등식과 허수부 영 조건에서 x를 고른 뒤 z⁴를 계산한다." } },
+    { "qid": "q06", "existingSourcePng": "q06.png", "problem": {
+      "decision": "REQUIRED", "reason": "전기 회로의 Z₁, Z₂가 직렬이 아닌 두 병렬 가지에 연결되었음을 보여 주는 원문 PNG의 배선 구조가 필요하다.",
+      "capability": "construction-spike-v1", "planPath": "archive/tools/geometry-equation/production/plans/동아_공통수학1_복소수와이차방정식_중단원연습_고1/q06-problem.plan.json", "sourceVsPlan": "REVIEWED", "planLintShallow": "PASS", "planLintFull": "PASS", "featureParity": "PASS",
+      "drawnFeatureCheck": ["원문 q06.png 좌우 열린 단자 두 개의 수평 인입 후 아래 방향 수직 연장", "왼쪽·오른쪽 두 접속점에서 상·하로 갈라진 배선 4개", "위 저항 기호 topZig1..8, 아래 저항 기호 bottomZig1..8 각각 독립 연속 지그재그 선분", "표시된 SOURCE_POINT 28개·displaySegments 28개를 원문 연결 토폴로지와 대조", "윗가지 Z_1, 아랫가지 Z_2의 수식 아래첨자 라벨을 respective 저항 선분에 expressionLabels로 부착", "Z₁=1−i와 Z₂=2+i는 원문 발문의 값이며 원본 PNG처럼 그림에는 수치 표기 없음", "결과 임피던스 Z=1−i/3 및 해설 계산값 미노출", "배선의 90도 꺾임은 회로 연결 구조이지 별도의 직각 표식이 아니므로 rightAngles 추가하지 않음", "원문에 길이·각·비율 치수·면 채움 없음"]
+    }, "solution": { "decision": "EXEMPT", "reason": "회로의 두 병렬 가지는 문제 그림으로 충분하며 해설은 1/Z=1/Z₁+1/Z₂에 숫자를 대입해 분모를 실수화하는 복소수 산술만 수행한다." } },
+    { "qid": "q07", "problem": { "decision": "EXEMPT", "reason": "두 이차방정식의 근을 구하고 실근·허근을 구분하는 식 문제다." }, "solution": { "decision": "EXEMPT", "reason": "인수분해와 근의 공식으로 각 근을 직접 산출한다." } },
+    { "qid": "q08", "problem": { "decision": "EXEMPT", "reason": "세 이차방정식의 판별식 부호를 계산하는 항목이다." }, "solution": { "decision": "EXEMPT", "reason": "D의 부호 세 종류를 식에 대입한 결과를 열거하며 독립 도형이 불필요하다." } },
+    { "qid": "q09", "problem": { "decision": "EXEMPT", "reason": "k와 무관한 이차방정식의 판별식을 계산한다." }, "solution": { "decision": "EXEMPT", "reason": "D/4=3>0이라는 상수 부호 판단이 전부다." } },
+    { "qid": "q10", "problem": { "decision": "EXEMPT", "reason": "실근 존재에 필요한 판별식의 일차부등식 조건이다." }, "solution": { "decision": "EXEMPT", "reason": "8+5k≥0을 풀어 구간을 정리하므로 별도 수직선은 계산 중복이다." } }
+  ],
+  "summary": { "questions": 10, "axes": 20, "required": 1, "beneficial": 0, "exempt": 19, "plansWritten": 1, "shallowPass": 1, "fullPass": 1, "drawnFeatureParityPass": 1, "engineCapabilityPending": 0 }
+}

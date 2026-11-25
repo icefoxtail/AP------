@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "textbook-figure-plan-audit-v1",
+  "auditDate": "2026-11-25",
+  "sourcePath": "archive/exams/textbooks/동아출판_공통수학1/동아_공통수학1_방정식과부등식_대단원평가_고1/동아_공통수학1_방정식과부등식_대단원평가_고1.js",
+  "sourceGitBlobSha": "be6978546c4bc48c832628cb301c6855e58b7ebf",
+  "mainBaseline": "32438323065029948863763e46e306bf10ef8b1e",
+  "scope": { "firstQid": "q01", "lastQid": "q15", "questionCount": 15, "sourceQuestionCount": 45, "axesPerQuestion": 2, "deferredQids": "q16..q45" },
+  "validationPolicy": {
+    "problemAnswerExposure": "NO_ANSWER_IN_PROBLEM_PLANS",
+    "defaultFill": "NONE",
+    "render": "NOT_RUN",
+    "pngReview": "NO_SOURCE_PNG_IN_SCOPE",
+    "studentScreen": "NOT_RUN",
+    "a4": "NOT_RUN",
+    "planLintShallow": "PASS_1_OF_1",
+    "planLintFull": "PASS_1_OF_1",
+    "parityScope": "SOURCE_MATH_VS_DECLARED_DRAWN_FIELDS_NOT_RASTERIZED_PIXELS"
+  },
+  "items": [
+    { "qid": "q01", "problem": { "decision": "EXEMPT", "reason": "복소수 등식의 실수·허수 부분을 비교하는 문자식으로 그림 조건이 없다." }, "solution": { "decision": "EXEMPT", "reason": "x−1=0 및 2x+y=−4의 계수 비교가 해설에 완결되어 있다." } },
+    { "qid": "q02", "problem": { "decision": "EXEMPT", "reason": "이차방정식의 네 근 종류를 판별식 부호로 분류하는 식 문제다." }, "solution": { "decision": "EXEMPT", "reason": "1−k의 부호에 따른 네 부등식 정리가 전부이며 그래프는 동일 결론의 반복이다." } },
+    { "qid": "q03", "problem": { "decision": "EXEMPT", "reason": "두 근의 합·곱으로 역수합과 제곱합을 구하는 수식 문제다." }, "solution": { "decision": "EXEMPT", "reason": "α+β=−3, αβ=−5를 항등식에 대입하는 계산만 한다." } },
+    { "qid": "q04", "problem": { "decision": "EXEMPT", "reason": "켤레복소수가 들어간 등식의 실수·허수 항만 추출한다." }, "solution": { "decision": "EXEMPT", "reason": "z=a+bi 치환 후 두 실수 연립방정식을 풀이한다." } },
+    { "qid": "q05", "problem": { "decision": "EXEMPT", "reason": "음의 제곱근 네 항을 복소수로 변환하여 합산하는 순수 계산이다." }, "solution": { "decision": "EXEMPT", "reason": "i²=−1과 분모 실수화로 각 항을 정리해 동류항을 합한다." } },
+    { "qid": "q06", "problem": { "decision": "EXEMPT", "reason": "복소수 z의 거듭제곱 다섯 항을 합하는 계산으로 원문 그림이 없다." }, "solution": { "decision": "EXEMPT", "reason": "z²=−i, z⁴=−1, z⁶=i, z⁸=1, z¹⁰=−i의 순환을 식으로 정확히 보여 준다; 복소평면 도식이 없어도 충분하다." } },
+    { "qid": "q07", "problem": { "decision": "EXEMPT", "reason": "매개변수 k의 실근 조건은 판별식 부등식 하나로 충분하다." }, "solution": { "decision": "EXEMPT", "reason": "D/4=k−5≥0의 일차부등식 풀이이며 별도 수직선은 단순 중복이다." } },
+    { "qid": "q08", "problem": { "decision": "EXEMPT", "reason": "중근 판별식이 결정할 삼각형 종류를 문제 그림으로 미리 그리면 직각이라는 정답을 노출한다." }, "solution": {
+      "decision": "BENEFICIAL", "reason": "판별식에서 a²=b²+c²를 얻은 뒤 피타고라스 정리의 역을 쓰므로 빗변 a·직각변 b,c와 직각 표시를 해설에 대응한다.",
+      "capability": "construction-spike-v1", "planPath": "archive/tools/geometry-equation/production/plans/동아_공통수학1_방정식과부등식_대단원평가_고1/q08-solution.plan.json", "sourceVsPlan": "REVIEWED", "planLintShallow": "PASS", "planLintFull": "PASS", "featureParity": "PASS",
+      "drawnFeatureCheck": ["대표 좌표 P=(0,0), Q=(8,0), R=(0,6)의 실제 직각과 6²+8²=10² 검산", "모든 꼭짓점 이름 및 점 표식 숨김(원문에 이름 없음)", "세 실제 선분 legB·legC·hypotenuseA를 그림에 표시", "선분 라벨 b·c·a 각각 1개씩 올바른 변에 부착", "rightAngles[rightCorner]를 두 직각변의 공통 꼭짓점에 렌더 필드로 지정", "원문에는 개별 변 수치·비율이 없으므로 6:8:10 예시는 비축척 모식도로 고지, 숫자 라벨은 없음", "넓이 채움·여분 각·값 없음"]
+    } },
+    { "qid": "q09", "problem": { "decision": "EXEMPT", "reason": "두 방정식의 근과 계수 관계를 연결해 a,b를 구하는 수식 문제다." }, "solution": { "decision": "EXEMPT", "reason": "근의 합·곱으로 두 연립식의 계수만 계산한다." } },
+    { "qid": "q10", "problem": { "decision": "EXEMPT", "reason": "z+켤레 w=0과 보기 ㄱ~ㄷ의 복소수 표현 조건이다." }, "solution": { "decision": "EXEMPT", "reason": "켤레 관계 정리와 비실수 반례 대입이 논증을 완결한다." } },
+    { "qid": "q11", "problem": { "decision": "EXEMPT", "reason": "모든 k에 대한 중근 조건은 판별식의 항등식 여부다." }, "solution": { "decision": "EXEMPT", "reason": "(2m−4)k+m²+n=0의 계수 비교만 수행한다." } },
+    { "qid": "q12", "problem": { "decision": "EXEMPT", "reason": "두 근의 차를 이용해 매개변수 k를 결정하는 식 조건이다." }, "solution": { "decision": "EXEMPT", "reason": "(α−β)²=(α+β)²−4αβ를 적용한 이차식 인수분해가 전부다." } },
+    { "qid": "q13", "problem": { "decision": "EXEMPT", "reason": "z, zw의 값으로 복소수의 세제곱 차를 계산한다." }, "solution": { "decision": "EXEMPT", "reason": "켤레 분모 실수화와 세제곱 차 항등식이 해설에 충분하다." } },
+    { "qid": "q14", "problem": { "decision": "EXEMPT", "reason": "한 방정식의 중근 조건으로 다른 이차방정식의 근을 판별한다." }, "solution": { "decision": "EXEMPT", "reason": "D=0으로 얻은 관계를 D′에 대입해 양수임을 확인한다." } },
+    { "qid": "q15", "problem": { "decision": "EXEMPT", "reason": "두 근을 포함한 역수의 합을 구하는 대수식이다." }, "solution": { "decision": "EXEMPT", "reason": "근이 만족하는 방정식으로 각 분모를 근 자체로 줄이는 식 조작이다." } }
+  ],
+  "summary": { "questions": 15, "axes": 30, "required": 0, "beneficial": 1, "exempt": 29, "plansWritten": 1, "shallowPass": 1, "fullPass": 1, "drawnFeatureParityPass": 1, "engineCapabilityPending": 0 }
+}
