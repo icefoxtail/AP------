@@ -1,0 +1,25 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {"id":"X","elements":["1","2","3","4","5"]},
+      {"id":"R","name":"치역","elements":["1","2","4"]}
+    ],
+    "arrows": [
+      {"from":{"column":0,"element":0},"to":{"column":1,"element":0}},
+      {"from":{"column":0,"element":1},"to":{"column":1,"element":2}},
+      {"from":{"column":0,"element":2},"to":{"column":1,"element":1}},
+      {"from":{"column":0,"element":3},"to":{"column":1,"element":1}},
+      {"from":{"column":0,"element":4},"to":{"column":1,"element":2}}
+    ],
+    "arrowGroups":[{"name":"f","from":"X","to":"R","color":"BLUE"}]
+  },
+  "caption":"1, 2, 3, 4, 5를 7로 나눈 제곱의 나머지는 차례로 1, 4, 2, 2, 4이므로 치역은 1, 2, 4이고 합은 7이다.",
+  "accessibilityDescription":"정의역 X의 1은 1에, 2와 5는 4에, 3과 4는 2에 각각 대응한다. 오른쪽 열은 무한집합 Y 전체가 아니라 계산된 치역 R이다.",
+  "sourceConditions":[
+    {"id":"F01-a","condition":"X={1,2,3,4,5}, Y는 정수 전체","mappedTo":"diagram.columns[0]; 오른쪽 열 R은 해설에서 구한 치역이며 Y 자체가 아님"},
+    {"id":"F01-b","condition":"f(x)=x²을 7로 나눈 나머지: 1→1, 2→4, 3→2, 4→2, 5→4","mappedTo":"diagram.arrows"}
+  ],
+  "newVisualInformation":["서로 다른 입력이 같은 나머지로 대응하는 모습을 한눈에 보여 준다."]
+}

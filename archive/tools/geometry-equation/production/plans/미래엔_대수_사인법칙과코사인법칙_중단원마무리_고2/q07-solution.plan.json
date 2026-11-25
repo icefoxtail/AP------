@@ -1,0 +1,36 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{
+    "schemaVersion":"construction-spike-v1",
+    "realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes":[
+      {"id":"M","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"J","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"80"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"U","op":"POLAR_POINT","inputs":["M","J"],"args":{"length":{"kind":"integer","value":"1"},"angleDeg":{"kind":"integer","value":"75"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"V","op":"POLAR_POINT","inputs":["J","M"],"args":{"length":{"kind":"integer","value":"1"},"angleDeg":{"kind":"integer","value":"45"},"turn":"CW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"mRay","op":"LINE_THROUGH","inputs":["M","U"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"jRay","op":"LINE_THROUGH","inputs":["J","V"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"D","op":"LINE_INTERSECTION","inputs":["mRay","jRay"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "displayPoints":["M","J","D"],
+  "displaySegments":[{"id":"sMJ","refs":["M","J"]},{"id":"sMD","refs":["M","D"],"emphasis":"BOLD"},{"id":"sJD","refs":["J","D"]}],
+  "planeMarks":{
+    "angles":[
+      {"id":"angM","refs":["D","M","J"],"value":75,"label":"75","arcs":1,"style":"ARC"},
+      {"id":"angJ","refs":["M","J","D"],"value":45,"label":"45","arcs":1,"style":"ARC"},
+      {"id":"angD","refs":["M","D","J"],"value":60,"label":"60","arcs":1,"style":"ARC","factRole":"DERIVED_INTERMEDIATE"}
+    ],
+    "dimensions":[{"id":"distMJ","from":"M","to":"J","label":"80","unit":"m","side":"BELOW","value":"80"}]
+  },
+  "coordinateCanvas":{"width":650,"height":495},
+  "sourceQuote":"$80\\text{ m}$만큼 떨어져 있는 민호와 지아",
+  "caption":"민호 M과 지아 J 사이 80 m, 올려본각 75°와 45°로 삼각형 MDJ를 그리면 드론 D의 각은 60°다. 사인법칙으로 DM을 구한다.",
+  "accessibilityDescription":"수평선 위 민호 M과 지아 J의 거리는 80미터다. 그 위 드론 D를 향한 두 선분이 각각 75도와 45도를 이루고 꼭대기 D의 각 60도가 표시된다.",
+  "sourceConditions":[
+    {"id":"T07-a","condition":"민호와 지아는 동일 눈높이, MJ=80m","mappedTo":"mathPlan.nodes[M,J],displaySegments[sMJ],planeMarks.dimensions[distMJ]"},
+    {"id":"T07-b","condition":"민호의 올려본각 75°, 지아의 올려본각 45°","mappedTo":"mathPlan.nodes[U,V,D],planeMarks.angles[angM,angJ]"},
+    {"id":"T07-c","condition":"∠MDJ=60°","mappedTo":"planeMarks.angles[angD]"}
+  ],
+  "newVisualInformation":["사인법칙에서 길이 80의 대각은 60°, 구할 거리 MD의 대각은 45°임을 보인다."]
+}

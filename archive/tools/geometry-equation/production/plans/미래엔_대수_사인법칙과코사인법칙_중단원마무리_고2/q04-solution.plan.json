@@ -1,0 +1,35 @@
+{
+  "capability":"composite-panels-v1",
+  "panels":[
+    {"caption":{"text":"⑴ B=135°"},"plan":{
+      "capability":"construction-spike-v1",
+      "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+        {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+        {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"4"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+        {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-1"},{"kind":"integer","value":"1"}]},"outputType":"POINT","factRole":"GIVEN"}
+      ]},
+      "displayPoints":["A","B","C"],"displaySegments":[{"id":"sBC","refs":["B","C"]},{"id":"sBA","refs":["B","A"]},{"id":"sAC","refs":["A","C"]}],
+      "planeMarks":{"angles":[{"id":"angB","refs":["A","B","C"],"value":135,"label":"135","arcs":1,"style":"ARC"}],"expressionLabels":[{"id":"a","ownerSegment":"sBC","text":"4"},{"id":"c","ownerSegment":"sBA","text":"sqrt(2)"}]},
+      "coordinateCanvas":{"width":405,"height":340}
+    }},
+    {"caption":{"text":"⑵ A=150°"},"plan":{
+      "capability":"construction-spike-v1",
+      "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+        {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+        {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"10"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+        {"id":"C","op":"POLAR_POINT","inputs":["A","B"],"args":{"length":{"kind":"integer","value":"6"},"angleDeg":{"kind":"integer","value":"150"},"turn":"CCW"},"outputType":"POINT","factRole":"GIVEN"}
+      ]},
+      "displayPoints":["A","B","C"],"displaySegments":[{"id":"sAB","refs":["A","B"]},{"id":"sAC","refs":["A","C"]},{"id":"sBC","refs":["B","C"]}],
+      "planeMarks":{"angles":[{"id":"angA","refs":["B","A","C"],"value":150,"label":"150","arcs":1,"style":"ARC"}],"expressionLabels":[{"id":"c","ownerSegment":"sAB","text":"10"},{"id":"b","ownerSegment":"sAC","text":"6"}]},
+      "coordinateCanvas":{"width":405,"height":340}
+    }}
+  ],
+  "sourceQuote":"다음 $\\triangle\\mathrm{ABC}$의 넓이를 구하시오.",
+  "caption":"두 문제 모두 두 변이 끼는 둔각을 사용한다. ⑴ 넓이=(4×√2×sin135°)/2=2, ⑵ 넓이=(6×10×sin150°)/2=15다.",
+  "accessibilityDescription":"왼쪽 삼각형은 B가 135도이고 그 양옆 변이 4와 루트2다. 오른쪽 삼각형은 A가 150도이고 그 양옆 변이 10과 6이다. 넓이를 구하는 삼각형 내부는 채우지 않았다.",
+  "sourceConditions":[
+    {"id":"T04-a","condition":"⑴ a=BC=4, c=BA=√2, B=135°","mappedTo":"panels[0].plan.mathPlan.nodes,planeMarks"},
+    {"id":"T04-b","condition":"⑵ b=AC=6, c=AB=10, A=150°","mappedTo":"panels[1].plan.mathPlan.nodes,planeMarks"}
+  ],
+  "newVisualInformation":["두 변과 그 끼인각의 사인으로 넓이를 계산한다는 관계와 둔각 방향을 보인다."]
+}

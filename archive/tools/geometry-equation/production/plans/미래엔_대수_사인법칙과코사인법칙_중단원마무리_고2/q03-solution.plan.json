@@ -1,0 +1,43 @@
+{
+  "capability":"composite-panels-v1",
+  "panels":[
+    {
+      "caption":{"text":"⑴ 끼인각 60°, b=6, c=3"},
+      "plan":{
+        "capability":"construction-spike-v1",
+        "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+          {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+          {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"3"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+          {"id":"C","op":"POLAR_POINT","inputs":["A","B"],"args":{"length":{"kind":"integer","value":"6"},"angleDeg":{"kind":"integer","value":"60"},"turn":"CCW"},"outputType":"POINT","factRole":"GIVEN"}
+        ]},
+        "displayPoints":["A","B","C"],
+        "displaySegments":[{"id":"sAB","refs":["A","B"]},{"id":"sAC","refs":["A","C"]},{"id":"sBC","refs":["B","C"]}],
+        "planeMarks":{"angles":[{"id":"angA","refs":["B","A","C"],"value":60,"label":"60","arcs":1,"style":"ARC"}],"expressionLabels":[{"id":"c","ownerSegment":"sAB","text":"3"},{"id":"b","ownerSegment":"sAC","text":"6"},{"id":"a","ownerSegment":"sBC","text":"3sqrt(3)"}]},
+        "coordinateCanvas":{"width":405,"height":335}
+      }
+    },
+    {
+      "caption":{"text":"⑵ 세 변  √7, 2, 3"},
+      "plan":{
+        "capability":"construction-spike-v1",
+        "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+          {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+          {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"3"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+          {"id":"C","op":"POLAR_POINT","inputs":["A","B"],"args":{"length":{"kind":"integer","value":"2"},"angleDeg":{"kind":"integer","value":"60"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+        ]},
+        "displayPoints":["A","B","C"],
+        "displaySegments":[{"id":"sAB","refs":["A","B"]},{"id":"sAC","refs":["A","C"]},{"id":"sBC","refs":["B","C"]}],
+        "planeMarks":{"angles":[{"id":"angA","refs":["B","A","C"],"value":60,"label":"60","arcs":1,"style":"ARC","factRole":"CONCLUSION"}],"expressionLabels":[{"id":"c","ownerSegment":"sAB","text":"3"},{"id":"b","ownerSegment":"sAC","text":"2"},{"id":"a","ownerSegment":"sBC","text":"sqrt(7)"}]},
+        "coordinateCanvas":{"width":405,"height":335}
+      }
+    }
+  ],
+  "sourceQuote":"$b=6,\\, c=3,\\, A=60^\\circ$",
+  "caption":"⑴ b=6, c=3, A=60°에서 코사인법칙으로 a=3√3이다. ⑵ a=√7, b=2, c=3이면 cosA=1/2이므로 A=60°다.",
+  "accessibilityDescription":"첫째 삼각형에는 A의 60도, 변 AB 3, AC 6, BC 3루트3을 표시한다. 둘째 삼각형에는 변 AB 3, AC 2, BC 루트7, 그리고 계산한 A의 60도를 표시한다.",
+  "sourceConditions":[
+    {"id":"T03-a","condition":"⑴ AB=c=3, AC=b=6, A=60°, 풀이 BC=a=3√3","mappedTo":"panels[0].plan.mathPlan.nodes,planeMarks.angles,planeMarks.expressionLabels"},
+    {"id":"T03-b","condition":"⑵ BC=a=√7, AC=b=2, AB=c=3, 풀이 A=60°","mappedTo":"panels[1].plan.mathPlan.nodes,planeMarks.angles,planeMarks.expressionLabels"}
+  ],
+  "newVisualInformation":["코사인법칙으로 변을 구하는 경우와 각을 역으로 구하는 경우를 같은 ABC 배치로 대조한다."]
+}

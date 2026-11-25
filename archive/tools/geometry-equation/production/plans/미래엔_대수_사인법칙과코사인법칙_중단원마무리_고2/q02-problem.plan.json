@@ -1,0 +1,34 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{
+    "schemaVersion":"construction-spike-v1",
+    "realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes":[
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"expression","op":"mul","args":[{"kind":"integer","value":"4"},{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"3"}]}]},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"U","op":"POLAR_POINT","inputs":["B","C"],"args":{"length":{"kind":"integer","value":"1"},"angleDeg":{"kind":"integer","value":"45"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"V","op":"POLAR_POINT","inputs":["C","B"],"args":{"length":{"kind":"integer","value":"1"},"angleDeg":{"kind":"integer","value":"75"},"turn":"CW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"bRay","op":"LINE_THROUGH","inputs":["B","U"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"cRay","op":"LINE_THROUGH","inputs":["C","V"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"A","op":"LINE_INTERSECTION","inputs":["bRay","cRay"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "displayPoints":["A","B","C"],
+  "displaySegments":[{"id":"sAB","refs":["A","B"]},{"id":"sAC","refs":["A","C"]},{"id":"sBC","refs":["B","C"]}],
+  "planeMarks":{
+    "angles":[
+      {"id":"angA","refs":["B","A","C"],"value":60,"label":"60","arcs":1,"style":"ARC"},
+      {"id":"angB","refs":["A","B","C"],"value":45,"label":"45","arcs":1,"style":"ARC"}
+    ],
+    "expressionLabels":[{"id":"lenA","ownerSegment":"sBC","text":"4sqrt(3)"}]
+  },
+  "coordinateCanvas":{"width":520,"height":395},
+  "sourceQuote":"$a=4\\sqrt{3},\\, A=60^\\circ,\\, B=45^\\circ$",
+  "caption":"주어진 삼각형의 A는 60°, B는 45°이고 변 BC는 4√3이다. 구할 변 b와 외접원의 반지름은 표시하지 않았다.",
+  "accessibilityDescription":"삼각형 ABC에서 A와 B에 각각 60도와 45도 각 호가 있고, B와 C 사이 변의 길이는 4루트3이라고 표시된다.",
+  "sourceConditions":[
+    {"id":"T02-a","condition":"A=60°, B=45°; 남은 C=75°로 A의 위치를 작도","mappedTo":"mathPlan.nodes[U,V,A], planeMarks.angles[angA,angB]"},
+    {"id":"T02-b","condition":"a=BC=4√3, 좌표 길이도 정확히 4√3","mappedTo":"mathPlan.nodes[B,C],displaySegments[sBC],planeMarks.expressionLabels[lenA]"}
+  ],
+  "newVisualInformation":["문제에서 주어진 두 각과 그 대변의 위치를 보여 주되 정답 변 b와 반지름 R은 숨긴다."]
+}

@@ -1,0 +1,21 @@
+{
+  "capability":"piecewise-polynomial-spike-v1",
+  "graphPlan":{
+    "family":"piecewise-polynomial",
+    "pieces":[{"coefficients":["-4","1"]},{"coefficients":["-8","5"]}],
+    "breakpoints":[{"x":"1","y":"-3"}],
+    "sourceDomain":{"kind":"ALL_REALS"},
+    "domain":[-3,4],
+    "viewport":[-3,4,-9,13],
+    "requiredPoints":[{"id":"P","x":1,"y":-3}],
+    "axisTickValues":{"x":[1],"y":[]}
+  },
+  "sourceQuote":"일대일대응이 되도록 하는 자연수 $a$의 최솟값은?",
+  "caption":"a=3이면 x가 1보다 작을 때 y=x−4, 1 이상일 때 y=5x−8로, 꺾이는 점 (1,−3) 양쪽에서 계속 증가해 일대일대응이다.",
+  "accessibilityDescription":"a가 3인 경우의 두 일차식이 (1,−3)에서 이어지고 왼쪽과 오른쪽 조각의 기울기가 각각 양의 1과 양의 5다.",
+  "sourceConditions":[
+    {"id":"F03-a","condition":"f(x)=2|x−1|+ax−6, x<1일 때 기울기 a−2, x≥1일 때 a+2","mappedTo":"graphPlan.pieces,graphPlan.breakpoints"},
+    {"id":"F03-b","condition":"a의 최솟값 3일 때 y=x−4 또는 y=5x−8, 두 조각의 공통점 (1,−3)","mappedTo":"graphPlan.pieces,graphPlan.requiredPoints[P]"}
+  ],
+  "newVisualInformation":["두 조각이 같은 방향으로 증가하여 함수 전체가 일대일대응이 되는 경계 사례를 보여 준다."]
+}
