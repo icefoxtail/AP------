@@ -1,0 +1,263 @@
+{
+  "capability": "solid-figure-v1",
+  "space": {
+    "points": [
+      {
+        "id": "A",
+        "at": [
+          5,
+          3,
+          4
+        ]
+      },
+      {
+        "id": "B",
+        "at": [
+          5,
+          6,
+          4
+        ]
+      },
+      {
+        "id": "C",
+        "at": [
+          1,
+          6,
+          4
+        ]
+      },
+      {
+        "id": "D",
+        "at": [
+          1,
+          3,
+          4
+        ]
+      },
+      {
+        "id": "E",
+        "at": [
+          5,
+          3,
+          -1
+        ]
+      },
+      {
+        "id": "F",
+        "at": [
+          5,
+          6,
+          -1
+        ]
+      },
+      {
+        "id": "G",
+        "at": [
+          1,
+          6,
+          -1
+        ]
+      },
+      {
+        "id": "H",
+        "at": [
+          1,
+          3,
+          -1
+        ]
+      },
+      {
+        "id": "O",
+        "at": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "X",
+        "at": [
+          8,
+          0,
+          0
+        ],
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "Y",
+        "at": [
+          0,
+          8,
+          0
+        ],
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "Z",
+        "at": [
+          0,
+          0,
+          8
+        ],
+        "hideName": true,
+        "hideDot": true
+      }
+    ],
+    "segments": [
+      {
+        "from": "A",
+        "to": "B",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "B",
+        "to": "C",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "C",
+        "to": "D",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "D",
+        "to": "A",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "E",
+        "to": "F",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "F",
+        "to": "G",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "G",
+        "to": "H",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "H",
+        "to": "E",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "E",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "B",
+        "to": "F",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "C",
+        "to": "G",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "D",
+        "to": "H",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "O",
+        "to": "X",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "O",
+        "to": "Y",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "O",
+        "to": "Z",
+        "style": "AUTO",
+        "role": "REF"
+      }
+    ]
+  },
+  "dims": [
+    {
+      "from": "A",
+      "to": "B",
+      "label": "3"
+    },
+    {
+      "from": "A",
+      "to": "D",
+      "label": "4"
+    },
+    {
+      "from": "A",
+      "to": "E",
+      "label": "5"
+    }
+  ],
+  "labels": [
+    {
+      "text": "x",
+      "at": "X"
+    },
+    {
+      "text": "y",
+      "at": "Y"
+    },
+    {
+      "text": "z",
+      "at": "Z"
+    }
+  ],
+  "solidCaption": {
+    "text": "기하 182 문제 q04"
+  },
+  "caption": "기하 182 q04: 주어진 G 좌표와 각 모서리 방향을 만족하는 직육면체, 세 축 방향 보조선.",
+  "accessibilityDescription": "주어진 G 좌표와 각 모서리 방향을 만족하는 직육면체, 세 축 방향 보조선.",
+  "sourceQuote": "[그림: 좌표공간에 놓인 직육면체 $\\mathrm{ABCD-EFGH}$에서 윗면 $\\mathrm{ABCD}$, 밑면 $\\mathrm{EFGH}$이며 모서리 $\\mathrm{DA}$가 $+x$방향, $\\mathrm{AB}$가 $+y$방향, $\\mathrm{EA}$가 $+z$방향과 평행하고 꼭짓점 $\\mathrm{G}$가 뒤쪽 아래 오른쪽 모서리에 표시되",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "직육면체 윗면 ABCD·밑면 EFGH",
+      "mappedTo": "space.points[A..H];space.segments[0..11]"
+    },
+    {
+      "id": "c2",
+      "condition": "AB=3, AD=4, AE=5",
+      "mappedTo": "dims[0..2]"
+    },
+    {
+      "id": "c3",
+      "condition": "G=(1,6,-1), DA는 +x, AB는 +y, EA는 +z와 평행",
+      "mappedTo": "space.points[G,A,B,D,E];space.segments[12..14]"
+    },
+    {
+      "id": "c4",
+      "condition": "x,y,z 축은 화살표가 없는 보조 선분과 문자",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:NATIVE_3D_COORDINATE_AXIS_ARROWS"
+    }
+  ],
+  "newVisualInformation": [
+    "공식 엔진의 부분 기본형이며 미지원 핵심 요소는 ENGINE_CAPABILITY_PENDING"
+  ]
+}

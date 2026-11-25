@@ -1,0 +1,177 @@
+{
+  "capability": "solid-figure-v1",
+  "space": {
+    "points": [
+      {
+        "id": "O",
+        "at": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "P",
+        "at": [
+          2,
+          3.4641016151377544,
+          0
+        ]
+      },
+      {
+        "id": "Q",
+        "at": [
+          0,
+          5.196152422706632,
+          3
+        ]
+      },
+      {
+        "id": "X",
+        "at": [
+          6,
+          0,
+          0
+        ],
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "Y",
+        "at": [
+          0,
+          7,
+          0
+        ],
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "Z",
+        "at": [
+          0,
+          0,
+          6
+        ],
+        "hideName": true,
+        "hideDot": true
+      }
+    ],
+    "segments": [
+      {
+        "from": "O",
+        "to": "X",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "O",
+        "to": "Y",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "O",
+        "to": "Z",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "O",
+        "to": "P",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "O",
+        "to": "Q",
+        "style": "AUTO",
+        "role": "REF"
+      }
+    ]
+  },
+  "dims": [
+    {
+      "from": "O",
+      "to": "P",
+      "label": "4"
+    },
+    {
+      "from": "O",
+      "to": "Q",
+      "label": "6"
+    }
+  ],
+  "labels": [
+    {
+      "text": "x",
+      "at": "X"
+    },
+    {
+      "text": "y",
+      "at": "Y"
+    },
+    {
+      "text": "z",
+      "at": "Z"
+    }
+  ],
+  "marks": {
+    "angles": [
+      {
+        "refs": [
+          "P",
+          "O",
+          "X"
+        ],
+        "arcs": 1,
+        "label": "60^\\circ"
+      },
+      {
+        "refs": [
+          "Q",
+          "O",
+          "Y"
+        ],
+        "arcs": 2,
+        "label": "30^\\circ"
+      }
+    ]
+  },
+  "solidCaption": {
+    "text": "기하 182 문제 q05"
+  },
+  "caption": "기하 182 q05: xy평면 P와 yz평면 Q, 길이 4·6과 60도·30도 호의 동형 도식.",
+  "accessibilityDescription": "xy평면 P와 yz평면 Q, 길이 4·6과 60도·30도 호의 동형 도식.",
+  "sourceQuote": "[그림: 원점 $\\mathrm{O}$에서 $xy$평면의 제$1$사분면 위에 $\\overline{\\mathrm{OP}}=4$, $x$축의 양의 방향과 이루는 각이 $\\dfrac{\\pi}{3}$인 점 $\\mathrm{P}$가 있고, $yz$평면의 제$1$사분면 위에 $\\overline{\\mathrm{OQ}}=6$, $y$축의 양의 방향과 이루는 각이 $\\",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "P는 xy평면 1사분면, OP=4",
+      "mappedTo": "space.points[P];space.segments[3];dims[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "OP는 +x축과 π/3, 60도 호가 대응",
+      "mappedTo": "marks.angles[0];space.segments[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "Q는 yz평면 양의 z, OQ=6",
+      "mappedTo": "space.points[Q];space.segments[4];dims[1]"
+    },
+    {
+      "id": "c4",
+      "condition": "OQ는 +y축과 π/6, 30도 호가 대응",
+      "mappedTo": "marks.angles[1];space.segments[1]"
+    },
+    {
+      "id": "c5",
+      "condition": "좌표축 화살표 및 원문 π/3·π/6 라디안 호 표기",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:3D_COORDINATE_AXIS_AND_RADIAN_LABELS"
+    }
+  ],
+  "newVisualInformation": [
+    "공식 엔진의 부분 기본형이며 미지원 핵심 요소는 ENGINE_CAPABILITY_PENDING"
+  ]
+}

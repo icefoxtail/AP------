@@ -1,0 +1,191 @@
+{
+  "capability": "solid-figure-v1",
+  "space": {
+    "points": [
+      {
+        "id": "P",
+        "at": [
+          0,
+          0,
+          7
+        ]
+      },
+      {
+        "id": "L",
+        "at": [
+          -5,
+          0,
+          7
+        ],
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "R",
+        "at": [
+          3,
+          0,
+          7
+        ],
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "A",
+        "at": [
+          -5,
+          0,
+          3
+        ]
+      },
+      {
+        "id": "M",
+        "at": [
+          3,
+          0,
+          5
+        ],
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "Y",
+        "at": [
+          3,
+          4,
+          5
+        ],
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "B",
+        "at": [
+          3,
+          4,
+          2
+        ]
+      }
+    ],
+    "segments": [
+      {
+        "from": "P",
+        "to": "L",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "P",
+        "to": "R",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "L",
+        "to": "A",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "R",
+        "to": "M",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "M",
+        "to": "Y",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "Y",
+        "to": "B",
+        "style": "AUTO",
+        "role": "REF"
+      }
+    ]
+  },
+  "dims": [
+    {
+      "from": "P",
+      "to": "L",
+      "label": "5"
+    },
+    {
+      "from": "P",
+      "to": "R",
+      "label": "3"
+    },
+    {
+      "from": "L",
+      "to": "A",
+      "label": "4"
+    },
+    {
+      "from": "R",
+      "to": "M",
+      "label": "2"
+    },
+    {
+      "from": "M",
+      "to": "Y",
+      "label": "4"
+    },
+    {
+      "from": "Y",
+      "to": "B",
+      "label": "3"
+    }
+  ],
+  "labels": [
+    {
+      "text": "l",
+      "at": {
+        "edge": "PL"
+      }
+    },
+    {
+      "text": "m",
+      "at": {
+        "edge": "MY"
+      }
+    }
+  ],
+  "solidCaption": {
+    "text": "기하 182 문제 q02"
+  },
+  "caption": "기하 182 q02: 서로 직교하는 수평 막대 l,m 및 길이 5·3·4·2·4·3인 여섯 구간과 장식 A,B.",
+  "accessibilityDescription": "서로 직교하는 수평 막대 l,m 및 길이 5·3·4·2·4·3인 여섯 구간과 장식 A,B.",
+  "sourceQuote": "[그림: 지면과 평행한 막대 $l$이 매달린 점 $\\mathrm{P}$를 기준으로 왼쪽 $5$, 오른쪽 $3$으로 나뉜다. 왼쪽 끝에서 아래로 길이 $4$인 실 끝에 점 $\\mathrm{A}$가 있고, 오른쪽 끝에서 아래로 길이 $2$인 실 끝에 막대 $l$과 수직인 막대 $m$의 중점이 매달려 있다. 막대 $m$의 중점에서 한쪽 끝까지의 길이는 $4",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "수평 막대 l은 P 기준 왼쪽 5·오른쪽 3",
+      "mappedTo": "space.points[P,L,R];space.segments[0..1];dims[0..1];labels[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "왼쪽 길이 4 수직 실 끝 A",
+      "mappedTo": "space.segments[2];dims[2];space.points[A]"
+    },
+    {
+      "id": "c3",
+      "condition": "오른쪽 길이 2 수직 실 아래 막대 m의 중점 M",
+      "mappedTo": "space.segments[3];dims[3];space.points[M]"
+    },
+    {
+      "id": "c4",
+      "condition": "m은 l과 수직인 수평 막대, M에서 한쪽 끝 길이 4",
+      "mappedTo": "space.segments[4];dims[4];labels[1]"
+    },
+    {
+      "id": "c5",
+      "condition": "m 끝의 길이 3 수직 실 아래 B",
+      "mappedTo": "space.segments[5];dims[5];space.points[B]"
+    }
+  ],
+  "newVisualInformation": [
+    "원문의 필수 시각 조건을 실제 엔진 모델과 표식 필드로 표현"
+  ]
+}
