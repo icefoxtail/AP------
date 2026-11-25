@@ -1,0 +1,27 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {"kind": "ELLIPSE", "center": ["0", "0"], "aSquared": "25", "bSquared": "16", "major": "X"},
+  "points": [
+    {"id": "F", "kind": "FOCUS", "side": 1},
+    {"id": "F'", "kind": "FOCUS", "side": -1},
+    {"id": "A", "kind": "ON_CONIC", "x": "-4", "branch": "POS"},
+    {"id": "B", "kind": "ON_CONIC", "x": "-3", "branch": "NEG"},
+    {"id": "C", "kind": "ON_CONIC", "x": "0", "branch": "POS"},
+    {"id": "D", "kind": "ON_CONIC", "x": "2", "branch": "NEG"}
+  ],
+  "segments": [
+    {"id": "sAF", "from": "A", "to": "F"},
+    {"id": "sBF", "from": "B", "to": "F"},
+    {"id": "sCF", "from": "C", "to": "F"},
+    {"id": "sDF", "from": "D", "to": "F"}
+  ],
+  "caption": "타원 x²/25+y²/16=1 위 네 점 A·B·C·D와 양의 초점 F를 잇는 네 거리 선분",
+  "accessibilityDescription": "가로로 긴 타원의 두 초점 F와 F′가 x축에 놓이고, 위쪽 A와 C 및 아래쪽 B와 D는 모두 타원 위에 있다. A, B, C, D에서 오른쪽 초점 F를 잇는 네 선분을 그렸다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "주어진 x²/25+y²/16=1에서 장반경 5, 초점거리 3이므로 F=(3,0), F′=(-3,0)이다.", "mappedTo": ["conic", "F", "F'"]},
+    {"id": "c2", "condition": "선택한 대표 네 점은 A=(-4,12/5), B=(-3,-16/5), C=(0,4), D=(2,-4√21/5)이다. 네 점은 실제 타원 위에 있고 서로 겹치지 않는다.", "mappedTo": ["A", "B", "C", "D"]},
+    {"id": "c3", "condition": "초점 F까지의 거리 공식 |XF|=5−3xX/5에 따라 AF=37/5, BF=34/5, CF=5, DF=19/5, 합=23이 원문 조건과 정확히 일치한다. 따라서 단순 임의 예시가 아닌 실제 원문을 만족하는 대표 배치이다.", "mappedTo": ["A", "B", "C", "D", "F", "sAF", "sBF", "sCF", "sDF"]},
+    {"id": "c4", "condition": "물음인 AF′+BF′+CF′+DF′와 그 최종값은 학생 그림에 쓰지 않는다. 원문에 없는 네 선분의 개별 길이도 표시하지 않는다.", "mappedTo": ["F'", "sAF", "sBF", "sCF", "sDF"]}
+  ],
+  "newVisualInformation": ["네 점 모두 타원 위이면서 실제 주어진 네 선분의 거리 합 23을 만족하는 대표 배치", "요구된 F까지 네 선분만 실선, 미지의 F′까지 거리는 비노출"]
+}
