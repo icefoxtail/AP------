@@ -69,21 +69,33 @@
 - 해당 시 CrossConcept/Condition/Integration을 판정하되 `level`, `curriculumKey`, `ptTplCandidate`, 수동 RPM L1~L4 사본은 새 JS에 쓰지 않는다.
 - 4칸 `given/goal/method/condition`과 근거는 별도 파일에 두고, compact 4slot·메타 요청·출처·검토 상태를 **최종 운영 JS의 Git blob SHA와 UID**에 결속한다. 독립 검수 전 메타는 `review_required`/초안으로 표시하고 승인을 꾸미지 않는다.
 
-## 5. 문제용·해설용 SVG를 독립 판정
+## 5. 문제용·해설용 SVG 2축 판정과 실행 가능한 플랜
 
-모든 문항에서 그림 필요 여부를 **문제용**과 **해설용**으로 따로 판정한다. 불필요하면 이유와 함께 `EXEMPT`, 가짜 빈 SVG·이미지 참조는 만들지 않는다.
+### 5-1. 전 문항 2축 판정 (제작 누락 방지)
 
-- **문제 해결에 필수인 그림:** 실제 그림이 없으면 문제를 풀 수 없으므로 검증된 자산을 연결한다. 제작되지 않은 필수 그림을 PASS로 처리하거나 발문을 불완전한 채 정상 출고하지 않는다.
-- **해설 보조용 그림:** 이번 main-first 운영 방식에서는 원고·정답·해설이 정확하면 JS를 먼저 병합할 수 있다. `qNN-solution.plan.json`과 `solutionPlanRef`를 작성하고 `SVG_PENDING.md`에 `SVG_TO_CREATE`, `NOT_RUN`을 기록한다. 아직 존재하지 않는 `solutionImage` 경로는 금지한다.
-- SVG plan은 `AUTHOR_GUIDE`와 공식 엔진 형식을 따른다. 가능한 정적 plan lint를 수행하되, 실제 렌더·PNG 육안 검증·게시를 실행하지 않았다면 반드시 `NOT_RUN`으로 남긴다.
-- 새 SVG는 저장소의 **공식 엔진으로만** 만든다. 손/스크립트 조립 SVG를 만들지 않는다.
+- **완성된 신규 문항 Q01~QNN 전부**에 대해 `문제용(problem)`과 `해설용(solution)`을 **각각 독립 판정**한다. 결과를 Experience Ledger 또는 SVG 판정 장부에 문항 번호·축·`REQUIRED / BENEFICIAL / EXEMPT`·구체적인 수학/교육적 사유·plan 경로(필요한 경우)로 남긴다. 시험지별 최종 장부에는 판정 분모 `문항 수 × 2`, 축별 필요/면제 수, 실제 plan 수가 대조 가능해야 한다. `SVG_PENDING.md`에는 미제작 대상과 상태를 연결한다.
+- **문제용:** 학생이 발문만 보고 주어진 점의 배치·그래프·영역·표·상대적 위치를 유일하게 정할 수 없는 경우 `REQUIRED`이다. 발문만으로 풀 수 있어도 그림이 조건의 구조를 이해하는 데 실질적으로 도움이 되면 `BENEFICIAL`을 검토한다. 문제 그림에는 **주어진 조건만** 넣으며 정답·미지수 결과·풀이로 얻은 보조선이나 값은 노출하지 않는다.
+- **해설용:** 교점·접선·대칭·보조선·함수 개형·부호/증감·구간·영역 등 **결정적 풀이 관계**를 학생이 눈으로 확인해야 이해가 쉬운 경우 `REQUIRED/BENEFICIAL`로 판정한다. 발문에 좌표·수식이 모두 있다는 이유만으로 해설용까지 `EXEMPT`로 처리하지 않는다. 단순 전개·계산을 그림으로 복제하는 장식은 면제한다.
+- 각 축의 `EXEMPT`는 **그 축에 실제 그림이 불필요한 이유**를 문항별로 기록할 때만 쓴다. 원본에 그림이 없거나, 글로만도 정답이 유일하다는 사실 **하나만으로** 두 축 모두 면제하지 않는다. `EXEMPT`용 빈 SVG·형식적 제작 plan을 대량 생성할 필요는 없다. 기존 양식이 `qNN-*.plan.json`에 EXEMPT 판정을 남기더라도 이를 **엔진 제작 가능 plan 건수에 포함하지 않는다**.
 
-그림이 필요한데 미제작인 상태는 **시험지 JS 운영 선반영**과 **SVG 시각 검수 완료**를 구별해서 보고한다. 이 문서로 기존의 필수 자산 안전 기준을 약화하지 않는다.
+### 5-2. 필요 그림의 공식 엔진 plan 작성
 
+- `REQUIRED/BENEFICIAL` 판정한 **각 축**에는 실제 공식 엔진이 읽을 **제작용 JSON**을 만든다. 기본 파일명은 `qNN-problem.plan.json`, `qNN-solution.plan.json`이다. 기존 세트 관례상 별도 `*.followup.plan.json` 또는 `*-svg-pending.plan.json`을 쓰면 원래 축의 판정 및 `SVG_PENDING.md`에 **그 제작용 JSON을 정확히 가리키는 경로**를 남긴다. `{"status":"EXEMPT"}`만 담긴 파일은 제작용 plan이 아니다.
+- 작성 전에 [AUTHOR_GUIDE](../../archive/tools/geometry-equation/production/AUTHOR_GUIDE.md)의 해당 capability·계약 전문을 확인하고, **현재 유사문항의 최종 발문·보기·작은칠판 해설을 기준으로** `capability`, 필요한 `graphPlan/mathPlan/...`, 정확한 식·좌표·점·라벨·방향·범위·설명 등 해당 capability의 필수 필드를 채운다. 기존 기출/유사의 같은 번호 plan은 **참고 자료**일 뿐 수치·변수만 바꿔 복제하지 않는다. 없는 capability나 잘못된 스키마를 그럴듯한 JSON으로 꾸미지 않는다.
+- 문제 plan과 해설 plan은 **별도 JSON**이며, 같은 그림을 무조건 복사하지 않는다. 문제 plan에는 정답 노출 여부를 별도 검토하고, 해설 plan에는 핵심 풀이의 시각 근거가 실제로 보이는지 검토한다. 그림에 적힌 모든 숫자·수학 기호·라벨은 최종 JS와 독립 대조한다.
+- 제작용 plan마다 공식 `plan-lint`를 가능한 범위에서 실행한다. `--shallow PASS`는 전체 lint·엔진 렌더·PNG 육안검수의 대체가 아니며, 글꼴/엔진 미지원은 `NOT_RUN`/`ENGINE_CAPABILITY_PENDING` 등 실제 상태로 남긴다. 손/스크립트로 SVG를 조립하지 않는다. 엔진 미지원은 별도 엔진 확장 후 렌더할 후속 항목으로 기록한다.
+
+### 5-3. main-first와 학생용 필수 그림의 경계
+
+- **문제 풀이에 필수인 그림(REQUIRED):** 실제 자산이 없으면 문제가 성립하지 않으므로 엔진 렌더→PNG·발문 대조→검증된 `image` 참조를 마치기 전에는 정상 출고/운영병합 완료로 판정하지 않는다. 없는 그림을 발문에 있는 척하거나 임의 참조를 넣지 않는다.
+- **문제/해설에 실질적으로 유익한 그림(BENEFICIAL) 및 해설 보조:** plan JSON을 남기고 실제 제작·시각검수가 미완료면 `SVG_PENDING.md`에 문항·축·plan 경로·`SVG_TO_CREATE / NOT_RUN`을 기록한다. 해설이 텍스트로 완결된 경우에 한해 기존 main-first 방식으로 JS를 선반영할 수 있으며, 미제작 `solutionImage`/`image` 경로를 넣지 않는다. `solutionPlanRef`는 실제 존재하는 해설 계획을 가리켜야 한다. 문제의 필수 조건을 그림 없이 생략한 채 선반영해서는 안 된다.
+- 최종 보고는 **문제용/해설용 각각** `REQUIRED·BENEFICIAL·EXEMPT`, 유효 제작용 plan, shallow/full lint, 렌더, PNG 육안검수, JS 연결, 미완료 목록을 분리 집계한다. `GIT_MAIN_MERGED`와 `SVG_VISUAL_QA_DONE`을 혼동하지 않는다.
+
+**마감 자가검사:** `Q01~QNN × 문제/해설`에 판정 누락 0건인가? 필요한 그림마다 실제 제작용 JSON이 있고 학생용 숫자/방향을 반영하는가? 빈 EXEMPT JSON을 제작 plan으로 세지 않았는가? 필수 문제 그림은 실제 연결되었는가? 미제작 건은 `SVG_PENDING.md`에서 다음 엔진 작업자가 바로 찾을 수 있는가?
 ## 6. JS 제작·검사·병합
 
 1. 최신 JS 스키마로 `archive/exams/similar/<학교급>/<학년>/<학기시험>/<시험지>_유사.js` **또는** `<시험지>_유사2.js`를 작성한다. `<학교급>/<학년>`은 `high/h1`, `high/h2`, `middle/m1`, `middle/m2`, `middle/m3` 중 실제 대상과 일치해야 한다. 같은 폴더의 메타 요청·plan, `archive/data/item-4slot/similar/<학교급>/<학년>/<학기시험>/`의 별도 4칸 파일을 함께 만든다. 고2 과목명은 기존 시험지 naming에 맞게 유지하며 원본·기존 유사 세트는 수정하지 않는다.
-2. 최소 검사: `node --check <파일>`, 문항 번호·개수·배점 합계·정답/해설 공백, `node archive/tools/similar-import/choice-order-check.mjs judge <파일>`, 표가 있으면 `node tools/check-ap-tables.cjs --files <파일>`, PT/TPL/4칸/SHA 결속, plan이 있으면 엔진 `plan-lint`.
+2. 최소 검사: `node --check <파일>`, 문항 번호·개수·배점 합계·정답/해설 공백, `node archive/tools/similar-import/choice-order-check.mjs judge <파일>`, 표가 있으면 `node tools/check-ap-tables.cjs --files <파일>`, PT/TPL/4칸/SHA 결속, **전 문항 문제/해설 2축 판정 누락 0건 및 필요 축별 제작 JSON 누락 0건**, 제작용 plan마다 공식 엔진 `plan-lint`(shallow/full 결과 구분).
 3. Git 루트 checkout은 `main` 전용으로 둔다. 별도 worktree/브랜치에서 대상 시험지 운영 파일만 커밋한다. 인증된 GitHub 커넥터가 있으면 정상 브랜치·커밋·PR 경로로 사용해도 된다.
 4. **이번 프롬프트는 사용자 지시에 따른 `main` 운영병합까지 포함한다.** PR을 생성하고 GitHub 보호 규칙이 허용하면 병합한다. 보호 규칙을 우회하거나 강제 push하지 않는다.
 5. 원격 `main`에서 JS·메타·4칸·SVG 작업 장부를 실제 readback한다. 병합 후 자신의 완료된 worktree는 규칙대로 정리한다.
@@ -100,7 +112,7 @@
 | 제작 | 문항 수, 객관식/서술형, 배점 합계, `CONFIRMATION/ADVANCED` |
 | 난도 | 원본·이번 유사 세트의 1~5 분포, 원본 대비 차이, 독립 검산 완료 수 |
 | 메타 | PT/TPL ACTIVE·바인딩, 4칸 파일, 신규 키 필요, 검수/승인 상태 |
-| SVG | 문제용/해설용 필요, EXEMPT, plan 작성·lint·렌더 수, `NOT_RUN` 목록 |
+| SVG | **문제용/해설용 각각** REQUIRED·BENEFICIAL·EXEMPT, 유효 제작용 plan·lint(shallow/full)·렌더·PNG·JS 연결 수, `NOT_RUN` 목록 |
 | GitHub | 브랜치, PR URL, 실제 `main` 병합 SHA, 원격 readback |
 | 후속 | 정확히 남은 SVG 렌더·시각 검증·메타 등록·CI·배포 항목 |
 
