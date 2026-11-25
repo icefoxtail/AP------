@@ -1,0 +1,248 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A2",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A1"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "180"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B1",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A1"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B2",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A1"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "240"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C1",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A1"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "120"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C2",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A1"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "300"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A1",
+    "A2",
+    "B1",
+    "B2",
+    "C1",
+    "C2"
+  ],
+  "displaySegments": [
+    {
+      "id": "sA1A2",
+      "refs": [
+        "A1",
+        "A2"
+      ]
+    },
+    {
+      "id": "sB1B2",
+      "refs": [
+        "B1",
+        "B2"
+      ]
+    },
+    {
+      "id": "sC1C2",
+      "refs": [
+        "C1",
+        "C2"
+      ]
+    }
+  ],
+  "displayCircles": [
+    "k"
+  ],
+  "pointNames": {
+    "A1": "A_1",
+    "A2": "A_2",
+    "B1": "B_1",
+    "B2": "B_2",
+    "C1": "C_1",
+    "C2": "C_2"
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 570
+  },
+  "caption": "원 O 위의 서로 다른 세 지름 A₁A₂·B₁B₂·C₁C₂",
+  "accessibilityDescription": "원 O 위의 서로 다른 세 지름 A₁A₂·B₁B₂·C₁C₂. 그림의 길이·방향과 원문에 주어진 점 이름을 유지하며, 문제에서 구할 값은 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "세 선분은 모두 서로 다른 방향의 지름으로 O를 지나고 끝점 여섯 개는 서로 다르다.",
+      "mappedTo": [
+        "O",
+        "k",
+        "sA1A2",
+        "sB1B2",
+        "sC1C2"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "원문 아래첨자 1·2를 각 꼭짓점의 표시 이름에 유지한다.",
+      "mappedTo": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "세 지름의 실제 공통 중심과 아래첨자 점 이름"
+  ]
+}

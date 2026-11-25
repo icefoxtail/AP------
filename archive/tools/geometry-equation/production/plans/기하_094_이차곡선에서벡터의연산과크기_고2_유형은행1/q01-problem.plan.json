@@ -1,0 +1,71 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "PARABOLA",
+    "vertex": [
+      "0",
+      "0"
+    ],
+    "p": "3",
+    "axis": "X"
+  },
+  "points": [
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    },
+    {
+      "id": "F",
+      "kind": "FOCUS",
+      "coordinates": true
+    },
+    {
+      "id": "P",
+      "kind": "ON_CONIC",
+      "x": "2",
+      "branch": "POS"
+    }
+  ],
+  "segments": [
+    {
+      "id": "OP",
+      "from": "O",
+      "to": "P"
+    },
+    {
+      "id": "OF",
+      "from": "O",
+      "to": "F"
+    },
+    {
+      "id": "PF",
+      "from": "P",
+      "to": "F"
+    }
+  ],
+  "caption": "포물선 y²=12x, 초점 F(3,0) 및 제1사분면 점 P와 OP·OF·PF",
+  "accessibilityDescription": "포물선 y²=12x, 초점 F(3,0) 및 제1사분면 점 P와 OP·OF·PF. 그림의 길이·방향과 원문에 주어진 점 이름을 유지하며, 문제에서 구할 값은 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "포물선의 p=3, F=(3,0), 제1사분면 P는 원문의 벡터합 크기 7 조건을 만족한다.",
+      "mappedTo": [
+        "conic",
+        "F",
+        "P"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "원문이 지정한 세 선분 OP·OF·PF를 표시하며 구할 PF 값은 적지 않는다.",
+      "mappedTo": [
+        "OP",
+        "OF",
+        "PF"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "포물선의 정확한 곡선·초점 좌표 라벨·세 선분"
+  ]
+}

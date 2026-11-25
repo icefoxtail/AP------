@@ -1,0 +1,297 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "120"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "180"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "240"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "300"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "displaySegments": [
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    }
+  ],
+  "displayCircles": [
+    "k"
+  ],
+  "hiddenPointNames": [
+    "O"
+  ],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 570
+  },
+  "caption": "원에 내접한 정육각형 ABCDEF와 A에서 다른 다섯 꼭짓점으로 향하는 화살표",
+  "accessibilityDescription": "원에 내접한 정육각형 ABCDEF와 A에서 다른 다섯 꼭짓점으로 향하는 화살표. 그림의 길이·방향과 원문에 주어진 점 이름을 유지하며, 문제에서 구할 값은 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원주상 정육각형이 정확한 60도 간격을 이루고 모든 유향벡터가 A에서 B·C·D·E·F로 향한다.",
+      "mappedTo": [
+        "k",
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "vAB",
+        "vAC",
+        "vAD",
+        "vAE",
+        "vAF"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "원의 중심은 계산용 숨은 점으로, 답에 해당하는 반지름·면적은 표시하지 않는다.",
+      "mappedTo": [
+        "O"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "외접원·정육각형과 한 꼭짓점에서 방사하는 다섯 유향 선분"
+  ],
+  "planeMarks": {
+    "vectors": [
+      {
+        "id": "vAB",
+        "from": "A",
+        "to": "B",
+        "label": "vec(AB)",
+        "side": "LEFT",
+        "labelAt": 0.5
+      },
+      {
+        "id": "vAC",
+        "from": "A",
+        "to": "C",
+        "label": "vec(AC)",
+        "side": "LEFT",
+        "labelAt": 0.5
+      },
+      {
+        "id": "vAD",
+        "from": "A",
+        "to": "D",
+        "label": "vec(AD)",
+        "side": "RIGHT",
+        "labelAt": 0.5
+      },
+      {
+        "id": "vAE",
+        "from": "A",
+        "to": "E",
+        "label": "vec(AE)",
+        "side": "RIGHT",
+        "labelAt": 0.5
+      },
+      {
+        "id": "vAF",
+        "from": "A",
+        "to": "F",
+        "label": "vec(AF)",
+        "side": "RIGHT",
+        "labelAt": 0.5
+      }
+    ]
+  }
+}
