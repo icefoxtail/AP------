@@ -1,0 +1,37 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      { "id": "X", "name": "X", "elements": ["1", "2", "3"] },
+      { "id": "Y", "name": "X", "elements": ["1", "2", "3"] },
+      { "id": "Z", "name": "X", "elements": ["1", "2", "3"] }
+    ],
+    "arrows": [
+      { "from": { "column": 0, "element": 0 }, "to": { "column": 1, "element": 1 } },
+      { "from": { "column": 0, "element": 1 }, "to": { "column": 1, "element": 0 } },
+      { "from": { "column": 0, "element": 2 }, "to": { "column": 1, "element": 2 } },
+      { "from": { "column": 1, "element": 0 }, "to": { "column": 2, "element": 0 } },
+      { "from": { "column": 1, "element": 1 }, "to": { "column": 2, "element": 2 } },
+      { "from": { "column": 1, "element": 2 }, "to": { "column": 2, "element": 1 } }
+    ],
+    "arrowGroups": [
+      { "name": "g", "from": "X", "to": "Y", "color": "BLUE" },
+      { "name": "f", "from": "Y", "to": "Z", "color": "WARM" }
+    ],
+    "highlightPaths": [
+      { "path": ["1", "2", "3"], "color": "GREEN" }
+    ]
+  },
+  "caption": "조건으로 얻는 두 일대일대응은 g:1↦2,2↦1,3↦3 및 f:1↦1,2↦3,3↦2이다. 초록 합성 경로 1→2→3은 (f∘g)(1)=3을 확인한다. 또한 g⁻¹(3)=3, (g∘f)(3)=1이다.",
+  "accessibilityDescription": "세 개의 X 집합 열에 1,2,3이 있고 첫 번째에서 두 번째로 향한 g 화살표는 1에서2, 2에서1, 3에서3으로, 두 번째에서 세 번째로 향한 f 화살표는 1에서1, 2에서3, 3에서2로 이어진다. 1에서 2를 거쳐 3으로 가는 경로가 강조된다.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "f⁻¹(2)=3⇒f(3)=2, g⁻¹(1)=2⇒g(2)=1", "mappedTo": "diagram.arrows[5]:Y3→Z2, arrows[1]:X2→Y1" },
+    { "id": "c2", "condition": "일대일대응과 (f∘g)(1)=3을 만족시키는 유일한 순열", "mappedTo": "diagram.arrows[0..5]의 완전 대응 6개, highlightPaths[0].path=[1,2,3]" },
+    { "id": "c3", "condition": "g⁻¹(3)=3, (g∘f)(3)=g(2)=1", "mappedTo": "diagram.arrows[2]:X3→Y3, arrows[5]:Y3→Z2 및 arrows[1]:X2→Y1" }
+  ],
+  "newVisualInformation": [
+    "서로 다른 함수 f와 g의 전체 일대일대응을 나란한 세 열에서 분리해 읽을 수 있다.",
+    "합성 순서가 오른쪽 함수 g를 먼저 적용한 뒤 f를 적용하는 것임을 강조 경로로 보인다."
+  ]
+}

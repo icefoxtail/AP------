@@ -1,0 +1,41 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [1, 11, 0, 18],
+    "curves": [
+      {
+        "id": "objective",
+        "kind": "RATIONAL",
+        "numerator": ["9", "-2", "1"],
+        "denominator": ["-2", "1"],
+        "domain": ["2", "11"],
+        "domainStates": ["OPEN", "NONE"],
+        "color": "BLUE",
+        "label": "y=x+9/(x-2)"
+      },
+      {
+        "id": "oblique",
+        "kind": "LINE",
+        "coefficients": ["0", "1"],
+        "domain": ["1", "11"],
+        "style": "DASHED",
+        "color": "WARM",
+        "label": "y=x"
+      }
+    ],
+    "axisTickValues": { "x": ["2", "5"], "y": ["8"] },
+    "overlays": { "points": [{ "id": "M", "x": "5", "y": "8" }] }
+  },
+  "caption": "x>2에서 원래 식은 y=x+9/(x−2)로 같다. t=x−2>0이면 y=t+9/t+2≥8이고, t=3에서 등호가 성립하므로 그래프의 최솟값은 M(5,8)이다.",
+  "accessibilityDescription": "x가 2보다 큰 곳에서 파란 유리함수 그래프가 무한히 큰 값에서 내려오다가 M(5,8)에서 가장 낮아진 후 다시 올라간다. 점선 y=x와 수직 점근선 x=2가 관계를 보여 준다.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "원래 식 (x²−2x+9)/(x−2), x>2", "mappedTo": "graphPlan.curves[objective].numerator=[9,-2,1], denominator=[-2,1], domain=(2,11] 표시 구간" },
+    { "id": "c2", "condition": "x+9/(x−2)로 변형되며 비스듬한 기준 직선은 y=x", "mappedTo": "graphPlan.curves[oblique].coefficients=[0,1], style=DASHED" },
+    { "id": "c3", "condition": "t=x−2=3에서 최솟값 8", "mappedTo": "graphPlan.overlays.points[M]=(5,8), axisTickValues x=5 y=8" }
+  ],
+  "newVisualInformation": [
+    "산술·기하평균의 등호가 발생하는 x=5를 원래 목적함수의 실제 최저점 M에 결속한다.",
+    "정의역 x>2, 수직 점근선 x=2, 비스듬한 기준선 y=x에 대한 원래 그래프의 위치를 함께 보여 준다."
+  ]
+}
