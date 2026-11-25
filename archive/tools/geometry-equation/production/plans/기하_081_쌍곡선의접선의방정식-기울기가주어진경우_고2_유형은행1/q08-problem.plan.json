@@ -1,0 +1,24 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"HYPERBOLA","center":["0","0"],"aSquared":"25","bSquared":"1","transverse":"X"},
+  "points":[
+    {"id":"O","kind":"ORIGIN"},
+    {"id":"T","kind":"ON_CONIC","x":"25*sqrt(6)/12","sign":"POS","label":false},
+    {"id":"A","kind":"LINE_LINE","lines":["m","l"]},
+    {"id":"B","kind":"LINE_LINE","lines":["m","axis"]}
+  ],
+  "lines":[
+    {"id":"l","role":"ASYMPTOTE","sign":1,"dashed":true,"label":"l"},
+    {"id":"s2","role":"ASYMPTOTE","sign":-1,"dashed":true},
+    {"id":"m","tangent":true,"at":"T","label":"m"},
+    {"id":"axis","y":"0","hidden":true}
+  ],
+  "segments":[{"id":"OA","from":"O","to":"A"},{"id":"OB","from":"O","to":"B"},{"id":"AB","from":"A","to":"B"}],
+  "caption":"쌍곡선의 점근선 l과 기울기 1인 접선 m이 만드는 삼각형 AOB",
+  "accessibilityDescription":"쌍곡선 x²−25y²=25의 두 점근선 중 양의 기울기인 직선 l과 오른쪽 가지에 접하는 직선 m이 A에서 만나고, m의 양의 x축 절편 B와 원점 O가 삼각형 AOB를 이룬다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"원문 쌍곡선 x²/25−y²=1의 점근선 l은 y=x/5이다. 주어진 기울기 1인 오른쪽 접선 m은 y=x−2√6이고 실제 접점은 T=(25√6/12,√6/12)이다. 원문의 무명 접점은 T로만 내부 계산하고 라벨하지 않는다.","mappedTo":["conic","l","s2","m","T"]},
+    {"id":"c2","condition":"A=l∩m=(5√6/2,√6/2), B=m∩x축=(2√6,0), O=(0,0)을 공식 LINE_LINE으로 구하고 세 변을 잇는다. 묻는 넓이 3은 그림에 쓰지 않는다.","mappedTo":["A","B","O","OA","OB","AB"]}
+  ],
+  "newVisualInformation":["기울기 ±1/5인 점근선과 실제 접선 m","두 교점 계산에 기반한 원문 삼각형 AOB"]
+}

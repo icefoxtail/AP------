@@ -1,0 +1,18 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"PARABOLA","vertex":["0","0"],"p":"5","axis":"X"},
+  "points":[
+    {"id":"O","kind":"ORIGIN"},{"id":"P","kind":"ON_CONIC","x":"5","branch":"POS"},
+    {"id":"H","kind":"FOOT","from":"P","onto":"axis","rightAngle":true},
+    {"id":"Q","kind":"LINE_LINE","lines":["t","axis"]}
+  ],
+  "lines":[{"id":"t","tangent":true,"at":"P"},{"id":"axis","y":"0","hidden":true}],
+  "segments":[{"id":"PH","from":"P","to":"H"},{"id":"QH","from":"Q","to":"H","label":"10"}],
+  "caption":"한 예: 포물선의 접점 P, 수선의 발 H, 접선의 x절편 Q",
+  "accessibilityDescription":"오른쪽으로 열린 포물선 위 제1사분면 점 P에서 x축에 내린 수선의 발 H와 접선의 음의 x축 교점 Q가 있다. Q와 H 사이의 거리 10이 표시되고 원점 O가 그 중간에 있다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"원문 y²=4px(p>0)는 문자 p가 미정이므로 대표 p=5, P=(5,10)을 택한 동형 예시다. 접선이 Q=(−5,0), 수선의 발 H=(5,0)을 만들며 O는 둘 사이이다. 매개변수 5는 표기하지 않는다.","mappedTo":["conic","P","t","Q","H","O"]},
+    {"id":"c2","condition":"주어진 QH=10은 선분의 실제 길이 라벨이고, P에서 x축에 내린 직각도 FOOT.rightAngle로 표현한다. 묻는 OH 값은 표시하지 않는다.","mappedTo":["PH","QH","H"]}
+  ],
+  "newVisualInformation":["주어진 길이 QH=10 라벨의 실제 소유 선분","P에서 x축으로 내린 수선의 직각 기호"]
+}

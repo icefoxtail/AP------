@@ -1,0 +1,18 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"ELLIPSE","center":["0","0"],"aSquared":"16","bSquared":"5","major":"X"},
+  "points":[
+    {"id":"O","kind":"ORIGIN"},{"id":"P","kind":"ON_CONIC","x":"2","branch":"POS"},
+    {"id":"H","kind":"FOOT","from":"P","onto":"axis","rightAngle":true},
+    {"id":"Q","kind":"LINE_LINE","lines":["t","axis"]}
+  ],
+  "lines":[{"id":"t","tangent":true,"at":"P"},{"id":"axis","y":"0","hidden":true}],
+  "segments":[{"id":"PH","from":"P","to":"H"},{"id":"OH","from":"O","to":"H"},{"id":"OQ","from":"O","to":"Q"}],
+  "caption":"한 예: 타원의 제1사분면 접점 P와 H, Q의 x축 위치",
+  "accessibilityDescription":"x²/16+y²/5=1인 타원 위 제1사분면의 P에서 x축으로 내린 수선의 발 H, P에서 그은 접선이 양의 x축의 Q에서 만나는 모습을 그렸다. Q는 장축 끝보다 오른쪽이다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"타원은 원문 그대로이고, 미지 접점은 제1사분면의 대표 x=2 점으로 택한다. 접선의 x축 교점은 Q=(8,0), H=(2,0)이며 Q>4가 보장된다. 대표 좌표는 라벨에 공개하지 않는다.","mappedTo":["conic","P","t","Q","H"]},
+    {"id":"c2","condition":"PH는 x축에 수직이고 FOOT.rightAngle으로 실제 표시한다. 묻는 OH×OQ=16의 값과 원문에 없는 점 좌표는 쓰지 않는다.","mappedTo":["PH","OH","OQ","O","H"]}
+  ],
+  "newVisualInformation":["P-H 수선과 직각 표식","원점 O부터 H,Q까지의 실제 축 위치 관계"]
+}

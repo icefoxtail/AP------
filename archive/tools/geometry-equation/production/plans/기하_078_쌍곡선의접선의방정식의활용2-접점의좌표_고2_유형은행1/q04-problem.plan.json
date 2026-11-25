@@ -1,0 +1,23 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"HYPERBOLA","center":["0","0"],"aSquared":"8","bSquared":"8","transverse":"X"},
+  "points":[
+    {"id":"O","kind":"ORIGIN"},{"id":"P","kind":"ON_CONIC","x":"3","sign":"POS"},
+    {"id":"Q","kind":"LINE_LINE","lines":["l","s1"]},
+    {"id":"R","kind":"LINE_LINE","lines":["l","s2"]}
+  ],
+  "lines":[
+    {"id":"l","tangent":true,"at":"P","label":"l"},
+    {"id":"s1","role":"ASYMPTOTE","sign":1,"dashed":true,"label":"y=x"},
+    {"id":"s2","role":"ASYMPTOTE","sign":-1,"dashed":true,"label":"y=-x"}
+  ],
+  "segments":[{"id":"OQ","from":"O","to":"Q"},{"id":"OR","from":"O","to":"R"},{"id":"QR","from":"Q","to":"R"}],
+  "polygons":[{"id":"OQR","points":["O","Q","R"],"fill":"LIGHT"}],
+  "caption":"한 예: 쌍곡선 위 P에서 그은 접선 l과 점근선이 만드는 OQR",
+  "accessibilityDescription":"x²−y²=8의 제1사분면 접점 P를 한 예로 택해 접선 l과 두 점근선 y=x, y=−x의 교점 Q,R을 표시하고 삼각형 OQR을 연하게 칠했다. 특정 점의 좌표와 면적 값은 쓰지 않았다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"원문은 P를 변수점으로 두므로 이 쌍곡선 위의 비특수 대표점 P=(3,1)을 택한다. 접선은 3x−y=8이고 점근선 두 개의 부호는 정확히 일치한다.","mappedTo":["conic","P","l","s1","s2"]},
+    {"id":"c2","condition":"대표 교점 Q=(4,4), R=(2,−2), 원점 O가 만드는 삼각형 OQR만 원문대로 음영 표시한다. 중점·빗변 성질이나 넓이 8은 문제의 판단 대상이므로 라벨로 쓰지 않는다.","mappedTo":["Q","R","O","OQ","OR","QR","OQR"]}
+  ],
+  "newVisualInformation":["원문 모양을 만족하는 대표 접점의 실제 계산 접선","점근선 교점 기반 음영 OQR"]
+}

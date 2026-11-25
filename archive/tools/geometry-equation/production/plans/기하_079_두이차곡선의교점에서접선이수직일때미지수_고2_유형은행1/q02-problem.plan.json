@@ -1,0 +1,24 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conics":[
+    {"id":"h","kind":"HYPERBOLA","center":["0","0"],"aSquared":"1","bSquared":"1","transverse":"X"},
+    {"id":"e","kind":"ELLIPSE","center":["0","0"],"aSquared":"3","bSquared":"1","major":"X"}
+  ],
+  "points":[
+    {"id":"T","kind":"CONIC_CONIC","curves":["h","e"],"which":4,"label":false},
+    {"id":"B","kind":"LINE_LINE","lines":["th","xaxis"],"label":false},
+    {"id":"P","kind":"FOOT","from":"B","onto":"te","rightAngle":true}
+  ],
+  "lines":[
+    {"id":"th","tangent":true,"at":"T","curve":"h"},
+    {"id":"te","tangent":true,"at":"T","curve":"e"},
+    {"id":"xaxis","y":"0","hidden":true}
+  ],
+  "caption":"한 예: 쌍곡선과 타원의 공통점 P에서 직교하는 두 접선",
+  "accessibilityDescription":"직각쌍곡선 x²−y²=1과 가로로 긴 타원이 제1사분면 점 P에서 교차한다. P에서 그은 두 접선의 만나는 각에 작은 직각 기호가 있고 미지 계수값은 표시하지 않는다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"쌍곡선은 원문 x²−y²=1이다. 타원의 문자식 ax²+y²=1은 직교 조건을 만족하는 내부 대표 a=1/3의 가로 긴 타원으로 그리되 그 계수나 답을 라벨에 쓰지 않는다.","mappedTo":["conics","T"]},
+    {"id":"c2","condition":"제1사분면 공통점에서 두 접선의 기울기 곱이 −1이다. th 위 보조 B에서 te에 내린 수선의 발 P를 표시하여 FOOT.rightAngle을 실제 그림에 둔다.","mappedTo":["th","te","B","P"]}
+  ],
+  "newVisualInformation":["쌍곡선-타원 교점 기반 공식 접선 두 개","수직의 실제 사각 표식"]
+}

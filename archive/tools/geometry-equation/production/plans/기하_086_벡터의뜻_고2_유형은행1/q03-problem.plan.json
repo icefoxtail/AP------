@@ -1,0 +1,29 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{
+    "schemaVersion":"construction-spike-v1",
+    "realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes":[
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"4"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"C","op":"POLAR_POINT","inputs":["A","B"],"args":{"length":{"kind":"integer","value":"4"},"angleDeg":{"kind":"integer","value":"60"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"D","op":"MIDPOINT","inputs":["A","B"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"E","op":"MIDPOINT","inputs":["B","C"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"F","op":"MIDPOINT","inputs":["C","A"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "displayPoints":["A","B","C","D","E","F"],
+  "displaySegments":[
+    {"id":"AB","refs":["A","B"]},{"id":"BC","refs":["B","C"]},{"id":"CA","refs":["C","A"]},
+    {"id":"DE","refs":["D","E"]},{"id":"EF","refs":["E","F"]},{"id":"FD","refs":["F","D"]}
+  ],
+  "planeMarks":{"dimensions":[{"id":"dAB","from":"A","to":"B","label":"4","side":"BELOW","style":"ARROW","value":4,"factRole":"GIVEN"}]},
+  "coordinateCanvas":{"width":600,"height":490},
+  "caption":"한 변 4인 정삼각형 ABC와 세 변의 중점을 이은 DEF",
+  "accessibilityDescription":"한 변의 길이가 4인 정삼각형 ABC에서 D는 AB 중점, E는 BC 중점, F는 CA 중점이다. D E F를 연결해 내부에 작은 정삼각형을 만들었다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"AB=BC=CA=4를 정확히 만족하도록 A=(0,0), B=(4,0), C=POLAR_POINT(A,B;4,60°,CCW)로 구성하고 길이 4는 AB 치수선에 그린다.","mappedTo":["A","B","C","AB","BC","CA","dAB"]},
+    {"id":"c2","condition":"D,E,F는 각각 AB,BC,CA의 공식 MIDPOINT 계산 노드이고, 원문처럼 중점연결 삼각형 DEF의 세 변을 전부 그린다. 보기의 정답과 벡터 방향은 새로 강조하지 않는다.","mappedTo":["D","E","F","DE","EF","FD"]}
+  ],
+  "newVisualInformation":["정확한 정삼각형의 60° 구조","중점 연산으로 계산되는 내부 삼각형 DEF"]
+}

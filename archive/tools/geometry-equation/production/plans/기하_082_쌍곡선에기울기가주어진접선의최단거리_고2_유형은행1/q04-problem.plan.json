@@ -1,0 +1,19 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conics":[
+    {"id":"c","kind":"CIRCLE","center":["0","3"],"rSquared":"1"},
+    {"id":"h","kind":"HYPERBOLA","center":["0","0"],"aSquared":"2","bSquared":"1","transverse":"X"}
+  ],
+  "points":[
+    {"id":"P","kind":"ON_CONIC","curve":"c","x":"0","branch":"POS"},
+    {"id":"Q","kind":"ON_CONIC","curve":"h","x":"2","sign":"POS"}
+  ],
+  "segments":[{"id":"PQ","from":"P","to":"Q"}],
+  "caption":"원 위의 P와 쌍곡선 위의 Q를 잇는 거리의 한 예",
+  "accessibilityDescription":"중심 (0,3), 반지름 1인 원과 x²−2y²=2인 쌍곡선이 한 좌표평면에 있고 원 위 임의의 P에서 쌍곡선 오른쪽 가지 위 임의의 Q까지 선분 PQ를 연결한다. 최단선분이나 길이값은 공개하지 않았다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"원문 원은 x²+(y−3)²=1, 쌍곡선은 x²−2y²=2이므로 conics 두 개의 중심·반지름·반축제곱을 정확히 일치시킨다.","mappedTo":["conics"]},
+    {"id":"c2","condition":"P=(0,4), Q=(2,1)은 각각 곡선 위의 단순한 비최적 예시점이다. 원문 미지의 최소 PQ=2√2−1을 계산하거나 그 최단 보조선으로 새로 표시하지 않는다.","mappedTo":["P","Q","PQ"]}
+  ],
+  "newVisualInformation":["원과 쌍곡선을 같은 배율로 그린 정확한 두 곡선","답을 노출하지 않는 임의의 연결선 PQ"]
+}

@@ -1,0 +1,18 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"HYPERBOLA","center":["0","0"],"aSquared":"6","bSquared":"3","transverse":"X"},
+  "points":[
+    {"id":"O","kind":"ORIGIN"},{"id":"P","kind":"ON_CONIC","x":"3","sign":"POS"},
+    {"id":"H","kind":"FOOT","from":"P","onto":"axis","rightAngle":true},
+    {"id":"Q","kind":"LINE_LINE","lines":["t","axis"]}
+  ],
+  "lines":[{"id":"t","tangent":true,"at":"P"},{"id":"axis","y":"0","hidden":true}],
+  "segments":[{"id":"PH","from":"P","to":"H"},{"id":"OH","from":"O","to":"H"},{"id":"OQ","from":"O","to":"Q"}],
+  "caption":"한 예: 쌍곡선 오른쪽 가지 위 접점 P와 두 x축 점 H, Q",
+  "accessibilityDescription":"쌍곡선 x²/6−y²/3=1의 오른쪽 가지 제1사분면 위 P에서 내린 x축 수선의 발 H와 접선의 x축 교점 Q를 그렸다. O, Q, H는 양의 x축 순서로 놓인다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"원문 쌍곡선 x²/6−y²/3=1에서 변수 접점을 대표 x=3, 양의 y 가지로 택한다. 접선 x절편 Q=(2,0), 발 H=(3,0)이라 O<Q<H이다. 원문은 x>0 오른쪽 가지만 보이도록 했으나 현행 conic은 양쪽 가지를 함께 그리므로 가지 숨김은 ENGINE_CAPABILITY_PENDING이다.","mappedTo":["conic","P","t","Q","H","O"]},
+    {"id":"c2","condition":"PH는 x축 수선이고 직각 기호를 FOOT.rightAngle로 표시한다. 묻는 OH×OQ=6은 라벨에 쓰지 않는다.","mappedTo":["PH","OH","OQ","H"]}
+  ],
+  "newVisualInformation":["O-Q-H 축 위 순서와 실제 접선 교점","수선의 발 직각 표시","x>0 한 가지 표시 제한은 ENGINE_CAPABILITY_PENDING"]
+}

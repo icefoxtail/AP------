@@ -1,0 +1,31 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{
+    "schemaVersion":"construction-spike-v1",
+    "realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes":[
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"4"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"5"},{"kind":"integer","value":"3"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"1"},{"kind":"integer","value":"3"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"O","op":"MIDPOINT","inputs":["A","C"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "displayPoints":["A","B","C","D","O"],
+  "displaySegments":[
+    {"id":"AB","refs":["A","B"]},{"id":"BC","refs":["B","C"]},{"id":"CD","refs":["C","D"]},{"id":"DA","refs":["D","A"]},
+    {"id":"OC","refs":["O","C"]},{"id":"OD","refs":["O","D"]}
+  ],
+  "planeMarks":{"vectors":[
+    {"id":"va","from":"O","to":"A","label":"vec(a)","side":"LEFT"},
+    {"id":"vb","from":"O","to":"B","label":"vec(b)","side":"RIGHT"}
+  ]},
+  "coordinateCanvas":{"width":610,"height":490},
+  "caption":"평행사변형의 대각선 교점 O에서 A와 B로 향하는 벡터",
+  "accessibilityDescription":"평행사변형 ABCD의 대각선 AC,BD가 O에서 서로 이등분하고, O에서 A로 향하는 화살표에 벡터 a, O에서 B로 향하는 화살표에 벡터 b가 표시되어 있다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"원문이 구체적인 변 길이·각을 주지 않으므로 A(0,0),B(4,0),C(5,3),D(1,3)의 대표 평행사변형을 택한다. O=MIDPOINT(A,C)=(5/2,3/2)은 BD의 중점이기도 하다. OC,OD와 두 화살표로 대각선 전체를 중복 획 없이 이룬다.","mappedTo":["A","B","C","D","O","AB","BC","CD","DA","OC","OD"]},
+    {"id":"c2","condition":"원문 OA=a, OB=b 두 화살표를 정확히 O→A, O→B 방향으로 표시하고 반대 벡터나 선택지 등식은 덧쓰지 않는다.","mappedTo":["va","vb"]}
+  ],
+  "newVisualInformation":["대각선 중점의 공식 계산 구조","벡터 a,b의 정확한 시점·종점과 화살표"]
+}

@@ -1,0 +1,24 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conics":[
+    {"id":"e","kind":"ELLIPSE","center":["0","0"],"aSquared":"18","bSquared":"8","major":"Y"},
+    {"id":"h","kind":"HYPERBOLA","center":["0","0"],"aSquared":"5","bSquared":"5","transverse":"Y"}
+  ],
+  "points":[
+    {"id":"T","kind":"CONIC_CONIC","curves":["e","h"],"which":4,"label":false},
+    {"id":"B","kind":"LINE_LINE","lines":["te","xaxis"],"label":false},
+    {"id":"P","kind":"FOOT","from":"B","onto":"th","rightAngle":true,"coordinates":true}
+  ],
+  "lines":[
+    {"id":"te","tangent":true,"at":"T","curve":"e"},
+    {"id":"th","tangent":true,"at":"T","curve":"h"},
+    {"id":"xaxis","y":"0","hidden":true}
+  ],
+  "caption":"세로로 긴 타원과 세로로 열린 쌍곡선의 공통점 P(2,3)과 접선",
+  "accessibilityDescription":"세로가 긴 타원 x²/8+y²/18=1과 위아래로 열린 쌍곡선이 제1사분면 P(2,3)에서 만나고 접선 두 개가 직교함을 사각 직각 표시로 나타낸다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"원문 타원은 x²/8+y²/18=1이고, 쌍곡선은 x²/a²−y²/b²=−1이다. 미지 값은 내부 계산 a²=b²=5인 세로 쌍곡선으로 모델링하지만 값 5·2√5는 그림에 쓰지 않는다.","mappedTo":["conics","T"]},
+    {"id":"c2","condition":"주어진 교점 P(2,3)에 대한 타원 접선 기울기 −3/2, 쌍곡선 접선 기울기 2/3의 곱은 −1이다. te 위 B의 FOOT P에 실제 직각 기호를 그린다.","mappedTo":["te","th","B","P"]}
+  ],
+  "newVisualInformation":["주어진 P(2,3) 좌표와 두 곡선의 교차","FOOT로 실표현한 접선 직교"]
+}
