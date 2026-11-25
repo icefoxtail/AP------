@@ -1,0 +1,173 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 560
+  },
+  "caption": "윗변 AD와 아랫변 BC가 평행한 3:4 사다리꼴과 AB·AD·DC 벡터",
+  "accessibilityDescription": "윗변 AD와 아랫변 BC가 평행한 3:4 사다리꼴과 AB·AD·DC 벡터. 원문 위치관계와 방향을 따르며, 문제에서 구하는 값과 최종 풀이를 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AD∥BC, AD:BC=3:4를 실제 두 변 길이 비 3:4로 구현하고 그림에도 비를 쓴다.",
+      "mappedTo": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "ratio"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "AB=a, AD=b, DC의 정확한 시작점과 종점을 실제 화살촉으로 구분한다.",
+      "mappedTo": [
+        "va",
+        "vb",
+        "vDC"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "평행한 두 밑변·3:4 비 라벨·세 유향벡터"
+  ],
+  "planeMarks": {
+    "vectors": [
+      {
+        "id": "va",
+        "from": "A",
+        "to": "B",
+        "label": "vec(a)",
+        "side": "LEFT",
+        "labelAt": 0.5
+      },
+      {
+        "id": "vb",
+        "from": "A",
+        "to": "D",
+        "label": "vec(b)",
+        "side": "LEFT",
+        "labelAt": 0.5
+      },
+      {
+        "id": "vDC",
+        "from": "D",
+        "to": "C",
+        "label": "vec(DC)",
+        "side": "RIGHT",
+        "labelAt": 0.5
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "ratio",
+        "at": "D",
+        "text": "AD:BC=3:4",
+        "anchor": "NE",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN"
+      }
+    ]
+  }
+}
