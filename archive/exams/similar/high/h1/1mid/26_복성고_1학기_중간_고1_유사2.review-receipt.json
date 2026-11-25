@@ -2,9 +2,9 @@
   "schemaVersion": "gpt-similar-exam-create-review-receipt-v1",
   "examUid": "26_복성고_1학기_중간_고1_유사2",
   "sourceArchiveFile": "archive/exams/similar/high/h1/1mid/26_복성고_1학기_중간_고1_유사2.js",
-  "sourceGitBlobSha": "9096a8191e35374abd8c501a67184b0feb52ee02",
+  "sourceGitBlobSha": "e2ba21487f24ff49f9c5af9c524772f2e23c8447",
   "createdAt": "2026-11-25",
-  "reviewer": "GPT author self-check; no separate independent reviewer",
+  "reviewer": "GPT focused post-merge correction; independent metadata approval still NOT_RUN",
   "mode": "ALIVE EXAM_FOLLOWUP",
   "difficultyMixer": "SOURCE_BALANCED",
   "sourceOriginalFile": "archive/exams/original/high/h1/1mid/26_복성고_1학기_중간_고1_기출.js",
@@ -41,15 +41,26 @@
       "count": 24
     },
     "mathBlindFromFinalStatements": {
-      "status": "AUTHOR_SELF_CHECK",
-      "count": 24,
-      "note": "작성자가 최종 발문을 다시 읽고 검산; 별도 독립 모델 검수 아님"
+      "status": "FOCUSED_RECHECK",
+      "count": 3,
+      "affectedQids": [
+        2,
+        6,
+        17
+      ],
+      "note": "새 발문에서 답을 다시 산출; 기존 21개 문항은 발문·보기·정답·해설 불변. 공식 독립 승인 아님"
     },
     "arithmeticScript": {
-      "status": "PASS",
-      "count": 24,
-      "assertions": 24,
-      "note": "최종 발문을 기준으로 독립적으로 작성한 Sympy 검산 스크립트, 24개 계산 단정 통과"
+      "status": "HISTORICAL_PASS_PLUS_FOCUSED_SCRIPT_PASS",
+      "previousAssertions": 24,
+      "unchangedQids": 21,
+      "correctedQids": [
+        2,
+        6,
+        17
+      ],
+      "focusedScriptAssertions": 3,
+      "note": "기존 24건 자동 검산은 이전 판본의 증거. 새 발문 2·6·17번은 실수 계수 항등식과 대칭식 계산을 별도 스크립트로 검증; 기존 21개 발문·보기·정답·해설 불변 확인"
     },
     "nodeCheck": {
       "status": "PASS",
@@ -65,12 +76,21 @@
     "ptTplAndCurriculumBindings": {
       "status": "PASS",
       "count": 24,
-      "note": "ACTIVE registry validateActiveMetaFields 24/24"
+      "changedTemplateQids": [
+        2,
+        3,
+        19
+      ],
+      "note": "ACTIVE 레지스트리의 validateActiveMetaFields 24/24 VALIDATED, PT/TPL/교과 바인딩 24/24 ACTIVE; JS와 소형 메타 필드 직접 대조"
     },
     "fourSlotTermsAndUidBlobBinding": {
       "status": "PASS",
       "count": 24,
-      "note": "dictionary v1.6 ID, QID-v1, Git blob 결속 확인"
+      "changedFourSlotQids": [
+        2,
+        6
+      ],
+      "note": "term-dict-v1.6 실물 4칸 ID 24/24, qid_v1(파일#문항) 24/24, JS-소형 메타·4칸·경험 장부 Git blob 24/24 결속 확인"
     },
     "tableStaticCheck": {
       "status": "PASS",
@@ -117,8 +137,33 @@
       "errors": 8,
       "note": "Q09/Q16/Q18/Q22 계획에 실제 해설 SVG assetPath 및 엔진 증거 없음. 없는 그림 경로는 조작하지 않음."
     },
+    "releaseHarnessRelease": {
+      "status": "FAIL_VISUAL_AND_LEGACY_RECEIPT_SCHEMA",
+      "errors": 11,
+      "note": "시각 결함 8개 동일; 추가 3개는 기존 gpt-similar-exam-create-review-receipt-v1이 공식 release receipt의 candidateGitBlobSha1/signOffStatus/per-question 증거 요구를 만족하지 않음. 임의 PASS·서명 기록으로 치환하지 않음."
+    },
     "ciAndDeployment": {
       "status": "NOT_RUN"
+    },
+    "correctionReview": {
+      "status": "FOCUSED_CORRECTION",
+      "changedStatementQids": [
+        2,
+        6,
+        17
+      ],
+      "changedTemplateQids": [
+        2,
+        3,
+        19
+      ],
+      "unchangedOriginalQids": 21,
+      "followupCountsUnchanged": {
+        "CONFIRMATION": 24,
+        "ADVANCED": 0
+      },
+      "semanticComparison": "원본·기존 유사1 각 같은 번호와 대조",
+      "independentMetaApproval": "NOT_RUN"
     }
   },
   "svgPendingPath": "archive/exams/similar/high/h1/1mid/26_복성고_1학기_중간_고1_유사2_plans/SVG_PENDING.md",
