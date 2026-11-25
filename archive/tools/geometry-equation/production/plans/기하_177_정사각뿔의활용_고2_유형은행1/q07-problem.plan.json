@@ -1,0 +1,56 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "kind": "PYRAMID",
+      "base": {
+        "kind": "RECT",
+        "width": 6,
+        "depth": 6
+      },
+      "height": 4.242640687119285,
+      "names": "ABCDO"
+    }
+  ],
+  "dims": [
+    {
+      "edge": "AB",
+      "label": "6"
+    },
+    {
+      "edge": "OA",
+      "label": "6"
+    }
+  ],
+  "solidCaption": {
+    "text": "기하 177 문제 q07"
+  },
+  "caption": "기하 177 q07: 밑변 6의 정사각뿔 기본형. 측면 내접원·정사영·밑면 차집합 음영은 미표시.",
+  "accessibilityDescription": "밑변 6의 정사각뿔 기본형. 측면 내접원·정사영·밑면 차집합 음영은 미표시.",
+  "sourceQuote": "[그림: 밑면이 정사각형 ABCD이고 모든 모서리의 길이가 6인 정사각뿔 O-ABCD에서 네 옆면에 각각 내접하는 원이 그려져 있고, 밑면에서 네 원의 정사영을 제외한 부분이 어둡게 칠해져 있음]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "정사각뿔 O-ABCD, 모든 모서리 6",
+      "mappedTo": "solids[0];dims[0..1]"
+    },
+    {
+      "id": "c2",
+      "condition": "네 옆면 OAB,OBC,OCD,ODA 각각의 내접원",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:FOUR_FACE_INCIRCLES"
+    },
+    {
+      "id": "c3",
+      "condition": "밑면 위의 네 정사영 타원 S1~S4",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:FOUR_FACE_CIRCLE_PROJECTIONS"
+    },
+    {
+      "id": "c4",
+      "condition": "네 그림자를 제외한 밑면 영역 음영",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:BASE_MINUS_ELLIPSES_FILL"
+    }
+  ],
+  "newVisualInformation": [
+    "공식 엔진의 부분 기본형이며 미지원 핵심 요소는 ENGINE_CAPABILITY_PENDING"
+  ]
+}

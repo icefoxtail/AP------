@@ -1,0 +1,51 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "kind": "PYRAMID",
+      "base": {
+        "kind": "RECT",
+        "width": 6,
+        "depth": 6
+      },
+      "height": 4.242640687119285,
+      "names": "ABCDO"
+    }
+  ],
+  "dims": [
+    {
+      "edge": "AB",
+      "label": "6"
+    },
+    {
+      "edge": "OA",
+      "label": "6"
+    }
+  ],
+  "solidCaption": {
+    "text": "기하 177 문제 q04"
+  },
+  "caption": "기하 177 q04: 모든 모서리 6인 정사각뿔. 측면 OBC 내접원은 미표시.",
+  "accessibilityDescription": "모든 모서리 6인 정사각뿔. 측면 OBC 내접원은 미표시.",
+  "sourceQuote": "[그림: 모든 모서리의 길이가 6인 정사각뿔 O-ABCD의 옆면 OBC에 내접원이 그려져 있는 입체도형]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "정사각뿔 O-ABCD, 모든 모서리 6",
+      "mappedTo": "solids[0];dims[0..1]"
+    },
+    {
+      "id": "c2",
+      "condition": "측면 OBC의 내접원",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:SQUARE_PYRAMID_FACE_INCIRCLE"
+    },
+    {
+      "id": "c3",
+      "condition": "그 내접원을 밑면 ABCD로 정사영",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:FACE_CIRCLE_PROJECTION"
+    }
+  ],
+  "newVisualInformation": [
+    "공식 엔진의 부분 기본형이며 미지원 핵심 요소는 ENGINE_CAPABILITY_PENDING"
+  ]
+}

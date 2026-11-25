@@ -1,0 +1,64 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "kind": "PYRAMID",
+      "base": {
+        "kind": "RECT",
+        "width": 2,
+        "depth": 2
+      },
+      "height": 1.4142135623730951,
+      "names": "ABCDP"
+    }
+  ],
+  "dims": [
+    {
+      "edge": "AB",
+      "label": "2"
+    },
+    {
+      "edge": "PA",
+      "label": "2"
+    }
+  ],
+  "highlights": [
+    {
+      "polygon": [
+        "P",
+        "A",
+        "B"
+      ],
+      "fill": "LIGHT"
+    },
+    {
+      "polygon": [
+        "P",
+        "A",
+        "D"
+      ],
+      "fill": "MEDIUM"
+    }
+  ],
+  "solidCaption": {
+    "text": "기하 177 문제 q06"
+  },
+  "caption": "기하 177 q06: 모든 모서리 2인 정사각뿔, 인접 옆면 PAB·PAD 구분.",
+  "accessibilityDescription": "모든 모서리 2인 정사각뿔, 인접 옆면 PAB·PAD 구분.",
+  "sourceQuote": "[그림: 밑면이 정사각형 ABCD이고 모든 모서리의 길이가 2인 정사각뿔 P-ABCD에서 두 옆면 PAB와 PAD가 표시되어 있음]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "모든 모서리 2인 정사각뿔 P-ABCD",
+      "mappedTo": "solids[0];dims[0..1]"
+    },
+    {
+      "id": "c2",
+      "condition": "두 옆면 PAB, PAD의 이면각 θ",
+      "mappedTo": "highlights[0..1];solids[0].faces"
+    }
+  ],
+  "newVisualInformation": [
+    "원문의 필수 시각 조건을 실제 엔진 모델과 표식 필드로 표현"
+  ]
+}

@@ -1,0 +1,243 @@
+{
+  "capability": "solid-figure-v1",
+  "space": {
+    "points": [
+      {
+        "id": "O",
+        "at": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "A",
+        "at": [
+          0,
+          0,
+          6
+        ]
+      },
+      {
+        "id": "B",
+        "at": [
+          8,
+          5,
+          0
+        ]
+      },
+      {
+        "id": "C",
+        "at": [
+          8,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "P",
+        "at": {
+          "divide": [
+            "A",
+            "B"
+          ],
+          "ratio": "3:7"
+        }
+      },
+      {
+        "id": "H",
+        "at": {
+          "footOnLine": {
+            "from": "P",
+            "line": [
+              "B",
+              "C"
+            ]
+          }
+        }
+      },
+      {
+        "id": "X",
+        "at": [
+          11,
+          0,
+          0
+        ],
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "Y",
+        "at": [
+          0,
+          8,
+          0
+        ],
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "Z",
+        "at": [
+          0,
+          0,
+          8
+        ],
+        "hideName": true,
+        "hideDot": true
+      }
+    ],
+    "segments": [
+      {
+        "from": "O",
+        "to": "A",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "O",
+        "to": "B",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "O",
+        "to": "C",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "B",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "B",
+        "to": "C",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "C",
+        "to": "A",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "P",
+        "to": "B",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "B",
+        "to": "H",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "P",
+        "to": "H",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "O",
+        "to": "X",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "O",
+        "to": "Y",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "O",
+        "to": "Z",
+        "style": "AUTO",
+        "role": "REF"
+      }
+    ]
+  },
+  "dims": [
+    {
+      "from": "P",
+      "to": "H",
+      "label": "7"
+    }
+  ],
+  "labels": [
+    {
+      "text": "x",
+      "at": "X"
+    },
+    {
+      "text": "y",
+      "at": "Y"
+    },
+    {
+      "text": "z",
+      "at": "Z"
+    }
+  ],
+  "highlights": [
+    {
+      "polygon": [
+        "P",
+        "B",
+        "H"
+      ],
+      "fill": "LIGHT"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "H",
+        "refs": [
+          "P",
+          "B"
+        ]
+      }
+    ]
+  },
+  "solidCaption": {
+    "text": "기하 184 문제 q05"
+  },
+  "caption": "기하 184 q05: 사면체 OABC 및 수선 PH=7, 삼각형 PBH 영역을 정확히 나타낸 보조선.",
+  "accessibilityDescription": "사면체 OABC 및 수선 PH=7, 삼각형 PBH 영역을 정확히 나타낸 보조선.",
+  "sourceQuote": "[그림: 좌표공간의 원점 $\\mathrm{O}$와 $z$축 위의 점 $\\mathrm{A}(0, 0, 6)$, $x$축 위의 점 $\\mathrm{C}(8, 0, 0)$, $xy$평면 위의 점 $\\mathrm{B}(8, 5, 0)$이 연결되어 사면체 $\\mathrm{OABC}$를 이루고, 선분 $\\mathrm{AB}$ 위의 점 $\\mathrm{P}$에서 ",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "사면체 OABC: A=(0,0,6), B=(8,5,0), C=(8,0,0)",
+      "mappedTo": "space.points[O,A,B,C];space.segments[0..5]"
+    },
+    {
+      "id": "c2",
+      "condition": "P는 AB 위, 수선 PH=7을 만족하는 내분점",
+      "mappedTo": "space.points[P];dims[0];space.segments[6..8]"
+    },
+    {
+      "id": "c3",
+      "condition": "H는 BC에 내린 수선의 발, PH⊥BC",
+      "mappedTo": "space.points[H];marks.rightAngles[0]"
+    },
+    {
+      "id": "c4",
+      "condition": "삼각형 PBH는 색칠된 영역",
+      "mappedTo": "highlights[0]"
+    },
+    {
+      "id": "c5",
+      "condition": "x,y,z 좌표축 화살표와 A,B,C 원문 좌표 문자열",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:3D_AXIS_AND_COORDINATE_LABELS"
+    }
+  ],
+  "newVisualInformation": [
+    "공식 엔진의 부분 기본형이며 미지원 핵심 요소는 ENGINE_CAPABILITY_PENDING"
+  ]
+}

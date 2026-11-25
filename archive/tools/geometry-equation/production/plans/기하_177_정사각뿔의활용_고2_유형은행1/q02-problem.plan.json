@@ -1,0 +1,46 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "kind": "PYRAMID",
+      "base": {
+        "kind": "RECT",
+        "width": 6,
+        "depth": 6
+      },
+      "height": 4.242640687119285,
+      "names": "BCDEA"
+    }
+  ],
+  "dims": [
+    {
+      "edge": "BC",
+      "label": "6"
+    },
+    {
+      "edge": "AB",
+      "label": "6"
+    }
+  ],
+  "solidCaption": {
+    "text": "기하 177 문제 q02"
+  },
+  "caption": "기하 177 q02: 모든 모서리 6인 정사각뿔의 밑면 BCDE 및 측면 ABC.",
+  "accessibilityDescription": "모든 모서리 6인 정사각뿔의 밑면 BCDE 및 측면 ABC.",
+  "sourceQuote": "[그림: 모든 모서리의 길이가 6인 정사각뿔 A-BCDE]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "정사각뿔 A-BCDE의 바닥·옆모서리가 모두 6",
+      "mappedTo": "solids[0];dims[0..1]"
+    },
+    {
+      "id": "c2",
+      "condition": "사각형 BCDE와 옆면 ABC의 정사영 대상 관계",
+      "mappedTo": "solids[0].faces"
+    }
+  ],
+  "newVisualInformation": [
+    "원문의 필수 시각 조건을 실제 엔진 모델과 표식 필드로 표현"
+  ]
+}

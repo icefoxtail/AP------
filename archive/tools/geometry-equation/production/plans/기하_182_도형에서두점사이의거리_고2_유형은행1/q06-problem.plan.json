@@ -1,0 +1,50 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "kind": "CONE",
+      "radius": 12,
+      "height": 24,
+      "names": {
+        "apex": "O",
+        "center": "O′"
+      }
+    }
+  ],
+  "dims": [
+    {
+      "radius": "bottom",
+      "label": "12"
+    },
+    {
+      "height": true,
+      "label": "24"
+    }
+  ],
+  "solidCaption": {
+    "text": "기하 182 문제 q06"
+  },
+  "caption": "기하 182 q06: 반지름 12 높이 24인 원뿔 O-O′. A,B와 투영발·60도 호는 미지원.",
+  "accessibilityDescription": "반지름 12 높이 24인 원뿔 O-O′. A,B와 투영발·60도 호는 미지원.",
+  "sourceQuote": "[그림: 꼭짓점 $\\mathrm{O}$, 밑면의 중심 $\\mathrm{O'}$, 밑면의 반지름 $12$, 높이 $24$인 원뿔의 옆면에 두 점 $\\mathrm{A}$, $\\mathrm{B}$가 있고, 밑면 위에 수선의 발 $\\mathrm{A'}$, $\\mathrm{B'}$이 $\\overline{\\mathrm{O'A'}}=4$, $\\overline{\\m",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원뿔 꼭짓점 O, 밑면 중심 O′, 반지름 12·높이 24",
+      "mappedTo": "solids[0];dims[0..1]"
+    },
+    {
+      "id": "c2",
+      "condition": "옆면 위 A,B 및 밑면에 내린 수선발 A′,B′",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:CONE_SURFACE_POINTS_AND_FEET"
+    },
+    {
+      "id": "c3",
+      "condition": "O′A′=4, O′B′=6, 각 A′O′B′=60도",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:CONE_BASE_INTERNAL_ANGLE_AND_DIMENSIONS"
+    }
+  ],
+  "newVisualInformation": [
+    "공식 엔진의 부분 기본형이며 미지원 핵심 요소는 ENGINE_CAPABILITY_PENDING"
+  ]
+}

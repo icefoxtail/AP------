@@ -1,0 +1,158 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "m",
+  "space": {
+    "points": [
+      {
+        "id": "P",
+        "at": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "Q",
+        "at": [
+          0,
+          0,
+          5
+        ]
+      },
+      {
+        "id": "A",
+        "at": [
+          0,
+          -7,
+          0
+        ]
+      },
+      {
+        "id": "B",
+        "at": [
+          -6,
+          0,
+          5
+        ]
+      },
+      {
+        "id": "R",
+        "at": [
+          0,
+          6,
+          0
+        ],
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "T",
+        "at": [
+          7,
+          0,
+          5
+        ],
+        "hideName": true,
+        "hideDot": true
+      }
+    ],
+    "segments": [
+      {
+        "from": "A",
+        "to": "P",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "P",
+        "to": "R",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "P",
+        "to": "Q",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "B",
+        "to": "Q",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "Q",
+        "to": "T",
+        "style": "AUTO",
+        "role": "REF"
+      }
+    ]
+  },
+  "dims": [
+    {
+      "from": "P",
+      "to": "Q",
+      "label": "5"
+    },
+    {
+      "from": "A",
+      "to": "P",
+      "label": "7"
+    },
+    {
+      "from": "B",
+      "to": "Q",
+      "label": "6"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "P",
+        "refs": [
+          "Q",
+          "R"
+        ]
+      },
+      {
+        "at": "Q",
+        "refs": [
+          "P",
+          "T"
+        ]
+      }
+    ]
+  },
+  "solidCaption": {
+    "text": "기하 182 문제 q07"
+  },
+  "caption": "기하 182 q07: 직각 도로·육교, 수직 높이 5, 남쪽 A 7, 서쪽 B 6 초기 배치.",
+  "accessibilityDescription": "직각 도로·육교, 수직 높이 5, 남쪽 A 7, 서쪽 B 6 초기 배치.",
+  "sourceQuote": "[그림: 남북 방향의 직선 도로 위 지점 $\\mathrm{P}$에서 수직으로 $5\\,\\mathrm{m}$ 위에 동서 방향의 육교 위 지점 $\\mathrm{Q}$가 있다. 사람 $\\mathrm{A}$는 $\\mathrm{P}$에서 남쪽으로 $7\\,\\mathrm{m}$ 떨어진 곳에서 북쪽으로, 사람 $\\mathrm{B}$는 $\\mathrm{Q}$에서 서쪽으",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "남북 도로의 P에서 5 위에 Q, 동서 육교는 도로와 수직",
+      "mappedTo": "space.points[P,Q,R,T];space.segments[1..2,4];dims[0];marks.rightAngles"
+    },
+    {
+      "id": "c2",
+      "condition": "A는 P 남쪽 7m에서 북쪽으로 초속 2m",
+      "mappedTo": "space.points[A];space.segments[0];dims[1]"
+    },
+    {
+      "id": "c3",
+      "condition": "B는 Q 서쪽 6m에서 동쪽으로 초속 1m",
+      "mappedTo": "space.points[B];space.segments[3];dims[2]"
+    },
+    {
+      "id": "c4",
+      "condition": "A와 B의 움직임 방향 화살표, 초속 2m·1m 시각 표기",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:SPACE_MOTION_ARROWS_WITH_SPEED"
+    }
+  ],
+  "newVisualInformation": [
+    "공식 엔진의 부분 기본형이며 미지원 핵심 요소는 ENGINE_CAPABILITY_PENDING"
+  ]
+}

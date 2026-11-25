@@ -1,0 +1,268 @@
+{
+  "capability": "solid-figure-v1",
+  "space": {
+    "points": [
+      {
+        "id": "E",
+        "at": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "F",
+        "at": [
+          9,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "G",
+        "at": [
+          9,
+          7,
+          0
+        ]
+      },
+      {
+        "id": "H",
+        "at": [
+          0,
+          7,
+          0
+        ]
+      },
+      {
+        "id": "A",
+        "at": [
+          0,
+          0,
+          8
+        ]
+      },
+      {
+        "id": "B",
+        "at": [
+          9,
+          0,
+          8
+        ]
+      },
+      {
+        "id": "C",
+        "at": [
+          9,
+          7,
+          8
+        ]
+      },
+      {
+        "id": "D",
+        "at": [
+          0,
+          7,
+          8
+        ]
+      },
+      {
+        "id": "P",
+        "at": [
+          7,
+          5,
+          8
+        ]
+      },
+      {
+        "id": "J",
+        "at": [
+          9,
+          5,
+          8
+        ],
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "K",
+        "at": [
+          7,
+          7,
+          8
+        ],
+        "hideName": true,
+        "hideDot": true
+      }
+    ],
+    "segments": [
+      {
+        "from": "E",
+        "to": "F",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "F",
+        "to": "G",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "G",
+        "to": "H",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "H",
+        "to": "E",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "B",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "B",
+        "to": "C",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "C",
+        "to": "D",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "D",
+        "to": "A",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "E",
+        "to": "A",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "F",
+        "to": "B",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "G",
+        "to": "C",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "H",
+        "to": "D",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "P",
+        "to": "J",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "P",
+        "to": "K",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "J",
+        "to": "B",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "K",
+        "to": "C",
+        "style": "AUTO",
+        "role": "REF"
+      }
+    ]
+  },
+  "dims": [
+    {
+      "from": "E",
+      "to": "A",
+      "label": "8"
+    },
+    {
+      "from": "E",
+      "to": "F",
+      "label": "9"
+    },
+    {
+      "from": "F",
+      "to": "G",
+      "label": "7"
+    },
+    {
+      "from": "P",
+      "to": "J",
+      "label": "2"
+    },
+    {
+      "from": "P",
+      "to": "K",
+      "label": "2"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "J",
+        "refs": [
+          "P",
+          "B"
+        ]
+      },
+      {
+        "at": "K",
+        "refs": [
+          "P",
+          "C"
+        ]
+      }
+    ]
+  },
+  "solidCaption": {
+    "text": "기하 182 문제 q03"
+  },
+  "caption": "기하 182 q03: 직육면체 8×9×7과 윗면 내부 P, BC 및 CD까지의 두 수선 길이 2.",
+  "accessibilityDescription": "직육면체 8×9×7과 윗면 내부 P, BC 및 CD까지의 두 수선 길이 2.",
+  "sourceQuote": "[그림: 직육면체 $\\mathrm{ABCD-EFGH}$에서 밑면은 $\\mathrm{EFGH}$, 윗면은 $\\mathrm{ABCD}$이며 $\\overline{\\mathrm{AE}}=8$, $\\overline{\\mathrm{EF}}=9$, $\\overline{\\mathrm{FG}}=7$이다. 윗면 $\\mathrm{ABCD}$ 내부에 두 모서리 $\\math",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "직육면체 ABCD-EFGH의 세 변 AE=8 EF=9 FG=7",
+      "mappedTo": "space.points[E..D];space.segments[0..11];dims[0..2]"
+    },
+    {
+      "id": "c2",
+      "condition": "P는 ABCD 윗면 내부, BC까지의 거리 2",
+      "mappedTo": "space.points[P,J];space.segments[12];dims[3];marks.rightAngles[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "P에서 CD까지의 거리 2",
+      "mappedTo": "space.points[K];space.segments[13];dims[4];marks.rightAngles[1]"
+    }
+  ],
+  "newVisualInformation": [
+    "원문의 필수 시각 조건을 실제 엔진 모델과 표식 필드로 표현"
+  ]
+}

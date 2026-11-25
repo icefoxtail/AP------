@@ -1,0 +1,216 @@
+{
+  "capability": "solid-figure-v1",
+  "space": {
+    "points": [
+      {
+        "id": "O",
+        "at": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "A",
+        "at": [
+          0,
+          4,
+          0
+        ]
+      },
+      {
+        "id": "B",
+        "at": [
+          3.4641016151377544,
+          2,
+          0
+        ]
+      },
+      {
+        "id": "C",
+        "at": [
+          0,
+          0,
+          4
+        ]
+      },
+      {
+        "id": "D",
+        "at": [
+          0,
+          4,
+          4
+        ]
+      },
+      {
+        "id": "E",
+        "at": [
+          3.4641016151377544,
+          2,
+          4
+        ]
+      },
+      {
+        "id": "X",
+        "at": [
+          6,
+          0,
+          0
+        ],
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "Y",
+        "at": [
+          0,
+          6,
+          0
+        ],
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "Z",
+        "at": [
+          0,
+          0,
+          6
+        ],
+        "hideName": true,
+        "hideDot": true
+      }
+    ],
+    "segments": [
+      {
+        "from": "O",
+        "to": "A",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "B",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "B",
+        "to": "O",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "C",
+        "to": "D",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "D",
+        "to": "E",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "E",
+        "to": "C",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "O",
+        "to": "C",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "D",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "B",
+        "to": "E",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "O",
+        "to": "X",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "O",
+        "to": "Y",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "O",
+        "to": "Z",
+        "style": "AUTO",
+        "role": "REF"
+      }
+    ]
+  },
+  "dims": [
+    {
+      "from": "O",
+      "to": "A",
+      "label": "4"
+    },
+    {
+      "from": "O",
+      "to": "C",
+      "label": "4"
+    }
+  ],
+  "labels": [
+    {
+      "text": "x",
+      "at": "X"
+    },
+    {
+      "text": "y",
+      "at": "Y"
+    },
+    {
+      "text": "z",
+      "at": "Z"
+    }
+  ],
+  "solidCaption": {
+    "text": "기하 178 문제 q06"
+  },
+  "caption": "기하 178 q06: 한 변 4 정삼각기둥 OAB-CDE와 양의 방향 보조선·축 문자.",
+  "accessibilityDescription": "한 변 4 정삼각기둥 OAB-CDE와 양의 방향 보조선·축 문자.",
+  "sourceQuote": "[그림: 좌표공간에서 모든 모서리의 길이가 $4$인 정삼각기둥 $\\mathrm{OAB}-\\mathrm{CDE}$가 있다. 밑면 $\\mathrm{OAB}$는 $xy$평면 위에 놓여 있고, 꼭짓점 $\\mathrm{O}$는 원점, 모서리 $\\mathrm{OA}$는 $y$축의 양의 부분 위에 있으며, 꼭짓점 $\\mathrm{B}$는 $x>0, y>0$인 영역",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "정삼각기둥 OAB-CDE의 모든 모서리 길이 4",
+      "mappedTo": "space.points[O..E];space.segments[0..8];dims"
+    },
+    {
+      "id": "c2",
+      "condition": "O 원점, OA는 y축 양의 방향, B는 x>0 y>0",
+      "mappedTo": "space.points[O,A,B,Y];space.segments[9..11]"
+    },
+    {
+      "id": "c3",
+      "condition": "윗면 CDE는 z>0, 수직 모서리 OC,AD,BE는 z에 평행",
+      "mappedTo": "space.points[C,D,E];space.segments[6..8]"
+    },
+    {
+      "id": "c4",
+      "condition": "x,y,z 좌표축은 화살표 없이 보조선과 문자만 표시",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:NATIVE_3D_COORDINATE_AXIS_ARROWS"
+    }
+  ],
+  "newVisualInformation": [
+    "공식 엔진의 부분 기본형이며 미지원 핵심 요소는 ENGINE_CAPABILITY_PENDING"
+  ]
+}

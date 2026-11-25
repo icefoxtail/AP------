@@ -1,0 +1,250 @@
+{
+  "capability": "solid-figure-v1",
+  "space": {
+    "points": [
+      {
+        "id": "O",
+        "at": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "A",
+        "at": [
+          5,
+          0,
+          0
+        ],
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "B",
+        "at": [
+          5,
+          5,
+          0
+        ],
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "C",
+        "at": [
+          0,
+          5,
+          0
+        ],
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "D",
+        "at": [
+          0,
+          0,
+          5
+        ],
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "E",
+        "at": [
+          5,
+          0,
+          5
+        ],
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "P",
+        "at": [
+          5,
+          5,
+          5
+        ]
+      },
+      {
+        "id": "F",
+        "at": [
+          0,
+          5,
+          5
+        ],
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "G",
+        "at": [
+          0,
+          0,
+          10
+        ],
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "H",
+        "at": [
+          5,
+          0,
+          10
+        ],
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "Q",
+        "at": [
+          5,
+          5,
+          10
+        ]
+      },
+      {
+        "id": "R",
+        "at": [
+          0,
+          5,
+          10
+        ],
+        "hideName": true,
+        "hideDot": true
+      }
+    ],
+    "segments": [
+      {
+        "from": "O",
+        "to": "A",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "B",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "B",
+        "to": "C",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "C",
+        "to": "O",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "D",
+        "to": "E",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "E",
+        "to": "P",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "P",
+        "to": "F",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "F",
+        "to": "D",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "O",
+        "to": "D",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "E",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "B",
+        "to": "P",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "C",
+        "to": "F",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "G",
+        "to": "H",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "H",
+        "to": "Q",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "Q",
+        "to": "R",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "R",
+        "to": "G",
+        "style": "AUTO",
+        "role": "REF"
+      }
+    ]
+  },
+  "solidCaption": {
+    "text": "기하 178 문제 q05"
+  },
+  "caption": "기하 178 q05: 동형 대표 크기(주어진 p+q+r=20에 따라 a=5)로 쌓은 정육면체 두 개의 16개 보조 모서리.",
+  "accessibilityDescription": "동형 대표 크기(주어진 p+q+r=20에 따라 a=5)로 쌓은 정육면체 두 개의 16개 보조 모서리.",
+  "sourceQuote": "[그림: 좌표공간에서 한 변의 길이가 $a$인 정육면체 두 개가 한 면을 공유하며 $z$축 양의 방향으로 위아래로 쌓여 있다. 아래쪽 정육면체는 원점 $\\mathrm{O}$를 한 꼭짓점으로 하고 세 모서리가 각각 $x$축, $y$축, $z$축의 양의 부분 위에 놓여 있으며, 원점 $\\mathrm{O}$와 마주 보는 꼭짓점이 $\\mathrm{P}(a, ",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "아래 정육면체는 O가 원점이고 P=(a,a,a)",
+      "mappedTo": "space.points[O,P];space.segments[0..11]"
+    },
+    {
+      "id": "c2",
+      "condition": "윗 정육면체는 z 양의 방향으로 면을 공유하고 Q가 P 바로 위",
+      "mappedTo": "space.points[G,H,Q,R];space.segments[12..15]"
+    },
+    {
+      "id": "c3",
+      "condition": "두 정육면체의 수직 상단 모서리 네 개 누락(16세그먼트 상한)",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:TWO_STACKED_CUBES_FULL_EDGE_SET"
+    },
+    {
+      "id": "c4",
+      "condition": "x,y,z 좌표축의 양의 방향 화살표 및 축 이름",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:3D_COORDINATE_AXES"
+    }
+  ],
+  "newVisualInformation": [
+    "공식 엔진의 부분 기본형이며 미지원 핵심 요소는 ENGINE_CAPABILITY_PENDING"
+  ]
+}

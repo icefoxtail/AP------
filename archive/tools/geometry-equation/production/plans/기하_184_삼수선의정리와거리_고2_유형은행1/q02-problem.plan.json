@@ -1,0 +1,144 @@
+{
+  "capability": "solid-figure-v1",
+  "space": {
+    "points": [
+      {
+        "id": "O",
+        "at": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "A",
+        "at": [
+          2.449489742783178,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "B",
+        "at": [
+          0,
+          1.7320508075688772,
+          0
+        ]
+      },
+      {
+        "id": "P",
+        "at": [
+          0,
+          0,
+          1.7320508075688772
+        ]
+      },
+      {
+        "id": "X",
+        "at": [
+          5,
+          0,
+          0
+        ],
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "Y",
+        "at": [
+          0,
+          5,
+          0
+        ],
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "Z",
+        "at": [
+          0,
+          0,
+          5
+        ],
+        "hideName": true,
+        "hideDot": true
+      }
+    ],
+    "segments": [
+      {
+        "from": "O",
+        "to": "X",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "O",
+        "to": "Y",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "O",
+        "to": "Z",
+        "style": "AUTO",
+        "role": "REF"
+      }
+    ],
+    "lines": [
+      {
+        "id": "l",
+        "name": "l",
+        "through": [
+          "A",
+          "B"
+        ]
+      }
+    ]
+  },
+  "labels": [
+    {
+      "text": "x",
+      "at": "X"
+    },
+    {
+      "text": "y",
+      "at": "Y"
+    },
+    {
+      "text": "z",
+      "at": "Z"
+    }
+  ],
+  "solidCaption": {
+    "text": "기하 184 문제 q02"
+  },
+  "caption": "기하 184 q02: x·y축 위 A,B를 잇는 직선 l과 z축 점 P.",
+  "accessibilityDescription": "x·y축 위 A,B를 잇는 직선 l과 z축 점 P.",
+  "sourceQuote": "[그림: 좌표공간에서 $x$축 위의 점 $\\mathrm{A}(\\sqrt{6}, 0, 0)$과 $y$축 위의 점 $\\mathrm{B}(0, \\sqrt{3}, 0)$을 지나는 직선 $l$이 그려져 있고, $z$축 위에 점 $\\mathrm{P}(0, 0, \\sqrt{3})$이 표시되어 있다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "A=(√6,0,0) +x축, B=(0,√3,0) +y축",
+      "mappedTo": "space.points[A,B];space.segments[0..1]"
+    },
+    {
+      "id": "c2",
+      "condition": "l은 A와 B를 지나는 무한 직선",
+      "mappedTo": "space.lines[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "P=(0,0,√3) +z축",
+      "mappedTo": "space.points[P];space.segments[2]"
+    },
+    {
+      "id": "c4",
+      "condition": "x,y,z 축 전용 화살표와 좌표점 표기",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:3D_AXIS_ARROWS_AND_POINT_COORDINATE_LABELS"
+    }
+  ],
+  "newVisualInformation": [
+    "공식 엔진의 부분 기본형이며 미지원 핵심 요소는 ENGINE_CAPABILITY_PENDING"
+  ]
+}

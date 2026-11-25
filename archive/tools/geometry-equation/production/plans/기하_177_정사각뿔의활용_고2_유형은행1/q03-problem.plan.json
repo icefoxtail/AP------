@@ -1,0 +1,85 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "kind": "PYRAMID",
+      "base": {
+        "kind": "RECT",
+        "width": 2,
+        "depth": 2
+      },
+      "height": 1.4142135623730951,
+      "names": "BCDEA",
+      "points": [
+        {
+          "id": "H",
+          "at": {
+            "base": "centroid"
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "B",
+      "to": "D",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "C",
+      "to": "E",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "H",
+      "to": "D",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "H",
+      "to": "E",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "dims": [
+    {
+      "edge": "BC",
+      "label": "2"
+    },
+    {
+      "edge": "AB",
+      "label": "2"
+    }
+  ],
+  "solidCaption": {
+    "text": "기하 177 문제 q03"
+  },
+  "caption": "기하 177 q03: 모든 모서리 2인 정사각뿔, 밑면 중심 H, 삼각형 HDE.",
+  "accessibilityDescription": "모든 모서리 2인 정사각뿔, 밑면 중심 H, 삼각형 HDE.",
+  "sourceQuote": "[그림: 모든 모서리의 길이가 2인 정사각뿔 A-BCDE에서 밑면 대각선의 교점 H와 삼각형 HDE가 표시되어 있음]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "정사각뿔 A-BCDE 모든 모서리 2",
+      "mappedTo": "solids[0];dims[0..1]"
+    },
+    {
+      "id": "c2",
+      "condition": "H는 밑면의 대각선 BD와 CE의 교점",
+      "mappedTo": "solids[0].points[0];segments[0..1]"
+    },
+    {
+      "id": "c3",
+      "condition": "삼각형 HDE의 선분",
+      "mappedTo": "segments[2..3];solids[0].faces"
+    }
+  ],
+  "newVisualInformation": [
+    "원문의 필수 시각 조건을 실제 엔진 모델과 표식 필드로 표현"
+  ]
+}

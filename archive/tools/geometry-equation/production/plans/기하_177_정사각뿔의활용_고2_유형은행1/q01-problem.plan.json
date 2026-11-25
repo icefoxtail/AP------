@@ -1,0 +1,51 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "kind": "PYRAMID",
+      "base": {
+        "kind": "RECT",
+        "width": 2,
+        "depth": 2
+      },
+      "height": 1.7320508075688776,
+      "names": "BCDEA"
+    }
+  ],
+  "dims": [
+    {
+      "edge": "BC",
+      "label": "2"
+    },
+    {
+      "edge": "AB",
+      "label": "\\sqrt{5}"
+    }
+  ],
+  "solidCaption": {
+    "text": "기하 177 문제 q01"
+  },
+  "caption": "기하 177 q01: 밑변 2, 옆모서리 √5인 정사각뿔 A-BCDE.",
+  "accessibilityDescription": "밑변 2, 옆모서리 √5인 정사각뿔 A-BCDE.",
+  "sourceQuote": "[그림: 밑면이 한 변의 길이가 2인 정사각형 BCDE이고 옆면 모서리의 길이가 모두 루트 5인 정사각뿔 A-BCDE]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "정사각형 BCDE, 한 변 2",
+      "mappedTo": "solids[0].base;solids[0].names;dims[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "네 측면 모서리는 √5, 높이는 √3으로 정사각뿔 관계 충족",
+      "mappedTo": "solids[0].height;dims[1]"
+    },
+    {
+      "id": "c3",
+      "condition": "이면각은 평면 ABC와 밑면 BCDE의 관계로 정해짐",
+      "mappedTo": "solids[0].faces"
+    }
+  ],
+  "newVisualInformation": [
+    "원문의 필수 시각 조건을 실제 엔진 모델과 표식 필드로 표현"
+  ]
+}

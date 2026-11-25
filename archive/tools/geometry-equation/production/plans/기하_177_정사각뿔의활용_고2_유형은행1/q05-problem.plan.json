@@ -1,0 +1,234 @@
+{
+  "capability": "solid-figure-v1",
+  "space": {
+    "points": [
+      {
+        "id": "A",
+        "at": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "B",
+        "at": [
+          2,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "C",
+        "at": [
+          2,
+          2,
+          0
+        ]
+      },
+      {
+        "id": "D",
+        "at": [
+          0,
+          2,
+          0
+        ]
+      },
+      {
+        "id": "E",
+        "at": [
+          0,
+          0,
+          2
+        ]
+      },
+      {
+        "id": "F",
+        "at": [
+          2,
+          0,
+          2
+        ]
+      },
+      {
+        "id": "G",
+        "at": [
+          2,
+          2,
+          2
+        ]
+      },
+      {
+        "id": "H",
+        "at": [
+          0,
+          2,
+          2
+        ]
+      },
+      {
+        "id": "P",
+        "at": [
+          1,
+          1,
+          3.414213562373095
+        ]
+      }
+    ],
+    "segments": [
+      {
+        "from": "A",
+        "to": "B",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "B",
+        "to": "C",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "C",
+        "to": "D",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "D",
+        "to": "A",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "E",
+        "to": "F",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "F",
+        "to": "G",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "G",
+        "to": "H",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "H",
+        "to": "E",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "E",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "B",
+        "to": "F",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "C",
+        "to": "G",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "D",
+        "to": "H",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "P",
+        "to": "E",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "P",
+        "to": "F",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "P",
+        "to": "G",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "P",
+        "to": "H",
+        "style": "AUTO",
+        "role": "REF"
+      }
+    ]
+  },
+  "dims": [
+    {
+      "from": "A",
+      "to": "B",
+      "label": "2"
+    },
+    {
+      "from": "P",
+      "to": "F",
+      "label": "2"
+    }
+  ],
+  "highlights": [
+    {
+      "polygon": [
+        "P",
+        "F",
+        "G"
+      ],
+      "fill": "LIGHT"
+    },
+    {
+      "polygon": [
+        "B",
+        "F",
+        "G",
+        "C"
+      ],
+      "fill": "MEDIUM"
+    }
+  ],
+  "solidCaption": {
+    "text": "기하 177 문제 q05"
+  },
+  "caption": "기하 177 q05: 정육면체 윗면 EFGH에 정사각뿔 P-EFGH를 결합한 입체, 면 PFG와 BFGC 표시.",
+  "accessibilityDescription": "정육면체 윗면 EFGH에 정사각뿔 P-EFGH를 결합한 입체, 면 PFG와 BFGC 표시.",
+  "sourceQuote": "[그림: 한 모서리의 길이가 2인 정육면체 ABCD-EFGH의 면 EFGH 위에 모든 모서리의 길이가 2인 정사각뿔 P-EFGH가 결합되어 있고, 면 PFG와 면 BFGC가 표시됨]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "정육면체 ABCD-EFGH의 한 모서리 2",
+      "mappedTo": "space.points[A..H];space.segments[0..11];dims[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "정사각뿔 P-EFGH가 윗면 EFGH에 합동 면으로 결합, 모든 모서리 2",
+      "mappedTo": "space.points[P];space.segments[12..15];dims[1]"
+    },
+    {
+      "id": "c3",
+      "condition": "측면 PFG와 BFGC가 구별됨",
+      "mappedTo": "highlights[0..1]"
+    }
+  ],
+  "newVisualInformation": [
+    "원문의 필수 시각 조건을 실제 엔진 모델과 표식 필드로 표현"
+  ]
+}

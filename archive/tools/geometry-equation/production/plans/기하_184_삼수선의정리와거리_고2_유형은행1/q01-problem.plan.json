@@ -1,0 +1,161 @@
+{
+  "capability": "solid-figure-v1",
+  "space": {
+    "points": [
+      {
+        "id": "O",
+        "at": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "A",
+        "at": [
+          3,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "B",
+        "at": [
+          0,
+          6,
+          0
+        ]
+      },
+      {
+        "id": "P",
+        "at": [
+          0,
+          0,
+          3
+        ]
+      },
+      {
+        "id": "C",
+        "at": {
+          "midpoint": [
+            "A",
+            "B"
+          ]
+        }
+      },
+      {
+        "id": "X",
+        "at": [
+          6,
+          0,
+          0
+        ],
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "Y",
+        "at": [
+          0,
+          9,
+          0
+        ],
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "Z",
+        "at": [
+          0,
+          0,
+          6
+        ],
+        "hideName": true,
+        "hideDot": true
+      }
+    ],
+    "segments": [
+      {
+        "from": "O",
+        "to": "X",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "O",
+        "to": "Y",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "O",
+        "to": "Z",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "C",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "C",
+        "to": "B",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "P",
+        "to": "C",
+        "style": "AUTO",
+        "role": "REF"
+      }
+    ]
+  },
+  "labels": [
+    {
+      "text": "x",
+      "at": "X"
+    },
+    {
+      "text": "y",
+      "at": "Y"
+    },
+    {
+      "text": "z",
+      "at": "Z"
+    }
+  ],
+  "solidCaption": {
+    "text": "기하 184 문제 q01"
+  },
+  "caption": "기하 184 q01: 좌표축 위 A,B,P와 선분 AB의 대표 내부점 C, 연결선 PC.",
+  "accessibilityDescription": "좌표축 위 A,B,P와 선분 AB의 대표 내부점 C, 연결선 PC.",
+  "sourceQuote": "[그림: 좌표공간의 원점 $\\mathrm{O}$와 $x$축 위의 점 $\\mathrm{A}(3, 0, 0)$, $y$축 위의 점 $\\mathrm{B}(0, 6, 0)$, $z$축 위의 점 $\\mathrm{P}(0, 0, 3)$이 표시되어 있고, 선분 $\\mathrm{AB}$ 위에 점 $\\mathrm{C}$가 놓여 있다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "A=(3,0,0) +x축, B=(0,6,0) +y축",
+      "mappedTo": "space.points[A,B];space.segments[0..1]"
+    },
+    {
+      "id": "c2",
+      "condition": "P=(0,0,3) +z축",
+      "mappedTo": "space.points[P];space.segments[2]"
+    },
+    {
+      "id": "c3",
+      "condition": "C는 AB 위 임의 대표점(중점은 표시 예시, 최솟값 위치 아님)",
+      "mappedTo": "space.points[C];space.segments[3..4]"
+    },
+    {
+      "id": "c4",
+      "condition": "x,y,z 좌표축 화살표 및 좌표 텍스트",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:3D_AXIS_ARROWS_AND_POINT_COORDINATE_LABELS"
+    }
+  ],
+  "newVisualInformation": [
+    "공식 엔진의 부분 기본형이며 미지원 핵심 요소는 ENGINE_CAPABILITY_PENDING"
+  ]
+}
