@@ -1,0 +1,1258 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "similar/middle/m3/1final/26_왕운중_1학기_기말_중3_유사2.js",
+  "sourceGitBlobSha": "7c22ceedc1f350fe99da02884bd8d293570fa245",
+  "dictionaryVersion": "term-dict-v1.6-2026-11-15",
+  "judgedBy": {
+    "agent": "GPT-direct-similar2-draft",
+    "at": "2026-11-25"
+  },
+  "candidates": [],
+  "selfCheck": {
+    "note": "최종 JS 23개 qid와 결속한 모델 초안. 별도 독립 4칸 검수 및 메타등록 승인은 아직 실행하지 않음."
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "방정식",
+            "src": "stem",
+            "quote": "다음 중 등식을 정리했을 때 $x$에 대한 **이차방정식이 아닌** 것은? [3점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판별",
+            "src": "stem",
+            "quote": "다음 중 등식을 정리했을 때 $x$에 대한 **이차방정식이 아닌** 것은? [3점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "차수",
+            "src": "solution",
+            "quote": "[핵심] 한쪽으로 이항하여 정리한 뒤 $x^2$항이 남는지 확인한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "Q1: [핵심] 한쪽으로 이항하여 정리한 뒤 $x^2$항이 남는지 확인한다."
+          },
+          {
+            "term": "전개",
+            "src": "solution",
+            "quote": "[핵심] 한쪽으로 이항하여 정리한 뒤 $x^2$항이 남는지 확인한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "해설에서 전개 관련 판단이 결정적 역할을 함: [핵심] 한쪽으로 이항하여 정리한 뒤 $x^2$항이 남는지 확인한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        {
+          "source": "solution",
+          "quote": "① $x^2+2x-1=0$으로 이차방정식이다."
+        }
+      ],
+      "scenarioNote": "이차방정식을 고르기에서 이차항이 소거되는 예외를 찾기로 전환",
+      "reasons": {
+        "given": "발문의 풀이 조건에 직접 근거함",
+        "goal": "발문에서 판별을 요구함",
+        "method": "해설에서 차수와 전개를 확인함",
+        "condition": "별도 등록 Condition key 및 조건 슬롯이 필수인 특수 제한 없음"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "작성자 자체 점검, 외부 독립 심사 전"
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "근",
+            "src": "stem",
+            "quote": "이차방정식 $x^2+x-12=0$의 **두 근을 모두** 나타낸 것은? [3점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "이차방정식 $x^2+x-12=0$의 **두 근을 모두** 나타낸 것은? [3점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "[핵심] 영인수의 성질을 이용하려면 두 일차식의 곱으로 만든다.",
+            "evidenceType": "IMPLIED",
+            "justification": "Q2: [핵심] 영인수의 성질을 이용하려면 두 일차식의 곱으로 만든다."
+          },
+          {
+            "term": "방정식",
+            "src": "solution",
+            "quote": "[핵심] 영인수의 성질을 이용하려면 두 일차식의 곱으로 만든다.",
+            "evidenceType": "IMPLIED",
+            "justification": "해설에서 방정식 관련 판단이 결정적 역할을 함: [핵심] 영인수의 성질을 이용하려면 두 일차식의 곱으로 만든다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        {
+          "source": "solution",
+          "quote": "$x^2+x-12=(x+4)(x-3)$이므로 $(x+4)(x-3)=0$이다."
+        }
+      ],
+      "scenarioNote": "두 근의 부호가 다른 인수분해로 보기의 부호 혼동을 검증",
+      "reasons": {
+        "given": "발문의 풀이 조건에 직접 근거함",
+        "goal": "발문에서 값을 요구함",
+        "method": "해설에서 인수분해와 방정식를 확인함",
+        "condition": "별도 등록 Condition key 및 조건 슬롯이 필수인 특수 제한 없음"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "작성자 자체 점검, 외부 독립 심사 전"
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "근",
+            "src": "stem",
+            "quote": "이차방정식 $2x^2-7x+k=0$의 한 근이 $3$이고 다른 근이 $r$일 때, $2k+r$의 값은? [4점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "이차방정식 $2x^2-7x+k=0$의 한 근이 $3$이고 다른 근이 $r$일 때, $2k+r$의 값은? [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "[핵심] 주어진 근을 대입해 미정계수와 나머지 근을 순서대로 정한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "Q3: [핵심] 주어진 근을 대입해 미정계수와 나머지 근을 순서대로 정한다."
+          },
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "[핵심] 주어진 근을 대입해 미정계수와 나머지 근을 순서대로 정한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "해설에서 인수분해 관련 판단이 결정적 역할을 함: [핵심] 주어진 근을 대입해 미정계수와 나머지 근을 순서대로 정한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        {
+          "source": "solution",
+          "quote": "1단계. $x=3$을 대입하면 $18-21+k=0$이므로 $k=3$이다."
+        }
+      ],
+      "scenarioNote": "다른 근의 값만 묻는 대신 미정계수와 다른 근의 결합값 평가",
+      "reasons": {
+        "given": "발문의 풀이 조건에 직접 근거함",
+        "goal": "발문에서 값을 요구함",
+        "method": "해설에서 대입와 인수분해를 확인함",
+        "condition": "별도 등록 Condition key 및 조건 슬롯이 필수인 특수 제한 없음"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "작성자 자체 점검, 외부 독립 심사 전"
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "중근",
+            "src": "stem",
+            "quote": "이차방정식 $x^2+2mx+36=0$이 중근을 가지며 $m<0$이다. 이때 **중근의 값**은? [4점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "중근",
+            "src": "stem",
+            "quote": "이차방정식 $x^2+2mx+36=0$이 중근을 가지며 $m<0$이다. 이때 **중근의 값**은? [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "판별식",
+            "src": "solution",
+            "quote": "[핵심] 판별식이 $0$이어야 중근을 갖는다.",
+            "evidenceType": "IMPLIED",
+            "justification": "Q4: [핵심] 판별식이 $0$이어야 중근을 갖는다."
+          },
+          {
+            "term": "중근",
+            "src": "solution",
+            "quote": "[핵심] 판별식이 $0$이어야 중근을 갖는다.",
+            "evidenceType": "IMPLIED",
+            "justification": "해설에서 중근 관련 판단이 결정적 역할을 함: [핵심] 판별식이 $0$이어야 중근을 갖는다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        {
+          "source": "solution",
+          "quote": "1단계. $D=(2m)^2-4\\cdot36=4(m^2-36)=0$이므로 $m=\\pm6$이다."
+        }
+      ],
+      "scenarioNote": "계수 m 대신 중근 자체를 역산하고 m의 부호 경계를 사용",
+      "reasons": {
+        "given": "발문의 풀이 조건에 직접 근거함",
+        "goal": "발문에서 중근을 요구함",
+        "method": "해설에서 판별식와 중근를 확인함",
+        "condition": "별도 등록 Condition key 및 조건 슬롯이 필수인 특수 제한 없음"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "작성자 자체 점검, 외부 독립 심사 전"
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "판별식",
+            "src": "stem",
+            "quote": "이차방정식 $2x^2-4x+k=0$의 서로 다른 두 실근의 차의 절댓값이 $2$이다. 상수 $k$의 값은? [4점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "계수",
+            "src": "stem",
+            "quote": "이차방정식 $2x^2-4x+k=0$의 서로 다른 두 실근의 차의 절댓값이 $2$이다. 상수 $k$의 값은? [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "근의 공식",
+            "src": "solution",
+            "quote": "[핵심] 두 근의 거리와 판별식 사이의 관계를 이용한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "Q5: [핵심] 두 근의 거리와 판별식 사이의 관계를 이용한다."
+          },
+          {
+            "term": "거리",
+            "src": "solution",
+            "quote": "[핵심] 두 근의 거리와 판별식 사이의 관계를 이용한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "해설에서 거리 관련 판단이 결정적 역할을 함: [핵심] 두 근의 거리와 판별식 사이의 관계를 이용한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        {
+          "source": "solution",
+          "quote": "1단계. 판별식은 $D=(-4)^2-4\\cdot2\\cdot k=16-8k$이다."
+        }
+      ],
+      "scenarioNote": "제시된 근의 공식에서 계수를 읽는 대신 두 근의 거리를 통해 판별식을 구함",
+      "reasons": {
+        "given": "발문의 풀이 조건에 직접 근거함",
+        "goal": "발문에서 계수을 요구함",
+        "method": "해설에서 근의 공식와 거리를 확인함",
+        "condition": "별도 등록 Condition key 및 조건 슬롯이 필수인 특수 제한 없음"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "작성자 자체 점검, 외부 독립 심사 전"
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "다음 네 이차방정식 풀이 중 **옳은 것만**을 있는 대로 고르면? [4점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "다음 네 이차방정식 풀이 중 **옳은 것만**을 있는 대로 고르면? [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "방정식",
+            "src": "solution",
+            "quote": "[핵심] 해의 누락과 부호 오류를 따로 점검한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "Q6: [핵심] 해의 누락과 부호 오류를 따로 점검한다."
+          },
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "[핵심] 해의 누락과 부호 오류를 따로 점검한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "해설에서 인수분해 관련 판단이 결정적 역할을 함: [핵심] 해의 누락과 부호 오류를 따로 점검한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        {
+          "source": "solution",
+          "quote": "ㄱ. $x=0$도 근이므로 틀렸다."
+        }
+      ],
+      "scenarioNote": "풀이 오류 유형을 해 누락·중근 부호·인수분해로 조합",
+      "reasons": {
+        "given": "발문의 풀이 조건에 직접 근거함",
+        "goal": "발문에서 값을 요구함",
+        "method": "해설에서 방정식와 인수분해를 확인함",
+        "condition": "별도 등록 Condition key 및 조건 슬롯이 필수인 특수 제한 없음"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "작성자 자체 점검, 외부 독립 심사 전"
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "src": "stem",
+            "quote": "이차방정식 $3(x-2)^2=a$의 서로 다른 두 실근 중 하나는 $5$이다. 다른 근을 $r$라 할 때, $a+r$의 값은? [4점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "이차방정식 $3(x-2)^2=a$의 서로 다른 두 실근 중 하나는 $5$이다. 다른 근을 $r$라 할 때, $a+r$의 값은? [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "[핵심] 알려진 근으로 a를 정한 뒤 제곱근의 반대 부호도 사용한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "Q7: [핵심] 알려진 근으로 a를 정한 뒤 제곱근의 반대 부호도 사용한다."
+          },
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "[핵심] 알려진 근으로 a를 정한 뒤 제곱근의 반대 부호도 사용한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "해설에서 완전제곱식 관련 판단이 결정적 역할을 함: [핵심] 알려진 근으로 a를 정한 뒤 제곱근의 반대 부호도 사용한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        {
+          "source": "solution",
+          "quote": "1단계. $3(5-2)^2=a$이므로 $a=27$이다."
+        }
+      ],
+      "scenarioNote": "근의 거리 대신 한 근을 직접 제시하여 다른 근을 복원",
+      "reasons": {
+        "given": "발문의 풀이 조건에 직접 근거함",
+        "goal": "발문에서 값을 요구함",
+        "method": "해설에서 제곱근와 완전제곱식를 확인함",
+        "condition": "별도 등록 Condition key 및 조건 슬롯이 필수인 특수 제한 없음"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "작성자 자체 점검, 외부 독립 심사 전"
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "이차방정식 $x^2-4x-5=0$의 두 근 중 **오직 하나만** 부등식 $2x+k>3$을 만족하게 하는 실수 $k$의 범위는? [4점"
+          }
+        ],
+        "goal": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "차방정식 $x^2-4x-5=0$의 두 근 중 **오직 하나만** 부등식 $2x+k>3$을 만족하게 하는 실수 $k$의 범위는? [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "부등식",
+            "src": "solution",
+            "quote": "[핵심] 큰 근에서는 참, 작은 근에서는 거짓이어야 한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "Q8: [핵심] 큰 근에서는 참, 작은 근에서는 거짓이어야 한다."
+          },
+          {
+            "term": "구간",
+            "src": "solution",
+            "quote": "[핵심] 큰 근에서는 참, 작은 근에서는 거짓이어야 한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "해설에서 구간 관련 판단이 결정적 역할을 함: [핵심] 큰 근에서는 참, 작은 근에서는 거짓이어야 한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        {
+          "source": "solution",
+          "quote": "1단계. $(x-5)(x+1)=0$이므로 두 근은 $-1,5$이다."
+        }
+      ],
+      "scenarioNote": "매개변수의 위치를 바꾸고 두 근을 통과시키는 부등식 경계를 새로 판정",
+      "reasons": {
+        "given": "발문의 풀이 조건에 직접 근거함",
+        "goal": "발문에서 범위을 요구함",
+        "method": "해설에서 부등식와 구간를 확인함",
+        "condition": "별도 등록 Condition key 및 조건 슬롯이 필수인 특수 제한 없음"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "작성자 자체 점검, 외부 독립 심사 전"
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "근",
+            "src": "stem",
+            "quote": "이차방정식 $x^2-8=-(x-1)^2$의 두 실근 **사이에 있는 모든 정수의 합**은? [4점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "이차방정식 $x^2-8=-(x-1)^2$의 두 실근 **사이에 있는 모든 정수의 합**은? [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "근의 공식",
+            "src": "solution",
+            "quote": "[핵심] 두 근의 위치를 확인한 후 사이에 든 정수를 나열한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "Q9: [핵심] 두 근의 위치를 확인한 후 사이에 든 정수를 나열한다."
+          },
+          {
+            "term": "정수",
+            "src": "solution",
+            "quote": "[핵심] 두 근의 위치를 확인한 후 사이에 든 정수를 나열한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "해설에서 정수 관련 판단이 결정적 역할을 함: [핵심] 두 근의 위치를 확인한 후 사이에 든 정수를 나열한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        {
+          "source": "solution",
+          "quote": "1단계. 정리하면 $2x^2-2x-7=0$이고 근은 $x=\\frac{1\\pm\\sqrt{15}}2$이다."
+        }
+      ],
+      "scenarioNote": "무리근 사이 정수의 개수에서 정수들의 합으로 목표 변경",
+      "reasons": {
+        "given": "발문의 풀이 조건에 직접 근거함",
+        "goal": "발문에서 값을 요구함",
+        "method": "해설에서 근의 공식와 정수를 확인함",
+        "condition": "별도 등록 Condition key 및 조건 슬롯이 필수인 특수 제한 없음"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "작성자 자체 점검, 외부 독립 심사 전"
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "홀수",
+            "src": "stem",
+            "quote": "이차방정식 $2(x-6)^2=k+1$의 두 근이 **서로 다른 홀수 자연수**가 되도록 하는 모든 정수 $k$의 합은? [5점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "이차방정식 $2(x-6)^2=k+1$의 두 근이 **서로 다른 홀수 자연수**가 되도록 하는 모든 정수 $k$의 합은? [5점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "정리",
+            "src": "solution",
+            "quote": "[핵심] 근의 중심 6으로부터의 거리를 t라고 놓고 홀수·자연수 조건으로 제한한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "Q10: [핵심] 근의 중심 6으로부터의 거리를 t라고 놓고 홀수·자연수 조건으로 제한한다."
+          },
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "[핵심] 근의 중심 6으로부터의 거리를 t라고 놓고 홀수·자연수 조건으로 제한한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "해설에서 제곱근 관련 판단이 결정적 역할을 함: [핵심] 근의 중심 6으로부터의 거리를 t라고 놓고 홀수·자연수 조건으로 제한한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        {
+          "source": "solution",
+          "quote": "1단계. 두 근을 $6-t$, $6+t$ ($t>0$)라 두면 $2t^2=k+1$이다."
+        }
+      ],
+      "scenarioNote": "자연수 두 근의 열거에서 홀짝 조건을 추가로 검사",
+      "reasons": {
+        "given": "발문의 풀이 조건에 직접 근거함",
+        "goal": "발문에서 합을 요구함",
+        "method": "해설에서 정리와 제곱근를 확인함",
+        "condition": "별도 등록 Condition key 및 조건 슬롯이 필수인 특수 제한 없음"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "작성자 자체 점검, 외부 독립 심사 전"
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수 $f(x)=2x^2+4x-1$에 대하여 $f(x)=f(1)$을 만족하는 $x$ 중 **$x\\ne1$인 값**은? [3점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "이차함수 $f(x)=2x^2+4x-1$에 대하여 $f(x)=f(1)$을 만족하는 $x$ 중 **$x\\ne1$인 값**은? [3점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "대칭축",
+            "src": "solution",
+            "quote": "[핵심] 같은 함수값은 대칭축에서 같은 거리의 양쪽 입력에서 나타난다.",
+            "evidenceType": "IMPLIED",
+            "justification": "Q11: [핵심] 같은 함수값은 대칭축에서 같은 거리의 양쪽 입력에서 나타난다."
+          },
+          {
+            "term": "대칭",
+            "src": "solution",
+            "quote": "[핵심] 같은 함수값은 대칭축에서 같은 거리의 양쪽 입력에서 나타난다.",
+            "evidenceType": "IMPLIED",
+            "justification": "해설에서 대칭 관련 판단이 결정적 역할을 함: [핵심] 같은 함수값은 대칭축에서 같은 거리의 양쪽 입력에서 나타난다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        {
+          "source": "solution",
+          "quote": "1단계. $f(x)=2(x+1)^2-3$이므로 대칭축은 $x=-1$이다."
+        }
+      ],
+      "scenarioNote": "함수값 차의 대입 대신 대칭축 기준 같은 높이의 다른 입력 탐색",
+      "reasons": {
+        "given": "발문의 풀이 조건에 직접 근거함",
+        "goal": "발문에서 값을 요구함",
+        "method": "해설에서 대칭축와 대칭를 확인함",
+        "condition": "별도 등록 Condition key 및 조건 슬롯이 필수인 특수 제한 없음"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "작성자 자체 점검, 외부 독립 심사 전"
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수 $y=-3x^2$의 그래프에 대한 설명으로 **옳은 것**은? [4점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "진술",
+            "src": "stem",
+            "quote": "이차함수 $y=-3x^2$의 그래프에 대한 설명으로 **옳은 것**은? [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "그래프",
+            "src": "solution",
+            "quote": "[핵심] $y=ax^2$의 꼭짓점은 원점이고 $a<0$이면 아래로 열린다.",
+            "evidenceType": "IMPLIED",
+            "justification": "Q12: [핵심] $y=ax^2$의 꼭짓점은 원점이고 $a<0$이면 아래로 열린다."
+          },
+          {
+            "term": "부호",
+            "src": "solution",
+            "quote": "[핵심] $y=ax^2$의 꼭짓점은 원점이고 $a<0$이면 아래로 열린다.",
+            "evidenceType": "IMPLIED",
+            "justification": "해설에서 부호 관련 판단이 결정적 역할을 함: [핵심] $y=ax^2$의 꼭짓점은 원점이고 $a<0$이면 아래로 열린다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        {
+          "source": "solution",
+          "quote": "① $y$축에 대칭이므로 옳다."
+        }
+      ],
+      "scenarioNote": "거짓 설명 선택을 음수 계수 기본 함수의 참 설명 선택으로 변경",
+      "reasons": {
+        "given": "발문의 풀이 조건에 직접 근거함",
+        "goal": "발문에서 진술을 요구함",
+        "method": "해설에서 그래프와 부호를 확인함",
+        "condition": "별도 등록 Condition key 및 조건 슬롯이 필수인 특수 제한 없음"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "작성자 자체 점검, 외부 독립 심사 전"
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "대칭",
+            "src": "stem",
+            "quote": "이차함수 $y=-3x^2$의 그래프 위에 점 $(t,-12)$가 있고 $t>0$이다. 이 그래프를 $x$축에 대하여 대칭이동한 그래프가"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "-12)$가 있고 $t>0$이다. 이 그래프를 $x$축에 대하여 대칭이동한 그래프가 $y=bx^2$일 때, $t+b$의 값은? [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "[핵심] 먼저 양의 t를 구하고 x축 대칭으로 계수 부호를 바꾼다.",
+            "evidenceType": "IMPLIED",
+            "justification": "Q13: [핵심] 먼저 양의 t를 구하고 x축 대칭으로 계수 부호를 바꾼다."
+          },
+          {
+            "term": "축대칭",
+            "src": "solution",
+            "quote": "[핵심] 먼저 양의 t를 구하고 x축 대칭으로 계수 부호를 바꾼다.",
+            "evidenceType": "IMPLIED",
+            "justification": "해설에서 축대칭 관련 판단이 결정적 역할을 함: [핵심] 먼저 양의 t를 구하고 x축 대칭으로 계수 부호를 바꾼다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        {
+          "source": "solution",
+          "quote": "1단계. $-12=-3t^2$이므로 $t^2=4$이고 $t=2$이다."
+        }
+      ],
+      "scenarioNote": "그래프 위 점으로 양의 x좌표를 역산하고 반사 계수와 결합",
+      "reasons": {
+        "given": "발문의 풀이 조건에 직접 근거함",
+        "goal": "발문에서 값을 요구함",
+        "method": "해설에서 대입와 축대칭를 확인함",
+        "condition": "별도 등록 Condition key 및 조건 슬롯이 필수인 특수 제한 없음"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "작성자 자체 점검, 외부 독립 심사 전"
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "평행이동",
+            "src": "stem",
+            "quote": "이차함수 $y=ax^2$를 수평으로 평행이동했더니 꼭짓점이 $(-2,0)$이 되었고 점 $(1,-18)$을 지난다. **이동한 그래프에"
+          }
+        ],
+        "goal": [
+          {
+            "term": "함수값",
+            "src": "stem",
+            "quote": "했더니 꼭짓점이 $(-2,0)$이 되었고 점 $(1,-18)$을 지난다. **이동한 그래프에서 $x=0$일 때 $y$값**은? [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "평행이동",
+            "src": "solution",
+            "quote": "[핵심] 새 꼭짓점형에 알려진 점을 대입해 계수를 구한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "Q14: [핵심] 새 꼭짓점형에 알려진 점을 대입해 계수를 구한다."
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "[핵심] 새 꼭짓점형에 알려진 점을 대입해 계수를 구한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "해설에서 대입 관련 판단이 결정적 역할을 함: [핵심] 새 꼭짓점형에 알려진 점을 대입해 계수를 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        {
+          "source": "solution",
+          "quote": "1단계. 새 함수는 $y=a(x+2)^2$이다."
+        }
+      ],
+      "scenarioNote": "이동한 식의 계수 결정에서 새 위치의 함수값 예측으로 전환",
+      "reasons": {
+        "given": "발문의 풀이 조건에 직접 근거함",
+        "goal": "발문에서 함수값을 요구함",
+        "method": "해설에서 평행이동와 대입를 확인함",
+        "condition": "별도 등록 Condition key 및 조건 슬롯이 필수인 특수 제한 없음"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "작성자 자체 점검, 외부 독립 심사 전"
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "절편",
+            "src": "stem",
+            "quote": "이차함수 $y=ax^2+bx+c$의 그래프가 $x$축과 $(-2,0)$, $(4,0)$에서 만나고 $y$축과 $(0,-8)$에서 만난다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "꼭짓점",
+            "src": "stem",
+            "quote": " $(-2,0)$, $(4,0)$에서 만나고 $y$축과 $(0,-8)$에서 만난다. 이 그래프의 **꼭짓점의 $y$좌표**는? [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "절편",
+            "src": "solution",
+            "quote": "[핵심] 절편을 이용한 인수분해 꼴에서 계수를 정한 뒤 꼭짓점을 구한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "Q15: [핵심] 절편을 이용한 인수분해 꼴에서 계수를 정한 뒤 꼭짓점을 구한다."
+          },
+          {
+            "term": "대칭축",
+            "src": "solution",
+            "quote": "[핵심] 절편을 이용한 인수분해 꼴에서 계수를 정한 뒤 꼭짓점을 구한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "해설에서 대칭축 관련 판단이 결정적 역할을 함: [핵심] 절편을 이용한 인수분해 꼴에서 계수를 정한 뒤 꼭짓점을 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        {
+          "source": "solution",
+          "quote": "1단계. $y=a(x+2)(x-4)$로 놓는다."
+        }
+      ],
+      "scenarioNote": "대칭 절편에서 비대칭 절편으로 변경하고 함수값 대신 꼭짓점 높이를 구함",
+      "reasons": {
+        "given": "발문의 풀이 조건에 직접 근거함",
+        "goal": "발문에서 꼭짓점을 요구함",
+        "method": "해설에서 절편와 대칭축를 확인함",
+        "condition": "별도 등록 Condition key 및 조건 슬롯이 필수인 특수 제한 없음"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "작성자 자체 점검, 외부 독립 심사 전"
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "교점",
+            "src": "stem",
+            "quote": "두 이차함수 $f(x)=-(x+2)^2+9$, $g(x)=-(x-4)^2+9$의 그래프를 수평선 $y=5$가 각각 두 점씩 만난다. $"
+          }
+        ],
+        "goal": [
+          {
+            "term": "거리",
+            "src": "stem",
+            "quote": "B$, $g$ 위 교점을 왼쪽부터 $C,D$라 할 때 **선분 $AD$의 길이**는? (네 점은 모두 $y=5$ 위에 있다.) [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "교점",
+            "src": "solution",
+            "quote": "[핵심] 각 포물선과 수평선의 교점의 x좌표를 구한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "Q16: [핵심] 각 포물선과 수평선의 교점의 x좌표를 구한다."
+          },
+          {
+            "term": "거리",
+            "src": "solution",
+            "quote": "[핵심] 각 포물선과 수평선의 교점의 x좌표를 구한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "해설에서 거리 관련 판단이 결정적 역할을 함: [핵심] 각 포물선과 수평선의 교점의 x좌표를 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        {
+          "source": "solution",
+          "quote": "1단계. $f(x)=5$에서 $(x+2)^2=4$이므로 $A=(-4,5)$, $B=(0,5)$이다."
+        }
+      ],
+      "scenarioNote": "두 포물선 대응점 길이 합에서 가장 바깥 교점 사이의 거리로 전환",
+      "reasons": {
+        "given": "발문의 풀이 조건에 직접 근거함",
+        "goal": "발문에서 거리을 요구함",
+        "method": "해설에서 교점와 거리를 확인함",
+        "condition": "별도 등록 Condition key 및 조건 슬롯이 필수인 특수 제한 없음"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "작성자 자체 점검, 외부 독립 심사 전"
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "마찰력이 일정한 도로에서 자동차의 제동 거리 $y$($\\text{m}$)는 속력 $x$($\\text{km/h}$)의 제곱에 비례한다. "
+          }
+        ],
+        "goal": [
+          {
+            "term": "속력",
+            "src": "stem",
+            "quote": "곱에 비례한다. 아래 표의 측정값을 따를 때, **제동 거리가 $24\\text{ m}$가 되는 속력**은? (단, $x>0$) [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "비례",
+            "src": "solution",
+            "quote": "[핵심] 거리와 속력의 제곱 사이에 비례식을 세운다.",
+            "evidenceType": "IMPLIED",
+            "justification": "Q17: [핵심] 거리와 속력의 제곱 사이에 비례식을 세운다."
+          },
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "[핵심] 거리와 속력의 제곱 사이에 비례식을 세운다.",
+            "evidenceType": "IMPLIED",
+            "justification": "해설에서 제곱근 관련 판단이 결정적 역할을 함: [핵심] 거리와 속력의 제곱 사이에 비례식을 세운다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        {
+          "source": "solution",
+          "quote": "1단계. $y=ax^2$에 $x=30$, $y=6$을 대입하면 $a=\\frac6{900}=\\frac1{150}$이다. 표의 다른 값도 $\\frac{45^2}{150}=13.5$로 "
+        }
+      ],
+      "scenarioNote": "제동 거리를 예측하는 순방향 비례식에서 목표 제동거리의 양의 속력을 역산",
+      "reasons": {
+        "given": "발문의 풀이 조건에 직접 근거함",
+        "goal": "발문에서 속력을 요구함",
+        "method": "해설에서 비례와 제곱근를 확인함",
+        "condition": "별도 등록 Condition key 및 조건 슬롯이 필수인 특수 제한 없음"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "작성자 자체 점검, 외부 독립 심사 전"
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "포물선",
+            "src": "stem",
+            "quote": "두 이차함수 $y=x^2$, $y=ax^2$($0<a<1$)의 그래프 위에 $x$좌표가 같은 두 점 $A,B$가 각각 있다. $H=(t"
+          }
+        ],
+        "goal": [
+          {
+            "term": "거리",
+            "src": "stem",
+            "quote": "$D=(u,au^2)$와 $E=(u,0)$($u\\ne0$)를 잡는다. $ED=\\dfrac45$일 때 **$CE$의 길이**는? [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "비율",
+            "src": "solution",
+            "quote": "[핵심] 두 포물선의 같은 x좌표에서 높이 비를 비교해 a를 구한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "Q18: [핵심] 두 포물선의 같은 x좌표에서 높이 비를 비교해 a를 구한다."
+          },
+          {
+            "term": "계수",
+            "src": "solution",
+            "quote": "[핵심] 두 포물선의 같은 x좌표에서 높이 비를 비교해 a를 구한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "해설에서 계수 관련 판단이 결정적 역할을 함: [핵심] 두 포물선의 같은 x좌표에서 높이 비를 비교해 a를 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        {
+          "source": "solution",
+          "quote": "1단계. $AH=t^2$, $BH=at^2$, $AB=(1-a)t^2$이다."
+        }
+      ],
+      "scenarioNote": "서로 다른 두 수직선에서 포물선 높이 비율을 적용하는 구조를 다른 비로 설계",
+      "reasons": {
+        "given": "발문의 풀이 조건에 직접 근거함",
+        "goal": "발문에서 거리을 요구함",
+        "method": "해설에서 비율와 계수를 확인함",
+        "condition": "별도 등록 Condition key 및 조건 슬롯이 필수인 특수 제한 없음"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "작성자 자체 점검, 외부 독립 심사 전"
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "사분면",
+            "src": "stem",
+            "quote": "꼭짓점이 $(2,5)$인 이차함수 $y=ax^2+bx+c$의 그래프가 **네 사분면을 모두 지나도록** 하는 상수 $a$의 범위는? ["
+          }
+        ],
+        "goal": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "이 $(2,5)$인 이차함수 $y=ax^2+bx+c$의 그래프가 **네 사분면을 모두 지나도록** 하는 상수 $a$의 범위는? [5점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "사분면",
+            "src": "solution",
+            "quote": "[핵심] 꼭짓점의 오른쪽·왼쪽 위치에 따라 네 사분면을 지나게 하는 y절편의 조건을 정한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "Q19: [핵심] 꼭짓점의 오른쪽·왼쪽 위치에 따라 네 사분면을 지나게 하는 y절편의 조건을 정한다."
+          },
+          {
+            "term": "부등식",
+            "src": "solution",
+            "quote": "[핵심] 꼭짓점의 오른쪽·왼쪽 위치에 따라 네 사분면을 지나게 하는 y절편의 조건을 정한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "해설에서 부등식 관련 판단이 결정적 역할을 함: [핵심] 꼭짓점의 오른쪽·왼쪽 위치에 따라 네 사분면을 지나게 하는 y절편의 조건을 정한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        {
+          "source": "solution",
+          "quote": "1단계. $y=a(x-2)^2+5$이며 제3·4사분면을 모두 지나려면 $a<0$이다."
+        }
+      ],
+      "scenarioNote": "꼭짓점의 x좌표 부호를 바꾸어 제2사분면 존재 여부의 경계를 판정",
+      "reasons": {
+        "given": "발문의 풀이 조건에 직접 근거함",
+        "goal": "발문에서 범위을 요구함",
+        "method": "해설에서 사분면와 부등식를 확인함",
+        "condition": "별도 등록 Condition key 및 조건 슬롯이 필수인 특수 제한 없음"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "작성자 자체 점검, 외부 독립 심사 전"
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직사각형",
+            "src": "stem",
+            "quote": "두 이차함수의 그래프 $y=-x^2-2x+4$, $y=-x^2+8x-11$의 꼭짓점을 각각 $P,Q$라 한다. 두 점에서 $x$축에 내"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": " 같은 방식의 직사각형 $S_2$를 만든다. **$S_2$의 넓이가 $S_1$보다 $45$만큼 클 때** 양수 $p$의 값은? [5점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "[핵심] 꼭짓점 완전제곱식과 직사각형의 밑변·높이를 함께 사용한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "Q20: [핵심] 꼭짓점 완전제곱식과 직사각형의 밑변·높이를 함께 사용한다."
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "[핵심] 꼭짓점 완전제곱식과 직사각형의 밑변·높이를 함께 사용한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "해설에서 넓이 관련 판단이 결정적 역할을 함: [핵심] 꼭짓점 완전제곱식과 직사각형의 밑변·높이를 함께 사용한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        {
+          "source": "solution",
+          "quote": "1단계. $y=-(x+1)^2+5$이므로 $P=(-1,5)$이다."
+        }
+      ],
+      "scenarioNote": "같은 높이 직사각형 면적의 배수 관계 대신 면적 차로 이동량 결정",
+      "reasons": {
+        "given": "발문의 풀이 조건에 직접 근거함",
+        "goal": "발문에서 값을 요구함",
+        "method": "해설에서 완전제곱식와 넓이를 확인함",
+        "condition": "별도 등록 Condition key 및 조건 슬롯이 필수인 특수 제한 없음"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "작성자 자체 점검, 외부 독립 심사 전"
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "홀수",
+            "src": "stem",
+            "quote": "[서술형1] 연속하는 두 **홀수 자연수**의 곱이 $195$이다. 이차방정식을 이용하여 두 홀수 자연수를 구하는 과정을 서술하시오. "
+          }
+        ],
+        "goal": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "1] 연속하는 두 **홀수 자연수**의 곱이 $195$이다. 이차방정식을 이용하여 두 홀수 자연수를 구하는 과정을 서술하시오. [6점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "이차방정식",
+            "src": "solution",
+            "quote": "[핵심] 연속하는 두 홀수 자연수의 차는 2이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "Q21: [핵심] 연속하는 두 홀수 자연수의 차는 2이다."
+          },
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "[핵심] 연속하는 두 홀수 자연수의 차는 2이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "해설에서 인수분해 관련 판단이 결정적 역할을 함: [핵심] 연속하는 두 홀수 자연수의 차는 2이다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        {
+          "source": "solution",
+          "quote": "1단계. 작은 홀수 자연수를 $x$라 두면 다른 수는 $x+2$이고, $x(x+2)=195$이다. [식 세우기 2점]"
+        }
+      ],
+      "scenarioNote": "연속한 두 자연수의 간격 1을 연속한 두 홀수의 간격 2로 재모형화",
+      "reasons": {
+        "given": "발문의 풀이 조건에 직접 근거함",
+        "goal": "발문에서 자연수을 요구함",
+        "method": "해설에서 이차방정식와 인수분해를 확인함",
+        "condition": "별도 등록 Condition key 및 조건 슬롯이 필수인 특수 제한 없음"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "작성자 자체 점검, 외부 독립 심사 전"
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "꼭짓점",
+            "src": "stem",
+            "quote": "[서술형2] 이차함수 $y=x^2-6x+4$의 그래프의 꼭짓점을 $A$, 그래프와 $y$축의 교점을 $B$, 원점을 $O$라 한다. $"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": ", 그래프와 $y$축의 교점을 $B$, 원점을 $O$라 한다. $\\triangle ABO$의 넓이를 구하는 과정을 서술하시오. [7점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "[핵심] y축 위 OB를 밑변으로 두고 A에서 y축까지의 수평거리를 높이로 잡는다.",
+            "evidenceType": "IMPLIED",
+            "justification": "Q22: [핵심] y축 위 OB를 밑변으로 두고 A에서 y축까지의 수평거리를 높이로 잡는다."
+          },
+          {
+            "term": "삼각형",
+            "src": "solution",
+            "quote": "[핵심] y축 위 OB를 밑변으로 두고 A에서 y축까지의 수평거리를 높이로 잡는다.",
+            "evidenceType": "IMPLIED",
+            "justification": "해설에서 삼각형 관련 판단이 결정적 역할을 함: [핵심] y축 위 OB를 밑변으로 두고 A에서 y축까지의 수평거리를 높이로 잡는다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        {
+          "source": "solution",
+          "quote": "1단계. $y=(x-3)^2-5$이므로 $A=(3,-5)$이다. [3점]"
+        }
+      ],
+      "scenarioNote": "아래로 열린 꼭짓점 좌측 포물선에서 위로 열린 꼭짓점 우측 포물선으로 변경",
+      "reasons": {
+        "given": "발문의 풀이 조건에 직접 근거함",
+        "goal": "발문에서 넓이을 요구함",
+        "method": "해설에서 완전제곱식와 삼각형를 확인함",
+        "condition": "별도 등록 Condition key 및 조건 슬롯이 필수인 특수 제한 없음"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "작성자 자체 점검, 외부 독립 심사 전"
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "[서술형3] $a>0$, $b>0$, $c>0$일 때 이차방정식 $ax^2+bx=c$의 **양수인 근** $x$를 데카르트식 직각삼각형"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "카르트식 직각삼각형 구성으로 구하려 한다. (가)에 들어갈 등식과 (나)에 들어갈 양의 근을 각각 구하고 풀이 과정을 쓰시오. [7점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "방정식",
+            "src": "solution",
+            "quote": "[핵심] 최고차항 계수 a로 나눈 뒤 직각삼각형의 길이 관계를 일반 계수로 표현한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "Q23: [핵심] 최고차항 계수 a로 나눈 뒤 직각삼각형의 길이 관계를 일반 계수로 표현한다."
+          },
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "[핵심] 최고차항 계수 a로 나눈 뒤 직각삼각형의 길이 관계를 일반 계수로 표현한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "해설에서 제곱근 관련 판단이 결정적 역할을 함: [핵심] 최고차항 계수 a로 나눈 뒤 직각삼각형의 길이 관계를 일반 계수로 표현한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        {
+          "source": "solution",
+          "quote": "1단계. $ax^2+bx=c$를 $a$로 나누면 $x^2+\\frac ba x=\\frac ca$이다. [1점]"
+        }
+      ],
+      "scenarioNote": "계수가 1인 원래 방정식의 기하 풀이를 양의 일반 이차항 계수 a에 대한 정규화로 확장",
+      "reasons": {
+        "given": "발문의 풀이 조건에 직접 근거함",
+        "goal": "발문에서 값을 요구함",
+        "method": "해설에서 방정식와 제곱근를 확인함",
+        "condition": "별도 등록 Condition key 및 조건 슬롯이 필수인 특수 제한 없음"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "작성자 자체 점검, 외부 독립 심사 전"
+      }
+    }
+  ]
+}

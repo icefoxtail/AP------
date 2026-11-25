@@ -1,0 +1,83 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-8",
+          "-8",
+          "-2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "KeyV",
+        "x": "-2",
+        "y": "0",
+        "marker": "NONE"
+      },
+      {
+        "id": "KeyA",
+        "x": "1",
+        "y": "-18",
+        "marker": "NONE"
+      },
+      {
+        "id": "KeyB",
+        "x": "0",
+        "y": "-8",
+        "marker": "NONE"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "V",
+          "curveX": "-2"
+        },
+        {
+          "id": "A",
+          "curveX": "1"
+        },
+        {
+          "id": "B",
+          "curveX": "0"
+        }
+      ]
+    },
+    "domain": [
+      -5,
+      2
+    ],
+    "viewport": [
+      -5,
+      2,
+      -21,
+      3
+    ]
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "수평으로 이동한 포물선 y=-2(x+2)²와 두 점",
+  "accessibilityDescription": "꼭짓점 V(-2,0), 주어진 점 A(1,-18), 계산한 점 B(0,-8)을 표시한다.",
+  "sourceQuote": "[핵심] 새 꼭짓점형에 알려진 점을 대입해 계수를 구한다.\n1단",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차함수 $y=ax^2$를 수평으로 평행이동했더니 꼭짓점이 $(-2,0)$이 되었고 점 $(1,-18)$을 지난다. **이동한 그래프에서 $x=0$일 때 $y$값**은? [4점]",
+      "mappedTo": "CURRENT_FOLLOWUP_JS"
+    }
+  ],
+  "newVisualInformation": [
+    "꼭짓점 V(-2,0), 주어진 점 A(1,-18), 계산한 점 B(0,-8)을 표시한다."
+  ]
+}

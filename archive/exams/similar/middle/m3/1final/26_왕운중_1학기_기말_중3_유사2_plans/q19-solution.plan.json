@@ -1,0 +1,73 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "1",
+          "4",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "KeyV",
+        "x": "2",
+        "y": "5",
+        "marker": "NONE"
+      },
+      {
+        "id": "KeyB",
+        "x": "0",
+        "y": "1",
+        "marker": "NONE"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "V",
+          "curveX": "2"
+        },
+        {
+          "id": "B",
+          "curveX": "0"
+        }
+      ]
+    },
+    "domain": [
+      -3,
+      7
+    ],
+    "viewport": [
+      -3,
+      7,
+      -7,
+      7
+    ]
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "허용 범위 내 a=-1일 때 사분면과 y절편",
+  "accessibilityDescription": "예시 a=-1이면 y=-(x-2)²+5, 꼭짓점 V(2,5), y절편 B(0,1)으로 네 사분면을 지난다. 허용 범위 끝 a=-5/4는 포함하지 않는다.",
+  "sourceQuote": "[핵심] 꼭짓점의 오른쪽·왼쪽 위치에 따라 네 사분면을 지나게 ",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "꼭짓점이 $(2,5)$인 이차함수 $y=ax^2+bx+c$의 그래프가 **네 사분면을 모두 지나도록** 하는 상수 $a$의 범위는? [5점]",
+      "mappedTo": "CURRENT_FOLLOWUP_JS"
+    }
+  ],
+  "newVisualInformation": [
+    "예시 a=-1이면 y=-(x-2)²+5, 꼭짓점 V(2,5), y절편 B(0,1)으로 네 사분면을 지난다. 허용 범위 끝 a=-5/4는 포함하지 않는다."
+  ]
+}

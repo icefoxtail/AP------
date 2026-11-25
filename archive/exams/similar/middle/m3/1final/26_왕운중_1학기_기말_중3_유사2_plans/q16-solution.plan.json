@@ -1,0 +1,126 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "5",
+          "-4",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "-2",
+        "y": "9"
+      },
+      {
+        "id": "W",
+        "x": "4",
+        "y": "9"
+      },
+      {
+        "id": "KeyA",
+        "x": "-4",
+        "y": "5",
+        "marker": "NONE"
+      },
+      {
+        "id": "KeyB",
+        "x": "0",
+        "y": "5",
+        "marker": "NONE"
+      },
+      {
+        "id": "KeyC",
+        "x": "2",
+        "y": "5",
+        "marker": "NONE"
+      },
+      {
+        "id": "KeyD",
+        "x": "6",
+        "y": "5",
+        "marker": "NONE"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "-4"
+        },
+        {
+          "id": "B",
+          "curveX": "0"
+        },
+        {
+          "id": "C",
+          "x": "2",
+          "y": "5"
+        },
+        {
+          "id": "D",
+          "x": "6",
+          "y": "5"
+        }
+      ],
+      "segments": [
+        {
+          "id": "AD",
+          "from": "A",
+          "to": "D"
+        }
+      ]
+    },
+    "referenceCurves": [
+      {
+        "id": "g",
+        "name": "g",
+        "coefficients": [
+          "-7",
+          "8",
+          "-1"
+        ],
+        "intersectionX": [
+          "1"
+        ]
+      }
+    ],
+    "domain": [
+      -5,
+      7
+    ],
+    "viewport": [
+      -5,
+      7,
+      -2,
+      11
+    ]
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "두 포물선과 높이 y=5의 교점 A·B·C·D",
+  "accessibilityDescription": "첫째 포물선 꼭짓점 (-2,9), 둘째 꼭짓점 (4,9)와 y=5에서 A(-4,5), B(0,5), C(2,5), D(6,5)가 표시된다.",
+  "sourceQuote": "[핵심] 각 포물선과 수평선의 교점의 x좌표를 구한다.\n1단계.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 이차함수 $f(x)=-(x+2)^2+9$, $g(x)=-(x-4)^2+9$의 그래프를 수평선 $y=5$가 각각 두 점씩 만난다. $f$ 위 교점을 왼쪽부터 $A,B$, $g$ 위 교점을 왼쪽부터 $C,D$라 할 때 **선분 $AD$의 길이**는? (네 점은 모두 $y=5$ 위에 있다.) [4점]",
+      "mappedTo": "CURRENT_FOLLOWUP_JS"
+    }
+  ],
+  "newVisualInformation": [
+    "첫째 포물선 꼭짓점 (-2,9), 둘째 꼭짓점 (4,9)와 y=5에서 A(-4,5), B(0,5), C(2,5), D(6,5)가 표시된다."
+  ]
+}

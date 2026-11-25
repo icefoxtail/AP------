@@ -1,0 +1,175 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "4",
+          "-2",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "KeyP",
+        "x": "-1",
+        "y": "5",
+        "marker": "NONE"
+      },
+      {
+        "id": "KeyQ",
+        "x": "4",
+        "y": "5",
+        "marker": "NONE"
+      },
+      {
+        "id": "KeyR",
+        "x": "13",
+        "y": "5",
+        "marker": "NONE"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "curveX": "-1"
+        },
+        {
+          "id": "Q",
+          "x": "4",
+          "y": "5"
+        },
+        {
+          "id": "R",
+          "x": "13",
+          "y": "5"
+        },
+        {
+          "id": "U",
+          "x": "-1",
+          "y": "0"
+        },
+        {
+          "id": "V",
+          "x": "4",
+          "y": "0"
+        },
+        {
+          "id": "W",
+          "x": "13",
+          "y": "0"
+        }
+      ],
+      "segments": [
+        {
+          "id": "PU",
+          "from": "P",
+          "to": "U"
+        },
+        {
+          "id": "QV",
+          "from": "Q",
+          "to": "V"
+        },
+        {
+          "id": "RW",
+          "from": "R",
+          "to": "W"
+        },
+        {
+          "id": "PQ",
+          "from": "P",
+          "to": "Q"
+        },
+        {
+          "id": "PR",
+          "from": "P",
+          "to": "R"
+        }
+      ],
+      "polygons": [
+        {
+          "id": "r1",
+          "points": [
+            "P",
+            "Q",
+            "V",
+            "U"
+          ],
+          "fill": "LIGHT"
+        },
+        {
+          "id": "r2",
+          "points": [
+            "P",
+            "R",
+            "W",
+            "U"
+          ],
+          "fill": "LIGHT"
+        }
+      ]
+    },
+    "referenceCurves": [
+      {
+        "id": "g",
+        "name": "g",
+        "coefficients": [
+          "-11",
+          "8",
+          "-1"
+        ],
+        "intersectionX": [
+          "3/2"
+        ]
+      },
+      {
+        "id": "h",
+        "name": "h",
+        "coefficients": [
+          "-164",
+          "26",
+          "-1"
+        ],
+        "intersectionX": [
+          "6"
+        ]
+      }
+    ],
+    "domain": [
+      -3,
+      15
+    ],
+    "viewport": [
+      -3,
+      15,
+      -2,
+      8
+    ]
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "같은 높이의 꼭짓점 P,Q,R과 두 직사각형",
+  "accessibilityDescription": "P(-1,5),Q(4,5),R(13,5)이며 S1은 가로 5·세로 5, S2는 가로 14·세로 5인 직사각형이다. R은 Q보다 오른쪽으로 p=9만큼 이동한 점이다.",
+  "sourceQuote": "[핵심] 꼭짓점 완전제곱식과 직사각형의 밑변·높이를 함께 사용한",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 이차함수의 그래프 $y=-x^2-2x+4$, $y=-x^2+8x-11$의 꼭짓점을 각각 $P,Q$라 한다. 두 점에서 $x$축에 내린 수선과 선분 $PQ$, $x$축이 만드는 직사각형을 $S_1$이라 한다. 둘째 그래프를 오른쪽으로 $p$만큼 옮긴 그래프의 꼭짓점 $R$과 $P$로 같은 방식의 직사각형 $S_2$를 만든다. **$S_2$의 넓이가 $S_1$보다 $45$만큼 클 때** 양수 $p$의 값은? [5점]",
+      "mappedTo": "CURRENT_FOLLOWUP_JS"
+    }
+  ],
+  "newVisualInformation": [
+    "P(-1,5),Q(4,5),R(13,5)이며 S1은 가로 5·세로 5, S2는 가로 14·세로 5인 직사각형이다. R은 Q보다 오른쪽으로 p=9만큼 이동한 점이다."
+  ]
+}

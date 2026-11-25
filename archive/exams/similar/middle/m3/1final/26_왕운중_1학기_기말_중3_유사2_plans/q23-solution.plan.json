@@ -1,0 +1,146 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "직각삼각형 ABC와 BC 위 E: 일반식의 길이 관계를 보여 주는 한 가지 비례 예시",
+  "accessibilityDescription": "a=1,b=30,c=400인 예시에서는 A(0,0), B(20,0), C(0,15), E(12,6)이다. AB=20, AC=CE=15, BC=25, BE=10이므로 BC=BE+CE이다. 이는 수치가 주어진 문제가 아닌 일반형을 설명하기 위한 예시다.",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "20"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "15"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "E"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "BE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "EC",
+      "refs": [
+        "E",
+        "C"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 540
+  },
+  "sourceQuote": "[핵심] 최고차항 계수 a로 나눈 뒤 직각삼각형의 길이 관계를 ",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형3] $a>0$, $b>0$, $c>0$일 때 이차방정식 $ax^2+bx=c$의 **양수인 근** $x$를 데카르트식 직각삼각형 구성으로 구하려 한다. (가)에 들어갈 등식과 (나)에 들어갈 양의 근을 각각 구하고 풀이 과정을 쓰시오. [7점]\n\n(1) 방정식 양변을 $a$로 나눈다.\n(2) $AB=\\sqrt{c/a}$인 선분 $AB$를 그린다.\n(3) $A$에서 $AB$에 수직인 반직선 위에 $AC=b/(2a)$가 되는 점 $C$를 잡는다. 이때 $\\angle BAC=90^\\circ$이다.\n(4) $C$를 중심으로 반지름 $AC$인 원을 그려 선분 $CB$와 만나는 점을 $E$라 한다. $B,E,C$는 이 순서로 한 직선 위에 있고 $CE=AC=b/(2a)$이며 $BE=x$라 놓는다.\n(5) 직각삼각형 $ABC$에서 피타고라스 정리로 (가)를 채우고, (나)를 구하시오.\n\n(가) ________ / (나) $x=$ ________",
+      "mappedTo": "CURRENT_FOLLOWUP_JS"
+    }
+  ],
+  "newVisualInformation": [
+    "직각삼각형 ABC에서 A가 직각이고 E는 B와 C 사이에 있다. 원에 의한 CE=CA를 이용해 BC=BE+CE를 시각적으로 확인한다."
+  ]
+}
