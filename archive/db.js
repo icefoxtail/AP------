@@ -1375,6 +1375,47 @@ window.mainDB = {
       "primaryStandardCourse": "대수"
     },
     {
+      "file": "similar/high/h2/1final/26_제일고_1학기_기말_고2_대수_유사2.js",
+      "school": "제일고",
+      "topic": "대수",
+      "grade": "고2",
+      "year": 2026,
+      "semester": "1",
+      "examType": "final",
+      "subject": "대수",
+      "contentType": "유형",
+      "qCount": 21,
+      "rangeStartUnitKey": "",
+      "rangeStartUnit": "",
+      "rangeStartUnitOrder": 999,
+      "rangeEndUnitKey": "",
+      "rangeEndUnit": "",
+      "rangeEndUnitOrder": 999,
+      "courseRanges": [
+        {
+          "standardCourse": "공통수학2",
+          "courseCode": "H22-C2",
+          "rangeStartUnitKey": "H22-C2-02",
+          "rangeStartUnit": "직선의 방정식",
+          "rangeStartUnitOrder": 2,
+          "rangeEndUnitKey": "H22-C2-02",
+          "rangeEndUnit": "직선의 방정식",
+          "rangeEndUnitOrder": 2
+        },
+        {
+          "standardCourse": "대수",
+          "courseCode": "H22-A",
+          "rangeStartUnitKey": "H22-A-05",
+          "rangeStartUnit": "사인법칙과 코사인법칙",
+          "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "H22-A-08",
+          "rangeEndUnit": "수학적 귀납법",
+          "rangeEndUnitOrder": 8
+        }
+      ],
+      "primaryStandardCourse": ""
+    },
+    {
       "file": "similar/high/h2/1mid/26_제일고_1학기_중간_고2_기하_유사.js",
       "school": "제일고",
       "topic": "기하",
