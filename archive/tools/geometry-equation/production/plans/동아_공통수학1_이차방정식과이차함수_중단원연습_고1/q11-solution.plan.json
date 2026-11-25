@@ -1,0 +1,24 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": ["0", "40", "-8/3"],
+    "sourceDomain": { "kind": "INTERVAL", "range": [0, 15], "states": ["OPEN", "OPEN"] },
+    "domain": [0, 15],
+    "viewport": [-1, 16, -10, 170],
+    "applicationAxes": true,
+    "axisVariable": "x",
+    "axisTickValues": { "x": [5, 10], "y": [50, 100, 150] },
+    "requiredPoints": [{ "id": "M", "x": 7.5, "y": 150 }],
+    "exactCoordinates": { "M": ["15/2", "150"] }
+  },
+  "sourceQuote": "동아리 부스의 넓이의 최댓값을 구하시오.",
+  "caption": "4x+3y=60에서 y를 소거한 전체 넓이 S(x)=40x-8x²/3은 x=15/2m에서 최대 150m²",
+  "accessibilityDescription": "가로축은 한 부스의 가로길이 x 미터이고 세로축은 두 부스의 총넓이 S 제곱미터이다. 열린 구간 0에서 15까지 아래로 열린 포물선이 정점 (15/2,150)을 지나며 양 끝에서는 넓이가 0에 가까워진다.",
+  "sourceConditions": [
+    { "id": "S1", "condition": "테이프의 전체 길이는 4x+3y=60m이고 두 부스의 넓이는 S=2xy다.", "mappedTo": "q11-problem의 가로 네 선분·세로 세 선분에 대응; graphPlan의 최종 계수" },
+    { "id": "S2", "condition": "같은 길이 조건으로 y=(60-4x)/3을 대입하면 S(x)=40x-8x²/3, 0<x<15이다.", "mappedTo": "graphPlan.coefficients, sourceDomain OPEN 양 끝, applicationAxes" },
+    { "id": "S3", "condition": "꼭짓점 x=15/2에서 총넓이 150m²가 최대이며 원문 해설의 y=10과 일치한다.", "mappedTo": "requiredPoints[M], exactCoordinates[M]" }
+  ],
+  "newVisualInformation": ["테이프 총길이 제약으로 가능한 전체 부스 넓이가 이차함수로 변하는 모습을 보여준다."]
+}

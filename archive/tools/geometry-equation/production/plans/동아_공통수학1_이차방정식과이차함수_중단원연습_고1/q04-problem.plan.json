@@ -1,0 +1,21 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": ["6", "-4", "1"],
+    "sourceDomain": { "kind": "ALL_REALS" },
+    "domain": [-2, 6],
+    "viewport": [-2, 6, -1, 23],
+    "overlays": { "points": [{ "id": "P", "x": "0", "y": "2" }] },
+    "axisTickValues": { "x": [], "y": [] }
+  },
+  "pointNames": { "P": "P" },
+  "sourceQuote": "점 $(0, 2)$를 지나고 이차함수",
+  "caption": "주어진 점 P(0,2)와 포물선 y=x²-4x+6만 표시한 문제용 그림. 접선은 그리지 않음",
+  "accessibilityDescription": "포물선 y=x²-4x+6이 위로 열려 있고, 곡선 위가 아닌 점 P(0,2)가 y축 위에 표시된다. 구하는 접선이나 기울기 및 접점은 추가하지 않았다.",
+  "sourceConditions": [
+    { "id": "S1", "condition": "주어진 곡선은 y=x²-4x+6이다.", "mappedTo": "graphPlan.coefficients=[6,-4,1]" },
+    { "id": "S2", "condition": "주어진 점은 곡선 밖의 (0,2)이며, 이 점을 지나는 접선의 식이 미지수다.", "mappedTo": "graphPlan.overlays.points[P]; overlays.lines 없음" }
+  ],
+  "newVisualInformation": ["곡선에 속하지 않은 주어진 점과 포물선의 상대적인 배치를 보여 주되 미지 접선은 숨긴다."]
+}

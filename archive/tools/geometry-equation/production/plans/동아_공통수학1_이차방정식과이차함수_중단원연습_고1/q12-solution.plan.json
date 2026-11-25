@@ -1,0 +1,23 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": ["24", "20", "-2"],
+    "sourceDomain": { "kind": "INTERVAL", "range": [0, 6], "states": ["OPEN", "OPEN"] },
+    "domain": [0, 6],
+    "viewport": [-0.5, 6.5, -1, 79],
+    "applicationAxes": true,
+    "axisVariable": "a",
+    "axisTickValues": { "x": [2, 4, 6], "y": [20, 40, 60] },
+    "requiredPoints": [{ "id": "M", "x": 5, "y": 74 }]
+  },
+  "sourceQuote": "직사각형 $\\mathrm{ACDB}$의 둘레의 길이의 최댓값",
+  "caption": "직사각형의 둘레 P(a)=-2a²+20a+24는 0<a<6에서 a=5일 때 최대 74",
+  "accessibilityDescription": "가로축 a, 세로축 둘레 P(a)인 아래로 열린 이차함수가 열린 구간 0부터 6까지 그려져 있고, 꼭짓점 (5,74)가 표시되어 최대 둘레 74를 보여 준다.",
+  "sourceConditions": [
+    { "id": "S1", "condition": "A와 B의 같은 y좌표는 -a²+12a, 바닥 폭 CD는 12-2a이다.", "mappedTo": "q12-problem의 직사각형 네 선분에 대응" },
+    { "id": "S2", "condition": "둘레 P(a)=2[(12-2a)+(-a²+12a)]=-2a²+20a+24, 0<a<6이다.", "mappedTo": "graphPlan.coefficients, sourceDomain OPEN 양 끝, applicationAxes" },
+    { "id": "S3", "condition": "꼭짓점 a=5에서 최댓값은 74이다.", "mappedTo": "requiredPoints[M]" }
+  ],
+  "newVisualInformation": ["직사각형 형태에서 계산한 둘레의 이차함수와 허용 구간 안에 있는 최대점을 연결한다."]
+}

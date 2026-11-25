@@ -1,0 +1,26 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": ["0", "-1", "-1"],
+    "sourceDomain": { "kind": "INTERVAL", "range": [-0.5, 1], "states": ["CLOSED", "CLOSED"] },
+    "domain": [-0.5, 1],
+    "viewport": [-0.9, 1.4, -2.4, 0.9],
+    "requiredPoints": [
+      { "id": "M", "x": -0.5, "y": 0.25 },
+      { "id": "E", "x": 1, "y": -2 }
+    ],
+    "exactCoordinates": { "M": ["-1/2", "1/4"] },
+    "axisTitles": { "x": "a", "y": "f(a)" },
+    "axisTickValues": { "x": [], "y": [] }
+  },
+  "sourceQuote": "함수 $f(a)$의 최댓값을 구하시오.",
+  "caption": "f(a)=-a²-a의 닫힌 구간 -1/2≤a≤1에서 왼쪽 끝 꼭짓점의 최댓값은 1/4",
+  "accessibilityDescription": "가로축은 a이고 세로축은 f(a)인 아래로 열린 포물선이 a=-1/2부터 a=1까지 그려진다. 왼쪽 끝점 (-1/2,1/4)이 꼭짓점이자 최댓값이고 오른쪽 끝점은 (1,-2)이다.",
+  "sourceConditions": [
+    { "id": "S1", "condition": "x에 대한 원래 이차식의 최솟값 f(a)=-a²-a가 새 함수다.", "mappedTo": "graphPlan.coefficients=[0,-1,-1], axisTitles[a,f(a)]" },
+    { "id": "S2", "condition": "-1/2≤a≤1의 닫힌 구간에서 꼭짓점 (-1/2,1/4)이 최댓값이다.", "mappedTo": "sourceDomain, requiredPoints[M], exactCoordinates[M]" },
+    { "id": "S3", "condition": "오른쪽 끝점은 (1,-2)이다.", "mappedTo": "requiredPoints[E]" }
+  ],
+  "newVisualInformation": ["원래 변수 x의 최솟값을 a의 함수로 바꾼 뒤 a=-1/2의 끝점이 최대인 구조를 보인다."]
+}

@@ -1,0 +1,42 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "P", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "Q", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "4" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "R", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "8" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "S", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "8" }, { "kind": "integer", "value": "4" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "T", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "4" }, { "kind": "integer", "value": "4" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "U", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "4" }] }, "outputType": "POINT", "factRole": "GIVEN" }
+    ]
+  },
+  "displayPoints": ["P", "Q", "R", "S", "T", "U"],
+  "hiddenPointNames": ["P", "Q", "R", "S", "T", "U"],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    { "id": "bottomLeft", "refs": ["P", "Q"] },
+    { "id": "bottomRight", "refs": ["Q", "R"] },
+    { "id": "topLeft", "refs": ["U", "T"] },
+    { "id": "topRight", "refs": ["T", "S"] },
+    { "id": "left", "refs": ["P", "U"] },
+    { "id": "middle", "refs": ["Q", "T"] },
+    { "id": "right", "refs": ["R", "S"] }
+  ],
+  "planeMarks": {
+    "textLabels": [
+      { "id": "booth1", "at": [2, 2], "text": "부스 1", "labelKind": "TEXT", "factRole": "GIVEN" },
+      { "id": "booth2", "at": [6, 2], "text": "부스 2", "labelKind": "TEXT", "factRole": "GIVEN" }
+    ]
+  },
+  "sourceQuote": "합동인 두 직사각형 모양으로 된 동아리 부스를 만들려고 한다.",
+  "caption": "두 합동 직사각형이 가운데 변 하나를 공유하는 검정 테이프 배치의 모식도",
+  "accessibilityDescription": "나란한 동일 크기의 직사각형 두 개에 부스 1과 부스 2가 표시되고 세로 경계 한 개를 공유한다. 가로 테이프 네 구간과 세로 테이프 세 구간이 모두 그려져 있으며 길이 수치와 넓이 정답은 표시하지 않았다.",
+  "sourceConditions": [
+    { "id": "S1", "condition": "합동인 직사각형 두 개가 나란히 놓이고 가운데 세로 변 하나를 공유한다.", "mappedTo": "displaySegments[bottomLeft,bottomRight,topLeft,topRight,left,middle,right], planeMarks.textLabels[booth1,booth2]" },
+    { "id": "S2", "condition": "검정 테이프는 모든 경계를 겹침 없이 한 번씩 잇고, 전체 길이 60m는 발문 텍스트에만 주어진다.", "mappedTo": "가로 네 선분·세로 세 선분; 숫자 60과 미지 넓이는 그림에 표시하지 않음" },
+    { "id": "S3", "condition": "실제 각 변의 길이는 미정이므로 대표 좌표 4대4는 배치 형태만 정의한다.", "mappedTo": "mathPlan.nodes[Q,R,S,T,U]의 동형 대표 좌표, 길이 라벨 없음" }
+  ],
+  "newVisualInformation": ["잘린 기존 원본 그림을 보완하여 공동 경계 한 개가 포함된 7개 테이프 선분의 실제 연결을 보인다."]
+}

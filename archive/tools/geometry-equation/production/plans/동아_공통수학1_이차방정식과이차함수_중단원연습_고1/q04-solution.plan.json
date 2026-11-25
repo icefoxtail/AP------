@@ -1,0 +1,32 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": ["6", "-4", "1"],
+    "sourceDomain": { "kind": "ALL_REALS" },
+    "domain": [-4, 5],
+    "viewport": [-4, 5, -2, 37],
+    "requiredPoints": [{ "id": "V", "x": 2, "y": 2 }],
+    "overlays": {
+      "points": [
+        { "id": "P", "x": "0", "y": "2" },
+        { "id": "T", "curveX": "-2" }
+      ],
+      "lines": [
+        { "id": "h", "slope": "0", "intercept": "2", "label": "y=2", "color": "BLUE" },
+        { "id": "g", "slope": "-8", "intercept": "2", "label": "y=-8x+2", "color": "WARM" }
+      ]
+    },
+    "axisTickValues": { "x": [], "y": [] }
+  },
+  "pointNames": { "P": "P", "T": "T", "V": "V" },
+  "sourceQuote": "점 $(0, 2)$를 지나고 이차함수",
+  "caption": "점 P(0,2)를 지나는 두 접선 y=2와 y=-8x+2: 접점 V(2,2), T(-2,18)",
+  "accessibilityDescription": "위로 열린 포물선 y=x²-4x+6의 꼭짓점은 V(2,2)이다. 점 P(0,2)를 지나는 수평선 y=2는 V에서 접하고, 기울기 -8의 직선은 T(-2,18)에서 접한다.",
+  "sourceConditions": [
+    { "id": "S1", "condition": "곡선 y=x²-4x+6과 외부 점 P(0,2)가 주어졌다.", "mappedTo": "graphPlan.coefficients, overlays.points[P]" },
+    { "id": "S2", "condition": "접선의 기울기는 0 또는 -8이며 두 접선 모두 P를 지난다.", "mappedTo": "overlays.lines[h,g]의 slope/intercept" },
+    { "id": "S3", "condition": "수평 접점 (2,2)와 기울기 -8 접점 (-2,18)은 원곡선에서 미분 없이 판별식으로 검산된다.", "mappedTo": "requiredPoints[V], overlays.points[T]" }
+  ],
+  "newVisualInformation": ["같은 점을 지나는 두 직선이 포물선의 서로 다른 위치에서 접하는 모습을 비교한다."]
+}

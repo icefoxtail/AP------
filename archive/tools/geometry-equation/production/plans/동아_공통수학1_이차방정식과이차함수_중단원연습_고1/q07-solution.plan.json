@@ -1,0 +1,15 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    { "caption": { "text": "⑴ 꼭짓점에서 최소" }, "plan": { "capability": "polynomial-spike-v1", "graphPlan": { "family": "polynomial", "coefficients": ["5", "-2", "1"], "sourceDomain": { "kind": "INTERVAL", "range": [-1, 4], "states": ["CLOSED", "CLOSED"] }, "domain": [-1, 4], "viewport": [-2, 5, -1, 15], "requiredPoints": [{ "id": "L", "x": -1, "y": 8 }, { "id": "V", "x": 1, "y": 4 }, { "id": "R", "x": 4, "y": 13 }], "axisTickValues": { "x": [], "y": [] } }, "caption": "-1≤x≤4에서 최소 4, 최대 13" } },
+    { "caption": { "text": "⑵ 구간에서 감소" }, "plan": { "capability": "piecewise-polynomial-spike-v1", "graphPlan": { "family": "piecewise-polynomial", "pieces": [{ "coefficients": ["0", "-4", "-2"] }], "breakpoints": [], "sourceDomain": { "kind": "INTERVAL", "range": [1, 3], "states": ["CLOSED", "CLOSED"] }, "domain": [1, 3], "viewport": [0, 4, -34, 1], "axisScale": { "x": 1, "y": "1/8" }, "requiredPoints": [{ "id": "L", "x": 1, "y": -6 }, { "id": "R", "x": 3, "y": -30 }], "axisTickValues": { "x": [], "y": [] } }, "caption": "1≤x≤3에서 최대 -6, 최소 -30" } }
+  ],
+  "sourceQuote": "다음 이차함수의 최댓값과 최솟값",
+  "caption": "닫힌 구간에서 꼭짓점이 안에 있으면 꼭짓점과 양 끝을 비교하고, 밖에 있으면 단조 방향으로 양 끝을 비교한다",
+  "accessibilityDescription": "첫째 패널의 y=x²-2x+5는 -1부터 4까지 꼭짓점 (1,4)을 포함하고 양 끝값은 8과 13이다. 둘째 패널의 y=-2x²-4x는 1부터 3까지 계속 감소하여 양 끝값이 -6과 -30이다.",
+  "sourceConditions": [
+    { "id": "S1", "condition": "⑴ y=x²-2x+5, -1≤x≤4의 최소 4와 최대 13", "mappedTo": "panels[0].plan.graphPlan.coefficients/sourceDomain/requiredPoints[L,V,R]" },
+    { "id": "S2", "condition": "⑵ y=-2x²-4x, 1≤x≤3은 감소하고 최대 -6, 최소 -30", "mappedTo": "panels[1].plan.graphPlan.coefficients/sourceDomain/requiredPoints[L,R]" }
+  ],
+  "newVisualInformation": ["극값이 구간 안에 있는 경우와 밖에 있는 경우의 최대·최소 결정 방법을 비교한다."]
+}

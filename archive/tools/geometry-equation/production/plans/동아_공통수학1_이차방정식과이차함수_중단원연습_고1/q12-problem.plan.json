@@ -1,0 +1,35 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": ["0", "12", "-1"],
+    "sourceDomain": { "kind": "ALL_REALS" },
+    "domain": [-1, 13],
+    "viewport": [-1, 13, -2, 40],
+    "axisTickValues": { "x": [], "y": [] },
+    "overlays": {
+      "points": [
+        { "id": "A", "curveX": "3" },
+        { "id": "B", "curveX": "9" },
+        { "id": "C", "axis": "x", "value": "3" },
+        { "id": "D", "axis": "x", "value": "9" }
+      ],
+      "segments": [
+        { "id": "AC", "from": "A", "to": "C" },
+        { "id": "CD", "from": "C", "to": "D" },
+        { "id": "DB", "from": "D", "to": "B" },
+        { "id": "BA", "from": "B", "to": "A" }
+      ]
+    }
+  },
+  "pointNames": { "A": "A", "B": "B", "C": "C", "D": "D" },
+  "sourceQuote": "곡선 $y=-x^2+12x$ 위의 두 점",
+  "caption": "y=-x²+12x 위의 두 점 A, B와 x축 위의 C, D가 만드는 직사각형 ACDB의 배치 예시",
+  "accessibilityDescription": "아래로 열린 포물선 위 A와 B는 같은 높이에 있고 각각 x축 위 C와 D에 수직으로 연결된다. A-B와 C-D는 수평이며 네 변이 모두 표시되었다. 점들의 위치는 가능한 예시로 실제 미지 변수 a의 값은 적지 않았다.",
+  "sourceConditions": [
+    { "id": "S1", "condition": "포물선은 y=-x²+12x이고 A,B는 제1사분면 위의 점이다.", "mappedTo": "graphPlan.coefficients=[0,12,-1], overlays.points[A,B]" },
+    { "id": "S2", "condition": "C,D는 x축에 놓이며 ACDB는 직사각형이다.", "mappedTo": "overlays.points[C,D], overlays.segments[AC,CD,DB,BA]" },
+    { "id": "S3", "condition": "원문의 a는 미지 변수이므로 좌표 3,9는 0<a<6의 가능한 대표 위치일 뿐 숫자·정답 라벨이 아니다.", "mappedTo": "overlays.points[A,B,C,D]의 위치, coordinates 필드 생략 및 axisTickValues 공백" }
+  ],
+  "newVisualInformation": ["잘린 기존 그림에 빠져 있던 C와 D의 위치와 AC·CD·DB·BA의 네 변을 완성한다."]
+}
