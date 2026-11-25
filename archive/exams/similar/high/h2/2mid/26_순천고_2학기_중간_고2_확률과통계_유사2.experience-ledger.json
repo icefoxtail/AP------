@@ -1,0 +1,1066 @@
+{
+  "schemaVersion": "alive-exam-followup-source-balanced-v1",
+  "examUid": "26_순천고_2학기_중간_고2_확률과통계_유사2",
+  "mode": "ALIVE EXAM_FOLLOWUP",
+  "difficultyProfile": "SOURCE_BALANCED",
+  "originalFile": "archive/exams/original/high/h2/2mid/26_순천고_2학기_중간_고2_확률과통계.js",
+  "originalGitBlobSha1": "bb38630fa5c1d0125382801ca343a74e90c97fee",
+  "existingVariantFile": "archive/exams/similar/high/h2/2mid/26_순천고_2학기_중간_고2_확률과통계_유사.js",
+  "existingVariantGitBlobSha1": "6c6120161d67ff6d9fb07b064847c37ba10d2c88",
+  "sourceArchiveFile": "archive/exams/similar/high/h2/2mid/26_순천고_2학기_중간_고2_확률과통계_유사2.js",
+  "sourceGitBlobSha": "587eb5964e41895fcc29f7b760928abad94e3d08",
+  "approvalStatus": "DRAFT_SINGLE_MODEL",
+  "independentHumanOrModelReview": "NOT_RUN",
+  "sourceProblemCount": 24,
+  "totalPoints": 100,
+  "objectiveQuestions": 20,
+  "writtenQuestions": 4,
+  "sourceBalance": {
+    "itemsPreserved": 24,
+    "sourcePointsTotal": 100,
+    "formatMaintained": "20 objective / 4 written",
+    "sourceBucketJudgment": "source lacks integer buckets; same-author original and two variants pairwise compared; I2 pending"
+  },
+  "items": [
+    {
+      "sourceQid": 1,
+      "originalReference": "archive/exams/original/high/h2/2mid/26_순천고_2학기_중간_고2_확률과통계.js#q1",
+      "existingVariantReference": "archive/exams/similar/high/h2/2mid/26_순천고_2학기_중간_고2_확률과통계_유사.js#q1",
+      "lockedPrimaryL3": "H2-PS-RPM-039",
+      "originalSummary": "다항식 $\\left(x-\\frac{2}{x}\\right)^5$의 전개식에서 $x$의 계수는? [3.3점]",
+      "existingVariantSummary": "양수 $a$에 대하여 다항식 $\\left(x+\\dfrac{a}{x}\\right)^5$의 전개식에서 $x$의 계수가 $90$일 때, $a$의 값은? [3.3점]",
+      "conditionAndTargetShift": "특정 한 항의 계수를 구하던 목표에서 대칭 위치인 두 항의 계수비를 판정",
+      "decisiveCore": "6-2k 지수 추적 뒤 조합계수 소거",
+      "solutionEntry": "6-2k 지수 추적 뒤 조합계수 소거",
+      "solutionGraphSignature": "6-2k 지수 추적 뒤 조합계수 소거",
+      "questionTarget": "다항식 $\\left(x+\\dfrac3x\\right)^6$의 전개식에서 $x^{-2}$의 계수를 $a$, $x^2$의 계수를 $b$라 할 때, $\\dfrac ab$의 값은? [3.3점]",
+      "variationType": "CONFIRMATION",
+      "addedDecision": "CHANGED_CONDITION_AND_TARGET_WITH_SOURCE_DEPTH",
+      "sourceBucketJudgment": 2,
+      "newBucketJudgment": 2,
+      "difficultyBasis": "same-author comparison only, I2 reviewer not run",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "templateKey": "TPL_BINOMIAL_TERM_COEFFICIENT",
+      "semanticDuplicateResult": "CONDITION_AND_TARGET_SHIFT_FROM_ORIGINAL_AND_SIMILAR1",
+      "traps": [
+        "계수비 분자·분모를 역전",
+        "상수 3의 차수를 한번만 고려",
+        "대칭된 항의 계수가 같다고 오인",
+        "3^2와 3^4 대신 3만 남김"
+      ],
+      "mathCheck": "AUTHOR_I1_SEPARATE_ENUMERATION_PASS_24_OF_24",
+      "choiceCheck": "OFFICIAL_JUDGE_PASS_ZERO_DEFECTS",
+      "visual": {
+        "qid": 1,
+        "problem": {
+          "decision": "EXEMPT",
+          "reason": "문제의 조건을 전달하는 데 이항전개의 계수비는 식의 두 일반항을 나란히 적는 판서가 가장 직접적이다. 별도 도형의 정보 이득이 없어 이 축은 면제한다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        },
+        "solution": {
+          "decision": "EXEMPT",
+          "reason": "풀이의 결정적 분류를 확인하는 데 이항전개의 계수비는 식의 두 일반항을 나란히 적는 판서가 가장 직접적이다. 별도 도형의 정보 이득이 없어 이 축은 면제한다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        }
+      }
+    },
+    {
+      "sourceQid": 2,
+      "originalReference": "archive/exams/original/high/h2/2mid/26_순천고_2학기_중간_고2_확률과통계.js#q2",
+      "existingVariantReference": "archive/exams/similar/high/h2/2mid/26_순천고_2학기_중간_고2_확률과통계_유사.js#q2",
+      "lockedPrimaryL3": "H2-PS-RPM-044",
+      "originalSummary": "두 사건 $A$, $B$가 서로 배반사건이고 $2P(B)=P(A)$, $P(A\\cup B)=\\frac56$일 때, $P(A)$의 값은? [3.3점]",
+      "existingVariantSummary": "두 사건 $A,B$가 서로 배반사건이고 $P(A^c)=\\dfrac25$, $P(B)=\\dfrac13P(A)$일 때, $P(A\\cup B)$는? [3.3점]",
+      "conditionAndTargetShift": "배반사건의 합집합과 한 사건 확률로부터 다른 사건의 여사건을 역으로 요구",
+      "decisiveCore": "A=1/2, B=3/8 뒤 P(B^c)=5/8",
+      "solutionEntry": "A=1/2, B=3/8 뒤 P(B^c)=5/8",
+      "solutionGraphSignature": "A=1/2, B=3/8 뒤 P(B^c)=5/8",
+      "questionTarget": "두 사건 $A,B$가 서로 배반사건이고 $P(A\\cup B)=\\dfrac78$, $P(A^c)=\\dfrac12$일 때, $P(B^c)$의 값은? [3.3점]",
+      "variationType": "CONFIRMATION",
+      "addedDecision": "CHANGED_CONDITION_AND_TARGET_WITH_SOURCE_DEPTH",
+      "sourceBucketJudgment": 2,
+      "newBucketJudgment": 2,
+      "difficultyBasis": "same-author comparison only, I2 reviewer not run",
+      "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+      "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION",
+      "semanticDuplicateResult": "CONDITION_AND_TARGET_SHIFT_FROM_ORIGINAL_AND_SIMILAR1",
+      "traps": [
+        "배반사건의 합집합 값에서 바로 여사건 계산",
+        "B 자체의 확률로 답함",
+        "A의 여사건과 B의 여사건 혼동",
+        "합집합에서 뺄 P(A)를 잘못 잡음"
+      ],
+      "mathCheck": "AUTHOR_I1_SEPARATE_ENUMERATION_PASS_24_OF_24",
+      "choiceCheck": "OFFICIAL_JUDGE_PASS_ZERO_DEFECTS",
+      "visual": {
+        "qid": 2,
+        "problem": {
+          "decision": "EXEMPT",
+          "reason": "문제의 조건을 전달하는 데 배반사건·여사건의 확률값은 짧은 등식 두 개로 추적할 수 있다. 별도 도형의 정보 이득이 없어 이 축은 면제한다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        },
+        "solution": {
+          "decision": "EXEMPT",
+          "reason": "풀이의 결정적 분류를 확인하는 데 배반사건·여사건의 확률값은 짧은 등식 두 개로 추적할 수 있다. 별도 도형의 정보 이득이 없어 이 축은 면제한다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        }
+      }
+    },
+    {
+      "sourceQid": 3,
+      "originalReference": "archive/exams/original/high/h2/2mid/26_순천고_2학기_중간_고2_확률과통계.js#q3",
+      "existingVariantReference": "archive/exams/similar/high/h2/2mid/26_순천고_2학기_중간_고2_확률과통계_유사.js#q3",
+      "lockedPrimaryL3": "H2-PS-RPM-036",
+      "originalSummary": "중복순열의 수 ${}_3\\Pi_4$의 값을 $a$, 서로 다른 물건 3개 중에 중복을 허용하여 4개를 택하는 중복조합의 수를 $b$라고 할 때, $a+b$의 값은? [3.5점]",
+      "existingVariantSummary": "서로 다른 색의 구슬 $4$종류 중에서 중복을 허용하여 $3$개를 고른다. 고르는 순서까지 기록하는 방법의 수를 $a$, 색별 개수만 기록하는 방법의 수를 $b$라 할 때, $a-b$의 값은? [3.5점]",
+      "conditionAndTargetShift": "중복 선택의 두 표현을 합·차 대신 순서 기록/무순서 기록의 비로 비교",
+      "decisiveCore": "중복순열 3^4, 중복조합 C(6,4) 비율",
+      "solutionEntry": "중복순열 3^4, 중복조합 C(6,4) 비율",
+      "solutionGraphSignature": "중복순열 3^4, 중복조합 C(6,4) 비율",
+      "questionTarget": "서로 다른 맛 $3$종류의 과자 중 중복을 허용하여 $4$개를 고른다. 고르는 순서를 기록하는 방법의 수를 $a$, 맛별 개수만 기록하는 방법의 수를 $b$라 할 때, $\\dfrac ab$는? [3.5점]",
+      "variationType": "CONFIRMATION",
+      "addedDecision": "CHANGED_CONDITION_AND_TARGET_WITH_SOURCE_DEPTH",
+      "sourceBucketJudgment": 2,
+      "newBucketJudgment": 2,
+      "difficultyBasis": "same-author comparison only, I2 reviewer not run",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+      "semanticDuplicateResult": "CONDITION_AND_TARGET_SHIFT_FROM_ORIGINAL_AND_SIMILAR1",
+      "traps": [
+        "중복조합을 보통 조합으로 계산",
+        "순서를 기록하는 경우의 수에서 한 단계 누락",
+        "두 방식의 개수를 동일하다고 오해",
+        "비율을 계산하면서 분모를 근사"
+      ],
+      "mathCheck": "AUTHOR_I1_SEPARATE_ENUMERATION_PASS_24_OF_24",
+      "choiceCheck": "OFFICIAL_JUDGE_PASS_ZERO_DEFECTS",
+      "visual": {
+        "qid": 3,
+        "problem": {
+          "decision": "EXEMPT",
+          "reason": "문제의 조건을 전달하는 데 순서 기록 여부는 순서 있는 선택과 맛별 개수 구별만으로 충분하다. 별도 도형의 정보 이득이 없어 이 축은 면제한다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        },
+        "solution": {
+          "decision": "EXEMPT",
+          "reason": "풀이의 결정적 분류를 확인하는 데 순서 기록 여부는 순서 있는 선택과 맛별 개수 구별만으로 충분하다. 별도 도형의 정보 이득이 없어 이 축은 면제한다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        }
+      }
+    },
+    {
+      "sourceQid": 4,
+      "originalReference": "archive/exams/original/high/h2/2mid/26_순천고_2학기_중간_고2_확률과통계.js#q4",
+      "existingVariantReference": "archive/exams/similar/high/h2/2mid/26_순천고_2학기_중간_고2_확률과통계_유사.js#q4",
+      "lockedPrimaryL3": "H2-PS-RPM-044",
+      "originalSummary": "어떤 시행의 표본공간 $S$가 유한개의 근원사건으로 이루어져 있고 각 근원사건이 일어날 가능성이 모두 같을 때 $S$에 포함되는 두 사건 $A$와 $B$에 대한 설명 중 항상 옳은 것은? (단, $\\varnothing$는 공집합이고 $P(A)$는 사건 $A$가 일어날 확률이고 $n(A)$는 사건 $A$의 원소의 개수이다.) [3.5점]",
+      "existingVariantSummary": "표본공간 $S$의 두 사건 $A,B$에 대한 다음 설명 중 일반적으로 옳지 않은 것은? [3.5점]",
+      "conditionAndTargetShift": "항상 옳은 단일 확률 공식에서 여사건을 이용한 차집합 분할의 항상 참인 등식 판정",
+      "decisiveCore": "A=(A∩B) ∪ (A∩B^c)의 서로소 분할",
+      "solutionEntry": "A=(A∩B) ∪ (A∩B^c)의 서로소 분할",
+      "solutionGraphSignature": "A=(A∩B) ∪ (A∩B^c)의 서로소 분할",
+      "questionTarget": "표본공간 $S$의 임의의 두 사건 $A,B$에 대하여 항상 옳은 등식은? [3.5점]",
+      "variationType": "CONFIRMATION",
+      "addedDecision": "CHANGED_CONDITION_AND_TARGET_WITH_SOURCE_DEPTH",
+      "sourceBucketJudgment": 2,
+      "newBucketJudgment": 2,
+      "difficultyBasis": "same-author comparison only, I2 reviewer not run",
+      "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+      "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION",
+      "semanticDuplicateResult": "CONDITION_AND_TARGET_SHIFT_FROM_ORIGINAL_AND_SIMILAR1",
+      "traps": [
+        "서로 배반인 경우의 덧셈정리를 모든 사건에 적용",
+        "독립성 가정을 무단 도입",
+        "합집합 여사건의 교집합 중복 부분 누락",
+        "여사건 확률을 곱하는 공식을 무조건 적용"
+      ],
+      "mathCheck": "AUTHOR_I1_SEPARATE_ENUMERATION_PASS_24_OF_24",
+      "choiceCheck": "OFFICIAL_JUDGE_PASS_ZERO_DEFECTS",
+      "visual": {
+        "qid": 4,
+        "problem": {
+          "decision": "EXEMPT",
+          "reason": "문제의 조건을 전달하는 데 집합 분할 등식은 A의 두 배반 부분을 식으로 표기하면 정확히 설명된다. 별도 도형의 정보 이득이 없어 이 축은 면제한다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        },
+        "solution": {
+          "decision": "EXEMPT",
+          "reason": "풀이의 결정적 분류를 확인하는 데 집합 분할 등식은 A의 두 배반 부분을 식으로 표기하면 정확히 설명된다. 별도 도형의 정보 이득이 없어 이 축은 면제한다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        }
+      }
+    },
+    {
+      "sourceQid": 5,
+      "originalReference": "archive/exams/original/high/h2/2mid/26_순천고_2학기_중간_고2_확률과통계.js#q5",
+      "existingVariantReference": "archive/exams/similar/high/h2/2mid/26_순천고_2학기_중간_고2_확률과통계_유사.js#q5",
+      "lockedPrimaryL3": "H2-PS-RPM-043",
+      "originalSummary": "다음 표는 정육면체 모양의 주사위 한 개를 $n$번 던졌을 때 $1$의 눈이 나온 횟수 $r$과 상대도수 $\\frac rn$을 나타낸 표이다. 주사위 한 개를 한 번 던졌을 때 $1$의 눈이 나오는 수학적 확률을 $p$라 할 때 표에 대한 설명으로 옳은 것을 보기에서 있는 대로 고른 것은? (단, 주사위의 각각의 눈이 나오는 가능성은 모두 같다.) [3.5점]\n<table class=\"question-table\"><tr><th>$n$</th><td>10</td><td>100</td><td>500<",
+      "existingVariantSummary": "공정한 동전을 여러 번 던져 앞면이 나온 횟수 $r$과 상대도수 $r/n$을 다음 표에 나타내었다. 옳은 설명만을 보기에서 있는 대로 고른 것은? [3.5점]\n\n| 시행 횟수 $n$ | 20 | 100 | 200 | 1000 | 2000 |\n| --- | ---: | ---: | ---: | ---: | ---: |\n| 앞면 횟수 $r$ | 12 | 47 | 102 | 503 | 1006 |\n| 상대도수 $r/n$ | 0.6 | 0.47 | $a$ | 0.503 | 0.503 |\n\n<div cla",
+      "conditionAndTargetShift": "동전 표 대신 주사위 상대도수 표에서 정확 일치 및 비단조성 확인",
+      "decisiveCore": "1/6 기준 상대도수 오차를 직접 비교",
+      "solutionEntry": "1/6 기준 상대도수 오차를 직접 비교",
+      "solutionGraphSignature": "1/6 기준 상대도수 오차를 직접 비교",
+      "questionTarget": "공정한 주사위를 $n$번 던져 $1$의 눈이 나온 횟수 $r$과 상대도수 $r/n$을 조사하였다. 옳은 설명만을 보기에서 있는 대로 고른 것은? [3.5점]\n\n| 시행 횟수 $n$ | 30 | 150 | 300 | 900 | 1800 |\n| --- | ---: | ---: | ---: | ---: | ---: |\n| 나온 횟수 $r$ | 4 | 27 | 57 | 150 | 309 |\n| 상대도수 $r/n$ | $\\frac{2}{15}$ | $0.18$ | $a$ | $\\frac16$ | $\\frac{309}{1800}$ |\n\n<div class=\"question-note-box\">&lt;보기&gt;<br>ㄱ. $a=0.17$이다.<br>ㄴ. $n=150$일 때가 $n=30$일 때보다 상대도수가 이론적 확률에 가깝다.<br>ㄷ. $n=900$일 때의 상대도수는 이론적 확률과 같지만 $n=1800$일 때의 상대도수는 같지 않다.</div>",
+      "variationType": "CONFIRMATION",
+      "addedDecision": "CHANGED_CONDITION_AND_TARGET_WITH_SOURCE_DEPTH",
+      "sourceBucketJudgment": 2,
+      "newBucketJudgment": 2,
+      "difficultyBasis": "same-author comparison only, I2 reviewer not run",
+      "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+      "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+      "semanticDuplicateResult": "CONDITION_AND_TARGET_SHIFT_FROM_ORIGINAL_AND_SIMILAR1",
+      "traps": [
+        "0.19를 0.17로 소수점 오독",
+        "상대도수 근접 여부를 시행 횟수만으로 판단",
+        "큰 수의 법칙을 매 구간 오차 단조감소로 혼동",
+        "기약분수와 소수의 비교 오류"
+      ],
+      "mathCheck": "AUTHOR_I1_SEPARATE_ENUMERATION_PASS_24_OF_24",
+      "choiceCheck": "OFFICIAL_JUDGE_PASS_ZERO_DEFECTS",
+      "visual": {
+        "qid": 5,
+        "problem": {
+          "decision": "EXEMPT",
+          "reason": "문제의 조건을 전달하는 데 제시된 상대도수 표와 세 참거짓 판단이 시각정보 전체를 이미 담는다. 별도 도형의 정보 이득이 없어 이 축은 면제한다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        },
+        "solution": {
+          "decision": "EXEMPT",
+          "reason": "풀이의 결정적 분류를 확인하는 데 제시된 상대도수 표와 세 참거짓 판단이 시각정보 전체를 이미 담는다. 별도 도형의 정보 이득이 없어 이 축은 면제한다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        }
+      }
+    },
+    {
+      "sourceQid": 6,
+      "originalReference": "archive/exams/original/high/h2/2mid/26_순천고_2학기_중간_고2_확률과통계.js#q6",
+      "existingVariantReference": "archive/exams/similar/high/h2/2mid/26_순천고_2학기_중간_고2_확률과통계_유사.js#q6",
+      "lockedPrimaryL3": "H2-PS-RPM-046",
+      "originalSummary": "어떤 시행의 표본공간 $S$의 두 사건 $A$, $B$에 대해 사건 $A$가 일어났을 때의 사건 $B$의 조건부확률이 $P(B\\mid A)=\\frac23$이고 $P(A)=\\frac12$일 때 두 사건 $A$, $B$가 동시에 일어날 확률은? [3.7점]",
+      "existingVariantSummary": "두 사건 $A,B$에 대하여 $P(A)=\\dfrac35$, $P(A\\cap B)=\\dfrac3{20}$일 때, $P(B\\mid A)$의 값은? [3.7점]",
+      "conditionAndTargetShift": "조건부확률×사건 확률의 곱셈에서 교집합과 조건부확률로 조건 사건 확률을 역산",
+      "decisiveCore": "P(A)=P(A∩B)/P(B|A)",
+      "solutionEntry": "P(A)=P(A∩B)/P(B|A)",
+      "solutionGraphSignature": "P(A)=P(A∩B)/P(B|A)",
+      "questionTarget": "두 사건 $A,B$에 대하여 $P(B\\mid A)=\\dfrac25$, $P(A\\cap B)=\\dfrac15$일 때, $P(A)$는? [3.7점]",
+      "variationType": "CONFIRMATION",
+      "addedDecision": "CHANGED_CONDITION_AND_TARGET_WITH_SOURCE_DEPTH",
+      "sourceBucketJudgment": 1,
+      "newBucketJudgment": 1,
+      "difficultyBasis": "same-author comparison only, I2 reviewer not run",
+      "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+      "templateKey": "TPL_CONDITIONAL_PROBABILITY_DIRECT",
+      "semanticDuplicateResult": "CONDITION_AND_TARGET_SHIFT_FROM_ORIGINAL_AND_SIMILAR1",
+      "traps": [
+        "교집합 확률을 답으로 착각",
+        "조건부확률을 답으로 착각",
+        "두 확률을 더하는 오류",
+        "조건부확률의 분자·분모를 역전"
+      ],
+      "mathCheck": "AUTHOR_I1_SEPARATE_ENUMERATION_PASS_24_OF_24",
+      "choiceCheck": "OFFICIAL_JUDGE_PASS_ZERO_DEFECTS",
+      "visual": {
+        "qid": 6,
+        "problem": {
+          "decision": "EXEMPT",
+          "reason": "문제의 조건을 전달하는 데 조건부확률 식을 변형하는 단일 분수 계산이다. 별도 도형의 정보 이득이 없어 이 축은 면제한다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        },
+        "solution": {
+          "decision": "EXEMPT",
+          "reason": "풀이의 결정적 분류를 확인하는 데 조건부확률 식을 변형하는 단일 분수 계산이다. 별도 도형의 정보 이득이 없어 이 축은 면제한다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        }
+      }
+    },
+    {
+      "sourceQid": 7,
+      "originalReference": "archive/exams/original/high/h2/2mid/26_순천고_2학기_중간_고2_확률과통계.js#q7",
+      "existingVariantReference": "archive/exams/similar/high/h2/2mid/26_순천고_2학기_중간_고2_확률과통계_유사.js#q7",
+      "lockedPrimaryL3": "H2-PS-RPM-040",
+      "originalSummary": "$\\dfrac{{}_{12}C_1+{}_{12}C_3+{}_{12}C_5+\\cdots+{}_{12}C_{11}}{{}_{10}C_0+{}_{10}C_1+{}_{10}C_2+\\cdots+{}_{10}C_{10}}$의 값은? [3.7점]",
+      "existingVariantSummary": "$\\dfrac{{}_{11}C_1+{}_{11}C_3+\\cdots+{}_{11}C_{11}}{{}_{8}C_0+{}_{8}C_2+{}_{8}C_4+{}_{8}C_6+{}_{8}C_8}$의 값은? [3.7점]",
+      "conditionAndTargetShift": "홀수 대 전체 이항계수 비에서 서로 다른 차수의 짝수합−홀수합으로 변경",
+      "decisiveCore": "짝수합 2^9와 홀수합 2^7의 차",
+      "solutionEntry": "짝수합 2^9와 홀수합 2^7의 차",
+      "solutionGraphSignature": "짝수합 2^9와 홀수합 2^7의 차",
+      "questionTarget": "$ {}_{10}C_0+{}_{10}C_2+\\cdots+{}_{10}C_{10}$에서 $ {}_{8}C_1+{}_{8}C_3+{}_{8}C_5+{}_{8}C_7$을 뺀 값은? [3.7점]",
+      "variationType": "CONFIRMATION",
+      "addedDecision": "CHANGED_CONDITION_AND_TARGET_WITH_SOURCE_DEPTH",
+      "sourceBucketJudgment": 2,
+      "newBucketJudgment": 2,
+      "difficultyBasis": "same-author comparison only, I2 reviewer not run",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "templateKey": "TPL_BINOMIAL_COEFFICIENT_IDENTITY",
+      "semanticDuplicateResult": "CONDITION_AND_TARGET_SHIFT_FROM_ORIGINAL_AND_SIMILAR1",
+      "traps": [
+        "앞의 합을 2^8로 계산",
+        "뒤의 합을 빼지 않음",
+        "뒤의 합을 2^7이 아닌 2^8로 오인",
+        "짝수/홀수 합을 전체 2^n으로 착각"
+      ],
+      "mathCheck": "AUTHOR_I1_SEPARATE_ENUMERATION_PASS_24_OF_24",
+      "choiceCheck": "OFFICIAL_JUDGE_PASS_ZERO_DEFECTS",
+      "visual": {
+        "qid": 7,
+        "problem": {
+          "decision": "EXEMPT",
+          "reason": "문제의 조건을 전달하는 데 이항계수의 홀짝 합은 두 항등식의 대조가 명료하다. 별도 도형의 정보 이득이 없어 이 축은 면제한다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        },
+        "solution": {
+          "decision": "EXEMPT",
+          "reason": "풀이의 결정적 분류를 확인하는 데 이항계수의 홀짝 합은 두 항등식의 대조가 명료하다. 별도 도형의 정보 이득이 없어 이 축은 면제한다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        }
+      }
+    },
+    {
+      "sourceQid": 8,
+      "originalReference": "archive/exams/original/high/h2/2mid/26_순천고_2학기_중간_고2_확률과통계.js#q8",
+      "existingVariantReference": "archive/exams/similar/high/h2/2mid/26_순천고_2학기_중간_고2_확률과통계_유사.js#q8",
+      "lockedPrimaryL3": "H2-PS-RPM-041",
+      "originalSummary": "$(1+x)^2+(1+x)^3+(1+x)^4+\\cdots+(1+x)^{10}$의 전개식에서 $x^4$의 계수를 구하면? [3.7점]",
+      "existingVariantSummary": "다항식 $x\\{(1+x)^2+(1+x)^3+\\cdots+(1+x)^8\\}$의 전개식에서 $x^4$의 계수는? [3.7점]",
+      "conditionAndTargetShift": "주어진 마지막 지수의 계수 계산에서 계수가 주어졌을 때 마지막 지수를 역으로 찾기",
+      "decisiveCore": "hockey-stick C(m+1,3)=84를 풀기",
+      "solutionEntry": "hockey-stick C(m+1,3)=84를 풀기",
+      "solutionGraphSignature": "hockey-stick C(m+1,3)=84를 풀기",
+      "questionTarget": "자연수 $m\\ge2$에 대하여 $(1+x)^2+(1+x)^3+\\cdots+(1+x)^m$의 전개식에서 $x^2$의 계수가 $84$일 때, $m$은? [3.7점]",
+      "variationType": "CONFIRMATION",
+      "addedDecision": "CHANGED_CONDITION_AND_TARGET_WITH_SOURCE_DEPTH",
+      "sourceBucketJudgment": 3,
+      "newBucketJudgment": 3,
+      "difficultyBasis": "same-author comparison only, I2 reviewer not run",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "templateKey": "TPL_BINOMIAL_COEFFICIENT_IDENTITY",
+      "semanticDuplicateResult": "CONDITION_AND_TARGET_SHIFT_FROM_ORIGINAL_AND_SIMILAR1",
+      "traps": [
+        "합의 마지막 차수를 한 칸 작게 읽음",
+        "조합의 아래 지수를 2로 유지",
+        "합의 시작 위치를 3으로 오인",
+        "파스칼 합의 위 지수 +1을 놓침"
+      ],
+      "mathCheck": "AUTHOR_I1_SEPARATE_ENUMERATION_PASS_24_OF_24",
+      "choiceCheck": "OFFICIAL_JUDGE_PASS_ZERO_DEFECTS",
+      "visual": {
+        "qid": 8,
+        "problem": {
+          "decision": "EXEMPT",
+          "reason": "문제의 조건을 전달하는 데 파스칼 항등식과 조합계수 대입의 역계산이다. 별도 도형의 정보 이득이 없어 이 축은 면제한다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        },
+        "solution": {
+          "decision": "EXEMPT",
+          "reason": "풀이의 결정적 분류를 확인하는 데 파스칼 항등식과 조합계수 대입의 역계산이다. 별도 도형의 정보 이득이 없어 이 축은 면제한다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        }
+      }
+    },
+    {
+      "sourceQid": 9,
+      "originalReference": "archive/exams/original/high/h2/2mid/26_순천고_2학기_중간_고2_확률과통계.js#q9",
+      "existingVariantReference": "archive/exams/similar/high/h2/2mid/26_순천고_2학기_중간_고2_확률과통계_유사.js#q9",
+      "lockedPrimaryL3": "H2-PS-RPM-046",
+      "originalSummary": "어떤 동아리는 남학생 15명, 여학생 10명으로 구성되어 있다. 남학생 중 5명이 1학년, 나머지 10명이 2학년이고 여학생 중 3명이 1학년, 나머지 7명이 2학년이다. 이 동아리의 구성원 중 임의로 택한 1명이 남학생이라는 조건 아래에서 그 학생이 2학년일 확률은? [3.9점]",
+      "existingVariantSummary": "어느 학교의 발표 대회 참가자 $24$명 중 과학 분야는 $14$명, 수학 분야는 $10$명이다. 과학 분야 참가자는 1학년 $6$명, 2학년 $8$명이고, 수학 분야 참가자는 1학년 $4$명, 2학년 $6$명이다. 참가자 중 임의로 한 명을 뽑았을 때 2학년이라는 조건하에서 과학 분야 참가자일 확률은? [3.9점]",
+      "conditionAndTargetShift": "성별 조건에서 학년을 묻던 원본 및 학년·분야 방향을 뒤집었던 유사1과 달리 1학년이라는 조건에서 동아리 소속을 추론",
+      "decisiveCore": "P(연극|1학년)=8/(8+4)",
+      "solutionEntry": "P(연극|1학년)=8/(8+4)",
+      "solutionGraphSignature": "P(연극|1학년)=8/(8+4)",
+      "questionTarget": "두 동아리의 전체 부원은 $28$명이다. 연극 동아리는 $16$명으로 1학년 $8$명과 2학년 $8$명이고, 토론 동아리는 $12$명으로 1학년 $4$명과 2학년 $8$명이다. 전체에서 임의로 한 명을 뽑았을 때 1학년이라는 조건하에 연극 동아리 부원일 확률은? [3.9점]",
+      "variationType": "CONFIRMATION",
+      "addedDecision": "CHANGED_CONDITION_AND_TARGET_WITH_SOURCE_DEPTH",
+      "sourceBucketJudgment": 2,
+      "newBucketJudgment": 2,
+      "difficultyBasis": "same-author comparison only, I2 reviewer not run",
+      "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+      "templateKey": "TPL_CONDITIONAL_PROBABILITY_DIRECT",
+      "semanticDuplicateResult": "CONDITION_AND_TARGET_SHIFT_FROM_ORIGINAL_AND_SIMILAR1",
+      "traps": [
+        "1학년 토론 동아리 비율을 셈",
+        "부원 전체에 1학년 분모를 잘못 적용",
+        "28명 전체를 표본공간으로 오해",
+        "연극 동아리 16명을 분모로 사용"
+      ],
+      "mathCheck": "AUTHOR_I1_SEPARATE_ENUMERATION_PASS_24_OF_24",
+      "choiceCheck": "OFFICIAL_JUDGE_PASS_ZERO_DEFECTS",
+      "visual": {
+        "qid": 9,
+        "problem": {
+          "decision": "EXEMPT",
+          "reason": "문제의 조건을 전달하는 데 동아리별 인원 서술과 1학년 분모 계산이 짧고 충분하다. 별도 도형의 정보 이득이 없어 이 축은 면제한다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        },
+        "solution": {
+          "decision": "EXEMPT",
+          "reason": "풀이의 결정적 분류를 확인하는 데 동아리별 인원 서술과 1학년 분모 계산이 짧고 충분하다. 별도 도형의 정보 이득이 없어 이 축은 면제한다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        }
+      }
+    },
+    {
+      "sourceQid": 10,
+      "originalReference": "archive/exams/original/high/h2/2mid/26_순천고_2학기_중간_고2_확률과통계.js#q10",
+      "existingVariantReference": "archive/exams/similar/high/h2/2mid/26_순천고_2학기_중간_고2_확률과통계_유사.js#q10",
+      "lockedPrimaryL3": "H2-PS-RPM-039",
+      "originalSummary": "$9^{11}+11^{11}$의 백의 자리의 수를 $a$, 십의 자리의 수를 $b$, 일의 자리의 수를 $c$라고 할 때, $a+b+c$의 값은? [3.9점]",
+      "existingVariantSummary": "$12^9-8^9$의 백의 자리, 십의 자리, 일의 자리 숫자의 합은? [3.9점]",
+      "conditionAndTargetShift": "홀수 차수의 대칭 합·차 계산에서 짝수 차수 대칭 합의 마지막 세 자리 자체를 구하기",
+      "decisiveCore": "(10±3)^8에서 짝수 10^j항만 보존, 1000 나머지",
+      "solutionEntry": "(10±3)^8에서 짝수 10^j항만 보존, 1000 나머지",
+      "solutionGraphSignature": "(10±3)^8에서 짝수 10^j항만 보존, 1000 나머지",
+      "questionTarget": "$13^8+7^8$의 마지막 세 자리 숫자로 이루어진 자연수는? [3.9점]",
+      "variationType": "CONFIRMATION",
+      "addedDecision": "CHANGED_CONDITION_AND_TARGET_WITH_SOURCE_DEPTH",
+      "sourceBucketJudgment": 3,
+      "newBucketJudgment": 3,
+      "difficultyBasis": "same-author comparison only, I2 reviewer not run",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "templateKey": "TPL_BINOMIAL_TERM_COEFFICIENT",
+      "semanticDuplicateResult": "CONDITION_AND_TARGET_SHIFT_FROM_ORIGINAL_AND_SIMILAR1",
+      "traps": [
+        "상수항 3^8의 두 배만 취함",
+        "10^2항의 자리올림을 누락",
+        "1000 모듈러 자릿수 소거 오류",
+        "짝수항의 계수를 한 번만 적용"
+      ],
+      "mathCheck": "AUTHOR_I1_SEPARATE_ENUMERATION_PASS_24_OF_24",
+      "choiceCheck": "OFFICIAL_JUDGE_PASS_ZERO_DEFECTS",
+      "visual": {
+        "qid": 10,
+        "problem": {
+          "decision": "EXEMPT",
+          "reason": "문제의 조건을 전달하는 데 끝 세 자릿수는 짝수항만 남기는 수식 전개가 결정적이다. 별도 도형의 정보 이득이 없어 이 축은 면제한다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        },
+        "solution": {
+          "decision": "EXEMPT",
+          "reason": "풀이의 결정적 분류를 확인하는 데 끝 세 자릿수는 짝수항만 남기는 수식 전개가 결정적이다. 별도 도형의 정보 이득이 없어 이 축은 면제한다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        }
+      }
+    },
+    {
+      "sourceQid": 11,
+      "originalReference": "archive/exams/original/high/h2/2mid/26_순천고_2학기_중간_고2_확률과통계.js#q11",
+      "existingVariantReference": "archive/exams/similar/high/h2/2mid/26_순천고_2학기_중간_고2_확률과통계_유사.js#q11",
+      "lockedPrimaryL3": "H2-PS-RPM-037",
+      "originalSummary": "네 자리의 자연수 중에서 각 자리의 수의 합이 $10$인 모든 자연수의 개수는? [4.1점]",
+      "existingVariantSummary": "천의 자리의 숫자가 $2$ 이상이고 각 자리의 숫자의 합이 $11$인 네 자리 자연수의 개수는? [4.1점]",
+      "conditionAndTargetShift": "네 자리 숫자의 천의 자리 하한 대신 천의 자리 상한이 있는 자릿수 합 조건",
+      "decisiveCore": "천의 자리 1~4, 별 개수 C(11,3)−C(7,3)",
+      "solutionEntry": "천의 자리 1~4, 별 개수 C(11,3)−C(7,3)",
+      "solutionGraphSignature": "천의 자리 1~4, 별 개수 C(11,3)−C(7,3)",
+      "questionTarget": "각 자리 숫자의 합이 $9$이고 천의 자리 숫자가 $4$ 이하인 네 자리 자연수의 개수는? [4.1점]",
+      "variationType": "CONFIRMATION",
+      "addedDecision": "CHANGED_CONDITION_AND_TARGET_WITH_SOURCE_DEPTH",
+      "sourceBucketJudgment": 3,
+      "newBucketJudgment": 3,
+      "difficultyBasis": "same-author comparison only, I2 reviewer not run",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+      "semanticDuplicateResult": "CONDITION_AND_TARGET_SHIFT_FROM_ORIGINAL_AND_SIMILAR1",
+      "traps": [
+        "천의 자리 상한 처리 전에 오류",
+        "제외할 x≥4의 경계값 누락",
+        "선행 자리가 0인 경우 포함",
+        "상한이 없는 별 개수를 그대로 답함"
+      ],
+      "mathCheck": "AUTHOR_I1_SEPARATE_ENUMERATION_PASS_24_OF_24",
+      "choiceCheck": "OFFICIAL_JUDGE_PASS_ZERO_DEFECTS",
+      "visual": {
+        "qid": 11,
+        "problem": {
+          "decision": "EXEMPT",
+          "reason": "문제의 조건을 전달하는 데 상한이 있는 음이 아닌 정수해의 제외 원리를 식으로 보여준다. 별도 도형의 정보 이득이 없어 이 축은 면제한다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        },
+        "solution": {
+          "decision": "EXEMPT",
+          "reason": "풀이의 결정적 분류를 확인하는 데 상한이 있는 음이 아닌 정수해의 제외 원리를 식으로 보여준다. 별도 도형의 정보 이득이 없어 이 축은 면제한다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        }
+      }
+    },
+    {
+      "sourceQid": 12,
+      "originalReference": "archive/exams/original/high/h2/2mid/26_순천고_2학기_중간_고2_확률과통계.js#q12",
+      "existingVariantReference": "archive/exams/similar/high/h2/2mid/26_순천고_2학기_중간_고2_확률과통계_유사.js#q12",
+      "lockedPrimaryL3": "H2-PS-RPM-033",
+      "originalSummary": "여섯 개의 알파벳 $S$, $O$, $C$, $C$, $E$, $R$을 일렬로 배열할 때 $S$와 $R$이 서로 이웃할 확률은? [4.1점]",
+      "existingVariantSummary": "여섯 글자 $A,A,B,C,D,E$를 일렬로 나열할 때, 두 $A$가 서로 이웃하지 않을 확률은? [4.1점]",
+      "conditionAndTargetShift": "서로 다른 글자의 인접 및 같은 글자의 비인접에서 같은 글자 두 개 사이에 정확히 한 글자가 놓이는 위치 관계",
+      "decisiveCore": "L 위치 (i,i+2) 4쌍 × 나머지 4! / (6!/2!)",
+      "solutionEntry": "L 위치 (i,i+2) 4쌍 × 나머지 4! / (6!/2!)",
+      "solutionGraphSignature": "L 위치 (i,i+2) 4쌍 × 나머지 4! / (6!/2!)",
+      "questionTarget": "여섯 글자 $L,L,M,N,O,P$를 일렬로 나열한다. 두 $L$ 사이에 정확히 한 글자만 놓일 확률은? [4.1점]",
+      "variationType": "CONFIRMATION",
+      "addedDecision": "CHANGED_CONDITION_AND_TARGET_WITH_SOURCE_DEPTH",
+      "sourceBucketJudgment": 2,
+      "newBucketJudgment": 2,
+      "difficultyBasis": "same-author comparison only, I2 reviewer not run",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_IDENTICAL_OBJECT_PERMUTATION",
+      "semanticDuplicateResult": "CONDITION_AND_TARGET_SHIFT_FROM_ORIGINAL_AND_SIMILAR1",
+      "traps": [
+        "두 L의 위치를 인접 쌍으로 오인",
+        "L 두 개를 구분해 순서를 두 배로 셈",
+        "한 칸 사이가 아닌 모든 비인접을 셈",
+        "나머지 네 글자의 배열을 3!로 계산"
+      ],
+      "mathCheck": "AUTHOR_I1_SEPARATE_ENUMERATION_PASS_24_OF_24",
+      "choiceCheck": "OFFICIAL_JUDGE_PASS_ZERO_DEFECTS",
+      "visual": {
+        "qid": 12,
+        "problem": {
+          "decision": "EXEMPT",
+          "reason": "문제의 조건을 전달하는 데 동일 문자 두 개의 위치 쌍 네 가지를 명시하면 공간 그림 없이 검산된다. 별도 도형의 정보 이득이 없어 이 축은 면제한다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        },
+        "solution": {
+          "decision": "EXEMPT",
+          "reason": "풀이의 결정적 분류를 확인하는 데 동일 문자 두 개의 위치 쌍 네 가지를 명시하면 공간 그림 없이 검산된다. 별도 도형의 정보 이득이 없어 이 축은 면제한다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        }
+      }
+    },
+    {
+      "sourceQid": 13,
+      "originalReference": "archive/exams/original/high/h2/2mid/26_순천고_2학기_중간_고2_확률과통계.js#q13",
+      "existingVariantReference": "archive/exams/similar/high/h2/2mid/26_순천고_2학기_중간_고2_확률과통계_유사.js#q13",
+      "lockedPrimaryL3": "H2-PS-RPM-043",
+      "originalSummary": "두 집합 $A=\\{a,b\\}$, $B=\\{1,2,3,4,5,6,7,8,9\\}$에 대하여 $A$에서 $B$로의 함수 중에서 임의로 함수 $1$개를 택할 때, 이 함수의 모든 함숫값의 곱이 $6$의 배수가 아닐 확률을 구하면? [4.3점]",
+      "existingVariantSummary": "집합 $A=\\{a,b,c\\}$, $B=\\{1,2,\\ldots,9\\}$에 대하여 함수 $f:A\\to B$를 임의로 하나 택한다. $f(a)f(b)f(c)$가 $6$의 배수일 확률은? [4.3점]",
+      "conditionAndTargetShift": "함수값 곱의 6배수 여부를 묻되 두 함수값 각각은 6의 배수가 아니라는 제약을 부여",
+      "decisiveCore": "6 금지 후 8^2−5^2−6^2+3^2=12 포함배제",
+      "solutionEntry": "6 금지 후 8^2−5^2−6^2+3^2=12 포함배제",
+      "solutionGraphSignature": "6 금지 후 8^2−5^2−6^2+3^2=12 포함배제",
+      "questionTarget": "집합 $A=\\{a,b\\}$, $B=\\{1,2,\\ldots,9\\}$에 대하여 $A$에서 $B$로 가는 모든 함수 중 임의로 한 개를 고른다. $f(a),f(b)$는 둘 다 $6$의 배수가 아니면서 $f(a)f(b)$는 $6$의 배수일 확률은? [4.3점]",
+      "variationType": "CONFIRMATION",
+      "addedDecision": "CHANGED_CONDITION_AND_TARGET_WITH_SOURCE_DEPTH",
+      "sourceBucketJudgment": 3,
+      "newBucketJudgment": 3,
+      "difficultyBasis": "same-author comparison only, I2 reviewer not run",
+      "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+      "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+      "semanticDuplicateResult": "CONDITION_AND_TARGET_SHIFT_FROM_ORIGINAL_AND_SIMILAR1",
+      "traps": [
+        "각각의 값에서 6을 제외하지 않음",
+        "함수값의 순서가 없다고 오인",
+        "2의 인수만 확인",
+        "3의 인수만 확인"
+      ],
+      "mathCheck": "AUTHOR_I1_SEPARATE_ENUMERATION_PASS_24_OF_24",
+      "choiceCheck": "OFFICIAL_JUDGE_PASS_ZERO_DEFECTS",
+      "visual": {
+        "qid": 13,
+        "problem": {
+          "decision": "EXEMPT",
+          "reason": "문제의 조건을 전달하는 데 2의 배수·3의 배수 부재를 보완하는 포함배제 숫자가 핵심이다. 별도 도형의 정보 이득이 없어 이 축은 면제한다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        },
+        "solution": {
+          "decision": "EXEMPT",
+          "reason": "풀이의 결정적 분류를 확인하는 데 2의 배수·3의 배수 부재를 보완하는 포함배제 숫자가 핵심이다. 별도 도형의 정보 이득이 없어 이 축은 면제한다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        }
+      }
+    },
+    {
+      "sourceQid": 14,
+      "originalReference": "archive/exams/original/high/h2/2mid/26_순천고_2학기_중간_고2_확률과통계.js#q14",
+      "existingVariantReference": "archive/exams/similar/high/h2/2mid/26_순천고_2학기_중간_고2_확률과통계_유사.js#q14",
+      "lockedPrimaryL3": "H2-PS-RPM-034",
+      "originalSummary": "다음 그림과 같이 가로, 세로 한 칸의 크기가 모두 같은 도로망이 있다. 어떤 학생이 점 $C$를 지나지 않으면서 점 $A$에서 점 $B$까지 최단 거리로 가는 경우의 수는? [4.3점]",
+      "existingVariantSummary": "가로 $5$칸, 세로 $5$칸인 직사각형 도로망에서 왼쪽 아래 교점을 $A=(0,0)$, 오른쪽 위 교점을 $B=(5,5)$라 하자. $A$에서 $B$까지 최단 거리로 이동할 때 왼쪽 변의 교점 $C=(0,3)$을 지나지 않는 경로의 수는? (각 좌표는 왼쪽·아래에서부터 센 격자 칸 수이다.) [4.3점]",
+      "conditionAndTargetShift": "모서리·왼쪽 변의 한 점 대신 도로망 내부 교점 C를 우회하며 두 경로 조합의 곱을 계산",
+      "decisiveCore": "전체 C(10,5)에서 C(4,2)C(6,3)=120 제외",
+      "solutionEntry": "전체 C(10,5)에서 C(4,2)C(6,3)=120 제외",
+      "solutionGraphSignature": "전체 C(10,5)에서 C(4,2)C(6,3)=120 제외",
+      "questionTarget": "가로 $5$칸, 세로 $5$칸인 격자형 도로망에서 왼쪽 아래 교점을 $A=(0,0)$, 오른쪽 위 교점을 $B=(5,5)$라 하자. 오른쪽 또는 위쪽으로만 움직이는 최단 경로 중 내부 교점 $C=(2,2)$를 지나지 않는 경로의 수는? [4.3점]",
+      "variationType": "CONFIRMATION",
+      "addedDecision": "CHANGED_CONDITION_AND_TARGET_WITH_SOURCE_DEPTH",
+      "sourceBucketJudgment": 3,
+      "newBucketJudgment": 3,
+      "difficultyBasis": "same-author comparison only, I2 reviewer not run",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_COMBINATION_SELECTION",
+      "semanticDuplicateResult": "CONDITION_AND_TARGET_SHIFT_FROM_ORIGINAL_AND_SIMILAR1",
+      "traps": [
+        "C를 지나는 두 구간 조합 수를 더함",
+        "C의 좌표 한쪽을 1칸으로 오인",
+        "C에서 B 경로 수만 제외",
+        "금지 교점을 무시해 전체 252개로 답함"
+      ],
+      "mathCheck": "AUTHOR_I1_SEPARATE_ENUMERATION_PASS_24_OF_24",
+      "choiceCheck": "OFFICIAL_JUDGE_PASS_ZERO_DEFECTS",
+      "visual": {
+        "qid": 14,
+        "problem": {
+          "decision": "BENEFICIAL",
+          "reason": "문항 14의 문제의 조건을 전달하는 데 격자의 좌표 C와 지나가는 경로의 두 곱셈 구간을 도로망으로 확인할 수 있다. 정답을 미리 노출하지 않는 전용 problem 플랜이다.",
+          "planRef": "archive/exams/similar/high/h2/2mid/26_순천고_2학기_중간_고2_확률과통계_유사2_plans/q14-problem.plan.json",
+          "engineStatus": "SHALLOW_AND_FULL_LINT_PASS_RENDER_NOT_RUN"
+        },
+        "solution": {
+          "decision": "BENEFICIAL",
+          "reason": "문항 14의 풀이의 결정적 분류를 확인하는 데 격자의 좌표 C와 지나가는 경로의 두 곱셈 구간을 도로망으로 확인할 수 있다. 정답을 미리 노출하지 않는 전용 solution 플랜이다.",
+          "planRef": "archive/exams/similar/high/h2/2mid/26_순천고_2학기_중간_고2_확률과통계_유사2_plans/q14-solution.plan.json",
+          "engineStatus": "SHALLOW_AND_FULL_LINT_PASS_RENDER_NOT_RUN"
+        }
+      }
+    },
+    {
+      "sourceQid": 15,
+      "originalReference": "archive/exams/original/high/h2/2mid/26_순천고_2학기_중간_고2_확률과통계.js#q15",
+      "existingVariantReference": "archive/exams/similar/high/h2/2mid/26_순천고_2학기_중간_고2_확률과통계_유사.js#q15",
+      "lockedPrimaryL3": "H2-PS-RPM-043",
+      "originalSummary": "흰 공 3개와 검은 공 5개가 들어 있는 주머니가 있다. 한 개의 동전을 한 번 던져서 앞면이 나오면 이 주머니에서 임의로 3개의 공을 동시에 꺼내고 뒷면이 나오면 이 주머니에서 임의로 4개의 공을 동시에 꺼낼 때 꺼낸 공이 모두 같은 색일 확률은? (단, 동전의 앞면과 뒷면이 나오는 가능성은 같다.) [4.3점]",
+      "existingVariantSummary": "흰 공 $4$개와 검은 공 $4$개가 든 주머니가 있다. 공정한 동전을 한 번 던져 앞면이면 공을 동시에 $2$개, 뒷면이면 동시에 $3$개를 임의로 꺼낸다. 꺼낸 공에 흰 공과 검은 공이 모두 있을 확률은? [4.3점]",
+      "conditionAndTargetShift": "같은 색/두 색 모두 등장 확률 대신 동전 분기별 정확히 흰 공 두 개가 나오는 조합 확률",
+      "decisiveCore": "앞면 C(3,2)C(5,1)/C(8,3), 뒷면 C(3,2)C(5,2)/C(8,4)",
+      "solutionEntry": "앞면 C(3,2)C(5,1)/C(8,3), 뒷면 C(3,2)C(5,2)/C(8,4)",
+      "solutionGraphSignature": "앞면 C(3,2)C(5,1)/C(8,3), 뒷면 C(3,2)C(5,2)/C(8,4)",
+      "questionTarget": "흰 공 $3$개와 검은 공 $5$개가 들어 있는 주머니가 있다. 공정한 동전을 한 번 던져 앞면이면 공을 동시에 $3$개, 뒷면이면 동시에 $4$개 임의로 꺼낸다. 꺼낸 공 중 흰 공이 정확히 $2$개일 확률은? [4.3점]",
+      "variationType": "CONFIRMATION",
+      "addedDecision": "CHANGED_CONDITION_AND_TARGET_WITH_SOURCE_DEPTH",
+      "sourceBucketJudgment": 3,
+      "newBucketJudgment": 3,
+      "difficultyBasis": "same-author comparison only, I2 reviewer not run",
+      "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+      "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+      "semanticDuplicateResult": "CONDITION_AND_TARGET_SHIFT_FROM_ORIGINAL_AND_SIMILAR1",
+      "traps": [
+        "공 색 분포를 무시하고 한 경우만 셈",
+        "앞면 분기만 답함",
+        "분모 조합 수에 추출 개수 오류",
+        "뒷면 분기만 답함"
+      ],
+      "mathCheck": "AUTHOR_I1_SEPARATE_ENUMERATION_PASS_24_OF_24",
+      "choiceCheck": "OFFICIAL_JUDGE_PASS_ZERO_DEFECTS",
+      "visual": {
+        "qid": 15,
+        "problem": {
+          "decision": "EXEMPT",
+          "reason": "문제의 조건을 전달하는 데 동전 두 분기별 조합 확률을 줄별로 비교하는 것이 가장 명확하다. 별도 도형의 정보 이득이 없어 이 축은 면제한다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        },
+        "solution": {
+          "decision": "EXEMPT",
+          "reason": "풀이의 결정적 분류를 확인하는 데 동전 두 분기별 조합 확률을 줄별로 비교하는 것이 가장 명확하다. 별도 도형의 정보 이득이 없어 이 축은 면제한다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        }
+      }
+    },
+    {
+      "sourceQid": 16,
+      "originalReference": "archive/exams/original/high/h2/2mid/26_순천고_2학기_중간_고2_확률과통계.js#q16",
+      "existingVariantReference": "archive/exams/similar/high/h2/2mid/26_순천고_2학기_중간_고2_확률과통계_유사.js#q16",
+      "lockedPrimaryL3": "H2-PS-RPM-043",
+      "originalSummary": "다음 그림과 같이 20개의 정사각형으로 이루어진 격자무늬가 있다. 이 중에서 임의로 정사각형 2개를 택하여 색칠하려고 한다. 색칠한 두 정사각형의 꼭짓점이 서로 만나지 않을 확률은? (단, 격자무늬는 고정되어 있다.) [4.5점]",
+      "existingVariantSummary": "가로 $4$칸, 세로 $5$칸으로 이루어진 $20$개의 정사각형 격자에서 서로 다른 두 칸을 임의로 고른다. 두 칸이 한 변을 공유하거나 꼭짓점 하나를 공유할 확률은? [4.5점]",
+      "conditionAndTargetShift": "정사각형 격자의 모든 접촉 대신 변은 만나지 않고 대각 꼭짓점으로만 만나는 쌍을 계산",
+      "decisiveCore": "2×(가로−1)(세로−1)=24쌍 / C(20,2)",
+      "solutionEntry": "2×(가로−1)(세로−1)=24쌍 / C(20,2)",
+      "solutionGraphSignature": "2×(가로−1)(세로−1)=24쌍 / C(20,2)",
+      "questionTarget": "가로 $4$칸, 세로 $5$칸의 총 $20$개 정사각형 격자에서 서로 다른 두 칸을 임의로 고른다. 두 칸이 한 변을 공유하지 않고 꼭짓점에서만 만날 확률은? [4.5점]",
+      "variationType": "CONFIRMATION",
+      "addedDecision": "CHANGED_CONDITION_AND_TARGET_WITH_SOURCE_DEPTH",
+      "sourceBucketJudgment": 3,
+      "newBucketJudgment": 3,
+      "difficultyBasis": "same-author comparison only, I2 reviewer not run",
+      "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+      "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+      "semanticDuplicateResult": "CONDITION_AND_TARGET_SHIFT_FROM_ORIGINAL_AND_SIMILAR1",
+      "traps": [
+        "수평·수직 변 접촉 31쌍만 계산",
+        "한 대각 방향만 세고 변 접촉 일부를 더함",
+        "모든 변·꼭짓점 접촉 55쌍을 셈",
+        "대각 접촉을 두 번 세며 변 접촉도 포함"
+      ],
+      "mathCheck": "AUTHOR_I1_SEPARATE_ENUMERATION_PASS_24_OF_24",
+      "choiceCheck": "OFFICIAL_JUDGE_PASS_ZERO_DEFECTS",
+      "visual": {
+        "qid": 16,
+        "problem": {
+          "decision": "BENEFICIAL",
+          "reason": "실제 원본 PNG를 육안 대조했다. 인접 정사각형 네 칸 블록에서 대각 맞닿은 쌍을 세는 것이 핵심이다. 신규 문항의 치수·점 배치가 이미지와 동일하여 재사용한다.",
+          "planRef": null,
+          "existingAsset": "assets/images/26_순천고_2학기_중간_고2_확률과통계/q16.png",
+          "assetInspected": true,
+          "engineStatus": "REUSE_SOURCE_PNG_VISUALLY_INSPECTED"
+        },
+        "solution": {
+          "decision": "EXEMPT",
+          "reason": "풀이의 결정적 분류를 확인하는 데 인접 정사각형 네 칸 블록에서 대각 맞닿은 쌍을 세는 것이 핵심이다. 별도 도형의 정보 이득이 없어 이 축은 면제한다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        }
+      }
+    },
+    {
+      "sourceQid": 17,
+      "originalReference": "archive/exams/original/high/h2/2mid/26_순천고_2학기_중간_고2_확률과통계.js#q17",
+      "existingVariantReference": "archive/exams/similar/high/h2/2mid/26_순천고_2학기_중간_고2_확률과통계_유사.js#q17",
+      "lockedPrimaryL3": "H2-PS-RPM-037",
+      "originalSummary": "집합 $X=\\{1,2,3,4,5,6,7\\}$, $Y=\\{y\\mid y는 자연수\\}$에 대하여 다음 조건을 만족시키는 함수 $f:X\\to Y$의 개수는? [4.5점]\n<div class=\"question-note-box\">&lt;조건&gt;<br>(가) $f(2)\\le f(4)\\le f(6)\\le5$<br>(나) $f(1)+f(3)+f(5)+f(7)=10$</div>",
+      "existingVariantSummary": "집합 $X=\\{1,2,3,4,5,6,7\\}$에서 자연수의 집합으로 가는 함수 $f$가 다음 두 조건을 모두 만족할 때 함수의 개수는? [4.5점]\n<div class=\"question-note-box\">&lt;조건&gt;<br>(가) $f(1)\\le f(3)\\le f(5)\\le f(7)\\le4$<br>(나) $f(2)+f(4)+f(6)=9$</div>",
+      "conditionAndTargetShift": "짝수 입력의 비내림차순을 서로 다른 값의 엄격한 증가로 바꾸되 홀수 입력의 양의 정수 합계도 직접 세기",
+      "decisiveCore": "C(6,3)×C(9,3)=1680",
+      "solutionEntry": "C(6,3)×C(9,3)=1680",
+      "solutionGraphSignature": "C(6,3)×C(9,3)=1680",
+      "questionTarget": "자연수의 집합으로 가는 함수 $f:\\{1,2,3,4,5,6,7\\}\\to\\mathbb N$이 다음 조건을 모두 만족할 때 함수의 개수는? [4.5점]\n<div class=\"question-note-box\">&lt;조건&gt;<br>(가) $f(2)<f(4)<f(6)\\le6$<br>(나) $f(1)+f(3)+f(5)+f(7)=10$</div>",
+      "variationType": "CONFIRMATION",
+      "addedDecision": "CHANGED_CONDITION_AND_TARGET_WITH_SOURCE_DEPTH",
+      "sourceBucketJudgment": 4,
+      "newBucketJudgment": 4,
+      "difficultyBasis": "same-author comparison only, I2 reviewer not run",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+      "semanticDuplicateResult": "CONDITION_AND_TARGET_SHIFT_FROM_ORIGINAL_AND_SIMILAR1",
+      "traps": [
+        "엄격 증가를 비내림차순 중복조합으로 계산",
+        "짝수 입력의 선택 수를 25개로 오계산",
+        "홀수 값 네 개 중 하나를 고정",
+        "원본의 2940을 새 조건에 그대로 적용"
+      ],
+      "mathCheck": "AUTHOR_I1_SEPARATE_ENUMERATION_PASS_24_OF_24",
+      "choiceCheck": "OFFICIAL_JUDGE_PASS_ZERO_DEFECTS",
+      "visual": {
+        "qid": 17,
+        "problem": {
+          "decision": "EXEMPT",
+          "reason": "문제의 조건을 전달하는 데 엄격 증가 선택과 양의 정수해를 분리한 곱셈법칙이다. 별도 도형의 정보 이득이 없어 이 축은 면제한다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        },
+        "solution": {
+          "decision": "EXEMPT",
+          "reason": "풀이의 결정적 분류를 확인하는 데 엄격 증가 선택과 양의 정수해를 분리한 곱셈법칙이다. 별도 도형의 정보 이득이 없어 이 축은 면제한다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        }
+      }
+    },
+    {
+      "sourceQid": 18,
+      "originalReference": "archive/exams/original/high/h2/2mid/26_순천고_2학기_중간_고2_확률과통계.js#q18",
+      "existingVariantReference": "archive/exams/similar/high/h2/2mid/26_순천고_2학기_중간_고2_확률과통계_유사.js#q18",
+      "lockedPrimaryL3": "H2-PS-RPM-043",
+      "originalSummary": "집합 $U=\\{1,2,3,4,5\\}$의 모든 부분집합 중에서 중복을 허락하여 임의로 세 집합 $A$, $B$, $C$를 선택할 때 세 집합 $A$, $B$, $C$가 다음 조건을 만족시킬 확률이 $\\frac{3\\times5^b}{2^a}$이다. $a+b$의 값은? (단, $a$, $b$는 자연수이다.) [4.5점]\n<div class=\"question-note-box\">&lt;조건&gt;<br>(가) $n(A\\cup B)\\ge3$<br>(나) $C\\subset A$</div>",
+      "existingVariantSummary": "집합 $U=\\{1,2,3,4,5\\}$의 부분집합 중 중복을 허용하여 세 집합 $A,B,C$를 순서대로 하나씩 택한다. $C\\subseteq A$이고 $n(A\\cup B)$가 $3$ 이상의 홀수일 확률은 $\\dfrac{7\\cdot5^b}{2^a}$이다. 자연수 $a,b$에 대하여 $a+b$의 값은? [4.5점]",
+      "conditionAndTargetShift": "무조건부 부분집합 확률과 홀수 합집합 확률에서 C⊆A라는 정보하의 조건부 확률로 분모를 바꿈",
+      "decisiveCore": "C⊆A 전체 6^5, 합집합 원소 4개는 C(5,4)5^4",
+      "solutionEntry": "C⊆A 전체 6^5, 합집합 원소 4개는 C(5,4)5^4",
+      "solutionGraphSignature": "C⊆A 전체 6^5, 합집합 원소 4개는 C(5,4)5^4",
+      "questionTarget": "집합 $U=\\{1,2,3,4,5\\}$의 모든 부분집합 중에서 세 집합 $A,B,C$를 각각 독립적으로, 모든 부분집합이 같은 확률로 뽑히도록 한 개씩 고른다. $C\\subseteq A$라는 조건하에서 $n(A\\cup B)=4$일 확률은? [4.5점]",
+      "variationType": "CONFIRMATION",
+      "addedDecision": "CHANGED_CONDITION_AND_TARGET_WITH_SOURCE_DEPTH",
+      "sourceBucketJudgment": 4,
+      "newBucketJudgment": 4,
+      "difficultyBasis": "same-author comparison only, I2 reviewer not run",
+      "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+      "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+      "semanticDuplicateResult": "CONDITION_AND_TARGET_SHIFT_FROM_ORIGINAL_AND_SIMILAR1",
+      "traps": [
+        "포함 원소 한 개당 상태 수를 4개로 오산",
+        "무조건부 2^15를 분모로 놓음",
+        "합집합 원소를 3개로 셈",
+        "유리한 원소 상태 수를 임의로 감소시킴"
+      ],
+      "mathCheck": "AUTHOR_I1_SEPARATE_ENUMERATION_PASS_24_OF_24",
+      "choiceCheck": "OFFICIAL_JUDGE_PASS_ZERO_DEFECTS",
+      "visual": {
+        "qid": 18,
+        "problem": {
+          "decision": "EXEMPT",
+          "reason": "문제의 조건을 전달하는 데 부분집합의 원소별 여섯 상태를 조건화한 곱셈 원리다. 별도 도형의 정보 이득이 없어 이 축은 면제한다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        },
+        "solution": {
+          "decision": "EXEMPT",
+          "reason": "풀이의 결정적 분류를 확인하는 데 부분집합의 원소별 여섯 상태를 조건화한 곱셈 원리다. 별도 도형의 정보 이득이 없어 이 축은 면제한다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        }
+      }
+    },
+    {
+      "sourceQid": 19,
+      "originalReference": "archive/exams/original/high/h2/2mid/26_순천고_2학기_중간_고2_확률과통계.js#q19",
+      "existingVariantReference": "archive/exams/similar/high/h2/2mid/26_순천고_2학기_중간_고2_확률과통계_유사.js#q19",
+      "lockedPrimaryL3": "H2-PS-RPM-043",
+      "originalSummary": "1부터 9까지의 자연수가 하나씩 적혀 있는 9장의 카드가 들어 있는 주머니에서 임의로 카드를 1장씩 3번 뽑을 때, 뽑은 카드에 적혀 있는 수를 차례로 $a,b,c$라 하자. $a+b+c$가 $3$의 배수이거나 $abc$가 $3$의 배수일 확률은? (단, 뽑은 카드는 다시 넣지 않는다.) [4.7점]",
+      "existingVariantSummary": "$1$부터 $9$까지의 정수가 적힌 카드 $9$장 중 서로 다른 카드 $3$장을 순서대로 뽑는다. 카드의 수를 $a,b,c$라 할 때, $a+b+c$와 $abc$가 모두 $3$의 배수일 확률은? [4.7점]",
+      "conditionAndTargetShift": "두 배수 사건의 합집합·교집합 대신 정확히 하나만 성립하는 대칭차 사건",
+      "decisiveCore": "합집합396에서 교집합168을 빼서 228/504",
+      "solutionEntry": "합집합396에서 교집합168을 빼서 228/504",
+      "solutionGraphSignature": "합집합396에서 교집합168을 빼서 228/504",
+      "questionTarget": "$1$부터 $9$까지의 수가 하나씩 적힌 카드 $9$장에서 서로 다른 카드 $3$장을 순서대로 뽑아 수를 $a,b,c$라 하자. $a+b+c$가 $3$의 배수인 조건과 $abc$가 $3$의 배수인 조건 중 정확히 하나만 성립할 확률은? [4.7점]",
+      "variationType": "CONFIRMATION",
+      "addedDecision": "CHANGED_CONDITION_AND_TARGET_WITH_SOURCE_DEPTH",
+      "sourceBucketJudgment": 4,
+      "newBucketJudgment": 4,
+      "difficultyBasis": "same-author comparison only, I2 reviewer not run",
+      "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+      "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+      "semanticDuplicateResult": "CONDITION_AND_TARGET_SHIFT_FROM_ORIGINAL_AND_SIMILAR1",
+      "traps": [
+        "두 조건 모두 일어나는 경우를 포함",
+        "합집합 11/14를 그대로 답함",
+        "교집합을 한 번만 빼야 한다는 점을 오해",
+        "카드 순서가 없는 것으로 계산"
+      ],
+      "mathCheck": "AUTHOR_I1_SEPARATE_ENUMERATION_PASS_24_OF_24",
+      "choiceCheck": "OFFICIAL_JUDGE_PASS_ZERO_DEFECTS",
+      "visual": {
+        "qid": 19,
+        "problem": {
+          "decision": "EXEMPT",
+          "reason": "문제의 조건을 전달하는 데 합·곱 배수 조건의 대칭차를 두 원의 겹침과 분리해 보일 수 있다. 별도 도형의 정보 이득이 없어 이 축은 면제한다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        },
+        "solution": {
+          "decision": "BENEFICIAL",
+          "reason": "문항 19의 풀이의 결정적 분류를 확인하는 데 합·곱 배수 조건의 대칭차를 두 원의 겹침과 분리해 보일 수 있다. 정답을 미리 노출하지 않는 전용 solution 플랜이다.",
+          "planRef": "archive/exams/similar/high/h2/2mid/26_순천고_2학기_중간_고2_확률과통계_유사2_plans/q19-solution.plan.json",
+          "engineStatus": "SHALLOW_AND_FULL_LINT_PASS_RENDER_NOT_RUN"
+        }
+      }
+    },
+    {
+      "sourceQid": 20,
+      "originalReference": "archive/exams/original/high/h2/2mid/26_순천고_2학기_중간_고2_확률과통계.js#q20",
+      "existingVariantReference": "archive/exams/similar/high/h2/2mid/26_순천고_2학기_중간_고2_확률과통계_유사.js#q20",
+      "lockedPrimaryL3": "H2-PS-RPM-046",
+      "originalSummary": "다음 그림과 같이 원 위에 같은 간격으로 배열된 6개의 점 $A$, $B$, $C$, $D$, $E$, $F$가 있다. 한 개의 주사위를 두 번 던져서 나오는 눈의 수를 차례대로 $a$, $b$라 할 때 점 $A$에서 출발하여 시계 방향으로 $a$칸 이동한 점을 $P$, 점 $P$에서 출발하여 시계 방향으로 $b$칸 이동한 점을 $Q$라 하자. 예를 들어 $a=3$, $b=2$이면 점 $P$는 점 $D$, 점 $Q$는 점 $F$에 위치한다. 세 점 $A$, $P$, $Q$를 선분으로 연결한 도형이",
+      "existingVariantSummary": "원 위에 같은 간격으로 놓인 여섯 점 $A,B,C,D,E,F$가 시계 방향으로 순서대로 있다. 공정한 주사위를 두 번 던져 나온 수를 $a,b$라 하고, $A$에서 시계 방향으로 $a$칸 이동한 점을 $P$, 다시 $P$에서 시계 방향으로 $b$칸 이동한 점을 $Q$라 하자. $A,P,Q$를 꼭짓점으로 하는 삼각형이 만들어졌다는 조건하에 그 삼각형이 직각삼각형일 확률은? [4.7점]",
+      "conditionAndTargetShift": "원 위 주사위 경로의 예각·직각 여부 대신 둔각삼각형 조건부확률을 지름 분류와 예각 한 경우를 통해 도출",
+      "decisiveCore": "삼각형 10개 중 직각6·예각1 제외한 둔각3",
+      "solutionEntry": "삼각형 10개 중 직각6·예각1 제외한 둔각3",
+      "solutionGraphSignature": "삼각형 10개 중 직각6·예각1 제외한 둔각3",
+      "questionTarget": "원 위에 여섯 점 $A,B,C,D,E,F$가 시계 방향으로 같은 간격으로 있다. 공정한 주사위를 두 번 던져 얻은 눈을 $a,b$라 한다. $A$에서 시계 방향으로 $a$칸 이동한 점을 $P$, 이어서 시계 방향으로 $b$칸 이동한 점을 $Q$라 하자. $A,P,Q$가 서로 다른 세 점이라는 조건하에 삼각형 $APQ$가 둔각삼각형일 확률은? [4.7점]",
+      "variationType": "CONFIRMATION",
+      "addedDecision": "CHANGED_CONDITION_AND_TARGET_WITH_SOURCE_DEPTH",
+      "sourceBucketJudgment": 5,
+      "newBucketJudgment": 5,
+      "difficultyBasis": "same-author comparison only, I2 reviewer not run",
+      "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+      "templateKey": "TPL_CONDITIONAL_PROBABILITY_DIRECT",
+      "semanticDuplicateResult": "CONDITION_AND_TARGET_SHIFT_FROM_ORIGINAL_AND_SIMILAR1",
+      "traps": [
+        "예각 ACE 한 개를 답함",
+        "예각과 둔각 삼각형을 혼동",
+        "직각 아닌 모든 것을 둔각으로 분류",
+        "직각6개를 답함"
+      ],
+      "mathCheck": "AUTHOR_I1_SEPARATE_ENUMERATION_PASS_24_OF_24",
+      "choiceCheck": "OFFICIAL_JUDGE_PASS_ZERO_DEFECTS",
+      "visual": {
+        "qid": 20,
+        "problem": {
+          "decision": "BENEFICIAL",
+          "reason": "실제 원본 PNG를 육안 대조했다. 원의 지름과 직각·예각·둔각의 서로 다른 부류를 비교해야 한다. 신규 문항의 치수·점 배치가 이미지와 동일하여 재사용한다.",
+          "planRef": null,
+          "existingAsset": "assets/images/26_순천고_2학기_중간_고2_확률과통계/q20.png",
+          "assetInspected": true,
+          "engineStatus": "REUSE_SOURCE_PNG_VISUALLY_INSPECTED"
+        },
+        "solution": {
+          "decision": "BENEFICIAL",
+          "reason": "문항 20의 풀이의 결정적 분류를 확인하는 데 원의 지름과 직각·예각·둔각의 서로 다른 부류를 비교해야 한다. 정답을 미리 노출하지 않는 전용 solution 플랜이다.",
+          "planRef": "archive/exams/similar/high/h2/2mid/26_순천고_2학기_중간_고2_확률과통계_유사2_plans/q20-solution.plan.json",
+          "engineStatus": "SHALLOW_PASS_FULL_BLOCKED_MISSING_FONT"
+        }
+      }
+    },
+    {
+      "sourceQid": 21,
+      "originalReference": "archive/exams/original/high/h2/2mid/26_순천고_2학기_중간_고2_확률과통계.js#q21",
+      "existingVariantReference": "archive/exams/similar/high/h2/2mid/26_순천고_2학기_중간_고2_확률과통계_유사.js#q21",
+      "lockedPrimaryL3": "H2-PS-RPM-039",
+      "originalSummary": "서답형 1. (서술형) $\\left(x+\\frac1{x^3}\\right)\\left(x^3-\\frac{k}{x}\\right)^3$의 전개식에서 $x^2$의 계수가 $18$일 때, 모든 $k$의 값을 구하는 과정을 서술하시오. [부분 점수 있음, 5점]",
+      "existingVariantSummary": "서답형 1. (서술형) 다항식 $\\left(x^2+\\dfrac{2}{x^2}\\right)\\left(x^3-\\dfrac{k}{x}\\right)^3$의 전개식에서 $x^3$의 계수가 $9$가 되도록 하는 모든 실수 $k$의 값의 곱을 구하는 과정을 서술하시오. [부분 점수 있음, 5점]",
+      "conditionAndTargetShift": "특정 계수의 가능한 매개변수 값을 모두 나열·곱하던 원본·유사1과 달리 두 실근 차이를 구함",
+      "decisiveCore": "x^2 계수 3k²−9k=30, 근 5와 −2의 차7",
+      "solutionEntry": "x^2 계수 3k²−9k=30, 근 5와 −2의 차7",
+      "solutionGraphSignature": "x^2 계수 3k²−9k=30, 근 5와 −2의 차7",
+      "questionTarget": "서답형 1. (서술형) 다항식 $\\left(x+\\dfrac3{x^3}\\right)\\left(x^3-\\dfrac{k}{x}\\right)^3$의 전개식에서 $x^2$의 계수가 $30$이 되게 하는 두 실수 $k$의 값의 차(큰 값에서 작은 값을 뺀 값)를 구하는 과정을 서술하시오. [부분 점수 있음, 5점]",
+      "variationType": "CONFIRMATION",
+      "addedDecision": "CHANGED_CONDITION_AND_TARGET_WITH_SOURCE_DEPTH",
+      "sourceBucketJudgment": 4,
+      "newBucketJudgment": 4,
+      "difficultyBasis": "same-author comparison only, I2 reviewer not run",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "templateKey": "TPL_BINOMIAL_TERM_COEFFICIENT",
+      "semanticDuplicateResult": "CONDITION_AND_TARGET_SHIFT_FROM_ORIGINAL_AND_SIMILAR1",
+      "traps": [],
+      "mathCheck": "AUTHOR_I1_SEPARATE_ENUMERATION_PASS_24_OF_24",
+      "choiceCheck": "OFFICIAL_JUDGE_PASS_ZERO_DEFECTS",
+      "visual": {
+        "qid": 21,
+        "problem": {
+          "decision": "EXEMPT",
+          "reason": "문제의 조건을 전달하는 데 이항전개의 두 계수 기여항과 이차방정식 두 근은 식으로 완결된다. 별도 도형의 정보 이득이 없어 이 축은 면제한다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        },
+        "solution": {
+          "decision": "EXEMPT",
+          "reason": "풀이의 결정적 분류를 확인하는 데 이항전개의 두 계수 기여항과 이차방정식 두 근은 식으로 완결된다. 별도 도형의 정보 이득이 없어 이 축은 면제한다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        }
+      }
+    },
+    {
+      "sourceQid": 22,
+      "originalReference": "archive/exams/original/high/h2/2mid/26_순천고_2학기_중간_고2_확률과통계.js#q22",
+      "existingVariantReference": "archive/exams/similar/high/h2/2mid/26_순천고_2학기_중간_고2_확률과통계_유사.js#q22",
+      "lockedPrimaryL3": "H2-PS-RPM-037",
+      "originalSummary": "서답형 2. (서술형) 방정식 $a+b+c+d+e=7$을 만족시키는 음이 아닌 정수 $a,b,c,d,e$의 모든 순서쌍 $(a,b,c,d,e)$ 중에서 임의로 하나를 택할 때, 택한 순서쌍 $(a,b,c,d,e)$가 $(a-2b)(a-4c)=0$을 만족시킬 확률은 $\\frac qp$이다. $p+q$의 값을 구하는 과정을 서술하시오. (단, $p$와 $q$는 서로소인 자연수이다.) [부분 점수 있음, 5점]",
+      "existingVariantSummary": "서답형 2. (서술형) $a+b+c+d+e=8$을 만족시키는 음이 아닌 정수로 이루어진 순서 있는 다섯 수 $(a,b,c,d,e)$를 임의로 한 개 택한다. $a=2b$, $a=3c$ 중 정확히 하나만 성립할 확률을 기약분수 $\\dfrac qp$로 나타낼 때, 서로소인 자연수 $p,q$에 대하여 $p+q$를 구하는 과정을 서술하시오. [부분 점수 있음, 5점]",
+      "conditionAndTargetShift": "선형 조건 두 개의 합집합·배타적 합집합 확률에서 하나가 성립한다는 정보하에 다른 하나도 성립할 조건부확률 계산",
+      "decisiveCore": "a=3c 조건 전체79, a=2b와 교집합10, p+q89",
+      "solutionEntry": "a=3c 조건 전체79, a=2b와 교집합10, p+q89",
+      "solutionGraphSignature": "a=3c 조건 전체79, a=2b와 교집합10, p+q89",
+      "questionTarget": "서답형 2. (서술형) $a+b+c+d+e=9$를 만족하는 음이 아닌 정수의 순서 있는 다섯 수 $(a,b,c,d,e)$ 중 임의로 하나를 고른다. $a=3c$라는 조건하에 $a=2b$일 확률이 기약분수 $\\dfrac qp$일 때, 서로소인 자연수 $p,q$에 대하여 $p+q$를 구하는 과정을 서술하시오. [부분 점수 있음, 5점]",
+      "variationType": "CONFIRMATION",
+      "addedDecision": "CHANGED_CONDITION_AND_TARGET_WITH_SOURCE_DEPTH",
+      "sourceBucketJudgment": 4,
+      "newBucketJudgment": 4,
+      "difficultyBasis": "same-author comparison only, I2 reviewer not run",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+      "semanticDuplicateResult": "CONDITION_AND_TARGET_SHIFT_FROM_ORIGINAL_AND_SIMILAR1",
+      "traps": [],
+      "mathCheck": "AUTHOR_I1_SEPARATE_ENUMERATION_PASS_24_OF_24",
+      "choiceCheck": "OFFICIAL_JUDGE_PASS_ZERO_DEFECTS",
+      "visual": {
+        "qid": 22,
+        "problem": {
+          "decision": "EXEMPT",
+          "reason": "문제의 조건을 전달하는 데 정수해를 c=0,1,2로 분할한 작은 계산 표가 문장 내에서 완결된다. 별도 도형의 정보 이득이 없어 이 축은 면제한다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        },
+        "solution": {
+          "decision": "EXEMPT",
+          "reason": "풀이의 결정적 분류를 확인하는 데 정수해를 c=0,1,2로 분할한 작은 계산 표가 문장 내에서 완결된다. 별도 도형의 정보 이득이 없어 이 축은 면제한다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        }
+      }
+    },
+    {
+      "sourceQid": 23,
+      "originalReference": "archive/exams/original/high/h2/2mid/26_순천고_2학기_중간_고2_확률과통계.js#q23",
+      "existingVariantReference": "archive/exams/similar/high/h2/2mid/26_순천고_2학기_중간_고2_확률과통계_유사.js#q23",
+      "lockedPrimaryL3": "H2-PS-RPM-046",
+      "originalSummary": "서답형 3. (서술형) 다음 보기는 어느 대학교의 수업 시간에 교수와 학생이 한 대화 내용이다. 보기의 학생의 대답을 읽고 학생이 처음의 선택을 바꾼 이유를 확률의 곱셈 정리를 이용하여 아래 조건을 모두 지켜서 서술하시오. [부분 점수 있음, 5점]\n<div class=\"question-note-box\">&lt;보기&gt;<br>교수: 여기에 세 개의 문이 있다고 가정해보자. 이 중 두 개의 문 뒤에는 돌멩이가 있고 나머지 한 개의 문 뒤에는 황금이 있지. 자네가 셋 중 한 개의 문을 고른 후 나",
+      "existingVariantSummary": "서답형 3. (서술형) 네 개의 문 중 한 개 뒤에는 상품이 있고 나머지 세 문 뒤에는 빈 상자가 있다. 참가자가 문 하나를 고르면, 상품의 위치를 아는 사회자가 반드시 참가자가 고르지 않은 문 중 빈 문 두 개를 열어 보인다. 참가자는 처음 고른 문을 유지하거나 마지막으로 닫힌 다른 문으로 바꿀 수 있다. 선택을 바꾸는 것이 유리한 이유를 확률의 곱셈정리를 이용해 서술하시오. (단, 상품 위치와 최초 선택은 네 문에 대하여 동일하게 가능하고, 모든 확률은 분수로 쓸 것.) [부분 점수 있음, 5",
+      "conditionAndTargetShift": "세 문/네 문 몬티홀의 유일 남은 문으로 확정 교체에서 다섯 문 중 두 대안 중 무작위 교체를 하는 추가 분기",
+      "decisiveCore": "초기 오답 4/5 × 남은 두 문 중 정답 선택 1/2 =2/5",
+      "solutionEntry": "초기 오답 4/5 × 남은 두 문 중 정답 선택 1/2 =2/5",
+      "solutionGraphSignature": "초기 오답 4/5 × 남은 두 문 중 정답 선택 1/2 =2/5",
+      "questionTarget": "서답형 3. (서술형) 다섯 개의 문 중 하나 뒤에 상품이 있고 나머지 네 개 뒤에는 빈 상자가 있다. 참가자가 한 문을 고른 뒤 상품의 위치를 아는 사회자가 고르지 않은 네 문 중 반드시 빈 문 두 개를 열어 보인다. 참가자는 처음 문을 유지하거나, 아직 닫혀 있는 나머지 두 문 중 하나를 무작위로 골라 바꿀 수 있다. 처음 선택을 유지할 때와 바꿀 때의 당첨 확률을 각각 구하고, 확률의 곱셈정리를 이용해 더 유리한 선택을 설명하시오. (단, 상품 위치와 최초 선택은 다섯 문에 대하여 동일하게 가능하다.) [부분 점수 있음, 5점]",
+      "variationType": "CONFIRMATION",
+      "addedDecision": "CHANGED_CONDITION_AND_TARGET_WITH_SOURCE_DEPTH",
+      "sourceBucketJudgment": 4,
+      "newBucketJudgment": 4,
+      "difficultyBasis": "same-author comparison only, I2 reviewer not run",
+      "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+      "templateKey": "TPL_CONDITIONAL_PROBABILITY_DIRECT",
+      "semanticDuplicateResult": "CONDITION_AND_TARGET_SHIFT_FROM_ORIGINAL_AND_SIMILAR1",
+      "traps": [],
+      "mathCheck": "AUTHOR_I1_SEPARATE_ENUMERATION_PASS_24_OF_24",
+      "choiceCheck": "OFFICIAL_JUDGE_PASS_ZERO_DEFECTS",
+      "visual": {
+        "qid": 23,
+        "problem": {
+          "decision": "EXEMPT",
+          "reason": "문제의 조건을 전달하는 데 최초 선택이 빈 문인지 상품인지에 따른 갈래의 조건부확률이 중요하다. 별도 도형의 정보 이득이 없어 이 축은 면제한다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        },
+        "solution": {
+          "decision": "BENEFICIAL",
+          "reason": "문항 23의 풀이의 결정적 분류를 확인하는 데 최초 선택이 빈 문인지 상품인지에 따른 갈래의 조건부확률이 중요하다. 정답을 미리 노출하지 않는 전용 solution 플랜이다.",
+          "planRef": "archive/exams/similar/high/h2/2mid/26_순천고_2학기_중간_고2_확률과통계_유사2_plans/q23-solution.plan.json",
+          "engineStatus": "SHALLOW_AND_FULL_LINT_PASS_RENDER_NOT_RUN"
+        }
+      }
+    },
+    {
+      "sourceQid": 24,
+      "originalReference": "archive/exams/original/high/h2/2mid/26_순천고_2학기_중간_고2_확률과통계.js#q24",
+      "existingVariantReference": "archive/exams/similar/high/h2/2mid/26_순천고_2학기_중간_고2_확률과통계_유사.js#q24",
+      "lockedPrimaryL3": "H2-PS-RPM-035",
+      "originalSummary": "서답형 4. (서술형) 다음 조건을 만족시키는 자연수 $a$, $b$, $c$의 모든 순서쌍 $(a,b,c)$의 개수를 구하는 과정과 결과를 서술하시오. [부분 점수 있음, 5점]\n<div class=\"question-note-box\">&lt;조건&gt;<br>(가) $a^2bc=1200$<br>(나) $b$와 $c$는 서로소가 아니다.</div>",
+      "existingVariantSummary": "서답형 4. (서술형) $a^2bc=1200$을 만족하는 자연수 $a,b,c$ 중에서 $b$와 $c$가 서로소인 순서 있는 세 수 $(a,b,c)$의 개수를 구하는 과정과 결과를 서술하시오. [부분 점수 있음, 5점]",
+      "conditionAndTargetShift": "서로소 아닌 쌍·서로소 쌍의 개수에서 최대공약수가 정확히 2인 쌍으로 구조를 제한",
+      "decisiveCore": "b=2u,c=2v, gcd(u,v)=1; N/4 소인수 배분",
+      "solutionEntry": "b=2u,c=2v, gcd(u,v)=1; N/4 소인수 배분",
+      "solutionGraphSignature": "b=2u,c=2v, gcd(u,v)=1; N/4 소인수 배분",
+      "questionTarget": "서답형 4. (서술형) $a^2bc=1200$을 만족하는 자연수 $a,b,c$ 중 $\\gcd(b,c)=2$인 순서 있는 세 수 $(a,b,c)$의 개수를 구하는 과정과 결과를 서술하시오. [부분 점수 있음, 5점]",
+      "variationType": "CONFIRMATION",
+      "addedDecision": "CHANGED_CONDITION_AND_TARGET_WITH_SOURCE_DEPTH",
+      "sourceBucketJudgment": 5,
+      "newBucketJudgment": 5,
+      "difficultyBasis": "same-author comparison only, I2 reviewer not run",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_COMBINATION_SELECTION",
+      "semanticDuplicateResult": "CONDITION_AND_TARGET_SHIFT_FROM_ORIGINAL_AND_SIMILAR1",
+      "traps": [],
+      "mathCheck": "AUTHOR_I1_SEPARATE_ENUMERATION_PASS_24_OF_24",
+      "choiceCheck": "OFFICIAL_JUDGE_PASS_ZERO_DEFECTS",
+      "visual": {
+        "qid": 24,
+        "problem": {
+          "decision": "EXEMPT",
+          "reason": "문제의 조건을 전달하는 데 최대공약수 2를 서로소 인수 배분으로 환원한 계산이다. 별도 도형의 정보 이득이 없어 이 축은 면제한다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        },
+        "solution": {
+          "decision": "EXEMPT",
+          "reason": "풀이의 결정적 분류를 확인하는 데 최대공약수 2를 서로소 인수 배분으로 환원한 계산이다. 별도 도형의 정보 이득이 없어 이 축은 면제한다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        }
+      }
+    }
+  ]
+}

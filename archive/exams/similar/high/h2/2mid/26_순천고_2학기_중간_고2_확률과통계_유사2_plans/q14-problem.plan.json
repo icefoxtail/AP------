@@ -1,0 +1,39 @@
+{
+  "capability": "lattice-path-figure-v1",
+  "lattice": {
+    "grid": {
+      "cols": 5,
+      "rows": 5
+    },
+    "points": {
+      "A": [
+        0,
+        0
+      ],
+      "B": [
+        5,
+        5
+      ],
+      "C": [
+        2,
+        2
+      ]
+    },
+    "from": "A",
+    "to": "B",
+    "forbidden": [],
+    "counts": false,
+    "hideTargetCount": true
+  },
+  "caption": "5×5 도로망의 시작점 A와 끝점 B, 통과해서는 안 되는 내부 교점 C=(2,2)의 위치만 표시한다. 경로 수·정답은 문제 그림에 쓰지 않는다.",
+  "newVisualInformation": [
+    "교점 A=(0,0), B=(5,5), C=(2,2)의 상대적 위치가 표시됨"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "가로 $5$칸, 세로 $5$칸인 격자형 도로망에서 왼쪽 아래 교점을 $A=(0,0)$, 오른쪽 위 교점을 $B=(5,5)$라 하자. 오른쪽 또는 위쪽으로만 움직이는 최단 경로 중 내부 교점 $C=(2,2)$를 지나지 않는 경로의 수는? [4.3점]",
+      "mappedTo": "PRESERVED_NEW_FOLLOWUP_STEM"
+    }
+  ]
+}
