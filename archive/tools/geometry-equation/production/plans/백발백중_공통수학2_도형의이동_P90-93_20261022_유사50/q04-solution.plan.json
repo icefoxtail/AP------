@@ -1,0 +1,220 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Y",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "LINE_REFLECTION",
+        "inputs": [
+          "P",
+          "X"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "R",
+        "op": "LINE_REFLECTION",
+        "inputs": [
+          "P",
+          "Y"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "P",
+    "Q",
+    "R"
+  ],
+  "displaySegments": [
+    {
+      "id": "sPQ",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    },
+    {
+      "id": "sPR",
+      "refs": [
+        "P",
+        "R"
+      ]
+    },
+    {
+      "id": "sQR",
+      "refs": [
+        "Q",
+        "R"
+      ]
+    }
+  ],
+  "coordinateLabels": [
+    "P",
+    "Q",
+    "R"
+  ],
+  "coordinatePlacement": "PANEL",
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dPR",
+        "from": "P",
+        "to": "R",
+        "label": "16",
+        "side": "ABOVE",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "caption": "두 축에 대한 대칭으로 얻은 직각삼각형 PQR의 두 변",
+  "accessibilityDescription": "점 P(8,1)를 x축 대칭하여 Q(8,-1), y축 대칭하여 R(-8,1)를 얻는다. PQ=2, PR=16이 서로 수직인 삼각형의 세 변을 면 채움 없이 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "initialPoint",
+      "condition": "원래 점 P(8,1)",
+      "mappedTo": "P"
+    },
+    {
+      "id": "xReflection",
+      "condition": "P의 x축 대칭 Q(8,-1)",
+      "mappedTo": [
+        "X",
+        "Q"
+      ]
+    },
+    {
+      "id": "yReflection",
+      "condition": "P의 y축 대칭 R(-8,1)",
+      "mappedTo": [
+        "Y",
+        "R"
+      ]
+    },
+    {
+      "id": "edges",
+      "condition": "PQ=2, PR=16, 각 QPR=90°",
+      "mappedTo": [
+        "sPQ",
+        "sPR",
+        "rightP",
+        "dPR"
+      ]
+    },
+    {
+      "id": "area",
+      "condition": "삼각형 넓이 16",
+      "mappedTo": [
+        "sPQ",
+        "sPR"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 축 대칭에 따른 두 점의 좌표와 가로·세로 직각 변을 표시한다.",
+    "PQ=2는 가까운 점 P,Q의 좌표 차이로 검증하며, 협소한 수직 변의 치수선은 생략한다."
+  ],
+  "rightAngles": [
+    {
+      "id": "rightP",
+      "refs": [
+        "Q",
+        "P",
+        "R"
+      ]
+    }
+  ]
+}

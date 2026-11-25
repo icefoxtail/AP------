@@ -1,0 +1,149 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "L",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "-1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "TRANSLATE_LINE",
+        "inputs": [
+          "L"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "A",
+          "M"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "F"
+  ],
+  "displayLines": [
+    "L",
+    "M"
+  ],
+  "displaySegments": [
+    {
+      "id": "distance",
+      "refs": [
+        "A",
+        "F"
+      ],
+      "emphasis": "BOLD"
+    }
+  ],
+  "coordinatePlacement": "PANEL",
+  "caption": "평행한 두 직선 사이의 수직 거리 sqrt(2)",
+  "accessibilityDescription": "원래 직선과 (0,2)만큼 평행이동한 직선 x-y+2=0을 그리고 두 직선 사이의 수직거리 sqrt(2)를 선분으로 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "originalLine",
+      "condition": "원래 직선 계수 (1,-1,0)",
+      "mappedTo": "L"
+    },
+    {
+      "id": "translation",
+      "condition": "최종 이동량 (0,2), 이동된 직선 x-y+2=0",
+      "mappedTo": "M"
+    },
+    {
+      "id": "distance",
+      "condition": "두 평행선 사이의 수직거리 sqrt(2)",
+      "mappedTo": [
+        "A",
+        "F",
+        "distance"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원래 직선과 이동된 평행선 사이의 최단거리가 두 선에 수직이라는 점을 보여 준다."
+  ]
+}

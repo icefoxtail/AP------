@@ -1,0 +1,222 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "K",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "D"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "-3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "W",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "V"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "pointNames": {
+    "C": "C_1",
+    "D": "C_2",
+    "V": "V_1",
+    "W": "V_2"
+  },
+  "displayPoints": [
+    "C",
+    "D",
+    "V",
+    "W"
+  ],
+  "displayCircles": [
+    "K",
+    "H"
+  ],
+  "displaySegments": [
+    {
+      "id": "centerMove",
+      "refs": [
+        "C",
+        "D"
+      ],
+      "arrow": "END"
+    },
+    {
+      "id": "vertexMove",
+      "refs": [
+        "V",
+        "W"
+      ],
+      "arrow": "END"
+    }
+  ],
+  "coordinateLabels": [
+    "C",
+    "D",
+    "V",
+    "W"
+  ],
+  "coordinatePlacement": "PANEL",
+  "caption": "원의 중심 이동 (2, 4)를 포물선 꼭짓점에 적용",
+  "accessibilityDescription": "원의 중심은 (0,-3)에서 (2,1)로, 포물선의 꼭짓점은 (2,-3)에서 (4,1)로 이동한다. 면 채움 없이 두 원과 두 이동 화살표를 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "originalCircle",
+      "condition": "원의 중심 (0,-3), 반지름 3",
+      "mappedTo": [
+        "C",
+        "K"
+      ]
+    },
+    {
+      "id": "targetCircle",
+      "condition": "이동한 원의 중심 (2,1)",
+      "mappedTo": [
+        "D",
+        "H"
+      ]
+    },
+    {
+      "id": "originalParabola",
+      "condition": "원래 포물선 y=x^2-4x+1, 꼭짓점 (2,-3)",
+      "mappedTo": "V"
+    },
+    {
+      "id": "targetParabola",
+      "condition": "옮긴 포물선 y=(x-4)^2+1, 꼭짓점 (4,1)",
+      "mappedTo": "W"
+    },
+    {
+      "id": "vector",
+      "condition": "이동량 (2, 4)",
+      "mappedTo": [
+        "centerMove",
+        "vertexMove"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "같은 이동벡터가 원의 중심과 포물선의 꼭짓점에 공통 적용되는 관계를 보여 준다. 포물선 곡선 자체는 이 꼭짓점 이동 해설도의 그리기 대상이 아니다."
+  ]
+}

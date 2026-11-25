@@ -1,0 +1,213 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "K",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "D"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "-4"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "TRANSLATE_LINE",
+        "inputs": [
+          "L"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "pointNames": {
+    "C": "C_1",
+    "D": "C_2"
+  },
+  "displayPoints": [
+    "C",
+    "D"
+  ],
+  "displayLines": [
+    "L",
+    "M"
+  ],
+  "displayCircles": [
+    "K",
+    "H"
+  ],
+  "displaySegments": [
+    {
+      "id": "vector",
+      "refs": [
+        "C",
+        "D"
+      ],
+      "arrow": "END"
+    }
+  ],
+  "coordinateLabels": [
+    "C",
+    "D"
+  ],
+  "coordinatePlacement": "PANEL",
+  "caption": "원의 중심 이동량 (-2, 2)과 함께 옮겨진 직선 x+2y-6=0",
+  "accessibilityDescription": "반지름 2인 원의 중심 C₁(0,1)이 C₂(-2,3)로 이동한다. 원래 직선과 이동된 직선 x+2y-6=0을 함께 그렸다.",
+  "sourceConditions": [
+    {
+      "id": "originalCircle",
+      "condition": "처음 원의 중심 (0,1)과 반지름 2",
+      "mappedTo": [
+        "C",
+        "K"
+      ]
+    },
+    {
+      "id": "targetCircle",
+      "condition": "이동된 원의 중심 (-2,3)",
+      "mappedTo": [
+        "D",
+        "H"
+      ]
+    },
+    {
+      "id": "translation",
+      "condition": "중심 이동량 (-2, 2)",
+      "mappedTo": [
+        "C",
+        "D",
+        "vector"
+      ]
+    },
+    {
+      "id": "line",
+      "condition": "원래 직선의 일반형 계수 (1,2,-4)과 이동된 직선 x+2y-6=0",
+      "mappedTo": [
+        "L",
+        "M"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 원의 중심을 연결한 방향 화살표와 평행이동 전·후 직선을 같은 좌표평면에 표시한다."
+  ]
+}
