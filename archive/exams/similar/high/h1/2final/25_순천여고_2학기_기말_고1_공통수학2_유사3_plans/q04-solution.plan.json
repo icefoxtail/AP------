@@ -1,0 +1,25 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      { "id": "P", "name": "P=Q" },
+      { "id": "R", "name": "R" }
+    ],
+    "subset": ["P", "R"],
+    "labelGap": 10,
+    "elements": [
+      { "text": "(1,1)", "math": true, "in": ["P", "R"] },
+      { "text": "(2,-1)", "math": true, "in": ["R"] }
+    ]
+  },
+  "caption": "q의 진리집합은 p의 진리집합과 같으므로 P=Q이다. p이면 r이지만 r이면 p인 것은 아니어서 P=Q⊊R이다. (2,-1)은 R에만 속하는 반례이다. 답은 ⑤이다.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "p: x>0, y>0; q: x+y>0, xy>0; r: x+y>0 또는 xy>0", "mappedTo": "diagram" }
+  ],
+  "newVisualInformation": [
+    "P=Q가 R에 진포함됨을 집합 이름과 포함 원으로 표시한다.",
+    "(1,1)은 P=Q에 속하고 (2,-1)은 R에는 속하나 P=Q에는 속하지 않는다."
+  ],
+  "accessibilityDescription": "진리집합 P=Q가 R 안에 있고, (1,1)은 P=Q에, (2,-1)은 R에만 있는 벤다이어그램."
+}

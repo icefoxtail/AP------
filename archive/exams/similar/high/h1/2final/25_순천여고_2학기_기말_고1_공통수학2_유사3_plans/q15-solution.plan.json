@@ -1,0 +1,40 @@
+{
+  "capability": "rational-spike-v1",
+  "graphPlan": {
+    "family": "rational",
+    "numerator": ["13/2", "0"],
+    "denominator": ["0", "1"],
+    "sourceDomain": { "kind": "ALL_REALS" },
+    "domain": [-1, 8],
+    "viewport": [-1, 8, -1, 8],
+    "equalUnits": true,
+    "axisTickValues": { "x": [], "y": [] },
+    "formulaLabel": "y=k/x",
+    "overlays": {
+      "lines": [{ "id": "L", "slope": "-1", "intercept": "6" }],
+      "points": [
+        { "id": "P", "curveX": "3-sqrt(10)/2" },
+        { "id": "Q", "curveX": "3+sqrt(10)/2" },
+        { "id": "R", "x": "3+sqrt(10)/2", "y": "3+sqrt(10)/2" }
+      ],
+      "segments": [
+        { "id": "PR", "from": "P", "to": "R" },
+        { "id": "RQ", "from": "R", "to": "Q" },
+        { "id": "PQ", "from": "P", "to": "Q", "length": true }
+      ],
+      "rightAngles": [{ "at": "R", "from": ["P", "Q"] }]
+    }
+  },
+  "pointNames": { "P": "P", "Q": "Q", "R": "R" },
+  "coordinatePlacement": "PANEL",
+  "caption": "y=k/x와 y=-x+6의 교점 P,Q의 x좌표를 u,v라 두면 u+v=6, uv=k이다. 직각삼각형 PRQ의 두 직각변 길이는 |u-v|로 같고 빗변 PQ=2√5이므로 (u-v)²=10이다. (u+v)²-4uv=36-4k=10에서 k=13/2이다. 답은 ④이다.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "y=k/x (k>0), y=-x+6, 두 교점 P,Q", "mappedTo": ["graphPlan.numerator", "graphPlan.overlays.lines", "graphPlan.overlays.points"] },
+    { "id": "c2", "condition": "PQ=2√5", "mappedTo": "graphPlan.overlays.segments[2]" }
+  ],
+  "newVisualInformation": [
+    "직각변 PR과 RQ 및 R의 직각 표식으로 PQ=√2|u-v|의 구조를 나타낸다.",
+    "선분 PQ에 길이 2√5를 표시하며 삼각형 내부를 채우지 않는다."
+  ],
+  "accessibilityDescription": "쌍곡선 y=k/x와 직선 y=-x+6의 교점 P,Q 및 R에서 직각인 삼각형 PRQ. 빗변 PQ의 길이는 2√5이다."
+}

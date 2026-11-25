@@ -1,0 +1,50 @@
+{
+  "capability": "composite-panels-v1",
+  "columns": 1,
+  "panels": [
+    {
+      "caption": { "text": "(가) P⊂Q" },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "VENN",
+          "sets": [{ "id": "P" }, { "id": "Q" }],
+          "subset": ["P", "Q"],
+          "elements": [
+            { "text": "1", "in": ["P", "Q"] },
+            { "text": "2", "in": ["Q"] },
+            { "text": "3", "in": [] },
+            { "text": "4", "in": [] }
+          ]
+        }
+      }
+    },
+    {
+      "caption": { "text": "(나) Q∩R=∅" },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "VENN",
+          "sets": [{ "id": "Q" }, { "id": "R" }],
+          "disjoint": [["Q", "R"]],
+          "elements": [
+            { "text": "1", "in": ["Q"] },
+            { "text": "2", "in": ["Q"] },
+            { "text": "3", "in": ["R"] },
+            { "text": "4", "in": [] }
+          ]
+        }
+      }
+    }
+  ],
+  "caption": "(가) P∪Q=Q는 P⊂Q를, (나) Q∩Rᶜ=Q는 Q∩R=∅를 뜻한다. U={1,2,3,4}, P={1}, Q={1,2}, R={3}인 예시에서 두 조건과 P∩R=∅를 함께 확인할 수 있다. 따라서 p이면 r이 거짓이고 p→∼r은 항상 참이다. 답은 ⑤이다.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "P∪Q=Q", "mappedTo": "panels[0].plan.diagram.subset" },
+    { "id": "c2", "condition": "Q∩Rᶜ=Q", "mappedTo": "panels[1].plan.diagram.disjoint" }
+  ],
+  "newVisualInformation": [
+    "첫 패널에서 P가 Q에 포함되는 원과 원소 1,2를 보인다.",
+    "둘째 패널에서 Q와 R가 서로소인 원과 원소 1,2,3을 보인다."
+  ],
+  "accessibilityDescription": "첫 패널은 P가 Q 안에 포함됨을, 둘째 패널은 Q와 R가 서로 만나지 않음을 같은 원소 예시로 나타낸다."
+}
