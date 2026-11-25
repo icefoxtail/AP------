@@ -1,0 +1,39 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "P",
+        "name": "P"
+      },
+      {
+        "id": "Q",
+        "name": "Q"
+      }
+    ],
+    "disjoint": [
+      [
+        "P",
+        "Q"
+      ]
+    ]
+  },
+  "caption": "p⇒~q는 P∩Q=∅를 의미한다. 공통 영역이 없는 두 집합의 그림으로 ㄱ·ㄷ·ㄹ의 참을 확인한다.",
+  "accessibilityDescription": "전체집합 U 안에 서로 떨어진 두 원 P와 Q가 있고 겹치는 영역이 없다. 원소와 색칠은 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "P6-1",
+      "condition": "명제 p⇒~q가 참이면 P∩Q=∅",
+      "mappedTo": "diagram.disjoint"
+    },
+    {
+      "id": "P6-2",
+      "condition": "그에 따라 보기 ㄱ,ㄷ,ㄹ이 참",
+      "mappedTo": "caption"
+    }
+  ],
+  "newVisualInformation": [
+    "p와 q가 동시에 참일 수 없는 서로소 관계를 색칠 없이 나타낸다."
+  ]
+}

@@ -1,0 +1,173 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "-3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Y",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "N",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "-3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "-4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 650,
+    "height": 530
+  },
+  "displayPoints": [
+    "P",
+    "X",
+    "Y",
+    "N",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "px",
+      "refs": [
+        "P",
+        "X"
+      ]
+    },
+    {
+      "id": "py",
+      "refs": [
+        "P",
+        "Y"
+      ]
+    },
+    {
+      "id": "po",
+      "refs": [
+        "P",
+        "N"
+      ]
+    },
+    {
+      "id": "pd",
+      "refs": [
+        "P",
+        "D"
+      ]
+    }
+  ],
+  "coordinateLabels": [
+    "P",
+    "X",
+    "Y",
+    "N",
+    "D"
+  ],
+  "caption": "점 P(-4,3)을 x축·y축·원점·직선 y=x에 각각 대칭이동한 네 점의 위치를 좌표평면에서 비교한다.",
+  "accessibilityDescription": "왼쪽 위 P(-4,3)에서 x축 대칭 (-4,-3), y축 대칭 (4,3), 원점 대칭 (4,-3), y=x 대칭 (3,-4)으로 각각 선분이 이어진 좌표평면.",
+  "sourceConditions": [
+    {
+      "id": "T3-1",
+      "condition": "P=(-4,3), x축 대칭 X=(-4,-3), y축 대칭 Y=(4,3)",
+      "mappedTo": "mathPlan.nodes[P,X,Y]"
+    },
+    {
+      "id": "T3-2",
+      "condition": "원점 대칭 N=(4,-3), y=x 대칭 D=(3,-4)",
+      "mappedTo": "mathPlan.nodes[N,D]"
+    }
+  ],
+  "newVisualInformation": [
+    "대칭 기준별 부호와 좌표 교환의 차이를 한 좌표평면에 나타낸다."
+  ]
+}

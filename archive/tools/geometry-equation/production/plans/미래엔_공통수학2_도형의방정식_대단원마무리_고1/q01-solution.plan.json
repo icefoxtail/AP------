@@ -1,0 +1,147 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-1"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "-1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "11",
+              "denominator": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "11",
+              "denominator": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "P",
+    "Q"
+  ],
+  "displaySegments": [
+    {
+      "id": "AQ",
+      "refs": [
+        "A",
+        "Q"
+      ]
+    },
+    {
+      "id": "QP",
+      "refs": [
+        "Q",
+        "P"
+      ]
+    },
+    {
+      "id": "PB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    }
+  ],
+  "coordinateLabels": [
+    "A",
+    "B",
+    "P",
+    "Q"
+  ],
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 450
+  },
+  "caption": "A(-1,4), B(3,-1)를 잇는 선분에서 x축 위 P는 AP:PB=4:1, y축 위 Q는 AQ:QB=1:3으로 내분한다.",
+  "accessibilityDescription": "좌표평면에서 A와 B를 잇는 기울기 음수의 선분 위에 y축 위 Q(0,11/4)와 x축 위 P(11/5,0)가 차례대로 놓인다.",
+  "sourceConditions": [
+    {
+      "id": "G1",
+      "condition": "A(-1,4), B(a,b); 4:1 내분점의 y=0 → b=-1, 1:3 내분점의 x=0 → a=3",
+      "mappedTo": "mathPlan.nodes[A,B]"
+    },
+    {
+      "id": "G2",
+      "condition": "4:1의 P=(11/5,0), 1:3의 Q=(0,11/4)",
+      "mappedTo": "mathPlan.nodes[P,Q] 및 displaySegments[AQ,QP,PB]"
+    }
+  ],
+  "newVisualInformation": [
+    "두 비율로 나눈 내분점이 같은 선분 위에서 각 좌표축에 놓이는 실제 순서를 보인다."
+  ]
+}

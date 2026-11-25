@@ -1,0 +1,56 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "axisVariable": false,
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "P",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "1",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "color": "BLUE"
+      },
+      {
+        "kind": "SET",
+        "label": "Q",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-3",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "0",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "color": "WARM"
+      }
+    ]
+  },
+  "caption": "첫째 조건 p는 x≤1, q는 −3≤x≤0이므로 Q⊂P다. 따라서 p는 q의 필요조건이고 충분조건은 아니다. 둘째·셋째 조건은 원문의 대수 관계로 판정한다.",
+  "accessibilityDescription": "같은 눈금을 공유하는 두 수직선에서 P는 음의 무한대부터 1까지, Q는 -3부터 0까지 모두 닫힌 끝점으로 표시돼 Q가 P 안에 포함된다.",
+  "sourceConditions": [
+    {
+      "id": "P4-1",
+      "condition": "p:x≤1, q:−3≤x≤0, 진리집합 Q⊂P",
+      "mappedTo": "numberLine.rows[0,1]"
+    },
+    {
+      "id": "P4-2",
+      "condition": "추가 문항 (p:a=b → q:a²=b², p:|x|≤1 ↔ q:−1≤x≤1)은 텍스트로 판정",
+      "mappedTo": "caption"
+    }
+  ],
+  "newVisualInformation": [
+    "첫째 보기의 두 진리집합의 포함 관계를 수직선의 동일 눈금에서 비교한다."
+  ]
+}

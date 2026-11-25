@@ -1,0 +1,165 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "-1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "8",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "4",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 650,
+    "height": 530
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "H"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "CH",
+      "refs": [
+        "C",
+        "H"
+      ],
+      "emphasis": "BOLD"
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rH",
+      "refs": [
+        "C",
+        "H",
+        "B"
+      ]
+    }
+  ],
+  "coordinateLabels": [
+    "A",
+    "B",
+    "C",
+    "H"
+  ],
+  "caption": "A(2,1), B(-2,-1), C(1,2)의 삼각형에서 AB에 내린 높이 CH를 표시한다. 발 H=(8/5,4/5), CH=3/√5, 넓이는 3이다.",
+  "accessibilityDescription": "좌표평면의 세 점 A(2,1), B(-2,-1), C(1,2)로 이루어진 삼각형. 변 AB 위 H(8/5,4/5)에 C에서 내린 수선 CH와 직각 표식이 있다.",
+  "sourceConditions": [
+    {
+      "id": "T8-1",
+      "condition": "A=(2,1), B=(-2,-1), C=(1,2)",
+      "mappedTo": "mathPlan.nodes[A,B,C],displaySegments[AB,BC,CA]"
+    },
+    {
+      "id": "T8-2",
+      "condition": "AB 방향 (4,2); H=(8/5,4/5), CH ⟂ AB, 넓이 3",
+      "mappedTo": "mathPlan.nodes[H],displaySegments[CH],rightAngles[rH]"
+    }
+  ],
+  "newVisualInformation": [
+    "두 대칭이동으로 얻은 세 꼭짓점, 밑변·높이·직각을 1:1 표시한다."
+  ]
+}
