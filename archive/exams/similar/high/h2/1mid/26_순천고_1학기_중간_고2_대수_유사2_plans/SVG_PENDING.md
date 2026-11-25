@@ -8,3 +8,15 @@
 - 해설용 나머지 21건: EXEMPT, 수식 판서만으로 완결
 - 실제 SVG 렌더·PNG 육안 검사·학생용 그림 게시: 전부 NOT_RUN
 - 존재하지 않는 SVG 경로는 JS에서 참조하지 않음
+
+## 공식 SVG 엔진 제작·검수·JS 연결 완료 (2026-11-25)
+
+- 전체 `plan-lint.cjs`(NotoSansKR.ttf 포함): **2/2 OK**
+- 공식 `render-plan.mjs`: **2/2 ARCHIVE_BOUND**
+- `assertSvgStudentLanguage`: **2/2 PASS**
+- PNG 실물 육안 검수: **2/2 PASS**
+
+| 문항 | 축 | 엔진 결과 | 크기 | PNG 검수 | 연결된 JS 경로 |
+| --- | --- | --- | --- | --- | --- |
+| Q05 | solution | `ARCHIVE_BOUND` | medium | PASS | `assets/images/26_순천고_1학기_중간_고2_대수_유사2/q05-solution.svg` |
+| Q15 | solution | `ARCHIVE_BOUND` | full | PASS | `assets/images/26_순천고_1학기_중간_고2_대수_유사2/q15-solution.svg` |
