@@ -1,0 +1,132 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "X",
+        "elements": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "X",
+        "elements": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 4
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 3
+        },
+        "to": {
+          "column": 1,
+          "element": 5
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 4
+        },
+        "to": {
+          "column": 1,
+          "element": 3
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 5
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      }
+    ],
+    "arrowGroups": [
+      {
+        "name": "f",
+        "from": "X",
+        "to": "Y",
+        "color": "BLUE"
+      }
+    ],
+    "highlight": {
+      "arrows": [
+        0,
+        4,
+        3,
+        5,
+        1
+      ]
+    }
+  },
+  "caption": "f(x)=5x를 7로 나눈 나머지의 전체 대응은 1→5→4→6→2→3→1이다. 강조한 다섯 화살표를 차례로 따라 f⁴(1)=2와 f⁵(1)=3을 읽는다. 주기가 6이므로 f¹⁶(1)=2, f¹⁷(1)=3이다.",
+  "accessibilityDescription": "집합 X의 여섯 원소 사이에 1에서 5, 5에서 4, 4에서 6, 6에서 2, 2에서 3, 3에서 1로 대응하는 화살표가 있고 다섯 단계가 강조되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "HC3-10-1",
+      "condition": "X={1,…,6}, f(x)=5x mod7",
+      "mappedTo": [
+        "diagram.columns",
+        "diagram.arrows"
+      ]
+    },
+    {
+      "id": "HC3-10-2",
+      "condition": "1에서 시작하는 길이 6 순환의 4·5번째 값",
+      "mappedTo": "diagram.highlight.arrows"
+    }
+  ],
+  "newVisualInformation": [
+    "여섯 화살표의 완전한 대응",
+    "두 합성지수의 나머지 4·5에 해당하는 경로"
+  ]
+}

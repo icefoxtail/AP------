@@ -1,0 +1,110 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -1,
+      9,
+      -1,
+      9
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "2",
+        "4"
+      ],
+      "y": [
+        "1",
+        "2",
+        "4"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "SQRT",
+        "radicand": [
+          "1",
+          "2"
+        ],
+        "offset": "1",
+        "domain": [
+          "-1/2",
+          "9"
+        ],
+        "color": "BLUE",
+        "label": "y=sqrt(2x+1)+1"
+      },
+      {
+        "id": "finv",
+      "kind": "Y_OF_X",
+      "coefficients": ["0", "-1", "1/2"],
+      "domain": ["1", "6"],
+        "color": "WARM",
+        "label": "y=f^(-1)(x)"
+      },
+      {
+        "id": "diag",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-1",
+          "9"
+        ],
+        "style": "DASHED",
+        "color": "GREEN",
+        "label": "y=x"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "0",
+          "y": "2",
+          "unnamed": true,
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "2",
+          "y": "0",
+          "unnamed": true,
+          "coordinates": true
+        },
+        {
+          "id": "T",
+          "x": "4",
+          "y": "4",
+          "unnamed": true,
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "f(x)=√(2x+1)+1과 역함수 그래프는 y=x를 기준으로 대칭이다. (0,2)와 (2,0)은 서로 대응하고, 두 그래프는 (4,4)에서 만난다.",
+  "accessibilityDescription": "제곱근함수와 역함수 곡선이 y=x 점선을 기준으로 서로 대칭이며 (0,2), (2,0), (4,4)가 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "HC3-11-1",
+      "condition": "f⁻¹(2)=0이므로 f(0)=2",
+      "mappedTo": "graphPlan.overlays.points"
+    },
+    {
+      "id": "HC3-11-2",
+      "condition": "두 그래프의 교점 (4,4), a=1, b=1",
+      "mappedTo": [
+        "graphPlan.curves",
+        "graphPlan.overlays.points"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "역함수 대응점 0↔2",
+    "공통 교점 (4,4)"
+  ]
+}

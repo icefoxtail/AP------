@@ -1,0 +1,15 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [{"id":"P"},{"id":"Q"},{"id":"R"}],
+    "subset": ["P","Q","R"]
+  },
+  "caption": "P−Q=∅에서 P⊆Q, Qᶜ∪R=U에서 Q⊆R이므로 P⊆Q⊆R이다. 포함관계가 대우 명제 ∼r→∼p를 설명한다.",
+  "accessibilityDescription": "전체집합 안에 P가 Q에 포함되고 Q가 R에 포함되는 세 개의 중첩된 집합 경계가 보인다.",
+  "sourceConditions": [
+    {"id":"HC3-06-1","condition":"P−Q=∅이므로 P⊆Q","mappedTo":"diagram.subset"},
+    {"id":"HC3-06-2","condition":"Qᶜ∪R=U이므로 Q⊆R","mappedTo":"diagram.subset"}
+  ],
+  "newVisualInformation": ["두 포함관계가 동시에 성립하는 중첩 구조"]
+}

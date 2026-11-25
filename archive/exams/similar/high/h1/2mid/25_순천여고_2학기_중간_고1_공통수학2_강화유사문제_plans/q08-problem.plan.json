@@ -1,0 +1,209 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "-6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 680,
+    "height": 500
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "P"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAP",
+      "refs": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "sPB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "eLeg",
+        "count": 1,
+        "segments": [
+          "sAC",
+          "sBC"
+        ]
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dAB",
+        "from": "A",
+        "to": "B",
+        "label": "10",
+        "unit": "m",
+        "side": "ABOVE"
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "area",
+        "at": [
+          5,
+          -3
+        ],
+        "text": "넓이 30m²",
+        "labelKind": "TEXT"
+      },
+      {
+        "id": "ratio",
+        "at": "P",
+        "text": "AP:PB=3:2",
+        "labelKind": "TEXT",
+        "anchor": "S"
+      }
+    ]
+  },
+  "caption": "원본 도식의 등변 삼각형에서 AB=10m, AC=BC, 넓이 30m², AP:PB=3:2를 표기한다. 좌표 A=(0,0), B=(10,0), C=(5,−6)은 조건을 만족하는 대표 배치이며 CP의 길이는 드러내지 않는다.",
+  "accessibilityDescription": "위쪽 가로선 AB가 10m이고 P가 AP:PB=3:2로 나누며 아래쪽 꼭짓점 C로 뻗는 AC와 BC에 같은 길이 눈금이 있다. 삼각형 안에는 넓이 30제곱미터가 쓰였다.",
+  "sourceConditions": [
+    {
+      "id": "SCM-08-P1",
+      "condition": "AB=10m",
+      "mappedTo": [
+        "displaySegments",
+        "planeMarks.dimensions"
+      ]
+    },
+    {
+      "id": "SCM-08-P2",
+      "condition": "AC=BC",
+      "mappedTo": [
+        "displaySegments",
+        "planeMarks.equalLengths"
+      ]
+    },
+    {
+      "id": "SCM-08-P3",
+      "condition": "삼각형의 넓이 30m²",
+      "mappedTo": "planeMarks.textLabels"
+    },
+    {
+      "id": "SCM-08-P4",
+      "condition": "P는 AB를 AP:PB=3:2로 내분",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "planeMarks.textLabels"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본 도식의 길이·등변·넓이·내분비 네 표기 보존"
+  ]
+}

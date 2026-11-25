@@ -1,0 +1,53 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "universe": {
+      "name": "U",
+      "count": "60"
+    },
+    "sets": [
+      {
+        "id": "A",
+        "count": "32"
+      },
+      {
+        "id": "B",
+        "count": "27"
+      }
+    ],
+    "elements": [
+      {
+        "text": "공통10",
+        "in": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "text": "외부11",
+        "in": []
+      }
+    ]
+  },
+  "caption": "U의 원소가 60개이고 둘 다 속하지 않는 부분이 11개이므로 A∪B에는 49개가 있다. A는 32개, B는 27개여서 공통 부분이 10개이다. 숫자가 붙은 두 원은 영역 크기를 뜻하지 않는다.",
+  "accessibilityDescription": "전체집합 U의 수 60과 두 집합 A의 수 32, B의 수 27을 원 이름 옆에 적고 겹친 부분 10, 바깥 부분 11을 예시로 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "SCM-05-1",
+      "condition": "n(U)=60,n(A)=32,n(B)=27",
+      "mappedTo": [
+        "diagram.universe",
+        "diagram.sets"
+      ]
+    },
+    {
+      "id": "SCM-05-2",
+      "condition": "n(Aᶜ∩Bᶜ)=11, n(A∩B)=10",
+      "mappedTo": "diagram.elements"
+    }
+  ],
+  "newVisualInformation": [
+    "합집합 외부와 교집합의 원소 수 위치"
+  ]
+}

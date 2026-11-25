@@ -1,0 +1,57 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MEMBERSHIP_TABLE",
+    "sets": [
+      {
+        "id": "A"
+      },
+      {
+        "id": "B"
+      }
+    ],
+    "elements": [
+      {
+        "text": "0",
+        "in": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "text": "1",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "2",
+        "in": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "text": "{0}",
+        "in": [
+          "B"
+        ]
+      }
+    ]
+  },
+  "caption": "A={0,1,2}, B={0,2,{0}}로 원소 0과 집합 {0}은 다른 원소이다. {0}은 B에는 속하지만 A에는 속하지 않으므로 {{0}}⊆A는 거짓이다.",
+  "accessibilityDescription": "A와 B에 대해 0과 2는 양쪽에, 1은 A에만, 집합 {0}은 B에만 속함을 보여 주는 원소 소속 표이다.",
+  "sourceConditions": [
+    {
+      "id": "SCM-01-1",
+      "condition": "A={0,1,2}, B={0,2,{0}}",
+      "mappedTo": [
+        "diagram.sets",
+        "diagram.elements"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "숫자 0과 집합 {0}의 원소 소속 구별"
+  ]
+}

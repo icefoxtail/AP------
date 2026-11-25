@@ -1,0 +1,148 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "-2"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 680,
+    "height": 500
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "P"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAP",
+      "refs": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "sPB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    }
+  ],
+  "displayLines": [
+    "L"
+  ],
+  "displayCircles": [],
+  "coordinateLabels": [
+    "A",
+    "B"
+  ],
+  "caption": "직선 x+y=2 위의 점 P를 임의로 잡아 A(4,2), B(6,6)까지 두 선분을 나타낸 문제 조건 그림이다. P의 위치는 예시이며 최솟값 경로는 표시하지 않았다.",
+  "accessibilityDescription": "좌표평면에 A(4,2), B(6,6), 직선 x+y=2와 그 위의 예시점 P가 있으며 PA와 PB가 그려져 있다.",
+  "sourceConditions": [
+    {
+      "id": "SCM-06-P1",
+      "condition": "A(4,2),B(6,6)",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "coordinateLabels"
+      ]
+    },
+    {
+      "id": "SCM-06-P2",
+      "condition": "점 P는 직선 x+y=2 위에서 움직임, (1,1)은 예시 위치",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displayLines",
+        "displaySegments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "움직이는 점 P의 두 거리 경로를 문제 상태로 표현"
+  ]
+}

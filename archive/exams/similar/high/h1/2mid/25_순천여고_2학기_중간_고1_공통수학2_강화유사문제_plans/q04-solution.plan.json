@@ -1,0 +1,57 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "A-B"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "VENN",
+          "sets": [
+            {
+              "id": "A"
+            },
+            {
+              "id": "B"
+            }
+          ],
+          "shade": "A-B"
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "B-A"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "VENN",
+          "sets": [
+            {
+              "id": "A"
+            },
+            {
+              "id": "B"
+            }
+          ],
+          "shade": "B-A"
+        }
+      }
+    }
+  ],
+  "caption": "차집합 A−B와 B−A는 방향이 바뀌면 색칠되는 영역도 바뀐다. 따라서 A∩Bᶜ=A−B이고, 일반적으로 B−A와는 다르다.",
+  "accessibilityDescription": "좌우 두 벤다이어그램에서 왼쪽은 A에만 속하는 부분, 오른쪽은 B에만 속하는 부분을 각각 색칠해 대조한다.",
+  "sourceConditions": [
+    {
+      "id": "SCM-04-1",
+      "condition": "A∩Bᶜ=A−B, B−A는 다른 영역",
+      "mappedTo": "panels"
+    }
+  ],
+  "newVisualInformation": [
+    "A−B와 B−A의 서로 다른 영역"
+  ]
+}
