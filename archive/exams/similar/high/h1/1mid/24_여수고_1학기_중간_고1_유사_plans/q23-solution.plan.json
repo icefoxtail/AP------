@@ -1,0 +1,20 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": ["18", "-7", "1"],
+    "sourceDomain": {"kind":"INTERVAL","range":[0,3],"states":["CLOSED","CLOSED"]},
+    "domain": [0,3],
+    "viewport": [-1,4,-2,22],
+    "requiredPoints": [{"id":"M","x":0,"y":18},{"id":"m","x":3,"y":6}],
+    "axisTickValues": {"x":["3"],"y":["6","18"]}
+  },
+  "sourceQuote": "a=7/2, 0≤x≤3에서 f(x)=x²−2ax+b의 최댓값 M, 최솟값 m에 대해 M=3m일 때 2a+b는?",
+  "caption": "b=18을 대입한 해설 그래프이며 닫힌 구간 [0,3]은 꼭짓점 x=7/2의 왼쪽이므로 감소하고 양끝 높이는 M=18,m=6이다.",
+  "accessibilityDescription": "포물선 y=x²-7x+18의 x=0부터 x=3까지는 감소하는 호이고, 왼쪽 끝 (0,18)에서 최댓값, 오른쪽 끝 (3,6)에서 최솟값을 갖는다.",
+  "sourceConditions": [
+    {"id":"Y23-1","condition":"a=7/2 ⇒ f=x²−7x+b, 꼭짓점 x=7/2는 구간 [0,3] 밖","mappedTo":"graphPlan.coefficients,sourceDomain,domain"},
+    {"id":"Y23-2","condition":"M=b, m=b−12, M=3m ⇒ b=18","mappedTo":"graphPlan.coefficients[0],requiredPoints[M,m],axisTickValues"}
+  ],
+  "newVisualInformation": ["꼭짓점이 정의역 밖에 있어 끝점 함수값만으로 최댓값과 최솟값을 비교함을 보여 준다."]
+}

@@ -1,0 +1,21 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-1, 5, -5, 8],
+    "curves": [
+      {"id": "f", "kind": "Y_OF_X", "coefficients": ["1", "-4", "1"], "domain": ["-1", "5"], "label": "y=x^2-4x+1", "color": "BLUE"},
+      {"id": "tangent", "kind": "LINE", "coefficients": ["-3", "0"], "domain": ["-1", "5"], "label": "y=-3", "style": "DASHED", "color": "WARM"}
+    ],
+    "overlays": {"points": [{"id": "V", "x": "2", "y": "-3"}]},
+    "axisTickValues": {"x": ["2"], "y": ["-3"]}
+  },
+  "sourceQuote": "이차함수 y=x^2-4x+1의 그래프와 직선 y=k가 만나지 않도록 하는 모든 실수 k의 값의 범위는?",
+  "caption": "포물선의 꼭짓점 (2,-3)에서 접하는 경계 직선 y=-3을 점선으로 표시한다. 교점이 없는 y=k는 이 직선 아래에 있어 k<-3이다.",
+  "accessibilityDescription": "위로 열린 포물선 y=x²-4x+1이 (2,-3)에서 수평 점선 y=-3에 접한다. 그보다 아래쪽의 수평선은 포물선과 만나지 않는다.",
+  "sourceConditions": [
+    {"id":"Y02-1","condition":"y=x²−4x+1=(x−2)²−3","mappedTo":"graphPlan.curves[f].coefficients; graphPlan.overlays.points[V]"},
+    {"id":"Y02-2","condition":"경계 높이 y=−3은 접선, 교점이 없으려면 k<−3","mappedTo":"graphPlan.curves[tangent].coefficients/style and axisTickValues.y"}
+  ],
+  "newVisualInformation": ["접함과 만나지 않음의 경계가 포물선의 최솟값 -3임을 같은 좌표축에서 확인한다."]
+}
