@@ -1,0 +1,68 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "REGULAR_POLYHEDRON",
+      "faces": 4,
+      "side": 4,
+      "names": "BCDA",
+      "points": [
+        {
+          "id": "P",
+          "at": {
+            "centroid": [
+              "A",
+              "B",
+              "C"
+            ]
+          }
+        },
+        {
+          "id": "Q",
+          "at": {
+            "centroid": [
+              "A",
+              "C",
+              "D"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "caption": "사면체 ABCD의 면 ABC 무게중심 P와 면 ACD 무게중심 Q",
+  "accessibilityDescription": "사면체 ABCD의 면 ABC 무게중심 P와 면 ACD 무게중심 Q. 서로 다른 두 면 위의 무게중심 P와 Q. 원문에 없는 중선·PQ선은 추가하지 않음.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "사면체 ABCD의 네 꼭짓점과 모서리",
+      "mappedTo": [
+        "solids[0].kind",
+        "solids[0].names"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "P는 삼각형 ABC의 무게중심",
+      "mappedTo": [
+        "solids[0].points[0]"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "Q는 삼각형 ACD의 무게중심",
+      "mappedTo": [
+        "solids[0].points[1]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "서로 다른 두 면 위의 무게중심 P와 Q",
+    "원문에 없는 중선·PQ선은 추가하지 않음"
+  ],
+  "solidCaption": {
+    "text": "사면체"
+  },
+  "sourceQuote": "[그림: 사면체 $ABCD$에서 면 $ABC$의 무게중심 $P$, 면 $ACD$의 무게중심 $Q$]"
+}

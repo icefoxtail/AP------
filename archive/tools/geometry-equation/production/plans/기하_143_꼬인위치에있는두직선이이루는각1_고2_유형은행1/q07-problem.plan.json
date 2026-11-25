@@ -1,0 +1,60 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PRISM",
+      "base": {
+        "kind": "REGULAR",
+        "n": 3,
+        "side": 1.4142135623730951
+      },
+      "height": 1,
+      "names": "DEFABC"
+    }
+  ],
+  "dims": [
+    {
+      "edge": "AB",
+      "label": "\\sqrt{2}"
+    },
+    {
+      "edge": "AD"
+    }
+  ],
+  "caption": "밑변 √2, 직기둥 높이 1인 삼각기둥 ABC-DEF",
+  "accessibilityDescription": "밑변 √2, 직기둥 높이 1인 삼각기둥 ABC-DEF. 정삼각형 √2 모서리·높이 1 표시. 요구한 cos θ 값은 숨김.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "밑면 두 개는 한 변 √2인 정삼각형",
+      "mappedTo": [
+        "solids[0].base",
+        "dims[0]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "수직 옆모서리 AD=BE=CF=1",
+      "mappedTo": [
+        "solids[0].height",
+        "dims[1]"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "대응 꼭짓점 ABC-DEF",
+      "mappedTo": [
+        "solids[0].names"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "정삼각형 √2 모서리·높이 1 표시",
+    "요구한 cos θ 값은 숨김"
+  ],
+  "solidCaption": {
+    "text": "정삼각기둥"
+  },
+  "sourceQuote": "[그림: 밑면 $\\triangle ABC, \\triangle DEF$는 한 변의 길이가 $\\sqrt{2}$인 정삼각형이고 높이 $AD=BE=CF=1$인 삼각기둥 $ABC-DEF$]"
+}

@@ -1,0 +1,100 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PYRAMID",
+      "base": {
+        "kind": "RECT",
+        "width": 6,
+        "depth": 6
+      },
+      "height": 4.242640687119285,
+      "names": "BCDEA",
+      "points": [
+        {
+          "id": "P",
+          "at": {
+            "divide": [
+              "C",
+              "D"
+            ],
+            "ratio": "1:2"
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "A",
+      "to": "P",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "B",
+      "to": "D",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "dims": [
+    {
+      "edge": "BC"
+    },
+    {
+      "edge": "AB",
+      "label": "6"
+    }
+  ],
+  "caption": "모든 모서리 6인 정사각뿔 A-BCDE, CD의 1:2 내분점 P, AP와 BD",
+  "accessibilityDescription": "모든 모서리 6인 정사각뿔 A-BCDE, CD의 1:2 내분점 P, AP와 BD. 정사각뿔의 실제 높이 3√2에 해당하는 모서리 비. P·AP·BD를 원문대로 구성.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "밑면 정사각형 BCDE의 한 변 길이 6",
+      "mappedTo": [
+        "solids[0].base",
+        "dims[0]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "꼭짓점 A의 네 옆모서리도 모두 6",
+      "mappedTo": [
+        "solids[0].height",
+        "dims[1]"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "P는 CD를 1:2 내분",
+      "mappedTo": [
+        "solids[0].points[0]"
+      ]
+    },
+    {
+      "id": "c4",
+      "condition": "선분 AP 표시",
+      "mappedTo": [
+        "segments[0]"
+      ]
+    },
+    {
+      "id": "c5",
+      "condition": "밑면 대각선 BD 표시",
+      "mappedTo": [
+        "segments[1]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "정사각뿔의 실제 높이 3√2에 해당하는 모서리 비",
+    "P·AP·BD를 원문대로 구성"
+  ],
+  "solidCaption": {
+    "text": "정사각뿔"
+  },
+  "sourceQuote": "[그림: 밑면 BCDE는 한 변의 길이가 6인 정사각형이고 옆면의 모서리 길이가 모두 6인 정사각뿔 A-BCDE에서, 밑면의 모서리 CD를 1:2로 내분하는 점 P, 꼭짓점 A와 점 P를 이은 선분 AP, 밑면의 대각선 BD가 표시되어 있다.]"
+}

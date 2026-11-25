@@ -1,0 +1,88 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 2,
+        "depth": 2
+      },
+      "height": 2,
+      "names": "EFGHABCD",
+      "points": [
+        {
+          "id": "M",
+          "at": {
+            "midpoint": [
+              "A",
+              "C"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "M",
+      "to": "F",
+      "style": "DASHED",
+      "role": "REF"
+    }
+  ],
+  "dims": [
+    {
+      "edge": "EF"
+    },
+    {
+      "edge": "FG"
+    },
+    {
+      "edge": "CG"
+    }
+  ],
+  "caption": "EF=FG=CG=2인 직육면체에서 윗면 AC의 중점 M과 F를 이은 MF",
+  "accessibilityDescription": "EF=FG=CG=2인 직육면체에서 윗면 AC의 중점 M과 F를 이은 MF. 상면 중점 M 및 MF. M′ 등의 해설용 보조점은 표시하지 않음.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "밑면 EFGH는 한 변의 길이 2인 정사각형",
+      "mappedTo": [
+        "solids[0].base",
+        "dims[0]",
+        "dims[1]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "높이 CG는 2",
+      "mappedTo": [
+        "dims[2]"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "M은 윗면 AC의 중점",
+      "mappedTo": [
+        "solids[0].points[0]"
+      ]
+    },
+    {
+      "id": "c4",
+      "condition": "선분 MF가 그림에 표시",
+      "mappedTo": [
+        "segments[0]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "상면 중점 M 및 MF",
+    "M′ 등의 해설용 보조점은 표시하지 않음"
+  ],
+  "solidCaption": {
+    "text": "정육면체"
+  },
+  "sourceQuote": "[그림: 밑면 $EFGH$가 한 변의 길이 $2$인 정사각형이고 높이 $CG=2$인 직육면체 $ABCD-EFGH$에서 위 밑면의 대각선 $AC$의 중점 $M$과 아래 밑면의 꼭짓점 $F$를 잇는 선분 $MF$]"
+}

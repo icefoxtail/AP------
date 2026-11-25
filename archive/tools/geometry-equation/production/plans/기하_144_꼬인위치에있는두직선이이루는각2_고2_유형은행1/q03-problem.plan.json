@@ -1,0 +1,87 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 2,
+        "depth": 2
+      },
+      "height": 2,
+      "names": "EFGHABCD",
+      "points": [
+        {
+          "id": "M",
+          "at": {
+            "midpoint": [
+              "D",
+              "H"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "B",
+      "to": "M",
+      "style": "DASHED",
+      "role": "REF"
+    },
+    {
+      "from": "D",
+      "to": "F",
+      "style": "DASHED",
+      "role": "REF"
+    }
+  ],
+  "dims": [
+    {
+      "edge": "AB"
+    }
+  ],
+  "caption": "모서리 2인 정육면체에서 DH 중점 M, 선분 BM 및 내부 대각선 DF",
+  "accessibilityDescription": "모서리 2인 정육면체에서 DH 중점 M, 선분 BM 및 내부 대각선 DF. M·BM·DF 실제 입력 필드. 입체 내부 가림 대각선은 점선.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "정육면체 한 모서리 길이 2",
+      "mappedTo": [
+        "solids[0].base",
+        "dims[0]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "M은 모서리 DH의 중점",
+      "mappedTo": [
+        "solids[0].points[0]"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "선분 BM 표시",
+      "mappedTo": [
+        "segments[0]"
+      ]
+    },
+    {
+      "id": "c4",
+      "condition": "입체 내부 대각선 DF 표시",
+      "mappedTo": [
+        "segments[1]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "M·BM·DF 실제 입력 필드",
+    "입체 내부 가림 대각선은 점선"
+  ],
+  "solidCaption": {
+    "text": "정육면체"
+  },
+  "sourceQuote": "[그림: 한 모서리의 길이가 2인 정육면체 ABCD-EFGH에서 모서리 DH의 중점 M, 점 B와 점 M을 이은 선분 BM, 정육면체의 대각선 DF가 표시되어 있다.]"
+}

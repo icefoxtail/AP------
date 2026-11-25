@@ -1,0 +1,44 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PRISM",
+      "base": {
+        "kind": "REGULAR",
+        "n": 3,
+        "side": 2
+      },
+      "height": 2,
+      "names": "DEFABC"
+    }
+  ],
+  "caption": "밑면이 정삼각형이고 높이가 밑변과 같아 옆면이 모두 정사각형인 직삼각기둥",
+  "accessibilityDescription": "밑면이 정삼각형이고 높이가 밑변과 같아 옆면이 모두 정사각형인 직삼각기둥. 세 정사각 옆면과 두 정삼각 밑면. α·β의 계산된 각도 값은 표시하지 않음.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 밑면 ABC,DEF는 정삼각형",
+      "mappedTo": [
+        "solids[0].base",
+        "solids[0].names"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "각 옆면은 정사각형이어서 높이가 밑변과 동일",
+      "mappedTo": [
+        "solids[0].height",
+        "solids[0].base.side"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "세 정사각 옆면과 두 정삼각 밑면",
+    "α·β의 계산된 각도 값은 표시하지 않음"
+  ],
+  "solidCaption": {
+    "text": "정삼각기둥"
+  },
+  "sourceQuote": "[그림: 밑면이 정삼각형이고 옆면이 모두 정사각형인 삼각기둥 $ABC-DEF$]"
+}
