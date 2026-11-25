@@ -1,0 +1,73 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conics": [
+    {
+      "id": "e",
+      "kind": "ELLIPSE",
+      "center": [
+        "0",
+        "0"
+      ],
+      "aSquared": "25",
+      "bSquared": "9",
+      "major": "X"
+    },
+    {
+      "id": "c",
+      "kind": "CIRCLE",
+      "center": [
+        "8",
+        "5"
+      ],
+      "rSquared": "4"
+    }
+  ],
+  "points": [
+    {
+      "id": "F",
+      "kind": "FOCUS",
+      "side": 1,
+      "curve": "e"
+    },
+    {
+      "id": "F'",
+      "kind": "FOCUS",
+      "side": -1,
+      "curve": "e"
+    },
+    {
+      "id": "C",
+      "kind": "POINT",
+      "x": "8",
+      "y": "5"
+    }
+  ],
+  "lines": [],
+  "segments": [
+    {
+      "id": "sCFp",
+      "from": "C",
+      "to": "F'",
+      "label": "13"
+    }
+  ],
+  "polygons": [],
+  "caption": "Q15 해설 관계도",
+  "accessibilityDescription": "해설에 쓰이는 이차곡선과 점, 선분의 위치 관계를 나타낸 그림이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "타원의 거리합과 삼각부등식 최단 경로",
+      "mappedTo": [
+        "conics",
+        "points",
+        "lines",
+        "segments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "반대 초점 F′에서 원 중심 C까지 직선거리로 최솟값을 만드는 경로를 보인다."
+  ],
+  "sourceQuote": "타원 $\\dfrac{x^2}{25}+\\dfrac{y^2}{9}=1$의 양의 $x$축 쪽 초점을 $F$라 한다. 중심이 $C(8,t)$, 반지름이 $2$인 원 위의 점 $Q$와 타원 위의 점 $P$에 대하여 $PQ-PF$의 최솟값이 $1$이다. 양수 $"
+}

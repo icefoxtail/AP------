@@ -1,0 +1,67 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "PARABOLA",
+    "vertex": [
+      "0",
+      "0"
+    ],
+    "p": "4",
+    "axis": "Y"
+  },
+  "points": [
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    },
+    {
+      "id": "A",
+      "kind": "FOCUS"
+    },
+    {
+      "id": "B",
+      "kind": "POINT",
+      "x": "-3",
+      "y": "8"
+    }
+  ],
+  "lines": [
+    {
+      "id": "d",
+      "role": "DIRECTRIX"
+    }
+  ],
+  "segments": [
+    {
+      "id": "sAB",
+      "from": "A",
+      "to": "B",
+      "label": "5"
+    },
+    {
+      "id": "sOA",
+      "from": "O",
+      "to": "A",
+      "label": "4"
+    }
+  ],
+  "polygons": [],
+  "caption": "Q19 발문 관계도",
+  "accessibilityDescription": "발문에서 주어진 이차곡선과 점, 선분의 위치 관계를 나타낸 그림이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "항구 $O$를 꼭짓점, 기지국 $A$를 초점으로 하는 포물선 모양의 도로가 있다. $O$는 원점이고 $A$는 $y$축의 양의 부분에 있다. 공장 $B$에서 도로 위 저장시설 $P$를 거쳐 $A$로 연결하는 경로의 총길이 $BP+PA$를 최소화하려고 한다. 다음 조건에서 포물선의 방정식, 최적의 $P$의 좌표, 최소 경로 길이를 구하고 그 이유를 서술하시오. (9점)\n(가) $OA=4$, $AB=5$이고 $B$는 $A$보다 위쪽의 제2사분면에 있다.\n(나) 직선 $AB$와 $x$축의 음의 방향이 이루는 예각 $\\theta$에 대하여 $\\cos\\theta=\\dfrac35$이다.",
+      "mappedTo": [
+        "conic",
+        "points",
+        "lines",
+        "segments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "위로 열린 포물선에서 공장 B·초점 A·준선이 이루는 경로를 살핀다."
+  ],
+  "sourceQuote": "항구 $O$를 꼭짓점, 기지국 $A$를 초점으로 하는 포물선 모양의 도로가 있다. $O$는 원점이고 $A$는 $y$축의 양의 부분에 있다. 공장 $B$에서 도로 위 저장시설 $P$를 거쳐 $A$로 연결하는 경로의 총길이 $BP+PA$를 최소화하려고 한"
+}

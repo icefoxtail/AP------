@@ -1,0 +1,53 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 2,
+        "depth": 2
+      },
+      "height": 2,
+      "names": "ABCDEFGH"
+    }
+  ],
+  "segments": [
+    {
+      "from": "A",
+      "to": "G",
+      "role": "ACCENT",
+      "style": "AUTO"
+    },
+    {
+      "from": "B",
+      "to": "H",
+      "role": "REF",
+      "style": "AUTO"
+    },
+    {
+      "from": "A",
+      "to": "B",
+      "style": "AUTO"
+    }
+  ],
+  "solidCaption": {
+    "text": "공간대각선과 좌표 방향"
+  },
+  "caption": "Q09 해설 관계도",
+  "accessibilityDescription": "입체도형의 꼭짓점, 공간 선분과 각의 관계를 보여 주는 예시 그림이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "꼭짓점 좌표와 방향벡터 내적",
+      "mappedTo": [
+        "segments",
+        "solids"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 공간대각선의 방향벡터에 각각 양·음 좌표 성분이 있음을 확인한다."
+  ],
+  "sourceQuote": "한 모서리의 길이가 $2$인 정육면체 $ABCD-EFGH$에서 $A(0,0,0)$, $B(2,0,0)$, $D(0,2,0)$, $E(0,0,2)$이고 $C,F,G,H$는 각각 이에 대응하는 나머지 꼭짓점이다. 두 직선 $AG$, $BH$가 이루는 예각"
+}

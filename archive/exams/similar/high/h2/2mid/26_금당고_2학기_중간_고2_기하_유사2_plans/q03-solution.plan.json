@@ -1,0 +1,56 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "PARABOLA",
+    "vertex": [
+      "2",
+      "0"
+    ],
+    "p": "3",
+    "axis": "X"
+  },
+  "points": [
+    {
+      "id": "V",
+      "kind": "VERTEX"
+    },
+    {
+      "id": "F",
+      "kind": "FOCUS"
+    }
+  ],
+  "lines": [
+    {
+      "id": "d",
+      "role": "DIRECTRIX",
+      "label": "d"
+    }
+  ],
+  "segments": [
+    {
+      "id": "sVF",
+      "from": "V",
+      "to": "F",
+      "label": "3"
+    }
+  ],
+  "polygons": [],
+  "caption": "Q03 해설 관계도",
+  "accessibilityDescription": "해설에 쓰이는 이차곡선과 점, 선분의 위치 관계를 나타낸 그림이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "포물선의 꼭짓점은 초점과 준선의 중간",
+      "mappedTo": [
+        "conic",
+        "points",
+        "lines",
+        "segments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "초점과 준선 사이 중앙에 꼭짓점이 놓이는 이유를 그림에서 확인할 수 있다."
+  ],
+  "sourceQuote": "포물선의 초점이 $F(5,0)$이고 준선이 $x=-1$이다. 이 포물선의 꼭짓점에서 초점까지의 거리는? [3.6점]"
+}

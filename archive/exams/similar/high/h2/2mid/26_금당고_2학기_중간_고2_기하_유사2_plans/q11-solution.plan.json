@@ -1,0 +1,76 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "PARABOLA",
+    "vertex": [
+      "0",
+      "0"
+    ],
+    "p": "2",
+    "axis": "Y"
+  },
+  "points": [
+    {
+      "id": "A",
+      "kind": "ON_CONIC",
+      "x": "-4*sqrt(3)"
+    },
+    {
+      "id": "B",
+      "kind": "ON_CONIC",
+      "x": "0"
+    },
+    {
+      "id": "C",
+      "kind": "ON_CONIC",
+      "x": "4*sqrt(3)"
+    },
+    {
+      "id": "G",
+      "kind": "POINT",
+      "x": "0",
+      "y": "4"
+    },
+    {
+      "id": "F",
+      "kind": "FOCUS"
+    }
+  ],
+  "lines": [],
+  "segments": [
+    {
+      "id": "sAF",
+      "from": "A",
+      "to": "F"
+    },
+    {
+      "id": "sBF",
+      "from": "B",
+      "to": "F"
+    },
+    {
+      "id": "sCF",
+      "from": "C",
+      "to": "F"
+    }
+  ],
+  "polygons": [],
+  "caption": "Q11 해설 관계도",
+  "accessibilityDescription": "해설에 쓰이는 이차곡선과 점, 선분의 위치 관계를 나타낸 그림이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "초점-준선 등거리 및 무게중심 좌표합",
+      "mappedTo": [
+        "conic",
+        "points",
+        "lines",
+        "segments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "세 점의 y좌표합이 초점 거리합으로 바뀌는 과정을 준선·초점으로 연결한다."
+  ],
+  "sourceQuote": "포물선 $x^2=8y$의 초점을 $F$라 한다. 포물선 위의 서로 다른 세 점 $A,B,C$를 꼭짓점으로 하는 삼각형의 무게중심이 $G(0,4)$일 때, $AF+BF+CF$의 값은? [4.8점]"
+}
