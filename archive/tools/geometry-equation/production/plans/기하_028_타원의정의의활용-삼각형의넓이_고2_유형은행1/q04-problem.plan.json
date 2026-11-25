@@ -1,0 +1,147 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "ELLIPSE",
+    "center": [
+      "0",
+      "0"
+    ],
+    "aSquared": "16",
+    "bSquared": "8",
+    "major": "X"
+  },
+  "points": [
+    {
+      "id": "F",
+      "kind": "FOCUS",
+      "side": 1
+    },
+    {
+      "id": "F'",
+      "kind": "FOCUS",
+      "side": -1
+    },
+    {
+      "id": "C",
+      "kind": "VERTEX",
+      "side": -1
+    },
+    {
+      "id": "D",
+      "kind": "VERTEX",
+      "side": 1
+    },
+    {
+      "id": "A",
+      "kind": "ON_CONIC",
+      "x": "-2*sqrt(2)",
+      "branch": "POS"
+    },
+    {
+      "id": "B",
+      "kind": "ON_CONIC",
+      "x": "-2*sqrt(2)",
+      "branch": "NEG"
+    }
+  ],
+  "lines": [
+    {
+      "id": "l",
+      "x": "-2*sqrt(2)"
+    }
+  ],
+  "segments": [
+    {
+      "id": "sAC",
+      "from": "A",
+      "to": "C"
+    },
+    {
+      "id": "sCB",
+      "from": "C",
+      "to": "B"
+    },
+    {
+      "id": "sBD",
+      "from": "B",
+      "to": "D"
+    },
+    {
+      "id": "sDA",
+      "from": "D",
+      "to": "A"
+    },
+    {
+      "id": "sAB",
+      "from": "A",
+      "to": "B"
+    },
+    {
+      "id": "sCD",
+      "from": "C",
+      "to": "D"
+    }
+  ],
+  "polygons": [
+    {
+      "id": "quad",
+      "points": [
+        "A",
+        "C",
+        "B",
+        "D"
+      ],
+      "fill": "LIGHT"
+    }
+  ],
+  "caption": "타원의 음의 초점을 지나는 세로 현 AB와 두 꼭짓점 C·D가 이루는 사각형 ACBD",
+  "accessibilityDescription": "원점을 중심으로 오른쪽과 왼쪽에 두 초점과 두 꼭짓점이 있는 가로 긴 타원이다. 왼쪽 초점 F′를 지나는 수직선이 타원과 위쪽 A, 아래쪽 B에서 만나며, 양끝 꼭짓점 C와 D를 이어 사각형 ACBD를 만든다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문 타원 x²/a²+y²/8=1에서 a>√8, c²=a²−8. 실제 비례 도형의 한 예로 a=4, c=2√2를 택해 x²/16+y²/8=1을 사용한다. a,c의 특정 수치를 학생 화면에 쓰지 않는다.",
+      "mappedTo": [
+        "conic",
+        "F",
+        "F'",
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "A=(-2√2,2), B=(-2√2,-2)는 실제 타원과 직선 x=-c의 교점이다. C=(-4,0),D=(4,0)는 장축 꼭짓점이다.",
+      "mappedTo": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "l"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "대각선 AB=4와 CD=8은 직교하고 넓이 1/2·AB·CD=16이다. 일반 a에서 AB=16/a, CD=2a로 같은 면적이다. 미지 넓이 16은 그림에 노출하지 않는다.",
+      "mappedTo": [
+        "sAB",
+        "sCD",
+        "quad"
+      ]
+    },
+    {
+      "id": "c4",
+      "condition": "사각형은 A-C-B-D-A 순서로 변을 연결한다. ACBD가 자기교차하지 않고 AB,CD는 내부에서 직교한다.",
+      "mappedTo": [
+        "sAC",
+        "sCB",
+        "sBD",
+        "sDA",
+        "quad"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "대표변수 a=4를 선택하되 실제 그림에서 a,c 숫자는 표시하지 않고 원문 대칭·직교 조건을 보존",
+    "세로 현 AB, 수평 장축 CD와 사각형 ACBD의 네 외곽변을 구현"
+  ]
+}

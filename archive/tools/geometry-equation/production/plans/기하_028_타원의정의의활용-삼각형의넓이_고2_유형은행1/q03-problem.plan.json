@@ -1,0 +1,96 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "ELLIPSE",
+    "center": [
+      "0",
+      "0"
+    ],
+    "aSquared": "16",
+    "bSquared": "7",
+    "major": "X"
+  },
+  "points": [
+    {
+      "id": "F",
+      "kind": "FOCUS",
+      "side": 1,
+      "coordinates": true
+    },
+    {
+      "id": "F'",
+      "kind": "FOCUS",
+      "side": -1,
+      "coordinates": true
+    },
+    {
+      "id": "P",
+      "kind": "ON_CONIC",
+      "x": "8/3",
+      "branch": "POS"
+    }
+  ],
+  "segments": [
+    {
+      "id": "sPF",
+      "from": "P",
+      "to": "F"
+    },
+    {
+      "id": "sPFp",
+      "from": "P",
+      "to": "F'"
+    },
+    {
+      "id": "sFFp",
+      "from": "F",
+      "to": "F'"
+    }
+  ],
+  "polygons": [
+    {
+      "id": "tri",
+      "points": [
+        "P",
+        "F'",
+        "F"
+      ],
+      "fill": "LIGHT"
+    }
+  ],
+  "caption": "타원 x²/16+y²/7=1 위 P와 두 초점 F′(-3,0), F(3,0)을 이은 삼각형 PF′F",
+  "accessibilityDescription": "가로로 긴 타원 위 제1사분면 점 P와 x축에 놓인 두 초점 F′, F를 선분으로 연결해 삼각형을 이룬다. 초점 사이의 선분도 보인다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "타원 x²/16+y²/7=1의 초점은 F=(3,0),F′=(-3,0)이며 장축 길이 8이다.",
+      "mappedTo": [
+        "conic",
+        "F",
+        "F'"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "P=(8/3,√35/3)은 타원 위 제1사분면에서 PF=2, PF′=6을 만족하므로 PF′=3PF와 FF′=6인 이등변삼각형이 성립한다.",
+      "mappedTo": [
+        "P",
+        "sPF",
+        "sPFp",
+        "sFFp",
+        "tri"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "구하는 삼각형 넓이 √35와 중간 거리 PF=2,PF′=6은 정답 노출 방지를 위해 라벨링하지 않는다. 원문 [그림]에는 변 길이 숫자가 요구되지 않았다.",
+      "mappedTo": [
+        "tri"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "PF′=3PF를 만족하는 실제 타원점 P를 정확히 선택",
+    "문항에 없는 높이선과 최종 넓이는 문제 그림에 추가하지 않음"
+  ]
+}

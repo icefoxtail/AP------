@@ -1,0 +1,105 @@
+{
+  "campaign": "typebank-high2-geometry-problem-svg",
+  "typeGroup": "타원의 정의 활용: 중점연결정리·삼각형의 넓이·코사인법칙 (기하 027–029)",
+  "auditKind": "SOURCE_FIGURE_TO_ENGINE_PLAN_PRE_RENDER",
+  "auditedAtKst": "2026-11-25",
+  "sourceOfTruth": "archive/exams/types/high/h2의 기하_027·028·029 원본 JS questionBank[id] 발문·[그림]·보기·정답·해설",
+  "sourceSha256": {
+    "기하_027": "cde0b0c7b8a9347b256b9e7a7fd86e89a5774cfcdb68189ee9ad1bdb81ccbf9a",
+    "기하_028": "6104601d748e44069887b5d259344acde9700a34af125941809f4bb0ceb1e225",
+    "기하_029": "942c1acf5b6a30cc09dc035cc88a717775e3dc08d18fd3704068126193fe52c1"
+  },
+  "scope": {
+    "distinctJsFiles": 3,
+    "sourceFigures": 13,
+    "sourceVsPlanReviewed": 13,
+    "actualPlans": 13,
+    "lintShallowPass": 13,
+    "lintFullPass": 13,
+    "independentMathPass": 13,
+    "featureParityPreRenderPass": 5,
+    "engineCapabilityPending": 8,
+    "contentMathBlocked": 0
+  },
+  "validation": {
+    "lintShallowCommand": "node archive/tools/geometry-equation/ops/claude-batch/plan-lint.cjs --shallow archive/tools/geometry-equation/production/plans/기하_02[789]_*/q*-problem.plan.json",
+    "lintFullCommand": "node archive/tools/geometry-equation/ops/claude-batch/plan-lint.cjs archive/tools/geometry-equation/production/plans/기하_02[789]_*/q*-problem.plan.json",
+    "dependencySetup": "공식 production/setup-spikes.mjs 실행, 고정 폰트와 엔진 의존성 설치 후 full lint 13개 모두 OK",
+    "independentMathCheck": "Python SymPy 1.14.0으로 13개 실제 타원 방정식, 초점 좌표, 선택한 타원 위 점, 중점·수선·직각, 선분 길이, 면적·둘레·각도 및 원문 정답 관계를 별도 정확식으로 검산하여 전부 PASS",
+    "featureParityStage": "PRE_RENDER_SOURCE_VS_PLAN_FIELDS",
+    "render": "NOT_RUN",
+    "pngVisualReview": "NOT_RUN",
+    "studentScreenReview": "NOT_RUN",
+    "a4PrintReview": "NOT_RUN",
+    "jsImageLink": "NOT_RUN",
+    "publication": "NOT_RUN"
+  },
+  "items": [
+    {
+      "stemNumber": 27, "qid": 1, "sourceVsPlan": "REVIEWED", "planLintShallow": "PASS", "planLintFull": "PASS", "independentMath": "PASS", "featureParity": "ENGINE_CAPABILITY_PENDING",
+      "verified": "초점 F=(5,0),F′=(-5,0), P=(-7/5,24/5), PF=8, PF′=6, PF′의 중점 H와 OH⊥PF′, PF′−OH=2를 실제 도형에 맞춰 구성",
+      "missingVisual": "H에서 PH=HF′임을 보이는 쌍둥이 길이 눈금"
+    },
+    {
+      "stemNumber": 27, "qid": 2, "sourceVsPlan": "REVIEWED", "planLintShallow": "PASS", "planLintFull": "PASS", "independentMath": "PASS", "featureParity": "ENGINE_CAPABILITY_PENDING",
+      "verified": "초점 F=(4,0),F′=(-4,0), P=(√15/2,7/2), PF·PF′의 중점 H·I, OHPI 직사각형의 면적 7을 정확식으로 검산",
+      "missingVisual": "PH=HF 및 PI=IF′의 중점 동등 눈금 두 쌍"
+    },
+    {
+      "stemNumber": 27, "qid": 3, "sourceVsPlan": "REVIEWED", "planLintShallow": "PASS", "planLintFull": "PASS", "independentMath": "PASS", "featureParity": "ENGINE_CAPABILITY_PENDING",
+      "verified": "F=(6,0),F′=(-6,0), P=(2√5,4),Q=(2√5,-4), 대응 중점 H·I, OH·OI=12 및 OH≠OI를 동시 만족하도록 구성",
+      "missingVisual": "PH=HF 및 QI=IF′를 보이는 동일 길이 눈금"
+    },
+    {
+      "stemNumber": 28, "qid": 1, "sourceVsPlan": "REVIEWED", "planLintShallow": "PASS", "planLintFull": "PASS", "independentMath": "PASS", "featureParity": "ENGINE_CAPABILITY_PENDING",
+      "verified": "F=(4,0), F′=(-4,0)인 타원 x²/21+y²/5 위 P에 대한 직각 구조를 검산; 엔진 점 라벨 충돌 방지를 위해 F′의 좌표 병기를 억제",
+      "missingVisual": "원문 [그림]의 F′(-4,0) 좌표 병기. 현행 렌더러가 F와 F′ 좌표 동시 노출 시 ELLIPSE_LABEL_NO_ROOM으로 실패"
+    },
+    {
+      "stemNumber": 28, "qid": 2, "sourceVsPlan": "REVIEWED", "planLintShallow": "PASS", "planLintFull": "PASS", "independentMath": "PASS", "featureParity": "PASS",
+      "verified": "타원 x²/49+y²/24 위의 P=(7/5,24/5), Q=(-11/5,48/5), F′Q=10 라벨과 직각을 정확한 점·선분에 매핑"
+    },
+    {
+      "stemNumber": 28, "qid": 3, "sourceVsPlan": "REVIEWED", "planLintShallow": "PASS", "planLintFull": "PASS", "independentMath": "PASS", "featureParity": "PASS",
+      "verified": "타원 x²/16+y²/7의 P=(8/3,√35/3)에서 PF′=6, PF=2를 검산하고 삼각형 넓이 조건과 일치"
+    },
+    {
+      "stemNumber": 28, "qid": 4, "sourceVsPlan": "REVIEWED", "planLintShallow": "PASS", "planLintFull": "PASS", "independentMath": "PASS", "featureParity": "PASS",
+      "verified": "초점 ±2√2인 타원의 실제 장축 두 꼭짓점 C,D, 구성점 A,B 및 사각형 ACBD를 독립 계산"
+    },
+    {
+      "stemNumber": 28, "qid": 5, "sourceVsPlan": "REVIEWED", "planLintShallow": "PASS", "planLintFull": "PASS", "independentMath": "PASS", "featureParity": "ENGINE_CAPABILITY_PENDING",
+      "verified": "타원 x²/72+y²/36, P=(0,6),Q=(-8,-2)를 이용한 직각 이등변 삼각형을 좌표·내적으로 검산하고 직각 FOOT 표시",
+      "missingVisual": "직각삼각형의 두 변이 같음을 보여주는 동등 길이 눈금"
+    },
+    {
+      "stemNumber": 28, "qid": 6, "sourceVsPlan": "REVIEWED", "planLintShallow": "PASS", "planLintFull": "PASS", "independentMath": "PASS", "featureParity": "PASS",
+      "verified": "세로 장축 x²/24+y²/36, A=(2√6,0), P=(4,2√3), B=(4√6,2√3)의 교차·길이 관계를 정확식으로 검산"
+    },
+    {
+      "stemNumber": 29, "qid": 1, "sourceVsPlan": "REVIEWED", "planLintShallow": "PASS", "planLintFull": "PASS", "independentMath": "PASS", "featureParity": "PASS",
+      "verified": "타원 x²/25+y²/9, P=(5/4,3√15/4)에서 PF:PF′=2:3을 검산하고 삼각형 구조를 정확한 선분에 매핑"
+    },
+    {
+      "stemNumber": 29, "qid": 2, "sourceVsPlan": "REVIEWED", "planLintShallow": "PASS", "planLintFull": "PASS", "independentMath": "PASS", "featureParity": "ENGINE_CAPABILITY_PENDING",
+      "verified": "타원 x²/28+y²/12, P=(√21,√3)에서 ∠FPF′=60°임을 코사인법칙으로 검산",
+      "missingVisual": "P를 꼭짓점으로 하는 ∠FPF′=60° 각호와 각도 텍스트"
+    },
+    {
+      "stemNumber": 29, "qid": 3, "sourceVsPlan": "REVIEWED", "planLintShallow": "PASS", "planLintFull": "PASS", "independentMath": "PASS", "featureParity": "ENGINE_CAPABILITY_PENDING",
+      "verified": "타원 x²/81+y²/63, P=(-9√2/2,3√14/2), R=(-2√2,√14), Q를 정확한 수선의 발로 구성하고 QR=√7, RF=8을 검산",
+      "missingVisual": "해당 선분의 중점 또는 1:2 분할을 가시화하는 길이 눈금과 비율 표식"
+    },
+    {
+      "stemNumber": 29, "qid": 4, "sourceVsPlan": "REVIEWED", "planLintShallow": "PASS", "planLintFull": "PASS", "independentMath": "PASS", "featureParity": "ENGINE_CAPABILITY_PENDING",
+      "verified": "타원 x²/144+y²/80, P=(3,5√3), F=(8,0), F′=(-8,0), A=(12,0)에서 ∠PFF′=60°를 정확식으로 검산",
+      "missingVisual": "F 꼭짓점의 ∠PFF′=60° 각호·각도 라벨"
+    }
+  ],
+  "engineHandoff": [
+    {"kind": "EQUAL_LENGTH_TICKS_UNSUPPORTED", "target": "ellipse-figure-v1/conic", "qids": ["027q01", "027q02", "027q03", "028q05", "029q03"], "request": "실제 선분의 대응 등길이 눈금과 중점·등분비 시각 표시 필드를 추가하고 충돌 검사를 포함해 재검증"},
+    {"kind": "FOCUS_COORDINATE_LABEL_COLLISION", "target": "ellipse-figure-v1/conic", "qids": ["028q01"], "request": "두 초점의 좌표 병기를 원문대로 함께 표시해도 ELLIPSE_LABEL_NO_ROOM이 나지 않도록 라벨 배치 개선 후 coordinates를 복원"},
+    {"kind": "ANGLE_ARC_LABEL_UNSUPPORTED", "target": "ellipse-figure-v1/conic", "qids": ["029q02", "029q04"], "request": "두 ray 사이 각호·각도 텍스트를 실제 꼭짓점에 종속하여 구현하고 라벨 충돌을 점검"}
+  ],
+  "handoffNote": "027→028→029의 원본 [그림] 13건을 전부 읽고 정규 plan 13개만 추가했다. full lint 13/13 통과는 시각 완성과 별개이며, pre-render 필드 완성 5건·엔진 표시 보강 8건이다. SVG/PNG 렌더·학생 화면·A4·JS 링크·게시는 모두 미실행이며 안티그래비티 후속 검토 대상으로 유지한다. 원본 JS/정답은 수정하지 않았다."
+}

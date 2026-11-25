@@ -1,0 +1,94 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "ELLIPSE",
+    "center": [
+      "0",
+      "0"
+    ],
+    "aSquared": "28",
+    "bSquared": "12",
+    "major": "X"
+  },
+  "points": [
+    {
+      "id": "F",
+      "kind": "FOCUS",
+      "side": 1
+    },
+    {
+      "id": "F'",
+      "kind": "FOCUS",
+      "side": -1
+    },
+    {
+      "id": "P",
+      "kind": "ON_CONIC",
+      "x": "sqrt(21)",
+      "branch": "POS"
+    }
+  ],
+  "segments": [
+    {
+      "id": "sPF",
+      "from": "P",
+      "to": "F"
+    },
+    {
+      "id": "sPFp",
+      "from": "P",
+      "to": "F'"
+    },
+    {
+      "id": "sFFp",
+      "from": "F",
+      "to": "F'"
+    }
+  ],
+  "polygons": [
+    {
+      "id": "tri",
+      "points": [
+        "P",
+        "F",
+        "F'"
+      ],
+      "fill": "LIGHT"
+    }
+  ],
+  "caption": "타원 x²/28+y²/12=1 위 P와 두 초점으로 만든 끼인각 60°의 삼각형",
+  "accessibilityDescription": "x축에 놓인 두 초점 F′와 F를 타원 위 제1사분면 점 P에 연결한 삼각형이다. P에서의 두 변 사이 각은 60°이나 각호 및 각도 텍스트는 엔진 보강 전까지 보이지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "타원 x²/28+y²/12=1에서 F=(4,0),F′=(-4,0)이며 FF′=8이다.",
+      "mappedTo": [
+        "conic",
+        "F",
+        "F'"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "P=(√21,√3)는 타원 위이고, PF=2(√7−√3), PF′=2(√7+√3)이다. PF·PF′=16 및 코사인법칙에 의해 ∠FPF′=60°를 독립 확인했다.",
+      "mappedTo": [
+        "P",
+        "sPF",
+        "sPFp",
+        "sFFp"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "원문 그림의 필수 요소인 P의 60° 각호·각도 라벨은 ellipse-figure-v1에 없는 렌더 필드라 ENGINE_CAPABILITY_PENDING이다. 묻는 PF·PF′=16은 표기하지 않는다.",
+      "mappedTo": [
+        "P",
+        "tri"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "정확히 60°를 만족하는 점 P를 수학적으로 지정",
+    "각호 표시가 엔진 미지원인 점과 정답 비노출을 분명히 기록"
+  ]
+}
