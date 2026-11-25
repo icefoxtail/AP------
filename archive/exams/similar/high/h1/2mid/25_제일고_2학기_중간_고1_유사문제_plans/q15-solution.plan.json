@@ -1,0 +1,17 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"SOURCE_COORDINATE_AXES_v1","unit":"source-coordinate","reflectionEquivalent":false},"nodes":[
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"2"},{"kind":"integer","value":"6"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-1"},{"kind":"integer","value":"1"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"5"},{"kind":"integer","value":"-5"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"D","op":"MIDPOINT","inputs":["A","B"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"E","op":"MIDPOINT","inputs":["A","C"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "coordinateCanvas":{"width":700,"height":560},"displayPoints":["A","B","C","D","E"],
+  "displaySegments":[{"id":"sAB","refs":["A","B"]},{"id":"sAC","refs":["A","C"]},{"id":"sBC","refs":["B","C"]},{"id":"sDE","refs":["D","E"],"emphasis":"BOLD"}],
+  "coordinateLabels":["A","B","C","D","E"],"planeMarks":{"parallels":[{"id":"par","count":1,"segments":["sBC","sDE"]}]},
+  "caption":"넓이비 1:4에서 D와 E가 중점이 되는 과정을 표시한 중점연결선 그림이다.",
+  "accessibilityDescription":"A(2,6), B(-1,1), C(5,-5)인 삼각형에서 AB의 중점 D와 AC의 중점 E를 이은 선분 DE가 BC에 평행하다.",
+  "sourceConditions":[{"id":"q15s1","condition":"A(2,6), B(-1,1), C(5,-5)","mappedTo":["mathPlan.nodes"]},{"id":"q15s2","condition":"넓이비 ADE:ABC=1:4이므로 AD:AB=AE:AC=1:2","mappedTo":["mathPlan.nodes.D","mathPlan.nodes.E"]},{"id":"q15s3","condition":"DE∥BC","mappedTo":["planeMarks.parallels","displaySegments"]}],
+  "newVisualInformation":["D와 E의 중점 위치 및 DE와 BC의 평행 표식"]
+}

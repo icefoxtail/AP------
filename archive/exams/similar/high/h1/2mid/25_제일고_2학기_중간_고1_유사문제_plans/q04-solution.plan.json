@@ -1,0 +1,14 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {"caption": {"text": "①~④ 공통 영역"}, "plan": {"capability": "set-diagram-figure-v1", "diagram": {"kind": "VENN", "sets": [{"id": "X"}, {"id": "Y"}, {"id": "Z"}], "shade": "X∩Y^c∩Z"}}},
+    {"caption": {"text": "⑤ 영역"}, "plan": {"capability": "set-diagram-figure-v1", "diagram": {"kind": "VENN", "sets": [{"id": "X"}, {"id": "Y"}, {"id": "Z"}], "shade": "X∩(Y^c∪Z)"}}}
+  ],
+  "caption": "집합식 ①~④의 공통 영역과 ⑤가 나타내는 영역을 나란히 비교한다.",
+  "accessibilityDescription": "세 집합 X, Y, Z의 벤다이어그램 두 개에서 첫 패널은 X와 Z에 속하면서 Y에는 속하지 않는 영역, 둘째는 X에서 Y 밖 또는 Z 안인 영역을 표시한다.",
+  "sourceConditions": [
+    {"id": "q04s1", "condition": "①~④는 X∩Y^c∩Z로 동치", "mappedTo": ["panels[0].plan.diagram.shade"]},
+    {"id": "q04s2", "condition": "⑤는 X∩(Y^c∪Z)", "mappedTo": ["panels[1].plan.diagram.shade"]}
+  ],
+  "newVisualInformation": ["두 집합식의 겹치는 영역과 서로 다른 부분을 두 패널로 대조"]
+}

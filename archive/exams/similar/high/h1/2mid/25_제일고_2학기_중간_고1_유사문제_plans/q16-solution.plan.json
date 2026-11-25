@@ -1,0 +1,23 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"SOURCE_COORDINATE_AXES_v1","unit":"source-coordinate","reflectionEquivalent":false},"nodes":[
+    {"id":"O","op":"NORMALIZATION_ORIGIN","inputs":[],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"X","op":"NORMALIZATION_AXIS","inputs":[],"args":{"length":{"kind":"integer","value":"1"}},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"L1","op":"SOURCE_LINE","inputs":[],"args":{"a":{"kind":"integer","value":"2"},"b":{"kind":"integer","value":"1"},"c":{"kind":"integer","value":"4"}},"outputType":"LINE","factRole":"GIVEN"},
+    {"id":"L2","op":"SOURCE_LINE","inputs":[],"args":{"a":{"kind":"integer","value":"1"},"b":{"kind":"integer","value":"-2"},"c":{"kind":"integer","value":"-8"}},"outputType":"LINE","factRole":"GIVEN"},
+    {"id":"A","op":"TRANSLATE_POINT","inputs":["O"],"args":{"dx":{"kind":"integer","value":"0"},"dy":{"kind":"integer","value":"-4"}},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"B","op":"TRANSLATE_POINT","inputs":["O"],"args":{"dx":{"kind":"integer","value":"-2"},"dy":{"kind":"integer","value":"0"}},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"C","op":"TRANSLATE_POINT","inputs":["O"],"args":{"dx":{"kind":"integer","value":"8"},"dy":{"kind":"integer","value":"0"}},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"M","op":"MIDPOINT","inputs":["B","C"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"K","op":"CIRCLE_CENTER_RADIUS","inputs":["M"],"args":{"radius":{"kind":"integer","value":"5"}},"outputType":"CIRCLE","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"P","op":"TRANSLATE_POINT","inputs":["O"],"args":{"dx":{"kind":"integer","value":"12"},"dy":{"kind":"integer","value":"12"}},"outputType":"POINT","factRole":"CONCLUSION"},
+    {"id":"Q","op":"CENTROID","inputs":["P","B","C"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "coordinateCanvas":{"width":720,"height":570},"displayPoints":["A","B","C","M","P","Q"],"displayCircles":["K"],
+  "displaySegments":[{"id":"sAB","refs":["A","B"]},{"id":"sAC","refs":["A","C"]},{"id":"sBC","refs":["B","C"]},{"id":"sPB","refs":["P","B"]},{"id":"sPC","refs":["P","C"]},{"id":"sQM","refs":["Q","M"],"dashed":true}],
+  "coordinateLabels":["A","B","C","M","P","Q"],
+  "caption":"ABC의 외접원과 PBC의 무게중심 Q가 그 원 위에 놓이는 관계를 풀이 좌표로 보여 준다.",
+  "accessibilityDescription":"직각삼각형 ABC는 A(0,-4), B(-2,0), C(8,0)이고 BC가 외접원의 지름이다. P(12,12)와 B, C의 무게중심 Q(6,4)가 중심 M(3,0), 반지름 5인 외접원 위에 있다.",
+  "sourceConditions":[{"id":"q16s1","condition":"l1과 l2의 교점 A(0,-4), 두 x절편 B(-2,0), C(8,0)","mappedTo":["mathPlan.nodes.A","mathPlan.nodes.B","mathPlan.nodes.C"]},{"id":"q16s2","condition":"ABC의 외접원 지름 BC, 중심 M(3,0), 반지름 5","mappedTo":["mathPlan.nodes.M","mathPlan.nodes.K","displayCircles"]},{"id":"q16s3","condition":"PBC의 넓이는 ABC의 3배, P는 제1사분면, Q는 PBC의 무게중심이고 외접원 위","mappedTo":["mathPlan.nodes.P","mathPlan.nodes.Q","displaySegments"]}],
+  "newVisualInformation":["두 삼각형의 높이 관계","P(12,12)와 무게중심 Q(6,4), 원의 위치 관계"]
+}

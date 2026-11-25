@@ -1,0 +1,17 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"SOURCE_COORDINATE_AXES_v1","unit":"source-coordinate","reflectionEquivalent":false},"nodes":[
+    {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"3"},{"kind":"integer","value":"-2"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"K","op":"CIRCLE_CENTER_RADIUS","inputs":["C"],"args":{"radius":{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"13"}]}},"outputType":"CIRCLE","factRole":"GIVEN"},
+    {"id":"Lp","op":"SOURCE_LINE","inputs":[],"args":{"a":{"kind":"integer","value":"2"},"b":{"kind":"integer","value":"3"},"c":{"kind":"integer","value":"13"}},"outputType":"LINE","factRole":"CONCLUSION"},
+    {"id":"Lm","op":"SOURCE_LINE","inputs":[],"args":{"a":{"kind":"integer","value":"2"},"b":{"kind":"integer","value":"3"},"c":{"kind":"integer","value":"-13"}},"outputType":"LINE","factRole":"CONCLUSION"},
+    {"id":"Hp","op":"TRANSLATE_POINT","inputs":["C"],"args":{"dx":{"kind":"integer","value":"-8"},"dy":{"kind":"integer","value":"1"}},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"Hm","op":"TRANSLATE_POINT","inputs":["C"],"args":{"dx":{"kind":"integer","value":"8"},"dy":{"kind":"integer","value":"-1"}},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "coordinateCanvas":{"width":690,"height":510},"displayPoints":["C","Hp","Hm"],"hiddenPointNames":["Hp","Hm"],"hiddenPointStyle":"NONE","displayCircles":["K"],"displayLines":["Lp","Lm"],"coordinateLabels":["C"],
+  "lineLabels":[{"nodeId":"Lp","form":"GENERAL"},{"nodeId":"Lm","form":"GENERAL"}],
+  "caption":"중심 (3,-2), 반지름 √13인 원에 접하는 두 평행 직선의 위치를 나타낸다.",
+  "accessibilityDescription":"중심 C(3,-2)의 원에 2x+3y+13=0과 2x+3y-13=0 두 직선이 각각 접한다.",
+  "sourceConditions":[{"id":"q13s1","condition":"원 중심 C(3,-2), 반지름 √13","mappedTo":["mathPlan.nodes.C","mathPlan.nodes.K"]},{"id":"q13s2","condition":"접선의 k는 ±13","mappedTo":["mathPlan.nodes.Lp","mathPlan.nodes.Lm","displayLines"]}],
+  "newVisualInformation":["두 접선이 원의 양쪽에서 접하고 동일한 법선 방향을 가짐"]
+}
