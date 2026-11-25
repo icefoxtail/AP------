@@ -1,0 +1,140 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "S",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "F"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 650,
+    "height": 530
+  },
+  "displayPoints": [
+    "S",
+    "T",
+    "F"
+  ],
+  "displayCircles": [
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "translate",
+      "refs": [
+        "S",
+        "T"
+      ]
+    },
+    {
+      "id": "reflect",
+      "refs": [
+        "T",
+        "F"
+      ]
+    }
+  ],
+  "coordinateLabels": [
+    "S",
+    "T",
+    "F"
+  ],
+  "caption": "처음 중심 S(1,6), (5,-1) 평행이동한 T(6,5), y=x 대칭한 최종 중심 F(5,6)를 이어 나타낸다. 반지름 3은 보존된다.",
+  "accessibilityDescription": "좌표평면에서 원의 중심 S(1,6)이 T(6,5)를 거쳐 F(5,6)로 이동한다. F를 중심으로 반지름 3인 원이 그려져 있다.",
+  "sourceConditions": [
+    {
+      "id": "T6-1",
+      "condition": "원 중심 (1,6), 반지름 3",
+      "mappedTo": "mathPlan.nodes[S]"
+    },
+    {
+      "id": "T6-2",
+      "condition": "(5,-1) 평행이동하면 중심 (6,5), y=x 대칭하면 중심 (5,6)",
+      "mappedTo": "mathPlan.nodes[T,F], displaySegments[translate,reflect]"
+    },
+    {
+      "id": "T6-3",
+      "condition": "평행·대칭 이동 후 반지름 3 유지",
+      "mappedTo": "mathPlan.nodes[C],displayCircles[C]"
+    }
+  ],
+  "newVisualInformation": [
+    "두 이동의 순서와 최종 원의 중심·반지름이 일치함을 확인한다."
+  ]
+}

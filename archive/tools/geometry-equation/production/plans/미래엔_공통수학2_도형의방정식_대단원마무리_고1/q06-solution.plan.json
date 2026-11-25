@@ -1,0 +1,141 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "-1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "20"
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B"
+  ],
+  "displayCircles": [
+    "k"
+  ],
+  "displaySegments": [
+    {
+      "id": "OA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "OB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    }
+  ],
+  "coordinateLabels": [
+    "O",
+    "A",
+    "B"
+  ],
+  "coordinateCanvas": {
+    "width": 580,
+    "height": 470
+  },
+  "caption": "y축 위 중심 O(0,3)에서 A(4,5), B(-2,-1)까지의 제곱거리가 모두 20이어서 원의 식은 x²+(y−3)²=20이다.",
+  "accessibilityDescription": "중심 (0,3), 반지름 2√5인 원이 (4,5)와 (-2,-1)을 지나며 두 중심 연결선이 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "G1",
+      "condition": "두 점 (4,5),(-2,-1), 중심은 y축 위 → O=(0,3)",
+      "mappedTo": "mathPlan.nodes[O,A,B]"
+    },
+    {
+      "id": "G2",
+      "condition": "OA²=OB²=20, 반지름 √20",
+      "mappedTo": "mathPlan.nodes[k],displayCircles[k],displaySegments[OA,OB]"
+    }
+  ],
+  "newVisualInformation": [
+    "주어진 두 점의 공통 원과 y축 위 중심을 보여 주고 두 반지름이 같은 실제 관계를 표현한다."
+  ]
+}

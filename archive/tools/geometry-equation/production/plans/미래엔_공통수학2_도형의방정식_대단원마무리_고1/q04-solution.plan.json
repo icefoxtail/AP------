@@ -1,0 +1,190 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "-4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "M",
+    "L",
+    "R"
+  ],
+  "hiddenPointNames": [
+    "L",
+    "R"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "bisector",
+      "refs": [
+        "L",
+        "R"
+      ]
+    },
+    {
+      "id": "OM",
+      "refs": [
+        "O",
+        "M"
+      ],
+      "emphasis": "BOLD"
+    }
+  ],
+  "coordinateLabels": [
+    "A",
+    "B",
+    "M",
+    "O"
+  ],
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 490
+  },
+  "caption": "AB의 중점 M(1,2)를 지나는 수직이등분선 x+2y−5=0에 O에서 내린 수선의 발도 M이므로 거리는 OM=√5이다.",
+  "accessibilityDescription": "좌표평면에서 A(-2,-4), B(4,8)의 중점 M(1,2)을 지나 기울기 -1/2인 수직이등분선과 원점 O에서 M으로 이은 선분이 그려져 있다.",
+  "sourceConditions": [
+    {
+      "id": "G1",
+      "condition": "A(-2,-4), B(4,8), 중점 M=(1,2), AB 기울기 2",
+      "mappedTo": "mathPlan.nodes[A,B,M], displaySegments[AB]"
+    },
+    {
+      "id": "G2",
+      "condition": "수직이등분선 x+2y−5=0, 기울기 -1/2; 원점에서 발 M까지 거리 √5",
+      "mappedTo": "mathPlan.nodes[L,R,O,M],displaySegments[bisector,OM]"
+    }
+  ],
+  "newVisualInformation": [
+    "원점에서 수직이등분선까지의 최단 수선이 원점과 AB의 중점을 잇는 선분이라는 관계를 보인다."
+  ]
+}
