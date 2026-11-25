@@ -1,0 +1,103 @@
+{
+  "campaign": "typebank-high2-geometry-problem-svg",
+  "typeGroup": "타원의 정의를 이용한 최대·최소, 거리합 최대·최소, 타원과 원 (기하 030–032)",
+  "auditKind": "SOURCE_FIGURE_TO_ENGINE_PLAN_PRE_RENDER",
+  "auditedAtKst": "2026-11-25",
+  "sourceOfTruth": "archive/exams/types/high/h2 기하_030·031·032의 questionBank[id] 본문·[그림]·보기·해설·정답",
+  "sourceSha256": {
+    "기하_030": "0a7ea4ff7ef7e2036139ec23666a9e0173dd8c5505322e854fc18e0f00069516",
+    "기하_031": "88376c6a6e57c50a627dec81730e190f9309dbda9da4c792166474ad20937c2e",
+    "기하_032": "3ac2547865cf12ec89ef70d82a45982d0db92cb0784e8b2ac6d72d8874c30110"
+  },
+  "scope": {
+    "distinctJsFiles": 3,
+    "allQuestions": 12,
+    "sourceFigures": 8,
+    "sourceVsPlanReviewed": 8,
+    "actualPlans": 6,
+    "lintShallowPass": 6,
+    "lintFullPass": 6,
+    "independentMathPass": 6,
+    "featureParityPreRenderPass": 3,
+    "engineCapabilityPending": 4,
+    "engineCapabilityPendingWithPlan": 3,
+    "engineCapabilityPendingWithoutPlan": 1,
+    "contentMathBlockedWithoutPlan": 1,
+    "noFigureQids": [
+      {"stemNumber": 30, "qid": 1, "reason": "원문에 [그림:] 없음"},
+      {"stemNumber": 30, "qid": 2, "reason": "원문에 [그림:] 없음"},
+      {"stemNumber": 31, "qid": 1, "reason": "원문에 [그림:] 없음"},
+      {"stemNumber": 31, "qid": 4, "reason": "원문에 [그림:] 없음"}
+    ]
+  },
+  "validation": {
+    "lintShallowCommand": "node archive/tools/geometry-equation/ops/claude-batch/plan-lint.cjs --shallow archive/tools/geometry-equation/production/plans/기하_03[012]_*/q*-problem.plan.json",
+    "lintFullCommand": "node archive/tools/geometry-equation/ops/claude-batch/plan-lint.cjs archive/tools/geometry-equation/production/plans/기하_03[012]_*/q*-problem.plan.json",
+    "dependencySetup": "공식 production/setup-spikes.mjs 실행해 의존성·폰트 준비 후 full lint 검사",
+    "independentMathCheck": "별도 SymPy 계산으로 030q03 타원 위 직사각형 네 점 및 최대 넓이 480, 031q03 초점·타원점 및 AF′=13, 031q06 타원점 P·정삼각형 PFQ의 세 변 2/3 및 QF′>PF′, 032q01 원·타원 교점과 넓이 11, 032q02 공통점·직각·넓이 9, 032q03 두 반대 교점·직사각형 넓이 14를 독립 검산. 031q05의 원문 제2사분면 교점 부존재도 정확식으로 입증",
+    "featureParityStage": "PRE_RENDER_SOURCE_VS_PLAN_FIELDS",
+    "render": "NOT_RUN",
+    "pngVisualReview": "NOT_RUN",
+    "studentScreenReview": "NOT_RUN",
+    "a4PrintReview": "NOT_RUN",
+    "jsImageLink": "NOT_RUN",
+    "publication": "NOT_RUN"
+  },
+  "items": [
+    {
+      "stemNumber": 30, "qid": 3, "sourceVsPlan": "REVIEWED", "planLintShallow": "PASS", "planLintFull": "PASS", "independentMath": "PASS", "featureParity": "PASS",
+      "verified": "장축 40·단축 24 타원 x²/400+y²/144와 네 꼭짓점 (±12,±48/5)의 내접 축평행 직사각형을 정확히 작도. 실제 최적 꼭짓점 x=±10√2,y=±6√2 및 최대 넓이의 수치를 그림에 노출하지 않음",
+      "render": "NOT_RUN", "pngVisualReview": "NOT_RUN", "studentScreenReview": "NOT_RUN", "a4PrintReview": "NOT_RUN"
+    },
+    {
+      "stemNumber": 31, "qid": 2, "sourceVsPlan": "REVIEWED", "planLintShallow": "NOT_RUN", "planLintFull": "NOT_RUN", "independentMath": "PASS", "featureParity": "ENGINE_CAPABILITY_PENDING", "planStatus": "NOT_CREATED_ENGINE_BLOCKED",
+      "verified": "타원 x²/25+y²/16의 초점 F(3,0), F′(-3,0)과 각각 반지름 1인 두 원, P에서 각 원에 연결된 Q,R의 구성을 확인. 원문에 필수인 곡선 개수는 3개",
+      "missingVisual": "타원 1개 + 중심이 서로 다른 두 원을 동일 패널에 함께 그리는 3곡선 구성. 현재 ellipse-figure-v1/conics는 최대 2곡선(CONIC_TOO_MANY_CURVES)",
+      "render": "NOT_RUN", "pngVisualReview": "NOT_RUN", "studentScreenReview": "NOT_RUN", "a4PrintReview": "NOT_RUN"
+    },
+    {
+      "stemNumber": 31, "qid": 3, "sourceVsPlan": "REVIEWED", "planLintShallow": "PASS", "planLintFull": "PASS", "independentMath": "PASS", "featureParity": "ENGINE_CAPABILITY_PENDING",
+      "verified": "타원 x²/36+y²/20, F(4,0),F′(-4,0), A=(0,√153)와 실제 타원점 P=(3,√15), 선분 AP·FP를 검산; a의 수치를 그림에 노출하지 않음",
+      "missingVisual": "원문 [그림]의 점 A(0,a)에 대한 기호 좌표 라벨. 현행 coordinates:true는 계산된 실제 값 √153을 인쇄하므로 미지 답 누설 없이 (0,a)를 표시하는 필드가 필요",
+      "render": "NOT_RUN", "pngVisualReview": "NOT_RUN", "studentScreenReview": "NOT_RUN", "a4PrintReview": "NOT_RUN"
+    },
+    {
+      "stemNumber": 31, "qid": 5, "sourceVsPlan": "REVIEWED", "planLintShallow": "NOT_RUN", "planLintFull": "NOT_RUN", "independentMath": "SOURCE_CONTRADICTION_CONFIRMED", "featureParity": "CONTENT_MATH_BLOCKED", "planStatus": "NOT_CREATED_SOURCE_MATH_BLOCKED",
+      "verified": "타원 x²/16+y²/12의 초점 F(2,0),F′(-2,0)와 F를 중심으로 F′를 지나는 원 (x−2)²+y²=16의 교점을 정확식으로 풀면 P=(0,±2√3) 두 점뿐이다. 모두 y축 위이므로 제2사분면 교점은 존재하지 않는다.",
+      "blockingIssue": "원문 JS의 '제2사분면에서 만나는 점 P'와 나머지 조건을 동시에 충족할 수 없음. 소스 문항 정오표/내용 수정 전 임의로 제2사분면 교점을 만들거나 플랜 생성 금지",
+      "render": "NOT_RUN", "pngVisualReview": "NOT_RUN", "studentScreenReview": "NOT_RUN", "a4PrintReview": "NOT_RUN"
+    },
+    {
+      "stemNumber": 31, "qid": 6, "sourceVsPlan": "REVIEWED", "planLintShallow": "PASS", "planLintFull": "PASS", "independentMath": "PASS", "featureParity": "ENGINE_CAPABILITY_PENDING",
+      "verified": "F=(√7,0), F′=(-√7,0), P=(√7,2/3), Q=(√7+√3/3,1/3). PF=PQ=FQ=2/3, QF′>PF′이고 P,Q 모두 제1사분면. 최댓값 해를 직접 보이지 않는 대표 비극값 배치",
+      "missingVisual": "정삼각형 PFQ의 세 변 등길이 눈금과 60° 각도 표식",
+      "render": "NOT_RUN", "pngVisualReview": "NOT_RUN", "studentScreenReview": "NOT_RUN", "a4PrintReview": "NOT_RUN"
+    },
+    {
+      "stemNumber": 32, "qid": 1, "sourceVsPlan": "REVIEWED", "planLintShallow": "PASS", "planLintFull": "PASS", "independentMath": "PASS", "featureParity": "PASS",
+      "verified": "타원 x²/36+y²/11, 원 x²+y²=25, F(5,0),F′(-5,0), 제1사분면 공통점 P=(6√14/5,11/5). 교점 계산 노드와 삼각형 PFF′ 음영을 모두 실제 필드로 구현",
+      "render": "NOT_RUN", "pngVisualReview": "NOT_RUN", "studentScreenReview": "NOT_RUN", "a4PrintReview": "NOT_RUN"
+    },
+    {
+      "stemNumber": 32, "qid": 2, "sourceVsPlan": "REVIEWED", "planLintShallow": "PASS", "planLintFull": "PASS", "independentMath": "PASS", "featureParity": "PASS",
+      "verified": "원 x²+y²=16, 초점 A(-4,0),B(4,0), 면적 9에 일치하는 타원 x²/25+y²/9와 제1사분면 공통점 P=(5√7/4,9/4)의 삼각형을 실제 선분으로 구현. 미지 장축 길이는 그림에 미표시",
+      "render": "NOT_RUN", "pngVisualReview": "NOT_RUN", "studentScreenReview": "NOT_RUN", "a4PrintReview": "NOT_RUN"
+    },
+    {
+      "stemNumber": 32, "qid": 3, "sourceVsPlan": "REVIEWED", "planLintShallow": "PASS", "planLintFull": "PASS", "independentMath": "PASS", "featureParity": "ENGINE_CAPABILITY_PENDING",
+      "verified": "타원 x²/15+y²/7, 지름 원 x²+y²=8의 제1사분면 P=(√30/4,7√2/4)와 제3사분면 Q=−P를 정확한 두 교점 계산 노드로 구현, PF′QF 직사각형 영역 채움. 초점 이름과 모든 선분 유지",
+      "missingVisual": "원문 [그림]의 두 초점 F(2√2,0), F′(-2√2,0) 좌표 병기. coordinates:true일 때 각각 ELLIPSE_LABEL_NO_ROOM 오류; 이름만 표시한 상태",
+      "render": "NOT_RUN", "pngVisualReview": "NOT_RUN", "studentScreenReview": "NOT_RUN", "a4PrintReview": "NOT_RUN"
+    }
+  ],
+  "engineHandoff": [
+    {"stemNumber": 31, "qid": 2, "kind": "THREE_CONIC_OVERLAY_UNSUPPORTED", "target": "ellipse-figure-v1/conics", "request": "타원 1개 + 초점 F,F′ 각 중심 반지름 1인 원 두 개를 한 좌표평면에 올릴 수 있도록 conics 곡선 상한을 3 이상으로 확장. 이후 P·Q·R 실제 구성을 생성하고 full lint·최종 렌더 재검증. 현재는 plan 자체를 생성하지 않음"},
+    {"stemNumber": 31, "qid": 3, "kind": "SYMBOLIC_POINT_COORDINATE_LABEL_UNSUPPORTED", "target": "ellipse-figure-v1/conic", "request": "계산 좌표의 숫자와 별도로 미지 매개변수 a를 답 누설 없이 표시하는 점 좌표 표기 A(0,a)를 지원. 현재 plan은 A라는 점 이름만 표시"},
+    {"stemNumber": 31, "qid": 6, "kind": "EQUILATERAL_EQUAL_TICKS_AND_ANGLE_UNSUPPORTED", "target": "ellipse-figure-v1/conic", "request": "정삼각형 PFQ의 세 변 등길이 눈금 또는 60° 표시 필드를 추가하고 정확한 실제 선분·각도에 귀속시켜 검증"},
+    {"stemNumber": 32, "qid": 3, "kind": "FOCUS_COORDINATE_LABEL_NO_ROOM", "target": "ellipse-figure-v1/conics", "request": "직사각형 PF′QF와 두 곡선·점 라벨을 보존하면서 초점 F(2√2,0),F′(-2√2,0)를 렌더하도록 라벨 배치 개선. 현재 좌표 동시 표기는 ELLIPSE_LABEL_NO_ROOM"}
+  ],
+  "contentHandoff": [
+    {"stemNumber": 31, "qid": 5, "kind": "MATHEMATICAL_SOURCE_CONTRADICTION", "request": "원문 JS의 제2사분면 타원∩원 P 조건을 재설계해야 한다. 실제 교점은 (0,±2√3)만 존재해 x<0인 교점이 없다. 원문 JS·정답·해설을 담당하는 별도 문항 내용 수정 후에만 그림 생성 가능"}
+  ],
+  "handoffNote": "원본 [그림] 8건을 직접 검토해 6개만 실제 엔진용 plan으로 제작했다. 문제 자체가 제2사분면 교점을 만들 수 없는 031q05와 엔진이 3곡선을 표시할 수 없는 031q02는 임의 대체하지 않고 plan 없이 분리했다. 작성 6개 중 pre-render 시각 필드 PASS 3개, 보강 필요 3개다. lint PASS는 SVG/PNG 시각 검증 완료를 뜻하지 않는다. 원본 JS와 정답은 수정하지 않았고 실제 렌더·학생화면·A4·JS 이미지 연결·게시 모두 NOT_RUN이다."
+}

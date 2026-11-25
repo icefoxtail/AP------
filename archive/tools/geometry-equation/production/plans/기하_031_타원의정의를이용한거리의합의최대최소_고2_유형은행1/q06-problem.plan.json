@@ -1,0 +1,26 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {"kind": "ELLIPSE", "center": ["0", "0"], "aSquared": "9", "bSquared": "2", "major": "X"},
+  "points": [
+    {"id": "F", "kind": "FOCUS", "side": 1},
+    {"id": "F'", "kind": "FOCUS", "side": -1},
+    {"id": "P", "kind": "ON_CONIC", "x": "sqrt(7)", "branch": "POS"},
+    {"id": "Q", "kind": "POINT", "x": "sqrt(7)+sqrt(3)/3", "y": "1/3"}
+  ],
+  "segments": [
+    {"id": "sPF", "from": "P", "to": "F"},
+    {"id": "sFQ", "from": "F", "to": "Q"},
+    {"id": "sQP", "from": "Q", "to": "P"},
+    {"id": "sQFp", "from": "Q", "to": "F'"},
+    {"id": "sPFp", "from": "P", "to": "F'"}
+  ],
+  "caption": "타원 위 제1사분면 점 P와 초점 F가 이루는 정삼각형 PFQ, 그리고 QF′",
+  "accessibilityDescription": "타원의 오른쪽 초점 F와 제1사분면의 P, Q를 연결해 정삼각형 PFQ를 만들고, 왼쪽 초점 F′에서 Q까지 선분을 그렸다. Q도 제1사분면에 있고 PF′는 QF′보다 짧다. 세 변의 같은 길이 표식은 엔진 기능 보강이 필요하다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "타원 x²/9+y²/2=1의 초점 F=(√7,0),F′=(-√7,0)이며 제1사분면 P=(√7,2/3)는 타원 위이다.", "mappedTo": ["conic", "F", "F'", "P"]},
+    {"id": "c2", "condition": "Q=(√7+√3/3,1/3)를 택하면 PF=FQ=QP=2/3이 정확히 성립하고 Q는 제1사분면이다. 최댓값을 실현하는 특수 배치를 그대로 그려 답의 논리를 드러내지 않도록 임의의 유효한 정삼각형으로 구성한다.", "mappedTo": ["P", "F", "Q", "sPF", "sFQ", "sQP"]},
+    {"id": "c3", "condition": "PF′=16/3, QF′는 PF′보다 실제로 길어 원문의 추가 부등식을 만족한다. 양쪽 선분 PF′,QF′를 그리되 계산값은 표기하지 않는다.", "mappedTo": ["sPFp", "sQFp"]},
+    {"id": "c4", "condition": "정삼각형의 세 변 동등 눈금·60° 각호는 현행 conic 엔진 필드가 없어 ENGINE_CAPABILITY_PENDING이다. 점 좌표와 세 선분은 실제 정삼각형을 이루는 것을 독립 검산했다.", "mappedTo": ["sPF", "sFQ", "sQP"]}
+  ],
+  "newVisualInformation": ["삼각형 PFQ를 근사 스케치가 아닌 동일 변 2/3의 실제 좌표로 구성", "QF′>PF′의 조건과 P,Q 제1사분면을 동시에 실현; 최댓값·면적의 정답 미표시"]
+}

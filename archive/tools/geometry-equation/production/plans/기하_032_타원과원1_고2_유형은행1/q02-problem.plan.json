@@ -1,0 +1,25 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conics": [
+    {"id": "e", "kind": "ELLIPSE", "center": ["0", "0"], "aSquared": "25", "bSquared": "9", "major": "X"},
+    {"id": "k", "kind": "CIRCLE", "center": ["0", "0"], "rSquared": "16"}
+  ],
+  "points": [
+    {"id": "A", "kind": "FOCUS", "curve": "e", "side": -1, "coordinates": true},
+    {"id": "B", "kind": "FOCUS", "curve": "e", "side": 1, "coordinates": true},
+    {"id": "P", "kind": "CONIC_CONIC", "curves": ["e", "k"], "which": 4}
+  ],
+  "segments": [
+    {"id": "sPA", "from": "P", "to": "A"},
+    {"id": "sPB", "from": "P", "to": "B"},
+    {"id": "sAB", "from": "A", "to": "B"}
+  ],
+  "caption": "반지름 4인 원의 지름 AB가 두 초점인 타원, 제1사분면 공통점 P의 삼각형",
+  "accessibilityDescription": "중심 O의 반지름 4인 원과 더 넓은 타원이 교차한다. 원의 지름 왼쪽 끝 A(-4,0), 오른쪽 끝 B(4,0)는 타원의 두 초점이고 제1사분면 공통점 P까지 세 선분 PA, PB, AB를 이어 삼각형을 만든다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "원 x²+y²=16의 x축 교점 A=(-4,0),B=(4,0)는 타원의 초점이다. 원문의 삼각형 넓이 9에서 P의 y좌표 9/4, 제1사분면 조건으로 x=5√7/4가 결정된다.", "mappedTo": ["k", "A", "B", "P"]},
+    {"id": "c2", "condition": "원문 조건을 동시에 만족하는 실제 타원은 x²/25+y²/9=1이다. a,b는 원문에서 미지이므로 장축 길이·방정식의 유도값을 좌표 라벨이나 문제 그림에 적지 않는다. 두 곡선의 4번째 교점이 P다.", "mappedTo": ["e", "P"]},
+    {"id": "c3", "condition": "AB=8, P의 y=9/4로 삼각형 PAB의 면적은 정확히 9이고 원의 지름에 대한 ∠APB는 직각이다. 삼각형 내부 색칠은 원문이 지시하지 않아 추가하지 않는다.", "mappedTo": ["sPA", "sPB", "sAB"]}
+  ],
+  "newVisualInformation": ["미지 타원의 실제 장축·단축을 원문 면적 9와 원 교점을 이용해 내부 검산 후 곡선 2개로 실물 작도", "장축 길이 정답 숫자를 화면에 노출하지 않음"]
+}

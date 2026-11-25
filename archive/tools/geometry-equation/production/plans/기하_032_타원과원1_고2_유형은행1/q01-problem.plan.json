@@ -1,0 +1,26 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conics": [
+    {"id": "e", "kind": "ELLIPSE", "center": ["0", "0"], "aSquared": "36", "bSquared": "11", "major": "X"},
+    {"id": "k", "kind": "CIRCLE", "center": ["0", "0"], "rSquared": "25"}
+  ],
+  "points": [
+    {"id": "F", "kind": "FOCUS", "curve": "e", "side": 1, "coordinates": true},
+    {"id": "F'", "kind": "FOCUS", "curve": "e", "side": -1, "coordinates": true},
+    {"id": "P", "kind": "CONIC_CONIC", "curves": ["e", "k"], "which": 4}
+  ],
+  "segments": [
+    {"id": "sPF", "from": "P", "to": "F"},
+    {"id": "sPFp", "from": "P", "to": "F'"},
+    {"id": "sFFp", "from": "F", "to": "F'"}
+  ],
+  "polygons": [{"id": "tri", "points": ["P", "F'", "F"], "fill": "LIGHT"}],
+  "caption": "타원 x²/36+y²/11과 초점 F·F′을 지름으로 하는 원, 제1사분면 교점 P의 삼각형",
+  "accessibilityDescription": "원점을 중심으로 타원과 반지름 5인 원을 함께 그렸다. x축 위 F′(-5,0)와 F(5,0)가 원의 지름 양 끝이고, 두 곡선의 제1사분면 교점 P와 잇는 삼각형 PFF′ 내부만 옅게 색칠되어 있다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "타원 x²/36+y²/11=1에서 c²=25, F=(5,0),F′=(-5,0). 초점 지름 원은 x²+y²=25로서 두 곡선 모두 원점 중심이다.", "mappedTo": ["e", "k", "F", "F'"]},
+    {"id": "c2", "condition": "두 곡선의 제1사분면 공통점 P=(6√14/5,11/5)를 직접 풀었고 CONIC_CONIC x·y 오름차순 4번째와 일치한다. PF⊥PF′이고 영역은 실제 삼각형이다.", "mappedTo": ["P", "tri", "sPF", "sPFp", "sFFp"]},
+    {"id": "c3", "condition": "원문은 삼각형 넓이를 묻는다. 넓이의 정답은 그림에 쓰지 않으며, 원의 지름과 직각 관계도 선분의 실제 기하로만 보여준다.", "mappedTo": ["tri"]}
+  ],
+  "newVisualInformation": ["원·타원 교점을 CONIC_CONIC 계산 노드로 생성", "주어진 삼각형 내부를 정확한 3점 다각형으로 채움"]
+}
