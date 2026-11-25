@@ -1,0 +1,19 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"ELLIPSE","center":["0","0"],"aSquared":"27","bSquared":"16","major":"Y"},
+  "points":[
+    {"id":"A","kind":"ON_CONIC","y":"-3*sqrt(3)","branch":"POS","coordinates":true},
+    {"id":"P","kind":"POINT","x":"-8","y":"-3*sqrt(3)"},
+    {"id":"Q","kind":"TANGENT_FROM","from":"P","which":1}
+  ],
+  "lines":[{"id":"t","tangent":true,"at":"Q"}],
+  "segments":[{"id":"PA","from":"P","to":"A"},{"id":"PQ","from":"P","to":"Q"}],
+  "caption":"아래 꼭짓점 A를 지나는 수평선 위 외부점 P와 기울어진 접선 PQ",
+  "accessibilityDescription":"y축에 장축이 있는 타원의 아래 꼭짓점 A에서 왼쪽으로 수평선을 따라 제3사분면의 점 P가 있다. P에서 타원 왼쪽 위 접점 Q로 올라가는 접선 PQ가 PA와 60도 각을 이룬다. PA 길이를 그림에 적지 않는다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"장축 길이 6√3, 단축 길이 8에서 세로 장축 제곱 27, 가로 단축 제곱 16이며 A=(0,-3√3)이다.","mappedTo":["conic","A"]},
+    {"id":"c2","condition":"P는 y=-3√3 위 제3사분면의 실제 외부점이며 원문의 길이 PA를 구하기 위해 내부 좌표를 계산하되 숫자는 화면에 표시하지 않는다. Q는 TANGENT_FROM의 x작은 쪽 접점이고 PQ의 기울기가 √3이라 ∠QPA=60°를 만족한다.","mappedTo":["P","Q","PQ","PA","t"]},
+    {"id":"c3","condition":"60° 각도 호·텍스트 표식은 conic 엔진에 미지원이므로 ENGINE_CAPABILITY_PENDING이며 캡션만으로 시각 완료로 판정하지 않는다.","mappedTo":["PA","PQ"]}
+  ],
+  "newVisualInformation":["세로 장축 타원과 외부점에서의 정확한 접점 계산","∠QPA=60°를 실제로 표기할 엔진 각도 호는 ENGINE_CAPABILITY_PENDING"]
+}

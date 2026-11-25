@@ -1,0 +1,21 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"ELLIPSE","center":["0","0"],"aSquared":"5","bSquared":"2","major":"Y"},
+  "points":[
+    {"id":"P","kind":"POINT","x":"sqrt(10)","y":"3"},
+    {"id":"T1","kind":"TANGENT_FROM","from":"P","which":1},
+    {"id":"T2","kind":"TANGENT_FROM","from":"P","which":2}
+  ],
+  "lines":[
+    {"id":"given","y":"3","label":"y=3"},
+    {"id":"t1","tangent":true,"at":"T1"},{"id":"t2","tangent":true,"at":"T2"}
+  ],
+  "segments":[{"id":"PT1","from":"P","to":"T1"},{"id":"PT2","from":"P","to":"T2"}],
+  "caption":"수평선 y=3의 외부점 P에서 세로 장축 타원에 그은 두 접선",
+  "accessibilityDescription":"세로로 긴 타원 위쪽을 지나는 수평선 y=3의 제1사분면 부분에 외부점 P가 있다. P에서 타원의 서로 다른 접점 T1,T2로 두 접선이 뻗는다. P의 구하는 x좌표를 직접 표시하지 않는다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"원문 타원 x²/2+y²/5=1은 세로 장축이며 수평선 y=3과 만나지 않는다. P=(k,3)은 외부점으로, 계산상 기울기의 곱 조건을 만족하는 양의 대표 x좌표 √10을 배치에만 쓴다.","mappedTo":["conic","given","P"]},
+    {"id":"c2","condition":"T1,T2는 TANGENT_FROM으로 P에서의 실제 두 접점이다. 각각의 접선 t1,t2는 둘 다 P를 통과해야 하며 기울기 곱이 1/2인지 독립 검산한다. k²과 정답은 화면에 적지 않는다.","mappedTo":["T1","T2","t1","t2","PT1","PT2"]}
+  ],
+  "newVisualInformation":["주어진 외부점·수평선과 두 실제 접점 및 서로 다른 두 접선"]
+}

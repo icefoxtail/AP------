@@ -1,0 +1,12 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"ELLIPSE","center":["0","0"],"aSquared":"3","bSquared":"1","major":"X"},
+  "lines":[{"id":"l","slope":"1","intercept":"4","label":"y=x+4"}],
+  "caption":"타원 x²/3+y²=1과 위쪽의 교차하지 않는 직선 y=x+4",
+  "accessibilityDescription":"원점 중심의 가로로 긴 타원 위쪽을 오른쪽으로 올라가는 직선 y=x+4가 비껴 지난다. 직선과 타원은 만나지 않으며, 타원에서 이 직선까지의 최대·최소 거리를 비교하는 문제 그림이다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"원문 타원 x²/3+y²=1의 긴 반지름 제곱은 3, 짧은 반지름 제곱은 1이다.","mappedTo":["conic"]},
+    {"id":"c2","condition":"주어진 직선 l은 y=x+4이고 타원과 교점이 없다. 원문 그림에는 거리의 최대·최소 접점이나 별도 보조접선을 그리지 않으며 곱 Mm도 노출하지 않는다.","mappedTo":["l"]}
+  ],
+  "newVisualInformation":["기울기가 1인 주어진 직선이 타원 바깥 위쪽을 지나는 실제 기하 관계"]
+}

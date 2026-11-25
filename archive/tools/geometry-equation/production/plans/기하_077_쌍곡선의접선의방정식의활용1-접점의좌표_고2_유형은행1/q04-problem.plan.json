@@ -1,0 +1,28 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"HYPERBOLA","center":["0","0"],"aSquared":"20","bSquared":"16","transverse":"X"},
+  "points":[
+    {"id":"O","kind":"ORIGIN"},
+    {"id":"P","kind":"ON_CONIC","x":"5","sign":"POS"},
+    {"id":"Q","kind":"LINE_LINE","lines":["t","xaxis"]},
+    {"id":"R","kind":"LINE_LINE","lines":["t","yaxis"]},
+    {"id":"S","kind":"FOOT","from":"P","onto":"xaxis","rightAngle":true,"coordinates":true}
+  ],
+  "lines":[
+    {"id":"t","tangent":true,"at":"P"},
+    {"id":"xaxis","y":"0","hidden":true},{"id":"yaxis","x":"0","hidden":true}
+  ],
+  "segments":[
+    {"id":"OQ","from":"O","to":"Q"},{"id":"OR","from":"O","to":"R"},{"id":"QR","from":"Q","to":"R"},
+    {"id":"PR","from":"P","to":"R"},{"id":"RS","from":"R","to":"S"},{"id":"SP","from":"S","to":"P"}
+  ],
+  "polygons":[{"id":"A1","points":["Q","O","R"],"fill":"LIGHT"},{"id":"A2","points":["P","R","S"],"fill":"MEDIUM"}],
+  "caption":"쌍곡선 접선의 두 축절편 Q,R과 수선의 발 S가 만드는 두 삼각형",
+  "accessibilityDescription":"가로로 열린 쌍곡선 위 제1사분면의 점 P에서의 접선이 양의 x축 Q와 음의 y축 R에 닿는다. P에서 x축에 내린 수선의 발 S와 원점 O가 있고, 삼각형 QOR과 PRS를 서로 다른 옅은 음영으로 구분했다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"원문은 a,b가 미정이므로 넓이 비 16:5를 동시에 만족하는 동형 대표 쌍곡선 a²=20,b²=16을 택하고 P=(5,2)로 둔다. 그때 접선 y=2x−8의 절편은 Q=(4,0),R=(0,−8)이다. a·b·k 값을 그림에 라벨로 쓰지 않는다.","mappedTo":["conic","P","t","Q","R"]},
+    {"id":"c2","condition":"원문 S=(5,0)는 P의 x축 수선의 발로 FOOT.rightAngle true이다. QOR과 PRS의 면적이 각각 대표 16,5여서 원문의 비 16:5를 충족한다. 서로 다른 채움으로 두 삼각형을 구분하지만 면적의 숫자나 주축 길이 정답은 노출하지 않는다.","mappedTo":["S","O","OQ","OR","QR","PR","RS","SP","A1","A2"]},
+    {"id":"c3","condition":"원문 P(5,k)의 문자 좌표 라벨은 엔진이 지원하지 않으므로 ENGINE_CAPABILITY_PENDING으로 인계한다.","mappedTo":["P"]}
+  ],
+  "newVisualInformation":["넓이 비를 만족하는 실제 대표 곡선과 두 삼각형","PS 수직 표시 구현","P(5,k) 문자 좌표는 ENGINE_CAPABILITY_PENDING"]
+}

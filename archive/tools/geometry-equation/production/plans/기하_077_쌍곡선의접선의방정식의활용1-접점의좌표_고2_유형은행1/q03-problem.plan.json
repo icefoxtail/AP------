@@ -1,0 +1,19 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"HYPERBOLA","center":["0","0"],"aSquared":"10","bSquared":"15","transverse":"X"},
+  "points":[
+    {"id":"F","kind":"FOCUS","side":1,"coordinates":true},
+    {"id":"F'","kind":"FOCUS","side":-1,"coordinates":true},
+    {"id":"P","kind":"ON_CONIC","x":"4","sign":"POS"},
+    {"id":"T","kind":"LINE_LINE","lines":["l","xaxis"]}
+  ],
+  "lines":[{"id":"l","tangent":true,"at":"P","label":"l"},{"id":"xaxis","y":"0","hidden":true}],
+  "segments":[{"id":"FT","from":"F'","to":"T","label":"3"},{"id":"TF","from":"T","to":"F","label":"1"},{"id":"PT","from":"P","to":"T"}],
+  "caption":"초점 F′F를 3:1로 내분하는 접선의 x절편 T와 쌍곡선 위의 P",
+  "accessibilityDescription":"가로로 열린 쌍곡선의 초점 F′(-5,0), F(5,0) 사이에 점 T가 있고 F′T:TF=3:1이다. 제1사분면 쌍곡선 위의 P에서의 접선 l이 이 T를 통과한다. P의 미지 y좌표 값은 적지 않는다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"원문 두 초점 F′=(-5,0),F=(5,0)과 그 사이 내분점 T=(5/2,0)의 F′T:TF=3:1을 두 선분의 실제 길이 비 및 3·1 라벨로 나타낸다.","mappedTo":["F'","F","T","FT","TF"]},
+    {"id":"c2","condition":"접점 P=(4,k)의 부호는 원문에 지정되지 않지만 위쪽 대표 k>0을 택한다. 이를 만족하는 쌍곡선 x²/10−y²/15=1은 초점 ±5와 접선의 x절편 T를 동시에 보장한다. k²과 풀이 숫자는 화면 비표시, P(4,k) 문자 좌표 라벨은 엔진 미지원으로 ENGINE_CAPABILITY_PENDING.","mappedTo":["conic","P","l","PT"]}
+  ],
+  "newVisualInformation":["정확한 두 초점·내분점과 3:1의 실제 표기","접선이 내분점을 지나는 관계","P(4,k) 문자 라벨은 ENGINE_CAPABILITY_PENDING"]
+}

@@ -1,0 +1,26 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"ELLIPSE","center":["0","0"],"aSquared":"6","bSquared":"3","major":"Y"},
+  "points":[
+    {"id":"P","kind":"ON_CONIC","x":"sqrt(2)","branch":"POS"},
+    {"id":"Q","kind":"ON_CONIC","x":"-sqrt(2)","branch":"NEG"},
+    {"id":"A","kind":"LINE_LINE","lines":["t1","u2"],"label":false},
+    {"id":"B","kind":"LINE_LINE","lines":["t1","u1"],"label":false},
+    {"id":"C","kind":"LINE_LINE","lines":["t2","u1"],"label":false},
+    {"id":"D","kind":"LINE_LINE","lines":["t2","u2"],"label":false}
+  ],
+  "lines":[
+    {"id":"diag","slope":"1","intercept":"0","dashed":true,"label":"y=x"},
+    {"id":"t1","tangent":true,"at":"P"},{"id":"t2","tangent":true,"at":"Q"},
+    {"id":"u1","slope":"2","intercept":"3*sqrt(2)","tangent":true},
+    {"id":"u2","slope":"2","intercept":"-3*sqrt(2)","tangent":true}
+  ],
+  "polygons":[{"id":"ABCD","points":["A","B","C","D"],"fill":"NONE"}],
+  "caption":"두 교점에서의 접선과 기울기가 2인 두 접선이 만드는 평행사변형",
+  "accessibilityDescription":"세로로 긴 타원과 원점을 지나는 대각선 y=x가 만나는 위아래 점에서 두 접선을 그린다. 여기에 직선 y=2x와 평행한 두 접선을 더하면 네 접선 사이로 중심이 원점인 마름모 모양의 평행사변형이 만들어진다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"2x²+y²=6은 x²/3+y²/6=1이다. y=x와의 교점은 P=(√2,√2), Q=(-√2,-√2)이며 t1,t2는 각각 이 점에서의 실제 접선이다.","mappedTo":["conic","P","Q","diag","t1","t2"]},
+    {"id":"c2","condition":"나머지 두 직선 u1,u2는 각각 y=2x±3√2로 주어진 기준 직선 y=2x에 평행하고 타원에 접한다. 네 교점을 A,B,C,D로 계산해 평행사변형 테두리를 만든다. 넓이 및 정답 수치는 표기하지 않는다.","mappedTo":["u1","u2","A","B","C","D","ABCD"]}
+  ],
+  "newVisualInformation":["직선 y=x의 두 교점에서의 정확한 접선","주어진 평행 접선 2개와 네 실제 교점으로 만든 평행사변형"]
+}

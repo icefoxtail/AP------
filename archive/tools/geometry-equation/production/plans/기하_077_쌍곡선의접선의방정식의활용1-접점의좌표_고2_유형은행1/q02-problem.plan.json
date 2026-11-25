@@ -1,0 +1,23 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"HYPERBOLA","center":["0","0"],"aSquared":"8","bSquared":"4","transverse":"X"},
+  "points":[
+    {"id":"T","kind":"ON_CONIC","x":"4","sign":"POS","coordinates":true},
+    {"id":"F","kind":"FOCUS","side":1,"coordinates":true},
+    {"id":"F'","kind":"FOCUS","side":-1,"coordinates":true},
+    {"id":"P","kind":"FOOT","from":"F","onto":"l","rightAngle":true},
+    {"id":"Q","kind":"FOOT","from":"F'","onto":"l","rightAngle":true}
+  ],
+  "lines":[{"id":"l","tangent":true,"at":"T","label":"l"}],
+  "segments":[
+    {"id":"FP","from":"F","to":"P"},{"id":"FQ","from":"F'","to":"Q"},
+    {"id":"PQ","from":"P","to":"Q"},{"id":"FF","from":"F'","to":"F"}
+  ],
+  "caption":"쌍곡선의 접선과 두 초점·수선의 발이 이루는 사다리꼴",
+  "accessibilityDescription":"쌍곡선의 제1사분면 접점 T(4,2)에서의 접선 l과 두 초점 F,F′가 있다. 두 초점에서 내린 수선 FP와 F′Q가 평행하고 접선 위의 P,Q 및 x축 위의 F′F를 이어 사다리꼴을 구성한다. 수선 발에는 직각 표식이 있다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"쌍곡선 x²/8−y²/4=1 위의 접점 (4,2)의 접선은 x−y−2=0이며 초점은 (±2√3,0)이다. 접점의 이름은 도식용 T다.","mappedTo":["conic","T","l","F","F'"]},
+    {"id":"c2","condition":"P,Q는 각 초점에서 접선 l에 내린 수선의 발이며 두 FOOT의 rightAngle 표식과 FP,F′Q,PQ,F′F 네 선분을 실제로 그린다. 길이들의 합이나 정답을 라벨로 노출하지 않는다.","mappedTo":["P","Q","FP","FQ","PQ","FF"]}
+  ],
+  "newVisualInformation":["정확한 두 초점과 수선의 발 및 직각 표시","사다리꼴 네 변의 실제 연결"]
+}

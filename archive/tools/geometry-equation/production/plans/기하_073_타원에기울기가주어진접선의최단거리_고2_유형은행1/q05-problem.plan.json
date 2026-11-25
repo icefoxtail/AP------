@@ -1,0 +1,19 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"ELLIPSE","center":["0","0"],"aSquared":"16","bSquared":"4","major":"X"},
+  "points":[
+    {"id":"O","kind":"ORIGIN"},
+    {"id":"A","kind":"ON_CONIC","x":"4","branch":"POS","coordinates":true},
+    {"id":"B","kind":"ON_CONIC","x":"0","branch":"POS","coordinates":true},
+    {"id":"P","kind":"ON_CONIC","x":"2","branch":"POS"}
+  ],
+  "segments":[{"id":"OA","from":"O","to":"A"},{"id":"AP","from":"A","to":"P"},{"id":"PB","from":"P","to":"B"},{"id":"BO","from":"B","to":"O"}],
+  "polygons":[{"id":"OAPB","points":["O","A","P","B"],"fill":"NONE"}],
+  "caption":"타원과 양의 두 축 꼭짓점 A,B 및 대표점 P를 잇는 볼록사각형 OAPB",
+  "accessibilityDescription":"원점 O, 양의 x축에 있는 A(4,0), 양의 y축에 있는 B(0,2), 제1사분면의 타원 위 P를 O-A-P-B 순으로 연결한 볼록사각형이다. P는 넓이를 최대로 만드는 점이 아닌 한 예다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"원문 x²+4y²=16의 양의 x절편 A=(4,0), 양의 y절편 B=(0,2)와 원점 O를 표시한다.","mappedTo":["conic","A","B","O"]},
+    {"id":"c2","condition":"움직이는 P는 x=2, y=√3의 대표점으로 타원 위이면서 제1사분면이다. 네 변 OA·AP·PB·BO와 사각형 OAPB 경계를 그리고 음영은 원문 요구가 없어 넣지 않는다. 넓이 최댓값을 노출하지 않는다.","mappedTo":["P","OA","AP","PB","BO","OAPB"]}
+  ],
+  "newVisualInformation":["양의 축 교점·원점·타원 위 자유점을 잇는 원문의 볼록사각형"]
+}

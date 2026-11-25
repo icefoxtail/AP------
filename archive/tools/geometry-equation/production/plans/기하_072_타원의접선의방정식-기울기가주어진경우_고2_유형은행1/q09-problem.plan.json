@@ -1,0 +1,23 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conics":[
+    {"id":"outer","kind":"ELLIPSE","center":["0","0"],"aSquared":"3","bSquared":"1","major":"X"},
+    {"id":"inner","kind":"ELLIPSE","center":["0","0"],"aSquared":"6/5","bSquared":"3/5","major":"X"}
+  ],
+  "points":[
+    {"id":"A","kind":"ON_CONIC","curve":"outer","x":"sqrt(3)","branch":"POS","label":false},
+    {"id":"B","kind":"ON_CONIC","curve":"outer","x":"0","branch":"POS","label":false},
+    {"id":"C","kind":"ON_CONIC","curve":"outer","x":"-sqrt(3)","branch":"POS","label":false},
+    {"id":"D","kind":"ON_CONIC","curve":"outer","x":"0","branch":"NEG","label":false},
+    {"id":"F","kind":"FOCUS","curve":"inner","side":1},
+    {"id":"F'","kind":"FOCUS","curve":"inner","side":-1}
+  ],
+  "polygons":[{"id":"diamond","points":["A","B","C","D"],"fill":"NONE"}],
+  "caption":"바깥 타원 네 꼭짓점의 마름모와 그 안에 접하는 가로 장축 타원",
+  "accessibilityDescription":"가로로 긴 바깥 타원의 네 꼭짓점을 이은 마름모 안쪽에 작은 가로 장축 타원이 네 변에 각각 접한다. 안쪽 타원의 두 초점 F,F′는 x축 양쪽에 있다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"바깥 타원 x²/3+y²=1의 네 꼭짓점은 (±√3,0),(0,±1)이며 마름모 변을 이룬다.","mappedTo":["outer","A","B","C","D","diamond"]},
+    {"id":"c2","condition":"내접 타원의 초점 조건 c=b와 네 변의 접선 조건으로 내부 계산 a²=6/5,b²=3/5을 택한다. 각 변 x/√3±y=±1은 내부 타원에 접하고 c²=a²-b²=b²이다. 원문이 구하는 a²b², p+q는 그림에 노출하지 않는다.","mappedTo":["inner","F","F'","diamond"]}
+  ],
+  "newVisualInformation":["두 동심 타원과 바깥 꼭짓점을 이은 실제 마름모","안쪽 타원의 두 x축 초점과 네 변 내접 조건"]
+}
