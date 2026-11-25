@@ -1,0 +1,455 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "T03",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T13",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T23",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T33",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B02",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B12",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B22",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B32",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C11",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C21",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D10",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D20",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "T03",
+    "T13",
+    "T23",
+    "T33",
+    "B02",
+    "B12",
+    "B22",
+    "B32",
+    "C11",
+    "C21",
+    "D10",
+    "D20"
+  ],
+  "hiddenPointNames": [
+    "T03",
+    "T13",
+    "T23",
+    "T33",
+    "B02",
+    "B12",
+    "B22",
+    "B32",
+    "C11",
+    "C21",
+    "D10",
+    "D20"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "edge01",
+      "refs": [
+        "T03",
+        "T13"
+      ]
+    },
+    {
+      "id": "edge02",
+      "refs": [
+        "T13",
+        "T23"
+      ]
+    },
+    {
+      "id": "edge03",
+      "refs": [
+        "T23",
+        "T33"
+      ]
+    },
+    {
+      "id": "edge04",
+      "refs": [
+        "T03",
+        "B02"
+      ]
+    },
+    {
+      "id": "edge05",
+      "refs": [
+        "T13",
+        "B12"
+      ]
+    },
+    {
+      "id": "edge06",
+      "refs": [
+        "T23",
+        "B22"
+      ]
+    },
+    {
+      "id": "edge07",
+      "refs": [
+        "T33",
+        "B32"
+      ]
+    },
+    {
+      "id": "edge08",
+      "refs": [
+        "B02",
+        "B12"
+      ]
+    },
+    {
+      "id": "edge09",
+      "refs": [
+        "B12",
+        "B22"
+      ]
+    },
+    {
+      "id": "edge10",
+      "refs": [
+        "B22",
+        "B32"
+      ]
+    },
+    {
+      "id": "edge11",
+      "refs": [
+        "B12",
+        "C11"
+      ]
+    },
+    {
+      "id": "edge12",
+      "refs": [
+        "B22",
+        "C21"
+      ]
+    },
+    {
+      "id": "edge13",
+      "refs": [
+        "C11",
+        "C21"
+      ]
+    },
+    {
+      "id": "edge14",
+      "refs": [
+        "C11",
+        "D10"
+      ]
+    },
+    {
+      "id": "edge15",
+      "refs": [
+        "C21",
+        "D20"
+      ]
+    },
+    {
+      "id": "edge16",
+      "refs": [
+        "D10",
+        "D20"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "textLabels": [
+      {
+        "id": "left",
+        "at": [
+          0.5,
+          2.5
+        ],
+        "text": "t",
+        "labelKind": "MATH"
+      },
+      {
+        "id": "middle",
+        "at": [
+          1.5,
+          2.5
+        ],
+        "text": "2t",
+        "labelKind": "MATH"
+      },
+      {
+        "id": "right",
+        "at": [
+          2.5,
+          2.5
+        ],
+        "text": "7t",
+        "labelKind": "MATH"
+      },
+      {
+        "id": "lower",
+        "at": [
+          1.5,
+          1.5
+        ],
+        "text": "3t",
+        "labelKind": "MATH"
+      },
+      {
+        "id": "bottom",
+        "at": [
+          1.5,
+          0.5
+        ],
+        "text": "5t",
+        "labelKind": "MATH"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 530,
+    "height": 490
+  },
+  "sourceQuote": "오른쪽 그림과 같은 $5$개의 칸에 $5$개의 수",
+  "caption": "t=log_a 2로 두면 가로 세 칸은 t, 2t, 7t이고 가운데를 공유하는 세로 세 칸은 2t, 3t, 5t가 되는 배치이다.",
+  "accessibilityDescription": "같은 크기의 정사각형 다섯 개가 T자 형태로 이어져 있다. 위쪽 왼쪽부터 t, 2t, 7t를 쓰고, 중앙 아래에 3t와 5t를 위아래로 적는다.",
+  "sourceConditions": [
+    {
+      "id": "L17-layout",
+      "condition": "원문 q17.png는 같은 크기의 정사각형 5개: 위 3개가 가로 한 줄이고 중앙 위 칸의 아래로 2개가 수직으로 이어진다.",
+      "mappedTo": "mathPlan.nodes,displaySegments[edge01..edge16]"
+    },
+    {
+      "id": "L17-values",
+      "condition": "t=log_a(2), 입력값 계수는 1,2,3,5,7; 공통 칸 2t; 가로 t+2t+7t=10t, 세로 2t+3t+5t=10t; 각각 15.",
+      "mappedTo": "planeMarks.textLabels[left,middle,right,lower,bottom]"
+    }
+  ],
+  "newVisualInformation": [
+    "주어진 다섯 로그값이 가로·세로 합이 같은 실제 칸 배치에 어떻게 들어가는지 보인다."
+  ]
+}
