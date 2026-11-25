@@ -1,0 +1,37 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-5, 9, -2, 3.2],
+    "axisTickValues": { "x": [], "y": [] },
+    "curves": [
+      { "id": "s", "kind": "SQRT", "radicand": ["3", "1"], "amplitude": "-1", "offset": "2", "domain": ["-3", "9"], "color": "BLUE", "hideLabel": true },
+      { "id": "h", "kind": "LINE", "coefficients": ["2", "0"], "domain": ["-4", "9"], "style": "DASHED", "color": "WARM", "label": "y=2" }
+    ],
+    "overlays": {
+      "lines": [
+        { "id": "v", "x": "-3", "style": "DASHED", "label": "x=-3", "labelAt": "END" }
+      ],
+      "points": [
+        { "id": "S", "x": "-3", "y": "2", "unnamed": true, "coordinates": true, "labelDirection": "NW" },
+        { "id": "Y", "x": "0", "y": "2-sqrt(3)", "unnamed": true, "coordinates": false },
+        { "id": "X", "x": "1", "y": "0", "unnamed": true, "coordinates": true, "labelDirection": "SE" }
+      ],
+      "callouts": [
+        { "id": "yIntercept", "point": "Y", "text": "(0,2-√3)", "labelKind": "MATH", "direction": "NE" }
+      ]
+    }
+  },
+  "caption": "조건을 만족하는 한 예 (a,b,c)=(1,3,2)의 함수 y=2−√(x+3)이다. 시작점 (−3,2), 양의 y절편, x절편 (1,0)이 보여 제1·2·4사분면을 지나며, 정의역 x≥−3과 공역 y≤2를 만족한다.",
+  "accessibilityDescription": "예시 무리함수 y=2−√(x+3)는 (−3,2)에서 시작해 감소하면서 (0,2−√3), (1,0)을 지나고 제4사분면으로 내려간다. x=−3과 y=2 경계선이 점선으로 있다.",
+  "sourceQuote": "X={x|x≥−3}, Y={y|y≤2}로의 함수 f(x)=−√(ax+b)+c가 제 1, 2, 4 사분면만",
+  "sourceConditions": [
+    { "id": "S1", "condition": "(a,b,c)=(1,3,2)는 해설에 열거된 13개 순서쌍 중 첫째 예시", "mappedTo": "graphPlan.curves[0]" },
+    { "id": "S2", "condition": "시작점 (−3,2), y절편 (0,2−√3), x절편 (1,0)", "mappedTo": ["graphPlan.overlays.points[0]", "graphPlan.overlays.points[1]", "graphPlan.overlays.points[2]", "graphPlan.overlays.callouts[0]"] },
+    { "id": "S3", "condition": "정의역 x≥−3, 공역 y≤2", "mappedTo": ["graphPlan.overlays.lines[0]", "graphPlan.curves[1]"] }
+  ],
+  "newVisualInformation": [
+    "서로 다른 13개의 답 중 첫 예시임을 캡션에 밝힌다.",
+    "도식에서 사분면 통과 조건을 확인할 수 있도록 시작점과 두 절편의 표시를 직접 그린다."
+  ]
+}

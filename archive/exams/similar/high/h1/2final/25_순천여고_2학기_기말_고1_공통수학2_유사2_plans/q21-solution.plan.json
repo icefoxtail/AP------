@@ -1,0 +1,29 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-1, 6, -1, 4],
+    "axisTickValues": { "x": [], "y": [] },
+    "curves": [
+      { "id": "s", "kind": "SQRT", "radicand": ["-1", "1"], "amplitude": "-1", "offset": "2", "domain": ["1", "6"], "color": "BLUE", "hideLabel": true },
+      { "id": "l", "kind": "LINE", "coefficients": ["4", "-1"], "domain": ["-1", "6"], "color": "WARM", "label": "y=-x+4" }
+    ],
+    "overlays": {
+      "points": [
+        { "id": "S", "x": "1", "y": "2", "unnamed": true, "coordinates": true, "labelDirection": "NW" },
+        { "id": "P", "x": "5/2+1/2*sqrt(5)", "y": "3/2-1/2*sqrt(5)", "unnamed": true, "coordinates": true, "labelDirection": "SE" }
+      ]
+    }
+  },
+  "caption": "역함수 y=2−√(x−1)는 (1,2)에서 시작한다. 직선 y=4−x와의 교점은 x≥2 조건을 만족하는 x=(5+√5)/2 한 개뿐이다. 제곱에서 나온 다른 근은 x<2이므로 제외한다.",
+  "accessibilityDescription": "점 (1,2)에서 시작하여 오른쪽 아래로 내려가는 역함수 그래프와 직선 y=−x+4가 교점 P 한 개에서 만나며, 두 점의 좌표가 표시되어 있다.",
+  "sourceQuote": "f:(−∞,2]→[1,∞), f(x)=(x−2)^2+1, 방정식 f^{-1}(x)=4−x",
+  "sourceConditions": [
+    { "id": "S1", "condition": "f^{-1}(x)=2−√(x−1), x≥1이고 시작점은 (1,2)", "mappedTo": ["graphPlan.curves[0]", "graphPlan.overlays.points[0]"] },
+    { "id": "S2", "condition": "f^{-1}(x)=4−x인 해는 x=(5+√5)/2이며 해당 y는 (3−√5)/2", "mappedTo": ["graphPlan.curves[1]", "graphPlan.overlays.points[1]"] }
+  ],
+  "newVisualInformation": [
+    "역함수의 닫힌 시작점 (1,2)을 좌표와 함께 표시한다.",
+    "양쪽 그래프가 만나는 정확한 교점 좌표를 표시하고 제곱으로 생긴 허근은 표시하지 않는다."
+  ]
+}
