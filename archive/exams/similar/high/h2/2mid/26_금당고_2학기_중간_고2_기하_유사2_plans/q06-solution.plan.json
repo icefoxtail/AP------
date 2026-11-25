@@ -1,0 +1,90 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "HYPERBOLA",
+    "center": [
+      "1",
+      "-1"
+    ],
+    "aSquared": "16",
+    "bSquared": "9",
+    "transverse": "X"
+  },
+  "points": [
+    {
+      "id": "C",
+      "kind": "CENTER"
+    },
+    {
+      "id": "U",
+      "kind": "LINE_LINE",
+      "lines": [
+        "u",
+        "k"
+      ]
+    },
+    {
+      "id": "V",
+      "kind": "LINE_LINE",
+      "lines": [
+        "v",
+        "k"
+      ]
+    }
+  ],
+  "lines": [
+    {
+      "id": "u",
+      "role": "ASYMPTOTE",
+      "sign": 1,
+      "dashed": true
+    },
+    {
+      "id": "v",
+      "role": "ASYMPTOTE",
+      "sign": -1,
+      "dashed": true
+    },
+    {
+      "id": "k",
+      "x": "9"
+    }
+  ],
+  "segments": [
+    {
+      "id": "sCU",
+      "from": "C",
+      "to": "U"
+    },
+    {
+      "id": "sCV",
+      "from": "C",
+      "to": "V"
+    },
+    {
+      "id": "sUV",
+      "from": "U",
+      "to": "V",
+      "label": "12"
+    }
+  ],
+  "polygons": [],
+  "caption": "Q06 해설 관계도",
+  "accessibilityDescription": "해설에 쓰이는 이차곡선과 점, 선분의 위치 관계를 나타낸 그림이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "점근선의 비례기울기와 삼각형의 밑변/높이",
+      "mappedTo": [
+        "conic",
+        "points",
+        "lines",
+        "segments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "점근선-수직선이 이루는 삼각형의 정확한 밑변 12와 높이 8을 확인한다."
+  ],
+  "sourceQuote": "쌍곡선 $\\dfrac{(x-1)^2}{16}-\\dfrac{(y+1)^2}{9}=1$의 두 점근선과 직선 $x=9$로 둘러싸인 삼각형의 넓이는? [3.8점]"
+}

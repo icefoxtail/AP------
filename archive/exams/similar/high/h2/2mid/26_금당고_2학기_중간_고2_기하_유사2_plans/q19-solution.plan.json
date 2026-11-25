@@ -1,0 +1,75 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "PARABOLA",
+    "vertex": [
+      "0",
+      "0"
+    ],
+    "p": "4",
+    "axis": "Y"
+  },
+  "points": [
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    },
+    {
+      "id": "A",
+      "kind": "FOCUS"
+    },
+    {
+      "id": "B",
+      "kind": "POINT",
+      "x": "-3",
+      "y": "8"
+    },
+    {
+      "id": "P",
+      "kind": "ON_CONIC",
+      "x": "-3"
+    }
+  ],
+  "lines": [
+    {
+      "id": "d",
+      "role": "DIRECTRIX"
+    },
+    {
+      "id": "v",
+      "x": "-3",
+      "dashed": true
+    }
+  ],
+  "segments": [
+    {
+      "id": "sBP",
+      "from": "B",
+      "to": "P"
+    },
+    {
+      "id": "sPA",
+      "from": "P",
+      "to": "A"
+    }
+  ],
+  "polygons": [],
+  "caption": "Q19 해설 관계도",
+  "accessibilityDescription": "해설에 쓰이는 이차곡선과 점, 선분의 위치 관계를 나타낸 그림이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "초점-준선 등거리와 직선거리 최소 경로의 등호",
+      "mappedTo": [
+        "conic",
+        "points",
+        "lines",
+        "segments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "BP+PA를 BP+PH로 바꾼 뒤 B,P,H가 일직선이 되는 등호 상황을 보인다."
+  ],
+  "sourceQuote": "항구 $O$를 꼭짓점, 기지국 $A$를 초점으로 하는 포물선 모양의 도로가 있다. $O$는 원점이고 $A$는 $y$축의 양의 부분에 있다. 공장 $B$에서 도로 위 저장시설 $P$를 거쳐 $A$로 연결하는 경로의 총길이 $BP+PA$를 최소화하려고 한"
+}

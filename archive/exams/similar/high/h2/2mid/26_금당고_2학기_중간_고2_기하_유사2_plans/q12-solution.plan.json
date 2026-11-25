@@ -1,0 +1,104 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "kind": "PYRAMID",
+      "base": {
+        "kind": "RECT",
+        "width": 2,
+        "depth": 2
+      },
+      "height": 1.4142135623730951,
+      "names": "BCDEA",
+      "points": [
+        {
+          "id": "H",
+          "at": {
+            "edge": [
+              "C",
+              "D"
+            ],
+            "t": "1/2"
+          }
+        },
+        {
+          "id": "O",
+          "at": {
+            "base": "center"
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "A",
+      "to": "H",
+      "role": "ACCENT",
+      "style": "AUTO"
+    },
+    {
+      "from": "H",
+      "to": "C",
+      "style": "AUTO"
+    },
+    {
+      "from": "B",
+      "to": "D",
+      "role": "REF",
+      "style": "AUTO"
+    },
+    {
+      "from": "A",
+      "to": "O",
+      "style": "DASHED"
+    },
+    {
+      "from": "O",
+      "to": "H",
+      "style": "DASHED"
+    },
+    {
+      "from": "O",
+      "to": "B",
+      "style": "DASHED"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "H",
+        "refs": [
+          "A",
+          "C"
+        ]
+      },
+      {
+        "at": "O",
+        "refs": [
+          "A",
+          "B"
+        ]
+      }
+    ]
+  },
+  "solidCaption": {
+    "text": "직교 정사영 관계"
+  },
+  "caption": "Q12 해설 관계도",
+  "accessibilityDescription": "입체도형의 꼭짓점, 공간 선분과 각의 관계를 보여 주는 예시 그림이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "정사각뿔의 직각 성분·45도 수평 투영",
+      "mappedTo": [
+        "segments",
+        "solids"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "AH의 밑면 정사영 OH와 대각선 BD 사이 45도 성분을 분리한다."
+  ],
+  "sourceQuote": "모든 모서리의 길이가 같은 정사각뿔 $A-BCDE$에서 $A$에서 모서리 $CD$에 내린 수선의 발을 $H$라 한다. 직선 $AH$와 밑면의 대각선 $BD$가 이루는 예각을 $\\theta$라 할 때, $\\cos\\theta$의 값은? [4.8점]"
+}

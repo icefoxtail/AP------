@@ -1,0 +1,65 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "ELLIPSE",
+    "center": [
+      "1",
+      "-1"
+    ],
+    "aSquared": "25",
+    "bSquared": "16",
+    "major": "X"
+  },
+  "points": [
+    {
+      "id": "P",
+      "kind": "ON_CONIC",
+      "x": "4",
+      "branch": "POS"
+    },
+    {
+      "id": "T",
+      "kind": "POINT",
+      "x": "1",
+      "y": "4"
+    }
+  ],
+  "lines": [
+    {
+      "id": "t",
+      "slope": "-3/5",
+      "intercept": "23/5",
+      "tangent": true
+    },
+    {
+      "id": "k",
+      "x": "1"
+    }
+  ],
+  "segments": [
+    {
+      "id": "sPT",
+      "from": "P",
+      "to": "T"
+    }
+  ],
+  "polygons": [],
+  "caption": "Q07 해설 관계도",
+  "accessibilityDescription": "해설에 쓰이는 이차곡선과 점, 선분의 위치 관계를 나타낸 그림이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "이동된 타원의 접선 방정식과 대입",
+      "mappedTo": [
+        "conic",
+        "points",
+        "lines",
+        "segments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "접점 P와 접선의 x=1 교점을 서로 다른 점으로 구별한다."
+  ],
+  "sourceQuote": "타원 $\\dfrac{(x-1)^2}{25}+\\dfrac{(y+1)^2}{16}=1$ 위의 점 $P(4,\\dfrac{11}{5})$에서의 접선이 직선 $x=1$과 만나는 점의 $y$좌표는? [4점]"
+}

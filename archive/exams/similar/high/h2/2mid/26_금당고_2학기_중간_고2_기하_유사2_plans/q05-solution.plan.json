@@ -1,0 +1,57 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "ELLIPSE",
+    "center": [
+      "1",
+      "-2"
+    ],
+    "aSquared": "16",
+    "bSquared": "9",
+    "major": "Y"
+  },
+  "points": [
+    {
+      "id": "C",
+      "kind": "CENTER"
+    },
+    {
+      "id": "F",
+      "kind": "FOCUS",
+      "side": 1
+    },
+    {
+      "id": "F'",
+      "kind": "FOCUS",
+      "side": -1
+    }
+  ],
+  "lines": [],
+  "segments": [
+    {
+      "id": "sFF",
+      "from": "F",
+      "to": "F'",
+      "label": "2\\sqrt7"
+    }
+  ],
+  "polygons": [],
+  "caption": "Q05 해설 관계도",
+  "accessibilityDescription": "해설에 쓰이는 이차곡선과 점, 선분의 위치 관계를 나타낸 그림이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "완전제곱 및 c²=a²−b²",
+      "mappedTo": [
+        "conic",
+        "points",
+        "lines",
+        "segments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "세로 장축의 두 초점이 중심에서 같은 거리 c에 놓임을 알 수 있다."
+  ],
+  "sourceQuote": "타원 $16x^2+9y^2-32x+36y-92=0$의 두 초점 사이 거리의 제곱은? [3.8점]"
+}

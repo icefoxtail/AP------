@@ -1,0 +1,66 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conics": [
+    {
+      "id": "e",
+      "kind": "ELLIPSE",
+      "center": [
+        "0",
+        "0"
+      ],
+      "aSquared": "25",
+      "bSquared": "9",
+      "major": "X"
+    },
+    {
+      "id": "c",
+      "kind": "CIRCLE",
+      "center": [
+        "8",
+        "5"
+      ],
+      "rSquared": "4"
+    }
+  ],
+  "points": [
+    {
+      "id": "F",
+      "kind": "FOCUS",
+      "side": 1,
+      "curve": "e"
+    },
+    {
+      "id": "C",
+      "kind": "POINT",
+      "x": "8",
+      "y": "5"
+    }
+  ],
+  "lines": [],
+  "segments": [
+    {
+      "id": "sCF",
+      "from": "C",
+      "to": "F"
+    }
+  ],
+  "polygons": [],
+  "caption": "Q15 발문 관계도 (조건을 만족하는 배치 예시, 미지수·좌표값은 생략)",
+  "accessibilityDescription": "발문에서 주어진 이차곡선과 점, 선분의 위치 관계를 나타낸 그림이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "타원 $\\dfrac{x^2}{25}+\\dfrac{y^2}{9}=1$의 양의 $x$축 쪽 초점을 $F$라 한다. 중심이 $C(8,t)$, 반지름이 $2$인 원 위의 점 $Q$와 타원 위의 점 $P$에 대하여 $PQ-PF$의 최솟값이 $1$이다. 양수 $t$의 값은? [5.6점]",
+      "mappedTo": [
+        "conics",
+        "points",
+        "lines",
+        "segments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "타원 반대 초점과 원 중심을 연결하는 최단 거리의 상대 배치를 보여 준다."
+  ],
+  "sourceQuote": "타원 $\\dfrac{x^2}{25}+\\dfrac{y^2}{9}=1$의 양의 $x$축 쪽 초점을 $F$라 한다. 중심이 $C(8,t)$, 반지름이 $2$인 원 위의 점 $Q$와 타원 위의 점 $P$에 대하여 $PQ-PF$의 최솟값이 $1$이다. 양수 $"
+}

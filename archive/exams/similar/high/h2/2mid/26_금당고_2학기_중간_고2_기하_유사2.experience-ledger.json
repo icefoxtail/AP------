@@ -1,0 +1,889 @@
+{
+  "schemaVersion": "alive-exam-followup-source-balanced-v1",
+  "examUid": "26_금당고_2학기_중간_고2_기하_유사2",
+  "mode": "ALIVE EXAM_FOLLOWUP",
+  "difficultyProfile": "SOURCE_BALANCED",
+  "originalFile": "archive/exams/original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js",
+  "originalGitBlobSha1": "0d50b5d014785a70b7027ccbd0ce1ca02cd9ef06",
+  "existingVariantFile": "archive/exams/similar/high/h2/2mid/26_금당고_2학기_중간_고2_기하_유사.js",
+  "existingVariantGitBlobSha1": "6ff9544b2afcf81bca40260bb5765cfaf1d08710",
+  "sourceArchiveFile": "archive/exams/similar/high/h2/2mid/26_금당고_2학기_중간_고2_기하_유사2.js",
+  "sourceGitBlobSha": "84b8eaee41f59f3ee6a02d06e5131031a75fdf5d",
+  "approvalStatus": "DRAFT_SELF_REVIEW_I1",
+  "independentHumanOrModelReview": "NOT_RUN",
+  "sourceProblemCount": 20,
+  "totalPoints": 100,
+  "objectiveQuestions": 16,
+  "shortAnswerQuestions": 2,
+  "constructedResponseQuestions": 2,
+  "answerSlots": [
+    "③",
+    "①",
+    "⑤",
+    "②",
+    "④",
+    "②",
+    "③",
+    "⑤",
+    "①",
+    "④",
+    "②",
+    "⑤",
+    "③",
+    "①",
+    "④",
+    "⑤"
+  ],
+  "items": [
+    {
+      "sourceQid": 1,
+      "originalReference": "archive/exams/original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js#q1",
+      "existingVariantReference": "archive/exams/similar/high/h2/2mid/26_금당고_2학기_중간_고2_기하_유사.js#q1",
+      "originalSummary": "타원 $\\dfrac{x^2}{16}+\\dfrac{y^2}{9}=1$의 장축의 길이는? [3.6점]",
+      "existingVariantSummary": "타원 $\\displaystyle\\frac{x^2}{25}+\\frac{y^2}{16}=1$의 장축의 길이는?",
+      "lockedPrimaryL3": "H2-GEO-RPM-042",
+      "conditionAndTargetShift": "표준형 분모에서 장축 길이 직접 산출 → 평행이동된 타원의 장축 끝점 좌표차",
+      "decisiveCore": "긴 반축을 읽어 중심 기준 ±a 좌표 구하기",
+      "solutionEntry": "긴 반축을 읽어 중심 기준 ±a 좌표 구하기",
+      "questionTarget": "타원 $\\dfrac{(x-2)^2}{9}+\\dfrac{(y+1)^2}{36}=1$의 장축 양 끝점의 $y$좌표의 차는? [3.6점]",
+      "trapSignature": "중심 이동값을 길이에 더함",
+      "variationType": "CONFIRMATION",
+      "sourceBucketJudgment": 1,
+      "priorBucketJudgment": 1,
+      "newBucketJudgment": 1,
+      "problemTypeKey": "PT_GEO_ELLIPSE",
+      "templateKey": "TPL_GEO_ELLIPSE_AXIS_FOCUS",
+      "semanticDuplicateResult": "DIFFERENT_CONDITION_OR_TARGET_FROM_ORIGINAL_AND_SIMILAR1",
+      "mathCheck": "AUTHOR_I1_PENDING",
+      "independentI2Review": "NOT_RUN",
+      "visual": {
+        "qid": 1,
+        "problem": {
+          "decision": "EXEMPT",
+          "reason": "두 끝점 y좌표가 중심과 장반축 값에서 곧바로 정해져 개별 곡선 도식은 중복이다.",
+          "engineStatus": "NOT_APPLICABLE"
+        },
+        "solution": {
+          "decision": "EXEMPT",
+          "reason": "중심 y=-1에서 ±6을 계산하는 과정만 있어 선분 그림은 새로운 판단을 제공하지 않는다.",
+          "engineStatus": "NOT_APPLICABLE"
+        }
+      },
+      "item4slotRationale": {
+        "given": "발문에서 실제로 제시된 긴 반축을 읽어 중심 기준 ±a 좌표 구하기 조건",
+        "goal": "표준형 분모에서 장축 길이 직접 산출 → 평행이동된 타원의 장축 끝점 좌표차",
+        "method": "긴 반축을 읽어 중심 기준 ±a 좌표 구하기",
+        "condition": "중심 이동값을 길이에 더함"
+      }
+    },
+    {
+      "sourceQid": 2,
+      "originalReference": "archive/exams/original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js#q2",
+      "existingVariantReference": "archive/exams/similar/high/h2/2mid/26_금당고_2학기_중간_고2_기하_유사.js#q2",
+      "originalSummary": "쌍곡선 $\\dfrac{x^2}{12}-\\dfrac{y^2}{4}=1$의 주축의 길이는? [3.6점]",
+      "existingVariantSummary": "쌍곡선 $\\displaystyle\\frac{x^2}{8}-\\frac{y^2}{4}=1$의 주축의 길이는?",
+      "lockedPrimaryL3": "H2-GEO-RPM-043",
+      "conditionAndTargetShift": "분모 계수로 주축 읽기 → 꼭짓점 두 좌표에서 주축 역산",
+      "decisiveCore": "주축의 길이는 꼭짓점 사이 거리",
+      "solutionEntry": "주축의 길이는 꼭짓점 사이 거리",
+      "questionTarget": "중심이 $(1,1)$인 쌍곡선의 두 꼭짓점의 좌표가 $(-3,1)$, $(5,1)$이다. 이 쌍곡선의 주축의 길이는? [3.6점]",
+      "trapSignature": "중심부터 꼭짓점까지 반 길이를 답함",
+      "variationType": "CONFIRMATION",
+      "sourceBucketJudgment": 1,
+      "priorBucketJudgment": 1,
+      "newBucketJudgment": 1,
+      "problemTypeKey": "PT_GEO_HYPERBOLA",
+      "templateKey": "TPL_GEO_HYPERBOLA_ASYMPTOTE_AXIS",
+      "semanticDuplicateResult": "DIFFERENT_CONDITION_OR_TARGET_FROM_ORIGINAL_AND_SIMILAR1",
+      "mathCheck": "AUTHOR_I1_PENDING",
+      "independentI2Review": "NOT_RUN",
+      "visual": {
+        "qid": 2,
+        "problem": {
+          "decision": "EXEMPT",
+          "reason": "꼭짓점 두 좌표가 이미 직선 y=1 위에 명시되어 별도 그림이 길이 판단을 바꾸지 않는다.",
+          "engineStatus": "NOT_APPLICABLE"
+        },
+        "solution": {
+          "decision": "EXEMPT",
+          "reason": "동일 수평선 위 꼭짓점 사이 1차원 거리계산이 결정 단계이다.",
+          "engineStatus": "NOT_APPLICABLE"
+        }
+      },
+      "item4slotRationale": {
+        "given": "발문에서 실제로 제시된 주축의 길이는 꼭짓점 사이 거리 조건",
+        "goal": "분모 계수로 주축 읽기 → 꼭짓점 두 좌표에서 주축 역산",
+        "method": "주축의 길이는 꼭짓점 사이 거리",
+        "condition": "중심부터 꼭짓점까지 반 길이를 답함"
+      }
+    },
+    {
+      "sourceQid": 3,
+      "originalReference": "archive/exams/original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js#q3",
+      "existingVariantReference": "archive/exams/similar/high/h2/2mid/26_금당고_2학기_중간_고2_기하_유사.js#q3",
+      "originalSummary": "포물선 $y^2=4ax$의 초점에서 준선까지의 거리가 $4$일 때, 양수 $a$의 값은? [3.6점]",
+      "existingVariantSummary": "포물선 $y^2=4ax$의 초점에서 준선까지의 거리가 $6$일 때, 양수 $a$의 값은?",
+      "lockedPrimaryL3": "H2-GEO-RPM-040",
+      "conditionAndTargetShift": "초점과 준선 거리로 매개변수 → 위치가 다른 초점·준선으로 꼭짓점 초점거리 복원",
+      "decisiveCore": "포물선의 꼭짓점은 초점과 준선의 중간",
+      "solutionEntry": "포물선의 꼭짓점은 초점과 준선의 중간",
+      "questionTarget": "포물선의 초점이 $F(5,0)$이고 준선이 $x=-1$이다. 이 포물선의 꼭짓점에서 초점까지의 거리는? [3.6점]",
+      "trapSignature": "초점-준선 거리 전체를 답함",
+      "variationType": "CONFIRMATION",
+      "sourceBucketJudgment": 1,
+      "priorBucketJudgment": 1,
+      "newBucketJudgment": 1,
+      "problemTypeKey": "PT_GEO_PARABOLA",
+      "templateKey": "TPL_GEO_PARABOLA_FOCUS_DIRECTRIX",
+      "semanticDuplicateResult": "DIFFERENT_CONDITION_OR_TARGET_FROM_ORIGINAL_AND_SIMILAR1",
+      "mathCheck": "AUTHOR_I1_PENDING",
+      "independentI2Review": "NOT_RUN",
+      "visual": {
+        "qid": 3,
+        "problem": {
+          "decision": "EXEMPT",
+          "reason": "초점과 수직 준선의 x좌표가 모두 주어져 중점 계산만으로 해결된다.",
+          "engineStatus": "NOT_APPLICABLE"
+        },
+        "solution": {
+          "decision": "BENEFICIAL",
+          "reason": "초점과 준선 사이 중앙에 꼭짓점이 놓이는 이유를 그림에서 확인할 수 있다.",
+          "plan": "archive/exams/similar/high/h2/2mid/26_금당고_2학기_중간_고2_기하_유사2_plans/q03-solution.plan.json",
+          "engineStatus": "PLAN_JSON_WRITTEN_RENDER_PENDING"
+        }
+      },
+      "item4slotRationale": {
+        "given": "발문에서 실제로 제시된 포물선의 꼭짓점은 초점과 준선의 중간 조건",
+        "goal": "초점과 준선 거리로 매개변수 → 위치가 다른 초점·준선으로 꼭짓점 초점거리 복원",
+        "method": "포물선의 꼭짓점은 초점과 준선의 중간",
+        "condition": "초점-준선 거리 전체를 답함"
+      }
+    },
+    {
+      "sourceQid": 4,
+      "originalReference": "archive/exams/original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js#q4",
+      "existingVariantReference": "archive/exams/similar/high/h2/2mid/26_금당고_2학기_중간_고2_기하_유사.js#q4",
+      "originalSummary": "포물선 $y^2-4y-4ax+4=0$의 초점의 좌표가 $(3,b)$일 때, $a+b$의 값은? [3.6점]",
+      "existingVariantSummary": "포물선 $y^2-6y-4ax+9=0$의 초점의 좌표가 $(4,b)$일 때, $a+b$의 값은?",
+      "lockedPrimaryL3": "H2-GEO-RPM-046",
+      "conditionAndTargetShift": "수평 포물선의 초점 조건 → 수직 포물선의 중심 이동과 초점 매개변수 동시 역산",
+      "decisiveCore": "완전제곱으로 꼭짓점 및 초점 비교",
+      "solutionEntry": "완전제곱으로 꼭짓점 및 초점 비교",
+      "questionTarget": "양수 $p$에 대하여 포물선 $x^2+6x-8py+9=0$의 초점이 $(b,4)$이다. $b+p$의 값은? [3.6점]",
+      "trapSignature": "계수 8을 초점거리 p로 혼동",
+      "variationType": "CONFIRMATION",
+      "sourceBucketJudgment": 1,
+      "priorBucketJudgment": 2,
+      "newBucketJudgment": 1,
+      "problemTypeKey": "PT_GEO_PARABOLA",
+      "templateKey": "TPL_GEO_PARABOLA_TRANSLATION",
+      "semanticDuplicateResult": "DIFFERENT_CONDITION_OR_TARGET_FROM_ORIGINAL_AND_SIMILAR1",
+      "mathCheck": "AUTHOR_I1_PENDING",
+      "independentI2Review": "NOT_RUN",
+      "visual": {
+        "qid": 4,
+        "problem": {
+          "decision": "EXEMPT",
+          "reason": "완전제곱 및 초점 계수 비교가 전부이며 배치의 여러 해석이 없다.",
+          "engineStatus": "NOT_APPLICABLE"
+        },
+        "solution": {
+          "decision": "BENEFICIAL",
+          "reason": "완전제곱으로 이동한 포물선의 꼭짓점과 초점 위치가 드러난다.",
+          "plan": "archive/exams/similar/high/h2/2mid/26_금당고_2학기_중간_고2_기하_유사2_plans/q04-solution.plan.json",
+          "engineStatus": "PLAN_JSON_WRITTEN_RENDER_PENDING"
+        }
+      },
+      "item4slotRationale": {
+        "given": "발문에서 실제로 제시된 완전제곱으로 꼭짓점 및 초점 비교 조건",
+        "goal": "수평 포물선의 초점 조건 → 수직 포물선의 중심 이동과 초점 매개변수 동시 역산",
+        "method": "완전제곱으로 꼭짓점 및 초점 비교",
+        "condition": "계수 8을 초점거리 p로 혼동"
+      }
+    },
+    {
+      "sourceQid": 5,
+      "originalReference": "archive/exams/original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js#q5",
+      "existingVariantReference": "archive/exams/similar/high/h2/2mid/26_금당고_2학기_중간_고2_기하_유사.js#q5",
+      "originalSummary": "타원 $4x^2+9y^2-18y-27=0$의 한 초점의 좌표가 $(p,q)$일 때, $p^2+q^2$의 값은? [3.8점]",
+      "existingVariantSummary": "타원 $9x^2+25y^2-50y-200=0$의 한 초점의 좌표가 $(p,q)$일 때, $p^2+q^2$의 값은?",
+      "lockedPrimaryL3": "H2-GEO-RPM-042",
+      "conditionAndTargetShift": "한 초점 좌표의 제곱합 → 이동된 타원의 두 초점 간 거리제곱",
+      "decisiveCore": "완전제곱 및 c²=a²−b²",
+      "solutionEntry": "완전제곱 및 c²=a²−b²",
+      "questionTarget": "타원 $16x^2+9y^2-32x+36y-92=0$의 두 초점 사이 거리의 제곱은? [3.8점]",
+      "trapSignature": "초점거리 c² 자체를 답함",
+      "variationType": "CONFIRMATION",
+      "sourceBucketJudgment": 1,
+      "priorBucketJudgment": 2,
+      "newBucketJudgment": 1,
+      "problemTypeKey": "PT_GEO_ELLIPSE",
+      "templateKey": "TPL_GEO_ELLIPSE_TRANSLATION",
+      "semanticDuplicateResult": "DIFFERENT_CONDITION_OR_TARGET_FROM_ORIGINAL_AND_SIMILAR1",
+      "mathCheck": "AUTHOR_I1_PENDING",
+      "independentI2Review": "NOT_RUN",
+      "visual": {
+        "qid": 5,
+        "problem": {
+          "decision": "EXEMPT",
+          "reason": "일반식의 완전제곱과 장축·단축 계수 판정이 주된 과제다.",
+          "engineStatus": "NOT_APPLICABLE"
+        },
+        "solution": {
+          "decision": "BENEFICIAL",
+          "reason": "세로 장축의 두 초점이 중심에서 같은 거리 c에 놓임을 알 수 있다.",
+          "plan": "archive/exams/similar/high/h2/2mid/26_금당고_2학기_중간_고2_기하_유사2_plans/q05-solution.plan.json",
+          "engineStatus": "PLAN_JSON_WRITTEN_RENDER_PENDING"
+        }
+      },
+      "item4slotRationale": {
+        "given": "발문에서 실제로 제시된 완전제곱 및 c²=a²−b² 조건",
+        "goal": "한 초점 좌표의 제곱합 → 이동된 타원의 두 초점 간 거리제곱",
+        "method": "완전제곱 및 c²=a²−b²",
+        "condition": "초점거리 c² 자체를 답함"
+      }
+    },
+    {
+      "sourceQid": 6,
+      "originalReference": "archive/exams/original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js#q6",
+      "existingVariantReference": "archive/exams/similar/high/h2/2mid/26_금당고_2학기_중간_고2_기하_유사.js#q6",
+      "originalSummary": "쌍곡선 $\\dfrac{x^2}{4}-y^2=1$의 점근선과 직선 $y=2$로 둘러싸인 부분의 넓이는? [3.8점]",
+      "existingVariantSummary": "쌍곡선 $\\displaystyle\\frac{x^2}{9}-y^2=1$의 점근선과 직선 $y=3$으로 둘러싸인 부분의 넓이는?",
+      "lockedPrimaryL3": "H2-GEO-RPM-044",
+      "conditionAndTargetShift": "수평선과 점근선이 만드는 삼각형 → 평행이동된 점근선과 수직선의 넓이",
+      "decisiveCore": "점근선의 비례기울기와 삼각형의 밑변/높이",
+      "solutionEntry": "점근선의 비례기울기와 삼각형의 밑변/높이",
+      "questionTarget": "쌍곡선 $\\dfrac{(x-1)^2}{16}-\\dfrac{(y+1)^2}{9}=1$의 두 점근선과 직선 $x=9$로 둘러싸인 삼각형의 넓이는? [3.8점]",
+      "trapSignature": "두 점근선 사이 전체 길이를 반으로 계산",
+      "variationType": "CONFIRMATION",
+      "sourceBucketJudgment": 1,
+      "priorBucketJudgment": 2,
+      "newBucketJudgment": 1,
+      "problemTypeKey": "PT_GEO_HYPERBOLA",
+      "templateKey": "TPL_GEO_HYPERBOLA_ASYMPTOTE_AXIS",
+      "semanticDuplicateResult": "DIFFERENT_CONDITION_OR_TARGET_FROM_ORIGINAL_AND_SIMILAR1",
+      "mathCheck": "AUTHOR_I1_PENDING",
+      "independentI2Review": "NOT_RUN",
+      "visual": {
+        "qid": 6,
+        "problem": {
+          "decision": "BENEFICIAL",
+          "reason": "이동된 점근선 두 개와 x=9가 만드는 삼각형의 밑변/높이를 한눈에 비교한다.",
+          "plan": "archive/exams/similar/high/h2/2mid/26_금당고_2학기_중간_고2_기하_유사2_plans/q06-problem.plan.json",
+          "engineStatus": "PLAN_JSON_WRITTEN_RENDER_PENDING"
+        },
+        "solution": {
+          "decision": "BENEFICIAL",
+          "reason": "점근선-수직선이 이루는 삼각형의 정확한 밑변 12와 높이 8을 확인한다.",
+          "plan": "archive/exams/similar/high/h2/2mid/26_금당고_2학기_중간_고2_기하_유사2_plans/q06-solution.plan.json",
+          "engineStatus": "PLAN_JSON_WRITTEN_RENDER_PENDING"
+        }
+      },
+      "item4slotRationale": {
+        "given": "발문에서 실제로 제시된 점근선의 비례기울기와 삼각형의 밑변/높이 조건",
+        "goal": "수평선과 점근선이 만드는 삼각형 → 평행이동된 점근선과 수직선의 넓이",
+        "method": "점근선의 비례기울기와 삼각형의 밑변/높이",
+        "condition": "두 점근선 사이 전체 길이를 반으로 계산"
+      }
+    },
+    {
+      "sourceQid": 7,
+      "originalReference": "archive/exams/original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js#q7",
+      "existingVariantReference": "archive/exams/similar/high/h2/2mid/26_금당고_2학기_중간_고2_기하_유사.js#q7",
+      "originalSummary": "타원 $\\dfrac{x^2}{8}+\\dfrac{y^2}{4}=1$ 위의 점 $(2,\\sqrt2)$에서의 접선의 $x$절편은? [4점]",
+      "existingVariantSummary": "타원 $\\displaystyle\\frac{x^2}{12}+\\frac{y^2}{6}=1$ 위의 점 $(2,2)$에서의 접선의 $x$절편은?",
+      "lockedPrimaryL3": "H2-GEO-RPM-049",
+      "conditionAndTargetShift": "원점 중심 타원의 x절편 → 이동된 타원 접선과 중심을 지나는 수직선의 교점",
+      "decisiveCore": "이동된 타원의 접선 방정식과 대입",
+      "solutionEntry": "이동된 타원의 접선 방정식과 대입",
+      "questionTarget": "타원 $\\dfrac{(x-1)^2}{25}+\\dfrac{(y+1)^2}{16}=1$ 위의 점 $P(4,\\dfrac{11}{5})$에서의 접선이 직선 $x=1$과 만나는 점의 $y$좌표는? [4점]",
+      "trapSignature": "접점 y좌표를 교점 y좌표로 오인",
+      "variationType": "CONFIRMATION",
+      "sourceBucketJudgment": 2,
+      "priorBucketJudgment": 1,
+      "newBucketJudgment": 2,
+      "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+      "templateKey": "TPL_GEO_TANGENT_ON_CONIC",
+      "semanticDuplicateResult": "DIFFERENT_CONDITION_OR_TARGET_FROM_ORIGINAL_AND_SIMILAR1",
+      "mathCheck": "AUTHOR_I1_PENDING",
+      "independentI2Review": "NOT_RUN",
+      "visual": {
+        "qid": 7,
+        "problem": {
+          "decision": "EXEMPT",
+          "reason": "중심 이동·접점·직선 x=1이 모두 수식으로 고정되고 교점 대입이 핵심이다.",
+          "engineStatus": "NOT_APPLICABLE"
+        },
+        "solution": {
+          "decision": "BENEFICIAL",
+          "reason": "접점 P와 접선의 x=1 교점을 서로 다른 점으로 구별한다.",
+          "plan": "archive/exams/similar/high/h2/2mid/26_금당고_2학기_중간_고2_기하_유사2_plans/q07-solution.plan.json",
+          "engineStatus": "PLAN_JSON_WRITTEN_RENDER_PENDING"
+        }
+      },
+      "item4slotRationale": {
+        "given": "발문에서 실제로 제시된 이동된 타원의 접선 방정식과 대입 조건",
+        "goal": "원점 중심 타원의 x절편 → 이동된 타원 접선과 중심을 지나는 수직선의 교점",
+        "method": "이동된 타원의 접선 방정식과 대입",
+        "condition": "접점 y좌표를 교점 y좌표로 오인"
+      }
+    },
+    {
+      "sourceQid": 8,
+      "originalReference": "archive/exams/original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js#q8",
+      "existingVariantReference": "archive/exams/similar/high/h2/2mid/26_금당고_2학기_중간_고2_기하_유사.js#q8",
+      "originalSummary": "쌍곡선 $\\dfrac{x^2}{a^2}-y^2=1$ 위의 점 $(2a,\\sqrt3)$에서의 접선이 직선 $y=-\\sqrt3x+1$과 수직일 때, 상수 $a$의 값은? [4점]",
+      "existingVariantSummary": "쌍곡선 $\\displaystyle\\frac{x^2}{a^2}-y^2=1$ 위의 점 $(\\sqrt{2}a, 1)$에서의 접선이 직선 $y=-\\sqrt{2}x+3$과 수직일 때, 양수 $a$의 값은?",
+      "lockedPrimaryL3": "H2-GEO-RPM-052",
+      "conditionAndTargetShift": "수직인 직선의 기울기 곱 → 평행한 직선의 같은 기울기 조건",
+      "decisiveCore": "쌍곡선 접점형 직선 기울기의 계수 비교",
+      "solutionEntry": "쌍곡선 접점형 직선 기울기의 계수 비교",
+      "questionTarget": "양수 $a$에 대하여 쌍곡선 $\\dfrac{x^2}{a^2}-\\dfrac{y^2}{9}=1$ 위의 점 $(\\sqrt2a,3)$에서의 접선이 직선 $y=\\dfrac{\\sqrt2}{2}x-1$과 평행할 때, $a$의 값은? [4점]",
+      "trapSignature": "평행 대신 수직 곱 -1 사용",
+      "variationType": "CONFIRMATION",
+      "sourceBucketJudgment": 2,
+      "priorBucketJudgment": 2,
+      "newBucketJudgment": 2,
+      "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+      "templateKey": "TPL_GEO_CONIC_TANGENT_SLOPE_TANGENT",
+      "semanticDuplicateResult": "DIFFERENT_CONDITION_OR_TARGET_FROM_ORIGINAL_AND_SIMILAR1",
+      "mathCheck": "AUTHOR_I1_PENDING",
+      "independentI2Review": "NOT_RUN",
+      "visual": {
+        "qid": 8,
+        "problem": {
+          "decision": "EXEMPT",
+          "reason": "접선과 직선의 평행 조건이 기울기 계수 비교만으로 완결된다.",
+          "engineStatus": "NOT_APPLICABLE"
+        },
+        "solution": {
+          "decision": "BENEFICIAL",
+          "reason": "쌍곡선 접선과 비교 직선이 평행하게 놓이는 기울기 조건을 확인한다.",
+          "plan": "archive/exams/similar/high/h2/2mid/26_금당고_2학기_중간_고2_기하_유사2_plans/q08-solution.plan.json",
+          "engineStatus": "PLAN_JSON_WRITTEN_RENDER_PENDING"
+        }
+      },
+      "item4slotRationale": {
+        "given": "발문에서 실제로 제시된 쌍곡선 접점형 직선 기울기의 계수 비교 조건",
+        "goal": "수직인 직선의 기울기 곱 → 평행한 직선의 같은 기울기 조건",
+        "method": "쌍곡선 접점형 직선 기울기의 계수 비교",
+        "condition": "평행 대신 수직 곱 -1 사용"
+      }
+    },
+    {
+      "sourceQid": 9,
+      "originalReference": "archive/exams/original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js#q9",
+      "existingVariantReference": "archive/exams/similar/high/h2/2mid/26_금당고_2학기_중간_고2_기하_유사.js#q9",
+      "originalSummary": "그림과 같은 정육면체에서 직선 $AG$와 직선 $CF$가 이루는 각의 크기는? [4.4점]",
+      "existingVariantSummary": "그림과 같은 정육면체 $\\mathrm{ABCD-EFGH}$에서 직선 $\\mathrm{AF}$와 직선 $\\mathrm{BD}$가 이루는 각의 크기는?",
+      "lockedPrimaryL3": "H2-GEO-RPM-058",
+      "conditionAndTargetShift": "직선의 각 90° 여부 → 두 공간대각선의 내적 비로 비표준 각의 코사인",
+      "decisiveCore": "꼭짓점 좌표와 방향벡터 내적",
+      "solutionEntry": "꼭짓점 좌표와 방향벡터 내적",
+      "questionTarget": "한 모서리의 길이가 $2$인 정육면체 $ABCD-EFGH$에서 $A(0,0,0)$, $B(2,0,0)$, $D(0,2,0)$, $E(0,0,2)$이고 $C,F,G,H$는 각각 이에 대응하는 나머지 꼭짓점이다. 두 직선 $AG$, $BH$가 이루는 예각을 $\\theta$라 할 때, $\\cos\\theta$의 값은? [4.4점]",
+      "trapSignature": "좌표의 부호 반전을 놓치고 cos=1로 계산",
+      "variationType": "CONFIRMATION",
+      "sourceBucketJudgment": 3,
+      "priorBucketJudgment": 2,
+      "newBucketJudgment": 3,
+      "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+      "templateKey": "TPL_GEO_SPACE_FIGURE_DOT_ANGLE",
+      "semanticDuplicateResult": "DIFFERENT_CONDITION_OR_TARGET_FROM_ORIGINAL_AND_SIMILAR1",
+      "mathCheck": "AUTHOR_I1_PENDING",
+      "independentI2Review": "NOT_RUN",
+      "visual": {
+        "qid": 9,
+        "problem": {
+          "decision": "BENEFICIAL",
+          "reason": "정육면체에서 공간대각선 AG와 다른 몸대각선 BH의 방향을 구분해 내적에 필요한 부호를 식별한다.",
+          "plan": "archive/exams/similar/high/h2/2mid/26_금당고_2학기_중간_고2_기하_유사2_plans/q09-problem.plan.json",
+          "engineStatus": "PLAN_JSON_WRITTEN_RENDER_PENDING"
+        },
+        "solution": {
+          "decision": "BENEFICIAL",
+          "reason": "두 공간대각선의 방향벡터에 각각 양·음 좌표 성분이 있음을 확인한다.",
+          "plan": "archive/exams/similar/high/h2/2mid/26_금당고_2학기_중간_고2_기하_유사2_plans/q09-solution.plan.json",
+          "engineStatus": "PLAN_JSON_WRITTEN_RENDER_PENDING"
+        }
+      },
+      "item4slotRationale": {
+        "given": "발문에서 실제로 제시된 꼭짓점 좌표와 방향벡터 내적 조건",
+        "goal": "직선의 각 90° 여부 → 두 공간대각선의 내적 비로 비표준 각의 코사인",
+        "method": "꼭짓점 좌표와 방향벡터 내적",
+        "condition": "좌표의 부호 반전을 놓치고 cos=1로 계산"
+      }
+    },
+    {
+      "sourceQid": 10,
+      "originalReference": "archive/exams/original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js#q10",
+      "existingVariantReference": "archive/exams/similar/high/h2/2mid/26_금당고_2학기_중간_고2_기하_유사.js#q10",
+      "originalSummary": "점 $(2,1)$에서 포물선 $y^2=-2x$에 그은 두 접선의 기울기의 곱은? [4.4점]",
+      "existingVariantSummary": "점 $(1,2)$에서 포물선 $y^2=-4x$에 그은 두 접선의 기울기의 곱은?",
+      "lockedPrimaryL3": "H2-GEO-RPM-048",
+      "conditionAndTargetShift": "외부점 접선 두 기울기의 곱 → 두 기울기 합을 판별식 계수로 추론",
+      "decisiveCore": "포물선과 직선 접촉 판별식의 두 근",
+      "solutionEntry": "포물선과 직선 접촉 판별식의 두 근",
+      "questionTarget": "점 $(3,2)$에서 포물선 $y^2=-8x$에 그은 서로 다른 두 접선의 기울기의 합은? [4.4점]",
+      "trapSignature": "상수항/이차항으로 곱을 구함",
+      "variationType": "CONFIRMATION",
+      "sourceBucketJudgment": 3,
+      "priorBucketJudgment": 2,
+      "newBucketJudgment": 3,
+      "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+      "templateKey": "TPL_GEO_CONIC_TANGENT_DISCRIMINANT",
+      "semanticDuplicateResult": "DIFFERENT_CONDITION_OR_TARGET_FROM_ORIGINAL_AND_SIMILAR1",
+      "mathCheck": "AUTHOR_I1_PENDING",
+      "independentI2Review": "NOT_RUN",
+      "visual": {
+        "qid": 10,
+        "problem": {
+          "decision": "EXEMPT",
+          "reason": "두 접선을 스케치해도 기울기의 합은 판별식의 계수에서 산출해야 한다.",
+          "engineStatus": "NOT_APPLICABLE"
+        },
+        "solution": {
+          "decision": "BENEFICIAL",
+          "reason": "외부점에서 그은 두 접선의 방향과 판별식 중근 조건을 도형에서 확인한다.",
+          "plan": "archive/exams/similar/high/h2/2mid/26_금당고_2학기_중간_고2_기하_유사2_plans/q10-solution.plan.json",
+          "engineStatus": "PLAN_JSON_WRITTEN_RENDER_PENDING"
+        }
+      },
+      "item4slotRationale": {
+        "given": "발문에서 실제로 제시된 포물선과 직선 접촉 판별식의 두 근 조건",
+        "goal": "외부점 접선 두 기울기의 곱 → 두 기울기 합을 판별식 계수로 추론",
+        "method": "포물선과 직선 접촉 판별식의 두 근",
+        "condition": "상수항/이차항으로 곱을 구함"
+      }
+    },
+    {
+      "sourceQid": 11,
+      "originalReference": "archive/exams/original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js#q11",
+      "existingVariantReference": "archive/exams/similar/high/h2/2mid/26_금당고_2학기_중간_고2_기하_유사.js#q11",
+      "originalSummary": "오른쪽 그림과 같이 포물선 $x^2=8y$ 위의 서로 다른 세 점 $A$, $B$, $C$에 대하여 삼각형 $ABC$의 무게중심이 포물선의 초점 $F$와 일치할 때, $\\overline{AF}+\\overline{BF}+\\overline{CF}$의 값은? [4.8점]",
+      "existingVariantSummary": "그림과 같이 포물선 $x^2=12y$ 위의 서로 다른 세 점 $A, B, C$에 대하여 삼각형 $ABC$의 무게중심이 포물선의 초점 $F$와 일치할 때, $\\overline{AF}+\\overline{BF}+\\overline{CF}$의 값은?",
+      "lockedPrimaryL3": "H2-GEO-RPM-040",
+      "conditionAndTargetShift": "무게중심과 초점 일치 → 초점과 다른 무게중심 위치에서 거리합 계산",
+      "decisiveCore": "초점-준선 등거리 및 무게중심 좌표합",
+      "solutionEntry": "초점-준선 등거리 및 무게중심 좌표합",
+      "questionTarget": "포물선 $x^2=8y$의 초점을 $F$라 한다. 포물선 위의 서로 다른 세 점 $A,B,C$를 꼭짓점으로 하는 삼각형의 무게중심이 $G(0,4)$일 때, $AF+BF+CF$의 값은? [4.8점]",
+      "trapSignature": "무게중심 y=4를 초점 y=2로 오인",
+      "variationType": "CONFIRMATION",
+      "sourceBucketJudgment": 3,
+      "priorBucketJudgment": 3,
+      "newBucketJudgment": 3,
+      "problemTypeKey": "PT_GEO_PARABOLA",
+      "templateKey": "TPL_GEO_PARABOLA_FOCUS_DIRECTRIX",
+      "semanticDuplicateResult": "DIFFERENT_CONDITION_OR_TARGET_FROM_ORIGINAL_AND_SIMILAR1",
+      "mathCheck": "AUTHOR_I1_PENDING",
+      "independentI2Review": "NOT_RUN",
+      "visual": {
+        "qid": 11,
+        "problem": {
+          "decision": "BENEFICIAL",
+          "reason": "포물선 초점과 별도로 주어진 무게중심 G의 높이 차이가 핵심 조건임을 보여 준다.",
+          "plan": "archive/exams/similar/high/h2/2mid/26_금당고_2학기_중간_고2_기하_유사2_plans/q11-problem.plan.json",
+          "engineStatus": "PLAN_JSON_WRITTEN_RENDER_PENDING"
+        },
+        "solution": {
+          "decision": "BENEFICIAL",
+          "reason": "세 점의 y좌표합이 초점 거리합으로 바뀌는 과정을 준선·초점으로 연결한다.",
+          "plan": "archive/exams/similar/high/h2/2mid/26_금당고_2학기_중간_고2_기하_유사2_plans/q11-solution.plan.json",
+          "engineStatus": "PLAN_JSON_WRITTEN_RENDER_PENDING"
+        }
+      },
+      "item4slotRationale": {
+        "given": "발문에서 실제로 제시된 초점-준선 등거리 및 무게중심 좌표합 조건",
+        "goal": "무게중심과 초점 일치 → 초점과 다른 무게중심 위치에서 거리합 계산",
+        "method": "초점-준선 등거리 및 무게중심 좌표합",
+        "condition": "무게중심 y=4를 초점 y=2로 오인"
+      }
+    },
+    {
+      "sourceQid": 12,
+      "originalReference": "archive/exams/original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js#q12",
+      "existingVariantReference": "archive/exams/similar/high/h2/2mid/26_금당고_2학기_중간_고2_기하_유사.js#q12",
+      "originalSummary": "그림과 같이 모든 모서리의 길이가 같은 정사각뿔 $A-BCDE$의 점 $A$에서 선분 $CD$에 내린 수선의 발을 $H$라 하자. 직선 $AH$와 선분 $BC$가 이루는 각의 크기를 $\\theta$라 할 때, $\\cos\\theta$의 값은? [4.8점]",
+      "existingVariantSummary": "그림과 같이 모든 모서리의 길이가 $2$로 같은 정사각뿔 $A-BCDE$에서 점 $A$에서 선분 $CD$에 내린 수선의 발을 $H$라 하자. 직선 $AH$와 선분 $BC$가 이루는 각의 크기를 $\\theta$라 할 때, $\\cos\\theta$의 값은?",
+      "lockedPrimaryL3": "H2-GEO-RPM-056",
+      "conditionAndTargetShift": "옆면 높이와 밑면 모서리의 각 → 옆면 높이와 대각선 사이 정사영 성분",
+      "decisiveCore": "정사각뿔의 직각 성분·45도 수평 투영",
+      "solutionEntry": "정사각뿔의 직각 성분·45도 수평 투영",
+      "questionTarget": "모든 모서리의 길이가 같은 정사각뿔 $A-BCDE$에서 $A$에서 모서리 $CD$에 내린 수선의 발을 $H$라 한다. 직선 $AH$와 밑면의 대각선 $BD$가 이루는 예각을 $\\theta$라 할 때, $\\cos\\theta$의 값은? [4.8점]",
+      "trapSignature": "대각선과 모서리 각 45°를 누락",
+      "variationType": "CONFIRMATION",
+      "sourceBucketJudgment": 3,
+      "priorBucketJudgment": 3,
+      "newBucketJudgment": 3,
+      "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+      "templateKey": "TPL_GEO_SPACE_FIGURE_PROJECTION",
+      "semanticDuplicateResult": "DIFFERENT_CONDITION_OR_TARGET_FROM_ORIGINAL_AND_SIMILAR1",
+      "mathCheck": "AUTHOR_I1_PENDING",
+      "independentI2Review": "NOT_RUN",
+      "visual": {
+        "qid": 12,
+        "problem": {
+          "decision": "BENEFICIAL",
+          "reason": "정사각뿔의 옆면 높이 AH와 바닥 대각선 BD가 비틀려 놓인 관계를 확인한다.",
+          "plan": "archive/exams/similar/high/h2/2mid/26_금당고_2학기_중간_고2_기하_유사2_plans/q12-problem.plan.json",
+          "engineStatus": "PLAN_JSON_WRITTEN_RENDER_PENDING"
+        },
+        "solution": {
+          "decision": "BENEFICIAL",
+          "reason": "AH의 밑면 정사영 OH와 대각선 BD 사이 45도 성분을 분리한다.",
+          "plan": "archive/exams/similar/high/h2/2mid/26_금당고_2학기_중간_고2_기하_유사2_plans/q12-solution.plan.json",
+          "engineStatus": "PLAN_JSON_WRITTEN_RENDER_PENDING"
+        }
+      },
+      "item4slotRationale": {
+        "given": "발문에서 실제로 제시된 정사각뿔의 직각 성분·45도 수평 투영 조건",
+        "goal": "옆면 높이와 밑면 모서리의 각 → 옆면 높이와 대각선 사이 정사영 성분",
+        "method": "정사각뿔의 직각 성분·45도 수평 투영",
+        "condition": "대각선과 모서리 각 45°를 누락"
+      }
+    },
+    {
+      "sourceQid": 13,
+      "originalReference": "archive/exams/original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js#q13",
+      "existingVariantReference": "archive/exams/similar/high/h2/2mid/26_금당고_2학기_중간_고2_기하_유사.js#q13",
+      "originalSummary": "다음 그림과 같이 타원 $\\dfrac{x^2}{a^2}+\\dfrac{y^2}{b^2}=1$과 포물선 $y^2=4x$은 점 $P(3,-2\\sqrt3)$에서 만나고 점 $P$에서의 타원의 접선의 기울기와 포물선의 접선의 기울기의 곱이 $-\\dfrac29$일 때, $ab$의 값은? (단, $a$와 $b$는 양수이다.) [5.2점]",
+      "existingVariantSummary": "다음 그림과 같이 타원 $\\displaystyle\\frac{x^2}{a^2}+\\frac{y^2}{b^2}=1$과 포물선 $y^2=3x$는 점 $P(4,-2\\sqrt{3})$에서 만나고 점 $P$에서의 타원의 접선의 기울기와 포물선의 접선의 기울기의 곱이 $-\\dfrac{1}{8}$일 때, $ab$의 값은? (단, $a, b$는 양수이다.)",
+      "lockedPrimaryL3": "H2-GEO-RPM-050",
+      "conditionAndTargetShift": "두 접선 기울기 곱으로 축 곱 ab 산출 → 방향을 바꾼 타원에서 두 반축 제곱의 합",
+      "decisiveCore": "동일 교점의 타원·포물선 접선 기울기 조건",
+      "solutionEntry": "동일 교점의 타원·포물선 접선 기울기 조건",
+      "questionTarget": "타원 $\\dfrac{x^2}{a^2}+\\dfrac{y^2}{b^2}=1$과 포물선 $y^2=12x$가 제1사분면의 점 $P(3,6)$에서 만난다. 이 점에서 두 곡선의 접선 기울기의 곱이 $-2$일 때, $a^2+b^2$의 값은? (단, $a,b>0$) [5.2점]",
+      "trapSignature": "점의 y좌표를 접선 기울기로 사용",
+      "variationType": "CONFIRMATION",
+      "sourceBucketJudgment": 4,
+      "priorBucketJudgment": 3,
+      "newBucketJudgment": 4,
+      "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+      "templateKey": "TPL_GEO_CONIC_TANGENT_SLOPE_TANGENT",
+      "semanticDuplicateResult": "DIFFERENT_CONDITION_OR_TARGET_FROM_ORIGINAL_AND_SIMILAR1",
+      "mathCheck": "AUTHOR_I1_PENDING",
+      "independentI2Review": "NOT_RUN",
+      "visual": {
+        "qid": 13,
+        "problem": {
+          "decision": "BENEFICIAL",
+          "reason": "타원과 포물선이 공유하는 P 및 서로 다른 두 접선의 방향을 구분한다.",
+          "plan": "archive/exams/similar/high/h2/2mid/26_금당고_2학기_중간_고2_기하_유사2_plans/q13-problem.plan.json",
+          "engineStatus": "PLAN_JSON_WRITTEN_RENDER_PENDING"
+        },
+        "solution": {
+          "decision": "BENEFICIAL",
+          "reason": "두 접선 기울기의 곱이 축 계수비로 연결되는 공통 접점 관계를 보인다.",
+          "plan": "archive/exams/similar/high/h2/2mid/26_금당고_2학기_중간_고2_기하_유사2_plans/q13-solution.plan.json",
+          "engineStatus": "PLAN_JSON_WRITTEN_RENDER_PENDING"
+        }
+      },
+      "item4slotRationale": {
+        "given": "발문에서 실제로 제시된 동일 교점의 타원·포물선 접선 기울기 조건 조건",
+        "goal": "두 접선 기울기 곱으로 축 곱 ab 산출 → 방향을 바꾼 타원에서 두 반축 제곱의 합",
+        "method": "동일 교점의 타원·포물선 접선 기울기 조건",
+        "condition": "점의 y좌표를 접선 기울기로 사용"
+      }
+    },
+    {
+      "sourceQid": 14,
+      "originalReference": "archive/exams/original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js#q14",
+      "existingVariantReference": "archive/exams/similar/high/h2/2mid/26_금당고_2학기_중간_고2_기하_유사.js#q14",
+      "originalSummary": "다음 그림과 같이 포물선 $y^2=8x$ 위의 점 $P(2,4)$에서의 접선에 수직이고 점 $A(2,0)$을 지나는 직선 $l$이 있다. 직선 $l$과 포물선이 만나는 두 점을 $Q$, $R$이라 할 때, $\\overline{QR}$의 값은? [5.2점]",
+      "existingVariantSummary": "다음 그림과 같이 포물선 $y^2=12x$ 위의 점 $P(3,6)$에서의 접선에 수직이고 점 $A(3,0)$을 지나는 직선 $l$이 있다. 직선 $l$과 포물선이 만나는 두 점을 $Q, R$이라 할 때, $\\overline{QR}$의 길이는?",
+      "lockedPrimaryL3": "H2-GEO-RPM-048",
+      "conditionAndTargetShift": "접선 법선의 포물선 현 길이 → 현 중점과 초점 사이 거리",
+      "decisiveCore": "법선 직선과 포물선 교점, 중점, 초점",
+      "solutionEntry": "법선 직선과 포물선 교점, 중점, 초점",
+      "questionTarget": "포물선 $y^2=4x$ 위의 점 $P(1,2)$에서의 접선에 수직이고 $P$를 지나는 직선 $l$이 포물선과 다시 만나는 점을 $R$이라 한다. $PR$의 중점을 $M$, 포물선의 초점을 $F$라 할 때, $MF$의 길이는? [5.2점]",
+      "trapSignature": "현 길이와 중점-초점 거리를 혼동",
+      "variationType": "CONFIRMATION",
+      "sourceBucketJudgment": 4,
+      "priorBucketJudgment": 3,
+      "newBucketJudgment": 4,
+      "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+      "templateKey": "TPL_GEO_TANGENT_ORTHOGONAL",
+      "semanticDuplicateResult": "DIFFERENT_CONDITION_OR_TARGET_FROM_ORIGINAL_AND_SIMILAR1",
+      "mathCheck": "AUTHOR_I1_PENDING",
+      "independentI2Review": "NOT_RUN",
+      "visual": {
+        "qid": 14,
+        "problem": {
+          "decision": "BENEFICIAL",
+          "reason": "접점의 법선이 포물선과 다시 만나는 위치 및 현의 중점을 파악한다.",
+          "plan": "archive/exams/similar/high/h2/2mid/26_금당고_2학기_중간_고2_기하_유사2_plans/q14-problem.plan.json",
+          "engineStatus": "PLAN_JSON_WRITTEN_RENDER_PENDING"
+        },
+        "solution": {
+          "decision": "BENEFICIAL",
+          "reason": "P,R 및 중점 M과 초점 F의 상대 좌표를 나타내어 거리 계산을 점검한다.",
+          "plan": "archive/exams/similar/high/h2/2mid/26_금당고_2학기_중간_고2_기하_유사2_plans/q14-solution.plan.json",
+          "engineStatus": "PLAN_JSON_WRITTEN_RENDER_PENDING"
+        }
+      },
+      "item4slotRationale": {
+        "given": "발문에서 실제로 제시된 법선 직선과 포물선 교점, 중점, 초점 조건",
+        "goal": "접선 법선의 포물선 현 길이 → 현 중점과 초점 사이 거리",
+        "method": "법선 직선과 포물선 교점, 중점, 초점",
+        "condition": "현 길이와 중점-초점 거리를 혼동"
+      }
+    },
+    {
+      "sourceQid": 15,
+      "originalReference": "archive/exams/original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js#q15",
+      "existingVariantReference": "archive/exams/similar/high/h2/2mid/26_금당고_2학기_중간_고2_기하_유사.js#q15",
+      "originalSummary": "한 초점이 $F(c,0)$ $(c>0)$인 타원 $\\dfrac{x^2}{16}+\\dfrac{y^2}{7}=1$과 중심의 좌표가 $(9,5)$이고 반지름의 길이가 $r$인 원이 있다. 타원 위의 점 $P$와 원 위의 점 $Q$에 대하여 $\\overline{PQ}-\\overline{PF}$의 최솟값이 $3$일 때 $r$의 값은? (단, 타원과 원은 만나지 않는다.) [5.6점]",
+      "existingVariantSummary": "한 초점이 $F(c,0)$ ($c>0$)인 타원 $\\displaystyle\\frac{x^2}{25}+\\frac{y^2}{9}=1$과 중심의 좌표가 $(11,8)$이고 반지름의 길이가 $r$인 원이 있다. 타원 위의 점 $P$와 원 위의 점 $Q$에 대하여 $\\overline{PQ}-\\overline{PF}$의 최솟값이 $4$일 때, $r$의 값은? (단, 타원과 원은 만나지 않는다.)",
+      "lockedPrimaryL3": "H2-GEO-RPM-042",
+      "conditionAndTargetShift": "주어진 중심에서 원의 반지름 역산 → 반지름 고정, 중심의 미지수 높이 역산",
+      "decisiveCore": "타원의 거리합과 삼각부등식 최단 경로",
+      "solutionEntry": "타원의 거리합과 삼각부등식 최단 경로",
+      "questionTarget": "타원 $\\dfrac{x^2}{25}+\\dfrac{y^2}{9}=1$의 양의 $x$축 쪽 초점을 $F$라 한다. 중심이 $C(8,t)$, 반지름이 $2$인 원 위의 점 $Q$와 타원 위의 점 $P$에 대하여 $PQ-PF$의 최솟값이 $1$이다. 양수 $t$의 값은? [5.6점]",
+      "trapSignature": "다른 초점 F 사용으로 중심거리 오산",
+      "variationType": "CONFIRMATION",
+      "sourceBucketJudgment": 5,
+      "priorBucketJudgment": 4,
+      "newBucketJudgment": 5,
+      "problemTypeKey": "PT_GEO_ELLIPSE",
+      "templateKey": "TPL_GEO_ELLIPSE_EXTREMA",
+      "semanticDuplicateResult": "DIFFERENT_CONDITION_OR_TARGET_FROM_ORIGINAL_AND_SIMILAR1",
+      "mathCheck": "AUTHOR_I1_PENDING",
+      "independentI2Review": "NOT_RUN",
+      "visual": {
+        "qid": 15,
+        "problem": {
+          "decision": "BENEFICIAL",
+          "reason": "타원 반대 초점과 원 중심을 연결하는 최단 거리의 상대 배치를 보여 준다.",
+          "plan": "archive/exams/similar/high/h2/2mid/26_금당고_2학기_중간_고2_기하_유사2_plans/q15-problem.plan.json",
+          "engineStatus": "PLAN_JSON_WRITTEN_RENDER_PENDING"
+        },
+        "solution": {
+          "decision": "BENEFICIAL",
+          "reason": "반대 초점 F′에서 원 중심 C까지 직선거리로 최솟값을 만드는 경로를 보인다.",
+          "plan": "archive/exams/similar/high/h2/2mid/26_금당고_2학기_중간_고2_기하_유사2_plans/q15-solution.plan.json",
+          "engineStatus": "PLAN_JSON_WRITTEN_RENDER_PENDING"
+        }
+      },
+      "item4slotRationale": {
+        "given": "발문에서 실제로 제시된 타원의 거리합과 삼각부등식 최단 경로 조건",
+        "goal": "주어진 중심에서 원의 반지름 역산 → 반지름 고정, 중심의 미지수 높이 역산",
+        "method": "타원의 거리합과 삼각부등식 최단 경로",
+        "condition": "다른 초점 F 사용으로 중심거리 오산"
+      }
+    },
+    {
+      "sourceQid": 16,
+      "originalReference": "archive/exams/original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js#q16",
+      "existingVariantReference": "archive/exams/similar/high/h2/2mid/26_금당고_2학기_중간_고2_기하_유사.js#q16",
+      "originalSummary": "그림과 같이 초점이 $A(a,0)$이고 준선이 $x=k$인 포물선 $C_1$과 두 초점이 $F(c,0)$, $F\\prime(-c,0)$ $(c>0)$이고 주축의 길이가 $8\\sqrt5$인 쌍곡선 $C_2$가 있다. 포물선 $C_1$과 쌍곡선 $C_2$가 서로 다른 네 점에서 만나고 그 네 점을 $y$좌표가 작은 수부터 크기순으로 $P$, $Q$, $R$, $S$라 하자. 세 점 $S$, $F$, $Q$가 한 직선 위에 있고, $\\overline{F\\prime S}+\\overline{F\\prime Q}=26\\sqrt5$, $\\overline{AS}-\\overline{AQ}=10$일 때, 사각형 $RQPS$의 넓이는? [5.6점]",
+      "existingVariantSummary": "그림과 같이 초점이 $A(a,0)$이고 준선이 $x=k$인 포물선 $C_1$과 두 초점이 $F(c,0)$, $F'(-c,0)$ ($c>0$)이고 주축의 길이가 $6\\sqrt{5}$인 쌍곡선 $C_2$가 있다. 포물선 $C_1$과 쌍곡선 $C_2$가 서로 다른 네 점에서 만나고 그 네 점을 $y$좌표가 작은 수부터 크기순으로 $P, Q, R, S$라 하자. 세 점 $S, F, Q$가 한 직선 위에 있고, $\\overline{F'S}+\\overline{F'Q}=20\\sqrt{5}$, $\\overline{AS}-\\overline{AQ}=8$일 때, 사각형 $RQPS$의 넓이는?",
+      "lockedPrimaryL3": "H2-GEO-RPM-043",
+      "conditionAndTargetShift": "초점 거리 합과 준선 거리차로 미지 사각형 넓이 → 두 곡선 식의 교점 역추적과 사다리꼴 넓이",
+      "decisiveCore": "두 이차곡선 공통 교점의 x, y 대칭과 넓이",
+      "solutionEntry": "두 이차곡선 공통 교점의 x, y 대칭과 넓이",
+      "questionTarget": "쌍곡선 $x^2-y^2=144$와 포물선 $y^2=28x-339$가 만나는 서로 다른 네 점을 $y$좌표가 작은 순서대로 $P,Q,R,S$라 한다. 사각형 $RQPS$의 넓이는? [5.6점]",
+      "trapSignature": "두 수직 현의 길이를 합산하지 않고 한 현만 사용",
+      "variationType": "CONFIRMATION",
+      "sourceBucketJudgment": 5,
+      "priorBucketJudgment": 5,
+      "newBucketJudgment": 5,
+      "problemTypeKey": "PT_GEO_HYPERBOLA",
+      "templateKey": "TPL_GEO_HYPERBOLA_WITH_CURVE",
+      "semanticDuplicateResult": "DIFFERENT_CONDITION_OR_TARGET_FROM_ORIGINAL_AND_SIMILAR1",
+      "mathCheck": "AUTHOR_I1_PENDING",
+      "independentI2Review": "NOT_RUN",
+      "visual": {
+        "qid": 16,
+        "problem": {
+          "decision": "BENEFICIAL",
+          "reason": "쌍곡선과 포물선의 네 교점 및 두 수직 현의 위치를 확인한다.",
+          "plan": "archive/exams/similar/high/h2/2mid/26_금당고_2학기_중간_고2_기하_유사2_plans/q16-problem.plan.json",
+          "engineStatus": "PLAN_JSON_WRITTEN_RENDER_PENDING"
+        },
+        "solution": {
+          "decision": "BENEFICIAL",
+          "reason": "교점 좌표의 x=13/15 대칭 및 평행한 RQ·SP가 사다리꼴을 이룸을 확인한다.",
+          "plan": "archive/exams/similar/high/h2/2mid/26_금당고_2학기_중간_고2_기하_유사2_plans/q16-solution.plan.json",
+          "engineStatus": "PLAN_JSON_WRITTEN_RENDER_PENDING"
+        }
+      },
+      "item4slotRationale": {
+        "given": "발문에서 실제로 제시된 두 이차곡선 공통 교점의 x, y 대칭과 넓이 조건",
+        "goal": "초점 거리 합과 준선 거리차로 미지 사각형 넓이 → 두 곡선 식의 교점 역추적과 사다리꼴 넓이",
+        "method": "두 이차곡선 공통 교점의 x, y 대칭과 넓이",
+        "condition": "두 수직 현의 길이를 합산하지 않고 한 현만 사용"
+      }
+    },
+    {
+      "sourceQid": 17,
+      "originalReference": "archive/exams/original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js#q17",
+      "existingVariantReference": "archive/exams/similar/high/h2/2mid/26_금당고_2학기_중간_고2_기하_유사.js#q17",
+      "originalSummary": "타원 $\\dfrac{x^2}{16}+\\dfrac{y^2}{4}=1$ 위에 있는 제1사분면 위의 점 $P$에서의 접선과 $x$축, $y$축으로 둘러싸인 삼각형의 넓이가 최소일 때, 점 $P$의 좌표를 구하시오. [5점]",
+      "existingVariantSummary": "[주관식 1] 타원 $\\displaystyle\\frac{x^2}{36}+\\frac{y^2}{9}=1$ 위에 있는 제1사분면 위의 점 $P$에서의 접선과 $x$축, $y$축으로 둘러싸인 삼각형의 넓이가 최소일 때, 점 $P$의 좌표를 구하시오.",
+      "lockedPrimaryL3": "H2-GEO-RPM-049",
+      "conditionAndTargetShift": "접선 넓이가 최소인 접점 좌표 → 접선 절편 삼각형의 최소 넓이 자체",
+      "decisiveCore": "타원 위 xy 최댓값과 접선 절편 곱",
+      "solutionEntry": "타원 위 xy 최댓값과 접선 절편 곱",
+      "questionTarget": "타원 $\\dfrac{x^2}{36}+\\dfrac{y^2}{9}=1$ 위의 제1사분면 점 $P$에서의 접선과 두 좌표축으로 둘러싸인 삼각형의 넓이의 최솟값을 구하시오. [5점]",
+      "trapSignature": "좌표곱 최대 9를 삼각형 넓이로 오인",
+      "variationType": "CONFIRMATION",
+      "sourceBucketJudgment": 3,
+      "priorBucketJudgment": 3,
+      "newBucketJudgment": 3,
+      "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+      "templateKey": "TPL_GEO_TANGENT_ON_CONIC",
+      "semanticDuplicateResult": "DIFFERENT_CONDITION_OR_TARGET_FROM_ORIGINAL_AND_SIMILAR1",
+      "mathCheck": "AUTHOR_I1_PENDING",
+      "independentI2Review": "NOT_RUN",
+      "visual": {
+        "qid": 17,
+        "problem": {
+          "decision": "BENEFICIAL",
+          "reason": "제1사분면 접선이 두 좌표축과 만드는 삼각형의 기하적 범위를 보인다.",
+          "plan": "archive/exams/similar/high/h2/2mid/26_금당고_2학기_중간_고2_기하_유사2_plans/q17-problem.plan.json",
+          "engineStatus": "PLAN_JSON_WRITTEN_RENDER_PENDING"
+        },
+        "solution": {
+          "decision": "BENEFICIAL",
+          "reason": "접선의 두 절편과 접점의 위치가 최소 넓이 조건에서 균형을 이루는 모습을 보인다.",
+          "plan": "archive/exams/similar/high/h2/2mid/26_금당고_2학기_중간_고2_기하_유사2_plans/q17-solution.plan.json",
+          "engineStatus": "PLAN_JSON_WRITTEN_RENDER_PENDING"
+        }
+      },
+      "item4slotRationale": {
+        "given": "발문에서 실제로 제시된 타원 위 xy 최댓값과 접선 절편 곱 조건",
+        "goal": "접선 넓이가 최소인 접점 좌표 → 접선 절편 삼각형의 최소 넓이 자체",
+        "method": "타원 위 xy 최댓값과 접선 절편 곱",
+        "condition": "좌표곱 최대 9를 삼각형 넓이로 오인"
+      }
+    },
+    {
+      "sourceQid": 18,
+      "originalReference": "archive/exams/original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js#q18",
+      "existingVariantReference": "archive/exams/similar/high/h2/2mid/26_금당고_2학기_중간_고2_기하_유사.js#q18",
+      "originalSummary": "포물선 $y^2=4px$ $(p>0)$ 위의 점 $A(p,2p)$에서의 접선과 이 포물선의 준선 직선 $x=-p$, 직선 $y=2p$로 둘러싸인 부분의 넓이가 $50$일 때, $\\overline{OA}$의 길이를 구하시오. (단, $O$는 원점이다.) [5점]",
+      "existingVariantSummary": "[주관식 2] 포물선 $y^2=4px$ ($p>0$) 위의 점 $A(p,2p)$에서의 접선과 이 포물선의 준선 $x=-p$, 직선 $y=2p$로 둘러싸인 부분의 넓이가 $32$일 때, $\\overline{OA}$의 길이를 구하시오. (단, $O$는 원점이다.)",
+      "lockedPrimaryL3": "H2-GEO-RPM-047",
+      "conditionAndTargetShift": "세 직선의 삼각형 넓이에서 OA 길이 → 삼각형 둘레에서 초점-준선 거리",
+      "decisiveCore": "포물선 접선-준선이 만드는 직각삼각형",
+      "solutionEntry": "포물선 접선-준선이 만드는 직각삼각형",
+      "questionTarget": "양수 $p$에 대하여 포물선 $y^2=4px$의 점 $A(p,2p)$에서의 접선과 준선 $x=-p$, 직선 $y=2p$가 이루는 삼각형의 둘레가 $12+6\\sqrt2$이다. 이 포물선의 초점과 준선 사이의 거리를 구하시오. [5점]",
+      "trapSignature": "빗변을 2p로 계산",
+      "variationType": "CONFIRMATION",
+      "sourceBucketJudgment": 3,
+      "priorBucketJudgment": 3,
+      "newBucketJudgment": 3,
+      "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+      "templateKey": "TPL_GEO_TANGENT_ON_CONIC",
+      "semanticDuplicateResult": "DIFFERENT_CONDITION_OR_TARGET_FROM_ORIGINAL_AND_SIMILAR1",
+      "mathCheck": "AUTHOR_I1_PENDING",
+      "independentI2Review": "NOT_RUN",
+      "visual": {
+        "qid": 18,
+        "problem": {
+          "decision": "BENEFICIAL",
+          "reason": "접선과 준선, y=2p가 만드는 직각삼각형의 위치를 명확히 한다.",
+          "plan": "archive/exams/similar/high/h2/2mid/26_금당고_2학기_중간_고2_기하_유사2_plans/q18-problem.plan.json",
+          "engineStatus": "PLAN_JSON_WRITTEN_RENDER_PENDING"
+        },
+        "solution": {
+          "decision": "BENEFICIAL",
+          "reason": "접점 A, 준선 위 교점 B,C의 두 직각변과 빗변을 비교한다.",
+          "plan": "archive/exams/similar/high/h2/2mid/26_금당고_2학기_중간_고2_기하_유사2_plans/q18-solution.plan.json",
+          "engineStatus": "PLAN_JSON_WRITTEN_RENDER_PENDING"
+        }
+      },
+      "item4slotRationale": {
+        "given": "발문에서 실제로 제시된 포물선 접선-준선이 만드는 직각삼각형 조건",
+        "goal": "세 직선의 삼각형 넓이에서 OA 길이 → 삼각형 둘레에서 초점-준선 거리",
+        "method": "포물선 접선-준선이 만드는 직각삼각형",
+        "condition": "빗변을 2p로 계산"
+      }
+    },
+    {
+      "sourceQid": 19,
+      "originalReference": "archive/exams/original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js#q19",
+      "existingVariantReference": "archive/exams/similar/high/h2/2mid/26_금당고_2학기_중간_고2_기하_유사.js#q19",
+      "originalSummary": "다음 그림과 같이 해안 기지국 $A$를 초점으로 하고 항구 $O$를 꼭짓점으로 하는 포물선 모양의 해안선 도로가 있다. 어느 정유회사의 공장 $B$에서 해안선 도로 위의 저장 시설 $P$를 거쳐 기지국 $A$로 연결되는 파이프라인의 총 길이가 최소가 되도록 하는 점 $P$의 위치를 논리적으로 서술하시오.(3점) 또한 <조건>을 만족하는 포물선의 방정식과 점 $P$의 좌표를 구하고, 과정을 서술하시오.(6점) (단, 항구 $O$는 좌표평면의 원점이고, 기지국 $A$는 $x$축의 양의 부분에 위치하며, 도로의 파이프라인의 폭은 고려하지 않는다.)<br><br>&lt;조건&gt;<br>(가) 항구 $O$와 기지국 $A$ 사이의 거리는 $20$이고, 기지국 $A$와 공장 $B$ 사이의 거리는 $10$이다.<br>(나) 직선 $AB$와 $x$축의 양의 방향이 이루는 예각의 크기를 $\\theta$라 할 때, $\\cos\\theta=\\dfrac45$이다. [9점]",
+      "existingVariantSummary": "[서술형 1] 다음 그림과 같이 해안 기지국 $A$를 초점으로 하고 항구 $O$를 꼭짓점으로 하는 포물선 모양의 해안선 도로가 있다. 어느 정유회사의 공장 $B$에서 해안선 도로 위의 저장 시설 $P$를 거쳐 기지국 $A$로 연결되는 파이프라인의 총 길이가 최소가 되도록 하는 점 $P$의 위치를 논리적으로 서술하시오. (3점) 또한 <조건>을 만족하는 포물선의 방정식과 점 $P$의 좌표를 구하고, 과정을 서술하시오. (6점) (단, 항구 $O$는 좌표평면의 원점이고, 기지국 $A$는 $x$축의 양의 부분에 위치하며, 파이프라인의 폭은 고려하지 않는다.)\n\n> **<조건>** (가) 항구 $O$와 기지국 $A$ 사이의 거리는 $15$이고, 기지국 $A$와 공장 $B$ 사이의 거리는 $5$이다. (나) 직선 $AB$와 $x$축의 양의 방향이 이루는 예각의 크기를 $\\theta$라 할 때, $\\cos\\theta=\\dfrac{3}{5}$이다.",
+      "lockedPrimaryL3": "H2-GEO-RPM-040",
+      "conditionAndTargetShift": "오른쪽으로 열린 해안 도로 최단 경로 → 위로 열린 포물선과 제2사분면 공장 위치 역산",
+      "decisiveCore": "초점-준선 등거리와 직선거리 최소 경로의 등호",
+      "solutionEntry": "초점-준선 등거리와 직선거리 최소 경로의 등호",
+      "questionTarget": "항구 $O$를 꼭짓점, 기지국 $A$를 초점으로 하는 포물선 모양의 도로가 있다. $O$는 원점이고 $A$는 $y$축의 양의 부분에 있다. 공장 $B$에서 도로 위 저장시설 $P$를 거쳐 $A$로 연결하는 경로의 총길이 $BP+PA$를 최소화하려고 한다. 다음 조건에서 포물선의 방정식, 최적의 $P$의 좌표, 최소 경로 길이를 구하고 그 이유를 서술하시오. (9점)\n(가) $OA=4$, $AB=5$이고 $B$는 $A$보다 위쪽의 제2사분면에 있다.\n(나) 직선 $AB$와 $x$축의 음의 방향이 이루는 예각 $\\theta$에 대하여 $\\cos\\theta=\\dfrac35$이다.",
+      "trapSignature": "P가 B와 준선 수선발 사이에 있어야 함을 빠뜨림",
+      "variationType": "CONFIRMATION",
+      "sourceBucketJudgment": 5,
+      "priorBucketJudgment": 3,
+      "newBucketJudgment": 5,
+      "problemTypeKey": "PT_GEO_PARABOLA",
+      "templateKey": "TPL_GEO_PARABOLA_MODEL",
+      "semanticDuplicateResult": "DIFFERENT_CONDITION_OR_TARGET_FROM_ORIGINAL_AND_SIMILAR1",
+      "mathCheck": "AUTHOR_I1_PENDING",
+      "independentI2Review": "NOT_RUN",
+      "visual": {
+        "qid": 19,
+        "problem": {
+          "decision": "BENEFICIAL",
+          "reason": "위로 열린 포물선에서 공장 B·초점 A·준선이 이루는 경로를 살핀다.",
+          "plan": "archive/exams/similar/high/h2/2mid/26_금당고_2학기_중간_고2_기하_유사2_plans/q19-problem.plan.json",
+          "engineStatus": "PLAN_JSON_WRITTEN_RENDER_PENDING"
+        },
+        "solution": {
+          "decision": "BENEFICIAL",
+          "reason": "BP+PA를 BP+PH로 바꾼 뒤 B,P,H가 일직선이 되는 등호 상황을 보인다.",
+          "plan": "archive/exams/similar/high/h2/2mid/26_금당고_2학기_중간_고2_기하_유사2_plans/q19-solution.plan.json",
+          "engineStatus": "PLAN_JSON_WRITTEN_RENDER_PENDING"
+        }
+      },
+      "item4slotRationale": {
+        "given": "발문에서 실제로 제시된 초점-준선 등거리와 직선거리 최소 경로의 등호 조건",
+        "goal": "오른쪽으로 열린 해안 도로 최단 경로 → 위로 열린 포물선과 제2사분면 공장 위치 역산",
+        "method": "초점-준선 등거리와 직선거리 최소 경로의 등호",
+        "condition": "P가 B와 준선 수선발 사이에 있어야 함을 빠뜨림"
+      }
+    },
+    {
+      "sourceQid": 20,
+      "originalReference": "archive/exams/original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js#q20",
+      "existingVariantReference": "archive/exams/similar/high/h2/2mid/26_금당고_2학기_중간_고2_기하_유사.js#q20",
+      "originalSummary": "$k>1$인 실수 $k$에 대하여 점 $A(0,k)$에서 타원 $\\dfrac{x^2}{18}+\\dfrac{y^2}{2}=1$에 그은 두 접선의 접점을 각각 $P$, $Q$라 하고, 직선 $AP$와 직선 $AQ$가 $x$축과 만나는 점을 각각 $R$, $S$라 하자. 원점 $O$에 대하여 사각형 $OPAQ$가 마름모일 때, 삼각형 $ARS$의 넓이를 구하고, 그 과정을 서술하시오. (단, 점 $P$는 제1사분면 위의 점이고, 점 $Q$는 제2사분면 위의 점이다.) [11점]",
+      "existingVariantSummary": "[서술형 2] $k>2\\sqrt{2}$인 실수 $k$에 대하여 점 $A(0,k)$에서 타원 $\\displaystyle\\frac{x^2}{32}+\\frac{y^2}{8}=1$에 그은 두 접선의 접점을 각각 $P, Q$라 하고, 직선 $AP$와 직선 $AQ$가 $x$축과 만나는 점을 각각 $R, S$라 하자. 원점 $O$에 대하여 사각형 $OPAQ$가 마름모일 때, 삼각형 $ARS$의 넓이를 구하고, 그 과정을 서술하시오. (단, 점 $P$는 제1사분면 위의 점이고, 점 $Q$는 제2사분면 위의 점이다.)",
+      "lockedPrimaryL3": "H2-GEO-RPM-050",
+      "conditionAndTargetShift": "고정 타원의 마름모 성질에서 삼각형 넓이 → 마름모 둘레로 미정 타원 축 길이까지 역결정",
+      "decisiveCore": "접점 대칭, 평행사변형 중점, 접선 절편과 넓이",
+      "solutionEntry": "접점 대칭, 평행사변형 중점, 접선 절편과 넓이",
+      "questionTarget": "실수 $t>8$에 대하여 타원 $\\dfrac{x^2}{t}+\\dfrac{y^2}{8}=1$의 바깥 점 $A(0,k)$ $(k>2\\sqrt2)$에서 그은 두 접선의 접점을 제1사분면의 $P$, 제2사분면의 $Q$라 한다. 원점 $O$에 대하여 사각형 $OPAQ$가 둘레 $24$인 마름모이다. 두 접선이 $x$축과 만나는 점을 각각 $R,S$라 할 때 삼각형 $ARS$의 넓이를 구하고 그 과정을 서술하시오. [11점]",
+      "trapSignature": "OP=둘레24/4=6 판단을 놓침",
+      "variationType": "CONFIRMATION",
+      "sourceBucketJudgment": 5,
+      "priorBucketJudgment": 4,
+      "newBucketJudgment": 5,
+      "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+      "templateKey": "TPL_GEO_TANGENT_FROM_OUTSIDE_POINT",
+      "semanticDuplicateResult": "DIFFERENT_CONDITION_OR_TARGET_FROM_ORIGINAL_AND_SIMILAR1",
+      "mathCheck": "AUTHOR_I1_PENDING",
+      "independentI2Review": "NOT_RUN",
+      "visual": {
+        "qid": 20,
+        "problem": {
+          "decision": "BENEFICIAL",
+          "reason": "마름모 OPAQ의 꼭짓점 순서, 두 접선과 R,S의 상대 위치를 확인한다.",
+          "plan": "archive/exams/similar/high/h2/2mid/26_금당고_2학기_중간_고2_기하_유사2_plans/q20-problem.plan.json",
+          "engineStatus": "PLAN_JSON_WRITTEN_RENDER_PENDING"
+        },
+        "solution": {
+          "decision": "BENEFICIAL",
+          "reason": "OPAQ의 대각선 중점과 대칭 접선의 x절편 R,S를 함께 확인한다.",
+          "plan": "archive/exams/similar/high/h2/2mid/26_금당고_2학기_중간_고2_기하_유사2_plans/q20-solution.plan.json",
+          "engineStatus": "PLAN_JSON_WRITTEN_RENDER_PENDING"
+        }
+      },
+      "item4slotRationale": {
+        "given": "발문에서 실제로 제시된 접점 대칭, 평행사변형 중점, 접선 절편과 넓이 조건",
+        "goal": "고정 타원의 마름모 성질에서 삼각형 넓이 → 마름모 둘레로 미정 타원 축 길이까지 역결정",
+        "method": "접점 대칭, 평행사변형 중점, 접선 절편과 넓이",
+        "condition": "OP=둘레24/4=6 판단을 놓침"
+      }
+    }
+  ]
+}

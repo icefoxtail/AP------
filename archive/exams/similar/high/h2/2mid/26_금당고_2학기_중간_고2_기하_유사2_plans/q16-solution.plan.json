@@ -1,0 +1,107 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conics": [
+    {
+      "id": "h",
+      "kind": "HYPERBOLA",
+      "center": [
+        "0",
+        "0"
+      ],
+      "aSquared": "144",
+      "bSquared": "144",
+      "transverse": "X"
+    },
+    {
+      "id": "p",
+      "kind": "PARABOLA",
+      "vertex": [
+        "339/28",
+        "0"
+      ],
+      "p": "7",
+      "axis": "X"
+    }
+  ],
+  "points": [
+    {
+      "id": "P",
+      "kind": "POINT",
+      "x": "15",
+      "y": "-9"
+    },
+    {
+      "id": "Q",
+      "kind": "POINT",
+      "x": "13",
+      "y": "-5"
+    },
+    {
+      "id": "R",
+      "kind": "POINT",
+      "x": "13",
+      "y": "5"
+    },
+    {
+      "id": "S",
+      "kind": "POINT",
+      "x": "15",
+      "y": "9"
+    }
+  ],
+  "lines": [],
+  "segments": [
+    {
+      "id": "sRQ",
+      "from": "R",
+      "to": "Q",
+      "label": "10"
+    },
+    {
+      "id": "sPS",
+      "from": "P",
+      "to": "S",
+      "label": "18"
+    },
+    {
+      "id": "sQP",
+      "from": "Q",
+      "to": "P"
+    },
+    {
+      "id": "sSR",
+      "from": "S",
+      "to": "R"
+    }
+  ],
+  "polygons": [
+    {
+      "id": "trap",
+      "points": [
+        "R",
+        "Q",
+        "P",
+        "S"
+      ],
+      "fill": "NONE"
+    }
+  ],
+  "caption": "Q16 해설 관계도",
+  "accessibilityDescription": "해설에 쓰이는 이차곡선과 점, 선분의 위치 관계를 나타낸 그림이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 이차곡선 공통 교점의 x, y 대칭과 넓이",
+      "mappedTo": [
+        "conics",
+        "points",
+        "lines",
+        "segments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "교점 좌표의 x=13/15 대칭 및 평행한 RQ·SP가 사다리꼴을 이룸을 확인한다."
+  ],
+  "sourceQuote": "쌍곡선 $x^2-y^2=144$와 포물선 $y^2=28x-339$가 만나는 서로 다른 네 점을 $y$좌표가 작은 순서대로 $P,Q,R,S$라 한다. 사각형 $RQPS$의 넓이는? [5.6점]"
+}

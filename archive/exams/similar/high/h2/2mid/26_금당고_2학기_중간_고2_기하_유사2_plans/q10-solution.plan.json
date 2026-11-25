@@ -1,0 +1,75 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "PARABOLA",
+    "vertex": [
+      "0",
+      "0"
+    ],
+    "p": "-2",
+    "axis": "X"
+  },
+  "points": [
+    {
+      "id": "A",
+      "kind": "POINT",
+      "x": "3",
+      "y": "2"
+    },
+    {
+      "id": "T1",
+      "kind": "TANGENT_FROM",
+      "from": "A",
+      "which": 1
+    },
+    {
+      "id": "T2",
+      "kind": "TANGENT_FROM",
+      "from": "A",
+      "which": 2
+    }
+  ],
+  "lines": [
+    {
+      "id": "t1",
+      "tangent": true,
+      "at": "T1"
+    },
+    {
+      "id": "t2",
+      "tangent": true,
+      "at": "T2"
+    }
+  ],
+  "segments": [
+    {
+      "id": "sAT1",
+      "from": "A",
+      "to": "T1"
+    },
+    {
+      "id": "sAT2",
+      "from": "A",
+      "to": "T2"
+    }
+  ],
+  "polygons": [],
+  "caption": "Q10 해설 관계도",
+  "accessibilityDescription": "해설에 쓰이는 이차곡선과 점, 선분의 위치 관계를 나타낸 그림이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "포물선과 직선 접촉 판별식의 두 근",
+      "mappedTo": [
+        "conic",
+        "points",
+        "lines",
+        "segments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "외부점에서 그은 두 접선의 방향과 판별식 중근 조건을 도형에서 확인한다."
+  ],
+  "sourceQuote": "점 $(3,2)$에서 포물선 $y^2=-8x$에 그은 서로 다른 두 접선의 기울기의 합은? [4.4점]"
+}
