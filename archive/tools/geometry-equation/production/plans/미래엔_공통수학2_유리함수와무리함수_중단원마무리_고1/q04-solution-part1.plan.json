@@ -1,0 +1,60 @@
+{
+  "capability": "sqrt-affine-spike-v1",
+  "graphPlan": {
+    "family": "sqrt-affine",
+    "radicand": [
+      "-4",
+      "2"
+    ],
+    "sign": 1,
+    "offset": "3",
+    "sourceDomain": {
+      "kind": "NATURAL_SQRT_AFFINE"
+    },
+    "domain": [
+      2,
+      10
+    ],
+    "viewport": [
+      0,
+      11,
+      0,
+      9
+    ],
+    "domainRangeLabels": true,
+    "exactCoordinates": { "A": ["2", "3"], "B": ["4", "5"] },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 2,
+        "y": 3
+      },
+      {
+        "id": "B",
+        "x": 4,
+        "y": 5
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "⑴ y=√(2x−4)+3은 시작점 A(2,3)에서 오른쪽 위로 열린다. 정의역 x≥2, 치역 y≥3.",
+  "accessibilityDescription": "첫 번째 무리함수 그래프는 (2,3)에서 시작하여 오른쪽 위로 뻗고 (4,5)를 지나는 곡선이다.",
+  "sourceConditions": [
+    {
+      "id": "R4-1",
+      "condition": "y=√(2x−4)+3, 시작점 (2,3), 증가 방향",
+      "mappedTo": "graphPlan.radicand,graphPlan.sign,graphPlan.offset,graphPlan.requiredPoints"
+    },
+    {
+      "id": "R4-2",
+      "condition": "정의역 x≥2, 치역 y≥3",
+      "mappedTo": "graphPlan.domainRangeLabels"
+    }
+  ],
+  "newVisualInformation": [
+    "방향, 시작점, 정의역/치역 경계를 표시한다."
+  ]
+}

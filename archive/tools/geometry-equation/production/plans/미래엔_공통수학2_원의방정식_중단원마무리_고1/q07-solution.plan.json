@@ -1,0 +1,237 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "22",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "9",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "W",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "N",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "16",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "17",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "4",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "33",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "-4"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "-6"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circle",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 670,
+    "height": 510
+  },
+  "displayPoints": [
+    "C",
+    "H",
+    "W",
+    "N",
+    "F"
+  ],
+  "hiddenPointNames": ["W"],
+  "displayLines": [
+    "L"
+  ],
+  "lineLabels": [
+    {
+      "nodeId": "L",
+      "form": "GENERAL"
+    }
+  ],
+  "displayCircles": [
+    "circle"
+  ],
+  "displaySegments": [
+    {
+      "id": "radiusNear",
+      "refs": [
+        "C",
+        "N"
+      ]
+    },
+    {
+      "id": "radiusFar",
+      "refs": [
+        "C",
+        "F"
+      ]
+    },
+    {
+      "id": "distance",
+      "refs": [
+        "C",
+        "H"
+      ]
+    },
+    {
+      "id": "nearest",
+      "refs": [
+        "N",
+        "H"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rH",
+      "refs": [
+        "C",
+        "H",
+        "W"
+      ]
+    }
+  ],
+  "coordinateLabels": [
+    "C",
+    "H",
+    "N",
+    "F"
+  ],
+  "caption": "중심 C(2,5)에서 직선 3x−4y−6=0까지의 거리 CH=4, 반지름 2이다. 직선에 가까운 원 위 점 N의 거리 2, 먼 점 F의 거리 6을 나타낸다.",
+  "accessibilityDescription": "원의 중심 C(2,5)와 직선에 내린 수선의 발 H(22/5,9/5), 원 위 가까운 점 N(16/5,17/5), 먼 점 F(4/5,33/5)가 한 직선 위에 있다.",
+  "sourceConditions": [
+    {
+      "id": "C7-1",
+      "condition": "중심 (2,5), 반지름 2, 직선 3x−4y−6=0",
+      "mappedTo": "mathPlan.nodes[C,L,circle]"
+    },
+    {
+      "id": "C7-2",
+      "condition": "수선의 발 H=(22/5,9/5), 거리 CH=4, N(16/5,17/5), F(4/5,33/5)",
+      "mappedTo": "mathPlan.nodes[H,N,F],displaySegments[distance,nearest,radiusFar]"
+    }
+  ],
+  "newVisualInformation": [
+    "반지름과 중심-직선 거리를 같은 수선 방향으로 비교하여 최솟값 2·최댓값 6의 근거를 보인다."
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "capability": "sqrt-affine-spike-v1",
+  "graphPlan": {
+    "family": "sqrt-affine",
+    "radicand": [
+      "9",
+      "3"
+    ],
+    "sign": -1,
+    "offset": "-2",
+    "sourceDomain": {
+      "kind": "NATURAL_SQRT_AFFINE"
+    },
+    "domain": [
+      -3,
+      6
+    ],
+    "viewport": [
+      -5,
+      7,
+      -10,
+      2
+    ],
+    "domainRangeLabels": true,
+    "exactCoordinates": { "A": ["-3", "-2"], "B": ["0", "-5"] },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": -3,
+        "y": -2
+      },
+      {
+        "id": "B",
+        "x": 0,
+        "y": -5
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "⑵ y=−√(3x+9)−2는 시작점 A(−3,−2)에서 오른쪽 아래로 열린다. 정의역 x≥−3, 치역 y≤−2.",
+  "accessibilityDescription": "두 번째 무리함수 그래프는 (-3,-2)에서 시작하여 오른쪽 아래로 뻗고 (0,-5)를 지나는 곡선이다.",
+  "sourceConditions": [
+    {
+      "id": "R4-3",
+      "condition": "y=−√(3x+9)−2, 시작점 (−3,−2), 감소 방향",
+      "mappedTo": "graphPlan.radicand,graphPlan.sign,graphPlan.offset,graphPlan.requiredPoints"
+    },
+    {
+      "id": "R4-4",
+      "condition": "정의역 x≥−3, 치역 y≤−2",
+      "mappedTo": "graphPlan.domainRangeLabels"
+    }
+  ],
+  "newVisualInformation": [
+    "시작점, 아래 방향, 정의역/치역 경계를 나타낸다."
+  ]
+}

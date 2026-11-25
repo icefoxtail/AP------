@@ -1,0 +1,79 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "axisVariable": false,
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "두 교점",
+        "color": "BLUE",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-5*sqrt(2)",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "5*sqrt(2)",
+              "state": "OPEN"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "POINTS",
+        "label": "접함",
+        "points": [
+          {
+            "id": "T1",
+            "value": "-5*sqrt(2)",
+            "hideName": true
+          },
+          {
+            "id": "T2",
+            "value": "5*sqrt(2)",
+            "hideName": true
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "만나지 않음",
+        "color": "WARM",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "-5*sqrt(2)",
+              "state": "OPEN"
+            }
+          },
+          {
+            "lo": {
+              "value": "5*sqrt(2)",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "원의 중심에서 직선까지의 거리 d=|k|/√10과 반지름 √5를 비교하여 두 교점 |k|<5√2, 접함 |k|=5√2, 만나지 않음 |k|>5√2를 수직선에 구분한다.",
+  "accessibilityDescription": "k 수직선에서 두 교점인 열린 구간 (-5√2,5√2), 두 접점인 경계값, 바깥쪽 만남 없는 열린 두 구간을 각각 다른 줄에 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "C3-1",
+      "condition": "중심 (0,0), r=√5, d=|k|/√10",
+      "mappedTo": "caption"
+    },
+    {
+      "id": "C3-2",
+      "condition": "교점 두 개: -5√2<k<5√2; 접함: k=±5√2; 만나지 않음: 바깥 열린 구간",
+      "mappedTo": "numberLine.rows[0,1,2]"
+    }
+  ],
+  "newVisualInformation": [
+    "동일 임계값에서 거리 비교의 세 경우를 하나의 눈금으로 나눠 읽는다."
+  ]
+}

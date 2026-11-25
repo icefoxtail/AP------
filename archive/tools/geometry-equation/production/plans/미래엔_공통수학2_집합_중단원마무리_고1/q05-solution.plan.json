@@ -1,0 +1,91 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A",
+        "name": "A"
+      },
+      {
+        "id": "B",
+        "name": "B"
+      }
+    ],
+    "elements": [
+      {
+        "text": "1",
+        "in": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "text": "2",
+        "in": [
+          "B"
+        ]
+      },
+      {
+        "text": "3",
+        "in": []
+      },
+      {
+        "text": "4",
+        "in": []
+      },
+      {
+        "text": "5",
+        "in": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "text": "6",
+        "in": []
+      },
+      {
+        "text": "7",
+        "in": []
+      },
+      {
+        "text": "8",
+        "in": []
+      },
+      {
+        "text": "9",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "10",
+        "in": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "universe": {
+      "name": "U"
+    }
+  },
+  "caption": "U={1,...,10}, A={1,5,9,10}, B={1,2,5,10}이다. 공통 1,5,10, A만 9, B만 2, 둘 다 아닌 3,4,6,7,8을 원소별로 나타낸다.",
+  "accessibilityDescription": "전체집합 U의 벤다이어그램에서 A와 B가 겹친 부분에는 1,5,10, A에만 9, B에만 2, 두 원 밖에는 3,4,6,7,8이 들어가고 색칠은 없다.",
+  "sourceConditions": [
+    {
+      "id": "S5-1",
+      "condition": "U={1,...,10}, A={1,5,9,10}, B={1,2,5,10}",
+      "mappedTo": "diagram.sets,diagram.elements"
+    },
+    {
+      "id": "S5-2",
+      "condition": "A∩B={1,5,10}, A∪B={1,2,5,9,10}, A^c={2,3,4,6,7,8}, A−B={9}",
+      "mappedTo": "diagram.elements"
+    }
+  ],
+  "newVisualInformation": [
+    "교집합·합집합·여집합·차집합의 네 연산을 하나의 원소 소속도로 읽는다."
+  ]
+}
