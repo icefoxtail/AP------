@@ -1,10 +1,10 @@
 {
   "capability":"ellipse-figure-v1",
   "conic":{"kind":"PARABOLA","vertex":["0","0"],"p":"8/3","axis":"X"},
-  "points":[{"id":"O","kind":"ORIGIN"},{"id":"F","kind":"FOCUS"},{"id":"A","kind":"ON_CONIC","y":"8"},{"id":"B","kind":"ON_CONIC","y":"-8"},{"id":"M","kind":"ON_CONIC","y":"4"},{"id":"T","kind":"POINT","x":"9","y":"4"}],
-  "segments":[{"id":"AB","from":"A","to":"B","label":"16 cm"},{"id":"TM","from":"T","to":"M"},{"id":"MF","from":"M","to":"F"}],
-  "caption":"입구 지름 16cm, 깊이 6cm인 위성 안테나 포물선 단면에서 평행 입사 전파가 초점 F로 반사되는 한 광로",
-  "accessibilityDescription":"오른쪽으로 열린 포물선의 입구는 세로로 16센티미터이고 원점에서 입구까지 가로 깊이가 6센티미터다. 오른쪽에서 수평으로 들어온 전파 한 줄이 곡면 M에서 초점 F를 향한다.",
-  "sourceConditions":[{"id":"c1","condition":"입구 양 끝 A=(6,8), B=(6,-8)이고 깊이 6cm, 입구 지름 16cm를 충족한다. 초점거리 p=8/3은 구하는 값이므로 좌표를 표시하지 않는다.","mappedTo":["conic","A","B","AB","F"]},{"id":"c2","condition":"축평행 입사 광선의 한 예 T=(9,4)에서 M=(3/2,4)로 수평 진행한 뒤 초점 F로 반사되는 경로를 표시한다.","mappedTo":["T","M","TM","MF"]}],
-  "newVisualInformation":["입구 크기와 축평행 입사·초점 반사 경로"]
+  "points":[{"id":"O","kind":"ORIGIN"},{"id":"F","kind":"FOCUS"},{"id":"A","kind":"ON_CONIC","y":"8","label":false},{"id":"B","kind":"ON_CONIC","y":"-8","label":false},{"id":"D","kind":"POINT","x":"6","y":"0","label":false},{"id":"M","kind":"ON_CONIC","y":"4","label":false},{"id":"T","kind":"POINT","x":"9","y":"4","label":false},{"id":"N","kind":"ON_CONIC","y":"-4","label":false},{"id":"S","kind":"POINT","x":"9","y":"-4","label":false}],
+  "segments":[{"id":"AB","from":"A","to":"B","label":"16 cm"},{"id":"OD","from":"O","to":"D","label":"6 cm"},{"id":"TM","from":"T","to":"M"},{"id":"MF","from":"M","to":"F"},{"id":"SN","from":"S","to":"N"},{"id":"NF","from":"N","to":"F"}],
+  "caption":"입구 지름 16cm, 깊이 6cm를 각각 세로 현과 수평 치수로 표시한 위성 안테나 단면. 두 평행 입사 전파가 초점 F로 반사된다.",
+  "accessibilityDescription":"오른쪽으로 열린 포물선의 입구 AB는 세로로 16센티미터이고 원점 O에서 입구의 축상 점 D까지 수평 깊이는 6센티미터다. 오른쪽의 서로 다른 높이에서 수평으로 들어온 두 전파가 곡면에서 초점 F를 향한다.",
+  "sourceConditions":[{"id":"c1","condition":"입구 양 끝 A=(6,8), B=(6,-8)이고 D=(6,0)이므로 입구 지름 AB=16cm, 가로 깊이 OD=6cm를 그림 안에 직접 표시한다. 초점거리 p=8/3은 구하는 값이므로 좌표를 표시하지 않는다.","mappedTo":["conic","O","A","B","D","AB","OD","F"]},{"id":"c2","condition":"축평행 입사 광선의 두 예는 T=(9,4)→M=(3/2,4)→F 및 S=(9,-4)→N=(3/2,-4)→F이다. 광로 보조점의 이름은 학생 그림에 표시하지 않는다.","mappedTo":["T","M","TM","MF","S","N","SN","NF"]}],
+  "newVisualInformation":["입구 지름 16cm와 깊이 6cm가 각자의 선분에 직접 표시됨","위아래 서로 다른 두 평행 입사 전파의 초점 반사 경로"]
 }
