@@ -1,0 +1,11 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"PARABOLA","vertex":["0","0"],"p":"3","axis":"X"},
+  "points":[{"id":"O","kind":"ORIGIN"},{"id":"F","kind":"FOCUS"},{"id":"A","kind":"ON_CONIC","x":"4+sqrt(7)","branch":"POS"},{"id":"B","kind":"ON_CONIC","x":"4-sqrt(7)","branch":"NEG"},{"id":"P","kind":"FOOT","from":"A","onto":"ax","rightAngle":true},{"id":"Q","kind":"FOOT","from":"B","onto":"ax","rightAngle":true}],
+  "lines":[{"id":"ax","x":"0","hidden":true},{"id":"l","through":["A","B"],"hidden":true}],
+  "segments":[{"id":"AF","from":"A","to":"F"},{"id":"BF","from":"B","to":"F"},{"id":"AP","from":"A","to":"P","label":"4+√7"},{"id":"BQ","from":"B","to":"Q"}],
+  "caption":"y²=12x의 초점 현 AB에서 y축 수선 AP=4+√7, BQ=4−√7",
+  "accessibilityDescription":"포물선의 위쪽 A와 아래쪽 B를 잇는 초점 현에서 왼쪽 y축에 수선을 그어 각각 4+루트7과 4-루트7로 표시하였다.",
+  "sourceConditions":[{"id":"c1","condition":"y²=12x의 F=(3,0)이며 A와 B는 초점 F를 지나는 같은 현의 양 끝이다.","mappedTo":["conic","F","A","B","AF","BF","l"]},{"id":"c2","condition":"AP=4+√7과 BQ=4−√7은 주어진 길이이며 수선 발 P,Q는 y축 x=0에 둔다. 구하는 AB 길이는 표시하지 않는다.","mappedTo":["P","Q","ax","AP","BQ"]}],
+  "newVisualInformation":["주어진 두 수평거리의 근호 라벨과 초점 현의 결합"]
+}
