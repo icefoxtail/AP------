@@ -1,0 +1,57 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "axisVariable": false,
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "points": [
+          {
+            "id": "C",
+            "value": "4.24",
+            "showValue": true
+          },
+          {
+            "id": "B",
+            "value": "4.35",
+            "showValue": true
+          },
+          {
+            "id": "A",
+            "value": "4.45",
+            "showValue": true
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "각 점은 소수 둘째 자리까지의 근삿값이다. 수직선 순서는 c≈4.24 < b≈4.35 < a≈4.45이며 중간값은 b=7−√7이다.",
+  "accessibilityDescription": "각 점은 소수 둘째 자리까지의 근삿값이다. 수직선 순서는 c≈4.24 < b≈4.35 < a≈4.45이며 중간값은 b=7−√7이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "a=2+sqrt(6)",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "b=7-sqrt(7)",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "c=3sqrt(2)",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "4.24와 4.45 사이 세 값을 하나의 축에 함께 표시한다."
+  ]
+}

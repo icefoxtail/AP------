@@ -1,0 +1,75 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "axisVariable": false,
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "points": [
+          {
+            "id": "A",
+            "value": "2",
+            "showValue": true
+          },
+          {
+            "id": "B",
+            "value": "8",
+            "showValue": true
+          },
+          {
+            "id": "C",
+            "value": "18",
+            "showValue": true
+          },
+          {
+            "id": "D",
+            "value": "32",
+            "showValue": true
+          },
+          {
+            "id": "E",
+            "value": "50",
+            "showValue": true
+          },
+          {
+            "id": "F",
+            "value": "72",
+            "showValue": true
+          },
+          {
+            "id": "G",
+            "value": "98",
+            "showValue": true
+          },
+          {
+            "id": "H",
+            "value": "128",
+            "showValue": true
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "sqrt(72x)가 자연수가 되는 x=2n²의 값은 150 이하에서 2,8,18,32,50,72,98,128이며 양 끝의 합은 130이다.",
+  "accessibilityDescription": "sqrt(72x)가 자연수가 되는 x=2n²의 값은 150 이하에서 2,8,18,32,50,72,98,128이며 양 끝의 합은 130이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "72=2³·3²",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "x=2n², 1≤n≤8",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "2에서 128까지 정확히 여덟 후보를 표시하여 최솟값과 최댓값을 구분한다."
+  ]
+}
