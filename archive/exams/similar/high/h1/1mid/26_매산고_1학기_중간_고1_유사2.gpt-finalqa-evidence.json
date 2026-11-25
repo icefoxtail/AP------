@@ -1,0 +1,534 @@
+{
+  "schemaVersion": "gpt-finalqa-evidence-v1",
+  "examUid": "26_매산고_1학기_중간_고1_유사2",
+  "sourcePath": "archive/exams/similar/high/h1/1mid/26_매산고_1학기_중간_고1_유사2.js",
+  "blindPackDigest": "d7f22509e87e2dc89f81252aa58b41f7f56e38e92bb697ed56200c96075596d6",
+  "reviewer": {
+    "id": "GPT FINAL QA dedicated reviewer, separate first-pass session",
+    "blindFirstPass": "CONFIRMED",
+    "independentEvidence": "All 20 stems and choices were solved without answer, explanation, or metadata access; 20 mathematical derivations and answers were frozen in the outside-Git JSON before the separate answer/solution comparison. Same AI reviewer, not an external second human or independent second model.",
+    "blindArtifactRef": "outside-git:/workspace/scratch/3847fbe145fa/maesan-qa-evidence/26_매산고_1학기_중간_고1_유사2.blind-reasoning.json;sha256:81599ce73ce2b67b8e200cd43d97137c79f1b42c8b359014c78f5cb12e4e744e"
+  },
+  "questions": [
+    {
+      "qid": 1,
+      "sourceFingerprint": "28d919bb55788832d5d3cd6b4859bee3b443831c014cbd080f6c8150a71a3aa4",
+      "blindAnswer": "②",
+      "blindReasoning": "A-B=C이므로 A=B+C=x³+x²+2x+2. x의 계수는 2이다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "원문 의미 대조 및 엔진 허용 축 검수: 다항식 A-B=C와 계수 추출이 문장과 수식만으로 완결된다. 누락된 필수 시각정보가 없음을 확인했다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "원문 의미 대조 및 엔진 허용 축 검수: 다항식 덧셈과 x계수 비교의 전개식이 충분하다. 누락된 필수 시각정보가 없음을 확인했다."
+        }
+      }
+    },
+    {
+      "qid": 2,
+      "sourceFingerprint": "5adb43ab449db4df7d5772cb76250bb6badc7c7b524ef74553f879d7401da6a5",
+      "blindAnswer": "⑤",
+      "blindReasoning": "P(-1)=5, P(0)=(-2)+5=3이므로 차는 2이다. 항등식 계수는 별도로 구할 필요가 없다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "원문 의미 대조 및 엔진 허용 축 검수: 항등식의 입력값 두 개를 대입하는 순수 대수 문제이다. 누락된 필수 시각정보가 없음을 확인했다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "원문 의미 대조 및 엔진 허용 축 검수: P(-1) 및 P(0)의 대입 계산만으로 재현된다. 누락된 필수 시각정보가 없음을 확인했다."
+        }
+      }
+    },
+    {
+      "qid": 3,
+      "sourceFingerprint": "5994136be68c0a1626b352f9ba7ec0a244a754e7f6a96616dffee46db4284675",
+      "blindAnswer": "①",
+      "blindReasoning": "세제곱의 합 A³+B³=(A+B)(A²-AB+B²)에 A=2x, B=5y를 대입하면 xy계수 k=-2·5=-10이다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "원문 의미 대조 및 엔진 허용 축 검수: 두 세제곱의 합 인수분해 항등식이 문자로 모두 제시된다. 누락된 필수 시각정보가 없음을 확인했다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "원문 의미 대조 및 엔진 허용 축 검수: 표준 인수분해 공식과 xy 계수를 수식으로 확인한다. 누락된 필수 시각정보가 없음을 확인했다."
+        }
+      }
+    },
+    {
+      "qid": 4,
+      "sourceFingerprint": "4783cd0517e99409e5d03d1cff7a18866a67ef2934f77827527834bbe5522432",
+      "blindAnswer": "④",
+      "blindReasoning": "(x-1)²+2의 꼭짓점 x=1은 정의역 [0,4] 내부여서 최소 2. 양 끝 값 y(0)=3, y(4)=11 중 최대 11, 차 9이다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "원문 의미 대조 및 엔진 허용 축 검수: 함수식과 닫힌 구간 0≤x≤4가 발문에 완전하다. 누락된 필수 시각정보가 없음을 확인했다."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "f74e70e945fc29e84da2f3ffdd7f814e0d027fb0e28cceaf869efe3a064a1eae",
+          "reasoning": "원문 의미 대조 및 엔진 허용 축 검수: 꼭짓점 (1,2)와 양 끝점 (0,3),(4,11)의 대소가 그래프로 직관적으로 보인다. 식·좌표·수평선·필수 조건을 원문 및 해설의 계산과 대조했다."
+        }
+      }
+    },
+    {
+      "qid": 5,
+      "sourceFingerprint": "4ca92b596ab2975f24edacb4037ed9a569fc24356bf784851cf0c10b1f8cfb47",
+      "blindAnswer": "③",
+      "blindReasoning": "x³-2x²+3x+1을 x-2로 조립제법으로 나누면 Q(x)=x²+3, R=P(2)=7. Q(-1)=4이므로 R-Q(-1)=3이다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "원문 의미 대조 및 엔진 허용 축 검수: 피제수와 제수 및 몫·나머지 평가점이 모두 문자로 주어진다. 누락된 필수 시각정보가 없음을 확인했다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "원문 의미 대조 및 엔진 허용 축 검수: 나눗셈 항등식에 x=2,-1을 차례로 대입하면 충분하다. 누락된 필수 시각정보가 없음을 확인했다."
+        }
+      }
+    },
+    {
+      "qid": 6,
+      "sourceFingerprint": "0e521346c9488179756fcd9982b0b32ecd778d63b828a76f8ec9649f4aab40f5",
+      "blindAnswer": "②",
+      "blindReasoning": "2027≡3 (mod 2024). (2027+4)(2027²-17)≡(3+4)(9-17)=-56≡1968 (mod 2024).",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "원문 의미 대조 및 엔진 허용 축 검수: 다항식 나머지 조건을 주는 정수 계산 문제로 도형이 없다. 누락된 필수 시각정보가 없음을 확인했다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "원문 의미 대조 및 엔진 허용 축 검수: 합동식과 잉여 계산을 기호로 재현할 수 있다. 누락된 필수 시각정보가 없음을 확인했다."
+        }
+      }
+    },
+    {
+      "qid": 7,
+      "sourceFingerprint": "e500a31e04abfe779cc4ca261ff87b1996c8cc06fd9096716bf27706d3de0734",
+      "blindAnswer": "⑤",
+      "blindReasoning": "f(x)는 monic이고 f(3)=0이므로 f=x-3. P(3)=9a=0으로 a=0. 나누면 g=x²+3x+4. g(2)=14, 2f(2)=-2이므로 합 12이다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "원문 의미 대조 및 엔진 허용 축 검수: P(3)의 영점 및 인수 조건이 모두 텍스트에 기재되었다. 누락된 필수 시각정보가 없음을 확인했다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "원문 의미 대조 및 엔진 허용 축 검수: 인수정리와 두 몫값의 연산은 식 전개로 충분하다. 누락된 필수 시각정보가 없음을 확인했다."
+        }
+      }
+    },
+    {
+      "qid": 8,
+      "sourceFingerprint": "00453a105097732955582f498e35a4a7be35a50e0ce2427e846d04e3e3c7630a",
+      "blindAnswer": "④",
+      "blindReasoning": "z=a+bi이면 (z-̅z)²=(2bi)²=-4b²은 실수여서 ㄱ 참. z1=1,z2=2는 z1·conj(z2)=2가 실수인데 서로 달라 ㄴ 거짓. 켤레는 덧셈에 분배되어 ㄷ 참.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "원문 의미 대조 및 엔진 허용 축 검수: 복소수의 켤레 성질에 관한 ㄱㄴㄷ 진위 판정이다. 누락된 필수 시각정보가 없음을 확인했다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "원문 의미 대조 및 엔진 허용 축 검수: ㄱㄴㄷ 대수 전개와 ㄴ 반례가 시각 자산 없이 성립한다. 누락된 필수 시각정보가 없음을 확인했다."
+        }
+      }
+    },
+    {
+      "qid": 9,
+      "sourceFingerprint": "ae2348288d1bcf0ac82248b89276b150c456c48ba2bc6209b81f6c0dfedd93bb",
+      "blindAnswer": "②",
+      "blindReasoning": "양의 허수부 제곱근 규약에서 주어진 등식은 a>0,b<0일 때만 성립한다. ㄱ 판별식 9-4ab>0, ㄴ a²-4b>0은 항상 양수. ㄷ b²-4a와 ㄹ 4+4ab는 부호가 바뀔 수 있다. ㄱ,ㄴ만 해당한다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "원문 의미 대조 및 엔진 허용 축 검수: 매개변수 부호와 판별식 명제가 수식으로 제시된다. 누락된 필수 시각정보가 없음을 확인했다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "원문 의미 대조 및 엔진 허용 축 검수: 부호 조건 및 각 이차식 판별식의 부호로 판정한다. 누락된 필수 시각정보가 없음을 확인했다."
+        }
+      }
+    },
+    {
+      "qid": 10,
+      "sourceFingerprint": "9d7773951fa27c4635b1141ef14fb9f449ec756b848ac2ce09e63f1d1b86a1e1",
+      "blindAnswer": "③",
+      "blindReasoning": "x축과 만나지 않는 조건은 D=(2m-1)²-4(m²+2m+4)=-12m-15<0, 따라서 m>-5/4이다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "원문 의미 대조 및 엔진 허용 축 검수: 실근을 갖지 않는 이차방정식 조건이 수식으로 완전하다. 누락된 필수 시각정보가 없음을 확인했다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "원문 의미 대조 및 엔진 허용 축 검수: D=-12m-15의 부등식 정리만 필요하다. 누락된 필수 시각정보가 없음을 확인했다."
+        }
+      }
+    },
+    {
+      "qid": 11,
+      "sourceFingerprint": "a2fe4f54aa3945382379c61de67d39dfea09a7f62974491a2cdfbef3333121ba",
+      "blindAnswer": "⑤",
+      "blindReasoning": "교점 방정식 x²+(k-4)x+4=0이 중근이면 (k-4)²-16=0. k=0 또는 8, 합 8이다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "원문 의미 대조 및 엔진 허용 축 검수: 두 그래프의 식과 접한다는 조건이 충분히 명시되었다. 누락된 필수 시각정보가 없음을 확인했다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "원문 의미 대조 및 엔진 허용 축 검수: 교점 방정식의 판별식이 0인 경우로 직접 해결한다. 누락된 필수 시각정보가 없음을 확인했다."
+        }
+      }
+    },
+    {
+      "qid": 12,
+      "sourceFingerprint": "96a501c7d8216b8a2dcdb3c0f8151ba316219993de09f824e3e944cbd5cc5a2c",
+      "blindAnswer": "①",
+      "blindReasoning": "z=A+iB, A=3x²-x+1>0, B=x²+7x-5. z² 순허수 조건 A²-B²=0이며 AB≠0. A=B면 (x-1)(x-3)=0, A=-B면 (2x-1)(x+2)=0. x=1,3,1/2,-2의 곱은 -3이다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "원문 의미 대조 및 엔진 허용 축 검수: 복소수 z의 실수부·허수부를 분리하는 대수 문제이다. 누락된 필수 시각정보가 없음을 확인했다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "원문 의미 대조 및 엔진 허용 축 검수: 실수부=±허수부에서 나오는 이차방정식 해로 완결된다. 누락된 필수 시각정보가 없음을 확인했다."
+        }
+      }
+    },
+    {
+      "qid": 13,
+      "sourceFingerprint": "2ca44654f82f18f5717d16c7758b41304b0acd43b35c17ab9ace31f84629ea54",
+      "blindAnswer": "④",
+      "blindReasoning": "(p+2qi)²의 실수부 p²-4q²=0, 허수부 4pq=-24로 pq=-6. p<0에서 q=√3,p=-2√3. 근의 합 -√3, 곱 -6이므로 a=√3,b=-6, a³+b²=36+3√3이다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "원문 의미 대조 및 엔진 허용 축 검수: 복소수 p,q 조건은 도형이나 그래프를 요구하지 않는다. 누락된 필수 시각정보가 없음을 확인했다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "원문 의미 대조 및 엔진 허용 축 검수: 실수·허수 비교와 p<0 부호 선택을 식으로 설명한다. 누락된 필수 시각정보가 없음을 확인했다."
+        }
+      }
+    },
+    {
+      "qid": 14,
+      "sourceFingerprint": "4c95390c3fe4bfa1579abbdf4bfb463ab0109bf4d1ee814f9c0bfb0df09f2583",
+      "blindAnswer": "②",
+      "blindReasoning": "근과 계수 관계로 목표식 4a+19-2a²=21-2(a-1)². 단 두 교점의 판별식 D=24a²-76>0이므로 자연수 a≥2. 허용하는 가장 작은 a=2에서 최댓값 19이다. 무조건 a=1을 취하면 틀린다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "원문 의미 대조 및 엔진 허용 축 검수: 서로 다른 두 근 조건과 자연수 매개변수가 텍스트로 완전하다. 누락된 필수 시각정보가 없음을 확인했다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "원문 의미 대조 및 엔진 허용 축 검수: 판별식 제약 a≥2와 비에타 대입 최대화가 대수적이다. 누락된 필수 시각정보가 없음을 확인했다."
+        }
+      }
+    },
+    {
+      "qid": 15,
+      "sourceFingerprint": "a97a9f2a05431cfd735ea769eaded62d3eeda7db728fb5ee66799557db3045a1",
+      "blindAnswer": "③",
+      "blindReasoning": "h=f-g는 최고차항 -1, 영점 -2와 4이므로 h(x)=-(x+2)(x-4)=-x²+2x+8=-(x-1)²+9. α=1, β=9, 2α+4β=38이다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "원문 의미 대조 및 엔진 허용 축 검수: f-g의 최고차항과 두 영점이 그림 없이 제시된다. 누락된 필수 시각정보가 없음을 확인했다."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "0b2ca5f5ad9490f1a2f85c99fb0ed019d3a55afe73cf0d4edd945fd84f6c683c",
+          "reasoning": "원문 의미 대조 및 엔진 허용 축 검수: 차함수의 두 근 -2,4와 꼭짓점 (1,9)를 한 포물선으로 연결한다. 식·좌표·수평선·필수 조건을 원문 및 해설의 계산과 대조했다."
+        }
+      }
+    },
+    {
+      "qid": 16,
+      "sourceFingerprint": "aeb66a9624b2d331248decbc6ea143e75fb9c41a7c66d341627ba932a77500b2",
+      "blindAnswer": "18",
+      "blindReasoning": "s=x+1/x>0, s²=x²+1/x²+2=9이므로 s=3. x³+1/x³=s³-3s=27-9=18이다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "NOT_APPLICABLE"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "원문 의미 대조 및 엔진 허용 축 검수: 양수 x와 대칭식의 세제곱 계산 조건이 모두 기재된다. 누락된 필수 시각정보가 없음을 확인했다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "원문 의미 대조 및 엔진 허용 축 검수: s=x+1/x로 치환한 대수 계산이 충분하다. 누락된 필수 시각정보가 없음을 확인했다."
+        }
+      }
+    },
+    {
+      "qid": 17,
+      "sourceFingerprint": "ce11cb54a191eca055b1acd288c744436760da8d85a30b6bd5c2586599a9d523",
+      "blindAnswer": "18",
+      "blindReasoning": "z=e^(iπ/4). z-z^(-1)=√2 i 이므로 p(n)=√2 i z^n. 순허수가 되려면 z^n이 실수 즉 nπ/4가 π의 정수배여야 하며 n은 4의 배수. 1≤n≤72에 18개이다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "NOT_APPLICABLE"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "원문 의미 대조 및 엔진 허용 축 검수: 복소수 z의 거듭제곱 조건과 범위가 수식으로 주어진다. 누락된 필수 시각정보가 없음을 확인했다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "원문 의미 대조 및 엔진 허용 축 검수: 8주기와 n≡0 (mod 4)의 계수 계산으로 끝난다. 누락된 필수 시각정보가 없음을 확인했다."
+        }
+      }
+    },
+    {
+      "qid": 18,
+      "sourceFingerprint": "6f12534fd8dfabcbdb0965c03f7ee28416c6c4a609a1b136ee330f85b9bba775",
+      "blindAnswer": "33/2",
+      "blindReasoning": "첫 포물선의 꼭짓점 높이 t=2에서 접점 1+둘째 2=3점. 둘째 꼭짓점 높이 t=25/4에서 첫째 2+접점 1=3점. 둘 포물선 공통점은 2x²-3x-2=0의 x=-1/2,2에서 y=9/4,6이므로 각 높이에서 2+2-1=3점. 네 t의 합 2+25/4+9/4+6=33/2이다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "NOT_APPLICABLE"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "원문 의미 대조 및 엔진 허용 축 검수: 두 포물선의 함수식과 세 교점 조건이 글로 완전하다. 누락된 필수 시각정보가 없음을 확인했다."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "9cb2755aa6851eb5ef8fce0b2b07d51ca3fbdd6425fd22149aea96249053e44c",
+          "reasoning": "원문 의미 대조 및 엔진 허용 축 검수: 네 높이 2,9/4,6,25/4의 접점·중복 교점 원인을 두 곡선과 수평선으로 설명한다. 식·좌표·수평선·필수 조건을 원문 및 해설의 계산과 대조했다."
+        }
+      }
+    },
+    {
+      "qid": 19,
+      "sourceFingerprint": "a8bf32c8c9991f14092d80275412505c22166f538922e1c1d82cc045acb4e37a",
+      "blindAnswer": "-15",
+      "blindReasoning": "f=ux³+vx²+wx+d. f(ω)의 허수부로 w-v=11, 실수부로 2(u+d)-v-w=1. F=f-x+3의 F(0)=F(1)=F(2)에서 u+v+w=1, 4u+2v+w=1, 따라서 v=-3u,w=1+2u. u=2,v=-6,w=5,d=-2를 얻어 f(-1)=-2-6-5-2=-15이다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "NOT_APPLICABLE"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "원문 의미 대조 및 엔진 허용 축 검수: 다항식 나머지와 복소수 대입 조건의 대수 문제이다. 누락된 필수 시각정보가 없음을 확인했다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "원문 의미 대조 및 엔진 허용 축 검수: 계수 연립과 원시 세제곱근 관계로 식을 검산한다. 누락된 필수 시각정보가 없음을 확인했다."
+        }
+      }
+    },
+    {
+      "qid": 20,
+      "sourceFingerprint": "6602f31b6c9718cfa8aab4a27930e42cd5ab3723ada99d98216a9e52b8cfae49",
+      "blindAnswer": "-8",
+      "blindReasoning": "f(x)= (x-h)²+m, h=-a/2,m=b-a²/4. 서로 다른 실근 3개가 되려면 m<0에서 f(x)=0의 2근과 f(x)=-f(t)의 중근 1개가 필요하여 f(t)=-m. t=-2,6은 h를 중심으로 대칭이므로 h=2, 거리4의 제곱 16=-2m에서 m=-8. a=-4,b=m+h²=-4, a+b=-8이다.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "NOT_APPLICABLE"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "원문 의미 대조 및 엔진 허용 축 검수: 이차함수식과 세 실근 개수 조건이 수식으로 완전하다. 누락된 필수 시각정보가 없음을 확인했다."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "c9d6022fbbd3bb9f3e88230d003bfb2ac23d473f0751af58ea2fd87e6902c1a4",
+          "reasoning": "원문 의미 대조 및 엔진 허용 축 검수: 꼭짓점 (2,-8) 접선 높이와 t=-2,6의 동일 높이 8을 그래프로 대조한다. 식·좌표·수평선·필수 조건을 원문 및 해설의 계산과 대조했다."
+        }
+      }
+    }
+  ]
+}
