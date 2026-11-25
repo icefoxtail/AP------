@@ -1,0 +1,28 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{
+    "schemaVersion":"construction-spike-v1",
+    "realization":{"recipeId":"SOURCE_COORDINATE_AXES_v1","unit":"source-coordinate","reflectionEquivalent":false},
+    "nodes":[
+      {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"P","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-4"},{"kind":"integer","value":"-3"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"H","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-4"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "displayPoints":["O","P","H"],
+  "hiddenPointNames":["P","H"],
+  "hiddenPointStyle":"NONE",
+  "displaySegments":[{"id":"sOP","refs":["O","P"]},{"id":"sOH","refs":["O","H"]},{"id":"sHP","refs":["H","P"],"dashed":true}],
+  "rightAngles":[{"id":"rH","refs":["O","H","P"]}],
+  "planeMarks":{"expressionLabels":[{"id":"lx","ownerSegment":"sOH","text":"4"},{"id":"ly","ownerSegment":"sHP","text":"3"},{"id":"lh","ownerSegment":"sOP","text":"5"}]},
+  "coordinateCanvas":{"width":560,"height":430},
+  "sourceQuote":"$\\theta$가 제3사분면의 각이고 $\\tan\\theta = \\frac{3}{4}$",
+  "caption":"제3사분면에서 tan θ=3/4인 동경을 가로 4·세로 3·빗변 5의 직각삼각형으로 표현한다.",
+  "accessibilityDescription":"제3사분면의 원점에서 왼쪽 네 칸 아래 세 칸으로 내려간 동경과, x축에 내린 수선이 직각삼각형을 이룬다. 가로 4, 세로 3, 빗변 5라고 표시한다.",
+  "sourceConditions":[
+    {"id":"M08-a","condition":"제3사분면: x<0, y<0","mappedTo":"mathPlan.nodes[P=(-4,-3)] 및 displaySegments[sOP]"},
+    {"id":"M08-b","condition":"tan θ=y/x=3/4, 임의의 닮음비 중 최소 정수변 3:4:5 채택","mappedTo":"mathPlan.nodes[P,H],planeMarks.expressionLabels"},
+    {"id":"M08-c","condition":"직각과 피타고라스 빗변 5","mappedTo":"rightAngles[rH],planeMarks.expressionLabels[lh]"}
+  ],
+  "newVisualInformation":["tan θ가 양수여도 제3사분면의 sin θ와 cos θ는 각각 음수임을 3:4:5 길이로 시각화한다."]
+}
