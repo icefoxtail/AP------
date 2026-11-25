@@ -364,7 +364,7 @@
     "width": 720,
     "height": 360
   },
-  "sourceQuote": "넓이가 $\\sqrt{10}$이고 한 변의 길이가 $\\sqrt2$인 직사",
+  "sourceQuote": "[키포인트] 직사각형의 넓이에서 공통 높이를 찾고, 사다리꼴 넓이의 비를 간단히 한다.",
   "sourceConditions": [
     {
       "id": "source",
@@ -375,5 +375,39 @@
   "newVisualInformation": [
     "사다리꼴 A와 B의 공통 높이",
     "서로 다른 평행변 쌍을 나란히 비교"
-  ]
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "A-base",
+        "ownerSegment": "s0",
+        "text": "sqrt(2)"
+      },
+      {
+        "id": "A-top",
+        "ownerSegment": "s2",
+        "text": "sqrt(2)+sqrt(5)"
+      },
+      {
+        "id": "A-height",
+        "ownerSegment": "s3",
+        "text": "sqrt(5)"
+      },
+      {
+        "id": "B-base",
+        "ownerSegment": "s4",
+        "text": "2sqrt(2)"
+      },
+      {
+        "id": "B-top",
+        "ownerSegment": "s6",
+        "text": "sqrt(2)+sqrt(5)"
+      },
+      {
+        "id": "B-height",
+        "ownerSegment": "s7",
+        "text": "sqrt(5)"
+      }
+    ]
+  }
 }
