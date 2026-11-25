@@ -1,0 +1,35 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "SOURCE_COORDINATE_AXES_v1", "unit": "source-coordinate", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "O", "op": "NORMALIZATION_ORIGIN", "inputs": [], "args": {}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "X", "op": "NORMALIZATION_AXIS", "inputs": [], "args": { "length": {"kind":"integer","value":"1"} }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{"kind":"integer","value":"4"},{"kind":"integer","value":"3"}] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "E", "op": "TRANSLATE_POINT", "inputs": ["A"], "args": { "dx": {"kind":"integer","value":"0"}, "dy": {"kind":"integer","value":"-3"} }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "F", "op": "TRANSLATE_POINT", "inputs": ["A"], "args": { "dx": {"kind":"integer","value":"-4"}, "dy": {"kind":"integer","value":"0"} }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "B", "op": "POINT_REFLECTION", "inputs": ["A", "E"], "args": {}, "outputType": "POINT", "factRole": "CONCLUSION" },
+      { "id": "C", "op": "POINT_REFLECTION", "inputs": ["A", "F"], "args": {}, "outputType": "POINT", "factRole": "CONCLUSION" },
+      { "id": "D", "op": "POINT_REFLECTION", "inputs": ["A", "O"], "args": {}, "outputType": "POINT", "factRole": "CONCLUSION" }
+    ]
+  },
+  "coordinateCanvas": { "width": 680, "height": 480 },
+  "displayPoints": ["A", "B", "C", "D"],
+  "displaySegments": [
+    { "id": "sAB", "refs": ["A", "B"] },
+    { "id": "sAC", "refs": ["A", "C"] },
+    { "id": "sBD", "refs": ["B", "D"] },
+    { "id": "sCD", "refs": ["C", "D"] },
+    { "id": "sAD", "refs": ["A", "D"], "emphasis": "BOLD" }
+  ],
+  "coordinateLabels": ["A", "B", "C", "D"],
+  "caption": "예: A=(4,3)인 경우, 세 대칭점 B,C,D가 직사각형을 이루고 AD가 대각선이다.",
+  "accessibilityDescription": "A는 제1사분면의 (4,3)에 있고, B는 x축 반사점, C는 y축 반사점, D는 원점 반사점이다. AB 길이는 6, AC 길이는 8이다.",
+  "sourceConditions": [
+    { "id": "representative", "condition": "AB=6, AC=8에서 |x|=4, |y|=3, 네 부호 중 A(4,3)를 예시로 선택", "mappedTo": "mathPlan.nodes[A]" },
+    { "id": "reflect", "condition": "B는 x축, C는 y축, D는 원점 대칭", "mappedTo": "mathPlan.nodes[B,C,D].op=POINT_REFLECTION" },
+    { "id": "distances", "condition": "AB=6, AC=8, AD=10", "mappedTo": "displaySegments[sAB,sAC,sAD]" }
+  ],
+  "newVisualInformation": ["원문은 A의 사분면을 정하지 않으므로 이 그림은 A(4,3)의 대표 예시이며 길이 6,8의 직각 두 변과 대각선 관계만 풀이에 사용한다."]
+}

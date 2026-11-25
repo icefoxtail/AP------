@@ -1,0 +1,16 @@
+{
+  "capability":"composite-panels-v1",
+  "panels":[
+    {"caption":{"text":"원래 포물선"},"plan":{"capability":"polynomial-spike-v1","graphPlan":{"family":"polynomial","coefficients":["19","-8","1"],"sourceDomain":{"kind":"ALL_REALS"},"domain":[1,7],"viewport":[1,7,-1,13],"requiredPoints":[{"id":"V","x":4,"y":3}],"axisTickValues":{"x":[4],"y":[3]}}}},
+    {"caption":{"text":"x축 대칭"},"plan":{"capability":"polynomial-spike-v1","graphPlan":{"family":"polynomial","coefficients":["-19","8","-1"],"sourceDomain":{"kind":"ALL_REALS"},"domain":[1,7],"viewport":[1,7,-13,1],"requiredPoints":[{"id":"V","x":4,"y":-3}],"axisTickValues":{"x":[4],"y":[-3]}}}},
+    {"caption":{"text":"위로 3만큼 이동"},"plan":{"capability":"polynomial-spike-v1","graphPlan":{"family":"polynomial","coefficients":["-16","8","-1"],"sourceDomain":{"kind":"ALL_REALS"},"domain":[1,7],"viewport":[1,7,-10,3],"requiredPoints":[{"id":"T","x":4,"y":0}],"axisTickValues":{"x":[4],"y":[]}}}}
+  ],
+  "caption":"꼭짓점 (4,3)이 x축 대칭으로 (4,-3), 위로 3 이동해 (4,0)이 되며 x축에 접한다.",
+  "accessibilityDescription":"위로 열린 원래 포물선, x축 대칭으로 아래로 열린 포물선, 위로 3만큼 이동해 꼭짓점이 x축에 닿은 포물선을 순서대로 비교한다.",
+  "sourceConditions":[
+    {"id":"original","condition":"y=x²-8x+19=(x-4)²+3","mappedTo":"panels[0].plan.graphPlan.coefficients;requiredPoints[V]"},
+    {"id":"reflection","condition":"x축 대칭 y=-(x-4)²-3","mappedTo":"panels[1].plan.graphPlan.coefficients;requiredPoints[V]"},
+    {"id":"tangent","condition":"위로 a=3 이동하면 y=-(x-4)²이고 (4,0) 접점","mappedTo":"panels[2].plan.graphPlan.coefficients;requiredPoints[T]"}
+  ],
+  "newVisualInformation":["실제 포물선 계수 세 세트와 각 꼭짓점을 별도 패널의 그려지는 그래프·점 필드로 구분한다."]
+}

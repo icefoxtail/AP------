@@ -1,0 +1,32 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "SOURCE_COORDINATE_AXES_v1", "unit": "source-coordinate", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{"kind":"integer","value":"-5"},{"kind":"integer","value":"2"}] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{"kind":"integer","value":"5"},{"kind":"integer","value":"7"}] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "C1", "op": "DIVISION_POINT", "inputs": ["A", "B"], "args": { "m": {"kind":"integer","value":"3"}, "n": {"kind":"integer","value":"2"}, "mode": "INTERNAL" }, "outputType": "POINT", "factRole": "CONCLUSION" },
+      { "id": "C2", "op": "DIVISION_POINT", "inputs": ["A", "B"], "args": { "m": {"kind":"integer","value":"3"}, "n": {"kind":"integer","value":"2"}, "mode": "EXTERNAL" }, "outputType": "POINT", "factRole": "CONCLUSION" }
+    ]
+  },
+  "coordinateCanvas": { "width": 720, "height": 500 },
+  "pointNames": { "C1": "C_1", "C2": "C_2" },
+  "displayPoints": ["A", "B", "C1", "C2"],
+  "displaySegments": [
+    { "id": "sAC1", "refs": ["A", "C1"] },
+    { "id": "sC1B", "refs": ["C1", "B"] },
+    { "id": "sBC2", "refs": ["B", "C2"] },
+    { "id": "sAC2", "refs": ["A", "C2"], "dashed": true }
+  ],
+  "coordinateLabels": ["A", "B", "C1", "C2"],
+  "caption": "AC:CB=3:2를 만족하는 내분점 C₁과 AB 연장선 위의 외분점 C₂를 함께 나타낸다.",
+  "accessibilityDescription": "A(-5,2)와 B(5,7)를 잇는 직선 위에 내분점 C₁(1,5)과 B 바깥의 외분점 C₂(25,17)가 있다.",
+  "sourceConditions": [
+    { "id": "ends", "condition": "A(-5,2), B(5,7)", "mappedTo": "mathPlan.nodes[A,B]" },
+    { "id": "ratio", "condition": "3BC=2AC이므로 AC:CB=3:2", "mappedTo": "mathPlan.nodes[C1,C2].args[m,n]" },
+    { "id": "internal", "condition": "C=(1,5)인 내분 경우", "mappedTo": "mathPlan.nodes[C1].mode=INTERNAL" },
+    { "id": "external", "condition": "C=(25,17)인 외분 경우", "mappedTo": "mathPlan.nodes[C2].mode=EXTERNAL" }
+  ],
+  "newVisualInformation": ["내분과 외분 해가 모두 같은 A,B의 직선 위에 있고 외분은 B의 바깥이라는 사실을 실제 작도로 보인다."]
+}

@@ -1,0 +1,37 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "SOURCE_COORDINATE_AXES_v1", "unit": "source-coordinate", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{"kind":"integer","value":"1"},{"kind":"integer","value":"4"}] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{"kind":"integer","value":"-2"},{"kind":"integer","value":"0"}] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{"kind":"integer","value":"7"},{"kind":"integer","value":"-4"}] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "D", "op": "DIVISION_POINT", "inputs": ["B", "C"], "args": { "m": {"kind":"integer","value":"1"}, "n": {"kind":"integer","value":"2"}, "mode": "INTERNAL" }, "outputType": "POINT", "factRole": "CONCLUSION" }
+    ]
+  },
+  "coordinateCanvas": { "width": 680, "height": 500 },
+  "displayPoints": ["A", "B", "C", "D"],
+  "displaySegments": [
+    { "id": "sAB", "refs": ["A", "B"] },
+    { "id": "sAC", "refs": ["A", "C"] },
+    { "id": "sBD", "refs": ["B", "D"] },
+    { "id": "sDC", "refs": ["D", "C"] },
+    { "id": "sAD", "refs": ["A", "D"], "emphasis": "BOLD" }
+  ],
+  "coordinateLabels": ["A", "B", "C", "D"],
+  "planeMarks": {
+    "expressionLabels": [
+      { "id": "ratioBD", "ownerSegment": "sBD", "text": "1" },
+      { "id": "ratioDC", "ownerSegment": "sDC", "text": "2" }
+    ]
+  },
+  "caption": "각의 이등분선 AD가 BC를 BD:DC=1:2로 나누는 해설용 좌표 그림이다.",
+  "accessibilityDescription": "A(1,4), B(-2,0), C(7,-4)의 삼각형에서 D는 BC를 1대2로 내분하고 선분 AD가 그려져 있다.",
+  "sourceConditions": [
+    { "id": "vertex", "condition": "A(1,4), B(-2,0), C(7,-4)", "mappedTo": "mathPlan.nodes[A,B,C]; displaySegments[sAB,sAC,sBD,sDC]" },
+    { "id": "bisector", "condition": "AB=5, AC=10이므로 BD:DC=1:2", "mappedTo": "mathPlan.nodes[D].op=DIVISION_POINT; planeMarks.expressionLabels[ratioBD,ratioDC]; displaySegments[sAD]" },
+    { "id": "D", "condition": "D=(1,-4/3) (해설에서 구한 점)", "mappedTo": "mathPlan.nodes[D]; coordinateLabels[D]" }
+  ],
+  "newVisualInformation": ["원본의 좌표 세 점과 세 변을 그대로 두고, 풀이에서 구한 내분점 D와 AD 및 1:2 표기를 추가한다."]
+}

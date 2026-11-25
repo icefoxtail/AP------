@@ -1,0 +1,35 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{
+    "schemaVersion":"construction-spike-v1",
+    "realization":{"recipeId":"SOURCE_COORDINATE_AXES_v1","unit":"source-coordinate","reflectionEquivalent":false},
+    "nodes":[
+      {"id":"K","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"1"},{"kind":"integer","value":"-2"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"circle","op":"CIRCLE_CENTER_RADIUS","inputs":["K"],"args":{"radius":{"kind":"integer","value":"3"}},"outputType":"CIRCLE","factRole":"GIVEN"},
+      {"id":"t1","op":"SOURCE_LINE","inputs":[],"args":{"a":{"kind":"integer","value":"1"},"b":{"kind":"integer","value":"1"},"c":{"kind":"expression","op":"sub","args":[{"kind":"integer","value":"1"},{"kind":"expression","op":"mul","args":[{"kind":"integer","value":"3"},{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"2"}]}]}]}},"outputType":"LINE","factRole":"CONCLUSION"},
+      {"id":"t2","op":"SOURCE_LINE","inputs":[],"args":{"a":{"kind":"integer","value":"1"},"b":{"kind":"integer","value":"1"},"c":{"kind":"expression","op":"add","args":[{"kind":"integer","value":"1"},{"kind":"expression","op":"mul","args":[{"kind":"integer","value":"3"},{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"2"}]}]}]}},"outputType":"LINE","factRole":"CONCLUSION"},
+      {"id":"yax","op":"SOURCE_LINE","inputs":[],"args":{"a":{"kind":"integer","value":"1"},"b":{"kind":"integer","value":"0"},"c":{"kind":"integer","value":"0"}},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"A","op":"LINE_INTERSECTION","inputs":["t1","yax"],"args":{},"outputType":"POINT","factRole":"CONCLUSION"},
+      {"id":"B","op":"LINE_INTERSECTION","inputs":["t2","yax"],"args":{},"outputType":"POINT","factRole":"CONCLUSION"},
+      {"id":"T1","op":"PERPENDICULAR_FOOT","inputs":["K","t1"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"T2","op":"PERPENDICULAR_FOOT","inputs":["K","t2"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "coordinateCanvas":{"width":700,"height":500},
+  "displayPoints":["K","A","B","T1","T2"],
+  "pointNames":{"T1":"T_1","T2":"T_2"},
+  "displayCircles":["circle"],
+  "displayLines":["t1","t2"],
+  "displaySegments":[{"id":"sKT1","refs":["K","T1"]},{"id":"sKT2","refs":["K","T2"]},{"id":"sAB","refs":["A","B"],"emphasis":"BOLD"}],
+  "rightAngles":[{"id":"r1","refs":["K","T1","A"]},{"id":"r2","refs":["K","T2","B"]}],
+  "planeMarks":{"lineColors":[{"lines":["t1"],"color":"BLUE"},{"lines":["t2"],"color":"WARM"}]},
+  "caption":"원에 접하는 기울기 -1의 파란 접선과 주황 접선, 각 접점의 수선 및 y축 위 두 절편 A,B.",
+  "accessibilityDescription":"원 K(1,-2), 반지름 3에 두 평행 접선이 접하고, 원 중심에서 각각 접점까지 수선이 그려져 있으며 y축의 교점 A,B를 잇는다.",
+  "sourceConditions":[
+    {"id":"circle","condition":"중심 (1,-2), 반지름 3","mappedTo":"mathPlan.nodes[K,circle]"},
+    {"id":"slope","condition":"두 접선의 기울기 -1","mappedTo":"mathPlan.nodes[t1,t2].args[a,b]"},
+    {"id":"tangent","condition":"|b+1|=3√2, b=-1±3√2, 두 접점에서 KT가 접선과 수직","mappedTo":"mathPlan.nodes[t1,t2,T1,T2];rightAngles[r1,r2]"},
+    {"id":"intercepts","condition":"A,B는 두 접선과 y축의 교점, AB=6√2","mappedTo":"mathPlan.nodes[A,B];displaySegments[sAB]"}
+  ],
+  "newVisualInformation":["두 접선의 정확한 근호 절편을 엔진 수식 노드에 두고, 파란색·주황색 선과 접점의 직각 두 개 및 AB를 그린다. 원 내부는 채우지 않는다."]
+}
