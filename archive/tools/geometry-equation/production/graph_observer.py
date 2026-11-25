@@ -5130,7 +5130,7 @@ def trigonometric_period_v2_audit(plan,svg,transform):
         return {'status':status,'errors':sorted(set(errors+unsupported)),'features':features,'curvePoints':len(points),'mathMethod':'EXACT_RATIONAL_PARAMETERS_AND_INDEPENDENT_EVALUATION'}
     except (ValueError,KeyError,TypeError,ZeroDivisionError,OverflowError) as error:return {'status':'UNSUPPORTED','errors':[str(error) if isinstance(error,ValueError) else 'TRIGONOMETRIC_SOURCE_SCHEMA_INVALID']}
 
-MC_FREE_KINDS=('LINE','RATIONAL','SQRT','EXPONENTIAL','LOGARITHMIC')
+MC_FREE_KINDS=('LINE','RATIONAL','SQRT','EXPONENTIAL','LOGARITHMIC','ABSOLUTE_VALUE')
 MC_EXACT_PATTERN=r'-?\d+(?:/\d+)?'
 
 def _mc_obs_fraction(value,code):
@@ -5179,6 +5179,11 @@ def _mc_obs_free(entry,ident):
             curve['shiftX']=_mc_obs_fraction(entry.get('shiftX','0'),code)
         elif any(key in entry for key in ('shiftX','domainStates','abs')):
             raise ValueError('MULTI_CURVE_CURVE_INVALID:'+ident)
+    elif kind=='ABSOLUTE_VALUE':
+        raw=entry.get('coefficients')
+        if not isinstance(raw,list) or len(raw)!=4:raise ValueError(code)
+        curve['c']=[_mc_obs_fraction(value,code) for value in raw]
+        if curve['c'][1]==0 or curve['c'][2]==0:raise ValueError(code)
     else:
         curve['r']=_mc_obs_pair(entry,'radicand',code)
         if curve['r'][1]==0:raise ValueError(code)
@@ -5229,6 +5234,9 @@ def _mc_obs_y_plain(curve,x_value):
         a,k,b,c=curve['c']
         argument=k*x_value+b
         return float(c)+float(a)*math.log(argument,curve['base']) if argument>0 else None
+    if kind=='ABSOLUTE_VALUE':
+        b,k,a,c=curve['c']
+        return float(c)+float(a)*abs(float(k*x_value+b))
     f0,f1,f2=curve['f']
     return f0+f1*x_value+f2*x_value*x_value
 
@@ -5605,7 +5613,7 @@ def multi_curve_audit(plan,svg,transform,model=False):
             if entry.get('inverseOf') is not None:
                 source=by_id.get(entry['inverseOf'])
                 if source is None or source.get('inverse') or source.get('abs'):raise ValueError('MULTI_CURVE_INVERSE_UNSUPPORTED:'+ident)
-                if kind in ('EXPONENTIAL','LOGARITHMIC'):raise ValueError('MULTI_CURVE_INVERSE_UNSUPPORTED:'+ident)
+                if kind in ('EXPONENTIAL','LOGARITHMIC','ABSOLUTE_VALUE'):raise ValueError('MULTI_CURVE_INVERSE_UNSUPPORTED:'+ident)
                 definition=_mc_obs_inverse_definition(source,ident) if source['kind'] in MC_FREE_KINDS else None
                 if definition is None:
                     # a quadratic half: its inverse is a square root (own derivation, exact)
@@ -5707,7 +5715,7 @@ def multi_curve_audit(plan,svg,transform,model=False):
             if kind=='Y_OF_X' or kind=='X_OF_Y':
                 wanted=curve['c'] if 'c' in curve else tuple(curve['coefficients'])
                 if not list_same(row.get('coefficients'),wanted):same=False
-            elif kind=='LINE':
+            elif kind in ('LINE','ABSOLUTE_VALUE'):
                 if not list_same(row.get('coefficients'),curve['c']):same=False
             elif kind=='RATIONAL':
                 if not list_same(row.get('numerator'),curve['n']) or not list_same(row.get('denominator'),curve['d']):same=False
@@ -5780,7 +5788,7 @@ def multi_curve_audit(plan,svg,transform,model=False):
                 widths[tag]=(width_value if width_value is not None else 0.0,look.get('weight')=='BOLD')
                 if any(right[0]<=left[0] for left,right in zip(points,points[1:])):errors.append('MULTI_CURVE_CURVE_NOT_INCREASING_X:'+tag)
                 if any(px<start-x_tol or px>end+x_tol for px,_ in points):errors.append('MULTI_CURVE_CURVE_CROSSES_INTERVAL:'+tag)
-                clipped_ok=kind in ('LINE','RATIONAL','SQRT') or curve.get('inverse')   # a LINE, RATIONAL, SQRT or an inverse may be cut off by the frame; a quadratic arc never is
+                clipped_ok=kind in ('LINE','RATIONAL','SQRT','ABSOLUTE_VALUE') or curve.get('inverse')   # a LINE, RATIONAL, SQRT, ABSOLUTE_VALUE or an inverse may be cut off by the frame; a quadratic arc never is
                 # coverage: each end is at the interval end, or (a free curve) where the frame cuts it off
                 for end_point,want in ((points[0],start),(points[-1],end)):
                     at_end=abs(end_point[0]-want)<=x_tol

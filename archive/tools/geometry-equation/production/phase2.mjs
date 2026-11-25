@@ -1550,6 +1550,10 @@ function multiCurveSpec(plan,id){
     if(curve.kind==='RATIONAL')return 'y='+wrapIf(rationalPolynomialText(curve.numerator))+'/'+wrapIf(rationalPolynomialText(curve.denominator));
     if(curve.kind==='EXPONENTIAL')return expLogFormulaText({...curve,family:'exponential-affine'});
     if(curve.kind==='LOGARITHMIC')return expLogFormulaText({...curve,family:'logarithmic-affine'});
+    if(curve.kind==='ABSOLUTE_VALUE'){
+      const [b,k,a,c]=curve.coefficients,inner=polyText([b,k]),factor=a==='1'?'':a==='-1'?'-':(/[+\-*/]/.test(a.replace(/^-/,'') )?'('+a+')':a)+'*',shift=c==='0'?'':(c.startsWith('-')?c:'+'+c);
+      return 'y='+factor+'abs('+inner+')'+shift;
+    }
     if(curve.kind==='SQRT'){
       const wrap=text=>/[+*/]/.test(text)&&!text.startsWith('(')?'('+text+')':text,amplitude=curve.amplitude,factor=amplitude==='1'?'':amplitude==='-1'?'-':wrap(amplitude)+'*',offset=curve.offset==='0'?'':(curve.offset.startsWith('-')?curve.offset:'+'+curve.offset);
       return 'y='+factor+'sqrt('+rationalPolynomialText(curve.radicand)+')'+offset;
@@ -1567,12 +1571,17 @@ function multiCurveSpec(plan,id){
       const [amplitude,rate,offset,verticalShift]=curve.coefficients.map(exactValue);
       return verticalShift+amplitude*Math.log(rate*x+offset)/Math.log(exactValue(curve.base));
     }
+    if(curve.kind==='ABSOLUTE_VALUE'){
+      const [b,k,a,c]=curve.coefficients.map(exactValue);
+      return c+a*Math.abs(k*x+b);
+    }
     return exactValue(curve.offset)+exactValue(curve.amplitude)*Math.sqrt(Math.max(0,exactValue(curve.radicand[0])+exactValue(curve.radicand[1])*x));
   };
   // G18c: abs:true draws y=|f(x)|; the kink (where f is 0) is a sampled position, so the folded corner is exact.
   const valueOf=(curve,x)=>curve.abs===true?Math.abs(plainValueOf(curve,x)):plainValueOf(curve,x);
   const wrapAbs=(curve,expression)=>curve.abs===true?'abs('+expression+')':expression;
   const kinkZeros=curve=>{
+    if(curve.kind==='ABSOLUTE_VALUE'){const k=exactValue(curve.coefficients[1]);return k?[-exactValue(curve.coefficients[0])/k]:[];}
     if(curve.abs!==true)return [];
     if(curve.kind==='LINE'){const c1=exactValue(curve.coefficients[1]);return c1?[-exactValue(curve.coefficients[0])/c1]:[];}
     if(curve.kind==='RATIONAL'){const n1=exactValue(curve.numerator[1]);return n1?[-exactValue(curve.numerator[0])/n1]:[];}
@@ -1601,11 +1610,13 @@ function multiCurveSpec(plan,id){
   let verticalLabels=0,horizontalLabels=0;
   for(const curve of features.curves){
     if(!curve||typeof curve.id!=='string'||!Array.isArray(curve.branches)||!curve.branches.length)throw Error('MULTI_CURVE_FEATURE_INVENTORY_REQUIRED');
-    if(['LINE','RATIONAL','SQRT','EXPONENTIAL','LOGARITHMIC'].includes(curve.kind)){
+    if(['LINE','RATIONAL','SQRT','EXPONENTIAL','LOGARITHMIC','ABSOLUTE_VALUE'].includes(curve.kind)){
       // Each branch gets its own FUNCTION_GRAPH with a CURVE_<id>[_L|_R] tag.
       const logarithmic=curve.kind==='LOGARITHMIC';
       const expression=logarithmic?expLogExpression({...curve,family:'logarithmic-affine'})
-        :curve.kind==='EXPONENTIAL'?expLogExpression({...curve,family:'exponential-affine'}):wrapAbs(curve,curve.kind==='LINE'?polyText(curve.coefficients):curve.kind==='RATIONAL'?'('+rationalPolynomialText(curve.numerator)+')/('+rationalPolynomialText(curve.denominator)+')':'('+curve.offset+')+('+curve.amplitude+')*sqrt('+rationalPolynomialText(curve.radicand)+')');
+        :curve.kind==='EXPONENTIAL'?expLogExpression({...curve,family:'exponential-affine'})
+        :curve.kind==='ABSOLUTE_VALUE'?'('+curve.coefficients[3]+')+('+curve.coefficients[2]+')*abs('+polyText([curve.coefficients[0],curve.coefficients[1]])+')'
+        :wrapAbs(curve,curve.kind==='LINE'?polyText(curve.coefficients):curve.kind==='RATIONAL'?'('+rationalPolynomialText(curve.numerator)+')/('+rationalPolynomialText(curve.denominator)+')':'('+curve.offset+')+('+curve.amplitude+')*sqrt('+rationalPolynomialText(curve.radicand)+')');
       expressionOfCurve.set(curve.id,expression);
       for(const branch of curve.branches){
         if(!branch||!['FUNCTION','LEFT','RIGHT'].includes(branch.side)||!Array.isArray(branch.xInterval))throw Error('MULTI_CURVE_FEATURE_INVENTORY_REQUIRED');
@@ -1962,6 +1973,7 @@ const CONTAINER_FILL_CONTRACT=` CONTAINER FILL FIGURES (container-fill-figure-v1
     extendedContract+=' An optional integerColumns:true on a multi-curve between region writes the count in every integer column between the two inclusive walls without drawing individual points. Use two EXPONENTIAL curves of the same integer base and rate, 2 to 8 columns with integer x limits, and integer exponents at those x positions. The engine computes exact bounds and floor(upper)-ceil(lower)+1 in each column and never prints their sum. Each count is drawn above its own segment; the two walls are solid and the interior columns are dotted.';
     extendedContract+=' MULTI-CURVE EXPONENTIAL: an EXPONENTIAL row has id, kind, base (a positive reduced integer or fraction string, other than 1, numerator and denominator at most 1000), coefficients:[A,k,C] (exact rationals; A,k nonzero), optional shiftX (exact rational, default zero), and an explicit finite domain. Draws y=A*base^(k*(x-shiftX))+C on the stated span, with the usual curve label, color, style and endpoint options and a required graphPlan.viewport. This display interval does not add source endpoint marks unless the author requests them. Inverses and abs are unsupported for this kind.';
     extendedContract+=' MULTI-CURVE LOGARITHMIC: a LOGARITHMIC row has id, kind, the same exact positive reduced rational base, coefficients:[A,k,b,C] (exact rationals; A,k nonzero), and an explicit finite exact domain:[lo,hi] inside k*x+b>0. The curve y=A*log_base(k*x+b)+C shares the required graphPlan.viewport. To show a crossing close to the natural boundary choose a positive argument small enough to include it. The draw span has no source endpoint markers. The observer recomputes the natural boundary and checks the exact formula and both ends of the sampled curve. Inverse, abs, emphasis and region boundaries for this kind are unsupported.';
+    extendedContract+=' MULTI-CURVE ABSOLUTE_VALUE: an ABSOLUTE_VALUE row has id, kind:"ABSOLUTE_VALUE", coefficients:[b,k,A,C] (exact rationals; k and A nonzero) for y=A*|k*x+b|+C, and an explicit finite exact domain:[lo,hi] (or domainStates).';
     extendedContract+=' OBLIQUE RATIONAL (multi-curve-figure-v1): a RATIONAL curve may carry a quadratic numerator [a0,a1,a2] with a2 nonzero, y=(a0+a1x+a2x^2)/(d0+d1x). It has the vertical asymptote x=p (dashed, with its text) but no horizontal one; the oblique asymptote y=qx+r, q=a2/d1, is not drawn by the curve: draw it as a dashed LINE curve of the same figure. a2=0 is MULTI_CURVE_COEFFICIENT_INVALID (use the linear numerator), a numerator that vanishes at the pole is MULTI_CURVE_RATIONAL_DEGENERATE, abs:true is MULTI_CURVE_COEFFICIENT_INVALID and a curve with inverseOf pointing at it is MULTI_CURVE_INVERSE_UNSUPPORTED. Use it only when the problem itself is that function (it is outside the high-school graph syllabus), never as a detour of a solution.';
     extendedContract+=CONTAINER_FILL_CONTRACT;
     extendedContract+=LATTICE_PATH_CONTRACT;

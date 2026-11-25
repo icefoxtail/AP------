@@ -473,6 +473,9 @@ def _mc_plain_expression(curve):
         return _exp_log_base_expression({**curve,'family':'exponential-affine'})
     if curve['kind']=='LOGARITHMIC':
         return _exp_log_base_expression({**curve,'family':'logarithmic-affine'})
+    if curve['kind']=='ABSOLUTE_VALUE':
+        b,k,a,c=curve['coefficients']
+        return '('+c+')+('+a+')*abs('+_polynomial_text([b,k])+')'
     return '('+curve['offset']+')+('+curve['amplitude']+')*sqrt('+_polynomial_text(curve['radicand'])+')'
 
 def _mc_free_expression(curve):
@@ -483,6 +486,9 @@ def _mc_free_expression(curve):
 def _mc_kinks(row):
     """(G18c) the x values where the underlying f of an abs curve is 0 (the folded corners), as floats."""
     from graph_framing import pp_exact_float
+    if row.get('kind')=='ABSOLUTE_VALUE':
+        b,k,_,_=(pp_exact_float(value) for value in row['coefficients'])
+        return [-b/k] if k else []
     if not row.get('abs'):return []
     kind=row['kind']
     if kind=='LINE':
@@ -627,7 +633,7 @@ def _produce_multi_curve(plan,vp):
     region_fills,region_labels=_mc_region_parts(features,vp)
     for curve in features['curves']:
         ident=curve.get('id');stroke,look=_mc_look_attrs(curve)
-        if curve.get('kind') in ('Y_OF_X','LINE','RATIONAL','SQRT','EXPONENTIAL','LOGARITHMIC'):
+        if curve.get('kind') in ('Y_OF_X','LINE','RATIONAL','SQRT','EXPONENTIAL','LOGARITHMIC','ABSOLUTE_VALUE'):
             intervals=curve.get('branches') or []
             if curve['kind']=='Y_OF_X' and len(intervals)!=1:raise ValueError('MULTI_CURVE_BRANCH_INVENTORY_REQUIRED:'+str(ident))
             for branch in intervals:

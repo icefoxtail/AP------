@@ -995,6 +995,7 @@ construction candidate 경로의 plan 최상위 선택 필드 `accessibilityDesc
 
 - `EXPONENTIAL`에는 밑 문자열 `base` (`"2"`, `"107/100"`처럼 1이 아닌 양의 기약 정수·분수, 분자와 분모가 각각 1000 이하), 유리수 계수 `[A,k,C]`, 선택 수평 이동 `shiftX`, 그리고 표시 구간 `domain`을 준다. `y=A·base^{k(x-shiftX)}+C`에서 (A)와 (k)는 0이 아니어야 한다. `viewport`도 명시하며 역함수나 절댓값 옵션은 적용하지 않는다.
 - `LOGARITHMIC`은 같은 좌표축에 다른 곡선과 함께 그리는 로그다. `base`는 지수와 같은 양의 기약 정수·분수 밑이고 `coefficients:[A,k,b,C]`는 정확한 유리수다. `y=A*log_base(k*x+b)+C`에서 A와 k는 0이 아니다. `viewport`와 유한한 표시 구간 `domain:[lo,hi]`을 명시한다. 양 끝의 로그 진수는 모두 양수여야 한다. 예를 들어 `{"id":"g","kind":"LOGARITHMIC","base":"1/3","coefficients":["1","1","-2","0"],"domain":["2001/1000","3"]}`은 x=2 바로 오른쪽의 교점을 담을 수 있다. 표시 끝점에는 점을 찍지 않는다. 이 종류는 역함수, 절댓값, 구간 강조, 영역 경계로 사용하지 않는다. 격자점은 정확한 좌표의 `overlays.points`로 표시할 수 있다.
+- `ABSOLUTE_VALUE`는 `coefficients:[b,k,A,C]`(k·A는 0이 아닌 정확한 유리수)와 명시적 유한 `domain:[lo,hi]`로 구간 제한 V자 함수 `y=A*|k*x+b|+C`를 그린다(`abs:true`와 역함수 `inverseOf`는 지원하지 않는다). 예: `{"id":"f1","kind":"ABSOLUTE_VALUE","coefficients":["-3","1","-2","3"],"domain":["2","4"]}`는 `y=-2|x-3|+3`을 `2<=x<=4`에 그린다.
 - 정수 밑과 율이 각각 같은 두 지수함수 사이 영역에는 `regions:[{id:"band",between:["f","g"],from:"4",to:"7",integerColumns:true}]`처럼 정수 열을 요청할 수 있다. 끝 열은 실선으로, 안쪽 열은 점선으로 나눈다. 각 열의 정수점 개수만 표시한다. 개별 점이나 합계는 그리지 않는다. 2~8개의 열을 지원하며 각 열에서 두 지수의 지수부가 정수여야 한다.
 
 - 유리함수의 극점이 정의역 끝점이면 그 끝점은 반드시 열린 끝점(배열형 `domain`의 `domainStates` 또는 객체형 `domain`의 `fromState`·`toState`에서 해당 끝을 `OPEN`으로 지정)이어야 한다. 이때 해당 쪽의 한 가지(from이면 CURVE_<id>_R, to이면 CURVE_<id>_L)만 그리고, 극점에는 유한한 끝점 표시를 그리지 않는다. 닫힌 극점 끝점은 거부하며, 정의역 내부 극점은 기존처럼 LEFT/RIGHT 두 가지로 나눈다.
