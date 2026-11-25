@@ -1,0 +1,111 @@
+{
+ "capability": "multi-curve-figure-v1",
+ "graphPlan": {
+  "family": "multi-curve",
+  "viewport": [
+   -9,
+   7,
+   -3,
+   9
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "curves": [
+   {
+    "id": "f",
+    "kind": "RATIONAL",
+    "numerator": [
+     "-1",
+     "1"
+    ],
+    "denominator": [
+     "-2",
+     "1"
+    ],
+    "domain": [
+     "-9",
+     "7"
+    ],
+    "color": "BLUE",
+    "label": "f"
+   },
+   {
+    "id": "g",
+    "kind": "RATIONAL",
+    "numerator": [
+     "1",
+     "4"
+    ],
+    "denominator": [
+     "4",
+     "1"
+    ],
+    "domain": [
+     "-9",
+     "7"
+    ],
+    "color": "WARM",
+    "label": "g"
+   }
+  ],
+  "overlays": {
+   "points": [
+    {
+     "id": "P1",
+     "x": "2",
+     "y": "1",
+     "unnamed": true
+    },
+    {
+     "id": "P2",
+     "x": "2",
+     "y": "4",
+     "unnamed": true
+    },
+    {
+     "id": "P3",
+     "x": "-4",
+     "y": "4",
+     "unnamed": true
+    },
+    {
+     "id": "P4",
+     "x": "-4",
+     "y": "1",
+     "unnamed": true
+    }
+   ],
+   "segments": [
+    {
+     "id": "r1",
+     "from": "P1",
+     "to": "P2"
+    },
+    {
+     "id": "r2",
+     "from": "P2",
+     "to": "P3"
+    },
+    {
+     "id": "r3",
+     "from": "P3",
+     "to": "P4"
+    },
+    {
+     "id": "r4",
+     "from": "P4",
+     "to": "P1"
+    }
+   ]
+  }
+ },
+ "caption": "첫째 함수를 f(파랑), 둘째 함수를 g(주황)라 하자. k=4일 때 g: y=(4x+1)/(x+4)=4-15/(x+4)의 점근선은 x=-4, y=4이고, f: y=1/(x-2)+1의 점근선은 x=2, y=1이다. 네 점근선으로 둘러싸인 직사각형은 가로 2-(-4)=6, 세로 4-1=3이므로 넓이가 18이다. 따라서 답은 ②이다.",
+ "sourceConditions": [
+  "두 유리함수 y=1/(x-2)+1, y=(kx+1)/(x+k)의 점근선으로 둘러싸인 직사각형의 넓이가 18이다."
+ ],
+ "newVisualInformation": [
+  "k=4일 때 두 그래프의 점근선 x=2, y=1, x=-4, y=4와 둘러싸인 직사각형(가로 6, 세로 3)"
+ ]
+}

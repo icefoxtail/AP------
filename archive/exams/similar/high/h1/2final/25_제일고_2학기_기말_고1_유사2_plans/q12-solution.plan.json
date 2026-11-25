@@ -1,0 +1,40 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [{ "coefficients": ["1/3", "2/3", "-7/30", "1/30"] }],
+    "breakpoints": [],
+    "sourceDomain": { "kind": "INTERVAL", "range": ["2", "7"], "states": ["CLOSED", "CLOSED"] },
+    "domain": [2, 7],
+    "viewport": [-1, 11, -1, 11],
+    "axisTickValues": { "x": ["2", "5", "7"], "y": ["1", "2", "5"] },
+    "requiredPoints": [],
+    "overlays": {
+      "lines": [{ "id": "d", "slope": "1", "intercept": "0", "label": "y=x", "labelAt": "END" }],
+      "points": [
+        { "id": "P1", "curveX": "2", "unnamed": true },
+        { "id": "P2", "curveX": "5", "unnamed": true, "coordinates": true },
+        { "id": "M", "x": "5", "y": "5", "unnamed": true },
+        { "id": "Q", "curveX": "7", "unnamed": true, "coordinates": true }
+      ],
+      "guides": [
+        { "id": "g1", "from": "P1", "axis": "BOTH" },
+        { "id": "g2", "from": "P2", "axis": "BOTH" },
+        { "id": "g3", "from": "Q", "axis": "BOTH" }
+      ],
+      "segments": [{ "id": "inverseStep", "from": "P2", "to": "M", "dashed": true }],
+      "callouts": [{ "id": "cf", "point": "Q", "text": "y=f(x)", "labelKind": "MATH", "direction": "E" }]
+    }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "f(5)=2에서 f⁻¹(2)=5이고, f(7)=5에서 f⁻¹(5)=7이다. 원문 점선과 함께 (5,2), (7,5)의 좌표를 기입하고 두 차례 역함수 대응을 읽는다. 따라서 (f⁻¹∘f⁻¹)(2)=7이며 답은 ⑤이다.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "f(5)=2, f(7)=5를 그림에서 읽어 f⁻¹(f⁻¹(2))를 계산", "mappedTo": ["graphPlan.overlays.points", "graphPlan.overlays.guides"] },
+    { "id": "c2", "condition": "원문 그림의 직선 y=x", "mappedTo": "graphPlan.overlays.lines" }
+  ],
+  "newVisualInformation": [
+    "곡선 위의 (5,2)와 (7,5) 좌표를 읽을 수 있게 표시한다.",
+    "y=x와 구간별 역함수 대응에 참고하는 보조 세로선 및 원문 투영 점선을 표시한다."
+  ],
+  "accessibilityDescription": "곡선 y=f(x)의 점 (5,2), (7,5)와 대각선 y=x, 좌표 투영 점선을 표시해 역함수 두 번 적용을 설명하는 그래프."
+}

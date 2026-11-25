@@ -1,0 +1,37 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-1, 10, -1, 6],
+    "axisTickValues": { "x": ["4", "8"], "y": ["4"] },
+    "curves": [
+      { "id": "f", "kind": "SQRT", "radicand": ["0", "4"], "domain": ["0", "6"], "color": "BLUE", "label": "y=sqrt(4x)", "hideLabels": ["start"] },
+      { "id": "g", "kind": "SQRT", "radicand": ["0", "2"], "domain": ["0", "9"], "color": "WARM", "label": "y=sqrt(2x)", "hideLabels": ["start"] }
+    ],
+    "overlays": {
+      "points": [
+        { "id": "A", "x": "4", "y": "4" },
+        { "id": "B", "x": "4", "y": "0" },
+        { "id": "C", "x": "8", "y": "0" },
+        { "id": "D", "x": "8", "y": "4" }
+      ],
+      "segments": [
+        { "id": "AB", "from": "A", "to": "B" },
+        { "id": "BC", "from": "B", "to": "C" },
+        { "id": "CD", "from": "C", "to": "D" },
+        { "id": "DA", "from": "D", "to": "A", "length": true }
+      ],
+      "rightAngles": [{ "at": "B", "from": ["A", "C"] }]
+    }
+  },
+  "caption": "A(a,2√a), D(2a,2√a)이므로 AD=a, AB=2√a이다. 직각인 정사각형의 두 변이 같아 a=2√a이며 a=4이다. A(4,4), B(4,0), C(8,0), D(8,4)와 변 AD의 길이 4를 표시하므로 넓이는 4²=16, 답은 ④이다.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "A∈y=√(4x), D∈y=√(2x), A와 D는 같은 높이", "mappedTo": ["graphPlan.curves", "graphPlan.overlays.points"] },
+    { "id": "c2", "condition": "ABCD 정사각형, AB=AD 및 직각", "mappedTo": ["graphPlan.overlays.segments", "graphPlan.overlays.rightAngles"] }
+  ],
+  "newVisualInformation": [
+    "정사각형 네 꼭짓점의 x·y 눈금 4,8과 두 곡선 식 라벨을 그린다.",
+    "직각표식 B와 실제 선분 AD의 길이 4를 표기한다. 넓이 면 채움은 하지 않는다."
+  ],
+  "accessibilityDescription": "두 무리함수와 A(4,4),B(4,0),C(8,0),D(8,4)를 잇는 정사각형, 직각표식 및 변 AD의 길이 4를 나타낸 해설 그래프."
+}

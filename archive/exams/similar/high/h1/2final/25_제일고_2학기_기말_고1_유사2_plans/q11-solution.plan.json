@@ -1,0 +1,55 @@
+{
+ "capability": "multi-curve-figure-v1",
+ "graphPlan": {
+  "family": "multi-curve",
+  "viewport": [
+   -5,
+   5,
+   -4,
+   4
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "curves": [
+   {
+    "id": "f",
+    "kind": "SQRT",
+    "radicand": [
+     "4",
+     "1"
+    ],
+    "amplitude": "-1",
+    "offset": "2",
+    "domain": [
+     "-4",
+     "5"
+    ],
+    "color": "BLUE",
+    "label": "y=-sqrt(x+4)+2"
+   }
+  ],
+  "regions": [
+   {
+    "id": "Q1",
+    "halfPlane": {
+     "x": ">",
+     "value": "0"
+    },
+    "and": {
+     "y": ">",
+     "value": "0"
+    },
+    "fill": "LIGHT"
+   }
+  ]
+ },
+ "caption": "k=2일 때 y=-√(x+4)+2의 그래프는 시작점 (-4, 2)에서 오른쪽 아래로 뻗으며 x=0일 때 y=0이다. 감소함수이므로 x>0에서 y<0이어서 색칠한 제1사분면을 지나지 않는다. k=3이면 x=0에서 y=1>0이 되어 제1사분면을 지나므로 k의 최댓값은 2이고 답은 ③이다.",
+ "sourceConditions": [
+  "함수 y=-sqrt(x+4)+k의 그래프가 제1사분면을 지나지 않는다"
+ ],
+ "newVisualInformation": [
+  "k=2일 때 그래프가 원점을 지나며 제1사분면(색칠)을 지나지 않음"
+ ]
+}
