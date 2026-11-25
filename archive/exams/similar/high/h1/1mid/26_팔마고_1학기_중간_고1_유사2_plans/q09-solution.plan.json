@@ -1,0 +1,36 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      { "coefficients": ["20", "4", "-4"] }
+    ],
+    "breakpoints": [],
+    "sourceDomain": { "kind": "ALL_REALS" },
+    "formula": "20+4x-4x^2",
+    "domain": [0, 2.3],
+    "viewport": [0, 2.3, -2, 24],
+    "referenceLines": [
+      { "id": "MAX", "y": "21", "intersectionX": ["1/2"] }
+    ],
+    "requiredPoints": [
+      { "id": "V", "x": "1/2", "y": "21" }
+    ],
+    "axisTickValues": { "x": [], "y": [] }
+  },
+  "pointNames": { "V": "V" },
+  "caption": "0<t<√5에서 직사각형의 둘레 L(t)=21-4(t-1/2)^2의 최댓값은 t=1/2에서 21이다.",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "가로 2t, 세로 10-2t^2, 둘레 20+4t-4t^2; 유효 범위는 0<t<sqrt(5).",
+      "mappedTo": ["graphPlan.pieces", "graphPlan.requiredPoints"]
+    }
+  ],
+  "newVisualInformation": [
+    "가로·세로를 합산한 둘레 함수의 꼭짓점 (1/2,21)과 최대값을 표시한다.",
+    "이 그래프는 해설의 둘레 함수이며 문제의 두 원래 포물선을 그대로 그린 그림은 아니다."
+  ],
+  "sourceQuote": "$t=\\tfrac12$는 허용 범위에 있으므로",
+  "assetPath": "assets/images/26_팔마고_1학기_중간_고1_유사2/q09-solution.svg"
+}

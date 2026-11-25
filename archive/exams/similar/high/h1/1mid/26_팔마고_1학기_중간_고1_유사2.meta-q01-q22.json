@@ -1,0 +1,1019 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "h1-palma-mid26-similar2-candidate-v1",
+  "examUid": "26_팔마고_1학기_중간_고1_유사2",
+  "sourceArchiveFile": "archive/exams/similar/high/h1/1mid/26_팔마고_1학기_중간_고1_유사2.js",
+  "expectedSourceBlobSha1": "366f43f6e677ab4c6c521fde000cdbadc891cd7b",
+  "expectedQuestionCount": 22,
+  "approval": {
+    "type": "CANDIDATE_CREATION_GATE",
+    "metadataReviewed": false,
+    "reviewStatus": "review_required",
+    "reviewPassCount": 0,
+    "evidenceRefs": []
+  },
+  "registryChanges": [],
+  "items": [
+    {
+      "questionUid": "qid_v1_61f3ae090f02c3f62ffeaef2f7de4f66d3b6fda1435d074b3594090e2d94cb9e",
+      "sourceOrdinal": 1,
+      "sourceQid": 1,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "standardUnitKey": "H22-C-01",
+        "standardUnit": "다항식의 연산",
+        "standardUnitOrder": 1,
+        "subUnitKey": "H22-C-01-POLYNOMIAL_BASIC",
+        "subUnit": "다항식의 연산",
+        "problemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
+        "templateKey": "TPL_H1_POLY_OPERATION_DIRECT",
+        "crossConceptKeys": [
+          "CC_POLYNOMIAL_ADDITION_SUBTRACTION",
+          "CC_COEFFICIENT_COMPARISON"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "sourceQid": 1,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_팔마고_1학기_중간_고1_기출",
+          "sourceArchiveFile": "archive/exams/original/high/h1/1mid/26_팔마고_1학기_중간_고1_기출_c.js",
+          "sourceQid": 1,
+          "variationType": "EXAM_FOLLOWUP",
+          "createdAt": "2026-11-25",
+          "createdAtSource": "GPT direct authored"
+        },
+        "rpmPrimaryRecordId": "H1-RPM-135",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "원본 1 → 신규 1; SOURCE_BALANCED 동치 확인",
+      "hold": "",
+      "reason": "DRAFT_SINGLE_MODEL; EXAM_FOLLOWUP/CONFIRMATION; 두 다항식의 차로 미지 다항식을 역산한 뒤 특정 입력값 대입; 문제/해설 필요성 독립 판정, 별도 메타 승인 NOT_RUN"
+    },
+    {
+      "questionUid": "qid_v1_1d3efba9858d701a08b4388572427bb4e9ab478a9736003a52cbb30fa62dad29",
+      "sourceOrdinal": 2,
+      "sourceQid": 2,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "standardUnitKey": "H22-C-04",
+        "standardUnit": "복소수와 이차방정식",
+        "standardUnitOrder": 4,
+        "subUnitKey": "H22-C-04-COMPLEX_OPERATION",
+        "subUnit": "복소수의 계산",
+        "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+        "templateKey": "TPL_H1_COMPLEX_COMPONENT_OPERATION",
+        "crossConceptKeys": [
+          "CC_NEGATIVE_RADICAL_OPERATION",
+          "CC_COMPLEX_DIVISION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "sourceQid": 2,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_팔마고_1학기_중간_고1_기출",
+          "sourceArchiveFile": "archive/exams/original/high/h1/1mid/26_팔마고_1학기_중간_고1_기출_c.js",
+          "sourceQid": 2,
+          "variationType": "EXAM_FOLLOWUP",
+          "createdAt": "2026-11-25",
+          "createdAtSource": "GPT direct authored"
+        },
+        "rpmPrimaryRecordId": "H1-RPM-156",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "원본 2 → 신규 2; SOURCE_BALANCED 동치 확인",
+      "hold": "",
+      "reason": "DRAFT_SINGLE_MODEL; EXAM_FOLLOWUP/CONFIRMATION; 허수부 계산 뒤 i를 곱한 실수값을 요구해 질문 대상을 전환; 문제/해설 필요성 독립 판정, 별도 메타 승인 NOT_RUN"
+    },
+    {
+      "questionUid": "qid_v1_74340af19e4ab59fcb07cf4041a9b6413e904e464738b8c125c81716ddca3f27",
+      "sourceOrdinal": 3,
+      "sourceQid": 3,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "standardUnitKey": "H22-C-04",
+        "standardUnit": "복소수와 이차방정식",
+        "standardUnitOrder": 4,
+        "subUnitKey": "H22-C-04-COMPLEX_ROOT",
+        "subUnit": "복소수와 이차방정식",
+        "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+        "templateKey": "TPL_H1_VIETA_SYMMETRIC_VALUE",
+        "crossConceptKeys": [
+          "CC_VIETA_FORMULAS_QUADRATIC",
+          "CC_SYMMETRIC_SUM_PRODUCT"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "sourceQid": 3,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_팔마고_1학기_중간_고1_기출",
+          "sourceArchiveFile": "archive/exams/original/high/h1/1mid/26_팔마고_1학기_중간_고1_기출_c.js",
+          "sourceQid": 3,
+          "variationType": "EXAM_FOLLOWUP",
+          "createdAt": "2026-11-25",
+          "createdAtSource": "GPT direct authored"
+        },
+        "rpmPrimaryRecordId": "H1-RPM-162",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "원본 2 → 신규 2; SOURCE_BALANCED 동치 확인",
+      "hold": "",
+      "reason": "DRAFT_SINGLE_MODEL; EXAM_FOLLOWUP/CONFIRMATION; 근의 차의 제곱에서 두 근의 제곱합으로 대칭식 목표 변경; 문제/해설 필요성 독립 판정, 별도 메타 승인 NOT_RUN"
+    },
+    {
+      "questionUid": "qid_v1_7cb7508562cc8f89db363cb80474463f6fd7c590353d8e48d99d5d482b949fae",
+      "sourceOrdinal": 4,
+      "sourceQid": 4,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "standardUnitKey": "H22-C-05",
+        "standardUnit": "이차방정식과 이차함수",
+        "standardUnitOrder": 5,
+        "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
+        "subUnit": "이차함수의 그래프",
+        "problemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
+        "templateKey": "TPL_H1_DISCRIMINANT_ROOT_EXISTENCE",
+        "crossConceptKeys": [
+          "CC_QUADRATIC_DISCRIMINANT_NEGATIVE",
+          "CC_DISCRIMINANT_INTEGER_CONDITION"
+        ],
+        "conditionKeys": [
+          "COND_INTEGER"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "sourceQid": 4,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_팔마고_1학기_중간_고1_기출",
+          "sourceArchiveFile": "archive/exams/original/high/h1/1mid/26_팔마고_1학기_중간_고1_기출_c.js",
+          "sourceQid": 4,
+          "variationType": "EXAM_FOLLOWUP",
+          "createdAt": "2026-11-25",
+          "createdAtSource": "GPT direct authored"
+        },
+        "rpmPrimaryRecordId": "H1-RPM-167",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "원본 2 → 신규 2; SOURCE_BALANCED 동치 확인",
+      "hold": "",
+      "reason": "DRAFT_SINGLE_MODEL; EXAM_FOLLOWUP/CONFIRMATION; 위로 열린 그래프의 정수 최솟값에서 아래로 열린 그래프의 정수 최댓값 판정; 문제/해설 필요성 독립 판정, 별도 메타 승인 NOT_RUN"
+    },
+    {
+      "questionUid": "qid_v1_7910b1c4d3a0dfa165738a6a04a42f7fcfe08a1ffb255a711a0bfba660fefb30",
+      "sourceOrdinal": 5,
+      "sourceQid": 5,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "standardUnitKey": "H22-C-05",
+        "standardUnit": "이차방정식과 이차함수",
+        "standardUnitOrder": 5,
+        "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
+        "subUnit": "이차함수의 그래프",
+        "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+        "templateKey": "TPL_H1_QUADRATIC_INTERSECTION_TANGENCY",
+        "crossConceptKeys": [
+          "CC_TANGENT_LINE_DISCRIMINANT",
+          "CC_QUADRATIC_LINE_INTERSECTION_EQUATION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "sourceQid": 5,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_팔마고_1학기_중간_고1_기출",
+          "sourceArchiveFile": "archive/exams/original/high/h1/1mid/26_팔마고_1학기_중간_고1_기출_c.js",
+          "sourceQid": 5,
+          "variationType": "EXAM_FOLLOWUP",
+          "createdAt": "2026-11-25",
+          "createdAtSource": "GPT direct authored"
+        },
+        "rpmPrimaryRecordId": "H1-RPM-169",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "원본 2 → 신규 2; SOURCE_BALANCED 동치 확인",
+      "hold": "",
+      "reason": "DRAFT_SINGLE_MODEL; EXAM_FOLLOWUP/CONFIRMATION; 고정 기울기의 절편 대신 고정 통과점의 접선 기울기 두 개를 찾음; 문제/해설 필요성 독립 판정, 별도 메타 승인 NOT_RUN"
+    },
+    {
+      "questionUid": "qid_v1_f924bdfad0caa2429c30deb20fb68e210766460f16865f0b8f864df46e7e71d9",
+      "sourceOrdinal": 6,
+      "sourceQid": 6,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "standardUnitKey": "H22-C-03",
+        "standardUnit": "인수분해",
+        "standardUnitOrder": 3,
+        "subUnitKey": "H22-C-03-FACTORIZATION",
+        "subUnit": "인수분해",
+        "problemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
+        "templateKey": "TPL_H1_POLY_COEFFICIENT_EXTRACTION",
+        "crossConceptKeys": [
+          "CC_COEFFICIENT_EXTRACTION_SELECTIVE",
+          "CC_POLYNOMIAL_FACTORIZATION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "sourceQid": 6,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_팔마고_1학기_중간_고1_기출",
+          "sourceArchiveFile": "archive/exams/original/high/h1/1mid/26_팔마고_1학기_중간_고1_기출_c.js",
+          "sourceQid": 6,
+          "variationType": "EXAM_FOLLOWUP",
+          "createdAt": "2026-11-25",
+          "createdAtSource": "GPT direct authored"
+        },
+        "rpmPrimaryRecordId": "H1-RPM-152",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "원본 2 → 신규 2; SOURCE_BALANCED 동치 확인",
+      "hold": "",
+      "reason": "DRAFT_SINGLE_MODEL; EXAM_FOLLOWUP/CONFIRMATION; 일차인수 네 개의 상수 합 대신 두 이차인수에서 x³·x² 계수를 함께 활용; 문제/해설 필요성 독립 판정, 별도 메타 승인 NOT_RUN"
+    },
+    {
+      "questionUid": "qid_v1_fbbde6b3383058ee034045c51e28e5710f380a8eb130cd71dd6e5074eefc4404",
+      "sourceOrdinal": 7,
+      "sourceQid": 7,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "standardUnitKey": "H22-C-04",
+        "standardUnit": "복소수와 이차방정식",
+        "standardUnitOrder": 4,
+        "subUnitKey": "H22-C-04-COMPLEX_ROOT",
+        "subUnit": "복소수와 이차방정식",
+        "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+        "templateKey": "TPL_H1_VIETA_TRANSFORMED_ROOT",
+        "crossConceptKeys": [
+          "CC_ROOT_TRANSFORMATION_QUADRATIC",
+          "CC_QUADRATIC_EQUATION_FORMATION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "sourceQid": 7,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_팔마고_1학기_중간_고1_기출",
+          "sourceArchiveFile": "archive/exams/original/high/h1/1mid/26_팔마고_1학기_중간_고1_기출_c.js",
+          "sourceQid": 7,
+          "variationType": "EXAM_FOLLOWUP",
+          "createdAt": "2026-11-25",
+          "createdAtSource": "GPT direct authored"
+        },
+        "rpmPrimaryRecordId": "H1-RPM-163",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "원본 3 → 신규 3; SOURCE_BALANCED 동치 확인",
+      "hold": "",
+      "reason": "DRAFT_SINGLE_MODEL; EXAM_FOLLOWUP/CONFIRMATION; 분자·분모 역할을 바꾼 변형근으로 공통 분모를 먼저 구성; 문제/해설 필요성 독립 판정, 별도 메타 승인 NOT_RUN"
+    },
+    {
+      "questionUid": "qid_v1_a34b9da6d2a91dbfcef9ef8dde7be7ca254674f38f68e5bfcc462d2eeb8b1cca",
+      "sourceOrdinal": 8,
+      "sourceQid": 8,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "standardUnitKey": "H22-C-02",
+        "standardUnit": "항등식과 나머지 정리",
+        "standardUnitOrder": 2,
+        "subUnitKey": "H22-C-02-CORE",
+        "subUnit": "항등식과 나머지 정리 핵심 개념",
+        "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+        "templateKey": "TPL_H1_IDENTITY_COEFFICIENT_COMPARE",
+        "crossConceptKeys": [
+          "CC_PERFECT_SQUARE_FACTORIZATION",
+          "CC_HIGH_ORDER_IDENTITY_SOLVING"
+        ],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "REINTERPRETATION",
+        "difficultyBucket": 4,
+        "sourceQid": 8,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_팔마고_1학기_중간_고1_기출",
+          "sourceArchiveFile": "archive/exams/original/high/h1/1mid/26_팔마고_1학기_중간_고1_기출_c.js",
+          "sourceQid": 8,
+          "variationType": "EXAM_FOLLOWUP",
+          "createdAt": "2026-11-25",
+          "createdAtSource": "GPT direct authored"
+        },
+        "rpmPrimaryRecordId": "H1-RPM-140",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "원본 4 → 신규 4; SOURCE_BALANCED 동치 확인",
+      "hold": "",
+      "reason": "DRAFT_SINGLE_MODEL; EXAM_FOLLOWUP/CONFIRMATION; 좌변 제곱식의 완전제곱 구성과 최고차항 부호로 다항식 부호 가지 판정; 문제/해설 필요성 독립 판정, 별도 메타 승인 NOT_RUN"
+    },
+    {
+      "questionUid": "qid_v1_fe494be817c18ea58d5ee700bc8018c77071a322fbfb819b228818843e031d84",
+      "sourceOrdinal": 9,
+      "sourceQid": 9,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "standardUnitKey": "H22-C-05",
+        "standardUnit": "이차방정식과 이차함수",
+        "standardUnitOrder": 5,
+        "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
+        "subUnit": "이차함수의 활용",
+        "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+        "templateKey": "TPL_H1_QUADRATIC_EXTREMA_MODEL",
+        "crossConceptKeys": [
+          "CC_QUADRATIC_VERTEX_MAXIMUM",
+          "CC_COMPLETE_SQUARE"
+        ],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4,
+        "sourceQid": 9,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_팔마고_1학기_중간_고1_기출",
+          "sourceArchiveFile": "archive/exams/original/high/h1/1mid/26_팔마고_1학기_중간_고1_기출_c.js",
+          "sourceQid": 9,
+          "variationType": "EXAM_FOLLOWUP",
+          "createdAt": "2026-11-25",
+          "createdAtSource": "GPT direct authored"
+        },
+        "rpmPrimaryRecordId": "H1-RPM-171",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "원본 4 → 신규 4; SOURCE_BALANCED 동치 확인",
+      "hold": "",
+      "reason": "DRAFT_SINGLE_MODEL; EXAM_FOLLOWUP/CONFIRMATION; 원본 그림의 기하 관계를 네 꼭짓점 좌표로 명시하고 가로·세로를 직접 추출; 문제/해설 필요성 독립 판정, 별도 메타 승인 NOT_RUN"
+    },
+    {
+      "questionUid": "qid_v1_c7fd1115b19e12b96a7bb8cfa8097fb8554cce9dc7144f2c1a3d5569fa1c61eb",
+      "sourceOrdinal": 10,
+      "sourceQid": 10,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "standardUnitKey": "H22-C-06",
+        "standardUnit": "여러 가지 방정식과 부등식",
+        "standardUnitOrder": 6,
+        "subUnitKey": "H22-C-06-HIGHER_EQUATION",
+        "subUnit": "여러 가지 방정식",
+        "problemTypeKey": "PT_H1_HIGHER_DEGREE_EQUATION",
+        "templateKey": "TPL_H1_HIGHER_SUBSTITUTION_REDUCTION",
+        "crossConceptKeys": [
+          "CC_VARIABLE_SUBSTITUTION",
+          "CC_DISCRIMINANT_APPLICATION",
+          "CC_SYMMETRIC_SUM_PRODUCT"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 3,
+        "sourceQid": 10,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_팔마고_1학기_중간_고1_기출",
+          "sourceArchiveFile": "archive/exams/original/high/h1/1mid/26_팔마고_1학기_중간_고1_기출_c.js",
+          "sourceQid": 10,
+          "variationType": "EXAM_FOLLOWUP",
+          "createdAt": "2026-11-25",
+          "createdAtSource": "GPT direct authored"
+        },
+        "rpmPrimaryRecordId": "H1-RPM-173",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "원본 3 → 신규 3; SOURCE_BALANCED 동치 확인",
+      "hold": "",
+      "reason": "DRAFT_SINGLE_MODEL; EXAM_FOLLOWUP/CONFIRMATION; 치환 이후 실근이 가능한 가지를 판별하고 실근 합으로 질문 이동; 문제/해설 필요성 독립 판정, 별도 메타 승인 NOT_RUN"
+    },
+    {
+      "questionUid": "qid_v1_8ca186fe242f075970a0ebf825b1606bc26d6531b933fc240a43bf6cd3ecbdae",
+      "sourceOrdinal": 11,
+      "sourceQid": 11,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "standardUnitKey": "H22-C-02",
+        "standardUnit": "항등식과 나머지 정리",
+        "standardUnitOrder": 2,
+        "subUnitKey": "H22-C-02-CORE",
+        "subUnit": "항등식과 나머지 정리 핵심 개념",
+        "problemTypeKey": "PT_H1_POLY_DIVISION",
+        "templateKey": "TPL_H1_POLY_DIVISION_EXECUTION",
+        "crossConceptKeys": [
+          "CC_DIVISION_ALGORITHM",
+          "CC_POLYNOMIAL_DEGREE_INFERENCE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "INTERDEPENDENT",
+        "difficultyBucket": 4,
+        "sourceQid": 11,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_팔마고_1학기_중간_고1_기출",
+          "sourceArchiveFile": "archive/exams/original/high/h1/1mid/26_팔마고_1학기_중간_고1_기출_c.js",
+          "sourceQid": 11,
+          "variationType": "EXAM_FOLLOWUP",
+          "createdAt": "2026-11-25",
+          "createdAtSource": "GPT direct authored"
+        },
+        "rpmPrimaryRecordId": "H1-RPM-139",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "원본 4 → 신규 4; SOURCE_BALANCED 동치 확인",
+      "hold": "",
+      "reason": "DRAFT_SINGLE_MODEL; EXAM_FOLLOWUP/CONFIRMATION; 두 나머지 조건을 ±1 대입으로 연결하여 미지 일차 나머지를 결정; 문제/해설 필요성 독립 판정, 별도 메타 승인 NOT_RUN"
+    },
+    {
+      "questionUid": "qid_v1_92029edd7d5f9ec7a74514487d9fc834be8c5a4351012328a81109ae7f6d5159",
+      "sourceOrdinal": 12,
+      "sourceQid": 12,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "standardUnitKey": "H22-C-02",
+        "standardUnit": "항등식과 나머지 정리",
+        "standardUnitOrder": 2,
+        "subUnitKey": "H22-C-02-CORE",
+        "subUnit": "항등식과 나머지 정리 핵심 개념",
+        "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+        "templateKey": "TPL_H1_REMAINDER_COMPOSITE_DIVISOR",
+        "crossConceptKeys": [
+          "CC_REMAINDER_THEOREM_LINEAR",
+          "CC_REMAINDER_THEOREM_COMPOSITE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 4,
+        "sourceQid": 12,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_팔마고_1학기_중간_고1_기출",
+          "sourceArchiveFile": "archive/exams/original/high/h1/1mid/26_팔마고_1학기_중간_고1_기출_c.js",
+          "sourceQid": 12,
+          "variationType": "EXAM_FOLLOWUP",
+          "createdAt": "2026-11-25",
+          "createdAtSource": "GPT direct authored"
+        },
+        "rpmPrimaryRecordId": "H1-RPM-143",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "원본 4 → 신규 4; SOURCE_BALANCED 동치 확인",
+      "hold": "",
+      "reason": "DRAFT_SINGLE_MODEL; EXAM_FOLLOWUP/CONFIRMATION; 두 일차식의 서로 다른 근을 합성함수 입력으로 역연결하여 부호 두 가지 비교; 문제/해설 필요성 독립 판정, 별도 메타 승인 NOT_RUN"
+    },
+    {
+      "questionUid": "qid_v1_2f268d4258bb975f145495bdbb9eb5c022d312c4d7d2671ff0cf218c192588f9",
+      "sourceOrdinal": 13,
+      "sourceQid": 13,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "standardUnitKey": "H22-C-01",
+        "standardUnit": "다항식의 연산",
+        "standardUnitOrder": 1,
+        "subUnitKey": "H22-C-01-POLYNOMIAL_BASIC",
+        "subUnit": "다항식의 연산",
+        "problemTypeKey": "PT_H1_POLY_FORMULA_SYMMETRIC",
+        "templateKey": "TPL_H1_FORMULA_SYMMETRIC",
+        "crossConceptKeys": [
+          "CC_SYMMETRIC_SYSTEM_OF_EQUATIONS",
+          "CC_TWO_VARIABLE_SQUARE_SUM_IDENTITY"
+        ],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "sourceQid": 13,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_팔마고_1학기_중간_고1_기출",
+          "sourceArchiveFile": "archive/exams/original/high/h1/1mid/26_팔마고_1학기_중간_고1_기출_c.js",
+          "sourceQid": 13,
+          "variationType": "EXAM_FOLLOWUP",
+          "createdAt": "2026-11-25",
+          "createdAtSource": "GPT direct authored"
+        },
+        "rpmPrimaryRecordId": "H1-RPM-136",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "원본 3 → 신규 3; SOURCE_BALANCED 동치 확인",
+      "hold": "",
+      "reason": "DRAFT_SINGLE_MODEL; EXAM_FOLLOWUP/CONFIRMATION; 변의 길이를 직접 구하는 대신 합·차 대칭식으로 둘레 차를 계산; 문제/해설 필요성 독립 판정, 별도 메타 승인 NOT_RUN"
+    },
+    {
+      "questionUid": "qid_v1_22115f3162eb3d312b79d76202b6880e25db730ab73e21f4281cda0ed4ca81cf",
+      "sourceOrdinal": 14,
+      "sourceQid": 14,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "standardUnitKey": "H22-C-04",
+        "standardUnit": "복소수와 이차방정식",
+        "standardUnitOrder": 4,
+        "subUnitKey": "H22-C-04-COMPLEX_OPERATION",
+        "subUnit": "복소수의 계산",
+        "problemTypeKey": "PT_H1_COMPLEX_POWER_ROOT",
+        "templateKey": "TPL_H1_COMPLEX_ROOT_OF_UNITY_PERIOD",
+        "crossConceptKeys": [
+          "CC_CUBIC_OMEGA_PROPERTIES",
+          "CC_COMPLEX_UNIT_ROOT_PERIODICITY"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "sourceQid": 14,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_팔마고_1학기_중간_고1_기출",
+          "sourceArchiveFile": "archive/exams/original/high/h1/1mid/26_팔마고_1학기_중간_고1_기출_c.js",
+          "sourceQid": 14,
+          "variationType": "EXAM_FOLLOWUP",
+          "createdAt": "2026-11-25",
+          "createdAtSource": "GPT direct authored"
+        },
+        "rpmPrimaryRecordId": "H1-RPM-158",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "원본 3 → 신규 3; SOURCE_BALANCED 동치 확인",
+      "hold": "",
+      "reason": "DRAFT_SINGLE_MODEL; EXAM_FOLLOWUP/CONFIRMATION; 교대 부호를 -ω의 세 주기 묶음으로 전환한 뒤 a+b 산출; 문제/해설 필요성 독립 판정, 별도 메타 승인 NOT_RUN"
+    },
+    {
+      "questionUid": "qid_v1_b96c3b9d3ce51a771cbbf5f91e0e861fa1ad415a9ee0f624b635b17ca7b04249",
+      "sourceOrdinal": 15,
+      "sourceQid": 15,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "standardUnitKey": "H22-C-05",
+        "standardUnit": "이차방정식과 이차함수",
+        "standardUnitOrder": 5,
+        "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
+        "subUnit": "이차함수의 활용",
+        "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+        "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+        "crossConceptKeys": [
+          "CC_PARABOLA_ROOT_FORM",
+          "CC_EXTREMA_BOUNDED_INTERVAL"
+        ],
+        "conditionKeys": [
+          "COND_RANGE",
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "difficultyBucket": 4,
+        "sourceQid": 15,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_팔마고_1학기_중간_고1_기출",
+          "sourceArchiveFile": "archive/exams/original/high/h1/1mid/26_팔마고_1학기_중간_고1_기출_c.js",
+          "sourceQid": 15,
+          "variationType": "EXAM_FOLLOWUP",
+          "createdAt": "2026-11-25",
+          "createdAtSource": "GPT direct authored"
+        },
+        "rpmPrimaryRecordId": "H1-RPM-170",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "원본 4 → 신규 4; SOURCE_BALANCED 동치 확인",
+      "hold": "",
+      "reason": "DRAFT_SINGLE_MODEL; EXAM_FOLLOWUP/CONFIRMATION; 두 수평선 교점과 한정구간 최댓값을 역산해 전 구간 꼭짓점 최솟값을 구함; 문제/해설 필요성 독립 판정, 별도 메타 승인 NOT_RUN"
+    },
+    {
+      "questionUid": "qid_v1_27cddbb82639d6f0b9983814b52eca675b2a34f95f578585ebe4c270c98921ac",
+      "sourceOrdinal": 16,
+      "sourceQid": 16,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "standardUnitKey": "H22-C-04",
+        "standardUnit": "복소수와 이차방정식",
+        "standardUnitOrder": 4,
+        "subUnitKey": "H22-C-04-COMPLEX_OPERATION",
+        "subUnit": "복소수의 계산",
+        "problemTypeKey": "PT_H1_COMPLEX_POWER_ROOT",
+        "templateKey": "TPL_H1_COMPLEX_I_PERIOD",
+        "crossConceptKeys": [
+          "CC_EIGHTH_ROOT_OF_UNITY",
+          "CC_COMPLEX_POWER_PERIODICITY",
+          "CC_IMAGINARY_UNIT_PERIODICITY"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER",
+          "COND_UPPER_BOUND"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 5,
+        "sourceQid": 16,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_팔마고_1학기_중간_고1_기출",
+          "sourceArchiveFile": "archive/exams/original/high/h1/1mid/26_팔마고_1학기_중간_고1_기출_c.js",
+          "sourceQid": 16,
+          "variationType": "EXAM_FOLLOWUP",
+          "createdAt": "2026-11-25",
+          "createdAtSource": "GPT direct authored"
+        },
+        "rpmPrimaryRecordId": "H1-RPM-158",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "원본 5 → 신규 5; SOURCE_BALANCED 동치 확인",
+      "hold": "",
+      "reason": "DRAFT_SINGLE_MODEL; EXAM_FOLLOWUP/CONFIRMATION; 최대 지수합 대신 두 주기의 합동 조건에 맞는 순서쌍 개수를 셈; 문제/해설 필요성 독립 판정, 별도 메타 승인 NOT_RUN"
+    },
+    {
+      "questionUid": "qid_v1_8adfdd13dae0d893ef389771fbe8b39ddad5feb779c8240557476621c0b8bf69",
+      "sourceOrdinal": 17,
+      "sourceQid": 17,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "standardUnitKey": "H22-C-02",
+        "standardUnit": "항등식과 나머지 정리",
+        "standardUnitOrder": 2,
+        "subUnitKey": "H22-C-02-CORE",
+        "subUnit": "항등식과 나머지 정리 핵심 개념",
+        "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+        "templateKey": "TPL_H1_REMAINDER_COMPOSITE_DIVISOR",
+        "crossConceptKeys": [
+          "CC_POLYNOMIAL_FACTOR_IDENTIFICATION",
+          "CC_PERFECT_SQUARE_TRINOMIAL"
+        ],
+        "conditionKeys": [
+          "COND_POLYNOMIAL_DEGREE_ONE",
+          "COND_DIVISIBILITY",
+          "COND_POSITIVE",
+          "COND_NEGATIVE"
+        ],
+        "integrationPattern": "DEEP_COMPOSITE",
+        "difficultyBucket": 5,
+        "sourceQid": 17,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_팔마고_1학기_중간_고1_기출",
+          "sourceArchiveFile": "archive/exams/original/high/h1/1mid/26_팔마고_1학기_중간_고1_기출_c.js",
+          "sourceQid": 17,
+          "variationType": "EXAM_FOLLOWUP",
+          "createdAt": "2026-11-25",
+          "createdAtSource": "GPT direct authored"
+        },
+        "rpmPrimaryRecordId": "H1-RPM-143",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "원본 5 → 신규 5; SOURCE_BALANCED 동치 확인",
+      "hold": "",
+      "reason": "DRAFT_SINGLE_MODEL; EXAM_FOLLOWUP/CONFIRMATION; 복소근을 갖는 이차인수의 귀속과 Q의 부호·기울기 조건으로 역복원; 문제/해설 필요성 독립 판정, 별도 메타 승인 NOT_RUN"
+    },
+    {
+      "questionUid": "qid_v1_309988d002c61ecc652558ac12781719ab307774880b88f3a0c93b89cbc93905",
+      "sourceOrdinal": 18,
+      "sourceQid": 18,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "standardUnitKey": "H22-C-06",
+        "standardUnit": "여러 가지 방정식과 부등식",
+        "standardUnitOrder": 6,
+        "subUnitKey": "H22-C-06-HIGHER_EQUATION",
+        "subUnit": "여러 가지 방정식",
+        "problemTypeKey": "PT_H1_HIGHER_DEGREE_EQUATION",
+        "templateKey": "TPL_H1_HIGHER_SUBSTITUTION_REDUCTION",
+        "crossConceptKeys": [
+          "CC_VARIABLE_SUBSTITUTION",
+          "CC_SYMMETRIC_ROOTS",
+          "CC_VIETA_FORMULAS_QUADRATIC"
+        ],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "REINTERPRETATION",
+        "difficultyBucket": 4,
+        "sourceQid": 18,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_팔마고_1학기_중간_고1_기출",
+          "sourceArchiveFile": "archive/exams/original/high/h1/1mid/26_팔마고_1학기_중간_고1_기출_c.js",
+          "sourceQid": 18,
+          "variationType": "EXAM_FOLLOWUP",
+          "createdAt": "2026-11-25",
+          "createdAtSource": "GPT direct authored"
+        },
+        "rpmPrimaryRecordId": "H1-RPM-173",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "원본 4 → 신규 4; SOURCE_BALANCED 동치 확인",
+      "hold": "",
+      "reason": "DRAFT_SINGLE_MODEL; EXAM_FOLLOWUP/CONFIRMATION; 네 근의 외측 곱 합에서 내측·외측 교차곱으로 조건을 변경해 t근의 곱을 사용; 문제/해설 필요성 독립 판정, 별도 메타 승인 NOT_RUN"
+    },
+    {
+      "questionUid": "qid_v1_327cbfd668beffeeb7e71e8e55efbc1f9a759bbbe6c0cc0268a132d8f202ece5",
+      "sourceOrdinal": 19,
+      "sourceQid": 19,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "standardUnitKey": "H22-C-03",
+        "standardUnit": "인수분해",
+        "standardUnitOrder": 3,
+        "subUnitKey": "H22-C-03-FACTORIZATION",
+        "subUnit": "인수분해",
+        "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+        "templateKey": "TPL_H1_FACTORIZATION_APPLICATION",
+        "crossConceptKeys": [
+          "CC_TRIANGLE_SIDE_FACTORIZATION",
+          "CC_ISOSCELES_CONVERSE"
+        ],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "sourceQid": 19,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_팔마고_1학기_중간_고1_기출",
+          "sourceArchiveFile": "archive/exams/original/high/h1/1mid/26_팔마고_1학기_중간_고1_기출_c.js",
+          "sourceQid": 19,
+          "variationType": "EXAM_FOLLOWUP",
+          "createdAt": "2026-11-25",
+          "createdAtSource": "GPT direct authored"
+        },
+        "rpmPrimaryRecordId": "H1-RPM-153",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "원본 3 → 신규 3; SOURCE_BALANCED 동치 확인",
+      "hold": "",
+      "reason": "DRAFT_SINGLE_MODEL; EXAM_FOLLOWUP/CONFIRMATION; a≠b인 추가 조건으로 이중 인수 중 하나를 배제한 뒤 직각 판정; 문제/해설 필요성 독립 판정, 별도 메타 승인 NOT_RUN"
+    },
+    {
+      "questionUid": "qid_v1_10483554535034b7444de6705596624292edf309619ea1e0d7b2bc4a121e058b",
+      "sourceOrdinal": 20,
+      "sourceQid": 20,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "standardUnitKey": "H22-C-01",
+        "standardUnit": "다항식의 연산",
+        "standardUnitOrder": 1,
+        "subUnitKey": "H22-C-01-POLYNOMIAL_BASIC",
+        "subUnit": "다항식의 연산",
+        "problemTypeKey": "PT_H1_POLY_FORMULA_SYMMETRIC",
+        "templateKey": "TPL_H1_FORMULA_SYMMETRIC",
+        "crossConceptKeys": [
+          "CC_TWO_VARIABLE_SQUARE_SUM_IDENTITY",
+          "CC_CUBIC_FACTORIZATION_DIFFERENCE",
+          "CC_CUBIC_SUM_SYMMETRIC_EVALUATION"
+        ],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "sourceQid": 20,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_팔마고_1학기_중간_고1_기출",
+          "sourceArchiveFile": "archive/exams/original/high/h1/1mid/26_팔마고_1학기_중간_고1_기출_c.js",
+          "sourceQid": 20,
+          "variationType": "EXAM_FOLLOWUP",
+          "createdAt": "2026-11-25",
+          "createdAtSource": "GPT direct authored"
+        },
+        "rpmPrimaryRecordId": "H1-RPM-136",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "원본 3 → 신규 3; SOURCE_BALANCED 동치 확인",
+      "hold": "",
+      "reason": "DRAFT_SINGLE_MODEL; EXAM_FOLLOWUP/CONFIRMATION; 차의 거듭제곱을 구하는 원본 대신 대칭식의 제곱합·세제곱합·여섯제곱합 연결; 문제/해설 필요성 독립 판정, 별도 메타 승인 NOT_RUN"
+    },
+    {
+      "questionUid": "qid_v1_2f789b2afb174162ca2d26a312e3e98e2c23022ed6734f9873d71c7ba5d53aec",
+      "sourceOrdinal": 21,
+      "sourceQid": 21,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "standardUnitKey": "H22-C-06",
+        "standardUnit": "여러 가지 방정식과 부등식",
+        "standardUnitOrder": 6,
+        "subUnitKey": "H22-C-06-SYSTEM_OF_EQUATIONS",
+        "subUnit": "연립방정식",
+        "problemTypeKey": "PT_H1_SYSTEM_EQUATION",
+        "templateKey": "TPL_H1_SYSTEM_DIRECT",
+        "crossConceptKeys": [
+          "CC_SIMULTANEOUS_EQUATION",
+          "CC_LINEAR_CONSTRAINT"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "sourceQid": 21,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_팔마고_1학기_중간_고1_기출",
+          "sourceArchiveFile": "archive/exams/original/high/h1/1mid/26_팔마고_1학기_중간_고1_기출_c.js",
+          "sourceQid": 21,
+          "variationType": "EXAM_FOLLOWUP",
+          "createdAt": "2026-11-25",
+          "createdAtSource": "GPT direct authored"
+        },
+        "rpmPrimaryRecordId": "H1-RPM-174",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "원본 2 → 신규 2; SOURCE_BALANCED 동치 확인",
+      "hold": "",
+      "reason": "DRAFT_SINGLE_MODEL; EXAM_FOLLOWUP/CONFIRMATION; 일차식의 x:y 비를 바꾸고 해쌍별 제곱 차의 최댓값을 판정; 문제/해설 필요성 독립 판정, 별도 메타 승인 NOT_RUN"
+    },
+    {
+      "questionUid": "qid_v1_df5bdb2c5a012da196207a924abb907dcbca08bb9a9dbdc94f51a0562d97da3b",
+      "sourceOrdinal": 22,
+      "sourceQid": 22,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "standardUnitKey": "H22-C-05",
+        "standardUnit": "이차방정식과 이차함수",
+        "standardUnitOrder": 5,
+        "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
+        "subUnit": "이차함수의 그래프",
+        "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+        "templateKey": "TPL_H1_QUADRATIC_INTERSECTION_TANGENCY",
+        "crossConceptKeys": [
+          "CC_QUADRATIC_LINE_INTERSECTION_EQUATION",
+          "CC_PARABOLA_LINE_TANGENCY",
+          "CC_TANGENT_LINE_DISCRIMINANT"
+        ],
+        "conditionKeys": [
+          "COND_EXACT_INTERSECTION_COUNT",
+          "COND_PIECEWISE_DOMAIN_PARTITION"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 5,
+        "sourceQid": 22,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_팔마고_1학기_중간_고1_기출",
+          "sourceArchiveFile": "archive/exams/original/high/h1/1mid/26_팔마고_1학기_중간_고1_기출_c.js",
+          "sourceQid": 22,
+          "variationType": "EXAM_FOLLOWUP",
+          "createdAt": "2026-11-25",
+          "createdAtSource": "GPT direct authored"
+        },
+        "rpmPrimaryRecordId": "H1-RPM-168",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "원본 5 → 신규 5; SOURCE_BALANCED 동치 확인",
+      "hold": "",
+      "reason": "DRAFT_SINGLE_MODEL; EXAM_FOLLOWUP/CONFIRMATION; 두 포물선을 대칭 구간으로 배치해 경계·중근에서만 정확히 세 교점을 갖게 설계; 문제/해설 필요성 독립 판정, 별도 메타 승인 NOT_RUN"
+    }
+  ]
+}
