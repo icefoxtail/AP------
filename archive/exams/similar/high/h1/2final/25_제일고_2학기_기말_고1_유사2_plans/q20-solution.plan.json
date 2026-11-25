@@ -1,0 +1,39 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-1, 7, -1, 7],
+    "axisTickValues": { "x": [], "y": [] },
+    "curves": [
+      {
+        "id": "f", "kind": "SQRT", "radicand": ["-2", "1"],
+        "offset": "2", "domain": ["2", "6"], "color": "BLUE", "label": "y=f(x)"
+      },
+      {
+        "id": "g", "kind": "Y_OF_X", "coefficients": ["6", "-4", "1"],
+        "domain": ["2", "4"], "color": "WARM", "label": "y=g(x)"
+      },
+      {
+        "id": "d", "kind": "LINE", "coefficients": ["0", "1"],
+        "domain": ["-1", "7"], "style": "DASHED", "label": "y=x"
+      }
+    ],
+    "overlays": {
+      "points": [
+        { "id": "P", "x": "2", "y": "2", "coordinates": true },
+        { "id": "Q", "x": "3", "y": "3", "coordinates": true }
+      ],
+      "segments": [{ "id": "PQ", "from": "P", "to": "Q", "length": true }]
+    }
+  },
+  "caption": "f(x)=√(x−2)+2와 역함수 g(x)=(x−2)²+2(x≥2)는 직선 y=x에 대칭이다. f(x)=x의 해 x=2,3에 해당하는 두 공통점 P(2,2), Q(3,3)을 표시하고 선분 PQ의 길이 √2를 나타낸다.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "f(x)=√(x−2)+2와 역함수 g의 교점이 두 개", "mappedTo": ["graphPlan.curves", "graphPlan.overlays.points"] },
+    { "id": "c2", "condition": "두 교점 사이 거리", "mappedTo": "graphPlan.overlays.segments" }
+  ],
+  "newVisualInformation": [
+    "공통점 (2,2)와 (3,3)을 둘 다 좌표로 표시한다.",
+    "실제 두 점을 잇는 선분의 길이 √2를 자동 치수 라벨로 표시한다."
+  ],
+  "accessibilityDescription": "근호함수 f와 역함수 g, 대칭선 y=x, 공통점 P(2,2), Q(3,3) 및 두 점 사이 거리 √2의 그래프."
+}

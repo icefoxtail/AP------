@@ -1,0 +1,196 @@
+{
+ "capability": "construction-spike-v1",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "SOURCE_COORDINATE_AXES_v1",
+   "unit": "source-coordinate",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "id": "O",
+    "op": "NORMALIZATION_ORIGIN",
+    "inputs": [],
+    "args": {},
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "XU",
+    "op": "NORMALIZATION_AXIS",
+    "inputs": [],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "1"
+     }
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "C",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "2"
+      },
+      {
+       "kind": "integer",
+       "value": "-1"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "T",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "5"
+      },
+      {
+       "kind": "integer",
+       "value": "1"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "K",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "1"
+      },
+      {
+       "kind": "integer",
+       "value": "7"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "k1",
+    "op": "CIRCLE_CENTER_RADIUS",
+    "inputs": [
+     "C"
+    ],
+    "args": {
+     "radius": {
+      "kind": "expression",
+      "op": "sqrt",
+      "args": [
+       {
+        "kind": "integer",
+        "value": "13"
+       }
+      ]
+     }
+    },
+    "outputType": "CIRCLE",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "t",
+    "op": "SOURCE_LINE",
+    "inputs": [],
+    "args": {
+     "a": {
+      "kind": "integer",
+      "value": "3"
+     },
+     "b": {
+      "kind": "integer",
+      "value": "2"
+     },
+     "c": {
+      "kind": "integer",
+      "value": "-17"
+     }
+    },
+    "outputType": "LINE",
+    "factRole": "GIVEN"
+   }
+  ]
+ },
+ "axisTickValues": {
+  "x": [],
+  "y": []
+ },
+ "displayPoints": [
+  "C",
+  "T",
+  "K"
+ ],
+ "displaySegments": [
+  {
+   "id": "sCT",
+   "refs": [
+    "C",
+    "T"
+   ]
+  }
+ ],
+ "coordinateLabels": [
+  "C",
+  "T",
+  "K"
+ ],
+ "caption": "원의 중심 C(2, -1)과 접점 T(5, 1)를 잇는 반지름의 기울기는 2/3이므로 접선의 기울기는 -3/2이고, 접선(주황)의 방정식은 3x+2y=17이다. 이 접선이 점 K(1, k)를 지나므로 3+2k=17에서 k=7이다. 따라서 답은 ④이다.",
+ "sourceConditions": [
+  "원 (x-2)²+(y+1)²=13 위의 점 T(5,1)에서의 접선이 점 K(1,k)를 지난다."
+ ],
+ "newVisualInformation": [
+  "반지름 CT와 접선의 수직 관계, 접선 3x+2y=17이 지나는 점 K(1,7)"
+ ],
+ "displayLines": [
+  "t"
+ ],
+ "displayCircles": [
+  "k1"
+ ],
+ "lineLabels": [
+  {
+   "nodeId": "t",
+   "text": "3x+2y=17",
+   "labelAt": "END"
+  }
+ ],
+ "rightAngles": [
+  {
+   "id": "r1",
+   "refs": [
+    "C",
+    "T",
+    "K"
+   ]
+  }
+ ],
+ "planeMarks": {
+  "lineColors": [
+   {
+    "lines": [
+     "t"
+    ],
+    "color": "WARM"
+   }
+  ]
+ }
+}

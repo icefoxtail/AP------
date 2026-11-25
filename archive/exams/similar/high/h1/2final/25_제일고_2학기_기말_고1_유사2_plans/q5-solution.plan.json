@@ -1,0 +1,73 @@
+{
+ "capability": "number-line-figure-v1",
+ "numberLine": {
+  "rows": [
+   {
+    "kind": "SET",
+    "color": "BLUE",
+    "hideSetLabel": true,
+    "pieces": [
+     {
+      "lo": null,
+      "hi": {
+       "value": "-2",
+       "state": "CLOSED"
+      }
+     },
+     {
+      "lo": {
+       "value": "5",
+       "state": "CLOSED"
+      },
+      "hi": null
+     }
+    ]
+   },
+   {
+    "kind": "SET",
+    "color": "GREEN",
+    "hideSetLabel": true,
+    "pieces": [
+     {
+      "lo": null,
+      "hi": {
+       "value": "-1",
+       "state": "OPEN"
+      }
+     },
+     {
+      "lo": {
+       "value": "5",
+       "state": "CLOSED"
+      },
+      "hi": null
+     }
+    ]
+   },
+   {
+    "kind": "SET",
+    "color": "WARM",
+    "hideSetLabel": true,
+    "pieces": [
+     {
+      "lo": {
+       "value": "5",
+       "state": "CLOSED"
+      },
+      "hi": null
+     }
+    ]
+   }
+  ]
+ },
+ "numberLineCaption": {
+  "text": "맨 위 P, 가운데 Q, 맨 아래 R"
+ },
+ "caption": "세 조건의 진리집합을 P, Q, R이라 하면 P는 x≤-2 또는 x≥5(파랑 줄)이다. p가 q이기 위한 충분조건이므로 P⊂Q이고, x≤-2인 모든 x가 x<a를 만족해야 하므로 a>-2이며 정수 a의 최솟값은 -1이다(초록 Q 줄은 a=-1). p가 r이기 위한 필요조건이므로 R⊂P이고, x≥b인 모든 x가 P에 속하려면 b≥5이므로 정수 b의 최솟값은 5이다(주황 R 줄은 b=5). 따라서 -1+5=4이므로 답은 ④이다.",
+ "sourceConditions": [
+  "p: x²-3x-10≥0, q: x<a 또는 x≥5, r: x≥b"
+ ],
+ "newVisualInformation": [
+  "a=-1, b=5일 때 세 진리집합 R⊂P⊂Q의 포함 관계를 수직선에 나타낸다."
+ ]
+}

@@ -1,0 +1,123 @@
+{
+ "capability": "piecewise-polynomial-spike-v1",
+ "graphPlan": {
+  "family": "piecewise-polynomial",
+  "pieces": [
+   {
+    "coefficients": [
+     "3",
+     "-1",
+     "0"
+    ]
+   },
+   {
+    "coefficients": [
+     "0",
+     "2",
+     "0"
+    ]
+   },
+   {
+    "coefficients": [
+     "12",
+     "-6",
+     "0"
+    ]
+   }
+  ],
+  "breakpoints": [
+   {
+    "x": "1",
+    "y": "2"
+   },
+   {
+    "x": "3/2",
+    "y": "3"
+   }
+  ],
+  "sourceDomain": {
+   "kind": "INTERVAL",
+   "range": [
+    "0",
+    "2"
+   ],
+   "states": [
+    "CLOSED",
+    "CLOSED"
+   ]
+  },
+  "functionName": "h",
+  "axisScale": {
+   "x": "1",
+   "y": "2/3"
+  },
+  "requiredPoints": [
+   {
+    "id": "A",
+    "x": 0,
+    "y": 3
+   },
+   {
+    "id": "B",
+    "x": 1,
+    "y": 2
+   },
+   {
+    "id": "C",
+    "x": 1.5,
+    "y": 3
+   },
+   {
+    "id": "D",
+    "x": 2,
+    "y": 0
+   }
+  ],
+  "exactCoordinates": {
+   "C": [
+    "3/2",
+    "3"
+   ]
+  },
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "regions": [
+   {
+    "id": "S1",
+    "upper": "f",
+    "lower": "axis",
+    "from": "0",
+    "to": "1",
+    "fill": "LIGHT",
+    "label": "S_1"
+   },
+   {
+    "id": "S2",
+    "upper": "f",
+    "lower": "axis",
+    "from": "1",
+    "to": "3/2",
+    "fill": "MEDIUM",
+    "label": "S_2"
+   },
+   {
+    "id": "S3",
+    "upper": "f",
+    "lower": "axis",
+    "from": "3/2",
+    "to": "2",
+    "fill": "LIGHT",
+    "label": "S_3"
+   }
+  ]
+ },
+ "caption": "h(x)=(f∘g)(x)는 0≤x<1에서 -x+3, 1≤x≤3/2에서 2x, 3/2<x≤2에서 -6x+12이다. 세 구간 S₁, S₂, S₃의 넓이는 각각 (3+2)/2×1=5/2, (2+3)/2×1/2=5/4, 1/2×1/2×3=3/4이므로 합은 9/2이다. 따라서 답은 ⑤이다.",
+ "sourceConditions": [
+  "0≤x≤2에서 정의된 f, g에 대하여 y=(f∘g)(x)의 그래프와 x축, y축으로 둘러싸인 부분의 넓이"
+ ],
+ "newVisualInformation": [
+  "합성함수 (f∘g)(x)의 세 구간 그래프와 점 (0,3), (1,2), (3/2,3), (2,0), 세 부분의 넓이 S₁, S₂, S₃"
+ ]
+}

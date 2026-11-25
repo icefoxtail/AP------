@@ -1,0 +1,43 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-1, 12, -1, 7],
+    "axisTickValues": { "x": [], "y": [] },
+    "curves": [
+      { "id": "f", "kind": "SQRT", "radicand": ["0", "4"], "domain": ["0", "25/4"], "color": "BLUE", "hideLabels": ["start"], "hideLabel": true },
+      { "id": "g", "kind": "SQRT", "radicand": ["0", "2"], "domain": ["0", "81/8"], "color": "WARM", "hideLabels": ["start"], "hideLabel": true }
+    ],
+    "overlays": {
+      "points": [
+        { "id": "A", "x": "4", "y": "4" },
+        { "id": "B", "x": "4", "y": "0" },
+        { "id": "C", "x": "8", "y": "0" },
+        { "id": "D", "x": "8", "y": "4" },
+        { "id": "PF", "x": "25/4", "y": "5", "unnamed": true },
+        { "id": "PG", "x": "81/8", "y": "9/2", "unnamed": true }
+      ],
+      "segments": [
+        { "id": "AB", "from": "A", "to": "B" },
+        { "id": "BC", "from": "B", "to": "C" },
+        { "id": "CD", "from": "C", "to": "D" },
+        { "id": "DA", "from": "D", "to": "A" }
+      ],
+      "rightAngles": [{ "at": "B", "from": ["A", "C"] }],
+      "callouts": [
+        { "id": "c1", "point": "PF", "text": "y=√(4x)", "labelKind": "MATH", "direction": "N" },
+        { "id": "c2", "point": "PG", "text": "y=√(2x)", "labelKind": "MATH", "direction": "E" }
+      ]
+    }
+  },
+  "caption": "원문에 주어진 두 근호함수 그래프, A와 D를 수평으로 잇고 A,B 및 D,C를 수직으로 잇는 정사각형 ABCD를 그린다. A는 y=√(4x), D는 y=√(2x)에 있고 B,C는 x축 위다. 한 변의 길이와 넓이 값은 표시하지 않는다.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "두 그래프 y=√(4x), y=√(2x)", "mappedTo": "graphPlan.curves" },
+    { "id": "c2", "condition": "ABCD는 정사각형, AD∥x축, AB·CD⊥x축", "mappedTo": ["graphPlan.overlays.points", "graphPlan.overlays.segments", "graphPlan.overlays.rightAngles"] }
+  ],
+  "newVisualInformation": [
+    "원문 정사각형의 네 꼭짓점과 네 변, 직각표식 한 개 및 서로 다른 두 곡선 라벨만 제시한다.",
+    "답을 알려 주는 좌표값·넓이·수치 눈금은 표시하지 않는다."
+  ],
+  "accessibilityDescription": "두 곡선 y=√(4x), y=√(2x) 위에 높이가 같은 A,D와 x축 위의 B,C를 연결한 정사각형 ABCD의 문제 그림."
+}

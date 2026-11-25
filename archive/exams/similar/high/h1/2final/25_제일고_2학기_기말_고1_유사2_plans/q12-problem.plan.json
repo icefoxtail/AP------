@@ -1,0 +1,37 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [{ "coefficients": ["1/3", "2/3", "-7/30", "1/30"] }],
+    "breakpoints": [],
+    "sourceDomain": { "kind": "INTERVAL", "range": ["2", "7"], "states": ["CLOSED", "CLOSED"] },
+    "domain": [2, 7],
+    "viewport": [-1, 11, -1, 11],
+    "axisTickValues": { "x": ["2", "5", "7"], "y": ["1", "2", "5"] },
+    "requiredPoints": [],
+    "overlays": {
+      "lines": [{ "id": "d", "slope": "1", "intercept": "0", "label": "y=x", "labelAt": "END" }],
+      "points": [
+        { "id": "P1", "curveX": "2", "unnamed": true },
+        { "id": "P2", "curveX": "5", "unnamed": true },
+        { "id": "Q", "curveX": "7", "unnamed": true }
+      ],
+      "guides": [
+        { "id": "g1", "from": "P1", "axis": "BOTH" },
+        { "id": "g2", "from": "P2", "axis": "BOTH" },
+        { "id": "g3", "from": "Q", "axis": "BOTH" }
+      ],
+      "callouts": [{ "id": "cf", "point": "Q", "text": "y=f(x)", "labelKind": "MATH", "direction": "E" }]
+    }
+  },
+  "caption": "문제의 그래프는 (2,1), (5,2), (7,5)를 지나며 점선은 x·y축에 내려진다. 직선 y=x와 곡선 y=f(x)를 구분하고 세 점의 좌표만 읽을 수 있게 한다. 합성 역함수의 결과는 표시하지 않는다.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "문제 그림의 곡선 y=f(x)는 (2,1), (5,2), (7,5)를 지난다", "mappedTo": ["graphPlan.pieces", "graphPlan.overlays.points", "graphPlan.overlays.guides"] },
+    { "id": "c2", "condition": "그림에 y=x 직선이 있다", "mappedTo": "graphPlan.overlays.lines" }
+  ],
+  "newVisualInformation": [
+    "원문에 보이는 세 점의 x·y 눈금과 좌표 투영 점선을 같은 위치 관계로 표시한다.",
+    "직선 y=x 및 곡선 y=f(x)의 식 라벨을 각 대상 곁에 표시한다."
+  ],
+  "accessibilityDescription": "점 (2,1), (5,2), (7,5)를 지나는 증가곡선 y=f(x)와 직선 y=x, 각 점에서 좌표축으로 내려간 점선의 문제 그래프."
+}
