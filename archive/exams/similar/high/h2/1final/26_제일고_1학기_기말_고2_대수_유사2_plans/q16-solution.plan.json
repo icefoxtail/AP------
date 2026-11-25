@@ -1,5 +1,6 @@
 {
   "capability": "construction-spike-v1",
+  "sourceQuote": "삼각형 넓이 공식에 의하면",
   "mathPlan": {
     "schemaVersion": "construction-spike-v1",
     "realization": {
@@ -156,7 +157,9 @@
     "O",
     "M"
   ],
-  "displayCircles": [],
+  "displayCircles": [
+    "circle"
+  ],
   "displaySegments": [
     {
       "id": "sCA",
@@ -228,26 +231,6 @@
         "to": "C",
         "side": "CCW"
       }
-    ],
-    "rightAngles": [
-      {
-        "id": "rD",
-        "refs": [
-          "B",
-          "D",
-          "C"
-        ],
-        "factRole": "DERIVED_INTERMEDIATE"
-      },
-      {
-        "id": "rM",
-        "refs": [
-          "O",
-          "M",
-          "C"
-        ],
-        "factRole": "DERIVED_INTERMEDIATE"
-      }
     ]
   },
   "caption": "BC를 지름으로 하는 윗반원에서 CD=6, OM=4이고 호의 중점 E와 현 CD 사이 높이는 1이다.",
@@ -270,5 +253,25 @@
   ],
   "newVisualInformation": [
     "반원의 현 CD와 중심 O의 수선 거리, 호 중점 E까지의 높이 1을 구분한다."
+  ],
+  "rightAngles": [
+    {
+      "id": "rD",
+      "refs": [
+        "B",
+        "D",
+        "C"
+      ],
+      "factRole": "DERIVED_INTERMEDIATE"
+    },
+    {
+      "id": "rM",
+      "refs": [
+        "O",
+        "M",
+        "C"
+      ],
+      "factRole": "DERIVED_INTERMEDIATE"
+    }
   ]
 }

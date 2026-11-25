@@ -1,0 +1,560 @@
+{
+  "schemaVersion": "gpt-finalqa-evidence-v1",
+  "examUid": "26_제일고_1학기_기말_고2_대수_유사2",
+  "sourcePath": "archive/exams/similar/high/h2/1final/26_제일고_1학기_기말_고2_대수_유사2.js",
+  "blindPackDigest": "21394a02c275b1f909a4d4415d6fc7f86391c2ccc04676118bfb1fec3f16ae4a",
+  "reviewer": {
+    "id": "separate-blind-reviewer-jeil-h2-final-20261125",
+    "blindFirstPass": "CONFIRMED",
+    "independentEvidence": "별도 블라인드 검수자는 공식 --blind-pack 출력만 읽어 21/21 답·판단 근거를 먼저 독립 고정하고 JS 정답·해설·메타·플랜은 열람하지 않음. Q17/Q19는 유사1·기출과 유형 맞춘 최종 수정판으로 공식 --blind-pack을 다시 열어 독립 재풀이함. 본 QA 작업자는 생성자 I1과 구분하여 이후 21개 원문 해설·보기·교육과정·PT/TPL 및 42개 시각 축을 점검함. 공식 shallow/full 플랜 lint 6/6, SKIP0이며 SVG 실제 렌더와 PNG 시각검수는 하지 않음.",
+    "blindArtifactRef": "archive/exams/similar/high/h2/1final/26_제일고_1학기_기말_고2_대수_유사2.blind-i2.md"
+  },
+  "questions": [
+    {
+      "qid": 1,
+      "sourceFingerprint": "f7a5755eef4bd840fd4d74175cb83cc865cd0ec84776728f09736fe30a384c6f",
+      "blindAnswer": "③",
+      "blindReasoning": "BC=8√2이고 sin45°=√2/2이므로 사인법칙에서 2R=16, R=8.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "45도 맞은편 변과 외접반지름만으로 사인법칙에 직접 대입 가능하며 별도 도식 불필요."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "2R=BC/sin A에 수치를 대입하는 한 줄 풀이이므로 원 그림 추가효익 작음."
+        }
+      }
+    },
+    {
+      "qid": 2,
+      "sourceFingerprint": "1629638244e17bf41d67f0f8e74765f32f96ceec95700b0dfb22eeefd3d80ede",
+      "blindAnswer": "⑤",
+      "blindReasoning": "a_n=a_4−3(n−4)=1−3n+12=13−3n.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "제4항과 공차가 등차수열 일반항을 유일하게 결정하고 도식 불필요."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "a_n=a_4+(n−4)d 정리와 대입은 판서식만으로 명확."
+        }
+      }
+    },
+    {
+      "qid": 3,
+      "sourceFingerprint": "904d4d381fefd2d8cc79a741ae48fdbaafba0d3892c60212d33593ba23fa2b1d",
+      "blindAnswer": "②",
+      "blindReasoning": "3²부터 10²까지 제곱합은 385−1−4=380.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "유한 제곱합으로 시그마 인덱스 치환을 글로 따라갈 수 있어 그래프 불필요."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "1²+⋯+10²에서 두 항을 빼는 단계는 수식으로 명확."
+        }
+      }
+    },
+    {
+      "qid": 4,
+      "sourceFingerprint": "920264fadf0e565dfecf2add6b48df7c12e065183ee0111e1694741c07577a82",
+      "blindAnswer": "④",
+      "blindReasoning": "Σ(a_kb_k)와 (Σa_k)(Σb_k)는 교차항의 존재로 일반적으로 다름.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "다섯 시그마 등식은 기호적 판단 문제이며 시각 정보 요구 없음."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "교차항을 가진 반례 n=2가 해설에 제시되어 도식 불필요."
+        }
+      }
+    },
+    {
+      "qid": 5,
+      "sourceFingerprint": "1f9af7398ee9db7af519d2884d02318ba754919c06c1eea4e86b87aa1825165b",
+      "blindAnswer": "①",
+      "blindReasoning": "공차 (−20−12)/8=−4, a_1=24, S_12=12(26−24)=24.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "4·12번째 항과 보기는 텍스트로 완결되며 수직선 그림 불필요."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "공차, 첫 항, 합 공식을 순차 계산하므로 그림 불필요."
+        }
+      }
+    },
+    {
+      "qid": 6,
+      "sourceFingerprint": "47c44a270d3bd222f7f5724ea16adc5fd0c8c07d2035770210ebccafdc706b73",
+      "blindAnswer": "⑤",
+      "blindReasoning": "(k+1)³−3k(k+1)−1=k³, Σ(k=2..10)k³=3025−1=3024.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "세제곱 전개와 합 공식만 사용하는 순수 대수식 문제."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "k³ 항등식과 세제곱합 공식만으로 풀이가 완결."
+        }
+      }
+    },
+    {
+      "qid": 7,
+      "sourceFingerprint": "7b255644d6972b03bdb95db864d836843f036271862134a9f85e6455289c3323",
+      "blindAnswer": "②",
+      "blindReasoning": "코사인법칙으로 AC cos C+AB cos B=BC, 따라서 BC=AC와 ∠A=∠B.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "삼각형의 꼭짓점과 변의 대응이 본문으로 유일하여 문제 그림은 필수 아님."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "5ece1134b4173f5eede94fb088ed2e061b9cd0666189a479855e7ba90e5d2d32",
+          "reasoning": "삼각형에서 b cos C와 c cos B의 합이 a임을 두 코사인법칙 투영으로 보이면 오해 감소."
+        }
+      }
+    },
+    {
+      "qid": 8,
+      "sourceFingerprint": "8521640cddf15e1da99b5faaa70b6814a0e0bb4a7e04833c00c7e158de745a2f",
+      "blindAnswer": "③",
+      "blindReasoning": "m²=ln, m³=216→m=6, l+n=13, 겉넓이 2(6·13+36)=228.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "직육면체의 부피·모서리 조건만으로 미지수를 결정하므로 문제 도형 생략 가능."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "bd94fdefb5882669602946ab8e3e304a111c232ec7e331fd2d36f2b4677347e1",
+          "reasoning": "세 모서리가 등비수열인 직육면체의 길이 l,m,n과 넓이식을 입체 그림에 배치하면 관계 확인에 유용."
+        }
+      }
+    },
+    {
+      "qid": 9,
+      "sourceFingerprint": "a379c7b2a43fe6930b255699d491b19bbf536b978aeacb9f649b8a35eba29f66",
+      "blindAnswer": "④",
+      "blindReasoning": "a_8+a_10=8+16d=88 → d=5, a_12=4+11·5=59.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "등차수열 b_n 정의와 한 항이 기호로 완결."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "b_8=2a_9에서 공차를 복원하는 과정은 수식으로 충분."
+        }
+      }
+    },
+    {
+      "qid": 10,
+      "sourceFingerprint": "24c6f1b5f7a6048ec33f953575fa777da05ffbc33a3675215cc8a782c9039033",
+      "blindAnswer": "①",
+      "blindReasoning": "cos(kπ)=(−1)^k이므로 Σ짝수 c−Σ홀수 c=−12.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "홀짝 시그마와 cos(kπ)는 순수 수열식 판단으로 문제 그림 불필요."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "홀수 항 −, 짝수 항 + 기호 분리는 등식으로 충분."
+        }
+      }
+    },
+    {
+      "qid": 11,
+      "sourceFingerprint": "3ca1cccf8a9257635db7ec1ac3ca7233012b0e65e3116ae6247768397d962201",
+      "blindAnswer": "⑤",
+      "blindReasoning": "a_n=6n−2이므로 1/(a_k a_{k+1})=(1/a_k−1/a_{k+1})/6; 망원합=1/80.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "수열 합 S_n과 망원합 범위가 수식으로 완결."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "1/(a_k a_{k+1})의 망원합은 식 전개로 중간항 소거 확인 가능."
+        }
+      }
+    },
+    {
+      "qid": 12,
+      "sourceFingerprint": "22acb0764f8a616890baaf3778c3c04069c29ee0904b546e46ac382a85676b8a",
+      "blindAnswer": "③",
+      "blindReasoning": "A+B=96°, B+C=120°, C+A=144° → A=60°; 2R=10√3/sin60°=20.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "세 각합 비와 맞은편 변 길이가 사인법칙 입력을 결정."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "각합 비로 A=60°를 역산하고 사인법칙에 대입하는 판서식으로 충분."
+        }
+      }
+    },
+    {
+      "qid": 13,
+      "sourceFingerprint": "13e1b16f97de687805454631e63ce849c1a078e62380076a8519c946a20cf915",
+      "blindAnswer": "④",
+      "blindReasoning": "사인비 4:5:7이 변비이므로 세 변 8,10,14; 코사인법칙 cos C=−1/5, 넓이16√6.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "삼각형 내각 사인값 비와 둘레로 변이 정해지며 문제 그림 생략 가능."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "8,10,14로 코사인값과 넓이를 산출하는 식의 결속으로 충분."
+        }
+      }
+    },
+    {
+      "qid": 14,
+      "sourceFingerprint": "ff72fc6643b0813b4f4ca24456b5b130b1922446b0d414acdc2d4cee558cf554",
+      "blindAnswer": "②",
+      "blindReasoning": "x=4에서 BC=2, OC=4, AC=2a; 4²=2·2a → a=4.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "두 곡선과 x=4 및 교점 A,B,C가 발문에 모두 정의되고 x좌표로 판별 가능."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "6aad8e41f9e9d810a2558d7e762502ac7eafa7d72fb689d22e969bad9af5ead0",
+          "reasoning": "x=4 위 BC=2, OC=4, AC=2a를 두 곡선 그림에 표시하면 등비 조건의 적용을 명확히 보여 줌."
+        }
+      }
+    },
+    {
+      "qid": 15,
+      "sourceFingerprint": "03e1443966ee8f20315a09e074ebbc51ba989083d2d3a87ce431e5723892797b",
+      "blindAnswer": "①",
+      "blindReasoning": "2S_n=(n+2)a_{n+1}; 재귀적으로 a_2=4, a_9=11이므로 2S_8=10a_9=110.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "점화식과 첫 항만 사용하는 순수 대수 문제."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "S_n과 a_{n+1} 점화식을 소거하는 산술 과정으로 완결."
+        }
+      }
+    },
+    {
+      "qid": 16,
+      "sourceFingerprint": "05b721ce0348666e386605f3d1843dfe28a116915e4dd35219192d27513dceb4",
+      "blindAnswer": "⑤",
+      "blindReasoning": "삼각형 넓이로 sin C=4/5, cos C=3/5; 원의 현 CD=6, 높이 EM=1 → 넓이3.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "원·반원·호 중점·교점 D,E가 발문에서 정의되어 독립 풀이가 가능했고 원본 그림 참조 없음."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "1517cad2e8f50f29127232bba0dd6d779db19a12433f564e687761c4ccc42b31",
+          "reasoning": "반원의 지름 BC, 현 CD, 호 중점 E와 수선 높이 1을 표시하면 여러 보조 관계가 명확."
+        }
+      }
+    },
+    {
+      "qid": 17,
+      "sourceFingerprint": "56a66469645ea51c9eb2edd1893e56f18f35d6cf9330e5da75bea05fb4e855a0",
+      "blindAnswer": "②",
+      "blindReasoning": "OP=5, 접점 현 AB⊥OP; AM=OA·PA/OP=12/5, PM=16/5 → AM/PM=3/4.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "반지름 3, 접선 길이 4, 접점 A,B, 교점 M을 텍스트로 정의해 문제용 필수 그림 없음."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "eec47838b6142c33b2e79dc8b34210c0924705924ab338125281e7b2459ad86f",
+          "reasoning": "원 밖 접선과 반지름 OA⊥PA, 접점 현 AB⊥OP를 그림에 표시하면 넓이로 구한 AM과 PM의 대응 명확."
+        }
+      }
+    },
+    {
+      "qid": 18,
+      "sourceFingerprint": "857eed92c26e917dfd5c1bcfd9b5f3931cedc442e7f2eb4a4923c73505764b05",
+      "blindAnswer": "③",
+      "blindReasoning": "a_5=7에서 역으로 네 단계 검증하면 a_1=7,10,13,20만 가능; 합50.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "4의 배수 분기 점화식과 항 조건이 수식으로 완결."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "a_5에서 네 단계 역추적과 조건 분기 검사가 해설에 명시되어 그래프 불필요."
+        }
+      }
+    },
+    {
+      "qid": 19,
+      "sourceFingerprint": "caedf31728b6add2ecc4c74dc66be43a8f3134e71e6a3c716b505553b1f78214",
+      "blindAnswer": "$120^\\circ$",
+      "blindReasoning": "두 직선 위의 P(1,√3), Q(1,−√3)를 잡으면 OP=OQ=2,PQ=2√3; cosθ=(4+4−12)/8=−1/2→120°.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "NOT_APPLICABLE"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "두 직선 y=±√3x와 물음 둔각이 명확하고 좌표 선택이 가능하여 문제 그림 불필요."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "7d93480e5ea9cd89ca984350944b31319da35d07e8f4945fa1a84b8c532312b6",
+          "reasoning": "두 직선 위의 P,Q와 원점 O로 만든 삼각형 OPQ에 코사인법칙을 적용하는 도식이 직선 유형을 유지하면서 유용."
+        }
+      }
+    },
+    {
+      "qid": 20,
+      "sourceFingerprint": "6633783bab039e8564d2df7a44969a8aacaa0f74fffb35d5fce7b7772e197ebb",
+      "blindAnswer": "$189$",
+      "blindReasoning": "a_n=c2^(n−1), a_4=8c=24→c=3; k=−c=−3, S_6=3·64−3=189.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "NOT_APPLICABLE"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "등비수열의 합 표현과 a_4 조건만으로 결정 가능."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "등비수열 첫 항과 합의 c,k를 대입하는 계산식으로 충분."
+        }
+      }
+    },
+    {
+      "qid": 21,
+      "sourceFingerprint": "56afc41a8a1f8170ca188f1d10f4ff38c8cf4b365126d5f028ded540d289536f",
+      "blindAnswer": "귀납법으로 모든 n에서 3^(2n)−1은 8의 배수",
+      "blindReasoning": "n=1에서 8; n=k 가정 아래 3^(2k+2)−1=9(3^(2k)−1)+8=8(9m+1).",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "NOT_APPLICABLE"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "귀납법 명제와 출발점 n=1이 문장으로 완결."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "n=1과 n=k→k+1의 귀납 가정·전개가 식으로 완결."
+        }
+      }
+    }
+  ]
+}

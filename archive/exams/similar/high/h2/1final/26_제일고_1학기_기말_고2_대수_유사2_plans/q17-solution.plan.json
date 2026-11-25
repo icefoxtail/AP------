@@ -203,34 +203,12 @@
       "dashed": true
     }
   ],
-  "planeMarks": {
-    "rightAngles": [
-      {
-        "id": "rA",
-        "refs": [
-          "O",
-          "A",
-          "P"
-        ],
-        "factRole": "GIVEN"
-      },
-      {
-        "id": "rM",
-        "refs": [
-          "A",
-          "M",
-          "P"
-        ],
-        "factRole": "DERIVED_INTERMEDIATE"
-      }
-    ]
-  },
-  "caption": "접점 A에서 OA는 PA와 직각이며 AB는 OP에 수직, AM=12/5와 PM=16/5이다.",
-  "accessibilityDescription": "반지름 3인 원과 외부점 P, 두 접점 A와 B, 중심선 OP가 현 AB와 만나는 점 M을 보인 해설 그림이다.",
+  "caption": "접선과 반지름으로 이루는 직각삼각형 OAP에서 AM=12/5, PM=16/5를 삼각형 넓이로 확인한다.",
+  "accessibilityDescription": "접선과 반지름으로 이루는 직각삼각형 OAP에서 AM=12/5, PM=16/5를 삼각형 넓이로 확인한다.",
   "sourceConditions": [
     {
       "id": "G1",
-      "condition": "OA=OB=3, PA=PB=4, P는 원 밖, OA⊥PA, OP=5; M은 OP와 AB의 교점.",
+      "condition": "OA=OB=3, PA=PB=4이고 OA⊥PA, OP=5이며 OP는 AB의 수직이등분선이다.",
       "mappedTo": [
         "circle",
         "P",
@@ -241,6 +219,27 @@
     }
   ],
   "newVisualInformation": [
-    "접선-반지름 직각과 원의 현 AB를 수직이등분하는 OP의 관계를 동시에 보인다."
+    "삼각형의 넓이 두 방식이 현 AB의 중점까지의 수선 길이를 결정한다."
+  ],
+  "sourceQuote": "삼각형 $OAP$의 넓이를 두 방법으로 나타내면",
+  "rightAngles": [
+    {
+      "id": "rA",
+      "refs": [
+        "O",
+        "A",
+        "P"
+      ],
+      "factRole": "GIVEN"
+    },
+    {
+      "id": "rM",
+      "refs": [
+        "A",
+        "M",
+        "P"
+      ],
+      "factRole": "DERIVED_INTERMEDIATE"
+    }
   ]
 }

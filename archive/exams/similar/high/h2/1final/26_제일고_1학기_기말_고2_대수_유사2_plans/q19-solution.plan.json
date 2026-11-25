@@ -44,10 +44,10 @@
           ]
         },
         "outputType": "POINT",
-        "factRole": "GIVEN"
+        "factRole": "DERIVED_INTERMEDIATE"
       },
       {
-        "id": "A",
+        "id": "P",
         "op": "POLAR_POINT",
         "inputs": [
           "O",
@@ -56,7 +56,7 @@
         "args": {
           "length": {
             "kind": "integer",
-            "value": "5"
+            "value": "2"
           },
           "angleDeg": {
             "kind": "integer",
@@ -68,7 +68,7 @@
         "factRole": "DERIVED_INTERMEDIATE"
       },
       {
-        "id": "B",
+        "id": "Q",
         "op": "POLAR_POINT",
         "inputs": [
           "O",
@@ -77,7 +77,7 @@
         "args": {
           "length": {
             "kind": "integer",
-            "value": "5"
+            "value": "2"
           },
           "angleDeg": {
             "kind": "integer",
@@ -92,7 +92,7 @@
         "id": "C",
         "op": "POINT_REFLECTION",
         "inputs": [
-          "A",
+          "P",
           "O"
         ],
         "args": {},
@@ -103,7 +103,7 @@
         "id": "D",
         "op": "POINT_REFLECTION",
         "inputs": [
-          "B",
+          "Q",
           "O"
         ],
         "args": {},
@@ -114,8 +114,9 @@
   },
   "displayPoints": [
     "O",
-    "A",
-    "B",
+    "X",
+    "P",
+    "Q",
     "C",
     "D"
   ],
@@ -125,10 +126,10 @@
   "hiddenPointStyle": "NONE",
   "displaySegments": [
     {
-      "id": "sOA",
+      "id": "sOP",
       "refs": [
         "O",
-        "A"
+        "P"
       ]
     },
     {
@@ -139,10 +140,10 @@
       ]
     },
     {
-      "id": "sOB",
+      "id": "sOQ",
       "refs": [
         "O",
-        "B"
+        "Q"
       ]
     },
     {
@@ -156,11 +157,11 @@
   "planeMarks": {
     "angles": [
       {
-        "id": "aAOB",
+        "id": "aPOQ",
         "refs": [
-          "A",
+          "P",
           "O",
-          "B"
+          "Q"
         ],
         "value": 120,
         "label": "120",
@@ -170,21 +171,22 @@
       }
     ]
   },
-  "caption": "기울기가 ±√3인 두 직선이 오른쪽에서 만드는 둔각은 120도이다.",
-  "accessibilityDescription": "원점 O를 지나는 두 직선의 오른쪽 반직선 사이에 120도 둔각을 표시한 해설 그림이다.",
+  "caption": "두 직선 위의 P(1,√3), Q(1,−√3)를 원점 O와 연결하면 OP=OQ=2, PQ=2√3이며 코사인법칙으로 끼인각 120도를 얻는다.",
+  "accessibilityDescription": "두 직선 위의 P(1,√3), Q(1,−√3)를 원점 O와 연결하면 OP=OQ=2, PQ=2√3이며 코사인법칙으로 끼인각 120도를 얻는다.",
   "sourceConditions": [
     {
       "id": "G1",
-      "condition": "두 직선 y=√3x 및 y=−√3x의 양의 x 방향 반직선은 각각 x축에서 위아래 60도이다.",
+      "condition": "두 직선 y=√3x 및 y=−√3x 위의 P(1,√3), Q(1,−√3)를 연결한 삼각형 OPQ에 코사인법칙을 적용한다.",
       "mappedTo": [
-        "A",
-        "B",
+        "P",
+        "Q",
         "O",
-        "aAOB"
+        "aPOQ"
       ]
     }
   ],
   "newVisualInformation": [
-    "두 60도 방향 사이의 큰 각을 명시하여 60도 예각 답과 구별한다."
-  ]
+    "선 위의 두 점으로 삼각형을 만들어 코사인법칙의 대변 및 끼인각을 연결한다."
+  ],
+  "sourceQuote": "삼각형 $OPQ$에 코사인법칙을 적용하면"
 }
