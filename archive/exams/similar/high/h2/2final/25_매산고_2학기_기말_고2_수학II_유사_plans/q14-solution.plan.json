@@ -1,0 +1,81 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "axisTitles":{"x":"u","y":"f(u)"},
+    "pieces": [
+      {
+        "coefficients": [
+          "23",
+          "48",
+          "-26",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {"kind":"INTERVAL","range":["1","4"],"states":["CLOSED","CLOSED"]},
+    "domain": [
+      1,
+      4
+    ],
+    "viewport": [
+      -0.5,
+      4.6,
+      -3,
+      65
+    ],
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": 1,
+        "y": 46
+      },
+      {
+        "id": "M",
+        "x": 3,
+        "y": 14
+      },
+      {
+        "id": "R",
+        "x": 4,
+        "y": 55
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        1,
+        3,
+        4
+      ],
+      "y": [
+        14,
+        46,
+        55
+      ]
+    }
+  },
+  "caption": "u=g(x)의 치역은 [1,∞)이다. 이 중 1≤u≤4에서 f(u)=u⁴−26u²+48u+23의 최솟값은 (3,14)에서 나타나고, u>3에서도 다시 증가한다.",
+  "accessibilityDescription": "u가 1부터 4까지인 사차함수 구간을 그렸다. 왼쪽 끝점 (1,46)에서 (3,14)까지 감소하며 (3,14) 이후 증가하여 (4,55)에 이른다.",
+  "sourceConditions": [
+    {
+      "id": "range",
+      "condition": "g(x)=x²+4/x²−3 ≥1 and every u≥1 attainable",
+      "mappedTo": "graphPlan.sourceDomain is the displayed closed subinterval [1,4] of the composition input range u≥1; f itself continues beyond the crop"
+    },
+    {
+      "id": "quartic",
+      "condition": "f(u)=u⁴−26u²+48u+23",
+      "mappedTo": "graphPlan.pieces[0].coefficients"
+    },
+    {
+      "id": "minimum",
+      "condition": "f′=4(u+4)(u−1)(u−3), f(3)=14 minimum on u≥1",
+      "mappedTo": "graphPlan.requiredPoints[M] and shape to either side"
+    }
+  ],
+  "newVisualInformation": [
+    "합성함수 입력 범위 u≥1의 부분구간 1≤u≤4를 닫힌 선분으로 발췌했다. u=4의 끝점 표식은 발췌 구간의 끝일 뿐 f나 합성함수 정의역의 끝이 아니며 u>4에서도 증가한다. 면 색칠 없음."
+  ]
+}

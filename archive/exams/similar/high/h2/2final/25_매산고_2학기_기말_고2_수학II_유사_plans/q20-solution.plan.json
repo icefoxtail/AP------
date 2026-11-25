@@ -1,0 +1,76 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces":[{"coefficients":["0","12","-9","2"]}],
+    "breakpoints":[],
+    "axisTitles":{"x":"t","y":"x(t)"},
+    "sourceDomain": {"kind":"ALL_REALS"},
+    "domain": [
+      0,
+      3
+    ],
+    "viewport": [
+      -0.5,
+      3.5,
+      -1,
+      10
+    ],
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "A",
+        "x": 1,
+        "y": 5
+      },
+      {
+        "id": "B",
+        "x": 2,
+        "y": 4
+      },
+      {
+        "id": "C",
+        "x": 3,
+        "y": 9
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        1,
+        2,
+        3
+      ],
+      "y": [
+        4,
+        5,
+        9
+      ]
+    }
+  },
+  "caption": "물체의 위치 s(t)=2t³−9t²+12t를 0≤t≤3에서 표시했다. 운동방향을 바꾸는 시각은 t=1,2이고 위치는 각각 5,4이다.",
+  "accessibilityDescription": "시간 t를 가로축으로 읽으면 물체 위치가 원점에서 증가해 t=1에서 5, 감소해 t=2에서 4, 다시 증가해 t=3에서 9가 된다.",
+  "sourceConditions": [
+    {
+      "id": "position",
+      "condition": "position s(t)=2t³−9t²+12t",
+      "mappedTo": "graphPlan.pieces[0].coefficients"
+    },
+    {
+      "id": "velocity",
+      "condition": "v(t)=6(t−1)(t−2), sign changes at t=1,2",
+      "mappedTo": "graphPlan.requiredPoints[A,B], local max and min"
+    },
+    {
+      "id": "values",
+      "condition": "s(1)=5, s(2)=4",
+      "mappedTo": "graphPlan.requiredPoints[A,B]"
+    }
+  ],
+  "newVisualInformation": [
+    "다항식의 0≤t≤3 시야 발췌로 방향 전환을 극점 두 곳에 정확히 표시한다. 실제 시간은 t≥0이며 t=3은 물리적 종점이 아니다. x축 t와 세로축 x(t)는 axisTitles에서 직접 그려지고, 면 색칠은 하지 않는다."
+  ]
+}

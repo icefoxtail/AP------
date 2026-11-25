@@ -1,0 +1,90 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "11/16",
+      "-8",
+      "12",
+      "-6",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      0,
+      3
+    ],
+    "viewport": [
+      -0.5,
+      3.5,
+      -2,
+      5
+    ],
+    "requiredPoints": [
+      {
+        "id": "M",
+        "x": 0.5,
+        "y": -1
+      },
+      {
+        "id": "P",
+        "x": 1,
+        "y": -0.3125
+      },
+      {
+        "id": "T",
+        "x": 2,
+        "y": 0.6875
+      }
+    ],
+    "exactCoordinates": {
+      "M": [
+        "1/2",
+        "-1"
+      ],
+      "P": [
+        "1",
+        "-5/16"
+      ],
+      "T": [
+        "2",
+        "11/16"
+      ]
+    },
+    "axisTickValues": {
+      "x": [
+        "1/2",
+        "1",
+        "2"
+      ],
+      "y": [
+        "-1",
+        "11/16"
+      ]
+    }
+  },
+  "caption": "해설로 결정된 g(x)=(x−2)⁴+2(x−2)³+11/16은 (1/2,−1)에서 최솟값을 갖고 (2,11/16)에서는 수평 변곡을 보인다.",
+  "accessibilityDescription": "사차함수 g의 전역 최솟점이 x=1/2, y=−1이고 x=2에는 함수값 11/16의 수평 접선이 있지만 극값은 아니다. x=1에서 g(1)=−5/16이다.",
+  "sourceConditions": [
+    {
+      "id": "f",
+      "condition": "f(x)=x(x−2)² from f(2)=f′(2)=0, leading coefficient 1",
+      "mappedTo": "transformed g formula and caption"
+    },
+    {
+      "id": "gderivative",
+      "condition": "g′=f+(x−2)f′ and hence g=(x−2)f+C",
+      "mappedTo": "graphPlan.coefficients for g with C=11/16"
+    },
+    {
+      "id": "minimum",
+      "condition": "g has global min −1 at x=1/2",
+      "mappedTo": "graphPlan.requiredPoints[M]"
+    }
+  ],
+  "newVisualInformation": [
+    "전역 최솟점과 극값이 아닌 정지점 x=2를 구분해 보여주며, g(1)의 계산 점도 표시한다. 면 색칠 없음."
+  ]
+}
