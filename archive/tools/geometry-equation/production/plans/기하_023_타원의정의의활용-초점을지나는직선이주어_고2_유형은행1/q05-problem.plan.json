@@ -1,0 +1,28 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {"kind": "ELLIPSE", "center": ["0", "0"], "aSquared": "49", "bSquared": "24", "major": "X"},
+  "points": [
+    {"id": "F", "kind": "FOCUS", "side": 1},
+    {"id": "F'", "kind": "FOCUS", "side": -1},
+    {"id": "P", "kind": "LINE_CONIC", "line": "l", "which": 1},
+    {"id": "Q", "kind": "LINE_CONIC", "line": "m", "which": 2},
+    {"id": "D", "kind": "POINT", "x": "0", "y": "-15/4", "label": false},
+    {"id": "E", "kind": "FOOT", "from": "D", "onto": "m", "rightAngle": true, "label": false}
+  ],
+  "lines": [
+    {"id": "l", "slope": "3/4", "intercept": "-15/4", "label": "l"},
+    {"id": "m", "slope": "3/4", "intercept": "15/4", "label": "m"}
+  ],
+  "segments": [
+    {"id": "sDE", "from": "D", "to": "E", "label": "6", "dashed": true}
+  ],
+  "caption": "타원 x²/49+y²/24=1에서 오른쪽 초점 F를 지나는 직선 l과 왼쪽 초점 F′를 지나는 직선 m이 평행하고 그 사이 수선 길이가 6인 그림",
+  "accessibilityDescription": "가로로 긴 타원의 오른쪽 초점 F를 지나는 대각선 l은 제3사분면의 타원 위 점 P를 지난다. 왼쪽 초점 F′를 지나는 평행선 m은 제1사분면의 점 Q를 지난다. 두 직선 사이에는 점선 수선과 길이 6, 직각 표시가 있다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "타원 x²/49+y²/24=1의 두 초점 F=(5,0), F′=(-5,0)이고 F의 x좌표는 양수이다.", "mappedTo": ["conic", "F", "F'"]},
+    {"id": "c2", "condition": "두 직선 l:y=3x/4−15/4, m:y=3x/4+15/4는 정확히 평행하다. l은 F를 지나고 m은 F′를 지나며 선 사이 거리는 |(15/4)-(-15/4)|/√(1+(3/4)²)=6이다.", "mappedTo": ["l", "m", "F", "F'", "sDE"]},
+    {"id": "c3", "condition": "P는 l∩타원 중 x가 작은 제3사분면 교점, Q는 m∩타원 중 x가 큰 제1사분면 교점이다. 실제 배치는 P=(-7/5,-24/5), Q=(7/5,24/5)이고 구하는 거리 합 12는 표시하지 않는다.", "mappedTo": ["P", "Q", "l", "m"]},
+    {"id": "c4", "condition": "거리 6은 임의의 두 평행선 위 점 D=(0,-15/4), E=(-18/5,21/20)를 잇는 수선 DE에 적는다. F′P 또는 QF에 6을 직접 적으면 정답을 드러내므로 금지한다. E는 D에서 m에 내린 수선의 발이다.", "mappedTo": ["D", "E", "sDE", "m"]}
+  ],
+  "newVisualInformation": ["서로 평행한 직선 l·m의 실제 6 수선 표식, 지정 사분면의 P·Q; 미지 선분 QF·PF′에 답을 표시하지 않음"]
+}
