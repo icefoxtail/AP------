@@ -1540,6 +1540,37 @@ window.mainDB = {
       "primaryStandardCourse": "기하"
     },
     {
+      "file": "similar/high/h2/1mid/26_제일고_1학기_중간_고2_기하_유사2.js",
+      "school": "제일고",
+      "topic": "기하",
+      "grade": "고2",
+      "year": 2026,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "기하",
+      "contentType": "유형",
+      "qCount": 23,
+      "rangeStartUnitKey": "H22-GE-01",
+      "rangeStartUnit": "이차곡선",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-GE-03",
+      "rangeEndUnit": "공간도형",
+      "rangeEndUnitOrder": 3,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-01",
+          "rangeStartUnit": "이차곡선",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-GE-03",
+          "rangeEndUnit": "공간도형",
+          "rangeEndUnitOrder": 3
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
       "file": "similar/high/h2/1mid/26_제일고_1학기_중간_고2_대수_유사.js",
       "school": "제일고",
       "topic": "대수",

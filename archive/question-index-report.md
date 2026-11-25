@@ -1,23 +1,23 @@
 # question-index 생성 리포트
 
 - 인덱싱 범위(SCOPE): git-tracked + db-listed production (parity-gated) (git 등재 시험지만; textbook 교재은행·미추적 _pro 드래프트 제외)
-- 시험지 수(db.js): 2223
-- 시험지 파일 수: 2119
-- 원본 문항 수(중복 제거 전): 42802
-- 최종 인덱스 문항 수(중복 제거 후): 42802
+- 시험지 수(db.js): 2224
+- 시험지 파일 수: 2120
+- 원본 문항 수(중복 제거 전): 42825
+- 최종 인덱스 문항 수(중복 제거 후): 42825
 - 중복 qKey로 제외된 레코드: 0 (그룹 0)
 - 최종 인덱스 중복 qKey: 0
 - undefined/비객체 문항 skip: 0
-- db.js 크기: 2114984 bytes
-- 시험지 JS 총 크기: 97399705 bytes
-- 인덱스 크기: 18706784 bytes
+- db.js 크기: 2115933 bytes
+- 시험지 JS 총 크기: 97446246 bytes
+- 인덱스 크기: 18717670 bytes
 - 로드 실패 파일: 0
 
-> 누락/시각요소/키분류 집계는 모두 "최종 인덱스 레코드(42802)" 기준이다.
+> 누락/시각요소/키분류 집계는 모두 "최종 인덱스 레코드(42825)" 기준이다.
 
 ## 표준단원키 분류 (공식 마스터 143개 기준)
 
-- 공식(official): 40458
+- 공식(official): 40481
 - RAW-(임시 규약, 허용): 0 (distinct 0)
 - 비공식(invalid): 554 (distinct 26)
 - 빈 키(empty): 1790
@@ -29,7 +29,7 @@
 - 누락 id: 0
 - 누락 content: 1496
 - 누락 choices: 36
-- 누락 level: 17137
+- 누락 level: 17160
 - 누락 standardUnit: 1962
 - 누락 standardUnitKey: 1790
 - 누락 standardCourse: 3623
