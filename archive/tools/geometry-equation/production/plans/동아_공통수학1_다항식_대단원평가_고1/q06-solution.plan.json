@@ -1,0 +1,47 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "TL", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "-10" }, { "kind": "integer", "value": "12" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "T0", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "-10" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "T1", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "20" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "B0", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "10" }, { "kind": "integer", "value": "-4" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "B1", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "10" }, { "kind": "integer", "value": "-8" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "B2", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "20" }, { "kind": "integer", "value": "-8" }] }, "outputType": "POINT", "factRole": "GIVEN" }
+    ]
+  },
+  "displayPoints": ["TL", "T0", "T1", "B0", "B1", "B2"],
+  "hiddenPointNames": ["TL", "T0", "T1", "B0", "B1", "B2"],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    { "id": "barLeft", "refs": ["TL", "T0"] },
+    { "id": "barMain", "refs": ["T0", "T1"] },
+    { "id": "quotientLeft", "refs": ["B0", "B1"] },
+    { "id": "quotientBottom", "refs": ["B1", "B2"] }
+  ],
+  "planeMarks": { "textLabels": [
+    { "id": "c", "at": [-15, 9], "text": "-2/3", "labelKind": "TEXT", "factRole": "DERIVED_INTERMEDIATE" },
+    { "id": "k3", "at": [-6, 9], "text": "3", "labelKind": "MATH", "factRole": "GIVEN" },
+    { "id": "a", "at": [1, 9], "text": "5", "labelKind": "MATH", "factRole": "DERIVED_INTERMEDIATE" },
+    { "id": "b", "at": [8, 9], "text": "-4", "labelKind": "MATH", "factRole": "DERIVED_INTERMEDIATE" },
+    { "id": "minusOne", "at": [15, 9], "text": "-1", "labelKind": "MATH", "factRole": "GIVEN" },
+    { "id": "d", "at": [1, 3], "text": "-2", "labelKind": "MATH", "factRole": "DERIVED_INTERMEDIATE" },
+    { "id": "e", "at": [8, 3], "text": "-2", "labelKind": "MATH", "factRole": "DERIVED_INTERMEDIATE" },
+    { "id": "four", "at": [15, 3], "text": "4", "labelKind": "MATH", "factRole": "GIVEN" },
+    { "id": "bottomThree1", "at": [-6, -4], "text": "3", "labelKind": "MATH", "factRole": "GIVEN" },
+    { "id": "bottomThree2", "at": [1, -4], "text": "3", "labelKind": "MATH", "factRole": "GIVEN" },
+    { "id": "bottomMinusSix", "at": [8, -4], "text": "-6", "labelKind": "MATH", "factRole": "GIVEN" },
+    { "id": "remainderThree", "at": [15, -4], "text": "3", "labelKind": "MATH", "factRole": "GIVEN" }
+  ] },
+  "caption": "조립제법에서 c=-2/3과 a=5, b=-4, d=e=-2를 차례로 결정한 계수표",
+  "accessibilityDescription": "문제의 조립제법 표에서 c는 -2/3, a는 5, b는 -4, d와 e는 모두 -2로 채워졌다. 맨 아래 행은 3 3 -6 3이고 마지막 3은 나머지이다.",
+  "sourceConditions": [
+    { "id": "S1", "condition": "3x+2의 근은 -2/3이므로 조립제법 수 c=-2/3이다.", "mappedTo": "planeMarks.textLabels[c]" },
+    { "id": "S2", "condition": "d=-2, a=5, e=-2, b=-4이다.", "mappedTo": "planeMarks.textLabels[a,b,d,e]" },
+    { "id": "S3", "condition": "계수 행 3, 3, -6 및 나머지 3은 원문 결과와 동일하다.", "mappedTo": "planeMarks.textLabels[bottomThree1,bottomThree2,bottomMinusSix,remainderThree]" },
+    { "id": "S4", "condition": "몫 Q(x)=x²+x-2는 표 결과 3x²+3x-6을 3으로 나눈 것이다.", "mappedTo": "displaySegments[quotientLeft,quotientBottom]은 나머지 3을 구획하며 완성 몫의 표 계수를 보존" }
+  ],
+  "newVisualInformation": ["해설에서 차례로 구한 c, d, e, a, b의 값을 원문의 조립제법 배치에 대입한다."]
+}

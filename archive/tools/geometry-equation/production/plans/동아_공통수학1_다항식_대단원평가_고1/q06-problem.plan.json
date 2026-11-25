@@ -1,0 +1,47 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "TL", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "-10" }, { "kind": "integer", "value": "12" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "T0", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "-10" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "T1", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "20" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "B0", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "10" }, { "kind": "integer", "value": "-4" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "B1", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "10" }, { "kind": "integer", "value": "-8" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "B2", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "20" }, { "kind": "integer", "value": "-8" }] }, "outputType": "POINT", "factRole": "GIVEN" }
+    ]
+  },
+  "displayPoints": ["TL", "T0", "T1", "B0", "B1", "B2"],
+  "hiddenPointNames": ["TL", "T0", "T1", "B0", "B1", "B2"],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    { "id": "barLeft", "refs": ["TL", "T0"] },
+    { "id": "barMain", "refs": ["T0", "T1"] },
+    { "id": "quotientLeft", "refs": ["B0", "B1"] },
+    { "id": "quotientBottom", "refs": ["B1", "B2"] }
+  ],
+  "planeMarks": { "textLabels": [
+    { "id": "c", "at": [-15, 9], "text": "c", "labelKind": "MATH", "factRole": "GIVEN" },
+    { "id": "k3", "at": [-6, 9], "text": "3", "labelKind": "MATH", "factRole": "GIVEN" },
+    { "id": "a", "at": [1, 9], "text": "a", "labelKind": "MATH", "factRole": "GIVEN" },
+    { "id": "b", "at": [8, 9], "text": "b", "labelKind": "MATH", "factRole": "GIVEN" },
+    { "id": "minusOne", "at": [15, 9], "text": "-1", "labelKind": "MATH", "factRole": "GIVEN" },
+    { "id": "d", "at": [1, 3], "text": "d", "labelKind": "MATH", "factRole": "GIVEN" },
+    { "id": "e", "at": [8, 3], "text": "e", "labelKind": "MATH", "factRole": "GIVEN" },
+    { "id": "four", "at": [15, 3], "text": "4", "labelKind": "MATH", "factRole": "GIVEN" },
+    { "id": "bottomThree1", "at": [-6, -4], "text": "3", "labelKind": "MATH", "factRole": "GIVEN" },
+    { "id": "bottomThree2", "at": [1, -4], "text": "3", "labelKind": "MATH", "factRole": "GIVEN" },
+    { "id": "bottomMinusSix", "at": [8, -4], "text": "-6", "labelKind": "MATH", "factRole": "GIVEN" },
+    { "id": "remainderThree", "at": [15, -4], "text": "3", "labelKind": "MATH", "factRole": "GIVEN" }
+  ] },
+  "caption": "나눗셈 3x+2에 대한 조립제법 계수 배치와 미지수 c, d, e",
+  "accessibilityDescription": "왼쪽 세로 구분선 바깥에 c, 첫 행에 3 a b -1, 가운데 행에 d e 4, 가로 구분선 아래에 3 3 -6 3이 있다. 오른쪽 아래 3에는 몫과 나머지를 가르는 ㄴ자 표식이 있다.",
+  "sourceConditions": [
+    { "id": "P1", "condition": "조립제법의 왼쪽 수는 미지수 c이다.", "mappedTo": "planeMarks.textLabels[c]" },
+    { "id": "P2", "condition": "위 계수 행은 3, a, b, -1이고 곱셈 행은 d, e, 4이다.", "mappedTo": "planeMarks.textLabels[k3,a,b,minusOne,d,e,four]" },
+    { "id": "P3", "condition": "결과 행은 3, 3, -6, 3이고 마지막 3은 나머지이다.", "mappedTo": "planeMarks.textLabels[bottomThree1,bottomThree2,bottomMinusSix,remainderThree] 및 displaySegments[quotientLeft,quotientBottom]" },
+    { "id": "P4", "condition": "원문에는 c, a, b, d, e의 실제 값이 주어지지 않는다.", "mappedTo": "값 대신 원문 문자 그대로 표기하여 정답 미노출" }
+  ],
+  "newVisualInformation": ["조립제법의 위·가운데·아래 행과 몫·나머지 구획을 분리해 배치한다."]
+}
