@@ -1,0 +1,10 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"PARABOLA","vertex":["0","0"],"p":"2","axis":"X"},
+  "points":[{"id":"O","kind":"ORIGIN"},{"id":"F","kind":"FOCUS"},{"id":"A","kind":"ON_CONIC","x":"8","branch":"POS"},{"id":"B","kind":"ON_CONIC","x":"11","branch":"NEG"}],
+  "segments":[{"id":"AF","from":"A","to":"F"},{"id":"FB","from":"F","to":"B"},{"id":"AB","from":"A","to":"B"}],
+  "caption":"y²=8x 위의 두 자연수 x좌표를 가진 점 A,B와 초점 F로 만든 삼각형 AFB, 무게중심 x=7",
+  "accessibilityDescription":"초점 F(2,0)와 포물선 위 위쪽 A, 아래쪽 B가 삼각형을 이루며 두 x좌표는 2보다 큰 자연수이고 무게중심의 x좌표는 7이다.",
+  "sourceConditions":[{"id":"c1","condition":"포물선 y²=8x의 초점 F=(2,0)이며 A,B는 서로 다른 포물선 점이다.","mappedTo":["conic","F","A","B"]},{"id":"c2","condition":"정수 x좌표 8과 11은 2보다 크고 x_A+x_B=19로 무게중심 x=7을 만족하는 하나의 대표 예일 뿐 최댓값 달성 좌표가 아니다. 질문인 AF×BF 최댓값은 표시하지 않는다.","mappedTo":["A","B","AF","FB","AB"]}],
+  "newVisualInformation":["초점을 한 꼭짓점으로 둔 삼각형과 두 포물선 점"]
+}
