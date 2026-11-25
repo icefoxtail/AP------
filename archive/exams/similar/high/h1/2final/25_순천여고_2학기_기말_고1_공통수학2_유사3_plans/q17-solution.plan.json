@@ -1,0 +1,37 @@
+{
+  "capability": "sqrt-affine-spike-v1",
+  "graphPlan": {
+    "family": "sqrt-affine",
+    "radicand": ["4", "2"],
+    "amplitude": "1",
+    "sign": -1,
+    "offset": "3",
+    "sourceDomain": { "kind": "NATURAL_SQRT_AFFINE" },
+    "equalUnits": true,
+    "domain": [-2, 5],
+    "viewport": [-3, 5, -3, 5],
+    "axisTickValues": { "x": [], "y": [] },
+    "overlays": {
+      "lines": [
+        { "id": "k1", "slope": "-1", "intercept": "1", "label": "y=-x+1", "labelAt": "END" },
+        { "id": "k2", "slope": "-1", "intercept": "1/2", "label": "y=-x+1/2", "labelAt": "START", "style": "DASHED" }
+      ],
+      "points": [
+        { "id": "A", "curveX": "-2", "coordinates": true },
+        { "id": "B", "curveX": "0", "coordinates": true },
+        { "id": "T", "curveX": "-3/2", "coordinates": true }
+      ]
+    }
+  },
+  "pointNames": { "A": "A", "B": "B", "T": "T" },
+  "coordinatePlacement": "PANEL",
+  "caption": "k=1/2이면 점선 y=-x+1/2가 T(-3/2,2)에서 곡선에 접한다. k=1이면 실선 y=-x+1이 곡선의 시작점 A(-2,3) 및 B(0,1)을 지난다. 그 사이 1/2<k≤1에서 교점이 서로 다른 2개이다. 답은 ⑤이다.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "y=-√(2x+4)+3과 y=-x+k의 서로 다른 교점 2개", "mappedTo": ["graphPlan", "graphPlan.overlays.lines"] }
+  ],
+  "newVisualInformation": [
+    "접선 k=1/2와 두 점을 지나는 경계선 k=1을 서로 다른 선종으로 표시한다.",
+    "접점 T(-3/2,2), 시작점 A(-2,3), 교점 B(0,1)의 실제 좌표를 기재한다."
+  ],
+  "accessibilityDescription": "감소하는 근호함수 그래프, 경계 직선 y=-x+1과 접선 y=-x+1/2, 시작점 A, 접점 T와 점 B의 좌표."
+}
