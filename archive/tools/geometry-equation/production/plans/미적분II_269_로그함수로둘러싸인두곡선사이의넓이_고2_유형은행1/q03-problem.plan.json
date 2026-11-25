@@ -1,0 +1,94 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      0,
+      5.2,
+      -0.3,
+      2.5
+    ],
+    "curves": [
+      {
+        "id": "b",
+        "kind": "LOGARITHMIC",
+        "base": "2",
+        "coefficients": [
+          "1",
+          "1",
+          "0",
+          "0"
+        ],
+        "domain": [
+          "1",
+          "5"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "id": "a",
+        "kind": "LOGARITHMIC",
+        "base": "4",
+        "coefficients": [
+          "1",
+          "1",
+          "0",
+          "0"
+        ],
+        "domain": [
+          "1",
+          "5"
+        ],
+        "color": "WARM"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "2",
+        "4"
+      ],
+      "y": [
+        "1",
+        "2"
+      ]
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "p",
+          "x": "2",
+          "label": "x=p"
+        },
+        {
+          "id": "q",
+          "x": "4",
+          "label": "x=q"
+        }
+      ]
+    }
+  },
+  "caption": "예: 1<b=2<a=4, 1<p=2<q=4일 때 두 로그곡선과 두 수직선의 위치 관계.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "1<b<a일 때 x>1에서 log_b x가 log_a x 위",
+      "mappedTo": "graphPlan.curves[0..1]"
+    },
+    {
+      "id": "c2",
+      "condition": "1<p<q인 수직선 x=p,x=q",
+      "mappedTo": "graphPlan.overlays.lines[0..1]"
+    },
+    {
+      "id": "c3",
+      "condition": "두 곡선 사이 A와 아랫곡선·x축 사이 B 영역",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: LOGARITHMIC_REGION_BOUNDARY: multi-curve의 LOGARITHMIC 곡선은 graphPlan.regions의 영역 경계로 지원되지 않아 내부 A/B 라벨과 면 채움 생략"
+    }
+  ],
+  "newVisualInformation": [
+    "대표 b=2,a=4,p=2,q=4는 변수의 한 예일 뿐 일반 답 α/β를 숫자로 알려 주지 않는다."
+  ],
+  "sourceQuote": "[그림: 좌표평면의 제1사분면에 점 $(1, 0)$을 지나고 $x>1$에서 정의된 두 곡선 $y=\\log_b x$와 $y=\\log_a x$가 있다. $1<b<a$이므로 $x>1$에서 곡선 $y=\\log_b x$가 곡선 $y=\\log_a x$의 위쪽에 위치한다. $1<p<q$인 두 수직선 $x=p$, $x=q$에 의해 두 곡선 사이의 영역이 $A$, 곡선 $y=\\log_a x$와 $x$축 사이의 영역이 $B$로 표시되어 있다.]",
+  "accessibilityDescription": "예: 1<b=2<a=4, 1<p=2<q=4일 때 두 로그곡선과 두 수직선의 위치 관계."
+}

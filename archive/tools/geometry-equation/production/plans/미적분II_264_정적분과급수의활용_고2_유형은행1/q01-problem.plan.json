@@ -1,0 +1,119 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "6"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      0,
+      6
+    ],
+    "viewport": [
+      -0.4,
+      6.3,
+      -0.3,
+      7
+    ],
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": 2,
+        "y": 4
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "2",
+        "5"
+      ],
+      "y": [
+        "4"
+      ]
+    },
+    "formula": "x+2",
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "2",
+          "y": "4"
+        },
+        {
+          "id": "B",
+          "x": "2",
+          "y": "0"
+        },
+        {
+          "id": "C",
+          "x": "5",
+          "y": "0"
+        },
+        {
+          "id": "D",
+          "x": "5",
+          "y": "4"
+        }
+      ],
+      "polygons": [
+        {
+          "id": "R",
+          "points": [
+            "B",
+            "C",
+            "D",
+            "A"
+          ],
+          "fill": "LIGHT"
+        }
+      ],
+      "lines": [
+        {
+          "id": "nk",
+          "x": "2",
+          "label": "x=n+k"
+        }
+      ]
+    }
+  },
+  "caption": "예: n+k=2에서 y=x+2와 x축을 잇는 세로 AB=4, 오른쪽으로 폭 3인 직사각형.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "직선 y=x+2와 x축",
+      "mappedTo": "graphPlan.pieces[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "A=(n+k,n+k+2), B=(n+k,0)",
+      "mappedTo": "graphPlan.overlays.points[0..1];ENGINE_CAPABILITY_PENDING: VARIABLE_N_PLUS_K: n+k를 변수 그대로 점좌표에 표시하는 기능 미지원"
+    },
+    {
+      "id": "c3",
+      "condition": "AB 세로, 폭 3인 직사각형 색칠",
+      "mappedTo": "graphPlan.overlays.points[0..3];graphPlan.overlays.polygons[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "대표 n+k=2이며 원문 n,k의 일반항을 확정하지 않는다. 직사각형 폭 5−2=3 및 높이4를 별도 검산."
+  ],
+  "sourceQuote": "[그림: 좌표평면 위에 제1사분면을 지나는 직선 $y=x+2$와 $x$축이 있다. 직선 $x=n+k$가 직선 $y=x+2$와 만나는 점을 $\\mathrm{A}$, $x$축과 만나는 점을 $\\mathrm{B}$라 하고, 선분 $\\mathrm{AB}$를 세로로 하고 가로의 길이가 $3$인 직사각형이 색칠되어 있다.]",
+  "accessibilityDescription": "예: n+k=2에서 y=x+2와 x축을 잇는 세로 AB=4, 오른쪽으로 폭 3인 직사각형."
+}

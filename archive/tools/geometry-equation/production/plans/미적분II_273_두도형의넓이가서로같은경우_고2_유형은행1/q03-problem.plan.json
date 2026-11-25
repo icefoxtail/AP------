@@ -1,0 +1,97 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -4.6,
+      3,
+      -0.4,
+      3
+    ],
+    "axisTickValues": {
+      "x": [
+        "-4",
+        "2"
+      ],
+      "y": [
+        "2"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "SQRT",
+        "radicand": [
+          "4",
+          "1"
+        ],
+        "amplitude": "1",
+        "offset": "0",
+        "domain": [
+          "-4",
+          "2"
+        ],
+        "label": "y=sqrt(x+4)",
+        "color": "BLUE"
+      },
+      {
+        "id": "h",
+        "kind": "LINE",
+        "coefficients": [
+          "2",
+          "0"
+        ],
+        "domain": [
+          "-4",
+          "2"
+        ],
+        "label": "y=2",
+        "color": "WARM"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "S",
+          "x": "-4",
+          "y": "0"
+        },
+        {
+          "id": "P",
+          "x": "0",
+          "y": "2"
+        }
+      ],
+      "lines": [
+        {
+          "id": "k",
+          "x": "2",
+          "label": "x=k"
+        }
+      ]
+    }
+  },
+  "caption": "y=√(x+4)의 시작점 (-4,0), y=2와의 교점 (0,2), 대표 미지 경계 x=k>0을 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "곡선 y=sqrt(x+4), 시작점 (-4,0), 교점 (0,2)",
+      "mappedTo": "graphPlan.curves[0];graphPlan.overlays.points[0..1]"
+    },
+    {
+      "id": "c2",
+      "condition": "직선 y=2와 수직경계 x=k",
+      "mappedTo": "graphPlan.curves[1];graphPlan.overlays.lines[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "[-4,0], [0,k]의 두 영역 같은 넓이",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: SYMBOLIC_EQUAL_AREA_WITH_UNKNOWN_K: k의 정답 5는 문제 그림에 노출 금지, 대표 k=2는 A=B가 아니므로 정확한 두 면 채움을 생략"
+    }
+  ],
+  "newVisualInformation": [
+    "대표 k=2는 위치만 그린다. 원문 답 k=5를 그리지 않고 면적 동등은 pending."
+  ],
+  "sourceQuote": "[그림: 좌표평면에 곡선 $y=\\sqrt{x+4}$가 시작점 $(-4,0)$부터 제1사분면으로 뻗어가고, 직선 $y=2$와 점 $(0,2)$에서 만난다. $-4 \\le x \\le 0$에서 곡선과 두 직선 $x=-4, y=2$로 둘러싸인 영역이 빗금쳐져 있고, $0 \\le x \\le k$에서 곡선과 두 직선 $x=k, y=2$로 둘러싸인 영역이 색칠되어 있다.]",
+  "accessibilityDescription": "y=√(x+4)의 시작점 (-4,0), y=2와의 교점 (0,2), 대표 미지 경계 x=k>0을 표시한다."
+}

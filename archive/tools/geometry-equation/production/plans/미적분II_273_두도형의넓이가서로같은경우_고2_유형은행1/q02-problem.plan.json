@@ -1,0 +1,91 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -0.5,
+      13,
+      -0.5,
+      6
+    ],
+    "axisTickValues": {
+      "x": [
+        "8"
+      ],
+      "y": [
+        "4"
+      ]
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "SQRT",
+        "radicand": [
+          "0",
+          "2"
+        ],
+        "amplitude": "1",
+        "offset": "0",
+        "domain": [
+          "0",
+          "12"
+        ],
+        "label": "y=sqrt(2x)",
+        "color": "BLUE"
+      },
+      {
+        "id": "h",
+        "kind": "LINE",
+        "coefficients": [
+          "4",
+          "0"
+        ],
+        "domain": [
+          "0",
+          "12"
+        ],
+        "label": "y=4",
+        "color": "WARM"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "8",
+          "y": "4"
+        }
+      ],
+      "lines": [
+        {
+          "id": "a",
+          "x": "12",
+          "label": "x=a"
+        }
+      ]
+    }
+  },
+  "caption": "곡선 y=√(2x)와 y=4, 교점 (8,4) 및 대표 미지 경계 x=a>8의 위치만 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "y=sqrt(2x), y=4와 x=8 교점",
+      "mappedTo": "graphPlan.curves[0..1];graphPlan.overlays.points[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "x=a (a>8)의 오른쪽 경계",
+      "mappedTo": "graphPlan.overlays.lines[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "A/B 두 넓이가 같다는 조건과 면 채움",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: SYMBOLIC_EQUAL_AREA_WITH_UNKNOWN_A: x=a를 답 18로 고정하면 문제 답 노출, 임의 12를 쓰면 A=B가 성립하지 않아 면 영역은 표시하지 않음"
+    }
+  ],
+  "newVisualInformation": [
+    "대표 x=12는 위치 관계만 전달하며 두 영역의 넓이가 같다는 주장은 하지 않는다."
+  ],
+  "sourceQuote": "[그림: 좌표평면에 곡선 $y=\\sqrt{2x}$와 직선 $y=4$, $y$축, 직선 $x=a$ ($a>8$)가 그려져 있다. $0 \\le x \\le 8$에서 직선 $y=4$ 아래와 곡선 위, $y$축으로 둘러싸인 영역이 $A$, $8 \\le x \\le a$에서 곡선 아래와 직선 $y=4$ 위, 직선 $x=a$로 둘러싸인 영역이 $B$로 표시되어 있다.]",
+  "accessibilityDescription": "곡선 y=√(2x)와 y=4, 교점 (8,4) 및 대표 미지 경계 x=a>8의 위치만 표시한다."
+}
