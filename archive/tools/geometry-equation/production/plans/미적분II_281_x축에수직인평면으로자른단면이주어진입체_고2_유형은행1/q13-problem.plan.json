@@ -1,0 +1,190 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "base",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "hiddenPointNames": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "diameter",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "chord",
+      "refs": [
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "base"
+  ],
+  "caption": "단위원 x²+y²=1의 밑면 및 x=0의 대표 현만 보인다. 정사각형에서 내접원을 뺀 관통 단면은 미지원이다.",
+  "accessibilityDescription": "단위원 x²+y²=1의 밑면 및 x=0의 대표 현만 보인다. 정사각형에서 내접원을 뺀 관통 단면은 미지원이다.",
+  "sourceQuote": "[그림: $xy$평면 위의 원 $x^2+y^2=1$ 내부를 밑면으로 하고, $x$축 위의 점 $x$에서 $x$축에 수직인 평면으로 자른 단면이 한 변의 길이가 원의 현의 길이와 같은 정사각형 내부에서 내접원을 파낸 영역으로 이루어진 입체도형]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "밑면 원 x²+y²=1 및 반지름 1",
+      "mappedTo": "mathPlan.nodes[0];mathPlan.nodes[5];displayCircles[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "x축을 따라 -1≤x≤1인 지름",
+      "mappedTo": "mathPlan.nodes[1..2];displaySegments[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "x=0에서 세로 현의 길이 2",
+      "mappedTo": "mathPlan.nodes[3..4];displaySegments[1]"
+    },
+    {
+      "id": "c4",
+      "condition": "일반 x에서 현 길이 2√(1-x²)",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: MOVING_CHORD_SECTION_LENGTH_SQRT"
+    },
+    {
+      "id": "c5",
+      "condition": "정사각형에서 내접원을 빼낸 구멍 단면",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: VARIABLE_SQUARE_MINUS_INSCRIBED_CIRCLE_SECTION_3D"
+    }
+  ],
+  "newVisualInformation": [
+    "두 직경 CD와 AB는 원래 밑면을 설명하며, 파낸 구멍이나 3D 정사각형 단면은 나타내지 않는다."
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -0.5,
+      4.7,
+      -3.7,
+      3.7
+    ],
+    "axisTickValues": {
+      "x": [
+        "4"
+      ],
+      "y": [
+        "1",
+        "-1"
+      ]
+    },
+    "curves": [
+      {
+        "id": "upper",
+        "kind": "SQRT",
+        "radicand": [
+          "1",
+          "2"
+        ],
+        "amplitude": "1",
+        "offset": "0",
+        "domain": [
+          "0",
+          "4"
+        ],
+        "label": "y=sqrt(2x+1)",
+        "color": "BLUE"
+      },
+      {
+        "id": "lower",
+        "kind": "SQRT",
+        "radicand": [
+          "1",
+          "2"
+        ],
+        "amplitude": "-1",
+        "offset": "0",
+        "domain": [
+          "0",
+          "4"
+        ],
+        "label": "y=-sqrt(2x+1)",
+        "color": "WARM"
+      }
+    ],
+    "regions": [
+      {
+        "id": "base",
+        "between": [
+          "upper",
+          "lower"
+        ],
+        "from": "0",
+        "to": "4",
+        "fill": "LIGHT"
+      }
+    ]
+  },
+  "caption": "0≤x≤4에서 y=±√(2x+1)로 둘러싸인 밑면 영역을 정확한 두 곡선 사이에 표시한다. 3차원 정사각형 단면은 아직 그리지 않았다.",
+  "accessibilityDescription": "x가 0에서 4까지 변할 때 위쪽과 아래쪽의 두 무리함수가 만드는 대칭 밑면 영역. 정사각형 단면의 공간적 형상은 미포함.",
+  "sourceQuote": "[그림: $xy$평면에서 $x=0$부터 $x=4$까지 위아래로 대칭인 두 곡선 $y=\\sqrt{2x+1}$과 $y=-\\sqrt{2x+1}$로 둘러싸인 도형을 밑면으로 하고, $x$축에 수직인 평면으로 자른 단면이 두 곡선 사이의 거리를 한 변으로 하는 정사각형인 입체도형]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "위쪽 곡선 y=√(2x+1)",
+      "mappedTo": "graphPlan.curves[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "아래쪽 곡선 y=-√(2x+1)",
+      "mappedTo": "graphPlan.curves[1]"
+    },
+    {
+      "id": "c3",
+      "condition": "x=0과 x=4 사이의 밑면",
+      "mappedTo": "graphPlan.curves[0..1].domain;graphPlan.regions[0]"
+    },
+    {
+      "id": "c4",
+      "condition": "각 x에서의 단면은 두 곡선 사이를 변으로 하는 정사각형",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: VARIABLE_SQUARE_SECTION_SOLID_FROM_TWO_SQRT_CURVES"
+    },
+    {
+      "id": "c5",
+      "condition": "단면 변 길이는 2√(2x+1)",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: VARIABLE_SECTION_SIDE_LENGTH_LABEL_3D"
+    }
+  ],
+  "newVisualInformation": [
+    "영역 채움은 원문이 밑면으로 정의한 영역에 한정한다. 이것만으로 3차원 단면이 완성된 것은 아니다."
+  ]
+}

@@ -1,0 +1,189 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "base",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "hiddenPointNames": [
+    "O",
+    "C",
+    "D"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "diameter",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "chord",
+      "refs": [
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "base"
+  ],
+  "caption": "반지름 3인 원의 밑면, 지름 AB와 x=0 위치의 대표 현만 표시한다. 움직이는 정삼각형 단면은 아직 그리지 않았다.",
+  "accessibilityDescription": "반지름 3인 원의 밑면, 지름 AB와 x=0 위치의 대표 현만 표시한다. 움직이는 정삼각형 단면은 아직 그리지 않았다.",
+  "sourceQuote": "[그림: 반지름의 길이가 $3$인 원 $x^2+y^2=9$가 $xy$평면 위에 놓여 있고, 지름 $AB$가 $x$축 위에 놓여 있으며, 점 $x$ ($-3 \\le x \\le 3$)에서 $x$축에 수직인 현의 양 끝점을 잇는 선분을 한 변으로 하는 정삼각형이 평면에 수직으로 세워져 점 $A(-3, 0)$에서 점 $B(3, 0)$까지 이동하는 모습]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원의 중심 O, 반지름 3, x²+y²=9",
+      "mappedTo": "mathPlan.nodes[0];mathPlan.nodes[5];displayCircles[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "x축 위 지름 A(-3,0)B(3,0)",
+      "mappedTo": "mathPlan.nodes[1..2];displaySegments[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "지름에 수직인 대표 현의 길이 6",
+      "mappedTo": "mathPlan.nodes[3..4];displaySegments[1]"
+    },
+    {
+      "id": "c4",
+      "condition": "x에 따라 현 길이 2√(9-x²)로 변함",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: VARIABLE_CIRCLE_CHORD_X_AND_LENGTH: x=0은 단지 원문 정의역 내 예시"
+    },
+    {
+      "id": "c5",
+      "condition": "현을 한 변으로 하여 밑면에 수직으로 세운 정삼각형과 움직이는 입체",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: MOVING_EQUILATERAL_SECTION_EXTRUSION_3D"
+    }
+  ],
+  "newVisualInformation": [
+    "세로 현은 원문이 허용하는 x=0 예시이며 임의 x에서의 전 단면 이동 또는 3D 단면 표시가 아니다."
+  ]
+}
