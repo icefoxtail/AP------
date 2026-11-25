@@ -1,0 +1,709 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "11",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "axis",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "T"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "kD",
+        "op": "CIRCLE_THROUGH_POINT",
+        "inputs": [
+          "B",
+          "D"
+        ],
+        "args": {},
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "kE",
+        "op": "CIRCLE_THROUGH_POINT",
+        "inputs": [
+          "B",
+          "E"
+        ],
+        "args": {},
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "hitD",
+        "op": "INTERSECTION",
+        "inputs": [
+          "axis",
+          "kD"
+        ],
+        "args": {},
+        "outputType": "POINT_SET",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "SELECT_POINT",
+        "inputs": [
+          "hitD"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "branch": {
+          "kind": "SIDE_OF_ORIENTED_LINE",
+          "refs": [
+            "B",
+            "A"
+          ],
+          "sign": -1
+        }
+      },
+      {
+        "id": "hitE",
+        "op": "INTERSECTION",
+        "inputs": [
+          "axis",
+          "kE"
+        ],
+        "args": {},
+        "outputType": "POINT_SET",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "SELECT_POINT",
+        "inputs": [
+          "hitE"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "branch": {
+          "kind": "SIDE_OF_ORIENTED_LINE",
+          "refs": [
+            "B",
+            "A"
+          ],
+          "sign": -1
+        }
+      },
+      {
+        "id": "T1u",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1",
+              "denominator": "16"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T1d",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-1",
+              "denominator": "16"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T2u",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1",
+              "denominator": "16"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T2d",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-1",
+              "denominator": "16"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T3u",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1",
+              "denominator": "16"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T3d",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-1",
+              "denominator": "16"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T4u",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1",
+              "denominator": "16"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T4d",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-1",
+              "denominator": "16"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T5u",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1",
+              "denominator": "16"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T5d",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-1",
+              "denominator": "16"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "sBT",
+      "refs": [
+        "B",
+        "T"
+      ],
+      "arrow": "END"
+    },
+    {
+      "id": "sT1uT1d",
+      "refs": [
+        "T1u",
+        "T1d"
+      ]
+    },
+    {
+      "id": "sT2uT2d",
+      "refs": [
+        "T2u",
+        "T2d"
+      ]
+    },
+    {
+      "id": "sT3uT3d",
+      "refs": [
+        "T3u",
+        "T3d"
+      ]
+    },
+    {
+      "id": "sT4uT4d",
+      "refs": [
+        "T4u",
+        "T4d"
+      ]
+    },
+    {
+      "id": "sT5uT5d",
+      "refs": [
+        "T5u",
+        "T5d"
+      ]
+    },
+    {
+      "id": "sBP",
+      "refs": [
+        "B",
+        "P"
+      ]
+    },
+    {
+      "id": "sBQ",
+      "refs": [
+        "B",
+        "Q"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "P",
+    "Q",
+    "T",
+    "T1u",
+    "T1d",
+    "T2u",
+    "T2d",
+    "T3u",
+    "T3d",
+    "T4u",
+    "T4d",
+    "T5u",
+    "T5d"
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 390
+  },
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "arcBD",
+        "circle": "kD",
+        "center": "B",
+        "from": "D",
+        "to": "P",
+        "side": "MINOR"
+      },
+      {
+        "id": "arcBE",
+        "circle": "kE",
+        "center": "B",
+        "from": "E",
+        "to": "Q",
+        "side": "MINOR"
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "tick0",
+        "at": [
+          0,
+          -0.35
+        ],
+        "text": "0"
+      },
+      {
+        "id": "tick1",
+        "at": [
+          1,
+          -0.35
+        ],
+        "text": "1"
+      },
+      {
+        "id": "tick2",
+        "at": [
+          2,
+          -0.35
+        ],
+        "text": "2"
+      },
+      {
+        "id": "tick3",
+        "at": [
+          3,
+          -0.35
+        ],
+        "text": "3"
+      },
+      {
+        "id": "tick4",
+        "at": [
+          4,
+          -0.35
+        ],
+        "text": "4"
+      },
+      {
+        "id": "tick5",
+        "at": [
+          5,
+          -0.35
+        ],
+        "text": "5"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "bpRoot",
+        "ownerSegment": "sBP",
+        "text": "2sqrt(2)"
+      },
+      {
+        "id": "bqRoot",
+        "ownerSegment": "sBQ",
+        "text": "2sqrt(5)"
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "T",
+    "T1u",
+    "T1d",
+    "T2u",
+    "T2d",
+    "T3u",
+    "T3d",
+    "T4u",
+    "T4d",
+    "T5u",
+    "T5d"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "BD=2√2, BE=2√5로 두 원호 교점은 P=2√2, Q=2√5가 된다.",
+  "accessibilityDescription": "BD=2√2, BE=2√5로 두 원호 교점은 P=2√2, Q=2√5가 된다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "B=0, C=2, F=4이고 ABCD, DCFE는 변 길이 2인 정사각형",
+      "mappedTo": [
+        "sAB",
+        "sAD",
+        "sDC",
+        "sDE",
+        "sEF",
+        "sBT",
+        "tick0",
+        "tick2",
+        "tick4"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "B에서 BD를 반지름으로 그은 원호가 수직선과 P에서 만남",
+      "mappedTo": [
+        "sBD",
+        "arcBD",
+        "P"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "B에서 BE를 반지름으로 그은 원호가 수직선과 Q에서 만남",
+      "mappedTo": [
+        "sBE",
+        "arcBE",
+        "Q"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "반지름 BD=2√2와 BE=2√5에서 나온 두 수직선 좌표를 해설 그림에만 추가한다."
+  ]
+}

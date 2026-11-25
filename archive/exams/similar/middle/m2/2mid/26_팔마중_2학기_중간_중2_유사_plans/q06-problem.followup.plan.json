@@ -1,0 +1,348 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "K",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "A",
+          "K"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "63"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "h",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "K"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "C",
+          "h"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "v",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "d",
+        "op": "PERPENDICULAR_THROUGH",
+        "inputs": [
+          "A",
+          "h"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "C",
+          "d"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "crease",
+        "op": "PERPENDICULAR_THROUGH",
+        "inputs": [
+          "M",
+          "v"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bc",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ad",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "crease",
+          "bc"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "crease",
+          "ad"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "sEC",
+      "refs": [
+        "E",
+        "C"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sDF",
+      "refs": [
+        "D",
+        "F"
+      ]
+    },
+    {
+      "id": "sFA",
+      "refs": [
+        "F",
+        "A"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "sEA",
+      "refs": [
+        "E",
+        "A"
+      ]
+    },
+    {
+      "id": "sFC",
+      "refs": [
+        "F",
+        "C"
+      ],
+      "dashed": true
+    }
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 410
+  },
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "given54",
+        "refs": [
+          "A",
+          "E",
+          "B"
+        ],
+        "value": 54,
+        "label": "54",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rightB",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "caption": "직사각형 ABCD에서 C가 A에 겹치도록 EF를 접는 선으로 사용하고 ∠AEB=54°이다.",
+  "accessibilityDescription": "직사각형 ABCD에서 C가 A에 겹치도록 EF를 접는 선으로 사용하고 ∠AEB=54°이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "ABCD는 직사각형; E는 BC 위, F는 AD 위",
+      "mappedTo": [
+        "sAB",
+        "sBE",
+        "sEC",
+        "sCD",
+        "sDF",
+        "sFA",
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "EF로 접어 C가 A와 일치",
+      "mappedTo": [
+        "sEF",
+        "sEA",
+        "sFC"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "∠AEB=54°",
+      "mappedTo": [
+        "given54"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "E,F의 변 위 위치, 접는 선 EF, 접힌 뒤의 EA 및 원래 EC와 CF 점선, 54° 각 호."
+  ]
+}

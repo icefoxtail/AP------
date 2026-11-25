@@ -1,0 +1,209 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 410
+  },
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "legs",
+        "count": 1,
+        "segments": [
+          "sAB",
+          "sCD"
+        ]
+      }
+    ],
+    "parallels": [
+      {
+        "id": "bases",
+        "count": 1,
+        "segments": [
+          "sBC",
+          "sDA"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "id": "ab",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 63.435,
+        "style": "ARC",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ac",
+        "refs": [
+          "B",
+          "C",
+          "D"
+        ],
+        "value": 63.435,
+        "style": "ARC",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "caption": "AB=CD이고 밑각 B와 C가 같지만 평행사변형이 아닌 이등변사다리꼴 반례.",
+  "accessibilityDescription": "AB=CD이고 밑각 B와 C가 같지만 평행사변형이 아닌 이등변사다리꼴 반례.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AB=CD",
+      "mappedTo": [
+        "sAB",
+        "sCD",
+        "legs"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "각 B와 C가 같다",
+      "mappedTo": [
+        "ab",
+        "ac"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "평행사변형이 아닌 예시",
+      "mappedTo": [
+        "sBC",
+        "sDA"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "AB와 CD의 길이 및 두 밑각이 같으면서 양 밑변 BC, AD가 서로 다른 사다리꼴 반례."
+  ]
+}

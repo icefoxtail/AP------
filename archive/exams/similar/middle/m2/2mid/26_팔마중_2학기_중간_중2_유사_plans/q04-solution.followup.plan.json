@@ -1,0 +1,283 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "9",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "23",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sEA",
+      "refs": [
+        "E",
+        "A"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sOD",
+      "refs": [
+        "O",
+        "D"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "D",
+    "E",
+    "O",
+    "C"
+  ],
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 410
+  },
+  "planeMarks": {
+    "parallels": [
+      {
+        "id": "parallel",
+        "count": 1,
+        "segments": [
+          "sBC",
+          "sAD"
+        ]
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "equalBCOD",
+        "count": 1,
+        "segments": [
+          "sBC",
+          "sOD"
+        ]
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "givenArea",
+        "at": [
+          2.8,
+          1.1
+        ],
+        "text": "14"
+      },
+      {
+        "id": "solvedArea",
+        "at": [
+          8,
+          2.1
+        ],
+        "text": "14"
+      }
+    ]
+  },
+  "caption": "BC∥OD이고 BC=OD이므로 BCDO는 평행사변형이고 △ABE와 같은 넓이 14이다.",
+  "accessibilityDescription": "BC∥OD이고 BC=OD이므로 BCDO는 평행사변형이고 △ABE와 같은 넓이 14이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "ABDE는 평행사변형, 대각선 AD와 BE의 교점 O",
+      "mappedTo": [
+        "sAB",
+        "sBD",
+        "sDE",
+        "sEA",
+        "sAD",
+        "sBE",
+        "O"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "BC∥AD이고 BC=OD",
+      "mappedTo": [
+        "parallel",
+        "equalBCOD"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "△ABE의 넓이 14",
+      "mappedTo": [
+        "givenArea"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원래 주어진 △ABE=14와 새로 얻은 사각형 BCDO=14를 동시에 표시한다."
+  ]
+}

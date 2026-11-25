@@ -1,0 +1,302 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "K",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "B",
+          "T"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "14"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "28"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "v",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "T"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "h",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "K"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "D",
+          "v"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "D",
+          "h"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "O",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "B",
+          "D"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sOC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "O"
+  ],
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 410
+  },
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "angle28",
+        "refs": [
+          "C",
+          "B",
+          "D"
+        ],
+        "value": 28,
+        "label": "28",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "angleX",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 62,
+        "label": "62",
+        "style": "ARC",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lenBD",
+        "ownerSegment": "sBD",
+        "text": "14"
+      },
+      {
+        "id": "lenOC",
+        "ownerSegment": "sOC",
+        "text": "7"
+      }
+    ]
+  },
+  "caption": "직사각형의 두 대각선의 길이와 각을 이용해 x=62°, y=7을 확인한다.",
+  "accessibilityDescription": "직사각형의 두 대각선의 길이와 각을 이용해 x=62°, y=7을 확인한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "ABCD는 직사각형, O는 두 대각선의 교점",
+      "mappedTo": [
+        "sAB",
+        "sBC",
+        "sCD",
+        "sDA",
+        "sAC",
+        "sBD",
+        "O"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "∠CBD=28°",
+      "mappedTo": [
+        "angle28"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "BD=14",
+      "mappedTo": [
+        "lenBD"
+      ]
+    },
+    {
+      "id": "c4",
+      "condition": "∠BAC=x°, OC=y",
+      "mappedTo": [
+        "angleX",
+        "lenOC"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "마주 보는 대각선의 절반 OC=7, ∠BAC=62°를 해설 그림에 표시한다."
+  ]
+}
