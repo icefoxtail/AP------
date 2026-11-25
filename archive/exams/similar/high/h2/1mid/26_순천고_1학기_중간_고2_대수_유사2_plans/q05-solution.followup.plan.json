@@ -1,0 +1,66 @@
+{
+  "capability": "logarithmic-affine-spike-v1",
+  "graphPlan": {
+    "family": "logarithmic-affine",
+    "base": "2",
+    "coefficients": [
+      "1",
+      "1",
+      "2",
+      "-1"
+    ],
+    "sourceDomain": {
+      "kind": "NATURAL_LOG_AFFINE"
+    },
+    "domain": [
+      -1.99,
+      6
+    ],
+    "viewport": [
+      -3,
+      7,
+      -4,
+      4
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "hideLabels": [
+      "reference",
+      "boundary"
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0",
+          "unnamed": false,
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "수직 점근선 x=-2와 원점을 지나는 로그함수 그래프",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "점근선 x=-2",
+      "mappedTo": [
+        "graphPlan.coefficients"
+      ]
+    },
+    {
+      "id": "S2",
+      "condition": "원점 (0,0)을 지난다",
+      "mappedTo": [
+        "graphPlan.overlays.points"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "점근선과 원점 사이의 위치관계가 그래프에 나타난다."
+  ],
+  "sourceQuote": "수직 점근선 x=-2를 가지며 원점 O(0,0)을 지난다."
+}

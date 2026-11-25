@@ -1,0 +1,1772 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "26_순천고_1학기_중간_고2_대수_유사2-candidate-v1",
+  "examUid": "26_순천고_1학기_중간_고2_대수_유사2",
+  "sourceArchiveFile": "archive/exams/similar/high/h2/1mid/26_순천고_1학기_중간_고2_대수_유사2.js",
+  "expectedSourceBlobSha1": "8e955a5e0226d1656899a7addab52f4c0c10697c",
+  "expectedQuestionCount": 24,
+  "approval": {
+    "type": "CANDIDATE_CREATION_GATE",
+    "metadataReviewed": false,
+    "approvedBy": null,
+    "reviewStatus": "review_required",
+    "reviewPassCount": 0,
+    "evidenceRefs": [
+      "archive/exams/similar/high/h2/1mid/26_순천고_1학기_중간_고2_대수_유사2.experience-ledger.json",
+      "archive/data/item-4slot/similar/high/h2/1mid/26_순천고_1학기_중간_고2_대수_유사2.4slot.json"
+    ]
+  },
+  "registryChanges": [],
+  "items": [
+    {
+      "questionUid": 1,
+      "sourceOrdinal": 1,
+      "sourceQid": 1,
+      "before": null,
+      "after": {
+        "curriculum": "2022",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-01",
+        "standardUnit": "지수와 로그",
+        "subUnitKey": "H22-A-01-EXPONENT_LOG",
+        "subUnit": "지수와 로그",
+        "rpmPrimaryRecordId": "H2-M1-RPM-069",
+        "problemTypeKey": "PT_H22A_01_EXPONENT_EXTENSION",
+        "templateKey": "TPL_H22A_01_EXPONENT_EXTENSION_069",
+        "crossConceptKeys": [
+          "CC_RATIONAL_EXPONENT",
+          "CC_EXPONENT_RULES"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "sourceQid": 1,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "sourceExamPath": "archive/exams/original/high/h2/1mid/26_순천고_1학기_중간_고2_대수.js",
+          "sourceQid": 1,
+          "existingVariantRefs": [
+            "archive/exams/similar/high/h2/1mid/26_순천고_1학기_중간_고2_대수_유사.js"
+          ],
+          "mode": "ALIVE EXAM_FOLLOWUP",
+          "followupKind": "CONFIRMATION",
+          "profile": "SOURCE_BALANCED",
+          "variationAxis": "계산 결과를 묻는 대신 등식을 성립시키는 지수를 역산"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "수학적 조건과 필요한 수치가 발문에 명시되어 있어 별도 문제 그림 없이 풀이가 유일하게 결정된다.",
+          "solution": "EXEMPT",
+          "solutionReason": "작은칠판 해설의 식 전개와 조건 분석만으로 결정적 풀이가 완결된다."
+        }
+      },
+      "difficultyConfidence": "HIGH",
+      "difficultyReason": "원본 Q1 난도 및 핵심 풀이 잠금; 계산 결과를 묻는 대신 등식을 성립시키는 지수를 역산",
+      "primaryMethod": "지수의 확장",
+      "decisiveStep": "먼저 $4^{-1}=2^{-2}$이고 $8^{\\frac t3}=(2^3)^{\\frac t3}=2^t$이다.\n따라서 주어진 등식은 $2^{-2}\\times2^t=2^2$가 된다.\n밑이 같은 거듭제곱의 지수를 비교하면 $t-2=2$이므로 $t=4$이다.",
+      "item4slot": {
+        "ordinal": 1,
+        "format": "단일 정답",
+        "given": [
+          276,
+          20
+        ],
+        "goal": [
+          745
+        ],
+        "method": [
+          277,
+          20
+        ],
+        "condition": [
+          396
+        ],
+        "candidates": []
+      },
+      "hold": "",
+      "reason": "신규 유사2 Q1 실제 발문·해설로 직접 분류한 단일 모델 초안"
+    },
+    {
+      "questionUid": 2,
+      "sourceOrdinal": 2,
+      "sourceQid": 2,
+      "before": null,
+      "after": {
+        "curriculum": "2022",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-01",
+        "standardUnit": "지수와 로그",
+        "subUnitKey": "H22-A-01-EXPONENT_LOG",
+        "subUnit": "지수와 로그",
+        "rpmPrimaryRecordId": "H2-M1-RPM-067",
+        "problemTypeKey": "PT_H22A_01_ROOT_REAL",
+        "templateKey": "TPL_H22A_01_ROOT_REAL_067",
+        "crossConceptKeys": [
+          "CC_RATIONAL_EXPONENT",
+          "CC_CONJUGATE_SURD"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "sourceQid": 2,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "sourceExamPath": "archive/exams/original/high/h2/1mid/26_순천고_1학기_중간_고2_대수.js",
+          "sourceQid": 2,
+          "existingVariantRefs": [
+            "archive/exams/similar/high/h2/1mid/26_순천고_1학기_중간_고2_대수_유사.js"
+          ],
+          "mode": "ALIVE EXAM_FOLLOWUP",
+          "followupKind": "CONFIRMATION",
+          "profile": "SOURCE_BALANCED",
+          "variationAxis": "켤레근호 계산을 이용해 미지의 진수 조건을 역으로 결정"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "수학적 조건과 필요한 수치가 발문에 명시되어 있어 별도 문제 그림 없이 풀이가 유일하게 결정된다.",
+          "solution": "EXEMPT",
+          "solutionReason": "작은칠판 해설의 식 전개와 조건 분석만으로 결정적 풀이가 완결된다."
+        }
+      },
+      "difficultyConfidence": "HIGH",
+      "difficultyReason": "원본 Q2 난도 및 핵심 풀이 잠금; 켤레근호 계산을 이용해 미지의 진수 조건을 역으로 결정",
+      "primaryMethod": "거듭제곱근",
+      "decisiveStep": "양수 $x$이므로 $\\sqrt{x+16}-4>0$이다.\n분자의 두 세제곱근을 합치면 $\\sqrt[3]{(\\sqrt{x+16}+4)(\\sqrt{x+16}-4)}=\\sqrt[3]{x}$이다.\n따라서 $\\sqrt[3]{\\frac x4}=\\sqrt[3]3$이므로 $\\frac x4=3$이다.\n결국 $x=12$이고 양수 조건을 만족한다.",
+      "item4slot": {
+        "ordinal": 2,
+        "format": "단일 정답",
+        "given": [
+          21,
+          22
+        ],
+        "goal": [
+          745
+        ],
+        "method": [
+          694,
+          21,
+          277
+        ],
+        "condition": [
+          140
+        ],
+        "candidates": []
+      },
+      "hold": "",
+      "reason": "신규 유사2 Q2 실제 발문·해설로 직접 분류한 단일 모델 초안"
+    },
+    {
+      "questionUid": 3,
+      "sourceOrdinal": 3,
+      "sourceQid": 3,
+      "before": null,
+      "after": {
+        "curriculum": "2022",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-01",
+        "standardUnit": "지수와 로그",
+        "subUnitKey": "H22-A-01-EXPONENT_LOG",
+        "subUnit": "지수와 로그",
+        "rpmPrimaryRecordId": "H2-M1-RPM-076",
+        "problemTypeKey": "PT_H22A_01_LOG_PROPERTIES",
+        "templateKey": "TPL_H22A_01_LOG_PROPERTIES_076",
+        "crossConceptKeys": [
+          "CC_BASE_CHANGE_FORMULA",
+          "CC_LOG_RULES"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "sourceQid": 3,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "sourceExamPath": "archive/exams/original/high/h2/1mid/26_순천고_1학기_중간_고2_대수.js",
+          "sourceQid": 3,
+          "existingVariantRefs": [
+            "archive/exams/similar/high/h2/1mid/26_순천고_1학기_중간_고2_대수_유사.js"
+          ],
+          "mode": "ALIVE EXAM_FOLLOWUP",
+          "followupKind": "CONFIRMATION",
+          "profile": "SOURCE_BALANCED",
+          "variationAxis": "완성된 로그 곱의 값을 통해 지수 미지수를 결정"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "수학적 조건과 필요한 수치가 발문에 명시되어 있어 별도 문제 그림 없이 풀이가 유일하게 결정된다.",
+          "solution": "EXEMPT",
+          "solutionReason": "작은칠판 해설의 식 전개와 조건 분석만으로 결정적 풀이가 완결된다."
+        }
+      },
+      "difficultyConfidence": "HIGH",
+      "difficultyReason": "원본 Q3 난도 및 핵심 풀이 잠금; 완성된 로그 곱의 값을 통해 지수 미지수를 결정",
+      "primaryMethod": "로그의 성질",
+      "decisiveStep": "$\\log_2(3^k)=k\\log_2 3$이다.\n$4\\sqrt2=2^{\\frac52}$이므로 $\\log_3(4\\sqrt2)=\\frac52\\log_3 2$이다.\n두 로그를 곱하면 $\\frac{5k}{2}(\\log_2 3\\cdot\\log_3 2)=\\frac{5k}{2}$이다.\n따라서 $\\frac{5k}{2}=\\frac{15}{2}$에서 $k=3$이다.",
+      "item4slot": {
+        "ordinal": 3,
+        "format": "단일 정답",
+        "given": [
+          278,
+          279
+        ],
+        "goal": [
+          745
+        ],
+        "method": [
+          278,
+          282,
+          277
+        ],
+        "condition": [],
+        "candidates": []
+      },
+      "hold": "",
+      "reason": "신규 유사2 Q3 실제 발문·해설로 직접 분류한 단일 모델 초안"
+    },
+    {
+      "questionUid": 4,
+      "sourceOrdinal": 4,
+      "sourceQid": 4,
+      "before": null,
+      "after": {
+        "curriculum": "2022",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-01",
+        "standardUnit": "지수와 로그",
+        "subUnitKey": "H22-A-01-EXPONENT_LOG",
+        "subUnit": "지수와 로그",
+        "rpmPrimaryRecordId": "H2-M1-RPM-078",
+        "problemTypeKey": "PT_H22A_01_COMMON_LOG",
+        "templateKey": "TPL_H22A_01_COMMON_LOG_078",
+        "crossConceptKeys": [
+          "CC_LOG_RULES",
+          "CC_LOG_DECIMAL_PART"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "sourceQid": 4,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "sourceExamPath": "archive/exams/original/high/h2/1mid/26_순천고_1학기_중간_고2_대수.js",
+          "sourceQid": 4,
+          "existingVariantRefs": [
+            "archive/exams/similar/high/h2/1mid/26_순천고_1학기_중간_고2_대수_유사.js"
+          ],
+          "mode": "ALIVE EXAM_FOLLOWUP",
+          "followupKind": "CONFIRMATION",
+          "profile": "SOURCE_BALANCED",
+          "variationAxis": "자릿수 이동이 아닌 역수 관계에서 상용로그의 진수를 복원"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "수학적 조건과 필요한 수치가 발문에 명시되어 있어 별도 문제 그림 없이 풀이가 유일하게 결정된다.",
+          "solution": "EXEMPT",
+          "solutionReason": "작은칠판 해설의 식 전개와 조건 분석만으로 결정적 풀이가 완결된다."
+        }
+      },
+      "difficultyConfidence": "HIGH",
+      "difficultyReason": "원본 Q4 난도 및 핵심 풀이 잠금; 자릿수 이동이 아닌 역수 관계에서 상용로그의 진수를 복원",
+      "primaryMethod": "상용로그",
+      "decisiveStep": "$2=\\log100$이고 $0.6812=\\log4.8$이다.\n따라서 $\\log\\frac1x=\\log100-\\log4.8=\\log\\frac{100}{4.8}$이다.\n로그의 진수가 같으므로 $\\frac1x=\\frac{100}{4.8}$이다.\n양변에 역수를 취하면 $x=\\frac{4.8}{100}=0.048$이다.",
+      "item4slot": {
+        "ordinal": 4,
+        "format": "단일 정답",
+        "given": [
+          281,
+          278
+        ],
+        "goal": [
+          745
+        ],
+        "method": [
+          278,
+          482,
+          483
+        ],
+        "condition": [
+          396
+        ],
+        "candidates": []
+      },
+      "hold": "",
+      "reason": "신규 유사2 Q4 실제 발문·해설로 직접 분류한 단일 모델 초안"
+    },
+    {
+      "questionUid": 5,
+      "sourceOrdinal": 5,
+      "sourceQid": 5,
+      "before": null,
+      "after": {
+        "curriculum": "2022",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-03",
+        "standardUnit": "로그함수",
+        "subUnitKey": "H22-A-03-LOGARITHMIC_FUNCTION",
+        "subUnit": "로그함수",
+        "rpmPrimaryRecordId": "H2-M1-RPM-088",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+        "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+        "crossConceptKeys": [
+          "CC_PARALLEL_TRANSLATION",
+          "CC_LOG_RULES",
+          "CC_POINT_ON_CURVE_SUBSTITUTION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "sourceQid": 5,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "sourceExamPath": "archive/exams/original/high/h2/1mid/26_순천고_1학기_중간_고2_대수.js",
+          "sourceQid": 5,
+          "existingVariantRefs": [
+            "archive/exams/similar/high/h2/1mid/26_순천고_1학기_중간_고2_대수_유사.js"
+          ],
+          "mode": "ALIVE EXAM_FOLLOWUP",
+          "followupKind": "CONFIRMATION",
+          "profile": "SOURCE_BALANCED",
+          "variationAxis": "축 이동량과 통과점으로 계수를 구한 뒤 차이를 질문"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "로그함수의 수직 점근선과 원점을 발문에 명시해 좌표 그림이 필수 조건이 아니다.",
+          "solution": "EXEMPT",
+          "solutionReason": "모든 그래프 조건 및 좌표 관계가 학생용 판서 풀이에 완결되어 있으므로 운영 JS에서 그림이 필수는 아니다. 추가 시각 보조 plan은 별도 followup 파일에 기록했다."
+        }
+      },
+      "difficultyConfidence": "HIGH",
+      "difficultyReason": "원본 Q5 난도 및 핵심 풀이 잠금; 축 이동량과 통과점으로 계수를 구한 뒤 차이를 질문",
+      "primaryMethod": "로그함수의 그래프",
+      "decisiveStep": "로그함수의 진수 $x+a$가 $0$에 가까워지는 곳이 수직 점근선이다.\n따라서 점근선 $x=-a=-2$에서 $a=2$이다.\n원점이 그래프 위에 있으므로 $0=\\log_2(0+2)+b=1+b$이다.\n따라서 $b=-1$이고 $a-b=2-(-1)=3$이다.",
+      "item4slot": {
+        "ordinal": 5,
+        "format": "단일 정답",
+        "given": [
+          95,
+          210
+        ],
+        "goal": [
+          288
+        ],
+        "method": [
+          278,
+          210,
+          53
+        ],
+        "condition": [
+          356
+        ],
+        "candidates": []
+      },
+      "hold": "",
+      "reason": "신규 유사2 Q5 실제 발문·해설로 직접 분류한 단일 모델 초안"
+    },
+    {
+      "questionUid": 6,
+      "sourceOrdinal": 6,
+      "sourceQid": 6,
+      "before": null,
+      "after": {
+        "curriculum": "2022",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-04",
+        "standardUnit": "삼각함수",
+        "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
+        "subUnit": "삼각함수의 기본",
+        "rpmPrimaryRecordId": "H2-M1-RPM-095",
+        "problemTypeKey": "PT_H22A_04_ANGLE_RADIAN",
+        "templateKey": "TPL_H22A_04_ANGLE_RADIAN_095",
+        "crossConceptKeys": [
+          "CC_RADIAN_DEGREE_CONVERSION",
+          "CC_SYMMETRIC_RAY",
+          "CC_COTERMINAL_ANGLES"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 2,
+        "sourceQid": 6,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "sourceExamPath": "archive/exams/original/high/h2/1mid/26_순천고_1학기_중간_고2_대수.js",
+          "sourceQid": 6,
+          "existingVariantRefs": [
+            "archive/exams/similar/high/h2/1mid/26_순천고_1학기_중간_고2_대수_유사.js"
+          ],
+          "mode": "ALIVE EXAM_FOLLOWUP",
+          "followupKind": "CONFIRMATION",
+          "profile": "SOURCE_BALANCED",
+          "variationAxis": "각도·음각의 동경·축 대칭을 각각 독립적으로 판정"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "수학적 조건과 필요한 수치가 발문에 명시되어 있어 별도 문제 그림 없이 풀이가 유일하게 결정된다.",
+          "solution": "EXEMPT",
+          "solutionReason": "작은칠판 해설의 식 전개와 조건 분석만으로 결정적 풀이가 완결된다."
+        }
+      },
+      "difficultyConfidence": "HIGH",
+      "difficultyReason": "원본 Q6 난도 및 핵심 풀이 잠금; 각도·음각의 동경·축 대칭을 각각 독립적으로 판정",
+      "primaryMethod": "일반각과 호도법",
+      "decisiveStep": "ㄱ. $135^\\circ=\\frac{135\\pi}{180}=\\frac{3\\pi}{4}$이므로 거짓이다.\nㄴ. $-\\frac{7\\pi}{6}+2\\pi=\\frac{5\\pi}{6}$은 제2사분면의 각이므로 참이다.\nㄷ. $\\frac\\pi3=60^\\circ$의 동경을 $y$축에 대칭하면 $120^\\circ$의 동경이다. $240^\\circ$가 아니므로 거짓이다.\n따라서 옳은 것은 ㄴ뿐이다.",
+      "item4slot": {
+        "ordinal": 6,
+        "format": "보기(ㄱㄴㄷ) 판정",
+        "given": [
+          199,
+          149
+        ],
+        "goal": [
+          132
+        ],
+        "method": [
+          198,
+          199,
+          149
+        ],
+        "condition": [],
+        "candidates": []
+      },
+      "hold": "",
+      "reason": "신규 유사2 Q6 실제 발문·해설로 직접 분류한 단일 모델 초안"
+    },
+    {
+      "questionUid": 7,
+      "sourceOrdinal": 7,
+      "sourceQid": 7,
+      "before": null,
+      "after": {
+        "curriculum": "2022",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-04",
+        "standardUnit": "삼각함수",
+        "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
+        "subUnit": "삼각함수의 기본",
+        "rpmPrimaryRecordId": "H2-M1-RPM-098",
+        "problemTypeKey": "PT_H22A_04_TRIG_DEFINITION",
+        "templateKey": "TPL_H22A_04_TRIG_DEFINITION_098",
+        "crossConceptKeys": [
+          "CC_QUADRANTS",
+          "CC_TANGENT_DEFINITION",
+          "CC_COTERMINAL_ANGLES"
+        ],
+        "conditionKeys": [
+          "COND_NEGATIVE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "sourceQid": 7,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "sourceExamPath": "archive/exams/original/high/h2/1mid/26_순천고_1학기_중간_고2_대수.js",
+          "sourceQid": 7,
+          "existingVariantRefs": [
+            "archive/exams/similar/high/h2/1mid/26_순천고_1학기_중간_고2_대수_유사.js"
+          ],
+          "mode": "ALIVE EXAM_FOLLOWUP",
+          "followupKind": "CONFIRMATION",
+          "profile": "SOURCE_BALANCED",
+          "variationAxis": "부호 제약에서 사분면을 역추론하고 일반각을 정규화"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "수학적 조건과 필요한 수치가 발문에 명시되어 있어 별도 문제 그림 없이 풀이가 유일하게 결정된다.",
+          "solution": "EXEMPT",
+          "solutionReason": "작은칠판 해설의 식 전개와 조건 분석만으로 결정적 풀이가 완결된다."
+        }
+      },
+      "difficultyConfidence": "HIGH",
+      "difficultyReason": "원본 Q7 난도 및 핵심 풀이 잠금; 부호 제약에서 사분면을 역추론하고 일반각을 정규화",
+      "primaryMethod": "삼각함수의 뜻",
+      "decisiveStep": "$\\sin\\theta\\cos\\theta>0$이므로 $\\sin\\theta$와 $\\cos\\theta$의 부호가 같다.\n$\\sin\\theta<0$이므로 $\\cos\\theta<0$도 성립한다.\n따라서 $\\theta$의 동경은 제3사분면에 있다.\n보기에서 $\\frac{7\\pi}6=\\pi+\\frac\\pi6$만 제3사분면에 있다.\n$-\\frac\\pi3$과 $\\frac{5\\pi}3$은 제4사분면, $\\frac\\pi4$와 $\\frac{13\\pi}6$은 제1사분면이다.",
+      "item4slot": {
+        "ordinal": 7,
+        "format": "단일 정답",
+        "given": [
+          674,
+          675
+        ],
+        "goal": [
+          199
+        ],
+        "method": [
+          480,
+          149,
+          199
+        ],
+        "condition": [
+          297
+        ],
+        "candidates": []
+      },
+      "hold": "",
+      "reason": "신규 유사2 Q7 실제 발문·해설로 직접 분류한 단일 모델 초안"
+    },
+    {
+      "questionUid": 8,
+      "sourceOrdinal": 8,
+      "sourceQid": 8,
+      "before": null,
+      "after": {
+        "curriculum": "2022",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-01",
+        "standardUnit": "지수와 로그",
+        "subUnitKey": "H22-A-01-EXPONENT_LOG",
+        "subUnit": "지수와 로그",
+        "rpmPrimaryRecordId": "H2-M1-RPM-074",
+        "problemTypeKey": "PT_H22A_01_LOG_DEFINITION",
+        "templateKey": "TPL_H22A_01_LOG_DEFINITION_074",
+        "crossConceptKeys": [
+          "CC_LOG_BASE_CONDITION",
+          "CC_LOG_ARGUMENT_CONDITION",
+          "CC_INEQUALITY_QUADRATIC"
+        ],
+        "conditionKeys": [
+          "COND_INTEGER"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "sourceQid": 8,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "sourceExamPath": "archive/exams/original/high/h2/1mid/26_순천고_1학기_중간_고2_대수.js",
+          "sourceQid": 8,
+          "existingVariantRefs": [
+            "archive/exams/similar/high/h2/1mid/26_순천고_1학기_중간_고2_대수_유사.js"
+          ],
+          "mode": "ALIVE EXAM_FOLLOWUP",
+          "followupKind": "CONFIRMATION",
+          "profile": "SOURCE_BALANCED",
+          "variationAxis": "허용 정수의 합 대신 양끝값의 곱을 판정"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "수학적 조건과 필요한 수치가 발문에 명시되어 있어 별도 문제 그림 없이 풀이가 유일하게 결정된다.",
+          "solution": "EXEMPT",
+          "solutionReason": "작은칠판 해설의 식 전개와 조건 분석만으로 결정적 풀이가 완결된다."
+        }
+      },
+      "difficultyConfidence": "HIGH",
+      "difficultyReason": "원본 Q8 난도 및 핵심 풀이 잠금; 허용 정수의 합 대신 양끝값의 곱을 판정",
+      "primaryMethod": "로그의 뜻",
+      "decisiveStep": "로그의 진수는 양수이므로 $-x^2+4x+12=(6-x)(x+2)>0$이다.\n따라서 $-2<x<6$이고 후보 정수는 $-1,0,1,2,3,4,5$이다.\n로그의 밑은 양수이고 $1$이 아니어야 한다. $|x+1|>0$에서 $x\\ne-1$이고, $|x+1|\\ne1$에서 $x\\ne-2,0$이다.\n조건을 만족하는 정수는 $1,2,3,4,5$이다.\n그중 최솟값은 $1$, 최댓값은 $5$이므로 곱은 $5$이다.",
+      "item4slot": {
+        "ordinal": 8,
+        "format": "단일 정답",
+        "given": [
+          278,
+          279,
+          24
+        ],
+        "goal": [
+          287
+        ],
+        "method": [
+          736,
+          279,
+          69,
+          24
+        ],
+        "condition": [
+          2
+        ],
+        "candidates": []
+      },
+      "hold": "",
+      "reason": "신규 유사2 Q8 실제 발문·해설로 직접 분류한 단일 모델 초안"
+    },
+    {
+      "questionUid": 9,
+      "sourceOrdinal": 9,
+      "sourceQid": 9,
+      "before": null,
+      "after": {
+        "curriculum": "2022",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-02",
+        "standardUnit": "지수함수",
+        "subUnitKey": "H22-A-02-EXPONENTIAL_FUNCTION",
+        "subUnit": "지수함수",
+        "rpmPrimaryRecordId": "H2-M1-RPM-079",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+        "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+        "crossConceptKeys": [
+          "CC_EXPONENTIAL_FUNCTION_GRAPH",
+          "CC_INEQUALITY_QUADRATIC"
+        ],
+        "conditionKeys": [
+          "COND_INTEGER",
+          "COND_UNIVERSAL_INPUTS"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "sourceQid": 9,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "sourceExamPath": "archive/exams/original/high/h2/1mid/26_순천고_1학기_중간_고2_대수.js",
+          "sourceQid": 9,
+          "existingVariantRefs": [
+            "archive/exams/similar/high/h2/1mid/26_순천고_1학기_중간_고2_대수_유사.js"
+          ],
+          "mode": "ALIVE EXAM_FOLLOWUP",
+          "followupKind": "CONFIRMATION",
+          "profile": "SOURCE_BALANCED",
+          "variationAxis": "함수의 값 부등식에서 밑의 구간을 찾고 정수 해의 개수를 질문"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "수학적 조건과 필요한 수치가 발문에 명시되어 있어 별도 문제 그림 없이 풀이가 유일하게 결정된다.",
+          "solution": "EXEMPT",
+          "solutionReason": "작은칠판 해설의 식 전개와 조건 분석만으로 결정적 풀이가 완결된다."
+        }
+      },
+      "difficultyConfidence": "HIGH",
+      "difficultyReason": "원본 Q9 난도 및 핵심 풀이 잠금; 함수의 값 부등식에서 밑의 구간을 찾고 정수 해의 개수를 질문",
+      "primaryMethod": "지수함수의 그래프",
+      "decisiveStep": "밑을 $A=\\frac{(a-3)^2+1}{10}$이라 하면 항상 $A>0$이다.\n모든 $x<0$에서 $A^x>1$이려면 밑이 $0<A<1$이어야 한다.\n$A<1$에서 $(a-3)^2+1<10$, 즉 $(a-3)^2<9$이다.\n정수 $a$에 대하여 $-3<a-3<3$이므로 $a=1,2,3,4,5$이다.\n따라서 모두 $5$개이다.",
+      "item4slot": {
+        "ordinal": 9,
+        "format": "단일 정답",
+        "given": [
+          94,
+          2
+        ],
+        "goal": [
+          129
+        ],
+        "method": [
+          59,
+          293,
+          294
+        ],
+        "condition": [
+          2,
+          241
+        ],
+        "candidates": []
+      },
+      "hold": "",
+      "reason": "신규 유사2 Q9 실제 발문·해설로 직접 분류한 단일 모델 초안"
+    },
+    {
+      "questionUid": 10,
+      "sourceOrdinal": 10,
+      "sourceQid": 10,
+      "before": null,
+      "after": {
+        "curriculum": "2022",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-03",
+        "standardUnit": "로그함수",
+        "subUnitKey": "H22-A-03-LOGARITHMIC_FUNCTION",
+        "subUnit": "로그함수",
+        "rpmPrimaryRecordId": "H2-M1-RPM-091",
+        "problemTypeKey": "PT_H22A_03_LOG_INEQUALITY",
+        "templateKey": "TPL_H22A_03_LOG_INEQUALITY_091",
+        "crossConceptKeys": [
+          "CC_LOG_RULES",
+          "CC_LOG_ARGUMENT_CONDITION",
+          "CC_INEQUALITY_QUADRATIC"
+        ],
+        "conditionKeys": [
+          "COND_INTEGER"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "sourceQid": 10,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "sourceExamPath": "archive/exams/original/high/h2/1mid/26_순천고_1학기_중간_고2_대수.js",
+          "sourceQid": 10,
+          "existingVariantRefs": [
+            "archive/exams/similar/high/h2/1mid/26_순천고_1학기_중간_고2_대수_유사.js"
+          ],
+          "mode": "ALIVE EXAM_FOLLOWUP",
+          "followupKind": "CONFIRMATION",
+          "profile": "SOURCE_BALANCED",
+          "variationAxis": "정수 해의 합 대신 집합의 원소 개수를 결정"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "수학적 조건과 필요한 수치가 발문에 명시되어 있어 별도 문제 그림 없이 풀이가 유일하게 결정된다.",
+          "solution": "EXEMPT",
+          "solutionReason": "작은칠판 해설의 식 전개와 조건 분석만으로 결정적 풀이가 완결된다."
+        }
+      },
+      "difficultyConfidence": "HIGH",
+      "difficultyReason": "원본 Q10 난도 및 핵심 풀이 잠금; 정수 해의 합 대신 집합의 원소 개수를 결정",
+      "primaryMethod": "로그부등식",
+      "decisiveStep": "로그의 진수 조건에서 $x+2>0$, $6-x>0$이므로 $-2<x<6$이다.\n밑 $3>1$이므로 $\\log_3\\{(x+2)(6-x)\\}\\le\\log_39$는 $(x+2)(6-x)\\le9$와 같다.\n전개하면 $-x^2+4x+12\\le9$, 즉 $(x-2)^2\\ge7$이다.\n따라서 $x\\le2-\\sqrt7$ 또는 $x\\ge2+\\sqrt7$이다.\n$2-\\sqrt7$은 $-1$과 $0$ 사이이고 $2+\\sqrt7$은 $4$와 $5$ 사이이다.\n진수 조건과 함께 만족하는 정수는 $x=-1,5$뿐이므로 $2$개이다.",
+      "item4slot": {
+        "ordinal": 10,
+        "format": "단일 정답",
+        "given": [
+          74,
+          2
+        ],
+        "goal": [
+          129
+        ],
+        "method": [
+          736,
+          278,
+          69,
+          294
+        ],
+        "condition": [
+          2
+        ],
+        "candidates": []
+      },
+      "hold": "",
+      "reason": "신규 유사2 Q10 실제 발문·해설로 직접 분류한 단일 모델 초안"
+    },
+    {
+      "questionUid": 11,
+      "sourceOrdinal": 11,
+      "sourceQid": 11,
+      "before": null,
+      "after": {
+        "curriculum": "2022",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-02",
+        "standardUnit": "지수함수",
+        "subUnitKey": "H22-A-02-EXPONENTIAL_FUNCTION",
+        "subUnit": "지수함수",
+        "rpmPrimaryRecordId": "H2-M1-RPM-080",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+        "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+        "crossConceptKeys": [
+          "CC_PARALLEL_TRANSLATION",
+          "CC_POINT_ON_CURVE_SUBSTITUTION",
+          "CC_LOG_RULES"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "REINTERPRETATION",
+        "difficultyBucket": 3,
+        "sourceQid": 11,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "sourceExamPath": "archive/exams/original/high/h2/1mid/26_순천고_1학기_중간_고2_대수.js",
+          "sourceQid": 11,
+          "existingVariantRefs": [
+            "archive/exams/similar/high/h2/1mid/26_순천고_1학기_중간_고2_대수_유사.js"
+          ],
+          "mode": "ALIVE EXAM_FOLLOWUP",
+          "followupKind": "CONFIRMATION",
+          "profile": "SOURCE_BALANCED",
+          "variationAxis": "계수에서 가로·세로 평행이동량을 역으로 복원"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "수학적 조건과 필요한 수치가 발문에 명시되어 있어 별도 문제 그림 없이 풀이가 유일하게 결정된다.",
+          "solution": "EXEMPT",
+          "solutionReason": "작은칠판 해설의 식 전개와 조건 분석만으로 결정적 풀이가 완결된다."
+        }
+      },
+      "difficultyConfidence": "HIGH",
+      "difficultyReason": "원본 Q11 난도 및 핵심 풀이 잠금; 계수에서 가로·세로 평행이동량을 역으로 복원",
+      "primaryMethod": "지수함수의 그래프",
+      "decisiveStep": "오른쪽으로 $h$만큼 이동하면 $x$를 $x-h$로 바꾸므로 $F(x-h)=\\frac{2\\cdot9^h}{9^x}+3$이다.\n위로 $v$만큼 이동한 그래프는 $\\frac{2\\cdot9^h}{9^x}+3+v$이다.\n이를 $G(x)=\\frac{18}{9^x}+8$과 비교하면 $2\\cdot9^h=18$이므로 $9^h=9$, $h=1$이다.\n또 $3+v=8$이므로 $v=5$이다.\n따라서 $h+v=6$이다.",
+      "item4slot": {
+        "ordinal": 11,
+        "format": "단일 정답",
+        "given": [
+          94,
+          210
+        ],
+        "goal": [
+          286
+        ],
+        "method": [
+          210,
+          277,
+          278
+        ],
+        "condition": [
+          356
+        ],
+        "candidates": []
+      },
+      "hold": "",
+      "reason": "신규 유사2 Q11 실제 발문·해설로 직접 분류한 단일 모델 초안"
+    },
+    {
+      "questionUid": 12,
+      "sourceOrdinal": 12,
+      "sourceQid": 12,
+      "before": null,
+      "after": {
+        "curriculum": "2022",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-01",
+        "standardUnit": "지수와 로그",
+        "subUnitKey": "H22-A-01-EXPONENT_LOG",
+        "subUnit": "지수와 로그",
+        "rpmPrimaryRecordId": "H2-M1-RPM-075",
+        "problemTypeKey": "PT_H22A_01_LOG_PROPERTIES",
+        "templateKey": "TPL_H22A_01_LOG_PROPERTIES_075",
+        "crossConceptKeys": [
+          "CC_LOG_RULES",
+          "CC_APPLIED_WORD_PROBLEMS"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 1,
+        "sourceQid": 12,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "sourceExamPath": "archive/exams/original/high/h2/1mid/26_순천고_1학기_중간_고2_대수.js",
+          "sourceQid": 12,
+          "existingVariantRefs": [
+            "archive/exams/similar/high/h2/1mid/26_순천고_1학기_중간_고2_대수_유사.js"
+          ],
+          "mode": "ALIVE EXAM_FOLLOWUP",
+          "followupKind": "CONFIRMATION",
+          "profile": "SOURCE_BALANCED",
+          "variationAxis": "예측된 소음도 차에서 속력비를 복원"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "수학적 조건과 필요한 수치가 발문에 명시되어 있어 별도 문제 그림 없이 풀이가 유일하게 결정된다.",
+          "solution": "EXEMPT",
+          "solutionReason": "작은칠판 해설의 식 전개와 조건 분석만으로 결정적 풀이가 완결된다."
+        }
+      },
+      "difficultyConfidence": "HIGH",
+      "difficultyReason": "원본 Q12 난도 및 핵심 풀이 잠금; 예측된 소음도 차에서 속력비를 복원",
+      "primaryMethod": "로그의 성질",
+      "decisiveStep": "두 차량의 소음도 차를 구하면 상수항 $82$는 서로 소거된다.\n$L_A-L_B=30\\left(\\log\\frac{v_A}{60}-\\log\\frac{v_B}{60}\\right)=30\\log\\frac{v_A}{v_B}$이다.\n이 값이 $30(\\log3-\\log2)=30\\log\\frac32$와 같으므로\n$\\log\\frac{v_A}{v_B}=\\log\\frac32$이다.\n속력은 양수이므로 $\\frac{v_A}{v_B}=\\frac32$이다.",
+      "item4slot": {
+        "ordinal": 12,
+        "format": "단일 정답",
+        "given": [
+          281,
+          650
+        ],
+        "goal": [
+          650
+        ],
+        "method": [
+          299,
+          278,
+          282
+        ],
+        "condition": [
+          396
+        ],
+        "candidates": []
+      },
+      "hold": "",
+      "reason": "신규 유사2 Q12 실제 발문·해설로 직접 분류한 단일 모델 초안"
+    },
+    {
+      "questionUid": 13,
+      "sourceOrdinal": 13,
+      "sourceQid": 13,
+      "before": null,
+      "after": {
+        "curriculum": "2022",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-04",
+        "standardUnit": "삼각함수",
+        "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
+        "subUnit": "삼각함수의 기본",
+        "rpmPrimaryRecordId": "H2-M1-RPM-100",
+        "problemTypeKey": "PT_H22A_04_TRIG_PROPERTIES",
+        "templateKey": "TPL_H22A_04_TRIG_PROPERTIES_100",
+        "crossConceptKeys": [
+          "CC_TRIGONOMETRIC_IDENTITY",
+          "CC_TANGENT_DEFINITION",
+          "CC_QUADRANTS"
+        ],
+        "conditionKeys": [
+          "COND_RESTRICTED_INTERVAL"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "sourceQid": 13,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "sourceExamPath": "archive/exams/original/high/h2/1mid/26_순천고_1학기_중간_고2_대수.js",
+          "sourceQid": 13,
+          "existingVariantRefs": [
+            "archive/exams/similar/high/h2/1mid/26_순천고_1학기_중간_고2_대수_유사.js"
+          ],
+          "mode": "ALIVE EXAM_FOLLOWUP",
+          "followupKind": "CONFIRMATION",
+          "profile": "SOURCE_BALANCED",
+          "variationAxis": "분모에서 사인 공통인수를 추출해 코탄젠트를 구하고 다른 삼각함수 결합을 계산"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "수학적 조건과 필요한 수치가 발문에 명시되어 있어 별도 문제 그림 없이 풀이가 유일하게 결정된다.",
+          "solution": "EXEMPT",
+          "solutionReason": "작은칠판 해설의 식 전개와 조건 분석만으로 결정적 풀이가 완결된다."
+        }
+      },
+      "difficultyConfidence": "HIGH",
+      "difficultyReason": "원본 Q13 난도 및 핵심 풀이 잠금; 분모에서 사인 공통인수를 추출해 코탄젠트를 구하고 다른 삼각함수 결합을 계산",
+      "primaryMethod": "삼각함수의 성질",
+      "decisiveStep": "먼저 $\\cos^2\\theta=1-\\sin^2\\theta$를 분모에 대입한다.\n$1+\\sin\\theta+\\sin^2\\theta-\\cos^2\\theta=\\sin\\theta+2\\sin^2\\theta=\\sin\\theta(1+2\\sin\\theta)$이다.\n분자는 $\\cos\\theta(1+2\\sin\\theta)$이다.\n제2사분면에서 $\\sin\\theta>0$이므로 $1+2\\sin\\theta>0$이고, 주어진 식을 약분하면 $\\cot\\theta=-2$이다.\n즉 $\\cos\\theta=-2\\sin\\theta$이다.\n$\\sin^2\\theta+\\cos^2\\theta=1$에 대입하면 $5\\sin^2\\theta=1$이다.\n제2사분면의 부호를",
+      "item4slot": {
+        "ordinal": 13,
+        "format": "단일 정답",
+        "given": [
+          38,
+          96
+        ],
+        "goal": [
+          131
+        ],
+        "method": [
+          480,
+          42,
+          149,
+          58
+        ],
+        "condition": [
+          297
+        ],
+        "candidates": []
+      },
+      "hold": "",
+      "reason": "신규 유사2 Q13 실제 발문·해설로 직접 분류한 단일 모델 초안"
+    },
+    {
+      "questionUid": 14,
+      "sourceOrdinal": 14,
+      "sourceQid": 14,
+      "before": null,
+      "after": {
+        "curriculum": "2022",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-02",
+        "standardUnit": "지수함수",
+        "subUnitKey": "H22-A-02-EXPONENTIAL_FUNCTION",
+        "subUnit": "지수함수",
+        "rpmPrimaryRecordId": "H2-M1-RPM-083",
+        "problemTypeKey": "PT_H22A_02_EXP_INEQUALITY",
+        "templateKey": "TPL_H22A_02_EXP_INEQUALITY_083",
+        "crossConceptKeys": [
+          "CC_EXPONENTIAL_INEQUALITY",
+          "CC_EXPONENTIAL_GROWTH",
+          "CC_EXPONENTIAL_DECAY"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "sourceQid": 14,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "sourceExamPath": "archive/exams/original/high/h2/1mid/26_순천고_1학기_중간_고2_대수.js",
+          "sourceQid": 14,
+          "existingVariantRefs": [
+            "archive/exams/similar/high/h2/1mid/26_순천고_1학기_중간_고2_대수_유사.js"
+          ],
+          "mode": "ALIVE EXAM_FOLLOWUP",
+          "followupKind": "CONFIRMATION",
+          "profile": "SOURCE_BALANCED",
+          "variationAxis": "수량의 단순 역전보다 두 배 도달이라는 비율 문턱을 추가"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "수학적 조건과 필요한 수치가 발문에 명시되어 있어 별도 문제 그림 없이 풀이가 유일하게 결정된다.",
+          "solution": "EXEMPT",
+          "solutionReason": "작은칠판 해설의 식 전개와 조건 분석만으로 결정적 풀이가 완결된다."
+        }
+      },
+      "difficultyConfidence": "HIGH",
+      "difficultyReason": "원본 Q14 난도 및 핵심 풀이 잠금; 수량의 단순 역전보다 두 배 도달이라는 비율 문턱을 추가",
+      "primaryMethod": "지수부등식",
+      "decisiveStep": "$1024=2^{10}$이고 $4=2^2$, $\\sqrt2=2^{\\frac12}$이다.\n따라서 $A(t)=2^{10-\\frac t4}$, $B(t)=2^{2+\\frac t2}$이다.\n조건 $B(t)\\ge2A(t)$는 $2^{2+\\frac t2}\\ge2^{11-\\frac t4}$와 같다.\n밑 $2>1$이므로 지수를 비교하면 $2+\\frac t2\\ge11-\\frac t4$이다.\n따라서 $\\frac{3t}4\\ge9$, 즉 $t\\ge12$이다.\n$t$는 자연수이므로 가장 빠른 시점은 $12$년 후이다.",
+      "item4slot": {
+        "ordinal": 14,
+        "format": "단일 정답",
+        "given": [
+          738,
+          283
+        ],
+        "goal": [
+          128
+        ],
+        "method": [
+          277,
+          72,
+          111,
+          355
+        ],
+        "condition": [
+          1,
+          28
+        ],
+        "candidates": []
+      },
+      "hold": "",
+      "reason": "신규 유사2 Q14 실제 발문·해설로 직접 분류한 단일 모델 초안"
+    },
+    {
+      "questionUid": 15,
+      "sourceOrdinal": 15,
+      "sourceQid": 15,
+      "before": null,
+      "after": {
+        "curriculum": "2022",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-02",
+        "standardUnit": "지수함수",
+        "subUnitKey": "H22-A-02-EXPONENTIAL_FUNCTION",
+        "subUnit": "지수함수",
+        "rpmPrimaryRecordId": "H2-M1-RPM-086",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+        "crossConceptKeys": [
+          "CC_EXPONENTIAL_FUNCTION_GRAPH",
+          "CC_LOGARITHMIC_FUNCTION_GRAPH",
+          "CC_VARIABLE_SUBSTITUTION"
+        ],
+        "conditionKeys": [
+          "COND_INEQUALITY_CONSTRAINT"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "difficultyBucket": 4,
+        "sourceQid": 15,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "sourceExamPath": "archive/exams/original/high/h2/1mid/26_순천고_1학기_중간_고2_대수.js",
+          "sourceQid": 15,
+          "existingVariantRefs": [
+            "archive/exams/similar/high/h2/1mid/26_순천고_1학기_중간_고2_대수_유사.js"
+          ],
+          "mode": "ALIVE EXAM_FOLLOWUP",
+          "followupKind": "CONFIRMATION",
+          "profile": "SOURCE_BALANCED",
+          "variationAxis": "교점과 이등변 조건으로 좌표를 선택하고 사선 길이 대신 넓이를 요구"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "P의 위치, 곡선식, Q·R의 이동 방향이 모두 정의되어 도식 없이도 좌표가 결정된다.",
+          "solution": "EXEMPT",
+          "solutionReason": "모든 그래프 조건 및 좌표 관계가 학생용 판서 풀이에 완결되어 있으므로 운영 JS에서 그림이 필수는 아니다. 추가 시각 보조 plan은 별도 followup 파일에 기록했다."
+        }
+      },
+      "difficultyConfidence": "HIGH",
+      "difficultyReason": "원본 Q15 난도 및 핵심 풀이 잠금; 교점과 이등변 조건으로 좌표를 선택하고 사선 길이 대신 넓이를 요구",
+      "primaryMethod": "지수함수의 활용",
+      "decisiveStep": "$Q=(q,t)$, $R=(t,r)$로 놓는다. 두 선분이 각각 오른쪽과 위쪽으로 향하고 $PQ=PR$이므로 $q-t=r-t$, 즉 $q=r$이다.\n$Q$는 지수함수 위의 점이므로 $t=25^{-q}$, $q=-\\log_{25}t=-\\frac12\\log_5t$이다.\n$R$는 로그함수 위의 점이므로 $r=-\\log_5(t+\\frac4{25})$이다.\n$q=r$에서 $\\sqrt t=t+\\frac4{25}$를 얻는다.\n$u=\\sqrt t>0$으로 두면 $u^2-u+\\frac4{25}=0$, 즉 $(u-\\frac15)(u-\\frac45)=0$이다.\n따라서 $t=\\frac1{25}$ 또는 $t=\\frac{16}{25}$이다.\n$",
+      "item4slot": {
+        "ordinal": 15,
+        "format": "단일 정답",
+        "given": [
+          94,
+          95,
+          143,
+          159
+        ],
+        "goal": [
+          213
+        ],
+        "method": [
+          282,
+          73,
+          52,
+          42,
+          28
+        ],
+        "condition": [
+          180,
+          307
+        ],
+        "candidates": []
+      },
+      "hold": "",
+      "reason": "신규 유사2 Q15 실제 발문·해설로 직접 분류한 단일 모델 초안"
+    },
+    {
+      "questionUid": 16,
+      "sourceOrdinal": 16,
+      "sourceQid": 16,
+      "before": null,
+      "after": {
+        "curriculum": "2022",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-02",
+        "standardUnit": "지수함수",
+        "subUnitKey": "H22-A-02-EXPONENTIAL_FUNCTION",
+        "subUnit": "지수함수",
+        "rpmPrimaryRecordId": "H2-M1-RPM-084",
+        "problemTypeKey": "PT_H22A_02_EXP_INEQUALITY",
+        "templateKey": "TPL_H22A_02_EXP_INEQUALITY_084",
+        "crossConceptKeys": [
+          "CC_EXPONENT_SUBSTITUTION",
+          "CC_DISCRIMINANT",
+          "CC_ROOT_LOCATION_RESTRICTION"
+        ],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 4,
+        "sourceQid": 16,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "sourceExamPath": "archive/exams/original/high/h2/1mid/26_순천고_1학기_중간_고2_대수.js",
+          "sourceQid": 16,
+          "existingVariantRefs": [
+            "archive/exams/similar/high/h2/1mid/26_순천고_1학기_중간_고2_대수_유사.js"
+          ],
+          "mode": "ALIVE EXAM_FOLLOWUP",
+          "followupKind": "CONFIRMATION",
+          "profile": "SOURCE_BALANCED",
+          "variationAxis": "부등식의 무해 범위 대신 정의역 내 해가 정확히 하나인 경계 매개변수를 판정"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "수학적 조건과 필요한 수치가 발문에 명시되어 있어 별도 문제 그림 없이 풀이가 유일하게 결정된다.",
+          "solution": "EXEMPT",
+          "solutionReason": "작은칠판 해설의 식 전개와 조건 분석만으로 결정적 풀이가 완결된다."
+        }
+      },
+      "difficultyConfidence": "HIGH",
+      "difficultyReason": "원본 Q16 난도 및 핵심 풀이 잠금; 부등식의 무해 범위 대신 정의역 내 해가 정확히 하나인 경계 매개변수를 판정",
+      "primaryMethod": "지수부등식",
+      "decisiveStep": "$t=\\left(\\frac15\\right)^x$로 놓으면 $t>0$이고, $x$와 $t$는 일대일 대응한다.\n주어진 부등식은 $t^2-10kt+50k\\le0$이 된다.\n이차식이 $t>0$에서 해를 정확히 하나 가지려면 양의 위치에서 중근을 가져야 한다. (서로 다른 두 근 사이에서는 해가 무수히 많다.)\n판별식은 $D=(10k)^2-4\\cdot50k=100k(k-2)$이다.\n$D=0$에서 $k=0$ 또는 $k=2$이다.\n$k=0$이면 $t^2\\le0$의 해 $t=0$은 정의역 $t>0$에 없으므로 제외한다.\n$k=2$이면 $(t-10)^2\\le0$의 유일한 해 $t=10>0$이 있고 이에 대응하는 $x$도 하나이다.\n따",
+      "item4slot": {
+        "ordinal": 16,
+        "format": "단일 정답",
+        "given": [
+          72
+        ],
+        "goal": [
+          308
+        ],
+        "method": [
+          52,
+          277,
+          55,
+          293,
+          54
+        ],
+        "condition": [
+          5,
+          140
+        ],
+        "candidates": []
+      },
+      "hold": "",
+      "reason": "신규 유사2 Q16 실제 발문·해설로 직접 분류한 단일 모델 초안"
+    },
+    {
+      "questionUid": 17,
+      "sourceOrdinal": 17,
+      "sourceQid": 17,
+      "before": null,
+      "after": {
+        "curriculum": "2022",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-04",
+        "standardUnit": "삼각함수",
+        "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
+        "subUnit": "삼각함수의 기본",
+        "rpmPrimaryRecordId": "H2-M1-RPM-096",
+        "problemTypeKey": "PT_H22A_04_ANGLE_RADIAN",
+        "templateKey": "TPL_H22A_04_ANGLE_RADIAN_096",
+        "crossConceptKeys": [
+          "EXT-CROSS-RADIAN-SECTOR-ARC-AREA",
+          "CC_RIGHT_TRIANGLE_CRITERION",
+          "CC_DIVISOR_PROPERTY"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER",
+          "COND_RESTRICTED_INTERVAL"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "difficultyBucket": 4,
+        "sourceQid": 17,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "sourceExamPath": "archive/exams/original/high/h2/1mid/26_순천고_1학기_중간_고2_대수.js",
+          "sourceQid": 17,
+          "existingVariantRefs": [
+            "archive/exams/similar/high/h2/1mid/26_순천고_1학기_중간_고2_대수_유사.js"
+          ],
+          "mode": "ALIVE EXAM_FOLLOWUP",
+          "followupKind": "CONFIRMATION",
+          "profile": "SOURCE_BALANCED",
+          "variationAxis": "넓이·호의 합에서 자연수 직각삼각형을 역추론하고 목표를 부채꼴 호로 전환"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "수학적 조건과 필요한 수치가 발문에 명시되어 있어 별도 문제 그림 없이 풀이가 유일하게 결정된다.",
+          "solution": "EXEMPT",
+          "solutionReason": "작은칠판 해설의 식 전개와 조건 분석만으로 결정적 풀이가 완결된다."
+        }
+      },
+      "difficultyConfidence": "HIGH",
+      "difficultyReason": "원본 Q17 난도 및 핵심 풀이 잠금; 넓이·호의 합에서 자연수 직각삼각형을 역추론하고 목표를 부채꼴 호로 전환",
+      "primaryMethod": "일반각과 호도법",
+      "decisiveStep": "$a=BC$, $b=CA$, $c=AB$라 하자. 부채꼴 넓이는 $\\frac12a^2\\theta$, $\\frac12b^2\\theta$, $\\frac12c^2\\theta$이다.\n(가)에서 $a^2+b^2=c^2$이므로 $\\angle C=90^\\circ$이다.\n(나)에서 $\\frac12ab=84$, 즉 $ab=168$이다.\n$a\\le b$인 자연수 인수쌍을 검사하면 $(1,168),(2,84),(3,56),(4,42),(6,28),(7,24),(8,21),(12,14)$이다.\n이 가운데 $a^2+b^2$가 완전제곱수인 것은 $(7,24)$뿐이다. 따라서 $c=25$이다.\n(다)에서 $(7+24+25)\\theta=14\\pi$",
+      "item4slot": {
+        "ordinal": 17,
+        "format": "단일 정답",
+        "given": [
+          158,
+          156,
+          724
+        ],
+        "goal": [
+          215
+        ],
+        "method": [
+          198,
+          195,
+          11,
+          294,
+          700
+        ],
+        "condition": [
+          1,
+          297
+        ],
+        "candidates": []
+      },
+      "hold": "",
+      "reason": "신규 유사2 Q17 실제 발문·해설로 직접 분류한 단일 모델 초안"
+    },
+    {
+      "questionUid": 18,
+      "sourceOrdinal": 18,
+      "sourceQid": 18,
+      "before": null,
+      "after": {
+        "curriculum": "2022",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-01",
+        "standardUnit": "지수와 로그",
+        "subUnitKey": "H22-A-01-EXPONENT_LOG",
+        "subUnit": "지수와 로그",
+        "rpmPrimaryRecordId": "H2-M1-RPM-071",
+        "problemTypeKey": "PT_H22A_01_EXPONENT_LAWS",
+        "templateKey": "TPL_H22A_01_EXPONENT_LAWS_071",
+        "crossConceptKeys": [
+          "CC_CIRCLE_TANGENT_LINE",
+          "CC_AM_GM",
+          "CC_TRIANGLE_AREA"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "DEEP_COMPOSITE",
+        "difficultyBucket": 4,
+        "sourceQid": 18,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "sourceExamPath": "archive/exams/original/high/h2/1mid/26_순천고_1학기_중간_고2_대수.js",
+          "sourceQid": 18,
+          "existingVariantRefs": [
+            "archive/exams/similar/high/h2/1mid/26_순천고_1학기_중간_고2_대수_유사.js"
+          ],
+          "mode": "ALIVE EXAM_FOLLOWUP",
+          "followupKind": "CONFIRMATION",
+          "profile": "SOURCE_BALANCED",
+          "variationAxis": "접선 절편 넓이 최솟값에서 최소 매개변수와 넓이의 비를 요구"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "수학적 조건과 필요한 수치가 발문에 명시되어 있어 별도 문제 그림 없이 풀이가 유일하게 결정된다.",
+          "solution": "EXEMPT",
+          "solutionReason": "작은칠판 해설의 식 전개와 조건 분석만으로 결정적 풀이가 완결된다."
+        }
+      },
+      "difficultyConfidence": "HIGH",
+      "difficultyReason": "원본 Q18 난도 및 핵심 풀이 잠금; 접선 절편 넓이 최솟값에서 최소 매개변수와 넓이의 비를 요구",
+      "primaryMethod": "지수법칙",
+      "decisiveStep": "원 $x^2+y^2=16^{\\frac1n}$의 접선은 $x_1x+y_1y=16^{\\frac1n}=2^{\\frac4n}$이다.\n두 좌표축에서 절편은 각각 $\\frac{2^{4/n}}{x_1}$, $\\frac{2^{4/n}}{y_1}$이다.\n주어진 $x_1y_1>0$을 이용해 삼각형 넓이를 구하면 $S_n=\\frac12\\frac{2^{8/n}}{x_1y_1}=\\frac12\\frac{2^{8/n}}{2^{2-2n}}=2^{2n+\\frac8n-3}$이다.\n산술평균·기하평균 관계에서 $2n+\\frac8n\\ge2\\sqrt{2n\\cdot\\frac8n}=8$이다.\n등호는 $2n=\\frac8n$, 즉 $n=2$일 때 성립하며 자연수 조",
+      "item4slot": {
+        "ordinal": 18,
+        "format": "단일 정답",
+        "given": [
+          152,
+          118,
+          158,
+          403
+        ],
+        "goal": [
+          650
+        ],
+        "method": [
+          463,
+          53,
+          277,
+          284,
+          388
+        ],
+        "condition": [
+          1,
+          128
+        ],
+        "candidates": []
+      },
+      "hold": "",
+      "reason": "신규 유사2 Q18 실제 발문·해설로 직접 분류한 단일 모델 초안"
+    },
+    {
+      "questionUid": 19,
+      "sourceOrdinal": 19,
+      "sourceQid": 19,
+      "before": null,
+      "after": {
+        "curriculum": "2022",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-01",
+        "standardUnit": "지수와 로그",
+        "subUnitKey": "H22-A-01-EXPONENT_LOG",
+        "subUnit": "지수와 로그",
+        "rpmPrimaryRecordId": "H2-M1-RPM-076",
+        "problemTypeKey": "PT_H22A_01_LOG_PROPERTIES",
+        "templateKey": "TPL_H22A_01_LOG_PROPERTIES_076",
+        "crossConceptKeys": [
+          "CC_BASE_CHANGE_FORMULA",
+          "CC_AM_GM",
+          "CC_EXPONENT_SUBSTITUTION"
+        ],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "DEEP_COMPOSITE",
+        "difficultyBucket": 4,
+        "sourceQid": 19,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "sourceExamPath": "archive/exams/original/high/h2/1mid/26_순천고_1학기_중간_고2_대수.js",
+          "sourceQid": 19,
+          "existingVariantRefs": [
+            "archive/exams/similar/high/h2/1mid/26_순천고_1학기_중간_고2_대수_유사.js"
+          ],
+          "mode": "ALIVE EXAM_FOLLOWUP",
+          "followupKind": "CONFIRMATION",
+          "profile": "SOURCE_BALANCED",
+          "variationAxis": "로그 좌표 간격을 바꾸고 최솟값의 로그가 아닌 원래의 곱을 요청"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "수학적 조건과 필요한 수치가 발문에 명시되어 있어 별도 문제 그림 없이 풀이가 유일하게 결정된다.",
+          "solution": "EXEMPT",
+          "solutionReason": "작은칠판 해설의 식 전개와 조건 분석만으로 결정적 풀이가 완결된다."
+        }
+      },
+      "difficultyConfidence": "HIGH",
+      "difficultyReason": "원본 Q19 난도 및 핵심 풀이 잠금; 로그 좌표 간격을 바꾸고 최솟값의 로그가 아닌 원래의 곱을 요청",
+      "primaryMethod": "로그의 성질",
+      "decisiveStep": "직선의 기울기를 $s$라 하면 $\\log_2a=s$, $\\log_2b=9s$, $\\log_2c=10s$이다.\n$r=2^s>0$으로 두면 $a=r$, $b=r^9$, $c=r^{10}$이다.\n$b-a=510$에서 $r^9-r=510$이다. $r>0$에서 함수 $r^9-r$은 $r\\ge1$에서 증가하고, $0<r<1$에서는 음수이다.\n$2^9-2=510$이므로 $r=2$가 유일하다. 따라서 $a=2$, $b=512$, $c=1024$이다.\n$\\log_2(c/256)=\\log_24=2$이다.\n$u=\\log_2p>0$, $v=\\log_2q>0$으로 두면 밑의 변환 공식에 의해 $\\frac1u+\\frac9v=2$이다.\n$(u+v",
+      "item4slot": {
+        "ordinal": 19,
+        "format": "단일 정답",
+        "given": [
+          142,
+          278,
+          627,
+          403
+        ],
+        "goal": [
+          128,
+          287
+        ],
+        "method": [
+          150,
+          52,
+          284,
+          282
+        ],
+        "condition": [
+          396,
+          5
+        ],
+        "candidates": []
+      },
+      "hold": "",
+      "reason": "신규 유사2 Q19 실제 발문·해설로 직접 분류한 단일 모델 초안"
+    },
+    {
+      "questionUid": 20,
+      "sourceOrdinal": 20,
+      "sourceQid": 20,
+      "before": null,
+      "after": {
+        "curriculum": "2022",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-03",
+        "standardUnit": "로그함수",
+        "subUnitKey": "H22-A-03-LOGARITHMIC_FUNCTION",
+        "subUnit": "로그함수",
+        "rpmPrimaryRecordId": "H2-M1-RPM-094",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+        "crossConceptKeys": [
+          "CC_ABSOLUTE_VALUE_GRAPH",
+          "CC_LOGARITHMIC_FUNCTION_GRAPH",
+          "CC_FUNCTION_MONOTONICITY"
+        ],
+        "conditionKeys": [
+          "COND_RESTRICTED_INTERVAL",
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "DEEP_COMPOSITE",
+        "difficultyBucket": 5,
+        "sourceQid": 20,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "sourceExamPath": "archive/exams/original/high/h2/1mid/26_순천고_1학기_중간_고2_대수.js",
+          "sourceQid": 20,
+          "existingVariantRefs": [
+            "archive/exams/similar/high/h2/1mid/26_순천고_1학기_중간_고2_대수_유사.js"
+          ],
+          "mode": "ALIVE EXAM_FOLLOWUP",
+          "followupKind": "CONFIRMATION",
+          "profile": "SOURCE_BALANCED",
+          "variationAxis": "계수 높이를 변형해 꼭짓점 접촉 경계를 만들고 두 교점 개수의 차이를 질문"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "각 함수식과 닫힌 정의역, 교점 계산 규칙이 모두 명시되어 그래프가 필수 입력은 아니다.",
+          "solution": "UNSUPPORTED",
+          "solutionReason": "네 개의 구간 제한 절댓값 V자 그래프와 두 로그함수의 교점 수를 한 그림에 동시에 표현할 엔진 통합 plan을 후속 SVG 라인에서 설계해야 한다. 현재 수식 해설은 완결되어 있다."
+        }
+      },
+      "difficultyConfidence": "HIGH",
+      "difficultyReason": "원본 Q20 난도 및 핵심 풀이 잠금; 계수 높이를 변형해 꼭짓점 접촉 경계를 만들고 두 교점 개수의 차이를 질문",
+      "primaryMethod": "로그함수의 활용",
+      "decisiveStep": "$f_n$은 꼭짓점 $(3,2n+1)$을 가진 산 모양 그래프다. 왼쪽 가지는 $2x+2n-5$, 오른쪽 가지는 $-2x+2n+7$이다.\n$g(x)=\\log_2(x-1)+2$는 $x>1$에서 증가하고 $g(2)=2$, $g(3)=3$이다.\n$n=1$의 왼쪽 가지에서 $t=x-1$로 두면 $1\\le t\\le2$, $f_1=2t-1$, $g=\\log_2t+2$이다. 로그함수의 위로 볼록한 그래프는 $(1,0)$과 $(2,1)$을 이은 선분보다 위에 있으므로 $\\log_2t\\ge t-1$이다. 따라서 $g-f_1\\ge2-t\\ge0$이고 등호는 $t=2$, 즉 꼭짓점 $x=3$에서만 성립한다. 오른쪽에서는 $f_1$이 감소하고",
+      "item4slot": {
+        "ordinal": 20,
+        "format": "단일 정답",
+        "given": [
+          24,
+          95,
+          181
+        ],
+        "goal": [
+          288
+        ],
+        "method": [
+          293,
+          302,
+          111,
+          502
+        ],
+        "condition": [
+          1,
+          302
+        ],
+        "candidates": []
+      },
+      "hold": "",
+      "reason": "신규 유사2 Q20 실제 발문·해설로 직접 분류한 단일 모델 초안"
+    },
+    {
+      "questionUid": 21,
+      "sourceOrdinal": 21,
+      "sourceQid": 21,
+      "before": null,
+      "after": {
+        "curriculum": "2022",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-01",
+        "standardUnit": "지수와 로그",
+        "subUnitKey": "H22-A-01-EXPONENT_LOG",
+        "subUnit": "지수와 로그",
+        "rpmPrimaryRecordId": "H2-M1-RPM-067",
+        "problemTypeKey": "PT_H22A_01_ROOT_REAL",
+        "templateKey": "TPL_H22A_01_ROOT_REAL_067",
+        "crossConceptKeys": [
+          "EXT-CROSS-PRIME-EXPONENT-POWER-MULTIPLE",
+          "CC_LEAST_COMMON_MULTIPLE",
+          "CC_PRIME_FACTORIZATION"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "REINTERPRETATION",
+        "difficultyBucket": 2,
+        "sourceQid": 21,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "sourceExamPath": "archive/exams/original/high/h2/1mid/26_순천고_1학기_중간_고2_대수.js",
+          "sourceQid": 21,
+          "existingVariantRefs": [
+            "archive/exams/similar/high/h2/1mid/26_순천고_1학기_중간_고2_대수_유사.js"
+          ],
+          "mode": "ALIVE EXAM_FOLLOWUP",
+          "followupKind": "CONFIRMATION",
+          "profile": "SOURCE_BALANCED",
+          "variationAxis": "세 거듭제곱근의 곱 대신 한 변수의 제곱이 포함된 혼합 곱의 최소 지수"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "수학적 조건과 필요한 수치가 발문에 명시되어 있어 별도 문제 그림 없이 풀이가 유일하게 결정된다.",
+          "solution": "EXEMPT",
+          "solutionReason": "작은칠판 해설의 식 전개와 조건 분석만으로 결정적 풀이가 완결된다."
+        }
+      },
+      "difficultyConfidence": "HIGH",
+      "difficultyReason": "원본 Q21 난도 및 핵심 풀이 잠금; 세 거듭제곱근의 곱 대신 한 변수의 제곱이 포함된 혼합 곱의 최소 지수",
+      "primaryMethod": "거듭제곱근",
+      "decisiveStep": "$a,b,c>0$이므로 각각 $a=2^{\\frac14}$, $b=3^{\\frac13}$, $c=5^{\\frac15}$이다.\n따라서 $a^2bc=2^{\\frac12}3^{\\frac13}5^{\\frac15}$이다.\n$\\big(a^2bc\\big)^n=2^{\\frac n2}3^{\\frac n3}5^{\\frac n5}$가 자연수가 되려면 소수 $2,3,5$의 지수가 모두 정수여야 한다.\n따라서 $n$은 $2,3,5$의 공배수이며 최솟값은 $\\operatorname{lcm}(2,3,5)=30$이다.\n정답은 $n=30$이다.",
+      "item4slot": {
+        "ordinal": 21,
+        "format": "서술",
+        "given": [
+          21,
+          20
+        ],
+        "goal": [
+          128
+        ],
+        "method": [
+          21,
+          277,
+          14,
+          16
+        ],
+        "condition": [
+          1
+        ],
+        "candidates": []
+      },
+      "hold": "",
+      "reason": "신규 유사2 Q21 실제 발문·해설로 직접 분류한 단일 모델 초안"
+    },
+    {
+      "questionUid": 22,
+      "sourceOrdinal": 22,
+      "sourceQid": 22,
+      "before": null,
+      "after": {
+        "curriculum": "2022",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-03",
+        "standardUnit": "로그함수",
+        "subUnitKey": "H22-A-03-LOGARITHMIC_FUNCTION",
+        "subUnit": "로그함수",
+        "rpmPrimaryRecordId": "H2-M1-RPM-093",
+        "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+        "templateKey": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
+        "crossConceptKeys": [
+          "CC_QUADRATIC_VERTEX_MAXIMUM",
+          "CC_LOGARITHMIC_FUNCTION_GRAPH",
+          "CC_LOG_BASE_CONDITION"
+        ],
+        "conditionKeys": [
+          "COND_RESTRICTED_INTERVAL"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 3,
+        "sourceQid": 22,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "sourceExamPath": "archive/exams/original/high/h2/1mid/26_순천고_1학기_중간_고2_대수.js",
+          "sourceQid": 22,
+          "existingVariantRefs": [
+            "archive/exams/similar/high/h2/1mid/26_순천고_1학기_중간_고2_대수_유사.js"
+          ],
+          "mode": "ALIVE EXAM_FOLLOWUP",
+          "followupKind": "CONFIRMATION",
+          "profile": "SOURCE_BALANCED",
+          "variationAxis": "최댓값의 부호로 로그 밑의 범위를 먼저 판단하는 역설계"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "수학적 조건과 필요한 수치가 발문에 명시되어 있어 별도 문제 그림 없이 풀이가 유일하게 결정된다.",
+          "solution": "EXEMPT",
+          "solutionReason": "작은칠판 해설의 식 전개와 조건 분석만으로 결정적 풀이가 완결된다."
+        }
+      },
+      "difficultyConfidence": "HIGH",
+      "difficultyReason": "원본 Q22 난도 및 핵심 풀이 잠금; 최댓값의 부호로 로그 밑의 범위를 먼저 판단하는 역설계",
+      "primaryMethod": "로그함수의 활용",
+      "decisiveStep": "로그의 진수를 $T=-x^2+4x+21=25-(x-2)^2$라 한다.\n정의역 $[-1,4]$에서 $T$는 $x=2$일 때 최댓값 $25$, $x=-1$일 때 최솟값 $16$을 갖는다.\n따라서 $16\\le T\\le25$이며 로그의 진수 조건을 모두 만족한다.\n$a>1$이면 로그함수는 증가하므로 최댓값이 $\\log_a25>0$이다. 이는 주어진 최댓값 $-2$와 모순된다.\n$0<a<1$이면 로그함수는 감소하므로 최댓값은 진수가 최소인 $T=16$일 때의 $\\log_a16$이다.\n$\\log_a16=-2$에서 $a^{-2}=16$, 즉 $a^2=\\frac1{16}$이다.\n$a>0$이므로 $a=\\frac14$이고 실제로 $0<a",
+      "item4slot": {
+        "ordinal": 22,
+        "format": "서술",
+        "given": [
+          95,
+          101,
+          127
+        ],
+        "goal": [
+          308
+        ],
+        "method": [
+          52,
+          596,
+          736,
+          293
+        ],
+        "condition": [
+          302,
+          396
+        ],
+        "candidates": []
+      },
+      "hold": "",
+      "reason": "신규 유사2 Q22 실제 발문·해설로 직접 분류한 단일 모델 초안"
+    },
+    {
+      "questionUid": 23,
+      "sourceOrdinal": 23,
+      "sourceQid": 23,
+      "before": null,
+      "after": {
+        "curriculum": "2022",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-01",
+        "standardUnit": "지수와 로그",
+        "subUnitKey": "H22-A-01-EXPONENT_LOG",
+        "subUnit": "지수와 로그",
+        "rpmPrimaryRecordId": "H2-M1-RPM-068",
+        "problemTypeKey": "PT_H22A_01_ROOT_REAL",
+        "templateKey": "TPL_H22A_01_ROOT_REAL_068",
+        "crossConceptKeys": [
+          "EXT-CROSS-REAL-ROOT-PARITY-SIGN",
+          "CC_QUADRATIC_FACTORIZATION"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 3,
+        "sourceQid": 23,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "sourceExamPath": "archive/exams/original/high/h2/1mid/26_순천고_1학기_중간_고2_대수.js",
+          "sourceQid": 23,
+          "existingVariantRefs": [
+            "archive/exams/similar/high/h2/1mid/26_순천고_1학기_중간_고2_대수_유사.js"
+          ],
+          "mode": "ALIVE EXAM_FOLLOWUP",
+          "followupKind": "CONFIRMATION",
+          "profile": "SOURCE_BALANCED",
+          "variationAxis": "실근 개수의 상승 시점들의 합 대신 상승 사건의 개수를 구함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "수학적 조건과 필요한 수치가 발문에 명시되어 있어 별도 문제 그림 없이 풀이가 유일하게 결정된다.",
+          "solution": "EXEMPT",
+          "solutionReason": "작은칠판 해설의 식 전개와 조건 분석만으로 결정적 풀이가 완결된다."
+        }
+      },
+      "difficultyConfidence": "HIGH",
+      "difficultyReason": "원본 Q23 난도 및 핵심 풀이 잠금; 실근 개수의 상승 시점들의 합 대신 상승 사건의 개수를 구함",
+      "primaryMethod": "거듭제곱근",
+      "decisiveStep": "$n^2-11n+24=(n-3)(n-8)$이다.\n실수인 $n$제곱근의 개수는 진수가 양수일 때 짝수 $n$이면 $2$개, 홀수 $n$이면 $1$개이다. 진수가 $0$이면 $1$개이고, 음수이면 짝수 $n$에서 $0$개, 홀수 $n$에서 $1$개이다.\n$n=4,5,6,7,8,9,10,11,12$에 대해 차례대로 계산하면 $f(n)$은 $0,1,0,1,1,1,2,1,2$이다.\n$f(n)<f(n+1)$을 만족하는 것은 $n=4,6,9,11$이다.\n따라서 조건을 만족하는 자연수의 개수는 $4$이다.",
+      "item4slot": {
+        "ordinal": 23,
+        "format": "서술",
+        "given": [
+          21,
+          37
+        ],
+        "goal": [
+          129
+        ],
+        "method": [
+          21,
+          42,
+          26,
+          293,
+          294
+        ],
+        "condition": [
+          1,
+          28
+        ],
+        "candidates": []
+      },
+      "hold": "",
+      "reason": "신규 유사2 Q23 실제 발문·해설로 직접 분류한 단일 모델 초안"
+    },
+    {
+      "questionUid": 24,
+      "sourceOrdinal": 24,
+      "sourceQid": 24,
+      "before": null,
+      "after": {
+        "curriculum": "2022",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-02",
+        "standardUnit": "지수함수",
+        "subUnitKey": "H22-A-02-EXPONENTIAL_FUNCTION",
+        "subUnit": "지수함수",
+        "rpmPrimaryRecordId": "H2-M1-RPM-082",
+        "problemTypeKey": "PT_H22A_02_EXP_EQUATION",
+        "templateKey": "TPL_H22A_02_EXP_EQUATION_082",
+        "crossConceptKeys": [
+          "CC_EXPONENT_SUBSTITUTION",
+          "CC_ABSOLUTE_VALUE_EQUATION",
+          "CC_FRACTIONAL_EQUATION"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER",
+          "COND_UPPER_BOUND",
+          "COND_EXACTLY_N_INPUTS_SATISFY_FUNCTION_RELATION"
+        ],
+        "integrationPattern": "DEEP_COMPOSITE",
+        "difficultyBucket": 4,
+        "sourceQid": 24,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "sourceExamPath": "archive/exams/original/high/h2/1mid/26_순천고_1학기_중간_고2_대수.js",
+          "sourceQid": 24,
+          "existingVariantRefs": [
+            "archive/exams/similar/high/h2/1mid/26_순천고_1학기_중간_고2_대수_유사.js"
+          ],
+          "mode": "ALIVE EXAM_FOLLOWUP",
+          "followupKind": "CONFIRMATION",
+          "profile": "SOURCE_BALANCED",
+          "variationAxis": "실근 세 개 조건과 결합된 a+b 상한을 함께 적용하는 경우분류"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "수학적 조건과 필요한 수치가 발문에 명시되어 있어 별도 문제 그림 없이 풀이가 유일하게 결정된다.",
+          "solution": "EXEMPT",
+          "solutionReason": "작은칠판 해설의 식 전개와 조건 분석만으로 결정적 풀이가 완결된다."
+        }
+      },
+      "difficultyConfidence": "HIGH",
+      "difficultyReason": "원본 Q24 난도 및 핵심 풀이 잠금; 실근 세 개 조건과 결합된 a+b 상한을 함께 적용하는 경우분류",
+      "primaryMethod": "지수방정식",
+      "decisiveStep": "$f(x)\\ge b>0$이므로 $s=f(x)$로 두면 $s+\\frac{18}{s}=9$이다.\n$s^2-9s+18=0$, 즉 $(s-3)(s-6)=0$이므로 $f(x)=3$ 또는 $f(x)=6$이다.\n$y=\\left(\\frac15\\right)^x>0$으로 두면 $x$와 $y$는 일대일 대응한다.\n$|y-a|=d$에서 $d<0$이면 해가 없고, $d=0$이면 $y=a$ 한 개, $d>0$이면 $a>d$일 때 두 개, $a\\le d$일 때 한 개다.\n$b=1$이면 $f=3$에서 $d=2$, $f=6$에서 $d=5$이다. 정확히 세 해가 생기려면 $3\\le a\\le5$이며 $a+b\\le10$도 성립하므로 $3$쌍이다.\n$b=2",
+      "item4slot": {
+        "ordinal": 24,
+        "format": "서술",
+        "given": [
+          94,
+          24,
+          62,
+          79
+        ],
+        "goal": [
+          129
+        ],
+        "method": [
+          52,
+          42,
+          105,
+          293,
+          372
+        ],
+        "condition": [
+          1,
+          297,
+          373
+        ],
+        "candidates": []
+      },
+      "hold": "",
+      "reason": "신규 유사2 Q24 실제 발문·해설로 직접 분류한 단일 모델 초안"
+    }
+  ]
+}
