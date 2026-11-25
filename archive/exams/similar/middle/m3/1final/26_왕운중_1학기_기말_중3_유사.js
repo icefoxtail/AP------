@@ -647,7 +647,10 @@ window.questionBank = [
     "rpmPrimaryRecordId": "M3-RPM-043",
     "sourceQid": 14,
     "variationType": "SHAPE_NUMERIC",
-    "problemPlanRef": "archive/exams/similar/middle/m3/1final/26_왕운중_1학기_기말_중3_유사_plans/q14-problem.plan.json"
+    "problemPlanRef": "archive/exams/similar/middle/m3/1final/26_왕운중_1학기_기말_중3_유사_plans/q14-problem.plan.json",
+    "image": "assets/images/26_왕운중_1학기_기말_중3_유사/q14-problem.svg",
+    "imageAlt": "꼭짓점이 x축 위 2에 있고 y축과 -3에서 만나는 위로 볼록한 포물선의 그래프.",
+    "imageSize": "full"
   },
   {
     "id": 15,
@@ -692,7 +695,10 @@ window.questionBank = [
     "rpmPrimaryRecordId": "M3-RPM-043",
     "sourceQid": 15,
     "variationType": "SHAPE_NUMERIC",
-    "problemPlanRef": "archive/exams/similar/middle/m3/1final/26_왕운중_1학기_기말_중3_유사_plans/q15-problem.plan.json"
+    "problemPlanRef": "archive/exams/similar/middle/m3/1final/26_왕운중_1학기_기말_중3_유사_plans/q15-problem.plan.json",
+    "image": "assets/images/26_왕운중_1학기_기말_중3_유사/q15-problem.svg",
+    "imageAlt": "x축과 -3, 3에서 만나고 y축과 -9에서 만나는 아래로 볼록한 포물선의 그래프.",
+    "imageSize": "full"
   },
   {
     "id": 16,

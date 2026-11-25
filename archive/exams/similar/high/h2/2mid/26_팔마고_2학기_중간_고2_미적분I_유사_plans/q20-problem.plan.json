@@ -1,10 +1,24 @@
 {
-  "figureType": "circle_parabola_ray_intersection",
-  "description": "원 x^2+y^2=20과 포물선 y=x^2의 제1사분면 교점 A(2,4) 및 직선 y=tx와의 교점 P, Q",
-  "elements": [
-    "circle x^2+y^2=20",
-    "parabola y=x^2",
-    "intersection A(2,4)",
-    "ray y=tx meeting circle at P and parabola at Q"
-  ]
+  "capability": "ellipse-figure-v1",
+  "conics": [
+    { "id": "c1", "kind": "CIRCLE", "center": ["0", "0"], "rSquared": "20", "label": "x^2+y^2=20" },
+    { "id": "c2", "kind": "PARABOLA", "vertex": ["0", "0"], "p": "1/4", "axis": "Y", "label": "y=x^2" }
+  ],
+  "points": [
+    { "id": "O", "kind": "ORIGIN" },
+    { "id": "A", "kind": "CONIC_CONIC", "curves": ["c1", "c2"], "which": 2 },
+    { "id": "P", "kind": "LINE_CONIC", "line": "l", "curve": "c1", "which": 2 },
+    { "id": "Q", "kind": "LINE_CONIC", "line": "l", "curve": "c2", "which": 2 }
+  ],
+  "lines": [
+    { "id": "l", "slope": "1", "intercept": "0", "label": "y=tx" }
+  ],
+  "caption": "원 x²+y²=20과 곡선 y=x²의 제1사분면 교점 A 및 직선 y=tx와의 교점 P, Q.",
+  "accessibilityDescription": "원점을 중심으로 하는 원 x^2+y^2=20과 원점이 꼭짓점인 포물선 y=x^2이 제1사분면의 점 A에서 만나고, 원점을 지나는 직선 y=tx가 포물선과 Q에서, 원과 P에서 만나는 그림이다.",
+  "sourceQuote": "원 x^2+y^2=20과 곡선 y=x^2이 제1사분면에서 만나는 점을 A라 하자. 직선 y=tx가 원, 곡선과 제1사분면에서 만나는 점을 각각 P, Q라 하자.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "원 x^2+y^2=20과 포물선 y=x^2의 제1사분면 교점 A", "mappedTo": ["conics", "A"] },
+    { "id": "c2", "condition": "직선 y=tx와 원, 포물선의 제1사분면 교점 P, Q", "mappedTo": ["l", "P", "Q"] }
+  ],
+  "newVisualInformation": ["원, 포물선, 직선 y=tx의 위치 관계와 교점 A, P, Q를 나타낸 문제 그림이다."]
 }

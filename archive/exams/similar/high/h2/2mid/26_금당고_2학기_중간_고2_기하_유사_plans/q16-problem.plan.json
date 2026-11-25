@@ -1,11 +1,31 @@
 {
-  "family": "coordinate-geometry-v1",
-  "caption": "네 점 P, Q, R, S에서 만나는 포물선 C1과 쌍곡선 C2, 일직선 위의 S, F, Q",
-  "sourceQuote": "포물선 C1과 쌍곡선 C2가 서로 다른 네 점에서 만나고 그 네 점을",
-  "objects": [
-    "parabola C1 focus A",
-    "hyperbola C2 foci F, F'",
-    "intersections P, Q, R, S",
-    "line SFQ"
-  ]
+  "capability": "ellipse-figure-v1",
+  "conics": [
+    { "id": "c1", "kind": "PARABOLA", "vertex": ["(81*sqrt(133))/133", "0"], "p": "(8*sqrt(133))/19", "axis": "X", "label": "C_1" },
+    { "id": "c2", "kind": "HYPERBOLA", "center": ["0", "0"], "aSquared": "45", "bSquared": "720/19", "transverse": "X", "label": "C_2" }
+  ],
+  "points": [
+    { "id": "O", "kind": "ORIGIN" },
+    { "id": "A", "kind": "FOCUS", "curve": "c1" },
+    { "id": "F", "kind": "FOCUS", "side": 1, "curve": "c2" },
+    { "id": "F'", "kind": "FOCUS", "side": -1, "curve": "c2" },
+    { "id": "Q", "kind": "CONIC_CONIC", "curves": ["c1", "c2"], "which": 1 },
+    { "id": "R", "kind": "CONIC_CONIC", "curves": ["c1", "c2"], "which": 2 },
+    { "id": "P", "kind": "CONIC_CONIC", "curves": ["c1", "c2"], "which": 3 },
+    { "id": "S", "kind": "CONIC_CONIC", "curves": ["c1", "c2"], "which": 4 }
+  ],
+  "lines": [
+    { "id": "l", "through": ["Q", "S"] }
+  ],
+  "polygons": [
+    { "id": "q1", "points": ["R", "Q", "P", "S"], "fill": "LIGHT" }
+  ],
+  "caption": "네 점 P, Q, R, S에서 만나는 포물선 C₁과 쌍곡선 C₂ 및 한 직선 위의 세 점 S, F, Q.",
+  "accessibilityDescription": "포물선 C₁과 두 초점 F, F'을 갖는 쌍곡선 C₂가 네 점 P, Q, R, S에서 만나고, 세 점 S, F, Q가 한 직선 위에 있으며 사각형 RQPS의 내부가 칠해져 있다.",
+  "sourceQuote": "포물선 C1과 쌍곡선 C2가 서로 다른 네 점에서 만나고... 세 점 S, F, Q가 한 직선 위에 있고... 사각형 RQPS",
+  "sourceConditions": [
+    { "id": "c1", "condition": "포물선 C1과 쌍곡선 C2가 네 점 P, Q, R, S에서 만나며 세 점 S, F, Q가 일직선이다.", "mappedTo": ["conics", "P", "Q", "R", "S", "l"] },
+    { "id": "c2", "condition": "사각형 RQPS", "mappedTo": ["q1"] }
+  ],
+  "newVisualInformation": ["주어진 조건을 만족하는 포물선 C₁, 쌍곡선 C₂와 등변사다리꼴 RQPS의 위치를 나타낸 문제 그림이다."]
 }

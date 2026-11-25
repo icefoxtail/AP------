@@ -1,13 +1,24 @@
 {
-  "family": "coordinate-geometry-v1",
-  "caption": "포물선 y^2=12x 위의 점 P(3,6) 접선에 수직이고 초점 A(3,0)을 지나는 직선 l과 교점 Q, R",
-  "sourceQuote": "포물선 y^2=12x 위의 점 P(3,6)에서의 접선에 수직이고 점 A(3,0)을 지나는 직선",
-  "objects": [
-    "parabola y^2=12x",
-    "P(3,6)",
-    "A(3,0)",
-    "line l: x+y=3",
-    "Q",
-    "R"
-  ]
+  "capability": "ellipse-figure-v1",
+  "conic": { "kind": "PARABOLA", "vertex": ["0", "0"], "p": "3", "axis": "X" },
+  "points": [
+    { "id": "O", "kind": "ORIGIN" },
+    { "id": "A", "kind": "FOCUS", "coordinates": true },
+    { "id": "P", "kind": "ON_CONIC", "x": "3", "branch": "POS", "coordinates": true },
+    { "id": "Q", "kind": "LINE_CONIC", "line": "l", "which": 1 },
+    { "id": "R", "kind": "LINE_CONIC", "line": "l", "which": 2 },
+    { "id": "H", "kind": "FOOT", "from": "P", "onto": "l", "rightAngle": true, "label": false }
+  ],
+  "lines": [
+    { "id": "l", "slope": "-1", "intercept": "3", "label": "l" },
+    { "id": "t", "through": ["P", "H"], "tangent": true, "dashed": true }
+  ],
+  "caption": "포물선 y²=12x 위의 점 P(3, 6)에서의 접선에 수직이고 점 A(3, 0)을 지나는 직선 l과 교점 Q, R.",
+  "accessibilityDescription": "원점이 꼭짓점인 포물선 y^2=12x 위의 점 P(3, 6)에서의 점선 접선과 이에 수직이고 초점 A(3, 0)을 지나는 직선 l이 포물선과 두 점 Q, R에서 만나는 그림이다.",
+  "sourceQuote": "포물선 y^2=12x 위의 점 P(3,6)에서의 접선에 수직이고 점 A(3,0)을 지나는 직선 l과 교점 Q, R",
+  "sourceConditions": [
+    { "id": "c1", "condition": "포물선 y^2=12x 위의 점 P(3,6)에서의 접선과 이에 수직이며 A(3,0)을 지나는 직선 l", "mappedTo": ["conic", "P", "A", "l", "t", "H"] },
+    { "id": "c2", "condition": "직선 l과 포물선의 교점 Q, R", "mappedTo": ["Q", "R"] }
+  ],
+  "newVisualInformation": ["접선과 직선 l의 수직 관계 및 포물선과의 두 교점 Q, R의 배치를 나타낸 문제 그림이다."]
 }

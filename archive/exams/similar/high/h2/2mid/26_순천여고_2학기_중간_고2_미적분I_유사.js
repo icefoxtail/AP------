@@ -985,6 +985,9 @@ window.questionBank = [
     "rpmPrimaryRecordId": "H2-M2-RPM-061",
     "sourceQid": null,
     "variationType": "NUMERIC",
-    "problemPlanRef": "archive/exams/similar/high/h2/2mid/26_순천여고_2학기_중간_고2_미적분I_유사_plans/q23-problem.plan.json"
+    "problemPlanRef": "archive/exams/similar/high/h2/2mid/26_순천여고_2학기_중간_고2_미적분I_유사_plans/q23-problem.plan.json",
+    "image": "assets/images/26_순천여고_2학기_중간_고2_미적분I_유사/q23-problem.svg",
+    "imageAlt": "정사각형 OABC와 직선 y=tx로 나누어진 두 영역 중 점 A를 포함하는 영역.",
+    "imageSize": "full"
   }
 ];

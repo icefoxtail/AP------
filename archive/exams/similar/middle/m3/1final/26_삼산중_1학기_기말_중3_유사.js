@@ -685,7 +685,10 @@ window.questionBank = [
     "rpmPrimaryRecordId": "M3-RPM-043",
     "sourceQid": 15,
     "variationType": "SHAPE_NUMERIC",
-    "problemPlanRef": "archive/exams/similar/middle/m3/1final/26_삼산중_1학기_기말_중3_유사_plans/q15-problem.plan.json"
+    "problemPlanRef": "archive/exams/similar/middle/m3/1final/26_삼산중_1학기_기말_중3_유사_plans/q15-problem.plan.json",
+    "image": "assets/images/26_삼산중_1학기_기말_중3_유사/q15-problem.svg",
+    "imageAlt": "이차함수 그래프와 x축과의 교점 A(-2, 0), C(4, 0), y축과의 교점 (0, -8), 꼭짓점 B로 이루어진 삼각형 ABC.",
+    "imageSize": "full"
   },
   {
     "id": 16,
@@ -928,7 +931,10 @@ window.questionBank = [
     "rpmPrimaryRecordId": "M3-RPM-043",
     "sourceQid": 20,
     "variationType": "SHAPE_NUMERIC",
-    "problemPlanRef": "archive/exams/similar/middle/m3/1final/26_삼산중_1학기_기말_중3_유사_plans/q20-problem.plan.json"
+    "problemPlanRef": "archive/exams/similar/middle/m3/1final/26_삼산중_1학기_기말_중3_유사_plans/q20-problem.plan.json",
+    "image": "assets/images/26_삼산중_1학기_기말_중3_유사/q20-problem.svg",
+    "imageAlt": "위로 볼록하고 대칭축이 x=1이며 x축과 점 (-2, 0)에서 만나는 이차함수의 그래프.",
+    "imageSize": "full"
   },
   {
     "id": 21,
@@ -1053,7 +1059,10 @@ window.questionBank = [
     "rpmPrimaryRecordId": "M3-RPM-043",
     "sourceQid": 23,
     "variationType": "SHAPE_NUMERIC",
-    "problemPlanRef": "archive/exams/similar/middle/m3/1final/26_삼산중_1학기_기말_중3_유사_plans/q23-problem.plan.json"
+    "problemPlanRef": "archive/exams/similar/middle/m3/1final/26_삼산중_1학기_기말_중3_유사_plans/q23-problem.plan.json",
+    "image": "assets/images/26_삼산중_1학기_기말_중3_유사/q23-problem.svg",
+    "imageAlt": "x축과 -2, 2에서 만나고 y축과 8에서 만나는 위로 볼록한 포물선의 그래프.",
+    "imageSize": "full"
   },
   {
     "id": 24,

@@ -1,9 +1,43 @@
 {
-  "figureType": "parabola_secant_perpendicular_triangles",
-  "description": "y=x^2-3과 y=tx 교점 P1, P2 및 수선의 y절편 Q1, Q2",
-  "elements": [
-    "parabola y=x^2-3",
-    "secant y=tx through O meeting at P1, P2",
-    "perpendicular lines at P1, P2 meeting y-axis at Q1, Q2"
-  ]
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      { "coefficients": ["-3", "0", "1"] }
+    ],
+    "sourceDomain": { "kind": "ALL_REALS" },
+    "formula": "x^2-3",
+    "domain": [-3.5, 3.5],
+    "viewport": [-3.5, 4, -5.5, 6.5],
+    "requiredPoints": [
+      { "id": "V", "x": 0, "y": -3, "marker": "NONE" }
+    ],
+    "axisTickValues": { "x": [], "y": [] },
+    "overlays": {
+      "lines": [
+        { "id": "l", "slope": "1/2", "intercept": "0", "label": "y=tx" }
+      ],
+      "points": [
+        { "id": "O", "x": "0", "y": "0" },
+        { "id": "P1", "curveX": "2" },
+        { "id": "P2", "curveX": "-3/2", "unnamed": true },
+        { "id": "Q1", "axis": "y", "value": "5" },
+        { "id": "Q2", "axis": "y", "value": "-15/4" }
+      ],
+      "segments": [
+        { "id": "s1", "from": "P1", "to": "Q1" },
+        { "id": "s2", "from": "P2", "to": "Q2" }
+      ],
+      "rightAngles": [
+        { "at": "P1", "from": ["O", "Q1"] },
+        { "at": "P2", "from": ["O", "Q2"] }
+      ],
+      "callouts": [
+        { "id": "cP2", "point": "P2", "text": "P_2", "direction": "SW", "labelKind": "MATH" }
+      ]
+    }
+  },
+  "pointNames": { "O": "O", "P1": "P_1", "Q1": "Q_1", "Q2": "Q_2" },
+  "caption": "곡선 y=x²-3과 직선 y=tx의 교점 P₁, P₂ 및 각 점에서 직선에 수직인 직선의 y절편 Q₁, Q₂.",
+  "accessibilityDescription": "포물선 y=x^2-3과 원점을 지나는 직선 y=tx가 제1사분면의 P_1과 제3사분면의 P_2에서 만나고, 각 교점에서 직선 y=tx에 수직으로 그은 선분이 y축과 만나는 점 Q_1, Q_2가 직각 표시와 함께 그려져 있다."
 }

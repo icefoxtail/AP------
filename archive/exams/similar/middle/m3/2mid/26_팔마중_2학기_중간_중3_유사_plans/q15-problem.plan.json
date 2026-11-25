@@ -1,12 +1,158 @@
 {
-  "capability": "SOURCE_PLANE_FIGURE_v1",
-  "circle": {
-    "center": "O",
-    "diameter": "AB",
-    "chord": "CD",
-    "perpAt": "M",
-    "AM": 12,
-    "MB": 4
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "0" },
+            { "kind": "integer", "value": "0" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "-8" },
+            { "kind": "integer", "value": "0" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "8" },
+            { "kind": "integer", "value": "0" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "4" },
+            { "kind": "integer", "value": "0" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Mp",
+        "op": "TRANSLATE_POINT",
+        "inputs": ["M"],
+        "args": {
+          "dx": { "kind": "integer", "value": "0" },
+          "dy": { "kind": "integer", "value": "1" }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": ["O"],
+        "args": {
+          "radius": { "kind": "integer", "value": "8" }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lCD",
+        "op": "LINE_THROUGH",
+        "inputs": ["M", "Mp"],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "intCD",
+        "op": "INTERSECTION",
+        "inputs": ["lCD", "circ"],
+        "args": {},
+        "outputType": "POINT_SET",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SELECT_POINT",
+        "inputs": ["intCD"],
+        "args": {},
+        "branch": {
+          "kind": "SIDE_OF_ORIENTED_LINE",
+          "refs": ["A", "B"],
+          "sign": 1
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SELECT_POINT",
+        "inputs": ["intCD"],
+        "args": {},
+        "branch": {
+          "kind": "SIDE_OF_ORIENTED_LINE",
+          "refs": ["A", "B"],
+          "sign": -1
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
   },
-  "caption": "원 O의 지름 AB와 수직인 현 CD의 교점 M (AM=12cm, MB=4cm)"
+  "displayPoints": ["O", "A", "B", "C", "D", "M"],
+  "displayLines": [],
+  "displayCircles": ["circ"],
+  "displaySegments": [
+    { "id": "sAM", "refs": ["A", "M"] },
+    { "id": "sMB", "refs": ["M", "B"] },
+    { "id": "sCM", "refs": ["C", "M"] },
+    { "id": "sMD", "refs": ["M", "D"] }
+  ],
+  "rightAngles": [
+    { "id": "rM", "refs": ["C", "M", "A"] }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      { "id": "eAM", "ownerSegment": "sAM", "text": "12", "unit": "cm", "ownership": "NEAREST", "factRole": "GIVEN" },
+      { "id": "eMB", "ownerSegment": "sMB", "text": "4", "unit": "cm", "ownership": "NEAREST", "factRole": "GIVEN" }
+    ],
+    "facts": [
+      { "kind": "ON_CIRCLE", "circle": "circ", "points": ["A", "B", "C", "D"] }
+    ]
+  },
+  "coordinateCanvas": { "width": 560, "height": 480 },
+  "caption": "원 O의 지름 AB와 현 CD가 점 M에서 수직으로 만나고 AM=12 cm, MB=4 cm인 그림.",
+  "accessibilityDescription": "중심이 O인 원에서 지름 AB와 현 CD가 점 M에서 수직으로 만나며, 선분 AM의 길이는 12 cm, 선분 MB의 길이는 4 cm로 표시되어 있다.",
+  "sourceQuote": "원 O의 지름 AB와 현 CD가 점 M에서 수직으로 만난다. AM=12 cm, MB=4 cm",
+  "sourceConditions": [
+    { "id": "c1", "condition": "지름 AB와 현 CD가 점 M에서 수직으로 만난다.", "mappedTo": ["sAB", "sCD", "rM"] },
+    { "id": "c2", "condition": "AM=12 cm, MB=4 cm", "mappedTo": ["dAM", "dMB"] }
+  ],
+  "newVisualInformation": ["원 O 위의 지름 AB와 수직인 현 CD, 치수선 AM=12 cm 및 MB=4 cm을 표시한 문제 그림이다."]
 }

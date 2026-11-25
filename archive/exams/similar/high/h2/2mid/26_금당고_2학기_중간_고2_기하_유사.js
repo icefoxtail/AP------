@@ -593,7 +593,10 @@ window.questionBank = [
     "rpmPrimaryRecordId": "H2-GEO-RPM-047",
     "sourceQid": null,
     "variationType": "NUMERIC",
-    "problemPlanRef": "archive/exams/similar/high/h2/2mid/26_금당고_2학기_중간_고2_기하_유사_plans/q13-problem.plan.json"
+    "problemPlanRef": "archive/exams/similar/high/h2/2mid/26_금당고_2학기_중간_고2_기하_유사_plans/q13-problem.plan.json",
+    "image": "assets/images/26_금당고_2학기_중간_고2_기하_유사/q13-problem.svg",
+    "imageAlt": "타원 x²/a²+y²/b²=1과 포물선 y²=3x가 제4사분면의 점 P(4, -2√3)에서 만나는 그림.",
+    "imageSize": "full"
   },
   {
     "id": 14,
@@ -640,7 +643,10 @@ window.questionBank = [
     "rpmPrimaryRecordId": "H2-GEO-RPM-047",
     "sourceQid": null,
     "variationType": "NUMERIC",
-    "problemPlanRef": "archive/exams/similar/high/h2/2mid/26_금당고_2학기_중간_고2_기하_유사_plans/q14-problem.plan.json"
+    "problemPlanRef": "archive/exams/similar/high/h2/2mid/26_금당고_2학기_중간_고2_기하_유사_plans/q14-problem.plan.json",
+    "image": "assets/images/26_금당고_2학기_중간_고2_기하_유사/q14-problem.svg",
+    "imageAlt": "포물선 y²=12x 위의 점 P(3, 6)에서의 접선에 수직이고 점 A(3, 0)을 지나는 직선 l과 교점 Q, R.",
+    "imageSize": "full"
   },
   {
     "id": 15,
@@ -731,7 +737,10 @@ window.questionBank = [
     "rpmPrimaryRecordId": "H2-GEO-RPM-039",
     "sourceQid": null,
     "variationType": "NUMERIC",
-    "problemPlanRef": "archive/exams/similar/high/h2/2mid/26_금당고_2학기_중간_고2_기하_유사_plans/q16-problem.plan.json"
+    "problemPlanRef": "archive/exams/similar/high/h2/2mid/26_금당고_2학기_중간_고2_기하_유사_plans/q16-problem.plan.json",
+    "image": "assets/images/26_금당고_2학기_중간_고2_기하_유사/q16-problem.svg",
+    "imageAlt": "네 점 P, Q, R, S에서 만나는 포물선 C₁과 쌍곡선 C₂ 및 한 직선 위의 세 점 S, F, Q.",
+    "imageSize": "full"
   },
   {
     "id": 17,
@@ -854,7 +863,10 @@ window.questionBank = [
     "rpmPrimaryRecordId": "H2-GEO-RPM-039",
     "sourceQid": null,
     "variationType": "NUMERIC",
-    "problemPlanRef": "archive/exams/similar/high/h2/2mid/26_금당고_2학기_중간_고2_기하_유사_plans/q19-problem.plan.json"
+    "problemPlanRef": "archive/exams/similar/high/h2/2mid/26_금당고_2학기_중간_고2_기하_유사_plans/q19-problem.plan.json",
+    "image": "assets/images/26_금당고_2학기_중간_고2_기하_유사/q19-problem.svg",
+    "imageAlt": "원점 O가 꼭짓점이고 A가 초점인 포물선과 외부의 점 B, 포물선 위의 점 P를 잇는 경로 B-P-A.",
+    "imageSize": "full"
   },
   {
     "id": 20,
@@ -898,6 +910,9 @@ window.questionBank = [
     "rpmPrimaryRecordId": "H2-GEO-RPM-047",
     "sourceQid": null,
     "variationType": "NUMERIC",
-    "problemPlanRef": "archive/exams/similar/high/h2/2mid/26_금당고_2학기_중간_고2_기하_유사_plans/q20-problem.plan.json"
+    "problemPlanRef": "archive/exams/similar/high/h2/2mid/26_금당고_2학기_중간_고2_기하_유사_plans/q20-problem.plan.json",
+    "image": "assets/images/26_금당고_2학기_중간_고2_기하_유사/q20-problem.svg",
+    "imageAlt": "y축 위의 점 A에서 타원 x²/32+y²/8=1에 그은 두 접선의 접점 P, Q와 x축 교점 R, S 및 마름모 OPAQ.",
+    "imageSize": "full"
   }
 ];

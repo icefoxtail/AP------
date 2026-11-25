@@ -483,7 +483,10 @@ window.questionBank = [
     "rpmPrimaryRecordId": "M3-RPM-061",
     "sourceQid": 10,
     "variationType": "NUMERIC",
-    "problemPlanRef": "archive/exams/similar/middle/m3/2mid/26_팔마중_2학기_중간_중3_유사_plans/q10-problem.plan.json"
+    "problemPlanRef": "archive/exams/similar/middle/m3/2mid/26_팔마중_2학기_중간_중3_유사_plans/q10-problem.plan.json",
+    "image": "assets/images/26_팔마중_2학기_중간_중3_유사/q10-problem.svg",
+    "imageAlt": "각 B=90°, 각 A=30°, AC=16인 직각삼각형 ABC에서 수선 BD와 DE를 내린 그림.",
+    "imageSize": "full"
   },
   {
     "id": 11,
@@ -724,7 +727,10 @@ window.questionBank = [
     "rpmPrimaryRecordId": "M3-RPM-067",
     "sourceQid": 15,
     "variationType": "NUMERIC",
-    "problemPlanRef": "archive/exams/similar/middle/m3/2mid/26_팔마중_2학기_중간_중3_유사_plans/q15-problem.plan.json"
+    "problemPlanRef": "archive/exams/similar/middle/m3/2mid/26_팔마중_2학기_중간_중3_유사_plans/q15-problem.plan.json",
+    "image": "assets/images/26_팔마중_2학기_중간_중3_유사/q15-problem.svg",
+    "imageAlt": "원 O의 지름 AB와 현 CD가 점 M에서 수직으로 만나고 AM=12 cm, MB=4 cm인 그림.",
+    "imageSize": "full"
   },
   {
     "id": 16,
@@ -820,7 +826,10 @@ window.questionBank = [
     "rpmPrimaryRecordId": "M3-RPM-067",
     "sourceQid": 17,
     "variationType": "NUMERIC",
-    "problemPlanRef": "archive/exams/similar/middle/m3/2mid/26_팔마중_2학기_중간_중3_유사_plans/q17-problem.plan.json"
+    "problemPlanRef": "archive/exams/similar/middle/m3/2mid/26_팔마중_2학기_중간_중3_유사_plans/q17-problem.plan.json",
+    "image": "assets/images/26_팔마중_2학기_중간_중3_유사/q17-problem.svg",
+    "imageAlt": "점 P에서 원 O에 그은 두 접선 PA, PB와 PA=8 cm, 각 APB=60°를 나타낸 그림.",
+    "imageSize": "full"
   },
   {
     "id": 18,

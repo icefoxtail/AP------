@@ -1,77 +1,39 @@
 {
-  "family": "composite-two-panel-v1",
-  "caption": "x=0과 x=1에서 불연속인 두 함수 y=f(x)와 y=g(x)의 그래프",
-  "sourceQuote": "두 함수 f(x), g(x)의 그래프가 다음 그림과 같을 때",
-  "panels": [
-    {
-      "title": "y=f(x)",
-      "pieces": [
-        {
-          "domain": "(-inf,0)",
-          "expr": "x+2",
-          "openEnd": true
-        },
-        {
-          "domain": "(0,1)",
-          "expr": "-2*x",
-          "openStart": true,
-          "openEnd": true
-        },
-        {
-          "domain": "(1,inf)",
-          "expr": "x+1",
-          "openStart": true
-        }
-      ],
-      "isolatedPoints": [
-        [
-          0,
-          0
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "layout": "STACKED",
+    "xWindow": [-2, 2],
+    "functionName": "f",
+    "pieces": [
+      { "coefficients": ["2", "1"], "domain": [-2, 0], "end": "OPEN" },
+      { "coefficients": ["0", "-2"], "domain": [0, 1], "end": "OPEN" },
+      { "coefficients": ["1", "1"], "domain": [1, 2], "start": "OPEN" }
+    ],
+    "jumpValues": [
+      { "x": "1", "y": "0" }
+    ],
+    "requiredPoints": [],
+    "axisTickValues": { "x": ["-1", "1"], "y": ["-2", "2"] },
+    "referenceCurves": [
+      {
+        "id": "g",
+        "name": "g",
+        "pieces": [
+          { "coefficients": ["0", "-2", "-1"], "domain": [-2, 0], "end": "OPEN" },
+          { "coefficients": ["0", "2"], "domain": [0, 1], "start": "OPEN" },
+          { "coefficients": ["-3", "0", "1"], "domain": [1, 2], "start": "OPEN" }
         ],
-        [
-          1,
-          0
-        ]
-      ],
-      "viewport": [
-        -2.5,
-        2.5,
-        -2.5,
-        3
-      ]
-    },
-    {
-      "title": "y=g(x)",
-      "pieces": [
-        {
-          "domain": "(-inf,0)",
-          "expr": "-(x+1)^2+1",
-          "openEnd": true
-        },
-        {
-          "domain": "(0,1]",
-          "expr": "2*x",
-          "openStart": true,
-          "closedEnd": true
-        },
-        {
-          "domain": "(1,inf)",
-          "expr": "x^2-3",
-          "openStart": true
-        }
-      ],
-      "isolatedPoints": [
-        [
-          0,
-          -2
-        ]
-      ],
-      "viewport": [
-        -2.5,
-        2.5,
-        -2.5,
-        3
-      ]
-    }
-  ]
+        "jumpValues": [
+          { "x": "0", "y": "-2" }
+        ],
+        "requiredPoints": [
+          { "id": "Vg", "x": -1, "y": 1 }
+        ],
+        "axisTickValues": { "x": ["-1", "1"], "y": ["-2", "2"] }
+      }
+    ]
+  },
+  "caption": "x=0과 x=1에서 불연속인 두 함수 y=f(x)와 y=g(x)의 그래프.",
+  "accessibilityDescription": "위쪽에는 x=0, x=1에서 열린 점과 닫힌 점이 표시된 구간별 일차함수 f(x)의 그래프가, 아래쪽에는 같은 x 구간 위에 구간별 이차·일차함수 g(x)의 그래프가 놓여 있다."
 }

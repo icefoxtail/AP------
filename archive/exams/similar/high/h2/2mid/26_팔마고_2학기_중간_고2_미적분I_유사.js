@@ -845,7 +845,10 @@ window.questionBank = [
     "rpmPrimaryRecordId": "H2-M2-RPM-061",
     "sourceQid": null,
     "variationType": "NUMERIC",
-    "problemPlanRef": "archive/exams/similar/high/h2/2mid/26_팔마고_2학기_중간_고2_미적분I_유사_plans/q20-problem.plan.json"
+    "problemPlanRef": "archive/exams/similar/high/h2/2mid/26_팔마고_2학기_중간_고2_미적분I_유사_plans/q20-problem.plan.json",
+    "image": "assets/images/26_팔마고_2학기_중간_고2_미적분I_유사/q20-problem.svg",
+    "imageAlt": "원 x²+y²=20과 곡선 y=x²의 제1사분면 교점 A 및 직선 y=tx와의 교점 P, Q.",
+    "imageSize": "full"
   },
   {
     "id": 21,
