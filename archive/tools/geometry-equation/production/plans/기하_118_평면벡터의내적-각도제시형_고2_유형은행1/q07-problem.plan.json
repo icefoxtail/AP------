@@ -1,0 +1,357 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "C"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "D"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "E"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G1",
+        "op": "CENTROID",
+        "inputs": [
+          "O",
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G2",
+        "op": "CENTROID",
+        "inputs": [
+          "O",
+          "E",
+          "F"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G1",
+    "G2"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "sFA",
+      "refs": [
+        "F",
+        "A"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sOC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "sOE",
+      "refs": [
+        "O",
+        "E"
+      ]
+    },
+    {
+      "id": "sOF",
+      "refs": [
+        "O",
+        "F"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 560
+  },
+  "caption": "반지름 3인 원 안의 정육각형과 삼각형 OBC·OEF의 두 무게중심",
+  "accessibilityDescription": "정육각형 ABCDEF는 A가 꼭대기이며 반지름 3의 원에 내접한다. 두 삼각형 OBC, OEF의 무게중심 G₁,G₂가 표시되고 A에서 두 무게중심으로 향하는 벡터 화살표가 있다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원 O의 반지름은 3이고 정육각형의 연속 꼭짓점은 60도 회전으로 계산한다.",
+      "mappedTo": [
+        "O",
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "k",
+        "dR"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "G1=(O+B+C)/3과 G2=(O+E+F)/3은 실제 CENTROID이며 A에서 이들로 향하는 벡터를 그린다.",
+      "mappedTo": [
+        "G1",
+        "G2",
+        "vAG1",
+        "vAG2"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "다문자 아래첨자 점 G₁,G₂는 pointNames로 표기한다. 벡터 이름의 vec(AG₁) 표기는 엔진의 두 글자 점 ID 제한으로 ENGINE_CAPABILITY_PENDING이며 화살표만 구현한다.",
+      "mappedTo": [
+        "G1",
+        "G2",
+        "vAG1",
+        "vAG2"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "정육각형 외접원과 OBC/OEF 삼각형",
+    "G₁,G₂ 무게중심과 실제 두 화살표"
+  ],
+  "displayCircles": [
+    "k"
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dR",
+        "from": "O",
+        "to": "A",
+        "label": "3",
+        "side": "RIGHT",
+        "style": "BAR",
+        "factRole": "GIVEN"
+      }
+    ],
+    "vectors": [
+      {
+        "id": "vAG1",
+        "from": "A",
+        "to": "G1"
+      },
+      {
+        "id": "vAG2",
+        "from": "A",
+        "to": "G2"
+      }
+    ]
+  },
+  "pointNames": {
+    "G1": "G₁",
+    "G2": "G₂"
+  }
+}

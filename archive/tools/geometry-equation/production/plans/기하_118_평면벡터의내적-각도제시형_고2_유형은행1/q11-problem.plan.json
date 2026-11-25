@@ -1,0 +1,196 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "H"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAH",
+      "refs": [
+        "A",
+        "H"
+      ]
+    },
+    {
+      "id": "sHB",
+      "refs": [
+        "H",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCH",
+      "refs": [
+        "C",
+        "H"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 560
+  },
+  "caption": "삼각형 ABC와 C에서 AB로 내린 수선 CH, AH:HB=1:2",
+  "accessibilityDescription": "삼각형 밑변 AB의 내부 H에 꼭짓점 C에서 수선 CH를 내렸다. H에는 직각 표시가 있고 AH와 HB의 비 1:2를 H 아래에 표시한다. 풀어서 얻는 숫자는 그림에 없다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "H는 AB의 내부에 있고 AH:HB=1:2를 실제 작도 비율과 비 표식으로 대응시킨다.",
+      "mappedTo": [
+        "A",
+        "H",
+        "B",
+        "ratio"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "CH는 AB에 실제 수직이며 H에 90도 마커가 있다.",
+      "mappedTo": [
+        "C",
+        "H",
+        "sCH",
+        "rH"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "AB=6, CH=5의 모델은 원문 내적12와 넓이15를 만족하지만 6,5는 문제 그림에 표시하지 않는다.",
+      "mappedTo": [
+        "A",
+        "B",
+        "C",
+        "H"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "발 H의 직각 표식",
+    "AH:HB=1:2의 도형 인접 비 라벨"
+  ],
+  "planeMarks": {
+    "textLabels": [
+      {
+        "id": "ratio",
+        "at": "H",
+        "text": "AH:HB=1:2",
+        "anchor": "S",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rH",
+      "refs": [
+        "C",
+        "H",
+        "B"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,160 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 560
+  },
+  "caption": "∠B가 직각이고 AC=13, BC=5인 삼각형 ABC",
+  "accessibilityDescription": "삼각형 ABC의 B 꼭짓점에 직각 표식이 있으며 빗변 AC에는 13, 변 BC에는 5가 치수선으로 표시된다. 나머지 변의 길이는 쓰지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AB=12, BC=5, AC=13인 대표 직각삼각형으로 ∠ABC=90°가 성립한다.",
+      "mappedTo": [
+        "A",
+        "B",
+        "C",
+        "rB"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "원문에 주어진 AC=13과 BC=5만 그림에 수치 표시한다.",
+      "mappedTo": [
+        "d13",
+        "d5"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "B 직각 마커",
+    "13·5 길이 치수선"
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "d13",
+        "from": "A",
+        "to": "C",
+        "label": "13",
+        "side": "LEFT",
+        "style": "BAR",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "d5",
+        "from": "B",
+        "to": "C",
+        "label": "5",
+        "side": "RIGHT",
+        "style": "BAR",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rB",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,283 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "12",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "16",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "sub",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "72",
+                  "denominator": "25"
+                },
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "rational",
+                      "numerator": "4",
+                      "denominator": "25"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "24"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "expression",
+              "op": "add",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "96",
+                  "denominator": "25"
+                },
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "rational",
+                      "numerator": "3",
+                      "denominator": "25"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "24"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "C",
+    "A",
+    "B"
+  ],
+  "displaySegments": [
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 560
+  },
+  "caption": "원점 O에서 C(3,4) 중심 반지름 1인 원에 그은 접선 OB",
+  "accessibilityDescription": "좌표평면에서 C(3,4)를 중심으로 반지름 1인 원이 있고 선분 OC의 가까운 원 교점이 A이다. O에서 원에 그은 접선 OB가 접점 B에서 반지름 BC와 수직이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원은 중심 C(3,4), 반지름 1로 정확히 구성하고 C 좌표를 그림에 표기한다.",
+      "mappedTo": [
+        "C",
+        "k"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "A=(12/5,16/5)는 OC와 원의 가까운 쪽 교점이고 선분 OA,AC를 그린다.",
+      "mappedTo": [
+        "O",
+        "A",
+        "C",
+        "sOA",
+        "sAC"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "B의 좌표는 |CB|=1, (B-O)·(B-C)=0을 만족하며 OB가 실제 접선이다.",
+      "mappedTo": [
+        "B",
+        "sOB",
+        "sBC",
+        "rB"
+      ]
+    },
+    {
+      "id": "c4",
+      "condition": "질문의 내적 결과는 쓰지 않으며 원문 두 벡터는 화살표로 표현한다.",
+      "mappedTo": [
+        "vOA",
+        "vOB"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "중심 C 좌표·진짜 접점 B·직각 표시",
+    "내적 벡터 OA/OB의 화살표"
+  ],
+  "displayCircles": [
+    "k"
+  ],
+  "planeMarks": {
+    "vectors": [
+      {
+        "id": "vOA",
+        "from": "O",
+        "to": "A",
+        "label": "vec(OA)",
+        "side": "LEFT",
+        "labelAt": 0.55
+      },
+      {
+        "id": "vOB",
+        "from": "O",
+        "to": "B",
+        "label": "vec(OB)",
+        "side": "LEFT",
+        "labelAt": 0.55
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rB",
+      "refs": [
+        "O",
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "coordinateLabels": [
+    "C"
+  ]
+}

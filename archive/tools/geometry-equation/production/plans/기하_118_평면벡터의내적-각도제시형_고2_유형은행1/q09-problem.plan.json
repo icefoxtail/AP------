@@ -1,0 +1,88 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "PARABOLA",
+    "vertex": [
+      "0",
+      "0"
+    ],
+    "p": "3",
+    "axis": "X"
+  },
+  "points": [
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    },
+    {
+      "id": "F",
+      "kind": "FOCUS"
+    },
+    {
+      "id": "P",
+      "kind": "ON_CONIC",
+      "x": "5",
+      "branch": "POS"
+    },
+    {
+      "id": "H",
+      "kind": "FOOT",
+      "from": "P",
+      "onto": "d",
+      "rightAngle": true
+    }
+  ],
+  "lines": [
+    {
+      "id": "d",
+      "role": "DIRECTRIX",
+      "label": "d"
+    }
+  ],
+  "segments": [
+    {
+      "id": "sPF",
+      "from": "P",
+      "to": "F"
+    },
+    {
+      "id": "sPH",
+      "from": "P",
+      "to": "H"
+    }
+  ],
+  "caption": "포물선 y²=12x와 초점 F, 준선 d:x=-3, 점 P에서 준선까지 수선 PH",
+  "accessibilityDescription": "좌표평면에서 오른쪽으로 열린 포물선, 초점 F, 왼쪽의 준선 d(x=-3)가 보인다. 포물선 위 P에서 F 및 준선에 내린 발 H까지 선분이 이어지고 PH는 준선에 수직이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "y²=12x의 p=3, 초점 F=(3,0), 준선 d:x=-3을 정확한 곡선과 선으로 그린다. 준선 식 x=-3의 글자 전체 표기는 엔진 ELLIPSE_LABEL_NO_ROOM으로 ENGINE_CAPABILITY_PENDING이며 짧은 d만 붙인다.",
+      "mappedTo": [
+        "conic",
+        "F",
+        "d"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "P=(5,2sqrt(15))는 포물선 위에 놓이며 H는 준선에 대한 실제 FOOT이고 수선 표시가 있다. P의 x좌표 답 5는 라벨로 표시하지 않는다.",
+      "mappedTo": [
+        "P",
+        "H",
+        "sPH"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "원문 PF,PH 벡터의 기하학적 경로는 표시된다. conic 세그먼트에 화살촉·벡터 이름을 넣는 API는 없어 ENGINE_CAPABILITY_PENDING이다.",
+      "mappedTo": [
+        "sPF",
+        "sPH"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "포물선·초점·준선 실제 곡선 구성",
+    "준선 위 H의 수선과 PF·PH 경로"
+  ]
+}
