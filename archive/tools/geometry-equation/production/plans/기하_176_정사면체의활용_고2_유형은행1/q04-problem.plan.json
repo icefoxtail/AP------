@@ -1,0 +1,38 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "kind": "REGULAR_POLYHEDRON",
+      "faces": 4,
+      "side": 6,
+      "names": "BCDA"
+    }
+  ],
+  "dims": [
+    {
+      "edge": "BC"
+    }
+  ],
+  "caption": "기하 176 유형 q04: 한 변 길이 6인 정사면체. 면 ABC 내접원은 아직 표시하지 못함.",
+  "solidCaption": {
+    "text": "기하 176 입체"
+  },
+  "accessibilityDescription": "한 변 길이 6인 정사면체. 면 ABC 내접원은 아직 표시하지 못함.",
+  "sourceQuote": "[그림: 한 모서리의 길이가 6인 정사면체 ABCD의 면 ABC에 내접원이 그려져 있는 입체도형]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "정사면체 ABCD 한 모서리 6",
+      "mappedTo": "solids[0];dims[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "삼각형 ABC의 내접원",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:TETRAHEDRON_FACE_INCIRCLE"
+    }
+  ],
+  "newVisualInformation": [
+    "공식 엔진으로 그릴 수 있는 기본 구조까지만 표시. 미지원 필수 요소는 ENGINE_CAPABILITY_PENDING 인계"
+  ]
+}

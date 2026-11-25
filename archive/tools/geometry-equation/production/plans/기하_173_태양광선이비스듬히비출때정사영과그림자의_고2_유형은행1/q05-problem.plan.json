@@ -1,0 +1,127 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "space": {
+    "points": [
+      {
+        "id": "O",
+        "at": [
+          0,
+          0,
+          0
+        ],
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "P",
+        "at": [
+          "2*sqrt(3)",
+          0,
+          2
+        ],
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "Q",
+        "at": [
+          "4*sqrt(3)/3",
+          0,
+          0
+        ],
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "T",
+        "at": [
+          6,
+          0,
+          0
+        ],
+        "hideName": true,
+        "hideDot": true
+      }
+    ],
+    "segments": [
+      {
+        "from": "O",
+        "to": "P",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "P",
+        "to": "Q",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "O",
+        "to": "Q",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "Q",
+        "to": "T",
+        "style": "AUTO",
+        "role": "REF"
+      }
+    ]
+  },
+  "marks": {
+    "angles": [
+      {
+        "refs": [
+          "P",
+          "O",
+          "Q"
+        ],
+        "arcs": 1,
+        "label": "30^\\circ"
+      },
+      {
+        "refs": [
+          "P",
+          "Q",
+          "T"
+        ],
+        "arcs": 2,
+        "label": "60^\\circ"
+      }
+    ]
+  },
+  "caption": "기하 173 유형 q05: 넓이 12인 차광막의 오른쪽 위 30도 기울기와 태양의 60도 광선, 차광막 바로 아래 지면 그림자.",
+  "solidCaption": {
+    "text": "햇빛과 그림자"
+  },
+  "accessibilityDescription": "넓이 12인 차광막의 오른쪽 위 30도 기울기와 태양의 60도 광선, 차광막 바로 아래 지면 그림자.",
+  "sourceQuote": "[그림: 수평인 운동장 위의 한 점에서 오른쪽 위(태양 쪽)로 차광막이 운동장과 30도의 각을 이루며 비스듬히 세워져 있다. 오른쪽 위에서 왼쪽 아래로 태양 빛이 운동장과 60도의 각을 이루며 비추어, 차광막의 바로 아래쪽 운동장에 그림자가 생겨 있다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "차광막은 지면 O에서 태양 방향인 오른쪽 위로 30도",
+      "mappedTo": "space.segments[0];marks.angles[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "햇빛은 오른쪽 위에서 왼쪽 아래, 지면과 60도",
+      "mappedTo": "space.segments[1,3];marks.angles[1]"
+    },
+    {
+      "id": "c3",
+      "condition": "차광막 아래의 그림자",
+      "mappedTo": "space.segments[2]"
+    },
+    {
+      "id": "c4",
+      "condition": "차광막의 실제 면적 12는 발문 수치로 측면 선분 길이는 임의 비례 모형",
+      "mappedTo": "caption"
+    }
+  ],
+  "newVisualInformation": [
+    "넓이 12인 차광막의 오른쪽 위 30도 기울기와 태양의 60도 광선, 차광막 바로 아래 지면 그림자."
+  ]
+}

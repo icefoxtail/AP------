@@ -1,0 +1,41 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "kind": "SPHERE",
+      "radius": 9
+    }
+  ],
+  "dims": [
+    {
+      "radius": "center"
+    }
+  ],
+  "caption": "기하 173 유형 q03: 반지름 9인 구. 60도 빛과 지면 그림자는 렌더되지 않은 기본 모형.",
+  "solidCaption": {
+    "text": "기하 173 입체"
+  },
+  "accessibilityDescription": "반지름 9인 구. 60도 빛과 지면 그림자는 렌더되지 않은 기본 모형.",
+  "sourceQuote": "[그림: 반지름의 길이가 9cm인 구 모양의 농구공이 지면에 놓여 있고, 평행한 햇빛이 지면과 60도의 각을 이루며 비추어 지면에 그림자가 생겨 있다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "농구공 반지름 9",
+      "mappedTo": "solids[0].radius;dims[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "지면과 햇빛 각 60도",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:SUN_RAYS_ANGLE"
+    },
+    {
+      "id": "c3",
+      "condition": "지면 위 타원 그림자",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:SPHERE_CAST_ELLIPSE"
+    }
+  ],
+  "newVisualInformation": [
+    "공식 엔진으로 그릴 수 있는 기본 구조까지만 표시. 미지원 필수 요소는 ENGINE_CAPABILITY_PENDING 인계"
+  ]
+}

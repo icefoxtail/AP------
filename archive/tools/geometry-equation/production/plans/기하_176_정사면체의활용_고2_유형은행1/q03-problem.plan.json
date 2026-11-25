@@ -1,0 +1,71 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "kind": "REGULAR_POLYHEDRON",
+      "faces": 4,
+      "side": 6,
+      "names": "BCDA",
+      "points": [
+        {
+          "id": "H",
+          "at": {
+            "base": "centroid"
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "A",
+      "to": "H",
+      "style": "DASHED",
+      "role": "REF"
+    },
+    {
+      "from": "C",
+      "to": "H",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "D",
+      "to": "H",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "dims": [
+    {
+      "edge": "BC"
+    }
+  ],
+  "caption": "기하 176 유형 q03: 정사면체 꼭짓점 A의 수선발 H(밑면 BCD의 무게중심)와 삼각형 CDH.",
+  "solidCaption": {
+    "text": "기하 176 입체"
+  },
+  "accessibilityDescription": "정사면체 꼭짓점 A의 수선발 H(밑면 BCD의 무게중심)와 삼각형 CDH.",
+  "sourceQuote": "[그림: 한 모서리의 길이가 6인 정사면체 ABCD에서 꼭짓점 A에서 밑면 BCD에 내린 수선의 발 H와 밑면 위의 삼각형 CDH가 표시되어 있음]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "정사면체 ABCD 모서리 길이 6",
+      "mappedTo": "solids[0];dims[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "H는 A의 면 BCD 위 정사영, BCD 무게중심",
+      "mappedTo": "solids[0].points[0];segments[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "밑면 삼각형 CDH",
+      "mappedTo": "segments[1..2];solids[0].faces"
+    }
+  ],
+  "newVisualInformation": [
+    "정사면체 꼭짓점 A의 수선발 H(밑면 BCD의 무게중심)와 삼각형 CDH."
+  ]
+}

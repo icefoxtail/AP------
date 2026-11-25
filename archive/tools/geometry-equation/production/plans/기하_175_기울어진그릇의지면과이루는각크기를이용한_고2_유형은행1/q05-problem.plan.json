@@ -1,0 +1,94 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "space": {
+    "points": [
+      {
+        "id": "O",
+        "at": [
+          0,
+          0,
+          4
+        ],
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "P",
+        "at": [
+          0,
+          0,
+          6
+        ],
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "Q",
+        "at": [
+          3.4641016151377544,
+          0,
+          2
+        ],
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "R",
+        "at": [
+          0,
+          0,
+          0
+        ],
+        "hideName": true,
+        "hideDot": true
+      }
+    ],
+    "segments": [
+      {
+        "from": "O",
+        "to": "P",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "O",
+        "to": "Q",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "O",
+        "to": "R",
+        "style": "AUTO",
+        "role": "REF"
+      }
+    ]
+  },
+  "caption": "기하 175 유형 q05: 두 원판 중심축의 개략 보조선만 표시. 원판과 정사영 타원은 아직 지원하지 않음.",
+  "solidCaption": {
+    "text": "그림자 도식"
+  },
+  "accessibilityDescription": "두 원판 중심축의 개략 보조선만 표시. 원판과 정사영 타원은 아직 지원하지 않음.",
+  "sourceQuote": "[그림: 평면 $\\alpha$ 위에 반지름이 $2$이고 중심 사이의 거리가 $2$인 평행한 두 원판이 직선 $l$에 수직으로 고정되어 있고, 직선 $l$이 평면 $\\alpha$와 $30^\\circ$의 각을 이루며 위에서 평면 $\\alpha$에 수직인 방향으로 태양광선이 비추는 모습]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "반지름 2인 두 평행 원판, 중심 간 거리 2",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:TWO_TILTED_CIRCULAR_DISCS"
+    },
+    {
+      "id": "c2",
+      "condition": "두 중심을 지나는 l이 α와 30도이고 각 원판에 수직",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:DISC_AXIS_PLANE_ANGLE"
+    },
+    {
+      "id": "c3",
+      "condition": "수직 햇빛이 만든 두 타원 그림자의 합집합",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:TWO_ELLIPSE_SHADOW_UNION"
+    }
+  ],
+  "newVisualInformation": [
+    "공식 엔진으로 그릴 수 있는 기본 구조까지만 표시. 미지원 필수 요소는 ENGINE_CAPABILITY_PENDING 인계"
+  ]
+}
