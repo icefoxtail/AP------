@@ -1,0 +1,73 @@
+{
+ "capability": "sqrt-affine-spike-v1",
+ "graphPlan": {
+  "family": "sqrt-affine",
+  "radicand": [
+   "3",
+   "1"
+  ],
+  "amplitude": "1",
+  "sign": 1,
+  "offset": "-2",
+  "sourceDomain": {
+   "kind": "NATURAL_SQRT_AFFINE"
+  },
+  "domain": [
+   -3,
+   8
+  ],
+  "viewport": [
+   -5,
+   10,
+   -4,
+   4
+  ],
+  "hideLabels": [
+   "formula"
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "requiredPoints": [],
+  "overlays": {
+   "points": [
+    {
+     "id": "P",
+     "curveX": "1",
+     "unnamed": true
+    },
+    {
+     "id": "S",
+     "curveX": "-3",
+     "unnamed": true
+    }
+   ],
+   "callouts": [
+    {
+     "id": "cP",
+     "point": "P",
+     "text": "(1,0)",
+     "labelKind": "MATH"
+    },
+    {
+     "id": "cS",
+     "point": "S",
+     "text": "(-3,-2)",
+     "labelKind": "MATH"
+    }
+   ]
+  }
+ },
+ "caption": "끝점이 (-3,-2)이고 점 (1,0)을 지나 오른쪽 위로 뻗는 무리함수의 그래프",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "끝점 (-3,-2), 점 (1,0)",
+   "mappedTo": [
+    "graphPlan.overlays"
+   ]
+  }
+ ],
+ "newVisualInformation": []
+}

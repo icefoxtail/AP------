@@ -1,0 +1,91 @@
+{
+ "capability": "multi-curve-figure-v1",
+ "graphPlan": {
+  "family": "multi-curve",
+  "viewport": [
+   0,
+   9,
+   0,
+   9
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "curves": [
+   {
+    "id": "f",
+    "kind": "Y_OF_X",
+    "coefficients": [
+     "8",
+     "-3",
+     "1/2"
+    ],
+    "domain": [
+     "3",
+     "6"
+    ],
+    "color": "BLUE",
+    "label": "y=f(x)"
+   },
+   {
+    "id": "g",
+    "inverseOf": "f",
+    "color": "WARM",
+    "label": "y=g(x)"
+   },
+   {
+    "id": "yx",
+    "kind": "LINE",
+    "coefficients": [
+     "0",
+     "1"
+    ],
+    "domain": [
+     "0",
+     "9"
+    ],
+    "style": "DASHED",
+    "label": "y=x"
+   }
+  ],
+  "overlays": {
+   "points": [
+    {
+     "id": "T",
+     "x": "4",
+     "y": "4",
+     "coordinates": true,
+     "labelDirection": "SE"
+    },
+    {
+     "id": "S",
+     "x": "3",
+     "y": "7/2",
+     "unnamed": true
+    }
+   ],
+   "callouts": [
+    {
+     "id": "cS",
+     "point": "S",
+     "text": "(3,7/2)",
+     "labelKind": "MATH"
+    }
+   ]
+  }
+ },
+ "caption": "x≥3에서 f(x)=x²/2-3x+a는 증가하므로 y=f(x)와 역함수 y=f⁻¹(x)의 그래프는 직선 y=x에 대하여 대칭이고, 접점은 y=x 위에 있다. f(x)=x에서 x²-8x+2a=0이 중근을 가지므로 a=8이고 접점은 T(4,4)이다. 따라서 답은 ①이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "x≥3에서 f와 f의 역함수 그래프가 접한다",
+   "mappedTo": [
+    "graphPlan"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "직선 y=x와 접점 T(4,4)"
+ ]
+}

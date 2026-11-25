@@ -1,0 +1,251 @@
+{
+ "capability": "construction-spike-v1",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "SOURCE_COORDINATE_AXES_v1",
+   "unit": "source-coordinate",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "id": "O",
+    "op": "NORMALIZATION_ORIGIN",
+    "inputs": [],
+    "args": {},
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "U",
+    "op": "NORMALIZATION_AXIS",
+    "inputs": [],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "1"
+     }
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "A",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "1"
+      },
+      {
+       "kind": "integer",
+       "value": "5"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "B",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "4"
+      },
+      {
+       "kind": "integer",
+       "value": "3"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "C",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "2"
+      },
+      {
+       "kind": "integer",
+       "value": "1"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "D",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "5"
+      },
+      {
+       "kind": "integer",
+       "value": "-1"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "E",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "4"
+      },
+      {
+       "kind": "integer",
+       "value": "5"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "F",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "5"
+      },
+      {
+       "kind": "integer",
+       "value": "1"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   }
+  ]
+ },
+ "axisTickValues": {
+  "x": [],
+  "y": []
+ },
+ "displayCircles": [],
+ "displayLines": [],
+ "displaySegments": [
+  {
+   "id": "sAB",
+   "refs": [
+    "A",
+    "B"
+   ],
+   "arrow": "END"
+  },
+  {
+   "id": "sCD",
+   "refs": [
+    "C",
+    "D"
+   ],
+   "arrow": "END"
+  },
+  {
+   "id": "sAE",
+   "refs": [
+    "A",
+    "E"
+   ],
+   "dashed": true
+  },
+  {
+   "id": "sEB",
+   "refs": [
+    "E",
+    "B"
+   ],
+   "dashed": true
+  },
+  {
+   "id": "sCF",
+   "refs": [
+    "C",
+    "F"
+   ],
+   "dashed": true
+  },
+  {
+   "id": "sFD",
+   "refs": [
+    "F",
+    "D"
+   ],
+   "dashed": true
+  }
+ ],
+ "displayPoints": [
+  "A",
+  "B",
+  "C",
+  "D",
+  "E",
+  "F"
+ ],
+ "hiddenPointNames": [
+  "E",
+  "F"
+ ],
+ "unmarkedPointNames": [
+  "E",
+  "F"
+ ],
+ "coordinateLabels": [
+  "A",
+  "B",
+  "C",
+  "D"
+ ],
+ "planeMarks": {
+  "expressionLabels": [
+   {
+    "id": "ex",
+    "ownerSegment": "sAE",
+    "text": "3"
+   },
+   {
+    "id": "ey",
+    "ownerSegment": "sEB",
+    "text": "2"
+   }
+  ]
+ },
+ "coordinateCanvas": {
+  "width": 480,
+  "height": 400
+ },
+ "caption": "점 A(1,5)를 점 B(4,3)으로 옮기는 평행이동은 x축 방향으로 +3, y축 방향으로 −2만큼 옮기는 것이다. 같은 평행이동으로 점 C(a,1)이 점 D(5,b)로 옮겨지므로 a+3=5, 1−2=b에서 a=2, b=−1이고 C(2,1), D(5,−1)이다. 따라서 a+b=1이고 답은 ①이다.",
+ "sourceConditions": [
+  "점 (1,5)가 점 (4,3)으로 옮겨지는 평행이동에 의하여 점 (a,1)이 점 (5,b)로 옮겨진다."
+ ],
+ "newVisualInformation": [
+  "평행이동량 (+3, −2)와 두 점 C(2,1)→D(5,−1)의 이동"
+ ]
+}

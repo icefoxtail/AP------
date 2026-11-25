@@ -1,0 +1,69 @@
+{
+ "capability": "number-line-figure-v1",
+ "numberLine": {
+  "rows": [
+   {
+    "kind": "SET",
+    "color": "GREEN",
+    "hideSetLabel": true,
+    "pieces": [
+     {
+      "lo": null,
+      "hi": {
+       "value": "4",
+       "state": "CLOSED"
+      }
+     }
+    ]
+   },
+   {
+    "kind": "SET",
+    "color": "BLUE",
+    "hideSetLabel": true,
+    "pieces": [
+     {
+      "lo": null,
+      "hi": {
+       "value": "-3",
+       "state": "OPEN"
+      }
+     },
+     {
+      "lo": {
+       "value": "1",
+       "state": "CLOSED"
+      },
+      "hi": {
+       "value": "4",
+       "state": "CLOSED"
+      }
+     }
+    ]
+   },
+   {
+    "kind": "SET",
+    "color": "WARM",
+    "hideSetLabel": true,
+    "pieces": [
+     {
+      "lo": null,
+      "hi": {
+       "value": "-3",
+       "state": "OPEN"
+      }
+     }
+    ]
+   }
+  ]
+ },
+ "numberLineCaption": {
+  "text": "맨 위 Q, 가운데 P, 맨 아래 R"
+ },
+ "caption": "진리집합을 P={x | x<−3 또는 1≤x≤4}(파랑 줄), Q={x | x≤a}, R={x | x<b}라 하면 필요조건이므로 P⊂Q이고 충분조건이므로 R⊂P이다. P⊂Q이려면 a≥4이므로 a의 최솟값은 4이고(초록 Q 줄은 a=4), R⊂P이려면 b≤−3이므로 b의 최댓값은 −3이다(주황 R 줄은 b=−3). 따라서 합은 4+(−3)=1이고 답은 ②이다.",
+ "sourceConditions": [
+  "p: x<−3 또는 1≤x≤4, q: x≤a, r: x<b"
+ ],
+ "newVisualInformation": [
+  "a=4, b=−3일 때 세 진리집합 Q, P, R의 포함 관계(R⊂P⊂Q)를 수직선에 나타낸다."
+ ]
+}

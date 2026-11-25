@@ -1,0 +1,68 @@
+{
+ "capability": "multi-curve-figure-v1",
+ "graphPlan": {
+  "family": "multi-curve",
+  "viewport": [
+   0,
+   6,
+   -1,
+   8
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "curves": [
+   {
+    "id": "f",
+    "kind": "RATIONAL",
+    "numerator": [
+     "-5",
+     "7"
+    ],
+    "denominator": [
+     "1",
+     "1"
+    ],
+    "domain": {
+     "from": "1",
+     "to": "5",
+     "fromState": "CLOSED",
+     "toState": "CLOSED"
+    },
+    "color": "BLUE"
+   }
+  ],
+  "overlays": {
+   "points": [
+    {
+     "id": "A",
+     "x": "1",
+     "y": "1",
+     "coordinates": true,
+     "labelDirection": "SE"
+    },
+    {
+     "id": "B",
+     "x": "5",
+     "y": "5",
+     "coordinates": true,
+     "labelDirection": "SE"
+    }
+   ]
+  }
+ },
+ "caption": "y=(7x-5)/(x+1)=7-12/(x+1)이고 정의역 1≤x≤5에서 증가한다. 최솟값은 x=1일 때 (7+k)/2=1이므로 k=-5이다. 최댓값은 x=5일 때 y=30/6=5이다. 그래프는 실제 정의역 1≤x≤5 부분만 두 끝점 포함으로 그렸다. 따라서 답은 ④이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "정의역 1≤x≤5, k=-5일 때의 유리함수",
+   "mappedTo": [
+    "graphPlan"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "정의역 1≤x≤5에 해당하는 부분과 양 끝점 (1,1), (5,5)"
+ ]
+}

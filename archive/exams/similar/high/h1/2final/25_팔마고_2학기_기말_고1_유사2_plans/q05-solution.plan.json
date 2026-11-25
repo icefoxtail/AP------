@@ -1,0 +1,93 @@
+{
+ "capability": "multi-curve-figure-v1",
+ "graphPlan": {
+  "family": "multi-curve",
+  "viewport": [
+   -5,
+   15,
+   -4,
+   4
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "curves": [
+   {
+    "id": "f",
+    "kind": "SQRT",
+    "radicand": [
+     "3",
+     "1"
+    ],
+    "offset": "-2",
+    "domain": [
+     "-3",
+     "14"
+    ],
+    "color": "BLUE",
+    "hideLabel": true
+   },
+   {
+    "id": "ly",
+    "kind": "LINE",
+    "coefficients": [
+     "2",
+     "0"
+    ],
+    "domain": [
+     "-5",
+     "15"
+    ],
+    "style": "DASHED",
+    "label": "y=2"
+   }
+  ],
+  "overlays": {
+   "points": [
+    {
+     "id": "P",
+     "x": "1",
+     "y": "0",
+     "coordinates": true,
+     "labelDirection": "SE"
+    },
+    {
+     "id": "K",
+     "x": "13",
+     "y": "2",
+     "coordinates": true,
+     "labelDirection": "SE"
+    },
+    {
+     "id": "F0",
+     "x": "6",
+     "y": "1",
+     "unnamed": true
+    }
+   ],
+   "callouts": [
+    {
+     "id": "cf",
+     "point": "F0",
+     "text": "y=√(x+3)-2",
+     "labelKind": "MATH",
+     "direction": "SE"
+    }
+   ]
+  }
+ },
+ "caption": "끝점이 (-3,-2)이므로 c=-2이고 b=3a이다. 점 (1,0)을 지나므로 √(4a)=2에서 a=1, b=3이어서 f(x)=√(x+3)-2이다. f(k)=2에서 √(k+3)=4이므로 k+3=16, k=13이다. 따라서 답은 ①이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "f(x)=√(x+3)-2의 그래프가 점 (k,2)를 지난다",
+   "mappedTo": [
+    "graphPlan"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "직선 y=2와 그래프가 만나는 점 (13,2)"
+ ]
+}
