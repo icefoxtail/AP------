@@ -1,0 +1,27 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conics": [
+    {"id":"e","kind":"ELLIPSE","center":["0","0"],"aSquared":"36","bSquared":"8","major":"X","label":"C_1"},
+    {"id":"h","kind":"HYPERBOLA","center":["0","0"],"aSquared":"4","bSquared":"24","transverse":"X","label":"C_2"}
+  ],
+  "points": [
+    {"id":"F","kind":"FOCUS","curve":"e","side":1},
+    {"id":"F'","kind":"FOCUS","curve":"e","side":-1},
+    {"id":"P","kind":"CONIC_CONIC","curves":["e","h"],"which":2},
+    {"id":"Q","kind":"ON_CONIC","curve":"h","x":"10*sqrt(7)/7","sign":"POS"}
+  ],
+  "segments": [
+    {"id":"FpP","from":"F'","to":"P"},
+    {"id":"PQ","from":"P","to":"Q"},
+    {"id":"PF","from":"P","to":"F"},
+    {"id":"QF","from":"Q","to":"F"}
+  ],
+  "caption": "공통 초점 F,F′의 타원 C₁·쌍곡선 C₂와 제2사분면 P, 제1사분면 Q",
+  "accessibilityDescription": "타원과 쌍곡선은 두 초점을 공유한다. 왼쪽 위 공통 교점 P에서 오른쪽 위 쌍곡선 위 Q까지의 직선은 F′, P, Q를 차례로 지나며 PF와 PQ가 같은 길이이다. F와 Q도 연결되어 있다.",
+  "sourceConditions": [
+    {"id":"c1","condition":"두 곡선은 F=(2√7,0), F′=(-2√7,0)을 공유한다. 타원 장축 12에서 aₑ²=36, 쌍곡선 주축 4에서 aₕ²=4이고, 나머지 반축 제곱 8과 24는 P,Q 및 길이 동등 조건으로 결정된다.","mappedTo":["e","h","F","F'"]},
+    {"id":"c2","condition":"P=(-6√7/7,4√21/7)는 두 곡선의 제2사분면 교점이고 F′P=4, PF=8이다. Q=(10√7/7,12√21/7)는 쌍곡선 제1사분면에 있으며 F′,P,Q가 일직선이고 PQ=PF=8이다. 엔진에는 교점과 쌍곡선 위 점으로 표현하여 주어진 관계를 독립 재검산하였다.","mappedTo":["P","Q","FpP","PQ","PF"]},
+    {"id":"c3","condition":"원문이 요구한 동일 길이 PF=PQ에 대한 변 같음 표시 primitive는 현재 conic 경로에 없다. 선분 두 개는 그려지지만 동등 표식은 ENGINE_CAPABILITY_PENDING이며 구하는 QF의 길이 라벨은 금지한다.","mappedTo":["PF","PQ","QF"]}
+  ],
+  "newVisualInformation": ["공통 초점의 두 곡선을 실제 교점과 실측 일치 좌표로 구성", "F′–P–Q의 공선성과 주어진 두 동일 길이 선분을 실선으로 표시", "같은 길이 표식의 엔진 미지원은 별도 후속 항목으로 남김"]
+}

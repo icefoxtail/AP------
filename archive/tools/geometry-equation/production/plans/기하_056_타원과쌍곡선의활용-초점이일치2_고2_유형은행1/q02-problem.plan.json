@@ -1,0 +1,31 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conics": [
+    {"id":"e","kind":"ELLIPSE","center":["0","0"],"aSquared":"49","bSquared":"24","major":"X"},
+    {"id":"h","kind":"HYPERBOLA","center":["0","0"],"aSquared":"9","bSquared":"16","transverse":"X"}
+  ],
+  "points": [
+    {"id":"F","kind":"FOCUS","curve":"e","side":1},
+    {"id":"F'","kind":"FOCUS","curve":"e","side":-1},
+    {"id":"P","kind":"ON_CONIC","curve":"h","x":"33/5","sign":"POS"},
+    {"id":"Q","kind":"ON_CONIC","curve":"e","x":"49/25","branch":"POS"},
+    {"id":"A","kind":"VERTEX","curve":"e","side":1,"label":false},
+    {"id":"B","kind":"VERTEX","curve":"e","side":-1,"label":false},
+    {"id":"C","kind":"VERTEX","curve":"h","side":1,"label":false},
+    {"id":"D","kind":"VERTEX","curve":"h","side":-1,"label":false}
+  ],
+  "segments": [
+    {"id":"FpQ","from":"F'","to":"Q"},
+    {"id":"QP","from":"Q","to":"P"},
+    {"id":"QF","from":"Q","to":"F"},
+    {"id":"PF","from":"P","to":"F"}
+  ],
+  "caption": "주어진 두 초점과 x축 꼭짓점, 같은 길이 PQ·QF를 갖는 공유초점 타원·쌍곡선",
+  "accessibilityDescription": "두 초점 F(5,0), F′(-5,0)을 공유하는 타원과 쌍곡선이 있다. 제1사분면의 쌍곡선 위 P에서 F′로 이은 선분이 타원 Q를 지나며 PQ와 QF의 길이는 같다. 두 곡선의 x축 교점도 표시된다.",
+  "sourceConditions": [
+    {"id":"c1","condition":"타원 양쪽 꼭짓점은 (±7,0), 쌍곡선 양쪽 꼭짓점은 (±3,0), 공통 초점은 (±5,0)이다. 이에 따라 타원 b²=49−25=24, 쌍곡선 b²=25−9=16이다.","mappedTo":["e","h","A","B","C","D","F","F'"]},
+    {"id":"c2","condition":"주어진 PQ=QF와 타원 정의에 의해 F′P=14여야 한다. P=(33/5,16√6/5), Q=(49/25,48√6/25)를 각각 쌍곡선/타원 위 점으로 두면 F′,Q,P가 이 순서로 공선이며 PQ=QF=28/5이다. 값은 좌표 라벨로 표시하지 않는다.","mappedTo":["P","Q","FpQ","QP","QF","PF"]},
+    {"id":"c3","condition":"원문은 꼭짓점 이름을 주지 않는다. A~D는 무명 위치 계산용으로만 둬 임의의 문자 이름을 화면에 추가하지 않는다. 꼭짓점의 주어진 좌표 수치가 화면에 나오지 않는 것은 FEATURE_PARITY_PENDING이다. PQ=QF 동일 길이 표시 primitive도 없어 ENGINE_CAPABILITY_PENDING이며 PF 정답 수치는 선분에 표시하지 않는다.","mappedTo":["A","B","C","D","QP","QF","PF"]}
+  ],
+  "newVisualInformation": ["양 곡선의 실제 네 꼭짓점 위치를 엔진 계산 필드로 결속하되 공간 제약으로 좌표 수치는 그리지 않음", "F′–Q–P의 점 순서와 QF, PF를 정확한 좌표계에 결속", "PQ=QF의 시각적 동등 표식은 후속 엔진 요구로 별도 식별"]
+}
