@@ -1,0 +1,25 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "SLOTS",
+    "slots": [
+      { "count": "4", "title": "조경1" },
+      { "count": "3", "title": "과실1" },
+      { "count": "3", "title": "조경2" },
+      { "count": "2", "title": "과실2" },
+      { "count": "2", "title": "조경3" },
+      { "count": "1", "title": "과실3" },
+      { "count": "1", "title": "조경4" }
+    ]
+  },
+  "caption": "조경수 네 그루가 양 끝을 차지하도록 조경수와 과실수를 번갈아 놓는 7개 자리의 선택 수",
+  "accessibilityDescription": "조경수, 과실수, 조경수, 과실수, 조경수, 과실수, 조경수 순서의 일곱 칸에 선택 가능 수 4, 3, 3, 2, 2, 1, 1이 적혀 있다.",
+  "sourceConditions": [
+    { "id": "S1", "condition": "서로 다른 과실수 3그루와 조경수 4그루를 한 줄에 교대로 심는다.", "mappedTo": "chart.slots: 조경수와 과실수 위치가 번갈아 나타나는 일곱 칸" },
+    { "id": "S2", "condition": "같은 나무를 중복 선택할 수 없다.", "mappedTo": "chart.slots[].count: 왼쪽부터 4,3,3,2,2,1,1" }
+  ],
+  "newVisualInformation": [
+    "과실수보다 한 그루 더 많은 조경수가 양 끝에 놓여야 한다는 자리 구조",
+    "이미 고른 같은 종류 나무를 다시 고르지 않아 선택 수가 감소하는 과정"
+  ]
+}

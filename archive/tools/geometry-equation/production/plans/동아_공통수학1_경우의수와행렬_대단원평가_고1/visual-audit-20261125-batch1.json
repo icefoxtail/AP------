@@ -1,0 +1,495 @@
+{
+  "schemaVersion": "textbook-figure-plan-audit-v1",
+  "auditDate": "2026-11-25",
+  "sourcePath": "archive/exams/textbooks/동아출판_공통수학1/동아_공통수학1_경우의수와행렬_대단원평가_고1/동아_공통수학1_경우의수와행렬_대단원평가_고1.js",
+  "sourceGitBlobSha": "1d81795eb4a987599362b0909b60a215e5a49d02",
+  "mainBaseline": "4373ccfb54e7910b16e53f25dd0dbdb343064cdd",
+  "scope": {
+    "firstQid": "q01",
+    "lastQid": "q18",
+    "questionCount": 18,
+    "axesPerQuestion": 2
+  },
+  "validationPolicy": {
+    "problemAnswerExposure": "NO_ANSWER_IN_PROBLEM_PLANS",
+    "defaultFill": "NONE",
+    "render": "NOT_RUN",
+    "pngReview": "NOT_RUN",
+    "studentScreen": "NOT_RUN",
+    "a4": "NOT_RUN",
+    "fullLintDependencyNote": "공식 setup-spikes.mjs를 통해 잠금 버전 의존성을 복원한 뒤 shallow/full 재실행: 대상 5개 모두 PASS"
+  },
+  "items": [
+    {
+      "qid": "q01",
+      "ordinal": 1,
+      "problem": {
+        "decision": "EXEMPT",
+        "reason": "20 이하의 배수 합집합 개수는 조건이 숫자로 충분하다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "featureParity": "NOT_APPLICABLE"
+      },
+      "solution": {
+        "decision": "EXEMPT",
+        "reason": "배수 6개와 2개, 공배수 없음이 해설에 이미 나열된다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "featureParity": "NOT_APPLICABLE"
+      }
+    },
+    {
+      "qid": "q02",
+      "ordinal": 2,
+      "problem": {
+        "decision": "EXEMPT",
+        "reason": "순열의 등식으로 n을 구하는 계산 문제다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "featureParity": "NOT_APPLICABLE"
+      },
+      "solution": {
+        "decision": "EXEMPT",
+        "reason": "n(n-1)=20의 일차 인수 대조를 시각화해도 식 중복이다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "featureParity": "NOT_APPLICABLE"
+      }
+    },
+    {
+      "qid": "q03",
+      "ordinal": 3,
+      "problem": {
+        "decision": "EXEMPT",
+        "reason": "학생 선발의 단순 조합 문제로 구조가 명확하다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "featureParity": "NOT_APPLICABLE"
+      },
+      "solution": {
+        "decision": "EXEMPT",
+        "reason": "6C2×3C1 계산이 전부라 도형이 별도 정보를 주지 않는다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "featureParity": "NOT_APPLICABLE"
+      }
+    },
+    {
+      "qid": "q04",
+      "ordinal": 4,
+      "problem": {
+        "decision": "EXEMPT",
+        "reason": "전개식 항 개수의 기호 계산 문제다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "featureParity": "NOT_APPLICABLE"
+      },
+      "solution": {
+        "decision": "EXEMPT",
+        "reason": "3항×3항의 곱이 해설에 직접 적혀 있다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "featureParity": "NOT_APPLICABLE"
+      }
+    },
+    {
+      "qid": "q05",
+      "ordinal": 5,
+      "problem": {
+        "decision": "REQUIRED",
+        "reason": "원 안의 A,B,C,D 영역 인접을 읽어야 하므로 문제 배치가 필수다.",
+        "capability": "construction-spike-v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/동아_공통수학1_경우의수와행렬_대단원평가_고1/q05-problem.plan.json",
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "featureParity": "PASS",
+        "drawnFeatureCheck": [
+          "displayCircles[k] 원 둘레",
+          "displaySegments[vertical,upper,lower] 세 경계",
+          "planeMarks.textLabels[regionA..regionD] 네 영역",
+          "A와 D는 비인접·B와 C는 인접",
+          "문제 그림에 색칠 결과 미노출"
+        ]
+      },
+      "solution": {
+        "decision": "EXEMPT",
+        "reason": "문제 그림이 인접 관계를 이미 보여 주고, 해설도 B,C를 먼저 칠하는 순서를 글로 설명한다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "featureParity": "NOT_APPLICABLE"
+      },
+      "existingSourcePng": "q05.png"
+    },
+    {
+      "qid": "q06",
+      "ordinal": 6,
+      "problem": {
+        "decision": "EXEMPT",
+        "reason": "교대 줄서기는 나무 수와 순서 조건이 문장에 완전하다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "featureParity": "NOT_APPLICABLE"
+      },
+      "solution": {
+        "decision": "BENEFICIAL",
+        "reason": "조경수 양끝 배치와 자리별 감소하는 선택 수를 7칸으로 보면 순서의 이유가 드러난다.",
+        "capability": "stat-chart-figure-v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/동아_공통수학1_경우의수와행렬_대단원평가_고1/q06-solution.plan.json",
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "featureParity": "PASS",
+        "drawnFeatureCheck": [
+          "chart.kind=SLOTS",
+          "chart.slots[].title=조경·과실 교대 7자리",
+          "chart.slots[].count=4,3,3,2,2,1,1"
+        ]
+      }
+    },
+    {
+      "qid": "q07",
+      "ordinal": 7,
+      "problem": {
+        "decision": "EXEMPT",
+        "reason": "A와 B 사이 세 곡이라는 조건이 문장으로 유일하다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "featureParity": "NOT_APPLICABLE"
+      },
+      "solution": {
+        "decision": "EXEMPT",
+        "reason": "4P3·A/B 순서·묶음 순서를 세 식으로 나눈 설명이 이미 충분하다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "featureParity": "NOT_APPLICABLE"
+      }
+    },
+    {
+      "qid": "q08",
+      "ordinal": 8,
+      "problem": {
+        "decision": "EXEMPT",
+        "reason": "1~9 카드 두 장의 짝수 곱 판정은 사물 배치가 필요 없다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "featureParity": "NOT_APPLICABLE"
+      },
+      "solution": {
+        "decision": "EXEMPT",
+        "reason": "전체 9C2에서 홀수 5C2를 제외하는 식의 중복 그림만 가능하다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "featureParity": "NOT_APPLICABLE"
+      }
+    },
+    {
+      "qid": "q09",
+      "ordinal": 9,
+      "problem": {
+        "decision": "EXEMPT",
+        "reason": "조합의 두 아래첨자 등식은 순수 대수 조건이다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "featureParity": "NOT_APPLICABLE"
+      },
+      "solution": {
+        "decision": "EXEMPT",
+        "reason": "r+3=2r+1 또는 합 19의 두 등식이 해설에 모두 있다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "featureParity": "NOT_APPLICABLE"
+      }
+    },
+    {
+      "qid": "q10",
+      "ordinal": 10,
+      "problem": {
+        "decision": "EXEMPT",
+        "reason": "세 자연수의 정수해 개수는 문자 조건만으로 정확하다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "featureParity": "NOT_APPLICABLE"
+      },
+      "solution": {
+        "decision": "EXEMPT",
+        "reason": "z 값별로 가능한 y를 세는 목록이 해설에 있고 그림이 새 관계를 만들지 않는다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "featureParity": "NOT_APPLICABLE"
+      }
+    },
+    {
+      "qid": "q11",
+      "ordinal": 11,
+      "problem": {
+        "decision": "EXEMPT",
+        "reason": "6명 줄서기의 양끝 조건은 문장에 명시된다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "featureParity": "NOT_APPLICABLE"
+      },
+      "solution": {
+        "decision": "EXEMPT",
+        "reason": "전체에서 양끝 여학생을 제외하는 여사건 계산이 해설에 설명되어 있다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "featureParity": "NOT_APPLICABLE"
+      }
+    },
+    {
+      "qid": "q12",
+      "ordinal": 12,
+      "problem": {
+        "decision": "REQUIRED",
+        "reason": "6학급의 부전승 위치·경기 연결은 원문 대진표를 봐야 알 수 있다.",
+        "capability": "construction-spike-v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/동아_공통수학1_경우의수와행렬_대단원평가_고1/q12-problem.plan.json",
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "featureParity": "PASS",
+        "drawnFeatureCheck": [
+          "displayPoints의 6학급 끝점",
+          "displaySegments 19개로 두 조 각각 3학급·부전승 연결",
+          "좌·우 상위 대진을 잇는 최종 경기",
+          "원문 원형 배지의 색·장식은 의미 조건 아님"
+        ]
+      },
+      "solution": {
+        "decision": "EXEMPT",
+        "reason": "문제 대진표가 한 조에 세 학급과 한 부전승임을 표시하고 해설은 조 분할 및 3×3을 수식으로 설명한다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "featureParity": "NOT_APPLICABLE"
+      },
+      "existingSourcePng": "q12.png",
+      "contentReviewNote": "대진표 좌·우 위치 구분 여부에 따라 90 또는 180으로 셀 수 있음. 현행 JS는 좌우 조를 동일시하여 90으로 설명. 시각 플랜은 이 수학적 모호성을 고치지 않으며 별도 검토 필요."
+    },
+    {
+      "qid": "q13",
+      "ordinal": 13,
+      "problem": {
+        "decision": "EXEMPT",
+        "reason": "서로 다른 주사위 2개의 조건은 숫자만으로 독립적이다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "featureParity": "NOT_APPLICABLE"
+      },
+      "solution": {
+        "decision": "BENEFICIAL",
+        "reason": "6×6 순서쌍의 차가 3·4·5인 칸을 표시하면 6+4+2의 세 경우가 보인다.",
+        "capability": "stat-chart-figure-v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/동아_공통수학1_경우의수와행렬_대단원평가_고1/q13-solution.plan.json",
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "featureParity": "PASS",
+        "drawnFeatureCheck": [
+          "chart.kind=DICE_TABLE·faces=6·cell=PAIR",
+          "chart.highlight.in=[-5,-4,-3,3,4,5]",
+          "36칸 중 두 눈 차 3·4·5인 12칸"
+        ]
+      }
+    },
+    {
+      "qid": "q14",
+      "ordinal": 14,
+      "problem": {
+        "decision": "EXEMPT",
+        "reason": "각각 두 과목·공통 정확히 하나라는 조건은 텍스트에 명시된다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "featureParity": "NOT_APPLICABLE"
+      },
+      "solution": {
+        "decision": "BENEFICIAL",
+        "reason": "공통, A만, B만 세 선택의 남은 과목 수가 6·5·4로 줄어드는 구조가 유익하다.",
+        "capability": "stat-chart-figure-v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/동아_공통수학1_경우의수와행렬_대단원평가_고1/q14-solution.plan.json",
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "featureParity": "PASS",
+        "drawnFeatureCheck": [
+          "chart.kind=SLOTS",
+          "chart.slots[].title=공통,A만,B만",
+          "chart.slots[].count=6,5,4"
+        ]
+      }
+    },
+    {
+      "qid": "q15",
+      "ordinal": 15,
+      "problem": {
+        "decision": "EXEMPT",
+        "reason": "대칭수의 정의와 343·2662·7777 예가 이미 주어졌다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "featureParity": "NOT_APPLICABLE"
+      },
+      "solution": {
+        "decision": "EXEMPT",
+        "reason": "세 자리 aba·네 자리 abba 자릿수의 선택은 글과 식으로 충분하다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "featureParity": "NOT_APPLICABLE"
+      }
+    },
+    {
+      "qid": "q16",
+      "ordinal": 16,
+      "problem": {
+        "decision": "EXEMPT",
+        "reason": "네 숫자의 순서 및 부호 조건은 문자·부등식으로 완전하다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "featureParity": "NOT_APPLICABLE"
+      },
+      "solution": {
+        "decision": "EXEMPT",
+        "reason": "a>b,c<d 또는 반대의 경우를 대수적으로 세므로 그림이 조건을 더하지 않는다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "featureParity": "NOT_APPLICABLE"
+      }
+    },
+    {
+      "qid": "q17",
+      "ordinal": 17,
+      "problem": {
+        "decision": "EXEMPT",
+        "reason": "2×3 행렬 성분과 위치가 LaTeX 행렬에 이미 있다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "featureParity": "NOT_APPLICABLE"
+      },
+      "solution": {
+        "decision": "EXEMPT",
+        "reason": "행·열 개수 및 두 성분의 차는 같은 행렬 재표시로만 설명된다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "featureParity": "NOT_APPLICABLE"
+      }
+    },
+    {
+      "qid": "q18",
+      "ordinal": 18,
+      "problem": {
+        "decision": "REQUIRED",
+        "reason": "두 학년별 네 동아리 수치를 읽는 묶음 가로막대 그래프가 필수다.",
+        "capability": "ENGINE_CAPABILITY_PENDING",
+        "requiredEngineFeature": "GROUPED_HORIZONTAL_BAR_CATEGORICAL: 범주 4개×학년 2개, 동일 축의 가로막대·범례·값 라벨을 지원해야 함",
+        "planPath": null,
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "featureParity": "ENGINE_CAPABILITY_PENDING",
+        "drawnFeatureCheck": [
+          "원본 카테고리 댄스·봉사·과학·수학",
+          "1학년 값 10,25,28,45",
+          "2학년 값 12,20,30,30",
+          "수평 쌍막대·범례·4개 범주를 하나의 엔진 capability로 그릴 수 없음"
+        ]
+      },
+      "solution": {
+        "decision": "EXEMPT",
+        "reason": "원문 PNG와 해설에 값 10·25·28·45 및 12·20·30·30이 이미 정확히 주어져 새 SVG는 중복이다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "featureParity": "NOT_APPLICABLE"
+      },
+      "existingSourcePng": "q18.png"
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "O", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}] }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "P", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{"kind":"integer","value":"0"},{"kind":"integer","value":"5"}] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "Q", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{"kind":"integer","value":"-4"},{"kind":"integer","value":"3"}] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "R", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{"kind":"integer","value":"0"},{"kind":"integer","value":"3"}] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "S", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{"kind":"integer","value":"-4"},{"kind":"integer","value":"-3"}] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "T", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{"kind":"integer","value":"4"},{"kind":"integer","value":"-3"}] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "U", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{"kind":"integer","value":"0"},{"kind":"integer","value":"-3"}] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "k", "op": "CIRCLE_CENTER_RADIUS", "inputs": ["O"], "args": { "radius": {"kind":"integer","value":"5"} }, "outputType": "CIRCLE", "factRole": "DERIVED_INTERMEDIATE" }
+    ]
+  },
+  "displayPoints": ["O", "P", "Q", "R", "S", "T", "U"],
+  "hiddenPointNames": ["O", "P", "Q", "R", "S", "T", "U"],
+  "hiddenPointStyle": "NONE",
+  "displayLines": [],
+  "displayCircles": ["k"],
+  "displaySegments": [
+    {"id":"vertical","refs":["P","U"]},
+    {"id":"upper","refs":["Q","R"]},
+    {"id":"lower","refs":["S","T"]}
+  ],
+  "planeMarks": {
+    "textLabels": [
+      {"id":"regionA","at":[-1.3,4],"text":"A","labelKind":"MATH","factRole":"GIVEN"},
+      {"id":"regionB","at":[-2.4,0],"text":"B","labelKind":"MATH","factRole":"GIVEN"},
+      {"id":"regionC","at":[2.2,1],"text":"C","labelKind":"MATH","factRole":"GIVEN"},
+      {"id":"regionD","at":[0,-4],"text":"D","labelKind":"MATH","factRole":"GIVEN"}
+    ]
+  },
+  "caption": "원을 세 선분으로 네 영역 A, B, C, D로 나눈 색칠 경우의 수 문제의 주어진 배치",
+  "accessibilityDescription": "원 안의 왼쪽 위 A, 왼쪽 가운데 B, 오른쪽 C, 아래 D가 구분되어 있다. A와 D는 경계를 공유하지 않고 나머지 인접 관계는 선분으로 표시된다.",
+  "sourceConditions": [
+    {"id":"S1","condition":"원 안의 네 영역 A, B, C, D를 색칠한다. 원문에는 길이, 좌표, 반지름 값이 없다.","mappedTo":"mathPlan.nodes[k], displayCircles[k], planeMarks.textLabels[regionA..regionD]; 임의 정수 좌표는 인접 위상만 보존한 대표 배치"},
+    {"id":"S2","condition":"A는 B, C와; B는 A, C, D와; C는 A, B, D와; D는 B, C와 이웃한다.","mappedTo":"displaySegments[upper,vertical,lower]와 원둘레로 나뉜 네 영역"},
+    {"id":"S3","condition":"서로 다른 네 색을 사용할 수 있으나 이웃한 영역은 같은 색을 사용할 수 없다.","mappedTo":"색칠 결과를 선표시하지 않음: 문제 그림에 답이나 영역 색칠을 추가하지 않음"}
+  ],
+  "newVisualInformation": ["위쪽 A와 아래쪽 D는 선분 경계를 공유하지 않는다.", "B와 C는 서로 인접하며 모두 A, D와 경계를 공유한다."]
+}
