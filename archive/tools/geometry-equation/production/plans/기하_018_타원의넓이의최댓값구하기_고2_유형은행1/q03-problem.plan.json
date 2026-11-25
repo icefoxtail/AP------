@@ -1,0 +1,22 @@
+{
+  "capability": "ellipse-figure-v1",
+  "ellipse": {"center": ["0", "0"], "semiAxisSquared": {"major": "49", "minor": "24"}, "majorAxis": "X"},
+  "points": [
+    {"id": "F'", "kind": "FOCUS", "side": -1},
+    {"id": "F", "kind": "FOCUS", "side": 1},
+    {"id": "P", "kind": "ON_ELLIPSE", "x": "3", "branch": "POS"}
+  ],
+  "segments": [
+    {"id": "sFFp", "from": "F'", "to": "F", "label": "10 m"},
+    {"id": "sPF", "from": "P", "to": "F"},
+    {"id": "sPFp", "from": "P", "to": "F'"}
+  ],
+  "caption": "가로 장축의 타원형 광장과 좌·우 초점 F′,F 사이 거리 10m, 둘레의 대표점 P를 두 조형물에 연결한 삼각형",
+  "accessibilityDescription": "가로로 긴 타원 광장의 가로축 위에 왼쪽 초점 F′와 오른쪽 초점 F가 있고 그 사이 거리는 10미터다. 타원 둘레의 오른쪽 위 점 P에서 두 초점에 선을 연결해 삼각형을 이룬다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "광장의 장축은 가로이며 두 초점 F′(-5,0), F(5,0) 사이 거리는 10m로 표시한다.", "mappedTo": ["ellipse", "F'", "F", "sFFp"]},
+    {"id": "c2", "condition": "타원 둘레 위 점 P의 초점까지 거리 합은 언제나 14m다. P는 단축 끝점이 아닌 x=3인 대표 비최대 위치로 두어 최대 넓이의 정답을 드러내지 않는다.", "mappedTo": ["P", "sPF", "sPFp"]},
+    {"id": "c3", "condition": "최대 삼각형 넓이는 묻는 값이므로 그림에 수치로 쓰지 않는다.", "mappedTo": ["sPF", "sPFp", "sFFp"]}
+  ],
+  "newVisualInformation": ["원문 그림의 10m 초점 간 거리 라벨과 비최대 일반점 P에 의한 초점 삼각형"]
+}
