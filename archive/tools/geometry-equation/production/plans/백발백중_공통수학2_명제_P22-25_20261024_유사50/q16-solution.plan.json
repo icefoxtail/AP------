@@ -1,0 +1,84 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "parameter": {
+      "name": "a",
+      "value": "2"
+    },
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "P",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-2",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "6",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "color": "BLUE"
+      },
+      {
+        "kind": "SET",
+        "label": "Q",
+        "pieces": [
+          {
+            "lo": {
+              "param": {
+                "mul": "1",
+                "add": "-2"
+              },
+              "state": "CLOSED"
+            },
+            "hi": {
+              "param": {
+                "mul": "1",
+                "add": "2"
+              },
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "color": "GREEN"
+      },
+      {
+        "kind": "RESULT",
+        "label": "공통"
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "역이 참일 때 Q⊆P"
+  },
+  "caption": "해설 예시 a=2: P=[-2,6], Q=[0,4]이고 Q⊆P이다. 일반적인 허용 정수 a의 범위는 0≤a≤4이다.",
+  "accessibilityDescription": "세 줄 수직선. P는 -2부터 6까지 닫히고 Q는 a-2부터 a+2까지 닫힌 구간이다. a=2에서 두 구간과 교집합을 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "p",
+      "condition": "p의 이차부등식 해 P=[-2,6]",
+      "mappedTo": "numberLine.rows[0].pieces"
+    },
+    {
+      "id": "q",
+      "condition": "q: |x-a|≤2, Q=[a-2,a+2], a=2 예시",
+      "mappedTo": [
+        "numberLine.parameter",
+        "numberLine.rows[1].pieces"
+      ]
+    },
+    {
+      "id": "reverse",
+      "condition": "역 q→p가 참 ⇔ Q⊆P, 0≤a≤4",
+      "mappedTo": "numberLine.rows[2]"
+    }
+  ],
+  "newVisualInformation": [
+    "같은 x축에서 P의 두 닫힌 경계 -2,6와 Q의 두 닫힌 경계 a±2를 맞대어 Q⊆P를 확인한다."
+  ]
+}

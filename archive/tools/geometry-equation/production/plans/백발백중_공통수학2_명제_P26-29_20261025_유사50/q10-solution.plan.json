@@ -1,0 +1,68 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "a",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "전칭",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-2",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "3",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "color": "BLUE"
+      },
+      {
+        "kind": "SET",
+        "label": "존재",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "1",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "color": "GREEN"
+      },
+      {
+        "kind": "RESULT",
+        "label": "공통"
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "판별식 두 조건의 공통 a 범위"
+  },
+  "caption": "모든 x에 대해 양수인 조건은 -2<a<3(양 끝 OPEN), 어떤 x에 대해 0 이하인 조건은 a≤1(CLOSED)이다. 공통 범위는 (-2,1]이며 정수 a는 -1, 0, 1(3개)이다.",
+  "accessibilityDescription": "a 수직선에 전칭 명제의 열린 구간 -2부터 3, 존재 명제의 1 이하 닫힌 반직선, 두 조건의 공통 구간을 차례로 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "all",
+      "condition": "D1/4<0 ⇒ -2<a<3",
+      "mappedTo": "numberLine.rows[0].pieces"
+    },
+    {
+      "id": "some",
+      "condition": "D2/4≥0 ⇒ a≤1",
+      "mappedTo": "numberLine.rows[1].pieces"
+    },
+    {
+      "id": "integer",
+      "condition": "정수 a 교집합: -1, 0, 1",
+      "mappedTo": "numberLine.rows[2]"
+    }
+  ],
+  "newVisualInformation": [
+    "전칭의 OPEN/OPEN 경계 -2,3와 존재 조건의 CLOSED 경계 1를 대조해 공통 범위와 정수 개수 3를 확인한다."
+  ]
+}

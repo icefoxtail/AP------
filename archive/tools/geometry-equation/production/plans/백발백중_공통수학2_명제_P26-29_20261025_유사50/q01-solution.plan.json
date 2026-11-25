@@ -1,0 +1,79 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "P",
+        "pieces": [
+          {
+            "lo": {
+              "value": "1",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "9",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "color": "BLUE"
+      },
+      {
+        "kind": "SET",
+        "label": "Q",
+        "pieces": [
+          {
+            "lo": {
+              "value": "4",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "20",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "color": "GREEN"
+      },
+      {
+        "kind": "RESULT",
+        "label": "공통"
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "자연수 전체집합에서 P∩Q"
+  },
+  "caption": "U={1,…,20}에서 P={1,…,9}, Q={4,…,20}이다. RESULT는 [4,9]이며 공통 자연수는 6개이다.",
+  "accessibilityDescription": "세 줄의 같은 x 수직선. 첫 줄은 1부터 9, 둘째 줄은 4부터 20, 셋째는 4부터 9의 공통 범위이다. U는 자연수만 사용한다.",
+  "sourceConditions": [
+    {
+      "id": "universe",
+      "condition": "U={1,2,…,20} 자연수",
+      "mappedTo": [
+        "numberLine.rows[0].pieces",
+        "numberLine.rows[1].pieces"
+      ]
+    },
+    {
+      "id": "p",
+      "condition": "이차부등식의 실수 해 [-2,9], 자연수 P={1,…,9}",
+      "mappedTo": "numberLine.rows[0].pieces"
+    },
+    {
+      "id": "q",
+      "condition": "일차부등식의 실수 해 x≥10/3, 자연수 Q={4,…,20}",
+      "mappedTo": "numberLine.rows[1].pieces"
+    },
+    {
+      "id": "intersection",
+      "condition": "P∩Q={4,…,9}, n=6",
+      "mappedTo": "numberLine.rows[2]"
+    }
+  ],
+  "newVisualInformation": [
+    "U 안의 두 자연수 진리집합 경계 1,9,4,20 및 엔진이 계산한 공통구간 4~9를 비교한다."
+  ]
+}

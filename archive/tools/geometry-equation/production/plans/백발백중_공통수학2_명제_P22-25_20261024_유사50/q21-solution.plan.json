@@ -1,0 +1,70 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "P",
+        "pieces": [
+          {
+            "lo": {
+              "value": "6",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "10",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "color": "BLUE"
+      },
+      {
+        "kind": "SET",
+        "label": "Q",
+        "pieces": [
+          {
+            "lo": {
+              "value": "6",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "10",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "color": "GREEN"
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "역·대우가 참이면 P=Q"
+  },
+  "caption": "역과 대우가 모두 참이므로 P=Q. 해설의 a=6, b=4을 대입하면 P=Q=[6,10]이다. 양 끝점은 모두 포함한다.",
+  "accessibilityDescription": "두 줄 수직선. P와 Q의 왼쪽 끝은 6, 오른쪽 끝은 10로 정확히 같으며 양 끝은 닫힌 점이다.",
+  "sourceConditions": [
+    {
+      "id": "p",
+      "condition": "p: a≤x≤b+상수, a=6, b=4 대입으로 6~10",
+      "mappedTo": "numberLine.rows[0].pieces"
+    },
+    {
+      "id": "q",
+      "condition": "q: 2b-상수≤x≤2a-상수, 같은 6~10",
+      "mappedTo": "numberLine.rows[1].pieces"
+    },
+    {
+      "id": "logic",
+      "condition": "역이 참이면 Q⊆P; 대우가 참이면 P⊆Q; 따라서 P=Q",
+      "mappedTo": [
+        "numberLine.rows[0]",
+        "numberLine.rows[1]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "P와 Q가 같은 좌표 6,10에서 CLOSED 끝점을 공유하는 것을 두 행으로 대조한다."
+  ]
+}
