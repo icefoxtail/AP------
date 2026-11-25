@@ -1,0 +1,638 @@
+{
+  "schemaVersion": "gpt-finalqa-evidence-v1",
+  "examUid": "26_순천고_2학기_중간_고2_확률과통계_유사",
+  "sourcePath": "archive/exams/similar/high/h2/2mid/26_순천고_2학기_중간_고2_확률과통계_유사.js",
+  "blindPackDigest": "2c46a5c6a3c28f6bd4c1589002515f9cd89c6c6f8a5f87920713909a4867d30d",
+  "reviewer": {
+    "id": "independent-blind-agent:/root/suncheon_blind_qa",
+    "blindFirstPass": "CONFIRMED",
+    "independentEvidence": "별도 독립 에이전트(fork_turns=none)가 동일 경로 --blind-pack만 보고 24문항 정답·근거를 사전 고정했다. Q1·Q21의 '다항식' 용어 수리 후 같은 blind pack 재검토에서 독립 답 유지 확인. Q16(4×5 빈 격자), Q20(A~F 시계방향 6등분 원)의 원본 PNG 묘사만 별도 전달해 독립 수학 풀이와 대조. 작성 정답·해설·메타·원본 JS는 독립 검수자에게 공개하지 않음.",
+    "blindArtifactRef": "conversation-agent:/root/suncheon_blind_qa/2026-11-25-initial-24q-and-delta-reblind"
+  },
+  "questions": [
+    {
+      "qid": 1,
+      "sourceFingerprint": "66d66de0d140a06e0164f380ba61f258c4cd0142ece6895b0460c4671509e182",
+      "blindAnswer": "②",
+      "blindReasoning": "(x+a/x)^5의 x차수5−2k=1은 k=2. 계수 C(5,2)a²=10a²=90, a>0이므로 a=3.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "양수 a와 x의 유리식 거듭제곱은 식·계수만으로 제시되어 그림 불필요."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "일반항의 x지수를 1로 둔 k=2와 a>0 계산으로 충분함."
+        }
+      }
+    },
+    {
+      "qid": 2,
+      "sourceFingerprint": "4ab9b8acf29fb57315c694bb9c497c5a8e2cc14e417fc501488aba9b60036318",
+      "blindAnswer": "⑤",
+      "blindReasoning": "P(A)=1−2/5=3/5, P(B)=P(A)/3=1/5, 배반이므로 합집합4/5.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "배반 두 사건 확률과 여사건 비율이 수식에 모두 있음."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "P(A)=3/5,P(B)=1/5와 배반 덧셈으로 충분함."
+        }
+      }
+    },
+    {
+      "qid": 3,
+      "sourceFingerprint": "855d362794b6773ca21bbf3c6e7954b6cebb7550cc96157c610d7fdb41659fe0",
+      "blindAnswer": "③",
+      "blindReasoning": "순서 있는 선택4³=64, 색별 개수는 중복조합 C(6,3)=20이므로 44.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "네 색과 순서기록 여부가 텍스트로 분명함."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "4³ 및 중복조합 C(6,3)의 차로 충분함."
+        }
+      }
+    },
+    {
+      "qid": 4,
+      "sourceFingerprint": "5afa7be57f847daa86fd14d538a8baf33dc981f125fc28ea95373c81eae3f0e2",
+      "blindAnswer": "④",
+      "blindReasoning": "독립 조건 없이 임의 두 사건의 교집합을 확률 곱으로 쓸 수 없다. A=B,P(A)=1/2가 반례.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "확률 기본 성질 다섯 문장만으로 정오판별 가능."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "A=B인 1/2 확률 반례를 텍스트로 설명 가능."
+        }
+      }
+    },
+    {
+      "qid": 5,
+      "sourceFingerprint": "6b1313f1fdb71da4898c709316a12cd633f0145289f2595f256eb1558d2cc012",
+      "blindAnswer": "③",
+      "blindReasoning": "a=102/200=0.51(ㄱ). 상대도수 .47의 오차.03은 .6의 오차.1보다 작음(ㄴ). 시행마다 반드시 가까워지지는 않음(ㄷ 거짓).",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "시행 수·앞면 수·상대도수가 마크다운 표와 보기로 완결됨."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "상대도수 오차를 수치 비교하여 ㄱㄴㄷ 모두 판정 가능."
+        }
+      }
+    },
+    {
+      "qid": 6,
+      "sourceFingerprint": "11e52aea5b8c1dffbb2c83584b2686c40fe0fe5a97f08d9a6c6539272867f3ff",
+      "blindAnswer": "①",
+      "blindReasoning": "P(B|A)=(3/20)/(3/5)=1/4.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "조건부확률의 분자·분모 수치가 주어짐."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "조건부 확률 나눗셈 (3/20)/(3/5)로 충분함."
+        }
+      }
+    },
+    {
+      "qid": 7,
+      "sourceFingerprint": "2a6e02e3131c5397b91372b5bfca1d4cc184c8de3318aaf33dc5721df960a5d3",
+      "blindAnswer": "⑤",
+      "blindReasoning": "홀수 번호 조합합 C(11,1)+…+C(11,11)=2^10, 짝수 번호합 C(8,0)+…+C(8,8)=2^7, 비8.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "이항계수의 홀짝 합 비율이 식으로 제시됨."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "홀수계수합 2^10, 짝수계수합2^7 계산으로 충분."
+        }
+      }
+    },
+    {
+      "qid": 8,
+      "sourceFingerprint": "827260b4b0a9c52eae45b97ccf919afef28a2c17b1df5a8ce4f65ba4326f64e6",
+      "blindAnswer": "④",
+      "blindReasoning": "앞에 x가 곱해지므로 x³ 계수의 합 Σ(k=3..8)C(k,3)=C(9,4)=126.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "이항식 합의 x⁴ 계수 목표가 수식에 제시됨."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "파스칼 항등식의 망원합 C(9,4)로 설명 가능."
+        }
+      }
+    },
+    {
+      "qid": 9,
+      "sourceFingerprint": "58747c9d748eeab89a0c8ec873f1512fc7b74f9109d68eddb3e70007a71637f7",
+      "blindAnswer": "②",
+      "blindReasoning": "2학년 과학8명/전체 2학년(8+6)=8/14=4/7.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "분야별 1·2학년 인원이 문장으로 모두 제시됨."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "2학년 14명 중 과학8명 비율로 충분함."
+        }
+      }
+    },
+    {
+      "qid": 10,
+      "sourceFingerprint": "4a5eb830c20668177f91798430782132523157dc2004c02d6a9126d03d9aa7ca",
+      "blindAnswer": "④",
+      "blindReasoning": "12⁹−8⁹의 마지막 세 자리 624(1000으로 나눈 나머지), 각 자리 합6+2+4=12.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "12⁹−8⁹의 마지막 세 자리 합으로 수식만 필요함."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "1000으로 나눈 나머지 624와 6+2+4 계산으로 충분."
+        }
+      }
+    },
+    {
+      "qid": 11,
+      "sourceFingerprint": "1b9b212bca409dc0684594408a16629b884085c702e2cb6a517cb27503940cce",
+      "blindAnswer": "①",
+      "blindReasoning": "천 자리 a=2..9, 나머지 합11−a의 해 합 Σ C(13−a,2)=216; 자릿수 상한 문제 없음.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "네 자리 각 숫자와 천 자리 제약이 문장으로 완결됨."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "천 자리별 제한 정수해를 합산하는 계산으로 충분."
+        }
+      }
+    },
+    {
+      "qid": 12,
+      "sourceFingerprint": "0cf8d41f50ff89268522ff7ad996083cb3ea5748b473cc6577317c1a1429c177",
+      "blindAnswer": "⑤",
+      "blindReasoning": "총 동일문자 배열6!/2!=360, AA 인접 배열5!=120; 비인접 확률240/360=2/3.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "두 A가 같은 여섯 문자와 인접조건이 분명함."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "인접·비인접 배열수 360−120 계산으로 충분."
+        }
+      }
+    },
+    {
+      "qid": 13,
+      "sourceFingerprint": "60a1f211151e3d1b0d1f44ed3e0b7fcaa4fdf50996877bc46b18e80f0ac7c7fb",
+      "blindAnswer": "③",
+      "blindReasoning": "전체9³=729, 곱6배수가 아닌 경우: 모두 홀수5³, 모두3배수아님6³, 공통3³; 유리729−125−216+27=415.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "함수의 정의역 세 원소와 치역1..9가 명시됨."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "2의 배수/3의 배수 회피 두 사건 포함배제로 충분."
+        }
+      }
+    },
+    {
+      "qid": 14,
+      "sourceFingerprint": "4a04c1a69c796eb61fda45b757cca3b62f0148f405a512d73a034205c07c7561",
+      "blindAnswer": "③",
+      "blindReasoning": "5×5 최단 경로 C(10,5)=252, C=(0,3) 경유는 위3번 선행 후 C(7,2)=21, 차231.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "PASS",
+          "planDigest": "0f94907292c53e020dc0e7d9ddb71c58728f68a8632853fd584cdfac2fc6b314",
+          "reasoning": "공식 격자 플랜으로 A(0,0), B(5,5), C(0,3)를 원문대로 시각화함."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "96afca98b971948b09ed2bfb5a7fc21d2f6b0340e631dda68618331d2215205d",
+          "reasoning": "공식 해설 격자 플랜에서 C 유일 진입 변을 막으면 경유21을 제외하는 231 경로수와 일치함."
+        }
+      }
+    },
+    {
+      "qid": 15,
+      "sourceFingerprint": "360e299e3f6a00bf9bbc9ceb4d669139a4694fbf726a9507e84cc10b65f96e25",
+      "blindAnswer": "⑤",
+      "blindReasoning": "앞면 시 두 색4/7, 뒷면 시 두 색6/7, 공정 동전의 가중평균(4/7+6/7)/2=5/7.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "동전 결과별 공2·3개 표본공간과 흰·검4개씩이 명시됨."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "2개·3개 혼합색 확률4/7,6/7의 가중합으로 충분."
+        }
+      }
+    },
+    {
+      "qid": 16,
+      "sourceFingerprint": "f5c7bc7f36082fe5c943ed8c2f5affd57d1d94eac058bad3aefc2e66c5c45997",
+      "blindAnswer": "②",
+      "blindReasoning": "4열×5행 원본 격자에서 변 인접 가로15·세로16, 대각 꼭짓점 인접24, 총55쌍/전체C(20,2)=190.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "SOURCE_ASSET_VERIFIED",
+          "planDigest": "0ca664b59e23117fb0ca1e62dfc5c53ffe46a14315e810093eafb5083e1c0fe2",
+          "reasoning": "원본 PNG의 4열×5행 20개 칸의 변·꼭짓점 구조가 발문에 필요하고 실제 자산이 일치함."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "가로15·세로16·대각24 쌍의 셈과 총190으로 충분."
+        }
+      }
+    },
+    {
+      "qid": 17,
+      "sourceFingerprint": "0f9fd0aa6be380735ad6584c6e475bf2360c829659f2ee5c38227e15241e1557",
+      "blindAnswer": "①",
+      "blindReasoning": "홀수 위치 비감소 네 값 선택은 H(4,4)=C(7,4)=35, 짝수 위치 세 양수 합9는 C(8,2)=28; 곱980.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "홀수·짝수 인덱스의 함수값 제한이 수식으로 완결됨."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "비감소 35가지와 양수해28가지의 곱으로 충분."
+        }
+      }
+    },
+    {
+      "qid": 18,
+      "sourceFingerprint": "2e2a3c9ce2f107b128871eba775e55977f3107fff4910ac483174f54d70d0a61",
+      "blindAnswer": "②",
+      "blindReasoning": "원소마다 C⊆A이고 합집합 미포함은 1상태·포함은5상태. 합집합 크기3 또는5 유리 경우 C(5,3)5³+5⁵=4375=7·5⁴, 분모2^15; 합19.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "세 부분집합 선택과 포함관계·합집합 크기가 수식에 있음."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "원소별 1·5 상태를 합집합 크기3·5로 합산하면 충분."
+        }
+      }
+    },
+    {
+      "qid": 19,
+      "sourceFingerprint": "b05fdf0678da6405e213ca59ebdf01f5d360248ddfbc9649926ed052e3530751",
+      "blindAnswer": "①",
+      "blindReasoning": "세 카드 나머지0,1,2가 각각 한 장씩인 경우 3³·3!=162, 세 장 모두0인 경우3!=6; 9P3=504 중168→1/3.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "서로 다른 카드 세 장의 합·곱 모듈러 조건이 명시됨."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "나머지 0만 세 장과 0,1,2 한 장씩을 셈하여 충분."
+        }
+      }
+    },
+    {
+      "qid": 20,
+      "sourceFingerprint": "1be62ddf53395285e641fc9b52a047729f801310cce43d3ee6497aeb5c57ca52",
+      "blindAnswer": "④",
+      "blindReasoning": "A,P,Q가 서로 달라지는 (a,b) 20쌍; A~F 정육각형에서 직경 하나를 변으로 갖는 삼각형의 해당 쌍12, 조건부확률12/20=3/5.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "SOURCE_ASSET_VERIFIED",
+          "planDigest": "b2f5bb90ea4fe4b57d1008d731e6f3786da169378c94897f6dfc30c4d69e7608",
+          "reasoning": "원본 PNG가 A~F 순서대로 동일 간격인 6개 원주점을 표시하여 원문 이동 규칙을 시각화함."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "b675ed863b21df3a0ec897ba47c72fcd3a7d2cb54503dbd5457cfe99b8bd8d06",
+          "reasoning": "공식 해설 원 그림에서 지름 AD와 직각 ∠ABD가 실제 원주각 조건을 구현함."
+        }
+      }
+    },
+    {
+      "qid": 21,
+      "sourceFingerprint": "425bfc22164d472b53fb7e3514e267f598cc75e0f25a3aab371e6be180d79ff9",
+      "blindAnswer": "-3",
+      "blindReasoning": "x³계수는 x²·3k²x에서3k²와 (2/x²)·(−3kx⁵)에서−6k, 3k²−6k=9→k=3,−1, 곱−3.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "NOT_APPLICABLE"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "계수9 목표와 두 유리식 거듭제곱이 수식에 제시됨."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "계수3k²−6k와 이차방정식 근의 곱으로 충분."
+        }
+      }
+    },
+    {
+      "qid": 22,
+      "sourceFingerprint": "979808cb987b433a9a74114cbac0223e20cc505e12cbc7844318e7cf8aa6c34e",
+      "blindAnswer": "122",
+      "blindReasoning": "전체 C(12,4)=495. a=2b 사건72, a=3c 사건61, 교집합9; XOR=72+61−18=115=23/99 of 495; p+q=122.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "NOT_APPLICABLE"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "다섯 음이 아닌 정수 합과 두 배수조건이 명시됨."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "두 사건72·61과 중첩9를 제외한 XOR 수식으로 충분."
+        }
+      }
+    },
+    {
+      "qid": 23,
+      "sourceFingerprint": "11ecc6f93a141f1f553a38606fcbf82da4ab7b66a4e024665a0ac7ae17ea80b7",
+      "blindAnswer": "3/4",
+      "blindReasoning": "4문 중 최초 선택 틀림3/4, 사회자가 다른 빈 문2개 여는 조건부확률1, 따라서 교체 승률(3/4)·1=3/4, 유지1/4.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "NOT_APPLICABLE"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "네 문 사회자 공개 규칙과 변경/유지 사건이 문장으로 명시됨."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "교체 성공은 최초 오답(3/4)과 사회자의 빈 문 공개(1)의 곱으로 충분."
+        }
+      }
+    },
+    {
+      "qid": 24,
+      "sourceFingerprint": "bb1677906b83b456bfe8dd826ebb5008aad721330c61ea0f0e93ec4ba10f5b30",
+      "blindAnswer": "30",
+      "blindReasoning": "1200=2⁴·3·5²; a=1,2,4,5,10,20별 N=1200/a²의 서로소 순서쌍 (b,c) 수는 8,8,4,4,4,2로 합30.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "NOT_APPLICABLE"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "서로소 정수 b,c와 a²bc=1200 관계가 수식에 제시됨."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "소인수의 두 상자 통째 배정 수 2^ω(N)를 여섯 N에 적용하면 충분."
+        }
+      }
+    }
+  ]
+}
