@@ -1,0 +1,11 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"PARABOLA","vertex":["0","1"],"p":"8","axis":"Y"},
+  "points":[{"id":"O","kind":"ORIGIN"},{"id":"F","kind":"FOCUS"},{"id":"A","kind":"ON_CONIC","x":"-8"},{"id":"B","kind":"ON_CONIC","x":"8"},{"id":"M","kind":"ON_CONIC","x":"4"},{"id":"T","kind":"POINT","x":"4","y":"6"}],
+  "lines":[{"id":"ground","y":"0","label":"ground"}],
+  "segments":[{"id":"AB","from":"A","to":"B","label":"16 m"},{"id":"TM","from":"T","to":"M"},{"id":"MF","from":"M","to":"F"}],
+  "caption":"지면 위 높이 1m의 포물선 꼭짓점, 높이 3m의 양 끝 폭 16m, 수직 입사 광선의 초점 반사",
+  "accessibilityDescription":"지면 위 높이 1미터에 최저점이 있고 높이 3미터의 양 끝점 A,B가 16미터 떨어진 위로 열린 포물선 집열판이며 수직 광선이 곡면에서 초점 F로 반사된다.",
+  "sourceConditions":[{"id":"c1","condition":"꼭짓점 (0,1), 끝점 (-8,3),(8,3)을 지나므로 내부 p=8이다. 질문인 초점의 지면 높이는 좌표로 표시하지 않는다.","mappedTo":["conic","F","A","B","AB"]},{"id":"c2","condition":"지면은 y=0이며 수직 입사하는 대표 광선 T=(4,6)에서 M=(4,3/2)로 내려와 초점 F로 반사된다.","mappedTo":["ground","T","M","TM","MF"]}],
+  "newVisualInformation":["지면·집열판 최저점·끝점과 태양광 반사 경로"]
+}
