@@ -1,0 +1,42 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PYRAMID",
+      "base": {
+        "kind": "RECT",
+        "width": 4,
+        "depth": 4
+      },
+      "height": 5,
+      "names": "BCDEA"
+    }
+  ],
+  "caption": "정사각형 BCDE를 밑면으로 하고 꼭짓점 A가 위에 있는 사각뿔 A-BCDE",
+  "accessibilityDescription": "밑면 정사각형 BCDE의 각 점에서 공통 꼭짓점 A로 네 선분이 이어진 사각뿔이다. 직선 BC와 평행한 DE, AC와 꼬인 BE 등의 공간 관계가 확인된다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "BCDE가 정사각형인 사각형 밑면",
+      "mappedTo": [
+        "s1"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "A에서 B,C,D,E로 연결되는 네 옆모서리",
+      "mappedTo": [
+        "s1"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "정사각뿔의 꼭짓점·8모서리",
+    "입체 가림과 실제 평행 관계"
+  ],
+  "solidCaption": {
+    "text": "사각뿔"
+  },
+  "sourceQuote": "밑면이 정사각형 $BCDE$이고 꼭짓점이 $A$인 사각뿔 $A-B"
+}

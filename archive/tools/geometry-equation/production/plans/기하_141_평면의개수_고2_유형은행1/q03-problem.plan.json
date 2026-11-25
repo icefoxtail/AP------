@@ -1,0 +1,67 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PYRAMID",
+      "base": {
+        "kind": "RECT",
+        "width": 4,
+        "depth": 4
+      },
+      "height": 5,
+      "names": "....."
+    },
+    {
+      "id": "s2",
+      "kind": "PRISM",
+      "base": {
+        "kind": "REGULAR",
+        "n": 3,
+        "side": 4
+      },
+      "height": 5,
+      "names": "......"
+    },
+    {
+      "id": "s3",
+      "kind": "REGULAR_POLYHEDRON",
+      "faces": 8,
+      "side": 4,
+      "names": "......"
+    }
+  ],
+  "caption": "세 그림: 정사각뿔의 5점·삼각기둥의 6점·정팔면체의 6점",
+  "accessibilityDescription": "왼쪽에 정사각뿔, 가운데에 삼각기둥, 오른쪽에 정팔면체가 나란히 보인다. 각각 5,6,6 꼭짓점이 정확하게 형성되어 평면 개수를 비교할 수 있다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "첫 입체는 밑면 정사각형인 5꼭짓점 사각뿔",
+      "mappedTo": [
+        "s1"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "둘째 입체는 6꼭짓점 삼각기둥",
+      "mappedTo": [
+        "s2"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "셋째 입체는 정팔면체 6꼭짓점",
+      "mappedTo": [
+        "s3"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "서로 다른 3개 입체의 나란한 비교",
+    "이름 없는 꼭짓점에 임의 글자를 추가하지 않음"
+  ],
+  "solidCaption": {
+    "text": "사각뿔·삼각기둥·정팔면체"
+  },
+  "sourceQuote": "다음 [보기] 중 옳은 것만을 있는 대로 고른 것은? [그림: 밑"
+}

@@ -1,0 +1,42 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PRISM",
+      "base": {
+        "kind": "REGULAR",
+        "n": 3,
+        "side": 4
+      },
+      "height": 5,
+      "names": "DEFABC"
+    }
+  ],
+  "caption": "정삼각형 윗밑면 ABC와 아랫밑면 DEF, 직사각형 옆면의 직삼각기둥",
+  "accessibilityDescription": "밑면이 정삼각형이고 세 옆면이 직사각형인 직삼각기둥 ABC-DEF의 아홉 모서리가 모두 표현된다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 밑면은 합동인 정삼각형 ABC,DEF",
+      "mappedTo": [
+        "s1"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "옆면은 직사각형, AD·BE·CF는 서로 평행",
+      "mappedTo": [
+        "s1"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "정확한 정삼각기둥의 꼭짓점·9모서리",
+    "꼬인 위치 판단용 점선"
+  ],
+  "solidCaption": {
+    "text": "정삼각기둥"
+  },
+  "sourceQuote": "밑면이 정삼각형이고 옆면이 모두 직사각형인 삼각기둥 $ABC-DE"
+}

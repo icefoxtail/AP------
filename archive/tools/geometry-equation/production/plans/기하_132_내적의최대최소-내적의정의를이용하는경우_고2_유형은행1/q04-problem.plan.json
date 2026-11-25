@@ -1,0 +1,170 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 550
+  },
+  "caption": "반지름 2인 원 위의 서로 다른 A,B,C 및 AB·AC 선분(대표 배치)",
+  "accessibilityDescription": "전체 원주에 A,B,C 세 점이 서로 다르게 놓여 있고 A에서 B,C로 잇는 두 현이 있다. 원의 중심 이름과 최솟값을 만들 특수 배치는 드러내지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "한 원의 반지름이 정확히 2",
+      "mappedTo": [
+        "k"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "A,B,C 모두 원 위의 서로 다른 점",
+      "mappedTo": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "두 현 AB,AC가 A에서 뻗어 나옴",
+      "mappedTo": [
+        "sAB",
+        "sAC"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "정확한 반지름 2의 원",
+    "세 서로 다른 원주점 및 두 현"
+  ],
+  "displayCircles": [
+    "k"
+  ],
+  "hiddenPointNames": [
+    "O"
+  ],
+  "hiddenPointStyle": "NONE",
+  "sourceQuote": "반지름의 길이가 $2$인 원 위의 서로 다른 세 점 $A, B, "
+}
