@@ -1,0 +1,534 @@
+{
+  "schemaVersion": "gpt-finalqa-evidence-v1",
+  "examUid": "26_금당고_2학기_중간_고2_기하_유사2",
+  "sourcePath": "archive/exams/similar/high/h2/2mid/26_금당고_2학기_중간_고2_기하_유사2.js",
+  "blindPackDigest": "1d352150f4b119d538aa687aa37dee987c6d4aae3874591fc5484fcfab13a5d2",
+  "reviewer": {
+    "id": "GPT-independent-finalqa-geumdang-20261125",
+    "blindFirstPass": "CONFIRMED",
+    "independentEvidence": "생성자의 I1 검산과 별도 GPT 검수 실행에서 공식 블라인드 발문·보기로 20문항 전부 먼저 독립 재풀이해 Git 외 원시 기록을 고정했다. 그 후 기존 답·해설·PT/TPL·그림 양축을 개별 대조했으며 SW 게이트가 수학적 진실 자체를 자동 인증하는 것은 아니다.",
+    "blindArtifactRef": "/workspace/scratch/3847fbe145fa/geumdang-qa-evidence/26_금당고_2학기_중간_고2_기하_유사2.blind-reasoning.json"
+  },
+  "questions": [
+    {
+      "qid": 1,
+      "sourceFingerprint": "1fbd089eb655fd5d07eaa359e88b8a87dc7f64615134e7cb6760084df85d9920",
+      "blindAnswer": "③",
+      "blindReasoning": "장반축이 y방향으로 6이므로 양끝 y좌표는 -7과 5, 차는 12.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "Q1 problem 축: 발문·해설에 필요한 숫자·좌표·관계가 모두 문자로 제시되어 별도 그림이 필수적이지 않다. 타원 장축이 수직이며 양 끝 y좌표 -7,5의 차를 묻는 산술형이므로 별도 그래프 없이 성립한다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "Q1 solution 축: 발문·해설에 필요한 숫자·좌표·관계가 모두 문자로 제시되어 별도 그림이 필수적이지 않다. 타원 장축이 수직이며 양 끝 y좌표 -7,5의 차를 묻는 산술형이므로 별도 그래프 없이 성립한다."
+        }
+      }
+    },
+    {
+      "qid": 2,
+      "sourceFingerprint": "38c72993c79bb40aee3bb360e5ffc02e51c8722eedfd5360cd11103fef930045",
+      "blindAnswer": "①",
+      "blindReasoning": "주축이 수평이며 꼭짓점 (-3,1),(5,1)의 x좌표 차는 8.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "Q2 problem 축: 발문·해설에 필요한 숫자·좌표·관계가 모두 문자로 제시되어 별도 그림이 필수적이지 않다. 두 꼭짓점의 x좌표 -3,5가 이미 주어져 주축 길이 8을 계산할 수 있다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "Q2 solution 축: 발문·해설에 필요한 숫자·좌표·관계가 모두 문자로 제시되어 별도 그림이 필수적이지 않다. 두 꼭짓점의 x좌표 -3,5가 이미 주어져 주축 길이 8을 계산할 수 있다."
+        }
+      }
+    },
+    {
+      "qid": 3,
+      "sourceFingerprint": "a53ece8a85c4cc404807f45c358accba54cc9dfd95ca7929bbbe478765562d25",
+      "blindAnswer": "⑤",
+      "blindReasoning": "초점 x=5, 준선 x=-1의 중간에 꼭짓점 x=2; 초점까지 거리 3.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "Q3 problem 축: 발문·해설에 필요한 숫자·좌표·관계가 모두 문자로 제시되어 별도 그림이 필수적이지 않다. 준선 x=-1과 초점 (5,0)에서 중점 꼭짓점 (2,0)이 나오고 포물선 모델의 p=3과 일치한다."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "15c247fcde3db6e2b6ddd9c923eac4527fd79e348866d6597d477e45d4a98fbc",
+          "reasoning": "Q3 solution 축: 준선 x=-1과 초점 (5,0)에서 중점 꼭짓점 (2,0)이 나오고 포물선 모델의 p=3과 일치한다."
+        }
+      }
+    },
+    {
+      "qid": 4,
+      "sourceFingerprint": "33ec587f4d07389a5da51937130b0bdacc0537a2b0a111785c4b9fa6f5808b6e",
+      "blindAnswer": "②",
+      "blindReasoning": "(x+3)²=8py에서 꼭짓점 (-3,0), 초점 (-3,2p)=(-3,4), p=2, b+p=-1.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "Q4 problem 축: 발문·해설에 필요한 숫자·좌표·관계가 모두 문자로 제시되어 별도 그림이 필수적이지 않다. (x+3)²=8py의 초점 (-3,4)를 표현한 위로 열린 포물선으로, 엔진 p=4는 표준 초점거리다."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "7ddf6939aed0f0c20cdbeb88a4c675f990540881a3ab9b3b643f921dd5c791f0",
+          "reasoning": "Q4 solution 축: (x+3)²=8py의 초점 (-3,4)를 표현한 위로 열린 포물선으로, 엔진 p=4는 표준 초점거리다."
+        }
+      }
+    },
+    {
+      "qid": 5,
+      "sourceFingerprint": "8f459fb5e52f0b3e8cf43672467ebab568ed15821ac2cb0e1aca10dd5f6ca3ab",
+      "blindAnswer": "④",
+      "blindReasoning": "완전제곱으로 (x-1)²/9+(y+2)²/16=1, c²=7, 두 초점 거리 제곱 4c²=28.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "Q5 problem 축: 발문·해설에 필요한 숫자·좌표·관계가 모두 문자로 제시되어 별도 그림이 필수적이지 않다. 평행이동 타원의 반축 제곱 16,9와 초점거리 √7, 두 초점 거리 2√7이 모델에서 맞는다."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "7d739d54f866702e373f663ba54ab671dbf9e6947f14d13d2858c99406a62d57",
+          "reasoning": "Q5 solution 축: 평행이동 타원의 반축 제곱 16,9와 초점거리 √7, 두 초점 거리 2√7이 모델에서 맞는다."
+        }
+      }
+    },
+    {
+      "qid": 6,
+      "sourceFingerprint": "039e02701d42e659765afc539675c493b490e2b63870883a238a95417f828ea0",
+      "blindAnswer": "②",
+      "blindReasoning": "점근선 교점 (1,-1), x=9에서 세로밑변 길이 12, 수평높이 8, 면적 48.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "PASS",
+          "planDigest": "ccbd80a904e4a448756ee75ecf2aefff8ab1af870332746f4ecdc2b4e4cd2b27",
+          "reasoning": "Q6 problem 축: 쌍곡선 중심 (1,-1)의 두 점근선 y+1=±3/4(x-1)과 x=9의 교점, 세로 길이 12가 일치한다."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "42b1c926621779fc67c79b6fa1d806011915b31269e84d0c76d2b40084e8e959",
+          "reasoning": "Q6 solution 축: 쌍곡선 중심 (1,-1)의 두 점근선 y+1=±3/4(x-1)과 x=9의 교점, 세로 길이 12가 일치한다."
+        }
+      }
+    },
+    {
+      "qid": 7,
+      "sourceFingerprint": "964c23b335531b8b28b15ca1708534f331933befab16e2dcc72f7dd8ad7ab91b",
+      "blindAnswer": "③",
+      "blindReasoning": "타원 접선 3(x-1)/25+(y+1)/5=1에서 x=1이면 y+1=5이므로 y=4.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "Q7 problem 축: 발문·해설에 필요한 숫자·좌표·관계가 모두 문자로 제시되어 별도 그림이 필수적이지 않다. 타원 P=(4,11/5)의 접선과 x=1의 교점 T=(1,4)가 해설의 실제 접선식과 일치한다."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "1c14958c362e1712cb1fe1bdc322771dff3a4c8a9e51d73d148ec7bd8e818f86",
+          "reasoning": "Q7 solution 축: 타원 P=(4,11/5)의 접선과 x=1의 교점 T=(1,4)가 해설의 실제 접선식과 일치한다."
+        }
+      }
+    },
+    {
+      "qid": 8,
+      "sourceFingerprint": "3d74070c3554938798f515535ee8fb8190e448ab6a36bcfbde922b4f47ec15d1",
+      "blindAnswer": "⑤",
+      "blindReasoning": "접선 √2x/a-y/3=1의 기울기 3√2/a를 √2/2와 같게 두면 a=6.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "Q8 problem 축: 발문·해설에 필요한 숫자·좌표·관계가 모두 문자로 제시되어 별도 그림이 필수적이지 않다. 쌍곡선 a=6,b=3, P=(6√2,3)의 접선 기울기가 √2/2인 평행 관계를 표현한다."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "d9ef0ba5e0db618d26bc8f22e0b0d6ee6a6fa2a604c8d89b3e3e420c09022156",
+          "reasoning": "Q8 solution 축: 쌍곡선 a=6,b=3, P=(6√2,3)의 접선 기울기가 √2/2인 평행 관계를 표현한다."
+        }
+      }
+    },
+    {
+      "qid": 9,
+      "sourceFingerprint": "61bb57066e07a9b2dbd9935854f592ef7a0d32377cb31eb861d7566dcbdee0db",
+      "blindAnswer": "①",
+      "blindReasoning": "AG=(2,2,2), BH=(-2,2,2), 내적 4, 각 벡터 크기 √12라 예각 코사인 1/3.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "PASS",
+          "planDigest": "896cbf7fac99a2c5a4db6c92814b5fa1548934b0a9bb2d2b807d9aeae1a8995a",
+          "reasoning": "Q9 problem 축: 정육면체의 AG=(2,2,2), BH=(-2,2,2) 방향을 서로 다른 선분으로 구분하며 꼭짓점 매핑이 맞다."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "ba07cfcd8609d009fb5c1c90bffaaafa57457f46430aebfbeee5360f9e2e06d4",
+          "reasoning": "Q9 solution 축: 정육면체의 AG=(2,2,2), BH=(-2,2,2) 방향을 서로 다른 선분으로 구분하며 꼭짓점 매핑이 맞다."
+        }
+      }
+    },
+    {
+      "qid": 10,
+      "sourceFingerprint": "f82e11a716b11102f1511078d96d8306594188dd75a1df98cb4283ce4367079c",
+      "blindAnswer": "④",
+      "blindReasoning": "포물선 y²=-8x의 기울기 m 접선 y=mx-2/m에 (3,2)를 대입해 3m²-2m-2=0, 근의 합 2/3.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "Q10 problem 축: 발문·해설에 필요한 숫자·좌표·관계가 모두 문자로 제시되어 별도 그림이 필수적이지 않다. 왼쪽으로 열린 포물선 y²=-8x에서 A=(3,2)로부터 두 접선 T1,T2를 구성해 두 기울기 합을 설명한다."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "f1c0b53e89321386a7ca0571bd38fff39cfab08bdf40a175996f147b0912de3d",
+          "reasoning": "Q10 solution 축: 왼쪽으로 열린 포물선 y²=-8x에서 A=(3,2)로부터 두 접선 T1,T2를 구성해 두 기울기 합을 설명한다."
+        }
+      }
+    },
+    {
+      "qid": 11,
+      "sourceFingerprint": "1f2fc263672a43088e9f44edef57ba7b005b1bd69025d5c9fe5f1f2a1e9e3547",
+      "blindAnswer": "②",
+      "blindReasoning": "포물선 초점 (0,2), 준선 y=-2이므로 각 초점거리 y_i+2, 합 3×4+6=18.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "PASS",
+          "planDigest": "e7422bcdffe868e6dccab5eb29fb4277974f9cfb0ae91d60ad92dfc2612354d1",
+          "reasoning": "Q11 problem 축: 포물선 p=2의 예시 A,B,C는 서로 다르며 y좌표 6,0,6으로 G=(0,4)를 만족, 점 좌표값 표시 없이 개념만 보여준다."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "9b40735246441415d9bbf3352c8ec9704c17def645c26831766faabca7b553df",
+          "reasoning": "Q11 solution 축: 포물선 p=2의 예시 A,B,C는 서로 다르며 y좌표 6,0,6으로 G=(0,4)를 만족, 점 좌표값 표시 없이 개념만 보여준다."
+        }
+      }
+    },
+    {
+      "qid": 12,
+      "sourceFingerprint": "47b76552bbbe814eb58ceee1974b369c160e98ed04472228e3f134c6b85494ed",
+      "blindAnswer": "⑤",
+      "blindReasoning": "정사각뿔 한 변 a, 높이 a/√2, AH=(a/2,0,-a/√2), BD=(a,a,0); 내적과 크기로 cos=1/√6=√6/6.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "PASS",
+          "planDigest": "36e41891ed321594a2bfec58e25f727675ed8ebf6eb53978b75c39301472d58f",
+          "reasoning": "Q12 problem 축: 모든 모서리 길이가 2인 정사각뿔의 높이 √2와 CD 중점 H, 밑면 중심 O, 대각선 BD의 정사영 관계가 맞다."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "bb16dc2e6fea1384248e4d82bd2b3aa3c61047791e8674847a4627b9096d4b8d",
+          "reasoning": "Q12 solution 축: 모든 모서리 길이가 2인 정사각뿔의 높이 √2와 CD 중점 H, 밑면 중심 O, 대각선 BD의 정사영 관계가 맞다."
+        }
+      }
+    },
+    {
+      "qid": 13,
+      "sourceFingerprint": "bf407a9d466a3c1527c0fcd89712f7f52aaa4299491daa2e7496fe7e9d9d23a5",
+      "blindAnswer": "③",
+      "blindReasoning": "포물선 P(3,6) 접선기울기 1, 타원 접선기울기 -b²/(2a²)=-2, b²=4a²; 타원식에서 a²=18,b²=72, 합 90.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "PASS",
+          "planDigest": "a7a909fef66a04d12a5fc32b61a7106849f760a8564ab043ed6c5dbb8f48161f",
+          "reasoning": "Q13 problem 축: 타원 x²/18+y²/72=1과 포물선 y²=12x의 교점 P=(3,6), 접선 두 개의 기울기 곱 -2가 맞다; 문제 그림은 미지수 값을 문자·숫자로 노출하지 않는다."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "1b27b4df8d994d611da757d8c7646e76abd49acef4bf24ef2c4d9c687acf69c9",
+          "reasoning": "Q13 solution 축: 타원 x²/18+y²/72=1과 포물선 y²=12x의 교점 P=(3,6), 접선 두 개의 기울기 곱 -2가 맞다; 문제 그림은 미지수 값을 문자·숫자로 노출하지 않는다."
+        }
+      }
+    },
+    {
+      "qid": 14,
+      "sourceFingerprint": "7f9667a81ff7dd988f9cc8cb35f3d099970bbfc5fc0f88295271be0022a1a4e3",
+      "blindAnswer": "①",
+      "blindReasoning": "P(1,2)의 접선기울기 1, 법선 y=3-x; 포물선 재교점 R=(9,-6), 중점 M=(5,-2), 초점 F=(1,0), MF=√20=2√5.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "PASS",
+          "planDigest": "e55e1dc0b249a1f391bf57302709fc85d28aedbd5915bf7a72f71e9dbb2c565e",
+          "reasoning": "Q14 problem 축: 포물선 P=(1,2)의 접선 y=x+1에 수직인 법선 y=3-x, 제2교점 R=(9,-6), 중점 M=(5,-2)가 맞다."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "61b10f52eed5442b59a12fca55108065648e264e74c8548ae7ed4fe0f3dcdffd",
+          "reasoning": "Q14 solution 축: 포물선 P=(1,2)의 접선 y=x+1에 수직인 법선 y=3-x, 제2교점 R=(9,-6), 중점 M=(5,-2)가 맞다."
+        }
+      }
+    },
+    {
+      "qid": 15,
+      "sourceFingerprint": "40b661d1d2376946491bb1fab1883fcd2db1560ce0fd51c34e2daf01278ae186",
+      "blindAnswer": "④",
+      "blindReasoning": "타원 초점 F=(4,0), 다른 초점 F'=(-4,0). PF+PF'=10, 원 위 Q 최적화는 PC-2이므로 min(PQ-PF)=CF'-12. 이 값 1에서 √(12²+t²)=13, t=5.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "PASS",
+          "planDigest": "04453f82929196fbf52ce4d325fa781928a283429c39830639d8e87ea8c5c314",
+          "reasoning": "Q15 problem 축: 타원의 양쪽 초점 ±4와 중심 C=(8,5)의 반지름 2 원을 그려 원-타원 거리 차의 삼각부등식 등호를 설명한다."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "f20ee7c296025b3051366dd81ace048d2fbf0c1ed76f18f5c136d61c2304d174",
+          "reasoning": "Q15 solution 축: 타원의 양쪽 초점 ±4와 중심 C=(8,5)의 반지름 2 원을 그려 원-타원 거리 차의 삼각부등식 등호를 설명한다."
+        }
+      }
+    },
+    {
+      "qid": 16,
+      "sourceFingerprint": "0ae16692cf56420fedb5c44850a9c0f37343d5e523825876b2048c945fb60464",
+      "blindAnswer": "⑤",
+      "blindReasoning": "x²-y²=144, y²=28x-339를 연립해 x=13,15; 점들은 (13,±5),(15,±9). 사각형 RQPS는 평행한 세로 변 10,18, 가로 간격 2인 사다리꼴, 넓이 28.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "PASS",
+          "planDigest": "a475ba8e51b57330a196fda9876c1be1dde9f15e02ae181e45d0e46a20b4a28e",
+          "reasoning": "Q16 problem 축: 쌍곡선 x²-y²=144와 포물선 y²=28x-339의 네 교점 (13,±5),(15,±9) 및 사다리꼴 RQPS 순서가 맞다."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "e8abbf751b02c9eb79464ab6863dce8c1b1acfa40a86ae3b6ce4e0cf30484988",
+          "reasoning": "Q16 solution 축: 쌍곡선 x²-y²=144와 포물선 y²=28x-339의 네 교점 (13,±5),(15,±9) 및 사다리꼴 RQPS 순서가 맞다."
+        }
+      }
+    },
+    {
+      "qid": 17,
+      "sourceFingerprint": "a6dbc3fc31310c4856b007222e4b91aa1c4606ec78d07acabdc9edcb33f153eb",
+      "blindAnswer": "18",
+      "blindReasoning": "타원 접선의 두 축 절편은 36/x, 9/y여서 면적 162/(xy). 타원 위 xy의 최대값 ab/2=9, 최솟값 18.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "NOT_APPLICABLE"
+      },
+      "plan": {
+        "problem": {
+          "status": "PASS",
+          "planDigest": "67102c313f9f9801e4ef39faa466c4791498cc64dcf019160e79e526f1c763ba",
+          "reasoning": "Q17 problem 축: 타원 접선이 양의 두 좌표축을 가르는 삼각형, 해설 최적 접점 x=3√2와 절편 (6√2,3√2)을 정확히 표시한다."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "4cb7c9c09e382572cf7d658b6d74212f0e1a8a71b93858032931fe57abb26878",
+          "reasoning": "Q17 solution 축: 타원 접선이 양의 두 좌표축을 가르는 삼각형, 해설 최적 접점 x=3√2와 절편 (6√2,3√2)을 정확히 표시한다."
+        }
+      }
+    },
+    {
+      "qid": 18,
+      "sourceFingerprint": "6d45ad7e84a1fee164ea8149480b0bba4e8933e6cb636d410c12c89d980b69ea",
+      "blindAnswer": "6",
+      "blindReasoning": "A(p,2p) 접선은 y=x+p. 준선 x=-p, y=2p와 만든 직각삼각형의 두 직각변이 2p,2p로 둘레 (4+2√2)p=12+6√2, p=3; 초점-준선 거리 2p=6.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "NOT_APPLICABLE"
+      },
+      "plan": {
+        "problem": {
+          "status": "PASS",
+          "planDigest": "40d35b679d1d9f6a3a41339e0f860afd3aeefa920c563aa9fe7d503b8a7d33dd",
+          "reasoning": "Q18 problem 축: 포물선 p=3과 접선 y=x+3, 준선 x=-3, 수평선 y=6의 직각삼각형이 일치하며 해설의 과밀 길이 라벨을 캡션으로 이관했다."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "67b6060f364a411d4efd4074f12aa5cd4d00b5ba3a9cdb1cd23b88e5d76200d3",
+          "reasoning": "Q18 solution 축: 포물선 p=3과 접선 y=x+3, 준선 x=-3, 수평선 y=6의 직각삼각형이 일치하며 해설의 과밀 길이 라벨을 캡션으로 이관했다."
+        }
+      }
+    },
+    {
+      "qid": 19,
+      "sourceFingerprint": "4b17ea9651aee6f413c7c800cfc30e098c8673aa32fbd460dd368c31a7889b34",
+      "blindAnswer": "x²=16y; P=(-3,9/16); 최소 길이 12",
+      "blindReasoning": "O=(0,0), A=(0,4), AB=5, cosθ=3/5 및 B가 제2사분면·위쪽이므로 B=(-3,8). 포물선 x²=16y, 준선 y=-4에서 PA=y+4. BP+PA≥B에서 준선까지 거리 12, equality at xP=-3, yP=9/16.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "NOT_APPLICABLE"
+      },
+      "plan": {
+        "problem": {
+          "status": "PASS",
+          "planDigest": "f60c028fa5b3f304a4a5adf1388c6768c65b4013a381eeef659b0224378190fd",
+          "reasoning": "Q19 problem 축: 포물선 초점 A=(0,4), 공장 B=(-3,8), 최적 P=(-3,9/16), 준선 y=-4를 같은 좌표계로 연결한다."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "ce3688c3ee40e336c58c362f6f0818493649945ff558e618dfc0f17bb161a252",
+          "reasoning": "Q19 solution 축: 포물선 초점 A=(0,4), 공장 B=(-3,8), 최적 P=(-3,9/16), 준선 y=-4를 같은 좌표계로 연결한다."
+        }
+      }
+    },
+    {
+      "qid": 20,
+      "sourceFingerprint": "1d17d4f855f20e0870ab9fa110cf13dbaed24245d825cd3e9f4492b4f584fe73",
+      "blindAnswer": "32√2",
+      "blindReasoning": "마름모 각 변 6이므로 OP=AP=6; P와 Q 대칭이고 접점 y=8/k, 같은 거리로 y=k/2라 k=4, yP=2. OP²=36에서 xP=4√2, 타원식 t=64. 접선 x절편 R,S=±8√2, △ARS 면적 (16√2)×4/2=32√2.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "NOT_APPLICABLE"
+      },
+      "plan": {
+        "problem": {
+          "status": "PASS",
+          "planDigest": "de1c7d1a2bd49cc88c612ca844b17227699bc54d2e86f80b9d0672486d146bd2",
+          "reasoning": "Q20 problem 축: ellipse t=64, P=(4√2,2), Q=(-4√2,2), A=(0,4)의 마름모와 접선 x절편 ±8√2가 일치하며 문제 축에 정답 면적 표시가 없다."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "d64d17c0de3cbbda51e89fa69b8e91f9299cc7f216284332635edb2c4ded58ec",
+          "reasoning": "Q20 solution 축: ellipse t=64, P=(4√2,2), Q=(-4√2,2), A=(0,4)의 마름모와 접선 x절편 ±8√2가 일치하며 문제 축에 정답 면적 표시가 없다."
+        }
+      }
+    }
+  ]
+}

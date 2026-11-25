@@ -67,12 +67,12 @@ window.questionBank = [
     "courseKey": "H22-GE",
     "conceptClusterKey": "H22-GE-01-CORE",
     "problemTypeKey": "PT_GEO_HYPERBOLA",
-    "templateKey": "TPL_GEO_HYPERBOLA_ASYMPTOTE_AXIS",
+    "templateKey": "TPL_GEO_HYPERBOLA_STANDARD_EQUATION",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "difficultyBucket": 1,
-    "rpmPrimaryRecordId": "H2-GEO-RPM-043",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-189",
     "content": "중심이 $(1,1)$인 쌍곡선의 두 꼭짓점의 좌표가 $(-3,1)$, $(5,1)$이다. 이 쌍곡선의 주축의 길이는? [3.6점]",
     "choices": [
       "$8$",
@@ -162,7 +162,7 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "difficultyBucket": 1,
-    "rpmPrimaryRecordId": "H2-GEO-RPM-046",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-101",
     "content": "양수 $p$에 대하여 포물선 $x^2+6x-8py+9=0$의 초점이 $(b,4)$이다. $b+p$의 값은? [3.6점]",
     "choices": [
       "$-3$",
@@ -206,7 +206,7 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "difficultyBucket": 1,
-    "rpmPrimaryRecordId": "H2-GEO-RPM-042",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-113",
     "content": "타원 $16x^2+9y^2-32x+36y-92=0$의 두 초점 사이 거리의 제곱은? [3.8점]",
     "choices": [
       "$7$",
@@ -336,9 +336,7 @@ window.questionBank = [
     "conceptClusterKey": "H22-GE-02-CORE",
     "problemTypeKey": "PT_GEO_CONIC_TANGENT",
     "templateKey": "TPL_GEO_CONIC_TANGENT_SLOPE_TANGENT",
-    "crossConceptKeys": [
-      "CC_PERPENDICULAR_SLOPES"
-    ],
+    "crossConceptKeys": [],
     "conditionKeys": [
       "COND_POSITIVE"
     ],
@@ -383,12 +381,12 @@ window.questionBank = [
     "courseKey": "H22-GE",
     "conceptClusterKey": "H22-GE-03-CORE",
     "problemTypeKey": "PT_GEO_SPACE_FIGURE",
-    "templateKey": "TPL_GEO_SPACE_FIGURE_DOT_ANGLE",
+    "templateKey": "TPL_GEO_SPACE_LINES_ANGLE",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "difficultyBucket": 3,
-    "rpmPrimaryRecordId": "H2-GEO-RPM-058",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-169",
     "content": "한 모서리의 길이가 $2$인 정육면체 $ABCD-EFGH$에서 $A(0,0,0)$, $B(2,0,0)$, $D(0,2,0)$, $E(0,0,2)$이고 $C,F,G,H$는 각각 이에 대응하는 나머지 꼭짓점이다. 두 직선 $AG$, $BH$가 이루는 예각을 $\\theta$라 할 때, $\\cos\\theta$의 값은? [4.4점]",
     "choices": [
       "$\\dfrac13$",
@@ -877,7 +875,7 @@ window.questionBank = [
     ],
     "integrationPattern": "DEEP_COMPOSITE",
     "difficultyBucket": 5,
-    "rpmPrimaryRecordId": "H2-GEO-RPM-050",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-137",
     "content": "실수 $t>8$에 대하여 타원 $\\dfrac{x^2}{t}+\\dfrac{y^2}{8}=1$의 바깥 점 $A(0,k)$ $(k>2\\sqrt2)$에서 그은 두 접선의 접점을 제1사분면의 $P$, 제2사분면의 $Q$라 한다. 원점 $O$에 대하여 사각형 $OPAQ$가 둘레 $24$인 마름모이다. 두 접선이 $x$축과 만나는 점을 각각 $R,S$라 할 때 삼각형 $ARS$의 넓이를 구하고 그 과정을 서술하시오. [11점]",
     "choices": [],
     "answer": "$32\\sqrt2$",
