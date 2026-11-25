@@ -1,0 +1,22 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"PARABOLA","vertex":["0","0"],"p":"4","axis":"X"},
+  "points":[
+    {"id":"O","kind":"ORIGIN"},{"id":"F","kind":"FOCUS"},
+    {"id":"A","kind":"ON_CONIC","x":"9","branch":"POS"},
+    {"id":"B","kind":"ON_CONIC","x":"1","branch":"NEG"}
+  ],
+  "segments":[
+    {"id":"AF","from":"A","to":"F","label":"13"},
+    {"id":"BF","from":"B","to":"F","label":"5"},
+    {"id":"OA","from":"O","to":"A"},{"id":"OB","from":"O","to":"B"},
+    {"id":"AB","from":"A","to":"B"}
+  ],
+  "caption":"포물선 y²=16x 위의 제1·4사분면 점 A, B와 삼각형 AOB",
+  "accessibilityDescription":"포물선 위의 A는 위쪽 제1사분면, B는 아래쪽 제4사분면에 있다. 초점 F와 두 점의 거리는 각각 13과 5이다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"y²=16x, F=(4,0), AF=13인 제1사분면 A=(9,12), BF=5인 제4사분면 B=(1,-4)이다.","mappedTo":["conic","A","B","AF","BF"]},
+    {"id":"c2","condition":"문제가 묻는 삼각형 AOB의 넓이는 그림에 표시하지 않고 기본 윤곽선만 그린다.","mappedTo":["OA","OB","AB"]}
+  ],
+  "newVisualInformation":["점 A와 B의 상하 가지 위치 및 O-A-B 삼각형의 형태"]
+}

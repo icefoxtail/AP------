@@ -1,0 +1,17 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"PARABOLA","vertex":["0","0"],"p":"1/2","axis":"X"},
+  "points":[
+    {"id":"F","kind":"FOCUS"},
+    {"id":"P","kind":"ON_CONIC","x":"9/2","branch":"POS"},
+    {"id":"Q","kind":"POINT","x":"13/2","y":"9/2"}
+  ],
+  "segments":[{"id":"FP","from":"F","to":"P","label":"5"},{"id":"PQ","from":"P","to":"Q"}],
+  "caption":"포물선 y²=2x 위의 P와 초점 F, FP 연장선 위의 점 Q",
+  "accessibilityDescription":"포물선 위의 제1사분면 점 P가 초점 F와 연결되어 있고, 같은 방향 연장선에 Q가 있다. FP=5이고 FP:PQ=2:1이다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"y²=2x이므로 F=(1/2,0)이고 포물선 위 FP=5인 제1사분면 점 P=(9/2,3)이다.","mappedTo":["conic","F","P","FP"]},
+    {"id":"c2","condition":"Q는 FP의 P 너머 연장선 위에서 FP:PQ=2:1이 되므로 (13/2,9/2)에 두되 Q의 구하는 x좌표는 라벨로 노출하지 않는다.","mappedTo":["P","Q","PQ"]}
+  ],
+  "newVisualInformation":["F-P-Q가 이 순서로 한 직선 위에 놓이는 주어진 위치 관계"]
+}

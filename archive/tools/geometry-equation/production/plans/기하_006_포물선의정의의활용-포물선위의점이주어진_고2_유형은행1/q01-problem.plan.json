@@ -1,0 +1,18 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"PARABOLA","vertex":["0","0"],"p":"3","axis":"X"},
+  "points":[
+    {"id":"O","kind":"ORIGIN"},{"id":"F","kind":"FOCUS"},
+    {"id":"A","kind":"POINT","x":"7","y":"4","coordinates":true},
+    {"id":"P","kind":"ON_CONIC","y":"4"}
+  ],
+  "lines":[{"id":"h","y":"4","dashed":true}],
+  "segments":[{"id":"AP","from":"A","to":"P"},{"id":"PF","from":"P","to":"F"}],
+  "caption":"포물선 y²=12x와 A(7,4)를 지나는 수평선, 교점 P, 초점 F",
+  "accessibilityDescription":"원점을 꼭짓점으로 오른쪽으로 열린 포물선에 수평선 y=4가 점 P에서 만나고, 오른쪽 점 A(7,4)와 초점 F가 표시되어 있다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"주어진 포물선 y²=12x의 초점 F=(3,0)이며 직접 좌표 라벨은 생략한다.","mappedTo":["conic","F"]},
+    {"id":"c2","condition":"A=(7,4)와 x축 평행 직선 y=4의 포물선 교점 P=(4/3,4)는 A의 왼쪽에 있다. 구하는 AP+PF=10은 쓰지 않는다.","mappedTo":["A","P","AP","PF"]}
+  ],
+  "newVisualInformation":["A와 P의 수평 위치 및 P에서 초점까지의 선분"]
+}

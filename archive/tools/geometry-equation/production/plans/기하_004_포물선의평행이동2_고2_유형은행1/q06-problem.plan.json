@@ -1,0 +1,16 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"PARABOLA","vertex":["-2","2"],"p":"1/2","axis":"X"},
+  "points":[
+    {"id":"A","kind":"POINT","x":"0","y":"0","coordinates":true},
+    {"id":"B","kind":"POINT","x":"0","y":"4","coordinates":true},
+    {"id":"C","kind":"POINT","x":"6","y":"6","coordinates":true}
+  ],
+  "caption":"세 점 (0,0), (0,4), (6,6)을 지나는 오른쪽으로 열린 포물선",
+  "accessibilityDescription":"축이 x축과 평행한 포물선이 좌표평면의 (0,0), (0,4), (6,6)을 통과하고 오른쪽으로 열린다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"원문의 세 점은 포물선 x=(y-2)²/2-2 위에 놓이고, 대칭축은 y=2로 x축에 평행하며 오른쪽으로 열린다.","mappedTo":["conic","points"]},
+    {"id":"c2","condition":"원문에 이름이 없던 세 점은 좌표 라벨 소유를 위해 A, B, C를 부여하며, 초점 좌표와 준선 식 및 구하는 a+b+c는 그림에 표시하지 않는다.","mappedTo":"PRESERVED_ARCHIVE_BANK"}
+  ],
+  "newVisualInformation":["세 주어진 좌표가 놓이는 위치와 포물선의 평행이동 방향"]
+}

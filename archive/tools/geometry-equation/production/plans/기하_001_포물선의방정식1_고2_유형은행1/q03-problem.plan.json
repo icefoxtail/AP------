@@ -1,0 +1,32 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "PARABOLA",
+    "vertex": ["0", "0"],
+    "p": "4",
+    "axis": "X"
+  },
+  "points": [
+    {"id": "O", "kind": "ORIGIN"},
+    {"id": "F", "kind": "FOCUS"},
+    {"id": "A", "kind": "ON_CONIC", "x": "9", "branch": "POS"},
+    {"id": "B", "kind": "ON_CONIC", "x": "9", "branch": "NEG"},
+    {"id": "M", "kind": "POINT", "x": "9", "y": "0", "label": false}
+  ],
+  "segments": [
+    {"id": "OF", "from": "O", "to": "F", "label": "4"},
+    {"id": "AB", "from": "A", "to": "B"},
+    {"id": "FM", "from": "F", "to": "M", "label": "5", "dashed": true}
+  ],
+  "caption": "초점 F와 수직현 AB 사이의 거리 및 OF의 길이를 나타낸 포물선",
+  "accessibilityDescription": "오른쪽으로 열린 포물선의 꼭짓점 O, 초점 F, 축에 수직인 현 AB가 있고 OF는 4, F에서 현까지의 거리는 5이다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "꼭짓점 O, 초점 F 및 OF=4이므로 포물선은 y²=16x인 대표 좌표계로 배치한다.", "mappedTo": ["conic", "points"]},
+    {"id": "c2", "condition": "F가 O와 AB 사이에 있고 축에 수직인 AB까지의 거리가 5이므로 현의 x좌표는 9이며 두 끝점은 y=±12이다.", "mappedTo": ["points", "segments"]},
+    {"id": "c3", "condition": "문제에 없는 현의 x좌표나 OA의 길이는 수치 라벨로 노출하지 않는다.", "mappedTo": ["segments"]}
+  ],
+  "newVisualInformation": [
+    "초점 F가 꼭짓점 O와 현 AB 사이에 놓이는 방향 관계",
+    "문제에서 주어진 OF=4, F에서 현 AB까지의 거리 5"
+  ]
+}
