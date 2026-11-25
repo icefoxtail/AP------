@@ -1,9 +1,9 @@
 {
   "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
-  "requestId": "26_복성고_1학기_중간_고1_유사2-candidate-v1",
+  "requestId": "26_복성고_1학기_중간_고1_유사2-candidate-v2-correction",
   "examUid": "26_복성고_1학기_중간_고1_유사2",
   "sourceArchiveFile": "archive/exams/similar/high/h1/1mid/26_복성고_1학기_중간_고1_유사2.js",
-  "expectedSourceBlobSha1": "9096a8191e35374abd8c501a67184b0feb52ee02",
+  "expectedSourceBlobSha1": "e2ba21487f24ff49f9c5af9c524772f2e23c8447",
   "expectedQuestionCount": 24,
   "approval": {
     "type": "CANDIDATE_CREATION_GATE",
@@ -72,7 +72,7 @@
         "subUnitKey": "H22-C-01-POLYNOMIAL_BASIC",
         "subUnit": "다항식의 연산",
         "problemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
-        "templateKey": "TPL_H1_POLY_OPERATION_DIRECT",
+        "templateKey": "TPL_H1_POLY_COEFFICIENT_EXTRACTION",
         "crossConceptKeys": [
           "CC_POLYNOMIAL_LINEAR_COMBINATION"
         ],
@@ -97,9 +97,9 @@
       },
       "difficultyConfidence": "medium",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "원본 난도 1를 유지하며 다항식 결합값 역산으로 미지 다항식 자체를 구하고 특정 계수의 합 판단",
+      "difficultyReason": "원본 난도 1: x의 계수 9에서 2A의 계수 6을 빼는 기본 다항식 연산. 불필요한 전체 다항식 복원을 제거했다.",
       "hold": "",
-      "reason": "DRAFT_SINGLE_MODEL; SOURCE_BALANCED/CONFIRMATION; 변형축: 다항식 결합값 역산으로 미지 다항식 자체를 구하고 특정 계수의 합 판단; 원본: 두 다항식 $A=x^2+5x-11$, $B=3x^2-4x-9$에 대하여 $2A+B$를 간단히 하면? (3.3점); 유사1: 두 다항식 $A=3x^2-2x+5$, $B=x^2+4x-7$에 대하여 $3A-2B$를 간단히 하면? (3.3점); 문제 시각 EXEMPT; 해설 EXEMPT; 별도 메타 승인 NOT_RUN."
+      "reason": "DRAFT_SINGLE_MODEL; SOURCE_BALANCED/CONFIRMATION; 변형축: 전체 다항식 복원 대신 x의 계수만 역산하여 한 번의 계수 뺄셈으로 결정; 원본: 두 다항식 $A=x^2+5x-11$, $B=3x^2-4x-9$에 대하여 $2A+B$를 간단히 하면? (3.3점); 유사1: 두 다항식 $A=3x^2-2x+5$, $B=x^2+4x-7$에 대하여 $3A-2B$를 간단히 하면? (3.3점); 문제 시각 EXEMPT; 해설 EXEMPT; 별도 메타 승인 NOT_RUN.; 유형 독립재판정: 계수 추출과 역산 (ACTIVE TPL)"
     },
     {
       "questionUid": "qid_v1_19a29613ca8c6ef4b7cba51a58b1805d64eb8a68077e4e1dcdd7218e323fdd5b",
@@ -115,7 +115,7 @@
         "subUnitKey": "H22-C-01-POLYNOMIAL_BASIC",
         "subUnit": "다항식의 연산",
         "problemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
-        "templateKey": "TPL_H1_POLY_OPERATION_DIRECT",
+        "templateKey": "TPL_H1_POLY_COEFFICIENT_EXTRACTION",
         "crossConceptKeys": [
           "CC_COEFFICIENT_EXTRACTION_SELECTIVE",
           "CC_EXPONENT_SUM_COMBINATIONS"
@@ -143,7 +143,7 @@
       "difficultyBoundaryFlag": "NONE",
       "difficultyReason": "원본 난도 2를 유지하며 원본/유사1의 x계수 대신 x²계수·상수항을 사용하여 미지수 순서 역전",
       "hold": "",
-      "reason": "DRAFT_SINGLE_MODEL; SOURCE_BALANCED/CONFIRMATION; 변형축: 원본/유사1의 x계수 대신 x²계수·상수항을 사용하여 미지수 순서 역전; 원본: 다항식 $3(x-1)(x+a)+(x^2-2)(x+b)$의 전개식에서 $x$의 계수가 7, 상수항이 $-5$일 때, $a-2b$의 값은? (단, $a,b$는 상수) (3.3점); 유사1: 다항식 $2(x+1)(x+a)+(x^2-3)(x+b)$의 전개식에서 $x$의 계수가 $9$, 상수항이 $1$일 때, $a+3b$의 값은? (단, $a,b$는 상수) (3.3점); 문제 시각 EXEMPT; 해설 EXEMPT; 별도 메타 승인 NOT_RUN."
+      "reason": "DRAFT_SINGLE_MODEL; SOURCE_BALANCED/CONFIRMATION; 변형축: 원본/유사1의 x계수 대신 x²계수·상수항을 사용하여 미지수 순서 역전; 원본: 다항식 $3(x-1)(x+a)+(x^2-2)(x+b)$의 전개식에서 $x$의 계수가 7, 상수항이 $-5$일 때, $a-2b$의 값은? (단, $a,b$는 상수) (3.3점); 유사1: 다항식 $2(x+1)(x+a)+(x^2-3)(x+b)$의 전개식에서 $x$의 계수가 $9$, 상수항이 $1$일 때, $a+3b$의 값은? (단, $a,b$는 상수) (3.3점); 문제 시각 EXEMPT; 해설 EXEMPT; 별도 메타 승인 NOT_RUN.; 유형 독립재판정: 전개식 x²계수와 상수항 추출 (ACTIVE TPL)"
     },
     {
       "questionUid": "qid_v1_0c15fb57aac3234e5c43bc8d67c91eafb6b5ee3df30068a932f1ac46e1cb98a3",
@@ -272,9 +272,9 @@
       },
       "difficultyConfidence": "medium",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "원본 난도 3를 유지하며 인수의 영점 세 곳을 이용해 값을 얻고 다른 선형 결합 구성",
+      "difficultyReason": "원본 난도 3: 항등식의 특수값 대입을 유지하되 계수 관계 a=b로 미지 매개변수를 역산한다. 필요 없는 계수 계산은 검산용으로만 둔다.",
       "hold": "",
-      "reason": "DRAFT_SINGLE_MODEL; SOURCE_BALANCED/CONFIRMATION; 변형축: 인수의 영점 세 곳을 이용해 값을 얻고 다른 선형 결합 구성; 원본: 등식 $a(x-5)+b(x+4)(x-5)=cx(x+4)+3x-6$이 $x$에 대한 항등식이 되도록 하는 실수 $a,b,c$에 대하여 $a+b-c$의 값은? (3.5점); 유사1: 등식 $a(x-2)+b(x+3)(x-2)=cx(x+3)-3x-14$가 $x$에 대한 항등식이 되도록 하는 실수 $a,b,c$에 대하여 $ab+c$의 값은? (3.5점); 문제 시각 EXEMPT; 해설 EXEMPT; 별도 메타 승인 NOT_RUN."
+      "reason": "DRAFT_SINGLE_MODEL; SOURCE_BALANCED/CONFIRMATION; 변형축: 계수 a,b,c를 구한 뒤 결합식을 계산하는 순방향에서 a=b 관계로 항등식의 미지 계수 t를 역결정; 원본: 등식 $a(x-5)+b(x+4)(x-5)=cx(x+4)+3x-6$이 $x$에 대한 항등식이 되도록 하는 실수 $a,b,c$에 대하여 $a+b-c$의 값은? (3.5점); 유사1: 등식 $a(x-2)+b(x+3)(x-2)=cx(x+3)-3x-14$가 $x$에 대한 항등식이 되도록 하는 실수 $a,b,c$에 대하여 $ab+c$의 값은? (3.5점); 문제 시각 EXEMPT; 해설 EXEMPT; 별도 메타 승인 NOT_RUN."
     },
     {
       "questionUid": "qid_v1_195618a56910f3e0d7cf4a078288ee4f0c4588f80f0c376ea1c7377aeb4ec2cd",
@@ -776,9 +776,9 @@
       },
       "difficultyConfidence": "medium",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "원본 난도 4를 유지하며 실수부·허수부 조건 대신 켤레곱과 제곱합을 직접 부여하여 비에타로 연결",
+      "difficultyReason": "원본 난도 4: 켤레복소수의 합·곱과 제곱합의 항등식을 통해 두 대칭량을 복원하고 근과 계수의 관계를 적용한다.",
       "hold": "",
-      "reason": "DRAFT_SINGLE_MODEL; SOURCE_BALANCED/CONFIRMATION; 변형축: 실수부·허수부 조건 대신 켤레곱과 제곱합을 직접 부여하여 비에타로 연결; 원본: 이차방정식 $x^2+mx+n=0$ ($m,n$은 실수)의 한 근인 복소수 $z$가 다음 조건을 만족시킬 때, $m^2+n^2$의 값은? (단, $\\bar z$는 $z$의 켤레복소수이다.)\n<조건>\n가. $z^2+z\\bar z+\\bar z^2=0$\n나. $z$의 실수부분과 허수부분을 각각 $a,b$라 할 때, $a^2+b^2=1$이다. (4.3점); 유사1: 이차방정식 $x^2+mx+n=0$ ($m,n$은 실수)의 한 근인 복소수 $z$가 다음 조건을 만족시킬 때, $m^2+n^2$의 값은? (단, $\\bar z$는 $z$의 켤레복소수이다.) (4.3점)\n<조건>\n가. $z^2+\\bar z^2=z\\bar z$\n나. $z$의 실수부분과 허수부분을 각각 $a,b$라 할 때, $a^2+b^2=4$이다.; 문제 시각 EXEMPT; 해설 EXEMPT; 별도 메타 승인 NOT_RUN."
+      "reason": "DRAFT_SINGLE_MODEL; SOURCE_BALANCED/CONFIRMATION; 변형축: 실수부·허수부 제곱을 직접 주는 방식 대신 두 대칭식에서 근의 합의 제곱과 곱을 연립 복원; 원본: 이차방정식 $x^2+mx+n=0$ ($m,n$은 실수)의 한 근인 복소수 $z$가 다음 조건을 만족시킬 때, $m^2+n^2$의 값은? (단, $\\bar z$는 $z$의 켤레복소수이다.)\n<조건>\n가. $z^2+z\\bar z+\\bar z^2=0$\n나. $z$의 실수부분과 허수부분을 각각 $a,b$라 할 때, $a^2+b^2=1$이다. (4.3점); 유사1: 이차방정식 $x^2+mx+n=0$ ($m,n$은 실수)의 한 근인 복소수 $z$가 다음 조건을 만족시킬 때, $m^2+n^2$의 값은? (단, $\\bar z$는 $z$의 켤레복소수이다.) (4.3점)\n<조건>\n가. $z^2+\\bar z^2=z\\bar z$\n나. $z$의 실수부분과 허수부분을 각각 $a,b$라 할 때, $a^2+b^2=4$이다.; 문제 시각 EXEMPT; 해설 EXEMPT; 별도 메타 승인 NOT_RUN."
     },
     {
       "questionUid": "qid_v1_5dd4bbacc6542170b2e44d1008447915ceadc200bd228d1e6324ec8341901e06",
@@ -841,7 +841,7 @@
         "subUnitKey": "H22-C-01-POLYNOMIAL_BASIC",
         "subUnit": "다항식의 연산",
         "problemTypeKey": "PT_H1_POLY_DIVISION",
-        "templateKey": "TPL_H1_POLY_DIVISION_EXECUTION",
+        "templateKey": "TPL_H1_POLY_DIVISION_REDUCTION",
         "crossConceptKeys": [
           "CC_PYTHAGOREAN_THEOREM",
           "CC_CIRCLE_CHORD_PERP_BISECTOR",
@@ -873,7 +873,7 @@
       "difficultyBoundaryFlag": "NONE",
       "difficultyReason": "원본 난도 4를 유지하며 원과 변의 가까운 교점 BP 대신 먼 교점 BQ 조건으로 원 반지름 역산",
       "hold": "",
-      "reason": "DRAFT_SINGLE_MODEL; SOURCE_BALANCED/CONFIRMATION; 변형축: 원과 변의 가까운 교점 BP 대신 먼 교점 BQ 조건으로 원 반지름 역산; 원본: 한 변이 4인 정사각형 $ABCD$에서 원 $O$는 $AB,AD$에 접하고 $BC,DC$와 각각 두 점에서 만난다. 원과 $BC$의 교점을 $P,Q$라 하고 $BP=1$, 반지름을 $x$라 하자. $x^3-8x^2+15x+37=p+q\\sqrt2$일 때 $p+q$는? (단, 중심은 정사각형 내부, $p,q$ 정수) (4.8점); 유사1: 한 변의 길이가 $6$인 정사각형 $ABCD$에서 원 $O$는 변 $AB$, 변 $AD$에 접하고, 변 $BC$, 변 $CD$와는 각각 서로 다른 두 점에서 만난다. 원과 변 $BC$의 두 교점을 $P,Q$ ($BP<BQ$)라 하고 $BP=2$, 원 $O$의 반지름의 길이를 $x$라 하자. $x^3-12x^2-18x+150=p+q\\sqrt6$일 때 $p+q$의 값은? (단, 원의 중심은 정사각형의 내부에 있고, $p,q$는 정수이다.) (4.8점); 문제 시각 EXEMPT; 해설 EXEMPT; 별도 메타 승인 NOT_RUN."
+      "reason": "DRAFT_SINGLE_MODEL; SOURCE_BALANCED/CONFIRMATION; 변형축: 원과 변의 가까운 교점 BP 대신 먼 교점 BQ 조건으로 원 반지름 역산; 원본: 한 변이 4인 정사각형 $ABCD$에서 원 $O$는 $AB,AD$에 접하고 $BC,DC$와 각각 두 점에서 만난다. 원과 $BC$의 교점을 $P,Q$라 하고 $BP=1$, 반지름을 $x$라 하자. $x^3-8x^2+15x+37=p+q\\sqrt2$일 때 $p+q$는? (단, 중심은 정사각형 내부, $p,q$ 정수) (4.8점); 유사1: 한 변의 길이가 $6$인 정사각형 $ABCD$에서 원 $O$는 변 $AB$, 변 $AD$에 접하고, 변 $BC$, 변 $CD$와는 각각 서로 다른 두 점에서 만난다. 원과 변 $BC$의 두 교점을 $P,Q$ ($BP<BQ$)라 하고 $BP=2$, 원 $O$의 반지름의 길이를 $x$라 하자. $x^3-12x^2-18x+150=p+q\\sqrt6$일 때 $p+q$의 값은? (단, 원의 중심은 정사각형의 내부에 있고, $p,q$는 정수이다.) (4.8점); 문제 시각 EXEMPT; 해설 EXEMPT; 별도 메타 승인 NOT_RUN.; 유형 독립재판정: r² 관계로 r³을 낮은 차수로 환원 (ACTIVE TPL)"
     },
     {
       "questionUid": "qid_v1_8107bd538fabc8e5f52e4233d461855969bec8442681d3edb237ed7a530e6e7f",
