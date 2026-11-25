@@ -1,0 +1,25 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "SIN",
+    "coefficients": ["-1","1","0"],
+    "phasePi": "0",
+    "sourceDomain": {"kind":"INTERVAL_PI","rangePi":["0","5/2"],"states":["OPEN","OPEN"]},
+    "referenceLines": [
+      {"id":"n10","slope":"2/5","intercept":"-1","perPi":true,"intersectionCount":3,"color":"BLUE"}
+    ],
+    "axisTickPi": true,
+    "axisTickValues": {"x":["1","2"],"y":["-1"]},
+    "displaySize":"full"
+  },
+  "caption": "n=10의 경우 t=πx/2로 치환하면 0<t<5π/2에서 곡선 y=-sin t와 직선 y=2t/(5π)-1이 정확히 세 번 만난다.",
+  "accessibilityDescription": "첫 음의 사인 반주기 0<t<π에서 두 교점, 둘째 음의 반주기의 일부 2π<t<5π/2에서 한 교점이 생긴다.",
+  "sourceConditions": [
+    {"id":"s1","condition":"t=πx/2, n=10, 제4사분면의 x 범위 0<x<5","mappedTo":["graphPlan.sourceDomain"]},
+    {"id":"s2","condition":"y=-sin t와 y=2t/(5π)-1","mappedTo":["graphPlan.referenceLines"]}
+  ],
+  "newVisualInformation": [
+    "자연수 n=10을 표본으로 택해 교점 2+1의 구간 기여를 보여 준다. 이 한 그림은 n=9~12 전체 분류를 대신하지 않는다."
+  ]
+}

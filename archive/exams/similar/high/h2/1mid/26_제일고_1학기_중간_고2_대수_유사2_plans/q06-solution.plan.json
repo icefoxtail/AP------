@@ -1,0 +1,14 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"SOURCE_COORDINATE_AXES_v1","unit":"source-coordinate","reflectionEquivalent":false},"nodes":[
+    {"id":"O","op":"NORMALIZATION_ORIGIN","inputs":[],"args":{},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"U","op":"NORMALIZATION_AXIS","inputs":[],"args":{"length":{"kind":"integer","value":"1"}},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"k","op":"CIRCLE_CENTER_RADIUS","inputs":["O"],"args":{"radius":{"kind":"integer","value":"1"}},"outputType":"CIRCLE","factRole":"GIVEN"},
+    {"id":"P","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"-12","denominator":"13"},{"kind":"rational","numerator":"5","denominator":"13"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "displayPoints":["O","P"],"displayCircles":["k"],"displaySegments":[{"id":"OP","refs":["O","P"]}],"coordinateLabels":["P"],"axisTickValues":{"x":[],"y":[]},
+  "caption":"제2사분면 단위원 위의 점 P(-12/13,5/13)에서 코사인은 음수이고 사인은 양수이다.",
+  "accessibilityDescription":"원점에서 제2사분면으로 뻗은 동경 OP와 단위원 위의 점 P의 좌표가 표시되어 있다.",
+  "sourceConditions":[{"id":"S1","condition":"sinθ=5/13, cosθ=-12/13로 정해지는 제2사분면 동경","mappedTo":["P"]}],
+  "newVisualInformation":["부호에 따라 두 근을 사인과 코사인에 배정하는 해설 시각화"]
+}

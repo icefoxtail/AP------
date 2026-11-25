@@ -1,0 +1,21 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "SIN",
+    "coefficients": ["-3", "3", "1"],
+    "phasePi": "-1/3",
+    "sourceDomain": { "kind": "INTERVAL_PI", "rangePi": ["-1/6", "3/4"], "states": ["CLOSED", "CLOSED"] },
+    "domain": [-0.55, 2.4],
+    "viewport": [-0.7, 2.5, -3, 5],
+    "displaySize": "full",
+    "axisTickPi": true,
+    "axisTickValues": { "x": ["-1/18", "5/18", "11/18"], "y": ["-2", "4"] },
+    "keyPoints": true
+  },
+  "caption": "연속한 최고점 사이가 2파이 나누기 3인 사인 그래프에서 진폭과 평행이동을 읽는다",
+  "accessibilityDescription": "중심선 높이 1인 사인 곡선이 최댓값 4와 최솟값 마이너스 2 사이에서 움직인다. 두 최고점의 가로 거리는 2파이 나누기 3이다.",
+  "sourceQuote": "연속한 최댓값은 $x=-\\dfrac{\\pi}{18}$과",
+  "sourceConditions": [{ "id": "s17", "condition": "최댓값 4, 최솟값 -2, 연속한 최댓값 위치 x=-π/18과 x=11π/18, 중심선 y=1", "mappedTo": ["graphPlan"] }],
+  "newVisualInformation": ["진폭 3과 주기 2π/3, 음의 진폭으로 사인값 -1에서 최고점이 나타나는 관계를 확인한다."]
+}

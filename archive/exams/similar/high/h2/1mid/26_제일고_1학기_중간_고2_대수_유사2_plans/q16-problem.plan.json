@@ -1,0 +1,14 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"SOURCE_COORDINATE_AXES_v1","unit":"source-coordinate","reflectionEquivalent":false},"nodes":[
+    {"id":"O","op":"NORMALIZATION_ORIGIN","inputs":[],"args":{},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"U","op":"NORMALIZATION_AXIS","inputs":[],"args":{"length":{"kind":"integer","value":"1"}},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"4"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"C","op":"CIRCLE_CENTER_RADIUS","inputs":["A"],"args":{"radius":{"kind":"integer","value":"2"}},"outputType":"CIRCLE","factRole":"GIVEN"}
+  ]},
+  "displayCircles":["C"],"displayPoints":["O","A"],"axisTickValues":{"x":[],"y":[]},
+  "caption":"원 C의 중심 A는 원점보다 위에 있고 O는 원 밖에 있다. 거리의 구체적인 최솟값·최댓값은 표시하지 않는다.",
+  "accessibilityDescription":"좌표평면에서 원점 O가 원 C 바깥 아래에 있으며 원의 중심 A를 표시한다. 정답에 해당하는 거리와 교점 개수는 표시하지 않는다.",
+  "sourceConditions":[{"id":"S1","condition":"원 C: x²+y²−8y+12=0과 원점 O","mappedTo":["C","O"]}],
+  "newVisualInformation":["원점이 원 밖에 있어 O로부터의 거리에는 양쪽 끝이 있음을 보여 준다."]
+}
