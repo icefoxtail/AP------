@@ -1,0 +1,12 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"HYPERBOLA","center":["0","0"],"aSquared":"4","bSquared":"5","transverse":"X"},
+  "points":[{"id":"F","kind":"FOCUS","side":1,"coordinates":true},{"id":"C","kind":"FOCUS","side":-1,"coordinates":true},{"id":"A","kind":"LINE_CONIC","line":"fc","which":2},{"id":"B","kind":"LINE_CONIC","line":"fc","which":1}],
+  "lines":[{"id":"fc","slope":"sqrt(110)/4","intercept":"-3*sqrt(110)/4","hidden":true}],
+  "segments":[{"id":"AB","from":"A","to":"B"},{"id":"CA","from":"C","to":"A"},{"id":"CB","from":"C","to":"B"}],
+  "polygons":[{"id":"triangleABC","points":["A","B","C"]}],
+  "caption":"초점 F(3,0)를 지나는 현 AB와 다른 초점 C(-3,0)를 잇는 삼각형 ABC (둘레 22)",
+  "accessibilityDescription":"쌍곡선 x²/4−y²/5=1의 두 초점 C(-3,0)와 F(3,0)가 있다. F를 지나는 직선이 오른쪽 가지의 위쪽 A와 아래쪽 B를 지나며, 선분 CA, CB, AB가 둘레 22인 삼각형을 이룬다.",
+  "sourceConditions":[{"id":"c1","condition":"쌍곡선 x²/4−y²/5=1의 두 초점은 F=(3,0), C=(-3,0)이다.","mappedTo":["conic","F","C"]},{"id":"c2","condition":"F를 지나는 현 AB의 두 끝점이 오른쪽 가지에 있고 삼각형 ABC의 둘레가 22이다. 초점 정의로 AB=7이 되어 초점현 직선의 기울기 제곱 55/8을 내부적으로 사용한다. 답 AB는 시각적으로 노출하지 않는다.","mappedTo":["fc","A","B","AB","CA","CB","triangleABC"]}],
+  "newVisualInformation":["주어진 둘레와 양립하는 실제 교점 A,B를 현직선에서 계산","정답 AB=7은 SVG 길이 라벨로 내보내지 않음"]
+}

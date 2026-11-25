@@ -1,0 +1,10 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"HYPERBOLA","center":["0","0"],"aSquared":"36","bSquared":"64","transverse":"X"},
+  "points":[{"id":"F","kind":"FOCUS","side":1},{"id":"F'","kind":"FOCUS","side":-1},{"id":"P","kind":"ON_CONIC","x":"42/5","sign":"POS"}],
+  "segments":[{"id":"PF","from":"P","to":"F","label":"2k"},{"id":"PFp","from":"P","to":"F'","label":"5k"},{"id":"FFp","from":"F'","to":"F"}],
+  "caption":"두 초점과 제1사분면 P가 이루는 삼각형 PF′F 및 두 초점 거리의 비 5:2",
+  "accessibilityDescription":"좌우로 열린 쌍곡선의 초점 F(10,0), F′(-10,0)과 제1사분면의 P가 삼각형을 이룬다. P에서 왼쪽 초점까지의 거리는 5k, 오른쪽 초점까지는 2k로 비율을 나타낸다.",
+  "sourceConditions":[{"id":"c1","condition":"주어진 쌍곡선 a²=36,b²=64에서 c²=100이고 초점은 ±10이다.","mappedTo":["conic","F","F'"]},{"id":"c2","condition":"PF′:PF=5:2와 PF′−PF=12에서 PF′=20, PF=8, 대표 P=(42/5,16√6/5)을 얻는다. 5k/2k는 원문의 주어진 비만 표시한다.","mappedTo":["P","PF","PFp"]},{"id":"c3","condition":"삼각형의 세 변이 PF′=20,PF=8,FF′=20을 만족하지만 구하는 둘레 48은 미표시한다.","mappedTo":["PF","PFp","FFp"]}],
+  "newVisualInformation":["비율 5:2를 정확한 위치와 선분별 문자 라벨로 표시","둘레의 정답을 숨긴 초점 삼각형"]
+}

@@ -1,0 +1,12 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"HYPERBOLA","center":["0","0"],"aSquared":"16","bSquared":"9","transverse":"X"},
+  "points":[{"id":"A","kind":"FOCUS","side":-1,"coordinates":true},{"id":"B","kind":"FOCUS","side":1,"coordinates":true},{"id":"P","kind":"LINE_CONIC","line":"lc","which":2},{"id":"Q","kind":"LINE_CONIC","line":"lc","which":1}],
+  "lines":[{"id":"lc","slope":"sqrt(126)/7","intercept":"5*sqrt(126)/7","hidden":true}],
+  "segments":[{"id":"PQ","from":"P","to":"Q","label":"8"},{"id":"PB","from":"P","to":"B"},{"id":"QB","from":"Q","to":"B"}],
+  "polygons":[{"id":"trianglePQB","points":["P","Q","B"]}],
+  "caption":"A(-5,0)를 지나는 길이 8의 쌍곡선 왼쪽 초점현 PQ와 삼각형 PQB",
+  "accessibilityDescription":"쌍곡선 x²/16−y²/9=1의 초점 A(-5,0),B(5,0)가 있다. A를 통과하는 직선은 왼쪽 가지 제2사분면의 P와 제3사분면의 Q에서 만난다. PQ=8이고 P,Q,B를 이어 삼각형이 만들어진다.",
+  "sourceConditions":[{"id":"c1","condition":"쌍곡선 x²/16−y²/9=1에서 A=(-5,0),B=(5,0)는 각각 초점이다.","mappedTo":["conic","A","B"]},{"id":"c2","condition":"A를 지나는 직선이 왼쪽 가지의 P,Q에서 만나고 PQ=8이다. 초점현 길이로 기울기 제곱 18/7을 계산해 두 교점을 확정한다.","mappedTo":["lc","P","Q","PQ"]},{"id":"c3","condition":"삼각형 PQB의 둘레를 묻는 그림이다. 정답 둘레는 기입하지 않는다.","mappedTo":["trianglePQB","PB","QB"]}],
+  "newVisualInformation":["원본과 같이 왼쪽 가지에서 실제 초점현을 수학적으로 교차시켜 P,Q 배치","주어진 현 길이 8만 표시하고 요구한 둘레를 감춤"]
+}

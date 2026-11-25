@@ -1,0 +1,11 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"HYPERBOLA","center":["0","0"],"aSquared":"7","bSquared":"9","transverse":"X"},
+  "points":[{"id":"O","kind":"ORIGIN"},{"id":"F","kind":"FOCUS","side":1},{"id":"F'","kind":"FOCUS","side":-1},{"id":"P","kind":"ON_CONIC","y":"9/4","branch":"POS"},{"id":"Q","kind":"ON_CONIC","y":"-9/4","branch":"NEG"}],
+  "polygons":[{"id":"rect","points":["P","F'","Q","F"],"fill":"NONE"}],
+  "segments":[{"id":"PQ","from":"P","to":"Q"}],
+  "caption":"원점 O를 사이에 둔 P,Q와 두 초점으로 이루어진 직사각형 PF′QF",
+  "accessibilityDescription":"쌍곡선의 오른쪽 위 점 P와 원점 대칭인 왼쪽 아래 Q를 연결한다. F와 F′는 x축의 양·음의 초점이고 네 점 P,F′,Q,F가 직사각형을 이룬다.",
+  "sourceConditions":[{"id":"c1","condition":"쌍곡선 x²/7−y²/9=1의 초점은 ±4이다.","mappedTo":["conic","F","F'"]},{"id":"c2","condition":"대표 P=(5√7/4,9/4), Q=(-5√7/4,-9/4)는 원점 대칭이고 P,Q가 모두 쌍곡선 위에 있다.","mappedTo":["P","Q","PQ","O"]},{"id":"c3","condition":"PF′⊥PF는 P의 좌표에서 (P−F′)·(P−F)=x²+y²−16=0으로 검산된다. 네 꼭짓점의 직사각형은 실제 평행·수직 도형으로 구현하고 직각 모서리 눈금은 기능 보강 대기다. 구하는 둘레 20은 표기하지 않는다.","mappedTo":["rect","P","F","F'"]}],
+  "newVisualInformation":["직사각형을 이루는 정확한 쌍곡선 점과 그 원점 대칭점","직각 모서리 표식은 엔진 보강 대기, 최종 둘레는 비노출"]
+}

@@ -1,0 +1,10 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"HYPERBOLA","center":["0","0"],"aSquared":"16","bSquared":"9","transverse":"X"},
+  "points":[{"id":"F","kind":"FOCUS","side":1},{"id":"F'","kind":"FOCUS","side":-1},{"id":"P","kind":"ON_CONIC","x":"8","sign":"POS"},{"id":"Q","kind":"ON_CONIC","x":"-28/5","sign":"NEG"}],
+  "segments":[{"id":"PF","from":"P","to":"F"},{"id":"PFp","from":"P","to":"F'"},{"id":"QF","from":"Q","to":"F"},{"id":"QFp","from":"Q","to":"F'"}],
+  "caption":"쌍곡선의 오른쪽 위 P와 왼쪽 아래 Q에서 양쪽 초점까지 연결한 네 거리",
+  "accessibilityDescription":"가로로 열린 쌍곡선에 오른쪽 초점 F(5,0), 왼쪽 초점 F′(-5,0)이 있다. 제1사분면의 P와 제3사분면의 Q를 각각 F와 F′에 연결한 네 선분을 나타낸다.",
+  "sourceConditions":[{"id":"c1","condition":"쌍곡선 x²/16−y²/9=1의 초점 ±5, 주축 길이 8을 적용한다.","mappedTo":["conic","F","F'"]},{"id":"c2","condition":"조건 QF−PF=5를 만족하는 비유일한 점의 예로 P=(8,3√3), Q=(-28/5,-6√6/5)을 선택했다. PF=6,QF=11,PF′=14,QF′=3을 각각 검산했다.","mappedTo":["P","Q","PF","PFp","QF","QFp"]},{"id":"c3","condition":"구하는 PF′−QF′=11은 그림에 숫자로 노출하지 않는다.","mappedTo":["PFp","QFp"]}],
+  "newVisualInformation":["원문이 지정한 서로 다른 가지·사분면을 만족하는 실제 점 두 개와 네 거리의 대상 연결","답의 수치 비노출"]
+}

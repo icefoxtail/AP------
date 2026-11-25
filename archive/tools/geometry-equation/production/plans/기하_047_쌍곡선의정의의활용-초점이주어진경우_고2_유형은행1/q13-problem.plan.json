@@ -1,0 +1,11 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conics":[{"id":"h1","kind":"HYPERBOLA","center":["0","0"],"aSquared":"1","bSquared":"77/8+sqrt(4633)/8","transverse":"X","label":"H_1"},{"id":"h2","kind":"HYPERBOLA","center":["0","0"],"aSquared":"1","bSquared":"77/8+sqrt(4633)/8","transverse":"Y","label":"H_2"}],
+  "points":[{"id":"F","kind":"FOCUS","curve":"h1","side":1},{"id":"G","kind":"FOCUS","curve":"h2","side":1},{"id":"P","kind":"CONIC_CONIC","curves":["h1","h2"],"which":4},{"id":"Q","kind":"CONIC_CONIC","curves":["h1","h2"],"which":3}],
+  "segments":[{"id":"PG","from":"P","to":"G"},{"id":"GF","from":"G","to":"F"},{"id":"FQ","from":"F","to":"Q"},{"id":"QP","from":"Q","to":"P"}],
+  "polygons":[{"id":"PGFQ","points":["P","G","F","Q"]}],
+  "caption":"x축·y축 방향 두 쌍곡선 H₁,H₂의 공통 교점 P,Q와 초점 F,G로 이룬 사각형 PGFQ",
+  "accessibilityDescription":"오른쪽·왼쪽으로 열린 쌍곡선 H₁과 위·아래로 열린 쌍곡선 H₂가 제1사분면의 P와 제4사분면의 Q에서 만난다. 원문 그림 순서인 P-G-F-Q-P로 네 변이 연결되어 있다.",
+  "sourceConditions":[{"id":"c1","condition":"두 쌍곡선의 주축 길이는 각각 2로 a²=1이며 두 초점 거리는 같은 c>1이다. P와 Q는 x축 대칭이므로 두 곡선이 모두 중심 O인 H₁:x²−y²/(c²−1)=1, H₂:y²−x²/(c²−1)=1로 정확히 모델링한다.","mappedTo":["h1","h2"]},{"id":"c2","condition":"PF+QG=9 및 각 정의의 거리차 2에서 PF=7/2,QG=11/2이다. 두 교점은 P=(t,t),Q=(t,-t)이고 tc=9/2, 2t²+c²=85/4를 풀어 c²=(85+√4633)/8, b²=(77+√4633)/8의 가능한 해를 선택한다. 엔진 CONIC_CONIC으로 좌표를 계산한다.","mappedTo":["P","Q","F","G"]},{"id":"c3","condition":"원문 문제와 [그림]은 사각형 PGFQ이므로 PG,GF,FQ,QP를 연결한다. 하지만 원문 해설은 PG+GQ+QF+FP를 더하며 다른 사각형 PGQF의 둘레 16을 정답이라고 주장한다. 이 두 연결 방식은 달라서 SOURCE_FIGURE_SOLUTION_MISMATCH로 기록하며 정답을 도면에 쓰지 않는다.","mappedTo":["PG","GF","FQ","QP","PGFQ"]}],
+  "newVisualInformation":["두 실제 쌍곡선과 정확한 제1·4사분면 교점, 두 초점을 한 좌표평면에 표현","그림 지시의 PGFQ 네 변을 충실히 따름. 해설의 PGQF 변 연결과 불일치는 별도 원본 수정 필요"]
+}

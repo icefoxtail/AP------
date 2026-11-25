@@ -1,0 +1,10 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"HYPERBOLA","center":["0","0"],"aSquared":"16","bSquared":"20","transverse":"X"},
+  "points":[{"id":"F","kind":"FOCUS","side":1},{"id":"F'","kind":"FOCUS","side":-1},{"id":"P","kind":"ON_CONIC","x":"16/3","sign":"POS"},{"id":"A","kind":"POINT","x":"3","y":"0"}],
+  "segments":[{"id":"PF","from":"P","to":"F"},{"id":"PFp","from":"P","to":"F'"},{"id":"PA","from":"P","to":"A"},{"id":"FpA","from":"F'","to":"A","label":"3t"},{"id":"FA","from":"F","to":"A","label":"t"}],
+  "caption":"초점 삼각형 F′PF의 내각 이등분선 PA와 F′A:AF=3:1",
+  "accessibilityDescription":"제1사분면의 쌍곡선 점 P에서 왼쪽 초점 F′와 오른쪽 초점 F를 연결하고, 각 F′PF의 내각 이등분선 PA를 x축 위의 A로 내린다. F′A와 AF의 비는 3:1이다.",
+  "sourceConditions":[{"id":"c1","condition":"x²/16−y²/20=1의 초점은 F=(6,0),F′=(-6,0)이다.","mappedTo":["conic","F","F'"]},{"id":"c2","condition":"F′A:FA=3:1이므로 A=(3,0). PF′:PF=3:1과 거리차 8에서 PF=4, PF′=12, P=(16/3,2√35/3)이 된다.","mappedTo":["A","P","PF","PFp","FpA","FA"]},{"id":"c3","condition":"선분 PA는 삼각형의 실제 내각 이등분선이다. 동등 각호는 conic capability 미지원이므로 엔진 보강 대상으로 남기고, PF′×PF 답 48은 그림에 쓰지 않는다.","mappedTo":["PA"]}],
+  "newVisualInformation":["주어진 내분비를 x축 위 3t:t 라벨에 대응시키는 실제 이등분선","동등 각호의 엔진 표식 보완 대기"]
+}
