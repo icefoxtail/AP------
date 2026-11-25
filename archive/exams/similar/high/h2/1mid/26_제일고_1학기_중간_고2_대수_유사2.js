@@ -36,7 +36,7 @@ window.questionBank = [
       "$5$"
     ],
     "answer": "③",
-    "solution": "먼저 곱해진 두 세제곱근을 하나로 합친다.\n$\\sqrt[3]{10}\\times\\sqrt[3]{25}=\\sqrt[3]{250}=\\sqrt[3]{5^3\\times2}=5\\sqrt[3]{2}$이다.\n다음으로 $\\sqrt{\\sqrt[3]{4}}=4^{\\frac16}=2^{\\frac13}=\\sqrt[3]{2}$이다.\n따라서 주어진 등식은 $(5-a)\\sqrt[3]{2}=2\\sqrt[3]{2}$이다.\n$\\sqrt[3]{2}\ne0$이므로 $5-a=2$, 즉 $a=3$이다.",
+    "solution": "먼저 곱해진 두 세제곱근을 하나로 합친다.\n$\\sqrt[3]{10}\\times\\sqrt[3]{25}=\\sqrt[3]{250}=\\sqrt[3]{5^3\\times2}=5\\sqrt[3]{2}$이다.\n다음으로 $\\sqrt{\\sqrt[3]{4}}=4^{\\frac16}=2^{\\frac13}=\\sqrt[3]{2}$이다.\n따라서 주어진 등식은 $(5-a)\\sqrt[3]{2}=2\\sqrt[3]{2}$이다.\n$\\sqrt[3]{2}\\ne0$이므로 $5-a=2$, 즉 $a=3$이다.",
     "sourceQid": 1,
     "variationType": "EXAM_FOLLOWUP",
     "followupKind": "CONFIRMATION",
@@ -203,7 +203,7 @@ window.questionBank = [
       "$24$"
     ],
     "answer": "④",
-    "solution": "로그가 실수에서 정의되려면 밑은 양수이고 $1$이 아니며 진수는 양수여야 한다.\n밑의 조건은 $8-x>0$에서 $x<8$, $8-x\ne1$에서 $x\ne7$이다.\n진수의 조건 $(x-1)(9-x)>0$에서 두 인수는 동시에 양수여야 하므로 $1<x<9$이다.\n두 조건을 합치면 $1<x<8$이고 $x\ne7$이다.\n따라서 가능한 정수는 $2,3,4,5,6$이고 그 합은 $2+3+4+5+6=20$이다.",
+    "solution": "로그가 실수에서 정의되려면 밑은 양수이고 $1$이 아니며 진수는 양수여야 한다.\n밑의 조건은 $8-x>0$에서 $x<8$, $8-x\\ne1$에서 $x\\ne7$이다.\n진수의 조건 $(x-1)(9-x)>0$에서 두 인수는 동시에 양수여야 하므로 $1<x<9$이다.\n두 조건을 합치면 $1<x<8$이고 $x\\ne7$이다.\n따라서 가능한 정수는 $2,3,4,5,6$이고 그 합은 $2+3+4+5+6=20$이다.",
     "sourceQid": 5,
     "variationType": "EXAM_FOLLOWUP",
     "followupKind": "CONFIRMATION",
@@ -291,7 +291,7 @@ window.questionBank = [
       "$5$"
     ],
     "answer": "④",
-    "solution": "$4^x=9^y=6^z=k>0$에 각각 로그를 취하면 $x\\log4=y\\log9=z\\log6=\\log k$이다.\n$x,y,z$가 모두 $0$이 아니므로 $k\ne1$, 곧 $\\log k\ne0$이다.\n주어진 등식 $2xy+xz-yz=xyz$를 $xyz$로 나누면 $\\dfrac2z+\\dfrac1y-\\dfrac1x=1$이다.\n로그식에서 $\\dfrac1z=\\dfrac{\\log6}{\\log k}$, $\\dfrac1y=\\dfrac{\\log9}{\\log k}$, $\\dfrac1x=\\dfrac{\\log4}{\\log k}$이므로\n$\\dfrac{2\\log6+\\log9-\\log4}{\\log k}=1$이다.\n분자에 로그 법칙을 적용하면 $2\\log6+\\log9-\\log4=\\log\\dfrac{6^2\\times9}{4}=\\log81$이다.\n따라서 $\\log k=\\log81$, $k=81=3^4$이므로 $\\log_3k=4$이다.",
+    "solution": "$4^x=9^y=6^z=k>0$에 각각 로그를 취하면 $x\\log4=y\\log9=z\\log6=\\log k$이다.\n$x,y,z$가 모두 $0$이 아니므로 $k\\ne1$, 곧 $\\log k\\ne0$이다.\n주어진 등식 $2xy+xz-yz=xyz$를 $xyz$로 나누면 $\\dfrac2z+\\dfrac1y-\\dfrac1x=1$이다.\n로그식에서 $\\dfrac1z=\\dfrac{\\log6}{\\log k}$, $\\dfrac1y=\\dfrac{\\log9}{\\log k}$, $\\dfrac1x=\\dfrac{\\log4}{\\log k}$이므로\n$\\dfrac{2\\log6+\\log9-\\log4}{\\log k}=1$이다.\n분자에 로그 법칙을 적용하면 $2\\log6+\\log9-\\log4=\\log\\dfrac{6^2\\times9}{4}=\\log81$이다.\n따라서 $\\log k=\\log81$, $k=81=3^4$이므로 $\\log_3k=4$이다.",
     "sourceQid": 7,
     "variationType": "EXAM_FOLLOWUP",
     "followupKind": "CONFIRMATION",
