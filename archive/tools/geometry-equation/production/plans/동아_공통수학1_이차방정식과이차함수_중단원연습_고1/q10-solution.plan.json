@@ -1,0 +1,29 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [{ "coefficients": ["8", "6", "-2"] }],
+    "breakpoints": [],
+    "sourceDomain": { "kind": "INTERVAL", "range": [0, 2], "states": ["CLOSED", "CLOSED"] },
+    "domain": [0, 2],
+    "viewport": [-0.4, 2.4, -1, 14],
+    "axisScale": { "x": 1, "y": "1/3" },
+    "requiredPoints": [
+      { "id": "L", "x": 0, "y": 8 },
+      { "id": "M", "x": 1.5, "y": 12.5 },
+      { "id": "R", "x": 2, "y": 12 }
+    ],
+    "exactCoordinates": { "M": ["3/2", "25/2"] },
+    "axisTitles": { "x": "t", "y": "L(t)" },
+    "axisTickValues": { "x": [], "y": [] }
+  },
+  "sourceQuote": "선분 $\\mathrm{AB}$의 길이의 최댓값과 최솟값",
+  "caption": "수직거리 AB의 길이 L(t)=-2t²+6t+8: t=3/2에서 25/2로 최대, t=0에서 8로 최소",
+  "accessibilityDescription": "가로축 t, 세로축 L(t)인 아래로 열린 이차함수의 닫힌 구간 0부터 2를 나타냈다. (0,8), (3/2,25/2), (2,12)가 표시되고 꼭짓점에서 길이의 최댓값, 왼쪽 끝에서 최솟값을 읽는다.",
+  "sourceConditions": [
+    { "id": "S1", "condition": "두 곡선의 같은 t에서의 세로 거리 AB는 (-t²+6t+8)-t²=-2t²+6t+8이다.", "mappedTo": "graphPlan.pieces[0].coefficients=[8,6,-2], axisTitles[t,L(t)]" },
+    { "id": "S2", "condition": "0≤t≤2이고 t=3/2에서 최댓값 25/2이다.", "mappedTo": "sourceDomain과 requiredPoints[M], exactCoordinates[M]" },
+    { "id": "S3", "condition": "양 끝값은 L(0)=8, L(2)=12이므로 최솟값은 8이다.", "mappedTo": "requiredPoints[L,R]" }
+  ],
+  "newVisualInformation": ["선분 AB의 길이를 t에 따른 함수로 옮겨 최대점과 구간 양 끝값을 한 그래프에서 비교한다."]
+}

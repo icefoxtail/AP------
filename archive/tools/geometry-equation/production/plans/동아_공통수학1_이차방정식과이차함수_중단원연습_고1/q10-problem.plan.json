@@ -1,0 +1,35 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [{ "coefficients": ["0", "0", "1"] }],
+    "breakpoints": [],
+    "sourceDomain": { "kind": "INTERVAL", "range": [0, 2], "states": ["CLOSED", "CLOSED"] },
+    "functionName": "f",
+    "referenceCurves": [
+      { "id": "g", "name": "g", "pieces": [{ "coefficients": ["8", "6", "-1"] }], "breakpoints": [], "sourceDomain": { "kind": "INTERVAL", "range": [0, 2], "states": ["CLOSED", "CLOSED"] }, "intersectionX": [] }
+    ],
+    "domain": [0, 2],
+    "viewport": [-0.5, 2.5, -1, 18],
+    "requiredPoints": [{ "id": "O", "x": 0, "y": 0, "marker": "NONE" }],
+    "axisTickValues": { "x": [], "y": [] },
+    "overlays": {
+      "points": [
+        { "id": "A", "x": "1", "y": "1" },
+        { "id": "B", "x": "1", "y": "13" }
+      ],
+      "segments": [{ "id": "AB", "from": "A", "to": "B" }]
+    },
+    "sampleNote": "t=1"
+  },
+  "pointNames": { "A": "A", "B": "B" },
+  "sourceQuote": "직선 $x=t$와 두 이차함수",
+  "caption": "0≤t≤2에서 두 곡선과 세로선 x=t가 만나는 점 A,B의 배치 예시(t=1); 길이·최댓값·최솟값 미표시",
+  "accessibilityDescription": "구간 0부터 2에서 아래쪽 포물선 f(x)=x²와 위쪽 포물선 g(x)=-x²+6x+8을 그린다. 같은 x값 1에 놓인 A,B를 수직선분으로 잇되 길이의 수치나 최적 t는 나타내지 않는다.",
+  "sourceConditions": [
+    { "id": "S1", "condition": "두 이차함수는 y=x²와 y=-x²+6x+8이고 t는 0≤t≤2이다.", "mappedTo": "graphPlan.pieces[0].coefficients, referenceCurves[g].pieces[0].coefficients와 두 sourceDomain" },
+    { "id": "S2", "condition": "A와 B는 동일한 세로선 x=t 위에 놓이며 AB는 수직선분이다.", "mappedTo": "overlays.points[A,B], overlays.segments[AB]" },
+    { "id": "S3", "condition": "실제 t는 변수이므로 t=1은 가능한 대표 위치이고 답인 최대·최소 길이나 최적 t를 표시하지 않는다.", "mappedTo": "sampleNote와 caption의 배치 예시 고지, coordinates/length 비표시" }
+  ],
+  "newVisualInformation": ["두 함수값의 차가 같은 x좌표에 놓인 세로 선분의 길이라는 기하적 의미를 답 노출 없이 보여 준다."]
+}

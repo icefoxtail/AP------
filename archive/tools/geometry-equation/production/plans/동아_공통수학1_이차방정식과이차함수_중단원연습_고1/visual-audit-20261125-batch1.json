@@ -1,0 +1,399 @@
+{
+  "schemaVersion": "textbook-figure-plan-audit-v1",
+  "auditDate": "2026-11-25",
+  "mainBaseline": "1c55c2b645946dad1c59fc95245fdf3eb101f126",
+  "validationPolicy": {
+    "problemAnswerExposure": "NO_ANSWER_IN_PROBLEM_PLANS",
+    "defaultFill": "NONE",
+    "render": "NOT_RUN",
+    "pngReview": "NOT_RUN",
+    "studentScreen": "NOT_RUN",
+    "a4": "NOT_RUN",
+    "sourceVsPlanMethod": "실제 문제·해설·기존 PNG를 독립 대조하고 그려지는 graphPlan/mathPlan/overlays/planeMarks 필드별로 필요한 모든 요소를 확인",
+    "lintScope": "별도 명시된 제작 가능 plan에만 shallow/full 검사; EXEMPT는 실제 plan 수에서 제외"
+  },
+  "sourcePath": "archive/exams/textbooks/동아출판_공통수학1/동아_공통수학1_이차방정식과이차함수_중단원연습_고1/동아_공통수학1_이차방정식과이차함수_중단원연습_고1.js",
+  "sourceGitBlobSha": "29146f73be5b9f34b67366d0796f9baaaed7192d",
+  "scope": {
+    "firstQid": "q01",
+    "lastQid": "q12",
+    "questionCount": 12,
+    "axesPerQuestion": 2
+  },
+  "items": [
+    {
+      "qid": "q01",
+      "ordinal": 1,
+      "problem": {
+        "decision": "EXEMPT",
+        "reason": "발문이 세 함수의 x축과의 관계를 판단하도록 요구하므로 문제 그림을 미리 제시하면 결론(교점 수)을 노출한다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "featureParity": "NOT_APPLICABLE"
+      },
+      "solution": {
+        "decision": "BENEFICIAL",
+        "reason": "D>0, D=0, D<0에 따른 x축 위치를 세 실제 곡선으로 대조하면 판별식의 뜻이 명확해진다.",
+        "capability": "composite-panels-v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/동아_공통수학1_이차방정식과이차함수_중단원연습_고1/q01-solution.plan.json",
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "featureParity": "PASS",
+        "drawnFeatureCheck": [
+          "패널⑴ 계수 [2,-4,1], 꼭짓점(2,-2), x축 두 교점",
+          "패널⑵ 계수 [-16,-8,-1], 꼭짓점(-4,0)와 접함",
+          "패널⑶ 계수 [3,-3,2], 꼭짓점(3/4,15/8)로 x축 위",
+          "세 패널 모두 축/곡선/꼭짓점 수치가 실제 렌더 필드에 존재"
+        ]
+      }
+    },
+    {
+      "qid": "q02",
+      "ordinal": 2,
+      "problem": {
+        "decision": "EXEMPT",
+        "reason": "각 곡선과 직선의 교점 개수 자체가 질문이므로 문제 그림은 판별식의 결론을 먼저 보여 준다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "featureParity": "NOT_APPLICABLE"
+      },
+      "solution": {
+        "decision": "BENEFICIAL",
+        "reason": "세 연립 이차방정식의 판별식이 실제 교점 개수로 어떻게 나타나는지 비교한다.",
+        "capability": "composite-panels-v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/동아_공통수학1_이차방정식과이차함수_중단원연습_고1/q02-solution.plan.json",
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "featureParity": "PASS",
+        "drawnFeatureCheck": [
+          "⑴ f=(x-2)², g:y=-4, 실제 교점 0개, overlay 표시점 J(0,-4)로 음의 기준선 창에 유지",
+          "⑵ f=2x²+4x+1, g:y=3x+2, 실제 교점 x=-1,1/2",
+          "⑶ f=-x²-3x+1, g:y=-x+2, 접점 x=-1",
+          "세 직선은 각 graphPlan.overlays.lines에서 실선으로 그려짐"
+        ]
+      }
+    },
+    {
+      "qid": "q03",
+      "ordinal": 3,
+      "problem": {
+        "decision": "EXEMPT",
+        "reason": "미정인 a의 모든 경우를 문제용 그래프 한 장으로 특정할 수 없고 접점 표시가 답을 드러낸다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "featureParity": "NOT_APPLICABLE"
+      },
+      "solution": {
+        "decision": "BENEFICIAL",
+        "reason": "a=1과 a=3이 모두 중근을 만드는 두 경우임을 각각 확인한다.",
+        "capability": "composite-panels-v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/동아_공통수학1_이차방정식과이차함수_중단원연습_고1/q03-solution.plan.json",
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "featureParity": "PASS",
+        "drawnFeatureCheck": [
+          "a=1: 계수[1,2,1], 꼭짓점(-1,0)",
+          "a=3: 계수[9,6,1], 꼭짓점(-3,0)",
+          "두 패널 모두 꼭짓점 접점과 x축이 렌더 대상"
+        ]
+      }
+    },
+    {
+      "qid": "q04",
+      "ordinal": 4,
+      "problem": {
+        "decision": "BENEFICIAL",
+        "reason": "포물선 위가 아닌 주어진 점(0,2)과 곡선의 상대적 배치가 접선 문제 이해에 도움이 된다.",
+        "capability": "polynomial-spike-v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/동아_공통수학1_이차방정식과이차함수_중단원연습_고1/q04-problem.plan.json",
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "featureParity": "PASS",
+        "drawnFeatureCheck": [
+          "계수[6,-4,1]",
+          "곡선 외부 주어진 점 P(0,2)는 overlays.points로 그려짐",
+          "정답인 기울기·접선·접점은 미표시"
+        ]
+      },
+      "solution": {
+        "decision": "BENEFICIAL",
+        "reason": "외부 점에서 두 접선이 나오는 이유를 서로 다른 접점으로 보인다.",
+        "capability": "polynomial-spike-v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/동아_공통수학1_이차방정식과이차함수_중단원연습_고1/q04-solution.plan.json",
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "featureParity": "PASS",
+        "drawnFeatureCheck": [
+          "주어진 포물선[6,-4,1], 점 P(0,2)",
+          "수평 접선 y=2, 접점 V(2,2)",
+          "기울기 -8 접선 y=-8x+2, 접점 T(-2,18)",
+          "두 접선이 모두 P를 지나는 실제 overlays.lines"
+        ]
+      }
+    },
+    {
+      "qid": "q05",
+      "ordinal": 5,
+      "problem": {
+        "decision": "EXEMPT",
+        "reason": "ㄱ·ㄴ·ㄷ의 충분조건 판단은 판별식과 하나의 반례로 완결되며 그림을 제시하면 사례 일반화에 오해가 생길 수 있다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "featureParity": "NOT_APPLICABLE"
+      },
+      "solution": {
+        "decision": "EXEMPT",
+        "reason": "D=a²-4b의 부호 추론과 f(x)=x² 반례가 텍스트로 충분하고 특정 그래프 추가는 사례 중복이다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "featureParity": "NOT_APPLICABLE"
+      }
+    },
+    {
+      "qid": "q06",
+      "ordinal": 6,
+      "problem": {
+        "decision": "EXEMPT",
+        "reason": "기존 q06.png는 학생이 네 직선과 포물선을 직접 그릴 빈 좌표축이다. 미리 선·곡선을 채우면 단계1·2 정답을 노출한다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "featureParity": "NOT_APPLICABLE"
+      },
+      "solution": {
+        "decision": "REQUIRED",
+        "reason": "문항 단계1·2에서 요구한 네 직선과 포물선의 접점·교점 수를 답과 연결해 완성한다.",
+        "capability": "polynomial-spike-v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/동아_공통수학1_이차방정식과이차함수_중단원연습_고1/q06-solution.plan.json",
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "featureParity": "PASS",
+        "drawnFeatureCheck": [
+          "k=1 곡선 계수[1,3,1]",
+          "직선 y=x-1, y=x, y=x+1, y=x+2 네 개 모두 overlays.lines와 서로 다른 선색",
+          "n=2 접점 x=-1이 overlays.points[T]로 표시",
+          "교점 수 0,1,2,2가 실제 선·곡선 교차로 확인됨"
+        ]
+      },
+      "existingSourcePng": "q06.png",
+      "sourceImageReview": "학생용 빈 좌표축으로 기능하나 PNG 윗부분에 단계 지시 글자 일부가 포함됨; 본 plan은 해설에만 사용"
+    },
+    {
+      "qid": "q07",
+      "ordinal": 7,
+      "problem": {
+        "decision": "EXEMPT",
+        "reason": "발문은 주어진 구간의 극값을 스스로 구하는 내용이며 미리 꼭짓점을 표시하면 문제 풀이를 사실상 제공한다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "featureParity": "NOT_APPLICABLE"
+      },
+      "solution": {
+        "decision": "BENEFICIAL",
+        "reason": "꼭짓점이 구간 안에 있는 경우와 바깥에 있는 경우를 두 그래프로 대비한다.",
+        "capability": "composite-panels-v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/동아_공통수학1_이차방정식과이차함수_중단원연습_고1/q07-solution.plan.json",
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "featureParity": "PASS",
+        "drawnFeatureCheck": [
+          "⑴ 계수[5,-2,1], 닫힌 [-1,4], 끝(-1,8),(4,13), 꼭짓점(1,4)",
+          "⑵ 계수[0,-4,-2], 닫힌 [1,3], 끝(1,-6),(3,-30)",
+          "⑵ 화면은 axisScale.y=1/8로 눌려 있으나 정확한 좌표는 보존됨; 각도·기울기 비교용 그림이 아님"
+        ]
+      }
+    },
+    {
+      "qid": "q08",
+      "ordinal": 8,
+      "problem": {
+        "decision": "EXEMPT",
+        "reason": "k가 미지인 그래프의 절대 높이는 정해지지 않고 정점·최댓값 위치를 알려 주면 해법을 선공개한다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "featureParity": "NOT_APPLICABLE"
+      },
+      "solution": {
+        "decision": "BENEFICIAL",
+        "reason": "k=7 확정 후 1≤x≤4에서 꼭짓점과 끝점 세 곳의 높이 차를 직접 비교한다.",
+        "capability": "polynomial-spike-v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/동아_공통수학1_이차방정식과이차함수_중단원연습_고1/q08-solution.plan.json",
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "featureParity": "PASS",
+        "drawnFeatureCheck": [
+          "계수[7,-4,1], 닫힌 [1,4]",
+          "점 V(2,3), L(1,4), R(4,7)",
+          "x,y 눈금 값과 실제 requiredPoints의 좌표 일치"
+        ]
+      }
+    },
+    {
+      "qid": "q09",
+      "ordinal": 9,
+      "problem": {
+        "decision": "EXEMPT",
+        "reason": "원래 x에 대한 최솟값을 f(a)로 유도하는 것이 발문의 계산 목표이므로 결과 그래프 선공개는 풀이 누출이다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "featureParity": "NOT_APPLICABLE"
+      },
+      "solution": {
+        "decision": "BENEFICIAL",
+        "reason": "f(a)=-a²-a의 정의역 끝에 꼭짓점이 놓이는 특이점을 보여 준다.",
+        "capability": "polynomial-spike-v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/동아_공통수학1_이차방정식과이차함수_중단원연습_고1/q09-solution.plan.json",
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "featureParity": "PASS",
+        "drawnFeatureCheck": [
+          "계수[0,-1,-1], 닫힌 [-1/2,1]",
+          "가로축 a, 세로축 f(a)",
+          "정확 좌표 (-1/2,1/4), 오른쪽 끝 (1,-2)"
+        ]
+      }
+    },
+    {
+      "qid": "q10",
+      "ordinal": 10,
+      "problem": {
+        "decision": "BENEFICIAL",
+        "reason": "x=t에서 두 이차함수의 값 차가 선분 AB의 세로 길이라는 조건을 보이는 예시 도식이 필요하다.",
+        "capability": "piecewise-polynomial-spike-v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/동아_공통수학1_이차방정식과이차함수_중단원연습_고1/q10-problem.plan.json",
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "featureParity": "PASS",
+        "drawnFeatureCheck": [
+          "곡선 f=x², g=-x²+6x+8의 계수와 0≤t≤2 범위",
+          "대표 t=1 위치에 A(1,1), B(1,13), 세로 segment AB",
+          "눈금/점 좌표·최댓값·최솟값 표시 없음, sampleNote t=1만 표시"
+        ]
+      },
+      "solution": {
+        "decision": "BENEFICIAL",
+        "reason": "세로길이 L(t)=-2t²+6t+8의 꼭짓점과 양 끝값이 최대·최소를 결정한다.",
+        "capability": "piecewise-polynomial-spike-v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/동아_공통수학1_이차방정식과이차함수_중단원연습_고1/q10-solution.plan.json",
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "featureParity": "PASS",
+        "drawnFeatureCheck": [
+          "L(t) 계수[8,6,-2], 닫힌 t∈[0,2]",
+          "점 L(0,8), M(3/2,25/2), R(2,12), 정확한 분수 표기",
+          "axisScale.y=1/3은 길이값 표시 압축, 계산 좌표 그대로"
+        ]
+      }
+    },
+    {
+      "qid": "q11",
+      "ordinal": 11,
+      "problem": {
+        "decision": "REQUIRED",
+        "reason": "기존 q11.png는 아래쪽 가로선·세로변이 잘려 테이프 전체 연결을 알기 어렵다.",
+        "capability": "construction-spike-v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/동아_공통수학1_이차방정식과이차함수_중단원연습_고1/q11-problem.plan.json",
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "featureParity": "PASS",
+        "drawnFeatureCheck": [
+          "부스 1·2를 나란히 표시한 동일 크기 직사각형",
+          "가로 bottomLeft,bottomRight,topLeft,topRight 4개와 세로 left,middle,right 3개",
+          "공유 가운데 변 하나만 그려짐; 면 채움 없음, 60m 총량·넓이 답 미표시"
+        ]
+      },
+      "solution": {
+        "decision": "BENEFICIAL",
+        "reason": "4x+3y=60의 제약에서 가로길이 x에 따른 부스 총넓이 최대를 그래프로 확인한다.",
+        "capability": "polynomial-spike-v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/동아_공통수학1_이차방정식과이차함수_중단원연습_고1/q11-solution.plan.json",
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "featureParity": "PASS",
+        "drawnFeatureCheck": [
+          "원문과 동치인 S(x)=40x-8x²/3",
+          "열린 구간 0<x<15, 꼭짓점(15/2,150)",
+          "단위가 다른 가로길이·넓이는 applicationAxes, sourceConditions의 원래 y=10과 동치"
+        ]
+      },
+      "existingSourcePng": "q11.png",
+      "sourceImageReview": "두 직사각형 그림에서 아래쪽 경계가 잘린 결함 확인"
+    },
+    {
+      "qid": "q12",
+      "ordinal": 12,
+      "problem": {
+        "decision": "REQUIRED",
+        "reason": "기존 q12.png에는 직사각형의 C,D 및 바닥 변 일부가 잘려 필요한 점·변 연결이 불완전하다.",
+        "capability": "polynomial-spike-v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/동아_공통수학1_이차방정식과이차함수_중단원연습_고1/q12-problem.plan.json",
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "featureParity": "PASS",
+        "drawnFeatureCheck": [
+          "주어진 곡선 y=-x²+12x",
+          "대표 a=3일 때 A(3,27), B(9,27), C(3,0), D(9,0)",
+          "AC,CD,DB,BA 네 변과 A,B,C,D 실제 이름 표기",
+          "a의 숫자와 최대 둘레 답을 공개하지 않음"
+        ]
+      },
+      "solution": {
+        "decision": "BENEFICIAL",
+        "reason": "둘레 P(a)=-2a²+20a+24의 허용구간 안 최대점을 시각화한다.",
+        "capability": "polynomial-spike-v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/동아_공통수학1_이차방정식과이차함수_중단원연습_고1/q12-solution.plan.json",
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "featureParity": "PASS",
+        "drawnFeatureCheck": [
+          "원문 풀이 계수 [24,20,-2]와 열린 0<a<6",
+          "필수점 M(5,74)",
+          "applicationAxes의 가로축 변수 a와 실제 극값 좌표 일치"
+        ]
+      },
+      "existingSourcePng": "q12.png",
+      "sourceImageReview": "A,B만 보이고 C,D 및 x축·하단 경계 일부가 누락됨"
+    }
+  ]
+}

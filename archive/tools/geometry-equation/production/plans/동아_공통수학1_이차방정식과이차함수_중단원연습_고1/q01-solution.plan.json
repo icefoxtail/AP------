@@ -1,0 +1,17 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    { "caption": { "text": "⑴ 서로 다른 두 교점" }, "plan": { "capability": "polynomial-spike-v1", "graphPlan": { "family": "polynomial", "coefficients": ["2", "-4", "1"], "sourceDomain": { "kind": "ALL_REALS" }, "domain": [-1, 5], "viewport": [-1, 5, -3, 12], "requiredPoints": [{ "id": "V", "x": 2, "y": -2 }], "axisTickValues": { "x": [], "y": [] } }, "caption": "y=x²-4x+2: x축을 두 번 지난다." } },
+    { "caption": { "text": "⑵ x축에 접함" }, "plan": { "capability": "polynomial-spike-v1", "graphPlan": { "family": "polynomial", "coefficients": ["-16", "-8", "-1"], "sourceDomain": { "kind": "ALL_REALS" }, "domain": [-8, 0], "viewport": [-8, 0, -18, 3], "requiredPoints": [{ "id": "V", "x": -4, "y": 0 }], "axisTickValues": { "x": [], "y": [] } }, "caption": "y=-(x+4)²: x축에 한 점에서 접한다." } },
+    { "caption": { "text": "⑶ x축과 만나지 않음" }, "plan": { "capability": "polynomial-spike-v1", "graphPlan": { "family": "polynomial", "coefficients": ["3", "-3", "2"], "sourceDomain": { "kind": "ALL_REALS" }, "domain": [-1, 3], "viewport": [-1, 3, -1, 14], "requiredPoints": [{ "id": "V", "x": 0.75, "y": 1.875 }], "exactCoordinates": { "V": ["3/4", "15/8"] }, "axisTickValues": { "x": [], "y": [] } }, "caption": "y=2x²-3x+3: 꼭짓점이 x축 위에 있다." } }
+  ],
+  "sourceQuote": "다음 이차함수 그래프와 $x$축의 위치 관계",
+  "caption": "판별식 D의 부호에 따라 이차함수가 x축과 두 점에서 만남·접함·만나지 않음을 비교한 세 그래프",
+  "accessibilityDescription": "첫째 포물선은 위로 열려 x축을 두 번 지나고, 둘째 포물선은 아래로 열려 x축에 한 점에서 접한다. 셋째 포물선은 위로 열려 전체가 x축 위에 있어 만나지 않는다.",
+  "sourceConditions": [
+    { "id": "S1", "condition": "⑴ y=x²-4x+2, D>0", "mappedTo": "panels[0].plan.graphPlan.coefficients와 실제 두 x절편" },
+    { "id": "S2", "condition": "⑵ y=-x²-8x-16=-(x+4)², D=0", "mappedTo": "panels[1].plan.graphPlan.coefficients와 requiredPoints[V]=(-4,0)" },
+    { "id": "S3", "condition": "⑶ y=2x²-3x+3, D<0, 꼭짓점 (3/4,15/8)", "mappedTo": "panels[2].plan.graphPlan.coefficients, requiredPoints[V], exactCoordinates[V]" }
+  ],
+  "newVisualInformation": ["판별식의 세 경우를 실제 곡선이 x축에 놓이는 방식으로 한눈에 비교한다."]
+}

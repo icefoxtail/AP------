@@ -1,0 +1,25 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": ["7", "-4", "1"],
+    "sourceDomain": { "kind": "INTERVAL", "range": [1, 4], "states": ["CLOSED", "CLOSED"] },
+    "domain": [1, 4],
+    "viewport": [-1, 5, -1, 9],
+    "requiredPoints": [
+      { "id": "V", "x": 2, "y": 3 },
+      { "id": "L", "x": 1, "y": 4 },
+      { "id": "R", "x": 4, "y": 7 }
+    ],
+    "axisTickValues": { "x": [1, 2, 4], "y": [3, 7] }
+  },
+  "sourceQuote": "최댓값과 최솟값의 합이 $10$일 때",
+  "caption": "해설에서 구한 k=7을 대입한 그래프: x=2에서 최솟값 3, x=4에서 최댓값 7",
+  "accessibilityDescription": "닫힌 구간 1부터 4까지의 위로 열린 포물선 y=x²-4x+7에서 꼭짓점은 (2,3)이고 양 끝점은 (1,4), (4,7)이다. 구간 안 최솟값은 3이고 최댓값은 7이다.",
+  "sourceConditions": [
+    { "id": "S1", "condition": "해설의 k=7을 대입하면 y=x²-4x+7이며 정의역은 1≤x≤4다.", "mappedTo": "graphPlan.coefficients와 sourceDomain의 폐구간 [1,4]" },
+    { "id": "S2", "condition": "꼭짓점 x=2에서 최솟값 k-4=3이다.", "mappedTo": "requiredPoints[V]와 axisTickValues[x=2,y=3]" },
+    { "id": "S3", "condition": "양 끝점 y(1)=4, y(4)=7이므로 최댓값은 7이다.", "mappedTo": "requiredPoints[L,R]와 axisTickValues[x=1,4;y=7]" }
+  ],
+  "newVisualInformation": ["구간에 포함된 꼭짓점과 두 끝점 높이를 실제 좌표로 비교한다."]
+}

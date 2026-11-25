@@ -1,0 +1,17 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    { "caption": { "text": "⑴ 만나지 않음" }, "plan": { "capability": "polynomial-spike-v1", "graphPlan": { "family": "polynomial", "coefficients": ["4", "-4", "1"], "sourceDomain": { "kind": "ALL_REALS" }, "domain": [-1, 5], "viewport": [-1, 5, -6, 12], "requiredPoints": [{ "id": "V", "x": 2, "y": 0 }], "overlays": { "lines": [{ "id": "g", "slope": "0", "intercept": "-4", "label": "y=-4", "color": "BLUE" }], "points": [{ "id": "J", "x": "0", "y": "-4" }] }, "axisTickValues": { "x": [], "y": [] } }, "caption": "y=(x-2)²와 y=-4는 만나지 않는다." } },
+    { "caption": { "text": "⑵ 두 교점" }, "plan": { "capability": "polynomial-spike-v1", "graphPlan": { "family": "polynomial", "coefficients": ["1", "4", "2"], "sourceDomain": { "kind": "ALL_REALS" }, "domain": [-3, 2], "viewport": [-3, 2, -4, 20], "requiredPoints": [{ "id": "V", "x": -1, "y": -1 }], "overlays": { "lines": [{ "id": "g", "slope": "3", "intercept": "2", "label": "y=3x+2", "color": "BLUE" }] }, "axisTickValues": { "x": [], "y": [] } }, "caption": "y=2x²+4x+1과 y=3x+2는 두 점에서 만난다." } },
+    { "caption": { "text": "⑶ 한 점에서 접함" }, "plan": { "capability": "polynomial-spike-v1", "graphPlan": { "family": "polynomial", "coefficients": ["1", "-3", "-1"], "sourceDomain": { "kind": "ALL_REALS" }, "domain": [-4, 2], "viewport": [-4, 2, -11, 5], "requiredPoints": [{ "id": "V", "x": -1.5, "y": 3.25 }], "exactCoordinates": { "V": ["-3/2", "13/4"] }, "overlays": { "lines": [{ "id": "g", "slope": "-1", "intercept": "2", "label": "y=-x+2", "color": "BLUE" }] }, "axisTickValues": { "x": [], "y": [] } }, "caption": "y=-x²-3x+1과 y=-x+2는 x=-1에서 접한다." } }
+  ],
+  "sourceQuote": "다음 이차함수 그래프와 직선의 위치 관계",
+  "caption": "이차함수와 직선을 연립한 방정식의 판별식이 음수·양수·0인 세 경우의 교점 비교",
+  "accessibilityDescription": "첫째 패널에서는 y=(x-2)²가 수평선 y=-4보다 위에 있어 만나지 않는다. 둘째 패널에서는 y=2x²+4x+1과 직선 y=3x+2가 두 점에서 만나고, 셋째 패널에서는 y=-x²-3x+1과 직선 y=-x+2가 접한다.",
+  "sourceConditions": [
+    { "id": "S1", "condition": "⑴ (x-2)²=-4는 실근이 없어 교점도 없다.", "mappedTo": "panels[0].plan.graphPlan.coefficients와 overlays.lines[g].intercept=-4" },
+    { "id": "S2", "condition": "⑵ 2x²+x-1=0의 근은 -1과 1/2이다.", "mappedTo": "panels[1].plan.graphPlan.coefficients와 overlays.lines[g]의 실제 두 교점" },
+    { "id": "S3", "condition": "⑶ (x+1)²=0으로 x=-1에서 접한다.", "mappedTo": "panels[2].plan.graphPlan.coefficients와 overlays.lines[g]의 접점" }
+  ],
+  "newVisualInformation": ["곡선과 직선을 연립할 때 판별식에 따라 교점 수가 0·2·1인 이유를 시각적으로 비교한다."]
+}

@@ -1,0 +1,16 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    { "caption": { "text": "a=1, 접점 (-1,0)" }, "plan": { "capability": "polynomial-spike-v1", "graphPlan": { "family": "polynomial", "coefficients": ["1", "2", "1"], "sourceDomain": { "kind": "ALL_REALS" }, "domain": [-4, 2], "viewport": [-4, 2, -1, 11], "requiredPoints": [{ "id": "T", "x": -1, "y": 0 }], "axisTickValues": { "x": [], "y": [] } }, "caption": "a=1이면 y=(x+1)²이다." } },
+    { "caption": { "text": "a=3, 접점 (-3,0)" }, "plan": { "capability": "polynomial-spike-v1", "graphPlan": { "family": "polynomial", "coefficients": ["9", "6", "1"], "sourceDomain": { "kind": "ALL_REALS" }, "domain": [-6, 0], "viewport": [-6, 0, -1, 11], "requiredPoints": [{ "id": "T", "x": -3, "y": 0 }], "axisTickValues": { "x": [], "y": [] } }, "caption": "a=3이면 y=(x+3)²이다." } }
+  ],
+  "sourceQuote": "그래프가 $x$축과 한 점에서 만나도록 하는",
+  "caption": "a=1과 a=3을 대입하면 서로 다른 두 이차함수 모두 x축과 한 점에서 접한다",
+  "accessibilityDescription": "첫째 패널은 위로 열린 y=(x+1)²의 꼭짓점 (-1,0)이 x축에 닿고, 둘째 패널은 y=(x+3)²의 꼭짓점 (-3,0)이 x축에 닿는다. 두 경우 모두 판별식이 0이다.",
+  "sourceConditions": [
+    { "id": "S1", "condition": "D/4=(a-1)(a-3)=0, a=1 또는 3이다.", "mappedTo": "panels[0]의 a=1, panels[1]의 a=3" },
+    { "id": "S2", "condition": "a=1일 때 y=x²+2x+1로 접점 (-1,0)이다.", "mappedTo": "panels[0].plan.graphPlan.coefficients, requiredPoints[T]" },
+    { "id": "S3", "condition": "a=3일 때 y=x²+6x+9로 접점 (-3,0)이다.", "mappedTo": "panels[1].plan.graphPlan.coefficients, requiredPoints[T]" }
+  ],
+  "newVisualInformation": ["판별식 조건이 서로 다른 두 개의 실제 접하는 포물선을 결정함을 보여 준다."]
+}

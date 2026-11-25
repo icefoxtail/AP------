@@ -1,0 +1,392 @@
+{
+  "schemaVersion": "textbook-figure-plan-audit-v1",
+  "auditDate": "2026-11-25",
+  "mainBaseline": "1c55c2b645946dad1c59fc95245fdf3eb101f126",
+  "validationPolicy": {
+    "problemAnswerExposure": "NO_ANSWER_IN_PROBLEM_PLANS",
+    "defaultFill": "NONE",
+    "render": "NOT_RUN",
+    "pngReview": "NOT_RUN",
+    "studentScreen": "NOT_RUN",
+    "a4": "NOT_RUN",
+    "sourceVsPlanMethod": "실제 문제·해설·기존 PNG를 독립 대조하고 그려지는 graphPlan/mathPlan/overlays/planeMarks 필드별로 필요한 모든 요소를 확인",
+    "lintScope": "별도 명시된 제작 가능 plan에만 shallow/full 검사; EXEMPT는 실제 plan 수에서 제외"
+  },
+  "sourcePath": "archive/exams/textbooks/동아출판_공통수학1/동아_공통수학1_행렬_중단원연습_고1/동아_공통수학1_행렬_중단원연습_고1.js",
+  "sourceGitBlobSha": "c0627bda7703892054c1bddd7f793048ae68e012",
+  "scope": {
+    "firstQid": "q01",
+    "lastQid": "q15",
+    "questionCount": 15,
+    "axesPerQuestion": 2
+  },
+  "items": [
+    {
+      "qid": "q01",
+      "ordinal": 1,
+      "problem": {
+        "decision": "EXEMPT",
+        "reason": "행렬의 2행 3열 배치와 성분은 이미 수식 자체에 그려져 있어 별도 그림이 중복된다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "featureParity": "NOT_APPLICABLE"
+      },
+      "solution": {
+        "decision": "EXEMPT",
+        "reason": "성분 (1,3),(2,2)를 직접 읽는 과정은 숫자 위치 설명으로 완결된다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "featureParity": "NOT_APPLICABLE"
+      }
+    },
+    {
+      "qid": "q02",
+      "ordinal": 2,
+      "problem": {
+        "decision": "EXEMPT",
+        "reason": "a_ij 규칙은 각 성분에 대입하는 계산 문제이며 새로운 공간 구조가 없다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "featureParity": "NOT_APPLICABLE"
+      },
+      "solution": {
+        "decision": "EXEMPT",
+        "reason": "각 성분의 네 대입식과 완성 행렬이 해설에 직접 적혀 있다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "featureParity": "NOT_APPLICABLE"
+      }
+    },
+    {
+      "qid": "q03",
+      "ordinal": 3,
+      "problem": {
+        "decision": "EXEMPT",
+        "reason": "서로 같은 행렬의 대응 성분 비교만 요구하며 두 행렬은 이미 나란히 보인다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "featureParity": "NOT_APPLICABLE"
+      },
+      "solution": {
+        "decision": "EXEMPT",
+        "reason": "두 연립방정식의 소거 계산을 그림으로 복제해도 정보가 늘지 않는다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "featureParity": "NOT_APPLICABLE"
+      }
+    },
+    {
+      "qid": "q04",
+      "ordinal": 4,
+      "problem": {
+        "decision": "REQUIRED",
+        "reason": "설문 게시판 q04.png가 네 음식별 파란·분홍 붙임딱지를 온전히 보여 주어 필수 문제 그림이 이미 충족되어 있다.",
+        "fulfillment": "EXISTING_PNG",
+        "existingAsset": "q04.png",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "featureParity": "EXISTING_ASSET_VERIFIED",
+        "drawnFeatureCheck": [
+          "기존 q04.png 음식별 4칸과 1학년 파랑·2학년 분홍 점",
+          "열별 (5,6),(3,4),(4,5),(5,4)개가 본문 해설 행렬과 일치"
+        ]
+      },
+      "solution": {
+        "decision": "EXEMPT",
+        "reason": "스티커 개수를 표와 2×4 행렬로 옮기는 해설에 필요한 값이 모두 본문에 있다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "featureParity": "NOT_APPLICABLE"
+      },
+      "existingSourcePng": "q04.png"
+    },
+    {
+      "qid": "q05",
+      "ordinal": 5,
+      "problem": {
+        "decision": "EXEMPT",
+        "reason": "덧셈·뺄셈할 행렬의 행렬식 배열이 발문에 이미 명확하다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "featureParity": "NOT_APPLICABLE"
+      },
+      "solution": {
+        "decision": "EXEMPT",
+        "reason": "행렬 성분별 덧셈·뺄셈을 해설이 계산식으로 모두 제시한다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "featureParity": "NOT_APPLICABLE"
+      }
+    },
+    {
+      "qid": "q06",
+      "ordinal": 6,
+      "problem": {
+        "decision": "EXEMPT",
+        "reason": "A,B 행렬의 합·스칼라배 계산만을 묻는다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "featureParity": "NOT_APPLICABLE"
+      },
+      "solution": {
+        "decision": "EXEMPT",
+        "reason": "3A-2B의 중간 행렬까지 모두 제시되어 추가 도식은 단순 중복이다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "featureParity": "NOT_APPLICABLE"
+      }
+    },
+    {
+      "qid": "q07",
+      "ordinal": 7,
+      "problem": {
+        "decision": "EXEMPT",
+        "reason": "두 2×3 행렬의 일차결합 연산 자체가 문제 전부다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "featureParity": "NOT_APPLICABLE"
+      },
+      "solution": {
+        "decision": "EXEMPT",
+        "reason": "-2A+3B에서 각 성분의 계산 결과가 해설에 표시된다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "featureParity": "NOT_APPLICABLE"
+      }
+    },
+    {
+      "qid": "q08",
+      "ordinal": 8,
+      "problem": {
+        "decision": "EXEMPT",
+        "reason": "미지 행렬 X를 X=5B-A로 식 정리하는 순수 연산 문제다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "featureParity": "NOT_APPLICABLE"
+      },
+      "solution": {
+        "decision": "EXEMPT",
+        "reason": "행렬 차에 대한 계산 및 결과가 전부 명시되어 있다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "featureParity": "NOT_APPLICABLE"
+      }
+    },
+    {
+      "qid": "q09",
+      "ordinal": 9,
+      "problem": {
+        "decision": "EXEMPT",
+        "reason": "두 1×2 행렬의 대응 성분 등식만 보고 결정할 수 있다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "featureParity": "NOT_APPLICABLE"
+      },
+      "solution": {
+        "decision": "EXEMPT",
+        "reason": "xy=5, x-y=4에서 x²+y²를 계산하는 항등식이 핵심이다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "featureParity": "NOT_APPLICABLE"
+      }
+    },
+    {
+      "qid": "q10",
+      "ordinal": 10,
+      "problem": {
+        "decision": "EXEMPT",
+        "reason": "개당 비용·이익금 두 표는 본문에 읽을 수 있는 행과 열로 제공되어 있다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "featureParity": "NOT_APPLICABLE"
+      },
+      "solution": {
+        "decision": "EXEMPT",
+        "reason": "A+B-1.1A 행렬 계산은 표의 추가 그림 없이 재현된다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "featureParity": "NOT_APPLICABLE"
+      }
+    },
+    {
+      "qid": "q11",
+      "ordinal": 11,
+      "problem": {
+        "decision": "EXEMPT",
+        "reason": "행렬 곱의 여러 크기 예제는 원래 행렬 수식이 배치와 차원을 드러낸다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "featureParity": "NOT_APPLICABLE"
+      },
+      "solution": {
+        "decision": "EXEMPT",
+        "reason": "성분별 곱의 합을 명시한 풀이가 이미 계산 과정을 보여 준다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "featureParity": "NOT_APPLICABLE"
+      }
+    },
+    {
+      "qid": "q12",
+      "ordinal": 12,
+      "problem": {
+        "decision": "EXEMPT",
+        "reason": "AB=O를 만족시키는 두 미지수의 행렬 곱셈·연립방정식 문제다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "featureParity": "NOT_APPLICABLE"
+      },
+      "solution": {
+        "decision": "EXEMPT",
+        "reason": "곱 AB의 네 성분식과 x,y 계산이 해설에 있다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "featureParity": "NOT_APPLICABLE"
+      }
+    },
+    {
+      "qid": "q13",
+      "ordinal": 13,
+      "problem": {
+        "decision": "EXEMPT",
+        "reason": "음료 재료량 표와 주문량 표가 발문에 제공되어 있다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "featureParity": "NOT_APPLICABLE"
+      },
+      "solution": {
+        "decision": "EXEMPT",
+        "reason": "2×2 행렬과 2×1 주문벡터의 곱으로 필요한 총량을 이미 설명한다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "featureParity": "NOT_APPLICABLE"
+      }
+    },
+    {
+      "qid": "q14",
+      "ordinal": 14,
+      "problem": {
+        "decision": "EXEMPT",
+        "reason": "대각행렬의 5제곱을 계산하는 한 단계 행렬 연산이다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "featureParity": "NOT_APPLICABLE"
+      },
+      "solution": {
+        "decision": "EXEMPT",
+        "reason": "대각성분별 거듭제곱이 해설에 그대로 쓰여 있다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "featureParity": "NOT_APPLICABLE"
+      }
+    },
+    {
+      "qid": "q15",
+      "ordinal": 15,
+      "problem": {
+        "decision": "EXEMPT",
+        "reason": "농구 선수별 네 평가 항목을 본문 표에서 읽을 수 있다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "featureParity": "NOT_APPLICABLE"
+      },
+      "solution": {
+        "decision": "EXEMPT",
+        "reason": "가산점·감점 가중치 벡터 곱과 최종 비교가 단계별 식으로 제공된다.",
+        "capability": null,
+        "planPath": null,
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "NOT_APPLICABLE",
+        "planLintFull": "NOT_APPLICABLE",
+        "featureParity": "NOT_APPLICABLE"
+      }
+    }
+  ]
+}
