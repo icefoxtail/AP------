@@ -1,0 +1,21 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conics":[
+    {"id":"e","kind":"ELLIPSE","center":["-7/10","0"],"aSquared":"169/4","bSquared":"36","major":"X"},
+    {"id":"p","kind":"PARABOLA","vertex":["0","0"],"p":"9/5","axis":"X"}
+  ],
+  "points":[
+    {"id":"F","kind":"FOCUS","curve":"e","side":1,"coordinates":true},
+    {"id":"F'","kind":"FOCUS","curve":"e","side":-1,"coordinates":true},
+    {"id":"P","kind":"CONIC_CONIC","curves":["e","p"],"which":2,"coordinates":true}
+  ],
+  "lines":[{"id":"t","curve":"p","tangent":true,"at":"P"}],
+  "segments":[{"id":"PF","from":"P","to":"F","label":"5"},{"id":"PFp","from":"P","to":"F'"}],
+  "caption":"포물선과 타원의 공통점 P, 타원의 초점 F·F′와 P에서의 접선",
+  "accessibilityDescription":"가로로 긴 타원과 오른쪽으로 열린 포물선이 제1사분면의 점 P에서 만난다. 타원의 오른쪽 초점 F는 (9/5,0)이고 왼쪽 초점 F′는 포물선 P에서의 접선 위에 있다. 선분 PF에는 주어진 길이 5가 적혀 있다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"원문의 포물선 y²=(36/5)x에 대해 p=9/5이다. 초점 F=(9/5,0), PF=5, P의 y>0 및 접선이 왼쪽 초점 F′을 지나는 조건을 결합하면 P=(16/5,24/5), F′=(-16/5,0)이다.","mappedTo":["p","F","F'","P","t","PF"]},
+    {"id":"c2","condition":"두 초점을 지나는 가로 타원 중심은 (-7/10,0), 초점거리 반값은 5/2, PF+PF′=13이므로 a²=169/4, b²=36이다. P는 타원·포물선 공통점이며 CONIC_CONIC which2가 위쪽 교점이다. 구하는 단축 길이는 표시하지 않는다.","mappedTo":["e","p","P","PF","PFp"]}
+  ],
+  "newVisualInformation":["두 곡선의 정확한 상부 교점을 계산 노드로 표시","주어진 PF 길이 및 타원의 접선 통과 초점 관계만 표시하고 단축 답 비표시"]
+}

@@ -1,0 +1,23 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"PARABOLA","vertex":["0","0"],"p":"2","axis":"X"},
+  "points":[
+    {"id":"A","kind":"ON_CONIC","x":"8","branch":"POS","coordinates":true},
+    {"id":"B","kind":"LINE_LINE","lines":["t","d"],"coordinates":true},
+    {"id":"C","kind":"LINE_LINE","lines":["t","axis"],"coordinates":true},
+    {"id":"D","kind":"FOOT","from":"B","onto":"axis","rightAngle":true,"coordinates":true}
+  ],
+  "lines":[
+    {"id":"t","tangent":true,"at":"A","label":"l"},
+    {"id":"d","role":"DIRECTRIX"},
+    {"id":"axis","y":"0","hidden":true}
+  ],
+  "segments":[{"id":"BC","from":"B","to":"C"},{"id":"BD","from":"B","to":"D"},{"id":"DC","from":"D","to":"C"}],
+  "caption":"접점 A(8,8)과 접선 l, 준선 x=-2, 직각삼각형 BCD",
+  "accessibilityDescription":"포물선 y²=8x의 A(8,8)에서 접선 l이 준선 x=-2와 B(-2,3), x축과 C(-8,0)에서 만난다. B에서 x축에 수직으로 내린 선분의 발 D(-2,0)에 직각 표식이 있고 B,C,D를 이어 삼각형을 그렸다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"포물선 p=2, A=(8,8)에서 접선은 y=x/2+4이고 준선은 x=-2이다. 곡선·접선·준선은 실제 엔진 계산 필드다. 준선 식의 별도 글자 라벨은 ELLIPSE_LABEL_NO_ROOM:line-d로 거절되어 생략한다. B(-2,3)·D(-2,0) 좌표는 보인다. 별도 준선 라벨은 렌더 후 재검토해야 한다.","mappedTo":["A","t","d","B","D"]},
+    {"id":"c2","condition":"접선과 준선의 교점 B=(-2,3), 접선과 x축의 교점 C=(-8,0), B에서 x축으로 내린 발 D=(-2,0)이다. D의 직각호는 FOOT.rightAngle에 포함되며 넓이 결과 9는 그리지 않는다.","mappedTo":["B","C","D","axis","BC","BD","DC"]}
+  ],
+  "newVisualInformation":["접선·준선의 실제 교점 세 개를 엔진 LINE_LINE/FOOT로 구성","직각 표시는 실제 FOOT.rightAngle로 표시, 준선 식 단독 라벨은 엔진 배치 제약으로 보류하며 삼각형 넓이 정답은 비노출"]
+}

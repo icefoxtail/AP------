@@ -1,0 +1,19 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"PARABOLA","vertex":["0","0"],"p":"2","axis":"X"},
+  "points":[
+    {"id":"O","kind":"ORIGIN"},
+    {"id":"F","kind":"FOCUS","coordinates":true},
+    {"id":"P","kind":"ON_CONIC","x":"3","branch":"POS","coordinates":true},
+    {"id":"T","kind":"LINE_LINE","lines":["t","axis"],"coordinates":true}
+  ],
+  "lines":[{"id":"t","tangent":true,"at":"P"},{"id":"axis","y":"0","hidden":true}],
+  "segments":[{"id":"FP","from":"F","to":"P"},{"id":"FO","from":"F","to":"O"},{"id":"PT","from":"P","to":"T"}],
+  "caption":"초점 F, 포물선의 점 P와 접선의 x축 교점 T",
+  "accessibilityDescription":"원점에서 오른쪽으로 열린 포물선과 초점 F가 보인다. 제1사분면 위의 점 P에서 그은 접선은 음의 x축에서 T와 만나고, 선분 FP와 FO가 F에서 이루는 각을 나타낸다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"y²=8x의 초점은 F=(2,0)이고 원점은 O=(0,0)이다. P의 x좌표가 3이고 제1사분면이므로 P=(3,2√6)이다.","mappedTo":["F","O","P"]},
+    {"id":"c2","condition":"P의 접선은 y=(2/√6)(x+3)이고 x축과 T=(-3,0)에서 만난다. FP와 FO가 원문 각 PFO의 두 변이며 구하는 코사인 값은 표시하지 않는다. 각호 자체는 현 엔진에서 표현하지 못해 DRAWN_FEATURE_PARITY 추가 검토가 필요하다.","mappedTo":["t","T","FP","FO","PT"]}
+  ],
+  "newVisualInformation":["초점 F를 각의 꼭짓점으로 하는 두 실제 선분과 접선 교점을 표시","각호는 엔진 지원 대기이며 코사인 답은 비표시"]
+}

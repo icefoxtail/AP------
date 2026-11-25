@@ -1,0 +1,14 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"PARABOLA","vertex":["1","0"],"p":"1","axis":"X"},
+  "points":[{"id":"F","kind":"FOCUS","coordinates":true},{"id":"P","kind":"ON_CONIC","x":"9","branch":"POS"}],
+  "lines":[{"id":"t","tangent":true,"at":"P"}],
+  "segments":[{"id":"PF","from":"P","to":"F","label":"9"}],
+  "caption":"초점 F와 거리 PF=9인 포물선 위의 점 P 및 접선",
+  "accessibilityDescription":"꼭짓점이 (1,0)인 오른쪽으로 열린 포물선과 초점 F=(2,0)가 있다. 포물선의 위쪽에 있는 점 P와 F를 잇는 선분에는 길이 9가 표시되고 P에서의 접선이 그려져 있다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"y²=4(x−1)에서 꼭짓점 (1,0), p=1, 초점 F=(2,0)이다. PF=9이므로 P의 x좌표는 9, 원문 그림의 위쪽 가지에서 P=(9,4√2)이다.","mappedTo":["F","P","PF"]},
+    {"id":"c2","condition":"접선은 P에서의 정확한 미분 접선이며 기울기가 질문 대상이므로 직선 라벨로 수치를 보여주지 않는다.","mappedTo":["t"]}
+  ],
+  "newVisualInformation":["원문 곡선의 평행이동 꼭짓점과 초점·거리 조건을 정확히 반영","접선 기울기 답을 표시하지 않음"]
+}
