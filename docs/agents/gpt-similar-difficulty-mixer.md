@@ -70,6 +70,8 @@
 
 새 ChatGPT 프로젝트 채팅의 첫 지시에는 다음 한 문장을 넣을 수 있다.
 
-> `icefoxtail/AP------`의 `AGENTS.md`와 `docs/agents/gpt-similar-difficulty-mixer.md`를 실제로 열어 읽고, ALIVE `EXAM_FOLLOWUP`의 `SOURCE_BALANCED` 기본 믹서(문항 난도 유지, 확인형 중심, 심화 최대 20%, 기존 유사1~N 구조 중복 회피)를 적용하라. 사용자 최신 지시와 저장소 현행 정본의 충돌이 있으면 먼저 구분하여 보고하라.
+> `icefoxtail/AP------`의 `docs/agents/gpt-similar-exam-execution-prompt.md`를 처음부터 끝까지 읽고, 그 안의 필독 문서와 ALIVE `EXAM_FOLLOWUP/SOURCE_BALANCED` 난도 믹서를 적용해 다음 고1 유사2 시험지 1종을 제작·검수·운영병합하라. 실제 미실행 SVG·CI·배포는 분리해 보고하라.
+
+위 [저장소 실행 프롬프트](gpt-similar-exam-execution-prompt.md)는 **신규 GPT 채팅에서 시험지 1종을 끝까지 작업하는** 안내다. 난도·메타·SVG·출고 영역의 정본을 대체하지 않고 실제 파일을 읽도록 연결한다. 이유: 긴 프롬프트 복사 중 누락·구버전 혼입을 막는다.
 
 **적용 범위 경계:** 이 문서는 신규 GPT 유사시험지 **제작용 운영계약**이다. 기존 `STRICT_VARIANT` 자료, 별도 QID9 Generated Bank, 원본 기출 수정, AI Studio의 이미 실행 중인 고정 프롬프트/예약을 자동으로 개정하거나 재승인하지 않는다. 각 실제 작업의 최신 명시 지시를 우선한다.

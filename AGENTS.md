@@ -1,6 +1,6 @@
 # AGENTS.md — 작업 안내판
 
-이 파일은 작업 안내판이다. 자동 로드·링크 문서 열람을 보장하지 않으니 해당 영역 문서를 직접 읽는다. 충돌 시 영역 문서 원문이 우선한다.
+이 파일은 안내판이다. 링크 문서는 자동으로 읽히지 않으므로 직접 읽는다. 충돌하면 영역 문서가 우선한다.
 
 ## 첫걸음
 
@@ -22,7 +22,7 @@
 - **새 테스트 파일은 목록의 한 칸에 둔다:** `tests/test-inventory.json`의 run(`tests/` 바로 아래 *.test.js는 자동)·elsewhere·notRun 중 하나여야 한다(`docs/agents/token-efficiency.md` §11). 이유: 실행기에 없는 테스트가 수백 개 꺼져 있었다.
 - **병합과 배포는 따로 기록한다:** `main` 반영은 사용자 승인 범위와 해당 작업의 필수 검사·병합 조건을 지킨다. CI·Pages·학생 배포 결과는 사실대로 따로 남긴다. 보호 규칙 우회, 강제 push, 다른 사람 브랜치의 이력 재작성은 하지 않는다.
 - **Git에는 운영물만 둔다:** 운영 소스·자산·런타임·빌드/테스트 도구·현행 계약만 커밋한다. 원시 이력·캡처·로그·렌더 출력 같은 증거는 Drive에 둔다(허용된 cold root와 절차: `docs/agents/git-evidence.md`).
-- **루트 폴더는 main 전용:** 저장소 루트 폴더(워크트리가 아닌 본 체크아웃)에서는 커밋·브랜치 전환·파일 작업을 하지 않고, 작업은 자기 워크트리에서 한다(상세: `docs/agents/git-evidence.md`). 이유: 루트가 main보다 1,679커밋 뒤처진 다른 브랜치가 된 일이 있다.
+- **루트 폴더는 main 전용:** 본 체크아웃에서 커밋·브랜치 전환·파일 편집 금지. 자기 worktree에서 작업한다(상세: `docs/agents/git-evidence.md`). 이유: 루트가 main보다 1,679커밋 뒤처진 다른 브랜치가 된 일이 있다.
 - **워크트리 정리:** 내 PR이 `main`에 병합되면 그 작업 워크트리는 바로 지운다. 남의 것·미병합 커밋이 있는 것은 지우지 않고 보고한다(절차: `docs/agents/git-evidence.md`). 이유: 워크트리 하나가 약 7GB라 C 드라이브가 찬 적이 있다.
 - **공유 데이터 고정값:** 원본 시험지 JS·공유 크로스워크·생성문항 Meta를 바꾸면 `docs/agents/common.md` "공유 데이터 고정값" 절을 따르고, PR CI의 실패는 병합을 막지 않고 수리 목록으로 넘긴다(먼저 병합, 수리는 마지막에 관제가: 같은 문서 맨 위 절). 이유: 해시 고정값이 정상 수정에 깨져 main CI·배포가 막힌 적이 있다.
 - **새 SVG는 엔진으로만:** 문제·해설 그림을 새로 만들 때는 어떤 작업이든 저장소 SVG 엔진으로 만들고, 손·스크립트 조립 SVG는 넣지 않는다. 엔진이 못 그리면 엔진을 고친다(`docs/agents/visual-svg.md` 맨 위 절). 이유: 직접 조립한 그림은 검증되지 않는다.
@@ -30,7 +30,7 @@
 
 ## 토큰 효율
 
-정해진 검사·검수 절차(테스트, 런타임 검사, 시험지 R1·R2 전 qid 검수 등)는 줄이지 않는다. 그 밖의 작업 방식은 아래를 따른다. 상세와 소요 시간은 `docs/agents/token-efficiency.md`에 있다.
+정해진 검사·검수(테스트·런타임·R1/R2 전 qid 검수 포함)는 줄이지 않는다. 그 밖의 방식·소요 시간은 `docs/agents/token-efficiency.md`와 아래를 따른다.
 
 - 추가로 하는 전수 측정은 사용자가 요청했거나 개수 자체가 결과물일 때만 한다. 기본은 대표 표본 몇 개로 확인한다.
 - 무거운 검사는 단계당 한 번 돌린다. 전체 테스트는 병합 직전에 한 번, main과 비교할 때는 실패한 테스트만 main에서 다시 돌린다.
@@ -51,6 +51,7 @@
 | GPT 사후 FINAL QA | [docs/operations/JS_Archive_FINAL_QA_EXECUTION_CARD_CURRENT.md](docs/operations/JS_Archive_FINAL_QA_EXECUTION_CARD_CURRENT.md) |
 | GPT 예약 라인 프롬프트 개설·수정 | [docs/agents/gpt-reservation.md](docs/agents/gpt-reservation.md) |
 | GPT 유사세트 난도 믹서 | [운영계약](docs/agents/gpt-similar-difficulty-mixer.md) |
+| GPT 유사2 실행 | [프롬프트](docs/agents/gpt-similar-exam-execution-prompt.md) |
 | 문항 메타데이터 | [docs/agents/metadata.md](docs/agents/metadata.md) |
 | ALIVE Generated 제작·출시 | [docs/agents/alive-generated.md](docs/agents/alive-generated.md) |
 | 유사·생성 문항 보기와 정답 번호 | [docs/agents/similar-choices.md](docs/agents/similar-choices.md) |
