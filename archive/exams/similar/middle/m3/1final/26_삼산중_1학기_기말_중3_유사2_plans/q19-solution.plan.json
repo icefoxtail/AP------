@@ -1,0 +1,141 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "Origin",
+        "x": "0",
+        "y": "0",
+        "marker": "NONE"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "-2"
+        },
+        {
+          "id": "B",
+          "curveX": "2"
+        },
+        {
+          "id": "C",
+          "x": "2",
+          "y": "-4"
+        },
+        {
+          "id": "D",
+          "x": "2",
+          "y": "0"
+        },
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        }
+      ],
+      "segments": [
+        {
+          "id": "AB",
+          "from": "A",
+          "to": "B"
+        },
+        {
+          "id": "AO",
+          "from": "A",
+          "to": "O"
+        },
+        {
+          "id": "BO",
+          "from": "B",
+          "to": "O"
+        },
+        {
+          "id": "BD",
+          "from": "B",
+          "to": "D"
+        },
+        {
+          "id": "DC",
+          "from": "D",
+          "to": "C"
+        }
+      ],
+      "polygons": [
+        {
+          "id": "tri",
+          "points": [
+            "A",
+            "B",
+            "O"
+          ],
+          "fill": "LIGHT"
+        }
+      ]
+    },
+    "referenceCurves": [
+      {
+        "id": "g",
+        "name": "g",
+        "coefficients": [
+          "0",
+          "0",
+          "-1"
+        ],
+        "intersectionX": [
+          "0"
+        ]
+      }
+    ],
+    "domain": [
+      -3,
+      3
+    ],
+    "viewport": [
+      -3,
+      3,
+      -6,
+      11
+    ]
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "두 포물선 y=2x²·y=-x² 및 삼각형 ABO와 세로선 BDC",
+  "accessibilityDescription": "위로 열린 y=2x²의 같은 높이 점 A(-2,8),B(2,8)와 아래로 열린 y=-x²의 점 C(2,-4), D(2,0), 원점 O의 위치가 보인다.",
+  "sourceQuote": "[키포인트] 삼각형 넓이로 $a$를 먼저 구한 뒤 같은 세로선 ",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 이차함수 $y=ax^2$와 $y=bx^2$가 있고 $a>0$, $b<0$이다. 다음 조건을 만족할 때 $a-b$의 값은? [5점]\n\n- 위로 열린 그래프 위의 점 $A,B$는 각각 $x=-2$, $x=2$인 점이다.\n- 아래로 열린 그래프 위의 점 $C$는 $x=2$인 점이고, $D=(2,0)$, $O=(0,0)$이다.\n- 삼각형 $ABO$의 넓이는 $16$이고, 세 점 $B,D,C$는 이 순서로 세로로 놓이며 $BD:DC=2:1$이다.",
+      "mappedTo": "CURRENT_FOLLOWUP_JS"
+    }
+  ],
+  "newVisualInformation": [
+    "위로 열린 y=2x²의 같은 높이 점 A(-2,8),B(2,8)와 아래로 열린 y=-x²의 점 C(2,-4), D(2,0), 원점 O의 위치가 보인다."
+  ],
+  "pointNames": {
+    "A": "A",
+    "B": "B",
+    "C": "C",
+    "D": "D",
+    "O": "O"
+  }
+}

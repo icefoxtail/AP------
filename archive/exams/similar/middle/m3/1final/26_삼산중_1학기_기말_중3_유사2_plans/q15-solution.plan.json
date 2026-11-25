@@ -1,0 +1,104 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "6",
+          "4",
+          "-2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "1",
+        "y": "8",
+        "marker": "NONE"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "-1"
+        },
+        {
+          "id": "C",
+          "curveX": "3"
+        },
+        {
+          "id": "B",
+          "curveX": "1"
+        }
+      ],
+      "segments": [
+        {
+          "id": "AB",
+          "from": "A",
+          "to": "B"
+        },
+        {
+          "id": "BC",
+          "from": "B",
+          "to": "C"
+        },
+        {
+          "id": "AC",
+          "from": "A",
+          "to": "C"
+        }
+      ],
+      "polygons": [
+        {
+          "id": "tri",
+          "points": [
+            "A",
+            "B",
+            "C"
+          ],
+          "fill": "LIGHT"
+        }
+      ]
+    },
+    "domain": [
+      -2,
+      4
+    ],
+    "viewport": [
+      -2,
+      4,
+      -2,
+      10
+    ]
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "포물선과 x축 교점 A·C, 꼭짓점 B로 이룬 삼각형 ABC의 넓이 관계",
+  "accessibilityDescription": "아래로 열린 포물선 y=-2x²+4x+6이 x축에서 A(-1,0), C(3,0)을 지나고 꼭짓점 B(1,8)가 표시되어 삼각형 ABC를 이룬다.",
+  "sourceQuote": "[키포인트] 두 $x$절편이 주어지면 꼭짓점의 $x$좌표는 절편",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "아래 조건을 만족하는 이차함수 $y=a(x+1)(x-3)$에서 $a$의 값은? [4점]\n\n- 그래프는 아래로 열린다.\n- $x$축과 만나는 두 점을 $A(-1,0)$, $C(3,0)$라 하고, 꼭짓점을 $B$라 한다.\n- 삼각형 $ABC$의 넓이는 $16$이다.",
+      "mappedTo": "CURRENT_FOLLOWUP_JS"
+    }
+  ],
+  "newVisualInformation": [
+    "아래로 열린 포물선 y=-2x²+4x+6이 x축에서 A(-1,0), C(3,0)을 지나고 꼭짓점 B(1,8)가 표시되어 삼각형 ABC를 이룬다."
+  ],
+  "pointNames": {
+    "A": "A",
+    "B": "B",
+    "C": "C"
+  }
+}

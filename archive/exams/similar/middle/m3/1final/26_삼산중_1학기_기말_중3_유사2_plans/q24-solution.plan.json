@@ -1,0 +1,64 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "4/3",
+          "2/9"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "-3",
+        "y": "-2"
+      },
+      {
+        "id": "O",
+        "x": "0",
+        "y": "0"
+      }
+    ],
+    "overlays": {},
+    "domain": [
+      -8,
+      3
+    ],
+    "viewport": [
+      -8,
+      3,
+      -4,
+      8
+    ]
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "사분면 조건의 경계 a=2/9에서의 포물선 (허용 범위의 경계값 예시이다.)",
+  "accessibilityDescription": "a=2/9이면 꼭짓점 (-3,-2)인 포물선 y=2/9(x+3)²-2가 원점을 지나며 제1·제2·제3사분면을 지나고 제4사분면은 지나지 않는다.",
+  "sourceQuote": "[키포인트] 꼭짓점이 $x$축 아래에 있으며 제4사분면을 지나지",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차함수 $y=ax^2+bx+c$의 그래프의 꼭짓점은 $(-3,-2)$이다. 다음 물음에 풀이 과정을 써서 답하시오. [6점]\n\n(1) $b,c$를 $a$를 사용한 식으로 각각 나타내시오. [3점]\n\n(2) 이 그래프가 **제1, 제2, 제3사분면은 모두 지나고 제4사분면은 지나지 않을** 때, $a$의 값의 범위를 구하시오. [3점]",
+      "mappedTo": "CURRENT_FOLLOWUP_JS"
+    }
+  ],
+  "newVisualInformation": [
+    "a=2/9이면 꼭짓점 (-3,-2)인 포물선 y=2/9(x+3)²-2가 원점을 지나며 제1·제2·제3사분면을 지나고 제4사분면은 지나지 않는다."
+  ],
+  "pointNames": {
+    "V": "V",
+    "O": "O"
+  }
+}

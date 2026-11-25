@@ -1,0 +1,487 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "제곱완성의 넓이 모형: x² 정사각형과 5x 직사각형 두 개, 추가한 넓이 25의 작은 정사각형",
+  "accessibilityDescription": "한 변이 8인 큰 정사각형이 3×3 정사각형, 3×5 및 5×3 직사각형, 5×5 정사각형으로 분할된다. 추가 면적은 25이다.",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "base0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "base1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "base2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "base3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "upper0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "upper1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "upper2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "upper3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "right0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "right1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "right2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "right3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "small0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "small1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "small2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "small3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "base0",
+    "base1",
+    "base2",
+    "base3",
+    "upper0",
+    "upper1",
+    "upper2",
+    "upper3",
+    "right0",
+    "right1",
+    "right2",
+    "right3",
+    "small0",
+    "small1",
+    "small2",
+    "small3"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "seg0",
+      "refs": [
+        "base0",
+        "base1"
+      ]
+    },
+    {
+      "id": "seg1",
+      "refs": [
+        "base1",
+        "base2"
+      ]
+    },
+    {
+      "id": "seg2",
+      "refs": [
+        "base2",
+        "base3"
+      ]
+    },
+    {
+      "id": "seg3",
+      "refs": [
+        "base3",
+        "base0"
+      ]
+    },
+    {
+      "id": "seg4",
+      "refs": [
+        "upper0",
+        "upper1"
+      ]
+    },
+    {
+      "id": "seg5",
+      "refs": [
+        "upper1",
+        "upper2"
+      ]
+    },
+    {
+      "id": "seg6",
+      "refs": [
+        "upper2",
+        "upper3"
+      ]
+    },
+    {
+      "id": "seg7",
+      "refs": [
+        "upper3",
+        "upper0"
+      ]
+    },
+    {
+      "id": "seg8",
+      "refs": [
+        "right0",
+        "right1"
+      ]
+    },
+    {
+      "id": "seg9",
+      "refs": [
+        "right1",
+        "right2"
+      ]
+    },
+    {
+      "id": "seg10",
+      "refs": [
+        "right2",
+        "right3"
+      ]
+    },
+    {
+      "id": "seg11",
+      "refs": [
+        "right3",
+        "right0"
+      ]
+    },
+    {
+      "id": "seg12",
+      "refs": [
+        "small0",
+        "small1"
+      ]
+    },
+    {
+      "id": "seg13",
+      "refs": [
+        "small1",
+        "small2"
+      ]
+    },
+    {
+      "id": "seg14",
+      "refs": [
+        "small2",
+        "small3"
+      ]
+    },
+    {
+      "id": "seg15",
+      "refs": [
+        "small3",
+        "small0"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "base0",
+    "base1",
+    "base2",
+    "base3",
+    "upper0",
+    "upper1",
+    "upper2",
+    "upper3",
+    "right0",
+    "right1",
+    "right2",
+    "right3",
+    "small0",
+    "small1",
+    "small2",
+    "small3"
+  ],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 540
+  },
+  "sourceQuote": "[키포인트] $x^2+10x$에 $5^2$을 더해야 한 변이 $",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "옛날의 기하적 이차방정식 풀이에서는 한 변이 $x$인 정사각형의 서로 이웃한 두 변에 넓이가 같은 직사각형을 붙여 $x^2+10x=39$의 왼쪽을 큰 정사각형으로 완성한다. 이때 **추가해야 하는 작은 정사각형의 넓이**와 **양수인 해 $x$**를 순서대로 나타낸 것은? [5점]",
+      "mappedTo": "CURRENT_FOLLOWUP_JS"
+    }
+  ],
+  "newVisualInformation": [
+    "한 변이 8인 큰 정사각형이 3×3 정사각형, 3×5 및 5×3 직사각형, 5×5 정사각형으로 분할된다. 추가 면적은 25이다."
+  ]
+}

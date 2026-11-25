@@ -1,0 +1,1312 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "similar/middle/m3/1final/26_삼산중_1학기_기말_중3_유사2.js",
+  "sourceGitBlobSha": "9a4bdee437aeb3cd59c85942f3f706d24f7ace03",
+  "dictionaryVersion": "term-dict-v1.6-2026-11-15",
+  "judgedBy": {
+    "agent": "GPT-direct-similar2-draft",
+    "at": "2026-11-25"
+  },
+  "candidates": [],
+  "selfCheck": {
+    "note": "최종 JS 24개 qid와 결속한 모델 초안. 별도 독립 4칸 검수 및 메타등록 승인은 아직 실행하지 않음."
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "다음 중 정리한 결과가 $x$에 대한 **이차방정식이 아닌** 것은? [3점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "다음 중 정리한 결과가 $x$에 대한 **이차방정식이 아닌** 것은? [3점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "정리",
+            "src": "solution",
+            "quote": "[키포인트] 이차방정식인지 판단하려면 등식의 양변을 한쪽으로 모아 $x^2$항이 남는지 확인한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "Q1: [키포인트] 이차방정식인지 판단하려면 등식의 양변을 한쪽으로 모아 $x^2$항이 남는지 확인한다."
+          },
+          {
+            "term": "차수",
+            "src": "solution",
+            "quote": "[키포인트] 이차방정식인지 판단하려면 등식의 양변을 한쪽으로 모아 $x^2$항이 남는지 확인한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "해설에서 차수 관련 판단이 결정적 역할을 함: [키포인트] 이차방정식인지 판단하려면 등식의 양변을 한쪽으로 모아 $x^2$항이 남는지 확인한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        {
+          "source": "solution",
+          "quote": "① $x^2-3x-4=0$으로 이차방정식이다."
+        }
+      ],
+      "scenarioNote": "이차방정식 선택에서 전개 후 이차항 소거 예외 찾기로 역방향 판정",
+      "reasons": {
+        "given": "발문의 풀이 조건에 직접 근거함",
+        "goal": "발문에서 이차방정식을 요구함",
+        "method": "해설에서 정리와 차수를 확인함",
+        "condition": "별도 등록 Condition key 및 조건 슬롯이 필수인 특수 제한 없음"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "작성자 자체 점검, 외부 독립 심사 전"
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "중근",
+            "src": "stem",
+            "quote": "다음 이차방정식 중 $x=-2$를 **중근**으로 갖는 것은? [3점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "중근",
+            "src": "stem",
+            "quote": "다음 이차방정식 중 $x=-2$를 **중근**으로 갖는 것은? [3점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "[키포인트] 중근 $-2$를 갖는 이차방정식은 상수배를 제외하면 $(x+2)^2=0$의 꼴이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "Q2: [키포인트] 중근 $-2$를 갖는 이차방정식은 상수배를 제외하면 $(x+2)^2=0$의 꼴이다."
+          },
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "[키포인트] 중근 $-2$를 갖는 이차방정식은 상수배를 제외하면 $(x+2)^2=0$의 꼴이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "해설에서 완전제곱식 관련 판단이 결정적 역할을 함: [키포인트] 중근 $-2$를 갖는 이차방정식은 상수배를 제외하면 $(x+2)^2=0$의 꼴이다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        {
+          "source": "solution",
+          "quote": "① 중근은 $2$이다."
+        }
+      ],
+      "scenarioNote": "중근 방정식 모양 판별에 지정된 중근의 값을 추가해 후보 구조 대비",
+      "reasons": {
+        "given": "발문의 풀이 조건에 직접 근거함",
+        "goal": "발문에서 중근을 요구함",
+        "method": "해설에서 인수분해와 완전제곱식를 확인함",
+        "condition": "별도 등록 Condition key 및 조건 슬롯이 필수인 특수 제한 없음"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "작성자 자체 점검, 외부 독립 심사 전"
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "다음 중 $x$의 값에 따라 변하는 양 $y$가 $x$에 대한 **이차함수**인 상황은? [3점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "다음 중 $x$의 값에 따라 변하는 양 $y$가 $x$에 대한 **이차함수**인 상황은? [3점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "함수",
+            "src": "solution",
+            "quote": "[키포인트] $y$를 $x$에 관한 식으로 썼을 때 $x^2$의 계수가 $0$이 아니어야 한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "Q3: [키포인트] $y$를 $x$에 관한 식으로 썼을 때 $x^2$의 계수가 $0$이 아니어야 한다."
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "[키포인트] $y$를 $x$에 관한 식으로 썼을 때 $x^2$의 계수가 $0$이 아니어야 한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "해설에서 넓이 관련 판단이 결정적 역할을 함: [키포인트] $y$를 $x$에 관한 식으로 썼을 때 $x^2$의 계수가 $0$이 아니어야 한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        {
+          "source": "solution",
+          "quote": "① 둘레는 $y=4x$이다."
+        }
+      ],
+      "scenarioNote": "단순 식 다섯 개 대신 상황의 길이·둘레·넓이를 수식화하는 변형",
+      "reasons": {
+        "given": "발문의 풀이 조건에 직접 근거함",
+        "goal": "발문에서 이차함수을 요구함",
+        "method": "해설에서 함수와 넓이를 확인함",
+        "condition": "별도 등록 Condition key 및 조건 슬롯이 필수인 특수 제한 없음"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "작성자 자체 점검, 외부 독립 심사 전"
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "꼭짓점",
+            "src": "stem",
+            "quote": "이차함수 $y=-2(x+3)^2+7$의 그래프의 꼭짓점에서 **$y$축까지의 거리**는? [3점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "거리",
+            "src": "stem",
+            "quote": "이차함수 $y=-2(x+3)^2+7$의 그래프의 꼭짓점에서 **$y$축까지의 거리**는? [3점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "좌표",
+            "src": "solution",
+            "quote": "[키포인트] 꼭짓점의 가로좌표의 절댓값이 그 점과 $y$축 사이의 거리이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "Q4: [키포인트] 꼭짓점의 가로좌표의 절댓값이 그 점과 $y$축 사이의 거리이다."
+          },
+          {
+            "term": "거리",
+            "src": "solution",
+            "quote": "[키포인트] 꼭짓점의 가로좌표의 절댓값이 그 점과 $y$축 사이의 거리이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "해설에서 거리 관련 판단이 결정적 역할을 함: [키포인트] 꼭짓점의 가로좌표의 절댓값이 그 점과 $y$축 사이의 거리이다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        {
+          "source": "solution",
+          "quote": "1단계. $y=a(x-p)^2+q$의 꼭짓점은 $(p,q)$이다."
+        }
+      ],
+      "scenarioNote": "꼭짓점 좌표를 직접 묻던 문항을 좌표의 기하적 거리 목표로 변경",
+      "reasons": {
+        "given": "발문의 풀이 조건에 직접 근거함",
+        "goal": "발문에서 거리을 요구함",
+        "method": "해설에서 좌표와 거리를 확인함",
+        "condition": "별도 등록 Condition key 및 조건 슬롯이 필수인 특수 제한 없음"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "작성자 자체 점검, 외부 독립 심사 전"
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "이차방정식 $2x^2+ax+b=0$의 두 근이 $-3$, $\\dfrac12$일 때, $a-2b$의 값은? [4점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "이차방정식 $2x^2+ax+b=0$의 두 근이 $-3$, $\\dfrac12$일 때, $a-2b$의 값은? [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "[키포인트] 이차항의 계수와 두 근을 함께 이용해 식을 인수분해 꼴로 복원한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "Q5: [키포인트] 이차항의 계수와 두 근을 함께 이용해 식을 인수분해 꼴로 복원한다."
+          },
+          {
+            "term": "계수",
+            "src": "solution",
+            "quote": "[키포인트] 이차항의 계수와 두 근을 함께 이용해 식을 인수분해 꼴로 복원한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "해설에서 계수 관련 판단이 결정적 역할을 함: [키포인트] 이차항의 계수와 두 근을 함께 이용해 식을 인수분해 꼴로 복원한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        {
+          "source": "solution",
+          "quote": "1단계. 두 근이 $-3,\\frac12$이므로 $2x^2+ax+b=(x+3)(2x-1)$이다."
+        }
+      ],
+      "scenarioNote": "두 근 중 하나를 음의 정수로 바꾸고 목표를 a−b에서 a−2b로 변형",
+      "reasons": {
+        "given": "발문의 풀이 조건에 직접 근거함",
+        "goal": "발문에서 값을 요구함",
+        "method": "해설에서 인수분해와 계수를 확인함",
+        "condition": "별도 등록 Condition key 및 조건 슬롯이 필수인 특수 제한 없음"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "작성자 자체 점검, 외부 독립 심사 전"
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "src": "stem",
+            "quote": "방정식 $4x^2-12=0$의 양의 해를 $a$, 방정식 $(x-1)^2=12$의 양의 해를 $b$라 할 때, $b-a$의 값은? [4"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "식 $4x^2-12=0$의 양의 해를 $a$, 방정식 $(x-1)^2=12$의 양의 해를 $b$라 할 때, $b-a$의 값은? [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "[키포인트] 제곱근을 이용한 두 식의 해에서 각각 양수인 해만 선택한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "Q6: [키포인트] 제곱근을 이용한 두 식의 해에서 각각 양수인 해만 선택한다."
+          },
+          {
+            "term": "방정식",
+            "src": "solution",
+            "quote": "[키포인트] 제곱근을 이용한 두 식의 해에서 각각 양수인 해만 선택한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "해설에서 방정식 관련 판단이 결정적 역할을 함: [키포인트] 제곱근을 이용한 두 식의 해에서 각각 양수인 해만 선택한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        {
+          "source": "solution",
+          "quote": "1단계. $4x^2=12$에서 $x^2=3$이므로 양의 해는 $a=\\sqrt3$이다."
+        }
+      ],
+      "scenarioNote": "양의 두 해의 합 대신 두 식 구조를 다르게 하고 차를 물음",
+      "reasons": {
+        "given": "발문의 풀이 조건에 직접 근거함",
+        "goal": "발문에서 값을 요구함",
+        "method": "해설에서 제곱근와 방정식를 확인함",
+        "condition": "별도 등록 Condition key 및 조건 슬롯이 필수인 특수 제한 없음"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "작성자 자체 점검, 외부 독립 심사 전"
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "이차방정식 $x^2-6x+k=0$의 서로 다른 두 실근의 **차의 절댓값이 $4$**일 때, 상수 $k$의 값은? [4점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "계수",
+            "src": "stem",
+            "quote": "이차방정식 $x^2-6x+k=0$의 서로 다른 두 실근의 **차의 절댓값이 $4$**일 때, 상수 $k$의 값은? [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "판별식",
+            "src": "solution",
+            "quote": "[키포인트] 두 근의 평균은 $3$이고 그 차가 $4$이면 근은 평균에서 각각 $2$만큼 떨어져 있다.",
+            "evidenceType": "IMPLIED",
+            "justification": "Q7: [키포인트] 두 근의 평균은 $3$이고 그 차가 $4$이면 근은 평균에서 각각 $2$만큼 떨어져 있다."
+          },
+          {
+            "term": "계수",
+            "src": "solution",
+            "quote": "[키포인트] 두 근의 평균은 $3$이고 그 차가 $4$이면 근은 평균에서 각각 $2$만큼 떨어져 있다.",
+            "evidenceType": "IMPLIED",
+            "justification": "해설에서 계수 관련 판단이 결정적 역할을 함: [키포인트] 두 근의 평균은 $3$이고 그 차가 $4$이면 근은 평균에서 각각 $2$만큼 떨어져 있다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        {
+          "source": "solution",
+          "quote": "1단계. 근의 합은 $6$이므로 두 근의 평균은 $3$이다."
+        }
+      ],
+      "scenarioNote": "근의 공식 제시형에서 두 근 사이의 거리와 판별식으로 역추적",
+      "reasons": {
+        "given": "발문의 풀이 조건에 직접 근거함",
+        "goal": "발문에서 계수을 요구함",
+        "method": "해설에서 판별식와 계수를 확인함",
+        "condition": "별도 등록 Condition key 및 조건 슬롯이 필수인 특수 제한 없음"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "작성자 자체 점검, 외부 독립 심사 전"
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "그래프",
+            "src": "stem",
+            "quote": "이차함수 $y=-3x^2$의 그래프와 **폭이 같고 열리는 방향만 반대**인 그래프의 식은? [4점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "그래프",
+            "src": "stem",
+            "quote": "이차함수 $y=-3x^2$의 그래프와 **폭이 같고 열리는 방향만 반대**인 그래프의 식은? [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "계수",
+            "src": "solution",
+            "quote": "[키포인트] $y=ax^2$에서 $|a|$가 같으면 폭이 같고, $a$의 부호가 반대이면 열리는 방향이 반대이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "Q8: [키포인트] $y=ax^2$에서 $|a|$가 같으면 폭이 같고, $a$의 부호가 반대이면 열리는 방향이 반대이다."
+          },
+          {
+            "term": "절댓값",
+            "src": "solution",
+            "quote": "[키포인트] $y=ax^2$에서 $|a|$가 같으면 폭이 같고, $a$의 부호가 반대이면 열리는 방향이 반대이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "해설에서 절댓값 관련 판단이 결정적 역할을 함: [키포인트] $y=ax^2$에서 $|a|$가 같으면 폭이 같고, $a$의 부호가 반대이면 열리는 방향이 반대이다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        {
+          "source": "solution",
+          "quote": "1단계. 주어진 이차함수의 계수는 $-3$이므로 폭을 같게 하려면 새 계수의 절댓값이 $3$이어야 한다."
+        }
+      ],
+      "scenarioNote": "그래프 진술 참거짓에서 폭·방향 두 조건을 만족하는 함수 선택으로 변경",
+      "reasons": {
+        "given": "발문의 풀이 조건에 직접 근거함",
+        "goal": "발문에서 그래프을 요구함",
+        "method": "해설에서 계수와 절댓값를 확인함",
+        "condition": "별도 등록 Condition key 및 조건 슬롯이 필수인 특수 제한 없음"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "작성자 자체 점검, 외부 독립 심사 전"
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "대칭이동",
+            "src": "stem",
+            "quote": "이차함수 $y=-2x^2$의 그래프를 $x$축에 대하여 대칭이동한 그래프가 점 $(t,8)$을 지난다. $t>0$일 때 $t$의 값은?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$y=-2x^2$의 그래프를 $x$축에 대하여 대칭이동한 그래프가 점 $(t,8)$을 지난다. $t>0$일 때 $t$의 값은? [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "대칭이동",
+            "src": "solution",
+            "quote": "[키포인트] $x$축 대칭은 모든 함수값의 부호를 반대로 바꾸므로 $y=2x^2$이 된다.",
+            "evidenceType": "IMPLIED",
+            "justification": "Q9: [키포인트] $x$축 대칭은 모든 함수값의 부호를 반대로 바꾸므로 $y=2x^2$이 된다."
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "[키포인트] $x$축 대칭은 모든 함수값의 부호를 반대로 바꾸므로 $y=2x^2$이 된다.",
+            "evidenceType": "IMPLIED",
+            "justification": "해설에서 대입 관련 판단이 결정적 역할을 함: [키포인트] $x$축 대칭은 모든 함수값의 부호를 반대로 바꾸므로 $y=2x^2$이 된다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        {
+          "source": "solution",
+          "quote": "1단계. 대칭이동한 그래프는 $y=2x^2$이다."
+        }
+      ],
+      "scenarioNote": "매개변수 a를 구하는 유형을 점의 양의 가로좌표 역산으로 변경",
+      "reasons": {
+        "given": "발문의 풀이 조건에 직접 근거함",
+        "goal": "발문에서 값을 요구함",
+        "method": "해설에서 대칭이동와 대입를 확인함",
+        "condition": "별도 등록 Condition key 및 조건 슬롯이 필수인 특수 제한 없음"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "작성자 자체 점검, 외부 독립 심사 전"
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "다음 표의 여섯 이차함수 $y=ax^2$ 중 계수 $a$가 **양수**인 것의 개수를 $m$, $y=2x^2$의 그래프보다 폭이 **좁"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "**인 것의 개수를 $m$, $y=2x^2$의 그래프보다 폭이 **좁은** 것의 개수를 $n$이라 한다. $2m-n$의 값은? [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "그래프",
+            "src": "solution",
+            "quote": "[키포인트] $a>0$이면 위로 열리고, $|a|$가 클수록 그래프의 폭이 좁다.",
+            "evidenceType": "IMPLIED",
+            "justification": "Q10: [키포인트] $a>0$이면 위로 열리고, $|a|$가 클수록 그래프의 폭이 좁다."
+          },
+          {
+            "term": "절댓값",
+            "src": "solution",
+            "quote": "[키포인트] $a>0$이면 위로 열리고, $|a|$가 클수록 그래프의 폭이 좁다.",
+            "evidenceType": "IMPLIED",
+            "justification": "해설에서 절댓값 관련 판단이 결정적 역할을 함: [키포인트] $a>0$이면 위로 열리고, $|a|$가 클수록 그래프의 폭이 좁다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        {
+          "source": "solution",
+          "quote": "1단계. 양수인 계수는 $\\frac14,5,3$이므로 $m=3$이다."
+        }
+      ],
+      "scenarioNote": "그림 6개 판정 대신 계수표의 부호·절댓값 비교와 복합 목표로 변경",
+      "reasons": {
+        "given": "발문의 풀이 조건에 직접 근거함",
+        "goal": "발문에서 개수을 요구함",
+        "method": "해설에서 그래프와 절댓값를 확인함",
+        "condition": "별도 등록 Condition key 및 조건 슬롯이 필수인 특수 제한 없음"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "작성자 자체 점검, 외부 독립 심사 전"
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "평행이동",
+            "src": "stem",
+            "quote": "이차함수 $y=2x^2$의 그래프를 $x$축의 양의 방향으로 $p$만큼, $y$축의 양의 방향으로 $1$만큼 평행이동했더니 점 $(5,"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$p$만큼, $y$축의 양의 방향으로 $1$만큼 평행이동했더니 점 $(5,9)$를 지났다. $0<p<5$일 때 $p$의 값은? [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "평행이동",
+            "src": "solution",
+            "quote": "[키포인트] 오른쪽으로 $p$만큼, 위쪽으로 $1$만큼 이동하면 $y=2(x-p)^2+1$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "Q11: [키포인트] 오른쪽으로 $p$만큼, 위쪽으로 $1$만큼 이동하면 $y=2(x-p)^2+1$이다."
+          },
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "[키포인트] 오른쪽으로 $p$만큼, 위쪽으로 $1$만큼 이동하면 $y=2(x-p)^2+1$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "해설에서 제곱근 관련 판단이 결정적 역할을 함: [키포인트] 오른쪽으로 $p$만큼, 위쪽으로 $1$만큼 이동하면 $y=2(x-p)^2+1$이다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        {
+          "source": "solution",
+          "quote": "1단계. 점 $(5,9)$를 대입하면 $9=2(5-p)^2+1$이다."
+        }
+      ],
+      "scenarioNote": "이동량이 주어진 상태의 계수 결정에서 부등식 제약으로 이동량의 후보를 소거",
+      "reasons": {
+        "given": "발문의 풀이 조건에 직접 근거함",
+        "goal": "발문에서 값을 요구함",
+        "method": "해설에서 평행이동와 제곱근를 확인함",
+        "condition": "별도 등록 Condition key 및 조건 슬롯이 필수인 특수 제한 없음"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "작성자 자체 점검, 외부 독립 심사 전"
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "평행이동",
+            "src": "stem",
+            "quote": "이차함수 $y=(x-1)^2-3$의 그래프를 평행이동하여 $y=(x+3)^2+2$의 그래프와 일치시켰다. **평행이동한 방향과 거리**"
+          }
+        ],
+        "goal": [
+          {
+            "term": "거리",
+            "src": "stem",
+            "quote": "$의 그래프를 평행이동하여 $y=(x+3)^2+2$의 그래프와 일치시켰다. **평행이동한 방향과 거리**를 옳게 나타낸 것은? [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "꼭짓점",
+            "src": "solution",
+            "quote": "[키포인트] 평행이동량은 이동 전후 꼭짓점의 좌표를 비교하면 구할 수 있다.",
+            "evidenceType": "IMPLIED",
+            "justification": "Q12: [키포인트] 평행이동량은 이동 전후 꼭짓점의 좌표를 비교하면 구할 수 있다."
+          },
+          {
+            "term": "좌표",
+            "src": "solution",
+            "quote": "[키포인트] 평행이동량은 이동 전후 꼭짓점의 좌표를 비교하면 구할 수 있다.",
+            "evidenceType": "IMPLIED",
+            "justification": "해설에서 좌표 관련 판단이 결정적 역할을 함: [키포인트] 평행이동량은 이동 전후 꼭짓점의 좌표를 비교하면 구할 수 있다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        {
+          "source": "solution",
+          "quote": "1단계. 원래 그래프의 꼭짓점은 $(1,-3)$, 옮겨진 그래프의 꼭짓점은 $(-3,2)$이다."
+        }
+      ],
+      "scenarioNote": "부호 있는 이동량 p+q 계산을 방향·거리 언어 판단으로 전환",
+      "reasons": {
+        "given": "발문의 풀이 조건에 직접 근거함",
+        "goal": "발문에서 거리을 요구함",
+        "method": "해설에서 꼭짓점와 좌표를 확인함",
+        "condition": "별도 등록 Condition key 및 조건 슬롯이 필수인 특수 제한 없음"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "작성자 자체 점검, 외부 독립 심사 전"
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "꼭짓점",
+            "src": "stem",
+            "quote": "이차함수 $y=2x^2-8x+k$의 그래프가 $x$축과 **만나지 않도록** 하는 상수 $k$의 범위를 옳게 나타낸 것은? [4점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "이차함수 $y=2x^2-8x+k$의 그래프가 $x$축과 **만나지 않도록** 하는 상수 $k$의 범위를 옳게 나타낸 것은? [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "[키포인트] 위로 열린 포물선이 $x$축과 만나지 않으려면 꼭짓점의 $y$좌표가 양수여야 한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "Q13: [키포인트] 위로 열린 포물선이 $x$축과 만나지 않으려면 꼭짓점의 $y$좌표가 양수여야 한다."
+          },
+          {
+            "term": "부등식",
+            "src": "solution",
+            "quote": "[키포인트] 위로 열린 포물선이 $x$축과 만나지 않으려면 꼭짓점의 $y$좌표가 양수여야 한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "해설에서 부등식 관련 판단이 결정적 역할을 함: [키포인트] 위로 열린 포물선이 $x$축과 만나지 않으려면 꼭짓점의 $y$좌표가 양수여야 한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        {
+          "source": "solution",
+          "quote": "1단계. $y=2x^2-8x+k=2(x-2)^2+k-8$로 완전제곱식을 만든다."
+        }
+      ],
+      "scenarioNote": "x축에 접하는 특정 k에서 만나지 않는 k의 열린 범위로 경계 비교",
+      "reasons": {
+        "given": "발문의 풀이 조건에 직접 근거함",
+        "goal": "발문에서 부등식을 요구함",
+        "method": "해설에서 완전제곱식와 부등식를 확인함",
+        "condition": "별도 등록 Condition key 및 조건 슬롯이 필수인 특수 제한 없음"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "작성자 자체 점검, 외부 독립 심사 전"
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "두 이차함수 $y=-\\dfrac13(x-1)^2+a$와 $y=\\dfrac14(x-b)^2+5$의 그래프의 꼭짓점을 지나는 직선의 기울기"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "(x-b)^2+5$의 그래프의 꼭짓점을 지나는 직선의 기울기가 $-3$이다. (단, $b\\ne1$) 이때 $a-3b$의 값은? [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "직선",
+            "src": "solution",
+            "quote": "[키포인트] 두 꼭짓점의 좌표를 먼저 읽고 두 점을 지나는 직선의 기울기를 쓴다.",
+            "evidenceType": "IMPLIED",
+            "justification": "Q14: [키포인트] 두 꼭짓점의 좌표를 먼저 읽고 두 점을 지나는 직선의 기울기를 쓴다."
+          },
+          {
+            "term": "기울기",
+            "src": "solution",
+            "quote": "[키포인트] 두 꼭짓점의 좌표를 먼저 읽고 두 점을 지나는 직선의 기울기를 쓴다.",
+            "evidenceType": "IMPLIED",
+            "justification": "해설에서 기울기 관련 판단이 결정적 역할을 함: [키포인트] 두 꼭짓점의 좌표를 먼저 읽고 두 점을 지나는 직선의 기울기를 쓴다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        {
+          "source": "solution",
+          "quote": "1단계. 꼭짓점은 각각 $(1,a)$와 $(b,5)$이다."
+        }
+      ],
+      "scenarioNote": "꼭짓점 연결직선의 양의 기울기를 음의 기울기·선형결합 목표로 변경",
+      "reasons": {
+        "given": "발문의 풀이 조건에 직접 근거함",
+        "goal": "발문에서 값을 요구함",
+        "method": "해설에서 직선와 기울기를 확인함",
+        "condition": "별도 등록 Condition key 및 조건 슬롯이 필수인 특수 제한 없음"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "작성자 자체 점검, 외부 독립 심사 전"
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "아래 조건을 만족하는 이차함수 $y=a(x+1)(x-3)$에서 $a$의 값은? [4점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "계수",
+            "src": "stem",
+            "quote": "아래 조건을 만족하는 이차함수 $y=a(x+1)(x-3)$에서 $a$의 값은? [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "[키포인트] 두 $x$절편이 주어지면 꼭짓점의 $x$좌표는 절편의 중점이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "Q15: [키포인트] 두 $x$절편이 주어지면 꼭짓점의 $x$좌표는 절편의 중점이다."
+          },
+          {
+            "term": "꼭짓점",
+            "src": "solution",
+            "quote": "[키포인트] 두 $x$절편이 주어지면 꼭짓점의 $x$좌표는 절편의 중점이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "해설에서 꼭짓점 관련 판단이 결정적 역할을 함: [키포인트] 두 $x$절편이 주어지면 꼭짓점의 $x$좌표는 절편의 중점이다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        {
+          "source": "solution",
+          "quote": "1단계. 꼭짓점의 $x$좌표는 $(-1+3)/2=1$이다."
+        }
+      ],
+      "scenarioNote": "그래프의 넓이를 구하던 발문에서 절편·꼭짓점·삼각형 넓이로 계수 역산",
+      "reasons": {
+        "given": "발문의 풀이 조건에 직접 근거함",
+        "goal": "발문에서 계수을 요구함",
+        "method": "해설에서 넓이와 꼭짓점를 확인함",
+        "condition": "별도 등록 Condition key 및 조건 슬롯이 필수인 특수 제한 없음"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "작성자 자체 점검, 외부 독립 심사 전"
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "완전제곱식",
+            "src": "stem",
+            "quote": "이차함수 $y=2x^2+12x+7$을 $y=a(x-p)^2+q$의 꼴로 고쳤다. 이때 $ap+q$의 값은? [4점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "이차함수 $y=2x^2+12x+7$을 $y=a(x-p)^2+q$의 꼴로 고쳤다. 이때 $ap+q$의 값은? [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "[키포인트] 이차항의 계수 $2$를 먼저 묶어 완전제곱식을 만든다.",
+            "evidenceType": "IMPLIED",
+            "justification": "Q16: [키포인트] 이차항의 계수 $2$를 먼저 묶어 완전제곱식을 만든다."
+          },
+          {
+            "term": "계수",
+            "src": "solution",
+            "quote": "[키포인트] 이차항의 계수 $2$를 먼저 묶어 완전제곱식을 만든다.",
+            "evidenceType": "IMPLIED",
+            "justification": "해설에서 계수 관련 판단이 결정적 역할을 함: [키포인트] 이차항의 계수 $2$를 먼저 묶어 완전제곱식을 만든다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        {
+          "source": "solution",
+          "quote": "1단계. $y=2(x^2+6x)+7=2\\{(x+3)^2-9\\}+7$이다."
+        }
+      ],
+      "scenarioNote": "완전제곱식의 세 계수 합 대신 부호를 다르게 결합한 ap+q 계산",
+      "reasons": {
+        "given": "발문의 풀이 조건에 직접 근거함",
+        "goal": "발문에서 값을 요구함",
+        "method": "해설에서 완전제곱식와 계수를 확인함",
+        "condition": "별도 등록 Condition key 및 조건 슬롯이 필수인 특수 제한 없음"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "작성자 자체 점검, 외부 독립 심사 전"
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정사각형",
+            "src": "stem",
+            "quote": "옛날의 기하적 이차방정식 풀이에서는 한 변이 $x$인 정사각형의 서로 이웃한 두 변에 넓이가 같은 직사각형을 붙여 $x^2+10x=39"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "큰 정사각형으로 완성한다. 이때 **추가해야 하는 작은 정사각형의 넓이**와 **양수인 해 $x$**를 순서대로 나타낸 것은? [5점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "[키포인트] $x^2+10x$에 $5^2$을 더해야 한 변이 $x+5$인 정사각형의 넓이가 된다.",
+            "evidenceType": "IMPLIED",
+            "justification": "Q17: [키포인트] $x^2+10x$에 $5^2$을 더해야 한 변이 $x+5$인 정사각형의 넓이가 된다."
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "[키포인트] $x^2+10x$에 $5^2$을 더해야 한 변이 $x+5$인 정사각형의 넓이가 된다.",
+            "evidenceType": "IMPLIED",
+            "justification": "해설에서 넓이 관련 판단이 결정적 역할을 함: [키포인트] $x^2+10x$에 $5^2$을 더해야 한 변이 $x+5$인 정사각형의 넓이가 된다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        {
+          "source": "solution",
+          "quote": "1단계. $x^2+10x=x^2+2\\times5\\times x$이므로 부족한 정사각형의 한 변은 $5$, 넓이는 $25$이다."
+        }
+      ],
+      "scenarioNote": "고전 기하적 빈칸 선택을 완성정사각형의 추가 넓이·양의 해 동시 판단으로 변형",
+      "reasons": {
+        "given": "발문의 풀이 조건에 직접 근거함",
+        "goal": "발문에서 넓이을 요구함",
+        "method": "해설에서 완전제곱식와 넓이를 확인함",
+        "condition": "별도 등록 Condition key 및 조건 슬롯이 필수인 특수 제한 없음"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "작성자 자체 점검, 외부 독립 심사 전"
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정사각형",
+            "src": "stem",
+            "quote": "한 변의 길이가 각각 $x$ cm, $(x+1)$ cm, $(x+4)$ cm인 정사각형 세 개가 있다. 세 정사각형의 넓이의 합이 $1"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "다. 세 정사각형의 넓이의 합이 $142$ cm$^2$일 때, **가장 큰 정사각형의 한 변의 길이**는? (단, $x>0$) [5점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "[키포인트] 세 정사각형의 넓이를 더해 이차방정식을 세운다.",
+            "evidenceType": "IMPLIED",
+            "justification": "Q18: [키포인트] 세 정사각형의 넓이를 더해 이차방정식을 세운다."
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "[키포인트] 세 정사각형의 넓이를 더해 이차방정식을 세운다.",
+            "evidenceType": "IMPLIED",
+            "justification": "해설에서 넓이 관련 판단이 결정적 역할을 함: [키포인트] 세 정사각형의 넓이를 더해 이차방정식을 세운다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        {
+          "source": "solution",
+          "quote": "1단계. $x^2+(x+1)^2+(x+4)^2=142$이다."
+        }
+      ],
+      "scenarioNote": "세 정사각형 넓이 합의 미지수 x를 찾은 후 가장 큰 변으로 목표 재설정",
+      "reasons": {
+        "given": "발문의 풀이 조건에 직접 근거함",
+        "goal": "발문에서 길이을 요구함",
+        "method": "해설에서 인수분해와 넓이를 확인함",
+        "condition": "별도 등록 Condition key 및 조건 슬롯이 필수인 특수 제한 없음"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "작성자 자체 점검, 외부 독립 심사 전"
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "두 이차함수 $y=ax^2$와 $y=bx^2$가 있고 $a>0$, $b<0$이다. 다음 조건을 만족할 때 $a-b$의 값은? [5점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "두 이차함수 $y=ax^2$와 $y=bx^2$가 있고 $a>0$, $b<0$이다. 다음 조건을 만족할 때 $a-b$의 값은? [5점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "[키포인트] 삼각형 넓이로 $a$를 먼저 구한 뒤 같은 세로선 위의 길이비로 $b$를 구한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "Q19: [키포인트] 삼각형 넓이로 $a$를 먼저 구한 뒤 같은 세로선 위의 길이비로 $b$를 구한다."
+          },
+          {
+            "term": "비율",
+            "src": "solution",
+            "quote": "[키포인트] 삼각형 넓이로 $a$를 먼저 구한 뒤 같은 세로선 위의 길이비로 $b$를 구한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "해설에서 비율 관련 판단이 결정적 역할을 함: [키포인트] 삼각형 넓이로 $a$를 먼저 구한 뒤 같은 세로선 위의 길이비로 $b$를 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        {
+          "source": "solution",
+          "quote": "1단계. $A=(-2,4a)$, $B=(2,4a)$이므로 $AB=4$이고 밑변 $AB$에서 원점 $O$까지의 높이는 $4a$이다."
+        }
+      ],
+      "scenarioNote": "두 포물선의 넓이·길이비 원리를 보존하고 a+b 대신 부호에 주의한 a−b 목표",
+      "reasons": {
+        "given": "발문의 풀이 조건에 직접 근거함",
+        "goal": "발문에서 값을 요구함",
+        "method": "해설에서 넓이와 비율를 확인함",
+        "condition": "별도 등록 Condition key 및 조건 슬롯이 필수인 특수 제한 없음"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "작성자 자체 점검, 외부 독립 심사 전"
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "계수",
+            "src": "stem",
+            "quote": "아래로 열린 이차함수 $y=a(x+2)(x-4)=ax^2+bx+c$의 그래프에 대하여, 세 계수 $(a,b,c)$의 부호를 차례대로 옳"
+          }
+        ],
+        "goal": [
+          {
+            "term": "계수",
+            "src": "stem",
+            "quote": "=a(x+2)(x-4)=ax^2+bx+c$의 그래프에 대하여, 세 계수 $(a,b,c)$의 부호를 차례대로 옳게 나타낸 것은? [5점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "계수",
+            "src": "solution",
+            "quote": "[키포인트] 열리는 방향에서 $a$의 부호를 정하고 인수분해 꼴을 전개하여 나머지 계수의 부호를 찾는다.",
+            "evidenceType": "IMPLIED",
+            "justification": "Q20: [키포인트] 열리는 방향에서 $a$의 부호를 정하고 인수분해 꼴을 전개하여 나머지 계수의 부호를 찾는다."
+          },
+          {
+            "term": "부호",
+            "src": "solution",
+            "quote": "[키포인트] 열리는 방향에서 $a$의 부호를 정하고 인수분해 꼴을 전개하여 나머지 계수의 부호를 찾는다.",
+            "evidenceType": "IMPLIED",
+            "justification": "해설에서 부호 관련 판단이 결정적 역할을 함: [키포인트] 열리는 방향에서 $a$의 부호를 정하고 인수분해 꼴을 전개하여 나머지 계수의 부호를 찾는다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        {
+          "source": "solution",
+          "quote": "1단계. 그래프가 아래로 열리므로 $a<0$이다."
+        }
+      ],
+      "scenarioNote": "그래프에서 특정 대입식의 양음 판정 대신 절편·축에 연결된 세 계수의 부호 판단",
+      "reasons": {
+        "given": "발문의 풀이 조건에 직접 근거함",
+        "goal": "발문에서 계수을 요구함",
+        "method": "해설에서 계수와 부호를 확인함",
+        "condition": "별도 등록 Condition key 및 조건 슬롯이 필수인 특수 제한 없음"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "작성자 자체 점검, 외부 독립 심사 전"
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "다음 물음에 풀이 과정을 써서 답하시오. [5점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "다음 물음에 풀이 과정을 써서 답하시오. [5점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "[키포인트] (1)은 두 일차식의 곱으로, (2)는 제곱식으로 바꾼다.",
+            "evidenceType": "IMPLIED",
+            "justification": "Q21: [키포인트] (1)은 두 일차식의 곱으로, (2)는 제곱식으로 바꾼다."
+          },
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "[키포인트] (1)은 두 일차식의 곱으로, (2)는 제곱식으로 바꾼다.",
+            "evidenceType": "IMPLIED",
+            "justification": "해설에서 완전제곱식 관련 판단이 결정적 역할을 함: [키포인트] (1)은 두 일차식의 곱으로, (2)는 제곱식으로 바꾼다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        {
+          "source": "solution",
+          "quote": "(1) $6x^2-x-12=(2x-3)(3x+4)$이므로 $(2x-3)(3x+4)=0$이다."
+        }
+      ],
+      "scenarioNote": "각기 서로 다른 인수분해·완전제곱 풀이를 고정한 채 계수 구조 재구성",
+      "reasons": {
+        "given": "발문의 풀이 조건에 직접 근거함",
+        "goal": "발문에서 이차방정식을 요구함",
+        "method": "해설에서 인수분해와 완전제곱식를 확인함",
+        "condition": "별도 등록 Condition key 및 조건 슬롯이 필수인 특수 제한 없음"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "작성자 자체 점검, 외부 독립 심사 전"
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "부피",
+            "src": "stem",
+            "quote": "가로가 세로보다 $6$ cm 긴 직사각형 종이의 네 모퉁이에서 한 변이 $2$ cm인 정사각형을 잘라낸 뒤, 남은 부분을 접어 뚜껑 없"
+          }
+        ],
+        "goal": [
+          {
+            "term": "둘레",
+            "src": "stem",
+            "quote": "자를 만들었다. 상자의 부피가 $432$ cm$^3$일 때, **자르기 전 종이의 둘레의 길이**를 구하고 과정을 서술하시오. [5점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "부피",
+            "src": "solution",
+            "quote": "[키포인트] 잘라낸 정사각형의 변이 상자의 높이가 되고, 밑면의 가로·세로는 각각 그 두 배만큼 짧아진다.",
+            "evidenceType": "IMPLIED",
+            "justification": "Q22: [키포인트] 잘라낸 정사각형의 변이 상자의 높이가 되고, 밑면의 가로·세로는 각각 그 두 배만큼 짧아진다."
+          },
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "[키포인트] 잘라낸 정사각형의 변이 상자의 높이가 되고, 밑면의 가로·세로는 각각 그 두 배만큼 짧아진다.",
+            "evidenceType": "IMPLIED",
+            "justification": "해설에서 인수분해 관련 판단이 결정적 역할을 함: [키포인트] 잘라낸 정사각형의 변이 상자의 높이가 되고, 밑면의 가로·세로는 각각 그 두 배만큼 짧아진다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        {
+          "source": "solution",
+          "quote": "1단계. 종이의 세로 길이를 $x$ cm라 하면 가로 길이는 $(x+6)$ cm이다."
+        }
+      ],
+      "scenarioNote": "상자 부피에서 긴 변 대신 자르기 전 종이 둘레를 구하도록 추가 결정",
+      "reasons": {
+        "given": "발문의 풀이 조건에 직접 근거함",
+        "goal": "발문에서 둘레을 요구함",
+        "method": "해설에서 부피와 인수분해를 확인함",
+        "condition": "별도 등록 Condition key 및 조건 슬롯이 필수인 특수 제한 없음"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "작성자 자체 점검, 외부 독립 심사 전"
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "그래프",
+            "src": "stem",
+            "quote": "어떤 이차함수의 그래프가 $x$축과 두 점 $(-2,0)$, $(4,0)$에서 만나고 점 $(1,9)$를 지난다. 이 이차함수의 식을 "
+          }
+        ],
+        "goal": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": " 두 점 $(-2,0)$, $(4,0)$에서 만나고 점 $(1,9)$를 지난다. 이 이차함수의 식을 구하는 과정을 서술하시오. [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "[키포인트] $x$절편 두 개를 알면 이차함수는 $y=a(x-r_1)(x-r_2)$의 꼴이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "Q23: [키포인트] $x$절편 두 개를 알면 이차함수는 $y=a(x-r_1)(x-r_2)$의 꼴이다."
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "[키포인트] $x$절편 두 개를 알면 이차함수는 $y=a(x-r_1)(x-r_2)$의 꼴이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "해설에서 대입 관련 판단이 결정적 역할을 함: [키포인트] $x$절편 두 개를 알면 이차함수는 $y=a(x-r_1)(x-r_2)$의 꼴이다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        {
+          "source": "solution",
+          "quote": "1단계. $x$절편이 $-2,4$이므로 $y=a(x+2)(x-4)$라 놓는다."
+        }
+      ],
+      "scenarioNote": "두 대칭 절편·y절편에서 비대칭 절편·축 밖의 추가점을 이용한 계수 결정",
+      "reasons": {
+        "given": "발문의 풀이 조건에 직접 근거함",
+        "goal": "발문에서 이차함수을 요구함",
+        "method": "해설에서 인수분해와 대입를 확인함",
+        "condition": "별도 등록 Condition key 및 조건 슬롯이 필수인 특수 제한 없음"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "작성자 자체 점검, 외부 독립 심사 전"
+      }
+    },
+    {
+      "sourceOrdinal": 24,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "사분면",
+            "src": "stem",
+            "quote": "이차함수 $y=ax^2+bx+c$의 그래프의 꼭짓점은 $(-3,-2)$이다. 다음 물음에 풀이 과정을 써서 답하시오. [6점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "이차함수 $y=ax^2+bx+c$의 그래프의 꼭짓점은 $(-3,-2)$이다. 다음 물음에 풀이 과정을 써서 답하시오. [6점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "꼭짓점",
+            "src": "solution",
+            "quote": "[키포인트] 꼭짓점이 $x$축 아래에 있으며 제4사분면을 지나지 않는 조건을 $x>0$인 부분의 함수값으로 해석한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "Q24: [키포인트] 꼭짓점이 $x$축 아래에 있으며 제4사분면을 지나지 않는 조건을 $x>0$인 부분의 함수값으로 해석한다."
+          },
+          {
+            "term": "부등식",
+            "src": "solution",
+            "quote": "[키포인트] 꼭짓점이 $x$축 아래에 있으며 제4사분면을 지나지 않는 조건을 $x>0$인 부분의 함수값으로 해석한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "해설에서 부등식 관련 판단이 결정적 역할을 함: [키포인트] 꼭짓점이 $x$축 아래에 있으며 제4사분면을 지나지 않는 조건을 $x>0$인 부분의 함수값으로 해석한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        {
+          "source": "solution",
+          "quote": "(1) 꼭짓점이 $(-3,-2)$이므로 $y=a(x+3)^2-2$이다. 전개하면 $y=ax^2+6ax+(9a-2)$이므로 $b=6a$, $c=9a-2$이다. [3점]"
+        }
+      ],
+      "scenarioNote": "원본의 사분면 조건을 좌우 반전하고 경계 a 조건을 독립적으로 증명",
+      "reasons": {
+        "given": "발문의 풀이 조건에 직접 근거함",
+        "goal": "발문에서 부등식을 요구함",
+        "method": "해설에서 꼭짓점와 부등식를 확인함",
+        "condition": "별도 등록 Condition key 및 조건 슬롯이 필수인 특수 제한 없음"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "작성자 자체 점검, 외부 독립 심사 전"
+      }
+    }
+  ]
+}
