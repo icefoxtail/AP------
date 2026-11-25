@@ -1,0 +1,185 @@
+{
+  "capability": "solid-figure-v1",
+  "space": {
+    "points": [
+      {
+        "id": "O",
+        "at": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "A",
+        "at": [
+          2,
+          5,
+          1
+        ]
+      },
+      {
+        "id": "B",
+        "at": [
+          4,
+          1,
+          2
+        ]
+      },
+      {
+        "id": "P",
+        "at": [
+          2,
+          3,
+          0
+        ]
+      },
+      {
+        "id": "Q",
+        "at": [
+          3,
+          0,
+          1
+        ]
+      },
+      {
+        "id": "X",
+        "at": [
+          8,
+          0,
+          0
+        ],
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "Y",
+        "at": [
+          0,
+          8,
+          0
+        ],
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "Z",
+        "at": [
+          0,
+          0,
+          8
+        ],
+        "hideName": true,
+        "hideDot": true
+      }
+    ],
+    "segments": [
+      {
+        "from": "A",
+        "to": "P",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "P",
+        "to": "Q",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "Q",
+        "to": "B",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "O",
+        "to": "X",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "O",
+        "to": "Y",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "O",
+        "to": "Z",
+        "style": "AUTO",
+        "role": "REF"
+      }
+    ],
+    "planes": [
+      {
+        "id": "xy",
+        "through": [
+          "O",
+          "X",
+          "Y"
+        ],
+        "fill": "LIGHT"
+      },
+      {
+        "id": "zx",
+        "through": [
+          "O",
+          "X",
+          "Z"
+        ],
+        "fill": "LIGHT"
+      }
+    ]
+  },
+  "labels": [
+    {
+      "text": "x",
+      "at": "X"
+    },
+    {
+      "text": "y",
+      "at": "Y"
+    },
+    {
+      "text": "z",
+      "at": "Z"
+    }
+  ],
+  "solidCaption": {
+    "text": "기하 186 문제 q02"
+  },
+  "caption": "기하 186 q02: xy·zx 두 평면의 임의 대표점 P,Q를 잇는 굴절 경로. 최적점 미표시.",
+  "accessibilityDescription": "xy·zx 두 평면의 임의 대표점 P,Q를 잇는 굴절 경로. 최적점 미표시.",
+  "sourceQuote": "[그림: 원점 $\\mathrm{O}$와 $x$축, $y$축, $z$축으로 이루어진 좌표공간의 제$1$팔분면에 두 점 $\\mathrm{A}(2,\\,5,\\,1)$, $\\mathrm{B}(4,\\,1,\\,2)$가 있고, $xy$평면의 제$1$사분면 위에 점 $\\mathrm{P}$, $zx$평면의 제$1$사분면 위에 점 $\\mathrm{Q}$가 놓여 있으며 선",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "A=(2,5,1), B=(4,1,2) 모두 제1팔분면",
+      "mappedTo": "space.points[A,B]"
+    },
+    {
+      "id": "c2",
+      "condition": "P는 xy평면 제1사분면의 임의 점",
+      "mappedTo": "space.points[P];space.planes[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "Q는 zx평면 제1사분면의 임의 점",
+      "mappedTo": "space.points[Q];space.planes[1]"
+    },
+    {
+      "id": "c4",
+      "condition": "AP,PQ,QB 세 선분 연결",
+      "mappedTo": "space.segments[0..2]"
+    },
+    {
+      "id": "c5",
+      "condition": "양의 x,y,z축 화살표와 좌표 값 표기",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:3D_AXIS_AND_POINT_COORDINATE_LABELS"
+    }
+  ],
+  "newVisualInformation": [
+    "이 플랜은 엔진이 가능한 기본 형태까지만 렌더하며 중요 시각정보는 ENGINE_CAPABILITY_PENDING"
+  ]
+}

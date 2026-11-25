@@ -1,0 +1,94 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 8,
+        "depth": 8
+      },
+      "height": 8,
+      "names": "EFGHABCD",
+      "points": [
+        {
+          "id": "I",
+          "at": {
+            "divide": [
+              "B",
+              "H"
+            ],
+            "ratio": "3:1"
+          }
+        },
+        {
+          "id": "J",
+          "at": {
+            "divide": [
+              "A",
+              "C"
+            ],
+            "ratio": "5:3"
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "B",
+      "to": "H",
+      "style": "DASHED",
+      "role": "REF"
+    },
+    {
+      "from": "A",
+      "to": "C",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "I",
+      "to": "J",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "dims": [
+    {
+      "edge": "EF",
+      "label": "8"
+    }
+  ],
+  "solidCaption": {
+    "text": "기하 193 문제 q03"
+  },
+  "caption": "기하 193 q03: 정육면체 BH·AC의 두 내분점 I,J와 IJ.",
+  "accessibilityDescription": "정육면체 BH·AC의 두 내분점 I,J와 IJ.",
+  "sourceQuote": "[그림: 한 모서리의 길이가 8인 정육면체 ABCD-EFGH. 밑면은 E(앞왼쪽), F(앞오른쪽), G(뒤오른쪽), H(뒤왼쪽), 윗면은 그 위에 순서대로 A, B, C, D가 위치한다. 공간대각선 BH 위에 BI:IH = 3:1인 점 I와 윗면의 대각선 AC 위에 AJ:JC = 5:3인 점 J를 표시하고 선분 IJ를 연결한다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "정육면체 한 모서리 8",
+      "mappedTo": "solids[0];dims[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "I는 BH를 BI:IH=3:1 내분",
+      "mappedTo": "solids[0].points[0];segments[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "J는 윗면 대각선 AC를 AJ:JC=5:3 내분",
+      "mappedTo": "solids[0].points[1];segments[1]"
+    },
+    {
+      "id": "c4",
+      "condition": "선분 IJ",
+      "mappedTo": "segments[2]"
+    }
+  ],
+  "newVisualInformation": [
+    "원문 조건에 대응하는 실제 엔진 점·선·치수 플랜"
+  ]
+}

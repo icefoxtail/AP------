@@ -1,0 +1,110 @@
+{
+  "capability": "solid-figure-v1",
+  "space": {
+    "points": [
+      {
+        "id": "A",
+        "at": [
+          -2,
+          1,
+          4
+        ]
+      },
+      {
+        "id": "B",
+        "at": [
+          1,
+          4,
+          -2
+        ]
+      },
+      {
+        "id": "P",
+        "at": {
+          "divide": [
+            "A",
+            "B"
+          ],
+          "ratio": "2:1"
+        }
+      },
+      {
+        "id": "Q",
+        "at": {
+          "divide": [
+            "A",
+            "B"
+          ],
+          "ratio": "2:1",
+          "external": true
+        }
+      },
+      {
+        "id": "M",
+        "at": {
+          "midpoint": [
+            "P",
+            "Q"
+          ]
+        }
+      }
+    ],
+    "segments": [
+      {
+        "from": "A",
+        "to": "P",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "P",
+        "to": "B",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "B",
+        "to": "M",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "M",
+        "to": "Q",
+        "style": "AUTO",
+        "role": "REF"
+      }
+    ]
+  },
+  "solidCaption": {
+    "text": "기하 188 문제 q05"
+  },
+  "caption": "기하 188 q05: 내분점 P·외분점 Q·중점 M의 일직선 순서만 보여 주는 보충 그림.",
+  "accessibilityDescription": "내분점 P·외분점 Q·중점 M의 일직선 순서만 보여 주는 보충 그림.",
+  "sourceQuote": "두 점 $\\mathrm{A}(-2,\\;1,\\;4)$, $\\mathrm{B}(1,\\;4,\\;-2)$를 이은 선분 $\\mathrm{AB}$를 $2:1$로 내분하는 점을 $\\mathrm{P}$, $2:1$로 외분하는 점을 $\\mathrm{Q}$라 할 때, 선분 $\\mathrm{PQ}$의 중점의 좌표가 $(a,\\;b,\\;c)$이다. 이때 $a^2+b^2+c^",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 점 A=(-2,1,4), B=(1,4,-2)",
+      "mappedTo": "space.points[A,B]"
+    },
+    {
+      "id": "c2",
+      "condition": "P는 AB를 2:1 내분",
+      "mappedTo": "space.points[P];space.segments[0..1]"
+    },
+    {
+      "id": "c3",
+      "condition": "Q는 AB를 2:1 외분",
+      "mappedTo": "space.points[Q];space.segments[2..3]"
+    },
+    {
+      "id": "c4",
+      "condition": "M은 PQ의 중점; 결과 좌표와 제곱거리 답 미표시",
+      "mappedTo": "space.points[M]"
+    }
+  ],
+  "newVisualInformation": [
+    "원문 조건에 대응하는 실제 엔진 점·선·치수 플랜"
+  ]
+}

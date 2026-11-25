@@ -1,0 +1,73 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 5,
+        "depth": 5
+      },
+      "height": 5,
+      "names": "EFGHABCD",
+      "points": [
+        {
+          "id": "P",
+          "at": {
+            "divide": [
+              "C",
+              "E"
+            ],
+            "ratio": "3:2"
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "C",
+      "to": "E",
+      "style": "DASHED",
+      "role": "REF"
+    },
+    {
+      "from": "F",
+      "to": "P",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "dims": [
+    {
+      "edge": "EF",
+      "label": "5"
+    }
+  ],
+  "solidCaption": {
+    "text": "기하 193 문제 q01"
+  },
+  "caption": "기하 193 q01: 정육면체 CE의 3:2 내분점 P와 FP.",
+  "accessibilityDescription": "정육면체 CE의 3:2 내분점 P와 FP.",
+  "sourceQuote": "[그림: 한 모서리의 길이가 5인 정육면체 ABCD-EFGH. 밑면은 시계 반대 방향으로 E(앞왼쪽), F(앞오른쪽), G(뒤오른쪽), H(뒤왼쪽), 윗면은 각각 E, F, G, H 바로 위에 A, B, C, D가 위치한다. 공간대각선 CE 위에 CP:PE = 3:2가 되도록 점 P를 표시하고 선분 FP를 점선 또는 실선으로 연결한다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "정육면체 ABCD-EFGH 모서리 5",
+      "mappedTo": "solids[0];dims[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "P는 공간대각선 CE를 CP:PE=3:2로 내분",
+      "mappedTo": "solids[0].points[0];segments[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "선분 FP",
+      "mappedTo": "segments[1]"
+    }
+  ],
+  "newVisualInformation": [
+    "원문 조건에 대응하는 실제 엔진 점·선·치수 플랜"
+  ]
+}

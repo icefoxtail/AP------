@@ -1,0 +1,102 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 6,
+        "depth": 4
+      },
+      "height": 3,
+      "names": "EFGHABCD",
+      "points": [
+        {
+          "id": "P",
+          "at": {
+            "divide": [
+              "B",
+              "E"
+            ],
+            "ratio": "2:1"
+          }
+        },
+        {
+          "id": "Q",
+          "at": {
+            "divide": [
+              "A",
+              "G"
+            ],
+            "ratio": "1:3"
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "B",
+      "to": "E",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "A",
+      "to": "G",
+      "style": "DASHED",
+      "role": "REF"
+    },
+    {
+      "from": "P",
+      "to": "Q",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "dims": [
+    {
+      "edge": "AB",
+      "label": "6"
+    },
+    {
+      "edge": "AD",
+      "label": "4"
+    },
+    {
+      "edge": "AE",
+      "label": "3"
+    }
+  ],
+  "solidCaption": {
+    "text": "기하 193 문제 q04"
+  },
+  "caption": "기하 193 q04: 6×4×3 직육면체의 대각선 BE·AG 내분점 P,Q와 PQ.",
+  "accessibilityDescription": "6×4×3 직육면체의 대각선 BE·AG 내분점 P,Q와 PQ.",
+  "sourceQuote": "[그림: 가로 AB=6, 세로 AD=4, 높이 AE=3인 직육면체 ABCD-EFGH. 앞면은 ABFE(위 A, B, 아래 E, F), 뒷면은 DCGH(위 D, C, 아래 H, G)이다. 앞면 대각선 BE 위에 BP:PE = 2:1인 점 P, 공간대각선 AG 위에 AQ:QG = 1:3인 점 Q를 표시하고 선분 PQ를 연결한다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "직육면체 AB=6, AD=4, AE=3",
+      "mappedTo": "solids[0];dims[0..2]"
+    },
+    {
+      "id": "c2",
+      "condition": "P는 BE를 BP:PE=2:1 내분",
+      "mappedTo": "solids[0].points[0];segments[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "Q는 AG를 AQ:QG=1:3 내분",
+      "mappedTo": "solids[0].points[1];segments[1]"
+    },
+    {
+      "id": "c4",
+      "condition": "선분 PQ",
+      "mappedTo": "segments[2]"
+    }
+  ],
+  "newVisualInformation": [
+    "원문 조건에 대응하는 실제 엔진 점·선·치수 플랜"
+  ]
+}

@@ -1,0 +1,164 @@
+{
+  "capability": "solid-figure-v1",
+  "space": {
+    "points": [
+      {
+        "id": "O",
+        "at": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "C",
+        "at": [
+          2,
+          0,
+          -1
+        ]
+      },
+      {
+        "id": "P",
+        "at": [
+          5,
+          0,
+          -1
+        ]
+      },
+      {
+        "id": "A",
+        "at": [
+          -2,
+          4,
+          2
+        ]
+      },
+      {
+        "id": "X",
+        "at": [
+          10,
+          0,
+          0
+        ],
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "Y",
+        "at": [
+          0,
+          10,
+          0
+        ],
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "Z",
+        "at": [
+          0,
+          0,
+          10
+        ],
+        "hideName": true,
+        "hideDot": true
+      }
+    ],
+    "segments": [
+      {
+        "from": "C",
+        "to": "P",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "P",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "O",
+        "to": "X",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "O",
+        "to": "Y",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "O",
+        "to": "Z",
+        "style": "AUTO",
+        "role": "REF"
+      }
+    ],
+    "planes": [
+      {
+        "id": "zx",
+        "through": [
+          "O",
+          "X",
+          "Z"
+        ],
+        "fill": "LIGHT"
+      }
+    ]
+  },
+  "dims": [
+    {
+      "from": "C",
+      "to": "P",
+      "label": "3"
+    }
+  ],
+  "labels": [
+    {
+      "text": "x",
+      "at": "X"
+    },
+    {
+      "text": "y",
+      "at": "Y"
+    },
+    {
+      "text": "z",
+      "at": "Z"
+    }
+  ],
+  "solidCaption": {
+    "text": "기하 187 문제 q03"
+  },
+  "caption": "기하 187 q03: zx평면 위 원의 대표 반지름과 A–P 보조선; 원호·음수 라벨은 미표시.",
+  "accessibilityDescription": "zx평면 위 원의 대표 반지름과 A–P 보조선; 원호·음수 라벨은 미표시.",
+  "sourceQuote": "[그림: 원점 $\\mathrm{O}$와 $x$축, $y$축, $z$축으로 이루어진 좌표공간에서 $zx$평면 위에 중심이 $\\mathrm{C}(2,\\,0,\\,-1)$이고 반지름의 길이가 $3$인 원이 그려져 있으며, $zx$평면 밖의 점 $\\mathrm{A}(-2,\\,4,\\,2)$에서 원 위의 한 점 $\\mathrm{P}$까지 선분이 이어져 있다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "zx평면 중심 C=(2,0,-1), 반지름 3인 원",
+      "mappedTo": "space.points[C];dims[0];ENGINE_CAPABILITY_PENDING:CIRCLE_IN_ZX_PLANE"
+    },
+    {
+      "id": "c2",
+      "condition": "원 위 P는 임의 대표점(5,0,-1)",
+      "mappedTo": "space.points[P]"
+    },
+    {
+      "id": "c3",
+      "condition": "평면 밖 A=(-2,4,2)와 P를 연결",
+      "mappedTo": "space.points[A];space.segments[1]"
+    },
+    {
+      "id": "c4",
+      "condition": "음수 좌표 라벨 및 원호",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:NEGATIVE_COORDINATE_AND_CIRCLE_ARC"
+    }
+  ],
+  "newVisualInformation": [
+    "이 플랜은 엔진이 가능한 기본 형태까지만 렌더하며 중요 시각정보는 ENGINE_CAPABILITY_PENDING"
+  ]
+}

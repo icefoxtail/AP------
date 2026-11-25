@@ -1,0 +1,118 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 6,
+        "depth": 6
+      },
+      "height": 6,
+      "names": "EFGHABCD",
+      "points": [
+        {
+          "id": "P",
+          "at": {
+            "midpoint": [
+              "C",
+              "H"
+            ]
+          }
+        },
+        {
+          "id": "Q",
+          "at": {
+            "divide": [
+              "E",
+              "F"
+            ],
+            "ratio": "2:1"
+          }
+        },
+        {
+          "id": "R",
+          "at": {
+            "midpoint": [
+              "A",
+              "B"
+            ]
+          }
+        },
+        {
+          "id": "S",
+          "at": {
+            "centroid": [
+              "P",
+              "Q",
+              "R"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "C",
+      "to": "H",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "P",
+      "to": "Q",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "Q",
+      "to": "R",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "R",
+      "to": "P",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "dims": [
+    {
+      "edge": "EF",
+      "label": "6"
+    }
+  ],
+  "solidCaption": {
+    "text": "기하 196 문제 q03"
+  },
+  "caption": "기하 196 q03: 정육면체 CH·EF·AB의 점 P,Q,R와 삼각형의 무게중심 S.",
+  "accessibilityDescription": "정육면체 CH·EF·AB의 점 P,Q,R와 삼각형의 무게중심 S.",
+  "sourceQuote": "[그림: 한 모서리의 길이가 $6$인 정육면체 $\\mathrm{ABCD-EFGH}$에서 윗면은 $\\mathrm{ABCD}$, 아랫면은 $\\mathrm{EFGH}$($\\mathrm{A-E}$, $\\mathrm{B-F}$, $\\mathrm{C-G}$, $\\mathrm{D-H}$가 수직 모서리)이고, 면 $\\mathrm{CDHG}$의 대각선 $\\mathrm",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "정육면체 한 변 6",
+      "mappedTo": "solids[0];dims[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "P는 면 CDHG의 대각선 CH 중점",
+      "mappedTo": "solids[0].points[0];segments[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "Q는 EF를 EQ:QF=2:1 내분, R은 AB 중점",
+      "mappedTo": "solids[0].points[1..2]"
+    },
+    {
+      "id": "c4",
+      "condition": "삼각형 PQR와 무게중심 S",
+      "mappedTo": "segments[1..3];solids[0].points[3]"
+    }
+  ],
+  "newVisualInformation": [
+    "원문 조건에 대응하는 실제 엔진 점·선·치수 플랜"
+  ]
+}

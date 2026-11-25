@@ -1,0 +1,102 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 6,
+        "depth": 6
+      },
+      "height": 6,
+      "names": "EFGHABCD",
+      "points": [
+        {
+          "id": "P",
+          "at": {
+            "midpoint": [
+              "A",
+              "B"
+            ]
+          }
+        },
+        {
+          "id": "Q",
+          "at": {
+            "midpoint": [
+              "A",
+              "D"
+            ]
+          }
+        },
+        {
+          "id": "R",
+          "at": {
+            "midpoint": [
+              "A",
+              "E"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "P",
+      "to": "Q",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "Q",
+      "to": "R",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "R",
+      "to": "P",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "A",
+      "to": "G",
+      "style": "DASHED",
+      "role": "REF"
+    }
+  ],
+  "dims": [
+    {
+      "edge": "AB",
+      "label": "6"
+    }
+  ],
+  "solidCaption": {
+    "text": "기하 196 문제 q02"
+  },
+  "caption": "기하 196 q02: 정육면체 세 모서리의 중점 P,Q,R과 삼각형 PQR·대각선 AG.",
+  "accessibilityDescription": "정육면체 세 모서리의 중점 P,Q,R과 삼각형 PQR·대각선 AG.",
+  "sourceQuote": "[그림: 한 모서리의 길이가 $6$인 정육면체 $\\mathrm{ABCD-EFGH}$에서 윗면 $\\mathrm{ABCD}$의 아래에 밑면 $\\mathrm{EFGH}$가 $\\mathrm{A-E}$, $\\mathrm{B-F}$, $\\mathrm{C-G}$, $\\mathrm{D-H}$로 대응되게 놓여 있고, 모서리 $\\mathrm{AB}$, $\\mathrm{",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "정육면체 ABCD-EFGH 한 모서리 6",
+      "mappedTo": "solids[0];dims[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "P,Q,R은 AB,AD,AE의 중점",
+      "mappedTo": "solids[0].points[0..2]"
+    },
+    {
+      "id": "c3",
+      "condition": "삼각형 PQR 및 공간대각선 AG",
+      "mappedTo": "segments[0..3]"
+    }
+  ],
+  "newVisualInformation": [
+    "원문 조건에 대응하는 실제 엔진 점·선·치수 플랜"
+  ]
+}

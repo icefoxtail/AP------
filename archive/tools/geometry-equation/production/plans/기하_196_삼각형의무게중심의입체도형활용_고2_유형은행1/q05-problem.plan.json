@@ -1,0 +1,52 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 6,
+        "depth": 6
+      },
+      "height": 6,
+      "names": "EFGHABCD"
+    }
+  ],
+  "dims": [
+    {
+      "edge": "EF",
+      "label": "6"
+    }
+  ],
+  "solidCaption": {
+    "text": "기하 196 문제 q05"
+  },
+  "caption": "기하 196 q05: 한 변 6 정육면체 원형만 표시. 8분할과 내부 구 3개는 미지원.",
+  "accessibilityDescription": "한 변 6 정육면체 원형만 표시. 8분할과 내부 구 3개는 미지원.",
+  "sourceQuote": "[그림: 좌표공간의 제$1$팔분면에 원점을 한 꼭짓점으로 두고 $x, y, z$축 위의 눈금이 $6$인 정육면체가 $2 \\times 2 \\times 2$의 $8$개 작은 정육면체로 나뉘어 있으며, 앞쪽-왼쪽-아래 정육면체 $A$, 앞쪽-오른쪽-위 정육면체 $B$, 뒤쪽-오른쪽-아래 정육면체 $C$가 표시되어 있다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "좌표축 제1팔분면의 6×6×6 정육면체",
+      "mappedTo": "solids[0];dims[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "한 변 3의 2×2×2 총 8개 작은 정육면체로 분할",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:GRID_2X2X2_CUBE_SUBDIVISION"
+    },
+    {
+      "id": "c3",
+      "condition": "지정 위치 A,B,C 작은 정육면체 안의 반지름 3/2 구 3개",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:THREE_INSCRIBED_SPHERES_IN_SUBCUBES"
+    },
+    {
+      "id": "c4",
+      "condition": "x,y,z축·눈금 6 및 A,B,C 작은 정육면체 위치",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:AXES_AND_SUBCUBE_IDENTIFIERS"
+    }
+  ],
+  "newVisualInformation": [
+    "이 플랜은 엔진이 가능한 기본 형태까지만 렌더하며 중요 시각정보는 ENGINE_CAPABILITY_PENDING"
+  ]
+}
