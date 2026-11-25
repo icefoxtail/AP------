@@ -1,0 +1,10 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"PARABOLA","vertex":["0","0"],"p":"3","axis":"X"},
+  "points":[{"id":"O","kind":"ORIGIN"},{"id":"F","kind":"FOCUS"},{"id":"A","kind":"POINT","x":"6","y":"2","coordinates":true},{"id":"P","kind":"ON_CONIC","x":"2","branch":"POS"}],
+  "segments":[{"id":"FP","from":"F","to":"P"},{"id":"AP","from":"A","to":"P"}],
+  "caption":"y²=12x와 고정 초점 F(3,0), A(6,2), 가변점 P에서 FP+AP의 최솟값",
+  "accessibilityDescription":"포물선 위의 제1사분면 임의 점 P와 포물선 안쪽 A(6,2), 초점 F(3,0)를 연결한 두 선분이 있다.",
+  "sourceConditions":[{"id":"c1","condition":"y²=12x의 초점은 F=(3,0), A=(6,2)는 포물선 안쪽이다.","mappedTo":["conic","F","A"]},{"id":"c2","condition":"P는 임의의 점이므로 비최적 내부 예 P=(2,2√6)를 사용하고 구하는 거리 합의 최솟값 9는 그림에 쓰지 않는다.","mappedTo":["P","FP","AP"]}],
+  "newVisualInformation":["초점·고정점·포물선의 임의점 사이의 두 거리"]
+}
