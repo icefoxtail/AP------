@@ -1,0 +1,52 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "COS",
+    "coefficients": [
+      "-1",
+      "1",
+      "0"
+    ],
+    "phasePi": "0",
+    "sourceDomain": {
+      "kind": "INTERVAL_PI",
+      "rangePi": [
+        "0",
+        "2"
+      ],
+      "states": [
+        "CLOSED",
+        "OPEN"
+      ]
+    },
+    "referenceLines": [
+      {
+        "id": "h",
+        "y": "1/2",
+        "intersectionCount": 2
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": [
+        "1/2"
+      ]
+    },
+    "displaySize": "full"
+  },
+  "caption": "해설: -cos x와 y=1/2의 교점 사이 구간을 등호 포함해서 읽는다.",
+  "sourceQuote": "양변에 $-1$을 곱하면서 부등호 방향을 바꾸면 $\\cos",
+  "sourceConditions": [
+    {
+      "id": "C1",
+      "condition": "최종 문항에 명시된 삼각함수·구간",
+      "mappedTo": [
+        "graphPlan"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "등호를 포함한 코사인 경계각 두 개와 구간을 그래프로 확인"
+  ]
+}

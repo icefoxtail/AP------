@@ -1,0 +1,51 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "COS",
+    "ratePi": "1/10",
+    "coefficients": [
+      "4",
+      "0"
+    ],
+    "phasePi": "-1/10",
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "11"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "keyPoints": true,
+    "axisTickValues": {
+      "x": [
+        "1",
+        "6",
+        "11"
+      ],
+      "y": [
+        "4",
+        "-4"
+      ]
+    },
+    "displaySize": "full"
+  },
+  "caption": "해설: x=1에서 최댓값 4, x=6에서 0, x=11에서 최솟값 -4가 되는 경계를 확인한다.",
+  "sourceQuote": "$t=\\dfrac\\pi{10}(x-1)$라 놓으면 $-\\d",
+  "sourceConditions": [
+    {
+      "id": "C1",
+      "condition": "최종 문항에 명시된 삼각함수·구간",
+      "mappedTo": [
+        "graphPlan"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "자연수 n에 따른 코사인 그래프의 최솟값 경계가 변하는 위치를 확인"
+  ]
+}
