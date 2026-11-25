@@ -1,0 +1,72 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      { "coefficients": ["9", "-9", "2"] }
+    ],
+    "breakpoints": [],
+    "sourceDomain": { "kind": "ALL_REALS" },
+    "domain": [-1, 5],
+    "viewport": [-1, 5, -2, 10],
+    "functionName": "f",
+    "referenceCurves": [
+      {
+        "id": "g",
+        "name": "g",
+        "coefficients": ["9", "-8", "2"],
+        "intersectionX": ["0"]
+      }
+    ],
+    "requiredPoints": [
+      { "id": "Vf", "x": 2.25, "y": -1.125 },
+      { "id": "Vg", "x": 2, "y": 1 },
+      { "id": "I", "x": 0, "y": 9 }
+    ],
+    "exactCoordinates": {
+      "Vf": ["9/4", "-9/8"]
+    },
+    "axisTickValues": { "x": ["2", "3"], "y": ["1"] }
+  },
+  "caption": "n=2, a_n=9는 두 포물선의 x축 교점 유무 조건을 동시에 만족하는 대표 사례다. f는 x축과 두 점에서 만나고 g는 만나지 않는다. 전체 n에 대한 일반 증명은 판별식 부등식으로 한다.",
+  "accessibilityDescription": "같은 좌표평면에 위로 열린 두 포물선 f와 g가 있다. f의 꼭짓점은 x축 아래여서 x축을 두 번 지나고, g의 꼭짓점은 x축 위여서 x축과 만나지 않는다. 수치 위치는 n=2와 a_n=9인 예시이며 모든 n의 실제 그림을 뜻하지 않는다.",
+  "sourceQuote": "모든 n에서 y=2x^2-(4n+1)x+a_n은 x축과 만나고 y=2x^2-4nx+a_n은 만나지 않는다. lim(n→∞) a_n/n^2은?",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "첫째 함수는 2x^2-(4n+1)x+a_n이고 x축과 만나야 한다",
+      "mappedTo": "graphPlan.pieces[0].coefficients;graphPlan.requiredPoints[0];graphPlan.viewport"
+    },
+    {
+      "id": "c2",
+      "condition": "둘째 함수는 2x^2-4nx+a_n이고 x축과 만나면 안 된다",
+      "mappedTo": "graphPlan.referenceCurves[0].coefficients;graphPlan.requiredPoints[1];graphPlan.viewport"
+    },
+    {
+      "id": "c3",
+      "condition": "두 함수의 상수항은 같은 a_n",
+      "mappedTo": "graphPlan.pieces[0].coefficients[0];graphPlan.referenceCurves[0].coefficients[0];graphPlan.referenceCurves[0].intersectionX;graphPlan.requiredPoints[2]"
+    },
+    {
+      "id": "c4",
+      "condition": "n=2, a_n=9인 실제 조건 충족 예: 첫째 판별식 9>0, 둘째 판별식 -8<0",
+      "mappedTo": "caption;graphPlan.pieces[0];graphPlan.referenceCurves[0];graphPlan.requiredPoints[0..1]"
+    },
+    {
+      "id": "c5",
+      "condition": "일반 판별식 조건은 2n^2<a_n<=(4n+1)^2/8",
+      "mappedTo": "caption;newVisualInformation[0];the figure is only an instance, while the universal bound is established in the original algebraic solution"
+    },
+    {
+      "id": "c6",
+      "condition": "답인 lim a_n/n^2=2는 문제 그림에 노출하지 않는다",
+      "mappedTo": "solution-only plan; no problem plan or answer-bearing label is authored"
+    }
+  ],
+  "newVisualInformation": [
+    "한 화면의 포물선 두 개로 모든 n에서의 가변 계수를 정확히 그릴 수는 없다. n=2, a_n=9는 2n^2=8보다 크고 (4n+1)^2/8=81/8보다 작으므로 실제로 조건을 만족하는 대표 사례이며, 일반 부등식 증명을 대신하지 않는다.",
+    "엔진이 그리는 첫째 포물선 f=2x^2-9x+9의 두 x절편은 3/2와 3, 꼭짓점은 (9/4,-9/8)이다.",
+    "둘째 g=2x^2-8x+9의 꼭짓점은 (2,1), x절편은 없다. 두 포물선의 유일한 교점은 (0,9)이다.",
+    "두 포물선 이름 f와 g, 꼭짓점 표기는 해설 가독성을 위한 새로운 중립 기호다."
+  ]
+}
