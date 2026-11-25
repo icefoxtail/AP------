@@ -1,0 +1,252 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "X",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "4",
+              "denominator": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "2",
+              "denominator": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "2",
+              "denominator": "3"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "4",
+                  "denominator": "3"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "2",
+              "denominator": "3"
+            },
+            {
+              "kind": "expression",
+              "op": "neg",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "rational",
+                      "numerator": "4",
+                      "denominator": "3"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "2"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "c0",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "c1",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "C",
+    "M",
+    "U",
+    "L"
+  ],
+  "hiddenPointNames": [
+    "O",
+    "C",
+    "M",
+    "U",
+    "L"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "c0",
+    "c1"
+  ],
+  "displaySegments": [
+    {
+      "id": "chord",
+      "refs": [
+        "U",
+        "L"
+      ]
+    },
+    {
+      "id": "centerLine",
+      "refs": [
+        "O",
+        "C"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "chordName",
+        "ownerSegment": "chord",
+        "text": "l_n"
+      }
+    ]
+  },
+  "caption": "n=3 예시: 반지름 2인 두 원의 공통현과 그 중점.",
+  "accessibilityDescription": "중심이 x축 위 0과 4/3에 놓인 같은 반지름의 두 원, 겹친 두 교점을 잇는 수직 공통현과 중점이 그려져 있다.",
+  "sourceQuote": "[그림: 두 원과 공통현 $x=2/n$을 그리고, 공통현 중점 $(2/n,0)$과 위쪽 교점을 표시한다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "n=3 대표: 두 중심 (0,0), (4/3,0)",
+      "mappedTo": "mathPlan.nodes[0];mathPlan.nodes[2]"
+    },
+    {
+      "id": "c2",
+      "condition": "두 원 반지름 모두 2",
+      "mappedTo": "mathPlan.nodes[6..7];displayCircles[0..1]"
+    },
+    {
+      "id": "c3",
+      "condition": "공통현의 x=2/3, 중점 (2/3,0), 교점 y=±4√2/3",
+      "mappedTo": "mathPlan.nodes[3..5];displaySegments[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "n=3일 때 중심 거리4/3, 공통현은 두 교점 U,L의 수직선분으로 계산. 급수 합·유리수 답은 미표시."
+  ]
+}

@@ -1,0 +1,330 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "G1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G5",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G6",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G7",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G8",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G9",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "G1",
+    "G2",
+    "G3",
+    "G4",
+    "G5",
+    "G6",
+    "G7",
+    "G8",
+    "G9"
+  ],
+  "hiddenPointNames": [
+    "G1",
+    "G2",
+    "G3",
+    "G4",
+    "G5",
+    "G6",
+    "G7",
+    "G8",
+    "G9"
+  ],
+  "displaySegments": [
+    {
+      "id": "s1",
+      "refs": [
+        "G1",
+        "G4"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "G1",
+        "G2"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "G2",
+        "G5"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "G2",
+        "G3"
+      ]
+    },
+    {
+      "id": "s5",
+      "refs": [
+        "G3",
+        "G6"
+      ]
+    },
+    {
+      "id": "s6",
+      "refs": [
+        "G4",
+        "G7"
+      ]
+    },
+    {
+      "id": "s7",
+      "refs": [
+        "G4",
+        "G5"
+      ]
+    },
+    {
+      "id": "s8",
+      "refs": [
+        "G5",
+        "G8"
+      ]
+    },
+    {
+      "id": "s9",
+      "refs": [
+        "G5",
+        "G6"
+      ]
+    },
+    {
+      "id": "s10",
+      "refs": [
+        "G6",
+        "G9"
+      ]
+    },
+    {
+      "id": "s11",
+      "refs": [
+        "G7",
+        "G8"
+      ]
+    },
+    {
+      "id": "s12",
+      "refs": [
+        "G8",
+        "G9"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 400
+  },
+  "caption": "n=2 예시: 가로 2칸·세로 2칸 정사각형 격자와 모든 격자점.",
+  "accessibilityDescription": "n=2에서 세로 두 칸, 가로 두 칸을 단위 정사각형 네 개로 나눴다.",
+  "sourceQuote": "[그림: 가로 $n$, 세로 2인 직사각형을 단위 정사각형으로 나누고 모든 격자점을 표시한다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "가로 n칸·세로 2칸: n=2 대표",
+      "mappedTo": "mathPlan.nodes[0..8]"
+    },
+    {
+      "id": "c2",
+      "condition": "길이 1인 가로·세로 모든 선분",
+      "mappedTo": "displaySegments[0..11]"
+    },
+    {
+      "id": "c3",
+      "condition": "격자점 전체",
+      "mappedTo": "displayPoints[0..8]"
+    }
+  ],
+  "newVisualInformation": [
+    "대표 n=2에서 격자점 9개와 서로 다른 단위선분 12개를 렌더 필드로 명시. 일반항의 개수 및 극한 정답은 비노출."
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "unit",
+        "ownerSegment": "s1",
+        "text": "1"
+      }
+    ]
+  }
+}

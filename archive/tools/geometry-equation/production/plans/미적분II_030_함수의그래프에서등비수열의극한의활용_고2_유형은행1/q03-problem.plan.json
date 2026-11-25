@@ -1,0 +1,139 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      0,
+      70,
+      -4,
+      4
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "LOGARITHMIC",
+        "base": "4",
+        "coefficients": [
+          "1",
+          "1",
+          "0",
+          "0"
+        ],
+        "domain": [
+          "1/16",
+          "70"
+        ]
+      },
+      {
+        "id": "g",
+        "kind": "LOGARITHMIC",
+        "base": "4",
+        "coefficients": [
+          "1",
+          "1",
+          "0",
+          "-2"
+        ],
+        "domain": [
+          "1/16",
+          "70"
+        ]
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "h",
+          "slope": "0",
+          "intercept": "1"
+        }
+      ],
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        },
+        {
+          "id": "A",
+          "x": "4",
+          "y": "1",
+          "unnamed": true
+        },
+        {
+          "id": "B",
+          "x": "64",
+          "y": "1",
+          "unnamed": true
+        }
+      ],
+      "segments": [
+        {
+          "id": "OA",
+          "from": "O",
+          "to": "A"
+        },
+        {
+          "id": "AB",
+          "from": "A",
+          "to": "B"
+        },
+        {
+          "id": "BO",
+          "from": "B",
+          "to": "O"
+        }
+      ],
+      "callouts": [
+        {
+          "id": "an",
+          "point": "A",
+          "text": "A_n",
+          "labelKind": "MATH",
+          "direction": "NW"
+        },
+        {
+          "id": "bn",
+          "point": "B",
+          "text": "B_n",
+          "labelKind": "MATH",
+          "direction": "NE"
+        }
+      ]
+    },
+    "axisScale": {
+      "x": 1,
+      "y": 8
+    }
+  },
+  "pointNames": {
+    "O": "O"
+  },
+  "caption": "n=1 대표: 수평선 y=1과 두 로그곡선의 교점, 원점으로 이은 삼각형.",
+  "accessibilityDescription": "y=log₄x 및 이를 아래로 2 이동한 곡선과 y=1의 교점을 연결하여 삼각형을 표시한다.",
+  "sourceQuote": "[그림: 두 로그곡선과 수평선 $y=n$을 그린다. $A_n(4^n,n)$, $B_n(4^{n+2},n)$와 원점 $O$를 이어 삼각형을 표시한다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 로그곡선과 수평선 y=n",
+      "mappedTo": "graphPlan.curves[0..1];graphPlan.overlays.lines[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "교점 A_n=(4^n,n), B_n=(4^{n+2},n), n=1",
+      "mappedTo": "graphPlan.overlays.points[1..2]"
+    },
+    {
+      "id": "c3",
+      "condition": "원점 O와 삼각형 OA_nB_n",
+      "mappedTo": "graphPlan.overlays.points[0];graphPlan.overlays.segments[0..2]"
+    }
+  ],
+  "newVisualInformation": [
+    "원문 함수식과 점·선의 기하적 관계를 명시; 질문의 극한/비율 정답을 표시하지 않는다."
+  ]
+}

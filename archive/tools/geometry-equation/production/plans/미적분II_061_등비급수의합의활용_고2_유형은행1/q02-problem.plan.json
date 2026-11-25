@@ -1,0 +1,137 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      0,
+      9,
+      -1,
+      5
+    ],
+    "axisScale": {
+      "x": 1,
+      "y": 2
+    },
+    "curves": [
+      {
+        "id": "f",
+        "kind": "SQRT",
+        "radicand": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "0",
+          "9"
+        ],
+        "label": "y=sqrt(x)"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "4"
+      ],
+      "y": [
+        "2"
+      ]
+    },
+    "overlays": {
+      "lines": [{"id":"x4", "x":"4", "style":"DASHED"}],
+      "points": [
+        {
+          "id": "A",
+          "x": "4",
+          "y": "2",
+          "unnamed": true
+        },
+        {
+          "id": "B",
+          "x": "4-2*sqrt(3)/3",
+          "y": "0",
+          "unnamed": true
+        },
+        {
+          "id": "C",
+          "x": "4+2*sqrt(3)/3",
+          "y": "0",
+          "unnamed": true
+        },
+        {
+          "id": "H",
+          "x": "4",
+          "y": "0",
+          "unnamed": true
+        }
+      ],
+      "segments": [
+        {
+          "id": "AB",
+          "from": "A",
+          "to": "B"
+        },
+        {
+          "id": "AC",
+          "from": "A",
+          "to": "C"
+        },
+        {
+          "id": "BC",
+          "from": "B",
+          "to": "C"
+        },
+        {
+          "id": "AH",
+          "from": "A",
+          "to": "H",
+          "dashed": true
+        }
+      ],
+      "callouts": [
+        {
+          "id": "ca",
+          "point": "A",
+          "text": "A_n",
+          "labelKind": "MATH",
+          "direction": "NE"
+        },
+        {
+          "id": "cb",
+          "point": "B",
+          "text": "B_n",
+          "labelKind": "MATH",
+          "direction": "SW"
+        },
+        {
+          "id": "cc",
+          "point": "C",
+          "text": "C_n",
+          "labelKind": "MATH",
+          "direction": "SE"
+        }
+      ]
+    }
+  },
+  "caption": "n=1 대표: y=√x 위의 A₁(4,2)을 꼭짓점으로 하고 밑변이 x축 위인 정삼각형.",
+  "accessibilityDescription": "제곱근 곡선 위 한 점을 꼭짓점으로 하는 정삼각형과 x축 위 밑변, 꼭짓점에서 내린 점선 높이를 그렸다.",
+  "sourceQuote": "[그림: 곡선 $y=\\sqrt{x}$와 직선 $x=4^n$의 교점에 $A_n$을 표시한다. $x$축 위에 $B_n=(4^n-2^n/\\sqrt3,0)$, $C_n=(4^n+2^n/\\sqrt3,0)$를 표시하고 세 점을 이은 뒤 높이를 점선으로 표시한다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "y=√x와 x=4^n의 교점 A_n, n=1",
+      "mappedTo": "graphPlan.curves[0];graphPlan.overlays.lines[0];graphPlan.overlays.points[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "밑변 B_n,C_n의 x좌표가 4±2/√3",
+      "mappedTo": "graphPlan.overlays.points[1..2]"
+    },
+    {
+      "id": "c3",
+      "condition": "정삼각형 세 변과 x축에 내린 수선",
+      "mappedTo": "graphPlan.overlays.segments[0..3]"
+    }
+  ],
+  "newVisualInformation": [
+    "대표값 n=1 또는 k=1에서 모든 표시 점을 원문 식으로 다시 계산. 무한급수의 합은 비노출."
+  ]
+}

@@ -1,0 +1,138 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      0,
+      2.3,
+      -1,
+      28
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "EXPONENTIAL",
+        "base": "5",
+        "coefficients": [
+          "1",
+          "1",
+          "0"
+        ],
+        "domain": [
+          "0",
+          "2"
+        ],
+        "label": "y=5^x"
+      },
+      {
+        "id": "g",
+        "kind": "EXPONENTIAL",
+        "base": "2",
+        "coefficients": [
+          "1",
+          "1",
+          "0"
+        ],
+        "domain": [
+          "0",
+          "2"
+        ],
+        "label": "y=2^x"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "nline",
+          "x": "1"
+        },
+        {
+          "id": "nextline",
+          "x": "2",
+          "style": "DASHED"
+        }
+      ],
+      "points": [
+        {
+          "id": "P",
+          "x": "1",
+          "y": "5",
+          "unnamed": true
+        },
+        {
+          "id": "Q",
+          "x": "1",
+          "y": "2",
+          "unnamed": true
+        },
+        {
+          "id": "P2",
+          "x": "2",
+          "y": "25",
+          "unnamed": true
+        },
+        {
+          "id": "Q2",
+          "x": "2",
+          "y": "4",
+          "unnamed": true
+        }
+      ],
+      "segments": [
+        {
+          "id": "sPQ",
+          "from": "P",
+          "to": "Q"
+        },
+        {
+          "id": "sNext",
+          "from": "P2",
+          "to": "Q2"
+        }
+      ],
+      "callouts": [
+        {
+          "id": "pn",
+          "point": "P",
+          "text": "P_n",
+          "labelKind": "MATH",
+          "direction": "NW"
+        },
+        {
+          "id": "qn",
+          "point": "Q",
+          "text": "Q_n",
+          "labelKind": "MATH",
+          "direction": "SW"
+        }
+      ]
+    }
+  },
+  "caption": "n=1 대표: 지수곡선 두 개와 x=1, x=2에서의 두 세로 길이를 비교한다.",
+  "accessibilityDescription": "y=5^x와 y=2^x가 오른쪽으로 갈수록 벌어지며 x=1에서 상하의 교점 P_n,Q_n이 수직선분으로 연결되어 있다.",
+  "sourceQuote": "[그림: 두 지수곡선을 그리고, 수직선 $x=n$ 위에 $P_n(n,5^n)$과 $Q_n(n,2^n)$을 찍어 잇는다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 지수곡선 y=5^x, y=2^x",
+      "mappedTo": "graphPlan.curves[0..1]"
+    },
+    {
+      "id": "c2",
+      "condition": "x=n 및 x=n+1에서의 두 교점 n=1 대표",
+      "mappedTo": "graphPlan.overlays.points[0..3];graphPlan.overlays.lines[0..1]"
+    },
+    {
+      "id": "c3",
+      "condition": "P_nQ_n 및 P_{n+1}Q_{n+1}",
+      "mappedTo": "graphPlan.overlays.segments[0..1]"
+    }
+  ],
+  "newVisualInformation": [
+    "원문 함수식과 점·선의 기하적 관계를 명시; 질문의 극한/비율 정답을 표시하지 않는다."
+  ]
+}

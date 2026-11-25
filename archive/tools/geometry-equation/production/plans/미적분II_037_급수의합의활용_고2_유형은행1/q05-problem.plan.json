@@ -1,0 +1,97 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -1,
+      4,
+      -1,
+      3
+    ],
+    "curves": [
+      {
+        "id": "l",
+        "kind": "LINE",
+        "coefficients": [
+          "6/5",
+          "-2/5"
+        ],
+        "domain": [
+          "0",
+          "3"
+        ],
+        "label": "y=6/5-2*x/5"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "3"
+      ],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        },
+        {
+          "id": "A",
+          "x": "3",
+          "y": "0",
+          "unnamed": true
+        },
+        {
+          "id": "B",
+          "x": "0",
+          "y": "6/5",
+          "unnamed": true
+        }
+      ],
+      "segments": [
+        {
+          "id": "OA",
+          "from": "O",
+          "to": "A"
+        },
+        {
+          "id": "AB",
+          "from": "A",
+          "to": "B"
+        },
+        {
+          "id": "BO",
+          "from": "B",
+          "to": "O"
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "O": "O"
+  },
+  "caption": "n=1 대표: (3n−1)x+(3n+2)y=6과 두 좌표축의 제1사분면 삼각형.",
+  "accessibilityDescription": "양의 x절편 3과 y절편 6/5인 직선 및 좌표축이 제1사분면의 삼각형을 이룬다.",
+  "sourceQuote": "[그림: 제1사분면에서 원점과 두 절편 $(6/(3n-1),0)$, $(0,6/(3n+2))$을 꼭짓점으로 하는 삼각형]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "n=1 대표 직선 2x+5y=6",
+      "mappedTo": "graphPlan.curves[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "두 축과의 절편 (3,0),(0,6/5)",
+      "mappedTo": "graphPlan.overlays.points[1..2]"
+    },
+    {
+      "id": "c3",
+      "condition": "원점과 절편을 이은 세 변",
+      "mappedTo": "graphPlan.overlays.segments[0..2]"
+    }
+  ],
+  "newVisualInformation": [
+    "n=1 대표 그림은 원문 식으로 독립 계산한 점들만 나타낸다. 합계 정답은 표기하지 않는다."
+  ]
+}

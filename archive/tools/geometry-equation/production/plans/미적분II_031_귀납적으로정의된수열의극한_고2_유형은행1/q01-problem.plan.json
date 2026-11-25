@@ -1,0 +1,127 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      0,
+      8,
+      0,
+      8
+    ],
+    "curves": [
+      {
+        "id": "identity",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "0",
+          "8"
+        ],
+        "label": "y=x"
+      },
+      {
+        "id": "f",
+        "kind": "LINE",
+        "coefficients": [
+          "3",
+          "1/4"
+        ],
+        "domain": [
+          "0",
+          "8"
+        ],
+        "label": "y=x/4+3"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "S",
+          "x": "2",
+          "y": "2",
+          "unnamed": true
+        },
+        {
+          "id": "U",
+          "x": "2",
+          "y": "7/2",
+          "unnamed": true
+        },
+        {
+          "id": "V",
+          "x": "7/2",
+          "y": "7/2",
+          "unnamed": true
+        },
+        {
+          "id": "W",
+          "x": "7/2",
+          "y": "31/8",
+          "unnamed": true
+        },
+        {
+          "id": "X",
+          "x": "31/8",
+          "y": "31/8",
+          "unnamed": true
+        }
+      ],
+      "segments": [
+        {
+          "id": "s0",
+          "from": "S",
+          "to": "U",
+          "dashed": true
+        },
+        {
+          "id": "s1",
+          "from": "U",
+          "to": "V",
+          "dashed": true
+        },
+        {
+          "id": "s2",
+          "from": "V",
+          "to": "W",
+          "dashed": true
+        },
+        {
+          "id": "s3",
+          "from": "W",
+          "to": "X",
+          "dashed": true
+        }
+      ]
+    }
+  },
+  "caption": "a₁=2에서 시작하는 y=x와 y=x/4+3 사이의 두 단계 수직·수평 반복.",
+  "accessibilityDescription": "기울기 1 직선과 기울기 1/4, 절편 3인 직선 사이에 계단형 수직·수평 이동을 그렸다.",
+  "sourceQuote": "[그림: $y=x$와 $y=x/4+3$을 그리고, $x=2$에서 시작해 수직으로 둘째 직선, 수평으로 첫째 직선에 닿는 과정을 반복해 표시한다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "y=x 와 y=x/4+3",
+      "mappedTo": "graphPlan.curves[0..1]"
+    },
+    {
+      "id": "c2",
+      "condition": "x=2에서 시작",
+      "mappedTo": "graphPlan.overlays.points[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "수직→수평 반복",
+      "mappedTo": "graphPlan.overlays.segments[0..3]"
+    }
+  ],
+  "newVisualInformation": [
+    "대표항에서 함수 위의 정확한 점과 연속 선분을 그린다. 구하는 극한값은 인쇄하지 않는다."
+  ]
+}

@@ -1,0 +1,169 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "hiddenPointNames": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "A",
+        "C"
+      ],
+      "emphasis": "BOLD"
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "diag",
+        "ownerSegment": "s4",
+        "text": "l_n"
+      }
+    ]
+  },
+  "caption": "n=1 대표: 넓이가 4인 정사각형의 대각선 l₁을 나타낸다.",
+  "accessibilityDescription": "한 변 2인 정사각형의 네 변과 왼쪽 아래에서 오른쪽 위로 연결한 대각선에 l_n 라벨이 있다.",
+  "sourceQuote": "[그림: 좌표평면에 꼭짓점이 $(0,0),(\\sqrt{a_n},0),(\\sqrt{a_n},\\sqrt{a_n}),(0,\\sqrt{a_n})$인 정사각형을 그리고 원점에서 맞은편 꼭짓점까지의 대각선에 $l_n$을 표시한다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "정사각형 넓이 a_n=4(1/9)^{n−1}, n=1 대표 넓이4",
+      "mappedTo": "mathPlan.nodes[0..3];displaySegments[0..3]"
+    },
+    {
+      "id": "c2",
+      "condition": "대각선 길이 l_n",
+      "mappedTo": "displaySegments[4];planeMarks.expressionLabels[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "첫째 정사각형에서 길이2의 변과 대각선을 정확히 구성. 대각선 길이의 무한급수 합은 비노출."
+  ]
+}

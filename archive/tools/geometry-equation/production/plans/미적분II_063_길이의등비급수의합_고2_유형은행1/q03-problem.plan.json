@@ -1,0 +1,219 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "30"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "swingCircle",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "B",
+    "L",
+    "R"
+  ],
+  "hiddenPointNames": [
+    "B",
+    "L",
+    "R"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "left",
+      "refs": [
+        "O",
+        "L"
+      ]
+    },
+    {
+      "id": "vertical",
+      "refs": [
+        "O",
+        "B"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "right",
+      "refs": [
+        "O",
+        "R"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "theta",
+        "refs": [
+          "L",
+          "O",
+          "B"
+        ],
+        "value": 60,
+        "label": "θ",
+        "labelKind": "MATH",
+        "arcs": 1
+      },
+      {
+        "id": "half",
+        "refs": [
+          "B",
+          "O",
+          "R"
+        ],
+        "value": 30,
+        "label": "θ/2",
+        "labelKind": "MATH",
+        "arcs": 1
+      }
+    ],
+    "arcs": [
+      {
+        "id": "swing",
+        "circle": "swingCircle",
+        "center": "O",
+        "from": "L",
+        "to": "R",
+        "side": "MINOR"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "length",
+        "ownerSegment": "left",
+        "text": "3",
+        "unit": "m"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 520,
+    "height": 430
+  },
+  "caption": "θ=60°인 모형 예시: 길이 3 m의 진자가 연직선 좌우로 θ와 θ/2만큼 올라가는 원호.",
+  "accessibilityDescription": "고정점 O에서 길이3m인 줄이 수직으로 늘어진 위치와 왼쪽 60도, 오른쪽 30도에 있는 추를 연결하는 원호를 그렸다. 각의 라벨 θ, θ/2를 표시한다.",
+  "sourceQuote": "[그림: 고정점에서 아래로 연직선을 긋고, 연직선과 왼쪽으로 $\\theta$, 오른쪽으로 $\\theta/2$를 이루는 길이 $3\\,\\mathrm m$인 두 선분을 그린다. 두 끝점을 최저점을 지나는 원호로 연결한다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "줄의 길이 3m",
+      "mappedTo": "mathPlan.nodes[2..4];planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "연직선 왼쪽 θ, 오른쪽 θ/2 (예시 θ=60°)",
+      "mappedTo": "mathPlan.nodes[1..3];planeMarks.angles[0..1]"
+    },
+    {
+      "id": "c3",
+      "condition": "양쪽 끝을 최저점을 지나는 원호로 연결",
+      "mappedTo": "mathPlan.nodes[4];planeMarks.arcs[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "대표 θ=60°에서 3m 반지름 호의 가운데가 최저점 B와 같고 좌우 각이 60°, 30°. 총 이동거리 정답은 기재하지 않는다."
+  ]
+}

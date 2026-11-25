@@ -1,0 +1,108 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      0,
+      2.2,
+      0,
+      40
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "EXPONENTIAL",
+        "base": "25",
+        "coefficients": [
+          "1",
+          "1",
+          "0"
+        ],
+        "domain": [
+          "0",
+          "21/10"
+        ],
+        "label": "y=25^(x-1)",
+        "shiftX": "1"
+      },
+      {
+        "id": "g",
+        "kind": "EXPONENTIAL",
+        "base": "5",
+        "coefficients": [
+          "1",
+          "1",
+          "0"
+        ],
+        "domain": [
+          "0",
+          "21/10"
+        ],
+        "label": "y=5^x"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "2",
+          "y": "25",
+          "unnamed": true
+        },
+        {
+          "id": "H",
+          "x": "2",
+          "y": "0",
+          "unnamed": true
+        }
+      ],
+      "segments": [
+        {
+          "id": "PH",
+          "from": "P",
+          "to": "H",
+          "dashed": true
+        }
+      ],
+      "callouts": [
+        {
+          "id": "cp",
+          "point": "P",
+          "text": "P",
+          "direction": "NW"
+        }
+      ]
+    },
+    "axisScale": {
+      "x": 1,
+      "y": "1/12"
+    }
+  },
+  "caption": "a=25인 대표 사례: 두 지수곡선의 교점 P에서 x축에 내린 수선을 표시한다. 일반 a의 k값은 표시하지 않는다.",
+  "accessibilityDescription": "a=25를 택했을 때 y=25^{x-1}와 y=5^x가 만나는 점 P와 x축 수선의 발을 표시한 지수함수 그래프.",
+  "sourceQuote": "[그림: 두 지수곡선을 그려 교점 $P(k,5^k)$를 표시하고 $P$에서 $x$축 위 $(k,0)$에 수선을 내린다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "a>5의 대표 사례 a=25(일반 a의 답이 아님)",
+      "mappedTo": "graphPlan.curves[0].base;graphPlan.curves[0].shiftX;caption"
+    },
+    {
+      "id": "c2",
+      "condition": "두 원문 지수곡선 y=a^{x-1}, y=5^x",
+      "mappedTo": "graphPlan.curves[0..1]"
+    },
+    {
+      "id": "c3",
+      "condition": "대표 사례에서만 교점 x=2, y=25로 정확히 계산; x축 수선 PH",
+      "mappedTo": "graphPlan.overlays.points[0..1];graphPlan.overlays.segments[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "대표 매개변수 a=25에서 교점 좌표를 독립 계산하고 실제 곡선 교점과 동일하게 놓았다. 일반 a의 k 및 물음의 극한값은 그래프에 인쇄하지 않는다."
+  ]
+}
