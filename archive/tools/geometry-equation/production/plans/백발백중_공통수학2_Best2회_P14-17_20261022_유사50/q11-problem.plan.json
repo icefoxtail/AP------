@@ -1,0 +1,33 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "SOURCE_COORDINATE_AXES_v1", "unit": "source-coordinate", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "O", "op": "NORMALIZATION_ORIGIN", "inputs": [], "args": {}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "U", "op": "NORMALIZATION_AXIS", "inputs": [], "args": { "length": { "kind": "integer", "value": "1" } }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "1" }, { "kind": "integer", "value": "-5" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "5" }, { "kind": "integer", "value": "3" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "1" }, { "kind": "integer", "value": "7" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "P", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "1" }, { "kind": "integer", "value": "1" }] }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" }
+    ]
+  },
+  "axisTickValues": { "x": [], "y": [] },
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    { "id": "sAP", "refs": ["A", "P"] },
+    { "id": "sPC", "refs": ["P", "C"] },
+    { "id": "sBP", "refs": ["B", "P"], "dashed": true }
+  ],
+  "displayPoints": ["A", "B", "C", "P"],
+  "coordinateLabels": ["A", "B", "C"],
+  "caption": "A(1,-5), C(1,7)를 잇는 선분 위의 P와 두 거리 AP, BP를 표시한다. P는 이동점이다.",
+  "accessibilityDescription": "세 점 A(1,-5), B(5,3), C(1,7) 및 선분 AC 위를 움직이는 점 P, 거리 AP와 BP를 나타낸 문제용 좌표 그림이다.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "A(1,-5), B(5,3), C(1,7)", "mappedTo": ["A", "B", "C"] },
+    { "id": "c2", "condition": "P는 선분 AC 위 임의의 점; P=(1,1)은 설명용 대표 위치", "mappedTo": ["P", "sAP", "sPC"] },
+    { "id": "c3", "condition": "AP^2+BP^2 최솟값을 묻되 답은 문제 그림에 미표시", "mappedTo": ["sAP", "sBP"] }
+  ],
+  "newVisualInformation": ["선분 AC를 따라 P가 이동하며 AP와 BP가 달라지는 구조만 그린다."]
+}

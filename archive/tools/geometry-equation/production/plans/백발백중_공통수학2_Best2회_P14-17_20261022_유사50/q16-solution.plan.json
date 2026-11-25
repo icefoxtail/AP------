@@ -1,0 +1,42 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "SOURCE_COORDINATE_AXES_v1", "unit": "source-coordinate", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "O", "op": "NORMALIZATION_ORIGIN", "inputs": [], "args": {}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "U", "op": "NORMALIZATION_AXIS", "inputs": [], "args": { "length": { "kind": "integer", "value": "1" } }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "1" }, { "kind": "integer", "value": "2" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "-2" }, { "kind": "integer", "value": "4" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "H", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "3" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "M", "op": "MIDPOINT", "inputs": ["B", "C"], "args": {}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "G", "op": "TRANSLATE_POINT", "inputs": ["H"], "args": { "dx": { "kind": "integer", "value": "1" }, "dy": { "kind": "integer", "value": "0" } }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "A", "op": "TRANSLATE_POINT", "inputs": ["G"], "args": { "dx": { "kind": "integer", "value": "3" }, "dy": { "kind": "integer", "value": "0" } }, "outputType": "POINT", "factRole": "CONCLUSION" },
+      { "id": "Gcheck", "op": "CENTROID", "inputs": ["A", "B", "C"], "args": {}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "Hcheck", "op": "CENTROID", "inputs": ["G", "B", "C"], "args": {}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" }
+    ]
+  },
+  "axisTickValues": { "x": [], "y": [] },
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    { "id": "sAB", "refs": ["A", "B"] },
+    { "id": "sBC", "refs": ["B", "C"] },
+    { "id": "sCA", "refs": ["C", "A"] },
+    { "id": "sAM", "refs": ["A", "M"], "dashed": true },
+    { "id": "sGB", "refs": ["G", "B"], "dashed": true },
+    { "id": "sGC", "refs": ["G", "C"], "dashed": true }
+  ],
+  "displayPoints": ["A", "B", "C", "G", "H", "M"],
+  "hiddenPointNames": ["M"],
+  "hiddenPointStyle": "NONE",
+  "coordinateLabels": ["A", "B", "C", "G", "H"],
+  "caption": "△ABC의 무게중심 G(1,3), △GBC의 무게중심 H(0,3)를 같은 중선 위에서 구분하고 A(4,3)를 확인한다.",
+  "accessibilityDescription": "삼각형 ABC의 중선에서 A(4,3), 첫 무게중심 G(1,3), 두 번째 무게중심 H(0,3)가 차례로 놓이며, 공통 밑변 BC를 가진 두 삼각형을 비교한다.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "B(1,2), C(-2,4), H(0,3) 주어짐", "mappedTo": ["B", "C", "H"] },
+    { "id": "c2", "condition": "G는 ABC의 무게중심, H는 GBC의 무게중심", "mappedTo": ["G", "Gcheck", "H", "Hcheck", "M", "sAM"] },
+    { "id": "c3", "condition": "역산으로 A(4,3), G(1,3)을 구함", "mappedTo": ["A", "G"] }
+  ],
+  "newVisualInformation": ["두 무게중심 G와 H가 공유 밑변 BC의 중선 위에 서로 다른 점으로 놓이는 것을 선분과 실제 좌표로 보인다."]
+}

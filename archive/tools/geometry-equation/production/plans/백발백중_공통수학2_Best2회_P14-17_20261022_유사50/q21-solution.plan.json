@@ -1,0 +1,38 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "SOURCE_COORDINATE_AXES_v1", "unit": "source-coordinate", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "O", "op": "NORMALIZATION_ORIGIN", "inputs": [], "args": {}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "U", "op": "NORMALIZATION_AXIS", "inputs": [], "args": { "length": { "kind": "integer", "value": "1" } }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "3" }, { "kind": "integer", "value": "-2" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "4" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "C", "op": "TRANSLATE_POINT", "inputs": ["B"], "args": { "dx": { "kind": "integer", "value": "-4" }, "dy": { "kind": "integer", "value": "-3" } }, "outputType": "POINT", "factRole": "CONCLUSION" },
+      { "id": "D", "op": "TRANSLATE_POINT", "inputs": ["A"], "args": { "dx": { "kind": "integer", "value": "-4" }, "dy": { "kind": "integer", "value": "-3" } }, "outputType": "POINT", "factRole": "CONCLUSION" },
+      { "id": "X", "op": "MIDPOINT", "inputs": ["A", "C"], "args": {}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "Y", "op": "MIDPOINT", "inputs": ["B", "D"], "args": {}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" }
+    ]
+  },
+  "axisTickValues": { "x": [], "y": [] },
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    { "id": "sAB", "refs": ["A", "B"] },
+    { "id": "sBC", "refs": ["B", "C"] },
+    { "id": "sCD", "refs": ["C", "D"] },
+    { "id": "sDA", "refs": ["D", "A"] },
+    { "id": "sAC", "refs": ["A", "C"], "dashed": true },
+    { "id": "sBD", "refs": ["B", "D"], "dashed": true }
+  ],
+  "displayPoints": ["A", "B", "C", "D", "X"],
+  "coordinateLabels": ["A", "B", "C", "D", "X"],
+  "caption": "A(3,-2), B(0,4), C(-4,1), D(-1,-5)와 두 대각선의 공통 중점 X(-1/2,-1/2)를 표시한다.",
+  "accessibilityDescription": "평행사변형 ABCD의 네 변과 대각선이 표시되며, AC와 BD의 중점이 일치해 a=-4, b=-5임을 확인한다.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "A(3,-2), B(0,4), C(a,1), D(-1,b)가 이 순서대로 평행사변형의 꼭짓점", "mappedTo": ["A", "B", "C", "D", "sAB", "sBC", "sCD", "sDA"] },
+    { "id": "c2", "condition": "A+C=B+D, 대각선 AC·BD의 공통 중점 X", "mappedTo": ["X", "Y", "sAC", "sBD"] },
+    { "id": "c3", "condition": "해설에서 a=-4, b=-5, a+b=-9", "mappedTo": ["C", "D"] }
+  ],
+  "newVisualInformation": ["평행사변형의 네 꼭짓점과 대각선 교점을 배치해 A+C=B+D 조건의 도형 의미를 확인한다."]
+}
