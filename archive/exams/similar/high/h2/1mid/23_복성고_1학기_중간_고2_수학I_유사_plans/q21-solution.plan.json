@@ -1,0 +1,26 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-4, 4, -2, 5],
+    "curves": [
+      {"id": "f", "kind": "Y_OF_X", "coefficients": ["18/5", "0", "-2/5"], "domain": ["-7/2", "7/2"], "color": "BLUE", "label": "y=2/5*(9-x^2)"},
+      {"id": "line", "kind": "LINE", "coefficients": ["1", "1/2"], "domain": ["-7/2", "7/2"], "color": "WARM", "label": "y=x/2+1"}
+    ],
+    "axisTickValues": {"x": ["-13/4", "1", "2"], "y": ["2"]},
+    "overlays": {"points": [
+      {"id": "Q", "x": "-13/4", "y": "-5/8", "coordinates": true},
+      {"id": "P", "x": "2", "y": "2", "coordinates": true},
+      {"id": "I", "x": "1", "y": "16/5"}
+    ]}
+  },
+  "caption": "f(x)=2/5(9−x²)이며 로그부등식은 x>0에서 f(x)≥x/2+1과 같다. 두 그래프는 x=−13/4, 2에서 만나므로 양의 정수해는 1, 2이다.",
+  "accessibilityDescription": "포물선과 직선이 Q(-13/4,-5/8) 및 P(2,2)에서 만난다. 양의 x에서 포물선이 직선보다 위인 구간에 정수 x=1,2가 있다.",
+  "sourceConditions": [
+    {"id": "q21s-f", "condition": "f=2/5(9−x²)", "mappedTo": "graphPlan.curves[0]"},
+    {"id": "q21s-boundary", "condition": "x>0에서 f(x)−1≥x/2, 기준 직선 y=x/2+1", "mappedTo": "graphPlan.curves[1]"},
+    {"id": "q21s-roots", "condition": "교점의 x값 −13/4와 2", "mappedTo": "graphPlan.overlays.points[0],graphPlan.overlays.points[1]"},
+    {"id": "q21s-integers", "condition": "조건을 만족하는 양의 정수 1,2", "mappedTo": "graphPlan.overlays.points[2],graphPlan.overlays.points[1],graphPlan.axisTickValues"}
+  ],
+  "newVisualInformation": ["로그부등식을 두 그래프의 위아래 관계로 전환", "교점 경계와 정수 1,2의 위치"]
+}

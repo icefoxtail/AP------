@@ -1,0 +1,20 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [3.4, 10, -1, 6],
+    "curves": [
+      {"id": "log", "kind": "LOGARITHMIC", "base": "2", "coefficients": ["1", "1", "-4", "3"], "domain": ["17/4", "10"], "color": "BLUE"}
+    ],
+    "axisTickValues": {"x": ["4", "5"], "y": ["3"]},
+    "overlays": {"points": [{"id": "P", "x": "5", "y": "3", "coordinates": true}]}
+  },
+  "caption": "정의역은 x>4, 세로 점근선은 x=4이다. 함수는 증가하고 (5,3)을 지난다.",
+  "accessibilityDescription": "x=4의 점근선 오른쪽에서 증가하는 로그곡선 y=log₂(x−4)+3과 점 P(5,3)이 보인다.",
+  "sourceConditions": [
+    {"id": "q07s-curve", "condition": "y=log_2(x−4)+3", "mappedTo": "graphPlan.curves[0]"},
+    {"id": "q07s-asym", "condition": "정의역 x>4 및 점근선 x=4", "mappedTo": "graphPlan.curves[0].coefficients,graphPlan.axisTickValues"},
+    {"id": "q07s-point", "condition": "점 (5,3)", "mappedTo": "graphPlan.overlays.points[0]"}
+  ],
+  "newVisualInformation": ["로그곡선과 x=4 점근선의 상대 위치", "(5,3)을 지나는 증가함수"]
+}

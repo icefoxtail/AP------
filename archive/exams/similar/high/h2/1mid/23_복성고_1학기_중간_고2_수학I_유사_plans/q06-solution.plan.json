@@ -1,0 +1,21 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-2.8, 2.2, -1, 20],
+    "curves": [
+      {"id": "original", "kind": "EXPONENTIAL", "base": "3", "coefficients": ["1", "1", "0"], "domain": ["-2", "2"], "color": "BLUE", "label": "y=3^x"},
+      {"id": "moved", "kind": "EXPONENTIAL", "base": "3", "coefficients": ["1", "1", "4"], "shiftX": "-1", "domain": ["-2", "3/2"], "color": "WARM", "label": "y=3^(x+1)+4"}
+    ],
+    "axisTickValues": {"x": ["1"], "y": ["4", "13"]},
+    "overlays": {"points": [{"id": "P", "x": "1", "y": "13", "coordinates": true}]}
+  },
+  "caption": "이동 후 그래프는 y=3^(x+1)+4이며 x=1인 점 P(1,13)를 지난다. 따라서 a=13이다.",
+  "accessibilityDescription": "왼쪽 1, 위로 4 이동한 지수곡선의 점 P가 (1,13)으로 표시되고, 원래 y=3^x 그래프가 비교용으로 보인다.",
+  "sourceConditions": [
+    {"id": "q06s-f", "condition": "원함수 y=3^x", "mappedTo": "graphPlan.curves[0]"},
+    {"id": "q06s-g", "condition": "이동 후 y=3^(x+1)+4", "mappedTo": "graphPlan.curves[1]"},
+    {"id": "q06s-point", "condition": "x=1 대입하여 a=13", "mappedTo": "graphPlan.overlays.points[0],graphPlan.axisTickValues"}
+  ],
+  "newVisualInformation": ["좌·상 이동 전후의 차이", "해설에서 계산한 P(1,13) 표시"]
+}
