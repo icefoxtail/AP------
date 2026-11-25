@@ -1,0 +1,58 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "COS",
+    "coefficients": [
+      "2",
+      "1",
+      "0"
+    ],
+    "phasePi": "0",
+    "absolute": true,
+    "sourceDomain": {
+      "kind": "INTERVAL_PI",
+      "rangePi": [
+        "0",
+        "4"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "referenceLines": [
+      {
+        "id": "h",
+        "y": "1",
+        "intersectionCount": 8,
+        "color": "BLUE"
+      }
+    ],
+    "axisTickPi": true,
+    "axisTickPiStep": "1/2",
+    "axisTickValues": {
+      "x": [],
+      "y": [
+        "1",
+        "2"
+      ]
+    },
+    "displaySize": "full"
+  },
+  "caption": "t=πx/2로 치환하여 0≤t≤4π에서 y=2|cos t|와 y=1의 8교점을 본다. x값의 합은 32이다.",
+  "accessibilityDescription": "t가 0에서 4π까지 변할 때 2|cos t| 곡선이 y=1을 네 주기에서 여덟 번 만나는 그래프이다.",
+  "sourceConditions": [
+    {
+      "id": "G1",
+      "condition": "0≤x≤8, |2cos(πx/2)|=1, t=πx/2∈[0,4π].",
+      "mappedTo": [
+        "h"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "해의 t값을 네 π구간에서 두 개씩 읽고 전체 합 16π를 구한다."
+  ],
+  "sourceQuote": "$\\left|2\\cos\\dfrac{\\pi x}{2}\\right|=1$"
+}
