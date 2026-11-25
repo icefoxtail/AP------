@@ -1,0 +1,224 @@
+{
+  "capability": "solid-figure-v1",
+  "space": {
+    "points": [
+      {
+        "id": "A",
+        "at": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "P",
+        "at": [
+          "sqrt(3)",
+          0,
+          0
+        ]
+      },
+      {
+        "id": "Q",
+        "at": [
+          "sqrt(3)",
+          1,
+          0
+        ]
+      },
+      {
+        "id": "R",
+        "at": [
+          "sqrt(3)",
+          2,
+          "sqrt(5)"
+        ]
+      },
+      {
+        "id": "Y",
+        "at": [
+          5,
+          0,
+          0
+        ],
+        "hideName": true
+      }
+    ],
+    "segments": [
+      {
+        "from": "A",
+        "to": "P",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "Q",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "R",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "P",
+        "to": "Q",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "P",
+        "to": "R",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "Q",
+        "to": "R",
+        "style": "AUTO",
+        "role": "REF"
+      }
+    ],
+    "planes": [
+      {
+        "id": "alpha",
+        "name": "\\alpha",
+        "through": [
+          "A",
+          "P",
+          "Q"
+        ]
+      },
+      {
+        "id": "beta",
+        "name": "\\beta",
+        "through": [
+          "A",
+          "P",
+          "R"
+        ]
+      }
+    ],
+    "lines": [
+      {
+        "id": "xy",
+        "through": [
+          "A",
+          "Y"
+        ]
+      }
+    ]
+  },
+  "dims": [
+    {
+      "from": "A",
+      "to": "Q",
+      "label": "2"
+    },
+    {
+      "from": "Q",
+      "to": "R",
+      "label": "\\sqrt{6}"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "P",
+        "refs": [
+          "A",
+          "Q"
+        ]
+      },
+      {
+        "at": "P",
+        "refs": [
+          "A",
+          "R"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "refs": [
+          "Q",
+          "A",
+          "P"
+        ],
+        "arcs": 1,
+        "label": "30^\\circ"
+      },
+      {
+        "refs": [
+          "R",
+          "A",
+          "P"
+        ],
+        "arcs": 2,
+        "label": "60^\\circ"
+      },
+      {
+        "refs": [
+          "Q",
+          "P",
+          "R"
+        ],
+        "arcs": 3,
+        "label": "\\theta"
+      }
+    ]
+  },
+  "caption": "두 평면의 교선 AP와 직교 단면",
+  "solidCaption": {
+    "text": "두 평면의 교선 AP와 직교 단면"
+  },
+  "sourceQuote": "[그림: 두 평면 $\\alpha$와 $\\beta$의 교선 위에 두 점 $\\mathrm{A}, \\mathrm{P}$가 놓여 있다. 평면 $\\alpha$ 위의 점 $\\mathrm{Q}$에 대해 $\\overline{\\mathrm{AP}} \\perp \\overline{\\mathrm{PQ}}$이고 $\\angle\\mathrm{QAP}=30^\\circ",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AP가 α·β의 교선",
+      "mappedTo": "space.lines[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "AP⊥PQ",
+      "mappedTo": "marks.rightAngles[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "AP⊥PR",
+      "mappedTo": "marks.rightAngles[1]"
+    },
+    {
+      "id": "c4",
+      "condition": "∠QAP=30°",
+      "mappedTo": "marks.angles[0]"
+    },
+    {
+      "id": "c5",
+      "condition": "∠RAP=60°",
+      "mappedTo": "marks.angles[1]"
+    },
+    {
+      "id": "c6",
+      "condition": "AQ=2",
+      "mappedTo": "dims[0]"
+    },
+    {
+      "id": "c7",
+      "condition": "QR=√6",
+      "mappedTo": "dims[1]"
+    },
+    {
+      "id": "c8",
+      "condition": "면 사이 θ는 ∠QPR",
+      "mappedTo": "marks.angles[2]"
+    }
+  ],
+  "newVisualInformation": [
+    "AQ·QR의 주어진 값과 정확한 단면 각"
+  ]
+}

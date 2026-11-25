@@ -1,0 +1,106 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PYRAMID",
+      "base": {
+        "kind": "REGULAR",
+        "n": 3,
+        "side": 6
+      },
+      "height": 3.4641016151377544,
+      "names": "BCDA",
+      "points": [
+        {
+          "id": "M",
+          "at": {
+            "midpoint": [
+              "B",
+              "C"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "A",
+      "to": "M",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "M",
+      "to": "D",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "dims": [
+    {
+      "from": "B",
+      "to": "C",
+      "label": "6"
+    },
+    {
+      "from": "A",
+      "to": "B",
+      "label": "2\\sqrt{6}"
+    }
+  ],
+  "marks": {
+    "equalLengths": [
+      {
+        "count": 1,
+        "segments": [
+          "AB",
+          "AC",
+          "AD"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "refs": [
+          "A",
+          "M",
+          "D"
+        ],
+        "arcs": 1,
+        "label": "\\theta"
+      }
+    ]
+  },
+  "caption": "정삼각뿔 ABCD의 이면각 단면",
+  "solidCaption": {
+    "text": "정삼각뿔 ABCD의 이면각 단면"
+  },
+  "sourceQuote": "[그림: 꼭짓점이 A이고 밑면이 한 변의 길이 6인 정삼각형 BCD인 정삼각뿔 A-BCD에서 모서리 AB=AC=AD=2√6이고, BC의 중점을 M이라 할 때 두 평면 ABC와 BCD가 이루는 이면각의 크기는 θ이다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "밑면 BCD는 한 변 6의 정삼각형",
+      "mappedTo": "solids[0].base"
+    },
+    {
+      "id": "c2",
+      "condition": "AB=AC=AD=2√6",
+      "mappedTo": "marks.equalLengths[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "BC 중점 M",
+      "mappedTo": "solids[0].points[0]"
+    },
+    {
+      "id": "c4",
+      "condition": "두 면의 이면각 θ",
+      "mappedTo": "marks.angles[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "정삼각형의 중선 MD 위에서 정의되는 면 사이 각"
+  ]
+}

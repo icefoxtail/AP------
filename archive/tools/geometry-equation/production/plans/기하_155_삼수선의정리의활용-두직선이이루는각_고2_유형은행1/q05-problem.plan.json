@@ -1,0 +1,147 @@
+{
+  "capability": "solid-figure-v1",
+  "space": {
+    "points": [
+      {
+        "id": "B",
+        "at": [
+          -2,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "C",
+        "at": [
+          2,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "A",
+        "at": [
+          0,
+          0,
+          "2*sqrt(3)"
+        ]
+      },
+      {
+        "id": "L",
+        "at": [
+          0,
+          "2*sqrt(3)",
+          0
+        ],
+        "hideName": true
+      },
+      {
+        "id": "T",
+        "at": [
+          -2,
+          5,
+          0
+        ],
+        "hideName": true
+      }
+    ],
+    "segments": [
+      {
+        "from": "A",
+        "to": "B",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "C",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "B",
+        "to": "C",
+        "style": "AUTO",
+        "role": "REF"
+      }
+    ],
+    "planes": [
+      {
+        "id": "alpha",
+        "name": "\\alpha",
+        "through": [
+          "B",
+          "C",
+          "L"
+        ]
+      }
+    ],
+    "lines": [
+      {
+        "id": "l",
+        "name": "l",
+        "through": [
+          "B",
+          "L"
+        ]
+      }
+    ]
+  },
+  "marks": {
+    "angles": [
+      {
+        "refs": [
+          "C",
+          "B",
+          "L"
+        ],
+        "arcs": 1,
+        "label": "60^\\circ"
+      },
+      {
+        "refs": [
+          "A",
+          "B",
+          "L"
+        ],
+        "arcs": 2,
+        "label": "\\theta"
+      }
+    ]
+  },
+  "caption": "수직으로 선 정삼각형과 평면 위 직선",
+  "solidCaption": {
+    "text": "수직으로 선 정삼각형과 평면 위 직선"
+  },
+  "sourceQuote": "[그림: 평면 $\\alpha$ 위에 선분 $\\mathrm{BC}$가 놓여 있고, 선분 $\\mathrm{BC}$를 밑변으로 하여 평면 $\\alpha$에 수직으로 서 있는 정삼각형 $\\mathrm{ABC}$. 평면 $\\alpha$ 위에서 점 $\\mathrm{B}$를 지나며 $\\mathrm{BC}$와 $60^\\circ$의 각을 이루는 직선 $l",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "ABC는 정삼각형",
+      "mappedTo": "space.segments[1]"
+    },
+    {
+      "id": "c2",
+      "condition": "ABC의 면은 α에 수직",
+      "mappedTo": "space.planes[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "B를 지나는 지면 위 직선 l",
+      "mappedTo": "space.lines[0]"
+    },
+    {
+      "id": "c4",
+      "condition": "l과 BC의 각 60°",
+      "mappedTo": "marks.angles[0]"
+    },
+    {
+      "id": "c5",
+      "condition": "l과 BA의 각 θ",
+      "mappedTo": "marks.angles[1]"
+    }
+  ],
+  "newVisualInformation": [
+    "지면의 l과 수직으로 선 정삼각형의 입체 관계"
+  ]
+}

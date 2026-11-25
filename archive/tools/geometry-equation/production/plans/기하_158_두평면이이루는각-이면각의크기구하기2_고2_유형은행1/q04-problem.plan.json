@@ -1,0 +1,177 @@
+{
+  "capability": "solid-figure-v1",
+  "space": {
+    "points": [
+      {
+        "id": "B",
+        "at": [
+          -3,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "C",
+        "at": [
+          3,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "D",
+        "at": [
+          0,
+          "25/3",
+          0
+        ]
+      },
+      {
+        "id": "A",
+        "at": [
+          0,
+          "3*sqrt(3)",
+          3
+        ]
+      },
+      {
+        "id": "H",
+        "at": [
+          0,
+          "3*sqrt(3)",
+          0
+        ]
+      },
+      {
+        "id": "M",
+        "at": [
+          0,
+          0,
+          0
+        ],
+        "hideName": true,
+        "hideDot": true
+      }
+    ],
+    "segments": [
+      {
+        "from": "A",
+        "to": "B",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "C",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "D",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "B",
+        "to": "C",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "B",
+        "to": "D",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "C",
+        "to": "D",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "H",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "M",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "H",
+        "to": "M",
+        "style": "AUTO",
+        "role": "REF"
+      }
+    ]
+  },
+  "dims": [
+    {
+      "from": "B",
+      "to": "C",
+      "label": "6"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "H",
+        "refs": [
+          "A",
+          "M"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "refs": [
+          "A",
+          "M",
+          "H"
+        ],
+        "arcs": 1,
+        "label": "30^\\circ"
+      }
+    ]
+  },
+  "solidCaption": {
+    "text": "△BCD 25, △ABC 18"
+  },
+  "caption": "면 넓이 25·18을 갖는 사면체",
+  "sourceQuote": "[그림: 사면체 ABCD에서 BC=6, 밑면 BCD의 넓이는 25, 옆면 ABC의 넓이는 18이고, 평면 ABC와 밑면 BCD가 이루는 각의 크기는 30°이며 꼭짓점 A에서 밑면 BCD에 내린 수선의 발이 H이다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "BC=6",
+      "mappedTo": "dims[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "△BCD의 넓이 25",
+      "mappedTo": "solidCaption.text"
+    },
+    {
+      "id": "c3",
+      "condition": "△ABC의 넓이 18",
+      "mappedTo": "solidCaption.text"
+    },
+    {
+      "id": "c4",
+      "condition": "두 면의 이면각 30°",
+      "mappedTo": "marks.angles[0]"
+    },
+    {
+      "id": "c5",
+      "condition": "H는 A의 정사영",
+      "mappedTo": "space.points[4]"
+    }
+  ],
+  "newVisualInformation": [
+    "넓이 25·18은 면 안의 수식 텍스트 미지원으로 캡션 기록"
+  ]
+}

@@ -1,0 +1,127 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PYRAMID",
+      "base": {
+        "kind": "RECT",
+        "width": 2,
+        "depth": 2
+      },
+      "height": 1.4142135623730951,
+      "names": "BCDEA",
+      "points": [
+        {
+          "id": "M",
+          "at": {
+            "midpoint": [
+              "B",
+              "C"
+            ]
+          }
+        },
+        {
+          "id": "N",
+          "at": {
+            "midpoint": [
+              "D",
+              "E"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "A",
+      "to": "M",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "A",
+      "to": "N",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "M",
+      "to": "N",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "dims": [
+    {
+      "from": "B",
+      "to": "C",
+      "label": "a"
+    },
+    {
+      "from": "A",
+      "to": "B",
+      "label": "a"
+    }
+  ],
+  "marks": {
+    "angles": [
+      {
+        "refs": [
+          "M",
+          "A",
+          "N"
+        ],
+        "arcs": 1,
+        "label": "\\theta"
+      }
+    ],
+    "equalLengths": [
+      {
+        "count": 1,
+        "segments": [
+          "AB",
+          "AC",
+          "AD",
+          "AE"
+        ]
+      }
+    ]
+  },
+  "caption": "모든 모서리가 같은 사각뿔의 마주 본 옆면",
+  "solidCaption": {
+    "text": "모든 모서리가 같은 사각뿔의 마주 본 옆면"
+  },
+  "sourceQuote": "[그림: 모든 모서리의 길이가 $a$로 같은 정사각뿔 $\\mathrm{A-BCDE}$에서 밑면은 정사각형 $\\mathrm{BCDE}$이고 옆면은 정삼각형들이다. 모서리 $\\mathrm{BC}$의 중점 $\\mathrm{M}$과 모서리 $\\mathrm{DE}$의 중점 $\\mathrm{N}$에 대하여 선분 $\\mathrm{AM, AN, MN}$",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "정사각뿔 BCDE, 모든 모서리 a",
+      "mappedTo": "solids[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "BC 중점 M",
+      "mappedTo": "solids[0].points[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "DE 중점 N",
+      "mappedTo": "solids[0].points[1]"
+    },
+    {
+      "id": "c4",
+      "condition": "AM·AN·MN 단면",
+      "mappedTo": "segments[2]"
+    },
+    {
+      "id": "c5",
+      "condition": "두 옆면 사이 θ",
+      "mappedTo": "marks.angles[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "대표 한 변 2·높이 √2의 정확한 정사각뿔"
+  ]
+}

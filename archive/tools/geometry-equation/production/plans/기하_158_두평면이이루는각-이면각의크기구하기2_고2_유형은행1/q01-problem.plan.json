@@ -1,0 +1,210 @@
+{
+  "capability": "solid-figure-v1",
+  "space": {
+    "points": [
+      {
+        "id": "B",
+        "at": [
+          -9,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "C",
+        "at": [
+          9,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "M",
+        "at": {
+          "midpoint": [
+            "B",
+            "C"
+          ]
+        }
+      },
+      {
+        "id": "D",
+        "at": [
+          0,
+          13,
+          0
+        ]
+      },
+      {
+        "id": "H",
+        "at": [
+          0,
+          6,
+          0
+        ]
+      },
+      {
+        "id": "A",
+        "at": [
+          0,
+          6,
+          "6*sqrt(3)"
+        ]
+      }
+    ],
+    "segments": [
+      {
+        "from": "A",
+        "to": "B",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "C",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "D",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "B",
+        "to": "C",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "B",
+        "to": "D",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "C",
+        "to": "D",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "M",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "M",
+        "to": "H",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "H",
+        "style": "AUTO",
+        "role": "REF"
+      }
+    ]
+  },
+  "dims": [
+    {
+      "from": "A",
+      "to": "B",
+      "label": "15"
+    },
+    {
+      "from": "A",
+      "to": "C",
+      "label": "15"
+    },
+    {
+      "from": "B",
+      "to": "C",
+      "label": "18"
+    },
+    {
+      "from": "A",
+      "to": "H",
+      "label": "6\\sqrt{3}"
+    }
+  ],
+  "marks": {
+    "equalLengths": [
+      {
+        "count": 1,
+        "segments": [
+          "BD",
+          "CD"
+        ]
+      }
+    ],
+    "rightAngles": [
+      {
+        "at": "H",
+        "refs": [
+          "A",
+          "M"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "refs": [
+          "A",
+          "M",
+          "H"
+        ],
+        "arcs": 1,
+        "label": "\\theta"
+      }
+    ]
+  },
+  "caption": "사면체 ABCD의 수선 AH와 이면각 θ",
+  "solidCaption": {
+    "text": "사면체 ABCD의 수선 AH와 이면각 θ"
+  },
+  "sourceQuote": "[그림: 사면체 ABCD에서 선분 BC의 중점을 M이라 할 때, AB=AC=15, BC=18, BD=CD이고, 꼭짓점 A에서 밑면 BCD에 내린 수선의 발이 H이며 선분 AH의 길이는 6√3, 평면 ABC와 평면 BCD가 이루는 각은 ∠AMH=θ이다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AB=AC=15",
+      "mappedTo": "dims[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "BC=18",
+      "mappedTo": "dims[2]"
+    },
+    {
+      "id": "c3",
+      "condition": "BD=CD",
+      "mappedTo": "marks.equalLengths[0]"
+    },
+    {
+      "id": "c4",
+      "condition": "M은 BC 중점",
+      "mappedTo": "space.points[2]"
+    },
+    {
+      "id": "c5",
+      "condition": "AH⊥BCD",
+      "mappedTo": "marks.rightAngles[0]"
+    },
+    {
+      "id": "c6",
+      "condition": "AH=6√3",
+      "mappedTo": "dims[3]"
+    },
+    {
+      "id": "c7",
+      "condition": "∠AMH=θ",
+      "mappedTo": "marks.angles[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "실제 평면 BCD로 내린 수선 H와 두 면 사이의 θ"
+  ]
+}

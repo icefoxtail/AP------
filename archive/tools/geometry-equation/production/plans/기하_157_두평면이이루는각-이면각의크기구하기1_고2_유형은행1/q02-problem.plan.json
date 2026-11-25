@@ -1,0 +1,138 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PYRAMID",
+      "base": {
+        "kind": "RECT",
+        "width": 2,
+        "depth": 2
+      },
+      "height": 2.8284271247461903,
+      "names": "BCDEA",
+      "points": [
+        {
+          "id": "M",
+          "at": {
+            "midpoint": [
+              "B",
+              "C"
+            ]
+          }
+        },
+        {
+          "id": "H",
+          "at": {
+            "base": "center"
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "A",
+      "to": "M",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "M",
+      "to": "H",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "A",
+      "to": "H",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "dims": [
+    {
+      "from": "B",
+      "to": "C",
+      "label": "2"
+    },
+    {
+      "from": "A",
+      "to": "B",
+      "label": "\\sqrt{10}"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "H",
+        "refs": [
+          "A",
+          "M"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "refs": [
+          "A",
+          "M",
+          "H"
+        ],
+        "arcs": 1,
+        "label": "\\theta"
+      }
+    ],
+    "equalLengths": [
+      {
+        "count": 1,
+        "segments": [
+          "AB",
+          "AC",
+          "AD",
+          "AE"
+        ]
+      }
+    ]
+  },
+  "caption": "정사각뿔의 높이와 모서리 중점",
+  "solidCaption": {
+    "text": "정사각뿔의 높이와 모서리 중점"
+  },
+  "sourceQuote": "[그림: 밑면 $\\mathrm{BCDE}$가 한 변의 길이가 $2$인 정사각형이고, 옆모서리의 길이가 모두 $\\sqrt{10}$인 사각뿔 $\\mathrm{A-BCDE}$가 있다. 모서리 $\\mathrm{BC}$의 중점 $\\mathrm{M}$과 밑면의 중심 $\\mathrm{H}$에 대하여 선분 $\\mathrm{AM, MH, AH}$로 직각삼",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "BC=2",
+      "mappedTo": "dims[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "AB=√10",
+      "mappedTo": "dims[1]"
+    },
+    {
+      "id": "c3",
+      "condition": "M은 BC 중점",
+      "mappedTo": "solids[0].points[0]"
+    },
+    {
+      "id": "c4",
+      "condition": "H는 밑면 중심",
+      "mappedTo": "solids[0].points[1]"
+    },
+    {
+      "id": "c5",
+      "condition": "직각삼각형 AHM",
+      "mappedTo": "marks.rightAngles[0]"
+    },
+    {
+      "id": "c6",
+      "condition": "이면각 θ=∠AMH",
+      "mappedTo": "marks.angles[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "정사각뿔 중심 H를 지나는 수직 단면"
+  ]
+}

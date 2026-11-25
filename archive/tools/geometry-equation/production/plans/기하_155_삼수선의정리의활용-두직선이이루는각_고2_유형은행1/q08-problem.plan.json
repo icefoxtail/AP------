@@ -1,0 +1,82 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 4,
+        "depth": 3
+      },
+      "height": 3,
+      "names": "EFGHABCD"
+    }
+  ],
+  "segments": [
+    {
+      "from": "D",
+      "to": "G",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "F",
+      "to": "H",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "dims": [
+    {
+      "from": "A",
+      "to": "B",
+      "label": "4"
+    },
+    {
+      "from": "A",
+      "to": "D",
+      "label": "3"
+    },
+    {
+      "from": "B",
+      "to": "F",
+      "label": "3"
+    }
+  ],
+  "caption": "직육면체의 두 꼬인 직선 DG, FH",
+  "solidCaption": {
+    "text": "직육면체의 두 꼬인 직선 DG, FH"
+  },
+  "sourceQuote": "[그림: 밑면 가로 $\\overline{\\mathrm{AB}}=4$, 세로 $\\overline{\\mathrm{AD}}=3$, 높이 $\\overline{\\mathrm{BF}}=3$인 직육면체 $\\mathrm{ABCD-EFGH}$. 뒷면의 대각선 $\\mathrm{DG}$와 밑면의 대각선 $\\mathrm{FH}$가 표시되어 있다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AB=4",
+      "mappedTo": "dims[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "AD=3",
+      "mappedTo": "dims[1]"
+    },
+    {
+      "id": "c3",
+      "condition": "BF=3",
+      "mappedTo": "dims[2]"
+    },
+    {
+      "id": "c4",
+      "condition": "대각선 DG",
+      "mappedTo": "segments[0]"
+    },
+    {
+      "id": "c5",
+      "condition": "대각선 FH",
+      "mappedTo": "segments[1]"
+    }
+  ],
+  "newVisualInformation": [
+    "서로 꼬인 두 직선의 방향을 읽는 공간 도형"
+  ]
+}

@@ -1,0 +1,169 @@
+{
+  "capability": "solid-figure-v1",
+  "space": {
+    "points": [
+      {
+        "id": "B",
+        "at": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "A",
+        "at": [
+          40,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "P",
+        "at": [
+          0,
+          20,
+          0
+        ]
+      },
+      {
+        "id": "C",
+        "at": [
+          0,
+          20,
+          "20*sqrt(3)"
+        ]
+      }
+    ],
+    "segments": [
+      {
+        "from": "B",
+        "to": "A",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "B",
+        "to": "P",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "P",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "P",
+        "to": "C",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "C",
+        "to": "A",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "C",
+        "to": "B",
+        "style": "AUTO",
+        "role": "REF"
+      }
+    ],
+    "planes": [
+      {
+        "id": "alpha",
+        "name": "\\alpha",
+        "through": [
+          "A",
+          "B",
+          "P"
+        ]
+      }
+    ]
+  },
+  "dims": [
+    {
+      "from": "P",
+      "to": "B",
+      "label": "20"
+    },
+    {
+      "from": "B",
+      "to": "A",
+      "label": "40"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "B",
+        "refs": [
+          "A",
+          "P"
+        ]
+      },
+      {
+        "at": "P",
+        "refs": [
+          "B",
+          "C"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "refs": [
+          "C",
+          "A",
+          "B"
+        ],
+        "arcs": 1,
+        "label": "45^\\circ"
+      }
+    ]
+  },
+  "caption": "송전탑과 도로의 수직 거리",
+  "solidCaption": {
+    "text": "송전탑과 도로의 수직 거리"
+  },
+  "sourceQuote": "[그림: 지면 위에 수직으로 세워진 기둥 $\\mathrm{CP}$가 있고, 지면 위의 직선 도로 위에 두 점 $\\mathrm{A, B}$가 있다. $\\overline{\\mathrm{PB}} \\perp \\overline{\\mathrm{AB}}$이고 $\\overline{\\mathrm{PB}}=20$, $\\overline{\\mathrm{AB}}",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "도로 AB",
+      "mappedTo": "space.segments[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "PB⊥AB",
+      "mappedTo": "marks.rightAngles[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "PB=20m",
+      "mappedTo": "dims[0]"
+    },
+    {
+      "id": "c4",
+      "condition": "AB=40m",
+      "mappedTo": "dims[1]"
+    },
+    {
+      "id": "c5",
+      "condition": "송전탑 PC⊥지면",
+      "mappedTo": "marks.rightAngles[1]"
+    },
+    {
+      "id": "c6",
+      "condition": "∠CAB=45°",
+      "mappedTo": "marks.angles[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "미지 높이 CP의 수치를 노출하지 않는 송전탑 배치"
+  ]
+}

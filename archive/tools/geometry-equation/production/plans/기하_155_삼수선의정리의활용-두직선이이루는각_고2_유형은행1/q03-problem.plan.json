@@ -1,0 +1,208 @@
+{
+  "capability": "solid-figure-v1",
+  "space": {
+    "points": [
+      {
+        "id": "A",
+        "at": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "H",
+        "at": [
+          "6*sqrt(3)",
+          0,
+          0
+        ]
+      },
+      {
+        "id": "B",
+        "at": [
+          "6*sqrt(3)",
+          6,
+          0
+        ]
+      },
+      {
+        "id": "C",
+        "at": [
+          "6*sqrt(3)",
+          "2/3",
+          "4*sqrt(2)/3"
+        ]
+      },
+      {
+        "id": "X",
+        "at": [
+          -4,
+          0,
+          0
+        ],
+        "hideName": true
+      },
+      {
+        "id": "Y",
+        "at": [
+          15,
+          0,
+          0
+        ],
+        "hideName": true
+      }
+    ],
+    "segments": [
+      {
+        "from": "A",
+        "to": "B",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "H",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "B",
+        "to": "H",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "B",
+        "to": "C",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "C",
+        "to": "H",
+        "style": "AUTO",
+        "role": "REF"
+      }
+    ],
+    "planes": [
+      {
+        "id": "alpha",
+        "name": "\\alpha",
+        "through": [
+          "A",
+          "H",
+          "B"
+        ]
+      },
+      {
+        "id": "beta",
+        "name": "\\beta",
+        "through": [
+          "A",
+          "H",
+          "C"
+        ]
+      }
+    ],
+    "lines": [
+      {
+        "id": "xy",
+        "through": [
+          "X",
+          "Y"
+        ]
+      }
+    ]
+  },
+  "dims": [
+    {
+      "from": "A",
+      "to": "B",
+      "label": "12"
+    },
+    {
+      "from": "B",
+      "to": "C",
+      "label": "4\\sqrt{2}"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "H",
+        "refs": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "at": "C",
+        "refs": [
+          "B",
+          "H"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "refs": [
+          "H",
+          "A",
+          "B"
+        ],
+        "arcs": 1,
+        "label": "30^\\circ"
+      },
+      {
+        "refs": [
+          "B",
+          "H",
+          "C"
+        ],
+        "arcs": 2,
+        "label": "\\theta"
+      }
+    ]
+  },
+  "caption": "교선 XY와 수선 BC의 이면각",
+  "solidCaption": {
+    "text": "교선 XY와 수선 BC의 이면각"
+  },
+  "sourceQuote": "[그림: 두 평면 $\\alpha, \\beta$의 교선 $\\mathrm{XY}$. 평면 $\\alpha$ 위에 선분 $\\mathrm{AB}=12$가 교선과 $30^\\circ$를 이루고 있고, 점 $\\mathrm{B}$에서 평면 $\\beta$에 수선 $\\mathrm{BC}=4\\sqrt{2}$를 내렸다. $\\mathrm{B}$에서 교선에 내린 수",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "A는 두 평면의 교선 XY 위",
+      "mappedTo": "space.lines[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "AB=12",
+      "mappedTo": "dims[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "AB와 교선의 각 30°",
+      "mappedTo": "marks.angles[0]"
+    },
+    {
+      "id": "c4",
+      "condition": "BC=4√2, BC⊥β",
+      "mappedTo": "marks.rightAngles[1]"
+    },
+    {
+      "id": "c5",
+      "condition": "H는 B에서 교선으로 내린 발",
+      "mappedTo": "marks.rightAngles[0]"
+    },
+    {
+      "id": "c6",
+      "condition": "두 평면 사이의 이면각 θ",
+      "mappedTo": "marks.angles[1]"
+    }
+  ],
+  "newVisualInformation": [
+    "β로 내려간 수선 BC와 교선에 내린 수선 BH를 구분"
+  ]
+}
