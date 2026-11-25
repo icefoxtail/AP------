@@ -1664,6 +1664,37 @@ window.mainDB = {
       "primaryStandardCourse": "대수"
     },
     {
+      "file": "similar/high/h2/1final/26_효천고_1학기_기말_고2_대수_유사2.js",
+      "school": "효천고",
+      "topic": "대수",
+      "grade": "고2",
+      "year": 2026,
+      "semester": "1",
+      "examType": "final",
+      "subject": "대수",
+      "contentType": "유형",
+      "qCount": 23,
+      "rangeStartUnitKey": "H22-A-04",
+      "rangeStartUnit": "삼각함수",
+      "rangeStartUnitOrder": 4,
+      "rangeEndUnitKey": "H22-A-08",
+      "rangeEndUnit": "수학적 귀납법",
+      "rangeEndUnitOrder": 8,
+      "courseRanges": [
+        {
+          "standardCourse": "대수",
+          "courseCode": "H22-A",
+          "rangeStartUnitKey": "H22-A-04",
+          "rangeStartUnit": "삼각함수",
+          "rangeStartUnitOrder": 4,
+          "rangeEndUnitKey": "H22-A-08",
+          "rangeEndUnit": "수학적 귀납법",
+          "rangeEndUnitOrder": 8
+        }
+      ],
+      "primaryStandardCourse": "대수"
+    },
+    {
       "file": "similar/high/h2/1mid/26_효천고_1학기_중간_고2_대수_유사.js",
       "school": "효천고",
       "topic": "대수",
