@@ -1,0 +1,129 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "C",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "7"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "40"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "equalBCAC",
+        "count": 1,
+        "segments": [
+          "sBC",
+          "sCA"
+        ]
+      }
+    ]
+  },
+  "caption": "코사인 투영의 합은 BC이므로 주어진 등식에서 BC와 AC가 같음을 확인한다.",
+  "accessibilityDescription": "BC와 AC를 같은 길이로 표시한 이등변삼각형 ABC의 해설 예시 그림이다.",
+  "sourceConditions": [
+    {
+      "id": "G1",
+      "condition": "AC cos C + AB cos B = AC이고, 코사인법칙으로 좌변은 BC이다. 도형의 크기와 각도는 형상 예시로만 정규화한다.",
+      "mappedTo": [
+        "A",
+        "B",
+        "C",
+        "equalBCAC"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "BC=AC의 기하학적 의미를 같은 길이 눈금으로 나타낸다."
+  ]
+}

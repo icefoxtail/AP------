@@ -1,0 +1,54 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 4,
+        "depth": 9
+      },
+      "height": 6,
+      "names": "........"
+    }
+  ],
+  "dims": [
+    {
+      "edge": [
+        "#b0",
+        "#b1"
+      ]
+    },
+    {
+      "edge": [
+        "#b1",
+        "#b2"
+      ]
+    },
+    {
+      "edge": [
+        "#b0",
+        "#t0"
+      ]
+    }
+  ],
+  "solidCaption": {
+    "text": "등비수열을 이루는 세 모서리"
+  },
+  "caption": "세 변 4, 6, 9인 직육면체는 가운데 길이 6의 제곱이 양끝 길이의 곱과 같다.",
+  "accessibilityDescription": "길이가 4, 6, 9인 서로 수직인 모서리를 가진 직육면체. 세 길이가 등비수열을 이룬다.",
+  "sourceConditions": [
+    {
+      "id": "G1",
+      "condition": "모서리 l,m,n이 등비수열, 부피 216, 12개 모서리 길이 합 76. 해설에서 가능한 한 배치 l=4, m=6, n=9.",
+      "mappedTo": [
+        "solids",
+        "dims"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "부피와 모서리 합으로 확정한 4,6,9의 위치를 공간 도형에 대응한다."
+  ]
+}

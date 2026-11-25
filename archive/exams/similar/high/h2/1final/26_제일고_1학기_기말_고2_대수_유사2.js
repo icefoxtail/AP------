@@ -628,10 +628,10 @@ window.questionBank = [
       "$3$"
     ],
     "answer": "⑤",
-    "solution": "삼각형 넓이 공식에 의하면 $40=\\dfrac12\\cdot AC\\cdot BC\\sin C=50\\sin C$이므로 $\\sin C=\\dfrac45$이다.<br>$C$가 예각이므로 $\\cos C=\\dfrac35$이다.<br>지름 $BC$에 대한 원주각 $BDC$는 직각이므로 $BD\\perp AC$이다. 따라서 직각삼각형 $BCD$에서 $CD=BC\\cos C=10\\cdot\\dfrac35=6$이다.<br>반원의 반지름은 $5$이고 호 $CD$의 중점 $E$는 현 $CD$의 수직이등분선 위에 있다. 원의 중심을 $O$, 현의 중점을 $M$이라 하면 $CM=3$, $OM=\\sqrt{5^2-3^2}=4$이다.<br>작은 호의 중점 $E$와 현 $CD$ 사이의 거리는 $EM=5-4=1$이므로 $[CDE]=\\dfrac12\\cdot CD\\cdot EM=\\dfrac12\\cdot6\\cdot1=3$이다.<br>정답은 ⑤이다.",
+    "solution": "삼각형 넓이 공식에 의하면 $40=\\dfrac12\\cdot AC\\cdot BC\\sin C=50\\sin C$이므로 $\\sin C=\\dfrac45$이다.<br>$C$가 예각이므로 $\\cos C=\\dfrac35$이다.<br>지름 $BC$에 대한 원주각 $BDC$는 직각이므로 $BD\\perp AC$이다. $\\angle CBD=90^\\circ-C$이고 삼각형 $BCD$에 사인법칙을 적용하면 $\\dfrac{CD}{\\sin\\angle CBD}=\\dfrac{BC}{\\sin90^\\circ}$이다. 따라서 $CD=BC\\cos C=10\\cdot\\dfrac35=6$이다.<br>반원의 반지름은 $5$이고 호 $CD$의 중점 $E$는 현 $CD$의 수직이등분선 위에 있다. 원의 중심을 $O$, 현의 중점을 $M$이라 하면 $CM=3$, $OM=\\sqrt{5^2-3^2}=4$이다.<br>작은 호의 중점 $E$와 현 $CD$ 사이의 거리는 $EM=5-4=1$이므로 $[CDE]=\\dfrac12\\cdot CD\\cdot EM=\\dfrac12\\cdot6\\cdot1=3$이다.<br>정답은 ⑤이다.",
     "points": 5,
-    "problemTypeKey": "PT_H22A_05_COSINE_LAW",
-    "templateKey": "TPL_H22A_05_COSINE_LAW_111",
+    "problemTypeKey": "PT_H22A_05_SINE_LAW",
+    "templateKey": "TPL_H22A_05_SINE_LAW_109",
     "rpmPrimaryRecordId": "H2-M1-RPM-109",
     "crossConceptKeys": [],
     "conditionKeys": [],
