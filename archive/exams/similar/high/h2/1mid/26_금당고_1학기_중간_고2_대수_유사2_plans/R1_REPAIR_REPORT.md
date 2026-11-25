@@ -2,8 +2,8 @@
 
 - 기준 `main`: `5dd08baffbe361ed7d56c409856f0ae8059acc34` (2026-11-25 작업 시작 조회).
 - 제작 PR: [#2934](https://github.com/icefoxtail/AP------/pull/2934), 기존 운영본 Git blob `0639b822a47770d1564ef379c0e1e707d27e103f`.
-- 수정본 JS Git blob: `483284195ebf7124bf09be6e45d129773ead0c26`, SHA-256: `305b49b37f1a6ed589a834b3077c224a0befdad1b18b5619a4793d303d5f4d70`.
-- 독립 R1 물리 증거: [r1-review-evidence.json](r1-review-evidence.json) — `questionRows=21`, `metaRows=21`, `itemHoldCount=0`.
+- 최종 수정본 JS Git blob: `483284195ebf7124bf09be6e45d129773ead0c26`, SHA-256: `305b49b37f1a6ed589a834b3077c224a0befdad1b18b5619a4793d303d5f4d70` (병렬 SVG 작업과의 충돌을 정합하게 해결한 판본).
+- 독립 R1 물리 증거: [r1-review-evidence.json](r1-review-evidence.json) — `questionRows=21`, `metaRows=21`, `visualRows=0` (운영 JS에 연결된 해설 SVG가 없음), `itemHoldCount=0`. Q21의 **연결 전** 실제 SVG 내용 확인은 `auditNotes.unlinkedExternalSvgPhysicalReview`에 별도 기록.
 - 정답·보기 수정은 Q08, Q19에서 수행했으나 정답 **번호** ②/①을 유지. 나머지 수학정답 번호는 그대로. 객관식 19문항 분포 ①5·②3·③4·④3·⑤4, 서술형 2, 총점 100점.
 
 ## R1에서 확인한 결함과 수리
@@ -63,7 +63,13 @@
 - `node archive/tools/review-evidence-gate.mjs --exam <exam.js> --evidence <r1-review-evidence.json> --stage R1`: **PASS**, itemHoldCount0.
 - `node archive/tools/geometry-equation/ops/claude-batch/plan-lint.cjs --shallow <3 SVG pending plan>`: PASS 3/3.
 - 깊은 plan-lint: Q19 OK, Q08·Q21은 실행 환경 `NotoSansKR.ttf` 부재로 검사 불가(모델/수학 실패 아님).
-- 브라우저 MathJax 실제 렌더, SVG 제작·실시각 검수: **NOT_RUN**. Q08 문제 보조, Q19·Q21 해설은 `SVG_TO_CREATE` 상태 유지하고 이미지 URL 미연결.
+- 브라우저 MathJax 실제 렌더: **NOT_RUN**. 병렬 SVG 라인에서 실제 제작한 Q08·Q19·Q21 그림을 최종 R1 문제 조건과 PNG로 재대조함. Q08의 옛 `y=2^x` 그림은 수리한 `y=2^x+3`과, Q19의 옛 `k=-8,2,12` 그림은 수리한 `k=-2,2,6`과 불일치하므로 **Q08/Q19 링크 제거·SVG_TO_CREATE/NOT_RUN 유지**. Q21 그림은 교점 (1/4,5/16),(3/4,5/16)과 식·라벨이 일치해 PNG 실물 내용 검수 PASS지만 정규 `q21-solution.plan.json`이 EXEMPT라 링크가 하네스 FAIL이다. 임의로 운영 계획을 승인하지 않아 **Q21도 JS에 미연결**. 세 파일은 기존 `main`에 보존.
+
+## 병렬 운영병합 충돌 해결(2026-11-25)
+
+- R1 브랜치 업로드 중 병렬 SVG 제작 커밋 `4eb4cfd`가 먼저 `main`에 병합되어 동일 시험지 JS/후속 계획에 변경이 발생함. 단순 자동병합하면 Q08·Q19에서 정답을 유도하는 그림과 해설이 서로 다른 조건을 가리키는 문제이므로, 두 옛 SVG는 보존만 하고 JS 연결을 취소함.
+- Q21만 수학적 동치(`Q(u)=u^2-u+1/2=5/16`)를 좌표 계산과 Inkscape 실물 PNG로 검증했지만, 정규 해설 계획 `EXEMPT`에 의해 JS 연결을 보류. 물리 검수는 R1 evidence의 별도 `auditNotes`에 SHA-256과 함께 보존하고, 연결 시각행 `visualRows`는 정확히 0으로 기록함.
+- 메타·4slot·ledger·receipt·R1 evidence의 Git blob SHA와 시험지 SHA-256을 최종 JS에 다시 결속함. Q08/Q19의 SVG 재제작은 후속 과제로 남겨두며 수행 전 PASS라고 표시하지 않음.
 
 ## 운영병합 경계
 

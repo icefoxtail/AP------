@@ -9,12 +9,12 @@
   "reviewRound": 2,
   "overallVerdict": "PASS_WITH_NOTES",
   "signOffStatus": "PASS_WITH_NOTES",
-  "signOffNote": "R1 item-level physical evidence gate PASS(21 question +21 meta rows, hold0). 21/21 independent math, 19 objective choice order, 100 pts, canonical PT/TPL/curriculum/4slot parity checked. Q08/Q19/Q21 optional SVG are SVG_TO_CREATE/NOT_RUN and have no image links; actual browser MathJax render NOT_RUN. Candidate metadata registration approval remains review_required.",
+  "signOffNote": "R1 item-level physical evidence gate PASS(21 question +21 meta rows, hold0). 21/21 independent math, 19 objective choice order, 100 pts, canonical PT/TPL/curriculum/4slot parity checked. Concurrent SVG checked: Q08/Q19 old images mismatch R1 repaired math and are unlinked, Q21 SVG itself passes PNG/coordinate review but cannot be linked while canonical solution plan remains EXEMPT; all three have no active JS image links. Browser MathJax NOT_RUN; metadata approval review_required.",
   "auditDisclosure": {
     "sameAgentAsAuthor": false,
     "externalReviewer": "INDEPENDENT_R1_REVIEW_COMPLETED",
     "mathIndependentFromBlueprint": "YES_CURRENT_SOURCE_RECALC",
-    "svgRender": "NOT_RUN_OPTIONAL_PENDING",
+    "svgRender": "Q21_ASSET_RENDER_PASS_UNBOUND__Q08_Q19_R1_NOT_RUN",
     "metadataReview": "R1_SEMANTIC_PASS_REGISTRATION_PENDING",
     "authorSelfCheckCompleted": true,
     "authorSelfCheckSeparateFromThisR1": true
@@ -211,7 +211,7 @@
     },
     {
       "qid": 21,
-      "status": "SVG_TO_CREATE / NOT_RUN",
+      "status": "SVG_ASSET_EXISTS / R1_VISUAL_PASS / JS_UNBOUND_EXEMPT",
       "kind": "OPTIONAL_SOLUTION_GUIDE"
     }
   ],
@@ -226,7 +226,7 @@
     "mathRecalc": "21/21",
     "studentSmallBoard": "STATIC_PASS_21_OF_21",
     "runtimeMathJax": "NOT_RUN",
-    "svgActualRender": "NOT_RUN",
+    "svgActualRender": "Q21_EXISTING_SVG_VERIFIED_NOT_LINKED;Q08_Q19_R1_NOT_RUN",
     "r1Gate": "PASS",
     "metadataRegistryApproval": "review_required",
     "repairedQuestionContent": [

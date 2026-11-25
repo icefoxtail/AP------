@@ -215,7 +215,11 @@ window.questionBank = [
     "followupKind": "CONFIRMATION",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_순천고_1학기_중간_고2_대수.js#q5",
     "problemPlanRef": "archive/exams/similar/high/h2/1mid/26_순천고_1학기_중간_고2_대수_유사2_plans/q05-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h2/1mid/26_순천고_1학기_중간_고2_대수_유사2_plans/q05-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h2/1mid/26_순천고_1학기_중간_고2_대수_유사2_plans/q05-solution.plan.json",
+    "solutionImage": "assets/images/26_순천고_1학기_중간_고2_대수_유사2/q05-solution.svg",
+    "solutionImageAlt": "수직 점근선 x=-2와 원점을 지나는 로그함수 그래프",
+    "solutionImageCaption": "수직 점근선 x=-2와 원점을 지나는 로그함수 그래프",
+    "solutionImageSize": "medium"
   },
   {
     "curriculum": "2022",
@@ -668,7 +672,11 @@ window.questionBank = [
     "followupKind": "CONFIRMATION",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_순천고_1학기_중간_고2_대수.js#q15",
     "problemPlanRef": "archive/exams/similar/high/h2/1mid/26_순천고_1학기_중간_고2_대수_유사2_plans/q15-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h2/1mid/26_순천고_1학기_중간_고2_대수_유사2_plans/q15-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h2/1mid/26_순천고_1학기_중간_고2_대수_유사2_plans/q15-solution.plan.json",
+    "solutionImage": "assets/images/26_순천고_1학기_중간_고2_대수_유사2/q15-solution.svg",
+    "solutionImageAlt": "등변 조건으로 구한 P, Q, R과 두 함수의 위치관계",
+    "solutionImageCaption": "등변 조건으로 구한 P, Q, R과 두 함수의 위치관계",
+    "solutionImageSize": "full"
   },
   {
     "curriculum": "2022",
