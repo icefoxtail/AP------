@@ -1,0 +1,226 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "s5",
+      "refs": [
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "s6",
+      "refs": [
+        "C",
+        "F"
+      ]
+    },
+    {
+      "id": "s7",
+      "refs": [
+        "F",
+        "B"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "caption": "한 변6인 Q₁의 오른쪽 변을 대각선으로 하는 Q₂를 그린다.",
+  "accessibilityDescription": "큰 축평행 정사각형의 오른쪽 수직 변을 두 번째 45도 회전 정사각형의 대각선으로 공유한다.",
+  "sourceQuote": "[그림: $(0,0),(6,0),(6,6),(0,6)$을 잇고 오른쪽 변을 대각선으로 하는 정사각형을 그린다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "Q1의 네 좌표와 길이6",
+      "mappedTo": "mathPlan.nodes[0..3];displaySegments[0..3];planeMarks.expressionLabels[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "오른쪽 변 BC가 Q2의 대각선",
+      "mappedTo": "mathPlan.nodes[4..5];displaySegments[4..7]"
+    }
+  ],
+  "newVisualInformation": [
+    "그림은 첫 두세 단계만 보이며 구하는 무한급수 답은 표시하지 않는다."
+  ],
+  "hiddenPointNames": [
+    "E",
+    "F"
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "side6",
+        "ownerSegment": "s0",
+        "text": "6"
+      }
+    ]
+  }
+}

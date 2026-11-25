@@ -1,0 +1,259 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "T",
+    "E",
+    "F"
+  ],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "D",
+        "T"
+      ]
+    },
+    {
+      "id": "s5",
+      "refs": [
+        "T",
+        "C"
+      ]
+    },
+    {
+      "id": "s6",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "s7",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "s8",
+      "refs": [
+        "F",
+        "T"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "caption": "한 변4 정사각형 윗변을 빗변으로 하는 직각이등변삼각형, 왼쪽 직각변에 붙인 Q₂ 정사각형.",
+  "accessibilityDescription": "큰 정사각형 위로 뾰족한 직각이등변삼각형, 그 삼각형 왼쪽 위에 작은 기울어진 정사각형.",
+  "sourceQuote": "[그림: 한 변 $4$인 정사각형 윗변을 빗변으로 직각이등변삼각형을 위쪽에 그린다. 왼쪽 직각변에 삼각형 바깥 방향으로 다음 정사각형을 붙인다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "한 변4의 첫 정사각형",
+      "mappedTo": "mathPlan.nodes[0..3];displaySegments[0..3]"
+    },
+    {
+      "id": "c2",
+      "condition": "윗변 DC를 빗변으로 하는 직각이등변삼각형 DTC",
+      "mappedTo": "mathPlan.nodes[4];displaySegments[2];displaySegments[4..5]"
+    },
+    {
+      "id": "c3",
+      "condition": "왼쪽 직각변 DT에 새 정사각형",
+      "mappedTo": "mathPlan.nodes[5..6];displaySegments[6..8]"
+    }
+  ],
+  "newVisualInformation": [
+    "대표 두세 단계의 도형만 그리며 무한합 정답은 숨긴다."
+  ],
+  "hiddenPointNames": [
+    "T",
+    "E",
+    "F"
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "side4",
+        "ownerSegment": "s0",
+        "text": "4"
+      }
+    ]
+  }
+}

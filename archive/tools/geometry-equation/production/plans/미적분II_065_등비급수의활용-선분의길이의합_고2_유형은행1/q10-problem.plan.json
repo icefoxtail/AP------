@@ -1,0 +1,407 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "9",
+              "denominator": "2"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "9",
+                  "denominator": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "9",
+              "denominator": "4"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "9",
+                  "denominator": "4"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "9",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "9",
+              "denominator": "8"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "9",
+                  "denominator": "8"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "9",
+              "denominator": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "c0",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "9"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "c1",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "9",
+            "denominator": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "c2",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "9",
+            "denominator": "4"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A0",
+    "B0",
+    "A1",
+    "B1",
+    "A2",
+    "B2"
+  ],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "O",
+        "A0"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "O",
+        "B0"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "A0",
+        "B1"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "A1",
+        "B2"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "O",
+        "A1"
+      ]
+    },
+    {
+      "id": "s5",
+      "refs": [
+        "O",
+        "A2"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "caption": "중심각60°의 세 부채꼴 반지름9,9/2,9/4와 연속 직각 발.",
+  "accessibilityDescription": "큰 부채꼴 내부에 반지름이 절반인 두 호가 있으며 사선 끝에서 수평 반지름으로 수선을 내린다.",
+  "sourceQuote": "[그림: 길이 $9$인 두 반지름 사이를 $60^\\circ$로 그리고 $A_0B_1$과 $A_1B_2$에 직각 표시를 넣는다. 반지름 $9/2$, $9/4$인 내부 호를 표시한다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "60도 부채꼴과 반지름9",
+      "mappedTo": "mathPlan.nodes[0..2];planeMarks.angles[0];planeMarks.arcs[0] "
+    },
+    {
+      "id": "c2",
+      "condition": "9/2 및 9/4의 내부 호와 두 수선",
+      "mappedTo": "mathPlan.nodes[3..9];planeMarks.arcs[1..2];displaySegments[2..5];rightAngles[0..1]"
+    }
+  ],
+  "newVisualInformation": [
+    "A₀/B₀ 아래첨자 0 이름은 엔진 pointNames 제약으로 ENGINE_CAPABILITY_PENDING. 수학적 위치·호·직각은 정확히 보존."
+  ],
+  "pointNames": {
+    "A1": "A_1",
+    "A2": "A_2",
+    "B1": "B_1",
+    "B2": "B_2"
+  },
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "arc0",
+        "circle": "c0",
+        "center": "O",
+        "from": "A0",
+        "to": "B0",
+        "side": "CW",
+        "highlight": false
+      },
+      {
+        "id": "arc1",
+        "circle": "c1",
+        "center": "O",
+        "from": "A1",
+        "to": "B1",
+        "side": "CW",
+        "highlight": false
+      },
+      {
+        "id": "arc2",
+        "circle": "c2",
+        "center": "O",
+        "from": "A2",
+        "to": "B2",
+        "side": "CW",
+        "highlight": false
+      }
+    ],
+    "angles": [
+      {
+        "id": "a60",
+        "refs": [
+          "B0",
+          "O",
+          "A0"
+        ],
+        "value": 60,
+        "label": "60°",
+        "arcs": 1
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "r9",
+        "ownerSegment": "s0",
+        "text": "9"
+      },
+      {
+        "id": "rhalf",
+        "ownerSegment": "s4",
+        "text": "9/2"
+      },
+      {
+        "id": "rquart",
+        "ownerSegment": "s5",
+        "text": "9/4"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "r1",
+      "refs": [
+        "A0",
+        "B1",
+        "O"
+      ]
+    },
+    {
+      "id": "r2",
+      "refs": [
+        "A1",
+        "B2",
+        "O"
+      ]
+    }
+  ]
+}

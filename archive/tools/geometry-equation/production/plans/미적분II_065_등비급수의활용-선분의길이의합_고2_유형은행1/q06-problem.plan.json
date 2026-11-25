@@ -1,0 +1,311 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1",
+              "denominator": "2"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "1",
+                  "denominator": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-1",
+              "denominator": "4"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "1",
+                  "denominator": "4"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-1",
+              "denominator": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "l0",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "l60",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "expression",
+            "op": "neg",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              }
+            ]
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "l120",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "3"
+              }
+            ]
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "P0",
+    "P1",
+    "P2",
+    "P3"
+  ],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "P0",
+        "P1"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "P1",
+        "P2"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "P2",
+        "P3"
+      ]
+    }
+  ],
+  "displayLines": [
+    "l0",
+    "l60",
+    "l120"
+  ],
+  "displayCircles": [],
+  "caption": "원점 통과 0°·60°·120° 세 직선과 P₀(2,0)에서 시작한 연속 수선.",
+  "accessibilityDescription": "세 직선에 차례로 직교 투영한 점 네 개가 한 경로로 연결된다.",
+  "sourceQuote": "[그림: 세 직선을 그리고 $(2,0)$, $(1/2,\\sqrt3/2)$, $(-1/4,\\sqrt3/4)$, $(-1/4,0)$을 차례로 연결한다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "세 직선의 방향각 0·60·120도",
+      "mappedTo": "mathPlan.nodes[5..7];displayLines[0..2]"
+    },
+    {
+      "id": "c2",
+      "condition": "P0부터 P3까지 정확한 수선 좌표",
+      "mappedTo": "mathPlan.nodes[1..4];displaySegments[0..2];rightAngles[0..2]"
+    }
+  ],
+  "newVisualInformation": [
+    "P₀의 아래첨자 0 표기는 엔진 pointNames에서 미지원(ENGINE_CAPABILITY_PENDING); 점 위치는 정확히 표기."
+  ],
+  "pointNames": {
+    "P1": "P_1",
+    "P2": "P_2",
+    "P3": "P_3"
+  },
+  "rightAngles": [
+    {
+      "id": "r1",
+      "refs": [
+        "P0",
+        "P1",
+        "O"
+      ]
+    },
+    {
+      "id": "r2",
+      "refs": [
+        "P1",
+        "P2",
+        "O"
+      ]
+    },
+    {
+      "id": "r3",
+      "refs": [
+        "P2",
+        "P3",
+        "O"
+      ]
+    }
+  ]
+}
