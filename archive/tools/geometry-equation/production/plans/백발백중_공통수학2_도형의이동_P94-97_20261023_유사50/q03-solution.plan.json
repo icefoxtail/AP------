@@ -1,0 +1,184 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G",
+        "op": "CENTROID",
+        "inputs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "G"
+  ],
+  "displaySegments": [
+    {
+      "id": "horizontal",
+      "refs": [
+        "A",
+        "B"
+      ],
+      "arrow": "END"
+    },
+    {
+      "id": "vertical",
+      "refs": [
+        "B",
+        "C"
+      ],
+      "arrow": "END"
+    },
+    {
+      "id": "hypotenuse",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "coordinateLabels": [
+    "A",
+    "B",
+    "C",
+    "G"
+  ],
+  "coordinatePlacement": "PANEL",
+  "rightAngles": [
+    {
+      "id": "right",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "caption": "두 번의 평행이동으로 만든 삼각형의 무게중심 G(4,3)",
+  "accessibilityDescription": "점 A(2,1)를 x방향 3, y방향 6로 순서대로 평행이동한 삼각형과 무게중심 G(4,3)를 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "initial",
+      "condition": "초기 좌표 A(2,1)",
+      "mappedTo": "A"
+    },
+    {
+      "id": "horizontal",
+      "condition": "첫 이동량 (3,0)",
+      "mappedTo": [
+        "B",
+        "horizontal"
+      ]
+    },
+    {
+      "id": "vertical",
+      "condition": "둘째 이동량 (0,6)",
+      "mappedTo": [
+        "C",
+        "vertical"
+      ]
+    },
+    {
+      "id": "centroid",
+      "condition": "세 꼭짓점의 무게중심 (4,3)",
+      "mappedTo": "G"
+    }
+  ],
+  "newVisualInformation": [
+    "수평·수직으로 연속 이동한 세 점이 만드는 직각삼각형과 무게중심의 위치를 실제 좌표로 확인한다."
+  ]
+}

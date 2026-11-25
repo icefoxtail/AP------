@@ -1,0 +1,263 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "K",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "D"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "-3"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "25"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "C",
+          "L"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "D",
+          "L"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "pointNames": {
+    "C": "O",
+    "D": "O_1",
+    "F": "T_1",
+    "G": "T_2"
+  },
+  "displayPoints": [
+    "C",
+    "D",
+    "F",
+    "G"
+  ],
+  "displayCircles": [
+    "K",
+    "H"
+  ],
+  "displayLines": [
+    "L"
+  ],
+  "displaySegments": [
+    {
+      "id": "shift",
+      "refs": [
+        "C",
+        "D"
+      ],
+      "arrow": "END"
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "C",
+        "F"
+      ]
+    },
+    {
+      "id": "r2",
+      "refs": [
+        "D",
+        "G"
+      ]
+    }
+  ],
+  "coordinateLabels": [
+    "C",
+    "D"
+  ],
+  "coordinatePlacement": "PANEL",
+  "planeMarks": {
+    "facts": [
+      {
+        "kind": "ON_CIRCLE",
+        "circle": "H",
+        "points": [
+          "C"
+        ]
+      },
+      {
+        "kind": "ON_CIRCLE",
+        "circle": "K",
+        "points": [
+          "F"
+        ]
+      },
+      {
+        "kind": "ON_CIRCLE",
+        "circle": "H",
+        "points": [
+          "G"
+        ]
+      }
+    ]
+  },
+  "caption": "중심 간 이동 (3,4)과 반지름 5, 두 원의 공통 접선",
+  "accessibilityDescription": "중심 O(0,0)에서 O₁(3,4)로 이동하는 반지름 5의 두 원과 공통 접선 계수 (4,-3,25), 접점 T₁,T₂, 각 중심에서 접선에 내린 수선을 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "initialCircle",
+      "condition": "첫 원 중심 (0,0), 반지름 5",
+      "mappedTo": [
+        "C",
+        "K"
+      ]
+    },
+    {
+      "id": "movedCircle",
+      "condition": "둘째 원 중심 (3,4), 반지름 5",
+      "mappedTo": [
+        "D",
+        "H"
+      ]
+    },
+    {
+      "id": "centerOnCircle",
+      "condition": "원래 중심 C가 옮겨진 원 위에 있음",
+      "mappedTo": [
+        "C",
+        "H"
+      ]
+    },
+    {
+      "id": "commonTangent",
+      "condition": "공통 접선 일반형 계수 (4,-3,25)",
+      "mappedTo": [
+        "L",
+        "F",
+        "G"
+      ]
+    },
+    {
+      "id": "translation",
+      "condition": "이동량 (3,4)",
+      "mappedTo": "shift"
+    }
+  ],
+  "newVisualInformation": [
+    "두 원의 중심 거리=반지름, 원래 중심이 두 번째 원 위에 놓인 관계와 공통 접선의 접점을 표시한다."
+  ]
+}

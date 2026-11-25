@@ -1,0 +1,222 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "-1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "TRANSLATE_LINE",
+        "inputs": [
+          "D"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "K",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "I",
+        "op": "INTERSECTION",
+        "inputs": [
+          "M",
+          "K"
+        ],
+        "args": {},
+        "outputType": "POINT_SET",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SELECT_POINT",
+        "inputs": [
+          "I"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "CONCLUSION",
+        "branch": {
+          "kind": "SIDE_OF_ORIENTED_LINE",
+          "refs": [
+            "O",
+            "U"
+          ],
+          "sign": 1
+        }
+      },
+      {
+        "id": "B",
+        "op": "SELECT_POINT",
+        "inputs": [
+          "I"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "CONCLUSION",
+        "branch": {
+          "kind": "SIDE_OF_ORIENTED_LINE",
+          "refs": [
+            "O",
+            "U"
+          ],
+          "sign": -1
+        }
+      },
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "C",
+    "A",
+    "B"
+  ],
+  "displayLines": [
+    "D",
+    "M"
+  ],
+  "displayCircles": [
+    "K"
+  ],
+  "displaySegments": [
+    {
+      "id": "chord",
+      "refs": [
+        "A",
+        "B"
+      ],
+      "emphasis": "BOLD"
+    }
+  ],
+  "coordinateLabels": [
+    "A",
+    "B",
+    "C"
+  ],
+  "coordinatePlacement": "PANEL",
+  "caption": "포물선의 이동량 (1,2)만큼 옮긴 직선과 원의 현 AB",
+  "accessibilityDescription": "원의 중심 (1,2), 반지름 3; 직선 y=x를 (1,2)만큼 옮긴 직선이 원과 만나는 두 점 A,B 및 현의 길이 6를 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "parabolaDelta",
+      "condition": "두 포물선 비교로 얻은 이동량 (1,2)",
+      "mappedTo": "M"
+    },
+    {
+      "id": "originalLine",
+      "condition": "원래 직선 y=x",
+      "mappedTo": "D"
+    },
+    {
+      "id": "movedLine",
+      "condition": "이동 후 직선 상수항 1",
+      "mappedTo": "M"
+    },
+    {
+      "id": "circle",
+      "condition": "원 중심 (1,2), 반지름 3",
+      "mappedTo": [
+        "C",
+        "K"
+      ]
+    },
+    {
+      "id": "chord",
+      "condition": "두 교점 A,B와 현의 길이 6",
+      "mappedTo": [
+        "A",
+        "B",
+        "chord"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "이동한 직선과 원의 두 교점, 현 AB를 정확한 교점 작도로 보인다. 선과 원 내부는 채우지 않는다."
+  ]
+}

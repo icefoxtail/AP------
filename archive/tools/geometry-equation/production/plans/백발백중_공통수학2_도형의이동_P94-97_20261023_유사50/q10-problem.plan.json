@@ -1,0 +1,118 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "-1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "K",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "C"
+  ],
+  "displayCircles": [
+    "K",
+    "H"
+  ],
+  "coordinateLabels": [
+    "C"
+  ],
+  "coordinatePlacement": "PANEL",
+  "caption": "원점 중심 단위원과 중심 (1,-1)의 이동된 원",
+  "accessibilityDescription": "처음 원의 중심 O(0,0), 반지름 1인 원과 중심 C(1,-1), 반지름 1인 원을 두 개만 좌표평면에 표시한다. 이동된 포물선, y절편, 정답 정보는 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "initialCircle",
+      "condition": "x²+y²=1, 중심 O(0,0)",
+      "mappedTo": [
+        "O",
+        "K"
+      ]
+    },
+    {
+      "id": "targetCircle",
+      "condition": "중심 (1,-1), 반지름 1인 원",
+      "mappedTo": [
+        "C",
+        "H"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원문 문제 그림의 중심 O·C, 두 원, 좌표축만 정확히 복제한다. 포물선의 이동 후 그래프와 y절편을 그리지 않아 정답을 노출하지 않는다."
+  ]
+}

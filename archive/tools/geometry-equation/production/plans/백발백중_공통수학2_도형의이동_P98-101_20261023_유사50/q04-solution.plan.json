@@ -1,0 +1,158 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "POINT_REFLECTION",
+        "inputs": [
+          "A",
+          "O"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "coordinateLabels": [
+    "A",
+    "B",
+    "C"
+  ],
+  "coordinatePlacement": "PANEL",
+  "rightAngles": [
+    {
+      "id": "rightC",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    }
+  ],
+  "caption": "원점대칭점 B와 수직인 두 직선 AC,BC",
+  "accessibilityDescription": "A(2,3), 원점대칭 B(-2,-3), C(3,-2)의 두 선분 AC와 BC는 꼭짓점 C에서 직각이다. 면 채움 없이 두 변과 직각 표식을 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "pointA",
+      "condition": "A(2,3)",
+      "mappedTo": "A"
+    },
+    {
+      "id": "originReflection",
+      "condition": "A의 원점대칭점 B(-2,-3)",
+      "mappedTo": "B"
+    },
+    {
+      "id": "targetC",
+      "condition": "C(3,-2), 이동량 (5,1)",
+      "mappedTo": "C"
+    },
+    {
+      "id": "orthogonal",
+      "condition": "AC⊥BC",
+      "mappedTo": [
+        "AC",
+        "BC",
+        "rightC"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "수직 조건의 두 직선이 실제 좌표에서 직각을 이루는지 보여 준다."
+  ]
+}

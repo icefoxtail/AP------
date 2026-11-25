@@ -1,0 +1,327 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "K",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V1",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "-6"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V2",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "-8"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "I1",
+        "op": "INTERSECTION",
+        "inputs": [
+          "V1",
+          "K"
+        ],
+        "args": {},
+        "outputType": "POINT_SET",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "I2",
+        "op": "INTERSECTION",
+        "inputs": [
+          "V2",
+          "K"
+        ],
+        "args": {},
+        "outputType": "POINT_SET",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A1",
+        "op": "SELECT_POINT",
+        "inputs": [
+          "I1"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "branch": {
+          "kind": "SIDE_OF_ORIENTED_LINE",
+          "refs": [
+            "O",
+            "U"
+          ],
+          "sign": 1
+        }
+      },
+      {
+        "id": "A2",
+        "op": "SELECT_POINT",
+        "inputs": [
+          "I2"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "branch": {
+          "kind": "SIDE_OF_ORIENTED_LINE",
+          "refs": [
+            "O",
+            "U"
+          ],
+          "sign": 1
+        }
+      },
+      {
+        "id": "C1",
+        "op": "POINT_REFLECTION",
+        "inputs": [
+          "A1",
+          "O"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "C2",
+        "op": "POINT_REFLECTION",
+        "inputs": [
+          "A2",
+          "O"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "pointNames": {
+    "A1": "A_1",
+    "A2": "A_2",
+    "C1": "C_1",
+    "C2": "C_2"
+  },
+  "displayPoints": [
+    "B",
+    "A1",
+    "A2",
+    "C1",
+    "C2"
+  ],
+  "displayCircles": [
+    "K"
+  ],
+  "displaySegments": [
+    {
+      "id": "BA1",
+      "refs": [
+        "B",
+        "A1"
+      ]
+    },
+    {
+      "id": "BC1",
+      "refs": [
+        "B",
+        "C1"
+      ]
+    },
+    {
+      "id": "BA2",
+      "refs": [
+        "B",
+        "A2"
+      ]
+    },
+    {
+      "id": "BC2",
+      "refs": [
+        "B",
+        "C2"
+      ]
+    },
+    {
+      "id": "diam1",
+      "refs": [
+        "A1",
+        "C1"
+      ]
+    },
+    {
+      "id": "diam2",
+      "refs": [
+        "A2",
+        "C2"
+      ]
+    }
+  ],
+  "coordinateLabels": [
+    "B",
+    "A1",
+    "A2",
+    "C1",
+    "C2"
+  ],
+  "coordinatePlacement": "PANEL",
+  "rightAngles": [
+    {
+      "id": "right1",
+      "refs": [
+        "A1",
+        "B",
+        "C1"
+      ]
+    },
+    {
+      "id": "right2",
+      "refs": [
+        "A2",
+        "B",
+        "C2"
+      ]
+    }
+  ],
+  "caption": "원 위의 두 지름 A₁C₁, A₂C₂와 B에서의 직각",
+  "accessibilityDescription": "반지름 10인 원에서 B(-10,0), A₁(6,8), A₂(8,6), C₁(-6,-8), C₂(-8,-6)이다. 두 지름 A₁C₁·A₂C₂와 B의 두 직각을 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "circle",
+      "condition": "x²+y²=100, 중심 O, 반지름 10",
+      "mappedTo": "K"
+    },
+    {
+      "id": "B",
+      "condition": "원 위 B(-10,0)",
+      "mappedTo": "B"
+    },
+    {
+      "id": "A1",
+      "condition": "제1사분면 A₁의 x좌표 6, y좌표 8",
+      "mappedTo": [
+        "V1",
+        "A1"
+      ]
+    },
+    {
+      "id": "A2",
+      "condition": "제1사분면 A₂의 x좌표 8, y좌표 6",
+      "mappedTo": [
+        "V2",
+        "A2"
+      ]
+    },
+    {
+      "id": "right",
+      "condition": "BA₁⊥BC₁, BA₂⊥BC₂",
+      "mappedTo": [
+        "right1",
+        "right2"
+      ]
+    },
+    {
+      "id": "diameters",
+      "condition": "원점대칭 C₁=-A₁, C₂=-A₂",
+      "mappedTo": [
+        "diam1",
+        "diam2",
+        "C1",
+        "C2"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원 위의 대응점이 지름의 양끝이라는 사실과 두 직각조건을 하나의 정확한 원 작도로 보인다. 두 삼각형 면은 채우지 않는다."
+  ]
+}
