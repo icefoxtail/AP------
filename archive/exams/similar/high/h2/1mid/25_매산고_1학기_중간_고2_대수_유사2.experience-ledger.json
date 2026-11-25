@@ -1,0 +1,826 @@
+{
+  "schemaVersion": "alive-exam-followup-source-balanced-v1",
+  "examUid": "25_매산고_1학기_중간_고2_대수_유사2",
+  "mode": "ALIVE EXAM_FOLLOWUP",
+  "difficultyProfile": "SOURCE_BALANCED",
+  "originalFile": "archive/exams/original/high/h2/1mid/25_매산고_1학기_중간_고2_대수.js",
+  "originalGitBlobSha1": "2b54e1b6b19ecc513632d4679132852a8b9631ea",
+  "existingVariantFile": "archive/exams/similar/high/h2/1mid/25_매산고_1학기_중간_고2_대수_유사.js",
+  "existingVariantGitBlobSha1": "28ecb1525dc7ec4592a65f7d8169f4bb969b0253",
+  "sourceArchiveFile": "archive/exams/similar/high/h2/1mid/25_매산고_1학기_중간_고2_대수_유사2.js",
+  "sourceGitBlobSha": "861df4b9a91a131118e04920bfb46aeb38ca5716",
+  "approvalStatus": "DRAFT_SINGLE_MODEL",
+  "independentHumanOrModelReview": "NOT_RUN",
+  "sourceProblemCount": 21,
+  "totalPoints": 100,
+  "objectiveQuestions": 14,
+  "writtenQuestions": 7,
+  "sourceBalance": {
+    "itemsPreserved": 21,
+    "sourcePointsTotal": 100,
+    "formatMaintained": "14 objective / 7 written",
+    "sourceBucketJudgment": "original/previous and new item compared by same author, difficulty I2 remains NOT_RUN"
+  },
+  "items": [
+    {
+      "sourceQid": 1,
+      "originalReference": "archive/exams/original/high/h2/1mid/25_매산고_1학기_중간_고2_대수.js#q1",
+      "existingVariantReference": "archive/exams/similar/high/h2/1mid/25_매산고_1학기_중간_고2_대수_유사.js#q1",
+      "lockedPrimaryL3": "H2-M1-RPM-096",
+      "originalSummary": "어떤 부채꼴의 호의 길이가 $\\pi$이고 넓이가 $4\\pi$일 때, 반지름의 길이는? (4점)",
+      "existingVariantSummary": "어떤 부채꼴의 호의 길이가 $2\\pi$이고 넓이가 $6\\pi$일 때, 반지름의 길이는? (4점)",
+      "conditionAndTargetShift": "반지름 역산에서 중심각의 역산으로 질문 전환",
+      "decisiveCore": "호의 길이 L과 부채꼴 넓이 S에서 r=2S/L, θ=L/r",
+      "solutionEntry": "호의 길이 L과 부채꼴 넓이 S에서 r=2S/L, θ=L/r",
+      "solutionGraphSignature": "호의 길이 L과 부채꼴 넓이 S에서 r=2S/L, θ=L/r",
+      "questionTarget": "반지름이 $r$인 부채꼴의 호의 길이가 $3\\pi$, 넓이가 $9\\pi$이다. 이 부채꼴의 중심각의 크기를 호도법으로 나타낸 것은? (4점)",
+      "variationType": "CONFIRMATION",
+      "addedDecision": "CHANGED_CONDITION_OR_TARGET_WITH_SOURCE_DEPTH",
+      "sourceBucketJudgment": 1,
+      "newBucketJudgment": 1,
+      "difficultyBasis": "same-author comparison; separate I2 reviewer NOT_RUN",
+      "problemTypeKey": "PT_H22A_04_ANGLE_RADIAN",
+      "templateKey": "TPL_H22A_04_ANGLE_RADIAN_096",
+      "semanticDuplicateResult": "CONDITION_AND_OR_TARGET_SHIFT_FROM_ORIGINAL_AND_SIMILAR1",
+      "mathCheck": "AUTHOR_I1_SEPARATE_RECOMPUTE_PASS_21_OF_21",
+      "choiceCheck": "OFFICIAL_JUDGE_PASS_ZERO_DEFECTS",
+      "visual": {
+        "qid": 1,
+        "problem": {
+          "decision": "EXEMPT",
+          "reason": "호의 길이와 넓이 두 식은 r·θ를 직접 복원할 수 있어 영역 그림이 중복된다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        },
+        "solution": {
+          "decision": "EXEMPT",
+          "reason": "r=2S/L와 θ=L/r를 두 단계 식으로 보이면 충분하다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        }
+      }
+    },
+    {
+      "sourceQid": 2,
+      "originalReference": "archive/exams/original/high/h2/1mid/25_매산고_1학기_중간_고2_대수.js#q2",
+      "existingVariantReference": "archive/exams/similar/high/h2/1mid/25_매산고_1학기_중간_고2_대수_유사.js#q2",
+      "lockedPrimaryL3": "H2-M1-RPM-068",
+      "originalSummary": "$-8$의 세 제곱근 중에서 실수인 것을 $a$, $81$의 네 제곱근 중에서 음의 실수인 것을 $b$라 할 때, $ab$의 값은? (4점)",
+      "existingVariantSummary": "$-27$의 세제곱근 중에서 실수인 것을 $a$, $16$의 네제곱근 중에서 음의 실수인 것을 $b$라 할 때, $ab$의 값은? (4점)",
+      "conditionAndTargetShift": "음의 두 실근의 곱 대신 차를 결정",
+      "decisiveCore": "홀수근의 유일성과 짝수근의 음의 값 선택",
+      "solutionEntry": "홀수근의 유일성과 짝수근의 음의 값 선택",
+      "solutionGraphSignature": "홀수근의 유일성과 짝수근의 음의 값 선택",
+      "questionTarget": "$a$는 $-3125$의 실수인 다섯제곱근이고 $b$는 $256$의 네제곱근 중 음수이다. $a-b$의 값은? (4점)",
+      "variationType": "CONFIRMATION",
+      "addedDecision": "CHANGED_CONDITION_OR_TARGET_WITH_SOURCE_DEPTH",
+      "sourceBucketJudgment": 1,
+      "newBucketJudgment": 1,
+      "difficultyBasis": "same-author comparison; separate I2 reviewer NOT_RUN",
+      "problemTypeKey": "PT_H22A_01_ROOT_REAL",
+      "templateKey": "TPL_H22A_01_ROOT_REAL_068",
+      "semanticDuplicateResult": "CONDITION_AND_OR_TARGET_SHIFT_FROM_ORIGINAL_AND_SIMILAR1",
+      "mathCheck": "AUTHOR_I1_SEPARATE_RECOMPUTE_PASS_21_OF_21",
+      "choiceCheck": "OFFICIAL_JUDGE_PASS_ZERO_DEFECTS",
+      "visual": {
+        "qid": 2,
+        "problem": {
+          "decision": "EXEMPT",
+          "reason": "홀수·짝수 제곱근을 음수로 선택하는 실수 계산은 위치 그림이 필요 없다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        },
+        "solution": {
+          "decision": "EXEMPT",
+          "reason": "−5와 −4를 각각 대입 검산하는 것이 결정적이다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        }
+      }
+    },
+    {
+      "sourceQid": 3,
+      "originalReference": "archive/exams/original/high/h2/1mid/25_매산고_1학기_중간_고2_대수.js#q3",
+      "existingVariantReference": "archive/exams/similar/high/h2/1mid/25_매산고_1학기_중간_고2_대수_유사.js#q3",
+      "lockedPrimaryL3": "H2-M1-RPM-102",
+      "originalSummary": "$0 \\le x < 2\\pi$일 때, 방정식 $\\cos x = \\frac{1}{2}$의 모든 근의 합은? (4.2점)",
+      "existingVariantSummary": "$0 \\le x < 2\\pi$일 때, 방정식 $\\sin x = \\dfrac{\\sqrt{3}}{2}$의 모든 근의 합은? (4.2점)",
+      "conditionAndTargetShift": "삼각방정식 두 해의 합에서 곱으로 전환",
+      "decisiveCore": "단위원의 코사인 음수 해 3π/4,5π/4",
+      "solutionEntry": "단위원의 코사인 음수 해 3π/4,5π/4",
+      "solutionGraphSignature": "단위원의 코사인 음수 해 3π/4,5π/4",
+      "questionTarget": "$0\\le x<2\\pi$에서 방정식 $\\cos x=-\\dfrac{\\sqrt2}{2}$의 서로 다른 두 실근을 $\\alpha,\\beta$라 한다. $\\alpha\\beta$의 값은? (4.2점)",
+      "variationType": "CONFIRMATION",
+      "addedDecision": "CHANGED_CONDITION_OR_TARGET_WITH_SOURCE_DEPTH",
+      "sourceBucketJudgment": 1,
+      "newBucketJudgment": 1,
+      "difficultyBasis": "same-author comparison; separate I2 reviewer NOT_RUN",
+      "problemTypeKey": "PT_H22A_04_TRIG_EQUATION",
+      "templateKey": "TPL_H22A_04_TRIG_EQUATION_102",
+      "semanticDuplicateResult": "CONDITION_AND_OR_TARGET_SHIFT_FROM_ORIGINAL_AND_SIMILAR1",
+      "mathCheck": "AUTHOR_I1_SEPARATE_RECOMPUTE_PASS_21_OF_21",
+      "choiceCheck": "OFFICIAL_JUDGE_PASS_ZERO_DEFECTS",
+      "visual": {
+        "qid": 3,
+        "problem": {
+          "decision": "EXEMPT",
+          "reason": "단위원의 2·3사분면 대칭은 표준각 두 개가 발문·풀이에 명시되어 있다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        },
+        "solution": {
+          "decision": "EXEMPT",
+          "reason": "단위원의 3π/4와 5π/4 위치를 표시하면 두 해의 곱에서 해 누락을 방지한다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        }
+      }
+    },
+    {
+      "sourceQid": 4,
+      "originalReference": "archive/exams/original/high/h2/1mid/25_매산고_1학기_중간_고2_대수.js#q4",
+      "existingVariantReference": "archive/exams/similar/high/h2/1mid/25_매산고_1학기_중간_고2_대수_유사.js#q4",
+      "lockedPrimaryL3": "H2-M1-RPM-077",
+      "originalSummary": "양수 $N=a \\times 10^n$ ($n$은 정수, $1 \\le a < 10$)에 대하여<br>$\\log N=2.8768$일 때, $a+n$의 값은? (단, $\\log 7.53=0.8768$로 계산한다.) (4.3점)",
+      "existingVariantSummary": "양수 $N = a \\times 10^n$ ($n$은 정수, $1 \\le a < 10$)에 대하여 $\\log N = 3.6284$일 때, $a + n$의 값은? (단, $\\log 4.25 = 0.6284$로 계산한다.) (4.3점)",
+      "conditionAndTargetShift": "상용로그의 지수·가수 분리 뒤 차 계산",
+      "decisiveCore": "log 2=0.3010을 정확히 사용하여 4.3010을 복원",
+      "solutionEntry": "log 2=0.3010을 정확히 사용하여 4.3010을 복원",
+      "solutionGraphSignature": "log 2=0.3010을 정확히 사용하여 4.3010을 복원",
+      "questionTarget": "$N=a\\times10^n$ ($1\\le a<10$, $n$은 정수)이라 하자. $\\log N=4.3010$, $\\log 2=0.3010$일 때 $n-a$의 값은? (4.3점)",
+      "variationType": "CONFIRMATION",
+      "addedDecision": "CHANGED_CONDITION_OR_TARGET_WITH_SOURCE_DEPTH",
+      "sourceBucketJudgment": 1,
+      "newBucketJudgment": 1,
+      "difficultyBasis": "same-author comparison; separate I2 reviewer NOT_RUN",
+      "problemTypeKey": "PT_H22A_01_COMMON_LOG",
+      "templateKey": "TPL_H22A_01_COMMON_LOG_SUBSTITUTE",
+      "semanticDuplicateResult": "CONDITION_AND_OR_TARGET_SHIFT_FROM_ORIGINAL_AND_SIMILAR1",
+      "mathCheck": "AUTHOR_I1_SEPARATE_RECOMPUTE_PASS_21_OF_21",
+      "choiceCheck": "OFFICIAL_JUDGE_PASS_ZERO_DEFECTS",
+      "visual": {
+        "qid": 4,
+        "problem": {
+          "decision": "EXEMPT",
+          "reason": "상용로그 식의 지수·가수는 지수 표기와 등식만으로 일의적이다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        },
+        "solution": {
+          "decision": "EXEMPT",
+          "reason": "4+log2를 표준형 2×10⁴로 바꾸는 식만 사용한다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        }
+      }
+    },
+    {
+      "sourceQid": 5,
+      "originalReference": "archive/exams/original/high/h2/1mid/25_매산고_1학기_중간_고2_대수.js#q5",
+      "existingVariantReference": "archive/exams/similar/high/h2/1mid/25_매산고_1학기_중간_고2_대수_유사.js#q5",
+      "lockedPrimaryL3": "H2-M1-RPM-100",
+      "originalSummary": "직선 $\\sqrt{3}x-y+2\\sqrt{3}=0$이 $x$축의 양의 방향과 이루는 각의 크기를 $\\theta$라 할 때, $\\cos\\theta-\\tan\\theta\\sin\\theta$의 값은? (단, $0<\\theta<\\pi$)<br>(4.3점)",
+      "existingVariantSummary": "직선 $x - \\sqrt{3}y + 3 = 0$이 $x$축의 양의 방향과 이루는 각의 크기를 $\\theta$라 할 때, $\\cos\\theta - \\tan\\theta\\sin\\theta$의 값은? (단, $0 < \\theta < \\pi$) (4.3점)",
+      "conditionAndTargetShift": "기울기와 삼각함수 두 항의 합으로 조건 변경",
+      "decisiveCore": "제2사분면의 tanθ=-1, sinθ=√2/2, cosθ=-√2/2",
+      "solutionEntry": "제2사분면의 tanθ=-1, sinθ=√2/2, cosθ=-√2/2",
+      "solutionGraphSignature": "제2사분면의 tanθ=-1, sinθ=√2/2, cosθ=-√2/2",
+      "questionTarget": "직선 $x+y-3=0$이 $x$축의 양의 방향과 이루는 각을 $\\theta$ ($0<\\theta<\\pi$)라 한다. $\\sin\\theta+2\\cos\\theta$의 값은? (4.3점)",
+      "variationType": "CONFIRMATION",
+      "addedDecision": "CHANGED_CONDITION_OR_TARGET_WITH_SOURCE_DEPTH",
+      "sourceBucketJudgment": 2,
+      "newBucketJudgment": 2,
+      "difficultyBasis": "same-author comparison; separate I2 reviewer NOT_RUN",
+      "problemTypeKey": "PT_H22A_04_TRIG_PROPERTIES",
+      "templateKey": "TPL_H22A_04_TRIG_PROPERTIES_100",
+      "semanticDuplicateResult": "CONDITION_AND_OR_TARGET_SHIFT_FROM_ORIGINAL_AND_SIMILAR1",
+      "mathCheck": "AUTHOR_I1_SEPARATE_RECOMPUTE_PASS_21_OF_21",
+      "choiceCheck": "OFFICIAL_JUDGE_PASS_ZERO_DEFECTS",
+      "visual": {
+        "qid": 5,
+        "problem": {
+          "decision": "EXEMPT",
+          "reason": "직선 식과 각 범위로 기울기와 사분면이 확정되어 문제에 추가 그림은 불필요하다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        },
+        "solution": {
+          "decision": "EXEMPT",
+          "reason": "제2사분면의 각과 빗변·좌표축 부호를 보이면 sin의 양·cos의 음을 구분하기 쉽다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        }
+      }
+    },
+    {
+      "sourceQid": 6,
+      "originalReference": "archive/exams/original/high/h2/1mid/25_매산고_1학기_중간_고2_대수.js#q6",
+      "existingVariantReference": "archive/exams/similar/high/h2/1mid/25_매산고_1학기_중간_고2_대수_유사.js#q6",
+      "lockedPrimaryL3": "H2-M1-RPM-071",
+      "originalSummary": "$x>1$이고 $x+x^{-1}=4$일 때, $x^3-x^{-3}$의 값은? (4.5점)",
+      "existingVariantSummary": "$x > 1$이고 $x + x^{-1} = 3$일 때, $x^3 - x^{-3}$의 값은? (4.5점)",
+      "conditionAndTargetShift": "세제곱 차에서 이차 차로 나눈 비율을 질문",
+      "decisiveCore": "인수분해 후 x²+x^-2=(x+x^-1)²-2",
+      "solutionEntry": "인수분해 후 x²+x^-2=(x+x^-1)²-2",
+      "solutionGraphSignature": "인수분해 후 x²+x^-2=(x+x^-1)²-2",
+      "questionTarget": "$x>1$이고 $x+\\dfrac1x=5$일 때, $\\dfrac{x^3-\\dfrac1{x^3}}{x^2-\\dfrac1{x^2}}$의 값은? (4.5점)",
+      "variationType": "CONFIRMATION",
+      "addedDecision": "CHANGED_CONDITION_OR_TARGET_WITH_SOURCE_DEPTH",
+      "sourceBucketJudgment": 2,
+      "newBucketJudgment": 2,
+      "difficultyBasis": "same-author comparison; separate I2 reviewer NOT_RUN",
+      "problemTypeKey": "PT_H22A_01_EXPONENT_LAWS",
+      "templateKey": "TPL_H22A_01_EXPONENT_LAWS_071",
+      "semanticDuplicateResult": "CONDITION_AND_OR_TARGET_SHIFT_FROM_ORIGINAL_AND_SIMILAR1",
+      "mathCheck": "AUTHOR_I1_SEPARATE_RECOMPUTE_PASS_21_OF_21",
+      "choiceCheck": "OFFICIAL_JUDGE_PASS_ZERO_DEFECTS",
+      "visual": {
+        "qid": 6,
+        "problem": {
+          "decision": "EXEMPT",
+          "reason": "문자식 인수분해만으로 분모가 0이 아님까지 확인된다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        },
+        "solution": {
+          "decision": "EXEMPT",
+          "reason": "(x−x⁻¹) 공통인수를 약분하는 세 줄 계산이 명료하다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        }
+      }
+    },
+    {
+      "sourceQid": 7,
+      "originalReference": "archive/exams/original/high/h2/1mid/25_매산고_1학기_중간_고2_대수.js#q7",
+      "existingVariantReference": "archive/exams/similar/high/h2/1mid/25_매산고_1학기_중간_고2_대수_유사.js#q7",
+      "lockedPrimaryL3": "H2-M1-RPM-087",
+      "originalSummary": "다음 중 함수 $f(x)=2\\log_3x$에 대한 설명으로 옳은 것은? (4.5점)",
+      "existingVariantSummary": "다음 중 함수 $f(x) = 2\\log_5 x$에 대한 설명으로 옳은 것은? (4.5점)",
+      "conditionAndTargetShift": "로그함수의 역함수와 점근선 성질을 재구성",
+      "decisiveCore": "f(x)=3 log₂x−1의 정의역·단조성·역함수 판별",
+      "solutionEntry": "f(x)=3 log₂x−1의 정의역·단조성·역함수 판별",
+      "solutionGraphSignature": "f(x)=3 log₂x−1의 정의역·단조성·역함수 판별",
+      "questionTarget": "함수 $f(x)=3\\log_2x-1$에 대한 설명으로 옳은 것은? (4.5점)",
+      "variationType": "CONFIRMATION",
+      "addedDecision": "CHANGED_CONDITION_OR_TARGET_WITH_SOURCE_DEPTH",
+      "sourceBucketJudgment": 2,
+      "newBucketJudgment": 2,
+      "difficultyBasis": "same-author comparison; separate I2 reviewer NOT_RUN",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+      "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+      "semanticDuplicateResult": "CONDITION_AND_OR_TARGET_SHIFT_FROM_ORIGINAL_AND_SIMILAR1",
+      "mathCheck": "AUTHOR_I1_SEPARATE_RECOMPUTE_PASS_21_OF_21",
+      "choiceCheck": "OFFICIAL_JUDGE_PASS_ZERO_DEFECTS",
+      "visual": {
+        "qid": 7,
+        "problem": {
+          "decision": "EXEMPT",
+          "reason": "로그함수 식 자체와 다섯 서술 선택지가 조건 정보를 완결한다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        },
+        "solution": {
+          "decision": "EXEMPT",
+          "reason": "증가 방향·y축 점근선·치역을 동시에 보여 주는 로그함수 그래프가 세 오답을 한 번에 대비시킨다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        }
+      }
+    },
+    {
+      "sourceQid": 8,
+      "originalReference": "archive/exams/original/high/h2/1mid/25_매산고_1학기_중간_고2_대수.js#q8",
+      "existingVariantReference": "archive/exams/similar/high/h2/1mid/25_매산고_1학기_중간_고2_대수_유사.js#q8",
+      "lockedPrimaryL3": "H2-M1-RPM-074",
+      "originalSummary": "모든 실수 $x$에 대하여 $\\log_a (ax^2-2ax+3)$이 정의되기 위한 자연수 $a$의 값은? (4.6점)",
+      "existingVariantSummary": "모든 실수 $x$에 대하여 $\\log_{a-1} \\{(a-1)x^2 - 4(a-1)x + 12\\}$가 정의되기 위한 자연수 $a$의 값은? (4.6점)",
+      "conditionAndTargetShift": "모든 실수에 대해 정의되는 로그의 자연수 매개변수 개수",
+      "decisiveCore": "밑 a−2>0,≠1; 진수 이차식 최솟값 9−a>0",
+      "solutionEntry": "밑 a−2>0,≠1; 진수 이차식 최솟값 9−a>0",
+      "solutionGraphSignature": "밑 a−2>0,≠1; 진수 이차식 최솟값 9−a>0",
+      "questionTarget": "자연수 $a$에 대해 $f(x)=\\log_{a-2}\\left((a-2)x^2-2(a-2)x+7\\right)$가 모든 실수 $x$에서 정의되도록 하는 $a$의 개수는? (4.6점)",
+      "variationType": "CONFIRMATION",
+      "addedDecision": "CHANGED_CONDITION_OR_TARGET_WITH_SOURCE_DEPTH",
+      "sourceBucketJudgment": 2,
+      "newBucketJudgment": 2,
+      "difficultyBasis": "same-author comparison; separate I2 reviewer NOT_RUN",
+      "problemTypeKey": "PT_H22A_01_LOG_DEFINITION",
+      "templateKey": "TPL_H22A_01_LOG_DEFINITION_074",
+      "semanticDuplicateResult": "CONDITION_AND_OR_TARGET_SHIFT_FROM_ORIGINAL_AND_SIMILAR1",
+      "mathCheck": "AUTHOR_I1_SEPARATE_RECOMPUTE_PASS_21_OF_21",
+      "choiceCheck": "OFFICIAL_JUDGE_PASS_ZERO_DEFECTS",
+      "visual": {
+        "qid": 8,
+        "problem": {
+          "decision": "EXEMPT",
+          "reason": "매개변수 밑 조건과 이차 진수의 최솟값을 대조하는 짧은 부등식이다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        },
+        "solution": {
+          "decision": "EXEMPT",
+          "reason": "완전제곱식과 경계 a=9는 별도 그림 없이 명확하다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        }
+      }
+    },
+    {
+      "sourceQid": 9,
+      "originalReference": "archive/exams/original/high/h2/1mid/25_매산고_1학기_중간_고2_대수.js#q9",
+      "existingVariantReference": "archive/exams/similar/high/h2/1mid/25_매산고_1학기_중간_고2_대수_유사.js#q9",
+      "lockedPrimaryL3": "H2-M1-RPM-077",
+      "originalSummary": "지진은 지구 내부의 에너지가 지표로 나오면서 발생하는데, 지진이 지구 내부에서 최초로 발생된 지점을 진원(震源, earthquake focus), 진원에서 수직으로 연결된 지표면 위의 지점을 진앙(震央, epicenter)이라고 한다. 지진의 크기를 절대적 수치로 나타내는 방법인 '규모'는 미국의 지진학자 리히터(Richter, C. F., 1900~1986)가 도입한 것으로 진앙에서 100km 떨어진 지점에서 지진계로 측정한 지진파의 최대 진폭이 $A\\mu m",
+      "existingVariantSummary": "지진은 지구 내부의 에너지가 지표로 나오면서 발생하는데, 지진이 지구 내부에서 최초로 발생된 지점을 진원(震源, earthquake focus), 진원에서 수직으로 연결된 지표면 위의 지점을 진앙(震央, epicenter)이라고 한다. 지진의 크기를 절대적 수치로 나타내는 방법인 '규모'는 미국의 지진학자 리히터(Richter, C. F., 1900~1986)가 도입한 것으로 진앙에서 $100\\text{ km}$ 떨어진 지점에서 지진계로 측정한 지진파의 최대 진",
+      "conditionAndTargetShift": "진폭 증가량 대신 에너지 배율에서 진폭 배율을 역산",
+      "decisiveCore": "E비=10³ → ΔM=2 → A비=10²",
+      "solutionEntry": "E비=10³ → ΔM=2 → A비=10²",
+      "solutionGraphSignature": "E비=10³ → ΔM=2 → A비=10²",
+      "questionTarget": "지진의 리히터 규모를 $M=\\log A$라 하고, 방출 에너지 $E$에 대하여 $\\log E=11.8+1.5M$이 성립한다고 하자. 두 번째 지진의 방출 에너지가 첫 번째 지진의 $1000$배일 때 진폭 비 $A_2:A_1$은? (4.6점)",
+      "variationType": "CONFIRMATION",
+      "addedDecision": "CHANGED_CONDITION_OR_TARGET_WITH_SOURCE_DEPTH",
+      "sourceBucketJudgment": 2,
+      "newBucketJudgment": 2,
+      "difficultyBasis": "same-author comparison; separate I2 reviewer NOT_RUN",
+      "problemTypeKey": "PT_H22A_01_COMMON_LOG",
+      "templateKey": "TPL_H22A_01_COMMON_LOG_SUBSTITUTE",
+      "semanticDuplicateResult": "CONDITION_AND_OR_TARGET_SHIFT_FROM_ORIGINAL_AND_SIMILAR1",
+      "mathCheck": "AUTHOR_I1_SEPARATE_RECOMPUTE_PASS_21_OF_21",
+      "choiceCheck": "OFFICIAL_JUDGE_PASS_ZERO_DEFECTS",
+      "visual": {
+        "qid": 9,
+        "problem": {
+          "decision": "EXEMPT",
+          "reason": "리히터의 두 로그 관계식과 에너지 비가 모두 본문에 있다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        },
+        "solution": {
+          "decision": "EXEMPT",
+          "reason": "ΔM=3/1.5와 A비=10²의 연쇄 식으로 해설이 완결된다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        }
+      }
+    },
+    {
+      "sourceQid": 10,
+      "originalReference": "archive/exams/original/high/h2/1mid/25_매산고_1학기_중간_고2_대수.js#q10",
+      "existingVariantReference": "archive/exams/similar/high/h2/1mid/25_매산고_1학기_중간_고2_대수_유사.js#q10",
+      "lockedPrimaryL3": "H2-M1-RPM-075",
+      "originalSummary": "$a = (1+\\frac{1}{3})(1+\\frac{1}{3^2})(1+\\frac{1}{3^4})(1+\\frac{1}{3^8})$일 때, \n$\\log_3(3-2a)$의 값은? (4.8점)",
+      "existingVariantSummary": "$a = \\left(1 + \\dfrac{1}{2}\\right)\\left(1 + \\dfrac{1}{2^2}\\right)\\left(1 + \\dfrac{1}{2^4}\\right)$일 때, $\\log_2(2 - a)$의 값은? (4.8점)",
+      "conditionAndTargetShift": "곱의 값 계산에서 항 개수 역추론",
+      "decisiveCore": "(1−t)∏(1+t^{2^j})=1−t^{2^m}",
+      "solutionEntry": "(1−t)∏(1+t^{2^j})=1−t^{2^m}",
+      "solutionGraphSignature": "(1−t)∏(1+t^{2^j})=1−t^{2^m}",
+      "questionTarget": "자연수 $m$에 대하여 $P=\\displaystyle\\prod_{j=0}^{m-1}\\left(1+\\frac{1}{2^{2^j}}\\right)$라 한다. $2-P=2^{-31}$을 만족하는 $m$의 값은? (4.8점)",
+      "variationType": "CONFIRMATION",
+      "addedDecision": "CHANGED_CONDITION_OR_TARGET_WITH_SOURCE_DEPTH",
+      "sourceBucketJudgment": 2,
+      "newBucketJudgment": 2,
+      "difficultyBasis": "same-author comparison; separate I2 reviewer NOT_RUN",
+      "problemTypeKey": "PT_H22A_01_LOG_PROPERTIES",
+      "templateKey": "TPL_H22A_01_LOG_PROPERTIES_075",
+      "semanticDuplicateResult": "CONDITION_AND_OR_TARGET_SHIFT_FROM_ORIGINAL_AND_SIMILAR1",
+      "mathCheck": "AUTHOR_I1_SEPARATE_RECOMPUTE_PASS_21_OF_21",
+      "choiceCheck": "OFFICIAL_JUDGE_PASS_ZERO_DEFECTS",
+      "visual": {
+        "qid": 10,
+        "problem": {
+          "decision": "EXEMPT",
+          "reason": "곱의 인수 패턴은 지수 2^j 표기로 정확히 전달된다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        },
+        "solution": {
+          "decision": "EXEMPT",
+          "reason": "곱셈 망원 항등식의 소거 구조는 한 줄 식으로 표시할 수 있다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        }
+      }
+    },
+    {
+      "sourceQid": 11,
+      "originalReference": "archive/exams/original/high/h2/1mid/25_매산고_1학기_중간_고2_대수.js#q11",
+      "existingVariantReference": "archive/exams/similar/high/h2/1mid/25_매산고_1학기_중간_고2_대수_유사.js#q11",
+      "lockedPrimaryL3": "H2-M1-RPM-105",
+      "originalSummary": "함수 $y=a\\sin(bx+c)+d$의 그래프 중 일부가 아래 그림과 같을 때, 상수 $a, b, c, d$에 대하여 $\\frac{abcd}{2\\pi}$의 값은?\n(단, $a>0, b>0, \\pi<c<2\\pi$) (5.1점)",
+      "existingVariantSummary": "함수 $y = a\\sin(bx + c) + d$ ($a > 0$, $b > 0$, $\\pi < c < 2\\pi$)의 최댓값이 $5$, 최솟값이 $-1$이고, 이 함수의 그래프에서 인접한 두 최댓값을 갖는 점의 $x$좌표가 각각 $\\dfrac{\\pi}{4}$, $\\dfrac{3\\pi}{4}$일 때, $\\dfrac{abcd}{2\\pi}$의 값은? (5.1점)",
+      "conditionAndTargetShift": "그래프 그림의 눈금을 읽는 대신 두 연속 극댓값으로 위상 결정",
+      "decisiveCore": "진폭·중심선·주기 및 π<c<2π 분기 선택",
+      "solutionEntry": "진폭·중심선·주기 및 π<c<2π 분기 선택",
+      "solutionGraphSignature": "진폭·중심선·주기 및 π<c<2π 분기 선택",
+      "questionTarget": "함수 $f(x)=a\\sin(bx+c)+d$에서 $a,b>0$, $\\pi<c<2\\pi$이다. 이 함수의 최댓값은 $7$, 최솟값은 $1$이고, $x=\\dfrac\\pi3$와 $x=\\dfrac{4\\pi}3$에서 연속하여 극댓값을 갖는다. $\\dfrac{bc}{\\pi}+a-d$의 값은? (5.1점)",
+      "variationType": "CONFIRMATION",
+      "addedDecision": "CHANGED_CONDITION_OR_TARGET_WITH_SOURCE_DEPTH",
+      "sourceBucketJudgment": 3,
+      "newBucketJudgment": 3,
+      "difficultyBasis": "same-author comparison; separate I2 reviewer NOT_RUN",
+      "problemTypeKey": "PT_H22A_04_TRIG_GRAPH_TRANSFORM",
+      "templateKey": "TPL_H22A_04_TRIG_GRAPH_TRANSFORM_105",
+      "semanticDuplicateResult": "CONDITION_AND_OR_TARGET_SHIFT_FROM_ORIGINAL_AND_SIMILAR1",
+      "mathCheck": "AUTHOR_I1_SEPARATE_RECOMPUTE_PASS_21_OF_21",
+      "choiceCheck": "OFFICIAL_JUDGE_PASS_ZERO_DEFECTS",
+      "visual": {
+        "qid": 11,
+        "problem": {
+          "decision": "EXEMPT",
+          "reason": "두 연속 극댓값의 x좌표와 최댓값·최솟값이 명시되어 그래프 없이도 값은 유일하다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        },
+        "solution": {
+          "decision": "BENEFICIAL",
+          "reason": "두 봉우리의 간격 π, 중간선 y=4, 진폭 3을 실제 함수 그래프로 함께 보여 주는 편이 위상 이해에 유익하다.",
+          "planRef": "archive/exams/similar/high/h2/1mid/25_매산고_1학기_중간_고2_대수_유사2_plans/q11-solution.plan.json",
+          "engineStatus": "PLAN_WRITTEN_RENDER_NOT_RUN"
+        }
+      }
+    },
+    {
+      "sourceQid": 12,
+      "originalReference": "archive/exams/original/high/h2/1mid/25_매산고_1학기_중간_고2_대수.js#q12",
+      "existingVariantReference": "archive/exams/similar/high/h2/1mid/25_매산고_1학기_중간_고2_대수_유사.js#q12",
+      "lockedPrimaryL3": "H2-M1-RPM-108",
+      "originalSummary": "실수 $a$에 대하여 함수 $f(t) = \\cos^2 t + 2a\\sin t$ ($0 \\le t \\le 2\\pi$)의 최댓값을 $M(a)$라고 할 때, $M(-2)+M(0)+M(3)$의 값은?\n(5.3점)",
+      "existingVariantSummary": "실수 $a$에 대하여 함수 $f(t) = \\cos^2 t + 2a\\sin t$ ($0 \\le t \\le 2\\pi$)의 최댓값을 $M(a)$라고 할 때, $M(-3) + M(0) + M(4)$의 값은? (5.3점)",
+      "conditionAndTargetShift": "최댓값 세 값의 합 대신 부호 있는 조합",
+      "decisiveCore": "u=sin t∈[-1,1]에서 1−u²+2au의 최댓값",
+      "solutionEntry": "u=sin t∈[-1,1]에서 1−u²+2au의 최댓값",
+      "solutionGraphSignature": "u=sin t∈[-1,1]에서 1−u²+2au의 최댓값",
+      "questionTarget": "실수 $a$에 대하여 $M(a)=\\max_{0\\le t\\le2\\pi}\\left(\\cos^2t+2a\\sin t\\right)$라 한다. $M(-2)+M\\!\\left(\\dfrac12\\right)-M(3)$의 값은? (5.3점)",
+      "variationType": "CONFIRMATION",
+      "addedDecision": "CHANGED_CONDITION_OR_TARGET_WITH_SOURCE_DEPTH",
+      "sourceBucketJudgment": 3,
+      "newBucketJudgment": 3,
+      "difficultyBasis": "same-author comparison; separate I2 reviewer NOT_RUN",
+      "problemTypeKey": "PT_H22A_04_TRIG_PROPERTIES",
+      "templateKey": "TPL_H22A_04_TRIG_PROPERTIES_QUADRATIC_TRIG",
+      "semanticDuplicateResult": "CONDITION_AND_OR_TARGET_SHIFT_FROM_ORIGINAL_AND_SIMILAR1",
+      "mathCheck": "AUTHOR_I1_SEPARATE_RECOMPUTE_PASS_21_OF_21",
+      "choiceCheck": "OFFICIAL_JUDGE_PASS_ZERO_DEFECTS",
+      "visual": {
+        "qid": 12,
+        "problem": {
+          "decision": "EXEMPT",
+          "reason": "문제는 u=sin t의 대수적 최대·최소이며 도형이 추가 조건을 주지 않는다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        },
+        "solution": {
+          "decision": "EXEMPT",
+          "reason": "아래로 열린 포물선의 꼭짓점과 구간 끝점 계산은 완료된 제곱식으로 충분하다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        }
+      }
+    },
+    {
+      "sourceQid": 13,
+      "originalReference": "archive/exams/original/high/h2/1mid/25_매산고_1학기_중간_고2_대수.js#q13",
+      "existingVariantReference": "archive/exams/similar/high/h2/1mid/25_매산고_1학기_중간_고2_대수_유사.js#q13",
+      "lockedPrimaryL3": "H2-M1-RPM-082",
+      "originalSummary": "방정식 $4^x + a \\cdot 2^x + 3 = 0$이 실근을 갖지 않도록 하는 정수 $a$의 최솟값은? (5.4점)",
+      "existingVariantSummary": "방정식 $4^x + a \\cdot 2^x + 9 = 0$이 실근을 갖지 않도록 하는 정수 $a$의 최솟값은? (5.4점)",
+      "conditionAndTargetShift": "실근이 없는 최소 정수에서 서로 다른 두 실근인 최대 정수로 조건 전환",
+      "decisiveCore": "t=4^x>0인 이차방정식의 양의 서로 다른 두 근",
+      "solutionEntry": "t=4^x>0인 이차방정식의 양의 서로 다른 두 근",
+      "solutionGraphSignature": "t=4^x>0인 이차방정식의 양의 서로 다른 두 근",
+      "questionTarget": "방정식 $16^x+a\\cdot4^x+16=0$이 서로 다른 두 실근을 갖도록 하는 정수 $a$ 중 최댓값은? (5.4점)",
+      "variationType": "CONFIRMATION",
+      "addedDecision": "CHANGED_CONDITION_OR_TARGET_WITH_SOURCE_DEPTH",
+      "sourceBucketJudgment": 3,
+      "newBucketJudgment": 3,
+      "difficultyBasis": "same-author comparison; separate I2 reviewer NOT_RUN",
+      "problemTypeKey": "PT_H22A_02_EXP_EQUATION",
+      "templateKey": "TPL_H22A_02_EXP_EQUATION_082",
+      "semanticDuplicateResult": "CONDITION_AND_OR_TARGET_SHIFT_FROM_ORIGINAL_AND_SIMILAR1",
+      "mathCheck": "AUTHOR_I1_SEPARATE_RECOMPUTE_PASS_21_OF_21",
+      "choiceCheck": "OFFICIAL_JUDGE_PASS_ZERO_DEFECTS",
+      "visual": {
+        "qid": 13,
+        "problem": {
+          "decision": "EXEMPT",
+          "reason": "양수 t에 관한 이차방정식 판별조건이 관건이며 곡선 그림은 부가적이다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        },
+        "solution": {
+          "decision": "EXEMPT",
+          "reason": "두 양근의 합·곱·판별식 세 조건을 식으로 함께 대조한다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        }
+      }
+    },
+    {
+      "sourceQid": 14,
+      "originalReference": "archive/exams/original/high/h2/1mid/25_매산고_1학기_중간_고2_대수.js#q14",
+      "existingVariantReference": "archive/exams/similar/high/h2/1mid/25_매산고_1학기_중간_고2_대수_유사.js#q14",
+      "lockedPrimaryL3": "H2-M1-RPM-086",
+      "originalSummary": "$n \\ge 2$인 자연수 $n$에 대하여 함수 $f(x)=3^x-n$의 그래프가 $y=f^{-1}(x)$의 그래프와 만나는 두 점의 $x$좌표 중 큰 값을 $g(n)$이라 하자. $k \\le g(n) < k+1$을 만족시키는 자연수 $k$를 $h(n)$이라 할 때, $h(n) < h(n+1)$을 만족시키는 100이하의 $n$의 값 중 최댓값은? (5.4점)",
+      "existingVariantSummary": "$n \\ge 2$인 자연수 $n$에 대하여 함수 $f(x) = 2^x - n$의 그래프가 $y = f^{-1}(x)$의 그래프와 만나는 두 점의 $x$좌표 중 큰 값을 $g(n)$이라 하자. $k \\le g(n) < k+1$을 만족시키는 자연수 $k$를 $h(n)$이라 할 때, $h(n) < h(n+1)$을 만족시키는 $100$ 이하의 $n$의 값 중 최댓값은? (5.4점)",
+      "conditionAndTargetShift": "최대 n 추론에서 경계 인덱스 전체의 합으로 질문 변경",
+      "decisiveCore": "f와 역함수 교점=대각선 y=x; g(n) 층계 변화 기준",
+      "solutionEntry": "f와 역함수 교점=대각선 y=x; g(n) 층계 변화 기준",
+      "solutionGraphSignature": "f와 역함수 교점=대각선 y=x; g(n) 층계 변화 기준",
+      "questionTarget": "자연수 $n\\ge3$에 대하여 증가함수 $f_n(x)=4^x-n$의 그래프와 역함수의 그래프가 만나는 두 점 중 $x$좌표가 큰 값을 $g(n)$이라 하자. $h(n)=\\lfloor g(n)\\rfloor$일 때 $3\\le n\\le300$에서 $h(n)<h(n+1)$인 모든 $n$의 합을 구하면? (5.4점)",
+      "variationType": "CONFIRMATION",
+      "addedDecision": "CHANGED_CONDITION_OR_TARGET_WITH_SOURCE_DEPTH",
+      "sourceBucketJudgment": 4,
+      "newBucketJudgment": 4,
+      "difficultyBasis": "same-author comparison; separate I2 reviewer NOT_RUN",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+      "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+      "semanticDuplicateResult": "CONDITION_AND_OR_TARGET_SHIFT_FROM_ORIGINAL_AND_SIMILAR1",
+      "mathCheck": "AUTHOR_I1_SEPARATE_RECOMPUTE_PASS_21_OF_21",
+      "choiceCheck": "OFFICIAL_JUDGE_PASS_ZERO_DEFECTS",
+      "visual": {
+        "qid": 14,
+        "problem": {
+          "decision": "EXEMPT",
+          "reason": "지수함수와 역함수의 두 교점은 함수 단조성과 p(x) 증가성이 글로 완결된다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        },
+        "solution": {
+          "decision": "EXEMPT",
+          "reason": "정수 m=2,3,4와 경계 n=4^m−m−1 대응은 작은 수치 목록이 더 정확하다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        }
+      }
+    },
+    {
+      "sourceQid": 15,
+      "originalReference": "archive/exams/original/high/h2/1mid/25_매산고_1학기_중간_고2_대수.js#q15",
+      "existingVariantReference": "archive/exams/similar/high/h2/1mid/25_매산고_1학기_중간_고2_대수_유사.js#q15",
+      "lockedPrimaryL3": "H2-M1-RPM-076",
+      "originalSummary": "$\\log 2 = a$, $\\log 3 = b$일 때, 다음을 $a$와 $b$에 대한 식으로 나타내시오.<br>(1) $\\log_2 5$ (2점)",
+      "existingVariantSummary": "$\\log 2 = a$, $\\log 3 = b$일 때, 다음을 $a$와 $b$에 대한 식으로 나타내시오.  \n(1) $\\log_3 5$ (2점)",
+      "conditionAndTargetShift": "밑이 다른 두 로그의 단순 몫에서 합성 밑의 로그로 확장",
+      "decisiveCore": "log_6 15=(log3+log5)/(log2+log3)",
+      "solutionEntry": "log_6 15=(log3+log5)/(log2+log3)",
+      "solutionGraphSignature": "log_6 15=(log3+log5)/(log2+log3)",
+      "questionTarget": "$\\log 2=a$, $\\log 3=b$일 때 $\\log_6 15$를 $a,b$로 나타내시오. (2점)",
+      "variationType": "CONFIRMATION",
+      "addedDecision": "CHANGED_CONDITION_OR_TARGET_WITH_SOURCE_DEPTH",
+      "sourceBucketJudgment": 1,
+      "newBucketJudgment": 1,
+      "difficultyBasis": "same-author comparison; separate I2 reviewer NOT_RUN",
+      "problemTypeKey": "PT_H22A_01_LOG_PROPERTIES",
+      "templateKey": "TPL_H22A_01_LOG_PROPERTIES_076",
+      "semanticDuplicateResult": "CONDITION_AND_OR_TARGET_SHIFT_FROM_ORIGINAL_AND_SIMILAR1",
+      "mathCheck": "AUTHOR_I1_SEPARATE_RECOMPUTE_PASS_21_OF_21",
+      "choiceCheck": "OFFICIAL_JUDGE_PASS_ZERO_DEFECTS",
+      "visual": {
+        "qid": 15,
+        "problem": {
+          "decision": "EXEMPT",
+          "reason": "로그의 밑변환 후 log5=1−a 치환만 필요하므로 그림에 추가 조건이 없다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        },
+        "solution": {
+          "decision": "EXEMPT",
+          "reason": "분자·분모 로그 분해가 한 줄 등식으로 명료하다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        }
+      }
+    },
+    {
+      "sourceQid": 16,
+      "originalReference": "archive/exams/original/high/h2/1mid/25_매산고_1학기_중간_고2_대수.js#q16",
+      "existingVariantReference": "archive/exams/similar/high/h2/1mid/25_매산고_1학기_중간_고2_대수_유사.js#q16",
+      "lockedPrimaryL3": "H2-M1-RPM-077",
+      "originalSummary": "$\\log 2 = a$, $\\log 3 = b$일 때, 다음을 $a$와 $b$에 대한 식으로 나타내시오.<br>(2) $\\log 3$ (2점)",
+      "existingVariantSummary": "$\\log 2 = a$, $\\log 3 = b$일 때, 다음을 $a$와 $b$에 대한 식으로 나타내시오.  \n(2) $\\log 2$ (2점)",
+      "conditionAndTargetShift": "단일 로그를 곱의 상용로그로 분해",
+      "decisiveCore": "log12=2log2+log3",
+      "solutionEntry": "log12=2log2+log3",
+      "solutionGraphSignature": "log12=2log2+log3",
+      "questionTarget": "$\\log 2=a$, $\\log 3=b$일 때 $\\log12$를 $a,b$로 나타내시오. (2점)",
+      "variationType": "CONFIRMATION",
+      "addedDecision": "CHANGED_CONDITION_OR_TARGET_WITH_SOURCE_DEPTH",
+      "sourceBucketJudgment": 1,
+      "newBucketJudgment": 1,
+      "difficultyBasis": "same-author comparison; separate I2 reviewer NOT_RUN",
+      "problemTypeKey": "PT_H22A_01_COMMON_LOG",
+      "templateKey": "TPL_H22A_01_COMMON_LOG_SUBSTITUTE",
+      "semanticDuplicateResult": "CONDITION_AND_OR_TARGET_SHIFT_FROM_ORIGINAL_AND_SIMILAR1",
+      "mathCheck": "AUTHOR_I1_SEPARATE_RECOMPUTE_PASS_21_OF_21",
+      "choiceCheck": "OFFICIAL_JUDGE_PASS_ZERO_DEFECTS",
+      "visual": {
+        "qid": 16,
+        "problem": {
+          "decision": "EXEMPT",
+          "reason": "상용로그의 곱·거듭제곱 법칙 적용이 전부이며 별도 좌표나 영역이 없다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        },
+        "solution": {
+          "decision": "EXEMPT",
+          "reason": "log12=2log2+log3 한 줄이면 충분하다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        }
+      }
+    },
+    {
+      "sourceQid": 17,
+      "originalReference": "archive/exams/original/high/h2/1mid/25_매산고_1학기_중간_고2_대수.js#q17",
+      "existingVariantReference": "archive/exams/similar/high/h2/1mid/25_매산고_1학기_중간_고2_대수_유사.js#q17",
+      "lockedPrimaryL3": "H2-M1-RPM-090",
+      "originalSummary": "연립방정식 $$\\begin{cases} x^2 y^4 = 1 \\\\ \\log_2 x + (\\log_2 y)^2 = 3 \\end{cases}$$ 을 만족하는 실수 $x, y$의 순서쌍 $(x, y)$를 모두 구하시오. (5점)",
+      "existingVariantSummary": "연립방정식  \n$$\\begin{cases} x y^2 = 1 \\\\ \\log_3 x + (\\log_3 y)^2 = 3 \\end{cases}$$  \n을 만족하는 실수 $x, y$의 순서쌍 $(x, y)$를 모두 구하시오. (5점)",
+      "conditionAndTargetShift": "연립로그방정식의 해 전체에서 해의 x좌표 곱을 구하도록 확장",
+      "decisiveCore": "t=log₂y로 치환해 2차방정식 t²−3t−10=0",
+      "solutionEntry": "t=log₂y로 치환해 2차방정식 t²−3t−10=0",
+      "solutionGraphSignature": "t=log₂y로 치환해 2차방정식 t²−3t−10=0",
+      "questionTarget": "$x>0$, $y>0$일 때 연립방정식 $\\begin{cases}xy^3=1\\\\ \\log_2x+(\\log_2y)^2=10\\end{cases}$의 서로 다른 두 해를 $(x_1,y_1)$, $(x_2,y_2)$라 하자. $\\log_2(x_1x_2)$의 값을 구하시오. (5점)",
+      "variationType": "CONFIRMATION",
+      "addedDecision": "CHANGED_CONDITION_OR_TARGET_WITH_SOURCE_DEPTH",
+      "sourceBucketJudgment": 3,
+      "newBucketJudgment": 3,
+      "difficultyBasis": "same-author comparison; separate I2 reviewer NOT_RUN",
+      "problemTypeKey": "PT_H22A_03_LOG_EQUATION",
+      "templateKey": "TPL_H22A_03_LOG_EQUATION_090",
+      "semanticDuplicateResult": "CONDITION_AND_OR_TARGET_SHIFT_FROM_ORIGINAL_AND_SIMILAR1",
+      "mathCheck": "AUTHOR_I1_SEPARATE_RECOMPUTE_PASS_21_OF_21",
+      "choiceCheck": "OFFICIAL_JUDGE_PASS_ZERO_DEFECTS",
+      "visual": {
+        "qid": 17,
+        "problem": {
+          "decision": "EXEMPT",
+          "reason": "양수 영역과 연립식 두 개만으로 모든 해가 지정된다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        },
+        "solution": {
+          "decision": "EXEMPT",
+          "reason": "t=log₂y 치환과 두 근 5,−2를 나눠 계산한다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        }
+      }
+    },
+    {
+      "sourceQid": 18,
+      "originalReference": "archive/exams/original/high/h2/1mid/25_매산고_1학기_중간_고2_대수.js#q18",
+      "existingVariantReference": "archive/exams/similar/high/h2/1mid/25_매산고_1학기_중간_고2_대수_유사.js#q18",
+      "lockedPrimaryL3": "H2-M1-RPM-096",
+      "originalSummary": "다음 그림과 같이 중심각을 공유하는 두 부채꼴 $OAB$, $OCD$에 대하여 도형 $ABDC$의 둘레의 길이가 48이다. 도형 $ABDC$의 넓이가 최대가 될 때, 선분 $AC$의 길이를 구하시오. (6점)",
+      "existingVariantSummary": "중심각의 크기가 같고 중심이 $O$인 두 부채꼴 $OAB$, $OCD$에 대하여 점 $A$는 반직선 $OC$ 위에, 점 $B$는 반직선 $OD$ 위에 있고 $\\overline{OA} < \\overline{OC}$이다. 두 호 $AB, CD$와 두 선분 $AC, BD$로 둘러싸인 도형 $ABDC$의 둘레의 길이가 $36$일 때, 도형 $ABDC$의 넓이가 최대가 되는 선분 $AC$의 길이를 구하시오. (6점)",
+      "conditionAndTargetShift": "호길이·둘레 제한의 최적 폭 대신 최대 넓이 질문",
+      "decisiveCore": "S=x(40−2x)/2, 0<x<20에서 100",
+      "solutionEntry": "S=x(40−2x)/2, 0<x<20에서 100",
+      "solutionGraphSignature": "S=x(40−2x)/2, 0<x<20에서 100",
+      "questionTarget": "그림과 같이 중심이 $O$로 같은 두 부채꼴 $OAB$, $OCD$가 있고, $A$는 선분 $OC$ 위에, $B$는 선분 $OD$ 위에 있다. 색칠한 부분의 둘레의 길이는 $40$이다. $AC=x$일 때 색칠한 부분의 넓이의 최댓값을 구하시오. (6점)",
+      "variationType": "CONFIRMATION",
+      "addedDecision": "CHANGED_CONDITION_OR_TARGET_WITH_SOURCE_DEPTH",
+      "sourceBucketJudgment": 3,
+      "newBucketJudgment": 3,
+      "difficultyBasis": "same-author comparison; separate I2 reviewer NOT_RUN",
+      "problemTypeKey": "PT_H22A_04_ANGLE_RADIAN",
+      "templateKey": "TPL_H22A_04_ANGLE_RADIAN_096",
+      "semanticDuplicateResult": "CONDITION_AND_OR_TARGET_SHIFT_FROM_ORIGINAL_AND_SIMILAR1",
+      "mathCheck": "AUTHOR_I1_SEPARATE_RECOMPUTE_PASS_21_OF_21",
+      "choiceCheck": "OFFICIAL_JUDGE_PASS_ZERO_DEFECTS",
+      "visual": {
+        "qid": 18,
+        "problem": {
+          "decision": "BENEFICIAL",
+          "reason": "안쪽과 바깥쪽 호 및 색칠 영역의 경계 순서는 실제 원본 SVG로 정확히 파악할 수 있다. SVG의 O·A·B·C·D 배치와 색칠 영역을 실제 PNG 변환으로 확인했으며 숫자가 없으므로 새 조건에도 일치한다.",
+          "planRef": null,
+          "existingAsset": "assets/images/25_매산고_1학기_중간_고2_대수/q18-problem-readable-v2.svg",
+          "assetInspected": true,
+          "engineStatus": "REUSE_ORIGINAL_SVG_VISUALLY_INSPECTED"
+        },
+        "solution": {
+          "decision": "EXEMPT",
+          "reason": "문제에 이미 있는 동심 부채꼴 그림을 다시 그리지 않아도 둘레·넓이 분해를 식으로 설명할 수 있다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        }
+      }
+    },
+    {
+      "sourceQid": 19,
+      "originalReference": "archive/exams/original/high/h2/1mid/25_매산고_1학기_중간_고2_대수.js#q19",
+      "existingVariantReference": "archive/exams/similar/high/h2/1mid/25_매산고_1학기_중간_고2_대수_유사.js#q19",
+      "lockedPrimaryL3": "H2-M1-RPM-071",
+      "originalSummary": "함수 $f(x)=a^x+a^{-x}$ ($a>0, a\\neq 1$)과 실수 $k$에 대하여 $f(2k)=7$일 때, $f(3k)$의 값을 구하시오.",
+      "existingVariantSummary": "함수 $f(x) = a^x + a^{-x}$ ($a > 0, a \\neq 1$)과 실수 $k$에 대하여 $f(2k) = 14$일 때, $f(3k)$의 값을 구하시오. (6점)",
+      "conditionAndTargetShift": "한 분리 지수 항 값에서 f(k)+f(2k)로 조건 재구성",
+      "decisiveCore": "t=f(k), f(2k)=t²−2, f(3k)=t³−3t",
+      "solutionEntry": "t=f(k), f(2k)=t²−2, f(3k)=t³−3t",
+      "solutionGraphSignature": "t=f(k), f(2k)=t²−2, f(3k)=t³−3t",
+      "questionTarget": "$a>0$, $a\\ne1$이고 $f(x)=a^x+a^{-x}$라 하자. 실수 $k\\ne0$에 대하여 $f(k)+f(2k)=28$일 때 $f(3k)$의 값을 구하시오. (6점)",
+      "variationType": "CONFIRMATION",
+      "addedDecision": "CHANGED_CONDITION_OR_TARGET_WITH_SOURCE_DEPTH",
+      "sourceBucketJudgment": 2,
+      "newBucketJudgment": 2,
+      "difficultyBasis": "same-author comparison; separate I2 reviewer NOT_RUN",
+      "problemTypeKey": "PT_H22A_01_EXPONENT_LAWS",
+      "templateKey": "TPL_H22A_01_EXPONENT_LAWS_071",
+      "semanticDuplicateResult": "CONDITION_AND_OR_TARGET_SHIFT_FROM_ORIGINAL_AND_SIMILAR1",
+      "mathCheck": "AUTHOR_I1_SEPARATE_RECOMPUTE_PASS_21_OF_21",
+      "choiceCheck": "OFFICIAL_JUDGE_PASS_ZERO_DEFECTS",
+      "visual": {
+        "qid": 19,
+        "problem": {
+          "decision": "EXEMPT",
+          "reason": "지수의 역수 합이라는 대칭식이 발문에 모두 있다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        },
+        "solution": {
+          "decision": "EXEMPT",
+          "reason": "t, t²−2, t³−3t를 순서대로 표기하는 것이 핵심이다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        }
+      }
+    },
+    {
+      "sourceQid": 20,
+      "originalReference": "archive/exams/original/high/h2/1mid/25_매산고_1학기_중간_고2_대수.js#q20",
+      "existingVariantReference": "archive/exams/similar/high/h2/1mid/25_매산고_1학기_중간_고2_대수_유사.js#q20",
+      "lockedPrimaryL3": "H2-M1-RPM-100",
+      "originalSummary": "이차방정식 $x^2-ax+a=0$의 두 근이 $\\sin\\theta$, $\\cos\\theta$ 이다. 이때, 실수 $a$의 값과 $\\sin^3\\theta+\\cos^3\\theta$의 값을 구하시오.",
+      "existingVariantSummary": "이차방정식 $x^2 - ax + \\dfrac{a}{2} = 0$의 두 근이 $\\sin\\theta$, $\\cos\\theta$이다. 이때, 실수 $a$의 값과 $\\sin^3\\theta + \\cos^3\\theta$의 값을 구하시오. (7점)",
+      "conditionAndTargetShift": "삼각함수 두 근의 곱을 a/3으로 변경하고 부호 조건 추가",
+      "decisiveCore": "sin²+cos²=1, sum=a, product=a/3인 비에타",
+      "solutionEntry": "sin²+cos²=1, sum=a, product=a/3인 비에타",
+      "solutionGraphSignature": "sin²+cos²=1, sum=a, product=a/3인 비에타",
+      "questionTarget": "이차방정식 $x^2-ax+\\dfrac a3=0$의 두 근이 $\\sin\\theta$, $\\cos\\theta$이다. $\\sin\\theta\\cos\\theta<0$일 때 실수 $a$의 값과 $\\sin^3\\theta+\\cos^3\\theta$의 값을 각각 구하시오. (7점)",
+      "variationType": "CONFIRMATION",
+      "addedDecision": "CHANGED_CONDITION_OR_TARGET_WITH_SOURCE_DEPTH",
+      "sourceBucketJudgment": 3,
+      "newBucketJudgment": 3,
+      "difficultyBasis": "same-author comparison; separate I2 reviewer NOT_RUN",
+      "problemTypeKey": "PT_H22A_04_TRIG_PROPERTIES",
+      "templateKey": "TPL_H22A_04_TRIG_PROPERTIES_100",
+      "semanticDuplicateResult": "CONDITION_AND_OR_TARGET_SHIFT_FROM_ORIGINAL_AND_SIMILAR1",
+      "mathCheck": "AUTHOR_I1_SEPARATE_RECOMPUTE_PASS_21_OF_21",
+      "choiceCheck": "OFFICIAL_JUDGE_PASS_ZERO_DEFECTS",
+      "visual": {
+        "qid": 20,
+        "problem": {
+          "decision": "EXEMPT",
+          "reason": "두 삼각비가 이차방정식의 두 근임을 명시하여 보조도형 없이 유일하다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        },
+        "solution": {
+          "decision": "EXEMPT",
+          "reason": "비에타와 sin²+cos²=1을 조합하는 과정이 짧은 등식으로 완결된다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        }
+      }
+    },
+    {
+      "sourceQid": 21,
+      "originalReference": "archive/exams/original/high/h2/1mid/25_매산고_1학기_중간_고2_대수.js#q21",
+      "existingVariantReference": "archive/exams/similar/high/h2/1mid/25_매산고_1학기_중간_고2_대수_유사.js#q21",
+      "lockedPrimaryL3": "H2-M1-RPM-089",
+      "originalSummary": "[서답형 6번] 방정식 $\\log_2\\{x^2+(a+1)x-a+3\\}-\\log_2x=0$이 오직 한 개의 근을 갖기 위한 실수 $a$의 조건을 구하시오. (7점)",
+      "existingVariantSummary": "방정식 $\\log_3\\{x^2 + (a + 1)x - a + 8\\} - \\log_3 x = 0$이 오직 한 개의 근을 갖기 위한 실수 $a$의 조건을 구하시오. (7점)",
+      "conditionAndTargetShift": "로그방정식 양근 1개에서 서로 다른 양근 2개로 분기 변경",
+      "decisiveCore": "정의역 x>0과 이차식의 판별식·근의 합·곱 결합",
+      "solutionEntry": "정의역 x>0과 이차식의 판별식·근의 합·곱 결합",
+      "solutionGraphSignature": "정의역 x>0과 이차식의 판별식·근의 합·곱 결합",
+      "questionTarget": "방정식 $\\log_2\\bigl(x^2+(a+1)x-a+15\\bigr)-\\log_2x=0$이 서로 다른 두 양의 실근을 갖도록 하는 실수 $a$의 범위를 구하시오. (7점)",
+      "variationType": "CONFIRMATION",
+      "addedDecision": "CHANGED_CONDITION_OR_TARGET_WITH_SOURCE_DEPTH",
+      "sourceBucketJudgment": 4,
+      "newBucketJudgment": 4,
+      "difficultyBasis": "same-author comparison; separate I2 reviewer NOT_RUN",
+      "problemTypeKey": "PT_H22A_03_LOG_EQUATION",
+      "templateKey": "TPL_H22A_03_LOG_EQUATION_089",
+      "semanticDuplicateResult": "CONDITION_AND_OR_TARGET_SHIFT_FROM_ORIGINAL_AND_SIMILAR1",
+      "mathCheck": "AUTHOR_I1_SEPARATE_RECOMPUTE_PASS_21_OF_21",
+      "choiceCheck": "OFFICIAL_JUDGE_PASS_ZERO_DEFECTS",
+      "visual": {
+        "qid": 21,
+        "problem": {
+          "decision": "EXEMPT",
+          "reason": "로그의 진수조건과 이차방정식 두 양근 조건은 모두 부등식이다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        },
+        "solution": {
+          "decision": "EXEMPT",
+          "reason": "합·곱·판별식의 세 부등식을 교집합으로 정리하면 충분하다.",
+          "planRef": null,
+          "engineStatus": "NOT_APPLICABLE"
+        }
+      }
+    }
+  ]
+}
