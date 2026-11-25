@@ -1,0 +1,274 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "MIDPOINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lineCA",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "C",
+          "A"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "B",
+          "lineCA"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "MIDPOINT",
+        "inputs": [
+          "C",
+          "D"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "O",
+          "M"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "mode": "EXTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "circle",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "O",
+    "M"
+  ],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sCB",
+      "refs": [
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sCE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sOM",
+      "refs": [
+        "O",
+        "M"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sME",
+      "refs": [
+        "M",
+        "E"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "semicircle",
+        "circle": "circle",
+        "center": "O",
+        "from": "B",
+        "to": "C",
+        "side": "CCW"
+      }
+    ],
+    "rightAngles": [
+      {
+        "id": "rD",
+        "refs": [
+          "B",
+          "D",
+          "C"
+        ],
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "rM",
+        "refs": [
+          "O",
+          "M",
+          "C"
+        ],
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "caption": "BC를 지름으로 하는 윗반원에서 CD=6, OM=4이고 호의 중점 E와 현 CD 사이 높이는 1이다.",
+  "accessibilityDescription": "밑변 BC 길이 10의 윗반원과 직선 AC의 교점 D, 작은 호 CD의 중점 E, 현 중점 M을 보인 해설 그림이다.",
+  "sourceConditions": [
+    {
+      "id": "G1",
+      "condition": "AC=BC=10, C는 예각, 삼각형 넓이40; BD는 AC에 수직, CD=6; E는 작은 호 CD의 중점이며 OM=4, OE=5.",
+      "mappedTo": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "O",
+        "M",
+        "E",
+        "semicircle"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "반원의 현 CD와 중심 O의 수선 거리, 호 중점 E까지의 높이 1을 구분한다."
+  ]
+}
