@@ -1,0 +1,55 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "-3" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "3" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "4" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "H", "op": "MIDPOINT", "inputs": ["A", "B"], "args": {}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "D", "op": "DIVISION_POINT", "inputs": ["A", "B"], "args": { "m": { "kind": "integer", "value": "1" }, "n": { "kind": "integer", "value": "4" }, "mode": "INTERNAL" }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "E", "op": "DIVISION_POINT", "inputs": ["A", "B"], "args": { "m": { "kind": "integer", "value": "4" }, "n": { "kind": "integer", "value": "1" }, "mode": "INTERNAL" }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "F", "op": "DIVISION_POINT", "inputs": ["B", "C"], "args": { "m": { "kind": "integer", "value": "2" }, "n": { "kind": "integer", "value": "3" }, "mode": "INTERNAL" }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "G", "op": "DIVISION_POINT", "inputs": ["A", "C"], "args": { "m": { "kind": "integer", "value": "2" }, "n": { "kind": "integer", "value": "3" }, "mode": "INTERNAL" }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" }
+    ]
+  },
+  "coordinateCanvas": { "width": 600, "height": 460 },
+  "displayPoints": ["A", "B", "C", "H", "D", "E", "F", "G"],
+  "hiddenPointNames": ["A", "B", "C", "H", "D", "E", "F", "G"],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    { "id": "sAB", "refs": ["A", "B"] },
+    { "id": "sBC", "refs": ["B", "C"] },
+    { "id": "sCA", "refs": ["C", "A"] },
+    { "id": "sCH", "refs": ["C", "H"], "dashed": true },
+    { "id": "sEF", "refs": ["E", "F"] },
+    { "id": "sFG", "refs": ["F", "G"] },
+    { "id": "sGD", "refs": ["G", "D"] }
+  ],
+  "rightAngles": [
+    { "id": "rFoot", "refs": ["C", "H", "B"] }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      { "id": "dBase", "from": "A", "to": "B", "label": "6", "side": "BELOW", "style": "BAR" }
+    ],
+    "expressionLabels": [
+      { "id": "lHeight", "ownerSegment": "sCH", "text": "4", "labelAt": "START" }
+    ],
+    "parallels": [
+      { "id": "pTop", "count": 1, "segments": ["sAB", "sFG"] }
+    ]
+  },
+  "caption": "밑변의 길이 6, 높이 4인 이등변삼각형에 밑변과 평행한 윗변을 가진 직사각형이 내접한 한 예를 나타낸다.",
+  "accessibilityDescription": "밑변 6과 수직 높이 4가 표시된 이등변삼각형 안에 밑변을 공유하는 직사각형이 있으며, 윗변과 밑변은 평행하다.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "이등변삼각형의 밑변 6, 높이 4", "mappedTo": "mathPlan.nodes[A,B,C,H], planeMarks.dimensions[dBase], expressionLabels[lHeight], rightAngles[rFoot]" },
+    { "id": "c2", "condition": "삼각형 안의 내접 직사각형, 윗변은 밑변과 평행", "mappedTo": "nodes[D,E,F,G], displaySegments[sEF,sFG,sGD,sAB], planeMarks.parallels[pTop]" },
+    { "id": "c3", "condition": "원문은 직사각형의 높이를 지정하지 않음", "mappedTo": "높이 8/5인 동형 예시 좌표로 도식화. 길이나 넓이의 답은 문제 그림에 표시하지 않음" }
+  ],
+  "newVisualInformation": [
+    "밑변 위에 놓인 직사각형과 꼭짓점 방향으로 좁아지는 삼각형의 배치를 보여 준다.",
+    "직사각형 높이는 임의의 도식 예시이며 최적 높이나 최대 넓이는 노출하지 않는다."
+  ]
+}

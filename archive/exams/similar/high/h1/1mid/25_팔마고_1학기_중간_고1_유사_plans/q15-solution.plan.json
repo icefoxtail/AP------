@@ -1,0 +1,32 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-1, 5, -1, 9],
+    "curves": [
+      {
+        "id": "touch",
+        "kind": "Y_OF_X",
+        "coefficients": ["4", "-4", "1"],
+        "domain": ["-1", "5"],
+        "color": "BLUE",
+        "label": "y=(x-2)^2"
+      }
+    ],
+    "axisTickValues": { "x": ["2"], "y": ["4"] },
+    "overlays": {
+      "points": [{ "id": "T", "x": "2", "y": "0" }]
+    }
+  },
+  "caption": "켤레복소근에서 a=−4를 얻고 k=6일 때, 포물선 y=(x−2)²은 T(2,0)에서 x축과 한 점에서만 만난다.",
+  "accessibilityDescription": "위로 열린 포물선의 꼭짓점 T가 x축 위 (2,0)에 놓이며 다른 교점은 없다.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "2−i가 근이고 a,b는 실수이므로 a=−4", "mappedTo": "graphPlan.curves[touch]의 일차계수 −4" },
+    { "id": "c2", "condition": "y=x²+ax+k−2가 x축에 접함", "mappedTo": "graphPlan.curves[touch]=x²−4x+4, overlays.points[T]=(2,0)" },
+    { "id": "c3", "condition": "해설의 판별식 D=0은 k=6을 준다", "mappedTo": "graphPlan.curves[touch].coefficients[0]=4" }
+  ],
+  "newVisualInformation": [
+    "이차방정식의 중근 조건과 포물선이 x축에 접하는 모양을 직접 연결한다.",
+    "T(2,0)은 해설에서 도출한 꼭짓점이며 문제 그림에는 사용하지 않는다."
+  ]
+}

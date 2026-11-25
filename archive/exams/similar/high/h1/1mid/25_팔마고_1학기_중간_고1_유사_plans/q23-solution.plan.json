@@ -1,0 +1,28 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "ELLIPSE",
+    "center": ["0", "0"],
+    "aSquared": "6",
+    "bSquared": "3",
+    "major": "X"
+  },
+  "points": [
+    { "id": "O", "kind": "ORIGIN", "label": false },
+    { "id": "T", "kind": "ON_CONIC", "x": "2", "branch": "NEG", "coordinates": true }
+  ],
+  "lines": [
+    { "id": "l", "slope": "1", "intercept": "-3", "tangent": true, "label": "y=x-3" }
+  ],
+  "caption": "x²+2y²=6의 타원과 접선 x−y=3이 T(2,−1)에서 한 점만 만난다. 연립식의 판별식이 0이라는 해설 조건을 나타낸다.",
+  "accessibilityDescription": "원점 중심의 타원 x제곱 더하기 2y제곱이 6인 곡선과 기울기 1인 직선이 T(2,−1)에서 접한다.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "x²+2y²=6", "mappedTo": "conic.ELLIPSE aSquared=6, bSquared=3, center=(0,0)" },
+    { "id": "c2", "condition": "x−y=k, k>0이며 연립의 유일한 해가 존재", "mappedTo": "lines[l]의 tangent=true 및 slope=1" },
+    { "id": "c3", "condition": "해설에서 k=3, 접점 (2,−1)", "mappedTo": "lines[l].intercept=−3, points[T]의 ON_CONIC 및 좌표" }
+  ],
+  "newVisualInformation": [
+    "연립방정식에서 한 쌍의 해라는 조건을 타원과 직선의 접점 하나로 시각화한다.",
+    "해설에서 계산한 접점 및 k=3은 해설 그림에만 제시한다."
+  ]
+}

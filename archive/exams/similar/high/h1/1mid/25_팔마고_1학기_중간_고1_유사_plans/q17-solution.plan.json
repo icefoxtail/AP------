@@ -1,0 +1,58 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "-3" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "3" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "4" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "H", "op": "MIDPOINT", "inputs": ["A", "B"], "args": {}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "D", "op": "DIVISION_POINT", "inputs": ["A", "B"], "args": { "m": { "kind": "integer", "value": "1" }, "n": { "kind": "integer", "value": "4" }, "mode": "INTERNAL" }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "E", "op": "DIVISION_POINT", "inputs": ["A", "B"], "args": { "m": { "kind": "integer", "value": "4" }, "n": { "kind": "integer", "value": "1" }, "mode": "INTERNAL" }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "F", "op": "DIVISION_POINT", "inputs": ["B", "C"], "args": { "m": { "kind": "integer", "value": "2" }, "n": { "kind": "integer", "value": "3" }, "mode": "INTERNAL" }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "G", "op": "DIVISION_POINT", "inputs": ["A", "C"], "args": { "m": { "kind": "integer", "value": "2" }, "n": { "kind": "integer", "value": "3" }, "mode": "INTERNAL" }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" }
+    ]
+  },
+  "coordinateCanvas": { "width": 660, "height": 500 },
+  "displayPoints": ["A", "B", "C", "H", "D", "E", "F", "G"],
+  "hiddenPointNames": ["A", "B", "C", "H", "D", "E", "F", "G"],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    { "id": "sAB", "refs": ["A", "B"] },
+    { "id": "sBC", "refs": ["B", "C"] },
+    { "id": "sCA", "refs": ["C", "A"] },
+    { "id": "sCH", "refs": ["C", "H"], "dashed": true },
+    { "id": "sEF", "refs": ["E", "F"] },
+    { "id": "sFG", "refs": ["F", "G"] },
+    { "id": "sGD", "refs": ["G", "D"] }
+  ],
+  "rightAngles": [
+    { "id": "rFoot", "refs": ["C", "H", "B"] }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      { "id": "dBase", "from": "A", "to": "B", "label": "6", "side": "BELOW", "style": "BAR" },
+      { "id": "dX", "from": "G", "to": "D", "label": "x", "side": "LEFT", "style": "BAR" },
+      { "id": "dWidth", "from": "G", "to": "F", "label": "3(4-x)/2", "side": "ABOVE", "style": "BAR" }
+    ],
+    "expressionLabels": [
+      { "id": "lHeight", "ownerSegment": "sCH", "text": "4", "labelAt": "START" }
+    ],
+    "parallels": [
+      { "id": "pTop", "count": 1, "segments": ["sAB", "sFG"] }
+    ]
+  },
+  "caption": "직사각형의 높이를 x라 두면 닮음에 의해 가로는 3(4−x)/2이고, 넓이는 S=3x(4−x)/2가 된다. 그림의 높이는 설명용 예시다.",
+  "accessibilityDescription": "삼각형 밑변 6과 높이 4, 내접 직사각형 높이 x와 가로 3(4−x)/2가 각각 치수선으로 표시된다.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "삼각형 밑변 6, 높이 4", "mappedTo": "nodes[A,B,C,H], dimensions[dBase], expressionLabels[lHeight]" },
+    { "id": "c2", "condition": "직사각형 높이 x, 닮음에 의한 가로 3(4−x)/2", "mappedTo": "dimensions[dX,dWidth]에 x 및 3(4-x)/2 실제 라벨" },
+    { "id": "c3", "condition": "직사각형 윗변이 밑변에 평행", "mappedTo": "displaySegments[sFG,sAB], parallels[pTop]" },
+    { "id": "c4", "condition": "대표 도식에 높이 8/5를 사용", "mappedTo": "nodes[D,E,F,G]의 관계 6:4 및 닮음 성립. 최적값 2는 도식 좌표가 아니라 해설의 이차함수 꼭짓점에서 결정" }
+  ],
+  "newVisualInformation": [
+    "양쪽 닮은 삼각형으로부터 가로 길이가 높이 x에 따라 줄어드는 관계를 보인다.",
+    "변수 x와 가로 식은 해설 그림에만 실제 치수선 라벨로 그린다."
+  ]
+}
