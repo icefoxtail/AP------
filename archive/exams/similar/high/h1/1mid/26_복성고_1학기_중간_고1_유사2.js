@@ -66,21 +66,21 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [],
     "wide": false,
-    "content": "다항식 $A=x^2+x-2$와 $B$가 $A+2B=5x^2-3x+8$을 만족한다. $B$의 $x$의 계수와 상수항의 합은?",
+    "content": "다항식 $A=x^2+3x-2$와 $B$가 $2A+B=5x^2+9x-1$을 만족한다. $B$의 $x$의 계수는?",
     "choices": [
-      "$-2$",
-      "$2$",
+      "$-3$",
+      "$0$",
       "$3$",
       "$6$",
-      "$7$"
+      "$9$"
     ],
     "answer": "③",
-    "solution": "$2B=(5x^2-3x+8)-(x^2+x-2)=4x^2-4x+10$이므로 $B=2x^2-2x+5$이다. $x$의 계수는 $-2$, 상수항은 $5$이므로 합은 $-2+5=3$이다.",
+    "solution": "항등식에서 $x$의 계수만 비교하면 된다. $A=x^2+3x-2$의 $x$의 계수는 $3$이므로 $2A$의 $x$의 계수는 $6$이다. $2A+B$의 $x$의 계수가 $9$이므로 $B$의 $x$의 계수는 $9-6=\\boxed{3}$이다. 나머지 항의 계수는 구할 필요가 없다.",
     "score": 3.3,
     "points": 3.3,
     "difficultyBucket": 1,
     "problemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
-    "templateKey": "TPL_H1_POLY_OPERATION_DIRECT",
+    "templateKey": "TPL_H1_POLY_COEFFICIENT_EXTRACTION",
     "rpmPrimaryRecordId": "H1-RPM-135",
     "crossConceptKeys": [
       "CC_POLYNOMIAL_LINEAR_COMBINATION"
@@ -128,7 +128,7 @@ window.questionBank = [
     "points": 3.3,
     "difficultyBucket": 2,
     "problemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
-    "templateKey": "TPL_H1_POLY_OPERATION_DIRECT",
+    "templateKey": "TPL_H1_POLY_COEFFICIENT_EXTRACTION",
     "rpmPrimaryRecordId": "H1-RPM-134",
     "crossConceptKeys": [
       "CC_COEFFICIENT_EXTRACTION_SELECTIVE",
@@ -261,16 +261,16 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [],
     "wide": false,
-    "content": "등식 $a(x-1)+b(x-1)(x+2)=cx(x+2)+x-7$이 $x$에 대한 항등식일 때, $2a-b+c$의 값은? (단, $a,b,c$는 실수)",
+    "content": "실수 $a,b,c,t$에 대하여 등식 $a(x-2)+b(x-2)(x+1)=cx(x+1)+tx+24$가 모든 실수 $x$에서 성립한다. $a=b$일 때, $t$의 값은?",
     "choices": [
-      "$2$",
+      "$-12$",
+      "$-6$",
+      "$0$",
       "$3$",
-      "$4$",
-      "$5$",
       "$6$"
     ],
     "answer": "⑤",
-    "solution": "$x=1$을 대입하면 $0=3c+1-7$이므로 $c=2$이다. $x=-2$에서는 $-3a=-2-7=-9$이므로 $a=3$이다. $x=0$에서는 $-a-2b=-7$이므로 $-3-2b=-7$, $b=2$이다. 이 값들은 모든 계수의 항등식을 만족한다. 따라서 $2a-b+c=6-2+2=6$이다.",
+    "solution": "항등식은 모든 $x$에서 성립하므로 인수가 사라지는 값을 활용한다. $x=0$을 대입하면 $-2a-2b=24$, 즉 $a+b=-12$이다. 주어진 $a=b$에 의해 $a=b=-6$이다. 이제 $x=-1$을 대입하면 좌변은 $-3a=18$, 우변은 $-t+24$이므로 $18=-t+24$, 따라서 $\\boxed{t=6}$이다. 실제로 $x=2$에서 $0=6c+2t+24$이므로 $c=-6$이고, 이 값들은 원래 등식을 항등식으로 만든다.",
     "score": 3.5,
     "points": 3.5,
     "difficultyBucket": 3,
@@ -820,7 +820,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [],
     "wide": false,
-    "content": "실수 $m,n$에 대한 이차방정식 $x^2+mx+n=0$의 한 근이 허수 $z$이다. 켤레복소수 $\\bar z$에 대하여 $z\\bar z=5$, $z^2+\\bar z^2=6$일 때, $m^2+n^2$는?",
+    "content": "실수 $m,n$에 대한 이차방정식 $x^2+mx+n=0$의 한 근이 허수 $z$이다. $z$의 켤레복소수를 $\\bar z$라 할 때, 다음 조건을 만족하면 $m^2+n^2$의 값은?\n<조건>\n(가) $z^2+\\bar z^2=6$\n(나) $(z+\\bar z)^2+z\\bar z=21$",
     "choices": [
       "$21$",
       "$29$",
@@ -829,7 +829,7 @@ window.questionBank = [
       "$66$"
     ],
     "answer": "③",
-    "solution": "$z=a+bi$ ($a,b$는 실수, $b\\ne0$)라 하면 $z\\bar z=a^2+b^2=5$이고 $z^2+\\bar z^2=2(a^2-b^2)=6$이므로 $a^2-b^2=3$이다. 두 식에서 $a^2=4$, $b^2=1$이다. 실수 계수 이차방정식의 다른 근은 $\\bar z$이므로 근과 계수의 관계에 의해 $m=-(z+\\bar z)=-2a$, $n=z\\bar z=5$이다. 따라서 $m^2+n^2=4a^2+25=16+25=41$이다.",
+    "solution": "실수 계수 이차방정식의 허근은 켤레복소수와 짝을 이루므로 다른 근은 $\\bar z$이다. $s=z+\\bar z$, $p=z\\bar z$라 놓으면 근과 계수의 관계에 따라 $m=-s$, $n=p$이다. (가)는 $z^2+\\bar z^2=(z+\\bar z)^2-2z\\bar z=s^2-2p=6$이고, (나)는 $s^2+p=21$이다. 두 식을 빼면 $3p=15$이므로 $p=5$, 이어서 $s^2=16$이다. 따라서 $m^2+n^2=s^2+p^2=16+25=\\boxed{41}$이다. 이때 $s^2-4p=-4<0$이므로 두 근이 허수라는 조건에도 맞는다.",
     "score": 4.3,
     "points": 4.3,
     "difficultyBucket": 4,
@@ -937,7 +937,7 @@ window.questionBank = [
     "points": 4.8,
     "difficultyBucket": 4,
     "problemTypeKey": "PT_H1_POLY_DIVISION",
-    "templateKey": "TPL_H1_POLY_DIVISION_EXECUTION",
+    "templateKey": "TPL_H1_POLY_DIVISION_REDUCTION",
     "rpmPrimaryRecordId": "H1-RPM-139",
     "crossConceptKeys": [
       "CC_PYTHAGOREAN_THEOREM",
