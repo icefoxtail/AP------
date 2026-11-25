@@ -1,0 +1,32 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {"kind": "ELLIPSE", "center": ["0", "0"], "aSquared": "16", "bSquared": "4", "major": "X"},
+  "points": [
+    {"id": "O", "kind": "ORIGIN"},
+    {"id": "P", "kind": "ON_CONIC", "x": "2", "branch": "POS"},
+    {"id": "A", "kind": "LINE_LINE", "lines": ["t", "xaxis"]},
+    {"id": "B", "kind": "LINE_LINE", "lines": ["t", "yaxis"]}
+  ],
+  "lines": [
+    {"id": "t", "tangent": true, "at": "P"},
+    {"id": "xaxis", "y": "0", "hidden": true},
+    {"id": "yaxis", "x": "0", "hidden": true}
+  ],
+  "segments": [
+    {"id": "OA", "from": "O", "to": "A"},
+    {"id": "OB", "from": "O", "to": "B"},
+    {"id": "AB", "from": "A", "to": "B"}
+  ],
+  "polygons": [{"id": "OAB", "points": ["O", "A", "B"], "fill": "LIGHT"}],
+  "caption": "타원의 제1사분면 접선과 양의 좌표축이 만드는 색칠된 삼각형 OAB (대표 도식)",
+  "accessibilityDescription": "가로로 긴 타원 위의 제1사분면 점 P에서의 접선이 오른쪽 x축 A, 위쪽 y축 B와 만난다. 두 축과 접선 사이 직각삼각형 OAB의 안쪽이 옅게 색칠되어 있다. P는 최솟값을 결정하지 않는 대표점이다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "원문 x²+4y²=16은 x²/16+y²/4=1. 원문 P(x₁,y₁)은 움직이는 제1사분면 점이며 대표 P=(2,√3)은 4/16+3/4=1을 만족한다. 엔진이 문자 좌표 라벨은 표현하지 못한다.", "mappedTo": ["conic", "P"]},
+    {"id": "c2", "condition": "P에서의 접선 x/8+√3·y/4=1이 x축과 A=(8,0), y축과 B=(0,4/√3)에서 만나는 것을 tangent/LINE_LINE으로 계산한다. A와 B는 양의 반축이다.", "mappedTo": ["t", "A", "B", "xaxis", "yaxis"]},
+    {"id": "c3", "condition": "OAB의 세 변과 넓이의 영역을 그려 원문 음영을 재현한다. 대표 P는 최솟값 등호가 성립하는 접점과 다르며 최솟값·정답을 그림에 쓰지 않는다.", "mappedTo": ["O", "OA", "OB", "AB", "OAB"]}
+  ],
+  "newVisualInformation": [
+    "타원 위 실제 접점과 두 양의 축 절편·접선으로 만든 삼각형 영역 채우기",
+    "점 P의 (x₁,y₁) 기호 좌표 표시는 ENGINE_CAPABILITY_PENDING"
+  ]
+}

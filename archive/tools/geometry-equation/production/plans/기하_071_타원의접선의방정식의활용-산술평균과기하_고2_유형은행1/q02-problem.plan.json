@@ -1,0 +1,29 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {"kind": "ELLIPSE", "center": ["0", "0"], "aSquared": "18", "bSquared": "8", "major": "Y"},
+  "points": [
+    {"id": "O", "kind": "ORIGIN"},
+    {"id": "P", "kind": "ON_CONIC", "x": "sqrt(2)", "branch": "POS"},
+    {"id": "A", "kind": "LINE_LINE", "lines": ["t", "xaxis"]},
+    {"id": "B", "kind": "LINE_LINE", "lines": ["t", "yaxis"]}
+  ],
+  "lines": [
+    {"id": "t", "tangent": true, "at": "P"},
+    {"id": "xaxis", "y": "0", "hidden": true},
+    {"id": "yaxis", "x": "0", "hidden": true}
+  ],
+  "segments": [
+    {"id": "OA", "from": "O", "to": "A"},
+    {"id": "OB", "from": "O", "to": "B"},
+    {"id": "AB", "from": "A", "to": "B"}
+  ],
+  "polygons": [{"id": "OAB", "points": ["O", "A", "B"], "fill": "LIGHT"}],
+  "caption": "세로로 긴 타원의 접선과 양의 좌표축으로 만드는 색칠된 삼각형 OAB (대표 도식)",
+  "accessibilityDescription": "세로로 긴 타원의 제1사분면 위에 P가 있다. P에서의 접선이 양의 x축의 A, 양의 y축의 B와 만나고 원점 O와 함께 직각삼각형 OAB를 만든다. 그 내부가 옅게 색칠되어 있으며 P는 최적점이 아닌 대표점이다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "원문 x²/8+y²/18=1은 y축 장축의 타원이다. 대표 P=(√2,3√6/2)은 2/8+(27/2)/18=1을 만족하고 제1사분면이다. P 위치는 원문이 지정하지 않은 임의 도식 선택이다.", "mappedTo": ["conic", "P"]},
+    {"id": "c2", "condition": "접선 (√2/8)x+(√6/12)y=1의 절편 A=(4√2,0), B=(0,2√6)을 엔진에서 계산하며 양쪽 모두 양수다. 세 변 OA, OB, AB가 좌표축과 접선에 놓인다.", "mappedTo": ["t", "xaxis", "yaxis", "A", "B", "OA", "OB", "AB"]},
+    {"id": "c3", "condition": "원문은 삼각형 OAB 내부에 색칠을 요구한다. polygons OAB fill LIGHT로 직접 그리며 최솟값, 선택지 정답, 최적 접점을 표시하지 않는다.", "mappedTo": ["O", "OAB"]}
+  ],
+  "newVisualInformation": ["두 축의 실제 절편과 접선에 둘러싸인 원문 음영 삼각형 구현"]
+}
