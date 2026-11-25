@@ -1,0 +1,36 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-1, 9, -1, 7],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": ["0", "8/3", "-1/3"],
+        "domain": ["0", "8"],
+        "label": "y=f(x)",
+        "emphasis": [{"from": "3", "to": "5", "color": "WARM", "fromState": "CLOSED", "toState": "CLOSED"}]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {"id": "L", "x": "0", "y": "0"},
+        {"id": "A", "x": "3", "y": "5"},
+        {"id": "V", "x": "4", "y": "16/3"},
+        {"id": "B", "x": "5", "y": "5"},
+        {"id": "R", "x": "8", "y": "0"}
+      ]
+    },
+    "axisTickValues": {"x": ["3", "4", "5", "8"], "y": ["5", "16/3"]}
+  },
+  "sourceQuote": "f(8)=0, f(4)가 전 실수 최댓값이며 길이 2인 구간의 최솟값 g(p)의 최댓값은 5이다.",
+  "caption": "대칭축 x=4를 중심으로 한 구간 [3,5]를 주황색 곡선으로 표시한다. 두 끝값은 5이고 꼭짓점 높이는 16/3이다.",
+  "accessibilityDescription": "포물선은 (0,0), (8,0)을 지나고 (4,16/3)에서 최대이다. x=3부터 x=5까지의 호가 강조되어 두 끝점 (3,5), (5,5)의 높이가 같음을 보인다.",
+  "sourceConditions": [
+    {"id": "G16-1", "condition": "f(8)=0, 대칭축 x=4 ⇒ f(0)=0", "mappedTo": "graphPlan.curves[f].coefficients 및 overlays.points[L,R]"},
+    {"id": "G16-2", "condition": "길이 2의 최적 구간 [3,5]와 그 양 끝의 최솟값 5", "mappedTo": "graphPlan.curves[f].emphasis[0], overlays.points[A,B]"},
+    {"id": "G16-3", "condition": "15k=5 ⇒ k=1/3, f(4)=16/3", "mappedTo": "graphPlan.curves[f].coefficients, overlays.points[V], axisTickValues.y"}
+  ],
+  "newVisualInformation": ["구간이 꼭짓점에서 한쪽으로 치우치면 두 끝점 중 더 낮은 값이 감소하므로 대칭 구간이 최적임을 곡선 호로 보여 준다."]
+}
