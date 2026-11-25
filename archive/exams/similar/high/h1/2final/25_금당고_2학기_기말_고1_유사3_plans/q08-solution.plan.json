@@ -1,0 +1,44 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-1, 6, -1, 6],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "LINE",
+        "coefficients": ["5", "-1"],
+        "domain": ["-1", "6"],
+        "color": "BLUE",
+        "label": "y=-x+5"
+      },
+      {
+        "id": "axis",
+        "kind": "LINE",
+        "coefficients": ["0", "1"],
+        "domain": ["-1", "6"],
+        "style": "DASHED",
+        "color": "WARM",
+        "label": "y=x"
+      }
+    ],
+    "axisTickValues": { "x": ["1", "4"], "y": ["1", "4"] },
+    "overlays": {
+      "points": [
+        { "id": "A", "x": "1", "y": "4" },
+        { "id": "B", "x": "4", "y": "1" }
+      ]
+    }
+  },
+  "caption": "두 그래프가 모두 (1,4)를 지나므로 f(1)=4, f(4)=1이다. 따라서 f(x)=−x+5이고, 이 직선은 y=x에 대칭이므로 f와 f⁻¹의 그래프가 일치한다. 두 대응점 (1,4), (4,1)을 표시한다.",
+  "accessibilityDescription": "기울기가 음수 일인 파란 직선 y=−x+5와 점선 y=x가 있고, 파란 직선의 두 점 (1,4), (4,1)은 점선을 기준으로 서로 대칭이다. 이 직선은 자기 자신의 역함수 그래프이기도 하다.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "원함수와 역함수 그래프가 모두 (1,4)를 지남", "mappedTo": "graphPlan.overlays.points[A]=(1,4), [B]=(4,1)" },
+    { "id": "c2", "condition": "f(1)=4 및 f(4)=1 ⇒ a=−1,b=5", "mappedTo": "graphPlan.curves[f].coefficients=[5,-1]" },
+    { "id": "c3", "condition": "역함수 그래프는 y=x 대칭, 기울기 −1인 이 직선은 자기 대칭", "mappedTo": "graphPlan.curves[axis].coefficients=[0,1], style=DASHED, curves[f] 단일 선이 두 그래프를 겸함" }
+  ],
+  "newVisualInformation": [
+    "(1,4)가 f⁻¹의 점이기도 하므로 원함수 위에는 뒤집은 점 (4,1)이 존재함을 보인다.",
+    "두 점을 잇는 직선 y=−x+5가 y=x 대칭 후에도 같은 직선임을 보여 역함수의 기하적 뜻을 이해시킨다."
+  ]
+}
