@@ -1,0 +1,1457 @@
+{
+  "schemaVersion": "JS_ARCHIVE_PHYSICAL_REVIEW_EVIDENCE_v1",
+  "stage": "R1",
+  "examPath": "archive/exams/similar/high/h2/1mid/26_금당고_1학기_중간_고2_대수_유사2.js",
+  "questionCount": 21,
+  "independence": {
+    "createReceiptUsedAsAuthority": false,
+    "method": "R1 independent source-current recalculation; Golden/Negative calibrated and original vs similar1 compared, prior creator receipt used only for historical provenance"
+  },
+  "solutionQualityCalibration": {
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "INDEPENDENT_REVIEW",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_TARGET_BLIND_THEN_COMPARE",
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h2/1mid/26_강남여고_1학기_중간_고2_대수.js",
+        "sha256": "sha256:6f2664e4cfc5c6040c93ffa9a0f15bfee58998580c7bc2fd2512f9fe71abc92d",
+        "gitBlobSha": "b5d22fac2a21d97a4da5f9e2cc3250937da72e2a"
+      },
+      {
+        "path": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_대수.js",
+        "sha256": "sha256:11900fc77c151258221960e38f933ceae30465a7b9b787e684a112914511f593",
+        "gitBlobSha": "54c4f5ec9e045d9e9e19d2ee0f0b35257666ec3c"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/high/h2/1mid/26_강남여고_1학기_중간_고2_대수.js",
+        "qid": 8,
+        "solutionSha256": "sha256:d82d1f62d50d456854acc9c7729dc44d6a384c07e5a7456443efce0309e600fb",
+        "solutionExcerpt": "$9\\times3^x=3^{x+2}$이므로 두 지수함수",
+        "observation": "수평 위치·지수식 대응을 분리하는 Golden 기준 적용. 대상 Q08은 지수함수 +3 이동 후 P 역산/Q 대입의 두 단계로 개선."
+      },
+      {
+        "path": "archive/exams/original/high/h2/1mid/26_강남여고_1학기_중간_고2_대수.js",
+        "qid": 14,
+        "solutionSha256": "sha256:0dbca0a6cd11a9c2697b13a30b86a6c15769e4f94f354373c21242e3af7ef8e7",
+        "solutionExcerpt": "주어진 식을 제곱하면\n$(\\sin\\theta-\\cos\\",
+        "observation": "제곱 항등식, 사분면 부호 조건, 최종 근호 부호 선택이 각 줄로 이어져 작은칠판 구조가 명확함."
+      },
+      {
+        "path": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_대수.js",
+        "qid": 14,
+        "solutionSha256": "sha256:3ed598e62582d97ff79e678046f419e271abfa34c20ccc5d922b17a6472dafed",
+        "solutionExcerpt": "첫 번째 인수의 실근과 두 번째 인수의 실근을 나누어 ",
+        "observation": "n 홀짝 분기, 각 실근의 곱, 최댓값·최솟값을 따로 서술해 경우분리 재현성이 높음."
+      },
+      {
+        "path": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_대수.js",
+        "qid": 20,
+        "solutionSha256": "sha256:958dcc5ca941a5cf27a47a2ff290aac13a3fcaef48a770529f24630368d38b36",
+        "solutionExcerpt": "로그의 진수가 양수여야 하므로\n$2x-1>0$\n$x>\\",
+        "observation": "진수 조건을 먼저 적고 밑의 단조성과 교집합을 순서대로 적용하여 결과를 얻음."
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "sha256:dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+        "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa",
+        "observation": "복성고 false PASS: 숫자 N/N만으로 불가, ㄱㄴㄷ block 분리, actual SVG geometry, META null, runtime doubled TeX 검증"
+      }
+    ],
+    "negativeCompare": "복성고 false PASS의 ㄱㄴㄷ 단락 누락·SVG 텍스트만 검사·메타 범용 PASS 회귀를 적용함. 현재 Q17은 독립 문단, 21/21 ACTIVE PT/TPL·4slot 의미 수리 확인. 병렬 라인에서 생성된 Q08/Q19 옛 SVG는 최신 수리 문제와 수학적으로 불일치해 연결하지 않았음. Q21 SVG는 PNG 실물·좌표를 재검수해 의미 적합하나 공식 해설 plan EXEMPT이므로 운영 JS에서 연결하지 않음.",
+    "qualityCompareCount": "21/21"
+  },
+  "questionRows": [
+    {
+      "qid": 1,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "실제 현재 q1 발문·보기를 원본 q1·유사1과 직접 대조, sourceQid/uid=1/1, variation 곱의 소거를 분수식 안의 거듭제곱근 지수 추적으로 이동; 현재 원문 그대로 독립 검산."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "①: (a^9b^3)^(1/3)=a^3b, 제곱/ a^4b=a^2b. 현재 answer=①, 보기 또는 서술형 숫자 일치; 별도 수치 검산과 핵심 조건 확인."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "①: (a^9b^3)^(1/3)=a^3b, 제곱/ a^4b=a^2b. 해당 현 solution의 중간식/부호/조건 분기/최종값을 줄별 재확인; 원본 조건 유입 없음."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "전개 이전에 단계 이유를 설명하고 계산→조건→결론 연결. 현재 풀이 결정단계와 학생 재현성이 Golden sample 수준. 정적 구조 검사 PASS, 실제 DOM MathJax 렌더 NOT_RUN."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "2022 대수 H22-A-01/H22-A-01-EXPONENT_LOG; PT=PT_H22A_01_EXPONENT_LAWS ACTIVE curriculum_bindings exact, TPL=TPL_H22A_01_EXPONENT_LAWS_071 ACTIVE parent 및 RPM=H2-M1-RPM-071 풀이 L3/L4 근거 확인."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "해당 문항 해설은 그림 없이 재현 가능. Q08/Q19의 옛 SVG는 현재 문제와 의미 불일치하고 새 렌더는 NOT_RUN. Q21 기존 SVG 실물은 정확하지만 정규 계획이 EXEMPT여서 JS에 연결하지 않았음."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "현재 meta questionUid=1, 근호를 단항식으로 정리한 뒤 분자·분모 지수 차감; 결정식 $a,b>0$이므로 $\\sqrt[3]{a^9b^3}=a^3b$이다.; CURRENT GLOBAL ACTIVE PT_H22A_01_EXPONENT_LAWS/TPL_H22A_01_EXPONENT_LAWS_071의 부모/교육과정, RPM 및 term-dictionary-v1.6 4slot을 수리 후 대조."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "bucket=1, 3점. 원본·유사1 비교하여 곱의 소거를 분수식 안의 거듭제곱근 지수 추적으로 이동; 학생이 필요한 판단 ①: (a^9b^3)^(1/3)=a^3b, 제곱/ a^4b=a^2b. 확정. Q08/Q17 사고부담 복원, Q09/Q19 구조적 차이 확보."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Node VM 현 JS 문자열 평가, TeX escape/dollar parity, ㄱㄴㄷ 블록 구조 정적 검사. 실제 MathJax 브라우저 실행 NOT_RUN."
+      },
+      "qualityAxes": {
+        "STUDENT_REPRODUCIBILITY": "PASS_STATIC",
+        "SMALL_BOARD_STRUCTURE": "PASS_STATIC",
+        "EXPLANATION_DENSITY": "PASS_STATIC",
+        "VISUAL_SEMANTIC_PARITY": "NOT_RUN_NO_LINKED_SVG",
+        "VISUAL_READABILITY": "NOT_RUN_NO_LINKED_SVG"
+      },
+      "sourceVariationObservation": "곱의 소거를 분수식 안의 거듭제곱근 지수 추적으로 이동"
+    },
+    {
+      "qid": 2,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "실제 현재 q2 발문·보기를 원본 q2·유사1과 직접 대조, sourceQid/uid=2/2, variation 주어진 로그합의 직접 계산에서 같은 값을 갖는 지수의 역산으로 질문 전환; 현재 원문 그대로 독립 검산."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "③: log4(40/5)=log4(8); 1/log8(4)=log4(8); k=8²=64. 현재 answer=③, 보기 또는 서술형 숫자 일치; 별도 수치 검산과 핵심 조건 확인."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "③: log4(40/5)=log4(8); 1/log8(4)=log4(8); k=8²=64. 해당 현 solution의 중간식/부호/조건 분기/최종값을 줄별 재확인; 원본 조건 유입 없음."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "전개 이전에 단계 이유를 설명하고 계산→조건→결론 연결. 현재 풀이 결정단계와 학생 재현성이 Golden sample 수준. 정적 구조 검사 PASS, 실제 DOM MathJax 렌더 NOT_RUN."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "2022 대수 H22-A-01/H22-A-01-EXPONENT_LOG; PT=PT_H22A_01_LOG_PROPERTIES ACTIVE curriculum_bindings exact, TPL=TPL_H22A_01_LOG_PROPERTIES_076 ACTIVE parent 및 RPM=H2-M1-RPM-076 풀이 L3/L4 근거 확인."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "해당 문항 해설은 그림 없이 재현 가능. Q08/Q19의 옛 SVG는 현재 문제와 의미 불일치하고 새 렌더는 NOT_RUN. Q21 기존 SVG 실물은 정확하지만 정규 계획이 EXEMPT여서 JS에 연결하지 않았음."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "현재 meta questionUid=2, 로그 차 → 밑 변환의 역수 → 지수로 되돌리기; 결정식 $\\log_4 40-\\log_4 5=\\log_4 8$이고 $\\dfrac1{\\log_8 4}=\\log_4 8$이므로 $\\log_4 k=2\\log_4 8=\\log_4 64$이다.; CURRENT GLOBAL ACTIVE PT_H22A_01_LOG_PROPERTIES/TPL_H22A_01_LOG_PROPERTIES_076의 부모/교육과정, RPM 및 term-dictionary-v1.6 4slot을 수리 후 대조."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "bucket=1, 3점. 원본·유사1 비교하여 주어진 로그합의 직접 계산에서 같은 값을 갖는 지수의 역산으로 질문 전환; 학생이 필요한 판단 ③: log4(40/5)=log4(8); 1/log8(4)=log4(8); k=8²=64. 확정. Q08/Q17 사고부담 복원, Q09/Q19 구조적 차이 확보."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Node VM 현 JS 문자열 평가, TeX escape/dollar parity, ㄱㄴㄷ 블록 구조 정적 검사. 실제 MathJax 브라우저 실행 NOT_RUN."
+      },
+      "qualityAxes": {
+        "STUDENT_REPRODUCIBILITY": "PASS_STATIC",
+        "SMALL_BOARD_STRUCTURE": "PASS_STATIC",
+        "EXPLANATION_DENSITY": "PASS_STATIC",
+        "VISUAL_SEMANTIC_PARITY": "NOT_RUN_NO_LINKED_SVG",
+        "VISUAL_READABILITY": "NOT_RUN_NO_LINKED_SVG"
+      },
+      "sourceVariationObservation": "주어진 로그합의 직접 계산에서 같은 값을 갖는 지수의 역산으로 질문 전환"
+    },
+    {
+      "qid": 3,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "실제 현재 q3 발문·보기를 원본 q3·유사1과 직접 대조, sourceQid/uid=3/3, variation 지수함수의 식에서 로그의 밑 읽기를 역함수의 함수값 조건에서 밑 찾기로 전환; 현재 원문 그대로 독립 검산."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "④: f^-1(1/16)=2⇒c²=1/16, 0<c<1⇒c=1/4. 현재 answer=④, 보기 또는 서술형 숫자 일치; 별도 수치 검산과 핵심 조건 확인."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "④: f^-1(1/16)=2⇒c²=1/16, 0<c<1⇒c=1/4. 해당 현 solution의 중간식/부호/조건 분기/최종값을 줄별 재확인; 원본 조건 유입 없음."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "전개 이전에 단계 이유를 설명하고 계산→조건→결론 연결. 현재 풀이 결정단계와 학생 재현성이 Golden sample 수준. 정적 구조 검사 PASS, 실제 DOM MathJax 렌더 NOT_RUN."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "2022 대수 H22-A-02/H22-A-02-EXPONENTIAL_FUNCTION; PT=PT_H22A_02_EXP_EQUATION ACTIVE curriculum_bindings exact, TPL=TPL_H22A_02_EXP_EQUATION_081 ACTIVE parent 및 RPM=H2-M1-RPM-081 풀이 L3/L4 근거 확인."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "해당 문항 해설은 그림 없이 재현 가능. Q08/Q19의 옛 SVG는 현재 문제와 의미 불일치하고 새 렌더는 NOT_RUN. Q21 기존 SVG 실물은 정확하지만 정규 계획이 EXEMPT여서 JS에 연결하지 않았음."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "현재 meta questionUid=3, 역함수의 대응점에서 f(2)=1/16을 얻고 지수방정식의 밑을 결정; 결정식 $f^{-1}\\!\\left(\\dfrac1{16}\\right)=2$에서 $c^2=\\dfrac1{16}$이고 $0<c<1$이므로 $c=\\dfrac14$이다.; CURRENT GLOBAL ACTIVE PT_H22A_02_EXP_EQUATION/TPL_H22A_02_EXP_EQUATION_081의 부모/교육과정, RPM 및 term-dictionary-v1.6 4slot을 수리 후 대조."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "bucket=1, 3점. 원본·유사1 비교하여 지수함수의 식에서 로그의 밑 읽기를 역함수의 함수값 조건에서 밑 찾기로 전환; 학생이 필요한 판단 ④: f^-1(1/16)=2⇒c²=1/16, 0<c<1⇒c=1/4. 확정. Q08/Q17 사고부담 복원, Q09/Q19 구조적 차이 확보."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Node VM 현 JS 문자열 평가, TeX escape/dollar parity, ㄱㄴㄷ 블록 구조 정적 검사. 실제 MathJax 브라우저 실행 NOT_RUN."
+      },
+      "qualityAxes": {
+        "STUDENT_REPRODUCIBILITY": "PASS_STATIC",
+        "SMALL_BOARD_STRUCTURE": "PASS_STATIC",
+        "EXPLANATION_DENSITY": "PASS_STATIC",
+        "VISUAL_SEMANTIC_PARITY": "NOT_RUN_NO_LINKED_SVG",
+        "VISUAL_READABILITY": "NOT_RUN_NO_LINKED_SVG"
+      },
+      "sourceVariationObservation": "지수함수의 식에서 로그의 밑 읽기를 역함수의 함수값 조건에서 밑 찾기로 전환"
+    },
+    {
+      "qid": 4,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "실제 현재 q4 발문·보기를 원본 q4·유사1과 직접 대조, sourceQid/uid=4/4, variation 삼각함수 값 직접 대입을 같은 동경의 대표각을 먼저 결정하는 표현으로 전환; 현재 원문 그대로 독립 검산."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "①: -11π/6+2π=π/6; cosπ/6=√3/2. 현재 answer=①, 보기 또는 서술형 숫자 일치; 별도 수치 검산과 핵심 조건 확인."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "①: -11π/6+2π=π/6; cosπ/6=√3/2. 해당 현 solution의 중간식/부호/조건 분기/최종값을 줄별 재확인; 원본 조건 유입 없음."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "전개 이전에 단계 이유를 설명하고 계산→조건→결론 연결. 현재 풀이 결정단계와 학생 재현성이 Golden sample 수준. 정적 구조 검사 PASS, 실제 DOM MathJax 렌더 NOT_RUN."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "2022 대수 H22-A-04/H22-A-04-TRIGONOMETRIC_BASIC; PT=PT_H22A_04_TRIG_DEFINITION ACTIVE curriculum_bindings exact, TPL=TPL_H22A_04_TRIG_DEFINITION_098 ACTIVE parent 및 RPM=H2-M1-RPM-098 풀이 L3/L4 근거 확인."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "해당 문항 해설은 그림 없이 재현 가능. Q08/Q19의 옛 SVG는 현재 문제와 의미 불일치하고 새 렌더는 NOT_RUN. Q21 기존 SVG 실물은 정확하지만 정규 계획이 EXEMPT여서 JS에 연결하지 않았음."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "현재 meta questionUid=4, 동경의 대표각 → 코사인값; 결정식 동경이 같은 각은 $2\\pi$의 정수배만큼 차이 난다.; CURRENT GLOBAL ACTIVE PT_H22A_04_TRIG_DEFINITION/TPL_H22A_04_TRIG_DEFINITION_098의 부모/교육과정, RPM 및 term-dictionary-v1.6 4slot을 수리 후 대조."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "bucket=1, 3.2점. 원본·유사1 비교하여 삼각함수 값 직접 대입을 같은 동경의 대표각을 먼저 결정하는 표현으로 전환; 학생이 필요한 판단 ①: -11π/6+2π=π/6; cosπ/6=√3/2. 확정. Q08/Q17 사고부담 복원, Q09/Q19 구조적 차이 확보."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Node VM 현 JS 문자열 평가, TeX escape/dollar parity, ㄱㄴㄷ 블록 구조 정적 검사. 실제 MathJax 브라우저 실행 NOT_RUN."
+      },
+      "qualityAxes": {
+        "STUDENT_REPRODUCIBILITY": "PASS_STATIC",
+        "SMALL_BOARD_STRUCTURE": "PASS_STATIC",
+        "EXPLANATION_DENSITY": "PASS_STATIC",
+        "VISUAL_SEMANTIC_PARITY": "NOT_RUN_NO_LINKED_SVG",
+        "VISUAL_READABILITY": "NOT_RUN_NO_LINKED_SVG"
+      },
+      "sourceVariationObservation": "삼각함수 값 직접 대입을 같은 동경의 대표각을 먼저 결정하는 표현으로 전환"
+    },
+    {
+      "qid": 5,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "실제 현재 q5 발문·보기를 원본 q5·유사1과 직접 대조, sourceQid/uid=5/5, variation 진폭 1의 평행이동 범위를 부호 반전과 진폭이 있는 범위 선택으로 전환; 현재 원문 그대로 독립 검산."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "④: -1≤sin3x≤1⇒-2≤-2sin3x≤2⇒y∈[2,6], 끝점 달성. 현재 answer=④, 보기 또는 서술형 숫자 일치; 별도 수치 검산과 핵심 조건 확인."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "④: -1≤sin3x≤1⇒-2≤-2sin3x≤2⇒y∈[2,6], 끝점 달성. 해당 현 solution의 중간식/부호/조건 분기/최종값을 줄별 재확인; 원본 조건 유입 없음."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "전개 이전에 단계 이유를 설명하고 계산→조건→결론 연결. 현재 풀이 결정단계와 학생 재현성이 Golden sample 수준. 정적 구조 검사 PASS, 실제 DOM MathJax 렌더 NOT_RUN."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "2022 대수 H22-A-04/H22-A-04-TRIGONOMETRIC_GRAPH; PT=PT_H22A_04_TRIG_GRAPH_TRANSFORM ACTIVE curriculum_bindings exact, TPL=TPL_H22A_04_TRIG_GRAPH_TRANSFORM_105 ACTIVE parent 및 RPM=H2-M1-RPM-103 풀이 L3/L4 근거 확인."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "해당 문항 해설은 그림 없이 재현 가능. Q08/Q19의 옛 SVG는 현재 문제와 의미 불일치하고 새 렌더는 NOT_RUN. Q21 기존 SVG 실물은 정확하지만 정규 계획이 EXEMPT여서 JS에 연결하지 않았음."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "현재 meta questionUid=5, 사인값의 범위에 음수배 → 상수 이동; 결정식 모든 실수 $x$에 대하여 $-1\\le\\sin3x\\le1$이다.; CURRENT GLOBAL ACTIVE PT_H22A_04_TRIG_GRAPH_TRANSFORM/TPL_H22A_04_TRIG_GRAPH_TRANSFORM_105의 부모/교육과정, RPM 및 term-dictionary-v1.6 4slot을 수리 후 대조."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "bucket=1, 3.3점. 원본·유사1 비교하여 진폭 1의 평행이동 범위를 부호 반전과 진폭이 있는 범위 선택으로 전환; 학생이 필요한 판단 ④: -1≤sin3x≤1⇒-2≤-2sin3x≤2⇒y∈[2,6], 끝점 달성. 확정. Q08/Q17 사고부담 복원, Q09/Q19 구조적 차이 확보."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Node VM 현 JS 문자열 평가, TeX escape/dollar parity, ㄱㄴㄷ 블록 구조 정적 검사. 실제 MathJax 브라우저 실행 NOT_RUN."
+      },
+      "qualityAxes": {
+        "STUDENT_REPRODUCIBILITY": "PASS_STATIC",
+        "SMALL_BOARD_STRUCTURE": "PASS_STATIC",
+        "EXPLANATION_DENSITY": "PASS_STATIC",
+        "VISUAL_SEMANTIC_PARITY": "NOT_RUN_NO_LINKED_SVG",
+        "VISUAL_READABILITY": "NOT_RUN_NO_LINKED_SVG"
+      },
+      "sourceVariationObservation": "진폭 1의 평행이동 범위를 부호 반전과 진폭이 있는 범위 선택으로 전환"
+    },
+    {
+      "qid": 6,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "실제 현재 q6 발문·보기를 원본 q6·유사1과 직접 대조, sourceQid/uid=6/6, variation 양의 각을 일반각으로 표시하는 문제를 음의 각의 최대 동경 동치 대표로 전환; 현재 원문 그대로 독립 검산."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "③: -1250°+3·360°=-170°, n=4면 양수. 현재 answer=③, 보기 또는 서술형 숫자 일치; 별도 수치 검산과 핵심 조건 확인."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "③: -1250°+3·360°=-170°, n=4면 양수. 해당 현 solution의 중간식/부호/조건 분기/최종값을 줄별 재확인; 원본 조건 유입 없음."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "전개 이전에 단계 이유를 설명하고 계산→조건→결론 연결. 현재 풀이 결정단계와 학생 재현성이 Golden sample 수준. 정적 구조 검사 PASS, 실제 DOM MathJax 렌더 NOT_RUN."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "2022 대수 H22-A-04/H22-A-04-TRIGONOMETRIC_BASIC; PT=PT_H22A_04_ANGLE_RADIAN ACTIVE curriculum_bindings exact, TPL=TPL_H22A_04_ANGLE_RADIAN_095 ACTIVE parent 및 RPM=H2-M1-RPM-095 풀이 L3/L4 근거 확인."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "해당 문항 해설은 그림 없이 재현 가능. Q08/Q19의 옛 SVG는 현재 문제와 의미 불일치하고 새 렌더는 NOT_RUN. Q21 기존 SVG 실물은 정확하지만 정규 계획이 EXEMPT여서 JS에 연결하지 않았음."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "현재 meta questionUid=6, 360도의 정수배 가감 → 음의 대표각 범위; 결정식 동경이 같은 각은 $-1250^\\circ+360^\\circ n$ ($n$은 정수)으로 나타낸다.; CURRENT GLOBAL ACTIVE PT_H22A_04_ANGLE_RADIAN/TPL_H22A_04_ANGLE_RADIAN_095의 부모/교육과정, RPM 및 term-dictionary-v1.6 4slot을 수리 후 대조."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "bucket=1, 3.5점. 원본·유사1 비교하여 양의 각을 일반각으로 표시하는 문제를 음의 각의 최대 동경 동치 대표로 전환; 학생이 필요한 판단 ③: -1250°+3·360°=-170°, n=4면 양수. 확정. Q08/Q17 사고부담 복원, Q09/Q19 구조적 차이 확보."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Node VM 현 JS 문자열 평가, TeX escape/dollar parity, ㄱㄴㄷ 블록 구조 정적 검사. 실제 MathJax 브라우저 실행 NOT_RUN."
+      },
+      "qualityAxes": {
+        "STUDENT_REPRODUCIBILITY": "PASS_STATIC",
+        "SMALL_BOARD_STRUCTURE": "PASS_STATIC",
+        "EXPLANATION_DENSITY": "PASS_STATIC",
+        "VISUAL_SEMANTIC_PARITY": "NOT_RUN_NO_LINKED_SVG",
+        "VISUAL_READABILITY": "NOT_RUN_NO_LINKED_SVG"
+      },
+      "sourceVariationObservation": "양의 각을 일반각으로 표시하는 문제를 음의 각의 최대 동경 동치 대표로 전환"
+    },
+    {
+      "qid": 7,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "실제 현재 q7 발문·보기를 원본 q7·유사1과 직접 대조, sourceQid/uid=7/7, variation 실근 개수의 전체 합에서 실근이 정확히 두 개인 지수 n의 합으로 목표 변경; 현재 원문 그대로 독립 검산."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "⑤: 실근 2개는 짝수 n, (n-3)(8-n)>0⇔3<n<8; n=4,6, 합10. 현재 answer=⑤, 보기 또는 서술형 숫자 일치; 별도 수치 검산과 핵심 조건 확인."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "⑤: 실근 2개는 짝수 n, (n-3)(8-n)>0⇔3<n<8; n=4,6, 합10. 해당 현 solution의 중간식/부호/조건 분기/최종값을 줄별 재확인; 원본 조건 유입 없음."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "전개 이전에 단계 이유를 설명하고 계산→조건→결론 연결. 현재 풀이 결정단계와 학생 재현성이 Golden sample 수준. 정적 구조 검사 PASS, 실제 DOM MathJax 렌더 NOT_RUN."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "2022 대수 H22-A-01/H22-A-01-EXPONENT_LOG; PT=PT_H22A_01_ROOT_REAL ACTIVE curriculum_bindings exact, TPL=TPL_H22A_01_ROOT_REAL_068 ACTIVE parent 및 RPM=H2-M1-RPM-068 풀이 L3/L4 근거 확인."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "해당 문항 해설은 그림 없이 재현 가능. Q08/Q19의 옛 SVG는 현재 문제와 의미 불일치하고 새 렌더는 NOT_RUN. Q21 기존 SVG 실물은 정확하지만 정규 계획이 EXEMPT여서 JS에 연결하지 않았음."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "현재 meta questionUid=7, 밑의 부호와 n의 홀짝 → 정확히 두 실근 조건 필터; 결정식 실수인 $n$제곱근이 정확히 2개이려면 $n$이 짝수이고 근호 안의 수가 양수이어야 한다.; CURRENT GLOBAL ACTIVE PT_H22A_01_ROOT_REAL/TPL_H22A_01_ROOT_REAL_068의 부모/교육과정, RPM 및 term-dictionary-v1.6 4slot을 수리 후 대조."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "bucket=3, 4점. 원본·유사1 비교하여 실근 개수의 전체 합에서 실근이 정확히 두 개인 지수 n의 합으로 목표 변경; 학생이 필요한 판단 ⑤: 실근 2개는 짝수 n, (n-3)(8-n)>0⇔3<n<8; n=4,6, 합10. 확정. Q08/Q17 사고부담 복원, Q09/Q19 구조적 차이 확보."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Node VM 현 JS 문자열 평가, TeX escape/dollar parity, ㄱㄴㄷ 블록 구조 정적 검사. 실제 MathJax 브라우저 실행 NOT_RUN."
+      },
+      "qualityAxes": {
+        "STUDENT_REPRODUCIBILITY": "PASS_STATIC",
+        "SMALL_BOARD_STRUCTURE": "PASS_STATIC",
+        "EXPLANATION_DENSITY": "PASS_STATIC",
+        "VISUAL_SEMANTIC_PARITY": "NOT_RUN_NO_LINKED_SVG",
+        "VISUAL_READABILITY": "NOT_RUN_NO_LINKED_SVG"
+      },
+      "sourceVariationObservation": "실근 개수의 전체 합에서 실근이 정확히 두 개인 지수 n의 합으로 목표 변경"
+    },
+    {
+      "qid": 8,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "실제 현재 q8 발문·보기를 원본 q8·유사1과 직접 대조, sourceQid/uid=8/8, variation y=2^x+3, P의 y=7, Q의 x=4, 구하는 값은 q-p; 현재 원문 그대로 독립 검산."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "②: 7=2^p+3⇒p=2; q=2^4+3=19; q-p=17. 현재 answer=②, 보기 또는 서술형 숫자 일치; 별도 수치 검산과 핵심 조건 확인."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "②: 7=2^p+3⇒p=2; q=2^4+3=19; q-p=17. 해당 현 solution의 중간식/부호/조건 분기/최종값을 줄별 재확인; 원본 조건 유입 없음."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "전개 이전에 단계 이유를 설명하고 계산→조건→결론 연결. 점 P 역산과 점 Q 직접대입을 분리. 정적 구조 검사 PASS, 실제 DOM MathJax 렌더 NOT_RUN."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "2022 대수 H22-A-02/H22-A-02-EXPONENTIAL_FUNCTION; PT=PT_FUNCTION_GRAPH_TRANSFORM ACTIVE curriculum_bindings exact, TPL=TPL_FUNCTION_GRAPH_TRANSLATION ACTIVE parent 및 RPM=H2-M1-RPM-080 풀이 L3/L4 근거 확인."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "해당 문항 해설은 그림 없이 재현 가능. Q08/Q19의 옛 SVG는 현재 문제와 의미 불일치하고 새 렌더는 NOT_RUN. Q21 기존 SVG 실물은 정확하지만 정규 계획이 EXEMPT여서 JS에 연결하지 않았음."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "현재 meta questionUid=8, 세로로 3 평행이동한 지수함수에서 y좌표로 x를 역산하고 다른 점의 함숫값 대입; 결정식 $7=2^p+3$에서 $p=2$, $q=2^4+3=19$이므로 $q-p=17$이다.; CURRENT GLOBAL ACTIVE PT_FUNCTION_GRAPH_TRANSFORM/TPL_FUNCTION_GRAPH_TRANSLATION의 부모/교육과정, RPM 및 term-dictionary-v1.6 4slot을 수리 후 대조."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "bucket=3, 4점. 원본·유사1 비교하여 y=2^x+3, P의 y=7, Q의 x=4, 구하는 값은 q-p; 학생이 필요한 판단 ②: 7=2^p+3⇒p=2; q=2^4+3=19; q-p=17. 확정. Q08/Q17 사고부담 복원, Q09/Q19 구조적 차이 확보."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Node VM 현 JS 문자열 평가, TeX escape/dollar parity, ㄱㄴㄷ 블록 구조 정적 검사. 실제 MathJax 브라우저 실행 NOT_RUN."
+      },
+      "qualityAxes": {
+        "STUDENT_REPRODUCIBILITY": "PASS_STATIC",
+        "SMALL_BOARD_STRUCTURE": "PASS_STATIC",
+        "EXPLANATION_DENSITY": "PASS_STATIC",
+        "VISUAL_SEMANTIC_PARITY": "NOT_RUN_NO_LINKED_SVG",
+        "VISUAL_READABILITY": "NOT_RUN_NO_LINKED_SVG"
+      },
+      "sourceVariationObservation": "y=2^x+3, P의 y=7, Q의 x=4, 구하는 값은 q-p"
+    },
+    {
+      "qid": 9,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "실제 현재 q9 발문·보기를 원본 q9·유사1과 직접 대조, sourceQid/uid=9/9, variation 두 점 (9,0),(33,2)를 동시에 통과; 현재 원문 그대로 독립 검산."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "⑤: 9-h=3^-k, 33-h=9·3^-k⇒24=8·3^-k, k=-1,h=6,h-k=7. 두 진수는 양수. 현재 answer=⑤, 보기 또는 서술형 숫자 일치; 별도 수치 검산과 핵심 조건 확인."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "⑤: 9-h=3^-k, 33-h=9·3^-k⇒24=8·3^-k, k=-1,h=6,h-k=7. 두 진수는 양수. 해당 현 solution의 중간식/부호/조건 분기/최종값을 줄별 재확인; 원본 조건 유입 없음."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "전개 이전에 단계 이유를 설명하고 계산→조건→결론 연결. 두 로그값 대입과 지수형 소거를 분리. 정적 구조 검사 PASS, 실제 DOM MathJax 렌더 NOT_RUN."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "2022 대수 H22-A-03/H22-A-03-LOGARITHMIC_FUNCTION; PT=PT_FUNCTION_GRAPH_TRANSFORM ACTIVE curriculum_bindings exact, TPL=TPL_FUNCTION_GRAPH_TRANSLATION ACTIVE parent 및 RPM=H2-M1-RPM-088 풀이 L3/L4 근거 확인."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "해당 문항 해설은 그림 없이 재현 가능. Q08/Q19의 옛 SVG는 현재 문제와 의미 불일치하고 새 렌더는 NOT_RUN. Q21 기존 SVG 실물은 정확하지만 정규 계획이 EXEMPT여서 JS에 연결하지 않았음."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "현재 meta questionUid=9, 로그함수의 두 점 조건을 지수형으로 바꾸고 두 식을 빼서 평행이동 상수를 복원; 결정식 $9-h=3^{-k}$, $33-h=9\\cdot3^{-k}$를 빼면 $24=8\\cdot3^{-k}$이므로 $k=-1$, $h=6$이다.; CURRENT GLOBAL ACTIVE PT_FUNCTION_GRAPH_TRANSFORM/TPL_FUNCTION_GRAPH_TRANSLATION의 부모/교육과정, RPM 및 term-dictionary-v1.6 4slot을 수리 후 대조."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "bucket=3, 4점. 원본·유사1 비교하여 두 점 (9,0),(33,2)를 동시에 통과; 학생이 필요한 판단 ⑤: 9-h=3^-k, 33-h=9·3^-k⇒24=8·3^-k, k=-1,h=6,h-k=7. 두 진수는 양수. 확정. Q08/Q17 사고부담 복원, Q09/Q19 구조적 차이 확보."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Node VM 현 JS 문자열 평가, TeX escape/dollar parity, ㄱㄴㄷ 블록 구조 정적 검사. 실제 MathJax 브라우저 실행 NOT_RUN."
+      },
+      "qualityAxes": {
+        "STUDENT_REPRODUCIBILITY": "PASS_STATIC",
+        "SMALL_BOARD_STRUCTURE": "PASS_STATIC",
+        "EXPLANATION_DENSITY": "PASS_STATIC",
+        "VISUAL_SEMANTIC_PARITY": "NOT_RUN_NO_LINKED_SVG",
+        "VISUAL_READABILITY": "NOT_RUN_NO_LINKED_SVG"
+      },
+      "sourceVariationObservation": "두 점 (9,0),(33,2)를 동시에 통과"
+    },
+    {
+      "qid": 10,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "실제 현재 q10 발문·보기를 원본 q10·유사1과 직접 대조, sourceQid/uid=10/10, variation 사인·코사인 곱의 직접 제공을 차의 제곱 조건으로 전환; 현재 원문 그대로 독립 검산."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "④: (s-c)²=1-2sc=5/3⇒sc=-1/3; s⁴+c⁴=1-2s²c²=7/9. 현재 answer=④, 보기 또는 서술형 숫자 일치; 별도 수치 검산과 핵심 조건 확인."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "④: (s-c)²=1-2sc=5/3⇒sc=-1/3; s⁴+c⁴=1-2s²c²=7/9. 해당 현 solution의 중간식/부호/조건 분기/최종값을 줄별 재확인; 원본 조건 유입 없음."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "전개 이전에 단계 이유를 설명하고 계산→조건→결론 연결. 현재 풀이 결정단계와 학생 재현성이 Golden sample 수준. 정적 구조 검사 PASS, 실제 DOM MathJax 렌더 NOT_RUN."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "2022 대수 H22-A-04/H22-A-04-TRIGONOMETRIC_BASIC; PT=PT_H22A_04_TRIG_PROPERTIES ACTIVE curriculum_bindings exact, TPL=TPL_H22A_04_TRIG_PROPERTIES_100 ACTIVE parent 및 RPM=H2-M1-RPM-100 풀이 L3/L4 근거 확인."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "해당 문항 해설은 그림 없이 재현 가능. Q08/Q19의 옛 SVG는 현재 문제와 의미 불일치하고 새 렌더는 NOT_RUN. Q21 기존 SVG 실물은 정확하지만 정규 계획이 EXEMPT여서 JS에 연결하지 않았음."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "현재 meta questionUid=10, 제곱 전개 → 사인·코사인 곱 → 네제곱 합; 결정식 $1-2\\sin\\theta\\cos\\theta=\\dfrac53$이므로 $\\sin\\theta\\cos\\theta=-\\dfrac13$이고, 네제곱 합은 $1-2\\cdot\\dfrac19=\\dfrac79$이다.; CURRENT GLOBAL ACTIVE PT_H22A_04_TRIG_PROPERTIES/TPL_H22A_04_TRIG_PROPERTIES_100의 부모/교육과정, RPM 및 term-dictionary-v1.6 4slot을 수리 후 대조."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "bucket=3, 4점. 원본·유사1 비교하여 사인·코사인 곱의 직접 제공을 차의 제곱 조건으로 전환; 학생이 필요한 판단 ④: (s-c)²=1-2sc=5/3⇒sc=-1/3; s⁴+c⁴=1-2s²c²=7/9. 확정. Q08/Q17 사고부담 복원, Q09/Q19 구조적 차이 확보."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Node VM 현 JS 문자열 평가, TeX escape/dollar parity, ㄱㄴㄷ 블록 구조 정적 검사. 실제 MathJax 브라우저 실행 NOT_RUN."
+      },
+      "qualityAxes": {
+        "STUDENT_REPRODUCIBILITY": "PASS_STATIC",
+        "SMALL_BOARD_STRUCTURE": "PASS_STATIC",
+        "EXPLANATION_DENSITY": "PASS_STATIC",
+        "VISUAL_SEMANTIC_PARITY": "NOT_RUN_NO_LINKED_SVG",
+        "VISUAL_READABILITY": "NOT_RUN_NO_LINKED_SVG"
+      },
+      "sourceVariationObservation": "사인·코사인 곱의 직접 제공을 차의 제곱 조건으로 전환"
+    },
+    {
+      "qid": 11,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "실제 현재 q11 발문·보기를 원본 q11·유사1과 직접 대조, sourceQid/uid=11/11, variation 합과 곱의 부호 판정을 탄젠트의 부호와 코사인 부호 판정으로 전환; 현재 원문 그대로 독립 검산."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "③: cos<0, tan=sin/cos>0⇒sin<0⇒3사분면, 6π/5. 현재 answer=③, 보기 또는 서술형 숫자 일치; 별도 수치 검산과 핵심 조건 확인."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "③: cos<0, tan=sin/cos>0⇒sin<0⇒3사분면, 6π/5. 해당 현 solution의 중간식/부호/조건 분기/최종값을 줄별 재확인; 원본 조건 유입 없음."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "전개 이전에 단계 이유를 설명하고 계산→조건→결론 연결. 현재 풀이 결정단계와 학생 재현성이 Golden sample 수준. 정적 구조 검사 PASS, 실제 DOM MathJax 렌더 NOT_RUN."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "2022 대수 H22-A-04/H22-A-04-TRIGONOMETRIC_BASIC; PT=PT_H22A_04_TRIG_DEFINITION ACTIVE curriculum_bindings exact, TPL=TPL_H22A_04_TRIG_DEFINITION_098 ACTIVE parent 및 RPM=H2-M1-RPM-098 풀이 L3/L4 근거 확인."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "해당 문항 해설은 그림 없이 재현 가능. Q08/Q19의 옛 SVG는 현재 문제와 의미 불일치하고 새 렌더는 NOT_RUN. Q21 기존 SVG 실물은 정확하지만 정규 계획이 EXEMPT여서 JS에 연결하지 않았음."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "현재 meta questionUid=11, 비의 양수 조건 → 사인과 코사인 같은 부호 → 사분면; 결정식 $\\cos\\theta<0$이고 $\\dfrac{\\sin\\theta}{\\cos\\theta}>0$이므로 $\\sin\\theta$와 $\\cos\\theta$는 부호가 같다.; CURRENT GLOBAL ACTIVE PT_H22A_04_TRIG_DEFINITION/TPL_H22A_04_TRIG_DEFINITION_098의 부모/교육과정, RPM 및 term-dictionary-v1.6 4slot을 수리 후 대조."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "bucket=3, 4점. 원본·유사1 비교하여 합과 곱의 부호 판정을 탄젠트의 부호와 코사인 부호 판정으로 전환; 학생이 필요한 판단 ③: cos<0, tan=sin/cos>0⇒sin<0⇒3사분면, 6π/5. 확정. Q08/Q17 사고부담 복원, Q09/Q19 구조적 차이 확보."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Node VM 현 JS 문자열 평가, TeX escape/dollar parity, ㄱㄴㄷ 블록 구조 정적 검사. 실제 MathJax 브라우저 실행 NOT_RUN."
+      },
+      "qualityAxes": {
+        "STUDENT_REPRODUCIBILITY": "PASS_STATIC",
+        "SMALL_BOARD_STRUCTURE": "PASS_STATIC",
+        "EXPLANATION_DENSITY": "PASS_STATIC",
+        "VISUAL_SEMANTIC_PARITY": "NOT_RUN_NO_LINKED_SVG",
+        "VISUAL_READABILITY": "NOT_RUN_NO_LINKED_SVG"
+      },
+      "sourceVariationObservation": "합과 곱의 부호 판정을 탄젠트의 부호와 코사인 부호 판정으로 전환"
+    },
+    {
+      "qid": 12,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "실제 현재 q12 발문·보기를 원본 q12·유사1과 직접 대조, sourceQid/uid=12/12, variation 최대 넓이의 중심각을 묻던 문제에서 최대 넓이 자체를 구하도록 목표 역산; 현재 원문 그대로 독립 검산."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "①: 2r+l=20, S=rl/2=10r-r²=25-(r-5)², r=5 가능. 현재 answer=①, 보기 또는 서술형 숫자 일치; 별도 수치 검산과 핵심 조건 확인."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "①: 2r+l=20, S=rl/2=10r-r²=25-(r-5)², r=5 가능. 해당 현 solution의 중간식/부호/조건 분기/최종값을 줄별 재확인; 원본 조건 유입 없음."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "전개 이전에 단계 이유를 설명하고 계산→조건→결론 연결. 현재 풀이 결정단계와 학생 재현성이 Golden sample 수준. 정적 구조 검사 PASS, 실제 DOM MathJax 렌더 NOT_RUN."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "2022 대수 H22-A-04/H22-A-04-TRIGONOMETRIC_BASIC; PT=PT_H22A_04_ANGLE_RADIAN ACTIVE curriculum_bindings exact, TPL=TPL_H22A_04_ANGLE_RADIAN_096 ACTIVE parent 및 RPM=H2-M1-RPM-096 풀이 L3/L4 근거 확인."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "해당 문항 해설은 그림 없이 재현 가능. Q08/Q19의 옛 SVG는 현재 문제와 의미 불일치하고 새 렌더는 NOT_RUN. Q21 기존 SVG 실물은 정확하지만 정규 계획이 EXEMPT여서 JS에 연결하지 않았음."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "현재 meta questionUid=12, 둘레식으로 호 길이 제거 → 반지름에 대한 완전제곱; 결정식 $2r+l=20$과 $S=\\dfrac12rl$에서 $S=25-(r-5)^2\\le25$이고, $r=5$이면 $l=10>0$이다.; CURRENT GLOBAL ACTIVE PT_H22A_04_ANGLE_RADIAN/TPL_H22A_04_ANGLE_RADIAN_096의 부모/교육과정, RPM 및 term-dictionary-v1.6 4slot을 수리 후 대조."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "bucket=3, 4점. 원본·유사1 비교하여 최대 넓이의 중심각을 묻던 문제에서 최대 넓이 자체를 구하도록 목표 역산; 학생이 필요한 판단 ①: 2r+l=20, S=rl/2=10r-r²=25-(r-5)², r=5 가능. 확정. Q08/Q17 사고부담 복원, Q09/Q19 구조적 차이 확보."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Node VM 현 JS 문자열 평가, TeX escape/dollar parity, ㄱㄴㄷ 블록 구조 정적 검사. 실제 MathJax 브라우저 실행 NOT_RUN."
+      },
+      "qualityAxes": {
+        "STUDENT_REPRODUCIBILITY": "PASS_STATIC",
+        "SMALL_BOARD_STRUCTURE": "PASS_STATIC",
+        "EXPLANATION_DENSITY": "PASS_STATIC",
+        "VISUAL_SEMANTIC_PARITY": "NOT_RUN_NO_LINKED_SVG",
+        "VISUAL_READABILITY": "NOT_RUN_NO_LINKED_SVG"
+      },
+      "sourceVariationObservation": "최대 넓이의 중심각을 묻던 문제에서 최대 넓이 자체를 구하도록 목표 역산"
+    },
+    {
+      "qid": 13,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "실제 현재 q13 발문·보기를 원본 q13·유사1과 직접 대조, sourceQid/uid=13/13, variation 한 소수씩 나뉜 제곱/다섯제곱 조건을 두 소수 모두가 섞인 세제곱/네제곱 조건으로 재구성; 현재 원문 그대로 독립 검산."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "⑤: a≡2 (mod3),a≡1 (mod4)⇒a=5; b≡1 (mod3),b≡2 (mod4)⇒b=10; 합15. 현재 answer=⑤, 보기 또는 서술형 숫자 일치; 별도 수치 검산과 핵심 조건 확인."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "⑤: a≡2 (mod3),a≡1 (mod4)⇒a=5; b≡1 (mod3),b≡2 (mod4)⇒b=10; 합15. 해당 현 solution의 중간식/부호/조건 분기/최종값을 줄별 재확인; 원본 조건 유입 없음."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "전개 이전에 단계 이유를 설명하고 계산→조건→결론 연결. 현재 풀이 결정단계와 학생 재현성이 Golden sample 수준. 정적 구조 검사 PASS, 실제 DOM MathJax 렌더 NOT_RUN."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "2022 대수 H22-A-01/H22-A-01-EXPONENT_LOG; PT=PT_H22A_01_ROOT_REAL ACTIVE curriculum_bindings exact, TPL=TPL_H22A_01_ROOT_REAL_067 ACTIVE parent 및 RPM=H2-M1-RPM-067 풀이 L3/L4 근거 확인."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "해당 문항 해설은 그림 없이 재현 가능. Q08/Q19의 옛 SVG는 현재 문제와 의미 불일치하고 새 렌더는 NOT_RUN. Q21 기존 SVG 실물은 정확하지만 정규 계획이 EXEMPT여서 JS에 연결하지 않았음."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "현재 meta questionUid=13, 소인수별 지수에 두 합동조건 적용 → 최소 양의 지수; 결정식 $12=2^2\\cdot3$, $18=2\\cdot3^2$이다. 최소인 $n$에는 두 소수 2, 3만 넣으면 된다.; CURRENT GLOBAL ACTIVE PT_H22A_01_ROOT_REAL/TPL_H22A_01_ROOT_REAL_067의 부모/교육과정, RPM 및 term-dictionary-v1.6 4slot을 수리 후 대조."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "bucket=4, 5점. 원본·유사1 비교하여 한 소수씩 나뉜 제곱/다섯제곱 조건을 두 소수 모두가 섞인 세제곱/네제곱 조건으로 재구성; 학생이 필요한 판단 ⑤: a≡2 (mod3),a≡1 (mod4)⇒a=5; b≡1 (mod3),b≡2 (mod4)⇒b=10; 합15. 확정. Q08/Q17 사고부담 복원, Q09/Q19 구조적 차이 확보."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Node VM 현 JS 문자열 평가, TeX escape/dollar parity, ㄱㄴㄷ 블록 구조 정적 검사. 실제 MathJax 브라우저 실행 NOT_RUN."
+      },
+      "qualityAxes": {
+        "STUDENT_REPRODUCIBILITY": "PASS_STATIC",
+        "SMALL_BOARD_STRUCTURE": "PASS_STATIC",
+        "EXPLANATION_DENSITY": "PASS_STATIC",
+        "VISUAL_SEMANTIC_PARITY": "NOT_RUN_NO_LINKED_SVG",
+        "VISUAL_READABILITY": "NOT_RUN_NO_LINKED_SVG"
+      },
+      "sourceVariationObservation": "한 소수씩 나뉜 제곱/다섯제곱 조건을 두 소수 모두가 섞인 세제곱/네제곱 조건으로 재구성"
+    },
+    {
+      "qid": 14,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "실제 현재 q14 발문·보기를 원본 q14·유사1과 직접 대조, sourceQid/uid=14/14, variation 곱의 한 인자 자릿수 문제를 제곱 인자가 들어간 곱의 자릿수 차로 질문 변경; 현재 원문 그대로 독립 검산."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "①: 10^8≤a⁴<10^9⇒a는 3자리, 10^4≤a²<10^5; 10^15≤a²b³<10^16⇒1000<b<10000; 4-3=1. 현재 answer=①, 보기 또는 서술형 숫자 일치; 별도 수치 검산과 핵심 조건 확인."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "①: 10^8≤a⁴<10^9⇒a는 3자리, 10^4≤a²<10^5; 10^15≤a²b³<10^16⇒1000<b<10000; 4-3=1. 해당 현 solution의 중간식/부호/조건 분기/최종값을 줄별 재확인; 원본 조건 유입 없음."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "전개 이전에 단계 이유를 설명하고 계산→조건→결론 연결. 현재 풀이 결정단계와 학생 재현성이 Golden sample 수준. 정적 구조 검사 PASS, 실제 DOM MathJax 렌더 NOT_RUN."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "2022 대수 H22-A-01/H22-A-01-EXPONENT_LOG; PT=PT_H22A_01_COMMON_LOG ACTIVE curriculum_bindings exact, TPL=TPL_H22A_01_COMMON_LOG_077 ACTIVE parent 및 RPM=H2-M1-RPM-077 풀이 L3/L4 근거 확인."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "해당 문항 해설은 그림 없이 재현 가능. Q08/Q19의 옛 SVG는 현재 문제와 의미 불일치하고 새 렌더는 NOT_RUN. Q21 기존 SVG 실물은 정확하지만 정규 계획이 EXEMPT여서 JS에 연결하지 않았음."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "현재 meta questionUid=14, 두 자릿수 부등식 사이에 a의 범위를 대입하여 b의 자리수 압축; 결정식 $a^4$이 9자리이므로 $10^8\\le a^4<10^9$이다.; CURRENT GLOBAL ACTIVE PT_H22A_01_COMMON_LOG/TPL_H22A_01_COMMON_LOG_077의 부모/교육과정, RPM 및 term-dictionary-v1.6 4slot을 수리 후 대조."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "bucket=4, 5점. 원본·유사1 비교하여 곱의 한 인자 자릿수 문제를 제곱 인자가 들어간 곱의 자릿수 차로 질문 변경; 학생이 필요한 판단 ①: 10^8≤a⁴<10^9⇒a는 3자리, 10^4≤a²<10^5; 10^15≤a²b³<10^16⇒1000<b<10000; 4-3=1. 확정. Q08/Q17 사고부담 복원, Q09/Q19 구조적 차이 확보."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Node VM 현 JS 문자열 평가, TeX escape/dollar parity, ㄱㄴㄷ 블록 구조 정적 검사. 실제 MathJax 브라우저 실행 NOT_RUN."
+      },
+      "qualityAxes": {
+        "STUDENT_REPRODUCIBILITY": "PASS_STATIC",
+        "SMALL_BOARD_STRUCTURE": "PASS_STATIC",
+        "EXPLANATION_DENSITY": "PASS_STATIC",
+        "VISUAL_SEMANTIC_PARITY": "NOT_RUN_NO_LINKED_SVG",
+        "VISUAL_READABILITY": "NOT_RUN_NO_LINKED_SVG"
+      },
+      "sourceVariationObservation": "곱의 한 인자 자릿수 문제를 제곱 인자가 들어간 곱의 자릿수 차로 질문 변경"
+    },
+    {
+      "qid": 15,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "실제 현재 q15 발문·보기를 원본 q15·유사1과 직접 대조, sourceQid/uid=15/15, variation 가능한 a의 최솟값 단일 요청을 모든 실수 조건이 허용하는 양 끝의 비로 전환; 현재 원문 그대로 독립 검산."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "③: t=log2x,A=log2a⇒2t²-3At+A²+1/2≥0 모두t; D=A²-4≤0⇒a∈[1/4,4], M/m=16. 현재 answer=③, 보기 또는 서술형 숫자 일치; 별도 수치 검산과 핵심 조건 확인."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "③: t=log2x,A=log2a⇒2t²-3At+A²+1/2≥0 모두t; D=A²-4≤0⇒a∈[1/4,4], M/m=16. 해당 현 solution의 중간식/부호/조건 분기/최종값을 줄별 재확인; 원본 조건 유입 없음."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "전개 이전에 단계 이유를 설명하고 계산→조건→결론 연결. 현재 풀이 결정단계와 학생 재현성이 Golden sample 수준. 정적 구조 검사 PASS, 실제 DOM MathJax 렌더 NOT_RUN."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "2022 대수 H22-A-03/H22-A-03-LOGARITHMIC_FUNCTION; PT=PT_H22A_03_LOG_INEQUALITY ACTIVE curriculum_bindings exact, TPL=TPL_H22A_03_LOG_INEQUALITY_092 ACTIVE parent 및 RPM=H2-M1-RPM-092 풀이 L3/L4 근거 확인."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "해당 문항 해설은 그림 없이 재현 가능. Q08/Q19의 옛 SVG는 현재 문제와 의미 불일치하고 새 렌더는 NOT_RUN. Q21 기존 SVG 실물은 정확하지만 정규 계획이 EXEMPT여서 JS에 연결하지 않았음."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "현재 meta questionUid=15, 로그 치환 → 이차식의 판별식 비양수 → a의 허용 구간; 결정식 $t=\\log_2x$, $A=\\log_2a$로 놓자. $x>0$이므로 $t$는 모든 실수를 움직인다.; CURRENT GLOBAL ACTIVE PT_H22A_03_LOG_INEQUALITY/TPL_H22A_03_LOG_INEQUALITY_092의 부모/교육과정, RPM 및 term-dictionary-v1.6 4slot을 수리 후 대조."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "bucket=4, 5점. 원본·유사1 비교하여 가능한 a의 최솟값 단일 요청을 모든 실수 조건이 허용하는 양 끝의 비로 전환; 학생이 필요한 판단 ③: t=log2x,A=log2a⇒2t²-3At+A²+1/2≥0 모두t; D=A²-4≤0⇒a∈[1/4,4], M/m=16. 확정. Q08/Q17 사고부담 복원, Q09/Q19 구조적 차이 확보."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Node VM 현 JS 문자열 평가, TeX escape/dollar parity, ㄱㄴㄷ 블록 구조 정적 검사. 실제 MathJax 브라우저 실행 NOT_RUN."
+      },
+      "qualityAxes": {
+        "STUDENT_REPRODUCIBILITY": "PASS_STATIC",
+        "SMALL_BOARD_STRUCTURE": "PASS_STATIC",
+        "EXPLANATION_DENSITY": "PASS_STATIC",
+        "VISUAL_SEMANTIC_PARITY": "NOT_RUN_NO_LINKED_SVG",
+        "VISUAL_READABILITY": "NOT_RUN_NO_LINKED_SVG"
+      },
+      "sourceVariationObservation": "가능한 a의 최솟값 단일 요청을 모든 실수 조건이 허용하는 양 끝의 비로 전환"
+    },
+    {
+      "qid": 16,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "실제 현재 q16 발문·보기를 원본 q16·유사1과 직접 대조, sourceQid/uid=16/16, variation 무리함수 곡선의 세로좌표 요청을 반비례곡선의 가로좌표 역산으로 전환; 현재 원문 그대로 독립 검산."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "⑤: sin²=1/5,cos²=4/5,1사분면 tan=1/2=4/x²⇒x=2√2. 현재 answer=⑤, 보기 또는 서술형 숫자 일치; 별도 수치 검산과 핵심 조건 확인."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "⑤: sin²=1/5,cos²=4/5,1사분면 tan=1/2=4/x²⇒x=2√2. 해당 현 solution의 중간식/부호/조건 분기/최종값을 줄별 재확인; 원본 조건 유입 없음."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "전개 이전에 단계 이유를 설명하고 계산→조건→결론 연결. 현재 풀이 결정단계와 학생 재현성이 Golden sample 수준. 정적 구조 검사 PASS, 실제 DOM MathJax 렌더 NOT_RUN."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "2022 대수 H22-A-04/H22-A-04-TRIGONOMETRIC_BASIC; PT=PT_H22A_04_TRIG_DEFINITION ACTIVE curriculum_bindings exact, TPL=TPL_H22A_04_TRIG_DEFINITION_098 ACTIVE parent 및 RPM=H2-M1-RPM-098 풀이 L3/L4 근거 확인."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "해당 문항 해설은 그림 없이 재현 가능. Q08/Q19의 옛 SVG는 현재 문제와 의미 불일치하고 새 렌더는 NOT_RUN. Q21 기존 SVG 실물은 정확하지만 정규 계획이 EXEMPT여서 JS에 연결하지 않았음."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "현재 meta questionUid=16, 삼각함수 제곱조건 → 탄젠트 → 곡선의 기울기 비; 결정식 $\\sin^2\\theta=\\dfrac15$과 제1사분면 조건에서 $\\tan\\theta=\\dfrac12$이다. 따라서 $\\dfrac4{x^2}=\\dfrac12$, $x=2\\sqrt2$이다.; CURRENT GLOBAL ACTIVE PT_H22A_04_TRIG_DEFINITION/TPL_H22A_04_TRIG_DEFINITION_098의 부모/교육과정, RPM 및 term-dictionary-v1.6 4slot을 수리 후 대조."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "bucket=4, 5.2점. 원본·유사1 비교하여 무리함수 곡선의 세로좌표 요청을 반비례곡선의 가로좌표 역산으로 전환; 학생이 필요한 판단 ⑤: sin²=1/5,cos²=4/5,1사분면 tan=1/2=4/x²⇒x=2√2. 확정. Q08/Q17 사고부담 복원, Q09/Q19 구조적 차이 확보."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Node VM 현 JS 문자열 평가, TeX escape/dollar parity, ㄱㄴㄷ 블록 구조 정적 검사. 실제 MathJax 브라우저 실행 NOT_RUN."
+      },
+      "qualityAxes": {
+        "STUDENT_REPRODUCIBILITY": "PASS_STATIC",
+        "SMALL_BOARD_STRUCTURE": "PASS_STATIC",
+        "EXPLANATION_DENSITY": "PASS_STATIC",
+        "VISUAL_SEMANTIC_PARITY": "NOT_RUN_NO_LINKED_SVG",
+        "VISUAL_READABILITY": "NOT_RUN_NO_LINKED_SVG"
+      },
+      "sourceVariationObservation": "무리함수 곡선의 세로좌표 요청을 반비례곡선의 가로좌표 역산으로 전환"
+    },
+    {
+      "qid": 17,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "실제 현재 q17 발문·보기를 원본 q17·유사1과 직접 대조, sourceQid/uid=17/17, variation 홀수 원소수 m의 개수, n=2 범위 동치, n=1 중 3의 배수 개수; 현재 원문 그대로 독립 검산."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "②: m=2,3,4..5,6..12,13..144에서 n(A_m)=7,4,3,2,1; 홀수 총135, n=2 ⇔6..12, n=1 중 3배수44. ㄴ만 참. 현재 answer=②, 보기 또는 서술형 숫자 일치; 별도 수치 검산과 핵심 조건 확인."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "②: m=2,3,4..5,6..12,13..144에서 n(A_m)=7,4,3,2,1; 홀수 총135, n=2 ⇔6..12, n=1 중 3배수44. ㄴ만 참. 해당 현 solution의 중간식/부호/조건 분기/최종값을 줄별 재확인; 원본 조건 유입 없음."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "전개 이전에 단계 이유를 설명하고 계산→조건→결론 연결. ㄱ·ㄴ·ㄷ 각각 독립 단락, 원소 수 구간 분리. 정적 구조 검사 PASS, 실제 DOM MathJax 렌더 NOT_RUN."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "2022 대수 H22-A-01/H22-A-01-EXPONENT_LOG; PT=PT_H22A_01_LOG_DEFINITION ACTIVE curriculum_bindings exact, TPL=TPL_H22A_01_LOG_DEFINITION_073 ACTIVE parent 및 RPM=H2-M1-RPM-073 풀이 L3/L4 근거 확인."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "해당 문항 해설은 그림 없이 재현 가능. Q08/Q19의 옛 SVG는 현재 문제와 의미 불일치하고 새 렌더는 NOT_RUN. Q21 기존 SVG 실물은 정확하지만 정규 계획이 EXEMPT여서 JS에 연결하지 않았음."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "현재 meta questionUid=17, 거듭제곱 상한별 원소 수를 분류하고 홀수 개수·정확히 두 개 범위·3의 배수 개수를 독립 판정; 결정식 $n(A_m)$은 $m=2,3,4\\sim5,6\\sim12,13\\sim144$에서 각각 $7,4,3,2,1$이므로 ㄱ 135개·ㄴ 6~12·ㄷ 44개로 ㄴ만 참이다.; CURRENT GLOBAL ACTIVE PT_H22A_01_LOG_DEFINITION/TPL_H22A_01_LOG_DEFINITION_073의 부모/교육과정, RPM 및 term-dictionary-v1.6 4slot을 수리 후 대조."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "bucket=4, 5.5점. 원본·유사1 비교하여 홀수 원소수 m의 개수, n=2 범위 동치, n=1 중 3의 배수 개수; 학생이 필요한 판단 ②: m=2,3,4..5,6..12,13..144에서 n(A_m)=7,4,3,2,1; 홀수 총135, n=2 ⇔6..12, n=1 중 3배수44. ㄴ만 참. 확정. Q08/Q17 사고부담 복원, Q09/Q19 구조적 차이 확보."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Node VM 현 JS 문자열 평가, TeX escape/dollar parity, ㄱㄴㄷ 블록 구조 정적 검사. 실제 MathJax 브라우저 실행 NOT_RUN."
+      },
+      "qualityAxes": {
+        "STUDENT_REPRODUCIBILITY": "PASS_STATIC",
+        "SMALL_BOARD_STRUCTURE": "PASS_STATIC",
+        "EXPLANATION_DENSITY": "PASS_STATIC",
+        "VISUAL_SEMANTIC_PARITY": "NOT_RUN_NO_LINKED_SVG",
+        "VISUAL_READABILITY": "NOT_RUN_NO_LINKED_SVG"
+      },
+      "sourceVariationObservation": "홀수 원소수 m의 개수, n=2 범위 동치, n=1 중 3의 배수 개수"
+    },
+    {
+      "qid": 18,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "실제 현재 q18 발문·보기를 원본 q18·유사1과 직접 대조, sourceQid/uid=18/18, variation 모든 높이에 대한 등거리 조건을 두 높이 0·1에서의 등거리와 반대쪽 배치로 구체화; 현재 원문 그대로 독립 검산."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "②: x=3 공통점근선 c=-3b; t=0,1의 양쪽 거리에서 |b|=5,a=1/2; 반대쪽이므로 b=-5,c=15; 2abc=-75. 현재 answer=②, 보기 또는 서술형 숫자 일치; 별도 수치 검산과 핵심 조건 확인."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "②: x=3 공통점근선 c=-3b; t=0,1의 양쪽 거리에서 |b|=5,a=1/2; 반대쪽이므로 b=-5,c=15; 2abc=-75. 해당 현 solution의 중간식/부호/조건 분기/최종값을 줄별 재확인; 원본 조건 유입 없음."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "전개 이전에 단계 이유를 설명하고 계산→조건→결론 연결. 현재 풀이 결정단계와 학생 재현성이 Golden sample 수준. 정적 구조 검사 PASS, 실제 DOM MathJax 렌더 NOT_RUN."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "2022 대수 H22-A-03/H22-A-03-LOGARITHMIC_FUNCTION; PT=PT_FUNCTION_GRAPH_TRANSFORM ACTIVE curriculum_bindings exact, TPL=TPL_FUNCTION_GRAPH_TRANSLATION_REFLECTION ACTIVE parent 및 RPM=H2-M1-RPM-088 풀이 L3/L4 근거 확인."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "해당 문항 해설은 그림 없이 재현 가능. Q08/Q19의 옛 SVG는 현재 문제와 의미 불일치하고 새 렌더는 NOT_RUN. Q21 기존 SVG 실물은 정확하지만 정규 계획이 EXEMPT여서 JS에 연결하지 않았음."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "현재 meta questionUid=18, 공통 수직점근선과 높이 0·1에서의 좌우 등거리, 반대편 배치로 로그함수 이동·대칭 계수 복원; 결정식 $c=-3b$, 높이 $t=0,1$의 거리 비교로 $|b|=5$, $a=\\dfrac12$이고 반대편 배치에서 $b=-5$, $c=15$이다.; CURRENT GLOBAL ACTIVE PT_FUNCTION_GRAPH_TRANSFORM/TPL_FUNCTION_GRAPH_TRANSLATION_REFLECTION의 부모/교육과정, RPM 및 term-dictionary-v1.6 4slot을 수리 후 대조."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "bucket=4, 5.5점. 원본·유사1 비교하여 모든 높이에 대한 등거리 조건을 두 높이 0·1에서의 등거리와 반대쪽 배치로 구체화; 학생이 필요한 판단 ②: x=3 공통점근선 c=-3b; t=0,1의 양쪽 거리에서 |b|=5,a=1/2; 반대쪽이므로 b=-5,c=15; 2abc=-75. 확정. Q08/Q17 사고부담 복원, Q09/Q19 구조적 차이 확보."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Node VM 현 JS 문자열 평가, TeX escape/dollar parity, ㄱㄴㄷ 블록 구조 정적 검사. 실제 MathJax 브라우저 실행 NOT_RUN."
+      },
+      "qualityAxes": {
+        "STUDENT_REPRODUCIBILITY": "PASS_STATIC",
+        "SMALL_BOARD_STRUCTURE": "PASS_STATIC",
+        "EXPLANATION_DENSITY": "PASS_STATIC",
+        "VISUAL_SEMANTIC_PARITY": "NOT_RUN_NO_LINKED_SVG",
+        "VISUAL_READABILITY": "NOT_RUN_NO_LINKED_SVG"
+      },
+      "sourceVariationObservation": "모든 높이에 대한 등거리 조건을 두 높이 0·1에서의 등거리와 반대쪽 배치로 구체화"
+    },
+    {
+      "qid": 19,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "실제 현재 q19 발문·보기를 원본 q19·유사1과 직접 대조, sourceQid/uid=19/19, variation f=8-(x-k)^2, g=a^|f|, y=256 교점3개, g(2)=256; 현재 원문 그대로 독립 검산."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "①: g=a^|8-(x-k)²|; 3교점 조건 h=log_a256=8로 a=2; g(2)=256⇒(2-k)²=0 또는16, k=-2,2,6, 차8. 현재 answer=①, 보기 또는 서술형 숫자 일치; 별도 수치 검산과 핵심 조건 확인."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "①: g=a^|8-(x-k)²|; 3교점 조건 h=log_a256=8로 a=2; g(2)=256⇒(2-k)²=0 또는16, k=-2,2,6, 차8. 해당 현 solution의 중간식/부호/조건 분기/최종값을 줄별 재확인; 원본 조건 유입 없음."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "전개 이전에 단계 이유를 설명하고 계산→조건→결론 연결. (x-k)²=8±h의 실근 수 2/1/0을 분리. 정적 구조 검사 PASS, 실제 DOM MathJax 렌더 NOT_RUN."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "2022 대수 H22-A-02/H22-A-02-EXPONENTIAL_FUNCTION; PT=PT_FUNCTION_GRAPH_INTERSECTION ACTIVE curriculum_bindings exact, TPL=TPL_FUNCTION_INTERSECTION_ABSOLUTE_PIECEWISE ACTIVE parent 및 RPM=H2-M1-RPM-086 풀이 L3/L4 근거 확인."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "해당 문항 해설은 그림 없이 재현 가능. Q08/Q19의 옛 SVG는 현재 문제와 의미 불일치하고 새 렌더는 NOT_RUN. Q21 기존 SVG 실물은 정확하지만 정규 계획이 EXEMPT여서 JS에 연결하지 않았음."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "현재 meta questionUid=19, 지수함수의 절댓값 이차식에서 높이 256 수평선의 3교점 임계치를 판정하고 k의 최대·최소 계산; 결정식 $g=256\\iff(x-k)^2=8\\pm h$에서 실근이 3개이려면 $h=8$이므로 $a=2$, $|8-(2-k)^2|=8$에서 $k=-2,2,6$이다.; CURRENT GLOBAL ACTIVE PT_FUNCTION_GRAPH_INTERSECTION/TPL_FUNCTION_INTERSECTION_ABSOLUTE_PIECEWISE의 부모/교육과정, RPM 및 term-dictionary-v1.6 4slot을 수리 후 대조."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "bucket=4, 5.8점. 원본·유사1 비교하여 f=8-(x-k)^2, g=a^|f|, y=256 교점3개, g(2)=256; 학생이 필요한 판단 ①: g=a^|8-(x-k)²|; 3교점 조건 h=log_a256=8로 a=2; g(2)=256⇒(2-k)²=0 또는16, k=-2,2,6, 차8. 확정. Q08/Q17 사고부담 복원, Q09/Q19 구조적 차이 확보."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Node VM 현 JS 문자열 평가, TeX escape/dollar parity, ㄱㄴㄷ 블록 구조 정적 검사. 실제 MathJax 브라우저 실행 NOT_RUN."
+      },
+      "qualityAxes": {
+        "STUDENT_REPRODUCIBILITY": "PASS_STATIC",
+        "SMALL_BOARD_STRUCTURE": "PASS_STATIC",
+        "EXPLANATION_DENSITY": "PASS_STATIC",
+        "VISUAL_SEMANTIC_PARITY": "NOT_RUN_NO_LINKED_SVG",
+        "VISUAL_READABILITY": "NOT_RUN_NO_LINKED_SVG"
+      },
+      "sourceVariationObservation": "f=8-(x-k)^2, g=a^|f|, y=256 교점3개, g(2)=256"
+    },
+    {
+      "qid": 20,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "실제 현재 q20 발문·보기를 원본 q20·유사1과 직접 대조, sourceQid/uid=20/20, variation 로그 합을 자연수로 만드는 곱셈 쌍에서 로그 차를 자연수로 만드는 비율 쌍으로 전환; 현재 원문 그대로 독립 검산."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "22: u=a+1,v=b+1∈[2,31], 주어진 로그 차=log2(u/v)∈N⇒u=2^kv; k=1,2,3 개수14+6+2=22. 현재 answer=22, 보기 또는 서술형 숫자 일치; 별도 수치 검산과 핵심 조건 확인."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "22: u=a+1,v=b+1∈[2,31], 주어진 로그 차=log2(u/v)∈N⇒u=2^kv; k=1,2,3 개수14+6+2=22. 해당 현 solution의 중간식/부호/조건 분기/최종값을 줄별 재확인; 원본 조건 유입 없음."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "전개 이전에 단계 이유를 설명하고 계산→조건→결론 연결. 현재 풀이 결정단계와 학생 재현성이 Golden sample 수준. 정적 구조 검사 PASS, 실제 DOM MathJax 렌더 NOT_RUN."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "2022 대수 H22-A-01/H22-A-01-EXPONENT_LOG; PT=PT_H22A_01_LOG_PROPERTIES ACTIVE curriculum_bindings exact, TPL=TPL_H22A_01_LOG_PROPERTIES_076 ACTIVE parent 및 RPM=H2-M1-RPM-076 풀이 L3/L4 근거 확인."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "해당 문항 해설은 그림 없이 재현 가능. Q08/Q19의 옛 SVG는 현재 문제와 의미 불일치하고 새 렌더는 NOT_RUN. Q21 기존 SVG 실물은 정확하지만 정규 계획이 EXEMPT여서 JS에 연결하지 않았음."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "현재 meta questionUid=20, 밑변환 → 두 로그의 차 → 정수 거듭제곱 비 조건과 순서쌍 열거; 결정식 $u=a+1$, $v=b+1$로 놓으면 $2\\le u,v\\le31$이다.; CURRENT GLOBAL ACTIVE PT_H22A_01_LOG_PROPERTIES/TPL_H22A_01_LOG_PROPERTIES_076의 부모/교육과정, RPM 및 term-dictionary-v1.6 4slot을 수리 후 대조."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "bucket=4, 8점. 원본·유사1 비교하여 로그 합을 자연수로 만드는 곱셈 쌍에서 로그 차를 자연수로 만드는 비율 쌍으로 전환; 학생이 필요한 판단 22: u=a+1,v=b+1∈[2,31], 주어진 로그 차=log2(u/v)∈N⇒u=2^kv; k=1,2,3 개수14+6+2=22. 확정. Q08/Q17 사고부담 복원, Q09/Q19 구조적 차이 확보."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Node VM 현 JS 문자열 평가, TeX escape/dollar parity, ㄱㄴㄷ 블록 구조 정적 검사. 실제 MathJax 브라우저 실행 NOT_RUN."
+      },
+      "qualityAxes": {
+        "STUDENT_REPRODUCIBILITY": "PASS_STATIC",
+        "SMALL_BOARD_STRUCTURE": "PASS_STATIC",
+        "EXPLANATION_DENSITY": "PASS_STATIC",
+        "VISUAL_SEMANTIC_PARITY": "NOT_RUN_NO_LINKED_SVG",
+        "VISUAL_READABILITY": "NOT_RUN_NO_LINKED_SVG"
+      },
+      "sourceVariationObservation": "로그 합을 자연수로 만드는 곱셈 쌍에서 로그 차를 자연수로 만드는 비율 쌍으로 전환"
+    },
+    {
+      "qid": 21,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "실제 현재 q21 발문·보기를 원본 q21·유사1과 직접 대조, sourceQid/uid=21/21, variation 세로거리의 이중근 판정을 지수함수 차의 양근 개수와 두 근의 곱으로 재구성; 현재 원문 그대로 독립 검산."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "19/16: u=2^t>0, |u²-u+2^-k|=5/16; 음수 분기 Q>-1/4로 불가. k=1만 두 양근(1/4,3/4); 2^p=3/16, 합=19/16. 현재 answer=$\\dfrac{19}{16}$, 보기 또는 서술형 숫자 일치; 별도 수치 검산과 핵심 조건 확인."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "19/16: u=2^t>0, |u²-u+2^-k|=5/16; 음수 분기 Q>-1/4로 불가. k=1만 두 양근(1/4,3/4); 2^p=3/16, 합=19/16. 해당 현 solution의 중간식/부호/조건 분기/최종값을 줄별 재확인; 원본 조건 유입 없음."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "전개 이전에 단계 이유를 설명하고 계산→조건→결론 연결. 현재 풀이 결정단계와 학생 재현성이 Golden sample 수준. 정적 구조 검사 PASS, 실제 DOM MathJax 렌더 NOT_RUN."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "2022 대수 H22-A-02/H22-A-02-EXPONENTIAL_FUNCTION; PT=PT_H22A_02_EXP_EQUATION ACTIVE curriculum_bindings exact, TPL=TPL_H22A_02_EXP_EQUATION_082 ACTIVE parent 및 RPM=H2-M1-RPM-082 풀이 L3/L4 근거 확인."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Q21 선택적 해설 SVG 실물은 존재하며 PNG 재렌더에서 Q(u)=u²-u+1/2와 y=5/16의 두 교점 u=1/4,3/4가 정확하다. 그러나 정규 q21-solution.plan.json의 운영 상태가 EXEMPT이므로 solutionImage는 연결할 수 없다(하네스 오류 확인); 승인 없이 계획을 바꾸지 않고 JS 미연결 유지. Q08/Q19 옛 SVG는 의미 불일치로 미연결."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "현재 meta questionUid=21, u=2^t 치환 → 부호별 이차방정식의 양근 개수 → Vieta; 결정식 $u=2^t>0$이면 $\\overline{AB}=|u^2-u+2^{-k}|=\\dfrac5{16}$이다. 음수 분기는 불가하고 $k=1$일 때만 양근 둘이 나온다.; CURRENT GLOBAL ACTIVE PT_H22A_02_EXP_EQUATION/TPL_H22A_02_EXP_EQUATION_082의 부모/교육과정, RPM 및 term-dictionary-v1.6 4slot을 수리 후 대조."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "bucket=4, 12점. 원본·유사1 비교하여 세로거리의 이중근 판정을 지수함수 차의 양근 개수와 두 근의 곱으로 재구성; 학생이 필요한 판단 19/16: u=2^t>0, |u²-u+2^-k|=5/16; 음수 분기 Q>-1/4로 불가. k=1만 두 양근(1/4,3/4); 2^p=3/16, 합=19/16. 확정. Q08/Q17 사고부담 복원, Q09/Q19 구조적 차이 확보."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Node VM 현 JS 문자열 평가, TeX escape/dollar parity, ㄱㄴㄷ 블록 구조 정적 검사. 실제 MathJax 브라우저 실행 NOT_RUN."
+      },
+      "qualityAxes": {
+        "STUDENT_REPRODUCIBILITY": "PASS_STATIC",
+        "SMALL_BOARD_STRUCTURE": "PASS_STATIC",
+        "EXPLANATION_DENSITY": "PASS_STATIC",
+        "VISUAL_SEMANTIC_PARITY": "PASS_EXTERNAL_SVG_PHYSICAL_NOT_BOUND",
+        "VISUAL_READABILITY": "PASS_EXTERNAL_SVG_PHYSICAL_NOT_BOUND"
+      },
+      "sourceVariationObservation": "세로거리의 이중근 판정을 지수함수 차의 양근 개수와 두 근의 곱으로 재구성"
+    }
+  ],
+  "visualRows": [],
+  "metaRows": [
+    {
+      "qid": 1,
+      "result": "PASS",
+      "primaryMethod": "근호를 단항식으로 정리한 뒤 분자·분모 지수 차감",
+      "decisiveStep": "$a,b>0$이므로 $\\sqrt[3]{a^9b^3}=a^3b$이다.",
+      "rpmDisposition": "H2-M1-RPM-071: current source-semantic RPM L3/L4 aligned (direct R1 adjudication)",
+      "projectionDisposition": "EXACT_ACTIVE",
+      "lookupRefs": [
+        "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+        "docs/architecture/4slot/term-dictionary-v1.6.json"
+      ],
+      "problemTypeKey": "PT_H22A_01_EXPONENT_LAWS",
+      "templateKey": "TPL_H22A_01_EXPONENT_LAWS_071"
+    },
+    {
+      "qid": 2,
+      "result": "PASS",
+      "primaryMethod": "로그 차 → 밑 변환의 역수 → 지수로 되돌리기",
+      "decisiveStep": "$\\log_4 40-\\log_4 5=\\log_4 8$이고 $\\dfrac1{\\log_8 4}=\\log_4 8$이므로 $\\log_4 k=2\\log_4 8=\\log_4 64$이다.",
+      "rpmDisposition": "H2-M1-RPM-076: current source-semantic RPM L3/L4 aligned (direct R1 adjudication)",
+      "projectionDisposition": "EXACT_ACTIVE",
+      "lookupRefs": [
+        "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+        "docs/architecture/4slot/term-dictionary-v1.6.json"
+      ],
+      "problemTypeKey": "PT_H22A_01_LOG_PROPERTIES",
+      "templateKey": "TPL_H22A_01_LOG_PROPERTIES_076"
+    },
+    {
+      "qid": 3,
+      "result": "PASS",
+      "primaryMethod": "역함수의 대응점에서 f(2)=1/16을 얻고 지수방정식의 밑을 결정",
+      "decisiveStep": "$f^{-1}\\!\\left(\\dfrac1{16}\\right)=2$에서 $c^2=\\dfrac1{16}$이고 $0<c<1$이므로 $c=\\dfrac14$이다.",
+      "rpmDisposition": "H2-M1-RPM-081: current source-semantic RPM L3/L4 aligned (direct R1 adjudication)",
+      "projectionDisposition": "EXACT_ACTIVE",
+      "lookupRefs": [
+        "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+        "docs/architecture/4slot/term-dictionary-v1.6.json"
+      ],
+      "problemTypeKey": "PT_H22A_02_EXP_EQUATION",
+      "templateKey": "TPL_H22A_02_EXP_EQUATION_081"
+    },
+    {
+      "qid": 4,
+      "result": "PASS",
+      "primaryMethod": "동경의 대표각 → 코사인값",
+      "decisiveStep": "동경이 같은 각은 $2\\pi$의 정수배만큼 차이 난다.",
+      "rpmDisposition": "H2-M1-RPM-098: current source-semantic RPM L3/L4 aligned (direct R1 adjudication)",
+      "projectionDisposition": "EXACT_ACTIVE",
+      "lookupRefs": [
+        "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+        "docs/architecture/4slot/term-dictionary-v1.6.json"
+      ],
+      "problemTypeKey": "PT_H22A_04_TRIG_DEFINITION",
+      "templateKey": "TPL_H22A_04_TRIG_DEFINITION_098"
+    },
+    {
+      "qid": 5,
+      "result": "PASS",
+      "primaryMethod": "사인값의 범위에 음수배 → 상수 이동",
+      "decisiveStep": "모든 실수 $x$에 대하여 $-1\\le\\sin3x\\le1$이다.",
+      "rpmDisposition": "H2-M1-RPM-103: current source-semantic RPM L3/L4 aligned (direct R1 adjudication)",
+      "projectionDisposition": "EXACT_ACTIVE",
+      "lookupRefs": [
+        "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+        "docs/architecture/4slot/term-dictionary-v1.6.json"
+      ],
+      "problemTypeKey": "PT_H22A_04_TRIG_GRAPH_TRANSFORM",
+      "templateKey": "TPL_H22A_04_TRIG_GRAPH_TRANSFORM_105"
+    },
+    {
+      "qid": 6,
+      "result": "PASS",
+      "primaryMethod": "360도의 정수배 가감 → 음의 대표각 범위",
+      "decisiveStep": "동경이 같은 각은 $-1250^\\circ+360^\\circ n$ ($n$은 정수)으로 나타낸다.",
+      "rpmDisposition": "H2-M1-RPM-095: current source-semantic RPM L3/L4 aligned (direct R1 adjudication)",
+      "projectionDisposition": "EXACT_ACTIVE",
+      "lookupRefs": [
+        "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+        "docs/architecture/4slot/term-dictionary-v1.6.json"
+      ],
+      "problemTypeKey": "PT_H22A_04_ANGLE_RADIAN",
+      "templateKey": "TPL_H22A_04_ANGLE_RADIAN_095"
+    },
+    {
+      "qid": 7,
+      "result": "PASS",
+      "primaryMethod": "밑의 부호와 n의 홀짝 → 정확히 두 실근 조건 필터",
+      "decisiveStep": "실수인 $n$제곱근이 정확히 2개이려면 $n$이 짝수이고 근호 안의 수가 양수이어야 한다.",
+      "rpmDisposition": "H2-M1-RPM-068: current source-semantic RPM L3/L4 aligned (direct R1 adjudication)",
+      "projectionDisposition": "EXACT_ACTIVE",
+      "lookupRefs": [
+        "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+        "docs/architecture/4slot/term-dictionary-v1.6.json"
+      ],
+      "problemTypeKey": "PT_H22A_01_ROOT_REAL",
+      "templateKey": "TPL_H22A_01_ROOT_REAL_068"
+    },
+    {
+      "qid": 8,
+      "result": "PASS",
+      "primaryMethod": "세로로 3 평행이동한 지수함수에서 y좌표로 x를 역산하고 다른 점의 함숫값 대입",
+      "decisiveStep": "$7=2^p+3$에서 $p=2$, $q=2^4+3=19$이므로 $q-p=17$이다.",
+      "rpmDisposition": "H2-M1-RPM-080: current source-semantic RPM L3/L4 aligned (direct R1 adjudication)",
+      "projectionDisposition": "EXACT_ACTIVE",
+      "lookupRefs": [
+        "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+        "docs/architecture/4slot/term-dictionary-v1.6.json"
+      ],
+      "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+      "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION"
+    },
+    {
+      "qid": 9,
+      "result": "PASS",
+      "primaryMethod": "로그함수의 두 점 조건을 지수형으로 바꾸고 두 식을 빼서 평행이동 상수를 복원",
+      "decisiveStep": "$9-h=3^{-k}$, $33-h=9\\cdot3^{-k}$를 빼면 $24=8\\cdot3^{-k}$이므로 $k=-1$, $h=6$이다.",
+      "rpmDisposition": "H2-M1-RPM-088: current source-semantic RPM L3/L4 aligned (direct R1 adjudication)",
+      "projectionDisposition": "EXACT_ACTIVE",
+      "lookupRefs": [
+        "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+        "docs/architecture/4slot/term-dictionary-v1.6.json"
+      ],
+      "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+      "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION"
+    },
+    {
+      "qid": 10,
+      "result": "PASS",
+      "primaryMethod": "제곱 전개 → 사인·코사인 곱 → 네제곱 합",
+      "decisiveStep": "$1-2\\sin\\theta\\cos\\theta=\\dfrac53$이므로 $\\sin\\theta\\cos\\theta=-\\dfrac13$이고, 네제곱 합은 $1-2\\cdot\\dfrac19=\\dfrac79$이다.",
+      "rpmDisposition": "H2-M1-RPM-100: current source-semantic RPM L3/L4 aligned (direct R1 adjudication)",
+      "projectionDisposition": "EXACT_ACTIVE",
+      "lookupRefs": [
+        "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+        "docs/architecture/4slot/term-dictionary-v1.6.json"
+      ],
+      "problemTypeKey": "PT_H22A_04_TRIG_PROPERTIES",
+      "templateKey": "TPL_H22A_04_TRIG_PROPERTIES_100"
+    },
+    {
+      "qid": 11,
+      "result": "PASS",
+      "primaryMethod": "비의 양수 조건 → 사인과 코사인 같은 부호 → 사분면",
+      "decisiveStep": "$\\cos\\theta<0$이고 $\\dfrac{\\sin\\theta}{\\cos\\theta}>0$이므로 $\\sin\\theta$와 $\\cos\\theta$는 부호가 같다.",
+      "rpmDisposition": "H2-M1-RPM-098: current source-semantic RPM L3/L4 aligned (direct R1 adjudication)",
+      "projectionDisposition": "EXACT_ACTIVE",
+      "lookupRefs": [
+        "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+        "docs/architecture/4slot/term-dictionary-v1.6.json"
+      ],
+      "problemTypeKey": "PT_H22A_04_TRIG_DEFINITION",
+      "templateKey": "TPL_H22A_04_TRIG_DEFINITION_098"
+    },
+    {
+      "qid": 12,
+      "result": "PASS",
+      "primaryMethod": "둘레식으로 호 길이 제거 → 반지름에 대한 완전제곱",
+      "decisiveStep": "$2r+l=20$과 $S=\\dfrac12rl$에서 $S=25-(r-5)^2\\le25$이고, $r=5$이면 $l=10>0$이다.",
+      "rpmDisposition": "H2-M1-RPM-096: current source-semantic RPM L3/L4 aligned (direct R1 adjudication)",
+      "projectionDisposition": "EXACT_ACTIVE",
+      "lookupRefs": [
+        "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+        "docs/architecture/4slot/term-dictionary-v1.6.json"
+      ],
+      "problemTypeKey": "PT_H22A_04_ANGLE_RADIAN",
+      "templateKey": "TPL_H22A_04_ANGLE_RADIAN_096"
+    },
+    {
+      "qid": 13,
+      "result": "PASS",
+      "primaryMethod": "소인수별 지수에 두 합동조건 적용 → 최소 양의 지수",
+      "decisiveStep": "$12=2^2\\cdot3$, $18=2\\cdot3^2$이다. 최소인 $n$에는 두 소수 2, 3만 넣으면 된다.",
+      "rpmDisposition": "H2-M1-RPM-067: current source-semantic RPM L3/L4 aligned (direct R1 adjudication)",
+      "projectionDisposition": "EXACT_ACTIVE",
+      "lookupRefs": [
+        "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+        "docs/architecture/4slot/term-dictionary-v1.6.json"
+      ],
+      "problemTypeKey": "PT_H22A_01_ROOT_REAL",
+      "templateKey": "TPL_H22A_01_ROOT_REAL_067"
+    },
+    {
+      "qid": 14,
+      "result": "PASS",
+      "primaryMethod": "두 자릿수 부등식 사이에 a의 범위를 대입하여 b의 자리수 압축",
+      "decisiveStep": "$a^4$이 9자리이므로 $10^8\\le a^4<10^9$이다.",
+      "rpmDisposition": "H2-M1-RPM-077: current source-semantic RPM L3/L4 aligned (direct R1 adjudication)",
+      "projectionDisposition": "EXACT_ACTIVE",
+      "lookupRefs": [
+        "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+        "docs/architecture/4slot/term-dictionary-v1.6.json"
+      ],
+      "problemTypeKey": "PT_H22A_01_COMMON_LOG",
+      "templateKey": "TPL_H22A_01_COMMON_LOG_077"
+    },
+    {
+      "qid": 15,
+      "result": "PASS",
+      "primaryMethod": "로그 치환 → 이차식의 판별식 비양수 → a의 허용 구간",
+      "decisiveStep": "$t=\\log_2x$, $A=\\log_2a$로 놓자. $x>0$이므로 $t$는 모든 실수를 움직인다.",
+      "rpmDisposition": "H2-M1-RPM-092: current source-semantic RPM L3/L4 aligned (direct R1 adjudication)",
+      "projectionDisposition": "EXACT_ACTIVE",
+      "lookupRefs": [
+        "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+        "docs/architecture/4slot/term-dictionary-v1.6.json"
+      ],
+      "problemTypeKey": "PT_H22A_03_LOG_INEQUALITY",
+      "templateKey": "TPL_H22A_03_LOG_INEQUALITY_092"
+    },
+    {
+      "qid": 16,
+      "result": "PASS",
+      "primaryMethod": "삼각함수 제곱조건 → 탄젠트 → 곡선의 기울기 비",
+      "decisiveStep": "$\\sin^2\\theta=\\dfrac15$과 제1사분면 조건에서 $\\tan\\theta=\\dfrac12$이다. 따라서 $\\dfrac4{x^2}=\\dfrac12$, $x=2\\sqrt2$이다.",
+      "rpmDisposition": "H2-M1-RPM-098: current source-semantic RPM L3/L4 aligned (direct R1 adjudication)",
+      "projectionDisposition": "EXACT_ACTIVE",
+      "lookupRefs": [
+        "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+        "docs/architecture/4slot/term-dictionary-v1.6.json"
+      ],
+      "problemTypeKey": "PT_H22A_04_TRIG_DEFINITION",
+      "templateKey": "TPL_H22A_04_TRIG_DEFINITION_098"
+    },
+    {
+      "qid": 17,
+      "result": "PASS",
+      "primaryMethod": "거듭제곱 상한별 원소 수를 분류하고 홀수 개수·정확히 두 개 범위·3의 배수 개수를 독립 판정",
+      "decisiveStep": "$n(A_m)$은 $m=2,3,4\\sim5,6\\sim12,13\\sim144$에서 각각 $7,4,3,2,1$이므로 ㄱ 135개·ㄴ 6~12·ㄷ 44개로 ㄴ만 참이다.",
+      "rpmDisposition": "H2-M1-RPM-073: current source-semantic RPM L3/L4 aligned (direct R1 adjudication)",
+      "projectionDisposition": "EXACT_ACTIVE",
+      "lookupRefs": [
+        "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+        "docs/architecture/4slot/term-dictionary-v1.6.json"
+      ],
+      "problemTypeKey": "PT_H22A_01_LOG_DEFINITION",
+      "templateKey": "TPL_H22A_01_LOG_DEFINITION_073"
+    },
+    {
+      "qid": 18,
+      "result": "PASS",
+      "primaryMethod": "공통 수직점근선과 높이 0·1에서의 좌우 등거리, 반대편 배치로 로그함수 이동·대칭 계수 복원",
+      "decisiveStep": "$c=-3b$, 높이 $t=0,1$의 거리 비교로 $|b|=5$, $a=\\dfrac12$이고 반대편 배치에서 $b=-5$, $c=15$이다.",
+      "rpmDisposition": "H2-M1-RPM-088: current source-semantic RPM L3/L4 aligned (direct R1 adjudication)",
+      "projectionDisposition": "EXACT_ACTIVE",
+      "lookupRefs": [
+        "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+        "docs/architecture/4slot/term-dictionary-v1.6.json"
+      ],
+      "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+      "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION_REFLECTION"
+    },
+    {
+      "qid": 19,
+      "result": "PASS",
+      "primaryMethod": "지수함수의 절댓값 이차식에서 높이 256 수평선의 3교점 임계치를 판정하고 k의 최대·최소 계산",
+      "decisiveStep": "$g=256\\iff(x-k)^2=8\\pm h$에서 실근이 3개이려면 $h=8$이므로 $a=2$, $|8-(2-k)^2|=8$에서 $k=-2,2,6$이다.",
+      "rpmDisposition": "H2-M1-RPM-086: current source-semantic RPM L3/L4 aligned (direct R1 adjudication)",
+      "projectionDisposition": "EXACT_ACTIVE",
+      "lookupRefs": [
+        "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+        "docs/architecture/4slot/term-dictionary-v1.6.json"
+      ],
+      "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+      "templateKey": "TPL_FUNCTION_INTERSECTION_ABSOLUTE_PIECEWISE"
+    },
+    {
+      "qid": 20,
+      "result": "PASS",
+      "primaryMethod": "밑변환 → 두 로그의 차 → 정수 거듭제곱 비 조건과 순서쌍 열거",
+      "decisiveStep": "$u=a+1$, $v=b+1$로 놓으면 $2\\le u,v\\le31$이다.",
+      "rpmDisposition": "H2-M1-RPM-076: current source-semantic RPM L3/L4 aligned (direct R1 adjudication)",
+      "projectionDisposition": "EXACT_ACTIVE",
+      "lookupRefs": [
+        "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+        "docs/architecture/4slot/term-dictionary-v1.6.json"
+      ],
+      "problemTypeKey": "PT_H22A_01_LOG_PROPERTIES",
+      "templateKey": "TPL_H22A_01_LOG_PROPERTIES_076"
+    },
+    {
+      "qid": 21,
+      "result": "PASS",
+      "primaryMethod": "u=2^t 치환 → 부호별 이차방정식의 양근 개수 → Vieta",
+      "decisiveStep": "$u=2^t>0$이면 $\\overline{AB}=|u^2-u+2^{-k}|=\\dfrac5{16}$이다. 음수 분기는 불가하고 $k=1$일 때만 양근 둘이 나온다.",
+      "rpmDisposition": "H2-M1-RPM-082: current source-semantic RPM L3/L4 aligned (direct R1 adjudication)",
+      "projectionDisposition": "EXACT_ACTIVE",
+      "lookupRefs": [
+        "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+        "docs/architecture/4slot/term-dictionary-v1.6.json"
+      ],
+      "problemTypeKey": "PT_H22A_02_EXP_EQUATION",
+      "templateKey": "TPL_H22A_02_EXP_EQUATION_082"
+    }
+  ],
+  "examSha256": "sha256:305b49b37f1a6ed589a834b3077c224a0befdad1b18b5619a4793d303d5f4d70",
+  "summary": {
+    "questionCount": 21,
+    "questionEvidenceRows": 21,
+    "linkedSolutionVisualCount": 0,
+    "visualEvidenceRows": 0,
+    "metaEvidenceRows": 21,
+    "itemHoldCount": 0
+  },
+  "auditNotes": {
+    "reviewScope": "FULL_R1_21_ITEMS_AFTER_REPAIR",
+    "itemHoldCount": 0,
+    "modifiedQuestionContentQids": [
+      8,
+      9,
+      17,
+      19
+    ],
+    "modifiedSemanticMetadataQids": [
+      2,
+      3,
+      4,
+      5,
+      8,
+      9,
+      10,
+      12,
+      15,
+      16,
+      17,
+      18,
+      19,
+      21
+    ],
+    "actualBrowserRender": "NOT_RUN",
+    "linkedSvgCount": 0,
+    "pendingSvg": [
+      "Q08 problem",
+      "Q19 solution",
+      "Q21 solution-plan binding"
+    ],
+    "verifiedCurrentBlob": "483284195ebf7124bf09be6e45d129773ead0c26",
+    "concurrentSvgConflictResolution": "Other line rendered Q08/Q19/Q21 old source. R1 actual PNG review found Q08 y=2^x and Q19 k=-8,2,12 incompatible with repaired math; links removed. Q21 actual SVG math and labels are valid, but official q21-solution.plan.json status EXEMPT makes linked solutionImage fail the main harness; Q21 image link was also removed without inventing a new active plan.",
+    "unlinkedExternalSvgPhysicalReview": {
+      "qid": 21,
+      "assetPath": "assets/images/26_금당고_1학기_중간_고2_대수_유사2/q21-solution.svg",
+      "assetSha256": "sha256:20a66986ff0ad51049e721608e9e0f4678eeaa56c98709671cb4da7ceb6e02e8",
+      "method": "Inkscape --pipe --export-width=900 PNG render + direct pixel inspection + coordinate computation",
+      "expected": "Q(u)=(u-1/2)^2+1/4, Q(1/4)=Q(3/4)=5/16, both positive u; legible labels",
+      "observed": "PNG matched two (1/4,5/16)/(3/4,5/16) marks, plotted parabola and y=5/16 label; no overlap or clipping",
+      "result": "PASS_ASSET_ONLY_UNBOUND_PLAN_EXEMPT"
+    },
+    "calibration": "Golden 2 + Bokseong Negative physically reviewed"
+  }
+}
