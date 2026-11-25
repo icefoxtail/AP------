@@ -1,0 +1,21 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conics": [
+    {"id":"e","kind":"ELLIPSE","center":["0","0"],"aSquared":"32","bSquared":"16","major":"X"},
+    {"id":"k","kind":"CIRCLE","center":["0","0"],"rSquared":"16"}
+  ],
+  "points": [
+    {"id":"A","kind":"FOCUS","curve":"e","side":-1,"coordinates":true},
+    {"id":"B","kind":"FOCUS","curve":"e","side":1,"coordinates":true},
+    {"id":"C","kind":"POINT","x":"0","y":"4","coordinates":true},
+    {"id":"D","kind":"POINT","x":"0","y":"-4","coordinates":true}
+  ],
+  "caption": "원 x²+y²=16의 축 교점 A·B·C·D와 AB를 두 초점으로 하는 타원",
+  "accessibilityDescription": "원점 중심의 원과 더 넓은 가로 장축 타원이 겹쳐 있다. 원의 왼쪽 A(-4,0)와 오른쪽 B(4,0)는 타원의 초점이고 위쪽 C(0,4), 아래쪽 D(0,-4)는 두 곡선에 공통인 점이다.",
+  "sourceConditions": [
+    {"id":"c1","condition":"원 x²+y²=16의 x축 양 끝점 A=(-4,0),B=(4,0)는 타원 초점이고 y축 양 끝점 C=(0,4),D=(0,-4)는 타원의 단축 꼭짓점이다.","mappedTo":["k","A","B","C","D"]},
+    {"id":"c2","condition":"초점거리 c=4와 단축 반지름 b=4를 동시에 만족하는 타원은 x²/32+y²/16=1이다. 실제 두 곡선을 같은 배율로 중첩한다.","mappedTo":["e","k"]},
+    {"id":"c3","condition":"타원 위 미지점 (4,k)는 발문에만 주어지고 원문 그림의 표시점에는 포함되지 않는다. k²=8이라는 정답을 문제 그림에 노출하지 않는다.","mappedTo":["e","B"]}
+  ],
+  "newVisualInformation": ["원 위 네 축 교점 중 두 점은 타원의 초점, 나머지 두 점은 단축 꼭짓점이라는 관계를 실제 곡선 2개로 구현", "정답 미지 k는 표시하지 않음"]
+}

@@ -1,0 +1,21 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conics":[
+    {"id":"e","kind":"ELLIPSE","center":["0","0"],"aSquared":"81","bSquared":"17","major":"X"},
+    {"id":"k","kind":"CIRCLE","center":["8","0"],"rSquared":"9"}
+  ],
+  "points":[
+    {"id":"F","kind":"FOCUS","curve":"e","side":1},
+    {"id":"F'","kind":"FOCUS","curve":"e","side":-1},
+    {"id":"P3","kind":"CONIC_CONIC","curves":["e","k"],"which":2}
+  ],
+  "segments":[{"id":"sPnF","from":"P3","to":"F"},{"id":"sPnFp","from":"P3","to":"F'"}],
+  "caption":"타원 x²/81+y²/17과 F(8,0) 중심 반지름 n인 원의 대표 교점 Pₙ",
+  "accessibilityDescription":"타원 초점 F′(-8,0),F(8,0) 중 오른쪽 F를 중심으로 원 하나가 그려져 있고, 그 원과 타원이 만나는 위쪽 점 P3에서 두 초점으로 연결선이 있다. 원은 범위 1≤n≤8 중 대표 n=3을 그린 것으로 원문의 일반형 Pₙ 아래첨자 표시는 엔진 기능 보강 대상이다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"타원 장축 18, 초점 F=(8,0),F′=(-8,0). 원문은 1≤n≤8개의 반지름 n인 원족을 다루지만 [그림]은 원 하나와 P_n 하나를 설명하므로 유효한 대표 n=3을 택했다. 원 중심 F, 반지름 3을 실제 필드로 작도한다.","mappedTo":["e","k","F","F'"]},
+    {"id":"c2","condition":"n=3에서 위 교점 P3=(27/4,√119/4)는 타원과 원 양쪽 위에 있다. PF=3, PF′=15이고 합 18을 정확 검산했지만 합계 정답은 미표시한다. conic 점 id의 밑줄 P_n은 ELLIPSE_POINT_ID_INVALID, 두 초점 coordinates:true는 ELLIPSE_LABEL_NO_ROOM이므로 화면에는 P3과 두 초점 이름만 쓰고 두 기능 보강을 인계한다.","mappedTo":["P3","sPnF","sPnFp"]},
+    {"id":"c3","condition":"원문의 '두 점 중 한 점'은 n=1에서는 예외이다. 원 반지름1은 타원과 (9,0)에서 접하여 한 점만 존재한다. 문항 합의 값은 정의 가능하나 문자 그대로 두 교점이 아니라는 원문 주의사항을 인계한다.","mappedTo":["e","k","P3"]}
+  ],
+  "newVisualInformation":["수열형 조건을 임의 반지름 3의 유효한 교점 하나로 구현", "n=1 접점 예외를 검증 기록에 남기고 총합 수치 비노출"]
+}

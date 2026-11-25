@@ -1,0 +1,21 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conics":[
+    {"id":"e","kind":"ELLIPSE","center":["0","0"],"aSquared":"16+8*sqrt(3)","bSquared":"8*sqrt(3)","major":"X"},
+    {"id":"k","kind":"CIRCLE","center":["0","0"],"rSquared":"16"}
+  ],
+  "points":[
+    {"id":"F","kind":"FOCUS","curve":"e","side":1,"coordinates":true},
+    {"id":"F'","kind":"FOCUS","curve":"e","side":-1,"coordinates":true},
+    {"id":"P","kind":"CONIC_CONIC","curves":["e","k"],"which":4}
+  ],
+  "lines":[{"id":"t","at":"P","tangent":true,"curve":"k"}],
+  "caption":"초점 F(4,0),F′(−4,0)을 지름으로 하는 원과 타원의 제1사분면 공통접점 P",
+  "accessibilityDescription":"x축 위 두 초점을 지름의 양끝으로 하는 원과 더 넓은 타원이 제1사분면 점 P에서 만난다. 원의 P에서 내린 접선이 오른쪽 위에서 왼쪽 아래 방향으로 기울어져 있다. 원문 5π/6 각호·각도 표식은 현재 엔진 미지원이다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"F=(4,0),F′=(-4,0)에서 반지름4 지름원 x²+y²=16. 원의 제1사분면 접선이 양의 x축과 5π/6을 이루면 접점은 P=(2,2√3), 접선 기울기 −1/√3이다.","mappedTo":["k","F","F'","P","t"]},
+    {"id":"c2","condition":"PF=4,PF′=4√3이므로 타원 장축은 4+4√3, 내부 모델 a²=16+8√3,b²=8√3를 사용한다. 질문의 장축 길이는 숫자 라벨로 보이지 않는다.","mappedTo":["e","P"]},
+    {"id":"c3","condition":"P는 두 곡선의 x·y 오름차순 4번째 공통점이며 직선 t는 원 k에 P에서 접한다. 5π/6 각호와 각도 라벨은 현재 conic 표현 필드가 없어 ENGINE_CAPABILITY_PENDING으로 인계한다.","mappedTo":["P","t"]}
+  ],
+  "newVisualInformation":["원 P 접선을 도형 계산 노드로 구현", "각호·각도 라벨은 엔진 보강 요구로 분리하고 정답 숫자는 숨김"]
+}

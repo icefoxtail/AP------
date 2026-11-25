@@ -1,0 +1,22 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conics":[
+    {"id":"e","kind":"ELLIPSE","center":["0","0"],"aSquared":"9","bSquared":"18*sqrt(3)-27","major":"X"},
+    {"id":"k","kind":"CIRCLE","center":["3*sqrt(3)-3","0"],"rSquared":"36-18*sqrt(3)"}
+  ],
+  "points":[
+    {"id":"F","kind":"FOCUS","curve":"e","side":1},
+    {"id":"F'","kind":"FOCUS","curve":"e","side":-1},
+    {"id":"P","kind":"CONIC_CONIC","curves":["e","k"],"which":2}
+  ],
+  "lines":[{"id":"t","through":["F'","P"],"tangent":true,"curve":"k"}],
+  "segments":[{"id":"sPF","from":"P","to":"F"},{"id":"sPFp","from":"P","to":"F'"}],
+  "caption":"장축 6인 타원과 초점 F 중심 반지름 c인 원이 만나는 P, F′P 접선",
+  "accessibilityDescription":"두 초점 F와 F′가 x축에 놓인 가로 타원, 오른쪽 초점 F를 중심으로 한 원, 제1사분면의 교점 P가 함께 있다. P를 지나 F′까지 이어지는 직선은 원에 대한 접선이다. 미지수 c의 숫자는 보이지 않는다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"타원 장축 길이6이므로 a=3. 원이 F 중심 반지름 c이고 P에서 접선 PF′가 원 반지름 PF와 수직이라는 조건을 독립적으로 풀어 c=3√3−3, b²=a²−c²=18√3−27를 내부 모델에만 사용한다. 문제 그림에는 c의 값을 쓰지 않는다.","mappedTo":["e","k","F","F'"]},
+    {"id":"c2","condition":"P=(c/2,c√3/2)는 원과 타원의 양의 y 공통점이다. PF=c, PF′=6−c, FF′=2c이고 (P−F)·(P−F′)=0을 만족한다. CONIC_CONIC which2(상부)를 실제 교점으로 생성한다.","mappedTo":["P","sPF","sPFp"]},
+    {"id":"c3","condition":"직선 t는 F′와 P를 지나며 원 k의 P에서 접한다. conic 엔진의 tangent:true로 접선 판별식을 검증한다. 원문 F(c,0),F′(−c,0) 미지 기호 좌표 라벨은 별도 엔진 보강 필요; 수치를 보이는 coordinates:true는 답 누설로 금지한다.","mappedTo":["t","P","F'"]}
+  ],
+  "newVisualInformation":["타원·원 공통점과 실제 접선을 엔진의 대수적 접선 검증 필드로 생성", "미지 c를 직접 표시하지 않음"]
+}

@@ -1,0 +1,118 @@
+{
+  "campaign": "typebank-high2-geometry-problem-svg",
+  "typeGroup": "타원과 원2·타원과 포물선·타원 실생활 활용 (기하 033–035)",
+  "auditKind": "SOURCE_FIGURE_TO_ENGINE_PLAN_PRE_RENDER",
+  "auditedAtKst": "2026-11-25",
+  "sourceOfTruth": "archive/exams/types/high/h2/기하_033·034·035의 원본 JS questionBank[id] 발문·[그림]·보기·정답·해설",
+  "sourceSha256": {
+    "기하_033": "472db41e1031392eba6317dde4719e163b5272937ba4384c8aa7c4fb8e4daf3f",
+    "기하_034": "d644d9f1396d0fb55d21c13661536b4d109e358ea78d62b738a35b021d127141",
+    "기하_035": "f16f161f0c55741d197d76af70ab29a4a2c0bfb5a528e0c4e1befa6d793c969c"
+  },
+  "scope": {
+    "distinctJsFiles": 3,
+    "allQuestions": 22,
+    "sourceFigures": 13,
+    "sourceVsPlanReviewed": 13,
+    "actualPlans": 12,
+    "lintShallowPass": 12,
+    "lintFullPass": 12,
+    "independentMathPass": 12,
+    "featureParityPreRenderPass": 4,
+    "engineCapabilityPendingWithPlan": 8,
+    "contentMathBlockedWithoutPlan": 1,
+    "sourceWarningsWithoutMathBlock": 1,
+    "noFigureQids": [
+      {"stemNumber": 34, "qids": [1,2,7,8,9], "reason": "원문에 [그림:] 없음"},
+      {"stemNumber": 35, "qids": [1,2,3,4], "reason": "타원의 실생활 활용 4문항 모두 원문 [그림:] 없음; 이 배치의 문제 SVG plan 생성 대상 아님"}
+    ]
+  },
+  "validation": {
+    "lintShallowCommand": "node archive/tools/geometry-equation/ops/claude-batch/plan-lint.cjs --shallow archive/tools/geometry-equation/production/plans/기하_03[345]_*/q*-problem.plan.json",
+    "lintFullCommand": "node archive/tools/geometry-equation/ops/claude-batch/plan-lint.cjs archive/tools/geometry-equation/production/plans/기하_03[345]_*/q*-problem.plan.json",
+    "dependencySetup": "공식 production/setup-spikes.mjs로 렌더링·계산 의존성 및 폰트 설치 후 full lint 실행",
+    "independentMathCheck": "별도 SymPy 1.14.0에서 033q01~q07(7건)의 실제 두 곡선·초점·교점·길이·접선·반지름 조건, 034q03·04·05·06·10(5건)의 타원과 포물선 연립 교점·초점·준선·거리·수선 발을 정확식으로 재계산하여 12/12 PASS. 033q08의 원문 조건 모순과 033q04의 n=1 접점 예외도 별도 확인",
+    "featureParityStage": "PRE_RENDER_SOURCE_VS_PLAN_FIELDS",
+    "render": "NOT_RUN",
+    "pngVisualReview": "NOT_RUN",
+    "studentScreenReview": "NOT_RUN",
+    "a4PrintReview": "NOT_RUN",
+    "jsImageLink": "NOT_RUN",
+    "publication": "NOT_RUN"
+  },
+  "items": [
+    {
+      "stemNumber":33,"qid":1,"sourceVsPlan":"REVIEWED","planLintShallow":"PASS","planLintFull":"PASS","independentMath":"PASS","featureParity":"PASS",
+      "verified":"원 x²+y²=16의 축교점 A(-4,0), B(4,0), C(0,4), D(0,-4)가 타원 x²/32+y²/16의 두 초점·단축 두 꼭짓점인 관계를 conics로 정확히 구현. 답 k² 미표시"
+    },
+    {
+      "stemNumber":33,"qid":2,"sourceVsPlan":"REVIEWED","planLintShallow":"PASS","planLintFull":"PASS","independentMath":"PASS","featureParity":"ENGINE_CAPABILITY_PENDING",
+      "verified":"타원 x²/25+y²/9 위 제1사분면 P=(5√7/4,9/4), 초점 ±4, OP=OF=4 및 PF·PF′=18 정확식 검산. 두 실제 선분 OP·OF와 PF·PF′를 표시",
+      "missingVisual":"OP=OF인 선분 두 개의 동등 길이 눈금. 현행 ellipse-figure-v1에 같은 길이 표식 필드 없음"
+    },
+    {
+      "stemNumber":33,"qid":3,"sourceVsPlan":"REVIEWED","planLintShallow":"PASS","planLintFull":"PASS","independentMath":"PASS","featureParity":"PASS",
+      "verified":"타원 x²/36+y²/20, F(4,0) 중심 반지름 4인 원과 제1사분면 교점 P=(3,√15), 초점 A(-4,0), PA=8을 정확한 곡선·점·선분에 매핑. 미지 PA 값 미표시"
+    },
+    {
+      "stemNumber":33,"qid":4,"sourceVsPlan":"REVIEWED","planLintShallow":"PASS","planLintFull":"PASS","independentMath":"PASS","featureParity":"ENGINE_CAPABILITY_PENDING",
+      "verified":"타원 x²/81+y²/17, F=(8,0),F′=(-8,0), n=3 대표 원과 위쪽 교점 P3=(27/4,√119/4), PF=3, PF′=15 검산. 1≤n≤8 합의 정답은 미표시",
+      "missingVisual":"원문의 일반형 Pₙ 아래첨자 식별 표기 및 F(8,0),F′(-8,0) 좌표 병기. P_n은 ELLIPSE_POINT_ID_INVALID, 양쪽 coordinates:true는 ELLIPSE_LABEL_NO_ROOM. 현행은 P3·F·F′ 이름만 렌더",
+      "sourceWarning":"n=1이면 F 중심 반지름 1인 원이 타원과 (9,0)에서 접해 교점이 정확히 1개. 원문 '두 점 중 한 점'은 이 n에서 부정확하지만 P1 자체와 합은 정의됨"
+    },
+    {
+      "stemNumber":33,"qid":5,"sourceVsPlan":"REVIEWED","planLintShallow":"PASS","planLintFull":"PASS","independentMath":"PASS","featureParity":"ENGINE_CAPABILITY_PENDING",
+      "verified":"장축 6 타원, 초점 c=3√3−3, F 중심 반지름 c인 원과 교점 P=(c/2,c√3/2), F′P 원 접선·PF⊥PF′를 계산하고 tangent:true 실제 검증",
+      "missingVisual":"원문 미지 기호를 쓰는 F(c,0),F′(-c,0) 좌표 라벨. coordinates:true는 수치 정답을 누설해 사용 금지"
+    },
+    {
+      "stemNumber":33,"qid":6,"sourceVsPlan":"REVIEWED","planLintShallow":"PASS","planLintFull":"PASS","independentMath":"PASS","featureParity":"ENGINE_CAPABILITY_PENDING",
+      "verified":"타원 x²/25+y²/9, A=(0,2√21), F=(4,0),F′=(-4,0), P=(-50/17,9√21/17), PA=PF=125/17. P 중심 원이 A,F 모두 지나며 P는 AF′ 선분 안에 있음",
+      "missingVisual":"미지 k를 숫자로 누설하지 않고 A(0,k)라고 표시할 기호 좌표 라벨 필드"
+    },
+    {
+      "stemNumber":33,"qid":7,"sourceVsPlan":"REVIEWED","planLintShallow":"PASS","planLintFull":"PASS","independentMath":"PASS","featureParity":"ENGINE_CAPABILITY_PENDING",
+      "verified":"반지름 4인 초점 지름 원과 타원의 제1사분면 교점 P=(2,2√3). 접선 기울기 -1/√3, 방향각 5π/6, 실제 타원 a²=16+8√3,b²=8√3 검산",
+      "missingVisual":"P에 종속되는 접선과 양의 x축 사이 5π/6 각호·각도 라벨"
+    },
+    {
+      "stemNumber":33,"qid":8,"sourceVsPlan":"REVIEWED","planLintShallow":"NOT_RUN","planLintFull":"NOT_RUN","independentMath":"SOURCE_CONTRADICTION_CONFIRMED","featureParity":"CONTENT_MATH_BLOCKED","planStatus":"NOT_CREATED_SOURCE_MATH_BLOCKED",
+      "verified":"원을 타원 장축 왼쪽 꼭짓점 (-a,0)에 중심으로 두고 두 단축 꼭짓점 (0,±b)를 지나려면 a²+b²=1이라 a<1. 그러나 초점 F′=(-c,0),0<c<a를 반지름 1인 원이 지나려면 a−c=1이어서 a>1. 동시 충족 불가. 원문 해설 c=a−1과 a=√3−1은 c<0이므로 원문 c>0과 모순",
+      "blockingIssue":"타원/원/초점 세 조건을 동시에 만족하는 실제 그림이 없다. 원본 문제·정답·해설을 전담 라인에서 재설계한 후에만 plan 생성"
+    },
+    {
+      "stemNumber":34,"qid":3,"sourceVsPlan":"REVIEWED","planLintShallow":"PASS","planLintFull":"PASS","independentMath":"PASS","featureParity":"PASS",
+      "verified":"포물선 C1: y²=16(x−4), 준선 x=0·초점 A(8,0), 타원 C2 중심(4,0)·초점 O(0,0),A(8,0), 위쪽 교점 P=(10,4√6), PA=10의 정확한 두 곡선 및 선분"
+    },
+    {
+      "stemNumber":34,"qid":4,"sourceVsPlan":"REVIEWED","planLintShallow":"PASS","planLintFull":"PASS","independentMath":"PASS","featureParity":"PASS",
+      "verified":"타원 x²/25+y²/9·포물선 y²=−16x 위·아래 교점 A=(-5/9,4√5/3),B=(-5/9,-4√5/3), 초점 F=(-4,0),F′=(4,0), 사각형 AF′BF 네 선분 정확히 연결"
+    },
+    {
+      "stemNumber":34,"qid":5,"sourceVsPlan":"REVIEWED","planLintShallow":"PASS","planLintFull":"PASS","independentMath":"PASS","featureParity":"ENGINE_CAPABILITY_PENDING",
+      "verified":"타원 x²/36+y²/11·포물선 y²=20x 상부 교점 P=(6/11,2√330/11), 초점 F=(5,0), 준선 x=−5, Q=(-5,0)=F′, R=(-5,2√330/11), FOOT 직각 표시. PQ+PR=12 검산",
+      "missingVisual":"원문 Q(-5,0) 좌표 병기(Ellipse label no room), Q=F′의 동일점 복수 이름. F′ 라벨은 중복 충돌 방지로 생략"
+    },
+    {
+      "stemNumber":34,"qid":6,"sourceVsPlan":"REVIEWED","planLintShallow":"PASS","planLintFull":"PASS","independentMath":"PASS","featureParity":"ENGINE_CAPABILITY_PENDING",
+      "verified":"타원 x²/49+y²/40·포물선 y²=−12x의 A=(-14/5,2√210/5), F′=(-3,0), 준선 x=3, B=(3,0)=F, C=(3,2√210/5)의 실제 FOOT 직각. AB+AC=14 검산",
+      "missingVisual":"동일점 B=F를 원문 두 이름으로 함께 표시하는 별칭/동일점 라벨 기능"
+    },
+    {
+      "stemNumber":34,"qid":10,"sourceVsPlan":"REVIEWED","planLintShallow":"PASS","planLintFull":"PASS","independentMath":"PASS","featureParity":"ENGINE_CAPABILITY_PENDING",
+      "verified":"포물선 y²=8x, 타원 중심(1,0),a²=4,b²=3, F=(2,0),F′=(0,0), A=(-1,0), 제1사분면 교점 B=(1/3,2√6/3), 준선 x=−2의 발 H=(-2,2√6/3)와 BH=7/3 선분 라벨",
+      "missingVisual":"원문 A(-1,0)와 F(2,0) 좌표 동시 병기. 좌표 표시가 ELLIPSE_LABEL_NO_ROOM으로 실패하여 현재 A,F 이름만 유지"
+    }
+  ],
+  "engineHandoff": [
+    {"kind":"EQUAL_LENGTH_TICKS_UNSUPPORTED","qids":["033q02"],"target":"ellipse-figure-v1/conic","request":"OP=OF인 두 선분에 동일 길이 눈금"},
+    {"kind":"POINT_SUBSCRIPT_AND_FOCUS_LABEL_NO_ROOM","qids":["033q04"],"target":"ellipse-figure-v1/conics","request":"일반형 Pₙ 라벨 지원, 두 초점 좌표 라벨 충돌 배치 해결. 현행 P_n id invalid; 표시상 P3 대표 사용"},
+    {"kind":"SYMBOLIC_GIVEN_COORDINATES","qids":["033q05","033q06"],"target":"ellipse-figure-v1/conics","request":"미지 답 수치 노출 없이 F(c,0),F′(-c,0),A(0,k)를 정확한 점에 표시하는 기호 좌표 필드"},
+    {"kind":"ANGLE_ARC_LABEL_UNSUPPORTED","qids":["033q07"],"target":"ellipse-figure-v1/conics","request":"원 P 접선의 x축 양의 방향에 대한 5π/6 각호 및 각도 텍스트"},
+    {"kind":"DUPLICATE_POINT_ALIAS_OR_COORDINATE_NO_ROOM","qids":["034q05","034q06","034q10"],"target":"ellipse-figure-v1/conics","request":"동일좌표 다른 이름 Q=F′,B=F 동시 소유 표기와 주어진 좌표 라벨 충돌 해결; 실제 점·수선·선분은 plan에 구현됨"}
+  ],
+  "contentHandoff": [
+    {"stemNumber":33,"qid":8,"kind":"MATHEMATICAL_SOURCE_CONTRADICTION","request":"원문 반지름1인 원이 단축 꼭짓점 (0,±b)와 왼쪽 초점 (-c,0)을 동시에 지나게 하는 조건을 재설계. 타원 a²+b²=1에서 a<1인데 초점에 닿으려면 a−c=1이어서 a>1인 모순. 정답·해설도 정오표 필요"}
+  ],
+  "handoffNote": "033→034→035의 원문 22문항 중 실제 [그림] 13건을 전부 직접 대조했다. 035는 그림 지시가 없어 plan 0건이다. 033q08 원본 수학 모순으로 plan을 만들지 않았고 다른 12건은 실제 정규 JSON·정확식 검산·shallow/full lint 통과. pre-render 그림 필드 PASS 4건, 엔진 표시 보강 8건이다. 이것은 SVG/PNG 최종 화면 완성과 다르며 렌더·학생 화면·A4·JS 이미지 연결·게시 전부 NOT_RUN. 기존 JS와 정답은 수정하지 않았다."
+}

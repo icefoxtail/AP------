@@ -1,0 +1,28 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conics":[
+    {"id":"e","kind":"ELLIPSE","center":["1","0"],"aSquared":"4","bSquared":"3","major":"X"},
+    {"id":"p","kind":"PARABOLA","vertex":["0","0"],"p":"2","axis":"X"}
+  ],
+  "points":[
+    {"id":"A","kind":"POINT","x":"-1","y":"0"},
+    {"id":"F","kind":"FOCUS","curve":"e","side":1},
+    {"id":"F'","kind":"FOCUS","curve":"e","side":-1},
+    {"id":"B","kind":"CONIC_CONIC","curves":["e","p"],"which":2},
+    {"id":"H","kind":"FOOT","from":"B","onto":"d","rightAngle":true}
+  ],
+  "lines":[{"id":"d","role":"DIRECTRIX","curve":"p","dashed":true,"label":"x=-2"}],
+  "segments":[
+    {"id":"sBH","from":"B","to":"H","label":"\\frac{7}{3}"},
+    {"id":"sBF","from":"B","to":"F"},
+    {"id":"sBFp","from":"B","to":"F'"}
+  ],
+  "caption":"포물선 y²=8x과 초점 F(2,0)을 공유하는 타원 E의 제1사분면 교점 B, 준선의 발 H",
+  "accessibilityDescription":"원점 꼭짓점에서 오른쪽 열린 포물선과 중심이 (1,0)인 가로 타원이 제1사분면 B에서 만난다. 포물선의 x=−2 준선에 내린 BH 수선과 두 초점 F,F′까지의 선분이 있고, 왼쪽 타원 끝점 A(−1,0)가 표시돼 있다. BH의 주어진 길이는 7/3이다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"포물선 y²=8x의 초점 F=(2,0), 준선 x=-2이다. 타원 E는 A=(-1,0)와 초점 F=(2,0),F′=(0,0)을 지니며 중심(1,0),a²=4,b²=3이다. 미지 장축길이 4는 문제 그림에 적지 않는다. A.coordinates:true는 ELLIPSE_LABEL_NO_ROOM으로 실패하므로 A 이름만 표시하고 좌표 병기는 엔진 보강 대상으로 인계한다.","mappedTo":["p","e","A","F","F'","d"]},
+    {"id":"c2","condition":"BH=7/3에서 B=(1/3,2√6/3)이며 포물선·타원 위에 모두 정확히 놓인다. P가 아니라 원문 B라는 점 이름 그대로 CONIC_CONIC which2로 계산한다.","mappedTo":["B","sBH"]},
+    {"id":"c3","condition":"H=(-2,2√6/3)는 B에서 준선 d에 내린 수선의 발이고 직각 표식을 그린다. BF·BF′ 선분을 실제로 연결하고 주어진 BH 라벨을 소유 선분에 표시한다.","mappedTo":["H","sBH","sBF","sBFp"]}
+  ],
+  "newVisualInformation":["교점 B와 준선 수선 발 H를 공식 계산 노드로 생성", "원문 수치 BH=7/3을 직접 선분 라벨로 표기하고 답 미노출"]
+}

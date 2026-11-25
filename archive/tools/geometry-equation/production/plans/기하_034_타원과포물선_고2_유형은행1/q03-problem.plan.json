@@ -1,0 +1,21 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conics":[
+    {"id":"p","kind":"PARABOLA","vertex":["4","0"],"p":"4","axis":"X","label":"C_1"},
+    {"id":"e","kind":"ELLIPSE","center":["4","0"],"aSquared":"144","bSquared":"128","major":"X","label":"C_2"}
+  ],
+  "points":[
+    {"id":"O","kind":"ORIGIN","coordinates":true},
+    {"id":"A","kind":"FOCUS","curve":"e","side":1,"coordinates":true},
+    {"id":"P","kind":"CONIC_CONIC","curves":["p","e"],"which":2}
+  ],
+  "segments":[{"id":"sPA","from":"P","to":"A"}],
+  "caption":"초점 A(8,0)·준선 y축인 포물선 C₁과 O,A를 초점으로 하는 타원 C₂의 교점 P",
+  "accessibilityDescription":"원점 O와 오른쪽 A(8,0)가 x축에 있다. 꼭짓점 (4,0)을 가진 오른쪽 열린 포물선과 두 점을 초점으로 하는 가로 타원이 위쪽 P에서 교차하며 P에서 A로 선분을 연결했다. 포물선 준선은 y축이다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"포물선 초점 A=(8,0)·준선 x=0이므로 꼭짓점(4,0), p=4, 식 y²=16(x−4)이다. O=(0,0),A=(8,0)는 타원 두 초점이다.","mappedTo":["p","O","A"]},
+    {"id":"c2","condition":"PA=10이고 포물선 정의상 x_P=10. P=(10,4√6), OP=14이므로 타원 중심(4,0), 장축길이24, a²=144,b²=128을 내부 도형으로 확정한다.","mappedTo":["e","P","sPA"]},
+    {"id":"c3","condition":"P는 두 곡선의 위쪽 교점 CONIC_CONIC which2이다. 문제에서 묻는 장축 길이 24는 그림 라벨로 인쇄하지 않는다.","mappedTo":["P","e"]}
+  ],
+  "newVisualInformation":["포물선의 직접 준선 x=0과 타원의 양쪽 초점 O,A를 일치시킨 곡선 두 개", "실제 교점과 PA 선분 생성, 질문 정답 미표시"]
+}
