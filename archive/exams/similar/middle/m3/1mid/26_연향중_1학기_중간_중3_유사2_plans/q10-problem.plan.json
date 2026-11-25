@@ -1,0 +1,304 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "I",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "H",
+    "E",
+    "F",
+    "G",
+    "I"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "C",
+        "H"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "s5",
+      "refs": [
+        "F",
+        "G"
+      ]
+    },
+    {
+      "id": "s6",
+      "refs": [
+        "G",
+        "I"
+      ]
+    },
+    {
+      "id": "s7",
+      "refs": [
+        "I",
+        "E"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 480
+  },
+  "caption": "밑변 √20과 높이 h인 삼각형, 가로 √45와 세로 √8인 직사각형이며 두 도형의 넓이는 같다.",
+  "accessibilityDescription": "밑변 √20과 높이 h인 삼각형, 가로 √45와 세로 √8인 직사각형이며 두 도형의 넓이는 같다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "삼각형의 밑변 √20, 높이 h",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "직사각형의 가로 √45, 세로 √8",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "두 도형 넓이 같음",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 도형을 분리하여 밑변·높이와 가로·세로를 혼동하지 않게 한다."
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "tbase",
+        "ownerSegment": "s0",
+        "text": "sqrt(20)"
+      },
+      {
+        "id": "theight",
+        "ownerSegment": "s3",
+        "text": "h"
+      },
+      {
+        "id": "rwidth",
+        "ownerSegment": "s4",
+        "text": "sqrt(45)"
+      },
+      {
+        "id": "rheight",
+        "ownerSegment": "s5",
+        "text": "sqrt(8)"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "t-right",
+      "refs": [
+        "A",
+        "H",
+        "C"
+      ]
+    }
+  ]
+}

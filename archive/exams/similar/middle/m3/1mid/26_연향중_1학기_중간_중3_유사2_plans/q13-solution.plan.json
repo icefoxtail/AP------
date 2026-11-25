@@ -1,0 +1,199 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "D",
+    "C",
+    "B"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "B",
+        "A"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 480
+  },
+  "caption": "평행변 합은 7√3이고 7√3·h/2=21√6/2이므로 높이 h=3√2이다.",
+  "accessibilityDescription": "평행변 합은 7√3이고 7√3·h/2=21√6/2이므로 높이 h=3√2이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AD+BC=7√3",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "넓이=21√6/2",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "h=3√2",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "평행한 두 변의 합에 수직 높이를 곱한 뒤 2로 나눈 구조를 표시한다."
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "top",
+        "ownerSegment": "s0",
+        "text": "sqrt(12)"
+      },
+      {
+        "id": "bottom",
+        "ownerSegment": "s2",
+        "text": "sqrt(75)"
+      },
+      {
+        "id": "height",
+        "ownerSegment": "s1",
+        "text": "3sqrt(2)"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "ra",
+      "refs": [
+        "A",
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "rc",
+      "refs": [
+        "D",
+        "C",
+        "B"
+      ]
+    }
+  ]
+}

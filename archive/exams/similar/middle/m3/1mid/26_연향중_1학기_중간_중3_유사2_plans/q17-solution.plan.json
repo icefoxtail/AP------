@@ -1,0 +1,62 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "axisVariable": false,
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "points": [
+          {
+            "id": "P",
+            "value": "5-sqrt(13)",
+            "showValue": true
+          },
+          {
+            "id": "A",
+            "value": "5",
+            "showValue": true
+          },
+          {
+            "id": "C",
+            "value": "7",
+            "showValue": true
+          },
+          {
+            "id": "Q",
+            "value": "7+sqrt(10)",
+            "showValue": true
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "P=5−√13, Q=7+√10이므로 PQ=(7+√10)−(5−√13)=2+√13+√10이다.",
+  "accessibilityDescription": "P=5−√13, Q=7+√10이므로 PQ=(7+√10)−(5−√13)=2+√13+√10이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "P=5−sqrt(13)",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "Q=7+sqrt(10)",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "Q>P",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 반대방향 이동의 길이와 오른쪽 좌표에서 왼쪽 좌표를 빼는 구조를 보여 준다."
+  ]
+}

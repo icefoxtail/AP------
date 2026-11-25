@@ -1,0 +1,207 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "D",
+    "C",
+    "B"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "B",
+        "A"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 480
+  },
+  "caption": "평행한 윗변 √12와 아랫변 √75를 가지며 오른쪽 변이 두 밑변에 수직인 사다리꼴이다. 넓이는 21√6/2이다.",
+  "accessibilityDescription": "평행한 윗변 √12와 아랫변 √75를 가지며 오른쪽 변이 두 밑변에 수직인 사다리꼴이다. 넓이는 21√6/2이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AD∥BC",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "DC는 두 밑변에 수직",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "AD=√12, BC=√75",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments"
+      ]
+    },
+    {
+      "id": "c4",
+      "condition": "넓이=21√6/2",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "평행변과 높이 DC를 구별하고 높이값은 가린다."
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "top",
+        "ownerSegment": "s0",
+        "text": "sqrt(12)"
+      },
+      {
+        "id": "bottom",
+        "ownerSegment": "s2",
+        "text": "sqrt(75)"
+      },
+      {
+        "id": "height",
+        "ownerSegment": "s1",
+        "text": "h"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "ra",
+      "refs": [
+        "A",
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "rc",
+      "refs": [
+        "D",
+        "C",
+        "B"
+      ]
+    }
+  ]
+}
