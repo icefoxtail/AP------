@@ -1,0 +1,106 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "4",
+          "-6",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "KeyA",
+        "x": "3",
+        "y": "-5",
+        "marker": "NONE"
+      },
+      {
+        "id": "KeyB",
+        "x": "0",
+        "y": "4",
+        "marker": "NONE"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "3"
+        },
+        {
+          "id": "B",
+          "curveX": "0"
+        },
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        }
+      ],
+      "segments": [
+        {
+          "id": "AB",
+          "from": "A",
+          "to": "B"
+        },
+        {
+          "id": "AO",
+          "from": "A",
+          "to": "O"
+        },
+        {
+          "id": "OB",
+          "from": "O",
+          "to": "B"
+        }
+      ],
+      "polygons": [
+        {
+          "id": "tri",
+          "points": [
+            "A",
+            "B",
+            "O"
+          ],
+          "fill": "LIGHT"
+        }
+      ]
+    },
+    "domain": [
+      -1,
+      7
+    ],
+    "viewport": [
+      -1,
+      7,
+      -7,
+      12
+    ]
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "포물선 y=x²−6x+4와 삼각형 ABO",
+  "accessibilityDescription": "꼭짓점 A(3,-5), y절편 B(0,4), 원점 O(0,0)이 이루는 삼각형이다. 밑변 OB 길이는 4, A에서 y축까지 수평거리는 3이다.",
+  "sourceQuote": "[핵심] y축 위 OB를 밑변으로 두고 A에서 y축까지의 수평거",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형2] 이차함수 $y=x^2-6x+4$의 그래프의 꼭짓점을 $A$, 그래프와 $y$축의 교점을 $B$, 원점을 $O$라 한다. $\\triangle ABO$의 넓이를 구하는 과정을 서술하시오. [7점]\n\n(꼭짓점 구하기 3점, $y$절편 구하기 2점, 삼각형 넓이 2점)",
+      "mappedTo": "CURRENT_FOLLOWUP_JS"
+    }
+  ],
+  "newVisualInformation": [
+    "꼭짓점 A(3,-5), y절편 B(0,4), 원점 O(0,0)이 이루는 삼각형이다. 밑변 OB 길이는 4, A에서 y축까지 수평거리는 3이다."
+  ]
+}

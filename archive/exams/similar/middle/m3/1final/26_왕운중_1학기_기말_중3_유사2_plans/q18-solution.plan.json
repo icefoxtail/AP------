@@ -1,0 +1,124 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": "0",
+        "y": "0"
+      },
+      {
+        "id": "KeyA",
+        "x": "1",
+        "y": "1",
+        "marker": "NONE"
+      },
+      {
+        "id": "KeyC",
+        "x": "2",
+        "y": "4",
+        "marker": "NONE"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "1"
+        },
+        {
+          "id": "B",
+          "x": "1",
+          "y": "1/5"
+        },
+        {
+          "id": "H",
+          "x": "1",
+          "y": "0"
+        },
+        {
+          "id": "C",
+          "curveX": "2"
+        },
+        {
+          "id": "D",
+          "x": "2",
+          "y": "4/5"
+        },
+        {
+          "id": "E",
+          "x": "2",
+          "y": "0"
+        }
+      ],
+      "segments": [
+        {
+          "id": "AH",
+          "from": "A",
+          "to": "H"
+        },
+        {
+          "id": "CE",
+          "from": "C",
+          "to": "E"
+        }
+      ]
+    },
+    "referenceCurves": [
+      {
+        "id": "g",
+        "name": "g",
+        "coefficients": [
+          "0",
+          "0",
+          "1/5"
+        ],
+        "intersectionX": [
+          "0"
+        ]
+      }
+    ],
+    "domain": [
+      -1,
+      3
+    ],
+    "viewport": [
+      -1,
+      3,
+      -1,
+      5
+    ]
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "두 포물선 y=x², y=x²/5에서 두 세로선의 높이",
+  "accessibilityDescription": "x=1에서 A(1,1),B(1,1/5),H(1,0), x=2에서 C(2,4),D(2,4/5),E(2,0)을 표시하며 AB=4BH, ED=4/5를 확인한다.",
+  "sourceQuote": "[핵심] 두 포물선의 같은 x좌표에서 높이 비를 비교해 a를 구",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 이차함수 $y=x^2$, $y=ax^2$($0<a<1$)의 그래프 위에 $x$좌표가 같은 두 점 $A,B$가 각각 있다. $H=(t,0)$($t\\ne0$)이며 $A,B,H$는 위에서부터 이 순서로 같은 수직선 위에 놓이고, $AB=4BH$이다. 다른 수직선 위에 첫째 그래프의 점 $C=(u,u^2)$, 둘째 그래프의 점 $D=(u,au^2)$와 $E=(u,0)$($u\\ne0$)를 잡는다. $ED=\\dfrac45$일 때 **$CE$의 길이**는? [4점]",
+      "mappedTo": "CURRENT_FOLLOWUP_JS"
+    }
+  ],
+  "newVisualInformation": [
+    "x=1에서 A(1,1),B(1,1/5),H(1,0), x=2에서 C(2,4),D(2,4/5),E(2,0)을 표시하며 AB=4BH, ED=4/5를 확인한다."
+  ]
+}

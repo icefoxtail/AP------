@@ -1,0 +1,75 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-8",
+          "-2",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "KeyV",
+        "x": "1",
+        "y": "-9",
+        "marker": "NONE"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "-2"
+        },
+        {
+          "id": "B",
+          "curveX": "4"
+        },
+        {
+          "id": "C",
+          "curveX": "0"
+        },
+        {
+          "id": "V",
+          "curveX": "1"
+        }
+      ]
+    },
+    "domain": [
+      -3,
+      5
+    ],
+    "viewport": [
+      -3,
+      5,
+      -11,
+      5
+    ]
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "비대칭 x절편과 꼭짓점 V(1,-9)",
+  "accessibilityDescription": "x절편 A(-2,0), B(4,0), y절편 C(0,-8), 꼭짓점 V(1,-9)가 놓인 아래쪽 포물선이다.",
+  "sourceQuote": "[핵심] 절편을 이용한 인수분해 꼴에서 계수를 정한 뒤 꼭짓점을",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차함수 $y=ax^2+bx+c$의 그래프가 $x$축과 $(-2,0)$, $(4,0)$에서 만나고 $y$축과 $(0,-8)$에서 만난다. 이 그래프의 **꼭짓점의 $y$좌표**는? [4점]",
+      "mappedTo": "CURRENT_FOLLOWUP_JS"
+    }
+  ],
+  "newVisualInformation": [
+    "x절편 A(-2,0), B(4,0), y절편 C(0,-8), 꼭짓점 V(1,-9)가 놓인 아래쪽 포물선이다."
+  ]
+}
