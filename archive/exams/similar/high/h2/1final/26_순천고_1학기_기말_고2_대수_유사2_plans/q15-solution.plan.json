@@ -1,0 +1,53 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "COS",
+    "ratePi": "1/3",
+    "coefficients": [
+      "3",
+      "0"
+    ],
+    "phasePi": "0",
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "12"
+      ],
+      "states": [
+        "CLOSED",
+        "OPEN"
+      ]
+    },
+    "referenceLines": [
+      {
+        "id": "level",
+        "y": "3/2",
+        "intersectionCount": 4,
+        "color": "BLUE"
+      }
+    ],
+    "keyPoints": true,
+    "axisTickValues": {
+      "x": [
+        "1",
+        "5",
+        "7",
+        "11"
+      ],
+      "y": [
+        "3/2",
+        "3"
+      ]
+    },
+    "displaySize": "full"
+  },
+  "caption": "0≤x<12에서 코사인 그래프와 y=3/2의 네 교점",
+  "sourceConditions": [
+    "y=3cos(πx/3), y=3/2, 0≤x<12"
+  ],
+  "newVisualInformation": [
+    "교점 x좌표 1,5,7,11을 그래프에서 검증한다."
+  ]
+}

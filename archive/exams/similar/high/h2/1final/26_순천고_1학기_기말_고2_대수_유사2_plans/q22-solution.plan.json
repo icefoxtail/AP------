@@ -1,0 +1,55 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "SIN",
+    "coefficients": [
+      "1",
+      "1",
+      "0"
+    ],
+    "phasePi": "0",
+    "sourceDomain": {
+      "kind": "INTERVAL_PI",
+      "rangePi": [
+        "0",
+        "3"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "referenceLines": [
+      {
+        "id": "threshold",
+        "y": "-1/2",
+        "intersectionCount": 2,
+        "color": "BLUE"
+      }
+    ],
+    "keyPoints": true,
+    "axisTickPi": true,
+    "axisTickPiStep": "1/6",
+    "axisTickValues": {
+      "x": [
+        "1/2",
+        "7/6",
+        "11/6",
+        "5/2"
+      ],
+      "y": [
+        "-1/2",
+        "1"
+      ]
+    },
+    "displaySize": "full"
+  },
+  "caption": "0≤x≤3π에서 sin x=-1/2의 경계와 sin x=1인 고립 해",
+  "sourceConditions": [
+    "부등식 (2sin x+1)(sin x-1)≥0"
+  ],
+  "newVisualInformation": [
+    "sin x=-1/2인 경계 두 점과 sin x=1인 고립 해 두 점을 표시한다."
+  ]
+}

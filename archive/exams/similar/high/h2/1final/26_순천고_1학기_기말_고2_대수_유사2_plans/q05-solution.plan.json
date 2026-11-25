@@ -1,0 +1,43 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "COS",
+    "coefficients": [
+      "5",
+      "3",
+      "2"
+    ],
+    "phasePi": "1/4",
+    "sourceDomain": {
+      "kind": "INTERVAL_PI",
+      "rangePi": [
+        "0",
+        "4/3"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "keyPoints": true,
+    "axisTickPi": true,
+    "axisTickPiStep": "1/6",
+    "axisTickValues": {
+      "x": [],
+      "y": [
+        "-3",
+        "2",
+        "7"
+      ]
+    },
+    "displaySize": "full"
+  },
+  "caption": "진폭 5, 중심선 y=2인 코사인 그래프의 극값과 주기",
+  "sourceConditions": [
+    "f(x)=5cos(3x+π/4)+2"
+  ],
+  "newVisualInformation": [
+    "최댓값 7, 최솟값 -3과 주기 2π/3을 눈으로 확인한다."
+  ]
+}

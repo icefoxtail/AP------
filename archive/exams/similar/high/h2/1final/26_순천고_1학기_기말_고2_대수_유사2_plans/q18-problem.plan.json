@@ -1,0 +1,223 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "21"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "16"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "AB",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "BC",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "AC",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "P",
+          "AB"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "P",
+          "BC"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "P",
+    "Q",
+    "R"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sPQ",
+      "refs": [
+        "P",
+        "Q"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sPR",
+      "refs": [
+        "P",
+        "R"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "angB",
+        "refs": [
+          "C",
+          "B",
+          "A"
+        ],
+        "value": 60,
+        "label": "60",
+        "arcs": 1,
+        "side": "INNER",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "labelAC",
+        "ownerSegment": "sAC",
+        "text": "19"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 540,
+    "height": 400
+  },
+  "caption": "삼각형 ABC의 변 AC 위의 점 P에서 두 변 AB, BC에 내린 수선의 발 Q,R",
+  "accessibilityDescription": "각 B가 60도인 삼각형 ABC와 변 AC 위의 점 P, P에서 AB와 BC에 내린 수선 PQ, PR을 그렸다.",
+  "sourceConditions": [
+    "원문에서 ∠B=60°, AC=19, 넓이 84√3, AB<BC임을 확인한다.",
+    "해석을 위한 하나의 형상으로 AB=16·BC=21을 역산해 사용하되 길이는 AC만 표기한다.",
+    "점 P는 변 AC의 예시 위치를 표시하며 중앙점이라는 조건을 문제에 추가하지 않는다."
+  ],
+  "newVisualInformation": [
+    "길이가 본문에 있는 AC=19와 각 B=60°, 가변점과 두 수선의 연결 관계만 표시한다."
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "TAN",
+    "coefficients": [
+      "1",
+      "2",
+      "-2"
+    ],
+    "phasePi": "1/6",
+    "sourceDomain": {
+      "kind": "INTERVAL_PI",
+      "rangePi": [
+        "-1/3",
+        "2/3"
+      ],
+      "states": [
+        "OPEN",
+        "OPEN"
+      ]
+    },
+    "axisTickPi": true,
+    "axisTickValues": {
+      "x": [
+        "0",
+        "1/6",
+        "5/12"
+      ],
+      "y": [
+        "-2"
+      ]
+    },
+    "displaySize": "full"
+  },
+  "caption": "y=tan(2x+π/6)-2의 점근선과 평행이동",
+  "sourceConditions": [
+    "탄젠트 함수의 주기는 π/2, 수직이동은 -2"
+  ],
+  "newVisualInformation": [
+    "점근선과 축상 통과값을 함께 확인한다."
+  ]
+}

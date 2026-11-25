@@ -1,0 +1,54 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "COS",
+    "coefficients": [
+      "2",
+      "2",
+      "0"
+    ],
+    "phasePi": "0",
+    "absolute": true,
+    "sourceDomain": {
+      "kind": "INTERVAL_PI",
+      "rangePi": [
+        "0",
+        "3"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "referenceLines": [
+      {
+        "id": "n3",
+        "slope": "2/3",
+        "perPi": true,
+        "intercept": "0",
+        "intersectionCount": 13,
+        "color": "BLUE",
+        "endCrossing": true
+      }
+    ],
+    "keyPoints": true,
+    "axisTickPi": true,
+    "axisTickPiStep": "1/2",
+    "axisTickValues": {
+      "x": [],
+      "y": [
+        "1",
+        "2"
+      ]
+    },
+    "displaySize": "full"
+  },
+  "caption": "n=3일 때 절댓값 코사인 곡선과 증가 직선의 열세 교점",
+  "sourceConditions": [
+    "y=2|cos 2x|, y=2x/(3π)"
+  ],
+  "newVisualInformation": [
+    "끝점 교점 3π를 포함하여 교점 13개를 확인한다."
+  ]
+}

@@ -1,0 +1,231 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "21"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "16"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "AB",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "BC",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "AC",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "B",
+          "AC"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "Q",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "P",
+          "AB"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "P",
+          "BC"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "P",
+    "Q",
+    "R"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sPQ",
+      "refs": [
+        "P",
+        "Q"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sPR",
+      "refs": [
+        "P",
+        "R"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sBP",
+      "refs": [
+        "B",
+        "P"
+      ],
+      "dashed": true,
+      "emphasis": "ACCENT"
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "angB",
+        "refs": [
+          "C",
+          "B",
+          "A"
+        ],
+        "value": 60,
+        "label": "60",
+        "arcs": 1,
+        "side": "INNER",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "labelAC",
+        "ownerSegment": "sAC",
+        "text": "19"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 540,
+    "height": 400
+  },
+  "caption": "두 수선의 발 Q,R와 최소화에 쓰는 AC에 대한 B의 수선의 발 P",
+  "accessibilityDescription": "AB, BC, AC를 지닌 삼각형과 AC에 대한 B의 수선의 발 P, P에서 두 변에 내린 수선 PQ, PR을 그렸다.",
+  "sourceConditions": [
+    "각 B=60°, AC=19, 넓이 84√3, AB<BC로부터 AB=16·BC=21를 유도한다.",
+    "최소화 조건에서 BP가 AC에 수직인 P를 택한다."
+  ],
+  "newVisualInformation": [
+    "기하적으로 BP가 최소화될 때 AC와 수직이고 PQ·PR은 각 변과 수직이다."
+  ]
+}
