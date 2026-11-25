@@ -1,0 +1,69 @@
+{
+ "capability": "multi-curve-figure-v1",
+ "graphPlan": {
+  "family": "multi-curve",
+  "viewport": [
+   -1,
+   9,
+   -1,
+   5
+  ],
+  "curves": [
+   {
+    "id": "f",
+    "kind": "SQRT",
+    "radicand": [
+     "-2",
+     "1"
+    ],
+    "offset": "1",
+    "domain": [
+     "2",
+     "9"
+    ],
+    "color": "BLUE",
+    "hideLabels": [
+     "formula",
+     "start"
+    ],
+    "emphasis": [
+     {
+      "from": "2",
+      "to": "9",
+      "color": "BLUE",
+      "fromState": "CLOSED"
+     }
+    ]
+   }
+  ],
+  "overlays": {
+   "points": [
+    {
+     "id": "E",
+     "x": "2",
+     "y": "1",
+     "coordinates": true
+    },
+    {
+     "id": "P",
+     "x": "6",
+     "y": "3",
+     "coordinates": true
+    }
+   ]
+  },
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  }
+ },
+ "caption": "끝점이 E(2,1)이고 점 P(6,3)을 지나는 무리함수의 그래프",
+ "sourceConditions": [
+  {
+   "id": "method",
+   "condition": "끝점 (2,1), 그래프 위의 점 (6,3)",
+   "mappedTo": ["graphPlan.curves", "graphPlan.overlays.points"]
+  }
+ ],
+ "newVisualInformation": []
+}

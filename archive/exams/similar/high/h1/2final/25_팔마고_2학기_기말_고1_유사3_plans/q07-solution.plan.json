@@ -1,0 +1,65 @@
+{
+ "capability": "multi-curve-figure-v1",
+ "graphPlan": {
+  "family": "multi-curve",
+  "viewport": [
+   -1,
+   9,
+   -1,
+   9
+  ],
+  "curves": [
+   {
+    "id": "f",
+    "kind": "RATIONAL",
+    "numerator": [
+     "9",
+     "2"
+    ],
+    "denominator": [
+     "1",
+     "1"
+    ],
+    "domain": {
+     "from": "1",
+     "to": "6",
+     "fromState": "CLOSED",
+     "toState": "CLOSED"
+    },
+    "color": "BLUE"
+   }
+  ],
+  "overlays": {
+   "points": [
+    {
+     "id": "A",
+     "x": "1",
+     "y": "11/2",
+     "coordinates": true
+    },
+    {
+     "id": "B",
+     "x": "6",
+     "y": "3",
+     "coordinates": true
+    }
+   ]
+  },
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  }
+ },
+ "caption": "y=2+7/(x+1)은 x가 커질수록 작아지는 감소함수이다. 그림은 실제 정의역 1≤x≤6의 곡선만 그리며 양 끝점을 포함한다. 최댓값은 x=1일 때 A(1, 11/2)이고 최솟값은 x=a일 때 2+7/(a+1)이다. 합이 17/2이려면 7/(a+1)=1이므로 a=6이고 끝점은 B(6,3)이다. 따라서 답은 ⑤이다.",
+ "sourceConditions": [
+  {
+   "id": "method",
+   "condition": "정의역 1≤x≤6에서 감소하는 곡선의 양 끝점 A(1,11/2), B(6,3)을 보인다.",
+   "mappedTo": ["graphPlan.curves", "graphPlan.overlays.points"]
+  }
+ ],
+ "newVisualInformation": [
+  "정의역 1≤x≤6인 곡선만 그리고 닫힌 양 끝점 A(1,11/2), B(6,3)으로 최댓값과 최솟값을 읽게 한다."
+ ],
+ "accessibilityDescription": "정의역 1 이상 6 이하에서 내려가는 유리함수 곡선과 포함된 양 끝점 A와 B를 나타낸다."
+}

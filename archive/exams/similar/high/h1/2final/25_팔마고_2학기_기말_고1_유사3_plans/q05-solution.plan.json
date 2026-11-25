@@ -1,0 +1,89 @@
+{
+ "capability": "multi-curve-figure-v1",
+ "graphPlan": {
+  "family": "multi-curve",
+  "viewport": [
+   -1,
+   19,
+   -1,
+   7
+  ],
+  "axisScale": {
+   "x": 1,
+   "y": 2
+  },
+  "curves": [
+   {
+    "id": "f",
+    "kind": "SQRT",
+    "radicand": [
+     "-2",
+     "1"
+    ],
+    "offset": "1",
+    "domain": [
+     "2",
+     "19"
+    ],
+    "color": "BLUE",
+    "label": "y=f(x)",
+    "hideLabels": [
+     "start"
+    ]
+   },
+   {
+    "id": "h",
+    "kind": "LINE",
+    "coefficients": [
+     "5",
+     "0"
+    ],
+    "domain": [
+     "-1",
+     "19"
+    ],
+    "style": "DASHED",
+    "color": "GREEN",
+    "label": "y=5"
+   }
+  ],
+  "overlays": {
+   "points": [
+    {
+     "id": "E",
+     "x": "2",
+     "y": "1",
+     "coordinates": true
+    },
+    {
+     "id": "P",
+     "x": "6",
+     "y": "3",
+     "coordinates": true
+    },
+    {
+     "id": "T",
+     "x": "18",
+     "y": "5",
+     "coordinates": true
+    }
+   ]
+  },
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  }
+ },
+ "caption": "끝점 E(2,1)에서 c=1, a+2b=0이고 점 P(6,3)에서 √(a+6b)+1=3이므로 b=1, a=−2, f(x)=√(x−2)+1이다. f⁻¹(5)는 f(t)=5의 해이므로 점선 y=5와 곡선이 만나는 점 T의 x좌표이다. √(t−2)=4에서 t=18이므로 T(18,5)이다. 따라서 답은 ③이다.",
+ "sourceConditions": [
+  {
+   "id": "method",
+   "condition": "끝점 E(2,1), 점 P(6,3)으로 f(x)=√(x−2)+1을 정하고 y=5와의 교점 T를 구한다.",
+   "mappedTo": ["graphPlan.curves", "graphPlan.overlays"]
+  }
+ ],
+ "newVisualInformation": [
+  "수평선 y=5와 곡선의 교점 T(18,5)로 f⁻¹(5)=18을 읽게 한다."
+ ],
+ "accessibilityDescription": "끝점에서 시작해 오른쪽 위로 뻗는 무리함수 곡선 위에 점 E, P, T가 있고 y=5인 점선이 점 T를 지난다."
+}

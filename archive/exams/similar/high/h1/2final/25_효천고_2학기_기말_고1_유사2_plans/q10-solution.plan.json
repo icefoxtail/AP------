@@ -1,0 +1,42 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {"id": "X", "name": "X", "elements": ["1", "2", "3", "4", "5", "6"]},
+      {"id": "Y", "name": "X", "elements": ["1", "2", "3", "4", "5", "6"]}
+    ],
+    "arrows": [
+      {"from": {"column": 0, "element": 0}, "to": {"column": 1, "element": 2}},
+      {"from": {"column": 0, "element": 1}, "to": {"column": 1, "element": 5}},
+      {"from": {"column": 0, "element": 2}, "to": {"column": 1, "element": 1}},
+      {"from": {"column": 0, "element": 3}, "to": {"column": 1, "element": 4}},
+      {"from": {"column": 0, "element": 4}, "to": {"column": 1, "element": 0}},
+      {"from": {"column": 0, "element": 5}, "to": {"column": 1, "element": 3}}
+    ],
+    "arrowGroups": [{"name": "f", "from": "X", "to": "Y"}],
+    "highlightPaths": [
+      {"path": ["1", "3"], "startColumn": 0, "color": "BLUE"},
+      {"path": ["3", "2"], "startColumn": 0, "color": "WARM"},
+      {"path": ["2", "6"], "startColumn": 0, "color": "GREEN"}
+    ]
+  },
+  "caption": "f(x)는 3x를 7로 나눈 나머지이므로 1→3→2→6→4→5→1의 여섯 원소 순환을 이룬다. 같은 대응이 6번마다 반복되어 f¹⁵=f³이다. 파랑 1→3, 주황 3→2, 초록 2→6의 세 화살표를 순서대로 따라가면 f³(1)=6이고, 답은 ①이다.",
+  "accessibilityDescription": "집합 X의 여섯 원소를 함수 f로 대응시킨 화살표 그림. 1에서 3으로, 3에서 2로, 2에서 6으로 이어지는 경로를 세 색으로 강조한다.",
+  "sourceConditions": [
+    {
+      "id": "fmod7",
+      "condition": "X={1,2,3,4,5,6}, f(x)는 3x를 7로 나눈 나머지",
+      "mappedTo": ["diagram.columns", "diagram.arrows"]
+    },
+    {
+      "id": "repeat15",
+      "condition": "f¹⁵(a)=6은 6주기에 의해 f³(a)=6과 동치",
+      "mappedTo": ["diagram.highlightPaths"]
+    }
+  ],
+  "newVisualInformation": [
+    "실제 모듈러 함수의 여섯 대응 화살표 전체",
+    "세 번 반복하는 경로 1→3→2→6을 별도 색으로 확인"
+  ]
+}

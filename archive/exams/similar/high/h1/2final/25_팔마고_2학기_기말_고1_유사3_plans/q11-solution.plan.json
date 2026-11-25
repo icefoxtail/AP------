@@ -1,0 +1,78 @@
+{
+ "capability": "multi-curve-figure-v1",
+ "graphPlan": {
+  "family": "multi-curve",
+  "viewport": [
+   0,
+   6,
+   0,
+   6
+  ],
+  "curves": [
+   {
+    "id": "f",
+    "kind": "Y_OF_X",
+    "coefficients": [
+     "9",
+     "-5",
+     "1"
+    ],
+    "domain": [
+     "5/2",
+     "4"
+    ],
+    "color": "BLUE",
+    "label": "y=f(x)"
+   },
+   {
+    "id": "g",
+    "inverseOf": "f",
+    "color": "WARM",
+    "label": "y=f^-1(x)",
+    "hideLabels": [
+     "start"
+    ]
+   },
+   {
+    "id": "yx",
+    "kind": "LINE",
+    "coefficients": [
+     "0",
+     "1"
+    ],
+    "domain": [
+     "0",
+     "6"
+    ],
+    "style": "DASHED",
+    "label": "y=x"
+   }
+  ],
+  "overlays": {
+   "points": [
+    {
+     "id": "T",
+     "x": "3",
+     "y": "3",
+     "coordinates": true
+    }
+   ]
+  },
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  }
+ },
+ "caption": "파랑 곡선이 y=f(x), 주황 곡선이 y=f⁻¹(x)이다. x≥−a/2에서 f는 증가하므로 y=f(x)와 y=f⁻¹(x)의 그래프는 직선 y=x에 대칭이고 교점은 y=x 위에 있다. 두 그래프가 점 T(3,3)에서 접하려면 x²+(a−1)x+b=0이 x=3을 중근으로 가져야 하므로 (x−3)²=x²−6x+9와 비교하여 a=−5, b=9이다(그림은 이때의 그래프). 따라서 a+b=4이고 답은 ③이다.",
+ "sourceConditions": [
+  {
+   "id": "method",
+   "condition": "a=−5, b=9일 때 f, 역함수, y=x가 T(3,3)에서 접함을 보인다.",
+   "mappedTo": ["graphPlan.curves", "graphPlan.overlays.points"]
+  }
+ ],
+ "newVisualInformation": [
+  "f와 역함수의 그래프가 y=x에 대칭이고 점 T(3,3)에서 접함을 보인다."
+ ],
+ "accessibilityDescription": "증가하는 이차곡선 조각과 그 역함수의 곡선, 점선 직선 y=x가 그려져 있고 세 그래프가 점 T에서 만난다."
+}
