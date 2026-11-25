@@ -1,0 +1,146 @@
+{
+  "campaign": "typebank-high2-geometry-problem-svg",
+  "typeGroup": "포물선: 방정식·정의·초점 현·무게중심·최단거리·두 포물선·응용",
+  "auditKind": "SOURCE_FIGURE_TO_ENGINE_PLAN_PRE_RENDER",
+  "auditedAtKst": "2026-11-25",
+  "sourceOfTruth": "archive/exams/types/high/h2/<stem>.js의 현행 questionBank[id], 발문·[그림]·조건·해설",
+  "priorBatches": ["geometry-parabola-pilot-001", "geometry-parabola-batch-002"],
+  "totalPlans": 49,
+  "distinctJsFiles": 11,
+  "sourceFigureCompared": "REVIEWED_49_OF_49",
+  "sourceConditionAndGeometryCompared": "REVIEWED_49_OF_49",
+  "commonPerItemValidation": {
+    "planLintShallow": "PASS_49_OF_49",
+    "planLintFull": "PASS_49_OF_49",
+    "execution": "현행 main 기반 동일 엔진과 같은 JS에 대해 전체 49개 plan 각각 재검사",
+    "render": "NOT_RUN",
+    "pngVisualReview": "NOT_RUN",
+    "studentScreenReview": "NOT_RUN",
+    "a4PrintReview": "NOT_RUN"
+  },
+  "featureParityPreRenderPass": 45,
+  "engineCapabilityPending": 4,
+  "status": "SVG_TO_CREATE",
+  "render": "NOT_RUN",
+  "pngVisualReview": "NOT_RUN",
+  "studentScreenReview": "NOT_RUN",
+  "a4PrintReview": "NOT_RUN",
+  "jsImageLink": "NOT_RUN",
+  "itemStatusMeaning": {
+    "PASS_PRE_RENDER": "현행 발문의 곡선·위치·필수 도형 요소가 plan의 실제 그림 필드에 대응한다. 엔진 실행·PNG/화면 검수는 여전히 미실행이다.",
+    "ENGINE_CAPABILITY_PENDING": "수학적 기본 도형 plan은 있으나 원문 시각요소 일부를 엔진이 미지원하거나 레이아웃에서 거절한다. 완성 건수에 넣지 않는다."
+  },
+  "groups": [
+    {
+      "stem": "기하_001_포물선의방정식1_고2_유형은행1",
+      "items": [
+        {"qid":3,"featureParity":"PASS_PRE_RENDER","verified":"포물선 축·O/F·수직현 AB·OF=4/FM=5 선분 라벨"}
+      ]
+    },
+    {
+      "stem": "기하_004_포물선의평행이동2_고2_유형은행1",
+      "items": [
+        {"qid":6,"featureParity":"PASS_PRE_RENDER","verified":"오른쪽 열린 포물선·주어진 세 좌표의 일치"}
+      ]
+    },
+    {
+      "stem": "기하_006_포물선의정의의활용-포물선위의점이주어진_고2_유형은행1",
+      "items": [
+        {"qid":1,"featureParity":"PASS_PRE_RENDER","verified":"y²=12x, A(7,4)의 수평선·교점 P·초점 F와 PF"},
+        {"qid":3,"featureParity":"PASS_PRE_RENDER","verified":"준선 x=-5의 제2사분면 A, AF=15·교점 B·OB"},
+        {"qid":4,"featureParity":"PASS_PRE_RENDER","verified":"제1·4사분면 A/B, AF=13, BF=5와 삼각형 AOB"},
+        {"qid":5,"featureParity":"PASS_PRE_RENDER","verified":"F-P-Q 공선 순서·FP=5·FP:PQ=2:1을 만족하는 내부 비례 배치"},
+        {"qid":6,"featureParity":"PASS_PRE_RENDER","verified":"준선·수선 AB·초점 F·선분 BF 안 C, AB=BF와 2BC+5CF 조건의 정확한 내부 배치"}
+      ]
+    },
+    {
+      "stem": "기하_007_포물선의정의의활용-포물선위의점이주어진_고2_유형은행1",
+      "items": [
+        {"qid":1,"featureParity":"PASS_PRE_RENDER","verified":"수평선 y=1,2,3과 P₁~P₃ 초점선 표시; 원문의 생략 기호 이하 계속은 대표 도식·캡션 처리"},
+        {"qid":2,"featureParity":"PASS_PRE_RENDER","verified":"세 점 A/B/C의 초점 거리 등차관계·FA 수직·H(9,0) 좌표 라벨"},
+        {"qid":3,"featureParity":"PASS_PRE_RENDER","verified":"초점 F 중심 원의 준선 접선 조건·포물선과 제1사분면 교점 P"},
+        {"qid":4,"featureParity":"PASS_PRE_RENDER","verified":"A(9,0)와 F, 제1사분면의 PA=PF 이등변삼각형 배치"},
+        {"qid":5,"featureParity":"PASS_PRE_RENDER","verified":"직각삼각형 PHF·x_P>x_F·문제에서 주어진 넓이 4√21을 캡션에 보강"},
+        {"qid":6,"featureParity":"ENGINE_CAPABILITY_PENDING","verified":"PH=HF=FP인 실제 정삼각형 및 준선·수선은 정확하나 세 변의 동일 표식은 없음","missingVisual":"동등한 세 변에 같은 눈금/표식"},
+        {"qid":7,"featureParity":"ENGINE_CAPABILITY_PENDING","verified":"P/H/F 실제 좌표의 ∠HPF=120°는 수학적으로 정확하나 그림 호·120° 라벨 없음","missingVisual":"∠HPF의 호와 120° 숫자"},
+        {"qid":9,"featureParity":"PASS_PRE_RENDER","verified":"준선의 발 H·PF 위 Q와 ∠PHF 이등분선 HQ·PQ:QF=3:2"},
+        {"qid":10,"featureParity":"PASS_PRE_RENDER","verified":"준선과 x축의 교점 P·양의 기울기 할선의 A/B·PA:PB=1:5"}
+      ]
+    },
+    {
+      "stem": "기하_008_포물선의정의의활용-초점을지나는직선이주_고2_유형은행1",
+      "items": [
+        {"qid":1,"featureParity":"PASS_PRE_RENDER","verified":"제1·4사분면의 초점 현 AB·AF:BF=2:1"},
+        {"qid":2,"featureParity":"PASS_PRE_RENDER","verified":"초점 현 AB=15/2·두 y축 수선 H₁/H₂"},
+        {"qid":3,"featureParity":"PASS_PRE_RENDER","verified":"초점 현 AB·y축 수선 AP/BQ·거리 합 10의 내부 배치"},
+        {"qid":4,"featureParity":"ENGINE_CAPABILITY_PENDING","verified":"주어진 AP=4+√7은 선분 라벨, BQ=4−√7은 도형과 캡션에만 있다","missingVisual":"짧은 BQ에 겹치지 않는 4−√7 길이 라벨"},
+        {"qid":5,"featureParity":"PASS_PRE_RENDER","verified":"P(10,12)→A→F→B→Q 반사 광로·수평 입출사·x=10 경계"}
+      ]
+    },
+    {
+      "stem": "기하_009_포물선의정의의활용-초점을지나는직선이주_고2_유형은행1",
+      "items": [
+        {"qid":1,"featureParity":"PASS_PRE_RENDER","verified":"준선 l·초점 현 PQ·두 수선·연한 음영 사다리꼴 HH′QP"},
+        {"qid":2,"featureParity":"PASS_PRE_RENDER","verified":"위로 열린 포물선·수평 준선·AP=12/BQ=3 수선과 초점 현"},
+        {"qid":5,"featureParity":"PASS_PRE_RENDER","verified":"기울기 1인 초점 현·AF를 대각선으로 하는 축평행 한 변 4 정사각형"}
+      ]
+    },
+    {
+      "stem": "기하_010_포물선의정의의활용-초점을지나는직선이주_고2_유형은행1",
+      "items": [
+        {"qid":1,"featureParity":"PASS_PRE_RENDER","verified":"음의 기울기 초점 현·준선 수선 AC=7과 두 직각 표식"},
+        {"qid":2,"featureParity":"PASS_PRE_RENDER","verified":"양의 기울기 초점 현·AF=12/AC=9 라벨·음영 사다리꼴 CDBA"},
+        {"qid":3,"featureParity":"PASS_PRE_RENDER","verified":"초점 통과 AB 현·AF:BF=3:2 내부 배치"},
+        {"qid":4,"featureParity":"PASS_PRE_RENDER","verified":"AB/CD 세로 평행변·초점 교차 두 대각선·DF=12"}
+      ]
+    },
+    {
+      "stem": "기하_011_포물선의정의의활용-무게중심이주어진경우_고2_유형은행1",
+      "items": [
+        {"qid":1,"featureParity":"PASS_PRE_RENDER","verified":"원점 O 별도 복구·서로 다른 세 비원점 곡선점 A/B/C의 실제 무게중심 F(0,4)"},
+        {"qid":2,"featureParity":"PASS_PRE_RENDER","verified":"삼각형 ABC의 실제 무게중심 G·초점 F, 주어진 AF+BF+CF=25/2의 캡션 보강"},
+        {"qid":3,"featureParity":"PASS_PRE_RENDER","verified":"제1사분면 서로 다른 P/Q·초점 삼각형·PF+QF=17 내부 조건"},
+        {"qid":4,"featureParity":"PASS_PRE_RENDER","verified":"대칭 A/B와 삼각형 AOB, OB 중점 M 위를 지나는 직선 AF"},
+        {"qid":5,"featureParity":"PASS_PRE_RENDER","verified":"서로 다른 자연수 x좌표의 A/B·무게중심 x=7의 대표 비최적 삼각형"}
+      ]
+    },
+    {
+      "stem": "기하_012_포물선의정의의활용-선분의길이의합의최단_고2_유형은행1",
+      "items": [
+        {"qid":1,"featureParity":"PASS_PRE_RENDER","verified":"고정 A(5,4)·F(4,0), 움직이는 비최적 P의 PF/PA"},
+        {"qid":2,"featureParity":"PASS_PRE_RENDER","verified":"고정 A(6,2)·F(3,0), 움직이는 P의 FP/AP"},
+        {"qid":4,"featureParity":"PASS_PRE_RENDER","verified":"A(5,2), F(2,0), 둘레 최소 삼각형 AFP의 배치"},
+        {"qid":5,"featureParity":"PASS_PRE_RENDER","verified":"준선 x=-3, Q(9,12), 포물선 P의 PQ/PH와 수선 발 H"},
+        {"qid":6,"featureParity":"PASS_PRE_RENDER","verified":"초점 현 RS·수평선 y=3의 P/Q·PR+RS+SQ 꺾은 경로"}
+      ]
+    },
+    {
+      "stem": "기하_013_두포물선이이루는선분의길이_고2_유형은행1",
+      "items": [
+        {"qid":1,"featureParity":"PASS_PRE_RENDER","verified":"꼭짓점 A(-2,0)/B(11,0), 공통 초점 F, 수평 PQ와 삼각형"},
+        {"qid":2,"featureParity":"PASS_PRE_RENDER","verified":"좌우 열린 두 포물선·O/F/P/Q·OP=PF 관계와 PQ=6의 선분 소유 라벨"},
+        {"qid":4,"featureParity":"PASS_PRE_RENDER","verified":"반대 방향 포물선·각 초점을 통과하는 AB/CD·수평 AD/BC"},
+        {"qid":5,"featureParity":"PASS_PRE_RENDER","verified":"A<0<B, AB=3, B가 AF 중점, p₂ 초점 O·y축의 두 교점 C/D; 내부 좌표 기술 오기 수정"}
+      ]
+    },
+    {
+      "stem": "기하_015_타원의방정식_고2_유형은행1",
+      "items": [
+        {"qid":1,"featureParity":"PASS_PRE_RENDER","verified":"전조등 수직 입구 지름 40cm·OF=5cm 실제 선분 라벨"},
+        {"qid":2,"featureParity":"PASS_PRE_RENDER","verified":"안테나 입구 16cm·가로 깊이 6cm 실제 라벨과 서로 다른 두 평행 입사·초점 반사 광로"},
+        {"qid":3,"featureParity":"ENGINE_CAPABILITY_PENDING","verified":"집열판 지면 위 꼭짓점 1m·끝점 3m·가로 폭 16m 실제 치수 3개는 통과; 다중 광선은 AB 숫자 라벨과 충돌","missingVisual":"집열판 치수 3개를 유지하면서 두 번째 수직 입사·초점 반사 광선"},
+        {"qid":4,"featureParity":"PASS_PRE_RENDER","verified":"수로 최저점·높이 y=6의 폭 12m·y=2의 미지 폭 두 수평선"},
+        {"qid":8,"featureParity":"PASS_PRE_RENDER","verified":"초점 현 AF=12/BF=4·준선과 할선 교점 C·수선 발 H의 삼각형"},
+        {"qid":10,"featureParity":"PASS_PRE_RENDER","verified":"우·좌 포물선 교점 P/Q와 각 초점 F₁/F₂가 이루는 사각형"},
+        {"qid":11,"featureParity":"PASS_PRE_RENDER","verified":"준선의 수선 PH·초점 현 PFQ·PF:FQ=3:1과 넓이 조건을 충족하는 내부 배치"}
+      ]
+    }
+  ],
+  "engineHandoff": [
+    {"stemNumber":7,"qid":6,"kind":"EQUAL_SIDE_MARKS","target":"ellipse-figure-v1/conic","request":"같은 길이인 PH/HF/FP 3변에 일치하는 눈금 표식; 계산된 실제 세 변 길이 검증"},
+    {"stemNumber":7,"qid":7,"kind":"NUMERIC_ANGLE_MARK","target":"ellipse-figure-v1/conic","request":"P를 꼭짓점으로 H→P→F 120° 호와 120° 라벨 표시; 실제 점 위치로 각도 재검증"},
+    {"stemNumber":8,"qid":4,"kind":"SHORT_SEGMENT_LABEL","target":"ellipse-figure-v1/conic","request":"BQ 길이 4−√7과 AP 길이 4+√7 동시 표시. BQ label 시 ELLIPSE_LABEL_NO_ROOM; 선분 소유 지시선 또는 치수 옮기기 필요"},
+    {"stemNumber":15,"qid":3,"kind":"MULTI_RAY_WITH_DIMENSIONS","target":"ellipse-figure-v1/conic","request":"AB=16m·OV=1m·AK=3m를 유지하고 두 번째 광선 S→N→F 추가. 추가 시 ELLIPSE_LABEL_NO_ROOM:measure-AB; 대표 광선 1개인 플랜은 full PASS"}
+  ],
+  "handoffNote": "이 장부는 49문항의 현행 JS 대 엔진 plan 사전 대조이며 PNG 육안 검수나 운영 게시 완료 증거가 아니다. 엔진 기능 수정 후 해당 qid의 plan 수정·full lint·SVG/PNG 실물·학생 화면·A4 검수는 Antigravity가 마감한다."
+}
