@@ -1,0 +1,18 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "sourceQuote": "$h(x)=-(x+2)(x-4)=-x^2+2x+8=-(x-1)^2+9$이다.",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [{"coefficients": ["8", "2", "-1"]}],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "domain": [-3, 5],
+    "viewport": [-4, 6, -5, 11],
+    "requiredPoints": [{"id": "A", "x": -2, "y": 0}, {"id": "V", "x": 1, "y": 9}, {"id": "B", "x": 4, "y": 0}],
+    "exactCoordinates": {"A": ["-2", "0"], "V": ["1", "9"], "B": ["4", "0"]},
+    "axisTickValues": {"x": [], "y": []}
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "차함수 h(x)=−(x+2)(x−4)의 두 영점 A(−2,0), B(4,0)와 꼭짓점 V(1,9)",
+  "sourceConditions": [{"id": "q15-S1", "condition": "h(-2)=h(4)=0, 최고차항 계수 -1", "mappedTo": "graphPlan.pieces, graphPlan.requiredPoints"}],
+  "newVisualInformation": ["두 영점의 중간인 x=1에서 최댓값 9를 얻음을 도형적으로 확인한다."]
+}
