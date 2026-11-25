@@ -1,0 +1,24 @@
+{
+  "capability": "polynomial-spike-v1",
+  "sourceQuote": "따라서 사각형의 넓이 $S(t)$는",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": ["81/4", "9/2", "-3/4"],
+    "sourceDomain": {"kind": "INTERVAL", "range": [0, 9], "states": ["OPEN", "OPEN"]},
+    "domain": [0, 9],
+    "viewport": [-1, 10, 0, 30],
+    "requiredPoints": [
+      {"id": "V", "x": 3, "y": 27},
+      {"id": "T", "x": 6, "y": 20.25}
+    ],
+    "exactCoordinates": {"V": ["3", "27"], "T": ["6", "81/4"]},
+    "axisVariable": "t",
+    "axisTickValues": {"x": [], "y": []}
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "삼각형에서 두 작은 삼각형을 뺀 넓이 S(t)=27−3/4(t−3)²는 t=3일 때 27로 최대이다.",
+  "sourceConditions": [
+    {"id": "q22-S1", "condition": "0<t<9, 사각형 PQCR의 넓이는 81/4+9t/2−3t²/4", "mappedTo": "graphPlan.coefficients, graphPlan.sourceDomain"}
+  ],
+  "newVisualInformation": ["허용구간 0<t<9 안에 꼭짓점 t=3이 있으므로 실제 최대 넓이 27이 달성됨을 보여 준다."]
+}
