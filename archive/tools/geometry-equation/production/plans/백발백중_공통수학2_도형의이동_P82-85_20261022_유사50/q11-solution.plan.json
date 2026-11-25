@@ -1,0 +1,166 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "-1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "LINE_REFLECTION",
+        "inputs": [
+          "B",
+          "D"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "L",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "P"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "P"
+  ],
+  "displayLines": [
+    "D",
+    "L"
+  ],
+  "coordinateLabels": [
+    "A",
+    "B",
+    "P"
+  ],
+  "coordinatePlacement": "PANEL",
+  "lineLabels": [
+    {
+      "nodeId": "D",
+      "form": "SLOPE_INTERCEPT"
+    }
+  ],
+  "caption": "역대칭·역평행이동으로 원래 직선 위의 점 찾기",
+  "accessibilityDescription": "원래 직선의 주어진 점 A(0,2)와 변환된 직선의 점 B(4,1)로부터 역변환해 P(1,4)를 얻고 A,P가 정하는 원래 직선을 그린다.",
+  "sourceConditions": [
+    {
+      "id": "fixed",
+      "condition": "원래 직선은 A(0,2)를 지난다",
+      "mappedTo": "A"
+    },
+    {
+      "id": "final",
+      "condition": "변환된 직선은 B(4,1)를 지난다",
+      "mappedTo": "B"
+    },
+    {
+      "id": "reverse",
+      "condition": "y=x 역대칭 및 필요시 평행이동의 역변환",
+      "mappedTo": [
+        "D",
+        "P"
+      ]
+    },
+    {
+      "id": "line",
+      "condition": "원래 직선의 기울기는 2",
+      "mappedTo": "L"
+    }
+  ],
+  "newVisualInformation": [
+    "역변환으로 얻은 원래 직선 위의 두 점 A,P와 이 두 점을 지나는 직선을 실제로 표시한다."
+  ]
+}

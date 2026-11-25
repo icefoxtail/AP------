@@ -1,0 +1,55 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "-3",
+      "2",
+      "-1"
+    ],
+    "domain": [
+      -2,
+      4
+    ],
+    "viewport": [
+      -2,
+      4,
+      -12,
+      1
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 1,
+        "y": -2
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "두 번 대칭한 포물선의 꼭짓점",
+  "accessibilityDescription": "변환된 포물선과 꼭짓점 V(1,-2)가 좌표평면에 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "givens",
+      "condition": "y=(x-1)²+2를 y축 대칭 후 원점 대칭",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "result",
+      "condition": "해설의 최종 포물선과 꼭짓점 (1,-2)",
+      "mappedTo": [
+        "graphPlan.coefficients",
+        "graphPlan.requiredPoints"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "변환된 최종 포물선의 개형 및 꼭짓점 V를 식과 함께 보인다."
+  ]
+}
