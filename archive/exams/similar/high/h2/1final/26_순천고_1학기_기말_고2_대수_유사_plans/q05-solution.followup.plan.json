@@ -1,0 +1,21 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "SIN",
+    "coefficients": ["3", "2", "-1"],
+    "phasePi": "-1/4",
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "displayWindowPi": ["-1/8", "9/8"],
+    "axisTickPi": true,
+    "axisTickValues": {"x": ["3/8", "7/8"], "y": ["2", "-4", "-1"]},
+    "displaySize": "full"
+  },
+  "caption": "진폭 3, 중심선 y=-1, 주기 π인 사인 그래프에서 최대 2와 최소 -4를 읽는다.",
+  "accessibilityDescription": "위로 2, 아래로 -4까지 움직이는 사인 곡선과 중심선 높이 -1, 한 주기의 반복을 나타낸다.",
+  "sourceConditions": [
+    {"id": "sc1", "condition": "y=3sin(2x-π/4)-1", "mappedTo": "graphPlan.function,graphPlan.coefficients,graphPlan.phasePi"},
+    {"id": "sc2", "condition": "최대·최소·주기를 각각 a,b,c로 놓는다", "mappedTo": "graphPlan.axisTickValues"}
+  ],
+  "newVisualInformation": ["최댓값과 최솟값을 곡선의 꼭대기·바닥에서 찾음", "반복 간격 π"]
+}

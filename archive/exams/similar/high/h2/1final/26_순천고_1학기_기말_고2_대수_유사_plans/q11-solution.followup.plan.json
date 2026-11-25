@@ -1,0 +1,36 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {"recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false},
+    "nodes": [
+      {"id": "A", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "integer", "value": "0"}, {"kind": "integer", "value": "0"}]}, "outputType": "POINT", "factRole": "GIVEN"},
+      {"id": "B", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "integer", "value": "6"}, {"kind": "integer", "value": "0"}]}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE"},
+      {"id": "C", "op": "POLAR_POINT", "inputs": ["A", "B"], "args": {"length": {"kind": "integer", "value": "16"}, "angleDeg": {"kind": "integer", "value": "60"}, "turn": "CCW"}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "displayPoints": ["A", "B", "C"],
+  "displaySegments": [
+    {"id": "sAB", "refs": ["A", "B"]},
+    {"id": "sAC", "refs": ["A", "C"]},
+    {"id": "sBC", "refs": ["B", "C"]}
+  ],
+  "planeMarks": {
+    "angles": [{"id": "angA", "refs": ["B", "A", "C"], "value": 60, "label": "60", "arcs": 1, "style": "ARC", "factRole": "GIVEN"}],
+    "expressionLabels": [
+      {"id": "labAB", "ownerSegment": "sAB", "text": "6"},
+      {"id": "labAC", "ownerSegment": "sAC", "text": "16"},
+      {"id": "labBC", "ownerSegment": "sBC", "text": "14"}
+    ]
+  },
+  "axisTickValues": {"x": [], "y": []},
+  "coordinateCanvas": {"width": 570, "height": 470},
+  "caption": "A=60°, AB=6, AC=16, BC=14. 외접원 넓이로 BC=14를 구한 뒤 비 3:8에서 나머지 변을 구한다.",
+  "accessibilityDescription": "끼인각 60도인 삼각형에서 AB 6, AC 16, BC 14의 세 길이가 각각의 변 옆에 쓰여 있다.",
+  "sourceConditions": [
+    {"id": "sc1", "condition": "cos A=1/2이므로 각 A=60°", "mappedTo": ["angA"]},
+    {"id": "sc2", "condition": "외접원 넓이 196π/3으로 R=14/√3, 사인법칙으로 BC=14", "mappedTo": ["sBC", "labBC"]},
+    {"id": "sc3", "condition": "AB:AC=3:8, 코사인법칙으로 t=2여서 AB=6, AC=16", "mappedTo": ["sAB", "sAC", "labAB", "labAC"]}
+  ],
+  "newVisualInformation": ["주어진 끼인각 60도 호", "유도된 세 변의 길이를 각각 해당 선분에 표시"]
+}

@@ -1,0 +1,36 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {"recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false},
+    "nodes": [
+      {"id": "A", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "integer", "value": "0"}, {"kind": "integer", "value": "4"}]}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE"},
+      {"id": "B", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "integer", "value": "-3"}, {"kind": "integer", "value": "0"}]}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE"},
+      {"id": "C", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "integer", "value": "3"}, {"kind": "integer", "value": "0"}]}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "displayPoints": ["A", "B", "C"],
+  "displaySegments": [
+    {"id": "sBC", "refs": ["B", "C"]},
+    {"id": "sCA", "refs": ["C", "A"]},
+    {"id": "sAB", "refs": ["A", "B"]}
+  ],
+  "planeMarks": {
+    "equalLengths": [{"id": "equalBC", "count": 1, "segments": ["sCA", "sAB"]}],
+    "expressionLabels": [
+      {"id": "ta", "ownerSegment": "sBC", "text": "a"},
+      {"id": "tb", "ownerSegment": "sCA", "text": "b"},
+      {"id": "tc", "ownerSegment": "sAB", "text": "c"}
+    ]
+  },
+  "axisTickValues": {"x": [], "y": []},
+  "coordinateCanvas": {"width": 480, "height": 410},
+  "caption": "넓이식과 코사인법칙을 결합하면 b=c가 되고, 대응 변 CA와 AB에 같은 길이 눈금을 붙인 이등변삼각형이다.",
+  "accessibilityDescription": "꼭짓점 A에서 B와 C로 내려오는 두 변 b와 c에 동일한 눈금을 표시한 삼각형 ABC이다.",
+  "sourceConditions": [
+    {"id": "sc1", "condition": "a=BC, b=CA, c=AB", "mappedTo": ["sBC", "sCA", "sAB", "ta", "tb", "tc"]},
+    {"id": "sc2", "condition": "S=(1/4)a²tanB와 S=(1/2)ac sinB에서 2c cosB=a", "mappedTo": "PRESERVED_ARCHIVE_BANK"},
+    {"id": "sc3", "condition": "b²=a²+c²-2ac cosB=c²; b=c", "mappedTo": ["equalBC", "sCA", "sAB"]}
+  ],
+  "newVisualInformation": ["b=c인 두 변에 같은 길이 눈금", "꼭짓점 A의 양옆 변이 같다는 풀이 결론"]
+}
