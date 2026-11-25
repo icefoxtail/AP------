@@ -1,7 +1,7 @@
 # 2026 복성고 고1 1학기 중간 발전형 유사2 — SVG 후속 장부
 
 - 운영 JS: `archive/exams/similar/high/h1/1mid/26_복성고_1학기_중간_고1_유사2.js`
-- 원고 Git blob SHA-1: `9096a8191e35374abd8c501a67184b0feb52ee02`
+- 원고 Git blob SHA-1: `e2ba21487f24ff49f9c5af9c524772f2e23c8447`
 - 문제용 필수 이미지: **0/24건**; 24건 모두 `EXEMPT`. 각 문제는 필요한 수식·좌표·도형 관계를 발문에서 구체적으로 정의한다.
 - 해설용 그림: **4/24건 `SVG_TO_CREATE`**, 나머지 20건 `EXEMPT` (풀이와 재현 가능한 수식·좌표가 해설에 포함).
 - 계획 JSON: **4건 작성**, 공식 엔진 `--shallow` 검사 **4/4 OK**. 전체 엔진 lint는 `NotoSansKR.ttf` 의존 파일 부재로 `ENVIRONMENT_BLOCKED`.
