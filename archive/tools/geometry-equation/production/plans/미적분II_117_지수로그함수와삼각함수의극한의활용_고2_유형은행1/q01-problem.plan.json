@@ -1,0 +1,102 @@
+{
+  "capability": "exponential-affine-spike-v1",
+  "graphPlan": {
+    "family": "exponential-affine",
+    "base": "3",
+    "coefficients": [
+      "1",
+      "1",
+      "-1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -0.4,
+      1.1
+    ],
+    "viewport": [
+      -0.6,
+      2.6,
+      -0.6,
+      2.6
+    ],
+    "equalUnits": true,
+    "plotCanvas": {
+      "width": 448,
+      "height": 448
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        },
+        {
+          "id": "H",
+          "x": "1",
+          "y": "0"
+        },
+        {
+          "id": "P",
+          "curveX": "1"
+        }
+      ],
+      "segments": [
+        {
+          "id": "OH",
+          "from": "O",
+          "to": "H"
+        },
+        {
+          "id": "HP",
+          "from": "H",
+          "to": "P"
+        },
+        {
+          "id": "OP",
+          "from": "O",
+          "to": "P"
+        }
+      ],
+      "rightAngles": [
+        {
+          "at": "H",
+          "from": [
+            "O",
+            "P"
+          ]
+        }
+      ]
+    }
+  },
+  "caption": "지수곡선 y=3^x−1의 P와 x축 정사영 H, 직각삼각형 OHP를 표시한다.",
+  "accessibilityDescription": "지수곡선 y=3^x−1의 P와 x축 정사영 H, 직각삼각형 OHP를 표시한다.",
+  "sourceQuote": "[그림: $y=3^x-1$과 그 위의 $P$, $H=(x,0)$, 원점 $O$.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문 함수의 종류·식·정의역과 해당 좌표평면",
+      "mappedTo": "graphPlan.family;graphPlan.coefficients;graphPlan.sourceDomain;graphPlan.domain;graphPlan.viewport"
+    },
+    {
+      "id": "c2",
+      "condition": "P=(x,3^x−1), 대표 x=1",
+      "mappedTo": "graphPlan.overlays.points[2]"
+    },
+    {
+      "id": "c3",
+      "condition": "H=(x,0), OH·PH와 직각",
+      "mappedTo": "graphPlan.overlays.points[0..1];graphPlan.overlays.segments[0..2];graphPlan.overlays.rightAngles[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "x=1은 정답이 아니라 곡선상 점과 직각삼각형을 읽기 위한 대표 프레임이다.",
+    "문제의 정답·풀이 결론은 그래프에 쓰지 않는다."
+  ]
+}

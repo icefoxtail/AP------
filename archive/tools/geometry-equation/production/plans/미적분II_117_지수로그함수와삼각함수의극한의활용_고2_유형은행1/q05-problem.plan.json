@@ -1,0 +1,102 @@
+{
+  "capability": "logarithmic-affine-spike-v1",
+  "graphPlan": {
+    "family": "logarithmic-affine",
+    "coefficients": [
+      "1",
+      "2",
+      "1",
+      "0"
+    ],
+    "sourceDomain": {
+      "kind": "NATURAL_LOG_AFFINE"
+    },
+    "domain": [
+      -0.3,
+      2
+    ],
+    "viewport": [
+      -0.5,
+      2.6,
+      -0.6,
+      2.2
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "circles": [
+        {
+          "id": "C",
+          "center": [
+            "0",
+            "0"
+          ],
+          "radiusSquared": "4"
+        }
+      ],
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        },
+        {
+          "id": "P",
+          "x": "8/5",
+          "y": "6/5",
+          "onCircle": "C"
+        },
+        {
+          "id": "H",
+          "x": "0",
+          "y": "6/5"
+        }
+      ],
+      "segments": [
+        {
+          "id": "OP",
+          "from": "O",
+          "to": "P"
+        },
+        {
+          "id": "HP",
+          "from": "H",
+          "to": "P"
+        }
+      ],
+      "lines": [
+        {
+          "id": "horizontal",
+          "slope": "0",
+          "intercept": "6/5"
+        }
+      ]
+    }
+  },
+  "caption": "로그곡선·원점 중심 사분원·동일 높이의 H,P를 표시한다. 두 곡선의 수평 교점 Q는 미지원이다.",
+  "accessibilityDescription": "로그곡선·원점 중심 사분원·동일 높이의 H,P를 표시한다. 두 곡선의 수평 교점 Q는 미지원이다.",
+  "sourceQuote": "[그림: 반지름 2인 사분원과 로그 곡선, 수평선 위에 왼쪽부터 $H,Q,P$.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문 함수의 종류·식·정의역과 해당 좌표평면",
+      "mappedTo": "graphPlan.family;graphPlan.coefficients;graphPlan.sourceDomain;graphPlan.domain;graphPlan.viewport"
+    },
+    {
+      "id": "c2",
+      "condition": "사분원 위 P와 y축 수선 발 H, 수평선",
+      "mappedTo": "graphPlan.overlays.circles[0];graphPlan.overlays.points[1..2];graphPlan.overlays.segments[1];graphPlan.overlays.lines[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "Q=((exp(2sinθ)−1)/2,2sinθ) 및 QP·HQ",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: 초월지수 x좌표 Q와 HQ 분할·OPQ 삼각형 미구현"
+    }
+  ],
+  "newVisualInformation": [
+    "ENGINE_CAPABILITY_PENDING: x_Q=(e^(6/5)−1)/2를 정확한 overlay.point로 구성할 수 없다.",
+    "문제의 정답·풀이 결론은 그래프에 쓰지 않는다."
+  ]
+}

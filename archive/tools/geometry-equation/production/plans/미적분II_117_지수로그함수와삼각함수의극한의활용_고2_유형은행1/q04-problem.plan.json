@@ -1,0 +1,91 @@
+{
+  "capability": "exponential-affine-spike-v1",
+  "graphPlan": {
+    "family": "exponential-affine",
+    "coefficients": [
+      "1",
+      "2",
+      "-1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -0.2,
+      1.3
+    ],
+    "viewport": [
+      -0.5,
+      2.4,
+      -0.5,
+      3.2
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "circles": [
+        {
+          "id": "C",
+          "center": [
+            "0",
+            "0"
+          ],
+          "radiusSquared": "4"
+        }
+      ],
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        },
+        {
+          "id": "P",
+          "x": "8/5",
+          "y": "6/5",
+          "onCircle": "C"
+        }
+      ],
+      "segments": [
+        {
+          "id": "OP",
+          "from": "O",
+          "to": "P"
+        }
+      ],
+      "lines": [
+        {
+          "id": "horizontal",
+          "slope": "0",
+          "intercept": "6/5"
+        }
+      ]
+    }
+  },
+  "caption": "지수곡선과 반지름 2인 원의 제1사분면 P, P를 지나는 수평선을 보인다. Q·R·T는 엔진 기능 보강이 필요하다.",
+  "accessibilityDescription": "지수곡선과 반지름 2인 원의 제1사분면 P, P를 지나는 수평선을 보인다. Q·R·T는 엔진 기능 보강이 필요하다.",
+  "sourceQuote": "[그림: 원점 중심 반지름 2인 사분원의 $P$, 그 높이에 있는 지수곡선 위 $Q$, $QR$과 $OP$의 교점 $T$.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문 함수의 종류·식·정의역과 해당 좌표평면",
+      "mappedTo": "graphPlan.family;graphPlan.coefficients;graphPlan.sourceDomain;graphPlan.domain;graphPlan.viewport"
+    },
+    {
+      "id": "c2",
+      "condition": "사분원의 점 P와 그 높이의 수평선(대표 sinθ=3/5)",
+      "mappedTo": "graphPlan.overlays.circles[0];graphPlan.overlays.points[1];graphPlan.overlays.lines[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "Q=(ln(1+2sinθ)/2,2sinθ), R=(x_Q,0), T=OP∩QR",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: 초월로그 x좌표의 Q,R와 T 수선 교점 미구현"
+    }
+  ],
+  "newVisualInformation": [
+    "ENGINE_CAPABILITY_PENDING: 정확한 x_Q=ln(7/5)/2 점과 그 수선/교점을 계산·표시할 수 없다.",
+    "문제의 정답·풀이 결론은 그래프에 쓰지 않는다."
+  ]
+}

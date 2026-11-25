@@ -1,0 +1,80 @@
+{
+  "capability": "logarithmic-affine-spike-v1",
+  "graphPlan": {
+    "family": "logarithmic-affine",
+    "coefficients": [
+      "1",
+      "6",
+      "1",
+      "0"
+    ],
+    "sourceDomain": {
+      "kind": "NATURAL_LOG_AFFINE"
+    },
+    "domain": [
+      -0.1,
+      1
+    ],
+    "viewport": [
+      -0.3,
+      1.2,
+      -0.7,
+      2.4
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        },
+        {
+          "id": "H",
+          "x": "1/6",
+          "y": "0"
+        }
+      ],
+      "segments": [
+        {
+          "id": "OH",
+          "from": "O",
+          "to": "H"
+        }
+      ],
+      "lines": [
+        {
+          "id": "v",
+          "x": "1/6"
+        }
+      ]
+    }
+  },
+  "caption": "로그곡선 y=ln(1+6x)와 원점 O, x축 H 및 세로 보조선이다. P·PH는 엔진 보강이 필요하다.",
+  "accessibilityDescription": "로그곡선 y=ln(1+6x)와 원점 O, x축 H 및 세로 보조선이다. P·PH는 엔진 보강이 필요하다.",
+  "sourceQuote": "[그림: 로그 곡선 위 $P$에서 $H=(x,0)$까지 수직선, 원점 $O$.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문 함수의 종류·식·정의역과 해당 좌표평면",
+      "mappedTo": "graphPlan.family;graphPlan.coefficients;graphPlan.sourceDomain;graphPlan.domain;graphPlan.viewport"
+    },
+    {
+      "id": "c2",
+      "condition": "P=(x,ln(1+6x)), 대표 x=1/6",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: curveX=1/6의 초월 로그값 ln2 exact overlay.point 미지원"
+    },
+    {
+      "id": "c3",
+      "condition": "H=(x,0), OH, 수직 보조선(단 PH·직각 미완)",
+      "mappedTo": "graphPlan.overlays.points[0..1];graphPlan.overlays.segments[0];graphPlan.overlays.lines[0];ENGINE_CAPABILITY_PENDING:PH 직각 표식"
+    }
+  ],
+  "newVisualInformation": [
+    "ENGINE_CAPABILITY_PENDING: 로그의 비대수적 함수값 ln2를 정확한 좌표로 보존하는 곡선 위 점 P와 PH·직각 표시가 없다.",
+    "문제의 정답·풀이 결론은 그래프에 쓰지 않는다."
+  ]
+}

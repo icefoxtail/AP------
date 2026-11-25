@@ -1,0 +1,286 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-7",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "24",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "527",
+              "denominator": "125"
+            },
+            {
+              "kind": "rational",
+              "numerator": "336",
+              "denominator": "125"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "X",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-49",
+              "denominator": "125"
+            },
+            {
+              "kind": "rational",
+              "numerator": "168",
+              "denominator": "125"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "outer",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "O",
+    "B",
+    "P",
+    "Q",
+    "X"
+  ],
+  "hiddenPointNames": [
+    "X"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "O",
+        "P"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "A",
+        "X"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "X",
+        "Q"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "O",
+        "Q"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a0",
+        "refs": [
+          "O",
+          "A",
+          "P"
+        ],
+        "value": 53.130102354,
+        "label": "θ",
+        "arcs": 1,
+        "style": "ARC"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "arc0",
+        "circle": "outer",
+        "center": "O",
+        "from": "B",
+        "to": "A",
+        "side": "CCW"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "l0",
+        "ownerSegment": "s0",
+        "text": "10"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "O",
+        "X",
+        "Q"
+      ]
+    }
+  ],
+  "caption": "지름 AB=10인 윗반원에서 호 위 P, OP와 수직인 AQ, 삼각형 AOQ와 교차 직각을 표시한다.",
+  "accessibilityDescription": "지름 AB=10인 윗반원에서 호 위 P, OP와 수직인 AQ, 삼각형 AOQ와 교차 직각을 표시한다.",
+  "sourceQuote": "[그림: $A=(-5,0),B=(5,0)$, $OP$의 방향각은 $2\\theta$, $AQ$의 방향각은 $2\\theta-\\pi/2$.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문에서 이름 붙인 점과 대표 배치(각·변의 실제 거리·소속 검산)",
+      "mappedTo": "mathPlan.nodes[0..5]"
+    },
+    {
+      "id": "c2",
+      "condition": "그림에 표시할 변·수선·연결선",
+      "mappedTo": "displaySegments[0..4]"
+    },
+    {
+      "id": "c3",
+      "condition": "원의 중심·반지름",
+      "mappedTo": "mathPlan.nodes[6..6]"
+    },
+    {
+      "id": "c4",
+      "condition": "원문 호와 표시 방향",
+      "mappedTo": "planeMarks.arcs[0..0]"
+    },
+    {
+      "id": "c5",
+      "condition": "주어진 각·각의 관계",
+      "mappedTo": "planeMarks.angles[0..0]"
+    },
+    {
+      "id": "c6",
+      "condition": "수선·직각 표시",
+      "mappedTo": "rightAngles[0..0]"
+    },
+    {
+      "id": "c7",
+      "condition": "문제에 주어진 길이 수치",
+      "mappedTo": "planeMarks.expressionLabels[0..0]"
+    }
+  ],
+  "newVisualInformation": [
+    "tanθ=4/3의 θ>π/4 대표에서 Q=(527/125,336/125)이고 OP⊥AQ의 교차점은 X=(-49/125,168/125)이다.",
+    "문제에서 구할 극한값과 최종 답은 시각 자료에 쓰지 않는다."
+  ]
+}

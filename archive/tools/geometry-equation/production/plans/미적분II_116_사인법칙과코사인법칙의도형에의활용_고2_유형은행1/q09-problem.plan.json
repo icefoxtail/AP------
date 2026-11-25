@@ -1,0 +1,246 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "648",
+              "denominator": "107"
+            },
+            {
+              "kind": "rational",
+              "numerator": "108",
+              "denominator": "107"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "108"
+                },
+                {
+                  "kind": "expression",
+                  "op": "add",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "12"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "37"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "hiddenPointNames": [],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a0",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 9.462322208,
+        "label": "θ",
+        "arcs": 1,
+        "style": "ARC"
+      },
+      {
+        "id": "a1",
+        "refs": [
+          "C",
+          "B",
+          "A"
+        ],
+        "value": 18.924644416,
+        "label": "2θ",
+        "arcs": 1,
+        "style": "ARC"
+      },
+      {
+        "id": "a2",
+        "refs": [
+          "A",
+          "C",
+          "D"
+        ],
+        "value": 75.806516688,
+        "noLabel": true,
+        "equalGroup": 1,
+        "arcs": 1,
+        "style": "ARC"
+      },
+      {
+        "id": "a3",
+        "refs": [
+          "D",
+          "C",
+          "B"
+        ],
+        "value": 75.806516688,
+        "noLabel": true,
+        "equalGroup": 1,
+        "arcs": 1,
+        "style": "ARC"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "l0",
+        "ownerSegment": "s0",
+        "text": "9"
+      }
+    ]
+  },
+  "caption": "AB=9인 삼각형의 ∠A=θ, ∠B=2θ와 C에서 AB로 그은 내각 이등분선 CD를 표시한다.",
+  "accessibilityDescription": "AB=9인 삼각형의 ∠A=θ, ∠B=2θ와 C에서 AB로 그은 내각 이등분선 CD를 표시한다.",
+  "sourceQuote": "[그림: $A=(0,0),B=(9,0)$에서 각각 주어진 내각의 반직선을 그리고 교점 $C$의 내각 이등분선을 $AB$까지 긋는다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문에서 이름 붙인 점과 대표 배치(각·변의 실제 거리·소속 검산)",
+      "mappedTo": "mathPlan.nodes[0..3]"
+    },
+    {
+      "id": "c2",
+      "condition": "그림에 표시할 변·수선·연결선",
+      "mappedTo": "displaySegments[0..3]"
+    },
+    {
+      "id": "c5",
+      "condition": "주어진 각·각의 관계",
+      "mappedTo": "planeMarks.angles[0..3]"
+    },
+    {
+      "id": "c7",
+      "condition": "문제에 주어진 길이 수치",
+      "mappedTo": "planeMarks.expressionLabels[0..0]"
+    }
+  ],
+  "newVisualInformation": [
+    "tanθ=1/6의 대표 삼각형이며 CD는 각 이등분선 정리의 정확한 분할점 D로 잇는다.",
+    "문제에서 구할 극한값과 최종 답은 시각 자료에 쓰지 않는다."
+  ]
+}

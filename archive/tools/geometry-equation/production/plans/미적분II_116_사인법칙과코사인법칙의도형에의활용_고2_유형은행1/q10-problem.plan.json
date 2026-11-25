@@ -1,0 +1,316 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "K",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "297",
+              "denominator": "101"
+            },
+            {
+              "kind": "rational",
+              "numerator": "60",
+              "denominator": "101"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "add",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "197"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "mul",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "20"
+                        },
+                        {
+                          "kind": "expression",
+                          "op": "sqrt",
+                          "args": [
+                            {
+                              "kind": "integer",
+                              "value": "19"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "101"
+                }
+              ]
+            },
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "add",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "50"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "mul",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "2"
+                        },
+                        {
+                          "kind": "expression",
+                          "op": "sqrt",
+                          "args": [
+                            {
+                              "kind": "integer",
+                              "value": "19"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "101"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "k1",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k2",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "K"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "O",
+    "K",
+    "T",
+    "P",
+    "Q"
+  ],
+  "hiddenPointNames": [
+    "K"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "A",
+        "T"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "A",
+        "Q"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "Q",
+        "P"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "k1",
+    "k2"
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a0",
+        "refs": [
+          "T",
+          "A",
+          "Q"
+        ],
+        "value": 5.710593137,
+        "label": "θ",
+        "arcs": 1,
+        "style": "ARC"
+      }
+    ]
+  },
+  "caption": "A에서 출발한 반직선이 큰 원과 P, 작은 원과 Q에서 만나며 두 원은 T=(3,0)에서 내접한다.",
+  "accessibilityDescription": "A에서 출발한 반직선이 큰 원과 P, 작은 원과 Q에서 만나며 두 원은 T=(3,0)에서 내접한다.",
+  "sourceQuote": "[그림: 두 원은 $(3,0)$에서 내접하며 $A$에서 시작한 반직선은 두 원을 지난다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문에서 이름 붙인 점과 대표 배치(각·변의 실제 거리·소속 검산)",
+      "mappedTo": "mathPlan.nodes[0..5]"
+    },
+    {
+      "id": "c2",
+      "condition": "그림에 표시할 변·수선·연결선",
+      "mappedTo": "displaySegments[0..2]"
+    },
+    {
+      "id": "c3",
+      "condition": "원의 중심·반지름",
+      "mappedTo": "mathPlan.nodes[6..7];displayCircles[0..1]"
+    },
+    {
+      "id": "c5",
+      "condition": "주어진 각·각의 관계",
+      "mappedTo": "planeMarks.angles[0..0]"
+    }
+  ],
+  "newVisualInformation": [
+    "tanθ=1/10에서 원 둘의 정확한 근호 교점 Q와 P를 쓴 대표 배치다.",
+    "문제에서 구할 극한값과 최종 답은 시각 자료에 쓰지 않는다."
+  ]
+}
