@@ -1,0 +1,39 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "axisVariable": true,
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "원래 구간",
+        "color": "BLUE",
+        "pieces": [
+          {
+            "lo": { "value": "-1", "state": "OPEN" },
+            "hi": { "value": "4", "state": "CLOSED" }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "부정 구간",
+        "color": "WARM",
+        "pieces": [
+          { "lo": null, "hi": { "value": "-1", "state": "CLOSED" } },
+          { "lo": { "value": "4", "state": "OPEN" }, "hi": null }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": { "text": "구간과 그 여집합" },
+  "caption": "원래 구간 −1<x≤4는 −1에서 열린 점, 4에서 닫힌 점이다. 그 부정은 x≤−1 또는 x>4로 끝점 포함이 뒤집힌 양쪽 구간이다. '모든'의 부정은 '어떤'임도 함께 확인한다.",
+  "accessibilityDescription": "위 수직선은 마이너스 일 초과 사 이하의 구간이고 아래 수직선은 마이너스 일 이하 및 사 초과의 양쪽 바깥 구간이다. 양 끝의 열린 점과 닫힌 점이 서로 뒤바뀐다.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "원명제의 −1<x≤4", "mappedTo": "numberLine.rows[0].pieces=(-1,4]" },
+    { "id": "c2", "condition": "부정은 x≤−1 또는 x>4", "mappedTo": "numberLine.rows[1].pieces=(-∞,-1]∪(4,∞)" }
+  ],
+  "newVisualInformation": [
+    "연립구간의 부정은 두 바깥쪽 구간의 합집합이며, 두 끝점의 포함 여부가 반대로 바뀜을 보인다.",
+    "원래 조건과 부정 조건이 수직선 전체를 서로 겹치지 않게 나눈다는 사실을 한 눈금 위에서 비교한다."
+  ]
+}
