@@ -1,0 +1,117 @@
+{
+  "capability": "rational-spike-v1",
+  "graphPlan": {
+    "family": "rational",
+    "numerator": [
+      "1",
+      "3"
+    ],
+    "denominator": [
+      "-1",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -3,
+      5
+    ],
+    "viewport": [
+      -4,
+      6,
+      -8,
+      10
+    ],
+    "equalUnits": true,
+    "axisTickValues": {
+      "x": [
+        "1",
+        "2"
+      ],
+      "y": [
+        "3"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "Point1",
+          "curveX": "2",
+          "unnamed": true,
+          "coordinates": true
+        },
+        {
+          "id": "Point2",
+          "curveX": "-1",
+          "unnamed": true,
+          "coordinates": true
+        },
+        {
+          "id": "Point3",
+          "curveX": "-1/6",
+          "unnamed": true,
+          "coordinates": true
+        },
+        {
+          "id": "Point4",
+          "curveX": "1/2",
+          "unnamed": true,
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "유리함수의 점근선 x=1, y=3과 가지의 네 사분면을 본다.",
+  "accessibilityDescription": "유리함수의 점근선 x=1, y=3과 가지의 네 사분면을 본다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "유리함수의 정확한 곡선: (3x+1)/(x+-1)",
+      "mappedTo": [
+        "graphPlan.numerator",
+        "graphPlan.denominator"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "점근선 x=1, y=3",
+      "mappedTo": [
+        "graphPlan.numerator",
+        "graphPlan.denominator",
+        "graphPlan.axisTickValues"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "해설에서 활용하는 곡선 위 점 (2,7)",
+      "mappedTo": [
+        "graphPlan.overlays.points"
+      ]
+    },
+    {
+      "id": "c4",
+      "condition": "해설에서 활용하는 곡선 위 점 (-1,1)",
+      "mappedTo": [
+        "graphPlan.overlays.points"
+      ]
+    },
+    {
+      "id": "c5",
+      "condition": "해설에서 활용하는 곡선 위 점 (-1/6,-3/7)",
+      "mappedTo": [
+        "graphPlan.overlays.points"
+      ]
+    },
+    {
+      "id": "c6",
+      "condition": "해설에서 활용하는 곡선 위 점 (1/2,-5)",
+      "mappedTo": [
+        "graphPlan.overlays.points"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "계수로 계산된 두 가지와 점근선, 풀이에 필요한 실제 점·위치 정보를 엔진의 그래프 필드로 표시한다."
+  ]
+}

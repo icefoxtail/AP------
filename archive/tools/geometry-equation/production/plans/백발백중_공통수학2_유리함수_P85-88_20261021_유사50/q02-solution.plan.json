@@ -1,0 +1,78 @@
+{
+  "capability": "rational-spike-v1",
+  "graphPlan": {
+    "family": "rational",
+    "numerator": [
+      "3",
+      "2"
+    ],
+    "denominator": [
+      "3",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -7,
+      4
+    ],
+    "viewport": [
+      -8,
+      5,
+      -6,
+      7
+    ],
+    "equalUnits": true,
+    "axisTickValues": {
+      "x": [
+        "-3"
+      ],
+      "y": [
+        "1",
+        "2"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "Point1",
+          "curveX": "0",
+          "unnamed": true,
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "점근선 x=-3, y=2 및 점 (0,1)에서 식을 찾는다.",
+  "accessibilityDescription": "점근선 x=-3, y=2 및 점 (0,1)에서 식을 찾는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "유리함수의 정확한 곡선: (2x+3)/(x+3)",
+      "mappedTo": [
+        "graphPlan.numerator",
+        "graphPlan.denominator"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "점근선 x=-3, y=2",
+      "mappedTo": [
+        "graphPlan.numerator",
+        "graphPlan.denominator",
+        "graphPlan.axisTickValues"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "해설에서 활용하는 곡선 위 점 (0,1)",
+      "mappedTo": [
+        "graphPlan.overlays.points"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "계수로 계산된 두 가지와 점근선, 풀이에 필요한 실제 점·위치 정보를 엔진의 그래프 필드로 표시한다."
+  ]
+}

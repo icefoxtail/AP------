@@ -1,0 +1,236 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C1",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O1"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C2",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O2"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "O1",
+          "O2"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "d",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "O1",
+          "O2"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "r1",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "O1",
+          "T"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "r2",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "T",
+          "O2"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O1",
+    "O2",
+    "T"
+  ],
+  "displayCircles": [
+    "C1",
+    "C2"
+  ],
+  "displayLines": [],
+  "displaySegments": [
+    {
+      "id": "sO1T",
+      "refs": [
+        "O1",
+        "T"
+      ]
+    },
+    {
+      "id": "sTO2",
+      "refs": [
+        "T",
+        "O2"
+      ]
+    },
+    {
+      "id": "sCenters",
+      "refs": [
+        "O1",
+        "O2"
+      ],
+      "dashed": true
+    }
+  ],
+  "coordinateLabels": [
+    "O1",
+    "O2"
+  ],
+  "coordinatePlacement": "PANEL",
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "coordinateCanvas": {
+    "width": 680,
+    "height": 540
+  },
+  "caption": "두 원이 외접하는 한 접점",
+  "accessibilityDescription": "중심이 각각 (0,0), (3,4)인 두 원이 한 점에서 외접한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 중심 (0, 0), (3, 4)",
+      "mappedTo": [
+        "O1",
+        "O2"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "두 반지름 2, 3",
+      "mappedTo": [
+        "C1",
+        "C2"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "외접 시 중심거리 5=2+r",
+      "mappedTo": [
+        "sO1T",
+        "sTO2",
+        "d",
+        "r1",
+        "r2"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "공유 접점 T에서 중심을 잇는 두 반지름이 이어지는 외접 구조."
+  ],
+  "scalarLabels": [
+    {
+      "nodeId": "d",
+      "ownerSegment": "sCenters",
+      "prefix": "",
+      "value": "5"
+    },
+    {
+      "nodeId": "r1",
+      "ownerSegment": "sO1T",
+      "prefix": "",
+      "value": "2"
+    },
+    {
+      "nodeId": "r2",
+      "ownerSegment": "sTO2",
+      "prefix": "",
+      "value": "3"
+    }
+  ]
+}

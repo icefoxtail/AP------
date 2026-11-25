@@ -1,0 +1,94 @@
+{
+  "capability": "rational-spike-v1",
+  "graphPlan": {
+    "family": "rational",
+    "numerator": [
+      "5",
+      "2"
+    ],
+    "denominator": [
+      "2",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -7,
+      3
+    ],
+    "viewport": [
+      -8,
+      4,
+      -5,
+      10
+    ],
+    "equalUnits": true,
+    "axisTickValues": {
+      "x": [
+        "-2"
+      ],
+      "y": [
+        "2",
+        "5/2"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "Point1",
+          "curveX": "0",
+          "unnamed": true,
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "symmetry",
+          "slope": "1",
+          "intercept": "4",
+          "label": "y=x+4",
+          "style": "DASHED"
+        }
+      ]
+    }
+  },
+  "caption": "점근선 (-2,2)과 직선 y=x+4에 대한 대칭을 본다.",
+  "accessibilityDescription": "점근선 (-2,2)과 직선 y=x+4에 대한 대칭을 본다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "유리함수의 정확한 곡선: (2x+5)/(x+2)",
+      "mappedTo": [
+        "graphPlan.numerator",
+        "graphPlan.denominator"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "점근선 x=-2, y=2",
+      "mappedTo": [
+        "graphPlan.numerator",
+        "graphPlan.denominator",
+        "graphPlan.axisTickValues"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "해설에서 활용하는 곡선 위 점 (0,5/2)",
+      "mappedTo": [
+        "graphPlan.overlays.points"
+      ]
+    },
+    {
+      "id": "c4",
+      "condition": "원문의 대칭축 y=x+4",
+      "mappedTo": [
+        "graphPlan.overlays.lines"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "계수로 계산된 두 가지와 점근선, 풀이에 필요한 실제 점·위치 정보를 엔진의 그래프 필드로 표시한다."
+  ]
+}

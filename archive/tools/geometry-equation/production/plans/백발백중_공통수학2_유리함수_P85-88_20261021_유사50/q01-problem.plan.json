@@ -1,0 +1,82 @@
+{
+  "capability": "rational-spike-v1",
+  "graphPlan": {
+    "family": "rational",
+    "numerator": [
+      "1",
+      "3"
+    ],
+    "denominator": [
+      "-1",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -3,
+      5
+    ],
+    "viewport": [
+      -4,
+      6,
+      -5,
+      10
+    ],
+    "equalUnits": true,
+    "axisTickValues": {
+      "x": [
+        "1"
+      ],
+      "y": [
+        "-1",
+        "3"
+      ]
+    },
+    "hideLabels": [
+      "formula"
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "Intercept",
+          "curveX": "0",
+          "unnamed": true,
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "점근선과 y절편을 읽는 문제 그래프",
+  "accessibilityDescription": "원래 문항에서 계수를 읽어야 하는 유리함수의 양쪽 가지, 점근선과 y절편을 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "유리함수의 정확한 곡선: (3x+1)/(x+-1)",
+      "mappedTo": [
+        "graphPlan.numerator",
+        "graphPlan.denominator"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "점근선 x=1, y=3",
+      "mappedTo": [
+        "graphPlan.numerator",
+        "graphPlan.denominator",
+        "graphPlan.axisTickValues"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "원문은 오른쪽 그림을 보게 하므로 해설에서 확인된 점근선과 y절편을 주어진 시각정보로 복원한다",
+      "mappedTo": [
+        "graphPlan.overlays.points",
+        "graphPlan.axisTickValues"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "계수로 계산된 두 가지와 점근선, 풀이에 필요한 실제 점·위치 정보를 엔진의 그래프 필드로 표시한다."
+  ]
+}

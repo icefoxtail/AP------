@@ -1,0 +1,125 @@
+{
+  "capability": "rational-spike-v1",
+  "graphPlan": {
+    "family": "rational",
+    "numerator": [
+      "-1",
+      "2"
+    ],
+    "denominator": [
+      "1",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -5,
+      8
+    ],
+    "viewport": [
+      -6,
+      9,
+      -5,
+      11
+    ],
+    "equalUnits": true,
+    "axisTickValues": {
+      "x": [
+        "1",
+        "5"
+      ],
+      "y": [
+        "1/2",
+        "3/2"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "Point1",
+          "curveX": "-2",
+          "unnamed": true,
+          "coordinates": true
+        },
+        {
+          "id": "Point2",
+          "curveX": "1",
+          "unnamed": true,
+          "coordinates": true
+        },
+        {
+          "id": "Point3",
+          "curveX": "5",
+          "unnamed": true,
+          "coordinates": true
+        }
+      ],
+      "guides": [
+        {
+          "id": "guide2",
+          "from": "Point2",
+          "axis": "x"
+        },
+        {
+          "id": "guide3",
+          "from": "Point3",
+          "axis": "x"
+        }
+      ]
+    }
+  },
+  "caption": "주어진 점 (-2,5)를 지나는 유리함수와 [1,5]의 양 끝 값을 비교한다.",
+  "accessibilityDescription": "주어진 점 (-2,5)를 지나는 유리함수와 [1,5]의 양 끝 값을 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "유리함수의 정확한 곡선: (2x+-1)/(x+1)",
+      "mappedTo": [
+        "graphPlan.numerator",
+        "graphPlan.denominator"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "점근선 x=-1, y=2",
+      "mappedTo": [
+        "graphPlan.numerator",
+        "graphPlan.denominator",
+        "graphPlan.axisTickValues"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "해설에서 활용하는 곡선 위 점 (-2,5)",
+      "mappedTo": [
+        "graphPlan.overlays.points"
+      ]
+    },
+    {
+      "id": "c4",
+      "condition": "해설에서 활용하는 곡선 위 점 (1,1/2)",
+      "mappedTo": [
+        "graphPlan.overlays.points"
+      ]
+    },
+    {
+      "id": "c5",
+      "condition": "해설에서 활용하는 곡선 위 점 (5,3/2)",
+      "mappedTo": [
+        "graphPlan.overlays.points"
+      ]
+    },
+    {
+      "id": "c6",
+      "condition": "닫힌구간의 양 끝 x와 그 위치의 함숫값",
+      "mappedTo": [
+        "graphPlan.overlays.points",
+        "graphPlan.overlays.guides"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "계수로 계산된 두 가지와 점근선, 풀이에 필요한 실제 점·위치 정보를 엔진의 그래프 필드로 표시한다."
+  ]
+}
