@@ -1,0 +1,1112 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "26_복성고_1학기_중간_고1_유사2-candidate-v1",
+  "examUid": "26_복성고_1학기_중간_고1_유사2",
+  "sourceArchiveFile": "archive/exams/similar/high/h1/1mid/26_복성고_1학기_중간_고1_유사2.js",
+  "expectedSourceBlobSha1": "9096a8191e35374abd8c501a67184b0feb52ee02",
+  "expectedQuestionCount": 24,
+  "approval": {
+    "type": "CANDIDATE_CREATION_GATE",
+    "metadataReviewed": false,
+    "reviewStatus": "review_required",
+    "reviewPassCount": 0,
+    "evidenceRefs": []
+  },
+  "registryChanges": [],
+  "items": [
+    {
+      "questionUid": "qid_v1_7fa97e8a72b50d8b3664da4a3a10e830b60171709802e6c3ab6f45885de2b389",
+      "sourceOrdinal": 1,
+      "sourceQid": 1,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "standardUnitKey": "H22-C-05",
+        "standardUnit": "이차방정식과 이차함수",
+        "standardUnitOrder": 5,
+        "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
+        "subUnit": "이차함수의 그래프",
+        "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+        "templateKey": "TPL_H1_QUADRATIC_INTERSECTION_TANGENCY",
+        "crossConceptKeys": [
+          "CC_QUADRATIC_LINE_INTERSECTION",
+          "CC_QUADRATIC_DISCRIMINANT"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 2,
+        "sourceQid": 1,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_복성고_1학기_중간_고1_기출",
+          "sourceArchiveFile": "archive/exams/original/high/h1/1mid/26_복성고_1학기_중간_고1_기출.js",
+          "sourceQid": 1,
+          "variationType": "EXAM_FOLLOWUP",
+          "createdAt": "2026-11-25",
+          "createdAtSource": "GPT direct authored"
+        },
+        "rpmPrimaryRecordId": "H1-RPM-168",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "원본 난도 2를 유지하며 만나는가→접하는가로 목표 변경; 수평선과 기울어진 접선의 중근 판단",
+      "hold": "",
+      "reason": "DRAFT_SINGLE_MODEL; SOURCE_BALANCED/CONFIRMATION; 변형축: 만나는가→접하는가로 목표 변경; 수평선과 기울어진 접선의 중근 판단; 원본: 이차함수 $y=x^2+1$의 그래프와 만나는 직선만 보기에서 있는 대로 고른 것은? (3.2점)\n<보기>\n(가) $x$축\n(나) $y=x-1$\n(다) $y=-x+3$; 유사1: 이차함수 $y=-x^2+2x+3$의 그래프와 만나는 직선만 보기에서 있는 대로 고른 것은? (3.2점)\n<보기>\n(가) $x$축\n(나) $y=x+5$\n(다) $y=3x-1$; 문제 시각 EXEMPT; 해설 EXEMPT; 별도 메타 승인 NOT_RUN."
+    },
+    {
+      "questionUid": "qid_v1_593a29d892ffb3f3f920515c9044ee6de00c8d0688632962448ffe847ca4de99",
+      "sourceOrdinal": 2,
+      "sourceQid": 2,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "standardUnitKey": "H22-C-01",
+        "standardUnit": "다항식의 연산",
+        "standardUnitOrder": 1,
+        "subUnitKey": "H22-C-01-POLYNOMIAL_BASIC",
+        "subUnit": "다항식의 연산",
+        "problemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
+        "templateKey": "TPL_H1_POLY_OPERATION_DIRECT",
+        "crossConceptKeys": [
+          "CC_POLYNOMIAL_LINEAR_COMBINATION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "sourceQid": 2,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_복성고_1학기_중간_고1_기출",
+          "sourceArchiveFile": "archive/exams/original/high/h1/1mid/26_복성고_1학기_중간_고1_기출.js",
+          "sourceQid": 2,
+          "variationType": "EXAM_FOLLOWUP",
+          "createdAt": "2026-11-25",
+          "createdAtSource": "GPT direct authored"
+        },
+        "rpmPrimaryRecordId": "H1-RPM-135",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "원본 난도 1를 유지하며 다항식 결합값 역산으로 미지 다항식 자체를 구하고 특정 계수의 합 판단",
+      "hold": "",
+      "reason": "DRAFT_SINGLE_MODEL; SOURCE_BALANCED/CONFIRMATION; 변형축: 다항식 결합값 역산으로 미지 다항식 자체를 구하고 특정 계수의 합 판단; 원본: 두 다항식 $A=x^2+5x-11$, $B=3x^2-4x-9$에 대하여 $2A+B$를 간단히 하면? (3.3점); 유사1: 두 다항식 $A=3x^2-2x+5$, $B=x^2+4x-7$에 대하여 $3A-2B$를 간단히 하면? (3.3점); 문제 시각 EXEMPT; 해설 EXEMPT; 별도 메타 승인 NOT_RUN."
+    },
+    {
+      "questionUid": "qid_v1_19a29613ca8c6ef4b7cba51a58b1805d64eb8a68077e4e1dcdd7218e323fdd5b",
+      "sourceOrdinal": 3,
+      "sourceQid": 3,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "standardUnitKey": "H22-C-01",
+        "standardUnit": "다항식의 연산",
+        "standardUnitOrder": 1,
+        "subUnitKey": "H22-C-01-POLYNOMIAL_BASIC",
+        "subUnit": "다항식의 연산",
+        "problemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
+        "templateKey": "TPL_H1_POLY_OPERATION_DIRECT",
+        "crossConceptKeys": [
+          "CC_COEFFICIENT_EXTRACTION_SELECTIVE",
+          "CC_EXPONENT_SUM_COMBINATIONS"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "sourceQid": 3,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_복성고_1학기_중간_고1_기출",
+          "sourceArchiveFile": "archive/exams/original/high/h1/1mid/26_복성고_1학기_중간_고1_기출.js",
+          "sourceQid": 3,
+          "variationType": "EXAM_FOLLOWUP",
+          "createdAt": "2026-11-25",
+          "createdAtSource": "GPT direct authored"
+        },
+        "rpmPrimaryRecordId": "H1-RPM-134",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "원본 난도 2를 유지하며 원본/유사1의 x계수 대신 x²계수·상수항을 사용하여 미지수 순서 역전",
+      "hold": "",
+      "reason": "DRAFT_SINGLE_MODEL; SOURCE_BALANCED/CONFIRMATION; 변형축: 원본/유사1의 x계수 대신 x²계수·상수항을 사용하여 미지수 순서 역전; 원본: 다항식 $3(x-1)(x+a)+(x^2-2)(x+b)$의 전개식에서 $x$의 계수가 7, 상수항이 $-5$일 때, $a-2b$의 값은? (단, $a,b$는 상수) (3.3점); 유사1: 다항식 $2(x+1)(x+a)+(x^2-3)(x+b)$의 전개식에서 $x$의 계수가 $9$, 상수항이 $1$일 때, $a+3b$의 값은? (단, $a,b$는 상수) (3.3점); 문제 시각 EXEMPT; 해설 EXEMPT; 별도 메타 승인 NOT_RUN."
+    },
+    {
+      "questionUid": "qid_v1_0c15fb57aac3234e5c43bc8d67c91eafb6b5ee3df30068a932f1ac46e1cb98a3",
+      "sourceOrdinal": 4,
+      "sourceQid": 4,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "standardUnitKey": "H22-C-04",
+        "standardUnit": "복소수와 이차방정식",
+        "standardUnitOrder": 4,
+        "subUnitKey": "H22-C-04-COMPLEX_OPERATION",
+        "subUnit": "복소수의 계산",
+        "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+        "templateKey": "TPL_H1_COMPLEX_COMPONENT_OPERATION",
+        "crossConceptKeys": [
+          "CC_COMPLEX_DIVISION_RATIONALIZATION",
+          "CC_IMAGINARY_UNIT_PERIODICITY"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "sourceQid": 4,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_복성고_1학기_중간_고1_기출",
+          "sourceArchiveFile": "archive/exams/original/high/h1/1mid/26_복성고_1학기_중간_고1_기출.js",
+          "sourceQid": 4,
+          "variationType": "EXAM_FOLLOWUP",
+          "createdAt": "2026-11-25",
+          "createdAtSource": "GPT direct authored"
+        },
+        "rpmPrimaryRecordId": "H1-RPM-156",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "원본 난도 3를 유지하며 크기 a²+b² 대신 실수부·허수부의 차를 묻는 성분 결합 목표",
+      "hold": "",
+      "reason": "DRAFT_SINGLE_MODEL; SOURCE_BALANCED/CONFIRMATION; 변형축: 크기 a²+b² 대신 실수부·허수부의 차를 묻는 성분 결합 목표; 원본: $(1-i)^3+\\left(\\dfrac{2}{1+i}\\right)^4+\\left(\\dfrac{1+i}{1-i}\\right)^3=a+bi$일 때, $a^2+b^2$는? (단, $i=\\sqrt{-1}$) (3.5점); 유사1: $(1+i)^5+\\left(\\dfrac{4}{1-i}\\right)^2+\\left(\\dfrac{1-i}{1+i}\\right)^5=a+bi$일 때, $a^2+b^2$의 값은? (단, $i=\\sqrt{-1}$이고 $a,b$는 실수) (3.5점); 문제 시각 EXEMPT; 해설 EXEMPT; 별도 메타 승인 NOT_RUN."
+    },
+    {
+      "questionUid": "qid_v1_80e0277adf6463a8149cbc2aa08fc6be604a939797d91b7d146eb86fbfb3672e",
+      "sourceOrdinal": 5,
+      "sourceQid": 5,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "standardUnitKey": "H22-C-01",
+        "standardUnit": "다항식의 연산",
+        "standardUnitOrder": 1,
+        "subUnitKey": "H22-C-01-POLYNOMIAL_BASIC",
+        "subUnit": "다항식의 연산",
+        "problemTypeKey": "PT_H1_POLY_FORMULA_SYMMETRIC",
+        "templateKey": "TPL_H1_FORMULA_SYMMETRIC",
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN_THEOREM",
+          "CC_ALGEBRAIC_VALUE_EVALUATION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "sourceQid": 5,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_복성고_1학기_중간_고1_기출",
+          "sourceArchiveFile": "archive/exams/original/high/h1/1mid/26_복성고_1학기_중간_고1_기출.js",
+          "sourceQid": 5,
+          "variationType": "EXAM_FOLLOWUP",
+          "createdAt": "2026-11-25",
+          "createdAtSource": "GPT direct authored"
+        },
+        "rpmPrimaryRecordId": "H1-RPM-136",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "원본 난도 3를 유지하며 세 면 대각선 제곱의 합 대신 공간대각선 한 개의 길이 제시",
+      "hold": "",
+      "reason": "DRAFT_SINGLE_MODEL; SOURCE_BALANCED/CONFIRMATION; 변형축: 세 면 대각선 제곱의 합 대신 공간대각선 한 개의 길이 제시; 원본: 그림과 같은 직육면체의 모든 모서리의 길이의 합이 40이고, 삼각형 $BGD$의 세 변의 길이의 제곱의 합이 76일 때, 이 직육면체의 겉넓이는? (3.5점); 유사1: 직육면체 $ABCD$-$EFGH$에서 모서리 $AE,\\ BF,\\ CG,\\ DH$는 밑면 $ABCD$에 수직이다. 모든 모서리의 길이의 합이 $44$이고 삼각형 $AFC$의 세 변의 길이의 제곱의 합이 $90$일 때, 이 직육면체의 겉넓이는? (3.5점); 문제 시각 EXEMPT; 해설 EXEMPT; 별도 메타 승인 NOT_RUN."
+    },
+    {
+      "questionUid": "qid_v1_eea275945e0370ae2ed4046f64a4ea1259153d71a0ba6eebe5f2c04361c5f232",
+      "sourceOrdinal": 6,
+      "sourceQid": 6,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "standardUnitKey": "H22-C-02",
+        "standardUnit": "항등식과 나머지 정리",
+        "standardUnitOrder": 2,
+        "subUnitKey": "H22-C-02-CORE",
+        "subUnit": "항등식과 나머지 정리 핵심 개념",
+        "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+        "templateKey": "TPL_H1_IDENTITY_SPECIAL_VALUE",
+        "crossConceptKeys": [
+          "CC_SPECIAL_VALUE_SUBSTITUTION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "sourceQid": 6,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_복성고_1학기_중간_고1_기출",
+          "sourceArchiveFile": "archive/exams/original/high/h1/1mid/26_복성고_1학기_중간_고1_기출.js",
+          "sourceQid": 6,
+          "variationType": "EXAM_FOLLOWUP",
+          "createdAt": "2026-11-25",
+          "createdAtSource": "GPT direct authored"
+        },
+        "rpmPrimaryRecordId": "H1-RPM-141",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "원본 난도 3를 유지하며 인수의 영점 세 곳을 이용해 값을 얻고 다른 선형 결합 구성",
+      "hold": "",
+      "reason": "DRAFT_SINGLE_MODEL; SOURCE_BALANCED/CONFIRMATION; 변형축: 인수의 영점 세 곳을 이용해 값을 얻고 다른 선형 결합 구성; 원본: 등식 $a(x-5)+b(x+4)(x-5)=cx(x+4)+3x-6$이 $x$에 대한 항등식이 되도록 하는 실수 $a,b,c$에 대하여 $a+b-c$의 값은? (3.5점); 유사1: 등식 $a(x-2)+b(x+3)(x-2)=cx(x+3)-3x-14$가 $x$에 대한 항등식이 되도록 하는 실수 $a,b,c$에 대하여 $ab+c$의 값은? (3.5점); 문제 시각 EXEMPT; 해설 EXEMPT; 별도 메타 승인 NOT_RUN."
+    },
+    {
+      "questionUid": "qid_v1_195618a56910f3e0d7cf4a078288ee4f0c4588f80f0c376ea1c7377aeb4ec2cd",
+      "sourceOrdinal": 7,
+      "sourceQid": 7,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "standardUnitKey": "H22-C-05",
+        "standardUnit": "이차방정식과 이차함수",
+        "standardUnitOrder": 5,
+        "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
+        "subUnit": "이차함수의 그래프",
+        "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+        "templateKey": "TPL_H1_QUADRATIC_INTERSECTION_TANGENCY",
+        "crossConceptKeys": [
+          "CC_QUADRATIC_LINE_INTERSECTION",
+          "CC_QUADRATIC_DISCRIMINANT_NEGATIVE",
+          "CC_INTEGER_COUNT"
+        ],
+        "conditionKeys": [
+          "COND_INTEGER"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4,
+        "sourceQid": 7,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_복성고_1학기_중간_고1_기출",
+          "sourceArchiveFile": "archive/exams/original/high/h1/1mid/26_복성고_1학기_중간_고1_기출.js",
+          "sourceQid": 7,
+          "variationType": "EXAM_FOLLOWUP",
+          "createdAt": "2026-11-25",
+          "createdAtSource": "GPT direct authored"
+        },
+        "rpmPrimaryRecordId": "H1-RPM-168",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "원본 난도 4를 유지하며 두 그래프가 모두 만나지 않는 조건에서 모두 만나는 조건으로 부등호·경계 전환",
+      "hold": "",
+      "reason": "DRAFT_SINGLE_MODEL; SOURCE_BALANCED/CONFIRMATION; 변형축: 두 그래프가 모두 만나지 않는 조건에서 모두 만나는 조건으로 부등호·경계 전환; 원본: 직선 $y=2x+k$가 이차함수 $y=x^2+5x+7$의 그래프와 만나지 않고, 직선 $y=2x+k$가 이차함수 $y=-x^2+4x-1$의 그래프와 만나지 않도록 하는 모든 정수 $k$의 개수는? (3.8점); 유사1: 직선 $y=-x+k$가 이차함수 $y=x^2+2x+6$의 그래프와 만나지 않고, 이차함수 $y=-x^2+x-4$의 그래프와도 만나지 않도록 하는 모든 정수 $k$의 개수는? (3.8점); 문제 시각 EXEMPT; 해설 EXEMPT; 별도 메타 승인 NOT_RUN."
+    },
+    {
+      "questionUid": "qid_v1_d4ded4d0cbb196bc038c7566f9bc55b10a424e487bb75d1ba4547c16d8b6fd55",
+      "sourceOrdinal": 8,
+      "sourceQid": 8,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "standardUnitKey": "H22-C-03",
+        "standardUnit": "인수분해",
+        "standardUnitOrder": 3,
+        "subUnitKey": "H22-C-03-FACTORIZATION",
+        "subUnit": "인수분해",
+        "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+        "templateKey": "TPL_H1_FACTORIZATION_APPLICATION",
+        "crossConceptKeys": [
+          "CC_FACTORIZATION_NUMERICAL_APPLICATION",
+          "CC_NUMBER_DIVISOR_MULTIPLE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "sourceQid": 8,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_복성고_1학기_중간_고1_기출",
+          "sourceArchiveFile": "archive/exams/original/high/h1/1mid/26_복성고_1학기_중간_고1_기출.js",
+          "sourceQid": 8,
+          "variationType": "EXAM_FOLLOWUP",
+          "createdAt": "2026-11-25",
+          "createdAtSource": "GPT direct authored"
+        },
+        "rpmPrimaryRecordId": "H1-RPM-151",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "원본 난도 3를 유지하며 미래 요일을 구하는 정방향에서 미래 요일로부터 현재 요일을 역산",
+      "hold": "",
+      "reason": "DRAFT_SINGLE_MODEL; SOURCE_BALANCED/CONFIRMATION; 변형축: 미래 요일을 구하는 정방향에서 미래 요일로부터 현재 요일을 역산; 원본: 오늘이 월요일일 때, 오늘로부터 $8^7+15$일 후는 무슨 요일인가? (4.0점); 유사1: 오늘이 목요일일 때, 오늘로부터 $15^{10}+31$일 후는 무슨 요일인가? (4.0점); 문제 시각 EXEMPT; 해설 EXEMPT; 별도 메타 승인 NOT_RUN."
+    },
+    {
+      "questionUid": "qid_v1_b8d62711395fefb0f764f4587cc3ca21f06f19727c84257f1312a9b5aecd5b21",
+      "sourceOrdinal": 9,
+      "sourceQid": 9,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "standardUnitKey": "H22-C-05",
+        "standardUnit": "이차방정식과 이차함수",
+        "standardUnitOrder": 5,
+        "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
+        "subUnit": "이차함수의 활용",
+        "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+        "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+        "crossConceptKeys": [
+          "CC_EXTREMA_BOUNDED_INTERVAL",
+          "CC_QUADRATIC_GRAPH_INTERSECTION"
+        ],
+        "conditionKeys": [
+          "COND_RESTRICTED_INTERVAL"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4,
+        "sourceQid": 9,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_복성고_1학기_중간_고1_기출",
+          "sourceArchiveFile": "archive/exams/original/high/h1/1mid/26_복성고_1학기_중간_고1_기출.js",
+          "sourceQid": 9,
+          "variationType": "EXAM_FOLLOWUP",
+          "createdAt": "2026-11-25",
+          "createdAtSource": "GPT direct authored"
+        },
+        "rpmPrimaryRecordId": "H1-RPM-170",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "원본 난도 4를 유지하며 합성함수 h의 최댓값 직접 질문에서 두 포물선 간 세로 거리 최대라는 해석으로 진입",
+      "hold": "",
+      "reason": "DRAFT_SINGLE_MODEL; SOURCE_BALANCED/CONFIRMATION; 변형축: 합성함수 h의 최댓값 직접 질문에서 두 포물선 간 세로 거리 최대라는 해석으로 진입; 원본: 두 이차함수 $f(x)=2x^2+3x+1$, $g(x)=-x^2+5x+9$의 교점 $x$좌표를 $\\alpha<\\beta$라 하자. $h(x)=g(x)-f(x)$의 $\\alpha\\le x\\le\\beta$에서의 최댓값은? (4.0점); 유사1: 두 이차함수 $f(x)=2x^2-x+1$, $g(x)=-x^2+3x+5$의 그래프의 교점의 $x$좌표를 $\\alpha<\\beta$라 하자. $h(x)=g(x)-f(x)$의 $\\alpha\\le x\\le\\beta$에서의 최댓값은? (4.0점); 문제 시각 EXEMPT; 해설 SVG_TO_CREATE; 별도 메타 승인 NOT_RUN."
+    },
+    {
+      "questionUid": "qid_v1_8e2527b904d1d7f48339f73e170a7575d7ec85fd72fb94d3704f5d2d035fcbcb",
+      "sourceOrdinal": 10,
+      "sourceQid": 10,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "standardUnitKey": "H22-C-02",
+        "standardUnit": "항등식과 나머지 정리",
+        "standardUnitOrder": 2,
+        "subUnitKey": "H22-C-02-CORE",
+        "subUnit": "항등식과 나머지 정리 핵심 개념",
+        "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+        "templateKey": "TPL_H1_REMAINDER_NESTED_DIVISION",
+        "crossConceptKeys": [
+          "CC_NESTED_DIVISION_REMAINDER",
+          "CC_LINEAR_REMAINDER_SETUP"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "INTERDEPENDENT",
+        "difficultyBucket": 4,
+        "sourceQid": 10,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_복성고_1학기_중간_고1_기출",
+          "sourceArchiveFile": "archive/exams/original/high/h1/1mid/26_복성고_1학기_중간_고1_기출.js",
+          "sourceQid": 10,
+          "variationType": "EXAM_FOLLOWUP",
+          "createdAt": "2026-11-25",
+          "createdAtSource": "GPT direct authored"
+        },
+        "rpmPrimaryRecordId": "H1-RPM-143",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "원본 난도 4를 유지하며 나머지의 특정값 대신 나머지 일차식 자체를 재구성한 뒤 상수항 결정",
+      "hold": "",
+      "reason": "DRAFT_SINGLE_MODEL; SOURCE_BALANCED/CONFIRMATION; 변형축: 나머지의 특정값 대신 나머지 일차식 자체를 재구성한 뒤 상수항 결정; 원본: 다항식 $f(x)$를 $x-1$로 나누었을 때 몫은 $Q(x)$, 나머지는 4이다. $Q(x)$를 $x^2-5x+6$으로 나누었을 때 나머지가 $2x-1$이고, $f(x)$를 $x^2-4x+3$으로 나눈 나머지가 $R(x)$일 때, $R(3)$의 값은? (4.1점); 유사1: 다항식 $f(x)$를 $x-2$로 나누었을 때의 몫은 $Q(x)$, 나머지는 $5$이다. $Q(x)$를 $x^2-4x+3$으로 나누었을 때의 나머지가 $3x+2$이고, $f(x)$를 $x^2-5x+6$으로 나눈 나머지가 $R(x)$일 때, $R(4)$의 값은? (4.1점); 문제 시각 EXEMPT; 해설 EXEMPT; 별도 메타 승인 NOT_RUN."
+    },
+    {
+      "questionUid": "qid_v1_ca1c151fc8fa1662a194935bf8bf24589a7f815610efbf26d0740d729a174fcc",
+      "sourceOrdinal": 11,
+      "sourceQid": 11,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "standardUnitKey": "H22-C-05",
+        "standardUnit": "이차방정식과 이차함수",
+        "standardUnitOrder": 5,
+        "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
+        "subUnit": "이차방정식",
+        "problemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
+        "templateKey": "TPL_H1_DISCRIMINANT_PARAMETER_IDENTITY",
+        "crossConceptKeys": [
+          "CC_POLYNOMIAL_IDENTITY_PARAMETER",
+          "CC_DISCRIMINANT_APPLICATION"
+        ],
+        "conditionKeys": [
+          "COND_INTEGER"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4,
+        "sourceQid": 11,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_복성고_1학기_중간_고1_기출",
+          "sourceArchiveFile": "archive/exams/original/high/h1/1mid/26_복성고_1학기_중간_고1_기출.js",
+          "sourceQid": 11,
+          "variationType": "EXAM_FOLLOWUP",
+          "createdAt": "2026-11-25",
+          "createdAtSource": "GPT direct authored"
+        },
+        "rpmPrimaryRecordId": "H1-RPM-165",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "원본 난도 4를 유지하며 모든 k에서 실근 존재/최댓값을 모든 k에서 실근 부재/최솟값으로 전환",
+      "hold": "",
+      "reason": "DRAFT_SINGLE_MODEL; SOURCE_BALANCED/CONFIRMATION; 변형축: 모든 k에서 실근 존재/최댓값을 모든 k에서 실근 부재/최솟값으로 전환; 원본: 이차방정식 $x^2-2(2k+3a)x+4k^2+48k+b=0$이 모든 실수 $k$에 대하여 실근을 갖도록 하는 정수 $a,b$에서 $a+b$의 최댓값은? (4.1점); 유사1: 이차방정식 $x^2-2(3k+2a)x+9k^2+60k+b=0$이 모든 실수 $k$에 대하여 실근을 갖도록 하는 정수 $a,b$에 대하여 $a+b$의 최댓값은? (4.1점); 문제 시각 EXEMPT; 해설 EXEMPT; 별도 메타 승인 NOT_RUN."
+    },
+    {
+      "questionUid": "qid_v1_7bd886c5cec993d3fc39893750cecea5d2c10ccbf94d501cf8679aa93ace9301",
+      "sourceOrdinal": 12,
+      "sourceQid": 12,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "standardUnitKey": "H22-C-04",
+        "standardUnit": "복소수와 이차방정식",
+        "standardUnitOrder": 4,
+        "subUnitKey": "H22-C-04-COMPLEX_OPERATION",
+        "subUnit": "복소수의 계산",
+        "problemTypeKey": "PT_H1_COMPLEX_POWER_ROOT",
+        "templateKey": "TPL_H1_COMPLEX_I_PERIOD",
+        "crossConceptKeys": [
+          "CC_COMPLEX_PERIODICITY_4",
+          "CC_LEAST_COMMON_MULTIPLE",
+          "CC_COMPLEX_DIVISION_RATIONALIZATION"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4,
+        "sourceQid": 12,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_복성고_1학기_중간_고1_기출",
+          "sourceArchiveFile": "archive/exams/original/high/h1/1mid/26_복성고_1학기_중간_고1_기출.js",
+          "sourceQid": 12,
+          "variationType": "EXAM_FOLLOWUP",
+          "createdAt": "2026-11-25",
+          "createdAtSource": "GPT direct authored"
+        },
+        "rpmPrimaryRecordId": "H1-RPM-158",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "원본 난도 4를 유지하며 두 단위원 복소수 거듭제곱의 합 2에서 합 0으로 바꿔 인수분해로 합동조건 도출",
+      "hold": "",
+      "reason": "DRAFT_SINGLE_MODEL; SOURCE_BALANCED/CONFIRMATION; 변형축: 두 단위원 복소수 거듭제곱의 합 2에서 합 0으로 바꿔 인수분해로 합동조건 도출; 원본: $100$ 이하 자연수 $n$에 대하여 $\\left(\\dfrac{(1+i)^2}{2}\\right)^n+\\left(\\dfrac{1+i}{\\sqrt2}\\right)^n=2$를 만족시키는 $n$의 개수는? (단, $i=\\sqrt{-1}$) (4.2점); 유사1: $200$ 이하의 자연수 $n$에 대하여 $\\left(\\dfrac{1+i}{1-i}\\right)^n+\\left(\\dfrac{\\sqrt3+i}{2}\\right)^n=2$를 만족시키는 $n$의 개수는? (단, $i=\\sqrt{-1}$) (4.2점); 문제 시각 EXEMPT; 해설 EXEMPT; 별도 메타 승인 NOT_RUN."
+    },
+    {
+      "questionUid": "qid_v1_ac5ff3074e9983a189a035d66315d253ac4a025ae148fd4d692ada42278255e7",
+      "sourceOrdinal": 13,
+      "sourceQid": 13,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "standardUnitKey": "H22-C-05",
+        "standardUnit": "이차방정식과 이차함수",
+        "standardUnitOrder": 5,
+        "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
+        "subUnit": "이차함수의 그래프",
+        "problemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
+        "templateKey": "TPL_H1_QUADRATIC_RECONSTRUCT_ROOT_VERTEX",
+        "crossConceptKeys": [
+          "CC_MIDPOINT_SYMMETRY",
+          "CC_AXIS_OF_SYMMETRY",
+          "CC_QUADRATIC_RECONSTRUCTION_CONDITIONS"
+        ],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 3,
+        "sourceQid": 13,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_복성고_1학기_중간_고1_기출",
+          "sourceArchiveFile": "archive/exams/original/high/h1/1mid/26_복성고_1학기_중간_고1_기출.js",
+          "sourceQid": 13,
+          "variationType": "EXAM_FOLLOWUP",
+          "createdAt": "2026-11-25",
+          "createdAtSource": "GPT direct authored"
+        },
+        "rpmPrimaryRecordId": "H1-RPM-166",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "원본 난도 3를 유지하며 함숫값 평가 대신 양의 두 영점의 합을 직접 결정하는 복원 목표",
+      "hold": "",
+      "reason": "DRAFT_SINGLE_MODEL; SOURCE_BALANCED/CONFIRMATION; 변형축: 함숫값 평가 대신 양의 두 영점의 합을 직접 결정하는 복원 목표; 원본: 최고차항의 계수가 1인 이차함수 $f(x)$의 그래프와 $x$축의 교점의 $x$좌표를 각각 $\\alpha,\\beta$ ($0<\\alpha<\\beta$)라 하자. $f(\\dfrac{\\alpha+\\beta}{2})=-4$이고 $f(2)=5$를 만족할 때, $f(1)$의 값은? (4.2점); 유사1: 최고차항의 계수가 $1$인 이차함수 $f(x)$의 그래프와 $x$축의 두 교점의 $x$좌표를 각각 $\\alpha,\\beta$ ($0<\\alpha<\\beta$)라 하자. $f\\left(\\dfrac{\\alpha+\\beta}{2}\\right)=-9$이고 $f(3)=-5$를 만족할 때, $f(0)$의 값은? (4.2점); 문제 시각 EXEMPT; 해설 EXEMPT; 별도 메타 승인 NOT_RUN."
+    },
+    {
+      "questionUid": "qid_v1_bd70a4dada4cb5fd4f5ed9b31e377e8a757e0a388e75721750e96bc1b5d0326c",
+      "sourceOrdinal": 14,
+      "sourceQid": 14,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "standardUnitKey": "H22-C-08",
+        "standardUnit": "순열과 조합",
+        "standardUnitOrder": 8,
+        "subUnitKey": "H22-C-08-PERMUTATION",
+        "subUnit": "순열",
+        "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+        "crossConceptKeys": [
+          "CC_NEGATIVE_RADICAL_OPERATION"
+        ],
+        "conditionKeys": [
+          "COND_NONZERO",
+          "COND_INEQUALITY_CONSTRAINT"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 3,
+        "sourceQid": 14,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_복성고_1학기_중간_고1_기출",
+          "sourceArchiveFile": "archive/exams/original/high/h1/1mid/26_복성고_1학기_중간_고1_기출.js",
+          "sourceQid": 14,
+          "variationType": "EXAM_FOLLOWUP",
+          "createdAt": "2026-11-25",
+          "createdAtSource": "GPT direct authored"
+        },
+        "rpmPrimaryRecordId": "H1-RPM-189",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "원본 난도 3를 유지하며 제곱근의 곱 부호 판단을 제곱근의 합 부호 판단으로 바꾸어 경우 분류 재설계",
+      "hold": "",
+      "reason": "DRAFT_SINGLE_MODEL; SOURCE_BALANCED/CONFIRMATION; 변형축: 제곱근의 곱 부호 판단을 제곱근의 합 부호 판단으로 바꾸어 경우 분류 재설계; 원본: 실수 범위에서 그림과 같이 $-3$부터 $3$까지의 정수가 각각 하나씩 적혀 있는 7장의 카드가 있다. 이 중 서로 다른 3장의 카드를 한 장씩 뽑아 카드에 적힌 숫자를 차례로 $a,b,c$라 할 때, 아래 <조건>을 만족시키는 순서쌍 $(a,b,c)$의 개수는? (4.2점)\n<조건>\n가. $\\dfrac{\\sqrt{bc}}{\\sqrt a}=\\sqrt{\\dfrac{bc}{a}}$\n나. $|b-c|=b-c$; 유사1: $-3$부터 $3$까지의 정수가 각각 하나씩 적혀 있는 $7$장의 카드가 있다. 이 중 서로 다른 $3$장의 카드를 한 장씩 뽑아 카드에 적힌 숫자를 차례로 $a,b,c$라 할 때, 아래 <조건>을 만족시키는 순서쌍 $(a,b,c)$의 개수는? (단, $i=\\sqrt{-1}$이고, 음수 $x$에 대하여 $\\sqrt{x}=\\sqrt{-x}\\,i$이다.) (4.2점)\n<조건>\n가. $\\dfrac{\\sqrt{b}}{\\sqrt{a}}=-\\sqrt{\\dfrac{b}{a}}$\n나. $|b-c|=b-c$; 문제 시각 EXEMPT; 해설 EXEMPT; 별도 메타 승인 NOT_RUN."
+    },
+    {
+      "questionUid": "qid_v1_ca01b1822e265472f47b4e763bd5d689ecf36c8ad373acf27b6937e3bc469381",
+      "sourceOrdinal": 15,
+      "sourceQid": 15,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "standardUnitKey": "H22-C-03",
+        "standardUnit": "인수분해",
+        "standardUnitOrder": 3,
+        "subUnitKey": "H22-C-03-FACTORIZATION",
+        "subUnit": "인수분해",
+        "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+        "templateKey": "TPL_H1_FACTORIZATION_APPLICATION",
+        "crossConceptKeys": [
+          "CC_FACTORIZATION_NUMERICAL_APPLICATION",
+          "CC_PRIME_FACTORIZATION",
+          "CC_DIVISOR_PROPERTY"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER",
+          "COND_INEQUALITY_CONSTRAINT"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 4,
+        "sourceQid": 15,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_복성고_1학기_중간_고1_기출",
+          "sourceArchiveFile": "archive/exams/original/high/h1/1mid/26_복성고_1학기_중간_고1_기출.js",
+          "sourceQid": 15,
+          "variationType": "EXAM_FOLLOWUP",
+          "createdAt": "2026-11-25",
+          "createdAtSource": "GPT direct authored"
+        },
+        "rpmPrimaryRecordId": "H1-RPM-151",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "원본 난도 4를 유지하며 다른 완전제곱식-제곱차 인수분해와 약수 삼중 조합을 새로 구성",
+      "hold": "",
+      "reason": "DRAFT_SINGLE_MODEL; SOURCE_BALANCED/CONFIRMATION; 변형축: 다른 완전제곱식-제곱차 인수분해와 약수 삼중 조합을 새로 구성; 원본: 두 자리의 자연수 $a,b,c$에 대하여 $13^4+2\\times13^2+9=a\\times b\\times c$ ($a<b<c$)를 만족시키는 모든 순서쌍 $(a,b,c)$의 개수는? (4.2점); 유사1: 두 자리의 자연수 $a,b,c$에 대하여 $19^4+14\\times19^2+81=a\\times b\\times c$ ($a<b<c$)를 만족시키는 모든 순서쌍 $(a,b,c)$의 개수는? (4.2점); 문제 시각 EXEMPT; 해설 EXEMPT; 별도 메타 승인 NOT_RUN."
+    },
+    {
+      "questionUid": "qid_v1_7f1cac7b1852e163ddc6916a12c9ac49dd88509a28e991bf464d91df5ab81538",
+      "sourceOrdinal": 16,
+      "sourceQid": 16,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "standardUnitKey": "H22-C-05",
+        "standardUnit": "이차방정식과 이차함수",
+        "standardUnitOrder": 5,
+        "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
+        "subUnit": "이차함수의 활용",
+        "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+        "templateKey": "TPL_H1_QUADRATIC_EXTREMA_MODEL",
+        "crossConceptKeys": [
+          "CC_INSCRIBED_RECTANGLE_QUADRATIC_MODEL",
+          "CC_VIETAS_FORMULAS"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4,
+        "sourceQid": 16,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_복성고_1학기_중간_고1_기출",
+          "sourceArchiveFile": "archive/exams/original/high/h1/1mid/26_복성고_1학기_중간_고1_기출.js",
+          "sourceQid": 16,
+          "variationType": "EXAM_FOLLOWUP",
+          "createdAt": "2026-11-25",
+          "createdAtSource": "GPT direct authored"
+        },
+        "rpmPrimaryRecordId": "H1-RPM-171",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "원본 난도 4를 유지하며 최대 넓이의 값 대신 최대 넓이가 되는 위치에서 둘레를 산출; 근의 곱→합 사용",
+      "hold": "",
+      "reason": "DRAFT_SINGLE_MODEL; SOURCE_BALANCED/CONFIRMATION; 변형축: 최대 넓이의 값 대신 최대 넓이가 되는 위치에서 둘레를 산출; 근의 곱→합 사용; 원본: 이차방정식 $x^2-5x+3=0$의 두 실근을 $\\alpha,\\beta$ ($\\alpha<\\beta$)라 하자. 그림과 같이 $\\overline{AB}=\\alpha$, $\\overline{BC}=\\beta$인 직각삼각형 $ABC$에 대하여 직사각형의 넓이의 최댓값은? (단, 직사각형의 두 변은 선분 $AB$와 선분 $BC$ 위에 있고, 점 $D$는 직사각형의 한 꼭짓점이면서 선분 $AC$ 위에 있다.) (4.3점); 유사1: 이차방정식 $x^2-6x+7=0$의 두 실근을 $\\alpha,\\beta$ ($\\alpha<\\beta$)라 하자. 그림과 같이 $\\angle B=90^\\circ$이고 $\\overline{AB}=\\alpha$, $\\overline{BC}=\\beta$인 직각삼각형 $ABC$ 안에 직사각형을 그리려 한다. 직사각형의 두 변은 선분 $AB$와 선분 $BC$ 위에 있고, 점 $D$는 직사각형의 한 꼭짓점이면서 선분 $AC$ 위에 있다. 이 직사각형의 넓이의 최댓값은? (4.3점); 문제 시각 EXEMPT; 해설 SVG_TO_CREATE; 별도 메타 승인 NOT_RUN."
+    },
+    {
+      "questionUid": "qid_v1_2e8c10ac1f06468fd25d810fef8cd2dcb0b610d5ba3079b06a08ebc6713adfa2",
+      "sourceOrdinal": 17,
+      "sourceQid": 17,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "standardUnitKey": "H22-C-04",
+        "standardUnit": "복소수와 이차방정식",
+        "standardUnitOrder": 4,
+        "subUnitKey": "H22-C-04-COMPLEX_ROOT",
+        "subUnit": "복소수와 방정식",
+        "problemTypeKey": "PT_H1_COMPLEX_CONDITION_EQUATION",
+        "templateKey": "TPL_H1_COMPLEX_CONJUGATE_ROOT_EQUATION",
+        "crossConceptKeys": [
+          "CC_CONJUGATE_ROOT_THEOREM",
+          "CC_COMPLEX_CONJUGATE_PROPERTIES",
+          "CC_VIETA_FORMULAS_QUADRATIC"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4,
+        "sourceQid": 17,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_복성고_1학기_중간_고1_기출",
+          "sourceArchiveFile": "archive/exams/original/high/h1/1mid/26_복성고_1학기_중간_고1_기출.js",
+          "sourceQid": 17,
+          "variationType": "EXAM_FOLLOWUP",
+          "createdAt": "2026-11-25",
+          "createdAtSource": "GPT direct authored"
+        },
+        "rpmPrimaryRecordId": "H1-RPM-164",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "원본 난도 4를 유지하며 실수부·허수부 조건 대신 켤레곱과 제곱합을 직접 부여하여 비에타로 연결",
+      "hold": "",
+      "reason": "DRAFT_SINGLE_MODEL; SOURCE_BALANCED/CONFIRMATION; 변형축: 실수부·허수부 조건 대신 켤레곱과 제곱합을 직접 부여하여 비에타로 연결; 원본: 이차방정식 $x^2+mx+n=0$ ($m,n$은 실수)의 한 근인 복소수 $z$가 다음 조건을 만족시킬 때, $m^2+n^2$의 값은? (단, $\\bar z$는 $z$의 켤레복소수이다.)\n<조건>\n가. $z^2+z\\bar z+\\bar z^2=0$\n나. $z$의 실수부분과 허수부분을 각각 $a,b$라 할 때, $a^2+b^2=1$이다. (4.3점); 유사1: 이차방정식 $x^2+mx+n=0$ ($m,n$은 실수)의 한 근인 복소수 $z$가 다음 조건을 만족시킬 때, $m^2+n^2$의 값은? (단, $\\bar z$는 $z$의 켤레복소수이다.) (4.3점)\n<조건>\n가. $z^2+\\bar z^2=z\\bar z$\n나. $z$의 실수부분과 허수부분을 각각 $a,b$라 할 때, $a^2+b^2=4$이다.; 문제 시각 EXEMPT; 해설 EXEMPT; 별도 메타 승인 NOT_RUN."
+    },
+    {
+      "questionUid": "qid_v1_5dd4bbacc6542170b2e44d1008447915ceadc200bd228d1e6324ec8341901e06",
+      "sourceOrdinal": 18,
+      "sourceQid": 18,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "standardUnitKey": "H22-C-05",
+        "standardUnit": "이차방정식과 이차함수",
+        "standardUnitOrder": 5,
+        "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
+        "subUnit": "이차함수의 그래프",
+        "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+        "templateKey": "TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY",
+        "crossConceptKeys": [
+          "CC_PARABOLA_X_INTERCEPTS",
+          "CC_LINE_PARABOLA_INTERSECTION",
+          "CC_POLYGON_AREA_SHOELACE"
+        ],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4,
+        "sourceQid": 18,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_복성고_1학기_중간_고1_기출",
+          "sourceArchiveFile": "archive/exams/original/high/h1/1mid/26_복성고_1학기_중간_고1_기출.js",
+          "sourceQid": 18,
+          "variationType": "EXAM_FOLLOWUP",
+          "createdAt": "2026-11-25",
+          "createdAtSource": "GPT direct authored"
+        },
+        "rpmPrimaryRecordId": "H1-RPM-166",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "원본 난도 4를 유지하며 면적 비로 매개변수를 구한 뒤 목표를 매개변수에서 두 면적의 합으로 변경",
+      "hold": "",
+      "reason": "DRAFT_SINGLE_MODEL; SOURCE_BALANCED/CONFIRMATION; 변형축: 면적 비로 매개변수를 구한 뒤 목표를 매개변수에서 두 면적의 합으로 변경; 원본: 양수 $a,b$에 대하여 이차함수 $y=x^2+(2-a)x-2a$와 직선 $y=-2x+b$가 서로 다른 두 점 $A(a,0),C$에서 만난다. 포물선의 다른 $x$절편을 $B$, 직선의 $y$절편을 $D$라 하자. 삼각형 $AOD$의 넓이를 $S_1$, 사각형 $BODC$의 넓이를 $S_2$라 할 때 $S_1:S_2=1:2$가 되도록 하는 $a$는? (4.6점); 유사1: 양수 $a,b$에 대하여 이차함수 $y=x^2+(3-a)x-3a$의 그래프와 직선 $y=-3x+b$가 서로 다른 두 점 $A(a,0)$, $C$에서 만난다. 이차함수의 그래프의 다른 $x$절편을 $B$, 직선의 $y$절편을 $D$, 원점을 $O$라 하자. 삼각형 $AOD$의 넓이를 $S_1$, 사각형 $BODC$의 넓이를 $S_2$라 할 때, $S_1:S_2=1:2$가 되도록 하는 $a$의 값은? (4.6점); 문제 시각 EXEMPT; 해설 SVG_TO_CREATE; 별도 메타 승인 NOT_RUN."
+    },
+    {
+      "questionUid": "qid_v1_0a01b9f699da749e719e9b7aed0925c8cfe00619fb6b9452435ab976ecf82cae",
+      "sourceOrdinal": 19,
+      "sourceQid": 19,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "standardUnitKey": "H22-C-01",
+        "standardUnit": "다항식의 연산",
+        "standardUnitOrder": 1,
+        "subUnitKey": "H22-C-01-POLYNOMIAL_BASIC",
+        "subUnit": "다항식의 연산",
+        "problemTypeKey": "PT_H1_POLY_DIVISION",
+        "templateKey": "TPL_H1_POLY_DIVISION_EXECUTION",
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN_THEOREM",
+          "CC_CIRCLE_CHORD_PERP_BISECTOR",
+          "CC_POLYNOMIAL_DIVISION"
+        ],
+        "conditionKeys": [
+          "COND_INTEGER",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "DEEP_COMPOSITE",
+        "difficultyBucket": 4,
+        "sourceQid": 19,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_복성고_1학기_중간_고1_기출",
+          "sourceArchiveFile": "archive/exams/original/high/h1/1mid/26_복성고_1학기_중간_고1_기출.js",
+          "sourceQid": 19,
+          "variationType": "EXAM_FOLLOWUP",
+          "createdAt": "2026-11-25",
+          "createdAtSource": "GPT direct authored"
+        },
+        "rpmPrimaryRecordId": "H1-RPM-139",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "원본 난도 4를 유지하며 원과 변의 가까운 교점 BP 대신 먼 교점 BQ 조건으로 원 반지름 역산",
+      "hold": "",
+      "reason": "DRAFT_SINGLE_MODEL; SOURCE_BALANCED/CONFIRMATION; 변형축: 원과 변의 가까운 교점 BP 대신 먼 교점 BQ 조건으로 원 반지름 역산; 원본: 한 변이 4인 정사각형 $ABCD$에서 원 $O$는 $AB,AD$에 접하고 $BC,DC$와 각각 두 점에서 만난다. 원과 $BC$의 교점을 $P,Q$라 하고 $BP=1$, 반지름을 $x$라 하자. $x^3-8x^2+15x+37=p+q\\sqrt2$일 때 $p+q$는? (단, 중심은 정사각형 내부, $p,q$ 정수) (4.8점); 유사1: 한 변의 길이가 $6$인 정사각형 $ABCD$에서 원 $O$는 변 $AB$, 변 $AD$에 접하고, 변 $BC$, 변 $CD$와는 각각 서로 다른 두 점에서 만난다. 원과 변 $BC$의 두 교점을 $P,Q$ ($BP<BQ$)라 하고 $BP=2$, 원 $O$의 반지름의 길이를 $x$라 하자. $x^3-12x^2-18x+150=p+q\\sqrt6$일 때 $p+q$의 값은? (단, 원의 중심은 정사각형의 내부에 있고, $p,q$는 정수이다.) (4.8점); 문제 시각 EXEMPT; 해설 EXEMPT; 별도 메타 승인 NOT_RUN."
+    },
+    {
+      "questionUid": "qid_v1_8107bd538fabc8e5f52e4233d461855969bec8442681d3edb237ed7a530e6e7f",
+      "sourceOrdinal": 20,
+      "sourceQid": 20,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "standardUnitKey": "H22-C-03",
+        "standardUnit": "인수분해",
+        "standardUnitOrder": 3,
+        "subUnitKey": "H22-C-03-FACTORIZATION",
+        "subUnit": "인수분해",
+        "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+        "templateKey": "TPL_H1_FACTORIZATION_STANDARD",
+        "crossConceptKeys": [
+          "CC_SYMMETRIC_GROUPING",
+          "CC_DISCRIMINANT_ZERO_DOUBLE_ROOT"
+        ],
+        "conditionKeys": [
+          "COND_INTEGER",
+          "COND_INEQUALITY_CONSTRAINT"
+        ],
+        "integrationPattern": "DEEP_COMPOSITE",
+        "difficultyBucket": 5,
+        "sourceQid": 20,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_복성고_1학기_중간_고1_기출",
+          "sourceArchiveFile": "archive/exams/original/high/h1/1mid/26_복성고_1학기_중간_고1_기출.js",
+          "sourceQid": 20,
+          "variationType": "EXAM_FOLLOWUP",
+          "createdAt": "2026-11-25",
+          "createdAtSource": "GPT direct authored"
+        },
+        "rpmPrimaryRecordId": "H1-RPM-147",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "원본 난도 5를 유지하며 quartic 짝인수 구조 변경 및 모든 k의 곱에서 가능한 k²의 합으로 질문 전환",
+      "hold": "",
+      "reason": "DRAFT_SINGLE_MODEL; SOURCE_BALANCED/CONFIRMATION; 변형축: quartic 짝인수 구조 변경 및 모든 k의 곱에서 가능한 k²의 합으로 질문 전환; 원본: 최고차항 계수가 정수인 이차다항식 $P,Q$에 대하여 $P(x)Q(x)=-x(x-1)^2(x-2)+12$이고, $P(x)=Q(x+k)$는 중근을 갖는다. $P(2)<Q(2)$일 때 모든 $k$의 곱은? (4.9점); 유사1: 최고차항의 계수가 정수인 이차다항식 $P(x),\\ Q(x)$에 대하여\n$P(x)Q(x)=-x(x-1)(x-2)(x-3)+15$\n이고, 방정식 $P(x)=Q(x+k)$는 중근을 갖는다. $P(2)<Q(2)$일 때, 모든 상수 $k$의 곱은? (단, $P(x),\\ Q(x)$의 계수는 모두 실수이다.) (4.9점); 문제 시각 EXEMPT; 해설 EXEMPT; 별도 메타 승인 NOT_RUN."
+    },
+    {
+      "questionUid": "qid_v1_b29698f850e05491fcd7c52cd92bf91b9941087ac05789920acac1fc3cd53423",
+      "sourceOrdinal": 21,
+      "sourceQid": 21,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "standardUnitKey": "H22-C-05",
+        "standardUnit": "이차방정식과 이차함수",
+        "standardUnitOrder": 5,
+        "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
+        "subUnit": "이차방정식",
+        "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+        "templateKey": "TPL_H1_VIETA_TRANSFORMED_ROOT",
+        "crossConceptKeys": [
+          "CC_VIETA_FORMULAS_QUADRATIC",
+          "CC_QUADRATIC_EQUATION_FORMATION",
+          "CC_SYMMETRIC_POLYNOMIAL_EVALUATION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "sourceQid": 21,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_복성고_1학기_중간_고1_기출",
+          "sourceArchiveFile": "archive/exams/original/high/h1/1mid/26_복성고_1학기_중간_고1_기출.js",
+          "sourceQid": 21,
+          "variationType": "EXAM_FOLLOWUP",
+          "createdAt": "2026-11-25",
+          "createdAtSource": "GPT direct authored"
+        },
+        "rpmPrimaryRecordId": "H1-RPM-163",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "원본 난도 3를 유지하며 세제곱/역수 포함 근 변환에서 두 근을 평행이동 후 제곱하는 복합 변환",
+      "hold": "",
+      "reason": "DRAFT_SINGLE_MODEL; SOURCE_BALANCED/CONFIRMATION; 변형축: 세제곱/역수 포함 근 변환에서 두 근을 평행이동 후 제곱하는 복합 변환; 원본: 이차방정식 $2x^2-4x+1=0$의 두 근을 $\\alpha,\\beta$라 할 때, $x^2$의 계수가 8이고 두 수 $\\alpha^3,\\beta^3$을 근으로 하는 이차방정식을 풀이과정과 함께 구하시오. (4점, 부분점수 있음); 유사1: 이차방정식 $3x^2-6x+2=0$의 두 근을 $\\alpha,\\beta$라 할 때, $\\alpha+\\dfrac1\\beta,\\ \\beta+\\dfrac1\\alpha$를 두 근으로 하고 $x^2$의 계수가 $6$인 이차방정식을 풀이과정과 함께 구하시오. (4점, 부분점수 있음); 문제 시각 EXEMPT; 해설 EXEMPT; 별도 메타 승인 NOT_RUN."
+    },
+    {
+      "questionUid": "qid_v1_108b56b67dcc7390bd8976d1271251b03de2a8364de059f0db6003769608ea30",
+      "sourceOrdinal": 22,
+      "sourceQid": 22,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "standardUnitKey": "H22-C-05",
+        "standardUnit": "이차방정식과 이차함수",
+        "standardUnitOrder": 5,
+        "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
+        "subUnit": "이차함수의 활용",
+        "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+        "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+        "crossConceptKeys": [
+          "CC_AXIS_OF_SYMMETRY_INTERVAL_CASES",
+          "CC_QUADRATIC_EXTREMA_RESTRICTED_DOMAIN"
+        ],
+        "conditionKeys": [
+          "COND_RESTRICTED_INTERVAL",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 4,
+        "sourceQid": 22,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_복성고_1학기_중간_고1_기출",
+          "sourceArchiveFile": "archive/exams/original/high/h1/1mid/26_복성고_1학기_중간_고1_기출.js",
+          "sourceQid": 22,
+          "variationType": "EXAM_FOLLOWUP",
+          "createdAt": "2026-11-25",
+          "createdAtSource": "GPT direct authored"
+        },
+        "rpmPrimaryRecordId": "H1-RPM-170",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "원본 난도 4를 유지하며 최댓값을 주고 최솟값을 구하는 문제를 최솟값으로 매개변수 분기 후 내부 꼭짓점 최대 구하기로 역전",
+      "hold": "",
+      "reason": "DRAFT_SINGLE_MODEL; SOURCE_BALANCED/CONFIRMATION; 변형축: 최댓값을 주고 최솟값을 구하는 문제를 최솟값으로 매개변수 분기 후 내부 꼭짓점 최대 구하기로 역전; 원본: $1\\le x\\le4$에서 $f(x)=-2x^2+10ax$의 최댓값이 100일 때 최솟값을 풀이과정과 함께 구하시오. (단, $a>1$) (5점, 부분점수 있음); 유사1: $1\\le x\\le3$에서 $f(x)=-x^2+4ax$의 최댓값이 $18$일 때 최솟값을 풀이과정과 함께 구하시오. (단, $a>1$) (5점, 부분점수 있음); 문제 시각 EXEMPT; 해설 SVG_TO_CREATE; 별도 메타 승인 NOT_RUN."
+    },
+    {
+      "questionUid": "qid_v1_937ae0e6707b3c98c4e741dfecae2d6e224e04d6e14e5646f983eaabac65f717",
+      "sourceOrdinal": 23,
+      "sourceQid": 23,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "standardUnitKey": "H22-C-05",
+        "standardUnit": "이차방정식과 이차함수",
+        "standardUnitOrder": 5,
+        "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
+        "subUnit": "이차함수의 활용",
+        "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+        "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+        "crossConceptKeys": [
+          "CC_INTERVAL_BOUNDS",
+          "CC_AXIS_OF_SYMMETRY_INTERVAL_CASES"
+        ],
+        "conditionKeys": [
+          "COND_POSITIVE",
+          "COND_RESTRICTED_INTERVAL"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "difficultyBucket": 4,
+        "sourceQid": 23,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_복성고_1학기_중간_고1_기출",
+          "sourceArchiveFile": "archive/exams/original/high/h1/1mid/26_복성고_1학기_중간_고1_기출.js",
+          "sourceQid": 23,
+          "variationType": "EXAM_FOLLOWUP",
+          "createdAt": "2026-11-25",
+          "createdAtSource": "GPT direct authored"
+        },
+        "rpmPrimaryRecordId": "H1-RPM-170",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "원본 난도 4를 유지하며 포함구간의 원점 기준 대칭에서 서로 어긋난 두 구간의 공통 꼭짓점 조건으로 변경",
+      "hold": "",
+      "reason": "DRAFT_SINGLE_MODEL; SOURCE_BALANCED/CONFIRMATION; 변형축: 포함구간의 원점 기준 대칭에서 서로 어긋난 두 구간의 공통 꼭짓점 조건으로 변경; 원본: 이차함수 $f(x)=-(x-p)^2+q$ (단, $p,q$는 양수이고 $m$은 실수)가 다음 조건을 만족시킬 때, $f(4)$의 값을 풀이과정과 함께 구하시오.\n<조건>\n가. $0\\le x\\le2$에서 함수 $f(x)$의 최솟값은 $m+1$이고, 최댓값은 $m+5$이다.\n나. $0\\le x\\le4$에서 함수 $f(x)$의 최솟값은 $-3m$이고, 최댓값은 $m+5$이다. (5점, 부분점수 있음); 유사1: 이차함수 $f(x)=-(x-p)^2+q$ (단, $p,q$는 양수이고 $m$은 실수)가 다음 조건을 만족시킬 때, $f(5)$의 값을 풀이과정과 함께 구하시오. (5점, 부분점수 있음)\n<조건>\n가. $0\\le x\\le3$에서 함수 $f(x)$의 최솟값은 $m+1$이고, 최댓값은 $m+10$이다.\n나. $0\\le x\\le6$에서 함수 $f(x)$의 최솟값은 $-4m$이고, 최댓값은 $m+10$이다.; 문제 시각 EXEMPT; 해설 EXEMPT; 별도 메타 승인 NOT_RUN."
+    },
+    {
+      "questionUid": "qid_v1_567c0cf7fe38411498720b819bfd1190feb49b3f63038615fabfce5033223578",
+      "sourceOrdinal": 24,
+      "sourceQid": 24,
+      "before": null,
+      "after": {
+        "standardCourse": "공통수학1",
+        "curriculum": "2022",
+        "standardUnitKey": "H22-C-02",
+        "standardUnit": "항등식과 나머지 정리",
+        "standardUnitOrder": 2,
+        "subUnitKey": "H22-C-02-CORE",
+        "subUnit": "항등식과 나머지 정리 핵심 개념",
+        "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+        "templateKey": "TPL_H1_REMAINDER_COMPOSITE_DIVISOR",
+        "crossConceptKeys": [
+          "CC_DEGREE_DEDUCTION",
+          "CC_POLYNOMIAL_DEGREE_INFERENCE",
+          "CC_DIVISION_ALGORITHM"
+        ],
+        "conditionKeys": [
+          "COND_INEQUALITY_CONSTRAINT"
+        ],
+        "integrationPattern": "DEEP_COMPOSITE",
+        "difficultyBucket": 4,
+        "sourceQid": 24,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_복성고_1학기_중간_고1_기출",
+          "sourceArchiveFile": "archive/exams/original/high/h1/1mid/26_복성고_1학기_중간_고1_기출.js",
+          "sourceQid": 24,
+          "variationType": "EXAM_FOLLOWUP",
+          "createdAt": "2026-11-25",
+          "createdAtSource": "GPT direct authored"
+        },
+        "rpmPrimaryRecordId": "H1-RPM-143",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "원본 난도 4를 유지하며 나눗셈·인수 분리 구조는 유지하되 다른 잔여식·부호 조건으로 양의 계수해를 판정",
+      "hold": "",
+      "reason": "DRAFT_SINGLE_MODEL; SOURCE_BALANCED/CONFIRMATION; 변형축: 나눗셈·인수 분리 구조는 유지하되 다른 잔여식·부호 조건으로 양의 계수해를 판정; 원본: 두 실수계수 다항식 $f(x)$와 $g(x)$가 다음 <조건>을 만족시킨다.\n<조건>\n가. $\\{f(x)\\}^2$을 $x^2g(x)-8$로 나누었을 때의 몫은 $Q(x)$이고, 나머지는 $-7\\{g(x)-x\\}^2$이다.\n나. $g(x)Q(x)$는 $(x-1)(x-2)$로 나누어떨어진다.\n다. $|g(1)|<|g(2)|$이다.\n$f(x)$는 최고차항의 계수가 2인 이차다항식일 때, $\\{f(-1)\\}^2$의 최댓값을 풀이과정과 함께 구하시오. (6점, 부분점수 있음); 유사1: 두 실수 계수 다항식 $f(x)$와 $g(x)$가 다음 <조건>을 만족시킨다.\n<조건>\n가. $\\{f(x)\\}^2$을 $x^2g(x)-250$으로 나누었을 때의 몫은 $Q(x)$이고, 나머지는 $-4\\{g(x)-2x\\}^2$이다.\n나. $g(x)Q(x)$는 $(x-3)(x-5)$로 나누어떨어진다.\n다. $|g(3)|<|g(5)|$이다.\n$f(x)$는 최고차항의 계수가 $2$인 이차다항식일 때, $\\{f(-2)\\}^2$의 값을 풀이과정과 함께 구하시오. (6점, 부분점수 있음); 문제 시각 EXEMPT; 해설 EXEMPT; 별도 메타 승인 NOT_RUN."
+    }
+  ]
+}

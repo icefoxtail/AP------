@@ -1,0 +1,126 @@
+{
+  "schemaVersion": "gpt-similar-exam-create-review-receipt-v1",
+  "examUid": "26_복성고_1학기_중간_고1_유사2",
+  "sourceArchiveFile": "archive/exams/similar/high/h1/1mid/26_복성고_1학기_중간_고1_유사2.js",
+  "sourceGitBlobSha": "9096a8191e35374abd8c501a67184b0feb52ee02",
+  "createdAt": "2026-11-25",
+  "reviewer": "GPT author self-check; no separate independent reviewer",
+  "mode": "ALIVE EXAM_FOLLOWUP",
+  "difficultyMixer": "SOURCE_BALANCED",
+  "sourceOriginalFile": "archive/exams/original/high/h1/1mid/26_복성고_1학기_중간_고1_기출.js",
+  "comparedVariants": [
+    "archive/exams/similar/high/h1/1mid/26_복성고_1학기_중간_고1_유사.js"
+  ],
+  "questionCount": 24,
+  "questionTypeCounts": {
+    "객관식": 20,
+    "서술형": 4
+  },
+  "totalPoints": 100,
+  "originalBuckets": {
+    "1": 1,
+    "2": 2,
+    "3": 7,
+    "4": 13,
+    "5": 1
+  },
+  "newBuckets": {
+    "1": 1,
+    "2": 2,
+    "3": 7,
+    "4": 13,
+    "5": 1
+  },
+  "followupCounts": {
+    "CONFIRMATION": 24,
+    "ADVANCED": 0
+  },
+  "checkResults": {
+    "sourceAndExistingRead": {
+      "status": "PASS",
+      "count": 24
+    },
+    "mathBlindFromFinalStatements": {
+      "status": "AUTHOR_SELF_CHECK",
+      "count": 24,
+      "note": "작성자가 최종 발문을 다시 읽고 검산; 별도 독립 모델 검수 아님"
+    },
+    "arithmeticScript": {
+      "status": "PASS",
+      "count": 24,
+      "assertions": 24,
+      "note": "최종 발문을 기준으로 독립적으로 작성한 Sympy 검산 스크립트, 24개 계산 단정 통과"
+    },
+    "nodeCheck": {
+      "status": "PASS",
+      "count": 1
+    },
+    "choiceOrderAndAnswerDistribution": {
+      "status": "PASS",
+      "objectiveCount": 20,
+      "defects": 0,
+      "appearanceWarnings": 1,
+      "answerSequence": "④③④②③⑤③①③⑤④④①③①②③⑤②①"
+    },
+    "ptTplAndCurriculumBindings": {
+      "status": "PASS",
+      "count": 24,
+      "note": "ACTIVE registry validateActiveMetaFields 24/24"
+    },
+    "fourSlotTermsAndUidBlobBinding": {
+      "status": "PASS",
+      "count": 24,
+      "note": "dictionary v1.6 ID, QID-v1, Git blob 결속 확인"
+    },
+    "tableStaticCheck": {
+      "status": "PASS",
+      "files": 1,
+      "tables": 0,
+      "defects": 0
+    },
+    "problemVisual": {
+      "status": "EXEMPT",
+      "count": 24
+    },
+    "solutionVisual": {
+      "status": "SVG_TO_CREATE",
+      "count": 4,
+      "exemptCount": 20
+    },
+    "svgPlanLintShallow": {
+      "status": "PASS",
+      "count": 4,
+      "ok": 4,
+      "fail": 0
+    },
+    "svgPlanLintFull": {
+      "status": "ENVIRONMENT_BLOCKED",
+      "count": 4,
+      "ok": 0,
+      "reason": "공식 엔진 NotoSansKR.ttf 의존 파일이 작업 환경에 없음; 계획 내용 오류라는 판정 아님"
+    },
+    "svgRender": {
+      "status": "NOT_RUN"
+    },
+    "svgPngVisualReview": {
+      "status": "NOT_RUN"
+    },
+    "independentMetaApproval": {
+      "status": "review_required",
+      "count": 0
+    },
+    "metadataRegistration": {
+      "status": "NOT_RUN"
+    },
+    "releaseHarnessDraft": {
+      "status": "FAIL_VISUAL_PENDING",
+      "errors": 8,
+      "note": "Q09/Q16/Q18/Q22 계획에 실제 해설 SVG assetPath 및 엔진 증거 없음. 없는 그림 경로는 조작하지 않음."
+    },
+    "ciAndDeployment": {
+      "status": "NOT_RUN"
+    }
+  },
+  "svgPendingPath": "archive/exams/similar/high/h1/1mid/26_복성고_1학기_중간_고1_유사2_plans/SVG_PENDING.md",
+  "experienceLedgerPath": "archive/exams/similar/high/h1/1mid/26_복성고_1학기_중간_고1_유사2_plans/EXPERIENCE_LEDGER.json"
+}
