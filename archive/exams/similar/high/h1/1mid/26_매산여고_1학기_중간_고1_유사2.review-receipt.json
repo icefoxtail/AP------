@@ -2,9 +2,9 @@
   "schemaVersion": "gpt-similar-exam-create-review-receipt-v1",
   "examUid": "26_매산여고_1학기_중간_고1_유사2",
   "sourceArchiveFile": "archive/exams/similar/high/h1/1mid/26_매산여고_1학기_중간_고1_유사2.js",
-  "sourceGitBlobSha": "43cd8d76544a23a737f39c5c17031ca20de3df59",
+  "sourceGitBlobSha": "5d1b20ffcc53914a137805f169baaafdf1313771",
   "createdAt": "2026-11-25",
-  "reviewer": "GPT author self-check; no separate independent reviewer",
+  "reviewer": "ChatGPT independent QA 2026-11-25 (not the original author)",
   "mode": "ALIVE EXAM_FOLLOWUP",
   "difficultyMixer": "SOURCE_BALANCED",
   "sourceOriginalFile": "archive/exams/original/high/h1/1mid/26_매산여고_1학기_중간_고1_기출_c.js",
@@ -41,33 +41,40 @@
       "count": 23
     },
     "mathBlindFromFinalStatements": {
-      "status": "AUTHOR_SELF_CHECK",
+      "status": "INDEPENDENT_QA_RECHECKED",
       "count": 23,
-      "note": "단일 모델 작성자 재풀이; 독립 모델 승인 아님"
+      "note": "최종 발문·해설 전체 판서 검수, Q18·Q19·Q21 재설계 독립 대수 검산"
     },
     "arithmeticScript": {
-      "status": "PASS",
-      "count": 23,
-      "assertions": 48,
-      "note": "별도 재계산: 복소수·인수/나머지·판별식·근과 계수·넓이/교점 수·다항식 정합성"
+      "status": "PARTIAL_RECHECK",
+      "count": 3,
+      "assertions": 3,
+      "note": "Q18 A=-2 B=1 C=6, Q19 t=-6,-2,3,7, Q21 8x²−11x−1; 기존 48개 스크립트 결과는 변경 전 판본에만 적용"
     },
     "nodeCheck": {
       "status": "PASS",
-      "count": 1
+      "count": 1,
+      "note": "node --check maesan_candidate_exam.js"
     },
     "choiceOrderAndAnswerDistribution": {
-      "status": "PASS",
+      "status": "TARGET_CHECK_PASS",
       "objectiveCount": 20,
       "defects": 0,
       "answerSequence": "④④③③④②②①③②③①⑤①⑤①①③④⑤"
     },
     "ptTplAndCurriculumBindings": {
-      "status": "PASS",
-      "count": 23
+      "status": "INDEPENDENT_QA_CORRECTED",
+      "count": 23,
+      "correctedQids": [
+        6,
+        15,
+        23
+      ]
     },
     "fourSlotTermsAndUidBlobBinding": {
-      "status": "PASS",
-      "count": 23
+      "status": "TARGET_SCHEMA_CHECK_PASS",
+      "count": 23,
+      "note": "공식 4칸 계약에 맞게 한글 term을 사전 정수 ID 114개로 변환, format/evidence/reviewedBy 보완; 전체 저장소 테스트는 PR CI에서 확인 필요"
     },
     "tableStaticCheck": {
       "status": "PASS",
@@ -101,7 +108,8 @@
     },
     "independentMetaApproval": {
       "status": "review_required",
-      "count": 0
+      "count": 0,
+      "note": "독립 의미 검수로 오류를 수정했으나 공식 메타 승인·영구 등록은 별도"
     },
     "metadataRegistration": {
       "status": "NOT_RUN"
