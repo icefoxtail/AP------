@@ -14,7 +14,7 @@
       "kind": "INTERVAL_PI",
       "rangePi": [
         "0",
-        "3"
+        "5/4"
       ],
       "states": [
         "CLOSED",
@@ -24,12 +24,11 @@
     "referenceLines": [
       {
         "id": "n3",
-        "slope": "2/3",
+        "slope": "2",
         "perPi": true,
         "intercept": "0",
-        "intersectionCount": 13,
-        "color": "BLUE",
-        "endCrossing": true
+        "intersectionCount": 5,
+        "color": "BLUE"
       }
     ],
     "keyPoints": true,
@@ -44,11 +43,12 @@
     },
     "displaySize": "full"
   },
-  "caption": "n=3일 때 절댓값 코사인 곡선과 증가 직선의 열세 교점",
+  "caption": "n=1일 때 절댓값 코사인 곡선과 증가 직선의 다섯 교점",
+  "sourceQuote": "왼쪽은 $0$ 이상 $1$ 이하이고",
   "sourceConditions": [
-    "y=2|cos 2x|, y=2x/(3π)"
+    "y=2|cos 2x|, y=2x/π"
   ],
   "newVisualInformation": [
-    "끝점 교점 3π를 포함하여 교점 13개를 확인한다."
+    "x=π에서 만나는 점을 포함해 f(1)=5임을 확인하고 f(2), f(3)에도 반복 적용한다."
   ]
 }

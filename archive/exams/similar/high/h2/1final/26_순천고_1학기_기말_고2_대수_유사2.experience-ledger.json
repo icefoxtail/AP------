@@ -21,7 +21,7 @@
     "visualAxisTotal": 48,
     "exemptPlans": 41,
     "neededAxes": 7,
-    "engineReadyPlans": 0,
+    "engineReadyPlans": 7,
     "authoringPlanFiles": 7,
     "unsupportedPlans": 0,
     "renderedSvg": 0
@@ -39,10 +39,10 @@
     }
   },
   "engineEvidence": {
-    "shallowLint": "NOT_RUN",
-    "deepLint": "NOT_RUN",
-    "verifySimilarExam": "NOT_RUN",
-    "ci": "QUEUED_AT_PR_CREATION"
+    "shallowLint": "PASS_48_OF_48",
+    "deepLint": "EXEMPT_41_OK; ACTIVE_7_BLOCKED_ENV_MISSING_NOTOSANSKR_TTF",
+    "verifySimilarExam": "FAIL_15: all remaining failures concern seven unrendered visual assets (14 missing image/evidence + Q18 problem reference); taxonomy and sourceQuote corrected",
+    "ci": "PROBLEM_BANK_SHARED_META_SUCCESS; CI_QUEUED; ARCHIVE_GUARD_IN_PROGRESS"
   },
   "items": [
     {
