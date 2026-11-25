@@ -1,0 +1,148 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circum",
+        "op": "CIRCLE_THROUGH_3",
+        "inputs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "displayCircles": [
+    "circum"
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "angA",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 60,
+        "label": "60",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "AB=6, AC=4와 끼인각 60°로 BC²=28을 구하고 외접원에 사인법칙을 적용한다.",
+  "accessibilityDescription": "끼인각 60도와 두 변 AB, AC를 표시한 삼각형 및 세 꼭짓점을 지나는 원이다.",
+  "sourceConditions": [
+    {
+      "id": "G1",
+      "condition": "AB:AC=3:2, AC=4, A=60°로부터 AB=6, BC²=28.",
+      "mappedTo": [
+        "A",
+        "B",
+        "C",
+        "angA"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "코사인법칙의 대변 BC와 외접원의 반지름을 연결할 변의 위치를 보인다."
+  ],
+  "sourceQuote": "삼각형 $ABC$에서 $\\angle A=60^\\circ$, $\\overline{AB}:\\overline{AC}=3:2$, $\\overline{AC}=4$이다."
+}
