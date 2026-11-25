@@ -16,3 +16,17 @@
 | Q22 | 해설용 | `q22-solution.plan.json` | `SVG_TO_CREATE` | 전체 lint·렌더·PNG 육안 검수 `NOT_RUN` |
 
 후속 담당자는 공식 SVG 엔진 환경에서 각 계획의 전체 lint → 엔진 렌더 → 수학·시각 PNG 검수 → 검증된 해설 그림의 `solutionImage` 연결 순서로 처리한다. Q19의 원은 무리수 반지름을 포함하고, 학생용 발문과 좌표식·분기 해설만으로 유일한 풀이가 가능해 시각 보조를 `EXEMPT`로 판정했다.
+
+## 공식 SVG 엔진 제작·검수·JS 연결 완료 (2026-11-25)
+
+- 전체 `plan-lint.cjs`(NotoSansKR.ttf 포함): **4/4 OK**
+- 공식 `render-plan.mjs`: **4/4 ARCHIVE_BOUND**
+- `assertSvgStudentLanguage`: **4/4 PASS**
+- PNG 실물 육안 검수: **4/4 PASS**
+
+| 문항 | 계획 JSON | 엔진 결과 | 크기/배율 | PNG 검수 | 연결된 JS `solutionImage` | 비고 |
+| --- | --- | --- | --- | --- | --- | --- |
+| Q09 | `q09-solution.plan.json` | `ARCHIVE_BOUND` | full (90%) | PASS | `assets/images/26_복성고_1학기_중간_고1_유사2/q09-solution.svg` | 원안 lint·렌더·PNG 검수 PASS |
+| Q16 | `q16-solution.plan.json` | `ARCHIVE_BOUND` | full | PASS | `assets/images/26_복성고_1학기_중간_고1_유사2/q16-solution.svg` | 원안 lint·렌더·PNG 검수 PASS |
+| Q18 | `q18-solution.plan.json` | `ARCHIVE_BOUND` | full (85%) | PASS | `assets/images/26_복성고_1학기_중간_고1_유사2/q18-solution.svg` | domain/viewport 확장 및 labelAt:START 지정 후 PASS |
+| Q22 | `q22-solution.plan.json` | `ARCHIVE_BOUND` | full (90%) | PASS | `assets/images/26_복성고_1학기_중간_고1_유사2/q22-solution.svg` | 원안 lint·렌더·PNG 검수 PASS |

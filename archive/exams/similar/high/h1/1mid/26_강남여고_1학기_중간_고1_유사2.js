@@ -676,7 +676,11 @@ window.questionBank = [
       "createdAt": "2026-11-24",
       "createdAtSource": "변환 마크다운 헤더의 generatedAt"
     },
-    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_강남여고_1학기_중간_고1_유사2_plans/q15-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_강남여고_1학기_중간_고1_유사2_plans/q15-solution.plan.json",
+    "solutionImage": "assets/images/26_강남여고_1학기_중간_고1_유사2/q15-solution.svg",
+    "solutionImageAlt": "m=4일 때 f(0)>0, f(2)<0이므로 두 근은 1과 4이다.",
+    "solutionImageCaption": "m=4일 때 f(0)>0, f(2)<0이므로 두 근은 1과 4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -722,7 +726,12 @@ window.questionBank = [
       "createdAt": "2026-11-24",
       "createdAtSource": "변환 마크다운 헤더의 generatedAt"
     },
-    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_강남여고_1학기_중간_고1_유사2_plans/q16-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_강남여고_1학기_중간_고1_유사2_plans/q16-solution.plan.json",
+    "solutionImage": "assets/images/26_강남여고_1학기_중간_고1_유사2/q16-solution.svg",
+    "solutionImageAlt": "a=4일 때 0≤x≤3에서 f(0)=32가 최대, f(3)=17이 최소이다.",
+    "solutionImageCaption": "a=4일 때 0≤x≤3에서 f(0)=32가 최대, f(3)=17이 최소이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 85
   },
   {
     "id": 17,
@@ -768,7 +777,11 @@ window.questionBank = [
       "createdAt": "2026-11-24",
       "createdAtSource": "변환 마크다운 헤더의 generatedAt"
     },
-    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_강남여고_1학기_중간_고1_유사2_plans/q17-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_강남여고_1학기_중간_고1_유사2_plans/q17-solution.plan.json",
+    "solutionImage": "assets/images/26_강남여고_1학기_중간_고1_유사2/q17-solution.svg",
+    "solutionImageAlt": "두 교점의 가로좌표가 1, 5일 때 h(x)의 꼭짓점은 (3, 8)이다.",
+    "solutionImageCaption": "두 교점의 가로좌표가 1, 5일 때 h(x)의 꼭짓점은 (3, 8)이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -904,7 +917,11 @@ window.questionBank = [
       "createdAt": "2026-11-24",
       "createdAtSource": "변환 마크다운 헤더의 generatedAt"
     },
-    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_강남여고_1학기_중간_고1_유사2_plans/q20-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_강남여고_1학기_중간_고1_유사2_plans/q20-solution.plan.json",
+    "solutionImage": "assets/images/26_강남여고_1학기_중간_고1_유사2/q20-solution.svg",
+    "solutionImageAlt": "가격을 100원씩 올리는 횟수 x가 4일 때 하루 이익이 28800원으로 최대가 된다.",
+    "solutionImageCaption": "가격을 100원씩 올리는 횟수 x가 4일 때 하루 이익이 28800원으로 최대가 된다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -983,7 +1000,12 @@ window.questionBank = [
       "createdAt": "2026-11-24",
       "createdAtSource": "변환 마크다운 헤더의 generatedAt"
     },
-    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_강남여고_1학기_중간_고1_유사2_plans/q22-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_강남여고_1학기_중간_고1_유사2_plans/q22-solution.plan.json",
+    "solutionImage": "assets/images/26_강남여고_1학기_중간_고1_유사2/q22-solution.svg",
+    "solutionImageAlt": "t=0일 때 포물선 y=x²+5와 직선 y=-4x+1은 (-2, 9)에서 접한다.",
+    "solutionImageCaption": "t=0일 때 포물선 y=x²+5와 직선 y=-4x+1은 (-2, 9)에서 접한다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 85
   },
   {
     "id": 23,

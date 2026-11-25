@@ -445,7 +445,12 @@ window.questionBank = [
       "variationType": "EXAM_FOLLOWUP",
       "createdAt": "2026-11-25",
       "createdAtSource": "GPT direct authored"
-    }
+    },
+    "solutionImage": "assets/images/26_복성고_1학기_중간_고1_유사2/q09-solution.svg",
+    "solutionImageAlt": "두 그래프 사이 세로 거리는 h(x)=-3(x-1)²+12이며, 교점 x=-1,3 사이의 꼭짓점 x=1에서 최대 12이다.",
+    "solutionImageCaption": "두 그래프 사이 세로 거리는 h(x)=-3(x-1)²+12이며, 교점 x=-1,3 사이의 꼭짓점 x=1에서 최대 12이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 10,
@@ -803,7 +808,11 @@ window.questionBank = [
       "variationType": "EXAM_FOLLOWUP",
       "createdAt": "2026-11-25",
       "createdAtSource": "GPT direct authored"
-    }
+    },
+    "solutionImage": "assets/images/26_복성고_1학기_중간_고1_유사2/q16-solution.svg",
+    "solutionImageAlt": "직각삼각형 ABC의 두 직각변은 2,5이고, 넓이를 최대로 하는 직사각형은 BP=5/2, BQ=1인 배치이다.",
+    "solutionImageCaption": "직각삼각형 ABC의 두 직각변은 2,5이고, 넓이를 최대로 하는 직사각형은 BP=5/2, BQ=1인 배치이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -906,7 +915,12 @@ window.questionBank = [
       "variationType": "EXAM_FOLLOWUP",
       "createdAt": "2026-11-25",
       "createdAtSource": "GPT direct authored"
-    }
+    },
+    "solutionImage": "assets/images/26_복성고_1학기_중간_고1_유사2/q18-solution.svg",
+    "solutionImageAlt": "포물선 y=x²-x-2와 직선 y=-x+2의 교점 A(2,0), C(-2,4) 및 두 영역 S₁, S₂의 넓이를 비교한다.",
+    "solutionImageCaption": "포물선 y=x²-x-2와 직선 y=-x+2의 교점 A(2,0), C(-2,4) 및 두 영역 S₁, S₂의 넓이를 비교한다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 85
   },
   {
     "id": 19,
@@ -1102,7 +1116,12 @@ window.questionBank = [
       "variationType": "EXAM_FOLLOWUP",
       "createdAt": "2026-11-25",
       "createdAtSource": "GPT direct authored"
-    }
+    },
+    "solutionImage": "assets/images/26_복성고_1학기_중간_고1_유사2/q22-solution.svg",
+    "solutionImageAlt": "f(x)=-2x²+18x의 구간 [1,5] 양 끝값과 꼭짓점 (9/2,81/2)을 비교한다.",
+    "solutionImageCaption": "f(x)=-2x²+18x의 구간 [1,5] 양 끝값과 꼭짓점 (9/2,81/2)을 비교한다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 23,

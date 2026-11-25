@@ -14,3 +14,15 @@
 | Q22 | 해설용, 도형 넓이의 최대 | `q22-solution.plan.json` | `SVG_TO_CREATE` | 엔진 전체 lint·렌더·PNG 육안 검수 `NOT_RUN` |
 
 후속 담당자는 저장소 공식 SVG 엔진의 잠금된 NotoSansKR 환경을 준비하고, 위 plan 두 개의 전체 lint → 엔진 렌더 → 수학적·시각적 PNG 검수 → 검증된 해설 SVG 경로만 `solutionImage`로 연결한다. 이 시점에 존재하지 않는 `solutionImage`를 JS에 미리 기입하지 않았다. Q22의 문제용 시각 자산은 필요하지 않다.
+
+## 공식 SVG 엔진 제작·검수·JS 연결 완료 (2026-11-25)
+
+- 전체 `plan-lint.cjs`(NotoSansKR.ttf 포함): **2/2 OK**
+- 공식 `render-plan.mjs`: **2/2 ARCHIVE_BOUND**
+- `assertSvgStudentLanguage`: **2/2 PASS**
+- PNG 실물 육안 검수: **2/2 PASS**
+
+| 문항 | 계획 JSON | 엔진 결과 | 크기/배율 | PNG 검수 | 연결된 JS `solutionImage` | 비고 |
+| --- | --- | --- | --- | --- | --- | --- |
+| Q07 | `q07-solution.plan.json` | `ARCHIVE_BOUND` | full | PASS | `assets/images/26_매산여고_1학기_중간_고1_유사2/q07-solution.svg` | 원안 lint·렌더·PNG 검수 PASS |
+| Q22 | `q22-solution.plan.json` | `ARCHIVE_BOUND` | full (94%) | PASS | `assets/images/26_매산여고_1학기_중간_고1_유사2/q22-solution.svg` | 원안 lint·렌더·PNG 검수 PASS |

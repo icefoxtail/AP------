@@ -15,3 +15,18 @@
 | Q20 | 움직이는 구간의 최대·최소 합 함수 | `q20-solution.plan.json` | PASS (shallow) | NOT_RUN | NOT_RUN | NOT_RUN |
 
 후속 작업: 공식 `archive/tools/geometry-equation/production/render-plan.mjs`로 각 plan을 렌더하고, 수학값·지점·라벨을 PNG에서 독립 검수한 뒤 `archive/assets/images/`의 신규 경로에 게시하고 해당 문항에만 `solutionImage`를 추가한다. 해설 그림이 준비되기 전에는 렌더 PASS를 선언하지 않는다.
+
+## 공식 SVG 엔진 제작·검수·JS 연결 완료 (2026-11-25)
+
+- 전체 `plan-lint.cjs`(NotoSansKR.ttf 포함): **5/5 OK**
+- 공식 `render-plan.mjs`: **5/5 ARCHIVE_BOUND**
+- `assertSvgStudentLanguage`: **5/5 PASS**
+- PNG 실물 육안 검수: **5/5 PASS**
+
+| 문항 | 계획 JSON | 엔진 결과 | 크기/배율 | PNG 검수 | 연결된 JS `solutionImage` | 비고 |
+| --- | --- | --- | --- | --- | --- | --- |
+| Q09 | `q09-solution.plan.json` | `ARCHIVE_BOUND` | full | PASS | `assets/images/26_금당고_1학기_중간_고1_유사2/q09-solution.svg` | 원안 lint·렌더·PNG 검수 PASS |
+| Q13 | `q13-solution.plan.json` | `ARCHIVE_BOUND` | full | PASS | `assets/images/26_금당고_1학기_중간_고1_유사2/q13-solution.svg` | 원안 lint·렌더·PNG 검수 PASS |
+| Q14 | `q14-solution.plan.json` | `ARCHIVE_BOUND` | full (90%) | PASS | `assets/images/26_금당고_1학기_중간_고1_유사2/q14-solution.svg` | 중복 axisTickValues 제거 후 PASS |
+| Q17 | `q17-solution.plan.json` | `ARCHIVE_BOUND` | full | PASS | `assets/images/26_금당고_1학기_중간_고1_유사2/q17-solution.svg` | 중복 axisTickValues 제거 후 PASS |
+| Q20 | `q20-solution.plan.json` | `ARCHIVE_BOUND` | full | PASS | `assets/images/26_금당고_1학기_중간_고1_유사2/q20-solution.svg` | axisTickValues 0 제거(0→[1,2]) 후 PASS |

@@ -450,7 +450,11 @@ window.questionBank = [
       "createdAt": "2026-11-25",
       "createdAtSource": "GPT direct authored"
     },
-    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_금당고_1학기_중간_고1_유사2_plans/q09-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_금당고_1학기_중간_고1_유사2_plans/q09-solution.plan.json",
+    "solutionImage": "assets/images/26_금당고_1학기_중간_고1_유사2/q09-solution.svg",
+    "solutionImageAlt": "k=2이면 포물선 y=2(x-1)²의 꼭짓점이 x축 위에 있어 접점은 (1,0) 하나이다.",
+    "solutionImageCaption": "k=2이면 포물선 y=2(x-1)²의 꼭짓점이 x축 위에 있어 접점은 (1,0) 하나이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -660,7 +664,11 @@ window.questionBank = [
       "createdAt": "2026-11-25",
       "createdAtSource": "GPT direct authored"
     },
-    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_금당고_1학기_중간_고1_유사2_plans/q13-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_금당고_1학기_중간_고1_유사2_plans/q13-solution.plan.json",
+    "solutionImage": "assets/images/26_금당고_1학기_중간_고1_유사2/q13-solution.svg",
+    "solutionImageAlt": "k=1인 예에서 포물선 y=x²+6x와 공통 접선 y=4x-1은 (-1,-5)에서 접한다. 모든 k≠0에서도 접점의 x좌표는 -1이다.",
+    "solutionImageCaption": "k=1인 예에서 포물선 y=x²+6x와 공통 접선 y=4x-1은 (-1,-5)에서 접한다. 모든 k≠0에서도 접점의 x좌표는 -1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -714,7 +722,12 @@ window.questionBank = [
       "createdAt": "2026-11-25",
       "createdAtSource": "GPT direct authored"
     },
-    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_금당고_1학기_중간_고1_유사2_plans/q14-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_금당고_1학기_중간_고1_유사2_plans/q14-solution.plan.json",
+    "solutionImage": "assets/images/26_금당고_1학기_중간_고1_유사2/q14-solution.svg",
+    "solutionImageAlt": "포물선 y=9-x²에 내접한 직사각형. 둘레가 최대일 때 윗꼭짓점은 (±1,8)이므로 높이가 8이다.",
+    "solutionImageCaption": "포물선 y=9-x²에 내접한 직사각형. 둘레가 최대일 때 윗꼭짓점은 (±1,8)이므로 높이가 8이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 15,
@@ -879,7 +892,11 @@ window.questionBank = [
       "createdAt": "2026-11-25",
       "createdAtSource": "GPT direct authored"
     },
-    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_금당고_1학기_중간_고1_유사2_plans/q17-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_금당고_1학기_중간_고1_유사2_plans/q17-solution.plan.json",
+    "solutionImage": "assets/images/26_금당고_1학기_중간_고1_유사2/q17-solution.svg",
+    "solutionImageAlt": "3<a<8에 속하는 a=4를 대입한 예. 두 그래프는 x=0,3,4에서 세 점에서 만난다.",
+    "solutionImageCaption": "3<a<8에 속하는 a=4를 대입한 예. 두 그래프는 x=0,3,4에서 세 점에서 만난다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -1019,6 +1036,10 @@ window.questionBank = [
       "createdAt": "2026-11-25",
       "createdAtSource": "GPT direct authored"
     },
-    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_금당고_1학기_중간_고1_유사2_plans/q20-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_금당고_1학기_중간_고1_유사2_plans/q20-solution.plan.json",
+    "solutionImage": "assets/images/26_금당고_1학기_중간_고1_유사2/q20-solution.svg",
+    "solutionImageAlt": "g(t)의 최소는 3이며 y=3,5,10과의 교점 수는 각각 1,2,2개다. y=2는 그래프와 만나지 않는다.",
+    "solutionImageCaption": "g(t)의 최소는 3이며 y=3,5,10과의 교점 수는 각각 1,2,2개다. y=2는 그래프와 만나지 않는다.",
+    "solutionImageSize": "full"
   }
 ];

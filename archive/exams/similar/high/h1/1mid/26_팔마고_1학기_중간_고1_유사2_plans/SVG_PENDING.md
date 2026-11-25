@@ -22,3 +22,15 @@
 - 공식 `plan-lint.cjs --shallow` 재실행 결과 **2/2 PASS**. **full lint는 실행했으나 `NotoSansKR.ttf` 의존 파일 부재로 2/2 `ENVIRONMENT_BLOCKED`**. SVG 렌더·PNG 실물 시각검수는 **NOT_RUN**, 미제작 자산은 여전히 연결하지 않았다.
 - `verify_similar_exam.mjs --phase=draft`는 예상된 필수 시각증거 4건(Q09·Q22의 자산 연결 2건, 엔진 evidence 2건)으로 **FAIL**. 계획 존재와 시각검수 통과는 다르다.
 - 문항별 증거: `R1_PHYSICAL_EVIDENCE.json`의 Q09·Q22는 `visualNecessity: HOLD`. R1 전체 결론은 `PASS_WITH_ITEM_HOLDS`이며 출고·운영 병합 허가가 아니다.
+
+## 공식 SVG 엔진 제작·검수·JS 연결 완료 (2026-11-25)
+
+- 전체 `plan-lint.cjs`(NotoSansKR.ttf 포함): **2/2 OK**
+- 공식 `render-plan.mjs`: **2/2 ARCHIVE_BOUND**
+- `assertSvgStudentLanguage`: **2/2 PASS**
+- PNG 실물 육안 검수: **2/2 PASS**
+
+| 문항 | 계획 JSON | 엔진 결과 | 크기/배율 | PNG 검수 | 연결된 JS `solutionImage` | 비고 |
+| --- | --- | --- | --- | --- | --- | --- |
+| Q09 | `q09-solution.plan.json` | `ARCHIVE_BOUND` | full | PASS | `assets/images/26_팔마고_1학기_중간_고1_유사2/q09-solution.svg` | caption 거듭제곱 기호(^2→²) 다듬기 후 PASS |
+| Q22 | `q22-solution.plan.json` | `ARCHIVE_BOUND` | full | PASS | `assets/images/26_팔마고_1학기_중간_고1_유사2/q22-solution.svg` | 원안 lint·렌더·PNG 검수 PASS |

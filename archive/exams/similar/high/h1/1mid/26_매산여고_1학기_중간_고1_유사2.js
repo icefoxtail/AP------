@@ -323,7 +323,11 @@ window.questionBank = [
       "variationType": "EXAM_FOLLOWUP",
       "createdAt": "2026-11-25",
       "createdAtSource": "GPT direct authored"
-    }
+    },
+    "solutionImage": "assets/images/26_매산여고_1학기_중간_고1_유사2/q07-solution.svg",
+    "solutionImageAlt": "-1≤x≤4에서 꼭짓점 V(1,8)이 최댓값이고 오른쪽 끝점 R(4,-1)이 최솟값이다.",
+    "solutionImageCaption": "-1≤x≤4에서 꼭짓점 V(1,8)이 최댓값이고 오른쪽 끝점 R(4,-1)이 최솟값이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -1002,7 +1006,12 @@ window.questionBank = [
       "variationType": "EXAM_FOLLOWUP",
       "createdAt": "2026-11-25",
       "createdAtSource": "GPT direct authored"
-    }
+    },
+    "solutionImage": "assets/images/26_매산여고_1학기_중간_고1_유사2/q22-solution.svg",
+    "solutionImageAlt": "삼각형에서 두 작은 삼각형을 뺀 넓이 S(t)=27−3/4(t−3)²는 t=3일 때 27로 최대이다.",
+    "solutionImageCaption": "삼각형에서 두 작은 삼각형을 뺀 넓이 S(t)=27−3/4(t−3)²는 t=3일 때 27로 최대이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 94
   },
   {
     "id": 23,
