@@ -1,0 +1,11 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"PARABOLA","vertex":["0","0"],"p":"5","axis":"X"},
+  "points":[{"id":"O","kind":"ORIGIN"},{"id":"F","kind":"FOCUS"},{"id":"A","kind":"ON_CONIC","x":"2","branch":"POS"},{"id":"B","kind":"ON_CONIC","x":"25/2","branch":"NEG"},{"id":"C","kind":"FOOT","from":"A","onto":"d","rightAngle":true},{"id":"D","kind":"FOOT","from":"B","onto":"d","rightAngle":true}],
+  "lines":[{"id":"d","role":"DIRECTRIX","label":"l"}],
+  "segments":[{"id":"AF","from":"A","to":"F"},{"id":"FB","from":"F","to":"B"},{"id":"AC","from":"A","to":"C","label":"7"},{"id":"BD","from":"B","to":"D"}],
+  "caption":"y²=20x의 초점 현 AB에서 준선 l로 내린 수선 AC=7, BD는 미지수",
+  "accessibilityDescription":"음의 기울기로 초점 F를 지나는 현의 위쪽 A와 아래쪽 B에서 왼쪽 준선 l로 수평 수선을 내려 각각 C,D를 만든다.",
+  "sourceConditions":[{"id":"c1","condition":"y²=20x, F=(5,0), 준선 x=-5이다.","mappedTo":["conic","F","d"]},{"id":"c2","condition":"AC=7이므로 A=(2,2√10)이고 실제 초점 현의 하단 B=(25/2,-5√10), 수선 D를 작도하되 구하는 BD의 수치는 넣지 않는다.","mappedTo":["A","B","C","D","AC","BD","AF","FB"]}],
+  "newVisualInformation":["두 준선 수선과 초점 현의 길이 대응"]
+}
