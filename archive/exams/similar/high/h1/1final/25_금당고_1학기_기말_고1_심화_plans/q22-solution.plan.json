@@ -1,0 +1,39 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "15" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "8" }] }, "outputType": "POINT", "factRole": "GIVEN" }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    { "id": "sAB", "refs": ["A", "B"] },
+    { "id": "sAC", "refs": ["A", "C"] },
+    { "id": "sBC", "refs": ["B", "C"] }
+  ],
+  "displayPoints": ["A", "B", "C"],
+  "hiddenPointNames": ["A", "B", "C"],
+  "coordinateCanvas": { "width": 560, "height": 370 },
+  "rightAngles": [{ "id": "rA", "refs": ["B", "A", "C"] }],
+  "planeMarks": {
+    "expressionLabels": [
+      { "id": "len1", "ownerSegment": "sAC", "text": "1" },
+      { "id": "lena", "ownerSegment": "sAB", "text": "15/8" },
+      { "id": "lenb", "ownerSegment": "sBC", "text": "17/8" }
+    ]
+  },
+  "caption": "실근 1, 15/8, 17/8을 세 변으로 놓은 직각삼각형의 해설 도식이다.",
+  "accessibilityDescription": "세 변이 각각 1, 15/8, 17/8로 표시되고 길이 1인 변과 15/8인 변 사이에 직각이 표시된 삼각형이다.",
+  "sourceQuote": "서로 다른 세 실근이 어떤 직각삼각형의 세 변의 길이가 된다",
+  "sourceConditions": [
+    { "id": "c1", "condition": "사차방정식의 서로 다른 실근 세 개가 직각삼각형의 세 변", "mappedTo": ["displaySegments", "rightAngles"] },
+    { "id": "c2", "condition": "해설에서 b+a=4, b²-a²=1로 구한 a=15/8,b=17/8", "mappedTo": ["planeMarks.expressionLabels", "mathPlan.nodes"] },
+    { "id": "c3", "condition": "대표 좌표는 변의 비 8:15:17을 보존하는 8배 확대이며 주어진 좌표가 아님", "mappedTo": ["mathPlan.nodes", "rightAngles"] }
+  ],
+  "newVisualInformation": ["8²+15²=17²에 대응하는 직각 위치와 세 변의 관계", "모든 점 이름은 원문에 없으므로 숨기고 길이만 표시한다"]
+}
