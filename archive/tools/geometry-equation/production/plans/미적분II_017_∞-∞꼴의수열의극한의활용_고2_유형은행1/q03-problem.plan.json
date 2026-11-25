@@ -1,0 +1,68 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      { "id": "f", "kind": "RATIONAL", "numerator": ["6", "0"], "denominator": ["0", "1"], "domain": ["1/2", "8"], "label": "y=6/x", "color": "BLUE" },
+      { "id": "g", "kind": "LINE", "coefficients": ["4", "-1/2"], "domain": ["1/2", "8"], "label": "y=4-x/2", "color": "WARM" }
+    ],
+    "viewport": [
+      -1,
+      9,
+      -1,
+      7
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "2",
+          "y": "3"
+        },
+        {
+          "id": "B",
+          "x": "6",
+          "y": "1"
+        }
+      ],
+      "segments": [
+        {
+          "id": "AB",
+          "from": "A",
+          "to": "B"
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "A": "A",
+    "B": "B"
+  },
+  "caption": "n=2의 대표 위치: 제1사분면에서 y=6/x와 y=4−x/2의 교점 A, B를 연결한다.",
+  "accessibilityDescription": "제1사분면에서 감소하는 쌍곡선과 감소하는 직선이 A(왼쪽 위), B(오른쪽 아래) 두 점에서 교차한다. 두 점 사이의 선분 AB를 그렸다.",
+  "sourceQuote": "y=3n/x와 y=4−x/n의 두 교점, 제1사분면에서 x=n,3n인 교점을 연결",
+  "sourceConditions": [
+    {
+      "id": "r",
+      "condition": "첫 곡선 y=3n/x; n=2",
+      "mappedTo": "graphPlan.curves[0].numerator;graphPlan.curves[0].denominator"
+    },
+    {
+      "id": "l",
+      "condition": "둘째 곡선 y=4−x/n; n=2",
+      "mappedTo": "graphPlan.curves[1].coefficients"
+    },
+    {
+      "id": "ab",
+      "condition": "x=n과 x=3n인 두 제1사분면 교점",
+      "mappedTo": "graphPlan.overlays.points[0..1];graphPlan.overlays.segments[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "실제 n=2 교점은 (2,3)과 (6,1)이며 좌표 숫자 라벨은 문제 그림에 사용하지 않는다."
+  ]
+}

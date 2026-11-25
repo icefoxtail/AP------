@@ -1,0 +1,29 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [{ "coefficients": ["0", "3", "-2"] }],
+    "breakpoints": [],
+    "sourceDomain": { "kind": "ALL_REALS" },
+    "domain": [-1, 5],
+    "viewport": [-1, 5, -40, 5],
+    "functionName": "f",
+    "requiredPoints": [{ "id": "V", "x": "3/4", "y": "9/8", "marker": "NONE" }],
+    "axisTickValues": { "x": [], "y": [] },
+    "overlays": {
+      "points": [{ "id": "P", "curveX": "2" }, { "id": "Q", "curveX": "4" }],
+      "lines": [{ "id": "PQ", "slope": "-9", "intercept": "16", "label": "PQ" }]
+    }
+  },
+  "pointNames": { "P": "P", "Q": "Q" },
+  "caption": "n=2인 대표 도식: 포물선 f 위의 두 점 P, Q를 지나는 직선을 표시한다.",
+  "accessibilityDescription": "아래로 열린 포물선 y=-2x²+3x 위에 P와 오른쪽의 Q를 찍고, 두 점을 지나는 직선을 그렸다. n=2인 예시이며 일반 n에서의 위치를 고정하지 않는다.",
+  "sourceQuote": "f(x)=-2x²+3x 위의 P=(n,f(n)), Q=(n+2,f(n+2))를 잇는 직선의 기울기 m_n",
+  "sourceConditions": [
+    { "id": "s1", "condition": "포물선 y=-2x²+3x", "mappedTo": "graphPlan.pieces[0].coefficients" },
+    { "id": "s2", "condition": "P와 Q는 각각 x=n, x=n+2에서 곡선 위에 있다", "mappedTo": "graphPlan.overlays.points[0..1].curveX;graphPlan.pointNames" },
+    { "id": "s3", "condition": "직선 PQ", "mappedTo": "graphPlan.overlays.lines[0]" },
+    { "id": "s4", "condition": "무한히 많은 n을 한 화면에서 표시할 수 없어 n=2를 대표 사례로 쓴다", "mappedTo": "caption;graphPlan.overlays.points" }
+  ],
+  "newVisualInformation": ["대표값 n=2에서 P=(2,-2), Q=(4,-20)이고 PQ의 기울기는 -9다. 일반 m_n의 극한은 그림에 쓰지 않는다."]
+}

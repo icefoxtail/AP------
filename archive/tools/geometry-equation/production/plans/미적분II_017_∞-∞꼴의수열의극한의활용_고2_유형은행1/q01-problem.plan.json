@@ -1,0 +1,90 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -5,
+      5,
+      -5,
+      6
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "SQRT",
+        "radicand": [
+          "8",
+          "2"
+        ],
+        "domain": [
+          "-4",
+          "4"
+        ],
+        "label": "y=f(x)",
+        "color": "BLUE"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "circles": [
+        {
+          "id": "K",
+          "center": [
+            "0",
+            "0"
+          ],
+          "radiusSquared": "16"
+        }
+      ],
+      "points": [
+        {
+          "id": "P",
+          "x": "-4",
+          "y": "0"
+        },
+        {
+          "id": "Q",
+          "x": "2",
+          "y": "2*sqrt(3)"
+        }
+      ],
+      "segments": [
+        {
+          "id": "PQ",
+          "from": "P",
+          "to": "Q"
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "P": "P",
+    "Q": "Q"
+  },
+  "caption": "n=2 대표 도식: 원점 중심 반지름 4인 원과 왼쪽 끝 (-4,0)에서 시작하는 근호곡선의 두 교점 P,Q를 연결한다.",
+  "accessibilityDescription": "원점 중심 원과 왼쪽 x축 끝점에서 출발해 오른쪽 위로 완만하게 증가하는 근호 곡선이 두 곳에서 만나며, 두 교점을 선분으로 연결한다.",
+  "sourceQuote": "원 x²+y²=4n², 곡선 y=√(2(x+2n)), 두 교점을 잇는 선분",
+  "sourceConditions": [
+    {
+      "id": "c",
+      "condition": "원점 중심 반지름 2n인 원",
+      "mappedTo": "graphPlan.overlays.circles[0]"
+    },
+    {
+      "id": "s",
+      "condition": "(-2n,0)에서 시작하는 y=√(2(x+2n))",
+      "mappedTo": "graphPlan.curves[0]"
+    },
+    {
+      "id": "p",
+      "condition": "원과 곡선의 두 교점을 연결",
+      "mappedTo": "graphPlan.overlays.points[0..1];graphPlan.overlays.segments[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "n=2의 교점 P=(-4,0), Q=(2,2√3)를 정확한 값으로 사용하고 학생용 좌표 라벨은 쓰지 않는다."
+  ]
+}

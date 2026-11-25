@@ -1,0 +1,104 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "4",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1,
+      5
+    ],
+    "viewport": [
+      -1,
+      5,
+      -1,
+      5
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "L",
+          "slope": "3/2",
+          "intercept": "0",
+          "label": "l"
+        }
+      ],
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        },
+        {
+          "id": "A",
+          "axis": "x",
+          "value": "4"
+        },
+        {
+          "id": "P",
+          "x": "8/5",
+          "y": "12/5",
+          "unnamed": true
+        }
+      ],
+      "callouts": [{ "id": "pn", "point": "P", "text": "P_n", "labelKind": "MATH", "direction": "NE" }],
+      "polygons": [
+        {
+          "id": "T",
+          "points": [
+            "O",
+            "A",
+            "P"
+          ],
+          "fill": "NONE"
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "O": "O",
+    "A": "A"
+  },
+  "caption": "n=1인 대표 도식: 두 직선의 교점 Pₙ과 원점 O, A=(4,0)이 이루는 삼각형을 나타낸다.",
+  "accessibilityDescription": "내려가는 직선 x+y=4와 원점을 지나는 올라가는 직선이 제1사분면에서 만나고, 두 직선의 교점 P, 원점 O, x축의 A로 삼각형을 이룬다.",
+  "sourceQuote": "x+y=4와 y=3nx/(n+1)의 교점 P_n, x절편 A, 삼각형 OAP_n",
+  "sourceConditions": [
+    {
+      "id": "l1",
+      "condition": "x+y=4",
+      "mappedTo": "graphPlan.pieces[0].coefficients"
+    },
+    {
+      "id": "l2",
+      "condition": "y=3nx/(n+1); n=1 예시",
+      "mappedTo": "graphPlan.overlays.lines[0]"
+    },
+    {
+      "id": "p",
+      "condition": "두 직선의 교점 P_n",
+      "mappedTo": "graphPlan.overlays.points[2];graphPlan.overlays.callouts[0]"
+    },
+    {
+      "id": "a",
+      "condition": "A=(4,0), O=(0,0) 삼각형",
+      "mappedTo": "graphPlan.overlays.points[0..1];graphPlan.overlays.polygons[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "그림의 n은 1이며 P=(8/5,12/5)를 수치 없이 표시한다."
+  ]
+}

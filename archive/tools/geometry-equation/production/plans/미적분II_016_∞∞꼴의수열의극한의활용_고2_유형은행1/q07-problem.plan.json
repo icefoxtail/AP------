@@ -1,0 +1,123 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "25/4",
+          "-3/4"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -6,
+      10
+    ],
+    "viewport": [
+      -6,
+      10,
+      -6,
+      9
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "circles": [
+        {
+          "id": "K",
+          "center": [
+            "0",
+            "0"
+          ],
+          "radiusSquared": "25"
+        }
+      ],
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        },
+        {
+          "id": "T",
+          "x": "3",
+          "y": "4",
+          "onCircle": "K"
+        },
+        {
+          "id": "A",
+          "axis": "x",
+          "value": "25/3"
+        },
+        {
+          "id": "B",
+          "axis": "y",
+          "value": "25/4"
+        }
+      ],
+      "segments": [
+        {
+          "id": "OT",
+          "from": "O",
+          "to": "T"
+        }
+      ],
+      "polygons": [
+        {
+          "id": "TAB",
+          "points": [
+            "O",
+            "A",
+            "B"
+          ],
+          "fill": "NONE"
+        }
+      ],
+      "rightAngles": [
+        {
+          "at": "T",
+          "from": [
+            "O",
+            "A"
+          ]
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "O": "O",
+    "T": "T",
+    "A": "A",
+    "B": "B"
+  },
+  "caption": "n=1 대표 원의 제1사분면 T(3,4)에서 그은 접선과 양의 두 축 절편 A, B가 이루는 삼각형을 표시한다.",
+  "accessibilityDescription": "원점 중심 반지름 5인 원 위 오른쪽 위 점 T에서 접선이 내려가며 두 양의 축 A, B를 지나 삼각형 OAB를 만든다. OT와 접선은 직각이다.",
+  "sourceQuote": "원 x²+y²=25n²의 (3n,4n)에서 그은 접선, 양의 두 절편과 삼각형 OAB",
+  "sourceConditions": [
+    {
+      "id": "c",
+      "condition": "원점 중심 반지름 5n인 원",
+      "mappedTo": "graphPlan.overlays.circles[0]"
+    },
+    {
+      "id": "t",
+      "condition": "제1사분면 접점 (3n,4n)과 접선",
+      "mappedTo": "graphPlan.overlays.points[1];graphPlan.pieces[0].coefficients;graphPlan.overlays.rightAngles[0]"
+    },
+    {
+      "id": "ab",
+      "condition": "양의 절편 A,B와 삼각형 OAB",
+      "mappedTo": "graphPlan.overlays.points[2..3];graphPlan.overlays.polygons[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "n=1 실제 접선은 3x+4y=25다. T=(3,4), A=(25/3,0), B=(0,25/4)이며 점 이름에 좌표는 표시하지 않는다."
+  ]
+}
