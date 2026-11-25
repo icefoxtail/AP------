@@ -1,0 +1,60 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "axisVariable": false,
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "points": [
+          {
+            "id": "A",
+            "value": "sqrt(12)",
+            "showValue": true
+          },
+          {
+            "id": "B",
+            "value": "4",
+            "showValue": true
+          },
+          {
+            "id": "C",
+            "value": "5",
+            "showValue": true
+          },
+          {
+            "id": "D",
+            "value": "6",
+            "showValue": true
+          },
+          {
+            "id": "E",
+            "value": "sqrt(45)",
+            "showValue": true
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "제곱근 두 수 사이에 4, 5, 6이 차례로 놓이는 수직선이다.",
+  "accessibilityDescription": "제곱근 두 수 사이에 4, 5, 6이 차례로 놓이는 수직선이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "sqrt(12)<n<sqrt(45)",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "n은 자연수",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "열린 양 끝 √12와 √45 사이의 정수 4,5,6을 표시한다."
+  ]
+}

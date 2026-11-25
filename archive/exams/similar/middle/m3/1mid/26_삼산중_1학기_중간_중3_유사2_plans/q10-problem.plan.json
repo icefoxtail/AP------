@@ -1,0 +1,208 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "U",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "5809",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "V",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1732",
+              "denominator": "1000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "W",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-5809",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-1732",
+              "denominator": "1000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "U",
+    "V",
+    "W",
+    "T",
+    "O"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "U",
+        "V"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "V",
+        "W"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "W",
+        "T"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "T",
+        "U"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "U",
+        "W"
+      ]
+    },
+    {
+      "id": "s5",
+      "refs": [
+        "T",
+        "V"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 480
+  },
+  "caption": "마름모의 두 대각선이 직각으로 만나며 각각의 길이는 3√15와 2√3이다.",
+  "accessibilityDescription": "마름모의 두 대각선이 직각으로 만나며 각각의 길이는 3√15와 2√3이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "마름모의 대각선 길이는 2√3, 3√15이다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "마름모 대각선의 직교 관계를 명시한다."
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "e1",
+        "ownerSegment": "s4",
+        "text": "3sqrt(15)"
+      },
+      {
+        "id": "e2",
+        "ownerSegment": "s5",
+        "text": "2sqrt(3)"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "r1",
+      "refs": [
+        "U",
+        "O",
+        "V"
+      ]
+    }
+  ]
+}
