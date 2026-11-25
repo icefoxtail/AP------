@@ -1,0 +1,60 @@
+{
+  "capability": "sqrt-affine-spike-v1",
+  "graphPlan": {
+    "family": "sqrt-affine",
+    "radicand": [
+      "18",
+      "9"
+    ],
+    "sign": 1,
+    "offset": "5",
+    "sourceDomain": {
+      "kind": "NATURAL_SQRT_AFFINE"
+    },
+    "domain": [
+      -2,
+      3
+    ],
+    "viewport": [
+      -3,
+      4,
+      3,
+      15
+    ],
+    "domainRangeLabels": true,
+    "exactCoordinates": { "S": ["-2", "5"], "P": ["-1", "8"] },
+    "requiredPoints": [
+      {
+        "id": "S",
+        "x": -2,
+        "y": 5
+      },
+      {
+        "id": "P",
+        "x": -1,
+        "y": 8
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "이동 후 y=√(9(x+2))+5는 시작점 S(−2,5)에서 오른쪽 위로 뻗고 P(−1,8)를 지나므로 a=9다.",
+  "accessibilityDescription": "무리함수 그래프가 (-2,5)에서 시작하고 점 (-1,8)을 지나는 오른쪽 위로 뻗는 곡선이다.",
+  "sourceConditions": [
+    {
+      "id": "R8-1",
+      "condition": "초기 y=√(ax), x방향 −2·y방향 +5 이동 ⇒ y=√(a(x+2))+5",
+      "mappedTo": "graphPlan.radicand,graphPlan.offset"
+    },
+    {
+      "id": "R8-2",
+      "condition": "(-1,8) 대입하면 √a=3 ⇒ a=9, 시작점 (-2,5)",
+      "mappedTo": "graphPlan.requiredPoints[S,P]"
+    }
+  ],
+  "newVisualInformation": [
+    "이동된 시작점과 해설에서 주어진 통과점의 좌표를 동시에 확인한다."
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -6,
+      6,
+      -6,
+      6
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "RATIONAL",
+        "numerator": [
+          "7",
+          "-1"
+        ],
+        "denominator": [
+          "1",
+          "1"
+        ],
+        "domain": [
+          "-6",
+          "6"
+        ],
+        "color": "BLUE",
+        "label": "y=(-x+7)/(x+1)"
+      },
+      {
+        "id": "axis",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-6",
+          "6"
+        ],
+        "color": "WARM",
+        "style": "DASHED",
+        "label": "y=x"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "3",
+          "y": "1",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "1",
+          "y": "3",
+          "coordinates": true
+        }
+      ],
+      "segments": [
+        {
+          "id": "sym",
+          "from": "A",
+          "to": "B"
+        }
+      ]
+    }
+  },
+  "caption": "f(x)=(−x+7)/(x+1)과 y=x를 같이 그린다. (3,1)과 대칭점 (1,3)이 모두 f 위에 있어 f=f⁻¹의 구조를 보인다.",
+  "accessibilityDescription": "직선 y=x에 대해 대칭인 유리함수 곡선 위의 두 점 A(3,1), B(1,3)를 점선 대칭축 양쪽에 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "R7-1",
+      "condition": "f(3)=1, 3a+b=4, f=f⁻¹ ⇒ a=−1,b=7",
+      "mappedTo": "graphPlan.curves[f],graphPlan.overlays.points[A,B]"
+    },
+    {
+      "id": "R7-2",
+      "condition": "y=x에 대한 그래프 자기대칭, 점근선 교점 (−1,−1)",
+      "mappedTo": "graphPlan.curves[axis],graphPlan.curves[f]"
+    }
+  ],
+  "newVisualInformation": [
+    "y=x 대칭 기준과 실제 대응 두 점이 정확하게 같은 함수 위에 놓이는 것을 보인다."
+  ]
+}

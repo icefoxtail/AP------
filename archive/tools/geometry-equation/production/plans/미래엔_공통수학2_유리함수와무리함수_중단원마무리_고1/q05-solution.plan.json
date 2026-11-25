@@ -1,0 +1,94 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -7,
+      4,
+      -8,
+      6
+    ],
+    "curves": [
+      {
+        "id": "original",
+        "kind": "RATIONAL",
+        "numerator": [
+          "1",
+          "-1"
+        ],
+        "denominator": [
+          "3",
+          "1"
+        ],
+        "domain": [
+          "-7",
+          "4"
+        ],
+        "color": "BLUE",
+        "label": "y=4/(x+3)-1"
+      },
+      {
+        "id": "shifted",
+        "kind": "RATIONAL",
+        "numerator": [
+          "-2",
+          "-3"
+        ],
+        "denominator": [
+          "2",
+          "1"
+        ],
+        "domain": [
+          "-7",
+          "4"
+        ],
+        "color": "WARM",
+        "label": "y=4/(x+2)-3"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "S",
+          "x": "-3",
+          "y": "-1",
+          "coordinates": true
+        },
+        {
+          "id": "F",
+          "x": "-2",
+          "y": "-3",
+          "coordinates": true
+        }
+      ],
+      "segments": [
+        {
+          "id": "shift",
+          "from": "S",
+          "to": "F"
+        }
+      ]
+    }
+  },
+  "caption": "원래 점근선 교점 S(−3,−1)과 이동 후 교점 F(−2,−3)를 비교한다. 같은 4/(x−p) 가지를 이동한 벡터는 (1,−2)이다.",
+  "accessibilityDescription": "유리함수 두 곡선과 각 점근선의 교점 S(-3,-1), F(-2,-3)를 표시하고 두 점을 이어 오른쪽 1, 아래 2의 이동을 보여 준다.",
+  "sourceConditions": [
+    {
+      "id": "R5-1",
+      "condition": "원래 y=(−x+1)/(x+3)=4/(x+3)−1",
+      "mappedTo": "graphPlan.curves[original],graphPlan.overlays.points[S]"
+    },
+    {
+      "id": "R5-2",
+      "condition": "이동 후 y=(−3x−2)/(x+2)=4/(x+2)−3, 벡터 (1,−2)",
+      "mappedTo": "graphPlan.curves[shifted],graphPlan.overlays.points[F],graphPlan.overlays.segments[shift]"
+    }
+  ],
+  "newVisualInformation": [
+    "동일 모양 두 그래프의 점근선 교점이 정확히 (1,-2) 이동했음을 비교한다."
+  ]
+}

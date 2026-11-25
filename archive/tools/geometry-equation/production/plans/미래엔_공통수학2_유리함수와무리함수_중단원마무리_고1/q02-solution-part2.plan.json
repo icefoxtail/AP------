@@ -1,0 +1,63 @@
+{
+  "capability": "rational-spike-v1",
+  "graphPlan": {
+    "family": "rational",
+    "numerator": [
+      "3",
+      "2"
+    ],
+    "denominator": [
+      "4",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -9,
+      6
+    ],
+    "viewport": [
+      -9,
+      6,
+      -6,
+      9
+    ],
+    "equalUnits": true,
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "0",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "curveX": "-3/2",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "⑵ y=(2x+3)/(x+4)=−5/(x+4)+2의 두 가지와 점근선 x=−4,y=2, 절편 (0,3/4),(−3/2,0)을 확인한다.",
+  "accessibilityDescription": "x=-4와 y=2를 점근선으로 갖고 왼쪽 위·오른쪽 아래 가지를 가진 유리함수 곡선. 두 절편을 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "R2-3",
+      "condition": "y=(2x+3)/(x+4), x≠−4, y≠2, 점근선 x=−4,y=2",
+      "mappedTo": "graphPlan.numerator,graphPlan.denominator,graphPlan.sourceDomain"
+    },
+    {
+      "id": "R2-4",
+      "condition": "y절편(0,3/4), x절편(-3/2,0)",
+      "mappedTo": "graphPlan.overlays.points[A,B]"
+    }
+  ],
+  "newVisualInformation": [
+    "원문의 둘째 그래프의 두 가지와 두 점근선·절편을 표시한다."
+  ]
+}
