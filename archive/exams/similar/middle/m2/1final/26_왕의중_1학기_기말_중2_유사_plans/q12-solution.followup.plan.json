@@ -1,0 +1,27 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-6, 4, -4, 12],
+    "curves": [
+      {"id": "first", "kind": "LINE", "coefficients": ["8", "2"], "domain": ["-6", "2"], "color": "BLUE", "label": "y=2x+8"},
+      {"id": "second", "kind": "LINE", "coefficients": ["8", "-4"], "domain": ["-1", "4"], "color": "WARM", "label": "y=-4x+8"}
+    ],
+    "axisTickValues": {"x": ["-4", "2"], "y": ["8"]},
+    "overlays": {
+      "points": [
+        {"id": "A", "x": "-4", "y": "0", "coordinates": true},
+        {"id": "B", "x": "0", "y": "8", "coordinates": true},
+        {"id": "C", "x": "2", "y": "0", "coordinates": true}
+      ],
+      "polygons": [{"id": "triangle", "points": ["A", "B", "C"], "fill": "NONE"}]
+    }
+  },
+  "caption": "삼각형의 밑변은 2-(-4)=6, 높이는 8, 넓이는 24이다. 왼쪽 직선의 기울기는 2이므로 a=2.",
+  "accessibilityDescription": "삼각형의 세 꼭짓점 (-4,0), (0,8), (2,0)과 기울기 2 및 -4인 두 직선이 정확히 표시된다.",
+  "sourceConditions": [
+    {"id": "sc1", "condition": "왼쪽 x절편 -8/a와 오른쪽 x절편 2", "mappedTo": ["graphPlan.overlays.points.A", "graphPlan.overlays.points.C", "graphPlan.axisTickValues.x"]},
+    {"id": "sc2", "condition": "밑변 2+8/a, 높이 8, 넓이 24에서 a=2", "mappedTo": ["graphPlan.overlays.polygons.triangle", "graphPlan.curves.first.coefficients", "graphPlan.curves.second.coefficients"]}
+  ],
+  "newVisualInformation": ["밑변 6·높이 8과 넓이 24의 연결", "해설에서 확정된 a=2와 x절편 -4 표시", "삼각형 내부 채움 없음"]
+}

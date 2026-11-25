@@ -1,0 +1,20 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-2, 7, -12, 10],
+    "curves": [
+      {"id": "up", "kind": "LINE", "coefficients": ["-6", "1"], "domain": ["-2", "7"], "color": "BLUE", "label": "y=x-6"},
+      {"id": "down", "kind": "LINE", "coefficients": ["3", "-2"], "domain": ["-2", "7"], "color": "WARM", "label": "y=-2x+3"}
+    ],
+    "axisTickValues": {"x": ["3"], "y": ["-3"]},
+    "overlays": {"points": [{"id": "I", "x": "3", "y": "-3", "coordinates": true}]}
+  },
+  "caption": "y=x-6과 y=-2x+3은 (3,-3)에서 만나므로 a+b=3+(-3)=0이다.",
+  "accessibilityDescription": "증가하는 직선과 감소하는 직선이 점 (3,-3)에서 교차하는 좌표평면.",
+  "sourceConditions": [
+    {"id": "sc1", "condition": "두 일차함수 y=x-6, y=-2x+3", "mappedTo": ["graphPlan.curves.up", "graphPlan.curves.down"]},
+    {"id": "sc2", "condition": "교점 (a,b)=(3,-3)", "mappedTo": ["graphPlan.overlays.points.I", "graphPlan.axisTickValues.x", "graphPlan.axisTickValues.y"]}
+  ],
+  "newVisualInformation": ["두 직선의 교점 위치", "x좌표 양수·y좌표 음수인 교점 읽기"]
+}

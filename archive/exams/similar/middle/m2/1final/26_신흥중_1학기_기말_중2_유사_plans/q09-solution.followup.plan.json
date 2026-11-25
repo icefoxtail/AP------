@@ -1,0 +1,23 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-3, 5, -10, 13],
+    "curves": [
+      {"id": "through", "kind": "LINE", "coefficients": ["7/2", "3/2"], "domain": ["-3", "5"], "color": "BLUE", "label": "y=3x/2+7/2"},
+      {"id": "given", "kind": "LINE", "coefficients": ["-4", "3/2"], "domain": ["-3", "5"], "color": "WARM", "label": "y=3x/2-4"}
+    ],
+    "axisTickValues": {"x": ["-1", "3"], "y": ["2", "8"]},
+    "overlays": {"points": [
+      {"id": "P", "x": "-1", "y": "2", "coordinates": true},
+      {"id": "Q", "x": "3", "y": "8", "coordinates": true}
+    ]}
+  },
+  "caption": "두 점 (-1,2), (3,8)을 잇는 직선의 기울기도 3/2이므로 주어진 y=3x/2-4와 평행하다.",
+  "accessibilityDescription": "기울기 3/2인 평행한 두 직선, 위쪽 직선 위에 (-1,2)와 (3,8)을 표시.",
+  "sourceConditions": [
+    {"id": "sc1", "condition": "한 직선은 (-1,2)와 (3,k)를 지난다", "mappedTo": ["graphPlan.overlays.points.P", "graphPlan.overlays.points.Q"]},
+    {"id": "sc2", "condition": "y=(3/2)x-4와 평행하므로 (k-2)/4=3/2에서 k=8", "mappedTo": ["graphPlan.curves.through.coefficients", "graphPlan.curves.given.coefficients", "graphPlan.axisTickValues.y"]}
+  ],
+  "newVisualInformation": ["두 기울기가 모두 3/2인 평행 관계", "해설에서 정해진 점 (3,8)의 좌표 표시"]
+}
