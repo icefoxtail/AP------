@@ -31,7 +31,7 @@
         "templateKey": "TPL_H1_POLY_OPERATION_DIRECT",
         "crossConceptKeys": [
           "CC_POLYNOMIAL_ADDITION_SUBTRACTION",
-          "CC_COEFFICIENT_COMPARISON"
+          "CC_POLYNOMIAL_EVALUATION"
         ],
         "conditionKeys": [],
         "integrationPattern": "NONE",
@@ -110,11 +110,11 @@
       "after": {
         "standardCourse": "공통수학1",
         "curriculum": "2022",
-        "standardUnitKey": "H22-C-04",
-        "standardUnit": "복소수와 이차방정식",
-        "standardUnitOrder": 4,
-        "subUnitKey": "H22-C-04-COMPLEX_ROOT",
-        "subUnit": "복소수와 이차방정식",
+        "standardUnitKey": "H22-C-05",
+        "standardUnit": "이차방정식과 이차함수",
+        "standardUnitOrder": 5,
+        "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
+        "subUnit": "이차방정식",
         "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
         "templateKey": "TPL_H1_VIETA_SYMMETRIC_VALUE",
         "crossConceptKeys": [
@@ -244,16 +244,16 @@
       "after": {
         "standardCourse": "공통수학1",
         "curriculum": "2022",
-        "standardUnitKey": "H22-C-03",
-        "standardUnit": "인수분해",
-        "standardUnitOrder": 3,
-        "subUnitKey": "H22-C-03-FACTORIZATION",
-        "subUnit": "인수분해",
+        "standardUnitKey": "H22-C-01",
+        "standardUnit": "다항식의 연산",
+        "standardUnitOrder": 1,
+        "subUnitKey": "H22-C-01-POLYNOMIAL_BASIC",
+        "subUnit": "다항식의 연산",
         "problemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
         "templateKey": "TPL_H1_POLY_COEFFICIENT_EXTRACTION",
         "crossConceptKeys": [
           "CC_COEFFICIENT_EXTRACTION_SELECTIVE",
-          "CC_POLYNOMIAL_FACTORIZATION"
+          "CC_POLYNOMIAL_MULTIPLICATION"
         ],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
@@ -269,7 +269,7 @@
           "createdAt": "2026-11-25",
           "createdAtSource": "GPT direct authored"
         },
-        "rpmPrimaryRecordId": "H1-RPM-152",
+        "rpmPrimaryRecordId": "H1-RPM-137",
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL"
@@ -288,11 +288,11 @@
       "after": {
         "standardCourse": "공통수학1",
         "curriculum": "2022",
-        "standardUnitKey": "H22-C-04",
-        "standardUnit": "복소수와 이차방정식",
-        "standardUnitOrder": 4,
-        "subUnitKey": "H22-C-04-COMPLEX_ROOT",
-        "subUnit": "복소수와 이차방정식",
+        "standardUnitKey": "H22-C-05",
+        "standardUnit": "이차방정식과 이차함수",
+        "standardUnitOrder": 5,
+        "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
+        "subUnit": "이차방정식",
         "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
         "templateKey": "TPL_H1_VIETA_TRANSFORMED_ROOT",
         "crossConceptKeys": [
@@ -433,7 +433,6 @@
         "templateKey": "TPL_H1_HIGHER_SUBSTITUTION_REDUCTION",
         "crossConceptKeys": [
           "CC_VARIABLE_SUBSTITUTION",
-          "CC_DISCRIMINANT_APPLICATION",
           "CC_SYMMETRIC_SUM_PRODUCT"
         ],
         "conditionKeys": [],
@@ -474,11 +473,11 @@
         "standardUnitOrder": 2,
         "subUnitKey": "H22-C-02-CORE",
         "subUnit": "항등식과 나머지 정리 핵심 개념",
-        "problemTypeKey": "PT_H1_POLY_DIVISION",
-        "templateKey": "TPL_H1_POLY_DIVISION_EXECUTION",
+        "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+        "templateKey": "TPL_H1_REMAINDER_COMPOSITE_DIVISOR",
         "crossConceptKeys": [
           "CC_DIVISION_ALGORITHM",
-          "CC_POLYNOMIAL_DEGREE_INFERENCE"
+          "CC_REMAINDER_SUBSTITUTION"
         ],
         "conditionKeys": [],
         "integrationPattern": "INTERDEPENDENT",
@@ -494,7 +493,7 @@
           "createdAt": "2026-11-25",
           "createdAtSource": "GPT direct authored"
         },
-        "rpmPrimaryRecordId": "H1-RPM-139",
+        "rpmPrimaryRecordId": "H1-RPM-143",
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL"
@@ -847,10 +846,10 @@
         "templateKey": "TPL_H1_FACTORIZATION_APPLICATION",
         "crossConceptKeys": [
           "CC_TRIANGLE_SIDE_FACTORIZATION",
-          "CC_ISOSCELES_CONVERSE"
+          "CC_PYTHAGOREAN"
         ],
         "conditionKeys": [
-          "COND_POSITIVE"
+          "COND_INEQUALITY_CONSTRAINT"
         ],
         "integrationPattern": "SEQUENTIAL",
         "difficultyBucket": 3,
@@ -893,12 +892,10 @@
         "templateKey": "TPL_H1_FORMULA_SYMMETRIC",
         "crossConceptKeys": [
           "CC_TWO_VARIABLE_SQUARE_SUM_IDENTITY",
-          "CC_CUBIC_FACTORIZATION_DIFFERENCE",
+          "CC_CUBIC_SUM_FORMULA",
           "CC_CUBIC_SUM_SYMMETRIC_EVALUATION"
         ],
-        "conditionKeys": [
-          "COND_POSITIVE"
-        ],
+        "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
         "difficultyBucket": 3,
         "sourceQid": 20,
@@ -984,8 +981,8 @@
         "templateKey": "TPL_H1_QUADRATIC_INTERSECTION_TANGENCY",
         "crossConceptKeys": [
           "CC_QUADRATIC_LINE_INTERSECTION_EQUATION",
-          "CC_PARABOLA_LINE_TANGENCY",
-          "CC_TANGENT_LINE_DISCRIMINANT"
+          "CC_PIECEWISE_FUNCTION",
+          "CC_GRAPH_INTERSECTION_COUNT"
         ],
         "conditionKeys": [
           "COND_EXACT_INTERSECTION_COUNT",
