@@ -1,0 +1,370 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "TL",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-14"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "TM",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "TR",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "14"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "RM",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "14"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "BR",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "14"
+            },
+            {
+              "kind": "integer",
+              "value": "-12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "BM",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "BL",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-14"
+            },
+            {
+              "kind": "integer",
+              "value": "-12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "LM",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-14"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "TL",
+    "TM",
+    "TR",
+    "RM",
+    "BR",
+    "BM",
+    "BL",
+    "LM",
+    "O"
+  ],
+  "hiddenPointNames": [
+    "TL",
+    "TM",
+    "TR",
+    "RM",
+    "BR",
+    "BM",
+    "BL",
+    "LM",
+    "O"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "topLeft",
+      "refs": [
+        "TL",
+        "TM"
+      ]
+    },
+    {
+      "id": "topRight",
+      "refs": [
+        "TM",
+        "TR"
+      ]
+    },
+    {
+      "id": "rightTop",
+      "refs": [
+        "TR",
+        "RM"
+      ]
+    },
+    {
+      "id": "rightBottom",
+      "refs": [
+        "RM",
+        "BR"
+      ]
+    },
+    {
+      "id": "bottomRight",
+      "refs": [
+        "BR",
+        "BM"
+      ]
+    },
+    {
+      "id": "bottomLeft",
+      "refs": [
+        "BM",
+        "BL"
+      ]
+    },
+    {
+      "id": "leftBottom",
+      "refs": [
+        "BL",
+        "LM"
+      ]
+    },
+    {
+      "id": "leftTop",
+      "refs": [
+        "LM",
+        "TL"
+      ]
+    },
+    {
+      "id": "horizontalLeft",
+      "refs": [
+        "LM",
+        "O"
+      ]
+    },
+    {
+      "id": "horizontalRight",
+      "refs": [
+        "O",
+        "RM"
+      ]
+    },
+    {
+      "id": "verticalTop",
+      "refs": [
+        "TM",
+        "O"
+      ]
+    },
+    {
+      "id": "verticalBottom",
+      "refs": [
+        "O",
+        "BM"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "textLabels": [
+      {
+        "id": "regionA",
+        "at": [
+          -7,
+          6
+        ],
+        "text": "A",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "regionB",
+        "at": [
+          -7,
+          -6
+        ],
+        "text": "B",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "regionC",
+        "at": [
+          7,
+          -6
+        ],
+        "text": "C",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "regionD",
+        "at": [
+          7,
+          6
+        ],
+        "text": "D",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "인접한 영역을 서로 다른 색으로 칠하는 네 구획 A, B, C, D",
+  "accessibilityDescription": "하나의 큰 사각형을 세로와 가로의 경계로 네 영역으로 나누었다. 왼쪽 위가 A, 왼쪽 아래가 B, 오른쪽 아래가 C, 오른쪽 위가 D다. 공통 경계를 갖는 쌍은 A-B, B-C, C-D, D-A뿐이고 A-C 및 B-D는 꼭짓점만 만나므로 인접하지 않는다. 실제 색과 경우의 수 정답은 표시하지 않았다.",
+  "sourceQuote": "같은 색을 중복하여 사용할 수 있으나 인접한 영역은 서로 다른 색",
+  "sourceConditions": [
+    {
+      "id": "P1",
+      "condition": "원문 q06.png는 위 왼쪽 A, 아래 왼쪽 B, 아래 오른쪽 C, 위 오른쪽 D의 네 영역이다.",
+      "mappedTo": "planeMarks.textLabels[regionA,regionB,regionC,regionD]와 외곽 8개·중앙 4개 displaySegments"
+    },
+    {
+      "id": "P2",
+      "condition": "A와 B, B와 C, C와 D, D와 A는 각각 선을 공유하여 인접한다.",
+      "mappedTo": "displaySegments[horizontalLeft,verticalBottom,horizontalRight,verticalTop] 각각이 정확히 두 해당 영역의 공통 경계"
+    },
+    {
+      "id": "P3",
+      "condition": "A와 C, B와 D는 대각선상이며 변을 공유하지 않는다.",
+      "mappedTo": "각 쌍은 중앙점 O에서 꼭짓점만 만남; 서로를 직접 잇는 경계선 없음"
+    },
+    {
+      "id": "P4",
+      "condition": "빨강·파랑·노랑·검정 네 색을 이용하지만 색 배치는 미정이며 경우의 수를 묻는다.",
+      "mappedTo": "원문에 고정 색칠이 없어 모든 영역 흰 바탕, 색 배정과 정답 숫자는 없음"
+    },
+    {
+      "id": "P5",
+      "condition": "원문 경계는 장식적 곡선이며 위상적 인접 관계만 문제의 입력이다.",
+      "mappedTo": "곡선 대신 직선 2x2 경계로 위상과 4-사이클 인접성이 일치; 길이·각·비율 표식 없음"
+    }
+  ],
+  "newVisualInformation": [
+    "문항의 색칠 조건을 결정하는 네 영역의 정확한 인접 순환(A-B-C-D-A)을 제시한다."
+  ]
+}

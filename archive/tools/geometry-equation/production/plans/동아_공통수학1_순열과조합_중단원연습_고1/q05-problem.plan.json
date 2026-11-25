@@ -1,0 +1,513 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-16"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "J",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "14"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-14"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "16"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "GJ1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-10"
+            },
+            {
+              "kind": "integer",
+              "value": "9"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "GJ2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-8"
+            },
+            {
+              "kind": "integer",
+              "value": "7"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "GJ3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "GF1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-10"
+            },
+            {
+              "kind": "integer",
+              "value": "-9"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "GF2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "-5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "JH1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "JH2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "FH1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "-8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "FH2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "-10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "G",
+    "J",
+    "F",
+    "H",
+    "GJ1",
+    "GJ2",
+    "GJ3",
+    "GF1",
+    "GF2",
+    "JH1",
+    "JH2",
+    "FH1",
+    "FH2"
+  ],
+  "hiddenPointNames": [
+    "G",
+    "J",
+    "F",
+    "H",
+    "GJ1",
+    "GJ2",
+    "GJ3",
+    "GF1",
+    "GF2",
+    "JH1",
+    "JH2",
+    "FH1",
+    "FH2"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "garden1a",
+      "refs": [
+        "G",
+        "GJ1"
+      ]
+    },
+    {
+      "id": "garden1b",
+      "refs": [
+        "GJ1",
+        "J"
+      ]
+    },
+    {
+      "id": "garden2a",
+      "refs": [
+        "G",
+        "GJ2"
+      ]
+    },
+    {
+      "id": "garden2b",
+      "refs": [
+        "GJ2",
+        "J"
+      ]
+    },
+    {
+      "id": "garden3a",
+      "refs": [
+        "G",
+        "GJ3"
+      ]
+    },
+    {
+      "id": "garden3b",
+      "refs": [
+        "GJ3",
+        "J"
+      ]
+    },
+    {
+      "id": "fountain1a",
+      "refs": [
+        "G",
+        "GF1"
+      ]
+    },
+    {
+      "id": "fountain1b",
+      "refs": [
+        "GF1",
+        "F"
+      ]
+    },
+    {
+      "id": "fountain2a",
+      "refs": [
+        "G",
+        "GF2"
+      ]
+    },
+    {
+      "id": "fountain2b",
+      "refs": [
+        "GF2",
+        "F"
+      ]
+    },
+    {
+      "id": "rearGarden1a",
+      "refs": [
+        "J",
+        "JH1"
+      ]
+    },
+    {
+      "id": "rearGarden1b",
+      "refs": [
+        "JH1",
+        "H"
+      ]
+    },
+    {
+      "id": "rearGarden2a",
+      "refs": [
+        "J",
+        "JH2"
+      ]
+    },
+    {
+      "id": "rearGarden2b",
+      "refs": [
+        "JH2",
+        "H"
+      ]
+    },
+    {
+      "id": "rearFountain1a",
+      "refs": [
+        "F",
+        "FH1"
+      ]
+    },
+    {
+      "id": "rearFountain1b",
+      "refs": [
+        "FH1",
+        "H"
+      ]
+    },
+    {
+      "id": "rearFountain2a",
+      "refs": [
+        "F",
+        "FH2"
+      ]
+    },
+    {
+      "id": "rearFountain2b",
+      "refs": [
+        "FH2",
+        "H"
+      ]
+    },
+    {
+      "id": "betweenGardenFountain",
+      "refs": [
+        "J",
+        "F"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "textLabels": [
+      {
+        "id": "entrance",
+        "at": [
+          -21,
+          0
+        ],
+        "text": "정문",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "garden",
+        "at": [
+          0,
+          19
+        ],
+        "text": "정원",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "fountain",
+        "at": [
+          0,
+          -19
+        ],
+        "text": "분수",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "exit",
+        "at": [
+          21,
+          0
+        ],
+        "text": "후문",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "정문·정원·분수·후문 사이의 산책로 연결 그림",
+  "accessibilityDescription": "왼쪽 정문과 위쪽 정원 사이에 세 갈래 산책로, 정문과 아래쪽 분수 사이에 두 갈래 산책로가 있다. 정원과 분수 사이는 하나의 길로 연결되고, 정원과 오른쪽 후문 사이에 두 갈래, 분수와 후문 사이에 두 갈래 길이 있다. 전체 경로 수와 정답은 나타내지 않았다.",
+  "sourceQuote": "정문에서 정원, 분수를 모두 거쳐 후문으로 가는 경우의 수",
+  "sourceConditions": [
+    {
+      "id": "P1",
+      "condition": "원본 q05.png의 정문·정원·분수·후문은 각기 구분된 네 곳이다.",
+      "mappedTo": "nodes[G,J,F,H]의 왼쪽·위·아래·오른쪽 위치 및 planeMarks.textLabels[entrance,garden,fountain,exit] 실제 평문"
+    },
+    {
+      "id": "P2",
+      "condition": "정문-정원 산책로는 세 갈래이다.",
+      "mappedTo": "displaySegments[garden1a,b;garden2a,b;garden3a,b]의 서로 다른 3개 연속 두 선분 경로"
+    },
+    {
+      "id": "P3",
+      "condition": "정문-분수 산책로는 두 갈래이다.",
+      "mappedTo": "displaySegments[fountain1a,b;fountain2a,b]의 서로 다른 2개 경로"
+    },
+    {
+      "id": "P4",
+      "condition": "정원-분수 사이 길은 하나이다.",
+      "mappedTo": "displaySegments[betweenGardenFountain] 하나"
+    },
+    {
+      "id": "P5",
+      "condition": "정원-후문 길 두 갈래, 분수-후문 길 두 갈래이다.",
+      "mappedTo": "displaySegments[rearGarden1a,b;rearGarden2a,b;rearFountain1a,b;rearFountain2a,b]의 각 두 경로"
+    },
+    {
+      "id": "P6",
+      "condition": "원문의 길은 곡선 형태지만 각 길의 존재와 연결 개수가 수학 조건이다.",
+      "mappedTo": "각 독립 경로를 정확한 꺾은 선 2개로 그려 동일한 다중간선 연결을 유지; 눈금·거리·각·면 채움 없음"
+    },
+    {
+      "id": "P7",
+      "condition": "정답 10은 산책로 조합의 결과이며 문제 그림에 적으면 안 된다.",
+      "mappedTo": "경로 수를 써 넣은 숫자 라벨과 선택된 경로 색 강조 없이 네 장소 이름만 표기"
+    }
+  ],
+  "newVisualInformation": [
+    "네 지점 사이의 다중 산책로 연결 관계를 모두 나타내되 실제 경로 수의 답은 노출하지 않는다."
+  ]
+}
