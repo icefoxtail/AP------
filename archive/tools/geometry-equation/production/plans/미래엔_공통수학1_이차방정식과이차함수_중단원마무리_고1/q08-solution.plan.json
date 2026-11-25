@@ -1,0 +1,21 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": ["5", "12", "3"],
+    "sourceDomain": { "kind": "INTERVAL", "range": [-3, 1], "states": ["CLOSED", "CLOSED"] },
+    "domain": [-3, 1],
+    "viewport": [-4, 2, -9, 22],
+    "requiredPoints": [{ "id": "L", "x": -3, "y": -4 }, { "id": "V", "x": -2, "y": -7 }, { "id": "R", "x": 1, "y": 20 }],
+    "axisTickValues": { "x": [], "y": [] }
+  },
+  "sourceQuote": "$-3\\le x\\le 1$일 때, 이차함수 $y=3x^2+12x+a$의 최댓값이 $20$이다.",
+  "caption": "최댓값 20에서 a=5를 구한 뒤 실제 포물선 y=3x²+12x+5를 닫힌 구간 [-3,1]에 그린 것으로 최솟값은 꼭짓점 (-2,-7)이다.",
+  "accessibilityDescription": "닫힌 구간 -3≤x≤1에서 위로 열린 포물선은 (-3,-4)에서 시작해 (-2,-7)에서 가장 낮아지고 (1,20)에서 끝난다.",
+  "sourceConditions": [
+    { "id": "C1", "condition": "y=3(x+2)²−12+a, [-3,1]의 최댓값은 x=1에서 15+a=20 → a=5", "mappedTo": "graphPlan.coefficients=[5,12,3], sourceDomain=[-3,1], requiredPoints[R]=(1,20)" },
+    { "id": "C2", "condition": "a=5이면 꼭짓점 (-2,-7)이 정의구간 안에 있음", "mappedTo": "graphPlan.requiredPoints[V]=(-2,-7)" },
+    { "id": "C3", "condition": "왼쪽 끝에서 f(-3)=-4", "mappedTo": "graphPlan.requiredPoints[L]=(-3,-4)" }
+  ],
+  "newVisualInformation": ["최댓값이 오른쪽 끝에서, 최솟값이 구간 내부 꼭짓점에서 생기는 이유를 보여 준다."]
+}
