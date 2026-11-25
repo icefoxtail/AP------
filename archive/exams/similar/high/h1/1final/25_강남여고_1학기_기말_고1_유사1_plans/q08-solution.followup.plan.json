@@ -1,0 +1,45 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-2",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "6",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "integerPoints": true
+      }
+    ]
+  },
+  "caption": "f(x-1)<0은 -2<x<6이고 정수해의 합은 14이다.",
+  "accessibilityDescription": "f(x-1)<0은 -2<x<6이고 정수해의 합은 14이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f(x-1)=(x-6)(x+2)<0",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "정수해는 -1,0,1,2,3,4,5",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 근 사이의 열린 구간과 해당 정수점"
+  ]
+}

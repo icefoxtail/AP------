@@ -1,0 +1,79 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "5",
+      "-6",
+      "1"
+    ],
+    "domain": [
+      -1,
+      7
+    ],
+    "viewport": [
+      -1,
+      7,
+      -6,
+      7
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 3,
+        "y": -4
+      },
+      {
+        "id": "R1",
+        "x": 1,
+        "y": 0
+      },
+      {
+        "id": "R2",
+        "x": 5,
+        "y": 0
+      },
+      {
+        "id": "Y",
+        "x": 0,
+        "y": 5
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "꼭짓점 (3,-4)와 두 근 1, 5로부터 y=x²-6x+5이고 y절편은 5이다.",
+  "accessibilityDescription": "꼭짓점 (3,-4)와 두 근 1, 5로부터 y=x²-6x+5이고 y절편은 5이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "꼭짓점 (3,-4)",
+      "mappedTo": [
+        "V"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "두 근의 거리는 4이고 중점은 3",
+      "mappedTo": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "f(0)=5",
+      "mappedTo": [
+        "Y"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "아래로 내려간 꼭짓점과 대칭인 두 실근, 함수의 y절편"
+  ]
+}

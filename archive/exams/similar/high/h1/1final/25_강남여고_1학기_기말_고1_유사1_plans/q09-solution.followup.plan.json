@@ -1,0 +1,73 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "5",
+      "4",
+      "-1"
+    ],
+    "domain": [
+      -2,
+      6
+    ],
+    "viewport": [
+      -2,
+      6,
+      -2,
+      11
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "Y",
+        "x": 0,
+        "y": 5
+      },
+      {
+        "id": "V",
+        "x": 2,
+        "y": 9
+      },
+      {
+        "id": "R1",
+        "x": -1,
+        "y": 0
+      },
+      {
+        "id": "R2",
+        "x": 5,
+        "y": 0
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "조건을 만족하는 포물선의 한 예시다. 꼭짓점의 x좌표가 2이면 두 근의 합은 항상 4다.",
+  "accessibilityDescription": "조건을 만족하는 포물선의 한 예시다. 꼭짓점의 x좌표가 2이면 두 근의 합은 항상 4다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "주어진 y절편 (0,5)",
+      "mappedTo": [
+        "Y"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "꼭짓점의 x좌표가 2이므로 대칭축 x=2",
+      "mappedTo": [
+        "V",
+        "R1",
+        "R2"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "조건에 맞는 대표 이차함수의 대칭축과 근의 대칭 배치"
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "0",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "6",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "integerPoints": true
+      }
+    ]
+  },
+  "caption": "|2x-3|<x+3의 해는 0<x<6이고 정수해는 1부터 5까지다.",
+  "accessibilityDescription": "|2x-3|<x+3의 해는 0<x<6이고 정수해는 1부터 5까지다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "절댓값 부등식에서 0<x<6",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "정수해 1,2,3,4,5",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 열린 끝점과 내부 정수점 표시"
+  ]
+}

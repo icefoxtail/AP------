@@ -1,0 +1,192 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "K",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "16",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "8",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_THROUGH_POINT",
+        "inputs": [
+          "K",
+          "P"
+        ],
+        "args": {},
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [
+    "k"
+  ],
+  "displaySegments": [
+    {
+      "id": "sKP",
+      "refs": [
+        "K",
+        "P"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "K",
+    "P",
+    "Q",
+    "E",
+    "F"
+  ],
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 410
+  },
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "rKP",
+        "ownerSegment": "sKP",
+        "text": "2"
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "E",
+    "F"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "중심이 (2,0), 반지름이 2인 원을 직선 2x+y=8이 서로 다른 두 점에서 가로지른다.",
+  "accessibilityDescription": "중심이 (2,0), 반지름이 2인 원을 직선 2x+y=8이 서로 다른 두 점에서 가로지른다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원 (x-2)²+y²=4",
+      "mappedTo": [
+        "K",
+        "sKP",
+        "rKP",
+        "k"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "직선 2x+y=8과의 두 교점 (4,0), (16/5,8/5)",
+      "mappedTo": [
+        "sEF",
+        "P",
+        "Q"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "정수 k의 최댓값 8에서 실제 서로 다른 두 교점과 중심·반지름"
+  ]
+}

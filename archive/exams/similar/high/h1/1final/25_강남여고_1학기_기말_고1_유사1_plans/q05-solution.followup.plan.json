@@ -1,0 +1,56 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "-3",
+      "8",
+      "-2"
+    ],
+    "domain": [
+      -1,
+      5
+    ],
+    "viewport": [
+      -1,
+      5,
+      -5,
+      7
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 2,
+        "y": 5
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "y=-2(x-2)²+5는 아래로 열린 포물선이고 꼭짓점 (2,5)에서 최댓값 5를 갖는다.",
+  "accessibilityDescription": "y=-2(x-2)²+5는 아래로 열린 포물선이고 꼭짓점 (2,5)에서 최댓값 5를 갖는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "주어진 이차함수 y=-2x²+8x-3",
+      "mappedTo": [
+        "graphPlan.coefficients"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "꼭짓점 (2,5)와 최댓값 5",
+      "mappedTo": [
+        "V"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "아래로 열린 그래프와 정확한 꼭짓점·대칭축"
+  ]
+}
