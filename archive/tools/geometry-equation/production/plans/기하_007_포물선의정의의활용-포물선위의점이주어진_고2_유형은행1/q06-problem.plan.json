@@ -1,0 +1,11 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"PARABOLA","vertex":["2","1"],"p":"2","axis":"X"},
+  "points":[{"id":"F","kind":"FOCUS"},{"id":"P","kind":"ON_CONIC","x":"8","branch":"POS"},{"id":"H","kind":"FOOT","from":"P","onto":"d","rightAngle":true}],
+  "lines":[{"id":"d","role":"DIRECTRIX","label":"l"}],
+  "segments":[{"id":"PH","from":"P","to":"H"},{"id":"HF","from":"H","to":"F"},{"id":"FP","from":"F","to":"P"}],
+  "caption":"꼭짓점 (2,1), 초점 F(4,1), 준선 l:x=0인 포물선과 정삼각형 PHF",
+  "accessibilityDescription":"포물선의 위쪽 점 P에서 준선 l로 내린 수선의 발 H와 초점 F를 이어 PH=HF=FP인 정삼각형을 나타낸다.",
+  "sourceConditions":[{"id":"c1","condition":"(y-1)²=8(x-2)의 꼭짓점 (2,1), 초점 (4,1), 준선 x=0이다.","mappedTo":["conic","F","d"]},{"id":"c2","condition":"내부 배치 P=(8,1+4√3), H=(0,1+4√3)에서 세 변은 모두 8이고 답인 P의 x좌표는 표시하지 않는다.","mappedTo":["P","H","PH","HF","FP"]}],
+  "newVisualInformation":["준선과 수선 PH 및 정삼각형의 상대 위치"]
+}
