@@ -1,0 +1,301 @@
+{
+  "schemaVersion": "similar-exam-review-receipt-v2",
+  "examUid": "26_제일고_1학기_중간_고2_대수_유사2",
+  "candidateGitBlobSha1": "f17e28532e3e6d8df2ebba5a710ed4f35d242322",
+  "createdAt": "2026-11-25",
+  "signOffStatus": "REVIEW_REQUIRED",
+  "overallVerdict": "BLOCKED_REQUIRED_VISUAL",
+  "author": "GPT authoring agents",
+  "reviewerRole": "SEPARATE_AGENT_BLIND_PROBLEM_ONLY",
+  "independenceLevel": "I2_SEPARATE_AGENT_BLIND_PROBLEM_ONLY",
+  "independentHumanOrModelReviewer": "SEPARATE_AGENT_23_OF_23_FROZEN",
+  "approval": "NOT_CLAIMED",
+  "notes": [
+    "A separate-context blind reviewer saw only the student statements, options and Q17 visible graph features; no authored answers, solutions, metadata or ledger. All 23 were independently solved. Multiple-answer and unsatisfiable findings: none.",
+    "This is mathematical independent review only, not independent human release approval.",
+    "Q17 REQUIRED problem graph: full plan lint passed, but official renderer Chromium launch hit Operation not permitted; no rendered image or student visual QA. Main operational merge prohibited until resolved.",
+    "PT/TPL and subject binding independently cross-checked; Q05 unit key corrected. Four-slot assignments independently cross-checked."
+  ],
+  "blindFirstPass": {
+    "method": "Read only id, content, choices and questionType projected from window.questionBank in an isolated Node VM. Did not read or compare target author answer, solution, metadata or ledger. Q17 student-facing graph features were supplied separately by the review coordinator; no solution information was supplied.",
+    "totalSolved": 23,
+    "answerMatches": 23,
+    "answerMismatches": 0,
+    "frozenAnswers": {
+      "1": 3,
+      "2": 2,
+      "3": 4,
+      "4": 1,
+      "5": 4,
+      "6": 2,
+      "7": 4,
+      "8": 1,
+      "9": 1,
+      "10": 2,
+      "11": 1,
+      "12": 5,
+      "13": 2,
+      "14": 3,
+      "15": 4,
+      "16": 3,
+      "17": 1,
+      "18": 3,
+      "19": 3,
+      "20": "General angle -π/6+2kπ (equivalently 11π/6+2kπ), k∈Z; quadrant IV.",
+      "21": "-√3<tan θ<√3",
+      "22": "11",
+      "23": "52 ordered pairs"
+    },
+    "findings": {
+      "fullySolved": 23,
+      "multipleCorrectChoicesDetected": [],
+      "unsatisfiableOrIllPosedDetected": [],
+      "importantBoundaryChecks": [
+        "Q19 n=12 has an excluded intersection on the x-axis at x=6; only three are strictly in quadrant IV.",
+        "Q21 requires strict negative discriminant, so tan endpoints ±√3 are excluded.",
+        "Q23 left piece is x<-2, so y=1 is not attained on it; right branch approaches 4 as x→∞ but does not attain 4 on the right ascending arm."
+      ]
+    }
+  },
+  "questionReviews": [
+    {
+      "qid": 1,
+      "blindAnswer": "3",
+      "blindChoiceIndex": 3,
+      "candidateAnswer": "③",
+      "blindMatch": true,
+      "blindDerivation": "Cube root of 250 is 5*cuberoot(2); sqrt(cuberoot(4)) is cuberoot(2). Hence 5-a=2 and a=3."
+    },
+    {
+      "qid": 2,
+      "blindAnswer": "40",
+      "blindChoiceIndex": 2,
+      "candidateAnswer": "②",
+      "blindMatch": true,
+      "blindDerivation": "Combining common logarithms gives log((x/5)*(9/6))=log(12); therefore 3x/10=12 and x=40."
+    },
+    {
+      "qid": 3,
+      "blindAnswer": "A=B=-C",
+      "blindChoiceIndex": 4,
+      "candidateAnswer": "④",
+      "blindMatch": true,
+      "blindDerivation": "For t<0, the principal even roots give A=|t|=-t and B=sqrt(t^2)=|t|=-t, whereas C=t^(4*(1/4))=t."
+    },
+    {
+      "qid": 4,
+      "blindAnswer": "12π",
+      "blindChoiceIndex": 1,
+      "candidateAnswer": "①",
+      "blindMatch": true,
+      "blindDerivation": "For radius r and central angle 2π/3, sector area S=rl/2. The condition S=9l yields r=18, so l=r*(2π/3)=12π."
+    },
+    {
+      "qid": 5,
+      "blindAnswer": "20",
+      "blindChoiceIndex": 4,
+      "candidateAnswer": "④",
+      "blindMatch": true,
+      "blindDerivation": "The argument is positive for 1<x<9. The base 8-x must be positive and unequal to 1, giving x<8 and x≠7. Allowed integers are 2,3,4,5,6, whose sum is 20."
+    },
+    {
+      "qid": 6,
+      "blindAnswer": "-5/12",
+      "blindChoiceIndex": 2,
+      "candidateAnswer": "②",
+      "blindMatch": true,
+      "blindDerivation": "In 3π/4<θ<π, sine is positive and cosine negative, with |cos θ|>|sin θ|. Using (sin θ-cos θ)^2=1-2sin θ cos θ=(17/13)^2 gives sin θ cos θ=-60/169. The compatible pair is sin θ=5/13, cos θ=-12/13, so tan θ=-5/12."
+    },
+    {
+      "qid": 7,
+      "blindAnswer": "4",
+      "blindChoiceIndex": 4,
+      "candidateAnswer": "④",
+      "blindMatch": true,
+      "blindDerivation": "Divide 2xy+xz-yz=xyz by xyz to obtain 2/z+1/y-1/x=1. From common k, 1/x=log_k 4, 1/y=log_k 9 and 1/z=log_k 6. Thus log_k(6^2*9/4)=1, so k=81 and log_3 k=4."
+    },
+    {
+      "qid": 8,
+      "blindAnswer": "The statement that the graph passes through (7,4) is false.",
+      "blindChoiceIndex": 1,
+      "candidateAnswer": "①",
+      "blindMatch": true,
+      "blindDerivation": "The asymptote gives a=3, and f(5)=2 gives b=1. Hence f(x)=log_2(x-3)+1, and f(7)=log_2 4+1=3, not 4. The other four statements hold."
+    },
+    {
+      "qid": 9,
+      "blindAnswer": "10^3",
+      "blindChoiceIndex": 1,
+      "candidateAnswer": "①",
+      "blindMatch": true,
+      "blindDerivation": "Subtracting the two decibel equations gives 65-35=10 log(I_1/I_2), so log(I_1/I_2)=3 and I_1/I_2=10^3."
+    },
+    {
+      "qid": 10,
+      "blindAnswer": "(15-√5)/10",
+      "blindChoiceIndex": 2,
+      "candidateAnswer": "②",
+      "blindMatch": true,
+      "blindDerivation": "Write r=log_a b>1. Then r+1/r=3 gives r=(3+√5)/2. The requested logarithm equals (2+r)/(1+r)=(15-√5)/10."
+    },
+    {
+      "qid": 11,
+      "blindAnswer": "1",
+      "blindChoiceIndex": 1,
+      "candidateAnswer": "①",
+      "blindMatch": true,
+      "blindDerivation": "Put u=2^x+2^(-x)≥2. Then f=u^2-6u+7=(u-3)^2-2. At u=3 the minimum is m=-2 and 2^p+2^(-p)=3, making the requested sum 1."
+    },
+    {
+      "qid": 12,
+      "blindAnswer": "243",
+      "blindChoiceIndex": 5,
+      "candidateAnswer": "⑤",
+      "blindMatch": true,
+      "blindDerivation": "Since g is inverse to f, f(3)=2 and f(27)=5. Thus k+p=2 and 3k+p=5, yielding k=3/2, p=1/2. The equation f(x)=8 gives log_3 x=5, so g(8)=3^5=243."
+    },
+    {
+      "qid": 13,
+      "blindAnswer": "The claimed smallest positive asymptote x=π/6 is false.",
+      "blindChoiceIndex": 2,
+      "candidateAnswer": "②",
+      "blindMatch": true,
+      "blindDerivation": "For tan(3x+π/6), the vertical asymptotes satisfy 3x+π/6=π/2+kπ, i.e. x=π/9+kπ/3. The smallest positive one is π/9, not π/6. The other claims check out."
+    },
+    {
+      "qid": 14,
+      "blindAnswer": "-4",
+      "blindChoiceIndex": 3,
+      "candidateAnswer": "③",
+      "blindMatch": true,
+      "blindDerivation": "f(x)=-(x-3)^2+10 has maximum 10 on [0,5]. Since log_2 is increasing, M=log_2(10+7)=log_2 17. Since log_(1/3) is decreasing, m=log_(1/3)(10+6)=-log_3 16. Their product is -log_2 17*log_3 16=-4log_3 17."
+    },
+    {
+      "qid": 15,
+      "blindAnswer": "6√13/13",
+      "blindChoiceIndex": 4,
+      "candidateAnswer": "④",
+      "blindMatch": true,
+      "blindDerivation": "Putting y=1-x into x^2+y^2=13 gives (x-3)(x+2)=0. Hence P=(-2,3) in quadrant II and Q=(3,-2) in quadrant IV. Both sin θ_1 and cos θ_2 equal 3/√13, so their sum is 6√13/13."
+    },
+    {
+      "qid": 16,
+      "blindAnswer": "12 points",
+      "blindChoiceIndex": 3,
+      "candidateAnswer": "③",
+      "blindMatch": true,
+      "blindDerivation": "The circle is x^2+(y-4)^2=4, with center distance 4 and radius 2. Its origin distances OP cover [2,6]. For 2^(OP/2) to be a natural number, its integer value must be 2,3,4,5,6,7 or 8. Distances 2 and 6 occur at one point each; each of the other five distances at two points, totaling 1+5*2+1=12."
+    },
+    {
+      "qid": 17,
+      "blindAnswer": "-3π",
+      "blindChoiceIndex": 1,
+      "candidateAnswer": "①",
+      "blindMatch": true,
+      "blindDerivation": "The student-facing graph has centerline y=1, maximum 4, minimum -2, consecutive maxima at x=-π/18 and x=11π/18, and minimum at x=5π/18. The negative amplitude is a=-3. Peak separation is 2π/3, so b=3. Since the negative-amplitude sine has a minimum when bx-c=π/2 modulo 2π, at x=5π/18 we get 5π/6-c=π/2, hence c=π/3 (the permitted 0<c<π). Therefore abc=(-3)*3*(π/3)=-3π."
+    },
+    {
+      "qid": 18,
+      "blindAnswer": "3",
+      "blindChoiceIndex": 3,
+      "candidateAnswer": "③",
+      "blindMatch": true,
+      "blindDerivation": "At y=0 the two x-coordinates are 3±1/2, separated by 1. At y=k the two x-coordinates are 3±2^(k-1), separated by 2^k. These are horizontal parallel sides of a trapezoid of height k, with area k(1+2^k)/2=27/2. The positive integer solution is k=3."
+    },
+    {
+      "qid": 19,
+      "blindAnswer": "42",
+      "blindChoiceIndex": 3,
+      "candidateAnswer": "③",
+      "blindMatch": true,
+      "blindDerivation": "A fourth-quadrant crossing must have 0<x<n/2 and sin(πx/2)>0, placing x in positive sine lobes (4j,4j+2). On each full such lobe before n/2, the concave sine arch intersects the descending line 1-2x/n twice; on a lobe truncated at or before its right zero, there is just one crossing. Exactly three fourth-quadrant intersections therefore occur when the first lobe (0,2) is full and the second (4,6) is truncated: 4<n/2≤6, equivalently 8<n≤12. Hence n=9,10,11,12 and their sum is 42. Endpoint x=6 for n=12 lies on the x-axis, not in quadrant IV."
+    },
+    {
+      "qid": 20,
+      "blindAnswer": "General angle -π/6+2kπ (equivalently 11π/6+2kπ), k∈Z; quadrant IV.",
+      "blindChoiceIndex": null,
+      "candidateAnswer": "$\\dfrac{11\\pi}{6}+2k\\pi$ ($k$는 정수), 제$4$사분면",
+      "blindMatch": true,
+      "blindDerivation": "A clockwise rotation through 390 degrees is -390°=-13π/6, coterminal with -π/6 and 11π/6. Add 2kπ for every integer k. Its terminal side lies 30° below the positive x-axis, in the fourth quadrant."
+    },
+    {
+      "qid": 21,
+      "blindAnswer": "-√3<tan θ<√3",
+      "blindChoiceIndex": null,
+      "candidateAnswer": "$-\\sqrt3<\\tan\\theta<\\sqrt3$",
+      "blindMatch": true,
+      "blindDerivation": "Use sin(π+θ)=-sin θ and cos(π-θ)=-cos θ. The quadratic in x becomes x^2-2√2 sin θ*x+1-cos θ. Strict positivity for every real x requires discriminant <0: 8sin²θ-4(1-cos θ)<0. With t=cos θ, this is 2t²-t-1>0, i.e. (2t+1)(t-1)>0. Since -1≤t≤1, it means cos θ<-1/2. Under 0<θ<2π this is 2π/3<θ<4π/3. Tangent on this entire interval ranges strictly between -√3 and √3, attaining 0 at θ=π."
+    },
+    {
+      "qid": 22,
+      "blindAnswer": "11",
+      "blindChoiceIndex": null,
+      "candidateAnswer": "$11$",
+      "blindMatch": true,
+      "blindDerivation": "For odd n in {3,5,7,9,11}, an odd-degree equation t^n=A always has exactly one real solution, contributing 5. For even n in {2,4,6,8,10,12}, A=-(n-4)(n-10): negative for n=2,12, zero for n=4,10, positive for n=6,8. Even-root counts are respectively 0,1,2,2,1,0, totaling 6. Thus the sum is 11."
+    },
+    {
+      "qid": 23,
+      "blindAnswer": "52 ordered pairs",
+      "blindChoiceIndex": null,
+      "candidateAnswer": "$52$",
+      "blindMatch": true,
+      "blindDerivation": "On x<-2, f=-x-1 ranges over (1,∞), excluding its limiting point (-2,1). On x≥-2, f=|2^(1-x)-4| starts at (-2,4), decreases to (-1,0), then increases toward the nonattained horizontal asymptote y=4. Thus for integers n∈[-8,8], g(n)=0 on {-8,...,-1} (8 values), g(n)=1 on {0,5,6,7,8} (5 values), g(n)=2 on {1,4} (2 values), and g(n)=3 on {2,3} (2 values). To sum to 3, the ordered g-values must be (0,3),(3,0),(1,2),(2,1), yielding 8*2+2*8+5*2+2*5=52."
+    }
+  ],
+  "defects": [
+    {
+      "id": "Q05-UNIT-BINDING",
+      "status": "REPAIRED_AND_REBUILT",
+      "description": "New logarithm-domain question rebinding H22-A-03 to H22-A-01 and H22-A-01-EXPONENT_LOG in JS and meta; Git SHA coupling recalculated."
+    },
+    {
+      "id": "Q17-REQUIRED-STUDENT-GRAPH",
+      "status": "BLOCKING_UNRESOLVED",
+      "description": "Official graph plan lint passes, but Chrome permission prevents official rendering. Required image not connected to student JS."
+    },
+    {
+      "id": "Q23-REQUIRED-SOLUTION-GRAPH",
+      "status": "ENGINE_CAPABILITY_PENDING",
+      "description": "Piecewise exponential-absolute function with open endpoint requires engine support; UNSUPPORTED marker is not an executable rendered plan."
+    }
+  ],
+  "postCreationOperationalQa": {
+    "reviewDate": "2026-11-25",
+    "reviewRole": "SEPARATE_AGENT_BLIND_Q01_Q23_CONTENT_AND_METADATA_AUDIT",
+    "verifiedQids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23
+    ],
+    "mathResult": "23_INDEPENDENT_BLIND_ANSWERS_MATCH_AND_NO_MULTIPLE_ANSWER",
+    "metadata": "PT_TPL_ALL_ACTIVE_Q05_UNIT_REBOUND_4SLOT_V16_VALID_CANDIDATE_APPROVAL_REVIEW_REQUIRED",
+    "svg": "Q17_REQUIRED_STUDENT_GRAPH_RENDER_NOT_RUN_Q23_ENGINE_CAPABILITY_PENDING",
+    "strictReleaseGate": "BLOCKED_REQUIRED_VISUAL_NO_MAIN_MERGE",
+    "humanTeacherApproval": "NOT_RUN"
+  },
+  "visualDebt": {
+    "q17": "REQUIRED_STUDENT_GRAPH_OFFICIAL_CHROME_PERMISSION_BLOCK",
+    "q23": "REQUIRED_SOLUTION_GRAPH_ENGINE_CAPABILITY_PENDING"
+  }
+}

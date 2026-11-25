@@ -1,0 +1,17 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"SOURCE_COORDINATE_AXES_v1","unit":"source-coordinate","reflectionEquivalent":false},"nodes":[
+    {"id":"O","op":"NORMALIZATION_ORIGIN","inputs":[],"args":{},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"U","op":"NORMALIZATION_AXIS","inputs":[],"args":{"length":{"kind":"integer","value":"1"}},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"l","op":"SOURCE_LINE","inputs":[],"args":{"a":{"kind":"integer","value":"1"},"b":{"kind":"integer","value":"1"},"c":{"kind":"integer","value":"-1"}},"outputType":"LINE","factRole":"GIVEN"},
+    {"id":"C","op":"CIRCLE_CENTER_RADIUS","inputs":["O"],"args":{"radius":{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"13"}]}},"outputType":"CIRCLE","factRole":"GIVEN"},
+    {"id":"I","op":"INTERSECTION","inputs":["l","C"],"args":{},"outputType":"POINT_SET","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"P","op":"SELECT_POINT","inputs":["I"],"args":{},"branch":{"kind":"SIDE_OF_ORIENTED_LINE","refs":["O","U"],"sign":1},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"Q","op":"SELECT_POINT","inputs":["I"],"args":{},"branch":{"kind":"SIDE_OF_ORIENTED_LINE","refs":["O","U"],"sign":-1},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "displayLines":["l"],"displayCircles":["C"],"displayPoints":["O","P","Q"],"displaySegments":[{"id":"OP","refs":["O","P"]},{"id":"OQ","refs":["O","Q"]}],"coordinateLabels":["P","Q"],"axisTickValues":{"x":[],"y":[]},
+  "caption":"P(−2,3), Q(3,−2)의 좌표를 연립방정식으로 구하면 두 동경의 사인·코사인은 각각 3/√13이다.",
+  "accessibilityDescription":"원점과 원 위 두 점 P, Q를 각각 연결한 동경이 보인다. P는 (−2, 3), Q는 (3, −2)이다.",
+  "sourceConditions":[{"id":"S1","condition":"직선과 원의 연립으로 P(-2,3), Q(3,-2)를 얻는다.","mappedTo":["P","Q"]}],
+  "newVisualInformation":["원점을 기준으로 두 교점에서 서로 다른 사분면의 사인·코사인을 읽는다."]
+}

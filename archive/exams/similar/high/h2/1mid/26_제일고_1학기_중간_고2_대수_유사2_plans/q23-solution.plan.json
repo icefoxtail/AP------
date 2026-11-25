@@ -1,0 +1,6 @@
+{
+  "status": "UNSUPPORTED",
+  "reason": "문항의 해설용 개형은 정의역이 끊긴 직선 y=-x-1 (x<-2)과 지수함수 절댓값 y=|2^(1-x)-4| (x>=-2)의 조합을 한 좌표계에 그려야 한다. 현행 공식 graphPlan capability는 이 식을 동시에 처리하는 조각별 exponential-absolute 함수, 열린 왼쪽 끝과 닫힌 오른쪽 시작점, 수평선별 교점 수 검증을 제공하지 않는다.",
+  "requiredEngineExtension": "piecewise-exponential-absolute-spike-v1",
+  "studentRequirements": ["열린 점 (-2,1)", "닫힌 점 (-2,4)", "절댓값 꼭짓점 (-1,0)", "오른쪽 수평점근선 y=4 아래쪽 접근", "높이 n별 교점 개수 0/1/2/3"]
+}

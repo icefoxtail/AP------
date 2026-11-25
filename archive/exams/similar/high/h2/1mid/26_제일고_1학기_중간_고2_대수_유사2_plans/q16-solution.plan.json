@@ -1,0 +1,18 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"SOURCE_COORDINATE_AXES_v1","unit":"source-coordinate","reflectionEquivalent":false},"nodes":[
+    {"id":"O","op":"NORMALIZATION_ORIGIN","inputs":[],"args":{},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"U","op":"NORMALIZATION_AXIS","inputs":[],"args":{"length":{"kind":"integer","value":"1"}},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"4"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"P","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"2"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"Q","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"6"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"C","op":"CIRCLE_CENTER_RADIUS","inputs":["A"],"args":{"radius":{"kind":"integer","value":"2"}},"outputType":"CIRCLE","factRole":"GIVEN"},
+    {"id":"D","op":"CIRCLE_CENTER_RADIUS","inputs":["O"],"args":{"radius":{"kind":"integer","value":"2"}},"outputType":"CIRCLE","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"E","op":"CIRCLE_CENTER_RADIUS","inputs":["O"],"args":{"radius":{"kind":"integer","value":"6"}},"outputType":"CIRCLE","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "displayCircles":["C","D","E"],"displayPoints":["O","A","P","Q"],"displaySegments":[{"id":"OA","refs":["O","A"]}],"axisTickValues":{"x":[],"y":[]},
+  "caption":"O 중심의 거리 2, 6인 원은 C에 각각 한 점에서 접하고, 두 거리 사이의 원은 두 점에서 만난다.",
+  "accessibilityDescription":"원 C의 중심 A는 O에서 위로 4만큼 떨어졌다. 원점 중심 반지름 2인 원과 반지름 6인 원이 C에 각각 한 점에서 접한다.",
+  "sourceConditions":[{"id":"S1","condition":"C의 중심 (0,4), 반지름 2, O와의 거리가 2 이상 6 이하","mappedTo":["C","A","P","Q"]}],
+  "newVisualInformation":["두 끝 거리에서만 접점 하나이고 그 사이는 교점 두 개라는 차이를 보인다."]
+}

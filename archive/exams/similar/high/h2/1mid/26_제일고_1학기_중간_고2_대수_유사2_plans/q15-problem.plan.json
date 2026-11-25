@@ -1,0 +1,17 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"SOURCE_COORDINATE_AXES_v1","unit":"source-coordinate","reflectionEquivalent":false},"nodes":[
+    {"id":"O","op":"NORMALIZATION_ORIGIN","inputs":[],"args":{},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"U","op":"NORMALIZATION_AXIS","inputs":[],"args":{"length":{"kind":"integer","value":"1"}},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"l","op":"SOURCE_LINE","inputs":[],"args":{"a":{"kind":"integer","value":"1"},"b":{"kind":"integer","value":"1"},"c":{"kind":"integer","value":"-1"}},"outputType":"LINE","factRole":"GIVEN"},
+    {"id":"C","op":"CIRCLE_CENTER_RADIUS","inputs":["O"],"args":{"radius":{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"13"}]}},"outputType":"CIRCLE","factRole":"GIVEN"},
+    {"id":"I","op":"INTERSECTION","inputs":["l","C"],"args":{},"outputType":"POINT_SET","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"P","op":"SELECT_POINT","inputs":["I"],"args":{},"branch":{"kind":"SIDE_OF_ORIENTED_LINE","refs":["O","U"],"sign":1},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"Q","op":"SELECT_POINT","inputs":["I"],"args":{},"branch":{"kind":"SIDE_OF_ORIENTED_LINE","refs":["O","U"],"sign":-1},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "displayLines":["l"],"displayCircles":["C"],"displayPoints":["O","P","Q"],"axisTickValues":{"x":[],"y":[]},
+  "caption":"원 x²+y²=13과 원점을 지나지 않는 직선 y=−x+1의 제2·4사분면 교점 P, Q",
+  "accessibilityDescription":"원점을 중심으로 하는 원에 기울기 음수인 직선이 교차한다. 제2사분면에 P, 제4사분면에 Q가 표시되고 좌표 수치는 표시되지 않는다.",
+  "sourceConditions":[{"id":"S1","condition":"직선 y=-x+1과 원 x²+y²=13의 제2사분면 교점을 P, 제4사분면 교점을 Q라 한다.","mappedTo":["l","C","P","Q"]}],
+  "newVisualInformation":["원점을 지나지 않는 직선과 원의 두 교점의 사분면 위치"]
+}
