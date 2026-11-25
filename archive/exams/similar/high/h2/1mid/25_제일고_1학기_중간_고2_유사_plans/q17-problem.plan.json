@@ -1,0 +1,27 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"4"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-4"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"C","op":"POLAR_POINT","inputs":["O","B"],"args":{"length":{"kind":"integer","value":"4"},"angleDeg":{"kind":"integer","value":"90"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"D","op":"POLAR_POINT","inputs":["O","B"],"args":{"length":{"kind":"integer","value":"4"},"angleDeg":{"kind":"integer","value":"30"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"E","op":"POLAR_POINT","inputs":["O","B"],"args":{"length":{"kind":"integer","value":"4"},"angleDeg":{"kind":"integer","value":"60"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"k","op":"CIRCLE_CENTER_RADIUS","inputs":["O"],"args":{"radius":{"kind":"integer","value":"4"}},"outputType":"CIRCLE","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "coordinateCanvas":{"width":680,"height":500},
+  "displayPoints":["O","A","B","C","D","E"],
+  "displayCircles":[],
+  "displaySegments":[{"id":"sAB","refs":["A","B"]},{"id":"sAC","refs":["A","C"]},{"id":"sBC","refs":["B","C"]},{"id":"sCD","refs":["C","D"]},{"id":"sCE","refs":["C","E"]}],
+  "planeMarks":{"angles":[{"id":"aA","refs":["B","A","C"],"value":45,"label":"45","style":"ARC","factRole":"GIVEN"}],"arcs":[{"id":"semi","circle":"k","center":"O","from":"B","to":"A","side":"CCW","highlight":false}]},
+  "caption":"AB는 반원의 지름이고 호 BC를 B 쪽에서 삼등분한 점이 D, 호 CD의 중점이 E이다. ∠BAC는 45°이며 미지의 BC²는 표시하지 않는다.",
+  "accessibilityDescription":"위쪽 반원 AB에 C, E, D, B가 호의 순서로 놓여 있다. AB는 지름이고 AC, BC, CD, CE가 현으로 연결되며 A에서 45도 각이 표시된다.",
+  "sourceConditions":[
+    {"id":"semicircle","condition":"AB is a diameter of a semicircle containing C","mappedTo":"mathPlan.nodes[A,B,O,k];planeMarks.arcs[semi]"},
+    {"id":"trisection","condition":"D is the trisector of arc BC nearest B","mappedTo":"mathPlan.nodes[C,D].args.angleDeg=90,30"},
+    {"id":"midarc","condition":"E bisects arc CD","mappedTo":"mathPlan.nodes[E].args.angleDeg=60"},
+    {"id":"angle","condition":"∠BAC=π/4","mappedTo":"planeMarks.angles[aA]"},
+    {"id":"chords","condition":"CD²=CE²+8sqrt(3)-8 and BC² is unknown","mappedTo":"displaySegments[sCD,sCE,sBC] (length labels excluded)"}
+  ],
+  "newVisualInformation":["반원의 반지름 4는 작도 정규화의 임의 척도로서 그림에 수치 라벨이 없고, 풀이에서만 결정되는 반지름 및 구하는 현의 길이 제곱을 드러내지 않는다."]
+}

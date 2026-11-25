@@ -1,0 +1,18 @@
+{
+  "capability":"number-line-figure-v1",
+  "numberLine":{"variable":"u","rows":[
+    {"kind":"SET","label":"sin 조건","color":"BLUE","pieces":[{"lo":{"value":"1/6","state":"OPEN"},"hi":{"value":"5/6","state":"OPEN"}}]},
+    {"kind":"SET","label":"cos 조건","color":"WARM","pieces":[{"lo":{"value":"1/4","state":"OPEN"},"hi":{"value":"7/4","state":"OPEN"}}]},
+    {"kind":"RESULT","label":"공통 범위"}
+  ]},
+  "numberLineCaption":{"text":"u=x/π일 때의 해집합 교집합"},
+  "caption":"u=x/π로 놓으면 두 조건의 공통 범위는 1/4<u<5/6이다.",
+  "accessibilityDescription":"세 줄 수직선에서 첫 줄의 열린 구간은 1/6에서 5/6까지, 둘째 줄은 1/4에서 7/4까지, 결과는 1/4에서 5/6까지의 교집합이다.",
+  "sourceConditions":[
+    {"id":"domain","condition":"0≤x<2π; 시각화 눈금 u=x/π","mappedTo":"numberLine.variable;numberLineCaption"},
+    {"id":"sin","condition":"sin x>1/2 → 1/6<u<5/6","mappedTo":"numberLine.rows[0].pieces"},
+    {"id":"cos","condition":"cos x<√2/2 → 1/4<u<7/4","mappedTo":"numberLine.rows[1].pieces"},
+    {"id":"intersection","condition":"1/4<u<5/6","mappedTo":"numberLine.rows[2].kind=RESULT"}
+  ],
+  "newVisualInformation":["원문 각의 π 배수를 u=x/π의 정확한 분수 눈금으로 옮겨 두 열린 구간과 교집합을 각각 엔진 해집합 선으로 표현한다."]
+}

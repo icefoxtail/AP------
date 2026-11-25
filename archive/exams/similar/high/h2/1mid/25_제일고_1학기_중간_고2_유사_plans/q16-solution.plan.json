@@ -1,0 +1,17 @@
+{
+  "capability":"trigonometric-spike-v1",
+  "graphPlan":{
+    "family":"trigonometric","function":"COS","coefficients":["1","16","0"],"phasePi":"0",
+    "sourceDomain":{"kind":"INTERVAL_PI","rangePi":["0","1/8"],"states":["OPEN","OPEN"]},
+    "referenceLines":[{"id":"upper","y":"1/2","intersectionCount":2,"color":"BLUE"},{"id":"lower","y":"-1/2","intersectionCount":2,"color":"WARM"}],
+    "axisTickPi":true,"axisTickValues":{"x":[],"y":["1"]},"displaySize":"full"
+  },
+  "caption":"풀이의 최대 k=48과 허용되는 표본 a=1/2에서 0<x<π/8 안의 코사인 곡선은 y=±1/2와 차례로 네 번 만난다. 이 표본은 일반 a의 교점 합을 이해하기 위한 것이다.",
+  "accessibilityDescription":"코사인 한 주기 위에 파란 수평선 y=1/2과 주황 수평선 y=-1/2이 그려져 있고, 왼쪽에서 오른쪽으로 네 교점이 찍혀 있다.",
+  "sourceConditions":[
+    {"id":"function","condition":"y=cos((k/3)x), x>0","mappedTo":"graphPlan.function=COS;graphPlan.coefficients[1]=16 when k=48"},
+    {"id":"bounds","condition":"0<a<1, y=a and y=-a","mappedTo":"graphPlan.referenceLines[upper,lower] with sample a=1/2"},
+    {"id":"order","condition":"first four positive intersection abscissas α,β,γ,δ","mappedTo":"graphPlan.sourceDomain and referenceLines[upper,lower].intersectionCount=2 each"}
+  ],
+  "newVisualInformation":["풀이에서 확정한 k=48, 허용된 a=1/2의 사례로 한 주기의 4개 교점을 시각화하며, 특정 a가 문제의 고정 조건인 것처럼 나타내지 않는다."]
+}

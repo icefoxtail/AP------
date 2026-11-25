@@ -1,0 +1,21 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"3"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"C","op":"POLAR_POINT","inputs":["B","A"],"args":{"length":{"kind":"integer","value":"8"},"angleDeg":{"kind":"integer","value":"60"},"turn":"CCW"},"outputType":"POINT","factRole":"GIVEN"}
+  ]},
+  "coordinateCanvas":{"width":560,"height":440},
+  "displayPoints":["A","B","C"],
+  "displaySegments":[{"id":"sBA","refs":["B","A"]},{"id":"sBC","refs":["B","C"]},{"id":"sAC","refs":["A","C"]}],
+  "planeMarks":{"angles":[{"id":"aB","refs":["A","B","C"],"value":60,"label":"60","style":"ARC","factRole":"GIVEN"}],"expressionLabels":[{"id":"labBA","ownerSegment":"sBA","text":"3"},{"id":"labBC","ownerSegment":"sBC","text":"8"}]},
+  "caption":"AB=3, BC=8, ∠ABC=60°인 삼각형이다. 구할 선분 AC의 길이는 표시하지 않는다.",
+  "accessibilityDescription":"꼭짓점 B의 60도 각을 사이에 두고 BA 길이 3과 BC 길이 8이 표시된 삼각형 ABC이다. AC 길이는 비어 있다.",
+  "sourceConditions":[
+    {"id":"AB","condition":"AB=3","mappedTo":"mathPlan.nodes[A,B];displaySegments[sBA];planeMarks.expressionLabels[labBA]"},
+    {"id":"BC","condition":"BC=8","mappedTo":"mathPlan.nodes[C].op=POLAR_POINT;displaySegments[sBC];planeMarks.expressionLabels[labBC]"},
+    {"id":"angle","condition":"∠ABC=60°","mappedTo":"mathPlan.nodes[C].args.angleDeg;planeMarks.angles[aB]"},
+    {"id":"unknown","condition":"AC는 구하는 길이","mappedTo":"displaySegments[sAC] (길이 라벨 없음)"}
+  ],
+  "newVisualInformation":["원문에 주어진 두 변의 길이와 60도 각만 실제 선분·각호로 표시한다. 미지수 AC=7을 노출하지 않는다."]
+}

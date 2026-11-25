@@ -1,0 +1,21 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"6"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"CONCLUSION"},
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"8"}]},"outputType":"POINT","factRole":"CONCLUSION"}
+  ]},
+  "coordinateCanvas":{"width":560,"height":440},
+  "displayPoints":["A","B","C"],
+  "displaySegments":[{"id":"sBC","refs":["B","C"]},{"id":"sCA","refs":["C","A"]},{"id":"sAB","refs":["A","B"]}],
+  "rightAngles":[{"id":"rC","refs":["B","C","A"]}],
+  "planeMarks":{"expressionLabels":[{"id":"labBC","ownerSegment":"sBC","text":"6"},{"id":"labCA","ownerSegment":"sCA","text":"8"},{"id":"labAB","ownerSegment":"sAB","text":"10"}]},
+  "caption":"사인법칙의 변 비 3:4:5는 직각삼각형의 변 길이 6,8,10으로 결정된다.",
+  "accessibilityDescription":"직각 꼭짓점 C가 있는 삼각형 ABC의 세 변 BC, CA, AB에 각각 6, 8, 10이 표시되어 있다.",
+  "sourceConditions":[
+    {"id":"sine","condition":"sin A:sin B:sin C=3:4:5 → BC:CA:AB=3:4:5","mappedTo":"mathPlan.nodes[A,B,C];displaySegments[sBC,sCA,sAB]"},
+    {"id":"area","condition":"넓이 24에서 직각변 6,8이 결정","mappedTo":"mathPlan.nodes[A,B,C];planeMarks.expressionLabels[labBC,labCA]"},
+    {"id":"right","condition":"3²+4²=5²이므로 ∠C=90°","mappedTo":"rightAngles[rC]"}
+  ],
+  "newVisualInformation":["풀이로 구한 세 변의 실제 길이를 각 선분에 쓰고 C의 직각을 도식에서 표시한다. 문제용으로 재사용하지 않는다."]
+}

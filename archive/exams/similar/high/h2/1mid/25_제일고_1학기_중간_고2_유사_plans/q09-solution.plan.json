@@ -1,0 +1,19 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"3"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"C","op":"POLAR_POINT","inputs":["B","A"],"args":{"length":{"kind":"integer","value":"8"},"angleDeg":{"kind":"integer","value":"60"},"turn":"CCW"},"outputType":"POINT","factRole":"GIVEN"}
+  ]},
+  "coordinateCanvas":{"width":560,"height":440},
+  "displayPoints":["A","B","C"],
+  "displaySegments":[{"id":"sBA","refs":["B","A"]},{"id":"sBC","refs":["B","C"]},{"id":"sAC","refs":["A","C"],"emphasis":"BOLD"}],
+  "planeMarks":{"angles":[{"id":"aB","refs":["A","B","C"],"value":60,"label":"60","style":"ARC","factRole":"GIVEN"}],"expressionLabels":[{"id":"labBA","ownerSegment":"sBA","text":"3"},{"id":"labBC","ownerSegment":"sBC","text":"8"},{"id":"labAC","ownerSegment":"sAC","text":"7"}]},
+  "caption":"코사인법칙으로 AC²=3²+8²−2×3×8×cos60°=49이므로 AC=7이다.",
+  "accessibilityDescription":"AB 3과 BC 8의 끼인각 B가 60도이며, 나머지 변 AC가 굵게 그려지고 7로 표시된 해설용 삼각형이다.",
+  "sourceConditions":[
+    {"id":"given","condition":"AB=3,BC=8,∠B=60°","mappedTo":"mathPlan.nodes[A,B,C];planeMarks.expressionLabels[labBA,labBC];planeMarks.angles[aB]"},
+    {"id":"derived","condition":"AC²=49, AC=7","mappedTo":"displaySegments[sAC];planeMarks.expressionLabels[labAC]"}
+  ],
+  "newVisualInformation":["문제 도식의 3·8·60도 표기를 유지하고, 풀이로 구한 변 AC에 실제 길이 7을 추가한다."]
+}
