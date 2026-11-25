@@ -1,0 +1,208 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-5"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-6"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-5"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "N",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G",
+        "op": "CENTROID",
+        "inputs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "M",
+    "N",
+    "G"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAM",
+      "refs": [
+        "A",
+        "M"
+      ]
+    },
+    {
+      "id": "sMB",
+      "refs": [
+        "M",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCN",
+      "refs": [
+        "C",
+        "N"
+      ]
+    },
+    {
+      "id": "sNA",
+      "refs": [
+        "N",
+        "A"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 560
+  },
+  "caption": "삼각형 ABC의 무게중심 G에서 두 중점 M·N으로 향하는 벡터",
+  "accessibilityDescription": "G가 삼각형의 무게중심이고 M은 AB 중점, N은 AC 중점으로 G에서 M과 N을 향한 두 벡터 p·q가 보인다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "M=AB 중점, N=AC 중점은 엔진의 MIDPOINT 결과다.",
+      "mappedTo": [
+        "A",
+        "B",
+        "C",
+        "M",
+        "N"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "G는 삼각형 ABC의 CENTROID 연산으로 얻고 G→M·G→N 벡터를 각각 p·q로 표시한다.",
+      "mappedTo": [
+        "G",
+        "vp",
+        "vq"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "벡터 CA를 p,q의 합으로 나타내는 정답 계수를 쓰지 않는다.",
+      "mappedTo": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "실제 무게중심과 중점에서 출발·도착하는 방향 화살표"
+  ],
+  "planeMarks": {
+    "vectors": [
+      {
+        "id": "vp",
+        "from": "G",
+        "to": "M",
+        "label": "vec(p)",
+        "side": "RIGHT",
+        "labelAt": 0.5
+      },
+      {
+        "id": "vq",
+        "from": "G",
+        "to": "N",
+        "label": "vec(q)",
+        "side": "LEFT",
+        "labelAt": 0.5
+      }
+    ]
+  }
+}

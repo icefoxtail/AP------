@@ -1,0 +1,266 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lBF",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "F"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lDE",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "D",
+          "E"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lBF",
+          "lDE"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "P"
+  ],
+  "displaySegments": [
+    {
+      "id": "sCB",
+      "refs": [
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "sBF",
+      "refs": [
+        "B",
+        "F"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 560
+  },
+  "caption": "삼각형 ABC의 내분점 D·E·F와 선분 BF·DE의 교점 P",
+  "accessibilityDescription": "A에서 B와 C로 향하는 벡터 a·b를 가진 삼각형에서 D는 AB를 1대2, E·F는 AC를 2대1·1대2로 내분하며 선분 BF와 DE는 P에서 만난다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AB와 AC는 문제에 길이가 없어 6·6의 직각 대표 모델로 두었으며 각·직각을 주어진 조건으로 표시하지 않는다.",
+      "mappedTo": [
+        "A",
+        "B",
+        "C",
+        "va",
+        "vb"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "AD:DB=1:2 및 AE:EC=2:1, AF:FC=1:2를 각 DIVISION_POINT로 계산한다.",
+      "mappedTo": [
+        "D",
+        "E",
+        "F",
+        "ratioD",
+        "ratioE",
+        "ratioF"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "P는 실제 직선 BF와 DE의 교점 LINE_INTERSECTION으로 얻고 m+n은 노출하지 않는다.",
+      "mappedTo": [
+        "sBF",
+        "sDE",
+        "P"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원문 선분 BF·DE와 실제 교점 P"
+  ],
+  "planeMarks": {
+    "textLabels": [
+      {"id":"ratioD","at":"D","text":"AD:DB=1:2","anchor":"S","labelKind":"TEXT","factRole":"GIVEN"},
+      {"id":"ratioE","at":"E","text":"AE:EC=2:1","anchor":"NW","labelKind":"TEXT","factRole":"GIVEN"},
+      {"id":"ratioF","at":"F","text":"AF:FC=1:2","anchor":"SW","labelKind":"TEXT","factRole":"GIVEN"}
+    ],
+    "vectors": [
+      {
+        "id": "va",
+        "from": "A",
+        "to": "B",
+        "label": "vec(a)",
+        "side": "RIGHT",
+        "labelAt": 0.5
+      },
+      {
+        "id": "vb",
+        "from": "A",
+        "to": "C",
+        "label": "vec(b)",
+        "side": "LEFT",
+        "labelAt": 0.5
+      }
+    ]
+  }
+}
