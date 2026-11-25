@@ -1,10 +1,10 @@
 {
   "capability":"ellipse-figure-v1",
   "conic":{"kind":"PARABOLA","vertex":["0","0"],"p":"4","axis":"Y"},
-  "points":[{"id":"F","kind":"FOCUS"},{"id":"A","kind":"ON_CONIC","x":"-4*sqrt(6)"},{"id":"B","kind":"ON_CONIC","x":"0"},{"id":"C","kind":"ON_CONIC","x":"4*sqrt(6)"}],
+  "points":[{"id":"O","kind":"ORIGIN"},{"id":"F","kind":"FOCUS"},{"id":"A","kind":"ON_CONIC","x":"-4*sqrt(42)/7"},{"id":"B","kind":"ON_CONIC","x":"-8*sqrt(42)/7"},{"id":"C","kind":"ON_CONIC","x":"12*sqrt(42)/7"}],
   "segments":[{"id":"AB","from":"A","to":"B"},{"id":"BC","from":"B","to":"C"},{"id":"CA","from":"C","to":"A"},{"id":"AF","from":"A","to":"F"},{"id":"BF","from":"B","to":"F"},{"id":"CF","from":"C","to":"F"}],
   "caption":"포물선 x²=16y 위의 세 점 A,B,C로 만든 삼각형의 무게중심이 초점 F",
-  "accessibilityDescription":"위로 열린 포물선의 두 위쪽 점 A,C와 아래쪽 꼭짓점 B가 삼각형을 만들고, 초점 F는 그 내부의 무게중심이다.",
-  "sourceConditions":[{"id":"c1","condition":"주어진 x²=16y의 초점 F=(0,4), 준선 y=-4이다.","mappedTo":["conic","F"]},{"id":"c2","condition":"A=(-4√6,6), B=(0,0), C=(4√6,6)은 서로 다른 포물선 점이며 무게중심이 (0,4)=F가 되는 동형 대표이다. 구하는 AF+BF+CF를 값으로 표기하지 않는다.","mappedTo":["A","B","C","AB","BC","CA","AF","BF","CF"]}],
+  "accessibilityDescription":"꼭짓점 O에서 위로 열린 포물선의 서로 다른 세 점 A,B,C가 삼각형을 만들고, 초점 F는 그 내부의 무게중심이다. 꼭짓점 O는 삼각형의 어느 꼭짓점과도 겹치지 않는다.",
+  "sourceConditions":[{"id":"c1","condition":"주어진 x²=16y의 꼭짓점 O=(0,0), 초점 F=(0,4), 준선 y=-4이다.","mappedTo":["conic","O","F"]},{"id":"c2","condition":"A=(-4√42/7,6/7), B=(-8√42/7,24/7), C=(12√42/7,54/7)은 서로 다른 포물선 점으로 각 x좌표 합 0, y좌표 합 12라서 무게중심이 (0,4)=F인 대표 배치이다. B와 꼭짓점 O를 겹치지 않게 그리며, 구하는 AF+BF+CF의 값은 표시하지 않는다.","mappedTo":["A","B","C","AB","BC","CA","AF","BF","CF"]}],
   "newVisualInformation":["포물선 위 삼각형의 무게중심이 초점과 겹침"]
 }
