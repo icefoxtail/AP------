@@ -215,17 +215,16 @@ window.questionBank = [
     "courseKey": "기하",
     "conceptClusterKey": "H22-GE-01-CORE",
     "problemTypeKey": "PT_GEO_HYPERBOLA",
-    "templateKey": "TPL_GEO_HYPERBOLA_STANDARD_EQUATION",
+    "templateKey": "TPL_GEO_HYPERBOLA_ASYMPTOTE_AXIS",
     "crossConceptKeys": [
       "CC_HYPERBOLA",
       "CC_PARALLEL_TRANSLATION",
-      "CC_ELLIPSE",
       "CC_ASYMPTOTE"
     ],
     "conditionKeys": [],
     "integrationPattern": "CASE_BRANCH",
     "difficultyBucket": 2,
-    "rpmPrimaryRecordId": "H2-GEO-RPM-045",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-120",
     "content": "쌍곡선 $\\dfrac{(x+2)^2}{9}-\\dfrac{(y-3)^2}{16}=1$에 관한 설명 중 옳지 않은 것은? (3.7점)",
     "choices": [
       "점근선의 방정식은 $y-3=\\pm\\dfrac34(x+2)$이다.",
@@ -264,7 +263,7 @@ window.questionBank = [
     "courseKey": "기하",
     "conceptClusterKey": "H22-GE-03-CORE",
     "problemTypeKey": "PT_GEO_SPACE_FIGURE",
-    "templateKey": "EXT-TPL-SPACE-PLANE-DETERMINATION-CASE-CHECK",
+    "templateKey": "TPL_GEO_SPACE_FIGURE_PLANES",
     "crossConceptKeys": [
       "CC_SPACE_FIGURE",
       "CC_SPATIAL_POSITION_RELATION"
@@ -272,7 +271,7 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "CASE_BRANCH",
     "difficultyBucket": 1,
-    "rpmPrimaryRecordId": "H2-GEO-RPM-053",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-166",
     "content": "공간에서 다음 조건 중 하나의 평면을 유일하게 결정하는 것은? (3.4점)",
     "choices": [
       "한 직선과 그 직선 위의 한 점",
@@ -367,7 +366,6 @@ window.questionBank = [
     "templateKey": "TPL_GEO_ELLIPSE_STANDARD_EQUATION",
     "crossConceptKeys": [
       "CC_ELLIPSE",
-      "CC_PARALLEL_TRANSLATION",
       "CC_VERTICAL_SEGMENT_LENGTH"
     ],
     "conditionKeys": [],
@@ -491,7 +489,7 @@ window.questionBank = [
   },
   {
     "id": 11,
-    "category": "타원의 방정식 유도",
+    "category": "쌍곡선의 방정식 유도",
     "standardCourse": "기하",
     "standardUnitKey": "H22-GE-01",
     "standardUnit": "이차곡선",
@@ -512,14 +510,14 @@ window.questionBank = [
     "courseKey": "기하",
     "conceptClusterKey": "H22-GE-01-CORE",
     "problemTypeKey": "PT_GEO_HYPERBOLA",
-    "templateKey": "TPL_GEO_HYPERBOLA_STANDARD_EQUATION",
+    "templateKey": "TPL_GEO_HYPERBOLA_FOCAL_DIFF",
     "crossConceptKeys": [
-      "CC_ELLIPSE"
+      "CC_HYPERBOLA"
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,
-    "rpmPrimaryRecordId": "H2-GEO-RPM-041",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-122",
     "content": "좌표평면에서 두 초점 $F(c,0)$, $F'(-c,0)$까지의 거리의 차의 절댓값이 $2a$ $(c>a>0)$인 점 $P(x,y)$의 자취를 생각하자. 다음의 빈칸 (가), (나), (다)를 옳게 채운 것은? (3.7점)\n<div class='question-note-box'>\n$PF^2-PF'^2=[(x-c)^2+y^2]-[(x+c)^2+y^2]=$ (가)<br>\n$b^2=$ (나) $>0$으로 놓으면 이 자취의 표준형은 $\\dfrac{x^2}{\\text{(다)}}-\\dfrac{y^2}{b^2}=1$이다.\n</div>",
     "choices": [
       "$4cx,\\ c^2+a^2,\\ b^2$",
@@ -560,16 +558,15 @@ window.questionBank = [
     "courseKey": "기하",
     "conceptClusterKey": "H22-GE-01-CORE",
     "problemTypeKey": "PT_GEO_HYPERBOLA",
-    "templateKey": "TPL_GEO_HYPERBOLA_ASYMPTOTE_AXIS",
+    "templateKey": "TPL_GEO_HYPERBOLA_RIGHT_TRIANGLE",
     "crossConceptKeys": [
       "CC_HYPERBOLA",
-      "CC_PYTHAGOREAN",
-      "CC_AREA"
+      "CC_PYTHAGOREAN"
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,
-    "rpmPrimaryRecordId": "H2-GEO-RPM-043",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-124",
     "content": "초점이 $F(10,0)$, $F'(-10,0)$인 쌍곡선이 있다. 두 초점을 지름의 양 끝점으로 하는 원과 쌍곡선이 제1사분면에서 만나는 점 $P$에 대하여 $PF:PF'=3:4$이다. 이 쌍곡선의 주축의 길이는? (4.2점)",
     "choices": [
       "$\\dfrac72$",
@@ -609,8 +606,8 @@ window.questionBank = [
     "curriculum": "2022",
     "courseKey": "기하",
     "conceptClusterKey": "H22-GE-01-CORE",
-    "problemTypeKey": "PT_GEO_ELLIPSE",
-    "templateKey": "TPL_GEO_ELLIPSE_AXIS_FOCUS",
+    "problemTypeKey": "PT_GEO_HYPERBOLA",
+    "templateKey": "TPL_GEO_HYPERBOLA_SHARED_FOCUS",
     "crossConceptKeys": [
       "CC_ELLIPSE",
       "CC_HYPERBOLA",
@@ -620,7 +617,7 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,
-    "rpmPrimaryRecordId": "H2-GEO-RPM-046",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-126",
     "content": "두 이차곡선 $C_1:\\dfrac{(x-2)^2}{36}+\\dfrac{(y+1)^2}{k}=1$과 $C_2:\\dfrac{(x-2)^2}{9}-\\dfrac{(y+1)^2}{16}=1$의 두 초점이 각각 일치한다. $0<k<36$일 때 $k$의 값은? (4.2점)",
     "choices": [
       "$11$",
@@ -916,7 +913,8 @@ window.questionBank = [
     "templateKey": "TPL_GEO_ELLIPSE_AXIS_FOCUS",
     "crossConceptKeys": [
       "CC_ELLIPSE",
-      "CC_PYTHAGOREAN"
+      "CC_PYTHAGOREAN",
+      "CC_TRIANGLE_AREA"
     ],
     "conditionKeys": [
       "COND_RANGE"
@@ -1018,8 +1016,7 @@ window.questionBank = [
     "templateKey": "TPL_GEO_TANGENT_ON_CONIC",
     "crossConceptKeys": [
       "CC_PARABOLA",
-      "CC_CONIC_TANGENT",
-      "CC_TRIANGLE_AREA"
+      "CC_CONIC_TANGENT"
     ],
     "conditionKeys": [
       "COND_POSITIVE",
@@ -1040,7 +1037,7 @@ window.questionBank = [
   },
   {
     "id": 22,
-    "category": "쌍곡선의 접선과 법선",
+    "category": "타원의 접선과 법선",
     "standardCourse": "기하",
     "standardUnitKey": "H22-GE-02",
     "standardUnit": "이차곡선의 접선",
@@ -1053,9 +1050,9 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "서술형",
-      "쌍곡선",
+      "타원",
       "접선",
-      "수선",
+      "법선",
       "도형"
     ],
     "wide": false,
@@ -1065,7 +1062,7 @@ window.questionBank = [
     "problemTypeKey": "PT_GEO_CONIC_TANGENT",
     "templateKey": "TPL_GEO_TANGENT_ORTHOGONAL",
     "crossConceptKeys": [
-      "CC_HYPERBOLA",
+      "CC_ELLIPSE",
       "CC_CONIC_TANGENT",
       "CC_PERPENDICULAR_SLOPE"
     ],
@@ -1074,7 +1071,7 @@ window.questionBank = [
     ],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 5,
-    "rpmPrimaryRecordId": "H2-GEO-RPM-085",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-143",
     "content": "$0<b<5$인 타원 $\\dfrac{x^2}{25}+\\dfrac{y^2}{b^2}=1$ 위의 제1사분면의 임의의 점 $P(x_1,y_1)$에서 접선 $l$을 긋는다. $l$이 $x$축과 만나는 점을 $Q$, $P$에서 $l$에 수직인 직선이 $x$축과 만나는 점을 $R$이라 하자. 모든 이와 같은 $P$에 대하여 $OQ\\times OR=16$일 때, 이 곱이 일정함을 보이고 $b$의 값을 구하는 과정을 서술하시오. (7점, 부분 점수 있음.) (단, $O$는 원점이다.)",
     "choices": [],
     "answer": "3",
@@ -1109,12 +1106,11 @@ window.questionBank = [
     "curriculum": "2022",
     "courseKey": "기하",
     "conceptClusterKey": "H22-GE-01-CORE",
-    "problemTypeKey": "PT_GEO_ELLIPSE",
-    "templateKey": "TPL_GEO_ELLIPSE_AXIS_FOCUS",
+    "problemTypeKey": "PT_GEO_HYPERBOLA",
+    "templateKey": "TPL_GEO_HYPERBOLA_SHARED_FOCUS",
     "crossConceptKeys": [
       "CC_ELLIPSE",
       "CC_HYPERBOLA",
-      "CC_AREA",
       "EXT-CROSS-CONIC-COMMON-FOCI"
     ],
     "conditionKeys": [
@@ -1122,7 +1118,7 @@ window.questionBank = [
     ],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 5,
-    "rpmPrimaryRecordId": "H2-GEO-RPM-043",
+    "rpmPrimaryRecordId": "H2-GEO-RPM-126",
     "content": "두 초점이 $F(5,0)$, $F'(-5,0)$으로 일치하는 쌍곡선 $\\dfrac{x^2}{9}-\\dfrac{y^2}{16}=1$과 타원 $C$가 있다. 타원 $C$의 장축의 길이는 $14$이고 두 곡선은 제1사분면에서 점 $P$에서 만난다. $OP^2$의 값을 구하는 과정을 서술하시오. (7점, 부분 점수 있음.) (단, $O$는 원점이다.)",
     "choices": [],
     "answer": "33",
