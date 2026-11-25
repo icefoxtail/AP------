@@ -1,0 +1,10 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conics":[{"id":"c1","kind":"PARABOLA","vertex":["0","0"],"p":"1","axis":"X"},{"id":"c2","kind":"PARABOLA","vertex":["9","0"],"p":"-2","axis":"X"}],
+  "points":[{"id":"O","kind":"ORIGIN"},{"id":"F1","kind":"FOCUS","curve":"c1"},{"id":"F2","kind":"FOCUS","curve":"c2"},{"id":"P","kind":"CONIC_CONIC","curves":["c1","c2"],"which":2},{"id":"Q","kind":"CONIC_CONIC","curves":["c1","c2"],"which":1}],
+  "segments":[{"id":"PF1","from":"P","to":"F1"},{"id":"F1Q","from":"F1","to":"Q"},{"id":"QF2","from":"Q","to":"F2"},{"id":"F2P","from":"F2","to":"P"}],
+  "caption":"C₁:y²=4x, C₂:y²=−8(x−a), a>6의 두 교점 P,Q와 초점 F₁,F₂가 이루는 둘레 24의 사각형",
+  "accessibilityDescription":"서로 마주 보는 두 포물선이 위아래 P,Q에서 교차하고 그 사이 x축의 양쪽에 초점 F1,F2가 놓여 볼록사각형 PF1QF2를 이룬다.",
+  "sourceConditions":[{"id":"c1","condition":"첫 포물선의 초점은 F1=(1,0), 둘째 포물선의 미지 꼭짓점은 (a,0)이고 a>6이다. 둘레 24를 만족하는 내부 모델 a=9를 사용하되 a나 넓이의 답을 표기하지 않는다.","mappedTo":["c1","c2","F1","F2"]},{"id":"c2","condition":"두 포물선의 위아래 교점은 P=(6,2√6), Q=(6,-2√6)이고 네 변을 순서대로 이으면 문제의 사각형이다.","mappedTo":["P","Q","PF1","F1Q","QF2","F2P"]}],
+  "newVisualInformation":["공통 교점과 서로 다른 초점으로 만든 볼록사각형"]
+}
