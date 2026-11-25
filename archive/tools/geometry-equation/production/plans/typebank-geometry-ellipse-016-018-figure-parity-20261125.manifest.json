@@ -1,0 +1,103 @@
+{
+  "campaign": "typebank-high2-geometry-problem-svg",
+  "typeGroup": "타원: 초점·장축/단축·도형의 길이·최대 넓이 (기하 016~018)",
+  "auditKind": "SOURCE_FIGURE_TO_ENGINE_PLAN_PRE_RENDER",
+  "auditedAtKst": "2026-11-25",
+  "sourceOfTruth": "archive/exams/types/high/h2/<stem>.js questionBank[id]의 현행 발문·[그림]·해설·정답",
+  "sourceSha256": {
+    "기하_016_타원의초점의좌표장축단축의길이_고2_유형은행1.js": "e6e375baccbf3c2496241a4ec533999fd0195eab22d5b256b2673958a5ad3e4b",
+    "기하_017_도형에서타원의초점장축단축의길이_고2_유형은행1.js": "885a68a7e345ee3b18169543d45e0c31f71926fe6ce2da738a35f2fd3be769e9",
+    "기하_018_타원의넓이의최댓값구하기_고2_유형은행1.js": "25e74326ccd5a714571c71f34f49d12b9f162a997d603bc298b0ba9709e45213"
+  },
+  "scope": {
+    "distinctJsFiles": 3,
+    "sourceFigures": 7,
+    "actualPlans": 7,
+    "sourceVsPlanReviewed": 7,
+    "lintShallowPass": 7,
+    "lintFullPass": 7,
+    "featureParityPreRenderPass": 6,
+    "engineCapabilityPending": 1
+  },
+  "render": "NOT_RUN",
+  "pngVisualReview": "NOT_RUN",
+  "studentScreenReview": "NOT_RUN",
+  "a4PrintReview": "NOT_RUN",
+  "jsImageLink": "NOT_RUN",
+  "items": [
+    {
+      "stem": "기하_016_타원의초점의좌표장축단축의길이_고2_유형은행1",
+      "qid": 4,
+      "sourceVsPlan": "REVIEWED",
+      "planLintShallow": "PASS",
+      "planLintFull": "PASS",
+      "featureParity": "PASS_PRE_RENDER",
+      "verified": "y축 장축의 타원, O와 F/F′의 초점 대칭, 제1사분면 P, 삼각형의 세 변. 내부 a=14는 비노출; 주어진 둘레 14√2 검산"
+    },
+    {
+      "stem": "기하_017_도형에서타원의초점장축단축의길이_고2_유형은행1",
+      "qid": 1,
+      "sourceVsPlan": "REVIEWED",
+      "planLintShallow": "PASS",
+      "planLintFull": "PASS",
+      "featureParity": "PASS_PRE_RENDER",
+      "verified": "원문 그림대로 타원 없이 삼각형 ABC만 그림. AB=7, BC=6, CA=5 실측 정확, 각 선분에 소유 길이 라벨 표기"
+    },
+    {
+      "stem": "기하_017_도형에서타원의초점장축단축의길이_고2_유형은행1",
+      "qid": 3,
+      "sourceVsPlan": "REVIEWED",
+      "planLintShallow": "PASS",
+      "planLintFull": "PASS",
+      "featureParity": "ENGINE_CAPABILITY_PENDING",
+      "verified": "F/F′의 거리 4, PF=PF′=4, P가 타원 위, 삼각형 넓이 4√3은 정확. 세 변 공통 s 라벨을 모두 넣은 시도는 full lint에서 ELLIPSE_LABEL_NO_ROOM:measure-sFFp로 실패",
+      "missingVisual": "정삼각형 PF′F의 세 변 모두에 같은 길이 눈금(또는 세 변 길이가 동일함을 표시할 충돌 없는 렌더 필드)"
+    },
+    {
+      "stem": "기하_017_도형에서타원의초점장축단축의길이_고2_유형은행1",
+      "qid": 4,
+      "sourceVsPlan": "REVIEWED",
+      "planLintShallow": "PASS",
+      "planLintFull": "PASS",
+      "featureParity": "PASS_PRE_RENDER",
+      "verified": "직사각형 FAF′B의 수직 인접변 AF=5, AF′=12와 모든 네 변·두 대각선 표시, O는 대각선 중심, A/B는 실제 타원 위. 내부 좌표 실측 검산"
+    },
+    {
+      "stem": "기하_017_도형에서타원의초점장축단축의길이_고2_유형은행1",
+      "qid": 5,
+      "sourceVsPlan": "REVIEWED",
+      "planLintShallow": "PASS",
+      "planLintFull": "PASS",
+      "featureParity": "PASS_PRE_RENDER",
+      "verified": "가로 AD=10·세로 AB=12 직사각형 네 변에 타원이 정확히 접함. 타원 장축은 AB와 평행, 미지 초점거리 비노출"
+    },
+    {
+      "stem": "기하_018_타원의넓이의최댓값구하기_고2_유형은행1",
+      "qid": 2,
+      "sourceVsPlan": "REVIEWED",
+      "planLintShallow": "PASS",
+      "planLintFull": "PASS",
+      "featureParity": "PASS_PRE_RENDER",
+      "verified": "문제 그림대로 타원 없이 삼각형 PAB와 가로 밑변 아래 길이10 치수선만 그림. 대표 P의 AP+BP=26이며 높이 288/25는 최대 높이 12가 아님"
+    },
+    {
+      "stem": "기하_018_타원의넓이의최댓값구하기_고2_유형은행1",
+      "qid": 3,
+      "sourceVsPlan": "REVIEWED",
+      "planLintShallow": "PASS",
+      "planLintFull": "PASS",
+      "featureParity": "PASS_PRE_RENDER",
+      "verified": "가로 장축, 왼쪽 F′와 오른쪽 F, FF′=10m 직접 표기. 비최대 P에서 PF+PF′=14m를 충족하며 삼각형 PFF′를 실제 그림 필드로 표현"
+    }
+  ],
+  "engineHandoff": [
+    {
+      "stemNumber": 17,
+      "qid": 3,
+      "kind": "ELLIPSE_EQUAL_SIDE_MARKS",
+      "target": "ellipse-figure-v1",
+      "request": "세 초점 연결 선분 sPF, sPFp, sFFp에 동등한 길이 눈금 표시. 세 변의 실제 길이 동일을 검증하고 현재 ELLIPSE_LABEL_NO_ROOM:measure-sFFp를 유발하는 기호 중복 방식 대신 선분 소유 눈금 또는 짧은 외부 치수 라벨 지원. 엔진 확장 후 해당 q03 플랜과 풀 lint를 재검수할 것"
+    }
+  ],
+  "handoffNote": "7개 계획은 원문과 수학 관계를 직접 대조하고 기존 엔진에서 shallow/full lint를 모두 통과했다. 이는 SVG/PNG 실물·학생 화면·A4 검수 또는 배포를 뜻하지 않는다. 원문 시각요소 중 017 q03 동일변 눈금 1건이 미지원이므로 안티그래비티의 엔진 확장·재검수 후 마감한다."
+}
