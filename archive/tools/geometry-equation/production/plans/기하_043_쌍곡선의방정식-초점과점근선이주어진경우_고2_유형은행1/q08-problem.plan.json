@@ -1,0 +1,23 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conics": [
+    {"id":"h","kind":"HYPERBOLA","center":["0","0"],"aSquared":"4","bSquared":"5","transverse":"X"},
+    {"id":"k","kind":"CIRCLE","center":["3","0"],"rSquared":"5"}
+  ],
+  "points": [
+    {"id":"F","kind":"FOCUS","curve":"h","side":1},
+    {"id":"F'","kind":"FOCUS","curve":"h","side":-1}
+  ],
+  "lines": [
+    {"id":"asymP","curve":"h","role":"ASYMPTOTE","sign":1,"dashed":true},
+    {"id":"asymN","curve":"h","role":"ASYMPTOTE","sign":-1,"dashed":true}
+  ],
+  "caption": "쌍곡선의 초점 F를 중심으로 두 점근선에 동시에 접하는 원",
+  "accessibilityDescription": "원점에서 교차하는 두 점근선 사이로 좌우로 열린 쌍곡선이 있고, 양의 x축 위의 초점 F를 중심으로 두 점근선에 접하는 원이 그려져 있다. 반대편 초점 F′도 표시되어 있다.",
+  "sourceConditions": [
+    {"id":"c1","condition":"원문 쌍곡선 x²/4−y²/5=1의 c²=9이므로 초점은 F(3,0), F′(-3,0)이다.","mappedTo":["h","F","F'"]},
+    {"id":"c2","condition":"두 점근선 y=±√5 x/2를 원점 통과 점선으로 실제 표시한다. 두 식의 화면 라벨은 ELLIPSE_LABEL_NO_ROOM 때문에 생략한 엔진 보완 대기 항목이다.","mappedTo":["asymP","asymN"]},
+    {"id":"c3","condition":"F=(3,0)에서 두 직선 √5 x∓2y=0까지 거리가 모두 √5이므로 r²=5인 원은 양쪽 선에 각각 정확히 접한다. 반지름/원의 넓이 등 묻는 값은 그림에 쓰지 않는다.","mappedTo":["k","F","asymP","asymN"]}
+  ],
+  "newVisualInformation": ["쌍곡선의 두 실제 점근선과 x축 위 초점의 위치 (점근선 식 라벨은 엔진 보완 대기)", "F 중심 원과 두 점근선의 동시 접함을 곡선 두 개의 수치 기하로 구현; 정답 미표시"]
+}

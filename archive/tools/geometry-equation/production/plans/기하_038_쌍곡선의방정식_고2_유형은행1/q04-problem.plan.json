@@ -1,0 +1,24 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {"kind":"HYPERBOLA","center":["0","0"],"aSquared":"4","bSquared":"12","transverse":"X"},
+  "points": [
+    {"id":"F","kind":"FOCUS","side":1,"coordinates":true},
+    {"id":"F'","kind":"FOCUS","side":-1,"coordinates":true},
+    {"id":"A","kind":"ON_CONIC","x":"4","sign":"POS","coordinates":true},
+    {"id":"B","kind":"ON_CONIC","x":"4","sign":"NEG","coordinates":true}
+  ],
+  "lines": [{"id":"perpF","x":"4","label":"x=4"}],
+  "segments": [
+    {"id":"baseAB","from":"A","to":"B"},
+    {"id":"edgeAFp","from":"A","to":"F'"},
+    {"id":"edgeBFp","from":"B","to":"F'"}
+  ],
+  "caption": "쌍곡선 3x²−y²=12의 초점 F를 지나는 수직선과 삼각형 ABF′",
+  "accessibilityDescription": "좌우로 열린 쌍곡선의 오른쪽 초점 F(4,0)를 지나는 직선 x=4가 오른쪽 가지와 위쪽 A(4,6), 아래쪽 B(4,-6)에서 만난다. 왼쪽 초점 F′(-4,0)와 A·B를 이은 이등변삼각형이 표시되어 있다.",
+  "sourceConditions": [
+    {"id":"c1","condition":"3x²−y²=12를 x²/4−y²/12=1로 고치면 c²=4+12=16, 양의 x초점 F(4,0)과 음의 x초점 F′(-4,0)이다.","mappedTo":["F","F'"]},
+    {"id":"c2","condition":"F를 지나 x축에 수직인 선은 x=4이고, 3(4)²−y²=12에서 y=±6이므로 A(4,6), B(4,-6)이다. 원문 그림에 네 점의 좌표가 명시되어 좌표 표시 허용.","mappedTo":["perpF","A","B"]},
+    {"id":"c3","condition":"삼각형 ABF′는 A-B, B-F′, F′-A 실제 세 변으로 닫힌다. 넓이 48이라는 묻는 결과나 계산식은 시각 라벨에 표시하지 않는다.","mappedTo":["baseAB","edgeAFp","edgeBFp"]}
+  ],
+  "newVisualInformation": ["x=4의 실제 두 교점과 초점의 정확한 네 좌표", "원문 삼각형 ABF′의 세 변; 넓이 정답은 미표시"]
+}

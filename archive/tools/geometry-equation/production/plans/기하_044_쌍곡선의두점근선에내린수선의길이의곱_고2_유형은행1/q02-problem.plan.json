@@ -1,0 +1,28 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {"kind":"HYPERBOLA","center":["0","0"],"aSquared":"7","bSquared":"7","transverse":"X"},
+  "points": [
+    {"id":"O","kind":"ORIGIN"},
+    {"id":"P","kind":"ON_CONIC","x":"4","sign":"POS"},
+    {"id":"A","kind":"FOOT","from":"P","onto":"asymP","rightAngle":true},
+    {"id":"B","kind":"FOOT","from":"P","onto":"asymN","rightAngle":true}
+  ],
+  "lines": [
+    {"id":"asymP","role":"ASYMPTOTE","sign":1,"dashed":true,"label":"y=x"},
+    {"id":"asymN","role":"ASYMPTOTE","sign":-1,"dashed":true,"label":"y=-x"}
+  ],
+  "segments": [
+    {"id":"PA","from":"P","to":"A"},
+    {"id":"AO","from":"A","to":"O"},
+    {"id":"OB","from":"O","to":"B"},
+    {"id":"BP","from":"B","to":"P"}
+  ],
+  "caption": "직각쌍곡선 위의 점 P에서 두 점근선에 내린 수선과 직사각형 AOBP",
+  "accessibilityDescription": "x²−y²=7의 오른쪽 위 가지 위 점 P에서 점근선 y=x, y=-x에 각각 내린 수선의 발 A와 B가 직각 표식으로 표시된다. 점 A, 원점 O, 점 B, 점 P를 연결한 사각형은 직사각형이다.",
+  "sourceConditions": [
+    {"id":"c1","condition":"x²−y²=7 즉 x²/7−y²/7=1은 점근선 y=±x가 원점에서 수직 교차한다.","mappedTo":["asymP","asymN","O"]},
+    {"id":"c2","condition":"P는 원문이 지정한 제1사분면 위의 임의점이다. 예시 P=(4,3)은 4²−3²=7을 만족하며 이 대표점의 위치 자체는 정답이 아니다.","mappedTo":["P"]},
+    {"id":"c3","condition":"P에서 y=x로의 수선 발 A=(7/2,7/2), y=-x로의 수선 발 B=(1/2,-1/2). PA⊥OA, PB⊥OB, AO⊥OB이므로 A-O-B-P가 직사각형을 이룬다. 넓이 정답은 미표시.","mappedTo":["A","B","PA","AO","OB","BP"]}
+  ],
+  "newVisualInformation": ["실제 점근선 y=±x와 쌍곡선 위 대표점 P=(4,3)", "정확히 계산된 두 수선의 발·직각 기호 및 직사각형의 네 변; 넓이 정답 미표시"]
+}

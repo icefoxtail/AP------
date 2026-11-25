@@ -1,0 +1,89 @@
+{
+  "campaign": "typebank-high2-geometry-problem-svg",
+  "typeGroup": "쌍곡선의 방정식·초점·평행이동·점근선·정육각형·수선 (기하 036–044)",
+  "auditKind": "SOURCE_FIGURE_TO_ENGINE_PLAN_PRE_RENDER",
+  "auditedAtKst": "2026-11-25",
+  "sourceOfTruth": "archive/exams/types/high/h2/기하_036~044의 현재 원본 JS questionBank[id] 발문·[그림:]·보기·정답·해설",
+  "sourceSha256": {
+    "기하_036": "83b38aea8e783bd8f0aba9c27a8ae3c9dcab34be74ce870819a2d0291e6a8967",
+    "기하_037": "700da78dc71386b205a5bbde12ee073a5f51753c938ae8c57610fd282acbb4f1",
+    "기하_038": "51d057b02b213473d0830cc31cd07678017777fe3894cb24b61cd49fb3b1e834",
+    "기하_039": "d76dd0fd1d37c18e6095fb8b91cd4b8657e929fefed1c4e74398cb02a1944445",
+    "기하_040": "6fe3e1a730bad2abf237beb1f8c784305b000860b826c8c55da87df08bf2a74f",
+    "기하_041": "87958e371ce833500a51adb8e13052a0efe9a2c0b4f45cc90ebc010a2472ebc3",
+    "기하_042": "79b0e1915e6deddecf4b0d2d35021b136cc329ca5c86a23401a94ade9995893b",
+    "기하_043": "a4a6cc654da7e7d120c263f4334b03e44e5f1f87ea6f727a4326c5f7390987c3",
+    "기하_044": "29341d159621c56c132000317adde1dd13b2796c1bb48fc69a64e3f55e2dcee7"
+  },
+  "scope": {
+    "distinctJsFiles": 9,
+    "allQuestions": 43,
+    "sourceFigures": 5,
+    "sourceVsPlanReviewed": 5,
+    "actualPlans": 5,
+    "lintShallowPass": 5,
+    "lintFullPass": 5,
+    "independentMathPass": 5,
+    "featureParityPreRenderPass": 3,
+    "engineCapabilityPendingWithPlan": 2,
+    "contentMathBlockedWithoutPlan": 0,
+    "noFigureQids": [
+      {"stemNumber":36,"qids":[1,2,4,5],"reason":"원문에 [그림:] 없음; 곡선 방정식·초점의 수치 계산 문항"},
+      {"stemNumber":37,"qids":[1,2,3,4,5,6],"reason":"원문에 [그림:] 없음; 타원·쌍곡선 초점 공유의 식 계산 문항"},
+      {"stemNumber":38,"qids":[1,2,3],"reason":"원문에 [그림:] 없음"},
+      {"stemNumber":39,"qids":[1,2,3,4,5],"reason":"원문에 [그림:] 없음; 평행이동 계산 문항"},
+      {"stemNumber":40,"qids":[1,2,3,4,5,6],"reason":"원문에 [그림:] 없음; 일반형 완전제곱 계산 문항"},
+      {"stemNumber":41,"qids":[1,2,3],"reason":"원문에 [그림:] 없음; 점근선·접선 식 계산 문항"},
+      {"stemNumber":42,"qids":[1,2,3],"reason":"원문에 [그림:] 없음; 평행이동 점근선 식 계산 문항"},
+      {"stemNumber":43,"qids":[1,2,3,4,5,6,7],"reason":"원문에 [그림:] 없음; 초점·점근선 조건의 계산 문항"},
+      {"stemNumber":44,"qids":[1],"reason":"원문에 [그림:] 없음; 두 점근선 거리의 곱 수식 문항"}
+    ]
+  },
+  "validation": {
+    "lintShallowCommand": "node archive/tools/geometry-equation/ops/claude-batch/plan-lint.cjs --shallow archive/tools/geometry-equation/production/plans/기하_0{36,38,43,44}_*/q*-problem.plan.json",
+    "lintFullCommand": "node archive/tools/geometry-equation/ops/claude-batch/plan-lint.cjs archive/tools/geometry-equation/production/plans/기하_0{36,38,43,44}_*/q*-problem.plan.json",
+    "dependencySource": "production/dependency-lock.json 및 runtime-package-lock.json SHA-256이 동일한 기존 작업공간의 공식 설치 의존성 임시 복제본 사용. 엔진·계약·검사는 현재 main. 저장소 미반영 .tmp 전용.",
+    "independentMathCheck": "별도 SymPy 검산: 036q03 a=4,c=6,b²=20; 038q04 x=4에서 y=±6,c=4,넓이=48; 043q08 초점(3,0)에서 양쪽 y=±√5x/2까지 거리²=5; 043q09 한 변4 정육각형 기울기 ±√3, x²/4−y²/12=1와 AB의 교점 P=(5/2,3√3/2), DP−AP=4; 044q02 P=(4,3)에서 발 A=(7/2,7/2),B=(1/2,-1/2),직교·넓이 7/2. 5/5 PASS.",
+    "featureParityStage": "PRE_RENDER_SOURCE_VS_PLAN_FIELDS",
+    "render": "NOT_RUN",
+    "pngVisualReview": "NOT_RUN",
+    "studentScreenReview": "NOT_RUN",
+    "a4PrintReview": "NOT_RUN",
+    "jsImageLink": "NOT_RUN",
+    "publication": "NOT_RUN"
+  },
+  "items": [
+    {
+      "stemNumber":36,"qid":3,"sourceVsPlan":"REVIEWED","planLintShallow":"PASS","planLintFull":"PASS","independentMath":"PASS","featureParity":"ENGINE_CAPABILITY_PENDING",
+      "plan":"archive/tools/geometry-equation/production/plans/기하_036_쌍곡선의방정식-초점이주어진경우_고2_유형은행1/q03-problem.plan.json",
+      "verified":"좌우 쌍곡선 x²/16−y²/20=1과 초점 F′(-6,0),F(6,0),꼭짓점 A(-4,0),B(4,0),원점 O의 순서를 source에서 독립 검산. 그림에 원문 없는 AB·FF′ 겹침 선분 없음. 답 b²−a²=4 미표시.",
+      "missingVisual":"원문 [그림]의 상징적 좌표 A(-a,0),B(a,0),F′(-c,0),F(c,0) 병기. 현행 엔진 symbolic coordinates 미지원; 숫자 좌표로 대체하면 원문의 미지수를 사전 공개하므로 금지."
+    },
+    {
+      "stemNumber":38,"qid":4,"sourceVsPlan":"REVIEWED","planLintShallow":"PASS","planLintFull":"PASS","independentMath":"PASS","featureParity":"PASS",
+      "plan":"archive/tools/geometry-equation/production/plans/기하_038_쌍곡선의방정식_고2_유형은행1/q04-problem.plan.json",
+      "verified":"3x²−y²=12, F(4,0),F′(-4,0),x=4 수직선,A(4,6),B(4,-6)가 실제 렌더 필드에 있고 세 변 AB,BF′,F′A로 삼각형을 닫는다. 원문 그림이 명시한 네 좌표만 coordinates:true. 답 넓이48 미표시."
+    },
+    {
+      "stemNumber":43,"qid":8,"sourceVsPlan":"REVIEWED","planLintShallow":"PASS","planLintFull":"PASS","independentMath":"PASS","featureParity":"ENGINE_CAPABILITY_PENDING",
+      "plan":"archive/tools/geometry-equation/production/plans/기하_043_쌍곡선의방정식-초점과점근선이주어진경우_고2_유형은행1/q08-problem.plan.json",
+      "verified":"x²/4−y²/5=1,초점 F(3,0),F′(-3,0), 원점 통과 두 점근선, F 중심 r²=5인 원의 동시 접함을 정확히 구현. 원 넓이5π는 그림에 미표시.",
+      "missingVisual":"원문 점근선 식 y=±√5x/2의 가시 텍스트 라벨. 두 라벨·한 라벨을 넣는 시도 모두 ELLIPSE_LABEL_NO_ROOM(line-asymP) full lint 거절. 실제 두 점선 자체는 있음."
+    },
+    {
+      "stemNumber":43,"qid":9,"sourceVsPlan":"REVIEWED","planLintShallow":"PASS","planLintFull":"PASS","independentMath":"PASS","featureParity":"PASS",
+      "plan":"archive/tools/geometry-equation/production/plans/기하_043_쌍곡선의방정식-초점과점근선이주어진경우_고2_유형은행1/q09-problem.plan.json",
+      "verified":"A(4,0),B(2,2√3),C(-2,2√3),D(-4,0),E(-2,-2√3),F(2,-2√3)는 모두 한 변 길이4. A·D를 실제 FOCUS로, BE·CF를 sign±1 ASYMPTOTE로, 쌍곡선 이름 H를 conics label로, P를 숨은 AB 직선과 곡선의 정확한 교점으로 구현. 답 DP−AP=4 미표시."
+    },
+    {
+      "stemNumber":44,"qid":2,"sourceVsPlan":"REVIEWED","planLintShallow":"PASS","planLintFull":"PASS","independentMath":"PASS","featureParity":"PASS",
+      "plan":"archive/tools/geometry-equation/production/plans/기하_044_쌍곡선의두점근선에내린수선의길이의곱_고2_유형은행1/q02-problem.plan.json",
+      "verified":"x²−y²=7과 점근선 y=±x,제1사분면 실제 곡선 점 P=(4,3) 대표를 사용. FOOT A=(7/2,7/2),B=(1/2,-1/2)를 별도 엔진 계산으로 구하고 rightAngle:true 두 곳, AO·OB·BP·PA 네 변으로 직사각형을 완성. 묻는 넓이7/2는 비표시."
+    }
+  ],
+  "engineHandoff": [
+    {"kind":"SYMBOLIC_COORDINATE_LABELS_UNSUPPORTED","qids":["036q03"],"target":"ellipse-figure-v1/conic/HYPERBOLA","request":"정확한 계산 좌표를 숨기면서 A(-a,0),B(a,0),F′(-c,0),F(c,0)처럼 원문 기호 좌표를 렌더하는 기능. 초점·꼭짓점 이름은 현행 표시됨."},
+    {"kind":"ASYMPTOTE_FORMULA_LABEL_NO_ROOM","qids":["043q08"],"target":"ellipse-figure-v1/conics/HYPERBOLA+CIRCLE","failedCode":"ELLIPSE_LABEL_NO_ROOM:line-asymP","request":"원점 통과 점근선 두 개와 F 중심 접원, 초점 라벨을 유지한 상태로 y=±√5x/2 식을 각각 해당 점선에 연결해 표시할 수 있도록 레이아웃/지시선 개선. 현재 선 자체와 원 접함은 정확함."}
+  ],
+  "handoffNote": "036~044 아홉 유형군의 원문 43문항에서 문제 [그림:]은 5건만 확인. 5건 각각 수학 별도 재계산, shallow/full 5/5. 렌더 전 필드 완성 3, 엔진 보강 2(036q03·043q08). 그림이 없는 38문항의 문제 SVG plan 신규 작성 없음. 기존 JS·정답·해설 수정 없음. SVG/PNG·학생화면·A4·JS 이미지 링크·게시 전부 NOT_RUN."
+}
