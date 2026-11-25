@@ -1,0 +1,36 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "P", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "Q", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "8" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "R", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "6" }] }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" }
+    ]
+  },
+  "displayPoints": ["P", "Q", "R"],
+  "hiddenPointNames": ["P", "Q", "R"],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    { "id": "legB", "refs": ["P", "Q"] },
+    { "id": "legC", "refs": ["P", "R"] },
+    { "id": "hypotenuseA", "refs": ["Q", "R"] }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      { "id": "labelB", "ownerSegment": "legB", "text": "b", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "labelC", "ownerSegment": "legC", "text": "c", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "labelA", "ownerSegment": "hypotenuseA", "text": "a", "factRole": "DERIVED_INTERMEDIATE" }
+    ]
+  },
+  "rightAngles": [{ "id": "rightCorner", "refs": ["Q", "P", "R"] }],
+  "caption": "a²=b²+c²에서 빗변 a와 두 직각변 b, c가 대응하는 직각삼각형(비율 예시)",
+  "accessibilityDescription": "가로 선분 b와 세로 선분 c가 서로 수직으로 만나고, 두 끝을 이은 빗변에 a가 표시된 직각삼각형이다. 직각 표시가 있고 다른 각·변 값은 표시되지 않았다. 실제 세 변의 수치 비율은 문제에서 주어지지 않아 대표 모양으로 표현하였다.",
+  "sourceConditions": [
+    { "id": "S1", "condition": "중근 조건의 판별식에서 b²−a²+c²=0, 즉 a²=b²+c²가 유도된다.", "mappedTo": "displaySegments[legB,legC,hypotenuseA]와 planeMarks.expressionLabels[labelA,labelB,labelC]" },
+    { "id": "S2", "condition": "양수 a,b,c가 삼각형 세 변의 길이이고 피타고라스 정리의 역에 의해 빗변이 a이다.", "mappedTo": "rightAngles[rightCorner], hypotenuseA에 a, legB·legC에 b·c 표기" },
+    { "id": "S3", "condition": "원문에 a,b,c의 실제 수치는 없으며 세 변의 비율도 고정되지 않는다.", "mappedTo": "대표 좌표 8·6·10은 직각성 검사용일 뿐 수치 라벨을 표시하지 않고 caption에 비율 예시 고지" }
+  ],
+  "newVisualInformation": ["피타고라스 정리의 역을 사용한 해설 결론을 빗변 a·직각변 b,c 및 실제 직각 표식으로 대응시킨다."]
+}
