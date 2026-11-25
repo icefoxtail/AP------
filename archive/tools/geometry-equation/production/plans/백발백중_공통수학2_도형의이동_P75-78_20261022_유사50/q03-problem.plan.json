@@ -1,0 +1,120 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": { "coordinates": [
+          { "kind": "integer", "value": "-2" },
+          { "kind": "integer", "value": "0" }
+        ] },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": { "coordinates": [
+          { "kind": "integer", "value": "1" },
+          { "kind": "integer", "value": "1" }
+        ] },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "givenLine",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "-3"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [
+    "givenLine"
+  ],
+  "displayCircles": [],
+  "displaySegments": [],
+  "displayPoints": ["P", "Q"],
+  "hiddenPointNames": ["P", "Q"],
+  "hiddenPointStyle": "NONE",
+  "lineLabels": [{ "nodeId": "givenLine", "form": "GENERAL" }],
+  "coordinateLabels": [],
+  "caption": "주어진 직선 x-3y+2=0과 원점 대칭 기준을 표시한다. 대칭이동한 결과는 문제 그림에 그리지 않았다.",
+  "accessibilityDescription": "좌표평면에서 원문에 주어진 직선 x-3y+2=0의 위치와 원점 대칭 기준을 이해하도록 표시한다. 구할 결과의 위치와 방정식은 보여 주지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문에 주어진 직선 x-3y+2=0",
+      "mappedTo": [
+        "givenLine"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "원점에 대하여 대칭이동하는 조건",
+      "mappedTo": [
+        "O",
+        "U"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "문제축은 이동 후 위치와 결과 방정식을 나타내지 않음",
+      "mappedTo": [
+        "givenLine"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "주어진 직선이 좌표축과 만나는 모양을 보여 주되, 대칭 결과 직선은 학생이 구하도록 비워 둔다."
+  ]
+}

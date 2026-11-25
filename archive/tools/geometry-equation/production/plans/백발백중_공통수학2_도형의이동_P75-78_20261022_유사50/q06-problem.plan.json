@@ -1,0 +1,117 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "S",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-1"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circle",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "S"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "8"
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [1],
+    "y": [1]
+  },
+  "displayLines": [],
+  "displayCircles": [
+    "circle"
+  ],
+  "displaySegments": [],
+  "displayPoints": ["S"],
+  "hiddenPointNames": ["S"],
+  "hiddenPointStyle": "NONE",
+  "coordinateLabels": [],
+  "caption": "주어진 원 (x+1)²+(y-4)²=8과 y축 대칭 기준을 표시한다. 대칭이동한 결과는 문제 그림에 그리지 않았다.",
+  "accessibilityDescription": "좌표평면에서 원문에 주어진 원 (x+1)²+(y-4)²=8의 위치와 y축 대칭 기준을 이해하도록 표시한다. 구할 결과의 위치와 방정식은 보여 주지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문에 주어진 원 (x+1)²+(y-4)²=8",
+      "mappedTo": [
+        "S",
+        "circle"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "y축에 대하여 대칭이동하는 조건",
+      "mappedTo": [
+        "O",
+        "U"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "문제축은 이동 후 위치와 결과 방정식을 나타내지 않음",
+      "mappedTo": [
+        "circle"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "주어진 원의 크기와 중심의 축에 대한 상대 위치를 먼저 살펴보고, 이동된 원은 학생이 직접 결정하게 한다."
+  ]
+}
