@@ -1,0 +1,131 @@
+{
+  "schemaVersion": "gpt-similar-exam-create-review-receipt-v1",
+  "examUid": "26_팔마고_1학기_중간_고1_유사2",
+  "sourceArchiveFile": "archive/exams/similar/high/h1/1mid/26_팔마고_1학기_중간_고1_유사2.js",
+  "sourceGitBlobSha": "366f43f6e677ab4c6c521fde000cdbadc891cd7b",
+  "createdAt": "2026-11-25",
+  "reviewer": "GPT author self-check; no separate independent reviewer",
+  "mode": "ALIVE EXAM_FOLLOWUP",
+  "difficultyMixer": "SOURCE_BALANCED",
+  "sourceOriginalFile": "archive/exams/original/high/h1/1mid/26_팔마고_1학기_중간_고1_기출_c.js",
+  "comparedVariants": [
+    "archive/exams/similar/high/h1/1mid/26_팔마고_1학기_중간_고1_유사.js"
+  ],
+  "questionCount": 22,
+  "questionTypeCounts": {
+    "객관식": 18,
+    "서술형": 4
+  },
+  "totalPoints": 100,
+  "originalBuckets": {
+    "1": 1,
+    "2": 6,
+    "3": 6,
+    "4": 6,
+    "5": 3
+  },
+  "newBuckets": {
+    "1": 1,
+    "2": 6,
+    "3": 6,
+    "4": 6,
+    "5": 3
+  },
+  "followupCounts": {
+    "CONFIRMATION": 22,
+    "ADVANCED": 0
+  },
+  "checkResults": {
+    "sourceAndExistingRead": {
+      "status": "PASS",
+      "count": 22
+    },
+    "mathBlindFromFinalStatements": {
+      "status": "AUTHOR_SELF_CHECK",
+      "count": 22,
+      "note": "최종 발문과 보기를 기준으로 작성자 재풀이. 독립 두 번째 모델이 한 검수는 아님"
+    },
+    "arithmeticScript": {
+      "status": "PASS",
+      "count": 22,
+      "assertions": 22,
+      "note": "SymPy/복소수 2500쌍 검산·정수 조건·인수 관계 별도 스크립트 22문항 통과 (작성자의 로컬 실행, script 미커밋)"
+    },
+    "nodeCheck": {
+      "status": "PASS",
+      "count": 1
+    },
+    "choiceOrderAndAnswerDistribution": {
+      "status": "PASS",
+      "objectiveCount": 18,
+      "defects": 0,
+      "answerSequence": "⑤④③④①②②①①③⑤②①③②④①②"
+    },
+    "ptTplAndCurriculumBindings": {
+      "status": "PASS",
+      "count": 22,
+      "note": "ACTIVE registry + parent TPL + curriculum/subUnit binding 22/22"
+    },
+    "fourSlotTermsAndUidBlobBinding": {
+      "status": "PASS",
+      "count": 22,
+      "note": "dictionary v1.6 valid IDs, QID-v1, Git blob SHA binding; separate meta independent approval remains review_required"
+    },
+    "tableStaticCheck": {
+      "status": "PASS",
+      "files": 1,
+      "tables": 0,
+      "defects": 0
+    },
+    "problemVisual": {
+      "status": "EXEMPT",
+      "count": 22
+    },
+    "solutionVisual": {
+      "status": "SVG_TO_CREATE",
+      "count": 2,
+      "exemptCount": 20
+    },
+    "svgPlanLintShallow": {
+      "status": "PASS",
+      "count": 2,
+      "ok": 2,
+      "fail": 0
+    },
+    "svgPlanLintFull": {
+      "status": "ENVIRONMENT_BLOCKED",
+      "count": 2,
+      "ok": 0,
+      "reason": "검사용 작업 환경의 .tmp/apmath-visual-engine/dependencies/NotoSansKR.ttf 폰트 의존 파일 없음; plan 내용 오류 판정 아님"
+    },
+    "svgRender": {
+      "status": "NOT_RUN",
+      "count": 2
+    },
+    "svgPngVisualReview": {
+      "status": "NOT_RUN",
+      "count": 2
+    },
+    "releaseHarnessDraft": {
+      "status": "FAIL_VISUAL_PENDING",
+      "errors": 4,
+      "note": "Q09/Q22 미제작 해설 SVG의 실제 연결과 엔진 evidence 각 2항목. 기타 draft gate 결함 0건; 출고 전체 PASS 아님"
+    },
+    "independentMetaApproval": {
+      "status": "review_required",
+      "count": 0
+    },
+    "metadataRegistration": {
+      "status": "NOT_RUN"
+    },
+    "metadataDryRun": {
+      "status": "REVIEW_REQUIRED",
+      "note": "등록기는 review_required 초안의 승인 누락을 거절하므로 정식 등록은 후속 검토 대상"
+    },
+    "ciAndDeployment": {
+      "status": "NOT_RUN"
+    }
+  },
+  "svgPendingPath": "archive/exams/similar/high/h1/1mid/26_팔마고_1학기_중간_고1_유사2_plans/SVG_PENDING.md",
+  "experienceLedgerPath": "archive/exams/similar/high/h1/1mid/26_팔마고_1학기_중간_고1_유사2_plans/EXPERIENCE_LEDGER.json"
+}
