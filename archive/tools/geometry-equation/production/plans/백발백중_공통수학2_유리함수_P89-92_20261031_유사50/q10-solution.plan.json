@@ -1,0 +1,81 @@
+{
+  "capability": "rational-spike-v1",
+  "graphPlan": {
+    "family": "rational",
+    "numerator": [
+      "-1",
+      "4"
+    ],
+    "denominator": [
+      "-1",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      2.0,
+      4.0
+    ],
+    "viewport": [
+      1.0,
+      5.0,
+      4.0,
+      8.0
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "LeftEnd",
+          "curveX": "2",
+          "unnamed": true,
+          "coordinates": true
+        },
+        {
+          "id": "RightEnd",
+          "curveX": "4",
+          "unnamed": true,
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "정의역의 양 끝 x=2, x=4에서 함수값은 각각 7, 5이다. 이 구간에서 함수가 단조이므로 최댓값과 최솟값은 양 끝점에서 결정된다.",
+  "accessibilityDescription": "유리함수의 닫힌구간 그래프. 왼쪽 끝점은 (2, 7), 오른쪽 끝점은 (4, 5)이며 두 끝은 포함된다.",
+  "sourceConditions": [
+    {
+      "id": "given-function",
+      "condition": "$y = \\frac{4x+b}{x-1}$",
+      "mappedTo": [
+        "graphPlan.numerator",
+        "graphPlan.denominator"
+      ]
+    },
+    {
+      "id": "interval",
+      "condition": "풀이에서 확정된 닫힌구간 [2, 4]",
+      "mappedTo": [
+        "graphPlan.domain",
+        "graphPlan.overlays.points"
+      ]
+    },
+    {
+      "id": "endpoint-values",
+      "condition": "f(2)=7, f(4)=5",
+      "mappedTo": [
+        "graphPlan.overlays.points[0].curveX",
+        "graphPlan.overlays.points[1].curveX",
+        "graphPlan.overlays.points[0].coordinates",
+        "graphPlan.overlays.points[1].coordinates"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "양 끝점 (2, 7), (4, 5)을 실좌표로 표시하고 닫힌 끝점을 그린다.",
+    "증가·감소 방향을 실제 그래프의 좌우 높이 비교로 보인다."
+  ]
+}

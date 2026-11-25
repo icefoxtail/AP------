@@ -1,0 +1,81 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A"
+      }
+    ],
+    "universe": {
+      "name": "U"
+    },
+    "elements": [
+      {
+        "text": "1",
+        "in": []
+      },
+      {
+        "text": "2",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "3",
+        "in": []
+      },
+      {
+        "text": "4",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "5",
+        "in": []
+      },
+      {
+        "text": "6",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "7",
+        "in": []
+      }
+    ],
+    "shade": "A^c"
+  },
+  "caption": "A와 서로소인 부분집합에 들어갈 수 있는 원소는 U에서 A를 뺀 영역에 있다.",
+  "accessibilityDescription": "전체집합 U의 원소를 집합 A의 안팎으로 나누고 여집합 영역을 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "universe",
+      "condition": "U={1, 2, 3, 4, 5, 6, 7}",
+      "mappedTo": [
+        "diagram.universe",
+        "diagram.elements"
+      ]
+    },
+    {
+      "id": "A",
+      "condition": "A={2, 4, 6}",
+      "mappedTo": [
+        "diagram.sets",
+        "diagram.elements"
+      ]
+    },
+    {
+      "id": "disjoint",
+      "condition": "A와 서로소인 부분집합의 원소는 A의 여집합에서만 선택",
+      "mappedTo": [
+        "diagram.shade"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "A 밖의 선택 가능한 원소를 실제 위치와 여집합 영역으로 보인다."
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "A",
+        "color": "BLUE",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-3",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "3",
+              "state": "OPEN"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "B",
+        "color": "WARM",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-3",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "4",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "C",
+        "color": "GREEN",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-2",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "3",
+              "state": "OPEN"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "세 집합의 포함 관계"
+  },
+  "caption": "B는 A를 포함하고 A는 C를 포함하며, 열린·닫힌 끝점을 구별한다.",
+  "accessibilityDescription": "실수의 세 구간 A, B, C를 열린 끝점과 닫힌 끝점으로 구별하여 그린 수직선.",
+  "sourceConditions": [
+    {
+      "id": "interval-A",
+      "condition": "A: -3<x<3",
+      "mappedTo": [
+        "numberLine.rows[0].pieces"
+      ]
+    },
+    {
+      "id": "interval-B",
+      "condition": "B: -3≤x≤4",
+      "mappedTo": [
+        "numberLine.rows[1].pieces"
+      ]
+    },
+    {
+      "id": "interval-C",
+      "condition": "C: -2<x<3",
+      "mappedTo": [
+        "numberLine.rows[2].pieces"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "세 구간의 좌우 경계와 끝점 포함 상태를 행별로 읽고 C⊂A⊂B를 확인한다."
+  ]
+}

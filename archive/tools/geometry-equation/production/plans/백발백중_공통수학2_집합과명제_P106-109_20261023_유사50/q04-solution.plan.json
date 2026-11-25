@@ -1,0 +1,71 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "A",
+        "color": "BLUE",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-2",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "5",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "B",
+        "color": "WARM",
+        "pieces": [
+          {
+            "lo": {
+              "value": "1",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "7",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "RESULT",
+        "label": "공통 정수",
+        "integerPoints": true
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "구간의 겹침"
+  },
+  "caption": "두 정수 범위의 겹치는 구간과 그 안의 정수를 표시한다.",
+  "accessibilityDescription": "정수 구간 두 개와 공통 정수들을 나타낸 수직선.",
+  "sourceConditions": [
+    {
+      "id": "interval-A",
+      "condition": "A: -2≤x≤5",
+      "mappedTo": [
+        "numberLine.rows[0].pieces"
+      ]
+    },
+    {
+      "id": "interval-B",
+      "condition": "B: 1<x≤7",
+      "mappedTo": [
+        "numberLine.rows[1].pieces"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "교집합 구간과 양끝 포함 상태를 계산된 RESULT 줄과 정수점으로 확인한다."
+  ]
+}
