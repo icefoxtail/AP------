@@ -63,14 +63,14 @@ window.questionBank = [
     "tags": [],
     "content": "등차수열 $\\{a_n\\}$에서 $a_3=4$이고 $a_4+a_7=23$일 때 공차는? [3점]",
     "choices": [
+      "$\\dfrac{15}{8}$",
+      "$\\dfrac52$",
       "$3$",
-      "$4$",
-      "$5$",
-      "$6$",
-      "$7$"
+      "$\\dfrac{15}{4}$",
+      "$5$"
     ],
-    "answer": "①",
-    "solution": "공차를 $d$라 하면 $a_4=a_3+d=4+d$, $a_7=a_3+4d=4+4d$이다.<br>주어진 합을 사용하면 $(4+d)+(4+4d)=23$, 즉 $8+5d=23$이다.<br>$5d=15$이므로 $d=3$이다. 따라서 정답은 ①이다.",
+    "answer": "③",
+    "solution": "공차를 $d$라 하면 $a_4=a_3+d=4+d$, $a_7=a_3+4d=4+4d$이다.<br>주어진 합을 사용하면 $(4+d)+(4+4d)=23$, 즉 $8+5d=23$이다.<br>$5d=15$이므로 $d=3$이다. 따라서 정답은 ③이다.",
     "points": 3,
     "problemTypeKey": "PT_H22A_06_ARITHMETIC_SEQUENCE",
     "templateKey": "TPL_H22A_06_ARITHMETIC_SEQUENCE_115",
@@ -399,14 +399,14 @@ window.questionBank = [
     "tags": [],
     "content": "삼각형 $ABC$에서 $(\\sin A+\\sin B):(\\sin B+\\sin C):(\\sin C+\\sin A)=7:10:7$이다. $\\cos A$의 값은? [4점]",
     "choices": [
+      "$\\dfrac15$",
+      "$\\dfrac57$",
+      "$\\dfrac78$",
       "$\\dfrac{23}{25}$",
-      "$\\dfrac{22}{25}$",
-      "$\\dfrac{21}{25}$",
-      "$\\dfrac{20}{25}$",
-      "$\\dfrac{19}{25}$"
+      "$\\dfrac{49}{50}$"
     ],
-    "answer": "①",
-    "solution": "첫째와 셋째 비가 같으므로 $\\sin B=\\sin C$이다. 삼각형의 내각에서 $B=C$이다.<br>$x=\\sin A$, $y=\\sin B=\\sin C$라 하면 $(x+y):2y=7:10$이므로 $10x+10y=14y$, 즉 $y=\\dfrac52x$이다.<br>사인법칙에 의해 $a:b:c=2:5:5$이다. $a=2t,b=c=5t$로 두고 각 $A$에 코사인법칙을 적용하면 $\\cos A=\\dfrac{b^2+c^2-a^2}{2bc}=\\dfrac{25+25-4}{50}=\\dfrac{23}{25}$이다. 정답은 ①이다.",
+    "answer": "④",
+    "solution": "첫째와 셋째 비가 같으므로 $\\sin B=\\sin C$이다. 삼각형의 내각에서 $B=C$이다.<br>$x=\\sin A$, $y=\\sin B=\\sin C$라 하면 $(x+y):2y=7:10$이므로 $10x+10y=14y$, 즉 $y=\\dfrac52x$이다.<br>사인법칙에 의해 $a:b:c=2:5:5$이다. $a=2t,b=c=5t$로 두고 각 $A$에 코사인법칙을 적용하면 $\\cos A=\\dfrac{b^2+c^2-a^2}{2bc}=\\dfrac{25+25-4}{50}=\\dfrac{23}{25}$이다. 정답은 ④이다.",
     "points": 4,
     "problemTypeKey": "PT_H22A_05_COSINE_LAW",
     "templateKey": "TPL_H22A_05_COSINE_LAW_111",
@@ -567,10 +567,10 @@ window.questionBank = [
     "tags": [],
     "content": "두 함수 $f(x)=4\\cos\\left(x+\\dfrac\\pi6\\right)+1$, $g(x)=\\dfrac\\pi6\\sin(\\pi x)$가 있다. 합성함수 $(f\\circ g)(x)$의 최댓값과 최솟값의 합은? [5점]",
     "choices": [
-      "$4$",
+      "$2$",
+      "$3$",
       "$5$",
       "$6$",
-      "$7$",
       "$8$"
     ],
     "answer": "⑤",

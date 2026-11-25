@@ -2,7 +2,7 @@
   "schemaVersion": "alive-exam-followup-source-balanced-v1",
   "examUid": "26_금당고_1학기_기말_고2_대수_유사2",
   "sourceArchiveFile": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사2.js",
-  "sourceGitBlobSha": "c658397e77365ffb62cafe5da524f474f945d3e0",
+  "sourceGitBlobSha": "74d2aa760afdfc6c71e8a66375ff1b7fe1fa156c",
   "originalSourceFile": "archive/exams/original/high/h2/1final/26_금당고_1학기_기말_고2_대수.js",
   "originalSourceSha256": "65d1a43f7935790fc2abc0835c8d0415de2bcbde269720571bb19b56d44f0607",
   "priorSimilarFile": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사.js",
@@ -23,13 +23,47 @@
     "neededAxes": 8,
     "engineReadyPlans": 2,
     "unsupportedPlans": 6,
-    "renderedSvg": 0
+    "renderedSvg": 0,
+    "postCreationR1Reviewed": 21,
+    "postCreationR1MathCorrect": 21
   },
   "review": {
     "authorSelfReview": "PASS",
     "independentReviewer": "NOT_RUN",
     "externalChromeVisualQa": "NOT_RUN",
-    "metadataState": "review_required"
+    "metadataState": "review_required",
+    "postCreationIndependentR1": {
+      "reviewedAt": "2026-11-25",
+      "role": "GPT independent post-creation content R1 (separate conversation)",
+      "mathAnswersAndExplanations": "21/21 matched on direct mathematical re-solution",
+      "firstReadBlindFromStoredAnswer": "19/21",
+      "firstReadNonBlindOrdinals": [
+        1,
+        2
+      ],
+      "note": "Reviewer encountered Q01–Q02 stored answers while opening the source. Both were independently recalculated. Do not represent this as full 21/21 frozen blind I2 or human approval.",
+      "changedChoiceOrdinals": [
+        2,
+        10,
+        14
+      ],
+      "correctedFourSlotOrdinals": [
+        1,
+        2,
+        3,
+        6,
+        7,
+        8,
+        13,
+        20,
+        21
+      ],
+      "objectiveReview": "19 objective items: mathematical uniqueness, explicit ordering and distractor plausibility reviewed",
+      "writtenReview": "Q20 k=5; Q21 exactly seven ordered pairs, independently derived",
+      "remainingVisual": "8 BENEFICIAL axes; 0 REQUIRED problem figures. SVG render/PNG visual QA NOT_RUN, formal draft gate still reports 6 visual failures.",
+      "finalMetadataApproval": "review_required",
+      "studentUiAndDeployment": "NOT_RUN"
+    }
   },
   "engineEvidence": {
     "planShallowLint": "42/42 lint reported OK (including EXEMPT/UNSUPPORTED statuses); 2/2 real plans PASS",
@@ -189,6 +223,10 @@
         ],
         "goal": [
           {
+            "termId": 132,
+            "label": "판정"
+          },
+          {
             "termId": 127,
             "label": "최댓값"
           },
@@ -252,7 +290,7 @@
       "decisiveMethod": "PT_H22A_06_ARITHMETIC_SEQUENCE / TPL_H22A_06_ARITHMETIC_SEQUENCE_115",
       "variationAxis": "두 항의 값 대신 한 항과 떨어진 두 항의 합을 조건으로 사용",
       "duplicateCheck": "원본 및 유사1 대비 조건 정보·목표·진입 판단 중 의미 변화. 수치만 교체한 변형이 아님.",
-      "answer": "①",
+      "answer": "③",
       "studentSolutionComplete": true,
       "mathBlindI1": "PASS",
       "externalIndependentI2": "NOT_RUN",
@@ -288,6 +326,10 @@
           {
             "termId": 270,
             "label": "등차수열"
+          },
+          {
+            "termId": 734,
+            "label": "일반항"
           }
         ],
         "condition": []
@@ -358,10 +400,6 @@
           {
             "termId": 715,
             "label": "외각"
-          },
-          {
-            "termId": 154,
-            "label": "현"
           }
         ],
         "goal": [
@@ -625,14 +663,22 @@
         ],
         "goal": [
           {
-            "termId": 269,
-            "label": "수열"
+            "termId": 1,
+            "label": "자연수"
+          },
+          {
+            "termId": 127,
+            "label": "최댓값"
           }
         ],
         "method": [
           {
             "termId": 271,
             "label": "등비수열"
+          },
+          {
+            "termId": 734,
+            "label": "일반항"
           }
         ],
         "condition": [
@@ -720,6 +766,10 @@
           {
             "termId": 286,
             "label": "합"
+          },
+          {
+            "termId": 479,
+            "label": "수열의합"
           }
         ],
         "condition": []
@@ -796,6 +846,14 @@
           {
             "termId": 674,
             "label": "사인"
+          },
+          {
+            "termId": 675,
+            "label": "코사인"
+          },
+          {
+            "termId": 287,
+            "label": "곱"
           }
         ],
         "method": [
@@ -939,7 +997,7 @@
       "decisiveMethod": "PT_H22A_05_COSINE_LAW / TPL_H22A_05_COSINE_LAW_111",
       "variationAxis": "유도한 변의 비로 다른 꼭짓점의 코사인값을 판정",
       "duplicateCheck": "원본 및 유사1 대비 조건 정보·목표·진입 판단 중 의미 변화. 수치만 교체한 변형이 아님.",
-      "answer": "①",
+      "answer": "④",
       "studentSolutionComplete": true,
       "mathBlindI1": "PASS",
       "externalIndependentI2": "NOT_RUN",
@@ -1231,6 +1289,10 @@
           {
             "termId": 329,
             "label": "모서리"
+          },
+          {
+            "termId": 287,
+            "label": "곱"
           }
         ],
         "method": [
@@ -1855,17 +1917,21 @@
             "label": "치역"
           },
           {
-            "termId": 270,
-            "label": "등차수열"
+            "termId": 1,
+            "label": "자연수"
           }
         ],
         "goal": [
           {
-            "termId": 269,
-            "label": "수열"
+            "termId": 308,
+            "label": "매개변수"
           }
         ],
         "method": [
+          {
+            "termId": 270,
+            "label": "등차수열"
+          },
           {
             "termId": 479,
             "label": "수열의합"
@@ -1873,8 +1939,8 @@
         ],
         "condition": [
           {
-            "termId": 355,
-            "label": "일차부등식"
+            "termId": 286,
+            "label": "합"
           }
         ]
       },
@@ -1952,8 +2018,8 @@
         ],
         "goal": [
           {
-            "termId": 656,
-            "label": "원소의개수"
+            "termId": 402,
+            "label": "순서쌍"
           }
         ],
         "method": [
@@ -1972,8 +2038,16 @@
         ],
         "condition": [
           {
-            "termId": 63,
-            "label": "부등식"
+            "termId": 110,
+            "label": "대칭성"
+          },
+          {
+            "termId": 181,
+            "label": "교점"
+          },
+          {
+            "termId": 129,
+            "label": "개수"
           }
         ]
       },
