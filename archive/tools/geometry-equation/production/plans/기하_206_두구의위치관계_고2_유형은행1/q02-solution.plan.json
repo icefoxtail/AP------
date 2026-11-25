@@ -1,0 +1,58 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "1" }, { "kind": "integer", "value": "-2" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "5" }, { "kind": "integer", "value": "1" }] }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "D", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "-3" }, { "kind": "integer", "value": "1" }] }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "T1", "op": "DIVISION_POINT", "inputs": ["A", "B"], "args": { "m": { "kind": "integer", "value": "3" }, "n": { "kind": "integer", "value": "2" }, "mode": "INTERNAL" }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "T2", "op": "DIVISION_POINT", "inputs": ["A", "D"], "args": { "m": { "kind": "integer", "value": "3" }, "n": { "kind": "integer", "value": "2" }, "mode": "INTERNAL" }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "ca", "op": "CIRCLE_CENTER_RADIUS", "inputs": ["A"], "args": { "radius": { "kind": "integer", "value": "3" } }, "outputType": "CIRCLE", "factRole": "GIVEN" },
+      { "id": "cb", "op": "CIRCLE_CENTER_RADIUS", "inputs": ["B"], "args": { "radius": { "kind": "integer", "value": "2" } }, "outputType": "CIRCLE", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "cd", "op": "CIRCLE_CENTER_RADIUS", "inputs": ["D"], "args": { "radius": { "kind": "integer", "value": "2" } }, "outputType": "CIRCLE", "factRole": "DERIVED_INTERMEDIATE" }
+    ]
+  },
+  "displayPoints": ["A", "B", "D", "T1", "T2"],
+  "hiddenPointNames": ["T1", "T2"],
+  "displayCircles": ["ca", "cb", "cd"],
+  "displaySegments": [
+    { "id": "sAT1", "refs": ["A", "T1"] },
+    { "id": "sT1B", "refs": ["T1", "B"] },
+    { "id": "sAT2", "refs": ["A", "T2"] },
+    { "id": "sT2D", "refs": ["T2", "D"] }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      { "id": "dAB", "from": "A", "to": "B", "label": "5", "side": "BELOW", "value": "5" },
+      { "id": "dAD", "from": "A", "to": "D", "label": "5", "side": "BELOW", "value": "5" },
+      { "id": "dAT1", "from": "A", "to": "T1", "label": "3", "side": "ABOVE", "value": "3" },
+      { "id": "dT1B", "from": "T1", "to": "B", "label": "2", "side": "ABOVE", "value": "2" }
+    ],
+    "facts": [
+      { "kind": "ON_CIRCLE", "circle": "ca", "points": ["T1", "T2"] },
+      { "kind": "ON_CIRCLE", "circle": "cb", "points": ["T1"] },
+      { "kind": "ON_CIRCLE", "circle": "cd", "points": ["T2"] }
+    ]
+  },
+  "caption": "yz평면 단면에서 반지름 3인 원의 양쪽에 반지름 2인 단면원이 각각 외접한다. 두 중심 위치는 k=5와 k=-3의 경우다.",
+  "accessibilityDescription": "좌표 (1,-2)에 중심을 둔 반지름 3의 원과 (5,1), (-3,1)에 각각 중심을 둔 반지름 2의 원들이 접한 두 경우를 한 그림에 비교한다.",
+  "sourceQuote": "두 구 $(x-2)^2+(y-1)^2+(z+2)^2=13$, $(x+3)^2+(y-k)^2+(z-1)^2=13$의 yz평면 단면원이 서로 외접한다.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "yz평면의 첫 단면원 중심 (y,z)=(1,-2), 반지름 3", "mappedTo": "mathPlan.nodes[A,ca]" },
+    { "id": "c2", "condition": "둘째 단면원 반지름 2, 중심 (k,1)", "mappedTo": "mathPlan.nodes[cb,cd]" },
+    { "id": "c3", "condition": "중심 거리 5, 즉 (k-1)^2+3^2=5^2", "mappedTo": "mathPlan.nodes[B,D];planeMarks.dimensions[dAB,dAD]" },
+    { "id": "c4", "condition": "해설에서 도출한 k=5 또는 k=-3의 두 위치", "mappedTo": "mathPlan.nodes[B,D].args.coordinates" },
+    { "id": "c5", "condition": "두 원은 각각 외접하므로 공통 원주점이 하나씩", "mappedTo": "mathPlan.nodes[T1,T2];planeMarks.facts[0..2];displayCircles" },
+    { "id": "c6", "condition": "한 그림에 두 경우를 겹쳐 표시하되 둘째 원끼리 접한다는 조건은 없음", "mappedTo": "displayCircles[0..2];caption" }
+  ],
+  "newVisualInformation": [
+    "첫 단면원만 공통으로 놓고 k의 두 해에 해당하는 둘째 단면원을 모두 표시하는 해설 비교도다.",
+    "원의 위치는 실제 yz평면 좌표를 사용하므로 새로 만든 임의 길이 조건은 없다."
+  ]
+}

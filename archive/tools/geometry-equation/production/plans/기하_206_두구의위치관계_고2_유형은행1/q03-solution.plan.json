@@ -1,0 +1,48 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "6" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "P", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "1" }, { "kind": "expression", "op": "mul", "args": [{ "kind": "integer", "value": "2" }, { "kind": "expression", "op": "sqrt", "args": [{ "kind": "integer", "value": "6" }] }] }] }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "lAB", "op": "LINE_THROUGH", "inputs": ["A", "B"], "args": {}, "outputType": "LINE", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "H", "op": "PERPENDICULAR_FOOT", "inputs": ["P", "lAB"], "args": {}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" }
+    ]
+  },
+  "displayPoints": ["A", "B", "P", "H"],
+  "displaySegments": [
+    { "id": "sAB", "refs": ["A", "B"] },
+    { "id": "sAP", "refs": ["A", "P"] },
+    { "id": "sBP", "refs": ["B", "P"] },
+    { "id": "sPH", "refs": ["P", "H"], "dashed": true }
+  ],
+  "rightAngles": [{ "id": "raH", "refs": ["P", "H", "A"] }],
+  "planeMarks": {
+    "dimensions": [
+      { "id": "dAB", "from": "A", "to": "B", "label": "6", "side": "BELOW", "value": "6" },
+      { "id": "dAP", "from": "A", "to": "P", "label": "5", "side": "LEFT", "value": "5" },
+      { "id": "dBP", "from": "B", "to": "P", "label": "7", "side": "RIGHT", "value": "7" },
+      { "id": "dPH", "from": "P", "to": "H", "label": "2sqrt(6)", "side": "RIGHT" }
+    ]
+  },
+  "caption": "두 구의 중심 A, B와 가변 중심 P가 정하는 평면의 한 단면에서 PA=5, PB=7, AB=6, 수선 PH=2√6인 삼각형을 나타낸다.",
+  "accessibilityDescription": "밑변 AB의 길이는 6, 두 변 PA와 PB의 길이는 각각 5와 7인 삼각형 PAB이며, P에서 AB에 내린 수선 PH의 길이는 2루트6이다.",
+  "sourceQuote": "점 P를 중심으로 하고 반지름의 길이가 4인 구가 반지름 1, 3인 두 구에 동시에 외접할 때, 점 P가 나타내는 도형의 길이를 구한다.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "중심 A=(1,-2,0), B=(3,2,-4)의 거리 AB=6", "mappedTo": "mathPlan.nodes[A,B] representative axial cross-section;planeMarks.dimensions[dAB]" },
+    { "id": "c2", "condition": "외접하므로 PA=4+1=5", "mappedTo": "mathPlan.nodes[P];displaySegments[sAP];planeMarks.dimensions[dAP]" },
+    { "id": "c3", "condition": "외접하므로 PB=4+3=7", "mappedTo": "mathPlan.nodes[P];displaySegments[sBP];planeMarks.dimensions[dBP]" },
+    { "id": "c4", "condition": "P에서 AB로 내린 수선의 발 H와 높이 2sqrt(6)", "mappedTo": "mathPlan.nodes[H].op=PERPENDICULAR_FOOT;displaySegments[sPH];rightAngles[raH];planeMarks.dimensions[dPH]" },
+    { "id": "c5", "condition": "P를 AB 둘레로 회전할 때의 원 궤적", "mappedTo": "ENGINE_CAPABILITY_PENDING:SPHERE_INTERSECTION_LOCUS_CIRCLE_IN_3D" }
+  ],
+  "newVisualInformation": [
+    "평면 속 좌표 A=(0,0), B=(6,0), P=(1,2sqrt(6))는 원래 공간좌표가 아니라 세 거리 5,6,7을 동시에 만족하는 합동 단면의 대표 위치이다.",
+    "회전축 AB 둘레의 공간 원 궤적과 둘레는 이 평면 그림에 보이지 않으며 ENGINE_CAPABILITY_PENDING으로 인계한다."
+  ]
+}

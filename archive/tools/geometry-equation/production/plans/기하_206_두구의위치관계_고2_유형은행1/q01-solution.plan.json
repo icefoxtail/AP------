@@ -1,0 +1,49 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "7" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "T", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "2" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "ca", "op": "CIRCLE_CENTER_RADIUS", "inputs": ["A"], "args": { "radius": { "kind": "integer", "value": "2" } }, "outputType": "CIRCLE", "factRole": "GIVEN" },
+      { "id": "cb", "op": "CIRCLE_CENTER_RADIUS", "inputs": ["B"], "args": { "radius": { "kind": "integer", "value": "5" } }, "outputType": "CIRCLE", "factRole": "DERIVED_INTERMEDIATE" }
+    ]
+  },
+  "displayPoints": ["A", "B", "T"],
+  "hiddenPointNames": ["T"],
+  "displayCircles": ["ca", "cb"],
+  "displaySegments": [
+    { "id": "sAT", "refs": ["A", "T"] },
+    { "id": "sTB", "refs": ["T", "B"] }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      { "id": "r2", "from": "T", "to": "B", "label": "5", "side": "ABOVE", "value": "5", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "dAB", "from": "A", "to": "B", "label": "7", "side": "BELOW", "value": "7", "factRole": "DERIVED_INTERMEDIATE" }
+    ],
+    "facts": [
+      { "kind": "ON_CIRCLE", "circle": "ca", "points": ["T"] },
+      { "kind": "ON_CIRCLE", "circle": "cb", "points": ["T"] }
+    ]
+  },
+  "caption": "두 구의 중심을 지나는 평면에서 외접 관계를 단면원으로 나타내면 중심 거리 7은 두 반지름 2와 5의 합이다.",
+  "accessibilityDescription": "중심 A와 B 사이 거리 7, 왼쪽 단면원의 반지름 2, 오른쪽 단면원의 반지름 5인 두 원이 한 점에서 외접한다.",
+  "sourceQuote": "두 구 $(x-1)^2+(y+3)^2+(z-2)^2=4$, $(x+5)^2+y^2+z^2=2a+15$가 서로 외접할 때, 상수 $a$의 값은?",
+  "sourceConditions": [
+    { "id": "c1", "condition": "원래 두 구의 중심은 3차원 좌표 A=(1,-3,2), B=(-5,0,0)", "mappedTo": "mathPlan.nodes[A,B] are a congruent center-axis cross-section, not the original world coordinates; source coordinate labels omitted" },
+    { "id": "c2", "condition": "중심 거리 sqrt(36+9+4)=7", "mappedTo": "mathPlan.nodes[B].args.coordinates;planeMarks.dimensions[dAB]" },
+    { "id": "c3", "condition": "첫 구의 반지름 2", "mappedTo": "mathPlan.nodes[ca].args.radius;displaySegments[sAT]" },
+    { "id": "c4", "condition": "외접 조건 7=2+sqrt(2a+15)", "mappedTo": "mathPlan.nodes[T,ca,cb];planeMarks.facts[0..1];displayCircles" },
+    { "id": "c5", "condition": "해설에서 구한 둘째 반지름 5", "mappedTo": "mathPlan.nodes[cb].args.radius;planeMarks.dimensions[r2]" }
+  ],
+  "newVisualInformation": [
+    "세 차원 중심좌표를 보존해 표시하는 그림이 아니라 중심선을 포함한 평면으로 단면을 취한 동형 그림이다.",
+    "접점은 원문의 무명점이므로 그림에서 새로운 문자 이름을 붙이지 않는다."
+  ]
+}

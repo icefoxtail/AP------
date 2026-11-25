@@ -1,0 +1,45 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      { "coefficients": ["8", "2"] },
+      { "coefficients": ["-4/3", "-8/3"] },
+      { "coefficients": ["-7", "3"] }
+    ],
+    "breakpoints": [
+      { "x": "-2", "y": "4" },
+      { "x": "1", "y": "-4" }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": ["-4", "3"],
+      "states": ["CLOSED", "CLOSED"]
+    },
+    "domain": [-4, 3],
+    "viewport": [-5, 4, -5, 5],
+    "functionName": "f",
+    "requiredPoints": [
+      { "id": "P1", "x": -4, "y": 0 },
+      { "id": "P2", "x": -2, "y": 4 },
+      { "id": "P3", "x": 1, "y": -4 },
+      { "id": "P4", "x": 3, "y": 2 }
+    ],
+    "axisTickValues": { "x": ["-4", "-2", "1", "3"], "y": ["-4", "2", "4"] }
+  },
+  "caption": "함수 f의 그래프는 (-4,0), (-2,4), (1,-4), (3,2)를 순서대로 이은 세 선분이며 양 끝점을 포함한다.",
+  "accessibilityDescription": "x=-4부터 x=3까지 세 직선 구간을 이어 그린 함수 f의 좌표 그래프이다. 네 점의 좌표는 문제에서 주어졌고 구간 끝점은 닫혀 있다.",
+  "sourceQuote": "[그림: 좌표평면에서 $(-4,0),(-2,4),(1,-4),(3,2)$를 순서대로 선분으로 잇는다. 양 끝점을 포함한다.]",
+  "sourceConditions": [
+    { "id": "c1", "condition": "(-4,0)에서 (-2,4)까지 선분", "mappedTo": "graphPlan.pieces[0];graphPlan.requiredPoints[0..1]" },
+    { "id": "c2", "condition": "(-2,4)에서 (1,-4)까지 선분", "mappedTo": "graphPlan.pieces[1];graphPlan.breakpoints[0..1];graphPlan.requiredPoints[1..2]" },
+    { "id": "c3", "condition": "(1,-4)에서 (3,2)까지 선분", "mappedTo": "graphPlan.pieces[2];graphPlan.requiredPoints[2..3]" },
+    { "id": "c4", "condition": "세 선분은 끊어지지 않고 차례로 연결", "mappedTo": "graphPlan.breakpoints[0..1]" },
+    { "id": "c5", "condition": "x=-4와 x=3 끝점 모두 포함", "mappedTo": "graphPlan.sourceDomain.kind;graphPlan.sourceDomain.range;graphPlan.requiredPoints[0,3]" },
+    { "id": "c6", "condition": "미지의 a나 f(a)의 값·해의 개수 미노출", "mappedTo": "graphPlan.referenceLines absent;graphPlan.overlays absent;no answer-bearing labels" }
+  ],
+  "newVisualInformation": [
+    "기울기 2, -8/3, 3과 절편 8, -4/3, -7은 발문의 네 점을 잇는 선분을 정확히 표현하기 위해 계산한 값이며 그림의 주석에는 노출하지 않는다.",
+    "풀이에서 도출되는 높이별 교점·해의 개수는 문제 그림에 넣지 않는다."
+  ]
+}
