@@ -1,0 +1,19 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-0.4, 4.4, 4, 16],
+    "curves": [
+      {"id": "left", "kind": "EXPONENTIAL", "base": "3", "coefficients": ["1", "-1", "5"], "shiftX": "2", "domain": ["0", "2"], "color": "BLUE", "label": "fL"},
+      {"id": "right", "kind": "EXPONENTIAL", "base": "3", "coefficients": ["1", "1", "5"], "shiftX": "2", "domain": ["2", "4"], "color": "BLUE", "label": "fR"}
+    ],
+    "axisTickValues": {"x": ["2"], "y": []}
+  },
+  "caption": "문제에 주어진 y=3^|x−2|+5의 두 지수곡선 조각이 x=2에서 연결되는 개형이다. 미지 수평선 k의 위치와 정답 범위는 표시하지 않는다.",
+  "accessibilityDescription": "x=2의 왼쪽에서 내려오고 오른쪽에서 올라가는 두 지수곡선 조각이 연결되어 있다. 구해야 할 수평선의 높이는 표시되지 않았다.",
+  "sourceConditions": [
+    {"id": "q09p-a", "condition": "주어진 함수 y=3^|x−2|+5는 x≤2에서 3^(2−x)+5", "mappedTo": "graphPlan.curves[0]"},
+    {"id": "q09p-b", "condition": "x≥2에서 3^(x−2)+5; 미지 k는 그리지 않음", "mappedTo": "graphPlan.curves[1]"}
+  ],
+  "newVisualInformation": ["문제에 주어진 절댓값 지수함수의 좌우 조각이 연결된 형태만 표시"]
+}

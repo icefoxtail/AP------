@@ -1,0 +1,39 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {"recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false},
+    "nodes": [
+      {"id": "O", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "integer", "value": "0"}, {"kind": "integer", "value": "0"}]}, "outputType": "POINT", "factRole": "GIVEN"},
+      {"id": "XL", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "integer", "value": "-2"}, {"kind": "integer", "value": "0"}]}, "outputType": "POINT", "factRole": "GIVEN"},
+      {"id": "XR", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "integer", "value": "2"}, {"kind": "integer", "value": "0"}]}, "outputType": "POINT", "factRole": "GIVEN"},
+      {"id": "Q", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "integer", "value": "0"}, {"kind": "integer", "value": "-2"}]}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE"},
+      {"id": "R", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "integer", "value": "0"}, {"kind": "integer", "value": "2"}]}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "displayPoints": ["O", "XL", "XR", "Q", "R"],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {"id": "sX", "refs": ["XL", "XR"]},
+    {"id": "sOQ", "refs": ["O", "Q"], "arrow": "END"},
+    {"id": "sOR", "refs": ["O", "R"], "arrow": "END"}
+  ],
+  "rightAngles": [],
+  "planeMarks": {
+    "expressionLabels": [
+      {"id": "l2t", "ownerSegment": "sOQ", "text": "2θ"},
+      {"id": "l6t", "ownerSegment": "sOR", "text": "6θ"}
+    ]
+  },
+  "hiddenPointNames": ["XL", "XR", "Q", "R"],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {"width": 460, "height": 420},
+  "caption": "풀이에서 θ=3π/4이므로 2θ=3π/2의 동경은 아래쪽, 6θ=9π/2의 동경은 위쪽으로 향해 서로 반대 방향이다.",
+  "accessibilityDescription": "원점에서 세로축 아래로 뻗는 2θ 동경과 위로 뻗는 6θ 동경이 한 직선 위에서 반대 방향을 나타낸다.",
+  "sourceConditions": [
+    {"id": "q11-a", "condition": "6θ−2θ=4θ=3π, θ=3π/4", "mappedTo": "mathPlan.nodes[3],mathPlan.nodes[4]"},
+    {"id": "q11-b", "condition": "2θ=3π/2, 6θ=9π/2는 서로 반대 동경", "mappedTo": "displaySegments,planeMarks.expressionLabels"}
+  ],
+  "newVisualInformation": ["2θ와 6θ의 동경이 세로축에서 반대 방향임을 화살표로 표현"]
+}
