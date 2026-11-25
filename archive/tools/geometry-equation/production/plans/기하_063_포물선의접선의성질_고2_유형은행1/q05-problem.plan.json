@@ -1,0 +1,21 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conics":[
+    {"id":"p","kind":"PARABOLA","vertex":["0","0"],"p":"2","axis":"X"},
+    {"id":"c","kind":"CIRCLE","center":["2","0"],"rSquared":"25"}
+  ],
+  "points":[
+    {"id":"F","kind":"FOCUS","curve":"p"},
+    {"id":"P","kind":"CONIC_CONIC","curves":["p","c"],"which":2},
+    {"id":"Q","kind":"LINE_LINE","lines":["t","axis"]}
+  ],
+  "lines":[{"id":"t","curve":"p","tangent":true,"at":"P"},{"id":"axis","y":"0","hidden":true}],
+  "segments":[{"id":"FP","from":"F","to":"P"}],
+  "caption":"초점을 중심으로 한 원과 포물선의 교점 P, 접선의 x축 교점 Q(대표 p=1,r=5)",
+  "accessibilityDescription":"오른쪽으로 열린 포물선과 포물선 초점 F를 중심으로 한 원이 만난다. 위쪽 교점 P에서 포물선 접선을 그어 음의 x축과 만나는 Q를 표시했다. 일반 변수 p,r의 위치 관계를 p=1,r=5인 한 가지 예로 나타냈다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"원문 포물선 y²=8px의 초점은 (2p,0)이며 원의 중심과 같고 r>2p>0이다. 원문의 p=1,r=5인 비퇴화 대표로 포물선 y²=8x(엔진 파라미터 p=2), 원 중심 F=(2,0), 반지름 5를 둔다.","mappedTo":["p","c","F"]},
+    {"id":"c2","condition":"포물선·원의 상부 공통점 P=(3,2√6), 하부 공통점 (3,-2√6) 중 위쪽을 취하고 접선 x절편 Q=(-3,0)이 되도록 엔진으로 계산한다. 원문의 미지수 Q(a,0)의 a는 질문의 답이므로 숫자 라벨을 노출하지 않는다. 원문의 문자 좌표 F(2p,0), Q(a,0)는 engine capability pending이다.","mappedTo":["P","t","Q","FP"]}
+  ],
+  "newVisualInformation":["두 이차곡선의 실제 교점과 초점을 중심으로 한 원을 독립 방정식으로 구현","대표값·실제 교점의 관계를 명시하고 정답 a 값은 미표시"]
+}

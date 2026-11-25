@@ -1,0 +1,18 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"PARABOLA","vertex":["0","0"],"p":"3","axis":"X"},
+  "points":[
+    {"id":"P","kind":"ON_CONIC","x":"3","branch":"POS","coordinates":true},
+    {"id":"F","kind":"FOCUS","coordinates":true},
+    {"id":"Q","kind":"LINE_LINE","lines":["t","axis"],"coordinates":true}
+  ],
+  "lines":[{"id":"t","tangent":true,"at":"P"},{"id":"axis","y":"0","hidden":true}],
+  "segments":[{"id":"FP","from":"F","to":"P"},{"id":"PQ","from":"P","to":"Q"},{"id":"FQ","from":"F","to":"Q"}],
+  "caption":"초점 F, 접점 P와 접선의 x축 교점 Q가 만드는 각 FPQ",
+  "accessibilityDescription":"포물선 y²=12x와 초점 F(3,0), 제1사분면의 접점 P(3,6), 접선의 음의 x축 교점 Q(-3,0)를 이은 삼각형 FPQ이다. P에서의 두 변 PF와 PQ 사이 각을 묻는다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"P=(3,6),F=(3,0),Q=(-3,0)으로 FP=FQ=6이며 원문 세 점과 접선이 일치한다. FP,PQ,FQ는 원문 그림에서 각 FPQ의 두 변을 드러낸다.","mappedTo":["P","F","Q","t","FP","PQ","FQ"]},
+    {"id":"c2","condition":"각 θ는 P를 꼭짓점으로 하는 ∠FPQ이다. conic 엔진은 문자 θ가 붙은 각호를 그리지 못해 ENGINE_CAPABILITY_PENDING이다. 구하는 tanθ의 값은 라벨로 적지 않는다.","mappedTo":["FP","PQ","P"]}
+  ],
+  "newVisualInformation":["접점의 두 각변 및 이등변삼각형의 실제 세 변 표시","문자 θ 각도 호는 엔진 보완 대기이며 tanθ 정답 비표시"]
+}
