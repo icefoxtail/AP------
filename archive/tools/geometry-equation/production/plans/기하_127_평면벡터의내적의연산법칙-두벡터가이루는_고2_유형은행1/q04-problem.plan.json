@@ -1,0 +1,193 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1",
+              "denominator": "2"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "1",
+                  "denominator": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 560
+  },
+  "caption": "한 변의 길이 1인 정삼각형과 A에서 B,C로 향하는 벡터 a,b",
+  "accessibilityDescription": "정삼각형 ABC에서 AB=1이 실제 치수선으로 표시되고 각 A는 60도이다. A에서 B,C까지 두 방향 화살표 a,b가 있다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "정삼각형 세 변이 정확히 1이고 ∠BAC=60°",
+      "mappedTo": [
+        "A",
+        "B",
+        "C",
+        "d1",
+        "a60"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "AB=a와 AC=b는 방향 A→B 및 A→C로 표시",
+      "mappedTo": [
+        "va",
+        "vb"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "동일 길이 1의 정삼각형",
+    "두 벡터와 60도 실제 호"
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "d1",
+        "from": "A",
+        "to": "B",
+        "label": "1",
+        "side": "BELOW",
+        "style": "BAR",
+        "factRole": "GIVEN"
+      }
+    ],
+    "vectors": [
+      {
+        "id": "va",
+        "from": "A",
+        "to": "B",
+        "label": "vec(a)",
+        "side": "LEFT",
+        "labelAt": 0.55
+      },
+      {
+        "id": "vb",
+        "from": "A",
+        "to": "C",
+        "label": "vec(b)",
+        "side": "LEFT",
+        "labelAt": 0.55
+      }
+    ],
+    "angles": [
+      {
+        "id": "a60",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 60,
+        "label": "60",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "sourceQuote": "한 변의 길이가 1인 정삼각형 $\\mathrm{ABC}$에"
+}

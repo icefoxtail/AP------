@@ -1,0 +1,102 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -4,
+      9,
+      -1,
+      9
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "RATIONAL",
+        "numerator": [
+          "4",
+          "0"
+        ],
+        "denominator": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "1/2",
+          "9"
+        ],
+        "label": "y=4/x"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-3",
+        "3"
+      ],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "-3",
+          "y": "0"
+        },
+        {
+          "id": "B",
+          "x": "3",
+          "y": "0"
+        },
+        {
+          "id": "P",
+          "x": "4",
+          "y": "1"
+        }
+      ],
+      "segments": [
+        {
+          "id": "AP",
+          "from": "A",
+          "to": "P"
+        },
+        {
+          "id": "BP",
+          "from": "B",
+          "to": "P"
+        }
+      ]
+    }
+  },
+  "caption": "A(-3,0), B(3,0)와 제1사분면 반비례곡선 y=4/x 위의 움직이는 P",
+  "accessibilityDescription": "x축의 점 A(-3,0)와 B(3,0)가 있고 제1사분면 곡선 y=4/x의 대표점 P(4,1)가 보인다. 최솟값을 주는 P는 표시하지 않았다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "A(-3,0),B(3,0)를 정확한 x축 위에 표시",
+      "mappedTo": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "P는 x>0의 y=4/x 위에 놓인 대표점 (4,1); 최소점 (2,2)는 숨긴다",
+      "mappedTo": [
+        "f",
+        "P"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "AP,BP의 연결선은 두 벡터 연산을 돕지만 결과 32는 표시하지 않는다",
+      "mappedTo": [
+        "AP",
+        "BP"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "양의 x축 가지 y=4/x",
+    "A,B의 정확한 좌표와 이동점 P"
+  ],
+  "sourceQuote": "좌표평면 위의 두 점 $\\text{A}(-3, 0)"
+}
