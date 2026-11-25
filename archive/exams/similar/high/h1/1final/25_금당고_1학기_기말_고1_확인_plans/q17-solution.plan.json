@@ -1,0 +1,44 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "O", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "4" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "B", "op": "POLAR_POINT", "inputs": ["O", "A"], "args": { "length": { "kind": "integer", "value": "4" }, "angleDeg": { "kind": "integer", "value": "60" }, "turn": "CCW" }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "C", "op": "POLAR_POINT", "inputs": ["O", "A"], "args": { "length": { "kind": "integer", "value": "4" }, "angleDeg": { "kind": "integer", "value": "120" }, "turn": "CCW" }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "D", "op": "POLAR_POINT", "inputs": ["O", "A"], "args": { "length": { "kind": "integer", "value": "4" }, "angleDeg": { "kind": "integer", "value": "180" }, "turn": "CCW" }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "E", "op": "POLAR_POINT", "inputs": ["O", "A"], "args": { "length": { "kind": "integer", "value": "4" }, "angleDeg": { "kind": "integer", "value": "240" }, "turn": "CCW" }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "F", "op": "POLAR_POINT", "inputs": ["O", "A"], "args": { "length": { "kind": "integer", "value": "4" }, "angleDeg": { "kind": "integer", "value": "300" }, "turn": "CCW" }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "cir", "op": "CIRCLE_CENTER_RADIUS", "inputs": ["O"], "args": { "radius": { "kind": "integer", "value": "4" } }, "outputType": "CIRCLE", "factRole": "DERIVED_INTERMEDIATE" }
+    ]
+  },
+  "displayPoints": ["O", "A", "B", "C", "D", "E", "F"],
+  "hiddenPointNames": ["O", "A", "B", "C", "D", "E", "F"],
+  "unmarkedPointNames": ["O"],
+  "displayLines": [],
+  "displayCircles": ["cir"],
+  "displaySegments": [
+    { "id": "sAB", "refs": ["A", "B"] },
+    { "id": "sBC", "refs": ["B", "C"] },
+    { "id": "sCD", "refs": ["C", "D"] },
+    { "id": "sDE", "refs": ["D", "E"] },
+    { "id": "sEF", "refs": ["E", "F"] },
+    { "id": "sFA", "refs": ["F", "A"] },
+    { "id": "sAC", "refs": ["A", "C"], "emphasis": "BOLD" },
+    { "id": "sCE", "refs": ["C", "E"], "emphasis": "BOLD" },
+    { "id": "sEA", "refs": ["E", "A"], "emphasis": "BOLD" }
+  ],
+  "coordinateCanvas": { "width": 520, "height": 450 },
+  "planeMarks": { "textLabels": [{ "id": "note", "at": [0, 5], "text": "한 꼭짓점씩 건너 연결", "labelKind": "TEXT", "factRole": "DERIVED_INTERMEDIATE" }] },
+  "caption": "이웃한 정육각형의 변을 공유하지 않도록 한 꼭짓점씩 건너 이은 정삼각형 한 가지 사례. 나머지 꼭짓점 세 개도 같은 조건을 만족한다.",
+  "accessibilityDescription": "원 위 정육각형의 여섯 변과, 하나씩 건너뛴 세 꼭짓점 사이를 잇는 굵은 선분 세 개가 나타난다. 굵은 삼각형은 육각형의 변과 겹치지 않는다.",
+  "sourceQuote": "정육각형의 어떠한 변과도 공유하지 않는 삼각형",
+  "sourceConditions": [
+    { "id": "c1", "condition": "원에 내접하는 여섯 꼭짓점의 정육각형", "mappedTo": ["mathPlan.nodes", "displayCircles", "displaySegments"] },
+    { "id": "c2", "condition": "연속하는 정육각형 변을 피하고 한 점씩 건너 택한 세 꼭짓점의 한 예", "mappedTo": ["displaySegments[6]", "displaySegments[7]", "displaySegments[8]"] },
+    { "id": "c3", "condition": "반지름 4와 내부 점 이름은 대표 작도용이며 발문에 없는 표시가 아니다", "mappedTo": ["mathPlan.nodes", "hiddenPointNames"] }
+  ],
+  "newVisualInformation": ["정육각형 여섯 변에 해당하지 않는 세 대각선만 강조하여 공유 변이 없는 한 가지 조합을 확인한다", "나머지 한 조합은 원주를 한 칸 회전시키면 얻으며 그림에는 채움 없이 제시한다"]
+}

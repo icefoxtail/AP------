@@ -1,0 +1,41 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "O", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "4" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "B", "op": "POLAR_POINT", "inputs": ["O", "A"], "args": { "length": { "kind": "integer", "value": "4" }, "angleDeg": { "kind": "integer", "value": "60" }, "turn": "CCW" }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "C", "op": "POLAR_POINT", "inputs": ["O", "A"], "args": { "length": { "kind": "integer", "value": "4" }, "angleDeg": { "kind": "integer", "value": "120" }, "turn": "CCW" }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "D", "op": "POLAR_POINT", "inputs": ["O", "A"], "args": { "length": { "kind": "integer", "value": "4" }, "angleDeg": { "kind": "integer", "value": "180" }, "turn": "CCW" }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "E", "op": "POLAR_POINT", "inputs": ["O", "A"], "args": { "length": { "kind": "integer", "value": "4" }, "angleDeg": { "kind": "integer", "value": "240" }, "turn": "CCW" }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "F", "op": "POLAR_POINT", "inputs": ["O", "A"], "args": { "length": { "kind": "integer", "value": "4" }, "angleDeg": { "kind": "integer", "value": "300" }, "turn": "CCW" }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "cir", "op": "CIRCLE_CENTER_RADIUS", "inputs": ["O"], "args": { "radius": { "kind": "integer", "value": "4" } }, "outputType": "CIRCLE", "factRole": "DERIVED_INTERMEDIATE" }
+    ]
+  },
+  "displayPoints": ["O", "A", "B", "C", "D", "E", "F"],
+  "hiddenPointNames": ["O", "A", "B", "C", "D", "E", "F"],
+  "unmarkedPointNames": ["O"],
+  "displayLines": [],
+  "displayCircles": ["cir"],
+  "displaySegments": [
+    { "id": "sAB", "refs": ["A", "B"] },
+    { "id": "sBC", "refs": ["B", "C"] },
+    { "id": "sCD", "refs": ["C", "D"] },
+    { "id": "sDE", "refs": ["D", "E"] },
+    { "id": "sEF", "refs": ["E", "F"] },
+    { "id": "sFA", "refs": ["F", "A"] }
+  ],
+  "coordinateCanvas": { "width": 520, "height": 450 },
+  "planeMarks": { "textLabels": [{ "id": "title", "at": [0, 5], "text": "원에 내접한 정육각형", "labelKind": "TEXT", "factRole": "GIVEN" }] },
+  "caption": "한 원에 내접하는 이름 없는 정육각형. 풀이의 대각선이나 삼각형은 아직 표시하지 않는다.",
+  "accessibilityDescription": "원 위에 동일한 간격의 꼭짓점 여섯 개가 있고 연속한 꼭짓점끼리 육각형 테두리만 연결되어 있다.",
+  "sourceQuote": "원에 내접하는 정육각형이 있다",
+  "sourceConditions": [
+    { "id": "c1", "condition": "한 원 위에 서로 같은 간격으로 놓인 여섯 꼭짓점", "mappedTo": ["mathPlan.nodes", "displayCircles", "displayPoints"] },
+    { "id": "c2", "condition": "정육각형의 서로 이웃한 꼭짓점을 모두 연결한 여섯 변", "mappedTo": ["displaySegments"] },
+    { "id": "c3", "condition": "반지름 4와 내부 점 이름은 정육각형을 작도하기 위한 임의 척도와 ID로서 발문의 수치나 이름이 아님", "mappedTo": ["mathPlan.nodes", "hiddenPointNames"] }
+  ],
+  "newVisualInformation": ["문제에 명시된 원과 정육각형의 변만 그리고 세 꼭짓점을 고른 경우나 정답을 암시하는 대각선은 그리지 않는다", "모든 면은 기본 무채움이다"]
+}

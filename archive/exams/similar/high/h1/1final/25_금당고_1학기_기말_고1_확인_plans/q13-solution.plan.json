@@ -1,0 +1,27 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [{ "coefficients": ["2", "0", "1"] }],
+    "breakpoints": [],
+    "sourceDomain": { "kind": "ALL_REALS" },
+    "domain": [-2, 5],
+    "viewport": [-2, 5, -4, 13],
+    "requiredPoints": [
+      { "id": "V", "x": 0, "y": 2 },
+      { "id": "T", "x": 2, "y": 6 }
+    ],
+    "referenceLines": [{ "id": "l", "slope": "4", "intercept": "-2", "intersectionX": ["2"] }],
+    "axisTickValues": { "x": [2], "y": [2, 6] }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "허용되는 표본 (a,b)=(4,2)에서 y=x²+2와 y=4x-2는 (2,6) 한 점에서 접한다.",
+  "accessibilityDescription": "꼭짓점 V(0,2)인 포물선 y=x제곱+2와 기울기 4, y절편 -2인 직선이 T(2,6)에서 한 점으로 만난다.",
+  "sourceQuote": "y=x²+2의 그래프와 직선 y=ax-b가 만나는 점이 존재하도록 하는 순서쌍",
+  "sourceConditions": [
+    { "id": "c1", "condition": "공통 포물선 y=x²+2", "mappedTo": ["graphPlan.pieces", "graphPlan.requiredPoints"] },
+    { "id": "c2", "condition": "해설 허용 표본 a=4,b=2에서는 직선 y=4x-2", "mappedTo": ["graphPlan.referenceLines"] },
+    { "id": "c3", "condition": "x²-4x+4=(x-2)²=0, 접점 (2,6)", "mappedTo": ["graphPlan.referenceLines[0].intersectionX", "graphPlan.requiredPoints"] }
+  ],
+  "newVisualInformation": ["D=0인 허용 표본 하나의 접점이며 주사위의 모든 12개 허용 순서쌍을 대신하지 않는다", "그림은 해설 축에만 놓아 문제에서 가능한 (a,b)를 미리 공개하지 않는다"]
+}

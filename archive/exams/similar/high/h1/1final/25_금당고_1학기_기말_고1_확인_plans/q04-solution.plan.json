@@ -1,0 +1,22 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "정수 해",
+        "pieces": [{ "lo": { "value": "-2", "state": "CLOSED" }, "hi": { "value": "5", "state": "CLOSED" } }],
+        "integerPoints": true
+      }
+    ]
+  },
+  "numberLineCaption": { "text": "양 끝을 포함하는 정수 해" },
+  "caption": "|2x-3|≤7의 해 -2≤x≤5에서 양 끝을 포함해 정수 여덟 개를 확인한다.",
+  "accessibilityDescription": "수직선에서 -2와 5가 모두 닫힌 점으로 표시된다. 그 사이 -2,-1,0,1,2,3,4,5의 정수점이 여덟 개 있다.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "|2x-3|≤7에서 -7≤2x-3≤7, 따라서 -2≤x≤5", "mappedTo": ["numberLine.rows[0].pieces"] },
+    { "id": "c2", "condition": "정수 x의 개수를 양 끝 포함하여 센다", "mappedTo": ["numberLine.rows[0].integerPoints"] }
+  ],
+  "newVisualInformation": ["닫힌 두 끝점과 그 안의 정수점 여덟 개의 대응을 수직선 위에 명시한다"]
+}
