@@ -3,26 +3,28 @@
   "examUid": "26_금당고_1학기_중간_고2_대수_유사2",
   "candidateJsPath": "archive/exams/similar/high/h2/1mid/26_금당고_1학기_중간_고2_대수_유사2.js",
   "candidateMetaPath": "archive/exams/similar/high/h2/1mid/26_금당고_1학기_중간_고2_대수_유사2.meta-q01-q21.json",
-  "candidateGitBlobSha1": "0639b822a47770d1564ef379c0e1e707d27e103f",
-  "reviewTimestamp": "2026-11-25T21:00:00+09:00",
-  "reviewerRole": "SEPARATE_EXACT_SYMBOLIC_AUDIT_BY_AUTHOR_AGENT",
-  "reviewRound": 1,
+  "candidateGitBlobSha1": "483284195ebf7124bf09be6e45d129773ead0c26",
+  "reviewTimestamp": "2026-11-25T12:52:00+09:00",
+  "reviewerRole": "R1_INDEPENDENT_SEPARATE_REVIEW_AFTER_AUTHOR_SELF_CHECK",
+  "reviewRound": 2,
   "overallVerdict": "PASS_WITH_NOTES",
   "signOffStatus": "PASS_WITH_NOTES",
-  "signOffNote": "학생 발문 기준으로 별도 SymPy·정수 전수조사 재풀이 21/21 일치, 객관식 19/19 선택지 검사, 100점·난도 분포 일치. 외부 교사/독립 모델 검수는 수행하지 않았음. 선택적 SVG 3건 미제작·SVG_PENDING 명시.",
+  "signOffNote": "R1 item-level physical evidence gate PASS(21 question +21 meta rows, hold0). 21/21 independent math, 19 objective choice order, 100 pts, canonical PT/TPL/curriculum/4slot parity checked. Q08/Q19/Q21 optional SVG are SVG_TO_CREATE/NOT_RUN and have no image links; actual browser MathJax render NOT_RUN. Candidate metadata registration approval remains review_required.",
   "auditDisclosure": {
-    "sameAgentAsAuthor": true,
-    "externalReviewer": "NOT_RUN",
-    "mathIndependentFromBlueprint": "YES_SEPARATE_STUDENT_INPUT_RECALC",
-    "svgRender": "NOT_RUN_ENVIRONMENT_BROWSER_SOCKET_BLOCKED",
-    "metadataReview": "review_required"
+    "sameAgentAsAuthor": false,
+    "externalReviewer": "INDEPENDENT_R1_REVIEW_COMPLETED",
+    "mathIndependentFromBlueprint": "YES_CURRENT_SOURCE_RECALC",
+    "svgRender": "NOT_RUN_OPTIONAL_PENDING",
+    "metadataReview": "R1_SEMANTIC_PASS_REGISTRATION_PENDING",
+    "authorSelfCheckCompleted": true,
+    "authorSelfCheckSeparateFromThisR1": true
   },
   "blindFirstPass": {
     "totalSolved": 21,
     "answerMatches": 21,
     "answerMismatches": 0,
     "ambiguousStems": 0,
-    "method": "독립 Python/SymPy 스크립트가 직렬화된 학생용 JS의 문항을 읽고 먼저 21개의 수학적 값 도출 후 저장된 답과 비교. 외부 검토자는 없음.",
+    "method": "R1 current-source independent per-question recalculation and q17 exhaustive integer count, q8/9/19 algebraic cross-check; compared candidate choices after independent solve. R1 prior author receipt was historical only, not authority.",
     "frozenAnswers": {
       "1": "①",
       "2": "③",
@@ -102,14 +104,14 @@
       "blindAnswer": "②",
       "candidateAnswer": "②",
       "blindMatch": true,
-      "blindDerivation": "Q8: 그래프 값 2³/2¹=4, 세로좌표 비"
+      "blindDerivation": "Q8: y=2^x+3, 7=2^p+3⇒p=2; q=2^4+3=19, 차17, 정답②"
     },
     {
       "qid": 9,
       "blindAnswer": "⑤",
       "candidateAnswer": "⑤",
       "blindMatch": true,
-      "blindDerivation": "Q9: 점근선 h=5; 0=log₃9+k에서 k=−2, 차 7"
+      "blindDerivation": "Q9: (9,0),(33,2)의 두 로그대입식을 빼면 24=8·3^-k⇒k=-1,h=6, 차7"
     },
     {
       "qid": 10,
@@ -165,7 +167,7 @@
       "blindAnswer": "②",
       "candidateAnswer": "②",
       "blindMatch": true,
-      "blindDerivation": "Q17: m의 거듭제곱 중 144 이하 개수 직접 열거: ㄱ 거짓 ㄴ 참 ㄷ 거짓"
+      "blindDerivation": "Q17: m 구간별 원소수 7,4,3,2,1; 홀수 원소수 m 135개, 2개 범위6..12, 3배수44개; ㄴ만 참"
     },
     {
       "qid": 18,
@@ -179,7 +181,7 @@
       "blindAnswer": "①",
       "candidateAnswer": "①",
       "blindMatch": true,
-      "blindDerivation": "Q19: 3교점 조건의 수평 레벨은 |5−|x−k||=5, k=−8,2,12"
+      "blindDerivation": "Q19: |8-(x-k)²|=h의 근이 3개이면 h=8,a=2; g(2)=256에서 k=-2,2,6; 범위8"
     },
     {
       "qid": 20,
@@ -211,6 +213,89 @@
       "qid": 21,
       "status": "SVG_TO_CREATE / NOT_RUN",
       "kind": "OPTIONAL_SOLUTION_GUIDE"
+    }
+  ],
+  "r1IndependentReview": {
+    "status": "PASS_WITH_NOTES",
+    "evidencePath": "archive/exams/similar/high/h2/1mid/26_금당고_1학기_중간_고2_대수_유사2_plans/r1-review-evidence.json",
+    "examSha256": "305b49b37f1a6ed589a834b3077c224a0befdad1b18b5619a4793d303d5f4d70",
+    "candidateGitBlobSha1": "483284195ebf7124bf09be6e45d129773ead0c26",
+    "questionRows": 21,
+    "metaRows": 21,
+    "itemHolds": 0,
+    "mathRecalc": "21/21",
+    "studentSmallBoard": "STATIC_PASS_21_OF_21",
+    "runtimeMathJax": "NOT_RUN",
+    "svgActualRender": "NOT_RUN",
+    "r1Gate": "PASS",
+    "metadataRegistryApproval": "review_required",
+    "repairedQuestionContent": [
+      8,
+      9,
+      17,
+      19
+    ],
+    "repairedSemanticMetadata": [
+      2,
+      3,
+      4,
+      5,
+      8,
+      9,
+      10,
+      12,
+      15,
+      16,
+      17,
+      18,
+      19,
+      21
+    ]
+  },
+  "defects": [
+    {
+      "status": "VERIFIED_REPAIRED",
+      "qids": [
+        3,
+        8,
+        9,
+        18,
+        19
+      ],
+      "kind": "PT_TPL_RPM_CURRICULUM_SEMANTIC_BINDING",
+      "method": "GLOBAL ACTIVE canonical direct adjudication"
+    },
+    {
+      "status": "VERIFIED_REPAIRED",
+      "qids": [
+        8,
+        9,
+        17,
+        19
+      ],
+      "kind": "SOURCE_BALANCED_VARIANT_DIFFICULTY",
+      "method": "structural redesign independent math recalc"
+    },
+    {
+      "status": "VERIFIED_REPAIRED",
+      "qids": [
+        2,
+        3,
+        4,
+        5,
+        8,
+        9,
+        10,
+        12,
+        15,
+        16,
+        17,
+        18,
+        19,
+        21
+      ],
+      "kind": "DECISIVE_STEP_4SLOT_REPAIR",
+      "method": "term dictionary v1.6, sidecar/JS/ledger parity"
     }
   ]
 }

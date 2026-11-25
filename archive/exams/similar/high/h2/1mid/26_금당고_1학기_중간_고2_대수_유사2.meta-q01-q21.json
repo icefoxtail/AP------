@@ -3,7 +3,7 @@
   "requestId": "26_금당고_1학기_중간_고2_대수_유사2-candidate-v1",
   "examUid": "26_금당고_1학기_중간_고2_대수_유사2",
   "sourceArchiveFile": "archive/exams/similar/high/h2/1mid/26_금당고_1학기_중간_고2_대수_유사2.js",
-  "expectedSourceBlobSha1": "0639b822a47770d1564ef379c0e1e707d27e103f",
+  "expectedSourceBlobSha1": "483284195ebf7124bf09be6e45d129773ead0c26",
   "expectedQuestionCount": 21,
   "approval": {
     "type": "CANDIDATE_CREATION_GATE",
@@ -133,7 +133,7 @@
       "difficultyBoundaryFlag": false,
       "difficultyReason": "원본 2번의 핵심 판단·난도 유지. 주어진 로그합의 직접 계산에서 같은 값을 갖는 지수의 역산으로 질문 전환",
       "primaryMethod": "로그 차 → 밑 변환의 역수 → 지수로 되돌리기",
-      "decisiveStep": "먼저 로그의 차를 정리하면",
+      "decisiveStep": "$\\log_4 40-\\log_4 5=\\log_4 8$이고 $\\dfrac1{\\log_8 4}=\\log_4 8$이므로 $\\log_4 k=2\\log_4 8=\\log_4 64$이다.",
       "item4slot": {
         "ordinal": 2,
         "format": "단일 정답",
@@ -161,11 +161,11 @@
       "after": {
         "curriculum": "2022",
         "standardCourse": "대수",
-        "standardUnitKey": "H22-A-03",
-        "standardUnit": "로그함수",
-        "subUnitKey": "H22-A-03-LOGARITHMIC_FUNCTION",
-        "subUnit": "로그함수",
-        "rpmPrimaryRecordId": "H2-M1-RPM-087",
+        "standardUnitKey": "H22-A-02",
+        "standardUnit": "지수함수",
+        "subUnitKey": "H22-A-02-EXPONENTIAL_FUNCTION",
+        "subUnit": "지수함수",
+        "rpmPrimaryRecordId": "H2-M1-RPM-081",
         "problemTypeKey": "PT_H22A_02_EXP_EQUATION",
         "templateKey": "TPL_H22A_02_EXP_EQUATION_081",
         "crossConceptKeys": [
@@ -196,16 +196,15 @@
       },
       "difficultyConfidence": "HIGH",
       "difficultyBoundaryFlag": false,
-      "difficultyReason": "원본 3번의 핵심 판단·난도 유지. 지수함수의 식에서 로그의 밑 읽기를 역함수의 함수값 조건에서 밑 찾기로 전환",
-      "primaryMethod": "역함수 값을 원함수의 대응 관계로 되돌림",
-      "decisiveStep": "역함수의 성질에 따라",
+      "difficultyReason": "역함수 대응관계와 양의 지수함수 밑 결정 2단계. bucket1 유지.",
+      "primaryMethod": "역함수의 대응점에서 f(2)=1/16을 얻고 지수방정식의 밑을 결정",
+      "decisiveStep": "$f^{-1}\\!\\left(\\dfrac1{16}\\right)=2$에서 $c^2=\\dfrac1{16}$이고 $0<c<1$이므로 $c=\\dfrac14$이다.",
       "item4slot": {
         "ordinal": 3,
         "format": "단일 정답",
         "given": [
           94,
-          86,
-          95
+          86
         ],
         "goal": [
           279,
@@ -216,11 +215,14 @@
           277,
           279
         ],
-        "condition": [],
+        "condition": [
+          396,
+          297
+        ],
         "candidates": []
       },
       "hold": "",
-      "reason": "신규 유사2 직접 판정: 지수함수의 식에서 로그의 밑 읽기를 역함수의 함수값 조건에서 밑 찾기로 전환"
+      "reason": "역함수값 조건에서 지수방정식의 밑을 복원하는 현재 문항의 직접 판정"
     },
     {
       "questionUid": 4,
@@ -281,9 +283,7 @@
         "method": [
           199,
           109,
-          481,
-          628,
-          658
+          481
         ],
         "condition": [],
         "candidates": []
@@ -346,7 +346,7 @@
           103
         ],
         "method": [
-          675,
+          674,
           654,
           210
         ],
@@ -513,13 +513,13 @@
         "subUnitKey": "H22-A-02-EXPONENTIAL_FUNCTION",
         "subUnit": "지수함수",
         "rpmPrimaryRecordId": "H2-M1-RPM-080",
-        "problemTypeKey": "PT_H22A_01_EXPONENT_LAWS",
-        "templateKey": "TPL_H22A_01_EXPONENT_LAWS_071",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+        "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
         "crossConceptKeys": [
           "CC_POINT_ON_CURVE_SUBSTITUTION"
         ],
         "conditionKeys": [],
-        "integrationPattern": "NONE",
+        "integrationPattern": "SEQUENTIAL",
         "difficultyBucket": 3,
         "sourceQid": 8,
         "variationType": "EXAM_FOLLOWUP",
@@ -532,7 +532,7 @@
           "mode": "ALIVE EXAM_FOLLOWUP",
           "followupKind": "CONFIRMATION",
           "profile": "SOURCE_BALANCED",
-          "variationAxis": "그래프에서 두 미지수를 읽어 차를 구하던 목표를 주어진 가로좌표에 대응하는 세로좌표 비로 전환"
+          "variationAxis": "수평이동 없는 그래프 정보 판독을 세로 평행이동 후 한 점은 역산·다른 점은 직접대입으로 결합"
         },
         "visualNecessity": {
           "problem": "SVG_TO_CREATE",
@@ -543,9 +543,9 @@
       },
       "difficultyConfidence": "HIGH",
       "difficultyBoundaryFlag": false,
-      "difficultyReason": "원본 8번의 핵심 판단·난도 유지. 그래프에서 두 미지수를 읽어 차를 구하던 목표를 주어진 가로좌표에 대응하는 세로좌표 비로 전환",
-      "primaryMethod": "두 점의 주어진 x좌표 → 지수함수 대응 y값 → 비",
-      "decisiveStep": "발문에서 주어진 $P,Q$의 $x$좌표는 각각 1, 3이다.",
+      "difficultyReason": "정수 2^x 계산뿐이던 기존 안의 난도 하락을 수리: 평행이동된 그래프의 역산과 직접대입을 연쇄 판단. bucket3 유지.",
+      "primaryMethod": "세로로 3 평행이동한 지수함수에서 y좌표로 x를 역산하고 다른 점의 함숫값 대입",
+      "decisiveStep": "$7=2^p+3$에서 $p=2$, $q=2^4+3=19$이므로 $q-p=17$이다.",
       "item4slot": {
         "ordinal": 8,
         "format": "단일 정답",
@@ -555,18 +555,19 @@
           142
         ],
         "goal": [
-          289,
+          288,
           131
         ],
         "method": [
-          53,
-          71
+          210,
+          71,
+          53
         ],
         "condition": [],
         "candidates": []
       },
       "hold": "",
-      "reason": "신규 유사2 직접 판정: 그래프에서 두 미지수를 읽어 차를 구하던 목표를 주어진 가로좌표에 대응하는 세로좌표 비로 전환"
+      "reason": "R1에서 원본 대비 쉬워진 Q08을 두 단계 좌표 복원 유형으로 재설계하고 ACTIVE PT/TPL과 RPM-080 일치시킴"
     },
     {
       "questionUid": 9,
@@ -581,10 +582,9 @@
         "subUnitKey": "H22-A-03-LOGARITHMIC_FUNCTION",
         "subUnit": "로그함수",
         "rpmPrimaryRecordId": "H2-M1-RPM-088",
-        "problemTypeKey": "PT_H22A_03_LOG_EQUATION",
-        "templateKey": "TPL_H22A_03_LOG_EQUATION_089",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+        "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
         "crossConceptKeys": [
-          "CC_ASYMPTOTE",
           "CC_POINT_ON_CURVE_SUBSTITUTION",
           "CC_LOG_RULES"
         ],
@@ -602,7 +602,7 @@
           "mode": "ALIVE EXAM_FOLLOWUP",
           "followupKind": "CONFIRMATION",
           "profile": "SOURCE_BALANCED",
-          "variationAxis": "좌표 한 점과 점근선 조건을 x절편과 점근선 조건으로 재구성"
+          "variationAxis": "점근선 직접 제공 대신 서로 다른 두 점의 로그값 차로 가로·세로 이동상수를 복원"
         },
         "visualNecessity": {
           "problem": "EXEMPT",
@@ -613,36 +613,34 @@
       },
       "difficultyConfidence": "HIGH",
       "difficultyBoundaryFlag": false,
-      "difficultyReason": "원본 9번의 핵심 판단·난도 유지. 좌표 한 점과 점근선 조건을 x절편과 점근선 조건으로 재구성",
-      "primaryMethod": "로그의 수직점근선 → x절편 대입 → 평행이동 상수",
-      "decisiveStep": "$y=\\log_3(x-h)+k$의 세로 점근선은 $x=h$이므로 $h=5$이다.",
+      "difficultyReason": "원본 수치치환만 하던 안을 두 점 조건의 연립 지수 관계로 바꾸어 풀이 단계 유지. bucket3.",
+      "primaryMethod": "로그함수의 두 점 조건을 지수형으로 바꾸고 두 식을 빼서 평행이동 상수를 복원",
+      "decisiveStep": "$9-h=3^{-k}$, $33-h=9\\cdot3^{-k}$를 빼면 $24=8\\cdot3^{-k}$이므로 $k=-1$, $h=6$이다.",
       "item4slot": {
         "ordinal": 9,
         "format": "단일 정답",
         "given": [
           95,
           107,
-          108,
           142
         ],
         "goal": [
-          286,
+          288,
           131
         ],
         "method": [
           210,
-          108,
           53,
-          282
+          278,
+          368
         ],
         "condition": [
-          356,
-          108
+          356
         ],
         "candidates": []
       },
       "hold": "",
-      "reason": "신규 유사2 직접 판정: 좌표 한 점과 점근선 조건을 x절편과 점근선 조건으로 재구성"
+      "reason": "두 점 조건으로 그래프 평행이동 상수를 구하는 ACTIVE 유형 직접 재판정"
     },
     {
       "questionUid": 10,
@@ -689,7 +687,7 @@
       "difficultyBoundaryFlag": false,
       "difficultyReason": "원본 10번의 핵심 판단·난도 유지. 사인·코사인 곱의 직접 제공을 차의 제곱 조건으로 전환",
       "primaryMethod": "제곱 전개 → 사인·코사인 곱 → 네제곱 합",
-      "decisiveStep": "주어진 식을 전개하고 $\\sin^2\\theta+\\cos^2\\theta=1$을 쓰면",
+      "decisiveStep": "$1-2\\sin\\theta\\cos\\theta=\\dfrac53$이므로 $\\sin\\theta\\cos\\theta=-\\dfrac13$이고, 네제곱 합은 $1-2\\cdot\\dfrac19=\\dfrac79$이다.",
       "item4slot": {
         "ordinal": 10,
         "format": "단일 정답",
@@ -834,7 +832,7 @@
       "difficultyBoundaryFlag": false,
       "difficultyReason": "원본 12번의 핵심 판단·난도 유지. 최대 넓이의 중심각을 묻던 문제에서 최대 넓이 자체를 구하도록 목표 역산",
       "primaryMethod": "둘레식으로 호 길이 제거 → 반지름에 대한 완전제곱",
-      "decisiveStep": "부채꼴의 반지름을 $r$, 호의 길이를 $l$이라 놓자.",
+      "decisiveStep": "$2r+l=20$과 $S=\\dfrac12rl$에서 $S=25-(r-5)^2\\le25$이고, $r=5$이면 $l=10>0$이다.",
       "item4slot": {
         "ordinal": 12,
         "format": "단일 정답",
@@ -1068,8 +1066,7 @@
           396
         ],
         "goal": [
-          128,
-          308,
+          289,
           131
         ],
         "method": [
@@ -1135,7 +1132,7 @@
       "difficultyBoundaryFlag": false,
       "difficultyReason": "원본 16번의 핵심 판단·난도 유지. 무리함수 곡선의 세로좌표 요청을 반비례곡선의 가로좌표 역산으로 전환",
       "primaryMethod": "삼각함수 제곱조건 → 탄젠트 → 곡선의 기울기 비",
-      "decisiveStep": "$\\sin^2\\theta+\\cos^2\\theta=1$이므로 주어진 식은",
+      "decisiveStep": "$\\sin^2\\theta=\\dfrac15$과 제1사분면 조건에서 $\\tan\\theta=\\dfrac12$이다. 따라서 $\\dfrac4{x^2}=\\dfrac12$, $x=2\\sqrt2$이다.",
       "item4slot": {
         "ordinal": 16,
         "format": "단일 정답",
@@ -1198,7 +1195,7 @@
           "mode": "ALIVE EXAM_FOLLOWUP",
           "followupKind": "CONFIRMATION",
           "profile": "SOURCE_BALANCED",
-          "variationAxis": "세 진위 문항을 거듭제곱 집합의 원소 수·범위 동치·경계 사례 검증으로 재배치"
+          "variationAxis": "기출 일반명제/단순세기에서 전체 원소 수의 홀짝 분류·2개 필요충분·배수 개수를 결합한 3종 참거짓 판정"
         },
         "visualNecessity": {
           "problem": "EXEMPT",
@@ -1209,9 +1206,9 @@
       },
       "difficultyConfidence": "HIGH",
       "difficultyBoundaryFlag": false,
-      "difficultyReason": "원본 17번의 핵심 판단·난도 유지. 세 진위 문항을 거듭제곱 집합의 원소 수·범위 동치·경계 사례 검증으로 재배치",
-      "primaryMethod": "m의 연속된 거듭제곱 상한 → 각 주장 판별",
-      "decisiveStep": "$\\log_mx$가 자연수이려면 $x=m,m^2,m^3,\\ldots$ 중 144 이하인 수이다.",
+      "difficultyReason": "전체 m을 원소 수에 따라 다섯 구간으로 나누고 개수·조건·배수 판정을 각각 수행해 원본 bucket4의 사고 부담 유지.",
+      "primaryMethod": "거듭제곱 상한별 원소 수를 분류하고 홀수 개수·정확히 두 개 범위·3의 배수 개수를 독립 판정",
+      "decisiveStep": "$n(A_m)$은 $m=2,3,4\\sim5,6\\sim12,13\\sim144$에서 각각 $7,4,3,2,1$이므로 ㄱ 135개·ㄴ 6~12·ㄷ 44개로 ㄴ만 참이다.",
       "item4slot": {
         "ordinal": 17,
         "format": "보기(ㄱㄴㄷ) 판정",
@@ -1228,7 +1225,9 @@
           468,
           656,
           28,
-          63
+          63,
+          12,
+          294
         ],
         "condition": [
           1,
@@ -1237,7 +1236,7 @@
         "candidates": []
       },
       "hold": "",
-      "reason": "신규 유사2 직접 판정: 세 진위 문항을 거듭제곱 집합의 원소 수·범위 동치·경계 사례 검증으로 재배치"
+      "reason": "R1 난도 하락 지적 반영: 단순 국소 예시 대신 전 범위 분기·배수 집계와 ㄱㄴㄷ 판정으로 재설계"
     },
     {
       "questionUid": 18,
@@ -1252,15 +1251,13 @@
         "subUnitKey": "H22-A-03-LOGARITHMIC_FUNCTION",
         "subUnit": "로그함수",
         "rpmPrimaryRecordId": "H2-M1-RPM-088",
-        "problemTypeKey": "PT_H22A_03_LOG_EQUATION",
-        "templateKey": "TPL_H22A_03_LOG_EQUATION_090",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+        "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION_REFLECTION",
         "crossConceptKeys": [
           "CC_LINE_SYMMETRY_REFLECTION",
           "CC_ASYMPTOTE"
         ],
-        "conditionKeys": [
-          "COND_UNIVERSAL_INPUTS"
-        ],
+        "conditionKeys": [],
         "integrationPattern": "DEEP_COMPOSITE",
         "difficultyBucket": 4,
         "sourceQid": 18,
@@ -1286,8 +1283,8 @@
       "difficultyConfidence": "HIGH",
       "difficultyBoundaryFlag": false,
       "difficultyReason": "원본 18번의 핵심 판단·난도 유지. 모든 높이에 대한 등거리 조건을 두 높이 0·1에서의 등거리와 반대쪽 배치로 구체화",
-      "primaryMethod": "공통 점근선 → 높이별 좌우 거리 두 번 비교 → b의 부호 결정",
-      "decisiveStep": "$f(x)=\\log_2(5(x-3))$이므로 점근선은 $x=3$이다.",
+      "primaryMethod": "공통 수직점근선과 높이 0·1에서의 좌우 등거리, 반대편 배치로 로그함수 이동·대칭 계수 복원",
+      "decisiveStep": "$c=-3b$, 높이 $t=0,1$의 거리 비교로 $|b|=5$, $a=\\dfrac12$이고 반대편 배치에서 $b=-5$, $c=15$이다.",
       "item4slot": {
         "ordinal": 18,
         "format": "단일 정답",
@@ -1305,18 +1302,16 @@
           108,
           278,
           53,
-          48,
           209
         ],
         "condition": [
-          373,
           108,
-          387
+          322
         ],
         "candidates": []
       },
       "hold": "",
-      "reason": "신규 유사2 직접 판정: 모든 높이에 대한 등거리 조건을 두 높이 0·1에서의 등거리와 반대쪽 배치로 구체화"
+      "reason": "수직점근선 반사와 높이별 거리 관계가 결정적 방법이므로 GRAPH_TRANSFORM ACTIVE 유형 직접 재판정"
     },
     {
       "questionUid": 19,
@@ -1331,8 +1326,8 @@
         "subUnitKey": "H22-A-02-EXPONENTIAL_FUNCTION",
         "subUnit": "지수함수",
         "rpmPrimaryRecordId": "H2-M1-RPM-086",
-        "problemTypeKey": "PT_H22A_02_EXP_EQUATION",
-        "templateKey": "TPL_H22A_02_EXP_EQUATION_082",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "templateKey": "TPL_FUNCTION_INTERSECTION_ABSOLUTE_PIECEWISE",
         "crossConceptKeys": [
           "CC_ABSOLUTE_VALUE_CURVE_GRAPH",
           "CC_POINT_ON_CURVE_SUBSTITUTION"
@@ -1353,7 +1348,7 @@
           "mode": "ALIVE EXAM_FOLLOWUP",
           "followupKind": "CONFIRMATION",
           "profile": "SOURCE_BALANCED",
-          "variationAxis": "세 교점에서 얻은 k들의 합을 f의 위아래가 뒤바뀐 절댓값 분기에서 최대·최소 차로 전환"
+          "variationAxis": "원본 절댓값 V형의 숫자치환을 폐기하고 이차식과 절댓값의 합성에서 3교점 임계·이차식 근을 판단하도록 변형"
         },
         "visualNecessity": {
           "problem": "EXEMPT",
@@ -1364,26 +1359,29 @@
       },
       "difficultyConfidence": "HIGH",
       "difficultyBoundaryFlag": false,
-      "difficultyReason": "원본 19번의 핵심 판단·난도 유지. 세 교점에서 얻은 k들의 합을 f의 위아래가 뒤바뀐 절댓값 분기에서 최대·최소 차로 전환",
-      "primaryMethod": "조각 함수의 절댓값 지수 → 세 교점의 임계치 → 세 k의 범위",
-      "decisiveStep": "$g(x)$는 두 경우를 합치면 $a^{|f(x)|}=a^{|5-|x-k||}$이다.",
+      "difficultyReason": "이차식의 절댓값 분기에 따른 실근 2+1 임계 판정과 k의 세 값을 도출하므로 bucket4 유지.",
+      "primaryMethod": "지수함수의 절댓값 이차식에서 높이 256 수평선의 3교점 임계치를 판정하고 k의 최대·최소 계산",
+      "decisiveStep": "$g=256\\iff(x-k)^2=8\\pm h$에서 실근이 3개이려면 $h=8$이므로 $a=2$, $|8-(2-k)^2|=8$에서 $k=-2,2,6$이다.",
       "item4slot": {
         "ordinal": 19,
         "format": "단일 정답",
         "given": [
           24,
           98,
-          181
+          181,
+          37
         ],
         "goal": [
-          279,
-          288
+          288,
+          127,
+          128
         ],
         "method": [
           24,
           293,
-          278,
-          129
+          129,
+          37,
+          278
         ],
         "condition": [
           5,
@@ -1393,7 +1391,7 @@
         "candidates": []
       },
       "hold": "",
-      "reason": "신규 유사2 직접 판정: 세 교점에서 얻은 k들의 합을 f의 위아래가 뒤바뀐 절댓값 분기에서 최대·최소 차로 전환"
+      "reason": "R1에서 f 부호변환이 g를 불변으로 만드는 결함을 수리하고 이차식 그래프 교점 ACTIVE 유형으로 재설계"
     },
     {
       "questionUid": 20,
@@ -1523,7 +1521,7 @@
       "difficultyBoundaryFlag": false,
       "difficultyReason": "원본 21번의 핵심 판단·난도 유지. 세로거리의 이중근 판정을 지수함수 차의 양근 개수와 두 근의 곱으로 재구성",
       "primaryMethod": "u=2^t 치환 → 부호별 이차방정식의 양근 개수 → Vieta",
-      "decisiveStep": "$u=2^t>0$으로 놓으면 $4^t=u^2$이고, 두 점은 같은 세로선 위에 있으므로",
+      "decisiveStep": "$u=2^t>0$이면 $\\overline{AB}=|u^2-u+2^{-k}|=\\dfrac5{16}$이다. 음수 분기는 불가하고 $k=1$일 때만 양근 둘이 나온다.",
       "item4slot": {
         "ordinal": 21,
         "format": "서술",
@@ -1544,7 +1542,6 @@
           55,
           54,
           293,
-          42,
           71
         ],
         "condition": [

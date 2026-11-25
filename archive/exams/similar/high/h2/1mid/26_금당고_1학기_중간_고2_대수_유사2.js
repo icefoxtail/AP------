@@ -100,18 +100,18 @@ window.questionBank = [
   },
   {
     "id": 3,
-    "category": "역함수",
+    "category": "지수함수의 역함수",
     "standardCourse": "대수",
     "curriculum": "2022",
     "courseKey": "대수",
-    "standardUnitKey": "H22-A-03",
-    "standardUnit": "로그함수",
-    "standardUnitOrder": 3,
-    "subUnitKey": "H22-A-03-LOGARITHMIC_FUNCTION",
-    "subUnit": "로그함수",
+    "standardUnitKey": "H22-A-02",
+    "standardUnit": "지수함수",
+    "standardUnitOrder": 2,
+    "subUnitKey": "H22-A-02-EXPONENTIAL_FUNCTION",
+    "subUnit": "지수함수",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "conceptClusterKey": "LOGARITHMIC_FUNCTION",
+    "conceptClusterKey": "EXPONENTIAL_FUNCTION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "wide": false,
@@ -141,7 +141,7 @@ window.questionBank = [
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
-    "rpmPrimaryRecordId": "H2-M1-RPM-087",
+    "rpmPrimaryRecordId": "H2-M1-RPM-081",
     "sourceQid": 3,
     "variationType": "EXAM_FOLLOWUP"
   },
@@ -353,28 +353,28 @@ window.questionBank = [
       "객관식",
       "지수함수의 그래프"
     ],
-    "content": "함수 $y=2^x$의 그래프 위에 두 점 $P,Q$가 있다. $P$의 $x$좌표는 $1$, $Q$의 $x$좌표는 $3$이다. 두 점의 $y$좌표를 각각 $p,q$라 할 때, $\\dfrac qp$의 값은? [4점]",
+    "content": "함수 $y=2^x+3$의 그래프 위의 두 점 $P,Q$에 대하여 $P$의 $y$좌표는 $7$이고, $Q$의 $x$좌표는 $4$이다. $P$의 $x$좌표를 $p$, $Q$의 $y$좌표를 $q$라 할 때, $q-p$의 값은? [4점]",
     "choices": [
-      "$2$",
-      "$4$",
-      "$6$",
-      "$8$",
-      "$16$"
+      "$15$",
+      "$17$",
+      "$19$",
+      "$21$",
+      "$23$"
     ],
     "answer": "②",
-    "solution": "발문에서 주어진 $P,Q$의 $x$좌표는 각각 1, 3이다.\n\n$P$는 $y=2^x$ 위에 있으므로 $p=2^1=2$이다.\n$Q$도 같은 그래프 위에 있으므로 $q=2^3=8$이다.\n\n따라서 $\\dfrac qp=\\dfrac82=4$이고 정답은 ②이다.",
+    "solution": "$P$가 그래프 위에 있고 $y$좌표가 $7$이므로\n$7=2^p+3$이다.\n따라서 $2^p=4=2^2$이므로 $p=2$이다.\n\n$Q$의 $x$좌표는 $4$이므로\n$q=2^4+3=16+3=19$이다.\n\n따라서 $q-p=19-2=17$이고 정답은 ②이다.",
     "score": 4,
     "points": 4,
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "problemTypeKey": "PT_H22A_01_EXPONENT_LAWS",
-    "templateKey": "TPL_H22A_01_EXPONENT_LAWS_071",
+    "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+    "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
     "crossConceptKeys": [
       "CC_POINT_ON_CURVE_SUBSTITUTION"
     ],
     "conditionKeys": [],
-    "integrationPattern": "NONE",
+    "integrationPattern": "SEQUENTIAL",
     "rpmPrimaryRecordId": "H2-M1-RPM-080",
     "sourceQid": 8,
     "variationType": "EXAM_FOLLOWUP",
@@ -401,7 +401,7 @@ window.questionBank = [
       "객관식",
       "로그함수의 그래프"
     ],
-    "content": "$y=\\log_3(x-h)+k$의 그래프가 직선 $x=5$를 점근선으로 가지고, $x$축과 점 $(14,0)$에서 만난다. $h-k$의 값은? [4점]",
+    "content": "함수 $y=\\log_3(x-h)+k$의 그래프가 서로 다른 두 점 $(9,0)$, $(33,2)$를 지날 때, $h-k$의 값은? [4점]",
     "choices": [
       "$3$",
       "$4$",
@@ -410,16 +410,15 @@ window.questionBank = [
       "$7$"
     ],
     "answer": "⑤",
-    "solution": "$y=\\log_3(x-h)+k$의 세로 점근선은 $x=h$이므로 $h=5$이다.\n\n$x$절편이 $(14,0)$이므로\n$0=\\log_3(14-5)+k=\\log_3 9+k=2+k$이다.\n따라서 $k=-2$이다.\n\n$h-k=5-(-2)=7$이므로 정답은 ⑤이다.",
+    "solution": "두 점을 그래프의 식에 대입하면\n$0=\\log_3(9-h)+k$,\n$2=\\log_3(33-h)+k$이다.\n\n첫째 식에서 $9-h=3^{-k}$이고,\n둘째 식에서 $33-h=3^{2-k}=9\\cdot3^{-k}$이다.\n두 식을 빼면 $24=8\\cdot3^{-k}$이므로\n$3^{-k}=3$, 즉 $k=-1$이다.\n\n$9-h=3$에서 $h=6$이고, $9-h>0$, $33-h>0$도 만족한다.\n따라서 $h-k=6-(-1)=7$이므로 정답은 ⑤이다.",
     "score": 4,
     "points": 4,
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "problemTypeKey": "PT_H22A_03_LOG_EQUATION",
-    "templateKey": "TPL_H22A_03_LOG_EQUATION_089",
+    "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+    "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
     "crossConceptKeys": [
-      "CC_ASYMPTOTE",
       "CC_POINT_ON_CURVE_SUBSTITUTION",
       "CC_LOG_RULES"
     ],
@@ -796,7 +795,7 @@ window.questionBank = [
       "객관식",
       "로그와 집합의 원소 수"
     ],
-    "content": "2 이상의 자연수 $m$에 대하여 $A_m=\\{x\\mid 0<x\\le144,\\ \\log_m x\\text{는 자연수}\\}$로 정의한다. 다음 중 옳은 것만을 있는 대로 고른 것은? [5.5점]<br><div class=\"note-box\">ㄱ. $n(A_2)=6$이다.<br>ㄴ. $n(A_m)=2$일 필요충분조건은 $6\\le m\\le12$이다.<br>ㄷ. $n(A_{12})=1$이다.</div>",
+    "content": "2 이상의 자연수 $m$에 대하여 $A_m=\\{x\\mid 0<x\\le144,\\ \\log_m x\\text{는 자연수}\\}$로 정의한다. 다음 중 옳은 것만을 있는 대로 고른 것은? [5.5점]<br><div class=\"note-box\">ㄱ. $n(A_m)$이 홀수인 자연수 $m$은 $136$개이다.<br>ㄴ. $n(A_m)=2$일 필요충분조건은 $6\\le m\\le12$이다.<br>ㄷ. $n(A_m)=1$인 자연수 $m$ 중 $3$의 배수는 $43$개이다.</div>",
     "choices": [
       "ㄱ",
       "ㄴ",
@@ -805,7 +804,7 @@ window.questionBank = [
       "ㄴ, ㄷ"
     ],
     "answer": "②",
-    "solution": "$\\log_mx$가 자연수이려면 $x=m,m^2,m^3,\\ldots$ 중 144 이하인 수이다.\n\nㄱ. $2^7=128\\le144<256=2^8$이므로 $n(A_2)=7$이다. 거짓이다.\n\nㄴ. 원소가 정확히 2개이려면 $m^2\\le144<m^3$이어야 한다.\n$m^2\\le144$에서 $m\\le12$이고, $m^3>144$에서 $m\\ge6$이다.\n따라서 $6\\le m\\le12$는 필요충분조건이다. 참이다.\n\nㄷ. $12^2=144$가 포함되므로 $A_{12}=\\{12,144\\}$, 원소 수는 2개이다. 거짓이다.\n\n옳은 것은 ㄴ뿐이므로 정답은 ②이다.",
+    "solution": "$\\log_mx$가 자연수이려면 $x=m,m^2,m^3,\\ldots$ 중 $144$ 이하인 수이다.\n\nㄱ. $m=2$이면 $2^7\\le144<2^8$이므로 원소 수는 $7$이다.\n$m=3$에서는 $3^4\\le144<3^5$이므로 $4$개,\n$m=4,5$에서는 각각 $3$개이다.\n$m=6,\\ldots,12$에서는 $2$개, $m=13,\\ldots,144$에서는 $1$개이다.\n따라서 원소 수가 홀수인 $m$은 $2$, $4,5$, $13,\\ldots,144$로\n$1+2+(144-13+1)=135$개이다. ㄱ은 거짓이다.\n\nㄴ. 원소가 정확히 $2$개일 필요충분조건은\n$m^2\\le144<m^3$이다.\n따라서 $m\\le12$이고 $m\\ge6$이므로\n$6\\le m\\le12$이다. ㄴ은 참이다.\n\nㄷ. $n(A_m)=1$은 $m\\le144<m^2$와 같으므로\n$13\\le m\\le144$이다.\n이 중 $3$의 배수는 $15,18,\\ldots,144$로\n$\\dfrac{144-15}{3}+1=44$개이다. ㄷ은 거짓이다.\n\n따라서 옳은 것은 ㄴ뿐이며 정답은 ②이다.",
     "score": 5.5,
     "points": 5.5,
     "difficultyBucket": 4,
@@ -861,15 +860,13 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "problemTypeKey": "PT_H22A_03_LOG_EQUATION",
-    "templateKey": "TPL_H22A_03_LOG_EQUATION_090",
+    "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+    "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION_REFLECTION",
     "crossConceptKeys": [
       "CC_LINE_SYMMETRY_REFLECTION",
       "CC_ASYMPTOTE"
     ],
-    "conditionKeys": [
-      "COND_UNIVERSAL_INPUTS"
-    ],
+    "conditionKeys": [],
     "integrationPattern": "DEEP_COMPOSITE",
     "rpmPrimaryRecordId": "H2-M1-RPM-088",
     "sourceQid": 18,
@@ -896,23 +893,23 @@ window.questionBank = [
       "객관식",
       "지수함수와 절댓값"
     ],
-    "content": "실수 $k$와 양의 실수 $a\\ne1$에 대하여 $f(x)=5-|x-k|$이고 함수 $g(x)$를 $g(x)=\\begin{cases}a^{-f(x)}&(f(x)<0)\\\\ a^{f(x)}&(f(x)\\ge0)\\end{cases}$로 정의한다. $y=g(x)$의 그래프와 직선 $y=32$의 교점이 정확히 3개이고 $g(2)=32$일 때, 가능한 모든 $k$ 중 최댓값과 최솟값의 차는? [5.8점]",
+    "content": "실수 $k$와 양의 실수 $a\\ne1$에 대하여 $f(x)=8-(x-k)^2$이고 함수 $g(x)$를 $g(x)=\\begin{cases}a^{-f(x)}&(f(x)<0)\\\\ a^{f(x)}&(f(x)\\ge0)\\end{cases}$로 정의한다. $y=g(x)$의 그래프와 직선 $y=256$의 교점이 정확히 $3$개이고 $g(2)=256$일 때, 가능한 모든 $k$ 중 최댓값과 최솟값의 차는? [5.8점]",
     "choices": [
-      "$20$",
-      "$18$",
-      "$16$",
-      "$14$",
-      "$12$"
+      "$8$",
+      "$7$",
+      "$6$",
+      "$5$",
+      "$4$"
     ],
     "answer": "①",
-    "solution": "$g(x)$는 두 경우를 합치면 $a^{|f(x)|}=a^{|5-|x-k||}$이다.\n$g(2)=32>1$이므로 $a>1$이다. $h=\\log_a32>0$으로 놓는다.\n\n$g(x)=32$는 $|5-|x-k||=h$이며,\n$|x-k|=5+h$ 또는 $|x-k|=5-h$이다.\n\n$0<h<5$이면 교점은 4개, $h>5$이면 2개이다.\n정확히 3개이려면 $h=5$여서 $|x-k|=10$의 두 해와 $x=k$의 한 해가 나와야 한다.\n따라서 $a^5=32$에서 $a=2$이다.\n\n$g(2)=32$에서 $|5-|2-k||=5$이다.\n그러므로 $|2-k|=0$ 또는 $10$이고 $k=2,-8,12$이다.\n최댓값과 최솟값의 차는 $12-(-8)=20$이다. 정답은 ①이다.",
+    "solution": "$g(x)=a^{|f(x)|}=a^{|8-(x-k)^2|}$이다.\n$g(2)=256>1$이므로 $a>1$이다.\n$h=\\log_a256>0$이라 놓으면 $g(x)=256$은\n$|8-(x-k)^2|=h$이다.\n\n따라서 $(x-k)^2=8+h$ 또는 $(x-k)^2=8-h$이다.\n첫째 식에서는 항상 서로 다른 두 실근이 나온다.\n둘째 식에서는 $0<h<8$일 때 두 실근, $h=8$일 때 한 실근,\n$h>8$일 때 실근이 없다.\n\n교점이 정확히 $3$개이려면 $h=8$이어야 하므로\n$a^8=256=2^8$, 즉 $a=2$이다.\n\n$g(2)=256$을 대입하면\n$|8-(2-k)^2|=8$이므로\n$(2-k)^2=0$ 또는 $(2-k)^2=16$이다.\n따라서 $k=2,-2,6$이다.\n\n가능한 $k$의 최댓값과 최솟값의 차는\n$6-(-2)=8$이므로 정답은 ①이다.",
     "score": 5.8,
     "points": 5.8,
     "difficultyBucket": 4,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "problemTypeKey": "PT_H22A_02_EXP_EQUATION",
-    "templateKey": "TPL_H22A_02_EXP_EQUATION_082",
+    "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+    "templateKey": "TPL_FUNCTION_INTERSECTION_ABSOLUTE_PIECEWISE",
     "crossConceptKeys": [
       "CC_ABSOLUTE_VALUE_CURVE_GRAPH",
       "CC_POINT_ON_CURVE_SUBSTITUTION"
