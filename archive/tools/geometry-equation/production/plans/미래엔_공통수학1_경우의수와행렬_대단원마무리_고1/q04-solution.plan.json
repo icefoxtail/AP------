@@ -1,0 +1,40 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "TREE",
+    "root": {
+      "label": "입구",
+      "children": [
+        {
+          "label": "직행",
+          "children": [
+            { "label": "직행길1" },
+            { "label": "직행길2" },
+            { "label": "직행길3" },
+            { "label": "직행길4" }
+          ]
+        },
+        {
+          "label": "매점 경유",
+          "children": [
+            { "label": "매점길1", "children": [{ "label": "출구길1" }, { "label": "출구길2" }] },
+            { "label": "매점길2", "children": [{ "label": "출구길1" }, { "label": "출구길2" }] },
+            { "label": "매점길3", "children": [{ "label": "출구길1" }, { "label": "출구길2" }] }
+          ]
+        }
+      ]
+    }
+  },
+  "caption": "공원 산책로를 직행 네 갈래와 매점 경유 세 갈래마다 출구 두 갈래로 분류한 수형도이다. 길 번호는 서로 다른 산책로를 구별하기 위한 표시다.",
+  "accessibilityDescription": "입구에서 바로 출구로 가는 길 네 가지와, 세 길 중 하나로 매점에 간 뒤 두 길 중 하나로 출구에 가는 경우 여섯 가지를 갈라 보여 준다.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "입구와 출구를 바로 잇는 서로 다른 산책로는 네 개다.", "mappedTo": "chart.root.children[0].children[0..3]" },
+    { "id": "c2", "condition": "입구에서 매점으로 가는 길은 세 개다.", "mappedTo": "chart.root.children[1].children[0..2]" },
+    { "id": "c3", "condition": "매점에서 출구로 가는 길은 두 개다.", "mappedTo": "chart.root.children[1].children[0..2].children[0..1]" },
+    { "id": "c4", "condition": "같은 지점을 다시 방문하지 않는다.", "mappedTo": "chart.root.children (직행 / 매점 경유만 사용; 되돌아가는 가지 없음)" }
+  ],
+  "newVisualInformation": [
+    "직행의 네 끝점과 매점 경유의 여섯 끝점을 분리해 센다.",
+    "매점에 들어가는 세 가지 선택 각각에 매점에서 나오는 두 가지 선택이 대응함을 보인다."
+  ]
+}
