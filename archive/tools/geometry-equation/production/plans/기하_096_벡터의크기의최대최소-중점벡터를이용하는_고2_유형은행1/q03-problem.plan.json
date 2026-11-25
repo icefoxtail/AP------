@@ -1,0 +1,341 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O1",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O2",
+          "O3"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "O4",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O3",
+          "O2"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "120"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "MIDPOINT",
+        "inputs": [
+          "O2",
+          "O3"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O3",
+          "O2"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "90"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O4",
+          "O3"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "120"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "k1",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O1"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k2",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O2"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k3",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O3"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k4",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O4"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O1",
+    "O2",
+    "O3",
+    "O4",
+    "A",
+    "P",
+    "Q"
+  ],
+  "displaySegments": [
+    {
+      "id": "sO1O2",
+      "refs": [
+        "O1",
+        "O2"
+      ]
+    },
+    {
+      "id": "sO2O3",
+      "refs": [
+        "O2",
+        "O3"
+      ]
+    },
+    {
+      "id": "sO3O4",
+      "refs": [
+        "O3",
+        "O4"
+      ]
+    },
+    {
+      "id": "sO4O1",
+      "refs": [
+        "O4",
+        "O1"
+      ]
+    }
+  ],
+  "displayCircles": [
+    "k1",
+    "k2",
+    "k3",
+    "k4"
+  ],
+  "pointNames": {
+    "O1": "O_1",
+    "O2": "O_2",
+    "O3": "O_3",
+    "O4": "O_4"
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 560
+  },
+  "caption": "60° 마름모의 네 꼭짓점을 중심으로 반지름 1인 네 원, O₂O₃ 중점 A와 AP·AQ 화살표",
+  "accessibilityDescription": "60° 마름모의 네 꼭짓점을 중심으로 반지름 1인 네 원, O₂O₃ 중점 A와 AP·AQ 화살표. 원문 위치관계와 방향을 따르며, 문제에서 구하는 값과 최종 풀이를 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "O₁→O₂→O₃→O₄는 반시계 방향 마름모이고 네 변의 길이는 2, O₁O₂O₃ 각은 60°다.",
+      "mappedTo": [
+        "O1",
+        "O2",
+        "O3",
+        "O4",
+        "a60"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "원 네 개의 반지름은 1이며 A는 두 번째와 세 번째 원의 접점이다. P·Q는 각각 세 번째·네 번째 원의 일반점이다.",
+      "mappedTo": [
+        "k1",
+        "k2",
+        "k3",
+        "k4",
+        "A",
+        "P",
+        "Q",
+        "vAP",
+        "vAQ",
+        "dR"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "반시계 마름모·60° 각 호·네 원·접점과 두 유향화살표"
+  ],
+  "planeMarks": {
+    "vectors": [
+      {
+        "id": "vAP",
+        "from": "A",
+        "to": "P",
+        "label": "vec(AP)",
+        "side": "LEFT",
+        "labelAt": 0.5
+      },
+      {
+        "id": "vAQ",
+        "from": "A",
+        "to": "Q",
+        "label": "vec(AQ)",
+        "side": "RIGHT",
+        "labelAt": 0.5
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dR",
+        "from": "O3",
+        "to": "P",
+        "label": "1",
+        "side": "RIGHT",
+        "style": "BAR",
+        "factRole": "GIVEN"
+      }
+    ],
+    "angles": [
+      {
+        "id": "a60",
+        "refs": [
+          "O3",
+          "O2",
+          "O1"
+        ],
+        "value": 60,
+        "label": "60",
+        "arcs": 1,
+        "side": "INNER",
+        "factRole": "GIVEN"
+      }
+    ]
+  }
+}

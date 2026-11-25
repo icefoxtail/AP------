@@ -1,0 +1,256 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "O3",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O1",
+          "O2"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "MIDPOINT",
+        "inputs": [
+          "O2",
+          "O3"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O2",
+          "O1"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "90"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O3",
+          "O1"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "120"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "k1",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O1"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k2",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O2"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k3",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O3"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O1",
+    "O2",
+    "O3",
+    "M",
+    "P",
+    "Q"
+  ],
+  "displaySegments": [],
+  "displayCircles": [
+    "k1",
+    "k2",
+    "k3"
+  ],
+  "pointNames": {
+    "O1": "O_1"
+  },
+  "hiddenPointNames": [
+    "O2",
+    "O3"
+  ],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 560
+  },
+  "caption": "반지름 2인 외접하는 원 세 개, 원 C₂와 C₃의 접점 M, O₁에서 P·Q로 향하는 화살표",
+  "accessibilityDescription": "반지름 2인 외접하는 원 세 개, 원 C₂와 C₃의 접점 M, O₁에서 P·Q로 향하는 화살표. 원문 위치관계와 방향을 따르며, 문제에서 구하는 값과 최종 풀이를 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "모든 원의 반지름은 2이고 중심 삼각형의 세 변이 4이며, M은 원 C₂·C₃의 접점이다.",
+      "mappedTo": [
+        "O1",
+        "O2",
+        "O3",
+        "M",
+        "k1",
+        "k2",
+        "k3",
+        "dR"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "P는 두 번째 원 위의 일반점, Q는 세 번째 원 위의 일반점이다. 두 벡터 모두 첫 원의 중심 O₁에서 출발하며 극값의 위치는 그리지 않는다.",
+      "mappedTo": [
+        "P",
+        "Q",
+        "vO1P",
+        "vO1Q"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "실제 접하는 동반경 세 원·접점 M·원 위의 움직이는 두 점과 화살표"
+  ],
+  "planeMarks": {
+    "vectors": [
+      {
+        "id": "vO1P",
+        "from": "O1",
+        "to": "P",
+        "side": "RIGHT",
+        "labelAt": 0.5
+      },
+      {
+        "id": "vO1Q",
+        "from": "O1",
+        "to": "Q",
+        "side": "LEFT",
+        "labelAt": 0.5
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dR",
+        "from": "O2",
+        "to": "P",
+        "label": "2",
+        "side": "RIGHT",
+        "style": "BAR",
+        "factRole": "GIVEN"
+      }
+    ]
+  }
+}
