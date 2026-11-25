@@ -846,7 +846,7 @@ window.examData = {
     {
       "id": 15,
       "score": 5.0,
-      "question": "다음 그림에서 점 $\\mathrm{P}$는 두 현 $\\mathrm{AB, CD}$의 연장선의 교점이다. $\\overgroup{\\mathrm{AB}}=\\overgroup{\\mathrm{BC}}=\\overgroup{\\mathrm{CD}}$이고, $\\angle\\mathrm{APD}=30^\\circ$일 때, $\\angle x$의 크기는?(5점)<br><img src=\"assets/images/19_연향중_2학기_기말_중3_수학/q15-problem-v2.svg\" alt=\"A, B, C, D가 원 위에 있고 두 할선은 오른쪽의 P에서 만난다. 호 AB, BC와 CD는 같은 초록 모양이다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
+      "question": "다음 그림에서 점 $\\mathrm{P}$는 두 현 $\\mathrm{AB, CD}$의 연장선의 교점이다. $\\overset{\\frown}{\\mathrm{AB}}=\\overset{\\frown}{\\mathrm{BC}}=\\overset{\\frown}{\\mathrm{CD}}$이고, $\\angle\\mathrm{APD}=30^\\circ$일 때, $\\angle x$의 크기는?(5점)<br><img src=\"assets/images/19_연향중_2학기_기말_중3_수학/q15-problem-v2.svg\" alt=\"A, B, C, D가 원 위에 있고 두 할선은 오른쪽의 P에서 만난다. 호 AB, BC와 CD는 같은 초록 모양이다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
       "choices": [
         "$22.5^\\circ$",
         "$23.5^\\circ$",
