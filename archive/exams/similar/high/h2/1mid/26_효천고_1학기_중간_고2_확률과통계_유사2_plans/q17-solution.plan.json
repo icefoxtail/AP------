@@ -1,0 +1,83 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "axisVariable": false,
+    "rows": [
+      {
+        "kind": "POINTS",
+        "label": "5회 후 위치",
+        "band": false,
+        "points": [
+          {
+            "id": "P0",
+            "value": "-5",
+            "hideName": true,
+            "style": "TICK"
+          },
+          {
+            "id": "P1",
+            "value": "-2",
+            "hideName": true,
+            "style": "FILLED"
+          },
+          {
+            "id": "P2",
+            "value": "1",
+            "hideName": true,
+            "style": "TICK"
+          },
+          {
+            "id": "P3",
+            "value": "4",
+            "hideName": true,
+            "style": "FILLED"
+          },
+          {
+            "id": "P4",
+            "value": "7",
+            "hideName": true,
+            "style": "TICK"
+          },
+          {
+            "id": "P5",
+            "value": "10",
+            "hideName": true,
+            "style": "TICK"
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "진한 점: 거리 조건 충족"
+  },
+  "caption": "오른쪽으로 2칸 이동한 횟수 n=0,1,2,3,4,5에 대응하는 최종 위치는 -5,-2,1,4,7,10이다. 거리 2 이상 4 이하의 위치는 -2,4뿐이다.",
+  "accessibilityDescription": "점 P가 5회 이동한 뒤 가능한 최종 위치 -5,-2,1,4,7,10을 표시한 수직선. -2와 4만 조건을 만족하여 진하게 나타남.",
+  "sourceConditions": [
+    {
+      "id": "start",
+      "condition": "점 P의 시작 위치는 0",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    },
+    {
+      "id": "move",
+      "condition": "n회 오른쪽 2, 5-n회 왼쪽 1 이동하면 최종 위치는 3n-5",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    },
+    {
+      "id": "target",
+      "condition": "최종 위치의 절댓값이 2 이상 4 이하",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "가능한 최종 위치 6개와 그 중 목표 사건에 해당하는 두 위치를 비교한다"
+  ]
+}
