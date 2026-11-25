@@ -1,0 +1,206 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "9",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "54",
+              "denominator": "25"
+            },
+            {
+              "kind": "rational",
+              "numerator": "72",
+              "denominator": "25"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "H"
+  ],
+  "hiddenPointNames": [],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "A",
+        "H"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a0",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 36.869897646,
+        "label": "θ",
+        "arcs": 1,
+        "style": "ARC"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "l0",
+        "ownerSegment": "s0",
+        "text": "6"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "B",
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "A",
+        "H",
+        "B"
+      ]
+    }
+  ],
+  "caption": "직각삼각형 ABC에서 AB=6, ∠B=θ와 빗변 BC에 내린 수선 AH를 표시한다.",
+  "accessibilityDescription": "직각삼각형 ABC에서 AB=6, ∠B=θ와 빗변 BC에 내린 수선 AH를 표시한다.",
+  "sourceQuote": "[그림: $A=(0,0),B=(6,0),C=(0,6\\tan\\theta)$와 수선 $AH$.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문에서 이름 붙인 점과 대표 배치(각·변의 실제 거리·소속 검산)",
+      "mappedTo": "mathPlan.nodes[0..3]"
+    },
+    {
+      "id": "c2",
+      "condition": "그림에 표시할 변·수선·연결선",
+      "mappedTo": "displaySegments[0..3]"
+    },
+    {
+      "id": "c5",
+      "condition": "주어진 각·각의 관계",
+      "mappedTo": "planeMarks.angles[0..0]"
+    },
+    {
+      "id": "c6",
+      "condition": "수선·직각 표시",
+      "mappedTo": "rightAngles[0..1]"
+    },
+    {
+      "id": "c7",
+      "condition": "문제에 주어진 길이 수치",
+      "mappedTo": "planeMarks.expressionLabels[0..0]"
+    }
+  ],
+  "newVisualInformation": [
+    "tanθ=3/4의 대표 직각삼각형이며 AH의 발은 BC 상의 정확한 수선 발이다.",
+    "문제에서 구할 극한값과 최종 답은 시각 자료에 쓰지 않는다."
+  ]
+}

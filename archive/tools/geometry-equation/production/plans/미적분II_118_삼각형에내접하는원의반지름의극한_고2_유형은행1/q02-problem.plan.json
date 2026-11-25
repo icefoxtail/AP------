@@ -1,0 +1,328 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "24",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "18",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "72",
+              "denominator": "25"
+            },
+            {
+              "kind": "rational",
+              "numerator": "54",
+              "denominator": "25"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "54",
+              "denominator": "25"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "I",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "24",
+              "denominator": "25"
+            },
+            {
+              "kind": "rational",
+              "numerator": "78",
+              "denominator": "25"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "outer",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "inc",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "I"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "24",
+            "denominator": "25"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "P",
+    "Q",
+    "R",
+    "I"
+  ],
+  "hiddenPointNames": [
+    "I"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "O",
+        "P"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "B",
+        "Q"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "Q",
+        "R"
+      ]
+    },
+    {
+      "id": "s5",
+      "refs": [
+        "B",
+        "R"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "inc"
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a0",
+        "refs": [
+          "A",
+          "O",
+          "P"
+        ],
+        "value": 36.869897646,
+        "label": "θ",
+        "arcs": 1,
+        "style": "ARC"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "arc0",
+        "circle": "outer",
+        "center": "O",
+        "from": "A",
+        "to": "B",
+        "side": "CCW"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "B",
+        "Q",
+        "O"
+      ]
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "Q",
+        "R",
+        "B"
+      ]
+    }
+  ],
+  "caption": "반지름 6 사분원에서 B를 OP에 투영한 Q, Q를 OB에 투영한 R과 삼각형 BQR의 내접원을 보인다.",
+  "accessibilityDescription": "반지름 6 사분원에서 B를 OP에 투영한 Q, Q를 OB에 투영한 R과 삼각형 BQR의 내접원을 보인다.",
+  "sourceQuote": "[그림: $O=(0,0)$, $P=(6\\cos\\theta,6\\sin\\theta)$와 두 직각 투영을 그린다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문에서 이름 붙인 점과 대표 배치(각·변의 실제 거리·소속 검산)",
+      "mappedTo": "mathPlan.nodes[0..6]"
+    },
+    {
+      "id": "c2",
+      "condition": "그림에 표시할 변·수선·연결선",
+      "mappedTo": "displaySegments[0..5]"
+    },
+    {
+      "id": "c3",
+      "condition": "원의 중심·반지름",
+      "mappedTo": "mathPlan.nodes[7..8];displayCircles[0..0]"
+    },
+    {
+      "id": "c4",
+      "condition": "원문 호와 표시 방향",
+      "mappedTo": "planeMarks.arcs[0..0]"
+    },
+    {
+      "id": "c5",
+      "condition": "주어진 각·각의 관계",
+      "mappedTo": "planeMarks.angles[0..0]"
+    },
+    {
+      "id": "c6",
+      "condition": "수선·직각 표시",
+      "mappedTo": "rightAngles[0..1]"
+    }
+  ],
+  "newVisualInformation": [
+    "sinθ=3/5, cosθ=4/5의 대표 배치. Q와 R은 직각 정사영이며 내심 I는 세 변까지 거리 24/25다.",
+    "문제에서 구할 극한값과 최종 답은 시각 자료에 쓰지 않는다."
+  ]
+}
