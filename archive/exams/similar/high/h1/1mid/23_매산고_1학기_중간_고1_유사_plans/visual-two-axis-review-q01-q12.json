@@ -1,0 +1,39 @@
+{
+  "schema":"visual-two-axis-review-v1",
+  "batch":"maesan23-h1-h2-mid-20261126-h1-q01-q12",
+  "sourceFile":"archive/exams/similar/high/h1/1mid/23_매산고_1학기_중간_고1_유사.js",
+  "sourceMainGitBlobBeforeFix":"94fa47cebec2811b98327d10c37265ea2e711f18",
+  "sourceWorkingSha256AfterFix":"879d591abae06155ed71fd98b6d73debe4528abbb9ad9188819dbaa6b834bab0",
+  "questionRange":"q01-q12",
+  "questionCount":12,
+  "axisCount":{"problem":12,"solution":12},
+  "visualPolicy":"No new handcrafted SVG. Problem plan has no numeric answer labels or fills; solution plans may display derived values.",
+  "renderPolicy":"PLAN_ONLY: SVG rendering, PNG visual check, student UI, A4 NOT_RUN",
+  "parityMethod":"Independent math re-evaluation of the exact fixed JS; inspect coefficients, x-domain closure, construction point/segment/labels, curve roots/tangent and axis tick fields, not captions alone.",
+  "sourceCorrections":[
+    {"qid":"q11","fields":["content","solution"],"kind":"MATHEMATICAL_CONTRADICTION_FIXED","reason":"Original D1>0 gave k>2 while D2=0 gave k=−2, so no valid answer. First constant +4→+3 and second constant −2→+2 yield D1/4=2k−3>0, D2/4=k−2=0 and k=2. Original answer ⑤ is preserved."},
+    {"qid":"q12","fields":["choices[4]","solution"],"kind":"ARITHMETIC_ANSWER_FIXED","reason":"Source computed M=10,m=1 but claimed 10+2=12. Updated last choice 12→11 and corrected proof M+m=11; answer index ⑤ is preserved."}
+  ],
+  "rows":[
+    {"qid":"q01","problem":{"decision":"EXEMPT","reason":"두 다항식 2A−B의 동류항 계산만 묻는 순수 식"},"solution":{"decision":"EXEMPT","reason":"두 다항식 전개와 계수별 뺄셈으로 충분한 두 단계"}},
+    {"qid":"q02","problem":{"decision":"EXEMPT","reason":"복소수 (5−3i)−(2−4i)의 실수부·허수부 산술"},"solution":{"decision":"EXEMPT","reason":"실수부 3, 허수부 계수 1을 합하는 계산으로 완결"}},
+    {"qid":"q03","problem":{"decision":"EXEMPT","reason":"항등식 (2x−1)(x+5)의 계수 비교만 요구"},"solution":{"decision":"EXEMPT","reason":"좌변 2x²+9x−5의 계수를 대조하면 충분"}},
+    {"qid":"q04","problem":{"decision":"EXEMPT","reason":"다항식 x+2로 나눈 나머지의 대입 계산"},"solution":{"decision":"EXEMPT","reason":"나머지 정리에서 x=−2를 대입하는 직접 계산"}},
+    {"qid":"q05","problem":{"decision":"EXEMPT","reason":"중근을 만드는 미지 k가 정답이라 k=10의 접점 그래프를 문제에 먼저 보여 줄 수 없음"},"solution":{"decision":"BENEFICIAL","reason":"판별식 0의 뜻을 포물선 y=(x−4)²의 한 x축 접점으로 확인","plan":"q05-solution.plan.json"}},
+    {"qid":"q06","problem":{"decision":"EXEMPT","reason":"사차식의 인수 a,b를 찾는 항등식 인수분해"},"solution":{"decision":"EXEMPT","reason":"X=x² 치환으로 (X+4)(X−1)의 계수를 결정하면 충분"}},
+    {"qid":"q07","problem":{"decision":"EXEMPT","reason":"주어진 이차방정식에서 x+1/x의 값을 이용하는 대칭식 계산"},"solution":{"decision":"EXEMPT","reason":"x+1/x=4와 세제곱합 공식으로 바로 결과가 정해짐"}},
+    {"qid":"q08","problem":{"decision":"EXEMPT","reason":"(x−1)²의 나눗셈 조건으로 몫과 미지 계수를 찾는 대수식"},"solution":{"decision":"EXEMPT","reason":"P(x)=(x−1)²(x+2)로 계수·몫을 비교하면 중복 그래프 불필요"}},
+    {"qid":"q09","problem":{"decision":"EXEMPT","reason":"f(x+k)의 다항식 전개 계수 비교만 요구"},"solution":{"decision":"EXEMPT","reason":"x²,x,상수항 계수 연립으로 k,a,b를 계산"}},
+    {"qid":"q10","problem":{"decision":"BENEFICIAL","reason":"두 영역 중 정사각형과 옆 직사각형의 배치, 공용 칸막이 한 번, 문자 x,y−x 라벨을 보여 주되 정답 x·넓이는 숨김","plan":"q10-problem.plan.json"},"solution":{"decision":"BENEFICIAL","reason":"끈 길이 3x+2y=180에서 넓이 S=−3x²/2+90x의 꼭짓점과 최대 넓이를 x 대 넓이(m²) 축으로 확인","plan":"q10-solution.plan.json"}},
+    {"qid":"q11","problem":{"decision":"EXEMPT","reason":"미지 k를 추론하는 두 이차곡선의 교차·접촉 조건이라 수정 후 수치 곡선을 문제에 미리 보이면 정답 k=2가 누출됨"},"solution":{"decision":"BENEFICIAL","reason":"수리된 k=2에서 첫 포물선의 두 x절편 1,3과 둘째 포물선의 접점 4를 같은 축에서 대비","plan":"q11-solution.plan.json"}},
+    {"qid":"q12","problem":{"decision":"EXEMPT","reason":"치환 t의 최댓값과 최솟값을 묻는 문제에 정답 극값 점을 미리 제공하지 않음"},"solution":{"decision":"BENEFICIAL","reason":"t∈[1,5]의 닫힌 구간에서 (2,1) 최소와 (5,10) 최대를 정확히 비교해 수정 답 11 확인","plan":"q12-solution.plan.json"}}
+  ],
+  "planResults":[
+    {"qid":"q05","axis":"solution","capability":"polynomial-spike-v1","plan":"q05-solution.plan.json","planLintShallow":"PASS","planLintFull":"PASS","sourceVsPlan":"REVIEWED","drawnFeatureParity":"PASS","drawnFields":["polynomial coefficients [16,−8,1] give y=(x−4)² at k=10","requiredPoints[T]=(4,0), x tick 4 on the x-axis tangent point"],"render":"NOT_RUN","png":"NOT_RUN","student":"NOT_RUN","a4":"NOT_RUN"},
+    {"qid":"q10","axis":"problem","capability":"construction-spike-v1","plan":"q10-problem.plan.json","planLintShallow":"PASS","planLintFull":"PASS","sourceVsPlan":"REVIEWED","drawnFeatureParity":"PASS","drawnFields":["representative six points E,A,B,C,D,F join to left square and right rectangle with shared divider sAD","seven displaySegments including divider, expressionLabels on left width x, left height x, right width y−x","no student-visible numerical coordinates, no answer length 30, no fill"],"assumption":"Representative arrangement x=4,y=7 in private construction nodes matches the adjacent shared-divider layout encoded in the source solution 3x+2y=180; the numbers 4 and 7 are not visible.","render":"NOT_RUN","png":"NOT_RUN","student":"NOT_RUN","a4":"NOT_RUN"},
+    {"qid":"q10","axis":"solution","capability":"polynomial-spike-v1","plan":"q10-solution.plan.json","planLintShallow":"PASS","planLintFull":"PASS","sourceVsPlan":"REVIEWED","drawnFeatureParity":"PASS","drawnFields":["coefficients [0,90,−3/2] give S(x)=90x−3x²/2","sourceDomain 0<x<36 with OPEN/OPEN endpoints","requiredPoints[V]=(30,1350), applicationAxes:true for x in m versus S in m², x and y ticks physically drawn"],"render":"NOT_RUN","png":"NOT_RUN","student":"NOT_RUN","a4":"NOT_RUN"},
+    {"qid":"q11","axis":"solution","capability":"multi-curve-figure-v1","plan":"q11-solution.plan.json","planLintShallow":"PASS","planLintFull":"PASS","sourceVsPlan":"REVIEWED","drawnFeatureParity":"PASS","drawnFields":["fixed k=2 yields f coefficients [3,−4,1] and g [16,−8,1]","f roots A=(1,0),B=(3,0); g tangent T=(4,0) in overlays.points","two curve labels and axis x ticks 1,3,4 are drawn"],"render":"NOT_RUN","png":"NOT_RUN","student":"NOT_RUN","a4":"NOT_RUN"},
+    {"qid":"q12","axis":"solution","capability":"polynomial-spike-v1","plan":"q12-solution.plan.json","planLintShallow":"PASS","planLintFull":"PASS","sourceVsPlan":"REVIEWED","drawnFeatureParity":"PASS","drawnFields":["t-polynomial [5,−4,1], interval [1,5] CLOSED/CLOSED","requiredPoints L=(1,2),V=(2,1),R=(5,10) and matching x/y tick labels","M+m=10+1=11 matches corrected choice ⑤"],"render":"NOT_RUN","png":"NOT_RUN","student":"NOT_RUN","a4":"NOT_RUN"}
+  ],
+  "summary":{"questions":12,"axisJudgments":24,"beneficialAxes":5,"requiredAxes":0,"exemptAxes":19,"plans":5,"shallowPass":5,"fullPass":5,"drawnFeatureParityPass":5,"engineCapabilityPending":0,"sourceFixes":2,"renderNotRun":5}
+}

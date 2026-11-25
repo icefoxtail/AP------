@@ -1,0 +1,22 @@
+{
+  "capability":"trigonometric-spike-v1",
+  "graphPlan":{
+    "family":"trigonometric",
+    "function":"TAN",
+    "coefficients":["1","1","0"],
+    "phasePi":"0",
+    "sourceDomain":{"kind":"INTERVAL_PI","rangePi":["0","2"],"states":["CLOSED","OPEN"]},
+    "axisTickPi":true,
+    "axisTickPiStep":"1/2",
+    "axisTickValues":{"x":["1/2","3/2"],"y":["-1","1"]},
+    "displaySize":"full"
+  },
+  "sourceQuote":"0≤x<2π에서 y=tan x가 원점을 지나며 x=π/2,3π/2가 점근선인지 확인",
+  "caption":"탄젠트 그래프는 (0,0)을 지나고 0≤x<2π에서 x=π/2와 3π/2에 수직 점근선을 갖는다. ⑤가 참이다.",
+  "accessibilityDescription":"두 주기 구간의 탄젠트 곡선은 원점을 지나고 x가 π/2와 3π/2일 때 수직 점근선을 갖는다.",
+  "sourceConditions":[
+    {"id":"H204-1","condition":"주기 π, tan 0=0, 함수 y=tan x","mappedTo":"graphPlan.function,coefficients,phasePi"},
+    {"id":"H204-2","condition":"0≤x<2π에서 x=π/2,3π/2에서 정의되지 않음","mappedTo":"graphPlan.sourceDomain,axisTickPi,axisTickValues"}
+  ],
+  "newVisualInformation":["참인 보기의 원점 통과와 두 수직 점근선의 위치를 시각적으로 확인한다."]
+}

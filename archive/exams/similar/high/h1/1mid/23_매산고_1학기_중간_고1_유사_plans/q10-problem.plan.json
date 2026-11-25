@@ -1,0 +1,40 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{
+    "schemaVersion":"construction-spike-v1",
+    "nodes":[
+      {"id":"E","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"4"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"7"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"7"},{"kind":"integer","value":"4"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"4"},{"kind":"integer","value":"4"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"F","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"4"}]},"outputType":"POINT","factRole":"GIVEN"}
+    ]
+  },
+  "displaySegments":[
+    {"id":"sEA","refs":["E","A"]},
+    {"id":"sAB","refs":["A","B"]},
+    {"id":"sBC","refs":["B","C"]},
+    {"id":"sCD","refs":["C","D"]},
+    {"id":"sDF","refs":["D","F"]},
+    {"id":"sFE","refs":["F","E"]},
+    {"id":"sAD","refs":["A","D"]}
+  ],
+  "displayPoints":["E","A","B","C","D","F"],
+  "displayLines":[],
+  "expressionLabels":[
+    {"id":"lx1","ownerSegment":"sEA","text":"x"},
+    {"id":"lx2","ownerSegment":"sFE","text":"x"},
+    {"id":"lw","ownerSegment":"sAB","text":"y-x"}
+  ],
+  "axisTickValues":{"x":[],"y":[]},
+  "sourceQuote":"180m의 끈을 모두 써 두 인접 직사각형 영역(하나가 정사각형)을 만든다",
+  "caption":"정사각형의 한 변을 x, 두 영역의 전체 가로를 y라고 둔 배치 모형. 가운데 세로 변 x를 공용으로 사용하므로 끈 길이는 3x+2y이다.",
+  "accessibilityDescription":"왼쪽 한 변 x인 정사각형과 오른쪽 가로 y-x인 직사각형이 높이 x의 세로 칸막이를 공유한다. 실제 구할 x의 숫자는 그림에 없다.",
+  "sourceConditions":[
+    {"id":"H110-1","condition":"정사각형 한 변 x, 오른쪽 직사각형의 높이도 x, 전체 가로 y라는 해설 모델의 대표 배치","mappedTo":["sEA","sFE","sAD","sAB","sBC","sCD","sDF"]},
+    {"id":"H110-2","condition":"외곽 둘레 2x+2y와 공용 칸막이 x를 포함해 3x+2y=180","mappedTo":["sAD","sEA","sAB","sBC","sCD","sDF","sFE"]},
+    {"id":"H110-3","condition":"내부 좌표는 x=4,y=7인 형태 예시일 뿐 학생에게 실제 미지 x나 최대 넓이의 수치를 표시하지 않음","mappedTo":"mathPlan.nodes; no coordinateLabels/axis ticks"}
+  ],
+  "newVisualInformation":["공용 칸막이를 한 번 더 세는 끈의 길이 모형과 두 영역의 가로 구분을 시각화한다."]
+}

@@ -1,0 +1,20 @@
+{
+  "capability":"polynomial-spike-v1",
+  "graphPlan":{
+    "family":"polynomial",
+    "coefficients":["16","-8","1"],
+    "sourceDomain":{"kind":"ALL_REALS"},
+    "domain":[0,8],
+    "viewport":[-1,9,-2,18],
+    "requiredPoints":[{"id":"T","x":4,"y":0}],
+    "axisTickValues":{"x":["4"],"y":[]}
+  },
+  "sourceQuote":"x²−8x+2k−4=0이 중근을 가지는 k",
+  "caption":"판별식 D=0을 만족하는 k=10을 대입하면 y=(x−4)²가 x축과 (4,0) 한 점에서 접한다.",
+  "accessibilityDescription":"위로 열린 포물선 y=(x-4)²의 꼭짓점 (4,0)이 x축에 닿는 중근 사례이다.",
+  "sourceConditions":[
+    {"id":"H105-1","condition":"중근 조건 64−4(2k−4)=0에서 k=10","mappedTo":"graphPlan.coefficients"},
+    {"id":"H105-2","condition":"k=10이면 (x−4)²이고 중근 x=4","mappedTo":"graphPlan.requiredPoints[T],axisTickValues"}
+  ],
+  "newVisualInformation":["중근이 그래프의 x축 접점과 같다는 관계를 보여 준다."]
+}

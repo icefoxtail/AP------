@@ -1,0 +1,31 @@
+{
+  "schema":"visual-two-axis-review-v1",
+  "batch":"maesan23-h1-h2-mid-20261126-h2-q01-q10",
+  "sourceFile":"archive/exams/similar/high/h2/1mid/23_매산고_1학기_중간_고2_수학I_유사.js",
+  "sourceGitBlobSha":"4a28bbc444138774c03a0cce0e35ba2c9392c4ca",
+  "sourceSha256":"f58a50801d317c59885c155ba5db9b7ddec9803702ef339d053d0037f2adb29d",
+  "questionRange":"q01-q10",
+  "questionCount":10,
+  "axisCount":{"problem":10,"solution":10},
+  "visualPolicy":"No new handcrafted SVG; no student answer values in problem figures; no default area fills.",
+  "renderPolicy":"PLAN_ONLY: SVG rendering, PNG visual check, student UI, A4 NOT_RUN",
+  "parityMethod":"Independent trig frequency/phase, pole and endpoint calculations are compared to function, sourceDomain, tick and overlay fields.",
+  "rows":[
+    {"qid":"q01","problem":{"decision":"EXEMPT","reason":"5⁶×5⁻⁵에 같은 밑의 지수를 더하는 지수법칙 한 줄만 적용하는 순수 계산"},"solution":{"decision":"EXEMPT","reason":"같은 밑의 지수를 더하는 단순 식 변형"}},
+    {"qid":"q02","problem":{"decision":"EXEMPT","reason":"log₃81처럼 지수형 3⁴=81을 읽는 계산"},"solution":{"decision":"EXEMPT","reason":"로그의 정의 3⁴=81과 값을 대응시키면 완결"}},
+    {"qid":"q03","problem":{"decision":"EXEMPT","reason":"sinθ>0,cosθ>0의 사분면 부호만 묻는 선택형"},"solution":{"decision":"EXEMPT","reason":"단위원의 x,y 부호로 제1사분면임을 즉시 판단하며 단위원 도식은 중복"}},
+    {"qid":"q04","problem":{"decision":"EXEMPT","reason":"세 삼각함수 그래프 성질의 참·거짓 선택 문제로 해설 그래프를 문제에 미리 보여 답 ⑤를 노출하지 않음"},"solution":{"decision":"BENEFICIAL","reason":"tan x가 원점을 지나고 0≤x<2π에서 x=π/2,3π/2를 수직 점근선으로 갖는 것을 확인","plan":"q04-solution.plan.json"}},
+    {"qid":"q05","problem":{"decision":"EXEMPT","reason":"주어진 상용로그 소수값을 10³배의 로그로 변환하는 계산"},"solution":{"decision":"EXEMPT","reason":"log(3.7×10³)=log3.7+3으로 바로 완료"}},
+    {"qid":"q06","problem":{"decision":"EXEMPT","reason":"세 로그의 밑 변환으로 지수를 약분하는 대수 계산"},"solution":{"decision":"EXEMPT","reason":"log₃7·log₇10·log₁₀81=log₃81로 약분"}},
+    {"qid":"q07","problem":{"decision":"EXEMPT","reason":"반지름 4·호 길이 3의 부채꼴을 묻지만 그림 없이 l=rθ 식만으로 답이 정해짐"},"solution":{"decision":"EXEMPT","reason":"3=4θ를 푸는 한 줄 계산이며 부채꼴 도형은 계산 관계를 더하지 않음"}},
+    {"qid":"q08","problem":{"decision":"EXEMPT","reason":"sinθ+cosθ=3/4의 대칭식과 곱을 묻는 항등식 계산"},"solution":{"decision":"EXEMPT","reason":"(sinθ+cosθ)²=1+2sinθcosθ를 전개하면 충분"}},
+    {"qid":"q09","problem":{"decision":"EXEMPT","reason":"미지 주기·극값의 곱이 정답이므로 완성된 수치 그래프를 문제에 미리 보여주지 않음"},"solution":{"decision":"BENEFICIAL","reason":"코사인 y=(1/3)cos(4x−2π/3)+2의 주기 π/2, 중심 2, 극값 5/3·7/3을 그래프에서 확인","plan":"q09-solution.plan.json"}},
+    {"qid":"q10","problem":{"decision":"EXEMPT","reason":"구간 양 끝 극값을 구해 8(M+m)을 묻는 문제에 최댓값·최솟값 좌표를 미리 드러내지 않음"},"solution":{"decision":"BENEFICIAL","reason":"증가 지수함수의 제한 구간 −1≤x≤2와 양 끝점 (−1,−3/4),(2,1)을 대조","plan":"q10-solution.plan.json"}}
+  ],
+  "planResults":[
+    {"qid":"q04","axis":"solution","capability":"trigonometric-spike-v1","plan":"q04-solution.plan.json","planLintShallow":"PASS","planLintFull":"PASS","sourceVsPlan":"REVIEWED","drawnFeatureParity":"PASS","drawnFields":["TAN function coefficients [1,1,0], phase 0; graph passes origin","sourceDomain 0≤x<2π with CLOSED/OPEN states","axisTickPi true, Pi step 1/2, x ticks π/2 and 3π/2 mark the automatically computed tan poles"],"render":"NOT_RUN","png":"NOT_RUN","student":"NOT_RUN","a4":"NOT_RUN"},
+    {"qid":"q09","axis":"solution","capability":"trigonometric-spike-v1","plan":"q09-solution.plan.json","planLintShallow":"PASS","planLintFull":"PASS","sourceVsPlan":"REVIEWED","drawnFeatureParity":"PASS","drawnFields":["COS coefficients [1/3,4,2], phasePi −2/3 reproduce (1/3)cos(4(x−π/6))+2","representative visual interval 0≤x≤π spans two full periods (the source function itself is defined on all reals)","axisTickPi true/Pi step 1/6 and y ticks 5/3,2,7/3 show period π/2 and min/centre/max"],"render":"NOT_RUN","png":"NOT_RUN","student":"NOT_RUN","a4":"NOT_RUN"},
+    {"qid":"q10","axis":"solution","capability":"exponential-affine-spike-v1","plan":"q10-solution.plan.json","planLintShallow":"PASS","planLintFull":"PASS","sourceVsPlan":"REVIEWED","drawnFeatureParity":"PASS","drawnFields":["base 2, shiftX 1, coefficients [1,1,−1] reproduce y=2^(x−1)−1","displayed domain [−1,2] and overlays points L=(−1,−3/4),R=(2,1)","axis ticks -1,2 and -3/4,1 expose evaluated endpoints; analytic sourceDomain ALL_REALS for exponential family"],"render":"NOT_RUN","png":"NOT_RUN","student":"NOT_RUN","a4":"NOT_RUN"}
+  ],
+  "summary":{"questions":10,"axisJudgments":20,"beneficialAxes":3,"requiredAxes":0,"exemptAxes":17,"plans":3,"shallowPass":3,"fullPass":3,"drawnFeatureParityPass":3,"engineCapabilityPending":0,"sourceFixes":0,"renderNotRun":3}
+}
