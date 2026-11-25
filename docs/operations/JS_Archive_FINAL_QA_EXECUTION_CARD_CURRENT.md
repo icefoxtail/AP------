@@ -1,4 +1,4 @@
-# JS Archive FINAL QA — SINGLE ENTRY EXECUTION CARD (CURRENT v2.0.1)
+# JS Archive FINAL QA — SINGLE ENTRY EXECUTION CARD (CURRENT v2.0.2)
 
 **적용:** 이미 Git `main`에 있는 시험지 1건의 GPT 사후 검수·결함 수리·필요한 시험지별 메타 입력·운영병합. **사용자 최신 명시 지시와 이 카드가 현재 실행 권위**다. 신규 CREATE/R1/R2/R3/ALIVE, 예약·공통 Actions 유지보수의 품질·작업 규칙을 변경하지 않는다.
 
@@ -14,8 +14,8 @@
 
 ## 2. 필요한 수리만 실행
 
-4. 위 분모의 발문·정답/선지·학생 해설·교육과정·수식·이미지/SVG·실제 필요한 L1~L4/RPM/CC/Condition/Integration·`level`·`difficultyBucket`만 대조하고 확정 결함은 해당 부분을 직접 수리한다. 정상 문항과 기존 자산을 보존하고 바뀐 곳·직접 영향만 재검한다. 실제 확정 수학·해설·시각·메타 HARD FAIL을 방치한 채 품질 PASS를 선언하지 않는다.
-5. **기본 제외:** 원본 PDF/HWP 전수 대조(사용자 별도 요청 예외), PT/TPL 조회·신규 수리/등록·PT/TPL parity, 정상 문항 전수 재풀이, 신규 R1/R2/R3 실행, 무관한 시험지/공용 시스템 수정.
+4. 위 분모의 발문·정답/선지·학생 해설·교육과정·수식·필요한 문제용/해설용 **플랜 JSON**·실제 필요한 L1~L4/RPM/CC/Condition/Integration·`level`·`difficultyBucket`만 대조하고 확정 결함은 해당 부분을 직접 수리한다. 플랜 JSON이 존재하면 단순 스키마 통과만으로 끝내지 않고 **원문 발문/해설과의 결속(해당 엔진 스키마가 허용할 때 `sourceQuote`의 실문자열 일치), 수학적 좌표·함수·구간·단서 노출 여부, 문제/해설 축 구분, 공식 엔진 기능 및 제공된 플랜 린트**를 검수한다. `UNSUPPORTED`는 실행 가능한 플랜의 PASS로 간주하지 않고 정확한 엔진 한계와 인계 요구사항을 분리 기록한다. 정상 문항과 기존 자산을 보존하고 바뀐 곳·직접 영향만 재검한다. 실제 확정 수학·해설·플랜·메타 HARD FAIL을 방치한 채 품질 PASS를 선언하지 않는다.
+5. **기본 제외:** 실제 그래프/SVG 제작·렌더 실행·PNG/스크린샷 시각검수(플랜 JSON 검수와 별개이며 별도 담당), 원본 PDF/HWP 전수 대조(사용자 별도 요청 예외), PT/TPL 조회·신규 수리/등록·PT/TPL parity, 정상 문항 전수 재풀이, 신규 R1/R2/R3 실행, 무관한 시험지/공용 시스템 수정.
 6. 소스 JS에 명시되어 main에 병합되는 메타 변경은 자동 등록기가 UID별 소형 요청·영수증을 생성한다. **작업자는 같은 변경을 `.archive-meta-register/inbox/*.json`으로 중복 제출하지 않는다.** 소스 밖의 별도 의미 메타 보완은 기존 승인된 시험지별 소형 JSON/stage-local 입력 경로를 유지한다. 공용 `question_metadata.json`/대형 catalog/compiled 파생 JSON 전체 직접 수정·업로드 금지. 등록기 미지원·빈 메타는 정확한 보완 사유로 분리하고 허위 승인 금지. 이미 승인·등록된 동일 판본에 중복 요청을 만들지 않는다.
 
 ## 3. Git main 운영병합 후 GPT 종료
