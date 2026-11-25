@@ -1,0 +1,16 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [{"id": "P"}, {"id": "Q"}],
+    "subset": ["P", "Q"],
+    "showUniverse": true
+  },
+  "caption": "p⇒q가 참인 상황은 진리집합 P⊂Q로 나타낸다. 이때 Q의 여집합은 P의 여집합 안에 있으며, 거꾸로 Q⊂P만으로 p⇒q를 보장하지 않는다.",
+  "accessibilityDescription": "전체집합 U 안에서 P 원이 Q 원 안에 포함된다. p가 참인 범위는 모두 q가 참인 범위에 속한다.",
+  "sourceConditions": [
+    {"id": "J08-1", "condition": "p⇒q가 참일 필요충분조건은 P⊂Q", "mappedTo": "diagram.subset"},
+    {"id": "J08-2", "condition": "그 대우 관계는 Qᶜ⊂Pᶜ", "mappedTo": "diagram.subset,caption"}
+  ],
+  "newVisualInformation": ["함의의 올바른 포함 방향을 한눈에 드러내어 보기 ②와 ③의 차이를 설명한다."]
+}

@@ -1,0 +1,23 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [{"id": "A"}, {"id": "B"}],
+    "subset": ["A", "B"],
+    "elements": [
+      {"text": "3", "in": ["A", "B"]},
+      {"text": "5", "in": ["A", "B"]},
+      {"text": "1", "in": ["B"]},
+      {"text": "7", "in": ["B"]},
+      {"text": "9", "in": ["B"]}
+    ],
+    "showUniverse": false
+  },
+  "caption": "A={3,5}는 B={1,3,5,7,9} 안에 있다. B에서 남는 1,7,9의 포함 여부가 각각 자유로워 가능한 X는 2³=8개다.",
+  "accessibilityDescription": "A 원이 B 원 안에 있고 공통 원소 3과 5가 안쪽에, 선택 가능한 원소 1, 7, 9가 B의 나머지 부분에 있다.",
+  "sourceConditions": [
+    {"id": "J04-1", "condition": "x²−8x+15=0의 해 3,5가 A의 원소", "mappedTo": "diagram.elements[0,1]"},
+    {"id": "J04-2", "condition": "B는 9 이하 홀수 1,3,5,7,9; A⊂X⊂B", "mappedTo": "diagram.subset,diagram.elements[2,3,4]"}
+  ],
+  "newVisualInformation": ["필수 원소 3,5와 선택 원소 1,7,9를 포함 영역으로 분리한다."]
+}
