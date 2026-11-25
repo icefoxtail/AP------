@@ -1061,7 +1061,11 @@ window.questionBank = [
       "profile": "SOURCE_BALANCED",
       "variationAxis": "고리 부채꼴을 완전한 텍스트로 기술하고 반지름의 곱 대신 합을 계산"
     },
-    "solutionPlanRef": "archive/exams/similar/high/h2/1mid/26_강남여고_1학기_중간_고2_대수_유사2_plans/q19-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h2/1mid/26_강남여고_1학기_중간_고2_대수_유사2_plans/q19-solution.plan.json",
+    "solutionImage": "assets/images/26_강남여고_1학기_중간_고2_대수_유사2/q19-solution.svg",
+    "solutionImageAlt": "해설 보조: 안쪽 반지름이 바깥쪽의 절반인 부채꼴 띠. 둘레 = 3rθ/2+r, 넓이 = 3r²θ/8.",
+    "solutionImageCaption": "해설 보조: 안쪽 반지름이 바깥쪽의 절반인 부채꼴 띠. 둘레 = 3rθ/2+r, 넓이 = 3r²θ/8.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,

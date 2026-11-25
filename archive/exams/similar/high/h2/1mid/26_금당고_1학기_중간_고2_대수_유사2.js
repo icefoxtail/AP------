@@ -378,7 +378,10 @@ window.questionBank = [
     "rpmPrimaryRecordId": "H2-M1-RPM-080",
     "sourceQid": 8,
     "variationType": "EXAM_FOLLOWUP",
-    "problemPlanRef": "archive/exams/similar/high/h2/1mid/26_금당고_1학기_중간_고2_대수_유사2_plans/q08-problem-svg-pending.plan.json"
+    "problemPlanRef": "archive/exams/similar/high/h2/1mid/26_금당고_1학기_중간_고2_대수_유사2_plans/q08-problem-svg-pending.plan.json",
+    "image": "assets/images/26_금당고_1학기_중간_고2_대수_유사2/q08-problem.svg",
+    "imageAlt": "지수함수 y=2^x의 그래프 위 두 점 P, Q와 각 점의 x좌표를 읽는 보조선",
+    "imageSize": "medium"
   },
   {
     "id": 9,
@@ -924,7 +927,11 @@ window.questionBank = [
     "rpmPrimaryRecordId": "H2-M1-RPM-086",
     "sourceQid": 19,
     "variationType": "EXAM_FOLLOWUP",
-    "solutionPlanRef": "archive/exams/similar/high/h2/1mid/26_금당고_1학기_중간_고2_대수_유사2_plans/q19-solution-svg-pending.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h2/1mid/26_금당고_1학기_중간_고2_대수_유사2_plans/q19-solution-svg-pending.plan.json",
+    "solutionImage": "assets/images/26_금당고_1학기_중간_고2_대수_유사2/q19-solution.svg",
+    "solutionImageAlt": "가능한 세 k값과 각 값 사이 10의 간격을 수직선에 표시",
+    "solutionImageCaption": "가능한 세 k값과 각 값 사이 10의 간격을 수직선에 표시",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -1015,6 +1022,10 @@ window.questionBank = [
     "rpmPrimaryRecordId": "H2-M1-RPM-082",
     "sourceQid": 21,
     "variationType": "EXAM_FOLLOWUP",
-    "solutionPlanRef": "archive/exams/similar/high/h2/1mid/26_금당고_1학기_중간_고2_대수_유사2_plans/q21-solution-svg-pending.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h2/1mid/26_금당고_1학기_중간_고2_대수_유사2_plans/q21-solution-svg-pending.plan.json",
+    "solutionImage": "assets/images/26_금당고_1학기_중간_고2_대수_유사2/q21-solution.svg",
+    "solutionImageAlt": "u>0에서 Q(u)=u²-u+1/2와 y=5/16의 두 교점",
+    "solutionImageCaption": "u>0에서 Q(u)=u²-u+1/2와 y=5/16의 두 교점",
+    "solutionImageSize": "full"
   }
 ];
