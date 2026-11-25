@@ -16,7 +16,7 @@
 
 ## CURRENT — GPT 발전형 유사 신규 JS의 유형 직접 판정 (2026-11-24 사용자 지시)
 
-- `EXAM_FOLLOWUP/SOURCE_BALANCED` 신규 유사2~N도 **새 문항의 발문·해설 결정 단계**로 PT/TPL을 판정한다. 원본/유사1의 유형, 크로스워크의 자동 후보, `RPM_ONLY` 상태를 최종 판정으로 복사하지 않는다. `RPM_ONLY`는 해당 RPM 행의 투영 상태이지 직접 PT/TPL 판정 금지가 아니다.
+- `EXAM_FOLLOWUP/SOURCE_BALANCED` 신규 유사1~N도 **새 문항의 발문·해설 결정 단계**로 PT/TPL을 판정한다. 원본/기존 유사의 유형, 크로스워크의 자동 후보, `RPM_ONLY` 상태를 최종 판정으로 복사하지 않는다. `RPM_ONLY`는 해당 RPM 행의 투영 상태이지 직접 PT/TPL 판정 금지가 아니다.
 - 쓰는 필드는 `rpmPrimaryRecordId`(실제 해당 RPM L3/L4), `problemTypeKey`, `templateKey`, `difficultyBucket` 등 위의 **최소 한 벌**이다. `ptTplCandidate`, `hold: RPM_ONLY...`, `level`을 새 JS·등록 요청에 만들지 않는다. PT/TPL은 ACTIVE 키·부모·정확한 교육과정 단원 바인딩을 검증하며, 실제 근거가 있으면 직접 채운다. 맞는 ACTIVE TPL이 없으면 기존 키를 억지로 쓰지 않고 [유형 확장 원칙](#current--유형pttpl-판정은-직접-판정-결과를-정본으로-받는다-2026-11-17-사용자-결정)에 따라 신규 키·바인딩의 등록 필요를 별도 기록한다.
 - JS 지원 필드는 프로덕션 JS에, 결정 단계·선택 이유·검토·출처·`item4slot`은 현재 지원되는 시험지별 소형 메타·4칸·stage-local 기록에 분리해 최종 JS 판본/UID에 결속한다. 다른 필드를 JS에 임의 삽입하거나 공용 `question_metadata.json`을 직접 편집하지 않는다. 이미지 불필요 문항이라고 메타/4칸을 생략하지 않는다. 이유: 구식 후보·RPM 보류로 유효 PT/TPL을 잃거나 JS에 미지원 필드를 쓰는 오류를 막기 위해서다.
 
