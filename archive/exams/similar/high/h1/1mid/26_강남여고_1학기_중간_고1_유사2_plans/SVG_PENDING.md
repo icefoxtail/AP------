@@ -27,3 +27,18 @@
 ## 병합 범위와 검수 경계
 
 이 선반영은 문항 본문·정답·해설·메타 및 **SVG 제작 필요 표시**를 반영하는 것이다. SVG 렌더 완료, 시각 검수 완료, 학생 사이트 배포 완료를 뜻하지 않는다. `.meta-q01-q24.json` 승인 게이트는 `review_required`로 보존했다.
+
+## 공식 SVG 엔진 제작·검수·JS 연결 완료 (2026-11-25)
+
+- 전체 `plan-lint.cjs`(NotoSansKR.ttf 포함): **5/5 OK**
+- 공식 `render-plan.mjs`: **5/5 ARCHIVE_BOUND**
+- `assertSvgStudentLanguage`: **5/5 PASS**
+- PNG 실물 육안 검수: **5/5 PASS**
+
+| 문항 | 계획 JSON | 엔진 결과 | 크기/배율 | PNG 검수 | 연결된 JS `solutionImage` | 비고 |
+| --- | --- | --- | --- | --- | --- | --- |
+| Q15 | `q15-solution.plan.json` | `ARCHIVE_BOUND` | full | PASS | `assets/images/26_강남여고_1학기_중간_고1_유사2/q15-solution.svg` | domain/viewport 보완 및 coordinatePlacement 제거 후 PASS |
+| Q16 | `q16-solution.plan.json` | `ARCHIVE_BOUND` | full (85%) | PASS | `assets/images/26_강남여고_1학기_중간_고1_유사2/q16-solution.svg` | 원안 lint·렌더·PNG 검수 PASS |
+| Q17 | `q17-solution.plan.json` | `ARCHIVE_BOUND` | full | PASS | `assets/images/26_강남여고_1학기_중간_고1_유사2/q17-solution.svg` | 원안 lint·렌더·PNG 검수 PASS |
+| Q20 | `q20-solution.plan.json` | `ARCHIVE_BOUND` | full | PASS | `assets/images/26_강남여고_1학기_중간_고1_유사2/q20-solution.svg` | 원안 lint·렌더·PNG 검수 PASS |
+| Q22 | `q22-solution.plan.json` | `ARCHIVE_BOUND` | full (85%) | PASS | `assets/images/26_강남여고_1학기_중간_고1_유사2/q22-solution.svg` | 원안 lint·렌더·PNG 검수 PASS |

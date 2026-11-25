@@ -16,3 +16,17 @@
 | Q20 | SVG_TO_CREATE | `q20-solution.plan.json` — 최솟값과 서로 다른 3개 근을 만드는 수평선 위치 | NOT_RUN |
 
 검증된 해설 그림이 아직 없으므로 학생용 JS에는 `solutionImage` 경로를 넣지 않았다. 후속 작업자는 공식 고정 폰트·엔진 환경에서 전체 lint 재실행 → 공식 엔진 렌더 → PNG 육안 확인 → 검증된 경로만 JS에 연결한다.
+
+## 공식 SVG 엔진 제작·검수·JS 연결 완료 (2026-11-25)
+
+- 전체 `plan-lint.cjs`(NotoSansKR.ttf 포함): **4/4 OK**
+- 공식 `render-plan.mjs`: **4/4 ARCHIVE_BOUND**
+- `assertSvgStudentLanguage`: **4/4 PASS**
+- PNG 실물 육안 검수: **4/4 PASS**
+
+| 문항 | 계획 JSON | 엔진 결과 | 크기/배율 | PNG 검수 | 연결된 JS `solutionImage` | 비고 |
+| --- | --- | --- | --- | --- | --- | --- |
+| Q04 | `q04-solution.plan.json` | `ARCHIVE_BOUND` | full (85%) | PASS | `assets/images/26_매산고_1학기_중간_고1_유사2/q04-solution.svg` | 원안 lint·렌더·PNG 검수 PASS |
+| Q15 | `q15-solution.plan.json` | `ARCHIVE_BOUND` | full | PASS | `assets/images/26_매산고_1학기_중간_고1_유사2/q15-solution.svg` | 원안 lint·렌더·PNG 검수 PASS |
+| Q18 | `q18-solution.plan.json` | `ARCHIVE_BOUND` | full (90%) | PASS | `assets/images/26_매산고_1학기_중간_고1_유사2/q18-solution.svg` | 원안 lint·렌더·PNG 검수 PASS |
+| Q20 | `q20-solution.plan.json` | `ARCHIVE_BOUND` | full | PASS | `assets/images/26_매산고_1학기_중간_고1_유사2/q20-solution.svg` | 원안 lint·렌더·PNG 검수 PASS |

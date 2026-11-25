@@ -475,7 +475,11 @@ window.questionBank = [
       "createdAt": "2026-11-25",
       "createdAtSource": "GPT direct authored"
     },
-    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_팔마고_1학기_중간_고1_유사2_plans/q09-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_팔마고_1학기_중간_고1_유사2_plans/q09-solution.plan.json",
+    "solutionImage": "assets/images/26_팔마고_1학기_중간_고1_유사2/q09-solution.svg",
+    "solutionImageAlt": "0<t<√5에서 직사각형의 둘레 L(t)=21-4(t-1/2)²의 최댓값은 t=1/2에서 21이다.",
+    "solutionImageCaption": "0<t<√5에서 직사각형의 둘레 L(t)=21-4(t-1/2)²의 최댓값은 t=1/2에서 21이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -1152,6 +1156,10 @@ window.questionBank = [
       "createdAt": "2026-11-25",
       "createdAtSource": "GPT direct authored"
     },
-    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_팔마고_1학기_중간_고1_유사2_plans/q22-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_팔마고_1학기_중간_고1_유사2_plans/q22-solution.plan.json",
+    "solutionImage": "assets/images/26_팔마고_1학기_중간_고1_유사2/q22-solution.svg",
+    "solutionImageAlt": "m=1이면 y=x+2와 조각함수 h(x)가 x=-1, 0, 2인 서로 다른 세 점에서 만난다. 경계 x=-1은 바깥 조각에 포함한다.",
+    "solutionImageCaption": "m=1이면 y=x+2와 조각함수 h(x)가 x=-1, 0, 2인 서로 다른 세 점에서 만난다. 경계 x=-1은 바깥 조각에 포함한다.",
+    "solutionImageSize": "full"
   }
 ];

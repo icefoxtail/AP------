@@ -197,7 +197,12 @@ window.questionBank = [
       "createdAt": "2026-11-25",
       "createdAtSource": "GPT direct authored"
     },
-    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_매산고_1학기_중간_고1_유사2_plans/q04-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_매산고_1학기_중간_고1_유사2_plans/q04-solution.plan.json",
+    "solutionImage": "assets/images/26_매산고_1학기_중간_고1_유사2/q04-solution.svg",
+    "solutionImageAlt": "0≤x≤4에서 y=(x−1)²+2의 꼭짓점은 V(1,2), 양 끝점은 A(0,3), B(4,11)이다.",
+    "solutionImageCaption": "0≤x≤4에서 y=(x−1)²+2의 꼭짓점은 V(1,2), 양 끝점은 A(0,3), B(4,11)이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 85
   },
   {
     "id": 5,
@@ -737,7 +742,11 @@ window.questionBank = [
       "createdAt": "2026-11-25",
       "createdAtSource": "GPT direct authored"
     },
-    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_매산고_1학기_중간_고1_유사2_plans/q15-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_매산고_1학기_중간_고1_유사2_plans/q15-solution.plan.json",
+    "solutionImage": "assets/images/26_매산고_1학기_중간_고1_유사2/q15-solution.svg",
+    "solutionImageAlt": "차함수 h(x)=−(x+2)(x−4)의 두 영점 A(−2,0), B(4,0)와 꼭짓점 V(1,9)",
+    "solutionImageCaption": "차함수 h(x)=−(x+2)(x−4)의 두 영점 A(−2,0), B(4,0)와 꼭짓점 V(1,9)",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -867,7 +876,12 @@ window.questionBank = [
       "createdAt": "2026-11-25",
       "createdAtSource": "GPT direct authored"
     },
-    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_매산고_1학기_중간_고1_유사2_plans/q18-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_매산고_1학기_중간_고1_유사2_plans/q18-solution.plan.json",
+    "solutionImage": "assets/images/26_매산고_1학기_중간_고1_유사2/q18-solution.svg",
+    "solutionImageAlt": "두 포물선 f(x)=x²+2와 g(x)=−x²+3x+4의 꼭짓점 높이 및 두 교차 높이를 비교한다.",
+    "solutionImageCaption": "두 포물선 f(x)=x²+2와 g(x)=−x²+3x+4의 꼭짓점 높이 및 두 교차 높이를 비교한다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 19,
@@ -954,6 +968,10 @@ window.questionBank = [
       "createdAt": "2026-11-25",
       "createdAtSource": "GPT direct authored"
     },
-    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_매산고_1학기_중간_고1_유사2_plans/q20-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_매산고_1학기_중간_고1_유사2_plans/q20-solution.plan.json",
+    "solutionImage": "assets/images/26_매산고_1학기_중간_고1_유사2/q20-solution.svg",
+    "solutionImageAlt": "포물선 f(x)=(x−2)²−8의 꼭짓점 V(2,−8)과 같은 높이 8인 A(−2,8), B(6,8)",
+    "solutionImageCaption": "포물선 f(x)=(x−2)²−8의 꼭짓점 V(2,−8)과 같은 높이 8인 A(−2,8), B(6,8)",
+    "solutionImageSize": "full"
   }
 ];

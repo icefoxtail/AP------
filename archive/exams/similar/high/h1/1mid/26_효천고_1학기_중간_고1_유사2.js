@@ -739,7 +739,12 @@ window.questionBank = [
     "answer": "②",
     "solution": "두 영점이 $0,a$이고 최고차항 계수가 $1$이므로 $f(x)=x(x-a)$이다. 따라서 ㄱ의 $f(3)=3(3-a)=9-3a$는 참이다.\n꼭짓점은 $P\\left(\\dfrac a2,-\\dfrac{a^2}4\\right)$이다. 직선 $PB$의 기울기는 $m=\\dfrac{a}{2}>0$이고 직선 $PA$의 기울기는 $-m$이다.\n$B$를 지나 $PA$와 평행한 직선은 $y=-m(x-a)$이다. 포물선과 연립하면 $(x-a)(x+m)=0$이므로 $B$ 이외의 교점 $Q$의 $x$좌표는 $-m$이다. ㄴ은 참이다.\n$a=2m$에서 $Q$의 $y$좌표는 $(-m)(-m-a)=3m^2$이다. $R=(-m,0)$이므로 $AR=m$, $QR=3m^2$이다.\n따라서 삼각형 $AQR$의 넓이는 $\\dfrac12\\times m\\times3m^2=\\dfrac32m^3$이다. 넓이가 $12$이면 $m^3=8$이어서 $m=2$이다. ㄷ은 거짓이다.\n따라서 옳은 것은 ㄱ, ㄴ이고 정답은 ②이다.",
     "variationType": "EXAM_FOLLOWUP",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_효천고_1학기_중간_고1_유사2_plans/q18-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_효천고_1학기_중간_고1_유사2_plans/q18-solution.plan.json",
+    "solutionImage": "assets/images/26_효천고_1학기_중간_고1_유사2/q18-solution.svg",
+    "solutionImageAlt": "a=4, m=2인 예시. B를 지나 PA에 평행한 직선이 포물선과 다시 만나는 점 Q의 위치를 확인한다.",
+    "solutionImageCaption": "a=4, m=2인 예시. B를 지나 PA에 평행한 직선이 포물선과 다시 만나는 점 Q의 위치를 확인한다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 19,
@@ -1022,6 +1027,10 @@ window.questionBank = [
     "answer": "$5$",
     "solution": "바깥 구간에서 $f(x)=-(x-1)^2+1=-x^2+2x$이고 교점 조건은 $F_m(x)=x^2+(m-2)x-5=0$이다. 두 근의 곱이 $-5$이므로 음의 근과 양의 근이 하나씩 있다.\n$F_m(-1)=-m-2\\le0$이면 음의 근이 $-1$ 이하이고, $F_m(2)=2m-5\\le0$이면 양의 근이 $2$ 이상이다. 따라서 바깥 교점은 $m<-2$에서 $1$개, $-2\\le m\\le\\dfrac52$에서 $2$개, $m>\\dfrac52$에서 $1$개다.\n안쪽 구간의 교점 조건은 $G_m(x)=x^2-mx+1=0$ ($-1<x<2$)이다.\n$m<-2$이면 두 음의 근 중 하나만 $(-1,0)$에 있어 안쪽은 $1$개, 전체는 $2$개다.\n$m=-2$에서는 중근 $x=-1$이 안쪽에서 제외되어 전체는 $2$개다. $-2<m<2$에서는 판별식 $m^2-4<0$이므로 안쪽 교점은 없다.\n$m=2$에서는 중근 $x=1$이 안쪽에 들어가므로 안쪽 $1$개와 바깥 $2$개, 모두 $3$개다.\n$2<m<\\dfrac52$이면 두 양의 근이 모두 $(0,2)$에 들어가므로 안쪽 $2$개와 바깥 $2$개, 모두 $4$개다.\n$m=\\dfrac52$이면 안쪽의 두 근 $\\dfrac12,2$ 중 $x=2$는 제외되어 안쪽 $1$개, 바깥 $2$개, 모두 $3$개다.\n$m>\\dfrac52$이면 안쪽에는 작은 양의 근만 들어가고 바깥에는 음의 근만 들어가 전체 $2$개다.\n따라서 조건을 만족하는 기울기는 $m=2,\\dfrac52$뿐이고 그 곱은 $2\\times\\dfrac52=5$이다.",
     "variationType": "EXAM_FOLLOWUP",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_효천고_1학기_중간_고1_유사2_plans/q26-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_효천고_1학기_중간_고1_유사2_plans/q26-solution.plan.json",
+    "solutionImage": "assets/images/26_효천고_1학기_중간_고1_유사2/q26-solution.svg",
+    "solutionImageAlt": "x=-1과 x=2에서 바깥 포물선이 포함되고 안쪽 포물선은 열린 끝점이다. 직선 y=2x-5(파랑)와 y=5/2x-5(주황)가 각각 세 점에서 만난다.",
+    "solutionImageCaption": "x=-1과 x=2에서 바깥 포물선이 포함되고 안쪽 포물선은 열린 끝점이다. 직선 y=2x-5(파랑)와 y=5/2x-5(주황)가 각각 세 점에서 만난다.",
+    "solutionImageSize": "medium"
   }
 ];
