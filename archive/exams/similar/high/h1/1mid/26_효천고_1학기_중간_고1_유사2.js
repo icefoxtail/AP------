@@ -484,10 +484,10 @@ window.questionBank = [
     "sourceQid": 12,
     "content": "서로 $0$이 아닌 두 수 $\\alpha,\\beta$의 역수 $\\dfrac1\\alpha,\\dfrac1\\beta$가 이차방정식 $2t^2-6t+1=0$의 두 근이다. $\\alpha,\\beta$를 두 근으로 하고 최고차항의 계수가 $1$인 이차방정식은? [3.8점]",
     "choices": [
-      "$x^2-3x+dfrac12=0$",
+      "$x^2-3x+\\dfrac12=0$",
       "$x^2+6x+2=0$",
       "$x^2-6x+2=0$",
-      "$x^2-6x+dfrac12=0$",
+      "$x^2-6x+\\dfrac12=0$",
       "$x^2-3x+2=0$"
     ],
     "answer": "③",
