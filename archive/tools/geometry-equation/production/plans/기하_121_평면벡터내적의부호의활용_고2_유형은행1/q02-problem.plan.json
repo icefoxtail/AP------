@@ -1,0 +1,189 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "2"
+                }
+              ]
+            },
+            {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "2"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "P"
+  ],
+  "displaySegments": [],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 560
+  },
+  "caption": "좌표평면의 반지름 2 원과 OA=a, OP=p, 두 벡터 사이의 각",
+  "accessibilityDescription": "원점 O에서 A(2,0)까지 벡터 a, 제1사분면의 움직이는 P까지 벡터 p가 원 위에 표시된다. 원은 전체 둘레이며 두 벡터가 이루는 각의 호가 있다. 정답에 대응하는 원호는 색칠하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "O 중심 반지름 2 원과 A=(2,0) 정확한 위치를 표시한다.",
+      "mappedTo": [
+        "O",
+        "A",
+        "k",
+        "r2"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "P=(sqrt(2),sqrt(2))는 제1사분면 원 위의 대표 이동점이며 OA=a, OP=p의 화살표가 있다.",
+      "mappedTo": [
+        "P",
+        "va",
+        "vp",
+        "theta"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "보기의 부등식 해답 호 또는 점 개수는 음영·라벨로 미리 노출하지 않는다.",
+      "mappedTo": [
+        "k"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원 전체와 두 벡터 a,p 화살표",
+    "두 벡터 사이의 실제 각 호"
+  ],
+  "displayCircles": [
+    "k"
+  ],
+  "planeMarks": {
+    "vectors": [
+      {
+        "id": "va",
+        "from": "O",
+        "to": "A",
+        "label": "vec(a)",
+        "side": "LEFT",
+        "labelAt": 0.55
+      },
+      {
+        "id": "vp",
+        "from": "O",
+        "to": "P",
+        "label": "vec(p)",
+        "side": "LEFT",
+        "labelAt": 0.55
+      }
+    ],
+    "angles": [
+      {
+        "id": "theta",
+        "refs": [
+          "A",
+          "O",
+          "P"
+        ],
+        "value": 45,
+        "arcs": 1,
+        "factRole": "GIVEN"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "r2",
+        "from": "O",
+        "to": "A",
+        "label": "2",
+        "side": "BELOW",
+        "style": "BAR",
+        "factRole": "GIVEN"
+      }
+    ]
+  }
+}

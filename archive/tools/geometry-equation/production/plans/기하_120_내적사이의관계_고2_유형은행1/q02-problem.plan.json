@@ -1,0 +1,354 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A1",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A2",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C1",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C2",
+        "op": "MIDPOINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C3",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "A1",
+    "A2",
+    "B",
+    "C1",
+    "C2",
+    "C3",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAA1",
+      "refs": [
+        "A",
+        "A1"
+      ]
+    },
+    {
+      "id": "sA1A2",
+      "refs": [
+        "A1",
+        "A2"
+      ]
+    },
+    {
+      "id": "sA2B",
+      "refs": [
+        "A2",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC1",
+      "refs": [
+        "B",
+        "C1"
+      ]
+    },
+    {
+      "id": "sC1C2",
+      "refs": [
+        "C1",
+        "C2"
+      ]
+    },
+    {
+      "id": "sC2C3",
+      "refs": [
+        "C2",
+        "C3"
+      ]
+    },
+    {
+      "id": "sC3C",
+      "refs": [
+        "C3",
+        "C"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sAC1",
+      "refs": [
+        "A",
+        "C1"
+      ]
+    },
+    {
+      "id": "sAC2",
+      "refs": [
+        "A",
+        "C2"
+      ]
+    },
+    {
+      "id": "sAC3",
+      "refs": [
+        "A",
+        "C3"
+      ]
+    },
+    {
+      "id": "sCA1",
+      "refs": [
+        "C",
+        "A1"
+      ]
+    },
+    {
+      "id": "sCA2",
+      "refs": [
+        "C",
+        "A2"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 560
+  },
+  "caption": "∠B=90°, AB 삼등분 A₁·A₂, BC 사등분 C₁·C₂·C₃",
+  "accessibilityDescription": "직각삼각형 ABC에서 A에서 B 순으로 삼등분점 A₁,A₂, B에서 C 순으로 사등분점 C₁,C₂,C₃를 구별한다. A에서 C₁,C₂,C₃로 그리고 C에서 A₁,A₂로 잇는 5개 선분이 보인다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AB는 A→A1→A2→B 순서로 정확한 삼등분, BC는 B→C1→C2→C3→C 순서의 사등분이고 각 구간에 동등 눈금이 있다.",
+      "mappedTo": [
+        "A1",
+        "A2",
+        "C1",
+        "C2",
+        "C3",
+        "eThird",
+        "eFourth"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "∠B=90°이고 A-C1,C2,C3 및 C-A1,A2 선분 5개를 실제로 그린다.",
+      "mappedTo": [
+        "rB",
+        "sAC1",
+        "sAC2",
+        "sAC3",
+        "sCA1",
+        "sCA2"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "AB=5, BC=12는 내적 75,-288로 결정되지만 최종 빗변 길이 13과 함께 그림에 수치 표기하지 않는다.",
+      "mappedTo": [
+        "A",
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원문 아래첨자 A₁,A₂,C₁,C₂,C₃ 및 순서",
+    "삼·사등분 눈금과 다섯 연결선"
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "eThird",
+        "count": 1,
+        "segments": [
+          "sAA1",
+          "sA1A2",
+          "sA2B"
+        ]
+      },
+      {
+        "id": "eFourth",
+        "count": 2,
+        "segments": [
+          "sBC1",
+          "sC1C2",
+          "sC2C3",
+          "sC3C"
+        ]
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rB",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "pointNames": {
+    "A1": "A₁",
+    "A2": "A₂",
+    "C1": "C₁",
+    "C2": "C₂",
+    "C3": "C₃"
+  }
+}
