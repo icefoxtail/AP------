@@ -261,9 +261,6 @@
     "Q",
     "D"
   ],
-  "displayCircles": [
-    "circle"
-  ],
   "displaySegments": [
     {
       "id": "AB",
@@ -337,20 +334,14 @@
     }
   ],
   "planeMarks": {
-    "parallelLines": [
+    "arcs": [
       {
-        "id": "parallelAPOC",
-        "segments": [
-          "AP",
-          "OC"
-        ]
-      },
-      {
-        "id": "parallelQDPO",
-        "segments": [
-          "QD",
-          "PO"
-        ]
+        "id": "givenUpperSemicircle",
+        "circle": "circle",
+        "center": "O",
+        "from": "B",
+        "to": "A",
+        "side": "CCW"
       }
     ]
   },
@@ -374,5 +365,5 @@
   "newVisualInformation": [
     "PC=2, DB=1, Q의 y좌표와 PC까지의 높이를 비교하여 T−S를 표시한다."
   ],
-  "sourceQuote": "그림과 같이 길이가 $4$인 선분 $AB$를 지름으로 하는 반원이 있다."
+  "sourceQuote": "반원의 중심을 원점으로 잡으면"
 }
