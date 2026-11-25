@@ -1,4 +1,42 @@
 {
-  "status": "EXEMPT",
-  "reason": "모든 그래프 조건 및 좌표 관계가 학생용 판서 풀이에 완결되어 있으므로 운영 JS에서 그림이 필수는 아니다. 추가 시각 보조 plan은 별도 followup 파일에 기록했다."
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-0.2, 2, -0.5, 2],
+    "curves": [
+      {
+        "id": "exp", "kind": "EXPONENTIAL", "base": "1/25",
+        "coefficients": ["1", "1", "0"], "domain": ["-1/5", "2"],
+        "color": "BLUE", "label": "y=(1/25)^x"
+      },
+      {
+        "id": "log", "kind": "LOGARITHMIC", "base": "5",
+        "coefficients": ["-1", "1", "4/25", "0"], "domain": ["-3/20", "2"],
+        "color": "WARM"
+      },
+      {
+        "id": "diag", "kind": "LINE", "coefficients": ["0", "1"],
+        "domain": ["0", "2"], "style": "DASHED", "label": "y=x"
+      }
+    ],
+    "axisTickValues": {"x": [], "y": []},
+    "overlays": {
+      "points": [
+        {"id": "P", "x": "1/25", "y": "1/25"},
+        {"id": "Q", "x": "1", "y": "1/25"},
+        {"id": "R", "x": "1/25", "y": "1"}
+      ],
+      "segments": [
+        {"id": "PQ", "from": "P", "to": "Q"},
+        {"id": "PR", "from": "P", "to": "R"}
+      ]
+    }
+  },
+  "caption": "등변 조건으로 구한 P, Q, R과 두 함수의 위치관계",
+  "sourceConditions": [
+    {"id": "S1", "condition": "P=(1/25,1/25)", "mappedTo": ["graphPlan.overlays.points"]},
+    {"id": "S2", "condition": "PQ=PR=24/25", "mappedTo": ["graphPlan.overlays.segments"]}
+  ],
+  "newVisualInformation": ["PQR의 두 직각변과 그래프가 만나는 좌표를 해설에 보인다."],
+  "sourceQuote": "$PQ=PR$이므로 $q-t=r-t$, 즉 $q=r$이다."
 }

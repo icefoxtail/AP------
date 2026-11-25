@@ -20,3 +20,10 @@
 | --- | --- | --- | --- | --- | --- |
 | Q05 | solution | `ARCHIVE_BOUND` | medium | PASS | `assets/images/26_순천고_1학기_중간_고2_대수_유사2/q05-solution.svg` |
 | Q15 | solution | `ARCHIVE_BOUND` | full | PASS | `assets/images/26_순천고_1학기_중간_고2_대수_유사2/q15-solution.svg` |
+
+## 2026-11-26 FIRST_FORMAL 정본 결속 확인
+
+- Q05·Q15: 기존 후속 실행 가능 plan을 현재 운영 JS의 정본 `q05-solution.plan.json`/`q15-solution.plan.json`에 동일 수학 모델로 반영하고 `sourceQuote`를 현행 작은칠판 해설과 실제 일치하도록 교정. 두 plan은 공식 shallow/full lint를 각각 통과함.
+- Q20: 통합 다중 그래프 capability가 없어 정본 plan은 `UNSUPPORTED`로 정직하게 남기고 엔진 요구사항·학생 표현 조건을 명시함. 실행 가능 플랜의 분자에 포함하지 않음.
+- 24개 문제 축과 24개 해설 축의 현행 판정은 대상 `.svg-followup-ledger.json` 참조(45 EXEMPT / 2 VALID_OFFICIAL_PLAN / 1 ENGINE_CAPABILITY_PENDING).
+- 이번 GPT 검수의 새 SVG 렌더·PNG 육안 확인은 **NOT_RUN**. 위 2026-11-25 엔진 담당의 과거 기록을 이번 새 검수 완료로 재표기하지 않음.
