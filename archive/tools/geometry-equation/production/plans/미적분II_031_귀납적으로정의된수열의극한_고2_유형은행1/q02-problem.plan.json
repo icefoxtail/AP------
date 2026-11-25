@@ -1,0 +1,127 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      0,
+      10,
+      0,
+      10
+    ],
+    "curves": [
+      {
+        "id": "identity",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "0",
+          "10"
+        ],
+        "label": "y=x"
+      },
+      {
+        "id": "root",
+        "kind": "SQRT",
+        "radicand": [
+          "0",
+          "4"
+        ],
+        "domain": [
+          "0",
+          "10"
+        ],
+        "label": "y=sqrt(4*x)"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "S",
+          "x": "9",
+          "y": "9",
+          "unnamed": true
+        },
+        {
+          "id": "U",
+          "x": "9",
+          "y": "6",
+          "unnamed": true
+        },
+        {
+          "id": "V",
+          "x": "6",
+          "y": "6",
+          "unnamed": true
+        },
+        {
+          "id": "W",
+          "x": "6",
+          "y": "2*sqrt(6)",
+          "unnamed": true
+        },
+        {
+          "id": "X",
+          "x": "2*sqrt(6)",
+          "y": "2*sqrt(6)",
+          "unnamed": true
+        }
+      ],
+      "segments": [
+        {
+          "id": "s0",
+          "from": "S",
+          "to": "U",
+          "dashed": true
+        },
+        {
+          "id": "s1",
+          "from": "U",
+          "to": "V",
+          "dashed": true
+        },
+        {
+          "id": "s2",
+          "from": "V",
+          "to": "W",
+          "dashed": true
+        },
+        {
+          "id": "s3",
+          "from": "W",
+          "to": "X",
+          "dashed": true
+        }
+      ]
+    }
+  },
+  "caption": "a₁=9에서 시작하는 y=x, y=√(4x) 사이의 수직·수평 반복.",
+  "accessibilityDescription": "제곱근 곡선과 항등직선 사이에서 첫 항 9부터 수직으로 내려가고 수평으로 돌아오는 과정을 두 번 그렸다.",
+  "sourceQuote": "[그림: $y=x$와 $y=\\sqrt{4x}$를 함께 그리고, $x=9$에서 곡선까지 수직으로 이동한 뒤 $y=x$까지 수평으로 이동하는 과정을 반복해 표시한다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "y=x 및 y=√(4x)",
+      "mappedTo": "graphPlan.curves[0..1]"
+    },
+    {
+      "id": "c2",
+      "condition": "x=9에서 시작",
+      "mappedTo": "graphPlan.overlays.points[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "두 차례 수직·수평 이동",
+      "mappedTo": "graphPlan.overlays.segments[0..3]"
+    }
+  ],
+  "newVisualInformation": [
+    "대표항에서 함수 위의 정확한 점과 연속 선분을 그린다. 구하는 극한값은 인쇄하지 않는다."
+  ]
+}

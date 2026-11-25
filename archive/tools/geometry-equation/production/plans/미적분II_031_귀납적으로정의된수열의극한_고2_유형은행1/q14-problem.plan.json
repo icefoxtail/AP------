@@ -1,0 +1,112 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      0,
+      17,
+      -1,
+      6
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "SQRT",
+        "radicand": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "0",
+          "17"
+        ],
+        "label": "y=sqrt(x)"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisScale": {
+      "x": 1,
+      "y": 3
+    },
+    "overlays": {
+      "lines": [
+        {"id": "x1", "x": "4", "style": "DASHED"},
+        {"id": "x2", "x": "16", "style": "DASHED"}
+      ],
+      "points": [
+        {
+          "id": "P",
+          "x": "4",
+          "y": "2",
+          "unnamed": true
+        },
+        {
+          "id": "Q",
+          "x": "16",
+          "y": "4",
+          "unnamed": true
+        },
+        {
+          "id": "H",
+          "x": "4",
+          "y": "0",
+          "unnamed": true
+        },
+        {
+          "id": "K",
+          "x": "16",
+          "y": "0",
+          "unnamed": true
+        }
+      ],
+      "segments": [
+        {
+          "id": "s0",
+          "from": "P",
+          "to": "Q"
+        },
+        {
+          "id": "s1",
+          "from": "P",
+          "to": "H"
+        },
+        {
+          "id": "s2",
+          "from": "H",
+          "to": "K"
+        },
+        {
+          "id": "s3",
+          "from": "K",
+          "to": "Q"
+        }
+      ]
+    }
+  },
+  "caption": "n=1 대표: y=√x와 x=4, x=16의 교점·수선 발을 잇는 사다리꼴.",
+  "accessibilityDescription": "제곱근 곡선 위 두 점과 x축 위 수선의 발을 잇는 사다리꼴을 그린다. 넓이와 거리의 극한은 쓰지 않았다.",
+  "sourceQuote": "[그림: 곡선 $y=\\sqrt{x}$와 두 수직선 $x=4^n$, $x=4^{n+1}$을 그린다. 곡선과의 교점 두 개와 $x$축 위 수선의 발 두 개를 직선으로 이어 사다리꼴을 표시한다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "곡선 y=√x",
+      "mappedTo": "graphPlan.curves[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "x=4^n,4^{n+1}와의 교점, n=1 대표",
+      "mappedTo": "graphPlan.overlays.lines[0..1];graphPlan.overlays.points[0..1]"
+    },
+    {
+      "id": "c3",
+      "condition": "x축 수선의 발 및 사다리꼴",
+      "mappedTo": "graphPlan.overlays.points[2..3];graphPlan.overlays.segments[0..3]"
+    }
+  ],
+  "newVisualInformation": [
+    "대표항에서 함수 위의 정확한 점과 연속 선분을 그린다. 구하는 극한값은 인쇄하지 않는다."
+  ]
+}

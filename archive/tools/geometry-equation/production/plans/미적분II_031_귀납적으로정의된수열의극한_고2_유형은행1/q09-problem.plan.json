@@ -1,0 +1,98 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      0,
+      3,
+      -1,
+      28
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "-1",
+          "4"
+        ],
+        "domain": [
+          "0",
+          "3"
+        ],
+        "label": "y=4*x^2-x"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisScale": {
+      "x": 1,
+      "y": "1/8"
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "1",
+          "y": "3",
+          "unnamed": true
+        },
+        {
+          "id": "Q",
+          "x": "2",
+          "y": "14",
+          "unnamed": true
+        }
+      ],
+      "segments": [
+        {
+          "id": "s0",
+          "from": "P",
+          "to": "Q"
+        }
+      ],
+      "callouts": [
+        {
+          "id": "cp",
+          "point": "P",
+          "text": "P_n",
+          "labelKind": "MATH",
+          "direction": "NW"
+        },
+        {
+          "id": "cq",
+          "point": "Q",
+          "text": "Q_n",
+          "labelKind": "MATH",
+          "direction": "NE"
+        }
+      ]
+    }
+  },
+  "caption": "n=1 대표: 포물선 y=4x²−x 위 Pₙ과 Qₙ을 연결한 할선.",
+  "accessibilityDescription": "위로 열린 포물선 오른쪽 가지의 x=1, x=2 점을 선분으로 연결해 거리와 기울기를 보여 준다.",
+  "sourceQuote": "[그림: 포물선 $y=4x^2-x$의 오른쪽 가지 위에 $P_n(n,4n^2-n)$과 $Q_n(n+1,4(n+1)^2-(n+1))$을 찍고 잇는다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "포물선 y=4x²−x",
+      "mappedTo": "graphPlan.curves[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "P_n=(n,f(n)),Q_n=(n+1,f(n+1)), n=1 대표",
+      "mappedTo": "graphPlan.overlays.points[0..1]"
+    },
+    {
+      "id": "c3",
+      "condition": "P_nQ_n 선분",
+      "mappedTo": "graphPlan.overlays.segments[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "대표항에서 함수 위의 정확한 점과 연속 선분을 그린다. 구하는 극한값은 인쇄하지 않는다."
+  ]
+}

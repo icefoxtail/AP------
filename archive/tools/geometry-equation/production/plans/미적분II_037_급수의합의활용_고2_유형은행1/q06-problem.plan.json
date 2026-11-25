@@ -1,0 +1,127 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      0,
+      5,
+      0,
+      7
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "RATIONAL",
+        "numerator": [
+          "6",
+          "0"
+        ],
+        "denominator": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "1",
+          "5"
+        ],
+        "label": "y=6/x"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "2",
+        "4"
+      ],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "2",
+          "y": "3",
+          "unnamed": true
+        },
+        {
+          "id": "Q",
+          "x": "4",
+          "y": "3/2",
+          "unnamed": true
+        },
+        {
+          "id": "R",
+          "x": "2",
+          "y": "3/2",
+          "unnamed": true
+        },
+        {
+          "id": "S",
+          "x": "4",
+          "y": "3",
+          "unnamed": true
+        }
+      ],
+      "segments": [
+        {
+          "id": "PS",
+          "from": "P",
+          "to": "S"
+        },
+        {
+          "id": "SQ",
+          "from": "S",
+          "to": "Q"
+        },
+        {
+          "id": "QR",
+          "from": "Q",
+          "to": "R"
+        },
+        {
+          "id": "RP",
+          "from": "R",
+          "to": "P"
+        }
+      ],
+      "callouts": [
+        {
+          "id": "p",
+          "point": "P",
+          "text": "P_n",
+          "labelKind": "MATH",
+          "direction": "NW"
+        },
+        {
+          "id": "q",
+          "point": "Q",
+          "text": "P2",
+          "direction": "SE"
+        }
+      ]
+    }
+  },
+  "pointNames": {},
+  "caption": "n=1 대표: y=6/x의 (2,3)과 (4,3/2)을 대각 끝으로 하는 축 평행 직사각형.",
+  "accessibilityDescription": "제1사분면의 유리함수 위 두 점과 가로·세로에 평행한 네 변을 가진 직사각형이 그려져 있다.",
+  "sourceQuote": "[그림: 곡선 $y=6/x$의 제1사분면에 두 점을 표시하고, 각 점에서 수평선과 수직선을 그어 직사각형을 만든다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "곡선 y=6/x",
+      "mappedTo": "graphPlan.curves[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "P_n=(2n,3/n),P_{n+1}=(2n+2,3/(n+1)),n=1",
+      "mappedTo": "graphPlan.overlays.points[0..1]"
+    },
+    {
+      "id": "c3",
+      "condition": "두 점을 대각 끝으로 하는 축 평행 직사각형",
+      "mappedTo": "graphPlan.overlays.points[2..3];graphPlan.overlays.segments[0..3]"
+    }
+  ],
+  "newVisualInformation": [
+    "n=1 대표 그림은 원문 식으로 독립 계산한 점들만 나타낸다. 합계 정답은 표기하지 않는다."
+  ]
+}

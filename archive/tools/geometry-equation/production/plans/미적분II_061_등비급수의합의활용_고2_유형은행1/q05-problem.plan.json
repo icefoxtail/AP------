@@ -1,0 +1,124 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -1,
+      3,
+      -4,
+      7
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "-4",
+          "2"
+        ],
+        "domain": [
+          "-1",
+          "3"
+        ],
+        "label": "y=2*x*(x-2)"
+      },
+      {
+        "id": "l",
+        "kind": "LINE",
+        "coefficients": [
+          "-2",
+          "1"
+        ],
+        "domain": [
+          "-1",
+          "3"
+        ],
+        "label": "y=x-2"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1/2",
+        "2"
+      ],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "2",
+          "y": "0"
+        },
+        {
+          "id": "P",
+          "x": "1/2",
+          "y": "-3/2",
+          "unnamed": true
+        },
+        {
+          "id": "H",
+          "x": "1/2",
+          "y": "0",
+          "unnamed": true
+        }
+      ],
+      "segments": [
+        {
+          "id": "PH",
+          "from": "P",
+          "to": "H",
+          "dashed": true
+        }
+      ],
+      "callouts": [
+        {
+          "id": "cp",
+          "point": "P",
+          "text": "P_n",
+          "labelKind": "MATH",
+          "direction": "SW"
+        },
+        {
+          "id": "ch",
+          "point": "H",
+          "text": "H_n",
+          "labelKind": "MATH",
+          "direction": "NW"
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "A": "A"
+  },
+  "caption": "n=1 대표: y=2x(x−2), y=x−2의 두 교점과 P₁에서 x축으로 내린 수선.",
+  "accessibilityDescription": "위로 열린 포물선과 직선이 x=2와 x=1/2에서 만나며, x=1/2의 아래쪽 교점에서 x축으로 점선을 그었다.",
+  "sourceQuote": "[그림: 좌표축에 꼭짓점이 $(1,-2)$인 포물선 $y=2x(x-2)$와 $A=(2,0)$을 지나는 기울기 $(1/3)^{n-1}$인 직선을 그린다. $A$ 외의 교점을 $P_n$, 그 교점에서 $x$축으로 내린 수선의 발을 $H_n$으로 표시한다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "포물선 y=2x(x−2)",
+      "mappedTo": "graphPlan.curves[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "n=1 직선 y=x−2",
+      "mappedTo": "graphPlan.curves[1]"
+    },
+    {
+      "id": "c3",
+      "condition": "A=(2,0), P₁=(1/2,-3/2)",
+      "mappedTo": "graphPlan.overlays.points[0..1]"
+    },
+    {
+      "id": "c4",
+      "condition": "P₁의 수선의 발 H₁=(1/2,0)",
+      "mappedTo": "graphPlan.overlays.points[2];graphPlan.overlays.segments[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "대표값 n=1 또는 k=1에서 모든 표시 점을 원문 식으로 다시 계산. 무한급수의 합은 비노출."
+  ]
+}

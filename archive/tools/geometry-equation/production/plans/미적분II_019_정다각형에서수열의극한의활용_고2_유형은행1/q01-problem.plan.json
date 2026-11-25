@@ -1,0 +1,286 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1",
+              "denominator": "2"
+            },
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "2"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "2"
+            },
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "2"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "3"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "hiddenPointNames": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "s5",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "s6",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "s7",
+      "refs": [
+        "D",
+        "F"
+      ]
+    },
+    {
+      "id": "s8",
+      "refs": [
+        "E",
+        "F"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 400
+  },
+  "caption": "n=1 예시: 한 변을 2등분한 정삼각형의 단위 격자와 모든 격자 꼭짓점.",
+  "accessibilityDescription": "한 변 길이 2인 정삼각형의 내부를 작은 정삼각형 네 개로 나누는 격자선과 여섯 꼭짓점. 일반 n에서는 각 변을 2n등분한다.",
+  "sourceQuote": "[그림: 정삼각형에 단위 정삼각형 격자를 그리고 각 꼭짓점을 점으로 표시한다.]",
+  "sourceConditions": [
+    {
+      "id": "s1",
+      "condition": "정삼각형 한 변 2n, 단위격자; n=1 대표",
+      "mappedTo": "mathPlan.nodes[0..5];displaySegments[0..8]"
+    },
+    {
+      "id": "s2",
+      "condition": "분할점에서 두 다른 변에 평행한 격자선",
+      "mappedTo": "displaySegments[0..8]"
+    },
+    {
+      "id": "s3",
+      "condition": "모든 격자 꼭짓점은 점으로 표시",
+      "mappedTo": "displayPoints[0..5]"
+    }
+  ],
+  "newVisualInformation": [
+    "n=1일 때 6개의 점과 9개의 단위 선분을 실제 필드로 그린다. 극한의 답은 표기하지 않는다."
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "unit",
+        "ownerSegment": "s0",
+        "text": "1"
+      }
+    ]
+  }
+}

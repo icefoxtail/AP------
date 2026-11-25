@@ -1,0 +1,214 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "outputType": "POINT",
+        "factRole": "GIVEN",
+        "args": {}
+      },
+      {
+        "id": "X",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "4",
+                  "denominator": "5"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "5"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "expression",
+              "op": "neg",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "rational",
+                      "numerator": "2",
+                      "denominator": "5"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "5"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lineAB",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {"kind":"integer","value":"-2"},
+          "b": {"kind":"integer","value":"1"},
+          "c": {"kind":"integer","value":"-8"}
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "P"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sOP",
+      "refs": [
+        "O",
+        "P"
+      ],
+      "dashed": true
+    }
+  ],
+  "displayLines": ["lineAB"],
+  "displayCircles": [
+    "circ"
+  ],
+  "pointNames": {
+    "O": "O",
+    "A": "A",
+    "B": "B",
+    "P": "P"
+  },
+  "caption": "n=4 대표: 원점 중심 반지름 2인 원과 A(0,8), B(−4,0), 직선 AB에 수직인 방향의 점 P.",
+  "accessibilityDescription": "원점 중심 반지름2인 원, 직선 AB, 원점에서 AB에 수직인 점선 OP와 원 위의 점 P를 표시한다. 일반 n의 최댓값과 극한은 인쇄하지 않는다.",
+  "sourceQuote": "[그림: 원점 중심의 반지름 $\\sqrt n$인 원과 직선 $AB$를 그리고, 원점에서 직선 $AB$의 반대편으로 뻗는 수직 반직선과 원의 교점을 $P$로 표시한다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "A=(0,2n), B=(-n,0); n=4 대표",
+      "mappedTo": "mathPlan.nodes[2..3];mathPlan.nodes[6];displayLines[0];displaySegments[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "원 x²+y²=n, n=4에서 원점 반지름2",
+      "mappedTo": "mathPlan.nodes[0];mathPlan.nodes[5];displayCircles[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "OP는 AB에 수직이며 P는 원 위",
+      "mappedTo": "mathPlan.nodes[4];displaySegments[1]"
+    }
+  ],
+  "newVisualInformation": [
+    "n=4의 OP=(4√5/5,−2√5/5), AB=(-4,-8), 내적0 및 OP²=4를 별도 계산했다. P의 수치 좌표는 그리지 않는다."
+  ]
+}
