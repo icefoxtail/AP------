@@ -1,0 +1,33 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "axisVariable": false,
+    "rows": [
+      {
+        "kind": "POINTS",
+        "label": "정의역",
+        "band": false,
+        "points": [
+          { "id": "L", "value": "-3" },
+          { "id": "T", "value": "1" },
+          { "id": "R", "value": "2" }
+        ],
+        "spans": [
+          { "from": "L", "to": "T", "label": "4", "style": "BRACE", "side": "ABOVE" },
+          { "from": "T", "to": "R", "label": "1", "style": "BRACE", "side": "ABOVE" }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": { "text": "꼭짓점에서 끝점까지 거리" },
+  "caption": "정의역 −3≤x≤2에서 대칭축 x=1은 왼쪽 끝점과 4, 오른쪽 끝점과 1만큼 떨어진다.",
+  "accessibilityDescription": "수직선의 왼쪽 끝점 −3, 대칭축 위치 1, 오른쪽 끝점 2가 있고 각 거리 4와 1이 괄호로 표시된다.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "−3≤x≤2", "mappedTo": "numberLine.rows[0].points[L,R]" },
+    { "id": "c2", "condition": "f(x)=(x−1)²+a−1의 대칭축 x=1", "mappedTo": "numberLine.rows[0].points[T]" },
+    { "id": "c3", "condition": "|−3−1|=4, |2−1|=1", "mappedTo": "numberLine.rows[0].spans[0,1]" }
+  ],
+  "newVisualInformation": [
+    "대칭축과 양쪽 끝점의 거리를 시각적으로 비교하여 최대가 왼쪽 끝점에서 나타나는 이유를 설명한다."
+  ]
+}
