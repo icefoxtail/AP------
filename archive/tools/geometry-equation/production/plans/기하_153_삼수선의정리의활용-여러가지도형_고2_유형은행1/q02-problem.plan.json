@@ -1,0 +1,140 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PRISM",
+      "base": {
+        "kind": "POLYGON",
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            -2,
+            3.4641016151377544
+          ]
+        ]
+      },
+      "height": 3,
+      "names": "DEFABC",
+      "points": [
+        {
+          "id": "H",
+          "at": {
+            "footOnLine": {
+              "from": "A",
+              "line": [
+                "E",
+                "F"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "E",
+      "to": "F",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "A",
+      "to": "H",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "H",
+      "to": "E",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "dims": [
+    {
+      "from": "A",
+      "to": "B",
+      "label": "2"
+    },
+    {
+      "from": "A",
+      "to": "C",
+      "label": "4"
+    },
+    {
+      "from": "A",
+      "to": "D",
+      "label": "3"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "H",
+        "refs": [
+          "A",
+          "E"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "refs": [
+          "E",
+          "D",
+          "F"
+        ],
+        "arcs": 1,
+        "value": 120,
+        "label": "120^\\circ"
+      }
+    ]
+  },
+  "solidCaption": {
+    "text": "둔각삼각기둥"
+  },
+  "caption": "밑면에 120도 각이 있는 직삼각기둥과 AH 수선",
+  "accessibilityDescription": "밑면에 120도 각이 있는 직삼각기둥과 AH 수선. 실제 120도 둔각이 있는 삼각기둥; A에서 EF로 내린 공간 수선. 미지 정답은 숫자로 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AB=2, AC=4, AD=3",
+      "mappedTo": [
+        "dims[0]",
+        "dims[1]",
+        "dims[2]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "∠EDF=120°",
+      "mappedTo": [
+        "solids[0].base",
+        "marks.angles[0]"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "H는 A에서 EF에 내린 수선의 발",
+      "mappedTo": [
+        "solids[0].points[0]",
+        "segments[1]",
+        "marks.rightAngles[0]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "실제 120도 둔각이 있는 삼각기둥",
+    "A에서 EF로 내린 공간 수선"
+  ],
+  "sourceQuote": "[그림: 직삼각기둥 $\\mathrm{ABC-DEF}$에서 $\\overline{\\mathrm{AB}}=2, \\overline{\\mathrm{AC}}=4, \\overline{\\mathrm{AD}}=3$이고 밑면 삼각형 $\\mathrm{DEF}$는 $\\overline{\\mathrm{DE}}=2, \\overline{\\mathrm"
+}

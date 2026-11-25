@@ -1,0 +1,187 @@
+{
+  "capability": "solid-figure-v1",
+  "space": {
+    "points": [
+      {
+        "id": "D",
+        "at": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "B",
+        "at": [
+          4,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "C",
+        "at": [
+          0,
+          "4*sqrt(3)",
+          0
+        ]
+      },
+      {
+        "id": "A",
+        "at": [
+          0,
+          0,
+          6
+        ]
+      },
+      {
+        "id": "P",
+        "at": [
+          2,
+          "2*sqrt(3)",
+          0
+        ]
+      }
+    ],
+    "segments": [
+      {
+        "from": "D",
+        "to": "B",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "D",
+        "to": "C",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "D",
+        "to": "A",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "B",
+        "to": "C",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "B",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "C",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "P",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "D",
+        "to": "P",
+        "style": "AUTO",
+        "role": "REF"
+      }
+    ]
+  },
+  "dims": [
+    {
+      "from": "A",
+      "to": "D",
+      "label": "6"
+    },
+    {
+      "from": "D",
+      "to": "B",
+      "label": "4"
+    },
+    {
+      "from": "D",
+      "to": "C",
+      "label": "4\\sqrt{3}"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "D",
+        "refs": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "at": "D",
+        "refs": [
+          "A",
+          "C"
+        ]
+      },
+      {
+        "at": "D",
+        "refs": [
+          "B",
+          "C"
+        ]
+      }
+    ]
+  },
+  "caption": "D에서 세 모서리가 서로 수직인 사면체와 BC 위 점 P",
+  "accessibilityDescription": "D에서 세 모서리가 서로 수직인 사면체와 BC 위 점 P. D에서 세 모서리의 정확한 직교 관계; P는 최솟값의 위치가 아닌 중간 대표 위치. 미지 정답은 숫자로 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AD=6",
+      "mappedTo": [
+        "dims[0]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "DB=4",
+      "mappedTo": [
+        "dims[1]"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "DC=4√3",
+      "mappedTo": [
+        "dims[2]"
+      ]
+    },
+    {
+      "id": "c4",
+      "condition": "세 선분이 D에서 서로 수직",
+      "mappedTo": [
+        "marks.rightAngles[0]",
+        "marks.rightAngles[1]",
+        "marks.rightAngles[2]"
+      ]
+    },
+    {
+      "id": "c5",
+      "condition": "P∈BC, AP·DP 연결",
+      "mappedTo": [
+        "space.points[4]",
+        "space.segments[6]",
+        "space.segments[7]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "D에서 세 모서리의 정확한 직교 관계",
+    "P는 최솟값의 위치가 아닌 중간 대표 위치"
+  ],
+  "sourceQuote": "[그림: 꼭짓점 $\\mathrm{A}$에서 세 모서리 $\\mathrm{AD, DB, DC}$가 점 $\\mathrm{D}$에서 서로 수직으로 만나는 사면체 $\\mathrm{ABCD}$이다. $\\angle\\mathrm{ADB}=\\angle\\mathrm{ADC}=\\angle\\mathrm{BDC}=90^\\circ$가 직각 표시되"
+}

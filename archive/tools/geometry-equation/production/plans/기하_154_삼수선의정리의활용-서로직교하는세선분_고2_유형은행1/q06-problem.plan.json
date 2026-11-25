@@ -1,0 +1,133 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 2,
+        "depth": 2
+      },
+      "height": 1,
+      "names": "EFGHABCD",
+      "points": [
+        {
+          "id": "P",
+          "at": {
+            "footOnLine": {
+              "from": "E",
+              "line": [
+                "F",
+                "H"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "F",
+      "to": "H",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "E",
+      "to": "P",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "D",
+      "to": "E",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "D",
+      "to": "P",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "P",
+      "to": "F",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "dims": [
+    {
+      "from": "A",
+      "to": "B",
+      "label": "2"
+    },
+    {
+      "from": "A",
+      "to": "E",
+      "label": "1"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "P",
+        "refs": [
+          "E",
+          "F"
+        ]
+      }
+    ]
+  },
+  "highlights": [
+    {
+      "polygon": [
+        "D",
+        "E",
+        "P"
+      ],
+      "fill": "LIGHT"
+    }
+  ],
+  "solidCaption": {
+    "text": "직육면체"
+  },
+  "caption": "2×2×1 직육면체의 밑면 수선 EP와 음영 삼각형 DEP",
+  "accessibilityDescription": "2×2×1 직육면체의 밑면 수선 EP와 음영 삼각형 DEP. 원문 요구인 삼각형 DEP만 연하게 음영; P는 FH 위의 수선 발. 미지 정답은 숫자로 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "밑면 변 2, 높이 1",
+      "mappedTo": [
+        "dims[0]",
+        "dims[1]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "FH 대각선과 EP⊥FH",
+      "mappedTo": [
+        "segments[0]",
+        "segments[1]",
+        "marks.rightAngles[0]"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "삼각형 DEP를 음영으로 표시",
+      "mappedTo": [
+        "segments[2]",
+        "segments[3]",
+        "highlights[0]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원문 요구인 삼각형 DEP만 연하게 음영",
+    "P는 FH 위의 수선 발"
+  ],
+  "sourceQuote": "[그림: 밑면이 한 변의 길이가 2인 정사각형이고 높이가 1인 직육면체 $\\mathrm{ABCD-EFGH}$. 밑면 대각선 $\\overline{\\mathrm{FH}}$에 꼭짓점 $\\mathrm{E}$에서 수선 $\\mathrm{EP}$를 내렸고, 점 $\\mathrm{D}, \\mathrm{E}, \\mathrm{P}$를 연결한"
+}

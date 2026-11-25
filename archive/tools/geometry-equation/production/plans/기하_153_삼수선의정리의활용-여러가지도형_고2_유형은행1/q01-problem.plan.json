@@ -1,0 +1,120 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PRISM",
+      "base": {
+        "kind": "REGULAR",
+        "n": 3,
+        "side": 8
+      },
+      "height": 4,
+      "names": "DEFABC",
+      "points": [
+        {
+          "id": "M",
+          "at": {
+            "midpoint": [
+              "A",
+              "C"
+            ]
+          }
+        },
+        {
+          "id": "H",
+          "at": {
+            "footOnLine": {
+              "from": "M",
+              "line": [
+                "E",
+                "F"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "M",
+      "to": "H",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "H",
+      "to": "F",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "dims": [
+    {
+      "from": "D",
+      "to": "E",
+      "label": "8"
+    },
+    {
+      "from": "A",
+      "to": "D",
+      "label": "4"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "H",
+        "refs": [
+          "M",
+          "F"
+        ]
+      }
+    ]
+  },
+  "solidCaption": {
+    "text": "정삼각기둥"
+  },
+  "caption": "밑변 8·높이 4인 정삼각기둥과 AC 중점 M의 수선",
+  "accessibilityDescription": "밑변 8·높이 4인 정삼각기둥과 AC 중점 M의 수선. AC 중점에서 EF에 내린 거리선의 정확한 발; 길이 정답 미표시. 미지 정답은 숫자로 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "ABC와 DEF는 정삼각형·변8",
+      "mappedTo": [
+        "solids[0].base",
+        "dims[0]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "AD=4인 직삼각기둥",
+      "mappedTo": [
+        "solids[0].height",
+        "dims[1]"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "M은 AC 중점",
+      "mappedTo": [
+        "solids[0].points[0]"
+      ]
+    },
+    {
+      "id": "c4",
+      "condition": "MH⊥EF",
+      "mappedTo": [
+        "solids[0].points[1]",
+        "segments[0]",
+        "marks.rightAngles[0]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "AC 중점에서 EF에 내린 거리선의 정확한 발",
+    "길이 정답 미표시"
+  ],
+  "sourceQuote": "[그림: 밑면 $\\mathrm{ABC}$와 $\\mathrm{DEF}$가 한 변의 길이가 $8$인 정삼각형이고 높이 $\\overline{\\mathrm{AD}}=4$인 직삼각기둥 $\\mathrm{ABC-DEF}$이다. 모서리 $\\mathrm{AC}$의 중점 $\\mathrm{M}$에서 밑면의 모서리 $\\mathrm{EF}$에 "
+}

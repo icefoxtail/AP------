@@ -1,0 +1,201 @@
+{
+  "capability": "solid-figure-v1",
+  "space": {
+    "points": [
+      {
+        "id": "A",
+        "at": [
+          -5,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "B",
+        "at": [
+          5,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "C",
+        "at": [
+          0,
+          9,
+          0
+        ]
+      },
+      {
+        "id": "H",
+        "at": [
+          0,
+          3,
+          0
+        ]
+      },
+      {
+        "id": "P",
+        "at": [
+          0,
+          3,
+          6
+        ]
+      },
+      {
+        "id": "Q",
+        "at": [
+          0,
+          0,
+          0
+        ]
+      }
+    ],
+    "planes": [
+      {
+        "id": "alpha",
+        "name": "\\alpha",
+        "through": [
+          "A",
+          "B",
+          "C"
+        ]
+      }
+    ],
+    "lines": [
+      {
+        "id": "l",
+        "name": "l",
+        "through": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "segments": [
+      {
+        "from": "A",
+        "to": "B",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "B",
+        "to": "C",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "C",
+        "to": "A",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "P",
+        "to": "H",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "P",
+        "to": "Q",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "H",
+        "to": "Q",
+        "style": "AUTO",
+        "role": "REF"
+      }
+    ]
+  },
+  "dims": [
+    {
+      "from": "A",
+      "to": "B",
+      "label": "10"
+    },
+    {
+      "from": "P",
+      "to": "H",
+      "label": "6"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "H",
+        "refs": [
+          "P",
+          "Q"
+        ]
+      },
+      {
+        "at": "Q",
+        "refs": [
+          "P",
+          "B"
+        ]
+      }
+    ]
+  },
+  "caption": "넓이 45인 삼각형 ABC의 무게중심 H와 두 수선",
+  "accessibilityDescription": "넓이 45인 삼각형 ABC의 무게중심 H와 두 수선. ABC 넓이와 무게중심을 정확히 만족; PH와 PQ의 두 직각 경로. 미지 정답은 숫자로 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "삼각형 ABC가 α 위, 넓이 45",
+      "mappedTo": [
+        "space.points[0]",
+        "space.points[1]",
+        "space.points[2]",
+        "space.planes[0]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "AB=10",
+      "mappedTo": [
+        "dims[0]"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "H는 ABC 무게중심",
+      "mappedTo": [
+        "space.points[3]"
+      ]
+    },
+    {
+      "id": "c4",
+      "condition": "PH=6, PH⊥α",
+      "mappedTo": [
+        "dims[1]",
+        "marks.rightAngles[0]"
+      ]
+    },
+    {
+      "id": "c5",
+      "condition": "Q는 AB에 내린 수선의 발",
+      "mappedTo": [
+        "space.points[5]",
+        "space.segments[4]",
+        "marks.rightAngles[1]"
+      ]
+    },
+    {
+      "id": "c6",
+      "condition": "H-Q 연결",
+      "mappedTo": [
+        "space.segments[5]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "ABC 넓이와 무게중심을 정확히 만족",
+    "PH와 PQ의 두 직각 경로"
+  ],
+  "sourceQuote": "[그림: 평면 $\\alpha$ 위에 삼각형 $\\mathrm{ABC}$가 놓여 있고, 평면 밖의 점 $\\mathrm{P}$에서 평면 $\\alpha$에 내린 수선의 발이 삼각형의 무게중심 $\\mathrm{H}$이다. 점 $\\mathrm{P}$에서 직선 $\\mathrm{AB}$에 내린 수선의 발이 $\\mathrm{Q}$이며 점"
+}

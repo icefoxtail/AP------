@@ -1,0 +1,147 @@
+{
+  "capability": "solid-figure-v1",
+  "space": {
+    "points": [
+      {
+        "id": "C",
+        "at": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "A",
+        "at": [
+          "sqrt(72+24*sqrt(5))",
+          0,
+          0
+        ]
+      },
+      {
+        "id": "B",
+        "at": [
+          0,
+          "sqrt(72-24*sqrt(5))",
+          0
+        ]
+      },
+      {
+        "id": "D",
+        "at": [
+          0,
+          0,
+          3
+        ]
+      }
+    ],
+    "segments": [
+      {
+        "from": "A",
+        "to": "B",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "C",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "B",
+        "to": "C",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "D",
+        "to": "C",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "D",
+        "to": "A",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "D",
+        "to": "B",
+        "style": "AUTO",
+        "role": "REF"
+      }
+    ]
+  },
+  "dims": [
+    {
+      "from": "A",
+      "to": "B",
+      "label": "12"
+    },
+    {
+      "from": "C",
+      "to": "D",
+      "label": "3"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "C",
+        "refs": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "at": "C",
+        "refs": [
+          "D",
+          "A"
+        ]
+      }
+    ]
+  },
+  "caption": "직각삼각형 ABC와 C 위의 수직선 CD",
+  "accessibilityDescription": "직각삼각형 ABC와 C 위의 수직선 CD. AB=12와 △ABD 넓이 30을 함께 만족하는 정확한 중첩근 좌표; 미지 △ABC 넓이는 기입하지 않음. 미지 정답은 숫자로 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "∠ACB=90°",
+      "mappedTo": [
+        "marks.rightAngles[0]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "AB=12",
+      "mappedTo": [
+        "dims[0]"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "CD=3, CD⊥ABC",
+      "mappedTo": [
+        "dims[1]",
+        "marks.rightAngles[1]"
+      ]
+    },
+    {
+      "id": "c4",
+      "condition": "ABD는 넓이 30의 삼각형",
+      "mappedTo": [
+        "space.segments[0]",
+        "space.segments[4]",
+        "space.segments[5]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "AB=12와 △ABD 넓이 30을 함께 만족하는 정확한 중첩근 좌표",
+    "미지 △ABC 넓이는 기입하지 않음"
+  ],
+  "sourceQuote": "[그림: 직각삼각형 $\\mathrm{ABC}$($\\angle\\mathrm{ACB}=90^\\circ, \\overline{\\mathrm{AB}}=12$)가 놓여 있고, 점 $\\mathrm{C}$에서 평면 $\\mathrm{ABC}$에 수직으로 세운 선분 $\\mathrm{CD}$의 길이는 $3$이다. 점 $\\mathrm{D}$와"
+}

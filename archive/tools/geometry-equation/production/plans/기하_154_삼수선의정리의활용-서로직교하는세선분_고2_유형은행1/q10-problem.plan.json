@@ -1,0 +1,135 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 10,
+        "depth": 10
+      },
+      "height": 10,
+      "names": "EFGHABCD",
+      "points": [
+        {
+          "id": "L",
+          "at": {
+            "midpoint": [
+              "A",
+              "B"
+            ]
+          }
+        },
+        {
+          "id": "M",
+          "at": {
+            "midpoint": [
+              "H",
+              "G"
+            ]
+          }
+        },
+        {
+          "id": "N",
+          "at": {
+            "footOnLine": {
+              "from": "M",
+              "line": [
+                "L",
+                "D"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "L",
+      "to": "D",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "M",
+      "to": "N",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "N",
+      "to": "L",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "dims": [
+    {
+      "from": "A",
+      "to": "B",
+      "label": "10"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "N",
+        "refs": [
+          "M",
+          "L"
+        ]
+      }
+    ]
+  },
+  "solidCaption": {
+    "text": "직육면체"
+  },
+  "caption": "모서리 10 정육면체에서 AB 중점 L·HG 중점 M과 수선 MN",
+  "accessibilityDescription": "모서리 10 정육면체에서 AB 중점 L·HG 중점 M과 수선 MN. M에서 LD에 내린 수선의 정확한 발 N; MN 정답 길이는 비표시. 미지 정답은 숫자로 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "모서리 길이 10",
+      "mappedTo": [
+        "dims[0]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "L은 AB 중점",
+      "mappedTo": [
+        "solids[0].points[0]"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "M은 HG 중점",
+      "mappedTo": [
+        "solids[0].points[1]"
+      ]
+    },
+    {
+      "id": "c4",
+      "condition": "LD 연결",
+      "mappedTo": [
+        "segments[0]"
+      ]
+    },
+    {
+      "id": "c5",
+      "condition": "MN⊥LD",
+      "mappedTo": [
+        "solids[0].points[2]",
+        "segments[1]",
+        "marks.rightAngles[0]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "M에서 LD에 내린 수선의 정확한 발 N",
+    "MN 정답 길이는 비표시"
+  ],
+  "sourceQuote": "[그림: 한 모서리의 길이가 10인 정육면체 $\\mathrm{ABCD-EFGH}$. 윗면 모서리 $\\mathrm{AB}$의 중점 $\\mathrm{L}$과 꼭짓점 $\\mathrm{D}$를 이은 선분 $\\mathrm{LD}$가 있고, 밑면 모서리 $\\mathrm{HG}$의 중점 $\\mathrm{M}$에서 선분 $\\mathrm"
+}

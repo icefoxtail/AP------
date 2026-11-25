@@ -1,0 +1,135 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 4,
+        "depth": 4
+      },
+      "height": 4,
+      "names": "EFGHABCD",
+      "points": [
+        {
+          "id": "P",
+          "at": {
+            "midpoint": [
+              "E",
+              "H"
+            ]
+          }
+        },
+        {
+          "id": "Q",
+          "at": {
+            "midpoint": [
+              "H",
+              "G"
+            ]
+          }
+        },
+        {
+          "id": "R",
+          "at": {
+            "footOnLine": {
+              "from": "Q",
+              "line": [
+                "D",
+                "P"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "D",
+      "to": "P",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "Q",
+      "to": "R",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "R",
+      "to": "D",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "dims": [
+    {
+      "from": "A",
+      "to": "B",
+      "label": "4"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "R",
+        "refs": [
+          "Q",
+          "D"
+        ]
+      }
+    ]
+  },
+  "solidCaption": {
+    "text": "직육면체"
+  },
+  "caption": "모서리 4 정육면체의 EH·HG 중점과 Q에서 DP로 내린 수선",
+  "accessibilityDescription": "모서리 4 정육면체의 EH·HG 중점과 Q에서 DP로 내린 수선. 문제에서 이름 없는 발을 보조점 R로 계산; 거리 정답은 표시하지 않음. 미지 정답은 숫자로 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "모서리 길이 4",
+      "mappedTo": [
+        "dims[0]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "P는 EH 중점",
+      "mappedTo": [
+        "solids[0].points[0]"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "Q는 HG 중점",
+      "mappedTo": [
+        "solids[0].points[1]"
+      ]
+    },
+    {
+      "id": "c4",
+      "condition": "DP 연결",
+      "mappedTo": [
+        "segments[0]"
+      ]
+    },
+    {
+      "id": "c5",
+      "condition": "Q에서 DP에 내린 수선",
+      "mappedTo": [
+        "solids[0].points[2]",
+        "segments[1]",
+        "marks.rightAngles[0]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "문제에서 이름 없는 발을 보조점 R로 계산",
+    "거리 정답은 표시하지 않음"
+  ],
+  "sourceQuote": "[그림: 한 모서리의 길이가 4인 정육면체 $\\mathrm{ABCD-EFGH}$. 밑면 모서리 $\\mathrm{EH}$의 중점 $\\mathrm{P}$, $\\mathrm{HG}$의 중점 $\\mathrm{Q}$가 잡혀 있고, 꼭짓점 $\\mathrm{D}$에서 $\\mathrm{P}$로 선분 $\\mathrm{DP}$가 그어져 있"
+}

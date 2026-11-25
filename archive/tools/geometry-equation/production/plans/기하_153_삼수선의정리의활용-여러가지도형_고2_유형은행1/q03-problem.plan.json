@@ -1,0 +1,163 @@
+{
+  "capability": "solid-figure-v1",
+  "space": {
+    "points": [
+      {
+        "id": "B",
+        "at": [
+          "-2*sqrt(2)",
+          0,
+          0
+        ]
+      },
+      {
+        "id": "D",
+        "at": [
+          "2*sqrt(2)",
+          0,
+          0
+        ]
+      },
+      {
+        "id": "C",
+        "at": [
+          0,
+          "2*sqrt(2)",
+          0
+        ]
+      },
+      {
+        "id": "A",
+        "at": [
+          0,
+          0,
+          "2*sqrt(2)"
+        ]
+      }
+    ],
+    "planes": [
+      {
+        "id": "abd",
+        "through": [
+          "A",
+          "B",
+          "D"
+        ]
+      },
+      {
+        "id": "bcd",
+        "through": [
+          "B",
+          "C",
+          "D"
+        ]
+      }
+    ],
+    "segments": [
+      {
+        "from": "A",
+        "to": "B",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "D",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "B",
+        "to": "D",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "B",
+        "to": "C",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "C",
+        "to": "D",
+        "style": "AUTO",
+        "role": "REF"
+      }
+    ]
+  },
+  "dims": [
+    {
+      "from": "A",
+      "to": "B",
+      "label": "4"
+    },
+    {
+      "from": "B",
+      "to": "C",
+      "label": "4"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "A",
+        "refs": [
+          "B",
+          "D"
+        ]
+      },
+      {
+        "at": "C",
+        "refs": [
+          "B",
+          "D"
+        ]
+      }
+    ]
+  },
+  "caption": "대각선 BD를 접어 두 직각이등변삼각형을 수직으로 세운 도형",
+  "accessibilityDescription": "대각선 BD를 접어 두 직각이등변삼각형을 수직으로 세운 도형. 실제 수직으로 접힌 두 삼각형; 이면각 90도 각호는 엔진 미지원으로 후속 표식 확인 필요. 미지 정답은 숫자로 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "ABCD는 한 변4인 정사각형을 BD로 접음",
+      "mappedTo": [
+        "space.points[0]",
+        "space.points[1]",
+        "space.points[2]",
+        "space.points[3]",
+        "dims[0]",
+        "dims[1]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "두 삼각형 ABD와 CBD는 수직인 평면",
+      "mappedTo": [
+        "space.planes[0]",
+        "space.planes[1]"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "BD는 접는 모서리",
+      "mappedTo": [
+        "space.segments[2]"
+      ]
+    },
+    {
+      "id": "c4",
+      "condition": "A에서 BC까지의 거리 질문",
+      "mappedTo": [
+        "space.segments[3]",
+        "space.points[3]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "실제 수직으로 접힌 두 삼각형",
+    "이면각 90도 각호는 엔진 미지원으로 후속 표식 확인 필요"
+  ],
+  "sourceQuote": "[그림: 한 변의 길이가 $4$인 정사각형 $\\mathrm{ABCD}$를 대각선 $\\mathrm{BD}$를 접는 선으로 하여 두 평면 $\\mathrm{ABD}$와 $\\mathrm{CBD}$가 서로 수직이 되도록 공간에 세워 접었다. 점 $\\mathrm{A}$에서 직선 $\\mathrm{BC}$에 내린 수선의 길이를 구하는 "
+}
