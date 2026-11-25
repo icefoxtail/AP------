@@ -1,0 +1,289 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "sFC",
+      "refs": [
+        "F",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "sAF",
+      "refs": [
+        "A",
+        "F"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 560
+  },
+  "caption": "AB=2·AD=3 직사각형, BC의 삼등분점 E,F와 AE·AF",
+  "accessibilityDescription": "직사각형 ABCD에서 변 AB=2, AD=3이 실제 치수선으로 표시된다. 밑변 BC를 B에서 가까운 E,F 순으로 삼등분하며 A에서 E와 F로 두 화살표가 이어진다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AB=2, AD=3인 실제 직사각형과 해당 치수선이 있다.",
+      "mappedTo": [
+        "d2",
+        "d3",
+        "A",
+        "B",
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "BE=EF=FC인 정확한 BC 삼등분점 E,F에 동일 눈금을 표시한다.",
+      "mappedTo": [
+        "E",
+        "F",
+        "eThird"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "문제의 벡터 AE,AF를 실제 화살표로 도시하며 구할 내적 6은 숫자로 적지 않는다.",
+      "mappedTo": [
+        "vAE",
+        "vAF"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "BC 삼등분점 E,F와 동등 눈금",
+    "직사각형 크기 및 AE/AF 화살표"
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "d2",
+        "from": "A",
+        "to": "B",
+        "label": "2",
+        "side": "LEFT",
+        "style": "BAR",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "d3",
+        "from": "A",
+        "to": "D",
+        "label": "3",
+        "side": "ABOVE",
+        "style": "BAR",
+        "factRole": "GIVEN"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "eThird",
+        "count": 1,
+        "segments": [
+          "sBE",
+          "sEF",
+          "sFC"
+        ]
+      }
+    ],
+    "vectors": [
+      {
+        "id": "vAE",
+        "from": "A",
+        "to": "E",
+        "label": "vec(AE)",
+        "side": "LEFT",
+        "labelAt": 0.55
+      },
+      {
+        "id": "vAF",
+        "from": "A",
+        "to": "F",
+        "label": "vec(AF)",
+        "side": "LEFT",
+        "labelAt": 0.55
+      }
+    ]
+  }
+}

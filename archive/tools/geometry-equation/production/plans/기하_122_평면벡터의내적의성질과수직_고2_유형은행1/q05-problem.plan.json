@@ -1,0 +1,239 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "17",
+              "denominator": "10"
+            },
+            {
+              "kind": "rational",
+              "numerator": "9",
+              "denominator": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "P"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sPA",
+      "refs": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "sPB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "sPC",
+      "refs": [
+        "P",
+        "C"
+      ]
+    },
+    {
+      "id": "sPD",
+      "refs": [
+        "P",
+        "D"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 560
+  },
+  "caption": "AB=4·BC=2 직사각형 내부의 이동점 P와 네 연결선",
+  "accessibilityDescription": "가로 4, 세로 2인 직사각형 ABCD 내부의 움직이는 P를 네 꼭짓점 A,B,C,D에 각각 선분으로 연결한다. 답인 원의 자취는 문제 그림에 따로 그리지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AB=4, BC=2가 실제 직사각형과 바깥 치수선에 대응한다.",
+      "mappedTo": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "d4",
+        "d2"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "P는 직사각형 내부의 대표점이고 PA,PB,PC,PD 네 선분을 실제로 그린다.",
+      "mappedTo": [
+        "P",
+        "sPA",
+        "sPB",
+        "sPC",
+        "sPD"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "해설에서 얻는 P 자취의 원/둘레 값은 문제 그림에 표시하지 않는다.",
+      "mappedTo": [
+        "P"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "점 P에서 네 꼭짓점으로 잇는 선분 네 개",
+    "변 4·2 치수선"
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "d4",
+        "from": "A",
+        "to": "B",
+        "label": "4",
+        "side": "BELOW",
+        "style": "BAR",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "d2",
+        "from": "B",
+        "to": "C",
+        "label": "2",
+        "side": "RIGHT",
+        "style": "BAR",
+        "factRole": "GIVEN"
+      }
+    ]
+  }
+}

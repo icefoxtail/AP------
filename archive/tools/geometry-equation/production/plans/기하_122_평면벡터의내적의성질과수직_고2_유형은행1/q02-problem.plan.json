@@ -1,0 +1,225 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lAB",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lOP",
+        "op": "PERPENDICULAR_THROUGH",
+        "inputs": [
+          "O",
+          "lAB"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lAB",
+          "lOP"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "P"
+  ],
+  "displaySegments": [
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sAP",
+      "refs": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "sPB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "sOP",
+      "refs": [
+        "O",
+        "P"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 560
+  },
+  "caption": "OA=5·OB=12의 직각삼각형에서 OP⊥AB인 수선의 발 P",
+  "accessibilityDescription": "직각을 O로 하는 삼각형에서 OA=5, OB=12의 두 치수선이 있고, 점 O에서 빗변 AB에 내린 수선이 내부 P에서 직각으로 만난다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "OA=5, OB=12, ∠O=90°를 실제 좌표·치수선·직각 표식으로 표시한다.",
+      "mappedTo": [
+        "d5",
+        "d12",
+        "rO"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "P는 AB와 O에서 AB에 내린 수선의 두 계산 직선의 교점이다. OP⊥AB 실제 직각 표식.",
+      "mappedTo": [
+        "lAB",
+        "lOP",
+        "P",
+        "sOP",
+        "rP"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "구하는 OP=60/13 수치는 치수선에 적지 않는다.",
+      "mappedTo": [
+        "sOP"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "정확히 계산한 수선의 발 P",
+    "O와 P 두 직각·5,12 치수선"
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "d5",
+        "from": "O",
+        "to": "A",
+        "label": "5",
+        "side": "BELOW",
+        "style": "BAR",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "d12",
+        "from": "O",
+        "to": "B",
+        "label": "12",
+        "side": "LEFT",
+        "style": "BAR",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rO",
+      "refs": [
+        "A",
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "rP",
+      "refs": [
+        "O",
+        "P",
+        "A"
+      ]
+    }
+  ]
+}

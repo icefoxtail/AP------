@@ -1,0 +1,189 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 560
+  },
+  "caption": "AB=BC=5인 이등변삼각형과 밑각 ∠BAC=θ",
+  "accessibilityDescription": "삼각형 ABC의 두 같은 변 AB와 BC는 각각 5이며 같은 길이 눈금이 있다. 밑변 AC의 A 쪽 밑각이 θ로 표기된다. 구할 코사인 값은 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AB=BC=5인 실제 이등변삼각형이며 각 A=C이다.",
+      "mappedTo": [
+        "A",
+        "B",
+        "C",
+        "eAB",
+        "d5a",
+        "d5b",
+        "aC"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "∠BAC의 호는 θ이며 수치 각도·코사인 답을 그림에 쓰지 않는다.",
+      "mappedTo": [
+        "aA"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "AB·BC의 실제 5 치수선 및 동등 눈금",
+    "밑각 θ 호·동등 밑각 표시"
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "d5a",
+        "from": "A",
+        "to": "B",
+        "label": "5",
+        "side": "LEFT",
+        "style": "BAR",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "d5b",
+        "from": "B",
+        "to": "C",
+        "label": "5",
+        "side": "RIGHT",
+        "style": "BAR",
+        "factRole": "GIVEN"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "eAB",
+        "count": 1,
+        "segments": [
+          "sAB",
+          "sBC"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "id": "aA",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 53.13010235415598,
+        "label": "θ",
+        "arcs": 1,
+        "equalGroup": 1,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aC",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "value": 53.13010235415598,
+        "arcs": 1,
+        "equalGroup": 1,
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  }
+}
