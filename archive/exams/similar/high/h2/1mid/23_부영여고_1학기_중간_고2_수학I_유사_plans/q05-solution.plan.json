@@ -1,0 +1,31 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {"recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false},
+    "nodes": [
+      {"id": "O", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "integer", "value": "0"}, {"kind": "integer", "value": "0"}]}, "outputType": "POINT", "factRole": "GIVEN"},
+      {"id": "A", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "integer", "value": "9"}, {"kind": "integer", "value": "0"}]}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE"},
+      {"id": "B", "op": "POLAR_POINT", "inputs": ["O", "A"], "args": {"length": {"kind": "integer", "value": "9"}, "angleDeg": {"kind": "integer", "value": "120"}, "turn": "CCW"}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE"},
+      {"id": "k", "op": "CIRCLE_CENTER_RADIUS", "inputs": ["O"], "args": {"radius": {"kind": "integer", "value": "9"}}, "outputType": "CIRCLE", "factRole": "DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "displayPoints": ["O", "A", "B"],
+  "displaySegments": [{"id": "OA", "refs": ["O", "A"]}, {"id": "OB", "refs": ["O", "B"]}],
+  "displayCircles": [],
+  "planeMarks": {
+    "arcs": [{"id": "arc1", "circle": "k", "center": "O", "from": "A", "to": "B", "side": "MINOR", "label": "6pi", "labelKind": "MATH"}],
+    "angles": [{"id": "aAOB", "refs": ["A", "O", "B"], "value": 120, "label": "2pi/3", "labelKind": "MATH", "style": "ARC"}],
+    "expressionLabels": [{"id": "radius", "ownerSegment": "OA", "text": "9"}],
+    "textLabels": [{"id": "area", "at": [2.5, 4], "text": "넓이 27π", "labelKind": "TEXT"}]
+  },
+  "coordinateCanvas": {"width": 440, "height": 400},
+  "caption": "호의 길이 6π, 넓이 27π로부터 계산한 반지름 r=9와 중심각 θ=2π/3을 표시한다. 넓이 27π는 영역 안쪽에 글자로 쓰되 부채꼴의 내부는 면 채움 없이 흰색으로 둔다.",
+  "accessibilityDescription": "꼭짓점 O에서 같은 길이 9인 두 반지름 OA, OB를 그려 중심각 120도를 만들고 그 사이 원호에 6π, OA에 9, 작은 중심각 호에 2π/3을 적는다. 면 내부에는 넓이 27π 라벨만 있다.",
+  "sourceConditions": [
+    {"id": "q05s-arc", "condition": "주어진 호의 길이 6π", "mappedTo": "planeMarks.arcs[0]"},
+    {"id": "q05s-radius", "condition": "넓이 S=27π와 l=6π로 얻은 r=9", "mappedTo": "mathPlan.nodes[1],mathPlan.nodes[3],planeMarks.expressionLabels[0],planeMarks.textLabels[0]"},
+    {"id": "q05s-angle", "condition": "rθ=l에 의한 θ=2π/3=120°", "mappedTo": "mathPlan.nodes[2],planeMarks.angles[0]"}
+  ],
+  "newVisualInformation": ["호의 길이와 반지름·중심각의 서로 다른 라벨 위치", "칠 없는 120° 부채꼴의 실제 호"]
+}

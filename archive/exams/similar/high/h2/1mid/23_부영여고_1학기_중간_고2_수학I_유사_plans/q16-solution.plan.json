@@ -1,0 +1,18 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial", "coefficients": ["3", "-1", "-1"],
+    "sourceDomain": {"kind": "INTERVAL", "range": [-1, 1], "states": ["CLOSED", "CLOSED"]},
+    "domain": [-1, 1], "axisFold": false, "viewport": [-1.5, 1.5, -1, 4],
+    "requiredPoints": [{"id": "V", "x": -0.5, "y": 3.25}, {"id": "L", "x": -1, "y": 3}, {"id": "R", "x": 1, "y": 1}],
+    "axisTickValues": {"x": [-1, -0.5, 1], "y": [1, 3, 3.25]}
+  },
+  "caption": "t=cos x의 범위 −1≤t≤1에서 k=−t²−t+3이다. 꼭짓점 (−1/2,13/4)이 최댓값, 오른쪽 끝 (1,1)이 최솟값이므로 b−a=9/4다.",
+  "accessibilityDescription": "−1에서 1까지의 닫힌 정의역에 그린 아래로 열린 포물선에 꼭짓점 (−1/2,13/4)과 양 끝점의 실제 높이가 표시되어 있다.",
+  "sourceConditions": [
+    {"id": "q16s-domain", "condition": "t=cos x, −1≤t≤1", "mappedTo": "graphPlan.sourceDomain,graphPlan.domain"},
+    {"id": "q16s-f", "condition": "k=−t²−t+3", "mappedTo": "graphPlan.coefficients"},
+    {"id": "q16s-extrema", "condition": "최대 13/4 at t=−1/2, 최소 1 at t=1", "mappedTo": "graphPlan.requiredPoints"}
+  ],
+  "newVisualInformation": ["허용된 t구간 안 꼭짓점의 위치", "두 끝점과 꼭짓점의 높이 비교"]
+}

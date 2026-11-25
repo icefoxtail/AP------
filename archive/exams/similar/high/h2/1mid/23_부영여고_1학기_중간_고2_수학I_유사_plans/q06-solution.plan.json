@@ -1,0 +1,43 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {"recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false},
+    "nodes": [
+      {"id": "O", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "integer", "value": "0"}, {"kind": "integer", "value": "0"}]}, "outputType": "POINT", "factRole": "GIVEN"},
+      {"id": "X", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "integer", "value": "-12"}, {"kind": "integer", "value": "0"}]}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE"},
+      {"id": "P", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "integer", "value": "-12"}, {"kind": "integer", "value": "-5"}]}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE"},
+      {"id": "XL", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "integer", "value": "-15"}, {"kind": "integer", "value": "0"}]}, "outputType": "POINT", "factRole": "GIVEN"},
+      {"id": "XR", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "integer", "value": "3"}, {"kind": "integer", "value": "0"}]}, "outputType": "POINT", "factRole": "GIVEN"},
+      {"id": "YU", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "integer", "value": "0"}, {"kind": "integer", "value": "3"}]}, "outputType": "POINT", "factRole": "GIVEN"},
+      {"id": "YD", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "integer", "value": "0"}, {"kind": "integer", "value": "-8"}]}, "outputType": "POINT", "factRole": "GIVEN"}
+    ]
+  },
+  "displayPoints": ["O", "X", "P", "XL", "XR", "YU", "YD"],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {"id": "xAxis", "refs": ["XL", "XR"]},
+    {"id": "yAxis", "refs": ["YD", "YU"]},
+    {"id": "OX", "refs": ["O", "X"]},
+    {"id": "XP", "refs": ["X", "P"]},
+    {"id": "OP", "refs": ["O", "P"], "arrow": "END"}
+  ],
+  "rightAngles": [{"id": "raX", "refs": ["O", "X", "P"]}],
+  "planeMarks": {"expressionLabels": [
+    {"id": "base", "ownerSegment": "OX", "text": "12"},
+    {"id": "height", "ownerSegment": "XP", "text": "5"},
+    {"id": "radius", "ownerSegment": "OP", "text": "13"}
+  ]},
+  "hiddenPointNames": ["XL", "XR", "YU", "YD", "X"],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {"width": 460, "height": 420},
+  "caption": "제3사분면의 동경 위 예시 P(−12,−5)에 대해 OP=13, tanθ=5/12이다. sinθ는 음수이므로 −5/13이다.",
+  "accessibilityDescription": "좌측 아래 제3사분면에 직각삼각형이 있으며 직각 꼭짓점 X에는 작은 직각 정사각형을 표시하고, 가로 다리 길이 12, 세로 다리 5, 빗변 13을 실제 선분 옆에 적는다.",
+  "sourceConditions": [
+    {"id": "q06s-q3", "condition": "θ는 제3사분면, 점 P(−12,−5) 대표 배치", "mappedTo": "mathPlan.nodes[2],displaySegments[4]"},
+    {"id": "q06s-tan", "condition": "tanθ=5/12이고 양 좌표축과 평행한 두 다리는 수직", "mappedTo": "displaySegments[2],displaySegments[3],rightAngles[0],planeMarks.expressionLabels[0],planeMarks.expressionLabels[1]"},
+    {"id": "q06s-radius", "condition": "r=13, sinθ=−5/13", "mappedTo": "displaySegments[4],planeMarks.expressionLabels[2]"}
+  ],
+  "newVisualInformation": ["제3사분면에서 두 좌표 성분이 음수임", "5–12–13 직각삼각형의 실제 길이"]
+}

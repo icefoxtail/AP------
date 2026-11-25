@@ -1,0 +1,21 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve", "viewport": [-0.5, 6.5, -2, 21],
+    "curves": [
+      {"id": "f", "kind": "EXPONENTIAL", "base": "2", "coefficients": ["-1", "1", "3"], "shiftX": "4", "domain": ["0", "6"], "color": "BLUE", "label": "f(x)"},
+      {"id": "g", "kind": "EXPONENTIAL", "base": "3", "coefficients": ["1", "-1", "10"], "shiftX": "2", "domain": ["0", "6"], "color": "WARM", "label": "g(x)"},
+      {"id": "boundF", "kind": "LINE", "coefficients": ["3", "0"], "domain": ["0", "6"], "style": "DASHED", "label": "y=3"},
+      {"id": "boundG", "kind": "LINE", "coefficients": ["10", "0"], "domain": ["0", "6"], "style": "DASHED", "label": "y=10"}
+    ],
+    "axisTickValues": {"x": ["2", "4"], "y": ["3", "10"]}
+  },
+  "caption": "역함수 f(x)=3−2^(x−4)는 언제나 3 미만, g(x)=10+3^(2−x)는 언제나 10 초과다. 모든 x에서 f(x)<n<g(x)인 정수 n은 3부터 10까지 8개다.",
+  "accessibilityDescription": "아래쪽 지수곡선 f는 y=3 수평 점근선보다 낮고 위쪽 지수곡선 g는 y=10 수평 점근선보다 높아, n이 취할 수 있는 3부터 10까지의 값을 사이에 두고 있다.",
+  "sourceConditions": [
+    {"id": "q11s-f", "condition": "첫 로그함수의 역함수 f(x)=3−2^(x−4)", "mappedTo": "graphPlan.curves[0]"},
+    {"id": "q11s-g", "condition": "두 번째 로그함수의 역함수 g(x)=10+3^(2−x)", "mappedTo": "graphPlan.curves[1]"},
+    {"id": "q11s-asym", "condition": "f<3, g>10에서 3≤n≤10", "mappedTo": "graphPlan.curves[2],graphPlan.curves[3],graphPlan.axisTickValues"}
+  ],
+  "newVisualInformation": ["두 역함수의 수평 점근선 3과 10", "모든 실수 x에서 같은 정수 n이 들어가는 구조"]
+}

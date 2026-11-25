@@ -1,0 +1,17 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric", "function": "SIN", "ratePi": "1", "coefficients": ["1", "0"], "phasePi": "0", "absolute": true,
+    "sourceDomain": {"kind": "INTERVAL", "range": ["0", "5"], "states": ["CLOSED", "CLOSED"]},
+    "referenceLines": [{"id": "line", "slope": "1/5", "intercept": "0", "intersectionCount": 10, "color": "WARM", "endCrossing": true}],
+    "axisTickValues": {"x": ["1", "2", "3", "4"], "y": ["1"]}, "displaySize": "full"
+  },
+  "caption": "|sin(πx)|와 y=x/5의 후보 범위 0≤x≤5에서 양수 교차 9개와 원점 경계 교차 1개로 총 10개이며 x=5는 해가 아니다. 그래프 화면은 실제 함수의 전체 정의역을 제한하지 않는다.",
+  "accessibilityDescription": "0에서 5까지 사인 절댓값 그래프가 봉우리 다섯 개를 만들고, 올라가는 직선 y=x/5가 0에서 한 번과 각 봉우리 구간 안에서 교차해 모두 열 개의 교점을 이룬다.",
+  "sourceConditions": [
+    {"id": "q19s-abs", "condition": "y=|sin(πx)|, 주기 1", "mappedTo": "graphPlan.function,graphPlan.ratePi,graphPlan.absolute"},
+    {"id": "q19s-line", "condition": "y=x/5", "mappedTo": "graphPlan.referenceLines[0]"},
+    {"id": "q19s-range", "condition": "양수 교차 9개와 x=0 경계 교차 1개로 총 10개", "mappedTo": "graphPlan.sourceDomain,graphPlan.referenceLines[0].intersectionCount,graphPlan.referenceLines[0].endCrossing"}
+  ],
+  "newVisualInformation": ["절댓값 사인 그래프의 다섯 봉우리", "양의 기울기 직선과의 서로 다른 교점 열 개"]
+}

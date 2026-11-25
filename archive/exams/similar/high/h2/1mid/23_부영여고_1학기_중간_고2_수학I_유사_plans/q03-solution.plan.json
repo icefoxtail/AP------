@@ -1,0 +1,17 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve", "viewport": [1.5, 4.5, 4, 10],
+    "curves": [{"id": "f", "kind": "EXPONENTIAL", "base": "1/2", "coefficients": ["1", "1", "5"], "shiftX": "4", "domain": ["2", "4"], "color": "BLUE", "label": "y=(1/2)^(x-4)+5"}],
+    "axisTickValues": {"x": ["2", "4"], "y": ["6", "9"]},
+    "overlays": {"points": [{"id": "M", "x": "2", "y": "9", "coordinates": true}, {"id": "m", "x": "4", "y": "6", "coordinates": true}]}
+  },
+  "caption": "밑 1/2<1로 감소하여 왼쪽 끝점 (2,9)이 최댓값, 오른쪽 끝점 (4,6)이 최솟값이다. 차는 3이다.",
+  "accessibilityDescription": "감소 지수곡선의 양 끝점 (2,9)와 (4,6)이 표시되어 최대높이 9와 최소높이 6을 비교할 수 있다.",
+  "sourceConditions": [
+    {"id": "q03s-f", "condition": "y=(1/2)^(x−4)+5", "mappedTo": "graphPlan.curves[0]"},
+    {"id": "q03s-M", "condition": "x=2일 때 M=9", "mappedTo": "graphPlan.overlays.points[0]"},
+    {"id": "q03s-m", "condition": "x=4일 때 m=6", "mappedTo": "graphPlan.overlays.points[1]"}
+  ],
+  "newVisualInformation": ["감소 지수곡선 양 끝점의 극값", "9와 6의 세로 차이"]
+}
