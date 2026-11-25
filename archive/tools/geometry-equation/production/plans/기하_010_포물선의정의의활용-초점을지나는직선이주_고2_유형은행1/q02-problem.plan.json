@@ -1,0 +1,12 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"PARABOLA","vertex":["0","0"],"p":"3","axis":"X"},
+  "points":[{"id":"O","kind":"ORIGIN"},{"id":"F","kind":"FOCUS"},{"id":"A","kind":"ON_CONIC","x":"9","branch":"POS"},{"id":"B","kind":"ON_CONIC","x":"1","branch":"NEG"},{"id":"C","kind":"FOOT","from":"A","onto":"ax","rightAngle":true},{"id":"D","kind":"FOOT","from":"B","onto":"ax","rightAngle":true}],
+  "lines":[{"id":"ax","x":"0","hidden":true}],
+  "segments":[{"id":"AF","from":"A","to":"F","label":"12"},{"id":"FB","from":"F","to":"B"},{"id":"AC","from":"A","to":"C","label":"9"},{"id":"BD","from":"B","to":"D"},{"id":"CD","from":"C","to":"D"}],
+  "polygons":[{"id":"trap","points":["C","D","B","A"],"fill":"LIGHT"}],
+  "caption":"초점 현 AB와 y축에 내린 두 수선 AC=9, BD가 이루는 사다리꼴 CDBA, AF=12",
+  "accessibilityDescription":"포물선의 위쪽 A와 아래쪽 B에서 y축으로 수평 수선을 내리고 두 점과 수선 발이 만드는 사다리꼴을 연하게 칠했다. F는 선분 AB 위에 있다.",
+  "sourceConditions":[{"id":"c1","condition":"AF=12와 AC=9로 p=3인 내부 포물선 y²=12x, F=(3,0)를 사용하지만 미지수 p는 그림에 쓰지 않는다.","mappedTo":["conic","F","AF","AC"]},{"id":"c2","condition":"초점 현 두 교점 A=(9,6√3), B=(1,-2√3), C=(0,6√3), D=(0,-2√3)를 정확히 배치하며 질문인 사다리꼴 면적 수치는 노출하지 않는다.","mappedTo":["A","B","C","D","FB","BD","CD","trap"]}],
+  "newVisualInformation":["수평 두 변의 사다리꼴과 초점 통과 현"]
+}
