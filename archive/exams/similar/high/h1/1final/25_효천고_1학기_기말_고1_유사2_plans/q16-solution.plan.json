@@ -1,0 +1,28 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [{ "coefficients": ["0", "8", "2"] }],
+    "breakpoints": [],
+    "sourceDomain": { "kind": "INTERVAL", "range": [-3, 1] },
+    "domain": [-3, 1],
+    "viewport": [-4, 2, -10, 12],
+    "requiredPoints": [
+      { "id": "L", "x": -3, "y": -6 },
+      { "id": "V", "x": -2, "y": -8 },
+      { "id": "Z", "x": 0, "y": 0 },
+      { "id": "R", "x": 1, "y": 10 }
+    ],
+    "axisTickValues": { "x": [-3, -2, 1], "y": [-8, 10] }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "h(x)=2x(x+4)의 [-3,1] 그래프. 꼭짓점 (-2,-8)이 최솟값, 오른쪽 끝 (1,10)이 최댓값으로 차는 18이다.",
+  "accessibilityDescription": "구간 -3부터 1의 포물선이 (-3,-6)에서 출발해 꼭짓점 (-2,-8)을 지나 (0,0)을 통과하고 (1,10)에서 끝난다.",
+  "sourceQuote": "h(x)=f(x)-g(x), 교점 x=0,-4, -3≤x≤1에서 최댓값과 최솟값의 차 18",
+  "sourceConditions": [
+    { "id": "c1", "condition": "f-g의 근은 -4,0이므로 h(x)=a x(x+4), a>0", "mappedTo": ["graphPlan.pieces"] },
+    { "id": "c2", "condition": "해설에서 9a=18로 a=2, h=2x²+8x", "mappedTo": ["graphPlan.pieces"] },
+    { "id": "c3", "condition": "범위 [-3,1]에서 h(-3)=-6,h(-2)=-8,h(0)=0,h(1)=10", "mappedTo": ["graphPlan.sourceDomain", "graphPlan.requiredPoints"] }
+  ],
+  "newVisualInformation": ["꼭짓점과 양 끝점 중 어디가 최댓값·최솟값인지 실제 높이 비교로 보인다", "문제 축에는 미지 이차항 계수와 해설 최댓값을 표시하지 않는다"]
+}

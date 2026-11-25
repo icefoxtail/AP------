@@ -1,0 +1,23 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [{ "coefficients": ["0", "60", "-6"] }],
+    "breakpoints": [],
+    "sourceDomain": { "kind": "INTERVAL", "range": [0, 10], "states": ["OPEN", "OPEN"] },
+    "domain": [0, 10],
+    "viewport": [-1, 11, -8, 170],
+    "requiredPoints": [{ "id": "M", "x": 5, "y": 150 }],
+    "axisTickValues": { "x": [5], "y": [150] }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "해설에서 구한 h=10cm일 때의 직사각형 넓이 S(a)=60a-6a². 세로 a=5에서 최대 넓이 150cm²를 갖는다.",
+  "accessibilityDescription": "a가 0과 10 사이일 때 아래로 열린 포물선 S(a)가 꼭짓점 (5,150)을 지난다. 양 끝은 직사각형이 퇴화하므로 제외된다.",
+  "sourceQuote": "넓이가 최대인 직사각형의 넓이가 150cm²",
+  "sourceConditions": [
+    { "id": "c1", "condition": "닮음으로 가로 길이는 60(1-a/h), 넓이 S(a)=60a-(60/h)a²", "mappedTo": ["graphPlan.pieces"] },
+    { "id": "c2", "condition": "해설에서 h=10cm을 얻은 뒤 S(a)=60a-6a², 물리적 0<a<10", "mappedTo": ["graphPlan.pieces", "graphPlan.sourceDomain"] },
+    { "id": "c3", "condition": "최대점 a=h/2=5, S(5)=150", "mappedTo": ["graphPlan.requiredPoints"] }
+  ],
+  "newVisualInformation": ["실제 넓이가 최대가 되는 세로 길이가 이차함수 꼭짓점에 대응함을 표시한다", "h=10을 구한 해설 사례 한 개이며 문제축에는 최댓값 위치를 드러내지 않는다"]
+}
