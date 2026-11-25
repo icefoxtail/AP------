@@ -1,0 +1,17 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"ELLIPSE","center":["0","0"],"aSquared":"25","bSquared":"11","major":"Y"},
+  "points":[
+    {"id":"A","kind":"POINT","x":"3","y":"0","coordinates":true},
+    {"id":"B","kind":"POINT","x":"5","y":"2","coordinates":true},
+    {"id":"P","kind":"ON_CONIC","x":"-2","branch":"POS"}
+  ],
+  "segments":[{"id":"AB","from":"A","to":"B"},{"id":"BP","from":"B","to":"P"},{"id":"PA","from":"P","to":"A"}],
+  "caption":"세로로 긴 타원의 내부점 A·외부점 B·대표 타원점 P를 이은 삼각형",
+  "accessibilityDescription":"세로로 긴 타원 내부의 A(3,0)와 바깥 오른쪽의 B(5,2)가 있고, 타원 왼쪽 위 가지의 대표점 P를 선으로 연결하여 삼각형 ABP를 만든다. 세 점은 일직선이 아니며 최대 넓이의 접점은 드러나지 않는다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"원문 타원 x²/11+y²/25=1은 세로 장축이다. A=(3,0)은 타원 내부(9/11<1), B=(5,2)는 외부(25/11+4/25>1)이다.","mappedTo":["conic","A","B"]},
+    {"id":"c2","condition":"P는 타원 위 자유점으로 대표 x=-2의 위쪽 가지를 선택한다. 이 P와 A,B는 일직선이 아니며 연결 선분은 원문 삼각형을 그대로 보여 준다. 최댓값 및 최적접점은 숨긴다.","mappedTo":["P","AB","BP","PA"]}
+  ],
+  "newVisualInformation":["원문 위치와 좌표가 일치하는 내부점·외부점","움직이는 타원점 P로 이루는 임의의 비퇴화 삼각형"]
+}

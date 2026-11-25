@@ -1,0 +1,17 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"ELLIPSE","center":["0","0"],"aSquared":"20","bSquared":"16","major":"X"},
+  "points":[
+    {"id":"A","kind":"POINT","x":"1","y":"9","coordinates":true},
+    {"id":"B","kind":"POINT","x":"5","y":"5","coordinates":true},
+    {"id":"P","kind":"ON_CONIC","x":"2","branch":"POS"}
+  ],
+  "segments":[{"id":"AB","from":"A","to":"B"},{"id":"BP","from":"B","to":"P"},{"id":"PA","from":"P","to":"A"}],
+  "caption":"타원 위의 대표점 P와 주어진 두 외부점 A,B가 만드는 삼각형 ABP",
+  "accessibilityDescription":"가로로 약간 긴 타원 위 제1사분면에 대표점 P가 있다. 타원 바깥 위쪽에 A(1,9), 오른쪽 위에 B(5,5)가 있고 세 점을 이은 삼각형 ABP가 보인다. P는 최솟값을 결정하는 특별한 점이 아니다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"원문 고정점은 A=(1,9),B=(5,5), 타원은 x²/20+y²/16=1이다. A,B는 좌표 라벨로 원문 숫자를 직접 보여 준다.","mappedTo":["conic","A","B"]},
+    {"id":"c2","condition":"P는 원문이 임의로 움직이는 타원 위 점이다. x=2의 위쪽 가지를 대표 예로 선택하여 삼각형 ABP의 세 변을 그린다. 가장 가까운 접점이나 넓이의 최솟값은 표시하지 않는다.","mappedTo":["P","AB","BP","PA"]}
+  ],
+  "newVisualInformation":["고정된 두 점의 좌표 라벨과 타원 위 자유점의 삼각형 실선 연결"]
+}

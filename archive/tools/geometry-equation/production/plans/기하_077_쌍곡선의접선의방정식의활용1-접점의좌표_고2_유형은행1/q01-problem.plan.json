@@ -1,0 +1,20 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"HYPERBOLA","center":["0","0"],"aSquared":"6","bSquared":"2","transverse":"X"},
+  "points":[
+    {"id":"T","kind":"ON_CONIC","x":"3","sign":"POS","coordinates":true},
+    {"id":"F","kind":"FOCUS","side":1,"coordinates":true},
+    {"id":"F'","kind":"FOCUS","side":-1,"coordinates":true},
+    {"id":"P","kind":"FOOT","from":"F","onto":"l","rightAngle":true},
+    {"id":"Q","kind":"FOOT","from":"F'","onto":"l","rightAngle":true}
+  ],
+  "lines":[{"id":"l","tangent":true,"at":"T","label":"l"}],
+  "segments":[{"id":"FP","from":"F","to":"P"},{"id":"FQ","from":"F'","to":"Q"}],
+  "caption":"쌍곡선의 접선 l과 두 초점에서 내린 수선 FP, F′Q",
+  "accessibilityDescription":"가로로 열린 쌍곡선의 제1사분면 접점 T(3,1)에서 그은 접선 l이 오른쪽 위로 뻗는다. 양쪽 초점 F, F′에서 이 직선에 내린 수선의 발 P,Q와 실제 직각 표시를 나타냈다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"원문 쌍곡선 x²/6−y²/2=1의 초점은 (±2√2,0), 접점은 (3,1)이고, 접선은 x−y−2=0이다. 원문이 접점 기호를 주지 않아 계산 노드에는 보조 이름 T를 부여한다.","mappedTo":["conic","T","F","F'","l"]},
+    {"id":"c2","condition":"두 초점에서 접선 l에 내린 수선의 발은 FOOT rightAngle true로 구해 FP와 F′Q를 그린다. 직각 표식이 실제 필드에 포함된다. 두 길이의 곱이나 정답은 쓰지 않는다.","mappedTo":["P","Q","FP","FQ"]}
+  ],
+  "newVisualInformation":["쌍곡선 실제 두 초점·접점·접선의 정확한 좌표","FOOT 수선의 발과 두 직각 표식"]
+}

@@ -1,0 +1,24 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"ELLIPSE","center":["0","0"],"aSquared":"12","bSquared":"4","major":"X"},
+  "points":[
+    {"id":"E","kind":"POINT","x":"0","y":"4","coordinates":true},
+    {"id":"P","kind":"TANGENT_FROM","from":"E","which":1},
+    {"id":"Q","kind":"TANGENT_FROM","from":"E","which":2},
+    {"id":"F","kind":"FOCUS","side":-1}
+  ],
+  "lines":[{"id":"t1","tangent":true,"at":"P"},{"id":"t2","tangent":true,"at":"Q"}],
+  "segments":[
+    {"id":"EP","from":"E","to":"P"},{"id":"EQ","from":"E","to":"Q"},
+    {"id":"PF","from":"P","to":"F"},{"id":"FQ","from":"F","to":"Q"},{"id":"QP","from":"Q","to":"P"}
+  ],
+  "polygons":[{"id":"PFQ","points":["P","F","Q"],"fill":"NONE"}],
+  "caption":"y축 외부점에서 그은 두 접선의 접점 P,Q와 왼쪽 초점 F의 삼각형",
+  "accessibilityDescription":"가로로 긴 타원 위쪽 y축 점 (0,4)에서 왼쪽·오른쪽 접점 P,Q까지 두 접선을 그었다. 타원 안쪽 x축의 왼쪽 초점 F와 P,Q를 연결하여 삼각형 PFQ를 만든다. 둘레나 구하는 값은 적지 않는다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"타원 x²/12+y²/4=1, 외부점은 (0,4)이다. 원문이 외부점 기호를 주지 않아 계산 노드에 보조 이름 E를 붙이고 좌표 E(0,4)를 함께 표시했다.","mappedTo":["conic","E"]},
+    {"id":"c2","condition":"TANGENT_FROM의 x작은 접점 P=(-3,1), 큰 접점 Q=(3,1)이고 두 접선은 E를 지난다. F는 c²=12−4=8인 왼쪽 초점이다. 삼각형 PFQ 세 변과 두 접선 선분을 실제로 그린다.","mappedTo":["P","Q","F","t1","t2","EP","EQ","PF","FQ","QP","PFQ"]},
+    {"id":"c3","condition":"PFQ 둘레와 문제에서 묻는 p²+q² 값, 점 P/Q의 풀이 좌표는 문제 그림에 쓰지 않는다.","mappedTo":["PFQ"]}
+  ],
+  "newVisualInformation":["외부점의 정확한 두 접점과 두 접선","왼쪽 초점을 갖는 원문 삼각형 PFQ 구성"]
+}
