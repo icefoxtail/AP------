@@ -1,0 +1,36 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-1, 8, -4, 17],
+    "curves": [
+      {"id":"f","kind":"Y_OF_X","coefficients":["45/4","-7","1"],"domain":["1","15/2"],"label":"y=f(x)","emphasis":[{"from":"5/2","to":"13/2","color":"BLUE"}]}
+    ],
+    "overlays": {
+      "points": [
+        {"id":"A","x":"5/2","y":"0"},
+        {"id":"B","x":"9/2","y":"0"},
+        {"id":"C","x":"13/2","y":"8"}
+      ],
+      "segments": [
+        {"id":"AB","from":"A","to":"B"},
+        {"id":"AC","from":"A","to":"C"},
+        {"id":"BC","from":"B","to":"C"}
+      ],
+      "names": [
+        {"id":"sAC","text":"기울기 2","segment":"AC"},
+        {"id":"sBC","text":"기울기 4","segment":"BC"}
+      ]
+    },
+    "axisTickValues": {"x":[],"y":[]}
+  },
+  "sourceQuote": "이차함수 f(x)=x²−7x+t 위의 A(a,k),B(b,k),C(c,d), a<b<c, 직선 BC의 기울기 4, 직선 AC의 기울기 2.",
+  "caption": "두 점 A,B가 같은 높이이고 C는 오른쪽 위에 있다. AC와 BC의 기울기를 각각 2, 4로 표시한다. 좌표·길이·넓이의 답은 표시하지 않는다.",
+  "accessibilityDescription": "위로 열린 포물선 위의 점 A와 B는 같은 높이에, 점 C는 그보다 오른쪽 위에 있다. 선분 AC에는 기울기 2, BC에는 기울기 4라는 글자가 표시되며 숫자 좌표와 넓이는 없다.",
+  "sourceConditions": [
+    {"id":"Y20-P1","condition":"A,B,C는 f=x²−7x+t 위, a<b<c, A/B는 같은 y좌표","mappedTo":"graphPlan.curves[f],graphPlan.overlays.points[A,B,C],segments[AB]; t=45/4는 세로이동 대표값"},
+    {"id":"Y20-P2","condition":"직선 AC의 기울기 2, 직선 BC의 기울기 4","mappedTo":"graphPlan.overlays.segments[AC,BC],names[sAC,sBC] (계산은 실제 좌표로 대조)"},
+    {"id":"Y20-P3","condition":"문제 그림은 정답·좌표·길이·넓이 비노출","mappedTo":"graphPlan.axisTickValues empty, overlays.points without coordinates, segments without lengths, curve label y=f(x)"}
+  ],
+  "newVisualInformation": ["세 점의 가로 순서·AB의 수평 관계·두 기울기의 차이를 주어진 조건만으로 시각화한다."]
+}

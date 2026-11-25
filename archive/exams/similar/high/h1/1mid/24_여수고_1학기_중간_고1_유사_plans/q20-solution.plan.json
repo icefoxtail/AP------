@@ -1,0 +1,39 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": ["45/4", "-7", "1"],
+    "sourceDomain": {"kind":"ALL_REALS"},
+    "domain": [1, 7.5],
+    "viewport": [-1, 8, -4, 17],
+    "overlays": {
+      "points": [
+        {"id":"A","x":"5/2","y":"0"},
+        {"id":"B","x":"9/2","y":"0"},
+        {"id":"C","x":"13/2","y":"8"},
+        {"id":"D","x":"13/2","y":"0"}
+      ],
+      "segments": [
+        {"id":"AB","from":"A","to":"B","length":true},
+        {"id":"AC","from":"A","to":"C"},
+        {"id":"BC","from":"B","to":"C"},
+        {"id":"CD","from":"C","to":"D","length":true}
+      ],
+      "names": [
+        {"id":"sAC","text":"기울기 2","segment":"AC"},
+        {"id":"sBC","text":"기울기 4","segment":"BC"}
+      ],
+      "rightAngles": [{"at":"D","from":["B","C"]}]
+    },
+    "axisTickValues": {"x":["5/2","9/2","13/2"],"y":["8"]}
+  },
+  "sourceQuote": "y=f(x)=x²−7x+t 위의 세 점 A(a,k),B(b,k),C(c,d), a<b<c, 직선 BC 기울기 4, 직선 AC 기울기 2일 때 삼각형 ABC의 넓이는?",
+  "caption": "세로로만 평행이동하여 A,B가 x축 위에 놓이도록 정규화한 해설 도식이다. 실제 x좌표 5/2,9/2,13/2를 유지하고 AB=2, CD=8, ∠BDC=90°를 그린다.",
+  "accessibilityDescription": "포물선 위에서 A와 B는 같은 높이에 있고 C는 오른쪽 위에 있다. 두 변 AC와 BC의 기울기는 각각 2와 4이며 밑변 AB의 길이는 2, C에서 수평선 AB로 내린 수선 CD의 길이는 8이다.",
+  "sourceConditions": [
+    {"id":"Y20-1","condition":"f(x)=x²−7x+t, A/B가 같은 높이 ⇒ a+b=7","mappedTo":"graphPlan.coefficients,overlays.points[A,B] (대표 t=45/4는 세로 평행이동만 반영)"},
+    {"id":"Y20-2","condition":"기울기 AC=2, BC=4 ⇒ a+c=9,b+c=11","mappedTo":"graphPlan.overlays.segments[AC,BC] and names[sAC,sBC],overlays.points[A,B,C]"},
+    {"id":"Y20-3","condition":"a=5/2,b=9/2,c=13/2, AB=2,d-k=8","mappedTo":"graphPlan.overlays.points[A,B,C,D],segments[AB,CD].length,rightAngles[0]"}
+  ],
+  "newVisualInformation": ["두 현의 기울기 조건에서 생기는 등간격 x좌표와 삼각형의 밑변 2·수선 높이 8을 별도 도형 정보로 확인한다."]
+}

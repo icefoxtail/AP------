@@ -1,0 +1,20 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": ["5", "-4", "1"],
+    "sourceDomain": {"kind":"INTERVAL","range":[3,7],"states":["CLOSED","CLOSED"]},
+    "domain": [3,7],
+    "viewport": [-1,8,-2,30],
+    "requiredPoints": [{"id":"A","x":3,"y":2},{"id":"B","x":7,"y":26}],
+    "axisTickValues": {"x":["3","7"],"y":["2","26"]}
+  },
+  "sourceQuote": "3≤x≤k에서 y=x²−4x+5의 최댓값이 26일 때 k의 값은?",
+  "caption": "꼭짓점 x=2의 오른쪽 구간 [3,7]에서 함수가 증가하며 우단점 (7,26)에서 최댓값을 갖는다.",
+  "accessibilityDescription": "포물선 y=x²-4x+5의 닫힌 구간 x=3부터 x=7까지의 호가 (3,2)에서 (7,26)으로 증가하며 오른쪽 끝값이 최대이다.",
+  "sourceConditions": [
+    {"id":"Y09-1","condition":"y=x²−4x+5=(x−2)²+1, x≥3에서는 증가","mappedTo":"graphPlan.coefficients,sourceDomain,domain"},
+    {"id":"Y09-2","condition":"최댓값 26은 x=k에서 발생, k=7","mappedTo":"graphPlan.requiredPoints[B],axisTickValues,sourceDomain.range"}
+  ],
+  "newVisualInformation": ["정의구간이 대칭축의 오른쪽에 있으므로 우단점에서 최대가 되는 구조를 보여 준다."]
+}
