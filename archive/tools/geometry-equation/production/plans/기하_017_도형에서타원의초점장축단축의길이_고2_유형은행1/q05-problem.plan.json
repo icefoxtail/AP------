@@ -1,0 +1,24 @@
+{
+  "capability": "ellipse-figure-v1",
+  "ellipse": {"center": ["0", "0"], "semiAxisSquared": {"major": "36", "minor": "25"}, "majorAxis": "Y"},
+  "points": [
+    {"id": "A", "kind": "POINT", "x": "-5", "y": "6"},
+    {"id": "B", "kind": "POINT", "x": "-5", "y": "-6"},
+    {"id": "C", "kind": "POINT", "x": "5", "y": "-6"},
+    {"id": "D", "kind": "POINT", "x": "5", "y": "6"}
+  ],
+  "segments": [
+    {"id": "sAB", "from": "A", "to": "B", "label": "12"},
+    {"id": "sBC", "from": "B", "to": "C"},
+    {"id": "sCD", "from": "C", "to": "D"},
+    {"id": "sDA", "from": "D", "to": "A", "label": "10"}
+  ],
+  "caption": "가로 AD=10, 세로 AB=12인 직사각형 ABCD에 장축이 세로인 타원이 네 변 모두에 내접한 그림",
+  "accessibilityDescription": "가로 10, 세로 12인 직사각형 ABCD 안에 세로로 긴 타원이 네 변에 각각 한 점씩 접하도록 놓여 있다. 왼쪽 세로변 AB에 12, 위 가로변 DA에 10이 표시되어 있다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "직사각형의 네 꼭짓점 A(-5,6),B(-5,-6),C(5,-6),D(5,6)은 가로 AD=10, 세로 AB=12를 충족하는 대표 배치이다.", "mappedTo": ["A", "B", "C", "D", "sAB", "sBC", "sCD", "sDA"]},
+    {"id": "c2", "condition": "타원의 세로 반축 6, 가로 반축 5이므로 x=±5, y=±6 직사각형 네 변에 정확히 접하며 장축은 AB와 평행하다.", "mappedTo": ["ellipse", "sAB", "sBC", "sCD", "sDA"]},
+    {"id": "c3", "condition": "구하는 초점 사이 거리는 어떠한 점 좌표나 치수 라벨로도 노출하지 않는다.", "mappedTo": ["ellipse"]}
+  ],
+  "newVisualInformation": ["타원의 네 접점을 직사각형 네 변에 정확히 맞춘 내접 배치와 두 주어진 직사각형 치수"]
+}

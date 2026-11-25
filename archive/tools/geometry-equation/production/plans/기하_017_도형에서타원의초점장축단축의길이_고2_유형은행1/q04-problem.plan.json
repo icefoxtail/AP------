@@ -1,0 +1,27 @@
+{
+  "capability": "ellipse-figure-v1",
+  "ellipse": {"center": ["0", "0"], "semiAxisSquared": {"major": "289/4", "minor": "30"}, "majorAxis": "X"},
+  "points": [
+    {"id": "F", "kind": "FOCUS", "side": 1},
+    {"id": "F'", "kind": "FOCUS", "side": -1},
+    {"id": "A", "kind": "ON_ELLIPSE", "x": "119/26", "branch": "POS"},
+    {"id": "B", "kind": "OPPOSITE", "of": "A"},
+    {"id": "O", "kind": "ORIGIN"}
+  ],
+  "segments": [
+    {"id": "sFA", "from": "F", "to": "A", "label": "5"},
+    {"id": "sAFp", "from": "A", "to": "F'", "label": "12"},
+    {"id": "sFpB", "from": "F'", "to": "B"},
+    {"id": "sBF", "from": "B", "to": "F"},
+    {"id": "sFFp", "from": "F", "to": "F'"},
+    {"id": "sAB", "from": "A", "to": "B"}
+  ],
+  "caption": "타원의 두 초점 F,F′와 타원 위의 두 점 A,B가 직사각형 FAF′B를 이루고 대각선 FF′,AB가 중심 O에서 만나는 그림. AF=5, AF′=12",
+  "accessibilityDescription": "가로로 긴 타원 안에 초점 F, F′가 있고 A는 타원의 오른쪽 위, B는 왼쪽 아래에 있다. F-A-F′-B가 직사각형을 이루며 두 대각선은 타원의 중심 O에서 교차한다. A에서 F까지 길이 5, A에서 F′까지 길이 12이다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "직사각형 FAF′B에서 A의 두 이웃 변 AF=5, AF′=12는 수직이다. 내부 좌표는 F=(13/2,0), F′=(-13/2,0), A=(119/26,60/13), B=-A이므로 5-12-13 직각삼각형 조건을 만족한다.", "mappedTo": ["F", "A", "F'", "B", "sFA", "sAFp", "sFpB", "sBF"]},
+    {"id": "c2", "condition": "초점이 직사각형 대각선의 양 끝이고 다른 대각선 AB와 FF′가 O에서 서로 이등분한다.", "mappedTo": ["sFFp", "sAB", "O"]},
+    {"id": "c3", "condition": "A,B는 같은 타원 위에 있고 타원 중심은 O이다. 도형 계산에 필요한 반장축·반단축 수치는 문제 그림에 적지 않는다.", "mappedTo": ["ellipse", "A", "B", "O"]}
+  ],
+  "newVisualInformation": ["주어진 두 길이 5,12를 소유 변에 직접 표시한 직사각형과 양 대각선의 중심 교차"]
+}
