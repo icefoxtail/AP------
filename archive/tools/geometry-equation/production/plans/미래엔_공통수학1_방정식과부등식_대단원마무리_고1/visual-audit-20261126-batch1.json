@@ -1,0 +1,174 @@
+{
+  "schemaVersion": "textbook-figure-plan-audit-v1",
+  "auditDate": "2026-11-26",
+  "sourcePath": "archive/exams/textbooks/미래엔_공통수학1/미래엔_공통수학1_방정식과부등식_대단원마무리_고1/미래엔_공통수학1_방정식과부등식_대단원마무리_고1.js",
+  "sourceGitBlobSha": "432f3c9c32c5545ea42d9464365b751720501b8a",
+  "mainBaseline": "b1b387659fbf953ef8bdf0d066f21b44c4aadf08",
+  "scope": { "firstQid": "q01", "lastQid": "q17", "questionCount": 17, "axesPerQuestion": 2, "deferredQids": [] },
+  "validationPolicy": {
+    "problemAnswerExposure": "NO_ANSWER_IN_NEW_PROBLEM_PLAN",
+    "defaultFaceOrRegionFill": "NONE",
+    "render": "NOT_RUN",
+    "pngRenderReview": "NOT_RUN",
+    "studentScreen": "NOT_RUN",
+    "a4": "NOT_RUN",
+    "planLintShallow": "PASS_6_OF_6",
+    "planLintFull": "PASS_6_OF_6",
+    "parityScope": "ACTUAL_GRAPH_COEFFICIENTS_AND_DRAWN_OVERLAY_FIELDS_OR_NUMBER_LINE_ROWS_NOT_RENDERED_SVG",
+    "exemptParity": "NOT_APPLICABLE",
+    "engineCapabilityPending": []
+  },
+  "sourceFindings": [
+    {
+      "qid": "q05",
+      "status": "OPEN_OUT_OF_SCOPE",
+      "kind": "SOURCE_ANSWER_CHOICE_MISMATCH",
+      "evidence": "해설은 4−2k=12에서 k=−4를 얻고 선택지 ②가 −4이다. 그러나 JS의 answer 필드는 ④(−2)로 설정되어 있어 불일치한다.",
+      "recommendation": "별도 수학 문항 QA 권한으로 answer를 ②로 교정하고 선택지-풀이 대조를 다시 실행할 것. 이번 PR은 plan·audit 파일만 변경."
+    }
+  ],
+  "items": [
+    { "qid": "q01", "problem": { "decision": "EXEMPT", "reason": "복소수 등식의 실수부분·허수부분으로 두 실수 변수를 구한다. 복소평면 위치 조건은 없다." }, "solution": { "decision": "EXEMPT", "reason": "5x−y=−6, 3x+4y=1을 연립하는 산술이다." } },
+    { "qid": "q02", "problem": { "decision": "EXEMPT", "reason": "복소수의 역수와 켤레복소수의 대수 계산이다." }, "solution": { "decision": "EXEMPT", "reason": "1/z−1/켤레z=i/5를 제곱하는 직접 계산이다." } },
+    { "qid": "q03", "problem": { "decision": "EXEMPT", "reason": "z²이 음의 실수가 되는 a의 조건은 순허수 여부로 결정된다." }, "solution": { "decision": "EXEMPT", "reason": "실수부가 0이고 허수부가 0이 아닌 경우만 비교하며 복소평면 그림은 중복이다." } },
+    { "qid": "q04", "problem": { "decision": "EXEMPT", "reason": "매개변수 k의 자연수 개수는 판별식의 부등식으로 세는 수식이다." }, "solution": { "decision": "EXEMPT", "reason": "k<7에서 자연수 1~6을 열거하는 계산으로 수직선을 추가해도 정보가 늘지 않는다." } },
+    { "qid": "q05", "problem": { "decision": "EXEMPT", "reason": "근과 계수의 관계를 이용해 k를 계산하는 대칭식이다. 단, 원문 정답 선택지 오류는 별도로 보고한다." }, "solution": { "decision": "EXEMPT", "reason": "4−2k=12에서 k=−4로 계산되며 그래프 그림이 잘못된 답 번호를 해결하지 않는다." } },
+    { "qid": "q06", "problem": { "decision": "EXEMPT", "reason": "두 이차방정식의 근과 계수 관계, 근의 역수의 합을 묻는다." }, "solution": { "decision": "EXEMPT", "reason": "−b/a=5/7과 역수 합 공식이 해설에 충분히 제시된다." } },
+    {
+      "qid": "q07",
+      "problem": { "decision": "EXEMPT", "reason": "y=−2x²+5x와 y=3x+k는 k가 아직 정해지지 않아 단일 특정 위치의 직선을 문제 그림으로 그리면 임의 조건이 된다." },
+      "solution": {
+        "decision": "BENEFICIAL",
+        "reason": "교점 존재 경계의 판별식 D=0이 포물선과 직선의 접함에 대응한다.",
+        "capability": "polynomial-spike-v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/미래엔_공통수학1_방정식과부등식_대단원마무리_고1/q07-solution.plan.json",
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "featureParity": "PASS",
+        "drawnFeatureCheck": [
+          "graphPlan.coefficients=[0,5,−2]가 정확히 y=−2x²+5x를 그린다.",
+          "graphPlan.overlays.lines.g 실제 slope=3, intercept=1/2, label=y=3x+1/2로 해설의 극한 위치 직선을 표시한다.",
+          "graphPlan.overlays.points.T의 curveX=1/2 및 coordinates=true가 접점 (1/2,2)를 실제 점·좌표 라벨로 표시한다.",
+          "교점식 2x²−2x+1/2=2(x−1/2)²로 중근 하나이므로 다른 교점·임의의 수치·면 채움 없음.",
+          "문제 축에는 k=1/2, 접점 등을 그리지 않아 정답 비노출."
+        ],
+        "render": "NOT_RUN", "studentScreen": "NOT_RUN", "a4": "NOT_RUN"
+      }
+    },
+    {
+      "qid": "q08",
+      "problem": { "decision": "EXEMPT", "reason": "대칭축 x=2와 구간의 최댓값만 주어져 b가 미정이다. 문제용 특정 그래프는 미지 함숫값을 노출한다." },
+      "solution": {
+        "decision": "BENEFICIAL",
+        "reason": "구간 [0,3]의 양 끝과 꼭짓점이 상대적으로 떨어진 정도를 보여 주면 최댓값이 x=0에서 나오는 이유가 명확하다.",
+        "capability": "polynomial-spike-v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/미래엔_공통수학1_방정식과부등식_대단원마무리_고1/q08-solution.plan.json",
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "featureParity": "PASS",
+        "drawnFeatureCheck": [
+          "graphPlan.coefficients=[8,−4,1]로 f(x)=(x−2)²+4 정확히 표시.",
+          "overlays.points.L curveX=0, coordinates=true → (0,8); V curveX=2 → (2,4); R curveX=3 → (3,5).",
+          "표시 좌표의 x 순서 0<2<3 및 y 값 8>5>4를 확인하여 [0,3]에서 x=0의 최대 8이 드러난다.",
+          "축 x=2는 완전제곱식·실제 꼭짓점의 x좌표가 보증하며 잘못된 대칭축·면 채움 없음."
+        ],
+        "render": "NOT_RUN", "studentScreen": "NOT_RUN", "a4": "NOT_RUN"
+      }
+    },
+    { "qid": "q09", "problem": { "decision": "EXEMPT", "reason": "ω³=1과 103개 항의 주기합을 구하는 복소수의 대수 관계이다." }, "solution": { "decision": "EXEMPT", "reason": "세 항씩 34묶음을 만들면 합이 0이고 ω¹⁰²=1만 남는 규칙이 수식으로 완전하다." } },
+    { "qid": "q10", "problem": { "decision": "EXEMPT", "reason": "사차방정식의 네 근의 역수 합은 계수의 대칭식이다." }, "solution": { "decision": "EXEMPT", "reason": "세 근의 곱 합이 0, 네 근의 곱이 81이므로 역수 합이 0인 수식 계산이다." } },
+    {
+      "qid": "q11",
+      "problem": { "decision": "EXEMPT", "reason": "양수 k가 미지인 두 방정식만 주어져 실제 한 점 접하는 그래프를 먼저 그리면 정답을 노출한다." },
+      "solution": {
+        "decision": "BENEFICIAL",
+        "reason": "연립방정식의 해가 한 쌍이라는 대수적 중근 조건을 두 그래프의 접점 하나와 연결한다.",
+        "capability": "polynomial-spike-v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/미래엔_공통수학1_방정식과부등식_대단원마무리_고1/q11-solution.plan.json",
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "featureParity": "PASS",
+        "drawnFeatureCheck": [
+          "graphPlan.coefficients=[3,0,1/2]가 k=2일 때 y=x²/2+3을 나타낸다.",
+          "overlays.lines.line의 slope=−2, intercept=1, label=y=1−2x가 첫 방정식 2x+y=1을 표시한다.",
+          "overlays.points.T curveX=−2 및 coordinates=true가 공통점 (−2,5)의 위치·좌표를 그린다.",
+          "두 곡선의 차는 (x+2)²/2로 한 점에서만 0. 직선·곡선의 접함이 실제 기울기 −2 일치로 검산된다.",
+          "문제 축에는 k=2나 (−2,5)를 보이지 않고 해설 축에만 표시한다."
+        ],
+        "render": "NOT_RUN", "studentScreen": "NOT_RUN", "a4": "NOT_RUN"
+      }
+    },
+    { "qid": "q12", "problem": { "decision": "EXEMPT", "reason": "한 변수의 두 일차부등식을 연립해 정수 개수를 센다." }, "solution": { "decision": "EXEMPT", "reason": "2≤x<4에서 정수 2,3만 세므로 수직선을 추가하면 단순 해의 반복이다." } },
+    {
+      "qid": "q13",
+      "problem": { "decision": "EXEMPT", "reason": "그래프 모양 자체가 세 보기 ㄱ·ㄴ·ㄷ의 참 여부를 직접 알려 주므로 문제 그림으로 내면 정답을 노출한다." },
+      "solution": {
+        "decision": "BENEFICIAL",
+        "reason": "해가 x=2뿐인 이차부등식의 접점·아래로 열림·x=1에서 음수라는 세 보기를 한 형상에 대응시킨다.",
+        "capability": "polynomial-spike-v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/미래엔_공통수학1_방정식과부등식_대단원마무리_고1/q13-solution.plan.json",
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "featureParity": "PASS",
+        "drawnFeatureCheck": [
+          "graphPlan.coefficients=[−4,4,−1]로 아래로 열리는 대표 포물선 y=−(x−2)²가 나타난다.",
+          "overlays.points.T curveX=2 coordinates=true → (2,0) 접점 하나, P curveX=1 → (1,−1) 음수 값.",
+          "a가 특정 값이라는 원문 조건은 없으므로 −1은 형태를 보여 주는 대표값임을 sourceConditions와 caption에 명시한다.",
+          "실제 그림의 x=2 접점과 x=1 점 라벨이 ㄱ·ㄴ·ㄷ의 세 판단을 모두 뒷받침한다.",
+          "문제 축에는 해당 그래프가 나타나지 않아 정답 비노출, 면 채움 없음."
+        ],
+        "render": "NOT_RUN", "studentScreen": "NOT_RUN", "a4": "NOT_RUN"
+      }
+    },
+    {
+      "qid": "q14",
+      "problem": { "decision": "EXEMPT", "reason": "절댓값·이차부등식이 문장으로 완결되어 있으며 해집합의 교집합과 a,b는 미지수다." },
+      "solution": {
+        "decision": "BENEFICIAL",
+        "reason": "두 조각인 이차부등식 해와 닫힌 절댓값 해집합의 공통 범위를 열린·닫힌 끝점으로 정확히 보여 준다.",
+        "capability": "number-line-figure-v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/미래엔_공통수학1_방정식과부등식_대단원마무리_고1/q14-solution.plan.json",
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "featureParity": "PASS",
+        "drawnFeatureCheck": [
+          "numberLine.rows[0] SET: lo=−2 CLOSED, hi=4 CLOSED, 구간 [−2,4]를 표시.",
+          "numberLine.rows[1] SET: (−∞,3)에서 3 OPEN, (5,∞)에서 5 OPEN으로 두 조각을 분리해 표시.",
+          "numberLine.rows[2] RESULT가 앞 두 SET에서 [−2,3)을 엔진 계산하여 그리므로 결과 끝점을 손으로 지정하지 않음.",
+          "수직선 셋 모두 x의 왼쪽→오른쪽 순서를 공유하고 −2 포함, 3 제외를 실제 행 필드로 표시.",
+          "면색·답 b−a=5의 숫자 라벨 없음. 마지막 해집합은 해설에만 노출."
+        ],
+        "render": "NOT_RUN", "studentScreen": "NOT_RUN", "a4": "NOT_RUN"
+      }
+    },
+    { "qid": "q15", "problem": { "decision": "EXEMPT", "reason": "모든 실수 k에서 중근이라는 판별식 항등 조건으로 계수 a,b를 구한다." }, "solution": { "decision": "EXEMPT", "reason": "(a−2)k+(4−b)=0을 항등식으로 처리하며 그래프를 개별 k마다 그릴 필요가 없다." } },
+    {
+      "qid": "q16",
+      "problem": { "decision": "EXEMPT", "reason": "a,b가 미지이므로 함수값 좌표를 문제 그래프에 미리 표시하면 답을 노출한다." },
+      "solution": {
+        "decision": "BENEFICIAL",
+        "reason": "꼭짓점 x=4가 주어진 구간 [1,3] 밖에 있으므로 그 구간에서 함수가 증가하며 양 끝에 극값이 생긴다는 설명을 보여 준다.",
+        "capability": "polynomial-spike-v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/미래엔_공통수학1_방정식과부등식_대단원마무리_고1/q16-solution.plan.json",
+        "sourceVsPlan": "REVIEWED",
+        "planLintShallow": "PASS",
+        "planLintFull": "PASS",
+        "featureParity": "PASS",
+        "drawnFeatureCheck": [
+          "graphPlan.coefficients=[−13,8,−1]이 a=−1,b=13을 대입한 정확한 함수 y=−(x−4)²+3이다.",
+          "overlays.points.L curveX=1 coordinates=true → (1,−6), R curveX=3 → (3,2), V curveX=4 → (4,3).",
+          "세 점의 x순서 1<3<4와 값 −6<2<3이 구간 안의 증가 및 꼭짓점의 구간 밖 위치를 확인한다.",
+          "문제 축에서 a,b, 최종 b−a=14를 보이지 않고 해설 축에서만 계산 후 좌표를 나타낸다.",
+          "면 채움이나 근거 없는 접선·보조선·비율을 추가하지 않는다."
+        ],
+        "render": "NOT_RUN", "studentScreen": "NOT_RUN", "a4": "NOT_RUN"
+      }
+    },
+    { "qid": "q17", "problem": { "decision": "EXEMPT", "reason": "한 근 1과 삼차방정식의 계수로 나머지 두 근의 대칭식을 구한다." }, "solution": { "decision": "EXEMPT", "reason": "x−1로 나눈 몫 x²−5x−2와 근과 계수 관계를 계산하는 수식이다." } }
+  ]
+}

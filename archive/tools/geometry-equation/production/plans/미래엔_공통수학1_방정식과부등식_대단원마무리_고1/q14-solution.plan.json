@@ -1,0 +1,30 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          { "lo": { "value": "-2", "state": "CLOSED" }, "hi": { "value": "4", "state": "CLOSED" } }
+        ]
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          { "lo": null, "hi": { "value": "3", "state": "OPEN" } },
+          { "lo": { "value": "5", "state": "OPEN" }, "hi": null }
+        ]
+      },
+      { "kind": "RESULT" }
+    ]
+  },
+  "numberLineCaption": { "text": "두 부등식의 해의 공통부분" },
+  "caption": "첫째 해집합 [-2,4]와 둘째 해집합 (-∞,3)∪(5,∞)의 교집합은 [-2,3)이다.",
+  "accessibilityDescription": "세 줄의 수직선이 있다. 첫 줄은 -2부터 4까지 양 끝을 포함하고, 둘째 줄은 3보다 작거나 5보다 큰 수로 양 끝은 포함하지 않는다. 마지막 줄은 교집합 -2 이상 3 미만을 -2 닫힌 점, 3 열린 점으로 표시한다.",
+  "sourceConditions": [
+    { "id": "S1", "condition": "|x-1|≤3의 해는 -2≤x≤4이고 두 끝점을 포함한다.", "mappedTo": "numberLine.rows[0].pieces[0]" },
+    { "id": "S2", "condition": "(x-3)(x-5)>0의 해는 x<3 또는 x>5이고 두 끝점을 포함하지 않는다.", "mappedTo": "numberLine.rows[1].pieces" },
+    { "id": "S3", "condition": "해집합의 교집합은 -2≤x<3이며 RESULT 줄은 앞선 두 SET 줄에서 엔진이 계산한다.", "mappedTo": "numberLine.rows[2]" }
+  ],
+  "newVisualInformation": ["두 범위와 공통 범위의 열린 끝점·닫힌 끝점을 각 줄에 직접 표시한다."]
+}
