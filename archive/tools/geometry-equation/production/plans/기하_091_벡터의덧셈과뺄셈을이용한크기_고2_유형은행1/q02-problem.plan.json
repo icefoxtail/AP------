@@ -1,0 +1,186 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "X",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "V",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "W",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "X",
+    "U",
+    "V",
+    "W"
+  ],
+  "displaySegments": [],
+  "coordinateCanvas": {
+    "width": 690,
+    "height": 540
+  },
+  "caption": "원점에서 (3,1), (1,3), (-2,0)으로 향하는 세 벡터",
+  "accessibilityDescription": "원점 O에서 (3,1), (1,3), (-2,0) 위치로 향하는 세 화살표에 각각 a, b, c가 적혀 있으며 좌표축과 단위 눈금이 있다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "O=(0,0), 벡터 a=(3,1), b=(1,3), c=(-2,0)의 머리 좌표를 정확히 사용한다.",
+      "mappedTo": [
+        "O",
+        "U",
+        "V",
+        "W",
+        "va",
+        "vb",
+        "vc"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "세 종점 좌표는 렌더링용 textLabels에 실제로 표시한다. 단, 공식 좌표축 레시피에 모눈 전체 격자선 기능이 있는지는 별도 시각 필드 공백으로 인계한다. 합벡터 (2,4)는 그리지 않는다.",
+      "mappedTo": [
+        "tU",
+        "tV",
+        "tW"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "서로 다른 세 종점에 꽂힌 유향 벡터 a·b·c",
+    "원문 좌표 (3,1)·(1,3)·(-2,0)의 실제 점 옆 표시"
+  ],
+  "planeMarks": {
+    "vectors": [
+      {
+        "id": "va",
+        "from": "O",
+        "to": "U",
+        "label": "vec(a)",
+        "side": "RIGHT",
+        "labelAt": 0.5
+      },
+      {
+        "id": "vb",
+        "from": "O",
+        "to": "V",
+        "label": "vec(b)",
+        "side": "LEFT",
+        "labelAt": 0.5
+      },
+      {
+        "id": "vc",
+        "from": "O",
+        "to": "W",
+        "label": "vec(c)",
+        "side": "LEFT",
+        "labelAt": 0.5
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "tU",
+        "at": "U",
+        "text": "(3,1)",
+        "anchor": "NE"
+      },
+      {
+        "id": "tV",
+        "at": "V",
+        "text": "(1,3)",
+        "anchor": "NW"
+      },
+      {
+        "id": "tW",
+        "at": "W",
+        "text": "(-2,0)",
+        "anchor": "S"
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "U",
+    "V",
+    "W"
+  ]
+}
