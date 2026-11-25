@@ -20,13 +20,14 @@
     { "id": "sAC2", "refs": ["A", "C2"], "dashed": true }
   ],
   "coordinateLabels": ["A", "B", "C1", "C2"],
+  "planeMarks": {"expressionLabels":[{"id":"ratioAC1","ownerSegment":"sAC1","text":"3"},{"id":"ratioC1B","ownerSegment":"sC1B","text":"2"}]},
   "caption": "AC:CB=3:2를 만족하는 내분점 C₁과 AB 연장선 위의 외분점 C₂를 함께 나타낸다.",
   "accessibilityDescription": "A(-5,2)와 B(5,7)를 잇는 직선 위에 내분점 C₁(1,5)과 B 바깥의 외분점 C₂(25,17)가 있다.",
   "sourceConditions": [
     { "id": "ends", "condition": "A(-5,2), B(5,7)", "mappedTo": "mathPlan.nodes[A,B]" },
-    { "id": "ratio", "condition": "3BC=2AC이므로 AC:CB=3:2", "mappedTo": "mathPlan.nodes[C1,C2].args[m,n]" },
+    { "id": "ratio", "condition": "3BC=2AC이므로 AC:CB=3:2", "mappedTo": "mathPlan.nodes[C1,C2].args[m,n];planeMarks.expressionLabels[ratioAC1,ratioC1B]" },
     { "id": "internal", "condition": "C=(1,5)인 내분 경우", "mappedTo": "mathPlan.nodes[C1].mode=INTERNAL" },
     { "id": "external", "condition": "C=(25,17)인 외분 경우", "mappedTo": "mathPlan.nodes[C2].mode=EXTERNAL" }
   ],
-  "newVisualInformation": ["내분과 외분 해가 모두 같은 A,B의 직선 위에 있고 외분은 B의 바깥이라는 사실을 실제 작도로 보인다."]
+  "newVisualInformation": ["내분과 외분 해가 모두 직선 AB 위에 있음을 작도로 보이고, 내분 두 조각에 3과 2의 실제 선분 라벨을 표시한다. 외분의 3:2는 DIVISION_POINT의 모델 비에 포함된다."]
 }
