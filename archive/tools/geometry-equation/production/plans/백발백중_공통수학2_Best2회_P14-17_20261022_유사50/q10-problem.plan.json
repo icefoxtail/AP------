@@ -1,0 +1,33 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "SOURCE_COORDINATE_AXES_v1", "unit": "source-coordinate", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "O", "op": "NORMALIZATION_ORIGIN", "inputs": [], "args": {}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "U", "op": "NORMALIZATION_AXIS", "inputs": [], "args": { "length": { "kind": "integer", "value": "1" } }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "-3" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "6" }, { "kind": "integer", "value": "1" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "5" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "P", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "2" }] }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" }
+    ]
+  },
+  "axisTickValues": { "x": [], "y": [] },
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    { "id": "sAP", "refs": ["A", "P"] },
+    { "id": "sPC", "refs": ["P", "C"] },
+    { "id": "sBP", "refs": ["B", "P"], "dashed": true }
+  ],
+  "displayPoints": ["A", "B", "C", "P"],
+  "coordinateLabels": ["A", "B", "C"],
+  "caption": "A(0,-3), C(0,5)를 잇는 선분 위에서 P가 움직이고 AP와 BP의 거리를 비교한다. P의 위치는 예시이다.",
+  "accessibilityDescription": "A(0,-3), B(6,1), C(0,5)를 표시하고, 선분 AC 위의 이동점 P와 두 거리 AP, BP를 연결했다. P의 위치와 구할 최솟값은 알려주지 않는다.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "A(0,-3), B(6,1), C(0,5)", "mappedTo": ["A", "B", "C"] },
+    { "id": "c2", "condition": "P는 선분 AC 위 임의의 이동점; 표시된 P=(0,2)는 설명용 대표 위치", "mappedTo": ["P", "sAP", "sPC"] },
+    { "id": "c3", "condition": "AP^2+BP^2의 최솟값을 묻고 문제 그림에는 답을 적지 않음", "mappedTo": ["sAP", "sBP"] }
+  ],
+  "newVisualInformation": ["세로 이동구간 AC와 두 길이 AP, BP의 관계만 선분으로 나타낸다."]
+}
