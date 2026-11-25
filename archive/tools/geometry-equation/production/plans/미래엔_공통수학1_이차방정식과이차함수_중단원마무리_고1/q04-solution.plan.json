@@ -1,0 +1,21 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": { "text": "⑴ 구간 내부 꼭짓점에서 최소" },
+      "plan": { "capability": "polynomial-spike-v1", "graphPlan": { "family": "polynomial", "coefficients": ["6", "-8", "1"], "sourceDomain": { "kind": "INTERVAL", "range": [0, 5], "states": ["CLOSED", "CLOSED"] }, "domain": [0, 5], "viewport": [-1, 6, -12, 8], "requiredPoints": [{ "id": "L", "x": 0, "y": 6 }, { "id": "V", "x": 4, "y": -10 }, { "id": "R", "x": 5, "y": -9 }], "axisTickValues": { "x": [], "y": [] } } }
+    },
+    {
+      "caption": { "text": "⑵ 구간 내 증가하므로 끝점 비교" },
+      "plan": { "capability": "polynomial-spike-v1", "graphPlan": { "family": "polynomial", "coefficients": ["-20", "10", "-1"], "sourceDomain": { "kind": "INTERVAL", "range": [1, 4], "states": ["CLOSED", "CLOSED"] }, "domain": [1, 4], "viewport": [0, 5, -13, 6], "requiredPoints": [{ "id": "L", "x": 1, "y": -11 }, { "id": "R", "x": 4, "y": 4 }], "axisTickValues": { "x": [], "y": [] } } }
+    }
+  ],
+  "sourceQuote": "주어진 $x$의 값의 범위에서 다음 이차함수의 최댓값과 최솟값을 구하시오.",
+  "caption": "첫 구간의 꼭짓점 (4,-10)은 포함되고 둘째 꼭짓점 x=5는 [1,4] 밖에 있어 두 끝값으로 극값을 정한다.",
+  "accessibilityDescription": "첫째 그래프는 0부터 5까지의 닫힌 구간에서 (0,6), (4,-10), (5,-9)를 지나 꼭짓점에서 최소다. 둘째 그래프는 1부터 4까지 증가하여 (1,-11)에서 최소, (4,4)에서 최대다.",
+  "sourceConditions": [
+    { "id": "C1", "condition": "⑴ y=x²−8x+6, 0≤x≤5; 좌끝 6, 꼭짓점 -10, 우끝 -9", "mappedTo": "panels[0].plan.graphPlan.coefficients/sourceDomain/requiredPoints[L,V,R]" },
+    { "id": "C2", "condition": "⑵ y=−x²+10x−20, 1≤x≤4; y(1)=−11, y(4)=4, 꼭짓점 x=5는 제외", "mappedTo": "panels[1].plan.graphPlan.coefficients/sourceDomain/requiredPoints[L,R]" }
+  ],
+  "newVisualInformation": ["끝점과 꼭짓점이 닫힌 정의구간에 포함되는지를 두 실제 그래프에서 비교한다."]
+}

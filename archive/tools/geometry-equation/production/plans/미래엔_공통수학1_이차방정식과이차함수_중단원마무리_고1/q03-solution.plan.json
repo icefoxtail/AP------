@@ -1,0 +1,26 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": { "text": "⑴ 직선과 두 점에서 만남" },
+      "plan": { "capability": "polynomial-spike-v1", "graphPlan": { "family": "polynomial", "coefficients": ["1", "-1", "-2"], "sourceDomain": { "kind": "ALL_REALS" }, "domain": [-4, 3], "viewport": [-4, 3, -29, 5], "axisTickValues": { "x": [], "y": [] }, "overlays": { "lines": [{ "id": "g", "slope": "2", "intercept": "-5", "label": "y=2x-5", "color": "BLUE" }] } } }
+    },
+    {
+      "caption": { "text": "⑵ 직선과 한 점에서 접함" },
+      "plan": { "capability": "polynomial-spike-v1", "graphPlan": { "family": "polynomial", "coefficients": ["2", "-1", "1"], "sourceDomain": { "kind": "ALL_REALS" }, "domain": [-1, 5], "viewport": [-1, 5, -7, 24], "requiredPoints": [{ "id": "T", "x": 2, "y": 4 }], "axisTickValues": { "x": [], "y": [] }, "overlays": { "lines": [{ "id": "g", "slope": "3", "intercept": "-2", "label": "y=3x-2", "color": "BLUE" }] } } }
+    },
+    {
+      "caption": { "text": "⑶ 직선과 만나지 않음" },
+      "plan": { "capability": "polynomial-spike-v1", "graphPlan": { "family": "polynomial", "coefficients": ["0", "2", "1"], "sourceDomain": { "kind": "ALL_REALS" }, "domain": [-4, 3], "viewport": [-4, 3, -6, 17], "axisTickValues": { "x": [], "y": [] }, "overlays": { "lines": [{ "id": "g", "slope": "1", "intercept": "-1", "label": "y=x-1", "color": "BLUE" }] } } }
+    }
+  ],
+  "sourceQuote": "다음 이차함수 그래프와 직선의 위치 관계를 말하시오.",
+  "caption": "각 패널은 원문의 이차함수와 직선을 같은 축에 그려 판별식 D의 부호에 따른 교점 개수 2·1·0을 비교한다.",
+  "accessibilityDescription": "첫째 아래로 열린 포물선과 y=2x−5는 두 점에서 만난다. 둘째 y=x²−x+2와 y=3x−2는 (2,4)에서 접한다. 셋째 y=x²+2x와 y=x−1은 만나지 않는다.",
+  "sourceConditions": [
+    { "id": "C1", "condition": "⑴ -2x²−x+1=2x−5 → 2x²+3x−6=0, D=57", "mappedTo": "panels[0].plan.graphPlan.coefficients 및 overlays.lines[g]" },
+    { "id": "C2", "condition": "⑵ x²−x+2=3x−2 → (x−2)²=0, 접점 (2,4)", "mappedTo": "panels[1].plan.graphPlan.coefficients, requiredPoints[T], overlays.lines[g]" },
+    { "id": "C3", "condition": "⑶ x²+2x=x−1 → x²+x+1=0, D=−3", "mappedTo": "panels[2].plan.graphPlan.coefficients 및 overlays.lines[g]" }
+  ],
+  "newVisualInformation": ["이차함수와 직선의 교점 수 및 접점을 세 실제 연립식 그대로 표시한다."]
+}

@@ -1,0 +1,23 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": ["6", "8", "-4"],
+    "sourceDomain": { "kind": "INTERVAL", "range": [0, 1.5], "states": ["OPEN", "OPEN"] },
+    "domain": [0, 1.5],
+    "viewport": [-0.5, 2, 5, 11],
+    "axisVariable": "t",
+    "applicationAxes": true,
+    "requiredPoints": [{ "id": "M", "x": 1, "y": 10 }],
+    "axisTickValues": { "x": [0.5, 1], "y": [6, 8, 10] }
+  },
+  "sourceQuote": "직사각형 $\\mathrm{ABCD}$의 둘레의 길이의 최댓값",
+  "caption": "원본 문제 그림의 직사각형 폭 3−2t와 높이 −2t²+6t에서 얻은 둘레 P(t)=−4t²+8t+6은 0<t<3/2에서 t=1일 때 최대 10이다.",
+  "accessibilityDescription": "가로축 t, 세로축 둘레인 아래로 열린 이차함수 P(t)=−4t²+8t+6은 열린 구간 0부터 3/2까지만 그려지며 꼭짓점 (1,10)이 최대다.",
+  "sourceConditions": [
+    { "id": "C1", "condition": "D의 x좌표 t, C의 x좌표 3−t, 0<t<3/2", "mappedTo": "원본 q10.png의 좌우 대칭 직사각형; graphPlan.sourceDomain" },
+    { "id": "C2", "condition": "가로 3−2t, 세로 −2t²+6t, 둘레 2(3−2t−2t²+6t)=−4t²+8t+6", "mappedTo": "graphPlan.coefficients=[6,8,-4]" },
+    { "id": "C3", "condition": "꼭짓점 t=1에서 최대 둘레 10", "mappedTo": "graphPlan.requiredPoints[M]=(1,10)" }
+  ],
+  "newVisualInformation": ["이미 존재하는 문제 직사각형과 별개로 해설의 둘레 함수·허용 구간·최대점을 명시한다."]
+}

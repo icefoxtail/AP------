@@ -1,0 +1,26 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": { "text": "⑴ x축과 서로 다른 두 점에서 만남" },
+      "plan": { "capability": "polynomial-spike-v1", "graphPlan": { "family": "polynomial", "coefficients": ["8", "-7", "1"], "sourceDomain": { "kind": "ALL_REALS" }, "domain": [-1, 8], "viewport": [-1, 8, -6, 18], "axisTickValues": { "x": [2, 5], "y": [] } } }
+    },
+    {
+      "caption": { "text": "⑵ x축에 접함" },
+      "plan": { "capability": "polynomial-spike-v1", "graphPlan": { "family": "polynomial", "coefficients": ["16", "8", "1"], "sourceDomain": { "kind": "ALL_REALS" }, "domain": [-7, -1], "viewport": [-7, -1, -1, 11], "requiredPoints": [{ "id": "V", "x": -4, "y": 0 }], "axisTickValues": { "x": [-4], "y": [] } } }
+    },
+    {
+      "caption": { "text": "⑶ x축과 만나지 않음" },
+      "plan": { "capability": "polynomial-spike-v1", "graphPlan": { "family": "polynomial", "coefficients": ["-6", "3", "-1"], "sourceDomain": { "kind": "ALL_REALS" }, "domain": [-1, 4], "viewport": [-1, 4, -12, 1], "axisTickValues": { "x": [1], "y": [] } } }
+    }
+  ],
+  "sourceQuote": "다음 이차함수 그래프와 $x$축의 위치 관계를 말하시오.",
+  "caption": "원문의 세 이차함수는 각각 판별식이 양수·0·음수이며 x축과의 교점 수가 2·1·0이다.",
+  "accessibilityDescription": "첫째 y=x²−7x+8은 x축을 두 번 지나고, 둘째 y=x²+8x+16은 (-4,0)에서 접하며, 셋째 y=−x²+3x−6은 꼭짓점이 x축 아래에 있어 만나지 않는다.",
+  "sourceConditions": [
+    { "id": "C1", "condition": "⑴ y=x²−7x+8, D=17>0", "mappedTo": "panels[0].plan.graphPlan.coefficients=[8,-7,1]" },
+    { "id": "C2", "condition": "⑵ y=x²+8x+16=(x+4)², D=0", "mappedTo": "panels[1].plan.graphPlan.coefficients 및 requiredPoints[V]=(-4,0)" },
+    { "id": "C3", "condition": "⑶ y=−x²+3x−6, D=−15<0", "mappedTo": "panels[2].plan.graphPlan.coefficients=[-6,3,-1]" }
+  ],
+  "newVisualInformation": ["서로 다른 두 교점, 접점 하나, 교점 없음의 차이를 실제 세 함수의 계수에서 그린다."]
+}
