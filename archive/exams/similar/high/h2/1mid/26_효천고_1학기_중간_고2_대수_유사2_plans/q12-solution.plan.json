@@ -1,0 +1,33 @@
+{
+  "capability": "exponential-affine-spike-v1",
+  "graphPlan": {
+    "family": "exponential-affine",
+    "base": "2",
+    "coefficients": ["1", "1", "-4"],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "domain": [-1, 5],
+    "viewport": [-1, 5, -5, 17],
+    "axisTickValues": {"x": ["4"], "y": ["-4", "12"]},
+    "overlays": {
+      "points": [
+        {"id": "A", "curveX": "4"},
+        {"id": "B", "axis": "x", "value": "4"},
+        {"id": "C", "x": "4", "y": "-4"},
+        {"id": "O", "x": "0", "y": "0"}
+      ],
+      "segments": [
+        {"id": "AC", "from": "A", "to": "C"},
+        {"id": "OB", "from": "O", "to": "B"},
+        {"id": "OC", "from": "O", "to": "C"}
+      ]
+    },
+    "pointNames": {"A": "A", "B": "B", "C": "C", "O": "O"}
+  },
+  "caption": "지수함수 y=2^x-4에서 점 A(4,12), B(4,0), C(4,-4)와 삼각형 AOC의 밑변과 높이를 보인 해설 그림",
+  "accessibilityDescription": "점근선 y=-4, 점 A와 원점 O를 잇는 삼각형의 세로 밑변 AC와 가로 높이 OB를 표시한다.",
+  "sourceConditions": [
+    {"id": "S1", "condition": "a^4=16으로부터 a=2이며 A=(4,12), B=(4,0), C=(4,-4)", "mappedTo": ["graphPlan.overlays.points"]},
+    {"id": "S2", "condition": "삼각형 AOC의 밑변 AC=16, 높이 OB=4", "mappedTo": ["graphPlan.overlays.segments"]}
+  ],
+  "newVisualInformation": ["AB가 BC의 세 배이고 AC가 삼각형 AOC의 세로 밑변이 되는 관계"]
+}

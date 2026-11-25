@@ -1,0 +1,12 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {"kind": "SET", "label": "정의역과 해", "color": "BLUE", "pieces": [{"lo": {"value": "2", "state": "OPEN"}, "hi": {"value": "7/2", "state": "OPEN"}}]}
+    ]
+  },
+  "numberLineCaption": {"text": "로그 부등식의 공통 해집합"},
+  "caption": "0<7-2x<3의 해집합 2<x<7/2를 양 끝이 열린 구간으로 나타낸다.",
+  "sourceConditions": [{"id": "S1", "condition": "0<7-2x<3, 즉 2<x<7/2", "mappedTo": ["numberLine.rows[0]"]}],
+  "newVisualInformation": ["로그의 밑이 1보다 작아 부등호 방향이 반대가 된 뒤, 진수 조건까지 만족하는 열린 구간을 나타낸다."]
+}
