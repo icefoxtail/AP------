@@ -1,0 +1,126 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayCircles": [
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "sOP",
+      "refs": [
+        "O",
+        "P"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "O",
+    "P"
+  ],
+  "hiddenPointNames": [
+    "P"
+  ],
+  "coordinateLabels": [
+    "O"
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "radius",
+        "ownerSegment": "sOP",
+        "text": "3"
+      }
+    ]
+  },
+  "caption": "완전제곱으로 원의 중심 O=(-2,3)와 반지름 3를 확인한다. a+b+r=4.",
+  "accessibilityDescription": "중심 O가 (-2,3)이고 원 위의 표본점까지 반지름이 표시된 원이다.",
+  "sourceConditions": [
+    {
+      "id": "circle",
+      "condition": "원 $x^2+y^2+4x-6y+4=0$의 중심이 $(a,b)$이고 반지름이 $r$일 때 $a+b+r$의 값은?",
+      "mappedTo": [
+        "O",
+        "C",
+        "sOP",
+        "radius"
+      ]
+    },
+    {
+      "id": "answer",
+      "condition": "일반형의 x,y 일차항 계수에서 중심을, 상수항에서 반지름을 계산",
+      "mappedTo": [
+        "O",
+        "radius"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "실제 중심 위치와 반지름 선분 및 길이 표시"
+  ]
+}

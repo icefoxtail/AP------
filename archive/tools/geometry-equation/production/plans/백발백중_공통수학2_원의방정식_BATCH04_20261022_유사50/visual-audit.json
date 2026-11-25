@@ -1,0 +1,492 @@
+{
+  "schema": "textbook-figure-plan-audit-v1",
+  "sourcePath": "archive/exams/textbooks/백발백중_공통수학2/백발백중_공통수학2_원의방정식_BATCH04_20261022_유사50.js",
+  "sourceBlobSha": "a5e115a4487189f185faf0d445e3c476812f336f",
+  "sourceMainBaseSha": "b3fa398c15b740a42f8a9d5205d524a98e9468b7",
+  "selectedQids": [
+    "q01",
+    "q02",
+    "q03",
+    "q04",
+    "q05",
+    "q06",
+    "q07",
+    "q08",
+    "q09",
+    "q10",
+    "q11",
+    "q12",
+    "q13"
+  ],
+  "scope": "교과서·문제집 13문항 문제·해설 26축; 원본 JS, exams/original+similar, types, 기존 SVG 불변",
+  "method": "원문 문제·해설·기존 SVG의 실제 중심/반지름/직선/교점/좌표/선분/수선/라벨/정수경계와 엔진 가시 필드를 별도 계산해 대조한다. shallow/full lint를 실제 수행한다.",
+  "count": {
+    "questions": 13,
+    "problemAssessed": 13,
+    "solutionAssessed": 13,
+    "problemExempt": 13,
+    "solutionBeneficial": 13,
+    "renderablePlans": 13,
+    "lintShallowPass": 13,
+    "lintFullPass": 13,
+    "drawnFeatureParityPass": 13,
+    "engineCapabilityPending": 0
+  },
+  "visualPolicy": "문제 정답 비노출, 면 채움 없음, 수동 SVG 없음. SVG 렌더·PNG·학생 화면·A4 NOT_RUN.",
+  "postMergeRemaining": "q14–q50 (37문항)",
+  "items": [
+    {
+      "qid": "q01",
+      "sourceOrdinal": 1,
+      "questionUid": "BV-BAKBAL-H-COM2-P22-Q01-T1-R2",
+      "category": "원과 직선의 위치 관계 (서로 다른 두 점)",
+      "sourceAsset": {
+        "problem": null,
+        "solution": "assets/images/백발백중_공통수학2_원의방정식_BATCH04_20261022_유사50/BV-BAKBAL-H-COM2-P22-Q01-T1-R2-solution.svg"
+      },
+      "sourceAssetStatus": {
+        "problem": "NO_REFERENCE",
+        "solution": "PRESENT"
+      },
+      "sourceSvgDiscrepancy": "원본 해설 SVG에서 k=0 표본의 수선발 H와 중심 O가 같은 좌표인데 O/H 이름표를 겹쳐 표시한다. 신규 엔진 plan은 H=O를 정확히 계산하지만 중복 점·이름표를 그리지 않는다.",
+      "sourceSvgDecorationOmitted": "원본 해설 SVG의 원 내부 연한 파란 채움은 교점·접선·부등식 의미에 필요 없는 장식이다. 사용자 기본 규칙대로 신규 plan은 면 채움 없이 그린다.",
+      "problem": {
+        "judgement": "EXEMPT",
+        "reason": "문제에 주어진 좌표·원과 직선의 식만으로 조건이 완결된다. 새 그림에 풀이로 구한 중심·이동량·교점·경계값 등을 넣으면 정답 단서가 노출되므로 문제용 신규 plan은 생략한다.",
+        "plan": null
+      },
+      "solution": {
+        "judgement": "BENEFICIAL",
+        "reason": "원의 실제 중심과 반지름·직선 및 위치관계 / 중심과 수선발의 일치를 실제 엔진 좌표로 처리",
+        "plan": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_원의방정식_BATCH04_20261022_유사50/q01-solution.plan.json"
+      },
+      "capability": "construction-spike-v1",
+      "sourceVsPlan": "REVIEWED",
+      "planLintShallow": "PASS",
+      "planLintFull": "PASS",
+      "drawnFeatureParity": "PASS",
+      "engineCapabilityPending": [],
+      "render": "NOT_RUN",
+      "png": "NOT_RUN",
+      "studentView": "NOT_RUN",
+      "a4": "NOT_RUN"
+    },
+    {
+      "qid": "q02",
+      "sourceOrdinal": 2,
+      "questionUid": "BV-BAKBAL-H-COM2-P22-Q01-S1-R1",
+      "category": "원과 직선의 위치 관계 (서로 다른 두 점)",
+      "sourceAsset": {
+        "problem": null,
+        "solution": "assets/images/백발백중_공통수학2_원의방정식_BATCH04_20261022_유사50/BV-BAKBAL-H-COM2-P22-Q01-S1-R1-solution.svg"
+      },
+      "sourceAssetStatus": {
+        "problem": "NO_REFERENCE",
+        "solution": "PRESENT"
+      },
+      "sourceSvgDecorationOmitted": "원본 해설 SVG의 원 내부 연한 파란 채움은 교점·접선·부등식 의미에 필요 없는 장식이다. 사용자 기본 규칙대로 신규 plan은 면 채움 없이 그린다.",
+      "problem": {
+        "judgement": "EXEMPT",
+        "reason": "문제에 주어진 좌표·원과 직선의 식만으로 조건이 완결된다. 새 그림에 풀이로 구한 중심·이동량·교점·경계값 등을 넣으면 정답 단서가 노출되므로 문제용 신규 plan은 생략한다.",
+        "plan": null
+      },
+      "solution": {
+        "judgement": "BENEFICIAL",
+        "reason": "원의 실제 중심과 반지름·직선 및 위치관계 / 중심에서 직선에 내린 수선과 직각 표시",
+        "plan": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_원의방정식_BATCH04_20261022_유사50/q02-solution.plan.json"
+      },
+      "capability": "construction-spike-v1",
+      "sourceVsPlan": "REVIEWED",
+      "planLintShallow": "PASS",
+      "planLintFull": "PASS",
+      "drawnFeatureParity": "PASS",
+      "engineCapabilityPending": [],
+      "render": "NOT_RUN",
+      "png": "NOT_RUN",
+      "studentView": "NOT_RUN",
+      "a4": "NOT_RUN"
+    },
+    {
+      "qid": "q03",
+      "sourceOrdinal": 3,
+      "questionUid": "BV-BAKBAL-H-COM2-P22-Q01-S2-R1",
+      "category": "원과 직선의 위치 관계 (서로 다른 두 점)",
+      "sourceAsset": {
+        "problem": null,
+        "solution": "assets/images/백발백중_공통수학2_원의방정식_BATCH04_20261022_유사50/BV-BAKBAL-H-COM2-P22-Q01-S2-R1-solution.svg"
+      },
+      "sourceAssetStatus": {
+        "problem": "NO_REFERENCE",
+        "solution": "PRESENT"
+      },
+      "sourceSvgDiscrepancy": "원본 해설 SVG에서 k=0 표본의 수선발 H와 중심 O가 같은 좌표인데 O/H 이름표를 겹쳐 표시한다. 신규 엔진 plan은 H=O를 정확히 계산하지만 중복 점·이름표를 그리지 않는다.",
+      "sourceSvgDecorationOmitted": "원본 해설 SVG의 원 내부 연한 파란 채움은 교점·접선·부등식 의미에 필요 없는 장식이다. 사용자 기본 규칙대로 신규 plan은 면 채움 없이 그린다.",
+      "problem": {
+        "judgement": "EXEMPT",
+        "reason": "문제에 주어진 좌표·원과 직선의 식만으로 조건이 완결된다. 새 그림에 풀이로 구한 중심·이동량·교점·경계값 등을 넣으면 정답 단서가 노출되므로 문제용 신규 plan은 생략한다.",
+        "plan": null
+      },
+      "solution": {
+        "judgement": "BENEFICIAL",
+        "reason": "원의 실제 중심과 반지름·직선 및 위치관계 / 중심과 수선발의 일치를 실제 엔진 좌표로 처리",
+        "plan": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_원의방정식_BATCH04_20261022_유사50/q03-solution.plan.json"
+      },
+      "capability": "construction-spike-v1",
+      "sourceVsPlan": "REVIEWED",
+      "planLintShallow": "PASS",
+      "planLintFull": "PASS",
+      "drawnFeatureParity": "PASS",
+      "engineCapabilityPending": [],
+      "render": "NOT_RUN",
+      "png": "NOT_RUN",
+      "studentView": "NOT_RUN",
+      "a4": "NOT_RUN"
+    },
+    {
+      "qid": "q04",
+      "sourceOrdinal": 4,
+      "questionUid": "BV-BAKBAL-H-COM2-P22-Q02-T1-R2",
+      "category": "원과 직선이 접할 조건 (d = r)",
+      "sourceAsset": {
+        "problem": null,
+        "solution": "assets/images/백발백중_공통수학2_원의방정식_BATCH04_20261022_유사50/BV-BAKBAL-H-COM2-P22-Q02-T1-R2-solution.svg"
+      },
+      "sourceAssetStatus": {
+        "problem": "NO_REFERENCE",
+        "solution": "PRESENT"
+      },
+      "sourceSvgDecorationOmitted": "원본 해설 SVG의 원 내부 연한 파란 채움은 교점·접선·부등식 의미에 필요 없는 장식이다. 사용자 기본 규칙대로 신규 plan은 면 채움 없이 그린다.",
+      "problem": {
+        "judgement": "EXEMPT",
+        "reason": "문제에 주어진 좌표·원과 직선의 식만으로 조건이 완결된다. 새 그림에 풀이로 구한 중심·이동량·교점·경계값 등을 넣으면 정답 단서가 노출되므로 문제용 신규 plan은 생략한다.",
+        "plan": null
+      },
+      "solution": {
+        "judgement": "BENEFICIAL",
+        "reason": "반지름이 각 접선에 수직인 접점의 실제 위치",
+        "plan": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_원의방정식_BATCH04_20261022_유사50/q04-solution.plan.json"
+      },
+      "capability": "construction-spike-v1",
+      "sourceVsPlan": "REVIEWED",
+      "planLintShallow": "PASS",
+      "planLintFull": "PASS",
+      "drawnFeatureParity": "PASS",
+      "engineCapabilityPending": [],
+      "render": "NOT_RUN",
+      "png": "NOT_RUN",
+      "studentView": "NOT_RUN",
+      "a4": "NOT_RUN"
+    },
+    {
+      "qid": "q05",
+      "sourceOrdinal": 5,
+      "questionUid": "BV-BAKBAL-H-COM2-P22-Q02-S1-R1",
+      "category": "원과 직선이 접할 조건 (d = r)",
+      "sourceAsset": {
+        "problem": null,
+        "solution": "assets/images/백발백중_공통수학2_원의방정식_BATCH04_20261022_유사50/BV-BAKBAL-H-COM2-P22-Q02-S1-R1-solution.svg"
+      },
+      "sourceAssetStatus": {
+        "problem": "NO_REFERENCE",
+        "solution": "PRESENT"
+      },
+      "sourceSvgDecorationOmitted": "원본 해설 SVG의 원 내부 연한 파란 채움은 교점·접선·부등식 의미에 필요 없는 장식이다. 사용자 기본 규칙대로 신규 plan은 면 채움 없이 그린다.",
+      "problem": {
+        "judgement": "EXEMPT",
+        "reason": "문제에 주어진 좌표·원과 직선의 식만으로 조건이 완결된다. 새 그림에 풀이로 구한 중심·이동량·교점·경계값 등을 넣으면 정답 단서가 노출되므로 문제용 신규 plan은 생략한다.",
+        "plan": null
+      },
+      "solution": {
+        "judgement": "BENEFICIAL",
+        "reason": "반지름이 각 접선에 수직인 접점의 실제 위치",
+        "plan": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_원의방정식_BATCH04_20261022_유사50/q05-solution.plan.json"
+      },
+      "capability": "construction-spike-v1",
+      "sourceVsPlan": "REVIEWED",
+      "planLintShallow": "PASS",
+      "planLintFull": "PASS",
+      "drawnFeatureParity": "PASS",
+      "engineCapabilityPending": [],
+      "render": "NOT_RUN",
+      "png": "NOT_RUN",
+      "studentView": "NOT_RUN",
+      "a4": "NOT_RUN"
+    },
+    {
+      "qid": "q06",
+      "sourceOrdinal": 6,
+      "questionUid": "BV-BAKBAL-H-COM2-P22-Q02-S2-R1",
+      "category": "원과 직선이 접할 조건 (d = r)",
+      "sourceAsset": {
+        "problem": null,
+        "solution": "assets/images/백발백중_공통수학2_원의방정식_BATCH04_20261022_유사50/BV-BAKBAL-H-COM2-P22-Q02-S2-R1-solution.svg"
+      },
+      "sourceAssetStatus": {
+        "problem": "NO_REFERENCE",
+        "solution": "PRESENT"
+      },
+      "sourceSvgDecorationOmitted": "원본 해설 SVG의 원 내부 연한 파란 채움은 교점·접선·부등식 의미에 필요 없는 장식이다. 사용자 기본 규칙대로 신규 plan은 면 채움 없이 그린다.",
+      "problem": {
+        "judgement": "EXEMPT",
+        "reason": "문제에 주어진 좌표·원과 직선의 식만으로 조건이 완결된다. 새 그림에 풀이로 구한 중심·이동량·교점·경계값 등을 넣으면 정답 단서가 노출되므로 문제용 신규 plan은 생략한다.",
+        "plan": null
+      },
+      "solution": {
+        "judgement": "BENEFICIAL",
+        "reason": "반지름이 각 접선에 수직인 접점의 실제 위치 / 두 가지 접선 모두 표시",
+        "plan": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_원의방정식_BATCH04_20261022_유사50/q06-solution.plan.json"
+      },
+      "capability": "construction-spike-v1",
+      "sourceVsPlan": "REVIEWED",
+      "planLintShallow": "PASS",
+      "planLintFull": "PASS",
+      "drawnFeatureParity": "PASS",
+      "engineCapabilityPending": [],
+      "render": "NOT_RUN",
+      "png": "NOT_RUN",
+      "studentView": "NOT_RUN",
+      "a4": "NOT_RUN"
+    },
+    {
+      "qid": "q07",
+      "sourceOrdinal": 7,
+      "questionUid": "BV-BAKBAL-H-COM2-P22-Q03-T1-R1",
+      "category": "원과 직선이 만나지 않을 조건 (d > r)",
+      "sourceAsset": {
+        "problem": null,
+        "solution": "assets/images/백발백중_공통수학2_원의방정식_BATCH04_20261022_유사50/BV-BAKBAL-H-COM2-P22-Q03-T1-R1-solution.svg"
+      },
+      "sourceAssetStatus": {
+        "problem": "NO_REFERENCE",
+        "solution": "PRESENT"
+      },
+      "sourceSvgDecorationOmitted": "원본 해설 SVG의 원 내부 연한 파란 채움은 교점·접선·부등식 의미에 필요 없는 장식이다. 사용자 기본 규칙대로 신규 plan은 면 채움 없이 그린다.",
+      "problem": {
+        "judgement": "EXEMPT",
+        "reason": "문제에 주어진 좌표·원과 직선의 식만으로 조건이 완결된다. 새 그림에 풀이로 구한 중심·이동량·교점·경계값 등을 넣으면 정답 단서가 노출되므로 문제용 신규 plan은 생략한다.",
+        "plan": null
+      },
+      "solution": {
+        "judgement": "BENEFICIAL",
+        "reason": "원의 실제 중심과 반지름·직선 및 위치관계 / 중심에서 직선에 내린 수선과 직각 표시",
+        "plan": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_원의방정식_BATCH04_20261022_유사50/q07-solution.plan.json"
+      },
+      "capability": "construction-spike-v1",
+      "sourceVsPlan": "REVIEWED",
+      "planLintShallow": "PASS",
+      "planLintFull": "PASS",
+      "drawnFeatureParity": "PASS",
+      "engineCapabilityPending": [],
+      "render": "NOT_RUN",
+      "png": "NOT_RUN",
+      "studentView": "NOT_RUN",
+      "a4": "NOT_RUN"
+    },
+    {
+      "qid": "q08",
+      "sourceOrdinal": 8,
+      "questionUid": "BV-BAKBAL-H-COM2-P22-Q03-S1-R1",
+      "category": "원과 직선이 만나지 않을 조건 (d > r)",
+      "sourceAsset": {
+        "problem": null,
+        "solution": "assets/images/백발백중_공통수학2_원의방정식_BATCH04_20261022_유사50/BV-BAKBAL-H-COM2-P22-Q03-S1-R1-solution.svg"
+      },
+      "sourceAssetStatus": {
+        "problem": "NO_REFERENCE",
+        "solution": "PRESENT"
+      },
+      "sourceSvgDecorationOmitted": "원본 해설 SVG의 원 내부 연한 파란 채움은 교점·접선·부등식 의미에 필요 없는 장식이다. 사용자 기본 규칙대로 신규 plan은 면 채움 없이 그린다.",
+      "problem": {
+        "judgement": "EXEMPT",
+        "reason": "문제에 주어진 좌표·원과 직선의 식만으로 조건이 완결된다. 새 그림에 풀이로 구한 중심·이동량·교점·경계값 등을 넣으면 정답 단서가 노출되므로 문제용 신규 plan은 생략한다.",
+        "plan": null
+      },
+      "solution": {
+        "judgement": "BENEFICIAL",
+        "reason": "원의 실제 중심과 반지름·직선 및 위치관계 / 중심에서 직선에 내린 수선과 직각 표시",
+        "plan": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_원의방정식_BATCH04_20261022_유사50/q08-solution.plan.json"
+      },
+      "capability": "construction-spike-v1",
+      "sourceVsPlan": "REVIEWED",
+      "planLintShallow": "PASS",
+      "planLintFull": "PASS",
+      "drawnFeatureParity": "PASS",
+      "engineCapabilityPending": [],
+      "render": "NOT_RUN",
+      "png": "NOT_RUN",
+      "studentView": "NOT_RUN",
+      "a4": "NOT_RUN"
+    },
+    {
+      "qid": "q09",
+      "sourceOrdinal": 9,
+      "questionUid": "BV-BAKBAL-H-COM2-P22-Q03-S2-R1",
+      "category": "원과 직선이 만나지 않을 조건 (d > r)",
+      "sourceAsset": {
+        "problem": null,
+        "solution": "assets/images/백발백중_공통수학2_원의방정식_BATCH04_20261022_유사50/BV-BAKBAL-H-COM2-P22-Q03-S2-R1-solution.svg"
+      },
+      "sourceAssetStatus": {
+        "problem": "NO_REFERENCE",
+        "solution": "PRESENT"
+      },
+      "sourceSvgDecorationOmitted": "원본 해설 SVG의 원 내부 연한 파란 채움은 교점·접선·부등식 의미에 필요 없는 장식이다. 사용자 기본 규칙대로 신규 plan은 면 채움 없이 그린다.",
+      "problem": {
+        "judgement": "EXEMPT",
+        "reason": "문제에 주어진 좌표·원과 직선의 식만으로 조건이 완결된다. 새 그림에 풀이로 구한 중심·이동량·교점·경계값 등을 넣으면 정답 단서가 노출되므로 문제용 신규 plan은 생략한다.",
+        "plan": null
+      },
+      "solution": {
+        "judgement": "BENEFICIAL",
+        "reason": "원의 실제 중심과 반지름·직선 및 위치관계 / 중심에서 직선에 내린 수선과 직각 표시",
+        "plan": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_원의방정식_BATCH04_20261022_유사50/q09-solution.plan.json"
+      },
+      "capability": "construction-spike-v1",
+      "sourceVsPlan": "REVIEWED",
+      "planLintShallow": "PASS",
+      "planLintFull": "PASS",
+      "drawnFeatureParity": "PASS",
+      "engineCapabilityPending": [],
+      "render": "NOT_RUN",
+      "png": "NOT_RUN",
+      "studentView": "NOT_RUN",
+      "a4": "NOT_RUN"
+    },
+    {
+      "qid": "q10",
+      "sourceOrdinal": 10,
+      "questionUid": "BV-BAKBAL-H-COM2-P22-Q04-T1-R1",
+      "category": "원과 직선이 만나는 현의 길이",
+      "sourceAsset": {
+        "problem": "assets/images/백발백중_공통수학2_원의방정식_BATCH04_20261022_유사50/BV-BAKBAL-H-COM2-P22-Q04-T1-R1-problem.svg",
+        "solution": "assets/images/백발백중_공통수학2_원의방정식_BATCH04_20261022_유사50/BV-BAKBAL-H-COM2-P22-Q04-T1-R1-solution.svg"
+      },
+      "sourceAssetStatus": {
+        "problem": "PRESENT",
+        "solution": "PRESENT"
+      },
+      "problem": {
+        "judgement": "EXEMPT",
+        "reason": "문제에 이미 현 AB·중심 O·수선의 발 H를 보여 주는 원본 SVG가 있고 원문 조건과 일치한다. 정답인 현의 길이는 기존 그림에 노출되지 않아 새로운 문제용 중복 plan이 필요 없다.",
+        "plan": null
+      },
+      "solution": {
+        "judgement": "BENEFICIAL",
+        "reason": "직선·원 교점 A/B와 정확한 수선의 발 H / 직각·반현 등분 표식과 원 반지름 제곱 표시",
+        "plan": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_원의방정식_BATCH04_20261022_유사50/q10-solution.plan.json"
+      },
+      "capability": "construction-spike-v1",
+      "sourceVsPlan": "REVIEWED",
+      "planLintShallow": "PASS",
+      "planLintFull": "PASS",
+      "drawnFeatureParity": "PASS",
+      "engineCapabilityPending": [],
+      "render": "NOT_RUN",
+      "png": "NOT_RUN",
+      "studentView": "NOT_RUN",
+      "a4": "NOT_RUN"
+    },
+    {
+      "qid": "q11",
+      "sourceOrdinal": 11,
+      "questionUid": "BV-BAKBAL-H-COM2-P22-Q04-S1-R1",
+      "category": "원과 직선이 만나는 현의 길이",
+      "sourceAsset": {
+        "problem": "assets/images/백발백중_공통수학2_원의방정식_BATCH04_20261022_유사50/BV-BAKBAL-H-COM2-P22-Q04-S1-R1-problem.svg",
+        "solution": "assets/images/백발백중_공통수학2_원의방정식_BATCH04_20261022_유사50/BV-BAKBAL-H-COM2-P22-Q04-S1-R1-solution.svg"
+      },
+      "sourceAssetStatus": {
+        "problem": "PRESENT",
+        "solution": "PRESENT"
+      },
+      "problem": {
+        "judgement": "EXEMPT",
+        "reason": "문제에 이미 현 AB·중심 O·수선의 발 H를 보여 주는 원본 SVG가 있고 원문 조건과 일치한다. 정답인 현의 길이는 기존 그림에 노출되지 않아 새로운 문제용 중복 plan이 필요 없다.",
+        "plan": null
+      },
+      "solution": {
+        "judgement": "BENEFICIAL",
+        "reason": "직선·원 교점 A/B와 정확한 수선의 발 H / 직각·반현 등분 표식과 원 반지름 제곱 표시",
+        "plan": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_원의방정식_BATCH04_20261022_유사50/q11-solution.plan.json"
+      },
+      "capability": "construction-spike-v1",
+      "sourceVsPlan": "REVIEWED",
+      "planLintShallow": "PASS",
+      "planLintFull": "PASS",
+      "drawnFeatureParity": "PASS",
+      "engineCapabilityPending": [],
+      "render": "NOT_RUN",
+      "png": "NOT_RUN",
+      "studentView": "NOT_RUN",
+      "a4": "NOT_RUN"
+    },
+    {
+      "qid": "q12",
+      "sourceOrdinal": 12,
+      "questionUid": "BV-BAKBAL-H-COM2-P22-Q04-S2-R1",
+      "category": "원과 직선이 만나는 현의 길이",
+      "sourceAsset": {
+        "problem": "assets/images/백발백중_공통수학2_원의방정식_BATCH04_20261022_유사50/BV-BAKBAL-H-COM2-P22-Q04-S2-R1-problem.svg",
+        "solution": "assets/images/백발백중_공통수학2_원의방정식_BATCH04_20261022_유사50/BV-BAKBAL-H-COM2-P22-Q04-S2-R1-solution.svg"
+      },
+      "sourceAssetStatus": {
+        "problem": "PRESENT",
+        "solution": "PRESENT"
+      },
+      "problem": {
+        "judgement": "EXEMPT",
+        "reason": "문제에 이미 현 AB·중심 O·수선의 발 H를 보여 주는 원본 SVG가 있고 원문 조건과 일치한다. 정답인 현의 길이는 기존 그림에 노출되지 않아 새로운 문제용 중복 plan이 필요 없다.",
+        "plan": null
+      },
+      "solution": {
+        "judgement": "BENEFICIAL",
+        "reason": "직선·원 교점 A/B와 정확한 수선의 발 H / 직각·반현 등분 표식과 원 반지름 제곱 표시",
+        "plan": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_원의방정식_BATCH04_20261022_유사50/q12-solution.plan.json"
+      },
+      "capability": "construction-spike-v1",
+      "sourceVsPlan": "REVIEWED",
+      "planLintShallow": "PASS",
+      "planLintFull": "PASS",
+      "drawnFeatureParity": "PASS",
+      "engineCapabilityPending": [],
+      "render": "NOT_RUN",
+      "png": "NOT_RUN",
+      "studentView": "NOT_RUN",
+      "a4": "NOT_RUN"
+    },
+    {
+      "qid": "q13",
+      "sourceOrdinal": 13,
+      "questionUid": "BV-BAKBAL-H-COM2-P22-Q05-T1-R1",
+      "category": "현의 중점의 좌표와 방정식",
+      "sourceAsset": {
+        "problem": null,
+        "solution": "assets/images/백발백중_공통수학2_원의방정식_BATCH04_20261022_유사50/BV-BAKBAL-H-COM2-P22-Q05-T1-R1-solution.svg"
+      },
+      "sourceAssetStatus": {
+        "problem": "NO_REFERENCE",
+        "solution": "PRESENT"
+      },
+      "problem": {
+        "judgement": "EXEMPT",
+        "reason": "문제에 주어진 좌표·원과 직선의 식만으로 조건이 완결된다. 새 그림에 풀이로 구한 중심·이동량·교점·경계값 등을 넣으면 정답 단서가 노출되므로 문제용 신규 plan은 생략한다.",
+        "plan": null
+      },
+      "solution": {
+        "judgement": "BENEFICIAL",
+        "reason": "중점 M을 지나는 실제 현 AB의 교점 / 중심 OM과 현의 수직 및 반현 등분표식",
+        "plan": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_원의방정식_BATCH04_20261022_유사50/q13-solution.plan.json"
+      },
+      "capability": "construction-spike-v1",
+      "sourceVsPlan": "REVIEWED",
+      "planLintShallow": "PASS",
+      "planLintFull": "PASS",
+      "drawnFeatureParity": "PASS",
+      "engineCapabilityPending": [],
+      "render": "NOT_RUN",
+      "png": "NOT_RUN",
+      "studentView": "NOT_RUN",
+      "a4": "NOT_RUN"
+    }
+  ]
+}
