@@ -1,0 +1,2084 @@
+{
+  "schemaVersion": "alive-exam-followup-source-balanced-v1",
+  "examUid": "26_금당고_1학기_기말_고2_대수_유사2",
+  "sourceArchiveFile": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사2.js",
+  "sourceGitBlobSha": "74d2aa760afdfc6c71e8a66375ff1b7fe1fa156c",
+  "originalSourceFile": "archive/exams/original/high/h2/1final/26_금당고_1학기_기말_고2_대수.js",
+  "originalSourceSha256": "65d1a43f7935790fc2abc0835c8d0415de2bcbde269720571bb19b56d44f0607",
+  "priorSimilarFile": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사.js",
+  "mode": "ALIVE EXAM_FOLLOWUP",
+  "profile": "SOURCE_BALANCED",
+  "createdAt": "2026-11-25",
+  "counts": {
+    "questions": 21,
+    "objective": 19,
+    "written": 2,
+    "points": 100,
+    "confirmation": 21,
+    "advanced": 0,
+    "blindI1Pass": 21,
+    "independentI2NotRun": 21,
+    "visualAxisTotal": 42,
+    "exemptPlans": 34,
+    "neededAxes": 8,
+    "engineReadyPlans": 2,
+    "unsupportedPlans": 6,
+    "renderedSvg": 0,
+    "postCreationR1Reviewed": 21,
+    "postCreationR1MathCorrect": 21
+  },
+  "review": {
+    "authorSelfReview": "PASS",
+    "independentReviewer": "NOT_RUN",
+    "externalChromeVisualQa": "NOT_RUN",
+    "metadataState": "review_required",
+    "postCreationIndependentR1": {
+      "reviewedAt": "2026-11-25",
+      "role": "GPT independent post-creation content R1 (separate conversation)",
+      "mathAnswersAndExplanations": "21/21 matched on direct mathematical re-solution",
+      "firstReadBlindFromStoredAnswer": "19/21",
+      "firstReadNonBlindOrdinals": [
+        1,
+        2
+      ],
+      "note": "Reviewer encountered Q01–Q02 stored answers while opening the source. Both were independently recalculated. Do not represent this as full 21/21 frozen blind I2 or human approval.",
+      "changedChoiceOrdinals": [
+        2,
+        10,
+        14
+      ],
+      "correctedFourSlotOrdinals": [
+        1,
+        2,
+        3,
+        6,
+        7,
+        8,
+        13,
+        20,
+        21
+      ],
+      "objectiveReview": "19 objective items: mathematical uniqueness, explicit ordering and distractor plausibility reviewed",
+      "writtenReview": "Q20 k=5; Q21 exactly seven ordered pairs, independently derived",
+      "remainingVisual": "8 BENEFICIAL axes; 0 REQUIRED problem figures. SVG render/PNG visual QA NOT_RUN, formal draft gate still reports 6 visual failures.",
+      "finalMetadataApproval": "review_required",
+      "studentUiAndDeployment": "NOT_RUN"
+    }
+  },
+  "engineEvidence": {
+    "planShallowLint": "42/42 lint reported OK (including EXEMPT/UNSUPPORTED statuses); 2/2 real plans PASS",
+    "planFullLint": "2/2 real plans PASS",
+    "render": "NOT_RUN_CHROME_UNAVAILABLE",
+    "studentUiQa": "NOT_RUN",
+    "pending": [
+      {
+        "ordinal": 5,
+        "axis": "solution",
+        "necessity": "BENEFICIAL",
+        "reason": "등호를 포함한 코사인 경계각 두 개와 구간을 그래프로 확인",
+        "plan": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사2_plans/q05-solution.plan.json",
+        "productionPlan": true,
+        "shallowLintStatus": "PASS",
+        "deepLintStatus": "PASS",
+        "renderStatus": "NOT_RUN",
+        "pngQa": "NOT_RUN",
+        "jsLinked": false
+      },
+      {
+        "ordinal": 9,
+        "axis": "problem",
+        "necessity": "BENEFICIAL",
+        "reason": "등변사다리꼴의 동일한 두 대각선과 이루는 예각의 위치 확인",
+        "plan": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사2_plans/q09-problem.plan.json",
+        "productionPlan": false,
+        "shallowLintStatus": "NOT_APPLICABLE",
+        "deepLintStatus": "NOT_APPLICABLE",
+        "renderStatus": "NOT_RUN",
+        "pngQa": "NOT_RUN",
+        "jsLinked": false
+      },
+      {
+        "ordinal": 9,
+        "axis": "solution",
+        "necessity": "BENEFICIAL",
+        "reason": "대각선에 의한 넓이 공식의 끼인각 관계를 확인",
+        "plan": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사2_plans/q09-solution.plan.json",
+        "productionPlan": false,
+        "shallowLintStatus": "NOT_APPLICABLE",
+        "deepLintStatus": "NOT_APPLICABLE",
+        "renderStatus": "NOT_RUN",
+        "pngQa": "NOT_RUN",
+        "jsLinked": false
+      },
+      {
+        "ordinal": 14,
+        "axis": "solution",
+        "necessity": "BENEFICIAL",
+        "reason": "합성함수의 안쪽 치역을 이동한 코사인 구간에서 최대·최소 위치를 확인",
+        "plan": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사2_plans/q14-solution.plan.json",
+        "productionPlan": false,
+        "shallowLintStatus": "NOT_APPLICABLE",
+        "deepLintStatus": "NOT_APPLICABLE",
+        "renderStatus": "NOT_RUN",
+        "pngQa": "NOT_RUN",
+        "jsLinked": false
+      },
+      {
+        "ordinal": 18,
+        "axis": "solution",
+        "necessity": "BENEFICIAL",
+        "reason": "자연수 n에 따른 코사인 그래프의 최솟값 경계가 변하는 위치를 확인",
+        "plan": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사2_plans/q18-solution.plan.json",
+        "productionPlan": true,
+        "shallowLintStatus": "PASS",
+        "deepLintStatus": "PASS",
+        "renderStatus": "NOT_RUN",
+        "pngQa": "NOT_RUN",
+        "jsLinked": false
+      },
+      {
+        "ordinal": 19,
+        "axis": "problem",
+        "necessity": "BENEFICIAL",
+        "reason": "내접사각형의 연속된 꼭짓점·교차하는 두 대각선 배치를 이해",
+        "plan": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사2_plans/q19-problem.plan.json",
+        "productionPlan": false,
+        "shallowLintStatus": "NOT_APPLICABLE",
+        "deepLintStatus": "NOT_APPLICABLE",
+        "renderStatus": "NOT_RUN",
+        "pngQa": "NOT_RUN",
+        "jsLinked": false
+      },
+      {
+        "ordinal": 19,
+        "axis": "solution",
+        "necessity": "BENEFICIAL",
+        "reason": "맞꼭지각·연속 세 변과 사인법칙을 연결하는 보조 삼각형을 확인",
+        "plan": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사2_plans/q19-solution.plan.json",
+        "productionPlan": false,
+        "shallowLintStatus": "NOT_APPLICABLE",
+        "deepLintStatus": "NOT_APPLICABLE",
+        "renderStatus": "NOT_RUN",
+        "pngQa": "NOT_RUN",
+        "jsLinked": false
+      },
+      {
+        "ordinal": 21,
+        "axis": "solution",
+        "necessity": "BENEFICIAL",
+        "reason": "절댓값 그래프에서 밑점의 단일 교점과 상위 배수의 양쪽 두 교점을 구분",
+        "plan": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사2_plans/q21-solution.plan.json",
+        "productionPlan": false,
+        "shallowLintStatus": "NOT_APPLICABLE",
+        "deepLintStatus": "NOT_APPLICABLE",
+        "renderStatus": "NOT_RUN",
+        "pngQa": "NOT_RUN",
+        "jsLinked": false
+      }
+    ]
+  },
+  "items": [
+    {
+      "ordinal": 1,
+      "questionUid": "26_금당고_1학기_기말_고2_대수_유사2:q01",
+      "sourceQid": 1,
+      "originalRef": "archive/exams/original/high/h2/1final/26_금당고_1학기_기말_고2_대수.js#q1",
+      "existingVariantRef": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사.js#q1",
+      "difficultyBucketOriginal": 1,
+      "difficultyBucketNew": 1,
+      "followupKind": "CONFIRMATION",
+      "lockedPrimaryRpmL3": "H2-M1-RPM-103",
+      "decisiveMethod": "PT_H22A_04_TRIG_GRAPH_TRANSFORM / TPL_H22A_04_TRIG_GRAPH_TRANSFORM_105",
+      "variationAxis": "진폭과 평행이동 조건을 바탕으로 특정 점의 극값 여부를 판정",
+      "duplicateCheck": "원본 및 유사1 대비 조건 정보·목표·진입 판단 중 의미 변화. 수치만 교체한 변형이 아님.",
+      "answer": "⑤",
+      "studentSolutionComplete": true,
+      "mathBlindI1": "PASS",
+      "externalIndependentI2": "NOT_RUN",
+      "metadata": {
+        "curriculum": "2022",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-04",
+        "subUnitKey": "H22-A-04-TRIGONOMETRIC_GRAPH",
+        "rpmPrimaryRecordId": "H2-M1-RPM-103",
+        "problemTypeKey": "PT_H22A_04_TRIG_GRAPH_TRANSFORM",
+        "templateKey": "TPL_H22A_04_TRIG_GRAPH_TRANSFORM_105",
+        "difficultyBucket": 1,
+        "reviewStatus": "review_required"
+      },
+      "fourSlot": {
+        "given": [
+          {
+            "termId": 96,
+            "label": "삼각함수"
+          },
+          {
+            "termId": 675,
+            "label": "코사인"
+          },
+          {
+            "termId": 103,
+            "label": "치역"
+          }
+        ],
+        "goal": [
+          {
+            "termId": 132,
+            "label": "판정"
+          },
+          {
+            "termId": 127,
+            "label": "최댓값"
+          },
+          {
+            "termId": 128,
+            "label": "최솟값"
+          }
+        ],
+        "method": [
+          {
+            "termId": 658,
+            "label": "삼각함수의성질"
+          }
+        ],
+        "condition": [
+          {
+            "termId": 595,
+            "label": "주기함수"
+          }
+        ]
+      },
+      "visual": {
+        "problem": {
+          "ordinal": 1,
+          "axis": "problem",
+          "necessity": "EXEMPT",
+          "reason": "발문에 모든 변수·조건·결정 단계가 식으로 명시되어 별도 시각화가 정확도를 높이지 않음",
+          "plan": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사2_plans/q01-problem.plan.json",
+          "productionPlan": false,
+          "shallowLintStatus": "NOT_APPLICABLE",
+          "deepLintStatus": "NOT_APPLICABLE",
+          "renderStatus": "NOT_APPLICABLE",
+          "pngQa": "NOT_APPLICABLE",
+          "jsLinked": false
+        },
+        "solution": {
+          "ordinal": 1,
+          "axis": "solution",
+          "necessity": "EXEMPT",
+          "reason": "해설에 모든 변수·조건·결정 단계가 식으로 명시되어 별도 시각화가 정확도를 높이지 않음",
+          "plan": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사2_plans/q01-solution.plan.json",
+          "productionPlan": false,
+          "shallowLintStatus": "NOT_APPLICABLE",
+          "deepLintStatus": "NOT_APPLICABLE",
+          "renderStatus": "NOT_APPLICABLE",
+          "pngQa": "NOT_APPLICABLE",
+          "jsLinked": false
+        }
+      }
+    },
+    {
+      "ordinal": 2,
+      "questionUid": "26_금당고_1학기_기말_고2_대수_유사2:q02",
+      "sourceQid": 2,
+      "originalRef": "archive/exams/original/high/h2/1final/26_금당고_1학기_기말_고2_대수.js#q2",
+      "existingVariantRef": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사.js#q2",
+      "difficultyBucketOriginal": 1,
+      "difficultyBucketNew": 1,
+      "followupKind": "CONFIRMATION",
+      "lockedPrimaryRpmL3": "H2-M1-RPM-115",
+      "decisiveMethod": "PT_H22A_06_ARITHMETIC_SEQUENCE / TPL_H22A_06_ARITHMETIC_SEQUENCE_115",
+      "variationAxis": "두 항의 값 대신 한 항과 떨어진 두 항의 합을 조건으로 사용",
+      "duplicateCheck": "원본 및 유사1 대비 조건 정보·목표·진입 판단 중 의미 변화. 수치만 교체한 변형이 아님.",
+      "answer": "③",
+      "studentSolutionComplete": true,
+      "mathBlindI1": "PASS",
+      "externalIndependentI2": "NOT_RUN",
+      "metadata": {
+        "curriculum": "2022",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-06",
+        "subUnitKey": "H22-A-06-SEQUENCE_BASIC",
+        "rpmPrimaryRecordId": "H2-M1-RPM-115",
+        "problemTypeKey": "PT_H22A_06_ARITHMETIC_SEQUENCE",
+        "templateKey": "TPL_H22A_06_ARITHMETIC_SEQUENCE_115",
+        "difficultyBucket": 1,
+        "reviewStatus": "review_required"
+      },
+      "fourSlot": {
+        "given": [
+          {
+            "termId": 270,
+            "label": "등차수열"
+          },
+          {
+            "termId": 475,
+            "label": "공차"
+          }
+        ],
+        "goal": [
+          {
+            "termId": 475,
+            "label": "공차"
+          }
+        ],
+        "method": [
+          {
+            "termId": 270,
+            "label": "등차수열"
+          },
+          {
+            "termId": 734,
+            "label": "일반항"
+          }
+        ],
+        "condition": []
+      },
+      "visual": {
+        "problem": {
+          "ordinal": 2,
+          "axis": "problem",
+          "necessity": "EXEMPT",
+          "reason": "발문에 모든 변수·조건·결정 단계가 식으로 명시되어 별도 시각화가 정확도를 높이지 않음",
+          "plan": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사2_plans/q02-problem.plan.json",
+          "productionPlan": false,
+          "shallowLintStatus": "NOT_APPLICABLE",
+          "deepLintStatus": "NOT_APPLICABLE",
+          "renderStatus": "NOT_APPLICABLE",
+          "pngQa": "NOT_APPLICABLE",
+          "jsLinked": false
+        },
+        "solution": {
+          "ordinal": 2,
+          "axis": "solution",
+          "necessity": "EXEMPT",
+          "reason": "해설에 모든 변수·조건·결정 단계가 식으로 명시되어 별도 시각화가 정확도를 높이지 않음",
+          "plan": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사2_plans/q02-solution.plan.json",
+          "productionPlan": false,
+          "shallowLintStatus": "NOT_APPLICABLE",
+          "deepLintStatus": "NOT_APPLICABLE",
+          "renderStatus": "NOT_APPLICABLE",
+          "pngQa": "NOT_APPLICABLE",
+          "jsLinked": false
+        }
+      }
+    },
+    {
+      "ordinal": 3,
+      "questionUid": "26_금당고_1학기_기말_고2_대수_유사2:q03",
+      "sourceQid": 3,
+      "originalRef": "archive/exams/original/high/h2/1final/26_금당고_1학기_기말_고2_대수.js#q3",
+      "existingVariantRef": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사.js#q3",
+      "difficultyBucketOriginal": 1,
+      "difficultyBucketNew": 1,
+      "followupKind": "CONFIRMATION",
+      "lockedPrimaryRpmL3": "H2-M1-RPM-109",
+      "decisiveMethod": "PT_H22A_05_SINE_LAW / TPL_H22A_05_SINE_LAW_109",
+      "variationAxis": "외각 정보를 사인법칙의 대각으로 환원",
+      "duplicateCheck": "원본 및 유사1 대비 조건 정보·목표·진입 판단 중 의미 변화. 수치만 교체한 변형이 아님.",
+      "answer": "③",
+      "studentSolutionComplete": true,
+      "mathBlindI1": "PASS",
+      "externalIndependentI2": "NOT_RUN",
+      "metadata": {
+        "curriculum": "2022",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-05",
+        "subUnitKey": "H22-A-05-CORE",
+        "rpmPrimaryRecordId": "H2-M1-RPM-109",
+        "problemTypeKey": "PT_H22A_05_SINE_LAW",
+        "templateKey": "TPL_H22A_05_SINE_LAW_109",
+        "difficultyBucket": 1,
+        "reviewStatus": "review_required"
+      },
+      "fourSlot": {
+        "given": [
+          {
+            "termId": 158,
+            "label": "삼각형"
+          },
+          {
+            "termId": 715,
+            "label": "외각"
+          }
+        ],
+        "goal": [
+          {
+            "termId": 153,
+            "label": "반지름"
+          }
+        ],
+        "method": [
+          {
+            "termId": 196,
+            "label": "사인법칙"
+          }
+        ],
+        "condition": []
+      },
+      "visual": {
+        "problem": {
+          "ordinal": 3,
+          "axis": "problem",
+          "necessity": "EXEMPT",
+          "reason": "발문에 모든 변수·조건·결정 단계가 식으로 명시되어 별도 시각화가 정확도를 높이지 않음",
+          "plan": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사2_plans/q03-problem.plan.json",
+          "productionPlan": false,
+          "shallowLintStatus": "NOT_APPLICABLE",
+          "deepLintStatus": "NOT_APPLICABLE",
+          "renderStatus": "NOT_APPLICABLE",
+          "pngQa": "NOT_APPLICABLE",
+          "jsLinked": false
+        },
+        "solution": {
+          "ordinal": 3,
+          "axis": "solution",
+          "necessity": "EXEMPT",
+          "reason": "해설에 모든 변수·조건·결정 단계가 식으로 명시되어 별도 시각화가 정확도를 높이지 않음",
+          "plan": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사2_plans/q03-solution.plan.json",
+          "productionPlan": false,
+          "shallowLintStatus": "NOT_APPLICABLE",
+          "deepLintStatus": "NOT_APPLICABLE",
+          "renderStatus": "NOT_APPLICABLE",
+          "pngQa": "NOT_APPLICABLE",
+          "jsLinked": false
+        }
+      }
+    },
+    {
+      "ordinal": 4,
+      "questionUid": "26_금당고_1학기_기말_고2_대수_유사2:q04",
+      "sourceQid": 4,
+      "originalRef": "archive/exams/original/high/h2/1final/26_금당고_1학기_기말_고2_대수.js#q4",
+      "existingVariantRef": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사.js#q4",
+      "difficultyBucketOriginal": 1,
+      "difficultyBucketNew": 1,
+      "followupKind": "CONFIRMATION",
+      "lockedPrimaryRpmL3": "H2-M1-RPM-109",
+      "decisiveMethod": "PT_H22A_05_TRIANGLE_AREA / TPL_H22A_05_TRIANGLE_AREA_113",
+      "variationAxis": "그림에서 끼인각을 읽는 대신 외각 조건을 내각으로 변환",
+      "duplicateCheck": "원본 및 유사1 대비 조건 정보·목표·진입 판단 중 의미 변화. 수치만 교체한 변형이 아님.",
+      "answer": "⑤",
+      "studentSolutionComplete": true,
+      "mathBlindI1": "PASS",
+      "externalIndependentI2": "NOT_RUN",
+      "metadata": {
+        "curriculum": "2022",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-05",
+        "subUnitKey": "H22-A-05-CORE",
+        "rpmPrimaryRecordId": "H2-M1-RPM-109",
+        "problemTypeKey": "PT_H22A_05_TRIANGLE_AREA",
+        "templateKey": "TPL_H22A_05_TRIANGLE_AREA_113",
+        "difficultyBucket": 1,
+        "reviewStatus": "review_required"
+      },
+      "fourSlot": {
+        "given": [
+          {
+            "termId": 158,
+            "label": "삼각형"
+          },
+          {
+            "termId": 715,
+            "label": "외각"
+          },
+          {
+            "termId": 609,
+            "label": "끼인각"
+          }
+        ],
+        "goal": [
+          {
+            "termId": 213,
+            "label": "넓이"
+          }
+        ],
+        "method": [
+          {
+            "termId": 752,
+            "label": "삼각형넓이공식"
+          }
+        ],
+        "condition": []
+      },
+      "visual": {
+        "problem": {
+          "ordinal": 4,
+          "axis": "problem",
+          "necessity": "EXEMPT",
+          "reason": "발문에 모든 변수·조건·결정 단계가 식으로 명시되어 별도 시각화가 정확도를 높이지 않음",
+          "plan": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사2_plans/q04-problem.plan.json",
+          "productionPlan": false,
+          "shallowLintStatus": "NOT_APPLICABLE",
+          "deepLintStatus": "NOT_APPLICABLE",
+          "renderStatus": "NOT_APPLICABLE",
+          "pngQa": "NOT_APPLICABLE",
+          "jsLinked": false
+        },
+        "solution": {
+          "ordinal": 4,
+          "axis": "solution",
+          "necessity": "EXEMPT",
+          "reason": "해설에 모든 변수·조건·결정 단계가 식으로 명시되어 별도 시각화가 정확도를 높이지 않음",
+          "plan": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사2_plans/q04-solution.plan.json",
+          "productionPlan": false,
+          "shallowLintStatus": "NOT_APPLICABLE",
+          "deepLintStatus": "NOT_APPLICABLE",
+          "renderStatus": "NOT_APPLICABLE",
+          "pngQa": "NOT_APPLICABLE",
+          "jsLinked": false
+        }
+      }
+    },
+    {
+      "ordinal": 5,
+      "questionUid": "26_금당고_1학기_기말_고2_대수_유사2:q05",
+      "sourceQid": 5,
+      "originalRef": "archive/exams/original/high/h2/1final/26_금당고_1학기_기말_고2_대수.js#q5",
+      "existingVariantRef": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사.js#q5",
+      "difficultyBucketOriginal": 2,
+      "difficultyBucketNew": 2,
+      "followupKind": "CONFIRMATION",
+      "lockedPrimaryRpmL3": "H2-M1-RPM-101",
+      "decisiveMethod": "PT_H22A_04_TRIG_EQUATION / TPL_H22A_04_TRIG_EQUATION_101",
+      "variationAxis": "부호가 붙은 삼각부등식을 본래 코사인 부등식으로 바꾸고 닫힌 경계를 판정",
+      "duplicateCheck": "원본 및 유사1 대비 조건 정보·목표·진입 판단 중 의미 변화. 수치만 교체한 변형이 아님.",
+      "answer": "③",
+      "studentSolutionComplete": true,
+      "mathBlindI1": "PASS",
+      "externalIndependentI2": "NOT_RUN",
+      "metadata": {
+        "curriculum": "2022",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-04",
+        "subUnitKey": "H22-A-04-TRIGONOMETRIC_EQUATION",
+        "rpmPrimaryRecordId": "H2-M1-RPM-101",
+        "problemTypeKey": "PT_H22A_04_TRIG_EQUATION",
+        "templateKey": "TPL_H22A_04_TRIG_EQUATION_101",
+        "difficultyBucket": 2,
+        "reviewStatus": "review_required"
+      },
+      "fourSlot": {
+        "given": [
+          {
+            "termId": 96,
+            "label": "삼각함수"
+          },
+          {
+            "termId": 76,
+            "label": "삼각부등식"
+          }
+        ],
+        "goal": [
+          {
+            "termId": 83,
+            "label": "해집합"
+          }
+        ],
+        "method": [
+          {
+            "termId": 481,
+            "label": "단위원"
+          },
+          {
+            "termId": 654,
+            "label": "부등식의성질"
+          }
+        ],
+        "condition": [
+          {
+            "termId": 63,
+            "label": "부등식"
+          }
+        ]
+      },
+      "visual": {
+        "problem": {
+          "ordinal": 5,
+          "axis": "problem",
+          "necessity": "EXEMPT",
+          "reason": "발문에 모든 변수·조건·결정 단계가 식으로 명시되어 별도 시각화가 정확도를 높이지 않음",
+          "plan": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사2_plans/q05-problem.plan.json",
+          "productionPlan": false,
+          "shallowLintStatus": "NOT_APPLICABLE",
+          "deepLintStatus": "NOT_APPLICABLE",
+          "renderStatus": "NOT_APPLICABLE",
+          "pngQa": "NOT_APPLICABLE",
+          "jsLinked": false
+        },
+        "solution": {
+          "ordinal": 5,
+          "axis": "solution",
+          "necessity": "BENEFICIAL",
+          "reason": "등호를 포함한 코사인 경계각 두 개와 구간을 그래프로 확인",
+          "plan": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사2_plans/q05-solution.plan.json",
+          "productionPlan": true,
+          "shallowLintStatus": "PASS",
+          "deepLintStatus": "PASS",
+          "renderStatus": "NOT_RUN",
+          "pngQa": "NOT_RUN",
+          "jsLinked": false
+        }
+      }
+    },
+    {
+      "ordinal": 6,
+      "questionUid": "26_금당고_1학기_기말_고2_대수_유사2:q06",
+      "sourceQid": 6,
+      "originalRef": "archive/exams/original/high/h2/1final/26_금당고_1학기_기말_고2_대수.js#q6",
+      "existingVariantRef": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사.js#q6",
+      "difficultyBucketOriginal": 2,
+      "difficultyBucketNew": 2,
+      "followupKind": "CONFIRMATION",
+      "lockedPrimaryRpmL3": "H2-M1-RPM-115",
+      "decisiveMethod": "PT_H22A_06_GEOMETRIC_SEQUENCE / TPL_H22A_06_GEOMETRIC_SEQUENCE_118",
+      "variationAxis": "처음 기준 이상인 항 대신 기준 미만의 마지막 항을 판정",
+      "duplicateCheck": "원본 및 유사1 대비 조건 정보·목표·진입 판단 중 의미 변화. 수치만 교체한 변형이 아님.",
+      "answer": "④",
+      "studentSolutionComplete": true,
+      "mathBlindI1": "PASS",
+      "externalIndependentI2": "NOT_RUN",
+      "metadata": {
+        "curriculum": "2022",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-06",
+        "subUnitKey": "H22-A-06-SEQUENCE_BASIC",
+        "rpmPrimaryRecordId": "H2-M1-RPM-115",
+        "problemTypeKey": "PT_H22A_06_GEOMETRIC_SEQUENCE",
+        "templateKey": "TPL_H22A_06_GEOMETRIC_SEQUENCE_118",
+        "difficultyBucket": 2,
+        "reviewStatus": "review_required"
+      },
+      "fourSlot": {
+        "given": [
+          {
+            "termId": 271,
+            "label": "등비수열"
+          },
+          {
+            "termId": 476,
+            "label": "공비"
+          }
+        ],
+        "goal": [
+          {
+            "termId": 1,
+            "label": "자연수"
+          },
+          {
+            "termId": 127,
+            "label": "최댓값"
+          }
+        ],
+        "method": [
+          {
+            "termId": 271,
+            "label": "등비수열"
+          },
+          {
+            "termId": 734,
+            "label": "일반항"
+          }
+        ],
+        "condition": [
+          {
+            "termId": 63,
+            "label": "부등식"
+          }
+        ]
+      },
+      "visual": {
+        "problem": {
+          "ordinal": 6,
+          "axis": "problem",
+          "necessity": "EXEMPT",
+          "reason": "발문에 모든 변수·조건·결정 단계가 식으로 명시되어 별도 시각화가 정확도를 높이지 않음",
+          "plan": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사2_plans/q06-problem.plan.json",
+          "productionPlan": false,
+          "shallowLintStatus": "NOT_APPLICABLE",
+          "deepLintStatus": "NOT_APPLICABLE",
+          "renderStatus": "NOT_APPLICABLE",
+          "pngQa": "NOT_APPLICABLE",
+          "jsLinked": false
+        },
+        "solution": {
+          "ordinal": 6,
+          "axis": "solution",
+          "necessity": "EXEMPT",
+          "reason": "해설에 모든 변수·조건·결정 단계가 식으로 명시되어 별도 시각화가 정확도를 높이지 않음",
+          "plan": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사2_plans/q06-solution.plan.json",
+          "productionPlan": false,
+          "shallowLintStatus": "NOT_APPLICABLE",
+          "deepLintStatus": "NOT_APPLICABLE",
+          "renderStatus": "NOT_APPLICABLE",
+          "pngQa": "NOT_APPLICABLE",
+          "jsLinked": false
+        }
+      }
+    },
+    {
+      "ordinal": 7,
+      "questionUid": "26_금당고_1학기_기말_고2_대수_유사2:q07",
+      "sourceQid": 7,
+      "originalRef": "archive/exams/original/high/h2/1final/26_금당고_1학기_기말_고2_대수.js#q7",
+      "existingVariantRef": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사.js#q7",
+      "difficultyBucketOriginal": 2,
+      "difficultyBucketNew": 2,
+      "followupKind": "CONFIRMATION",
+      "lockedPrimaryRpmL3": "H2-M1-RPM-123",
+      "decisiveMethod": "PT_H22A_07_SIGMA_NOTATION / TPL_H22A_07_SIGMA_NOTATION_123",
+      "variationAxis": "선형 결합의 합을 주고 원래 항의 합을 역으로 복원",
+      "duplicateCheck": "원본 및 유사1 대비 조건 정보·목표·진입 판단 중 의미 변화. 수치만 교체한 변형이 아님.",
+      "answer": "④",
+      "studentSolutionComplete": true,
+      "mathBlindI1": "PASS",
+      "externalIndependentI2": "NOT_RUN",
+      "metadata": {
+        "curriculum": "2022",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-07",
+        "subUnitKey": "H22-A-07-SEQUENCE_BASIC",
+        "rpmPrimaryRecordId": "H2-M1-RPM-123",
+        "problemTypeKey": "PT_H22A_07_SIGMA_NOTATION",
+        "templateKey": "TPL_H22A_07_SIGMA_NOTATION_123",
+        "difficultyBucket": 2,
+        "reviewStatus": "review_required"
+      },
+      "fourSlot": {
+        "given": [
+          {
+            "termId": 269,
+            "label": "수열"
+          },
+          {
+            "termId": 479,
+            "label": "수열의합"
+          }
+        ],
+        "goal": [
+          {
+            "termId": 479,
+            "label": "수열의합"
+          }
+        ],
+        "method": [
+          {
+            "termId": 286,
+            "label": "합"
+          },
+          {
+            "termId": 479,
+            "label": "수열의합"
+          }
+        ],
+        "condition": []
+      },
+      "visual": {
+        "problem": {
+          "ordinal": 7,
+          "axis": "problem",
+          "necessity": "EXEMPT",
+          "reason": "발문에 모든 변수·조건·결정 단계가 식으로 명시되어 별도 시각화가 정확도를 높이지 않음",
+          "plan": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사2_plans/q07-problem.plan.json",
+          "productionPlan": false,
+          "shallowLintStatus": "NOT_APPLICABLE",
+          "deepLintStatus": "NOT_APPLICABLE",
+          "renderStatus": "NOT_APPLICABLE",
+          "pngQa": "NOT_APPLICABLE",
+          "jsLinked": false
+        },
+        "solution": {
+          "ordinal": 7,
+          "axis": "solution",
+          "necessity": "EXEMPT",
+          "reason": "해설에 모든 변수·조건·결정 단계가 식으로 명시되어 별도 시각화가 정확도를 높이지 않음",
+          "plan": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사2_plans/q07-solution.plan.json",
+          "productionPlan": false,
+          "shallowLintStatus": "NOT_APPLICABLE",
+          "deepLintStatus": "NOT_APPLICABLE",
+          "renderStatus": "NOT_APPLICABLE",
+          "pngQa": "NOT_APPLICABLE",
+          "jsLinked": false
+        }
+      }
+    },
+    {
+      "ordinal": 8,
+      "questionUid": "26_금당고_1학기_기말_고2_대수_유사2:q08",
+      "sourceQid": 8,
+      "originalRef": "archive/exams/original/high/h2/1final/26_금당고_1학기_기말_고2_대수.js#q8",
+      "existingVariantRef": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사.js#q8",
+      "difficultyBucketOriginal": 2,
+      "difficultyBucketNew": 2,
+      "followupKind": "CONFIRMATION",
+      "lockedPrimaryRpmL3": "H2-M1-RPM-095",
+      "decisiveMethod": "PT_H22A_04_TRIG_PROPERTIES / TPL_H22A_04_TRIG_PROPERTIES_099",
+      "variationAxis": "동일 삼각함수 제곱 대신 다른 삼각함수의 부호를 판별하는 곱으로 전환",
+      "duplicateCheck": "원본 및 유사1 대비 조건 정보·목표·진입 판단 중 의미 변화. 수치만 교체한 변형이 아님.",
+      "answer": "①",
+      "studentSolutionComplete": true,
+      "mathBlindI1": "PASS",
+      "externalIndependentI2": "NOT_RUN",
+      "metadata": {
+        "curriculum": "2022",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-04",
+        "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
+        "rpmPrimaryRecordId": "H2-M1-RPM-095",
+        "problemTypeKey": "PT_H22A_04_TRIG_PROPERTIES",
+        "templateKey": "TPL_H22A_04_TRIG_PROPERTIES_099",
+        "difficultyBucket": 2,
+        "reviewStatus": "review_required"
+      },
+      "fourSlot": {
+        "given": [
+          {
+            "termId": 158,
+            "label": "삼각형"
+          },
+          {
+            "termId": 675,
+            "label": "코사인"
+          }
+        ],
+        "goal": [
+          {
+            "termId": 674,
+            "label": "사인"
+          },
+          {
+            "termId": 675,
+            "label": "코사인"
+          },
+          {
+            "termId": 287,
+            "label": "곱"
+          }
+        ],
+        "method": [
+          {
+            "termId": 480,
+            "label": "삼각함수의상호관계"
+          }
+        ],
+        "condition": []
+      },
+      "visual": {
+        "problem": {
+          "ordinal": 8,
+          "axis": "problem",
+          "necessity": "EXEMPT",
+          "reason": "발문에 모든 변수·조건·결정 단계가 식으로 명시되어 별도 시각화가 정확도를 높이지 않음",
+          "plan": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사2_plans/q08-problem.plan.json",
+          "productionPlan": false,
+          "shallowLintStatus": "NOT_APPLICABLE",
+          "deepLintStatus": "NOT_APPLICABLE",
+          "renderStatus": "NOT_APPLICABLE",
+          "pngQa": "NOT_APPLICABLE",
+          "jsLinked": false
+        },
+        "solution": {
+          "ordinal": 8,
+          "axis": "solution",
+          "necessity": "EXEMPT",
+          "reason": "해설에 모든 변수·조건·결정 단계가 식으로 명시되어 별도 시각화가 정확도를 높이지 않음",
+          "plan": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사2_plans/q08-solution.plan.json",
+          "productionPlan": false,
+          "shallowLintStatus": "NOT_APPLICABLE",
+          "deepLintStatus": "NOT_APPLICABLE",
+          "renderStatus": "NOT_APPLICABLE",
+          "pngQa": "NOT_APPLICABLE",
+          "jsLinked": false
+        }
+      }
+    },
+    {
+      "ordinal": 9,
+      "questionUid": "26_금당고_1학기_기말_고2_대수_유사2:q09",
+      "sourceQid": 9,
+      "originalRef": "archive/exams/original/high/h2/1final/26_금당고_1학기_기말_고2_대수.js#q9",
+      "existingVariantRef": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사.js#q9",
+      "difficultyBucketOriginal": 3,
+      "difficultyBucketNew": 3,
+      "followupKind": "CONFIRMATION",
+      "lockedPrimaryRpmL3": "H2-M1-RPM-109",
+      "decisiveMethod": "PT_H22A_05_TRIANGLE_AREA / TPL_H22A_05_TRIANGLE_AREA_113",
+      "variationAxis": "한 대각선 길이 역산에서 두 대각선 합을 이용한 끼인 예각 역산으로 변형",
+      "duplicateCheck": "원본 및 유사1 대비 조건 정보·목표·진입 판단 중 의미 변화. 수치만 교체한 변형이 아님.",
+      "answer": "⑤",
+      "studentSolutionComplete": true,
+      "mathBlindI1": "PASS",
+      "externalIndependentI2": "NOT_RUN",
+      "metadata": {
+        "curriculum": "2022",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-05",
+        "subUnitKey": "H22-A-05-CORE",
+        "rpmPrimaryRecordId": "H2-M1-RPM-109",
+        "problemTypeKey": "PT_H22A_05_TRIANGLE_AREA",
+        "templateKey": "TPL_H22A_05_TRIANGLE_AREA_113",
+        "difficultyBucket": 3,
+        "reviewStatus": "review_required"
+      },
+      "fourSlot": {
+        "given": [
+          {
+            "termId": 438,
+            "label": "등변사다리꼴"
+          },
+          {
+            "termId": 310,
+            "label": "대각선"
+          },
+          {
+            "termId": 213,
+            "label": "넓이"
+          }
+        ],
+        "goal": [
+          {
+            "termId": 667,
+            "label": "이루는각"
+          }
+        ],
+        "method": [
+          {
+            "termId": 752,
+            "label": "삼각형넓이공식"
+          }
+        ],
+        "condition": [
+          {
+            "termId": 407,
+            "label": "예각"
+          }
+        ]
+      },
+      "visual": {
+        "problem": {
+          "ordinal": 9,
+          "axis": "problem",
+          "necessity": "BENEFICIAL",
+          "reason": "등변사다리꼴의 동일한 두 대각선과 이루는 예각의 위치 확인",
+          "plan": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사2_plans/q09-problem.plan.json",
+          "productionPlan": false,
+          "shallowLintStatus": "NOT_APPLICABLE",
+          "deepLintStatus": "NOT_APPLICABLE",
+          "renderStatus": "NOT_RUN",
+          "pngQa": "NOT_RUN",
+          "jsLinked": false
+        },
+        "solution": {
+          "ordinal": 9,
+          "axis": "solution",
+          "necessity": "BENEFICIAL",
+          "reason": "대각선에 의한 넓이 공식의 끼인각 관계를 확인",
+          "plan": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사2_plans/q09-solution.plan.json",
+          "productionPlan": false,
+          "shallowLintStatus": "NOT_APPLICABLE",
+          "deepLintStatus": "NOT_APPLICABLE",
+          "renderStatus": "NOT_RUN",
+          "pngQa": "NOT_RUN",
+          "jsLinked": false
+        }
+      }
+    },
+    {
+      "ordinal": 10,
+      "questionUid": "26_금당고_1학기_기말_고2_대수_유사2:q10",
+      "sourceQid": 10,
+      "originalRef": "archive/exams/original/high/h2/1final/26_금당고_1학기_기말_고2_대수.js#q10",
+      "existingVariantRef": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사.js#q10",
+      "difficultyBucketOriginal": 3,
+      "difficultyBucketNew": 3,
+      "followupKind": "CONFIRMATION",
+      "lockedPrimaryRpmL3": "H2-M1-RPM-109",
+      "decisiveMethod": "PT_H22A_05_COSINE_LAW / TPL_H22A_05_COSINE_LAW_111",
+      "variationAxis": "유도한 변의 비로 다른 꼭짓점의 코사인값을 판정",
+      "duplicateCheck": "원본 및 유사1 대비 조건 정보·목표·진입 판단 중 의미 변화. 수치만 교체한 변형이 아님.",
+      "answer": "④",
+      "studentSolutionComplete": true,
+      "mathBlindI1": "PASS",
+      "externalIndependentI2": "NOT_RUN",
+      "metadata": {
+        "curriculum": "2022",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-05",
+        "subUnitKey": "H22-A-05-CORE",
+        "rpmPrimaryRecordId": "H2-M1-RPM-109",
+        "problemTypeKey": "PT_H22A_05_COSINE_LAW",
+        "templateKey": "TPL_H22A_05_COSINE_LAW_111",
+        "difficultyBucket": 3,
+        "reviewStatus": "review_required"
+      },
+      "fourSlot": {
+        "given": [
+          {
+            "termId": 158,
+            "label": "삼각형"
+          },
+          {
+            "termId": 674,
+            "label": "사인"
+          }
+        ],
+        "goal": [
+          {
+            "termId": 675,
+            "label": "코사인"
+          }
+        ],
+        "method": [
+          {
+            "termId": 196,
+            "label": "사인법칙"
+          },
+          {
+            "termId": 197,
+            "label": "코사인법칙"
+          }
+        ],
+        "condition": []
+      },
+      "visual": {
+        "problem": {
+          "ordinal": 10,
+          "axis": "problem",
+          "necessity": "EXEMPT",
+          "reason": "발문에 모든 변수·조건·결정 단계가 식으로 명시되어 별도 시각화가 정확도를 높이지 않음",
+          "plan": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사2_plans/q10-problem.plan.json",
+          "productionPlan": false,
+          "shallowLintStatus": "NOT_APPLICABLE",
+          "deepLintStatus": "NOT_APPLICABLE",
+          "renderStatus": "NOT_APPLICABLE",
+          "pngQa": "NOT_APPLICABLE",
+          "jsLinked": false
+        },
+        "solution": {
+          "ordinal": 10,
+          "axis": "solution",
+          "necessity": "EXEMPT",
+          "reason": "해설에 모든 변수·조건·결정 단계가 식으로 명시되어 별도 시각화가 정확도를 높이지 않음",
+          "plan": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사2_plans/q10-solution.plan.json",
+          "productionPlan": false,
+          "shallowLintStatus": "NOT_APPLICABLE",
+          "deepLintStatus": "NOT_APPLICABLE",
+          "renderStatus": "NOT_APPLICABLE",
+          "pngQa": "NOT_APPLICABLE",
+          "jsLinked": false
+        }
+      }
+    },
+    {
+      "ordinal": 11,
+      "questionUid": "26_금당고_1학기_기말_고2_대수_유사2:q11",
+      "sourceQid": 11,
+      "originalRef": "archive/exams/original/high/h2/1final/26_금당고_1학기_기말_고2_대수.js#q11",
+      "existingVariantRef": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사.js#q11",
+      "difficultyBucketOriginal": 2,
+      "difficultyBucketNew": 2,
+      "followupKind": "CONFIRMATION",
+      "lockedPrimaryRpmL3": "H2-M1-RPM-115",
+      "decisiveMethod": "PT_H22A_06_GEOMETRIC_SEQUENCE / TPL_H22A_06_GEOMETRIC_SEQUENCE_118",
+      "variationAxis": "모든 항의 제곱합에서 홀수 위치 제곱 항의 부분등비합으로 전환",
+      "duplicateCheck": "원본 및 유사1 대비 조건 정보·목표·진입 판단 중 의미 변화. 수치만 교체한 변형이 아님.",
+      "answer": "①",
+      "studentSolutionComplete": true,
+      "mathBlindI1": "PASS",
+      "externalIndependentI2": "NOT_RUN",
+      "metadata": {
+        "curriculum": "2022",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-06",
+        "subUnitKey": "H22-A-06-SEQUENCE_BASIC",
+        "rpmPrimaryRecordId": "H2-M1-RPM-115",
+        "problemTypeKey": "PT_H22A_06_GEOMETRIC_SEQUENCE",
+        "templateKey": "TPL_H22A_06_GEOMETRIC_SEQUENCE_118",
+        "difficultyBucket": 2,
+        "reviewStatus": "review_required"
+      },
+      "fourSlot": {
+        "given": [
+          {
+            "termId": 271,
+            "label": "등비수열"
+          },
+          {
+            "termId": 336,
+            "label": "제곱합"
+          }
+        ],
+        "goal": [
+          {
+            "termId": 479,
+            "label": "수열의합"
+          }
+        ],
+        "method": [
+          {
+            "termId": 476,
+            "label": "공비"
+          },
+          {
+            "termId": 479,
+            "label": "수열의합"
+          }
+        ],
+        "condition": []
+      },
+      "visual": {
+        "problem": {
+          "ordinal": 11,
+          "axis": "problem",
+          "necessity": "EXEMPT",
+          "reason": "발문에 모든 변수·조건·결정 단계가 식으로 명시되어 별도 시각화가 정확도를 높이지 않음",
+          "plan": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사2_plans/q11-problem.plan.json",
+          "productionPlan": false,
+          "shallowLintStatus": "NOT_APPLICABLE",
+          "deepLintStatus": "NOT_APPLICABLE",
+          "renderStatus": "NOT_APPLICABLE",
+          "pngQa": "NOT_APPLICABLE",
+          "jsLinked": false
+        },
+        "solution": {
+          "ordinal": 11,
+          "axis": "solution",
+          "necessity": "EXEMPT",
+          "reason": "해설에 모든 변수·조건·결정 단계가 식으로 명시되어 별도 시각화가 정확도를 높이지 않음",
+          "plan": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사2_plans/q11-solution.plan.json",
+          "productionPlan": false,
+          "shallowLintStatus": "NOT_APPLICABLE",
+          "deepLintStatus": "NOT_APPLICABLE",
+          "renderStatus": "NOT_APPLICABLE",
+          "pngQa": "NOT_APPLICABLE",
+          "jsLinked": false
+        }
+      }
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "26_금당고_1학기_기말_고2_대수_유사2:q12",
+      "sourceQid": 12,
+      "originalRef": "archive/exams/original/high/h2/1final/26_금당고_1학기_기말_고2_대수.js#q12",
+      "existingVariantRef": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사.js#q12",
+      "difficultyBucketOriginal": 3,
+      "difficultyBucketNew": 3,
+      "followupKind": "CONFIRMATION",
+      "lockedPrimaryRpmL3": "H2-M1-RPM-115",
+      "decisiveMethod": "PT_H22A_06_GEOMETRIC_SEQUENCE / TPL_H22A_06_GEOMETRIC_SEQUENCE_118",
+      "variationAxis": "이웃 두 항의 곱에서 한 항 건너 두 항의 곱으로 파생 수열 구조 변경",
+      "duplicateCheck": "원본 및 유사1 대비 조건 정보·목표·진입 판단 중 의미 변화. 수치만 교체한 변형이 아님.",
+      "answer": "②",
+      "studentSolutionComplete": true,
+      "mathBlindI1": "PASS",
+      "externalIndependentI2": "NOT_RUN",
+      "metadata": {
+        "curriculum": "2022",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-06",
+        "subUnitKey": "H22-A-06-SEQUENCE_BASIC",
+        "rpmPrimaryRecordId": "H2-M1-RPM-115",
+        "problemTypeKey": "PT_H22A_06_GEOMETRIC_SEQUENCE",
+        "templateKey": "TPL_H22A_06_GEOMETRIC_SEQUENCE_118",
+        "difficultyBucket": 3,
+        "reviewStatus": "review_required"
+      },
+      "fourSlot": {
+        "given": [
+          {
+            "termId": 271,
+            "label": "등비수열"
+          },
+          {
+            "termId": 476,
+            "label": "공비"
+          }
+        ],
+        "goal": [
+          {
+            "termId": 479,
+            "label": "수열의합"
+          }
+        ],
+        "method": [
+          {
+            "termId": 271,
+            "label": "등비수열"
+          },
+          {
+            "termId": 479,
+            "label": "수열의합"
+          }
+        ],
+        "condition": []
+      },
+      "visual": {
+        "problem": {
+          "ordinal": 12,
+          "axis": "problem",
+          "necessity": "EXEMPT",
+          "reason": "발문에 모든 변수·조건·결정 단계가 식으로 명시되어 별도 시각화가 정확도를 높이지 않음",
+          "plan": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사2_plans/q12-problem.plan.json",
+          "productionPlan": false,
+          "shallowLintStatus": "NOT_APPLICABLE",
+          "deepLintStatus": "NOT_APPLICABLE",
+          "renderStatus": "NOT_APPLICABLE",
+          "pngQa": "NOT_APPLICABLE",
+          "jsLinked": false
+        },
+        "solution": {
+          "ordinal": 12,
+          "axis": "solution",
+          "necessity": "EXEMPT",
+          "reason": "해설에 모든 변수·조건·결정 단계가 식으로 명시되어 별도 시각화가 정확도를 높이지 않음",
+          "plan": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사2_plans/q12-solution.plan.json",
+          "productionPlan": false,
+          "shallowLintStatus": "NOT_APPLICABLE",
+          "deepLintStatus": "NOT_APPLICABLE",
+          "renderStatus": "NOT_APPLICABLE",
+          "pngQa": "NOT_APPLICABLE",
+          "jsLinked": false
+        }
+      }
+    },
+    {
+      "ordinal": 13,
+      "questionUid": "26_금당고_1학기_기말_고2_대수_유사2:q13",
+      "sourceQid": 13,
+      "originalRef": "archive/exams/original/high/h2/1final/26_금당고_1학기_기말_고2_대수.js#q13",
+      "existingVariantRef": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사.js#q13",
+      "difficultyBucketOriginal": 3,
+      "difficultyBucketNew": 3,
+      "followupKind": "CONFIRMATION",
+      "lockedPrimaryRpmL3": "H2-M1-RPM-115",
+      "decisiveMethod": "PT_H22A_06_ARITHMETIC_SEQUENCE / TPL_H22A_06_ARITHMETIC_SEQUENCE_115",
+      "variationAxis": "합과 겉넓이의 AP 역산은 유지하되 부피 대신 두 모서리 곱을 묻는다",
+      "duplicateCheck": "원본 및 유사1 대비 조건 정보·목표·진입 판단 중 의미 변화. 수치만 교체한 변형이 아님.",
+      "answer": "②",
+      "studentSolutionComplete": true,
+      "mathBlindI1": "PASS",
+      "externalIndependentI2": "NOT_RUN",
+      "metadata": {
+        "curriculum": "2022",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-06",
+        "subUnitKey": "H22-A-06-SEQUENCE_BASIC",
+        "rpmPrimaryRecordId": "H2-M1-RPM-115",
+        "problemTypeKey": "PT_H22A_06_ARITHMETIC_SEQUENCE",
+        "templateKey": "TPL_H22A_06_ARITHMETIC_SEQUENCE_115",
+        "difficultyBucket": 3,
+        "reviewStatus": "review_required"
+      },
+      "fourSlot": {
+        "given": [
+          {
+            "termId": 603,
+            "label": "직육면체"
+          },
+          {
+            "termId": 270,
+            "label": "등차수열"
+          },
+          {
+            "termId": 220,
+            "label": "겉넓이"
+          }
+        ],
+        "goal": [
+          {
+            "termId": 329,
+            "label": "모서리"
+          },
+          {
+            "termId": 287,
+            "label": "곱"
+          }
+        ],
+        "method": [
+          {
+            "termId": 475,
+            "label": "공차"
+          },
+          {
+            "termId": 220,
+            "label": "겉넓이"
+          }
+        ],
+        "condition": []
+      },
+      "visual": {
+        "problem": {
+          "ordinal": 13,
+          "axis": "problem",
+          "necessity": "EXEMPT",
+          "reason": "발문에 모든 변수·조건·결정 단계가 식으로 명시되어 별도 시각화가 정확도를 높이지 않음",
+          "plan": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사2_plans/q13-problem.plan.json",
+          "productionPlan": false,
+          "shallowLintStatus": "NOT_APPLICABLE",
+          "deepLintStatus": "NOT_APPLICABLE",
+          "renderStatus": "NOT_APPLICABLE",
+          "pngQa": "NOT_APPLICABLE",
+          "jsLinked": false
+        },
+        "solution": {
+          "ordinal": 13,
+          "axis": "solution",
+          "necessity": "EXEMPT",
+          "reason": "해설에 모든 변수·조건·결정 단계가 식으로 명시되어 별도 시각화가 정확도를 높이지 않음",
+          "plan": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사2_plans/q13-solution.plan.json",
+          "productionPlan": false,
+          "shallowLintStatus": "NOT_APPLICABLE",
+          "deepLintStatus": "NOT_APPLICABLE",
+          "renderStatus": "NOT_APPLICABLE",
+          "pngQa": "NOT_APPLICABLE",
+          "jsLinked": false
+        }
+      }
+    },
+    {
+      "ordinal": 14,
+      "questionUid": "26_금당고_1학기_기말_고2_대수_유사2:q14",
+      "sourceQid": 14,
+      "originalRef": "archive/exams/original/high/h2/1final/26_금당고_1학기_기말_고2_대수.js#q14",
+      "existingVariantRef": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사.js#q14",
+      "difficultyBucketOriginal": 3,
+      "difficultyBucketNew": 3,
+      "followupKind": "CONFIRMATION",
+      "lockedPrimaryRpmL3": "H2-M1-RPM-103",
+      "decisiveMethod": "PT_FUNCTION_EXTREMUM / TPL_FUNCTION_EXTREMUM_BOUND_COEFFICIENT",
+      "variationAxis": "바깥 삼각함수에 위상 이동을 넣고 안쪽 치역을 이동한 구간에서 극값 판정",
+      "duplicateCheck": "원본 및 유사1 대비 조건 정보·목표·진입 판단 중 의미 변화. 수치만 교체한 변형이 아님.",
+      "answer": "⑤",
+      "studentSolutionComplete": true,
+      "mathBlindI1": "PASS",
+      "externalIndependentI2": "NOT_RUN",
+      "metadata": {
+        "curriculum": "2022",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-04",
+        "subUnitKey": "H22-A-04-TRIGONOMETRIC_GRAPH",
+        "rpmPrimaryRecordId": "H2-M1-RPM-103",
+        "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+        "templateKey": "TPL_FUNCTION_EXTREMUM_BOUND_COEFFICIENT",
+        "difficultyBucket": 3,
+        "reviewStatus": "review_required"
+      },
+      "fourSlot": {
+        "given": [
+          {
+            "termId": 85,
+            "label": "합성함수"
+          },
+          {
+            "termId": 96,
+            "label": "삼각함수"
+          }
+        ],
+        "goal": [
+          {
+            "termId": 127,
+            "label": "최댓값"
+          },
+          {
+            "termId": 128,
+            "label": "최솟값"
+          }
+        ],
+        "method": [
+          {
+            "termId": 103,
+            "label": "치역"
+          },
+          {
+            "termId": 675,
+            "label": "코사인"
+          }
+        ],
+        "condition": []
+      },
+      "visual": {
+        "problem": {
+          "ordinal": 14,
+          "axis": "problem",
+          "necessity": "EXEMPT",
+          "reason": "발문에 모든 변수·조건·결정 단계가 식으로 명시되어 별도 시각화가 정확도를 높이지 않음",
+          "plan": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사2_plans/q14-problem.plan.json",
+          "productionPlan": false,
+          "shallowLintStatus": "NOT_APPLICABLE",
+          "deepLintStatus": "NOT_APPLICABLE",
+          "renderStatus": "NOT_APPLICABLE",
+          "pngQa": "NOT_APPLICABLE",
+          "jsLinked": false
+        },
+        "solution": {
+          "ordinal": 14,
+          "axis": "solution",
+          "necessity": "BENEFICIAL",
+          "reason": "합성함수의 안쪽 치역을 이동한 코사인 구간에서 최대·최소 위치를 확인",
+          "plan": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사2_plans/q14-solution.plan.json",
+          "productionPlan": false,
+          "shallowLintStatus": "NOT_APPLICABLE",
+          "deepLintStatus": "NOT_APPLICABLE",
+          "renderStatus": "NOT_RUN",
+          "pngQa": "NOT_RUN",
+          "jsLinked": false
+        }
+      }
+    },
+    {
+      "ordinal": 15,
+      "questionUid": "26_금당고_1학기_기말_고2_대수_유사2:q15",
+      "sourceQid": 15,
+      "originalRef": "archive/exams/original/high/h2/1final/26_금당고_1학기_기말_고2_대수.js#q15",
+      "existingVariantRef": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사.js#q15",
+      "difficultyBucketOriginal": 3,
+      "difficultyBucketNew": 3,
+      "followupKind": "CONFIRMATION",
+      "lockedPrimaryRpmL3": "H2-M1-RPM-109",
+      "decisiveMethod": "PT_H22A_05_TRIANGLE_AREA / TPL_H22A_05_TRIANGLE_AREA_113",
+      "variationAxis": "합의 최소 대신 제곱합 최소를 묻되 양변의 곱과 등호조건 유지",
+      "duplicateCheck": "원본 및 유사1 대비 조건 정보·목표·진입 판단 중 의미 변화. 수치만 교체한 변형이 아님.",
+      "answer": "③",
+      "studentSolutionComplete": true,
+      "mathBlindI1": "PASS",
+      "externalIndependentI2": "NOT_RUN",
+      "metadata": {
+        "curriculum": "2022",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-05",
+        "subUnitKey": "H22-A-05-CORE",
+        "rpmPrimaryRecordId": "H2-M1-RPM-109",
+        "problemTypeKey": "PT_H22A_05_TRIANGLE_AREA",
+        "templateKey": "TPL_H22A_05_TRIANGLE_AREA_113",
+        "difficultyBucket": 3,
+        "reviewStatus": "review_required"
+      },
+      "fourSlot": {
+        "given": [
+          {
+            "termId": 158,
+            "label": "삼각형"
+          },
+          {
+            "termId": 213,
+            "label": "넓이"
+          },
+          {
+            "termId": 609,
+            "label": "끼인각"
+          }
+        ],
+        "goal": [
+          {
+            "termId": 128,
+            "label": "최솟값"
+          }
+        ],
+        "method": [
+          {
+            "termId": 752,
+            "label": "삼각형넓이공식"
+          },
+          {
+            "termId": 70,
+            "label": "절대부등식"
+          }
+        ],
+        "condition": []
+      },
+      "visual": {
+        "problem": {
+          "ordinal": 15,
+          "axis": "problem",
+          "necessity": "EXEMPT",
+          "reason": "발문에 모든 변수·조건·결정 단계가 식으로 명시되어 별도 시각화가 정확도를 높이지 않음",
+          "plan": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사2_plans/q15-problem.plan.json",
+          "productionPlan": false,
+          "shallowLintStatus": "NOT_APPLICABLE",
+          "deepLintStatus": "NOT_APPLICABLE",
+          "renderStatus": "NOT_APPLICABLE",
+          "pngQa": "NOT_APPLICABLE",
+          "jsLinked": false
+        },
+        "solution": {
+          "ordinal": 15,
+          "axis": "solution",
+          "necessity": "EXEMPT",
+          "reason": "해설에 모든 변수·조건·결정 단계가 식으로 명시되어 별도 시각화가 정확도를 높이지 않음",
+          "plan": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사2_plans/q15-solution.plan.json",
+          "productionPlan": false,
+          "shallowLintStatus": "NOT_APPLICABLE",
+          "deepLintStatus": "NOT_APPLICABLE",
+          "renderStatus": "NOT_APPLICABLE",
+          "pngQa": "NOT_APPLICABLE",
+          "jsLinked": false
+        }
+      }
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "26_금당고_1학기_기말_고2_대수_유사2:q16",
+      "sourceQid": 16,
+      "originalRef": "archive/exams/original/high/h2/1final/26_금당고_1학기_기말_고2_대수.js#q16",
+      "existingVariantRef": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사.js#q16",
+      "difficultyBucketOriginal": 4,
+      "difficultyBucketNew": 4,
+      "followupKind": "CONFIRMATION",
+      "lockedPrimaryRpmL3": "H2-M1-RPM-121",
+      "decisiveMethod": "PT_H22A_06_SEQUENCE_APPLICATION / TPL_H22A_06_SEQUENCE_APPLICATION_121",
+      "variationAxis": "끝항의 소인수 지수를 2n으로 만들고 약수 개수는 2n에 대해 세도록 변경",
+      "duplicateCheck": "원본 및 유사1 대비 조건 정보·목표·진입 판단 중 의미 변화. 수치만 교체한 변형이 아님.",
+      "answer": "④",
+      "studentSolutionComplete": true,
+      "mathBlindI1": "PASS",
+      "externalIndependentI2": "NOT_RUN",
+      "metadata": {
+        "curriculum": "2022",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-06",
+        "subUnitKey": "H22-A-06-SEQUENCE_APPLICATION",
+        "rpmPrimaryRecordId": "H2-M1-RPM-121",
+        "problemTypeKey": "PT_H22A_06_SEQUENCE_APPLICATION",
+        "templateKey": "TPL_H22A_06_SEQUENCE_APPLICATION_121",
+        "difficultyBucket": 4,
+        "reviewStatus": "review_required"
+      },
+      "fourSlot": {
+        "given": [
+          {
+            "termId": 271,
+            "label": "등비수열"
+          },
+          {
+            "termId": 11,
+            "label": "약수"
+          },
+          {
+            "termId": 20,
+            "label": "거듭제곱"
+          }
+        ],
+        "goal": [
+          {
+            "termId": 128,
+            "label": "최솟값"
+          }
+        ],
+        "method": [
+          {
+            "termId": 11,
+            "label": "약수"
+          }
+        ],
+        "condition": []
+      },
+      "visual": {
+        "problem": {
+          "ordinal": 16,
+          "axis": "problem",
+          "necessity": "EXEMPT",
+          "reason": "발문에 모든 변수·조건·결정 단계가 식으로 명시되어 별도 시각화가 정확도를 높이지 않음",
+          "plan": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사2_plans/q16-problem.plan.json",
+          "productionPlan": false,
+          "shallowLintStatus": "NOT_APPLICABLE",
+          "deepLintStatus": "NOT_APPLICABLE",
+          "renderStatus": "NOT_APPLICABLE",
+          "pngQa": "NOT_APPLICABLE",
+          "jsLinked": false
+        },
+        "solution": {
+          "ordinal": 16,
+          "axis": "solution",
+          "necessity": "EXEMPT",
+          "reason": "해설에 모든 변수·조건·결정 단계가 식으로 명시되어 별도 시각화가 정확도를 높이지 않음",
+          "plan": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사2_plans/q16-solution.plan.json",
+          "productionPlan": false,
+          "shallowLintStatus": "NOT_APPLICABLE",
+          "deepLintStatus": "NOT_APPLICABLE",
+          "renderStatus": "NOT_APPLICABLE",
+          "pngQa": "NOT_APPLICABLE",
+          "jsLinked": false
+        }
+      }
+    },
+    {
+      "ordinal": 17,
+      "questionUid": "26_금당고_1학기_기말_고2_대수_유사2:q17",
+      "sourceQid": 17,
+      "originalRef": "archive/exams/original/high/h2/1final/26_금당고_1학기_기말_고2_대수.js#q17",
+      "existingVariantRef": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사.js#q17",
+      "difficultyBucketOriginal": 4,
+      "difficultyBucketNew": 4,
+      "followupKind": "CONFIRMATION",
+      "lockedPrimaryRpmL3": "H2-M1-RPM-115",
+      "decisiveMethod": "PT_H22A_06_ARITHMETIC_SEQUENCE / TPL_H22A_06_ARITHMETIC_SEQUENCE_115",
+      "variationAxis": "세 항의 중항 조건을 다섯 항의 중항으로 변경하고 정수 약수 분기로 절댓값 합 확정",
+      "duplicateCheck": "원본 및 유사1 대비 조건 정보·목표·진입 판단 중 의미 변화. 수치만 교체한 변형이 아님.",
+      "answer": "③",
+      "studentSolutionComplete": true,
+      "mathBlindI1": "PASS",
+      "externalIndependentI2": "NOT_RUN",
+      "metadata": {
+        "curriculum": "2022",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-06",
+        "subUnitKey": "H22-A-06-SEQUENCE_BASIC",
+        "rpmPrimaryRecordId": "H2-M1-RPM-115",
+        "problemTypeKey": "PT_H22A_06_ARITHMETIC_SEQUENCE",
+        "templateKey": "TPL_H22A_06_ARITHMETIC_SEQUENCE_115",
+        "difficultyBucket": 4,
+        "reviewStatus": "review_required"
+      },
+      "fourSlot": {
+        "given": [
+          {
+            "termId": 270,
+            "label": "등차수열"
+          },
+          {
+            "termId": 735,
+            "label": "등차중항"
+          },
+          {
+            "termId": 24,
+            "label": "절댓값"
+          }
+        ],
+        "goal": [
+          {
+            "termId": 479,
+            "label": "수열의합"
+          }
+        ],
+        "method": [
+          {
+            "termId": 735,
+            "label": "등차중항"
+          },
+          {
+            "termId": 475,
+            "label": "공차"
+          }
+        ],
+        "condition": []
+      },
+      "visual": {
+        "problem": {
+          "ordinal": 17,
+          "axis": "problem",
+          "necessity": "EXEMPT",
+          "reason": "발문에 모든 변수·조건·결정 단계가 식으로 명시되어 별도 시각화가 정확도를 높이지 않음",
+          "plan": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사2_plans/q17-problem.plan.json",
+          "productionPlan": false,
+          "shallowLintStatus": "NOT_APPLICABLE",
+          "deepLintStatus": "NOT_APPLICABLE",
+          "renderStatus": "NOT_APPLICABLE",
+          "pngQa": "NOT_APPLICABLE",
+          "jsLinked": false
+        },
+        "solution": {
+          "ordinal": 17,
+          "axis": "solution",
+          "necessity": "EXEMPT",
+          "reason": "해설에 모든 변수·조건·결정 단계가 식으로 명시되어 별도 시각화가 정확도를 높이지 않음",
+          "plan": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사2_plans/q17-solution.plan.json",
+          "productionPlan": false,
+          "shallowLintStatus": "NOT_APPLICABLE",
+          "deepLintStatus": "NOT_APPLICABLE",
+          "renderStatus": "NOT_APPLICABLE",
+          "pngQa": "NOT_APPLICABLE",
+          "jsLinked": false
+        }
+      }
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "26_금당고_1학기_기말_고2_대수_유사2:q18",
+      "sourceQid": 18,
+      "originalRef": "archive/exams/original/high/h2/1final/26_금당고_1학기_기말_고2_대수.js#q18",
+      "existingVariantRef": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사.js#q18",
+      "difficultyBucketOriginal": 4,
+      "difficultyBucketNew": 4,
+      "followupKind": "CONFIRMATION",
+      "lockedPrimaryRpmL3": "H2-M1-RPM-103",
+      "decisiveMethod": "PT_FUNCTION_EXTREMUM / TPL_FUNCTION_EXTREMUM_BOUND_COEFFICIENT",
+      "variationAxis": "사인 그래프의 양 끝 범위 판정을 위상 이동된 코사인 구간 판정으로 전환",
+      "duplicateCheck": "원본 및 유사1 대비 조건 정보·목표·진입 판단 중 의미 변화. 수치만 교체한 변형이 아님.",
+      "answer": "①",
+      "studentSolutionComplete": true,
+      "mathBlindI1": "PASS",
+      "externalIndependentI2": "NOT_RUN",
+      "metadata": {
+        "curriculum": "2022",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-04",
+        "subUnitKey": "H22-A-04-TRIGONOMETRIC_GRAPH",
+        "rpmPrimaryRecordId": "H2-M1-RPM-103",
+        "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+        "templateKey": "TPL_FUNCTION_EXTREMUM_BOUND_COEFFICIENT",
+        "difficultyBucket": 4,
+        "reviewStatus": "review_required"
+      },
+      "fourSlot": {
+        "given": [
+          {
+            "termId": 96,
+            "label": "삼각함수"
+          },
+          {
+            "termId": 127,
+            "label": "최댓값"
+          },
+          {
+            "termId": 128,
+            "label": "최솟값"
+          }
+        ],
+        "goal": [
+          {
+            "termId": 286,
+            "label": "합"
+          }
+        ],
+        "method": [
+          {
+            "termId": 658,
+            "label": "삼각함수의성질"
+          }
+        ],
+        "condition": [
+          {
+            "termId": 63,
+            "label": "부등식"
+          }
+        ]
+      },
+      "visual": {
+        "problem": {
+          "ordinal": 18,
+          "axis": "problem",
+          "necessity": "EXEMPT",
+          "reason": "발문에 모든 변수·조건·결정 단계가 식으로 명시되어 별도 시각화가 정확도를 높이지 않음",
+          "plan": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사2_plans/q18-problem.plan.json",
+          "productionPlan": false,
+          "shallowLintStatus": "NOT_APPLICABLE",
+          "deepLintStatus": "NOT_APPLICABLE",
+          "renderStatus": "NOT_APPLICABLE",
+          "pngQa": "NOT_APPLICABLE",
+          "jsLinked": false
+        },
+        "solution": {
+          "ordinal": 18,
+          "axis": "solution",
+          "necessity": "BENEFICIAL",
+          "reason": "자연수 n에 따른 코사인 그래프의 최솟값 경계가 변하는 위치를 확인",
+          "plan": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사2_plans/q18-solution.plan.json",
+          "productionPlan": true,
+          "shallowLintStatus": "PASS",
+          "deepLintStatus": "PASS",
+          "renderStatus": "NOT_RUN",
+          "pngQa": "NOT_RUN",
+          "jsLinked": false
+        }
+      }
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "26_금당고_1학기_기말_고2_대수_유사2:q19",
+      "sourceQid": 19,
+      "originalRef": "archive/exams/original/high/h2/1final/26_금당고_1학기_기말_고2_대수.js#q19",
+      "existingVariantRef": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사.js#q19",
+      "difficultyBucketOriginal": 5,
+      "difficultyBucketNew": 5,
+      "followupKind": "CONFIRMATION",
+      "lockedPrimaryRpmL3": "H2-M1-RPM-109",
+      "decisiveMethod": "PT_H22A_05_COSINE_LAW / TPL_H22A_05_COSINE_LAW_111",
+      "variationAxis": "코사인 조건 대신 예각의 탄젠트 정보를 주고 사인/코사인을 복원",
+      "duplicateCheck": "원본 및 유사1 대비 조건 정보·목표·진입 판단 중 의미 변화. 수치만 교체한 변형이 아님.",
+      "answer": "④",
+      "studentSolutionComplete": true,
+      "mathBlindI1": "PASS",
+      "externalIndependentI2": "NOT_RUN",
+      "metadata": {
+        "curriculum": "2022",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-05",
+        "subUnitKey": "H22-A-05-CORE",
+        "rpmPrimaryRecordId": "H2-M1-RPM-109",
+        "problemTypeKey": "PT_H22A_05_COSINE_LAW",
+        "templateKey": "TPL_H22A_05_COSINE_LAW_111",
+        "difficultyBucket": 5,
+        "reviewStatus": "review_required"
+      },
+      "fourSlot": {
+        "given": [
+          {
+            "termId": 152,
+            "label": "원"
+          },
+          {
+            "termId": 175,
+            "label": "맞꼭지각"
+          },
+          {
+            "termId": 158,
+            "label": "삼각형"
+          }
+        ],
+        "goal": [
+          {
+            "termId": 153,
+            "label": "반지름"
+          }
+        ],
+        "method": [
+          {
+            "termId": 196,
+            "label": "사인법칙"
+          },
+          {
+            "termId": 197,
+            "label": "코사인법칙"
+          }
+        ],
+        "condition": [
+          {
+            "termId": 407,
+            "label": "예각"
+          }
+        ]
+      },
+      "visual": {
+        "problem": {
+          "ordinal": 19,
+          "axis": "problem",
+          "necessity": "BENEFICIAL",
+          "reason": "내접사각형의 연속된 꼭짓점·교차하는 두 대각선 배치를 이해",
+          "plan": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사2_plans/q19-problem.plan.json",
+          "productionPlan": false,
+          "shallowLintStatus": "NOT_APPLICABLE",
+          "deepLintStatus": "NOT_APPLICABLE",
+          "renderStatus": "NOT_RUN",
+          "pngQa": "NOT_RUN",
+          "jsLinked": false
+        },
+        "solution": {
+          "ordinal": 19,
+          "axis": "solution",
+          "necessity": "BENEFICIAL",
+          "reason": "맞꼭지각·연속 세 변과 사인법칙을 연결하는 보조 삼각형을 확인",
+          "plan": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사2_plans/q19-solution.plan.json",
+          "productionPlan": false,
+          "shallowLintStatus": "NOT_APPLICABLE",
+          "deepLintStatus": "NOT_APPLICABLE",
+          "renderStatus": "NOT_RUN",
+          "pngQa": "NOT_RUN",
+          "jsLinked": false
+        }
+      }
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "26_금당고_1학기_기말_고2_대수_유사2:q20",
+      "sourceQid": 20,
+      "originalRef": "archive/exams/original/high/h2/1final/26_금당고_1학기_기말_고2_대수.js#q20",
+      "existingVariantRef": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사.js#q20",
+      "difficultyBucketOriginal": 4,
+      "difficultyBucketNew": 4,
+      "followupKind": "CONFIRMATION",
+      "lockedPrimaryRpmL3": "H2-M1-RPM-115",
+      "decisiveMethod": "PT_H22A_06_ARITHMETIC_SEQUENCE / TPL_H22A_06_ARITHMETIC_SEQUENCE_115",
+      "variationAxis": "정의역을 열린 구간에서 닫힌 끝점을 갖는 구간으로 바꾸어 치역의 정수 끝항을 재판정",
+      "duplicateCheck": "원본 및 유사1 대비 조건 정보·목표·진입 판단 중 의미 변화. 수치만 교체한 변형이 아님.",
+      "answer": "k=5",
+      "studentSolutionComplete": true,
+      "mathBlindI1": "PASS",
+      "externalIndependentI2": "NOT_RUN",
+      "metadata": {
+        "curriculum": "2022",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-06",
+        "subUnitKey": "H22-A-06-SEQUENCE_BASIC",
+        "rpmPrimaryRecordId": "H2-M1-RPM-115",
+        "problemTypeKey": "PT_H22A_06_ARITHMETIC_SEQUENCE",
+        "templateKey": "TPL_H22A_06_ARITHMETIC_SEQUENCE_115",
+        "difficultyBucket": 4,
+        "reviewStatus": "review_required"
+      },
+      "fourSlot": {
+        "given": [
+          {
+            "termId": 92,
+            "label": "유리함수"
+          },
+          {
+            "termId": 103,
+            "label": "치역"
+          },
+          {
+            "termId": 1,
+            "label": "자연수"
+          }
+        ],
+        "goal": [
+          {
+            "termId": 308,
+            "label": "매개변수"
+          }
+        ],
+        "method": [
+          {
+            "termId": 270,
+            "label": "등차수열"
+          },
+          {
+            "termId": 479,
+            "label": "수열의합"
+          }
+        ],
+        "condition": [
+          {
+            "termId": 286,
+            "label": "합"
+          }
+        ]
+      },
+      "visual": {
+        "problem": {
+          "ordinal": 20,
+          "axis": "problem",
+          "necessity": "EXEMPT",
+          "reason": "발문에 모든 변수·조건·결정 단계가 식으로 명시되어 별도 시각화가 정확도를 높이지 않음",
+          "plan": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사2_plans/q20-problem.plan.json",
+          "productionPlan": false,
+          "shallowLintStatus": "NOT_APPLICABLE",
+          "deepLintStatus": "NOT_APPLICABLE",
+          "renderStatus": "NOT_APPLICABLE",
+          "pngQa": "NOT_APPLICABLE",
+          "jsLinked": false
+        },
+        "solution": {
+          "ordinal": 20,
+          "axis": "solution",
+          "necessity": "EXEMPT",
+          "reason": "해설에 모든 변수·조건·결정 단계가 식으로 명시되어 별도 시각화가 정확도를 높이지 않음",
+          "plan": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사2_plans/q20-solution.plan.json",
+          "productionPlan": false,
+          "shallowLintStatus": "NOT_APPLICABLE",
+          "deepLintStatus": "NOT_APPLICABLE",
+          "renderStatus": "NOT_APPLICABLE",
+          "pngQa": "NOT_APPLICABLE",
+          "jsLinked": false
+        }
+      }
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "26_금당고_1학기_기말_고2_대수_유사2:q21",
+      "sourceQid": 21,
+      "originalRef": "archive/exams/original/high/h2/1final/26_금당고_1학기_기말_고2_대수.js#q21",
+      "existingVariantRef": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사.js#q21",
+      "difficultyBucketOriginal": 5,
+      "difficultyBucketNew": 5,
+      "followupKind": "CONFIRMATION",
+      "lockedPrimaryRpmL3": "H2-M1-RPM-103",
+      "decisiveMethod": "PT_FUNCTION_GRAPH_INTERSECTION / TPL_FUNCTION_INTERSECTION_ABSOLUTE_PIECEWISE",
+      "variationAxis": "대칭 중심과 관찰 구간을 3/6으로 옮겨 약수 후보와 함숫값 배수의 교점 개수 비교",
+      "duplicateCheck": "원본 및 유사1 대비 조건 정보·목표·진입 판단 중 의미 변화. 수치만 교체한 변형이 아님.",
+      "answer": "(4,1),(5,1),(6,1),(2,2),(3,2),(2,3),(1,6)",
+      "studentSolutionComplete": true,
+      "mathBlindI1": "PASS",
+      "externalIndependentI2": "NOT_RUN",
+      "metadata": {
+        "curriculum": "2022",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-04",
+        "subUnitKey": "H22-A-04-TRIGONOMETRIC_GRAPH",
+        "rpmPrimaryRecordId": "H2-M1-RPM-103",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "templateKey": "TPL_FUNCTION_INTERSECTION_ABSOLUTE_PIECEWISE",
+        "difficultyBucket": 5,
+        "reviewStatus": "review_required"
+      },
+      "fourSlot": {
+        "given": [
+          {
+            "termId": 85,
+            "label": "합성함수"
+          },
+          {
+            "termId": 96,
+            "label": "삼각함수"
+          },
+          {
+            "termId": 181,
+            "label": "교점"
+          }
+        ],
+        "goal": [
+          {
+            "termId": 402,
+            "label": "순서쌍"
+          }
+        ],
+        "method": [
+          {
+            "termId": 24,
+            "label": "절댓값"
+          },
+          {
+            "termId": 595,
+            "label": "주기함수"
+          },
+          {
+            "termId": 85,
+            "label": "합성함수"
+          }
+        ],
+        "condition": [
+          {
+            "termId": 110,
+            "label": "대칭성"
+          },
+          {
+            "termId": 181,
+            "label": "교점"
+          },
+          {
+            "termId": 129,
+            "label": "개수"
+          }
+        ]
+      },
+      "visual": {
+        "problem": {
+          "ordinal": 21,
+          "axis": "problem",
+          "necessity": "EXEMPT",
+          "reason": "발문에 모든 변수·조건·결정 단계가 식으로 명시되어 별도 시각화가 정확도를 높이지 않음",
+          "plan": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사2_plans/q21-problem.plan.json",
+          "productionPlan": false,
+          "shallowLintStatus": "NOT_APPLICABLE",
+          "deepLintStatus": "NOT_APPLICABLE",
+          "renderStatus": "NOT_APPLICABLE",
+          "pngQa": "NOT_APPLICABLE",
+          "jsLinked": false
+        },
+        "solution": {
+          "ordinal": 21,
+          "axis": "solution",
+          "necessity": "BENEFICIAL",
+          "reason": "절댓값 그래프에서 밑점의 단일 교점과 상위 배수의 양쪽 두 교점을 구분",
+          "plan": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사2_plans/q21-solution.plan.json",
+          "productionPlan": false,
+          "shallowLintStatus": "NOT_APPLICABLE",
+          "deepLintStatus": "NOT_APPLICABLE",
+          "renderStatus": "NOT_RUN",
+          "pngQa": "NOT_RUN",
+          "jsLinked": false
+        }
+      }
+    }
+  ]
+}
