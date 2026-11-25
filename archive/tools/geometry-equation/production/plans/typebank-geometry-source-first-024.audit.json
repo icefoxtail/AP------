@@ -1,0 +1,119 @@
+{
+  "auditKind": "SOURCE_FIRST_PRE_RENDER_FIELD_PARITY",
+  "date": "2026-11-25",
+  "from": 24,
+  "to": 24,
+  "missingSourceNumbers": [],
+  "reviewRule": "Read each original [그림:] independently of the existing plan; independently compute area ratios, triangle side lengths, foot order and angle. Model values may be exact without revealing solved constants. Explicit source symbolic-coordinate labels and angle arcs must be recorded as engine pending when the engine cannot draw them.",
+  "figures": [
+    {
+      "number": 24,
+      "qid": 1,
+      "sourceQuote": "삼각형 $\\mathrm{PAB}$의 넓이는 삼각형 $\\mathrm{PFF}'$의 넓이의 $\\frac{3}{2}$배",
+      "sourceVsPlan": "REVIEWED",
+      "featureParity": "ENGINE_CAPABILITY_PENDING",
+      "planLintShallow": "PASS",
+      "preRenderParity": "ENGINE_CAPABILITY_PENDING",
+      "mathReview": "The model is x²/5+y²/9=1: vertical semimajor b=3, semiminor a=√5, foci F=(0,2),F′=(0,-2), vertices A=(0,3),B=(0,-3). The first-quadrant P=(√5/2,3√3/2) lies exactly on the ellipse. Both triangles have altitude xP=√5/2, so their areas have ratio AB/FF′=6/4=3/2. PF=3−√3, PF′=3+√3, FF′=4, perimeter 10 and hidden answer a²+b²=14. The source figure additionally writes symbolic A(0,b),B(0,-b),F(0,c),F′(0,-c), which cannot be shown with the numeric-only coordinate-label function without revealing derived numbers.",
+      "requiredVisible": [
+        {"path": "conic.kind", "equals": "ELLIPSE"},
+        {"path": "conic.major", "equals": "Y"},
+        {"path": "conic.aSquared", "equals": "9"},
+        {"path": "conic.bSquared", "equals": "5"},
+        {"path": "points.A.side", "equals": 1},
+        {"path": "points.B.side", "equals": -1},
+        {"path": "points.F.side", "equals": 1},
+        {"path": "points.F'.side", "equals": -1},
+        {"path": "points.P.kind", "equals": "ON_CONIC"},
+        {"path": "points.P.x", "equals": "sqrt(5)/2"},
+        {"path": "polygons.tPAB.points.0", "equals": "P"},
+        {"path": "polygons.tPAB.points.1", "equals": "A"},
+        {"path": "polygons.tPAB.points.2", "equals": "B"},
+        {"path": "polygons.tPFFp.points.0", "equals": "P"},
+        {"path": "polygons.tPFFp.points.1", "equals": "F"},
+        {"path": "polygons.tPFFp.points.2", "equals": "F'"},
+        {"path": "segments.sFFp.to", "equals": "F'"}
+      ],
+      "forbiddenVisible": ["points.A.coordinates", "points.B.coordinates", "points.F.coordinates", "points.F'.coordinates", "segments.sAB.label", "segments.sFFp.label"],
+      "blockers": [
+        "Original symbolic-coordinate annotations A(0,b), B(0,-b), F(0,c), F′(0,-c) are absent. The engine's coordinates:true exposes internally solved numeric b=3 and c=2 instead of the symbolic information given in the question. Add per-point symbolic math text and layout support."
+      ],
+      "planLintFull": "PASS",
+      "renderSvg": "NOT_RUN",
+      "studentChrome": "NOT_RUN",
+      "a4": "NOT_RUN"
+    },
+    {
+      "number": 24,
+      "qid": 2,
+      "sourceQuote": "점 $\\mathrm{F}$에서 선분 $\\mathrm{PF}'$에 내린 수선의 발 $\\mathrm{H}$",
+      "sourceVsPlan": "REVIEWED",
+      "featureParity": "ENGINE_CAPABILITY_PENDING",
+      "planLintShallow": "PASS",
+      "preRenderParity": "ENGINE_CAPABILITY_PENDING",
+      "mathReview": "The horizontal ellipse is x²/64+y²/36=1, with c=2√7, F=(2√7,0), F′=(-2√7,0). Point P=(-8√7/7,6√42/7) lies on the ellipse in quadrant II, FP=10 and PF′=6. The exact perpendicular projection of F onto line PF′ is H=(-10√7/7,4√42/7), with PH=2, HF′=4 and FH=4√6. Thus H lies strictly between P and F′ and FOOT.rightAngle represents ∠FHP=90°. Given lengths 10 and 4√6 are visible; hidden a=36 is not. The source also explicitly specifies symbolic F(c,0),F′(-c,0), not yet drawable without revealing c=2√7.",
+      "requiredVisible": [
+        {"path": "conic.kind", "equals": "ELLIPSE"},
+        {"path": "conic.major", "equals": "X"},
+        {"path": "conic.aSquared", "equals": "64"},
+        {"path": "conic.bSquared", "equals": "36"},
+        {"path": "points.F.side", "equals": 1},
+        {"path": "points.F'.side", "equals": -1},
+        {"path": "points.P.kind", "equals": "ON_CONIC"},
+        {"path": "points.P.x", "equals": "-8*sqrt(7)/7"},
+        {"path": "points.P.branch", "equals": "POS"},
+        {"path": "points.H.kind", "equals": "FOOT"},
+        {"path": "points.H.from", "equals": "F"},
+        {"path": "points.H.onto", "equals": "k"},
+        {"path": "points.H.rightAngle", "equals": true},
+        {"path": "lines.k.hidden", "equals": true},
+        {"path": "segments.sFP.label", "equals": "10"},
+        {"path": "segments.sFH.label", "equals": "4\\sqrt{6}"}
+      ],
+      "forbiddenVisible": ["points.F.coordinates", "points.F'.coordinates", "points.P.coordinates", "points.H.coordinates", "segments.sPH.label", "segments.sHFp.label"],
+      "blockers": [
+        "Source focal labels F(c,0), F′(-c,0) require symbolic coordinates. Existing coordinates:true prints ±2√7 and discloses the solved focal distance; no custom symbolic coordinate-label capability exists."
+      ],
+      "planLintFull": "PASS",
+      "renderSvg": "NOT_RUN",
+      "studentChrome": "NOT_RUN",
+      "a4": "NOT_RUN"
+    },
+    {
+      "number": 24,
+      "qid": 3,
+      "sourceQuote": "$\\angle \\mathrm{AFB}=\\frac{\\pi}{3}$",
+      "sourceVsPlan": "REVIEWED",
+      "featureParity": "ENGINE_CAPABILITY_PENDING",
+      "planLintShallow": "PASS",
+      "preRenderParity": "ENGINE_CAPABILITY_PENDING",
+      "mathReview": "The exact ellipse is x²/64+y²/48=1, with A=(-8,0), B=(0,4√3), F=(4,0), so a=8, b=4√3, c=4. Dot product yields cos∠AFB=1/2, hence ∠AFB=π/3. Triangle area AF×OB/2=12×4√3/2=24√3; hidden a²+b²=112. The triangle shape and first-quadrant B are correct, but the source's π/3 angle arc and symbolic A(-a,0),B(0,b),F(c,0) labels cannot be rendered in ellipse-figure-v1.",
+      "requiredVisible": [
+        {"path": "conic.kind", "equals": "ELLIPSE"},
+        {"path": "conic.major", "equals": "X"},
+        {"path": "conic.aSquared", "equals": "64"},
+        {"path": "conic.bSquared", "equals": "48"},
+        {"path": "points.A.kind", "equals": "VERTEX"},
+        {"path": "points.A.side", "equals": -1},
+        {"path": "points.B.kind", "equals": "ON_CONIC"},
+        {"path": "points.B.x", "equals": "0"},
+        {"path": "points.B.branch", "equals": "POS"},
+        {"path": "points.F.kind", "equals": "FOCUS"},
+        {"path": "points.F.side", "equals": 1},
+        {"path": "segments.sAF.from", "equals": "A"},
+        {"path": "segments.sFB.to", "equals": "B"},
+        {"path": "polygons.tAFB.points.0", "equals": "A"},
+        {"path": "polygons.tAFB.points.1", "equals": "F"},
+        {"path": "polygons.tAFB.points.2", "equals": "B"}
+      ],
+      "forbiddenVisible": ["points.A.coordinates", "points.B.coordinates", "points.F.coordinates", "segments.sAF.label", "segments.sFB.label", "segments.sBA.label"],
+      "blockers": [
+        "No angle arc or math angle label for ∠AFB=π/3 at F in ellipse-figure-v1 (only FOOT.rightAngle supports 90°). The source also gives symbolic A(-a,0), B(0,b), F(c,0); numeric coordinates would reveal solved parameters. Requires angle and symbolic-coordinate labels with collision checks."
+      ],
+      "planLintFull": "PASS",
+      "renderSvg": "NOT_RUN",
+      "studentChrome": "NOT_RUN",
+      "a4": "NOT_RUN"
+    }
+  ]
+}

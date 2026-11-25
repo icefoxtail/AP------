@@ -1,0 +1,26 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {"kind": "ELLIPSE", "center": ["0", "0"], "aSquared": "18", "bSquared": "9", "major": "X"},
+  "points": [
+    {"id": "O", "kind": "ORIGIN"},
+    {"id": "F", "kind": "FOCUS", "side": 1},
+    {"id": "F'", "kind": "FOCUS", "side": -1},
+    {"id": "A", "kind": "ON_CONIC", "x": "0", "branch": "POS"},
+    {"id": "B", "kind": "ON_CONIC", "x": "-4", "branch": "NEG"},
+    {"id": "C", "kind": "ON_CONIC", "x": "4", "branch": "NEG"},
+    {"id": "D", "kind": "FOOT", "from": "B", "onto": "l", "rightAngle": true, "label": false}
+  ],
+  "lines": [{"id": "l", "through": ["A", "C"], "hidden": true}],
+  "segments": [
+    {"id": "sAB", "from": "A", "to": "B"},
+    {"id": "sAC", "from": "A", "to": "C"},
+    {"id": "sBC", "from": "B", "to": "C"}
+  ],
+  "caption": "타원에 내접한 직각이등변삼각형 ABC, A는 양의 y축, 두 초점 F′,F는 각각 AB,AC 위에 있고 BC는 x축 아래의 수평변",
+  "accessibilityDescription": "가로 장축 타원 안의 위쪽 꼭짓점 A에서 좌우 아래쪽 B와 C로 두 변이 내려간다. A에서 직각 표식이 있고 좌우 초점 F′와 F는 각각 AB와 AC 위에 있다. BC는 x축 아래의 수평선이다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "한 길이 척도를 c=3으로 잡으면 초점 F′=(-3,0), F=(3,0), 타원 x²/18+y²/9=1, A=(0,3), B=(-4,-1), C=(4,-1)이다. F′∈AB, F∈AC 및 BC∥x축을 정확히 만족한다.", "mappedTo": ["conic", "F'", "F", "A", "B", "C", "sAB", "sAC", "sBC"]},
+    {"id": "c2", "condition": "AB=AC=4√2이고 (B−A)·(C−A)=0으로 ∠BAC=90°이다. 보조 수선의 발 D=A를 라벨 없이 겹쳐 직각 표시만 만들고 선 AC를 숨긴다. 동일 변 눈금은 현재 지원되지 않으며 BC/FF′=8/6=4/3은 그림에 공개하지 않는다.", "mappedTo": ["A", "B", "C", "D", "l", "sAB", "sAC", "sBC"]}
+  ],
+  "newVisualInformation": ["초점을 지나는 서로 수직인 이등변 두 변과 x축 아래의 수평 BC", "풀이용 좌표·정답 비노출"]
+}

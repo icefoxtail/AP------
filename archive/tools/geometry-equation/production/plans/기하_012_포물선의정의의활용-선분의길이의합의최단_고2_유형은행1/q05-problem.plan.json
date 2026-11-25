@@ -1,11 +1,11 @@
 {
   "capability":"ellipse-figure-v1",
   "conic":{"kind":"PARABOLA","vertex":["0","0"],"p":"3","axis":"X"},
-  "points":[{"id":"O","kind":"ORIGIN"},{"id":"F","kind":"FOCUS"},{"id":"Q","kind":"POINT","x":"9","y":"12","coordinates":true},{"id":"P","kind":"LINE_CONIC","line":"qf","which":2},{"id":"H","kind":"FOOT","from":"P","onto":"d","rightAngle":true}],
-  "lines":[{"id":"d","role":"DIRECTRIX","label":"x=-3"},{"id":"qf","through":["Q","F"],"hidden":true}],
+  "points":[{"id":"O","kind":"ORIGIN"},{"id":"F","kind":"FOCUS"},{"id":"Q","kind":"POINT","x":"9","y":"12","coordinates":true},{"id":"P","kind":"ON_CONIC","x":"4","branch":"POS"},{"id":"H","kind":"FOOT","from":"P","onto":"d","rightAngle":true}],
+  "lines":[{"id":"d","role":"DIRECTRIX","label":"x=-3"}],
   "segments":[{"id":"PQ","from":"P","to":"Q"},{"id":"PH","from":"P","to":"H"}],
   "caption":"y²=12x의 준선 x=-3과 바깥 점 Q(9,12), 선분 QF가 만나는 포물선 점 P",
   "accessibilityDescription":"포물선 바깥쪽 제1사분면 Q에서 안쪽 초점 F로 가는 선분 위의 포물선 교점 P와 준선에 내린 수선 PH를 나타낸다.",
-  "sourceConditions":[{"id":"c1","condition":"y²=12x의 초점 F=(3,0), 준선 x=-3, 주어진 Q=(9,12)는 포물선 바깥에 있다.","mappedTo":["conic","F","d","Q"]},{"id":"c2","condition":"직선 QF와 포물선의 두 교점 중 Q-F 선분 내부는 x가 큰 두 번째 교점 P이다. PQ+PH의 최솟값은 그림에 적지 않는다.","mappedTo":["qf","P","H","PQ","PH"]}],
-  "newVisualInformation":["준선 수선과 Q에서 초점까지 선분의 포물선 교점"]
+  "sourceConditions":[{"id":"c1","condition":"y²=12x의 초점 F=(3,0), 준선 x=-3, 주어진 Q=(9,12)는 포물선 바깥에 있다.","mappedTo":["conic","F","d","Q"]},{"id":"c2","condition":"원문은 P가 포물선 위를 움직인다고만 했으므로 P=(4,4√3)은 제1사분면의 비최적 대표 점으로 둔다. P,Q,F는 공선이 아니며 최솟값을 만드는 교점을 미리 그리지 않는다. H=(-3,4√3)는 준선 수선의 발이고 PQ+PH의 최솟값은 그림에 적지 않는다.","mappedTo":["P","H","PQ","PH"]}],
+  "newVisualInformation":["준선으로 내린 수선과 움직이는 P에서 고정점 Q로 잇는 일반 경로"]
 }

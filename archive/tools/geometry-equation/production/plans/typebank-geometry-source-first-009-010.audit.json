@@ -1,0 +1,141 @@
+{
+  "auditKind": "SOURCE_FIRST_PRE_RENDER_FIELD_PARITY",
+  "date": "2026-11-25",
+  "from": 9,
+  "to": 10,
+  "missingSourceNumbers": [],
+  "reviewRule": "Compare each original figure description, question and answer to actual conic points, dimensions, shading and line visibility. This ledger verifies pre-render fields only; renderSvg/studentChrome/a4 remain NOT_RUN.",
+  "figures": [
+    {
+      "number":9,"qid":1,
+      "sourceQuote":"사각형 $\\mathrm{HH'QP}$의 넓이가 $102$",
+      "preRenderParity":"PASS",
+      "mathReview":"Source has no numerical parabola parameter. Choose p=36/17, focus chord PQ=17 and shaded trapezoid with area 102; parallel PH and QH' imply HH'=2*102/17=12, never labeled.",
+      "requiredVisible":[
+        {"path":"conic.axis","equals":"X"},
+        {"path":"lines.d.role","equals":"DIRECTRIX"},
+        {"path":"lines.d.label","equals":"l"},
+        {"path":"points.H.kind","equals":"FOOT"},
+        {"path":"points.H'.kind","equals":"FOOT"},
+        {"path":"points.H.rightAngle","equals":true},
+        {"path":"points.H'.rightAngle","equals":true},
+        {"path":"polygons.trap.fill","equals":"LIGHT"},
+        {"path":"segments.HH.from","equals":"H"},
+        {"path":"segments.HH.to","equals":"H'"}
+      ],
+      "forbiddenVisible":["points.P.coordinates","points.Q.coordinates","segments.HH.label"],
+      "blockers":[],"planLintFull":"PASS","renderSvg":"NOT_RUN","studentChrome":"NOT_RUN","a4":"NOT_RUN"
+    },
+    {
+      "number":9,"qid":2,
+      "sourceQuote":"$\\overline{\\mathrm{AP}}=12$",
+      "preRenderParity":"PASS",
+      "mathReview":"For x^2=4py choose p=12/5, focus F=(0,12/5), A=(-48/5,48/5), B=(12/5,3/5). Both on focus chord; feet on y=-12/5 give AP=12, BQ=3 and hidden PQ=12.",
+      "requiredVisible":[
+        {"path":"conic.axis","equals":"Y"},
+        {"path":"conic.p","equals":"12/5"},
+        {"path":"lines.d.role","equals":"DIRECTRIX"},
+        {"path":"lines.d.label","equals":"l"},
+        {"path":"points.P.kind","equals":"FOOT"},
+        {"path":"points.Q.kind","equals":"FOOT"},
+        {"path":"segments.AP.label","equals":"12"},
+        {"path":"segments.BQ.label","equals":"3"},
+        {"path":"segments.PQ.from","equals":"P"}
+      ],
+      "forbiddenVisible":["segments.PQ.label","points.A.coordinates","points.B.coordinates"],
+      "blockers":[],"planLintFull":"PASS","renderSvg":"NOT_RUN","studentChrome":"NOT_RUN","a4":"NOT_RUN"
+    },
+    {
+      "number":9,"qid":5,
+      "sourceQuote":"정사각형의 한 변의 길이가 $4$",
+      "preRenderParity":"PASS",
+      "mathReview":"Let p=2sqrt(2)-2, F=(p,0), A=(p+4,4), B=(10sqrt(2)-14, 10sqrt(2)-14-p) on the focus chord of slope 1. Rectangle A-C-F-D is a square with side 4. BF=12sqrt(2)-16, giving hidden answer a^2+b^2=400.",
+      "corrected":"Suppressed invented C,D point names: the source only describes the square and its diagonal AF, not named extra corners.",
+      "requiredVisible":[
+        {"path":"conic.axis","equals":"X"},
+        {"path":"points.C.label","equals":false},
+        {"path":"points.D.label","equals":false},
+        {"path":"segments.AC.label","equals":"4"},
+        {"path":"segments.CF.from","equals":"C"},
+        {"path":"segments.FD.to","equals":"D"},
+        {"path":"segments.DA.from","equals":"D"},
+        {"path":"segments.AF.to","equals":"F"}
+      ],
+      "forbiddenVisible":["points.A.coordinates","points.B.coordinates","segments.FB.label"],
+      "blockers":[],"planLintFull":"PASS","renderSvg":"NOT_RUN","studentChrome":"NOT_RUN","a4":"NOT_RUN"
+    },
+    {
+      "number":10,"qid":1,
+      "sourceQuote":"$\\overline{\\mathrm{AC}} = 7$",
+      "preRenderParity":"PASS",
+      "mathReview":"F=(5,0), A=(2,2sqrt(10)), B=(25/2,-5sqrt(10)) lie on a negative-slope focus chord. Directrix x=-5; AC=7, BD=35/2, hidden.",
+      "requiredVisible":[
+        {"path":"conic.p","equals":"5"},
+        {"path":"lines.d.label","equals":"l"},
+        {"path":"points.C.rightAngle","equals":true},
+        {"path":"points.D.rightAngle","equals":true},
+        {"path":"points.A.branch","equals":"POS"},
+        {"path":"points.B.branch","equals":"NEG"},
+        {"path":"segments.AC.label","equals":"7"},
+        {"path":"segments.BD.to","equals":"D"}
+      ],
+      "forbiddenVisible":["segments.BD.label","points.A.coordinates","points.B.coordinates"],
+      "blockers":[],"planLintFull":"PASS","renderSvg":"NOT_RUN","studentChrome":"NOT_RUN","a4":"NOT_RUN"
+    },
+    {
+      "number":10,"qid":2,
+      "sourceQuote":"색칠된 사다리꼴",
+      "preRenderParity":"PASS",
+      "mathReview":"AF=12 and AC=9 force p=3 and A=(9,6sqrt(3)); lower chord endpoint B=(1,-2sqrt(3)), feet C,D on y-axis. Trapezoid area (9+1)*(8sqrt(3))/2=40sqrt(3), hidden.",
+      "requiredVisible":[
+        {"path":"conic.p","equals":"3"},
+        {"path":"points.C.rightAngle","equals":true},
+        {"path":"points.D.rightAngle","equals":true},
+        {"path":"segments.AF.label","equals":"12"},
+        {"path":"segments.AC.label","equals":"9"},
+        {"path":"segments.BD.from","equals":"B"},
+        {"path":"polygons.trap.fill","equals":"LIGHT"}
+      ],
+      "forbiddenVisible":["points.A.coordinates","points.B.coordinates","segments.BD.label"],
+      "blockers":[],"planLintFull":"PASS","renderSvg":"NOT_RUN","studentChrome":"NOT_RUN","a4":"NOT_RUN"
+    },
+    {
+      "number":10,"qid":3,
+      "sourceQuote":"$\\overline{\\mathrm{AF}} : \\overline{\\mathrm{BF}} = 3 : 2$",
+      "preRenderParity":"PASS",
+      "mathReview":"F=(4,0), A=(6,4sqrt(6)), B=(8/3,-8sqrt(6)/3), focus chord AF=10, BF=20/3, ratio 3:2 and AB=50/3 hidden.",
+      "corrected":"Made the source's full focus-passing secant visible; existing plan drew only finite AF and FB segments while l was hidden.",
+      "requiredVisible":[
+        {"path":"conic.p","equals":"4"},
+        {"path":"points.A.branch","equals":"POS"},
+        {"path":"points.B.branch","equals":"NEG"},
+        {"path":"lines.l.through.0","equals":"A"},
+        {"path":"lines.l.through.1","equals":"B"},
+        {"path":"segments.AF.from","equals":"A"},
+        {"path":"segments.FB.from","equals":"F"}
+      ],
+      "forbiddenVisible":["lines.l.hidden","points.A.coordinates","points.B.coordinates","segments.AF.label"],
+      "blockers":[],"planLintFull":"PASS","renderSvg":"NOT_RUN","studentChrome":"NOT_RUN","a4":"NOT_RUN"
+    },
+    {
+      "number":10,"qid":4,
+      "sourceQuote":"두 대각선의 교점이 포물선의 초점",
+      "preRenderParity":"PASS",
+      "mathReview":"F=(4,0), A=(2,4sqrt(2)), B=(2,-4sqrt(2)), C=(8,-8sqrt(2)), D=(8,8sqrt(2)). Vertical AB,CD; diagonals AC and BD both through F, DF=12, area 72sqrt(2) hidden.",
+      "requiredVisible":[
+        {"path":"conic.p","equals":"4"},
+        {"path":"segments.AB.from","equals":"A"},
+        {"path":"segments.CD.from","equals":"C"},
+        {"path":"segments.AC.from","equals":"A"},
+        {"path":"segments.BD.from","equals":"B"},
+        {"path":"segments.DF.label","equals":"12"},
+        {"path":"points.A.branch","equals":"POS"},
+        {"path":"points.B.branch","equals":"NEG"},
+        {"path":"points.C.branch","equals":"NEG"},
+        {"path":"points.D.branch","equals":"POS"}
+      ],
+      "forbiddenVisible":["points.A.coordinates","points.D.coordinates"],
+      "blockers":[],"planLintFull":"PASS","renderSvg":"NOT_RUN","studentChrome":"NOT_RUN","a4":"NOT_RUN"
+    }
+  ]
+}

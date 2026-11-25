@@ -1,0 +1,152 @@
+{
+  "auditKind":"SOURCE_FIRST_PRE_RENDER_FIELD_PARITY",
+  "date":"2026-11-25",
+  "from":15,"to":15,"missingSourceNumbers":[],
+  "reviewRule":"Classify each actual figure by the original question, not the bank filename. Verify parabola focus, vertex, dimensions, rays, and conic intersections; all unresolved engine omissions are blockers, while post-render typography is deferred.",
+  "figures":[
+    {
+      "number":15,"qid":1,"sourceQuote":"자동차 전조등의 반사경",
+      "preRenderParity":"PASS",
+      "mathReview":"Right-opening parabola y^2=20x, O=(0,0), F=(5,0). Mouth chord A=(20,20), B=(20,-20) gives diameter 40 cm and depth 20 cm. Hide the requested depth.",
+      "corrected":"Removed unrequested endpoint names A,B without removing the 40cm chord and 5cm focus-distance labels.",
+      "requiredVisible":[
+        {"path":"conic.kind","equals":"PARABOLA"},
+        {"path":"conic.axis","equals":"X"},
+        {"path":"conic.p","equals":"5"},
+        {"path":"points.A.label","equals":false},
+        {"path":"points.B.label","equals":false},
+        {"path":"segments.OF.label","equals":"5 cm"},
+        {"path":"segments.AB.label","equals":"40 cm"}
+      ],
+      "forbiddenVisible":["points.A.coordinates","points.B.coordinates"],
+      "blockers":[],"planLintFull":"PASS","renderSvg":"NOT_RUN","studentChrome":"NOT_RUN","a4":"NOT_RUN"
+    },
+    {
+      "number":15,"qid":2,"sourceQuote":"입구의 지름이 $16",
+      "preRenderParity":"PASS",
+      "mathReview":"Parabola has vertex O, horizontal focus parameter p=8/3; mouth at x=6 with y=±8, hence diameter 16 and depth 6. Two incoming horizontal rays T=(9,4) to M=(3/2,4) to F, and S=(9,-4) to N=(3/2,-4) to F are exact focus-directed representatives; unknown p remains unlabeled.",
+      "requiredVisible":[
+        {"path":"conic.p","equals":"8/3"},
+        {"path":"points.F.kind","equals":"FOCUS"},
+        {"path":"points.A.label","equals":false},
+        {"path":"points.B.label","equals":false},
+        {"path":"segments.AB.label","equals":"16 cm"},
+        {"path":"segments.OD.label","equals":"6 cm"},
+        {"path":"segments.TM.from","equals":"T"},
+        {"path":"segments.MF.to","equals":"F"},
+        {"path":"segments.SN.from","equals":"S"},
+        {"path":"segments.NF.to","equals":"F"}
+      ],
+      "forbiddenVisible":["points.F.coordinates"],
+      "blockers":[],"planLintFull":"PASS","renderSvg":"NOT_RUN","studentChrome":"NOT_RUN","a4":"NOT_RUN"
+    },
+    {
+      "number":15,"qid":3,"sourceQuote":"양 끝점 사이의 가로 폭은 $16",
+      "sourceVsPlan":"REVIEWED","featureParity":"PASS","planLintShallow":"PASS",
+      "preRenderParity":"PASS",
+      "mathReview":"Ground y=0, vertex V=(0,1), ends A=(-8,3),B=(8,3) have horizontal width 16m and 3m height. Upward parabola x^2=32(y-1), F=(0,9), hidden. Two exact vertical incident rays T=(4,6) -> M=(4,3/2) -> F and U=(-7,6) -> N=(-7,81/32) -> F restore the source's plural reflections without exposing focus height.",
+      "corrected":"Tested 13 candidate x-positions for the second incident ray against full lint. x=-7 preserves the essential 16m label, unlike x=-6..-1. Restored two source-faithful sunlight paths on opposite branches and removed the pending classification.",
+      "requiredVisible":[
+        {"path":"conic.axis","equals":"Y"},
+        {"path":"conic.vertex.1","equals":"1"},
+        {"path":"conic.p","equals":"8"},
+        {"path":"points.A.label","equals":false},
+        {"path":"points.B.label","equals":false},
+        {"path":"segments.OV.label","equals":"1 m"},
+        {"path":"segments.AK.label","equals":"3 m"},
+        {"path":"segments.AB.label","equals":"16 m"},
+        {"path":"segments.TM.from","equals":"T"},
+        {"path":"segments.MF.to","equals":"F"},
+        {"path":"points.N.x","equals":"-7"},
+        {"path":"points.U.y","equals":"6"},
+        {"path":"segments.UN.from","equals":"U"},
+        {"path":"segments.NF.to","equals":"F"},
+        {"path":"lines.ground.y","equals":"0"}
+      ],
+      "forbiddenVisible":["points.F.coordinates","points.T.coordinates"],
+      "blockers":[],
+      "planLintFull":"PASS","renderSvg":"NOT_RUN","studentChrome":"NOT_RUN","a4":"NOT_RUN"
+    },
+    {
+      "number":15,"qid":4,"sourceQuote":"수면의 가로 폭은?",
+      "preRenderParity":"PASS",
+      "mathReview":"Lowest point O=(0,0), upward parabola x^2=6y, p=3/2. At y=6 the chord endpoints x=±6 give width12m; at y=2 x=±2sqrt(3), unknown width4sqrt(3)m remains unlabelled.",
+      "corrected":"Suppressed invented point names A,B,C,D on the two water surfaces; retained the 12m upper-width label and y=6/y=2 height markers.",
+      "requiredVisible":[
+        {"path":"conic.axis","equals":"Y"},
+        {"path":"conic.p","equals":"3/2"},
+        {"path":"points.A.label","equals":false},
+        {"path":"points.B.label","equals":false},
+        {"path":"points.C.label","equals":false},
+        {"path":"points.D.label","equals":false},
+        {"path":"segments.AB.label","equals":"12 m"},
+        {"path":"segments.CD.from","equals":"C"},
+        {"path":"lines.high.label","equals":"y=6"},
+        {"path":"lines.low.label","equals":"y=2"}
+      ],
+      "forbiddenVisible":["segments.CD.label"],
+      "blockers":[],"planLintFull":"PASS","renderSvg":"NOT_RUN","studentChrome":"NOT_RUN","a4":"NOT_RUN"
+    },
+    {
+      "number":15,"qid":8,"sourceQuote":"삼각형 $\\mathrm{AHC}$의 넓이는?",
+      "preRenderParity":"PASS",
+      "mathReview":"Choose p=3 for y^2=12x. A=(9,6sqrt(3)), B=(1,-2sqrt(3)), F=(3,0): AF=12, BF=4; H=(-3,6sqrt(3)), C=(-3,-6sqrt(3)) is the intersection of secant AB and directrix x=-3. Triangle AHC is right at H with area72sqrt(3), hidden.",
+      "requiredVisible":[
+        {"path":"conic.p","equals":"3"},
+        {"path":"points.H.kind","equals":"FOOT"},
+        {"path":"points.H.rightAngle","equals":true},
+        {"path":"segments.AF.label","equals":"12"},
+        {"path":"segments.FB.label","equals":"4"},
+        {"path":"segments.AH.from","equals":"A"},
+        {"path":"segments.HC.from","equals":"H"},
+        {"path":"segments.AC.to","equals":"C"},
+        {"path":"lines.d.role","equals":"DIRECTRIX"},
+        {"path":"lines.d.label","equals":"l"}
+      ],
+      "forbiddenVisible":["points.A.coordinates","segments.HC.label"],
+      "blockers":[],"planLintFull":"PASS","renderSvg":"NOT_RUN","studentChrome":"NOT_RUN","a4":"NOT_RUN"
+    },
+    {
+      "number":15,"qid":10,"sourceQuote":"두 포물선 $C_1",
+      "preRenderParity":"PASS",
+      "mathReview":"Parabola C1 y^2=4x has F1=(1,0), C2 y^2=-8(x-9) has F2=(7,0); intersections P=(6,2sqrt(6)), Q=(6,-2sqrt(6)). The perimeter of quadrilateral PF1QF2 equals24, forcing internal a=9; area 12sqrt(6) remains hidden.",
+      "corrected":"Added original two-curve names C1,C2 to the conic descriptors without exposing the unknown parameter a.",
+      "requiredVisible":[
+        {"path":"conics.c1.label","equals":"C1"},
+        {"path":"conics.c2.label","equals":"C2"},
+        {"path":"conics.c1.p","equals":"1"},
+        {"path":"conics.c2.p","equals":"-2"},
+        {"path":"points.F1.kind","equals":"FOCUS"},
+        {"path":"points.F2.kind","equals":"FOCUS"},
+        {"path":"points.P.kind","equals":"CONIC_CONIC"},
+        {"path":"points.Q.kind","equals":"CONIC_CONIC"},
+        {"path":"segments.PF1.from","equals":"P"},
+        {"path":"segments.F1Q.from","equals":"F1"},
+        {"path":"segments.QF2.from","equals":"Q"},
+        {"path":"segments.F2P.from","equals":"F2"}
+      ],
+      "forbiddenVisible":["points.P.coordinates","points.Q.coordinates"],
+      "blockers":[],"planLintFull":"PASS","renderSvg":"NOT_RUN","studentChrome":"NOT_RUN","a4":"NOT_RUN"
+    },
+    {
+      "number":15,"qid":11,"sourceQuote":"양수 $p$의 값은?",
+      "preRenderParity":"PASS",
+      "mathReview":"p=6 internal: F=(6,0), P=(18,12sqrt(3)), Q=(2,-4sqrt(3)), H=(-6,12sqrt(3)). PF=24 and FQ=8 give ratio3:1, H is the directrix foot, and PHF is equilateral of side24 with area144sqrt(3). Requested p not displayed.",
+      "requiredVisible":[
+        {"path":"conic.p","equals":"6"},
+        {"path":"points.P.branch","equals":"POS"},
+        {"path":"points.Q.branch","equals":"NEG"},
+        {"path":"points.H.kind","equals":"FOOT"},
+        {"path":"points.H.rightAngle","equals":true},
+        {"path":"segments.PF.from","equals":"P"},
+        {"path":"segments.FQ.from","equals":"F"},
+        {"path":"segments.PH.from","equals":"P"},
+        {"path":"segments.HF.from","equals":"H"},
+        {"path":"lines.d.role","equals":"DIRECTRIX"},
+        {"path":"lines.d.label","equals":"l"}
+      ],
+      "forbiddenVisible":["points.P.coordinates","points.Q.coordinates","segments.PF.label"],
+      "blockers":[],"planLintFull":"PASS","renderSvg":"NOT_RUN","studentChrome":"NOT_RUN","a4":"NOT_RUN"
+    }
+  ]
+}

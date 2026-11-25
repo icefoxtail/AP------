@@ -1,0 +1,178 @@
+{
+  "auditKind": "SOURCE_FIRST_PRE_RENDER_FIELD_PARITY",
+  "date": "2026-11-25",
+  "from": 7,
+  "to": 7,
+  "missingSourceNumbers": [],
+  "reviewRule": "Every [그림:] qid must have one plan. Math must be checked against the original question and solution. PASS requires all source-required visible fields, not merely plan-lint success. Blockers remain incomplete; SVG, student Chrome and A4 NOT_RUN.",
+  "figures": [
+    {
+      "number": 7, "qid": 1,
+      "sourceQuote": "직선 $y = 1$, $y = 2$, $y = 3$",
+      "sourceVsPlan": "REVIEWED", "featureParity": "ENGINE_CAPABILITY_PENDING", "planLintShallow": "PASS",
+      "preRenderParity": "ENGINE_CAPABILITY_PENDING",
+      "mathReview": "P_k=(k^2/8,k), F=(2,0), FP_k=(k^2+16)/8; sum k=1..15 is 185. No numeric answer may appear on the figure.",
+      "corrected": "Added the missing visual line labels y=1, y=2, y=3; full lint remains PASS.",
+      "requiredVisible": [
+        {"path":"conic.p","equals":"2"},
+        {"path":"points.F.coordinates","equals":true},
+        {"path":"points.P1.y","equals":"1"},
+        {"path":"points.P2.y","equals":"2"},
+        {"path":"points.P3.y","equals":"3"},
+        {"path":"lines.h1.label","equals":"y=1"},
+        {"path":"lines.h2.label","equals":"y=2"},
+        {"path":"lines.h3.label","equals":"y=3"},
+        {"path":"segments.FP1.to","equals":"P1"},
+        {"path":"segments.FP3.to","equals":"P3"}
+      ],
+      "forbiddenVisible": ["points.P1.coordinates", "points.P2.coordinates", "points.P3.coordinates"],
+      "blockers": ["Source has P_1,P_2,P_3,... and line/point continuation. Engine currently renders plain P1/P2/P3 and no in-figure ellipsis; caption alone does not restore full visual fidelity."],
+      "planLintFull": "PASS", "renderSvg": "NOT_RUN", "studentChrome": "NOT_RUN", "a4": "NOT_RUN"
+    },
+    {
+      "number": 7, "qid": 2,
+      "sourceQuote": "등차수열을 이룰 때",
+      "sourceVsPlan": "REVIEWED", "featureParity": "PASS", "planLintShallow": "PASS",
+      "preRenderParity": "PASS",
+      "mathReview": "F=(5,0), FA=10 at x_A=5, FB=14 at x_B=9; arithmetic progression gives FC=18 and x_C=13, which must remain hidden. Unnamed foot H=(9,0) has horizontal origin distance OH=9, exactly its given x-coordinate.",
+      "requiredVisible": [
+        {"path":"conic.p","equals":"5"},
+        {"path":"points.F.coordinates","equals":true},
+        {"path":"points.A.x","equals":"5"},
+        {"path":"points.B.x","equals":"9"},
+        {"path":"points.C.x","equals":"13"},
+        {"path":"points.H.kind","equals":"FOOT"},
+        {"path":"points.H.label","equals":false},
+        {"path":"points.H.rightAngle","equals":true},
+        {"path":"segments.OH.label","equals":"9"},
+        {"path":"segments.FA.from","equals":"F"},
+        {"path":"segments.FB.from","equals":"F"},
+        {"path":"segments.FC.from","equals":"F"}
+      ],
+      "forbiddenVisible": ["points.H.coordinates", "points.C.coordinates", "segments.FC.label"],
+      "blockers": [],
+      "planLintFull": "PASS", "renderSvg": "NOT_RUN", "studentChrome": "NOT_RUN", "a4": "NOT_RUN"
+    },
+    {
+      "number": 7, "qid": 3,
+      "sourceQuote": "준선에 접하는 원이",
+      "preRenderParity": "PASS",
+      "mathReview": "Parabola y^2=16x has F=(4,0) and directrix x=-4. Circle centered at F, radius 8, touches the directrix and meets the parabola at P=(4,8); triangle POF area 16, not labeled.",
+      "requiredVisible": [
+        {"path":"conics.c1.kind","equals":"PARABOLA"},
+        {"path":"conics.c2.kind","equals":"CIRCLE"},
+        {"path":"conics.c2.rSquared","equals":"64"},
+        {"path":"points.P.kind","equals":"CONIC_CONIC"},
+        {"path":"lines.d.role","equals":"DIRECTRIX"},
+        {"path":"segments.OF.from","equals":"O"},
+        {"path":"segments.FP.from","equals":"F"},
+        {"path":"segments.OP.from","equals":"O"}
+      ],
+      "forbiddenVisible": ["points.P.coordinates"], "blockers": [],
+      "planLintFull": "PASS", "renderSvg": "NOT_RUN", "studentChrome": "NOT_RUN", "a4": "NOT_RUN"
+    },
+    {
+      "number": 7, "qid": 4,
+      "sourceQuote": "둘레의 길이가 $26$",
+      "preRenderParity": "PASS",
+      "mathReview": "The positive solution p=4 gives F=(4,0), A=(9,0), P=(13/2,sqrt(104)); PF=PA=21/2 and FA=5, perimeter 26. p is a hidden drawing parameter.",
+      "requiredVisible": [
+        {"path":"conic.p","equals":"4"},
+        {"path":"points.A.coordinates","equals":true},
+        {"path":"points.P.branch","equals":"POS"},
+        {"path":"segments.PF.to","equals":"F"},
+        {"path":"segments.PA.to","equals":"A"},
+        {"path":"segments.FA.from","equals":"F"}
+      ],
+      "forbiddenVisible": ["points.P.coordinates", "segments.PF.label", "segments.PA.label"], "blockers": [],
+      "planLintFull": "PASS", "renderSvg": "NOT_RUN", "studentChrome": "NOT_RUN", "a4": "NOT_RUN"
+    },
+    {
+      "number": 7, "qid": 5,
+      "sourceQuote": "삼각형 $\\mathrm{PFH}$의 넓이가",
+      "preRenderParity": "PASS",
+      "mathReview": "F=(3,0), P=(7,2sqrt(21)), H=(7,0); area PFH=(4*2sqrt(21))/2=4sqrt(21), and PF=10 is hidden.",
+      "requiredVisible": [
+        {"path":"conic.p","equals":"3"},
+        {"path":"points.P.x","equals":"7"},
+        {"path":"points.H.kind","equals":"FOOT"},
+        {"path":"points.H.rightAngle","equals":true},
+        {"path":"segments.PF.to","equals":"F"},
+        {"path":"segments.PH.to","equals":"H"},
+        {"path":"segments.FH.from","equals":"F"}
+      ],
+      "forbiddenVisible": ["points.P.coordinates", "segments.PF.label"], "blockers": [],
+      "planLintFull": "PASS", "renderSvg": "NOT_RUN", "studentChrome": "NOT_RUN", "a4": "NOT_RUN"
+    },
+    {
+      "number": 7, "qid": 6,
+      "sourceQuote": "정삼각형일 때",
+      "preRenderParity": "PASS",
+      "mathReview": "Parabola has vertex (2,1), p=2, F=(4,1), directrix x=0; P=(8,1+4sqrt(3)), H=(0,1+4sqrt(3)) gives PH=HF=FP=8. Hidden requested x_P=8.",
+      "requiredVisible": [
+        {"path":"conic.vertex.0","equals":"2"},
+        {"path":"conic.p","equals":"2"},
+        {"path":"lines.d.role","equals":"DIRECTRIX"},
+        {"path":"lines.d.label","equals":"l"},
+        {"path":"points.H.rightAngle","equals":true},
+        {"path":"segments.PH.from","equals":"P"},
+        {"path":"segments.HF.from","equals":"H"},
+        {"path":"segments.FP.from","equals":"F"}
+      ],
+      "forbiddenVisible": ["points.P.coordinates"], "blockers": [],
+      "planLintFull": "PASS", "renderSvg": "NOT_RUN", "studentChrome": "NOT_RUN", "a4": "NOT_RUN"
+    },
+    {
+      "number": 7, "qid": 7,
+      "sourceQuote": "120^\\circ",
+      "preRenderParity": "ENGINE_CAPABILITY_PENDING",
+      "mathReview": "F=(6,0), P=(2,4sqrt(3)), H=(-6,4sqrt(3)): PH=PF=8, angle HPF=120 degrees, triangle area 16sqrt(3) hidden.",
+      "requiredVisible": [
+        {"path":"conic.p","equals":"6"},
+        {"path":"lines.d.role","equals":"DIRECTRIX"},
+        {"path":"points.H.rightAngle","equals":true},
+        {"path":"segments.PH.from","equals":"P"},
+        {"path":"segments.PF.to","equals":"F"},
+        {"path":"segments.HF.from","equals":"H"}
+      ],
+      "forbiddenVisible": ["points.P.coordinates"],
+      "blockers": ["The source figure explicitly displays the 120-degree arc/text at P; ellipse-figure-v1 has no angle arc/angle-label field. The prose condition is not drawn parity."],
+      "planLintFull": "PASS", "renderSvg": "NOT_RUN", "studentChrome": "NOT_RUN", "a4": "NOT_RUN"
+    },
+    {
+      "number": 7, "qid": 9,
+      "sourceQuote": "이등분선이 선분",
+      "preRenderParity": "PASS",
+      "mathReview": "Parabola y^2=12x, F=(3,0), P=(24,12sqrt(2)), H=(-3,12sqrt(2)): HP:HF=27:18=3:2; Q=(57/5,24sqrt(2)/5) divides PF in PQ:QF=3:2. The ray HQ is the angle bisector.",
+      "requiredVisible": [
+        {"path":"conic.p","equals":"3"},
+        {"path":"points.Q.kind","equals":"POINT"},
+        {"path":"points.H.rightAngle","equals":true},
+        {"path":"segments.HQ.from","equals":"H"},
+        {"path":"segments.HQ.to","equals":"Q"},
+        {"path":"segments.PF.from","equals":"P"},
+        {"path":"lines.d.role","equals":"DIRECTRIX"}
+      ],
+      "forbiddenVisible": ["points.P.coordinates", "points.Q.coordinates"], "blockers": [],
+      "planLintFull": "PASS", "renderSvg": "NOT_RUN", "studentChrome": "NOT_RUN", "a4": "NOT_RUN"
+    },
+    {
+      "number": 7, "qid": 10,
+      "sourceQuote": "기울기가 양수인 직선",
+      "preRenderParity": "PASS",
+      "mathReview": "P=(-5,0), A=(1,2sqrt(5)), B=(25,10sqrt(5)); PA:PB=1:5, both positive-quadrant points lie on the same line of positive slope sqrt(5)/3. Do not print the slope answer.",
+      "requiredVisible": [
+        {"path":"conic.p","equals":"5"},
+        {"path":"points.P.x","equals":"-5"},
+        {"path":"points.A.branch","equals":"POS"},
+        {"path":"points.B.branch","equals":"POS"},
+        {"path":"lines.d.role","equals":"DIRECTRIX"},
+        {"path":"lines.l.label","equals":"l"},
+        {"path":"segments.PA.to","equals":"A"},
+        {"path":"segments.PB.to","equals":"B"}
+      ],
+      "forbiddenVisible": ["points.A.coordinates", "points.B.coordinates"], "blockers": [],
+      "planLintFull": "PASS", "renderSvg": "NOT_RUN", "studentChrome": "NOT_RUN", "a4": "NOT_RUN"
+    }
+  ]
+}

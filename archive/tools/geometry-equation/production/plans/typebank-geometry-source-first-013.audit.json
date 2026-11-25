@@ -1,0 +1,91 @@
+{
+  "auditKind":"SOURCE_FIRST_PRE_RENDER_FIELD_PARITY",
+  "date":"2026-11-25",
+  "from":13,"to":13,"missingSourceNumbers":[],
+  "reviewRule":"Verify each two-parabola curve orientation, shared focus or distinct focus, point intersection and segment connectivity; source curve names are actual drawable labels. Actual SVG/Chrome/A4 deferred.",
+  "figures":[
+    {
+      "number":13,"qid":1,"sourceQuote":"초점으로 공유하는 두 포물선",
+      "preRenderParity":"PASS",
+      "mathReview":"Choose shared F=(4,0). Curve C1 has vertex A=(-2,0) and p=6, opens right; curve C2 vertex B=(11,0) and p=-7, opens left with same focus. At y=6, P=(-1/2,6), Q=(68/7,6), P_x<Q_x. Triangle perimeter 26 remains hidden.",
+      "corrected":"Added actual C1,C2 labels to conic descriptors, preserving the two named source curves in visible plan fields.",
+      "requiredVisible":[
+        {"path":"conics.c1.label","equals":"C1"},
+        {"path":"conics.c2.label","equals":"C2"},
+        {"path":"conics.c1.p","equals":"6"},
+        {"path":"conics.c2.p","equals":"-7"},
+        {"path":"points.A.coordinates","equals":true},
+        {"path":"points.B.coordinates","equals":true},
+        {"path":"points.F.kind","equals":"FOCUS"},
+        {"path":"points.P.y","equals":"6"},
+        {"path":"points.Q.y","equals":"6"},
+        {"path":"segments.PQ.from","equals":"P"},
+        {"path":"segments.PF.to","equals":"F"},
+        {"path":"segments.FQ.from","equals":"F"}
+      ],
+      "forbiddenVisible":["points.P.coordinates","points.Q.coordinates","segments.PQ.label"],
+      "blockers":[],"planLintFull":"PASS","renderSvg":"NOT_RUN","studentChrome":"NOT_RUN","a4":"NOT_RUN"
+    },
+    {
+      "number":13,"qid":2,"sourceQuote":"$\\overline{\\mathrm{OP}} = \\overline{\\mathrm{PF}}$",
+      "preRenderParity":"PASS",
+      "mathReview":"Two opposing parabolas use p=8 internally: x=y^2/32 and x=-y^2/64, focus F=(8,0). P=(4,8sqrt(2)), Q=(-2,8sqrt(2)), so OP=PF=12 and PQ=6; requested PF numerical value stays hidden. This uses multi-curve capability, not conic capability.",
+      "corrected":"Converted string sourceConditions mapping to concrete graphPlan field paths, including the visible PQ length overlay.",
+      "requiredVisible":[
+        {"path":"capability","equals":"multi-curve-figure-v1"},
+        {"path":"graphPlan.curves.c1.kind","equals":"X_OF_Y"},
+        {"path":"graphPlan.curves.c1.coefficients.2","equals":"1/32"},
+        {"path":"graphPlan.curves.c2.coefficients.2","equals":"-1/64"},
+        {"path":"graphPlan.overlays.points.F.x","equals":"8"},
+        {"path":"graphPlan.overlays.points.P.x","equals":"4"},
+        {"path":"graphPlan.overlays.points.Q.x","equals":"-2"},
+        {"path":"graphPlan.overlays.segments.OP.to","equals":"P"},
+        {"path":"graphPlan.overlays.segments.FP.to","equals":"P"},
+        {"path":"graphPlan.overlays.segments.PQ.to","equals":"Q"},
+        {"path":"graphPlan.overlays.names.lenPQ.text","equals":"6"},
+        {"path":"graphPlan.overlays.names.lenPQ.segment","equals":"PQ"}
+      ],
+      "forbiddenVisible":[],
+      "blockers":[],"planLintFull":"PASS","renderSvg":"NOT_RUN","studentChrome":"NOT_RUN","a4":"NOT_RUN"
+    },
+    {
+      "number":13,"qid":4,"sourceQuote":"사각형 $\\mathrm{ABCD}$의 둘레의 길이는?",
+      "preRenderParity":"PASS",
+      "mathReview":"Rightward parabola vertex(-3,0), p=2 and F'=(-1,0); leftward parabola vertex(4,0), p=-2 and F=(2,0). A=(-1,4),B=(-1,-4),C=(2,-4),D=(2,4); AB and CD pass through foci, AD/BC horizontal, perimeter 22 hidden.",
+      "requiredVisible":[
+        {"path":"conics.c1.p","equals":"2"},
+        {"path":"conics.c2.p","equals":"-2"},
+        {"path":"points.F'.kind","equals":"FOCUS"},
+        {"path":"points.F.kind","equals":"FOCUS"},
+        {"path":"segments.AB.from","equals":"A"},
+        {"path":"segments.BC.from","equals":"B"},
+        {"path":"segments.CD.from","equals":"C"},
+        {"path":"segments.DA.from","equals":"D"}
+      ],
+      "forbiddenVisible":["points.A.coordinates","points.B.coordinates","segments.AB.label"],
+      "blockers":[],"planLintFull":"PASS","renderSvg":"NOT_RUN","studentChrome":"NOT_RUN","a4":"NOT_RUN"
+    },
+    {
+      "number":13,"qid":5,"sourceQuote":"세 조건을 만족한다.",
+      "preRenderParity":"PASS",
+      "mathReview":"A=(3sqrt(3)-6,0)<0, B=(3sqrt(3)-3,0)>0; AB=3. For p1, p=6, focus F=(3sqrt(3),0), B is midpoint of AF. p2 has focus O, opens left. Curves intersect x=0 at C,D with y=±6(sqrt(3)-1); triangle ABC area 9(sqrt(3)-1) hidden.",
+      "corrected":"Added p1,p2 labels to the two conic descriptors so the named source curves remain distinguishable in the actual figure.",
+      "requiredVisible":[
+        {"path":"conics.c1.label","equals":"p1"},
+        {"path":"conics.c2.label","equals":"p2"},
+        {"path":"conics.c1.p","equals":"6"},
+        {"path":"conics.c2.p","equals":"3-3*sqrt(3)"},
+        {"path":"points.A.kind","equals":"VERTEX"},
+        {"path":"points.B.kind","equals":"VERTEX"},
+        {"path":"points.C.kind","equals":"CONIC_CONIC"},
+        {"path":"points.D.kind","equals":"CONIC_CONIC"},
+        {"path":"segments.AB.label","equals":"3"},
+        {"path":"segments.AF.from","equals":"A"},
+        {"path":"segments.AC.from","equals":"A"},
+        {"path":"segments.BC.from","equals":"B"}
+      ],
+      "forbiddenVisible":["points.C.coordinates","points.D.coordinates"],
+      "blockers":[],"planLintFull":"PASS","renderSvg":"NOT_RUN","studentChrome":"NOT_RUN","a4":"NOT_RUN"
+    }
+  ]
+}

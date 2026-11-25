@@ -1,11 +1,11 @@
 {
   "capability":"ellipse-figure-v1",
   "conic":{"kind":"PARABOLA","vertex":["0","0"],"p":"3/2","axis":"Y"},
-  "points":[{"id":"O","kind":"ORIGIN"},{"id":"A","kind":"ON_CONIC","x":"-6"},{"id":"B","kind":"ON_CONIC","x":"6"},{"id":"C","kind":"ON_CONIC","x":"-2*sqrt(3)"},{"id":"D","kind":"ON_CONIC","x":"2*sqrt(3)"}],
+  "points":[{"id":"O","kind":"ORIGIN"},{"id":"A","kind":"ON_CONIC","x":"-6","label":false},{"id":"B","kind":"ON_CONIC","x":"6","label":false},{"id":"C","kind":"ON_CONIC","x":"-2*sqrt(3)","label":false},{"id":"D","kind":"ON_CONIC","x":"2*sqrt(3)","label":false}],
   "lines":[{"id":"high","y":"6","label":"y=6"},{"id":"low","y":"2","label":"y=2"}],
   "segments":[{"id":"AB","from":"A","to":"B","label":"12 m"},{"id":"CD","from":"C","to":"D"}],
   "caption":"포물선 수로 단면 x²=6y의 수면 높이 6m에서 폭 12m, 높이 2m의 폭은 미지수",
   "accessibilityDescription":"위로 열린 포물선 수로에서 높이 6의 위쪽 수면 AB는 폭 12미터이고 높이 2의 아래쪽 수면 CD는 폭을 구해야 하는 짧은 현이다.",
-  "sourceConditions":[{"id":"c1","condition":"원점이 수로의 최저점이고 y=6에서 끝점 x=±6이므로 x²=6y이다.","mappedTo":["conic","O","A","B","high","AB"]},{"id":"c2","condition":"높이 y=2의 두 교점 C,D는 내부 좌표 x=±2√3이며, 물은 수면 폭의 결과 수치를 쓰지 않는다.","mappedTo":["C","D","low","CD"]}],
+  "sourceConditions":[{"id":"c1","condition":"원점이 수로의 최저점이고 y=6에서 끝점 x=±6이므로 x²=6y이다. 원문에 없는 네 끝점 이름 A,B,C,D는 렌더 그림에서 숨긴다.","mappedTo":["conic","O","A","B","high","AB"]},{"id":"c2","condition":"높이 y=2의 두 교점 C,D는 내부 좌표 x=±2√3이며, 묻는 수면 폭의 결과 수치를 쓰지 않는다.","mappedTo":["C","D","low","CD"]}],
   "newVisualInformation":["높이에 따른 수평 수면 현 길이 비교"]
 }

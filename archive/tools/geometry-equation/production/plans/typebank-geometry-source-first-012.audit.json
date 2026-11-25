@@ -1,0 +1,97 @@
+{
+  "auditKind":"SOURCE_FIRST_PRE_RENDER_FIELD_PARITY",
+  "date":"2026-11-25",
+  "from":12,"to":12,"missingSourceNumbers":[],
+  "reviewRule":"For variable-point minimization, do not silently draw the optimizer unless the original says the depicted triangle/path is minimizing. Verify all fixed points, parabola constraints, and hidden answers.",
+  "figures":[
+    {
+      "number":12,"qid":1,"sourceQuote":"점 $\\mathrm{P}$가 이 포물선 위를 움직일 때",
+      "preRenderParity":"PASS",
+      "mathReview":"y^2=16x, F=(4,0), A=(5,4) is interior; P=(4,8) lies on the upper branch but is not the minimizer P=(1,4), whose coordinate sum 5 is hidden.",
+      "requiredVisible":[
+        {"path":"conic.p","equals":"4"},
+        {"path":"points.A.x","equals":"5"},
+        {"path":"points.A.y","equals":"4"},
+        {"path":"points.A.coordinates","equals":true},
+        {"path":"points.P.branch","equals":"POS"},
+        {"path":"segments.PF.to","equals":"F"},
+        {"path":"segments.PA.to","equals":"A"}
+      ],
+      "forbiddenVisible":["points.P.coordinates","segments.PF.label","segments.PA.label"],
+      "blockers":[],"planLintFull":"PASS","renderSvg":"NOT_RUN","studentChrome":"NOT_RUN","a4":"NOT_RUN"
+    },
+    {
+      "number":12,"qid":2,"sourceQuote":"최솟값은?",
+      "preRenderParity":"PASS",
+      "mathReview":"y^2=12x, F=(3,0), A=(6,2) interior; representative P=(2,2sqrt(6)) lies on parabola, not at optimizer (1/3,2); minimum FP+AP=9 is hidden.",
+      "requiredVisible":[
+        {"path":"conic.p","equals":"3"},
+        {"path":"points.A.x","equals":"6"},
+        {"path":"points.A.y","equals":"2"},
+        {"path":"points.A.coordinates","equals":true},
+        {"path":"points.P.x","equals":"2"},
+        {"path":"segments.FP.from","equals":"F"},
+        {"path":"segments.AP.from","equals":"A"}
+      ],
+      "forbiddenVisible":["points.P.coordinates","segments.AP.label"],
+      "blockers":[],"planLintFull":"PASS","renderSvg":"NOT_RUN","studentChrome":"NOT_RUN","a4":"NOT_RUN"
+    },
+    {
+      "number":12,"qid":4,"sourceQuote":"둘레의 길이가 최소일 때",
+      "preRenderParity":"PASS",
+      "mathReview":"Here the source explicitly requires the drawn minimizing triangle, so P=(1/2,2), F=(2,0), A=(5,2) is correct. AF fixed, AP horizontal, area 9/2 hidden.",
+      "requiredVisible":[
+        {"path":"conic.p","equals":"2"},
+        {"path":"points.A.coordinates","equals":true},
+        {"path":"points.P.y","equals":"2"},
+        {"path":"segments.AF.from","equals":"A"},
+        {"path":"segments.FP.from","equals":"F"},
+        {"path":"segments.PA.from","equals":"P"}
+      ],
+      "forbiddenVisible":["points.P.coordinates","segments.PA.label","segments.FP.label"],
+      "blockers":[],"planLintFull":"PASS","renderSvg":"NOT_RUN","studentChrome":"NOT_RUN","a4":"NOT_RUN"
+    },
+    {
+      "number":12,"qid":5,"sourceQuote":"점 $\\mathrm{Q}(9, 12)$",
+      "preRenderParity":"PASS",
+      "mathReview":"y^2=12x, F=(3,0), directrix x=-3, Q=(9,12) outside. P=(4,4sqrt(3)) is an arbitrary first-quadrant conic point and is NOT on segment QF; H=(-3,4sqrt(3)), with PH perpendicular to the directrix. Minimum 6sqrt(5) is hidden.",
+      "corrected":"Original plan used the QF intersection, implicitly revealing the minimizing configuration despite P being arbitrary. Replaced with non-optimal P and removed hidden QF construction.",
+      "requiredVisible":[
+        {"path":"conic.p","equals":"3"},
+        {"path":"points.Q.coordinates","equals":true},
+        {"path":"points.P.kind","equals":"ON_CONIC"},
+        {"path":"points.P.x","equals":"4"},
+        {"path":"points.H.kind","equals":"FOOT"},
+        {"path":"points.H.rightAngle","equals":true},
+        {"path":"lines.d.role","equals":"DIRECTRIX"},
+        {"path":"lines.d.label","equals":"x=-3"},
+        {"path":"segments.PQ.to","equals":"Q"},
+        {"path":"segments.PH.to","equals":"H"}
+      ],
+      "forbiddenVisible":["lines.qf","points.P.coordinates","segments.PH.label"],
+      "blockers":[],"planLintFull":"PASS","renderSvg":"NOT_RUN","studentChrome":"NOT_RUN","a4":"NOT_RUN"
+    },
+    {
+      "number":12,"qid":6,"sourceQuote":"직선 $y = 3$ 위의 임의의 점",
+      "preRenderParity":"PASS",
+      "mathReview":"x^2=6y, focus F=(0,3/2). R=(-12/5,24/25), S=(15/4,75/32) lie on the parabola and their chord goes through F. P=(-1,3), Q=(5,3) are on y=3. Their path is about 10.1897 > true minimum 9, preventing answer-layout leakage.",
+      "corrected":"Replaced minimizing horizontal focal chord and vertical endpoints with a non-optimal but exact generic focus chord and arbitrary P,Q.",
+      "requiredVisible":[
+        {"path":"conic.axis","equals":"Y"},
+        {"path":"conic.p","equals":"3/2"},
+        {"path":"points.R.x","equals":"-12/5"},
+        {"path":"points.S.x","equals":"15/4"},
+        {"path":"points.P.x","equals":"-1"},
+        {"path":"points.P.y","equals":"3"},
+        {"path":"points.Q.x","equals":"5"},
+        {"path":"points.Q.y","equals":"3"},
+        {"path":"lines.h.label","equals":"y=3"},
+        {"path":"segments.PR.to","equals":"R"},
+        {"path":"segments.RS.to","equals":"S"},
+        {"path":"segments.SQ.to","equals":"Q"}
+      ],
+      "forbiddenVisible":["points.P.coordinates","points.Q.coordinates","segments.RS.label"],
+      "blockers":[],"planLintFull":"PASS","renderSvg":"NOT_RUN","studentChrome":"NOT_RUN","a4":"NOT_RUN"
+    }
+  ]
+}

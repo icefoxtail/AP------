@@ -1,0 +1,88 @@
+{
+  "auditKind": "SOURCE_FIRST_PRE_RENDER_FIELD_PARITY",
+  "date": "2026-11-25",
+  "from": 26,
+  "to": 26,
+  "missingSourceNumbers": [],
+  "reviewRule": "Two original [그림:] blocks q01 and q03 require exact two-ellipse shared-focus intersection checks. Q02 has no [그림:] and must not create an unrequested plan. Keep given major-axis labels, verify perimeter algebra, and preserve F₁,F₂ mathematical subscripts.",
+  "figures": [
+    {
+      "number": 26,
+      "qid": 1,
+      "sourceQuote": "사각형 $\\mathrm{AF}_1\\mathrm{BF}_2$의 둘레의 길이가 $44$",
+      "sourceVsPlan": "REVIEWED",
+      "featureParity": "ENGINE_CAPABILITY_PENDING",
+      "planLintShallow": "PASS",
+      "preRenderParity": "ENGINE_CAPABILITY_PENDING",
+      "mathReview": "The first ellipse centered (-8/5,0), major square64, minor square1536/25 has F₁=(-16/5,0),F=(0,0), and major length16. The second centered (5,0), major square121, minor square96 has F=(0,0),F₂=(10,0), and major length22. Their only real intersections are A=(-8/5,16√6/5),B=(-8/5,-16√6/5), ordered above/below. AF=BF=8, AF₁=BF₁=8, AF₂=BF₂=14, so exterior AF₁BF₂ perimeter=44 and hidden target AF+BF=16. Current engine writes point ids F1,F2 as baseline text, rather than source F₁,F₂ math subscripts.",
+      "requiredVisible": [
+        {"path": "conics.c1.kind", "equals": "ELLIPSE"},
+        {"path": "conics.c1.aSquared", "equals": "64"},
+        {"path": "conics.c1.bSquared", "equals": "1536/25"},
+        {"path": "conics.c1.label", "equals": "장축 16"},
+        {"path": "conics.c2.kind", "equals": "ELLIPSE"},
+        {"path": "conics.c2.aSquared", "equals": "121"},
+        {"path": "conics.c2.bSquared", "equals": "96"},
+        {"path": "conics.c2.label", "equals": "장축 22"},
+        {"path": "points.F1.curve", "equals": "c1"},
+        {"path": "points.F.curve", "equals": "c1"},
+        {"path": "points.F2.curve", "equals": "c2"},
+        {"path": "points.A.kind", "equals": "CONIC_CONIC"},
+        {"path": "points.A.which", "equals": 2},
+        {"path": "points.B.which", "equals": 1},
+        {"path": "segments.sAF1.from", "equals": "A"},
+        {"path": "segments.sF1B.to", "equals": "B"},
+        {"path": "segments.sBF2.to", "equals": "F2"},
+        {"path": "segments.sF2A.to", "equals": "A"},
+        {"path": "segments.sAF.to", "equals": "F"},
+        {"path": "segments.sBF.to", "equals": "F"}
+      ],
+      "forbiddenVisible": ["segments.sAF1.label", "segments.sBF2.label", "segments.sAF.label", "segments.sBF.label"],
+      "blockers": [
+        "Source uses mathematical focal names F₁,F₂. Engine point-label text is built from id F1,F2 without subscript markup; custom math point display is unsupported in ellipse-figure-v1."
+      ],
+      "planLintFull": "PASS",
+      "renderSvg": "NOT_RUN",
+      "studentChrome": "NOT_RUN",
+      "a4": "NOT_RUN"
+    },
+    {
+      "number": 26,
+      "qid": 3,
+      "sourceQuote": "삼각형 $\\mathrm{PQF}_1$의 둘레의 길이와 삼각형 $\\mathrm{PQF}_2$",
+      "sourceVsPlan": "REVIEWED",
+      "featureParity": "ENGINE_CAPABILITY_PENDING",
+      "planLintShallow": "PASS",
+      "preRenderParity": "ENGINE_CAPABILITY_PENDING",
+      "mathReview": "The first ellipse centered (-3,0) has a=7, b²=40 and foci F₁=(-6,0),F=(0,0); the second centered (5/2,0) has a=4,b²=39/4 and foci F=(0,0),F₂=(5,0). Their real intersections are P=(367/118,5√1326/59) and Q=(367/118,-5√1326/59), with PQ the common chord. For each X=P,Q the two definitions give XF₁+XF=14 and XF₂+XF=8; the two triangle perimeters differ by 2(14−8)=12. Original F₁,F₂ math subscripts are currently absent in model point labels F1,F2.",
+      "requiredVisible": [
+        {"path": "conics.c1.kind", "equals": "ELLIPSE"},
+        {"path": "conics.c1.aSquared", "equals": "49"},
+        {"path": "conics.c1.bSquared", "equals": "40"},
+        {"path": "conics.c1.label", "equals": "장축 14"},
+        {"path": "conics.c2.aSquared", "equals": "16"},
+        {"path": "conics.c2.bSquared", "equals": "39/4"},
+        {"path": "conics.c2.label", "equals": "장축 8"},
+        {"path": "points.F1.curve", "equals": "c1"},
+        {"path": "points.F2.curve", "equals": "c2"},
+        {"path": "points.P.kind", "equals": "CONIC_CONIC"},
+        {"path": "points.P.which", "equals": 2},
+        {"path": "points.Q.which", "equals": 1},
+        {"path": "segments.sPQ.from", "equals": "P"},
+        {"path": "segments.sPQ.to", "equals": "Q"},
+        {"path": "segments.sPF1.to", "equals": "F1"},
+        {"path": "segments.sQF2.to", "equals": "F2"},
+        {"path": "segments.sPF.to", "equals": "F"},
+        {"path": "segments.sQF.to", "equals": "F"}
+      ],
+      "forbiddenVisible": ["segments.sPQ.label", "segments.sPF1.label", "segments.sQF2.label"],
+      "blockers": [
+        "The source labels the two other foci F₁ and F₂ using subscripts, but ellipse-figure-v1 prints the literal ids F1,F2 as ordinary baseline numbers; math display names are required."
+      ],
+      "planLintFull": "PASS",
+      "renderSvg": "NOT_RUN",
+      "studentChrome": "NOT_RUN",
+      "a4": "NOT_RUN"
+    }
+  ]
+}

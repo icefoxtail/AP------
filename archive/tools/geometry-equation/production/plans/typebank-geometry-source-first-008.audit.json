@@ -1,0 +1,104 @@
+{
+  "auditKind": "SOURCE_FIRST_PRE_RENDER_FIELD_PARITY",
+  "date": "2026-11-25",
+  "from": 8,
+  "to": 8,
+  "missingSourceNumbers": [],
+  "reviewRule": "Check actual [그림:] features and independent conic coordinates. Lint PASS is not graphical source parity; unresolved subscript, measurement label, or direction arrow means pending. Student Chrome/A4 untested.",
+  "figures": [
+    {
+      "number": 8, "qid": 1,
+      "sourceQuote": "양수 $m$의 값은?",
+      "preRenderParity": "PASS",
+      "mathReview": "y^2=16x, F=(4,0), A=(8,8sqrt(2)), B=(2,-4sqrt(2)). A,F,B collinear on positive-slope l, AF:BF=2:1, slope 2sqrt(2) hidden.",
+      "requiredVisible": [
+        {"path":"conic.p","equals":"4"},
+        {"path":"points.A.branch","equals":"POS"},
+        {"path":"points.B.branch","equals":"NEG"},
+        {"path":"lines.l.label","equals":"l"},
+        {"path":"segments.AF.to","equals":"F"},
+        {"path":"segments.BF.to","equals":"F"}
+      ],
+      "forbiddenVisible": ["points.A.coordinates", "points.B.coordinates", "lines.l.slope"],
+      "blockers": [], "planLintFull": "PASS", "renderSvg": "NOT_RUN", "studentChrome": "NOT_RUN", "a4": "NOT_RUN"
+    },
+    {
+      "number": 8, "qid": 2,
+      "sourceQuote": "수선의 발을 각각",
+      "preRenderParity": "ENGINE_CAPABILITY_PENDING",
+      "mathReview": "For focus F=(3/2,0), A_x=(9+3sqrt(5))/4 and B_x=(9-3sqrt(5))/4, AF+BF=AB=15/2 and AH1+BH2=A_x+B_x=9/2; A above and B below axis.",
+      "requiredVisible": [
+        {"path":"conic.p","equals":"3/2"},
+        {"path":"points.H1.kind","equals":"FOOT"},
+        {"path":"points.H2.kind","equals":"FOOT"},
+        {"path":"points.H1.rightAngle","equals":true},
+        {"path":"points.H2.rightAngle","equals":true},
+        {"path":"segments.AH1.to","equals":"H1"},
+        {"path":"segments.BH2.to","equals":"H2"},
+        {"path":"segments.AF.to","equals":"F"},
+        {"path":"segments.FB.from","equals":"F"}
+      ],
+      "forbiddenVisible": ["points.A.coordinates", "points.B.coordinates"],
+      "blockers": ["Source point names H_1 and H_2 are mathematical subscripts. Current conic label renderer displays H1 and H2 as plain text without subscript typesetting."],
+      "planLintFull": "PASS", "renderSvg": "NOT_RUN", "studentChrome": "NOT_RUN", "a4": "NOT_RUN"
+    },
+    {
+      "number": 8, "qid": 3,
+      "sourceQuote": "선분 $\\mathrm{AB}$의 길이는?",
+      "preRenderParity": "PASS",
+      "mathReview": "F=(3,0), A=(9,6sqrt(3)), B=(1,-2sqrt(3)), feet P,Q on y-axis. AP+BQ=9+1=10. AB=16 is hidden.",
+      "requiredVisible": [
+        {"path":"conic.p","equals":"3"},
+        {"path":"points.P.kind","equals":"FOOT"},
+        {"path":"points.Q.kind","equals":"FOOT"},
+        {"path":"points.P.rightAngle","equals":true},
+        {"path":"points.Q.rightAngle","equals":true},
+        {"path":"segments.AP.to","equals":"P"},
+        {"path":"segments.BQ.to","equals":"Q"},
+        {"path":"segments.AF.to","equals":"F"},
+        {"path":"segments.FB.from","equals":"F"}
+      ],
+      "forbiddenVisible": ["points.A.coordinates", "points.B.coordinates", "segments.AF.label", "segments.FB.label"],
+      "blockers": [], "planLintFull": "PASS", "renderSvg": "NOT_RUN", "studentChrome": "NOT_RUN", "a4": "NOT_RUN"
+    },
+    {
+      "number": 8, "qid": 4,
+      "sourceQuote": "4+\\sqrt{7}",
+      "sourceVsPlan": "REVIEWED", "featureParity": "PASS", "planLintShallow": "PASS",
+      "preRenderParity": "PASS",
+      "mathReview": "F=(3,0), A_x=4+sqrt(7), B_x=4-sqrt(7), both on a focus chord; AP and BQ are these x-coordinates and AB=14 is hidden. The original [그림:] asks for both perpendiculars but explicitly labels neither length; removing the one-sided AP label restores visual parity with the original picture.",
+      "requiredVisible": [
+        {"path":"conic.p","equals":"3"},
+        {"path":"segments.AP.from","equals":"A"},
+        {"path":"segments.BQ.from","equals":"B"},
+        {"path":"segments.BQ.to","equals":"Q"},
+        {"path":"points.P.rightAngle","equals":true},
+        {"path":"points.Q.rightAngle","equals":true}
+      ],
+      "forbiddenVisible": ["segments.AP.label", "segments.BQ.label", "points.A.coordinates", "points.B.coordinates"],
+      "blockers": [],
+      "planLintFull": "PASS", "renderSvg": "NOT_RUN", "studentChrome": "NOT_RUN", "a4": "NOT_RUN"
+    },
+    {
+      "number": 8, "qid": 5,
+      "sourceQuote": "빛이 진행한 거리는?",
+      "sourceVsPlan": "REVIEWED", "featureParity": "ENGINE_CAPABILITY_PENDING", "planLintShallow": "PASS",
+      "preRenderParity": "ENGINE_CAPABILITY_PENDING",
+      "mathReview": "P=(10,12), incoming horizontal PA from P to A=(9,12); A,F=(4,0),B=(16/9,-16/3) collinear, outgoing horizontal BQ to Q=(10,-16/3). Total path length 28 is hidden.",
+      "requiredVisible": [
+        {"path":"conic.p","equals":"4"},
+        {"path":"points.F.coordinates","equals":true},
+        {"path":"points.P.coordinates","equals":true},
+        {"path":"lines.wall.x","equals":"10"},
+        {"path":"lines.wall.label","equals":"x=10"},
+        {"path":"segments.PA.from","equals":"P"},
+        {"path":"segments.AF.to","equals":"F"},
+        {"path":"segments.FB.from","equals":"F"},
+        {"path":"segments.BQ.to","equals":"Q"}
+      ],
+      "forbiddenVisible": ["points.Q.coordinates", "segments.PA.label", "segments.BQ.label"],
+      "blockers": ["The source describes directed incident/reflected light P -> A -> F -> B -> Q. Current segment schema does not render direction arrowheads, so the light-travel directions remain text-only."],
+      "planLintFull": "PASS", "renderSvg": "NOT_RUN", "studentChrome": "NOT_RUN", "a4": "NOT_RUN"
+    }
+  ]
+}

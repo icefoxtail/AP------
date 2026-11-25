@@ -1,0 +1,82 @@
+{
+  "auditKind":"SOURCE_FIRST_PRE_RENDER_FIELD_PARITY",
+  "date":"2026-11-25","from":17,"to":17,"missingSourceNumbers":[],
+  "reviewRule":"The original triangle-only figures must not acquire a solution ellipse. Verify three input lengths and exact ellipse rectangles; unsupported equal-side tick marks remain engine pending.",
+  "figures":[
+    {
+      "number":17,"qid":1,"sourceQuote":"삼각형 $\\mathrm{ABC}$에서",
+      "preRenderParity":"PASS",
+      "mathReview":"A=(1,2sqrt(6)), B=(6,0), C=(0,0): AB=7, BC=6, CA=5. The source figure is only a labeled triangle; the solution ellipse with foci B,C has a=6,c=3 and minor diameter6sqrt(3), which must not be drawn.",
+      "requiredVisible":[
+        {"path":"capability","equals":"construction-spike-v1"},
+        {"path":"mathPlan.nodes.A.op","equals":"SOURCE_POINT"},
+        {"path":"mathPlan.nodes.B.op","equals":"SOURCE_POINT"},
+        {"path":"mathPlan.nodes.C.op","equals":"SOURCE_POINT"},
+        {"path":"displaySegments.sAB.refs.0","equals":"A"},
+        {"path":"displaySegments.sBC.refs.0","equals":"B"},
+        {"path":"displaySegments.sCA.refs.0","equals":"C"},
+        {"path":"planeMarks.expressionLabels.tAB.text","equals":"7"},
+        {"path":"planeMarks.expressionLabels.tBC.text","equals":"6"},
+        {"path":"planeMarks.expressionLabels.tCA.text","equals":"5"}
+      ],
+      "forbiddenVisible":["ellipse","ellipses","conic","conics"],
+      "blockers":[],"planLintFull":"PASS","renderSvg":"NOT_RUN","studentChrome":"NOT_RUN","a4":"NOT_RUN"
+    },
+    {
+      "number":17,"qid":3,"sourceQuote":"정삼각형 $\\mathrm{PF}'\\mathrm{F}$",
+      "preRenderParity":"ENGINE_CAPABILITY_PENDING",
+      "mathReview":"Ellipse major semi-axis4, focal c=2, minor semi-axis sqrt(12). F,F'=(±2,0), P=(0,2sqrt(3)); PF=PF'=FF'=4, equilateral area4sqrt(3), and hidden minor diameter4sqrt(3). Geometry is exact but no equal-length tick marks are drawable by this capability.",
+      "requiredVisible":[
+        {"path":"ellipse.majorAxis","equals":"X"},
+        {"path":"ellipse.semiAxisSquared.major","equals":"16"},
+        {"path":"ellipse.semiAxisSquared.minor","equals":"12"},
+        {"path":"points.F.side","equals":1},
+        {"path":"points.F'.side","equals":-1},
+        {"path":"points.P.kind","equals":"ON_ELLIPSE"},
+        {"path":"segments.sPF.from","equals":"P"},
+        {"path":"segments.sPFp.to","equals":"F'"},
+        {"path":"segments.sFFp.from","equals":"F"}
+      ],
+      "forbiddenVisible":["segments.sPF.label","segments.sPFp.label","segments.sFFp.label"],
+      "blockers":["The source picture specifically depicts an equilateral triangle. Exact equal-side geometry is present, but ellipse-figure-v1 cannot draw identical side tick marks. The original plan already records this engine limitation, so full graphical parity remains pending."],
+      "planLintFull":"PASS","renderSvg":"NOT_RUN","studentChrome":"NOT_RUN","a4":"NOT_RUN"
+    },
+    {
+      "number":17,"qid":4,"sourceQuote":"직사각형 $\\mathrm{FAF}'\\mathrm{B}$",
+      "preRenderParity":"PASS",
+      "mathReview":"Two foci F=(13/2,0), F'=(-13/2,0), A=(119/26,60/13), B=-A. AF=5 and AF'=12, angle FAF' is right (5-12-13), diagonals FF' and AB bisect at O. Ellipse major semi-axis17/2, minor squared30, hidden minor diameter2sqrt(30).",
+      "requiredVisible":[
+        {"path":"ellipse.semiAxisSquared.major","equals":"289/4"},
+        {"path":"ellipse.semiAxisSquared.minor","equals":"30"},
+        {"path":"points.B.kind","equals":"OPPOSITE"},
+        {"path":"points.O.kind","equals":"ORIGIN"},
+        {"path":"segments.sFA.label","equals":"5"},
+        {"path":"segments.sAFp.label","equals":"12"},
+        {"path":"segments.sFpB.from","equals":"F'"},
+        {"path":"segments.sBF.from","equals":"B"},
+        {"path":"segments.sFFp.from","equals":"F"},
+        {"path":"segments.sAB.from","equals":"A"}
+      ],
+      "forbiddenVisible":["points.A.coordinates","points.B.coordinates"],
+      "blockers":[],"planLintFull":"PASS","renderSvg":"NOT_RUN","studentChrome":"NOT_RUN","a4":"NOT_RUN"
+    },
+    {
+      "number":17,"qid":5,"sourceQuote":"장축이 선분 $\\mathrm{AB}$와 평행한 타원",
+      "preRenderParity":"PASS",
+      "mathReview":"Rectangle A=(-5,6), B=(-5,-6), C=(5,-6), D=(5,6) has AB=12 and AD=10. Ellipse x^2/25+y^2/36=1 touches all four sides, vertical major axis parallel AB. Hidden foci separation2sqrt(11).",
+      "requiredVisible":[
+        {"path":"ellipse.majorAxis","equals":"Y"},
+        {"path":"ellipse.semiAxisSquared.major","equals":"36"},
+        {"path":"ellipse.semiAxisSquared.minor","equals":"25"},
+        {"path":"points.A.x","equals":"-5"},
+        {"path":"points.D.y","equals":"6"},
+        {"path":"segments.sAB.label","equals":"12"},
+        {"path":"segments.sDA.label","equals":"10"},
+        {"path":"segments.sBC.from","equals":"B"},
+        {"path":"segments.sCD.from","equals":"C"}
+      ],
+      "forbiddenVisible":["points.F","points.F'"],
+      "blockers":[],"planLintFull":"PASS","renderSvg":"NOT_RUN","studentChrome":"NOT_RUN","a4":"NOT_RUN"
+    }
+  ]
+}

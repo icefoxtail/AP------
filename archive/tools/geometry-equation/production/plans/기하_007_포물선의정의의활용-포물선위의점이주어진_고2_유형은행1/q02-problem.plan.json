@@ -1,11 +1,11 @@
 {
   "capability":"ellipse-figure-v1",
   "conic":{"kind":"PARABOLA","vertex":["0","0"],"p":"5","axis":"X"},
-  "points":[{"id":"O","kind":"ORIGIN"},{"id":"F","kind":"FOCUS"},{"id":"A","kind":"ON_CONIC","x":"5","branch":"POS"},{"id":"B","kind":"ON_CONIC","x":"9","branch":"POS"},{"id":"C","kind":"ON_CONIC","x":"13","branch":"POS"},{"id":"H","kind":"FOOT","from":"B","onto":"ax","rightAngle":true,"coordinates":true}],
+  "points":[{"id":"O","kind":"ORIGIN"},{"id":"F","kind":"FOCUS","coordinates":true},{"id":"A","kind":"ON_CONIC","x":"5","branch":"POS"},{"id":"B","kind":"ON_CONIC","x":"9","branch":"POS"},{"id":"C","kind":"ON_CONIC","x":"13","branch":"POS"},{"id":"H","kind":"FOOT","from":"B","onto":"ax","rightAngle":true,"label":false}],
   "lines":[{"id":"ax","y":"0","hidden":true}],
-  "segments":[{"id":"FA","from":"F","to":"A"},{"id":"FB","from":"F","to":"B"},{"id":"FC","from":"F","to":"C"},{"id":"BH","from":"B","to":"H"}],
-  "caption":"y²=20x의 초점 F에서 세 점 A,B,C로 이은 선분과 B의 x좌표 9",
-  "accessibilityDescription":"제1사분면에서 포물선 위 A,B,C가 차례로 오른쪽 위에 있으며, 초점 F에서 A까지의 선분은 수직이고 B 아래 x축의 점 H는 (9,0)이다.",
-  "sourceConditions":[{"id":"c1","condition":"포물선 y²=20x의 초점 F=(5,0)이고 FA가 수직이므로 A의 x=5이다.","mappedTo":["conic","F","A","FA"]},{"id":"c2","condition":"B의 x=9와 길이 FA,FB,FC의 등차수열을 만족하는 C의 x=13을 내부 배치에만 사용한다. C의 정답 좌표는 표시하지 않는다.","mappedTo":["B","H","BH","C","FB","FC"]}],
-  "newVisualInformation":["초점에서 세 점까지 거리의 순서와 B의 수선"]
+  "segments":[{"id":"FA","from":"F","to":"A"},{"id":"FB","from":"F","to":"B"},{"id":"FC","from":"F","to":"C"},{"id":"BH","from":"B","to":"H"},{"id":"OH","from":"O","to":"H","label":"9"}],
+  "caption":"y²=20x의 초점 F에서 세 점 A,B,C로 이은 선분과 원점에서 B의 수선의 발까지 x축 거리 9",
+  "accessibilityDescription":"제1사분면에서 포물선 위 A,B,C가 차례로 오른쪽 위에 있으며 초점 F에서 A까지의 선분은 수직이다. B 아래 x축의 무명 수선 발까지 원점에서의 거리는 9로 표기되어 있다.",
+  "sourceConditions":[{"id":"c1","condition":"포물선 y²=20x의 초점 F=(5,0)이고 FA가 수직이므로 A의 x=5이다.","mappedTo":["conic","F","A","FA"]},{"id":"c2","condition":"B의 수선의 발 H=(9,0)에서 OH=9는 원점 O 기준의 x좌표 9와 정확히 같다. H 이름은 표시하지 않고 x축의 OH 구간에 9를 표기한다. 길이 FA,FB,FC의 등차수열을 만족하는 C의 x=13은 내부 배치에만 사용하며 정답 좌표는 표시하지 않는다.","mappedTo":["B","H","BH","OH","C","FB","FC"]}],
+  "newVisualInformation":["초점에서 세 점까지 거리의 순서와 B의 수선","수선의 발에 대한 x좌표 9의 원점 기준 x축 길이 표시"]
 }

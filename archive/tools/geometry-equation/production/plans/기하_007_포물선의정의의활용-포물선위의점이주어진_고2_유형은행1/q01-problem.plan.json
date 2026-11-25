@@ -1,11 +1,11 @@
 {
   "capability":"ellipse-figure-v1",
   "conic":{"kind":"PARABOLA","vertex":["0","0"],"p":"2","axis":"X"},
-  "points":[{"id":"O","kind":"ORIGIN"},{"id":"F","kind":"FOCUS"},{"id":"P1","kind":"ON_CONIC","y":"1"},{"id":"P2","kind":"ON_CONIC","y":"2"},{"id":"P3","kind":"ON_CONIC","y":"3"}],
-  "lines":[{"id":"h1","y":"1","dashed":true},{"id":"h2","y":"2","dashed":true},{"id":"h3","y":"3","dashed":true}],
+  "points":[{"id":"O","kind":"ORIGIN"},{"id":"F","kind":"FOCUS","coordinates":true},{"id":"P1","kind":"ON_CONIC","y":"1"},{"id":"P2","kind":"ON_CONIC","y":"2"},{"id":"P3","kind":"ON_CONIC","y":"3"}],
+  "lines":[{"id":"h1","y":"1","label":"y=1","dashed":true},{"id":"h2","y":"2","label":"y=2","dashed":true},{"id":"h3","y":"3","label":"y=3","dashed":true}],
   "segments":[{"id":"FP1","from":"F","to":"P1"},{"id":"FP2","from":"F","to":"P2"},{"id":"FP3","from":"F","to":"P3"}],
   "caption":"포물선 y²=8x에서 수평선 y=1,2,3과 만나는 P₁,P₂,P₃ 및 초점 F. 이후 P₁₅까지 같은 규칙으로 이어진다.",
   "accessibilityDescription":"오른쪽으로 열린 포물선에 높이 1,2,3의 수평선과 교점 P1,P2,P3가 있고 각각 초점 F까지 연결된다. 나머지 교점은 생략한 반복 도식이다.",
-  "sourceConditions":[{"id":"c1","condition":"y²=8x의 초점은 F=(2,0)이다.","mappedTo":["conic","F"]},{"id":"c2","condition":"주어진 y=k(k=1,2,3,…)와의 교점은 (k²/8,k); 앞 세 개만 대표로 그리며 무한 반복 전체와 k=15의 최종 합은 기입하지 않는다.","mappedTo":["P1","P2","P3","h1","h2","h3","FP1","FP2","FP3"]}],
+  "sourceConditions":[{"id":"c1","condition":"y²=8x의 초점은 F=(2,0)이고 원문 [그림:]의 초점 좌표도 명시적으로 라벨에 표기한다.","mappedTo":["conic","F"]},{"id":"c2","condition":"주어진 y=k(k=1,2,3,…)와의 교점은 (k²/8,k); 앞 세 개만 대표로 그리며 무한 반복 전체와 k=15의 최종 합은 기입하지 않는다.","mappedTo":["P1","P2","P3","h1","h2","h3","FP1","FP2","FP3"]}],
   "newVisualInformation":["초점과 수평 교점의 반복 연결 구조"]
 }

@@ -1,0 +1,139 @@
+{
+  "auditKind": "SOURCE_FIRST_PRE_RENDER_FIELD_PARITY",
+  "date": "2026-11-25",
+  "from": 23,
+  "to": 23,
+  "missingSourceNumbers": [],
+  "reviewRule": "Independently recompute each focal chord and the triangles' membership/order; reject visible perimeter answers, unpublished parameter values, and false intersections. Preserve both parallel-line separation and quarter-plane branches.",
+  "figures": [
+    {
+      "number": 23,"qid": 1,"sourceQuote": "삼각형 $\\mathrm{ABF}$의 둘레",
+      "sourceVsPlan": "REVIEWED", "featureParity": "PASS", "planLintShallow": "PASS",
+      "preRenderParity": "PASS",
+      "mathReview": "25x^2+9y^2=225 becomes x^2/9+y^2/25=1, foci F=(0,4),F'=(0,-4), vertical semimajor5. The representative chord y=x/2-4 passes F' but not F, with F' internal to segment AB. AF+AF'=BF+BF'=10, and the answer perimeter20 is hidden.",
+      "requiredVisible": [
+        {"path":"conic.kind","equals":"ELLIPSE"},
+        {"path":"conic.major","equals":"Y"},
+        {"path":"conic.aSquared","equals":"25"},
+        {"path":"conic.bSquared","equals":"9"},
+        {"path":"points.F.side","equals":1},
+        {"path":"points.F'.side","equals":-1},
+        {"path":"points.A.kind","equals":"LINE_CONIC"},
+        {"path":"points.B.kind","equals":"LINE_CONIC"},
+        {"path":"lines.k.intercept","equals":"-4"},
+        {"path":"segments.sAB.from","equals":"A"},
+        {"path":"segments.sAF.to","equals":"F"},
+        {"path":"segments.sBF.from","equals":"B"}
+      ],
+      "forbiddenVisible": ["segments.sAB.label","points.F.coordinates"],
+      "blockers": [],"planLintFull":"PASS","renderSvg":"NOT_RUN","studentChrome":"NOT_RUN","a4":"NOT_RUN"
+    },
+    {
+      "number": 23,"qid": 2,"sourceQuote": "삼각형 $\\mathrm{PQB}$의 둘레",
+      "sourceVsPlan": "REVIEWED", "featureParity": "PASS", "planLintShallow": "PASS",
+      "preRenderParity": "PASS",
+      "mathReview": "Ellipse semimajor6, semiminor sqrt(20), focal c=4. A=(4,0),B=(-4,0) are exactly the two foci. The line y=x/2-2 passes A and intersects the ellipse in nonzero-y points P,Q with A between them. PA+PB=QA+QB=12, so hidden triangle perimeter24.",
+      "requiredVisible": [
+        {"path":"conic.aSquared","equals":"36"},
+        {"path":"conic.bSquared","equals":"20"},
+        {"path":"points.A.coordinates","equals":true},
+        {"path":"points.B.coordinates","equals":true},
+        {"path":"points.P.kind","equals":"LINE_CONIC"},
+        {"path":"points.Q.kind","equals":"LINE_CONIC"},
+        {"path":"lines.k.slope","equals":"1/2"},
+        {"path":"segments.sPQ.from","equals":"P"},
+        {"path":"segments.sPB.to","equals":"B"},
+        {"path":"segments.sQB.from","equals":"Q"}
+      ],
+      "forbiddenVisible": ["points.P.coordinates","points.Q.coordinates","segments.sPQ.label"],
+      "blockers": [],"planLintFull":"PASS","renderSvg":"NOT_RUN","studentChrome":"NOT_RUN","a4":"NOT_RUN"
+    },
+    {
+      "number": 23,"qid": 3,"sourceQuote": "두 양수 $a, b$에 대하여 $ab$",
+      "sourceVsPlan": "REVIEWED", "featureParity": "ENGINE_CAPABILITY_PENDING", "planLintShallow": "PASS",
+      "preRenderParity": "ENGINE_CAPABILITY_PENDING",
+      "mathReview": "Perimeter ABF' with focal chord through F equals 4a=12, hence a=3. Given c=sqrt(5), b^2=9-5=4, b=2, and hidden ab=6. The representative chord y=x-sqrt(5) passes F=(sqrt(5),0); its two ellipse intersections straddle F. Original figure additionally labels both F(sqrt(5),0),F'(-sqrt(5),0). Tried either or both coordinate labels; all fail ELLIPSE_LABEL_NO_ROOM, while current plan passes.",
+      "requiredVisible": [
+        {"path":"conic.major","equals":"X"},
+        {"path":"conic.aSquared","equals":"9"},
+        {"path":"conic.bSquared","equals":"4"},
+        {"path":"points.F.side","equals":1},
+        {"path":"points.F'.side","equals":-1},
+        {"path":"points.A.line","equals":"k"},
+        {"path":"points.B.line","equals":"k"},
+        {"path":"lines.k.slope","equals":"1"},
+        {"path":"segments.sAB.to","equals":"B"},
+        {"path":"segments.sAFp.to","equals":"F'"},
+        {"path":"segments.sBFp.from","equals":"B"}
+      ],
+      "forbiddenVisible": ["points.F.coordinates","points.F'.coordinates","segments.sAB.label","segments.sBFp.label"],
+      "blockers": ["The [그림:] description explicitly gives both focal coordinate labels, but their long radical expressions collide with the focal chord and point labels (ELLIPSE_LABEL_NO_ROOM). The original geometry is accurate; a leader/layout improvement is required for both focal labels."],"planLintFull":"PASS","renderSvg":"NOT_RUN","studentChrome":"NOT_RUN","a4":"NOT_RUN"
+    },
+    {
+      "number": 23,"qid": 4,"sourceQuote": "삼각형 $\\mathrm{ABF}$의 둘레의 길이가 $20$",
+      "sourceVsPlan": "REVIEWED", "featureParity": "ENGINE_CAPABILITY_PENDING", "planLintShallow": "PASS",
+      "preRenderParity": "ENGINE_CAPABILITY_PENDING",
+      "mathReview": "The condition A=(0,2) yields minor semiaxis2, while chord A-F'-B through the left focus and triangle ABF perimeter20 gives semimajor5. F,F'=(±sqrt(21),0), so the hidden answer FF'=2sqrt(21). The auxiliary line k through A,F' chooses the other intersection B, with F' between A and B. The source diagram uses symbolic labels F(c,0),F'(-c,0) with c still unknown; the current engine prints evaluated coordinates, which would expose the answer.",
+      "requiredVisible": [
+        {"path":"conics.c1.kind","equals":"ELLIPSE"},
+        {"path":"conics.c1.aSquared","equals":"25"},
+        {"path":"conics.c1.bSquared","equals":"4"},
+        {"path":"conics.c1.label","equals":"C"},
+        {"path":"points.A.coordinates","equals":true},
+        {"path":"points.F.kind","equals":"FOCUS"},
+        {"path":"points.F'.kind","equals":"FOCUS"},
+        {"path":"points.B.kind","equals":"LINE_CONIC"},
+        {"path":"lines.k.hidden","equals":true},
+        {"path":"segments.sAB.from","equals":"A"},
+        {"path":"segments.sAF.to","equals":"F"},
+        {"path":"segments.sBF.to","equals":"F"}
+      ],
+      "forbiddenVisible": ["points.F.coordinates","points.F'.coordinates","segments.sAB.label"],
+      "blockers": ["The source diagram specifies symbolic F(c,0),F'(-c,0), but ellipse-figure-v1 coordinates:true substitutes the solved c=sqrt(21), leaking the unknown focal separation; it also collides in label placement. Needs symbolic coordinate-label support instead of revealing derived values."],"planLintFull":"PASS","renderSvg":"NOT_RUN","studentChrome":"NOT_RUN","a4":"NOT_RUN"
+    },
+    {
+      "number": 23,"qid": 5,"sourceQuote": "두 직선 사이의 거리가 $6$",
+      "sourceVsPlan": "REVIEWED", "featureParity": "PASS", "planLintShallow": "PASS",
+      "preRenderParity": "PASS",
+      "mathReview": "Ellipse x^2/49+y^2/24=1 has foci F=(5,0),F'=(-5,0). Parallel l: y=3x/4-15/4 and m: y=3x/4+15/4 pass F,F' respectively and have exact distance (15/2)/(5/4)=6. P=(-7/5,-24/5) lies on l in quadrant III; Q=(7/5,24/5) lies on m in quadrant I. Hidden PF'=QF=6, sum12.",
+      "requiredVisible": [
+        {"path":"conic.aSquared","equals":"49"},
+        {"path":"conic.bSquared","equals":"24"},
+        {"path":"points.F.side","equals":1},
+        {"path":"points.F'.side","equals":-1},
+        {"path":"points.P.kind","equals":"LINE_CONIC"},
+        {"path":"points.Q.kind","equals":"LINE_CONIC"},
+        {"path":"lines.l.slope","equals":"3/4"},
+        {"path":"lines.l.label","equals":"l"},
+        {"path":"lines.m.slope","equals":"3/4"},
+        {"path":"lines.m.label","equals":"m"},
+        {"path":"points.E.rightAngle","equals":true},
+        {"path":"segments.sDE.label","equals":"6"}
+      ],
+      "forbiddenVisible": ["points.P.coordinates","points.Q.coordinates"],
+      "blockers": [],"planLintFull":"PASS","renderSvg":"NOT_RUN","studentChrome":"NOT_RUN","a4":"NOT_RUN"
+    },
+    {
+      "number": 23,"qid": 6,"sourceQuote": "삼각형 $\\mathrm{PFQ}$의 둘레",
+      "sourceVsPlan": "REVIEWED", "featureParity": "PASS", "planLintShallow": "PASS",
+      "preRenderParity": "PASS",
+      "mathReview": "F=(4,0),F'=(-4,0); ellipse semiaxes5 and3. Interior P=(8/5,9/5) has PF=sqrt((12/5)^2+(9/5)^2)=3, as given, and is on segment F'Q, where Q is the positive-first-quadrant ellipse intersection with line F'P. The sum of perimeters is (F'Q+QF)+2PF+FF'=10+6+8=24, never labelled.",
+      "requiredVisible": [
+        {"path":"conic.aSquared","equals":"25"},
+        {"path":"conic.bSquared","equals":"9"},
+        {"path":"points.F.kind","equals":"FOCUS"},
+        {"path":"points.F'.kind","equals":"FOCUS"},
+        {"path":"points.P.x","equals":"8/5"},
+        {"path":"points.P.y","equals":"9/5"},
+        {"path":"points.Q.kind","equals":"LINE_CONIC"},
+        {"path":"segments.sPF.label","equals":"3"},
+        {"path":"segments.sFpP.from","equals":"F'"},
+        {"path":"segments.sPQ.to","equals":"Q"},
+        {"path":"segments.sQF.to","equals":"F"},
+        {"path":"segments.sFFp.from","equals":"F"}
+      ],
+      "forbiddenVisible": ["points.P.coordinates","points.Q.coordinates","segments.sPQ.label"],
+      "blockers": [],"planLintFull":"PASS","renderSvg":"NOT_RUN","studentChrome":"NOT_RUN","a4":"NOT_RUN"
+    }
+  ]
+}

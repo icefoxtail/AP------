@@ -1,7 +1,7 @@
 {
   "capability":"ellipse-figure-v1",
   "conic":{"kind":"PARABOLA","vertex":["0","0"],"p":"4","axis":"X"},
-  "points":[{"id":"O","kind":"ORIGIN"},{"id":"F","kind":"FOCUS"},{"id":"P","kind":"POINT","x":"10","y":"12","coordinates":true},{"id":"A","kind":"ON_CONIC","y":"12"},{"id":"B","kind":"ON_CONIC","y":"-16/3"},{"id":"Q","kind":"POINT","x":"10","y":"-16/3"}],
+  "points":[{"id":"O","kind":"ORIGIN"},{"id":"F","kind":"FOCUS","coordinates":true},{"id":"P","kind":"POINT","x":"10","y":"12","coordinates":true},{"id":"A","kind":"ON_CONIC","y":"12"},{"id":"B","kind":"ON_CONIC","y":"-16/3"},{"id":"Q","kind":"POINT","x":"10","y":"-16/3"}],
   "lines":[{"id":"wall","x":"10","label":"x=10"},{"id":"chord","through":["A","B"],"hidden":true}],
   "segments":[{"id":"PA","from":"P","to":"A"},{"id":"AF","from":"A","to":"F"},{"id":"FB","from":"F","to":"B"},{"id":"BQ","from":"B","to":"Q"}],
   "caption":"P(10,12)에서 포물선 y²=16x의 A로 수평 입사하고 초점 F, B를 지나 Q까지 수평 반사되는 광로",

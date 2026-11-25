@@ -72,7 +72,7 @@
     },
     {
       "stemNumber":33,"qid":7,"sourceVsPlan":"REVIEWED","planLintShallow":"PASS","planLintFull":"PASS","independentMath":"PASS","featureParity":"ENGINE_CAPABILITY_PENDING",
-      "verified":"반지름 4인 초점 지름 원과 타원의 제1사분면 교점 P=(2,2√3). 접선 기울기 -1/√3, 방향각 5π/6, 실제 타원 a²=16+8√3,b²=8√3 검산",
+      "verified":"반지름 4인 초점 지름 원과 타원의 제1사분면 교점 P=(2,2√3). 원의 접선 기울기 -1/√3, 타원의 접선 기울기 -(2-√3)로 서로 달라 원·타원은 서로 접하지 않고 교차한다. 방향각 5π/6, 실제 타원 a²=16+8√3,b²=8√3 검산. 캡션의 부정확한 '공통접점'을 '교점에서 원에 그은 접선'으로 교정",
       "missingVisual":"P에 종속되는 접선과 양의 x축 사이 5π/6 각호·각도 라벨"
     },
     {
@@ -91,7 +91,7 @@
     {
       "stemNumber":34,"qid":5,"sourceVsPlan":"REVIEWED","planLintShallow":"PASS","planLintFull":"PASS","independentMath":"PASS","featureParity":"ENGINE_CAPABILITY_PENDING",
       "verified":"타원 x²/36+y²/11·포물선 y²=20x 상부 교점 P=(6/11,2√330/11), 초점 F=(5,0), 준선 x=−5, Q=(-5,0)=F′, R=(-5,2√330/11), FOOT 직각 표시. PQ+PR=12 검산",
-      "missingVisual":"원문 Q(-5,0) 좌표 병기(Ellipse label no room), Q=F′의 동일점 복수 이름. F′ 라벨은 중복 충돌 방지로 생략"
+      "missingVisual":"원문 Q(-5,0) 좌표 병기(Ellipse label no room), Q=F′의 동일점 복수 이름, 원문 F(5,0) 초점 좌표 병기. F′ 라벨은 중복 충돌 방지로 생략"
     },
     {
       "stemNumber":34,"qid":6,"sourceVsPlan":"REVIEWED","planLintShallow":"PASS","planLintFull":"PASS","independentMath":"PASS","featureParity":"ENGINE_CAPABILITY_PENDING",
@@ -100,7 +100,7 @@
     },
     {
       "stemNumber":34,"qid":10,"sourceVsPlan":"REVIEWED","planLintShallow":"PASS","planLintFull":"PASS","independentMath":"PASS","featureParity":"ENGINE_CAPABILITY_PENDING",
-      "verified":"포물선 y²=8x, 타원 중심(1,0),a²=4,b²=3, F=(2,0),F′=(0,0), A=(-1,0), 제1사분면 교점 B=(1/3,2√6/3), 준선 x=−2의 발 H=(-2,2√6/3)와 BH=7/3 선분 라벨",
+      "verified":"포물선 y²=8x, 타원 중심(1,0),a²=4,b²=3, F=(2,0),F′=(0,0), A=(-1,0), 제1사분면 교점 B=(1/3,2√6/3), 준선 x=−2의 발 H=(-2,2√6/3)와 BH=7/3 선분 라벨. 원문 타원 E의 곡선 라벨 추가 후 full lint 재통과",
       "missingVisual":"원문 A(-1,0)와 F(2,0) 좌표 동시 병기. 좌표 표시가 ELLIPSE_LABEL_NO_ROOM으로 실패하여 현재 A,F 이름만 유지"
     }
   ],
@@ -114,5 +114,6 @@
   "contentHandoff": [
     {"stemNumber":33,"qid":8,"kind":"MATHEMATICAL_SOURCE_CONTRADICTION","request":"원문 반지름1인 원이 단축 꼭짓점 (0,±b)와 왼쪽 초점 (-c,0)을 동시에 지나게 하는 조건을 재설계. 타원 a²+b²=1에서 a<1인데 초점에 닿으려면 a−c=1이어서 a>1인 모순. 정답·해설도 정오표 필요"}
   ],
-  "handoffNote": "033→034→035의 원문 22문항 중 실제 [그림] 13건을 전부 직접 대조했다. 035는 그림 지시가 없어 plan 0건이다. 033q08 원본 수학 모순으로 plan을 만들지 않았고 다른 12건은 실제 정규 JSON·정확식 검산·shallow/full lint 통과. pre-render 그림 필드 PASS 4건, 엔진 표시 보강 8건이다. 이것은 SVG/PNG 최종 화면 완성과 다르며 렌더·학생 화면·A4·JS 이미지 연결·게시 전부 NOT_RUN. 기존 JS와 정답은 수정하지 않았다."
+  "handoffNote": "033→034→035의 원문 22문항 중 실제 [그림] 13건 독립 2차 전수 대조. 035는 그림 지시 0건, 033q08 수학 모순으로 plan 미작성. 나머지 12개 full lint 재통과, pre-render 필드 PASS 4건·엔진 보강 8건. 033q07의 '공통접점' 오기 캡션을 실제 원 접선 표현으로 고쳤고 034q10 타원 E 곡선 라벨을 추가해 재검증했다. 034q05의 누락된 F(5,0) 좌표 병기도 별도 엔진 보강 대상으로 명시. SVG/PNG·학생 화면·A4·JS 이미지 링크·게시 전부 NOT_RUN. 기존 JS·정답 미수정.",
+  "independentPrecisionReaudit": {"dateKst":"2026-11-25","scope":"033-035 full source figure versus rendered field review, all 12 plans re-linted","correctedPlans":["033q07","034q10"],"expandedEngineHandoff":["034q05"],"render":"NOT_RUN","studentScreen":"NOT_RUN","a4":"NOT_RUN"}
 }

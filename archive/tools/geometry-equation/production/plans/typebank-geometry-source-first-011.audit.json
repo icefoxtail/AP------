@@ -1,0 +1,88 @@
+{
+  "auditKind":"SOURCE_FIRST_PRE_RENDER_FIELD_PARITY",
+  "date":"2026-11-25",
+  "from":11,"to":11,"missingSourceNumbers":[],
+  "reviewRule":"Mathematical centroid facts, hidden answers, and each visible segment are checked against source; render/student/A4 are deferred.",
+  "figures":[
+    {
+      "number":11,"qid":1,"sourceQuote":"무게중심이 이 포물선의 초점",
+      "preRenderParity":"PASS",
+      "mathReview":"x^2=16y, F=(0,4). A=(-4sqrt(42)/7,6/7), B=(-8sqrt(42)/7,24/7), C=(12sqrt(42)/7,54/7): sum x=0, sum y=12, so centroid F; sum focus distances =24 remains hidden.",
+      "requiredVisible":[
+        {"path":"conic.axis","equals":"Y"},
+        {"path":"conic.p","equals":"4"},
+        {"path":"points.F.kind","equals":"FOCUS"},
+        {"path":"segments.AB.from","equals":"A"},
+        {"path":"segments.BC.from","equals":"B"},
+        {"path":"segments.CA.from","equals":"C"},
+        {"path":"segments.AF.to","equals":"F"},
+        {"path":"segments.BF.to","equals":"F"},
+        {"path":"segments.CF.to","equals":"F"}
+      ],
+      "forbiddenVisible":["points.A.coordinates","points.B.coordinates","points.C.coordinates","segments.AF.label"],
+      "blockers":[],"planLintFull":"PASS","renderSvg":"NOT_RUN","studentChrome":"NOT_RUN","a4":"NOT_RUN"
+    },
+    {
+      "number":11,"qid":2,"sourceQuote":"무게중심 $\\mathrm{G}$의 $x$좌표는?",
+      "preRenderParity":"PASS",
+      "mathReview":"y^2=(16/3)x, F=(4/3,0). Representative x_A=3/4, x_B=3, x_C=19/4 sum 17/2; sum focus distances=17/2+4=25/2. G_x=17/6 is internal only.",
+      "requiredVisible":[
+        {"path":"conic.p","equals":"4/3"},
+        {"path":"points.G.kind","equals":"POINT"},
+        {"path":"points.G.x","equals":"17/6"},
+        {"path":"segments.AB.from","equals":"A"},
+        {"path":"segments.BC.from","equals":"B"},
+        {"path":"segments.CA.from","equals":"C"}
+      ],
+      "forbiddenVisible":["points.G.coordinates","points.C.coordinates"],
+      "blockers":[],"planLintFull":"PASS","renderSvg":"NOT_RUN","studentChrome":"NOT_RUN","a4":"NOT_RUN"
+    },
+    {
+      "number":11,"qid":3,"sourceQuote":"무게중심의 $x$좌표는?",
+      "preRenderParity":"PASS",
+      "mathReview":"y^2=12x, F=(3,0), P=(5,2sqrt(15)), Q=(6,6sqrt(2)), both first quadrant; PF+QF=8+9=17. Centroid x=(5+6+3)/3=14/3, hidden.",
+      "requiredVisible":[
+        {"path":"conic.p","equals":"3"},
+        {"path":"points.P.branch","equals":"POS"},
+        {"path":"points.Q.branch","equals":"POS"},
+        {"path":"segments.PF.to","equals":"F"},
+        {"path":"segments.FQ.from","equals":"F"},
+        {"path":"segments.PQ.from","equals":"P"}
+      ],
+      "forbiddenVisible":["points.P.coordinates","points.Q.coordinates","segments.PF.label"],
+      "blockers":[],"planLintFull":"PASS","renderSvg":"NOT_RUN","studentChrome":"NOT_RUN","a4":"NOT_RUN"
+    },
+    {
+      "number":11,"qid":4,"sourceQuote":"넓이를 이등분할 때",
+      "preRenderParity":"PASS",
+      "mathReview":"A=(6,4sqrt(6)), B=(6,-4sqrt(6)), O=(0,0), F=(4,0), OB midpoint M=(3,-2sqrt(6)). A,F,M collinear and triangle area 24sqrt(6); p=4, hidden AF=10.",
+      "corrected":"Suppressed invented midpoint label M; source describes the midpoint but does not name it.",
+      "requiredVisible":[
+        {"path":"conic.p","equals":"4"},
+        {"path":"points.M.label","equals":false},
+        {"path":"segments.OA.from","equals":"O"},
+        {"path":"segments.OB.from","equals":"O"},
+        {"path":"segments.AB.from","equals":"A"},
+        {"path":"segments.AF.to","equals":"F"},
+        {"path":"segments.FM.to","equals":"M"}
+      ],
+      "forbiddenVisible":["points.A.coordinates","points.B.coordinates","segments.AF.label"],
+      "blockers":[],"planLintFull":"PASS","renderSvg":"NOT_RUN","studentChrome":"NOT_RUN","a4":"NOT_RUN"
+    },
+    {
+      "number":11,"qid":5,"sourceQuote":"최댓값은?",
+      "preRenderParity":"PASS",
+      "mathReview":"y^2=8x, F=(2,0), A_x=8 and B_x=11 are distinct integers >2 and sum 19, so the centroid x is 7. They depict a non-maximizing sample product 130, while the actual maximum 132 is not shown.",
+      "requiredVisible":[
+        {"path":"conic.p","equals":"2"},
+        {"path":"points.A.x","equals":"8"},
+        {"path":"points.B.x","equals":"11"},
+        {"path":"segments.AF.from","equals":"A"},
+        {"path":"segments.FB.from","equals":"F"},
+        {"path":"segments.AB.from","equals":"A"}
+      ],
+      "forbiddenVisible":["points.A.coordinates","points.B.coordinates","segments.FB.label"],
+      "blockers":[],"planLintFull":"PASS","renderSvg":"NOT_RUN","studentChrome":"NOT_RUN","a4":"NOT_RUN"
+    }
+  ]
+}

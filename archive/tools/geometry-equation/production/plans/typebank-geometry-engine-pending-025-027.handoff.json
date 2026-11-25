@@ -1,0 +1,88 @@
+{
+  "handoffKind": "ENGINE_AND_SOURCE_MATH_PENDING_SOURCE_FIRST_DELTA",
+  "date": "2026-11-25",
+  "auditedTypeRange": [25, 27],
+  "previousHandoffs": [
+    "typebank-geometry-engine-pending-001-023.handoff.json",
+    "typebank-geometry-engine-pending-024.handoff.json"
+  ],
+  "previousPendingCount": 13,
+  "sourceFigureCount": 8,
+  "preRenderPassCount": 0,
+  "enginePendingCount": 7,
+  "contentMathBlockedCount": 1,
+  "pendingCount": 8,
+  "cumulativeSourceFigureCount": 80,
+  "cumulativePreRenderPassCount": 59,
+  "cumulativePendingCount": 21,
+  "renderSvg": "NOT_RUN",
+  "studentChrome": "NOT_RUN",
+  "a4": "NOT_RUN",
+  "policy": "Seven usable geometric plans pass structural/shallow/full plan-lint but NONE passes full source-feature parity. The eighth, 025q03, has a validated diagnostic geometry yet is explicitly status:UNSUPPORTED so official lint skips it and render-plan refuses production because the source is mathematically inconsistent. Never treat plan-lint PASS/UNSUPPORTED as mathematical or rendered acceptance. Only the official SVG engine may add visual features; do not publish 025q03 until source, choices and solution are corrected.",
+  "issues": [
+    {
+      "number": 25,
+      "qid": 1,
+      "status": "ENGINE_CAPABILITY_PENDING",
+      "capability": "ellipse-figure-v1",
+      "needed": "Six finite upper half-axis vertical quartering segments with source axis ticks; mathematical P₁…P₆ labels; focal coordinates without label collisions. Existing x=±1,±2,±3 dashed vertical lines are infinite and therefore do not reproduce the source.",
+      "acceptance": "Preserve exact P positions x=3,2,1,-1,-2,-3 and all six FP segments; show only each y≥0 vertical from x-axis to its upper point with 4-division markings and math subscripts P₁…P₆. Show F(4,0),F′(-4,0) without ELLIPSE_LABEL_NO_ROOM, and do not reveal sum36."
+    },
+    {
+      "number": 25,
+      "qid": 2,
+      "status": "ENGINE_CAPABILITY_PENDING",
+      "capability": "ellipse-figure-v1",
+      "needed": "Collision-free coordinates for two foci in a diagram with A,B,C,D and four segments. Adding coordinates:true to F and F′ triggers ELLIPSE_LABEL_NO_ROOM:point-F.",
+      "acceptance": "Show F(3,0) and F′(-3,0) legibly, keep A,B,C,D on ellipse with AF+BF+CF+DF=23, and hide answer17."
+    },
+    {
+      "number": 25,
+      "qid": 3,
+      "status": "CONTENT_MATH_BLOCKED",
+      "capability": "source-js-and-answer-correction",
+      "needed": "CRITICAL source math contradiction. With the fixed ellipse x²/36+y²/20=1 and two parallel focal chords, the inner quadrilateral PF′QF has perimeter 52/3 for every chord slope. Original gives 20 and answer28; actual ABQCDP perimeter is 92/3, not among choices. The new q03 JSON has status:UNSUPPORTED and only a diagnostic model; render-plan must skip it.",
+      "acceptance": "Content owner reconciles the original fixed ellipse and focal-parallel geometry with a consistent inner perimeter, outer answer, options and solution; then regenerate/revalidate a full source-matching plan. No student render or operational content publication before this step."
+    },
+    {
+      "number": 26,
+      "qid": 1,
+      "status": "ENGINE_CAPABILITY_PENDING",
+      "capability": "ellipse-figure-v1",
+      "needed": "Rendered mathematical focal subscripts F₁ and F₂ rather than literal baseline F1,F2 on a two-ellipse diagram.",
+      "acceptance": "Show F₁–F–F₂ collinearity and F₁,F₂ as correct subscripted labels, two ellipses major lengths16/22, A/B as their real intersections, and outer AF₁BF₂ of perimeter44 without leaking AF+BF=16."
+    },
+    {
+      "number": 26,
+      "qid": 3,
+      "status": "ENGINE_CAPABILITY_PENDING",
+      "capability": "ellipse-figure-v1",
+      "needed": "Rendered mathematical focal subscripts F₁ and F₂ instead of literal F1,F2 in the two shared-focus ellipses.",
+      "acceptance": "Keep major lengths14 and8 with true common P/Q, PQ common chord and triangles PQF₁/PQF₂; render math subscripts and hide perimeter difference12."
+    },
+    {
+      "number": 27,
+      "qid": 1,
+      "status": "ENGINE_CAPABILITY_PENDING",
+      "capability": "ellipse-figure-v1",
+      "needed": "Equal-midpoint marks on PH and HF′. FOOT already draws the correct OH⊥PF′ angle at H.",
+      "acceptance": "Show exactly one matching half-tick on PH and HF′, preserve F(5,0),F′(-5,0) and H as perpendicular foot, and hide minor-axis length4√6."
+    },
+    {
+      "number": 27,
+      "qid": 2,
+      "status": "ENGINE_CAPABILITY_PENDING",
+      "capability": "ellipse-figure-v1",
+      "needed": "Two separately matched midpoint-tick groups for PH=HF and PI=IF′ of rectangle OHPI.",
+      "acceptance": "Preserve both O-foot 90° marks, the rectangle OHPI and the two given focal coordinates. Add independent equal-half marks on both focus chord halves, without revealing l²=120."
+    },
+    {
+      "number": 27,
+      "qid": 3,
+      "status": "ENGINE_CAPABILITY_PENDING",
+      "capability": "ellipse-figure-v1",
+      "needed": "Two midpoint-equality groups PH=HF and QI=IF′, beyond the existing right-angle markers.",
+      "acceptance": "Keep P in quadrant I and Q in quadrant IV with OH≠OI and OH·OI=12, preserve exact focal coordinates, render two equality-tick pairs, hide l²=240."
+    }
+  ]
+}

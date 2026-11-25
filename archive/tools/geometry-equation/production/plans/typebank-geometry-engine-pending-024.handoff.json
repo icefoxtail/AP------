@@ -1,0 +1,40 @@
+{
+  "handoffKind": "ENGINE_CAPABILITY_PENDING_SOURCE_FIRST_DELTA",
+  "date": "2026-11-25",
+  "auditedTypeRange": [24, 24],
+  "previousHandoff": "typebank-geometry-engine-pending-001-023.handoff.json",
+  "previousPendingCount": 10,
+  "sourceFigureCount": 3,
+  "preRenderPassCount": 0,
+  "pendingCount": 3,
+  "cumulativeSourceFigureCount": 72,
+  "cumulativePreRenderPassCount": 59,
+  "cumulativePendingCount": 13,
+  "renderSvg": "NOT_RUN",
+  "studentChrome": "NOT_RUN",
+  "a4": "NOT_RUN",
+  "policy": "Source/math parity is separate from lint success. Every new plan passes full lint but the source-visible feature still cannot be printed with ellipse-figure-v1. Engine-only follow-up: do not leak unknown numeric solutions or hand-draw SVG. Run original-source, model, visual and rendered observer tests after capability extension.",
+  "issues": [
+    {
+      "number": 24,
+      "qid": 1,
+      "capability": "ellipse-figure-v1",
+      "needed": "Symbolic coordinate annotations on four collinear y-axis points, without using evaluated model values. The displayed originals specify A(0,b), B(0,-b), F(0,c), F′(0,-c).",
+      "acceptance": "Place all four exact symbolic labels clearly in A,F,F′,B vertical order, keep P in quadrant I and both PAB/PFF′ triangles, preserve area ratio 3/2, hide a²+b²=14."
+    },
+    {
+      "number": 24,
+      "qid": 2,
+      "capability": "ellipse-figure-v1",
+      "needed": "Symbolic focal labels F(c,0),F′(-c,0), keeping the solved 2√7 hidden. The existing perpendicular projection and right-angle mark are accurate.",
+      "acceptance": "Show F(c,0),F′(-c,0), P in quadrant II, H internal to PF′, FH⊥PH, FP=10 and FH=4√6; no derived a=36, c=2√7, PH=2 or HF′=4 labels."
+    },
+    {
+      "number": 24,
+      "qid": 3,
+      "capability": "ellipse-figure-v1",
+      "needed": "A focal-point angle arc at F with math text π/3, plus symbolic coordinate labels A(-a,0),B(0,b),F(c,0) that do not reveal a=8,b=4√3,c=4.",
+      "acceptance": "Draw the 60° arc in the interior of ∠AFB with label π/3, show all three exact symbolic coordinates, preserve AFB triangle and area 24√3, hide a²+b²=112."
+    }
+  ]
+}

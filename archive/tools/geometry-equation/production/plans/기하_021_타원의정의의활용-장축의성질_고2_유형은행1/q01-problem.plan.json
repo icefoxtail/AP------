@@ -1,0 +1,24 @@
+{
+  "capability": "ellipse-figure-v1",
+  "ellipse": {"center": ["0", "0"], "semiAxisSquared": {"major": "169", "minor": "25"}, "majorAxis": "Y"},
+  "points": [
+    {"id": "O", "kind": "ORIGIN"},
+    {"id": "F", "kind": "FOCUS", "side": 1},
+    {"id": "F'", "kind": "FOCUS", "side": -1},
+    {"id": "A", "kind": "VERTEX", "end": "MINOR_POS", "coordinates": true},
+    {"id": "A'", "kind": "VERTEX", "end": "MINOR_NEG", "coordinates": true},
+    {"id": "B", "kind": "VERTEX", "end": "MAJOR_POS"},
+    {"id": "B'", "kind": "VERTEX", "end": "MAJOR_NEG"}
+  ],
+  "segments": [
+    {"id": "sAF", "from": "A", "to": "F", "label": "13"},
+    {"id": "sOA", "from": "O", "to": "A", "label": "5"}
+  ],
+  "caption": "세로 장축의 타원에 O, A(5,0), A′(-5,0), B, B′, 초점 F, F′와 주어진 길이 AF=13, OA=5",
+  "accessibilityDescription": "원점 중심의 세로로 긴 타원에서 오른쪽 단축 끝점 A의 좌표는 (5,0), 왼쪽은 A′(-5,0)이다. 위아래 장축 끝점 B,B′와 두 초점 F,F′가 표시되며 AF 길이 13, OA 길이 5가 적혀 있다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "타원은 x²/25+y²/169=1이며 중심 O=(0,0), 수직 장축 끝점 B=(0,13), B′=(0,-13), 수평 단축 끝점 A=(5,0), A′=(-5,0)이다. 원문에서 명명한 여섯 점을 모두 배치한다.", "mappedTo": ["ellipse", "O", "A", "A'", "B", "B'"]},
+    {"id": "c2", "condition": "초점 F=(0,12), F′=(0,-12)는 수직 축 위에 있다. 주어진 AF=√(5²+12²)=13 및 OA=5를 실제 선분의 길이 라벨로 표기하며 구하는 2a+2c=50은 표시하지 않는다.", "mappedTo": ["F", "F'", "sAF", "sOA"]}
+  ],
+  "newVisualInformation": ["원문 두 단축 꼭짓점 좌표와 각 장축 끝점 및 초점", "주어진 AF=13, OA=5 길이만 노출"]
+}
