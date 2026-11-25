@@ -1,0 +1,53 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "a",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "교점 존재",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-2",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "4",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "integerPoints": true
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "원과 직선의 교점이 있는 정수 a"
+  },
+  "caption": "중심 (a,2)와 직선 3x−3y−a+4=0의 거리 d가 반지름 √2 이하인 조건은 -2≤a≤4이다. 양끝 접하는 값도 포함하여 정수는 7개.",
+  "accessibilityDescription": "매개변수 a의 닫힌 구간 -2부터 4까지와 그 사이 정수점이 수직선에 표시된다.",
+  "sourceConditions": [
+    {
+      "id": "circle",
+      "condition": "원 (x-a)²+(y-2)²=2",
+      "mappedTo": "numberLine.rows[0].pieces"
+    },
+    {
+      "id": "line",
+      "condition": "직선 3x-3y-a+4=0과 만나도록 d≤r",
+      "mappedTo": "numberLine.rows[0].pieces"
+    },
+    {
+      "id": "boundary",
+      "condition": "-2≤a≤4이고 접점 두 경계 포함",
+      "mappedTo": [
+        "numberLine.rows[0].pieces",
+        "numberLine.rows[0].integerPoints"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "정수 a의 허용 범위, 양쪽 CLOSED 끝점, 모든 내부 정수점을 보여 준다."
+  ]
+}

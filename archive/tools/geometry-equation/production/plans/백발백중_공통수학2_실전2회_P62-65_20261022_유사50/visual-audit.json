@@ -1,0 +1,579 @@
+{
+  "schema": "textbook-figure-plan-audit-v1",
+  "sourcePath": "archive/exams/textbooks/백발백중_공통수학2/백발백중_공통수학2_실전2회_P62-65_20261022_유사50.js",
+  "sourceBlobSha": "999bfcf4b3c8caf2fd670f68734cf4796a26f303",
+  "sourceMainBaseSha": "b3fa398c15b740a42f8a9d5205d524a98e9468b7",
+  "selectedQids": [
+    "q01",
+    "q02",
+    "q03",
+    "q04",
+    "q05",
+    "q06",
+    "q10",
+    "q11",
+    "q12",
+    "q16",
+    "q17",
+    "q18"
+  ],
+  "scope": "교과서·문제집 12문항 / 문제·해설 24축. 소스 JS·기출(original/similar)·유형은행(types)·기존 SVG 미변경.",
+  "method": "원문 문제·해설의 좌표/중심·선분·반지름·직각·평행·길이·대칭·매개변수·정수 끝점을 plan에서 엔진이 그리는 mathPlan/graphics/numberLine/graphPlan 필드와 독립 재계산해 일치 확인한다. 참조 원본 SVG 존재 여부는 따로 기록한다.",
+  "count": {
+    "questions": 12,
+    "problemAssessed": 12,
+    "solutionAssessed": 12,
+    "problemExempt": 12,
+    "solutionBeneficial": 12,
+    "renderablePlans": 12,
+    "lintShallowPass": 12,
+    "lintFullPass": 12,
+    "drawnFeatureParityPass": 12,
+    "engineCapabilityPending": 0,
+    "missingReferencedSolutionAssets": 12
+  },
+  "visualPolicy": "문제 그림 정답 비노출, 면 채움 없음, 수동 SVG 없음. SVG 렌더·PNG·학생 화면·A4는 미실행 NOT_RUN.",
+  "postMergeRemaining": "q07–q09, q13–q15, q19–q50 (38문항)",
+  "items": [
+    {
+      "qid": "q01",
+      "questionUid": "BV-BAKBAL-H-COM2-P62-Q06-T1-R3",
+      "sourceOrdinal": 1,
+      "category": "무게중심의 자취 원의 둘레",
+      "sourceAsset": {
+        "problem": null,
+        "solution": "assets/images/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/BV-BAKBAL-H-COM2-P62-Q06-T1-R3-solution.svg"
+      },
+      "sourceAssetStatus": {
+        "problem": "NO_REFERENCE",
+        "solution": "MISSING"
+      },
+      "problem": {
+        "judgement": "EXEMPT",
+        "reason": "문제의 좌표·원/직선 식·명제 조건이 문자와 수식으로 완결된다. 미지 중심·교점·무게중심 등 해설로 얻는 값을 문제 그림에 미리 그리면 정답 단서가 노출되므로 문제용 신규 plan은 필요 없다.",
+        "plan": null
+      },
+      "solution": {
+        "judgement": "BENEFICIAL",
+        "reason": "원의 자취를 무게중심 변환으로 1/3 축소하는 기하 관계를 보여 준다.",
+        "plan": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/q01-solution.plan.json"
+      },
+      "problemCapability": null,
+      "capability": "construction-spike-v1",
+      "sourceVsPlan": "REVIEWED",
+      "problemDrawnFeatures": [],
+      "drawnFeatures": [
+        "mathPlan.nodes",
+        "displayCircles/displayLines/displaySegments",
+        "displayPoints/coordinateLabels",
+        "geometry marks"
+      ],
+      "problemPlanLintShallow": "NOT_APPLICABLE",
+      "problemPlanLintFull": "NOT_APPLICABLE",
+      "problemDrawnFeatureParity": "NOT_APPLICABLE",
+      "planLintShallow": "PASS",
+      "planLintFull": "PASS",
+      "drawnFeatureParity": "PASS",
+      "engineCapabilityPending": [],
+      "render": "NOT_RUN",
+      "png": "NOT_RUN",
+      "studentView": "NOT_RUN",
+      "a4": "NOT_RUN"
+    },
+    {
+      "qid": "q02",
+      "questionUid": "BV-BAKBAL-H-COM2-P62-Q06-S1-R3",
+      "sourceOrdinal": 2,
+      "category": "무게중심의 자취 원의 둘레",
+      "sourceAsset": {
+        "problem": null,
+        "solution": "assets/images/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/BV-BAKBAL-H-COM2-P62-Q06-S1-R3-solution.svg"
+      },
+      "sourceAssetStatus": {
+        "problem": "NO_REFERENCE",
+        "solution": "MISSING"
+      },
+      "problem": {
+        "judgement": "EXEMPT",
+        "reason": "문제의 좌표·원/직선 식·명제 조건이 문자와 수식으로 완결된다. 미지 중심·교점·무게중심 등 해설로 얻는 값을 문제 그림에 미리 그리면 정답 단서가 노출되므로 문제용 신규 plan은 필요 없다.",
+        "plan": null
+      },
+      "solution": {
+        "judgement": "BENEFICIAL",
+        "reason": "원의 자취를 무게중심 변환으로 1/3 축소하는 기하 관계를 보여 준다.",
+        "plan": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/q02-solution.plan.json"
+      },
+      "problemCapability": null,
+      "capability": "construction-spike-v1",
+      "sourceVsPlan": "REVIEWED",
+      "problemDrawnFeatures": [],
+      "drawnFeatures": [
+        "mathPlan.nodes",
+        "displayCircles/displayLines/displaySegments",
+        "displayPoints/coordinateLabels",
+        "geometry marks"
+      ],
+      "problemPlanLintShallow": "NOT_APPLICABLE",
+      "problemPlanLintFull": "NOT_APPLICABLE",
+      "problemDrawnFeatureParity": "NOT_APPLICABLE",
+      "planLintShallow": "PASS",
+      "planLintFull": "PASS",
+      "drawnFeatureParity": "PASS",
+      "engineCapabilityPending": [],
+      "render": "NOT_RUN",
+      "png": "NOT_RUN",
+      "studentView": "NOT_RUN",
+      "a4": "NOT_RUN"
+    },
+    {
+      "qid": "q03",
+      "questionUid": "BV-BAKBAL-H-COM2-P62-Q06-S2-R3",
+      "sourceOrdinal": 3,
+      "category": "무게중심의 자취 원의 둘레",
+      "sourceAsset": {
+        "problem": null,
+        "solution": "assets/images/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/BV-BAKBAL-H-COM2-P62-Q06-S2-R3-solution.svg"
+      },
+      "sourceAssetStatus": {
+        "problem": "NO_REFERENCE",
+        "solution": "MISSING"
+      },
+      "problem": {
+        "judgement": "EXEMPT",
+        "reason": "문제의 좌표·원/직선 식·명제 조건이 문자와 수식으로 완결된다. 미지 중심·교점·무게중심 등 해설로 얻는 값을 문제 그림에 미리 그리면 정답 단서가 노출되므로 문제용 신규 plan은 필요 없다.",
+        "plan": null
+      },
+      "solution": {
+        "judgement": "BENEFICIAL",
+        "reason": "원의 자취를 무게중심 변환으로 1/3 축소하는 기하 관계를 보여 준다.",
+        "plan": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/q03-solution.plan.json"
+      },
+      "problemCapability": null,
+      "capability": "construction-spike-v1",
+      "sourceVsPlan": "REVIEWED",
+      "problemDrawnFeatures": [],
+      "drawnFeatures": [
+        "mathPlan.nodes",
+        "displayCircles/displayLines/displaySegments",
+        "displayPoints/coordinateLabels",
+        "geometry marks"
+      ],
+      "problemPlanLintShallow": "NOT_APPLICABLE",
+      "problemPlanLintFull": "NOT_APPLICABLE",
+      "problemDrawnFeatureParity": "NOT_APPLICABLE",
+      "planLintShallow": "PASS",
+      "planLintFull": "PASS",
+      "drawnFeatureParity": "PASS",
+      "engineCapabilityPending": [],
+      "render": "NOT_RUN",
+      "png": "NOT_RUN",
+      "studentView": "NOT_RUN",
+      "a4": "NOT_RUN"
+    },
+    {
+      "qid": "q04",
+      "questionUid": "BV-BAKBAL-H-COM2-P62-Q07-T1-R3",
+      "sourceOrdinal": 4,
+      "category": "두 원의 공통현과 둘레 이등분",
+      "sourceAsset": {
+        "problem": null,
+        "solution": "assets/images/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/BV-BAKBAL-H-COM2-P62-Q07-T1-R3-solution.svg"
+      },
+      "sourceAssetStatus": {
+        "problem": "NO_REFERENCE",
+        "solution": "MISSING"
+      },
+      "problem": {
+        "judgement": "EXEMPT",
+        "reason": "문제의 좌표·원/직선 식·명제 조건이 문자와 수식으로 완결된다. 미지 중심·교점·무게중심 등 해설로 얻는 값을 문제 그림에 미리 그리면 정답 단서가 노출되므로 문제용 신규 plan은 필요 없다.",
+        "plan": null
+      },
+      "solution": {
+        "judgement": "BENEFICIAL",
+        "reason": "두 원의 공통현이 작은 원의 지름이고 직각을 만드는 사실을 확인한다.",
+        "plan": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/q04-solution.plan.json"
+      },
+      "problemCapability": null,
+      "capability": "construction-spike-v1",
+      "sourceVsPlan": "REVIEWED",
+      "problemDrawnFeatures": [],
+      "drawnFeatures": [
+        "mathPlan.nodes",
+        "displayCircles/displayLines/displaySegments",
+        "displayPoints/coordinateLabels",
+        "geometry marks"
+      ],
+      "problemPlanLintShallow": "NOT_APPLICABLE",
+      "problemPlanLintFull": "NOT_APPLICABLE",
+      "problemDrawnFeatureParity": "NOT_APPLICABLE",
+      "planLintShallow": "PASS",
+      "planLintFull": "PASS",
+      "drawnFeatureParity": "PASS",
+      "engineCapabilityPending": [],
+      "render": "NOT_RUN",
+      "png": "NOT_RUN",
+      "studentView": "NOT_RUN",
+      "a4": "NOT_RUN"
+    },
+    {
+      "qid": "q05",
+      "questionUid": "BV-BAKBAL-H-COM2-P62-Q07-S1-R3",
+      "sourceOrdinal": 5,
+      "category": "두 원의 공통현과 둘레 이등분",
+      "sourceAsset": {
+        "problem": null,
+        "solution": "assets/images/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/BV-BAKBAL-H-COM2-P62-Q07-S1-R3-solution.svg"
+      },
+      "sourceAssetStatus": {
+        "problem": "NO_REFERENCE",
+        "solution": "MISSING"
+      },
+      "problem": {
+        "judgement": "EXEMPT",
+        "reason": "문제의 좌표·원/직선 식·명제 조건이 문자와 수식으로 완결된다. 미지 중심·교점·무게중심 등 해설로 얻는 값을 문제 그림에 미리 그리면 정답 단서가 노출되므로 문제용 신규 plan은 필요 없다.",
+        "plan": null
+      },
+      "solution": {
+        "judgement": "BENEFICIAL",
+        "reason": "두 원의 공통현이 작은 원의 지름이고 직각을 만드는 사실을 확인한다.",
+        "plan": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/q05-solution.plan.json"
+      },
+      "problemCapability": null,
+      "capability": "construction-spike-v1",
+      "sourceVsPlan": "REVIEWED",
+      "problemDrawnFeatures": [],
+      "drawnFeatures": [
+        "mathPlan.nodes",
+        "displayCircles/displayLines/displaySegments",
+        "displayPoints/coordinateLabels",
+        "geometry marks"
+      ],
+      "problemPlanLintShallow": "NOT_APPLICABLE",
+      "problemPlanLintFull": "NOT_APPLICABLE",
+      "problemDrawnFeatureParity": "NOT_APPLICABLE",
+      "planLintShallow": "PASS",
+      "planLintFull": "PASS",
+      "drawnFeatureParity": "PASS",
+      "engineCapabilityPending": [],
+      "render": "NOT_RUN",
+      "png": "NOT_RUN",
+      "studentView": "NOT_RUN",
+      "a4": "NOT_RUN"
+    },
+    {
+      "qid": "q06",
+      "questionUid": "BV-BAKBAL-H-COM2-P62-Q07-S2-R3",
+      "sourceOrdinal": 6,
+      "category": "두 원의 공통현과 둘레 이등분",
+      "sourceAsset": {
+        "problem": null,
+        "solution": "assets/images/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/BV-BAKBAL-H-COM2-P62-Q07-S2-R3-solution.svg"
+      },
+      "sourceAssetStatus": {
+        "problem": "NO_REFERENCE",
+        "solution": "MISSING"
+      },
+      "problem": {
+        "judgement": "EXEMPT",
+        "reason": "문제의 좌표·원/직선 식·명제 조건이 문자와 수식으로 완결된다. 미지 중심·교점·무게중심 등 해설로 얻는 값을 문제 그림에 미리 그리면 정답 단서가 노출되므로 문제용 신규 plan은 필요 없다.",
+        "plan": null
+      },
+      "solution": {
+        "judgement": "BENEFICIAL",
+        "reason": "두 원의 공통현이 작은 원의 지름이고 직각을 만드는 사실을 확인한다.",
+        "plan": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/q06-solution.plan.json"
+      },
+      "problemCapability": null,
+      "capability": "construction-spike-v1",
+      "sourceVsPlan": "REVIEWED",
+      "problemDrawnFeatures": [],
+      "drawnFeatures": [
+        "mathPlan.nodes",
+        "displayCircles/displayLines/displaySegments",
+        "displayPoints/coordinateLabels",
+        "geometry marks"
+      ],
+      "problemPlanLintShallow": "NOT_APPLICABLE",
+      "problemPlanLintFull": "NOT_APPLICABLE",
+      "problemDrawnFeatureParity": "NOT_APPLICABLE",
+      "planLintShallow": "PASS",
+      "planLintFull": "PASS",
+      "drawnFeatureParity": "PASS",
+      "engineCapabilityPending": [],
+      "render": "NOT_RUN",
+      "png": "NOT_RUN",
+      "studentView": "NOT_RUN",
+      "a4": "NOT_RUN"
+    },
+    {
+      "qid": "q10",
+      "questionUid": "BV-BAKBAL-H-COM2-P62-Q09-T1-R3",
+      "sourceOrdinal": 10,
+      "category": "공통현을 지름으로 하는 최소 넓이 원",
+      "sourceAsset": {
+        "problem": null,
+        "solution": "assets/images/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/BV-BAKBAL-H-COM2-P62-Q09-T1-R3-solution.svg"
+      },
+      "sourceAssetStatus": {
+        "problem": "NO_REFERENCE",
+        "solution": "MISSING"
+      },
+      "problem": {
+        "judgement": "EXEMPT",
+        "reason": "문제의 좌표·원/직선 식·명제 조건이 문자와 수식으로 완결된다. 미지 중심·교점·무게중심 등 해설로 얻는 값을 문제 그림에 미리 그리면 정답 단서가 노출되므로 문제용 신규 plan은 필요 없다.",
+        "plan": null
+      },
+      "solution": {
+        "judgement": "BENEFICIAL",
+        "reason": "주어진 원·직선·현과 현을 지름으로 하는 최소 원을 비교한다.",
+        "plan": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/q10-solution.plan.json"
+      },
+      "problemCapability": null,
+      "capability": "construction-spike-v1",
+      "sourceVsPlan": "REVIEWED",
+      "problemDrawnFeatures": [],
+      "drawnFeatures": [
+        "mathPlan.nodes",
+        "displayCircles/displayLines/displaySegments",
+        "displayPoints/coordinateLabels",
+        "geometry marks"
+      ],
+      "problemPlanLintShallow": "NOT_APPLICABLE",
+      "problemPlanLintFull": "NOT_APPLICABLE",
+      "problemDrawnFeatureParity": "NOT_APPLICABLE",
+      "planLintShallow": "PASS",
+      "planLintFull": "PASS",
+      "drawnFeatureParity": "PASS",
+      "engineCapabilityPending": [],
+      "render": "NOT_RUN",
+      "png": "NOT_RUN",
+      "studentView": "NOT_RUN",
+      "a4": "NOT_RUN"
+    },
+    {
+      "qid": "q11",
+      "questionUid": "BV-BAKBAL-H-COM2-P62-Q09-S1-R3",
+      "sourceOrdinal": 11,
+      "category": "공통현을 지름으로 하는 최소 넓이 원",
+      "sourceAsset": {
+        "problem": null,
+        "solution": "assets/images/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/BV-BAKBAL-H-COM2-P62-Q09-S1-R3-solution.svg"
+      },
+      "sourceAssetStatus": {
+        "problem": "NO_REFERENCE",
+        "solution": "MISSING"
+      },
+      "problem": {
+        "judgement": "EXEMPT",
+        "reason": "문제의 좌표·원/직선 식·명제 조건이 문자와 수식으로 완결된다. 미지 중심·교점·무게중심 등 해설로 얻는 값을 문제 그림에 미리 그리면 정답 단서가 노출되므로 문제용 신규 plan은 필요 없다.",
+        "plan": null
+      },
+      "solution": {
+        "judgement": "BENEFICIAL",
+        "reason": "주어진 원·직선·현과 현을 지름으로 하는 최소 원을 비교한다.",
+        "plan": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/q11-solution.plan.json"
+      },
+      "problemCapability": null,
+      "capability": "construction-spike-v1",
+      "sourceVsPlan": "REVIEWED",
+      "problemDrawnFeatures": [],
+      "drawnFeatures": [
+        "mathPlan.nodes",
+        "displayCircles/displayLines/displaySegments",
+        "displayPoints/coordinateLabels",
+        "geometry marks"
+      ],
+      "problemPlanLintShallow": "NOT_APPLICABLE",
+      "problemPlanLintFull": "NOT_APPLICABLE",
+      "problemDrawnFeatureParity": "NOT_APPLICABLE",
+      "planLintShallow": "PASS",
+      "planLintFull": "PASS",
+      "drawnFeatureParity": "PASS",
+      "engineCapabilityPending": [],
+      "render": "NOT_RUN",
+      "png": "NOT_RUN",
+      "studentView": "NOT_RUN",
+      "a4": "NOT_RUN"
+    },
+    {
+      "qid": "q12",
+      "questionUid": "BV-BAKBAL-H-COM2-P62-Q09-S2-R3",
+      "sourceOrdinal": 12,
+      "category": "공통현을 지름으로 하는 최소 넓이 원",
+      "sourceAsset": {
+        "problem": null,
+        "solution": "assets/images/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/BV-BAKBAL-H-COM2-P62-Q09-S2-R3-solution.svg"
+      },
+      "sourceAssetStatus": {
+        "problem": "NO_REFERENCE",
+        "solution": "MISSING"
+      },
+      "problem": {
+        "judgement": "EXEMPT",
+        "reason": "문제의 좌표·원/직선 식·명제 조건이 문자와 수식으로 완결된다. 미지 중심·교점·무게중심 등 해설로 얻는 값을 문제 그림에 미리 그리면 정답 단서가 노출되므로 문제용 신규 plan은 필요 없다.",
+        "plan": null
+      },
+      "solution": {
+        "judgement": "BENEFICIAL",
+        "reason": "주어진 원·직선·현과 현을 지름으로 하는 최소 원을 비교한다.",
+        "plan": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/q12-solution.plan.json"
+      },
+      "problemCapability": null,
+      "capability": "construction-spike-v1",
+      "sourceVsPlan": "REVIEWED",
+      "problemDrawnFeatures": [],
+      "drawnFeatures": [
+        "mathPlan.nodes",
+        "displayCircles/displayLines/displaySegments",
+        "displayPoints/coordinateLabels",
+        "geometry marks"
+      ],
+      "problemPlanLintShallow": "NOT_APPLICABLE",
+      "problemPlanLintFull": "NOT_APPLICABLE",
+      "problemDrawnFeatureParity": "NOT_APPLICABLE",
+      "planLintShallow": "PASS",
+      "planLintFull": "PASS",
+      "drawnFeatureParity": "PASS",
+      "engineCapabilityPending": [],
+      "render": "NOT_RUN",
+      "png": "NOT_RUN",
+      "studentView": "NOT_RUN",
+      "a4": "NOT_RUN"
+    },
+    {
+      "qid": "q16",
+      "questionUid": "BV-BAKBAL-H-COM2-P63-Q11-T1-R3",
+      "sourceOrdinal": 16,
+      "category": "원과 직선의 교점 존재 조건과 정수 매개변수",
+      "sourceAsset": {
+        "problem": null,
+        "solution": "assets/images/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/BV-BAKBAL-H-COM2-P63-Q11-T1-R3-solution.svg"
+      },
+      "sourceAssetStatus": {
+        "problem": "NO_REFERENCE",
+        "solution": "MISSING"
+      },
+      "problem": {
+        "judgement": "EXEMPT",
+        "reason": "문제의 좌표·원/직선 식·명제 조건이 문자와 수식으로 완결된다. 미지 중심·교점·무게중심 등 해설로 얻는 값을 문제 그림에 미리 그리면 정답 단서가 노출되므로 문제용 신규 plan은 필요 없다.",
+        "plan": null
+      },
+      "solution": {
+        "judgement": "BENEFICIAL",
+        "reason": "원·직선의 만남을 매개변수 정수 구간으로 환원하고 접점 끝 포함을 표시한다.",
+        "plan": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/q16-solution.plan.json"
+      },
+      "problemCapability": null,
+      "capability": "number-line-figure-v1",
+      "sourceVsPlan": "REVIEWED",
+      "problemDrawnFeatures": [],
+      "drawnFeatures": [
+        "SET",
+        "CLOSED endpoints",
+        "integerPoints",
+        "a-axis"
+      ],
+      "problemPlanLintShallow": "NOT_APPLICABLE",
+      "problemPlanLintFull": "NOT_APPLICABLE",
+      "problemDrawnFeatureParity": "NOT_APPLICABLE",
+      "planLintShallow": "PASS",
+      "planLintFull": "PASS",
+      "drawnFeatureParity": "PASS",
+      "engineCapabilityPending": [],
+      "render": "NOT_RUN",
+      "png": "NOT_RUN",
+      "studentView": "NOT_RUN",
+      "a4": "NOT_RUN"
+    },
+    {
+      "qid": "q17",
+      "questionUid": "BV-BAKBAL-H-COM2-P63-Q11-S1-R3",
+      "sourceOrdinal": 17,
+      "category": "원과 직선의 교점 존재 조건과 정수 매개변수",
+      "sourceAsset": {
+        "problem": null,
+        "solution": "assets/images/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/BV-BAKBAL-H-COM2-P63-Q11-S1-R3-solution.svg"
+      },
+      "sourceAssetStatus": {
+        "problem": "NO_REFERENCE",
+        "solution": "MISSING"
+      },
+      "problem": {
+        "judgement": "EXEMPT",
+        "reason": "문제의 좌표·원/직선 식·명제 조건이 문자와 수식으로 완결된다. 미지 중심·교점·무게중심 등 해설로 얻는 값을 문제 그림에 미리 그리면 정답 단서가 노출되므로 문제용 신규 plan은 필요 없다.",
+        "plan": null
+      },
+      "solution": {
+        "judgement": "BENEFICIAL",
+        "reason": "원·직선의 만남을 매개변수 정수 구간으로 환원하고 접점 끝 포함을 표시한다.",
+        "plan": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/q17-solution.plan.json"
+      },
+      "problemCapability": null,
+      "capability": "number-line-figure-v1",
+      "sourceVsPlan": "REVIEWED",
+      "problemDrawnFeatures": [],
+      "drawnFeatures": [
+        "SET",
+        "CLOSED endpoints",
+        "integerPoints",
+        "a-axis"
+      ],
+      "problemPlanLintShallow": "NOT_APPLICABLE",
+      "problemPlanLintFull": "NOT_APPLICABLE",
+      "problemDrawnFeatureParity": "NOT_APPLICABLE",
+      "planLintShallow": "PASS",
+      "planLintFull": "PASS",
+      "drawnFeatureParity": "PASS",
+      "engineCapabilityPending": [],
+      "render": "NOT_RUN",
+      "png": "NOT_RUN",
+      "studentView": "NOT_RUN",
+      "a4": "NOT_RUN"
+    },
+    {
+      "qid": "q18",
+      "questionUid": "BV-BAKBAL-H-COM2-P63-Q11-S2-R3",
+      "sourceOrdinal": 18,
+      "category": "원과 직선의 교점 존재 조건과 정수 매개변수",
+      "sourceAsset": {
+        "problem": null,
+        "solution": "assets/images/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/BV-BAKBAL-H-COM2-P63-Q11-S2-R3-solution.svg"
+      },
+      "sourceAssetStatus": {
+        "problem": "NO_REFERENCE",
+        "solution": "MISSING"
+      },
+      "problem": {
+        "judgement": "EXEMPT",
+        "reason": "문제의 좌표·원/직선 식·명제 조건이 문자와 수식으로 완결된다. 미지 중심·교점·무게중심 등 해설로 얻는 값을 문제 그림에 미리 그리면 정답 단서가 노출되므로 문제용 신규 plan은 필요 없다.",
+        "plan": null
+      },
+      "solution": {
+        "judgement": "BENEFICIAL",
+        "reason": "원·직선의 만남을 매개변수 정수 구간으로 환원하고 접점 끝 포함을 표시한다.",
+        "plan": "archive/tools/geometry-equation/production/plans/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/q18-solution.plan.json"
+      },
+      "problemCapability": null,
+      "capability": "number-line-figure-v1",
+      "sourceVsPlan": "REVIEWED",
+      "problemDrawnFeatures": [],
+      "drawnFeatures": [
+        "SET",
+        "CLOSED endpoints",
+        "integerPoints",
+        "a-axis"
+      ],
+      "problemPlanLintShallow": "NOT_APPLICABLE",
+      "problemPlanLintFull": "NOT_APPLICABLE",
+      "problemDrawnFeatureParity": "NOT_APPLICABLE",
+      "planLintShallow": "PASS",
+      "planLintFull": "PASS",
+      "drawnFeatureParity": "PASS",
+      "engineCapabilityPending": [],
+      "render": "NOT_RUN",
+      "png": "NOT_RUN",
+      "studentView": "NOT_RUN",
+      "a4": "NOT_RUN"
+    }
+  ]
+}

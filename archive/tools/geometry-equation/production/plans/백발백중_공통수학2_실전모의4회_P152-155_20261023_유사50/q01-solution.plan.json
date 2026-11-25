@@ -1,0 +1,258 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "K0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "K1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "K2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C0",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "K0"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C1",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "K1"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C2",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "K2"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "mirror",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "-1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "xAxis",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "target",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "-1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "-10"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayCircles": [
+    "C0",
+    "C1",
+    "C2"
+  ],
+  "displayLines": [
+    "mirror",
+    "xAxis",
+    "target"
+  ],
+  "displayPoints": [
+    "K0",
+    "K1",
+    "K2"
+  ],
+  "coordinateLabels": [
+    "K0",
+    "K1",
+    "K2"
+  ],
+  "lineLabels": [
+    {
+      "nodeId": "mirror",
+      "text": "y=x"
+    },
+    {
+      "nodeId": "target",
+      "text": "y=2x-10"
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 680,
+    "height": 560
+  },
+  "caption": "원 중심 (2,4)를 y=x에 대칭시키면 (4,2), 다시 x축 대칭시키면 (4,-2)이다. 최종 중심은 y=2x-10 위에 있고 각 원 반지름은 3로 같다.",
+  "accessibilityDescription": "원 세 개가 처음 중심 K0, 첫 대칭 중심 K1, 두 번째 대칭 중심 K2를 가지며 대칭축 y=x와 x축, 마지막 중심이 속한 직선이 표시된다.",
+  "sourceConditions": [
+    {
+      "id": "original",
+      "condition": "원 중심 (2,a), a=4일 때 반지름 3",
+      "mappedTo": [
+        "K0",
+        "C0"
+      ]
+    },
+    {
+      "id": "first",
+      "condition": "y=x 대칭으로 중심 (4,2)",
+      "mappedTo": [
+        "mirror",
+        "K1",
+        "C1"
+      ]
+    },
+    {
+      "id": "second",
+      "condition": "x축 대칭으로 중심 (4,-2)",
+      "mappedTo": [
+        "xAxis",
+        "K2",
+        "C2"
+      ]
+    },
+    {
+      "id": "target",
+      "condition": "최종 중심은 y=2x-10 위",
+      "mappedTo": [
+        "target",
+        "K2"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원래/첫 대칭/둘째 대칭의 세 원과 중심 좌표가 순서대로 표시됨",
+    "두 대칭축과 최종 중심이 놓이는 직선 표시"
+  ]
+}

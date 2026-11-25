@@ -1,0 +1,246 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O2",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O1"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O2"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O2"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "neg",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "3"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C1",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O1"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C2",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O2"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayCircles": [
+    "C1",
+    "C2"
+  ],
+  "displaySegments": [
+    {
+      "id": "sO1O2",
+      "refs": [
+        "O1",
+        "O2"
+      ]
+    },
+    {
+      "id": "sO2A",
+      "refs": [
+        "O2",
+        "A"
+      ]
+    },
+    {
+      "id": "sO1A",
+      "refs": [
+        "O1",
+        "A"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "O1",
+    "O2",
+    "A",
+    "B"
+  ],
+  "rightAngles": [
+    {
+      "id": "rO2",
+      "refs": [
+        "O1",
+        "O2",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "eR",
+        "ownerSegment": "sO1A",
+        "text": "5"
+      },
+      {
+        "id": "ed",
+        "ownerSegment": "sO1O2",
+        "text": "d"
+      },
+      {
+        "id": "er",
+        "ownerSegment": "sO2A",
+        "text": "r_2"
+      }
+    ]
+  },
+  "caption": "두 원의 교점 A,B가 C2의 지름 끝점이고 O2는 AB의 중점이다. 회전 동형 대표 배치에서 O1O2⊥AB, O1A=5, d²=16, r₂²=9를 확인한다.",
+  "accessibilityDescription": "큰 원 C1과 작은 원 C2가 A,B에서 만나며 O2는 공통현의 중점이다. 중심을 잇는 선과 반지름 O2A 사이 직각 표시가 있다.",
+  "sourceConditions": [
+    {
+      "id": "C1",
+      "condition": "C1: x²+y²=25; O1A=5",
+      "mappedTo": [
+        "C1",
+        "O1",
+        "sO1A",
+        "eR"
+      ]
+    },
+    {
+      "id": "C2",
+      "condition": "C2: x²+y²+2ax+2by+7=0; 중심 O2, r₂²=d²-7",
+      "mappedTo": [
+        "C2",
+        "O2",
+        "sO2A"
+      ]
+    },
+    {
+      "id": "diam",
+      "condition": "C1이 C2 둘레를 이등분함 ⇒ AB는 C2 지름, O1O2⊥AB",
+      "mappedTo": [
+        "A",
+        "B",
+        "sAB",
+        "sO1O2",
+        "rO2"
+      ]
+    },
+    {
+      "id": "sample",
+      "condition": "임의 회전 가능한 동형 대표로 O1=(0,0), O2=(d,0), A=(d,r₂), B=(d,-r₂) 설정",
+      "mappedTo": [
+        "O1",
+        "O2",
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "서로 다른 두 원 및 공통현 AB, 중심 O1·O2, 직각 표식",
+    "반지름 R, 중심거리 d와 r₂의 직각삼각형 관계를 선분·라벨로 표시"
+  ]
+}
