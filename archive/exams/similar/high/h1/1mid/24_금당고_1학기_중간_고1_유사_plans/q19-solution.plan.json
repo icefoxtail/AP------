@@ -1,0 +1,30 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-2, 5, -1, 19],
+    "curves": [
+      {"id": "F", "kind": "Y_OF_X", "coefficients": ["4", "-8", "4"], "domain": ["-2", "3"], "label": "y=4(x-1)^2", "color": "BLUE"},
+      {"id": "G", "kind": "Y_OF_X", "coefficients": ["9", "-6", "1"], "domain": ["-2", "5"], "label": "y=(x-3)^2", "color": "WARM"},
+      {"id": "H", "kind": "LINE", "coefficients": ["0", "0"], "domain": ["-2", "5"], "label": "y=0", "style": "DASHED"}
+    ],
+    "overlays": {
+      "points": [
+        {"id": "A", "x": "1", "y": "0"},
+        {"id": "B", "x": "3", "y": "0"},
+        {"id": "P", "x": "-1", "y": "16"},
+        {"id": "Q", "x": "5/3", "y": "16/9"}
+      ]
+    },
+    "axisTickValues": {"x": ["-1", "1", "5/3", "3"], "y": []}
+  },
+  "sourceQuote": "두 이차함수 f,g는 일차함수 h와 각각 x=alpha, beta에서 접하고 이차항의 계수는 4,1이며 alpha:beta=1:3이다.",
+  "caption": "해설의 t=x/alpha 정규화에서 alpha=1, beta=3, h=0으로 잡은 동형 도식이다. 두 포물선은 같은 접선 y=0 위의 x=1,3에서 각각 접한다.",
+  "accessibilityDescription": "파란 y=4(x-1)²와 주황 y=(x-3)²가 점 (-1,16)과 (5/3,16/9)에서 만난다. 파선 y=0은 두 포물선에 각각 (1,0), (3,0)에서 접한다.",
+  "sourceConditions": [
+    {"id": "G19-1", "condition": "f-h=4(x-alpha)^2, g-h=(x-beta)^2", "mappedTo": "graphPlan.curves[F,G], alpha=1 beta=3의 정규화 예"},
+    {"id": "G19-2", "condition": "alpha:beta=1:3이며 공통 접선은 h", "mappedTo": "graphPlan.curves[H], overlays.points[A,B]"},
+    {"id": "G19-3", "condition": "t=x/alpha의 두 교점 -1,5/3", "mappedTo": "graphPlan.overlays.points[P,Q], axisTickValues.x"}
+  ],
+  "newVisualInformation": ["두 이차함수의 공통 접선과 두 교점의 순서를 해설에서 도출한 정규화 좌표계로 비교한다."]
+}
