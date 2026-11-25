@@ -1,0 +1,14 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"SOURCE_COORDINATE_AXES_v1","unit":"source-coordinate","reflectionEquivalent":false},"nodes":[
+    {"id":"O","op":"NORMALIZATION_ORIGIN","inputs":[],"args":{},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"X","op":"NORMALIZATION_AXIS","inputs":[],"args":{"length":{"kind":"integer","value":"1"}},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"6"},{"kind":"integer","value":"8"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"K","op":"CIRCLE_CENTER_RADIUS","inputs":["C"],"args":{"radius":{"kind":"integer","value":"6"}},"outputType":"CIRCLE","factRole":"GIVEN"}
+  ]},
+  "coordinateCanvas":{"width":690,"height":510},"displayPoints":["O","C"],"displayCircles":["K"],"displaySegments":[{"id":"sOC","refs":["O","C"],"dashed":true}],"coordinateLabels":["C"],
+  "caption":"원점 O와 중심 C(6,8), 반지름 6인 원의 위치 관계이다. 거리의 범위와 개수는 쓰지 않는다.",
+  "accessibilityDescription":"원점 O에서 오른쪽 위에 중심 C(6,8)의 반지름 6인 원이 있고 두 점 사이를 점선으로 잇는다.",
+  "sourceConditions":[{"id":"q22p1","condition":"원 (x-6)^2+(y-8)^2=36의 중심 (6,8), 반지름 6","mappedTo":["mathPlan.nodes.C","mathPlan.nodes.K","displayCircles"]},{"id":"q22p2","condition":"O는 원점","mappedTo":["mathPlan.nodes.O","displaySegments"]}],
+  "newVisualInformation":["원점과 주어진 원의 상대 위치만 그려 정수 거리의 개수는 숨김"]
+}

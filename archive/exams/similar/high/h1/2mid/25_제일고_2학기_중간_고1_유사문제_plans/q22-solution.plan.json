@@ -1,0 +1,18 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"SOURCE_COORDINATE_AXES_v1","unit":"source-coordinate","reflectionEquivalent":false},"nodes":[
+    {"id":"O","op":"NORMALIZATION_ORIGIN","inputs":[],"args":{},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"X","op":"NORMALIZATION_AXIS","inputs":[],"args":{"length":{"kind":"integer","value":"1"}},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"6"},{"kind":"integer","value":"8"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"N","op":"TRANSLATE_POINT","inputs":["C"],"args":{"dx":{"kind":"rational","numerator":"-18","denominator":"5"},"dy":{"kind":"rational","numerator":"-24","denominator":"5"}},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"F","op":"TRANSLATE_POINT","inputs":["C"],"args":{"dx":{"kind":"rational","numerator":"18","denominator":"5"},"dy":{"kind":"rational","numerator":"24","denominator":"5"}},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"K","op":"CIRCLE_CENTER_RADIUS","inputs":["C"],"args":{"radius":{"kind":"integer","value":"6"}},"outputType":"CIRCLE","factRole":"GIVEN"}
+  ]},
+  "coordinateCanvas":{"width":710,"height":540},"displayPoints":["O","C","N","F"],"hiddenPointNames":["N","F"],"displayCircles":["K"],
+  "displaySegments":[{"id":"sON","refs":["O","N"]},{"id":"sNC","refs":["N","C"]},{"id":"sCF","refs":["C","F"]}],
+  "coordinateLabels":["C"],"planeMarks":{"dimensions":[{"id":"dON","from":"O","to":"N","label":"4","side":"BELOW"},{"id":"dOF","from":"O","to":"F","label":"16","side":"ABOVE"}]},
+  "caption":"원점과 원 중심을 지나는 직선에서 가장 가까운 점과 먼 점까지의 거리가 각각 4, 16이다.",
+  "accessibilityDescription":"원점 O와 중심 C(6,8)의 거리는 10, 원의 반지름은 6이므로 한 직선 위의 가장 가까운 원주점은 거리 4, 가장 먼 원주점은 거리 16이다.",
+  "sourceConditions":[{"id":"q22s1","condition":"OC=10, 원의 반지름 6","mappedTo":["mathPlan.nodes.C","mathPlan.nodes.K"]},{"id":"q22s2","condition":"OP 최솟값 4와 최댓값 16은 OC 선 위의 양 끝 점에서 나온다","mappedTo":["mathPlan.nodes.N","mathPlan.nodes.F","planeMarks.dimensions"]}],
+  "newVisualInformation":["가까운·먼 접점 두 곳과 OP=4, 16의 치수선"]
+}

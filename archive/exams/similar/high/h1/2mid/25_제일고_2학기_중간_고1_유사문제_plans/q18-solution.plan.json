@@ -1,0 +1,26 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"SOURCE_COORDINATE_AXES_v1","unit":"source-coordinate","reflectionEquivalent":false},"nodes":[
+    {"id":"O","op":"NORMALIZATION_ORIGIN","inputs":[],"args":{},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"X","op":"NORMALIZATION_AXIS","inputs":[],"args":{"length":{"kind":"integer","value":"1"}},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"27"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"27"},{"kind":"integer","value":"27"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"27"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"D","op":"TRANSLATE_POINT","inputs":["O"],"args":{"dx":{"kind":"integer","value":"0"},"dy":{"kind":"integer","value":"15"}},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"E","op":"TRANSLATE_POINT","inputs":["A"],"args":{"dx":{"kind":"integer","value":"0"},"dy":{"kind":"integer","value":"15"}},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"F","op":"TRANSLATE_POINT","inputs":["O"],"args":{"dx":{"kind":"integer","value":"13"},"dy":{"kind":"integer","value":"0"}},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"P","op":"TRANSLATE_POINT","inputs":["O"],"args":{"dx":{"kind":"integer","value":"0"},"dy":{"kind":"rational","numerator":"39","denominator":"2"}},"outputType":"POINT","factRole":"CONCLUSION"},
+    {"id":"Q","op":"TRANSLATE_POINT","inputs":["A"],"args":{"dx":{"kind":"integer","value":"0"},"dy":{"kind":"rational","numerator":"3","denominator":"2"}},"outputType":"POINT","factRole":"CONCLUSION"},
+    {"id":"Op","op":"TRANSLATE_POINT","inputs":["C"],"args":{"dx":{"kind":"integer","value":"18"},"dy":{"kind":"integer","value":"0"}},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"Fp","op":"TRANSLATE_POINT","inputs":["D"],"args":{"dx":{"kind":"integer","value":"23"},"dy":{"kind":"integer","value":"0"}},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"M1","op":"MIDPOINT","inputs":["O","Op"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"M2","op":"MIDPOINT","inputs":["F","Fp"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "coordinateCanvas":{"width":720,"height":590},"displayPoints":["O","A","B","C","D","E","F","P","Q","Op","Fp","M1","M2"],"pointNames":{"Op":"O′","Fp":"F′"},"hiddenPointNames":["M1","M2"],
+  "displaySegments":[{"id":"sOA","refs":["O","A"]},{"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},{"id":"sCO","refs":["C","O"]},{"id":"sDE","refs":["D","E"],"dashed":true},{"id":"sOF","refs":["O","F"]},{"id":"sPQ","refs":["P","Q"],"emphasis":"BOLD"},{"id":"sOO","refs":["O","Op"],"dashed":true},{"id":"sFF","refs":["F","Fp"],"dashed":true}],
+  "rightAngles":[{"id":"rO","refs":["O","M1","Q"]},{"id":"rF","refs":["F","M2","Q"]}],
+  "caption":"접는 선 PQ가 OO′와 FF′의 수직이등분선임을 직각 표식과 두 중점으로 나타낸다.",
+  "accessibilityDescription":"한 변 27인 정사각형 OABC 안에 D,E는 높이 15, F는 x좌표 13, 접는 선은 P(0,39/2)와 Q(27,3/2)를 지난다. O는 O′(18,27), F는 F′(23,15)로 반사되며 각 연결선의 중점에서 접는 선과 직각이다.",
+  "sourceConditions":[{"id":"q18s1","condition":"OABC 정사각형 한 변 27, D와 E는 5:4 내분, OF=13","mappedTo":["mathPlan.nodes.O","mathPlan.nodes.A","mathPlan.nodes.B","mathPlan.nodes.C","mathPlan.nodes.D","mathPlan.nodes.E","mathPlan.nodes.F"]},{"id":"q18s2","condition":"PQ 접기에서 O→O′∈BC, F→F′∈DE","mappedTo":["mathPlan.nodes.P","mathPlan.nodes.Q","mathPlan.nodes.Op","mathPlan.nodes.Fp","displaySegments"]},{"id":"q18s3","condition":"접는 선은 OO′와 FF′의 공통 수직이등분선","mappedTo":["mathPlan.nodes.M1","mathPlan.nodes.M2","rightAngles"]}],
+  "newVisualInformation":["접는 선의 양 끝 교점 좌표","반사된 두 점과 중점의 수직 관계"]
+}

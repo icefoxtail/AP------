@@ -1,0 +1,18 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"SOURCE_COORDINATE_AXES_v1","unit":"source-coordinate","reflectionEquivalent":false},"nodes":[
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"6"},{"kind":"integer","value":"3"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"2"},{"kind":"integer","value":"6"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"C","op":"TRANSLATE_POINT","inputs":["B"],"args":{"dx":{"kind":"integer","value":"3"},"dy":{"kind":"integer","value":"4"}},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"D","op":"TRANSLATE_POINT","inputs":["A"],"args":{"dx":{"kind":"integer","value":"3"},"dy":{"kind":"integer","value":"4"}},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"M","op":"MIDPOINT","inputs":["C","D"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"K","op":"CIRCLE_CENTER_RADIUS","inputs":["M"],"args":{"radius":{"kind":"rational","numerator":"5","denominator":"2"}},"outputType":"CIRCLE","factRole":"CONCLUSION"}
+  ]},
+  "coordinateCanvas":{"width":690,"height":540},"displayPoints":["A","B","C","D","M"],
+  "displaySegments":[{"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},{"id":"sCD","refs":["C","D"],"emphasis":"BOLD"},{"id":"sDA","refs":["D","A"]}],
+  "displayCircles":["K"],"coordinateLabels":["A","B","C","D","M"],
+  "caption":"A, B에서 같은 벡터 (3,4)를 옮겨 얻은 정사각형과 CD를 지름으로 하는 원이다.",
+  "accessibilityDescription":"A(6,3)와 B(2,6)를 잇는 정사각형의 다른 두 점은 C(5,10), D(9,7)이고 CD 중점 M을 중심으로 반지름 5/2인 원이 그려진다.",
+  "sourceConditions":[{"id":"q17s1","condition":"A(6,3), B(2,6), 정사각형 ABCD 및 C,D 제1사분면","mappedTo":["mathPlan.nodes.A","mathPlan.nodes.B","mathPlan.nodes.C","mathPlan.nodes.D","displaySegments"]},{"id":"q17s2","condition":"CD가 원의 지름, CD=5","mappedTo":["mathPlan.nodes.M","mathPlan.nodes.K","displayCircles"]}],
+  "newVisualInformation":["직각 회전에 해당하는 (3,4) 평행이동","CD 중점과 지름 5에 해당하는 원"]
+}

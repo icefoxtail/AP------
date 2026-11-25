@@ -1,0 +1,14 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"SOURCE_COORDINATE_AXES_v1","unit":"source-coordinate","reflectionEquivalent":false},"nodes":[
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-2"},{"kind":"integer","value":"1"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"1"},{"kind":"integer","value":"5"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"4"},{"kind":"integer","value":"1"}]},"outputType":"POINT","factRole":"GIVEN"}
+  ]},
+  "coordinateCanvas":{"width":620,"height":460},
+  "displayPoints":["A","B","C"],"displaySegments":[{"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},{"id":"sCA","refs":["C","A"]}],"coordinateLabels":["A","B","C"],
+  "caption":"주어진 세 점 A, B, C를 이어 만든 삼각형으로, 변의 길이 관계는 표시하지 않는다.",
+  "accessibilityDescription":"좌표 A(-2,1), B(1,5), C(4,1)의 세 점과 이들을 잇는 삼각형이 좌표평면에 놓인다.",
+  "sourceConditions":[{"id":"q10p1","condition":"A(-2,1), B(1,5), C(4,1)","mappedTo":["mathPlan.nodes","coordinateLabels"]}],
+  "newVisualInformation":["세 꼭짓점의 상대적 위치와 세 변을 시각화하며 이등변 여부는 숨김"]
+}
