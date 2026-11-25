@@ -1,0 +1,43 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-2, 8, -10, 55],
+    "curves": [
+      {
+        "id": "quadratic",
+        "kind": "Y_OF_X",
+        "coefficients": ["-3", "-5", "2"],
+        "domain": ["-1", "7"],
+        "color": "BLUE",
+        "label": "y=2x^2-5x-3"
+      },
+      {
+        "id": "straight",
+        "kind": "LINE",
+        "coefficients": ["1", "7"],
+        "domain": ["-1", "7"],
+        "color": "WARM",
+        "label": "y=7x+1"
+      }
+    ],
+    "axisTickValues": { "x": ["3", "6"], "y": ["1"] },
+    "overlays": {
+      "points": [
+        { "id": "A", "x": "3-sqrt(11)", "y": "22-7*sqrt(11)" },
+        { "id": "B", "x": "3+sqrt(11)", "y": "22+7*sqrt(11)" }
+      ]
+    }
+  },
+  "caption": "포물선 y=2x²−5x−3과 직선 y=7x+1의 두 교점 A, B를 나타낸다. 두 교점의 x좌표의 합은 연립해로 얻은 이차방정식의 근의 합이다.",
+  "accessibilityDescription": "파란 포물선과 주황 직선이 A, B 두 점에서 만나며 두 점의 x좌표는 3을 중심으로 대칭이다.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "y=2x²−5x−3", "mappedTo": "graphPlan.curves[quadratic].coefficients=[-3,-5,2]" },
+    { "id": "c2", "condition": "y=7x+1", "mappedTo": "graphPlan.curves[straight].coefficients=[1,7]" },
+    { "id": "c3", "condition": "연립하면 x²−6x−2=0", "mappedTo": "graphPlan.overlays.points[A,B]의 x=3±√11" }
+  ],
+  "newVisualInformation": [
+    "원래 두 그래프의 교점을 각각 A와 B로 식별한다.",
+    "두 근 3−√11과 3+√11이 x=3을 중심으로 대칭이므로 근의 합이 6임을 확인한다."
+  ]
+}

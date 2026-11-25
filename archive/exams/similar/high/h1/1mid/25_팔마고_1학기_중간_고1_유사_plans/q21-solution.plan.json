@@ -1,0 +1,44 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-1, 5, 0, 35],
+    "curves": [
+      {
+        "id": "height",
+        "kind": "Y_OF_X",
+        "coefficients": ["10", "20", "-5"],
+        "domain": ["0", "4"],
+        "color": "BLUE",
+        "label": "y=-5x^2+20x+10"
+      },
+      {
+        "id": "threshold",
+        "kind": "LINE",
+        "coefficients": ["25", "0"],
+        "domain": ["0", "4"],
+        "color": "WARM",
+        "label": "y=25"
+      }
+    ],
+    "axisTickValues": { "x": ["1", "2", "3"], "y": ["25", "30"] },
+    "overlays": {
+      "points": [
+        { "id": "A", "x": "1", "y": "25" },
+        { "id": "V", "x": "2", "y": "30" },
+        { "id": "B", "x": "3", "y": "25" }
+      ]
+    }
+  },
+  "caption": "가로축은 시간 t(초), 세로축은 높이 h(t)(m)이다. 최고점 V(2,30)과 높이 25m의 두 교점 A(1,25), B(3,25)를 나타낸다.",
+  "accessibilityDescription": "높이-시간 포물선은 2초에서 30미터로 가장 높고, 25미터 기준선과 1초 및 3초에 만난다.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "h(t)=−5t²+20t+10", "mappedTo": "graphPlan.curves[height].coefficients=[10,20,-5], x는 t, y는 h(t)" },
+    { "id": "c2", "condition": "h(t)≥25m", "mappedTo": "graphPlan.curves[threshold]의 y=25 기준선" },
+    { "id": "c3", "condition": "최고점은 (2,30), 기준선 교점은 (1,25)와 (3,25)", "mappedTo": "graphPlan.overlays.points[V,A,B]" }
+  ],
+  "newVisualInformation": [
+    "가로축 1초와 3초 사이에서 포물선이 y=25 위에 있어 지속 시간이 2초라는 사실을 보여 준다.",
+    "문항에 직접 주어지지 않은 최고점 및 교점은 해설 축에서만 표시한다."
+  ]
+}
