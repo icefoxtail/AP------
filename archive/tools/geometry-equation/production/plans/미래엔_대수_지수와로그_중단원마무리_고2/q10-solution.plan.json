@@ -1,0 +1,76 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "밑 조건",
+        "pieces": [
+          {
+            "lo": {
+              "value": "1",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "2",
+              "state": "OPEN"
+            }
+          },
+          {
+            "lo": {
+              "value": "2",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "진수 조건",
+        "pieces": [
+          {
+            "lo": {
+              "value": "1",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "5",
+              "state": "OPEN"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "RESULT",
+        "label": "공통 범위",
+        "integerPoints": true
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "로그의 밑과 진수 조건의 공통 범위"
+  },
+  "caption": "밑 조건 x>1, x≠2와 진수 조건 1<x<5의 공통 범위는 (1,2)∪(2,5)이고, 가능한 정수는 3과 4이다.",
+  "accessibilityDescription": "세 줄 수직선. 첫 줄은 1보다 크되 2를 제외, 둘째 줄은 1과 5 사이, 셋째 줄은 두 범위의 공통부분으로 2를 뺀 열린 구간 두 개와 내부 정수점 3,4를 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "L10-base",
+      "condition": "로그 밑 x−1은 양수이며 1이 아님: x>1, x≠2",
+      "mappedTo": "numberLine.rows[0].pieces"
+    },
+    {
+      "id": "L10-arg",
+      "condition": "진수 −x²+6x−5>0 ⇔ 1<x<5",
+      "mappedTo": "numberLine.rows[1].pieces"
+    },
+    {
+      "id": "L10-integers",
+      "condition": "공통 부분 (1,2)∪(2,5)의 정수해는 3,4",
+      "mappedTo": "numberLine.rows[2].integerPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "열린 끝점 1,2,5와 제외점 2를 명시하고 정수해 3,4만 결과 줄에서 확인한다."
+  ]
+}
