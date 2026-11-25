@@ -1,0 +1,195 @@
+{
+  "capability": "solid-figure-v1",
+  "space": {
+    "points": [
+      {
+        "id": "B",
+        "at": [
+          -6,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "C",
+        "at": [
+          6,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "A",
+        "at": [
+          0,
+          9,
+          5.196152422706632
+        ]
+      },
+      {
+        "id": "A′",
+        "at": [
+          0,
+          9,
+          0
+        ]
+      },
+      {
+        "id": "H",
+        "at": [
+          0,
+          0,
+          0
+        ]
+      }
+    ],
+    "planes": [
+      {
+        "id": "alpha",
+        "name": "\\alpha",
+        "through": [
+          "A",
+          "B",
+          "C"
+        ]
+      },
+      {
+        "id": "beta",
+        "name": "\\beta",
+        "through": [
+          "B",
+          "C",
+          "A′"
+        ]
+      }
+    ],
+    "lines": [
+      {
+        "id": "l",
+        "name": "l",
+        "intersection": [
+          "alpha",
+          "beta"
+        ]
+      }
+    ],
+    "segments": [
+      {
+        "from": "A",
+        "to": "B",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "B",
+        "to": "C",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "C",
+        "to": "A",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "B",
+        "to": "A′",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "C",
+        "to": "A′",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "H",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A′",
+        "to": "H",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "A′",
+        "style": "DASHED",
+        "role": "REF"
+      }
+    ]
+  },
+  "dims": [
+    {
+      "from": "B",
+      "to": "C",
+      "label": "12"
+    }
+  ],
+  "highlights": [
+    {
+      "polygon": [
+        "A",
+        "B",
+        "C"
+      ],
+      "fill": "WARM"
+    },
+    {
+      "polygon": [
+        "A′",
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "marks": {
+    "angles": [
+      {
+        "refs": [
+          "A",
+          "H",
+          "A′"
+        ],
+        "arcs": 1,
+        "label": "30^\\circ"
+      }
+    ]
+  },
+  "caption": "정삼각형의 넓이 정사영",
+  "solidCaption": {
+    "text": "정삼각형의 넓이 정사영"
+  },
+  "accessibilityDescription": "정삼각형의 넓이 정사영. 두 평면 α·β; 이루는 각 30°; 한 변 12 정삼각형 ABC; 삼각형의 정사영 관계를 표시한 공간도형.",
+  "sourceQuote": "[그림: 두 평면 $\\alpha, \\beta$가 교선을 공유하며 $30^\\circ$의 이면각을 이루고 있다. 평면 $\\alpha$ 위에 한 변의 길이가 12인 정삼각형 $\\text{ABC}$가 있고, 평면 $\\beta$ 위에 삼각형 $\\text{ABC}$의 정사영이 표시되어 있다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 평면 α·β",
+      "mappedTo": "space.planes[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "이루는 각 30°",
+      "mappedTo": "marks.angles[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "한 변 12 정삼각형 ABC",
+      "mappedTo": "dims[0]"
+    },
+    {
+      "id": "c4",
+      "condition": "삼각형의 정사영",
+      "mappedTo": "highlights[1]"
+    }
+  ],
+  "newVisualInformation": [
+    "정사영 삼각형을 실제 30° 코사인 비율로 축소해 나타낸다."
+  ]
+}

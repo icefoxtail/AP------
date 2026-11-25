@@ -1,0 +1,119 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PYRAMID",
+      "base": {
+        "kind": "RECT",
+        "width": 3,
+        "depth": 3
+      },
+      "height": 1.224744871391589,
+      "names": "BCDEA",
+      "points": [
+        {
+          "id": "H",
+          "at": {
+            "base": "center"
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "A",
+      "to": "H",
+      "style": "DASHED",
+      "role": "REF"
+    },
+    {
+      "from": "C",
+      "to": "H",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "dims": [
+    {
+      "from": "B",
+      "to": "C",
+      "label": "3"
+    },
+    {
+      "from": "A",
+      "to": "C",
+      "label": "a"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "H",
+        "refs": [
+          "A",
+          "C"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "refs": [
+          "A",
+          "C",
+          "H"
+        ],
+        "arcs": 1,
+        "label": "30^\\circ"
+      }
+    ],
+    "equalLengths": [
+      {
+        "count": 1,
+        "segments": [
+          "AB",
+          "AC",
+          "AD",
+          "AE"
+        ]
+      }
+    ]
+  },
+  "caption": "사각뿔 모서리와 밑면 사이 각",
+  "solidCaption": {
+    "text": "사각뿔 모서리와 밑면 사이 각"
+  },
+  "accessibilityDescription": "사각뿔 모서리와 밑면 사이 각. BCDE 정사각형 한 변 3; AB=AC=AD=AE=a; 밑면 중심 H; AH와 CH; ∠ACH=30° 관계를 표시한 공간도형.",
+  "sourceQuote": "[그림: 밑면 $\\mathrm{BCDE}$가 한 변의 길이가 $3$인 정사각형이고, 꼭짓점이 $\\mathrm{A}$이며 $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{AC}}=\\overline{\\mathrm{AD}}=\\overline{\\mathrm{AE}}=a$인 사각뿔 $\\mathrm{A-BCDE}$가 있다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "BCDE 정사각형 한 변 3",
+      "mappedTo": "solids[0].base"
+    },
+    {
+      "id": "c2",
+      "condition": "AB=AC=AD=AE=a",
+      "mappedTo": "marks.equalLengths[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "밑면 중심 H",
+      "mappedTo": "solids[0].points[0]"
+    },
+    {
+      "id": "c4",
+      "condition": "AH와 CH",
+      "mappedTo": "segments[0]"
+    },
+    {
+      "id": "c5",
+      "condition": "∠ACH=30°",
+      "mappedTo": "marks.angles[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "사각뿔 높이는 정확한 30°를 갖도록 √6/2로 둔다."
+  ]
+}

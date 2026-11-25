@@ -1,0 +1,213 @@
+{
+  "capability": "solid-figure-v1",
+  "space": {
+    "points": [
+      {
+        "id": "A",
+        "at": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "B",
+        "at": [
+          2.8284271247461903,
+          1.4142135623730951,
+          2.449489742783178
+        ]
+      },
+      {
+        "id": "H",
+        "at": [
+          2.8284271247461903,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "B′",
+        "at": [
+          2.8284271247461903,
+          1.4142135623730951,
+          0
+        ]
+      },
+      {
+        "id": "J",
+        "at": [
+          -4,
+          0,
+          0
+        ],
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "K",
+        "at": [
+          0,
+          2,
+          3.4641016151377544
+        ],
+        "hideName": true,
+        "hideDot": true
+      }
+    ],
+    "planes": [
+      {
+        "id": "alpha",
+        "name": "\\alpha",
+        "through": [
+          "A",
+          "B",
+          "H"
+        ]
+      },
+      {
+        "id": "beta",
+        "name": "\\beta",
+        "through": [
+          "A",
+          "H",
+          "B′"
+        ]
+      }
+    ],
+    "lines": [
+      {
+        "id": "l",
+        "name": "l",
+        "intersection": [
+          "alpha",
+          "beta"
+        ]
+      }
+    ],
+    "segments": [
+      {
+        "from": "A",
+        "to": "B",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "H",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "B",
+        "to": "H",
+        "style": "DASHED",
+        "role": "REF"
+      },
+      {
+        "from": "B",
+        "to": "B′",
+        "style": "DASHED",
+        "role": "REF"
+      },
+      {
+        "from": "H",
+        "to": "B′",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "B′",
+        "style": "AUTO",
+        "role": "REF"
+      }
+    ]
+  },
+  "dims": [
+    {
+      "from": "A",
+      "to": "B",
+      "label": "4"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "H",
+        "refs": [
+          "B",
+          "A"
+        ]
+      },
+      {
+        "at": "B′",
+        "refs": [
+          "B",
+          "H"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "refs": [
+          "B",
+          "A",
+          "H"
+        ],
+        "arcs": 1,
+        "label": "45^\\circ"
+      },
+      {
+        "refs": [
+          "B",
+          "H",
+          "B′"
+        ],
+        "arcs": 2,
+        "label": "60^\\circ"
+      }
+    ]
+  },
+  "caption": "교선과 45도인 선분의 정사영",
+  "solidCaption": {
+    "text": "교선과 45도인 선분의 정사영"
+  },
+  "accessibilityDescription": "교선과 45도인 선분의 정사영. 두 평면 α·β, 교선 l; 선분 AB=4; A는 교선 l 위; AB와 l 45°; 평면 이면각 60°; AB의 정사영 AB′ 관계를 표시한 공간도형.",
+  "sourceQuote": "[그림: 두 평면 $\\alpha, \\beta$가 교선 $l$에서 $60^\\circ$의 각을 이루고 있다. 평면 $\\alpha$ 위에 선분 $\\text{AB}$가 놓여 있고, 점 $\\text{A}$는 교선 $l$ 위에 있으며 직선 $\\text{AB}$와 교선 $l$이 이루는 각의 크기는 $45^\\circ$이다. $\\overline{\\text",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 평면 α·β, 교선 l",
+      "mappedTo": "space.lines[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "선분 AB=4",
+      "mappedTo": "dims[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "A는 교선 l 위",
+      "mappedTo": "space.points[0]"
+    },
+    {
+      "id": "c4",
+      "condition": "AB와 l 45°",
+      "mappedTo": "marks.angles[0]"
+    },
+    {
+      "id": "c5",
+      "condition": "평면 이면각 60°",
+      "mappedTo": "marks.angles[1]"
+    },
+    {
+      "id": "c6",
+      "condition": "AB의 정사영 AB′",
+      "mappedTo": "space.segments[5]"
+    }
+  ],
+  "newVisualInformation": [
+    "B′ 정사영과 두 각 45°·60°가 모두 정확하다."
+  ]
+}

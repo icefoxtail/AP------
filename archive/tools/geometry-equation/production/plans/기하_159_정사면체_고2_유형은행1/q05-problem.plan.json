@@ -1,0 +1,103 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "REGULAR_POLYHEDRON",
+      "faces": 4,
+      "side": 6,
+      "names": "BCDA",
+      "points": [
+        {
+          "id": "M",
+          "at": {
+            "midpoint": [
+              "B",
+              "C"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "A",
+      "to": "M",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "D",
+      "to": "M",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "M",
+      "to": "B",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "M",
+        "refs": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "at": "M",
+        "refs": [
+          "D",
+          "B"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "refs": [
+          "A",
+          "M",
+          "D"
+        ],
+        "arcs": 1,
+        "label": "\\theta"
+      }
+    ]
+  },
+  "caption": "정사면체 두 면의 이면각",
+  "solidCaption": {
+    "text": "정사면체 두 면의 이면각"
+  },
+  "accessibilityDescription": "정사면체 두 면의 이면각. 정사면체 ABCD; BC 중점 M; AM과 DM은 BC에 수직; 이면각 ∠AMD=θ 관계를 표시한 공간도형.",
+  "sourceQuote": "[그림: 정사면체 ABCD에서 밑면 DBC와 면 ABC가 선분 BC를 교선으로 맞닿아 있고, BC의 중점을 M이라 할 때 두 평면이 이루는 이면각은 ∠AMD=θ이다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "정사면체 ABCD",
+      "mappedTo": "solids[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "BC 중점 M",
+      "mappedTo": "solids[0].points[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "AM과 DM은 BC에 수직",
+      "mappedTo": "marks.rightAngles[0]"
+    },
+    {
+      "id": "c4",
+      "condition": "이면각 ∠AMD=θ",
+      "mappedTo": "marks.angles[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "교선 BC의 중점에서 두 면을 가르는 단면 AM, DM."
+  ]
+}

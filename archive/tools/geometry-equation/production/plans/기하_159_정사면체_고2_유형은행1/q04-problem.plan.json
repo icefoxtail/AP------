@@ -1,0 +1,82 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "REGULAR_POLYHEDRON",
+      "faces": 4,
+      "side": 4,
+      "names": "BCDA",
+      "points": [
+        {
+          "id": "E",
+          "at": {
+            "midpoint": [
+              "A",
+              "D"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "B",
+      "to": "E",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "dims": [
+    {
+      "from": "A",
+      "to": "B",
+      "label": "4"
+    }
+  ],
+  "marks": {
+    "angles": [
+      {
+        "refs": [
+          "A",
+          "D",
+          "C"
+        ],
+        "arcs": 1,
+        "label": "\\alpha"
+      }
+    ]
+  },
+  "caption": "정사면체의 두 직선 사이 각",
+  "solidCaption": {
+    "text": "정사면체의 두 직선 사이 각"
+  },
+  "accessibilityDescription": "정사면체의 두 직선 사이 각. 모서리 길이 4; AD의 중점 E; BE 선분; CD와 AE 사이 α (60°) 관계를 표시한 공간도형.",
+  "sourceQuote": "[그림: 한 모서리의 길이가 4인 정사면체 ABCD에서 모서리 AD의 중점 E가 있고 선분 BE가 그어져 있다. 직선 CD와 직선 AE가 이루는 각은 α, 직선 CD와 직선 BE가 이루는 각은 β이다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "모서리 길이 4",
+      "mappedTo": "solids[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "AD의 중점 E",
+      "mappedTo": "solids[0].points[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "BE 선분",
+      "mappedTo": "segments[0]"
+    },
+    {
+      "id": "c4",
+      "condition": "CD와 AE 사이 α (60°)",
+      "mappedTo": "marks.angles[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "β는 꼬인 두 직선 CD·BE의 각으로, 하나의 꼭짓점 호로 표시할 수 없다(ENGINE_CAPABILITY_PENDING)."
+  ]
+}

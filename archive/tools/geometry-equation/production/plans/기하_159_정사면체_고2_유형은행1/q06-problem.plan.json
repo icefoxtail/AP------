@@ -1,0 +1,136 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "REGULAR_POLYHEDRON",
+      "faces": 4,
+      "side": 12,
+      "names": "BCDA",
+      "points": [
+        {
+          "id": "M",
+          "at": {
+            "midpoint": [
+              "A",
+              "D"
+            ]
+          }
+        },
+        {
+          "id": "N",
+          "at": {
+            "midpoint": [
+              "B",
+              "C"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "M",
+      "to": "N",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "D",
+      "to": "N",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "M",
+      "to": "B",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "M",
+      "to": "C",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "N",
+      "to": "B",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "dims": [
+    {
+      "from": "B",
+      "to": "C",
+      "label": "12"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "N",
+        "refs": [
+          "D",
+          "B"
+        ]
+      },
+      {
+        "at": "N",
+        "refs": [
+          "M",
+          "B"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "refs": [
+          "M",
+          "N",
+          "D"
+        ],
+        "arcs": 1,
+        "label": "\\theta"
+      }
+    ]
+  },
+  "caption": "정사면체 중점 평면의 이면각",
+  "solidCaption": {
+    "text": "정사면체 중점 평면의 이면각"
+  },
+  "accessibilityDescription": "정사면체 중점 평면의 이면각. 모서리 길이 12; AD 중점 M; BC 중점 N; MN, DN; 이면각 ∠MND=θ 관계를 표시한 공간도형.",
+  "sourceQuote": "[그림: 한 모서리의 길이가 12인 정사면체 ABCD에서 선분 AD의 중점 M이 있고, BC의 중점을 N이라 할 때 선분 DN과 MN이 그어져 있으며 두 평면 MBC와 DBC가 이루는 이면각은 ∠MND=θ이다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "모서리 길이 12",
+      "mappedTo": "solids[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "AD 중점 M",
+      "mappedTo": "solids[0].points[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "BC 중점 N",
+      "mappedTo": "solids[0].points[1]"
+    },
+    {
+      "id": "c4",
+      "condition": "MN, DN",
+      "mappedTo": "segments[0]"
+    },
+    {
+      "id": "c5",
+      "condition": "이면각 ∠MND=θ",
+      "mappedTo": "marks.angles[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "각 θ는 BC에 수직인 두 단면선 MN, DN으로 표시."
+  ]
+}

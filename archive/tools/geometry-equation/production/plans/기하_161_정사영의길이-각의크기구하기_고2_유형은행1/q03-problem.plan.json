@@ -1,0 +1,77 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 3,
+        "depth": 2
+      },
+      "height": 4,
+      "names": "EFGHABCD"
+    }
+  ],
+  "segments": [
+    {
+      "from": "A",
+      "to": "G",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "dims": [
+    {
+      "from": "A",
+      "to": "D",
+      "label": "a"
+    },
+    {
+      "from": "C",
+      "to": "D",
+      "label": "b"
+    },
+    {
+      "from": "A",
+      "to": "E",
+      "label": "c"
+    }
+  ],
+  "caption": "직육면체의 대각선과 세 평면",
+  "solidCaption": {
+    "text": "직육면체의 대각선과 세 평면"
+  },
+  "accessibilityDescription": "직육면체의 대각선과 세 평면. AD=a; CD=b; AE=c; 직육면체 ABCD-EFGH; 입체대각선 AG 관계를 표시한 공간도형.",
+  "sourceQuote": "[그림: $\\overline{\\mathrm{AD}}=a, \\overline{\\mathrm{CD}}=b, \\overline{\\mathrm{AE}}=c$인 직육면체 $\\mathrm{ABCD-EFGH}$에서 대각선 $\\mathrm{AG}$가 표시되어 있다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AD=a",
+      "mappedTo": "dims[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "CD=b",
+      "mappedTo": "dims[1]"
+    },
+    {
+      "id": "c3",
+      "condition": "AE=c",
+      "mappedTo": "dims[2]"
+    },
+    {
+      "id": "c4",
+      "condition": "직육면체 ABCD-EFGH",
+      "mappedTo": "solids[0]"
+    },
+    {
+      "id": "c5",
+      "condition": "입체대각선 AG",
+      "mappedTo": "segments[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "변 a,b,c는 미정 문자이므로 정확한 직교 관계를 가진 예시 비율 2:3:4다."
+  ]
+}

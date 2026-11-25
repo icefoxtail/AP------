@@ -1,0 +1,198 @@
+{
+  "capability": "solid-figure-v1",
+  "space": {
+    "points": [
+      {
+        "id": "B",
+        "at": [
+          -4,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "C",
+        "at": [
+          4,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "A",
+        "at": [
+          0,
+          3.4641016151377544,
+          6
+        ]
+      },
+      {
+        "id": "A′",
+        "at": [
+          0,
+          3.4641016151377544,
+          0
+        ]
+      },
+      {
+        "id": "M",
+        "at": [
+          0,
+          0,
+          0
+        ]
+      }
+    ],
+    "planes": [
+      {
+        "id": "alpha",
+        "name": "\\alpha",
+        "through": [
+          "A",
+          "B",
+          "C"
+        ]
+      },
+      {
+        "id": "beta",
+        "name": "\\beta",
+        "through": [
+          "B",
+          "C",
+          "A′"
+        ]
+      }
+    ],
+    "lines": [
+      {
+        "id": "l",
+        "name": "l",
+        "intersection": [
+          "alpha",
+          "beta"
+        ]
+      }
+    ],
+    "segments": [
+      {
+        "from": "A",
+        "to": "B",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "C",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "B",
+        "to": "C",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "A′",
+        "style": "DASHED",
+        "role": "REF"
+      },
+      {
+        "from": "B",
+        "to": "A′",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "M",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A′",
+        "to": "M",
+        "style": "AUTO",
+        "role": "REF"
+      }
+    ]
+  },
+  "dims": [
+    {
+      "from": "B",
+      "to": "C",
+      "label": "8"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "M",
+        "refs": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "at": "A′",
+        "refs": [
+          "A",
+          "M"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "refs": [
+          "A",
+          "M",
+          "A′"
+        ],
+        "arcs": 1,
+        "label": "60^\\circ"
+      }
+    ]
+  },
+  "caption": "정삼각형의 기울어진 평면 정사영",
+  "solidCaption": {
+    "text": "정삼각형의 기울어진 평면 정사영"
+  },
+  "accessibilityDescription": "정삼각형의 기울어진 평면 정사영. 두 평면 α,β; 교선 l 위 B,C; 한 변 8의 정삼각형 ABC; A의 정사영 A′; A′B 정사영; 이면각 60° 관계를 표시한 공간도형.",
+  "sourceQuote": "[그림: 두 평면 $\\alpha, \\beta$가 교선 $l$에서 $60^\\circ$의 각을 이루고 있다. 평면 $\\alpha$ 위에 한 변의 길이가 8인 정삼각형 $\\text{ABC}$가 놓여 있고, 변 $\\text{BC}$는 교선 $l$ 위에 있다. 점 $\\text{A}$에서 평면 $\\beta$에 내린 수선의 발을 $\\text{A}'$이",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 평면 α,β",
+      "mappedTo": "space.planes[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "교선 l 위 B,C",
+      "mappedTo": "space.lines[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "한 변 8의 정삼각형 ABC",
+      "mappedTo": "dims[0]"
+    },
+    {
+      "id": "c4",
+      "condition": "A의 정사영 A′",
+      "mappedTo": "space.points[3]"
+    },
+    {
+      "id": "c5",
+      "condition": "A′B 정사영",
+      "mappedTo": "space.segments[4]"
+    },
+    {
+      "id": "c6",
+      "condition": "이면각 60°",
+      "mappedTo": "marks.angles[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "BC를 실제 교선으로 갖는 60° 두 평면과 원문 A′ 정사영."
+  ]
+}

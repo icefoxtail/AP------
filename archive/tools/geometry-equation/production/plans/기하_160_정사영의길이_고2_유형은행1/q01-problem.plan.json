@@ -1,0 +1,185 @@
+{
+  "capability": "solid-figure-v1",
+  "space": {
+    "points": [
+      {
+        "id": "A",
+        "at": [
+          0,
+          0,
+          2
+        ]
+      },
+      {
+        "id": "B",
+        "at": [
+          6,
+          0,
+          8.70820393249937
+        ]
+      },
+      {
+        "id": "A′",
+        "at": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "B′",
+        "at": [
+          6,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "E",
+        "at": [
+          6,
+          0,
+          2
+        ]
+      },
+      {
+        "id": "K",
+        "at": [
+          -4,
+          -3,
+          0
+        ],
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "J",
+        "at": [
+          4,
+          -3,
+          0
+        ],
+        "hideName": true,
+        "hideDot": true
+      }
+    ],
+    "planes": [
+      {
+        "id": "alpha",
+        "name": "\\alpha",
+        "through": [
+          "A′",
+          "B′",
+          "K"
+        ]
+      }
+    ],
+    "lines": [
+      {
+        "id": "l",
+        "name": "l",
+        "through": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "segments": [
+      {
+        "from": "A",
+        "to": "A′",
+        "style": "DASHED",
+        "role": "REF"
+      },
+      {
+        "from": "B",
+        "to": "B′",
+        "style": "DASHED",
+        "role": "REF"
+      },
+      {
+        "from": "A′",
+        "to": "B′",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "E",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "E",
+        "to": "B",
+        "style": "AUTO",
+        "role": "REF"
+      }
+    ]
+  },
+  "dims": [
+    {
+      "from": "A′",
+      "to": "B′",
+      "label": "6"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "E",
+        "refs": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "refs": [
+          "B",
+          "A",
+          "E"
+        ],
+        "arcs": 1,
+        "label": "\\theta"
+      }
+    ]
+  },
+  "caption": "직선의 평면 위 정사영",
+  "solidCaption": {
+    "text": "직선의 평면 위 정사영"
+  },
+  "accessibilityDescription": "직선의 평면 위 정사영. 평면 α; 직선 l 위 A,B; 평면의 수선발 A′, B′; A′B′=6; AB와 평행선의 각 θ 관계를 표시한 공간도형.",
+  "sourceQuote": "[그림: 평면 $\\alpha$와 평면 밖의 직선 $l$이 한 점에서 만나고, 직선 $l$ 위의 두 점 $\\mathrm{A, B}$에서 평면 $\\alpha$에 내린 수선의 발이 각각 $\\mathrm{A', B'}$이다. 점 $\\mathrm{A}$를 지나고 평면 $\\alpha$에 평행한 직선이 선분 $\\mathrm{BB'}$와 만나는 점을 지",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "평면 α",
+      "mappedTo": "space.planes[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "직선 l 위 A,B",
+      "mappedTo": "space.lines[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "평면의 수선발 A′, B′",
+      "mappedTo": "space.segments[0]"
+    },
+    {
+      "id": "c4",
+      "condition": "A′B′=6",
+      "mappedTo": "dims[0]"
+    },
+    {
+      "id": "c5",
+      "condition": "AB와 평행선의 각 θ",
+      "mappedTo": "marks.angles[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "원문 A′/B′을 그대로 사용하고 수직 발과 평행한 보조선을 함께 표시한다."
+  ]
+}

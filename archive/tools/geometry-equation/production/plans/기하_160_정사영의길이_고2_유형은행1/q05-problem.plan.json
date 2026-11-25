@@ -1,0 +1,63 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 3,
+        "depth": 3
+      },
+      "height": 3,
+      "names": "EFGHABCD"
+    }
+  ],
+  "segments": [
+    {
+      "from": "A",
+      "to": "C",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "A",
+      "to": "G",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "dims": [
+    {
+      "from": "A",
+      "to": "B",
+      "label": "3"
+    }
+  ],
+  "caption": "정육면체 면대각선의 정사영",
+  "solidCaption": {
+    "text": "정육면체 면대각선의 정사영"
+  },
+  "accessibilityDescription": "정육면체 면대각선의 정사영. 정육면체 모서리 3; 윗면 대각선 AC; 입체대각선 AG 관계를 표시한 공간도형.",
+  "sourceQuote": "[그림: 한 모서리의 길이가 $3$인 정육면체 $\\mathrm{ABCD-EFGH}$가 있다. 윗면의 대각선 $\\mathrm{AC}$와 입체대각선 $\\mathrm{AG}$가 실선으로 표시되어 있다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "정육면체 모서리 3",
+      "mappedTo": "solids[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "윗면 대각선 AC",
+      "mappedTo": "segments[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "입체대각선 AG",
+      "mappedTo": "segments[1]"
+    }
+  ],
+  "newVisualInformation": [
+    "AC를 AG 방향에 정사영하는 직육면체 입체대각선 문제."
+  ]
+}

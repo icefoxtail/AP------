@@ -1,0 +1,131 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PYRAMID",
+      "base": {
+        "kind": "RECT",
+        "width": 9,
+        "depth": 9
+      },
+      "height": 6.363961030678928,
+      "names": "BCDEA",
+      "points": [
+        {
+          "id": "H",
+          "at": {
+            "base": "center"
+          }
+        },
+        {
+          "id": "K",
+          "at": {
+            "projection": {
+              "from": "H",
+              "plane": [
+                "A",
+                "C",
+                "D"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "C",
+      "to": "H",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "H",
+      "to": "K",
+      "style": "DASHED",
+      "role": "REF"
+    },
+    {
+      "from": "C",
+      "to": "K",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "A",
+      "to": "H",
+      "style": "DASHED",
+      "role": "REF"
+    }
+  ],
+  "dims": [
+    {
+      "from": "B",
+      "to": "C",
+      "label": "9"
+    },
+    {
+      "from": "A",
+      "to": "B",
+      "label": "9"
+    }
+  ],
+  "highlights": [
+    {
+      "polygon": [
+        "A",
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "K",
+        "refs": [
+          "H",
+          "C"
+        ]
+      }
+    ]
+  },
+  "caption": "정사각뿔의 선분 CH와 사면 정사영",
+  "solidCaption": {
+    "text": "정사각뿔의 선분 CH와 사면 정사영"
+  },
+  "accessibilityDescription": "정사각뿔의 선분 CH와 사면 정사영. 모든 모서리 길이 9; 밑면 두 대각선의 교점 H; CH 강조; 투영 대상 평면 ACD; H의 ACD 정사영 K 관계를 표시한 공간도형.",
+  "sourceQuote": "[그림: 밑면이 정사각형 $\\text{BCDE}$이고 모든 모서리의 길이가 9인 정사각뿔 $\\text{A-BCDE}$이다. 밑면의 두 대각선 $\\text{CE, BD}$의 교점이 $\\text{H}$이고, 선분 $\\text{AH}$는 밑면에 수직이다. 선분 $\\text{CH}$가 굵은 선으로 표시되어 있다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "모든 모서리 길이 9",
+      "mappedTo": "solids[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "밑면 두 대각선의 교점 H",
+      "mappedTo": "solids[0].points[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "CH 강조",
+      "mappedTo": "segments[0]"
+    },
+    {
+      "id": "c4",
+      "condition": "투영 대상 평면 ACD",
+      "mappedTo": "highlights[0]"
+    },
+    {
+      "id": "c5",
+      "condition": "H의 ACD 정사영 K",
+      "mappedTo": "solids[0].points[1]"
+    }
+  ],
+  "newVisualInformation": [
+    "모든 옆모서리가 9가 되도록 높이는 9/√2이며 CK가 정사영이다."
+  ]
+}
