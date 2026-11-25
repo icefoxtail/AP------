@@ -1,0 +1,29 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": ["0", "5", "-2"],
+    "sourceDomain": { "kind": "ALL_REALS" },
+    "domain": [-0.25, 2.75],
+    "viewport": [-0.5, 3, -2, 7],
+    "requiredPoints": [],
+    "axisTickValues": { "x": [], "y": [] },
+    "overlays": {
+      "lines": [
+        { "id": "g", "slope": "3", "intercept": "1/2", "label": "y=3x+1/2" }
+      ],
+      "points": [
+        { "id": "T", "curveX": "1/2", "coordinates": true, "unnamed": true }
+      ]
+    }
+  },
+  "caption": "직선 y=3x+1/2이 포물선 y=-2x²+5x에 접할 때, 두 그래프의 공통점은 (1/2, 2) 하나이다.",
+  "accessibilityDescription": "아래로 열린 포물선 y=-2x²+5x에 기울기 3인 직선 y=3x+1/2이 점 (1/2, 2)에서 접하는 그래프. 접점의 좌표가 표시되고 다른 교점은 없다.",
+  "sourceConditions": [
+    { "id": "S1", "condition": "원문의 포물선은 y=-2x²+5x이다.", "mappedTo": ["graphPlan.coefficients", "graphPlan.domain"] },
+    { "id": "S2", "condition": "해설에서 y=3x+k와 만날 조건은 2x²-2x+k=0의 판별식이 0 이상이다.", "mappedTo": "graphPlan.overlays.lines.g" },
+    { "id": "S3", "condition": "k의 최대값은 1/2이며 그때 중근 x=1/2, 교점 y=2이다.", "mappedTo": ["graphPlan.overlays.lines.g", "graphPlan.overlays.points.T"] }
+  ],
+  "newVisualInformation": ["최댓값 k=1/2인 경우에는 직선이 포물선에 접하고, 교점이 하나로 합쳐지는 경계 상태임을 보여 준다."],
+  "sourceQuote": "그래프와 직선이 만나려면 $-2x^2+5x=3x+k$, 즉 $2x^2-2x+k=0$이 실근을 가져야 하므로 판별식 $D\\ge 0$이다."
+}

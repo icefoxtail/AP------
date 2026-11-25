@@ -1,0 +1,28 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": ["8", "-4", "1"],
+    "sourceDomain": { "kind": "ALL_REALS" },
+    "domain": [-0.3, 3.5],
+    "viewport": [-0.8, 4, 0, 10],
+    "requiredPoints": [],
+    "axisTickValues": { "x": [], "y": [] },
+    "overlays": {
+      "points": [
+        { "id": "L", "curveX": "0", "coordinates": true, "unnamed": true },
+        { "id": "V", "curveX": "2", "coordinates": true, "unnamed": true },
+        { "id": "R", "curveX": "3", "coordinates": true, "unnamed": true }
+      ]
+    }
+  },
+  "caption": "축이 x=2인 포물선 y=(x-2)²+4는 0≤x≤3에서 왼쪽 끝 (0,8)이 오른쪽 끝 (3,5)보다 높다.",
+  "accessibilityDescription": "위로 열린 포물선 y=x²-4x+8과 세 좌표 (0,8), (2,4), (3,5)가 표시된다. 대칭축은 x=2이고 제한 구간 0부터 3에서는 왼쪽 끝점이 가장 높다.",
+  "sourceConditions": [
+    { "id": "S1", "condition": "x=2에 대해 대칭이고 x²의 계수는 1이므로 f(x)=(x-2)²+c이다.", "mappedTo": "graphPlan.coefficients" },
+    { "id": "S2", "condition": "0≤x≤3에서 최대 8은 x=0에서 발생하므로 c=4, f(x)=x²-4x+8이다.", "mappedTo": ["graphPlan.coefficients", "graphPlan.overlays.points.L"] },
+    { "id": "S3", "condition": "꼭짓점은 (2,4), 오른쪽 끝값은 f(3)=5이다.", "mappedTo": ["graphPlan.overlays.points.V", "graphPlan.overlays.points.R"] }
+  ],
+  "newVisualInformation": ["구간 [0,3]의 왼쪽 끝 (0,8), 꼭짓점 (2,4), 오른쪽 끝 (3,5)의 높이를 정확한 좌표 라벨로 비교한다."],
+  "sourceQuote": "$0\\le x\\le 3$에서 함수 $f(x)$의 최댓값이 $8$"
+}

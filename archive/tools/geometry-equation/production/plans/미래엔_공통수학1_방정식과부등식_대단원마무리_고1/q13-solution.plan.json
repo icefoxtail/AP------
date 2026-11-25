@@ -1,0 +1,27 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": ["-4", "4", "-1"],
+    "sourceDomain": { "kind": "ALL_REALS" },
+    "domain": [0, 4],
+    "viewport": [-1, 5, -5, 2],
+    "requiredPoints": [],
+    "axisTickValues": { "x": [], "y": [] },
+    "overlays": {
+      "points": [
+        { "id": "T", "curveX": "2", "coordinates": true, "unnamed": true },
+        { "id": "P", "curveX": "1", "coordinates": true, "unnamed": true }
+      ]
+    }
+  },
+  "caption": "a<0이고 이차부등식의 해가 x=2 하나뿐인 경우를 y=-(x-2)²로 예시한 그림이다.",
+  "accessibilityDescription": "아래로 열린 포물선 y=-(x-2)²가 x축에 (2,0)에서 접하고 나머지 점에서는 x축 아래에 있다. 점 (1,-1)이 표시되어 x=1에서 함수값이 음수임을 보여 준다. 계수는 모양을 보여 주기 위한 대표값이다.",
+  "sourceConditions": [
+    { "id": "S1", "condition": "ax²+bx+c≥0의 해가 x=2 한 점이려면 a<0이고 그래프가 x축에 x=2에서 접해야 한다.", "mappedTo": ["graphPlan.coefficients", "graphPlan.overlays.points.T"] },
+    { "id": "S2", "condition": "모든 해당 함수는 a(x-2)²이며 a<0이다. -1을 대표값으로 삼아 실제 수치를 정하지 않은 원문과 모양만 대응시킨다.", "mappedTo": "graphPlan.coefficients" },
+    { "id": "S3", "condition": "x=1은 x=2와 달라 f(1)=a+b+c<0이고 예시 그래프에서 (1,-1)로 표시한다.", "mappedTo": "graphPlan.overlays.points.P" }
+  ],
+  "newVisualInformation": ["해집합이 점 x=2 하나뿐인 포물선의 접하는 형태와 x=1에서의 음의 함수값을 시각적으로 보인다."],
+  "sourceQuote": "이차부등식 $ax^2+bx+c\\ge 0$의 해가 $x=2$일 때"
+}

@@ -1,0 +1,29 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": ["3", "0", "1/2"],
+    "sourceDomain": { "kind": "ALL_REALS" },
+    "domain": [-5, 1.5],
+    "viewport": [-5.5, 2, -2, 13],
+    "requiredPoints": [],
+    "axisTickValues": { "x": [], "y": [] },
+    "overlays": {
+      "lines": [
+        { "id": "line", "slope": "-2", "intercept": "1", "label": "y=1-2x" }
+      ],
+      "points": [
+        { "id": "T", "curveX": "-2", "coordinates": true, "unnamed": true }
+      ]
+    }
+  },
+  "caption": "k=2일 때 직선 y=1-2x와 포물선 y=x²/2+3은 (-2,5)에서 단 한 번 만난다.",
+  "accessibilityDescription": "위로 열린 포물선 y=x²/2+3과 기울기 -2인 직선 y=1-2x이 (-2,5)에서 접한다. 접점의 좌표가 표시된다.",
+  "sourceConditions": [
+    { "id": "S1", "condition": "첫째 식 2x+y=1을 직선 y=1-2x로 나타낸다.", "mappedTo": "graphPlan.overlays.lines.line" },
+    { "id": "S2", "condition": "둘째 식 x²-ky=-6에서 해설이 구한 양수 k=2를 넣으면 y=x²/2+3이다.", "mappedTo": "graphPlan.coefficients" },
+    { "id": "S3", "condition": "두 식을 연립하면 (x+2)²=0이고 단 하나의 공통점은 (-2,5)이다.", "mappedTo": "graphPlan.overlays.points.T" }
+  ],
+  "newVisualInformation": ["연립방정식의 해가 한 쌍뿐인 이유가 접점 (-2,5) 한 곳에서 만나는 두 그래프의 기하 관계임을 보여 준다."],
+  "sourceQuote": "연립방정식이 오직 한 쌍의 해를 가지려면 이 이차방정식이 중근을 가져야 하므로 판별식이 $0$이다."
+}
