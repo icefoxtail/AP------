@@ -1,0 +1,10 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"PARABOLA","vertex":["0","0"],"p":"3","axis":"X"},
+  "points":[{"id":"O","kind":"ORIGIN"},{"id":"F","kind":"FOCUS"},{"id":"P","kind":"ON_CONIC","x":"5","branch":"POS"},{"id":"Q","kind":"ON_CONIC","x":"6","branch":"POS"}],
+  "segments":[{"id":"PF","from":"P","to":"F"},{"id":"FQ","from":"F","to":"Q"},{"id":"PQ","from":"P","to":"Q"}],
+  "caption":"y²=12x 위의 서로 다른 제1사분면 점 P,Q와 초점 F가 만드는 삼각형 PFQ",
+  "accessibilityDescription":"오른쪽으로 열린 포물선의 위쪽 점 P,Q에서 x축 위의 초점 F로 연결한 삼각형이며 두 초점거리의 합은 17이다.",
+  "sourceConditions":[{"id":"c1","condition":"포물선 y²=12x의 초점 F=(3,0)이다.","mappedTo":["conic","F"]},{"id":"c2","condition":"PF+QF=17이므로 x_P+x_Q=11을 충족하는 내부 대표 x_P=5, x_Q=6을 쓰고 문제에서 구하는 무게중심의 x좌표는 표기하지 않는다.","mappedTo":["P","Q","PF","FQ","PQ"]}],
+  "newVisualInformation":["같은 사분면의 두 포물선 점과 초점이 이루는 삼각형"]
+}
