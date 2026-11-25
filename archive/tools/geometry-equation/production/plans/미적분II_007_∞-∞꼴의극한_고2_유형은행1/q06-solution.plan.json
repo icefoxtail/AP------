@@ -1,0 +1,93 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": { "coordinates": [{ "kind": "integer", "value": "3" }, { "kind": "integer", "value": "1" }] },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": { "coordinates": [{ "kind": "integer", "value": "7" }, { "kind": "integer", "value": "5" }] },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": { "coordinates": [{ "kind": "integer", "value": "7" }, { "kind": "integer", "value": "1" }] },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": ["P", "Q", "H"],
+  "displaySegments": [
+    { "id": "sPH", "refs": ["P", "H"] },
+    { "id": "sHQ", "refs": ["H", "Q"] },
+    { "id": "sPQ", "refs": ["P", "Q"] }
+  ],
+  "rightAngles": [
+    { "id": "raH", "refs": ["P", "H", "Q"] }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      { "id": "dx", "from": "P", "to": "H", "label": "n-3", "side": "BELOW" },
+      { "id": "dy", "from": "H", "to": "Q", "label": "4", "side": "RIGHT", "value": "4" },
+      { "id": "d", "from": "P", "to": "Q", "label": "d_n", "side": "ABOVE" }
+    ]
+  },
+  "caption": "n>3일 때 (3,1)과 (n,5) 사이 거리 d_n은 밑변 n−3, 높이 4인 직각삼각형의 빗변이다. 도형 비율은 n=7의 대표 배치이며 n은 고정값이 아니다.",
+  "accessibilityDescription": "점 P와 Q를 잇는 대각선 d_n이 빗변이고 수평변 PH에는 n-3, 수직변 HQ에는 4가 적혀 있다. H에는 직각 표식이 있다. 도식은 n이 충분히 클 때를 설명하는 대표 배치다.",
+  "sourceQuote": "점 (3,1), (n,5) 사이의 거리를 d_n이라 할 때 lim_{n→∞}(d_n-n)은?",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "첫 점의 원문 좌표 (3,1)",
+      "mappedTo": "mathPlan.nodes[0].args.coordinates;displayPoints[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "둘째 점은 (n,5)이며 n이 커지는 가변 좌표; 도식은 n=7인 대표 예시",
+      "mappedTo": "mathPlan.nodes[1].args.coordinates;caption;newVisualInformation[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "두 점 사이의 가로 거리 n-3",
+      "mappedTo": "displaySegments[0];planeMarks.dimensions[0].label"
+    },
+    {
+      "id": "c4",
+      "condition": "두 점 사이의 세로 거리 5-1=4",
+      "mappedTo": "displaySegments[1];planeMarks.dimensions[1].label;planeMarks.dimensions[1].value"
+    },
+    {
+      "id": "c5",
+      "condition": "거리 d_n은 직각삼각형의 빗변, H에서 두 변은 직교",
+      "mappedTo": "displaySegments[2];planeMarks.dimensions[2].label;rightAngles[0]"
+    },
+    {
+      "id": "c6",
+      "condition": "제곱거리 d_n^2=(n-3)^2+4^2",
+      "mappedTo": "planeMarks.dimensions[0..2];rightAngles[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "엔진은 가변 매개변수 n을 POINT 좌표에 직접 놓지 않으므로, n=7로 대표 구성을 실현한다. 그 수치 7을 원문에 주어진 조건으로 제시하거나 그림에 쓰지 않는다.",
+    "원문에는 없는 보조점 H(수선의 발)와 수선/빗변 표식만 풀이를 위해 추가한다.",
+    "대표 그림은 거리 공식 유도의 직각삼각형을 보여 줄 뿐, 극한값 -3이나 n이 항상 7이라는 주장을 하지 않는다."
+  ]
+}
