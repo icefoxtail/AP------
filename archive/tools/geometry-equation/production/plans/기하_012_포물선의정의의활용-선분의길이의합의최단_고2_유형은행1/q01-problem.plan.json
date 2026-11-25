@@ -1,0 +1,10 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"PARABOLA","vertex":["0","0"],"p":"4","axis":"X"},
+  "points":[{"id":"O","kind":"ORIGIN"},{"id":"F","kind":"FOCUS"},{"id":"A","kind":"POINT","x":"5","y":"4","coordinates":true},{"id":"P","kind":"ON_CONIC","x":"4","branch":"POS"}],
+  "segments":[{"id":"PF","from":"P","to":"F"},{"id":"PA","from":"P","to":"A"}],
+  "caption":"y²=16x 위에서 움직이는 P와 고정된 F(4,0), A(5,4)의 거리 합 PF+PA",
+  "accessibilityDescription":"원점에서 오른쪽으로 열린 포물선의 제1사분면 점 P가 초점 F와 안쪽의 고정점 A(5,4)에 연결되어 있다. P는 가능한 위치 하나의 예이다.",
+  "sourceConditions":[{"id":"c1","condition":"y²=16x의 초점 F=(4,0), 고정점 A=(5,4)는 포물선 안쪽에 있다.","mappedTo":["conic","F","A"]},{"id":"c2","condition":"P는 움직이는 점이므로 원문의 조건을 만족하는 비최적 대표 P=(4,8)로 그리며 최소점 좌표 (a,b)나 a+b를 노출하지 않는다.","mappedTo":["P","PF","PA"]}],
+  "newVisualInformation":["고정 두 점과 포물선상의 가변점 사이 거리 합"]
+}

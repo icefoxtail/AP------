@@ -1,0 +1,11 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"PARABOLA","vertex":["0","0"],"p":"4","axis":"X"},
+  "points":[{"id":"O","kind":"ORIGIN"},{"id":"F","kind":"FOCUS"},{"id":"A","kind":"ON_CONIC","x":"8","branch":"POS"},{"id":"B","kind":"ON_CONIC","x":"2","branch":"NEG"}],
+  "lines":[{"id":"l","through":["A","B"],"label":"l"}],
+  "segments":[{"id":"AF","from":"A","to":"F"},{"id":"BF","from":"B","to":"F"}],
+  "caption":"y²=16x의 초점 F를 지나는 양의 기울기 직선 l과 두 교점 A,B. AF:BF=2:1.",
+  "accessibilityDescription":"직선 l은 초점 F(4,0)를 지나 포물선의 제1사분면 점 A와 제4사분면 점 B를 만나며, AF가 BF의 두 배이다.",
+  "sourceConditions":[{"id":"c1","condition":"주어진 포물선 y²=16x의 초점 F=(4,0), 꼭짓점 O=(0,0)이다.","mappedTo":["conic","F","O"]},{"id":"c2","condition":"초점 현의 두 길이 AF:BF=2:1인 내부 교점 A=(8,8√2), B=(2,-4√2)를 써서 실제 직선이 F를 통과하도록 한다. 질문인 기울기 m을 표시하지 않는다.","mappedTo":["A","B","l","AF","BF"]}],
+  "newVisualInformation":["초점 통과 할선의 상하 교점과 비대칭 초점거리"]
+}

@@ -1,0 +1,10 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"PARABOLA","vertex":["0","0"],"p":"4","axis":"X"},
+  "points":[{"id":"O","kind":"ORIGIN"},{"id":"F","kind":"FOCUS"},{"id":"A","kind":"POINT","x":"9","y":"0","coordinates":true},{"id":"P","kind":"ON_CONIC","x":"13/2","branch":"POS"}],
+  "segments":[{"id":"PF","from":"P","to":"F"},{"id":"PA","from":"P","to":"A"},{"id":"FA","from":"F","to":"A"}],
+  "caption":"포물선 y²=4px, F=(p,0), A=(9,0)과 PA=PF인 이등변삼각형 PFA",
+  "accessibilityDescription":"오른쪽으로 열린 포물선의 제1사분면 점 P가 x축의 F와 A(9,0)를 연결하고, PF와 PA가 같은 길이인 삼각형을 이룬다.",
+  "sourceConditions":[{"id":"c1","condition":"문제의 p는 미지수이고 조건 0<p<9 및 삼각형 둘레 26, PF=PA를 충족하는 내부 배치로 p=4를 사용한다. 그림에는 p의 답을 표시하지 않는다.","mappedTo":["conic","F","P","PF","PA","FA"]},{"id":"c2","condition":"주어진 A=(9,0)는 좌표로 표기하고, P는 PF=PA인 제1사분면 교점만 표시한다.","mappedTo":["A","P"]}],
+  "newVisualInformation":["초점 F가 원점과 A 사이에 위치하는 이등변삼각형"]
+}

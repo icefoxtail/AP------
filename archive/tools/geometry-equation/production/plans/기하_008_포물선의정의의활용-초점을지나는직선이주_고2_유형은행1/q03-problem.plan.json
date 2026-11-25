@@ -1,0 +1,11 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"PARABOLA","vertex":["0","0"],"p":"3","axis":"X"},
+  "points":[{"id":"O","kind":"ORIGIN"},{"id":"F","kind":"FOCUS"},{"id":"A","kind":"ON_CONIC","x":"9","branch":"POS"},{"id":"B","kind":"ON_CONIC","x":"1","branch":"NEG"},{"id":"P","kind":"FOOT","from":"A","onto":"ax","rightAngle":true},{"id":"Q","kind":"FOOT","from":"B","onto":"ax","rightAngle":true}],
+  "lines":[{"id":"ax","x":"0","hidden":true},{"id":"l","through":["A","B"],"hidden":true}],
+  "segments":[{"id":"AF","from":"A","to":"F"},{"id":"FB","from":"F","to":"B"},{"id":"AP","from":"A","to":"P"},{"id":"BQ","from":"B","to":"Q"}],
+  "caption":"포물선 y²=12x와 초점 현 AB, y축 수선 AP 및 BQ의 길이 합이 10",
+  "accessibilityDescription":"초점 F를 지나 위쪽 A와 아래쪽 B를 잇는 선분이 있고 A,B에서 각각 왼쪽 y축으로 수평선 AP,BQ를 내려 두 길이의 합 10을 나타낸다.",
+  "sourceConditions":[{"id":"c1","condition":"y²=12x의 초점 F=(3,0)이다.","mappedTo":["conic","F"]},{"id":"c2","condition":"AP+BQ=10인 초점 현의 내부 x좌표로 A=9, B=1을 선택하여 수선 발 P,Q가 y축에 있고 AF,FB가 한 직선에 놓인다. 구하는 AB 길이는 표시하지 않는다.","mappedTo":["A","B","P","Q","l","AF","FB","AP","BQ"]}],
+  "newVisualInformation":["두 수선의 합이 초점 현 길이와 연결되는 구조"]
+}

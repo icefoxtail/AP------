@@ -1,0 +1,11 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"PARABOLA","vertex":["0","0"],"p":"12/5","axis":"Y"},
+  "points":[{"id":"O","kind":"ORIGIN"},{"id":"F","kind":"FOCUS"},{"id":"A","kind":"ON_CONIC","x":"-48/5"},{"id":"B","kind":"ON_CONIC","x":"12/5"},{"id":"P","kind":"FOOT","from":"A","onto":"d","rightAngle":true},{"id":"Q","kind":"FOOT","from":"B","onto":"d","rightAngle":true}],
+  "lines":[{"id":"d","role":"DIRECTRIX","label":"l"}],
+  "segments":[{"id":"AF","from":"A","to":"F"},{"id":"FB","from":"F","to":"B"},{"id":"AP","from":"A","to":"P","label":"12"},{"id":"BQ","from":"B","to":"Q","label":"3"},{"id":"PQ","from":"P","to":"Q"}],
+  "caption":"x²=4py(p>0)의 초점 현 AB에서 준선 l로 내린 수선 AP=12, BQ=3",
+  "accessibilityDescription":"위로 열린 포물선의 왼쪽 A와 오른쪽 B를 잇는 선분이 초점 F를 지나고, 두 점에서 아래쪽 준선 l로 수선을 내려 P,Q를 만든다.",
+  "sourceConditions":[{"id":"c1","condition":"포물선의 p는 문항에서 수치로 주지 않으나 초점 현 AF=AP=12, BF=BQ=3을 만족하는 내부 모델 p=12/5를 쓴다. 미지수 p는 노출하지 않는다.","mappedTo":["conic","F","A","B","AF","FB"]},{"id":"c2","condition":"A=(-48/5,48/5), B=(12/5,3/5)와 준선 y=-12/5의 수선 발 P,Q가 원문의 왼쪽·오른쪽 배치를 충족한다. 정답 PQ는 무표기다.","mappedTo":["d","P","Q","AP","BQ","PQ"]}],
+  "newVisualInformation":["두 준선 수선 사이의 가로 거리와 초점 현의 관계"]
+}

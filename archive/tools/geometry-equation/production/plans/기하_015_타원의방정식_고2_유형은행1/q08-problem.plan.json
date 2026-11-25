@@ -1,0 +1,11 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"PARABOLA","vertex":["0","0"],"p":"3","axis":"X"},
+  "points":[{"id":"O","kind":"ORIGIN"},{"id":"F","kind":"FOCUS"},{"id":"A","kind":"ON_CONIC","x":"9","branch":"POS"},{"id":"B","kind":"ON_CONIC","x":"1","branch":"NEG"},{"id":"H","kind":"FOOT","from":"A","onto":"d","rightAngle":true},{"id":"C","kind":"POINT","x":"-3","y":"-6*sqrt(3)"}],
+  "lines":[{"id":"d","role":"DIRECTRIX","label":"l"},{"id":"ab","through":["A","B"],"hidden":true}],
+  "segments":[{"id":"AF","from":"A","to":"F","label":"12"},{"id":"FB","from":"F","to":"B","label":"4"},{"id":"AH","from":"A","to":"H"},{"id":"HC","from":"H","to":"C"},{"id":"AC","from":"A","to":"C"}],
+  "caption":"포물선 초점 현 AB의 AF=12, BF=4와 준선의 수선 발 H, 할선이 준선과 만나는 C의 삼각형 AHC",
+  "accessibilityDescription":"제1사분면 A와 제4사분면 B를 지나는 직선이 초점 F를 통과하여 준선의 아래쪽 C까지 연장되고, A에서 준선으로 수선을 내려 H를 만든다.",
+  "sourceConditions":[{"id":"c1","condition":"AF=12, BF=4의 초점 현 조건을 만족하는 내부 모델 p=3에서 A=(9,6√3), B=(1,-2√3), F=(3,0)이다.","mappedTo":["conic","A","B","F","AF","FB"]},{"id":"c2","condition":"준선 x=-3과 직선 AB의 교점 C=(-3,-6√3), H=(-3,6√3)이며 삼각형 AHC의 넓이 답은 표시하지 않는다.","mappedTo":["d","ab","C","H","AH","HC","AC"]}],
+  "newVisualInformation":["초점 현을 준선까지 연장한 직각삼각형 AHC"]
+}

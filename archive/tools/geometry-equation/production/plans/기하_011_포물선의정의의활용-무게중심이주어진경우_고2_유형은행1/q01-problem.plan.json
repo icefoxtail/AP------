@@ -1,0 +1,10 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"PARABOLA","vertex":["0","0"],"p":"4","axis":"Y"},
+  "points":[{"id":"F","kind":"FOCUS"},{"id":"A","kind":"ON_CONIC","x":"-4*sqrt(6)"},{"id":"B","kind":"ON_CONIC","x":"0"},{"id":"C","kind":"ON_CONIC","x":"4*sqrt(6)"}],
+  "segments":[{"id":"AB","from":"A","to":"B"},{"id":"BC","from":"B","to":"C"},{"id":"CA","from":"C","to":"A"},{"id":"AF","from":"A","to":"F"},{"id":"BF","from":"B","to":"F"},{"id":"CF","from":"C","to":"F"}],
+  "caption":"포물선 x²=16y 위의 세 점 A,B,C로 만든 삼각형의 무게중심이 초점 F",
+  "accessibilityDescription":"위로 열린 포물선의 두 위쪽 점 A,C와 아래쪽 꼭짓점 B가 삼각형을 만들고, 초점 F는 그 내부의 무게중심이다.",
+  "sourceConditions":[{"id":"c1","condition":"주어진 x²=16y의 초점 F=(0,4), 준선 y=-4이다.","mappedTo":["conic","F"]},{"id":"c2","condition":"A=(-4√6,6), B=(0,0), C=(4√6,6)은 서로 다른 포물선 점이며 무게중심이 (0,4)=F가 되는 동형 대표이다. 구하는 AF+BF+CF를 값으로 표기하지 않는다.","mappedTo":["A","B","C","AB","BC","CA","AF","BF","CF"]}],
+  "newVisualInformation":["포물선 위 삼각형의 무게중심이 초점과 겹침"]
+}

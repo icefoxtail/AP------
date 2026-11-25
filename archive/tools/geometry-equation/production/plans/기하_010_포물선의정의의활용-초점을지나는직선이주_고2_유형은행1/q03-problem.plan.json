@@ -1,0 +1,11 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"PARABOLA","vertex":["0","0"],"p":"4","axis":"X"},
+  "points":[{"id":"O","kind":"ORIGIN"},{"id":"F","kind":"FOCUS"},{"id":"A","kind":"ON_CONIC","x":"6","branch":"POS"},{"id":"B","kind":"ON_CONIC","x":"8/3","branch":"NEG"}],
+  "lines":[{"id":"l","through":["A","B"],"hidden":true}],
+  "segments":[{"id":"AF","from":"A","to":"F"},{"id":"FB","from":"F","to":"B"}],
+  "caption":"포물선 y²=16x의 초점을 지나는 현 AB에서 AF:BF=3:2",
+  "accessibilityDescription":"양의 기울기를 갖는 초점 통과 직선이 포물선 위쪽 점 A와 아래쪽 점 B를 지나며 두 초점거리는 3대2이다.",
+  "sourceConditions":[{"id":"c1","condition":"주어진 포물선 y²=16x의 초점은 F=(4,0)이다.","mappedTo":["conic","F"]},{"id":"c2","condition":"AF:BF=3:2와 초점 통과 조건을 만족하는 A=(6,4√6), B=(8/3,-8√6/3)을 내부 모델로 사용한다. 구하는 AB 길이는 표시하지 않는다.","mappedTo":["A","B","l","AF","FB"]}],
+  "newVisualInformation":["초점 양쪽으로 3대2로 나뉘는 초점 현"]
+}

@@ -1,0 +1,10 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"PARABOLA","vertex":["0","0"],"p":"8/3","axis":"X"},
+  "points":[{"id":"O","kind":"ORIGIN"},{"id":"F","kind":"FOCUS"},{"id":"A","kind":"ON_CONIC","y":"8"},{"id":"B","kind":"ON_CONIC","y":"-8"},{"id":"M","kind":"ON_CONIC","y":"4"},{"id":"T","kind":"POINT","x":"9","y":"4"}],
+  "segments":[{"id":"AB","from":"A","to":"B","label":"16 cm"},{"id":"TM","from":"T","to":"M"},{"id":"MF","from":"M","to":"F"}],
+  "caption":"입구 지름 16cm, 깊이 6cm인 위성 안테나 포물선 단면에서 평행 입사 전파가 초점 F로 반사되는 한 광로",
+  "accessibilityDescription":"오른쪽으로 열린 포물선의 입구는 세로로 16센티미터이고 원점에서 입구까지 가로 깊이가 6센티미터다. 오른쪽에서 수평으로 들어온 전파 한 줄이 곡면 M에서 초점 F를 향한다.",
+  "sourceConditions":[{"id":"c1","condition":"입구 양 끝 A=(6,8), B=(6,-8)이고 깊이 6cm, 입구 지름 16cm를 충족한다. 초점거리 p=8/3은 구하는 값이므로 좌표를 표시하지 않는다.","mappedTo":["conic","A","B","AB","F"]},{"id":"c2","condition":"축평행 입사 광선의 한 예 T=(9,4)에서 M=(3/2,4)로 수평 진행한 뒤 초점 F로 반사되는 경로를 표시한다.","mappedTo":["T","M","TM","MF"]}],
+  "newVisualInformation":["입구 크기와 축평행 입사·초점 반사 경로"]
+}

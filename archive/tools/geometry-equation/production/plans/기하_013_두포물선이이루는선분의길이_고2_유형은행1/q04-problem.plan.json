@@ -1,0 +1,10 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conics":[{"id":"c1","kind":"PARABOLA","vertex":["-3","0"],"p":"2","axis":"X"},{"id":"c2","kind":"PARABOLA","vertex":["4","0"],"p":"-2","axis":"X"}],
+  "points":[{"id":"F'","kind":"FOCUS","curve":"c1"},{"id":"F","kind":"FOCUS","curve":"c2"},{"id":"A","kind":"ON_CONIC","curve":"c1","x":"-1","branch":"POS"},{"id":"B","kind":"ON_CONIC","curve":"c1","x":"-1","branch":"NEG"},{"id":"C","kind":"ON_CONIC","curve":"c2","x":"2","branch":"NEG"},{"id":"D","kind":"ON_CONIC","curve":"c2","x":"2","branch":"POS"}],
+  "segments":[{"id":"AB","from":"A","to":"B"},{"id":"BC","from":"B","to":"C"},{"id":"CD","from":"C","to":"D"},{"id":"DA","from":"D","to":"A"}],
+  "caption":"두 포물선 y²=8(x+3), y²=−8(x−4) 위에서 각 초점을 지나는 AB,CD와 수평 AD,BC로 만든 사각형",
+  "accessibilityDescription":"서로 마주 보는 포물선의 왼쪽 초점 F'를 지나는 세로변 AB, 오른쪽 초점 F를 지나는 세로변 CD를 위아래 수평변으로 연결한 사각형이다.",
+  "sourceConditions":[{"id":"c1","condition":"왼쪽 포물선 꼭짓점 (-3,0), 초점 F'=(-1,0), 오른쪽 포물선 꼭짓점 (4,0), 초점 F=(2,0)이다.","mappedTo":["c1","c2","F'","F"]},{"id":"c2","condition":"두 초점을 지나는 세로 현과 두 수평변을 만족하는 내부 대표 A=(-1,4),B=(-1,-4),C=(2,-4),D=(2,4)를 사용한다. 구하는 둘레값은 표시하지 않는다.","mappedTo":["A","B","C","D","AB","BC","CD","DA"]}],
+  "newVisualInformation":["두 포물선의 초점 현을 양쪽 변으로 쓰는 수평 사각형"]
+}

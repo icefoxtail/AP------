@@ -1,0 +1,11 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"PARABOLA","vertex":["0","0"],"p":"3/2","axis":"X"},
+  "points":[{"id":"O","kind":"ORIGIN"},{"id":"F","kind":"FOCUS"},{"id":"A","kind":"ON_CONIC","x":"(9+3*sqrt(5))/4","branch":"POS"},{"id":"B","kind":"ON_CONIC","x":"(9-3*sqrt(5))/4","branch":"NEG"},{"id":"H1","kind":"FOOT","from":"A","onto":"ax","rightAngle":true},{"id":"H2","kind":"FOOT","from":"B","onto":"ax","rightAngle":true}],
+  "lines":[{"id":"ax","x":"0","hidden":true},{"id":"l","through":["A","B"],"hidden":true}],
+  "segments":[{"id":"AF","from":"A","to":"F"},{"id":"FB","from":"F","to":"B"},{"id":"AH1","from":"A","to":"H1"},{"id":"BH2","from":"B","to":"H2"}],
+  "caption":"y²=6x의 초점 F를 지나는 현 AB와 y축에 내린 발 H₁,H₂, AB=15/2",
+  "accessibilityDescription":"제1사분면 A와 제4사분면 B를 잇는 현이 초점 F를 통과하고, 양 끝점에서 왼쪽 y축으로 수평 수선을 내려 H1과 H2를 만든다.",
+  "sourceConditions":[{"id":"c1","condition":"y²=6x의 p=3/2, F=(3/2,0)이다.","mappedTo":["conic","F"]},{"id":"c2","condition":"초점 현 길이 AB=15/2를 만족하는 두 x좌표 (9±3√5)/4는 내부 배치값으로만 쓰며, 구하는 AH1+BH2는 표기하지 않는다.","mappedTo":["A","B","l","AF","FB"]},{"id":"c3","condition":"H1,H2는 y축 x=0으로의 수선의 발이다.","mappedTo":["ax","H1","H2","AH1","BH2"]}],
+  "newVisualInformation":["초점 현과 y축 수평거리 두 개의 관계"]
+}

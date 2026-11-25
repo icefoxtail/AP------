@@ -1,0 +1,10 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"PARABOLA","vertex":["0","0"],"p":"5","axis":"X"},
+  "points":[{"id":"O","kind":"ORIGIN"},{"id":"F","kind":"FOCUS"},{"id":"A","kind":"ON_CONIC","y":"20"},{"id":"B","kind":"ON_CONIC","y":"-20"}],
+  "segments":[{"id":"OF","from":"O","to":"F","label":"5 cm"},{"id":"AB","from":"A","to":"B","label":"40 cm"}],
+  "caption":"전조등 반사경 단면 y²=20x, 전구 초점과 원점 거리 5cm, 수직 입구 지름 40cm",
+  "accessibilityDescription":"오른쪽으로 열린 포물선의 원점 O와 초점 F 간 거리가 5센티미터이며 오른쪽 끝의 세로 입구 AB의 길이는 40센티미터이다.",
+  "sourceConditions":[{"id":"c1","condition":"전조등 단면의 초점거리는 OF=5cm이므로 포물선 y²=20x를 쓴다.","mappedTo":["conic","O","F","OF"]},{"id":"c2","condition":"입구 세로 현의 위·아래 끝점은 y=±20cm이고 AB=40cm, 미지 깊이 x좌표는 표시하지 않는다.","mappedTo":["A","B","AB"]}],
+  "newVisualInformation":["초점거리와 수직 현 지름으로 표현한 반사경의 깊이"]
+}

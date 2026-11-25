@@ -1,0 +1,11 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"PARABOLA","vertex":["0","0"],"p":"6","axis":"X"},
+  "points":[{"id":"O","kind":"ORIGIN"},{"id":"F","kind":"FOCUS"},{"id":"P","kind":"ON_CONIC","x":"2","branch":"POS"},{"id":"H","kind":"FOOT","from":"P","onto":"d","rightAngle":true}],
+  "lines":[{"id":"d","role":"DIRECTRIX"}],
+  "segments":[{"id":"PH","from":"P","to":"H"},{"id":"PF","from":"P","to":"F"},{"id":"HF","from":"H","to":"F"}],
+  "caption":"y²=24x에서 PH=PF인 삼각형 PHF, 주어진 ∠HPF=120°",
+  "accessibilityDescription":"제1사분면 포물선 점 P에서 준선으로 내린 발 H와 초점 F를 연결하며, 꼭짓각 HPF는 120도이다. 각도 호는 엔진 계획에서 생략하고 발문과 캡션으로 보충한다.",
+  "sourceConditions":[{"id":"c1","condition":"포물선 y²=24x의 초점 F=(6,0), 준선 x=-6이다.","mappedTo":["conic","F","d"]},{"id":"c2","condition":"PH=PF이고 ∠HPF=120°가 되는 P=(2,4√3), H=(-6,4√3)를 내부 모델로 사용한다. 넓이 정답은 표시하지 않고, 각도 호 기능은 이 capability에 없다.","mappedTo":["P","H","PH","PF","HF"]}],
+  "newVisualInformation":["준선 수선과 이등변삼각형 PHF의 120도 관계"]
+}

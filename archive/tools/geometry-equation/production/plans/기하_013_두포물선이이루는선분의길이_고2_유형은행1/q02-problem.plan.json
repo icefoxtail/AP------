@@ -1,0 +1,14 @@
+{
+  "capability":"multi-curve-figure-v1",
+  "graphPlan":{"family":"multi-curve","viewport":[-3,9,-12,12],"curves":[
+    {"id":"c1","kind":"X_OF_Y","coefficients":["0","0","1/32"],"domain":["-12","12"],"label":"C1"},
+    {"id":"c2","kind":"X_OF_Y","coefficients":["0","0","-1/64"],"domain":["-12","12"],"label":"C2"}
+  ],"axisTickValues":{"x":[],"y":[]},"overlays":{"points":[
+    {"id":"O","x":"0","y":"0"},{"id":"F","x":"8","y":"0"},
+    {"id":"P","x":"4","y":"8*sqrt(2)"},{"id":"Q","x":"-2","y":"8*sqrt(2)"}
+  ],"segments":[{"id":"OP","from":"O","to":"P"},{"id":"FP","from":"F","to":"P"},{"id":"PQ","from":"P","to":"Q"}]}},
+  "caption":"원점 O에서 좌우로 열린 두 포물선 y²=4px, y²=−8px, 수평선 위 P,Q와 PQ=6, OP=PF",
+  "accessibilityDescription":"같은 꼭짓점 O에서 오른쪽과 왼쪽으로 열린 포물선의 위쪽 점 P,Q가 같은 수평선에 있고 P는 오른쪽 포물선의 초점 F까지 O에서와 같은 거리이다.",
+  "sourceConditions":[{"id":"c1","condition":"두 곡선의 계수는 p와 -2p이고 p>0이다. OP=PF 및 PQ=6을 만족하는 내부 대표 p=8을 적용하되 구하는 PF 수치를 표시하지 않는다. 두 곡선은 x=y²/32와 x=-y²/64이다.","mappedTo":["graphPlan.curves","graphPlan.overlays.points","graphPlan.overlays.segments"]},{"id":"c2","condition":"수평선 위 P=(4,8√2), Q=(-2,8√2)이므로 PQ=6이며 OP=PF이다.","mappedTo":"graphPlan.overlays"}],
+  "newVisualInformation":["좌우 반대 포물선과 수평 현 PQ, 두 같은 길이 OP·PF"]
+}

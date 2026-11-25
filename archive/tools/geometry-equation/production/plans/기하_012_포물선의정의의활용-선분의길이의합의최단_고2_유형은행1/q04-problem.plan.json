@@ -1,0 +1,10 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"PARABOLA","vertex":["0","0"],"p":"2","axis":"X"},
+  "points":[{"id":"O","kind":"ORIGIN"},{"id":"F","kind":"FOCUS"},{"id":"A","kind":"POINT","x":"5","y":"2","coordinates":true},{"id":"P","kind":"ON_CONIC","y":"2"}],
+  "segments":[{"id":"AF","from":"A","to":"F"},{"id":"FP","from":"F","to":"P"},{"id":"PA","from":"P","to":"A"}],
+  "caption":"y²=8x 위의 P와 F(2,0), A(5,2)의 삼각형 AFP의 최소 둘레 배치",
+  "accessibilityDescription":"x축 위 초점 F와 고정점 A(5,2), 제1사분면 포물선 점 P가 삼각형을 만들며 P와 A는 같은 높이에 있다.",
+  "sourceConditions":[{"id":"c1","condition":"y²=8x의 초점 F=(2,0)이고 A=(5,2)는 포물선 안쪽이다.","mappedTo":["conic","F","A"]},{"id":"c2","condition":"삼각형 둘레가 최소인 조건은 P,A가 같은 수평선 y=2에 놓이는 것이다. P=(1/2,2)를 내부 배치로 쓰지만 넓이 정답은 표시하지 않는다.","mappedTo":["P","AF","FP","PA"]}],
+  "newVisualInformation":["삼각형 AFP의 수평 변 PA와 높이 관계"]
+}

@@ -1,0 +1,11 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"PARABOLA","vertex":["0","0"],"p":"5","axis":"X"},
+  "points":[{"id":"O","kind":"ORIGIN"},{"id":"F","kind":"FOCUS"},{"id":"A","kind":"ON_CONIC","x":"5","branch":"POS"},{"id":"B","kind":"ON_CONIC","x":"9","branch":"POS"},{"id":"C","kind":"ON_CONIC","x":"13","branch":"POS"},{"id":"H","kind":"FOOT","from":"B","onto":"ax","rightAngle":true,"coordinates":true}],
+  "lines":[{"id":"ax","y":"0","hidden":true}],
+  "segments":[{"id":"FA","from":"F","to":"A"},{"id":"FB","from":"F","to":"B"},{"id":"FC","from":"F","to":"C"},{"id":"BH","from":"B","to":"H"}],
+  "caption":"y²=20x의 초점 F에서 세 점 A,B,C로 이은 선분과 B의 x좌표 9",
+  "accessibilityDescription":"제1사분면에서 포물선 위 A,B,C가 차례로 오른쪽 위에 있으며, 초점 F에서 A까지의 선분은 수직이고 B 아래 x축의 점 H는 (9,0)이다.",
+  "sourceConditions":[{"id":"c1","condition":"포물선 y²=20x의 초점 F=(5,0)이고 FA가 수직이므로 A의 x=5이다.","mappedTo":["conic","F","A","FA"]},{"id":"c2","condition":"B의 x=9와 길이 FA,FB,FC의 등차수열을 만족하는 C의 x=13을 내부 배치에만 사용한다. C의 정답 좌표는 표시하지 않는다.","mappedTo":["B","H","BH","C","FB","FC"]}],
+  "newVisualInformation":["초점에서 세 점까지 거리의 순서와 B의 수선"]
+}

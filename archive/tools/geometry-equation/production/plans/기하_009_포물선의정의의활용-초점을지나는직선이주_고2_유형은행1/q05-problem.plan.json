@@ -1,0 +1,11 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"PARABOLA","vertex":["0","0"],"p":"-2+2*sqrt(2)","axis":"X"},
+  "points":[{"id":"O","kind":"ORIGIN"},{"id":"F","kind":"FOCUS"},{"id":"A","kind":"ON_CONIC","x":"2+2*sqrt(2)","branch":"POS"},{"id":"B","kind":"ON_CONIC","x":"-14+10*sqrt(2)","branch":"NEG"},{"id":"C","kind":"POINT","x":"-2+2*sqrt(2)","y":"4"},{"id":"D","kind":"POINT","x":"2+2*sqrt(2)","y":"0"}],
+  "lines":[{"id":"l","through":["A","B"],"hidden":true}],
+  "segments":[{"id":"AF","from":"A","to":"F"},{"id":"FB","from":"F","to":"B"},{"id":"AC","from":"A","to":"C","label":"4"},{"id":"CF","from":"C","to":"F"},{"id":"FD","from":"F","to":"D"},{"id":"DA","from":"D","to":"A"}],
+  "caption":"원점 꼭짓점 포물선의 초점 F를 지나는 기울기 1인 직선과 AF를 대각선으로 하는 변 길이 4의 축평행 정사각형",
+  "accessibilityDescription":"포물선 위의 위쪽 A와 아래쪽 B가 초점 F와 같은 기울기 1의 직선 위에 있고 AF를 대각선으로 하여 축에 평행한 정사각형 ACFD를 그린다.",
+  "sourceConditions":[{"id":"c1","condition":"포물선 y²=4px, p>0에서 A=(p+4,4)이므로 주어진 기울기 1과 한 변 4를 만족한다. 방정식에서 얻는 p=-2+2√2는 배치용으로만 사용한다.","mappedTo":["conic","A","F","AC","CF","FD","DA"]},{"id":"c2","condition":"초점 F를 지나 기울기 1인 직선의 아래쪽 두 번째 교점 B를 실제 포물선 위에 둔다. 구하는 BF=a+b√2와 a²+b² 값은 그림에 표기하지 않는다.","mappedTo":["B","l","AF","FB"]}],
+  "newVisualInformation":["축평행 정사각형의 대각선 AF와 초점 통과 현 AB"]
+}

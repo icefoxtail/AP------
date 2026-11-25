@@ -1,0 +1,11 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"PARABOLA","vertex":["0","0"],"p":"3","axis":"X"},
+  "points":[{"id":"O","kind":"ORIGIN"},{"id":"F","kind":"FOCUS"},{"id":"P","kind":"ON_CONIC","x":"24","branch":"POS"},{"id":"H","kind":"FOOT","from":"P","onto":"d","rightAngle":true},{"id":"Q","kind":"POINT","x":"57/5","y":"24*sqrt(2)/5"}],
+  "lines":[{"id":"d","role":"DIRECTRIX"}],
+  "segments":[{"id":"PH","from":"P","to":"H"},{"id":"HF","from":"H","to":"F"},{"id":"PF","from":"P","to":"F"},{"id":"HQ","from":"H","to":"Q"}],
+  "caption":"y²=12x에서 H의 각을 이등분하는 HQ와 PQ:QF=3:2",
+  "accessibilityDescription":"준선의 수선의 발 H에서 시작하는 각의 이등분선 HQ가 포물선 점 P와 초점 F 사이의 Q를 지나고, Q는 PF를 3대2로 나눈다.",
+  "sourceConditions":[{"id":"c1","condition":"포물선 y²=12x의 초점 F=(3,0), 준선 x=-3, P는 제1사분면 위 점이다.","mappedTo":["conic","F","d","P","H"]},{"id":"c2","condition":"각 이등분 조건 PQ:QF=HP:HF=3:2를 정확히 만족하는 내부 위치 P=(24,12√2), Q=(57/5,24√2/5)를 쓰고 답인 x_P를 라벨로 드러내지 않는다.","mappedTo":["Q","HQ","PF","HF","PH"]}],
+  "newVisualInformation":["각의 이등분선 HQ와 선분 PF의 내분점 Q"]
+}

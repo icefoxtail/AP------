@@ -1,0 +1,10 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"PARABOLA","vertex":["0","0"],"p":"4","axis":"X"},
+  "points":[{"id":"O","kind":"ORIGIN"},{"id":"F","kind":"FOCUS"},{"id":"A","kind":"ON_CONIC","x":"6","branch":"POS"},{"id":"B","kind":"ON_CONIC","x":"6","branch":"NEG"},{"id":"M","kind":"POINT","x":"3","y":"-2*sqrt(6)"}],
+  "segments":[{"id":"OA","from":"O","to":"A"},{"id":"OB","from":"O","to":"B"},{"id":"AB","from":"A","to":"B"},{"id":"AF","from":"A","to":"F"},{"id":"FM","from":"F","to":"M"}],
+  "caption":"y²=4px의 초점 F를 지나는 삼각형 AOB의 중선 AM과 넓이 24√6",
+  "accessibilityDescription":"x축 대칭인 포물선 점 A,B와 원점 O가 이등변삼각형을 만들고 A에서 OB의 중점 M으로 잇는 선 위에 초점 F가 놓인다.",
+  "sourceConditions":[{"id":"c1","condition":"OA=OB이고 포물선의 x축 대칭점 A,B, 직선 AF가 삼각형 면적을 이분하는 구조를 만족한다.","mappedTo":["conic","A","B","O","AF","FM"]},{"id":"c2","condition":"삼각형 면적 24√6을 만족하는 내부 p=4, A=(6,4√6), B=(6,-4√6), 중점 M=(3,-2√6)로 배치한다. 질문인 AF의 길이는 그림에 표시하지 않는다.","mappedTo":["F","M","OA","OB","AB"]}],
+  "newVisualInformation":["초점 F와 중선 AM가 일치하는 면적 이등분 구조"]
+}

@@ -1,0 +1,11 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"PARABOLA","vertex":["0","0"],"p":"3/2","axis":"Y"},
+  "points":[{"id":"O","kind":"ORIGIN"},{"id":"F","kind":"FOCUS"},{"id":"R","kind":"ON_CONIC","x":"-3"},{"id":"S","kind":"ON_CONIC","x":"3"},{"id":"P","kind":"POINT","x":"-3","y":"3"},{"id":"Q","kind":"POINT","x":"3","y":"3"}],
+  "lines":[{"id":"h","y":"3","label":"y=3"}],
+  "segments":[{"id":"PR","from":"P","to":"R"},{"id":"RS","from":"R","to":"S"},{"id":"SQ","from":"S","to":"Q"}],
+  "caption":"x²=6y의 초점 F를 지나는 현 RS와 직선 y=3의 P,Q가 만드는 PR+RS+SQ 경로",
+  "accessibilityDescription":"위로 열린 포물선의 초점 F를 지나는 수평 현 RS 위에 수직으로 P,Q가 각각 높이 3의 직선에 놓이고 세 선분을 잇는다. 이는 가능한 배치의 한 예이다.",
+  "sourceConditions":[{"id":"c1","condition":"x²=6y의 초점 F=(0,3/2), 주어진 수평선 y=3이다.","mappedTo":["conic","F","h"]},{"id":"c2","condition":"R=(-3,3/2), S=(3,3/2)는 초점을 지나는 현을 이루며 P=(-3,3), Q=(3,3)는 조건에 허용된 대표 선택이다. 질문인 세 거리 합의 최솟값은 라벨로 밝히지 않는다.","mappedTo":["R","S","P","Q","PR","RS","SQ"]}],
+  "newVisualInformation":["수평 초점 현과 높이 3의 두 이동점이 연결되는 세 선분 경로"]
+}
