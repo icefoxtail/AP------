@@ -568,14 +568,14 @@ window.questionBank = [
     "wide": false,
     "content": "자연수 $n$에 대하여 $\\sqrt[3]{\\dfrac{432}{n}}$이 자연수가 된다. 가능한 $n$의 최댓값과 최솟값의 차는? [4점]",
     "choices": [
-      "$430$",
-      "$432$",
-      "$448$",
-      "$486$",
-      "$504$"
+      "$378$",
+      "$405$",
+      "$416$",
+      "$424$",
+      "$430$"
     ],
-    "answer": "①",
-    "solution": "$432=2^4\\cdot3^3$이다. $432/n$이 자연수의 세제곱이어야 한다.\n$432$의 세제곱 약수는 $1,8,27,216$이다.\n이에 해당하는 $n$은 $432,54,16,2$이므로 최댓값은 $432$, 최솟값은 $2$이다.\n따라서 차는 $432-2=430$이다. 정답은 ①이다.",
+    "answer": "⑤",
+    "solution": "$432=2^4\\cdot3^3$이다. $432/n$이 자연수의 세제곱이어야 한다.\n$432$의 세제곱 약수는 $1,8,27,216$이다.\n이에 해당하는 $n$은 $432,54,16,2$이므로 최댓값은 $432$, 최솟값은 $2$이다.\n따라서 차는 $432-2=430$이다. 정답은 ⑤이다.",
     "points": 4,
     "curriculum": "2022",
     "courseKey": "대수",
@@ -736,14 +736,14 @@ window.questionBank = [
     "wide": false,
     "content": "$\\dfrac\\pi2<\\theta<\\pi$이고 $\\sin\\theta+\\cos\\theta=\\dfrac12$일 때, $\\sin\\theta-\\cos\\theta$의 값은? [4점]",
     "choices": [
-      "$-\\sqrt7$",
-      "$-\\dfrac{\\sqrt7}{2}$",
-      "$0$",
       "$1$",
-      "$\\dfrac{\\sqrt7}{2}$"
+      "$\\dfrac{\\sqrt5}{2}$",
+      "$\\dfrac{\\sqrt6}{2}$",
+      "$\\dfrac{\\sqrt7}{2}$",
+      "$\\sqrt2$"
     ],
-    "answer": "⑤",
-    "solution": "$(\\sin\\theta+\\cos\\theta)^2+(\\sin\\theta-\\cos\\theta)^2=2$이다.\n따라서 $(\\sin\\theta-\\cos\\theta)^2=2-1/4=7/4$이다.\n제2사분면에서는 $\\sin\\theta>0$, $\\cos\\theta<0$이므로 차는 양수이다.\n따라서 $\\sin\\theta-\\cos\\theta=\\sqrt7/2$이다. 정답은 ⑤이다.",
+    "answer": "④",
+    "solution": "$(\\sin\\theta+\\cos\\theta)^2+(\\sin\\theta-\\cos\\theta)^2=2$이다.\n따라서 $(\\sin\\theta-\\cos\\theta)^2=2-1/4=7/4$이다.\n제2사분면에서는 $\\sin\\theta>0$, $\\cos\\theta<0$이므로 차는 양수이다.\n따라서 $\\sin\\theta-\\cos\\theta=\\sqrt7/2$이다. 정답은 ④이다.",
     "points": 4,
     "curriculum": "2022",
     "courseKey": "대수",
