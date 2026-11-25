@@ -1,0 +1,44 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-3",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "9",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "-2≤(x-1)/2≤4를 풀면 -3≤x≤9가 된다.",
+  "accessibilityDescription": "-2≤(x-1)/2≤4를 풀면 -3≤x≤9가 된다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "치환 u=(x-1)/2와 -2≤u≤4",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "끝점 -3, 9를 모두 포함",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 닫힌 경계점과 변환된 구간"
+  ]
+}

@@ -1,0 +1,180 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "-3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_THROUGH_POINT",
+        "inputs": [
+          "O",
+          "T"
+        ],
+        "args": {},
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [
+    "k"
+  ],
+  "displaySegments": [
+    {
+      "id": "sOT",
+      "refs": [
+        "O",
+        "T"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "O",
+    "T",
+    "E",
+    "F"
+  ],
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 410
+  },
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "rOT",
+        "ownerSegment": "sOT",
+        "text": "3sqrt(2)"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "ra1",
+      "refs": [
+        "O",
+        "T",
+        "E"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "E",
+    "F"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "원 x²+y²=18과 접선 x-y=6은 한 점에서 만나며 반지름이 접선에 수직이다.",
+  "accessibilityDescription": "원 x²+y²=18과 접선 x-y=6은 한 점에서 만나며 반지름이 접선에 수직이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "x²+y²=18: 중심은 원점이고 반지름은 3√2",
+      "mappedTo": [
+        "O",
+        "sOT",
+        "rOT",
+        "k"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "x-y=6은 원의 접선",
+      "mappedTo": [
+        "sEF",
+        "T",
+        "ra1"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원의 실제 반지름, 접점 및 접선과 반지름의 직각 관계"
+  ]
+}

@@ -1,0 +1,196 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "-3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 410
+  },
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "w1",
+        "ownerSegment": "sAB",
+        "text": "3"
+      },
+      {
+        "id": "w2",
+        "ownerSegment": "sAC",
+        "text": "2"
+      },
+      {
+        "id": "w3",
+        "ownerSegment": "sBD",
+        "text": "4"
+      },
+      {
+        "id": "w4",
+        "ownerSegment": "sCD",
+        "text": "3"
+      },
+      {
+        "id": "w5",
+        "ownerSegment": "sBC",
+        "text": "x"
+      }
+    ]
+  },
+  "caption": "A, B, C, D 도로 연결 관계와 각 연결 구간의 도로 개수를 나타낸 개수 표기 도식이다. x는 추가할 도로 수다.",
+  "accessibilityDescription": "A, B, C, D 도로 연결 관계와 각 연결 구간의 도로 개수를 나타낸 개수 표기 도식이다. x는 추가할 도로 수다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AB=3, AC=2, BD=4, CD=3개의 도로",
+      "mappedTo": [
+        "sAB",
+        "sAC",
+        "sBD",
+        "sCD",
+        "w1",
+        "w2",
+        "w3",
+        "w4"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "BC=x개 도로",
+      "mappedTo": [
+        "sBC",
+        "w5"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "단일 선분은 물리적 도로 한 개가 아니라 도로 수를 표시한 연결 관계이며, 양방향 연결을 나타낸다"
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "4",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "6",
+              "state": "OPEN"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "연립 부등식의 공통 해는 4 이상 6 미만이다.",
+  "accessibilityDescription": "연립 부등식의 공통 해는 4 이상 6 미만이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "2x-1 < x+5 이므로 x<6",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "x+5≤3x-3 이므로 x≥4",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "x=4의 닫힌 끝점과 x=6의 열린 끝점, 그 사이의 해집합"
+  ]
+}

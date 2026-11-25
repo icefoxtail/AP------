@@ -1,0 +1,62 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "a",
+    "rows": [
+      {
+        "kind": "POINTS",
+        "points": [
+          {
+            "id": "P1",
+            "value": "0",
+            "hideName": true,
+            "showValue": true,
+            "style": "FILLED"
+          },
+          {
+            "id": "P2",
+            "value": "8",
+            "hideName": true,
+            "showValue": true,
+            "style": "FILLED"
+          },
+          {
+            "id": "P3",
+            "value": "9",
+            "hideName": true,
+            "showValue": true,
+            "style": "FILLED"
+          },
+          {
+            "id": "P4",
+            "value": "10",
+            "hideName": true,
+            "showValue": true,
+            "style": "FILLED"
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "|x-a|<2x-4의 최소 정수해가 5가 되는 매개변수는 a=0,8,9,10이다.",
+  "accessibilityDescription": "|x-a|<2x-4의 최소 정수해가 5가 되는 매개변수는 a=0,8,9,10이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "x=5는 성립하고 x=4는 성립하지 않아야 함",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "정수 a=0,8,9,10",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "불연속적으로 허용되는 네 매개변수 정수점의 위치"
+  ]
+}

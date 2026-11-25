@@ -1,0 +1,41 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "a",
+    "rows": [
+      {
+        "kind": "POINTS",
+        "points": [
+          {
+            "id": "P1",
+            "value": "0",
+            "hideName": true,
+            "showValue": true,
+            "style": "FILLED"
+          },
+          {
+            "id": "P2",
+            "value": "1",
+            "hideName": true,
+            "showValue": true,
+            "style": "FILLED"
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "정수해 x가 0,1,2의 세 개가 되게 하는 정수 a는 0과 1이다.",
+  "accessibilityDescription": "정수해 x가 0,1,2의 세 개가 되게 하는 정수 a는 0과 1이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "-1<a≤1을 만족하는 정수 a",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "매개변수 a의 가능한 두 정수점"
+  ]
+}
