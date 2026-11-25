@@ -1,0 +1,139 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 4,
+        "depth": 4
+      },
+      "height": 4,
+      "names": "EFGHABCD",
+      "points": [
+        {
+          "id": "P",
+          "at": {
+            "midpoint": [
+              "B",
+              "D"
+            ]
+          }
+        },
+        {
+          "id": "Q",
+          "at": {
+            "footOnLine": {
+              "from": "P",
+              "line": [
+                "A",
+                "G"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "B",
+      "to": "D",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "A",
+      "to": "G",
+      "style": "DASHED",
+      "role": "REF"
+    },
+    {
+      "from": "P",
+      "to": "Q",
+      "style": "DASHED",
+      "role": "REF"
+    },
+    {
+      "from": "P",
+      "to": "B",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "Q",
+      "to": "A",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "dims": [
+    {
+      "edge": "AB"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "P",
+        "refs": [
+          "B",
+          "Q"
+        ]
+      },
+      {
+        "at": "Q",
+        "refs": [
+          "A",
+          "P"
+        ]
+      }
+    ]
+  },
+  "caption": "모서리 4의 정육면체, BD 위 P와 AG 위 Q 사이의 공통수선 PQ",
+  "accessibilityDescription": "모서리 4의 정육면체, BD 위 P와 AG 위 Q 사이의 공통수선 PQ. 대각선 두 개와 공통수선. PQ의 요구 길이는 표시하지 않음.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "정육면체 한 모서리 길이 4",
+      "mappedTo": [
+        "solids[0].base",
+        "dims[0]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "P는 윗면 대각선 BD 위",
+      "mappedTo": [
+        "segments[0]",
+        "solids[0].points[0]"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "Q는 공간 대각선 AG 위",
+      "mappedTo": [
+        "segments[1]",
+        "solids[0].points[1]"
+      ]
+    },
+    {
+      "id": "c4",
+      "condition": "PQ는 BD·AG 각각에 수직",
+      "mappedTo": [
+        "segments[2]",
+        "marks.rightAngles[0]",
+        "marks.rightAngles[1]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "대각선 두 개와 공통수선",
+    "PQ의 요구 길이는 표시하지 않음"
+  ],
+  "solidCaption": {
+    "text": "정육면체"
+  },
+  "sourceQuote": "[그림: 한 모서리의 길이가 $4$인 정육면체 $\\text{ABCD-EFGH}$에서 윗면의 대각선 $\\text{BD}$ 위의 점 $\\text{P}$, 정육면체의 대각선 $\\text{AG}$ 위의 점 $\\text{Q}$, 두 선분 $\\text{BD}, \\text{AG}$에 모두 수직인 선분 $\\text{PQ}$가 표시된 입체도형]"
+}

@@ -1,0 +1,95 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "REGULAR_POLYHEDRON",
+      "faces": 4,
+      "side": 4,
+      "names": "BCDA",
+      "points": [
+        {
+          "id": "M",
+          "at": {
+            "midpoint": [
+              "B",
+              "C"
+            ]
+          }
+        },
+        {
+          "id": "N",
+          "at": {
+            "midpoint": [
+              "A",
+              "D"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "A",
+      "to": "M",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "D",
+      "to": "M",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "M",
+      "to": "N",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "caption": "정사면체 ABCD와 BC 중점 M, AD 중점 N, AM·DM·MN",
+  "accessibilityDescription": "정사면체 ABCD와 BC 중점 M, AD 중점 N, AM·DM·MN. 사면체의 두 중점과 세 추가 선분. 정답 판단 수치 미표시.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "정사면체 ABCD",
+      "mappedTo": [
+        "solids[0].kind",
+        "solids[0].names"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "M은 BC의 중점",
+      "mappedTo": [
+        "solids[0].points[0]"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "N은 AD의 중점",
+      "mappedTo": [
+        "solids[0].points[1]"
+      ]
+    },
+    {
+      "id": "c4",
+      "condition": "AM, DM, MN의 세 선분",
+      "mappedTo": [
+        "segments[0]",
+        "segments[1]",
+        "segments[2]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "사면체의 두 중점과 세 추가 선분",
+    "정답 판단 수치 미표시"
+  ],
+  "solidCaption": {
+    "text": "정사면체"
+  },
+  "sourceQuote": "[그림: 정사면체 $\\text{ABCD}$에서 모서리 $\\text{BC}$의 중점 $\\text{M}$, 모서리 $\\text{AD}$의 중점 $\\text{N}$, 선분 $\\text{AM}, \\text{DM}, \\text{MN}$이 점선과 실선으로 연결된 사면체]"
+}

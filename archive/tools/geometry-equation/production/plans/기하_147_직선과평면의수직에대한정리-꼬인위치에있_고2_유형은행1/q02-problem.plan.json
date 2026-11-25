@@ -1,0 +1,87 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "REGULAR_POLYHEDRON",
+      "faces": 4,
+      "side": 4.47213595499958,
+      "names": "BCDA",
+      "points": [
+        {
+          "id": "M",
+          "at": {
+            "midpoint": [
+              "A",
+              "B"
+            ]
+          }
+        },
+        {
+          "id": "N",
+          "at": {
+            "midpoint": [
+              "C",
+              "D"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "M",
+      "to": "N",
+      "style": "SOLID",
+      "role": "ACCENT"
+    }
+  ],
+  "dims": [
+    {
+      "edge": "BC",
+      "label": "2\\sqrt{5}"
+    }
+  ],
+  "caption": "모서리 2√5의 정사면체, AB 중점 M·CD 중점 N을 잇는 MN",
+  "accessibilityDescription": "모서리 2√5의 정사면체, AB 중점 M·CD 중점 N을 잇는 MN. 서로 마주 보는 두 모서리 중점의 연결. MN 정답 길이 미표시.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "모든 모서리 길이 2√5",
+      "mappedTo": [
+        "solids[0].side",
+        "dims[0]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "M은 AB의 중점",
+      "mappedTo": [
+        "solids[0].points[0]"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "N은 CD의 중점",
+      "mappedTo": [
+        "solids[0].points[1]"
+      ]
+    },
+    {
+      "id": "c4",
+      "condition": "MN이 실선으로 연결",
+      "mappedTo": [
+        "segments[0]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "서로 마주 보는 두 모서리 중점의 연결",
+    "MN 정답 길이 미표시"
+  ],
+  "solidCaption": {
+    "text": "정사면체"
+  },
+  "sourceQuote": "[그림: 정사면체 $\\text{ABCD}$에서 모서리 $\\text{AB}$의 중점 $\\text{M}$, 모서리 $\\text{CD}$의 중점 $\\text{N}$을 잇는 선분 $\\text{MN}$이 붉은 실선으로 표시된 입체도형]"
+}

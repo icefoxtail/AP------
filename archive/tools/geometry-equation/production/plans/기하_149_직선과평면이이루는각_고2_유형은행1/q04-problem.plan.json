@@ -1,0 +1,85 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PRISM",
+      "base": {
+        "kind": "REGULAR",
+        "n": 3,
+        "side": 4
+      },
+      "height": 2,
+      "names": "DEFABC",
+      "points": [
+        {
+          "id": "M",
+          "at": {
+            "midpoint": [
+              "B",
+              "C"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "D",
+      "to": "M",
+      "style": "DASHED",
+      "role": "REF"
+    }
+  ],
+  "dims": [
+    {
+      "edge": "AB"
+    },
+    {
+      "edge": "AD"
+    }
+  ],
+  "caption": "밑변 4 정삼각형·높이 2인 직삼각기둥, BC 중점 M과 DM",
+  "accessibilityDescription": "밑변 4 정삼각형·높이 2인 직삼각기둥, BC 중점 M과 DM. 중점 M과 공간 선분 DM. 해설 수선의 발 N은 표시하지 않음.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "밑면 ABC,DEF는 한 변 4인 정삼각형",
+      "mappedTo": [
+        "solids[0].base",
+        "dims[0]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "높이 2인 직삼각기둥",
+      "mappedTo": [
+        "solids[0].height",
+        "dims[1]"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "M은 BC의 중점",
+      "mappedTo": [
+        "solids[0].points[0]"
+      ]
+    },
+    {
+      "id": "c4",
+      "condition": "DM 표시",
+      "mappedTo": [
+        "segments[0]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "중점 M과 공간 선분 DM",
+    "해설 수선의 발 N은 표시하지 않음"
+  ],
+  "solidCaption": {
+    "text": "직삼각기둥"
+  },
+  "sourceQuote": "[그림: 밑면 $ABC, DEF$는 한 변의 길이가 4인 정삼각형이고 높이가 2인 직삼각기둥에서 모서리 $BC$의 중점 $M$과 꼭짓점 $D$를 잇는 선분 $DM$이 그려진 입체도형]"
+}

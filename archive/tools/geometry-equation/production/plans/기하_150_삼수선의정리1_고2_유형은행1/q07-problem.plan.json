@@ -1,0 +1,199 @@
+{
+  "capability": "solid-figure-v1",
+  "space": {
+    "points": [
+      {
+        "id": "H",
+        "at": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "A",
+        "at": [
+          "-2*sqrt(2)",
+          0,
+          0
+        ]
+      },
+      {
+        "id": "B",
+        "at": [
+          3,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "O",
+        "at": [
+          0,
+          2,
+          0
+        ]
+      },
+      {
+        "id": "P",
+        "at": [
+          0,
+          2,
+          2
+        ]
+      }
+    ],
+    "planes": [
+      {
+        "id": "alpha",
+        "name": "\\alpha",
+        "through": [
+          "H",
+          "A",
+          "O"
+        ]
+      }
+    ],
+    "segments": [
+      {
+        "from": "A",
+        "to": "B",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "O",
+        "to": "H",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "P",
+        "to": "O",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "P",
+        "to": "H",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "P",
+        "to": "A",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "O",
+        "to": "A",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "H",
+        "style": "AUTO",
+        "role": "REF"
+      }
+    ]
+  },
+  "dims": [
+    {
+      "from": "O",
+      "to": "H",
+      "label": "2"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "O",
+        "refs": [
+          "P",
+          "H"
+        ]
+      },
+      {
+        "at": "H",
+        "refs": [
+          "O",
+          "A"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "refs": [
+          "P",
+          "H",
+          "O"
+        ],
+        "label": "45^\\circ",
+        "arcs": 1
+      },
+      {
+        "refs": [
+          "P",
+          "A",
+          "O"
+        ],
+        "label": "30^\\circ",
+        "arcs": 2
+      }
+    ]
+  },
+  "caption": "평면 α의 삼수선 PO·OH, OH=2 및 ∠PHO=45°, ∠PAO=30°",
+  "accessibilityDescription": "평면 α의 삼수선 PO·OH, OH=2 및 ∠PHO=45°, ∠PAO=30°. 서로 다른 두 각도 호·라벨과 길이 2. PAH 넓이 정답 미표시.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "평면 α 위 AB와 수선의 발 O,H",
+      "mappedTo": [
+        "space.planes[0]",
+        "space.segments[0]",
+        "space.segments[1]",
+        "space.segments[2]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "OH=2",
+      "mappedTo": [
+        "dims[0]"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "PHO=45°",
+      "mappedTo": [
+        "marks.angles[0]"
+      ]
+    },
+    {
+      "id": "c4",
+      "condition": "PAO=30°",
+      "mappedTo": [
+        "marks.angles[1]"
+      ]
+    },
+    {
+      "id": "c5",
+      "condition": "PA,PH,OA 연결",
+      "mappedTo": [
+        "space.segments[3]",
+        "space.segments[4]",
+        "space.segments[5]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "서로 다른 두 각도 호·라벨과 길이 2",
+    "PAH 넓이 정답 미표시"
+  ],
+  "solidCaption": {
+    "text": "삼수선의 정리"
+  },
+  "sourceQuote": "[그림: 평면 $\\alpha$ 위에 선분 $\\mathrm{AB}$가 있고, 평면 밖의 점 $\\mathrm{P"
+}

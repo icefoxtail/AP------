@@ -1,0 +1,194 @@
+{
+  "capability": "solid-figure-v1",
+  "space": {
+    "points": [
+      {
+        "id": "H",
+        "at": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "A",
+        "at": [
+          -8,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "B",
+        "at": [
+          3,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "O",
+        "at": [
+          0,
+          3,
+          0
+        ]
+      },
+      {
+        "id": "P",
+        "at": [
+          0,
+          3,
+          "3*sqrt(3)"
+        ]
+      }
+    ],
+    "planes": [
+      {
+        "id": "alpha",
+        "name": "\\alpha",
+        "through": [
+          "H",
+          "A",
+          "O"
+        ]
+      }
+    ],
+    "lines": [
+      {
+        "id": "l",
+        "name": "l",
+        "through": [
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "segments": [
+      {
+        "from": "A",
+        "to": "B",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "O",
+        "to": "H",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "P",
+        "to": "O",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "P",
+        "to": "H",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "P",
+        "to": "A",
+        "style": "AUTO",
+        "role": "REF"
+      }
+    ]
+  },
+  "dims": [
+    {
+      "from": "P",
+      "to": "A",
+      "label": "10"
+    },
+    {
+      "from": "A",
+      "to": "H",
+      "label": "8"
+    },
+    {
+      "from": "O",
+      "to": "H",
+      "label": "3"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "O",
+        "refs": [
+          "P",
+          "H"
+        ]
+      },
+      {
+        "at": "H",
+        "refs": [
+          "O",
+          "A"
+        ]
+      }
+    ]
+  },
+  "caption": "평면 α의 AB, 수선 O,H,P; AP=10·AH=8·OH=3",
+  "accessibilityDescription": "평면 α의 AB, 수선 O,H,P; AP=10·AH=8·OH=3. 삼수선 정리의 직각 구조. OP 정답 미표시.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "α 위 직선 AB",
+      "mappedTo": [
+        "space.lines[0]",
+        "space.planes[0]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "PO는 α에 수직",
+      "mappedTo": [
+        "space.segments[2]",
+        "marks.rightAngles[0]"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "OH는 AB에 수직, 길이 3",
+      "mappedTo": [
+        "space.segments[1]",
+        "dims[2]",
+        "marks.rightAngles[1]"
+      ]
+    },
+    {
+      "id": "c4",
+      "condition": "AH=8",
+      "mappedTo": [
+        "dims[1]"
+      ]
+    },
+    {
+      "id": "c5",
+      "condition": "AP=10",
+      "mappedTo": [
+        "space.segments[4]",
+        "dims[0]"
+      ]
+    },
+    {
+      "id": "c6",
+      "condition": "PH 연결",
+      "mappedTo": [
+        "space.segments[3]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "삼수선 정리의 직각 구조",
+    "OP 정답 미표시"
+  ],
+  "solidCaption": {
+    "text": "삼수선의 정리"
+  },
+  "sourceQuote": "[그림: 평면 $\\alpha$ 위에 직선 $\\mathrm{AB}$가 있고, 평면 밖의 점 $\\mathrm{P"
+}

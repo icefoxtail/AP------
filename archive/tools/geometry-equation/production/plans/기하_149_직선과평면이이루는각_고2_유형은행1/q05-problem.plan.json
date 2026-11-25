@@ -1,0 +1,107 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PRISM",
+      "base": {
+        "kind": "POLYGON",
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            2
+          ]
+        ]
+      },
+      "height": 1,
+      "names": "DEFABC"
+    }
+  ],
+  "segments": [
+    {
+      "from": "B",
+      "to": "F",
+      "style": "DASHED",
+      "role": "REF"
+    }
+  ],
+  "dims": [
+    {
+      "edge": "AB"
+    },
+    {
+      "edge": "AC"
+    },
+    {
+      "edge": "AD"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "A",
+        "refs": [
+          "B",
+          "C"
+        ]
+      }
+    ]
+  },
+  "caption": "AB=1·AC=2에 ∠BAC=90°인 삼각기둥, 높이 1과 선분 BF",
+  "accessibilityDescription": "AB=1·AC=2에 ∠BAC=90°인 삼각기둥, 높이 1과 선분 BF. 직각 표시와 세 길이 라벨. BF와 평면이 이루는 θ의 값은 비노출.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 밑면은 A,D에서 직각인 삼각형",
+      "mappedTo": [
+        "solids[0].base",
+        "marks.rightAngles[0]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "AB=1",
+      "mappedTo": [
+        "dims[0]"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "AC=2",
+      "mappedTo": [
+        "dims[1]"
+      ]
+    },
+    {
+      "id": "c4",
+      "condition": "수직 옆모서리 높이 1",
+      "mappedTo": [
+        "solids[0].height",
+        "dims[2]"
+      ]
+    },
+    {
+      "id": "c5",
+      "condition": "BF 선분",
+      "mappedTo": [
+        "segments[0]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "직각 표시와 세 길이 라벨",
+    "BF와 평면이 이루는 θ의 값은 비노출"
+  ],
+  "solidCaption": {
+    "text": "직삼각기둥"
+  },
+  "sourceQuote": "[그림: 밑면 $ABC, DEF$는 직각삼각형($\\angle A = \\angle D = 90^\\circ, AB=1, AC=2$)이고 옆면 모서리의 높이가 1인 삼각기둥에서 꼭짓점 $B$와 $F$를 잇는 선분 $BF$가 그려진 입체도형]"
+}

@@ -1,0 +1,189 @@
+{
+  "capability": "solid-figure-v1",
+  "space": {
+    "points": [
+      {
+        "id": "H",
+        "at": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "A",
+        "at": [
+          -6,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "B",
+        "at": [
+          3,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "O",
+        "at": [
+          0,
+          "2*sqrt(5)",
+          0
+        ]
+      },
+      {
+        "id": "P",
+        "at": [
+          0,
+          "2*sqrt(5)",
+          4
+        ]
+      }
+    ],
+    "planes": [
+      {
+        "id": "alpha",
+        "name": "\\alpha",
+        "through": [
+          "H",
+          "A",
+          "O"
+        ]
+      }
+    ],
+    "segments": [
+      {
+        "from": "A",
+        "to": "B",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "O",
+        "to": "H",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "P",
+        "to": "O",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "P",
+        "to": "H",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "P",
+        "to": "A",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "H",
+        "style": "AUTO",
+        "role": "REF"
+      }
+    ]
+  },
+  "dims": [
+    {
+      "from": "P",
+      "to": "O",
+      "label": "4"
+    },
+    {
+      "from": "P",
+      "to": "A",
+      "label": "6\\sqrt{2}"
+    },
+    {
+      "from": "A",
+      "to": "H",
+      "label": "6"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "O",
+        "refs": [
+          "P",
+          "H"
+        ]
+      },
+      {
+        "at": "H",
+        "refs": [
+          "O",
+          "A"
+        ]
+      }
+    ]
+  },
+  "caption": "평면 α의 AB, 수선 PO=4, PA=6√2, AH=6; 구하는 OH는 미표시",
+  "accessibilityDescription": "평면 α의 AB, 수선 PO=4, PA=6√2, AH=6; 구하는 OH는 미표시. 주어진 세 길이 라벨과 두 수선. 미지 OH 길이는 노출하지 않음.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "평면 α 위 AB와 H",
+      "mappedTo": [
+        "space.planes[0]",
+        "space.segments[0]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "PO가 α에 수직이고 길이 4",
+      "mappedTo": [
+        "space.segments[2]",
+        "dims[0]"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "OH는 AB에 수직",
+      "mappedTo": [
+        "space.segments[1]",
+        "marks.rightAngles[1]"
+      ]
+    },
+    {
+      "id": "c4",
+      "condition": "PA=6√2",
+      "mappedTo": [
+        "space.segments[4]",
+        "dims[1]"
+      ]
+    },
+    {
+      "id": "c5",
+      "condition": "AH=6",
+      "mappedTo": [
+        "dims[2]"
+      ]
+    },
+    {
+      "id": "c6",
+      "condition": "PH 연결",
+      "mappedTo": [
+        "space.segments[3]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "주어진 세 길이 라벨과 두 수선",
+    "미지 OH 길이는 노출하지 않음"
+  ],
+  "solidCaption": {
+    "text": "삼수선의 정리"
+  },
+  "sourceQuote": "[그림: 평면 $\\alpha$ 위에 선분 $\\mathrm{AB}$가 놓여 있고, 평면 밖의 점 $\\mathr"
+}

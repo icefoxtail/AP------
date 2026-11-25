@@ -1,0 +1,71 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 2,
+        "depth": 2
+      },
+      "height": 1,
+      "names": "EFGHABCD"
+    }
+  ],
+  "segments": [
+    {
+      "from": "A",
+      "to": "G",
+      "style": "DASHED",
+      "role": "REF"
+    }
+  ],
+  "dims": [
+    {
+      "edge": "AB"
+    },
+    {
+      "edge": "AD"
+    },
+    {
+      "edge": "AE"
+    }
+  ],
+  "caption": "밑면 한 변 2, 높이 1인 직육면체와 공간 대각선 AG",
+  "accessibilityDescription": "밑면 한 변 2, 높이 1인 직육면체와 공간 대각선 AG. AG와 아래 정사각형의 대응. cos θ 정답 비표시.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "밑면 EFGH는 한 변 2인 정사각형",
+      "mappedTo": [
+        "solids[0].base",
+        "dims[0]",
+        "dims[1]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "높이 AE=1",
+      "mappedTo": [
+        "solids[0].height",
+        "dims[2]"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "대각선 AG",
+      "mappedTo": [
+        "segments[0]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "AG와 아래 정사각형의 대응",
+    "cos θ 정답 비표시"
+  ],
+  "solidCaption": {
+    "text": "직육면체"
+  },
+  "sourceQuote": "[그림: 직육면체 $ABCD-EFGH$에서 밑면 $EFGH$는 한 변의 길이가 2인 정사각형이고 높이 $AE$는 1이며 대각선 $AG$가 그어져 있는 입체도형]"
+}
