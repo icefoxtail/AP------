@@ -1,0 +1,40 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {"recipeId": "SOURCE_COORDINATE_AXES_v1", "unit": "source-coordinate", "reflectionEquivalent": false},
+    "nodes": [
+      {"id": "O", "op": "NORMALIZATION_ORIGIN", "inputs": [], "args": {}, "outputType": "POINT", "factRole": "GIVEN"},
+      {"id": "U", "op": "NORMALIZATION_AXIS", "inputs": [], "args": {"length": {"kind": "integer", "value": "1"}}, "outputType": "POINT", "factRole": "GIVEN"},
+      {"id": "A", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "rational", "numerator": "24", "denominator": "5"}, {"kind": "integer", "value": "0"}]}, "outputType": "POINT", "factRole": "GIVEN"},
+      {"id": "B", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "integer", "value": "0"}, {"kind": "rational", "numerator": "32", "denominator": "5"}]}, "outputType": "POINT", "factRole": "GIVEN"},
+      {"id": "P", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "rational", "numerator": "6", "denominator": "5"}, {"kind": "rational", "numerator": "24", "denominator": "5"}]}, "outputType": "POINT", "factRole": "GIVEN"}
+    ]
+  },
+  "axisTickValues": {"x": [], "y": []},
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {"id": "sAP", "refs": ["A", "P"]},
+    {"id": "sPB", "refs": ["P", "B"]}
+  ],
+  "displayPoints": ["O", "A", "B", "P"],
+  "planeMarks": {
+    "expressionLabels": [
+      {"id": "tAP", "ownerSegment": "sAP", "text": "3t"},
+      {"id": "tPB", "ownerSegment": "sPB", "text": "t"}
+    ],
+    "dimensions": [
+      {"id": "dAB", "from": "A", "to": "B", "label": "8", "side": "RIGHT", "style": "ARROW", "offset": 3, "factRole": "GIVEN"}
+    ]
+  },
+  "coordinateCanvas": {"width": 640, "height": 480},
+  "caption": "제1사분면에서 x축 위의 A와 y축 위의 B를 잇는 길이 8의 선분 AB, AP:PB=3:1인 내부 점 P",
+  "accessibilityDescription": "가로 x축 위 A와 세로 y축 위 B를 대각선으로 연결한 선분 AB의 길이는 8이다. 선분 중간의 점 P는 A에서 P까지가 P에서 B까지의 세 배인 위치에 있으며, 두 부분에 각각 3t와 t를 표시한다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "A=(24/5,0)은 양의 x축, B=(0,32/5)는 양의 y축 위의 대표점이다. AB²=(24/5)²+(32/5)²=64이며 AB=8을 치수선에 쓴다.", "mappedTo": ["A", "B", "sAP", "sPB", "dAB"]},
+    {"id": "c2", "condition": "AP:PB=3:1인 내분점 P=(A+3B)/4=(6/5,24/5)이며 P는 선분 AB 내부에 있다. AP=6, PB=2는 내부 검산값일 뿐 수치로 적지 않고 3t:t로 관계만 나타낸다.", "mappedTo": ["P", "sAP", "sPB", "tAP", "tPB"]},
+    {"id": "c3", "condition": "문항의 답인 점 P의 타원 자취 방정식·반축 값은 원래 그림에 없으므로 그리지 않는다.", "mappedTo": ["P", "sAP", "sPB"]}
+  ],
+  "newVisualInformation": ["x,y좌표축·사분면·양 끝점의 축 위치·전체 길이 8과 내분비 3:1이 기하적으로 일치하는 대표 선분"]
+}
