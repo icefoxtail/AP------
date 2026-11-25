@@ -1,0 +1,24 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conics": [
+    {"id":"e","kind":"ELLIPSE","center":["0","0"],"aSquared":"21","bSquared":"5","major":"X"},
+    {"id":"h","kind":"HYPERBOLA","center":["0","0"],"aSquared":"4","bSquared":"12","transverse":"X"}
+  ],
+  "points": [
+    {"id":"O","kind":"ORIGIN"},
+    {"id":"F","kind":"FOCUS","curve":"h","side":1},
+    {"id":"F'","kind":"FOCUS","curve":"h","side":-1}
+  ],
+  "lines": [
+    {"id":"s1","role":"ASYMPTOTE","curve":"h","sign":1,"dashed":true,"label":"y=\\sqrt{3}x"},
+    {"id":"s2","role":"ASYMPTOTE","curve":"h","sign":-1,"dashed":true,"label":"y=-\\sqrt{3}x"}
+  ],
+  "caption": "타원 x²/21+y²/5=1과 두 초점을 공유하는 쌍곡선 및 점근선",
+  "accessibilityDescription": "원점 O에서 가로로 긴 타원과 좌우로 열린 쌍곡선이 한 좌표평면에 겹쳐 있다. 두 곡선은 x축의 F, F′를 초점으로 공유한다. 쌍곡선의 점근선 두 개가 원점에서 교차한다.",
+  "sourceConditions": [
+    {"id":"c1","condition":"원문 타원 x²/21+y²/5=1의 초점은 (±4,0)이다. 타원 중심과 장축을 원문의 x,y축에 맞춘다.","mappedTo":["e","O","F","F'"]},
+    {"id":"c2","condition":"같은 초점을 쓰는 쌍곡선은 c²=16이고 점근선이 x축 양의 방향과 60°를 이루므로 b/a=tan60°=√3이다. 두 조건을 독립 계산해 a²=4,b²=12로 그린다. 주축의 길이인 최종 답을 학생 그림에 라벨로 노출하지 않는다.","mappedTo":["h","F","F'","s1","s2"]},
+    {"id":"c3","condition":"원문 [그림]의 타원과 좌우 쌍곡선, 공통 초점, 좌표축 O를 모두 실제 필드로 표시한다. 각 60°는 발문에서 주어진 조건이지만 원문 [그림]에 각호 표시 지시는 없으므로 기울기 정확도로 표현하고 각호를 추가하지 않는다.","mappedTo":["e","h","O","s1","s2"]}
+  ],
+  "newVisualInformation": ["공통 초점을 중복 라벨 없이 공유하는 타원과 쌍곡선의 실제 방정식을 한 좌표평면에 표현", "두 점근선의 기울기 조건을 정확히 반영하되 주축 길이의 답은 표시하지 않음"]
+}
