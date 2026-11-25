@@ -51,7 +51,7 @@
 | GPT 사후 FINAL QA | [docs/operations/JS_Archive_FINAL_QA_EXECUTION_CARD_CURRENT.md](docs/operations/JS_Archive_FINAL_QA_EXECUTION_CARD_CURRENT.md) |
 | GPT 예약 라인 프롬프트 개설·수정 | [docs/agents/gpt-reservation.md](docs/agents/gpt-reservation.md) |
 | GPT 유사세트 난도 믹서 | [운영계약](docs/agents/gpt-similar-difficulty-mixer.md) |
-| GPT 유사2 실행 | [프롬프트](docs/agents/gpt-similar-exam-execution-prompt.md) |
+| GPT 유사 실행 | [프롬프트](docs/agents/gpt-similar-exam-execution-prompt.md) |
 | 문항 메타데이터 | [docs/agents/metadata.md](docs/agents/metadata.md) |
 | ALIVE Generated 제작·출시 | [docs/agents/alive-generated.md](docs/agents/alive-generated.md) |
 | 유사·생성 문항 보기와 정답 번호 | [docs/agents/similar-choices.md](docs/agents/similar-choices.md) |
