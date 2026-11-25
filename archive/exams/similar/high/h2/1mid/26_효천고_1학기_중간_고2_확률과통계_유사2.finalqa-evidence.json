@@ -1,0 +1,612 @@
+{
+  "schemaVersion": "gpt-finalqa-evidence-v1",
+  "examUid": "26_효천고_1학기_중간_고2_확률과통계_유사2",
+  "sourcePath": "archive/exams/similar/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계_유사2.js",
+  "blindPackDigest": "44715b4ccc2a4083110ec75133eb0dc4949500da7b8574c08bbc85915d8beef2",
+  "reviewer": {
+    "id": "independent-blind-agent:/root/hyo_ps_blind",
+    "blindFirstPass": "CONFIRMED",
+    "independentEvidence": "독립 에이전트(fork_turns=none)가 --blind-pack의 답·해설·메타 없는 23문항만 열람해 재풀이. Q10은 별도 전달된 원본 PNG 거리 수치 30,40,40,50,70만으로 재검증. 23개 최초 답과 계산이 기존 정답 비교보다 먼저 고정됨.",
+    "blindArtifactRef": "conversation-agent:/root/hyo_ps_blind/2026-11-25-first-formal-23q"
+  },
+  "questions": [
+    {
+      "qid": 1,
+      "sourceFingerprint": "5644c35a3107ef61c1467921f9eab3e3b359818f3fbb05e3290e2b47028f5b05",
+      "blindAnswer": "③",
+      "blindReasoning": "nH3=C(n+2,3)=10=C(5,3)이고 n 자연수이므로 n=3.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "중복조합 nH3과 10이 수식에 제시되어 그림이 필요하지 않음."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "중복조합 공식과 값 비교로 충분하여 해설 도형 면제."
+        }
+      }
+    },
+    {
+      "qid": 2,
+      "sourceFingerprint": "f7254a6898aa55f0fd1b9976581bb0e688cf783887c49a8ddc743257aab01325",
+      "blindAnswer": "④",
+      "blindReasoning": "C(4,0)+C(4,1)+C(4,3)+C(4,4)=2^4−C(4,2)=10.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "네 이항계수의 합이 발문 수식으로 완결됨."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "이항계수 합16과 제외항6의 계산으로 충분함."
+        }
+      }
+    },
+    {
+      "qid": 3,
+      "sourceFingerprint": "1e1adc37edab14ba6326189edd9ceaf198d578799d42543dfcb1000b59028d3d",
+      "blindAnswer": "②",
+      "blindReasoning": "school의 oo를 하나로 묶어 서로 다른 다섯 대상을 배열: 5!=120.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "school 두 o 인접 조건은 문자만으로 완결됨."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "oo 묶음과 5! 계산으로 전달 가능함."
+        }
+      }
+    },
+    {
+      "qid": 4,
+      "sourceFingerprint": "05f8fbaeae241b5d2f77c11216739a05dd73d1aefd5a427ef7d83f5d565f2f92",
+      "blindAnswer": "⑤",
+      "blindReasoning": "ab²계수 C(3,1)(−2)=-6.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "다항식 계수 조건이 수식으로 완결됨."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "조합 계수와 −2의 곱으로 전달 가능함."
+        }
+      }
+    },
+    {
+      "qid": 5,
+      "sourceFingerprint": "fd584cff0ad88a1385b3cd0472b8b47a0a8bfcf366330d1ca4da2fa28742ae5a",
+      "blindAnswer": "①",
+      "blindReasoning": "비복원에서 흰→검, 검→흰 확률 합 5·3/56+3·5/56=15/28.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "공의 개수와 비복원 조건이 문장으로 완결됨."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "두 색 순서별 비복원 확률 덧셈으로 충분함."
+        }
+      }
+    },
+    {
+      "qid": 6,
+      "sourceFingerprint": "078b366fabb9ed5d12074601babdd3e7b05373290a30b3fc2a0b49ee38bd7acd",
+      "blindAnswer": "④",
+      "blindReasoning": "1−P(앞면5·6회)=1−[C(6,5)+C(6,6)]/64=57/64.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "동전 6회의 앞면 횟수 조건이 문장으로 완결됨."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "여사건 두 조합 수를 산술식으로 설명 가능함."
+        }
+      }
+    },
+    {
+      "qid": 7,
+      "sourceFingerprint": "5f3a428b0facd45c8f9dc3cafb2f54548f151d53351534a9926ea37a48624c5f",
+      "blindAnswer": "②",
+      "blindReasoning": "x²계수 40a³, x³계수 80a²; 40a³=240a²(a>0)로 a=6.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "계수 비와 a>0이 수식으로 완결됨."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "40a³과 80a² 계수 비교식으로 충분함."
+        }
+      }
+    },
+    {
+      "qid": 8,
+      "sourceFingerprint": "1f1a78d297be6b49884da607b73b24351e1650fcb67d8265d4d474c763026192",
+      "blindAnswer": "⑤",
+      "blindReasoning": "x⁴계수 54·9+(−12)(−12)+1·4=634.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "다항식 곱과 x⁴계수 목표가 수식으로 완결됨."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "세 항 486+144+4의 계산으로 충분함."
+        }
+      }
+    },
+    {
+      "qid": 9,
+      "sourceFingerprint": "e10049de2925155fef635416afb17461f8baadaadde199a8ac801023531fb746",
+      "blindAnswer": "③",
+      "blindReasoning": "치역 두 원소 선택 C(3,2)=3, 각각 다 쓰는 대응 2^4−2=14, 합42.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "집합 X,Y와 치역 두 원소 조건이 완결됨."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "치역 선택3과 전사 배치14의 계산으로 충분함."
+        }
+      }
+    },
+    {
+      "qid": 10,
+      "sourceFingerprint": "7a48c4a7cb19cac98ffd6bd6095c986b9a3e4cb1a24ac36ab0fde8d41b66b70e",
+      "blindAnswer": "②",
+      "blindReasoning": "원본 PNG에 있는 별도 제공 거리30,40,40,50,70만 사용: 서로 다른 거리 가게쌍9개·동거리쌍 양방향2개, 남은 기사3!=6으로 (9+2)·6=66.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "SOURCE_ASSET_VERIFIED",
+          "planDigest": "a8b23511badf59df889da2b79c8f78a273fce3c42d489772b6481cfa3f533a3f",
+          "reasoning": "문제 핵심 데이터인 다섯 가게 거리표 PNG를 원문과 대조함."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "동거리 한 쌍과 나머지 9쌍의 경우 분할로 설명됨."
+        }
+      }
+    },
+    {
+      "qid": 11,
+      "sourceFingerprint": "58457a04de4f88c220c4ead57c15dc591987b1fee15c0593e12a77bd5ea08584",
+      "blindAnswer": "③",
+      "blindReasoning": "음수 두 개이며 곱6인 함숫값 구성 (-3,-1,1,1,2),(-1,-1,1,2,3) 각각 5!/2!=60, 합120.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "함숫값 곱과 음수 개수 조건이 수식으로 명시됨."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "두 함숫값 멀티셋별 60가지 계산으로 설명됨."
+        }
+      }
+    },
+    {
+      "qid": 12,
+      "sourceFingerprint": "6a869d7bc0aae28b53841f1728440fc5a95771a1203c855f65ac90890855562b",
+      "blindAnswer": "②",
+      "blindReasoning": "세 제곱값 (1,1,0) 순열 3가지, ±1 부호4가지, 전체6³으로 12/216=1/18.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "세 주사위 눈과 제곱식 값2가 발문에 명시됨."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "제곱값 1,1,0의 순열과 부호를 수식으로 설명됨."
+        }
+      }
+    },
+    {
+      "qid": 13,
+      "sourceFingerprint": "c43eff21dc7749e3c0895f9d149ca0780ecf6a3d26a95c7b8818bec5176ee228",
+      "blindAnswer": "⑤",
+      "blindReasoning": "여자·사탕=1/12, 남자·사탕=(3/4)(2/3)=1/2, 사탕전체7/12이므로 1/7.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "사탕·초콜릿 비율 조건이 문장에 모두 제시됨."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "조건부확률 1/12÷(7/12)식으로 충분함."
+        }
+      }
+    },
+    {
+      "qid": 14,
+      "sourceFingerprint": "7218b6221148a4f39c29b2762280568fa05879c0e9c2e6b375b78f5b13cc9fee",
+      "blindAnswer": "③",
+      "blindReasoning": "독립성은 B의 여사건에 유지(ㄱ), 배반이면 P(A|B)=0(ㄴ); 합집합에서 양의 교집합을 빼므로 ㄷ은 거짓.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "독립·배반의 ㄱㄴㄷ 진술이 텍스트로 완결됨."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "독립·배반 확률 항등식으로 세 보기 판정 가능함."
+        }
+      }
+    },
+    {
+      "qid": 15,
+      "sourceFingerprint": "0e51a500db2b0ac360cc324d4270ad3815acea3d2deee6dd67fd55f7d9e5c579",
+      "blindAnswer": "②",
+      "blindReasoning": "z=0,1,2,3마다 x=0,…,4+z이므로 5+6+7+8=26.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "세 정수와 부등식·등식이 수식에 모두 있음."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "z별 경우 5,6,7,8개 합산으로 충분함."
+        }
+      }
+    },
+    {
+      "qid": 16,
+      "sourceFingerprint": "8cf91a605da4527639ec0a4cf2970d03f506bbb1c45b9086221e918ed8f3f5f6",
+      "blindAnswer": "④",
+      "blindReasoning": "X 흰공1개, 나머지 두 흰공 분배 3가지; 각 경우 검은공 최소3개 이후 잔여2개를 세 상자에 C(4,2)=6, 전체18.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "상자 X,Y,Z의 공 분배 제약이 문장에 모두 있음."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "흰 공 3경우와 검은공 중복조합6의 계산으로 충분함."
+        }
+      }
+    },
+    {
+      "qid": 17,
+      "sourceFingerprint": "916e2780a1be5e2b7da34f38a669fb876cbecccb5b6ab371aebd3002897cf40e",
+      "blindAnswer": "①",
+      "blindReasoning": "오른쪽 이동 횟수K~Bin(5,3/5), 종점3K−5가 거리2..4일 조건은 K=1,3; 두 확률 합(240+1080)/3125=264/625.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "SOURCE_ASSET_VERIFIED",
+          "planDigest": "e63a5febbc63c6276abbed43dd0ef85524649e7ec4cd20f545c98daf98b5d4c6",
+          "reasoning": "원점 P가 있는 수직선 원본 PNG를 직접 확인함."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "0675d38322473fff9559b65fe8a06f8c501d66d47c04e3d24e6fceba31cc0777",
+          "reasoning": "공식 수직선 플랜에서 종점 여섯 개와 유리한 −2,4 점을 검증함."
+        }
+      }
+    },
+    {
+      "qid": 18,
+      "sourceFingerprint": "2df2d5a975793e4e968130df051d7891ce1354a92178c21d89e05f3b1c3bcb71",
+      "blindAnswer": "⑤",
+      "blindReasoning": "최솟값+최댓값8인 4원소 조합13, 합10인 경우34, 전체 C(10,4)=210으로 47/210.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "최소·최대 숫자 합과 짝수 조건이 문장으로 완결됨."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "최소·최대쌍별 조합 13+34와 분모210으로 충분함."
+        }
+      }
+    },
+    {
+      "qid": 19,
+      "sourceFingerprint": "840b36015abd226811fef434cc070d3e477da6123d52da1e4e9ef5e4ba48d1d2",
+      "blindAnswer": "③",
+      "blindReasoning": "3,5,나머지 카드 횟수 X,Y,Z로 총 공수4+Y+2Z 홀수⇔Y홀수. 분모272/625, 검은공5와의 교집합120/625, 비15/34.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "카드별 흰·검은 공 추가 규칙이 모두 문장으로 제시됨."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "Y홀수 조건과 분모272·분자120 계산으로 충분함."
+        }
+      }
+    },
+    {
+      "qid": 20,
+      "sourceFingerprint": "c020a7dfd6386e90cb9062d59e7b23619f29d007ba300ce4f538835c9ff6e320",
+      "blindAnswer": "6",
+      "blindReasoning": "a,b,c의 지수 i,j,k≥1과 합5를 풀면 비음수 정수해 C(4,2)=6.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "NOT_APPLICABLE"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "세 지수의 양수 조건이 전개식 문장에 명시됨."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "i,j,k≥1의 지수 방정식과 중복조합 계산으로 충분함."
+        }
+      }
+    },
+    {
+      "qid": 21,
+      "sourceFingerprint": "7b9d6d44a9926ed0368c7635bea10960052d64ff9b8dfc0b4c0614a66a776898",
+      "blindAnswer": "7/128",
+      "blindReasoning": "짝수 횟수 a+b~Bin(10,1/2), P(≤2)=(1+10+45)/1024=7/128.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "NOT_APPLICABLE"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "주사위 6회·4회와 짝수 횟수 합 제약이 수식으로 완결됨."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "이항계수 C(10,0),C(10,1),C(10,2) 합으로 충분함."
+        }
+      }
+    },
+    {
+      "qid": 22,
+      "sourceFingerprint": "7ee492deec0089cbb362441598be459b1099ea430e6f8687b9c8874ffddbbe04",
+      "blindAnswer": "11",
+      "blindReasoning": "t=P(A∩B)면 P(A)=2t, P(B)=5t/2; 합집합7t/2≤1로 P(A)최대4/7(달성 가능), p+q=11.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "NOT_APPLICABLE"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "조건부확률 두 식과 최대화 대상이 모두 제시됨."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "합집합 경계 7t/2≤1 및 최대 도달로 충분함."
+        }
+      }
+    },
+    {
+      "qid": 23,
+      "sourceFingerprint": "869203f5b0466839586f2e9a9e4ac82e7cd1467763bf1388e3b92ec5de211968",
+      "blindAnswer": "213",
+      "blindReasoning": "근오0개:2^6−1−6=57; 근오1개:6·(2^5−1−5)=156; 총213.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "NOT_APPLICABLE"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "빵6개와 세 학생별 분배 조건이 문장으로 완결됨."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "근오의 0개·1개 배분을 57+156으로 설명 가능함."
+        }
+      }
+    }
+  ]
+}

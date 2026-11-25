@@ -73,7 +73,7 @@ window.questionBank = [
       "$12$"
     ],
     "answer": "④",
-    "solution": "이항정리에 의해 $sum_{k=0}^4{}_{4}C_k=2^4=16$이다. 주어진 식은 이 합에서 $ {}_{4}C_2=6$을 제외했으므로 $16-6=10$이다. 정답은 ④.",
+    "solution": "이항정리에 의해 $\\sum_{k=0}^4{}_{4}C_k=2^4=16$이다. 주어진 식은 이 합에서 $ {}_{4}C_2=6$을 제외했으므로 $16-6=10$이다. 정답은 ④.",
     "score": 3.5,
     "points": 3.5,
     "difficultyBucket": 1,
@@ -522,7 +522,7 @@ window.questionBank = [
   },
   {
     "id": 13,
-    "category": "분할표에서의 조건부확률",
+    "category": "비율 조건의 조건부확률",
     "curriculum": "2022",
     "courseKey": "확률과통계",
     "standardCourse": "확률과 통계",
