@@ -1,0 +1,128 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "1",
+          "0"
+        ]
+      },
+      {
+        "coefficients": [
+          "4",
+          "0",
+          "0"
+        ]
+      },
+      {
+        "coefficients": [
+          "16",
+          "-3",
+          "0"
+        ]
+      },
+      {
+        "coefficients": [
+          "6",
+          "-1",
+          "0"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "2",
+        "y": "4"
+      },
+      {
+        "x": "4",
+        "y": "4"
+      },
+      {
+        "x": "5",
+        "y": "1"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": ["0", "6"],
+      "states": ["CLOSED", "CLOSED"]
+    },
+    "domain": [
+      0,
+      6
+    ],
+    "viewport": [
+      -0.5,
+      6.5,
+      -0.5,
+      5
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 0,
+        "y": 2
+      },
+      {
+        "id": "B",
+        "x": 2,
+        "y": 4
+      },
+      {
+        "id": "C",
+        "x": 4,
+        "y": 4
+      },
+      {
+        "id": "D",
+        "x": 5,
+        "y": 1
+      },
+      {
+        "id": "E",
+        "x": 6,
+        "y": 0
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        2,
+        4,
+        5,
+        6
+      ],
+      "y": [
+        1,
+        2,
+        4
+      ]
+    }
+  },
+  "caption": "[0,6]에서 다섯 점을 차례로 잇는 꺾은선 함수 f(x).",
+  "accessibilityDescription": "[0,6]에서 다섯 점을 차례로 잇는 꺾은선 함수 f(x).",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "다섯 점 (0,2),(2,4),(4,4),(5,1),(6,0)",
+      "mappedTo": "graphPlan.requiredPoints[0..4]"
+    },
+    {
+      "id": "c2",
+      "condition": "연속하는 네 선분의 기울기 1,0,-3,-1",
+      "mappedTo": "graphPlan.pieces[0..3];graphPlan.breakpoints[0..2]"
+    },
+    {
+      "id": "c3",
+      "condition": "x축 2,4,5,6 및 y축 1,2,4 눈금",
+      "mappedTo": "graphPlan.axisTickValues"
+    }
+  ],
+  "newVisualInformation": [
+    "모든 조각의 각 끝 좌표와 원본 그래프의 네 기울기를 독립 계산."
+  ],
+  "sourceQuote": "[그림: 좌표평면 위의 제1사분면에 닫힌구간 $[0, 6]$에서 정의된 함수 $y=f(x)$의 그래프가 그려져 있다. 점 $(0, 2)$, $(2, 4)$, $(4, 4)$, $(5, 1)$, $(6, 0)$이 차례로 선분으로 연결되어 있다. $x$축 위의 점 $2, 4, 5, 6$과 $y$축 위의 점 $1, 2, 4$에서 각각 점선이 뻗어 나와 그래프 위의 점 $(2,4), (4,4), (5,1), (0,2)$의 좌표가 표시되어 있다.]"
+}

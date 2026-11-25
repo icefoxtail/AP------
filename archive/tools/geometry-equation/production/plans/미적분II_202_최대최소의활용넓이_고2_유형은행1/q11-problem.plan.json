@@ -1,0 +1,381 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "9"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "9"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "1" }] },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": { "coordinates": [{ "kind": "integer", "value": "8" }, { "kind": "integer", "value": "1" }] },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": { "coordinates": [{ "kind": "integer", "value": "2" }, { "kind": "integer", "value": "10" }] },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "V",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": { "coordinates": [{ "kind": "integer", "value": "2" }, { "kind": "integer", "value": "0" }] },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "L",
+    "R",
+    "U",
+    "V"
+  ],
+  "hiddenPointNames": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "L",
+    "R",
+    "U",
+    "V"
+  ],
+  "displaySegments": [
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCO",
+      "refs": [
+        "C",
+        "O"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "sFG",
+      "refs": [
+        "F",
+        "G"
+      ]
+    },
+    {
+      "id": "sGD",
+      "refs": [
+        "G",
+        "D"
+      ]
+    },
+    {
+      "id": "sLD",
+      "refs": ["L", "D"]
+    },
+    {
+      "id": "sER",
+      "refs": ["E", "R"]
+    },
+    {
+      "id": "sUG",
+      "refs": ["U", "G"]
+    },
+    {
+      "id": "sVD",
+      "refs": ["V", "D"]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "l1",
+        "ownerSegment": "sOA",
+        "text": "x+4",
+        "unit": "cm"
+      },
+      {
+        "id": "l2",
+        "ownerSegment": "sAB",
+        "text": "32/x+2",
+        "unit": "cm"
+      },
+      {
+        "id": "l3",
+        "ownerSegment": "sDE",
+        "text": "x",
+        "unit": "cm"
+      },
+      {
+        "id": "l4",
+        "ownerSegment": "sEF",
+        "text": "32/x",
+        "unit": "cm"
+      },
+      {
+        "id": "l5",
+        "ownerSegment": "sLD",
+        "text": "2",
+        "unit": "cm"
+      },
+      {
+        "id": "l6",
+        "ownerSegment": "sER",
+        "text": "2",
+        "unit": "cm"
+      },
+      {
+        "id": "l7",
+        "ownerSegment": "sUG",
+        "text": "1",
+        "unit": "cm"
+      },
+      {
+        "id": "l8",
+        "ownerSegment": "sVD",
+        "text": "1",
+        "unit": "cm"
+      }
+    ]
+  },
+  "caption": "가로 2cm, 세로 1cm의 여백을 둔 사진 인쇄 영역과 종이를 구분한다.",
+  "accessibilityDescription": "가로 2cm, 세로 1cm의 여백을 둔 사진 인쇄 영역과 종이를 구분한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "좌우 여백 각 2cm",
+      "mappedTo": "mathPlan.nodes[0..11];displaySegments[8..9];planeMarks.expressionLabels[4..5]"
+    },
+    {
+      "id": "c2",
+      "condition": "위아래 여백 각 1cm",
+      "mappedTo": "mathPlan.nodes[0..11];displaySegments[10..11];planeMarks.expressionLabels[6..7]"
+    },
+    {
+      "id": "c3",
+      "condition": "인쇄 면적 32cm², 가로 x, 세로 32/x",
+      "mappedTo": "displaySegments[4..7];planeMarks.expressionLabels[2..3]"
+    },
+    {
+      "id": "c4",
+      "condition": "종이 바깥 가로 x+4, 세로 32/x+2",
+      "mappedTo": "displaySegments[0..3];planeMarks.expressionLabels[0..1]"
+    }
+  ],
+  "newVisualInformation": [
+    "대표 x=4에서 인쇄영역 4×8=32, 외곽 8×10, 여백 (2,1); 최적 x=8은 표시하지 않음."
+  ],
+  "sourceQuote": "[그림: 인쇄 영역의 크기를 $x$ cm와 $32/x$ cm로, 바깥 직사각형의 크기를 $x+4$ cm와 $32/x+2$ cm로 표시한다.]"
+}

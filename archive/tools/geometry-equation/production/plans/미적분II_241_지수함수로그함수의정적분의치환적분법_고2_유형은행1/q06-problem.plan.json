@@ -1,0 +1,67 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "1",
+      "0",
+      "2"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -0.5,
+      1.5
+    ],
+    "viewport": [
+      -1,
+      2,
+      -0.5,
+      6
+    ],
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": 0.5,
+        "y": 1.5
+      }
+    ],
+    "overlays": {
+      "lines": [
+        {
+          "id": "T",
+          "slope": "2",
+          "intercept": "1/2"
+        }
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "y=2x²+1 위 임의의 점에서의 접선. θ 각호는 엔진 확장이 필요.",
+  "accessibilityDescription": "y=2x²+1 위 임의의 점에서의 접선. θ 각호는 엔진 확장이 필요.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "곡선 y=2x²+1과 y절편 (0,1)",
+      "mappedTo": "graphPlan.coefficients"
+    },
+    {
+      "id": "c2",
+      "condition": "대표 P(1/2,3/2)에서 접선의 기울기 2",
+      "mappedTo": "graphPlan.requiredPoints[0];graphPlan.overlays.lines[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "접선과 양의 x축 사이 각 θ 호",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: GRAPH_TANGENT_ANGLE_ARC: 곡선의 접선과 양의 x축 사이에 정확한 θ 각호를 그릴 그래프 오버레이 기능"
+    }
+  ],
+  "newVisualInformation": [
+    "문제에서 P의 x값은 주어지지 않으므로 x=1/2의 비최종 대표 접선을 표시; 각호는 미지원."
+  ],
+  "sourceQuote": "[그림: 좌표평면 위의 제1사분면에 곡선 $y=2x^2+1$이 그려져 있고, $y$절편은 $(0, 1)$이다. 곡선 위의 제1사분면에 점 $P(x, y)$가 잡혀 있으며, 점 $P$에서의 접선이 그어져 있다. 이 접선이 $x$축과 만나는 점에서 $x$축의 양의 방향과 접선이 이루는 각의 위치에 각의 호와 $\\theta(x)$가 표시되어 있다.]"
+}
