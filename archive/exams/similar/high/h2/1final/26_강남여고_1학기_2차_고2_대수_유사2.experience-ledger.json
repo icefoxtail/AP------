@@ -2,7 +2,7 @@
   "schemaVersion": "alive-exam-followup-source-balanced-v1",
   "examUid": "26_강남여고_1학기_2차_고2_대수_유사2",
   "sourceArchiveFile": "archive/exams/similar/high/h2/1final/26_강남여고_1학기_2차_고2_대수_유사2.js",
-  "sourceGitBlobSha": "8bfc71f42d5800bb117f48e542e81334c5cd5973",
+  "sourceGitBlobSha": "ebe80f5ac169499f5ee2b3376ebcdff3e177b30d",
   "originalSourceSha256": "812ac58009a193ac0a232d0c9b228ea712d435880b42f3728083803dd68b7ff2",
   "originalSourceFile": "archive/exams/original/high/h2/1final/26_강남여고_1학기_2차_고2_대수.js",
   "priorSimilarFile": "archive/exams/similar/high/h2/1final/26_강남여고_1학기_2차_고2_대수_유사.js",
@@ -31,7 +31,35 @@
     "independentReviewer": "NOT_RUN",
     "externalChromeVisualQa": "NOT_RUN",
     "userQualityAuthority": "USER_DIRECTED_QUALITY_APPROVED_FOR_REQUESTED_SCOPE",
-    "metadataState": "review_required"
+    "metadataState": "review_required",
+    "postMergeFinalQa": {
+      "date": "2026-11-25",
+      "reviewerRole": "SECOND_SESSION_MATH_AND_METADATA_AUDIT",
+      "independenceLevel": "I1_SEPARATE_CONVERSATION_NOT_I2_EXTERNAL",
+      "mathResult": "PASS_25_OF_25",
+      "choiceOrder": "PASS_21_OF_21_AFTER_Q05_ANSWER_ONLY_GAP_REPAIR",
+      "semanticFourSlotCorrections": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        14,
+        15,
+        17,
+        19,
+        22,
+        24
+      ],
+      "independentExternalReview": "NOT_RUN",
+      "teacherApproval": "NOT_RUN",
+      "svgRender": "NOT_RUN_8_PENDING",
+      "studentUiVisualQa": "NOT_RUN",
+      "ci": "PENDING_VERIFY_AFTER_MERGE"
+    }
   },
   "engineEvidence": {
     "fontSha256": "194018e6b2b293a7964f037b25c0249ce1418bc9ab3c971060a03aa57861e252",
@@ -274,12 +302,12 @@
             "label": "삼각형"
           },
           {
-            "termId": 154,
-            "label": "현"
+            "termId": 328,
+            "label": "변"
           },
           {
-            "termId": 715,
-            "label": "외각"
+            "termId": 609,
+            "label": "끼인각"
           }
         ],
         "goal": [
@@ -371,8 +399,12 @@
         ],
         "goal": [
           {
-            "termId": 734,
-            "label": "일반항"
+            "termId": 131,
+            "label": "값"
+          },
+          {
+            "termId": 288,
+            "label": "차"
           }
         ],
         "method": [
@@ -452,14 +484,18 @@
             "label": "등비수열"
           },
           {
+            "termId": 477,
+            "label": "첫째항"
+          },
+          {
             "termId": 476,
             "label": "공비"
           }
         ],
         "goal": [
           {
-            "termId": 51,
-            "label": "항"
+            "termId": 286,
+            "label": "합"
           }
         ],
         "method": [
@@ -544,8 +580,12 @@
             "label": "등차수열"
           },
           {
-            "termId": 734,
-            "label": "일반항"
+            "termId": 51,
+            "label": "항"
+          },
+          {
+            "termId": 288,
+            "label": "차"
           }
         ],
         "goal": [
@@ -641,12 +681,16 @@
         ],
         "goal": [
           {
+            "termId": 477,
+            "label": "첫째항"
+          },
+          {
             "termId": 476,
             "label": "공비"
           },
           {
-            "termId": 734,
-            "label": "일반항"
+            "termId": 286,
+            "label": "합"
           }
         ],
         "method": [
@@ -737,8 +781,8 @@
         ],
         "goal": [
           {
-            "termId": 394,
-            "label": "조건"
+            "termId": 132,
+            "label": "판정"
           }
         ],
         "method": [
@@ -747,11 +791,20 @@
             "label": "시그마"
           },
           {
-            "termId": 394,
-            "label": "조건"
+            "termId": 286,
+            "label": "합"
+          },
+          {
+            "termId": 243,
+            "label": "반례"
           }
         ],
-        "condition": []
+        "condition": [
+          {
+            "termId": 387,
+            "label": "항상성립"
+          }
+        ]
       },
       "visual": {
         "problem": {
@@ -828,8 +881,8 @@
         ],
         "goal": [
           {
-            "termId": 734,
-            "label": "일반항"
+            "termId": 650,
+            "label": "비율"
           }
         ],
         "method": [
@@ -840,14 +893,13 @@
           {
             "termId": 270,
             "label": "등차수열"
+          },
+          {
+            "termId": 650,
+            "label": "비율"
           }
         ],
-        "condition": [
-          {
-            "termId": 25,
-            "label": "부호"
-          }
-        ]
+        "condition": []
       },
       "visual": {
         "problem": {
@@ -914,14 +966,22 @@
             "label": "삼각형"
           },
           {
-            "termId": 154,
-            "label": "현"
+            "termId": 328,
+            "label": "변"
+          },
+          {
+            "termId": 215,
+            "label": "길이"
           }
         ],
         "goal": [
           {
-            "termId": 154,
-            "label": "현"
+            "termId": 288,
+            "label": "차"
+          },
+          {
+            "termId": 131,
+            "label": "값"
           }
         ],
         "method": [
@@ -1289,8 +1349,12 @@
         ],
         "goal": [
           {
-            "termId": 51,
-            "label": "항"
+            "termId": 286,
+            "label": "합"
+          },
+          {
+            "termId": 288,
+            "label": "차"
           }
         ],
         "method": [
@@ -1380,8 +1444,12 @@
         ],
         "goal": [
           {
-            "termId": 479,
-            "label": "수열의합"
+            "termId": 29,
+            "label": "순서"
+          },
+          {
+            "termId": 131,
+            "label": "값"
           }
         ],
         "method": [
@@ -1571,8 +1639,8 @@
         ],
         "goal": [
           {
-            "termId": 51,
-            "label": "항"
+            "termId": 286,
+            "label": "합"
           }
         ],
         "method": [
@@ -1754,8 +1822,12 @@
         ],
         "goal": [
           {
-            "termId": 479,
-            "label": "수열의합"
+            "termId": 24,
+            "label": "절댓값"
+          },
+          {
+            "termId": 288,
+            "label": "차"
           }
         ],
         "method": [
@@ -2036,8 +2108,8 @@
             "label": "직각삼각형"
           },
           {
-            "termId": 154,
-            "label": "현"
+            "termId": 328,
+            "label": "변"
           }
         ],
         "method": [
@@ -2224,8 +2296,12 @@
         ],
         "goal": [
           {
-            "termId": 479,
-            "label": "수열의합"
+            "termId": 131,
+            "label": "값"
+          },
+          {
+            "termId": 288,
+            "label": "차"
           }
         ],
         "method": [
