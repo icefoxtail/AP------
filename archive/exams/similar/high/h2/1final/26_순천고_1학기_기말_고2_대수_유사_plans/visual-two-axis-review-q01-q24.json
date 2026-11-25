@@ -1,0 +1,280 @@
+{
+  "schema": "EXAM_FOLLOWUP_TWO_AXIS_VISUAL_REVIEW_v1",
+  "batch": "2026-11-25-suncheon-high-24",
+  "sourceFile": "archive/exams/similar/high/h2/1final/26_순천고_1학기_기말_고2_대수_유사.js",
+  "sourceBlob": "bd31a5eea1bdbdff1d3e9f31f4612c6ef2f55cda",
+  "initialMain": "4373ccfb54e7910b16e53f25dd0dbdb343064cdd",
+  "baseMain": "7cc3ab4ae8976368c9fa2409dd10625ab024c978",
+  "openPrOverlapReview": {
+    "checkedPrs": [2961, 2947, 2636, 2404, 2384, 2295],
+    "targetPathCollision": false,
+    "note": "#2961은 순천고 유사2, #2947은 다른 시험지 이미지, 나머지는 범위가 다른 인프라·운영 PR; 현재 두 대상 시험지 파일과 신규 유사_plans 경로를 침범하지 않는다."
+  },
+  "questionCount": 24,
+  "axisCount": 48,
+  "planFileConvention": "동일 디렉터리의 qNN-{problem|solution}.followup.plan.json; EXEMPT에는 제작 파일을 만들지 않음",
+  "evidenceScope": {
+    "sourceAndPlanFields": "REVIEWED_1_TO_1",
+    "lintShallow": "OK_10_OF_10",
+    "lintFull": "OK_10_OF_10",
+    "engineSvgRendering": "NOT_RUN",
+    "pngVisualReview": "NOT_RUN",
+    "studentViewReview": "NOT_RUN",
+    "a4Review": "NOT_RUN",
+    "jsImageConnection": "NOT_RUN",
+    "reason": "GPT plan 작성 라인까지만 수행; SVG·PNG·실제 게시와 학생 화면 검증은 후속 렌더 라인 작업"
+  },
+  "questions": [
+    {
+      "qid": 1,
+      "problem": {"verdict": "EXEMPT", "reason": "5π/6의 코사인 값을 묻는 특수각 대입만으로 완결되며 단위원 그림은 계산을 반복하는 장식이다."},
+      "solution": {"verdict": "EXEMPT", "reason": "cos(π−π/6)=−cos(π/6)의 한 줄 항등식 외 보조선·그래프 관계가 없다."}
+    },
+    {
+      "qid": 2,
+      "problem": {"verdict": "EXEMPT", "reason": "첫항 2·공비 √2·7항이라는 대수 조건만 있어 항 나열이나 점 그래프가 불필요하다."},
+      "solution": {"verdict": "EXEMPT", "reason": "2(√2)^6=16의 지수 연산만으로 해설이 끝난다."}
+    },
+    {
+      "qid": 3,
+      "problem": {"verdict": "EXEMPT", "reason": "a3=8과 a6=20에서 공차를 구하는 등차수열 식의 두 점은 그림 없이 명확하다."},
+      "solution": {"verdict": "EXEMPT", "reason": "3d=12와 a10=a6+4d의 연속 식 계산으로 충분하다."}
+    },
+    {
+      "qid": 4,
+      "problem": {"verdict": "EXEMPT", "reason": "원 둘레 10π와 sin A=2/5로 R과 BC를 묻는 직접 사인법칙 문제이며 임의의 내접 삼각형 그림이 고유 형상을 정하지 않는다."},
+      "solution": {"verdict": "EXEMPT", "reason": "R=5, BC=2R sin A=4에 새 보조선이나 호·각의 관계가 추가되지 않는다."}
+    },
+    {
+      "qid": 5,
+      "problem": {"verdict": "EXEMPT", "reason": "함수식만 주어졌고 최댓값·최솟값·주기가 물음 자체이므로 수치 눈금 있는 문제 그래프는 답을 먼저 노출한다."},
+      "solution": {
+        "verdict": "BENEFICIAL",
+        "reason": "상하 평행이동, 진폭과 주기를 눈금으로 함께 이해한다.",
+        "capability": "trigonometric-spike-v1",
+        "plan": "q05-solution.followup.plan.json",
+        "lint": {"shallow": "OK", "full": "OK"},
+        "drawnFeatureParity": "PASS",
+        "checks": [
+          "식 SIN, A=3, k=2, phasePi=−1/4, C=−1 ↔ 원문 y=3sin(2x−π/4)−1",
+          "x=3π/8와 7π/8에서 y=2 및 −4 ↔ 원문 극대/극소",
+          "극대와 극소의 간격 π/2, 한 주기 π ↔ 원문 c=π"
+        ]
+      }
+    },
+    {
+      "qid": 6,
+      "problem": {"verdict": "EXEMPT", "reason": "두 변 4·6과 끼인각 cos B를 직접 사용하는 면적 공식 문제다. 삼각형의 배치를 지정하는 정보가 없다."},
+      "solution": {"verdict": "EXEMPT", "reason": "sin B=3/4를 구해 1/2×4×6×sin B로 대입하는 계산이 전부다."}
+    },
+    {
+      "qid": 7,
+      "problem": {"verdict": "EXEMPT", "reason": "첫째항과 제6항으로 10항까지의 합을 묻는 등차수열이며 공간 도식 대상이 아니다."},
+      "solution": {"verdict": "EXEMPT", "reason": "공차 3, a10=30, S10=165의 세 식으로 충분하다."}
+    },
+    {
+      "qid": 8,
+      "problem": {"verdict": "EXEMPT", "reason": "40개 분수의 유리화/망원급수 형태를 이미 수식이 완전하게 지정한다."},
+      "solution": {"verdict": "EXEMPT", "reason": "√(k+9)−√(k+8) 항소거를 수식으로 보여 주며 추가 그래프는 오히려 항의 연속성을 혼동시킨다."}
+    },
+    {
+      "qid": 9,
+      "problem": {"verdict": "EXEMPT", "reason": "S=a²tan B/4를 만족하는 삼각형의 종류가 정답이므로 등변 눈금이 있는 문제 그림은 즉시 정답 노출이다."},
+      "solution": {
+        "verdict": "BENEFICIAL",
+        "reason": "코사인법칙에서 b=c가 유도됨을 두 등변의 눈금으로 표시한다.",
+        "capability": "construction-spike-v1",
+        "plan": "q09-solution.followup.plan.json",
+        "lint": {"shallow": "OK", "full": "OK"},
+        "drawnFeatureParity": "PASS",
+        "checks": [
+          "BC=a, CA=b, AB=c ↔ 문항의 대응 변 정의",
+          "B(−3,0), C(3,0), A(0,4) → b=c=5, a=6, S=12, tan B=4/3로 조건식 S=a²tan B/4 충족",
+          "CA와 AB의 동일한 길이 눈금 ↔ 해설 b=c; 일반 삼각형 전체의 고정 치수라고 주장하지 않음"
+        ]
+      }
+    },
+    {
+      "qid": 10,
+      "problem": {"verdict": "EXEMPT", "reason": "두 합을 A,B로 놓아 2원 1차 연립식을 푸는 순수 대수 조건이다."},
+      "solution": {"verdict": "EXEMPT", "reason": "2A−B=11, A+2B=18에서 A−B=3을 구하는 연산이 시각화의 전부다."}
+    },
+    {
+      "qid": 11,
+      "problem": {"verdict": "EXEMPT", "reason": "cos A·외접원 넓이·AB:AC라는 세 조건은 식으로 명확하며 변의 절대 치수를 문제 그림에 넣으면 풀이값을 노출한다."},
+      "solution": {
+        "verdict": "BENEFICIAL",
+        "reason": "사인법칙과 코사인법칙으로 복원한 삼각형의 각과 세 변이 어떻게 연결되는지 표시한다.",
+        "capability": "construction-spike-v1",
+        "plan": "q11-solution.followup.plan.json",
+        "lint": {"shallow": "OK", "full": "OK"},
+        "drawnFeatureParity": "PASS",
+        "checks": [
+          "A=(0,0), B=(6,0), C=A+16·(cos60°,sin60°) → ∠A=60°, AB=6, AC=16, BC=14",
+          "6:16=3:8 ↔ 발문 비율, BC=2·(14/√3)·sin60°=14 ↔ 외접원 넓이 196π/3",
+          "60도 각 호와 AB 6·AC 16·BC 14 라벨 ↔ 풀이 유도치; 문제 축에 노출하지 않음"
+        ]
+      }
+    },
+    {
+      "qid": 12,
+      "problem": {"verdict": "EXEMPT", "reason": "탄젠트 그래프 설명 중 거짓을 고르는 문항이며 정교한 축·점근선 문제 그림은 선택지 판별을 누설한다."},
+      "solution": {
+        "verdict": "BENEFICIAL",
+        "reason": "탄젠트 가지, 극선의 위치와 (π/4,3)의 대응을 해설에 연결한다.",
+        "capability": "trigonometric-spike-v1",
+        "plan": "q12-solution.followup.plan.json",
+        "lint": {"shallow": "OK", "full": "OK"},
+        "drawnFeatureParity": "PASS",
+        "checks": [
+          "TAN A=1, k=2, phasePi=−1/2, C=3 ↔ y=tan(2x−π/2)+3",
+          "선택 구간 (0,π/2)에 극점 없는 한 가지, 양끝의 극 x=0, π/2 ↔ 해설 점근선",
+          "x=π/4에서 y=3, 반복 주기 π/2 ↔ 풀이 수치"
+        ]
+      }
+    },
+    {
+      "qid": 13,
+      "problem": {"verdict": "EXEMPT", "reason": "S2n=Sn(1+r^n)을 이용하는 등비수열 합 문제로 공간·그래프 관계가 없다."},
+      "solution": {"verdict": "EXEMPT", "reason": "r^n=8, r=2, 짝수항 합 42의 연산은 식이 그림보다 직접적이다."}
+    },
+    {
+      "qid": 14,
+      "problem": {"verdict": "EXEMPT", "reason": "Sn=−n²+7n+8에서 |ak|의 유한 합을 구하는 순수 수식 문항이다."},
+      "solution": {"verdict": "EXEMPT", "reason": "a1 예외와 a2~a7의 부호 목록을 해설이 직접 주며 임의의 연속 이차 그래프는 이산 항을 왜곡한다."}
+    },
+    {
+      "qid": 15,
+      "problem": {
+        "verdict": "REQUIRED",
+        "reason": "곡선과 수평선의 네 교점 A~D, O, 삼각형 BOC와 선분 AD의 위치 관계 자체가 발문의 핵심이다.",
+        "capability": "trigonometric-spike-v1",
+        "plan": "q15-problem.followup.plan.json",
+        "lint": {"shallow": "OK", "full": "OK"},
+        "drawnFeatureParity": "PASS",
+        "checks": [
+          "SIN ratePi=1/4, A=4, C=0, [0,12) ↔ 주어진 함수와 반열린 정의역",
+          "y=2에서 교점 A(2/3,2), B(10/3,2), C(26/3,2), D(34/3,2) 순서와 원점 O",
+          "BOC 다각형 fill=NONE, AD 점선; x축 해 좌표·넓이·길이 수치·정답은 문제 그림에 없음"
+        ]
+      },
+      "solution": {
+        "verdict": "BENEFICIAL",
+        "reason": "네 해의 정확한 좌표 및 BC와 AD의 길이를 삼각형 면적 계산에 연결한다.",
+        "capability": "trigonometric-spike-v1",
+        "plan": "q15-solution.followup.plan.json",
+        "lint": {"shallow": "OK", "full": "OK"},
+        "drawnFeatureParity": "PASS",
+        "checks": [
+          "x 눈금 2/3,10/3,26/3,34/3 ↔ 원문 네 해; 교점의 y=2",
+          "B→C 수평 거리 16/3, A→D 수평 거리 32/3; BOC 높이 2, S=16/3",
+          "BC 실선, AD 점선, BOC fill=NONE; 해설만 정량 정보 표기"
+        ]
+      }
+    },
+    {
+      "qid": 16,
+      "problem": {"verdict": "EXEMPT", "reason": "Sn=2^(n+2)−4와 로그합을 푸는 지수 법칙 문항으로 그림을 요구하는 개형 조건이 없다."},
+      "solution": {"verdict": "EXEMPT", "reason": "ak=2^(k+1), log2(ak/2)=k의 항별 소거가 풀이 자체다."}
+    },
+    {
+      "qid": 17,
+      "problem": {"verdict": "EXEMPT", "reason": "교점 개수 f(n)를 묻는 문제에서 봉우리와 교점을 수치까지 그리면 판단 과정을 미리 보여 준다."},
+      "solution": {
+        "verdict": "BENEFICIAL",
+        "reason": "절댓값 사인의 반복 봉우리와 기울어진 직선이 만나서 4n이 되는 관계를 보여 준다.",
+        "capability": "trigonometric-spike-v1",
+        "plan": "q17-solution.followup.plan.json",
+        "lint": {"shallow": "OK", "full": "OK"},
+        "drawnFeatureParity": "PASS",
+        "checks": [
+          "y=3|sin2x| → 절댓값 SIN A=3, k=2, 0≤x≤4π에 봉우리 8개",
+          "n=4의 y=3x/(4π), 원점 포함 교점 16개 ↔ f(4)=16",
+          "n=4를 대표 사례라고 명시하고 일반식 f(n)=4n은 해설 캡션에만 둠"
+        ]
+      }
+    },
+    {
+      "qid": 18,
+      "problem": {
+        "verdict": "REQUIRED",
+        "reason": "AC 위의 움직이는 P, Q/R 수선의 발 및 QR을 한 그림에서 위치 관계로 이해해야 한다.",
+        "capability": "construction-spike-v1",
+        "plan": "q18-problem.followup.plan.json",
+        "lint": {"shallow": "OK", "full": "OK"},
+        "drawnFeatureParity": "PASS",
+        "checks": [
+          "B=(0,0), A=(8,0), BC=15, ∠ABC=60° ↔ 발문 변·각",
+          "P=AC 중점은 임의 위치의 대표 사례이고, Q=foot(P,BA), R=foot(P,BC) ↔ 두 수선",
+          "두 직각표식 Q,R, PQ·PR 점선, QR 강조; 최적 P·AC=13·QR 최소 수치는 문제 그림에 없음"
+        ]
+      },
+      "solution": {
+        "verdict": "BENEFICIAL",
+        "reason": "B,Q,P,R의 공원성과 BP 최소 위치를 보조원·직각 표식으로 보여 주어 QR=BP sin B를 설명한다.",
+        "capability": "construction-spike-v1",
+        "plan": "q18-solution.followup.plan.json",
+        "lint": {"shallow": "OK", "full": "OK"},
+        "drawnFeatureParity": "PASS",
+        "checks": [
+          "AB=8, BC=15, ∠B=60° ↔ cos법칙 AC=13, 세 선분 및 각호와 치수 라벨",
+          "P=foot(B,AC), Q=foot(P,BA), R=foot(P,BC); Q,R,P의 직각과 BP 점선",
+          "M=midpoint(B,P), cBP=center M through B → B,Q,P,R 공원, BP 지름 ↔ 해설 원주각 관계",
+          "BP=60√3/13이고 QR=BP·√3/2=90/13 ↔ QR 라벨과 캡션"
+        ]
+      }
+    },
+    {
+      "qid": 19,
+      "problem": {"verdict": "EXEMPT", "reason": "절댓값이 배로 증가하는 여섯 항의 부호 선택은 수치·부분집합 계산 문항이다."},
+      "solution": {"verdict": "EXEMPT", "reason": "63−2T=29, T=17=1+16이라는 유일한 부호 조합이 이미 해설에서 완결된다."}
+    },
+    {
+      "qid": 20,
+      "problem": {"verdict": "EXEMPT", "reason": "수학적 귀납법 증명의 (가)/(나) 대수식 빈칸을 채우는 문항이며 도형 정보가 전혀 없다."},
+      "solution": {"verdict": "EXEMPT", "reason": "f(m)=4m/(m+1), g(m)=m(m+2)의 정리만 필요하다."}
+    },
+    {
+      "qid": 21,
+      "problem": {"verdict": "EXEMPT", "reason": "Sn의 최댓값이 나오는 자연수 n을 묻는 이산 수열 합 문제로 연속 포물선 스케치가 필수 조건이 아니다."},
+      "solution": {"verdict": "EXEMPT", "reason": "Sn=36−(n−6)²로 완전제곱식 자체가 최댓값 36과 n=6을 증명한다."}
+    },
+    {
+      "qid": 22,
+      "problem": {"verdict": "EXEMPT", "reason": "삼각함수 부등식의 해구간을 직접 묻기 때문에 그래프에 교점·경계선을 먼저 주면 풀이를 드러낸다."},
+      "solution": {
+        "verdict": "BENEFICIAL",
+        "reason": "sin x≥1/2의 두 구간과 sin x=−1의 한 고립점을 한 주기보다 넓은 창에서 구별한다.",
+        "capability": "trigonometric-spike-v1",
+        "plan": "q22-solution.followup.plan.json",
+        "lint": {"shallow": "OK", "full": "OK"},
+        "drawnFeatureParity": "PASS",
+        "checks": [
+          "−2cos²(π+x)+cos(π/2−x)+1≥0 ↔ (2sinx−1)(sinx+1)≥0, SIN A=1,k=1,C=0",
+          "닫힌 [0,3π]에서 y=1/2 교점 4개(π/6,5π/6,13π/6,17π/6)",
+          "y=−1 접점 하나 x=3π/2; 각 값은 x축 π 눈금, 두 참조 수평선은 y=1/2,−1"
+        ]
+      }
+    },
+    {
+      "qid": 23,
+      "problem": {"verdict": "EXEMPT", "reason": "sin² A+3sin² B=4sin² C의 제약을 a²+3b²=4c²로 바꾸는 대수적 최적화이며 고정된 삼각형은 없다."},
+      "solution": {"verdict": "EXEMPT", "reason": "cos C=(3a/b+b/a)/8에 대한 AM-GM 등호 조건으로 최솟값을 확정하며 한 삼각형 스케치가 이를 대신하지 못한다."}
+    },
+    {
+      "qid": 24,
+      "problem": {"verdict": "EXEMPT", "reason": "분수 점화식의 귀납법 증명을 요구하며 도형이나 그래프 문맥이 없다."},
+      "solution": {"verdict": "EXEMPT", "reason": "a(k+1)=2−1/(2k+1)의 통분과 약분이 핵심이고 시각 도식은 중복이다."}
+    }
+  ],
+  "totals": {
+    "questionsReviewed": 24,
+    "problem": {"REQUIRED": 2, "BENEFICIAL": 0, "EXEMPT": 22},
+    "solution": {"REQUIRED": 0, "BENEFICIAL": 8, "EXEMPT": 16},
+    "executablePlans": 10,
+    "shallowLintOk": 10,
+    "fullLintOk": 10,
+    "drawnFeatureParityPass": 10,
+    "engineCapabilityPending": 0
+  }
+}

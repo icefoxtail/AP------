@@ -1,0 +1,22 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "TAN",
+    "coefficients": ["1", "2", "3"],
+    "phasePi": "-1/2",
+    "sourceDomain": {"kind": "ALL_REALS_WITH_TAN_POLES"},
+    "domain": [0.1, 1.5],
+    "viewport": [-0.2, 1.8, -12, 12],
+    "axisTickPi": true,
+    "axisTickValues": {"x": ["1/4"], "y": ["3"]},
+    "displaySize": "full"
+  },
+  "caption": "y=tan(2x-π/2)+3의 한 가지: x=0 및 x=π/2는 점근선이고 (π/4,3)을 지난다.",
+  "accessibilityDescription": "두 수직 점근선 x=0, x=π/2 사이에서 증가하는 탄젠트 곡선과 중앙의 높이 3을 보인다.",
+  "sourceConditions": [
+    {"id": "sc1", "condition": "y=tan(2x-π/2)+3", "mappedTo": "graphPlan.function,graphPlan.coefficients,graphPlan.phasePi"},
+    {"id": "sc2", "condition": "보기의 점근선·주기·지나는 점을 검증한다", "mappedTo": "graphPlan.axisTickValues"}
+  ],
+  "newVisualInformation": ["실제 점근선의 위치와 x=π/4에서의 함수값 3", "같은 형태가 π/2마다 반복됨"]
+}

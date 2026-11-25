@@ -1,0 +1,33 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "SIN",
+    "ratePi": "1/4",
+    "coefficients": ["4", "0"],
+    "phasePi": "0",
+    "sourceDomain": {"kind": "INTERVAL", "range": ["0", "12"], "states": ["CLOSED", "OPEN"]},
+    "referenceLines": [{"id": "h2", "y": "2", "intersectionCount": 4, "color": "WARM"}],
+    "axisTickValues": {"x": ["2/3", "10/3", "26/3", "34/3"], "y": ["2", "4"]},
+    "overlays": {
+      "points": [
+        {"id": "A", "curveX": "2/3"},
+        {"id": "B", "curveX": "10/3"},
+        {"id": "C", "curveX": "26/3"},
+        {"id": "D", "curveX": "34/3"},
+        {"id": "O", "x": "0", "y": "0"}
+      ],
+      "polygons": [{"id": "BOC", "points": ["B", "O", "C"], "fill": "NONE"}],
+      "segments": [{"id": "BC", "from": "B", "to": "C"}, {"id": "AD", "from": "A", "to": "D", "dashed": true}]
+    },
+    "displaySize": "full"
+  },
+  "pointNames": {"A": "A", "B": "B", "C": "C", "D": "D", "O": "O"},
+  "caption": "A,B,C,D의 x좌표는 2/3, 10/3, 26/3, 34/3이다. BC=16/3, AD=32/3, BOC 넓이=16/3.",
+  "accessibilityDescription": "y=2와 만나는 네 교점의 x눈금을 읽고, 삼각형 BOC의 밑변 BC와 선분 AD를 비교한다.",
+  "sourceConditions": [
+    {"id": "sc1", "condition": "sin(πx/4)=1/2의 네 해 2/3,10/3,26/3,34/3", "mappedTo": "graphPlan.axisTickValues.x,graphPlan.overlays.points"},
+    {"id": "sc2", "condition": "S=BC×2/2, l=AD", "mappedTo": "graphPlan.overlays.polygons,graphPlan.overlays.segments"}
+  ],
+  "newVisualInformation": ["네 교점의 정확한 가로 눈금", "밑변 BC·높이 2인 삼각형과 선분 AD 길이 관계"]
+}

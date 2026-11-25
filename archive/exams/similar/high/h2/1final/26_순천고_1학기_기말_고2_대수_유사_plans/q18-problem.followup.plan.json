@@ -1,0 +1,44 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {"recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false},
+    "nodes": [
+      {"id": "B", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "integer", "value": "0"}, {"kind": "integer", "value": "0"}]}, "outputType": "POINT", "factRole": "GIVEN"},
+      {"id": "A", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "integer", "value": "8"}, {"kind": "integer", "value": "0"}]}, "outputType": "POINT", "factRole": "GIVEN"},
+      {"id": "C", "op": "POLAR_POINT", "inputs": ["B", "A"], "args": {"length": {"kind": "integer", "value": "15"}, "angleDeg": {"kind": "integer", "value": "60"}, "turn": "CCW"}, "outputType": "POINT", "factRole": "GIVEN"},
+      {"id": "P", "op": "MIDPOINT", "inputs": ["A", "C"], "args": {}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE"},
+      {"id": "lBA", "op": "LINE_THROUGH", "inputs": ["B", "A"], "args": {}, "outputType": "LINE", "factRole": "DERIVED_INTERMEDIATE"},
+      {"id": "lBC", "op": "LINE_THROUGH", "inputs": ["B", "C"], "args": {}, "outputType": "LINE", "factRole": "DERIVED_INTERMEDIATE"},
+      {"id": "Q", "op": "PERPENDICULAR_FOOT", "inputs": ["P", "lBA"], "args": {}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE"},
+      {"id": "R", "op": "PERPENDICULAR_FOOT", "inputs": ["P", "lBC"], "args": {}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "displayPoints": ["A", "B", "C", "P", "Q", "R"],
+  "displaySegments": [
+    {"id": "sAB", "refs": ["A", "B"]},
+    {"id": "sBC", "refs": ["B", "C"]},
+    {"id": "sAC", "refs": ["A", "C"]},
+    {"id": "sPQ", "refs": ["P", "Q"], "dashed": true},
+    {"id": "sPR", "refs": ["P", "R"], "dashed": true},
+    {"id": "sQR", "refs": ["Q", "R"], "emphasis": "BOLD"}
+  ],
+  "rightAngles": [{"id": "raQ", "refs": ["B", "Q", "P"]}, {"id": "raR", "refs": ["B", "R", "P"]}],
+  "planeMarks": {
+    "angles": [{"id": "angB", "refs": ["A", "B", "C"], "value": 60, "label": "60", "arcs": 1, "style": "ARC", "factRole": "GIVEN"}],
+    "expressionLabels": [
+      {"id": "labAB", "ownerSegment": "sAB", "text": "8"},
+      {"id": "labBC", "ownerSegment": "sBC", "text": "15"}
+    ]
+  },
+  "axisTickValues": {"x": [], "y": []},
+  "coordinateCanvas": {"width": 600, "height": 500},
+  "caption": "P가 AC 위에 있는 한 가지 예시(중점으로 배치)에서 PQ⊥AB, PR⊥BC를 그리고 QR을 강조했다. 최솟값 위치는 표시하지 않는다.",
+  "accessibilityDescription": "AB 길이 8, BC 길이 15, 각 B 60도인 삼각형에 AC 위의 P와 두 수선의 발 Q,R 및 선분 QR을 보인다.",
+  "sourceConditions": [
+    {"id": "sc1", "condition": "AB=8, BC=15, ∠ABC=60°", "mappedTo": ["sAB", "sBC", "labAB", "labBC", "angB"]},
+    {"id": "sc2", "condition": "P는 AC 위 임의의 점; 이 도식은 중점인 대표 사례이며 최솟값 위치 아님", "mappedTo": ["P", "sAC"]},
+    {"id": "sc3", "condition": "PQ⊥AB, PR⊥BC, 구하는 것은 QR의 최솟값", "mappedTo": ["sPQ", "sPR", "raQ", "raR", "sQR"]}
+  ],
+  "newVisualInformation": ["P에서 두 변 방향으로 내린 서로 다른 수선과 직각 두 개", "길이를 최소화하는 대상으로서의 QR 선분"]
+}

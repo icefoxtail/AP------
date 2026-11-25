@@ -1,0 +1,25 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "SIN",
+    "coefficients": ["1", "1", "0"],
+    "phasePi": "0",
+    "sourceDomain": {"kind": "INTERVAL_PI", "rangePi": ["0", "3"], "states": ["CLOSED", "CLOSED"]},
+    "referenceLines": [
+      {"id": "half", "y": "1/2", "intersectionCount": 4, "color": "BLUE"},
+      {"id": "minusOne", "y": "-1", "intersectionCount": 1, "color": "WARM"}
+    ],
+    "axisTickPi": true,
+    "axisTickValues": {"x": ["1/6", "5/6", "3/2", "13/6", "17/6"], "y": ["-1", "1/2", "1"]},
+    "displaySize": "full"
+  },
+  "caption": "(2sin x−1)(sin x+1)≥0은 sin x≥1/2 또는 sin x=−1이다. 경계각과 −1에 접하는 점을 비교한다.",
+  "accessibilityDescription": "0부터 3π까지 사인곡선과 y=1/2, y=-1 직선을 함께 보여 주며 두 구간과 고립해 한 점을 구분한다.",
+  "sourceConditions": [
+    {"id": "sc1", "condition": "-2cos²(π+x)+cos(π/2-x)+1≥0 ⇔ (2sinx-1)(sinx+1)≥0", "mappedTo": "graphPlan.function,graphPlan.coefficients"},
+    {"id": "sc2", "condition": "sinx≥1/2 또는 sinx=-1, 0≤x≤3π", "mappedTo": "graphPlan.referenceLines,graphPlan.sourceDomain"},
+    {"id": "sc3", "condition": "경계각 π/6,5π/6,3π/2,13π/6,17π/6", "mappedTo": "graphPlan.axisTickValues.x"}
+  ],
+  "newVisualInformation": ["sinx≥1/2인 두 닫힌 구간", "sinx=-1인 고립해 x=3π/2"]
+}

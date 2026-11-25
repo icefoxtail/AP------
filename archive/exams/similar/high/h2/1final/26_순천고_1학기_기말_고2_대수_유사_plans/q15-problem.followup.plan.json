@@ -1,0 +1,34 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "SIN",
+    "ratePi": "1/4",
+    "coefficients": ["4", "0"],
+    "phasePi": "0",
+    "sourceDomain": {"kind": "INTERVAL", "range": ["0", "12"], "states": ["CLOSED", "OPEN"]},
+    "referenceLines": [{"id": "h2", "y": "2", "intersectionCount": 4, "color": "WARM"}],
+    "axisTickValues": {"x": [], "y": ["2", "4"]},
+    "overlays": {
+      "points": [
+        {"id": "A", "curveX": "2/3"},
+        {"id": "B", "curveX": "10/3"},
+        {"id": "C", "curveX": "26/3"},
+        {"id": "D", "curveX": "34/3"},
+        {"id": "O", "x": "0", "y": "0"}
+      ],
+      "polygons": [{"id": "BOC", "points": ["B", "O", "C"], "fill": "NONE"}],
+      "segments": [{"id": "AD", "from": "A", "to": "D", "dashed": true}]
+    },
+    "displaySize": "full"
+  },
+  "pointNames": {"A": "A", "B": "B", "C": "C", "D": "D", "O": "O"},
+  "caption": "0≤x<12에서 사인 곡선과 y=2의 교점을 왼쪽부터 A,B,C,D라 한다. BOC와 AD만 표시하고 교점의 x값은 쓰지 않았다.",
+  "accessibilityDescription": "사인곡선과 높이 2의 직선이 네 번 만나며, BOC 삼각형과 A에서 D까지의 선분이 그려져 있다. 구하는 교점 좌표와 길이는 적지 않았다.",
+  "sourceConditions": [
+    {"id": "sc1", "condition": "0≤x<12, y=4sin(πx/4)", "mappedTo": "graphPlan.ratePi,graphPlan.coefficients,graphPlan.sourceDomain"},
+    {"id": "sc2", "condition": "y=2와 만나는 네 점 A,B,C,D의 x 순서", "mappedTo": "graphPlan.referenceLines,graphPlan.overlays.points"},
+    {"id": "sc3", "condition": "O는 원점이며 BOC의 넓이 S와 AD 길이 l을 묻는다", "mappedTo": "graphPlan.overlays.polygons,graphPlan.overlays.segments"}
+  ],
+  "newVisualInformation": ["y=2와 만나는 네 점의 상대적인 순서", "원점을 포함하는 삼각형 BOC와 선분 AD의 구조"]
+}

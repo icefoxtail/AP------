@@ -1,0 +1,55 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {"recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false},
+    "nodes": [
+      {"id": "B", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "integer", "value": "0"}, {"kind": "integer", "value": "0"}]}, "outputType": "POINT", "factRole": "GIVEN"},
+      {"id": "A", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "integer", "value": "8"}, {"kind": "integer", "value": "0"}]}, "outputType": "POINT", "factRole": "GIVEN"},
+      {"id": "C", "op": "POLAR_POINT", "inputs": ["B", "A"], "args": {"length": {"kind": "integer", "value": "15"}, "angleDeg": {"kind": "integer", "value": "60"}, "turn": "CCW"}, "outputType": "POINT", "factRole": "GIVEN"},
+      {"id": "lAC", "op": "LINE_THROUGH", "inputs": ["A", "C"], "args": {}, "outputType": "LINE", "factRole": "DERIVED_INTERMEDIATE"},
+      {"id": "P", "op": "PERPENDICULAR_FOOT", "inputs": ["B", "lAC"], "args": {}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE"},
+      {"id": "lBA", "op": "LINE_THROUGH", "inputs": ["B", "A"], "args": {}, "outputType": "LINE", "factRole": "DERIVED_INTERMEDIATE"},
+      {"id": "lBC", "op": "LINE_THROUGH", "inputs": ["B", "C"], "args": {}, "outputType": "LINE", "factRole": "DERIVED_INTERMEDIATE"},
+      {"id": "Q", "op": "PERPENDICULAR_FOOT", "inputs": ["P", "lBA"], "args": {}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE"},
+      {"id": "R", "op": "PERPENDICULAR_FOOT", "inputs": ["P", "lBC"], "args": {}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE"},
+      {"id": "M", "op": "MIDPOINT", "inputs": ["B", "P"], "args": {}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE"},
+      {"id": "cBP", "op": "CIRCLE_THROUGH_POINT", "inputs": ["M", "B"], "args": {}, "outputType": "CIRCLE", "factRole": "DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "displayPoints": ["A", "B", "C", "P", "Q", "R"],
+  "displayCircles": ["cBP"],
+  "displaySegments": [
+    {"id": "sAB", "refs": ["A", "B"]},
+    {"id": "sBC", "refs": ["B", "C"]},
+    {"id": "sAC", "refs": ["A", "C"]},
+    {"id": "sBP", "refs": ["B", "P"], "dashed": true},
+    {"id": "sPQ", "refs": ["P", "Q"], "dashed": true},
+    {"id": "sPR", "refs": ["P", "R"], "dashed": true},
+    {"id": "sQR", "refs": ["Q", "R"], "emphasis": "BOLD"}
+  ],
+  "rightAngles": [
+    {"id": "raQ", "refs": ["B", "Q", "P"]},
+    {"id": "raR", "refs": ["B", "R", "P"]},
+    {"id": "raP", "refs": ["B", "P", "A"]}
+  ],
+  "planeMarks": {
+    "angles": [{"id": "angB", "refs": ["A", "B", "C"], "value": 60, "label": "60", "arcs": 1, "style": "ARC", "factRole": "GIVEN"}],
+    "expressionLabels": [
+      {"id": "labAB", "ownerSegment": "sAB", "text": "8"},
+      {"id": "labBC", "ownerSegment": "sBC", "text": "15"},
+      {"id": "labAC", "ownerSegment": "sAC", "text": "13"},
+      {"id": "labQR", "ownerSegment": "sQR", "text": "90/13"}
+    ]
+  },
+  "axisTickValues": {"x": [], "y": []},
+  "coordinateCanvas": {"width": 670, "height": 540},
+  "caption": "최소인 경우 P는 B에서 AC에 내린 수선의 발이다. BP=60√3/13, QR=BP sin60°=90/13.",
+  "accessibilityDescription": "ABC에서 B에서 AC로 내린 수선 BP가 최단 거리이고, P에서 두 변에 내린 수선의 발 Q,R을 이어 QR의 최솟값을 표시한 그림이다.",
+  "sourceConditions": [
+    {"id": "sc1", "condition": "AB=8, BC=15, B=60°, 코사인법칙으로 AC=13", "mappedTo": ["sAB", "sBC", "sAC", "angB", "labAB", "labBC", "labAC"]},
+    {"id": "sc2", "condition": "P는 B에서 AC에 내린 수선의 발일 때 BP 최소", "mappedTo": ["P", "sBP", "raP"]},
+    {"id": "sc3", "condition": "PQ⊥AB, PR⊥BC, BQPR은 BP를 지름으로 하는 원 위의 점이며 QR=BP sin60°=90/13", "mappedTo": ["sPQ", "sPR", "raQ", "raR", "cBP", "sQR", "labQR"]}
+  ],
+  "newVisualInformation": ["BP가 AC에 수직인 최단 거리임을 직각 표식으로 표현", "B,Q,P,R을 지나는 지름 BP의 원으로 원주각 관계 표현", "두 수선의 발 Q,R과 QR의 최솟값을 직접 연결"]
+}
