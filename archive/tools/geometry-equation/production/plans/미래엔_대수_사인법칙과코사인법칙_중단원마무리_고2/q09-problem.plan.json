@@ -1,0 +1,27 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{
+    "schemaVersion":"construction-spike-v1",
+    "realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes":[
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"5"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"A","op":"POLAR_POINT","inputs":["C","B"],"args":{"length":{"kind":"integer","value":"3"},"angleDeg":{"kind":"integer","value":"120"},"turn":"CCW"},"outputType":"POINT","factRole":"GIVEN"}
+    ]
+  },
+  "displayPoints":["A","B","C"],
+  "displaySegments":[{"id":"sBC","refs":["B","C"]},{"id":"sCA","refs":["C","A"]},{"id":"sAB","refs":["A","B"]}],
+  "planeMarks":{
+    "angles":[{"id":"angC","refs":["B","C","A"],"value":120,"label":"120","arcs":1,"style":"ARC","factRole":"GIVEN"}],
+    "expressionLabels":[{"id":"lenA","ownerSegment":"sBC","text":"5"},{"id":"lenB","ownerSegment":"sCA","text":"3"}]
+  },
+  "coordinateCanvas":{"width":500,"height":390},
+  "sourceQuote":"$a=5,\\, b=3,\\, C=120^\\circ$",
+  "caption":"삼각형 ABC에서 변 BC의 길이는 5, 변 CA의 길이는 3, 그 사이 각 C는 120°이고 맞은편 변 AB는 아직 구하지 않았다.",
+  "accessibilityDescription":"C에서 120°인 둔각이 표시되고 BC에 길이 5, CA에 길이 3이 붙은 삼각형이다. 문제에서 구할 외접원의 반지름과 미지 변 AB 길이는 표시하지 않았다.",
+  "sourceConditions":[
+    {"id":"T09-a","condition":"a=BC=5, b=CA=3","mappedTo":"mathPlan.nodes[B,C,A], planeMarks.expressionLabels[lenA,lenB]"},
+    {"id":"T09-b","condition":"∠BCA=120°","mappedTo":"mathPlan.nodes[A], planeMarks.angles[angC]"}
+  ],
+  "newVisualInformation":["주어진 두 변 사이가 둔각이고, 구해야 하는 변이 그 둔각의 맞은편임을 보여 준다."]
+}

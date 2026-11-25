@@ -1,0 +1,31 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{
+    "schemaVersion":"construction-spike-v1",
+    "realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes":[
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"5"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"A","op":"POLAR_POINT","inputs":["C","B"],"args":{"length":{"kind":"integer","value":"3"},"angleDeg":{"kind":"integer","value":"120"},"turn":"CCW"},"outputType":"POINT","factRole":"GIVEN"}
+    ]
+  },
+  "displayPoints":["A","B","C"],
+  "displaySegments":[{"id":"sBC","refs":["B","C"]},{"id":"sCA","refs":["C","A"]},{"id":"sAB","refs":["A","B"]}],
+  "planeMarks":{
+    "angles":[{"id":"angC","refs":["B","C","A"],"value":120,"label":"120","arcs":1,"style":"ARC","factRole":"GIVEN"}],
+    "expressionLabels":[
+      {"id":"lenA","ownerSegment":"sBC","text":"5"},
+      {"id":"lenB","ownerSegment":"sCA","text":"3"},
+      {"id":"lenC","ownerSegment":"sAB","text":"7","factRole":"CONCLUSION"}
+    ]
+  },
+  "coordinateCanvas":{"width":500,"height":390},
+  "sourceQuote":"먼저 코사인법칙으로 변 $c$의 길이를 구한다.",
+  "caption":"코사인법칙으로 AB=7을 먼저 구한 뒤, 이 변이 120°의 대변임을 이용해 사인법칙 7/sin120°=2R을 적용한다.",
+  "accessibilityDescription":"문제의 삼각형에서 BC의 5, CA의 3, C의 120°가 그대로 보이고, 대변 AB에 해설에서 얻은 길이 7을 추가하였다.",
+  "sourceConditions":[
+    {"id":"T09-a","condition":"BC=5, CA=3, ∠C=120°","mappedTo":"mathPlan.nodes, planeMarks.angles[angC], planeMarks.expressionLabels[lenA,lenB]"},
+    {"id":"T09-b","condition":"c²=25+9−30cos120°=49, c=7","mappedTo":"planeMarks.expressionLabels[lenC], actual mathPlan geometry distance AB=7"}
+  ],
+  "newVisualInformation":["코사인법칙으로 얻은 길이 7과 사인법칙에 쓸 맞은편 각 120°를 하나의 그림에 잇는다."]
+}

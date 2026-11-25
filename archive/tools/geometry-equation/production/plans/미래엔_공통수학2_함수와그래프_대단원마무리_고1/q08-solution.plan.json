@@ -1,0 +1,23 @@
+{
+  "capability":"set-diagram-figure-v1",
+  "diagram":{
+    "kind":"MAPPING",
+    "columns":[{"id":"X","elements":["1","2","3","4","5"]},{"id":"X2","name":"X","elements":["1","2","3","4","5"]}],
+    "arrows":[
+      {"from":{"column":0,"element":0},"to":{"column":1,"element":2}},
+      {"from":{"column":0,"element":1},"to":{"column":1,"element":3}},
+      {"from":{"column":0,"element":2},"to":{"column":1,"element":1}},
+      {"from":{"column":0,"element":3},"to":{"column":1,"element":4}},
+      {"from":{"column":0,"element":4},"to":{"column":1,"element":0}}
+    ],
+    "arrowGroups":[{"name":"f","from":"X","to":"X2","color":"BLUE"}]
+  },
+  "caption":"f(1)=3, f(2)=4, f(3)=2, f(5)=1이므로 남은 f(4)=5다. f⁻¹(2)=3, f(f(4))=1이어서 합은 4다.",
+  "accessibilityDescription":"왼쪽 X의 1,2,3,4,5는 오른쪽 X의 3,4,2,5,1로 순서대로 향하고, 출력값은 다섯 원소가 서로 겹치지 않는다.",
+  "sourceConditions":[
+    {"id":"F08-a","condition":"X={1,2,3,4,5}, 역함수 존재(일대일대응)","mappedTo":"diagram.columns, diagram.arrows"},
+    {"id":"F08-b","condition":"f(2)=4, f⁻¹(3)=1이므로 f(1)=3, f(5)=1, f(f(1))=2이므로 f(3)=2","mappedTo":"diagram.arrows[0,1,2,4]"},
+    {"id":"F08-c","condition":"남은 치역 5는 f(4)=5","mappedTo":"diagram.arrows[3]"}
+  ],
+  "newVisualInformation":["일대일대응이므로 유일하게 남은 4→5 화살표가 강제된다는 점을 보여 준다."]
+}
