@@ -2,6 +2,11 @@
   "capability": "number-line-figure-v1",
   "caption": "이차식의 교점 조건에서 도출한 세 k값 -2, 2, 6과 이웃한 값 사이 거리 4를 수직선에 표시",
   "accessibilityDescription": "수직선에 -2, 2, 6의 세 점을 표시한 해설 그림. 이웃한 점 사이의 거리는 각각 4이다.",
+  "sourceConditions": [
+    {"id":"final-k-values","condition":"따라서 $k=2,-2,6$이다.","mappedTo":"CURRENT_SOLUTION"},
+    {"id":"extrema","condition":"$6-(-2)=8$","mappedTo":"CURRENT_SOLUTION"}
+  ],
+  "newVisualInformation": ["k=-2, 2, 6 세 값과 최댓값-최솟값의 수직선상 거리를 한눈에 비교한다."],
   "numberLine": {
     "variable": "k",
     "rows": [{"kind": "POINTS", "label": "가능한 k", "band": false,

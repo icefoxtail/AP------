@@ -1,0 +1,668 @@
+{
+  "schemaVersion": "gpt-finalqa-evidence-v1",
+  "examUid": "26_금당고_1학기_중간_고2_대수_유사2",
+  "sourcePath": "archive/exams/similar/high/h2/1mid/26_금당고_1학기_중간_고2_대수_유사2.js",
+  "blindPackDigest": "c0cbe019cd4b5babff13723a16e9195a95c4ab72881e0bd2c8bd3e621a69bfb0",
+  "reviewer": {
+    "id": "GPT independent FIRST_FORMAL post-merge reviewer 2026-11-26 KST",
+    "blindFirstPass": "CONFIRMED",
+    "independentEvidence": "Official answer-free --blind-pack: all 21 calculations and choices frozen at SHA-256 395af0f31e61edffc8b352412a64d0324895cd8a3a44dd87ea73f935d460ea6b before source answers/solutions/metadata were opened; 21 current small-blackboard solutions and 42 axes independently checked; Q14, Q17 corrected and rechecked.",
+    "blindArtifactRef": "scratch:/workspace/scratch/17915ca620e5/qa-geumdang-h2-blind-20261126.json#sha256=395af0f31e61edffc8b352412a64d0324895cd8a3a44dd87ea73f935d460ea6b"
+  },
+  "questions": [
+    {
+      "qid": 1,
+      "sourceFingerprint": "8ee02647850a5367a01671793c08fece8b152b3b2d4f499812f93154dd5cd194",
+      "blindAnswer": "①",
+      "blindReasoning": "(cube root(a^9 b^3))^2 = a^6 b^2; divided by a^4 b gives a^2 b.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "reviewNotes": {
+        "answerAndDistractors": "① only agrees with the independently solved value ① a^2 b; the other 4 distinct distractors each disagree; the official choice-order/distribution gate reported no defects.",
+        "solution": "Independently worked result ① a^2 b compared step-by-step with current small-blackboard solution; expressions, branches and domain checked.",
+        "curriculumAndMeta": "2022 대수 지수와 로그/H22-A-01-EXPONENT_LOG, difficulty 1, ACTIVE PT 지수법칙, child TPL 지수식 계산, curriculum binding ACTIVE, RPM 지수식 계산; 4-slot method 거듭제곱근·지수법칙; creator candidate was checked independently."
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "양수 a,b의 거듭제곱근과 분수식만으로 정보가 완결되며 공간적 대상이 없다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "a^3b→a^6b²→a²b의 지수 차감을 수식에서 바로 확인한다. 도식은 중복이다."
+        }
+      }
+    },
+    {
+      "qid": 2,
+      "sourceFingerprint": "82cf93d14e4b2c218b48f737a852608da4e6efd51bfa98c1218bd62f2e9fd418",
+      "blindAnswer": "③",
+      "blindReasoning": "log_4(40/5)=3/2; 1/log_8(4)=log_4(8)=3/2, hence log_4 k=3 and k=64.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "reviewNotes": {
+        "answerAndDistractors": "③ only agrees with the independently solved value ③ 64; the other 4 distinct distractors each disagree; the official choice-order/distribution gate reported no defects.",
+        "solution": "Independently worked result ③ 64 compared step-by-step with current small-blackboard solution; expressions, branches and domain checked.",
+        "curriculumAndMeta": "2022 대수 지수와 로그/H22-A-01-EXPONENT_LOG, difficulty 1, ACTIVE PT 로그의 성질, child TPL 밑의 변환, curriculum binding ACTIVE, RPM 밑의 변환; 4-slot method 밑변환·로그; creator candidate was checked independently."
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "두 로그와 밑변환이 대수식으로 주어져 그래프나 그림이 해석 조건이 아니다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "log₄8을 두 번 더해 log₄64를 얻는 전개 자체가 충분한 해설이다."
+        }
+      }
+    },
+    {
+      "qid": 3,
+      "sourceFingerprint": "08ed44703f06e1f16ed92cdf9c07ee944b822282bbf7d472d658e4f08ef82049",
+      "blindAnswer": "④",
+      "blindReasoning": "f^{-1}(1/16)=2 gives c^2=1/16, c positive and less than 1.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "reviewNotes": {
+        "answerAndDistractors": "④ only agrees with the independently solved value ④ 1/4; the other 4 distinct distractors each disagree; the official choice-order/distribution gate reported no defects.",
+        "solution": "Independently worked result ④ 1/4 compared step-by-step with current small-blackboard solution; expressions, branches and domain checked.",
+        "curriculumAndMeta": "2022 대수 지수함수/H22-A-02-EXPONENTIAL_FUNCTION, difficulty 1, ACTIVE PT 지수방정식, child TPL 밑 통일, curriculum binding ACTIVE, RPM 밑 통일; 4-slot method 역함수·지수법칙·밑; creator candidate was checked independently."
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "지수함수 역함수의 입력과 출력이 수치로 고정되어 곡선의 위치가 필요 없다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "f(2)=1/16에서 c²=1/16, 0<c<1로 양근을 선택한다. 그래프를 추가할 정보가 없다."
+        }
+      }
+    },
+    {
+      "qid": 4,
+      "sourceFingerprint": "6cbc801bce3bfe2ecc40f1a5e35b0972761a07c52a5b73e2b4fadc04cd119796",
+      "blindAnswer": "①",
+      "blindReasoning": "-11pi/6 +2pi=pi/6; cos(pi/6)=sqrt(3)/2.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "reviewNotes": {
+        "answerAndDistractors": "① only agrees with the independently solved value ① sqrt(3)/2; the other 4 distinct distractors each disagree; the official choice-order/distribution gate reported no defects.",
+        "solution": "Independently worked result ① sqrt(3)/2 compared step-by-step with current small-blackboard solution; expressions, branches and domain checked.",
+        "curriculumAndMeta": "2022 대수 삼각함수/H22-A-04-TRIGONOMETRIC_BASIC, difficulty 1, ACTIVE PT 삼각함수의 뜻, child TPL 삼각함수 값, curriculum binding ACTIVE, RPM 삼각함수 값; 4-slot method 일반각·주기·단위원; creator candidate was checked independently."
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "-11π/6을 2π로 환산해 π/6을 얻는 일반각 계산이 전부다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "π/6이 제1사분면이고 cos값이 √3/2임을 수식으로 명시한다. 동경 그림은 중복이다."
+        }
+      }
+    },
+    {
+      "qid": 5,
+      "sourceFingerprint": "879a4ccba90895521cfc78cd99ef8437854d12776570aacee3a022396aad31eb",
+      "blindAnswer": "④",
+      "blindReasoning": "sin 3x ranges over [-1,1], so 4-2 sin3x ranges over [2,6].",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "reviewNotes": {
+        "answerAndDistractors": "④ only agrees with the independently solved value ④ [2,6]; the other 4 distinct distractors each disagree; the official choice-order/distribution gate reported no defects.",
+        "solution": "Independently worked result ④ [2,6] compared step-by-step with current small-blackboard solution; expressions, branches and domain checked.",
+        "curriculumAndMeta": "2022 대수 삼각함수/H22-A-04-TRIGONOMETRIC_GRAPH, difficulty 1, ACTIVE PT 그래프 변환, child TPL 주기·진폭, curriculum binding ACTIVE, RPM sin·cos; 4-slot method 사인·부등식의성질·평행이동; creator candidate was checked independently."
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "모든 실수 x에서 sin3x의 범위가 [-1,1]임이 기호로 완결된다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "음수배를 할 때 부등호가 뒤집히는 단계와 끝값 실현을 판서로 설명한다. 그래프가 필수 아니다."
+        }
+      }
+    },
+    {
+      "qid": 6,
+      "sourceFingerprint": "8285d38a871b4eaf6a4ba652962046ab872e541bc3553ce7c644eb749c19f587",
+      "blindAnswer": "③",
+      "blindReasoning": "-1250+3*360=-170, adding one more 360 gives positive 190.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "reviewNotes": {
+        "answerAndDistractors": "③ only agrees with the independently solved value ③ -170 degrees; the other 4 distinct distractors each disagree; the official choice-order/distribution gate reported no defects.",
+        "solution": "Independently worked result ③ -170 degrees compared step-by-step with current small-blackboard solution; expressions, branches and domain checked.",
+        "curriculumAndMeta": "2022 대수 삼각함수/H22-A-04-TRIGONOMETRIC_BASIC, difficulty 1, ACTIVE PT 일반각과 호도법, child TPL 일반각, curriculum binding ACTIVE, RPM 일반각; 4-slot method 일반각·나머지; creator candidate was checked independently."
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "-1250°와 360°의 정수배를 비교하는 수치 문제로 별도 동경이 필요하지 않다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "n=3에서 -170°, n=4에서 +190°임을 바로 비교해 최대 음각을 보인다."
+        }
+      }
+    },
+    {
+      "qid": 7,
+      "sourceFingerprint": "758b45284dfcafd368c3bab0ec874f5c189e1143fab34ff2735f11dd794b004c",
+      "blindAnswer": "⑤",
+      "blindReasoning": "For n=2..9, even n with positive (n-3)(8-n) are 4 and 6. Zero at 3 and 8 yields one root, negative n=2 yields none, odd positive yields one. 4+6=10.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "reviewNotes": {
+        "answerAndDistractors": "⑤ only agrees with the independently solved value ⑤ 10; the other 4 distinct distractors each disagree; the official choice-order/distribution gate reported no defects.",
+        "solution": "Independently worked result ⑤ 10 compared step-by-step with current small-blackboard solution; expressions, branches and domain checked.",
+        "curriculumAndMeta": "2022 대수 지수와 로그/H22-A-01-EXPONENT_LOG, difficulty 3, ACTIVE PT 거듭제곱근, child TPL 실수 조건, curriculum binding ACTIVE, RPM 실수 조건; 4-slot method 거듭제곱근·홀짝·부호·경우분류; creator candidate was checked independently."
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "n=2부터 9까지의 근호 부호·짝홀 조건은 주어진 유한 범위에서 판정 가능하다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "양의 피제곱수와 짝수 지수의 교집합 n=4,6 및 경계 0의 한 근을 명시했다. 표나 도식이 중복된다."
+        }
+      }
+    },
+    {
+      "qid": 8,
+      "sourceFingerprint": "0c5c9f7c7bebc1634252fa86718815277d5014c8fde06300b69cb049594ff4df",
+      "blindAnswer": "②",
+      "blindReasoning": "2^p+3=7 =>p=2; q=2^4+3=19; q-p=17.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "reviewNotes": {
+        "answerAndDistractors": "② only agrees with the independently solved value ② 17; the other 4 distinct distractors each disagree; the official choice-order/distribution gate reported no defects.",
+        "solution": "Independently worked result ② 17 compared step-by-step with current small-blackboard solution; expressions, branches and domain checked.",
+        "curriculumAndMeta": "2022 대수 지수함수/H22-A-02-EXPONENTIAL_FUNCTION, difficulty 3, ACTIVE PT 함수 그래프의 변환, child TPL 함수 그래프의 평행이동, curriculum binding ACTIVE, RPM 평행이동; 4-slot method 평행이동·지수방정식·대입; creator candidate was checked independently."
+      },
+      "plan": {
+        "problem": {
+          "status": "PASS",
+          "planDigest": "3bd6be19cf5527d6bff3864e501268e3c356915b2ebcd92de66e98a617d18c5a",
+          "reasoning": "**보조 그래프 유익**: y=2^x+3의 증가와 y=3 점근선을 보여 주되 P의 미지 x, Q의 미지 y, 차 q-p는 숨긴다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "P에서는 2^p=4, Q에서는 2⁴+3=19를 대입하므로 좌표 계산을 직접 나열한 해설이면 충분하다."
+        }
+      }
+    },
+    {
+      "qid": 9,
+      "sourceFingerprint": "53d188237c3d5937cfb1e531cd7e8fb64645aba60a4fc3269beb29b5f108f48d",
+      "blindAnswer": "⑤",
+      "blindReasoning": "(33-h)/(9-h)=3^2=9 => h=6. Then log_3(9-h)+k=1+k=0 => k=-1; h-k=7.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "reviewNotes": {
+        "answerAndDistractors": "⑤ only agrees with the independently solved value ⑤ 7; the other 4 distinct distractors each disagree; the official choice-order/distribution gate reported no defects.",
+        "solution": "Independently worked result ⑤ 7 compared step-by-step with current small-blackboard solution; expressions, branches and domain checked.",
+        "curriculumAndMeta": "2022 대수 로그함수/H22-A-03-LOGARITHMIC_FUNCTION, difficulty 3, ACTIVE PT 함수 그래프의 변환, child TPL 함수 그래프의 평행이동, curriculum binding ACTIVE, RPM 평행이동; 4-slot method 평행이동·대입·로그·소거; creator candidate was checked independently."
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "주어진 두 점 (9,0),(33,2)가 식을 정하는 정보이고 그래프 판독을 요구하지 않는다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "두 로그를 지수식으로 만든 뒤 차 24=8·3^(-k)를 이용하므로 그래프는 결정 단계에 기여하지 않는다."
+        }
+      }
+    },
+    {
+      "qid": 10,
+      "sourceFingerprint": "1553f0e6913a029a0874e37d6e09130c06c122ea0436a73b90ebc6521859f52a",
+      "blindAnswer": "④",
+      "blindReasoning": "1-2 sin theta cos theta=5/3 => product -1/3; s^4+c^4=1-2(s c)^2=7/9.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "reviewNotes": {
+        "answerAndDistractors": "④ only agrees with the independently solved value ④ 7/9; the other 4 distinct distractors each disagree; the official choice-order/distribution gate reported no defects.",
+        "solution": "Independently worked result ④ 7/9 compared step-by-step with current small-blackboard solution; expressions, branches and domain checked.",
+        "curriculumAndMeta": "2022 대수 삼각함수/H22-A-04-TRIGONOMETRIC_BASIC, difficulty 3, ACTIVE PT 삼각함수의 성질, child TPL 삼각함수 관계, curriculum binding ACTIVE, RPM 삼각함수 관계; 4-slot method 전개·삼각함수의상호관계·대칭식·곱셈공식; creator candidate was checked independently."
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "사인·코사인 두 항의 제곱 관계만 사용하며 공간 도형 정보가 없다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "(s-c)²=1-2sc로 곱 -1/3을 얻고 s⁴+c⁴=1-2s²c²를 적용한다. 그림이 중복된다."
+        }
+      }
+    },
+    {
+      "qid": 11,
+      "sourceFingerprint": "55af375602fe434231401d74cb49d457efe8fc0de4c9348462fc94ae4d697dfe",
+      "blindAnswer": "③",
+      "blindReasoning": "Cosine negative and tangent positive means sine negative, angle lies in quadrant III; 6pi/5 only.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "reviewNotes": {
+        "answerAndDistractors": "③ only agrees with the independently solved value ③ 6pi/5; the other 4 distinct distractors each disagree; the official choice-order/distribution gate reported no defects.",
+        "solution": "Independently worked result ③ 6pi/5 compared step-by-step with current small-blackboard solution; expressions, branches and domain checked.",
+        "curriculumAndMeta": "2022 대수 삼각함수/H22-A-04-TRIGONOMETRIC_BASIC, difficulty 3, ACTIVE PT 삼각함수의 뜻, child TPL 삼각함수 값, curriculum binding ACTIVE, RPM 삼각함수 값; 4-slot method 부호·사분면·경우분류·대소비교; creator candidate was checked independently."
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "cos 음수, tan 양수라는 부호 조건은 제3사분면을 유일하게 지정한다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "sin과 cos가 둘 다 음수이므로 6π/5를 택하는 판단을 문장으로 완결한다. 단위원 보조는 필수가 아니다."
+        }
+      }
+    },
+    {
+      "qid": 12,
+      "sourceFingerprint": "2ec8a88c4d1732a811baa5eff484f23c4260ea359b7f7a3b9f5b92c3f329cdc1",
+      "blindAnswer": "①",
+      "blindReasoning": "Arc length 20-2r, so area S=r(20-2r)/2=25-(r-5)^2, maximum 25 at r=5.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "reviewNotes": {
+        "answerAndDistractors": "① only agrees with the independently solved value ① 25; the other 4 distinct distractors each disagree; the official choice-order/distribution gate reported no defects.",
+        "solution": "Independently worked result ① 25 compared step-by-step with current small-blackboard solution; expressions, branches and domain checked.",
+        "curriculumAndMeta": "2022 대수 삼각함수/H22-A-04-TRIGONOMETRIC_BASIC, difficulty 3, ACTIVE PT 일반각과 호도법, child TPL 호도법, curriculum binding ACTIVE, RPM 호도법; 4-slot method 호·소거·이차함수·표준형·최댓값; creator candidate was checked independently."
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "부채꼴 둘레 2r+l=20과 넓이 rl/2가 문자식으로 모두 제공된다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "S=25-(r-5)²≤25와 r=5일 때 l=10>0인 실제 성립조건을 기록하므로 별도 부채꼴 그림이 필요 없다."
+        }
+      }
+    },
+    {
+      "qid": 13,
+      "sourceFingerprint": "7f7612e06c4baba701af5f6c06384bfcf7b36462d0181637c2b6024f2793baf3",
+      "blindAnswer": "⑤",
+      "blindReasoning": "v2(n)-2 is divisible by 3 and v2(n)-1 by 4 => minimum v2=5. v3(n)-1 divisible by3 and v3(n)-2 by4 => minimum v3=10. n=2^5 3^10, a+b=15.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "reviewNotes": {
+        "answerAndDistractors": "⑤ only agrees with the independently solved value ⑤ 15; the other 4 distinct distractors each disagree; the official choice-order/distribution gate reported no defects.",
+        "solution": "Independently worked result ⑤ 15 compared step-by-step with current small-blackboard solution; expressions, branches and domain checked.",
+        "curriculumAndMeta": "2022 대수 지수와 로그/H22-A-01-EXPONENT_LOG, difficulty 4, ACTIVE PT 거듭제곱근, child TPL n제곱근, curriculum binding ACTIVE, RPM n제곱근; 4-slot method 소인수·소인수분해·거듭제곱근·배수·열거; creator candidate was checked independently."
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "12=2²·3, 18=2·3²에 대한 거듭제곱근 조건을 소수 지수로 환산한다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "2와 3 지수의 mod 3, mod 4 조건을 각각 풀어 최소 5와 10을 제시한다. 수직선이나 도식이 불필요하다."
+        }
+      }
+    },
+    {
+      "qid": 14,
+      "sourceFingerprint": "a18c2780def949fe8501dbe84202404e849e2ca894d87ccdb9ed193322bba000",
+      "blindAnswer": "①",
+      "blindReasoning": "10^8<=a^4<10^9 implies 100<=a<178, hence a has 3 digits. 10^15<=a^2 b^3<10^16 then forces roughly 3170<b<10000; b has 4 digits. Difference 1.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "reviewNotes": {
+        "answerAndDistractors": "① only agrees with the independently solved value ① 1; the other 4 distinct distractors each disagree; the official choice-order/distribution gate reported no defects.",
+        "solution": "Small-blackboard method repaired to use common logarithms: 2≤log a<9/4 and 7/2<log b<4; rechecked against the stem and answer.",
+        "curriculumAndMeta": "2022 대수 지수와 로그/H22-A-01-EXPONENT_LOG, difficulty 4, ACTIVE PT 상용로그, child TPL 상용로그표·자릿수, curriculum binding ACTIVE, RPM 상용로그표·자릿수; 4-slot method 자릿수·상용로그·부등식의성질·대소비교; creator candidate was checked independently."
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "9자리·16자리 범위는 10의 거듭제곱 구간으로 정의되며 대상은 수치뿐이다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "상용로그로 2≤log a<9/4와 7/2<log b<4를 유도해 자릿수 3,4를 보여 준다. 그래프보다 부등식이 정확하다."
+        }
+      }
+    },
+    {
+      "qid": 15,
+      "sourceFingerprint": "fea30b81b5747a166c24dad01d353cbf55229e49551050597e63f8df462427b0",
+      "blindAnswer": "③",
+      "blindReasoning": "Set t=log_2 x and u=log_2 a. Polynomial 2t^2-3ut+u^2+1/2>=0 for all real t iff discriminant u^2-4<=0. Thus 1/4<=a<=4 and M/m=16.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "reviewNotes": {
+        "answerAndDistractors": "③ only agrees with the independently solved value ③ 16; the other 4 distinct distractors each disagree; the official choice-order/distribution gate reported no defects.",
+        "solution": "Independently worked result ③ 16 compared step-by-step with current small-blackboard solution; expressions, branches and domain checked.",
+        "curriculumAndMeta": "2022 대수 로그함수/H22-A-03-LOGARITHMIC_FUNCTION, difficulty 4, ACTIVE PT 로그부등식, child TPL 치환, curriculum binding ACTIVE, RPM 치환; 4-slot method 치환·이차부등식·항상성립·판별식; creator candidate was checked independently."
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "모든 양수 x라는 전칭조건과 두 로그식이 완비되어 별도 그래프 조건이 없다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "t=log₂x가 모든 실수임을 적고 이차식 판별식 u²-4≤0을 적용한다. 이는 수식 자체로 명확하다."
+        }
+      }
+    },
+    {
+      "qid": 16,
+      "sourceFingerprint": "1066410c71016f5e89c10cdf78470cd12516ccb1dac5b4215c2b580d25a407b3",
+      "blindAnswer": "⑤",
+      "blindReasoning": "1+sin^2 theta=6/5 =>sin^2=1/5 and cos^2=4/5; theta in QI gives y/x=tan theta=1/2. xy=4 yields x=2sqrt2.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "reviewNotes": {
+        "answerAndDistractors": "⑤ only agrees with the independently solved value ⑤ 2sqrt(2); the other 4 distinct distractors each disagree; the official choice-order/distribution gate reported no defects.",
+        "solution": "Independently worked result ⑤ 2sqrt(2) compared step-by-step with current small-blackboard solution; expressions, branches and domain checked.",
+        "curriculumAndMeta": "2022 대수 삼각함수/H22-A-04-TRIGONOMETRIC_BASIC, difficulty 4, ACTIVE PT 삼각함수의 뜻, child TPL 삼각함수 값, curriculum binding ACTIVE, RPM 삼각함수 값; 4-slot method 사분면·삼각함수의상호관계·대입·탄젠트; creator candidate was checked independently."
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "P가 제1사분면이고 y=4/x 위라는 관계 및 O·시초선이 지문에서 지정된다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "sin²=1/5, cos²=4/5에서 tan=1/2, y/x=4/x²를 잇는 연결을 판서에 적었다. 좌표도 재현 없이 가능하다."
+        }
+      }
+    },
+    {
+      "qid": 17,
+      "sourceFingerprint": "aefdd3e3a678a4b56a5318b8797434520ca90881ddbe949667d0d4c6a1d2f571",
+      "blindAnswer": "②",
+      "blindReasoning": "Counts: m2=7, m3=4, m4=3, m5=3, m6..12=2, m13..144=1, m>=145=0. Odd count 1+2+132=135 (not 136); exactly two iff m6..12, and multiples of3 in13..144 are 48-4=44 (not43).",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "reviewNotes": {
+        "answerAndDistractors": "② only agrees with the independently solved value ② ㄴ; the other 4 distinct distractors each disagree; the official choice-order/distribution gate reported no defects.",
+        "solution": "Added m≥145 zero-element boundary explicitly; 135/44 counts and choice ㄴ reconfirmed.",
+        "curriculumAndMeta": "2022 대수 지수와 로그/H22-A-01-EXPONENT_LOG, difficulty 4, ACTIVE PT 로그의 뜻, child TPL 로그와 지수 관계, curriculum binding ACTIVE, RPM 로그와 지수 관계; 4-slot method 로그·원소나열법·원소의개수·대소비교·부등식·배수·열거; creator candidate was checked independently."
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "집합의 원소는 m,m²,…≤144인 자연수 거듭제곱이므로 도형이 개수를 바꾸지 않는다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "m=2,3,4~5,6~12,13~144,≥145로 나누고 각각 7,4,3,2,1,0개를 따지므로 경계가 수식으로 완결된다."
+        }
+      }
+    },
+    {
+      "qid": 18,
+      "sourceFingerprint": "c48c33bcb7f09ee8a67af0228637e2825e0dd909941e8bafde713e771b94a5a2",
+      "blindAnswer": "②",
+      "blindReasoning": "From common asymptote b*3+c=0; opposite sides means b<0. At t=0, distances 1/5=1/|b| => b=-5,c=15. At t=1, 2/5=a^-1/5 =>a=1/2. Then 2abc=-75.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "reviewNotes": {
+        "answerAndDistractors": "② only agrees with the independently solved value ② -75; the other 4 distinct distractors each disagree; the official choice-order/distribution gate reported no defects.",
+        "solution": "Independently worked result ② -75 compared step-by-step with current small-blackboard solution; expressions, branches and domain checked.",
+        "curriculumAndMeta": "2022 대수 로그함수/H22-A-03-LOGARITHMIC_FUNCTION, difficulty 4, ACTIVE PT 함수 그래프의 변환, child TPL 함수 그래프의 평행이동과 대칭이동, curriculum binding ACTIVE, RPM 평행이동; 4-slot method 점근선·로그·대입·대칭이동; creator candidate was checked independently."
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "수직점근선 x=3과 y=0,1에서 좌우 등거리를 발문이 정확히 지정해 그림 없이 값이 유일하다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "높이 t에서 거리 2^t/5와 a^(-t)/|b|를 대응시켜 b=-5, a=1/2, c=15를 얻는다. 두 그래프를 그리지 않아도 대칭의 이유가 제시된다."
+        }
+      }
+    },
+    {
+      "qid": 19,
+      "sourceFingerprint": "b934b42aa3d77ee93012f6467838d08911393d7fcc85a0872a66e0b0bbbdbc4b",
+      "blindAnswer": "①",
+      "blindReasoning": "g=a^|8-(x-k)^2|. At y=256 and three intersections require a>1, log_a256=8 (central tangency), giving a=2 and roots k,k±4. g(2)=256 implies (2-k)^2=0 or16 =>k=-2,2,6; range 8.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "reviewNotes": {
+        "answerAndDistractors": "① only agrees with the independently solved value ① 8; the other 4 distinct distractors each disagree; the official choice-order/distribution gate reported no defects.",
+        "solution": "Independently worked result ① 8 compared step-by-step with current small-blackboard solution; expressions, branches and domain checked.",
+        "curriculumAndMeta": "2022 대수 지수함수/H22-A-02-EXPONENTIAL_FUNCTION, difficulty 4, ACTIVE PT 함수 그래프의 교점, child TPL 절댓값·조각함수 그래프의 교점, curriculum binding ACTIVE, RPM 그래프 교점; 4-slot method 절댓값·경우분류·개수·이차식·로그; creator candidate was checked independently."
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "g=a^|8-(x-k)²|와 수평선 y=256은 전부 식·교점 개수로 정의되어 문제용 그래프가 필수 단서가 아니다."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "0584662b7e54f4526b5be43fcbe39ef1baf26789d45389a89f5e169a875a3b89",
+          "reasoning": "**해설 수직선 유익**: h=8로부터 가능한 k=-2,2,6을 점으로 표시하고 최댓값·최솟값 차 8을 설명한다."
+        }
+      }
+    },
+    {
+      "qid": 20,
+      "sourceFingerprint": "0b331b0bc1c5e94b120e575c0e47a0696580860394e8eb3e405cdafd5e3f1f25",
+      "blindAnswer": "22",
+      "blindReasoning": "The expression is log_2((a+1)/(b+1)). For a,b 1..30 it is natural iff (a+1)=2^n(b+1), n>=1. n1 gives 14 values of b+1=2..15; n2 gives6 values 2..7; n3 gives2 values 2..3; n>=4 none. Total22.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "NOT_APPLICABLE"
+      },
+      "reviewNotes": {
+        "answerAndDistractors": "Descriptive answer uniquely determined by frozen calculation, no multiple-choice options.",
+        "solution": "Independently worked result 22 compared step-by-step with current small-blackboard solution; expressions, branches and domain checked.",
+        "curriculumAndMeta": "2022 대수 지수와 로그/H22-A-01-EXPONENT_LOG, difficulty 4, ACTIVE PT 로그의 성질, child TPL 밑의 변환, curriculum binding ACTIVE, RPM 밑의 변환; 4-slot method 밑변환·로그·치환·경우분류·약수·열거·합의법칙; creator candidate was checked independently."
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "30 이하의 자연수 a,b와 로그식이 완결되어 순서쌍의 배열·도형이 필요 없다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "u=2^kv, k=1,2,3에서 각각 14,6,2쌍을 세는 구간 열거가 충분하다."
+        }
+      }
+    },
+    {
+      "qid": 21,
+      "sourceFingerprint": "569c55c9947d1e0a1dab911f97f24bfe631cf69bdc38c38514a0afaa3d2e904b",
+      "blindAnswer": "19/16",
+      "blindReasoning": "With u=2^t>0,c=2^-k, distance is |u^2-u+c|=5/16. Since minimum c-1/4 > -5/16, only u^2-u+c=5/16 matters. Exactly two positive u requires c>5/16, hence k=1. Roots u=1/4,3/4, so 2^p=3/16 and k+2^p=19/16.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "NOT_APPLICABLE"
+      },
+      "reviewNotes": {
+        "answerAndDistractors": "Descriptive answer uniquely determined by frozen calculation, no multiple-choice options.",
+        "solution": "Independently worked result 19/16 compared step-by-step with current small-blackboard solution; expressions, branches and domain checked.",
+        "curriculumAndMeta": "2022 대수 지수함수/H22-A-02-EXPONENTIAL_FUNCTION, difficulty 4, ACTIVE PT 지수방정식, child TPL 치환, curriculum binding ACTIVE, RPM 치환; 4-slot method 치환·거리·절댓값·판별식·근과계수의관계·경우분류·지수방정식; creator candidate was checked independently."
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "같은 세로선에서 두 그래프의 거리라는 설명과 길이 5/16이 식으로 정의되어 원문 문제 그림은 필수가 아니다."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "4c346352c64160832ea20ff97708f469519143e662eef2334977b380bf1b7df0",
+          "reasoning": "**해설 포물선 유익**: u>0에서 Q(u)=u²-u+1/2와 y=5/16의 두 양의 교점 1/4,3/4 및 꼭짓점 경계를 같이 표시한다."
+        }
+      }
+    }
+  ],
+  "rendering": "NOT_RUN",
+  "pngVisualQA": "NOT_RUN",
+  "studentDeployment": "NOT_RUN"
+}
