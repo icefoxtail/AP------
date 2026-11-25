@@ -1,0 +1,39 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "15" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "8" }] }, "outputType": "POINT", "factRole": "GIVEN" }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    { "id": "sAB", "refs": ["A", "B"] },
+    { "id": "sAC", "refs": ["A", "C"] },
+    { "id": "sBC", "refs": ["B", "C"] }
+  ],
+  "displayPoints": ["A", "B", "C"],
+  "hiddenPointNames": ["A", "B", "C"],
+  "coordinateCanvas": { "width": 560, "height": 370 },
+  "rightAngles": [{ "id": "rA", "refs": ["B", "A", "C"] }],
+  "planeMarks": {
+    "expressionLabels": [
+      { "id": "len1", "ownerSegment": "sAC", "text": "1" },
+      { "id": "len15", "ownerSegment": "sAB", "text": "15/8" },
+      { "id": "len17", "ownerSegment": "sBC", "text": "17/8" }
+    ]
+  },
+  "caption": "인수분해 후 구한 서로 다른 근 1,15/8,17/8을 변으로 둔 직각삼각형 해설 도식이다.",
+  "accessibilityDescription": "직각을 이루는 두 변에는 1과 15/8, 빗변에는 17/8이 표시된 삼각형이다. 가장 긴 변과 마주한 각에는 직각 표식이 있다.",
+  "sourceQuote": "서로 다른 세 실근이 어떤 직각삼각형의 세 변의 길이가 된다",
+  "sourceConditions": [
+    { "id": "c1", "condition": "사차방정식은 (x-1)²(x²-4x+k)=0으로 인수분해되고 세 근은 1,α,β", "mappedTo": ["displaySegments", "planeMarks.expressionLabels"] },
+    { "id": "c2", "condition": "α+β=4와 빗변 제곱 조건에 따라 α=17/8, β=15/8, 나머지 변=1", "mappedTo": ["planeMarks.expressionLabels", "rightAngles"] },
+    { "id": "c3", "condition": "대표 좌표는 실근 길이의 비 8:15:17을 보존하는 8배 확대이며 실제 발문의 좌표가 아님", "mappedTo": ["mathPlan.nodes", "rightAngles"] }
+  ],
+  "newVisualInformation": ["두 짧은 변 1과 15/8이 이루는 직각 및 17/8 빗변의 피타고라스 관계를 직접 표시한다", "발문에 없는 점 이름이나 면 색칠은 표시하지 않는다"]
+}

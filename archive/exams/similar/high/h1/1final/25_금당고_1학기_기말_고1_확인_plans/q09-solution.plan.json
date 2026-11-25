@@ -1,0 +1,22 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "해집합",
+        "pieces": [{ "lo": { "value": "2", "state": "OPEN" }, "hi": { "value": "5", "state": "OPEN" } }],
+        "integerPoints": true
+      }
+    ]
+  },
+  "numberLineCaption": { "text": "절댓값 부등식의 정수 해" },
+  "caption": "|x-2|+3|x-4|<6의 최종 해는 2<x<5이고, 정수 3과 4만 포함된다.",
+  "accessibilityDescription": "수직선에 2와 5를 제외한 열린 구간이 그려지며, 그 안에 정수 3과 4가 표시된다.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "x<2에서 해 없음, 2≤x<4에서는 2<x<4, x≥4에서는 4≤x<5", "mappedTo": ["numberLine.rows[0].pieces"] },
+    { "id": "c2", "condition": "최종 해 2<x<5에 포함되는 정수는 3,4", "mappedTo": ["numberLine.rows[0].pieces", "numberLine.rows[0].integerPoints"] }
+  ],
+  "newVisualInformation": ["x=4에서 나뉜 두 부분구간이 연속된 열린 구간으로 합쳐지고 2,5 양 끝은 제외됨을 보인다"]
+}

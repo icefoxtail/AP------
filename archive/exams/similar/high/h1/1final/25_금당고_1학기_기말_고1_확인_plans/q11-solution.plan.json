@@ -1,0 +1,26 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "p",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "두 조건",
+        "pieces": [
+          { "lo": { "value": "-1", "state": "OPEN" }, "hi": { "value": "1", "state": "OPEN" } },
+          { "lo": { "value": "4", "state": "OPEN" }, "hi": { "value": "5", "state": "OPEN" } }
+        ],
+        "integerPoints": true
+      }
+    ]
+  },
+  "numberLineCaption": { "text": "근의 합·곱 조건의 공통 범위" },
+  "caption": "근의 곱<0과 근의 합<0의 교집합은 -1<p<1 또는 4<p<5이며 가능한 정수 p는 0이다.",
+  "accessibilityDescription": "p의 수직선에서 (-1,1)과 (4,5) 두 열린 구간만 표시된다. 정수점은 0 하나뿐이다.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "αβ=(p-5)(p+1)<0에서 -1<p<5", "mappedTo": ["numberLine.rows[0].pieces"] },
+    { "id": "c2", "condition": "α+β=-(p-4)(p-1)<0에서 p<1 또는 p>4", "mappedTo": ["numberLine.rows[0].pieces"] },
+    { "id": "c3", "condition": "두 조건의 교집합 -1<p<1 또는 4<p<5, 가능한 정수 p=0", "mappedTo": ["numberLine.rows[0].pieces", "numberLine.rows[0].integerPoints"] }
+  ],
+  "newVisualInformation": ["두 갈래 열린 공통구간에서 오른쪽 4<p<5에는 정수가 없고 왼쪽 구간에만 0이 있음을 비교한다"]
+}
