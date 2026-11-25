@@ -1,0 +1,10 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"HYPERBOLA","center":["0","0"],"aSquared":"25","bSquared":"39","transverse":"X"},
+  "points":[{"id":"F","kind":"FOCUS","side":1},{"id":"F'","kind":"FOCUS","side":-1},{"id":"P","kind":"ON_CONIC","x":"10","sign":"POS"}],
+  "segments":[{"id":"PF","from":"P","to":"F"},{"id":"FFp","from":"F'","to":"F"},{"id":"PFp","from":"P","to":"F'"}],
+  "caption":"초점 거리 PF, FF′, PF′가 등차수열인 쌍곡선 위 삼각형 PF′F",
+  "accessibilityDescription":"쌍곡선의 오른쪽 초점 F(8,0), 왼쪽 초점 F′(-8,0), 제1사분면 점 P를 세 꼭짓점으로 하는 삼각형이다. 세 선분 PF, FF′, PF′가 순서대로 등차수열 조건에 해당한다.",
+  "sourceConditions":[{"id":"c1","condition":"주어진 쌍곡선 x²/25−y²/39=1의 두 초점은 ±8이고 초점 거리 FF′=16이다.","mappedTo":["conic","F","F'","FFp"]},{"id":"c2","condition":"세 거리의 등차수열 및 PF′−PF=10을 함께 풀면 PF=11, PF′=21이다. 대표 P=(10,3√13)은 두 거리와 쌍곡선의 식을 정확히 만족한다.","mappedTo":["P","PF","PFp"]},{"id":"c3","condition":"물음 PF²+PF′²의 최종 수치 562는 문제 그림에 노출하지 않는다.","mappedTo":["PF","PFp"]}],
+  "newVisualInformation":["등차수열을 이루는 실제 거리 3개의 삼각형 배치와 올바른 사분면","묻는 제곱합 정답 미표시"]
+}

@@ -1,0 +1,11 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"HYPERBOLA","center":["0","0"],"aSquared":"9","bSquared":"16","transverse":"X"},
+  "points":[{"id":"F","kind":"FOCUS","side":1},{"id":"F'","kind":"FOCUS","side":-1},{"id":"P","kind":"ON_CONIC","x":"27/5","sign":"POS"},{"id":"Q","kind":"LINE_CONIC","line":"lPF","which":1}],
+  "lines":[{"id":"lPF","through":["P","F"],"hidden":true}],
+  "segments":[{"id":"PQ","from":"P","to":"Q"},{"id":"PF","from":"P","to":"F"},{"id":"FQ","from":"F","to":"Q"},{"id":"FpP","from":"F'","to":"P"},{"id":"FpQ","from":"F'","to":"Q"}],
+  "caption":"초점 F를 사이에 두고 같은 오른쪽 가지에서 만나는 P, Q와 왼쪽 초점 F′",
+  "accessibilityDescription":"제1사분면 쌍곡선 위의 P와 제4사분면의 Q는 초점 F를 지나는 하나의 직선 위에 있으며 선분 PQ 안에 F가 있다. 두 점을 왼쪽 초점 F′에 각각 연결했다.",
+  "sourceConditions":[{"id":"c1","condition":"원문 a,b는 미정이므로 모든 관계를 만족하는 대표 배치로 a=3,c=5,b²=16을 선택한다(정답 수치는 라벨로 쓰지 않음).","mappedTo":["conic","F","F'"]},{"id":"c2","condition":"대표 P=(27/5,8√14/5)에서 PF=6,PF′=12이므로 PF′+2PF=24이다. F=(5,0)을 지나는 직선과 오른쪽 가지의 다른 교점 Q=(117/25,-32√14/25)은 제4사분면에 있다.","mappedTo":["P","F","Q","lPF","PF","FpP"]},{"id":"c3","condition":"F가 P,Q 사이에 있고 PQ=54/5, F′Q=54/5로 주어진 등거리 조건도 정확히 충족한다. 동등 눈금은 현행 conic 기능에서 제공하지 않으므로 실제 선분은 표시하되 렌더 담당자에게 표식 보강 대상으로 인계한다.","mappedTo":["PQ","FQ","FpQ"]}],
+  "newVisualInformation":["제1·4사분면의 실제 교점과 선분 PQ 내부의 초점 F를 정확하게 배치","PQ=F′Q 관계의 등길이 눈금은 별도 엔진 보강 필요"]
+}

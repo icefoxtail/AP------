@@ -1,0 +1,12 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conics":[{"id":"h1","kind":"HYPERBOLA","center":["0","0"],"aSquared":"9","bSquared":"16","transverse":"X"},{"id":"h2","kind":"HYPERBOLA","center":["0","0"],"aSquared":"16","bSquared":"9","transverse":"X"}],
+  "points":[{"id":"F","kind":"FOCUS","curve":"h1","side":1,"coordinates":true},{"id":"F'","kind":"FOCUS","curve":"h1","side":-1,"coordinates":true},{"id":"A","kind":"ON_CONIC","curve":"h1","x":"-24/5","sign":"POS"},{"id":"B","kind":"LINE_CONIC","curve":"h2","line":"focusRay","which":2}],
+  "lines":[{"id":"focusRay","through":["F'","A"],"hidden":true}],
+  "segments":[{"id":"AFp","from":"A","to":"F'","label":"5"},{"id":"BFp","from":"B","to":"F'","dashed":true},{"id":"FA","from":"F","to":"A"},{"id":"FB","from":"F","to":"B"},{"id":"AB","from":"A","to":"B"}],
+  "polygons":[{"id":"triangleFAB","points":["F","A","B"]}],
+  "caption":"초점을 공유하는 두 쌍곡선, F′에서 나오는 동일 직선 위의 A와 B, 삼각형 FAB",
+  "accessibilityDescription":"두 쌍곡선 x²/9−y²/16=1과 x²/16−y²/9=1은 초점 F′(-5,0),F(5,0)를 공유한다. 제2사분면에서 F′를 지나는 직선에 첫 번째 쌍곡선의 A, 두 번째 쌍곡선의 B가 있고 F′B가 F′A보다 짧다. AF′=5이며 A,B,F가 삼각형을 이룬다.",
+  "sourceConditions":[{"id":"c1","condition":"두 쌍곡선은 초점 F′(-5,0), F(5,0)를 공유한다.","mappedTo":["h1","h2","F","F'"]},{"id":"c2","condition":"제2사분면 점 A는 첫째 쌍곡선 위이고 AF′=5다. 정확한 좌표 A=(-24/5,4√39/5)를 정한다.","mappedTo":["A","AFp"]},{"id":"c3","condition":"F′A를 지나는 직선이 둘째 쌍곡선과 만나는 제2사분면 점 B는 F′에서 A보다 가까운 (-172/35,12√39/35)다.","mappedTo":["focusRay","B","BFp"]},{"id":"c4","condition":"구하려는 삼각형 FAB의 둘레를 그림에서 표시하되 둘레 정답은 넣지 않는다.","mappedTo":["FA","FB","AB","triangleFAB"]}],
+  "newVisualInformation":["두 쌍곡선을 서로 다른 실제 conic으로 그리되 두 초점은 수학적으로 공유","A,B,F′의 공선성과 F′B<F′A를 교점 계산으로 보장"]
+}

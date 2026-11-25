@@ -1,0 +1,10 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"HYPERBOLA","center":["0","0"],"aSquared":"1","bSquared":"2","transverse":"X"},
+  "points":[{"id":"F","kind":"FOCUS","side":1},{"id":"F'","kind":"FOCUS","side":-1},{"id":"P","kind":"ON_CONIC","x":"sqrt(3)","sign":"POS"}],
+  "segments":[{"id":"PF","from":"P","to":"F"},{"id":"PFp","from":"P","to":"F'"},{"id":"FpF","from":"F'","to":"F"}],
+  "caption":"초점 F 바로 위의 쌍곡선 점 P에서 그린 직각삼각형 PF′F",
+  "accessibilityDescription":"가로로 열린 쌍곡선에서 제1사분면의 P는 오른쪽 초점 F의 수직 위에 있다. F′에서 F까지의 선분이 x축 위에 놓이고 PF는 수직이므로 삼각형 PF′F는 F에서 직각을 이룬다.",
+  "sourceConditions":[{"id":"c1","condition":"문항의 a,b,c는 비율 조건만 주어지므로 a=1, c=√3, b²=2로 정답을 그림에 노출하지 않는 대표 동형을 사용한다.","mappedTo":["conic","F","F'"]},{"id":"c2","condition":"P=(√3,2)는 이 쌍곡선 위에 있고 PF=2, PF′=4이므로 PF′=2PF 및 PF⊥FF′를 정확히 만족한다.","mappedTo":["P","PF","PFp","FpF"]},{"id":"c3","condition":"F의 직각 표식은 별도 엔진 기능이 필요하므로 도형 수직 관계만 나타낸다. 묻는 c/a=√3은 라벨로 표시하지 않는다.","mappedTo":["PF","FpF"]}],
+  "newVisualInformation":["문항 조건을 모두 만족하는 정확한 대표 직각삼각형","직각 모서리 기호는 보강 대기이며 미지 비율은 비노출"]
+}

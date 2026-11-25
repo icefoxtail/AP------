@@ -1,0 +1,11 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"HYPERBOLA","center":["0","0"],"aSquared":"16","bSquared":"9","transverse":"X"},
+  "points":[{"id":"O","kind":"ORIGIN"},{"id":"F","kind":"FOCUS","side":1},{"id":"F'","kind":"FOCUS","side":-1},{"id":"P","kind":"ON_CONIC","x":"28/5","sign":"POS"},{"id":"Q","kind":"ON_CONIC","x":"-28/5","sign":"NEG"}],
+  "segments":[{"id":"PQ","from":"P","to":"Q"},{"id":"PF","from":"P","to":"F","label":"3"},{"id":"PFp","from":"P","to":"F'"},{"id":"FQ","from":"F","to":"Q"},{"id":"FpQ","from":"F'","to":"Q"}],
+  "polygons":[{"id":"quad","points":["P","F'","Q","F"],"fill":"NONE"}],
+  "caption":"원점 O를 지나는 PQ와 쌍곡선의 두 초점으로 만든 평행사변형 PF′QF",
+  "accessibilityDescription":"제1사분면의 P와 제3사분면의 Q는 원점 O에 대칭인 쌍곡선 위 점이다. F와 F′도 원점 대칭이며 네 점 P, F′, Q, F를 이은 평행사변형과 주어진 PF=3을 보여 준다.",
+  "sourceConditions":[{"id":"c1","condition":"주어진 쌍곡선 x²/16−y²/9=1의 초점은 F=(5,0), F′=(-5,0)이다.","mappedTo":["conic","F","F'"]},{"id":"c2","condition":"PF=3, PF′−PF=8로부터 P=(28/5,6√6/5)을 독립 계산한다. Q=(-28/5,-6√6/5)은 원점 대칭이고 PQ가 O를 지난다.","mappedTo":["P","Q","PQ","O","PF"]},{"id":"c3","condition":"PF′QF는 두 대각선 PQ와 FF′가 모두 O에서 이등분되는 평행사변형이다. 구하는 둘레 28은 그림 라벨에 넣지 않는다.","mappedTo":["quad","PFp","FQ","FpQ"]}],
+  "newVisualInformation":["쌍곡선의 실제 좌우 가지 위에서 원점 대칭인 P,Q 및 평행사변형의 네 변을 표시","주어진 PF=3만 표시하고 둘레 정답은 비노출"]
+}

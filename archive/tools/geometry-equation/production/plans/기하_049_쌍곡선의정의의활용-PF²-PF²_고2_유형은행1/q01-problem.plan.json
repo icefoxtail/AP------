@@ -1,0 +1,11 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"HYPERBOLA","center":["0","0"],"aSquared":"25","bSquared":"11","transverse":"X"},
+  "points":[{"id":"F","kind":"FOCUS","side":1,"coordinates":true},{"id":"F'","kind":"FOCUS","side":-1,"coordinates":true},{"id":"P","kind":"ON_CONIC","x":"25/3","sign":"POS"}],
+  "segments":[{"id":"PF","from":"P","to":"F"},{"id":"PFp","from":"P","to":"F'"},{"id":"FFp","from":"F","to":"F'"}],
+  "polygons":[{"id":"trianglePFFp","points":["P","F","F'"]}],
+  "caption":"쌍곡선 위의 P와 두 초점 F,F′가 만드는 둘레 32의 삼각형",
+  "accessibilityDescription":"쌍곡선 x²/25−y²/11=1의 초점 F′(-6,0),F(6,0)와 제1사분면의 P를 잇는 삼각형 PF′F가 있다. 주어진 삼각형 둘레는 32이고 구하는 제곱 거리의 차는 보이지 않는다.",
+  "sourceConditions":[{"id":"c1","condition":"쌍곡선 x²/25−y²/11=1의 두 초점은 F=(6,0),F′=(-6,0)이다.","mappedTo":["conic","F","F'"]},{"id":"c2","condition":"P가 제1사분면의 쌍곡선 위에 있고 △PF′F 둘레는 32다. PF+PF′=20, 거리차=10에서 P=(25/3,4√11/3)을 계산해 놓는다.","mappedTo":["P","PF","PFp","FFp","trianglePFFp"]},{"id":"c3","condition":"최종 물음 |PF²−PF′²|의 값은 답이므로 표시하지 않는다.","mappedTo":["PF","PFp"]}],
+  "newVisualInformation":["P를 임의 점이 아닌 둘레 32를 만족하는 실제 쌍곡선 위의 점으로 배치","주어진 둘레만 caption에 적고 제곱거리 차 정답은 숨김"]
+}
