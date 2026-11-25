@@ -2,7 +2,7 @@
 
 - 적용 모드: `ALIVE EXAM_FOLLOWUP / SOURCE_BALANCED`
 - 검토한 축: 24문항 × 문제/해설 = 48축. `EXEMPT` 41, `BENEFICIAL` 7, `REQUIRED` 0, `UNSUPPORTED` 0.
-- 작성된 공식 엔진 `plan.json`: 7개. 현재 실제 렌더 SVG: **0개**. `plan.json`을 SVG 완료로 간주하지 않는다.
+- 작성된 공식 엔진 `plan.json`: 총 48개(실제 도식 계획 7개, `status: EXEMPT` 계획 41개). 현재 실제 렌더 SVG: **0개**. `plan.json`을 SVG 완료로 간주하지 않는다.
 - 공식 엔진 plan-lint: **미실행** (실행 후 실제 결과로 갱신할 것). 별도 모델·사람에 의한 블라인드 재풀이: 미실행.
 
 | 문항 | 축 | 필요도 | 공식 plan | 린트 | 렌더 | 후속 조치 |
