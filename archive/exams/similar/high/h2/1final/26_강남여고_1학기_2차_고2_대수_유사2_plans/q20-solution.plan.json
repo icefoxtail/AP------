@@ -1,0 +1,56 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "SIN",
+    "ratePi": "1",
+    "coefficients": [
+      "1",
+      "0"
+    ],
+    "phasePi": "0",
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "9/2"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "hideIntervalEndLabels": [
+      "START",
+      "END"
+    ],
+    "referenceLines": [
+      {
+        "id": "h",
+        "y": "-1/2",
+        "intersectionCount": 4
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": [
+        "1"
+      ]
+    },
+    "displaySize": "full"
+  },
+  "sourceQuote": "$x\\ge0$에서 함수 $y=\\sin\\pi x$의 그래프와 직선 $y=-\\dfrac12$의 교점의 $x$좌표를 작은 순서대로 $a_1,a_2,a_3,\\ldots$라 한다. $\\displaystyle\\sum_{n=1}^{10}(2a_{2n-1}-a_{2n})$의 값은? [4.5점]",
+  "caption": "해설: 한 주기 안의 두 교점은 7/6, 11/6이며 다음 주기마다 x좌표에 2를 더한다.",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "y=sin πx (x≥0), y=-1/2",
+      "mappedTo": [
+        "graphPlan"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "해설에서 도출한 관계·중간 값·검산에 쓰는 배치"
+  ]
+}
