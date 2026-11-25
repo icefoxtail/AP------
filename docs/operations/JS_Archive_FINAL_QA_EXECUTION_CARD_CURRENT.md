@@ -1,4 +1,4 @@
-# JS Archive FINAL QA — SINGLE ENTRY EXECUTION CARD (CURRENT v2.1.0)
+# JS Archive FINAL QA — SINGLE ENTRY EXECUTION CARD (CURRENT v2.1.1)
 
 **적용:** 이미 Git `main`에 있는 시험지 1건의 GPT 사후 검수·결함 수리·필요한 시험지별 메타 입력·운영병합. **사용자 최신 명시 지시와 이 카드가 현재 실행 권위**다. 신규 CREATE/R1/R2/R3/ALIVE, 예약·공통 Actions 유지보수의 품질·작업 규칙을 변경하지 않는다.
 
@@ -23,6 +23,7 @@
 - 문항별 **블라인드 1차 답과 계산 근거**, 객관식 보기·정답 유일성, 해설·교육과정·메타 검수 여부, 문제/해설 각 축의 검수 이유를 남긴다. 독립 검수자·분리 실행 근거는 기록하되, 텍스트 주장 하나로 실제 수학적 독립성을 자동 증명했다고 주장하지 않는다. 이전 생성 영수증에 `23/23`만 써 있거나 해설/플랜 변경으로 증거가 낡으면 `FIRST_FORMAL` 검증을 다시 한다.
 - **정확한 JS 경로로** `node tools/harness/verify-finalqa-evidence.cjs --exam <repo-relative-exam.js> --blind-pack`을 실행해 **정답·해설·메타가 없는 독립 풀이 입력**을 검수자에게 전달한다. 같은 경로에 `--template`을 실행해 모든 QID의 **NOT_RUN 출발 양식**을 만든다. 별도 검수자의 1차 답·계산 근거가 고정된 다음 정답과 비교하고, 양식에 `blindArtifactRef`·문항별 검수 결과를 입력한다. `--exam <동일 경로> --evidence <완성된 JSON 경로>`로 검사한다. 원본 계산 과정은 Git 외 증거 보관처에 두고, Git에는 필요한 소형 검수 영수증만 넣는다.
 - 이 게이트는 **문항/메타 의미 필드별 SHA-256 지문**, QID 누락/중복, 블라인드 결과·점검 증거, 문제/해설 2N 축, 플랜 파일 다이제스트, 실제 `sourceQuote` 일치(지원 스키마만), 문제용 파생 중심점 노출, `UNSUPPORTED`의 인계 형식, **공식 shallow/full plan-lint 종료 상태**를 검사한다. `--no-lint`는 진단 전용이며 `QA_EVIDENCE_COMPLETE`가 될 수 없다. 실패·미완은 `EVIDENCE_INCOMPLETE` 및 정확한 결함 코드로 보고한다.
+- **기존 문제 PNG를 그대로 참조하는 REQUIRED 축:** 실행할 수 없는 가짜 JSON 플랜을 만들지 않는다. `<exam>.svg-followup-ledger.json`에서 `planStatus: EXISTING_SOURCE_ASSET_VERIFIED`와 `assetPath`·`assetGitBlobSha1`을 기록하고, 검수 하네스가 실제 PNG 서명·Git blob·문항 JS의 `image` 참조를 확인한다. 해당 축은 `assetBacked`로 별도 계수하며, 검수 기록은 `SOURCE_ASSET_VERIFIED`로 둔다. 이것은 **기존 학생용 파일의 결속 확인**이지 SVG 플랜 실행, 새 그림 제작 또는 실제 렌더/시각 QA PASS가 아니다. 문제에 필요한 도형·그래프의 수학적 조건은 독립 풀이 담당에게 답안·해설 없이 따로 제공하고 근거를 남긴다.
 - `QA_EVIDENCE_COMPLETE`는 **검수 증거의 형식·결속·분모 및 공식 린트가 갖추어졌다는 뜻**이지 프로그램이 수학·교육적 진실을 증명했다는 뜻이 아니다. 정식 수학 품질 판정은 실제 독립 검수자가 문항별 계산을 확인해야 한다. 플랜 수는 `executable / unsupported / exempt`로 분리하고 `UNSUPPORTED`를 엔진 지원 PASS로 합산하지 않는다. 렌더·PNG 미실행은 항상 별도 `NOT_RUN`이다.
 - 기존 역사적 영수증·시각 후속 장부의 `BLOCKED_REQUIRED_VISUAL`은 실제 당시 기록으로 보존한다. 새 GPT QA 결과와 `MAIN_DONE`·`SVG_VISUAL_QA_DONE`·학생 배포 상태를 덮어써서 가짜 단일 PASS로 만들지 않는다.
 
