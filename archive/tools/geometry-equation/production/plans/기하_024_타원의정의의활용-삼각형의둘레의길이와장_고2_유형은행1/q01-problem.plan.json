@@ -1,0 +1,32 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {"kind": "ELLIPSE", "center": ["0", "0"], "aSquared": "9", "bSquared": "5", "major": "Y"},
+  "points": [
+    {"id": "A", "kind": "VERTEX", "side": 1},
+    {"id": "B", "kind": "VERTEX", "side": -1},
+    {"id": "F", "kind": "FOCUS", "side": 1},
+    {"id": "F'", "kind": "FOCUS", "side": -1},
+    {"id": "P", "kind": "ON_CONIC", "x": "sqrt(5)/2", "branch": "POS"}
+  ],
+  "segments": [
+    {"id": "sPA", "from": "P", "to": "A"},
+    {"id": "sPB", "from": "P", "to": "B"},
+    {"id": "sAB", "from": "A", "to": "B"},
+    {"id": "sPF", "from": "P", "to": "F"},
+    {"id": "sPFp", "from": "P", "to": "F'"},
+    {"id": "sFFp", "from": "F", "to": "F'"}
+  ],
+  "polygons": [
+    {"id": "tPAB", "points": ["P", "A", "B"], "fill": "LIGHT"},
+    {"id": "tPFFp", "points": ["P", "F", "F'"], "fill": "MEDIUM"}
+  ],
+  "caption": "y축 장축 타원의 두 꼭짓점 A·B와 두 초점 F·F′를 같은 밑변 축에 두고 제1사분면 점 P로 잇는 넓이 비교 그림",
+  "accessibilityDescription": "세로로 긴 타원의 꼭짓점 A와 B 사이에 초점 F와 F′가 놓여 있다. 제1사분면의 타원 위 점 P에서 A, B, F, F′를 이은 두 삼각형 PAB와 PFF′의 겹친 영역이 구분되어 있다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "원문 x²/a²+y²/b²=1, b>a>0, F=(0,c), F′=(0,-c), A=(0,b), B=(0,-b); 실제 조건에서 c=2,b=3,a²=5이다. 좌표·구하는 a²+b² 값은 그림에 공개하지 않는다.", "mappedTo": ["conic", "A", "B", "F", "F'"]},
+    {"id": "c2", "condition": "P=(√5/2,3√3/2)은 제1사분면의 실제 타원 위 점이다. 두 삼각형의 밑변 AB=6, FF′=4이고 y축까지의 높이는 모두 xP=√5/2여서 넓이 비는 6:4=3:2이다.", "mappedTo": ["P", "tPAB", "tPFFp", "sAB", "sFFp"]},
+    {"id": "c3", "condition": "P는 타원 위에 있으므로 PF+PF′=2b=6, FF′=2c=4여서 삼각형 PFF′의 둘레는 정확히 10이다. 둘레의 중간값과 정답은 선분에 쓰지 않는다.", "mappedTo": ["P", "F", "F'", "sPF", "sPFp", "sFFp"]},
+    {"id": "c4", "condition": "큰 삼각형 PAB와 작은 삼각형 PFF′만 면 채움으로 구분한다. y축 위 다섯 점의 이름은 꼭짓점과 초점의 실제 축 순서를 따라야 한다.", "mappedTo": ["tPAB", "tPFFp", "A", "F", "F'", "B"]}
+  ],
+  "newVisualInformation": ["동일한 y축을 밑변으로 하는 두 삼각형의 실제 넓이 포함 관계와 P의 제1사분면 위치", "미지수 a²+b²와 둘레 조건으로 유도되는 수치 비노출"]
+}
