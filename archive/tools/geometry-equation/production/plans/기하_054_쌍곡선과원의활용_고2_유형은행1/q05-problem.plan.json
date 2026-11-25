@@ -1,0 +1,12 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conics":[{"id":"h","kind":"HYPERBOLA","center":["0","0"],"aSquared":"1","bSquared":"24","transverse":"X"},{"id":"c","kind":"CIRCLE","center":["0","0"],"rSquared":"9"}],
+  "points":[{"id":"A","kind":"FOCUS","curve":"h","side":-1,"coordinates":true},{"id":"B","kind":"FOCUS","curve":"h","side":1,"coordinates":true},{"id":"O","kind":"ORIGIN"},{"id":"P","kind":"ON_CONIC","curve":"h","x":"7/5","sign":"POS"},{"id":"H","kind":"FOOT","from":"O","onto":"ap","rightAngle":true,"label":false}],
+  "lines":[{"id":"ap","through":["A","P"],"hidden":true,"tangent":true,"curve":"c"}],
+  "segments":[{"id":"AP","from":"A","to":"P"},{"id":"PB","from":"P","to":"B"},{"id":"AB","from":"A","to":"B"},{"id":"OH","from":"O","to":"H","label":"r","dashed":true}],
+  "polygons":[{"id":"tri","points":["A","P","B"],"fill":"NONE"}],
+  "caption":"직각삼각형 APB와 원점 중심의 직선 AP 접원, 원점에서 접선에 내린 수선",
+  "accessibilityDescription":"쌍곡선 x²−y²/24=1의 두 초점 A(-5,0),B(5,0)와 제1사분면 P가 직각삼각형 APB를 이룬다. 원점 O 중심의 원은 직선 AP와 H에서 접하며, 원점에서 H로 내린 수선 OH가 점선으로 표시된다.",
+  "sourceConditions":[{"id":"c1","condition":"쌍곡선 초점 A=(-5,0),B=(5,0)이고 ∠APB=90°와 정의상 PA−PB=2를 풀면 P=(7/5,24/5)이다.","mappedTo":["h","A","B","P","AP","PB","AB","tri"]},{"id":"c2","condition":"직선 AP는 3x−4y+15=0이고 원점에서의 거리3을 반지름으로 한 원이 AP에 H=(-9/5,12/5)에서 접한다. 접선 주장과 FOOT 직각 마크로 검사한다.","mappedTo":["c","O","ap","H","OH"]},{"id":"c3","condition":"원의 반지름 값은 물음의 정답이므로 숫자3 대신 r로 표시한다. 삼각형의 P에서 직각호는 conic에 별도 각 필드가 없어 ENGINE_CAPABILITY_PENDING이다.","mappedTo":["OH","AP","PB"]}],
+  "newVisualInformation":["원점 중심 원과 직선 AP의 접함을 실제 tangent:true로 검사","원점 수선의 발을 FOOT와 rightAngle로 표시, 정답 반지름은 문자 r로 숨김"]
+}

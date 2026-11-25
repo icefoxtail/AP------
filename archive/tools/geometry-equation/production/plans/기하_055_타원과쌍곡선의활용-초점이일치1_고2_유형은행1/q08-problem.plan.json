@@ -1,0 +1,11 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conics":[{"id":"e","kind":"ELLIPSE","center":["0","0"],"aSquared":"16","bSquared":"12","major":"X"},{"id":"h","kind":"HYPERBOLA","center":["-2","0"],"aSquared":"4","bSquared":"12","transverse":"X"}],
+  "points":[{"id":"O","kind":"ORIGIN"},{"id":"A","kind":"VERTEX","curve":"e","side":1,"coordinates":true},{"id":"B","kind":"VERTEX","curve":"e","side":-1,"coordinates":true},{"id":"F1","kind":"FOCUS","curve":"e","side":1},{"id":"F2","kind":"FOCUS","curve":"e","side":-1},{"id":"F3","kind":"FOCUS","curve":"h","side":-1},{"id":"P","kind":"CONIC_CONIC","curves":["e","h"],"which":3}],
+  "segments":[{"id":"BO","from":"B","to":"O"},{"id":"PF2","from":"P","to":"F2"},{"id":"PF3","from":"P","to":"F3"},{"id":"F2F3","from":"F2","to":"F3"}],
+  "polygons":[{"id":"tri","points":["P","F2","F3"],"fill":"NONE"}],
+  "caption":"타원 꼭짓점 B(-4,0)에서 O까지가 쌍곡선 주축인 공유 초점 구성과 삼각형 PF₂F₃",
+  "accessibilityDescription":"타원의 양의 x축 끝점 A(4,0), 음의 x축 끝점 B(-4,0), 원점 O가 있다. B와 O를 주축 양끝으로 갖는 쌍곡선은 오른쪽 초점 F₁을 타원과 공유하고 다른 초점은 F₃다. 제1사분면 공통 교점 P에서 F₂와 F₃로 선분을 이어 삼각형을 이룬다.",
+  "sourceConditions":[{"id":"c1","condition":"타원 양의·음의 장축 꼭짓점은 ±4이고, 선분 BO가 쌍곡선 주축이므로 쌍곡선 중심은 (-2,0), 주축 반길이2다. 공통 초점 F1=(c,0), F3=(-4−c,0)이고 F2=(-c,0)이다.","mappedTo":["e","h","O","A","B","BO","F1","F2","F3"]},{"id":"c2","condition":"원문은 초점거리 c를 하나로 고정하지 않는다. 0<c<4에서 동형 대표값 c=2를 택하면 타원 b²=12, 쌍곡선 b²=(c+2)²−4=12, F1=(2,0),F2=(-2,0),F3=(-6,0)이다.","mappedTo":["e","h","F1","F2","F3"]},{"id":"c3","condition":"두 곡선은 공통 점 B(-4,0) 및 제1사분면의 P=(4/5,12√2/5)에서 만나며 P는 CONIC_CONIC which3이다. 삼각형 PF2F3의 정답 둘레는 숨긴다.","mappedTo":["P","B","PF2","PF3","F2F3","tri"]}],
+  "newVisualInformation":["쌍곡선 중심을 원점이 아닌 BO 중점 (-2,0)에 정확히 두고 공통 초점 F1을 실제로 공유","제1사분면 공통 교점과 꼭짓점 B를 구별하며 삼각형의 답은 비노출"]
+}

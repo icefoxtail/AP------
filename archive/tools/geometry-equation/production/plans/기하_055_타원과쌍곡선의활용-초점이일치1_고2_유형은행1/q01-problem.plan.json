@@ -1,0 +1,10 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conics":[{"id":"e","kind":"ELLIPSE","center":["0","0"],"aSquared":"25","bSquared":"9","major":"X"},{"id":"h","kind":"HYPERBOLA","center":["0","0"],"aSquared":"9","bSquared":"7","transverse":"X"}],
+  "points":[{"id":"F","kind":"FOCUS","curve":"e","side":1},{"id":"F'","kind":"FOCUS","curve":"e","side":-1},{"id":"P","kind":"CONIC_CONIC","curves":["e","h"],"which":4}],
+  "segments":[{"id":"PF","from":"P","to":"F","label":"2"},{"id":"PFp","from":"P","to":"F'","label":"8"}],
+  "caption":"두 초점을 공유하는 타원과 쌍곡선의 제1사분면 교점 P, 주어진 PF=2·PF′=8",
+  "accessibilityDescription":"가로 방향 타원과 쌍곡선이 동일한 양쪽 초점 F,F′을 공유한다. 제1사분면의 공통 교점 P에서 F까지 선분은 길이 2, F′까지 선분은 길이 8로 각각 표시된다.",
+  "sourceConditions":[{"id":"c1","condition":"타원 정의 PF+PF′=10에서 장반경 a=5이고 쌍곡선 정의 PF′−PF=6에서 주축 반길이3이다. 공유 초점거리 c는 문제에서 직접 정하지 않으므로 3<c<5인 대표값 c=4를 택한다.","mappedTo":["e","h","F","F'"]},{"id":"c2","condition":"대표 공통 초점±4를 쓰면 타원 a²25,b²9, 쌍곡선 a²9,b²7이며 제1사분면 공통 교점 P=(15/4,3√7/4)은 PF=2,PF′=8을 정확히 만족한다.","mappedTo":["P","PF","PFp"]},{"id":"c3","condition":"대표값 c=4는 유일한 해가 아니고 원문 조건에 부합하는 동형 사례다. 구하는 b²+d² 정답은 라벨로 공개하지 않는다.","mappedTo":["e","h"]}],
+  "newVisualInformation":["초점이 실제로 같은 타원·쌍곡선을 두 곡선의 기하식으로 연결","주어진 두 초점거리 2,8을 도형 선분 라벨로 각각 표시"]
+}
