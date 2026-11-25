@@ -1,0 +1,73 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PYRAMID",
+      "base": {
+        "kind": "REGULAR",
+        "n": 3,
+        "side": 4
+      },
+      "height": 5,
+      "names": "ABCD",
+      "points": [
+        {
+          "id": "P",
+          "at": {
+            "edge": [
+              "A",
+              "D"
+            ],
+            "t": "1/2"
+          }
+        }
+      ]
+    }
+  ],
+  "caption": "평면 α 위의 A,B,C와 그 밖의 D, 모서리 AD 내부의 P",
+  "accessibilityDescription": "밑면 삼각형 ABC가 평면 알파에 놓이고 그 위로 D가 떠 있으며 A에서 D까지의 선분 위에 P가 있다. P는 양 끝점이 아닌 내부점이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "비공선 세 점 A,B,C가 한 평면 α 위",
+      "mappedTo": [
+        "s1"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "D는 평면 밖, P는 AD 내부에 있어 A,P,D 공선",
+      "mappedTo": [
+        "s1",
+        "P"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원문 평면을 밑면으로 나타낸 공간 삼각뿔",
+    "AD 위의 P"
+  ],
+  "segments": [
+    {
+      "from": "A",
+      "to": "P",
+      "style": "AUTO"
+    },
+    {
+      "from": "P",
+      "to": "D",
+      "style": "AUTO"
+    }
+  ],
+  "highlights": [
+    {
+      "face": "bottom",
+      "fill": "LIGHT"
+    }
+  ],
+  "solidCaption": {
+    "text": "평면 α"
+  },
+  "sourceQuote": "공간에서 한 평면 $\\alpha$ 위에 한 직선 위에 있지 않은 "
+}

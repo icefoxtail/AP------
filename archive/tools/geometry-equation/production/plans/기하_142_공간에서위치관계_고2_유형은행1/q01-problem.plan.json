@@ -1,0 +1,42 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PRISM",
+      "base": {
+        "kind": "REGULAR",
+        "n": 3,
+        "side": 4
+      },
+      "height": 5,
+      "names": "DEFABC"
+    }
+  ],
+  "caption": "두 삼각형 ABC·DEF와 대응 옆모서리 AD·BE·CF인 삼각기둥",
+  "accessibilityDescription": "윗면 ABC, 아랫면 DEF의 삼각기둥에서 AD,BE,CF가 대응하여 평행하고 다른 모서리의 만남·평행·꼬임이 보인다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "삼각형 ABC·DEF가 서로 평행한 두 밑면",
+      "mappedTo": [
+        "s1"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "AD·BE·CF는 대응 평행 옆모서리",
+      "mappedTo": [
+        "s1"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "삼각기둥 9모서리",
+    "가림에 따른 점선"
+  ],
+  "solidCaption": {
+    "text": "삼각기둥"
+  },
+  "sourceQuote": "오른쪽 그림과 같은 삼각기둥 $ABC-DEF$에 대한 설명 중 옳"
+}

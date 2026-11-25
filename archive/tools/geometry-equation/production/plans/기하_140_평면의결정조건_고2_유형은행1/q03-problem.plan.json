@@ -1,0 +1,42 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PRISM",
+      "base": {
+        "kind": "REGULAR",
+        "n": 3,
+        "side": 4
+      },
+      "height": 5,
+      "names": "DEFABC"
+    }
+  ],
+  "caption": "윗밑면 ABC, 아랫밑면 DEF, 대응 평행 모서리 AD·BE·CF인 삼각기둥",
+  "accessibilityDescription": "서로 평행한 삼각형 ABC, DEF가 세 직사각형 옆면 ABED, BCFE, CFDA로 연결된다. 대응 옆모서리는 AD, BE, CF이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "평행한 두 삼각형 ABC와 DEF",
+      "mappedTo": [
+        "s1"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "옆모서리 AD·BE·CF는 각각 평행",
+      "mappedTo": [
+        "s1"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "대응 꼭짓점 6개의 실제 삼각기둥",
+    "가려진 모서리 자동 점선"
+  ],
+  "solidCaption": {
+    "text": "삼각기둥"
+  },
+  "sourceQuote": "다음 그림과 같은 삼각기둥 $ABC-DEF$에서 다음 중 한 평면"
+}
