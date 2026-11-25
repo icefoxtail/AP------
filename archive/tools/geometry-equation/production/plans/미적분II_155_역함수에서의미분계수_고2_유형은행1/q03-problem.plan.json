@@ -1,0 +1,95 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      0,
+      6.2,
+      -0.5,
+      6.2
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "19/8",
+          "-1/2",
+          "1/8"
+        ],
+        "domain": [
+          "5/2",
+          "11/2"
+        ],
+        "label": "y=f(x)"
+      },
+      {
+        "id": "identity",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "0",
+          "6"
+        ],
+        "style": "DASHED",
+        "label": "y=x"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "3",
+          "y": "2"
+        },
+        {
+          "id": "Q",
+          "x": "5",
+          "y": "3"
+        }
+      ],
+      "guides": [
+        {
+          "id": "gP",
+          "from": "P",
+          "axis": "BOTH"
+        },
+        {
+          "id": "gQ",
+          "from": "Q",
+          "axis": "BOTH"
+        }
+      ]
+    }
+  },
+  "caption": "증가하고 위로 굽는 대표 곡선 f가 (3,2),(5,3)을 지나며 각 점을 좌표축에 점선 투영한다.",
+  "accessibilityDescription": "증가하고 위로 굽는 대표 곡선 f가 (3,2),(5,3)을 지나며 각 점을 좌표축에 점선 투영한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문 곡선 식과 좌표축·그림 범위",
+      "mappedTo": "graphPlan.family;graphPlan.curves"
+    },
+    {
+      "id": "c2",
+      "condition": "f(3)=2 및 f(5)=3, y=x 아래 증가·위로 굽은 개형",
+      "mappedTo": "graphPlan.curves[0];graphPlan.overlays.points[0..1]"
+    },
+    {
+      "id": "c3",
+      "condition": "두 점에서 양축으로 수평·수직 점선",
+      "mappedTo": "graphPlan.overlays.guides[0..1]"
+    }
+  ],
+  "newVisualInformation": [
+    "주어진 두 점과 개형을 지키는 대표 이차함수로 원문의 임의 함수식이 정해졌다고 주장하지 않는다."
+  ],
+  "sourceQuote": "[그림: 직선 $y=x$ 아래에 증가하며 위로 굽은 곡선 $y=f(x)$를 그리고 곡선 위 $(3,2),(5,3)$을 표시한다. 두 점에서 좌표축까지 수평선과 수직선을 점선으로 긋는다.]"
+}

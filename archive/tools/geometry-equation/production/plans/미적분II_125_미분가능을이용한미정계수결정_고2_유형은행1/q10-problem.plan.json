@@ -1,0 +1,320 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "56"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "48"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "48"
+            },
+            {
+              "kind": "integer",
+              "value": "56"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "48"
+            },
+            {
+              "kind": "integer",
+              "value": "20"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "33"
+            },
+            {
+              "kind": "integer",
+              "value": "56"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "33"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G"
+  ],
+  "hiddenPointNames": [],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "s5",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "s6",
+      "refs": [
+        "B",
+        "F"
+      ]
+    },
+    {
+      "id": "s7",
+      "refs": [
+        "F",
+        "G"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a0",
+        "refs": [
+          "C",
+          "B",
+          "E"
+        ],
+        "value": 22.619864948,
+        "label": "α",
+        "arcs": 1,
+        "style": "ARC",
+        "labelKind": "MATH"
+      },
+      {
+        "id": "a1",
+        "refs": [
+          "E",
+          "B",
+          "F"
+        ],
+        "value": 36.869897646,
+        "label": "β",
+        "arcs": 1,
+        "style": "ARC",
+        "labelKind": "MATH"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "l0",
+        "ownerSegment": "s6",
+        "text": "65"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "B",
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "B",
+        "G",
+        "F"
+      ]
+    },
+    {
+      "id": "r2",
+      "refs": [
+        "B",
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "r3",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "caption": "직사각형 ABCD와 E∈CD, F∈AD, G∈BC, BE⊥EF, FG⊥BC를 그리고 BF=65·α·β를 표시한다.",
+  "accessibilityDescription": "직사각형 ABCD와 E∈CD, F∈AD, G∈BC, BE⊥EF, FG⊥BC를 그리고 BF=65·α·β를 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문의 이름 점·좌표·동일한 길이 및 원/변의 소속 관계",
+      "mappedTo": "mathPlan.nodes[0..6]"
+    },
+    {
+      "id": "c2",
+      "condition": "실제로 그릴 선분과 연결 관계",
+      "mappedTo": "displaySegments[0..7]"
+    },
+    {
+      "id": "c4",
+      "condition": "기준 동경·주어진 각의 구분",
+      "mappedTo": "planeMarks.angles[0..1]"
+    },
+    {
+      "id": "c5",
+      "condition": "수직 관계 및 직각 표시",
+      "mappedTo": "rightAngles[0..3]"
+    },
+    {
+      "id": "c6",
+      "condition": "원문이 명시한 길이/변수 라벨",
+      "mappedTo": "planeMarks.expressionLabels[0..0]"
+    }
+  ],
+  "newVisualInformation": [
+    "문제에 금지된 좌표 및 미지 길이 FG, BG의 수치를 그림에 표시하지 않는다."
+  ],
+  "sourceQuote": "[그림: $B=(0,0)$, $C=(48,0)$, $D=(48,56)$, $A=(0,56)$, $E=(48,20)$, $F=(33,56)$, $G=(33,0)$을 표시한다. 완성 그림에는 좌표와 미지 길이를 적지 않고 $BE,EF,BF,FG$와 두 각 및 직각 표시를 넣는다.]"
+}

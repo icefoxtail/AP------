@@ -1,0 +1,116 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -0.1,
+      2,
+      -0.25,
+      1.8
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "1/2"
+        ],
+        "domain": [
+          "0",
+          "2"
+        ],
+        "label": "y=x^2/2"
+      },
+      {
+        "id": "t1",
+        "kind": "LINE",
+        "coefficients": [
+          "-1/8",
+          "1/2"
+        ],
+        "domain": [
+          "0",
+          "2"
+        ],
+        "label": "y=x/2-1/8"
+      },
+      {
+        "id": "t2",
+        "kind": "LINE",
+        "coefficients": [
+          "-8/9",
+          "4/3"
+        ],
+        "domain": [
+          "0",
+          "2"
+        ],
+        "label": "t2"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "L",
+          "x": "1/4",
+          "y": "0"
+        },
+        {
+          "id": "R",
+          "x": "2/3",
+          "y": "0"
+        },
+        {
+          "id": "T",
+          "x": "11/12",
+          "y": "1/3"
+        }
+      ],
+      "polygons": [
+        {
+          "id": "iso",
+          "points": [
+            "L",
+            "R",
+            "T"
+          ],
+          "fill": "LIGHT"
+        }
+      ]
+    }
+  },
+  "caption": "포물선과 두 접선 및 x축으로 이루어진 이등변삼각형의 정확한 대표 도식을 나타낸다.",
+  "accessibilityDescription": "포물선과 두 접선 및 x축으로 이루어진 이등변삼각형의 정확한 대표 도식을 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문 곡선 식과 좌표축·그림 범위",
+      "mappedTo": "graphPlan.family;graphPlan.curves"
+    },
+    {
+      "id": "c2",
+      "condition": "포물선 y=x²/2 및 x=1/2과 x=a에서의 두 접선",
+      "mappedTo": "graphPlan.curves[0..2]"
+    },
+    {
+      "id": "c3",
+      "condition": "x축 절편 (1/4,0),(a/2,0), 접선 교점 ((a+1/2)/2,a/4) 및 삼각형",
+      "mappedTo": "graphPlan.overlays.points[0..2];graphPlan.overlays.polygons[0]"
+    },
+    {
+      "id": "c4",
+      "condition": "a>1/2 및 접선·x축 삼각형이 이등변",
+      "mappedTo": "graphPlan.curves[1..2];graphPlan.overlays.polygons[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "이등변 조건을 충족하는 기울기 4/3은 작도에만 사용하고 미지 a 값과 최종 9a² 답은 표시하지 않는다."
+  ],
+  "sourceQuote": "[그림: 포물선과 두 접선을 그리고 $x$축 위의 절편 $(\\frac14,0)$, $(\\frac a2,0)$ 및 접선의 교점 $(\\frac{a+1/2}{2},\\frac a4)$을 꼭짓점으로 하는 삼각형을 표시한다.]"
+}

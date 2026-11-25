@@ -1,0 +1,123 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-9/5",
+          "47/10",
+          "-9/10"
+        ]
+      },
+      {
+        "coefficients": [
+          "-3/5",
+          "19/5",
+          "-9/10",
+          "3/40"
+        ]
+      },
+      {
+        "coefficients": [
+          "17/5",
+          "3/5",
+          "-1/20"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "2",
+        "y": "4"
+      },
+      {
+        "x": "4",
+        "y": "5"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "1",
+        "5"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "functionName": "f",
+    "requiredPoints": [
+      {
+        "id": "P2",
+        "x": 2,
+        "y": 4
+      },
+      {
+        "id": "P4",
+        "x": 4,
+        "y": 5
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "identity",
+          "slope": "1",
+          "intercept": "0",
+          "label": "y=x"
+        }
+      ],
+      "points": [
+        {
+          "id": "P1",
+          "curveX": "1",
+          "coordinates": true
+        },
+        {
+          "id": "P5",
+          "curveX": "5"
+        },
+        {
+          "id": "Q",
+          "curveX": "2"
+        }
+      ],
+      "guides": [
+        {
+          "id": "g24",
+          "from": "Q",
+          "axis": "BOTH"
+        }
+      ]
+    }
+  },
+  "caption": "주어진 세 점을 지나는 미분가능한 증가·완만한 곡선의 대표 개형과 y=x 및 점선 투영을 표시한다.",
+  "accessibilityDescription": "주어진 세 점을 지나는 미분가능한 증가·완만한 곡선의 대표 개형과 y=x 및 점선 투영을 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문 곡선 식과 좌표축·그림 범위",
+      "mappedTo": "graphPlan.pieces;graphPlan.breakpoints;graphPlan.overlays.lines"
+    },
+    {
+      "id": "c2",
+      "condition": "f(1)=2, f(2)=4, f(4)=5; 곡선 증가, f′(2)>1 및 f′(5)<f′(4)<f′(2)",
+      "mappedTo": "graphPlan.pieces;graphPlan.breakpoints;graphPlan.requiredPoints;graphPlan.overlays.points"
+    },
+    {
+      "id": "c3",
+      "condition": "대칭 기준 직선 y=x와 (2,4)에서 축으로 점선 투영",
+      "mappedTo": "graphPlan.overlays.lines[0];graphPlan.overlays.guides[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "원문은 함수 식을 특정하지 않으므로 제약을 만족하는 조각 다항 대표를 선택했다. 정답과 임의 계수는 그림에 쓰지 않는다."
+  ],
+  "sourceQuote": "[그림: 좌표평면에 직선 $y=x$와 오른쪽 위로 증가하며 접선의 기울기가 오른쪽으로 갈수록 작아지는 곡선 $y=f(x)$를 그린다. 곡선 위에 $(1,2),(2,4),(4,5)$를 표시하고 $(2,4)$에서 두 좌표축에 점선을 내린다.]"
+}

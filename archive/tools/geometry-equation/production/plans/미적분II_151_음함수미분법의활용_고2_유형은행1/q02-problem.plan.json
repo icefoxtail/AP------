@@ -1,0 +1,161 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B"
+  ],
+  "hiddenPointNames": [],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "l0",
+        "ownerSegment": "s0",
+        "text": "x",
+        "unit": "m"
+      },
+      {
+        "id": "l1",
+        "ownerSegment": "s1",
+        "text": "y",
+        "unit": "m"
+      },
+      {
+        "id": "l2",
+        "ownerSegment": "s2",
+        "text": "13",
+        "unit": "m"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "A",
+        "O",
+        "B"
+      ]
+    }
+  ],
+  "caption": "수직 벽과 수평 지면 위 길이 13m 사다리, 밑변 x와 높이 y 및 직각을 표시한다.",
+  "accessibilityDescription": "수직 벽과 수평 지면 위 길이 13m 사다리, 밑변 x와 높이 y 및 직각을 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문의 이름 점·좌표·동일한 길이 및 원/변의 소속 관계",
+      "mappedTo": "mathPlan.nodes[0..2]"
+    },
+    {
+      "id": "c2",
+      "condition": "실제로 그릴 선분과 연결 관계",
+      "mappedTo": "displaySegments[0..2]"
+    },
+    {
+      "id": "c5",
+      "condition": "수직 관계 및 직각 표시",
+      "mappedTo": "rightAngles[0..0]"
+    },
+    {
+      "id": "c6",
+      "condition": "원문이 명시한 길이/변수 라벨",
+      "mappedTo": "planeMarks.expressionLabels[0..2]"
+    }
+  ],
+  "newVisualInformation": [
+    "x=5일 때 y=12의 대표 직각삼각형이며 dy/dx 답은 표시하지 않는다."
+  ],
+  "sourceQuote": "[그림: 벽과 지면이 만나는 점을 직각의 꼭짓점으로 표시하고, 지면을 따라 길이가 $x\\,\\mathrm{m}$인 밑변과 벽을 따라 길이가 $y\\,\\mathrm{m}$인 높이를 그린다. 두 끝을 잇는 빗변에 사다리의 길이 $13\\,\\mathrm{m}$를 표시한다.]"
+}

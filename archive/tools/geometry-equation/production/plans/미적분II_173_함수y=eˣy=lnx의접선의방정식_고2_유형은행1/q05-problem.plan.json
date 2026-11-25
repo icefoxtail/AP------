@@ -1,0 +1,70 @@
+{
+  "capability": "exp-log-pair-spike-v1",
+  "graphPlan": {
+    "family": "exp-log-pair",
+    "curves": [
+      {
+        "id": "f",
+        "family": "exponential-affine",
+        "coefficients": [
+          "2",
+          "1",
+          "0"
+        ],
+        "sourceDomain": {
+          "kind": "ALL_REALS"
+        }
+      },
+      {
+        "id": "g",
+        "family": "logarithmic-affine",
+        "coefficients": [
+          "1",
+          "1/2",
+          "0",
+          "0"
+        ],
+        "sourceDomain": {
+          "kind": "NATURAL_LOG_AFFINE"
+        }
+      }
+    ],
+    "identityLine": true,
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        }
+      ]
+    }
+  },
+  "caption": "서로 역함수 관계인 y=2e^x와 y=ln(x/2), 대칭축 y=x와 원점 O를 표시한다. 초월 접점과 삼각형은 미완성이다.",
+  "accessibilityDescription": "서로 역함수 관계인 y=2e^x와 y=ln(x/2), 대칭축 y=x와 원점 O를 표시한다. 초월 접점과 삼각형은 미완성이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문 곡선 식과 좌표축·그림 범위",
+      "mappedTo": "graphPlan.curves;graphPlan.identityLine;graphPlan.overlays.points"
+    },
+    {
+      "id": "c2",
+      "condition": "역함수 곡선 y=2e^x, y=ln(x/2)와 y=x 대칭선",
+      "mappedTo": "graphPlan.curves;graphPlan.identityLine"
+    },
+    {
+      "id": "c3",
+      "condition": "원점과 접점 A=(1,2e), B=(2e,1), △OAB",
+      "mappedTo": "graphPlan.overlays.points[0];ENGINE_CAPABILITY_PENDING: 초월 좌표 2e의 overlay 및 삼각형"
+    }
+  ],
+  "newVisualInformation": [
+    "ENGINE_CAPABILITY_PENDING: 정확한 초월수 2e 좌표의 A,B와 원점을 이은 삼각형 OAB를 그리지 못한다."
+  ],
+  "sourceQuote": "[그림: 두 곡선과 대칭축 $y=x$를 그리고 $A(1,2e), B(2e,1)$을 원점과 이어 삼각형을 표시한다.]"
+}

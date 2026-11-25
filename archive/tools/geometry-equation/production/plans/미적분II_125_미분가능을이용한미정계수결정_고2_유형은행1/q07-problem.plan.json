@@ -1,0 +1,213 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "8",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "6",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "24",
+              "denominator": "13"
+            },
+            {
+              "kind": "rational",
+              "numerator": "10",
+              "denominator": "13"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "R",
+    "P",
+    "Q"
+  ],
+  "hiddenPointNames": [],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "O",
+        "R"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "O",
+        "P"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "O",
+        "Q"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "k"
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a0",
+        "refs": [
+          "R",
+          "O",
+          "P"
+        ],
+        "value": 36.869897646,
+        "label": "α",
+        "arcs": 1,
+        "style": "ARC",
+        "labelKind": "MATH"
+      },
+      {
+        "id": "a1",
+        "refs": [
+          "R",
+          "O",
+          "Q"
+        ],
+        "value": 22.619864948,
+        "label": "β",
+        "arcs": 1,
+        "style": "ARC",
+        "labelKind": "MATH"
+      }
+    ]
+  },
+  "caption": "원점 중심의 반지름 2인 원, 양의 x축과 각 α·β를 이루는 두 동경 OP·OQ 및 현 PQ를 나타낸다.",
+  "accessibilityDescription": "원점 중심의 반지름 2인 원, 양의 x축과 각 α·β를 이루는 두 동경 OP·OQ 및 현 PQ를 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문의 이름 점·좌표·동일한 길이 및 원/변의 소속 관계",
+      "mappedTo": "mathPlan.nodes[0..3]"
+    },
+    {
+      "id": "c2",
+      "condition": "실제로 그릴 선분과 연결 관계",
+      "mappedTo": "displaySegments[0..3]"
+    },
+    {
+      "id": "c3",
+      "condition": "원의 중심·반지름과 원주",
+      "mappedTo": "mathPlan.nodes[4..4];displayCircles[0..0]"
+    },
+    {
+      "id": "c4",
+      "condition": "기준 동경·주어진 각의 구분",
+      "mappedTo": "planeMarks.angles[0..1]"
+    },
+    {
+      "id": "c8",
+      "condition": "원문 P=(2cosα,2sinα), Q=(2cosβ,2sinβ)의 기호 좌표 라벨",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: PLANE_FIGURE의 일반 삼각함수 기호 좌표 라벨 미지원; 정확한 대표 점과 α·β 호만 표시"
+    }
+  ],
+  "newVisualInformation": [
+    "0<β<α<π/2인 정확한 대표 좌표 P=(8/5,6/5), Q=(24/13,10/13). α·β 일반식은 문제 본문을 유지하고 그림에 임의의 답을 추가하지 않는다.",
+    "ENGINE_CAPABILITY_PENDING: 대표 좌표와 달리 P,Q의 미지 각 일반식 좌표는 점 옆에 따로 쓰지 못한다."
+  ],
+  "sourceQuote": "[그림: 중심 $O=(0,0)$, 반지름 $2$인 원에 $P=(2\\cos\\alpha,2\\sin\\alpha)$, $Q=(2\\cos\\beta,2\\sin\\beta)$를 표시하고 $OP,OQ,PQ$를 잇는다.]"
+}

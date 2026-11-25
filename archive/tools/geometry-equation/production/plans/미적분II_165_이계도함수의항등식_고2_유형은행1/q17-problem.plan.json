@@ -1,0 +1,156 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "2"
+        ]
+      },
+      {
+        "coefficients": [
+          "19/2",
+          "-1/2"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "3",
+        "y": "8"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "9"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "functionName": "f",
+    "referenceCurves": [
+      {
+        "id": "g",
+        "name": "g",
+        "pieces": [
+          {
+            "coefficients": [
+              "3",
+              "-1"
+            ]
+          },
+          {
+            "coefficients": [
+              "-1",
+              "1"
+            ]
+          }
+        ],
+        "breakpoints": [
+          {
+            "x": "2",
+            "y": "1"
+          }
+        ],
+        "sourceDomain": {
+          "kind": "INTERVAL",
+          "range": [
+            "0",
+            "8"
+          ],
+          "states": [
+            "CLOSED",
+            "CLOSED"
+          ]
+        },
+        "intersectionX": [
+          "1/3",
+          "7"
+        ],
+        "color": "WARM"
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "F3",
+        "x": 3,
+        "y": 8
+      },
+      {
+        "id": "G2",
+        "x": 2,
+        "y": 1
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "F0",
+          "x": "0",
+          "y": "2",
+          "unnamed": true,
+          "coordinates": true
+        },
+        {
+          "id": "F9",
+          "x": "9",
+          "y": "5",
+          "unnamed": true,
+          "coordinates": true
+        },
+        {
+          "id": "G0",
+          "x": "0",
+          "y": "3",
+          "unnamed": true,
+          "coordinates": true
+        },
+        {
+          "id": "G8",
+          "x": "8",
+          "y": "7",
+          "unnamed": true,
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "f와 g의 두 꺾은선 그래프를 공통 좌표축에 그려 곱·몫·합성함수의 도함수 읽기를 돕는다.",
+  "accessibilityDescription": "f와 g의 두 꺾은선 그래프를 공통 좌표축에 그려 곱·몫·합성함수의 도함수 읽기를 돕는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문 곡선 식과 좌표축·그림 범위",
+      "mappedTo": "graphPlan.pieces;graphPlan.breakpoints;graphPlan.referenceCurves[0].pieces;graphPlan.referenceCurves[0].breakpoints"
+    },
+    {
+      "id": "c2",
+      "condition": "f:(0,2)→(3,8)→(9,5), 기울기 2와 −1/2",
+      "mappedTo": "graphPlan.pieces;graphPlan.breakpoints;graphPlan.sourceDomain"
+    },
+    {
+      "id": "c3",
+      "condition": "g:(0,3)→(2,1)→(8,7), 기울기 −1과 1",
+      "mappedTo": "graphPlan.referenceCurves[0].pieces;graphPlan.referenceCurves[0].breakpoints"
+    },
+    {
+      "id": "c4",
+      "condition": "두 꺾은선의 양 끝 좌표 네 개를 좌표 라벨로 표시",
+      "mappedTo": "graphPlan.overlays.points[0..3]"
+    }
+  ],
+  "newVisualInformation": [
+    "원문의 여섯 꼭짓점은 조각식·정의역 끝점으로 정확히 고정한다. 구하는 미분계수는 표시하지 않는다."
+  ],
+  "sourceQuote": "[그림: 좌표평면에서 $y=f(x)$는 $(0,2),(3,8),(9,5)$를 순서대로 선분으로 잇고, $y=g(x)$는 $(0,3),(2,1),(8,7)$을 순서대로 선분으로 잇는다. 두 꺾은선의 이름과 꼭짓점 좌표를 표시한다.]"
+}

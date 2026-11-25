@@ -1,0 +1,243 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "T",
+    "H",
+    "F",
+    "E"
+  ],
+  "hiddenPointNames": [],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "B",
+        "T"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "B",
+        "F"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "F",
+        "E"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "H",
+        "E"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "E",
+        "T"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a0",
+        "refs": [
+          "H",
+          "E",
+          "T"
+        ],
+        "value": 36.869897646,
+        "label": "θ",
+        "arcs": 1,
+        "style": "ARC",
+        "labelKind": "MATH"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "l0",
+        "ownerSegment": "s0",
+        "text": "8",
+        "unit": "m"
+      },
+      {
+        "id": "l1",
+        "ownerSegment": "s2",
+        "text": "2",
+        "unit": "m"
+      },
+      {
+        "id": "l2",
+        "ownerSegment": "s1",
+        "text": "x",
+        "unit": "m"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "B",
+        "F",
+        "E"
+      ]
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "B",
+        "H",
+        "E"
+      ]
+    }
+  ],
+  "caption": "높이 8m의 깃대·눈높이 2m의 사람과 수평거리 x, 눈에서 꼭대기를 보는 각 θ를 직각 도식으로 보인다.",
+  "accessibilityDescription": "높이 8m의 깃대·눈높이 2m의 사람과 수평거리 x, 눈에서 꼭대기를 보는 각 θ를 직각 도식으로 보인다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문의 이름 점·좌표·동일한 길이 및 원/변의 소속 관계",
+      "mappedTo": "mathPlan.nodes[0..4]"
+    },
+    {
+      "id": "c2",
+      "condition": "실제로 그릴 선분과 연결 관계",
+      "mappedTo": "displaySegments[0..4]"
+    },
+    {
+      "id": "c4",
+      "condition": "기준 동경·주어진 각의 구분",
+      "mappedTo": "planeMarks.angles[0..0]"
+    },
+    {
+      "id": "c5",
+      "condition": "수직 관계 및 직각 표시",
+      "mappedTo": "rightAngles[0..1]"
+    },
+    {
+      "id": "c6",
+      "condition": "원문이 명시한 길이/변수 라벨",
+      "mappedTo": "planeMarks.expressionLabels[0..2]"
+    }
+  ],
+  "newVisualInformation": [
+    "x=8인 대표 배치이며 θ의 미분계수 결과를 나타내지 않는다."
+  ],
+  "sourceQuote": "[그림: 깃대 밑동과 사람의 발을 수평으로 연결해 $x\\,\\mathrm{m}$를 표시한다. 깃대 높이는 $8\\,\\mathrm{m}$, 눈높이는 $2\\,\\mathrm{m}$이고 눈에서 꼭대기로 향하는 선분과 눈높이 수평선이 이루는 각에 $\\theta$를 표시한다.]"
+}
