@@ -744,8 +744,8 @@ window.questionBank = [
     },
     "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_매산고_1학기_중간_고1_유사2_plans/q15-solution.plan.json",
     "solutionImage": "assets/images/26_매산고_1학기_중간_고1_유사2/q15-solution.svg",
-    "solutionImageAlt": "차함수 h(x)=−(x+2)(x−4)의 두 영점 A(−2,0), B(4,0)와 꼭짓점 V(1,9)",
-    "solutionImageCaption": "차함수 h(x)=−(x+2)(x−4)의 두 영점 A(−2,0), B(4,0)와 꼭짓점 V(1,9)",
+    "solutionImageAlt": "이차함수 h(x)=−(x+2)(x−4)의 두 영점 A(−2,0), B(4,0)와 꼭짓점 V(1,9)",
+    "solutionImageCaption": "이차함수 h(x)=−(x+2)(x−4)의 두 영점 A(−2,0), B(4,0)와 꼭짓점 V(1,9)",
     "solutionImageSize": "full"
   },
   {
