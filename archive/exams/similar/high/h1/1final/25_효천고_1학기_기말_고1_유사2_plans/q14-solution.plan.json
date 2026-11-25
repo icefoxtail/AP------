@@ -1,0 +1,28 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [{ "coefficients": ["0", "0", "1"] }],
+    "breakpoints": [],
+    "sourceDomain": { "kind": "ALL_REALS" },
+    "domain": [-3, 4],
+    "viewport": [-3, 4, -3, 12],
+    "requiredPoints": [
+      { "id": "L", "x": -1, "y": 1 },
+      { "id": "V", "x": 0, "y": 0 },
+      { "id": "T", "x": 1, "y": 1 }
+    ],
+    "referenceLines": [{ "id": "t", "slope": "2", "intercept": "-1", "intersectionX": ["1"] }],
+    "axisTickValues": { "x": [-1, 1], "y": [1] }
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "최소를 주는 k=1에서 f(x)=x²는 x=-1과 1에서 같은 값 1이고, 직선 y=2x-1에 (1,1)에서 접한다.",
+  "accessibilityDescription": "위로 열린 포물선 y=x제곱과 직선 y=2x-1이 (1,1)에서 접한다. 포물선 위 (-1,1)과 (1,1)은 높이가 같다.",
+  "sourceQuote": "f(-1)=f(k), f(x)의 그래프와 직선 y=2x-1은 접한다",
+  "sourceConditions": [
+    { "id": "c1", "condition": "해설에서 k=1인 최소 사례의 a=0,b=0, f(x)=x²", "mappedTo": ["graphPlan.pieces"] },
+    { "id": "c2", "condition": "f(-1)=f(1)=1", "mappedTo": ["graphPlan.requiredPoints"] },
+    { "id": "c3", "condition": "y=2x-1과 y=x²는 x=1에서 판별식 0으로 접함", "mappedTo": ["graphPlan.referenceLines[0].intersectionX", "graphPlan.requiredPoints"] }
+  ],
+  "newVisualInformation": ["좌우 같은 높이의 두 점과 직선의 접점을 함께 보여 준다", "k=1의 해설 대표 사례로서 다른 자연수 k의 모든 함수를 뜻하지 않는다"]
+}

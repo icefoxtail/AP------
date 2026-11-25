@@ -1,0 +1,21 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [{
+      "kind": "SET",
+      "label": "정수 해",
+      "pieces": [{ "lo": { "value": "1/2", "state": "CLOSED" }, "hi": { "value": "1", "state": "CLOSED" } }],
+      "integerPoints": true
+    }]
+  },
+  "numberLineCaption": { "text": "새 이차부등식의 정수해" },
+  "caption": "a=2,b=4를 구하면 4x²-6x+2≤0, 즉 1/2≤x≤1이고 정수는 1 하나이다.",
+  "accessibilityDescription": "수직선에 1/2에서 1까지 양 끝을 포함한 짧은 구간이 있으며 정수점 1만 포함된다.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "원래 이차부등식의 해 1<x<2에서 a=2,b=4", "mappedTo": ["numberLine.rows[0].pieces"] },
+    { "id": "c2", "condition": "새 부등식 2(2x-1)(x-1)≤0의 해 1/2≤x≤1", "mappedTo": ["numberLine.rows[0].pieces"] },
+    { "id": "c3", "condition": "닫힌 오른쪽 끝의 정수 x=1만 포함됨", "mappedTo": ["numberLine.rows[0].integerPoints"] }
+  ],
+  "newVisualInformation": ["1/2와 1의 닫힌 끝점을 정수 눈금과 비교해 1만 정수해가 되는 이유를 보인다"]
+}

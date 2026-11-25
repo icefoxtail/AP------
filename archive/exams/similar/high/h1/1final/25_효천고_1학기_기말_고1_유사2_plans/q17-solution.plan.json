@@ -1,0 +1,21 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [{
+      "kind": "SET",
+      "label": "공통 해",
+      "pieces": [{ "lo": { "value": "2", "state": "OPEN" }, "hi": { "value": "4", "state": "OPEN" } }],
+      "integerPoints": true
+    }]
+  },
+  "numberLineCaption": { "text": "b=3일 때 연립부등식의 공통 정수 해" },
+  "caption": "b=3에서 1<x<4와 (x-1)(x-2)>0의 교집합은 2<x<4이며 정수해는 3 하나이다.",
+  "accessibilityDescription": "수직선의 2와 4는 제외된 열린 점이고 그 사이에 정수 3 하나가 표시된다.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "첫 부등식 (x-1)(x-4)<0에서 1<x<4", "mappedTo": ["numberLine.rows[0].pieces"] },
+    { "id": "c2", "condition": "해설의 유일한 허용 매개변수 b=3에서 둘째 부등식 (x-1)(x-2)>0", "mappedTo": ["numberLine.rows[0].pieces"] },
+    { "id": "c3", "condition": "공통 범위 2<x<4와 정수 3 하나", "mappedTo": ["numberLine.rows[0].pieces", "numberLine.rows[0].integerPoints"] }
+  ],
+  "newVisualInformation": ["열린 양끝을 표시한 공통 범위에 정수 3만 남는 모습을 확인한다", "b=3이라는 해설 사례에만 해당하며 다른 b의 해집합을 대신하지 않는다"]
+}
