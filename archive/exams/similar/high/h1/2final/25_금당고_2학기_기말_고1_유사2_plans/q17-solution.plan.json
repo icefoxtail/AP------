@@ -1,0 +1,43 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "axisVariable": false,
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "개수 조건",
+        "color": "BLUE",
+        "pieces": [
+          {
+            "lo": { "value": "32", "state": "CLOSED" },
+            "hi": { "value": "47", "state": "CLOSED" }
+          }
+        ],
+        "integerPoints": true
+      },
+      {
+        "kind": "POINTS",
+        "label": "약수 조건",
+        "band": false,
+        "within": 1,
+        "points": [
+          { "id": "K1", "value": "35", "hideName": true },
+          { "id": "K2", "value": "42", "hideName": true }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": { "text": "개수 범위와 약수 조건" },
+  "caption": "A∩C=∅이므로 12≤n(A∪C)≤15는 32≤k≤47을 준다. 이 범위에서 A∩B의 원소 합이 12인 두 경우를 검사하면 k=35 또는 42이다.",
+  "accessibilityDescription": "위 수직선은 32부터 47까지의 정수 범위를 나타내고, 아래 수직선은 그 범위 중 조건을 모두 만족하는 35와 42를 강조한다.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "A={2,3,5,7}, A∩C=∅", "mappedTo": "numberLine.rows[0]의 개수 조건 해석에 사용" },
+    { "id": "c2", "condition": "12≤4+floor(k/4)≤15", "mappedTo": "numberLine.rows[0].pieces[0]=[32,47], integerPoints=true" },
+    { "id": "c3", "condition": "A∩B={5,7} 또는 {2,3,7}", "mappedTo": "numberLine.rows[1].points[K1]=35, [K2]=42" },
+    { "id": "c4", "condition": "35와 42는 둘 다 [32,47]에 속함", "mappedTo": "numberLine.rows[1].within=1" }
+  ],
+  "newVisualInformation": [
+    "A와 C가 서로소이므로 개수 조건이 k의 연속된 정수 범위를 정함을 보여 준다.",
+    "범위 안의 모든 정수 중 두 약수 조합 조건을 통과하는 값이 35와 42뿐임을 분리해 표시한다."
+  ]
+}
