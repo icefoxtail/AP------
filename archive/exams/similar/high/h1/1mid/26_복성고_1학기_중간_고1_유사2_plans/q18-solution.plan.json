@@ -1,0 +1,114 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "-2",
+      "-1",
+      "1"
+    ],
+    "domain": [
+      -3.2,
+      4.2
+    ],
+    "viewport": [
+      -4,
+      5,
+      -4,
+      8
+    ],
+    "axisSqueeze": false,
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "L",
+          "slope": "-1",
+          "intercept": "2",
+          "label": "y=-x+2",
+          "labelAt": "END"
+        }
+      ],
+      "points": [
+        {
+          "id": "A",
+          "axis": "x",
+          "value": "2"
+        },
+        {
+          "id": "B",
+          "axis": "x",
+          "value": "-1"
+        },
+        {
+          "id": "D",
+          "axis": "y",
+          "value": "2"
+        },
+        {
+          "id": "C",
+          "curveX": "-2"
+        },
+        {
+          "id": "Z",
+          "x": "0",
+          "y": "0"
+        }
+      ],
+      "segments": [
+        {
+          "id": "ZC",
+          "from": "Z",
+          "to": "C",
+          "dashed": true
+        }
+      ],
+      "polygons": [
+        {
+          "id": "S1",
+          "points": [
+            "A",
+            "Z",
+            "D"
+          ],
+          "fill": "LIGHT"
+        },
+        {
+          "id": "S2",
+          "points": [
+            "B",
+            "Z",
+            "D",
+            "C"
+          ],
+          "fill": "MEDIUM"
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "Z": "O"
+  },
+  "caption": "포물선 y=x²-x-2와 직선 y=-x+2의 교점 A(2,0), C(-2,4) 및 두 영역 S₁, S₂의 넓이를 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "q18s1",
+      "condition": "a=2, A(2,0), B(-1,0), C(-2,4), D(0,2)",
+      "mappedTo": [
+        "graphPlan.coefficients",
+        "graphPlan.overlays"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "삼각형 AOD와 사각형 BODC의 영역 관계를 좌표평면에 나누어 보인다."
+  ],
+  "sourceQuote": "$BODC$를 $OC$로 나누면"
+}

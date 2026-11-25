@@ -1,0 +1,74 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "0",
+      "18",
+      "-2"
+    ],
+    "domain": [
+      0,
+      6
+    ],
+    "viewport": [
+      -1,
+      7,
+      -6,
+      47
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": 1,
+        "y": 16
+      },
+      {
+        "id": "Q",
+        "x": 5,
+        "y": 40
+      },
+      {
+        "id": "V",
+        "x": 4.5,
+        "y": 40.5
+      }
+    ],
+    "exactCoordinates": {
+      "P": [
+        "1",
+        "16"
+      ],
+      "Q": [
+        "5",
+        "40"
+      ],
+      "V": [
+        "9/2",
+        "81/2"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "f(x)=-2x²+18x의 구간 [1,5] 양 끝값과 꼭짓점 (9/2,81/2)을 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "q22s1",
+      "condition": "a=3에서 f(x)=-2x²+18x, 끝값 f(1)=16, f(5)=40, 꼭짓점값 81/2",
+      "mappedTo": [
+        "graphPlan.coefficients",
+        "graphPlan.requiredPoints"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "최솟값은 왼쪽 끝, 최댓값은 오른쪽 끝에 가까운 내부 꼭짓점에서 생긴다."
+  ],
+  "sourceQuote": "꼭짓점 $x=9/2$가 구간에 있으므로"
+}
