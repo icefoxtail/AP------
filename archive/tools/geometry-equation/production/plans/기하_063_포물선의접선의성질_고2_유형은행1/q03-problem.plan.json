@@ -1,0 +1,20 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"PARABOLA","vertex":["0","0"],"p":"3","axis":"X"},
+  "points":[
+    {"id":"P","kind":"ON_CONIC","x":"1","branch":"POS","coordinates":true},
+    {"id":"T","kind":"LINE_LINE","lines":["t","axis"],"coordinates":true},
+    {"id":"F","kind":"FOCUS","coordinates":true},
+    {"id":"Q","kind":"POINT","x":"-3","y":"2*sqrt(3)"}
+  ],
+  "lines":[{"id":"t","tangent":true,"at":"P"},{"id":"axis","y":"0","hidden":true}],
+  "segments":[{"id":"TF","from":"T","to":"F"},{"id":"FP","from":"F","to":"P"},{"id":"PQ","from":"P","to":"Q"},{"id":"QT","from":"Q","to":"T"}],
+  "polygons":[{"id":"para","points":["T","F","P","Q"],"fill":"NONE"}],
+  "caption":"접점 P와 초점 F가 만드는 평행사변형 TFPQ",
+  "accessibilityDescription":"포물선 y²=12x 위 제1사분면의 P에서 접선이 x축의 T와 만난다. 양의 x축 위의 초점 F와 제2사분면의 Q를 이어 T-F-P-Q 순서로 평행사변형을 만들었다. 묻는 Q의 x좌표는 표시하지 않는다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"p=3, P=(1,2√3), 접선의 x축 교점 T=(-1,0), 초점 F=(3,0)을 수학적으로 직접 확인한다. T,F,P의 주어진 점 좌표만 실제 라벨에 표시한다.","mappedTo":["P","t","T","F"]},
+    {"id":"c2","condition":"평행사변형 TFPQ의 제2사분면 꼭짓점은 원문 그림에 Q=(-3,2√3)로 적혀 있으나 x_Q가 바로 질문의 정답이므로 숫자 좌표 라벨을 의도적으로 비표시한다. PQ∥TF, QT∥FP는 실제 네 선분과 계산 좌표로 구현한다.","mappedTo":["Q","TF","FP","PQ","QT","para"]}
+  ],
+  "newVisualInformation":["정확한 평행사변형 네 꼭짓점과 마주 보는 평행한 변 구현","원문 그림 설명의 정답 누출 Q 좌표는 비표시; 평행변 짝 표식은 엔진 후속 검토"]
+}

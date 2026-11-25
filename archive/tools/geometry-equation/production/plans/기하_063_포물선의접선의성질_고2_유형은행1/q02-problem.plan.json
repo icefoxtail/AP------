@@ -1,0 +1,20 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"PARABOLA","vertex":["0","0"],"p":"2","axis":"X"},
+  "points":[
+    {"id":"F","kind":"FOCUS","coordinates":true},
+    {"id":"P","kind":"ON_CONIC","x":"9/2","branch":"POS"},
+    {"id":"H","kind":"FOOT","from":"P","onto":"d","rightAngle":true},
+    {"id":"Q","kind":"LINE_LINE","lines":["t","axis"]}
+  ],
+  "lines":[{"id":"t","tangent":true,"at":"P"},{"id":"d","role":"DIRECTRIX","label":"x=-2"},{"id":"axis","y":"0","hidden":true}],
+  "segments":[{"id":"FP","from":"F","to":"P"},{"id":"PH","from":"P","to":"H"},{"id":"HQ","from":"H","to":"Q"},{"id":"QF","from":"Q","to":"F"}],
+  "polygons":[{"id":"rhombus","points":["F","P","H","Q"],"fill":"NONE"}],
+  "caption":"포물선 준선과 접선으로 만든 마름모 FPHQ(대표 a=3/2)",
+  "accessibilityDescription":"오른쪽으로 열린 포물선과 x=-2인 준선이 있다. 위쪽 가지의 P에서 준선으로 내린 수선의 발 H, 접선의 x축 교점 Q, 초점 F를 순서대로 연결하여 기울어진 마름모 FPHQ를 그렸다. H에는 수선의 직각 표시가 있다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"원문 P=(2a²,4a), a>0에서 네 점 F=(2,0),H=(-2,4a),Q=(-2a²,0)은 수학적으로 고정된 함수 관계다. a=3/2라는 모양 대표값을 선택하면 P=(9/2,6),H=(-2,6),Q=(-9/2,0),F=(2,0)으로 비정사각형 마름모가 된다.","mappedTo":["P","H","Q","F","d","t"]},
+    {"id":"c2","condition":"FP=PH=HQ=QF=13/2는 대표 구성의 검산값이고 원문의 빈칸 (나)나 넓이 (다)를 드러내서는 안 된다. 실제 사변형과 수선 직각은 그려졌지만 네 변의 등변 기호·문자 좌표 P(2a²,4a),H(-2,4a),Q(-2a²,0)는 현 conic plan 지원 대기다.","mappedTo":["FP","PH","HQ","QF","rhombus","H"]}
+  ],
+  "newVisualInformation":["비정사각형 대표 마름모로 원문의 일반 성질을 시각화","동일변 표시·문자 좌표는 ENGINE_CAPABILITY_PENDING으로 남기고 빈칸 정답 비표시"]
+}

@@ -1,0 +1,18 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"PARABOLA","vertex":["0","0"],"p":"1/2","axis":"X"},
+  "points":[
+    {"id":"P","kind":"ON_CONIC","x":"2","branch":"POS"},
+    {"id":"T","kind":"LINE_LINE","lines":["t","axis"]},
+    {"id":"F","kind":"FOCUS"}
+  ],
+  "lines":[{"id":"t","tangent":true,"at":"P"},{"id":"axis","y":"0","hidden":true}],
+  "segments":[{"id":"FP","from":"F","to":"P"},{"id":"FT","from":"F","to":"T"}],
+  "caption":"포물선의 임의 접점 P, 접선의 x축 교점 T와 초점 F(대표 x₁=2)",
+  "accessibilityDescription":"오른쪽으로 열린 포물선 위쪽 가지의 점 P에서 접선이 x축과 T에서 만난다. 초점 F는 양의 x축 위에 있고 선분 FP와 FT가 그려져 있다. 문자 좌표를 가진 임의의 점에 대한 설명을 위해 양의 x좌표 한 가지를 대표로 구성했다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"원문은 꼭짓점이 아닌 임의의 점 P(x₁,y₁)이며 y²=2x, p=1/2다. x₁>0인 위쪽 가지 대표값 x₁=2,y₁=2로 위치만 정하고 P=(2,2),T=(-2,0),F=(1/2,0)을 엔진으로 작도한다. 아래쪽 가지도 초점-접선 교점 거리 관계는 같다.","mappedTo":["P","T","F","t"]},
+    {"id":"c2","condition":"FT=FP=5/2는 이 대표 그림의 계산값일 뿐 원문의 증명 (가)·(나)·(다)와 맞는 일반 식을 학생에게 미리 밝히지 않는다. FP와 FT 두 변만 표시한다. 원문 문자 좌표 P(x₁,y₁), T(-x₁,0) 및 같은 길이 표식은 엔진 표현 지원 대기다.","mappedTo":["FP","FT"]}
+  ],
+  "newVisualInformation":["임의 x₁>0에서 성립하는 초점과 접선 절편의 상대 위치를 대표 구성으로 표시","문자 좌표·두 선분 같음 표식은 ENGINE_CAPABILITY_PENDING이며 증명 빈칸 답 비노출"]
+}

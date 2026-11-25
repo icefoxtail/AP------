@@ -1,0 +1,24 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"PARABOLA","vertex":["0","0"],"p":"3","axis":"X"},
+  "points":[
+    {"id":"P","kind":"ON_CONIC","x":"3","branch":"POS","coordinates":true},
+    {"id":"F","kind":"FOCUS","coordinates":true},
+    {"id":"H","kind":"FOOT","from":"P","onto":"d","rightAngle":true,"coordinates":true},
+    {"id":"T","kind":"LINE_LINE","lines":["t","axis"],"coordinates":true}
+  ],
+  "lines":[
+    {"id":"t","tangent":true,"at":"P"},
+    {"id":"d","role":"DIRECTRIX","label":"x=-3"},
+    {"id":"fh","slope":"-1","intercept":"3"},
+    {"id":"axis","y":"0","hidden":true}
+  ],
+  "segments":[{"id":"PH","from":"P","to":"H"},{"id":"FH","from":"F","to":"H"}],
+  "caption":"접점 P, 초점 F, 준선 위의 수선의 발 H와 직선 FH",
+  "accessibilityDescription":"포물선 y²=12x 위의 제1사분면 P에서 접선이 음의 x축과 만나며, 초점 F(3,0)와 준선 x=-3 위의 발 H(-3,6)를 이은 직선 FH가 그려져 있다. P에서 H로 내려간 선분 끝에 직각 표시가 있다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"원문 y²=12x와 접선의 x절편 -3에서 P=(3,6),F=(3,0), 준선 x=-3, H=(-3,6), 접선과 x축 교점 T=(-3,0)을 정확히 구한다. 원문에서 이름 없는 이 교점은 좌표를 판독할 수 있도록 편의상 T(-3,0)로 표기한다.","mappedTo":["P","F","H","T","d","t"]},
+    {"id":"c2","condition":"F,H의 직선은 x+y=3으로 기울기 -1, 절편 3이다. 질문의 점 (a,-3)은 그 위에 있지만 a가 정답이므로 별도 좌표 점이나 숫자 a를 그리지 않는다. PH⊥준선은 FOOT.rightAngle로 실제 표시한다.","mappedTo":["fh","FH","PH","H"]}
+  ],
+  "newVisualInformation":["원문 FH 직선을 실제 기울기·절편 및 끝점으로 표시","직각과 준선을 엔진 필드로 구현, 미지 a 점 비표시"]
+}
