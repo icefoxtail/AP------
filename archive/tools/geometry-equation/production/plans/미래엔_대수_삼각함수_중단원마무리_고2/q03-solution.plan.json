@@ -1,0 +1,33 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes": [
+      {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"10"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B","op":"POLAR_POINT","inputs":["O","A"],"args":{"length":{"kind":"integer","value":"10"},"angleDeg":{"kind":"integer","value":"108"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"k","op":"CIRCLE_CENTER_RADIUS","inputs":["O"],"args":{"radius":{"kind":"integer","value":"10"}},"outputType":"CIRCLE","factRole":"DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "displayPoints": ["O","A","B"],
+  "hiddenPointNames": ["O","A","B"],
+  "hiddenPointStyle": "NONE",
+  "displayCircles": [],
+  "displaySegments": [{"id":"sOA","refs":["O","A"]},{"id":"sOB","refs":["O","B"]}],
+  "planeMarks": {
+    "angles":[{"id":"angle","refs":["A","O","B"],"value":108,"label":"108","arcs":1,"style":"ARC","factRole":"CONCLUSION"}],
+    "arcs":[{"id":"arc","circle":"k","center":"O","from":"A","to":"B","side":"MINOR","label":"6pi","labelKind":"MATH","factRole":"GIVEN"}],
+    "expressionLabels":[{"id":"radius","ownerSegment":"sOA","text":"10"}]
+  },
+  "coordinateCanvas":{"width":550,"height":420},
+  "sourceQuote":"반지름의 길이가 $10$이고 호의 길이가 $6\\pi$인 부채꼴",
+  "caption":"반지름 10, 호 길이 6π로부터 중심각 3π/5(108°)가 계산되는 부채꼴이다.",
+  "accessibilityDescription":"축 없는 부채꼴에서 가로 반지름에 10, 둥근 호에 6파이, 중심각에 108도가 표시되어 있다.",
+  "sourceConditions":[
+    {"id":"M03-a","condition":"두 반지름 10","mappedTo":"mathPlan.nodes[A,B,k],planeMarks.expressionLabels[radius]"},
+    {"id":"M03-b","condition":"호 길이 6π","mappedTo":"planeMarks.arcs[arc]"},
+    {"id":"M03-c","condition":"중심각 (6π)/10=3π/5=108°","mappedTo":"mathPlan.nodes[B] 및 planeMarks.angles[angle]"}
+  ],
+  "newVisualInformation":["부채꼴의 반지름·호·중심각을 각기 다른 위치에 놓아 θ=l/r의 입력과 출력을 구분한다."]
+}

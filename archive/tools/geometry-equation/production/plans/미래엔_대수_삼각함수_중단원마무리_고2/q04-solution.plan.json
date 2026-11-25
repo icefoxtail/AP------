@@ -1,0 +1,29 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion":"construction-spike-v1",
+    "realization":{"recipeId":"SOURCE_COORDINATE_AXES_v1","unit":"source-coordinate","reflectionEquivalent":false},
+    "nodes":[
+      {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"P","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-2"},{"kind":"integer","value":"1"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"H","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-2"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "displayPoints":["O","P","H"],
+  "hiddenPointNames":["H"],
+  "hiddenPointStyle":"NONE",
+  "displaySegments":[{"id":"sOP","refs":["O","P"]},{"id":"sOH","refs":["O","H"]},{"id":"sHP","refs":["H","P"],"dashed":true}],
+  "rightAngles":[{"id":"rH","refs":["O","H","P"]}],
+  "coordinateLabels":["P"],
+  "planeMarks":{"expressionLabels":[{"id":"lenx","ownerSegment":"sOH","text":"2"},{"id":"leny","ownerSegment":"sHP","text":"1"}]},
+  "coordinateCanvas":{"width":550,"height":410},
+  "sourceQuote":"점 $\\mathrm{P}(-2,\\, 1)$을 지나는 동경 $\\mathrm{OP}$",
+  "caption":"제2사분면 P(-2,1)의 동경과 x축 수선으로 밑변 2·높이 1인 직각삼각형을 만든다.",
+  "accessibilityDescription":"좌표평면 제2사분면의 P(-2,1), 원점에서 P로 이어지는 동경과 x축에 내린 수선이 보이고 직각, 가로 길이 2, 세로 길이 1을 표시한다.",
+  "sourceConditions":[
+    {"id":"M04-a","condition":"O=(0,0), P=(-2,1), OP=√5","mappedTo":"mathPlan.nodes[O,P],displaySegments[sOP]"},
+    {"id":"M04-b","condition":"수선의 발 H=(-2,0), 수평거리 2와 수직거리 1","mappedTo":"mathPlan.nodes[H],rightAngles[rH],planeMarks.expressionLabels"},
+    {"id":"M04-c","condition":"P의 정확한 좌표 표기","mappedTo":"coordinateLabels[P]"}
+  ],
+  "newVisualInformation":["제2사분면에서 x가 음수이고 y가 양수인 사실과 √5 빗변을 한 도형으로 연결한다."]
+}

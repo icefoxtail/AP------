@@ -1,0 +1,28 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {"recipeId": "SOURCE_COORDINATE_AXES_v1", "unit": "source-coordinate", "reflectionEquivalent": false},
+    "nodes": [
+      {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"P","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-1"},{"kind":"integer","value":"-2"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"H","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-1"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "displayPoints": ["O","P","H"],
+  "hiddenPointNames": ["H"],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [{"id":"sOP","refs":["O","P"]},{"id":"sOH","refs":["O","H"]},{"id":"sHP","refs":["H","P"],"dashed":true}],
+  "rightAngles": [{"id":"rH","refs":["O","H","P"]}],
+  "coordinateLabels": ["P"],
+  "planeMarks": {"expressionLabels":[{"id":"lenx","ownerSegment":"sOH","text":"1"},{"id":"leny","ownerSegment":"sHP","text":"2"}]},
+  "coordinateCanvas": {"width":550,"height":410},
+  "sourceQuote": "점 $\\mathrm{P}(-1,\\, -2)$를 지나는 동경 $\\mathrm{OP}$",
+  "caption": "제3사분면의 P(-1,-2)를 원점과 연결하고, x축에 내린 수선으로 가로 1과 세로 2를 표시한다.",
+  "accessibilityDescription": "좌표평면 제3사분면에 P(-1,-2), 원점에서 P로 이어진 동경과 x축까지의 수직 점선이 있다. 직각과 가로 거리 1, 세로 거리 2가 표시된다.",
+  "sourceConditions": [
+    {"id":"D03-a","condition":"P=(-1,-2), O=(0,0), 제3사분면","mappedTo":"mathPlan.nodes[O,P],coordinateLabels[P],displaySegments[sOP]"},
+    {"id":"D03-b","condition":"x=-1, y=-2, |OP|=√5; 수선의 발 (-1,0)","mappedTo":"mathPlan.nodes[H],displaySegments[sOH,sHP],planeMarks.expressionLabels,rightAngles[rH]"}
+  ],
+  "newVisualInformation": ["부호는 제3사분면의 좌표에서, 절댓값은 직각삼각형의 두 직각변에서 읽힌다."]
+}

@@ -1,0 +1,23 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "axisVariable": "t",
+    "coefficients": ["2","1","-2"],
+    "sourceDomain": {"kind":"INTERVAL","range":[-1,1],"states":["CLOSED","CLOSED"]},
+    "domain": [-1,1],
+    "viewport": [-1.65,1.65,-1.5,2.7],
+    "requiredPoints": [{"id":"L","x":-1,"y":-1},{"id":"V","x":0.25,"y":2.125},{"id":"R","x":1,"y":1}],
+    "exactCoordinates": {"V":["1/4","17/8"]},
+    "axisTickValues": {"x":[-1,0.25,1],"y":[-1,1,2.125]}
+  },
+  "sourceQuote": "함수 $y=-2\\cos^2 x + \\cos x + 2$의 최댓값",
+  "caption": "t=cos x(−1≤t≤1)로 치환하면 y=−2t²+t+2이며 꼭짓점 (1/4,17/8)에서 최대, 왼쪽 끝 (−1,−1)에서 최소다.",
+  "accessibilityDescription": "t축 구간 마이너스 1부터 1까지 아래로 열린 포물선이다. 꼭짓점 t=4분의 1에서 y=8분의 17이고, 양쪽 끝에서 각각 y=-1과 y=1이다.",
+  "sourceConditions": [
+    {"id":"D09-a","condition":"t=cos x∈[-1,1]","mappedTo":"graphPlan.sourceDomain 및 domain"},
+    {"id":"D09-b","condition":"y=-2t²+t+2; 꼭짓점 (1/4,17/8)","mappedTo":"graphPlan.coefficients,requiredPoints[V],exactCoordinates"},
+    {"id":"D09-c","condition":"t=-1이면 -1, t=1이면 1","mappedTo":"graphPlan.requiredPoints[L,R]"}
+  ],
+  "newVisualInformation": ["치환 변수의 닫힌 정의역에 포함된 꼭짓점과 두 끝점의 높이를 비교한다."]
+}
