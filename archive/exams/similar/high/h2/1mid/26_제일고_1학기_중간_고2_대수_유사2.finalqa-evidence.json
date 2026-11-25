@@ -1,0 +1,613 @@
+{
+  "schemaVersion": "gpt-finalqa-evidence-v1",
+  "examUid": "26_제일고_1학기_중간_고2_대수_유사2",
+  "sourcePath": "archive/exams/similar/high/h2/1mid/26_제일고_1학기_중간_고2_대수_유사2.js",
+  "blindPackDigest": "25499bdd07f694f96a1cc7024efb0f90b0be4760b882c167d809beffbb924437",
+  "reviewer": {
+    "id": "GPT-6.2 / answer-hidden second-pass mathematical reviewer",
+    "blindFirstPass": "CONFIRMED",
+    "independentEvidence": "Official --blind-pack used and 23 independent calculations frozen before source answers/solutions/metadata were inspected. Same GPT assistant in answer-hidden pass, not a separate human or model. After unmasking, every option and explanation was cross-checked against those frozen results. Q17 relied solely on the official blind-pack graph accessibility description; student image still unlinked.",
+    "blindArtifactRef": "sha256:db8fda296d413c5ea71c01100a1c018b476f9e52ae96021f7bad3d44e4d4bd33 (non-Git frozen blind-solutions.md; blind-pack sha256 d9bc238f475eb12d6e301166fc9848d5de423f58df4c749b2a29616119f0483f)"
+  },
+  "questions": [
+    {
+      "qid": 1,
+      "sourceFingerprint": "0cfbeb85e8b10cd0af9e6b50cdda3d4bac0297e686a30188d1569addad8b6d90",
+      "blindAnswer": "③",
+      "blindReasoning": "∛250=5∛2; √(∛4)=∛2; (5−a)∛2=2∛2.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "수치 근호와 등식만 있으며 기하적 배치나 그래프가 조건에 없고, 그림이 판단을 보완하지 않는다. 문항 발문과 풀이에서 독립 도형 조건·위치·경계 정보 요구가 없음을 확인했다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "거듭제곱근의 지수 변환과 동류항 계수 비교는 판서 수식으로 완결되며 시각화할 대상이 없다. 문항 발문과 풀이에서 독립 도형 조건·위치·경계 정보 요구가 없음을 확인했다."
+        }
+      }
+    },
+    {
+      "qid": 2,
+      "sourceFingerprint": "83cea44735502c8727cab642412082362a00bc487dee1c8dcd7d48c92bde0bf0",
+      "blindAnswer": "②",
+      "blindReasoning": "log[(x/5)·9/6]=log12 ⇒ 3x/10=12.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "로그 대수식만 제시되고 공간적 조건이나 그래프가 없어 그림이 필요 없다. 문항 발문과 풀이에서 독립 도형 조건·위치·경계 정보 요구가 없음을 확인했다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "성질에 따라 한 로그로 결합하는 단계가 판서식으로 명확하다. 문항 발문과 풀이에서 독립 도형 조건·위치·경계 정보 요구가 없음을 확인했다."
+        }
+      }
+    },
+    {
+      "qid": 3,
+      "sourceFingerprint": "86cda200686122bc0cdd3df07ce7e7ba740d6ad98b22d4e0d004dd6516ebe9ab",
+      "blindAnswer": "④",
+      "blindReasoning": "For t<0, ∜(t⁴)=√(t²)=−t, and t^(4·1/4)=t; A=B=−C.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "세 수식의 대소·부호 판정이며 주어진 조건에 공간 정보가 없다. 문항 발문과 풀이에서 독립 도형 조건·위치·경계 정보 요구가 없음을 확인했다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "절댓값과 부호를 수식으로 확인하는 것이 목적에 직접적이며 수직선 추가는 불필요하다. 문항 발문과 풀이에서 독립 도형 조건·위치·경계 정보 요구가 없음을 확인했다."
+        }
+      }
+    },
+    {
+      "qid": 4,
+      "sourceFingerprint": "65fe95ca219a60e468d22c7fa1b4cbd09dee326cc2c3dad0db60cbb5e9b5354c",
+      "blindAnswer": "①",
+      "blindReasoning": "S=rl/2=9l ⇒ r=18 and l=(2π/3)r.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "부채꼴의 실제 배치·특정 점 관계는 주어지지 않고 두 공식만 사용하므로 별도 문제 그림이 조건을 더하지 않는다. 문항 발문과 풀이에서 독립 도형 조건·위치·경계 정보 요구가 없음을 확인했다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "넓이와 호의 길이의 공식 관계를 등호로 쓰는 풀이이며 그림으로 확인할 특별한 보조선이나 각·영역의 비교가 없다. 문항 발문과 풀이에서 독립 도형 조건·위치·경계 정보 요구가 없음을 확인했다."
+        }
+      }
+    },
+    {
+      "qid": 5,
+      "sourceFingerprint": "94b8d440de7f0aa7822be1480acd0735850524bedb0e93ffc826211e41fb0545",
+      "blindAnswer": "④",
+      "blindReasoning": "Base 8−x>0 and ≠1; argument (x−1)(9−x)>0. Integers 2,3,4,5,6 sum20.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "로그의 실수 조건만 판정하며 그래프나 그림에 의존하지 않는다. 문항 발문과 풀이에서 독립 도형 조건·위치·경계 정보 요구가 없음을 확인했다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "정수의 허용구간과 제외점은 부등식 및 정수 목록만으로 명확하여 수직선이 결정적 이해를 추가하지 않는다. 문항 발문과 풀이에서 독립 도형 조건·위치·경계 정보 요구가 없음을 확인했다."
+        }
+      }
+    },
+    {
+      "qid": 6,
+      "sourceFingerprint": "e095ea4d408df0e536f7d7ef21bbd82f2d1987b4955fc2d7b614fedaa4fbf029",
+      "blindAnswer": "②",
+      "blindReasoning": "sin−cos=17/13; QII yields sin=5/13, cos=−12/13.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "제2사분면을 부등식으로 명시했고 그림에서 각의 위치를 읽을 필요는 없다. 문항 발문과 풀이에서 독립 도형 조건·위치·경계 정보 요구가 없음을 확인했다."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "3a8b8685283cc8fe34834e6016e08ca0035e7c5c678a6315879855be0ea02d54",
+          "reasoning": "단위원 제2사분면에 사인 양수·코사인 음수, 좌표 $(-12/13,5/13)$를 표시하면 부호 선택을 학생이 확인할 수 있다. 공식 엔진의 단위원/좌표 plan 필요. 단위원 제2사분면의 P=(-12/13,5/13), OP=1은 sin/cos 결정값과 일치한다."
+        }
+      }
+    },
+    {
+      "qid": 7,
+      "sourceFingerprint": "72624c35f212475e97200d10ed4864f171301e1f35dfb576e9c058a0d0a86b59",
+      "blindAnswer": "④",
+      "blindReasoning": "Divide given equation by xyz: 2/z+1/y−1/x=1; replace reciprocals with logₖ6, logₖ9, logₖ4; 2logₖ6+logₖ9−logₖ4=logₖ(36·9/4)=logₖ81=1, k=81 ⇒ log₃k=4.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "변수 관계가 전부 대수식으로 주어져 배치·그래프 요소가 없다. 문항 발문과 풀이에서 독립 도형 조건·위치·경계 정보 요구가 없음을 확인했다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "xyz로 나눈 뒤 로그로 변환하는 연산을 그림으로 옮겨도 수식보다 이해 이득이 없다. 문항 발문과 풀이에서 독립 도형 조건·위치·경계 정보 요구가 없음을 확인했다."
+        }
+      }
+    },
+    {
+      "qid": 8,
+      "sourceFingerprint": "988b830a46c6425419da3fb1281873351e10670a9d7f050c453dd47caed07679",
+      "blindAnswer": "①",
+      "blindReasoning": "a=3, b=1; f(7)=log₂4+1=3, not 4. Remaining domain, monotonicity, f(4)=1 and zero at 7/2 true.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "PASS",
+          "planDigest": "82a4c9940f7c01d660888efdbc25f776dfff665c085d12b0ebaa5ea5acf68ac1",
+          "reasoning": "점근선 $x=3$과 주어진 점 $(5,2)$을 좌표평면에 표시하면 이동량을 직관적으로 볼 수 있다. 정답을 암시하는 다른 점이나 절편은 문제용 그림에 표시하지 않는다. 주어진 점 A=(5,2), 수직선 x=3만 표시하며 그래프 및 거짓 보기의 실제 좌표를 미리 노출하지 않는다."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "927312dc86f11a02398331e87a56b7d8c03d99376db0b3c80faaf23c14ccf34a",
+          "reasoning": "$f(x)=\\log_2(x-3)+1$ 곡선, 수직 점근선, 통과점 $(5,2)$과 후보점 $(7,4)$/실제점 $(7,3)$을 비교하면 마지막 거짓 설명의 근거를 명확히 확인할 수 있다. y=log₂(x−3)+1과 A=(5,2), B=(7,3)을 실제 해설의 수치와 대조했다."
+        }
+      }
+    },
+    {
+      "qid": 9,
+      "sourceFingerprint": "1d25d14a988713e870a9f4506b06ed45cc02a007008e564897079b0d495efc90",
+      "blindAnswer": "①",
+      "blindReasoning": "65−35=10log(I₁/I₂)=30, so intensity ratio 1000.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "측정기 관계식과 측정 수치만으로 두 장소의 강도 비가 정해지며 공간 배치가 풀이에 쓰이지 않음 문항 발문과 풀이에서 독립 도형 조건·위치·경계 정보 요구가 없음을 확인했다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "두 로그식의 차를 취하는 대수 계산이 핵심이므로 그래프·도형이 중간 판단을 더 명확히 하지 않음 문항 발문과 풀이에서 독립 도형 조건·위치·경계 정보 요구가 없음을 확인했다."
+        }
+      }
+    },
+    {
+      "qid": 10,
+      "sourceFingerprint": "a2282accb37186021163eb088d034bf4bb0d7bd2e09c0c270d39fe91df7af227",
+      "blindAnswer": "②",
+      "blindReasoning": "t=logₐb>1 satisfies t+1/t=3, t=(3+√5)/2; (t+2)/(t+1)=(15−√5)/10.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "지수·로그 밑 비교와 수치 조건만 사용하며 시각적 위치정보가 없음 문항 발문과 풀이에서 독립 도형 조건·위치·경계 정보 요구가 없음을 확인했다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "역수 관계로 이차방정식을 만들고 부등식으로 근을 고르는 순수 식 전개 문항 발문과 풀이에서 독립 도형 조건·위치·경계 정보 요구가 없음을 확인했다."
+        }
+      }
+    },
+    {
+      "qid": 11,
+      "sourceFingerprint": "652ce34a5bffa95afb1a9c25f9c58a5ab479efd9a5efc7696cbe61b08e742db3",
+      "blindAnswer": "①",
+      "blindReasoning": "u=2ˣ+2⁻ˣ≥2; f=(u−3)²−2, so m=−2, u at minimizer=3.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "치환식과 범위가 발문으로 충분히 정의되고 별도 그림 정보가 없음 문항 발문과 풀이에서 독립 도형 조건·위치·경계 정보 요구가 없음을 확인했다."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "41f6d8d41d921164c77d38b310c43abc603741c0764c9c75123ebc9332e28caa",
+          "reasoning": "t≥2인 반직선 위 포물선 y=(t−3)^2−2의 꼭짓점 t=3이 범위 안에 있다는 중간 판단을 수직 경계선·점으로 보여 주면 학생 이해가 쉬움 t≥2에서 t²−6t+7의 꼭짓점 (3,−2)은 최소값을 정확히 보여 준다."
+        }
+      }
+    },
+    {
+      "qid": 12,
+      "sourceFingerprint": "9e612971f4997c29a5e13cf39504c0ac8a4d3b669862bf7270b9dd12e300fee2",
+      "blindAnswer": "⑤",
+      "blindReasoning": "f(3)=2, f(27)=5 ⇒ k=3/2,p=1/2; f(243)=8.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "역함수 좌표 대응은 세 개의 수치 조건만으로 유일하게 정해짐 문항 발문과 풀이에서 독립 도형 조건·위치·경계 정보 요구가 없음을 확인했다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "점의 x/y 역대응과 로그방정식 계산을 판서로 바로 제시할 수 있으며 그래프가 필수 관계를 추가하지 않음 문항 발문과 풀이에서 독립 도형 조건·위치·경계 정보 요구가 없음을 확인했다."
+        }
+      }
+    },
+    {
+      "qid": 13,
+      "sourceFingerprint": "c544ada8ad8c95e979772acbdcfe121fd6361539134a62b42ab8909b3705fb74",
+      "blindAnswer": "②",
+      "blindReasoning": "tan(3x+π/6) asymptotes at x=π/9+nπ/3; smallest positive is π/9, not π/6. Others verify.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "각 보기의 그래프 특성이 수식으로 완전히 주어져 오답 판별이 가능함 문항 발문과 풀이에서 독립 도형 조건·위치·경계 정보 요구가 없음을 확인했다."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "17e2d68128e2cff32a6da09b3fbbcdd31e345fc29e0c45fee4362a10ed5fd0a0",
+          "reasoning": "탄젠트 y=tan(3x+π/6)의 x=π/9 점근선과 π/6 위치를 같은 좌표축에 표시하면 평행이동 혼동을 해소할 수 있음 tan(3x+π/6)의 점근선 t=π/9+nπ/3과 주기 π/3을 대조했다."
+        }
+      }
+    },
+    {
+      "qid": 14,
+      "sourceFingerprint": "9ea21646360c1f88812c219f336cf4621061e71ef03fe596966008b7653d2a46",
+      "blindAnswer": "③",
+      "blindReasoning": "f max10 at x3, min1; M=log₂17, m=log_{1/3}16=−4log₃2; product −4log₃17.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "구간·이차식·로그식만으로 조건이 유일하고 그래프를 주지 않아도 됨 문항 발문과 풀이에서 독립 도형 조건·위치·경계 정보 요구가 없음을 확인했다."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "1f7b216fcabada97b747af97996a66bc5e7d62c67aae93db9eed27395eb53e3a",
+          "reasoning": "아래로 열린 포물선의 구간 내 꼭짓점 x=3과 로그 증가/감소 방향을 시각화하면 입력 최대점이 공통인 이유가 명확해짐 이차식 f의 (0,1),(3,10),(5,6), 구간 [0,5]와 아래로 열린 계수를 모두 대조했다."
+        }
+      }
+    },
+    {
+      "qid": 15,
+      "sourceFingerprint": "cc1dc0cfba7712ee161fac37e2a18e0be75b541e79c3c8afed775fdf8990ed53",
+      "blindAnswer": "④",
+      "blindReasoning": "Intersections solve x²+(1−x)²=13 ⇒ x=−2,3, P=(−2,3),Q=(3,−2); sinθ₁=cosθ₂=3/√13.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "PASS",
+          "planDigest": "36161f77f285472fa61151a5f14ffcc554847c688234468e039170009a83b6f7",
+          "reasoning": "원점을 지나지 않는 직선과 중심 O의 원, 제2·4사분면 두 교점의 배치를 제공하면 문제 조건의 구조를 이해하기 쉬움; 문제 그림에서는 교점 좌표·정답값 표시 금지 원 x²+y²=13, 선 x+y=1, P/Q 사분면만 주고 계산 결과 좌표와 정답값 라벨은 숨긴다."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "41575f43d2c35eff5fc8dd3c610b1ed9fc6243659eb7eb88d18b4fa3652ac88d",
+          "reasoning": "교점 P(-2,3), Q(3,-2), 반지름 √13 및 각과 좌표 투영을 표시해 sin/cos의 분자 부호를 검증하도록 도움 두 교점 P=(−2,3), Q=(3,−2)의 좌표와 반지름 √13은 실제 식을 만족한다."
+        }
+      }
+    },
+    {
+      "qid": 16,
+      "sourceFingerprint": "bf50b6f48b2a7c28bc867e6a0587d66ba316e20b86d63c1c377c62794be7b851",
+      "blindAnswer": "③",
+      "blindReasoning": "Circle center(0,4), radius2 ⇒ OP r∈[2,6]. Natural 2^(r/2)∈{2,…,8}; endpoints n2,n8 one point each, n3…n7 two each.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "PASS",
+          "planDigest": "a2be57e21647eb7b6a050cb53221662f3de92198db3feb818163e18f9a3df8b8",
+          "reasoning": "원점 O가 원 C 바깥에 놓인 배치와 거리 최소/최대의 의미를 제공하면 조건 이해에 도움; 반지름의 정답 거리·접점 라벨은 숨김 원 중심 A=(0,4)는 DERIVED_INTERMEDIATE이며 hiddenPointNames A + hiddenPointStyle NONE으로 미노출한다."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "42a44791cc2ab9979cbc82838490541c2f9f5e1c5088aaa4376527e20c7e3754",
+          "reasoning": "O를 중심으로 거리 2와 6인 원이 C에 각각 접하고 중간 거리에서 두 교점인 배치를 표시하면 계수 1+5×2+1의 이유가 명확함 중심 (0,4), 반지름2, 원점에서 최단2/최장6의 거리 조건을 대조했다."
+        }
+      }
+    },
+    {
+      "qid": 17,
+      "sourceFingerprint": "4676bd793eb08287505f05b9b3d76dfb5308aecc4dff1a5d9ff6561aa4221daf",
+      "blindAnswer": "①",
+      "blindReasoning": "Blind pack figure description: max4,min−2 ⇒ a=−3; maxima at −π/18,11π/18 ⇒ period 2π/3,b=3. Max condition at −π/18 gives c=π/3 (0<c<π); abc=−3π. Student-facing figure linkage remains an independent QA question.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "PASS",
+          "planDigest": "2713ff6ff27994fecec099c432a96b7f1ddf5bc48bb1e4478ecf1eb742d224f6",
+          "reasoning": "발문에 제공된 사인곡선의 실제 극값 및 두 꼭짓점 위치를 눈금에서 읽어야 한다. −3 sin(3x−π/3)+1은 최고4 최저−2, 연속 최고점 −π/18과 11π/18을 준다. formula 라벨 비노출. 실제 JS 문제 image 미연결은 RELEASE 후속이다."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "073ea7ea075a5ed87ba2d116cf3838226a57164900b02a49923ee50a81574b63",
+          "reasoning": "연속 최대점 간격과 음의 진폭 때문에 최대가 sin=−1에 대응함을 시각적으로 연결한다. 진폭3, 중심선1, 주기2π/3, 위상 c=π/3을 원문 해설과 대조했다."
+        }
+      }
+    },
+    {
+      "qid": 18,
+      "sourceFingerprint": "e18fa1a0c6faa9840e65617402e3b3b65f5ed00dbe6f1ae4989a1bb08c015e00",
+      "blindAnswer": "③",
+      "blindReasoning": "y0 base between x=5/2,7/2 length1; yk base length2ᵏ, height k; k(1+2ᵏ)/2=27/2 ⇒ k3.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "로그식과 두 수평선이 모든 교점 위치를 대수적으로 유일하게 정하며 도형의 구체적 배치를 읽어야 하는 조건이 없다. 문항 발문과 풀이에서 독립 도형 조건·위치·경계 정보 요구가 없음을 확인했다."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "37cbf5419d8401d18b0a49bfa6ba941fe2b5f7d4edeebf06da7a5076b2f0b3d3",
+          "reasoning": "두 수평단면의 길이가 각각 1, 2^k인 사다리꼴을 표시하면 넓이 역산 관계가 직관적으로 보인다. 수직선 A=5/2,B=7/2의 거리1과 k=3일 때 C=−1,D=7의 거리8은 넓이 27/2를 준다."
+        }
+      }
+    },
+    {
+      "qid": 19,
+      "sourceFingerprint": "a24fe65e55fe1ebef4e907d6895c88a90f86db888a702fb9aa2774437edc23a1",
+      "blindAnswer": "③",
+      "blindReasoning": "In quadrant IV, 0<x<n/2 and sin(πx/2)>0. First lobe(0,2) yields two intersections for n>4. Second lobe(4,6) yields one for 8<n≤12 (upper boundary x=n/2 excluded). For n>12 it gives two, total≥4; n≤8 has ≤2. Thus n9,10,11,12 sum42.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "두 함수식 및 제4사분면 조건으로 위치가 완전히 지정되고 미지 그림의 수치 정보는 사용하지 않는다. 문항 발문과 풀이에서 독립 도형 조건·위치·경계 정보 요구가 없음을 확인했다."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "329b663e08ee919ccebe0923986fcfa1f891154eb9a8df03acbedfe0315aa224",
+          "reasoning": "첫 음의 반주기(0,2), 두 번째 (4,6), 수평 경계 x=n/2를 함께 그리면 교점 수 변화가 뚜렷해진다. t=πx/2에서 n=10의 y=2t/(5π)−1, t∈(0,5π/2)와 세 교점을 확인했다."
+        }
+      }
+    },
+    {
+      "qid": 20,
+      "sourceFingerprint": "399bb7f3a2280186ced52ce0083ffba6b85ac0e4054861f9d4cf11df2c80fe75",
+      "blindAnswer": "−π/6+2kπ (k∈ℤ), quadrant IV",
+      "blindReasoning": "Clockwise390°=−13π/6≡−π/6≡11π/6 mod2π.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "NOT_APPLICABLE"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "회전 방향과 회전량이 문자로 완전히 주어져 그림에서 읽어야 할 조건이 없다. 문항 발문과 풀이에서 독립 도형 조건·위치·경계 정보 요구가 없음을 확인했다."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "feab1a210f7ac313e74df004aded53b40ba99dcfb31cf4187eea679bf979a67e",
+          "reasoning": "단위원에서 시계방향 390°와 제4사분면의 최종 동경을 구분해 그리면 음의 회전과 동경동치를 이해하기 쉽다. 동경 (√3,−1)은 −π/6과 동치인 시계방향390°의 제4사분면이다."
+        }
+      }
+    },
+    {
+      "qid": 21,
+      "sourceFingerprint": "d4283e26408897884ae014728e7dc1630d24e21fad90407e298cb7e95284c2bd",
+      "blindAnswer": "−√3<tanθ<√3",
+      "blindReasoning": "Polynomial x²−2√2 sinθ·x+1−cosθ>0 ∀x iff discriminant 4(1−cosθ)(1+2cosθ)<0. Excluding θ0,2π ⇒ cosθ<−1/2, θ∈(2π/3,4π/3), tan range open (−√3,√3).",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "NOT_APPLICABLE"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "모든 조건이 부등식과 θ의 구간으로 제공되며 그래프 정보가 누락되지 않았다. 문항 발문과 풀이에서 독립 도형 조건·위치·경계 정보 요구가 없음을 확인했다."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "b4ccf08d9b0bef0bde0097639c4110d08e282fe88ac4562138cdb45bbb939c58",
+          "reasoning": "단위원의 왼쪽 호 (2π/3,4π/3)와 그 구간의 tan 범위를 함께 표시하면 0 포함과 끝점 제외를 이해하기 쉽다. cosθ=−1/2 경계 2π/3,4π/3은 열린 표시, 내부 cosθ<−1/2만 포함한다."
+        }
+      }
+    },
+    {
+      "qid": 22,
+      "sourceFingerprint": "37344a42e00f4ed227b73ab276d2312aaf9da998689e8b7532a4046d813638e4",
+      "blindAnswer": "11",
+      "blindReasoning": "Odd n=3,5,7,9,11 each one real nth root ⇒5. Even n2,4,6,8,10,12 have counts 0,1,2,2,1,0 ⇒6. Total11.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "NOT_APPLICABLE"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "n의 정수 구간과 실수 거듭제곱근 개수는 부호·짝홀 판단으로 충분하고 형상 정보가 필요하지 않다. 문항 발문과 풀이에서 독립 도형 조건·위치·경계 정보 요구가 없음을 확인했다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "짝수·홀수 n 목록과 부호를 판서형 표로 구분하는 것이 그래프보다 계산 근거를 더 정확히 전달한다. 문항 발문과 풀이에서 독립 도형 조건·위치·경계 정보 요구가 없음을 확인했다."
+        }
+      }
+    },
+    {
+      "qid": 23,
+      "sourceFingerprint": "9d84b8fd2e021a9fd11dcb97d597059d6c0946185d6a2fd85a098bc8a6d96386",
+      "blindAnswer": "52",
+      "blindReasoning": "At x<−2 line y=−x−1 gives y>1, open(−2,1). Right |2^(1−x)−4| starts closed(−2,4), falls to(−1,0), rises toward asymptote y=4 below. Among n=−8…8: g=0 for8, g=1 for5 (0,5..8), g=2 for2 (1,4), g=3 for2 (2,3). Ordered pairs (0,3) count32 and (1,2) count20 =>52.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "NOT_APPLICABLE"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "조각함수의 식과 경계 x=−2가 정확히 주어졌고 학생이 그래프를 직접 그리는 것이 문제이므로 제공할 필수 그림이 없다. 문항 발문과 풀이에서 독립 도형 조건·위치·경계 정보 요구가 없음을 확인했다."
+        },
+        "solution": {
+          "status": "ENGINE_PENDING",
+          "planDigest": "dee44e04357428023bec7a2ed1f4e9ec00bce3cfec3219fcf1c5e997d6af6b31",
+          "reasoning": "서술형에서 열린 점 (−2,1), 닫힌 점 (−2,4), 절댓값 꺾임 x=−1, 점근선 y=4를 실제 개형으로 보여 주어야 한다. UNSUPPORTED—직선+절댓값 지수함수의 합성, 열린 (−2,1)/닫힌 (−2,4), 꼭짓점 (−1,0), y=4 점근선이 공식 엔진에 미지원이다."
+        }
+      }
+    }
+  ],
+  "preflightProblems": []
+}
