@@ -1,0 +1,20 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "sourceQuote": "$f(x)=(x-2)^2-8=x^2-4x-4$이므로",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [{"coefficients": ["-4", "-4", "1"]}],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "functionName": "f",
+    "domain": [-3, 7],
+    "viewport": [-4, 8, -10, 12],
+    "requiredPoints": [{"id": "V", "x": 2, "y": -8}, {"id": "A", "x": -2, "y": 8}, {"id": "B", "x": 6, "y": 8}],
+    "exactCoordinates": {"V": ["2", "-8"], "A": ["-2", "8"], "B": ["6", "8"]},
+    "axisTickValues": {"x": [], "y": []},
+    "overlays": {"lines": [{"id": "lv", "slope": "0", "intercept": "-8", "style": "DASHED"}, {"id": "lt", "slope": "0", "intercept": "8", "style": "DASHED"}]}
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "포물선 f(x)=(x−2)²−8의 꼭짓점 V(2,−8)과 같은 높이 8인 A(−2,8), B(6,8)",
+  "sourceConditions": [{"id": "q20-S1", "condition": "f(t)=-q=8의 두 해 t=-2,6", "mappedTo": "graphPlan.pieces, graphPlan.overlays"}],
+  "newVisualInformation": ["중근을 만드는 최솟값 높이 -8과 t의 두 값이 놓이는 높이 8을 비교한다."]
+}

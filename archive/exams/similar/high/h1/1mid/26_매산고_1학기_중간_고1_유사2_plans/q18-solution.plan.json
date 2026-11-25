@@ -1,0 +1,25 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "sourceQuote": "$f(x)=g(x)$에서 $2x^2-3x-2=(2x+1)(x-2)=0$이므로",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [{"coefficients": ["2", "0", "1"]}],
+    "sourceDomain": {"kind": "ALL_REALS"},
+    "functionName": "f",
+    "domain": [-3, 4],
+    "viewport": [-4, 5, -1, 10],
+    "referenceCurves": [{"id": "g", "name": "g", "coefficients": ["4", "3", "-1"], "intersectionX": ["-1/2", "2"]}],
+    "requiredPoints": [{"id": "P", "x": 0, "y": 2}, {"id": "W", "x": "3/2", "y": "25/4"}],
+    "coordinateBand": {"hide": ["W"]},
+    "axisTickValues": {"x": [], "y": []},
+    "overlays": {
+      "points": [{"id": "C", "curveX": "-1/2"}, {"id": "D", "curveX": "2"}],
+      "lines": [{"id": "l2", "slope": "0", "intercept": "2"}, {"id": "l6", "slope": "0", "intercept": "6"}]
+    }
+  },
+  "hiddenPointNames": ["W"],
+  "coordinatePlacement": "PANEL",
+  "caption": "두 포물선 f(x)=x²+2와 g(x)=−x²+3x+4의 꼭짓점 높이 및 두 교차 높이를 비교한다.",
+  "sourceConditions": [{"id": "q18-S1", "condition": "교점 x=-1/2, 2에서의 높이 9/4, 6과 두 꼭짓점 높이 2, 25/4", "mappedTo": "graphPlan.referenceCurves, graphPlan.requiredPoints"}],
+  "newVisualInformation": ["수평선이 세 개의 서로 다른 점에서 만나는 네 높이의 경계 원인을 나타낸다."]
+}

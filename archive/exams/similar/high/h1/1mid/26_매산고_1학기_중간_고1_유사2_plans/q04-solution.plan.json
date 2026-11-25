@@ -1,0 +1,18 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "sourceQuote": "양 끝점의 값은 $y(0)=3$, $y(4)=11$이므로 최댓값은 $11$이다.",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [{"coefficients": ["3", "-2", "1"]}],
+    "sourceDomain": {"kind": "INTERVAL", "range": ["0", "4"], "states": ["CLOSED", "CLOSED"]},
+    "domain": [0, 4],
+    "viewport": [-1, 5, 0, 13],
+    "requiredPoints": [{"id": "A", "x": 0, "y": 3}, {"id": "V", "x": 1, "y": 2}, {"id": "B", "x": 4, "y": 11}],
+    "exactCoordinates": {"A": ["0", "3"], "V": ["1", "2"], "B": ["4", "11"]},
+    "axisTickValues": {"x": [], "y": []}
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "0≤x≤4에서 y=(x−1)²+2의 꼭짓점은 V(1,2), 양 끝점은 A(0,3), B(4,11)이다.",
+  "sourceConditions": [{"id": "q04-S1", "condition": "정의역 0≤x≤4와 y=(x−1)²+2", "mappedTo": "graphPlan.pieces, graphPlan.sourceDomain"}],
+  "newVisualInformation": ["꼭짓점과 서로 높이가 다른 양 끝점을 비교하여 최댓값 11과 최솟값 2의 차가 9임을 보여 준다."]
+}
