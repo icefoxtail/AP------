@@ -1,0 +1,42 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "kind": "CYLINDER",
+      "radius": 3,
+      "height": 12
+    }
+  ],
+  "dims": [
+    {
+      "diameter": "bottom"
+    }
+  ],
+  "caption": "기하 유형은행 171번 유형 2번: 단축 길이 6인 타원의 원기둥 기본 모형. 30도 평면 알파와 채운 단면은 후속.",
+  "solidCaption": {
+    "text": "원기둥"
+  },
+  "accessibilityDescription": "단축 길이 6인 타원의 원기둥 기본 모형. 30도 평면 알파와 채운 단면은 후속.",
+  "sourceQuote": "[그림: 수직으로 서 있는 원기둥을 밑면과 $30^{\\circ}$의 각을 이루는 평면 $\\alpha$로 잘라 생긴 타원 단면이 색칠되어 있다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "단축 길이가 6: 원기둥 지름 6으로 반영",
+      "mappedTo": "solids[0].radius;dims"
+    },
+    {
+      "id": "c2",
+      "condition": "30도 절단평면 alpha와 칠한 타원",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:OBLIQUE_FULL_ELLIPSE_SECTION"
+    },
+    {
+      "id": "c3",
+      "condition": "원기둥 높이는 미제공: 대표 12",
+      "mappedTo": "solids[0].height"
+    }
+  ],
+  "newVisualInformation": [
+    "공식 엔진의 기본 입체·치수만. 절단·기울기 등 빠진 필수 도식은 후속 엔진 확장 대기"
+  ]
+}

@@ -1,0 +1,107 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 4,
+        "depth": 4
+      },
+      "height": 4,
+      "names": "EFGHABCD",
+      "points": [
+        {
+          "id": "N",
+          "at": {
+            "edge": [
+              "C",
+              "D"
+            ],
+            "t": "1/4"
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "B",
+      "to": "G",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "G",
+      "to": "N",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "N",
+      "to": "B",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "C",
+      "to": "N",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "N",
+      "to": "D",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "highlights": [
+    {
+      "polygon": [
+        "B",
+        "G",
+        "N"
+      ],
+      "fill": "LIGHT"
+    }
+  ],
+  "dims": [
+    {
+      "from": "A",
+      "to": "B"
+    },
+    {
+      "from": "C",
+      "to": "N"
+    },
+    {
+      "from": "N",
+      "to": "D"
+    }
+  ],
+  "caption": "기하 유형은행 168번 유형 5번: 모서리 CD의 N은 CN=1, ND=3을 만족하며 삼각형 BGN이 칠해짐.",
+  "accessibilityDescription": "모서리 CD의 N은 CN=1, ND=3을 만족하며 삼각형 BGN이 칠해짐.",
+  "sourceQuote": "[그림: 한 모서리의 길이가 $4$인 정육면체 $\\mathrm{ABCD-EFGH}$에서 모서리 $\\mathrm{CD}$ 위에 $\\overline{\\mathrm{CN}}=1$, $\\overline{\\mathrm{ND}}=3$인 점 $\\mathrm{N}$이 표시되어 있고, 삼각형 $\\mathrm{BGN}$의 내부가 색칠되어 있다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "정육면체 한 모서리 4",
+      "mappedTo": "solids[0];dims[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "CN:ND=1:3",
+      "mappedTo": "solids[0].points[0];segments[3..4];dims[1..2]"
+    },
+    {
+      "id": "c3",
+      "condition": "삼각형 BGN 색칠",
+      "mappedTo": "segments[0..2];highlights[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "모서리 CD의 N은 CN=1, ND=3을 만족하며 삼각형 BGN이 칠해짐."
+  ]
+}

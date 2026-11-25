@@ -1,0 +1,97 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 3,
+        "depth": 3
+      },
+      "height": 3,
+      "names": "EFGHABCD",
+      "points": [
+        {
+          "id": "K",
+          "at": {
+            "edge": [
+              "A",
+              "E"
+            ],
+            "t": "1/3"
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "B",
+      "to": "H",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "H",
+      "to": "K",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "K",
+      "to": "B",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "A",
+      "to": "K",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "K",
+      "to": "E",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "dims": [
+    {
+      "from": "A",
+      "to": "B"
+    },
+    {
+      "from": "A",
+      "to": "K"
+    },
+    {
+      "from": "K",
+      "to": "E"
+    }
+  ],
+  "caption": "기하 유형은행 168번 유형 4번: 정육면체 AE의 K는 A에서 1, E에서 2 떨어져 있으며 BHK 삼각형을 표시.",
+  "accessibilityDescription": "정육면체 AE의 K는 A에서 1, E에서 2 떨어져 있으며 BHK 삼각형을 표시.",
+  "sourceQuote": "[그림: 한 모서리의 길이가 $3$인 정육면체 $\\mathrm{ABCD-EFGH}$에서 모서리 $\\mathrm{AE}$ 위에 $\\overline{\\mathrm{AK}}=1$, $\\overline{\\mathrm{KE}}=2$인 점 $\\mathrm{K}$가 표시되어 있고, 삼각형 $\\mathrm{BHK}$가 그려져 있다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "정육면체 한 모서리 3",
+      "mappedTo": "solids[0];dims[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "AK:KE=1:2",
+      "mappedTo": "solids[0].points[0];segments[3..4];dims[1..2]"
+    },
+    {
+      "id": "c3",
+      "condition": "삼각형 BHK",
+      "mappedTo": "segments[0..2]"
+    }
+  ],
+  "newVisualInformation": [
+    "정육면체 AE의 K는 A에서 1, E에서 2 떨어져 있으며 BHK 삼각형을 표시."
+  ]
+}

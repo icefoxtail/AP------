@@ -1,0 +1,43 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "kind": "CYLINDER",
+      "radius": 4,
+      "height": 10
+    }
+  ],
+  "dims": [
+    {
+      "radius": "bottom",
+      "label": "r"
+    }
+  ],
+  "caption": "기하 유형은행 170번 유형 2번: 반지름이 기호 r인 원기둥. 밑면과 60도인 단면은 아직 미구현.",
+  "solidCaption": {
+    "text": "원기둥"
+  },
+  "accessibilityDescription": "반지름이 기호 r인 원기둥. 밑면과 60도인 단면은 아직 미구현.",
+  "sourceQuote": "[그림: 밑면의 반지름의 길이가 $r$인 원기둥이 수직으로 서 있고, 밑면과 $60^{\\circ}$의 각을 이루는 평면이 원기둥의 옆면 전체를 가로질러 생기는 타원 모양의 단면이 색칠되어 있다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "밑면 반지름 r: 임의 대표 반지름 4, r 표식",
+      "mappedTo": "solids[0].radius;dims[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "60도 비스듬한 절단면, 넓이 50π",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:OBLIQUE_FULL_ELLIPSE_SECTION"
+    },
+    {
+      "id": "c3",
+      "condition": "원기둥 높이는 원문에서 미제공: 대표값 10",
+      "mappedTo": "solids[0].height"
+    }
+  ],
+  "newVisualInformation": [
+    "공식 엔진의 기본 입체·치수만. 절단·기울기 등 빠진 필수 도식은 후속 엔진 확장 대기"
+  ]
+}

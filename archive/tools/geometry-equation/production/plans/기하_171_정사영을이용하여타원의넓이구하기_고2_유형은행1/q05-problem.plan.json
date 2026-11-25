@@ -1,0 +1,43 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "kind": "CYLINDER",
+      "radius": 2.449489742783178,
+      "height": 16
+    }
+  ],
+  "dims": [],
+  "caption": "기하 유형은행 171번 유형 5번: 정사영 면적에서 반지름이 정해진 원기둥 모형. 두 절단 타원과 넓이 S1,S2는 미표시.",
+  "solidCaption": {
+    "text": "원기둥"
+  },
+  "accessibilityDescription": "정사영 면적에서 반지름이 정해진 원기둥 모형. 두 절단 타원과 넓이 S1,S2는 미표시.",
+  "sourceQuote": "[그림: 수직으로 서 있는 원기둥을 왼쪽에서 오른쪽으로 올라가는 평면 $\\alpha$와 내려가는 평면 $\\beta$가 밑면과 평행한 교선을 이루며 자르고 있고, 각 단면 타원의 넓이가 $S_1$, $S_2$로 표시되어 있다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "S1=6sqrt(2)π 와 45도에서 정사영 넓이 6π, 반지름 sqrt(6)인 대표 입체",
+      "mappedTo": "solids[0].radius"
+    },
+    {
+      "id": "c2",
+      "condition": "교선이 밑면과 평행한 서로 다른 두 절단평면 alpha,beta",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:TWO_OBLIQUE_SECTIONS"
+    },
+    {
+      "id": "c3",
+      "condition": "밑면과 alpha 45도, 두 평면 사이 75도, beta 각도는 45도 미만",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:DIHEDRAL_ANGLE_ARCS"
+    },
+    {
+      "id": "c4",
+      "condition": "두 단면 넓이 S1,S2",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:TWO_SECTION_AREA_LABELS"
+    }
+  ],
+  "newVisualInformation": [
+    "공식 엔진의 기본 입체·치수만. 절단·기울기 등 빠진 필수 도식은 후속 엔진 확장 대기"
+  ]
+}

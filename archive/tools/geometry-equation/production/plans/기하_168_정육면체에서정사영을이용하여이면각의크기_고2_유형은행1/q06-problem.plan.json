@@ -1,0 +1,147 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 5,
+        "depth": 5
+      },
+      "height": 5,
+      "names": "EFGHABCD",
+      "points": [
+        {
+          "id": "P",
+          "at": {
+            "edge": [
+              "D",
+              "A"
+            ],
+            "t": "1/5"
+          }
+        },
+        {
+          "id": "Q",
+          "at": {
+            "edge": [
+              "B",
+              "C"
+            ],
+            "t": "1/5"
+          }
+        },
+        {
+          "id": "R",
+          "at": {
+            "edge": [
+              "G",
+              "F"
+            ],
+            "t": "1/5"
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "P",
+      "to": "Q",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "Q",
+      "to": "R",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "R",
+      "to": "P",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "D",
+      "to": "P",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "B",
+      "to": "Q",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "G",
+      "to": "R",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "highlights": [
+    {
+      "polygon": [
+        "P",
+        "Q",
+        "R"
+      ],
+      "fill": "LIGHT"
+    }
+  ],
+  "dims": [
+    {
+      "from": "A",
+      "to": "B"
+    },
+    {
+      "from": "D",
+      "to": "P"
+    },
+    {
+      "from": "B",
+      "to": "Q"
+    },
+    {
+      "from": "G",
+      "to": "R"
+    }
+  ],
+  "caption": "기하 유형은행 168번 유형 6번: 한 모서리 5인 정육면체에서 각 모서리에서 1 떨어진 P Q R과 색칠된 삼각형.",
+  "accessibilityDescription": "한 모서리 5인 정육면체에서 각 모서리에서 1 떨어진 P Q R과 색칠된 삼각형.",
+  "sourceQuote": "[그림: 한 모서리의 길이가 $5$인 정육면체 $\\mathrm{ABCD-EFGH}$에서 세 모서리 $\\mathrm{AD}$, $\\mathrm{BC}$, $\\mathrm{GF}$ 위에 각각 $\\overline{\\mathrm{DP}}=1$, $\\overline{\\mathrm{BQ}}=1$, $\\overline{\\mathrm{GR}}=1$인 점 $\\math",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "정육면체 한 모서리 5",
+      "mappedTo": "solids[0];dims[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "DP=1 on DA",
+      "mappedTo": "solids[0].points[0];segments[3];dims[1]"
+    },
+    {
+      "id": "c3",
+      "condition": "BQ=1 on BC",
+      "mappedTo": "solids[0].points[1];segments[4];dims[2]"
+    },
+    {
+      "id": "c4",
+      "condition": "GR=1 on GF",
+      "mappedTo": "solids[0].points[2];segments[5];dims[3]"
+    },
+    {
+      "id": "c5",
+      "condition": "삼각형 PQR 색칠",
+      "mappedTo": "segments[0..2];highlights[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "한 모서리 5인 정육면체에서 각 모서리에서 1 떨어진 P Q R과 색칠된 삼각형."
+  ]
+}

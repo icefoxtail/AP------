@@ -1,0 +1,49 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "kind": "CYLINDER",
+      "radius": 2.8284271247461903,
+      "height": 7
+    }
+  ],
+  "section": {
+    "kind": "LEVEL",
+    "at": "5/7"
+  },
+  "dims": [
+    {
+      "height": true
+    },
+    {
+      "level": true
+    }
+  ],
+  "caption": "기하 유형은행 170번 유형 6번: 밑넓이 8π, 높이 7, 수심 5인 그릇의 초기 수면. 기울인 상태는 아직 없음.",
+  "solidCaption": {
+    "text": "원기둥"
+  },
+  "accessibilityDescription": "밑넓이 8π, 높이 7, 수심 5인 그릇의 초기 수면. 기울인 상태는 아직 없음.",
+  "sourceQuote": "[그림: 왼쪽에는 높이 $7\\,\\mathrm{cm}$인 원기둥 컵에 높이 $5\\,\\mathrm{cm}$까지 물이 차 있는 그림이 있고, 오른쪽 화살표 뒤에는 컵을 기울여 물이 윗입구 끝에 닿은 상태가 그려져 있다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "밑넓이 8π로부터 대표모형 반지름 sqrt(8), 직접 답은 미표시",
+      "mappedTo": "solids[0].radius"
+    },
+    {
+      "id": "c2",
+      "condition": "높이 7, 수심 5",
+      "mappedTo": "solids[0].height;section;dims"
+    },
+    {
+      "id": "c3",
+      "condition": "쏟아지지 않을 만큼 최대 기울기, 두 번째 그림",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:TILTED_CUP_BEFORE_OVERFLOW"
+    }
+  ],
+  "newVisualInformation": [
+    "공식 엔진의 기본 입체·치수만. 절단·기울기 등 빠진 필수 도식은 후속 엔진 확장 대기"
+  ]
+}

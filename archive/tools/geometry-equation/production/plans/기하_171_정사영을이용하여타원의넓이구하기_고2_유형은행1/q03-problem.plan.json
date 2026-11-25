@@ -1,0 +1,42 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "kind": "CYLINDER",
+      "radius": 6,
+      "height": 20
+    }
+  ],
+  "dims": [
+    {
+      "radius": "bottom"
+    }
+  ],
+  "caption": "기하 유형은행 171번 유형 3번: 밑면 반지름 6인 원기둥만 표현. 절단 타원의 두 초점과 θ는 미표시.",
+  "solidCaption": {
+    "text": "원기둥"
+  },
+  "accessibilityDescription": "밑면 반지름 6인 원기둥만 표현. 절단 타원의 두 초점과 θ는 미표시.",
+  "sourceQuote": "[그림: 밑면의 반지름의 길이가 $6$인 원기둥을 밑면과 각 $\\theta$를 이루는 평면으로 잘라 생긴 타원 단면이 그려져 있다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "반지름 6",
+      "mappedTo": "solids[0].radius;dims"
+    },
+    {
+      "id": "c2",
+      "condition": "평면과 밑면의 각 theta",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:OBLIQUE_ANGLE_ARC"
+    },
+    {
+      "id": "c3",
+      "condition": "절단 타원의 두 초점 거리 16",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:ELLIPSE_FOCI_ON_CYLINDER_SECTION"
+    }
+  ],
+  "newVisualInformation": [
+    "공식 엔진의 기본 입체·치수만. 절단·기울기 등 빠진 필수 도식은 후속 엔진 확장 대기"
+  ]
+}

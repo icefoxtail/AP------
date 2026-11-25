@@ -1,0 +1,42 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "kind": "CYLINDER",
+      "radius": 8,
+      "height": 22
+    }
+  ],
+  "dims": [
+    {
+      "radius": "bottom"
+    }
+  ],
+  "caption": "기하 유형은행 171번 유형 4번: 반지름 8인 원기둥 기본 형태. A B A′ B′ 및 정사영 수선은 아직 표시되지 않음.",
+  "solidCaption": {
+    "text": "원기둥"
+  },
+  "accessibilityDescription": "반지름 8인 원기둥 기본 형태. A B A′ B′ 및 정사영 수선은 아직 표시되지 않음.",
+  "sourceQuote": "[그림: 밑면의 반지름이 $8$인 원기둥이 밑면과 $60^{\\circ}$의 각을 이루는 평면으로 잘려 있고, 단면 타원의 두 초점 $\\mathrm{A}$, $\\mathrm{B}$에서 밑면에 내린 수선의 발 $\\mathrm{A}'$, $\\mathrm{B}'$이 표시되어 있다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원기둥 반지름 8",
+      "mappedTo": "solids[0].radius;dims"
+    },
+    {
+      "id": "c2",
+      "condition": "절단면 60도와 타원의 초점 A,B",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:OBLIQUE_FOCI"
+    },
+    {
+      "id": "c3",
+      "condition": "두 초점의 밑면 정사영 A′,B′과 두 수선",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:ELLIPSE_FOCI_PROJECTIONS"
+    }
+  ],
+  "newVisualInformation": [
+    "공식 엔진의 기본 입체·치수만. 절단·기울기 등 빠진 필수 도식은 후속 엔진 확장 대기"
+  ]
+}

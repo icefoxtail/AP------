@@ -1,0 +1,52 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "kind": "CYLINDER",
+      "radius": 6,
+      "height": 20
+    }
+  ],
+  "section": {
+    "kind": "LEVEL",
+    "at": "3/5"
+  },
+  "dims": [
+    {
+      "radius": "bottom"
+    },
+    {
+      "height": true
+    },
+    {
+      "level": true
+    }
+  ],
+  "caption": "기하 유형은행 170번 유형 5번: 처음 수심이 12이고 높이가 20인 원기둥 그릇 한 상태. 기울인 상태는 후속 구현.",
+  "solidCaption": {
+    "text": "원기둥"
+  },
+  "accessibilityDescription": "처음 수심이 12이고 높이가 20인 원기둥 그릇 한 상태. 기울인 상태는 후속 구현.",
+  "sourceQuote": "[그림: 왼쪽에는 반지름 $6\\,\\mathrm{cm}$, 높이 $20\\,\\mathrm{cm}$인 원기둥 그릇에 높이 $12\\,\\mathrm{cm}$까지 물이 차 있는 그림이 있고, 오른쪽 화살표 뒤에는 그릇을 기울여 물이 위쪽 입구 끝에 닿아 쏟아지기 직전인 상태가 그려져 있다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "밑면 반지름 6, 원기둥 높이 20",
+      "mappedTo": "solids[0];dims[0..1]"
+    },
+    {
+      "id": "c2",
+      "condition": "처음 수심 12 (전체의 3/5)",
+      "mappedTo": "section;dims[2]"
+    },
+    {
+      "id": "c3",
+      "condition": "기울여 넘치기 직전, 오른쪽 두 번째 그림",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:TILTED_CUP_BEFORE_OVERFLOW"
+    }
+  ],
+  "newVisualInformation": [
+    "공식 엔진의 기본 입체·치수만. 절단·기울기 등 빠진 필수 도식은 후속 엔진 확장 대기"
+  ]
+}
