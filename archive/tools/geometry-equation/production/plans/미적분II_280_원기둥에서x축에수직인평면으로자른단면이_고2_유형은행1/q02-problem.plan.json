@@ -1,0 +1,51 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "kind": "CYLINDER",
+      "radius": 3,
+      "height": 3
+    }
+  ],
+  "dims": [
+    {
+      "radius": "bottom",
+      "label": "3a"
+    },
+    {
+      "height": true,
+      "label": "3a"
+    }
+  ],
+  "solidCaption": {
+    "text": "원기둥"
+  },
+  "caption": "예: a=1 정규화로 반지름 3a, 높이 3a 비율의 원기둥만 표시; 30° 경사 절단은 보류.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "지름 6a → 반지름 3a",
+      "mappedTo": "solids[0].radius;dims[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "높이 3a (대표 a=1)",
+      "mappedTo": "solids[0].height;dims[1]"
+    },
+    {
+      "id": "c3",
+      "condition": "밑면 지름을 지나고 30° 각을 이루는 절단 평면",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: OBLIQUE_DIAMETER_CUT_PLANE_AT_30_DEGREES"
+    },
+    {
+      "id": "c4",
+      "condition": "잘린 작은 쐐기 영역",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: CYLINDER_OBLIQUE_WEDGE_SOLID"
+    }
+  ],
+  "newVisualInformation": [
+    "a의 크기는 대표 1일 뿐이며 지름:높이의 비만 유지한다."
+  ],
+  "sourceQuote": "[그림: 밑면의 지름의 길이가 6a, 높이가 3a인 원기둥에서, 밑면의 한 지름을 지나고 밑면과 30°의 각을 이루는 평면으로 잘린 작은 쪽의 쐐기 모양 입체도형]",
+  "accessibilityDescription": "예: a=1 정규화로 반지름 3a, 높이 3a 비율의 원기둥만 표시; 30° 경사 절단은 보류."
+}

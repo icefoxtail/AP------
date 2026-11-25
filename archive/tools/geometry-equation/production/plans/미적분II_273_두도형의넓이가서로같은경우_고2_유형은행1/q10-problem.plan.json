@@ -1,0 +1,27 @@
+{
+  "status": "UNSUPPORTED",
+  "reason": "PRODUCT_EXPONENTIAL_CURVE_TWO_EQUAL_REGIONS: y=xe^x와 y=e, x=k의 두 면을 동일 넓이로 그릴 원함수 미지원",
+  "caption": "273/q10: 엔진 미지원 — PRODUCT_EXPONENTIAL_CURVE_TWO_EQUAL_REGIONS: y=xe^x와 y=e, x=k의 두 면을 동일 넓이로 그릴 원함수 미지원",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "y=xe^x, 0≤x≤1",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: PRODUCT_EXPONENTIAL_CURVE"
+    },
+    {
+      "id": "c2",
+      "condition": "x=k, y=e 및 원점과 (1,e)",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: SYMBOLIC_K_AND_TRANSCENDENTAL_HORIZONTAL_BOUNDARY"
+    },
+    {
+      "id": "c3",
+      "condition": "곡선 아래 A, 곡선 위 B와 A=B",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: EQUAL_AREA_REGIONS_ON_PRODUCT_EXPONENTIAL"
+    }
+  ],
+  "newVisualInformation": [
+    "원문의 수학적 형상을 근사·대체하지 않고 미지원 기능을 지정하였다."
+  ],
+  "sourceQuote": "[그림: 좌표평면에 곡선 $y=xe^x$가 원점 $(0,0)$부터 점 $(1,e)$까지 아래로 볼록하게 증가하는 형태로 그려져 있고, 직선 $y=e$와 $x=k$ ($0 < k < 1$)가 그어져 있다. $0 \\le x \\le k$에서 곡선 아래와 $x$축, 직선 $x=k$로 둘러싸인 영역이 $A$, $k \\le x \\le 1$에서 곡선 위와 직선 $y=e$, 직선 $x=k$로 둘러싸인 영역이 $B$로 표시되어 있다.]",
+  "accessibilityDescription": "273/q10: 실제 엔진에서 지원하지 않는 도형을 임의로 그리지 않았다."
+}

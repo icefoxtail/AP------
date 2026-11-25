@@ -1,0 +1,59 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "SIN",
+    "coefficients": [
+      "2",
+      "1",
+      "0"
+    ],
+    "phasePi": "0",
+    "sourceDomain": {
+      "kind": "INTERVAL_PI",
+      "rangePi": [
+        "0",
+        "1/2"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "axisTickPi": true,
+    "axisTickValues": {
+      "x": [],
+      "y": [
+        "2"
+      ]
+    }
+  },
+  "caption": "정확한 y=2sin x (0≤x≤π/2)와 끝점 눈금. y=a cos x와 이등분 면은 보류.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "y=2sin x, 0≤x≤π/2",
+      "mappedTo": "graphPlan.function;graphPlan.coefficients;graphPlan.sourceDomain"
+    },
+    {
+      "id": "c2",
+      "condition": "오른쪽 직선 경계 x=π/2",
+      "mappedTo": "graphPlan.sourceDomain.rangePi[1]"
+    },
+    {
+      "id": "c3",
+      "condition": "y=a cos x 및 곡선 교점 (α,y0)",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: TWO_TRIG_CURVES_WITH_SYMBOLIC_AMPLITUDE"
+    },
+    {
+      "id": "c4",
+      "condition": "y=a cos x로 원도형 넓이 이등분",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: TRIGONOMETRIC_EQUAL_BISECTION_REGIONS"
+    }
+  ],
+  "newVisualInformation": [
+    "a의 답을 문제 그림에 표시하지 않았다."
+  ],
+  "sourceQuote": "[그림: 좌표평면의 제1사분면에 원점 $(0,0)$에서 시작하여 점 $(\\pi/2, 2)$에 도달하는 곡선 $y=2\\sin x$와 수직선 $x=\\pi/2$, 그리고 $x$축으로 둘러싸인 도형이 있다. $y$축의 점 $(0, a)$에서 시작하여 $x$축의 점 $(\\pi/2, 0)$으로 내려오는 곡선 $y=a\\cos x$가 곡선 $y=2\\sin x$와 점 $(\\alpha, y_0)$에서 만나며 이 도형의 넓이를 둘로 나누고 있다.]",
+  "accessibilityDescription": "정확한 y=2sin x (0≤x≤π/2)와 끝점 눈금. y=a cos x와 이등분 면은 보류."
+}

@@ -1,0 +1,74 @@
+{
+  "capability": "exponential-affine-spike-v1",
+  "graphPlan": {
+    "family": "exponential-affine",
+    "coefficients": [
+      "1",
+      "2",
+      "0"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -0.2,
+      1.2
+    ],
+    "viewport": [
+      -0.3,
+      1.4,
+      -0.5,
+      12
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "l",
+          "slope": "-1",
+          "intercept": "2",
+          "label": "y=-x+a",
+          "labelValues": {
+            "a": "2"
+          }
+        },
+        {
+          "id": "edge",
+          "x": "1",
+          "style": "DASHED"
+        }
+      ]
+    }
+  },
+  "caption": "예: a=2일 때 y=e^(2x), y=-x+a와 x=1의 경계. A=B를 뜻하지 않는 부분 그림.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "곡선 y=e^(2x)",
+      "mappedTo": "graphPlan.coefficients"
+    },
+    {
+      "id": "c2",
+      "condition": "기울기 -1인 직선 y=-x+a, 1<a<e²",
+      "mappedTo": "graphPlan.overlays.lines[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "오른쪽 경계 x=1",
+      "mappedTo": "graphPlan.overlays.lines[1]"
+    },
+    {
+      "id": "c4",
+      "condition": "두 곡선과 y축 사이 A, 교점부터 x=1 사이 B, A=B",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: EXP_LINE_SYMBOLIC_CROSSING_EQUAL_AREAS: 미지 a의 교점을 경계로 두 면을 동일 넓이로 선언하는 영역 필드 없음"
+    }
+  ],
+  "newVisualInformation": [
+    "예시 a=2는 1<a<e²를 만족하나 원문의 A=B를 만족하는 값은 아니다."
+  ],
+  "sourceQuote": "[그림: 좌표평면에 곡선 $y=e^{2x}$과 기울기가 $-1$인 직선 $y=-x+a$가 제1사분면에서 만난다. $x=0$부터 교점까지 $y$축, 곡선, 직선으로 둘러싸인 영역이 $A$, 교점부터 $x=1$까지 직선, 곡선, 직선 $x=1$로 둘러싸인 영역이 $B$로 표시되어 있다.]",
+  "accessibilityDescription": "예: a=2일 때 y=e^(2x), y=-x+a와 x=1의 경계. A=B를 뜻하지 않는 부분 그림."
+}

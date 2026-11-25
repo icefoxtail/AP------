@@ -1,0 +1,42 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "kind": "HEMISPHERE",
+      "radius": 4,
+      "orientation": "APEX_DOWN"
+    }
+  ],
+  "dims": [
+    {
+      "radius": "center",
+      "label": "4"
+    }
+  ],
+  "solidCaption": {
+    "text": "반구 모양의 그릇"
+  },
+  "caption": "반지름 4cm의 위가 열린 반구 그릇만 정확히 표시. 30° 기울임·비스듬한 수면·남은 물은 미지원.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "반지름 4cm의 반구 그릇",
+      "mappedTo": "solids[0].radius;dims[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "반구를 30° 기울임",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: TILTED_HEMISPHERE_SOLID"
+    },
+    {
+      "id": "c3",
+      "condition": "개구부 최저점을 지나는 수면과 물 채움",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: HEMISPHERE_TILTED_WATER_SURFACE_FILL"
+    }
+  ],
+  "newVisualInformation": [
+    "수평으로 놓은 빈 반구의 기초 형상이다. 원문 수면까지 재현한 것은 아니다."
+  ],
+  "sourceQuote": "[그림: 반지름의 길이가 4cm인 반구 모양의 그릇을 30°만큼 기울였을 때, 수면이 반구 개구부 테두리의 가장 낮은 점을 지나며 아래쪽에 물이 남아 있는 모습]",
+  "accessibilityDescription": "반지름 4cm의 위가 열린 반구 그릇만 정확히 표시. 30° 기울임·비스듬한 수면·남은 물은 미지원."
+}

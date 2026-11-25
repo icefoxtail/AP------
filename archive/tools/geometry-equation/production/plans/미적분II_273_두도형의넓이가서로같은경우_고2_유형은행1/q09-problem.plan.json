@@ -1,0 +1,64 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "SIN",
+    "coefficients": [
+      "2",
+      "0"
+    ],
+    "phasePi": "0",
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "1"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "axisTickPi": false,
+    "axisTickValues": {
+      "x": [
+        "1/2"
+      ],
+      "y": [
+        "1",
+        "2"
+      ]
+    },
+    "ratePi": "1",
+    "referenceLines": [
+      {
+        "id": "k",
+        "y": "1",
+        "intersectionCount": 2
+      }
+    ]
+  },
+  "caption": "예: k=1에서 정확한 y=2sin(πx)와 수평선 y=k 두 교점. S₂=2S₁은 미표시.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "y=2sin(πx), 0≤x≤1",
+      "mappedTo": "graphPlan.ratePi;graphPlan.coefficients;graphPlan.sourceDomain"
+    },
+    {
+      "id": "c2",
+      "condition": "0<k<2인 수평선이 곡선과 두 점에서 만남 (예 k=1)",
+      "mappedTo": "graphPlan.referenceLines[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "왼쪽 S1, 가운데 S2의 표시와 S2=2S1",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: TRIG_REGION_SHADE_AND_SYMBOLIC_AREA_RATIO: 삼각함수 영역 채움·기호 k의 넓이비 선언 없음"
+    }
+  ],
+  "newVisualInformation": [
+    "k=1은 예시이며 원문의 조건 S₂=2S₁을 뜻하지 않는다."
+  ],
+  "sourceQuote": "[그림: 좌표평면에 $0 \\le x \\le 1$에서 곡선 $y=2\\sin\\pi x$가 위로 볼록한 아치 모양으로 그려져 있고, 직선 $y=k$ ($0<k<2$)가 곡선과 두 점에서 만난다. $y$축, 직선 $y=k$, 곡선으로 둘러싸인 영역이 $S_1$, 직선 $y=k$ 위쪽과 곡선으로 둘러싸인 영역이 $S_2$로 표시되어 있다.]",
+  "accessibilityDescription": "예: k=1에서 정확한 y=2sin(πx)와 수평선 y=k 두 교점. S₂=2S₁은 미표시."
+}

@@ -1,0 +1,46 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "kind": "CYLINDER",
+      "radius": 2,
+      "height": 6
+    }
+  ],
+  "dims": [
+    {
+      "radius": "bottom",
+      "label": "r"
+    },
+    {
+      "height": true,
+      "label": "3r"
+    }
+  ],
+  "solidCaption": {
+    "text": "원기둥"
+  },
+  "caption": "예: r=2로 반지름 r, 높이 3r의 원기둥 형상만 표시. 기울인 수면과 남은 물은 보류.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "반지름 r, 높이 3r의 원기둥 (대표 r=2)",
+      "mappedTo": "solids[0];dims[0..1]"
+    },
+    {
+      "id": "c2",
+      "condition": "수면이 밑면 중심과 윗면 테두리를 통과",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: TILTED_WATER_SURFACE_CENTER_TO_RIM"
+    },
+    {
+      "id": "c3",
+      "condition": "남은 물의 쐐기 면 채움",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: CYLINDER_PARTIAL_FILL_OBLIQUE_PLANE"
+    }
+  ],
+  "newVisualInformation": [
+    "r 값 2는 모든 r>0에 닮은꼴인 대표 도형이며 물의 부피를 나타내지 않는다."
+  ],
+  "sourceQuote": "[그림: 밑면의 반지름의 길이가 r이고 높이가 3r인 원기둥 모양의 물통을 기울여 물을 쏟아낼 때, 수면이 밑면의 중심과 물통 윗면 입구의 모서리를 지나는 평면을 이루며 그 아래에 물이 남아 있는 모습]",
+  "accessibilityDescription": "예: r=2로 반지름 r, 높이 3r의 원기둥 형상만 표시. 기울인 수면과 남은 물은 보류."
+}

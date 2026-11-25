@@ -1,0 +1,27 @@
+{
+  "status": "UNSUPPORTED",
+  "reason": "LOG_OVER_X_GRAPH_AND_SYMBOLIC_AREA_SPLIT: y=ln(x)/x 곡선과 x=e^(2sqrt2), 미지 k의 동등 면 미지원",
+  "caption": "274/q04: 엔진 미지원 — LOG_OVER_X_GRAPH_AND_SYMBOLIC_AREA_SPLIT: y=ln(x)/x 곡선과 x=e^(2sqrt2), 미지 k의 동등 면 미지원",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "y=ln x/x, x≥1",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: LOG_OVER_X_GRAPH"
+    },
+    {
+      "id": "c2",
+      "condition": "x=e^(2sqrt2) 오른쪽 경계",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: EXPONENTIAL_RADICAL_BOUNDARY"
+    },
+    {
+      "id": "c3",
+      "condition": "x=k로 A/B 면 이등분",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: SYMBOLIC_EQUAL_AREA_CUT"
+    }
+  ],
+  "newVisualInformation": [
+    "원문의 수학적 형상을 근사·대체하지 않고 미지원 기능을 지정하였다."
+  ],
+  "sourceQuote": "[그림: 좌표평면의 제1사분면에서 곡선 $y=\\frac{\\ln x}{x}$가 점 $(1,0)$에서 $x$축과 만나며 증가하다가 감소하는 형태로 그려져 있다. $x=1$부터 $x=k$까지 곡선과 $x$축 사이의 영역을 $A$, $x=k$부터 $x=e^{2\\sqrt{2}}$까지 곡선과 $x$축 사이의 영역을 $B$라 표시하고, 수직선 $x=k$와 $x=e^{2\\sqrt{2}}$가 그어져 있다.]",
+  "accessibilityDescription": "274/q04: 실제 엔진에서 지원하지 않는 도형을 임의로 그리지 않았다."
+}

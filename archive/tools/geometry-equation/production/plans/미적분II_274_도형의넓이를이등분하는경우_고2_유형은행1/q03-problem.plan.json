@@ -1,0 +1,27 @@
+{
+  "status": "UNSUPPORTED",
+  "reason": "EXP_DIV_SQRT_COMPLEX_FUNCTION: e^x/sqrt(2e^x+1)의 정확한 곡선과 수평 이등분선 미지원",
+  "caption": "274/q03: 엔진 미지원 — EXP_DIV_SQRT_COMPLEX_FUNCTION: e^x/sqrt(2e^x+1)의 정확한 곡선과 수평 이등분선 미지원",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "y=e^x/sqrt(2e^x+1)",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: EXP_DIV_SQRT_COMPLEX_FUNCTION"
+    },
+    {
+      "id": "c2",
+      "condition": "x=ln24와 x=ln40",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: TRANSCENDENTAL_VERTICAL_BOUNDARIES"
+    },
+    {
+      "id": "c3",
+      "condition": "미지 y=1/ln a, 전체 넓이 이등분",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING: SYMBOLIC_HORIZONTAL_BISECTION"
+    }
+  ],
+  "newVisualInformation": [
+    "원문의 수학적 형상을 근사·대체하지 않고 미지원 기능을 지정하였다."
+  ],
+  "sourceQuote": "[그림: 좌표평면의 제1사분면에 증가하는 곡선 $y=\\frac{e^x}{\\sqrt{2e^x+1}}$이 있고, 두 수직선 $x=\\ln 24$, $x=\\ln 40$과 $x$축으로 둘러싸인 띠 모양의 영역이 있다. 이 영역을 가로지르는 수평선 $y=\\frac{1}{\\ln a}$가 곡선의 아래쪽에서 두 수직선 $x=\\ln 24$, $x=\\ln 40$ 사이를 지나며 직사각형 형태의 아랫부분을 만들고 있다.]",
+  "accessibilityDescription": "274/q03: 실제 엔진에서 지원하지 않는 도형을 임의로 그리지 않았다."
+}
