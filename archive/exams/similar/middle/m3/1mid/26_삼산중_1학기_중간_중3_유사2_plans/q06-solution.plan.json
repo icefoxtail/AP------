@@ -1,0 +1,60 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "axisVariable": false,
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "points": [
+          {
+            "id": "A",
+            "value": "1/4",
+            "showValue": false
+          },
+          {
+            "id": "B",
+            "value": "1/2",
+            "showValue": false
+          },
+          {
+            "id": "C",
+            "value": "1",
+            "showValue": true
+          },
+          {
+            "id": "D",
+            "value": "2",
+            "showValue": false
+          },
+          {
+            "id": "E",
+            "value": "4",
+            "showValue": false
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "예시 a=1/4, b=4에서 a, √a, 1, √b, b의 순서를 확인하는 수직선이다.",
+  "accessibilityDescription": "예시 a=1/4, b=4에서 a, √a, 1, √b, b의 순서를 확인하는 수직선이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "0<a<1<b",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "예시: a=1/4, b=4",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "a<√a<1<√b<b의 일반적 방향을 수치 예시로 확인한다."
+  ]
+}

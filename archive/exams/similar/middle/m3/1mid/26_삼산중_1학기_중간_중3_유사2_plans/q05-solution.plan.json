@@ -1,0 +1,50 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "axisVariable": false,
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "points": [
+          {
+            "id": "O",
+            "value": "-2",
+            "showValue": true
+          },
+          {
+            "id": "P",
+            "value": "-2+sqrt(13)",
+            "showValue": true
+          },
+          {
+            "id": "Q",
+            "value": "-2+sqrt(17)",
+            "showValue": true
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "피타고라스 정리로 OP=√13, OQ=√17이므로 Q의 좌표는 √17−2이다.",
+  "accessibilityDescription": "피타고라스 정리로 OP=√13, OQ=√17이므로 Q의 좌표는 √17−2이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "OP=sqrt(2²+3²)=sqrt(13)",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "OQ=sqrt(1²+4²)=sqrt(17)",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "각 빗변을 수직선의 정확한 이동 거리와 종점 좌표로 나타낸다."
+  ]
+}

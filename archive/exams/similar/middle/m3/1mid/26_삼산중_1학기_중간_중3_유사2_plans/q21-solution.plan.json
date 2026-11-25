@@ -1,0 +1,45 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "axisVariable": false,
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "36",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "49",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "integerPoints": true
+      }
+    ]
+  },
+  "caption": "36보다 크고 49 이하인 자연수 m은 37부터 49까지 13개이다.",
+  "accessibilityDescription": "36보다 크고 49 이하인 자연수 m은 37부터 49까지 13개이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "6<sqrt(m)≤7과 동치인 36<m≤49",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "m은 자연수",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "열린 36과 닫힌 49 사이에 13개의 정수점을 보인다."
+  ]
+}

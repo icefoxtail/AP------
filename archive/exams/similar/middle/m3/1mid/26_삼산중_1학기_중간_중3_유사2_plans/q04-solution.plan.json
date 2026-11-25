@@ -1,0 +1,43 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "axisVariable": false,
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "points": [
+          {
+            "id": "A",
+            "value": "sqrt(12)",
+            "showValue": false
+          },
+          {
+            "id": "C",
+            "value": "5-sqrt(2)",
+            "showValue": false
+          },
+          {
+            "id": "B",
+            "value": "1+sqrt(10)",
+            "showValue": false
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "왼쪽부터 a, c, b의 순서이다. 두 끝점의 차는 b-a이다.",
+  "accessibilityDescription": "왼쪽부터 a, c, b의 순서이다. 두 끝점의 차는 b-a이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "a=2sqrt(3), b=sqrt(10)+1, c=5-sqrt(2)",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "세 무리수를 실제 크기 순서 a<c<b로 나란히 표시한다."
+  ]
+}

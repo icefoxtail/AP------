@@ -1,0 +1,57 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "axisVariable": false,
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "points": [
+          {
+            "id": "O",
+            "value": "-2",
+            "showValue": true
+          },
+          {
+            "id": "P",
+            "value": "-2+sqrt(13)",
+            "showValue": false
+          },
+          {
+            "id": "Q",
+            "value": "-2+sqrt(17)",
+            "showValue": false
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "좌표 -2의 O에서 오른쪽으로 서로 다른 두 빗변 길이를 옮긴 점 P, Q이다.",
+  "accessibilityDescription": "좌표 -2의 O에서 오른쪽으로 서로 다른 두 빗변 길이를 옮긴 점 P, Q이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "O의 좌표는 -2이다.",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "첫 삼각형 변은 2,3이고 둘째 삼각형 변은 1,4이다.",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "P,Q는 O에서 오른쪽으로 각 빗변 길이만큼 이동한 점이다.",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "O에서 오른쪽으로 놓이는 두 점 P와 Q의 상대적 위치만 표시하고 Q의 답 좌표는 숨긴다."
+  ]
+}
