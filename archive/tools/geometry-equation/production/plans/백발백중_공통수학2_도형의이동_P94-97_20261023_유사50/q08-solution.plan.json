@@ -1,0 +1,204 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "K",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Y",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "I",
+        "op": "INTERSECTION",
+        "inputs": [
+          "Y",
+          "K"
+        ],
+        "args": {},
+        "outputType": "POINT_SET",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SELECT_POINT",
+        "inputs": [
+          "I"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "CONCLUSION",
+        "branch": {
+          "kind": "SIDE_OF_ORIENTED_LINE",
+          "refs": [
+            "O",
+            "U"
+          ],
+          "sign": 1
+        }
+      },
+      {
+        "id": "B",
+        "op": "SELECT_POINT",
+        "inputs": [
+          "I"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "CONCLUSION",
+        "branch": {
+          "kind": "SIDE_OF_ORIENTED_LINE",
+          "refs": [
+            "O",
+            "U"
+          ],
+          "sign": -1
+        }
+      },
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "C",
+    "A",
+    "B"
+  ],
+  "displayCircles": [
+    "K"
+  ],
+  "displaySegments": [
+    {
+      "id": "move",
+      "refs": [
+        "O",
+        "C"
+      ],
+      "arrow": "END"
+    },
+    {
+      "id": "chord",
+      "refs": [
+        "A",
+        "B"
+      ],
+      "emphasis": "BOLD"
+    }
+  ],
+  "coordinateLabels": [
+    "C",
+    "A",
+    "B"
+  ],
+  "coordinatePlacement": "PANEL",
+  "caption": "원 중심의 이동과 y축이 만드는 현 AB",
+  "accessibilityDescription": "원점의 원을 (3,1)만큼 옮긴 중심 C(3,1), 반지름 5인 원이 y축과 A(0,5), B(0,-3)에서 만난다. A와 B를 잇는 현을 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "originalCircle",
+      "condition": "이동 전 원 중심 (0,0), 반지름 5",
+      "mappedTo": "O"
+    },
+    {
+      "id": "shift",
+      "condition": "이동량 (3,1)",
+      "mappedTo": [
+        "C",
+        "move"
+      ]
+    },
+    {
+      "id": "circle",
+      "condition": "이동된 원의 반지름 5",
+      "mappedTo": "K"
+    },
+    {
+      "id": "chord",
+      "condition": "y축과의 두 교점 (0,5),(0,-3) 및 현 길이 8",
+      "mappedTo": [
+        "Y",
+        "A",
+        "B",
+        "chord"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 교점 사이 현의 길이가 반현의 두 배임을 좌표와 수직 현으로 보여 준다."
+  ]
+}

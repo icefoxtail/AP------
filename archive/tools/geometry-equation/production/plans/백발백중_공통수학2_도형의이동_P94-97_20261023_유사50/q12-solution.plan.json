@@ -1,0 +1,92 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "-2",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 1,
+        "y": 1
+      },
+      {
+        "id": "I",
+        "x": 0,
+        "y": 2
+      },
+      {
+        "id": "U",
+        "x": 0,
+        "y": -1
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "referenceCurves": [
+      {
+        "id": "g",
+        "name": "g",
+        "coefficients": [
+          "-1",
+          "0",
+          "1"
+        ],
+        "intersectionX": [
+          "3/2"
+        ]
+      }
+    ]
+  },
+  "coordinatePlacement": "PANEL",
+  "caption": "두 원의 중심 이동 (1,2)에 따른 평행이동 전·후 포물선과 최종 y절편",
+  "accessibilityDescription": "회색 점선은 이동 전 포물선 계수 (-1,0,1), 실선은 이동 후 계수 (2,-2,1)이며 최종 꼭짓점 V(1,1)와 y축 교점 I(0,2)가 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "circleMovement",
+      "condition": "원의 중심 이동량 (1,2), 반지름 2",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "originalParabola",
+      "condition": "이동 전 포물선 계수 (-1,0,1)",
+      "mappedTo": "graphPlan.referenceCurves[0].coefficients"
+    },
+    {
+      "id": "finalParabola",
+      "condition": "이동 후 포물선 계수 (2,-2,1)",
+      "mappedTo": "graphPlan.pieces[0].coefficients"
+    },
+    {
+      "id": "vertex",
+      "condition": "이동 후 꼭짓점 (1,1)",
+      "mappedTo": "V"
+    },
+    {
+      "id": "intercept",
+      "condition": "이동한 포물선의 y절편 2",
+      "mappedTo": "I"
+    },
+    {
+      "id": "originalVertex",
+      "condition": "이동 전 포물선의 꼭짓점 (0,-1)",
+      "mappedTo": "U"
+    }
+  ],
+  "newVisualInformation": [
+    "두 포물선의 개형과 최종 y축 교점을 같은 축에서 대조한다. 원의 중심 차이로 구한 이동량은 발문·해설 텍스트에 그대로 둔다."
+  ]
+}

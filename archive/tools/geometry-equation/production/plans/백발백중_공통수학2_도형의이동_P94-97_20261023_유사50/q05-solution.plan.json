@@ -1,0 +1,178 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "L",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "-1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "N",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "TRANSLATE_LINE",
+        "inputs": [
+          "L"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "T",
+        "op": "TRANSLATE_LINE",
+        "inputs": [
+          "N"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "I",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [
+    "L",
+    "N",
+    "M",
+    "T"
+  ],
+  "displayPoints": [
+    "I"
+  ],
+  "coordinateLabels": [
+    "I"
+  ],
+  "coordinatePlacement": "PANEL",
+  "caption": "두 직선의 평행이동 후 만나는 교점 I(2,2)",
+  "accessibilityDescription": "주어진 두 직선을 각각 (1,0), (0,4)만큼 이동한 뒤 교점 I(2,2)를 표시하였다. 이동 전 두 직선과 이동 후 두 직선을 같은 좌표평면에 보인다.",
+  "sourceConditions": [
+    {
+      "id": "firstSource",
+      "condition": "첫 직선 계수 (2,-1,0)",
+      "mappedTo": "L"
+    },
+    {
+      "id": "firstMove",
+      "condition": "첫 직선 이동 (1,0)",
+      "mappedTo": "M"
+    },
+    {
+      "id": "secondSource",
+      "condition": "둘째 직선 계수 (1,1,0)",
+      "mappedTo": "N"
+    },
+    {
+      "id": "secondMove",
+      "condition": "둘째 직선 이동 (0,4)",
+      "mappedTo": "T"
+    },
+    {
+      "id": "intersection",
+      "condition": "교점 좌표 (2,2)",
+      "mappedTo": "I"
+    }
+  ],
+  "newVisualInformation": [
+    "서로 다른 방향의 이동이 두 직선의 교점을 어떻게 정하는지 확인한다."
+  ]
+}
