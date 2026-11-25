@@ -1,0 +1,25 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {"kind": "ELLIPSE", "center": ["0", "0"], "aSquared": "400", "bSquared": "144", "major": "X"},
+  "points": [
+    {"id": "P", "kind": "ON_CONIC", "x": "12", "branch": "POS"},
+    {"id": "Q", "kind": "ON_CONIC", "x": "-12", "branch": "POS"},
+    {"id": "R", "kind": "ON_CONIC", "x": "-12", "branch": "NEG"},
+    {"id": "S", "kind": "ON_CONIC", "x": "12", "branch": "NEG"},
+    {"id": "O", "kind": "ORIGIN"}
+  ],
+  "segments": [
+    {"id": "sPQ", "from": "P", "to": "Q"},
+    {"id": "sQR", "from": "Q", "to": "R"},
+    {"id": "sRS", "from": "R", "to": "S"},
+    {"id": "sSP", "from": "S", "to": "P"}
+  ],
+  "caption": "장축 40·단축 24인 타원에 내접한 축과 평행한 직사각형",
+  "accessibilityDescription": "원점을 중심으로 가로가 긴 타원의 상하좌우에 대칭인 네 점 P, Q, R, S를 이어 네 변이 좌표축과 나란한 내접직사각형을 그렸다. 가장 넓은 직사각형의 좌표나 면적 값은 표시하지 않았다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "원문 장축 길이 40, 단축 길이 24에서 a=20,b=12, 타원 x²/400+y²/144=1을 확정한다. 원점 O를 중심으로 놓는다.", "mappedTo": ["conic", "O"]},
+    {"id": "c2", "condition": "그림 자체는 임의의 타원 내접 축평행 직사각형이다. 최적해를 암시하지 않기 위해 대표 x=±12, y=±48/5를 선택하며 네 점은 모두 타원 위다. 최대 면적의 정답은 원문 문제 그림에 표시하지 않는다.", "mappedTo": ["P", "Q", "R", "S", "sPQ", "sQR", "sRS", "sSP"]},
+    {"id": "c3", "condition": "PQ와 RS는 수평이고 QR과 SP는 수직이며 네 점은 원점에 대해 점대칭이다. 최적 직사각형에 해당하는 x=10√2, y=6√2는 플랜에 채택하지 않는다.", "mappedTo": ["P", "Q", "R", "S"]}
+  ],
+  "newVisualInformation": ["내접직사각형의 네 꼭짓점을 정확한 타원 위 점으로 계산", "문제에서 묻는 최대 면적과 최적 꼭짓점은 그림에 노출하지 않음"]
+}

@@ -1,0 +1,28 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conics": [
+    {"id": "e", "kind": "ELLIPSE", "center": ["0", "0"], "aSquared": "15", "bSquared": "7", "major": "X"},
+    {"id": "k", "kind": "CIRCLE", "center": ["0", "0"], "rSquared": "8"}
+  ],
+  "points": [
+    {"id": "F", "kind": "FOCUS", "curve": "e", "side": 1},
+    {"id": "F'", "kind": "FOCUS", "curve": "e", "side": -1},
+    {"id": "P", "kind": "CONIC_CONIC", "curves": ["e", "k"], "which": 4},
+    {"id": "Q", "kind": "CONIC_CONIC", "curves": ["e", "k"], "which": 1}
+  ],
+  "segments": [
+    {"id": "sPFp", "from": "P", "to": "F'"},
+    {"id": "sFpQ", "from": "F'", "to": "Q"},
+    {"id": "sQF", "from": "Q", "to": "F"},
+    {"id": "sFP", "from": "F", "to": "P"}
+  ],
+  "polygons": [{"id": "quad", "points": ["P", "F'", "Q", "F"], "fill": "LIGHT"}],
+  "caption": "타원 x²/15+y²/7과 초점 지름 원 x²+y²=8의 반대 교점 P,Q로 만든 사각형",
+  "accessibilityDescription": "타원과 초점 F′(-2√2,0),F(2√2,0)을 지름 양끝으로 둔 원이 서로 교차한다. 제1사분면의 교점 P와 원점 대칭인 제3사분면 교점 Q, 두 초점을 순서대로 연결한 직사각형 PF′QF 내부가 옅게 색칠되어 있다. 초점 좌표는 렌더러 라벨 공간 한계 때문에 점 이름만 표시한다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "주어진 타원 x²/15+y²/7=1의 초점은 F=(2√2,0),F′=(-2√2,0)이며 지름 원은 x²+y²=8이다.", "mappedTo": ["e", "k", "F", "F'"]},
+    {"id": "c2", "condition": "두 곡선의 네 교점 중 P=(√30/4,7√2/4)는 제1사분면이면서 which 4, Q=(-√30/4,-7√2/4)는 제3사분면이면서 which 1이다. 원점 대칭·대각선 길이 같음을 독립 검산한다.", "mappedTo": ["P", "Q"]},
+    {"id": "c3", "condition": "P-F′-Q-F 순서의 사각형은 실제 직사각형이고 내부만 채운다. 넓이 값은 질문의 답이므로 도형에 미표시한다. F·F′ 모두 coordinates:true일 때 ELLIPSE_LABEL_NO_ROOM 오류가 나므로 이름만 그리고 좌표 병기는 ENGINE_CAPABILITY_PENDING이다.", "mappedTo": ["sPFp", "sFpQ", "sQF", "sFP", "quad"]}
+  ],
+  "newVisualInformation": ["곡선 교점 네 개 중 서로 반대 사분면 두 점을 CONIC_CONIC 계산 노드로 정확히 지정", "원문 사각형을 네 실제 꼭짓점 다각형으로 채움"]
+}
