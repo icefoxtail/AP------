@@ -1,0 +1,69 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "ELLIPSE",
+    "center": [
+      "0",
+      "0"
+    ],
+    "aSquared": "289/4",
+    "bSquared": "16",
+    "major": "X"
+  },
+  "points": [
+    {
+      "id": "F",
+      "kind": "FOCUS",
+      "side": 1
+    },
+    {
+      "id": "F'",
+      "kind": "FOCUS",
+      "side": -1
+    },
+    {
+      "id": "A",
+      "kind": "POINT",
+      "x": "15/2",
+      "y": "8"
+    },
+    {
+      "id": "P",
+      "kind": "ON_CONIC",
+      "x": "15/2",
+      "branch": "POS"
+    }
+  ],
+  "lines": [],
+  "segments": [
+    {
+      "id": "sAF",
+      "from": "A",
+      "to": "F",
+      "label": "8"
+    },
+    {
+      "id": "sFF",
+      "from": "F",
+      "to": "F'"
+    }
+  ],
+  "polygons": [],
+  "caption": "Q19 문제에서 주어진 도형과 위치 관계만 표시한 예시: 타원의 두 초점, 점 A, 수직 현을 한눈에 이해할 수 있다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "타원 $\\dfrac{x^2}{a^2}+\\dfrac{y^2}{16}=1$의 두 초점은 $F(c,0)$, $F'(-c,0)$이고 $a>c>0$이다. 점 $F$를 지나고 $x$축에 수직인 직선 위쪽에 점 $A$가 있어 $AF=8$, 삼각형 $AFF'$의 넓이가 $60$이다. 선분 $AF$가 타원과 만나는 점을 $P$라 할 때, 삼각형 $PFF'$의 둘레의 길이는? (4.6점)",
+      "mappedTo": [
+        "conic",
+        "points",
+        "lines",
+        "segments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "타원의 두 초점, 점 A, 수직 현을 한눈에 이해할 수 있다."
+  ],
+  "sourceQuote": "타원 $\\dfrac{x^2}{a^2}+\\dfrac{y^2}{16}=1$의 두 초점은 $F(c,0)$, $F'(-c,0)$이고 $a>c>0$이다. 점 $F$를 지나고 $x$축에 수직인 직선 위쪽에 점 $A$가 있어 $AF=8$, 삼각형 $AFF'$의 넓"
+}

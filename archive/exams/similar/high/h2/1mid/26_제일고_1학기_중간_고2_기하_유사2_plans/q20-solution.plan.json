@@ -1,0 +1,79 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "PARABOLA",
+    "vertex": [
+      "-4",
+      "-5"
+    ],
+    "p": "5",
+    "axis": "Y"
+  },
+  "points": [
+    {
+      "id": "F",
+      "kind": "FOCUS"
+    },
+    {
+      "id": "F'",
+      "kind": "POINT",
+      "x": "4",
+      "y": "0"
+    },
+    {
+      "id": "P",
+      "kind": "ON_CONIC",
+      "x": "4"
+    },
+    {
+      "id": "M",
+      "kind": "FOOT",
+      "from": "F'",
+      "onto": "d",
+      "rightAngle": true
+    }
+  ],
+  "lines": [
+    {
+      "id": "d",
+      "role": "DIRECTRIX",
+      "label": "d"
+    }
+  ],
+  "segments": [
+    {
+      "id": "sPM",
+      "from": "P",
+      "to": "M"
+    },
+    {
+      "id": "sPFp",
+      "from": "P",
+      "to": "F'"
+    },
+    {
+      "id": "sFM",
+      "from": "F'",
+      "to": "M",
+      "label": "10"
+    }
+  ],
+  "polygons": [],
+  "caption": "Q20 풀이에 쓰이는 점·선분·곡선 관계를 표시한 해설 그림: 최단 경로가 준선에서 F′까지 직선이 되는 이유를 확인할 수 있다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "포물선 초점·준선 및 쌍곡선 거리차 정의",
+      "mappedTo": [
+        "conic",
+        "points",
+        "lines",
+        "segments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "최단 경로가 준선에서 F′까지 직선이 되는 이유를 확인할 수 있다."
+  ],
+  "sourceQuote": "포물선 $(x+4)^2=20(y+5)$ 위의 점 $P$와 두 점 $F(-4,0)$, $F'(4,0)$에 대해 $PF+PF'$의 최솟값을 $m$이라 하자. 두 점 $F,F'$를 초점으로 하고 초점거리의 차의 절댓값이 $\\dfrac m5$인 쌍곡선의 방정"
+}

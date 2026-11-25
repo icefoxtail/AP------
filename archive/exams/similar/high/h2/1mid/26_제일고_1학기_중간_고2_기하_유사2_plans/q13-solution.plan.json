@@ -1,0 +1,61 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conics": [
+    {
+      "id": "c1",
+      "kind": "ELLIPSE",
+      "center": [
+        "2",
+        "-1"
+      ],
+      "aSquared": "36",
+      "bSquared": "11",
+      "major": "X"
+    },
+    {
+      "id": "c2",
+      "kind": "HYPERBOLA",
+      "center": [
+        "2",
+        "-1"
+      ],
+      "aSquared": "9",
+      "bSquared": "16",
+      "transverse": "X"
+    }
+  ],
+  "points": [
+    {
+      "id": "F",
+      "kind": "FOCUS",
+      "curve": "c2",
+      "side": 1
+    },
+    {
+      "id": "F'",
+      "kind": "FOCUS",
+      "curve": "c2",
+      "side": -1
+    }
+  ],
+  "lines": [],
+  "segments": [],
+  "polygons": [],
+  "caption": "Q13 풀이에 쓰이는 점·선분·곡선 관계를 표시한 해설 그림: 공초점 타원과 쌍곡선의 초점 위치를 비교할 수 있다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "타원 c²=a²−b²와 쌍곡선 c²=a²+b² 비교",
+      "mappedTo": [
+        "conics",
+        "points",
+        "lines",
+        "segments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "공초점 타원과 쌍곡선의 초점 위치를 비교할 수 있다."
+  ],
+  "sourceQuote": "두 이차곡선 $C_1:\\dfrac{(x-2)^2}{36}+\\dfrac{(y+1)^2}{k}=1$과 $C_2:\\dfrac{(x-2)^2}{9}-\\dfrac{(y+1)^2}{16}=1$의 두 초점이 각각 일치한다. $0<k<36$일 때 $k$의 값은? ("
+}

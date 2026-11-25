@@ -1,0 +1,74 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conics": [
+    {
+      "id": "c1",
+      "kind": "PARABOLA",
+      "vertex": [
+        "0",
+        "0"
+      ],
+      "p": "2",
+      "axis": "X"
+    },
+    {
+      "id": "c2",
+      "kind": "ELLIPSE",
+      "center": [
+        "-2",
+        "0"
+      ],
+      "aSquared": "9",
+      "bSquared": "4",
+      "major": "X"
+    }
+  ],
+  "points": [
+    {
+      "id": "P",
+      "kind": "ON_CONIC",
+      "curve": "c1",
+      "x": "2",
+      "branch": "POS"
+    },
+    {
+      "id": "C",
+      "kind": "CENTER",
+      "curve": "c2"
+    }
+  ],
+  "lines": [
+    {
+      "id": "t",
+      "curve": "c1",
+      "tangent": true,
+      "at": "P",
+      "label": "t"
+    }
+  ],
+  "segments": [
+    {
+      "id": "sCP",
+      "from": "C",
+      "to": "P"
+    }
+  ],
+  "polygons": [],
+  "caption": "Q09 풀이에 쓰이는 점·선분·곡선 관계를 표시한 해설 그림: 중심을 지나는 포물선 접선과 접점을 확인할 수 있다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "포물선 접선이 타원 중심을 지남",
+      "mappedTo": [
+        "conics",
+        "points",
+        "lines",
+        "segments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "중심을 지나는 포물선 접선과 접점을 확인할 수 있다."
+  ],
+  "sourceQuote": "포물선 $y^2=8x$ 위의 제1사분면의 점 $P(a,b)$에서의 접선이 타원 $\\dfrac{(x+2)^2}{9}+\\dfrac{y^2}{4}=1$의 넓이를 이등분한다. $b-a$의 값은? (4점)"
+}

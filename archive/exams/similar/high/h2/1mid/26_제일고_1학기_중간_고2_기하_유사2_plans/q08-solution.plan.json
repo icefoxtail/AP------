@@ -1,0 +1,69 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "ELLIPSE",
+    "center": [
+      "0",
+      "0"
+    ],
+    "aSquared": "25",
+    "bSquared": "16",
+    "major": "X"
+  },
+  "points": [
+    {
+      "id": "F",
+      "kind": "FOCUS",
+      "side": 1
+    },
+    {
+      "id": "F'",
+      "kind": "FOCUS",
+      "side": -1
+    },
+    {
+      "id": "P",
+      "kind": "ON_CONIC",
+      "x": "4",
+      "branch": "POS"
+    },
+    {
+      "id": "Q",
+      "kind": "ON_CONIC",
+      "x": "4",
+      "branch": "NEG"
+    }
+  ],
+  "lines": [
+    {
+      "id": "m",
+      "x": "4"
+    }
+  ],
+  "segments": [
+    {
+      "id": "sPQ",
+      "from": "P",
+      "to": "Q",
+      "label": "24/5"
+    }
+  ],
+  "polygons": [],
+  "caption": "Q08 풀이에 쓰이는 점·선분·곡선 관계를 표시한 해설 그림: x=t와 타원의 교점, 현의 반길이 계산을 확인할 수 있다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "타원 표준형에 수직선 대입 후 두 교점 간 거리",
+      "mappedTo": [
+        "conic",
+        "points",
+        "lines",
+        "segments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "x=t와 타원의 교점, 현의 반길이 계산을 확인할 수 있다."
+  ],
+  "sourceQuote": "두 초점이 $(3,0),(-3,0)$이고 장축의 길이가 $10$인 타원을 생각하자. 직선 $x=t$ $(t>0)$가 이 타원과 만나는 서로 다른 두 점 사이의 거리가 $\\dfrac{24}{5}$일 때 $t$의 값은? (4점)"
+}

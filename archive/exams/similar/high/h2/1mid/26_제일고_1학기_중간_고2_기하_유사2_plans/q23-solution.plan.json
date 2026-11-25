@@ -1,0 +1,89 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conics": [
+    {
+      "id": "e",
+      "kind": "ELLIPSE",
+      "center": [
+        "0",
+        "0"
+      ],
+      "aSquared": "49",
+      "bSquared": "24",
+      "major": "X"
+    },
+    {
+      "id": "h",
+      "kind": "HYPERBOLA",
+      "center": [
+        "0",
+        "0"
+      ],
+      "aSquared": "9",
+      "bSquared": "16",
+      "transverse": "X"
+    }
+  ],
+  "points": [
+    {
+      "id": "F",
+      "kind": "FOCUS",
+      "curve": "e",
+      "side": 1
+    },
+    {
+      "id": "F'",
+      "kind": "FOCUS",
+      "curve": "e",
+      "side": -1
+    },
+    {
+      "id": "P",
+      "kind": "POINT",
+      "x": "21/5",
+      "y": "8*sqrt(6)/5"
+    },
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    }
+  ],
+  "lines": [],
+  "segments": [
+    {
+      "id": "sPF",
+      "from": "P",
+      "to": "F",
+      "label": "4"
+    },
+    {
+      "id": "sPFp",
+      "from": "P",
+      "to": "F'",
+      "label": "10"
+    },
+    {
+      "id": "sOP",
+      "from": "O",
+      "to": "P"
+    }
+  ],
+  "polygons": [],
+  "caption": "Q23 풀이에 쓰이는 점·선분·곡선 관계를 표시한 해설 그림: 공초점 거리합과 거리차를 이용한 교점 좌표를 시각화할 수 있다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "공초점 타원 거리합·쌍곡선 거리차로 교점 좌표 계산",
+      "mappedTo": [
+        "conics",
+        "points",
+        "lines",
+        "segments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "공초점 거리합과 거리차를 이용한 교점 좌표를 시각화할 수 있다."
+  ],
+  "sourceQuote": "두 초점이 $F(5,0)$, $F'(-5,0)$으로 일치하는 쌍곡선 $\\dfrac{x^2}{9}-\\dfrac{y^2}{16}=1$과 타원 $C$가 있다. 타원 $C$의 장축의 길이는 $14$이고 두 곡선은 제1사분면에서 점 $P$에서 만난다. $OP^"
+}

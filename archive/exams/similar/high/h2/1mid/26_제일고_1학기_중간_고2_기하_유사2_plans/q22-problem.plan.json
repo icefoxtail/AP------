@@ -1,0 +1,80 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "ELLIPSE",
+    "center": [
+      "0",
+      "0"
+    ],
+    "aSquared": "25",
+    "bSquared": "9",
+    "major": "X"
+  },
+  "points": [
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    },
+    {
+      "id": "P",
+      "kind": "ON_CONIC",
+      "x": "4",
+      "branch": "POS"
+    },
+    {
+      "id": "Q",
+      "kind": "POINT",
+      "x": "25/4",
+      "y": "0"
+    },
+    {
+      "id": "R",
+      "kind": "POINT",
+      "x": "64/25",
+      "y": "0"
+    }
+  ],
+  "lines": [
+    {
+      "id": "t",
+      "slope": "-4/5",
+      "intercept": "5",
+      "tangent": true
+    },
+    {
+      "id": "n",
+      "slope": "5/4",
+      "intercept": "-16/5"
+    }
+  ],
+  "segments": [
+    {
+      "id": "sOQ",
+      "from": "O",
+      "to": "Q"
+    },
+    {
+      "id": "sOR",
+      "from": "O",
+      "to": "R"
+    }
+  ],
+  "polygons": [],
+  "caption": "Q22 문제에서 주어진 도형과 위치 관계만 표시한 예시: 접선·법선의 x축 교점과 양의 거리 곱을 시각적으로 확인할 수 있다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "$0<b<5$인 타원 $\\dfrac{x^2}{25}+\\dfrac{y^2}{b^2}=1$ 위의 제1사분면의 임의의 점 $P(x_1,y_1)$에서 접선 $l$을 긋는다. $l$이 $x$축과 만나는 점을 $Q$, $P$에서 $l$에 수직인 직선이 $x$축과 만나는 점을 $R$이라 하자. 모든 이와 같은 $P$에 대하여 $OQ\\times OR=16$일 때, 이 곱이 일정함을 보이고 $b$의 값을 구하는 과정을 서술하시오. (7점, 부분 점수 있음.) (단, $O$는 원점이다.)",
+      "mappedTo": [
+        "conic",
+        "points",
+        "lines",
+        "segments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "접선·법선의 x축 교점과 양의 거리 곱을 시각적으로 확인할 수 있다."
+  ],
+  "sourceQuote": "$0<b<5$인 타원 $\\dfrac{x^2}{25}+\\dfrac{y^2}{b^2}=1$ 위의 제1사분면의 임의의 점 $P(x_1,y_1)$에서 접선 $l$을 긋는다. $l$이 $x$축과 만나는 점을 $Q$, $P$에서 $l$에 수직인 직선이 $x$축과"
+}

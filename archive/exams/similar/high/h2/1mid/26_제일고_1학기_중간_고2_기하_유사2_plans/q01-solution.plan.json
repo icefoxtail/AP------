@@ -1,0 +1,55 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "PARABOLA",
+    "vertex": [
+      "0",
+      "0"
+    ],
+    "p": "-3",
+    "axis": "Y"
+  },
+  "points": [
+    {
+      "id": "V",
+      "kind": "VERTEX"
+    },
+    {
+      "id": "F",
+      "kind": "FOCUS"
+    }
+  ],
+  "lines": [
+    {
+      "id": "d",
+      "role": "DIRECTRIX",
+      "label": "d"
+    }
+  ],
+  "segments": [
+    {
+      "id": "sVF",
+      "from": "V",
+      "to": "F",
+      "label": "3"
+    }
+  ],
+  "polygons": [],
+  "caption": "Q01 풀이에 쓰이는 점·선분·곡선 관계를 표시한 해설 그림: 음의 y방향으로 열린 포물선과 초점 F를 함께 보면 부호를 확인할 수 있다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "초점 (0,p)와 표준형 x²=4py의 대응",
+      "mappedTo": [
+        "conic",
+        "points",
+        "lines",
+        "segments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "음의 y방향으로 열린 포물선과 초점 F를 함께 보면 부호를 확인할 수 있다."
+  ],
+  "sourceQuote": "꼭짓점이 원점이고 초점이 $F(0,-3)$인 포물선의 방정식은? (3.4점)"
+}
