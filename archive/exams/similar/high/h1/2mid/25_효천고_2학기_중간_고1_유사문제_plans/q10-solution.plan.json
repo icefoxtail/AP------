@@ -1,0 +1,15 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [{ "id": "A" }, { "id": "B" }],
+    "subset": ["B", "A"]
+  },
+  "caption": "A∪B=A이면 B가 A 안에 포함되어 A∩B=B가 된다.",
+  "accessibilityDescription": "전체집합 안에서 집합 B의 원이 집합 A의 원 안에 완전히 들어 있는 벤다이어그램이다.",
+  "sourceConditions": [
+    { "id": "union", "condition": "A∪B=A", "mappedTo": "diagram.subset(B,A)" },
+    { "id": "complement", "condition": "B⊂A에서 여집합 포함 방향은 A의 여집합이 B의 여집합에 포함되는 방향", "mappedTo": "diagram.subset(B,A)" }
+  ],
+  "newVisualInformation": ["B⊂A의 안쪽·바깥쪽 관계를 원의 실제 포함으로 보이고, 별도의 색칠은 하지 않는다."]
+}

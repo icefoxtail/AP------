@@ -1,0 +1,31 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{
+    "schemaVersion":"construction-spike-v1",
+    "realization":{"recipeId":"SOURCE_COORDINATE_AXES_v1","unit":"source-coordinate","reflectionEquivalent":false},
+    "nodes":[
+      {"id":"O","op":"NORMALIZATION_ORIGIN","inputs":[],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"X","op":"NORMALIZATION_AXIS","inputs":[],"args":{"length":{"kind":"integer","value":"1"}},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"K","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"3"},{"kind":"integer","value":"1"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"circle","op":"CIRCLE_CENTER_RADIUS","inputs":["K"],"args":{"radius":{"kind":"integer","value":"2"}},"outputType":"CIRCLE","factRole":"GIVEN"},
+      {"id":"V","op":"TRANSLATE_POINT","inputs":["O"],"args":{"dx":{"kind":"integer","value":"1"},"dy":{"kind":"integer","value":"-1"}},"outputType":"POINT","factRole":"CONCLUSION"},
+      {"id":"L","op":"TRANSLATE_POINT","inputs":["V"],"args":{"dx":{"kind":"integer","value":"-3"},"dy":{"kind":"integer","value":"3"}},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"R","op":"TRANSLATE_POINT","inputs":["V"],"args":{"dx":{"kind":"integer","value":"6"},"dy":{"kind":"integer","value":"6"}},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "coordinateCanvas":{"width":680,"height":500},
+  "displayPoints":["K","V","L","R"],
+  "hiddenPointNames":["L","R"],
+  "hiddenPointStyle":"NONE",
+  "displayCircles":["circle"],
+  "displaySegments":[{"id":"sLV","refs":["L","V"]},{"id":"sVR","refs":["V","R"]}],
+  "coordinateLabels":["K","V"],
+  "caption":"예: (a,b)=(1,-1)의 V자 그래프는 꼭짓점이 원 밖에 있고 오른쪽 가지가 중심을 지난다.",
+  "accessibilityDescription":"중심 K(3,1), 반지름 2의 원과, 꼭짓점 V(1,-1)에서 기울기 -1과 1로 뻗는 절댓값 그래프의 일부이다. 원 안에서는 한 직선 가지가 중심을 통과한다.",
+  "sourceConditions":[
+    {"id":"circle","condition":"원 (x-3)²+(y-1)²=4, 중심 (3,1), 반지름 2","mappedTo":"mathPlan.nodes[K,circle];displayCircles[circle]"},
+    {"id":"translated","condition":"이동한 y=|x-a|+b에서 유효 예 a=1,b=-1","mappedTo":"mathPlan.nodes[V,L,R];displaySegments[sLV,sVR]"},
+    {"id":"center","condition":"중심에서 y=|x-1|-1을 만족하고 꼭짓점-중심 거리가 2√2>2","mappedTo":"mathPlan.nodes[K,V];displaySegments[sVR]"}
+  ],
+  "newVisualInformation":["8개 정수해를 임의로 다 그려 답 목록을 대신하지 않는다. 유효한 한 예에서 반지름 2의 원과 V자의 두 실선 가지, 원 밖 꼭짓점과 중심 통과 관계를 정확한 좌표로 보인다."]
+}
