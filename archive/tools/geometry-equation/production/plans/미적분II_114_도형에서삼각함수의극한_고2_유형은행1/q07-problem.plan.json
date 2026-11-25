@@ -1,0 +1,213 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "16",
+              "denominator": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "16",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "12",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "H",
+    "C",
+    "A"
+  ],
+  "hiddenPointNames": [],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "B",
+        "H"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "H",
+        "C"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "B",
+        "A"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "A",
+        "H"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a0",
+        "refs": [
+          "C",
+          "B",
+          "A"
+        ],
+        "value": 36.869897646,
+        "label": "θ",
+        "arcs": 1,
+        "style": "ARC"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "l0",
+        "ownerSegment": "s2",
+        "text": "4"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "B",
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "B",
+        "H",
+        "A"
+      ]
+    }
+  ],
+  "caption": "∠BAC=90°, AB=4, ∠ABC=θ인 삼각형에서 A를 BC에 수직으로 내린 발 H가 보인다.",
+  "accessibilityDescription": "∠BAC=90°, AB=4, ∠ABC=θ인 삼각형에서 A를 BC에 수직으로 내린 발 H가 보인다.",
+  "sourceQuote": "[그림: $B=(0,0)$, $BC$는 양의 $x$축, $A=(4\\cos\\theta,4\\sin\\theta)$, $C=(4\\sec\\theta,0)$, $H=(4\\cos\\theta,0)$.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문에 주어진 점과 대표 도형의 배치",
+      "mappedTo": "mathPlan.nodes[0..3]"
+    },
+    {
+      "id": "c2",
+      "condition": "원문에서 이어지는 선분·수선·시선",
+      "mappedTo": "displaySegments[0..4]"
+    },
+    {
+      "id": "c4",
+      "condition": "직각·수선 표시",
+      "mappedTo": "rightAngles[0..1]"
+    },
+    {
+      "id": "c5",
+      "condition": "주어진 각과 대응하는 호 표시",
+      "mappedTo": "planeMarks.angles[0..0]"
+    },
+    {
+      "id": "c6",
+      "condition": "문제에서 제시된 변 길이",
+      "mappedTo": "planeMarks.expressionLabels[0..0]"
+    }
+  ],
+  "newVisualInformation": [
+    "sin θ=3/5인 대표 좌표계다.",
+    "문제에서 아직 구해야 할 길이·극한값·최대값은 그림에 표기하지 않는다."
+  ]
+}

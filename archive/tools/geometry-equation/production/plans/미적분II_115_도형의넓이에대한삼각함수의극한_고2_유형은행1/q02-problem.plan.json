@@ -1,0 +1,298 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "8",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "6",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "8",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "8",
+              "denominator": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "P",
+    "Q",
+    "H"
+  ],
+  "hiddenPointNames": [],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "P",
+        "H"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "A",
+        "Q"
+      ]
+    },
+    {
+      "id": "s5",
+      "refs": [
+        "Q",
+        "H"
+      ]
+    },
+    {
+      "id": "s6",
+      "refs": [
+        "A",
+        "H"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a0",
+        "refs": [
+          "A",
+          "O",
+          "P"
+        ],
+        "value": 36.869897646,
+        "label": "θ",
+        "arcs": 1,
+        "style": "ARC"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "arc0",
+        "circle": "k",
+        "center": "O",
+        "from": "A",
+        "to": "B",
+        "side": "CCW"
+      }
+    ],
+    "regions": [
+      {
+        "id": "rAQH",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "A",
+              "Q",
+              "H"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "A",
+        "H",
+        "Q"
+      ]
+    }
+  ],
+  "caption": "사분원 A–B의 현 AB와 수직선 PH가 Q에서 만나고, 삼각형 AQH의 대상 넓이만 연한 회색으로 나타낸다.",
+  "accessibilityDescription": "사분원 A–B의 현 AB와 수직선 PH가 Q에서 만나고, 삼각형 AQH의 대상 넓이만 연한 회색으로 나타낸다.",
+  "sourceQuote": "[그림: 제1사분면 호와 현 $AB$, 수직선 $PH$가 현과 $Q$에서 만난다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문에 주어진 점과 대표 도형의 배치",
+      "mappedTo": "mathPlan.nodes[0..5]"
+    },
+    {
+      "id": "c2",
+      "condition": "원문에서 이어지는 선분·수선·시선",
+      "mappedTo": "displaySegments[0..6]"
+    },
+    {
+      "id": "c3",
+      "condition": "원의 중심·반지름과 호",
+      "mappedTo": "mathPlan.nodes[6..6];planeMarks.arcs[0..0]"
+    },
+    {
+      "id": "c4",
+      "condition": "직각·수선 표시",
+      "mappedTo": "rightAngles[0..0]"
+    },
+    {
+      "id": "c5",
+      "condition": "주어진 각과 대응하는 호 표시",
+      "mappedTo": "planeMarks.angles[0..0]"
+    },
+    {
+      "id": "c8",
+      "condition": "요청한 영역의 실제 경계",
+      "mappedTo": "planeMarks.regions[0..0]"
+    }
+  ],
+  "newVisualInformation": [
+    "문제에서 아직 구해야 할 길이·극한값·최대값은 그림에 표기하지 않는다."
+  ]
+}

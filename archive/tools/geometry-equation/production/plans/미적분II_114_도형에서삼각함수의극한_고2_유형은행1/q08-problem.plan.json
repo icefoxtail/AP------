@@ -1,0 +1,188 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "rational",
+              "numerator": "105183873101",
+              "denominator": "62500000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "4384818951",
+              "denominator": "31250000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "118070333469",
+              "denominator": "500000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "P"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "105183873101",
+            "denominator": "62500000000"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "Q",
+    "P",
+    "R"
+  ],
+  "hiddenPointNames": [],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "O",
+        "Q"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "O",
+        "P"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "O",
+        "R"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "k"
+  ],
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "O",
+        "Q",
+        "P"
+      ]
+    }
+  ],
+  "caption": "P=(t,2 sin t)가 중심인 원이 x축 Q에 접하고, OP 위 R이 원과 만나는 대표 배치를 그린다.",
+  "accessibilityDescription": "P=(t,2 sin t)가 중심인 원이 x축 Q에 접하고, OP 위 R이 원과 만나는 대표 배치를 그린다.",
+  "sourceQuote": "[그림: $O=(0,0),Q=(t,0)$, 반지름 $2\\sin t$인 원이 $OP$와 $R$에서 만난다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문에 주어진 점과 대표 도형의 배치",
+      "mappedTo": "mathPlan.nodes[0..3]"
+    },
+    {
+      "id": "c2",
+      "condition": "원문에서 이어지는 선분·수선·시선",
+      "mappedTo": "displaySegments[0..3]"
+    },
+    {
+      "id": "c3",
+      "condition": "원의 중심·반지름과 호",
+      "mappedTo": "mathPlan.nodes[4..4]"
+    },
+    {
+      "id": "c4",
+      "condition": "직각·수선 표시",
+      "mappedTo": "rightAngles[0..0]"
+    }
+  ],
+  "newVisualInformation": [
+    "ENGINE_CAPABILITY_PENDING: 엔진 작도 노드가 매개변수 t와 정확한 sin(t)를 지원하지 않아 t=1의 십진 근삿값으로 배치했다. 정확한 매개 곡선·접점·교점 작도가 필요하다.",
+    "문제에서 아직 구해야 할 길이·극한값·최대값은 그림에 표기하지 않는다."
+  ]
+}

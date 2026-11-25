@@ -1,0 +1,338 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "8",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "6",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "8",
+              "denominator": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "128",
+              "denominator": "125"
+            },
+            {
+              "kind": "rational",
+              "numerator": "96",
+              "denominator": "125"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "S",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-1",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "O",
+    "B",
+    "P",
+    "Q",
+    "R",
+    "S"
+  ],
+  "hiddenPointNames": [],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "A",
+        "O"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "O",
+        "P"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    },
+    {
+      "id": "s5",
+      "refs": [
+        "Q",
+        "R"
+      ]
+    },
+    {
+      "id": "s6",
+      "refs": [
+        "P",
+        "R"
+      ]
+    },
+    {
+      "id": "s7",
+      "refs": [
+        "O",
+        "S"
+      ]
+    },
+    {
+      "id": "s8",
+      "refs": [
+        "A",
+        "S"
+      ]
+    },
+    {
+      "id": "s9",
+      "refs": [
+        "S",
+        "P"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a0",
+        "refs": [
+          "B",
+          "O",
+          "P"
+        ],
+        "value": 36.869897646,
+        "label": "2θ",
+        "arcs": 1,
+        "style": "ARC"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "arc0",
+        "circle": "k",
+        "center": "O",
+        "from": "B",
+        "to": "A",
+        "side": "CCW"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "O",
+        "Q",
+        "P"
+      ]
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "Q",
+        "R",
+        "P"
+      ]
+    },
+    {
+      "id": "r2",
+      "refs": [
+        "O",
+        "S",
+        "P"
+      ]
+    }
+  ],
+  "caption": "지름 AB인 위 반원에서 P, x축의 수선 발 Q, OP에 대한 Q의 수선 발 R, AP에 대한 O의 수선 발 S를 표시한다.",
+  "accessibilityDescription": "지름 AB인 위 반원에서 P, x축의 수선 발 Q, OP에 대한 Q의 수선 발 R, AP에 대한 O의 수선 발 S를 표시한다.",
+  "sourceQuote": "[그림: 위 반원에 $P$를 찍고 $PQ,QR,OS$를 각각 해당 선분에 수직으로 그린다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문에 주어진 점과 대표 도형의 배치",
+      "mappedTo": "mathPlan.nodes[0..6]"
+    },
+    {
+      "id": "c2",
+      "condition": "원문에서 이어지는 선분·수선·시선",
+      "mappedTo": "displaySegments[0..9]"
+    },
+    {
+      "id": "c3",
+      "condition": "원의 중심·반지름과 호",
+      "mappedTo": "mathPlan.nodes[7..7];planeMarks.arcs[0..0]"
+    },
+    {
+      "id": "c4",
+      "condition": "직각·수선 표시",
+      "mappedTo": "rightAngles[0..2]"
+    },
+    {
+      "id": "c5",
+      "condition": "주어진 각과 대응하는 호 표시",
+      "mappedTo": "planeMarks.angles[0..0]"
+    }
+  ],
+  "newVisualInformation": [
+    "P는 cos(2θ)=4/5, sin(2θ)=3/5인 대표점이며 S는 AP의 중점이다.",
+    "문제에서 아직 구해야 할 길이·극한값·최대값은 그림에 표기하지 않는다."
+  ]
+}
