@@ -1,0 +1,33 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "SOURCE_COORDINATE_AXES_v1", "unit": "source-coordinate", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "C", "op": "NORMALIZATION_ORIGIN", "inputs": [], "args": {}, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "U", "op": "NORMALIZATION_AXIS", "inputs": [], "args": { "length": { "kind": "integer", "value": "1" } }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "2" }, { "kind": "integer", "value": "4" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "4" }, { "kind": "integer", "value": "2" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "D", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "6" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "P", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "1" }] }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" }
+    ]
+  },
+  "axisTickValues": { "x": [], "y": [] },
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    { "id": "sCD", "refs": ["C", "D"] },
+    { "id": "sAP", "refs": ["A", "P"], "dashed": true },
+    { "id": "sBP", "refs": ["B", "P"], "dashed": true }
+  ],
+  "displayPoints": ["A", "B", "C", "D", "P"],
+  "coordinateLabels": ["A", "B", "C", "D"],
+  "caption": "A와 B에서 y축 위 선분 CD를 움직이는 점 P까지의 거리를 나타낸 문제 그림이다. P의 위치는 예시이다.",
+  "accessibilityDescription": "A(2,4), B(4,2), C(0,0), D(0,6)가 주어지고 점 P는 세로 선분 CD 위를 움직인다. 두 점선 AP와 BP를 표시하되 최적 위치는 그리지 않는다.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "A(2,4), B(4,2), C(0,0), D(0,6)", "mappedTo": ["A", "B", "C", "D"] },
+    { "id": "c2", "condition": "P는 선분 CD 위를 움직임; P=(0,1)은 가변점을 설명하기 위한 예시 위치", "mappedTo": ["P", "sCD"] },
+    { "id": "c3", "condition": "AP^2+BP^2의 최솟값을 물음; 정답 위치와 최솟값은 그림에 표시하지 않음", "mappedTo": ["sAP", "sBP"] }
+  ],
+  "newVisualInformation": ["세로 선분 CD 위 임의의 예시점 P와 거리 AP, BP만 연결한다. 정답을 결정하는 위치나 값은 표시하지 않는다."]
+}
