@@ -1,0 +1,172 @@
+{
+  "capability": "solid-figure-v1",
+  "space": {
+    "points": [
+      {
+        "id": "C",
+        "at": [
+          -7,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "D",
+        "at": [
+          7,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "B",
+        "at": [
+          0,
+          14,
+          0
+        ]
+      },
+      {
+        "id": "H",
+        "at": [
+          0,
+          "5*sqrt(3)",
+          0
+        ]
+      },
+      {
+        "id": "A",
+        "at": [
+          0,
+          "5*sqrt(3)",
+          5
+        ]
+      },
+      {
+        "id": "K",
+        "at": [
+          0,
+          0,
+          0
+        ],
+        "hideName": true,
+        "hideDot": true
+      }
+    ],
+    "segments": [
+      {
+        "from": "A",
+        "to": "C",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "D",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "C",
+        "to": "D",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "B",
+        "to": "C",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "B",
+        "to": "D",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "B",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "H",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "K",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "H",
+        "to": "K",
+        "style": "AUTO",
+        "role": "REF"
+      }
+    ]
+  },
+  "dims": [
+    {
+      "from": "C",
+      "to": "D",
+      "label": "14"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "H",
+        "refs": [
+          "A",
+          "K"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "refs": [
+          "A",
+          "K",
+          "H"
+        ],
+        "arcs": 1,
+        "label": "30^\\circ"
+      }
+    ]
+  },
+  "solidCaption": {
+    "text": "△ACD 넓이 70"
+  },
+  "caption": "사면체 ACD 넓이와 30도 이면각",
+  "sourceQuote": "[그림: 사면체 ABCD에서 CD=14이고, 삼각형 ACD의 넓이가 70이며, 두 평면 BCD와 ACD가 이루는 이면각의 크기는 30°이다. 점 A에서 밑면 BCD에 내린 수선의 발은 H이다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "CD=14",
+      "mappedTo": "dims[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "△ACD의 넓이 70",
+      "mappedTo": "solidCaption.text"
+    },
+    {
+      "id": "c3",
+      "condition": "두 면 ACD·BCD 사이 30°",
+      "mappedTo": "marks.angles[0]"
+    },
+    {
+      "id": "c4",
+      "condition": "H는 A의 밑면 정사영",
+      "mappedTo": "space.points[3]"
+    }
+  ],
+  "newVisualInformation": [
+    "△ACD 넓이 70은 면 위 글자 미지원으로 상단 설명에 기록"
+  ]
+}

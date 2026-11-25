@@ -1,0 +1,143 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 2,
+        "depth": 2
+      },
+      "height": 2,
+      "names": "EFGHABCD",
+      "points": [
+        {
+          "id": "M",
+          "at": {
+            "midpoint": [
+              "B",
+              "D"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "B",
+      "to": "E",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "E",
+      "to": "D",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "B",
+      "to": "D",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "B",
+      "to": "G",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "G",
+      "to": "D",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "E",
+      "to": "M",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "G",
+      "to": "M",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "highlights": [
+    {
+      "polygon": [
+        "B",
+        "E",
+        "D"
+      ]
+    },
+    {
+      "polygon": [
+        "B",
+        "G",
+        "D"
+      ],
+      "fill": "WARM"
+    }
+  ],
+  "dims": [
+    {
+      "from": "A",
+      "to": "B",
+      "label": "2"
+    }
+  ],
+  "marks": {
+    "angles": [
+      {
+        "refs": [
+          "E",
+          "M",
+          "G"
+        ],
+        "arcs": 1,
+        "label": "\\theta"
+      }
+    ]
+  },
+  "caption": "정육면체 안의 두 평면 BED·BGD",
+  "solidCaption": {
+    "text": "정육면체 안의 두 평면 BED·BGD"
+  },
+  "sourceQuote": "[그림: 한 모서리의 길이가 2인 정육면체 ABCD-EFGH에서 평면 BED와 평면 BGD가 그려져 있고, 두 평면의 교선 BD의 중점을 M이라 할 때 두 평면이 이루는 이면각의 크기는 θ이다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "정육면체 한 모서리 2",
+      "mappedTo": "dims[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "평면 BED",
+      "mappedTo": "highlights[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "평면 BGD",
+      "mappedTo": "highlights[1]"
+    },
+    {
+      "id": "c4",
+      "condition": "교선 BD 중점 M",
+      "mappedTo": "solids[0].points[0]"
+    },
+    {
+      "id": "c5",
+      "condition": "두 면 사이 θ",
+      "mappedTo": "marks.angles[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "서로 다른 색으로 구별되는 두 삼각형의 이면각"
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 3,
+        "depth": 1.7320508075688772
+      },
+      "height": 3,
+      "names": "EFGHABCD"
+    }
+  ],
+  "segments": [
+    {
+      "from": "F",
+      "to": "A",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "F",
+      "to": "C",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "marks": {
+    "angles": [
+      {
+        "refs": [
+          "C",
+          "F",
+          "G"
+        ],
+        "arcs": 1,
+        "label": "60^\\circ"
+      },
+      {
+        "refs": [
+          "A",
+          "F",
+          "E"
+        ],
+        "arcs": 2,
+        "label": "45^\\circ"
+      },
+      {
+        "refs": [
+          "A",
+          "F",
+          "C"
+        ],
+        "arcs": 3,
+        "label": "\\theta"
+      }
+    ]
+  },
+  "caption": "직육면체의 세 방향각",
+  "solidCaption": {
+    "text": "직육면체의 세 방향각"
+  },
+  "sourceQuote": "[그림: 직육면체 $\\mathrm{ABCD-EFGH}$에서 점 $\\mathrm{F}$를 꼭짓점으로 하는 세 각 중 앞면에서 $\\angle\\mathrm{AFE}=45^\\circ$, 옆면에서 $\\angle\\mathrm{CFG}=60^\\circ$가 표시되어 있고, 대각선 $\\mathrm{FA}$와 $\\mathrm{FC}$가 이루는 각 $\\ang",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "∠CFG=60°",
+      "mappedTo": "marks.angles[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "∠AFE=45°",
+      "mappedTo": "marks.angles[1]"
+    },
+    {
+      "id": "c3",
+      "condition": "∠AFC=θ",
+      "mappedTo": "marks.angles[2]"
+    },
+    {
+      "id": "c4",
+      "condition": "공통 꼭짓점 F의 FA·FC",
+      "mappedTo": "segments[1]"
+    }
+  ],
+  "newVisualInformation": [
+    "가로 3·세로 √3·높이 3의 주어진 각을 만족하는 대표 직육면체"
+  ]
+}

@@ -1,0 +1,169 @@
+{
+  "capability": "solid-figure-v1",
+  "space": {
+    "points": [
+      {
+        "id": "P",
+        "at": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "X",
+        "at": [
+          -3,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "Y",
+        "at": [
+          4,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "A",
+        "at": [
+          "sqrt(3)",
+          1,
+          0
+        ],
+        "hideName": true
+      },
+      {
+        "id": "B",
+        "at": [
+          "sqrt(2)",
+          0,
+          "sqrt(2)"
+        ],
+        "hideName": true
+      }
+    ],
+    "segments": [
+      {
+        "from": "P",
+        "to": "A",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "P",
+        "to": "B",
+        "style": "AUTO",
+        "role": "REF"
+      }
+    ],
+    "planes": [
+      {
+        "id": "alpha",
+        "name": "\\alpha",
+        "through": [
+          "P",
+          "Y",
+          "A"
+        ]
+      },
+      {
+        "id": "beta",
+        "name": "\\beta",
+        "through": [
+          "P",
+          "Y",
+          "B"
+        ]
+      }
+    ],
+    "lines": [
+      {
+        "id": "xy",
+        "through": [
+          "X",
+          "Y"
+        ]
+      },
+      {
+        "id": "l",
+        "name": "l",
+        "through": [
+          "P",
+          "A"
+        ]
+      },
+      {
+        "id": "m",
+        "name": "m",
+        "through": [
+          "P",
+          "B"
+        ]
+      }
+    ]
+  },
+  "marks": {
+    "angles": [
+      {
+        "refs": [
+          "Y",
+          "P",
+          "A"
+        ],
+        "arcs": 1,
+        "label": "30^\\circ"
+      },
+      {
+        "refs": [
+          "Y",
+          "P",
+          "B"
+        ],
+        "arcs": 2,
+        "label": "45^\\circ"
+      },
+      {
+        "refs": [
+          "A",
+          "P",
+          "B"
+        ],
+        "arcs": 3,
+        "label": "\\theta"
+      }
+    ]
+  },
+  "caption": "서로 수직인 두 평면과 직선 l, m",
+  "solidCaption": {
+    "text": "서로 수직인 두 평면과 직선 l, m"
+  },
+  "sourceQuote": "[그림: 서로 수직인 두 평면 $\\alpha$와 $\\beta$, 그 교선 $\\mathrm{XY}$. 점 $\\mathrm{P}$에서 출발하는 직선 $l$은 평면 $\\alpha$ 위에 있으며 교선과 $30^\\circ$의 각을 이루고, 직선 $m$은 평면 $\\beta$ 위에 있으며 교선과 $45^\\circ$의 각을 이룬다. 두 직선 사이의 각이",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 평면 α·β의 교선 XY와 교점 P",
+      "mappedTo": "space.lines[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "l은 α 위, XY와 30°",
+      "mappedTo": "marks.angles[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "m은 β 위, XY와 45°",
+      "mappedTo": "marks.angles[1]"
+    },
+    {
+      "id": "c4",
+      "condition": "l과 m 사이 θ",
+      "mappedTo": "marks.angles[2]"
+    }
+  ],
+  "newVisualInformation": [
+    "주어진 각과 실제로 수직인 평면에 놓인 두 방향선"
+  ]
+}

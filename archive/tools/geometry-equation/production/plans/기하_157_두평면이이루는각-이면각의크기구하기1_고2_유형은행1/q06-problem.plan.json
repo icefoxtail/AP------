@@ -1,0 +1,83 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 2,
+        "depth": 2
+      },
+      "height": 2.449489742783178,
+      "names": "EFGHABCD"
+    }
+  ],
+  "segments": [
+    {
+      "from": "D",
+      "to": "E",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "E",
+      "to": "G",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "G",
+      "to": "D",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "dims": [
+    {
+      "from": "A",
+      "to": "B",
+      "label": "2"
+    },
+    {
+      "from": "A",
+      "to": "D",
+      "label": "2"
+    },
+    {
+      "from": "A",
+      "to": "E",
+      "label": "\\sqrt{6}"
+    }
+  ],
+  "caption": "직육면체의 단면 삼각형 DEG",
+  "solidCaption": {
+    "text": "직육면체의 단면 삼각형 DEG"
+  },
+  "sourceQuote": "[그림: 직육면체 $\\mathrm{ABCD-EFGH}$에서 $\\overline{\\mathrm{AB}}=2$, $\\overline{\\mathrm{AD}}=2$, $\\overline{\\mathrm{AE}}=\\sqrt{6}$이다. 세 꼭짓점 $\\mathrm{D, E, G}$를 연결하여 삼각형 $\\mathrm{DEG}$가 그려져 있다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AB=2",
+      "mappedTo": "dims[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "AD=2",
+      "mappedTo": "dims[1]"
+    },
+    {
+      "id": "c3",
+      "condition": "AE=√6",
+      "mappedTo": "dims[2]"
+    },
+    {
+      "id": "c4",
+      "condition": "DE·EG·GD 단면",
+      "mappedTo": "segments[1]"
+    }
+  ],
+  "newVisualInformation": [
+    "밑면 EFGH와 삼각형 DEG의 공간 위치"
+  ]
+}

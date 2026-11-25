@@ -1,0 +1,133 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 3,
+        "depth": 4
+      },
+      "height": 4,
+      "names": "EFGHABCD",
+      "points": [
+        {
+          "id": "P",
+          "at": {
+            "edge": [
+              "A",
+              "D"
+            ],
+            "t": "1/2"
+          }
+        },
+        {
+          "id": "Q",
+          "at": {
+            "edge": [
+              "F",
+              "G"
+            ],
+            "t": "1/2"
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "P",
+      "to": "F",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "P",
+      "to": "G",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "E",
+      "to": "Q",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "H",
+      "to": "Q",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "highlights": [
+    {
+      "polygon": [
+        "P",
+        "F",
+        "G"
+      ]
+    },
+    {
+      "polygon": [
+        "E",
+        "H",
+        "Q"
+      ],
+      "fill": "WARM"
+    }
+  ],
+  "dims": [
+    {
+      "from": "A",
+      "to": "E",
+      "label": "4"
+    },
+    {
+      "from": "E",
+      "to": "F",
+      "label": "3"
+    }
+  ],
+  "caption": "직육면체의 두 평면 PFG와 EHQ",
+  "solidCaption": {
+    "text": "직육면체의 두 평면 PFG와 EHQ"
+  },
+  "sourceQuote": "[그림: 직육면체 $\\mathrm{ABCD-EFGH}$에서 $\\overline{\\mathrm{AE}}=4$, $\\overline{\\mathrm{EF}}=3$이다. 모서리 $\\mathrm{AD}$ 위에 점 $\\mathrm{P}$, 모서리 $\\mathrm{FG}$ 위에 점 $\\mathrm{Q}$가 잡혀 있고, 삼각형 $\\mathrm{PFG}$",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AE=4",
+      "mappedTo": "dims[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "EF=3",
+      "mappedTo": "dims[1]"
+    },
+    {
+      "id": "c3",
+      "condition": "P∈AD",
+      "mappedTo": "solids[0].points[0]"
+    },
+    {
+      "id": "c4",
+      "condition": "Q∈FG",
+      "mappedTo": "solids[0].points[1]"
+    },
+    {
+      "id": "c5",
+      "condition": "삼각형 PFG 표시",
+      "mappedTo": "highlights[0]"
+    },
+    {
+      "id": "c6",
+      "condition": "삼각형 EHQ 표시",
+      "mappedTo": "highlights[1]"
+    }
+  ],
+  "newVisualInformation": [
+    "두 평면 구별을 위해서만 두 삼각형을 구분 채색"
+  ]
+}

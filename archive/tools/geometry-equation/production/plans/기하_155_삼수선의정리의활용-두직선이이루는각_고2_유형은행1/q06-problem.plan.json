@@ -1,0 +1,164 @@
+{
+  "capability": "solid-figure-v1",
+  "space": {
+    "points": [
+      {
+        "id": "P",
+        "at": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "Y",
+        "at": [
+          5,
+          0,
+          0
+        ],
+        "hideName": true
+      },
+      {
+        "id": "A",
+        "at": [
+          2,
+          2,
+          0
+        ]
+      },
+      {
+        "id": "B",
+        "at": [
+          2,
+          0,
+          "2*sqrt(3)"
+        ]
+      }
+    ],
+    "segments": [
+      {
+        "from": "P",
+        "to": "A",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "P",
+        "to": "B",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "B",
+        "style": "DASHED",
+        "role": "REF"
+      }
+    ],
+    "planes": [
+      {
+        "id": "alpha",
+        "name": "\\alpha",
+        "through": [
+          "P",
+          "Y",
+          "A"
+        ]
+      },
+      {
+        "id": "beta",
+        "name": "\\beta",
+        "through": [
+          "P",
+          "Y",
+          "B"
+        ]
+      }
+    ],
+    "lines": [
+      {
+        "id": "l",
+        "name": "l",
+        "through": [
+          "P",
+          "Y"
+        ]
+      }
+    ]
+  },
+  "dims": [
+    {
+      "from": "P",
+      "to": "A",
+      "label": "2\\sqrt{2}"
+    },
+    {
+      "from": "P",
+      "to": "B",
+      "label": "4"
+    }
+  ],
+  "marks": {
+    "angles": [
+      {
+        "refs": [
+          "Y",
+          "P",
+          "A"
+        ],
+        "arcs": 1,
+        "label": "45^\\circ"
+      },
+      {
+        "refs": [
+          "Y",
+          "P",
+          "B"
+        ],
+        "arcs": 2,
+        "label": "60^\\circ"
+      }
+    ]
+  },
+  "caption": "직교 평면 위 두 선분과 AB",
+  "solidCaption": {
+    "text": "직교 평면 위 두 선분과 AB"
+  },
+  "sourceQuote": "[그림: 직교하는 두 평면 $\\alpha$와 $\\beta$, 교선 $l$. 교선 위의 점 $\\mathrm{P}$에서 평면 $\\alpha$ 위로 뻗은 선분 $\\mathrm{AP}=2\\sqrt{2}$는 교선과 $45^\\circ$를 이루고, 평면 $\\beta$ 위로 뻗은 선분 $\\mathrm{BP}=4$는 교선과 $60^\\circ$를 이룬다. ",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 평면 α·β 직교·교선 l",
+      "mappedTo": "space.lines[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "AP=2√2",
+      "mappedTo": "dims[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "BP=4",
+      "mappedTo": "dims[1]"
+    },
+    {
+      "id": "c4",
+      "condition": "AP와 l 사이 45°",
+      "mappedTo": "marks.angles[0]"
+    },
+    {
+      "id": "c5",
+      "condition": "BP와 l 사이 60°",
+      "mappedTo": "marks.angles[1]"
+    },
+    {
+      "id": "c6",
+      "condition": "AB는 점선",
+      "mappedTo": "space.segments[2]"
+    }
+  ],
+  "newVisualInformation": [
+    "길이의 답 AB를 표시하지 않는 공간 삼각형"
+  ]
+}

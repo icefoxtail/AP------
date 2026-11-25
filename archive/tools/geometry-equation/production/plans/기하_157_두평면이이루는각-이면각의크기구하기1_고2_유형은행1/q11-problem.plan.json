@@ -1,0 +1,183 @@
+{
+  "capability": "solid-figure-v1",
+  "space": {
+    "points": [
+      {
+        "id": "B",
+        "at": [
+          -4,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "C",
+        "at": [
+          4,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "A",
+        "at": [
+          0,
+          3,
+          0
+        ]
+      },
+      {
+        "id": "D",
+        "at": [
+          0,
+          "3/2",
+          "sqrt(7)/2"
+        ]
+      },
+      {
+        "id": "M",
+        "at": {
+          "midpoint": [
+            "B",
+            "C"
+          ]
+        }
+      }
+    ],
+    "segments": [
+      {
+        "from": "A",
+        "to": "B",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "C",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "D",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "B",
+        "to": "C",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "B",
+        "to": "D",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "C",
+        "to": "D",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "M",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "D",
+        "to": "M",
+        "style": "AUTO",
+        "role": "REF"
+      }
+    ]
+  },
+  "dims": [
+    {
+      "from": "A",
+      "to": "B",
+      "label": "5"
+    },
+    {
+      "from": "A",
+      "to": "C",
+      "label": "5"
+    },
+    {
+      "from": "B",
+      "to": "D",
+      "label": "2\\sqrt{5}"
+    },
+    {
+      "from": "C",
+      "to": "D",
+      "label": "2\\sqrt{5}"
+    },
+    {
+      "from": "B",
+      "to": "C",
+      "label": "8"
+    },
+    {
+      "from": "A",
+      "to": "D",
+      "label": "2"
+    }
+  ],
+  "marks": {
+    "angles": [
+      {
+        "refs": [
+          "A",
+          "M",
+          "D"
+        ],
+        "arcs": 1,
+        "label": "\\theta"
+      }
+    ]
+  },
+  "caption": "사면체 ABCD의 두 면과 중점 M",
+  "solidCaption": {
+    "text": "사면체 ABCD의 두 면과 중점 M"
+  },
+  "sourceQuote": "[그림: 사면체 $\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{AC}}=5$, $\\overline{\\mathrm{BD}}=\\overline{\\mathrm{CD}}=2\\sqrt{5}$, $\\overline{\\mathrm{BC}}=8$, $\\overline{\\mathrm{AD}}=2",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AB=AC=5",
+      "mappedTo": "dims[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "BD=CD=2√5",
+      "mappedTo": "dims[2]"
+    },
+    {
+      "id": "c3",
+      "condition": "BC=8",
+      "mappedTo": "dims[4]"
+    },
+    {
+      "id": "c4",
+      "condition": "AD=2",
+      "mappedTo": "dims[5]"
+    },
+    {
+      "id": "c5",
+      "condition": "BC 중점 M",
+      "mappedTo": "space.points[4]"
+    },
+    {
+      "id": "c6",
+      "condition": "AM·DM 사이의 이면각 θ",
+      "mappedTo": "marks.angles[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "독립 거리를 만족하는 좌표와 두 면의 단면 각"
+  ]
+}

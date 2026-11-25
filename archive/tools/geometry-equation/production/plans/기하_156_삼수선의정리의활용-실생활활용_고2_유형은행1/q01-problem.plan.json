@@ -1,0 +1,169 @@
+{
+  "capability": "solid-figure-v1",
+  "space": {
+    "points": [
+      {
+        "id": "A",
+        "at": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "B",
+        "at": [
+          30,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "C",
+        "at": [
+          30,
+          "30*sqrt(15)",
+          0
+        ]
+      },
+      {
+        "id": "P",
+        "at": [
+          0,
+          0,
+          60
+        ]
+      }
+    ],
+    "segments": [
+      {
+        "from": "A",
+        "to": "B",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "B",
+        "to": "C",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "C",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "P",
+        "to": "A",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "P",
+        "to": "B",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "P",
+        "to": "C",
+        "style": "AUTO",
+        "role": "REF"
+      }
+    ],
+    "planes": [
+      {
+        "id": "alpha",
+        "name": "\\alpha",
+        "through": [
+          "A",
+          "B",
+          "C"
+        ]
+      }
+    ]
+  },
+  "dims": [
+    {
+      "from": "P",
+      "to": "A",
+      "label": "60"
+    },
+    {
+      "from": "A",
+      "to": "B",
+      "label": "30"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "A",
+        "refs": [
+          "P",
+          "B"
+        ]
+      },
+      {
+        "at": "B",
+        "refs": [
+          "A",
+          "C"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "refs": [
+          "P",
+          "C",
+          "B"
+        ],
+        "arcs": 1,
+        "label": "30^\\circ"
+      }
+    ]
+  },
+  "caption": "절벽 등대와 지면의 직각삼각형",
+  "solidCaption": {
+    "text": "절벽 등대와 지면의 직각삼각형"
+  },
+  "sourceQuote": "[그림: 평면 $\\alpha$ 위에 $\\angle\\mathrm{ABC}=90^\\circ$인 직각삼각형 $\\mathrm{ABC}$가 있고, 점 $\\mathrm{A}$에서 평면 $\\alpha$에 수직인 선분 $\\mathrm{PA}$가 세워져 있다. $\\overline{\\mathrm{PA}}=60$, $\\overline{\\mathrm{AB}}=",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "PA⊥평면 ABC",
+      "mappedTo": "marks.rightAngles[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "PA=60m",
+      "mappedTo": "dims[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "AB=30m",
+      "mappedTo": "dims[1]"
+    },
+    {
+      "id": "c4",
+      "condition": "∠ABC=90°",
+      "mappedTo": "marks.rightAngles[1]"
+    },
+    {
+      "id": "c5",
+      "condition": "∠PCB=30°",
+      "mappedTo": "marks.angles[0]"
+    },
+    {
+      "id": "c6",
+      "condition": "조명 케이블 PC",
+      "mappedTo": "space.segments[5]"
+    }
+  ],
+  "newVisualInformation": [
+    "주어진 세 각·높이·평면에 맞는 대표 지면 좌표"
+  ]
+}

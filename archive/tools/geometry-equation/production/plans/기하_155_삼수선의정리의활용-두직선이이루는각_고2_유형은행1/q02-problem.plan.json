@@ -1,0 +1,140 @@
+{
+  "capability": "solid-figure-v1",
+  "space": {
+    "points": [
+      {
+        "id": "A",
+        "at": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "B",
+        "at": [
+          3,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "C",
+        "at": [
+          "3/2",
+          "3*sqrt(3)/2",
+          0
+        ]
+      },
+      {
+        "id": "D",
+        "at": [
+          "3/2",
+          0,
+          "3*sqrt(3)/2"
+        ]
+      }
+    ],
+    "segments": [
+      {
+        "from": "A",
+        "to": "B",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "C",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "D",
+        "style": "AUTO",
+        "role": "REF"
+      }
+    ],
+    "planes": [
+      {
+        "id": "alpha",
+        "name": "\\alpha",
+        "through": [
+          "A",
+          "B",
+          "C"
+        ]
+      },
+      {
+        "id": "beta",
+        "name": "\\beta",
+        "through": [
+          "A",
+          "B",
+          "D"
+        ]
+      }
+    ]
+  },
+  "marks": {
+    "angles": [
+      {
+        "refs": [
+          "C",
+          "A",
+          "B"
+        ],
+        "arcs": 1,
+        "label": "60^\\circ"
+      },
+      {
+        "refs": [
+          "B",
+          "A",
+          "D"
+        ],
+        "arcs": 2,
+        "label": "60^\\circ"
+      },
+      {
+        "refs": [
+          "C",
+          "A",
+          "D"
+        ],
+        "arcs": 3,
+        "label": "\\theta"
+      }
+    ]
+  },
+  "caption": "교선 AB에서 두 선분 AC, AD의 각",
+  "solidCaption": {
+    "text": "교선 AB에서 두 선분 AC, AD의 각"
+  },
+  "sourceQuote": "[그림: 직교하는 두 평면 $\\alpha$와 $\\beta$, 교선 위의 선분 $\\mathrm{AB}$. 평면 $\\alpha$ 위의 선분 $\\mathrm{AC}$가 교선과 $\\angle\\mathrm{CAB}=60^\\circ$를 이루고, 평면 $\\beta$ 위의 선분 $\\mathrm{AD}$가 교선과 $\\angle\\mathrm{BAD}=60^",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "α·β 직교, AB가 교선",
+      "mappedTo": "space.planes[1]"
+    },
+    {
+      "id": "c2",
+      "condition": "∠CAB=60°",
+      "mappedTo": "marks.angles[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "∠BAD=60°",
+      "mappedTo": "marks.angles[1]"
+    },
+    {
+      "id": "c4",
+      "condition": "∠CAD=θ",
+      "mappedTo": "marks.angles[2]"
+    }
+  ],
+  "newVisualInformation": [
+    "두 직교 평면의 교선에서 시작하는 세 선분"
+  ]
+}

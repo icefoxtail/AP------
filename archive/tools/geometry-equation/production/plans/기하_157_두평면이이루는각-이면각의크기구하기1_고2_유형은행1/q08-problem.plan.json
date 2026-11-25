@@ -1,0 +1,124 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 6,
+        "depth": 6
+      },
+      "height": 6,
+      "names": "EFGHABCD",
+      "points": [
+        {
+          "id": "M",
+          "at": {
+            "midpoint": [
+              "F",
+              "G"
+            ]
+          }
+        },
+        {
+          "id": "I",
+          "at": {
+            "footOnLine": {
+              "from": "D",
+              "line": [
+                "E",
+                "M"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "D",
+      "to": "E",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "E",
+      "to": "M",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "M",
+      "to": "D",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "D",
+      "to": "I",
+      "style": "DASHED",
+      "role": "REF"
+    },
+    {
+      "from": "I",
+      "to": "M",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "dims": [
+    {
+      "from": "A",
+      "to": "B",
+      "label": "6"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "I",
+        "refs": [
+          "D",
+          "M"
+        ]
+      }
+    ]
+  },
+  "caption": "정육면체의 단면 DEM과 수선의 발 I",
+  "solidCaption": {
+    "text": "정육면체의 단면 DEM과 수선의 발 I"
+  },
+  "sourceQuote": "[그림: 한 모서리의 길이가 $6$인 정육면체 $\\mathrm{ABCD-EFGH}$에서 모서리 $\\mathrm{FG}$의 중점을 $\\mathrm{M}$이라 하자. 세 점 $\\mathrm{D, E, M}$을 연결하여 삼각형 $\\mathrm{DEM}$이 그려져 있고, 점 $\\mathrm{D}$에서 선분 $\\mathrm{EM}$에 내린 수선의 ",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "정육면체 한 변 6",
+      "mappedTo": "dims[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "M은 FG 중점",
+      "mappedTo": "solids[0].points[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "삼각형 DEM",
+      "mappedTo": "segments[1]"
+    },
+    {
+      "id": "c4",
+      "condition": "DI⊥EM의 발 I",
+      "mappedTo": "solids[0].points[1]"
+    },
+    {
+      "id": "c5",
+      "condition": "I의 직각 표시",
+      "mappedTo": "marks.rightAngles[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "EM 위에 정확히 놓인 발 I를 이용한 공간 단면"
+  ]
+}

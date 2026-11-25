@@ -1,0 +1,180 @@
+{
+  "capability": "solid-figure-v1",
+  "space": {
+    "points": [
+      {
+        "id": "O",
+        "at": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "A",
+        "at": [
+          0,
+          0,
+          1
+        ]
+      },
+      {
+        "id": "B",
+        "at": [
+          2,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "C",
+        "at": [
+          0,
+          2,
+          0
+        ]
+      },
+      {
+        "id": "M",
+        "at": {
+          "midpoint": [
+            "B",
+            "C"
+          ]
+        }
+      }
+    ],
+    "segments": [
+      {
+        "from": "O",
+        "to": "A",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "O",
+        "to": "B",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "O",
+        "to": "C",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "B",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "C",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "B",
+        "to": "C",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "M",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "O",
+        "to": "M",
+        "style": "AUTO",
+        "role": "REF"
+      }
+    ]
+  },
+  "dims": [
+    {
+      "from": "O",
+      "to": "A",
+      "label": "1"
+    },
+    {
+      "from": "O",
+      "to": "B",
+      "label": "2"
+    },
+    {
+      "from": "O",
+      "to": "C",
+      "label": "2"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "O",
+        "refs": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "at": "O",
+        "refs": [
+          "A",
+          "C"
+        ]
+      },
+      {
+        "at": "O",
+        "refs": [
+          "B",
+          "C"
+        ]
+      }
+    ]
+  },
+  "caption": "세 모서리가 직교하는 사면체 OABC",
+  "solidCaption": {
+    "text": "세 모서리가 직교하는 사면체 OABC"
+  },
+  "sourceQuote": "[그림: 세 모서리 $\\mathrm{OA, OB, OC}$가 점 $\\mathrm{O}$에서 서로 수직으로 만나는 사면체 $\\mathrm{O-ABC}$가 있다. $\\overline{\\mathrm{OA}}=1$, $\\overline{\\mathrm{OB}}=\\overline{\\mathrm{OC}}=2$이고, 선분 $\\mathrm{BC}$의 중점",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "OA=1",
+      "mappedTo": "dims[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "OB=2",
+      "mappedTo": "dims[1]"
+    },
+    {
+      "id": "c3",
+      "condition": "OC=2",
+      "mappedTo": "dims[2]"
+    },
+    {
+      "id": "c4",
+      "condition": "O의 3개 직각",
+      "mappedTo": "marks.rightAngles[0]"
+    },
+    {
+      "id": "c5",
+      "condition": "BC 중점 M",
+      "mappedTo": "space.points[4]"
+    },
+    {
+      "id": "c6",
+      "condition": "AM과 OM",
+      "mappedTo": "space.segments[6]"
+    }
+  ],
+  "newVisualInformation": [
+    "정교한 서로 수직인 세 방향과 BC 중점"
+  ]
+}
