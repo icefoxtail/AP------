@@ -1,0 +1,25 @@
+{
+  "capability": "solid-figure-v1",
+  "sourceQuote": "그림의 직육면체 $ABCD-EFGH$에서 직선 $CG$와 모두 수직인 두 평면을 바르게 나열한 것은?",
+  "unit": "cm",
+  "solids": [
+    {
+      "kind": "PRISM",
+      "base": { "kind": "RECT", "width": 4, "depth": 3 },
+      "height": 2.8,
+      "names": "EFGHABCD"
+    }
+  ],
+  "solidCaption": { "text": "직육면체 ABCD–EFGH" },
+  "caption": "ABCD와 EFGH가 마주 보는 면이며, AE·BF·CG·DH가 대응하는 수직 모서리인 직육면체를 나타낸다. 길이는 도형 설명을 위한 대표값이다.",
+  "sourceConditions": [
+    {
+      "id": "q4-given",
+      "condition": "직육면체 ABCD-EFGH와 모서리 CG가 주어졌다.",
+      "mappedTo": "solids[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "직육면체의 각 꼭짓점과 모서리 CG의 공간적 위치만 표시하며 어느 면이 정답인지는 강조하지 않는다."
+  ]
+}
