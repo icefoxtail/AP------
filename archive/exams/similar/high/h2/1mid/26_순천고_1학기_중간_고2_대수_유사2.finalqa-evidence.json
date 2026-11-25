@@ -1,0 +1,638 @@
+{
+  "schemaVersion": "gpt-finalqa-evidence-v1",
+  "examUid": "26_순천고_1학기_중간_고2_대수_유사2",
+  "sourcePath": "archive/exams/similar/high/h2/1mid/26_순천고_1학기_중간_고2_대수_유사2.js",
+  "blindPackDigest": "b76ba34c9b15807207bbfaef140da26454ddb1aa3022883c265602ea160b07a7",
+  "reviewer": {
+    "id": "GPT dedicated FINAL QA reviewer, 2026-11-26",
+    "blindFirstPass": "CONFIRMED",
+    "independentEvidence": "Official answer-hidden --blind-pack was solved item-by-item before inspecting student answer, solution or metadata. First-pass 24 answers and mathematical derivations were frozen with SHA-256, then compared against live JS. This is one GPT reviewer and not external human / second-model approval.",
+    "blindArtifactRef": "outside-git:/workspace/scratch/5fba4a364215/blind-first-pass-suncheon-h2-algebra.json;sha256:6f2db16a31c53ba45c828123820a4f3228352218bec476218028a79653c4955f"
+  },
+  "questions": [
+    {
+      "qid": 1,
+      "sourceFingerprint": "53ce700a4e4a8bce316724bd412614d45b0ca2a387d3d5e91d355e07b01f8a9a",
+      "blindAnswer": "⑤",
+      "blindReasoning": "4^{-1}·8^{t/3}=2^{t-2}=4=2²이므로 t=4.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "거듭제곱의 밑·지수 관계만 주어져 그림 조건이 없다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "2의 지수끼리 비교하는 식 변환으로 풀이가 끝난다."
+        }
+      }
+    },
+    {
+      "qid": 2,
+      "sourceFingerprint": "b9b30572f0be05c11a34dc94447b09bf11f3ccb40e79b5ce8723ee533de142cb",
+      "blindAnswer": "②",
+      "blindReasoning": "세제곱근의 곱은 ((sqrt(x+16)+4)(sqrt(x+16)-4)/4)^{1/3}=(x/4)^{1/3}; x/4=3으로 x=12.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "근호 두 식과 분모 조건이 모두 수식에 표시되어 있다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "켤레곱 x와 세제곱근 단순화가 수식만으로 전달된다."
+        }
+      }
+    },
+    {
+      "qid": 3,
+      "sourceFingerprint": "2bea2fcce6fe3d58d54d9274a76c6b1b9200414d114347f453fcde448d1d3a1a",
+      "blindAnswer": "④",
+      "blindReasoning": "log₂(3ᵏ)·log₃(2^{5/2})=(5/2)k=15/2, k=3.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "두 로그의 밑·진수가 모두 식으로 주어진다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "로그 밑변환과 지수 곱셈이 연속 식 전개로 재현된다."
+        }
+      }
+    },
+    {
+      "qid": 4,
+      "sourceFingerprint": "394a850b39031b711e430c23fd8cd548bc03eeaf13026ff308963ea1fd4dadd4",
+      "blindAnswer": "①",
+      "blindReasoning": "log(1/x)=log100-log4.8=log(100/4.8)라서 x=4.8/100=0.048.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "상용로그 수치와 미지수의 관계가 모두 명시된다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "로그 차를 몫으로 바꿔 0.048을 계산하는 과정으로 충분하다."
+        }
+      }
+    },
+    {
+      "qid": 5,
+      "sourceFingerprint": "4bad8bb8cd2c2d993467b1556faab165519fcbccd558c7c6a39d5badea0f6556",
+      "blindAnswer": "④",
+      "blindReasoning": "점근선 x=-a=-2로 a=2; 원점 대입 0=log₂2+b=1+b로 b=-1. a-b=3.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "로그함수 식과 점근선 x=-2, 원점이 문장에 명시되어 그림에서 조건을 읽지 않는다."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "c4b75db558cd1eae5ed4d022672ff384d83a8fe87212b0273273b4126e0dd31c",
+          "reasoning": "정본 해설 그림은 점근선 x=-2와 원점 O(0,0)을 식과 직접 결속해 학생이 그래프 이동을 확인하게 한다."
+        }
+      }
+    },
+    {
+      "qid": 6,
+      "sourceFingerprint": "14352fab3c1f4b86816fae17b649f25522c21f3dd480c6aa2a5c03872a433385",
+      "blindAnswer": "②",
+      "blindReasoning": "ㄱ 135°=3π/4로 거짓; ㄴ -7π/6≡5π/6은 제2사분면으로 참; ㄷ 240°는 제3사분면인데 π/3의 y축 대칭은 2π/3으로 거짓.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "ㄱㄴㄷ 각도·사분면 관계가 문장과 수식에 명확하다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "각도를 라디안으로 환산하고 동경 위치를 판정하는 설명이 충분하다."
+        }
+      }
+    },
+    {
+      "qid": 7,
+      "sourceFingerprint": "d16cbdcb270c9ad5e49effbb6f807d732e5af214d3c37952eba0c285159a90de",
+      "blindAnswer": "③",
+      "blindReasoning": "sinθcosθ>0와 sinθ<0이면 cosθ<0으로 제3사분면; 후보 중 7π/6만 가능.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "sin과 cos의 부호 조건 및 선택지 각이 모두 명시된다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "제3사분면 판정과 여타 보기 위치를 글로 비교할 수 있다."
+        }
+      }
+    },
+    {
+      "qid": 8,
+      "sourceFingerprint": "032091c2141fc61fd5e061dc21738b741a4f6e7ee326cd33e2f98e45d2eaab92",
+      "blindAnswer": "④",
+      "blindReasoning": "진수 양수로 -2<x<6; 밑 |x+1|>0, ≠1이므로 x=-1,0 제외. 가능한 정수 1,2,3,4,5 중 최댓값·최솟값 곱 5.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "밑과 진수의 식이 모두 명시되어 그래프 관찰이 불필요하다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "정수 후보 열거와 로그 밑 조건 제외 과정을 수식으로 확인한다."
+        }
+      }
+    },
+    {
+      "qid": 9,
+      "sourceFingerprint": "14a369768188da556e7088eff82f1f68b3252b34b39a7c2787e8be5043ba8a73",
+      "blindAnswer": "⑤",
+      "blindReasoning": "음수 지수 전체에서 지수함수가 1보다 크려면 0<((a-3)²+1)/10<1. (a-3)²<9로 정수 a=1,2,3,4,5 총5개.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "지수함수의 밑과 모든 음수 지수 조건이 주어진다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "밑의 범위 0<A<1과 정수 a의 범위를 식으로 판단한다."
+        }
+      }
+    },
+    {
+      "qid": 10,
+      "sourceFingerprint": "14b812f67c63215d5191d0bd48063d683ac71b20c9a1f8b1c453e45600875813",
+      "blindAnswer": "③",
+      "blindReasoning": "정의역 -2<x<6. 진수 곱 (x+2)(6-x)≤9로 x²-4x-3≥0, x≤2-√7 또는 x≥2+√7. 정수 x=-1,5 두 개.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "로그 부등식과 정수 조건이 완결된 식으로 주어진다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "정의역·이차부등식의 양쪽 구간과 정수 열거로 완결된다."
+        }
+      }
+    },
+    {
+      "qid": 11,
+      "sourceFingerprint": "7d2d12d78d0b41df2fcbcccc8f1bb2b390f42619e379f9c905d0a3ecb6a867b3",
+      "blindAnswer": "⑤",
+      "blindReasoning": "수평 이동 후 계수 2·9^h=18이므로 h=1; 상수 3+v=8이므로 v=5, h+v=6.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "두 지수함수의 식과 이동 방향이 명시되어 그래프 위치 판독이 필요 없다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "F(x-h)+v의 계수와 상수항을 비교하는 식이 충분하다."
+        }
+      }
+    },
+    {
+      "qid": 12,
+      "sourceFingerprint": "6c7b8d6b34c230dce9bd5be5d75c8c11ede2b9425fa5160e864e1523b2a543a0",
+      "blindAnswer": "③",
+      "blindReasoning": "L_A-L_B=30log(v_A/v_B)=30log(3/2)이므로 v_A/v_B=3/2.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "속력과 소음도의 로그 관계·차 조건이 수식으로 완전하다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "로그 몫의 성질로 속력비를 구하는 계산이 직접 보인다."
+        }
+      }
+    },
+    {
+      "qid": 13,
+      "sourceFingerprint": "bd74a1761124724456cd135194061079e84e62c8f2e0a076583cadb507a066c8",
+      "blindAnswer": "②",
+      "blindReasoning": "분모 1+s+s²-c²=s(1+2s), 분자 c(1+2s)이므로 c/s=-2. 제2사분면 s=1/√5,c=-2/√5로 s+c=-√5/5.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "각도 제한과 삼각함수 유리식이 주어져 도형 해석이 필요 없다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "분모 인수분해·부호 판정으로 값이 유일하게 나온다."
+        }
+      }
+    },
+    {
+      "qid": 14,
+      "sourceFingerprint": "4a99b99f25d52d2d0cf11aa7294a12b8017e81ade7c88ce5d8db2e228f56a012",
+      "blindAnswer": "④",
+      "blindReasoning": "B/A=2^{-8+3t/4}≥2¹이므로 -8+3t/4≥1, 자연수 t의 최소값 12.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "두 지수모형과 자연수 t 조건이 식으로 완결된다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "밑 2의 지수 부등식으로 12년 경계가 명확히 나온다."
+        }
+      }
+    },
+    {
+      "qid": 15,
+      "sourceFingerprint": "d74672cac3d4c15c7f2f22864d835410387b537b0ea5a250103b322360d2b5a1",
+      "blindAnswer": "④",
+      "blindReasoning": "수평·수직 거리 같아 교점 Q=(q,t),R=(t,q). u=5^{-q}라 두면 t=u², u=t+4/25로 u=1/5 또는 4/5. 오른쪽/위쪽 조건 q>t는 u=1/5만 충족하여 q=1,t=1/25. 넓이 (1/2)(24/25)²=288/625.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "오른쪽 수평·위쪽 수직·PQ=PR이 문장에 있어 해설 그림 없이도 조건이 고정된다."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "e43ca8856866540c939b9eeba97ae8bd0777d159d8df87626f4b26f8df995fb9",
+          "reasoning": "정본 해설 그림은 P(1/25,1/25), Q(1,1/25), R(1/25,1)을 그림에 놓아 수평·수직 거리와 방향 제약을 확인시킨다."
+        }
+      }
+    },
+    {
+      "qid": 16,
+      "sourceFingerprint": "1b917186aa9f1642ed8b279864a4cc2faecb3761dbf237aa4a91f6ee57eb7823",
+      "blindAnswer": "①",
+      "blindReasoning": "u=5^{-x}>0 치환 시 u²-10ku+50k≤0. 실수 x 해가 딱 하나면 양수 중근, 판별식 100k(k-2)=0. k=0은 u=0만 가능해 배제, k=2에서 u=10 한 개.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "지수부등식과 해 개수 조건이 순수한 식으로 주어진다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "양의 치환값과 이차식의 중근 조건을 순서대로 제시한다."
+        }
+      }
+    },
+    {
+      "qid": 17,
+      "sourceFingerprint": "d998413445ee7f4c5672c99b76b0ac81611d1d22b0866a8946dc8149c287dd4f",
+      "blindAnswer": "②",
+      "blindReasoning": "부채꼴 넓이 조건으로 BC²+CA²=AB²이므로 직각삼각형. 자연수 두 직각변 곱 168인 피타고라스 삼각형은 7,24,25. 세 호 길이 합 56θ=14π로 θ=π/4; AB의 호 25π/4.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "부채꼴 세 개의 반지름·넓이·호 길이가 문장에 명시된다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "피타고라스 삼각형 (7,24,25)과 θ=π/4 계산이 충분하다."
+        }
+      }
+    },
+    {
+      "qid": 18,
+      "sourceFingerprint": "2f0667e7ca07b9d8248d91bed3a75037cfaef7afc263665053aa1c3c6665378f",
+      "blindAnswer": "①",
+      "blindReasoning": "원의 반지름 제곱은 2^{4/n}, 접선 축 절편의 곱에서 넓이 S_n=2^{2n+8/n-3}. 지수 2n+8/n은 양의 정수 n=2에서 최소8이므로 m=32,k=2,m/k=16.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "원·접선·절편 정의와 x1y1 수식이 모두 주어진다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "접선 절편과 산술기하평균의 등호 조건이 식으로 완결된다."
+        }
+      }
+    },
+    {
+      "qid": 19,
+      "sourceFingerprint": "ceca8a8a62d04cd7ea42126908636ef39e94799e61ac2cb577ece19cabdeb097",
+      "blindAnswer": "③",
+      "blindReasoning": "원점·A·B·C 공선으로 b=a⁹,c=a¹⁰. a⁹-a=510을 만족하는 a>0은 a=2(단조), b=512,c=1024. u=log₂p,v=log₂q>0에서 1/u+9/v=2. 코시로 u+v≥(1+3)²/2=8, 등호 u=2,v=6; pq=2⁸=256.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "세 점의 좌표와 공선·로그 조건이 완결되어 있다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "b=a⁹ 및 코시 부등식 등호 조건의 수식 전개로 완결된다."
+        }
+      }
+    },
+    {
+      "qid": 20,
+      "sourceFingerprint": "b8deec53b6f2b3c93e76562022ff86ac1d2d6aa457ac11f34e31270ec52182f8",
+      "blindAnswer": "③",
+      "blindReasoning": "f_n은 x=3에서 2n+1, 끝점에서1인 역V. g는 증가: n=1은 x=3 한 교점, n=2,3,4는 오른쪽 가지 각1개(왼쪽은 양의 차 유지)로 a=4. h는 감소: 각 n의 왼쪽 가지에서 한 교점(n=1은 x=2 끝점), 오른쪽 가지에서는 없음으로 b=4. a-b=0.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "네 f_n의 구간과 g,h의 식·교점 중복 계수 규칙이 발문에 모두 있다."
+        },
+        "solution": {
+          "status": "ENGINE_PENDING",
+          "planDigest": "d60096421bd24fcc9642bcece611d16eb662870efa99d0e3d22132dac0216da5",
+          "reasoning": "해설의 개수 세기는 성립하지만 네 역V와 두 로그 그래프를 구간·중복 교점 기준으로 통합 표시할 엔진 기능이 아직 없다."
+        }
+      }
+    },
+    {
+      "qid": 21,
+      "sourceFingerprint": "b832eb98d5f689b7fab557bca3a1b1e27c71242be9d3aabf686e57b28bafb418",
+      "blindAnswer": "30",
+      "blindReasoning": "(a²bc)^n=2^{n/2}3^{n/3}5^{n/5}. 자연수이려면 서로 다른 소수들의 지수가 정수여야 해서 최소공배수 lcm(2,3,5)=30.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "NOT_APPLICABLE"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "a,b,c의 거듭제곱 조건이 수식에 완전하다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "서로 다른 소수 지수의 정수 조건과 최소공배수로 결론이 난다."
+        }
+      }
+    },
+    {
+      "qid": 22,
+      "sourceFingerprint": "89e6d4f3bcdd9fc45c334ebb6a8e3f86762729c9da084f38ae44a0bb49da89ca",
+      "blindAnswer": "1/4",
+      "blindReasoning": "-x²+4x+21=25-(x-2)²는 [-1,4]에서 16≤값≤25. 최댓값 -2이므로 로그 밑 0<a<1, 감소함수의 최대는 진수16에서. log_a16=-2로 a=1/4.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "NOT_APPLICABLE"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "로그함수 정의역 및 최댓값 조건이 문자로 모두 주어진다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "이차식의 최솟값 16과 감소 로그의 최대 원리를 식으로 확인한다."
+        }
+      }
+    },
+    {
+      "qid": 23,
+      "sourceFingerprint": "c8996f64136dd644d7971152bf543be893a57b6b98cd7200103e40bb16492475",
+      "blindAnswer": "4",
+      "blindReasoning": "(n-3)(n-8)는 n=4..7 음수, n=8 영, 9..12 양수. n=4..12의 실수 n제곱근 개수는 0,1,0,1,1,1,2,1,2. 증가 n은 4,6,9,11 총4개.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "NOT_APPLICABLE"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "n의 범위, 근호 진수, 부등식 비교 대상이 모두 제시되어 있다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "홀짝·양음·0에 따른 f(n) 표를 나열하여 유일하게 검산한다."
+        }
+      }
+    },
+    {
+      "qid": 24,
+      "sourceFingerprint": "731950f15af295c30990b050379f913ae714033e448d1e6e57de1eaec11f2812",
+      "blindAnswer": "10",
+      "blindReasoning": "y=f(x)>0이면 y+18/y=9의 두 목표값은 y=3,6. u=5^{-x}>0, f=|u-a|+b. b=3이면 a=4..7에서 3근(4쌍); b=2이면 a=2..4에서 3근(3쌍); b=1이면 a=3..5에서 3근(3쌍). 나머지 b는 3근 불가, 총10쌍.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "NOT_APPLICABLE"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "a,b 자연수와 합 제약, 함수·실근 개수 조건이 완전하다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "f=3,6 변환 뒤 b=1,2,3의 해 수를 경우분류하는 표 없이도 이해된다."
+        }
+      }
+    }
+  ]
+}

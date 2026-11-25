@@ -1,4 +1,21 @@
 {
-  "status": "EXEMPT",
-  "reason": "모든 그래프 조건 및 좌표 관계가 학생용 판서 풀이에 완결되어 있으므로 운영 JS에서 그림이 필수는 아니다. 추가 시각 보조 plan은 별도 followup 파일에 기록했다."
+  "capability": "logarithmic-affine-spike-v1",
+  "graphPlan": {
+    "family": "logarithmic-affine",
+    "base": "2",
+    "coefficients": ["1", "1", "2", "-1"],
+    "sourceDomain": {"kind": "NATURAL_LOG_AFFINE"},
+    "domain": [-1.99, 6],
+    "viewport": [-3, 7, -4, 4],
+    "axisTickValues": {"x": [], "y": []},
+    "hideLabels": ["reference", "boundary"],
+    "overlays": {"points": [{"id": "O", "x": "0", "y": "0", "unnamed": false, "coordinates": true}]}
+  },
+  "caption": "수직 점근선 x=-2와 원점을 지나는 로그함수 그래프",
+  "sourceConditions": [
+    {"id": "S1", "condition": "점근선 x=-2", "mappedTo": ["graphPlan.coefficients"]},
+    {"id": "S2", "condition": "원점 (0,0)을 지난다", "mappedTo": ["graphPlan.overlays.points"]}
+  ],
+  "newVisualInformation": ["점근선과 원점 사이의 위치관계가 그래프에 나타난다."],
+  "sourceQuote": "따라서 점근선 $x=-a=-2$에서 $a=2$이다."
 }

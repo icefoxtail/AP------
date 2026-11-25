@@ -285,7 +285,6 @@ window.questionBank = [
     "templateKey": "TPL_H22A_04_TRIG_DEFINITION_098",
     "crossConceptKeys": [
       "CC_QUADRANTS",
-      "CC_TANGENT_DEFINITION",
       "CC_COTERMINAL_ANGLES"
     ],
     "conditionKeys": [
@@ -469,8 +468,8 @@ window.questionBank = [
     "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
     "crossConceptKeys": [
       "CC_PARALLEL_TRANSLATION",
-      "CC_POINT_ON_CURVE_SUBSTITUTION",
-      "CC_LOG_RULES"
+      "CC_EXPONENTIAL_FUNCTION_GRAPH",
+      "CC_EXPONENT_RULES"
     ],
     "conditionKeys": [],
     "integrationPattern": "REINTERPRETATION",
@@ -743,7 +742,7 @@ window.questionBank = [
     "problemTypeKey": "PT_H22A_04_ANGLE_RADIAN",
     "templateKey": "TPL_H22A_04_ANGLE_RADIAN_096",
     "crossConceptKeys": [
-      "EXT-CROSS-RADIAN-SECTOR-ARC-AREA",
+      "CC_CIRCLE_SECTOR_AREA",
       "CC_RIGHT_TRIANGLE_CRITERION",
       "CC_DIVISOR_PROPERTY"
     ],
@@ -929,7 +928,6 @@ window.questionBank = [
     "problemTypeKey": "PT_H22A_01_ROOT_REAL",
     "templateKey": "TPL_H22A_01_ROOT_REAL_067",
     "crossConceptKeys": [
-      "EXT-CROSS-PRIME-EXPONENT-POWER-MULTIPLE",
       "CC_LEAST_COMMON_MULTIPLE",
       "CC_PRIME_FACTORIZATION"
     ],
@@ -1009,7 +1007,7 @@ window.questionBank = [
     "problemTypeKey": "PT_H22A_01_ROOT_REAL",
     "templateKey": "TPL_H22A_01_ROOT_REAL_068",
     "crossConceptKeys": [
-      "EXT-CROSS-REAL-ROOT-PARITY-SIGN",
+      "CC_PARITY_CLASSIFICATION",
       "CC_QUADRATIC_FACTORIZATION"
     ],
     "conditionKeys": [
