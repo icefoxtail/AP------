@@ -1,0 +1,26 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-4, 4, -2, 5],
+    "curves": [
+      {"id": "f", "kind": "Y_OF_X", "coefficients": ["18/5", "0", "-2/5"], "domain": ["-7/2", "7/2"], "color": "BLUE", "label": "f(x)"},
+      {"id": "line", "kind": "LINE", "coefficients": ["1", "1/2"], "domain": ["-7/2", "7/2"], "color": "WARM", "label": "y=x/2+1"}
+    ],
+    "axisTickValues": {"x": ["-3", "2", "3"], "y": ["2"]},
+    "overlays": {"points": [
+      {"id": "L", "x": "-3", "y": "0"},
+      {"id": "R", "x": "3", "y": "0"},
+      {"id": "P", "x": "2", "y": "2"}
+    ]}
+  },
+  "caption": "두 근이 -3, 3인 이차곡선 f와 직선 y=x/2+1이 만나는 점 P의 x좌표는 2이다. 구하는 정수해는 표시하지 않는다.",
+  "accessibilityDescription": "아래로 열린 포물선 f가 x축을 -3, 3에서 지나고, 직선 y=x/2+1과 제1사분면의 점 P에서 교차한다.",
+  "sourceConditions": [
+    {"id": "q21p-roots", "condition": "f의 영점 x=−3,3", "mappedTo": "graphPlan.overlays.points[0],graphPlan.overlays.points[1]"},
+    {"id": "q21p-line", "condition": "y=x/2+1", "mappedTo": "graphPlan.curves[1]"},
+    {"id": "q21p-cross", "condition": "제1사분면 교점 x=2, y=2(주어진 직선에 의해 결정)", "mappedTo": "graphPlan.overlays.points[2]"},
+    {"id": "q21p-quadratic", "condition": "세 주어진 기하 조건을 만족하는 유일한 포물선", "mappedTo": "graphPlan.curves[0]"}
+  ],
+  "newVisualInformation": ["두 영점과 교점의 상대적 위치", "로그부등식의 기준이 되는 직선과 포물선"]
+}

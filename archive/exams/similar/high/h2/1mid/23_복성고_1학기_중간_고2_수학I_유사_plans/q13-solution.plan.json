@@ -1,0 +1,36 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-4.4, 3, -1, 12],
+    "curves": [
+      {"id": "f", "kind": "EXPONENTIAL", "base": "3", "coefficients": ["1", "1", "0"], "domain": ["-3", "3"], "color": "BLUE", "label": "y=3^x"},
+      {"id": "g", "kind": "EXPONENTIAL", "base": "3", "coefficients": ["27", "1", "0"], "domain": ["-4", "0"], "color": "WARM", "label": "y=27*3^x"},
+      {"id": "lo", "kind": "LINE", "coefficients": ["1", "0"], "domain": ["-4", "3"], "style": "DASHED", "label": "y=1"},
+      {"id": "hi", "kind": "LINE", "coefficients": ["9", "0"], "domain": ["-4", "3"], "style": "DASHED", "label": "y=9"}
+    ],
+    "axisTickValues": {"x": ["-3", "-1", "2"], "y": ["1", "9"]},
+    "overlays": {
+      "points": [
+        {"id": "A", "x": "-3", "y": "1"},
+        {"id": "B", "x": "0", "y": "1"},
+        {"id": "C", "x": "-1", "y": "9"},
+        {"id": "D", "x": "2", "y": "9"},
+        {"id": "H", "x": "0", "y": "9"}
+      ],
+      "segments": [
+        {"id": "width", "from": "A", "to": "B", "length": true},
+        {"id": "height", "from": "B", "to": "H", "length": true}
+      ]
+    }
+  },
+  "caption": "같은 높이의 두 지수곡선 사이 가로 간격이 3으로 일정하고 y=1에서 y=9까지 높이가 8이다. 따라서 둘러싸인 넓이는 3×8=24이다.",
+  "accessibilityDescription": "두 지수곡선과 y=1, y=9가 만드는 곡선 사이 영역을 보인다. 아래 가로 길이 3과 세로 길이 8을 실선 치수로 표시한다.",
+  "sourceConditions": [
+    {"id": "q13s-curves", "condition": "y=3^x, y=27×3^x", "mappedTo": "graphPlan.curves[0],graphPlan.curves[1]"},
+    {"id": "q13s-limits", "condition": "y=1과 y=9", "mappedTo": "graphPlan.curves[2],graphPlan.curves[3]"},
+    {"id": "q13s-width", "condition": "같은 y에서 x좌표 차 3", "mappedTo": "graphPlan.overlays.points[0],graphPlan.overlays.points[1],graphPlan.overlays.segments[0]"},
+    {"id": "q13s-height", "condition": "높이 9−1=8", "mappedTo": "graphPlan.overlays.points[4],graphPlan.overlays.segments[1]"}
+  ],
+  "newVisualInformation": ["곡선 사이 가로 길이 3과 y의 높이 차 8", "넓이의 직사각형 환산 논리"]
+}

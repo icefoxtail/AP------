@@ -1,0 +1,22 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-4.4, 3, -1, 12],
+    "curves": [
+      {"id": "f", "kind": "EXPONENTIAL", "base": "3", "coefficients": ["1", "1", "0"], "domain": ["-3", "3"], "color": "BLUE", "label": "y=3^x"},
+      {"id": "g", "kind": "EXPONENTIAL", "base": "3", "coefficients": ["27", "1", "0"], "domain": ["-4", "0"], "color": "WARM", "label": "y=27*3^x"},
+      {"id": "lo", "kind": "LINE", "coefficients": ["1", "0"], "domain": ["-4", "3"], "style": "DASHED", "label": "y=1"},
+      {"id": "hi", "kind": "LINE", "coefficients": ["9", "0"], "domain": ["-4", "3"], "style": "DASHED", "label": "y=9"}
+    ],
+    "axisTickValues": {"x": [], "y": ["1", "9"]}
+  },
+  "caption": "두 지수곡선과 높이가 1, 9인 두 수평선이 둘러싸는 영역의 경계만 보여 준다. 넓이·곡선 사이 간격·결과 값은 쓰지 않는다.",
+  "accessibilityDescription": "증가하는 두 지수곡선 사이를 y=1, y=9 수평선이 가로지르는 닫힌 영역의 경계가 나타난다. 영역은 칠하지 않았다.",
+  "sourceConditions": [
+    {"id": "q13p-f", "condition": "y=3^x", "mappedTo": "graphPlan.curves[0]"},
+    {"id": "q13p-g", "condition": "y=27×3^x", "mappedTo": "graphPlan.curves[1]"},
+    {"id": "q13p-h", "condition": "y=1, y=9", "mappedTo": "graphPlan.curves[2],graphPlan.curves[3]"}
+  ],
+  "newVisualInformation": ["두 지수곡선이 수평 경계로 잘리는 영역의 형태"]
+}

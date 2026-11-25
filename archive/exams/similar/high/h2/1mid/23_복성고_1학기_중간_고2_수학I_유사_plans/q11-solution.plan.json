@@ -1,0 +1,40 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {"recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false},
+    "nodes": [
+      {"id": "O", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "integer", "value": "0"}, {"kind": "integer", "value": "0"}]}, "outputType": "POINT", "factRole": "GIVEN"},
+      {"id": "XL", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "integer", "value": "-2"}, {"kind": "integer", "value": "0"}]}, "outputType": "POINT", "factRole": "GIVEN"},
+      {"id": "XR", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "integer", "value": "2"}, {"kind": "integer", "value": "0"}]}, "outputType": "POINT", "factRole": "GIVEN"},
+      {"id": "YU", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "integer", "value": "0"}, {"kind": "integer", "value": "2"}]}, "outputType": "POINT", "factRole": "GIVEN"},
+      {"id": "YD", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "integer", "value": "0"}, {"kind": "integer", "value": "-2"}]}, "outputType": "POINT", "factRole": "GIVEN"},
+      {"id": "Q", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "integer", "value": "1"}, {"kind": "expression", "op": "neg", "args": [{"kind": "expression", "op": "sqrt", "args": [{"kind": "integer", "value": "3"}]}]}]}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE"},
+      {"id": "H", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "expression", "op": "neg", "args": [{"kind": "expression", "op": "sqrt", "args": [{"kind": "integer", "value": "3"}]}]}, {"kind": "integer", "value": "1"}]}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "displayPoints": ["O", "XL", "XR", "YU", "YD", "Q", "H"],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {"id": "xAxis", "refs": ["XL", "XR"]},
+    {"id": "yAxis", "refs": ["YD", "YU"]},
+    {"id": "thetaRay", "refs": ["O", "Q"], "arrow": "END"},
+    {"id": "halfRay", "refs": ["O", "H"], "arrow": "END"}
+  ],
+  "rightAngles": [],
+  "planeMarks": {"expressionLabels": [
+    {"id": "thetaLabel", "ownerSegment": "thetaRay", "text": "θ"},
+    {"id": "halfLabel", "ownerSegment": "halfRay", "text": "θ/2"}
+  ]},
+  "hiddenPointNames": ["XL", "XR", "YU", "YD", "Q", "H"],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {"width": 460, "height": 420},
+  "caption": "범위 3π/2<θ<2π이면 θ는 제4사분면, θ/2는 제2사분면이다. 방향만 보이기 위해 그린 대표 예시는 θ=5π/3, θ/2=5π/6이며 임의의 θ값을 고정한 해답은 아니다.",
+  "accessibilityDescription": "원점에서 오른쪽 아래로 향하는 θ 동경과 왼쪽 위로 향하는 θ/2 동경을 화살표로 표시한 제4·제2사분면 예시다.",
+  "sourceConditions": [
+    {"id": "q11s-quadrant", "condition": "3π/2<θ<2π ⇒ 동경 θ는 제4사분면", "mappedTo": "displaySegments[2],planeMarks.expressionLabels[0]"},
+    {"id": "q11s-half", "condition": "3π/4<θ/2<π ⇒ 동경 θ/2는 제2사분면; 대표 θ=5π/3 사용", "mappedTo": "displaySegments[3],planeMarks.expressionLabels[1],mathPlan.nodes[5],mathPlan.nodes[6]"}
+  ],
+  "newVisualInformation": ["θ와 θ/2 동경이 서로 다른 사분면에 위치함", "sinθ<0, cosθ>0, sin(θ/2)>0의 공간적 이유"]
+}

@@ -1,0 +1,21 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-2.8, 2.2, -1, 20],
+    "curves": [
+      {"id": "original", "kind": "EXPONENTIAL", "base": "3", "coefficients": ["1", "1", "0"], "domain": ["-2", "2"], "color": "BLUE", "label": "y=3^x"},
+      {"id": "moved", "kind": "EXPONENTIAL", "base": "3", "coefficients": ["1", "1", "4"], "shiftX": "-1", "domain": ["-2", "3/2"], "color": "WARM", "label": "g(x)"}
+    ],
+    "axisTickValues": {"x": ["1"], "y": ["4"]},
+    "overlays": {"points": [{"id": "P", "x": "1", "y": "13"}]}
+  },
+  "caption": "파란 곡선 y=3^x와 이를 왼쪽 1, 위로 4만큼 옮긴 곡선 g를 함께 보인다. 점 P의 x좌표는 1이고 묻는 y좌표 a는 표기하지 않는다.",
+  "accessibilityDescription": "두 증가하는 지수곡선이 나란히 있고, 이동한 곡선의 점 P는 x가 1인 위치에 표시된다. 점 P의 세로 좌표는 쓰이지 않았다.",
+  "sourceConditions": [
+    {"id": "q06p-f", "condition": "원함수 y=3^x", "mappedTo": "graphPlan.curves[0]"},
+    {"id": "q06p-g", "condition": "왼쪽으로 1, 위로 4 이동", "mappedTo": "graphPlan.curves[1].shiftX,graphPlan.curves[1].coefficients"},
+    {"id": "q06p-point", "condition": "이동 곡선 위 (1,a); 점 y좌표 라벨 비노출", "mappedTo": "graphPlan.overlays.points[0]"}
+  ],
+  "newVisualInformation": ["지수곡선의 좌·상 평행이동", "x=1에서 미지 높이를 가진 점의 위치"]
+}

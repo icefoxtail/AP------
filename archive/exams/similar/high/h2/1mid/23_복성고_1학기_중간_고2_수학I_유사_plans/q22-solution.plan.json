@@ -1,0 +1,32 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "axisVariable": false,
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "작은 밑",
+        "pieces": [
+          {"lo": {"value": "-7/2", "state": "CLOSED"}, "hi": {"value": "-3", "state": "OPEN"}},
+          {"lo": {"value": "-3", "state": "OPEN"}, "hi": {"value": "-2", "state": "OPEN"}}
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "큰 밑",
+        "pieces": [
+          {"lo": {"value": "-3/2", "state": "CLOSED"}, "hi": null}
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {"text": "두 밑의 범위에서 구한 해집합의 합집합"},
+  "caption": "밑이 0과 1 사이이면 [−7/2,−3)∪(−3,−2), 밑이 1보다 크면 [−3/2,∞)이다. 두 경우의 합집합을 취한다.",
+  "accessibilityDescription": "첫 줄에 -7/2를 포함하고 -3을 제외하는 구간과 -3에서 -2까지 양끝을 제외하는 구간이 있다. 둘째 줄에는 -3/2를 포함해 오른쪽 무한대로 이어지는 반직선이 있다.",
+  "sourceConditions": [
+    {"id": "q22s-case1", "condition": "0<|x+3|<1인 경우 [−7/2,−3)∪(−3,−2)", "mappedTo": "numberLine.rows[0].pieces"},
+    {"id": "q22s-case2", "condition": "|x+3|>1인 경우 [−3/2,∞)", "mappedTo": "numberLine.rows[1].pieces"},
+    {"id": "q22s-union", "condition": "전체 해는 두 경우의 합집합", "mappedTo": "numberLine.rows,numberLineCaption"}
+  ],
+  "newVisualInformation": ["로그 밑 범위별 열린·닫힌 끝점", "불연속적인 두 구간과 오른쪽 반직선의 합집합"]
+}
