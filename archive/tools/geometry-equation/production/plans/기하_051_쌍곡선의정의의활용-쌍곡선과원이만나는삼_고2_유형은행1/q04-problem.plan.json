@@ -1,0 +1,12 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conics":[{"id":"h","kind":"HYPERBOLA","center":["0","0"],"aSquared":"9","bSquared":"25","transverse":"X"},{"id":"c","kind":"CIRCLE","center":["0","0"],"rSquared":"34"}],
+  "points":[{"id":"F","kind":"FOCUS","curve":"h","side":1},{"id":"F'","kind":"FOCUS","curve":"h","side":-1},{"id":"A","kind":"LINE_CONIC","curve":"c","line":"as1","which":2,"label":false},{"id":"B","kind":"LINE_CONIC","curve":"c","line":"as2","which":1,"label":false},{"id":"C","kind":"LINE_CONIC","curve":"c","line":"as1","which":1,"label":false},{"id":"D","kind":"LINE_CONIC","curve":"c","line":"as2","which":2,"label":false}],
+  "lines":[{"id":"as1","role":"ASYMPTOTE","curve":"h","sign":1,"dashed":true},{"id":"as2","role":"ASYMPTOTE","curve":"h","sign":-1,"dashed":true}],
+  "segments":[{"id":"AB","from":"A","to":"B"},{"id":"BC","from":"B","to":"C"},{"id":"CD","from":"C","to":"D"},{"id":"DA","from":"D","to":"A"}],
+  "polygons":[{"id":"rect","points":["A","B","C","D"],"fill":"LIGHT"}],
+  "caption":"초점 지름 원이 두 점근선과 만나는 네 점으로 만든 색칠된 직사각형",
+  "accessibilityDescription":"쌍곡선 x²/9−y²/25=1의 초점 F,F′을 지름 끝으로 하는 원과 두 점근선이 있다. 점근선이 원과 교차하는 대칭된 네 점을 차례로 연결하여 직사각형을 만들고 내부를 색칠했다. 원문에 없는 네 점의 글자 라벨은 표시하지 않았다.",
+  "sourceConditions":[{"id":"c1","condition":"쌍곡선의 c²=34이므로 원 x²+y²=34와 점근선 y=±5x/3을 사용한다.","mappedTo":["h","c","F","F'","as1","as2"]},{"id":"c2","condition":"원과 점근선의 네 교점은 (3,5),(-3,5),(-3,-5),(3,-5)이며 각각 A,B,C,D로 내부 연결한다. 원문에서 무명 교점이므로 label:false로 둔다.","mappedTo":["A","B","C","D"]},{"id":"c3","condition":"네 교점이 만드는 직사각형의 넓이가 미지 답이므로 길이나 넓이 수치를 표시하지 않고 내부만 색칠한다.","mappedTo":["AB","BC","CD","DA","rect"]}],
+  "newVisualInformation":["두 실제 점근선과 초점 지름 원의 교점을 수식으로 계산한 4꼭짓점 직사각형","미지 넓이는 숨기면서 원본의 내부 색칠을 polygons.fill로 구현"]
+}

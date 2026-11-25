@@ -1,0 +1,11 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"HYPERBOLA","center":["0","0"],"aSquared":"16","bSquared":"9","transverse":"X"},
+  "points":[{"id":"F","kind":"FOCUS","side":1},{"id":"F'","kind":"FOCUS","side":-1},{"id":"P","kind":"ON_CONIC","y":"3","branch":"NEG"},{"id":"Q","kind":"ON_CONIC","y":"-3","branch":"POS"}],
+  "segments":[{"id":"PFp","from":"P","to":"F'"},{"id":"FpQ","from":"F'","to":"Q"},{"id":"QF","from":"Q","to":"F"},{"id":"FP","from":"F","to":"P"}],
+  "polygons":[{"id":"par","points":["P","F'","Q","F"],"fill":"NONE"}],
+  "caption":"넓이가 30인 평행사변형 PF′QF, 제2사분면 P와 원점 대칭점 Q",
+  "accessibilityDescription":"쌍곡선 x²/16−y²/9=1의 초점 F′(-5,0),F(5,0)가 있다. 제2사분면 위 점 P(a,b)와 제4사분면 위 대칭점 Q(-a,-b)를 포함하여 사각형 PF′QF를 이룬다. 주어진 넓이는 30이다.",
+  "sourceConditions":[{"id":"c1","condition":"쌍곡선의 두 초점 F,F′는 ±5이고 P는 제2사분면, Q는 제4사분면의 원점 대칭점이다.","mappedTo":["conic","F","F'","P","Q"]},{"id":"c2","condition":"사각형 PF′QF의 넓이는 2cb=10b=30에서 b=3, 쌍곡선 위 P=(-4√2,3),Q=(4√2,-3)이다. 묻는 ab는 점 좌표의 값에서 구해지므로 수치 좌표를 라벨에 넣지 않는다.","mappedTo":["P","Q","PFp","FpQ","QF","FP","par"]},{"id":"c3","condition":"원문 P(a,b),Q(-a,-b)의 문자 좌표를 실제 점 옆에 출력하는 conic 필드는 없어 SYMBOLIC_POINT_CALLOUT_ENGINE_CAPABILITY_PENDING이다. 캡션만으로 시각 parity PASS를 선언하지 않는다.","mappedTo":["P","Q"]}],
+  "newVisualInformation":["넓이30을 만족하는 제2·4사분면의 대칭점과 네 변을 정밀 배치","정답에 쓰일 좌표 a,b와 곱 ab는 숨기고 문자 좌표 콜아웃은 엔진 확장 대기"]
+}

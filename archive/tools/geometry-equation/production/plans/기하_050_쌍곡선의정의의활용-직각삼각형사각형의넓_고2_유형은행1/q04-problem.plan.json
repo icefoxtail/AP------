@@ -1,0 +1,11 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"HYPERBOLA","center":["0","0"],"aSquared":"9","bSquared":"16","transverse":"X"},
+  "points":[{"id":"F","kind":"FOCUS","side":1},{"id":"F'","kind":"FOCUS","side":-1},{"id":"P","kind":"ON_CONIC","x":"3*sqrt(73)/5","sign":"POS"}],
+  "segments":[{"id":"PF","from":"P","to":"F"},{"id":"PFp","from":"P","to":"F'"},{"id":"FFp","from":"F","to":"F'"}],
+  "polygons":[{"id":"tri","points":["P","F","F'"],"fill":"NONE"}],
+  "caption":"제1사분면의 P에서 두 초점으로 향하는 선분의 끼인각이 60도인 삼각형",
+  "accessibilityDescription":"쌍곡선 x²/9−y²/16=1의 두 초점 F(5,0),F′(-5,0)와 제1사분면 P를 이은 삼각형이다. P에서의 각 FPF′는 60도이다.",
+  "sourceConditions":[{"id":"c1","condition":"x²/9−y²/16=1의 초점은 F=(5,0), F′=(-5,0)이다.","mappedTo":["conic","F","F'"]},{"id":"c2","condition":"∠FPF′=60°와 PF′−PF=6, FF′=10으로 PF=√73−3, PF′=√73+3을 얻는다. P=(3√73/5,16√3/5)는 실제 쌍곡선 위이고 끼인각이 60°이다.","mappedTo":["P","PF","PFp","FFp","tri"]},{"id":"c3","condition":"60° 각호 및 각도 텍스트를 선분 사이에 넣는 현행 conic 필드가 없어 ENGINE_CAPABILITY_PENDING. 문제의 넓이 답은 비노출한다.","mappedTo":["PF","PFp"]}],
+  "newVisualInformation":["코사인법칙을 만족하는 실제 P의 좌표 사용, 임의 60도 근사 그림 금지","60° 호와 텍스트는 엔진 확장 대기"]
+}

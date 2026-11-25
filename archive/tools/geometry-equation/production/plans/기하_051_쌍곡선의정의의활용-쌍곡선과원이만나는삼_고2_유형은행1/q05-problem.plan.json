@@ -1,0 +1,11 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conics":[{"id":"h","kind":"HYPERBOLA","center":["0","0"],"aSquared":"4","bSquared":"16","transverse":"X"},{"id":"c","kind":"CIRCLE","center":["0","0"],"rSquared":"20"}],
+  "points":[{"id":"F","kind":"FOCUS","curve":"h","side":1},{"id":"F'","kind":"FOCUS","curve":"h","side":-1},{"id":"P","kind":"CONIC_CONIC","curves":["h","c"],"which":4}],
+  "segments":[{"id":"PF","from":"P","to":"F"},{"id":"PFp","from":"P","to":"F'"},{"id":"FFp","from":"F","to":"F'"}],
+  "polygons":[{"id":"tri","points":["P","F'","F"],"fill":"NONE"}],
+  "caption":"두 초점을 지름의 끝점으로 하는 원과 쌍곡선의 제1사분면 교점 P, 삼각형 PF′F",
+  "accessibilityDescription":"쌍곡선 x²/4−y²/16=1의 두 초점 F′(-2√5,0),F(2√5,0)을 잇는 지름 원이 그려져 있다. 원과 쌍곡선의 제1사분면 교점 P를 두 초점에 연결해 삼각형을 만든다.",
+  "sourceConditions":[{"id":"c1","condition":"쌍곡선 초점 c²=4+16=20, 원의 중심은 O이고 반지름은 2√5다.","mappedTo":["h","c","F","F'"]},{"id":"c2","condition":"제1사분면에서 두 conic의 교점 P=(6√5/5,8√5/5)은 원주각이 직각인 삼각형 PF′F를 이룬다. 구하려는 cos∠PF′F는 숫자로 표시하지 않는다.","mappedTo":["P","PF","PFp","FFp","tri"]}],
+  "newVisualInformation":["원이 실제로 초점 두 점을 지름으로 가짐을 conics 두 식으로 보장","P를 원-쌍곡선 공통 교점으로 계산하고 미지 코사인 값을 숨김"]
+}

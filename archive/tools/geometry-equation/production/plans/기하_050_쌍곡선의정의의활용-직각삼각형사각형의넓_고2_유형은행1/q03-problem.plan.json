@@ -1,0 +1,11 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"HYPERBOLA","center":["0","0"],"aSquared":"5","bSquared":"4","transverse":"X"},
+  "points":[{"id":"F","kind":"FOCUS","side":1},{"id":"F'","kind":"FOCUS","side":-1},{"id":"P","kind":"ON_CONIC","y":"4/3","branch":"NEG"},{"id":"Q","kind":"ON_CONIC","y":"-4/3","branch":"POS"}],
+  "segments":[{"id":"PFp","from":"P","to":"F'"},{"id":"FpQ","from":"F'","to":"Q"},{"id":"QF","from":"Q","to":"F"},{"id":"FP","from":"F","to":"P"}],
+  "polygons":[{"id":"rect","points":["P","F'","Q","F"],"fill":"NONE"}],
+  "caption":"쌍곡선의 왼쪽 위 P·오른쪽 아래 Q와 두 초점이 이루는 직사각형 PF′QF",
+  "accessibilityDescription":"쌍곡선 x²/5−y²/4=1의 양쪽 초점 F′(-3,0),F(3,0) 및 제2사분면 P, 제4사분면 Q가 있다. P→F′→Q→F 순서로 네 변이 연결되어 직사각형을 이룬다.",
+  "sourceConditions":[{"id":"c1","condition":"쌍곡선의 두 초점은 ±3이고 P는 제2사분면, Q는 제4사분면이다.","mappedTo":["conic","F","F'","P","Q"]},{"id":"c2","condition":"PF′QF가 직사각형이므로 O중심 반지름3 원 위의 P,Q가 대칭쌍이다. 방정식과 x²+y²=9에서 P=(-√65/3,4/3), Q=(√65/3,-4/3)을 얻는다.","mappedTo":["P","Q","PFp","FpQ","QF","FP","rect"]},{"id":"c3","condition":"각 꼭짓점의 직각 호는 별도 conic-angle glyph가 없어 ENGINE_CAPABILITY_PENDING. 넓이 정답은 표시하지 않는다.","mappedTo":["rect"]}],
+  "newVisualInformation":["두 쌍곡선 가지에 정확히 걸린 반대점 P,Q로 수학적 직사각형을 구현","직각호 네 개는 엔진 보강 필요, 실제 네 변의 수직성은 좌표 계산으로 충족"]
+}

@@ -1,0 +1,11 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"HYPERBOLA","center":["0","0"],"aSquared":"9","bSquared":"27","transverse":"X"},
+  "points":[{"id":"F","kind":"FOCUS","side":1},{"id":"F'","kind":"FOCUS","side":-1},{"id":"P","kind":"ON_CONIC","x":"9/2","sign":"POS"}],
+  "segments":[{"id":"PF","from":"P","to":"F","label":"t"},{"id":"PFp","from":"P","to":"F'","label":"2t"},{"id":"FFp","from":"F","to":"F'"}],
+  "polygons":[{"id":"tri","points":["F","P","F'"],"fill":"NONE"}],
+  "caption":"초점까지 거리 비가 PF′:PF=2:1인 쌍곡선의 초점 삼각형",
+  "accessibilityDescription":"쌍곡선 x²/9−y²/27=1 위 제1사분면 P와 초점 F(6,0),F′(-6,0)를 잇는 삼각형이다. 선분 PF에는 t, PF′에는 2t가 표시되어 주어진 두 배 관계를 나타낸다.",
+  "sourceConditions":[{"id":"c1","condition":"쌍곡선 x²/9−y²/27=1의 두 초점은 ±6이다.","mappedTo":["conic","F","F'"]},{"id":"c2","condition":"PF′=2PF와 PF′−PF=6에서 P=(9/2,3√15/2)으로 정확히 결정된다. t와 2t를 선분 위에 별도로 실제 표시한다.","mappedTo":["P","PF","PFp","FFp","tri"]},{"id":"c3","condition":"삼각형의 넓이 값은 정답이므로 표기하지 않는다.","mappedTo":["tri"]}],
+  "newVisualInformation":["주어진 초점거리 비 2:1을 선분 라벨로 명시","P를 비 조건과 쌍곡선 식을 동시에 만족하는 정확한 위치에 배치"]
+}

@@ -1,0 +1,11 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conics":[{"id":"h","kind":"HYPERBOLA","center":["0","0"],"aSquared":"52","bSquared":"48","transverse":"X"},{"id":"c","kind":"CIRCLE","center":["0","0"],"rSquared":"100"}],
+  "points":[{"id":"F","kind":"FOCUS","curve":"h","side":1},{"id":"F'","kind":"FOCUS","curve":"h","side":-1},{"id":"P","kind":"CONIC_CONIC","curves":["h","c"],"which":4}],
+  "segments":[{"id":"PF","from":"P","to":"F"},{"id":"PFp","from":"P","to":"F'"},{"id":"FFp","from":"F","to":"F'"}],
+  "polygons":[{"id":"tri","points":["P","F","F'"],"fill":"LIGHT"}],
+  "caption":"선분 FF′을 지름으로 하는 원과 쌍곡선의 제1사분면 교점 P, 색칠된 삼각형 PFF′",
+  "accessibilityDescription":"쌍곡선 x²/52−y²/48=1의 초점 F′(-10,0),F(10,0)을 양끝으로 하는 지름의 원이 있고, 그 원과 쌍곡선이 제1사분면에서 만나는 P를 삼각형의 꼭짓점으로 삼는다. 삼각형 내부가 색칠되어 있다.",
+  "sourceConditions":[{"id":"c1","condition":"쌍곡선 a²=52,b²=48에서 c²=100이므로 F,F′는 ±10이고 이 둘을 지름 끝점으로 하는 원의 반지름은 10이다.","mappedTo":["h","c","F","F'"]},{"id":"c2","condition":"P는 두 conic의 실제 제1사분면 교점으로 P=(2√481/5,24/5). 삼각형 PFF′는 원주각 정리에서 직각이고 문제의 넓이 값은 기입하지 않는다.","mappedTo":["P","PF","PFp","FFp","tri"]},{"id":"c3","condition":"원문의 색칠된 삼각형만 LIGHT 폴리곤으로 채우며 외부 영역을 채우지 않는다.","mappedTo":["tri"]}],
+  "newVisualInformation":["원과 쌍곡선의 교점을 수작업 좌표 점이 아니라 엔진 CONIC_CONIC으로 도출","원문 삼각형 영역만 실제 채우기 구현"]
+}

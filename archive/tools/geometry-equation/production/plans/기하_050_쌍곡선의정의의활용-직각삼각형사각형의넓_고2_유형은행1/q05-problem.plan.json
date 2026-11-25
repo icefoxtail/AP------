@@ -1,0 +1,11 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"HYPERBOLA","center":["0","0"],"aSquared":"13","bSquared":"12","transverse":"X"},
+  "points":[{"id":"F","kind":"FOCUS","side":1},{"id":"F'","kind":"FOCUS","side":-1},{"id":"P","kind":"ON_CONIC","y":"12","branch":"POS"},{"id":"Q","kind":"ON_CONIC","y":"-12","branch":"NEG"}],
+  "segments":[{"id":"FpQ","from":"F'","to":"Q"},{"id":"QF","from":"Q","to":"F"},{"id":"FP","from":"F","to":"P"},{"id":"PFp","from":"P","to":"F'"}],
+  "polygons":[{"id":"par","points":["F'","Q","F","P"],"fill":"NONE"}],
+  "caption":"넓이가 120인 평행사변형 F′QFP와 원점 대칭인 두 쌍곡선 위의 점 P,Q",
+  "accessibilityDescription":"쌍곡선 x²/13−y²/12=1의 두 초점 F′(-5,0),F(5,0)와 제1사분면 P(a,b), 제3사분면의 반대점 Q(-a,-b)가 있다. 네 점 F′,Q,F,P를 연결한 평행사변형의 주어진 넓이는 120이다.",
+  "sourceConditions":[{"id":"c1","condition":"쌍곡선의 초점은 F=(5,0),F′=(-5,0)이고 Q는 P의 원점 대칭이다.","mappedTo":["conic","F","F'","P","Q"]},{"id":"c2","condition":"평행사변형 F′QFP의 넓이는 2cb=10b=120이므로 b=12. 방정식에서 P=(13,12),Q=(-13,-12)가 성립한다. 두 점의 좌표값은 구하는 a+b의 답에 연결되므로 이름만 표기한다.","mappedTo":["P","Q","FpQ","QF","FP","PFp","par"]},{"id":"c3","condition":"원문의 P(a,b),Q(-a,-b) 같은 문자 좌표를 점 이름 옆에 보이게 할 수 있는 현재 conic 필드가 없어 SYMBOLIC_POINT_CALLOUT_ENGINE_CAPABILITY_PENDING이다. 캡션 설명만으로 그려졌다고 판정하지 않는다.","mappedTo":["P","Q"]}],
+  "newVisualInformation":["원점 대칭과 사각형 넓이를 동시에 만족하는 정확한 네 점으로 구성","실제 수치 좌표를 SVG 라벨로 표시하지 않으며 P(a,b), Q(-a,-b) 문자 좌표 콜아웃은 엔진 보강 대기"]
+}
