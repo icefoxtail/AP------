@@ -1,0 +1,177 @@
+{
+  "capability": "solid-figure-v1",
+  "space": {
+    "points": [
+      {
+        "id": "D",
+        "at": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "E",
+        "at": [
+          3,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "F",
+        "at": [
+          "3/2",
+          "3*sqrt(3)/2",
+          0
+        ]
+      },
+      {
+        "id": "A",
+        "at": [
+          0,
+          0,
+          4
+        ]
+      },
+      {
+        "id": "B",
+        "at": [
+          3,
+          0,
+          2
+        ]
+      },
+      {
+        "id": "C",
+        "at": [
+          "3/2",
+          "3*sqrt(3)/2",
+          6
+        ]
+      }
+    ],
+    "segments": [
+      {
+        "from": "D",
+        "to": "E",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "E",
+        "to": "F",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "F",
+        "to": "D",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "B",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "B",
+        "to": "C",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "C",
+        "to": "A",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "D",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "B",
+        "to": "E",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "C",
+        "to": "F",
+        "style": "AUTO",
+        "role": "REF"
+      }
+    ]
+  },
+  "highlights": [
+    {
+      "polygon": [
+        "A",
+        "B",
+        "C"
+      ],
+      "fill": "LIGHT"
+    },
+    {
+      "polygon": [
+        "D",
+        "E",
+        "F"
+      ],
+      "fill": "WARM"
+    }
+  ],
+  "dims": [
+    {
+      "from": "A",
+      "to": "D",
+      "label": "4"
+    },
+    {
+      "from": "B",
+      "to": "E",
+      "label": "2"
+    },
+    {
+      "from": "C",
+      "to": "F",
+      "label": "6"
+    },
+    {
+      "from": "D",
+      "to": "E",
+      "label": "3"
+    }
+  ],
+  "caption": "밑면 한 변 3의 정삼각기둥을 ABC의 경사 평면으로 자른 입체",
+  "solidCaption": {
+    "text": "167번 유형 · 3번 그림"
+  },
+  "accessibilityDescription": "밑면 한 변 3의 정삼각기둥을 ABC의 경사 평면으로 자른 입체. 밑면 DEF는 한 변 3 정삼각형; AD=4 BE=2 CF=6; 윗면 경사 평면 ABC.",
+  "sourceQuote": "[그림: 밑면 $\\triangle\\mathrm{DEF}$의 한 변의 길이가 $3$인 정삼각기둥을 비스듬한 평면 $\\mathrm{ABC}$로 자른 입체도형이며, 수직 모서리의 길이가 $\\overline{\\mathrm{AD}}=4$, $\\overline{\\mathrm{BE}}=2$, $\\overline{\\mathrm{CF}}=6$으로 표시되어 있다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "밑면 DEF는 한 변 3 정삼각형",
+      "mappedTo": "space.points"
+    },
+    {
+      "id": "c2",
+      "condition": "AD=4 BE=2 CF=6",
+      "mappedTo": "dims"
+    },
+    {
+      "id": "c3",
+      "condition": "윗면 경사 평면 ABC",
+      "mappedTo": "highlights"
+    }
+  ],
+  "newVisualInformation": [
+    "높이가 4,2,6으로 다른 세 꼭짓점이 만드는 절단 평면"
+  ]
+}

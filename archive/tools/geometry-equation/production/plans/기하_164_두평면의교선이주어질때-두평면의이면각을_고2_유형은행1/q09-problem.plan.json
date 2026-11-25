@@ -1,0 +1,117 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PYRAMID",
+      "base": {
+        "kind": "RECT",
+        "width": 8,
+        "depth": 8
+      },
+      "height": 6.928203230275509,
+      "names": "ABCDO",
+      "points": [
+        {
+          "id": "P",
+          "at": {
+            "midpoint": [
+              "O",
+              "A"
+            ]
+          }
+        },
+        {
+          "id": "Q",
+          "at": {
+            "midpoint": [
+              "O",
+              "B"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "P",
+      "to": "Q",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "O",
+      "to": "P",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "O",
+      "to": "Q",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "highlights": [
+    {
+      "polygon": [
+        "O",
+        "P",
+        "Q"
+      ],
+      "fill": "LIGHT"
+    },
+    {
+      "polygon": [
+        "O",
+        "C",
+        "D"
+      ],
+      "fill": "WARM"
+    }
+  ],
+  "dims": [
+    {
+      "from": "A",
+      "to": "B",
+      "label": "8"
+    },
+    {
+      "from": "O",
+      "to": "A",
+      "label": "4sqrt(5)"
+    }
+  ],
+  "caption": "정사각뿔 O-ABCD의 중점 P,Q와 두 삼각형 OPQ·OCD",
+  "solidCaption": {
+    "text": "164번 유형 · 9번 그림"
+  },
+  "accessibilityDescription": "정사각뿔 O-ABCD의 중점 P,Q와 두 삼각형 OPQ·OCD. 밑면 정사각형 한 변 8; 모서리 OA=4√5; P,Q는 OA,OB 중점; 삼각형 OPQ와 옆면 OCD.",
+  "sourceQuote": "[그림: 밑면이 정사각형 $\\mathrm{ABCD}$이고 꼭짓점이 $\\mathrm{O}$인 정사각뿔에서 선분 $\\mathrm{OA, OB}$의 중점 $\\mathrm{P, Q}$를 잇는 삼각형 $\\mathrm{OPQ}$와 건너편 옆면 $\\mathrm{OCD}$가 표시된 입체도형]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "밑면 정사각형 한 변 8",
+      "mappedTo": "solids[0].base.width"
+    },
+    {
+      "id": "c2",
+      "condition": "모서리 OA=4√5",
+      "mappedTo": "dims"
+    },
+    {
+      "id": "c3",
+      "condition": "P,Q는 OA,OB 중점",
+      "mappedTo": "solids[0].points"
+    },
+    {
+      "id": "c4",
+      "condition": "삼각형 OPQ와 옆면 OCD",
+      "mappedTo": "highlights"
+    }
+  ],
+  "newVisualInformation": [
+    "평면 OPQ와 평면 OCD의 대칭 배치"
+  ]
+}

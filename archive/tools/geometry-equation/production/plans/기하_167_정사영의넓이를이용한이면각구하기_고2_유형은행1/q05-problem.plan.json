@@ -1,0 +1,118 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PYRAMID",
+      "base": {
+        "kind": "RECT",
+        "width": 4,
+        "depth": 4
+      },
+      "height": 5.291502622129181,
+      "names": "BCDEA",
+      "points": [
+        {
+          "id": "P",
+          "at": {
+            "midpoint": [
+              "A",
+              "D"
+            ]
+          }
+        },
+        {
+          "id": "Q",
+          "at": {
+            "midpoint": [
+              "A",
+              "B"
+            ]
+          }
+        },
+        {
+          "id": "R",
+          "at": {
+            "midpoint": [
+              "B",
+              "C"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "P",
+      "to": "Q",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "Q",
+      "to": "R",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "R",
+      "to": "P",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "highlights": [
+    {
+      "polygon": [
+        "P",
+        "Q",
+        "R"
+      ],
+      "fill": "LIGHT"
+    }
+  ],
+  "dims": [
+    {
+      "from": "B",
+      "to": "C",
+      "label": "4"
+    },
+    {
+      "from": "A",
+      "to": "B",
+      "label": "6"
+    }
+  ],
+  "caption": "밑면 한 변 4, 옆모서리 6의 정사각뿔 A-BCDE와 중점 삼각형 PQR",
+  "solidCaption": {
+    "text": "167번 유형 · 5번 그림"
+  },
+  "accessibilityDescription": "밑면 한 변 4, 옆모서리 6의 정사각뿔 A-BCDE와 중점 삼각형 PQR. 밑면 BCDE의 한 변 4; AB=AC=AD=AE=6; P,Q,R은 AD,AB,BC 중점; 삼각형 PQR.",
+  "sourceQuote": "[그림: 밑면 정사각형 $\\mathrm{BCDE}$의 한 변의 길이가 $4$이고 $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{AC}}=\\overline{\\mathrm{AD}}=\\overline{\\mathrm{AE}}=6$인 정사각뿔 $\\mathrm{A-BCDE}$에서 세 모서리 $\\mathrm{AD}$, $\\mathrm{AB}",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "밑면 BCDE의 한 변 4",
+      "mappedTo": "solids[0].base.width"
+    },
+    {
+      "id": "c2",
+      "condition": "AB=AC=AD=AE=6",
+      "mappedTo": "solids[0].height"
+    },
+    {
+      "id": "c3",
+      "condition": "P,Q,R은 AD,AB,BC 중점",
+      "mappedTo": "solids[0].points"
+    },
+    {
+      "id": "c4",
+      "condition": "삼각형 PQR",
+      "mappedTo": "highlights"
+    }
+  ],
+  "newVisualInformation": [
+    "옆모서리와 밑면의 중점을 잇는 공간 삼각형"
+  ]
+}

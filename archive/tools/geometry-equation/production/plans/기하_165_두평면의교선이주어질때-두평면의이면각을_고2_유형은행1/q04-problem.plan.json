@@ -1,0 +1,178 @@
+{
+  "capability": "solid-figure-v1",
+  "space": {
+    "points": [
+      {
+        "id": "B",
+        "at": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "C",
+        "at": [
+          10,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "D",
+        "at": [
+          0,
+          8,
+          0
+        ]
+      },
+      {
+        "id": "Q",
+        "at": [
+          "2*sqrt(2)",
+          0,
+          0
+        ]
+      },
+      {
+        "id": "P",
+        "at": [
+          "2*sqrt(2)",
+          "2*sqrt(2)",
+          0
+        ]
+      },
+      {
+        "id": "A",
+        "at": [
+          "2*sqrt(2)",
+          "2*sqrt(2)",
+          "4*sqrt(3)"
+        ]
+      }
+    ],
+    "segments": [
+      {
+        "from": "B",
+        "to": "C",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "C",
+        "to": "D",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "D",
+        "to": "B",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "B",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "C",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "D",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "P",
+        "style": "DASHED",
+        "role": "REF"
+      },
+      {
+        "from": "P",
+        "to": "Q",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "Q",
+        "style": "DASHED",
+        "role": "REF"
+      },
+      {
+        "from": "Q",
+        "to": "B",
+        "style": "AUTO",
+        "role": "REF"
+      }
+    ]
+  },
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "P",
+        "refs": [
+          "A",
+          "Q"
+        ]
+      },
+      {
+        "at": "Q",
+        "refs": [
+          "A",
+          "B"
+        ]
+      }
+    ]
+  },
+  "dims": [
+    {
+      "from": "A",
+      "to": "B",
+      "label": "8"
+    },
+    {
+      "from": "B",
+      "to": "C",
+      "label": "10"
+    }
+  ],
+  "caption": "사면체 ABCD에서 A의 밑면 수선발 P와 BC의 수선발 Q",
+  "solidCaption": {
+    "text": "165번 유형 · 4번 그림"
+  },
+  "accessibilityDescription": "사면체 ABCD에서 A의 밑면 수선발 P와 BC의 수선발 Q. AP ⟂ 평면 BCD; Q는 A에서 BC로 내린 수선의 발; AB=8 BC=10; 삼각형 APQ.",
+  "sourceQuote": "[그림: 사면체 $\\mathrm{ABCD}$에서 점 $\\mathrm{A}$의 밑면 $\\mathrm{BCD}$ 위로의 수선의 발 $\\mathrm{P}$, 선분 $\\mathrm{BC}$ 위로의 수선의 발 $\\mathrm{Q}$, 그리고 직각삼각형 $\\mathrm{APQ}$가 표시된 입체도형]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AP ⟂ 평면 BCD",
+      "mappedTo": "marks.rightAngles"
+    },
+    {
+      "id": "c2",
+      "condition": "Q는 A에서 BC로 내린 수선의 발",
+      "mappedTo": "space.points"
+    },
+    {
+      "id": "c3",
+      "condition": "AB=8 BC=10",
+      "mappedTo": "dims"
+    },
+    {
+      "id": "c4",
+      "condition": "삼각형 APQ",
+      "mappedTo": "space.segments"
+    }
+  ],
+  "newVisualInformation": [
+    "AQ의 BC 수직, AP의 밑면 수직인 삼수선 관계"
+  ]
+}

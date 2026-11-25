@@ -1,0 +1,114 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 4,
+        "depth": 4
+      },
+      "height": 4,
+      "names": "EFGHABCD",
+      "points": [
+        {
+          "id": "P",
+          "at": {
+            "midpoint": [
+              "A",
+              "B"
+            ]
+          }
+        },
+        {
+          "id": "Q",
+          "at": {
+            "midpoint": [
+              "B",
+              "C"
+            ]
+          }
+        },
+        {
+          "id": "R",
+          "at": {
+            "divide": [
+              "B",
+              "F"
+            ],
+            "ratio": "1:3"
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "P",
+      "to": "Q",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "Q",
+      "to": "R",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "R",
+      "to": "P",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "highlights": [
+    {
+      "polygon": [
+        "P",
+        "Q",
+        "R"
+      ],
+      "fill": "LIGHT"
+    }
+  ],
+  "dims": [
+    {
+      "from": "A",
+      "to": "B",
+      "label": "4"
+    }
+  ],
+  "caption": "정육면체 한 변 4에서 AB·BC 중점 P,Q 및 BF의 1:3 내분점 R",
+  "solidCaption": {
+    "text": "167번 유형 · 1번 그림"
+  },
+  "accessibilityDescription": "정육면체 한 변 4에서 AB·BC 중점 P,Q 및 BF의 1:3 내분점 R. 정육면체 한 모서리 4; P,Q는 AB,BC의 중점; BR:RF=1:3; 삼각형 PQR.",
+  "sourceQuote": "[그림: 한 모서리의 길이가 $4$인 정육면체 $\\mathrm{ABCD-EFGH}$에서 $\\overline{\\mathrm{AB}}$의 중점 $\\mathrm{P}$, $\\overline{\\mathrm{BC}}$의 중점 $\\mathrm{Q}$, 모서리 $\\mathrm{BF}$ 위에 $\\overline{\\mathrm{BR}}:\\overline{\\mathrm{RF",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "정육면체 한 모서리 4",
+      "mappedTo": "solids[0].height"
+    },
+    {
+      "id": "c2",
+      "condition": "P,Q는 AB,BC의 중점",
+      "mappedTo": "solids[0].points"
+    },
+    {
+      "id": "c3",
+      "condition": "BR:RF=1:3",
+      "mappedTo": "solids[0].points"
+    },
+    {
+      "id": "c4",
+      "condition": "삼각형 PQR",
+      "mappedTo": "highlights"
+    }
+  ],
+  "newVisualInformation": [
+    "상단 두 중점과 수직 모서리의 내분점이 만드는 평면"
+  ]
+}

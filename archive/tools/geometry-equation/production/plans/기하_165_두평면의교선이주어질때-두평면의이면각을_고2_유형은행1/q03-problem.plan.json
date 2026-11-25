@@ -1,0 +1,136 @@
+{
+  "capability": "solid-figure-v1",
+  "space": {
+    "points": [
+      {
+        "id": "O",
+        "at": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "B",
+        "at": [
+          "2*sqrt(6)",
+          0,
+          0
+        ]
+      },
+      {
+        "id": "A",
+        "at": [
+          "sqrt(6)/2",
+          "3*sqrt(10)/2",
+          0
+        ]
+      },
+      {
+        "id": "C",
+        "at": [
+          0,
+          0,
+          "2*sqrt(3)"
+        ]
+      }
+    ],
+    "segments": [
+      {
+        "from": "O",
+        "to": "A",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "O",
+        "to": "B",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "B",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "O",
+        "to": "C",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "C",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "B",
+        "to": "C",
+        "style": "AUTO",
+        "role": "REF"
+      }
+    ]
+  },
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "O",
+        "refs": [
+          "C",
+          "A"
+        ]
+      }
+    ],
+    "equalLengths": [
+      {
+        "count": 1,
+        "segments": [
+          "AB",
+          "AC",
+          "BC"
+        ]
+      }
+    ]
+  },
+  "dims": [
+    {
+      "from": "O",
+      "to": "C",
+      "label": "2sqrt(3)"
+    },
+    {
+      "from": "A",
+      "to": "B",
+      "label": "6"
+    }
+  ],
+  "caption": "OC가 OAB에 수직인 사면체 OABC, 정삼각형 ABC 한 변 6",
+  "solidCaption": {
+    "text": "165번 유형 · 3번 그림"
+  },
+  "accessibilityDescription": "OC가 OAB에 수직인 사면체 OABC, 정삼각형 ABC 한 변 6. OC ⟂ 평면 OAB; 삼각형 ABC는 정삼각형 한 변 6; 사면체 OABC.",
+  "sourceQuote": "[그림: 직선 $\\mathrm{OC}$가 밑면 $\\mathrm{OAB}$와 수직이고, 삼각형 $\\mathrm{ABC}$는 한 변의 길이가 6인 정삼각형인 사면체 $\\mathrm{OABC}$]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "OC ⟂ 평면 OAB",
+      "mappedTo": "marks.rightAngles"
+    },
+    {
+      "id": "c2",
+      "condition": "삼각형 ABC는 정삼각형 한 변 6",
+      "mappedTo": "space.points"
+    },
+    {
+      "id": "c3",
+      "condition": "사면체 OABC",
+      "mappedTo": "space.segments"
+    }
+  ],
+  "newVisualInformation": [
+    "OC를 밑면의 수직 축으로 하는 실제 정삼각형 ABC"
+  ]
+}

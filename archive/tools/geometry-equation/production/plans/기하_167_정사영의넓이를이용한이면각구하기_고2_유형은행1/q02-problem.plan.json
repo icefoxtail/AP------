@@ -1,0 +1,228 @@
+{
+  "capability": "solid-figure-v1",
+  "space": {
+    "points": [
+      {
+        "id": "D",
+        "at": [
+          -3,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "E",
+        "at": [
+          0,
+          4,
+          0
+        ]
+      },
+      {
+        "id": "F",
+        "at": [
+          3,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "A",
+        "at": [
+          -3,
+          0,
+          5
+        ]
+      },
+      {
+        "id": "B",
+        "at": [
+          0,
+          4,
+          5
+        ]
+      },
+      {
+        "id": "C",
+        "at": [
+          3,
+          0,
+          5
+        ]
+      },
+      {
+        "id": "P",
+        "at": [
+          -3,
+          0,
+          4
+        ]
+      },
+      {
+        "id": "Q",
+        "at": [
+          0,
+          4,
+          "4-sqrt(11)"
+        ]
+      },
+      {
+        "id": "R",
+        "at": [
+          3,
+          0,
+          4
+        ]
+      }
+    ],
+    "segments": [
+      {
+        "from": "D",
+        "to": "E",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "E",
+        "to": "F",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "F",
+        "to": "D",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "B",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "B",
+        "to": "C",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "C",
+        "to": "A",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "D",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "B",
+        "to": "E",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "C",
+        "to": "F",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "P",
+        "to": "Q",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "Q",
+        "to": "R",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "R",
+        "to": "P",
+        "style": "AUTO",
+        "role": "REF"
+      }
+    ]
+  },
+  "highlights": [
+    {
+      "polygon": [
+        "P",
+        "Q",
+        "R"
+      ],
+      "fill": "LIGHT"
+    }
+  ],
+  "marks": {
+    "equalLengths": [
+      {
+        "count": 1,
+        "segments": [
+          "PQ",
+          "QR",
+          "RP"
+        ]
+      }
+    ]
+  },
+  "dims": [
+    {
+      "from": "A",
+      "to": "B",
+      "label": "5"
+    },
+    {
+      "from": "B",
+      "to": "C",
+      "label": "5"
+    },
+    {
+      "from": "A",
+      "to": "C",
+      "label": "6"
+    },
+    {
+      "from": "B",
+      "to": "E",
+      "label": "5"
+    }
+  ],
+  "caption": "직삼각기둥 ABC-DEF 안의 정삼각형 PQR",
+  "solidCaption": {
+    "text": "167번 유형 · 2번 그림"
+  },
+  "accessibilityDescription": "직삼각기둥 ABC-DEF 안의 정삼각형 PQR. 삼각기둥 ABC-DEF 높이 5; AB=BC=5 AC=6; P∈AD, Q∈BE, R∈CF; 삼각형 PQR은 정삼각형.",
+  "sourceQuote": "[그림: 밑면이 $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{BC}}=5$, $\\overline{\\mathrm{AC}}=6$인 이등변삼각형이고 높이가 $5$인 직삼각기둥 $\\mathrm{ABC-DEF}$에서 옆모서리 $\\mathrm{AD}$, $\\mathrm{BE}$, $\\mathrm{CF}$ 위에 각각 점 $\\mathrm{P",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "삼각기둥 ABC-DEF 높이 5",
+      "mappedTo": "space.points"
+    },
+    {
+      "id": "c2",
+      "condition": "AB=BC=5 AC=6",
+      "mappedTo": "dims"
+    },
+    {
+      "id": "c3",
+      "condition": "P∈AD, Q∈BE, R∈CF",
+      "mappedTo": "space.points"
+    },
+    {
+      "id": "c4",
+      "condition": "삼각형 PQR은 정삼각형",
+      "mappedTo": "space.points"
+    }
+  ],
+  "newVisualInformation": [
+    "공간의 PQR이 한 변 6인 정삼각형인 실좌표 배치"
+  ]
+}

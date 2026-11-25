@@ -1,0 +1,173 @@
+{
+  "capability": "solid-figure-v1",
+  "space": {
+    "points": [
+      {
+        "id": "A",
+        "at": [
+          "-sqrt(3)",
+          0,
+          0
+        ]
+      },
+      {
+        "id": "B",
+        "at": [
+          "sqrt(3)",
+          0,
+          0
+        ]
+      },
+      {
+        "id": "C",
+        "at": [
+          0,
+          2,
+          "sqrt(5)"
+        ]
+      },
+      {
+        "id": "H",
+        "at": [
+          0,
+          2,
+          0
+        ]
+      }
+    ],
+    "segments": [
+      {
+        "from": "A",
+        "to": "B",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "C",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "B",
+        "to": "C",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "H",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "B",
+        "to": "H",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "C",
+        "to": "H",
+        "style": "DASHED",
+        "role": "REF"
+      }
+    ],
+    "planes": [
+      {
+        "id": "alpha",
+        "name": "\\alpha",
+        "through": [
+          "A",
+          "B",
+          "C"
+        ],
+        "fill": "LIGHT"
+      },
+      {
+        "id": "beta",
+        "name": "\\beta",
+        "through": [
+          "A",
+          "B",
+          "H"
+        ],
+        "fill": "WARM"
+      }
+    ],
+    "lines": [
+      {
+        "id": "l",
+        "name": "l",
+        "intersection": [
+          "alpha",
+          "beta"
+        ]
+      }
+    ]
+  },
+  "dims": [
+    {
+      "from": "A",
+      "to": "C",
+      "label": "2sqrt(3)"
+    },
+    {
+      "from": "C",
+      "to": "H",
+      "label": "sqrt(5)"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "H",
+        "refs": [
+          "C",
+          "A"
+        ]
+      }
+    ],
+    "equalLengths": [
+      {
+        "count": 1,
+        "segments": [
+          "AB",
+          "AC",
+          "BC"
+        ]
+      }
+    ]
+  },
+  "caption": "교선 l을 공유하는 두 평면 α·β와 정삼각형 ABC 및 정사영 AHB",
+  "solidCaption": {
+    "text": "164번 유형 · 8번 그림"
+  },
+  "accessibilityDescription": "교선 l을 공유하는 두 평면 α·β와 정삼각형 ABC 및 정사영 AHB. ABC는 평면 α의 정삼각형; 교선 l=AB; H는 C에서 평면 β에 내린 수선의 발; 두 삼각형 ABC와 AHB.",
+  "sourceQuote": "[그림: 교선 $l$을 공유하는 두 평면 $\\alpha, \\beta$에서 평면 $\\alpha$ 위의 정삼각형 $\\mathrm{ABC}$와 점 $\\mathrm{C}$에서 평면 $\\beta$에 내린 수선의 발 $\\mathrm{H}$, 그리고 평면 $\\beta$ 위에 만들어진 삼각형 $\\mathrm{AHB}$를 나타낸 입체도형]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "ABC는 평면 α의 정삼각형",
+      "mappedTo": "space.points"
+    },
+    {
+      "id": "c2",
+      "condition": "교선 l=AB",
+      "mappedTo": "space.lines"
+    },
+    {
+      "id": "c3",
+      "condition": "H는 C에서 평면 β에 내린 수선의 발",
+      "mappedTo": "marks.rightAngles"
+    },
+    {
+      "id": "c4",
+      "condition": "두 삼각형 ABC와 AHB",
+      "mappedTo": "space.segments"
+    }
+  ],
+  "newVisualInformation": [
+    "정삼각형을 다른 평면으로 정사영한 삼각형 AHB"
+  ]
+}

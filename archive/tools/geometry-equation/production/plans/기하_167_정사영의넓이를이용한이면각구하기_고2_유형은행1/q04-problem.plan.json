@@ -1,0 +1,129 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 4,
+        "depth": 2
+      },
+      "height": 4,
+      "names": "EFGHABCD",
+      "points": [
+        {
+          "id": "M",
+          "at": {
+            "midpoint": [
+              "A",
+              "D"
+            ]
+          }
+        },
+        {
+          "id": "N",
+          "at": {
+            "midpoint": [
+              "F",
+              "G"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "B",
+      "to": "N",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "N",
+      "to": "H",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "H",
+      "to": "M",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "M",
+      "to": "B",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "highlights": [
+    {
+      "polygon": [
+        "B",
+        "N",
+        "H",
+        "M"
+      ],
+      "fill": "LIGHT"
+    }
+  ],
+  "marks": {
+    "equalLengths": [
+      {
+        "count": 1,
+        "segments": [
+          "BN",
+          "NH",
+          "HM",
+          "MB"
+        ]
+      }
+    ]
+  },
+  "dims": [
+    {
+      "from": "A",
+      "to": "B",
+      "label": "4"
+    },
+    {
+      "from": "A",
+      "to": "D",
+      "label": "2"
+    },
+    {
+      "from": "A",
+      "to": "E",
+      "label": "4"
+    }
+  ],
+  "caption": "AB=4, AD=2, AE=4 직육면체에서 M,N 중점 및 마름모 BNHM",
+  "solidCaption": {
+    "text": "167번 유형 · 4번 그림"
+  },
+  "accessibilityDescription": "AB=4, AD=2, AE=4 직육면체에서 M,N 중점 및 마름모 BNHM. AB=4 AD=2 AE=4; M은 AD, N은 FG의 중점; 마름모 BNHM 음영.",
+  "sourceQuote": "[그림: $\\overline{\\mathrm{AB}}=4$, $\\overline{\\mathrm{AD}}=2$, $\\overline{\\mathrm{AE}}=4$인 직육면체 $\\mathrm{ABCD-EFGH}$에서 모서리 $\\mathrm{AD}$의 중점 $\\mathrm{M}$과 모서리 $\\mathrm{FG}$의 중점 $\\mathrm{N}$이 표시되어 있고, 네 ",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AB=4 AD=2 AE=4",
+      "mappedTo": "dims"
+    },
+    {
+      "id": "c2",
+      "condition": "M은 AD, N은 FG의 중점",
+      "mappedTo": "solids[0].points"
+    },
+    {
+      "id": "c3",
+      "condition": "마름모 BNHM 음영",
+      "mappedTo": "highlights"
+    }
+  ],
+  "newVisualInformation": [
+    "기울어진 마름모 BNHM과 직육면체의 세 모서리"
+  ]
+}
