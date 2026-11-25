@@ -1,0 +1,118 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 2,
+        "depth": 2
+      },
+      "height": 2,
+      "names": "EFGHABCD",
+      "points": [
+        {
+          "id": "M",
+          "at": {
+            "midpoint": [
+              "A",
+              "B"
+            ]
+          }
+        },
+        {
+          "id": "N",
+          "at": {
+            "midpoint": [
+              "A",
+              "D"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "M",
+      "to": "F",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "F",
+      "to": "H",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "H",
+      "to": "N",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "N",
+      "to": "M",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "dims": [
+    {
+      "edge": "AB"
+    }
+  ],
+  "caption": "모서리 2 정육면체에서 AB 중점 M·AD 중점 N과 단면 MFHN",
+  "accessibilityDescription": "모서리 2 정육면체에서 AB 중점 M·AD 중점 N과 단면 MFHN. 공간에서 한 평면을 이루는 사각형 MFHN. 요구 tan θ 비표시.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "모서리 2 정육면체",
+      "mappedTo": [
+        "solids[0].base",
+        "dims[0]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "M은 AB 중점",
+      "mappedTo": [
+        "solids[0].points[0]"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "N은 AD 중점",
+      "mappedTo": [
+        "solids[0].points[1]"
+      ]
+    },
+    {
+      "id": "c4",
+      "condition": "사각형 MFHN의 네 변",
+      "mappedTo": [
+        "segments[0]",
+        "segments[1]",
+        "segments[2]",
+        "segments[3]"
+      ]
+    },
+    {
+      "id": "c5",
+      "condition": "모서리 CG는 정육면체의 수직선분",
+      "mappedTo": [
+        "solids[0].names"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "공간에서 한 평면을 이루는 사각형 MFHN",
+    "요구 tan θ 비표시"
+  ],
+  "solidCaption": {
+    "text": "정육면체"
+  },
+  "sourceQuote": "[그림: 한 변의 길이가 2인 정육면체 $ABCD-EFGH$에서 모서리 $AB, AD$의 중점 $M, N$ 및 꼭짓점 $F, H$를 연결한 사각형 $MFHN$과 모서리 $CG$가 표시된 입체도형]"
+}

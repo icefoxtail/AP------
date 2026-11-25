@@ -1,0 +1,190 @@
+{
+  "capability": "solid-figure-v1",
+  "space": {
+    "points": [
+      {
+        "id": "H",
+        "at": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "A",
+        "at": [
+          "-2*sqrt(6)",
+          0,
+          0
+        ]
+      },
+      {
+        "id": "B",
+        "at": [
+          3,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "O",
+        "at": [
+          0,
+          4,
+          0
+        ]
+      },
+      {
+        "id": "P",
+        "at": [
+          0,
+          4,
+          3
+        ]
+      }
+    ],
+    "planes": [
+      {
+        "id": "alpha",
+        "name": "\\alpha",
+        "through": [
+          "H",
+          "A",
+          "O"
+        ]
+      }
+    ],
+    "segments": [
+      {
+        "from": "A",
+        "to": "B",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "O",
+        "to": "H",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "P",
+        "to": "O",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "P",
+        "to": "H",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "P",
+        "to": "A",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "O",
+        "to": "A",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "H",
+        "style": "AUTO",
+        "role": "REF"
+      }
+    ]
+  },
+  "dims": [
+    {
+      "from": "P",
+      "to": "O",
+      "label": "3"
+    },
+    {
+      "from": "O",
+      "to": "H",
+      "label": "4"
+    },
+    {
+      "from": "A",
+      "to": "H",
+      "label": "2\\sqrt{6}"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "O",
+        "refs": [
+          "P",
+          "H"
+        ]
+      },
+      {
+        "at": "H",
+        "refs": [
+          "O",
+          "A"
+        ]
+      }
+    ]
+  },
+  "caption": "평면 α 위 AB, P의 수선의 발 O와 O의 수선의 발 H; PO=3·OH=4·AH=2√6",
+  "accessibilityDescription": "평면 α 위 AB, P의 수선의 발 O와 O의 수선의 발 H; PO=3·OH=4·AH=2√6. 삼수선의 직각 관계와 세 원문 길이. PA 정답 길이 미표시.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "평면 α 위 AB와 H",
+      "mappedTo": [
+        "space.planes[0]",
+        "space.segments[0]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "PO는 평면 α에 내린 수선, 길이 3",
+      "mappedTo": [
+        "space.segments[2]",
+        "dims[0]"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "OH는 AB에 내린 수선, 길이 4",
+      "mappedTo": [
+        "space.segments[1]",
+        "dims[1]",
+        "marks.rightAngles[1]"
+      ]
+    },
+    {
+      "id": "c4",
+      "condition": "AH=2√6",
+      "mappedTo": [
+        "dims[2]"
+      ]
+    },
+    {
+      "id": "c5",
+      "condition": "PA,PH,OA가 표시",
+      "mappedTo": [
+        "space.segments[3]",
+        "space.segments[4]",
+        "space.segments[5]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "삼수선의 직각 관계와 세 원문 길이",
+    "PA 정답 길이 미표시"
+  ],
+  "solidCaption": {
+    "text": "삼수선의 정리"
+  },
+  "sourceQuote": "[그림: 평면 $\\alpha$ 위에 선분 $\\mathrm{AB}$가 놓여 있고, 평면 밖의 점 $\\mathr"
+}

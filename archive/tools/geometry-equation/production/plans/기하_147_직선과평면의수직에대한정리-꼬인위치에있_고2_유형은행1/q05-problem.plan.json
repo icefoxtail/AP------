@@ -1,0 +1,139 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 6,
+        "depth": 6
+      },
+      "height": 6,
+      "names": "EFGHABCD",
+      "points": [
+        {
+          "id": "P",
+          "at": {
+            "midpoint": [
+              "B",
+              "D"
+            ]
+          }
+        },
+        {
+          "id": "Q",
+          "at": {
+            "footOnLine": {
+              "from": "P",
+              "line": [
+                "A",
+                "G"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "B",
+      "to": "D",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "A",
+      "to": "G",
+      "style": "DASHED",
+      "role": "REF"
+    },
+    {
+      "from": "P",
+      "to": "Q",
+      "style": "DASHED",
+      "role": "REF"
+    },
+    {
+      "from": "P",
+      "to": "B",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "Q",
+      "to": "A",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "dims": [
+    {
+      "edge": "AB"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "P",
+        "refs": [
+          "B",
+          "Q"
+        ]
+      },
+      {
+        "at": "Q",
+        "refs": [
+          "A",
+          "P"
+        ]
+      }
+    ]
+  },
+  "caption": "모서리 6인 정육면체, BD와 AG에 수직인 PQ",
+  "accessibilityDescription": "모서리 6인 정육면체, BD와 AG에 수직인 PQ. BD·AG와 P·Q의 수선 관계. √6 등 답을 학생 도형에 노출하지 않음.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "정육면체 한 모서리 길이 6",
+      "mappedTo": [
+        "solids[0].base",
+        "dims[0]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "P가 BD 위",
+      "mappedTo": [
+        "segments[0]",
+        "solids[0].points[0]"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "Q가 AG 위",
+      "mappedTo": [
+        "segments[1]",
+        "solids[0].points[1]"
+      ]
+    },
+    {
+      "id": "c4",
+      "condition": "PQ는 BD와 AG에 각각 수직",
+      "mappedTo": [
+        "segments[2]",
+        "marks.rightAngles[0]",
+        "marks.rightAngles[1]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "BD·AG와 P·Q의 수선 관계",
+    "√6 등 답을 학생 도형에 노출하지 않음"
+  ],
+  "solidCaption": {
+    "text": "정육면체"
+  },
+  "sourceQuote": "[그림: 한 모서리의 길이가 $6$인 정육면체 $\\text{ABCD-EFGH}$에서 윗면 대각선 $\\text{BD}$ 위의 점 $\\text{P}$, 대각선 $\\text{AG}$ 위의 점 $\\text{Q}$, 두 선분에 각각 수직인 선분 $\\text{PQ}$가 표시된 입체도형]"
+}

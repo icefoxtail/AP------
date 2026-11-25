@@ -1,0 +1,200 @@
+{
+  "capability": "solid-figure-v1",
+  "space": {
+    "points": [
+      {
+        "id": "A",
+        "at": [
+          -3,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "D",
+        "at": [
+          3,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "B",
+        "at": [
+          0,
+          -5,
+          8
+        ]
+      },
+      {
+        "id": "C",
+        "at": [
+          0,
+          5,
+          8
+        ]
+      },
+      {
+        "id": "M",
+        "at": {
+          "midpoint": [
+            "A",
+            "D"
+          ]
+        }
+      },
+      {
+        "id": "N",
+        "at": {
+          "midpoint": [
+            "B",
+            "C"
+          ]
+        }
+      }
+    ],
+    "segments": [
+      {
+        "from": "A",
+        "to": "B",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "C",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "D",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "B",
+        "to": "C",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "B",
+        "to": "D",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "C",
+        "to": "D",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "M",
+        "to": "N",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "M",
+        "to": "A",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "N",
+        "to": "B",
+        "style": "AUTO",
+        "role": "REF"
+      }
+    ]
+  },
+  "dims": [
+    {
+      "from": "A",
+      "to": "D",
+      "label": "6"
+    },
+    {
+      "from": "B",
+      "to": "C",
+      "label": "10"
+    },
+    {
+      "from": "M",
+      "to": "N",
+      "label": "8"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "M",
+        "refs": [
+          "A",
+          "N"
+        ]
+      },
+      {
+        "at": "N",
+        "refs": [
+          "B",
+          "M"
+        ]
+      }
+    ]
+  },
+  "caption": "AD=6·BC=10인 사면체의 꼬인 두 수직 모서리와 공통수선 MN=8",
+  "accessibilityDescription": "AD=6·BC=10인 사면체의 꼬인 두 수직 모서리와 공통수선 MN=8. 직교하는 꼬인 두 모서리와 공통수선. 사면체 부피 정답 비노출.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AD=6",
+      "mappedTo": [
+        "space.segments[2]",
+        "dims[0]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "BC=10",
+      "mappedTo": [
+        "space.segments[3]",
+        "dims[1]"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "M은 AD의 중점",
+      "mappedTo": [
+        "space.points[4]"
+      ]
+    },
+    {
+      "id": "c4",
+      "condition": "N은 BC의 중점",
+      "mappedTo": [
+        "space.points[5]"
+      ]
+    },
+    {
+      "id": "c5",
+      "condition": "MN=8인 공통수선, AD·BC에 수직",
+      "mappedTo": [
+        "space.segments[6]",
+        "dims[2]",
+        "marks.rightAngles[0]",
+        "marks.rightAngles[1]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "직교하는 꼬인 두 모서리와 공통수선",
+    "사면체 부피 정답 비노출"
+  ],
+  "solidCaption": {
+    "text": "사면체"
+  },
+  "sourceQuote": "[그림: 사면체 $\\text{ABCD}$에서 모서리 $\\text{AD}$의 중점 $\\text{M}$, 모서리 $\\text{BC}$의 중점 $\\text{N}$, 두 선분에 각각 수직인 공통수선 $\\text{MN}$의 길이가 $8$로 주어진 입체도형]"
+}

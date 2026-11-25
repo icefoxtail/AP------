@@ -1,0 +1,94 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 4,
+        "depth": 2
+      },
+      "height": 2,
+      "names": "EFGHABCD",
+      "points": [
+        {
+          "id": "M",
+          "at": {
+            "midpoint": [
+              "E",
+              "F"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "C",
+      "to": "M",
+      "style": "DASHED",
+      "role": "REF"
+    }
+  ],
+  "dims": [
+    {
+      "edge": "EF"
+    },
+    {
+      "edge": "FG"
+    },
+    {
+      "edge": "AE"
+    }
+  ],
+  "caption": "EF=4·FG=2·AE=2인 직육면체, EF 중점 M과 CM",
+  "accessibilityDescription": "EF=4·FG=2·AE=2인 직육면체, EF 중점 M과 CM. EF 중점 M 및 CM. 구하는 cos θ 비표시.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "밑면 EF=4",
+      "mappedTo": [
+        "solids[0].base",
+        "dims[0]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "밑면 FG=2",
+      "mappedTo": [
+        "dims[1]"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "높이 AE=2",
+      "mappedTo": [
+        "dims[2]"
+      ]
+    },
+    {
+      "id": "c4",
+      "condition": "M은 EF의 중점",
+      "mappedTo": [
+        "solids[0].points[0]"
+      ]
+    },
+    {
+      "id": "c5",
+      "condition": "선분 CM 표시",
+      "mappedTo": [
+        "segments[0]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "EF 중점 M 및 CM",
+    "구하는 cos θ 비표시"
+  ],
+  "solidCaption": {
+    "text": "직육면체"
+  },
+  "sourceQuote": "[그림: 직육면체 $ABCD-EFGH$에서 밑면 $EFGH$의 가로 $EF=4$, 세로 $FG=2$이고 높이 $AE=2$이며, 모서리 $EF$의 중점 $M$과 꼭짓점 $C$를 잇는 선분 $CM$이 그어져 있는 입체도형]"
+}

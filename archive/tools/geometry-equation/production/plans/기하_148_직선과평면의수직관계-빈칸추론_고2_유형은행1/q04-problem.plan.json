@@ -1,0 +1,191 @@
+{
+  "capability": "solid-figure-v1",
+  "space": {
+    "points": [
+      {
+        "id": "O",
+        "at": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "A",
+        "at": [
+          2,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "B",
+        "at": [
+          0,
+          2,
+          0
+        ]
+      },
+      {
+        "id": "C",
+        "at": [
+          -1,
+          3,
+          0
+        ]
+      },
+      {
+        "id": "P",
+        "at": [
+          0,
+          0,
+          3
+        ]
+      },
+      {
+        "id": "P′",
+        "at": [
+          0,
+          0,
+          -3
+        ]
+      }
+    ],
+    "planes": [
+      {
+        "id": "alpha",
+        "name": "\\alpha",
+        "through": [
+          "O",
+          "A",
+          "B"
+        ]
+      }
+    ],
+    "lines": [
+      {
+        "id": "m",
+        "name": "m",
+        "through": [
+          "O",
+          "A"
+        ]
+      },
+      {
+        "id": "n",
+        "name": "n",
+        "through": [
+          "O",
+          "B"
+        ]
+      },
+      {
+        "id": "c",
+        "name": "c",
+        "through": [
+          "O",
+          "C"
+        ]
+      },
+      {
+        "id": "l",
+        "name": "l",
+        "through": [
+          "P",
+          "P′"
+        ]
+      }
+    ],
+    "segments": [
+      {
+        "from": "A",
+        "to": "P",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "P′",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "B",
+        "to": "P",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "B",
+        "to": "P′",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "C",
+        "to": "P",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "C",
+        "to": "P′",
+        "style": "AUTO",
+        "role": "REF"
+      }
+    ]
+  },
+  "caption": "평면 α 위 O에서 만나는 m,n,c 및 O를 수직 통과하는 l의 양쪽 점 P·P′",
+  "accessibilityDescription": "평면 α 위 O에서 만나는 m,n,c 및 O를 수직 통과하는 l의 양쪽 점 P·P′. 증명의 대칭점 P/P′와 세 교점 A/B/C. 합동 결론·빈칸 답 비표시.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "O,A,B,C는 평면 α에 있고 A,B,C는 같은 가로지르는 직선 위",
+      "mappedTo": [
+        "space.points[0]",
+        "space.points[1]",
+        "space.points[2]",
+        "space.points[3]",
+        "space.planes[0]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "m,n,c는 평면에서 O를 통과하는 서로 다른 세 직선",
+      "mappedTo": [
+        "space.lines[0]",
+        "space.lines[1]",
+        "space.lines[2]"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "l 위 P,P′는 O를 중심으로 대칭",
+      "mappedTo": [
+        "space.lines[3]",
+        "space.points[4]",
+        "space.points[5]"
+      ]
+    },
+    {
+      "id": "c4",
+      "condition": "P,P′와 A,B,C를 이은 여섯 선분",
+      "mappedTo": [
+        "space.segments[0]",
+        "space.segments[1]",
+        "space.segments[2]",
+        "space.segments[3]",
+        "space.segments[4]",
+        "space.segments[5]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "증명의 대칭점 P/P′와 세 교점 A/B/C",
+    "합동 결론·빈칸 답 비표시"
+  ],
+  "solidCaption": {
+    "text": "직선·평면"
+  },
+  "sourceQuote": "[그림: 평면 $\\alpha$ 위의 점 $O$에서 만나는 세 직선 $m, n, c$를 지나는 직선 위의 세 교점 $A, B, C$ 및 점 $O$를 지나 평면에 수직인 직선 $l$ 위의 대칭인 두 점 $P, P'$을 연결한 입체도형]"
+}

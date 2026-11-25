@@ -1,0 +1,75 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PRISM",
+      "base": {
+        "kind": "REGULAR",
+        "n": 6,
+        "side": 1
+      },
+      "height": 2.23606797749979,
+      "names": "GHIJKLABCDEF"
+    }
+  ],
+  "segments": [
+    {
+      "from": "F",
+      "to": "I",
+      "style": "DASHED",
+      "role": "REF"
+    }
+  ],
+  "dims": [
+    {
+      "edge": "GH"
+    },
+    {
+      "edge": "FL",
+      "label": "\\sqrt{5}"
+    }
+  ],
+  "caption": "한 변 1인 정육각 밑면과 높이 √5의 직기둥, FI",
+  "accessibilityDescription": "한 변 1인 정육각 밑면과 높이 √5의 직기둥, FI. 정육각기둥의 대응 12꼭짓점. 공간 선분 FI와 길이 라벨.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "정육각기둥의 위 ABCDEF·아래 GHIJKL",
+      "mappedTo": [
+        "solids[0].base",
+        "solids[0].names"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "밑변 길이 1",
+      "mappedTo": [
+        "dims[0]"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "높이 FL=√5",
+      "mappedTo": [
+        "solids[0].height",
+        "dims[1]"
+      ]
+    },
+    {
+      "id": "c4",
+      "condition": "선분 FI를 그림에 표시",
+      "mappedTo": [
+        "segments[0]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "정육각기둥의 대응 12꼭짓점",
+    "공간 선분 FI와 길이 라벨"
+  ],
+  "solidCaption": {
+    "text": "정육각기둥"
+  },
+  "sourceQuote": "[그림: 윗면이 정육각형 $ABCDEF$, 아랫면이 정육각형 $GHIJKL$인 정육각기둥에서 점 $F$와 점 $I$를 잇는 선분 $FI$가 그려져 있고 밑면 한 변의 길이는 1, 높이는 $\\sqrt{5}$로 표시된 입체도형]"
+}

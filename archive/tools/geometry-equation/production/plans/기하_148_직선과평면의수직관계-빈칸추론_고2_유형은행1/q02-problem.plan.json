@@ -1,0 +1,72 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "REGULAR_POLYHEDRON",
+      "faces": 4,
+      "side": 4,
+      "names": "BCDA",
+      "points": [
+        {
+          "id": "M",
+          "at": {
+            "midpoint": [
+              "B",
+              "C"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "A",
+      "to": "M",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "D",
+      "to": "M",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "caption": "정사면체 ABCD의 BC 중점 M과 AM, DM",
+  "accessibilityDescription": "정사면체 ABCD의 BC 중점 M과 AM, DM. BC 중점 M과 두 중선. 증명 빈칸 풀이값은 비표시.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "모든 모서리가 같은 정사면체",
+      "mappedTo": [
+        "solids[0].kind",
+        "solids[0].side"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "M은 BC의 중점",
+      "mappedTo": [
+        "solids[0].points[0]"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "AM과 DM으로 평면 AMD가 구성",
+      "mappedTo": [
+        "segments[0]",
+        "segments[1]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "BC 중점 M과 두 중선",
+    "증명 빈칸 풀이값은 비표시"
+  ],
+  "solidCaption": {
+    "text": "정사면체"
+  },
+  "sourceQuote": "[그림: 정사면체 $ABCD$에서 모서리 $BC$의 중점 $M$을 잡고 선분 $AM, DM$을 그어 삼각형 $AMD$를 표시한 입체도형]"
+}
