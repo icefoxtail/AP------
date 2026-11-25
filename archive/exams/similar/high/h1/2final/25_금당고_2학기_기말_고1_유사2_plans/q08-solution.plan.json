@@ -1,0 +1,56 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-2, 14, -2, 14],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "LINE",
+        "coefficients": ["3", "2"],
+        "domain": ["-2", "6"],
+        "color": "BLUE",
+        "label": "y=2x+3"
+      },
+      {
+        "id": "inverse",
+        "inverseOf": "f",
+        "domain": ["-1", "15"],
+        "color": "WARM",
+        "label": "y=(x-3)/2"
+      },
+      {
+        "id": "mirror",
+        "kind": "LINE",
+        "coefficients": ["0", "1"],
+        "domain": ["-2", "14"],
+        "style": "DASHED",
+        "label": "y=x"
+      }
+    ],
+    "axisTickValues": {
+      "x": ["-1", "2", "5", "7", "13"],
+      "y": ["1", "2", "5", "7", "13"]
+    },
+    "overlays": {
+      "points": [
+        { "id": "A", "x": "-1", "y": "1" },
+        { "id": "B", "x": "2", "y": "7" },
+        { "id": "C", "x": "7", "y": "2" },
+        { "id": "D", "x": "13", "y": "5" }
+      ]
+    }
+  },
+  "caption": "f(−1)=1, f(2)=7에서 f(x)=2x+3을 구한다. 역함수의 그래프는 y=x에 대칭이고 (2,7)은 (7,2)에 대응한다. 역함수 위의 (13,5)에서 f⁻¹(13)=5를 읽을 수 있다.",
+  "accessibilityDescription": "파란 직선 y=2x+3과 주황색 역함수 직선 y=(x−3)/2이 점선 y=x를 축으로 대칭이다. 주어진 점 (−1,1), (2,7)과 역함수 위의 (7,2), (13,5)가 표시된다.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "f(−1)=1, f⁻¹(7)=2 즉 f(2)=7", "mappedTo": "graphPlan.overlays.points[A]=(-1,1), points[B]=(2,7)" },
+    { "id": "c2", "condition": "두 점으로 f(x)=2x+3을 결정", "mappedTo": "graphPlan.curves[f].coefficients=[3,2]" },
+    { "id": "c3", "condition": "역함수는 y=x에 대한 대칭", "mappedTo": "graphPlan.curves[inverse].inverseOf=f, curves[mirror].coefficients=[0,1]" },
+    { "id": "c4", "condition": "f⁻¹(13)=5", "mappedTo": "graphPlan.overlays.points[D]=(13,5)" }
+  ],
+  "newVisualInformation": [
+    "f(2)=7과 f⁻¹(7)=2가 대각선 y=x를 사이에 둔 서로 대응하는 두 점임을 보인다.",
+    "f(5)=13이라는 마지막 역함수 계산이 점 (13,5)로 이동함을 보여 준다."
+  ]
+}
