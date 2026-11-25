@@ -1,0 +1,46 @@
+{
+  "capability": "construction-spike-v1",
+  "sourceQuote": "반지름이 $\\dfrac r2$인 작은 부채꼴을 제거하였다.",
+  "sourceConditions": [
+    {"id":"sector-concentric","condition":"공통 중심 O, 공통 두 반지름 방향, 바깥 반지름 r와 안쪽 반지름 r/2의 부채꼴 띠","mappedTo":"O,A,B,P,Q,circleA,circleP"},
+    {"id":"sector-boundary","condition":"두 동심 호 AB·PQ와 두 반지름 방향 선분 AP·BQ가 경계","mappedTo":"arcAB,arcPQ,seg-PA,seg-QB"}
+  ],
+  "newVisualInformation": ["같은 중심에서 나오는 두 반지름 방향과 안팎 두 호의 경계를 보여 주며 길이 비율 2:1을 정확히 유지한다"],
+  "caption": "같은 중심 O를 가진 두 부채꼴 사이의 고리 모양 부분. 안쪽 반지름은 바깥쪽의 절반이다.",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes": [
+      {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"8"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B","op":"POLAR_POINT","inputs":["O","A"],"args":{"length":{"kind":"integer","value":"8"},"angleDeg":{"kind":"integer","value":"60"},"turn":"CCW"},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"P","op":"DIVISION_POINT","inputs":["O","A"],"args":{"m":{"kind":"integer","value":"1"},"n":{"kind":"integer","value":"1"},"mode":"INTERNAL"},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"Q","op":"DIVISION_POINT","inputs":["O","B"],"args":{"m":{"kind":"integer","value":"1"},"n":{"kind":"integer","value":"1"},"mode":"INTERNAL"},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"circleA","op":"CIRCLE_THROUGH_POINT","inputs":["O","A"],"args":{},"outputType":"CIRCLE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"circleP","op":"CIRCLE_THROUGH_POINT","inputs":["O","P"],"args":{},"outputType":"CIRCLE","factRole":"DERIVED_INTERMEDIATE"}
+    ],
+    "conditionAudits": [
+      {"id":"outer-radius","sourceConditionId":"sector-concentric","kind":"DISTANCE_EQUALS","refs":["O","B"],"expected":{"kind":"integer","value":"8"}},
+      {"id":"inner-radius-p","sourceConditionId":"sector-concentric","kind":"DISTANCE_EQUALS","refs":["O","P"],"expected":{"kind":"integer","value":"4"}},
+      {"id":"inner-radius-q","sourceConditionId":"sector-concentric","kind":"DISTANCE_EQUALS","refs":["O","Q"],"expected":{"kind":"integer","value":"4"}},
+      {"id":"equal-inner-circle","sourceConditionId":"sector-concentric","kind":"CIRCLE_MEMBERSHIP","refs":["circleP","Q"]}
+    ]
+  },
+  "displaySegments": [
+    {"id":"seg-OP","refs":["O","P"]},
+    {"id":"seg-PA","refs":["P","A"]},
+    {"id":"seg-OQ","refs":["O","Q"]},
+    {"id":"seg-QB","refs":["Q","B"]}
+  ],
+  "displayPoints": ["O","A","B","P","Q"],
+  "displayCircles": [],
+  "planeMarks": {
+    "arcs": [
+      {"id":"arcAB","circle":"circleA","center":"O","from":"A","to":"B","side":"CCW","highlight":false},
+      {"id":"arcPQ","circle":"circleP","center":"O","from":"P","to":"Q","side":"CCW","highlight":false}
+    ],
+    "regions": [
+      {"id":"rg1","fill":"LIGHT","factRole":"GIVEN","shapes":[{"loop":{"start":"A","steps":[{"to":"B","arc":{"center":"O","side":"CCW"}},{"to":"Q"},{"to":"P","arc":{"center":"O","side":"CW"}},{"to":"A"}]}}]}
+    ]
+  }
+}

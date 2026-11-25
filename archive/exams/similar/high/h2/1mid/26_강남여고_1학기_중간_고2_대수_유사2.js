@@ -1030,8 +1030,6 @@ window.questionBank = [
     "answer": "④",
     "solution": "바깥 호의 길이는 $r\\theta$, 안쪽 호의 길이는 $(r/2)\\theta$이다.\n둘레가 $12$이므로 $\\dfrac32r\\theta+r=12$, 즉 $\\theta=\\dfrac{2(12-r)}{3r}$이다.\n넓이는 $\\dfrac12\\left(r^2-\\dfrac{r^2}4\\right)\\theta=\\dfrac38r^2\\theta=5$이다.\n위 식을 대입하면 $5=\\dfrac{r(12-r)}4$이고, $r^2-12r+20=0$이다.\n$(r-2)(r-10)=0$이므로 $r=2$ 또는 $10$이다.\n각각 $\\theta=10/3$, $2/15$로 모두 $0<\\theta<2\\pi$를 만족한다.\n따라서 가능한 반지름의 합은 $2+10=12$이다. 정답은 ④이다.",
     "points": 4.5,
-    "image": "assets/images/26_강남여고_1학기_중간_고2_대수_유사/q19.svg",
-    "imageSize": "full",
     "curriculum": "2022",
     "courseKey": "대수",
     "conceptClusterKey": "H22-A-04-TRIGONOMETRIC_BASIC",
