@@ -1,0 +1,1611 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "26_효천고_1학기_중간_고2_대수_유사2-candidate-v1",
+  "examUid": "26_효천고_1학기_중간_고2_대수_유사2",
+  "sourceArchiveFile": "archive/exams/similar/high/h2/1mid/26_효천고_1학기_중간_고2_대수_유사2.js",
+  "expectedSourceBlobSha1": "85a1ecdd3ef58a867f12cd730269b499e51c106a",
+  "expectedQuestionCount": 23,
+  "approval": {
+    "type": "CANDIDATE_CREATION_GATE",
+    "metadataReviewed": false,
+    "approvedBy": null,
+    "reviewStatus": "review_required",
+    "reviewPassCount": 0,
+    "evidenceRefs": [
+      "archive/exams/similar/high/h2/1mid/26_효천고_1학기_중간_고2_대수_유사2.experience-ledger.json",
+      "archive/data/item-4slot/similar/high/h2/1mid/26_효천고_1학기_중간_고2_대수_유사2.4slot.json"
+    ]
+  },
+  "registryChanges": [],
+  "items": [
+    {
+      "questionUid": 1,
+      "sourceOrdinal": 1,
+      "sourceQid": 1,
+      "before": null,
+      "after": {
+        "curriculum": "2022",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-01",
+        "standardUnit": "지수와 로그",
+        "subUnitKey": "H22-A-01-EXPONENT_LOG",
+        "subUnit": "지수와 로그",
+        "rpmPrimaryRecordId": "H2-M1-RPM-071",
+        "problemTypeKey": "PT_H22A_01_EXPONENT_LAWS",
+        "templateKey": "TPL_H22A_01_EXPONENT_LAWS_071",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SINGLE_TOPIC",
+        "difficultyBucket": 1,
+        "sourceQid": 1,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "sourceExamPath": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_대수.js",
+          "sourceQid": 1,
+          "existingVariantRefs": [
+            "archive/exams/similar/high/h2/1mid/26_효천고_1학기_중간_고2_대수_유사.js"
+          ],
+          "mode": "ALIVE EXAM_FOLLOWUP",
+          "followupKind": "CONFIRMATION",
+          "profile": "SOURCE_BALANCED",
+          "variationAxis": "지수법칙을 계산하기보다 미지의 지수를 등식에서 역산한다"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "지수 등식에 필요한 모든 밑과 지수가 본문에 명시돼 있어 그림이 오히려 지수법칙 계산을 흐린다",
+          "solution": "EXEMPT",
+          "solutionReason": "세제곱근을 3의 음의 지수로 바꾸는 판서가 결정 단계이다"
+        }
+      },
+      "difficultyConfidence": "MEDIUM",
+      "difficultyReason": "동일 작업자 자기 검토 단계이며 별도 독립 승인 전이다. 원본 Q1의 중심 절차를 유지; 지수법칙을 계산하기보다 미지의 지수를 등식에서 역산한다",
+      "primaryMethod": "지수법칙의 역산",
+      "decisiveStep": "먼저 거듭제곱근을 지수로 나타낸다.\n$\\sqrt[3]{\\dfrac1{27}}=\\left(3^{-3}\\right)^{\\frac13}=3^{-1}$이다.\n따라서 주어진 등식은\n$3^{x-1}\\times3^{-1}=3^{x-2}=3^2$이다.\n밑이 같으므로 $x-2=2$이고, $x=4$이다.\n그러므로 정답은 ①이다.",
+      "item4slot": {
+        "ordinal": 1,
+        "format": "단일 정답",
+        "given": [
+          20,
+          276
+        ],
+        "goal": [
+          276,
+          131
+        ],
+        "method": [
+          277,
+          279,
+          346
+        ],
+        "condition": [],
+        "candidates": []
+      },
+      "hold": "",
+      "reason": "신규 효천고 유사2 Q1 수동 구성·자기 검토; 별도 독립 승인 대기"
+    },
+    {
+      "questionUid": 2,
+      "sourceOrdinal": 2,
+      "sourceQid": 2,
+      "before": null,
+      "after": {
+        "curriculum": "2022",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-01",
+        "standardUnit": "지수와 로그",
+        "subUnitKey": "H22-A-01-EXPONENT_LOG",
+        "subUnit": "지수와 로그",
+        "rpmPrimaryRecordId": "H2-M1-RPM-071",
+        "problemTypeKey": "PT_H22A_01_EXPONENT_LAWS",
+        "templateKey": "TPL_H22A_01_EXPONENT_LAWS_071",
+        "crossConceptKeys": [
+          "CC_LOG_RULES"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 2,
+        "sourceQid": 2,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "sourceExamPath": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_대수.js",
+          "sourceQid": 2,
+          "existingVariantRefs": [
+            "archive/exams/similar/high/h2/1mid/26_효천고_1학기_중간_고2_대수_유사.js"
+          ],
+          "mode": "ALIVE EXAM_FOLLOWUP",
+          "followupKind": "CONFIRMATION",
+          "profile": "SOURCE_BALANCED",
+          "variationAxis": "단일 계산 대신 다섯 지수·로그 진술 중 밑이 1보다 작은 로그의 부호 오류를 찾는다"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "다섯 등식의 대수적 참거짓이 시험 대상이고 좌표·위치 관계가 없다",
+          "solution": "EXEMPT",
+          "solutionReason": "다섯 등식의 진위를 각각 계산하고 부호 오류를 적는 것으로 충분하다"
+        }
+      },
+      "difficultyConfidence": "MEDIUM",
+      "difficultyReason": "동일 작업자 자기 검토 단계이며 별도 독립 승인 전이다. 원본 Q2의 중심 절차를 유지; 단일 계산 대신 다섯 지수·로그 진술 중 밑이 1보다 작은 로그의 부호 오류를 찾는다",
+      "primaryMethod": "지수·로그 계산의 참거짓",
+      "decisiveStep": "각 등식의 양변을 따로 계산한다.\n① $27=3^3$이므로 $(27^{\\frac23})^2=3^4=81$이다.\n② 지수의 차가 $(\\sqrt7+2)-(\\sqrt7-1)=3$이므로 $4^3=64$이다.\n③ 같은 세제곱근끼리 나누면 $\\sqrt[3]{2^3}=2$이다.\n④ 로그의 연쇄법칙에 따라 $\\log_2 7\\times\\log_7 16=\\log_2 16=4$이다.\n⑤ $\\left(\\dfrac13\\right)^{-2}=9$이므로 $\\log_{\\frac13}9=-2$이다. $2$라는 등식은 옳지 않다.\n따라서 옳지 않은 것은 ⑤이다.",
+      "item4slot": {
+        "ordinal": 2,
+        "format": "옳지 않은 것 고르기",
+        "given": [
+          20,
+          21,
+          278
+        ],
+        "goal": [
+          132
+        ],
+        "method": [
+          277,
+          278,
+          21,
+          282
+        ],
+        "condition": [],
+        "candidates": []
+      },
+      "hold": "",
+      "reason": "신규 효천고 유사2 Q2 수동 구성·자기 검토; 별도 독립 승인 대기"
+    },
+    {
+      "questionUid": 3,
+      "sourceOrdinal": 3,
+      "sourceQid": 3,
+      "before": null,
+      "after": {
+        "curriculum": "2022",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-01",
+        "standardUnit": "지수와 로그",
+        "subUnitKey": "H22-A-01-EXPONENT_LOG",
+        "subUnit": "지수와 로그",
+        "rpmPrimaryRecordId": "H2-M1-RPM-078",
+        "problemTypeKey": "PT_H22A_01_COMMON_LOG",
+        "templateKey": "TPL_H22A_01_COMMON_LOG_078",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SINGLE_TOPIC",
+        "difficultyBucket": 1,
+        "sourceQid": 3,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "sourceExamPath": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_대수.js",
+          "sourceQid": 3,
+          "existingVariantRefs": [
+            "archive/exams/similar/high/h2/1mid/26_효천고_1학기_중간_고2_대수_유사.js"
+          ],
+          "mode": "ALIVE EXAM_FOLLOWUP",
+          "followupKind": "CONFIRMATION",
+          "profile": "SOURCE_BALANCED",
+          "variationAxis": "상용로그 차를 주고 진수 x를 복원한다"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "상용로그 표의 숫자와 미지수 관계가 수식으로 모두 주어졌다",
+          "solution": "EXEMPT",
+          "solutionReason": "로그의 차와 진수 비를 한 줄로 쓰면 역산 과정이 드러난다"
+        }
+      },
+      "difficultyConfidence": "MEDIUM",
+      "difficultyReason": "동일 작업자 자기 검토 단계이며 별도 독립 승인 전이다. 원본 Q3의 중심 절차를 유지; 상용로그 차를 주고 진수 x를 복원한다",
+      "primaryMethod": "상용로그로 소수점 역산",
+      "decisiveStep": "두 상용로그를 빼면\n$\\log(10x)-\\log2.5=2.3979-0.3979=2$이다.\n로그의 성질에 의해 $\\log\\dfrac{10x}{2.5}=2$이므로\n$\\dfrac{10x}{2.5}=10^2=100$이다.\n따라서 $10x=250$, $x=25$이다.\n그러므로 정답은 ④이다.",
+      "item4slot": {
+        "ordinal": 3,
+        "format": "단일 정답",
+        "given": [
+          281
+        ],
+        "goal": [
+          280
+        ],
+        "method": [
+          278,
+          280,
+          281
+        ],
+        "condition": [],
+        "candidates": []
+      },
+      "hold": "",
+      "reason": "신규 효천고 유사2 Q3 수동 구성·자기 검토; 별도 독립 승인 대기"
+    },
+    {
+      "questionUid": 4,
+      "sourceOrdinal": 4,
+      "sourceQid": 4,
+      "before": null,
+      "after": {
+        "curriculum": "2022",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-04",
+        "standardUnit": "삼각함수",
+        "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
+        "subUnit": "삼각함수의 기본",
+        "rpmPrimaryRecordId": "H2-M1-RPM-096",
+        "problemTypeKey": "PT_H22A_04_ANGLE_RADIAN",
+        "templateKey": "TPL_H22A_04_ANGLE_RADIAN_096",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SINGLE_TOPIC",
+        "difficultyBucket": 1,
+        "sourceQid": 4,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "sourceExamPath": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_대수.js",
+          "sourceQid": 4,
+          "existingVariantRefs": [
+            "archive/exams/similar/high/h2/1mid/26_효천고_1학기_중간_고2_대수_유사.js"
+          ],
+          "mode": "ALIVE EXAM_FOLLOWUP",
+          "followupKind": "CONFIRMATION",
+          "profile": "SOURCE_BALANCED",
+          "variationAxis": "라디안과 도 단위 변환을 각각 역산한 뒤 두 계수의 곱을 묻는다"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "각도 단위 변환이 발문의 전부이며 원호 배치나 기하 관계를 묻지 않는다",
+          "solution": "EXEMPT",
+          "solutionReason": "도↔라디안 환산 계수를 식으로 병렬 계산하는 해설이 명료하다"
+        }
+      },
+      "difficultyConfidence": "MEDIUM",
+      "difficultyReason": "동일 작업자 자기 검토 단계이며 별도 독립 승인 전이다. 원본 Q4의 중심 절차를 유지; 라디안과 도 단위 변환을 각각 역산한 뒤 두 계수의 곱을 묻는다",
+      "primaryMethod": "호도법 역변환",
+      "decisiveStep": "$180^\\circ=\\pi$라디안이므로 $a^\\circ=\\dfrac{2\\pi}{9}$에서\n$a=180\\times\\dfrac29=40$이다.\n또 $45^\\circ=\\dfrac{\\pi}{4}=b\\pi$이므로 $b=\\dfrac14$이다.\n따라서 $ab=40\\times\\dfrac14=10$이다.\n그러므로 정답은 ②이다.",
+      "item4slot": {
+        "ordinal": 4,
+        "format": "단일 정답",
+        "given": [
+          174,
+          599
+        ],
+        "goal": [
+          308,
+          287
+        ],
+        "method": [
+          599,
+          198
+        ],
+        "condition": [
+          309
+        ],
+        "candidates": []
+      },
+      "hold": "",
+      "reason": "신규 효천고 유사2 Q4 수동 구성·자기 검토; 별도 독립 승인 대기"
+    },
+    {
+      "questionUid": 5,
+      "sourceOrdinal": 5,
+      "sourceQid": 5,
+      "before": null,
+      "after": {
+        "curriculum": "2022",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-04",
+        "standardUnit": "삼각함수",
+        "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
+        "subUnit": "삼각함수의 기본",
+        "rpmPrimaryRecordId": "H2-M1-RPM-098",
+        "problemTypeKey": "PT_H22A_04_TRIG_DEFINITION",
+        "templateKey": "TPL_H22A_04_TRIG_DEFINITION_098",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SINGLE_TOPIC",
+        "difficultyBucket": 2,
+        "sourceQid": 5,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "sourceExamPath": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_대수.js",
+          "sourceQid": 5,
+          "existingVariantRefs": [
+            "archive/exams/similar/high/h2/1mid/26_효천고_1학기_중간_고2_대수_유사.js"
+          ],
+          "mode": "ALIVE EXAM_FOLLOWUP",
+          "followupKind": "CONFIRMATION",
+          "profile": "SOURCE_BALANCED",
+          "variationAxis": "탄젠트 부호와 각의 범위에서 사인 함수의 부호·비를 판정한다"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "사분면 범위가 부등식으로 정확히 주어져 좌표상 부호 위치를 그림에서 읽지 않는다",
+          "solution": "EXEMPT",
+          "solutionReason": "제4사분면에서 음·양 부호를 문장과 피타고라스식으로 동시에 밝힌다"
+        }
+      },
+      "difficultyConfidence": "MEDIUM",
+      "difficultyReason": "동일 작업자 자기 검토 단계이며 별도 독립 승인 전이다. 원본 Q5의 중심 절차를 유지; 탄젠트 부호와 각의 범위에서 사인 함수의 부호·비를 판정한다",
+      "primaryMethod": "삼각함수 부호를 고려한 역산",
+      "decisiveStep": "$\\dfrac{3\\pi}{2}<\\theta<2\\pi$이므로 제4사분면에서 $\\sin\\theta<0$, $\\cos\\theta>0$이다.\n$\\tan\\theta=\\dfrac{\\sin\\theta}{\\cos\\theta}=-\\dfrac43$이므로 직각삼각형의 세 변 비를 $4:3:5$로 볼 수 있다.\n따라서 $|\\sin\\theta|=\\dfrac45$이고 부호는 음수이다.\n$\\sin\\theta=-\\dfrac45$이므로 정답은 ①이다.",
+      "item4slot": {
+        "ordinal": 5,
+        "format": "단일 정답",
+        "given": [
+          675
+        ],
+        "goal": [
+          449
+        ],
+        "method": [
+          149,
+          25,
+          480
+        ],
+        "condition": [
+          296
+        ],
+        "candidates": []
+      },
+      "hold": "",
+      "reason": "신규 효천고 유사2 Q5 수동 구성·자기 검토; 별도 독립 승인 대기"
+    },
+    {
+      "questionUid": 6,
+      "sourceOrdinal": 6,
+      "sourceQid": 6,
+      "before": null,
+      "after": {
+        "curriculum": "2022",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-01",
+        "standardUnit": "지수와 로그",
+        "subUnitKey": "H22-A-01-EXPONENT_LOG",
+        "subUnit": "지수와 로그",
+        "rpmPrimaryRecordId": "H2-M1-RPM-067",
+        "problemTypeKey": "PT_H22A_01_ROOT_REAL",
+        "templateKey": "TPL_H22A_01_ROOT_REAL_067",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SINGLE_TOPIC",
+        "difficultyBucket": 3,
+        "sourceQid": 6,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "sourceExamPath": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_대수.js",
+          "sourceQid": 6,
+          "existingVariantRefs": [
+            "archive/exams/similar/high/h2/1mid/26_효천고_1학기_중간_고2_대수_유사.js"
+          ],
+          "mode": "ALIVE EXAM_FOLLOWUP",
+          "followupKind": "CONFIRMATION",
+          "profile": "SOURCE_BALANCED",
+          "variationAxis": "구의 겉넓이를 역이용해 반지름을 유리수 지수 꼴로 정규화한다"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "구의 겉넓이와 반지름의 양수 조건을 식으로 주었으며 구의 모양은 계산에 영향을 주지 않는다",
+          "solution": "EXEMPT",
+          "solutionReason": "구의 겉넓이 식에서 2의 유리수 지수를 복원하는 과정이 핵심이다"
+        }
+      },
+      "difficultyConfidence": "MEDIUM",
+      "difficultyReason": "동일 작업자 자기 검토 단계이며 별도 독립 승인 전이다. 원본 Q6의 중심 절차를 유지; 구의 겉넓이를 역이용해 반지름을 유리수 지수 꼴로 정규화한다",
+      "primaryMethod": "구의 겉넓이와 분수 지수",
+      "decisiveStep": "반지름을 $r$이라 하면 구의 겉넓이에서\n$4\\pi r^2=128\\pi$이므로 $r^2=32=2^5$이다.\n$r>0$이므로 $r=2^{\\frac52}=\\sqrt[2]{2^5}$이다.\n$5$와 $2$는 서로소이므로 $m=5$, $n=2$이다.\n따라서 $m+n=7$이고 정답은 ②이다.",
+      "item4slot": {
+        "ordinal": 6,
+        "format": "단일 정답",
+        "given": [
+          415,
+          153,
+          219,
+          21
+        ],
+        "goal": [
+          308,
+          288
+        ],
+        "method": [
+          219,
+          21,
+          346,
+          19
+        ],
+        "condition": [
+          19,
+          1
+        ],
+        "candidates": []
+      },
+      "hold": "",
+      "reason": "신규 효천고 유사2 Q6 수동 구성·자기 검토; 별도 독립 승인 대기"
+    },
+    {
+      "questionUid": 7,
+      "sourceOrdinal": 7,
+      "sourceQid": 7,
+      "before": null,
+      "after": {
+        "curriculum": "2022",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-01",
+        "standardUnit": "지수와 로그",
+        "subUnitKey": "H22-A-01-EXPONENT_LOG",
+        "subUnit": "지수와 로그",
+        "rpmPrimaryRecordId": "H2-M1-RPM-069",
+        "problemTypeKey": "PT_H22A_01_EXPONENT_EXTENSION",
+        "templateKey": "TPL_H22A_01_EXPONENT_EXTENSION_069",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 3,
+        "sourceQid": 7,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "sourceExamPath": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_대수.js",
+          "sourceQid": 7,
+          "existingVariantRefs": [
+            "archive/exams/similar/high/h2/1mid/26_효천고_1학기_중간_고2_대수_유사.js"
+          ],
+          "mode": "ALIVE EXAM_FOLLOWUP",
+          "followupKind": "CONFIRMATION",
+          "profile": "SOURCE_BALANCED",
+          "variationAxis": "두 거듭제곱이 동시에 자연수가 되는 정수 n을 나눗셈 제약으로 교차 판별한다"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "두 거듭제곱의 정수성 조건이 완결된 산술 제약이다",
+          "solution": "EXEMPT",
+          "solutionReason": "정수성 분모 조건을 약수 목록으로 정리하는 것이 그래프보다 정확하다"
+        }
+      },
+      "difficultyConfidence": "MEDIUM",
+      "difficultyReason": "동일 작업자 자기 검토 단계이며 별도 독립 승인 전이다. 원본 Q7의 중심 절차를 유지; 두 거듭제곱이 동시에 자연수가 되는 정수 n을 나눗셈 제약으로 교차 판별한다",
+      "primaryMethod": "유리수 지수와 자연수 조건",
+      "decisiveStep": "$16^{\\frac3{n-1}}=2^{\\frac{12}{n-1}}$, $27^{\\frac4{n+1}}=3^{\\frac{12}{n+1}}$이다.\n두 수가 자연수이려면 $\\dfrac{12}{n-1}$과 $\\dfrac{12}{n+1}$이 모두 음수가 아닌 정수여야 한다. 분모가 $0$일 수 없고 지수가 $0$일 수도 없으므로 $n>1$이다.\n$n-1$은 $12$의 양의 약수이다. 따라서 $n=2,3,4,5,7,13$이다.\n이 가운데 $n+1$도 $12$의 양의 약수인 값은 $n=2,3,5$이다.\n합은 $2+3+5=10$이므로 정답은 ④이다.",
+      "item4slot": {
+        "ordinal": 7,
+        "format": "단일 정답",
+        "given": [
+          20
+        ],
+        "goal": [
+          308,
+          286
+        ],
+        "method": [
+          277,
+          11,
+          294,
+          322
+        ],
+        "condition": [
+          1,
+          2,
+          241
+        ],
+        "candidates": []
+      },
+      "hold": "",
+      "reason": "신규 효천고 유사2 Q7 수동 구성·자기 검토; 별도 독립 승인 대기"
+    },
+    {
+      "questionUid": 8,
+      "sourceOrdinal": 8,
+      "sourceQid": 8,
+      "before": null,
+      "after": {
+        "curriculum": "2022",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-01",
+        "standardUnit": "지수와 로그",
+        "subUnitKey": "H22-A-01-EXPONENT_LOG",
+        "subUnit": "지수와 로그",
+        "rpmPrimaryRecordId": "H2-M1-RPM-076",
+        "problemTypeKey": "PT_H22A_01_LOG_PROPERTIES",
+        "templateKey": "TPL_H22A_01_LOG_PROPERTIES_076",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "sourceQid": 8,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "sourceExamPath": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_대수.js",
+          "sourceQid": 8,
+          "existingVariantRefs": [
+            "archive/exams/similar/high/h2/1mid/26_효천고_1학기_중간_고2_대수_유사.js"
+          ],
+          "mode": "ALIVE EXAM_FOLLOWUP",
+          "followupKind": "CONFIRMATION",
+          "profile": "SOURCE_BALANCED",
+          "variationAxis": "연쇄 로그 변수를 조합해 새로운 밑의 로그를 유리식으로 표현한다"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "로그 변수의 밑과 진수가 식으로 명시된 순수 항등변환이다",
+          "solution": "EXEMPT",
+          "solutionReason": "밑 변환을 연쇄적으로 대입하는 등식 전개가 핵심이다"
+        }
+      },
+      "difficultyConfidence": "MEDIUM",
+      "difficultyReason": "동일 작업자 자기 검토 단계이며 별도 독립 승인 전이다. 원본 Q8의 중심 절차를 유지; 연쇄 로그 변수를 조합해 새로운 밑의 로그를 유리식으로 표현한다",
+      "primaryMethod": "로그 밑변환과 연쇄 곱",
+      "decisiveStep": "밑을 $2$로 통일하면 $\\log_{35}6=\\dfrac{\\log_2 6}{\\log_2 35}$이다.\n분자는 $\\log_2 6=\\log_2 2+\\log_2 3=1+a$이다.\n분모의 각 로그는 $\\log_2 5=ab$, $\\log_2 7=abc$이므로\n$\\log_2 35=ab+abc=ab(1+c)$이다.\n따라서 $\\log_{35}6=\\dfrac{1+a}{ab(1+c)}$이고 정답은 ⑤이다.",
+      "item4slot": {
+        "ordinal": 8,
+        "format": "단일 정답",
+        "given": [
+          278
+        ],
+        "goal": [
+          278,
+          34
+        ],
+        "method": [
+          282,
+          352,
+          693
+        ],
+        "condition": [],
+        "candidates": []
+      },
+      "hold": "",
+      "reason": "신규 효천고 유사2 Q8 수동 구성·자기 검토; 별도 독립 승인 대기"
+    },
+    {
+      "questionUid": 9,
+      "sourceOrdinal": 9,
+      "sourceQid": 9,
+      "before": null,
+      "after": {
+        "curriculum": "2022",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-01",
+        "standardUnit": "지수와 로그",
+        "subUnitKey": "H22-A-01-EXPONENT_LOG",
+        "subUnit": "지수와 로그",
+        "rpmPrimaryRecordId": "H2-M1-RPM-077",
+        "problemTypeKey": "PT_H22A_01_COMMON_LOG",
+        "templateKey": "TPL_H22A_01_COMMON_LOG_077",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "sourceQid": 9,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "sourceExamPath": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_대수.js",
+          "sourceQid": 9,
+          "existingVariantRefs": [
+            "archive/exams/similar/high/h2/1mid/26_효천고_1학기_중간_고2_대수_유사.js"
+          ],
+          "mode": "ALIVE EXAM_FOLLOWUP",
+          "followupKind": "CONFIRMATION",
+          "profile": "SOURCE_BALANCED",
+          "variationAxis": "시간별 감쇠 인자를 역으로 이용해 최초 임계값 도달 시점을 구한다"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "정해진 감쇠율·시간 간격과 임계값의 비교로 해결하는 수치 모델이다",
+          "solution": "EXEMPT",
+          "solutionReason": "감쇠율의 누승과 로그 비교로 시간을 얻으므로 별도 곡선이 필요하지 않다"
+        }
+      },
+      "difficultyConfidence": "MEDIUM",
+      "difficultyReason": "동일 작업자 자기 검토 단계이며 별도 독립 승인 전이다. 원본 Q9의 중심 절차를 유지; 시간별 감쇠 인자를 역으로 이용해 최초 임계값 도달 시점을 구한다",
+      "primaryMethod": "상용로그를 이용한 지수적 감소 시각",
+      "decisiveStep": "$4$시간 간격을 $n$번 지난 뒤 남은 비율은 $0.8^n$이다.\n$0.8^n\\le\\dfrac1{64}$를 풀기 위해 상용로그를 취한다.\n$\\log0.8=2\\log2-\\log5=0.6020-0.6990=-0.0970$이고\n$\\log\\dfrac1{64}=-6\\log2=-1.8060$이다.\n따라서 $-0.0970n\\le-1.8060$이고 음수로 나눌 때 부등호 방향을 바꾸면 $n\\ge\\dfrac{1.8060}{0.0970}\\approx18.62$이다.\n$n$은 관측 횟수인 자연수이므로 최초는 $n=19$, 곧 $4\\times19=76$시간 후이다. 정답은 ④이다.",
+      "item4slot": {
+        "ordinal": 9,
+        "format": "단일 정답",
+        "given": [
+          738,
+          281
+        ],
+        "goal": [
+          745,
+          131
+        ],
+        "method": [
+          299,
+          72,
+          281,
+          278,
+          654
+        ],
+        "condition": [
+          297
+        ],
+        "candidates": []
+      },
+      "hold": "",
+      "reason": "신규 효천고 유사2 Q9 수동 구성·자기 검토; 별도 독립 승인 대기"
+    },
+    {
+      "questionUid": 10,
+      "sourceOrdinal": 10,
+      "sourceQid": 10,
+      "before": null,
+      "after": {
+        "curriculum": "2022",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-04",
+        "standardUnit": "삼각함수",
+        "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
+        "subUnit": "삼각함수의 기본",
+        "rpmPrimaryRecordId": "H2-M1-RPM-100",
+        "problemTypeKey": "PT_H22A_04_TRIG_PROPERTIES",
+        "templateKey": "TPL_H22A_04_TRIG_PROPERTIES_100",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "sourceQid": 10,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "sourceExamPath": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_대수.js",
+          "sourceQid": 10,
+          "existingVariantRefs": [
+            "archive/exams/similar/high/h2/1mid/26_효천고_1학기_중간_고2_대수_유사.js"
+          ],
+          "mode": "ALIVE EXAM_FOLLOWUP",
+          "followupKind": "CONFIRMATION",
+          "profile": "SOURCE_BALANCED",
+          "variationAxis": "사인과 코사인의 합에서 제곱의 차와 사분면 부호를 결합한다"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "사분면 정보와 사인·코사인 합이 주어져 별도 각 그림 없이 조건이 완결된다",
+          "solution": "EXEMPT",
+          "solutionReason": "제곱공식과 부호 판정으로 답이 바로 확정된다"
+        }
+      },
+      "difficultyConfidence": "MEDIUM",
+      "difficultyReason": "동일 작업자 자기 검토 단계이며 별도 독립 승인 전이다. 원본 Q10의 중심 절차를 유지; 사인과 코사인의 합에서 제곱의 차와 사분면 부호를 결합한다",
+      "primaryMethod": "삼각함수 합차와 사분면",
+      "decisiveStep": "주어진 식을 제곱하면\n$(\\sin\\theta+\\cos\\theta)^2=1+2\\sin\\theta\\cos\\theta=\\dfrac14$이다.\n따라서 $2\\sin\\theta\\cos\\theta=-\\dfrac34$이다.\n다른 차의 제곱은\n$(\\sin\\theta-\\cos\\theta)^2=1-2\\sin\\theta\\cos\\theta=1+\\dfrac34=\\dfrac74$이다.\n제4사분면에서는 $\\sin\\theta<0$, $\\cos\\theta>0$이므로 차는 음수이다.\n따라서 $\\sin\\theta-\\cos\\theta=-\\dfrac{\\sqrt7}{2}$이다. 정답은 ①이다.",
+      "item4slot": {
+        "ordinal": 10,
+        "format": "단일 정답",
+        "given": [
+          674,
+          675
+        ],
+        "goal": [
+          674,
+          675,
+          288
+        ],
+        "method": [
+          41,
+          480,
+          25
+        ],
+        "condition": [
+          296
+        ],
+        "candidates": []
+      },
+      "hold": "",
+      "reason": "신규 효천고 유사2 Q10 수동 구성·자기 검토; 별도 독립 승인 대기"
+    },
+    {
+      "questionUid": 11,
+      "sourceOrdinal": 11,
+      "sourceQid": 11,
+      "before": null,
+      "after": {
+        "curriculum": "2022",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-01",
+        "standardUnit": "지수와 로그",
+        "subUnitKey": "H22-A-01-EXPONENT_LOG",
+        "subUnit": "지수와 로그",
+        "rpmPrimaryRecordId": "H2-M1-RPM-072",
+        "problemTypeKey": "PT_H22A_01_EXPONENT_LAWS",
+        "templateKey": "TPL_H22A_01_EXPONENT_LAWS_072",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "sourceQid": 11,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "sourceExamPath": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_대수.js",
+          "sourceQid": 11,
+          "existingVariantRefs": [
+            "archive/exams/similar/high/h2/1mid/26_효천고_1학기_중간_고2_대수_유사.js"
+          ],
+          "mode": "ALIVE EXAM_FOLLOWUP",
+          "followupKind": "CONFIRMATION",
+          "profile": "SOURCE_BALANCED",
+          "variationAxis": "세 지수식의 공통값과 a²bc 제약을 지수의 역수합으로 환원한다"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "a,b,c와 공통 지수값이 주어진 지수법칙 제약이다",
+          "solution": "EXEMPT",
+          "solutionReason": "공통값 64를 밑으로 지수들을 치환하는 식이 결정적이다"
+        }
+      },
+      "difficultyConfidence": "MEDIUM",
+      "difficultyReason": "동일 작업자 자기 검토 단계이며 별도 독립 승인 전이다. 원본 Q11의 중심 절차를 유지; 세 지수식의 공통값과 a²bc 제약을 지수의 역수합으로 환원한다",
+      "primaryMethod": "지수 공통값과 가중 곱",
+      "decisiveStep": "$a^x=b^y=c^z=64$이므로\n$a=64^{\\frac1x}$, $b=64^{\\frac1y}$, $c=64^{\\frac1z}$이다.\n이들을 $a^2bc=16$에 대입하면\n$64^{\\frac2x+\\frac1y+\\frac1z}=16$이다.\n$64=2^6$, $16=2^4$이므로\n$6\\left(\\dfrac2x+\\dfrac1y+\\dfrac1z\\right)=4$이다.\n따라서 구하는 값은 $\\dfrac46=\\dfrac23$이다. 정답은 ⑤이다.",
+      "item4slot": {
+        "ordinal": 11,
+        "format": "단일 정답",
+        "given": [
+          276,
+          287
+        ],
+        "goal": [
+          352,
+          286
+        ],
+        "method": [
+          21,
+          277,
+          346
+        ],
+        "condition": [
+          396,
+          5
+        ],
+        "candidates": []
+      },
+      "hold": "",
+      "reason": "신규 효천고 유사2 Q11 수동 구성·자기 검토; 별도 독립 승인 대기"
+    },
+    {
+      "questionUid": 12,
+      "sourceOrdinal": 12,
+      "sourceQid": 12,
+      "before": null,
+      "after": {
+        "curriculum": "2022",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-02",
+        "standardUnit": "지수함수",
+        "subUnitKey": "H22-A-02-EXPONENTIAL_FUNCTION",
+        "subUnit": "지수함수",
+        "rpmPrimaryRecordId": "H2-M1-RPM-080",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+        "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "sourceQid": 12,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "sourceExamPath": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_대수.js",
+          "sourceQid": 12,
+          "existingVariantRefs": [
+            "archive/exams/similar/high/h2/1mid/26_효천고_1학기_중간_고2_대수_유사.js"
+          ],
+          "mode": "ALIVE EXAM_FOLLOWUP",
+          "followupKind": "ADVANCED",
+          "profile": "SOURCE_BALANCED",
+          "variationAxis": "지수함수 점·점근선 수직선과 원점 삼각형 넓이에서 밑을 역산한다"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "세 점의 정의·점근선·넓이·길이 비가 좌표식으로 모두 주어져 그림 의존 조건이 없다",
+          "solution": "BENEFICIAL",
+          "solutionReason": "A,B,C와 점근선의 좌표·길이·넓이를 한 그래프에서 보여주면 삼각형 넓이 역산의 공간관계가 명료하다",
+          "solutionPlanRef": "archive/exams/similar/high/h2/1mid/26_효천고_1학기_중간_고2_대수_유사2_plans/q12-solution.plan.json"
+        }
+      },
+      "difficultyConfidence": "MEDIUM",
+      "difficultyReason": "동일 작업자 자기 검토 단계이며 별도 독립 승인 전이다. 원본 Q12의 중심 절차를 유지; 지수함수 점·점근선 수직선과 원점 삼각형 넓이에서 밑을 역산한다",
+      "primaryMethod": "지수함수 점근선과 삼각형 넓이",
+      "decisiveStep": "점근선은 $y=-4$이다. $A=(t,a^t-4)$라 두면 $B=(t,0)$, $C=(t,-4)$이고 $t>0$이다.\n$BC=4$, $AB=3BC=12$이므로 $a^t-4=12$, 즉 $a^t=16$이다.\n밑변 $AC=AB+BC=16$, 높이 $OB=t$이므로 삼각형 $AOC$의 넓이는 $\\dfrac12\\times16\\times t=32$이다.\n따라서 $t=4$, $a^4=16$이므로 $a=2$이다.\n구하는 값은 $a\\times OB=2\\times4=8$이다. 정답은 ②이다.",
+      "item4slot": {
+        "ordinal": 12,
+        "format": "단일 정답",
+        "given": [
+          94,
+          149,
+          180,
+          108,
+          158,
+          403
+        ],
+        "goal": [
+          287,
+          215
+        ],
+        "method": [
+          108,
+          308,
+          218,
+          213,
+          277
+        ],
+        "condition": [
+          309,
+          346
+        ],
+        "candidates": []
+      },
+      "hold": "",
+      "reason": "신규 효천고 유사2 Q12 수동 구성·자기 검토; 별도 독립 승인 대기"
+    },
+    {
+      "questionUid": 13,
+      "sourceOrdinal": 13,
+      "sourceQid": 13,
+      "before": null,
+      "after": {
+        "curriculum": "2022",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-01",
+        "standardUnit": "지수와 로그",
+        "subUnitKey": "H22-A-01-EXPONENT_LOG",
+        "subUnit": "지수와 로그",
+        "rpmPrimaryRecordId": "H2-M1-RPM-073",
+        "problemTypeKey": "PT_H22A_01_LOG_DEFINITION",
+        "templateKey": "TPL_H22A_01_LOG_DEFINITION_073",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "sourceQid": 13,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "sourceExamPath": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_대수.js",
+          "sourceQid": 13,
+          "existingVariantRefs": [
+            "archive/exams/similar/high/h2/1mid/26_효천고_1학기_중간_고2_대수_유사.js"
+          ],
+          "mode": "ALIVE EXAM_FOLLOWUP",
+          "followupKind": "CONFIRMATION",
+          "profile": "SOURCE_BALANCED",
+          "variationAxis": "로그식 자체의 자연수 값 범위를 제한해 가능한 모든 자연수 n을 합한다"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "자연수 n과 로그식 범위가 모두 대수식으로 명시돼 있다",
+          "solution": "EXEMPT",
+          "solutionReason": "가능한 자연수 m의 네 경우를 나열하고 n을 합하는 표기만으로 족하다"
+        }
+      },
+      "difficultyConfidence": "MEDIUM",
+      "difficultyReason": "동일 작업자 자기 검토 단계이며 별도 독립 승인 전이다. 원본 Q13의 중심 절차를 유지; 로그식 자체의 자연수 값 범위를 제한해 가능한 모든 자연수 n을 합한다",
+      "primaryMethod": "로그가 자연수가 되는 조건",
+      "decisiveStep": "주어진 식의 값을 자연수 $m$이라 두면 $m=1,2,3,4$이다.\n$\\dfrac{\\log_3(3n)+1}{2}=m$에서\n$\\log_3(3n)=2m-1$이므로 $3n=3^{2m-1}$이다.\n양변을 $3$으로 나누면 $n=3^{2m-2}$이다.\n$m=1,2,3,4$에 따라 $n=1,9,81,729$이고 모두 자연수이다.\n합은 $1+9+81+729=820$이다. 정답은 ①이다.",
+      "item4slot": {
+        "ordinal": 13,
+        "format": "단일 정답",
+        "given": [
+          278
+        ],
+        "goal": [
+          286
+        ],
+        "method": [
+          52,
+          278,
+          4,
+          12,
+          294
+        ],
+        "condition": [
+          1,
+          297
+        ],
+        "candidates": []
+      },
+      "hold": "",
+      "reason": "신규 효천고 유사2 Q13 수동 구성·자기 검토; 별도 독립 승인 대기"
+    },
+    {
+      "questionUid": 14,
+      "sourceOrdinal": 14,
+      "sourceQid": 14,
+      "before": null,
+      "after": {
+        "curriculum": "2022",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-01",
+        "standardUnit": "지수와 로그",
+        "subUnitKey": "H22-A-01-EXPONENT_LOG",
+        "subUnit": "지수와 로그",
+        "rpmPrimaryRecordId": "H2-M1-RPM-068",
+        "problemTypeKey": "PT_H22A_01_ROOT_REAL",
+        "templateKey": "TPL_H22A_01_ROOT_REAL_068",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 4,
+        "sourceQid": 14,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "sourceExamPath": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_대수.js",
+          "sourceQid": 14,
+          "existingVariantRefs": [
+            "archive/exams/similar/high/h2/1mid/26_효천고_1학기_중간_고2_대수_유사.js"
+          ],
+          "mode": "ALIVE EXAM_FOLLOWUP",
+          "followupKind": "ADVANCED",
+          "profile": "SOURCE_BALANCED",
+          "variationAxis": "실근 중복도와 서로 다른 실근의 곱을 n별로 나눠 극단값 차를 비교한다"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "정수 n별 실근 및 극값의 판정이 식과 범위 안에서 완결된다",
+          "solution": "EXEMPT",
+          "solutionReason": "n의 홀짝별 실근 중복과 두 극값 비교를 표 또는 식으로 검산할 수 있다"
+        }
+      },
+      "difficultyConfidence": "MEDIUM",
+      "difficultyReason": "동일 작업자 자기 검토 단계이며 별도 독립 승인 전이다. 원본 Q14의 중심 절차를 유지; 실근 중복도와 서로 다른 실근의 곱을 n별로 나눠 극단값 차를 비교한다",
+      "primaryMethod": "실근의 곱과 홀짝별 극값",
+      "decisiveStep": "$x^{2n}=8$의 두 실근은 $\\pm2^{\\frac3{2n}}$이므로 그 곱은 $-2^{\\frac3n}$이다.\n$x^n=2$의 실근은 $n$이 홀수이면 $2^{\\frac1n}$ 하나, 짝수이면 $\\pm2^{\\frac1n}$ 두 개(곱은 $-2^{\\frac2n}$)이다.\n두 근 집합은 겹치지 않는다. 실제로 $x^n=2$라면 $x^{2n}=4\\ne8$이다.\n따라서 $k$는 홀수 $n$에서 $-2^{\\frac4n}$이고 짝수 $n$에서 $2^{\\frac5n}$이다.\n홀수의 경우 $n=1$에서 $n+k=1-16=-15$로 최소이다. $n\\ge3$에서는 $n-2^{\\frac4n}>n-4\\ge-1$이다.\n짝수 $n=2,4,6,8$에서는 $n+2^{\\frac5n}$을 비교한다. $n=8$에서 $8+2^{\\frac58}>8$, 다른 짝수 $n=2,4,6$에서는 각각 $2+2^{\\frac52}<8$, $4+2^{\\frac54}<8$, $6+2^{\\frac56}<8$이다. 홀수 $n\\le9$에서는 $n+k<n\\le9$이고 $n=9$일 때 $9-2^{\\frac49}<8$이므로 최댓값도 $n=8$에서 얻는다.\n최댓값과 최솟값의 차는 $(8+2^{\\frac58})-(-15)=23+2^{\\frac58}$이다.\n따라서 $a=23,b=1,c=\\dfrac58$이고 $a+b+c=\\dfrac{197}8$이다. 정답은 ③이다.",
+      "item4slot": {
+        "ordinal": 14,
+        "format": "단일 정답",
+        "given": [
+          1,
+          62,
+          79
+        ],
+        "goal": [
+          127,
+          128,
+          288,
+          286
+        ],
+        "method": [
+          79,
+          21,
+          26,
+          293,
+          28,
+          294
+        ],
+        "condition": [
+          1,
+          5,
+          297
+        ],
+        "candidates": []
+      },
+      "hold": "",
+      "reason": "신규 효천고 유사2 Q14 수동 구성·자기 검토; 별도 독립 승인 대기"
+    },
+    {
+      "questionUid": 15,
+      "sourceOrdinal": 15,
+      "sourceQid": 15,
+      "before": null,
+      "after": {
+        "curriculum": "2022",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-03",
+        "standardUnit": "로그함수",
+        "subUnitKey": "H22-A-03-LOGARITHMIC_FUNCTION",
+        "subUnit": "로그함수",
+        "rpmPrimaryRecordId": "H2-M1-RPM-094",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4,
+        "sourceQid": 15,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "sourceExamPath": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_대수.js",
+          "sourceQid": 15,
+          "existingVariantRefs": [
+            "archive/exams/similar/high/h2/1mid/26_효천고_1학기_중간_고2_대수_유사.js"
+          ],
+          "mode": "ALIVE EXAM_FOLLOWUP",
+          "followupKind": "ADVANCED",
+          "profile": "SOURCE_BALANCED",
+          "variationAxis": "서로 다른 두 로그함수의 교점 중점이 직선 위에 놓이는 역조건으로 이동량을 구한다"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "로그함수의 정의역 및 교점·중점 조건을 문장과 식으로 빠짐없이 규정했다",
+          "solution": "EXEMPT",
+          "solutionReason": "교점 이차방정식의 근 합과 중점 직선 조건이 공식 대입으로 완결된다"
+        }
+      },
+      "difficultyConfidence": "MEDIUM",
+      "difficultyReason": "동일 작업자 자기 검토 단계이며 별도 독립 승인 전이다. 원본 Q15의 중심 절차를 유지; 서로 다른 두 로그함수의 교점 중점이 직선 위에 놓이는 역조건으로 이동량을 구한다",
+      "primaryMethod": "로그함수 교점의 중점",
+      "decisiveStep": "두 로그함수의 교점에서는 진수가 같으므로 $-\\dfrac9x=x+4a$이다.\n따라서 $x^2+4ax+9=0$이다. 두 근을 $x_1,x_2$라 하면 $x_1+x_2=-4a$, $x_1x_2=9$이다.\n교점의 높이는 $y_1=\\log_3(-9/x_1)=\\log_3(-x_2)$, $y_2=\\log_3(-x_1)$이므로\n$y_1+y_2=\\log_3(x_1x_2)=\\log_3 9=2$이다.\n따라서 중점은 $(-2a,1)$이다. 직선에 대입하면 $-2a-2+7=0$이고 $a=\\dfrac52$이다.\n이때 이차방정식은 $x^2+10x+9=0$이고 두 근은 $-9,-1$로 서로 다른 음수이다. 두 로그의 진수 조건도 만족한다.\n그러므로 정답은 ④이다.",
+      "item4slot": {
+        "ordinal": 15,
+        "format": "단일 정답",
+        "given": [
+          95,
+          188,
+          143
+        ],
+        "goal": [
+          308
+        ],
+        "method": [
+          280,
+          181,
+          65,
+          54,
+          278,
+          188,
+          53
+        ],
+        "condition": [
+          396,
+          5,
+          373
+        ],
+        "candidates": []
+      },
+      "hold": "",
+      "reason": "신규 효천고 유사2 Q15 수동 구성·자기 검토; 별도 독립 승인 대기"
+    },
+    {
+      "questionUid": 16,
+      "sourceOrdinal": 16,
+      "sourceQid": 16,
+      "before": null,
+      "after": {
+        "curriculum": "2022",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-02",
+        "standardUnit": "지수함수",
+        "subUnitKey": "H22-A-02-EXPONENTIAL_FUNCTION",
+        "subUnit": "지수함수",
+        "rpmPrimaryRecordId": "H2-M1-RPM-082",
+        "problemTypeKey": "PT_H22A_02_EXP_EQUATION",
+        "templateKey": "TPL_H22A_02_EXP_EQUATION_082",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "DEEP_COMPOSITE",
+        "difficultyBucket": 4,
+        "sourceQid": 16,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "sourceExamPath": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_대수.js",
+          "sourceQid": 16,
+          "existingVariantRefs": [
+            "archive/exams/similar/high/h2/1mid/26_효천고_1학기_중간_고2_대수_유사.js"
+          ],
+          "mode": "ALIVE EXAM_FOLLOWUP",
+          "followupKind": "ADVANCED",
+          "profile": "SOURCE_BALANCED",
+          "variationAxis": "구간별 함수의 수평선 교점 수를 두 지수 변환 인자 n,n+2에 적용해 정수 n을 선별한다"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "조각함수의 경계·함숫값·방정식이 수식으로 완결돼 그래프를 읽어야 할 별도 조건이 없다",
+          "solution": "BENEFICIAL",
+          "solutionReason": "두 가지가 (3,12)에서 만나는 조각함수와 높이 20의 점근 경계가 교점 개수를 결정한다",
+          "solutionPlanRef": "archive/exams/similar/high/h2/1mid/26_효천고_1학기_중간_고2_대수_유사2_plans/q16-solution.plan.json"
+        }
+      },
+      "difficultyConfidence": "MEDIUM",
+      "difficultyReason": "동일 작업자 자기 검토 단계이며 별도 독립 승인 전이다. 원본 Q16의 중심 절차를 유지; 구간별 함수의 수평선 교점 수를 두 지수 변환 인자 n,n+2에 적용해 정수 n을 선별한다",
+      "primaryMethod": "구간별 지수함수의 수평선 교점 수",
+      "decisiveStep": "$t=2^{f(x)}$, $A=2^n$이라 두면 방정식은 $t^2-5At+4A^2=0$이다.\n$(t-A)(t-4A)=0$이므로 $f(x)=n$ 또는 $f(x)=n+2$이다.\n$x\\le3$에서 $f(x)=20-2^x$의 치역은 $[12,20)$이고, $x>3$에서 $f(x)=2^x+4$의 치역은 $(12,\\infty)$이다.\n따라서 수평선 $y=c$와의 교점 수는 $c<12$일 때 $0$, $c=12$일 때 $1$, $12<c<20$일 때 $2$, $c\\ge20$일 때 $1$이다.\n이제 서로 다른 두 값 $n,n+2$의 교점 수를 합한다. $n=12$이면 $1+2=3$개, $n=13,\\ldots,17$이면 $2+2=4$개, $n=18,19$이면 $2+1=3$개이다. 그 밖의 자연수에서는 $3$개가 될 수 없다.\n따라서 $n=12,18,19$이고 합은 $12+18+19=49$이다. 정답은 ③이다.",
+      "item4slot": {
+        "ordinal": 16,
+        "format": "단일 정답",
+        "given": [
+          98,
+          94,
+          71
+        ],
+        "goal": [
+          308,
+          286
+        ],
+        "method": [
+          52,
+          42,
+          129,
+          111,
+          103,
+          293
+        ],
+        "condition": [
+          373,
+          1
+        ],
+        "candidates": []
+      },
+      "hold": "",
+      "reason": "신규 효천고 유사2 Q16 수동 구성·자기 검토; 별도 독립 승인 대기"
+    },
+    {
+      "questionUid": 17,
+      "sourceOrdinal": 17,
+      "sourceQid": 17,
+      "before": null,
+      "after": {
+        "curriculum": "2022",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-03",
+        "standardUnit": "로그함수",
+        "subUnitKey": "H22-A-03-LOGARITHMIC_FUNCTION",
+        "subUnit": "로그함수",
+        "rpmPrimaryRecordId": "H2-M1-RPM-087",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+        "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4,
+        "sourceQid": 17,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "sourceExamPath": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_대수.js",
+          "sourceQid": 17,
+          "existingVariantRefs": [
+            "archive/exams/similar/high/h2/1mid/26_효천고_1학기_중간_고2_대수_유사.js"
+          ],
+          "mode": "ALIVE EXAM_FOLLOWUP",
+          "followupKind": "ADVANCED",
+          "profile": "SOURCE_BALANCED",
+          "variationAxis": "구간별 지수·로그 함수가 전단사인 경계 조건과 역함수 합성의 정수 교점 개수를 연결한다"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "각 가지의 정의역·식과 일대일 대응 요구를 모두 적시하여 그림 없이 정식화 가능하다",
+          "solution": "BENEFICIAL",
+          "solutionReason": "전단사 조건이 만드는 k의 열린 구간과 정수 a 후보를 수직선에 분리해 보이면 분기 선택에 도움이 된다",
+          "solutionPlanRef": "archive/exams/similar/high/h2/1mid/26_효천고_1학기_중간_고2_대수_유사2_plans/q17-solution.plan.json"
+        }
+      },
+      "difficultyConfidence": "MEDIUM",
+      "difficultyReason": "동일 작업자 자기 검토 단계이며 별도 독립 승인 전이다. 원본 Q17의 중심 절차를 유지; 구간별 지수·로그 함수가 전단사인 경계 조건과 역함수 합성의 정수 교점 개수를 연결한다",
+      "primaryMethod": "구간별 지수·로그함수의 일대일 대응",
+      "decisiveStep": "함수 $f$의 왼쪽 가지와 오른쪽 가지는 각각 감소한다.\n왼쪽 가지의 치역은 $(2^{-k-1},\\infty)$이고 오른쪽 가지의 치역은 $(-\\infty,-\\log_2(k+1)-1]$이다.\n두 치역이 겹치거나 빈틈이 생기지 않아야 일대일 대응이므로 경계값은 같다. 따라서\n$2^{-k-1}=-\\log_2(k+1)-1>0$이다.\n진수 조건과 부호를 함께 쓰면 $k+1>0$, $\\log_2(k+1)<-1$이고 $0<k+1<\\dfrac12$이다.\n즉 $-1<k<-\\dfrac12$이므로 $a=-3,-2,-1$에서는 $f$의 첫째 가지, $a=0$에서는 둘째 가지를 쓴다. 또한 $-k>\\dfrac12$이므로 이 네 정수 $a$는 모두 $g$의 첫째 가지를 쓴다.\n$a=-3$에서 $f(a)=4$, $g(a)=2+\\log_2 6$은 $4$와 $5$ 사이이므로 $b=4$ 한 개이다.\n$a=-2$에서 $f(a)=2$, $g(a)=2+\\log_2 5$는 $4$와 $5$ 사이이므로 $b=2,3,4$의 세 개이다.\n$a=-1$에서 $f(a)=1$, $g(a)=2+\\log_2 4=4$이므로 네 개이다.\n$a=0$에서 $f(a)=-1$, $g(a)=2+\\log_2 3$은 $3$과 $4$ 사이이므로 $b=-1,0,1,2,3$의 다섯 개이다.\n따라서 $1+3+4+5=13$개이고 정답은 ③이다.",
+      "item4slot": {
+        "ordinal": 17,
+        "format": "단일 정답",
+        "given": [
+          98,
+          101,
+          102,
+          94,
+          95,
+          105
+        ],
+        "goal": [
+          402,
+          129
+        ],
+        "method": [
+          105,
+          103,
+          111,
+          359,
+          736,
+          28,
+          294
+        ],
+        "condition": [
+          309,
+          2,
+          296
+        ],
+        "candidates": []
+      },
+      "hold": "",
+      "reason": "신규 효천고 유사2 Q17 수동 구성·자기 검토; 별도 독립 승인 대기"
+    },
+    {
+      "questionUid": 18,
+      "sourceOrdinal": 18,
+      "sourceQid": 18,
+      "before": null,
+      "after": {
+        "curriculum": "2022",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-04",
+        "standardUnit": "삼각함수",
+        "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
+        "subUnit": "삼각함수의 기본",
+        "rpmPrimaryRecordId": "H2-M1-RPM-097",
+        "problemTypeKey": "PT_H22A_04_TRIG_DEFINITION",
+        "templateKey": "TPL_H22A_04_TRIG_DEFINITION_097",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 1,
+        "sourceQid": 18,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "sourceExamPath": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_대수.js",
+          "sourceQid": 18,
+          "existingVariantRefs": [
+            "archive/exams/similar/high/h2/1mid/26_효천고_1학기_중간_고2_대수_유사.js"
+          ],
+          "mode": "ALIVE EXAM_FOLLOWUP",
+          "followupKind": "CONFIRMATION",
+          "profile": "SOURCE_BALANCED",
+          "variationAxis": "코사인과 탄젠트의 부호 조합으로 속한 사분면의 이름을 구한다"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "코사인·탄젠트의 부호만으로 사분면이 결정된다",
+          "solution": "EXEMPT",
+          "solutionReason": "코사인 양수·탄젠트 음수의 사분면 교집합을 문자로 적으면 충분하다"
+        }
+      },
+      "difficultyConfidence": "MEDIUM",
+      "difficultyReason": "동일 작업자 자기 검토 단계이며 별도 독립 승인 전이다. 원본 Q18의 중심 절차를 유지; 코사인과 탄젠트의 부호 조합으로 속한 사분면의 이름을 구한다",
+      "primaryMethod": "사분면과 삼각함수의 부호",
+      "decisiveStep": "$\\cos\\theta>0$이면 각은 제1사분면 또는 제4사분면에 있다.\n$\\tan\\theta=\\dfrac{\\sin\\theta}{\\cos\\theta}<0$이므로 사인과 코사인의 부호는 서로 다르다.\n이미 코사인은 양수이므로 사인은 음수이다.\n따라서 $\\theta$는 제4사분면의 각이다.",
+      "item4slot": {
+        "ordinal": 18,
+        "format": "단답",
+        "given": [
+          675,
+          449
+        ],
+        "goal": [
+          149
+        ],
+        "method": [
+          149,
+          480,
+          25
+        ],
+        "condition": [
+          397,
+          396
+        ],
+        "candidates": []
+      },
+      "hold": "",
+      "reason": "신규 효천고 유사2 Q18 수동 구성·자기 검토; 별도 독립 승인 대기"
+    },
+    {
+      "questionUid": 19,
+      "sourceOrdinal": 19,
+      "sourceQid": 19,
+      "before": null,
+      "after": {
+        "curriculum": "2022",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-01",
+        "standardUnit": "지수와 로그",
+        "subUnitKey": "H22-A-01-EXPONENT_LOG",
+        "subUnit": "지수와 로그",
+        "rpmPrimaryRecordId": "H2-M1-RPM-076",
+        "problemTypeKey": "PT_H22A_01_LOG_PROPERTIES",
+        "templateKey": "TPL_H22A_01_LOG_PROPERTIES_076",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "sourceQid": 19,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "sourceExamPath": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_대수.js",
+          "sourceQid": 19,
+          "existingVariantRefs": [
+            "archive/exams/similar/high/h2/1mid/26_효천고_1학기_중간_고2_대수_유사.js"
+          ],
+          "mode": "ALIVE EXAM_FOLLOWUP",
+          "followupKind": "CONFIRMATION",
+          "profile": "SOURCE_BALANCED",
+          "variationAxis": "두 음의 지수 형태의 로그에 대해 P,Q,R,S의 값 순서를 직접 비교한다"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "로그의 밑과 진수 a,b가 수치로 정확히 주어져 위치 정보가 없다",
+          "solution": "EXEMPT",
+          "solutionReason": "로그의 밑 변환으로 네 유리수 값을 계산하는 과정이 결정적이다"
+        }
+      },
+      "difficultyConfidence": "MEDIUM",
+      "difficultyReason": "동일 작업자 자기 검토 단계이며 별도 독립 승인 전이다. 원본 Q19의 중심 절차를 유지; 두 음의 지수 형태의 로그에 대해 P,Q,R,S의 값 순서를 직접 비교한다",
+      "primaryMethod": "로그의 값 대소 비교",
+      "decisiveStep": "$a=2^{-5}$, $b=2^{-2}$이므로 밑변환에 따라\n$P=\\log_{2^{-5}}2^{-2}=\\dfrac25$이다.\n역수 관계에서 $Q=\\dfrac1P=\\dfrac52$이다.\n로그의 지수 법칙에 따라 $R=2P=\\dfrac45$, $S=\\dfrac P2=\\dfrac15$이다.\n따라서 $\\dfrac52>\\dfrac45>\\dfrac25>\\dfrac15$이고, 큰 것부터 $Q>R>P>S$이다.",
+      "item4slot": {
+        "ordinal": 19,
+        "format": "단답",
+        "given": [
+          278,
+          279
+        ],
+        "goal": [
+          28
+        ],
+        "method": [
+          20,
+          282,
+          352,
+          28
+        ],
+        "condition": [],
+        "candidates": []
+      },
+      "hold": "",
+      "reason": "신규 효천고 유사2 Q19 수동 구성·자기 검토; 별도 독립 승인 대기"
+    },
+    {
+      "questionUid": 20,
+      "sourceOrdinal": 20,
+      "sourceQid": 20,
+      "before": null,
+      "after": {
+        "curriculum": "2022",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-03",
+        "standardUnit": "로그함수",
+        "subUnitKey": "H22-A-03-LOGARITHMIC_FUNCTION",
+        "subUnit": "로그함수",
+        "rpmPrimaryRecordId": "H2-M1-RPM-091",
+        "problemTypeKey": "PT_H22A_03_LOG_INEQUALITY",
+        "templateKey": "TPL_H22A_03_LOG_INEQUALITY_091",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "sourceQid": 20,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "sourceExamPath": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_대수.js",
+          "sourceQid": 20,
+          "existingVariantRefs": [
+            "archive/exams/similar/high/h2/1mid/26_효천고_1학기_중간_고2_대수_유사.js"
+          ],
+          "mode": "ALIVE EXAM_FOLLOWUP",
+          "followupKind": "ADVANCED",
+          "profile": "SOURCE_BALANCED",
+          "variationAxis": "밑이 1보다 작은 로그부등식에서 정의역과 부등호 반전을 동시 적용한다"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "로그 부등식과 해의 범위는 수식만으로 결정되며 별도 수직선 읽기 조건이 없다",
+          "solution": "BENEFICIAL",
+          "solutionReason": "정의역 및 부등호 반전 후 양 끝이 열린 (2,7/2)을 한 수직선에 나타내면 경계 처리를 알기 쉽다",
+          "solutionPlanRef": "archive/exams/similar/high/h2/1mid/26_효천고_1학기_중간_고2_대수_유사2_plans/q20-solution.plan.json"
+        }
+      },
+      "difficultyConfidence": "MEDIUM",
+      "difficultyReason": "동일 작업자 자기 검토 단계이며 별도 독립 승인 전이다. 원본 Q20의 중심 절차를 유지; 밑이 1보다 작은 로그부등식에서 정의역과 부등호 반전을 동시 적용한다",
+      "primaryMethod": "밑이 1보다 작은 로그부등식",
+      "decisiveStep": "로그의 진수는 양수이므로 먼저 $7-2x>0$, 즉 $x<\\dfrac72$이다.\n$-1=\\log_{\\frac13}3$이므로 원래 부등식은 $\\log_{\\frac13}(7-2x)>\\log_{\\frac13}3$이다.\n밑 $\\dfrac13$은 $0$과 $1$ 사이이므로 로그함수는 감소한다. 따라서 진수의 부등호 방향을 바꾸어 $7-2x<3$이다.\n이를 정리하면 $-2x<-4$, $x>2$이다.\n정의역 조건과 합하면 $2<x<\\dfrac72$이다.",
+      "item4slot": {
+        "ordinal": 20,
+        "format": "서술",
+        "given": [
+          74
+        ],
+        "goal": [
+          297
+        ],
+        "method": [
+          736,
+          279,
+          111,
+          654,
+          322
+        ],
+        "condition": [],
+        "candidates": []
+      },
+      "hold": "",
+      "reason": "신규 효천고 유사2 Q20 수동 구성·자기 검토; 별도 독립 승인 대기"
+    },
+    {
+      "questionUid": 21,
+      "sourceOrdinal": 21,
+      "sourceQid": 21,
+      "before": null,
+      "after": {
+        "curriculum": "2022",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-02",
+        "standardUnit": "지수함수",
+        "subUnitKey": "H22-A-02-EXPONENTIAL_FUNCTION",
+        "subUnit": "지수함수",
+        "rpmPrimaryRecordId": "H2-M1-RPM-082",
+        "problemTypeKey": "PT_H22A_02_EXP_EQUATION",
+        "templateKey": "TPL_H22A_02_EXP_EQUATION_082",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "INTERDEPENDENT",
+        "difficultyBucket": 4,
+        "sourceQid": 21,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "sourceExamPath": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_대수.js",
+          "sourceQid": 21,
+          "existingVariantRefs": [
+            "archive/exams/similar/high/h2/1mid/26_효천고_1학기_중간_고2_대수_유사.js"
+          ],
+          "mode": "ALIVE EXAM_FOLLOWUP",
+          "followupKind": "ADVANCED",
+          "profile": "SOURCE_BALANCED",
+          "variationAxis": "5^x 치환 이차방정식의 두 실근 지수 비가 1:2가 되는 계수를 역으로 정한다"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "방정식의 지수 치환과 두 실근 x의 비가 모두 텍스트로 명시돼 있다",
+          "solution": "EXEMPT",
+          "solutionReason": "치환 이차식에 비에 따른 근 관계를 대입한 비에타 계산이 중심이다"
+        }
+      },
+      "difficultyConfidence": "MEDIUM",
+      "difficultyReason": "동일 작업자 자기 검토 단계이며 별도 독립 승인 전이다. 원본 Q21의 중심 절차를 유지; 5^x 치환 이차방정식의 두 실근 지수 비가 1:2가 되는 계수를 역으로 정한다",
+      "primaryMethod": "지수방정식의 두 근의 비",
+      "decisiveStep": "$t=5^x$라 두면 $t>0$이고 방정식은 $t^2-kt+2k+24=0$이다.\n두 실근을 $u,2u$라 하면 $t$에 대한 두 근은 $r=5^u$와 $r^2=5^{2u}$이다.\n근과 계수의 관계에 따라 $r+r^2=k$, $r^3=2k+24$이다.\n첫째 식을 둘째 식에 대입하면 $r^3=2r+2r^2+24$이고\n$r^3-2r^2-2r-24=(r-4)(r^2+2r+6)=0$이다.\n$r>0$이고 $r^2+2r+6>0$이므로 $r=4$이다. 따라서 $k=r+r^2=4+16=20$이다.\n검산하면 이차방정식은 $(t-4)(t-16)=0$이고 두 실근은 $\\log_5 4$, $2\\log_5 4$이므로 실제 비가 $1:2$이다.",
+      "item4slot": {
+        "ordinal": 21,
+        "format": "서술",
+        "given": [
+          71,
+          79
+        ],
+        "goal": [
+          308
+        ],
+        "method": [
+          52,
+          65,
+          289,
+          54,
+          53,
+          42,
+          59
+        ],
+        "condition": [
+          5
+        ],
+        "candidates": []
+      },
+      "hold": "",
+      "reason": "신규 효천고 유사2 Q21 수동 구성·자기 검토; 별도 독립 승인 대기"
+    },
+    {
+      "questionUid": 22,
+      "sourceOrdinal": 22,
+      "sourceQid": 22,
+      "before": null,
+      "after": {
+        "curriculum": "2022",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-01",
+        "standardUnit": "지수와 로그",
+        "subUnitKey": "H22-A-01-EXPONENT_LOG",
+        "subUnit": "지수와 로그",
+        "rpmPrimaryRecordId": "H2-M1-RPM-076",
+        "problemTypeKey": "PT_H22A_01_LOG_PROPERTIES",
+        "templateKey": "TPL_H22A_01_LOG_PROPERTIES_076",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4,
+        "sourceQid": 22,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "sourceExamPath": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_대수.js",
+          "sourceQid": 22,
+          "existingVariantRefs": [
+            "archive/exams/similar/high/h2/1mid/26_효천고_1학기_중간_고2_대수_유사.js"
+          ],
+          "mode": "ALIVE EXAM_FOLLOWUP",
+          "followupKind": "ADVANCED",
+          "profile": "SOURCE_BALANCED",
+          "variationAxis": "0<b³<a<b²<1인 연쇄 조건만으로 로그 네 개의 순서를 일반적으로 증명한다"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "a,b의 대소 및 범위를 겹부등식으로 정확히 규정해 그림에 새로운 주어진 사실이 없다",
+          "solution": "EXEMPT",
+          "solutionReason": "밑이 1보다 작은 로그의 단조 감소와 거듭제곱 순서를 식으로 비교한다"
+        }
+      },
+      "difficultyConfidence": "MEDIUM",
+      "difficultyReason": "동일 작업자 자기 검토 단계이며 별도 독립 승인 전이다. 원본 Q22의 중심 절차를 유지; 0<b³<a<b²<1인 연쇄 조건만으로 로그 네 개의 순서를 일반적으로 증명한다",
+      "primaryMethod": "로그 부등식 조건 아래 대소 비교",
+      "decisiveStep": "$b^2<1$이므로 $0<b<1$이고, $b^3<a<b^2$이므로 $0<a<1$이다.\n밑 $b$가 $0$과 $1$ 사이이므로 로그를 취할 때 부등호가 반대가 된다.\n$b^3<a<b^2$에서 $3>\\log_b a>2$이다.\n$P=\\log_a b=\\dfrac1{\\log_b a}$라 두면 $\\dfrac13<P<\\dfrac12$이다.\n그런데 $Q=\\dfrac1P$, $R=2P$, $S=\\dfrac P2$이므로\n$Q>2>1>2P>P>\\dfrac P2>0$이다.\n따라서 모든 조건에서 $Q>R>P>S$이다.",
+      "item4slot": {
+        "ordinal": 22,
+        "format": "서술",
+        "given": [
+          278
+        ],
+        "goal": [
+          28
+        ],
+        "method": [
+          111,
+          654,
+          52,
+          282,
+          278,
+          28
+        ],
+        "condition": [
+          297,
+          5
+        ],
+        "candidates": []
+      },
+      "hold": "",
+      "reason": "신규 효천고 유사2 Q22 수동 구성·자기 검토; 별도 독립 승인 대기"
+    },
+    {
+      "questionUid": 23,
+      "sourceOrdinal": 23,
+      "sourceQid": 23,
+      "before": null,
+      "after": {
+        "curriculum": "2022",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-03",
+        "standardUnit": "로그함수",
+        "subUnitKey": "H22-A-03-LOGARITHMIC_FUNCTION",
+        "subUnit": "로그함수",
+        "rpmPrimaryRecordId": "H2-M1-RPM-094",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "INTERDEPENDENT",
+        "difficultyBucket": 4,
+        "sourceQid": 23,
+        "variationType": "EXAM_FOLLOWUP",
+        "provenance": {
+          "sourceExamPath": "archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_대수.js",
+          "sourceQid": 23,
+          "existingVariantRefs": [
+            "archive/exams/similar/high/h2/1mid/26_효천고_1학기_중간_고2_대수_유사.js"
+          ],
+          "mode": "ALIVE EXAM_FOLLOWUP",
+          "followupKind": "ADVANCED",
+          "profile": "SOURCE_BALANCED",
+          "variationAxis": "역함수 점의 기울기 -1 직선과 수직 밑변을 이용해 거리·넓이 조건을 결합한다"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "두 함수·직선 기울기·선분 길이·삼각형 넓이와 수직 관계를 문장으로 전부 명시했다",
+          "solution": "BENEFICIAL",
+          "solutionReason": "지수·로그 역함수의 대칭, 직선 AB와 수직선 AC의 넓이·거리 관계를 두 곡선에 겹쳐 보이면 판단이 쉬워진다",
+          "solutionPlanRef": "archive/exams/similar/high/h2/1mid/26_효천고_1학기_중간_고2_대수_유사2_plans/q23-solution.plan.json"
+        }
+      },
+      "difficultyConfidence": "MEDIUM",
+      "difficultyReason": "동일 작업자 자기 검토 단계이며 별도 독립 승인 전이다. 원본 Q23의 중심 절차를 유지; 역함수 점의 기울기 -1 직선과 수직 밑변을 이용해 거리·넓이 조건을 결합한다",
+      "primaryMethod": "역함수 대칭과 수직 밑변 삼각형",
+      "decisiveStep": "두 곡선 $y=4^x$, $y=\\log_4x$는 직선 $y=x$에 대하여 서로 대칭이다. 기울기가 $-1$인 직선도 이 대칭에 대해 그대로이므로\n$A=(\\alpha,4^\\alpha)$, $B=(4^\\alpha,\\alpha)$이다.\n$\\alpha>0$일 때 $4^\\alpha>\\alpha$이므로 두 점의 가로·세로 좌표 차는 각각 $d=4^\\alpha-\\alpha>0$이다.\n$AB=\\sqrt2d=3\\sqrt2$에서 $d=3$을 얻는다. 즉 $4^\\alpha-\\alpha=3$이다.\n$C$는 $x=\\alpha$와 로그함수의 교점이므로 $C=(\\alpha,\\log_4\\alpha)$이다.\n선분 $AC$는 수직이고 길이가 $4^\\alpha-\\log_4\\alpha$이며, 점 $B$에서 직선 $AC$까지의 수평 거리는 $d=3$이다.\n따라서 넓이 $6=\\dfrac12\\times AC\\times3$에서 $AC=4$이다.\n$4^\\alpha-\\log_4\\alpha=4$에서 $4^\\alpha-\\alpha=3$을 빼면 $\\alpha-\\log_4\\alpha=1$이다.\n실제로 $\\alpha=1$이면 $A=(1,4)$, $B=(4,1)$, $C=(1,0)$이므로 모든 주어진 길이와 넓이를 만족한다.",
+      "item4slot": {
+        "ordinal": 23,
+        "format": "서술",
+        "given": [
+          150,
+          94,
+          95,
+          180,
+          158,
+          215
+        ],
+        "goal": [
+          131
+        ],
+        "method": [
+          150,
+          86,
+          179,
+          209,
+          213,
+          368
+        ],
+        "condition": [
+          180
+        ],
+        "candidates": []
+      },
+      "hold": "",
+      "reason": "신규 효천고 유사2 Q23 수동 구성·자기 검토; 별도 독립 승인 대기"
+    }
+  ]
+}

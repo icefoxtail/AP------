@@ -1,0 +1,21 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [-3.5, 4.6, 9, 27],
+    "curves": [
+      {"id": "L", "kind": "EXPONENTIAL", "base": "2", "coefficients": ["-1", "1", "20"], "domain": ["-3", "3"], "color": "BLUE", "label": "y=20-2^x"},
+      {"id": "R", "kind": "EXPONENTIAL", "base": "2", "coefficients": ["1", "1", "4"], "domain": ["3", "9/2"], "color": "WARM", "label": "y=2^x+4"},
+      {"id": "m", "kind": "LINE", "coefficients": ["12", "0"], "domain": ["-3", "9/2"], "style": "DASHED"},
+      {"id": "n", "kind": "LINE", "coefficients": ["20", "0"], "domain": ["-3", "9/2"], "style": "DASHED"}
+    ],
+    "axisTickValues": {"x": ["3"], "y": ["12", "20"]},
+    "overlays": {"points": [{"id": "P", "x": "3", "y": "12"}]}
+  },
+  "caption": "f(x)=20-2^x와 f(x)=2^x+4가 (3,12)에서 이어지고, 수평선의 높이에 따라 교점 수가 달라진다.",
+  "sourceConditions": [
+    {"id": "S1", "condition": "x≤3에서는 f=20-2^x, x>3에서는 f=2^x+4", "mappedTo": ["graphPlan.curves", "graphPlan.overlays.points"]},
+    {"id": "S2", "condition": "12<t<20일 때 수평선 y=t가 그래프와 두 점에서 만난다", "mappedTo": ["graphPlan.curves", "graphPlan.axisTickValues"]}
+  ],
+  "newVisualInformation": ["두 지수식이 x=3의 최솟값 12에서 맞닿고 왼쪽 가지가 20에 접근하는 모습을 분리해 비교한다."]
+}

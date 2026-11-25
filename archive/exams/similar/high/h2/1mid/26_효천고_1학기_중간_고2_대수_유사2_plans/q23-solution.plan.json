@@ -1,0 +1,33 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {"id": "f", "kind": "EXPONENTIAL", "base": "4", "coefficients": ["1", "1", "0"], "domain": ["-1/2", "3/2"], "color": "BLUE", "label": "y=4^x"},
+      {"id": "g", "kind": "LOGARITHMIC", "base": "4", "coefficients": ["1", "1", "0", "0"], "domain": ["1/4", "5"], "color": "WARM"},
+      {"id": "D", "kind": "LINE", "coefficients": ["0", "1"], "domain": ["0", "5"], "style": "DASHED", "label": "y=x"}
+    ],
+    "viewport": [-1, 5.5, -1, 7],
+    "axisTickValues": {"x": ["1", "4"], "y": ["1", "4"]},
+    "overlays": {
+      "lines": [{"id": "L", "slope": "-1", "intercept": "5", "label": "l"}],
+      "points": [
+        {"id": "A", "x": "1", "y": "4"},
+        {"id": "B", "x": "4", "y": "1"},
+        {"id": "C", "x": "1", "y": "0"}
+      ],
+      "segments": [
+        {"id": "AC", "from": "A", "to": "C", "color": "BLUE"},
+        {"id": "AB", "from": "A", "to": "B"},
+        {"id": "BC", "from": "B", "to": "C"}
+      ]
+    }
+  },
+  "caption": "지수·로그 역함수 y=4^x와 y=log_4 x의 대칭, 기울기 -1인 직선 l, 수직 밑변 AC의 삼각형 ABC",
+  "accessibilityDescription": "점 A(1,4), B(4,1), C(1,0)에서 수직 밑변 AC와 점 B의 가로 높이를 확인하는 해설 그림이다.",
+  "sourceConditions": [
+    {"id": "S1", "condition": "A=(1,4), B=(4,1)은 y=x 대칭이며 AB의 기울기는 -1", "mappedTo": ["graphPlan.curves", "graphPlan.overlays.lines", "graphPlan.overlays.points"]},
+    {"id": "S2", "condition": "C=(1,0)은 x=1에서 로그곡선 위의 점, AC=4, B에서 AC까지 거리=3", "mappedTo": ["graphPlan.overlays.points", "graphPlan.overlays.segments"]}
+  ],
+  "newVisualInformation": ["원본 수평 밑변 대신 수직 밑변 AC를 이용해 높이와 두 차의 차를 얻는 풀이 구조"]
+}
