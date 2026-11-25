@@ -4575,9 +4575,9 @@ MULTI_CURVE_FIELDS={'family','curves','axisTickValues','domain','viewport','plot
 # G18a: besides the two quadratic kinds a curve may be LINE (y=c0+c1*x), RATIONAL (y=(a0+a1*x)/(d0+d1*x)) or SQRT (y=offset+amplitude*sqrt(c0+c1*x)), each with
 # its own look (color, weight, style, label, hideLabels), or the inverse of another curve (inverseOf). These kinds are not bounded by their own shape, so the
 # author names the window (graphPlan.viewport = [xmin,xmax,ymin,ymax]) and a curve is clipped to the frame built around that window.
-MULTI_CURVE_KINDS=('Y_OF_X','X_OF_Y','LINE','RATIONAL','SQRT','EXPONENTIAL','LOGARITHMIC')
-MULTI_CURVE_FREE_KINDS=('LINE','RATIONAL','SQRT','EXPONENTIAL','LOGARITHMIC')
-MULTI_CURVE_KIND_KEYS={'Y_OF_X':{'coefficients','domain','branch','abs'},'X_OF_Y':{'coefficients','domain','branch'},'LINE':{'coefficients','domain','domainStates','abs'},'RATIONAL':{'numerator','denominator','domain','domainStates','abs'},'SQRT':{'radicand','amplitude','offset','domain','domainStates','abs'},'EXPONENTIAL':{'base','coefficients','shiftX','domain','domainStates'},'LOGARITHMIC':{'base','coefficients','domain'}}
+MULTI_CURVE_KINDS=('Y_OF_X','X_OF_Y','LINE','RATIONAL','SQRT','EXPONENTIAL','LOGARITHMIC','ABSOLUTE_VALUE')
+MULTI_CURVE_FREE_KINDS=('LINE','RATIONAL','SQRT','EXPONENTIAL','LOGARITHMIC','ABSOLUTE_VALUE')
+MULTI_CURVE_KIND_KEYS={'Y_OF_X':{'coefficients','domain','branch','abs'},'X_OF_Y':{'coefficients','domain','branch'},'LINE':{'coefficients','domain','domainStates','abs'},'RATIONAL':{'numerator','denominator','domain','domainStates','abs'},'SQRT':{'radicand','amplitude','offset','domain','domainStates','abs'},'EXPONENTIAL':{'base','coefficients','shiftX','domain','domainStates'},'LOGARITHMIC':{'base','coefficients','domain'},'ABSOLUTE_VALUE':{'coefficients','domain','domainStates'}}
 MULTI_CURVE_LOOK_KEYS={'id','kind','label','color','weight','style','hideLabel','hideLabels','inverseOf','emphasis'}
 # G18a-4: emphasis:[{from?,to?,color?,fromState?,toState?}] draws only that x stretch of the curve heavier and in a colour, with an open or closed end dot (states OPEN | CLOSED | NONE);
 # domain may be written {from,to} as well as [from,to] (the curve is then not drawn outside it).
@@ -4730,6 +4730,9 @@ def mc_value(curve,x_value):
         argument=k*x_value+b
         if argument<=0:return None
         value=float(a)*math.log(argument)/math.log(curve['base'])+float(c)
+    elif kind=='ABSOLUTE_VALUE':
+        b,k,a,c=curve['coefficients']
+        value=float(a)*abs(float(k*x_value+b))+float(c)
     else:
         radicand=curve['radicand'][0]+curve['radicand'][1]*x_value
         if radicand<0:return None
@@ -4813,6 +4816,14 @@ def _mc_free_curve(entry,ident,kind,window,look):
         curve.update(_mc_exponential_curve(entry,ident))
     elif kind=='LOGARITHMIC':
         curve.update(_mc_logarithmic_curve(entry,ident))
+    elif kind=='ABSOLUTE_VALUE':
+        raw=entry.get('coefficients')
+        code='MULTI_CURVE_COEFFICIENT_INVALID:'+ident
+        if not isinstance(raw,list) or len(raw)!=4:raise ValueError(code)
+        coefficients=[_mc_fraction(v,code) for v in raw]
+        if coefficients[1]==0 or coefficients[2]==0:raise ValueError(code)
+        if 'domain' not in entry:raise ValueError('MULTI_CURVE_DOMAIN_INVALID:'+ident)
+        curve['coefficients']=coefficients
     else:
         raw=entry.get('radicand')
         if not isinstance(raw,list) or len(raw)!=2:raise ValueError('MULTI_CURVE_COEFFICIENT_INVALID:'+ident)
@@ -4886,7 +4897,7 @@ def multi_curve_source(plan):
             source=by_id.get(inverse_of) if isinstance(inverse_of,str) else None
             if source is None or source.get('inverseOf') is not None:raise ValueError('MULTI_CURVE_INVERSE_UNSUPPORTED:'+ident)
             if 'kind' in entry and entry['kind'] not in MULTI_CURVE_KINDS:raise ValueError('MULTI_CURVE_KIND_INVALID:'+ident)
-            if entry.get('kind') in ('EXPONENTIAL','LOGARITHMIC'):raise ValueError('MULTI_CURVE_INVERSE_UNSUPPORTED:'+ident)
+            if entry.get('kind') in ('EXPONENTIAL','LOGARITHMIC','ABSOLUTE_VALUE'):raise ValueError('MULTI_CURVE_INVERSE_UNSUPPORTED:'+ident)
             curve=_mc_inverse_curve(entry,ident,source,_mc_look(entry,ident,True))
             curve['intervalGiven']='domain' in entry
             if 'domain' in entry:curve['interval']=_mc_interval_fractions(entry['domain'],'MULTI_CURVE_DOMAIN_INVALID:'+ident)
@@ -5005,6 +5016,11 @@ def _mc_bbox_points(curves,window=None):
                 horizontal=curve['numerator'][1]/curve['denominator'][1]
                 # A pole that is an open source-domain end has no finite point to contribute to the frame.
                 if pole not in (lo,hi):points.append((float(min(max(pole,lo),hi)),float(abs(horizontal) if curve.get('abs') else horizontal)))
+            elif kind=='ABSOLUTE_VALUE':
+                b,k,_,c=curve['coefficients']
+                for edge in (lo,hi):points.append((float(edge),mc_value(curve,edge)))
+                vertex=-b/k
+                if lo<vertex<hi:points.append((float(vertex),float(c)))
             else:
                 for edge in (lo,hi):
                     value=mc_value(curve,edge)
@@ -5038,7 +5054,7 @@ def _mc_row(curve):
     else:
         row['interval']=[_mc_text(value) for value in curve['interval']]
         if curve.get('domainStates',('NONE','NONE'))!=('NONE','NONE'):row['domainStates']=list(curve['domainStates'])
-        if kind in ('LINE','Y_OF_X'):row['coefficients']=[_mc_text(value) for value in curve['coefficients']]
+        if kind in ('LINE','Y_OF_X','ABSOLUTE_VALUE'):row['coefficients']=[_mc_text(value) for value in curve['coefficients']]
         elif kind=='RATIONAL':
             row['numerator']=[_mc_text(value) for value in curve['numerator']];row['denominator']=[_mc_text(value) for value in curve['denominator']]
             pole=-curve['denominator'][0]/curve['denominator'][1]
