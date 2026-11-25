@@ -1,0 +1,268 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "8",
+              "denominator": "3"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "4",
+                  "denominator": "3"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "5"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "P",
+    "T"
+  ],
+  "displaySegments": [
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sAP",
+      "refs": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "sPT",
+      "refs": [
+        "P",
+        "T"
+      ]
+    },
+    {
+      "id": "sTB",
+      "refs": [
+        "T",
+        "B"
+      ]
+    },
+    {
+      "id": "sOP",
+      "refs": [
+        "O",
+        "P"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 560
+  },
+  "caption": "OA=3, OB=4, AB=3인 삼각형 OAB와 AP:PB=1:2인 P",
+  "accessibilityDescription": "삼각형 OAB에서 OA와 AB의 길이는 각각 3, OB는 4이다. P는 AB의 한쪽 삼분점이고 세 개의 같은 길이 눈금이 있다. OP가 이어져 있다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "OA=3, OB=4, AB=3을 실제 정확한 좌표와 치수에 반영",
+      "mappedTo": [
+        "dOA",
+        "dOB",
+        "dAB"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "AP:PB=1:2, P에서 B까지 두 조각이 하나의 AP와 같음",
+      "mappedTo": [
+        "P",
+        "eRatio"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "OP 연결선과 원문 각 점 이름",
+      "mappedTo": [
+        "sOP",
+        "O",
+        "A",
+        "B",
+        "P"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "변 길이 3·4·3의 실제 삼각형",
+    "AP:PB 내분을 세 등분 눈금으로 표시"
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dOA",
+        "from": "O",
+        "to": "A",
+        "label": "3",
+        "side": "BELOW",
+        "style": "BAR",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dOB",
+        "from": "O",
+        "to": "B",
+        "label": "4",
+        "side": "LEFT",
+        "style": "BAR",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dAB",
+        "from": "A",
+        "to": "B",
+        "label": "3",
+        "side": "RIGHT",
+        "style": "BAR",
+        "factRole": "GIVEN"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "eRatio",
+        "count": 1,
+        "segments": [
+          "sAP",
+          "sPT",
+          "sTB"
+        ]
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "T"
+  ],
+  "hiddenPointStyle": "NONE",
+  "sourceQuote": "삼각형 $\\text{OAB}$에서 $|\\vec{\\text{"
+}

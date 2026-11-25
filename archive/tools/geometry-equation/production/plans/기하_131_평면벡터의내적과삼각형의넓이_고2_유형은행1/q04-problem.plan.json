@@ -1,0 +1,239 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCO",
+      "refs": [
+        "C",
+        "O"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 560
+  },
+  "caption": "OA=a(길이 3), OC=b(길이 8), 내적 12인 평행사변형 OABC",
+  "accessibilityDescription": "OABC는 평행사변형이고 이웃하는 OA,OC에 각각 벡터 a,b 화살표와 길이 3,8의 치수가 있다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "OA=3, OC=8이고 내적 (3,0)·(4,4√3)=12",
+      "mappedTo": [
+        "O",
+        "A",
+        "C",
+        "d3",
+        "d8"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "OABC는 반대변이 정확히 평행한 평행사변형",
+      "mappedTo": [
+        "O",
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "OA=a, OC=b 화살표",
+      "mappedTo": [
+        "va",
+        "vb"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "실제 평행사변형 네 변",
+    "길이 3·8과 두 벡터 a,b"
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "d3",
+        "from": "O",
+        "to": "A",
+        "label": "3",
+        "side": "BELOW",
+        "style": "BAR",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "d8",
+        "from": "O",
+        "to": "C",
+        "label": "8",
+        "side": "LEFT",
+        "style": "BAR",
+        "factRole": "GIVEN"
+      }
+    ],
+    "vectors": [
+      {
+        "id": "va",
+        "from": "O",
+        "to": "A",
+        "label": "vec(a)",
+        "side": "LEFT",
+        "labelAt": 0.55
+      },
+      {
+        "id": "vb",
+        "from": "O",
+        "to": "C",
+        "label": "vec(b)",
+        "side": "LEFT",
+        "labelAt": 0.55
+      }
+    ]
+  },
+  "sourceQuote": "그림과 같은 평행사변형 $\\text{OABC}$에서"
+}

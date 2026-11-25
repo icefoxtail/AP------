@@ -1,0 +1,199 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 560
+  },
+  "caption": "한 변 1의 정사각형 ABCD와 A에서 시작하는 직교 벡터 a,b",
+  "accessibilityDescription": "정사각형 ABCD의 길이 1이 치수로 표시되고 꼭짓점 A에 직각 마커가 있다. A→B가 벡터 a, A→D가 벡터 b이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AB=AD=1인 정사각형이고 각 BAD가 직각",
+      "mappedTo": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "d1",
+        "rA"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "AB=a와 AD=b 화살표",
+      "mappedTo": [
+        "va",
+        "vb"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "정사각형 길이와 직각",
+    "서로 수직인 벡터 a,b"
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "d1",
+        "from": "A",
+        "to": "B",
+        "label": "1",
+        "side": "BELOW",
+        "style": "BAR",
+        "factRole": "GIVEN"
+      }
+    ],
+    "vectors": [
+      {
+        "id": "va",
+        "from": "A",
+        "to": "B",
+        "label": "vec(a)",
+        "side": "LEFT",
+        "labelAt": 0.55
+      },
+      {
+        "id": "vb",
+        "from": "A",
+        "to": "D",
+        "label": "vec(b)",
+        "side": "LEFT",
+        "labelAt": 0.55
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rA",
+      "refs": [
+        "B",
+        "A",
+        "D"
+      ]
+    }
+  ],
+  "sourceQuote": "한 변의 길이가 1인 정사각형 $\\mathrm{ABCD}$"
+}

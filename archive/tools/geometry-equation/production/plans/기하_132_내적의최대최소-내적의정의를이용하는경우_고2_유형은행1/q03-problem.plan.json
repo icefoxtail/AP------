@@ -1,0 +1,149 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "P",
+    "C",
+    "Q"
+  ],
+  "displaySegments": [],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 560
+  },
+  "caption": "P(4,3) 및 중심 C(2,5), 반지름 2인 원판 내부의 임의 Q",
+  "accessibilityDescription": "좌표평면에 P(4,3)가 있고 중심 2,5에서 반지름 2의 원이 그려져 있다. Q는 경계가 아닌 원판 내부의 대표점으로 극값을 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "P=(4,3)인 정확한 점",
+      "mappedTo": [
+        "P"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "원의 중심 (2,5)과 반지름 2(반지름 제곱 4)",
+      "mappedTo": [
+        "C",
+        "k"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "Q=(3,5)는 중심으로부터 거리 1 또는 √2인 비극값 대표점",
+      "mappedTo": [
+        "Q"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "정확한 중심과 반지름 2의 원",
+    "최댓값·최솟값을 드러내지 않은 임의 내부점 Q"
+  ],
+  "displayCircles": [
+    "k"
+  ],
+  "sourceQuote": "좌표평면 위의 한 점 $P(4, 3)$과 원"
+}

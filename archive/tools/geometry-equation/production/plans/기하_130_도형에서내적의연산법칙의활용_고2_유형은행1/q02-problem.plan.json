@@ -1,0 +1,250 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "3"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "P",
+    "Q"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBP",
+      "refs": [
+        "B",
+        "P"
+      ]
+    },
+    {
+      "id": "sPQ",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    },
+    {
+      "id": "sQC",
+      "refs": [
+        "Q",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAP",
+      "refs": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "sAQ",
+      "refs": [
+        "A",
+        "Q"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 560
+  },
+  "caption": "변이 6인 정삼각형 ABC, B-P-Q-C 순서의 삼등분점과 AP,AQ",
+  "accessibilityDescription": "정삼각형 ABC의 밑변 BC는 P,Q에 의해 정확히 삼등분되어 같은 눈금 세 개가 표시된다. 꼭짓점 A에서 P와 Q로 연결선이 있다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AB=BC=CA=6인 정삼각형과 실제 길이 6",
+      "mappedTo": [
+        "A",
+        "B",
+        "C",
+        "d6"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "BP=PQ=QC인 B,P,Q,C 순서",
+      "mappedTo": [
+        "P",
+        "Q",
+        "eThird"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "AP,AQ 선분만 보이고 최종 내적 26은 표시하지 않음",
+      "mappedTo": [
+        "sAP",
+        "sAQ"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "정삼각형 한 변 6",
+    "BC 삼등분과 AP·AQ 연결선"
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "d6",
+        "from": "B",
+        "to": "C",
+        "label": "6",
+        "side": "BELOW",
+        "style": "BAR",
+        "factRole": "GIVEN"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "eThird",
+        "count": 1,
+        "segments": [
+          "sBP",
+          "sPQ",
+          "sQC"
+        ]
+      }
+    ]
+  },
+  "sourceQuote": "그림과 같이 한 변의 길이가 $6$인 정삼각형 $\\text"
+}

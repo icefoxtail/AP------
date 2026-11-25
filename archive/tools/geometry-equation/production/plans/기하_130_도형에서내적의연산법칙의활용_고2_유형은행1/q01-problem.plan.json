@@ -1,0 +1,237 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "T"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sDT",
+      "refs": [
+        "D",
+        "T"
+      ]
+    },
+    {
+      "id": "sTC",
+      "refs": [
+        "T",
+        "C"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 560
+  },
+  "caption": "직각삼각형 ABC에서 AB=6, D는 BC를 1:2로 내분하고 AD를 이은 도형",
+  "accessibilityDescription": "A에서 직각을 이루는 AB=6인 삼각형. D는 BC의 1대2 내분점이고 작은 세 조각에 동일한 길이 표식이 있다. AD가 연결되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AB=6, ∠BAC=90°를 실제 치수와 직각 마커로 표시",
+      "mappedTo": [
+        "d6",
+        "rA"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "BD:DC=1:2를 B-D-T-C 삼등분 눈금으로 표시하되 T는 보조점",
+      "mappedTo": [
+        "D",
+        "eRatio"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "AD 선분을 실제 표시, 내적 정답 24는 숨긴다",
+      "mappedTo": [
+        "sAD"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "직각·길이 6 표식",
+    "1:2 내분을 실제 세 등분 눈금으로 표현"
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "d6",
+        "from": "A",
+        "to": "B",
+        "label": "6",
+        "side": "BELOW",
+        "style": "BAR",
+        "factRole": "GIVEN"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "eRatio",
+        "count": 1,
+        "segments": [
+          "sBD",
+          "sDT",
+          "sTC"
+        ]
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rA",
+      "refs": [
+        "B",
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "T"
+  ],
+  "hiddenPointStyle": "NONE",
+  "sourceQuote": "그림과 같이 $\\overline{\\text{AB}}=6$이"
+}

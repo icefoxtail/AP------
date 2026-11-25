@@ -1,0 +1,81 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "CIRCLE",
+    "center": [
+      "0",
+      "0"
+    ],
+    "rSquared": "10"
+  },
+  "lines": [
+    {
+      "id": "l",
+      "slope": "1",
+      "intercept": "2"
+    }
+  ],
+  "points": [
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    },
+    {
+      "id": "A",
+      "kind": "LINE_CONIC",
+      "line": "l",
+      "which": 2
+    },
+    {
+      "id": "B",
+      "kind": "LINE_CONIC",
+      "line": "l",
+      "which": 1
+    }
+  ],
+  "segments": [
+    {
+      "id": "OA",
+      "from": "O",
+      "to": "A"
+    },
+    {
+      "id": "OB",
+      "from": "O",
+      "to": "B"
+    }
+  ],
+  "caption": "원 x²+y²=10과 직선 y=x+2의 두 교점 A,B 및 OA, OB 선분",
+  "accessibilityDescription": "원점 O를 중심으로 하는 원이 기울기 1, y절편 2인 직선과 A,B에서 만난다. OA, OB 두 선분이 그려져 있으며 구할 내적은 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원 x²+y²=10의 중심 O와 반지름 제곱 10",
+      "mappedTo": [
+        "O"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "y=x+2와 원의 정확한 두 교점: 왼쪽 B, 오른쪽 A",
+      "mappedTo": [
+        "l",
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "OA와 OB를 실제 선분으로 연결하며 교점 수치·내적 답은 표시하지 않는다",
+      "mappedTo": [
+        "OA",
+        "OB"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원과 직선의 두 교점",
+    "원점에서 각 교점으로 연결한 두 선분"
+  ],
+  "sourceQuote": "그림과 같이 원 $x^2 + y^2 = 10$과 직선 $y"
+}

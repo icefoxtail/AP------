@@ -1,0 +1,309 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "A",
+          "D"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBF",
+      "refs": [
+        "B",
+        "F"
+      ]
+    },
+    {
+      "id": "sFC",
+      "refs": [
+        "F",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sEA",
+      "refs": [
+        "E",
+        "A"
+      ]
+    },
+    {
+      "id": "sAF",
+      "refs": [
+        "A",
+        "F"
+      ]
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 560
+  },
+  "caption": "AB=2, AD=4인 직사각형의 E(AE:ED=1:3), F(BF:FC=3:1)와 AF·BE",
+  "accessibilityDescription": "세로 AB 2와 가로 AD 4인 직사각형이다. E는 위쪽 AD의 1대3 내분점, F는 아래쪽 BC의 3대1 내분점이며 AF, BE를 연결한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AB=2·AD=4 직사각형과 길이 치수",
+      "mappedTo": [
+        "dAB",
+        "dAD",
+        "A",
+        "B",
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "AE=1, ED=3으로 AE:ED=1:3 표시",
+      "mappedTo": [
+        "E",
+        "dAE",
+        "dED"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "BF=3, FC=1로 BF:FC=3:1 표시",
+      "mappedTo": [
+        "F",
+        "dBF",
+        "dFC"
+      ]
+    },
+    {
+      "id": "c4",
+      "condition": "AF와 BE 실제 대각 연결",
+      "mappedTo": [
+        "sAF",
+        "sBE"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 변 길이 2·4",
+    "양쪽 내분점 E,F 및 정확한 분할 치수선",
+    "AF·BE"
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dAB",
+        "from": "A",
+        "to": "B",
+        "label": "2",
+        "side": "LEFT",
+        "style": "BAR",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dAD",
+        "from": "A",
+        "to": "D",
+        "label": "4",
+        "side": "ABOVE",
+        "style": "BAR",
+        "factRole": "GIVEN",
+        "offset": "AUTO"
+      },
+      {
+        "id": "dAE",
+        "from": "A",
+        "to": "E",
+        "label": "1",
+        "side": "BELOW",
+        "style": "BAR",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dED",
+        "from": "E",
+        "to": "D",
+        "label": "3",
+        "side": "ABOVE",
+        "style": "BAR",
+        "factRole": "GIVEN",
+        "offset": "AUTO"
+      },
+      {
+        "id": "dBF",
+        "from": "B",
+        "to": "F",
+        "label": "3",
+        "side": "BELOW",
+        "style": "BAR",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dFC",
+        "from": "F",
+        "to": "C",
+        "label": "1",
+        "side": "ABOVE",
+        "style": "BAR",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "sourceQuote": "그림과 같이 $\\overline{\\text{AB}}=2, "
+}

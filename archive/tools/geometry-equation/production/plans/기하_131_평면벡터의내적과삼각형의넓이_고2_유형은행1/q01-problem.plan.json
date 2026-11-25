@@ -1,0 +1,168 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B"
+  ],
+  "displaySegments": [
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBO",
+      "refs": [
+        "B",
+        "O"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 560
+  },
+  "caption": "OA=6, OB=4, OA·OB=12인 두 벡터의 삼각형 OAB",
+  "accessibilityDescription": "O에서 오른쪽 A까지 길이 6, 위쪽 왼편으로 B까지 길이 4인 삼각형이다. 실제 두 벡터 내적은 12가 되지만 넓이 정답은 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "OA=6과 OB=4인 실제 선분과 치수",
+      "mappedTo": [
+        "d6",
+        "d4",
+        "sOA",
+        "sBO"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "구성 좌표에서 OA·OB=6·2=12이며 구할 넓이를 숨긴다",
+      "mappedTo": [
+        "O",
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "주어진 두 길이의 실제 치수",
+    "내적 12를 만족하는 도형의 끼인각"
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "d6",
+        "from": "O",
+        "to": "A",
+        "label": "6",
+        "side": "BELOW",
+        "style": "BAR",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "d4",
+        "from": "O",
+        "to": "B",
+        "label": "4",
+        "side": "LEFT",
+        "style": "BAR",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "sourceQuote": "그림과 같은 삼각형 $\\text{OAB}$에서"
+}

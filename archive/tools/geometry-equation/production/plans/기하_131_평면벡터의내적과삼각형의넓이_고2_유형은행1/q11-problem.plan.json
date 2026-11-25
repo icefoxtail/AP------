@@ -1,0 +1,86 @@
+{
+  "capability": "ellipse-figure-v1",
+  "ellipse": {
+    "center": [
+      "0",
+      "0"
+    ],
+    "semiAxisSquared": {
+      "major": "3",
+      "minor": "1"
+    },
+    "majorAxis": "X"
+  },
+  "points": [
+    {
+      "id": "A",
+      "kind": "POINT",
+      "x": "1",
+      "y": "0"
+    },
+    {
+      "id": "B",
+      "kind": "POINT",
+      "x": "0",
+      "y": "1"
+    },
+    {
+      "id": "P",
+      "kind": "ON_ELLIPSE",
+      "x": "-3/2",
+      "branch": "POS"
+    }
+  ],
+  "lines": [
+    {
+      "id": "l",
+      "slope": "1",
+      "intercept": "2",
+      "tangent": true
+    }
+  ],
+  "segments": [
+    {
+      "id": "AB",
+      "from": "A",
+      "to": "B"
+    },
+    {
+      "id": "AP",
+      "from": "A",
+      "to": "P"
+    }
+  ],
+  "caption": "타원 x²/3+y²=1과 A(1,0), B(0,1), P에서의 최대 조건 접선",
+  "accessibilityDescription": "타원 위 제2사분면의 P에서 접선이 그어져 있으며 수학적으로 그 직선은 제1·2·3사분면을 지난다. 원문 그림 설명의 제4사분면 표기는 수학적으로 불가능하다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "A(1,0),B(0,1)과 장축이 x축인 타원",
+      "mappedTo": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "최대 접선의 정확한 기울기 1, 절편 2. 답의 문자 계수는 라벨에 쓰지 않음",
+      "mappedTo": [
+        "P",
+        "l"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "원문 [그림]의 제4사분면 통과 주장은 계산상 성립하지 않아 정정 인계",
+      "mappedTo": [
+        "l"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "타원에서 P와 그 접선",
+    "SOURCE_DESCRIPTION_CONFLICT: y=x+2는 4사분면을 통과하지 않음"
+  ],
+  "sourceQuote": "두 점 $\\text{A}(1, 0), \\text{B}"
+}
