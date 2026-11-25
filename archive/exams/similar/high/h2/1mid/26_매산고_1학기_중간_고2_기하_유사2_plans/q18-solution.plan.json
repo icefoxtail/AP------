@@ -1,0 +1,84 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 6,
+        "depth": 6
+      },
+      "height": 6,
+      "names": "EFGHABCD",
+      "points": [
+        {
+          "id": "L",
+          "at": {
+            "edge": "AB",
+            "t": "2/3"
+          }
+        },
+        {
+          "id": "M",
+          "at": {
+            "edge": "HG",
+            "t": "1/2"
+          }
+        },
+        {
+          "id": "N",
+          "at": {
+            "foot": {
+              "from": "M",
+              "to": [
+                "D",
+                "L"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "D",
+      "to": "L",
+      "style": "AUTO",
+      "role": "ACCENT"
+    },
+    {
+      "from": "D",
+      "to": "M",
+      "style": "AUTO",
+      "role": "ACCENT"
+    },
+    {
+      "from": "L",
+      "to": "M",
+      "style": "AUTO",
+      "role": "ACCENT"
+    },
+    {
+      "from": "M",
+      "to": "N",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "solidCaption": {
+    "text": "정육면체 DLM의 높이"
+  },
+  "caption": "한 모서리 6, AL:LB=2:1, M은 HG의 중점, MN은 DL에 수직인 높이이다.",
+  "sourceConditions": [
+    {
+      "id": "s1",
+      "condition": "한 모서리 길이 6, L은 AL:LB=2:1, M은 HG의 중점, N은 M에서 DL에 내린 수선의 발.",
+      "mappedTo": "solids[0].points"
+    }
+  ],
+  "newVisualInformation": [
+    "DL=2√13, DM=3√5, LM=√73을 통해 삼각형 DLM의 높이 MN을 계산한다."
+  ]
+}
