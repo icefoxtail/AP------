@@ -1,0 +1,106 @@
+{
+  "schemaVersion": "similar-exam-review-receipt-v2",
+  "examUid": "26_강남여고_1학기_2차_고2_대수_유사2",
+  "candidateGitBlobSha1": "8bfc71f42d5800bb117f48e542e81334c5cd5973",
+  "createdAt": "2026-11-25",
+  "signOffStatus": "SELF_REVIEW_COMPLETE_EXTERNAL_PENDING",
+  "overallVerdict": "MATH_PASS_VISUAL_PENDING",
+  "author": "GPT same-context exam followup",
+  "reviewerRole": "SELF_RECOMPUTE_ONLY",
+  "independenceLevel": "I1_SAME_CONTEXT",
+  "independentHumanOrModelReviewer": "NOT_RUN",
+  "approval": "USER_DIRECTED_QUALITY_APPROVED_FOR_SCOPED_OPERATION",
+  "notes": [
+    "25/25 exam stems independently recomputed using exact rational, symbolic, finite calculation without reading intended answers during calculation. Separate-context I2/I3 reviewer not run.",
+    "21/21 MCQ unique choices and judge/target distributions checked; original 25 positions and 100 points retained.",
+    "Problem/solution 50-axis SVG triage completed; 6 real plans deep-lint passed. q12 two explicit unsupported plans; Chrome launch absent and official browser download denied HTTP 403. SVG render 0/8 and student UI QA NOT_RUN."
+  ],
+  "blindFirstPass": {
+    "method": "Stem-only independent I1 exact/equivalence recomputation from final student statements; intended answer fields hidden during computation; compared after freeze",
+    "totalSolved": 25,
+    "answerMatches": 25,
+    "answerMismatches": 0,
+    "externalIndependentStatus": "NOT_RUN"
+  },
+  "independentRecomputed": {
+    "1": "6*sqrt(3)",
+    "2": "1/2",
+    "3": "9",
+    "4": "6",
+    "5": "2",
+    "6": "477",
+    "7": "3",
+    "8": "② not always valid",
+    "9": "5/3",
+    "10": "4",
+    "11": "36",
+    "12": "225*sqrt(3)/4",
+    "13": "112",
+    "14": "168",
+    "15": "(84,8,4)",
+    "16": "8",
+    "17": "-270",
+    "18": "6",
+    "19": "6000",
+    "20": "95",
+    "21": "-25",
+    "22": "B=90°, longest side AC",
+    "23": "m=2,3,4,5,6",
+    "24": "9/44 and q-p=35",
+    "25": "n=1 base; k->k+1 induction identity"
+  },
+  "reviewRequired": {
+    "sourceJsSha1": "8bfc71f42d5800bb117f48e542e81334c5cd5973",
+    "svgFollowup": [
+      {
+        "ordinal": 3,
+        "axis": "problem",
+        "necessity": "REQUIRED",
+        "renderStatus": "FAILED_ARCHIVE_PREFLIGHT_NO_CHROME"
+      },
+      {
+        "ordinal": 3,
+        "axis": "solution",
+        "necessity": "BENEFICIAL",
+        "renderStatus": "NOT_RUN_CHROME_UNAVAILABLE"
+      },
+      {
+        "ordinal": 11,
+        "axis": "problem",
+        "necessity": "BENEFICIAL",
+        "renderStatus": "NOT_RUN_CHROME_UNAVAILABLE"
+      },
+      {
+        "ordinal": 11,
+        "axis": "solution",
+        "necessity": "REQUIRED",
+        "renderStatus": "NOT_RUN_CHROME_UNAVAILABLE"
+      },
+      {
+        "ordinal": 12,
+        "axis": "problem",
+        "necessity": "BENEFICIAL",
+        "renderStatus": "NOT_RUN_UNSUPPORTED_PRECISION_PLAN"
+      },
+      {
+        "ordinal": 12,
+        "axis": "solution",
+        "necessity": "REQUIRED",
+        "renderStatus": "NOT_RUN_UNSUPPORTED_PRECISION_PLAN"
+      },
+      {
+        "ordinal": 20,
+        "axis": "problem",
+        "necessity": "BENEFICIAL",
+        "renderStatus": "NOT_RUN_CHROME_UNAVAILABLE"
+      },
+      {
+        "ordinal": 20,
+        "axis": "solution",
+        "necessity": "REQUIRED",
+        "renderStatus": "NOT_RUN_CHROME_UNAVAILABLE"
+      }
+    ],
+    "externalVisualQa": "NOT_RUN"
+  }
+}
