@@ -1,0 +1,40 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "kind": "CYLINDER",
+      "radius": 5,
+      "height": 24
+    }
+  ],
+  "dims": [
+    {
+      "diameter": "bottom"
+    },
+    {
+      "height": true
+    }
+  ],
+  "caption": "기하 유형은행 170번 유형 4번: 지름 10 높이 24인 원기둥 기본 모형. 기울어진 그릇과 수면은 미표시.",
+  "solidCaption": {
+    "text": "원기둥"
+  },
+  "accessibilityDescription": "지름 10 높이 24인 원기둥 기본 모형. 기울어진 그릇과 수면은 미표시.",
+  "sourceQuote": "[그림: 밑면의 지름이 $10$, 높이가 $24$인 원기둥 모양의 그릇이 기울어져 있고, 수면이 아래 밑면의 한 끝점과 위 밑면의 반대쪽 끝점을 지나도록 절반의 물이 차 있다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원기둥 지름 10 높이 24",
+      "mappedTo": "solids[0];dims"
+    },
+    {
+      "id": "c2",
+      "condition": "그릇을 기울여 물이 절반 남는 수면, 양 끝점 접촉",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:TILTED_CYLINDER_HALF_FILL"
+    }
+  ],
+  "newVisualInformation": [
+    "공식 엔진의 기본 입체·치수만. 절단·기울기 등 빠진 필수 도식은 후속 엔진 확장 대기"
+  ]
+}

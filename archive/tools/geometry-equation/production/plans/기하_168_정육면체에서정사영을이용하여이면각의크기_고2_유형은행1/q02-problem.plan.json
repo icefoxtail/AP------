@@ -1,0 +1,92 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 2,
+        "depth": 2
+      },
+      "height": 2,
+      "names": "EFGHABCD",
+      "points": [
+        {
+          "id": "M",
+          "at": {
+            "edge": [
+              "D",
+              "H"
+            ],
+            "t": "1/2"
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "A",
+      "to": "M",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "M",
+      "to": "G",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "G",
+      "to": "A",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "highlights": [
+    {
+      "polygon": [
+        "A",
+        "M",
+        "G"
+      ],
+      "fill": "LIGHT"
+    }
+  ],
+  "dims": [
+    {
+      "from": "A",
+      "to": "B"
+    }
+  ],
+  "caption": "기하 유형은행 168번 유형 2번: 정육면체의 DH 중점 M 및 색칠된 삼각형 AMG. 밑면 EHG 내접원은 아직 표시되지 않음.",
+  "accessibilityDescription": "정육면체의 DH 중점 M 및 색칠된 삼각형 AMG. 밑면 EHG 내접원은 아직 표시되지 않음.",
+  "sourceQuote": "[그림: 한 모서리의 길이가 $2$인 정육면체 $\\mathrm{ABCD-EFGH}$에서 모서리 $\\mathrm{DH}$의 중점 $\\mathrm{M}$이 표시되어 있고, 삼각형 $\\mathrm{AMG}$의 내부가 색칠되어 있으며, 밑면 $\\mathrm{EFGH}$ 위의 삼각형 $\\mathrm{EHG}$에 내접하는 원이 그려져 있다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "정육면체 한 모서리 2",
+      "mappedTo": "solids[0].base;dims[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "M은 DH의 중점",
+      "mappedTo": "solids[0].points[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "삼각형 AMG 내부 색칠",
+      "mappedTo": "segments;highlights[0]"
+    },
+    {
+      "id": "c4",
+      "condition": "삼각형 EHG의 내접원",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:SOLID_FACE_INCIRCLE"
+    }
+  ],
+  "newVisualInformation": [
+    "공식 엔진의 기본 입체·치수만. 절단·기울기 등 빠진 필수 도식은 후속 엔진 확장 대기"
+  ]
+}

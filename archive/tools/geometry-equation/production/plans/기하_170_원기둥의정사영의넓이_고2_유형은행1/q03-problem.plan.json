@@ -1,0 +1,40 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "kind": "CONE",
+      "radius": 3,
+      "height": 4
+    }
+  ],
+  "dims": [
+    {
+      "radius": "bottom"
+    },
+    {
+      "height": true
+    }
+  ],
+  "caption": "기하 유형은행 170번 유형 3번: 반지름 3 높이 4의 원뿔을 세운 기본 모형. 실제 기울어진 A-B-C-E 방향은 미표시.",
+  "solidCaption": {
+    "text": "원뿔"
+  },
+  "accessibilityDescription": "반지름 3 높이 4의 원뿔을 세운 기본 모형. 실제 기울어진 A-B-C-E 방향은 미표시.",
+  "sourceQuote": "[그림: 꼭짓점 $\\mathrm{A}$가 수평인 지면 위에 놓여 있고 모선 $\\mathrm{AB}$가 지면에 수직으로 서 있는 원뿔. 밑면의 중심을 $\\mathrm{E}$, 점 $\\mathrm{B}$와 대칭인 밑면 둘레 위의 점을 $\\mathrm{C}$라 할 때, $\\overline{\\mathrm{EB}} = 3$, $\\overline{\\mathrm{",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원뿔 반지름 3, 높이 4",
+      "mappedTo": "solids[0];dims"
+    },
+    {
+      "id": "c2",
+      "condition": "꼭짓점 A가 지면에 닿고 모선 AB가 지면 수직, 밑면 중심 E와 C",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:TILTED_CONE_WITH_NAMED_RIM"
+    }
+  ],
+  "newVisualInformation": [
+    "공식 엔진의 기본 입체·치수만. 절단·기울기 등 빠진 필수 도식은 후속 엔진 확장 대기"
+  ]
+}

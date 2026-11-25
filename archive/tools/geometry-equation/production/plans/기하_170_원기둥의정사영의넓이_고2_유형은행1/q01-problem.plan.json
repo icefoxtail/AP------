@@ -1,0 +1,42 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "kind": "CYLINDER",
+      "radius": 6,
+      "height": 12
+    }
+  ],
+  "dims": [
+    {
+      "radius": "bottom"
+    }
+  ],
+  "caption": "기하 유형은행 170번 유형 1번: 반지름 6인 원기둥 기본 모형. 45도 비스듬한 반타원 절단면은 아직 표시되지 않음.",
+  "solidCaption": {
+    "text": "원기둥"
+  },
+  "accessibilityDescription": "반지름 6인 원기둥 기본 모형. 45도 비스듬한 반타원 절단면은 아직 표시되지 않음.",
+  "sourceQuote": "[그림: 밑면의 반지름의 길이가 $6$인 원기둥이 수직으로 서 있고, 밑면의 중심을 지나는 지름을 교선으로 하여 밑면과 $45^{\\circ}$의 각을 이루는 평면으로 원기둥을 비스듬히 자른 반타원 모양의 단면이 색칠되어 있다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원기둥 반지름 6",
+      "mappedTo": "solids[0].radius;dims[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "밑면 중심을 통과하는 45도 절단평면과 반타원 단면",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:OBLIQUE_HALF_ELLIPSE_SECTION"
+    },
+    {
+      "id": "c3",
+      "condition": "높이는 원문에서 미제공: 12는 모양만 위한 대표값",
+      "mappedTo": "solids[0].height"
+    }
+  ],
+  "newVisualInformation": [
+    "공식 엔진의 기본 입체·치수만. 절단·기울기 등 빠진 필수 도식은 후속 엔진 확장 대기"
+  ]
+}

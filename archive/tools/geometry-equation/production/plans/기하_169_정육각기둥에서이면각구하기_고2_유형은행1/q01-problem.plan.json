@@ -1,0 +1,69 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "kind": "PRISM",
+      "base": {
+        "kind": "REGULAR",
+        "n": 6,
+        "side": 10
+      },
+      "height": 12,
+      "names": "GHIJKLABCDEF"
+    }
+  ],
+  "segments": [
+    {
+      "from": "A",
+      "to": "H",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "H",
+      "to": "L",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "L",
+      "to": "A",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "dims": [
+    {
+      "from": "A",
+      "to": "B"
+    },
+    {
+      "from": "A",
+      "to": "G"
+    }
+  ],
+  "caption": "기하 유형은행 169번 유형 1번: 밑변 10 높이 12인 정육각기둥에서 A H L을 이은 삼각형.",
+  "accessibilityDescription": "밑변 10 높이 12인 정육각기둥에서 A H L을 이은 삼각형.",
+  "sourceQuote": "[그림: 위쪽 밑면이 정육각형 $\\mathrm{ABCDEF}$(반시계 방향), 아래쪽 밑면이 정육각형 $\\mathrm{GHIJKL}$(각각 $\\mathrm{A, B, C, D, E, F}$의 바로 아래에 $\\mathrm{G, H, I, J, K, L}$이 위치)이고 $\\overline{\\mathrm{AB}}=10$, $\\overline{\\mathrm{",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "정육각기둥 ABCDEF-GHIJKL",
+      "mappedTo": "solids[0].names;solids[0].base"
+    },
+    {
+      "id": "c2",
+      "condition": "AB=10, AG=12",
+      "mappedTo": "solids[0].base.side;solids[0].height;dims"
+    },
+    {
+      "id": "c3",
+      "condition": "삼각형 AHL",
+      "mappedTo": "segments"
+    }
+  ],
+  "newVisualInformation": [
+    "밑변 10 높이 12인 정육각기둥에서 A H L을 이은 삼각형."
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "kind": "PRISM",
+      "base": {
+        "kind": "REGULAR",
+        "n": 6,
+        "side": 3
+      },
+      "height": 3,
+      "names": "GHIJKLABCDEF",
+      "points": [
+        {
+          "id": "M",
+          "at": {
+            "divide": [
+              "G",
+              "K"
+            ],
+            "ratio": "1:2"
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "G",
+      "to": "K",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "C",
+      "to": "M",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "G",
+      "to": "M",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "M",
+      "to": "K",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "dims": [
+    {
+      "from": "A",
+      "to": "B"
+    },
+    {
+      "from": "A",
+      "to": "G"
+    }
+  ],
+  "caption": "기하 유형은행 169번 유형 3번: 모든 모서리가 3인 정육각기둥. GK 위 1:2 내분점 M과 선분 CM.",
+  "accessibilityDescription": "모든 모서리가 3인 정육각기둥. GK 위 1:2 내분점 M과 선분 CM.",
+  "sourceQuote": "[그림: 모든 모서리의 길이가 $3$인 정육각기둥 $\\mathrm{ABCDEF-GHIJKL}$에서 밑면 $\\mathrm{GHIJKL}$ 위의 선분 $\\mathrm{GK}$를 $1:2$로 내분하는 점 $\\mathrm{M}$이 표시되어 있고, 선분 $\\mathrm{CM}$이 그려져 있다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "모든 모서리 길이 3",
+      "mappedTo": "solids[0];dims[0..1]"
+    },
+    {
+      "id": "c2",
+      "condition": "M이 GK를 1:2 내분",
+      "mappedTo": "solids[0].points[0];segments[0,2,3]"
+    },
+    {
+      "id": "c3",
+      "condition": "선분 CM",
+      "mappedTo": "segments[1]"
+    }
+  ],
+  "newVisualInformation": [
+    "모든 모서리가 3인 정육각기둥. GK 위 1:2 내분점 M과 선분 CM."
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 4,
+        "depth": 4
+      },
+      "height": 4,
+      "names": "EFGHABCD",
+      "points": [
+        {
+          "id": "P",
+          "at": {
+            "edge": [
+              "D",
+              "A"
+            ],
+            "t": "1/4"
+          }
+        },
+        {
+          "id": "Q",
+          "at": {
+            "edge": [
+              "G",
+              "F"
+            ],
+            "t": "1/4"
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "P",
+      "to": "B",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "B",
+      "to": "Q",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "Q",
+      "to": "P",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "D",
+      "to": "P",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "G",
+      "to": "Q",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "dims": [
+    {
+      "from": "A",
+      "to": "B"
+    },
+    {
+      "from": "D",
+      "to": "P"
+    },
+    {
+      "from": "G",
+      "to": "Q"
+    }
+  ],
+  "caption": "기하 유형은행 168번 유형 3번: 한 모서리 4인 정육면체. D에서 A로 1인 P, G에서 F로 1인 Q 및 삼각형 PBQ.",
+  "accessibilityDescription": "한 모서리 4인 정육면체. D에서 A로 1인 P, G에서 F로 1인 Q 및 삼각형 PBQ.",
+  "sourceQuote": "[그림: 한 모서리의 길이가 $4$인 정육면체 $\\mathrm{ABCD-EFGH}$에서 모서리 $\\mathrm{AD}$ 위에 $\\overline{\\mathrm{DP}}=1$인 점 $\\mathrm{P}$와 모서리 $\\mathrm{FG}$ 위에 $\\overline{\\mathrm{GQ}}=1$인 점 $\\mathrm{Q}$가 표시되어 있고, 삼각형 $\\mat",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "정육면체 한 모서리 4",
+      "mappedTo": "solids[0];dims[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "P∈DA, DP=1",
+      "mappedTo": "solids[0].points[0];segments[3];dims[1]"
+    },
+    {
+      "id": "c3",
+      "condition": "Q∈GF, GQ=1",
+      "mappedTo": "solids[0].points[1];segments[4];dims[2]"
+    },
+    {
+      "id": "c4",
+      "condition": "삼각형 PBQ",
+      "mappedTo": "segments[0..2]"
+    }
+  ],
+  "newVisualInformation": [
+    "한 모서리 4인 정육면체. D에서 A로 1인 P, G에서 F로 1인 Q 및 삼각형 PBQ."
+  ]
+}

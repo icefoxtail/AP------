@@ -1,0 +1,79 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "kind": "PRISM",
+      "base": {
+        "kind": "REGULAR",
+        "n": 6,
+        "side": 4
+      },
+      "height": 3,
+      "names": "GHIJKLABCDEF"
+    }
+  ],
+  "segments": [
+    {
+      "from": "B",
+      "to": "J",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "J",
+      "to": "L",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "L",
+      "to": "B",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "highlights": [
+    {
+      "polygon": [
+        "B",
+        "J",
+        "L"
+      ],
+      "fill": "LIGHT"
+    }
+  ],
+  "dims": [
+    {
+      "from": "A",
+      "to": "B"
+    },
+    {
+      "from": "A",
+      "to": "G"
+    }
+  ],
+  "caption": "기하 유형은행 169번 유형 2번: 한 변 4, 높이 3인 정육각기둥의 삼각형 BJL 평면을 색칠.",
+  "accessibilityDescription": "한 변 4, 높이 3인 정육각기둥의 삼각형 BJL 평면을 색칠.",
+  "sourceQuote": "[그림: 위쪽 밑면이 정육각형 $\\mathrm{ABCDEF}$, 아래쪽 밑면이 정육각형 $\\mathrm{GHIJKL}$이고 $\\overline{\\mathrm{AB}}=4$, $\\overline{\\mathrm{AG}}=3$인 정육각기둥에서 삼각형 $\\mathrm{BJL}$의 내부가 색칠되어 있다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "정육각기둥 AB=4, AG=3",
+      "mappedTo": "solids[0];dims"
+    },
+    {
+      "id": "c2",
+      "condition": "평면 BJL 삼각형 색칠",
+      "mappedTo": "segments;highlights[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "그 평면 위의 원 반지름 sqrt(15)는 발문에만 등장하고 그림 요청에는 원 자체 미표시",
+      "mappedTo": "sourceQuote;sourceConditions"
+    }
+  ],
+  "newVisualInformation": [
+    "한 변 4, 높이 3인 정육각기둥의 삼각형 BJL 평면을 색칠."
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "kind": "CYLINDER",
+      "radius": 5,
+      "height": 14
+    }
+  ],
+  "dims": [
+    {
+      "radius": "bottom"
+    }
+  ],
+  "caption": "기하 유형은행 171번 유형 1번: 반지름 5인 원기둥의 기본 형태. 45도 절단 타원과 각 호 미표시.",
+  "solidCaption": {
+    "text": "원기둥"
+  },
+  "accessibilityDescription": "반지름 5인 원기둥의 기본 형태. 45도 절단 타원과 각 호 미표시.",
+  "sourceQuote": "[그림: 밑면의 반지름의 길이가 $5\\,\\mathrm{cm}$인 원기둥을 밑면과 $45^{\\circ}$의 각을 이루는 평면으로 비스듬히 자른 타원 단면이 그려져 있다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원기둥 밑면 반지름 5 cm",
+      "mappedTo": "solids[0].radius;dims"
+    },
+    {
+      "id": "c2",
+      "condition": "밑면과 45도인 절단평면과 타원",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:OBLIQUE_FULL_ELLIPSE_SECTION"
+    },
+    {
+      "id": "c3",
+      "condition": "높이는 미제공: 시각 비율용 대표 14",
+      "mappedTo": "solids[0].height"
+    }
+  ],
+  "newVisualInformation": [
+    "공식 엔진의 기본 입체·치수만. 절단·기울기 등 빠진 필수 도식은 후속 엔진 확장 대기"
+  ]
+}

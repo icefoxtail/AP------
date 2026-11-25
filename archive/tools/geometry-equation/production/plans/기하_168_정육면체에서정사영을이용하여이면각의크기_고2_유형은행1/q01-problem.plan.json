@@ -1,0 +1,69 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 3,
+        "depth": 3
+      },
+      "height": 3,
+      "names": "EFGHABCD"
+    }
+  ],
+  "segments": [
+    {
+      "from": "D",
+      "to": "E",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "E",
+      "to": "G",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "G",
+      "to": "D",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "highlights": [
+    {
+      "polygon": [
+        "D",
+        "E",
+        "G"
+      ],
+      "fill": "LIGHT"
+    }
+  ],
+  "caption": "기하 유형은행 168번 유형 1번: 대표 정육면체의 삼각형 DEG를 연한 색으로 표시함. 각 θ의 수치와 보조선은 그림에 미표시.",
+  "accessibilityDescription": "대표 정육면체의 삼각형 DEG를 연한 색으로 표시함. 각 θ의 수치와 보조선은 그림에 미표시.",
+  "sourceQuote": "[그림: 위쪽 밑면이 $\\mathrm{ABCD}$(반시계 방향)이고 아래쪽 밑면이 $\\mathrm{EFGH}$(각각 $\\mathrm{A, B, C, D}$의 바로 아래에 $\\mathrm{E, F, G, H}$가 위치)인 정육면체 $\\mathrm{ABCD-EFGH}$에서 삼각형 $\\mathrm{DEG}$의 내부가 색칠되어 있다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "정육면체 ABCD-EFGH, A/E B/F C/G D/H가 수직 대응",
+      "mappedTo": "solids[0].names"
+    },
+    {
+      "id": "c2",
+      "condition": "면 DEG는 삼각형, 원문에서 채움",
+      "mappedTo": "segments;highlights[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "모서리 수치는 미제공: 3은 정답과 관계없는 동형 대표 모형",
+      "mappedTo": "solids[0].base;solids[0].height"
+    }
+  ],
+  "newVisualInformation": [
+    "대표 정육면체의 삼각형 DEG를 연한 색으로 표시함. 각 θ의 수치와 보조선은 그림에 미표시."
+  ]
+}
