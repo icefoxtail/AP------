@@ -1,0 +1,11 @@
+{
+  "capability":"ellipse-figure-v1",
+  "conic":{"kind":"PARABOLA","vertex":["0","0"],"p":"6","axis":"X"},
+  "points":[{"id":"O","kind":"ORIGIN"},{"id":"F","kind":"FOCUS"},{"id":"P","kind":"ON_CONIC","x":"18","branch":"POS"},{"id":"Q","kind":"ON_CONIC","x":"2","branch":"NEG"},{"id":"H","kind":"FOOT","from":"P","onto":"d","rightAngle":true}],
+  "lines":[{"id":"d","role":"DIRECTRIX","label":"l"}],
+  "segments":[{"id":"PF","from":"P","to":"F"},{"id":"FQ","from":"F","to":"Q"},{"id":"PH","from":"P","to":"H"},{"id":"HF","from":"H","to":"F"}],
+  "caption":"y²=4px에서 준선 l의 수선 PH와 초점 통과 현 PFQ, PF:FQ=3:1, 삼각형 PHF 넓이 144√3",
+  "accessibilityDescription":"제1사분면 포물선 점 P에서 준선 l로 내린 수선의 발 H와 초점 F로 삼각형을 만들고 선분 PF를 연장한 아래쪽 포물선 점 Q가 있다.",
+  "sourceConditions":[{"id":"c1","condition":"PF:FQ=3:1이고 PH=PF, 삼각형 PHF의 넓이가 144√3인 내부 대표 p=6을 사용하되 구하는 p값을 표시하지 않는다.","mappedTo":["conic","P","Q","F","PF","FQ"]},{"id":"c2","condition":"P=(18,12√3), Q=(2,-4√3), H=(-6,12√3)으로 실제 초점 현·준선 수선·정삼각형 PHF를 만족한다.","mappedTo":["d","H","PH","HF"]}],
+  "newVisualInformation":["준선 수선과 초점 현 3대1 비 및 정삼각형"]
+}
