@@ -1,0 +1,286 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "8",
+                  "denominator": "1"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "4",
+                  "denominator": "1"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "8",
+                  "denominator": "3"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "c1",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "B1"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "8"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B1",
+    "C1",
+    "A",
+    "C2",
+    "B2"
+  ],
+  "hiddenPointNames": [],
+  "displayLines": [],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "B1",
+        "C1"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "C1",
+        "A"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "A",
+        "B1"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "C2",
+        "B2"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "B1",
+        "C2"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "first",
+        "circle": "c1",
+        "center": "B1",
+        "from": "C1",
+        "to": "C2",
+        "side": "CCW",
+        "highlight": false
+      }
+    ]
+  },
+  "pointNames": {
+    "B1": "B_1",
+    "C1": "C_1",
+    "B2": "B_2",
+    "C2": "C_2"
+  },
+  "rightAngles": [
+    {
+      "id": "r1",
+      "refs": [
+        "B1",
+        "C1",
+        "A"
+      ]
+    },
+    {
+      "id": "r2",
+      "refs": [
+        "B1",
+        "C2",
+        "B2"
+      ]
+    }
+  ],
+  "caption": "직각삼각형 B₁C₁A, 빗변 위 C₂에서 AC₁으로 내린 수선 C₂B₂와 B₁ 중심 호 C₁C₂.",
+  "accessibilityDescription": "직각삼각형 B₁C₁A, 빗변 위 C₂에서 AC₁으로 내린 수선 C₂B₂와 B₁ 중심 호 C₁C₂.",
+  "sourceQuote": "[그림: $B_1=(0,0),C_1=(8,0),A=(8,8\\sqrt3)$를 잇는다. $C_2=(4,4\\sqrt3)$에서 $AB_1$에 수직인 선을 그려 $AC_1$과의 교점을 $B_2$로 표시한다. $B_1$ 중심의 첫 호를 그린다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "B1=(0,0), C1=(8,0), A=(8,8sqrt3)",
+      "mappedTo": "mathPlan.nodes[0..2];displaySegments[0..2];rightAngles[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "C2=(4,4sqrt3) 및 수선 발 B2=(8,8sqrt3/3)",
+      "mappedTo": "mathPlan.nodes[3..4];displaySegments[3];rightAngles[1]"
+    },
+    {
+      "id": "c3",
+      "condition": "B1 중심, 반지름8의 원호 C1C2",
+      "mappedTo": "mathPlan.nodes[5];planeMarks.arcs[0]"
+    },
+    {
+      "id": "c4",
+      "condition": "첨자 B1,C1,B2,C2 점 이름",
+      "mappedTo": "pointNames"
+    }
+  ],
+  "newVisualInformation": [
+    "원문이 요청한 호·점·선의 기하 관계만 구현하고 계산해야 할 넓이의 합은 그림에 제시하지 않는다."
+  ]
+}

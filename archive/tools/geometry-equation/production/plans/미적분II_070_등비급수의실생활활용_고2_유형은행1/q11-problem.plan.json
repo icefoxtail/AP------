@@ -1,0 +1,54 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "SIN",
+    "ratePi": "1",
+    "coefficients": [
+      "1",
+      "0"
+    ],
+    "phasePi": "0",
+    "absolute": true,
+    "keyPoints": true,
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-2",
+        "2"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "1"
+      ],
+      "y": [
+        "1"
+      ]
+    },
+    "displaySize": "full"
+  },
+  "caption": "n=1에서 y=|sin(πx)|의 좌우 대칭 4개 반파장; 직선 y=|x|/2의 정확한 두 반직선 표현은 엔진 미지원.",
+  "accessibilityDescription": "구간 -2부터 2까지 높이 1의 절댓값 사인 아치 네 개를 그리고, y=|x|/2의 두 반직선은 아직 제공되지 않는다.",
+  "sourceQuote": "[그림: $n=1$일 때 $0\\le x\\le 2$에서 높이 $1$의 두 사인 아치와 직선 $y=x/2$를 그리고 $y$축 대칭으로 왼쪽 그래프를 그린다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "n=1의 y=|sin πx| 양쪽 두 아치와 y축 대칭",
+      "mappedTo": "graphPlan.function;graphPlan.ratePi;graphPlan.absolute;graphPlan.sourceDomain"
+    },
+    {
+      "id": "c2",
+      "condition": "n=1의 y=|x|/2 두 반직선",
+      "mappedTo": "ENGINE_CAPABILITY_PENDING:trigonometric-spike-v1에서 기준선의 좌·우 구간별 분리 부재"
+    }
+  ],
+  "newVisualInformation": [
+    "ENGINE_CAPABILITY_PENDING: 같은 플롯에서 y=|sin(πx)|와 y=|x|/2의 좌우 구간별 선분을 정확히 겹쳐 그리는 기능이 없다. 기울어진 기준선 두 개를 전 구간에 연장하면 원문과 달라지므로 생략했다."
+  ]
+}

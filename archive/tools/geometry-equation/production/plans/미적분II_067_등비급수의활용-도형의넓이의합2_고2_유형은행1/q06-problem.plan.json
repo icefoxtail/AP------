@@ -1,0 +1,199 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "X",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Y",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "7",
+              "denominator": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "big",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "C1"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "small",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "C2"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "3",
+            "denominator": "4"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "X",
+    "Y",
+    "C1",
+    "C2"
+  ],
+  "hiddenPointNames": [
+    "X",
+    "Y",
+    "C1",
+    "C2"
+  ],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "O",
+        "X"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "O",
+        "Y"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "big",
+    "small"
+  ],
+  "planeMarks": {},
+  "caption": "각의 이등분선에 놓인 두 외접원: 중심 (4,3), (1,3/4).",
+  "accessibilityDescription": "원점에서 오른쪽 수평선과 위쪽 급한 기울기의 반직선이 뻗고, 그 사이에 반지름 3인 큰 원과 반지름 3/4인 작은 원이 서로 접한다.",
+  "sourceQuote": "[그림: 원점에서 오른쪽으로 수평 반직선을 그리고 그 위로 각의 이등분선이 기울기 $3/4$가 되도록 두 번째 반직선을 그린다. 중심 $(4,3)$과 $(1,3/4)$인 두 원을 그린다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원점에서 나가는 수평 반직선과 각 이등분선 기울기 3/4의 두 번째 반직선",
+      "mappedTo": "mathPlan.nodes[0..2];displaySegments[0..1]"
+    },
+    {
+      "id": "c2",
+      "condition": "중심 (4,3), 반지름 3인 접원",
+      "mappedTo": "mathPlan.nodes[3,5];displayCircles[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "중심 (1,3/4), 반지름 3/4인 다음 접원",
+      "mappedTo": "mathPlan.nodes[4,6];displayCircles[1]"
+    }
+  ],
+  "newVisualInformation": [
+    "두 원의 반지름 비는 그려지는 중심 및 호에 반영하고 무한급수 넓이는 숨긴다."
+  ]
+}

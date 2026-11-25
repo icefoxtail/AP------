@@ -1,0 +1,107 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -0.25,
+      2.3,
+      -3,
+      16
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "3"
+        ],
+        "domain": [
+          "0",
+          "11/5"
+        ],
+        "label": "y=3x^2"
+      },
+      {
+        "id": "g",
+        "kind": "LINE",
+        "coefficients": [
+          "-12",
+          "12"
+        ],
+        "domain": [
+          "4/5",
+          "11/5"
+        ],
+        "label": "y=12x-12"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "2"
+      ],
+      "y": [
+        "12"
+      ]
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "v",
+          "x": "1"
+        }
+      ],
+      "points": [
+        {
+          "id": "T",
+          "x": "2",
+          "y": "12",
+          "unnamed": true
+        },
+        {
+          "id": "H",
+          "x": "1",
+          "y": "0",
+          "unnamed": true
+        }
+      ]
+    },
+    "regions": [
+      {
+        "id": "R",
+        "between": [
+          "f",
+          "g"
+        ],
+        "from": "1",
+        "to": "2",
+        "fill": "LIGHT"
+      }
+    ]
+  },
+  "caption": "포물선 y=3x², (2,12)에서의 접선 y=12x-12, 수직선 x=1과 둘 사이의 칠한 영역.",
+  "accessibilityDescription": "x축 오른쪽 위에 볼록한 포물선과 점 (2,12)에서 맞닿는 접선, x=1 세로선, x=1부터 2까지 두 곡선 사이 밝게 채운 영역이 있다.",
+  "sourceQuote": "[그림: $y=3x^2$와 $(2,12)$에서의 접선 $y=12x-12$, 세로선 $x=1$을 그리고 $1\\le x\\le2$에서 접선과 포물선 사이를 칠한다.]",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "포물선 y=3x²",
+      "mappedTo": "graphPlan.curves[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "접점 (2,12)에서 접선 y=12x−12",
+      "mappedTo": "graphPlan.curves[1];graphPlan.overlays.points[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "x=1 세로선과 1≤x≤2 사이 영역 색칠",
+      "mappedTo": "graphPlan.overlays.lines[0];graphPlan.regions[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "대표 그림에서 확인할 관계만 보여 주며 요청한 극한·합의 정답은 표시하지 않는다."
+  ]
+}
