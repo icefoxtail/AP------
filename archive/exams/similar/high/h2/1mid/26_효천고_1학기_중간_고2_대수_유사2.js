@@ -7,7 +7,7 @@ window.questionBank = [
     content: "$3^{x-1}\\times\\sqrt[3]{\\dfrac1{27}}=3^2$을 만족시키는 실수 $x$의 값은? [3.3점]",
     choices: ["$4$", "$5$", "$6$", "$7$", "$8$"], answer: "①",
     solution: "먼저 거듭제곱근을 지수로 나타낸다.\n$\\sqrt[3]{\\dfrac1{27}}=\\left(3^{-3}\\right)^{\\frac13}=3^{-1}$이다.\n따라서 주어진 등식은\n$3^{x-1}\\times3^{-1}=3^{x-2}=3^2$이다.\n밑이 같으므로 $x-2=2$이고, $x=4$이다.\n그러므로 정답은 ①이다.",
-    points: 3.3, curriculum: "2022", rpmPrimaryRecordId: "H2-M1-RPM-071", problemTypeKey: "PT_H22A_01_EXPONENT_LAWS", templateKey: "TPL_H22A_01_EXPONENT_LAWS_071", crossConceptKeys: [], conditionKeys: [], integrationPattern: "SINGLE_TOPIC", difficultyBucket: 1, difficultyConfidence: "high", difficultyBoundaryFlag: "NONE", sourceQid: 1, variationType: "EXAM_FOLLOWUP", provenance: "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_대수.js#q1"
+    points: 3.3, curriculum: "2022", rpmPrimaryRecordId: "H2-M1-RPM-071", problemTypeKey: "PT_H22A_01_EXPONENT_LAWS", templateKey: "TPL_H22A_01_EXPONENT_LAWS_071", crossConceptKeys: [], conditionKeys: [], integrationPattern: "NONE", difficultyBucket: 1, difficultyConfidence: "high", difficultyBoundaryFlag: "NONE", sourceQid: 1, variationType: "EXAM_FOLLOWUP", provenance: "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_대수.js#q1"
   },
   {
     id: 2, category: "지수·로그 계산의 참거짓", standardCourse: "대수", standardUnitKey: "H22-A-01", standardUnit: "지수와 로그", subUnitKey: "H22-A-01-EXPONENT_LOG", subUnit: "지수와 로그", subUnitClassificationDepth: "complete_category",
@@ -23,7 +23,7 @@ window.questionBank = [
     content: "$\\log2.5=0.3979$일 때, $\\log(10x)=2.3979$를 만족시키는 양수 $x$의 값은? [3.5점]",
     choices: ["$0.25$", "$2.5$", "$12.5$", "$25$", "$250$"], answer: "④",
     solution: "두 상용로그를 빼면\n$\\log(10x)-\\log2.5=2.3979-0.3979=2$이다.\n로그의 성질에 의해 $\\log\\dfrac{10x}{2.5}=2$이므로\n$\\dfrac{10x}{2.5}=10^2=100$이다.\n따라서 $10x=250$, $x=25$이다.\n그러므로 정답은 ④이다.",
-    points: 3.5, curriculum: "2022", rpmPrimaryRecordId: "H2-M1-RPM-078", problemTypeKey: "PT_H22A_01_COMMON_LOG", templateKey: "TPL_H22A_01_COMMON_LOG_078", crossConceptKeys: [], conditionKeys: [], integrationPattern: "SINGLE_TOPIC", difficultyBucket: 1, difficultyConfidence: "high", difficultyBoundaryFlag: "NONE", sourceQid: 3, variationType: "EXAM_FOLLOWUP", provenance: "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_대수.js#q3"
+    points: 3.5, curriculum: "2022", rpmPrimaryRecordId: "H2-M1-RPM-078", problemTypeKey: "PT_H22A_01_COMMON_LOG", templateKey: "TPL_H22A_01_COMMON_LOG_078", crossConceptKeys: [], conditionKeys: [], integrationPattern: "NONE", difficultyBucket: 1, difficultyConfidence: "high", difficultyBoundaryFlag: "NONE", sourceQid: 3, variationType: "EXAM_FOLLOWUP", provenance: "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_대수.js#q3"
   },
   {
     id: 4, category: "호도법 역변환", standardCourse: "대수", standardUnitKey: "H22-A-04", standardUnit: "삼각함수", subUnitKey: "H22-A-04-TRIGONOMETRIC_BASIC", subUnit: "삼각함수의 기본", subUnitClassificationDepth: "complete_category",
@@ -31,7 +31,7 @@ window.questionBank = [
     content: "두 실수 $a$, $b$에 대하여 $a^\\circ=\\dfrac{2\\pi}{9}$, $45^\\circ=b\\pi$일 때, $ab$의 값은? [3.6점]",
     choices: ["$5$", "$10$", "$15$", "$20$", "$25$"], answer: "②",
     solution: "$180^\\circ=\\pi$라디안이므로 $a^\\circ=\\dfrac{2\\pi}{9}$에서\n$a=180\\times\\dfrac29=40$이다.\n또 $45^\\circ=\\dfrac{\\pi}{4}=b\\pi$이므로 $b=\\dfrac14$이다.\n따라서 $ab=40\\times\\dfrac14=10$이다.\n그러므로 정답은 ②이다.",
-    points: 3.6, curriculum: "2022", rpmPrimaryRecordId: "H2-M1-RPM-096", problemTypeKey: "PT_H22A_04_ANGLE_RADIAN", templateKey: "TPL_H22A_04_ANGLE_RADIAN_096", crossConceptKeys: [], conditionKeys: [], integrationPattern: "SINGLE_TOPIC", difficultyBucket: 1, difficultyConfidence: "high", difficultyBoundaryFlag: "NONE", sourceQid: 4, variationType: "EXAM_FOLLOWUP", provenance: "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_대수.js#q4"
+    points: 3.6, curriculum: "2022", rpmPrimaryRecordId: "H2-M1-RPM-096", problemTypeKey: "PT_H22A_04_ANGLE_RADIAN", templateKey: "TPL_H22A_04_ANGLE_RADIAN_096", crossConceptKeys: [], conditionKeys: [], integrationPattern: "NONE", difficultyBucket: 1, difficultyConfidence: "high", difficultyBoundaryFlag: "NONE", sourceQid: 4, variationType: "EXAM_FOLLOWUP", provenance: "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_대수.js#q4"
   },
   {
     id: 5, category: "삼각함수 부호를 고려한 역산", standardCourse: "대수", standardUnitKey: "H22-A-04", standardUnit: "삼각함수", subUnitKey: "H22-A-04-TRIGONOMETRIC_BASIC", subUnit: "삼각함수의 기본", subUnitClassificationDepth: "complete_category",
@@ -39,7 +39,7 @@ window.questionBank = [
     content: "$\\tan\\theta=-\\dfrac43$이고 $\\dfrac{3\\pi}{2}<\\theta<2\\pi$일 때, $\\sin\\theta$의 값은? [3.6점]",
     choices: ["$-\\dfrac45$", "$-\\dfrac35$", "$-\\dfrac12$", "$\\dfrac35$", "$\\dfrac45$"], answer: "①",
     solution: "$\\dfrac{3\\pi}{2}<\\theta<2\\pi$이므로 제4사분면에서 $\\sin\\theta<0$, $\\cos\\theta>0$이다.\n$\\tan\\theta=\\dfrac{\\sin\\theta}{\\cos\\theta}=-\\dfrac43$이므로 직각삼각형의 세 변 비를 $4:3:5$로 볼 수 있다.\n따라서 $|\\sin\\theta|=\\dfrac45$이고 부호는 음수이다.\n$\\sin\\theta=-\\dfrac45$이므로 정답은 ①이다.",
-    points: 3.6, curriculum: "2022", rpmPrimaryRecordId: "H2-M1-RPM-098", problemTypeKey: "PT_H22A_04_TRIG_DEFINITION", templateKey: "TPL_H22A_04_TRIG_DEFINITION_098", crossConceptKeys: [], conditionKeys: [], integrationPattern: "SINGLE_TOPIC", difficultyBucket: 2, difficultyConfidence: "high", difficultyBoundaryFlag: "NONE", sourceQid: 5, variationType: "EXAM_FOLLOWUP", provenance: "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_대수.js#q5"
+    points: 3.6, curriculum: "2022", rpmPrimaryRecordId: "H2-M1-RPM-098", problemTypeKey: "PT_H22A_04_TRIG_DEFINITION", templateKey: "TPL_H22A_04_TRIG_DEFINITION_098", crossConceptKeys: [], conditionKeys: [], integrationPattern: "NONE", difficultyBucket: 2, difficultyConfidence: "high", difficultyBoundaryFlag: "NONE", sourceQid: 5, variationType: "EXAM_FOLLOWUP", provenance: "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_대수.js#q5"
   },
   {
     id: 6, category: "구의 겉넓이와 분수 지수", standardCourse: "대수", standardUnitKey: "H22-A-01", standardUnit: "지수와 로그", subUnitKey: "H22-A-01-EXPONENT_LOG", subUnit: "지수와 로그", subUnitClassificationDepth: "complete_category",
@@ -47,7 +47,7 @@ window.questionBank = [
     content: "겉넓이가 $128\\pi$인 구의 반지름을 $\\sqrt[n]{2^m}$꼴로 나타내었다. 서로소인 자연수 $m,n$에 대하여 $m+n$의 값은? [3.7점]",
     choices: ["$5$", "$7$", "$8$", "$9$", "$11$"], answer: "②",
     solution: "반지름을 $r$이라 하면 구의 겉넓이에서\n$4\\pi r^2=128\\pi$이므로 $r^2=32=2^5$이다.\n$r>0$이므로 $r=2^{\\frac52}=\\sqrt[2]{2^5}$이다.\n$5$와 $2$는 서로소이므로 $m=5$, $n=2$이다.\n따라서 $m+n=7$이고 정답은 ②이다.",
-    points: 3.7, curriculum: "2022", rpmPrimaryRecordId: "H2-M1-RPM-067", problemTypeKey: "PT_H22A_01_ROOT_REAL", templateKey: "TPL_H22A_01_ROOT_REAL_067", crossConceptKeys: [], conditionKeys: [], integrationPattern: "SINGLE_TOPIC", difficultyBucket: 3, difficultyConfidence: "high", difficultyBoundaryFlag: "NONE", sourceQid: 6, variationType: "EXAM_FOLLOWUP", provenance: "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_대수.js#q6"
+    points: 3.7, curriculum: "2022", rpmPrimaryRecordId: "H2-M1-RPM-067", problemTypeKey: "PT_H22A_01_ROOT_REAL", templateKey: "TPL_H22A_01_ROOT_REAL_067", crossConceptKeys: [], conditionKeys: [], integrationPattern: "NONE", difficultyBucket: 3, difficultyConfidence: "high", difficultyBoundaryFlag: "NONE", sourceQid: 6, variationType: "EXAM_FOLLOWUP", provenance: "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_대수.js#q6"
   },
   {
     id: 7, category: "유리수 지수와 자연수 조건", standardCourse: "대수", standardUnitKey: "H22-A-01", standardUnit: "지수와 로그", subUnitKey: "H22-A-01-EXPONENT_LOG", subUnit: "지수와 로그", subUnitClassificationDepth: "complete_category",

@@ -1,6 +1,6 @@
 # 26_효천고_1학기_중간_고2_대수_유사2 SVG 후속 판정·작업 장부
 
-- 기준 JS Git blob SHA: `85a1ecdd3ef58a867f12cd730269b499e51c106a`.
+- 기준 JS Git blob SHA: `6e9bc7d25317bd229322944cb8e3c53137e982e1`.
 - 전체 판정: Q01–Q23 × 문제/해설 2축 = 46개, 미판정 0.
 - 문제 23개: REQUIRED 0, BENEFICIAL 0, EXEMPT 23. 해설 23개: REQUIRED 0, BENEFICIAL 5, EXEMPT 18.
 - 실제 공식 엔진 제작용 plan JSON 5개(모두 해설). EXEMPT용 가짜 제작 계획 0개.
