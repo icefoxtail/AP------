@@ -1,0 +1,54 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {"recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false},
+    "nodes": [
+      {
+        "id": "A", "op": "SOURCE_POINT", "inputs": [],
+        "args": {"coordinates": [
+          {"kind": "integer", "value": "1"},
+          {"kind": "expression", "op": "mul", "args": [
+            {"kind": "integer", "value": "2"},
+            {"kind": "expression", "op": "sqrt", "args": [{"kind": "integer", "value": "6"}]}
+          ]}
+        ]}, "outputType": "POINT", "factRole": "GIVEN"
+      },
+      {
+        "id": "B", "op": "SOURCE_POINT", "inputs": [],
+        "args": {"coordinates": [{"kind": "integer", "value": "6"}, {"kind": "integer", "value": "0"}]},
+        "outputType": "POINT", "factRole": "GIVEN"
+      },
+      {
+        "id": "C", "op": "SOURCE_POINT", "inputs": [],
+        "args": {"coordinates": [{"kind": "integer", "value": "0"}, {"kind": "integer", "value": "0"}]},
+        "outputType": "POINT", "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {"id": "sAB", "refs": ["A", "B"]},
+    {"id": "sBC", "refs": ["B", "C"]},
+    {"id": "sCA", "refs": ["C", "A"]}
+  ],
+  "displayPoints": ["A", "B", "C"],
+  "planeMarks": {
+    "expressionLabels": [
+      {"id": "tAB", "ownerSegment": "sAB", "text": "7"},
+      {"id": "tBC", "ownerSegment": "sBC", "text": "6"},
+      {"id": "tCA", "ownerSegment": "sCA", "text": "5"}
+    ]
+  },
+  "coordinateCanvas": {"width": 600, "height": 460},
+  "caption": "세 변 AB=7, BC=6, CA=5인 삼각형 ABC만 그린 문제 그림",
+  "accessibilityDescription": "밑변 BC는 가로 길이 6이고, 그 위에 꼭짓점 A가 있는 삼각형이다. 오른쪽 빗변 AB에 7, 밑변 BC에 6, 왼쪽 빗변 CA에 5가 각각 표시되어 있다. 타원은 문제 그림에 그리지 않는다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "AB=7: 대표 좌표 A=(1,2√6), B=(6,0)이므로 AB²=25+24=49이다.", "mappedTo": ["A", "B", "sAB", "tAB"]},
+    {"id": "c2", "condition": "BC=6: B=(6,0), C=(0,0)으로 가로 밑변을 배치했다.", "mappedTo": ["B", "C", "sBC", "tBC"]},
+    {"id": "c3", "condition": "CA=5: C=(0,0), A=(1,2√6)이므로 CA²=1+24=25이다.", "mappedTo": ["C", "A", "sCA", "tCA"]},
+    {"id": "c4", "condition": "B,C는 구하려는 타원의 초점이고 A는 그 타원을 지나는 점이지만, 원문 [그림]은 삼각형만 요청하므로 타원/축/초점 보조표시는 추가하지 않는다.", "mappedTo": ["A", "B", "C"]}
+  ],
+  "newVisualInformation": ["풀이에서 처음 도입되는 타원은 생략하고 문제 원문과 동일한 세 길이만 도형 위에 표시"]
+}
