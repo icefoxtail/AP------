@@ -1,0 +1,25 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"5"},{"kind":"integer","value":"5"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"P","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"4"},{"kind":"integer","value":"6"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"M","op":"MIDPOINT","inputs":["O","P"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"k0","op":"CIRCLE_CENTER_RADIUS","inputs":["O"],"args":{"radius":{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"2"}]}},"outputType":"CIRCLE","factRole":"GIVEN"},
+    {"id":"k1","op":"CIRCLE_CENTER_RADIUS","inputs":["C"],"args":{"radius":{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"2"}]}},"outputType":"CIRCLE","factRole":"GIVEN"},
+    {"id":"hk","op":"CIRCLE_CENTER_RADIUS","inputs":["M"],"args":{"radius":{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"13"}]}},"outputType":"CIRCLE","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"s","op":"INTERSECTION","inputs":["k0","hk"],"args":{},"outputType":"POINT_SET","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"A","op":"SELECT_POINT","inputs":["s"],"args":{},"outputType":"POINT","branch":{"kind":"SIDE_OF_ORIENTED_LINE","refs":["O","P"],"sign":-1},"factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"N","op":"TRANSLATE_POINT","inputs":["C"],"args":{"dx":{"kind":"integer","value":"-1"},"dy":{"kind":"integer","value":"-1"}},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"F","op":"TRANSLATE_POINT","inputs":["C"],"args":{"dx":{"kind":"integer","value":"1"},"dy":{"kind":"integer","value":"1"}},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "displayPoints":["O","C","P","A","N","F"],"displayCircles":["k0","k1"],
+  "displaySegments":[{"id":"sOA","refs":["O","A"]},{"id":"sAP","refs":["A","P"]},{"id":"sOP","refs":["O","P"]},{"id":"sCP","refs":["C","P"]},{"id":"sON","refs":["O","N"]},{"id":"sNF","refs":["N","F"]}],
+  "rightAngles":[{"id":"rA","refs":["O","A","P"]}],
+  "planeMarks":{"expressionLabels":[{"id":"rad","ownerSegment":"sOA","text":"sqrt(2)"},{"id":"near","ownerSegment":"sON","text":"4sqrt(2)"}],"dimensions":[{"id":"far","from":"O","to":"F","label":"6sqrt(2)","side":"ABOVE"}],"facts":[{"kind":"TANGENT_PERPENDICULAR","center":"O","contact":"A","tangent":"sAP"}]},
+  "coordinateCanvas":{"width":660,"height":570},
+  "caption":"n≥5의 대표 n=5 사례에서 C=(5,5), 반지름 √2인 원의 최근점 N=(4,4)과 최원점 F=(6,6)을 O·C와 한 직선에 배치했다. ON=4√2, OF=6√2; 일반 n에서는 OP의 최솟값·최댓값이 (n−1)√2, (n+1)√2이다. 별도의 P=(4,6)에서 내린 접선의 OA⊥AP도 표시한다.",
+  "accessibilityDescription":"원점의 원에 접선을 그린 삼각형 OAP와 외부 원의 지름 방향 양 끝 N,F를 한 그림에 배치하고 ON=4√2, OF=6√2 두 길이 치수, 직각표식을 적는다.",
+  "sourceConditions":[{"id":"q19s-circles","condition":"두 원의 중심 O, C_5=(5,5)와 공통 반지름 √2","mappedTo":"mathPlan.nodes[0],mathPlan.nodes[1],displayCircles"},{"id":"q19s-tangent","condition":"OA⊥AP, |OA|=√2","mappedTo":"rightAngles[0],planeMarks.facts[0],planeMarks.expressionLabels[0]"},{"id":"q19s-extrema","condition":"n=5일 때 |ON|=(5−1)√2=4√2, |OF|=(5+1)√2=6√2","mappedTo":"mathPlan.nodes[9],mathPlan.nodes[10],displaySegments[4],displaySegments[5],planeMarks.expressionLabels[1],planeMarks.dimensions[0]"}],
+  "newVisualInformation":["외부 원의 최근·최원점이 OC 직선 위임","직각 접선과 OP 거리 극값의 두 가지 독립 관계"]
+}

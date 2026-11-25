@@ -1,0 +1,8 @@
+{
+  "capability":"exponential-affine-spike-v1",
+  "graphPlan":{"family":"exponential-affine","base":"1/2","coefficients":["1","1","0"],"sourceDomain":{"kind":"ALL_REALS"},"domain":[0,4],"viewport":[-1,5,-0.1,1.2],"axisTickValues":{"x":[1,2,3],"y":["1/5","1/2","1"]},"overlays":{"lines":[{"id":"remaining","slope":"0","intercept":"1/5"}]}},
+  "caption":"가로 변수 u=t/5700은 지난 반감기 수이다. 세로축은 잔존 비율 (1/2)^u이고 수평선 1/5는 주어진 20%를 뜻한다. 구하는 실제 연수 t와 교차 u값은 문제 그림에 적지 않는다.",
+  "accessibilityDescription":"반감기 한 번마다 절반으로 줄어드는 지수곡선과 초기값의 20퍼센트인 y=1/5 수평선이 교차한다. 교점의 시간 숫자는 없다.",
+  "sourceConditions":[{"id":"q17p-half","condition":"반감기5700년, u=t/5700일 때 잔존비율(1/2)^u","mappedTo":"graphPlan.base,graphPlan.coefficients,graphPlan.domain"},{"id":"q17p-fraction","condition":"잔존20%=1/5","mappedTo":"graphPlan.overlays.lines[0]"}],
+  "newVisualInformation":["반감기마다 지수 감소하는 모습","20%에 도달하는 교점의 시각적 의미"]
+}

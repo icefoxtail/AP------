@@ -1,0 +1,8 @@
+{
+  "capability":"rational-spike-v1",
+  "graphPlan":{"family":"rational","numerator":["5","0"],"denominator":["0","1"],"sourceDomain":{"kind":"ALL_REALS"},"domain":[0.5,6],"viewport":[-1,7,-1,12],"equalUnits":true,"axisTickValues":{"x":["1","5"],"y":["1","5"]},"overlays":{"points":[{"id":"O","x":"0","y":"0"},{"id":"P","curveX":"1"},{"id":"X","x":"4","y":"0"}],"segments":[{"id":"OP","from":"O","to":"P"}],"angles":[{"at":"O","from":"X","to":"P","color":"BLUE","arcs":1}]}},
+  "caption":"제1사분면의 곡선 y=5/x (x>0) 위 대표점 P(1,5)와 원점 O를 잇는 동경을 보인다. P는 임의의 예시점이고 최댓값 달성점·답은 문제 그림에 표시하지 않는다.",
+  "accessibilityDescription":"제1사분면의 감소 쌍곡선과 원점에서 그 위의 한 점 P로 뻗은 선분 OP가 있으며 최적점은 특정하지 않는다.",
+  "sourceConditions":[{"id":"q22p-curve","condition":"y=5/x, x>0","mappedTo":"graphPlan.numerator,graphPlan.denominator,graphPlan.domain"},{"id":"q22p-ray","condition":"O에서 곡선 위 P로 잇는 동경, 양의 x축과 이루는 θ 각호","mappedTo":"graphPlan.overlays.points[0],graphPlan.overlays.points[1],graphPlan.overlays.points[2],graphPlan.overlays.segments[0],graphPlan.overlays.angles[0]"}],
+  "newVisualInformation":["동경 OP의 방향과 QI의 θ","정답 위치를 숨긴 대표점 예시"]
+}

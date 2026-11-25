@@ -1,0 +1,8 @@
+{
+  "capability":"rational-spike-v1",
+  "graphPlan":{"family":"rational","numerator":["5","0"],"denominator":["0","1"],"sourceDomain":{"kind":"ALL_REALS"},"domain":[0.5,6],"viewport":[-1,7,-1,12],"equalUnits":true,"axisTickValues":{"x":["1","5"],"y":["1","5"]},"overlays":{"points":[{"id":"O","x":"0","y":"0"},{"id":"P","curveX":"sqrt(5)","coordinates":true},{"id":"X","x":"4","y":"0"}],"segments":[{"id":"OP","from":"O","to":"P"}],"lines":[{"id":"equal","slope":"1","intercept":"0"}],"angles":[{"at":"O","from":"X","to":"P","color":"BLUE","arcs":1}]}},
+  "caption":"(sinθ+cosθ)²≤2에서 등호는 sinθ=cosθ, 즉 OP가 y=x일 때다. y=5/x와 y=x의 교점은 P(√5,√5)이므로 θ=π/4이며 최댓값은 √2다.",
+  "accessibilityDescription":"제1사분면 쌍곡선 y=5/x와 직선 y=x의 교점 P(√5,√5)를 원점과 연결했다. 원점에서 보았을 때 45도 각을 이룬다.",
+  "sourceConditions":[{"id":"q22s-curve","condition":"y=5/x, x>0","mappedTo":"graphPlan.numerator,graphPlan.denominator,graphPlan.domain"},{"id":"q22s-equality","condition":"sinθ=cosθ → y=x, P(√5,√5), θ=π/4","mappedTo":"graphPlan.overlays.lines[0],graphPlan.overlays.points[1],graphPlan.overlays.points[2],graphPlan.overlays.segments[0],graphPlan.overlays.angles[0]"}],
+  "newVisualInformation":["동경이 y=x를 향하는 최댓값 위치","정확한 교점 (√5,√5) 라벨"]
+}
