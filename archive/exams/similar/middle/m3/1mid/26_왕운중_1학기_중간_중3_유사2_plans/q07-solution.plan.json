@@ -1,0 +1,43 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "axisVariable": false,
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "points": [
+          {
+            "id": "A",
+            "value": "-0.59"
+          },
+          {
+            "id": "B",
+            "value": "1.41"
+          },
+          {
+            "id": "D",
+            "value": "2.41"
+          },
+          {
+            "id": "E",
+            "value": "0.59"
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "선택지의 수 A, B, D, E는 한 수직선에 근삿값으로 표시한다. A≈-0.59, B≈1.41, D≈2.41, E≈0.59이다. 별도로 C=-1-√2≈-2.41이므로 0과 1 사이에는 E만 있다.",
+  "accessibilityDescription": "A는 약 -0.59, B는 1.41, D는 2.41, E는 0.59 위치에 있다. C는 축의 왼쪽 약 -2.41이다. 소수 좌표는 근삿값이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "한 변의 길이가 $1$인 정사각형의 대각선 길이만큼 수직선에서 이동하여 다음 다섯 점을 찍었다. $0$보다 크고 $1$보다 작은 수를 나타내는 점은? [4점]\n- A: $-2$에서 오른쪽으로 이동\n- B: $0$에서 오른쪽으로 이동\n- C: $-1$에서 왼쪽으로 이동\n- D: $1$에서 오른쪽으로 이동\n- E: $2$에서 왼쪽으로 이동",
+      "mappedTo": "CURRENT_FOLLOWUP_JS"
+    }
+  ],
+  "newVisualInformation": [
+    "A~E의 수직선 상의 정확한 수 위치",
+    "0과 1 사이에 있는 점의 위치"
+  ]
+}
