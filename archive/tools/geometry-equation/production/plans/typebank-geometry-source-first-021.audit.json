@@ -1,0 +1,82 @@
+{
+  "auditKind": "SOURCE_FIRST_PRE_RENDER_FIELD_PARITY",
+  "date": "2026-11-25",
+  "from": 21,
+  "to": 21,
+  "missingSourceNumbers": [],
+  "reviewRule": "Write missing source-fidelity plans for the three original ellipse figures. Verify vertex/focus orientation, literal given lengths, full line equation, and right-isosceles triangle without exposing the requested answers; declare engine-layout omissions pending.",
+  "figures": [
+    {
+      "number": 21,"qid": 1,"sourceQuote": "장축의 길이와 두 초점 사이의 거리의 합은?",
+      "sourceVsPlan": "REVIEWED", "featureParity": "PASS", "planLintShallow": "PASS",
+      "preRenderParity": "PASS",
+      "mathReview": "Vertical ellipse x²/25+y²/169=1: A=(5,0),A'=(-5,0), B=(0,13),B'=(0,-13), F=(0,12),F'=(0,-12). AF=sqrt(25+144)=13 and OA=5 are both shown. Hidden target major diameter26 plus focus separation24 equals50.",
+      "requiredVisible": [
+        {"path":"ellipse.majorAxis","equals":"Y"},
+        {"path":"ellipse.semiAxisSquared.major","equals":"169"},
+        {"path":"ellipse.semiAxisSquared.minor","equals":"25"},
+        {"path":"points.O.kind","equals":"ORIGIN"},
+        {"path":"points.A.end","equals":"MINOR_POS"},
+        {"path":"points.A.coordinates","equals":true},
+        {"path":"points.A'.end","equals":"MINOR_NEG"},
+        {"path":"points.A'.coordinates","equals":true},
+        {"path":"points.B.end","equals":"MAJOR_POS"},
+        {"path":"points.B'.end","equals":"MAJOR_NEG"},
+        {"path":"points.F.side","equals":1},
+        {"path":"points.F'.side","equals":-1},
+        {"path":"segments.sAF.label","equals":"13"},
+        {"path":"segments.sOA.label","equals":"5"}
+      ],
+      "forbiddenVisible": ["points.F.coordinates","points.F'.coordinates","segments.sFFp.label"],
+      "blockers": [],"planLintFull":"PASS","renderSvg":"NOT_RUN","studentChrome":"NOT_RUN","a4":"NOT_RUN"
+    },
+    {
+      "number": 21,"qid": 2,"sourceQuote": "직선 $\\mathrm{AF}$의 방정식이",
+      "sourceVsPlan": "REVIEWED", "featureParity": "ENGINE_CAPABILITY_PENDING", "planLintShallow": "PASS",
+      "preRenderParity": "ENGINE_CAPABILITY_PENDING",
+      "mathReview": "From y=-3x/2+3, F=(0,3),A=(2,0), c=3, semiminor2, semimajor sqrt(13); ellipse x²/4+y²/13=1 with vertical major axis. Hidden target major diameter2sqrt(13). Tried removing segment, O, shortening the line label and all coordinate-label combinations. The official label placer still rejects both full focus coordinates and line text.",
+      "requiredVisible": [
+        {"path":"conic.kind","equals":"ELLIPSE"},
+        {"path":"conic.major","equals":"Y"},
+        {"path":"conic.aSquared","equals":"13"},
+        {"path":"conic.bSquared","equals":"4"},
+        {"path":"points.F.kind","equals":"FOCUS"},
+        {"path":"points.F.side","equals":1},
+        {"path":"points.A.x","equals":"2"},
+        {"path":"points.A.coordinates","equals":true},
+        {"path":"lines.l.slope","equals":"-3/2"},
+        {"path":"lines.l.intercept","equals":"3"},
+        {"path":"segments.sAF.from","equals":"A"}
+      ],
+      "forbiddenVisible": ["points.F.coordinates","lines.l.label","segments.sAF.label"],
+      "blockers": ["Original figure specifies F(0,3), A(2,0) and the line equation on the drawing. This engine rejects F's long coordinate label together with the line and its label (ELLIPSE_LABEL_NO_ROOM:point-F); only A's coordinate and the unlabeled line can be safely drawn. Full graphics require font/leader/label-room support."],
+      "planLintFull":"PASS","renderSvg":"NOT_RUN","studentChrome":"NOT_RUN","a4":"NOT_RUN"
+    },
+    {
+      "number": 21,"qid": 3,"sourceQuote": "직각이등변삼각형 $\\mathrm{ABC}$",
+      "sourceVsPlan": "REVIEWED", "featureParity": "ENGINE_CAPABILITY_PENDING", "planLintShallow": "PASS",
+      "preRenderParity": "ENGINE_CAPABILITY_PENDING",
+      "mathReview": "Take c=b=3, ellipse x²/18+y²/9=1. A=(0,3), B=(-4,-1), C=(4,-1) all lie on ellipse. F'(-3,0) belongs to AB, F(3,0) to AC. AB=AC=4sqrt(2) and their dot product is0. Hidden ratio BC/FF'=8/6=4/3. Anonymous perpendicular foot D=A permits the 90-degree mark at A; identical side ticks remain unsupported.",
+      "requiredVisible": [
+        {"path":"conic.kind","equals":"ELLIPSE"},
+        {"path":"conic.major","equals":"X"},
+        {"path":"conic.aSquared","equals":"18"},
+        {"path":"conic.bSquared","equals":"9"},
+        {"path":"points.A.x","equals":"0"},
+        {"path":"points.B.x","equals":"-4"},
+        {"path":"points.C.x","equals":"4"},
+        {"path":"points.F.side","equals":1},
+        {"path":"points.F'.side","equals":-1},
+        {"path":"points.D.kind","equals":"FOOT"},
+        {"path":"points.D.label","equals":false},
+        {"path":"points.D.rightAngle","equals":true},
+        {"path":"segments.sAB.from","equals":"A"},
+        {"path":"segments.sAC.from","equals":"A"},
+        {"path":"segments.sBC.to","equals":"C"}
+      ],
+      "forbiddenVisible": ["points.A.coordinates","points.B.coordinates","points.C.coordinates","segments.sBC.label"],
+      "blockers": ["Although the right angle is represented by a coincident unlabeled foot, the original right-isosceles picture states AB=AC; ellipse-figure-v1 cannot draw paired equal-side tick marks. Mathematical geometry is exact but graphical equality notation cannot be guaranteed."],
+      "planLintFull":"PASS","renderSvg":"NOT_RUN","studentChrome":"NOT_RUN","a4":"NOT_RUN"
+    }
+  ]
+}

@@ -1,11 +1,11 @@
 {
   "capability":"ellipse-figure-v1",
   "conic":{"kind":"PARABOLA","vertex":["0","1"],"p":"8","axis":"Y"},
-  "points":[{"id":"O","kind":"ORIGIN"},{"id":"F","kind":"FOCUS"},{"id":"V","kind":"VERTEX","label":false},{"id":"A","kind":"ON_CONIC","x":"-8","label":false},{"id":"B","kind":"ON_CONIC","x":"8","label":false},{"id":"K","kind":"POINT","x":"-8","y":"0","label":false},{"id":"M","kind":"ON_CONIC","x":"4","label":false},{"id":"T","kind":"POINT","x":"4","y":"6","label":false}],
+  "points":[{"id":"O","kind":"ORIGIN"},{"id":"F","kind":"FOCUS"},{"id":"V","kind":"VERTEX","label":false},{"id":"A","kind":"ON_CONIC","x":"-8","label":false},{"id":"B","kind":"ON_CONIC","x":"8","label":false},{"id":"K","kind":"POINT","x":"-8","y":"0","label":false},{"id":"M","kind":"ON_CONIC","x":"4","label":false},{"id":"T","kind":"POINT","x":"4","y":"6","label":false},{"id":"N","kind":"ON_CONIC","x":"-7","label":false},{"id":"U","kind":"POINT","x":"-7","y":"6","label":false}],
   "lines":[{"id":"ground","y":"0","label":"y=0"}],
-  "segments":[{"id":"AB","from":"A","to":"B","label":"16 m"},{"id":"OV","from":"O","to":"V","label":"1 m"},{"id":"AK","from":"A","to":"K","label":"3 m"},{"id":"TM","from":"T","to":"M"},{"id":"MF","from":"M","to":"F"}],
-  "caption":"집열판의 지면 대비 꼭짓점 높이 1m(OV), 끝점 높이 3m(AK), 양 끝 폭 16m(AB)를 표시하고 대표 수직 태양광이 초점으로 반사되는 단면",
-  "accessibilityDescription":"지면 y=0에서 꼭짓점까지의 높이 1미터, 양 끝 높이 3미터, 양 끝 간 수평 폭 16미터를 각각 선분에 표시했다. 수직으로 내려온 대표 태양광 한 줄이 곡면에서 초점 F로 향한다.",
-  "sourceConditions":[{"id":"c1","condition":"지면 O=(0,0), 꼭짓점 V=(0,1), 양 끝 A=(-8,3), B=(8,3), 지면 발 K=(-8,0)을 배치한다. OV=1m, AK=3m, AB=16m를 실제 선분 라벨로 표시하고 질문인 초점의 지면 높이 값은 노출하지 않는다. 내부 초점 파라미터 p=8이다.","mappedTo":["conic","O","V","F","A","B","K","OV","AK","AB"]},{"id":"c2","condition":"지면은 y=0이며 수직 입사하는 대표 광선 T=(4,6)에서 M=(4,3/2)로 내려와 초점 F로 반사된다. T와 M은 광로용 무명 보조점이며 다중 광선은 치수 라벨과 충돌하므로 렌더 단계의 엔진 개선 전까지 대표 하나만 표시한다.","mappedTo":["ground","T","M","TM","MF"]}],
-  "newVisualInformation":["지면 대비 꼭짓점·끝점 높이와 가로 폭의 3개 독립 치수 라벨","집열판 곡면에서 초점으로 향하는 태양광 반사 경로"]
+  "segments":[{"id":"AB","from":"A","to":"B","label":"16 m"},{"id":"OV","from":"O","to":"V","label":"1 m"},{"id":"AK","from":"A","to":"K","label":"3 m"},{"id":"TM","from":"T","to":"M"},{"id":"MF","from":"M","to":"F"},{"id":"UN","from":"U","to":"N"},{"id":"NF","from":"N","to":"F"}],
+  "caption":"집열판의 지면 대비 꼭짓점 높이 1m(OV), 끝점 높이 3m(AK), 양 끝 폭 16m(AB)와 좌·우 수직 태양광선이 초점으로 모이는 단면",
+  "accessibilityDescription":"지면 y=0에서 꼭짓점까지의 높이 1미터, 양 끝 높이 3미터, 양 끝 간 수평 폭 16미터를 각각 선분에 표시했다. 좌우에서 수직으로 내려온 태양광 두 줄이 곡면에서 초점 F로 향한다.",
+  "sourceConditions":[{"id":"c1","condition":"지면 O=(0,0), 꼭짓점 V=(0,1), 양 끝 A=(-8,3), B=(8,3), 지면 발 K=(-8,0)을 배치한다. OV=1m, AK=3m, AB=16m를 실제 선분 라벨로 표시하고 질문인 초점의 지면 높이 값은 노출하지 않는다. 내부 초점 파라미터 p=8이다.","mappedTo":["conic","O","V","F","A","B","K","OV","AK","AB"]},{"id":"c2","condition":"지면은 y=0이고 두 수직 입사광선 T=(4,6)→M=(4,3/2)→F 및 U=(-7,6)→N=(-7,81/32)→F를 그린다. 두 반사선은 정확한 포물선 반사 법칙을 따르며 원문의 복수 광선을 복원한다. 기존 x=-6~-1에서의 두 번째 광선은 16m 라벨 충돌을 일으켜 x=-7로 조정했고 전체 린트를 통과했다.","mappedTo":["ground","T","M","TM","MF","U","N","UN","NF","AB"]}],
+  "newVisualInformation":["지면 대비 꼭짓점·끝점 높이와 가로 폭의 3개 독립 치수 라벨","집열판 양편에서 수직 입사하여 초점으로 모이는 두 개의 반사 광로"]
 }

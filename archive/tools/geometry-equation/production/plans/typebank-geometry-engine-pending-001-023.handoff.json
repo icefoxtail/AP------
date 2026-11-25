@@ -1,0 +1,64 @@
+{
+  "handoffKind": "ENGINE_CAPABILITY_PENDING_FROM_SOURCE_FIRST_AUDIT",
+  "date": "2026-11-25",
+  "auditedTypeRange": [1, 23],
+  "sourceFigureCount": 69,
+  "preRenderPassCount": 59,
+  "pendingCount": 10,
+  "renderSvg": "NOT_RUN",
+  "studentChrome": "NOT_RUN",
+  "a4": "NOT_RUN",
+  "policy": "All ten pending plans pass the official full pre-render lint, but this is not proof of source-feature parity or a rendered/student-ready result. Implement capability support only inside the official geometry engine and re-run source, model, layout and rendered observer checks; never manually alter SVGs.",
+  "issues": [
+    {
+      "number": 4,"qid": 6,"capability": "ellipse-figure-v1",
+      "needed": "Anonymous coordinate labels for three conic points, without showing their engine-only IDs A,B,C.",
+      "acceptance": "Draw (0,0), (0,4), (6,6) adjacent to their points; show no names A,B,C or derived focus/directrix answer."
+    },
+    {
+      "number": 7,"qid": 1,"capability": "ellipse-figure-v1",
+      "needed": "Math-subscript point labels and an in-diagram continuation/ellipsis for a family of horizontal lines and focus chords.",
+      "acceptance": "Show P₁,P₂,P₃,… and y=1,2,3,… without pretending the family stops at k=3 or adding k=15's answer."
+    },
+    {
+      "number": 7,"qid": 7,"capability": "ellipse-figure-v1",
+      "needed": "Angle-arc primitive and 120° label owned by angle HPF at P.",
+      "acceptance": "Draw the actual angle at P as 120° with clearance from PH, PF and the parabola; do not print area."
+    },
+    {
+      "number": 8,"qid": 2,"capability": "ellipse-figure-v1",
+      "needed": "Mathematical subscripts for foot labels H₁,H₂ rather than plain H1,H2.",
+      "acceptance": "Render H₁,H₂ at the correct y-axis feet while preserving both perpendiculars and hiding the numerical answer."
+    },
+    {
+      "number": 8,"qid": 5,"capability": "ellipse-figure-v1",
+      "needed": "Direction arrowheads on a connected piecewise light path without adding unsupported shapes or incorrect ray directions.",
+      "acceptance": "Arrows show P→A→F→B→Q, with PA and BQ horizontal and A,F,B collinear; total distance remains hidden."
+    },
+    {
+      "number": 17,"qid": 3,"capability": "ellipse-figure-v1",
+      "needed": "Equivalent side-tick groups for three segments of equilateral triangle PF′F.",
+      "acceptance": "Show the same tick convention on PF, PF′, FF′ while retaining exact length 4 and not displaying the requested minor diameter."
+    },
+    {
+      "number": 21,"qid": 2,"capability": "ellipse-figure-v1",
+      "needed": "Leader/label-room treatment for a focus coordinate and a line equation simultaneously. Current engine reports ELLIPSE_LABEL_NO_ROOM:point-F.",
+      "acceptance": "Show F(0,3), A(2,0), and y=−3x/2+3 on the actual line, all legibly and without revealing 2√13."
+    },
+    {
+      "number": 21,"qid": 3,"capability": "ellipse-figure-v1",
+      "needed": "Paired congruence ticks on AB and AC of the right-isosceles triangle; the 90° corner is already represented via unlabeled foot D=A.",
+      "acceptance": "Draw AB=AC equal-side ticks at the same scale, preserve A's right-angle mark and foci-on-sides, and hide BC/FF′=4/3."
+    },
+    {
+      "number": 23,"qid": 3,"capability": "ellipse-figure-v1",
+      "needed": "Leader and collision-free radicals for the two given focal coordinate labels on a focal chord. Even one label causes ELLIPSE_LABEL_NO_ROOM.",
+      "acceptance": "Show F(√5,0), F′(−√5,0), both beside the correct foci; preserve the chord triangle and hide ab=6."
+    },
+    {
+      "number": 23,"qid": 4,"capability": "ellipse-figure-v1",
+      "needed": "Symbolic focal coordinate labels driven by a user-given parameter c, not the solved numeric internal model value.",
+      "acceptance": "Show F(c,0), F′(−c,0) and A(0,2), while keeping c=√21 and FF′=2√21 hidden."
+    }
+  ]
+}

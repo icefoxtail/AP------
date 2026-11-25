@@ -1,10 +1,10 @@
 {
   "capability":"ellipse-figure-v1",
-  "conics":[{"id":"c1","kind":"PARABOLA","vertex":["-2","0"],"p":"6","axis":"X"},{"id":"c2","kind":"PARABOLA","vertex":["11","0"],"p":"-7","axis":"X"}],
+  "conics":[{"id":"c1","label":"C1","kind":"PARABOLA","vertex":["-2","0"],"p":"6","axis":"X"},{"id":"c2","label":"C2","kind":"PARABOLA","vertex":["11","0"],"p":"-7","axis":"X"}],
   "points":[{"id":"A","kind":"VERTEX","curve":"c1","coordinates":true},{"id":"B","kind":"VERTEX","curve":"c2","coordinates":true},{"id":"F","kind":"FOCUS","curve":"c1"},{"id":"P","kind":"ON_CONIC","curve":"c1","y":"6"},{"id":"Q","kind":"ON_CONIC","curve":"c2","y":"6"}],
   "segments":[{"id":"PF","from":"P","to":"F"},{"id":"FQ","from":"F","to":"Q"},{"id":"PQ","from":"P","to":"Q"}],
   "caption":"꼭짓점 A(-2,0), B(11,0)에서 서로 마주 보는 두 포물선 C₁,C₂가 초점 F를 공유하고 수평선 위 P,Q를 만든다.",
   "accessibilityDescription":"왼쪽 꼭짓점 A에서 오른쪽으로 열리는 포물선과 오른쪽 꼭짓점 B에서 왼쪽으로 열리는 포물선의 초점이 x축 가운데 F로 같고, 두 포물선 위 위쪽 점 P,Q를 연결한다.",
-  "sourceConditions":[{"id":"c1","condition":"A=(-2,0), B=(11,0)이고 공통 초점 F는 그 사이이므로 내부 예 F=(4,0), 두 포물선의 p는 6과 -7로 정해진다. 원문의 초점 위치 자유도를 대표로 고정할 뿐 답은 적지 않는다.","mappedTo":["c1","c2","A","B","F"]},{"id":"c2","condition":"수평 높이 y=6에서 두 포물선의 점 P,Q를 잡아 x_P<x_Q인 삼각형 FPQ를 이룬다. 물은 둘레값은 그림에 쓰지 않는다.","mappedTo":["P","Q","PF","FQ","PQ"]}],
+  "sourceConditions":[{"id":"c1","condition":"A=(-2,0), B=(11,0)이고 공통 초점 F는 그 사이이므로 내부 예 F=(4,0), 두 포물선의 p는 6과 -7로 정해진다. 원문의 초점 위치 자유도를 대표로 고정할 뿐 답은 적지 않는다.","mappedTo":["c1","c2","A","B","F"]},{"id":"c2","condition":"수평 높이 y=6에서 두 포물선의 점 P,Q를 잡아 x_P<x_Q인 삼각형 FPQ를 이룬다. 묻는 둘레값은 그림에 쓰지 않는다.","mappedTo":["P","Q","PF","FQ","PQ"]}],
   "newVisualInformation":["공통 초점과 서로 마주 보는 두 포물선의 같은 높이 교점"]
 }

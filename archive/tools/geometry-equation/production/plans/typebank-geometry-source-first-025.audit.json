@@ -1,0 +1,123 @@
+{
+  "auditKind": "SOURCE_FIRST_PRE_RENDER_FIELD_PARITY",
+  "date": "2026-11-25",
+  "from": 25,
+  "to": 25,
+  "missingSourceNumbers": [],
+  "reviewRule": "All three original [그림:] blocks must be separately checked. Calculate each focal distance and visible incidence/order, reject invented values. Do not promote a mathematical contradiction to lint PASS: source 025q03 claims an impossible inner perimeter.",
+  "figures": [
+    {
+      "number": 25,
+      "qid": 1,
+      "sourceQuote": "선분 $\\mathrm{OF}$와 선분 $\\mathrm{OF}'$을 각각 $4$등분",
+      "sourceVsPlan": "REVIEWED",
+      "featureParity": "ENGINE_CAPABILITY_PENDING",
+      "planLintShallow": "PASS",
+      "preRenderParity": "ENGINE_CAPABILITY_PENDING",
+      "mathReview": "Ellipse x²/36+y²/20=1 has foci F=(4,0),F′=(-4,0). The six fourth-division abscissae are x=3,2,1,-1,-2,-3, in exact P1 through P6 decreasing order, all on the upper ellipse. Ellipse focal distance to F at abscissa x is 6−(2/3)x, so the six distances total 36 with symmetric x sum zero. Existing six through-F segments are correct. However the source's six finite vertical drop segments and x-axis quartering marks are replaced by six infinite dashed guide lines; P₁…P₆ are printed without mathematical subscripts. Both explicit focal coordinate labels trigger ELLIPSE_LABEL_NO_ROOM:point-F′ in full lint when attempted.",
+      "requiredVisible": [
+        {"path": "conic.kind", "equals": "ELLIPSE"},
+        {"path": "conic.aSquared", "equals": "36"},
+        {"path": "conic.bSquared", "equals": "20"},
+        {"path": "conic.major", "equals": "X"},
+        {"path": "points.F.side", "equals": 1},
+        {"path": "points.F'.side", "equals": -1},
+        {"path": "points.O.kind", "equals": "ORIGIN"},
+        {"path": "points.P1.x", "equals": "3"},
+        {"path": "points.P2.x", "equals": "2"},
+        {"path": "points.P3.x", "equals": "1"},
+        {"path": "points.P4.x", "equals": "-1"},
+        {"path": "points.P5.x", "equals": "-2"},
+        {"path": "points.P6.x", "equals": "-3"},
+        {"path": "segments.sFP1.from", "equals": "F"},
+        {"path": "segments.sFP6.to", "equals": "P6"},
+        {"path": "lines.v1.x", "equals": "3"},
+        {"path": "lines.v6.x", "equals": "-3"}
+      ],
+      "forbiddenVisible": ["points.F.coordinates", "points.F'.coordinates", "segments.sFP1.label", "segments.sFP6.label"],
+      "blockers": [
+        "Need exactly six upper-half finite perpendiculars from x-axis fourth-division ticks to P₁…P₆, not six entire vertical infinite dashed lines; engine point limit and line model prevent this.",
+        "Point-name math subscripts P₁…P₆ and collision-free F(4,0),F′(-4,0) focal coordinates are unavailable in this dense geometry. Tried coordinates:true on both; full lint rejected with ELLIPSE_LABEL_NO_ROOM:point-F′."
+      ],
+      "planLintFull": "PASS",
+      "renderSvg": "NOT_RUN",
+      "studentChrome": "NOT_RUN",
+      "a4": "NOT_RUN"
+    },
+    {
+      "number": 25,
+      "qid": 2,
+      "sourceQuote": "타원 위의 네 점 $\\mathrm{A}$, $\\mathrm{B}$, $\\mathrm{C}$, $\\mathrm{D}$",
+      "sourceVsPlan": "REVIEWED",
+      "featureParity": "ENGINE_CAPABILITY_PENDING",
+      "planLintShallow": "PASS",
+      "preRenderParity": "ENGINE_CAPABILITY_PENDING",
+      "mathReview": "The ellipse x²/25+y²/16=1 has foci F=(3,0),F′=(-3,0). The four sample points A=(-4,12/5), B=(-3,-16/5), C=(0,4), D=(2,-4√21/5) are all on the ellipse. Distance to F is 5−3x/5, yielding 37/5+34/5+5+19/5=23. Complementary four distances to F′ total 40−23=17 (not shown), so the candidate plan is not arbitrary geometry. The source also explicitly labels F(3,0),F′(-3,0); adding both coordinate labels causes ELLIPSE_LABEL_NO_ROOM:point-F.",
+      "requiredVisible": [
+        {"path": "conic.kind", "equals": "ELLIPSE"},
+        {"path": "conic.aSquared", "equals": "25"},
+        {"path": "conic.bSquared", "equals": "16"},
+        {"path": "points.F.side", "equals": 1},
+        {"path": "points.F'.side", "equals": -1},
+        {"path": "points.A.x", "equals": "-4"},
+        {"path": "points.A.branch", "equals": "POS"},
+        {"path": "points.B.x", "equals": "-3"},
+        {"path": "points.B.branch", "equals": "NEG"},
+        {"path": "points.C.x", "equals": "0"},
+        {"path": "points.D.x", "equals": "2"},
+        {"path": "segments.sAF.to", "equals": "F"},
+        {"path": "segments.sBF.to", "equals": "F"},
+        {"path": "segments.sCF.to", "equals": "F"},
+        {"path": "segments.sDF.to", "equals": "F"}
+      ],
+      "forbiddenVisible": ["points.F.coordinates", "points.F'.coordinates", "segments.sAF.label", "segments.sBF.label", "segments.sCF.label", "segments.sDF.label"],
+      "blockers": [
+        "The original [그림:] includes both focal numeric coordinate labels. The precise representative plan is correct, but coordinates:true together for F,F′ fails full lint with ELLIPSE_LABEL_NO_ROOM:point-F; requires focal coordinate-label layout support."
+      ],
+      "planLintFull": "PASS",
+      "renderSvg": "NOT_RUN",
+      "studentChrome": "NOT_RUN",
+      "a4": "NOT_RUN"
+    },
+    {
+      "number": 25,
+      "qid": 3,
+      "sourceQuote": "사각형 $\\mathrm{PF}'\\mathrm{QF}$의 둘레의 길이가 $20$",
+      "sourceVsPlan": "REVIEWED",
+      "featureParity": "CONTENT_MATH_BLOCKED",
+      "planLintShallow": "SKIPPED_UNSUPPORTED",
+      "preRenderParity": "CONTENT_MATH_BLOCKED",
+      "mathReview": "Critical contradiction, independently proven. For x²/36+y²/20=1, F=(4,0), F′=(-4,0), let the parallel focal chord lines have slope m>0. Direct intersection of AF and DF′ gives P=(13/(3√(1+m²)),5m/(3√(1+m²))); BF and CF′ gives Q=−P. Thus P and Q lie on a confocal ellipse x²/(169/9)+y²/(25/9)=1 whose foci are still ±4, so PF+PF′=26/3 and the required inner quadrilateral PF′QF has perimeter 2(PF+PF′)=52/3 for ALL m. This is not 20. The diagnostic plan takes the vertical limiting focal chords x=±4 and yields A=(-4,10/3),B=(-4,-10/3),D=(4,10/3),C=(4,-10/3),P=(0,5/3),Q=(0,-5/3). Outer ABQCDP perimeter is 48−52/3=92/3, not answer 28. Changing the slope cannot satisfy the problem; correct original JS, answer choices and explanatory solution under a separately authorized content workflow before rendering.",
+      "requiredVisible": [
+        {"path": "status", "equals": "UNSUPPORTED"},
+        {"path": "conic.kind", "equals": "ELLIPSE"},
+        {"path": "conic.aSquared", "equals": "36"},
+        {"path": "conic.bSquared", "equals": "20"},
+        {"path": "points.F.side", "equals": 1},
+        {"path": "points.F'.side", "equals": -1},
+        {"path": "points.A.line", "equals": "l"},
+        {"path": "points.B.line", "equals": "l"},
+        {"path": "points.C.line", "equals": "m"},
+        {"path": "points.D.line", "equals": "m"},
+        {"path": "points.P.kind", "equals": "LINE_LINE"},
+        {"path": "points.Q.kind", "equals": "LINE_LINE"},
+        {"path": "lines.l.x", "equals": "-4"},
+        {"path": "lines.m.x", "equals": "4"},
+        {"path": "segments.sAB.to", "equals": "B"},
+        {"path": "segments.sBQ.to", "equals": "Q"},
+        {"path": "segments.sQC.to", "equals": "C"},
+        {"path": "segments.sCD.to", "equals": "D"},
+        {"path": "segments.sDP.to", "equals": "P"},
+        {"path": "segments.sPA.to", "equals": "A"}
+      ],
+      "forbiddenVisible": ["segments.sAB.label", "segments.sPF.label", "segments.sQF.label", "segments.sCD.label"],
+      "blockers": [
+        "CONTENT_MATH_BLOCKED: source input perimeter20, answer choice 28 and solution are inconsistent with the demanded parallel focal chords on fixed ellipse x²/36+y²/20=1. The true forced inner perimeter is 52/3, with no available answer choice for outer 92/3. The representative plan models geometry only; it must never be used for student publication until the source problem is separately corrected."
+      ],
+      "planLintFull": "SKIPPED_UNSUPPORTED",
+      "renderSvg": "NOT_RUN",
+      "studentChrome": "NOT_RUN",
+      "a4": "NOT_RUN"
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 {
   "capability":"ellipse-figure-v1",
-  "conics":[{"id":"c1","kind":"PARABOLA","vertex":["3*sqrt(3)-6","0"],"p":"6","axis":"X"},{"id":"c2","kind":"PARABOLA","vertex":["3*sqrt(3)-3","0"],"p":"3-3*sqrt(3)","axis":"X"}],
+  "conics":[{"id":"c1","label":"p1","kind":"PARABOLA","vertex":["3*sqrt(3)-6","0"],"p":"6","axis":"X"},{"id":"c2","label":"p2","kind":"PARABOLA","vertex":["3*sqrt(3)-3","0"],"p":"3-3*sqrt(3)","axis":"X"}],
   "points":[{"id":"A","kind":"VERTEX","curve":"c1"},{"id":"B","kind":"VERTEX","curve":"c2"},{"id":"O","kind":"ORIGIN"},{"id":"F","kind":"FOCUS","curve":"c1"},{"id":"C","kind":"CONIC_CONIC","curves":["c1","c2"],"which":2},{"id":"D","kind":"CONIC_CONIC","curves":["c1","c2"],"which":1}],
   "segments":[{"id":"AB","from":"A","to":"B","label":"3"},{"id":"AF","from":"A","to":"F"},{"id":"AC","from":"A","to":"C"},{"id":"BC","from":"B","to":"C"}],
   "caption":"두 포물선 p₁,p₂는 꼭짓점 A,B를 가지며 y축의 C,D에서 교차한다. B는 AF의 중점, AB=3이다.",

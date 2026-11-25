@@ -18,9 +18,9 @@
     "lintShallowPass": 6,
     "lintFullPass": 6,
     "independentMathPass": 6,
-    "featureParityPreRenderPass": 3,
-    "engineCapabilityPending": 4,
-    "engineCapabilityPendingWithPlan": 3,
+    "featureParityPreRenderPass": 2,
+    "engineCapabilityPending": 5,
+    "engineCapabilityPendingWithPlan": 4,
     "engineCapabilityPendingWithoutPlan": 1,
     "contentMathBlockedWithoutPlan": 1,
     "noFigureQids": [
@@ -45,8 +45,9 @@
   },
   "items": [
     {
-      "stemNumber": 30, "qid": 3, "sourceVsPlan": "REVIEWED", "planLintShallow": "PASS", "planLintFull": "PASS", "independentMath": "PASS", "featureParity": "PASS",
+      "stemNumber": 30, "qid": 3, "sourceVsPlan": "REVIEWED", "planLintShallow": "PASS", "planLintFull": "PASS", "independentMath": "PASS", "featureParity": "ENGINE_CAPABILITY_PENDING",
       "verified": "장축 40·단축 24 타원 x²/400+y²/144와 네 꼭짓점 (±12,±48/5)의 내접 축평행 직사각형을 정확히 작도. 실제 최적 꼭짓점 x=±10√2,y=±6√2 및 최대 넓이의 수치를 그림에 노출하지 않음",
+      "missingVisual": "원문 [그림]에서 지정한 장축 길이 40·단축 길이 24가 실제 그려지는 치수선·라벨로 표시되지 않음. 캡션에만 수치가 있음",
       "render": "NOT_RUN", "pngVisualReview": "NOT_RUN", "studentScreenReview": "NOT_RUN", "a4PrintReview": "NOT_RUN"
     },
     {
@@ -91,6 +92,7 @@
     }
   ],
   "engineHandoff": [
+    {"stemNumber": 30, "qid": 3, "kind": "ELLIPSE_AXIS_LENGTH_DIMENSIONS_MISSING", "target": "ellipse-figure-v1/conic", "request": "장축 40과 단축 24를 실제 해당 축 길이 치수선/라벨로 표시하되 내접직사각형 및 미지 최대 넓이를 가리지 않도록 렌더 지원·재검증"},
     {"stemNumber": 31, "qid": 2, "kind": "THREE_CONIC_OVERLAY_UNSUPPORTED", "target": "ellipse-figure-v1/conics", "request": "타원 1개 + 초점 F,F′ 각 중심 반지름 1인 원 두 개를 한 좌표평면에 올릴 수 있도록 conics 곡선 상한을 3 이상으로 확장. 이후 P·Q·R 실제 구성을 생성하고 full lint·최종 렌더 재검증. 현재는 plan 자체를 생성하지 않음"},
     {"stemNumber": 31, "qid": 3, "kind": "SYMBOLIC_POINT_COORDINATE_LABEL_UNSUPPORTED", "target": "ellipse-figure-v1/conic", "request": "계산 좌표의 숫자와 별도로 미지 매개변수 a를 답 누설 없이 표시하는 점 좌표 표기 A(0,a)를 지원. 현재 plan은 A라는 점 이름만 표시"},
     {"stemNumber": 31, "qid": 6, "kind": "EQUILATERAL_EQUAL_TICKS_AND_ANGLE_UNSUPPORTED", "target": "ellipse-figure-v1/conic", "request": "정삼각형 PFQ의 세 변 등길이 눈금 또는 60° 표시 필드를 추가하고 정확한 실제 선분·각도에 귀속시켜 검증"},
@@ -99,5 +101,6 @@
   "contentHandoff": [
     {"stemNumber": 31, "qid": 5, "kind": "MATHEMATICAL_SOURCE_CONTRADICTION", "request": "원문 JS의 제2사분면 타원∩원 P 조건을 재설계해야 한다. 실제 교점은 (0,±2√3)만 존재해 x<0인 교점이 없다. 원문 JS·정답·해설을 담당하는 별도 문항 내용 수정 후에만 그림 생성 가능"}
   ],
-  "handoffNote": "원본 [그림] 8건을 직접 검토해 6개만 실제 엔진용 plan으로 제작했다. 문제 자체가 제2사분면 교점을 만들 수 없는 031q05와 엔진이 3곡선을 표시할 수 없는 031q02는 임의 대체하지 않고 plan 없이 분리했다. 작성 6개 중 pre-render 시각 필드 PASS 3개, 보강 필요 3개다. lint PASS는 SVG/PNG 시각 검증 완료를 뜻하지 않는다. 원본 JS와 정답은 수정하지 않았고 실제 렌더·학생화면·A4·JS 이미지 연결·게시 모두 NOT_RUN이다."
+  "handoffNote": "원본 [그림] 8건 독립 2차 재검수 결과 6개 정규 plan은 full lint 재통과했으나, 기존 PASS인 030q03의 장축 40·단축 24가 캡션에만 있어 실제 치수 표기를 보강하도록 재분류. 문제 자체가 제2사분면 교점을 만들 수 없는 031q05와 엔진이 3곡선을 표시할 수 없는 031q02는 plan 없이 분리했다. 작성 6개 중 pre-render 시각 필드 PASS 2개, 엔진 보강 필요 4개다. lint PASS는 SVG/PNG 시각 검증 완료를 뜻하지 않는다. 원본 JS와 정답은 수정하지 않았고 실제 렌더·학생화면·A4·JS 이미지 연결·게시 모두 NOT_RUN이다.",
+  "independentPrecisionReaudit": {"dateKst":"2026-11-25","scope":"030-032 full source figure versus rendered field review, all 6 plans re-linted","reclassifiedFromPass":["030q03"],"render":"NOT_RUN","studentScreen":"NOT_RUN","a4":"NOT_RUN"}
 }

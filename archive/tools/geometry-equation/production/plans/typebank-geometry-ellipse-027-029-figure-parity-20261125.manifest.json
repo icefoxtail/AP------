@@ -17,8 +17,8 @@
     "lintShallowPass": 13,
     "lintFullPass": 13,
     "independentMathPass": 13,
-    "featureParityPreRenderPass": 5,
-    "engineCapabilityPending": 8,
+    "featureParityPreRenderPass": 3,
+    "engineCapabilityPending": 10,
     "contentMathBlocked": 0
   },
   "validation": {
@@ -64,17 +64,19 @@
       "verified": "타원 x²/16+y²/7의 P=(8/3,√35/3)에서 PF′=6, PF=2를 검산하고 삼각형 넓이 조건과 일치"
     },
     {
-      "stemNumber": 28, "qid": 4, "sourceVsPlan": "REVIEWED", "planLintShallow": "PASS", "planLintFull": "PASS", "independentMath": "PASS", "featureParity": "PASS",
-      "verified": "초점 ±2√2인 타원의 실제 장축 두 꼭짓점 C,D, 구성점 A,B 및 사각형 ACBD를 독립 계산"
+      "stemNumber": 28, "qid": 4, "sourceVsPlan": "REVIEWED", "planLintShallow": "PASS", "planLintFull": "PASS", "independentMath": "PASS", "featureParity": "ENGINE_CAPABILITY_PENDING",
+      "verified": "초점 ±2√2인 타원의 실제 장축 두 꼭짓점 C,D, 구성점 A,B 및 사각형 ACBD를 독립 계산",
+      "missingVisual": "원문 그림의 기호 좌표 F(c,0), F′(-c,0), C(-a,0), D(a,0) 및 직선 식 x=-c가 렌더 필드에 없음. a=4 대표 좌표를 실제 수치로 표시하면 미지 변수 조건을 훼손하므로 기호 라벨 기능 필요"
     },
     {
       "stemNumber": 28, "qid": 5, "sourceVsPlan": "REVIEWED", "planLintShallow": "PASS", "planLintFull": "PASS", "independentMath": "PASS", "featureParity": "ENGINE_CAPABILITY_PENDING",
       "verified": "타원 x²/72+y²/36, P=(0,6),Q=(-8,-2)를 이용한 직각 이등변 삼각형을 좌표·내적으로 검산하고 직각 FOOT 표시",
-      "missingVisual": "직각삼각형의 두 변이 같음을 보여주는 동등 길이 눈금"
+      "missingVisual": "직각삼각형의 두 변이 같음을 보여주는 동등 길이 눈금과 원문 그림의 F(c,0), F′(-c,0), P(0,b) 기호 좌표 라벨"
     },
     {
-      "stemNumber": 28, "qid": 6, "sourceVsPlan": "REVIEWED", "planLintShallow": "PASS", "planLintFull": "PASS", "independentMath": "PASS", "featureParity": "PASS",
-      "verified": "세로 장축 x²/24+y²/36, A=(2√6,0), P=(4,2√3), B=(4√6,2√3)의 교차·길이 관계를 정확식으로 검산"
+      "stemNumber": 28, "qid": 6, "sourceVsPlan": "REVIEWED", "planLintShallow": "PASS", "planLintFull": "PASS", "independentMath": "PASS", "featureParity": "ENGINE_CAPABILITY_PENDING",
+      "verified": "세로 장축 x²/24+y²/36, A=(2√6,0), P=(4,2√3), B=(4√6,2√3)의 교차·길이 관계를 정확식으로 검산",
+      "missingVisual": "원문 그림의 기호 좌표 F(0,c), F′(0,-c), A(a,0)와 수평선 y=c의 표기가 그려지는 라벨 필드에 없음"
     },
     {
       "stemNumber": 29, "qid": 1, "sourceVsPlan": "REVIEWED", "planLintShallow": "PASS", "planLintFull": "PASS", "independentMath": "PASS", "featureParity": "PASS",
@@ -88,7 +90,7 @@
     {
       "stemNumber": 29, "qid": 3, "sourceVsPlan": "REVIEWED", "planLintShallow": "PASS", "planLintFull": "PASS", "independentMath": "PASS", "featureParity": "ENGINE_CAPABILITY_PENDING",
       "verified": "타원 x²/81+y²/63, P=(-9√2/2,3√14/2), R=(-2√2,√14), Q를 정확한 수선의 발로 구성하고 QR=√7, RF=8을 검산",
-      "missingVisual": "해당 선분의 중점 또는 1:2 분할을 가시화하는 길이 눈금과 비율 표식"
+      "missingVisual": "해당 선분의 중점 또는 1:2 분할을 가시화하는 길이 눈금과 비율 표식, 원문 기호 초점 F(c,0), F′(-c,0) 좌표 라벨"
     },
     {
       "stemNumber": 29, "qid": 4, "sourceVsPlan": "REVIEWED", "planLintShallow": "PASS", "planLintFull": "PASS", "independentMath": "PASS", "featureParity": "ENGINE_CAPABILITY_PENDING",
@@ -99,7 +101,9 @@
   "engineHandoff": [
     {"kind": "EQUAL_LENGTH_TICKS_UNSUPPORTED", "target": "ellipse-figure-v1/conic", "qids": ["027q01", "027q02", "027q03", "028q05", "029q03"], "request": "실제 선분의 대응 등길이 눈금과 중점·등분비 시각 표시 필드를 추가하고 충돌 검사를 포함해 재검증"},
     {"kind": "FOCUS_COORDINATE_LABEL_COLLISION", "target": "ellipse-figure-v1/conic", "qids": ["028q01"], "request": "두 초점의 좌표 병기를 원문대로 함께 표시해도 ELLIPSE_LABEL_NO_ROOM이 나지 않도록 라벨 배치 개선 후 coordinates를 복원"},
-    {"kind": "ANGLE_ARC_LABEL_UNSUPPORTED", "target": "ellipse-figure-v1/conic", "qids": ["029q02", "029q04"], "request": "두 ray 사이 각호·각도 텍스트를 실제 꼭짓점에 종속하여 구현하고 라벨 충돌을 점검"}
+    {"kind": "ANGLE_ARC_LABEL_UNSUPPORTED", "target": "ellipse-figure-v1/conic", "qids": ["029q02", "029q04"], "request": "두 ray 사이 각호·각도 텍스트를 실제 꼭짓점에 종속하여 구현하고 라벨 충돌을 점검"},
+    {"kind": "SYMBOLIC_GIVEN_COORDINATES_UNSUPPORTED", "target": "ellipse-figure-v1/conic", "qids": ["028q04", "028q05", "028q06", "029q03"], "request": "원문 미지 기호 a,b,c를 실제 계산 좌표에 대응시키되 답 수치를 누설하지 않는 점 좌표 라벨 F(c,0), F′(-c,0), P(0,b), A(a,0), C(-a,0), D(a,0) 등. 028q04의 직선 x=-c, 028q06의 y=c 식도 시각 표기 재검토"}
   ],
-  "handoffNote": "027→028→029의 원본 [그림] 13건을 전부 읽고 정규 plan 13개만 추가했다. full lint 13/13 통과는 시각 완성과 별개이며, pre-render 필드 완성 5건·엔진 표시 보강 8건이다. SVG/PNG 렌더·학생 화면·A4·JS 링크·게시는 모두 미실행이며 안티그래비티 후속 검토 대상으로 유지한다. 원본 JS/정답은 수정하지 않았다."
+  "handoffNote": "027→028→029의 원본 [그림] 13건 재대조 결과 정규 plan 13개 full lint 재통과. 독립 2차 검수에서 기존 PASS였던 028q04·028q06의 기호 좌표 누락을 검출해 pre-render 필드 완성 3건·엔진 표시 보강 10건으로 정정했다. 029q01·q02의 불필요한 면 채움은 제거했다. SVG/PNG 렌더·학생 화면·A4·JS 링크·게시는 모두 미실행이며 안티그래비티 후속 검토 대상으로 유지한다. 원본 JS/정답은 수정하지 않았다.",
+  "independentPrecisionReaudit": {"dateKst":"2026-11-25","scope":"027-029 full source figure versus rendered field review, all 13 plans re-linted","reclassifiedFromPass":["028q04","028q06"],"correctedPlans":["029q01","029q02"],"render":"NOT_RUN","studentScreen":"NOT_RUN","a4":"NOT_RUN"}
 }

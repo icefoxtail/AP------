@@ -1,0 +1,166 @@
+{
+  "auditKind": "SOURCE_FIRST_PRE_RENDER_FIELD_PARITY",
+  "date": "2026-11-25",
+  "from": 1,
+  "to": 6,
+  "missingSourceNumbers": [2],
+  "reviewRule": "Check original content and [그림:] before plan. A full plan-lint PASS never substitutes for source drawing parity. Engine blockers remain incomplete. SVG/PNG/student Chrome/A4 are NOT_RUN.",
+  "figures": [
+    {
+      "number": 1,
+      "qid": 3,
+      "sourceQuote": "선분 $\\mathrm{OA}$의 길이는?",
+      "preRenderParity": "PASS",
+      "mathReview": "O=(0,0), F=(4,0), AB perpendicular to the axis at x=9; A=(9,12), B=(9,-12). OA=15 must not be shown numerically.",
+      "corrected": "Added the visible requested segment OA and concrete sourceConditions mappings.",
+      "requiredVisible": [
+        {"path": "conic.p", "equals": "4"},
+        {"path": "conic.axis", "equals": "X"},
+        {"path": "segments.OF.label", "equals": "4"},
+        {"path": "segments.FM.label", "equals": "5"},
+        {"path": "segments.FM.dashed", "equals": true},
+        {"path": "segments.AB.from", "equals": "A"},
+        {"path": "segments.OA.to", "equals": "A"}
+      ],
+      "forbiddenVisible": ["segments.OA.label", "points.A.coordinates", "points.B.coordinates"],
+      "blockers": [],
+      "planLintFull": "PASS",
+      "renderSvg": "NOT_RUN",
+      "studentChrome": "NOT_RUN",
+      "a4": "NOT_RUN"
+    },
+    {
+      "number": 4,
+      "qid": 6,
+      "sourceQuote": "세 점 $(0, 0)$, $(0, 4)$, $(6, 6)$",
+      "preRenderParity": "ENGINE_CAPABILITY_PENDING",
+      "mathReview": "x=(y-2)^2/2-2 has vertex (-2,2), p=1/2 and passes through (0,0),(0,4),(6,6); hide focus/directrix and a+b+c=-2.",
+      "corrected": "Fixed sourceConditions mapping, explicitly disclosed the extra A/B/C visual names instead of marking parity PASS.",
+      "requiredVisible": [
+        {"path": "conic.axis", "equals": "X"},
+        {"path": "conic.p", "equals": "1/2"},
+        {"path": "points.A.x", "equals": "0"},
+        {"path": "points.A.y", "equals": "0"},
+        {"path": "points.A.coordinates", "equals": true},
+        {"path": "points.B.y", "equals": "4"},
+        {"path": "points.B.coordinates", "equals": true},
+        {"path": "points.C.x", "equals": "6"},
+        {"path": "points.C.y", "equals": "6"},
+        {"path": "points.C.coordinates", "equals": true}
+      ],
+      "forbiddenVisible": ["points.A.label", "points.B.label", "points.C.label"],
+      "blockers": ["The engine formats every coordinates:true label as ID(x,y), inserting A/B/C although the source has only anonymous coordinate labels; add anonymous coordinate-label support and revalidate."],
+      "planLintFull": "PASS",
+      "renderSvg": "NOT_RUN",
+      "studentChrome": "NOT_RUN",
+      "a4": "NOT_RUN"
+    },
+    {
+      "number": 6,
+      "qid": 1,
+      "sourceQuote": "\\overline{\\mathrm{AP}} + \\overline{\\mathrm{PF}}",
+      "preRenderParity": "PASS",
+      "mathReview": "F=(3,0), A=(7,4), P=(4/3,4), AP+PF=10. Neither summand's calculated numerical value is drawn.",
+      "requiredVisible": [
+        {"path": "conic.p", "equals": "3"},
+        {"path": "points.A.coordinates", "equals": true},
+        {"path": "segments.AP.from", "equals": "A"},
+        {"path": "segments.PF.to", "equals": "F"},
+        {"path": "lines.h.y", "equals": "4"}
+      ],
+      "forbiddenVisible": ["segments.AP.label", "segments.PF.label", "points.P.coordinates"],
+      "blockers": [],
+      "planLintFull": "PASS",
+      "renderSvg": "NOT_RUN",
+      "studentChrome": "NOT_RUN",
+      "a4": "NOT_RUN"
+    },
+    {
+      "number": 6,
+      "qid": 3,
+      "sourceQuote": "선분 $\\mathrm{OB}$의 길이는?",
+      "preRenderParity": "PASS",
+      "mathReview": "F=(5,0), A=(-5,5sqrt(5)), AF=15, B=(1,2sqrt(5)), OB=sqrt(21), hidden.",
+      "corrected": "Replaced non-rendered PRESERVED_ARCHIVE_BANK mapping with the visible OB segment ID.",
+      "requiredVisible": [
+        {"path": "conic.p", "equals": "5"},
+        {"path": "lines.d.role", "equals": "DIRECTRIX"},
+        {"path": "segments.AF.label", "equals": "15"},
+        {"path": "segments.OB.to", "equals": "B"}
+      ],
+      "forbiddenVisible": ["segments.OB.label", "points.B.coordinates"],
+      "blockers": [],
+      "planLintFull": "PASS",
+      "renderSvg": "NOT_RUN",
+      "studentChrome": "NOT_RUN",
+      "a4": "NOT_RUN"
+    },
+    {
+      "number": 6,
+      "qid": 4,
+      "sourceQuote": "삼각형 $\\mathrm{AOB}$의 넓이는?",
+      "preRenderParity": "PASS",
+      "mathReview": "F=(4,0), A=(9,12) first quadrant, B=(1,-4) fourth quadrant; triangle AOB area 24, hidden.",
+      "requiredVisible": [
+        {"path": "conic.p", "equals": "4"},
+        {"path": "points.A.branch", "equals": "POS"},
+        {"path": "points.B.branch", "equals": "NEG"},
+        {"path": "segments.AF.label", "equals": "13"},
+        {"path": "segments.BF.label", "equals": "5"},
+        {"path": "segments.OA.from", "equals": "O"},
+        {"path": "segments.OB.from", "equals": "O"},
+        {"path": "segments.AB.from", "equals": "A"}
+      ],
+      "forbiddenVisible": ["points.A.coordinates", "points.B.coordinates"],
+      "blockers": [],
+      "planLintFull": "PASS",
+      "renderSvg": "NOT_RUN",
+      "studentChrome": "NOT_RUN",
+      "a4": "NOT_RUN"
+    },
+    {
+      "number": 6,
+      "qid": 5,
+      "sourceQuote": "\\overline{\\mathrm{FP}} = 2\\overline{\\mathrm{PQ}}",
+      "preRenderParity": "PASS",
+      "mathReview": "F=(1/2,0), P=(9/2,3) with FP=5, Q=(13/2,9/2) beyond P on ray FP, PQ=5/2 and the x-coordinate answer is hidden.",
+      "requiredVisible": [
+        {"path": "conic.p", "equals": "1/2"},
+        {"path": "points.P.branch", "equals": "POS"},
+        {"path": "segments.FP.label", "equals": "5"},
+        {"path": "segments.PQ.from", "equals": "P"},
+        {"path": "segments.PQ.to", "equals": "Q"}
+      ],
+      "forbiddenVisible": ["points.Q.coordinates", "segments.PQ.label"],
+      "blockers": [],
+      "planLintFull": "PASS",
+      "renderSvg": "NOT_RUN",
+      "studentChrome": "NOT_RUN",
+      "a4": "NOT_RUN"
+    },
+    {
+      "number": 6,
+      "qid": 6,
+      "sourceQuote": "2\\overline{\\mathrm{BC}} + 5\\overline{\\mathrm{CF}} = 17",
+      "preRenderParity": "PASS",
+      "mathReview": "AB=AF=BF=4p and C divides BF with BC:CF=2:1; 2BC+5CF=12p=17 gives p=17/12 used only as an internal geometric instance.",
+      "corrected": "Changed string mappedTo into concrete drawable references.",
+      "requiredVisible": [
+        {"path": "conic.p", "equals": "17/12"},
+        {"path": "lines.d.role", "equals": "DIRECTRIX"},
+        {"path": "points.B.kind", "equals": "FOOT"},
+        {"path": "points.B.rightAngle", "equals": true},
+        {"path": "segments.AB.from", "equals": "A"},
+        {"path": "segments.BF.from", "equals": "B"},
+        {"path": "segments.BC.to", "equals": "C"},
+        {"path": "segments.CF.to", "equals": "F"}
+      ],
+      "forbiddenVisible": ["points.F.coordinates", "segments.BC.label", "segments.CF.label"],
+      "blockers": [],
+      "planLintFull": "PASS",
+      "renderSvg": "NOT_RUN",
+      "studentChrome": "NOT_RUN",
+      "a4": "NOT_RUN"
+    }
+  ]
+}

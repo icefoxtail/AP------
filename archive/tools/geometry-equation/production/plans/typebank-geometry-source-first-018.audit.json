@@ -1,0 +1,60 @@
+{
+  "auditKind": "SOURCE_FIRST_PRE_RENDER_FIELD_PARITY",
+  "date": "2026-11-25",
+  "from": 18,
+  "to": 18,
+  "missingSourceNumbers": [],
+  "reviewRule": "Recompute a genuine, non-maximizing position satisfying the distance-sum locus. The original picture reveals only its given triangle or focus triangle, never the maximizing height or answer.",
+  "figures": [
+    {
+      "number": 18,
+      "qid": 2,
+      "sourceQuote": "삼각형 $\\mathrm{PAB}$의 넓이의 최댓값은?",
+      "preRenderParity": "PASS",
+      "mathReview": "A=(0,0), B=(10,0), P=(216/25,288/25). Exact distances AP=360/25=72/5 and BP=290/25=58/5 sum to26; height288/25 is strictly below the maximal ellipse semiminor12. The hidden answer is triangle area10*12/2=60. Original picture contains triangle only, not the solution ellipse.",
+      "requiredVisible": [
+        {"path": "capability", "equals": "construction-spike-v1"},
+        {"path": "mathPlan.nodes.A.op", "equals": "SOURCE_POINT"},
+        {"path": "mathPlan.nodes.B.op", "equals": "SOURCE_POINT"},
+        {"path": "mathPlan.nodes.P.args.coordinates.0.numerator", "equals": "216"},
+        {"path": "mathPlan.nodes.P.args.coordinates.1.numerator", "equals": "288"},
+        {"path": "displaySegments.sAB.refs.0", "equals": "A"},
+        {"path": "displaySegments.sAP.refs.1", "equals": "P"},
+        {"path": "displaySegments.sBP.refs.1", "equals": "P"},
+        {"path": "planeMarks.dimensions.dAB.label", "equals": "10"},
+        {"path": "planeMarks.dimensions.dAB.side", "equals": "BELOW"}
+      ],
+      "forbiddenVisible": ["ellipse", "ellipses", "conic", "conics"],
+      "blockers": [],
+      "planLintFull": "PASS",
+      "renderSvg": "NOT_RUN",
+      "studentChrome": "NOT_RUN",
+      "a4": "NOT_RUN"
+    },
+    {
+      "number": 18,
+      "qid": 3,
+      "sourceQuote": "두 조형물 사이의 거리가 $10",
+      "preRenderParity": "PASS",
+      "mathReview": "F'=(-5,0), F=(5,0), FF'=10m and PF+PF'=14m give semi-major a=7, focal c=5, b^2=49-25=24. P at x=3 on the positive ellipse branch is not the maximizing top point. Hidden maximum triangular area is 10*sqrt(24)/2=10sqrt(6) square metres.",
+      "requiredVisible": [
+        {"path": "capability", "equals": "ellipse-figure-v1"},
+        {"path": "ellipse.majorAxis", "equals": "X"},
+        {"path": "ellipse.semiAxisSquared.major", "equals": "49"},
+        {"path": "ellipse.semiAxisSquared.minor", "equals": "24"},
+        {"path": "points.F'.side", "equals": -1},
+        {"path": "points.F.side", "equals": 1},
+        {"path": "points.P.x", "equals": "3"},
+        {"path": "segments.sFFp.label", "equals": "10 m"},
+        {"path": "segments.sPF.from", "equals": "P"},
+        {"path": "segments.sPFp.to", "equals": "F'"}
+      ],
+      "forbiddenVisible": ["segments.sPF.label", "segments.sPFp.label", "points.P.coordinates"],
+      "blockers": [],
+      "planLintFull": "PASS",
+      "renderSvg": "NOT_RUN",
+      "studentChrome": "NOT_RUN",
+      "a4": "NOT_RUN"
+    }
+  ]
+}

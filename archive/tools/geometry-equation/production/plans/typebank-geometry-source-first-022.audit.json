@@ -1,0 +1,97 @@
+{
+  "auditKind": "SOURCE_FIRST_PRE_RENDER_FIELD_PARITY",
+  "date": "2026-11-25",
+  "from": 22,
+  "to": 22,
+  "missingSourceNumbers": [],
+  "reviewRule": "Audit the original locus construction rather than drawing the solution ellipse: circle radii, perpendicular bisectors, movable-circle tangencies, and 3:1 section must hold at exact coordinates.",
+  "figures": [
+    {
+      "number": 22,
+      "qid": 1,
+      "sourceQuote": "수직이등분선 $l$",
+      "sourceVsPlan": "REVIEWED", "featureParity": "PASS", "planLintShallow": "PASS",
+      "preRenderParity": "PASS",
+      "mathReview": "Circle C has O=(0,0) and radius12, F=(6,0), P=(0,12). Midpoint M=(3,6) lies on the perpendicular bisector l: y=x/2+9/2 because FP has slope -2. X=(0,9/2) is on OP and l. PX=FX=15/2 and OX+PX=12, while the answer ellipse with semiminor3sqrt(3) must not be drawn.",
+      "requiredVisible": [
+        {"path":"conics.c1.kind","equals":"CIRCLE"},
+        {"path":"conics.c1.rSquared","equals":"144"},
+        {"path":"conics.c1.label","equals":"C"},
+        {"path":"points.F.coordinates","equals":true},
+        {"path":"points.M.kind","equals":"FOOT"},
+        {"path":"points.M.rightAngle","equals":true},
+        {"path":"points.X.y","equals":"9/2"},
+        {"path":"lines.l.slope","equals":"1/2"},
+        {"path":"segments.sOP.label","equals":"12"},
+        {"path":"segments.sFX.from","equals":"F"}
+      ],
+      "forbiddenVisible": ["ellipse","ellipses","conics.c2","segments.sFX.label"],
+      "blockers": [],"planLintFull":"PASS","renderSvg":"NOT_RUN","studentChrome":"NOT_RUN","a4":"NOT_RUN"
+    },
+    {
+      "number": 22,
+      "qid": 2,
+      "sourceQuote": "수직이등분선과 선분",
+      "sourceVsPlan": "REVIEWED", "featureParity": "PASS", "planLintShallow": "PASS",
+      "preRenderParity": "PASS",
+      "mathReview": "Circle centered F=(0,0), radius8, F'=(0,-6), A=(8,0). Perpendicular bisector of AF' is y=-4x/3+7/3, through midpoint M=(4,-3) and P=(7/4,0); PA=PF'=25/4, PF+PF'=8. The derived locus x^2/7+(y+3)^2/16=1 is withheld.",
+      "requiredVisible": [
+        {"path":"conic.kind","equals":"CIRCLE"},
+        {"path":"conic.rSquared","equals":"64"},
+        {"path":"points.F.coordinates","equals":true},
+        {"path":"points.F'.coordinates","equals":true},
+        {"path":"points.P.x","equals":"7/4"},
+        {"path":"points.M.kind","equals":"FOOT"},
+        {"path":"points.M.label","equals":false},
+        {"path":"lines.l.slope","equals":"-4/3"},
+        {"path":"segments.sAF.label","equals":"8"},
+        {"path":"segments.sAFp.to","equals":"F'"}
+      ],
+      "forbiddenVisible": ["ellipse","ellipses","points.P.coordinates"],
+      "blockers": [],"planLintFull":"PASS","renderSvg":"NOT_RUN","studentChrome":"NOT_RUN","a4":"NOT_RUN"
+    },
+    {
+      "number": 22,
+      "qid": 3,
+      "sourceQuote": "외접하면서 큰 원에 내접",
+      "sourceVsPlan": "REVIEWED", "featureParity": "PASS", "planLintShallow": "PASS",
+      "preRenderParity": "PASS",
+      "mathReview": "Small fixed circle center S=(-1,0), radius2; large center L=(5,0), radius8, tangent internally since center separation6=8-2. Representative moving circle center P=(2,4), radius3 has PS=5=2+3 (external tangency) and PL=5=8-3 (internal tangency). Its center's answer ellipse is not drawn.",
+      "requiredVisible": [
+        {"path":"capability","equals":"construction-spike-v1"},
+        {"path":"mathPlan.nodes.cSmall.op","equals":"CIRCLE_CENTER_RADIUS"},
+        {"path":"mathPlan.nodes.cLarge.op","equals":"CIRCLE_CENTER_RADIUS"},
+        {"path":"mathPlan.nodes.cMoving.op","equals":"CIRCLE_CENTER_RADIUS"},
+        {"path":"mathPlan.nodes.P.args.coordinates.1.value","equals":"4"},
+        {"path":"displayCircles.0","equals":"cSmall"},
+        {"path":"displayCircles.1","equals":"cLarge"},
+        {"path":"displayCircles.2","equals":"cMoving"},
+        {"path":"planeMarks.expressionLabels.tSK.text","equals":"2"},
+        {"path":"planeMarks.expressionLabels.tLJ.text","equals":"8"}
+      ],
+      "forbiddenVisible": ["ellipse","ellipses","conic","conics"],
+      "blockers": [],"planLintFull":"PASS","renderSvg":"NOT_RUN","studentChrome":"NOT_RUN","a4":"NOT_RUN"
+    },
+    {
+      "number": 22,
+      "qid": 4,
+      "sourceQuote": "선분 $\\mathrm{AB}$를 $3:1$로 내분",
+      "sourceVsPlan": "REVIEWED", "featureParity": "PASS", "planLintShallow": "PASS",
+      "preRenderParity": "PASS",
+      "mathReview": "A=(24/5,0), B=(0,32/5) give AB=8 exactly. P=(6/5,24/5)=(A+3B)/4 has AP=6, PB=2, so AP:PB=3:1. The locus x^2/4+y^2/36=1 is only the solution and must remain hidden; source picture is the first-quadrant segment-and-point construction.",
+      "requiredVisible": [
+        {"path":"capability","equals":"construction-spike-v1"},
+        {"path":"mathPlan.nodes.A.op","equals":"SOURCE_POINT"},
+        {"path":"mathPlan.nodes.B.op","equals":"SOURCE_POINT"},
+        {"path":"mathPlan.nodes.P.args.coordinates.0.numerator","equals":"6"},
+        {"path":"displaySegments.sAP.refs.0","equals":"A"},
+        {"path":"displaySegments.sPB.refs.1","equals":"B"},
+        {"path":"planeMarks.expressionLabels.tAP.text","equals":"3t"},
+        {"path":"planeMarks.expressionLabels.tPB.text","equals":"t"},
+        {"path":"planeMarks.dimensions.dAB.label","equals":"8"}
+      ],
+      "forbiddenVisible": ["ellipse","ellipses","conic","conics"],
+      "blockers": [],"planLintFull":"PASS","renderSvg":"NOT_RUN","studentChrome":"NOT_RUN","a4":"NOT_RUN"
+    }
+  ]
+}

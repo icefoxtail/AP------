@@ -15,7 +15,7 @@
   "caption": "장축이 x축인 타원에서 음의 꼭짓점 A, 양의 y축 교점 B, 양의 초점 F를 이은 삼각형 AFB",
   "accessibilityDescription": "가로로 긴 타원에서 x축의 왼쪽 꼭짓점 A와 오른쪽 초점 F, y축의 위쪽 교점 B를 이어 삼각형 AFB를 그렸다. 꼭짓점 F에서 A 방향과 B 방향의 두 선분이 이루는 각은 원문 조건 π/3이다.",
   "sourceConditions": [
-    {"id": "c1", "condition": "A=(-a,0), B=(0,b), F=(c,0), a²=b²+c². 원문 각 60°와 넓이 24√3으로 a=8,b=4√3,c=4인 실제 타원을 구성하나 a²+b² 정답은 공개하지 않는다.", "mappedTo": ["conic", "A", "B", "F"]},
+    {"id": "c1", "condition": "A=(-a,0), B=(0,b), F=(c,0), a²=b²+c². 원문 각 60°와 넓이 24√3으로 a=8,b=4√3,c=4인 실제 타원을 구성하나 a²+b² 정답은 공개하지 않는다. 원문 기호 좌표 A(-a,0), B(0,b), F(c,0)는 풀이 수치 대신 기호로 표시할 엔진 지원이 필요하다.", "mappedTo": ["conic", "A", "B", "F"]},
     {"id": "c2", "condition": "F=(4,0), A=(-8,0), B=(0,4√3)이므로 FA=12, FB=8, cos∠AFB=(AF·BF)/(|AF||BF|)=1/2, ∠AFB=π/3이다. 단 현행 ellipse-figure-v1에는 F의 각도 호 라벨/각 마크 필드가 없다.", "mappedTo": ["A", "F", "B", "sAF", "sFB"]},
     {"id": "c3", "condition": "△AFB의 실제 넓이는 (1/2)×AF×OB=(1/2)×12×4√3=24√3이다. 넓이와 ∠AFB 값은 텍스트 원문에 주어졌으나 해당 시각 표식은 현행 capability로 모두 보일 수 없으므로 ENGINE_CAPABILITY_PENDING이다.", "mappedTo": ["tAFB", "sAF", "sFB", "sBA"]}
   ],

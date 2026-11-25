@@ -1,0 +1,26 @@
+{
+  "auditKind":"SOURCE_FIRST_PRE_RENDER_FIELD_PARITY",
+  "date":"2026-11-25","from":16,"to":16,"missingSourceNumbers":[],
+  "reviewRule":"Check actual ellipse long-axis orientation, two foci, a source triangle and hidden parameter; rendering and student typography are deferred.",
+  "figures":[
+    {
+      "number":16,"qid":4,"sourceQuote":"삼각형 $\\mathrm{PFF}'$의 둘레",
+      "preRenderParity":"PASS",
+      "mathReview":"Ellipse x^2/a+y^2/32=1 has vertical major axis for 0<a<32. Perimeter 14sqrt(2) and sum PF+PF'=8sqrt(2) imply FF'=6sqrt(2), c=3sqrt(2), a=32-18=14 internal. P on upper right ellipse branch; a is not labeled.",
+      "requiredVisible":[
+        {"path":"ellipse.majorAxis","equals":"Y"},
+        {"path":"ellipse.semiAxisSquared.major","equals":"32"},
+        {"path":"ellipse.semiAxisSquared.minor","equals":"14"},
+        {"path":"points.F.kind","equals":"FOCUS"},
+        {"path":"points.F'.kind","equals":"FOCUS"},
+        {"path":"points.P.kind","equals":"ON_ELLIPSE"},
+        {"path":"points.P.x","equals":"2"},
+        {"path":"segments.sPF.from","equals":"P"},
+        {"path":"segments.sPFp.to","equals":"F'"},
+        {"path":"segments.sFFp.from","equals":"F"}
+      ],
+      "forbiddenVisible":["points.P.coordinates","segments.sPF.label","segments.sFFp.label"],
+      "blockers":[],"planLintFull":"PASS","renderSvg":"NOT_RUN","studentChrome":"NOT_RUN","a4":"NOT_RUN"
+    }
+  ]
+}
