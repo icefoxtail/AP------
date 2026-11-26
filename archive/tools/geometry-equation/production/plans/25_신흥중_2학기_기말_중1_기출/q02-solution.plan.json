@@ -1,0 +1,45 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "같은 원의 중심각 60°와 20°를 표시하고 두 현 AB, CD를 직선으로 구별한 도형.",
+  "accessibilityDescription": "중심 O인 원의 지름 BC 위쪽에 점 A와 D가 있다. 중심각 AOB는 60도이고 COD는 20도다. 두 호에 대응하는 현 AB와 CD가 각각 직선으로 연결되어 있다.",
+  "sourceQuote": "오른쪽 그림의 원 $O$에서",
+  "sourceConditions": [
+    {"id":"same-circle","condition":"A, B, C, D는 모두 원 O 위에 있으며 OB와 OC는 서로 반대 방향의 반지름이다. 반지름 10은 크기만 정한 대표 치수다.","mappedTo":["mathPlan.nodes[0]","mathPlan.nodes[1]","mathPlan.nodes[5]","displayCircles"]},
+    {"id":"angle-aob","condition":"∠AOB=60°가 주어졌다.","mappedTo":["mathPlan.nodes[2]","mathPlan.nodes[3]","planeMarks.angles[0]"]},
+    {"id":"angle-cod","condition":"∠COD=20°가 주어졌다.","mappedTo":["mathPlan.nodes[4]","planeMarks.angles[1]"]},
+    {"id":"chords","condition":"해설은 호의 크기와 현의 길이를 구분한다. 현 AB와 CD는 직선 선분으로 실제 표시한다.","mappedTo":["displaySegments[4]","displaySegments[5]"]}
+  ],
+  "newVisualInformation": [
+    "기존 해설 SVG의 면 채움 세 영역을 모두 제거하고, 주어진 두 중심각은 호 표식과 수치로 보이게 한다.",
+    "현 AB·CD와 두 부채꼴을 구분하도록 해당 반지름과 현을 모두 그린다.",
+    "문제와 해설에 없는 비율 값이나 계산 결과를 그림에 추가하지 않는다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes": [
+      {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"10"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"A","op":"POLAR_POINT","inputs":["O","C"],"args":{"length":{"kind":"integer","value":"10"},"angleDeg":{"kind":"integer","value":"120"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"B","op":"POLAR_POINT","inputs":["O","C"],"args":{"length":{"kind":"integer","value":"10"},"angleDeg":{"kind":"integer","value":"180"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"D","op":"POLAR_POINT","inputs":["O","C"],"args":{"length":{"kind":"integer","value":"10"},"angleDeg":{"kind":"integer","value":"20"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"circ","op":"CIRCLE_CENTER_RADIUS","inputs":["O"],"args":{"radius":{"kind":"integer","value":"10"}},"outputType":"CIRCLE","factRole":"DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "displayPoints": ["O", "A", "B", "C", "D"],
+  "displayCircles": ["circ"],
+  "displaySegments": [
+    {"id":"sOA","refs":["O","A"]},
+    {"id":"sOB","refs":["O","B"]},
+    {"id":"sOC","refs":["O","C"]},
+    {"id":"sOD","refs":["O","D"]},
+    {"id":"sAB","refs":["A","B"]},
+    {"id":"sCD","refs":["C","D"]}
+  ],
+  "planeMarks": {
+    "angles": [
+      {"id":"aAOB","refs":["A","O","B"],"value":60,"label":"60","arcs":1,"style":"ARC","factRole":"GIVEN"},
+      {"id":"aCOD","refs":["C","O","D"],"value":20,"label":"20","arcs":1,"style":"ARC","factRole":"GIVEN"}
+    ]
+  }
+}

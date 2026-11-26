@@ -1,0 +1,55 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "한 변이 10cm인 정사각형 안의 두 사분원 교집합인 렌즈 모양 영역만 칠한 그림.",
+  "accessibilityDescription": "가로세로 10센티미터인 정사각형 안에 마주 보는 두 꼭짓점을 중심으로 하는 반지름 10센티미터의 사분원 호가 있으며, 두 호 사이의 겹치는 렌즈 영역만 회색으로 칠했다.",
+  "sourceQuote": "오른쪽 그림과 같이 한 변의 길이가",
+  "sourceConditions": [
+    {"id":"square","condition":"정사각형의 한 변은 10cm이며 네 꼭짓점의 대표 좌표는 (0,0),(10,0),(10,10),(0,10)이다. 좌표는 시각 모델용이며 문제에 별도 좌표값을 부여하지 않는다.","mappedTo":["mathPlan.nodes[0]","mathPlan.nodes[1]","mathPlan.nodes[2]","mathPlan.nodes[3]","displaySegments"]},
+    {"id":"quarter-arcs","condition":"두 사분원은 서로 마주 보는 꼭짓점 B,D를 중심으로 하고 반지름은 정사각형의 한 변 10cm이다. A에서 C까지 서로 다른 중심의 90° 호 두 개가 렌즈를 만든다.","mappedTo":["mathPlan.nodes[4]","mathPlan.nodes[5]","planeMarks.arcs"]},
+    {"id":"only-lens","condition":"원본 문제에서 색칠한 부분은 두 사분원의 공통 부분 하나뿐이며 바깥 두 영역은 칠하지 않는다.","mappedTo":"planeMarks.regions[0]"},
+    {"id":"length-ten","condition":"정사각형 한 변의 길이 10cm를 아래 변의 치수선으로 보여 준다.","mappedTo":"planeMarks.dimensions[0]"}
+  ],
+  "newVisualInformation": [
+    "기존 해설 SVG에서 렌즈 바깥 두 모서리까지 회색으로 채운 불필요한 면 채움을 제거한다.",
+    "두 호의 중심이 서로 다르다는 관계를 실제 원호 중심 필드로 보존하고, 정사각형 변 10cm 치수선을 유지한다.",
+    "원을 완전히 그려 원문에 없는 원호가 생기지 않도록 필요한 90° 호만 보여 준다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes": [
+      {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"10"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"10"},{"kind":"integer","value":"10"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"10"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"kD","op":"CIRCLE_CENTER_RADIUS","inputs":["D"],"args":{"radius":{"kind":"integer","value":"10"}},"outputType":"CIRCLE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"kB","op":"CIRCLE_CENTER_RADIUS","inputs":["B"],"args":{"radius":{"kind":"integer","value":"10"}},"outputType":"CIRCLE","factRole":"DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "displayPoints": ["A", "B", "C", "D"],
+  "hiddenPointNames": ["A", "B", "C", "D"],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {"id":"sAB","refs":["A","B"]},
+    {"id":"sBC","refs":["B","C"]},
+    {"id":"sCD","refs":["C","D"]},
+    {"id":"sDA","refs":["D","A"]}
+  ],
+  "planeMarks": {
+    "arcs": [
+      {"id":"arcDAC","circle":"kD","center":"D","from":"A","to":"C","side":"CW","highlight":false,"factRole":"GIVEN"},
+      {"id":"arcBCA","circle":"kB","center":"B","from":"C","to":"A","side":"CW","highlight":false,"factRole":"GIVEN"}
+    ],
+    "regions": [
+      {"id":"lens","fill":"MEDIUM","factRole":"CONCLUSION","shapes":[
+        {"loop":{"start":"A","steps":[
+          {"to":"C","arc":{"center":"D","side":"CW"}},
+          {"to":"A","arc":{"center":"B","side":"CW"}}
+        ]}}
+      ]}
+    ],
+    "dimensions": [
+      {"id":"d10","from":"D","to":"C","label":"10","unit":"cm","side":"BELOW","style":"BAR","factRole":"GIVEN"}
+    ]
+  }
+}

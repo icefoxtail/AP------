@@ -1,0 +1,29 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "STEM_LEAF",
+    "values": [2,2,3,3,3,4,10,10,11,11,12,12,12,13,22,23,23,24,31,42],
+    "unitText": "권",
+    "title": "대출한 책의 수",
+    "marks": [{"rank":11}],
+    "rankLabels": "FROM_LARGEST"
+  },
+  "caption": "줄기와 잎 20개 중 큰 쪽에서 열 번째인 12권만 강조하여 순위를 읽는다.",
+  "accessibilityDescription": "0부터 4까지의 줄기에 자료 20개를 정렬한 줄기와 잎 그림이다. 1줄기의 12권 잎 한 개에 동그라미로 큰 쪽 열 번째를 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "stem-leaves",
+      "condition": "원본 문제 그림은 줄기 0: 2,2,3,3,3,4; 줄기 1: 0,0,1,1,2,2,2,3; 줄기 2: 2,3,3,4; 줄기 3: 1; 줄기 4: 2를 제시한다.",
+      "mappedTo": "chart.values"
+    },
+    {
+      "id": "tenth-largest",
+      "condition": "20명 중 큰 쪽 열 번째는 작은 쪽 열한 번째 값이며, 1줄기의 세 번째부터 있는 12권 잎에 해당한다.",
+      "mappedTo": "chart.marks[0].rank"
+    }
+  ],
+  "newVisualInformation": [
+    "기존 복잡한 원문 해설 SVG의 줄마다 겹친 순위·동그라미 표시를 단일 열 번째 강조로 정리한다.",
+    "잎 전체 20개와 각 줄기의 도수를 보존하고, 해설에서 필요한 12권 위치만 표시한다."
+  ]
+}
