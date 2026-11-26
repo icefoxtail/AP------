@@ -1,0 +1,71 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "-4",
+          "-6",
+          "-1"
+        ],
+        "domain": [
+          "-6",
+          "0"
+        ],
+        "label": "y=-x^2-6x-4"
+      }
+    ],
+    "viewport": [
+      -7,
+      1,
+      -7,
+      7
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "V",
+          "x": "-3",
+          "y": "5",
+          "coordinates": true
+        }
+      ],
+      "guides": [
+        {
+          "id": "axisV",
+          "from": "V",
+          "axis": "x"
+        }
+      ]
+    }
+  },
+  "caption": "꼭짓점의 x좌표 -3을 보조선으로 확인한다.",
+  "sourceQuote": "감소하기 시작하는 경계의 x좌표가 -3인 아래로 볼록한 포물선",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "a=2를 대입한 함수 y=-x²-6x-4",
+      "mappedTo": [
+        "f"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "꼭짓점의 x좌표는 -3",
+      "mappedTo": [
+        "V",
+        "axisV"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원문 식·점·보조선과 축의 관계를 정확히 남기고 기본 면 채움을 두지 않는다."
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "-1"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ],
+        "label": "y=-x^2"
+      },
+      {
+        "id": "g",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "-2"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ],
+        "label": "y=ax^2",
+        "style": "DASHED"
+      }
+    ],
+    "viewport": [
+      -4,
+      4,
+      -10,
+      2
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        }
+      ]
+    }
+  },
+  "caption": "점선은 아래로 열리고 실선보다 좁으므로 a는 -1보다 작다.",
+  "sourceQuote": "실선 y=-x², 점선 y=ax², 모두 아래로 열린 포물선이며 점선의 폭이 더 좁다",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "실선 y=-x²",
+      "mappedTo": [
+        "f"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "점선 y=ax²은 폭이 좁고 아래로 열림",
+      "mappedTo": [
+        "g"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "두 포물선의 꼭짓점은 원점",
+      "mappedTo": [
+        "O"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원문 식·점·보조선과 축의 관계를 정확히 남기고 기본 면 채움을 두지 않는다."
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "3",
+          "0",
+          "-4"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ],
+        "label": "y=-4x^2+3"
+      },
+      {
+        "id": "g",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "6",
+          "0",
+          "-4"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ],
+        "label": "y=-4x^2+6"
+      }
+    ],
+    "viewport": [
+      -3,
+      3,
+      -11,
+      9
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "1/2",
+          "y": "5",
+          "coordinates": true
+        }
+      ],
+      "guides": [
+        {
+          "id": "pX",
+          "from": "P",
+          "axis": "x"
+        }
+      ]
+    }
+  },
+  "caption": "원래 포물선과 위로 3만큼 이동한 포물선 및 주어진 점을 그린다.",
+  "sourceQuote": "y=-4x²+3을 y축으로 k 평행이동한 곡선이 (1/2,5)를 지난다",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원래 그래프",
+      "mappedTo": [
+        "f"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "k=3 이동 그래프와 점 (1/2,5)",
+      "mappedTo": [
+        "g",
+        "P"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "수직 정렬 보조선",
+      "mappedTo": [
+        "pX"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원문 식·점·보조선과 축의 관계를 정확히 남기고 기본 면 채움을 두지 않는다."
+  ]
+}

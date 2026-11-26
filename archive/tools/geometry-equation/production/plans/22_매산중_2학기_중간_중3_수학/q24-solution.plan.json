@@ -1,0 +1,539 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "수준별 4-①"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "20784610",
+                    "denominator": "1000000"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "12"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "axisTickValues": {
+          "x": [],
+          "y": []
+        },
+        "displayLines": [],
+        "displayCircles": [],
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sBD",
+            "refs": [
+              "B",
+              "D"
+            ]
+          },
+          {
+            "id": "sDC",
+            "refs": [
+              "D",
+              "C"
+            ]
+          },
+          {
+            "id": "sCA",
+            "refs": [
+              "C",
+              "A"
+            ]
+          }
+        ],
+        "rightAngles": [
+          {
+            "id": "rB",
+            "refs": [
+              "A",
+              "B",
+              "C"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "aBAC",
+              "refs": [
+                "B",
+                "A",
+                "C"
+              ],
+              "value": 30,
+              "label": "30",
+              "arcs": 1,
+              "style": "ARC",
+              "factRole": "GIVEN"
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "tAC",
+              "ownerSegment": "sCA",
+              "text": "24",
+              "unit": "cm",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "tDC",
+              "ownerSegment": "sDC",
+              "text": "8",
+              "unit": "cm",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "coordinateCanvas": {
+          "width": 700,
+          "height": 510
+        },
+        "caption": "수준별 4-①: 직각삼각형과 D에서 분할한 밑변을 그린다.",
+        "sourceQuote": "수준별 4-① ∠B=90°, AC=24cm, ∠A=30°, D는 BC 위, CD=8cm",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "직각 B와 각 A=30°",
+            "mappedTo": [
+              "rB",
+              "aBAC"
+            ]
+          },
+          {
+            "id": "c2",
+            "condition": "AC=24cm",
+            "mappedTo": [
+              "tAC"
+            ]
+          },
+          {
+            "id": "c3",
+            "condition": "D∈BC, CD=8cm",
+            "mappedTo": [
+              "sBD",
+              "sDC",
+              "tDC"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "원문 조건의 각·직각·선분·길이·라벨을 복원하고 면 채움 없이 검증한다."
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "수준별 4-②"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "6928203",
+                    "denominator": "1000000"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "E",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "20784610",
+                    "denominator": "1000000"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "3464102",
+                    "denominator": "1000000"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "13856406",
+                    "denominator": "1000000"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "F",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "4618802",
+                    "denominator": "1000000"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "1333333",
+                    "denominator": "1000000"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "axisTickValues": {
+          "x": [],
+          "y": []
+        },
+        "displayLines": [],
+        "displayCircles": [],
+        "displayPoints": [
+          "B",
+          "C",
+          "E",
+          "A",
+          "D",
+          "F"
+        ],
+        "displaySegments": [
+          {
+            "id": "sBA",
+            "refs": [
+              "B",
+              "A"
+            ]
+          },
+          {
+            "id": "sAC",
+            "refs": [
+              "A",
+              "C"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sCE",
+            "refs": [
+              "C",
+              "E"
+            ]
+          },
+          {
+            "id": "sCD",
+            "refs": [
+              "C",
+              "D"
+            ]
+          },
+          {
+            "id": "sDE",
+            "refs": [
+              "D",
+              "E"
+            ]
+          },
+          {
+            "id": "sBF",
+            "refs": [
+              "B",
+              "F"
+            ]
+          },
+          {
+            "id": "sFD",
+            "refs": [
+              "F",
+              "D"
+            ]
+          }
+        ],
+        "rightAngles": [],
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "aABC",
+              "refs": [
+                "A",
+                "B",
+                "C"
+              ],
+              "value": 30,
+              "label": "30",
+              "arcs": 1,
+              "style": "ARC",
+              "factRole": "GIVEN"
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "tAB",
+              "ownerSegment": "sBA",
+              "text": "4",
+              "factRole": "GIVEN"
+            }
+          ],
+          "equalLengths": [
+            {
+              "id": "e1",
+              "count": 1,
+              "segments": [
+                "sBA",
+                "sAC"
+              ]
+            },
+            {
+              "id": "e2",
+              "count": 2,
+              "segments": [
+                "sCD",
+                "sDE"
+              ]
+            }
+          ]
+        },
+        "coordinateCanvas": {
+          "width": 700,
+          "height": 510
+        },
+        "caption": "수준별 4-②: 닮은 두 이등변삼각형의 등변 눈금과 교점 F를 보인다.",
+        "sourceQuote": "수준별 4-② 닮음비 1:2인 이등변삼각형 ABC, DCE, AB=AC, ∠ABC=30°, AB=4, F=AC∩BD",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "AB=4, ∠ABC=30°",
+            "mappedTo": [
+              "tAB",
+              "aABC"
+            ]
+          },
+          {
+            "id": "c2",
+            "condition": "AB=AC와 DC=DE인 두 이등변삼각형",
+            "mappedTo": [
+              "e1",
+              "e2"
+            ]
+          },
+          {
+            "id": "c3",
+            "condition": "F는 AC와 BD의 교점",
+            "mappedTo": [
+              "sAC",
+              "sBF",
+              "sFD"
+            ]
+          },
+          {
+            "id": "c4",
+            "condition": "B,C,E는 한 직선 위",
+            "mappedTo": [
+              "sBC",
+              "sCE"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "원문 조건의 각·직각·선분·길이·라벨을 복원하고 면 채움 없이 검증한다."
+        ]
+      }
+    }
+  ],
+  "caption": "수준별 4-①의 직각삼각형과 4-②의 닮은 이등변삼각형을 개별 패널로 보인다.",
+  "sourceQuote": "서답형 4는 두 수준별 문제 중 하나를 선택한다",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "4-①: 직각·30°·24cm·8cm",
+      "mappedTo": [
+        "panels[0]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "4-②: 이등변·닮음비 1:2·F 교점",
+      "mappedTo": [
+        "panels[1]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "서로 다른 수준별 그림을 독립 패널로 두고 필요한 정보만 표시한다."
+  ]
+}

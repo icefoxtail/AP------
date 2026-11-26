@@ -1,0 +1,83 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "3"
+        ],
+        "domain": [
+          "-5/2",
+          "5/2"
+        ],
+        "label": "y=3x^2"
+      },
+      {
+        "id": "g",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "48",
+          "24",
+          "3"
+        ],
+        "domain": [
+          "-13/2",
+          "-3/2"
+        ],
+        "label": "y=3(x+4)^2"
+      }
+    ],
+    "viewport": [
+      -8,
+      4,
+      -3,
+      22
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        },
+        {
+          "id": "V",
+          "x": "-4",
+          "y": "0",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "원점과 왼쪽 4로 이동한 꼭짓점을 갖는 두 포물선을 구분한다.",
+  "sourceQuote": "y=3x²를 왼쪽으로 4 평행이동하면 y=3(x+4)²",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원래 포물선",
+      "mappedTo": [
+        "f"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "이동 후 꼭짓점 (-4,0)",
+      "mappedTo": [
+        "g",
+        "V"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원문 식·점·보조선과 축의 관계를 정확히 남기고 기본 면 채움을 두지 않는다."
+  ]
+}

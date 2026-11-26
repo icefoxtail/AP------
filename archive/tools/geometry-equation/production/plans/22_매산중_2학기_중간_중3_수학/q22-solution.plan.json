@@ -1,0 +1,222 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "수준별 2-①"
+      },
+      "plan": {
+        "capability": "multi-curve-figure-v1",
+        "graphPlan": {
+          "family": "multi-curve",
+          "curves": [
+            {
+              "id": "f",
+              "kind": "Y_OF_X",
+              "coefficients": [
+                "-3",
+                "7",
+                "-4"
+              ],
+              "domain": [
+                "-1/5",
+                "11/5"
+              ],
+              "label": "y=-4x^2+7x-3"
+            }
+          ],
+          "viewport": [
+            -1,
+            3,
+            -7,
+            2
+          ],
+          "axisTickValues": {
+            "x": [],
+            "y": []
+          },
+          "overlays": {
+            "points": [
+              {
+                "id": "A",
+                "x": "0",
+                "y": "-3",
+                "coordinates": true
+              },
+              {
+                "id": "B",
+                "x": "1",
+                "y": "0",
+                "coordinates": true
+              },
+              {
+                "id": "C",
+                "x": "2",
+                "y": "-5",
+                "coordinates": true
+              }
+            ]
+          }
+        },
+        "caption": "수준별 2-①: y절편과 두 지나는 점을 표시한다.",
+        "sourceQuote": "수준별 2-① y절편 -3, 두 점 (1,0),(2,-5)",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "유도한 이차함수",
+            "mappedTo": [
+              "f"
+            ]
+          },
+          {
+            "id": "c2",
+            "condition": "세 통과점",
+            "mappedTo": [
+              "A",
+              "B",
+              "C"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "원문 식·점·보조선과 축의 관계를 정확히 남기고 기본 면 채움을 두지 않는다."
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "수준별 2-②"
+      },
+      "plan": {
+        "capability": "multi-curve-figure-v1",
+        "graphPlan": {
+          "family": "multi-curve",
+          "curves": [
+            {
+              "id": "f",
+              "kind": "Y_OF_X",
+              "coefficients": [
+                "9",
+                "-2",
+                "-1/3"
+              ],
+              "domain": [
+                "-19/2",
+                "7/2"
+              ],
+              "label": "y=-(1/3)(x+9)(x-3)"
+            }
+          ],
+          "viewport": [
+            -11,
+            5,
+            -3,
+            15
+          ],
+          "axisTickValues": {
+            "x": [],
+            "y": []
+          },
+          "overlays": {
+            "points": [
+              {
+                "id": "A",
+                "x": "-3",
+                "y": "12",
+                "coordinates": true
+              },
+              {
+                "id": "B",
+                "x": "-9",
+                "y": "0",
+                "coordinates": true
+              },
+              {
+                "id": "C",
+                "x": "0",
+                "y": "9",
+                "coordinates": true
+              },
+              {
+                "id": "O",
+                "x": "0",
+                "y": "0"
+              }
+            ],
+            "guides": [
+              {
+                "id": "axis",
+                "from": "A",
+                "axis": "x"
+              }
+            ],
+            "polygons": [
+              {
+                "id": "ABOC",
+                "points": [
+                  "A",
+                  "B",
+                  "O",
+                  "C"
+                ],
+                "fill": "NONE"
+              }
+            ]
+          }
+        },
+        "caption": "수준별 2-②: 포물선과 사각형 ABOC를 면 채움 없이 나타낸다.",
+        "sourceQuote": "수준별 2-② 축 x=-3, B(-9,0), C(0,9), 꼭짓점 A(-3,12)",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "유도된 포물선",
+            "mappedTo": [
+              "f"
+            ]
+          },
+          {
+            "id": "c2",
+            "condition": "세 특별점 A,B,C 및 원점 O",
+            "mappedTo": [
+              "A",
+              "B",
+              "C",
+              "O"
+            ]
+          },
+          {
+            "id": "c3",
+            "condition": "넓이 계산 대상 사각형 ABOC",
+            "mappedTo": [
+              "ABOC"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "원문 식·점·보조선과 축의 관계를 정확히 남기고 기본 면 채움을 두지 않는다."
+        ]
+      }
+    }
+  ],
+  "caption": "서답형 2-①과 2-②의 그래프를 분리한다.",
+  "sourceQuote": "서답형 2는 두 수준별 문제 중 하나를 선택한다",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "수준별 2-① 지나는 점",
+      "mappedTo": [
+        "panels[0]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "수준별 2-② 사각형과 절편",
+      "mappedTo": [
+        "panels[1]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "서로 다른 수준별 그림을 독립 패널로 두고 필요한 정보만 표시한다."
+  ]
+}

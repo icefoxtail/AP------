@@ -1,0 +1,110 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "4",
+          "4",
+          "2"
+        ],
+        "domain": [
+          "-4",
+          "2"
+        ],
+        "label": "f(x)"
+      },
+      {
+        "id": "g",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "5",
+          "-8",
+          "2"
+        ],
+        "domain": [
+          "-3/2",
+          "11/2"
+        ],
+        "label": "g(x)"
+      }
+    ],
+    "viewport": [
+      -5,
+      6,
+      -5,
+      25
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "V",
+          "x": "-1",
+          "y": "2"
+        },
+        {
+          "id": "W",
+          "x": "2",
+          "y": "-3"
+        },
+        {
+          "id": "R",
+          "x": "1",
+          "y": "10",
+          "coordinates": true
+        },
+        {
+          "id": "P",
+          "x": "4",
+          "y": "5",
+          "coordinates": true
+        }
+      ],
+      "segments": [
+        {
+          "id": "RP",
+          "from": "R",
+          "to": "P",
+          "dashed": true
+        }
+      ]
+    }
+  },
+  "caption": "두 포물선의 꼭짓점과 서로 3·-5 이동한 대응점을 점선으로 잇는다.",
+  "sourceQuote": "원래 함수 f를 오른쪽 3, 아래 5 옮긴 g는 꼭짓점 (2,-3), 점 (4,5)를 지난다",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원래 f(x)=2(x+1)²+2",
+      "mappedTo": [
+        "f"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "이동된 g(x)=2(x-2)²-3",
+      "mappedTo": [
+        "g"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "점 R(1,10), P(4,5)의 평행이동 관계",
+      "mappedTo": [
+        "R",
+        "P",
+        "RP"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원문 식·점·보조선과 축의 관계를 정확히 남기고 기본 면 채움을 두지 않는다."
+  ]
+}

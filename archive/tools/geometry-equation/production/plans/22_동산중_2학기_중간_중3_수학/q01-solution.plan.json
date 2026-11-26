@@ -1,0 +1,91 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "1",
+          "0",
+          "1/2"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ],
+        "label": "y=(1/2)x^2+1"
+      },
+      {
+        "id": "g",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "-3",
+          "0",
+          "1/2"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ],
+        "label": "y=(1/2)x^2-3"
+      }
+    ],
+    "viewport": [
+      -4,
+      4,
+      -5,
+      8
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "2",
+          "y": "3"
+        },
+        {
+          "id": "B",
+          "x": "2",
+          "y": "-1"
+        }
+      ],
+      "segments": [
+        {
+          "id": "AB",
+          "from": "A",
+          "to": "B"
+        }
+      ]
+    }
+  },
+  "caption": "수직으로 놓인 점 A, B를 두 포물선 위에 연결한다.",
+  "sourceQuote": "A는 y=1/2x²+1, B는 y=1/2x²-3 위의 점이고 AB는 y축에 평행",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 포물선",
+      "mappedTo": [
+        "f",
+        "g"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "AB는 y축에 평행하며 두 함수값 차이가 4",
+      "mappedTo": [
+        "A",
+        "B",
+        "AB"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원문 식·점·보조선과 축의 관계를 정확히 남기고 기본 면 채움을 두지 않는다."
+  ]
+}
