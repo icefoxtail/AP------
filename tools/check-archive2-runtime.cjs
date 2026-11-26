@@ -74,8 +74,30 @@ if (extensionKeys.status !== 0 || extensionKeys.error) process.exit(1);
 } else {
   console.log('REGISTERED_SNAPSHOT_REUSED: shared registration builders were not run');
 }
-const result = spawnSync(process.execPath, ['--test', '--test-concurrency=1', ...files], {
-  cwd: root, stdio: 'inherit', timeout: 180000,
-});
-if (result.error) console.error(result.error.message);
-process.exit(result.status === 0 && !result.error ? 0 : 1);
+// The response-time assertions must run without another test process competing
+// for CPU. The remaining independent test files can run two at a time. This
+// keeps the same file coverage, the same 500ms interaction limits, and the
+// original three-minute wall-clock ceiling for the entire runtime test suite.
+const timingFiles = new Set([
+  'tests/archive2-compose-performance.test.cjs',
+  'tests/archive2-key-resolver.test.js',
+  'tests/archive2-quick-pools.test.js',
+]);
+const testGroups = [
+  { name: 'isolated response-time checks', concurrency: 1, files: files.filter((file) => timingFiles.has(file)) },
+  { name: 'remaining runtime contracts', concurrency: 2, files: files.filter((file) => !timingFiles.has(file)) },
+];
+const suiteDeadline = Date.now() + 180000;
+for (const group of testGroups) {
+  const remainingMs = suiteDeadline - Date.now();
+  if (remainingMs <= 0) {
+    console.error('ARCHIVE2_RUNTIME_SUITE_TIMEOUT: the three-minute test budget is exhausted');
+    process.exit(1);
+  }
+  console.log(`Archive2 Runtime Guard: ${group.name} (${group.files.length} files)`);
+  const result = spawnSync(process.execPath, ['--test', `--test-concurrency=${group.concurrency}`, ...group.files], {
+    cwd: root, stdio: 'inherit', timeout: remainingMs,
+  });
+  if (result.error) console.error(result.error.message);
+  if (result.status !== 0 || result.error) process.exit(1);
+}
