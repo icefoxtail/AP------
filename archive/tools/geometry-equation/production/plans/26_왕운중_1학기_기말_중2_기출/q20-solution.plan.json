@@ -47,12 +47,28 @@
       ]
     }
   },
-  "caption": "일치조건에서 a2. 다른식은 y=x/3+b/3이므로 만나지 않으려면 b≠5. a+b=7만불가능,정답④.",
+  "caption": "일치 조건으로 a=2. 만나지 않는 다른 직선은 y=x/3+b/3이므로 b≠5이고 a+b=7만 불가능하다. 두 평행선은 조건을 만족하는 대표 예 b=4를 그린 것이지 b=4로 확정하는 것이 아니다. 정답 ④.",
   "sourceConditions": [
     {
-      "id": "source",
-      "condition": "일차방정식 $-x+3y=5$의 그래프는 $ax-6y=-10$의 그래프와는 일치하고, $-2x+6y=2b$의 그래프와는 만나지 않는다고 할 때, $a+b$의 값이 될 수 없는 것은? (단, $a$, $b$는 상수) [4점]",
-      "mappedTo": "graphPlan"
+      "id": "coincident",
+      "condition": "첫 직선과 둘째 직선의 일치조건에서 a=2이며 y=x/3+5/3이다.",
+      "mappedTo": [
+        "graphPlan.curves",
+        "graphPlan.overlays.points"
+      ]
+    },
+    {
+      "id": "parallel",
+      "condition": "셋째 직선의 b는 5 이외의 값이고 그림은 b=4를 예로 든다.",
+      "mappedTo": [
+        "graphPlan.curves",
+        "graphPlan.overlays.points"
+      ]
     }
-  ]
+  ],
+  "accessibilityDescription": "기울기 1/3이 같은 두 직선 y=x/3+5/3과 y=x/3+4/3이 서로 만나지 않는다. 둘째 직선의 b=4는 해설을 위한 대표 예다.",
+  "newVisualInformation": [
+    "기존 그래프의 대표값 b=4가 일반 결론으로 오독되지 않도록 대표 예임을 해설 문구에 분명하게 쓴다."
+  ],
+  "sourceQuote": "일차방정식 $-x+3y=5$의 그래프는 $ax-6y=-10$의 그래프와는 일치하고"
 }
