@@ -1,0 +1,275 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "add",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "3"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "209"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "CENTROID",
+        "inputs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "G"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sDB",
+      "refs": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sDG",
+      "refs": [
+        "D",
+        "G"
+      ]
+    },
+    {
+      "id": "sGC",
+      "refs": [
+        "G",
+        "C"
+      ]
+    },
+    {
+      "id": "sBG",
+      "refs": [
+        "B",
+        "G"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "halfAB",
+        "count": 1,
+        "segments": [
+          "sAD",
+          "sDB"
+        ]
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dAB",
+        "from": "A",
+        "to": "B",
+        "label": "10",
+        "unit": "cm",
+        "side": "LEFT",
+        "offset": "AUTO"
+      },
+      {
+        "id": "dBD",
+        "from": "B",
+        "to": "D",
+        "label": "y",
+        "unit": "cm",
+        "side": "RIGHT"
+      },
+      {
+        "id": "dCG",
+        "from": "C",
+        "to": "G",
+        "label": "10",
+        "unit": "cm",
+        "side": "ABOVE",
+        "offset": "AUTO"
+      },
+      {
+        "id": "dCD",
+        "from": "D",
+        "to": "C",
+        "label": "x",
+        "unit": "cm",
+        "side": "BELOW",
+        "offset": "AUTO"
+      }
+    ]
+  },
+  "caption": "삼각형 ABC의 무게중심 G와 AB의 중점 D를 표시하고 AB와 CG의 길이 10cm, BD의 미지 길이 y와 CD의 미지 길이 x를 구분한다.",
+  "accessibilityDescription": "A는 왼쪽 위, B는 왼쪽 아래, C는 오른쪽 아래에 있는 삼각형이다. AB의 중점 D와 중선 CD 위의 무게중심 G를 표시했다. AB는 10cm, CG는 10cm이고 BD의 ycm 및 CD 전체의 xcm 길이 라벨을 각각 해당 구간에 붙였다.",
+  "sourceQuote": "$\\overline{AB}=10\\mathrm{cm}$, $\\overline{CG}=10\\mathrm{cm}$일 때, $x+y$의 값은?",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AB=10; 대표 좌표 A=(6,8), B=(0,0)에서 길이 10을 정확히 만족",
+      "mappedTo": [
+        "A",
+        "B",
+        "sAD",
+        "sDB",
+        "dAB"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "D는 AB의 중점, BD=y",
+      "mappedTo": [
+        "D",
+        "sAD",
+        "sDB",
+        "halfAB",
+        "dBD"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "G는 △ABC의 무게중심으로 CD를 CG:GD=2:1로 나누며 CG=10; C=(3+√209,0)을 택해 CD=15·CG=10을 정확히 만족",
+      "mappedTo": [
+        "C",
+        "D",
+        "G",
+        "sDG",
+        "sGC",
+        "dCG"
+      ]
+    },
+    {
+      "id": "c4",
+      "condition": "x는 CD 전체의 길이, 부분 GD만이 아님",
+      "mappedTo": [
+        "D",
+        "C",
+        "dCD"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "기존 문제 SVG에서 x가 GD의 길이처럼 오독될 위험을 없애도록 CD 전체에 치수선으로 x를 붙인다.",
+    "BD의 y와 AB 전체 10cm를 각각 다른 치수선·쪽에 배치한다.",
+    "문제 그림에 아직 계산하지 않은 x=15 및 y=5를 노출하지 않는다.",
+    "삼각형 내부에 면 채움 없음."
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 490
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "SOURCE_COORDINATE_AXES_v1", "unit": "source-coordinate", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "O", "op": "NORMALIZATION_ORIGIN", "inputs": [], "args": {}, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "U", "op": "NORMALIZATION_AXIS", "inputs": [], "args": { "length": { "kind": "integer", "value": "1" } }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "5" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "12" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "rational", "numerator": "720", "denominator": "169" }, { "kind": "rational", "numerator": "300", "denominator": "169" }] }, "outputType": "POINT", "factRole": "GIVEN" }
+    ]
+  },
+  "axisTickValues": { "x": [], "y": [] },
+  "displayPoints": ["O", "A", "B", "C"],
+  "displaySegments": [
+    { "id": "sBA", "refs": ["B", "A"] },
+    { "id": "sOC", "refs": ["O", "C"] }
+  ],
+  "marks": {
+    "rightAngles": [{ "at": "C", "refs": ["O", "A"] }]
+  },
+  "caption": "좌표축 위에 직선 12x+5y−60=0과 절편 A, B 및 원점 O에서 그 직선에 내린 수선 OC를 나타낸 문제 그림.",
+  "accessibilityDescription": "x축의 A, y축의 B를 직선으로 연결하고 원점 O에서 그 직선까지 수선 OC를 그었다. C에는 직각 정사각 표식이 있고 도형 내부는 칠하지 않았다.",
+  "sourceQuote": "일차방정식 $12x+5y-60=0$의 그래프가 그림과 같을 때 $\\overline{OC}$의 길이를 구하시오.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "12x+5y−60=0의 두 절편 A=(5,0), B=(0,12); 눈금 수치나 길이 정답은 문제 그림에 표시하지 않음", "mappedTo": ["O", "A", "B", "sBA"] },
+    { "id": "c2", "condition": "C는 원점 O에서 직선 AB에 내린 수선의 발; 실제 좌표 C=(720/169,300/169), OC⊥AB", "mappedTo": ["C", "sOC", "marks.rightAngles"] }
+  ],
+  "newVisualInformation": [
+    "원본 그림의 x, y 좌표축과 O·A·B·C를 정확한 절편 및 수선 발 좌표에 맞춰 복원한다.",
+    "원본의 직각 표식은 엔진의 rightAngles로 실제 그려지는 항목으로 지정한다.",
+    "기존 문제 SVG의 불필요한 삼각형 면 채움을 제거하고 OC 길이 정답은 노출하지 않는다."
+  ],
+  "coordinateCanvas": { "width": 600, "height": 520 }
+}
