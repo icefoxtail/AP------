@@ -1,0 +1,58 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "axisVariable": false,
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "points": [
+          { "id": "A", "value": "2-sqrt(5)" },
+          { "id": "P", "value": "2" },
+          { "id": "B", "value": "2+sqrt(5)" }
+        ]
+      }
+    ],
+    "constructions": [
+      {
+        "id": "arc",
+        "center": "P",
+        "radius": { "value": "sqrt(5)" },
+        "arc": { "side": "BOTH" },
+        "hits": [
+          { "id": "A", "branch": "LEFT" },
+          { "id": "B", "branch": "RIGHT" }
+        ],
+        "source": {
+          "grid": true,
+          "from": [2, 0],
+          "to": [4, 1],
+          "toName": "Q"
+        }
+      }
+    ]
+  },
+  "numberLineCaption": { "text": "빗변 √5를 좌우로 옮긴 결과" },
+  "caption": "가로 2, 세로 1인 직각삼각형의 빗변은 √5이다. 점 P의 좌표가 2이므로 왼쪽 A는 2−√5, 오른쪽 B는 2+√5이며 정답은 ⑤이다.",
+  "accessibilityDescription": "가로 두 칸과 세로 한 칸인 직각삼각형의 꼭짓점 Q에서 그은 빗변을 반지름으로 한 호가 P(2)의 좌우에서 A(2−√5)와 B(2+√5)를 가리킨다.",
+  "sourceConditions": [
+    {
+      "id": "hy10-s1",
+      "condition": "직각삼각형 PQ의 가로 길이는 2, 세로 길이는 1, 빗변은 √(2²+1²)=√5이다.",
+      "mappedTo": ["numberLine.constructions[0].source", "numberLine.constructions[0].radius"]
+    },
+    {
+      "id": "hy10-s2",
+      "condition": "P의 수직선 좌표는 2, A는 그 왼쪽, B는 그 오른쪽이다.",
+      "mappedTo": ["numberLine.rows[0].points[P]", "numberLine.constructions[0].hits"]
+    },
+    {
+      "id": "hy10-s3",
+      "condition": "A의 좌표 2−√5, B의 좌표 2+√5이다.",
+      "mappedTo": ["numberLine.rows[0].points[A]", "numberLine.rows[0].points[B]"]
+    }
+  ],
+  "newVisualInformation": [
+    "피타고라스로 계산한 빗변 √5를 수직선의 P(2)를 중심으로 좌우에 옮기면 A=2−√5와 B=2+√5가 된다는 것을 호와 정확한 좌표 라벨로 보여 준다."
+  ]
+}

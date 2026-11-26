@@ -1,0 +1,40 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "axisVariable": false,
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "points": [
+          { "id": "P3", "value": "3", "hideName": true },
+          { "id": "x", "between": ["P3", "P5"] },
+          { "id": "P5", "value": "5", "hideName": true }
+        ],
+        "order": ["P3", "x", "P5"],
+        "spans": [
+          { "from": "P3", "to": "x", "label": "x-3", "side": "BELOW" },
+          { "from": "x", "to": "P5", "label": "5-x", "side": "BELOW" }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": { "text": "3과 5 사이의 두 거리" },
+  "caption": "3<x<5일 때 x의 위치는 3과 5 사이의 대표 위치로만 그린다. 두 거리는 x−3과 5−x이므로 |x−3|+|x−5|=(x−3)+(5−x)=2이다.",
+  "accessibilityDescription": "수직선에서 3과 5 사이에 문자 점 x가 있다. 3에서 x까지는 x−3, x에서 5까지는 5−x라는 두 거리 표시가 있다. x의 정확한 값이나 비율은 주어지지 않았다.",
+  "sourceConditions": [
+    {
+      "id": "is23-s1",
+      "condition": "3<x<5이므로 x는 수직선에서 3과 5 사이의 점이다.",
+      "mappedTo": ["numberLine.rows[0].points[P3]", "numberLine.rows[0].points[x]", "numberLine.rows[0].points[P5]", "numberLine.rows[0].order"]
+    },
+    {
+      "id": "is23-s2",
+      "condition": "|x−3|=x−3, |x−5|=5−x이다.",
+      "mappedTo": ["numberLine.rows[0].spans[0]", "numberLine.rows[0].spans[1]"]
+    }
+  ],
+  "newVisualInformation": [
+    "문자 점 x의 정확한 값·측정 비율을 임의로 고정하지 않고 3과 5 사이의 두 거리 x−3과 5−x를 분리해 합이 전체 거리 2임을 보여 준다."
+  ]
+}

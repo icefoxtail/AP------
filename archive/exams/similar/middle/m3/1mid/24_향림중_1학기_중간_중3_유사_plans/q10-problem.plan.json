@@ -1,4 +1,58 @@
 {
-  "status": "EXEMPT",
-  "reason": "피타고라스 빗변 계산 및 수직선 좌표 표현 문항"
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "axisVariable": false,
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "points": [
+          { "id": "A", "value": "2-sqrt(5)", "showValue": false },
+          { "id": "P", "value": "2" },
+          { "id": "B", "value": "2+sqrt(5)", "showValue": false }
+        ]
+      }
+    ],
+    "constructions": [
+      {
+        "id": "arc",
+        "center": "P",
+        "radius": { "value": "sqrt(5)" },
+        "arc": { "side": "BOTH" },
+        "hits": [
+          { "id": "A", "branch": "LEFT" },
+          { "id": "B", "branch": "RIGHT" }
+        ],
+        "source": {
+          "grid": true,
+          "from": [2, 0],
+          "to": [4, 1],
+          "toName": "Q"
+        }
+      }
+    ]
+  },
+  "numberLineCaption": { "text": "직각삼각형의 빗변으로 그린 호" },
+  "caption": "좌표 2인 점 P에서 가로 두 칸, 세로 한 칸인 직각삼각형의 빗변 PQ를 그린다. P를 중심으로 같은 반지름의 호가 만나는 왼쪽 A와 오른쪽 B를 표시하며 두 점의 좌표는 쓰지 않는다.",
+  "accessibilityDescription": "수직선의 2에 점 P가 있고 가로 두 칸, 세로 한 칸인 직각삼각형의 꼭짓점 Q가 있다. P를 중심으로 한 호가 수직선 왼쪽 A와 오른쪽 B를 만나며 A와 B의 좌표 값은 적혀 있지 않다.",
+  "sourceConditions": [
+    {
+      "id": "hy10-p1",
+      "condition": "수직선 위 점 P의 좌표는 2이다.",
+      "mappedTo": ["numberLine.rows[0].points[P]"]
+    },
+    {
+      "id": "hy10-p2",
+      "condition": "P에서 그린 직각삼각형의 밑변은 2, 높이는 1이다.",
+      "mappedTo": ["numberLine.constructions[0].source"]
+    },
+    {
+      "id": "hy10-p3",
+      "condition": "P를 중심으로 빗변 PQ를 반지름으로 하는 호는 왼쪽 A와 오른쪽 B를 수직선 위에 만든다.",
+      "mappedTo": ["numberLine.constructions[0].radius", "numberLine.constructions[0].arc", "numberLine.constructions[0].hits"]
+    }
+  ],
+  "newVisualInformation": [
+    "기준점 P(2), 두 칸×한 칸 직각삼각형의 빗변 PQ, 왼쪽 A·오른쪽 B에 닿는 호를 그리되 A·B의 좌표와 정답 선택지를 보여 주지 않는다."
+  ]
 }
