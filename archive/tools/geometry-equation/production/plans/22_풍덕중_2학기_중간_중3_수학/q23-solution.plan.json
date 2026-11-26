@@ -1,0 +1,308 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "743144825477",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "669130606359",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "743144825477",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "rational",
+              "numerator": "900404044298",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "unit",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "R",
+    "A",
+    "B",
+    "D",
+    "C"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sOR",
+      "refs": [
+        "O",
+        "R"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "style": "ARC",
+        "factRole": "GIVEN",
+        "id": "aX",
+        "refs": [
+          "B",
+          "O",
+          "A"
+        ],
+        "value": 42,
+        "label": "42"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "quarterArc",
+        "circle": "unit",
+        "center": "O",
+        "from": "R",
+        "to": "D",
+        "side": "MINOR"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "0.67"
+      },
+      {
+        "id": "lCD",
+        "ownerSegment": "sDC",
+        "text": "0.90"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dOB",
+        "from": "O",
+        "to": "B",
+        "label": "0.74",
+        "side": "BELOW",
+        "style": "BAR"
+      },
+      {
+        "id": "dOD",
+        "from": "O",
+        "to": "D",
+        "label": "1",
+        "side": "BELOW",
+        "style": "BAR"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "right1",
+      "refs": [
+        "A",
+        "B",
+        "O"
+      ]
+    },
+    {
+      "id": "right2",
+      "refs": [
+        "O",
+        "D",
+        "C"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 420
+  },
+  "caption": "단위원의 ∠AOB=42°에서 OB≈0.74, AB≈0.67이며 접선 DC≈tan42°=0.90이다. 따라서 AB+CD=1.57이다.",
+  "accessibilityDescription": "단위원의 ∠AOB=42°에서 OB≈0.74, AB≈0.67이며 접선 DC≈tan42°=0.90이다. 따라서 AB+CD=1.57이다.",
+  "newVisualInformation": [
+    "원 O의 사분원 호",
+    "각 x=42°와 수선 AB, 접선 DC의 직각 2개",
+    "표의 OB=0.74, AB=0.67, CD=0.90 대응"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source-problem",
+      "condition": "[서술형 2]<br>다음 그림과 같이 반지름의 길이가 $1$인 사분원에서 $\\overline{\\mathrm{OB}}=0.74$이다. 아래 삼각비의 표를 이용하여 물음에 답하시오. [4점]<br><br><img src=\"assets/images/22_풍덕중_2학기_중간_중3_수학/s02.png\" alt=\"문제 23번 그림\" style=\"max-width: 320px;\"><br><br><table><thead><tr><th>각도</th><th>sin</th><th>cos</th><th>tan</th></tr></thead><tbody><tr><td>$42^\\circ$</td><td>0.67</td><td>0.74</td><td>0.90</td></tr><tr><td>$43^\\circ$</td><td>0.68</td><td>0.73</td><td>0.93</td></tr><tr><td>$44^\\circ$</td><td>0.69</td><td>0.72</td><td>0.97</td></tr></tbody></table><br><br>(1) $\\angle x$의 크기를 구하시오.<br>(2) $\\overline{\\mathrm{AB}}+\\overline{\\mathrm{CD}}$의 값을 구하시오.<br><br>* 반드시 풀이과정과 답을 작성하시오. *",
+      "mappedTo": "mathPlan.nodes, displaySegments, planeMarks, rightAngles"
+    },
+    {
+      "id": "solution-reasoning",
+      "condition": "(1) $OA=OD=1$이고 $OB=0.74$이다. 직각삼각형 $OAB$에서<br>$\\cos x=\\dfrac{OB}{OA}=0.74$이다.<br>표에서 $\\cos42^\\circ=0.74$이므로 $x=42^\\circ$이다.<br>(2) 같은 표에서 $\\sin42^\\circ=0.67$, $\\tan42^\\circ=0.90$이다.<br>$AB=OA\\sin42^\\circ=1\\times0.67=0.67$이다.<br>$CD\\perp OD$이고 $OD=1$이므로 직각삼각형 $OCD$에서<br>$CD=OD\\tan42^\\circ=1\\times0.90=0.90$이다.<br>따라서 $AB+CD=0.67+0.90=1.57$이다.",
+      "mappedTo": "caption, newVisualInformation, planeMarks, rightAngles"
+    }
+  ],
+  "hiddenPointNames": [
+    "R"
+  ],
+  "hiddenPointStyle": "NONE"
+}

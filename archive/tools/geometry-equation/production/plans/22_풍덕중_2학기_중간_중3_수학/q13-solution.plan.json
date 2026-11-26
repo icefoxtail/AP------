@@ -1,0 +1,230 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "2598076211353",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "2598076211353",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "15",
+              "denominator": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "H",
+    "B",
+    "C"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAH",
+      "refs": [
+        "A",
+        "H"
+      ]
+    },
+    {
+      "id": "sHB",
+      "refs": [
+        "H",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sCH",
+      "refs": [
+        "C",
+        "H"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "style": "ARC",
+        "factRole": "GIVEN",
+        "id": "aA",
+        "refs": [
+          "H",
+          "A",
+          "C"
+        ],
+        "value": 30,
+        "label": "30"
+      },
+      {
+        "style": "ARC",
+        "factRole": "GIVEN",
+        "id": "aBCH",
+        "refs": [
+          "B",
+          "C",
+          "H"
+        ],
+        "value": 15,
+        "label": "15"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lCH",
+        "ownerSegment": "sCH",
+        "text": "3/2"
+      },
+      {
+        "id": "lBH",
+        "ownerSegment": "sHB",
+        "text": "3-3√3/2"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dAC",
+        "from": "A",
+        "to": "C",
+        "label": "3",
+        "side": "ABOVE",
+        "style": "BAR",
+        "unit": "cm"
+      },
+      {
+        "id": "dAB",
+        "from": "A",
+        "to": "B",
+        "label": "3",
+        "side": "BELOW",
+        "style": "BAR",
+        "unit": "cm"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "right1",
+      "refs": [
+        "C",
+        "H",
+        "B"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 420
+  },
+  "caption": "AB=AC=3 cm, ∠BAC=30°인 이등변삼각형에서 C에서 AB에 내린 수선 CH를 이용하면 tan15°=BH/CH=2−√3이다.",
+  "accessibilityDescription": "AB=AC=3 cm, ∠BAC=30°인 이등변삼각형에서 C에서 AB에 내린 수선 CH를 이용하면 tan15°=BH/CH=2−√3이다.",
+  "newVisualInformation": [
+    "AB=AC=3cm 길이",
+    "A 30°와 C의 15° 호",
+    "수선 CH, 발 H, 직각 표식, BH와 CH 길이"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source-problem",
+      "condition": "오른쪽 이등변삼각형 $\\mathrm{ABC}$를 이용하여 $\\tan 15^\\circ$의 값을 구하면? (4점)<br><br><img src=\"assets/images/22_풍덕중_2학기_중간_중3_수학/q13.png\" alt=\"문제 13번 그림\" style=\"max-width: 320px;\">",
+      "mappedTo": "mathPlan.nodes, displaySegments, planeMarks, rightAngles"
+    },
+    {
+      "id": "solution-reasoning",
+      "condition": "주어진 이등변삼각형에서 $AB=AC=3\\,\\mathrm{cm}$, $\\angle BAC=30^\\circ$이므로 두 밑각은 각각 $75^\\circ$이다.<br>점 $C$에서 $AB$에 수선을 내려 그 발을 $H$라 하자. $\\triangle AHC$에서<br>$AH=3\\cos30^\\circ=\\dfrac{3\\sqrt3}2$, $CH=3\\sin30^\\circ=\\dfrac32$이다.<br>따라서 $BH=AB-AH=3-\\dfrac{3\\sqrt3}2$이다.<br>$\\triangle BCH$는 $H$에서 직각이고 $\\angle CBH=75^\\circ$이므로 $\\angle BCH=15^\\circ$이다.<br>$\\tan15^\\circ=\\dfrac{BH}{CH}=\\dfrac{3-3\\sqrt3/2}{\\frac{3}{2}}=2-\\sqrt3$이다. 따라서 ⑤이다.",
+      "mappedTo": "caption, newVisualInformation, planeMarks, rightAngles"
+    }
+  ]
+}

@@ -1,0 +1,220 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "8196152422707",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "rational",
+              "numerator": "5196152422707",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "H",
+    "C",
+    "A"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAH",
+      "refs": [
+        "A",
+        "H"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBH",
+      "refs": [
+        "B",
+        "H"
+      ]
+    },
+    {
+      "id": "sHC",
+      "refs": [
+        "H",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "style": "ARC",
+        "factRole": "GIVEN",
+        "id": "aB",
+        "refs": [
+          "A",
+          "B",
+          "H"
+        ],
+        "value": 60,
+        "label": "60"
+      },
+      {
+        "style": "ARC",
+        "factRole": "GIVEN",
+        "id": "aHAC",
+        "refs": [
+          "H",
+          "A",
+          "C"
+        ],
+        "value": 45,
+        "label": "45"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAH",
+        "ownerSegment": "sAH",
+        "text": "3√3"
+      },
+      {
+        "id": "lAC",
+        "ownerSegment": "sAC",
+        "text": "3√6"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dAB",
+        "from": "A",
+        "to": "B",
+        "label": "6",
+        "side": "LEFT",
+        "style": "BAR",
+        "unit": "cm"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "right1",
+      "refs": [
+        "A",
+        "H",
+        "C"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 420
+  },
+  "caption": "AB=6 cm, ∠B=60°에서 수선 AH=3√3이고, ∠HAC=45°이므로 AC=3√6이다.",
+  "accessibilityDescription": "AB=6 cm, ∠B=60°에서 수선 AH=3√3이고, ∠HAC=45°이므로 AC=3√6이다.",
+  "newVisualInformation": [
+    "수선 AH, 발 H, 직각 표식",
+    "각 B=60°와 HAC=45°의 호와 각도",
+    "AB=6, AH=3√3, AC=3√6의 선분 길이"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source-problem",
+      "condition": "오른쪽 그림과 같은 $\\triangle\\mathrm{ABC}$에서 꼭짓점 $\\mathrm{A}$에서 $\\overline{\\mathrm{BC}}$에 내린 수선의 발을 $\\mathrm{H}$라고 할 때, $\\overline{\\mathrm{AC}}$의 길이는? (4점)<br><br><img src=\"assets/images/22_풍덕중_2학기_중간_중3_수학/q08.png\" alt=\"문제 8번 그림\" style=\"max-width: 320px;\">",
+      "mappedTo": "mathPlan.nodes, displaySegments, planeMarks, rightAngles"
+    },
+    {
+      "id": "solution-reasoning",
+      "condition": "$AH\\perp BC$이므로 $\\triangle ABH$는 직각삼각형이다.<br>$\\sin60^\\circ=\\dfrac{AH}{AB}=\\dfrac{AH}6$에서 $AH=3\\sqrt3$이다.<br>그림의 $45^\\circ$는 $\\angle HAC$이다. 직각삼각형 $AHC$에서<br>$\\cos45^\\circ=\\dfrac{AH}{AC}=\\dfrac{3\\sqrt3}{AC}$이므로<br>$AC=\\dfrac{3\\sqrt3}{\\sqrt2/2}=3\\sqrt6$이다. 따라서 ③이다.",
+      "mappedTo": "caption, newVisualInformation, planeMarks, rightAngles"
+    }
+  ]
+}

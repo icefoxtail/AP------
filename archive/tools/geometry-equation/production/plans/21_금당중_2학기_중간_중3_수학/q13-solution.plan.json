@@ -1,0 +1,226 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-4330127018922",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-4330127018922",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "25",
+              "denominator": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "H",
+    "B",
+    "C",
+    "A"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAH",
+      "refs": [
+        "A",
+        "H"
+      ]
+    },
+    {
+      "id": "sHB",
+      "refs": [
+        "H",
+        "B"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "style": "ARC",
+        "factRole": "GIVEN",
+        "id": "aB",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 150,
+        "label": "150"
+      },
+      {
+        "style": "ARC",
+        "factRole": "GIVEN",
+        "id": "aABH",
+        "refs": [
+          "A",
+          "B",
+          "H"
+        ],
+        "value": 30,
+        "label": "30"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAH",
+        "ownerSegment": "sAH",
+        "text": "5/2"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dAB",
+        "from": "A",
+        "to": "B",
+        "label": "5",
+        "side": "LEFT",
+        "style": "BAR",
+        "unit": "cm"
+      },
+      {
+        "id": "dBC",
+        "from": "B",
+        "to": "C",
+        "label": "4",
+        "side": "BELOW",
+        "style": "BAR",
+        "unit": "cm"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "right1",
+      "refs": [
+        "A",
+        "H",
+        "B"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 420
+  },
+  "caption": "∠ABC=150°이므로 수선의 발 H는 B의 바깥쪽에 있고, ∠ABH=30°이다. AB=5 cm로부터 AH=5/2 cm이고 BC=4 cm이므로 넓이는 5 cm²이다.",
+  "accessibilityDescription": "∠ABC=150°이므로 수선의 발 H는 B의 바깥쪽에 있고, ∠ABH=30°이다. AB=5 cm로부터 AH=5/2 cm이고 BC=4 cm이므로 넓이는 5 cm²이다.",
+  "newVisualInformation": [
+    "B의 150° 외각·30° 보각 호",
+    "AB=5cm, BC=4cm, AH=5/2cm",
+    "BC 연장선 위 H와 수선 AH, 직각 표시, 무채움"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source-problem",
+      "condition": "아래 그림과 같은 $\\triangle \\mathrm{ABC}$의 넓이는?<br><img src=\"assets/images/21_금당중_2학기_중간_중3_수학/q13.png\" />",
+      "mappedTo": "mathPlan.nodes, displaySegments, planeMarks, rightAngles"
+    },
+    {
+      "id": "solution-reasoning",
+      "condition": "점 A에서 직선 BC에 내린 수선의 발을 H라 하자. ∠ABC=150°이므로 H는 B를 넘어선 BC의 연장선 위에 있고, ∠ABH=30°이다. 직각삼각형 ABH에서 AH=AB·sin30°=5×1/2=5/2이다. 따라서 삼각형 ABC의 넓이는 (1/2)×BC×AH=(1/2)×4×(5/2)=5이므로 정답은 ①이다.",
+      "mappedTo": "caption, newVisualInformation, planeMarks, rightAngles"
+    }
+  ]
+}

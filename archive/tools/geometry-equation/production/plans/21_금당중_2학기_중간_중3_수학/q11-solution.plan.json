@@ -1,0 +1,167 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "C",
+    "B"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "style": "ARC",
+        "factRole": "GIVEN",
+        "id": "aA",
+        "refs": [
+          "C",
+          "A",
+          "B"
+        ],
+        "value": 36.8698976458,
+        "label": "A",
+        "labelKind": "NAME"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "c"
+      },
+      {
+        "id": "lAC",
+        "ownerSegment": "sAC",
+        "text": "c*cos(A)"
+      },
+      {
+        "id": "lBC",
+        "ownerSegment": "sBC",
+        "text": "c*sin(A)"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "right1",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 420
+  },
+  "caption": "C가 직각이고 AB=c인 삼각형에서 ∠A의 이웃변 AC=c cos A, 맞은편 변 BC=c sin A이다. 문제의 미지 각을 수치로 가정하지 않는다.",
+  "accessibilityDescription": "C가 직각이고 AB=c인 삼각형에서 ∠A의 이웃변 AC=c cos A, 맞은편 변 BC=c sin A이다. 문제의 미지 각을 수치로 가정하지 않는다.",
+  "newVisualInformation": [
+    "C 직각 표식",
+    "빗변 AB=c",
+    "각 A와 두 변 c cos A, c sin A의 대응"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source-problem",
+      "condition": "아래 그림과 같은 직각삼각형 $\\mathrm{ABC}$에서 $\\angle \\mathrm{A}$의 크기와 선분 $\\mathrm{AB}$의 길이 $c$가 주어졌을 때, 다음 중 $\\overline{\\mathrm{AC}}$와 $\\overline{\\mathrm{BC}}$의 길이를 순서대로 바르게 짝지은 것은?<br><img src=\"assets/images/21_금당중_2학기_중간_중3_수학/q11-problem-v2.svg\" />",
+      "mappedTo": "mathPlan.nodes, displaySegments, planeMarks, rightAngles"
+    },
+    {
+      "id": "solution-reasoning",
+      "condition": "AB=c는 빗변이고 AC는 ∠A에 이웃한 변, BC는 ∠A의 맞은편 변이다. 따라서 AC=c cos A, BC=c sin A이므로 ③이다.",
+      "mappedTo": "caption, newVisualInformation, planeMarks, rightAngles"
+    }
+  ]
+}
