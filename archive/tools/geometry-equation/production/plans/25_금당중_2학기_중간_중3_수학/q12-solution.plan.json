@@ -1,0 +1,423 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "paperTL",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "paperBL",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "paperTR",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "paperBR",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "H",
+    "A",
+    "B",
+    "C",
+    "paperTL",
+    "paperBL",
+    "paperTR",
+    "paperBR"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAH",
+      "refs": [
+        "A",
+        "H"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sHB",
+      "refs": [
+        "H",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "paperLeftSide",
+      "refs": [
+        "paperTL",
+        "paperBL"
+      ]
+    },
+    {
+      "id": "paperTopLeft",
+      "refs": [
+        "paperTL",
+        "A"
+      ]
+    },
+    {
+      "id": "paperBottomLeft",
+      "refs": [
+        "paperBL",
+        "H"
+      ]
+    },
+    {
+      "id": "paperTopRight",
+      "refs": [
+        "A",
+        "paperTR"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "paperRightSide",
+      "refs": [
+        "paperTR",
+        "paperBR"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "paperBottomRight",
+      "refs": [
+        "C",
+        "paperBR"
+      ],
+      "dashed": true
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rightH",
+      "refs": [
+        "A",
+        "H",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "B60",
+        "refs": [
+          "A",
+          "B",
+          "H"
+        ],
+        "value": 60,
+        "label": "60",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C30",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "value": 30,
+        "label": "30",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "ACfour",
+        "ownerSegment": "sAC",
+        "text": "4",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "AHtwo",
+        "ownerSegment": "sAH",
+        "text": "2",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "BCval",
+        "ownerSegment": "sBC",
+        "text": "4sqrt(3)/3",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "regions": [
+      {
+        "id": "paperStrip",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "paperTL",
+              "A",
+              "B",
+              "H",
+              "paperBL"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "foldArea",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "A",
+              "B",
+              "C"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "paperTL",
+    "paperBL",
+    "paperTR",
+    "paperBR"
+  ],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {
+    "width": 680,
+    "height": 520
+  },
+  "caption": "세로 폭이 2인 종이띠의 원래 윤곽(점선)과 접힘 선 AC=4, 접혀 생긴 △ABC를 함께 보인다.",
+  "accessibilityDescription": "종이띠의 왼쪽 본체와 점선으로 이어진 오른쪽 직사각형 윤곽, A에서 수평선까지 높이2, 접는 선 AC 길이4, 30도·60도 각호, 직각 및 접힌 삼각형 ABC를 나타낸다.",
+  "sourceQuote": "다음 그림은 세로의 길이가 $2\\,\\mathrm{cm}$인 직사각",
+  "sourceConditions": [
+    {
+      "id": "condition1",
+      "condition": "세로2인 직사각형 종이를 선 AC=4로 접는다.",
+      "mappedTo": [
+        "AHtwo",
+        "ACfour",
+        "sAC",
+        "sAH",
+        "paperLeftSide",
+        "paperTopRight",
+        "paperRightSide",
+        "paperStrip"
+      ]
+    },
+    {
+      "id": "condition2",
+      "condition": "접은 뒤 수평선과 각은 30도·60도, 높이는 수직이다.",
+      "mappedTo": [
+        "B60",
+        "C30",
+        "rightH",
+        "foldArea"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "기존 해설에 빠진 직사각형 종이띠의 좌우 윤곽·접힌 부분과 각 30·60도, 높이2, AC4, 직각표식을 복원."
+  ]
+}

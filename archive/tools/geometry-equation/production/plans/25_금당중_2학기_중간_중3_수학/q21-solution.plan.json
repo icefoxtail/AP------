@@ -1,0 +1,194 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "5"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rightB",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "angleA",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "label": "A",
+        "style": "ARC",
+        "factRole": "GIVEN",
+        "labelKind": "NAME"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "ACsix",
+        "ownerSegment": "sAC",
+        "text": "6",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ABfour",
+        "ownerSegment": "sAB",
+        "text": "4",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "BCroot",
+        "ownerSegment": "sBC",
+        "text": "2sqrt(5)",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 680,
+    "height": 520
+  },
+  "caption": "cos A=2/3인 직각삼각형에서 AC=6을 빗변으로 AB=4, BC=2루트5를 계산한다.",
+  "accessibilityDescription": "A·B·C가 연결된 직각삼각형에서 B 직각표식, 빗변6, 밑변4, 높이2루트5가 각각 정확한 변에 있다.",
+  "sourceQuote": "[서술형1] 다음 직각삼각형 $ABC$에서 $\\overline{A",
+  "sourceConditions": [
+    {
+      "id": "condition1",
+      "condition": "AC=6은 빗변이고 cos A=2/3이다.",
+      "mappedTo": [
+        "sAC",
+        "ACsix",
+        "angleA"
+      ]
+    },
+    {
+      "id": "condition2",
+      "condition": "AB=4, BC=2루트5이며 B는 직각이다.",
+      "mappedTo": [
+        "sAB",
+        "sBC",
+        "ABfour",
+        "BCroot",
+        "rightB"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "기존 해설의 B 직각 네모와 A각 기준선·라벨 누락을 보완하고 길이 4·2루트5·6을 소속 선분에 붙임."
+  ]
+}

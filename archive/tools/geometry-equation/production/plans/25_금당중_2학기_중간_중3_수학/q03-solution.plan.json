@@ -1,0 +1,184 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "5"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rightB",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "angleA",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "label": "A",
+        "style": "ARC",
+        "factRole": "GIVEN",
+        "labelKind": "NAME"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "leg2",
+        "ownerSegment": "sAB",
+        "text": "2",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "hyp3",
+        "ownerSegment": "sAC",
+        "text": "3",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "leg5",
+        "ownerSegment": "sBC",
+        "text": "sqrt(5)",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 680,
+    "height": 520
+  },
+  "caption": "cos A가 2/3인 직각삼각형에서 밑변 2, 빗변 3, 높이 루트5의 관계를 표시한다.",
+  "accessibilityDescription": "A의 이웃변 AB는 2, 빗변 AC는 3, 마주 보는 변 BC는 루트5이고 B에는 직각표식이 있다.",
+  "sourceQuote": "$3\\cos A=2$일 때, $6\\sin A\\times\\tan A",
+  "sourceConditions": [
+    {
+      "id": "condition1",
+      "condition": "cos A=2/3으로 두 변 2와 3을 둔다.",
+      "mappedTo": [
+        "sAB",
+        "sAC",
+        "leg2",
+        "hyp3",
+        "angleA"
+      ]
+    },
+    {
+      "id": "condition2",
+      "condition": "피타고라스 정리로 BC=루트5이다.",
+      "mappedTo": [
+        "sBC",
+        "leg5",
+        "rightB"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "기존 해설 그림의 B 직각표식과 각 A 표기 누락을 보완."
+  ]
+}
