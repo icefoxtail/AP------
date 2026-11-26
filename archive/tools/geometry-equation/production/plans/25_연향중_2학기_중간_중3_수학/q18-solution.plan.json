@@ -1,0 +1,273 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "3"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "-1"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "P",
+    "A",
+    "B"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sAP",
+      "refs": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "sPB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "sBO",
+      "refs": [
+        "B",
+        "O"
+      ]
+    },
+    {
+      "id": "sOP",
+      "refs": [
+        "O",
+        "P"
+      ],
+      "dashed": true
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "A90",
+      "refs": [
+        "O",
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "B90",
+      "refs": [
+        "P",
+        "B",
+        "O"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "APB60",
+        "refs": [
+          "A",
+          "P",
+          "B"
+        ],
+        "label": "60",
+        "style": "ARC",
+        "factRole": "GIVEN",
+        "value": 60
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "tangentEq",
+        "count": 1,
+        "segments": [
+          "sAP",
+          "sPB"
+        ]
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "OA2",
+        "ownerSegment": "sOA",
+        "text": "2",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "regions": [
+      {
+        "id": "areaAPBO",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "A",
+              "P",
+              "B",
+              "O"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 560
+  },
+  "caption": "원 밖 점 P에서 반지름 2인 원에 그은 두 접선 PA,PB가 60°를 이룬다.",
+  "accessibilityDescription": "원 O(반지름 2), 두 접점 A,B, 점 P에서 닿는 PA, PB, OA⊥PA, OB⊥PB, 사각형 APBO를 연한 음영으로 구분한다.",
+  "sourceQuote": "다음 그림에서 $PA$, $PB$는 반지름의 길이가 $2\\,\\mathrm{cm}$인 원 $O$의 접선이고 두 점 $A$, $B$는 접점이다. $\\angle APB=60^\\circ$일 때, 사각형 $APBO$의 넓이는? [4점]",
+  "sourceConditions": [
+    {
+      "id": "tangents",
+      "condition": "PA,PB가 원에 접하고 ∠APB=60°, 반지름=2",
+      "mappedTo": [
+        "A90",
+        "B90",
+        "APB60",
+        "tangentEq",
+        "OA2"
+      ]
+    },
+    {
+      "id": "area",
+      "condition": "구하려는 사각형 APBO의 넓이",
+      "mappedTo": [
+        "areaAPBO"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "기존 해설에는 접점의 직각 두 표식과 접선의 동등 길이 눈금이 빠져 넓이 분해에 쓰는 사각형 경계가 빈약함.",
+    "수식·각호·접점·직각·점선을 사실과 연결하고 무의미한 면 채움과 흰 배경 사각형을 두지 않는다."
+  ]
+}

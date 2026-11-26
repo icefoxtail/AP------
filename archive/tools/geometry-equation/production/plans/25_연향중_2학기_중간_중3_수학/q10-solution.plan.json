@@ -1,0 +1,267 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "50"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "50"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "50"
+            },
+            {
+              "kind": "rational",
+              "numerator": "81",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "H",
+    "D"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sCH",
+      "refs": [
+        "C",
+        "H"
+      ]
+    },
+    {
+      "id": "sHD",
+      "refs": [
+        "H",
+        "D"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sAH",
+      "refs": [
+        "A",
+        "H"
+      ],
+      "dashed": true
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "B90",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "H90",
+      "refs": [
+        "A",
+        "H",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "look38",
+        "refs": [
+          "H",
+          "A",
+          "D"
+        ],
+        "label": "38",
+        "style": "ARC",
+        "factRole": "GIVEN",
+        "value": 38
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "top39",
+        "ownerSegment": "sHD",
+        "text": "39",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "eye1p5",
+        "ownerSegment": "sAB",
+        "text": "1.5",
+        "factRole": "GIVEN"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "base50",
+        "from": "B",
+        "to": "C",
+        "label": "50",
+        "side": "BELOW",
+        "style": "BAR",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "unit": "m"
+      },
+      {
+        "id": "height40p5",
+        "from": "C",
+        "to": "D",
+        "label": "40.5",
+        "side": "RIGHT",
+        "style": "BAR",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "unit": "m"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 560
+  },
+  "caption": "관측점에서 50 m 떨어진 나무의 올려다본 각 38°, 눈높이 1.5m를 이용해 나무 높이 40.5m를 구한다.",
+  "accessibilityDescription": "A는 눈높이 관측점, B는 발밑, C는 나무 밑, D는 나무 꼭대기, H는 나무 위 눈높이 점. 50 m 수평선 AH는 점선이며 38° 각호, BH=1.5m, HD=39m를 나타낸다.",
+  "sourceQuote": "다음 그림과 같이 똑바로 서 있는 나무로부터 $50\\,\\mathrm{m}$ 떨어진 지점에서 나무의 꼭대기를 올려다 본 각의 크기가 $38^\\circ$이다. 사람의 눈높이가 $1.5\\,\\mathrm{m}$일 때, 이 나무의 높이는? (단, $\\sin38^\\circ=0.62$, $\\cos38^\\circ=0.79$, $\\tan38^\\circ=0.78$로 계산한다.) [4점]",
+  "sourceConditions": [
+    {
+      "id": "angle",
+      "condition": "AH 수평선과 AD 시선 사이 38°",
+      "mappedTo": [
+        "sAH",
+        "sAD",
+        "look38"
+      ]
+    },
+    {
+      "id": "heights",
+      "condition": "눈높이 1.5m, 나무와의 거리 50m, 나무 높이 40.5m",
+      "mappedTo": [
+        "eye1p5",
+        "base50",
+        "height40p5",
+        "top39"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "현행 해설은 시선과 눈높이선의 구별이 약하고 전체 높이 40.5와 1.5+39를 나타내는 수직 구획이 빠짐.",
+    "수식·각호·접점·직각·점선을 사실과 연결하고 무의미한 면 채움과 흰 배경 사각형을 두지 않는다."
+  ]
+}

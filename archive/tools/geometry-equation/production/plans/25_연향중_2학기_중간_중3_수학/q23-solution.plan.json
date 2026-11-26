@@ -1,0 +1,408 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "16"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "32",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "36",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "incircle",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "O",
+    "D",
+    "E",
+    "F"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "incircle"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sDB",
+      "refs": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "sEC",
+      "refs": [
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "sCF",
+      "refs": [
+        "C",
+        "F"
+      ]
+    },
+    {
+      "id": "sFA",
+      "refs": [
+        "F",
+        "A"
+      ]
+    },
+    {
+      "id": "sOD",
+      "refs": [
+        "O",
+        "D"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sOE",
+      "refs": [
+        "O",
+        "E"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sOF",
+      "refs": [
+        "O",
+        "F"
+      ],
+      "dashed": true
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "B90",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "D90",
+      "refs": [
+        "O",
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "E90",
+      "refs": [
+        "O",
+        "E",
+        "B"
+      ]
+    },
+    {
+      "id": "F90",
+      "refs": [
+        "O",
+        "F",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "AF8",
+        "ownerSegment": "sFA",
+        "text": "8",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "CF12",
+        "ownerSegment": "sCF",
+        "text": "12",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "r4",
+        "ownerSegment": "sOE",
+        "text": "4",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "regions": [
+      {
+        "id": "shadedOutside",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "loop": {
+              "start": "A",
+              "steps": [
+                {
+                  "to": "D"
+                },
+                {
+                  "to": "F",
+                  "arc": {
+                    "center": "O",
+                    "side": "MINOR"
+                  }
+                },
+                {
+                  "to": "A"
+                }
+              ]
+            }
+          },
+          {
+            "loop": {
+              "start": "B",
+              "steps": [
+                {
+                  "to": "E"
+                },
+                {
+                  "to": "D",
+                  "arc": {
+                    "center": "O",
+                    "side": "MINOR"
+                  }
+                },
+                {
+                  "to": "B"
+                }
+              ]
+            }
+          },
+          {
+            "loop": {
+              "start": "C",
+              "steps": [
+                {
+                  "to": "F"
+                },
+                {
+                  "to": "E",
+                  "arc": {
+                    "center": "O",
+                    "side": "MINOR"
+                  }
+                },
+                {
+                  "to": "C"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 560
+  },
+  "caption": "직각삼각형 ABC의 내접원 바깥쪽 영역만 색칠해 그 넓이를 구한다.",
+  "accessibilityDescription": "B 직각인 AB=12, BC=16, AC=20 삼각형, 내접원 중심 O 반지름 4, 접점 D,E,F, AF=8, CF=12, 원 밖 삼각형 부분에만 음영이 있다.",
+  "sourceQuote": "[서술형] 다음 그림에서 원 $O$는 $\\angle B=90^\\circ$인 직각삼각형 $ABC$의 내접원이고, 세 점 $D$, $E$, $F$는 접점이다. $AF=8\\,\\mathrm{cm}$, $CF=12\\,\\mathrm{cm}$일 때, 색칠한 부분의 넓이를 구하시오. [7점]",
+  "sourceConditions": [
+    {
+      "id": "triangle",
+      "condition": "직각삼각형 ABC, 접선 AF=8 및 CF=12",
+      "mappedTo": [
+        "B90",
+        "AF8",
+        "CF12"
+      ]
+    },
+    {
+      "id": "incircle",
+      "condition": "내접원과 세 접점, 반지름4",
+      "mappedTo": [
+        "incircle",
+        "D90",
+        "E90",
+        "F90",
+        "r4"
+      ]
+    },
+    {
+      "id": "outside",
+      "condition": "삼각형 내부에서 내접원을 제외한 영역만 음영",
+      "mappedTo": [
+        "shadedOutside"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "기존 해설은 원 내부까지 회색을 칠하거나 음영 경계가 흐릿해 원 넓이를 빼는 의미가 약함.",
+    "수식·각호·접점·직각·점선을 사실과 연결하고 무의미한 면 채움과 흰 배경 사각형을 두지 않는다."
+  ]
+}

@@ -1,0 +1,339 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "9"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "36",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "27",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "incircle",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "O",
+    "D",
+    "E",
+    "F"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "incircle"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sOD",
+      "refs": [
+        "O",
+        "D"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sOE",
+      "refs": [
+        "O",
+        "E"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sOF",
+      "refs": [
+        "O",
+        "F"
+      ],
+      "dashed": true
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "C90",
+      "refs": [
+        "B",
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "D90",
+      "refs": [
+        "O",
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "E90",
+      "refs": [
+        "O",
+        "E",
+        "B"
+      ]
+    },
+    {
+      "id": "F90",
+      "refs": [
+        "O",
+        "F",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "AC9",
+        "ownerSegment": "sCA",
+        "text": "9",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "BC12",
+        "ownerSegment": "sBC",
+        "text": "12",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "AB15",
+        "ownerSegment": "sAB",
+        "text": "15",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "r3",
+        "ownerSegment": "sOE",
+        "text": "3",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "facts": [
+      {
+        "kind": "TANGENT_PERPENDICULAR",
+        "center": "O",
+        "contact": "D",
+        "tangent": "sAB"
+      },
+      {
+        "kind": "TANGENT_PERPENDICULAR",
+        "center": "O",
+        "contact": "E",
+        "tangent": "sBC"
+      },
+      {
+        "kind": "TANGENT_PERPENDICULAR",
+        "center": "O",
+        "contact": "F",
+        "tangent": "sCA"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 560
+  },
+  "caption": "직각삼각형 ABC의 내접원 중심 O와 접점 D,E,F, 내접원 반지름을 계산한다.",
+  "accessibilityDescription": "C가 직각인 9-12-15 삼각형. 원 O가 AB의 D, BC의 E, CA의 F에 닿으며 세 반지름이 접선에 수직이다.",
+  "sourceQuote": "다음 그림에서 $\\triangle ABC$는 $\\angle C=90^\\circ$, $BC=12\\,\\mathrm{cm}$, $AC=9\\,\\mathrm{cm}$인 직각삼각형이고 원 $O$는 $\\triangle ABC$의 내접원이다. 접점을 각각 $D$, $E$, $F$라고 할 때, 원 $O$의 반지름의 길이는? [4점]",
+  "sourceConditions": [
+    {
+      "id": "tri",
+      "condition": "9·12·15 직각삼각형",
+      "mappedTo": [
+        "AC9",
+        "BC12",
+        "AB15",
+        "C90"
+      ]
+    },
+    {
+      "id": "incircle",
+      "condition": "내접원과 세 접점의 직각",
+      "mappedTo": [
+        "incircle",
+        "D90",
+        "E90",
+        "F90",
+        "r3"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "현행 해설은 삼각형 전체를 흐리게 채우고 접점의 수선 세 개가 빠져 내접원 조건의 시각 대응이 부족함.",
+    "수식·각호·접점·직각·점선을 사실과 연결하고 무의미한 면 채움과 흰 배경 사각형을 두지 않는다."
+  ]
+}

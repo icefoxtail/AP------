@@ -1,0 +1,306 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "220"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "320"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "N",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "M",
+    "N",
+    "X"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sOM",
+      "refs": [
+        "O",
+        "M"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sON",
+      "refs": [
+        "O",
+        "N"
+      ],
+      "dashed": true
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "M90",
+      "refs": [
+        "A",
+        "M",
+        "O"
+      ]
+    },
+    {
+      "id": "N90",
+      "refs": [
+        "A",
+        "N",
+        "O"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "central130",
+        "refs": [
+          "M",
+          "O",
+          "N"
+        ],
+        "label": "130",
+        "style": "ARC",
+        "factRole": "GIVEN",
+        "value": 130
+      },
+      {
+        "id": "apex50",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "label": "50",
+        "style": "ARC",
+        "factRole": "GIVEN",
+        "value": 50
+      },
+      {
+        "id": "base65",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "label": "65",
+        "style": "ARC",
+        "factRole": "GIVEN",
+        "value": 65
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "isosceles",
+        "count": 1,
+        "segments": [
+          "sAB",
+          "sAC"
+        ]
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "X"
+  ],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 560
+  },
+  "caption": "원의 내접 이등변삼각형 ABC와 현 AB, AC의 중점 M,N의 중심각 130°를 사용한다.",
+  "accessibilityDescription": "원 중심 O, 위쪽 꼭짓점 A, 아래 양 끝 B,C, 현의 중점 M,N, 중심에서 현으로 내린 수선 OM,ON, ∠MON=130°, ∠A=50°, 밑각 65°를 보인다.",
+  "sourceQuote": "다음 그림과 같이 두 현 $AB$와 $AC$가 원 $O$의 중심으로부터 같은 거리에 있다. $\\angle MON=130^\\circ$일 때, $\\angle B$의 크기는? [3점]",
+  "sourceConditions": [
+    {
+      "id": "iso",
+      "condition": "AB=AC, ∠A=50°, 밑각=65°",
+      "mappedTo": [
+        "isosceles",
+        "apex50",
+        "base65"
+      ]
+    },
+    {
+      "id": "center",
+      "condition": "OM, ON은 현의 중점 수선이며 ∠MON=130°",
+      "mappedTo": [
+        "sOM",
+        "sON",
+        "M90",
+        "N90",
+        "central130"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "기존 해설의 130° 숫자는 중심각 호와 분리되고 현의 두 중점 수선·직각표시가 누락됨.",
+    "수식·각호·접점·직각·점선을 사실과 연결하고 무의미한 면 채움과 흰 배경 사각형을 두지 않는다."
+  ]
+}

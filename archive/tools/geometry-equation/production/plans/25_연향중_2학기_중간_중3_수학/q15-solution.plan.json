@@ -1,0 +1,252 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "D",
+    "C"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sDB",
+      "refs": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDO",
+      "refs": [
+        "D",
+        "O"
+      ]
+    },
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ],
+      "dashed": true
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "D90",
+      "refs": [
+        "A",
+        "D",
+        "O"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "midChord",
+        "count": 1,
+        "segments": [
+          "sAD",
+          "sDB"
+        ]
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "CD2",
+        "ownerSegment": "sCD",
+        "text": "2",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "AD4",
+        "ownerSegment": "sAD",
+        "text": "4",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "OD3",
+        "ownerSegment": "sDO",
+        "text": "3",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "OA5",
+        "ownerSegment": "sOA",
+        "text": "5",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 560
+  },
+  "caption": "현 AB의 중점 D에 내린 중심 수선 OD와 원 위 점 C 사이 CD=2, AD=4에서 반지름을 구한다.",
+  "accessibilityDescription": "중심 O의 원, 수평 현 AB와 중점 D, 중심을 지나는 CD의 수선, AD=DB=4 눈금, CD=2, OD=3, 반지름 5가 보인다.",
+  "sourceQuote": "다음 그림에서 $\\widehat{AB}$는 원의 일부분이다. $CD$가 $AB$의 수직이등분선일 때, 원의 반지름의 길이는? [4점]",
+  "sourceConditions": [
+    {
+      "id": "given",
+      "condition": "CD=2, AD=4, 중심 O와 현 AB",
+      "mappedTo": [
+        "circ",
+        "CD2",
+        "AD4"
+      ]
+    },
+    {
+      "id": "bisector",
+      "condition": "OD⊥AB, AD=DB, OD=3, OA=5",
+      "mappedTo": [
+        "D90",
+        "midChord",
+        "OD3",
+        "OA5"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "기존 해설은 수선의 직각 표시와 두 반쪽 현의 동등 눈금이 빠져 피타고라스 정당화가 눈에 띄지 않음.",
+    "수식·각호·접점·직각·점선을 사실과 연결하고 무의미한 면 채움과 흰 배경 사각형을 두지 않는다."
+  ]
+}

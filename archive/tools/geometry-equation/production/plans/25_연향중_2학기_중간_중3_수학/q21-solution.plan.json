@@ -1,0 +1,97 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 6,
+        "depth": 8
+      },
+      "height": 4,
+      "names": "ABCDEFGH"
+    }
+  ],
+  "segments": [
+    {
+      "from": "A",
+      "to": "E",
+      "style": "AUTO",
+      "role": "ACCENT"
+    },
+    {
+      "from": "E",
+      "to": "G",
+      "style": "AUTO",
+      "role": "ACCENT"
+    },
+    {
+      "from": "A",
+      "to": "G",
+      "style": "AUTO",
+      "role": "ACCENT"
+    }
+  ],
+  "dims": [
+    {
+      "edge": "AB",
+      "label": "6"
+    },
+    {
+      "edge": "BC",
+      "label": "8"
+    },
+    {
+      "edge": "AE",
+      "label": "4"
+    },
+    {
+      "from": "E",
+      "to": "G",
+      "label": "10"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "E",
+        "refs": [
+          "A",
+          "G"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "refs": [
+          "A",
+          "G",
+          "E"
+        ],
+        "arcs": 1,
+        "label": "x"
+      }
+    ]
+  },
+  "solidCaption": {
+    "text": "직육면체 ABCD EFGH"
+  },
+  "caption": "가로 6, 세로 8, 높이 4인 직육면체의 공간삼각형 AEG에서 ∠AGE=x이다.",
+  "sourceQuote": "[서술형] 다음 그림과 같은 직육면체에서 $\\angle AGE=\\angle x$라 할 때, $\\cos x$의 값을 구하시오. [6점]",
+  "sourceConditions": [
+    {
+      "id": "cuboid",
+      "condition": "AB=6, BC=8, AE=4, EG=10, ∠AGE=x",
+      "mappedTo": [
+        "AB",
+        "BC",
+        "AE",
+        "EG"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "기존 해설에 누락된 직육면체의 전 모서리, 보이지 않는 모서리 점선, 밑면 대각선 EG와 3D 공간 대각선 AG를 보여 준다."
+  ]
+}
