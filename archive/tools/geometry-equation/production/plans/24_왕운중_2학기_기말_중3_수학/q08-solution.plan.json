@@ -1,0 +1,41 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": { "schemaVersion": "construction-spike-v1", "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false }, "nodes": [
+    { "id": "O", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+    { "id": "X", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "1" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+    { "id": "M", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "-6" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+    { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "-6" }, { "kind": "integer", "value": "8" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+    { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "-6" }, { "kind": "integer", "value": "-8" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+    { "id": "N", "op": "POLAR_POINT", "inputs": ["O", "X"], "args": { "length": { "kind": "integer", "value": "6" }, "angleDeg": { "kind": "integer", "value": "20" }, "turn": "CCW" }, "outputType": "POINT", "factRole": "GIVEN" },
+    { "id": "C", "op": "POLAR_POINT", "inputs": ["N", "O"], "args": { "length": { "kind": "integer", "value": "8" }, "angleDeg": { "kind": "integer", "value": "90" }, "turn": "CW" }, "outputType": "POINT", "factRole": "GIVEN" },
+    { "id": "D", "op": "POLAR_POINT", "inputs": ["N", "O"], "args": { "length": { "kind": "integer", "value": "8" }, "angleDeg": { "kind": "integer", "value": "90" }, "turn": "CCW" }, "outputType": "POINT", "factRole": "GIVEN" },
+    { "id": "k", "op": "CIRCLE_CENTER_RADIUS", "inputs": ["O"], "args": { "radius": { "kind": "integer", "value": "10" } }, "outputType": "CIRCLE", "factRole": "GIVEN" }
+  ]},
+  "displayPoints": ["O", "X", "A", "B", "C", "D", "M", "N"], "hiddenPointNames": ["X"], "hiddenPointStyle": "NONE",
+  "displayLines": [], "displayCircles": ["k"],
+  "displaySegments": [
+    { "id": "sAM", "refs": ["A", "M"] }, { "id": "sMB", "refs": ["M", "B"] },
+    { "id": "sCN", "refs": ["C", "N"] }, { "id": "sND", "refs": ["N", "D"] },
+    { "id": "sOM", "refs": ["O", "M"] }, { "id": "sON", "refs": ["O", "N"] },
+    { "id": "sOA", "refs": ["O", "A"] }, { "id": "sOC", "refs": ["O", "C"] }
+  ],
+  "rightAngles": [{ "id": "rM", "refs": ["A", "M", "O"] }, { "id": "rN", "refs": ["C", "N", "O"] }],
+  "planeMarks": {
+    "equalLengths": [
+      { "id": "equalDistances", "count": 1, "segments": ["sOM", "sON"] },
+      { "id": "equalRadii", "count": 2, "segments": ["sOA", "sOC"] },
+      { "id": "equalHalfChords", "count": 3, "segments": ["sAM", "sCN"] }
+    ]
+  },
+  "coordinateCanvas": { "width": 620, "height": 500 },
+  "caption": "중심 O에서 현 AB, CD에 내린 수선 OM과 ON의 길이가 같고, OA와 OC는 반지름이므로 두 직각삼각형 OAM과 OCN이 합동이다.",
+  "accessibilityDescription": "같은 원 O의 왼쪽 세로 현 AB와 오른쪽 위로 기울어진 현 CD에 각각 수선 OM, ON을 내린다. 두 수선에 직각 표식, OM=ON과 OA=OC 및 AM=CN에 세 종류의 서로 다른 길이 눈금을 둔다. 내부 면 채움은 없다.",
+  "sourceQuote": "다음은 '원의 중심으로부터 같은 거리에 있는 두 현의 길이는 서로 같다'라는 성질을 설명한 것이다. (㉮) 안에 들어가야 할 내용을 고르면? (4점)",
+  "sourceConditions": [
+    { "id": "chords", "condition": "원의 현 AB와 CD가 중심 O로부터 같은 거리에 있고 M,N은 두 현의 수선의 발이다.", "mappedTo": ["k", "sAM", "sMB", "sCN", "sND", "sOM", "sON", "rM", "rN"] },
+    { "id": "radii", "condition": "OA=OC는 같은 원의 반지름이다.", "mappedTo": ["sOA", "sOC", "equalRadii"] },
+    { "id": "distance", "condition": "OM=ON, 따라서 직각삼각형 OAM과 OCN이 빗변·한 변의 길이로 합동이다.", "mappedTo": ["sOM", "sON", "equalDistances", "rM", "rN"] },
+    { "id": "conclusion", "condition": "AM=CN이고, 수선이 현을 이등분하므로 AB=CD이다.", "mappedTo": ["sAM", "sCN", "equalHalfChords", "sMB", "sND"] }
+  ],
+  "newVisualInformation": ["기존 SVG의 두 삼각형 내부 주황색 면 채움을 제거한다.", "기울어진 오른쪽 현과 두 수선의 직각 표식, 빗변·거리·반현의 세 길이 대응을 별도 표식에 정확히 넣는다."]
+}

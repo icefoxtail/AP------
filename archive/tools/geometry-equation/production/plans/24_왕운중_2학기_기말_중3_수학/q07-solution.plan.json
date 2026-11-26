@@ -1,0 +1,35 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": { "schemaVersion": "construction-spike-v1", "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false }, "nodes": [
+    { "id": "O", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "6" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+    { "id": "M", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+    { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "-8" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+    { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "8" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+    { "id": "k", "op": "CIRCLE_CENTER_RADIUS", "inputs": ["O"], "args": { "radius": { "kind": "integer", "value": "10" } }, "outputType": "CIRCLE", "factRole": "GIVEN" }
+  ]},
+  "displayPoints": ["O", "M", "A", "B"], "displayLines": [], "displayCircles": ["k"],
+  "displaySegments": [
+    { "id": "sAM", "refs": ["A", "M"] }, { "id": "sMB", "refs": ["M", "B"] },
+    { "id": "sOM", "refs": ["O", "M"] }, { "id": "sOA", "refs": ["O", "A"] }, { "id": "sOB", "refs": ["O", "B"] }
+  ],
+  "rightAngles": [{ "id": "rOM", "refs": ["A", "M", "O"] }],
+  "planeMarks": {
+    "equalLengths": [{ "id": "halfChord", "count": 1, "segments": ["sAM", "sMB"] }],
+    "expressionLabels": [
+      { "id": "r10", "ownerSegment": "sOA", "text": "10", "unit": "cm" },
+      { "id": "d6", "ownerSegment": "sOM", "text": "6", "unit": "cm" },
+      { "id": "half8", "ownerSegment": "sAM", "text": "8", "unit": "cm" }
+    ],
+    "dimensions": [{ "id": "chordLength", "from": "A", "to": "B", "label": "16", "unit": "cm", "side": "BELOW", "style": "BAR" }]
+  },
+  "coordinateCanvas": { "width": 600, "height": 480 },
+  "caption": "반지름 OA는 10cm, 중심 O에서 현 AB까지의 수직 거리 OM은 6cm이며, 반현 AM은 8cm로 계산되어 AB는 16cm이다.",
+  "accessibilityDescription": "흰 바탕 원 O의 아래쪽 현 AB를 M이 두 등분한다. O와 M은 수직으로 연결되고 직각 표식이 있으며 OA 10cm, OM 6cm, AM 8cm, 현 전체 16cm를 각각 정확한 위치에 표시한다.",
+  "sourceQuote": "다음 그림에서 $x$의 값을 구하면? (3점)",
+  "sourceConditions": [
+    { "id": "circle", "condition": "원본 q07.png의 원 O와 현 AB, 중심 O에서 내린 수선의 발 M을 유지한다.", "mappedTo": ["k", "O", "A", "B", "M", "sOM", "rOM"] },
+    { "id": "radius", "condition": "원본 반지름 10cm와 중심에서 현까지 6cm이다.", "mappedTo": ["sOA", "r10", "sOM", "d6"] },
+    { "id": "chord", "condition": "중심에서 현에 내린 수선은 현을 이등분하고 피타고라스로 각 반현 8cm, 현 전체 16cm이다.", "mappedTo": ["sAM", "sMB", "halfChord", "half8", "chordLength"] }
+  ],
+  "newVisualInformation": ["기존 해설의 불필요한 옅은 파란 삼각형 채움을 제거한다.", "원의 현·반지름·수선·직각·현의 두 반쪽과 실측 길이를 개별 그리기 필드에 대응한다."]
+}

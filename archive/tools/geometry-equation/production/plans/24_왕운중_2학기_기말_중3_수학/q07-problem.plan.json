@@ -1,0 +1,32 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": { "schemaVersion": "construction-spike-v1", "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false }, "nodes": [
+    { "id": "O", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "6" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+    { "id": "M", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+    { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "-8" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+    { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "8" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+    { "id": "k", "op": "CIRCLE_CENTER_RADIUS", "inputs": ["O"], "args": { "radius": { "kind": "integer", "value": "10" } }, "outputType": "CIRCLE", "factRole": "GIVEN" }
+  ]},
+  "displayPoints": ["O", "M", "A", "B"], "displayLines": [], "displayCircles": ["k"],
+  "displaySegments": [
+    { "id": "sAM", "refs": ["A", "M"] }, { "id": "sMB", "refs": ["M", "B"] },
+    { "id": "sOM", "refs": ["O", "M"] }, { "id": "sOA", "refs": ["O", "A"] }
+  ],
+  "rightAngles": [{ "id": "rOM", "refs": ["A", "M", "O"] }],
+  "planeMarks": {
+    "expressionLabels": [
+      { "id": "radius10", "ownerSegment": "sOA", "text": "10", "unit": "cm" },
+      { "id": "distance6", "ownerSegment": "sOM", "text": "6", "unit": "cm" }
+    ],
+    "dimensions": [{ "id": "unknownChord", "from": "A", "to": "B", "label": "x", "unit": "cm", "side": "BELOW", "style": "BAR" }]
+  },
+  "coordinateCanvas": { "width": 600, "height": 480 },
+  "caption": "원 O의 반지름은 10cm이고, 중심에서 현 AB까지의 수직 거리는 6cm이며 현 AB의 길이가 xcm로 표시되어 있다.",
+  "accessibilityDescription": "흰색 배경의 원에서 아랫부분 가로 현 AB의 중점 M으로 중심 O에서 수선을 그었다. OA에 10cm, OM에 6cm, 현 AB 전체에 xcm를 표시하고 M에 직각 표식을 놓는다. 반현의 값과 정답은 넣지 않는다.",
+  "sourceQuote": "다음 그림에서 $x$의 값을 구하면? (3점)",
+  "sourceConditions": [
+    { "id": "circle", "condition": "원본 q07-student-clean.png의 원 O, 현 AB 및 중심에서 현에 내린 수선 OM과 직각이 보인다.", "mappedTo": ["k", "O", "A", "B", "M", "sOM", "rOM"] },
+    { "id": "givenLengths", "condition": "원의 반지름은 10cm이고 OM은 6cm, 현 전체 AB는 미지수 xcm이다.", "mappedTo": ["sOA", "radius10", "sOM", "distance6", "unknownChord"] }
+  ],
+  "newVisualInformation": ["원본 PNG의 흐린 10·6·x 라벨을 각각 실제 선분과 치수선에 소속시키고 직각 표식을 보존한다.", "문제 그림에서 반현 8cm와 최종 현 길이 16cm는 보이지 않게 한다. 모든 면 채움은 없다."]
+}

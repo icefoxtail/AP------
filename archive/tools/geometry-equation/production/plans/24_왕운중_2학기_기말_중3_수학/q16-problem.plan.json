@@ -1,0 +1,36 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": { "schemaVersion": "construction-spike-v1", "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false }, "nodes": [
+    { "id": "O", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+    { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "-10" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+    { "id": "X", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "1" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+    { "id": "T", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "-8" }, { "kind": "integer", "value": "-10" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+    { "id": "W", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "8" }, { "kind": "integer", "value": "-10" }] }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+    { "id": "C", "op": "POLAR_POINT", "inputs": ["O", "A"], "args": { "length": { "kind": "integer", "value": "10" }, "angleDeg": { "kind": "integer", "value": "96" }, "turn": "CW" }, "outputType": "POINT", "factRole": "GIVEN" },
+    { "id": "B", "op": "POLAR_POINT", "inputs": ["O", "X"], "args": { "length": { "kind": "integer", "value": "10" }, "angleDeg": { "kind": "integer", "value": "55" }, "turn": "CCW" }, "outputType": "POINT", "factRole": "GIVEN" },
+    { "id": "k", "op": "CIRCLE_CENTER_RADIUS", "inputs": ["O"], "args": { "radius": { "kind": "integer", "value": "10" } }, "outputType": "CIRCLE", "factRole": "GIVEN" }
+  ]},
+  "displayPoints": ["O", "A", "B", "C", "T", "X", "W"], "hiddenPointNames": ["X", "W"], "hiddenPointStyle": "NONE",
+  "displayLines": [], "displayCircles": ["k"],
+  "displaySegments": [
+    { "id": "sTA", "refs": ["T", "A"] }, { "id": "sAW", "refs": ["A", "W"] },
+    { "id": "sOA", "refs": ["O", "A"] }, { "id": "sOC", "refs": ["O", "C"] },
+    { "id": "sCA", "refs": ["C", "A"] }, { "id": "sCB", "refs": ["C", "B"] }, { "id": "sAB", "refs": ["A", "B"] }
+  ],
+  "rightAngles": [{ "id": "tangentRight", "refs": ["O", "A", "T"] }],
+  "planeMarks": { "angles": [
+    { "id": "central96", "refs": ["C", "O", "A"], "value": 96, "label": "96", "style": "ARC", "factRole": "GIVEN" },
+    { "id": "unknownX", "refs": ["C", "A", "T"], "value": 48, "label": "x", "style": "ARC" }
+  ]},
+  "coordinateCanvas": { "width": 630, "height": 500 },
+  "caption": "원 O의 접점 A에서 접선 AT와 현 AC가 만드는 각 x와 중심각 COA 96도가 표시되어 있다.",
+  "accessibilityDescription": "원 안에 중심 O, 원 위의 A·B·C가 있고 A를 지나는 수평 접선 AT가 있다. 반지름 OA와 OC 사이 96도 호, 접선 AT와 현 AC 사이 미지각 x, 접점의 직각 표식을 그린다. 삼각형 ABC의 현을 빠뜨리지 않는다.",
+  "sourceQuote": "다음 그림에서 직선 $AT$가 원 $O$의 접선이고 $\\angle COA=96^\\circ$일 때, $\\angle CAT = \\angle x$의 크기를 구하면? (4점)",
+  "sourceConditions": [
+    { "id": "contact", "condition": "원 O의 점 A를 지나는 직선 AT는 접선이고 OA는 접점에서 수직이다.", "mappedTo": ["k", "A", "O", "T", "sTA", "sAW", "sOA", "tangentRight"] },
+    { "id": "centralAngle", "condition": "중심각 COA는 96도이다.", "mappedTo": ["C", "O", "A", "sOC", "sOA", "central96"] },
+    { "id": "question", "condition": "현 AC와 접선 AT의 왼쪽 각은 x이다.", "mappedTo": ["sCA", "sTA", "unknownX"] },
+    { "id": "otherChord", "condition": "원본의 B와 현 AB·BC는 원주 위에 그대로 존재한다.", "mappedTo": ["B", "sAB", "sCB"] }
+  ],
+  "newVisualInformation": ["원본에서 생략하면 오독되는 세 점 A·B·C와 세 현, 중심각 96도, 미지각 x, 접점 직각을 한 장의 흰 바탕 그림에 복원한다.", "문제 그림에는 풀이용 42도·48도를 적지 않는다. 면 채움 없음."]
+}

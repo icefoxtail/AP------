@@ -1,0 +1,272 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "P",
+    "A",
+    "T"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "k"
+  ],
+  "displaySegments": [
+    {
+      "id": "sPA",
+      "refs": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "sAO",
+      "refs": [
+        "A",
+        "O"
+      ]
+    },
+    {
+      "id": "sPT",
+      "refs": [
+        "P",
+        "T"
+      ]
+    },
+    {
+      "id": "sTO",
+      "refs": [
+        "T",
+        "O"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rT",
+      "refs": [
+        "P",
+        "T",
+        "O"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "angleP",
+        "refs": [
+          "T",
+          "P",
+          "O"
+        ],
+        "value": 30,
+        "label": "30",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "givenPA",
+        "ownerSegment": "sPA",
+        "text": "6",
+        "unit": "cm"
+      },
+      {
+        "id": "radiusAO",
+        "ownerSegment": "sAO",
+        "text": "6",
+        "unit": "cm"
+      },
+      {
+        "id": "radiusTO",
+        "ownerSegment": "sTO",
+        "text": "6",
+        "unit": "cm"
+      },
+      {
+        "id": "tangentLength",
+        "ownerSegment": "sPT",
+        "text": "6sqrt(3)",
+        "unit": "cm"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "hypotenuse",
+        "from": "P",
+        "to": "O",
+        "label": "12",
+        "unit": "cm",
+        "side": "BELOW",
+        "style": "BAR"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 470
+  },
+  "caption": "접선 PT와 반지름 OT가 직각이고 P의 각이 30도이므로 OT=OP/2=6cm, OP=12cm, PT=6√3cm로 계산된다.",
+  "accessibilityDescription": "원 O와 접선 PT가 직각인 삼각형 POT을 흰 바탕에 나타낸다. PA=6cm, AO=OT=6cm, OP=12cm의 치수선, PT=6√3cm의 길이 라벨, P에서 30도 각 호, T의 직각 표식을 정확히 그린다. 안쪽 면은 칠하지 않는다.",
+  "sourceQuote": "다음 그림에서 $\\overline{PT}$는 원 $O$의 접선이고 점 $T$는 접점이다. $\\angle TPO=30^\\circ$, $\\overline{PA}=6\\rm\\,cm$일 때, $\\overline{PT}$의 길이는? (4점)",
+  "sourceConditions": [
+    {
+      "id": "circleTangent",
+      "condition": "원 O의 접점 T와 접선 PT가 이루는 직각을 유지한다.",
+      "mappedTo": [
+        "k",
+        "T",
+        "O",
+        "P",
+        "sPT",
+        "sTO",
+        "rT"
+      ]
+    },
+    {
+      "id": "angle",
+      "condition": "접선과 PO 사이 각 TPO는 30도이다.",
+      "mappedTo": [
+        "angleP",
+        "sPT",
+        "sPA",
+        "sAO"
+      ]
+    },
+    {
+      "id": "givenLength",
+      "condition": "직선 PO가 원과 만나는 가까운 점 A까지 PA는 6cm이다.",
+      "mappedTo": [
+        "P",
+        "A",
+        "O",
+        "sPA",
+        "givenPA"
+      ]
+    },
+    {
+      "id": "solutionLengths",
+      "condition": "30도 직각삼각형에서 OP=2OT, PA=6이므로 반지름 OT=AO=6, OP=12, 접선 PT=6√3이다.",
+      "mappedTo": [
+        "sAO",
+        "radiusAO",
+        "sTO",
+        "radiusTO",
+        "hypotenuse",
+        "sPT",
+        "tangentLength",
+        "rT",
+        "angleP"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본 PNG의 P·A·O 순서와 접점 T, 접선·반지름 직각, 30도 호와 PA=6cm를 모두 실제 그려진 요소에 대응한다.",
+    "기존 해설의 주황색 각 부채꼴을 쓰지 않고 수학적 선과 호만 남긴다. 문제용에는 OP=12와 반지름=6의 풀이 수치를 미리 적지 않는다.",
+    "기존 해설 SVG에서 30도 부채꼴의 주황 면 채움을 없애고 OA=OT=6, OP=12, PT=6√3을 각 선분에 직접 표기한다."
+  ]
+}

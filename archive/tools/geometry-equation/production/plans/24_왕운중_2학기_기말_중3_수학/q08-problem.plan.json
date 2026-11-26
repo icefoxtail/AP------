@@ -1,0 +1,36 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": { "schemaVersion": "construction-spike-v1", "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false }, "nodes": [
+    { "id": "O", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+    { "id": "X", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "1" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+    { "id": "M", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "-6" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+    { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "-6" }, { "kind": "integer", "value": "8" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+    { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "-6" }, { "kind": "integer", "value": "-8" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+    { "id": "N", "op": "POLAR_POINT", "inputs": ["O", "X"], "args": { "length": { "kind": "integer", "value": "6" }, "angleDeg": { "kind": "integer", "value": "20" }, "turn": "CCW" }, "outputType": "POINT", "factRole": "GIVEN" },
+    { "id": "C", "op": "POLAR_POINT", "inputs": ["N", "O"], "args": { "length": { "kind": "integer", "value": "8" }, "angleDeg": { "kind": "integer", "value": "90" }, "turn": "CW" }, "outputType": "POINT", "factRole": "GIVEN" },
+    { "id": "D", "op": "POLAR_POINT", "inputs": ["N", "O"], "args": { "length": { "kind": "integer", "value": "8" }, "angleDeg": { "kind": "integer", "value": "90" }, "turn": "CCW" }, "outputType": "POINT", "factRole": "GIVEN" },
+    { "id": "k", "op": "CIRCLE_CENTER_RADIUS", "inputs": ["O"], "args": { "radius": { "kind": "integer", "value": "10" } }, "outputType": "CIRCLE", "factRole": "GIVEN" }
+  ]},
+  "displayPoints": ["O", "X", "A", "B", "C", "D", "M", "N"], "hiddenPointNames": ["X"], "hiddenPointStyle": "NONE",
+  "displayLines": [], "displayCircles": ["k"],
+  "displaySegments": [
+    { "id": "sAM", "refs": ["A", "M"] }, { "id": "sMB", "refs": ["M", "B"] },
+    { "id": "sCN", "refs": ["C", "N"] }, { "id": "sND", "refs": ["N", "D"] },
+    { "id": "sOM", "refs": ["O", "M"] }, { "id": "sON", "refs": ["O", "N"] },
+    { "id": "sOA", "refs": ["O", "A"] }, { "id": "sOC", "refs": ["O", "C"] }
+  ],
+  "rightAngles": [{ "id": "rM", "refs": ["A", "M", "O"] }, { "id": "rN", "refs": ["C", "N", "O"] }],
+  "planeMarks": { "equalLengths": [
+    { "id": "distanceGiven", "count": 1, "segments": ["sOM", "sON"] },
+    { "id": "radiiGiven", "count": 2, "segments": ["sOA", "sOC"] }
+  ]},
+  "coordinateCanvas": { "width": 620, "height": 500 },
+  "caption": "원 O의 두 현 AB와 CD에 내린 수선 OM, ON은 길이가 같고 반지름 OA, OC도 서로 같다.",
+  "accessibilityDescription": "원의 왼쪽 현 AB, 오른쪽에 기울어진 현 CD가 있고, O에서 각 현으로 내린 수선 OM과 ON에 직각 표식이 있다. OM과 ON, OA와 OC에 각기 다른 같음 표식을 달고 별도 면색은 쓰지 않는다.",
+  "sourceQuote": "다음은 '원의 중심으로부터 같은 거리에 있는 두 현의 길이는 서로 같다'라는 성질을 설명한 것이다. (㉮) 안에 들어가야 할 내용을 고르면? (4점)",
+  "sourceConditions": [
+    { "id": "twoChords", "condition": "원 O의 현 AB와 CD 및 수선의 발 M,N은 원본 그림의 주어진 구조다.", "mappedTo": ["k", "sAM", "sMB", "sCN", "sND", "sOM", "sON", "rM", "rN"] },
+    { "id": "givenEqual", "condition": "OM=ON, OA=OC는 문제에 제시된 합동 증명의 전제다.", "mappedTo": ["distanceGiven", "radiiGiven", "sOM", "sON", "sOA", "sOC"] }
+  ],
+  "newVisualInformation": ["원본 PNG의 두 수선 발과 각 직각 표식을 분명히 하고 원 내부에 불필요한 채움 없이 호·현을 검정 윤곽으로 표시한다.", "결론 AM=CN 및 AB=CD의 길이 눈금은 문제 그림에서 미리 표시하지 않는다."]
+}
