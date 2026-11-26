@@ -1,0 +1,317 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "10",
+              "denominator": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "26",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "34",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "displayLines": [],
+  "displaySegments": [
+    {
+      "id": "sAE",
+      "refs": [
+        "A",
+        "E"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sEB",
+      "refs": [
+        "E",
+        "B"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "sAF",
+      "refs": [
+        "A",
+        "F"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sFC",
+      "refs": [
+        "F",
+        "C"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "sED",
+      "refs": [
+        "E",
+        "D"
+      ]
+    },
+    {
+      "id": "sFD",
+      "refs": [
+        "F",
+        "D"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rB",
+      "refs": [
+        "E",
+        "B",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "foldEqual",
+        "count": 1,
+        "segments": [
+          "sAE",
+          "sED"
+        ]
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "lenAB",
+        "from": "A",
+        "to": "B",
+        "label": "12",
+        "unit": "cm",
+        "side": "LEFT"
+      },
+      {
+        "id": "lenBC",
+        "from": "B",
+        "to": "C",
+        "label": "12",
+        "unit": "cm",
+        "side": "BELOW"
+      },
+      {
+        "id": "bd8",
+        "from": "B",
+        "to": "D",
+        "label": "8",
+        "unit": "cm",
+        "side": "BELOW"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "ebx",
+        "ownerSegment": "sEB",
+        "text": "x",
+        "unit": "cm"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 520
+  },
+  "caption": "BD=8cm, EB=x로 두고 접힌 두 선분 EA=ED이므로 (12−x)²=x²+8²이다.",
+  "accessibilityDescription": "A는 B 바로 위쪽, C는 B 오른쪽이고 D는 BC를 2대1로 나눈다. 접기 전 AE와 AF는 점선, 접는 선 EF와 접힌 선 ED,FD는 실선이다. AE=ED 눈금과 B의 직각을 표시한다.",
+  "sourceQuote": "EB=x cm라 두면 EA=12−x이고, 직각삼각형 EBD에서 ED²=x²+8²이다.",
+  "sourceConditions": [
+    {
+      "id": "rightIsosceles",
+      "condition": "AB=BC=12cm, ∠B=90°를 유지한다.",
+      "mappedTo": [
+        "lenAB",
+        "lenBC",
+        "rB"
+      ]
+    },
+    {
+      "id": "trisection",
+      "condition": "D는 BC를 BD:DC=2:1로 내분한다.",
+      "mappedTo": [
+        "D",
+        "sBD",
+        "sDC"
+      ]
+    },
+    {
+      "id": "fold",
+      "condition": "접는 선 EF에 대해 A가 D에 포개지므로 EA=ED이고 A쪽 접기 전 테두리는 점선이다.",
+      "mappedTo": [
+        "sEF",
+        "sAE",
+        "sAF",
+        "sED",
+        "sFD",
+        "foldEqual"
+      ]
+    },
+    {
+      "id": "solve",
+      "condition": "BD=8cm와 높이 EB=x를 해당 변에 붙여 △EBD를 직각삼각형으로 사용한다.",
+      "mappedTo": [
+        "bd8",
+        "ebx",
+        "rB",
+        "sED"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 접는 선 EF, 점선 AE·AF, 동등표식 EA=ED를 모두 보존하면서 BD=8cm와 EB=x를 추가한다.",
+    "기존 주황색 삼각형 EBD 면 채움을 제거하고 수선과 길이 표식만 남긴다."
+  ]
+}

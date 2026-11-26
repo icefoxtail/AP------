@@ -1,0 +1,225 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "반지름 9의 240° 부채꼴"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "9"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "B",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "A"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "9"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "240"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "k",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "integer",
+                  "value": "9"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "O",
+          "A",
+          "B"
+        ],
+        "hiddenPointNames": [
+          "O",
+          "A",
+          "B"
+        ],
+        "hiddenPointStyle": "NONE",
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "sOA",
+            "refs": [
+              "O",
+              "A"
+            ]
+          },
+          {
+            "id": "sOB",
+            "refs": [
+              "O",
+              "B"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "arcs": [
+            {
+              "id": "sectorArc",
+              "circle": "k",
+              "center": "O",
+              "from": "A",
+              "to": "B",
+              "side": "MAJOR",
+              "label": "240"
+            }
+          ],
+          "dimensions": [
+            {
+              "id": "slant9",
+              "from": "O",
+              "to": "A",
+              "label": "9",
+              "unit": "cm",
+              "side": "BELOW"
+            }
+          ]
+        },
+        "coordinateCanvas": {
+          "width": 510,
+          "height": 510
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "완성된 원뿔"
+      },
+      "plan": {
+        "capability": "solid-figure-v1",
+        "unit": "cm",
+        "solids": [
+          {
+            "kind": "CONE",
+            "radius": 6,
+            "height": 6.708203932499369,
+            "names": {
+              "apex": "V",
+              "center": "O",
+              "rim": "C"
+            }
+          }
+        ],
+        "segments": [
+          {"from":"V","to":"O","style":"DASHED","role":"REF"},
+          {"from":"O","to":"C","style":"SOLID","role":"REF"}
+        ],
+        "dims": [
+          {
+            "slant": true,
+            "label": "9"
+          },
+          {
+            "radius": "bottom",
+            "label": "6"
+          },
+          {
+            "height": true,
+            "label": "3\\sqrt{5}"
+          }
+        ],
+        "marks": {
+          "rightAngles": [
+            {
+              "at": "O",
+              "refs": [
+                "V",
+                "C"
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "caption": "부채꼴 호 길이 12π가 원뿔 밑면 둘레이므로 r=6cm이고, 모선 9cm에서 높이는 3√5cm이다.",
+  "sourceQuote": "부채꼴의 반지름은 9cm, 중심각은 240°이다.",
+  "sourceConditions": [
+    {
+      "id": "sector",
+      "condition": "원본 전개도 부채꼴의 반지름 9cm·호의 중심각 240°를 선 두 개와 큰 원호로 보존한다.",
+      "mappedTo": [
+        "panels"
+      ]
+    },
+    {
+      "id": "cone",
+      "condition": "전개도에서 접은 원뿔의 반지름 6, 모선 9, 수직높이 3√5를 모형 치수로 그린다.",
+      "mappedTo": [
+        "panels"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본 240도 부채꼴에서 호만 보여 주고 불필요한 부채꼴 내부 파란 채움을 제거한다.",
+    "원뿔에는 밑원 반지름과 수직높이·모선 치수, 직각을 엔진 모형으로 복원하고 파스텔 면 채움을 제거한다."
+  ]
+}

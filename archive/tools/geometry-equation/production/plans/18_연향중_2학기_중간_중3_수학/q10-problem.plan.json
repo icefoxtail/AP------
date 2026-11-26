@@ -1,0 +1,47 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion":"construction-spike-v1",
+    "realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes":[
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"10"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"10"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"10"},{"kind":"integer","value":"10"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"P","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"18","denominator":"5"},{"kind":"rational","numerator":"26","denominator":"5"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"Q","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"24","denominator":"5"},{"kind":"rational","numerator":"18","denominator":"5"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"R","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"32","denominator":"5"},{"kind":"rational","numerator":"24","denominator":"5"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"S","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"26","denominator":"5"},{"kind":"rational","numerator":"32","denominator":"5"}]},"outputType":"POINT","factRole":"GIVEN"}
+    ]
+  },
+  "displayPoints":["A","B","C","D","P","Q","R","S"],
+  "displayLines":[],
+  "displaySegments":[
+    {"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},{"id":"sCD","refs":["C","D"]},{"id":"sDA","refs":["D","A"]},
+    {"id":"sAP","refs":["A","P"]},{"id":"sPQ","refs":["P","Q"]},
+    {"id":"sBQ","refs":["B","Q"]},{"id":"sQR","refs":["Q","R"]},
+    {"id":"sCR","refs":["C","R"]},{"id":"sRS","refs":["R","S"]},
+    {"id":"sDS","refs":["D","S"]},{"id":"sSP","refs":["S","P"]}
+  ],
+  "rightAngles":[
+    {"id":"rP","refs":["A","P","S"]},
+    {"id":"rQ","refs":["B","Q","P"]},
+    {"id":"rR","refs":["C","R","Q"]},
+    {"id":"rS","refs":["D","S","R"]}
+  ],
+  "planeMarks":{
+    "equalLengths":[{"id":"same6","count":2,"segments":["sAP","sBQ","sCR","sDS"]}],
+    "expressionLabels":[{"id":"given6","ownerSegment":"sAP","text":"6"}],
+    "dimensions":[{"id":"side10","from":"A","to":"B","label":"10","side":"LEFT"}]
+  },
+  "coordinateCanvas":{"width":600,"height":560},
+  "caption":"한 변이 10인 정사각형 ABCD의 내부에 네 모서리의 길이 6인 직각삼각형과 작은 정사각형 PQRS가 있다.",
+  "accessibilityDescription":"큰 정사각형 ABCD 안쪽에 점 P,Q,R,S가 차례로 작은 정사각형을 이룬다. AP,BQ,CR,DS에 같은 두 눈금과 직각 표식 네 개를 그린다. 면은 채우지 않는다.",
+  "sourceQuote":"정사각형 ABCD의 한 변은 10, AP=BQ=CR=DS=6이다. 다음 중 옳지 않은 것은?",
+  "sourceConditions":[
+    {"id":"outer","condition":"ABCD는 각 변 10인 정사각형이다.","mappedTo":["sAB","sBC","sCD","sDA","side10"]},
+    {"id":"fourSixes","condition":"AP=BQ=CR=DS=6의 네 눈금 표시를 유지한다.","mappedTo":["sAP","sBQ","sCR","sDS","same6","given6"]},
+    {"id":"rightCorners","condition":"중앙 PQRS의 네 꼭짓점 직각 표식을 유지한다.","mappedTo":["rP","rQ","rR","rS"]}
+  ],
+  "newVisualInformation":["원본 q10.png의 네 개의 두 눈금·중앙 네 직각·10·6을 그대로 복원한다.","기존 문제 SVG의 바깥 정사각형 전체와 중앙 사각형 면색을 제거한다. 문제용에는 AQ=8, PQ=2, 넓이 4와 정답 보기를 표시하지 않는다."]
+}

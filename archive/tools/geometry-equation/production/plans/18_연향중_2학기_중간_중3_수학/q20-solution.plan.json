@@ -1,0 +1,38 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{
+    "schemaVersion":"construction-spike-v1",
+    "realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes":[
+      {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"12"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"C","op":"POLAR_POINT","inputs":["O","B"],"args":{"length":{"kind":"integer","value":"12"},"angleDeg":{"kind":"integer","value":"60"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"M","op":"POLAR_POINT","inputs":["O","B"],"args":{"length":{"kind":"integer","value":"6"},"angleDeg":{"kind":"integer","value":"60"},"turn":"CCW"},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"lOB","op":"LINE_THROUGH","inputs":["O","B"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"X","op":"PERPENDICULAR_FOOT","inputs":["M","lOB"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"k","op":"CIRCLE_CENTER_RADIUS","inputs":["O"],"args":{"radius":{"kind":"integer","value":"12"}},"outputType":"CIRCLE","factRole":"DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "displayPoints":["O","B","C","M","X"],"displayLines":[],"displayCircles":[],
+  "displaySegments":[
+    {"id":"sOB","refs":["O","B"]},{"id":"sOC","refs":["O","C"]},
+    {"id":"sOM","refs":["O","M"]},{"id":"sMB","refs":["M","B"],"emphasis":"BOLD"},
+    {"id":"sMX","refs":["M","X"],"dashed":true}
+  ],
+  "rightAngles":[{"id":"rX","refs":["M","X","B"]}],
+  "planeMarks":{
+    "arcs":[{"id":"netArc","circle":"k","center":"O","from":"B","to":"C","side":"CCW","highlight":false}],
+    "angles":[{"id":"central","refs":["B","O","C"],"value":60,"label":"60","style":"ARC"}],
+    "dimensions":[{"id":"r12","from":"O","to":"B","label":"12","unit":"cm","side":"BELOW"},{"id":"r6","from":"O","to":"M","label":"6","unit":"cm","side":"LEFT"},{"id":"ox3","from":"O","to":"X","label":"3","unit":"cm","side":"BELOW"},{"id":"xb9","from":"X","to":"B","label":"9","unit":"cm","side":"BELOW"}]
+  },
+  "coordinateCanvas":{"width":610,"height":520},
+  "caption":"원뿔의 옆면 전개도는 반지름 12cm인 중심각 60°의 부채꼴이다. M은 펼친 경계의 중점 OM=6cm이고 B에서 M까지 최단선분 BM을 긋는다.",
+  "accessibilityDescription":"O에서 오른쪽 B까지 12cm의 가로 반지름, O에서 위오른쪽 C까지 12cm 반지름이 60도 부채꼴 호로 이어진다. OC의 중점 M에서 B까지 굵은 직선, M에서 OB로 내린 점선과 직각 표식, OX=3cm·XB=9cm가 있다. 영역을 칠하지 않는다.",
+  "sourceQuote":"점 B에서 옆면을 한 바퀴 돌아 점 M에 이르는 경로 중 가장 짧은 길이는?",
+  "sourceConditions":[
+    {"id":"sector","condition":"모선 12cm, 밑원 반지름 2cm이므로 전개도 부채꼴 중심각은 60°이다.","mappedTo":["k","netArc","sOB","sOC","central","r12"]},
+    {"id":"midpoint","condition":"M은 다른 전개도 경계 OC의 중점이므로 OM=6cm이다.","mappedTo":["M","sOM","r6"]},
+    {"id":"path","condition":"전개도 B-M 선분이 한 바퀴 감은 최단 경로이고 X는 M에서 OB에 내린 수선의 발이다.","mappedTo":["sMB","sMX","rX","ox3","xb9"]}
+  ],
+  "newVisualInformation":["기존 해설 SVG에서 손색이던 60도 부채꼴 호·직각 X·OX=3·XB=9·모선 12·중점 6과 최단 경로 BM을 원시 작도 연산으로 재구성한다.","기존 부채꼴 전체의 연한 파란 면 채움 없이 원호와 수선만 그리며 계산 결과 BM=6√3은 풀이에 둔다."]
+}

@@ -1,0 +1,38 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{
+    "schemaVersion":"construction-spike-v1",
+    "realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes":[
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-9"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"H","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-4"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-4"},{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"20"}]}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "displayPoints":["A","B","C","H"],"displayLines":[],
+  "displaySegments":[
+    {"id":"sAB","refs":["A","B"]},{"id":"sAC","refs":["A","C"]},
+    {"id":"sBH","refs":["B","H"]},{"id":"sHC","refs":["H","C"]},
+    {"id":"sAH","refs":["A","H"],"dashed":true}
+  ],
+  "rightAngles":[{"id":"rA","refs":["B","A","C"]},{"id":"rH","refs":["A","H","C"]}],
+  "planeMarks":{
+    "expressionLabels":[
+      {"id":"givenAC","ownerSegment":"sAC","text":"6","unit":"cm"},
+      {"id":"givenCH","ownerSegment":"sHC","text":"4","unit":"cm"},
+      {"id":"derivedBC","ownerSegment":"sBH","text":"5","unit":"cm"}
+    ],
+    "angles":[{"id":"sharedC","refs":["A","C","H"],"value":48.1896851042,"noLabel":true,"style":"ARC"}]
+  },
+  "coordinateCanvas":{"width":600,"height":465},
+  "caption":"직각삼각형 ABC에서 A에서 빗변 BC로 내린 높이 AH가 직각삼각형 AHC를 만들고 CH=4cm, AC=6cm이다.",
+  "accessibilityDescription":"큰 삼각형 ABC는 A가 직각이고 빗변 BC는 수평이다. 수선 AH가 H에서 직각이며 AHC와 ABC는 C의 각을 공유한다. AC의 길이 6cm, HC의 길이 4cm와 구한 BH=5cm가 보인다.",
+  "sourceQuote":"∠A=90°인 직각삼각형 ABC에서 AC=6cm, CH=4cm일 때 AB의 길이는?",
+  "sourceConditions":[
+    {"id":"rights","condition":"∠BAC=90°이고 AH⊥BC이다.","mappedTo":["rA","rH","sAH"]},
+    {"id":"given","condition":"AC=6cm, CH=4cm를 각 선분에 표시한다.","mappedTo":["givenAC","givenCH","sAC","sHC"]},
+    {"id":"solution","condition":"닮음으로 구한 BC=9cm, BH=5cm 중 BH=5cm를 해당 선분에 표시한다.","mappedTo":["derivedBC","sBH"]}
+  ],
+  "newVisualInformation":["원본 q11.png의 직각 A, 수선 AH와 H의 직각, AC 6cm 및 HC 4cm를 대응시킨다.","기존 해설 SVG의 장식성 파랑·주황 면 채움을 모두 제거하고 B-H-A, A-H-C의 닮음 관계만 선으로 보여준다."]
+}

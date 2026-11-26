@@ -1,0 +1,160 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displayLines": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rC",
+      "refs": [
+        "B",
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "x+5"
+      },
+      {
+        "id": "lBC",
+        "ownerSegment": "sBC",
+        "text": "x+4"
+      },
+      {
+        "id": "lCA",
+        "ownerSegment": "sCA",
+        "text": "x-3"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 540,
+    "height": 400
+  },
+  "caption": "∠C=90°이므로 (x−3)²+(x+4)²=(x+5)²이고, 양의 변의 조건에서 x=8이다.",
+  "accessibilityDescription": "B와 C는 수평선 위에, A는 C 위에 있다. C에 직각 표식이 있고 빗변 AB는 x+5, 밑변 BC는 x+4, 높이 CA는 x-3이다.",
+  "sourceQuote": "x=0이면 AC=x−3이 음수가 되므로 제외한다.",
+  "sourceConditions": [
+    {
+      "id": "givenTriangle",
+      "condition": "∠C=90°, AB=x+5, AC=x-3, BC=x+4를 표시한다.",
+      "mappedTo": [
+        "rC",
+        "lAB",
+        "lCA",
+        "lBC"
+      ]
+    },
+    {
+      "id": "unknownX",
+      "condition": "x는 미지수이므로 결과값은 해설 문장에 둔다. 배치는 해 x=8에 맞는 비례만 사용한다.",
+      "mappedTo": [
+        "sAB",
+        "sBC",
+        "sCA"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "세 변 식 및 직각은 문제와 일치하며, 피타고라스 방정식은 해설 문장에 둔다.",
+    "해설 원문과 같은 점·선분·라벨·직각표식의 위치를 보존하면서 불필요한 전체 면 채움을 제거한다."
+  ]
+}

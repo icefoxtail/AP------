@@ -1,0 +1,35 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{
+    "schemaVersion":"construction-spike-v1",
+    "realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes":[
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"6"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"U","op":"POLAR_POINT","inputs":["B","C"],"args":{"length":{"kind":"integer","value":"1"},"angleDeg":{"kind":"integer","value":"60"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"V","op":"POLAR_POINT","inputs":["C","B"],"args":{"length":{"kind":"integer","value":"1"},"angleDeg":{"kind":"integer","value":"45"},"turn":"CW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"lB","op":"LINE_THROUGH","inputs":["B","U"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"lC","op":"LINE_THROUGH","inputs":["C","V"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"A","op":"LINE_INTERSECTION","inputs":["lB","lC"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"lBC","op":"LINE_THROUGH","inputs":["B","C"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"H","op":"PERPENDICULAR_FOOT","inputs":["A","lBC"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "displayPoints":["A","B","C","H"],"displayLines":[],
+  "displaySegments":[{"id":"sAB","refs":["A","B"]},{"id":"sAC","refs":["A","C"]},{"id":"sBC","refs":["B","C"]},{"id":"sAH","refs":["A","H"],"dashed":true}],
+  "rightAngles":[{"id":"rH","refs":["A","H","C"]}],
+  "planeMarks":{
+    "angles":[{"id":"aB","refs":["A","B","C"],"value":60,"label":"60","style":"ARC"},{"id":"aC","refs":["A","C","B"],"value":45,"label":"45","style":"ARC"}],
+    "dimensions":[{"id":"base6","from":"B","to":"C","label":"6","unit":"cm","side":"BELOW"},{"id":"h1","from":"A","to":"H","label":"h","side":"LEFT"},{"id":"h2","from":"H","to":"C","label":"h","side":"BELOW"}]
+  },
+  "coordinateCanvas":{"width":570,"height":460},
+  "caption":"AH⊥BC, AH=HC=h, BH=h/√3이므로 h+h/√3=6이다.",
+  "accessibilityDescription":"밑변 BC에 내린 수선 AH와 수선 발 H의 직각표식이 있고, 45도 직각삼각형 AHC의 두 직각변 AH·HC에 h가 적혀 있다. 면 채움은 없다.",
+  "sourceQuote":"A에서 BC에 내린 수선의 발을 H, AH=h라 하자.",
+  "sourceConditions":[
+    {"id":"foot","condition":"높이 AH를 BC로 내린 수선으로 만들고 직각 표식을 놓는다.","mappedTo":["H","sAH","rH"]},
+    {"id":"equal","condition":"C쪽 45도 직각삼각형의 AH=HC=h이다.","mappedTo":["aC","h1","h2"]},
+    {"id":"base","condition":"B쪽 각 60도 및 BC=6cm를 표시한다.","mappedTo":["aB","base6"]}
+  ],
+  "newVisualInformation":["원본 해설의 수선 AH, 발 H, 직각, 동일 길이 h를 그림 자체에 표현한다.","기존 해설 삼각형 전체의 불필요한 옅은 색 채움을 제거한다."]
+}
