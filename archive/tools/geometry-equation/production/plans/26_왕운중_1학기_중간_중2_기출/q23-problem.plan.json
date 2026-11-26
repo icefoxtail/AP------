@@ -1,0 +1,76 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      { "id": "P", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "Q", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "5" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "R", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "5" }, { "kind": "integer", "value": "5" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "S", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "5" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "T", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "5" }, { "kind": "integer", "value": "3" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "U", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "8" }, { "kind": "integer", "value": "3" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "V", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "8" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" }
+    ]
+  },
+  "displayPoints": ["P", "Q", "R", "S", "T", "U", "V"],
+  "hiddenPointNames": ["P", "Q", "R", "S", "T", "U", "V"],
+  "hiddenPointStyle": "NONE",
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    { "id": "sPQ", "refs": ["P", "Q"] },
+    { "id": "sQR", "refs": ["Q", "R"] },
+    { "id": "sRT", "refs": ["R", "T"] },
+    { "id": "sTS", "refs": ["T", "S"] },
+    { "id": "sSP", "refs": ["S", "P"] },
+    { "id": "sTU", "refs": ["T", "U"] },
+    { "id": "sUV", "refs": ["U", "V"] },
+    { "id": "sVS", "refs": ["V", "S"] }
+  ],
+  "rightAngles": [
+    { "id": "rightT", "refs": ["S", "T", "U"] },
+    { "id": "rightS", "refs": ["T", "S", "V"] }
+  ],
+  "planeMarks": {
+    "regions": [
+      { "id": "regionA", "fill": "LIGHT", "label": "A", "factRole": "GIVEN", "shapes": [{ "polygon": ["P", "Q", "R", "S"] }] },
+      { "id": "regionB", "fill": "LIGHT", "label": "B", "factRole": "GIVEN", "shapes": [{ "polygon": ["S", "T", "U", "V"] }] }
+    ],
+    "dimensions": [
+      { "id": "lengthA", "from": "P", "to": "Q", "label": "5xy", "side": "LEFT", "style": "ARROW", "factRole": "GIVEN" },
+      { "id": "lengthB", "from": "V", "to": "U", "label": "3x^2y^2", "side": "RIGHT", "style": "ARROW", "factRole": "GIVEN" },
+      { "id": "totalWidth", "from": "P", "to": "V", "label": "L", "side": "BELOW", "style": "ARROW", "factRole": "GIVEN" }
+    ]
+  },
+  "coordinateCanvas": { "width": 720, "height": 460 },
+  "caption": "직사각형 A와 B를 밑변에 맞춰 붙인 그림으로, 원본 접합부의 두 직각표식과 두 세로 길이 및 가로 전체 L을 표시한다.",
+  "accessibilityDescription": "왼쪽의 큰 직사각형 A와 오른쪽의 작은 직사각형 B가 밑변을 일직선으로 하여 붙어 있다. A의 높이는 5xy, B의 높이는 3x²y²이며 밑변 전체가 L이다. 두 도형이 만나는 세로선의 위아래에 직각 표시가 있고 두 내부는 옅은 회색이다.",
+  "sourceQuote": "직사각형 $A$, $B$를 서로 붙여 놓은 것이다.",
+  "sourceConditions": [
+    {
+      "id": "rectangles",
+      "condition": "A와 B는 서로 붙인 직사각형이고 공통 밑변을 이룬다. 평면 배치는 x=y=1인 양수 예시에서 A 가로5·세로5, B 가로3·세로3인 정직한 대표값이며 실제 미지 x,y나 답을 고정하지 않는다.",
+      "mappedTo": ["P", "Q", "R", "S", "T", "U", "V", "sPQ", "sQR", "sRT", "sTS", "sSP", "sTU", "sUV", "sVS", "regionA", "regionB"]
+    },
+    {
+      "id": "heights",
+      "condition": "왼쪽 직사각형 A의 세로 길이 5xy, 오른쪽 B의 세로 길이 3x²y²와 밑변 전체 길이 L을 치수선으로 표시한다.",
+      "mappedTo": ["lengthA", "lengthB", "totalWidth", "P", "Q", "U", "V"]
+    },
+    {
+      "id": "jointCorners",
+      "condition": "원본 q23.png의 두 직각 기호는 B의 왼쪽 위 T와 왼쪽 아래 S의 각이며 두 사각형의 전체 면은 옅은 음영으로 구분된다.",
+      "mappedTo": ["T", "S", "U", "V", "rightT", "rightS", "regionA", "regionB"]
+    }
+  ],
+  "newVisualInformation": [
+    "현재 연결 q23-problem-visual-v2.svg에서 빠진 원본 접합부의 두 직각표식을 실제 rightAngles에 복원한다.",
+    "영역 A와 B는 원본에 있는 정도의 옅은 선택 음영만 사용하고, 치수 5xy, 3x²y², L은 각각 독립 치수선으로 표시한다.",
+    "구해야 할 두 가로 길이의 문자식이나 최종 L=9x-y²는 문제 그림에 노출하지 않는다."
+  ]
+}
