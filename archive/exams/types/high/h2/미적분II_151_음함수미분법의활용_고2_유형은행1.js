@@ -38,7 +38,11 @@ window.questionBank = [
       "CC_TRIG_RATIO"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_151_음함수미분법의활용_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "높이 8m의 깃대·눈높이 2m의 사람과 수평거리 x, 눈에서 꼭대기를 보는 각 θ를 직각 도식으로 보인다.",
+    "imageCaption": "높이 8m의 깃대·눈높이 2m의 사람과 수평거리 x, 눈에서 꼭대기를 보는 각 θ를 직각 도식으로 보인다.",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -76,6 +80,10 @@ window.questionBank = [
       "CC_PYTHAGOREAN_THEOREM"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_151_음함수미분법의활용_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "수직 벽과 수평 지면 위 길이 13m 사다리, 밑변 x와 높이 y 및 직각을 표시한다.",
+    "imageCaption": "수직 벽과 수평 지면 위 길이 13m 사다리, 밑변 x와 높이 y 및 직각을 표시한다.",
+    "imageSize": "full"
   }
 ];

@@ -41,7 +41,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_POSITIVE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_270_세곡선으로둘러싸인도형의넓이_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "O(0,0), A(1,3), B(3,1)을 지나며 두 직선과 y=3/x로 닫히는 영역을 연한 색으로 표시한다.",
+    "imageCaption": "O(0,0), A(1,3), B(3,1)을 지나며 두 직선과 y=3/x로 닫히는 영역을 연한 색으로 표시한다.",
+    "imageSize": "full"
   },
   {
     "id": 2,

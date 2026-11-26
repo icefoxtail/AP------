@@ -307,7 +307,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_POSITIVE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_172_곡선밖의점이주어진경우의접선의방정식_고2_유형은행1/q8-problem.svg",
+    "imageAlt": "곡선 y=ln x+2와 a=1의 접선 y=x+1, 접점 (1,2) 및 y절편 A(0,1)를 나타낸다.",
+    "imageCaption": "곡선 y=ln x+2와 a=1의 접선 y=x+1, 접점 (1,2) 및 y절편 A(0,1)를 나타낸다.",
+    "imageSize": "medium"
   },
   {
     "id": 9,

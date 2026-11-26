@@ -41,7 +41,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RESTRICTED_INTERVAL"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_187_변곡점의진위판단_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "도함수 또는 함수의 주어진 다항곡선과 원문에 명시된 특징점을 보인다.",
+    "imageCaption": "도함수 또는 함수의 주어진 다항곡선과 원문에 명시된 특징점을 보인다.",
+    "imageSize": "medium"
   },
   {
     "id": 2,
@@ -121,7 +125,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RESTRICTED_INTERVAL"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_187_변곡점의진위판단_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "0≤x≤4에서 f'(x)=1+sin²(πx/2)=3/2-(1/2)cos(πx)의 곡선과 세 점을 표시한다.",
+    "imageCaption": "0≤x≤4에서 f'(x)=1+sin²(πx/2)=3/2-(1/2)cos(πx)의 곡선과 세 점을 표시한다.",
+    "imageSize": "medium"
   },
   {
     "id": 4,
@@ -163,7 +171,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RESTRICTED_INTERVAL"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_187_변곡점의진위판단_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "x<2의 포물선 가지와 x>2의 직선 가지를 분리하고 x=2의 (2,0),(2,-1)에 빈 점을 보인다.",
+    "imageCaption": "x<2의 포물선 가지와 x>2의 직선 가지를 분리하고 x=2의 (2,0),(2,-1)에 빈 점을 보인다.",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -204,7 +216,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RESTRICTED_INTERVAL"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_187_변곡점의진위판단_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "도함수 또는 함수의 주어진 다항곡선과 원문에 명시된 특징점을 보인다.",
+    "imageCaption": "도함수 또는 함수의 주어진 다항곡선과 원문에 명시된 특징점을 보인다.",
+    "imageSize": "medium"
   },
   {
     "id": 6,
@@ -246,7 +262,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RANGE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_187_변곡점의진위판단_고2_유형은행1/q6-problem.svg",
+    "imageAlt": "도함수 또는 함수의 주어진 다항곡선과 원문에 명시된 특징점을 보인다.",
+    "imageCaption": "도함수 또는 함수의 주어진 다항곡선과 원문에 명시된 특징점을 보인다.",
+    "imageSize": "medium"
   },
   {
     "id": 7,

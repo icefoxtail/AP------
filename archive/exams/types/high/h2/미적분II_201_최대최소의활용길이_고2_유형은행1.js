@@ -39,7 +39,11 @@ window.questionBank = [
       "CC_DERIVATIVE_SIGN_EXTREMA_ANALYSIS"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_201_최대최소의활용길이_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "자연지수곡선을 정확히 그리고, 기호 t의 대표값에서 곡선 위 점을 표시한다.",
+    "imageCaption": "자연지수곡선을 정확히 그리고, 기호 t의 대표값에서 곡선 위 점을 표시한다.",
+    "imageSize": "medium"
   },
   {
     "id": 2,
@@ -79,7 +83,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RANGE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_201_최대최소의활용길이_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "AP=45 m, PB=70 m인 직각 배치와 도로 위 대표점 Q를 정확한 길이 비율로 보인다.",
+    "imageCaption": "AP=45 m, PB=70 m인 직각 배치와 도로 위 대표점 Q를 정확한 길이 비율로 보인다.",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -120,6 +128,10 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RANGE"
     ],
-    "integrationPattern": "CASE_BRANCH"
+    "integrationPattern": "CASE_BRANCH",
+    "image": "assets/images/미적분II_201_최대최소의활용길이_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "중심 A(3,0), 반지름 3인 원과 동경 OQ, P∈OQ, PQ=2인 대표 도형(예: cosθ=3/5).",
+    "imageCaption": "중심 A(3,0), 반지름 3인 원과 동경 OQ, P∈OQ, PQ=2인 대표 도형(예: cosθ=3/5).",
+    "imageSize": "full"
   }
 ];

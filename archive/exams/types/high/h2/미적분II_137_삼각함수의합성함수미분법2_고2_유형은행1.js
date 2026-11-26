@@ -237,6 +237,10 @@ window.questionBank = [
       "CC_SPECIAL_ANGLES"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_137_삼각함수의합성함수미분법2_고2_유형은행1/q6-problem.svg",
+    "imageAlt": "반지름 4인 원 안의 A(2,0)를 지나는 직선 QAP와 양의 x축에 대한 θ를 그린다.",
+    "imageCaption": "반지름 4인 원 안의 A(2,0)를 지나는 직선 QAP와 양의 x축에 대한 θ를 그린다.",
+    "imageSize": "full"
   }
 ];

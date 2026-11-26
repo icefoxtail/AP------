@@ -35,7 +35,11 @@ window.questionBank = [
     "templateKey": "TPL_CALCULUS_PARTS_PRODUCT",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "image": "assets/images/미적분II_244_정적분의부분적분법_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "주어진 양 끝점과 적분 넓이 20을 만족하는 한 증가곡선의 대표 개형이며, 구간 [1,5] 아래 영역을 표시한다.",
+    "imageCaption": "주어진 양 끝점과 적분 넓이 20을 만족하는 한 증가곡선의 대표 개형이며, 구간 [1,5] 아래 영역을 표시한다.",
+    "imageSize": "full"
   },
   {
     "id": 2,

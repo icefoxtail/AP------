@@ -78,7 +78,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RANGE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_273_두도형의넓이가서로같은경우_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "곡선 y=√(2x)와 y=4, 교점 (8,4) 및 대표 미지 경계 x=a>8의 위치만 표시한다.",
+    "imageCaption": "곡선 y=√(2x)와 y=4, 교점 (8,4) 및 대표 미지 경계 x=a>8의 위치만 표시한다.",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -201,7 +205,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_POSITIVE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_273_두도형의넓이가서로같은경우_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "곡선 y=e^(-x)와 대표 x=k=1의 위치만 표시. 정확 y=√e와 A/B 면은 보류.",
+    "imageCaption": "곡선 y=e^(-x)와 대표 x=k=1의 위치만 표시. 정확 y=√e와 A/B 면은 보류.",
+    "imageSize": "medium"
   },
   {
     "id": 6,
@@ -242,7 +250,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RANGE"
     ],
-    "integrationPattern": "INTERDEPENDENT"
+    "integrationPattern": "INTERDEPENDENT",
+    "image": "assets/images/미적분II_273_두도형의넓이가서로같은경우_고2_유형은행1/q6-problem.svg",
+    "imageAlt": "예: a=1에서 정확 y=ln x와 x=1, y=a. 오른쪽 x=e² 및 두 동등 면은 미표시.",
+    "imageCaption": "예: a=1에서 정확 y=ln x와 x=1, y=a. 오른쪽 x=e² 및 두 동등 면은 미표시.",
+    "imageSize": "medium"
   },
   {
     "id": 7,
@@ -283,7 +295,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RANGE"
     ],
-    "integrationPattern": "INTERDEPENDENT"
+    "integrationPattern": "INTERDEPENDENT",
+    "image": "assets/images/미적분II_273_두도형의넓이가서로같은경우_고2_유형은행1/q7-problem.svg",
+    "imageAlt": "원문의 정확한 y=3cos x 일부와 π/3 눈금. x범위는 최소 1/4주기 지원 때문에 π/2까지 확장됨.",
+    "imageCaption": "원문의 정확한 y=3cos x 일부와 π/3 눈금. x범위는 최소 1/4주기 지원 때문에 π/2까지 확장됨.",
+    "imageSize": "medium"
   },
   {
     "id": 8,
@@ -367,7 +383,11 @@ window.questionBank = [
       "COND_RESTRICTED_INTERVAL",
       "COND_RANGE"
     ],
-    "integrationPattern": "INTERDEPENDENT"
+    "integrationPattern": "INTERDEPENDENT",
+    "image": "assets/images/미적분II_273_두도형의넓이가서로같은경우_고2_유형은행1/q9-problem.svg",
+    "imageAlt": "예: k=1에서 정확한 y=2sin(πx)와 수평선 y=k 두 교점. S₂=2S₁은 미표시.",
+    "imageCaption": "예: k=1에서 정확한 y=2sin(πx)와 수평선 y=k 두 교점. S₂=2S₁은 미표시.",
+    "imageSize": "medium"
   },
   {
     "id": 10,

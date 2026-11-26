@@ -81,7 +81,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RESTRICTED_INTERVAL"
     ],
-    "integrationPattern": "CASE_BRANCH"
+    "integrationPattern": "CASE_BRANCH",
+    "image": "assets/images/미적분II_267_두곡선으로둘러싸인도형의넓이_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "원문 곡선 y=cos x의 정확한 구간 그래프. 동축 y=sin(2x)와 영역 라벨은 엔진 기능 추가 전 미완료.",
+    "imageCaption": "원문 곡선 y=cos x의 정확한 구간 그래프. 동축 y=sin(2x)와 영역 라벨은 엔진 기능 추가 전 미완료.",
+    "imageSize": "medium"
   },
   {
     "id": 3,
@@ -122,7 +126,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RESTRICTED_INTERVAL"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_267_두곡선으로둘러싸인도형의넓이_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "원문 곡선 y=cos x의 정확한 구간 그래프. 동축 y=sin(2x)와 영역 라벨은 엔진 기능 추가 전 미완료.",
+    "imageCaption": "원문 곡선 y=cos x의 정확한 구간 그래프. 동축 y=sin(2x)와 영역 라벨은 엔진 기능 추가 전 미완료.",
+    "imageSize": "medium"
   },
   {
     "id": 4,
@@ -358,7 +366,11 @@ window.questionBank = [
       "CC_GRAPH_INTERSECTION"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_267_두곡선으로둘러싸인도형의넓이_고2_유형은행1/q9-problem.svg",
+    "imageAlt": "y=2eˣ와 x=3의 경계만 정확히 표시한 부분 plan. 둘째 곡선 xeˣ 및 A/B 영역은 미지원.",
+    "imageCaption": "y=2eˣ와 x=3의 경계만 정확히 표시한 부분 plan. 둘째 곡선 xeˣ 및 A/B 영역은 미지원.",
+    "imageSize": "medium"
   },
   {
     "id": 10,

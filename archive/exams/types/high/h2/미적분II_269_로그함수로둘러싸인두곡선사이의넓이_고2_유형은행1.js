@@ -118,6 +118,10 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RANGE"
     ],
-    "integrationPattern": "REINTERPRETATION"
+    "integrationPattern": "REINTERPRETATION",
+    "image": "assets/images/미적분II_269_로그함수로둘러싸인두곡선사이의넓이_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "예: 1<b=2<a=4, 1<p=2<q=4일 때 두 로그곡선과 두 수직선의 위치 관계.",
+    "imageCaption": "예: 1<b=2<a=4, 1<p=2<q=4일 때 두 로그곡선과 두 수직선의 위치 관계.",
+    "imageSize": "full"
   }
 ];
