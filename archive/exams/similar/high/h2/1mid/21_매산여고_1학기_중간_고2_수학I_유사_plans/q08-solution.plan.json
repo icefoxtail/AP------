@@ -1,0 +1,20 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "COS",
+    "coefficients": ["1", "2", "0"],
+    "phasePi": "0",
+    "sourceDomain": { "kind": "INTERVAL_PI", "rangePi": ["0", "1"], "states": ["CLOSED", "OPEN"] },
+    "referenceLines": [{ "id": "h", "y": "-1/4", "intersectionCount": 2 }],
+    "keyPoints": true,
+    "axisTickPi": true,
+    "axisTickValues": { "x": ["1/2"], "y": ["-1/4", "-1", "1"] }
+  },
+  "caption": "0≤x<π에서 y=cos(2x)와 y=−1/4의 두 교점이 x=π/2를 중심으로 서로 대칭인 관계를 나타낸다.",
+  "sourceQuote": "방정식 $\\cos 2x = -\\frac{1}{4}$",
+  "sourceConditions": [
+    { "id": "roots", "condition": "0≤x<π에서 cos(2x)=-1/4의 두 해", "mappedTo": "PRESERVED_ARCHIVE_BANK" }
+  ],
+  "newVisualInformation": ["교점 2개와 x=π/2에 대한 대칭"]
+}
