@@ -1,0 +1,282 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "t",
+      "kind": "REGULAR_POLYHEDRON",
+      "faces": 4,
+      "side": 6,
+      "names": [
+        null,
+        null,
+        null,
+        null
+      ]
+    }
+  ],
+  "space": {
+    "points": [
+      {
+        "id": "A",
+        "at": {
+          "divide": [
+            "#v3",
+            "#v0"
+          ],
+          "ratio": "1:2"
+        },
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "B",
+        "at": {
+          "divide": [
+            "#v3",
+            "#v1"
+          ],
+          "ratio": "1:2"
+        },
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "C",
+        "at": {
+          "divide": [
+            "#v3",
+            "#v2"
+          ],
+          "ratio": "1:2"
+        },
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "D",
+        "at": {
+          "divide": [
+            "#v3",
+            "#v0"
+          ],
+          "ratio": "2:1"
+        },
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "E",
+        "at": {
+          "divide": [
+            "#v3",
+            "#v1"
+          ],
+          "ratio": "2:1"
+        },
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "F",
+        "at": {
+          "divide": [
+            "#v3",
+            "#v2"
+          ],
+          "ratio": "2:1"
+        },
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "G",
+        "at": {
+          "centroid": [
+            "#v3",
+            "A",
+            "B"
+          ]
+        },
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "H",
+        "at": {
+          "centroid": [
+            "A",
+            "D",
+            "E"
+          ]
+        },
+        "hideName": true,
+        "hideDot": true
+      },
+      {
+        "id": "I",
+        "at": {
+          "centroid": [
+            "D",
+            "E",
+            "#v0"
+          ]
+        },
+        "hideName": true,
+        "hideDot": true
+      }
+    ],
+    "segments": [
+      {
+        "from": "A",
+        "to": "B",
+        "style": "AUTO",
+        "role": "ACCENT"
+      },
+      {
+        "from": "B",
+        "to": "C",
+        "style": "AUTO",
+        "role": "ACCENT"
+      },
+      {
+        "from": "C",
+        "to": "A",
+        "style": "AUTO",
+        "role": "ACCENT"
+      },
+      {
+        "from": "D",
+        "to": "E",
+        "style": "AUTO",
+        "role": "ACCENT"
+      },
+      {
+        "from": "E",
+        "to": "F",
+        "style": "AUTO",
+        "role": "ACCENT"
+      },
+      {
+        "from": "F",
+        "to": "D",
+        "style": "AUTO",
+        "role": "ACCENT"
+      },
+      {
+        "from": "#v3",
+        "to": "A",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "A",
+        "to": "D",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "D",
+        "to": "#v0",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "#v3",
+        "to": "B",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "B",
+        "to": "E",
+        "style": "AUTO",
+        "role": "REF"
+      },
+      {
+        "from": "E",
+        "to": "#v1",
+        "style": "AUTO",
+        "role": "REF"
+      }
+    ]
+  },
+  "highlights": [
+    {
+      "polygon": [
+        "#v3",
+        "A",
+        "B"
+      ],
+      "fill": "LIGHT"
+    },
+    {
+      "polygon": [
+        "A",
+        "D",
+        "E",
+        "B"
+      ],
+      "fill": "WARM"
+    },
+    {
+      "polygon": [
+        "D",
+        "#v0",
+        "#v1",
+        "E"
+      ],
+      "fill": "LIGHT"
+    }
+  ],
+  "labels": [
+    {
+      "text": "(가)",
+      "at": "G"
+    },
+    {
+      "text": "(나)",
+      "at": "H"
+    },
+    {
+      "text": "(다)",
+      "at": "I"
+    }
+  ],
+  "solidCaption": {
+    "text": "정사면체 높이 삼등분"
+  },
+  "caption": "정사면체의 높이를 삼등분하는 두 평행 단면과 위에서부터 세 층 (가), (나), (다)를 표시한 문제 그림.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원본 정사면체의 전체 모양, 뒤쪽 모서리는 숨은선으로 표현",
+      "mappedTo": [
+        "solids",
+        "space.segments"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "밑면에 평행한 두 단면이 정사면체의 높이를 삼등분",
+      "mappedTo": [
+        "space.points",
+        "space.segments"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "위에서부터 (가),(나),(다)로 이름 붙인 세 층",
+      "mappedTo": [
+        "labels",
+        "highlights"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "전체 정사면체와 두 평행 단면을 하나의 3차원 입체에 함께 복원한다.",
+    "(가),(나),(다) 구분에 필요한 세 층만 서로 다른 연한 색으로 칠한다.",
+    "문제에서 아직 구하지 않은 (다)의 부피와 누적부피비는 문제 그림에 노출하지 않는다."
+  ],
+  "accessibilityDescription": "정사면체의 외곽 모서리와 뒤쪽 숨은 모서리 점선을 유지하고 밑면에 평행한 두 단면으로 세 층을 나눈다. 각 층을 위에서부터 (가), (나), (다)로 표시한다.",
+  "sourceQuote": "높이가 삼등분이 되도록 밑면에 평행한 두 평면으로 자를 때"
+}

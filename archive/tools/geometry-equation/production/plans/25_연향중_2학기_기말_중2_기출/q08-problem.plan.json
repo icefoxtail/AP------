@@ -1,0 +1,56 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "2" }, { "kind": "integer", "value": "6" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "12" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "D", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "14" }, { "kind": "integer", "value": "6" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "M", "op": "MIDPOINT", "inputs": ["B", "C"], "args": {}, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "N", "op": "MIDPOINT", "inputs": ["C", "D"], "args": {}, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "lAM", "op": "LINE_THROUGH", "inputs": ["A", "M"], "args": {}, "outputType": "LINE", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "lAN", "op": "LINE_THROUGH", "inputs": ["A", "N"], "args": {}, "outputType": "LINE", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "lBD", "op": "LINE_THROUGH", "inputs": ["B", "D"], "args": {}, "outputType": "LINE", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "P", "op": "LINE_INTERSECTION", "inputs": ["lAM", "lBD"], "args": {}, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "Q", "op": "LINE_INTERSECTION", "inputs": ["lAN", "lBD"], "args": {}, "outputType": "POINT", "factRole": "GIVEN" }
+    ]
+  },
+  "displayPoints": ["A", "B", "C", "D", "M", "N", "P", "Q"],
+  "displaySegments": [
+    { "id": "sAB", "refs": ["A", "B"] },
+    { "id": "sBM", "refs": ["B", "M"] },
+    { "id": "sMC", "refs": ["M", "C"] },
+    { "id": "sCN", "refs": ["C", "N"] },
+    { "id": "sND", "refs": ["N", "D"] },
+    { "id": "sDA", "refs": ["D", "A"] },
+    { "id": "sAP", "refs": ["A", "P"] },
+    { "id": "sPM", "refs": ["P", "M"] },
+    { "id": "sAQ", "refs": ["A", "Q"] },
+    { "id": "sQN", "refs": ["Q", "N"] },
+    { "id": "sBP", "refs": ["B", "P"] },
+    { "id": "sPQ", "refs": ["P", "Q"] },
+    { "id": "sQD", "refs": ["Q", "D"] }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      { "id": "midBC", "count": 1, "segments": ["sBM", "sMC"] },
+      { "id": "midCD", "count": 2, "segments": ["sCN", "sND"] }
+    ],
+    "parallels": [{ "id": "parallelBases", "count": 1, "segments": ["sDA", "sMC"] }],
+    "regions": [{ "id": "askedPMCNQ", "fill": "MEDIUM", "pattern": "HATCH", "factRole": "GIVEN", "shapes": [{ "polygon": ["P", "M", "C", "N", "Q"] }] }]
+  },
+  "caption": "평행사변형 ABCD와 두 중점 M, N, 교점 P, Q를 그리고 구하는 오각형 PMCNQ만 칠한 그림.",
+  "accessibilityDescription": "평행사변형 ABCD에서 M은 BC의 중점, N은 CD의 중점이다. AM과 BD가 P에서, AN과 BD가 Q에서 만나며 오각형 PMCNQ만 음영으로 구별한다.",
+  "sourceQuote": "점 $M,N$은 각각 $\\overline{BC},\\overline{CD}$의 중점이다.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "ABCD는 넓이 72인 평행사변형; 대표 좌표 B=(0,0), C=(12,0), A=(2,6), D=(14,6)으로 정확히 넓이 72를 만족", "mappedTo": ["A", "B", "C", "D", "sAB", "sDA", "sMC", "sCN", "parallelBases"] },
+    { "id": "c2", "condition": "M은 BC의 중점", "mappedTo": ["M", "sBM", "sMC", "midBC"] },
+    { "id": "c3", "condition": "N은 CD의 중점", "mappedTo": ["N", "sCN", "sND", "midCD"] },
+    { "id": "c4", "condition": "AM과 BD의 교점 P, AN과 BD의 교점 Q", "mappedTo": ["P", "Q", "lAM", "lAN", "lBD", "sAP", "sPM", "sAQ", "sQN", "sPQ"] },
+    { "id": "c5", "condition": "원본에서 구하는 오각형 PMCNQ만 빗금으로 표시", "mappedTo": ["askedPMCNQ"] }
+  ],
+  "newVisualInformation": ["원본 PNG의 빗금 표시를 구하는 영역에만 보존하고 내부의 나머지 면 채움을 없앤다.", "문제축에서는 넓이 24 및 삼각형 조각 넓이 6을 노출하지 않는다."],
+  "coordinateCanvas": { "width": 660, "height": 440 }
+}

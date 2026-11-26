@@ -1,0 +1,758 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "LTop",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "8"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "RTop",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "8"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "LHalf",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "RHalf",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "LBot",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "RBot",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "VMid",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "VLow",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "VBot",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "RLow",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "XLow",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "XBot",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "6"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "3"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "2"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "LTop",
+    "RTop",
+    "LHalf",
+    "RHalf",
+    "LBot",
+    "RBot",
+    "VMid",
+    "VLow",
+    "VBot",
+    "RLow",
+    "XLow",
+    "XBot",
+    "T1",
+    "T2",
+    "T3",
+    "T4"
+  ],
+  "hiddenPointNames": [
+    "LTop",
+    "RTop",
+    "LHalf",
+    "RHalf",
+    "LBot",
+    "RBot",
+    "VMid",
+    "VLow",
+    "VBot",
+    "RLow",
+    "XLow",
+    "XBot",
+    "T1",
+    "T2",
+    "T3",
+    "T4"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "top",
+      "refs": [
+        "LTop",
+        "RTop"
+      ]
+    },
+    {
+      "id": "right1",
+      "refs": [
+        "RTop",
+        "RHalf"
+      ]
+    },
+    {
+      "id": "right2",
+      "refs": [
+        "RHalf",
+        "RLow"
+      ]
+    },
+    {
+      "id": "right3",
+      "refs": [
+        "RLow",
+        "RBot"
+      ]
+    },
+    {
+      "id": "bottom1",
+      "refs": [
+        "RBot",
+        "XBot"
+      ]
+    },
+    {
+      "id": "bottom2",
+      "refs": [
+        "XBot",
+        "VBot"
+      ]
+    },
+    {
+      "id": "bottom3",
+      "refs": [
+        "VBot",
+        "LBot"
+      ]
+    },
+    {
+      "id": "left1",
+      "refs": [
+        "LBot",
+        "LHalf"
+      ]
+    },
+    {
+      "id": "left2",
+      "refs": [
+        "LHalf",
+        "LTop"
+      ]
+    },
+    {
+      "id": "midLeft",
+      "refs": [
+        "LHalf",
+        "VMid"
+      ]
+    },
+    {
+      "id": "midRight",
+      "refs": [
+        "VMid",
+        "RHalf"
+      ]
+    },
+    {
+      "id": "divider1",
+      "refs": [
+        "VMid",
+        "VLow"
+      ]
+    },
+    {
+      "id": "divider2",
+      "refs": [
+        "VLow",
+        "VBot"
+      ]
+    },
+    {
+      "id": "smallMid",
+      "refs": [
+        "VLow",
+        "XLow"
+      ]
+    },
+    {
+      "id": "smallRight",
+      "refs": [
+        "XLow",
+        "RLow"
+      ]
+    },
+    {
+      "id": "smallVertical",
+      "refs": [
+        "XLow",
+        "XBot"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "textLabels": [
+      {
+        "id": "labelA1",
+        "at": "T1",
+        "text": "A1",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "labelA2",
+        "at": "T2",
+        "text": "A2",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "labelA3",
+        "at": "T3",
+        "text": "A3",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "labelA4",
+        "at": "T4",
+        "text": "A4",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "A0 용지를 가로와 세로 방향으로 번갈아 절반씩 잘라 A1, A2, A3, A4를 만든 도식. 내부 색칠 없음.",
+  "accessibilityDescription": "한 장의 A0 직사각형에서 위쪽 절반 A1, 왼쪽 아래 절반 A2, 오른쪽 위 작은 부분 A3, 그보다 작은 오른쪽 아래 부분 A4를 그렸다. 매 단계마다 남은 종이의 면적이 반이 되고 A4는 전체 A0 면적의 16분의 1이며 배경은 색칠하지 않았다.",
+  "sourceQuote": "A4 용지는 A3 용지를 각각 반으로 자른 것이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "A0 종이의 가로:세로는 1:√2; 대표 좌표 폭 8, 높이 8√2로 실제 용지 닮음비도 유지",
+      "mappedTo": [
+        "LTop",
+        "RTop",
+        "LBot",
+        "RBot",
+        "top",
+        "right1",
+        "right2",
+        "right3",
+        "bottom1",
+        "bottom2",
+        "bottom3",
+        "left1",
+        "left2"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "A1은 위쪽 절반 8×4√2로 A0의 1/2",
+      "mappedTo": [
+        "LHalf",
+        "RHalf",
+        "midLeft",
+        "midRight",
+        "labelA1"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "A2는 남은 아래쪽 절반의 왼쪽을 차지하는 4×4√2 종이로 A0의 1/4",
+      "mappedTo": [
+        "VMid",
+        "VBot",
+        "divider1",
+        "divider2",
+        "labelA2"
+      ]
+    },
+    {
+      "id": "c4",
+      "condition": "A3는 오른쪽 위 4×2√2 종이로 A0의 1/8",
+      "mappedTo": [
+        "VLow",
+        "RLow",
+        "smallMid",
+        "smallRight",
+        "labelA3"
+      ]
+    },
+    {
+      "id": "c5",
+      "condition": "A4는 오른쪽 아래 2×2√2 종이로 A0의 1/16",
+      "mappedTo": [
+        "XLow",
+        "XBot",
+        "smallVertical",
+        "labelA4"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본과 같은 계단식 종이 분할을 유지하며 각 칸 이름을 정확한 자리에서 그린다.",
+    "기존 문제 SVG의 무의미한 파랑·초록·주황·보라 면 채움을 없애고 흰 바탕과 선만 쓴다.",
+    "문제축에는 닮음비 1:4를 노출하지 않는다."
+  ],
+  "coordinateCanvas": {
+    "width": 610,
+    "height": 570
+  }
+}

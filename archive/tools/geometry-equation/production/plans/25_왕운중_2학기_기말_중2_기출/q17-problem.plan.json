@@ -1,0 +1,77 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "8" }, { "kind": "expression", "op": "add", "args": [{ "kind": "integer", "value": "9" }, { "kind": "expression", "op": "mul", "args": [{ "kind": "integer", "value": "7" }, { "kind": "expression", "op": "sqrt", "args": [{ "kind": "integer", "value": "3" }] }] }] }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "1" }, { "kind": "integer", "value": "9" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "13" }, { "kind": "integer", "value": "9" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "D", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "rational", "numerator": "47", "denominator": "2" }, { "kind": "expression", "op": "add", "args": [{ "kind": "integer", "value": "9" }, { "kind": "expression", "op": "mul", "args": [{ "kind": "rational", "numerator": "7", "denominator": "2" }, { "kind": "expression", "op": "sqrt", "args": [{ "kind": "integer", "value": "3" }] }] }] }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "E", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "20" }, { "kind": "integer", "value": "9" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "F", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "26" }, { "kind": "integer", "value": "9" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "k1a", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "4" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "k1b", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "13" }, { "kind": "integer", "value": "4" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "k1c", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "13" }, { "kind": "integer", "value": "7" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "k1d", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "7" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "k2a", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "15" }, { "kind": "integer", "value": "4" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "k2b", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "28" }, { "kind": "integer", "value": "4" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "k2c", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "28" }, { "kind": "integer", "value": "7" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "k2d", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "15" }, { "kind": "integer", "value": "7" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "k3a", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "k3b", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "13" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "k3c", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "13" }, { "kind": "integer", "value": "3" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "k3d", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "3" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "k4a", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "15" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "k4b", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "28" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "k4c", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "28" }, { "kind": "integer", "value": "3" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "k4d", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "15" }, { "kind": "integer", "value": "3" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "t1", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "rational", "numerator": "13", "denominator": "2" }, { "kind": "rational", "numerator": "11", "denominator": "2" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "t2", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "rational", "numerator": "43", "denominator": "2" }, { "kind": "rational", "numerator": "11", "denominator": "2" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "t3", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "rational", "numerator": "13", "denominator": "2" }, { "kind": "rational", "numerator": "3", "denominator": "2" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "t4", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "rational", "numerator": "43", "denominator": "2" }, { "kind": "rational", "numerator": "3", "denominator": "2" }] }, "outputType": "POINT", "factRole": "GIVEN" }
+    ]
+  },
+  "displayPoints": ["A", "B", "C", "D", "E", "F", "k1a", "k1b", "k1c", "k1d", "k2a", "k2b", "k2c", "k2d", "k3a", "k3b", "k3c", "k3d", "k4a", "k4b", "k4c", "k4d", "t1", "t2", "t3", "t4"],
+  "hiddenPointNames": ["k1a", "k1b", "k1c", "k1d", "k2a", "k2b", "k2c", "k2d", "k3a", "k3b", "k3c", "k3d", "k4a", "k4b", "k4c", "k4d", "t1", "t2", "t3", "t4"],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    { "id": "sAB", "refs": ["A", "B"] }, { "id": "sBC", "refs": ["B", "C"] }, { "id": "sCA", "refs": ["C", "A"] },
+    { "id": "sDE", "refs": ["D", "E"] }, { "id": "sEF", "refs": ["E", "F"] }, { "id": "sFD", "refs": ["F", "D"] },
+    { "id": "c1a", "refs": ["k1a", "k1b"] }, { "id": "c1b", "refs": ["k1b", "k1c"] }, { "id": "c1c", "refs": ["k1c", "k1d"] }, { "id": "c1d", "refs": ["k1d", "k1a"] },
+    { "id": "c2a", "refs": ["k2a", "k2b"] }, { "id": "c2b", "refs": ["k2b", "k2c"] }, { "id": "c2c", "refs": ["k2c", "k2d"] }, { "id": "c2d", "refs": ["k2d", "k2a"] },
+    { "id": "c3a", "refs": ["k3a", "k3b"] }, { "id": "c3b", "refs": ["k3b", "k3c"] }, { "id": "c3c", "refs": ["k3c", "k3d"] }, { "id": "c3d", "refs": ["k3d", "k3a"] },
+    { "id": "c4a", "refs": ["k4a", "k4b"] }, { "id": "c4b", "refs": ["k4b", "k4c"] }, { "id": "c4c", "refs": ["k4c", "k4d"] }, { "id": "c4d", "refs": ["k4d", "k4a"] }
+  ],
+  "planeMarks": {
+    "angles": [
+      { "id": "angleB", "refs": ["A", "B", "C"], "value": 60, "arcs": 1, "equalGroup": 1, "noLabel": true, "style": "ARC", "factRole": "GIVEN" },
+      { "id": "angleE", "refs": ["D", "E", "F"], "value": 60, "arcs": 1, "equalGroup": 1, "noLabel": true, "style": "ARC", "factRole": "GIVEN" }
+    ],
+    "expressionLabels": [
+      { "id": "labBC", "ownerSegment": "sBC", "text": "12", "unit": "cm" },
+      { "id": "labEF", "ownerSegment": "sEF", "text": "6", "unit": "cm" },
+      { "id": "labDE", "ownerSegment": "sDE", "text": "7", "unit": "cm" }
+    ],
+    "textLabels": [
+      { "id": "card1", "at": "t1", "text": "AC=14 cm", "labelKind": "TEXT", "factRole": "GIVEN" },
+      { "id": "card2", "at": "t2", "text": "DF=7 cm", "labelKind": "TEXT", "factRole": "GIVEN" },
+      { "id": "card3", "at": "t3", "text": "∠A=∠D", "labelKind": "TEXT", "factRole": "GIVEN" },
+      { "id": "card4", "at": "t4", "text": "AB=14 cm", "labelKind": "TEXT", "factRole": "GIVEN" }
+    ]
+  },
+  "caption": "서로 다른 크기의 삼각형 ABC, DEF의 알려진 변 세 길이와 같은 각 표시, 아래의 조건 카드 네 장을 원본과 같이 배치한 문제 그림.",
+  "accessibilityDescription": "BC 12cm와 EF 6cm, ED 7cm를 표시하고 ∠B와 ∠E에 같은 크기의 각 표시를 했다. 아래 네 개의 테두리만 있는 카드에는 AC=14cm, DF=7cm, ∠A=∠D, AB=14cm가 적혀 있다.",
+  "sourceQuote": "카드 4장 중에서 한 장을 뽑아서 카드에 적힌 조건을 추가할 때",
+  "sourceConditions": [
+    { "id": "c1", "condition": "BC=12cm, EF=6cm, ED=7cm, 두 삼각형의 외곽은 칠하지 않은 단일 선", "mappedTo": ["sAB", "sBC", "sCA", "sDE", "sEF", "sFD", "labBC", "labEF", "labDE"] },
+    { "id": "c2", "condition": "∠B=∠E: 두 각 모두 60도인 대표 작도와 같은 한 겹 호", "mappedTo": ["angleB", "angleE"] },
+    { "id": "c3", "condition": "네 장 카드와 원본 조건 AC=14cm, DF=7cm, ∠A=∠D, AB=14cm", "mappedTo": ["c1a", "c1b", "c1c", "c1d", "c2a", "c2b", "c2c", "c2d", "c3a", "c3b", "c3c", "c3d", "c4a", "c4b", "c4c", "c4d", "card1", "card2", "card3", "card4"] }
+  ],
+  "newVisualInformation": [
+    "원본의 두 삼각형의 같은 각 표시와 알려진 세 길이를 모두 실제 작도 필드에 남긴다.",
+    "네 장의 조건 카드를 테두리와 실제 글자로 각각 분리하여 복원하되 정답 카드만 강조하지 않는다.",
+    "기존 문제 SVG의 불필요한 두 삼각형 면 채움과 카드 내부 배경색을 제거한다."
+  ],
+  "coordinateCanvas": { "width": 720, "height": 560 }
+}
