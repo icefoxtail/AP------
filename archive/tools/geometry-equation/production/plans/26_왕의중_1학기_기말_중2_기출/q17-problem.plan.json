@@ -1,0 +1,148 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -5,
+      11,
+      -2,
+      12
+    ],
+    "curves": [
+      {
+        "id": "l",
+        "kind": "LINE",
+        "coefficients": [
+          "3",
+          "1"
+        ],
+        "domain": [
+          "-5",
+          "10"
+        ],
+        "color": "BLUE",
+        "style": "SOLID",
+        "label": {
+          "hidden": true,
+          "reason": "ANSWER",
+          "name": "l"
+        }
+      },
+      {
+        "id": "m",
+        "kind": "LINE",
+        "coefficients": [
+          "9",
+          "-1"
+        ],
+        "domain": [
+          "-3",
+          "11"
+        ],
+        "color": "WARM",
+        "style": "SOLID",
+        "label": {
+          "hidden": true,
+          "reason": "ANSWER",
+          "name": "m"
+        }
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-3",
+        "9"
+      ],
+      "y": [
+        "3",
+        "9"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "3",
+          "y": "6",
+          "unnamed": true
+        },
+        {
+          "id": "Ax",
+          "x": "3",
+          "y": "0",
+          "unnamed": true
+        },
+        {
+          "id": "By",
+          "x": "0",
+          "y": "6",
+          "unnamed": true
+        }
+      ],
+      "guides": [
+        {
+          "id": "guideP",
+          "from": "P",
+          "axis": "BOTH"
+        }
+      ],
+      "callouts": [
+        {
+          "id": "labelA",
+          "point": "Ax",
+          "text": "a",
+          "direction": "S"
+        },
+        {
+          "id": "labelB",
+          "point": "By",
+          "text": "b",
+          "direction": "W"
+        }
+      ]
+    }
+  },
+  "caption": "두 실선 l과 m은 각각 x축의 −3과 y축의 3, x축의 9와 y축의 9를 지난다. 교점에서 두 좌표축으로 내린 점선과 미지수 a, b를 표시한다.",
+  "accessibilityDescription": "원본과 같은 좌표평면에서 직선 l은 오른쪽 위로, 직선 m은 오른쪽 아래로 향하는 실선이다. l의 x절편은 −3, y절편은 3이고 m의 x절편과 y절편은 각각 9이다. 교점에서 x축과 y축으로 내려간 점선의 축 끝에 각각 a와 b가 있으며 실제 값은 노출하지 않는다.",
+  "sourceQuote": "오른쪽 그림과 같은 두 직선 $l,m$의 교점의 좌표 $(a,b)$가 해가 되는 연립방정식은?",
+  "sourceConditions": [
+    {
+      "id": "interceptsL",
+      "condition": "원본 PNG의 직선 l은 (-3,0), (0,3)을 지나는 상승 실선이며 문제 그림에는 식을 밝히지 않는다.",
+      "mappedTo": [
+        "l"
+      ]
+    },
+    {
+      "id": "interceptsM",
+      "condition": "원본 PNG의 직선 m은 (0,9), (9,0)을 지나는 하강 실선이다. 원본에 점선인 것은 두 축으로 향한 안내선뿐이다.",
+      "mappedTo": [
+        "m"
+      ]
+    },
+    {
+      "id": "intersection",
+      "condition": "두 직선의 교점에서 각각 x축과 y축으로 점선 안내선을 그으며, 그 축 위치를 a와 b로 표시한다. 수치 좌표는 문제 그림에서 감춘다.",
+      "mappedTo": [
+        "P",
+        "Ax",
+        "By",
+        "guideP",
+        "labelA",
+        "labelB"
+      ]
+    },
+    {
+      "id": "sourceTicks",
+      "condition": "원본 PNG에 표시된 절편 눈금 -3, 3, 9를 유지한다.",
+      "mappedTo": [
+        "graphPlan.axisTickValues"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본 PNG에서는 실선인 m을 현행 연결 SVG 및 JS imageAlt가 점선으로 취급한 불일치를 원본 기준으로 바로잡아 m을 실제 실선 필드로 지정한다.",
+    "두 직선의 식과 교점 (3,6)의 숫자 좌표를 문제 그림에 숨기되, 축 -3·3·9 눈금과 교점의 a·b 점선 안내를 실제 노드·guide 필드로 표시한다.",
+    "전체 도형 또는 바탕의 면 채움은 추가하지 않는다."
+  ]
+}
