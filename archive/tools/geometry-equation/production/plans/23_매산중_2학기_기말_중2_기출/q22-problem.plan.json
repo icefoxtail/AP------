@@ -1,0 +1,48 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": { "text": "① 직각삼각형" },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+          "nodes": [
+            { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+            { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "4" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+            { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "4" }, { "kind": "integer", "value": "3" }] }, "outputType": "POINT", "factRole": "GIVEN" }
+          ]
+        },
+        "coordinateCanvas": { "width": 384, "height": 340 },
+        "hiddenPointNames": ["A", "B", "C"],
+        "displayPoints": ["A", "B", "C"],
+        "displaySegments": [
+          { "id": "sAB", "refs": ["A", "B"] }, { "id": "sBC", "refs": ["B", "C"] }, { "id": "sCA", "refs": ["C", "A"] }
+        ],
+        "rightAngles": [{ "id": "raB", "refs": ["A", "B", "C"] }],
+        "planeMarks": { "dimensions": [
+          { "id": "base", "from": "A", "to": "B", "label": "x", "unit": "cm", "side": "BELOW" },
+          { "id": "height", "from": "B", "to": "C", "label": "3", "unit": "cm", "side": "RIGHT" },
+          { "id": "hyp", "from": "A", "to": "C", "label": "5", "unit": "cm", "side": "ABOVE" }
+        ] }
+      }
+    },
+    {
+      "caption": { "text": "② 반지름 6 cm인 원뿔" },
+      "plan": {
+        "capability": "solid-figure-v1",
+        "unit": "cm",
+        "solids": [{ "kind": "CONE", "radius": 6, "height": 8 }],
+        "dims": [{ "radius": "bottom" }]
+      }
+    }
+  ],
+  "caption": "매산중 서답형 2의 두 원문 그림. 직각삼각형의 밑변 x는 아직 구하지 않고, 원뿔에는 문제에서 주어진 밑면 반지름 6 cm만 표시한다.",
+  "accessibilityDescription": "① 빗변 5 cm, 높이 3 cm, 밑변 x cm인 직각삼각형으로 직각 표식이 있다. ② 밑면 반지름 6 cm인 원뿔에 밑원과 양쪽 모선이 보이고 높이나 모선의 정답 수치는 표시되지 않는다.",
+  "sourceConditions": [
+    { "id": "triangle", "condition": "직각삼각형에서 빗변 5 cm, 한 변 3 cm, 다른 변 x cm이다.", "mappedTo": "panels:0.mathPlan.nodes:A,B,C;panels:0.rightAngles:raB;panels:0.planeMarks.dimensions:base,height,hyp" },
+    { "id": "cone", "condition": "원뿔의 밑면 반지름은 6 cm이고 부피는 96π cm³이다. 높이와 모선의 길이는 문제 그림에서 숨긴다.", "mappedTo": "panels:1.solids:CONE;panels:1.dims:radius" }
+  ],
+  "newVisualInformation": ["원문의 두 수준별 문제를 독립 패널로 분리하고 패널의 흰 바탕과 무채움 원칙을 지킨다.", "원뿔의 모선·높이 답 10, 8을 문제 그림에 노출하지 않는다."]
+}

@@ -1,0 +1,224 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "36"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-15"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "MIDPOINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G",
+        "op": "CENTROID",
+        "inputs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G2",
+        "op": "CENTROID",
+        "inputs": [
+          "G",
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "pointNames": {
+    "G2": "G′"
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "M",
+    "G",
+    "G2"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAM",
+      "refs": [
+        "A",
+        "M"
+      ],
+      "emphasis": "BOLD"
+    },
+    {
+      "id": "sBG",
+      "refs": [
+        "B",
+        "G"
+      ]
+    },
+    {
+      "id": "sGC",
+      "refs": [
+        "G",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dAM",
+        "from": "A",
+        "to": "M",
+        "label": "36",
+        "unit": "cm",
+        "side": "RIGHT",
+        "offset": "AUTO"
+      },
+      {
+        "id": "dAG",
+        "from": "A",
+        "to": "G",
+        "label": "24",
+        "unit": "cm",
+        "side": "LEFT"
+      },
+      {
+        "id": "dGG2",
+        "from": "G",
+        "to": "G2",
+        "label": "8",
+        "unit": "cm",
+        "side": "LEFT"
+      },
+      {
+        "id": "dAG2",
+        "from": "A",
+        "to": "G2",
+        "label": "32",
+        "unit": "cm",
+        "side": "RIGHT",
+        "offset": "AUTO"
+      }
+    ]
+  },
+  "caption": "두 무게중심 G, G′은 중선 AM 위에 있다. AG=24 cm, GG′=8 cm이므로 AG′=32 cm이다.",
+  "accessibilityDescription": "중선 AM이 36 cm인 삼각형 ABC. 첫 무게중심 G와 삼각형 GBC의 무게중심 G′이 A, G, G′, M 순으로 중선 위에 표시된다.",
+  "sourceConditions": [
+    {
+      "id": "given",
+      "condition": "AM=36 cm이고 M은 BC의 중점이다.",
+      "mappedTo": "mathPlan.nodes:A,B,C,M; displaySegments:sAM; planeMarks.dimensions:dAM"
+    },
+    {
+      "id": "first",
+      "condition": "G는 삼각형 ABC의 무게중심으로 AG:GM=2:1이다.",
+      "mappedTo": "mathPlan.nodes:G; planeMarks.dimensions:dAG"
+    },
+    {
+      "id": "second",
+      "condition": "G′은 삼각형 GBC의 무게중심으로 GG′:G′M=2:1이다.",
+      "mappedTo": "mathPlan.nodes:G2; pointNames:G2; planeMarks.dimensions:dGG2,dAG2"
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 G와 G′을 중선 위 정확한 순서와 길이비로 표시한다.",
+    "별도의 삼각형 면 채움 없이 중선과 길이를 보여준다."
+  ]
+}

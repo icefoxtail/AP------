@@ -1,0 +1,44 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      { "id": "O", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "10" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "B", "op": "POLAR_POINT", "inputs": ["O", "A"], "args": { "length": { "kind": "integer", "value": "10" }, "angleDeg": { "kind": "integer", "value": "72" }, "turn": "CCW" }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "C", "op": "POLAR_POINT", "inputs": ["O", "A"], "args": { "length": { "kind": "integer", "value": "10" }, "angleDeg": { "kind": "integer", "value": "144" }, "turn": "CCW" }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "D", "op": "POLAR_POINT", "inputs": ["O", "A"], "args": { "length": { "kind": "integer", "value": "10" }, "angleDeg": { "kind": "integer", "value": "216" }, "turn": "CCW" }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "E", "op": "POLAR_POINT", "inputs": ["O", "A"], "args": { "length": { "kind": "integer", "value": "10" }, "angleDeg": { "kind": "integer", "value": "288" }, "turn": "CCW" }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" }
+    ]
+  },
+  "displayPoints": ["O", "A", "B", "C", "D", "E"],
+  "hiddenPointNames": ["O"],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    { "id": "sAB", "refs": ["A", "B"], "arrow": "END" },
+    { "id": "sBC", "refs": ["B", "C"] },
+    { "id": "sCD", "refs": ["C", "D"] },
+    { "id": "sDE", "refs": ["D", "E"] },
+    { "id": "sEA", "refs": ["E", "A"] }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "textLabels": [
+      { "id": "currentPosition", "at": "A", "text": "P", "labelKind": "TEXT", "anchor": "NE", "factRole": "GIVEN" }
+    ]
+  },
+  "caption": "정오각형 ABCDE의 꼭짓점 A에 점 P가 있고 화살표는 A에서 B로 가는 반시계 방향을 가리킨다.",
+  "accessibilityDescription": "꼭짓점 A, B, C, D, E가 반시계 방향으로 놓인 정오각형. 점 P는 A에서 출발하며 A에서 B로 향하는 화살표가 있다.",
+  "sourceConditions": [
+    { "id": "pentagon", "condition": "정오각형의 꼭짓점은 반시계 방향으로 A, B, C, D, E이다.", "mappedTo": "mathPlan.nodes:B,C,D,E; displaySegments:sAB,sBC,sCD,sDE,sEA" },
+    { "id": "start", "condition": "점 P는 꼭짓점 A에서 출발한다.", "mappedTo": "planeMarks.textLabels:currentPosition" },
+    { "id": "direction", "condition": "주사위 눈의 합만큼 시계 반대 방향으로 움직인다.", "mappedTo": "displaySegments:sAB.arrow=END" }
+  ],
+  "newVisualInformation": ["정오각형 내부의 불필요한 파란 면 채움은 생략한다.", "문제 그림에는 정답이 되는 경우의 수나 최종 이동 횟수를 표시하지 않는다."]
+}

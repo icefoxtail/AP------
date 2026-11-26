@@ -1,0 +1,227 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "9"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "MIDPOINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G",
+        "op": "CENTROID",
+        "inputs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G2",
+        "op": "CENTROID",
+        "inputs": [
+          "G",
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "pointNames": {
+    "G2": "G′"
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "G",
+    "G2"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sBG",
+      "refs": [
+        "B",
+        "G"
+      ]
+    },
+    {
+      "id": "sGC",
+      "refs": [
+        "G",
+        "C"
+      ]
+    },
+    {
+      "id": "sBG2",
+      "refs": [
+        "B",
+        "G2"
+      ]
+    },
+    {
+      "id": "sG2D",
+      "refs": [
+        "G2",
+        "D"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "regions": [
+      {
+        "id": "smallRegion",
+        "fill": "LIGHT",
+        "label": "5",
+        "unit": "cm^2",
+        "labelPlacement": "AUTO_LEADER",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "polygon": [
+              "B",
+              "G2",
+              "D"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "두 번의 무게중심을 지나면 밑변 높이가 원래 높이의 1/9이 된다. 넓이 5 cm²인 삼각형 G′BD는 ABC의 1/18이므로 ABC는 90 cm²이다.",
+  "accessibilityDescription": "삼각형 ABC의 중선 AD 위에 무게중심 G와 두 번째 무게중심 G′이 있다. BD가 BC의 절반이고 넓이 5 cm²인 작은 삼각형 G′BD만 연한 회색으로 강조했다.",
+  "sourceConditions": [
+    {
+      "id": "firstCentroid",
+      "condition": "D는 BC의 중점이고 G는 삼각형 ABC의 무게중심이다.",
+      "mappedTo": "mathPlan.nodes:D,G; displaySegments:sAD"
+    },
+    {
+      "id": "secondCentroid",
+      "condition": "G′은 삼각형 GBC의 무게중심이다.",
+      "mappedTo": "mathPlan.nodes:G2; pointNames:G2; displaySegments:sBG2,sG2D"
+    },
+    {
+      "id": "givenArea",
+      "condition": "삼각형 G′BD의 넓이는 5 cm²이다.",
+      "mappedTo": "planeMarks.regions:smallRegion"
+    }
+  ],
+  "newVisualInformation": [
+    "원문의 작은 삼각형 G′BD만 수치와 함께 표시한다.",
+    "넓이 확인에 필요한 영역 외의 삼각형 전체는 무채움으로 둔다."
+  ]
+}

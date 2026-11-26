@@ -1,0 +1,47 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "12" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "13" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "D", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "4" }, { "kind": "integer", "value": "12" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "lineBC", "op": "LINE_THROUGH", "inputs": ["B", "C"], "args": {}, "outputType": "LINE", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "H", "op": "PERPENDICULAR_FOOT", "inputs": ["D", "lineBC"], "args": {}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" }
+    ]
+  },
+  "displayPoints": ["A", "B", "C", "D", "H"],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    { "id": "sAB", "refs": ["A", "B"] },
+    { "id": "sBC", "refs": ["B", "C"] },
+    { "id": "sCD", "refs": ["C", "D"] },
+    { "id": "sDA", "refs": ["D", "A"] },
+    { "id": "sDH", "refs": ["D", "H"], "dashed": true }
+  ],
+  "rightAngles": [
+    { "id": "rightA", "refs": ["B", "A", "D"] },
+    { "id": "rightB", "refs": ["A", "B", "C"] },
+    { "id": "rightH", "refs": ["D", "H", "C"] }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      { "id": "dAB", "from": "A", "to": "B", "label": "12", "unit": "cm", "side": "LEFT" },
+      { "id": "dAD", "from": "A", "to": "D", "label": "4", "unit": "cm", "side": "ABOVE" },
+      { "id": "dBC", "from": "B", "to": "C", "label": "13", "unit": "cm", "side": "BELOW" },
+      { "id": "dHC", "from": "H", "to": "C", "label": "9", "unit": "cm", "side": "BELOW", "offset": "AUTO" },
+      { "id": "dDC", "from": "D", "to": "C", "label": "x", "unit": "cm", "side": "RIGHT" }
+    ]
+  },
+  "caption": "사다리꼴의 D에서 BC로 수선 DH를 내리면 HC는 9 cm이고 DC는 직각삼각형의 빗변 15 cm이다.",
+  "accessibilityDescription": "윗변 4 cm, 아랫변 13 cm, 왼쪽 높이 12 cm의 사다리꼴. D에서 BC로 내린 점선 수선 DH와 직각 표시, HC가 9 cm임을 나타낸다.",
+  "sourceConditions": [
+    { "id": "base", "condition": "AD=4 cm, BC=13 cm, AB=12 cm이며 AB는 양 밑변에 수직이다.", "mappedTo": "mathPlan.nodes:A,B,C,D; planeMarks.dimensions:dAD,dBC,dAB; rightAngles:rightA,rightB" },
+    { "id": "question", "condition": "구할 길이는 DC=x cm이다.", "mappedTo": "displaySegments:sCD; planeMarks.dimensions:dDC" },
+    { "id": "construction", "condition": "D에서 BC로 내린 수선의 발 H는 HC=13-4=9 cm를 만든다.", "mappedTo": "mathPlan.nodes:lineBC,H; displaySegments:sDH; rightAngles:rightH; planeMarks.dimensions:dHC" }
+  ],
+  "newVisualInformation": ["점선 수선 DH, 직각 표시와 HC 9 cm를 실제 도식으로 보여준다.", "사다리꼴 내부의 불필요한 면 채움은 하지 않는다."]
+}
