@@ -1,0 +1,45 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "HISTOGRAM",
+    "boundaries": [
+      "0.5",
+      "1.5",
+      "2.5",
+      "3.5",
+      "4.5",
+      "5.5"
+    ],
+    "series": [
+      {
+        "frequencies": [
+          1,
+          2,
+          4,
+          2,
+          1
+        ]
+      }
+    ],
+    "total": 10,
+    "xTitle": "아이폰 평점",
+    "yTitle": "도수(명)",
+    "showValues": true,
+    "grid": true
+  },
+  "caption": "아이폰 평점 1점부터 5점까지의 도수 1, 2, 4, 2, 1을 보이는 문제 그래프.",
+  "accessibilityDescription": "평점 1점은 1명, 2점은 2명, 3점은 4명, 4점은 2명, 5점은 1명이다. 분산은 쓰지 않았다.",
+  "sourceConditions": [
+    {
+      "id": "bar-counts",
+      "condition": "[서답형 4] [서술형] [수준별 4-(①)] 다음 자료의 분산을 구하시오. (4점) $6, 2, 5, 3, 9$ [수준별 4-(②)] 다음은 아이폰을 인터넷에서 구매하려고 한다. 이 아이폰의 평점을 조사하여 만든 자료이다. 분산을 구하시오. (5점) 원본 이미지의 도수는 1,2,4,2,1명이다.",
+      "mappedTo": [
+        "chart.boundaries",
+        "chart.series[0].frequencies"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본 막대그래프의 다섯 범주, 순서, 도수와 축 라벨을 대응시키되 문제의 정답인 분산은 표시하지 않았다."
+  ]
+}

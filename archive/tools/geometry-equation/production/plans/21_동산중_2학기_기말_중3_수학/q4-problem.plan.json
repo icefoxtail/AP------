@@ -1,0 +1,252 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "27",
+            "denominator": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "27",
+            "denominator": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "rational",
+            "numerator": "27",
+            "denominator": "2"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "180"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "rational",
+            "numerator": "27",
+            "denominator": "2"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "140"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "rational",
+            "numerator": "27",
+            "denominator": "2"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "40"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "27",
+            "denominator": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "AD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "D20",
+        "refs": [
+          "A",
+          "D",
+          "C"
+        ],
+        "value": 20,
+        "factRole": "GIVEN",
+        "style": "ARC"
+      }
+    ],
+    "parallels": [
+      {
+        "id": "ABCD-parallel",
+        "count": 1,
+        "segments": [
+          "AB",
+          "CD"
+        ]
+      }
+    ],
+    "arcs": [
+      {
+        "id": "arcDB-3pi",
+        "circle": "circ",
+        "center": "O",
+        "from": "D",
+        "to": "B",
+        "side": "MINOR",
+        "label": "3pi",
+        "labelKind": "MATH"
+      },
+      {
+        "id": "arcCD-unknown",
+        "circle": "circ",
+        "center": "O",
+        "from": "C",
+        "to": "D",
+        "side": "MINOR",
+        "label": "x",
+        "labelKind": "MATH"
+      }
+    ]
+  },
+  "caption": "21년 동산중 기말 4번 문제에서 주어진 원본에 표시된 원과 선분, 접선·각도·길이의 관계.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "그림에서 $\\overline{\\mathrm{AB}}$는 원 $\\mathrm{O}$의 지름이고 $\\overline{\\mathrm{AB}} // \\overline{\\mathrm{CD}}$이다. $\\angle\\mathrm{ADC}=20^\\circ$, $\\overgroup{\\mathrm{DB}}=3\\pi$일 때, $\\overgroup{\\mathrm{CD}}$의 길이를 구하면?(4점)",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "displayCircles",
+        "planeMarks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본 기출 그림과 주어진 점·선분·표식·라벨을 재대조하고 해설에서만 얻는 값은 문제 그림에 표시하지 않았다."
+  ],
+  "accessibilityDescription": "원본에 표시된 원과 선분, 접선·각도·길이의 관계. 구할 값은 표시하지 않았다."
+}

@@ -261,7 +261,31 @@
           "E"
         ],
         "value": 90,
-        "factRole": "GIVEN"
+        "factRole": "GIVEN",
+        "style": "ARC"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "AB-4",
+        "from": "A",
+        "to": "B",
+        "label": "4",
+        "side": "LEFT"
+      },
+      {
+        "id": "AD-6",
+        "from": "A",
+        "to": "D",
+        "label": "6",
+        "side": "ABOVE"
+      },
+      {
+        "id": "EC-x",
+        "from": "E",
+        "to": "C",
+        "label": "x",
+        "side": "BELOW"
       }
     ]
   },
@@ -281,5 +305,16 @@
   ],
   "newVisualInformation": [
     "접점과 같은 접선 길이, 직각삼각형을 구별한다."
+  ],
+  "accessibilityDescription": "동산중 7번 해설에 필요한 원·도형과 관계를 표시한다.",
+  "rightAngles": [
+    {
+      "id": "rC",
+      "refs": [
+        "D",
+        "C",
+        "B"
+      ]
+    }
   ]
 }

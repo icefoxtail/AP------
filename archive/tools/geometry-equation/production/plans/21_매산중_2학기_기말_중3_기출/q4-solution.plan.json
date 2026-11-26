@@ -239,7 +239,8 @@
           "B"
         ],
         "value": 20,
-        "factRole": "GIVEN"
+        "factRole": "GIVEN",
+        "style": "ARC"
       },
       {
         "id": "P40",
@@ -250,7 +251,8 @@
         ],
         "value": 40,
         "label": "x",
-        "factRole": "CONCLUSION"
+        "factRole": "CONCLUSION",
+        "style": "ARC"
       }
     ],
     "arcs": [
@@ -262,7 +264,9 @@
         "to": "B",
         "side": "MINOR",
         "color": "BLUE",
-        "factRole": "GIVEN"
+        "factRole": "GIVEN",
+        "label": "k",
+        "labelKind": "MATH"
       },
       {
         "id": "arcCD",
@@ -272,7 +276,9 @@
         "to": "D",
         "side": "MINOR",
         "color": "BLUE",
-        "factRole": "GIVEN"
+        "factRole": "GIVEN",
+        "label": "k",
+        "labelKind": "MATH"
       }
     ]
   },
@@ -292,5 +298,6 @@
   ],
   "newVisualInformation": [
     "대응하는 각과 호를 구별하고 점·라벨을 겹치지 않게 배치한다."
-  ]
+  ],
+  "accessibilityDescription": "매산중 4번 해설에 필요한 원·도형과 관계를 표시한다."
 }

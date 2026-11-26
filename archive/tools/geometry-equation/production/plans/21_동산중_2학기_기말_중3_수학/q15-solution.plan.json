@@ -228,5 +228,66 @@
   ],
   "newVisualInformation": [
     "각 이등분선과 두 교차현 및 BD:DC를 구별한다."
-  ]
+  ],
+  "accessibilityDescription": "동산중 15번 해설에 필요한 원·도형과 관계를 표시한다.",
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "AB-9",
+        "from": "A",
+        "to": "B",
+        "label": "9",
+        "side": "LEFT"
+      },
+      {
+        "id": "AC-5",
+        "from": "A",
+        "to": "C",
+        "label": "5",
+        "side": "RIGHT"
+      },
+      {
+        "id": "DE-4",
+        "from": "D",
+        "to": "E",
+        "label": "4",
+        "side": "LEFT"
+      },
+      {
+        "id": "AD-x",
+        "from": "A",
+        "to": "D",
+        "label": "x",
+        "side": "RIGHT"
+      }
+    ],
+    "angles": [
+      {
+        "id": "bisector-left",
+        "refs": [
+          "B",
+          "A",
+          "D"
+        ],
+        "value": 39,
+        "style": "ARC",
+        "equalGroup": 1,
+        "arcs": 1,
+        "noLabel": true
+      },
+      {
+        "id": "bisector-right",
+        "refs": [
+          "D",
+          "A",
+          "C"
+        ],
+        "value": 39,
+        "style": "ARC",
+        "equalGroup": 1,
+        "arcs": 1,
+        "noLabel": true
+      }
+    ]
+  }
 }

@@ -1,0 +1,251 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-8"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-6"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-6"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-6"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "inner",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "H"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ",
+    "inner"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "OH",
+      "refs": [
+        "O",
+        "H"
+      ]
+    },
+    {
+      "id": "OA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [],
+    "regions": [
+      {
+        "id": "ring",
+        "fill": "LIGHT",
+        "pattern": "HATCH",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "loop": {
+              "start": "A",
+              "steps": [
+                {
+                  "to": "A",
+                  "arc": {
+                    "center": "O",
+                    "side": "FULL"
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "holes": [
+          {
+            "loop": {
+              "start": "H",
+              "steps": [
+                {
+                  "to": "H",
+                  "arc": {
+                    "center": "O",
+                    "side": "FULL"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "AB-16",
+        "from": "A",
+        "to": "B",
+        "label": "16",
+        "side": "BELOW"
+      }
+    ]
+  },
+  "caption": "21년 동산중 기말 9번 문제에서 주어진 원본에 표시된 원과 선분, 접선·각도·길이의 관계.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "그림은 중심이 같은 두 원에서 $\\overline{\\mathrm{AB}}$는 큰 원의 현이고 작은 원의 접선이다. $\\overline{\\mathrm{AB}}=16$일 때, 빗금친 부분의 넓이를 구하면?(4점)",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "displayCircles",
+        "planeMarks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본 기출 그림과 주어진 점·선분·표식·라벨을 재대조하고 해설에서만 얻는 값은 문제 그림에 표시하지 않았다."
+  ],
+  "accessibilityDescription": "원본에 표시된 원과 선분, 접선·각도·길이의 관계. 구할 값은 표시하지 않았다.",
+  "rightAngles": [
+    {
+      "id": "rH",
+      "refs": [
+        "A",
+        "H",
+        "O"
+      ]
+    }
+  ]
+}

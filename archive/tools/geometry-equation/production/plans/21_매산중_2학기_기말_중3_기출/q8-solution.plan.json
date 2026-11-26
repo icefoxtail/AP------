@@ -239,17 +239,8 @@
           "B"
         ],
         "value": 30,
-        "factRole": "DERIVED_INTERMEDIATE"
-      },
-      {
-        "id": "C90",
-        "refs": [
-          "A",
-          "C",
-          "B"
-        ],
-        "value": 90,
-        "factRole": "DERIVED_INTERMEDIATE"
+        "factRole": "DERIVED_INTERMEDIATE",
+        "style": "ARC"
       },
       {
         "id": "C60",
@@ -260,7 +251,8 @@
         ],
         "value": 60,
         "label": "x",
-        "factRole": "CONCLUSION"
+        "factRole": "CONCLUSION",
+        "style": "ARC"
       }
     ]
   },
@@ -280,5 +272,16 @@
   ],
   "newVisualInformation": [
     "접선과 지름, 이등변삼각형 PCB 및 직각을 구별한다."
+  ],
+  "accessibilityDescription": "매산중 8번 해설에 필요한 원·도형과 관계를 표시한다.",
+  "rightAngles": [
+    {
+      "id": "diameter-C",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    }
   ]
 }

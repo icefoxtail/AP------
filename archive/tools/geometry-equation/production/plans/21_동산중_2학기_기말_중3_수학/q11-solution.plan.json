@@ -203,7 +203,8 @@
           "O"
         ],
         "value": 35,
-        "factRole": "GIVEN"
+        "factRole": "GIVEN",
+        "style": "ARC"
       },
       {
         "id": "O110",
@@ -213,7 +214,19 @@
           "D"
         ],
         "value": 110,
-        "factRole": "DERIVED_INTERMEDIATE"
+        "factRole": "DERIVED_INTERMEDIATE",
+        "style": "ARC"
+      },
+      {
+        "id": "C-asked",
+        "refs": [
+          "A",
+          "C",
+          "D"
+        ],
+        "value": 55,
+        "label": "55",
+        "style": "ARC"
       }
     ]
   },
@@ -233,5 +246,6 @@
   ],
   "newVisualInformation": [
     "각과 대응 호를 구별하고 점·라벨의 여유를 둔다."
-  ]
+  ],
+  "accessibilityDescription": "동산중 11번 해설에 필요한 원·도형과 관계를 표시한다."
 }

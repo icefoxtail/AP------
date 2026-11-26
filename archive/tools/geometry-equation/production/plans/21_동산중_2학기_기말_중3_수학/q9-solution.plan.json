@@ -170,19 +170,7 @@
     }
   ],
   "planeMarks": {
-    "angles": [
-      {
-        "id": "H90",
-        "refs": [
-          "A",
-          "H",
-          "O"
-        ],
-        "value": 90,
-        "factRole": "DERIVED_INTERMEDIATE",
-        "style": "ARC"
-      }
-    ],
+    "angles": [],
     "regions": [
       {
         "id": "ring",
@@ -222,6 +210,15 @@
           }
         ]
       }
+    ],
+    "dimensions": [
+      {
+        "id": "AB-16",
+        "from": "A",
+        "to": "B",
+        "label": "16",
+        "side": "BELOW"
+      }
     ]
   },
   "caption": "중심이 같은 두 원에서 큰 원의 현 AB가 작은 원에 점 H에서 접하고, 두 원 사이의 부분에 빗금을 친 그림. 반지름 값은 예시이다.",
@@ -240,5 +237,16 @@
   ],
   "newVisualInformation": [
     "빗금 영역과 접점 H, 현의 반 8 및 직각을 구별한다."
+  ],
+  "accessibilityDescription": "동산중 9번 해설에 필요한 원·도형과 관계를 표시한다.",
+  "rightAngles": [
+    {
+      "id": "rH",
+      "refs": [
+        "A",
+        "H",
+        "O"
+      ]
+    }
   ]
 }
