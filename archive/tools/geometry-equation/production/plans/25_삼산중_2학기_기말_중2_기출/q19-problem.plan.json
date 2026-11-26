@@ -1,0 +1,45 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "4" }, { "kind": "integer", "value": "9" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "8" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "M", "op": "MIDPOINT", "inputs": ["A", "B"], "args": {}, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "N", "op": "MIDPOINT", "inputs": ["A", "C"], "args": {}, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "L", "op": "MIDPOINT", "inputs": ["B", "C"], "args": {}, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "G", "op": "CENTROID", "inputs": ["A", "B", "C"], "args": {}, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "Q", "op": "TRANSLATE_POINT", "inputs": ["G"], "args": { "dx": { "kind": "integer", "value": "8" }, "dy": { "kind": "integer", "value": "0" } }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "lAB", "op": "LINE_THROUGH", "inputs": ["A", "B"], "args": {}, "outputType": "LINE", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "lAC", "op": "LINE_THROUGH", "inputs": ["A", "C"], "args": {}, "outputType": "LINE", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "lDE", "op": "LINE_THROUGH", "inputs": ["G", "Q"], "args": {}, "outputType": "LINE", "factRole": "GIVEN" },
+      { "id": "D", "op": "LINE_INTERSECTION", "inputs": ["lAB", "lDE"], "args": {}, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "E", "op": "LINE_INTERSECTION", "inputs": ["lAC", "lDE"], "args": {}, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "P", "op": "MIDPOINT", "inputs": ["M", "N"], "args": {}, "outputType": "POINT", "factRole": "GIVEN" }
+    ]
+  },
+  "displayPoints": ["A", "B", "C", "M", "N", "L", "D", "E", "G", "P"],
+  "displaySegments": [
+    { "id": "sAB", "refs": ["A", "B"] },
+    { "id": "sAC", "refs": ["A", "C"] },
+    { "id": "sBC", "refs": ["B", "C"] },
+    { "id": "sAL", "refs": ["A", "L"] },
+    { "id": "sBN", "refs": ["B", "N"] },
+    { "id": "sCM", "refs": ["C", "M"] },
+    { "id": "sMN", "refs": ["M", "N"] },
+    { "id": "sDE", "refs": ["D", "E"] }
+  ],
+  "caption": "△ABC의 중점 M·N·L, 중선 AL, 무게중심 G와 G를 지나는 BC의 평행선 DE, MN과 AL의 교점 P",
+  "accessibilityDescription": "위쪽 A에서 아래 B와 C로 이어진 삼각형이다. M과 N은 양 옆 변의 중점, L은 밑변의 중점이다. AL·BN·CM은 G에서 만나며 MN은 P에서 AL과 교차한다. G를 지난 수평선 DE는 BC와 평행하다. 원본처럼 면 채움은 없다.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "G는 삼각형 ABC의 무게중심", "mappedTo": ["G", "sAL", "sBN", "sCM"] },
+    { "id": "c2", "condition": "G를 지나며 BC와 평행한 DE", "mappedTo": ["D", "E", "lDE", "sDE", "sBC"] },
+    { "id": "c3", "condition": "M과 N은 AB, AC의 중점", "mappedTo": ["M", "N", "sMN"] },
+    { "id": "c4", "condition": "P는 MN과 AL의 교점, L은 BC의 중점", "mappedTo": ["P", "L", "sMN", "sAL"] }
+  ],
+  "newVisualInformation": ["원본의 M·N·D·E·P·G·L 점과 모든 중선·평행 보조선을 보존하고 청록색 전체 삼각형 배경 채움은 제거한다."],
+  "sourceQuote": "○ $G$는 삼각형 $ABC$의 무게중심이다",
+  "coordinateCanvas": { "width": 720, "height": 560 }
+}
