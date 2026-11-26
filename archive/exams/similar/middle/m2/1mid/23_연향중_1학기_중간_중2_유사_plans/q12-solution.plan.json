@@ -1,0 +1,24 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "해집합",
+        "pieces": [
+          { "lo": null, "hi": { "value": "-4/9", "state": "OPEN" } }
+        ],
+        "integerPoints": { "range": ["-3", "0"] }
+      }
+    ]
+  },
+  "numberLineCaption": { "text": "부등식의 해와 정수해" },
+  "caption": "x는 -4/9보다 작으므로 경계 -4/9는 빈 원으로 나타낸다. 그 왼쪽 정수 중 가장 큰 것은 -1이다.",
+  "accessibilityDescription": "수직선에서 -4/9에 열린 점이 있고 왼쪽이 해집합으로 표시된다. -3, -2, -1은 해집합에 들어가는 정수이며 0은 들어가지 않는다.",
+  "sourceConditions": [
+    { "id": "ineq", "condition": "9x<-4, 따라서 x<-4/9", "mappedTo": ["numberLine.rows[0].pieces[0].hi"] },
+    { "id": "integer", "condition": "해집합에 들어가는 정수 중 최댓값을 찾는다", "mappedTo": ["numberLine.rows[0].integerPoints"] }
+  ],
+  "newVisualInformation": ["경계 -4/9의 열린 점과 x<-4/9 방향을 나타낸다", "해집합에 포함되는 인접 정수점을 표시해 최댓값 -1을 읽게 한다"]
+}
