@@ -167,7 +167,11 @@ window.questionBank = [
       "CC_COORDINATE_DISPLACEMENT"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_112_성분으로나타내어진평면벡터의크기_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "한 칸 1인 모눈과 a=(1,1), b=(2,1), c=(3,-1) 벡터",
+    "imageCaption": "한 칸 1인 모눈과 a=(1,1), b=(2,1), c=(3,-1) 벡터",
+    "imageSize": "full"
   },
   {
     "id": 5,

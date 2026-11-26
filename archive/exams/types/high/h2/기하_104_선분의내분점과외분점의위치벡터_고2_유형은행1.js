@@ -81,7 +81,11 @@ window.questionBank = [
     "templateKey": "TPL_GEO_PLANE_VECTOR_POSITION",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_104_선분의내분점과외분점의위치벡터_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "O에서 A·B로 향하는 위치벡터 a·b와 선분 AB의 순서 A-P-Q-B 삼등분",
+    "imageCaption": "O에서 A·B로 향하는 위치벡터 a·b와 선분 AB의 순서 A-P-Q-B 삼등분",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -251,7 +255,11 @@ window.questionBank = [
       "CC_PYTHAGOREAN_THEOREM"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_104_선분의내분점과외분점의위치벡터_고2_유형은행1/q6-problem.svg",
+    "imageAlt": "직각삼각형 OAB의 길이 4·3과 빗변 위 점 P",
+    "imageCaption": "직각삼각형 OAB의 길이 4·3과 빗변 위 점 P",
+    "imageSize": "full"
   },
   {
     "id": 7,
@@ -294,7 +302,11 @@ window.questionBank = [
       "CC_OBLIQUE_TRIANGLE_MEASURE"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_104_선분의내분점과외분점의위치벡터_고2_유형은행1/q7-problem.svg",
+    "imageAlt": "삼각형 ABC의 두 변 2·3과 끼인각 60°",
+    "imageCaption": "삼각형 ABC의 두 변 2·3과 끼인각 60°",
+    "imageSize": "full"
   },
   {
     "id": 8,

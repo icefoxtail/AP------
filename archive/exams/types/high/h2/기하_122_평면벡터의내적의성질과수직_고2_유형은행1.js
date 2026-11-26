@@ -90,7 +90,11 @@ window.questionBank = [
       "CC_TRIANGLE_AREA"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_122_평면벡터의내적의성질과수직_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "OA=5·OB=12의 직각삼각형에서 OP⊥AB인 수선의 발 P",
+    "imageCaption": "OA=5·OB=12의 직각삼각형에서 OP⊥AB인 수선의 발 P",
+    "imageSize": "full"
   },
   {
     "id": 3,

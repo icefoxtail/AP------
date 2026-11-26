@@ -137,6 +137,10 @@ window.questionBank = [
       "CC_POINT_TO_LINE_DISTANCE"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_117_벡터의합의크기의합의최대최소_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "한 변 8인 정삼각형 ABC와 AC·BC·l에 동시에 접하는 외부 원 O",
+    "imageCaption": "한 변 8인 정삼각형 ABC와 AC·BC·l에 동시에 접하는 외부 원 O",
+    "imageSize": "full"
   }
 ];

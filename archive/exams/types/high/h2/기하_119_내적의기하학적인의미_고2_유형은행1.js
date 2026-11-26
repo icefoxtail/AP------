@@ -43,7 +43,11 @@ window.questionBank = [
       "CC_MIDPOINT"
     ],
     "conditionKeys": [],
-    "integrationPattern": "REINTERPRETATION"
+    "integrationPattern": "REINTERPRETATION",
+    "image": "assets/images/기하_119_내적의기하학적인의미_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "밑변 AB=8이고 양쪽 밑각 A=B인 이등변삼각형",
+    "imageCaption": "밑변 AB=8이고 양쪽 밑각 A=B인 이등변삼각형",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -87,7 +91,11 @@ window.questionBank = [
       "CC_PYTHAGOREAN"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_119_내적의기하학적인의미_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "AB=5, BC=12이고 ∠B가 직각인 삼각형 ABC",
+    "imageCaption": "AB=5, BC=12이고 ∠B가 직각인 삼각형 ABC",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -175,7 +183,11 @@ window.questionBank = [
       "CC_PLANE_VECTOR"
     ],
     "conditionKeys": [],
-    "integrationPattern": "REINTERPRETATION"
+    "integrationPattern": "REINTERPRETATION",
+    "image": "assets/images/기하_119_내적의기하학적인의미_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "AB=3·BC=5인 삼각형 ABC와 두 벡터의 변",
+    "imageCaption": "AB=3·BC=5인 삼각형 ABC와 두 벡터의 변",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -219,7 +231,11 @@ window.questionBank = [
       "CC_CIRCLE_TANGENT_PROPERTY"
     ],
     "conditionKeys": [],
-    "integrationPattern": "REINTERPRETATION"
+    "integrationPattern": "REINTERPRETATION",
+    "image": "assets/images/기하_119_내적의기하학적인의미_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "AB=14인 삼각형의 내접원 중심 I, BC 접점 D 및 BD=6",
+    "imageCaption": "AB=14인 삼각형의 내접원 중심 I, BC 접점 D 및 BD=6",
+    "imageSize": "full"
   },
   {
     "id": 6,
@@ -264,7 +280,11 @@ window.questionBank = [
       "CC_PYTHAGOREAN"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_119_내적의기하학적인의미_고2_유형은행1/q6-problem.svg",
+    "imageAlt": "AB=10을 지름으로 하는 원과 원주점 P, 현 BP=6",
+    "imageCaption": "AB=10을 지름으로 하는 원과 원주점 P, 현 BP=6",
+    "imageSize": "full"
   },
   {
     "id": 7,
@@ -398,7 +418,11 @@ window.questionBank = [
       "CC_PYTHAGOREAN"
     ],
     "conditionKeys": [],
-    "integrationPattern": "REINTERPRETATION"
+    "integrationPattern": "REINTERPRETATION",
+    "image": "assets/images/기하_119_내적의기하학적인의미_고2_유형은행1/q9-problem.svg",
+    "imageAlt": "OA=2·OB=3, ∠OAP=∠OBP=90°인 사각형 OAPB",
+    "imageCaption": "OA=2·OB=3, ∠OAP=∠OBP=90°인 사각형 OAPB",
+    "imageSize": "full"
   },
   {
     "id": 10,
@@ -443,7 +467,11 @@ window.questionBank = [
       "CC_TANGENCY"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_119_내적의기하학적인의미_고2_유형은행1/q10-problem.svg",
+    "imageAlt": "한 변 6인 정삼각형과 내접원 O, BC의 접점 D 및 중선 AD",
+    "imageCaption": "한 변 6인 정삼각형과 내접원 O, BC의 접점 D 및 중선 AD",
+    "imageSize": "full"
   },
   {
     "id": 11,
@@ -488,6 +516,10 @@ window.questionBank = [
       "CC_PYTHAGOREAN"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_119_내적의기하학적인의미_고2_유형은행1/q11-problem.svg",
+    "imageAlt": "AB=AC=10·BC=12인 이등변삼각형과 내접원 중심 O",
+    "imageCaption": "AB=AC=10·BC=12인 이등변삼각형과 내접원 중심 O",
+    "imageSize": "full"
   }
 ];

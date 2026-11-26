@@ -43,7 +43,11 @@ window.questionBank = [
       "CC_LATTICE_POINTS_COORDINATES"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_099_두벡터로평면의모든벡터나타내기_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "한 칸 1인 정사각형 모눈 위의 O·A·B·P·Q와 세 유향벡터",
+    "imageCaption": "한 칸 1인 정사각형 모눈 위의 O·A·B·P·Q와 세 유향벡터",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -87,7 +91,11 @@ window.questionBank = [
       "CC_COORDINATE_DISPLACEMENT"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_099_두벡터로평면의모든벡터나타내기_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "합동 평행사변형 3×3 격자와 A·B·C·D·P·Q 및 AB·CD·PQ 유향벡터",
+    "imageCaption": "합동 평행사변형 3×3 격자와 A·B·C·D·P·Q 및 AB·CD·PQ 유향벡터",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -130,7 +138,11 @@ window.questionBank = [
       "CC_COORDINATE_DISPLACEMENT"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_099_두벡터로평면의모든벡터나타내기_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "정사각 모눈 위 오른쪽·위쪽 (1,1), (2,−1), (−3,3) 성분의 세 벡터",
+    "imageCaption": "정사각 모눈 위 오른쪽·위쪽 (1,1), (2,−1), (−3,3) 성분의 세 벡터",
+    "imageSize": "full"
   },
   {
     "id": 4,

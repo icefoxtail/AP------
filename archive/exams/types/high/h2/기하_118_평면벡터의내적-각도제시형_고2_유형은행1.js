@@ -43,7 +43,11 @@ window.questionBank = [
       "CC_MIDPOINT"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_118_평면벡터의내적-각도제시형_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "한 변 6인 정삼각형 ABC의 AC 중점 M과 선분 BM",
+    "imageCaption": "한 변 6인 정삼각형 ABC의 AC 중점 M과 선분 BM",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -87,7 +91,11 @@ window.questionBank = [
       "CC_PYTHAGOREAN"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_118_평면벡터의내적-각도제시형_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "∠B가 직각이고 AC=13, BC=5인 삼각형 ABC",
+    "imageCaption": "∠B가 직각이고 AC=13, BC=5인 삼각형 ABC",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -131,7 +139,11 @@ window.questionBank = [
       "CC_RIGHT_TRIANGLE"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_118_평면벡터의내적-각도제시형_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "직각삼각형 ABC, 빗변 BC의 중점 M, ∠MAC=x",
+    "imageCaption": "직각삼각형 ABC, 빗변 BC의 중점 M, ∠MAC=x",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -221,7 +233,11 @@ window.questionBank = [
       "CC_CIRCLE_CENTER_RADIUS"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_118_평면벡터의내적-각도제시형_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "원점 O에서 C(3,4) 중심 반지름 1인 원에 그은 접선 OB",
+    "imageCaption": "원점 O에서 C(3,4) 중심 반지름 1인 원에 그은 접선 OB",
+    "imageSize": "full"
   },
   {
     "id": 6,
@@ -354,7 +370,11 @@ window.questionBank = [
       "CC_MIDPOINT"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_118_평면벡터의내적-각도제시형_고2_유형은행1/q8-problem.svg",
+    "imageAlt": "한 변 4인 정사각형 ABCD와 세 변의 중점 P,Q,R",
+    "imageCaption": "한 변 4인 정사각형 ABCD와 세 변의 중점 P,Q,R",
+    "imageSize": "full"
   },
   {
     "id": 9,
@@ -398,7 +418,11 @@ window.questionBank = [
       "CC_PERPENDICULAR"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_118_평면벡터의내적-각도제시형_고2_유형은행1/q9-problem.svg",
+    "imageAlt": "포물선 y²=12x와 초점 F, 준선 d:x=-3, 점 P에서 준선까지 수선 PH",
+    "imageCaption": "포물선 y²=12x와 초점 F, 준선 d:x=-3, 점 P에서 준선까지 수선 PH",
+    "imageSize": "full"
   },
   {
     "id": 10,
@@ -444,7 +468,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_POSITIVE"
     ],
-    "integrationPattern": "INTERDEPENDENT"
+    "integrationPattern": "INTERDEPENDENT",
+    "image": "assets/images/기하_118_평면벡터의내적-각도제시형_고2_유형은행1/q10-problem.svg",
+    "imageAlt": "타원 x²/25+y²/9=1과 원 x²+y²=19의 1사분면 교점 P",
+    "imageCaption": "타원 x²/25+y²/9=1과 원 x²+y²=19의 1사분면 교점 P",
+    "imageSize": "full"
   },
   {
     "id": 11,
