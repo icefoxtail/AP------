@@ -661,7 +661,11 @@ window.questionBank = [
     "metaRationale": "인쇄 P68 Q05: 두 점의 내분점에서 원과 직선이 접하는 조건을 이용하여 a+b를 구하는 구조. 좌표와 내분비를 변형.",
     "solutionImage": "assets/images/백발백중_공통수학2_학평기출_P66-70_20261022_유사50/BV-BAKBAL-H-COM2-P68-Q05-T1-R3-solution.svg",
     "solutionImageAlt": "풀이 도형",
-    "solutionImageSize": "large"
+    "solutionImageSize": "large",
+    "image": "assets/images/백발백중_공통수학2_학평기출_P66-70_20261022_유사50/BV-BAKBAL-H-COM2-P68-Q05-T1-R3-problem.svg",
+    "imageAlt": "AB의 2:1 내분점 P가 선분 AB 위에 있음을 같은 간격의 세 조각으로 표시한다.",
+    "imageCaption": "AB의 2:1 내분점 P가 선분 AB 위에 있음을 같은 간격의 세 조각으로 표시한다.",
+    "imageSize": "full"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P68-Q05-S1-R3",

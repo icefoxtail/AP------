@@ -223,7 +223,11 @@ window.questionBank = [
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_풍덕중_1학기_중간_중3_유사2/q8-solution.svg",
+    "solutionImageAlt": "a=3−√2, b=1+√3, c=2, d=√10−1을 같은 눈금에서 비교하면 a<c<d<b이다.",
+    "solutionImageCaption": "a=3−√2, b=1+√3, c=2, d=√10−1을 같은 눈금에서 비교하면 a<c<d<b이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -503,7 +507,11 @@ window.questionBank = [
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_풍덕중_1학기_중간_중3_유사2/q18-solution.svg",
+    "solutionImageAlt": "−1<x<2에서는 x+1이 양수, x−2가 음수이므로 |x+1|+|x−2|=(x+1)+(2−x)=3이다.",
+    "solutionImageCaption": "−1<x<2에서는 x+1이 양수, x−2가 음수이므로 |x+1|+|x−2|=(x+1)+(2−x)=3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -581,7 +589,11 @@ window.questionBank = [
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_풍덕중_1학기_중간_중3_유사2/q21-solution.svg",
+    "solutionImageAlt": "A=3−√5≈0.764, B=1/2=0.5, C=√3−1≈0.732이므로 B<C<A이다.",
+    "solutionImageCaption": "A=3−√5≈0.764, B=1/2=0.5, C=√3−1≈0.732이므로 B<C<A이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,

@@ -236,7 +236,11 @@ window.questionBank = [
     "rpmPrimaryRecordId": "M3-RPM-005",
     "sourceQid": 5,
     "variationType": "STRICT_VARIANT",
-    "problemPlanRef": "archive/exams/similar/middle/m3/1mid/24_금당중_1학기_중간_중3_유사_plans/q05-problem.plan.json"
+    "problemPlanRef": "archive/exams/similar/middle/m3/1mid/24_금당중_1학기_중간_중3_유사_plans/q05-problem.plan.json",
+    "image": "assets/images/24_금당중_1학기_중간_중3_유사/q5-problem.svg",
+    "imageAlt": "수직선 위의 점 A를 중심으로 왼쪽의 P와 오른쪽의 Q를 잡은 부분 도식이다. 원문에 언급된 직각삼각형 ABC의 원래 그림 파일이 없어 삼각형은 재현하지 않았다.",
+    "imageCaption": "수직선 위의 점 A를 중심으로 왼쪽의 P와 오른쪽의 Q를 잡은 부분 도식이다. 원문에 언급된 직각삼각형 ABC의 원래 그림 파일이 없어 삼각형은 재현하지 않았다.",
+    "imageSize": "full"
   },
   {
     "id": 6,

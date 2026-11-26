@@ -64,7 +64,11 @@ window.questionBank = [
     "solutionImage": "assets/images/21_신흥중_2학기_기말_중2_기출/q1-solution.svg",
     "solutionImageAlt": "해설 그림: 점과 도형의 관계를 확인한다.",
     "solutionImageCaption": "중선 AD=12 cm인 삼각형이며, 그림의 삼각형 모양은 설명용 예시이다. 무게중심 G는 AD를 2 : 1로 나누므로 AG=8 cm, GD=4 cm이고 x+3y=8+3×4=20 cm이다. 따라서 답은 ⑤ 20 cm이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "image": "assets/images/21_신흥중_2학기_기말_중2_기출/q1-problem.svg",
+    "imageAlt": "삼각형의 밑변 중점에 이은 중선과 무게중심이 보이며 전체 중선 길이는 12 cm이다.",
+    "imageCaption": "삼각형의 밑변 중점에 이은 중선과 무게중심이 보이며 전체 중선 길이는 12 cm이다.",
+    "imageSize": "full"
   },
   {
     "id": 2,

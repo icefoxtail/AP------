@@ -471,7 +471,11 @@ window.questionBank = [
     "rpmPrimaryRecordId": "M3-RPM-001",
     "sourceQid": 10,
     "variationType": "STRICT_VARIANT",
-    "problemPlanRef": "archive/exams/similar/middle/m3/1mid/24_이수중_1학기_중간_중3_유사_plans/q10-problem.plan.json"
+    "problemPlanRef": "archive/exams/similar/middle/m3/1mid/24_이수중_1학기_중간_중3_유사_plans/q10-problem.plan.json",
+    "solutionImage": "assets/images/24_이수중_1학기_중간_중3_유사/q10-solution.svg",
+    "solutionImageAlt": "한 변 1인 정사각형의 대각선은 √2이다. 수직선의 3에서 왼쪽으로 √2만큼 떨어진 점 E의 좌표는 3−√2≈1.586이다.",
+    "solutionImageCaption": "한 변 1인 정사각형의 대각선은 √2이다. 수직선의 3에서 왼쪽으로 √2만큼 떨어진 점 E의 좌표는 3−√2≈1.586이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -566,7 +570,11 @@ window.questionBank = [
     "rpmPrimaryRecordId": "M3-RPM-007",
     "sourceQid": 12,
     "variationType": "STRICT_VARIANT",
-    "problemPlanRef": "archive/exams/similar/middle/m3/1mid/24_이수중_1학기_중간_중3_유사_plans/q12-problem.plan.json"
+    "problemPlanRef": "archive/exams/similar/middle/m3/1mid/24_이수중_1학기_중간_중3_유사_plans/q12-problem.plan.json",
+    "solutionImage": "assets/images/24_이수중_1학기_중간_중3_유사/q12-solution.svg",
+    "solutionImageAlt": "넓이 8, 18, 25인 정사각형의 한 변은 각각 2√2, 3√2, 5 cm이다. 수평 총폭은 5√2+5, 최대 높이는 5이며, 굵은 외곽선의 길이는 2(5√2+5)+2·5=10√2+20 cm이다.",
+    "solutionImageCaption": "넓이 8, 18, 25인 정사각형의 한 변은 각각 2√2, 3√2, 5 cm이다. 수평 총폭은 5√2+5, 최대 높이는 5이며, 굵은 외곽선의 길이는 2(5√2+5)+2·5=10√2+20 cm이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -1071,7 +1079,11 @@ window.questionBank = [
     "rpmPrimaryRecordId": "M3-RPM-001",
     "sourceQid": 23,
     "variationType": "STRICT_VARIANT",
-    "problemPlanRef": "archive/exams/similar/middle/m3/1mid/24_이수중_1학기_중간_중3_유사_plans/q23-problem.plan.json"
+    "problemPlanRef": "archive/exams/similar/middle/m3/1mid/24_이수중_1학기_중간_중3_유사_plans/q23-problem.plan.json",
+    "solutionImage": "assets/images/24_이수중_1학기_중간_중3_유사/q23-solution.svg",
+    "solutionImageAlt": "3<x<5일 때 x의 위치는 3과 5 사이의 대표 위치로만 그린다. 두 거리는 x−3과 5−x이므로 |x−3|+|x−5|=(x−3)+(5−x)=2이다.",
+    "solutionImageCaption": "3<x<5일 때 x의 위치는 3과 5 사이의 대표 위치로만 그린다. 두 거리는 x−3과 5−x이므로 |x−3|+|x−5|=(x−3)+(5−x)=2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,

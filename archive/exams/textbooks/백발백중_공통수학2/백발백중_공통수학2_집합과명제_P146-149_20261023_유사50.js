@@ -234,7 +234,11 @@ window.questionBank = [
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P146-Q02-T1-R1-solution.svg",
     "solutionImageAlt": "풀이 도형",
     "solutionImageSize": "large",
-    "inferredFields": []
+    "inferredFields": [],
+    "image": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P146-Q02-T1-R1-problem.svg",
+    "imageAlt": "삼각형 ABC에서 BC의 중점 M과 AM을 2:3으로 내분하는 N의 위치. 세 변의 길이와 비율은 주어진 조건이다.",
+    "imageCaption": "삼각형 ABC에서 BC의 중점 M과 AM을 2:3으로 내분하는 N의 위치. 세 변의 길이와 비율은 주어진 조건이다.",
+    "imageSize": "full"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P146-Q02-S1-R1",
@@ -293,7 +297,11 @@ window.questionBank = [
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P146-Q02-S1-R1-solution.svg",
     "solutionImageAlt": "풀이 도형",
     "solutionImageSize": "large",
-    "inferredFields": []
+    "inferredFields": [],
+    "image": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P146-Q02-S1-R1-problem.svg",
+    "imageAlt": "삼각형 ABC에서 BC의 중점 M과 AM을 3:2으로 내분하는 N의 위치. 세 변의 길이와 비율은 주어진 조건이다.",
+    "imageCaption": "삼각형 ABC에서 BC의 중점 M과 AM을 3:2으로 내분하는 N의 위치. 세 변의 길이와 비율은 주어진 조건이다.",
+    "imageSize": "full"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P146-Q02-S2-R1",
@@ -352,7 +360,11 @@ window.questionBank = [
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P146-Q02-S2-R1-solution.svg",
     "solutionImageAlt": "풀이 도형",
     "solutionImageSize": "large",
-    "inferredFields": []
+    "inferredFields": [],
+    "image": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P146-Q02-S2-R1-problem.svg",
+    "imageAlt": "삼각형 ABC에서 BC의 중점 M과 AM을 4:1으로 내분하는 N의 위치. 세 변의 길이와 비율은 주어진 조건이다.",
+    "imageCaption": "삼각형 ABC에서 BC의 중점 M과 AM을 4:1으로 내분하는 N의 위치. 세 변의 길이와 비율은 주어진 조건이다.",
+    "imageSize": "full"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P146-Q03-T1-R1",
@@ -1650,7 +1662,11 @@ window.questionBank = [
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P147-Q10-T1-R1-solution.svg",
     "solutionImageAlt": "풀이 도형",
     "solutionImageSize": "large",
-    "inferredFields": []
+    "inferredFields": [],
+    "image": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P147-Q10-T1-R1-problem.svg",
+    "imageAlt": "주어진 원과 직선의 두 교점 A, B 및 현 AB의 중점 M을 표시한다.",
+    "imageCaption": "주어진 원과 직선의 두 교점 A, B 및 현 AB의 중점 M을 표시한다.",
+    "imageSize": "full"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P147-Q10-S1-R1",
@@ -1709,7 +1725,11 @@ window.questionBank = [
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P147-Q10-S1-R1-solution.svg",
     "solutionImageAlt": "풀이 도형",
     "solutionImageSize": "large",
-    "inferredFields": []
+    "inferredFields": [],
+    "image": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P147-Q10-S1-R1-problem.svg",
+    "imageAlt": "주어진 원과 직선의 두 교점 A, B 및 현 AB의 중점 M을 표시한다.",
+    "imageCaption": "주어진 원과 직선의 두 교점 A, B 및 현 AB의 중점 M을 표시한다.",
+    "imageSize": "full"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P147-Q10-S2-R1",
@@ -1768,7 +1788,11 @@ window.questionBank = [
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P147-Q10-S2-R1-solution.svg",
     "solutionImageAlt": "풀이 도형",
     "solutionImageSize": "large",
-    "inferredFields": []
+    "inferredFields": [],
+    "image": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P147-Q10-S2-R1-problem.svg",
+    "imageAlt": "주어진 원과 직선의 두 교점 A, B 및 현 AB의 중점 M을 표시한다.",
+    "imageCaption": "주어진 원과 직선의 두 교점 A, B 및 현 AB의 중점 M을 표시한다.",
+    "imageSize": "full"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P148-Q11-T1-R1",
@@ -2427,7 +2451,11 @@ window.questionBank = [
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P148-Q16-T1-R1-solution.svg",
     "solutionImageAlt": "풀이 도형",
     "solutionImageSize": "large",
-    "inferredFields": []
+    "inferredFields": [],
+    "image": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P148-Q16-T1-R1-problem.svg",
+    "imageAlt": "직선 y=x+t 위 두 점 P,Q에서 AB를 보는 각이 직각이다.",
+    "imageCaption": "직선 y=x+t 위 두 점 P,Q에서 AB를 보는 각이 직각이다.",
+    "imageSize": "full"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P148-Q16-S1-R1",
@@ -2486,7 +2514,11 @@ window.questionBank = [
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P148-Q16-S1-R1-solution.svg",
     "solutionImageAlt": "풀이 도형",
     "solutionImageSize": "large",
-    "inferredFields": []
+    "inferredFields": [],
+    "image": "assets/images/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50/BV-BAKBAL-H-COM2-P148-Q16-S1-R1-problem.svg",
+    "imageAlt": "직선 y=x+t 위 두 점 P,Q에서 AB를 보는 각이 직각이다.",
+    "imageCaption": "직선 y=x+t 위 두 점 P,Q에서 AB를 보는 각이 직각이다.",
+    "imageSize": "full"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P149-Q17-T1-R1",

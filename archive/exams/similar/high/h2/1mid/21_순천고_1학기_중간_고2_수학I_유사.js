@@ -308,7 +308,11 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "H2-M1-RPM-007",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "solutionImage": "assets/images/21_순천고_1학기_중간_고2_수학I_유사/q7-solution.svg",
+    "solutionImageAlt": "일반각을 360°로 나눈 나머지가 60°인 동경 A와 나머지 300°인 동경 B는 서로 다른 위치에 놓인다.",
+    "solutionImageCaption": "일반각을 360°로 나눈 나머지가 60°인 동경 A와 나머지 300°인 동경 B는 서로 다른 위치에 놓인다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -616,7 +620,11 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "H2-M1-RPM-018",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "image": "assets/images/21_순천고_1학기_중간_고2_수학I_유사/q14-problem.svg",
+    "imageAlt": "주어진 지수곡선 y=2^x−5, x축, 로그함수의 수직 점근선 x=4가 이루는 경계를 스케치한다. 내부 격자점 수나 경계 교점 값은 표시하지 않는다.",
+    "imageCaption": "주어진 지수곡선 y=2^x−5, x축, 로그함수의 수직 점근선 x=4가 이루는 경계를 스케치한다. 내부 격자점 수나 경계 교점 값은 표시하지 않는다.",
+    "imageSize": "full"
   },
   {
     "id": 15,
@@ -704,7 +712,11 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "H2-M1-RPM-020",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "solutionImage": "assets/images/21_순천고_1학기_중간_고2_수학I_유사/q16-solution.svg",
+    "solutionImageAlt": "둘레 14인 부채꼴의 넓이 S=7r-r²는 r=7/2에서 최대 49/4이며, 중심각은 그때 2라디안이다.",
+    "solutionImageCaption": "둘레 14인 부채꼴의 넓이 S=7r-r²는 r=7/2에서 최대 49/4이며, 중심각은 그때 2라디안이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -748,7 +760,11 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "H2-M1-RPM-041",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "solutionImage": "assets/images/21_순천고_1학기_중간_고2_수학I_유사/q17-solution.svg",
+    "solutionImageAlt": "최댓값 7과 최솟값 1의 중간선은 y=4, 진폭은 3이고 x=0에서 x=8π까지가 한 주기이다.",
+    "solutionImageCaption": "최댓값 7과 최솟값 1의 중간선은 y=4, 진폭은 3이고 x=0에서 x=8π까지가 한 주기이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 18,
@@ -874,7 +890,11 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "H2-M1-RPM-038",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "solutionImage": "assets/images/21_순천고_1학기_중간_고2_수학I_유사/q20-solution.svg",
+    "solutionImageAlt": "y=3cos((x-π)/3)−2는 x=π에서 최대 1, x=4π에서 최소 −5, x=7π에서 다시 최대 1이다.",
+    "solutionImageCaption": "y=3cos((x-π)/3)−2는 x=π에서 최대 1, x=4π에서 최소 −5, x=7π에서 다시 최대 1이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 21,

@@ -952,7 +952,11 @@ window.questionBank = [
       "l4": "경우를 나누어 구하는 확률"
     },
     "primaryMethod": "합의 가능한 배수별 순서쌍 계수",
-    "decisiveStep": "합5와10을 나누어 순서쌍7개를 세고 전체36으로 나눈다."
+    "decisiveStep": "합5와10을 나누어 순서쌍7개를 세고 전체36으로 나눈다.",
+    "solutionImage": "assets/images/23_금당중_2학기_기말_중2_기출/q18-solution.svg",
+    "solutionImageAlt": "두 주사위 합계 5인 4칸과 10인 3칸을 별도 명도로 구별한다.",
+    "solutionImageCaption": "두 주사위 합계 5인 4칸과 10인 3칸을 별도 명도로 구별한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -1204,7 +1208,11 @@ window.questionBank = [
       "l4": "교점과 연립방정식"
     },
     "primaryMethod": "위치그래프를 식으로 만들고 만나는 시간",
-    "decisiveStep": "각 그래프의 두점으로 기울기와절편을 정하고 같은위치식을 푼다."
+    "decisiveStep": "각 그래프의 두점으로 기울기와절편을 정하고 같은위치식을 푼다.",
+    "image": "assets/images/23_금당중_2학기_기말_중2_기출/q23-problem.svg",
+    "imageAlt": "두 물체 A와 B의 시간-위치 그래프이다. A는 (0,3),(3,4)를, B는 (0,1),(2,2)를 지나고, 질문의 만나는 시점은 표시하지 않는다.",
+    "imageCaption": "두 물체 A와 B의 시간-위치 그래프이다. A는 (0,3),(3,4)를, B는 (0,1),(2,2)를 지나고, 질문의 만나는 시점은 표시하지 않는다.",
+    "imageSize": "full"
   },
   {
     "id": 24,
@@ -1304,6 +1312,10 @@ window.questionBank = [
       "l4": "경우를 나누어 구하는 확률"
     },
     "primaryMethod": "자연수 근 조건을 나누어떨어짐으로 변환",
-    "decisiveStep": "x=(b+3)/a가 자연수가 되도록 b별로 허용약수 a를 센다."
+    "decisiveStep": "x=(b+3)/a가 자연수가 되도록 b별로 허용약수 a를 센다.",
+    "solutionImage": "assets/images/23_금당중_2학기_기말_중2_기출/q25-solution.svg",
+    "solutionImageAlt": "36개 순서쌍 (a,b) 가운데 (b+3)/a가 자연수인 15칸만 표시한다.",
+    "solutionImageCaption": "36개 순서쌍 (a,b) 가운데 (b+3)/a가 자연수인 15칸만 표시한다.",
+    "solutionImageSize": "full"
   }
 ];

@@ -890,7 +890,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "산점도의 표시점 좌표를 읽어 비교 진술과 대조하고 국어 최솟값의 주체가E가 아니라B임을 확인한다. 다른 보기는 좌표 상등·대소와 양의 상관까지 포함한다.",
-    "decisiveStep": "산점도의 표시점 좌표를 읽어 비교 진술과 대조하고 국어 최솟값의 주체가E가 아니라B임을 확인한다. 다른 보기는 좌표 상등·대소와 양의 상관까지 포함한다."
+    "decisiveStep": "산점도의 표시점 좌표를 읽어 비교 진술과 대조하고 국어 최솟값의 주체가E가 아니라B임을 확인한다. 다른 보기는 좌표 상등·대소와 양의 상관까지 포함한다.",
+    "solutionImage": "assets/images/22_향림중_2학기_기말_중3_기출/q19-solution.svg",
+    "solutionImageAlt": "국어 점수와 영어 점수가 같은 네 점은 점선 y=x 위에 있다. A, B, C, D, E 중 국어 점수가 가장 낮은 점은 B=(50,80)이다.",
+    "solutionImageCaption": "국어 점수와 영어 점수가 같은 네 점은 점선 y=x 위에 있다. A, B, C, D, E 중 국어 점수가 가장 낮은 점은 B=(50,80)이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
