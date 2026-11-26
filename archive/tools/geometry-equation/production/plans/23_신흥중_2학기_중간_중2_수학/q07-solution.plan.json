@@ -1,0 +1,520 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "원래 직각삼각형과 수선 ED"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "9656887748071",
+                    "denominator": "1000000000000"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "10"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "2806601996613",
+                    "denominator": "1000000000000"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "6946583704590",
+                    "denominator": "1000000000000"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "E",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "4040262258352",
+                    "denominator": "1000000000000"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 320
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAE",
+            "refs": [
+              "A",
+              "E"
+            ]
+          },
+          {
+            "id": "sEB",
+            "refs": [
+              "E",
+              "B"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sCD",
+            "refs": [
+              "C",
+              "D"
+            ]
+          },
+          {
+            "id": "sDA",
+            "refs": [
+              "D",
+              "A"
+            ]
+          },
+          {
+            "id": "sED",
+            "refs": [
+              "E",
+              "D"
+            ]
+          },
+          {
+            "id": "sEC",
+            "refs": [
+              "E",
+              "C"
+            ]
+          }
+        ],
+        "rightAngles": [
+          {
+            "id": "rB",
+            "refs": [
+              "A",
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "rD",
+            "refs": [
+              "A",
+              "D",
+              "E"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "equalLengths": [
+            {
+              "id": "BCDClength",
+              "count": 1,
+              "segments": [
+                "sBC",
+                "sCD"
+              ]
+            },
+            {
+              "id": "EBEDlength",
+              "count": 2,
+              "segments": [
+                "sEB",
+                "sED"
+              ]
+            }
+          ],
+          "angles": [
+            {
+              "id": "aBAD",
+              "refs": [
+                "B",
+                "A",
+                "D"
+              ],
+              "value": 46,
+              "style": "ARC",
+              "arcs": 1,
+              "label": "46°"
+            },
+            {
+              "id": "aDEC",
+              "refs": [
+                "D",
+                "E",
+                "C"
+              ],
+              "value": 68,
+              "style": "ARC",
+              "arcs": 1,
+              "label": "68°"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "삼각형 EBC"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "E",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "4040262258352",
+                    "denominator": "1000000000000"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "10"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 320
+        },
+        "displayPoints": [
+          "E",
+          "B",
+          "C"
+        ],
+        "displaySegments": [
+          {
+            "id": "sEB",
+            "refs": [
+              "E",
+              "B"
+            ],
+            "emphasis": "BOLD"
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ],
+            "emphasis": "BOLD"
+          },
+          {
+            "id": "sCE",
+            "refs": [
+              "C",
+              "E"
+            ]
+          }
+        ],
+        "rightAngles": [
+          {
+            "id": "rB",
+            "refs": [
+              "E",
+              "B",
+              "C"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "대응 삼각형 EDC"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "E",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "4040262258352",
+                    "denominator": "1000000000000"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "10"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 320
+        },
+        "displayPoints": [
+          "E",
+          "D",
+          "C"
+        ],
+        "displaySegments": [
+          {
+            "id": "sED",
+            "refs": [
+              "E",
+              "D"
+            ],
+            "emphasis": "BOLD"
+          },
+          {
+            "id": "sDC",
+            "refs": [
+              "D",
+              "C"
+            ],
+            "emphasis": "BOLD"
+          },
+          {
+            "id": "sCE",
+            "refs": [
+              "C",
+              "E"
+            ]
+          }
+        ],
+        "rightAngles": [
+          {
+            "id": "rD",
+            "refs": [
+              "E",
+              "D",
+              "C"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "caption": "직각·이등변 조건에서 EB=ED를 얻고 △EBC≅△EDC(SSS)로 ∠DEC=68°",
+  "accessibilityDescription": "원래 삼각형의 ED 수선과 BC=DC 눈금, 그리고 분리한 △EBC·△EDC의 두 대응변과 공통변을 서로 같은 방향으로 보여 준다.",
+  "sourceConditions": [
+    {
+      "id": "condition1",
+      "condition": "∠B=90°, AC⊥ED",
+      "mappedTo": "panels:0.rightAngles:rB,rD",
+      "sourceQuote": "다음 그림과 같이 $\\angle B=90^\\circ$인 직"
+    },
+    {
+      "id": "condition2",
+      "condition": "BC=DC 및 EB=ED",
+      "mappedTo": "panels:0.planeMarks.equalLengths:BCDClength,EBEDlength;panels:1.displaySegments:sBC,sEB;panels:2.displaySegments:sDC,sED",
+      "sourceQuote": "다음 그림과 같이 $\\angle B=90^\\circ$인 직"
+    },
+    {
+      "id": "condition3",
+      "condition": "공통 EC를 포함하여 두 삼각형 합동",
+      "mappedTo": "panels:1.displaySegments:sCE;panels:2.displaySegments:sCE",
+      "sourceQuote": "다음 그림과 같이 $\\angle B=90^\\circ$인 직"
+    },
+    {
+      "id": "condition4",
+      "condition": "∠DEC=68°",
+      "mappedTo": "panels:0.planeMarks.angles:aDEC",
+      "sourceQuote": "다음 그림과 같이 $\\angle B=90^\\circ$인 직"
+    }
+  ],
+  "newVisualInformation": [
+    "문제 배치와 합동·대응 삼각형을 각각 펼친 화면에서 읽을 수 있다.",
+    "실제 같은 변 눈금과 각 호를 유지하고 면 채움 없이 원본 조건을 보여 준다."
+  ]
+}

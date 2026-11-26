@@ -1,0 +1,276 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "9"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 610,
+    "height": 430
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displaySegments": [
+    {
+      "id": "sEA",
+      "refs": [
+        "E",
+        "A"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aBAD",
+        "refs": [
+          "B",
+          "A",
+          "D"
+        ],
+        "style": "ARC",
+        "arcs": 1,
+        "equalGroup": 1,
+        "noLabel": true
+      },
+      {
+        "id": "aBCD",
+        "refs": [
+          "B",
+          "C",
+          "D"
+        ],
+        "style": "ARC",
+        "arcs": 1,
+        "equalGroup": 1,
+        "noLabel": true
+      },
+      {
+        "id": "aABC",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "style": "ARC",
+        "arcs": 2,
+        "equalGroup": 2,
+        "noLabel": true
+      },
+      {
+        "id": "aCDA",
+        "refs": [
+          "C",
+          "D",
+          "A"
+        ],
+        "style": "ARC",
+        "arcs": 2,
+        "equalGroup": 2,
+        "noLabel": true
+      },
+      {
+        "id": "aEAD",
+        "refs": [
+          "E",
+          "A",
+          "D"
+        ],
+        "style": "ARC",
+        "arcs": 2,
+        "equalGroup": 2,
+        "noLabel": true
+      }
+    ],
+    "parallels": [
+      {
+        "id": "ADBC",
+        "count": 1,
+        "segments": [
+          "sDA",
+          "sBC"
+        ]
+      },
+      {
+        "id": "ABCD",
+        "count": 2,
+        "segments": [
+          "sAB",
+          "sCD"
+        ]
+      }
+    ]
+  },
+  "caption": "대각 A=C, B=D와 일직선 E-A-B에서 ∠EAD=∠B이므로 AD∥BC",
+  "accessibilityDescription": "E A B가 한 직선 위에 있는 사각형에서 마주 보는 두 각 쌍은 각기 다른 호눈금으로 표시되고, 외각 EAD와 B각도 같은 호눈금이며 AD BC와 AB CD는 각각 평행표시가 있다.",
+  "sourceConditions": [
+    {
+      "id": "condition1",
+      "condition": "∠A=∠C, ∠B=∠D",
+      "mappedTo": [
+        "aBAD",
+        "aBCD",
+        "aABC",
+        "aCDA"
+      ],
+      "sourceQuote": "[서술형5] 다음은 두 쌍의 대각의 크기가 각각 같으면 평"
+    },
+    {
+      "id": "condition2",
+      "condition": "E,A,B는 일직선이고 ∠EAD=∠B",
+      "mappedTo": [
+        "E",
+        "aEAD",
+        "aABC"
+      ],
+      "sourceQuote": "[서술형5] 다음은 두 쌍의 대각의 크기가 각각 같으면 평"
+    },
+    {
+      "id": "condition3",
+      "condition": "AD∥BC, AB∥CD 결론",
+      "mappedTo": [
+        "ADBC",
+        "ABCD"
+      ],
+      "sourceQuote": "[서술형5] 다음은 두 쌍의 대각의 크기가 각각 같으면 평"
+    }
+  ],
+  "newVisualInformation": [
+    "발문·원본 그림과 해설의 실제 점·선·각·길이를 각 엔진 필드에 명확히 연결한다.",
+    "배경은 흰색이며 넓이·영역이 필수인 경우 외에는 면 채움을 사용하지 않는다."
+  ]
+}

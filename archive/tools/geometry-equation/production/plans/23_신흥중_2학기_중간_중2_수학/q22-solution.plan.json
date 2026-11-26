@@ -1,0 +1,514 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "평행사변형 대각선 AC"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "10"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "12"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 320
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sCD",
+            "refs": [
+              "C",
+              "D"
+            ]
+          },
+          {
+            "id": "sDA",
+            "refs": [
+              "D",
+              "A"
+            ]
+          },
+          {
+            "id": "sAC",
+            "refs": [
+              "A",
+              "C"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "parallels": [
+            {
+              "id": "ABCDparallel",
+              "count": 1,
+              "segments": [
+                "sAB",
+                "sCD"
+              ]
+            },
+            {
+              "id": "ADBCparallel",
+              "count": 2,
+              "segments": [
+                "sDA",
+                "sBC"
+              ]
+            }
+          ],
+          "angles": [
+            {
+              "id": "aBAC",
+              "refs": [
+                "B",
+                "A",
+                "C"
+              ],
+              "style": "ARC",
+              "arcs": 1,
+              "equalGroup": 1,
+              "noLabel": true
+            },
+            {
+              "id": "aDCA",
+              "refs": [
+                "D",
+                "C",
+                "A"
+              ],
+              "style": "ARC",
+              "arcs": 1,
+              "equalGroup": 1,
+              "noLabel": true
+            },
+            {
+              "id": "aBCA",
+              "refs": [
+                "B",
+                "C",
+                "A"
+              ],
+              "style": "ARC",
+              "arcs": 2,
+              "equalGroup": 2,
+              "noLabel": true
+            },
+            {
+              "id": "aDAC",
+              "refs": [
+                "D",
+                "A",
+                "C"
+              ],
+              "style": "ARC",
+              "arcs": 2,
+              "equalGroup": 2,
+              "noLabel": true
+            }
+          ]
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "삼각형 ABC"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "10"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 320
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sCA",
+            "refs": [
+              "C",
+              "A"
+            ],
+            "emphasis": "BOLD"
+          }
+        ],
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "aBAC",
+              "refs": [
+                "B",
+                "A",
+                "C"
+              ],
+              "style": "ARC",
+              "arcs": 1,
+              "equalGroup": 1,
+              "noLabel": true
+            },
+            {
+              "id": "aBCA",
+              "refs": [
+                "B",
+                "C",
+                "A"
+              ],
+              "style": "ARC",
+              "arcs": 2,
+              "equalGroup": 2,
+              "noLabel": true
+            }
+          ]
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "대응 삼각형 CDA"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "10"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 320
+        },
+        "displayPoints": [
+          "C",
+          "D",
+          "A"
+        ],
+        "displaySegments": [
+          {
+            "id": "sCD",
+            "refs": [
+              "C",
+              "D"
+            ]
+          },
+          {
+            "id": "sDA",
+            "refs": [
+              "D",
+              "A"
+            ]
+          },
+          {
+            "id": "sAC",
+            "refs": [
+              "A",
+              "C"
+            ],
+            "emphasis": "BOLD"
+          }
+        ],
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "aDCA",
+              "refs": [
+                "D",
+                "C",
+                "A"
+              ],
+              "style": "ARC",
+              "arcs": 1,
+              "equalGroup": 1,
+              "noLabel": true
+            },
+            {
+              "id": "aDAC",
+              "refs": [
+                "D",
+                "A",
+                "C"
+              ],
+              "style": "ARC",
+              "arcs": 2,
+              "equalGroup": 2,
+              "noLabel": true
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "caption": "평행사변형의 대각선 AC로 나눈 △ABC와 △CDA는 두 각과 끼인변이 같아 합동",
+  "accessibilityDescription": "원래 평행사변형과 대응하는 두 삼각형을 각각 펼친 도형에서 엇각 두 쌍과 공통변 AC를 같은 규칙으로 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "condition1",
+      "condition": "AB∥CD, BC∥AD",
+      "mappedTo": "panels:0.planeMarks.parallels:ABCDparallel,ADBCparallel",
+      "sourceQuote": "[서술형4] 다음 $\\square ABCD$가 평행사변형일"
+    },
+    {
+      "id": "condition2",
+      "condition": "엇각 두 쌍이 같음",
+      "mappedTo": "panels:0.planeMarks.angles:aBAC,aDCA,aBCA,aDAC;panels:1.planeMarks.angles:aBAC,aBCA;panels:2.planeMarks.angles:aDCA,aDAC",
+      "sourceQuote": "[서술형4] 다음 $\\square ABCD$가 평행사변형일"
+    },
+    {
+      "id": "condition3",
+      "condition": "AC는 공통인 끼인변",
+      "mappedTo": "panels:0.displaySegments:sAC;panels:1.displaySegments:sCA;panels:2.displaySegments:sAC",
+      "sourceQuote": "[서술형4] 다음 $\\square ABCD$가 평행사변형일"
+    }
+  ],
+  "newVisualInformation": [
+    "문제 배치와 합동·대응 삼각형을 각각 펼친 화면에서 읽을 수 있다.",
+    "실제 같은 변 눈금과 각 호를 유지하고 면 채움 없이 원본 조건을 보여 준다."
+  ]
+}

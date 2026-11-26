@@ -1,0 +1,293 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-2828427124746",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2828427124746",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-5414213562373",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-2585786437627",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "2828427124746",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-2828427124746",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "5414213562373",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2585786437627",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 610,
+    "height": 430
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "O"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAO",
+      "refs": [
+        "A",
+        "O"
+      ]
+    },
+    {
+      "id": "sOC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "sBO",
+      "refs": [
+        "B",
+        "O"
+      ]
+    },
+    {
+      "id": "sOD",
+      "refs": [
+        "O",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "bisectAC",
+        "count": 1,
+        "segments": [
+          "sAO",
+          "sOC"
+        ]
+      },
+      {
+        "id": "bisectBD",
+        "count": 2,
+        "segments": [
+          "sBO",
+          "sOD"
+        ]
+      }
+    ],
+    "parallels": [
+      {
+        "id": "ABCD",
+        "count": 1,
+        "segments": [
+          "sAB",
+          "sCD"
+        ]
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dAB",
+        "from": "A",
+        "to": "B",
+        "label": "6",
+        "side": "LEFT",
+        "style": "INLINE"
+      },
+      {
+        "id": "dAC",
+        "from": "A",
+        "to": "C",
+        "label": "8",
+        "side": "RIGHT",
+        "style": "INLINE"
+      },
+      {
+        "id": "dBD",
+        "from": "B",
+        "to": "D",
+        "label": "12",
+        "side": "BELOW",
+        "style": "INLINE"
+      },
+      {
+        "id": "dAO",
+        "from": "A",
+        "to": "O",
+        "label": "4",
+        "side": "LEFT",
+        "style": "INLINE"
+      },
+      {
+        "id": "dBO",
+        "from": "B",
+        "to": "O",
+        "label": "6",
+        "side": "BELOW",
+        "style": "INLINE"
+      }
+    ]
+  },
+  "caption": "평행사변형의 대각선 AC8·BD12를 O가 이등분해 △ABO의 둘레는 16",
+  "accessibilityDescription": "대변 평행, 두 대각선의 서로 다른 두 쌍의 중점 눈금, AB6 AC8 BD12와 AO4 BO6 치수선을 보인다.",
+  "sourceConditions": [
+    {
+      "id": "condition1",
+      "condition": "AB=6, AC=8, BD=12",
+      "mappedTo": [
+        "dAB",
+        "dAC",
+        "dBD"
+      ],
+      "sourceQuote": "오른쪽 평행사변형 $ABCD$에서 점 $O$가 두 대각선의"
+    },
+    {
+      "id": "condition2",
+      "condition": "O에서 대각선 이등분",
+      "mappedTo": [
+        "bisectAC",
+        "bisectBD"
+      ],
+      "sourceQuote": "오른쪽 평행사변형 $ABCD$에서 점 $O$가 두 대각선의"
+    },
+    {
+      "id": "condition3",
+      "condition": "AO=4, BO=6",
+      "mappedTo": [
+        "dAO",
+        "dBO"
+      ],
+      "sourceQuote": "오른쪽 평행사변형 $ABCD$에서 점 $O$가 두 대각선의"
+    }
+  ],
+  "newVisualInformation": [
+    "발문·원본 그림과 해설의 실제 점·선·각·길이를 각 엔진 필드에 명확히 연결한다.",
+    "배경은 흰색이며 넓이·영역이 필수인 경우 외에는 면 채움을 사용하지 않는다."
+  ]
+}

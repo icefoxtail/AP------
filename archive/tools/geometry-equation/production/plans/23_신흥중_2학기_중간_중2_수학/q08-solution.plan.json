@@ -1,0 +1,344 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2437500000000",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "2500000000000",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "7500000000000",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "N",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 610,
+    "height": 430
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "O",
+    "M",
+    "L",
+    "N"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAM",
+      "refs": [
+        "A",
+        "M"
+      ]
+    },
+    {
+      "id": "sMB",
+      "refs": [
+        "M",
+        "B"
+      ]
+    },
+    {
+      "id": "sBN",
+      "refs": [
+        "B",
+        "N"
+      ]
+    },
+    {
+      "id": "sNC",
+      "refs": [
+        "N",
+        "C"
+      ]
+    },
+    {
+      "id": "sCL",
+      "refs": [
+        "C",
+        "L"
+      ]
+    },
+    {
+      "id": "sLA",
+      "refs": [
+        "L",
+        "A"
+      ]
+    },
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sOC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "sOM",
+      "refs": [
+        "O",
+        "M"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sOL",
+      "refs": [
+        "O",
+        "L"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sON",
+      "refs": [
+        "O",
+        "N"
+      ],
+      "dashed": true
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rM",
+      "refs": [
+        "A",
+        "M",
+        "O"
+      ]
+    },
+    {
+      "id": "rL",
+      "refs": [
+        "A",
+        "L",
+        "O"
+      ]
+    },
+    {
+      "id": "rN",
+      "refs": [
+        "B",
+        "N",
+        "O"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "circumradii",
+        "count": 1,
+        "segments": [
+          "sOA",
+          "sOB",
+          "sOC"
+        ]
+      },
+      {
+        "id": "ABmid",
+        "count": 2,
+        "segments": [
+          "sAM",
+          "sMB"
+        ]
+      },
+      {
+        "id": "ACmid",
+        "count": 3,
+        "segments": [
+          "sLA",
+          "sCL"
+        ]
+      }
+    ]
+  },
+  "caption": "외심 O는 OA=OB=OC이고 각 현의 수직이등분선 OM·OL·ON 위에 있다.",
+  "accessibilityDescription": "삼각형의 AB AC BC 중점 M L N에서 중심 O까지 점선 수직이 그어져 있으며 3개 직각 표식, OA OB OC의 같은 반지름과 중점 눈금이 있다.",
+  "sourceConditions": [
+    {
+      "id": "condition1",
+      "condition": "O는 외심으로 OA=OB=OC",
+      "mappedTo": [
+        "circumradii"
+      ],
+      "sourceQuote": "오른쪽 그림에서 점 $O$가 $\\triangle ABC$의"
+    },
+    {
+      "id": "condition2",
+      "condition": "OM⊥AB, OL⊥AC, ON⊥BC",
+      "mappedTo": [
+        "rM",
+        "rL",
+        "rN",
+        "sOM",
+        "sOL",
+        "sON"
+      ],
+      "sourceQuote": "오른쪽 그림에서 점 $O$가 $\\triangle ABC$의"
+    },
+    {
+      "id": "condition3",
+      "condition": "M과 L은 중점",
+      "mappedTo": [
+        "ABmid",
+        "ACmid"
+      ],
+      "sourceQuote": "오른쪽 그림에서 점 $O$가 $\\triangle ABC$의"
+    }
+  ],
+  "newVisualInformation": [
+    "발문·원본 그림과 해설의 실제 점·선·각·길이를 각 엔진 필드에 명확히 연결한다.",
+    "배경은 흰색이며 넓이·영역이 필수인 경우 외에는 면 채움을 사용하지 않는다."
+  ]
+}

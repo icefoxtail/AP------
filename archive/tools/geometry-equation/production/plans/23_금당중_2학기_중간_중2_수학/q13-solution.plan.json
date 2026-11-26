@@ -1,0 +1,227 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1920000000000",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1440000000000",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 610,
+    "height": 430
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "H"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBH",
+      "refs": [
+        "B",
+        "H"
+      ]
+    },
+    {
+      "id": "sHC",
+      "refs": [
+        "H",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAH",
+      "refs": [
+        "A",
+        "H"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rA",
+      "refs": [
+        "B",
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "rH",
+      "refs": [
+        "A",
+        "H",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dAB",
+        "from": "A",
+        "to": "B",
+        "label": "3",
+        "side": "BELOW",
+        "style": "INLINE"
+      },
+      {
+        "id": "dAC",
+        "from": "A",
+        "to": "C",
+        "label": "4",
+        "side": "LEFT",
+        "style": "INLINE"
+      },
+      {
+        "id": "dBC",
+        "from": "B",
+        "to": "C",
+        "label": "5",
+        "side": "RIGHT",
+        "style": "INLINE"
+      },
+      {
+        "id": "dAH",
+        "from": "A",
+        "to": "H",
+        "label": "12/5",
+        "side": "LEFT",
+        "style": "INLINE"
+      }
+    ]
+  },
+  "caption": "직각삼각형의 넓이 1/2×3×4=1/2×5×AH에서 AH=12/5를 얻는다.",
+  "accessibilityDescription": "A와 H의 직각표시, 직각변 AB3 AC4, 빗변 BC5 및 높이 AH12/5가 실제 구간의 치수선으로 그려져 있다.",
+  "sourceConditions": [
+    {
+      "id": "condition1",
+      "condition": "∠A=90°, AH⊥BC",
+      "mappedTo": [
+        "rA",
+        "rH"
+      ],
+      "sourceQuote": "$\\angle A=90^\\circ$인 직각삼각형 $ABC$"
+    },
+    {
+      "id": "condition2",
+      "condition": "AB=3, AC=4, BC=5",
+      "mappedTo": [
+        "dAB",
+        "dAC",
+        "dBC"
+      ],
+      "sourceQuote": "$\\angle A=90^\\circ$인 직각삼각형 $ABC$"
+    },
+    {
+      "id": "condition3",
+      "condition": "넓이식으로 AH=12/5",
+      "mappedTo": [
+        "dAH"
+      ],
+      "sourceQuote": "$\\angle A=90^\\circ$인 직각삼각형 $ABC$"
+    }
+  ],
+  "newVisualInformation": [
+    "발문·원본 그림과 해설의 실제 점·선·각·길이를 각 엔진 필드에 명확히 연결한다.",
+    "배경은 흰색이며 넓이·영역이 필수인 경우 외에는 면 채움을 사용하지 않는다."
+  ]
+}

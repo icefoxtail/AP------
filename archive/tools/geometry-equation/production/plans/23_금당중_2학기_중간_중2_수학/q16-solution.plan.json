@@ -1,0 +1,323 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "3391400513665",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "8139361232797",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "8139361232797",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "4069680616398",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "N",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "3730540565032",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "4069680616398",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "2260933675777",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "5426240821865",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1130466837888",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2713120410932",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 610,
+    "height": 430
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "M",
+    "N",
+    "D",
+    "E"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sEB",
+      "refs": [
+        "E",
+        "B"
+      ]
+    },
+    {
+      "id": "sBM",
+      "refs": [
+        "B",
+        "M"
+      ]
+    },
+    {
+      "id": "sMC",
+      "refs": [
+        "M",
+        "C"
+      ]
+    },
+    {
+      "id": "sCN",
+      "refs": [
+        "C",
+        "N"
+      ]
+    },
+    {
+      "id": "sND",
+      "refs": [
+        "N",
+        "D"
+      ]
+    },
+    {
+      "id": "sAN",
+      "refs": [
+        "A",
+        "N"
+      ]
+    },
+    {
+      "id": "sNM",
+      "refs": [
+        "N",
+        "M"
+      ]
+    },
+    {
+      "id": "sME",
+      "refs": [
+        "M",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "BMCM",
+        "count": 1,
+        "segments": [
+          "sBM",
+          "sMC"
+        ]
+      },
+      {
+        "id": "ANMN",
+        "count": 2,
+        "segments": [
+          "sAN",
+          "sNM"
+        ]
+      }
+    ],
+    "parallels": [
+      {
+        "id": "CDME",
+        "count": 1,
+        "segments": [
+          "sCN",
+          "sME"
+        ]
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dEM",
+        "from": "E",
+        "to": "M",
+        "label": "4",
+        "side": "BELOW",
+        "style": "INLINE"
+      },
+      {
+        "id": "dCN",
+        "from": "C",
+        "to": "N",
+        "label": "6",
+        "side": "RIGHT",
+        "style": "INLINE"
+      }
+    ]
+  },
+  "caption": "중점 BM=CM, AN=NM과 ME∥CD에서 CN:ME=3:2이므로 CN=6",
+  "accessibilityDescription": "BM CM 및 AN NM의 다른 눈금, CD 방향과 ME 방향의 평행표시, EM4와 CN6의 길이 치수선이 있다. 넓이 계산을 방해하는 색칠은 없다.",
+  "sourceConditions": [
+    {
+      "id": "condition1",
+      "condition": "BM=CM, AN=MN",
+      "mappedTo": [
+        "BMCM",
+        "ANMN"
+      ],
+      "sourceQuote": "다음 $\\triangle ABC$에서 $\\overline{"
+    },
+    {
+      "id": "condition2",
+      "condition": "CD∥ME",
+      "mappedTo": [
+        "CDME"
+      ],
+      "sourceQuote": "다음 $\\triangle ABC$에서 $\\overline{"
+    },
+    {
+      "id": "condition3",
+      "condition": "EM=4, CN=6",
+      "mappedTo": [
+        "dEM",
+        "dCN"
+      ],
+      "sourceQuote": "다음 $\\triangle ABC$에서 $\\overline{"
+    }
+  ],
+  "newVisualInformation": [
+    "발문·원본 그림과 해설의 실제 점·선·각·길이를 각 엔진 필드에 명확히 연결한다.",
+    "배경은 흰색이며 넓이·영역이 필수인 경우 외에는 면 채움을 사용하지 않는다."
+  ]
+}

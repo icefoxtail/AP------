@@ -1,0 +1,314 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "7064177772476",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2571150438746",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "10128355544952",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "10822948255620",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3939231012049",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "13128355544952",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 610,
+    "height": 430
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sDF",
+      "refs": [
+        "D",
+        "F"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sCE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "fourEqual",
+        "count": 1,
+        "segments": [
+          "sAB",
+          "sBC",
+          "sCD",
+          "sDE"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "id": "aCAB",
+        "refs": [
+          "C",
+          "A",
+          "B"
+        ],
+        "value": 20,
+        "style": "ARC",
+        "arcs": 1,
+        "label": "20°"
+      },
+      {
+        "id": "aCBD",
+        "refs": [
+          "C",
+          "B",
+          "D"
+        ],
+        "value": 40,
+        "style": "ARC",
+        "arcs": 1,
+        "label": "40°"
+      },
+      {
+        "id": "aBCD",
+        "refs": [
+          "B",
+          "C",
+          "D"
+        ],
+        "value": 100,
+        "style": "ARC",
+        "arcs": 1,
+        "label": "100°"
+      },
+      {
+        "id": "aCDE",
+        "refs": [
+          "C",
+          "D",
+          "E"
+        ],
+        "value": 60,
+        "style": "ARC",
+        "arcs": 1,
+        "label": "60°"
+      },
+      {
+        "id": "aEDF",
+        "refs": [
+          "E",
+          "D",
+          "F"
+        ],
+        "value": 80,
+        "style": "ARC",
+        "arcs": 1,
+        "label": "80°"
+      }
+    ]
+  },
+  "caption": "AB=BC=CD=DE인 연속 이등변삼각형에서 마지막 ∠EDF=80°",
+  "accessibilityDescription": "AB BC CD DE의 길이에 같은 눈금이 붙어 있고 A의 20도에서 시작하여 B40도 C100도 D60도와 목표 D80도를 각 호로 읽을 수 있다.",
+  "sourceConditions": [
+    {
+      "id": "condition1",
+      "condition": "AB=BC=CD=DE",
+      "mappedTo": [
+        "fourEqual"
+      ],
+      "sourceQuote": "다음 그림에서 $AB=BC=CD=DE$이고, $\\angle"
+    },
+    {
+      "id": "condition2",
+      "condition": "∠CAB=20°",
+      "mappedTo": [
+        "aCAB"
+      ],
+      "sourceQuote": "다음 그림에서 $AB=BC=CD=DE$이고, $\\angle"
+    },
+    {
+      "id": "condition3",
+      "condition": "∠EDF=80°로 도출",
+      "mappedTo": [
+        "aCBD",
+        "aBCD",
+        "aCDE",
+        "aEDF"
+      ],
+      "sourceQuote": "다음 그림에서 $AB=BC=CD=DE$이고, $\\angle"
+    }
+  ],
+  "newVisualInformation": [
+    "발문·원본 그림과 해설의 실제 점·선·각·길이를 각 엔진 필드에 명확히 연결한다.",
+    "배경은 흰색이며 넓이·영역이 필수인 경우 외에는 면 채움을 사용하지 않는다."
+  ]
+}

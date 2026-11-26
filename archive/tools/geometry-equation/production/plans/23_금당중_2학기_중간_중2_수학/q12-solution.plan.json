@@ -1,0 +1,277 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-2200000000000",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1600000000000",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "9800000000000",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1600000000000",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "6200000000000",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "6400000000000",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "5800000000000",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1600000000000",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 610,
+    "height": 430
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "sEC",
+      "refs": [
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aA",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "style": "ARC",
+        "arcs": 1,
+        "equalGroup": 1,
+        "noLabel": true
+      },
+      {
+        "id": "aE",
+        "refs": [
+          "D",
+          "E",
+          "C"
+        ],
+        "style": "ARC",
+        "arcs": 1,
+        "equalGroup": 1,
+        "noLabel": true
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dAD",
+        "from": "A",
+        "to": "D",
+        "label": "2",
+        "side": "RIGHT",
+        "style": "INLINE"
+      },
+      {
+        "id": "dDC",
+        "from": "D",
+        "to": "C",
+        "label": "6",
+        "side": "RIGHT",
+        "style": "INLINE"
+      },
+      {
+        "id": "dEC",
+        "from": "E",
+        "to": "C",
+        "label": "4",
+        "side": "BELOW",
+        "style": "INLINE"
+      },
+      {
+        "id": "dBC",
+        "from": "B",
+        "to": "C",
+        "label": "12",
+        "side": "BELOW",
+        "style": "INLINE"
+      },
+      {
+        "id": "dBE",
+        "from": "B",
+        "to": "E",
+        "label": "8",
+        "side": "BELOW",
+        "style": "INLINE"
+      }
+    ]
+  },
+  "caption": "닮음인 △ABC와 △EDC의 대응변에서 BC=12, BE=8을 확인한다.",
+  "accessibilityDescription": "삼각형 ABC와 내부 선분 DE의 대응각 눈금, AD2, DC6, EC4, 전체 BC12와 BE8 길이 치수선이 각각 선분에 붙어 있다.",
+  "sourceConditions": [
+    {
+      "id": "condition1",
+      "condition": "∠A=∠DEC",
+      "mappedTo": [
+        "aA",
+        "aE"
+      ],
+      "sourceQuote": "오른쪽 $\\triangle ABC$에서 $\\angle A="
+    },
+    {
+      "id": "condition2",
+      "condition": "AD=2, DC=6, EC=4",
+      "mappedTo": [
+        "dAD",
+        "dDC",
+        "dEC"
+      ],
+      "sourceQuote": "오른쪽 $\\triangle ABC$에서 $\\angle A="
+    },
+    {
+      "id": "condition3",
+      "condition": "닮음비 2:1로 BC=12, BE=8",
+      "mappedTo": [
+        "dBC",
+        "dBE"
+      ],
+      "sourceQuote": "오른쪽 $\\triangle ABC$에서 $\\angle A="
+    }
+  ],
+  "newVisualInformation": [
+    "발문·원본 그림과 해설의 실제 점·선·각·길이를 각 엔진 필드에 명확히 연결한다.",
+    "배경은 흰색이며 넓이·영역이 필수인 경우 외에는 면 채움을 사용하지 않는다."
+  ]
+}

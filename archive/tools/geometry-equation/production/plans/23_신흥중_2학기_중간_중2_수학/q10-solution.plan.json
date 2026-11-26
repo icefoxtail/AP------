@@ -1,0 +1,251 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "2651704896309",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "8161108504817",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "I",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "3799621293387",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2760586459960",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 610,
+    "height": 430
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "I"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAI",
+      "refs": [
+        "A",
+        "I"
+      ]
+    },
+    {
+      "id": "sBI",
+      "refs": [
+        "B",
+        "I"
+      ]
+    },
+    {
+      "id": "sCI",
+      "refs": [
+        "C",
+        "I"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aABI",
+        "refs": [
+          "A",
+          "B",
+          "I"
+        ],
+        "value": 36,
+        "style": "ARC",
+        "arcs": 1,
+        "equalGroup": 1,
+        "label": "36°"
+      },
+      {
+        "id": "aIBC",
+        "refs": [
+          "I",
+          "B",
+          "C"
+        ],
+        "value": 36,
+        "style": "ARC",
+        "arcs": 1,
+        "equalGroup": 1,
+        "noLabel": true
+      },
+      {
+        "id": "aBCI",
+        "refs": [
+          "B",
+          "C",
+          "I"
+        ],
+        "value": 24,
+        "style": "ARC",
+        "arcs": 2,
+        "equalGroup": 2,
+        "label": "24°"
+      },
+      {
+        "id": "aICA",
+        "refs": [
+          "I",
+          "C",
+          "A"
+        ],
+        "value": 24,
+        "style": "ARC",
+        "arcs": 2,
+        "equalGroup": 2,
+        "noLabel": true
+      },
+      {
+        "id": "aBAC",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 60,
+        "style": "ARC",
+        "arcs": 1,
+        "label": "x=60°"
+      }
+    ]
+  },
+  "caption": "내심 I의 B각 36°+36°, C각 24°+24°로 A각 x=60°",
+  "accessibilityDescription": "B와 C의 각 이등분 호가 각각 하나와 두 개 호눈금으로 구별되며 36도·24도·A의 60도가 정확한 꼭짓점에 놓인다.",
+  "sourceConditions": [
+    {
+      "id": "condition1",
+      "condition": "BI와 CI는 내각 이등분선",
+      "mappedTo": [
+        "aABI",
+        "aIBC",
+        "aBCI",
+        "aICA"
+      ],
+      "sourceQuote": "다음 그림에서 점 $I$가 $\\triangle ABC$의 "
+    },
+    {
+      "id": "condition2",
+      "condition": "∠B 반각36°, ∠C 반각24°",
+      "mappedTo": [
+        "aABI",
+        "aBCI"
+      ],
+      "sourceQuote": "다음 그림에서 점 $I$가 $\\triangle ABC$의 "
+    },
+    {
+      "id": "condition3",
+      "condition": "x=∠A=60°",
+      "mappedTo": [
+        "aBAC"
+      ],
+      "sourceQuote": "다음 그림에서 점 $I$가 $\\triangle ABC$의 "
+    }
+  ],
+  "newVisualInformation": [
+    "발문·원본 그림과 해설의 실제 점·선·각·길이를 각 엔진 필드에 명확히 연결한다.",
+    "배경은 흰색이며 넓이·영역이 필수인 경우 외에는 면 채움을 사용하지 않는다."
+  ]
+}

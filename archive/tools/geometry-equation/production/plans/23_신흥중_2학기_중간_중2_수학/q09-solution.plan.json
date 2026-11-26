@@ -1,0 +1,257 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-3420201433257",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "9396926207859",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-5000000000000",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-8660254037844",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 610,
+    "height": 430
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "O"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sOC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "circumRadius",
+        "count": 1,
+        "segments": [
+          "sOA",
+          "sOB",
+          "sOC"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "id": "aOBC",
+        "refs": [
+          "O",
+          "B",
+          "C"
+        ],
+        "value": 30,
+        "style": "ARC",
+        "arcs": 1,
+        "label": "30°"
+      },
+      {
+        "id": "aACO",
+        "refs": [
+          "A",
+          "C",
+          "O"
+        ],
+        "value": 35,
+        "style": "ARC",
+        "arcs": 1,
+        "label": "35°"
+      },
+      {
+        "id": "aBOC",
+        "refs": [
+          "B",
+          "O",
+          "C"
+        ],
+        "value": 120,
+        "style": "ARC",
+        "arcs": 1,
+        "label": "120°"
+      },
+      {
+        "id": "aAOC",
+        "refs": [
+          "A",
+          "O",
+          "C"
+        ],
+        "value": 110,
+        "style": "ARC",
+        "arcs": 1,
+        "label": "110°"
+      },
+      {
+        "id": "aAOB",
+        "refs": [
+          "A",
+          "O",
+          "B"
+        ],
+        "value": 130,
+        "style": "ARC",
+        "arcs": 1,
+        "label": "x=130°"
+      }
+    ]
+  },
+  "caption": "외심 반지름이 같아 두 중심각 120°·110°를 구하고 남은 각 x=130°",
+  "accessibilityDescription": "세 꼭짓점까지 같은 반지름 눈금, B30도 C35도, 중심 O에 120도 110도 130도 호가 연결된다. 채운 면이 없다.",
+  "sourceConditions": [
+    {
+      "id": "condition1",
+      "condition": "O는 외심 OA=OB=OC",
+      "mappedTo": [
+        "circumRadius"
+      ],
+      "sourceQuote": "오른쪽 그림에서 점 $O$가 $\\triangle ABC$의"
+    },
+    {
+      "id": "condition2",
+      "condition": "B의 30° C의 35°",
+      "mappedTo": [
+        "aOBC",
+        "aACO"
+      ],
+      "sourceQuote": "오른쪽 그림에서 점 $O$가 $\\triangle ABC$의"
+    },
+    {
+      "id": "condition3",
+      "condition": "BOC120°, COA110°, AOB130°",
+      "mappedTo": [
+        "aBOC",
+        "aAOC",
+        "aAOB"
+      ],
+      "sourceQuote": "오른쪽 그림에서 점 $O$가 $\\triangle ABC$의"
+    }
+  ],
+  "newVisualInformation": [
+    "발문·원본 그림과 해설의 실제 점·선·각·길이를 각 엔진 필드에 명확히 연결한다.",
+    "배경은 흰색이며 넓이·영역이 필수인 경우 외에는 면 채움을 사용하지 않는다."
+  ]
+}

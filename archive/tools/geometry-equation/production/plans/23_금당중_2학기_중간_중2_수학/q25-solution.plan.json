@@ -1,0 +1,427 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "7500000000000",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "2500000000000",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 610,
+    "height": 430
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "H",
+    "G"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAF",
+      "refs": [
+        "A",
+        "F"
+      ]
+    },
+    {
+      "id": "sFB",
+      "refs": [
+        "F",
+        "B"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "sCE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "sEA",
+      "refs": [
+        "E",
+        "A"
+      ]
+    },
+    {
+      "id": "sFH",
+      "refs": [
+        "F",
+        "H"
+      ]
+    },
+    {
+      "id": "sHE",
+      "refs": [
+        "H",
+        "E"
+      ]
+    },
+    {
+      "id": "sAH",
+      "refs": [
+        "A",
+        "H"
+      ]
+    },
+    {
+      "id": "sHG",
+      "refs": [
+        "H",
+        "G"
+      ]
+    },
+    {
+      "id": "sGD",
+      "refs": [
+        "G",
+        "D"
+      ]
+    },
+    {
+      "id": "sBG",
+      "refs": [
+        "B",
+        "G"
+      ]
+    },
+    {
+      "id": "sCG",
+      "refs": [
+        "C",
+        "G"
+      ]
+    },
+    {
+      "id": "sFG",
+      "refs": [
+        "F",
+        "G"
+      ]
+    },
+    {
+      "id": "sEG",
+      "refs": [
+        "E",
+        "G"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "ABmid",
+        "count": 1,
+        "segments": [
+          "sAF",
+          "sFB"
+        ]
+      },
+      {
+        "id": "ACmid",
+        "count": 2,
+        "segments": [
+          "sEA",
+          "sCE"
+        ]
+      },
+      {
+        "id": "BCmid",
+        "count": 3,
+        "segments": [
+          "sBD",
+          "sDC"
+        ]
+      }
+    ],
+    "regions": [
+      {
+        "id": "areaAFE",
+        "fill": "LIGHT",
+        "label": "3t",
+        "labelPlacement": "AUTO_LEADER",
+        "shapes": [
+          {
+            "polygon": [
+              "A",
+              "F",
+              "E"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "areaFGE",
+        "fill": "LIGHT",
+        "label": "t",
+        "labelPlacement": "AUTO_LEADER",
+        "shapes": [
+          {
+            "polygon": [
+              "F",
+              "G",
+              "E"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "areaGBC",
+        "fill": "LIGHT",
+        "label": "4t",
+        "labelPlacement": "AUTO_LEADER",
+        "shapes": [
+          {
+            "polygon": [
+              "G",
+              "B",
+              "C"
+            ]
+          }
+        ]
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dAH",
+        "from": "A",
+        "to": "H",
+        "label": "3k",
+        "side": "LEFT",
+        "style": "INLINE"
+      },
+      {
+        "id": "dHG",
+        "from": "H",
+        "to": "G",
+        "label": "k",
+        "side": "RIGHT",
+        "style": "INLINE"
+      },
+      {
+        "id": "dGD",
+        "from": "G",
+        "to": "D",
+        "label": "2k",
+        "side": "RIGHT",
+        "style": "INLINE"
+      }
+    ]
+  },
+  "caption": "중점과 무게중심에서 AH:HG:GD=3:1:2, 넓이 AFE:FGE:GBC=3:1:4 (비례 단위 t)",
+  "accessibilityDescription": "F E D의 중점 눈금 세 그룹, 중선 A H G D의 3k·k·2k 비, 답에서 비교하는 세 삼각형 AFE, FGE, GBC에만 면색과 3t·t·4t의 상대 넓이를 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "condition1",
+      "condition": "F E D는 각 변의 중점",
+      "mappedTo": [
+        "ABmid",
+        "ACmid",
+        "BCmid"
+      ],
+      "sourceQuote": "[서술형 4] 그림에서 점 $G$는 $\\triangle A"
+    },
+    {
+      "id": "condition2",
+      "condition": "AH:HG:GD=3:1:2",
+      "mappedTo": [
+        "dAH",
+        "dHG",
+        "dGD"
+      ],
+      "sourceQuote": "[서술형 4] 그림에서 점 $G$는 $\\triangle A"
+    },
+    {
+      "id": "condition3",
+      "condition": "넓이비 AFE:FGE:GBC=3:1:4",
+      "mappedTo": [
+        "areaAFE",
+        "areaFGE",
+        "areaGBC"
+      ],
+      "sourceQuote": "[서술형 4] 그림에서 점 $G$는 $\\triangle A"
+    }
+  ],
+  "newVisualInformation": [
+    "발문·원본 그림과 해설의 실제 점·선·각·길이를 각 엔진 필드에 명확히 연결한다.",
+    "배경은 흰색이며 넓이·영역이 필수인 경우 외에는 면 채움을 사용하지 않는다."
+  ]
+}
