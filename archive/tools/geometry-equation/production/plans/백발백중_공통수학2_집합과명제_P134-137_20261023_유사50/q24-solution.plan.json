@@ -1,0 +1,71 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "caption": "U는 1~30, A는 3의 배수 10개, B는 5의 배수 6개이며 공배수 2개를 고려해 바깥 16개를 센다.",
+  "accessibilityDescription": "U는 1~30, A는 3의 배수 10개, B는 5의 배수 6개이며 공배수 2개를 고려해 바깥 16개를 센다.",
+  "sourceConditions": [
+    {
+      "id": "universe",
+      "condition": "U={1,...,30}",
+      "mappedTo": "diagram.universe.count"
+    },
+    {
+      "id": "setA",
+      "condition": "n(A3)=10",
+      "mappedTo": "diagram.sets[0].count"
+    },
+    {
+      "id": "setB",
+      "condition": "n(A5)=6",
+      "mappedTo": "diagram.sets[1].count"
+    },
+    {
+      "id": "overlap",
+      "condition": "공배수=2",
+      "mappedTo": "diagram.elements[0]"
+    },
+    {
+      "id": "complement",
+      "condition": "A3^c∩A5^c=(A∪B)^c",
+      "mappedTo": "diagram.shade"
+    },
+    {
+      "id": "outside",
+      "condition": "바깥 16개",
+      "mappedTo": "diagram.elements[1]"
+    }
+  ],
+  "newVisualInformation": [
+    "두 원 밖의 음영이 교집합 여집합인 것을 보이고, 겹친 배수는 한 번만 빼야 함을 나타낸다."
+  ],
+  "diagram": {
+    "kind": "VENN",
+    "universe": {
+      "name": "U",
+      "count": "30"
+    },
+    "sets": [
+      {
+        "id": "A",
+        "count": "10"
+      },
+      {
+        "id": "B",
+        "count": "6"
+      }
+    ],
+    "elements": [
+      {
+        "text": "2개",
+        "in": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "text": "16개",
+        "in": []
+      }
+    ],
+    "shade": "(A∪B)^c"
+  }
+}

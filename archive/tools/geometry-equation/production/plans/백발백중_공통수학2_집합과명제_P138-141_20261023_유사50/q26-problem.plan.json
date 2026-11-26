@@ -1,0 +1,225 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "원 밖 점 P에서 한 원에 그은 두 접선 PT₁과 PT₂를 나타낸다.",
+  "accessibilityDescription": "원 밖 점 P에서 한 원에 그은 두 접선 PT₁과 PT₂를 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "circle",
+      "condition": "원점 O를 중심으로 반지름 1인 원",
+      "mappedTo": [
+        "mathPlan.nodes[2].args.radius",
+        "displayCircles"
+      ]
+    },
+    {
+      "id": "external",
+      "condition": "원 밖 점 P=(√5,0)",
+      "mappedTo": [
+        "mathPlan.nodes[1].args.coordinates",
+        "displayPoints"
+      ]
+    },
+    {
+      "id": "twoTangents",
+      "condition": "P에서 그은 서로 다른 두 접선",
+      "mappedTo": [
+        "displaySegments[0]",
+        "displaySegments[1]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "접점 두 곳과 외부 점의 위치만 보이며 두 접선의 기울기는 적지 않는다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "5"
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "c",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "t1",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "-2"
+          },
+          "c": {
+            "kind": "expression",
+            "op": "neg",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "5"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "t2",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "c": {
+            "kind": "expression",
+            "op": "neg",
+            "args": [
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "5"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T1",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "O",
+          "t1"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T2",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "O",
+          "t2"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 680,
+    "height": 520
+  },
+  "displayCircles": [
+    "c"
+  ],
+  "displayPoints": [
+    "O",
+    "P",
+    "T1",
+    "T2"
+  ],
+  "displaySegments": [
+    {
+      "id": "sPT1",
+      "refs": [
+        "P",
+        "T1"
+      ]
+    },
+    {
+      "id": "sPT2",
+      "refs": [
+        "P",
+        "T2"
+      ]
+    }
+  ],
+  "pointNames": {
+    "T1": "T₁",
+    "T2": "T₂"
+  },
+  "sourceQuote": "점 $(\\sqrt5,0)$에서 원 $x^2+y^2=1$에 그은 서로 다른 두 접선의 기울기의 곱은?"
+}

@@ -1,0 +1,40 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "caption": "A∩B=A이면 A⊆B이며 A∪B=B이다. 두 집합이 같은 경우도 허용된다.",
+  "accessibilityDescription": "A∩B=A이면 A⊆B이며 A∪B=B이다. 두 집합이 같은 경우도 허용된다.",
+  "sourceConditions": [
+    {
+      "id": "given",
+      "condition": "A∩B=A",
+      "mappedTo": [
+        "diagram.subset"
+      ]
+    },
+    {
+      "id": "result",
+      "condition": "A∪B=B",
+      "mappedTo": [
+        "diagram.shade"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "A가 B 안에 놓여 합집합이 B인 한 대표적 배치를 보여 준다. A=B도 가능한 조건임을 캡션에서 명시한다."
+  ],
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A"
+      },
+      {
+        "id": "B"
+      }
+    ],
+    "subset": [
+      "A",
+      "B"
+    ],
+    "shade": "B"
+  }
+}

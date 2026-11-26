@@ -1,0 +1,74 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "caption": "그림에서 A=D24, B=D18이다. 표시한 원소 4, 8, 12, 24는 모두 A-B에만 있고, 표시하지 않은 공약수는 겹치는 부분이다.",
+  "accessibilityDescription": "그림에서 A=D24, B=D18이다. 표시한 원소 4, 8, 12, 24는 모두 A-B에만 있고, 표시하지 않은 공약수는 겹치는 부분이다.",
+  "sourceConditions": [
+    {
+      "id": "definition",
+      "condition": "A=D24, B=D18",
+      "mappedTo": "diagram.sets"
+    },
+    {
+      "id": "counts",
+      "condition": "n(A)=8, n(B)=6",
+      "mappedTo": [
+        "diagram.sets[0].count",
+        "diagram.sets[1].count"
+      ]
+    },
+    {
+      "id": "difference",
+      "condition": "D24-D18={4,8,12,24}",
+      "mappedTo": "diagram.elements"
+    },
+    {
+      "id": "region",
+      "condition": "A-B",
+      "mappedTo": "diagram.shade"
+    }
+  ],
+  "newVisualInformation": [
+    "첫 집합에만 있는 약수 원소를 겹친 공약수 영역과 구분한다."
+  ],
+  "diagram": {
+    "kind": "VENN",
+    "showUniverse": false,
+    "sets": [
+      {
+        "id": "A",
+        "count": "8"
+      },
+      {
+        "id": "B",
+        "count": "6"
+      }
+    ],
+    "elements": [
+      {
+        "text": "4",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "8",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "12",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "24",
+        "in": [
+          "A"
+        ]
+      }
+    ],
+    "shade": "A-B"
+  }
+}
