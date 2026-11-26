@@ -1,0 +1,789 @@
+{
+  "schemaVersion": "gpt-finalqa-evidence-v1",
+  "examUid": "26_강남여고_1학기_2차_고2_대수_유사2",
+  "sourcePath": "archive/exams/similar/high/h2/1final/26_강남여고_1학기_2차_고2_대수_유사2.js",
+  "blindPackDigest": "3f946761375a72760dd6502707d1da690aa5cf58f6c247fc7e8b97523a178830",
+  "reviewer": {
+    "id": "GPT-6 dedicated FIRST_FORMAL reviewer 2026-11-26 KST",
+    "blindFirstPass": "CONFIRMED",
+    "independentEvidence": "Official answer-hidden --blind-pack was solved for all 25 QIDs and detailed calculations frozen at SHA-256 ed4365e46858299cd28d21d622882dd4b87e546d802af7dcbd72bec8da141d33 before source answers, solution or metadata were opened. Same GPT reviewer in a separate answer-hidden phase; not an external human or second model. All 50 axes separately inspected; mathematical validity is a reviewer judgment, not software certification.",
+    "blindArtifactRef": "outside-git:/tmp/qa-gangnam-blind-20261126.md#sha256=ed4365e46858299cd28d21d622882dd4b87e546d802af7dcbd72bec8da141d33"
+  },
+  "questions": [
+    {
+      "qid": 1,
+      "sourceFingerprint": "6a65e5f39527624e10d157eeae9cbea068fdc34654eb03aaf8cf1028c741b64c",
+      "blindAnswer": "④",
+      "blindReasoning": "**④, `6√3`**. The exterior angle 120° at B makes interior ∠B=60°. By the extended sine law CA=2R sin B=12(√3/2)=6√3; ∠A=35° ensures a nondegenerate triangle.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "B 외각 120°와 외접원 반지름 6이 모두 문자로 주어져 변 CA는 사인법칙으로 유일하게 구한다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "B=60°, CA=12sin60°를 판서식으로 설명하면 그림 없이 계산을 재현한다."
+        }
+      },
+      "reviewNotes": {
+        "answerAndDistractors": "블라인드 풀이의 결론 ④ ($6\\sqrt3$)만 일치. 5개 보기의 값·부호·범위·중복을 대조했으며 다른 4개는 계산 오류나 조건 누락에 따른 구별 가능한 오답이다.",
+        "solution": "블라인드 선행 계산을 현행 작은칠판 해설과 단계별 대조했다. **④, `6√3`**. The exterior angle 120° at B makes interior ∠B=60°. By the extended sine law CA=2R sin B=12(√3/2)=6√3; ∠A=35° ensures a nondegenerate triangle.",
+        "curriculumAndMeta": "2022 대수 H22-A-05-CORE, 정수 난도 1; ACTIVE PT_H22A_05_SINE_LAW / TPL_H22A_05_SINE_LAW_109, RPM H2-M1-RPM-109; 현행 4칸 given/goal/method/condition 의미 판정 완료."
+      }
+    },
+    {
+      "qid": 2,
+      "sourceFingerprint": "4cb2620c424e5983517c207652594c4ec89cdd0510ee235073f11554e0135a0f",
+      "blindAnswer": "③",
+      "blindReasoning": "**③, `1/2`**. Circumference 6π gives R=3, and BC=2R sin A=3, so sin A=1/2. Although A could be 30° or 150° without other angles, the asked sine is unique.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "외접원 둘레 6π 및 현 BC=3으로 반지름과 sinA를 수식만으로 결정한다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "둘레 공식과 BC=2RsinA를 순서대로 적으면 각의 모양 그림이 불필요하다."
+        }
+      },
+      "reviewNotes": {
+        "answerAndDistractors": "블라인드 풀이의 결론 ③ ($\\dfrac12$)만 일치. 5개 보기의 값·부호·범위·중복을 대조했으며 다른 4개는 계산 오류나 조건 누락에 따른 구별 가능한 오답이다.",
+        "solution": "블라인드 선행 계산을 현행 작은칠판 해설과 단계별 대조했다. **③, `1/2`**. Circumference 6π gives R=3, and BC=2R sin A=3, so sin A=1/2. Although A could be 30° or 150° without other angles, the asked sine is unique.",
+        "curriculumAndMeta": "2022 대수 H22-A-05-CORE, 정수 난도 1; ACTIVE PT_H22A_05_SINE_LAW / TPL_H22A_05_SINE_LAW_109, RPM H2-M1-RPM-109; 현행 4칸 given/goal/method/condition 의미 판정 완료. 유형명 외접원의 넓이→둘레로 수정; BC와 외접원 둘레에서 반지름을 역산"
+      }
+    },
+    {
+      "qid": 3,
+      "sourceFingerprint": "a4df8ee1365d7d79504ec870bddbd0df9e900e6c2b5611a9ce40566a44419006",
+      "blindAnswer": "②",
+      "blindReasoning": "**②, `9`**. Area=(1/2)AB·BC·sin 150°=(1/2)·9·4·(1/2)=9.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "PASS",
+          "planDigest": "7e7c9fb56637c4b381ec0556cd86d99327576b97f0b619c63eb558bee3b366fd",
+          "reasoning": "꼭짓점 B의 150° 끼인각과 변 AB=9, BC=4를 표시한 삼각형이 위치 해석에 도움 된다. 공식 construction-spike의 변길이·끼인각·라벨·학생 정답 비노출을 확인."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "55c9c72f67108ffbfa251fadddc3fc678ef67dffe5d8fd6a88905bf36f1ccc59",
+          "reasoning": "B를 원점, C를 (4,0), A를 BC로부터 반시계 150° 거리9로 놓아 넓이식 1/2·9·4·sin150°를 뒷받침한다. 공식 construction-spike의 변길이·끼인각·라벨·학생 정답 비노출을 확인."
+        }
+      },
+      "reviewNotes": {
+        "answerAndDistractors": "블라인드 풀이의 결론 ② ($9$)만 일치. 5개 보기의 값·부호·범위·중복을 대조했으며 다른 4개는 계산 오류나 조건 누락에 따른 구별 가능한 오답이다.",
+        "solution": "블라인드 선행 계산을 현행 작은칠판 해설과 단계별 대조했다. **②, `9`**. Area=(1/2)AB·BC·sin 150°=(1/2)·9·4·(1/2)=9.",
+        "curriculumAndMeta": "2022 대수 H22-A-05-CORE, 정수 난도 1; ACTIVE PT_H22A_05_TRIANGLE_AREA / TPL_H22A_05_TRIANGLE_AREA_113, RPM H2-M1-RPM-113; 현행 4칸 given/goal/method/condition 의미 판정 완료."
+      }
+    },
+    {
+      "qid": 4,
+      "sourceFingerprint": "9e7a4f220d37b8ef33c1f080b25ddd12db5d3243e47e86000869e29b21afbc50",
+      "blindAnswer": "④",
+      "blindReasoning": "**④, `6`**. f(4)=−2+3(4−1)=7; g(3)=7−3(3−1)=1; difference 6.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "두 등차수열의 수치 일반항을 텍스트에서 직접 읽으며 별도의 공간 축이 없다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "f4=7, g3=1의 대입이 핵심이므로 표·그래프가 중복된다."
+        }
+      },
+      "reviewNotes": {
+        "answerAndDistractors": "블라인드 풀이의 결론 ④ ($6$)만 일치. 5개 보기의 값·부호·범위·중복을 대조했으며 다른 4개는 계산 오류나 조건 누락에 따른 구별 가능한 오답이다.",
+        "solution": "블라인드 선행 계산을 현행 작은칠판 해설과 단계별 대조했다. **④, `6`**. f(4)=−2+3(4−1)=7; g(3)=7−3(3−1)=1; difference 6.",
+        "curriculumAndMeta": "2022 대수 H22-A-06-SEQUENCE_BASIC, 정수 난도 1; ACTIVE PT_H22A_06_ARITHMETIC_SEQUENCE / TPL_H22A_06_ARITHMETIC_SEQUENCE_115, RPM H2-M1-RPM-115; 현행 4칸 given/goal/method/condition 의미 판정 완료."
+      }
+    },
+    {
+      "qid": 5,
+      "sourceFingerprint": "101afd2e750bd489f9d6930758f85b6ea2084b7c9cccda6f134bc9fb6ea7e672",
+      "blindAnswer": "③",
+      "blindReasoning": "**③, `2`**. a6=64(−1/2)^5=−2; b4=(1/2)2^3=4; sum 2.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "두 등비수열의 첫항·공비·항 번호가 모두 수치로 주어진다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "음수 공비의 홀수 지수 부호와 b4 계산식만 확인하면 충분하다."
+        }
+      },
+      "reviewNotes": {
+        "answerAndDistractors": "블라인드 풀이의 결론 ③ ($2$)만 일치. 5개 보기의 값·부호·범위·중복을 대조했으며 다른 4개는 계산 오류나 조건 누락에 따른 구별 가능한 오답이다.",
+        "solution": "블라인드 선행 계산을 현행 작은칠판 해설과 단계별 대조했다. **③, `2`**. a6=64(−1/2)^5=−2; b4=(1/2)2^3=4; sum 2.",
+        "curriculumAndMeta": "2022 대수 H22-A-06-SEQUENCE_BASIC, 정수 난도 1; ACTIVE PT_H22A_06_GEOMETRIC_SEQUENCE / TPL_H22A_06_GEOMETRIC_SEQUENCE_118, RPM H2-M1-RPM-118; 현행 4칸 given/goal/method/condition 의미 판정 완료."
+      }
+    },
+    {
+      "qid": 6,
+      "sourceFingerprint": "57c03c4ff7703ed6e308a7097fa052d80ab41c615aab7d2b2ceeeb9327e014bc",
+      "blindAnswer": "⑤",
+      "blindReasoning": "**⑤, `477`**. 6d=a11−a5=18, so d=3; a1=13−4·3=1; S18=18(2+17·3)/2=477.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "a5와 a11의 차를 통해 공차를 구하므로 도형이나 그래프가 없다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "6d=18, a1=1, S18=477로 이어지는 유한식 전개가 시각 자료보다 직접적이다."
+        }
+      },
+      "reviewNotes": {
+        "answerAndDistractors": "블라인드 풀이의 결론 ⑤ ($477$)만 일치. 5개 보기의 값·부호·범위·중복을 대조했으며 다른 4개는 계산 오류나 조건 누락에 따른 구별 가능한 오답이다.",
+        "solution": "블라인드 선행 계산을 현행 작은칠판 해설과 단계별 대조했다. **⑤, `477`**. 6d=a11−a5=18, so d=3; a1=13−4·3=1; S18=18(2+17·3)/2=477.",
+        "curriculumAndMeta": "2022 대수 H22-A-06-SEQUENCE_BASIC, 정수 난도 2; ACTIVE PT_H22A_06_ARITHMETIC_SEQUENCE / TPL_H22A_06_ARITHMETIC_SEQUENCE_117, RPM H2-M1-RPM-117; 현행 4칸 given/goal/method/condition 의미 판정 완료."
+      }
+    },
+    {
+      "qid": 7,
+      "sourceFingerprint": "13222ff5ad6365a139ef98d53bc55f851ab998e54caa4ceb85303bf98eb60c88",
+      "blindAnswer": "④",
+      "blindReasoning": "**④, `3`**. Grouping S8−S4=r^4S4 gives r^4=16, r=±2. If r=−2 and a1>0 then S4=−5a1<0, contradicting S4=15; hence r=2, S4=15a1 means a1=1 and a1+r=3.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "S4=15, 다음 네 항 합=240, 첫항 양수라는 분기 조건이 모두 문자로 적혔다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "r=±2 가운데 첫항 양수 조건으로 -2를 배제하는 경우 분기가 해설 식에서 명확하다."
+        }
+      },
+      "reviewNotes": {
+        "answerAndDistractors": "블라인드 풀이의 결론 ④ ($3$)만 일치. 5개 보기의 값·부호·범위·중복을 대조했으며 다른 4개는 계산 오류나 조건 누락에 따른 구별 가능한 오답이다.",
+        "solution": "블라인드 선행 계산을 현행 작은칠판 해설과 단계별 대조했다. **④, `3`**. Grouping S8−S4=r^4S4 gives r^4=16, r=±2. If r=−2 and a1>0 then S4=−5a1<0, contradicting S4=15; hence r=2, S4=15a1 means a1=1 and a1+r=3.",
+        "curriculumAndMeta": "2022 대수 H22-A-06-SEQUENCE_BASIC, 정수 난도 3; ACTIVE PT_H22A_06_GEOMETRIC_SEQUENCE / TPL_H22A_06_GEOMETRIC_SEQUENCE_120, RPM H2-M1-RPM-120; 현행 4칸 given/goal/method/condition 의미 판정 완료."
+      }
+    },
+    {
+      "qid": 8,
+      "sourceFingerprint": "a791c2583d86efb9c2579b344b2001a496c0a4444ba780d61de467c6a1054be8",
+      "blindAnswer": "②",
+      "blindReasoning": "**②, false `Σa_kb_k=−24`**. Linear sums give Σ(a+b)=2, Σ(2a−3b)=24, Σ(3a+b)=14, Σ2=16. The sum of products is not the product of sums; sequences with identical sums may yield different product sums.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "두 시그마 합의 선형성과 곱의 비선형성에 관한 판단이며 시각적 배치 정보가 없다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "a1=6, b2=-4 반례로 곱합이 0임을 확인하면 충분하다."
+        }
+      },
+      "reviewNotes": {
+        "answerAndDistractors": "블라인드 풀이의 결론 ② ($\\sum_{k=1}^{8}a_kb_k=-24$)만 일치. 5개 보기의 값·부호·범위·중복을 대조했으며 다른 4개는 계산 오류나 조건 누락에 따른 구별 가능한 오답이다.",
+        "solution": "블라인드 선행 계산을 현행 작은칠판 해설과 단계별 대조했다. **②, false `Σa_kb_k=−24`**. Linear sums give Σ(a+b)=2, Σ(2a−3b)=24, Σ(3a+b)=14, Σ2=16. The sum of products is not the product of sums; sequences with identical sums may yield different product sums.",
+        "curriculumAndMeta": "2022 대수 H22-A-07-SEQUENCE_BASIC, 정수 난도 2; ACTIVE PT_H22A_07_SIGMA_NOTATION / TPL_H22A_07_SIGMA_NOTATION_124, RPM H2-M1-RPM-124; 현행 4칸 given/goal/method/condition 의미 판정 완료."
+      }
+    },
+    {
+      "qid": 9,
+      "sourceFingerprint": "3f77d48233225bdd6478d257b08b460047183fa76ae438612d1c51dd506f60e0",
+      "blindAnswer": "①",
+      "blindReasoning": "**①, `5/3`**. Let u=a6 and d≠0. Geometric a3,u,a12 imply u²=(u−3d)(u+6d)=u²+3ud−18d², so u=6d (nonzero). Therefore (a16−a6)/a6=10d/(6d)=5/3.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "등차항 세 개가 등비수열을 이룬다는 대수적 조건만 필요하다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "u²=(u-3d)(u+6d)에서 u=6d를 도출하는 전개가 핵심이다."
+        }
+      },
+      "reviewNotes": {
+        "answerAndDistractors": "블라인드 풀이의 결론 ① ($\\dfrac53$)만 일치. 5개 보기의 값·부호·범위·중복을 대조했으며 다른 4개는 계산 오류나 조건 누락에 따른 구별 가능한 오답이다.",
+        "solution": "블라인드 선행 계산을 현행 작은칠판 해설과 단계별 대조했다. **①, `5/3`**. Let u=a6 and d≠0. Geometric a3,u,a12 imply u²=(u−3d)(u+6d)=u²+3ud−18d², so u=6d (nonzero). Therefore (a16−a6)/a6=10d/(6d)=5/3.",
+        "curriculumAndMeta": "2022 대수 H22-A-06-SEQUENCE_APPLICATION, 정수 난도 3; ACTIVE PT_H22A_06_SEQUENCE_APPLICATION / TPL_H22A_06_SEQUENCE_APPLICATION_121, RPM H2-M1-RPM-121; 현행 4칸 given/goal/method/condition 의미 판정 완료. 공차 d≠0을 실제 풀이에 반영. 4칸 사전에 '0이 아님' 정확한 용어가 없어 후보 갭으로 별도 기록하고 유사한 임의 번호를 만들지 않음"
+      }
+    },
+    {
+      "qid": 10,
+      "sourceFingerprint": "e93f473ea6096e63b56f501d900b978c367419a66268bf16d56b79d441e208d1",
+      "blindAnswer": "③",
+      "blindReasoning": "**③, `4`**. Right triangle ABC: a=BC=AB tan30°=2√3/√3=2. In DEF, by cosine law 20=b²+8−2b(2√2)cos45°=b²+8−4b, hence (b−6)(b+2)=0; b>0 gives b=6; b−a=4.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "두 독립 삼각형의 주어진 각·변을 발문에서 정확히 열거하므로 계산에 필요한 그림 조건 누락이 없다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "a=2, b=6을 두 법칙으로 분리해 계산하므로 그림이 새 결론을 주지 않는다."
+        }
+      },
+      "reviewNotes": {
+        "answerAndDistractors": "블라인드 풀이의 결론 ③ ($4$)만 일치. 5개 보기의 값·부호·범위·중복을 대조했으며 다른 4개는 계산 오류나 조건 누락에 따른 구별 가능한 오답이다.",
+        "solution": "블라인드 선행 계산을 현행 작은칠판 해설과 단계별 대조했다. **③, `4`**. Right triangle ABC: a=BC=AB tan30°=2√3/√3=2. In DEF, by cosine law 20=b²+8−2b(2√2)cos45°=b²+8−4b, hence (b−6)(b+2)=0; b>0 gives b=6; b−a=4.",
+        "curriculumAndMeta": "2022 대수 H22-A-05-CORE, 정수 난도 3; ACTIVE PT_H22A_05_COSINE_LAW / TPL_H22A_05_COSINE_LAW_111, RPM H2-M1-RPM-111; 현행 4칸 given/goal/method/condition 의미 판정 완료. 이 문제는 도→라디안 변환을 하지 않으므로 CC_RADIAN_DEGREE_CONVERSION을 삭제"
+      }
+    },
+    {
+      "qid": 11,
+      "sourceFingerprint": "2c244afffe8550f2ccc3d3a97e577eac0f2c454dfac16735ddc41c6c2e112fc6",
+      "blindAnswer": "⑤",
+      "blindReasoning": "**⑤, `36`**. Remaining arc BC+CA=270°, ratio 4:5 gives central arcs 120° and 150°. Area ABC=(R²/2)(sin90°+sin120°+sin150°)=18(1+√3/2+1/2)=27+9√3, so p+q=36.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "PASS",
+          "planDigest": "0c0fa3a63026e46ee523f2c1099ded6caa69c12d517cacacd8c0114a02be92f5",
+          "reasoning": "원 O와 반시계 A→B→C, 호 BC:CA=4:5, 중심각 90°를 그린 개형이 호의 순서 오독을 줄인다. 실제 호 BC=120°·CA=150°로 연결, 문제엔 유도각 수치 미표시."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "eb16eb9e910b22ece5ce99d1e4fffad798aff64ab783d41e613f15628f5bf425",
+          "reasoning": "A(6,0), B(0,6), C는 중심각 210° 위치로 두어 호 120°·150°와 3중심삼각형 분해를 정확히 확인한다. 실제 호 BC=120°·CA=150°로 연결, 문제엔 유도각 수치 미표시."
+        }
+      },
+      "reviewNotes": {
+        "answerAndDistractors": "블라인드 풀이의 결론 ⑤ ($36$)만 일치. 5개 보기의 값·부호·범위·중복을 대조했으며 다른 4개는 계산 오류나 조건 누락에 따른 구별 가능한 오답이다.",
+        "solution": "블라인드 선행 계산을 현행 작은칠판 해설과 단계별 대조했다. **⑤, `36`**. Remaining arc BC+CA=270°, ratio 4:5 gives central arcs 120° and 150°. Area ABC=(R²/2)(sin90°+sin120°+sin150°)=18(1+√3/2+1/2)=27+9√3, so p+q=36.",
+        "curriculumAndMeta": "2022 대수 H22-A-05-CORE, 정수 난도 3; ACTIVE PT_H22A_05_TRIANGLE_AREA / TPL_H22A_05_TRIANGLE_AREA_114, RPM H2-M1-RPM-114; 현행 4칸 given/goal/method/condition 의미 판정 완료."
+      }
+    },
+    {
+      "qid": 12,
+      "sourceFingerprint": "72d5a9a53097a226e6f1b5a60a74134cbf03a6deab5606e6a54e2bc1191a8903",
+      "blindAnswer": "③",
+      "blindReasoning": "**③, `225√3/4`**. Cyclic quadrilateral Brahmagupta, semiperimeter s=(7+8+13+13)/2=41/2. Area=sqrt((27/2)(25/2)(15/2)(15/2))=225√3/4.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "ENGINE_PENDING",
+          "planDigest": "fb8fda3929a38d1b3e6a20e59adddd8bc2a6670f66bb3e0e26660a67b0e99b53",
+          "reasoning": "원에 내접한 A-B-C-D의 변 7,8,13,13 연속 순서를 보여 주면 유용하나 정밀 작도 계획은 미동결이다. 엔진 미지원 인계이며 실행 가능 플랜 수에 넣지 않음."
+        },
+        "solution": {
+          "status": "ENGINE_PENDING",
+          "planDigest": "7001ebc51cd3a24be30c0d150055d543ffae224bc9dc0b24543efaa7aa1311d6",
+          "reasoning": "AC 대각선·보각 B=120° D=60°·세 변 조건을 동시에 보이는 공식 정밀 기하 플랜이 아직 없다. 엔진 미지원 인계이며 실행 가능 플랜 수에 넣지 않음."
+        }
+      },
+      "reviewNotes": {
+        "answerAndDistractors": "블라인드 풀이의 결론 ③ ($\\dfrac{225\\sqrt3}{4}$)만 일치. 5개 보기의 값·부호·범위·중복을 대조했으며 다른 4개는 계산 오류나 조건 누락에 따른 구별 가능한 오답이다.",
+        "solution": "블라인드 선행 계산을 현행 작은칠판 해설과 단계별 대조했다. **③, `225√3/4`**. Cyclic quadrilateral Brahmagupta, semiperimeter s=(7+8+13+13)/2=41/2. Area=sqrt((27/2)(25/2)(15/2)(15/2))=225√3/4.",
+        "curriculumAndMeta": "2022 대수 H22-A-05-CORE, 정수 난도 3; ACTIVE PT_H22A_05_TRIANGLE_AREA / TPL_H22A_05_TRIANGLE_AREA_114, RPM H2-M1-RPM-114; 현행 4칸 given/goal/method/condition 의미 판정 완료."
+      }
+    },
+    {
+      "qid": 13,
+      "sourceFingerprint": "dadff23e40adfd48add35c1d512efb35fdb63c411d9c5ea1652c3891951632e8",
+      "blindAnswer": "④",
+      "blindReasoning": "**④, `112`**. Let a1=a,d common difference. a4+a7=2a+9d=14, while S6+S12=3(2a+5d)+6(2a+11d)=9(2a+9d)=126. Subtract 14 to get 112.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "a4+a7와 S6,S12의 선형 조합 관계이므로 숫자·수식 외의 배치는 없다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "S6+S12=9(a4+a7) 대수식이 정확하고 그림이 값을 바꾸지 않는다."
+        }
+      },
+      "reviewNotes": {
+        "answerAndDistractors": "블라인드 풀이의 결론 ④ ($112$)만 일치. 5개 보기의 값·부호·범위·중복을 대조했으며 다른 4개는 계산 오류나 조건 누락에 따른 구별 가능한 오답이다.",
+        "solution": "블라인드 선행 계산을 현행 작은칠판 해설과 단계별 대조했다. **④, `112`**. Let a1=a,d common difference. a4+a7=2a+9d=14, while S6+S12=3(2a+5d)+6(2a+11d)=9(2a+9d)=126. Subtract 14 to get 112.",
+        "curriculumAndMeta": "2022 대수 H22-A-06-SEQUENCE_BASIC, 정수 난도 2; ACTIVE PT_H22A_06_ARITHMETIC_SEQUENCE / TPL_H22A_06_ARITHMETIC_SEQUENCE_117, RPM H2-M1-RPM-117; 현행 4칸 given/goal/method/condition 의미 판정 완료."
+      }
+    },
+    {
+      "qid": 14,
+      "sourceFingerprint": "c590d6bd794d07797eace7288622837d8f6e13e8bc0a096c01f6c42544153821",
+      "blindAnswer": "⑤",
+      "blindReasoning": "**⑤, `168`**. For n≥2, a_n=S_n−S_{n−1}=8·3^{n−1}, also a1=S1=8. a2+a4−a3=24+216−72=168.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "부분합 S_n=4(3^n-1)이 직접 주어져 항 차분 계산으로 끝난다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "a_n=S_n-S_{n-1}, n≥2의 연산 과정이 표 없이도 명확하다."
+        }
+      },
+      "reviewNotes": {
+        "answerAndDistractors": "블라인드 풀이의 결론 ⑤ ($168$)만 일치. 5개 보기의 값·부호·범위·중복을 대조했으며 다른 4개는 계산 오류나 조건 누락에 따른 구별 가능한 오답이다.",
+        "solution": "블라인드 선행 계산을 현행 작은칠판 해설과 단계별 대조했다. **⑤, `168`**. For n≥2, a_n=S_n−S_{n−1}=8·3^{n−1}, also a1=S1=8. a2+a4−a3=24+216−72=168.",
+        "curriculumAndMeta": "2022 대수 H22-A-07-SEQUENCE_BASIC, 정수 난도 2; ACTIVE PT_H22A_07_DIFFERENCE_SEQUENCE / TPL_H22A_07_DIFFERENCE_SEQUENCE_128, RPM H2-M1-RPM-128; 현행 4칸 given/goal/method/condition 의미 판정 완료."
+      }
+    },
+    {
+      "qid": 15,
+      "sourceFingerprint": "dc638e5c936bbfeb76ba1071e3e758d228f3cb290c2b5a97c815dad138325c40",
+      "blindAnswer": "②",
+      "blindReasoning": "**②, `(84,8,4)`**. Σ_{k=1..4}a_{2k}=Σ(8k+1)=84; b_{3k}=2^{3k}=8^k, hence Σb_{3k}=8(8^4−1)/7. Therefore (p,q,r)=(84,8,4).",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "a2k와 b3k의 인덱스 치환 및 시그마가 핵심이며 공간관계가 없다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "Σ(8k+1)=84 및 Σ8^k의 등비합 전개로 충분하다."
+        }
+      },
+      "reviewNotes": {
+        "answerAndDistractors": "블라인드 풀이의 결론 ② ($(84,8,4)$)만 일치. 5개 보기의 값·부호·범위·중복을 대조했으며 다른 4개는 계산 오류나 조건 누락에 따른 구별 가능한 오답이다.",
+        "solution": "블라인드 선행 계산을 현행 작은칠판 해설과 단계별 대조했다. **②, `(84,8,4)`**. Σ_{k=1..4}a_{2k}=Σ(8k+1)=84; b_{3k}=2^{3k}=8^k, hence Σb_{3k}=8(8^4−1)/7. Therefore (p,q,r)=(84,8,4).",
+        "curriculumAndMeta": "2022 대수 H22-A-07-SEQUENCE_BASIC, 정수 난도 3; ACTIVE PT_H22A_07_SIGMA_NOTATION / TPL_H22A_07_SIGMA_NOTATION_123, RPM H2-M1-RPM-123; 현행 4칸 given/goal/method/condition 의미 판정 완료."
+      }
+    },
+    {
+      "qid": 16,
+      "sourceFingerprint": "ec24faec8a94a1e38feddc65bd4ddd9ed5dd787f93cb18e5118190897df3bdbc",
+      "blindAnswer": "③",
+      "blindReasoning": "**③, `8`**. d=(−10−18)/(9−5)=−7, giving a_n=18−7(n−5)=53−7n. At n=7 it is +4; at n=8 it is −3; all other positive integer n farther from 53/7 have larger magnitude, so n=8.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "등차수열 a_n=53-7n에서 가장 가까운 자연수를 고르는 수치 문제다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "n7→|4|, n8→|−3|의 비교가 정확한 판정이고 그래프는 중복이다."
+        }
+      },
+      "reviewNotes": {
+        "answerAndDistractors": "블라인드 풀이의 결론 ③ ($8$)만 일치. 5개 보기의 값·부호·범위·중복을 대조했으며 다른 4개는 계산 오류나 조건 누락에 따른 구별 가능한 오답이다.",
+        "solution": "블라인드 선행 계산을 현행 작은칠판 해설과 단계별 대조했다. **③, `8`**. d=(−10−18)/(9−5)=−7, giving a_n=18−7(n−5)=53−7n. At n=7 it is +4; at n=8 it is −3; all other positive integer n farther from 53/7 have larger magnitude, so n=8.",
+        "curriculumAndMeta": "2022 대수 H22-A-06-SEQUENCE_APPLICATION, 정수 난도 2; ACTIVE PT_H22A_06_SEQUENCE_APPLICATION / TPL_H22A_06_SEQUENCE_APPLICATION_121, RPM H2-M1-RPM-121; 현행 4칸 given/goal/method/condition 의미 판정 완료."
+      }
+    },
+    {
+      "qid": 17,
+      "sourceFingerprint": "369b80812246d676e812e17e61e80a56d298b13bf0537f0241a5f7f8fd18b770",
+      "blindAnswer": "①",
+      "blindReasoning": "**①, `−270`**. Odd terms a_{2n−1}=3^{n−1}. S_{2n}=7 for every n, so each consecutive pair from n≥2 has sum S_{2n}−S_{2n−2}=0. Thus a8=−a7=−27 and a12=−a11=−243, sum −270. First pair a1+a2=7 separately, not used.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "홀수열 공비3과 모든 짝수 부분합7이라는 조건이 텍스트로 완결된다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "S2n−S2n−2=0으로 n≥2 짝수항을 구하는 지수식이 결정 단계다."
+        }
+      },
+      "reviewNotes": {
+        "answerAndDistractors": "블라인드 풀이의 결론 ① ($-270$)만 일치. 5개 보기의 값·부호·범위·중복을 대조했으며 다른 4개는 계산 오류나 조건 누락에 따른 구별 가능한 오답이다.",
+        "solution": "블라인드 선행 계산을 현행 작은칠판 해설과 단계별 대조했다. **①, `−270`**. Odd terms a_{2n−1}=3^{n−1}. S_{2n}=7 for every n, so each consecutive pair from n≥2 has sum S_{2n}−S_{2n−2}=0. Thus a8=−a7=−27 and a12=−a11=−243, sum −270. First pair a1+a2=7 separately, not used.",
+        "curriculumAndMeta": "2022 대수 H22-A-06-SEQUENCE_APPLICATION, 정수 난도 3; ACTIVE PT_H22A_06_SEQUENCE_APPLICATION / TPL_H22A_06_SEQUENCE_APPLICATION_121, RPM H2-M1-RPM-121; 현행 4칸 given/goal/method/condition 의미 판정 완료. 홀수/짝수 항 구조와 모든 자연수 범위를 4칸에 명시"
+      }
+    },
+    {
+      "qid": 18,
+      "sourceFingerprint": "b35a0bb005d507b0f154c16cbaf7f54185e2a4c2562ccec122649fa7ba647299",
+      "blindAnswer": "②",
+      "blindReasoning": "**②, `6`**. Positive common ratio r: 4r³=20·4r+4r², i.e. r(r−5)(r+4)=0. Positive terms force r=5. Sum first nine terms=4(5^9−1)/4=5^9−1; log5(1+sum)−3=9−3=6.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "공비 r 양수와 항 사이 방정식 및 로그합이 수식으로 주어져 있다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "r=5, S9=5^9-1의 대입이 충분하며 도식이 필수 정보를 더하지 않는다."
+        }
+      },
+      "reviewNotes": {
+        "answerAndDistractors": "블라인드 풀이의 결론 ② ($6$)만 일치. 5개 보기의 값·부호·범위·중복을 대조했으며 다른 4개는 계산 오류나 조건 누락에 따른 구별 가능한 오답이다.",
+        "solution": "블라인드 선행 계산을 현행 작은칠판 해설과 단계별 대조했다. **②, `6`**. Positive common ratio r: 4r³=20·4r+4r², i.e. r(r−5)(r+4)=0. Positive terms force r=5. Sum first nine terms=4(5^9−1)/4=5^9−1; log5(1+sum)−3=9−3=6.",
+        "curriculumAndMeta": "2022 대수 H22-A-06-SEQUENCE_BASIC, 정수 난도 3; ACTIVE PT_H22A_06_GEOMETRIC_SEQUENCE / TPL_H22A_06_GEOMETRIC_SEQUENCE_120, RPM H2-M1-RPM-120; 현행 4칸 given/goal/method/condition 의미 판정 완료."
+      }
+    },
+    {
+      "qid": 19,
+      "sourceFingerprint": "45d4f57ee3210eb63a37abc46d40715fb2d94c5e3012424c8859c8bec5f857e6",
+      "blindAnswer": "④",
+      "blindReasoning": "**④, `6000원`**. A annuity due: A=100000·1.005(1.005^12−1)/.005=100000·1.005·12=1,206,000원 using given 1.06. B ordinary annuity: B=200000(1.01^6−1)/.01=1,200,000원. Absolute difference 6,000원; deposit amounts each total 1,200,000원.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "월초·월말 적립액·개월·이율이 표제와 두 항목으로 분명히 주어졌다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "월초 적립금에 1.005를 한 번 더 곱하는 식 자체가 차이를 명시한다."
+        }
+      },
+      "reviewNotes": {
+        "answerAndDistractors": "블라인드 풀이의 결론 ④ ($6000$원)만 일치. 5개 보기의 값·부호·범위·중복을 대조했으며 다른 4개는 계산 오류나 조건 누락에 따른 구별 가능한 오답이다.",
+        "solution": "블라인드 선행 계산을 현행 작은칠판 해설과 단계별 대조했다. **④, `6000원`**. A annuity due: A=100000·1.005(1.005^12−1)/.005=100000·1.005·12=1,206,000원 using given 1.06. B ordinary annuity: B=200000(1.01^6−1)/.01=1,200,000원. Absolute difference 6,000원; deposit amounts each total 1,200,000원.",
+        "curriculumAndMeta": "2022 대수 H22-A-06-SEQUENCE_BASIC, 정수 난도 3; ACTIVE PT_H22A_06_GEOMETRIC_SEQUENCE / TPL_H22A_06_GEOMETRIC_SEQUENCE_120, RPM H2-M1-RPM-120; 현행 4칸 given/goal/method/condition 의미 판정 완료."
+      }
+    },
+    {
+      "qid": 20,
+      "sourceFingerprint": "59dfe0dd02d5c6885dbe70f1e92d9457678e217ad869c6d1174b06e3ecf18651",
+      "blindAnswer": "⑤",
+      "blindReasoning": "**⑤, `95`**. Intersections sinπx=−1/2 at x=7/6+2j and 11/6+2j (j≥0). So 2a_{2n−1}−a_{2n}=2(7/6+2(n−1))−(11/6+2(n−1))=1/2+2(n−1). n=1..10 sum=5+90=95.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "PASS",
+          "planDigest": "080ef763bf505aab54a7f2389056fe27d174a62a1f792657da1e945889d4be54",
+          "reasoning": "x≥0인 사인파와 y=−1/2의 처음 두 주기 교점 4개를 시각화하면 교점 순서를 쉽게 읽는다. 그래프 [0,9/2]의 4교점·2주기와 정답 단서 노출을 분리 확인."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "a60ea4e07ed37933d86ffbbb44a1586e904b0d03a7e9e64ee93cfb809b6cf59b",
+          "reasoning": "구간 [0,9/2]에 네 교점 7/6,11/6,19/6,23/6이 있으며 2주기 반복을 설명하는 정확한 해설 그래프이다. 그래프 [0,9/2]의 4교점·2주기와 정답 단서 노출을 분리 확인."
+        }
+      },
+      "reviewNotes": {
+        "answerAndDistractors": "블라인드 풀이의 결론 ⑤ ($95$)만 일치. 5개 보기의 값·부호·범위·중복을 대조했으며 다른 4개는 계산 오류나 조건 누락에 따른 구별 가능한 오답이다.",
+        "solution": "블라인드 선행 계산을 현행 작은칠판 해설과 단계별 대조했다. **⑤, `95`**. Intersections sinπx=−1/2 at x=7/6+2j and 11/6+2j (j≥0). So 2a_{2n−1}−a_{2n}=2(7/6+2(n−1))−(11/6+2(n−1))=1/2+2(n−1). n=1..10 sum=5+90=95.",
+        "curriculumAndMeta": "2022 대수 H22-A-04-TRIGONOMETRIC_GRAPH, 정수 난도 3; ACTIVE PT_FUNCTION_GRAPH_INTERSECTION / TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS, RPM H2-M1-RPM-107; 현행 4칸 given/goal/method/condition 의미 판정 완료. x≥0의 정의역 제한을 4칸 condition에 추가"
+      }
+    },
+    {
+      "qid": 21,
+      "sourceFingerprint": "10a250fb5efab68c971b7fc3b6b6b5ccd8de828e1cc1ebc73c2aa601842edb4b",
+      "blindAnswer": "①",
+      "blindReasoning": "**①, `−25`**. The triangular number parity gives a_n repeating (−,−,+,+) with period 4. Each weighted 4-block n=4j+1..4j+4 contributes −(4j+2)−(4j+3)+(4j+4)+(4j+5)=4. Five full blocks contribute 20; n=21,22 are −22 and −23, giving −25.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "삼각수 지수의 홀짝 및 4항 부호 주기는 문자 계산만으로 결정된다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "부호 −,−,+,+ 한 블록의 가중합 4와 마지막 2항을 식으로 점검한다."
+        }
+      },
+      "reviewNotes": {
+        "answerAndDistractors": "블라인드 풀이의 결론 ① ($-25$)만 일치. 5개 보기의 값·부호·범위·중복을 대조했으며 다른 4개는 계산 오류나 조건 누락에 따른 구별 가능한 오답이다.",
+        "solution": "블라인드 선행 계산을 현행 작은칠판 해설과 단계별 대조했다. **①, `−25`**. The triangular number parity gives a_n repeating (−,−,+,+) with period 4. Each weighted 4-block n=4j+1..4j+4 contributes −(4j+2)−(4j+3)+(4j+4)+(4j+5)=4. Five full blocks contribute 20; n=21,22 are −22 and −23, giving −25.",
+        "curriculumAndMeta": "2022 대수 H22-A-07-SEQUENCE_BASIC, 정수 난도 3; ACTIVE PT_H22A_07_SIGMA_NOTATION / TPL_H22A_07_SIGMA_NOTATION_123, RPM H2-M1-RPM-123; 현행 4칸 given/goal/method/condition 의미 판정 완료. 모든 자연수 n 조건을 4칸에 추가"
+      }
+    },
+    {
+      "qid": 22,
+      "sourceFingerprint": "bf3865c8fdac02304b6e0cae803c20fd8b7fbf2f16d9a1c6fe36a2283b7632e4",
+      "blindAnswer": "직각삼각형(∠B=90°), 최장변 AC",
+      "blindReasoning": "**`직각삼각형, 가장 긴 변 AC`**. A+B+C=π implies sin A=sin(B+C)=sin B cos C+cos B sin C. Given sin A=sin B cos C, hence cos B sin C=0. An interior angle C has sin C>0, so cos B=0 and B=90°, opposite side AC is hypotenuse.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "NOT_APPLICABLE"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "sinA=sinBcosC와 삼각형 내각합이 충분히 주어져 특정 도형 그림이 정답 조건을 보태지 않는다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "cosBsinC=0, sinC>0에서 B=90°를 도출해 AC 최장임을 적으면 충분하다."
+        }
+      },
+      "reviewNotes": {
+        "answerAndDistractors": "서술형 발문에 필요한 결과와 단계가 블라인드 풀이에 모두 포함되었으며 모호한 복수 채점 목표가 없다.",
+        "solution": "블라인드 선행 계산을 현행 작은칠판 해설과 단계별 대조했다. **`직각삼각형, 가장 긴 변 AC`**. A+B+C=π implies sin A=sin(B+C)=sin B cos C+cos B sin C. Given sin A=sin B cos C, hence cos B sin C=0. An interior angle C has sin C>0, so cos B=0 and B=90°, opposite side AC is hypotenuse.",
+        "curriculumAndMeta": "2022 대수 H22-A-05-CORE, 정수 난도 3; ACTIVE PT_H22A_05_COSINE_LAW / TPL_H22A_05_COSINE_LAW_112, RPM H2-M1-RPM-112; 현행 4칸 given/goal/method/condition 의미 판정 완료."
+      }
+    },
+    {
+      "qid": 23,
+      "sourceFingerprint": "aa79876e899eee0c93cdaad5dad52c7378c70288a209e59122cb051cc175b833",
+      "blindAnswer": "m=2,3,4,5,6",
+      "blindReasoning": "**`m=2,3,4,5,6`**. S_n=−n²+12n−35. a1=S1=−24, separate from difference formula because S0 as polynomial is not 0. For n≥2, a_n=S_n−S_{n−1}=13−2n>0 iff 2≤n≤6; list all five.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "NOT_APPLICABLE"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "S_n 다항식과 a_m>0의 자연수 조건이 수식으로 완결된다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "a1=S1=-24 예외와 n≥2에서 13-2n>0을 분리하는 해설이 핵심이다."
+        }
+      },
+      "reviewNotes": {
+        "answerAndDistractors": "서술형 발문에 필요한 결과와 단계가 블라인드 풀이에 모두 포함되었으며 모호한 복수 채점 목표가 없다.",
+        "solution": "블라인드 선행 계산을 현행 작은칠판 해설과 단계별 대조했다. **`m=2,3,4,5,6`**. S_n=−n²+12n−35. a1=S1=−24, separate from difference formula because S0 as polynomial is not 0. For n≥2, a_n=S_n−S_{n−1}=13−2n>0 iff 2≤n≤6; list all five.",
+        "curriculumAndMeta": "2022 대수 H22-A-07-SEQUENCE_BASIC, 정수 난도 3; ACTIVE PT_H22A_07_DIFFERENCE_SEQUENCE / TPL_H22A_07_DIFFERENCE_SEQUENCE_128, RPM H2-M1-RPM-128; 현행 4칸 given/goal/method/condition 의미 판정 완료."
+      }
+    },
+    {
+      "qid": 24,
+      "sourceFingerprint": "858586c4bc608505986e5bad90252b80e55a859377884a69d6a11c323d5bcbbb",
+      "blindAnswer": "p=9,q=44,q−p=35",
+      "blindReasoning": "**`p=9,q=44,q−p=35`**. 3/[(3n+1)(3n+4)]=1/(3n+1)−1/(3n+4); telescope n1..6 gives 1/4−1/22=9/44 in lowest terms.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "NOT_APPLICABLE"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "부분분수 꼴 항과 6항 합이 명시돼 공간적 정보가 없다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "1/(3k+1)−1/(3k+4)의 망원급수 소거가 두 식으로 확인된다."
+        }
+      },
+      "reviewNotes": {
+        "answerAndDistractors": "서술형 발문에 필요한 결과와 단계가 블라인드 풀이에 모두 포함되었으며 모호한 복수 채점 목표가 없다.",
+        "solution": "블라인드 선행 계산을 현행 작은칠판 해설과 단계별 대조했다. **`p=9,q=44,q−p=35`**. 3/[(3n+1)(3n+4)]=1/(3n+1)−1/(3n+4); telescope n1..6 gives 1/4−1/22=9/44 in lowest terms.",
+        "curriculumAndMeta": "2022 대수 H22-A-07-SEQUENCE_SUM, 정수 난도 2; ACTIVE PT_H22A_07_SEQUENCE_SUM / TPL_H22A_07_SEQUENCE_SUM_126, RPM H2-M1-RPM-126; 현행 4칸 given/goal/method/condition 의미 판정 완료. given의 부분분수 오태그를 분수식으로 변경; 서로소 조건을 4칸에 반영"
+      }
+    },
+    {
+      "qid": 25,
+      "sourceFingerprint": "bd9c042c0472266270bbc86589b941f4d40b2364cb2070c720d34cbfbcd7346d",
+      "blindAnswer": "모든 자연수 n에 대하여 성립",
+      "blindReasoning": "**`귀납법 성립`**. At n=1 LHS=2/(2·3)=1/3=RHS. Assume sum to k equals k/(k+2). Then sum to k+1 is k/(k+2)+2/[(k+2)(k+3)] = [k(k+3)+2]/[(k+2)(k+3)] = [(k+1)(k+2)]/[(k+2)(k+3)] = (k+1)/(k+3). Thus holds for every natural n.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "NOT_APPLICABLE"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "수학적 귀납법의 세 단계와 목표 등식이 이미 명시된 증명 문제다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "k→k+1에서 분자 (k+1)(k+2) 인수분해를 순차식으로 보여 주면 충분하다."
+        }
+      },
+      "reviewNotes": {
+        "answerAndDistractors": "서술형 발문에 필요한 결과와 단계가 블라인드 풀이에 모두 포함되었으며 모호한 복수 채점 목표가 없다.",
+        "solution": "블라인드 선행 계산을 현행 작은칠판 해설과 단계별 대조했다. **`귀납법 성립`**. At n=1 LHS=2/(2·3)=1/3=RHS. Assume sum to k equals k/(k+2). Then sum to k+1 is k/(k+2)+2/[(k+2)(k+3)] = [k(k+3)+2]/[(k+2)(k+3)] = [(k+1)(k+2)]/[(k+2)(k+3)] = (k+1)/(k+3). Thus holds for every natural n.",
+        "curriculumAndMeta": "2022 대수 H22-A-08-CORE, 정수 난도 2; ACTIVE PT_H22A_08_MATHEMATICAL_INDUCTION / TPL_H22A_08_MATHEMATICAL_INDUCTION_131, RPM H2-M1-RPM-131; 현행 4칸 given/goal/method/condition 의미 판정 완료. 4칸 형식을 '증명'으로 변경; goal에 증명, method에 실제 전개상의 인수분해를 반영"
+      }
+    }
+  ]
+}
