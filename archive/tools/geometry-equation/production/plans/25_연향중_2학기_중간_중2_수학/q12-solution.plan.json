@@ -190,7 +190,8 @@
   "newVisualInformation": [
     "원본의 점 이름·연결선과 문제·해설별 표식의 엔진 작도. 바탕 사각형 및 불필요한 면 채움 없음.",
     "12번 원본 에셋의 기입 길이·동일 표시·수선·평행 표식은 계획의 그려지는 필드별로 별도 확인함.",
-    "수선의 발 H, DH⊥AB를 해설의 결정적 보조선으로 추가했다."
+    "수선의 발 H, DH⊥AB를 해설의 결정적 보조선으로 추가했다.",
+    "ENGINE_CAPABILITY_PENDING: DH=DC의 동길이 한 눈금은 스캔 기반 H 좌표와 DC의 미세 길이 불일치로 강제 적용 불가. 필요 기능: ANGLE_BISECTOR_EQUAL_FOOT_CONSTRAINT."
   ],
   "planeMarks": {
     "angles": [
@@ -215,6 +216,32 @@
         ],
         "value": 34.2,
         "style": "ARC",
+        "noLabel": true,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "source_aCAD",
+        "refs": [
+          "C",
+          "A",
+          "D"
+        ],
+        "value": 34.197,
+        "style": "ARC",
+        "arcs": 1,
+        "noLabel": true,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "source_aDAB",
+        "refs": [
+          "D",
+          "A",
+          "B"
+        ],
+        "value": 34.2251,
+        "style": "ARC",
+        "arcs": 1,
         "noLabel": true,
         "factRole": "GIVEN"
       }
