@@ -1,0 +1,686 @@
+{
+  "schemaVersion": "gpt-finalqa-evidence-v1",
+  "examUid": "26_금당고_1학기_기말_고2_대수_유사2",
+  "sourcePath": "archive/exams/similar/high/h2/1final/26_금당고_1학기_기말_고2_대수_유사2.js",
+  "blindPackDigest": "9e3f8a6b851894a1a946fe64b2393965371079363826c3eb8b5fdb2f1f21fdb6",
+  "reviewer": {
+    "id": "GPT-6 FIRST_FORMAL dedicated reviewer, 2026-11-26 KST",
+    "blindFirstPass": "CONFIRMED",
+    "independentEvidence": "21 official answer-hidden stems and options independently solved before answers, small-blackboard solutions or metadata were viewed. Locked blind record SHA-256 b6973b9680bb01ac82ff76d4d028b18359551aea4a20b44c7bc2b69256edbac1; one GPT reviewer in a separate answer-hidden stage, not a second model or a human. Full 21/21 math and both 42/42 visual axes separately reviewed; software lint is not mathematical certification.",
+    "blindArtifactRef": "outside-git:/tmp/qa-geumdang-blind-20261126.md#sha256=b6973b9680bb01ac82ff76d4d028b18359551aea4a20b44c7bc2b69256edbac1"
+  },
+  "questions": [
+    {
+      "qid": 1,
+      "sourceFingerprint": "e6213bb1355546cf99d2309dbdfd26cbc2fe69174352f4376df0396401eee61f",
+      "blindAnswer": "⑤",
+      "blindReasoning": "**⑤, false statement**. In `-2 cos(3x−π/2)+5`, period is `2π/3`, range `[3,7]`, min3 max7. At `x=π/6`, argument0 and value3 (minimum), not maximum.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "변환 코사인함수와 다섯 판단문이 식으로 완결되어 그림 없이 참·거짓 검증이 가능하다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "주기 2π/3, 치역 [3,7], x=π/6의 값 3을 대입식으로 검증하면 충분하다."
+        }
+      },
+      "reviewNotes": {
+        "answerAndDistractors": "블라인드 계산으로 ⑤를 확정. ①~⑤는 서로 다른 선택지이며 그중 ⑤만 발문을 만족한다. 주기·최솟값·최댓값·치역 네 진술이 참이고 x=π/6 대입값 3만 최댓값 진술과 모순.",
+        "solution": "작은칠판 해설을 답 숨김 선행 풀이와 각 단계·범위·등호·부호 대조. 주기·최솟값·최댓값·치역 네 진술이 참이고 x=π/6 대입값 3만 최댓값 진술과 모순.",
+        "curriculumAndMeta": "2022 대수; 수학적 결정 단계에 맞춰 PT/TPL·RPM 보정 및 검증. RPM 103→105; 4칸 given/goal/method/condition 각 역할 확인; 난도 1 검토.",
+        "visualAxes": "문제 EXEMPT/EXEMPT; 해설 EXEMPT/EXEMPT; 실제 SVG 렌더·PNG 검수 NOT_RUN."
+      }
+    },
+    {
+      "qid": 2,
+      "sourceFingerprint": "d09e19ca274cea36b206d08ce96a9c15cf597a8f832053783eb9778581609e8d",
+      "blindAnswer": "③",
+      "blindReasoning": "**③, d=3**. `a4+a7=(a3+d)+(a3+4d)=8+5d=23` gives `d=3`.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "a3=4 및 a4+a7=23 조건만으로 공차를 연립식으로 정할 수 있다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "a1+2d=4와 2a1+9d=23을 계산해 d=3을 도출하므로 그림의 추가 정보가 없다."
+        }
+      },
+      "reviewNotes": {
+        "answerAndDistractors": "블라인드 계산으로 ③를 확정. ①~⑤는 서로 다른 선택지이며 그중 ③만 발문을 만족한다. a4+a7=8+5d=23에서 d=3; 다른 공차 보기는 조건 대입 시 23을 만들지 못함.",
+        "solution": "작은칠판 해설을 답 숨김 선행 풀이와 각 단계·범위·등호·부호 대조. a4+a7=8+5d=23에서 d=3; 다른 공차 보기는 조건 대입 시 23을 만들지 못함.",
+        "curriculumAndMeta": "2022 대수; 수학적 결정 단계에 맞춰 PT/TPL·RPM 검증. 현행 메타 유지; 4칸 given/goal/method/condition 각 역할 확인; 난도 1 검토.",
+        "visualAxes": "문제 EXEMPT/EXEMPT; 해설 EXEMPT/EXEMPT; 실제 SVG 렌더·PNG 검수 NOT_RUN."
+      }
+    },
+    {
+      "qid": 3,
+      "sourceFingerprint": "0bd772036a35a7a9aeb32b4c87f3fc44276fb229d943f4b041c6c45817c00795",
+      "blindAnswer": "③",
+      "blindReasoning": "**③, R=6**. Exterior angle at A120° means interior A60°. `BC=6√3=2R sin60°=R√3`, so `R=6`.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "삼각형의 BC 길이와 A 외각 120°가 명시되어 구하려는 외접원 반지름이 명확하다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "내각 A=60°, BC=2R sin A로 R=6을 대입식에 따라 계산한다."
+        }
+      },
+      "reviewNotes": {
+        "answerAndDistractors": "블라인드 계산으로 ③를 확정. ①~⑤는 서로 다른 선택지이며 그중 ③만 발문을 만족한다. A의 내각 60°, BC=2Rsin60°에서 R=6; 다른 반지름은 변 길이와 불일치.",
+        "solution": "작은칠판 해설을 답 숨김 선행 풀이와 각 단계·범위·등호·부호 대조. A의 내각 60°, BC=2Rsin60°에서 R=6; 다른 반지름은 변 길이와 불일치.",
+        "curriculumAndMeta": "2022 대수; 수학적 결정 단계에 맞춰 PT/TPL·RPM 검증. 현행 메타 유지; 4칸 given/goal/method/condition 각 역할 확인; 난도 1 검토.",
+        "visualAxes": "문제 EXEMPT/EXEMPT; 해설 EXEMPT/EXEMPT; 실제 SVG 렌더·PNG 검수 NOT_RUN."
+      }
+    },
+    {
+      "qid": 4,
+      "sourceFingerprint": "3ace80170d79c3a755b3bdf18a5525ca5e1e0c382871febb36b199f32fb495a0",
+      "blindAnswer": "⑤",
+      "blindReasoning": "**⑤, 12√3**. Interior B60°; area `1/2·8·6·sin60°=12√3`.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "AB=8, BC=6, B의 이웃한 외각 120°가 지정되어 끼인각을 직접 환원할 수 있다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "B=60°에서 넓이 1/2·8·6·sin60°=12√3을 판서식으로 충분히 보인다."
+        }
+      },
+      "reviewNotes": {
+        "answerAndDistractors": "블라인드 계산으로 ⑤를 확정. ①~⑤는 서로 다른 선택지이며 그중 ⑤만 발문을 만족한다. B의 내각 60°, 면적 24sin60°=12√3; 나머지 넓이는 8·6과 양립 불가.",
+        "solution": "작은칠판 해설을 답 숨김 선행 풀이와 각 단계·범위·등호·부호 대조. B의 내각 60°, 면적 24sin60°=12√3; 나머지 넓이는 8·6과 양립 불가.",
+        "curriculumAndMeta": "2022 대수; 수학적 결정 단계에 맞춰 PT/TPL·RPM 보정 및 검증. RPM 109→113; 4칸 given/goal/method/condition 각 역할 확인; 난도 1 검토.",
+        "visualAxes": "문제 EXEMPT/EXEMPT; 해설 EXEMPT/EXEMPT; 실제 SVG 렌더·PNG 검수 NOT_RUN."
+      }
+    },
+    {
+      "qid": 5,
+      "sourceFingerprint": "b8cc20875df8f5a8b6a0a51bd5aef70bca08c12362e15944fdc93014956169c2",
+      "blindAnswer": "③",
+      "blindReasoning": "**③, [2π/3,4π/3]**. `−cos x ≥ 1/2` iff `cos x ≤ −1/2`; both endpoints included in `[0,2π)`.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "-cos x≥1/2 및 0≤x<2π가 주어져 별도 그림이 요구되지 않는다."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "a4e53fe17ed5f09fbd3617166ec9f76367ead578d1ac1bbe3f7ce2921a2dfe43",
+          "reasoning": "-cos x와 y=1/2를 x=2π/3,4π/3에서 만나게 그리면 닫힌 해구간을 읽기 유익하다."
+        }
+      },
+      "reviewNotes": {
+        "answerAndDistractors": "블라인드 계산으로 ③를 확정. ①~⑤는 서로 다른 선택지이며 그중 ③만 발문을 만족한다. −cos x≥1/2→cos x≤−1/2, x∈[2π/3,4π/3]; 양끝 포함에 유의, 열린 구간 보기는 틀림.",
+        "solution": "작은칠판 해설을 답 숨김 선행 풀이와 각 단계·범위·등호·부호 대조. −cos x≥1/2→cos x≤−1/2, x∈[2π/3,4π/3]; 양끝 포함에 유의, 열린 구간 보기는 틀림.",
+        "curriculumAndMeta": "2022 대수; 수학적 결정 단계에 맞춰 PT/TPL·RPM 보정 및 검증. 정의역 제한 조건 추가; 해설 그래프 경계각 눈금; 4칸 given/goal/method/condition 각 역할 확인; 난도 2 검토.",
+        "visualAxes": "문제 EXEMPT/EXEMPT; 해설 BENEFICIAL/VALID_OFFICIAL_PLAN; 실제 SVG 렌더·PNG 검수 NOT_RUN."
+      }
+    },
+    {
+      "qid": 6,
+      "sourceFingerprint": "705c048727727d29abe5b27d87e3da3f4bf78707c1e0625942b34310f55783cb",
+      "blindAnswer": "④",
+      "blindReasoning": "**④, n=5**. `a_n=5·2^(n−1)<150` iff `2^(n−1)<30`; exponent maximum4.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "첫항 5, 공비 2, a_n<150 조건은 수열의 일반항으로 충분히 이해된다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "a5=80<150, a6=160≥150을 직접 비교하면 마지막 자연수 n=5가 명확하다."
+        }
+      },
+      "reviewNotes": {
+        "answerAndDistractors": "블라인드 계산으로 ④를 확정. ①~⑤는 서로 다른 선택지이며 그중 ④만 발문을 만족한다. 수열 a_n=5·2^(n−1), a5=80<150≤160=a6; ⑤번 n6은 부등식 위반.",
+        "solution": "작은칠판 해설을 답 숨김 선행 풀이와 각 단계·범위·등호·부호 대조. 수열 a_n=5·2^(n−1), a5=80<150≤160=a6; ⑤번 n6은 부등식 위반.",
+        "curriculumAndMeta": "2022 대수; 수학적 결정 단계에 맞춰 PT/TPL·RPM 보정 및 검증. RPM 115→118, 자연수·상한 조건; 4칸 given/goal/method/condition 각 역할 확인; 난도 2 검토.",
+        "visualAxes": "문제 EXEMPT/EXEMPT; 해설 EXEMPT/EXEMPT; 실제 SVG 렌더·PNG 검수 NOT_RUN."
+      }
+    },
+    {
+      "qid": 7,
+      "sourceFingerprint": "a7f126388cc8042be090b7fd6b1c5e8b106717cafac4583e9591e9e09ab7725e",
+      "blindAnswer": "④",
+      "blindReasoning": "**④, 21**. `3Σa_k−2·15=33` gives `Σa_k=63/3=21`.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "Σ(3a_k−2)=33 및 15항의 합 구하기는 순수 기호 계산이다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "3Σa_k−30=33에서 Σa_k=21을 이항 계산하면 충분하다."
+        }
+      },
+      "reviewNotes": {
+        "answerAndDistractors": "블라인드 계산으로 ④를 확정. ①~⑤는 서로 다른 선택지이며 그중 ④만 발문을 만족한다. 3Σa_k−30=33에서 합21; 9,15,18,24 보기는 식 대입시 33 불충족.",
+        "solution": "작은칠판 해설을 답 숨김 선행 풀이와 각 단계·범위·등호·부호 대조. 3Σa_k−30=33에서 합21; 9,15,18,24 보기는 식 대입시 33 불충족.",
+        "curriculumAndMeta": "2022 대수; 수학적 결정 단계에 맞춰 PT/TPL·RPM 검증. 현행 메타 유지; 4칸 given/goal/method/condition 각 역할 확인; 난도 2 검토.",
+        "visualAxes": "문제 EXEMPT/EXEMPT; 해설 EXEMPT/EXEMPT; 실제 SVG 렌더·PNG 검수 NOT_RUN."
+      }
+    },
+    {
+      "qid": 8,
+      "sourceFingerprint": "07ba4f9ebd2d5fd1258938403c7d82576a0c2937baef477bd05dce3a505bc586",
+      "blindAnswer": "①",
+      "blindReasoning": "**①, −12/25**. Angle C has `cos C=−3/5`, `sin C=4/5`; `sin(A+B)=sinC`, `sin(π/2+C)=cosC`, product `−12/25`.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "삼각형의 cos C=−3/5와 A+B+C=π가 명시되어 별도 도형이 필요 없다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "sin(A+B)=sin C=4/5, cos C=−3/5의 부호 판정으로 곱 −12/25를 얻는다."
+        }
+      },
+      "reviewNotes": {
+        "answerAndDistractors": "블라인드 계산으로 ①를 확정. ①~⑤는 서로 다른 선택지이며 그중 ①만 발문을 만족한다. C 둔각에서 sinC=4/5 양수, cosC=−3/5; 곱은 −12/25 한 값.",
+        "solution": "작은칠판 해설을 답 숨김 선행 풀이와 각 단계·범위·등호·부호 대조. C 둔각에서 sinC=4/5 양수, cosC=−3/5; 곱은 −12/25 한 값.",
+        "curriculumAndMeta": "2022 대수; 수학적 결정 단계에 맞춰 PT/TPL·RPM 보정 및 검증. RPM 095→100, TPL 099→100; 4칸 given/goal/method/condition 각 역할 확인; 난도 2 검토.",
+        "visualAxes": "문제 EXEMPT/EXEMPT; 해설 EXEMPT/EXEMPT; 실제 SVG 렌더·PNG 검수 NOT_RUN."
+      }
+    },
+    {
+      "qid": 9,
+      "sourceFingerprint": "b02cc2b72ae7f32f075d3c83ea222a3b188750e52d19de16a2f276d8f6350721",
+      "blindAnswer": "⑤",
+      "blindReasoning": "**⑤, 60°**. Isosceles trapezoid diagonals equal, sum20 gives 10 each; area `1/2·10·10 sinθ=50 sinθ=25√3`; acute angleθ60°.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "ENGINE_PENDING",
+          "planDigest": "17675ce9adff8cbb260ac7da45ee3388aae1d4be637c93cca549bde0b536ea55",
+          "reasoning": "등변사다리꼴의 두 대각선이 이루는 예각을 언어만으로 해석할 수 있으나, 정확한 사다리꼴·교차선 구조가 이해에 유익하다."
+        },
+        "solution": {
+          "status": "ENGINE_PENDING",
+          "planDigest": "ca6ef57f93551d990e15a7473c5697d5417c94b169ec0150a8ce6453477ee9c1",
+          "reasoning": "동일한 두 대각선 각각 길이 10과 넓이 50sin θ 관계의 도형 분해를 보면 예각 60°의 유일성이 분명하다."
+        }
+      },
+      "reviewNotes": {
+        "answerAndDistractors": "블라인드 계산으로 ⑤를 확정. ①~⑤는 서로 다른 선택지이며 그중 ⑤만 발문을 만족한다. 등변사다리꼴 대각선 길이 각각10, 넓이 50sinθ=25√3이고 θ 예각; θ60°만 충족.",
+        "solution": "작은칠판 해설을 답 숨김 선행 풀이와 각 단계·범위·등호·부호 대조. 등변사다리꼴 대각선 길이 각각10, 넓이 50sinθ=25√3이고 θ 예각; θ60°만 충족.",
+        "curriculumAndMeta": "2022 대수; 수학적 결정 단계에 맞춰 PT/TPL·RPM 보정 및 검증. RPM 109→114, TPL 113→114, 사다리꼴 구조 엔진 후속 조건; 4칸 given/goal/method/condition 각 역할 확인; 난도 3 검토.",
+        "visualAxes": "문제 BENEFICIAL/ENGINE_CAPABILITY_PENDING; 해설 BENEFICIAL/ENGINE_CAPABILITY_PENDING; 실제 SVG 렌더·PNG 검수 NOT_RUN."
+      }
+    },
+    {
+      "qid": 10,
+      "sourceFingerprint": "98c2689cbba01532d188e92f11180829449aa6a2cc40b1fb9e164a83bec21071",
+      "blindAnswer": "④",
+      "blindReasoning": "**④, 23/25**. Write `(sinA,sinB,sinC)=(2t,5t,5t)` from `a+b:b+c:c+a=7:10:7`: first equals third implies b=c; then ratios yield a:b:c=2:5:5. Sine law gives opposing sides 2:5:5, so `cosA=(25+25−4)/(2·5·5)=23/25`.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "세 삼각함수 합의 비 7:10:7에서 세 사인값의 비를 연립식으로 정한다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "sin A:sin B:sin C=2:5:5, 코사인법칙 (25+25−4)/50=23/25를 적으면 충분하다."
+        }
+      },
+      "reviewNotes": {
+        "answerAndDistractors": "블라인드 계산으로 ④를 확정. ①~⑤는 서로 다른 선택지이며 그중 ④만 발문을 만족한다. 정리된 sinA:sinB:sinC=2:5:5; 여현법칙 cosA=(25+25−4)/50=23/25.",
+        "solution": "작은칠판 해설을 답 숨김 선행 풀이와 각 단계·범위·등호·부호 대조. 정리된 sinA:sinB:sinC=2:5:5; 여현법칙 cosA=(25+25−4)/50=23/25.",
+        "curriculumAndMeta": "2022 대수; 수학적 결정 단계에 맞춰 PT/TPL·RPM 보정 및 검증. RPM 109→111; 4칸 given/goal/method/condition 각 역할 확인; 난도 3 검토.",
+        "visualAxes": "문제 EXEMPT/EXEMPT; 해설 EXEMPT/EXEMPT; 실제 SVG 렌더·PNG 검수 NOT_RUN."
+      }
+    },
+    {
+      "qid": 11,
+      "sourceFingerprint": "3d7ba7d48d94b6eb9a54ff76b58416ac5b3ad3a957f2569e8c1fa5de38da6f40",
+      "blindAnswer": "①",
+      "blindReasoning": "**①, 3/20(16^4−1)**. `a4/a2=r²=4`, `a1²=9/4`, odd-index square sequence ratio `r⁴=16`, four terms sum `(9/4)(16^4−1)/15=3/20(16^4−1)`.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "a2=−3, a4=−12를 제시하여 부호 포함 등비수열의 제곱합을 정한다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "r²=4, a1²=9/4와 공비 r⁴=16인 네 항의 등비급수 계산으로 결론을 확인한다."
+        }
+      },
+      "reviewNotes": {
+        "answerAndDistractors": "블라인드 계산으로 ①를 확정. ①~⑤는 서로 다른 선택지이며 그중 ①만 발문을 만족한다. a4/a2=r²=4, 홀수항 제곱의 첫항9/4·공비16, 합 (3/20)(16⁴−1).",
+        "solution": "작은칠판 해설을 답 숨김 선행 풀이와 각 단계·범위·등호·부호 대조. a4/a2=r²=4, 홀수항 제곱의 첫항9/4·공비16, 합 (3/20)(16⁴−1).",
+        "curriculumAndMeta": "2022 대수; 수학적 결정 단계에 맞춰 PT/TPL·RPM 보정 및 검증. RPM/TPL 115·118→120 (등비수열 제곱합); 4칸 given/goal/method/condition 각 역할 확인; 난도 2 검토.",
+        "visualAxes": "문제 EXEMPT/EXEMPT; 해설 EXEMPT/EXEMPT; 실제 SVG 렌더·PNG 검수 NOT_RUN."
+      }
+    },
+    {
+      "qid": 12,
+      "sourceFingerprint": "bf82540da325fe173a772fcb417f05f80a7de7e12bfadc8f28f1b66d53da08ca",
+      "blindAnswer": "②",
+      "blindReasoning": "**②, 5456**. `(a5+a7)/(a2+a4)=r³=8`, real `r=2`; `a2+a4=ar(1+r²)=10a=20`, `a1=2`, so `a_n=2^n`; `b_n=a_na_{n+2}=4^(n+1)`; n1..5 sum `16+64+256+1024+4096=5456`.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "실수항 등비수열의 떨어진 두 항 합 및 b_n 정의가 식으로 완결된다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "(a5+a7)/(a2+a4)=r³=8과 b_n=4^(n+1), 5항 합 5456을 순서대로 전개한다."
+        }
+      },
+      "reviewNotes": {
+        "answerAndDistractors": "블라인드 계산으로 ②를 확정. ①~⑤는 서로 다른 선택지이며 그중 ②만 발문을 만족한다. r³=(a5+a7)/(a2+a4)=8→r2, a1=2, b1..5=16,64,256,1024,4096의 합5456.",
+        "solution": "작은칠판 해설을 답 숨김 선행 풀이와 각 단계·범위·등호·부호 대조. r³=(a5+a7)/(a2+a4)=8→r2, a1=2, b1..5=16,64,256,1024,4096의 합5456.",
+        "curriculumAndMeta": "2022 대수; 수학적 결정 단계에 맞춰 PT/TPL·RPM 보정 및 검증. RPM 115→120, TPL 118→120, 실수항 4칸 조건; 4칸 given/goal/method/condition 각 역할 확인; 난도 3 검토.",
+        "visualAxes": "문제 EXEMPT/EXEMPT; 해설 EXEMPT/EXEMPT; 실제 SVG 렌더·PNG 검수 NOT_RUN."
+      }
+    },
+    {
+      "qid": 13,
+      "sourceFingerprint": "5d2973aa31f058b5dc867f315375058bb34dd4b67342282c0797f78b7c88778c",
+      "blindAnswer": "②",
+      "blindReasoning": "**②, 28**. AP edge lengths `(7−d,7,7+d)` since total edge sum `4·21=84`. Surface `2[(7−d)7+7(7+d)+(7−d)(7+d)]=2(147−d²)=276` gives `d²=9`; sorted lengths 4,7,10, shortest*middle28.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "직육면체 세 모서리가 등차수열이라는 조건 및 겉넓이가 문자로 충분히 제시된다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "세 길이 7−d,7,7+d와 겉넓이 2(147−d²)=276으로 짧은 두 모서리 4·7을 구한다."
+        }
+      },
+      "reviewNotes": {
+        "answerAndDistractors": "블라인드 계산으로 ②를 확정. ①~⑤는 서로 다른 선택지이며 그중 ②만 발문을 만족한다. 변 길이7−d,7,7+d, 겉넓이 2(147−d²)=276→|d|3, 짧은 두 길이4,7 곱28.",
+        "solution": "작은칠판 해설을 답 숨김 선행 풀이와 각 단계·범위·등호·부호 대조. 변 길이7−d,7,7+d, 겉넓이 2(147−d²)=276→|d|3, 짧은 두 길이4,7 곱28.",
+        "curriculumAndMeta": "2022 대수; 수학적 결정 단계에 맞춰 PT/TPL·RPM 검증. 현행 메타 유지; 4칸 given/goal/method/condition 각 역할 확인; 난도 3 검토.",
+        "visualAxes": "문제 EXEMPT/EXEMPT; 해설 EXEMPT/EXEMPT; 실제 SVG 렌더·PNG 검수 NOT_RUN."
+      }
+    },
+    {
+      "qid": 14,
+      "sourceFingerprint": "901027aea13f77c128544ba0ea07ceee5df8793725aca16098ea95e5a1c6098d",
+      "blindAnswer": "⑤",
+      "blindReasoning": "**⑤, 8**. `g(x)∈[−π/6,π/6]`, so argument of f lies `[0,π/3]`; cosine ranges `[1/2,1]`; composed f ranges `[3,5]`, extrema sum8.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "f와 g의 두 함수 정의만으로 합성함수의 극값을 분석할 수 있다."
+        },
+        "solution": {
+          "status": "ENGINE_PENDING",
+          "planDigest": "5d3cde661e683abaf968d11f51a583fb03ef8f5a2ae7aa11bee7ddaa6c3f6d7b",
+          "reasoning": "g의 정확한 닫힌 치역 [−π/6,π/6]에서 코사인 곡선의 양 끝값 5,3을 시각적으로 확인할 가치가 있다."
+        }
+      },
+      "reviewNotes": {
+        "answerAndDistractors": "블라인드 계산으로 ⑤를 확정. ①~⑤는 서로 다른 선택지이며 그중 ⑤만 발문을 만족한다. g치역 [−π/6,π/6], f의 코사인 인자 [0,π/3], 도달 가능한 합성 치역 [3,5]의 극값 합8.",
+        "solution": "작은칠판 해설을 답 숨김 선행 풀이와 각 단계·범위·등호·부호 대조. g치역 [−π/6,π/6], f의 코사인 인자 [0,π/3], 도달 가능한 합성 치역 [3,5]의 극값 합8.",
+        "curriculumAndMeta": "2022 대수; 수학적 결정 단계에 맞춰 PT/TPL·RPM 보정 및 검증. RPM 103→108, 극값 구간형 TPL, 짧은 구간 엔진 후속; 4칸 given/goal/method/condition 각 역할 확인; 난도 3 검토.",
+        "visualAxes": "문제 EXEMPT/EXEMPT; 해설 BENEFICIAL/ENGINE_CAPABILITY_PENDING; 실제 SVG 렌더·PNG 검수 NOT_RUN."
+      }
+    },
+    {
+      "qid": 15,
+      "sourceFingerprint": "86b5a8f1955613648e277a31ca24bed2a39e43517b188f01fe245346ba70eb28",
+      "blindAnswer": "③",
+      "blindReasoning": "**③, 128**. Area `1/2 uv sin60°=√3 uv/4=16√3` gives `uv=64`; `u²+v²≥2uv=128`, equality at `u=v=8`, feasible.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "끼인각 60°와 넓이 16√3으로 두 변의 곱을 정할 수 있다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "AB·AC=64에서 제곱합≥2AB·AC=128, 등호 AB=AC=8을 기호로 확인한다."
+        }
+      },
+      "reviewNotes": {
+        "answerAndDistractors": "블라인드 계산으로 ③를 확정. ①~⑤는 서로 다른 선택지이며 그중 ③만 발문을 만족한다. 넓이로 AB·AC=64, 제곱합≥2AB·AC=128, AB=AC=8에서 등호 성립.",
+        "solution": "작은칠판 해설을 답 숨김 선행 풀이와 각 단계·범위·등호·부호 대조. 넓이로 AB·AC=64, 제곱합≥2AB·AC=128, AB=AC=8에서 등호 성립.",
+        "curriculumAndMeta": "2022 대수; 수학적 결정 단계에 맞춰 PT/TPL·RPM 보정 및 검증. RPM 109→113; 4칸 given/goal/method/condition 각 역할 확인; 난도 3 검토.",
+        "visualAxes": "문제 EXEMPT/EXEMPT; 해설 EXEMPT/EXEMPT; 실제 SVG 렌더·PNG 검수 NOT_RUN."
+      }
+    },
+    {
+      "qid": 16,
+      "sourceFingerprint": "0877f860351221faa52b5fe2667387b81ad4d6bdf2c9f2cc965c6c4b2b0fb6be",
+      "blindAnswer": "④",
+      "blindReasoning": "**④, n=30**. If `1,a1,...,ak,36^n` is integer-ratio GP, its exponent `m=k+1≥2` divides both prime exponents `2n` in `36^n=2^(2n)3^(2n)`. All divisors m≥2 work with positive integer ratio; number of k is `τ(2n)−1`. Need `τ(2n)=12`, smallest even integer having 12 divisors is 60 (`2²·3·5`), so min n30. (Check smaller options: `τ24=8`, `τ36=9`, `τ48=10`.)",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "36^n과 정수 공비, 가능한 k의 개수는 약수·소인수분해의 추상 문제다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "공비 r=k+1이 아닌 36^n의 정수 지수 분할 조건임을 정리하고 τ(2n)−1=11을 약수 표기로 산출한다."
+        }
+      },
+      "reviewNotes": {
+        "answerAndDistractors": "블라인드 계산으로 ④를 확정. ①~⑤는 서로 다른 선택지이며 그중 ④만 발문을 만족한다. k+1은 2n의 1보다 큰 약수. τ(2n)=12의 가장 작은 짝수 2n=60→n30; 중복 공비도 k를 늘리지 않음.",
+        "solution": "작은칠판 해설을 답 숨김 선행 풀이와 각 단계·범위·등호·부호 대조. k+1은 2n의 1보다 큰 약수. τ(2n)=12의 가장 작은 짝수 2n=60→n30; 중복 공비도 k를 늘리지 않음.",
+        "curriculumAndMeta": "2022 대수; 수학적 결정 단계에 맞춰 PT/TPL·RPM 보정 및 검증. 자연수·정수 메타 및 약수분해 4칸; 4칸 given/goal/method/condition 각 역할 확인; 난도 4 검토.",
+        "visualAxes": "문제 EXEMPT/EXEMPT; 해설 EXEMPT/EXEMPT; 실제 SVG 렌더·PNG 검수 NOT_RUN."
+      }
+    },
+    {
+      "qid": 17,
+      "sourceFingerprint": "c3ce0385a5ac05d71120845abb2af60b07989f0c9ac74a30e7b9e35678766fc0",
+      "blindAnswer": "③",
+      "blindReasoning": "**③, 153**. Five centered AP terms sum `5a_k=25`, so `a_k=5`. With positive integer difference d, `a1=5−(k−1)d`. `S_{k+3}=(k+3)[10+(4−k)d]/2=27`. Hence k+3 divides54 and k≥3; possible k=3,6,15,24,51. Only natural d is `k=6,d=2` (k3 gives d−1, others nonintegral); `a_n=2n−7`. Absolute sum n1..3:5+3+1=9, n4..15:1+3+...+23=144, total153.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "등차수열의 자연수 공차·k≥3과 두 합 조건이 수식으로 정해져 있다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "5a_k=25와 S_{k+3}=27로 k=6, d=2를 정하고 음수인 첫 3항과 이후 12항을 나눈다."
+        }
+      },
+      "reviewNotes": {
+        "answerAndDistractors": "블라인드 계산으로 ③를 확정. ①~⑤는 서로 다른 선택지이며 그중 ③만 발문을 만족한다. a_k=5와 S_{k+3}=27에서 자연수 k6, 공차 d2만 가능; a_n=2n−7, 부호를 나눠 합153.",
+        "solution": "작은칠판 해설을 답 숨김 선행 풀이와 각 단계·범위·등호·부호 대조. a_k=5와 S_{k+3}=27에서 자연수 k6, 공차 d2만 가능; a_n=2n−7, 부호를 나눠 합153.",
+        "curriculumAndMeta": "2022 대수; 수학적 결정 단계에 맞춰 PT/TPL·RPM 보정 및 검증. RPM/TPL 115→117, 자연수·양수 조건; 4칸 given/goal/method/condition 각 역할 확인; 난도 4 검토.",
+        "visualAxes": "문제 EXEMPT/EXEMPT; 해설 EXEMPT/EXEMPT; 실제 SVG 렌더·PNG 검수 NOT_RUN."
+      }
+    },
+    {
+      "qid": 18,
+      "sourceFingerprint": "27dd87ace94c6cf80194adf124fa553b29b0dbf89f008beaddbfd2cc950bc87c",
+      "blindAnswer": "①",
+      "blindReasoning": "**①, 34**. For any natural n, x=1 is inside `[0,n]`, so f(n)=4. If n≥11, interval includes x=11 giving cosπ=−1, g(n)=−4 and difference8, excluded. For n1..10, minimum is `4cos((n−1)π/10)`. Inequality 4<4−g(n)<8 means g(n)<0 but >−4, true exactly n7,8,9,10. Sum34.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "0≤x≤n에서 코사인함수의 최댓값·최솟값을 찾는 발문은 식으로 독립적이다."
+        },
+        "solution": {
+          "status": "PASS",
+          "planDigest": "47183f0c3e888dc739f163ceae40a8f311075d8ca04e1bede25c03da34b0d8f8",
+          "reasoning": "x=1에서 4, x=6에서 0, x=11에서 −4의 경계가 실제 코사인 그래프에서 보이면 n 범위 7..10을 이해하기 쉽다."
+        }
+      },
+      "reviewNotes": {
+        "answerAndDistractors": "블라인드 계산으로 ①를 확정. ①~⑤는 서로 다른 선택지이며 그중 ①만 발문을 만족한다. x1에서 최댓값4, g(n)∈(−4,0)인 정수 n7,8,9,10; 합34이며 n11부터 차8로 제외.",
+        "solution": "작은칠판 해설을 답 숨김 선행 풀이와 각 단계·범위·등호·부호 대조. x1에서 최댓값4, g(n)∈(−4,0)인 정수 n7,8,9,10; 합34이며 n11부터 차8로 제외.",
+        "curriculumAndMeta": "2022 대수; 수학적 결정 단계에 맞춰 PT/TPL·RPM 보정 및 검증. RPM 103→108, 극값 구간형 TPL, n·구간·부등식 조건; 4칸 given/goal/method/condition 각 역할 확인; 난도 4 검토.",
+        "visualAxes": "문제 EXEMPT/EXEMPT; 해설 BENEFICIAL/VALID_OFFICIAL_PLAN; 실제 SVG 렌더·PNG 검수 NOT_RUN."
+      }
+    },
+    {
+      "qid": 19,
+      "sourceFingerprint": "484e9c2bd2c81b6d01e3f5d87ea5377198e49f8b69353dce232202665de0ee6e",
+      "blindAnswer": "④",
+      "blindReasoning": "**④, 5√17/4**. At crossing E, vertical angles AEB and CED equal, so by sine law circumradius ratio of triangles EAB/ECD equals `AB/CD=6/CD=3/5`; CD=10. Given acute angle BCD with tan4/3 has cos3/5, sin4/5. In △BCD, `BD²=8²+10²−2·8·10·3/5=68`, BD=2√17. Circumradius of circle O is `BD/(2 sinC)=2√17/(8/5)=5√17/4`.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "PASS"
+      },
+      "plan": {
+        "problem": {
+          "status": "ENGINE_PENDING",
+          "planDigest": "593508ad046078ae3c61942a2775126e080cc6abc58c4f06961c6c6c76f0307c",
+          "reasoning": "내접사각형 ABCD의 꼭짓점 순서와 교차하는 두 대각선의 위치 관계는 원·교점 그림이 도움 된다."
+        },
+        "solution": {
+          "status": "ENGINE_PENDING",
+          "planDigest": "2b513c6631526ec11bf2c9ac73c79f3f61bf91365c220a3023dae3baebb88343",
+          "reasoning": "교점 E의 맞꼭지각, AB/CD=3/5, 삼각형 BCD의 코사인·사인법칙 적용 위치를 원 그림으로 보여 주면 이해가 쉬워진다."
+        }
+      },
+      "reviewNotes": {
+        "answerAndDistractors": "블라인드 계산으로 ④를 확정. ①~⑤는 서로 다른 선택지이며 그중 ④만 발문을 만족한다. E에서 맞꼭지각으로 AB/CD=3/5→CD10, ∠C의 cos=3/5, BD²=68, R=5√17/4.",
+        "solution": "작은칠판 해설을 답 숨김 선행 풀이와 각 단계·범위·등호·부호 대조. E에서 맞꼭지각으로 AB/CD=3/5→CD10, ∠C의 cos=3/5, BD²=68, R=5√17/4.",
+        "curriculumAndMeta": "2022 대수; 수학적 결정 단계에 맞춰 PT/TPL·RPM 보정 및 검증. RPM 109→111, 원·교차선 보조도형 엔진 후속; 4칸 given/goal/method/condition 각 역할 확인; 난도 5 검토.",
+        "visualAxes": "문제 BENEFICIAL/ENGINE_CAPABILITY_PENDING; 해설 BENEFICIAL/ENGINE_CAPABILITY_PENDING; 실제 SVG 렌더·PNG 검수 NOT_RUN."
+      }
+    },
+    {
+      "qid": 20,
+      "sourceFingerprint": "692316ee4ad670e949f14a9aa88c95e3a1cbe836122df9ee67c5dccdd723457f",
+      "blindAnswer": "k=5",
+      "blindReasoning": "**k=5**. `f(x)=k+(k+6)/(x+1)` for x≥0, range `(k,2k+6]`. Its integers are k+1,...,2k+6, sum `(k+6)(3k+7)/2=121`. Equation `3k²+25k−200=0` has positive root `k=5`, giving integers6..16 sum121.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "NOT_APPLICABLE"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "유리함수의 정의역 x≥0, 자연수 k와 정수 치역의 합을 직접 명시한다."
+        },
+        "solution": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "f=k+(k+6)/(x+1)의 치역 (k,2k+6] 및 연속 정수 k+1..2k+6의 합을 식으로 충분히 설명한다."
+        }
+      },
+      "reviewNotes": {
+        "answerAndDistractors": "서술형: 객관식 보기 없음. x≥0에서 치역(k,2k+6], 정수 k+1..2k+6 합121→3k²+25k−200=0의 자연근5.",
+        "solution": "작은칠판 해설을 답 숨김 선행 풀이와 각 단계·범위·등호·부호 대조. x≥0에서 치역(k,2k+6], 정수 k+1..2k+6 합121→3k²+25k−200=0의 자연근5.",
+        "curriculumAndMeta": "2022 대수; 수학적 결정 단계에 맞춰 PT/TPL·RPM 보정 및 검증. RPM/TPL 115→117, 자연수·정의역 4칸; 4칸 given/goal/method/condition 각 역할 확인; 난도 4 검토.",
+        "visualAxes": "문제 EXEMPT/EXEMPT; 해설 EXEMPT/EXEMPT; 실제 SVG 렌더·PNG 검수 NOT_RUN."
+      }
+    },
+    {
+      "qid": 21,
+      "sourceFingerprint": "28bd2421085a849183748dd95f76c3c23fff9a399a6349dda789e17ce65dc019",
+      "blindAnswer": "(4,1),(5,1),(6,1),(2,2),(3,2),(2,3),(1,6)",
+      "blindReasoning": "**seven pairs `(a,b)=(4,1),(5,1),(6,1),(2,2),(3,2),(2,3),(1,6)`**. `f(g(x))=(2/a)|sin(πx/b)|+b`. Reflection around x3 for all x iff `sin(6π/b)=0`, hence b divides6, b∈{1,2,3,6}. The equation `g(f(x))=3` is `f(x)=mb` for integers m, with `f(x)=b+(2/a)|x−3|` on x∈[0,6]. Level b has one crossing at x3; each integer level mb for m≥2 up to maximum b+6/a has two crossings (including endpoints). Exactly3 crossings iff `floor(6/(ab))=1`, equivalent to `3<ab≤6`. Enumerating natural a with b dividing6 gives exactly seven listed pairs.",
+      "checks": {
+        "math": "PASS",
+        "answerUniqueness": "PASS",
+        "solution": "PASS",
+        "curriculum": "PASS",
+        "metadata": "PASS",
+        "choices": "NOT_APPLICABLE"
+      },
+      "plan": {
+        "problem": {
+          "status": "EXEMPT",
+          "planDigest": null,
+          "reasoning": "합성 두 함수와 두 조건이 수학식으로 모두 제시되어 문제 그림 없이 풀 수 있다."
+        },
+        "solution": {
+          "status": "ENGINE_PENDING",
+          "planDigest": "331b05f8a367e8a7cccbdb5bd7d733d77d20e50bcbdc5104fbc19de0d34f6eef",
+          "reasoning": "|x−3|의 바닥점 하나와 그 위 정수배 수평선의 좌우 두 교점을 시각으로 구분하면 3<ab≤6의 의미가 명확하다."
+        }
+      },
+      "reviewNotes": {
+        "answerAndDistractors": "서술형: 객관식 보기 없음. 대칭 조건 b|6, 교점 정확3은 3<ab≤6; b1,2,3,6별 자연수 a 열거 총7쌍.",
+        "solution": "작은칠판 해설을 답 숨김 선행 풀이와 각 단계·범위·등호·부호 대조. 대칭 조건 b|6, 교점 정확3은 3<ab≤6; b1,2,3,6별 자연수 a 열거 총7쌍.",
+        "curriculumAndMeta": "2022 대수; 수학적 결정 단계에 맞춰 PT/TPL·RPM 보정 및 검증. RPM 103→107, 교점 TPL, 자연수·구간·교점 개수 및 엔진 후속; 4칸 given/goal/method/condition 각 역할 확인; 난도 5 검토.",
+        "visualAxes": "문제 EXEMPT/EXEMPT; 해설 BENEFICIAL/ENGINE_CAPABILITY_PENDING; 실제 SVG 렌더·PNG 검수 NOT_RUN."
+      }
+    }
+  ]
+}
