@@ -1,0 +1,45 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {"recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false},
+    "nodes": [
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"1"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"1","denominator":"2"},{"kind":"rational","numerator":"15388417685876268","denominator":"10000000000000000"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"8090169943749474","denominator":"10000000000000000"},{"kind":"rational","numerator":"5877852522924731","denominator":"10000000000000000"}]},"outputType":"POINT","factRole":"GIVEN"}
+    ]
+  },
+  "displayPoints": ["A","B","C","D"],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {"id":"sAB","refs":["A","B"]},
+    {"id":"sAC","refs":["A","C"]},
+    {"id":"sBC","refs":["B","C"]},
+    {"id":"sBD","refs":["B","D"]}
+  ],
+  "planeMarks": {
+    "angles": [
+      {"id":"angleA","refs":["B","A","C"],"value":36,"label":"36","style":"ARC","factRole":"GIVEN"},
+      {"id":"bisectorLeft","refs":["A","B","D"],"value":36,"arcs":1,"equalGroup":1,"noLabel":true,"style":"ARC","factRole":"GIVEN"},
+      {"id":"bisectorRight","refs":["D","B","C"],"value":36,"arcs":1,"equalGroup":1,"noLabel":true,"style":"ARC","factRole":"GIVEN"}
+    ],
+    "equalLengths": [{"id":"isoscelesSides","count":1,"segments":["sAB","sAC"]}],
+    "expressionLabels": [{"id":"baseLength","ownerSegment":"sBC","text":"1","factRole":"GIVEN"}]
+  },
+  "coordinateCanvas": {"width":520,"height":430},
+  "caption": "이등변삼각형 ABC의 꼭짓각은 36도이고 밑변 BC는 1이며, BD는 B각의 이등분선이다.",
+  "accessibilityDescription": "AB와 AC에 같은 길이 눈금이 있는 이등변삼각형 ABC. 밑변 BC의 길이는 1, A각은 36도이다. B에서 AC 위의 D로 이은 선이 B각을 크기가 같은 두 각으로 나눈다.",
+  "sourceQuote": "AB=AC인 이등변삼각형 ABC에서 BC=1, ∠A=36°이고",
+  "sourceConditions": [
+    {"id":"isosceles","condition":"AB=AC이고 밑변 BC=1이다. 좌표는 위 세 길이와 36도 꼭짓각을 만족하는 대표 배치이다.","mappedTo":["A","B","C","sAB","sAC","sBC","isoscelesSides","baseLength"]},
+    {"id":"apex","condition":"꼭짓각 BAC=36도이다.","mappedTo":["angleA"]},
+    {"id":"angleBisector","condition":"BD는 B각을 이등분한다. 기존 q18 문제 SVG에는 이등분 표식이 빠져 있었다.","mappedTo":["sBD","D","bisectorLeft","bisectorRight"]}
+  ],
+  "newVisualInformation": [
+    "원본 발문의 B각 이등분을 두 개의 동등한 호 표식으로 실제 그려, 기존 그림의 누락을 보완한다.",
+    "AB·AC의 길이 같음과 BC=1, 꼭짓각 36도는 각각 그려지는 눈금·선분 라벨·각 호에 직접 매핑한다. 음영은 사용하지 않는다.",
+    "문제에서 구하는 sin18도의 값이나 풀이로 나온 길이는 표시하지 않는다."
+  ]
+}

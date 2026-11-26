@@ -1,0 +1,42 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{
+    "schemaVersion":"construction-spike-v1",
+    "realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes":[
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"1"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"1"},{"kind":"integer","value":"3"}]},"outputType":"POINT","factRole":"GIVEN"}
+    ]
+  },
+  "displayPoints":["A","B","C"],
+  "displayLines":[],
+  "displayCircles":[],
+  "displaySegments":[
+    {"id":"sAC","refs":["A","C"]},
+    {"id":"sBC","refs":["B","C"]},
+    {"id":"sAB","refs":["A","B"]}
+  ],
+  "rightAngles":[{"id":"C90","refs":["A","C","B"]}],
+  "planeMarks":{
+    "angles":[{"id":"angleA","refs":["C","A","B"],"value":71.56505117707799,"label":"A","labelKind":"NAME","style":"ARC","factRole":"GIVEN"}],
+    "expressionLabels":[
+      {"id":"ACx","ownerSegment":"sAC","text":"x","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"BC3x","ownerSegment":"sBC","text":"3x","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"ABhyp","ownerSegment":"sAB","text":"sqrt(10)x","factRole":"DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "coordinateCanvas":{"width":540,"height":420},
+  "caption":"탄젠트 A가 3인 직각삼각형에서 AC를 x로 두면 BC는 3x, 빗변 AB는 루트10x가 된다.",
+  "accessibilityDescription":"C에서 직각인 삼각형 ABC. 각 A를 표시하고 그 각에 이웃한 변 AC는 x, 맞은편 변 BC는 3x, 빗변 AB는 루트10x로 나타낸다. 내부 면 채움은 없다.",
+  "sourceQuote":"∠C=90°인 직각삼각형 ABC에서",
+  "sourceConditions":[
+    {"id":"angle","condition":"직각삼각형 ABC에서 C는 직각이고 tan A=BC/AC=3이다.","mappedTo":["A","B","C","C90","angleA","sAC","sBC"]},
+    {"id":"legs","condition":"풀이에서는 AC=x, BC=3x로 두어 두 직각변의 비를 보여 준다.","mappedTo":["ACx","BC3x"]},
+    {"id":"hypotenuse","condition":"피타고라스 정리에서 AB=sqrt(10)x이다. 해설에만 표시한다.","mappedTo":["sAB","ABhyp"]}
+  ],
+  "newVisualInformation":[
+    "현행 q04는 해설 그림이 없으므로 tan A의 맞은편·이웃한 변과 빗변을 구별하는 새 해설 도식을 제시한다.",
+    "문제 정답은 그림에 노출하지 않고 x, 3x, sqrt(10)x 관계만 선분 라벨로 명시하며 모든 면은 흰색으로 둔다."
+  ]
+}

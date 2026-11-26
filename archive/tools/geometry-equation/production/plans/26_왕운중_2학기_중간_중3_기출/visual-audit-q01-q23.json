@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "visual-audit-original-exam-v1",
+  "sourcePath": "archive/exams/original/middle/m3/2mid/26_왕운중_2학기_중간_중3_기출.js",
+  "reviewScope": "2026 중3 2학기 중간, 23 qid × 문제·해설 두 축",
+  "comparisonBasis": "JS 원문·풀이, 현행 해설 SVG의 렌더링 이미지 및 original PNG 문제 에셋을 대조. 원본 PNG가 없는 일부 문항은 현행 SVG와 발문을 대조.",
+  "legend": {
+    "KEEP_ASSET": "연결된 현행 SVG·PNG를 점검하고 필수 시각정보 누락이 입증되지 않은 축. 신규 plan의 패리티 통과 건수에서 제외.",
+    "EXEMPT": "그림 없이 계산·진위 판단이 완결되는 축 또는 원문의 텍스트·표 자체가 문제 그림인 축.",
+    "REPLAN": "채움 제거 또는 치수·보조선 재설계용 실행 가능한 plan 작성. PASS는 정적 검사이며 새 SVG의 실제 생성·게시를 뜻하지 않음."
+  },
+  "entries": [
+    {"qid":1,"problem":{"verdict":"KEEP_ASSET","reason":"원본 q001_visual.png에 직각삼각형의 8·15·17 및 A 직각표식이 보임."},"solution":{"verdict":"KEEP_ASSET","reason":"현재 SVG에 ∠B, 세 길이, A 직각 네모와 대변/빗변 강조 선 유지."}},
+    {"qid":2,"problem":{"verdict":"EXEMPT","reason":"sin30°+cos60°의 수식 계산만 요구."},"solution":{"verdict":"EXEMPT","reason":"특수각 삼각비 대입만으로 풀이 완결."}},
+    {"qid":3,"problem":{"verdict":"KEEP_ASSET","reason":"원본 q003_visual.png의 단위원 사분원과 55°·보기의 삼각비 표기를 유지."},"solution":{"verdict":"KEEP_ASSET","reason":"사분원에 55° 직각투영선, 0.57·0.82·1.43의 길이 관계 확인."}},
+    {"qid":4,"problem":{"verdict":"KEEP_ASSET","reason":"원본 q004_visual.png의 DE⊥BC 보조선과 ∠BED=α 확인."},"solution":{"verdict":"KEEP_ASSET","reason":"A 직각, D 수선, E·α 위치 및 9·12·15 변 관계 확인."}},
+    {"qid":5,"problem":{"verdict":"EXEMPT","reason":"0°<A<45° 조건 아래 근호 절댓값 식을 계산하는 텍스트 문제."},"solution":{"verdict":"EXEMPT","reason":"삼각비 부호·크기 부등식만으로 수식 풀이 완결."}},
+    {"qid":6,"problem":{"verdict":"EXEMPT","reason":"보기의 삼각비 수치 순서를 배열하는 텍스트 선택 문제."},"solution":{"verdict":"EXEMPT","reason":"특수각 값 비교만 사용."}},
+    {"qid":7,"problem":{"verdict":"KEEP_ASSET","reason":"원본 q007_visual.png의 삼각형·무게중심 G·중선 및 18cm 관련 치수 확인."},"solution":{"verdict":"KEEP_ASSET","reason":"G를 지나는 중선, BC=30, 각도·점선 거리 10cm·15cm·5cm 및 직각표식 확인."}},
+    {"qid":8,"problem":{"verdict":"KEEP_ASSET","reason":"원본 q008_visual.png에 단위원 사분원과 점 B의 좌표용 투영선이 존재."},"solution":{"verdict":"KEEP_ASSET","reason":"사분원 위 B에서 두 축으로 수선을 내리고 sin a°·cos a° 표시를 확인."}},
+    {"qid":9,"problem":{"verdict":"KEEP_ASSET","reason":"원본 q009_visual.png의 지름 12인 원과 내접 정팔각형 확인."},"solution":{"verdict":"KEEP_ASSET","reason":"중심의 8방사선·45° 각과 변 길이 9√2 표시. 넓이 계산용 채움은 목적이 명확함."}},
+    {"qid":10,"problem":{"verdict":"KEEP_ASSET","reason":"q10_question-v2.png에 x·y축, A·B 절편, 원점 O 및 OH⊥AB·OH=2, α 확인."},"solution":{"verdict":"REPLAN","reason":"기존 q10-solution-v2.svg의 삼각형 주황색 면 채움은 길이·기울기 계산에 불필요. 좌표축, H 수선·직각, 2·26/5·13/6·α를 무채움 plan으로 교체 설계.","capability":"construction-spike-v1 / SOURCE_COORDINATE_AXES_v1","planPath":"q10-solution.plan.json","planLintShallow":"PASS","planLintFull":"PASS","drawnFeatureParity":"PASS","mappedFeatures":["O/X coordinate axes","lineAB","sOH","footRight","OHtwo","OAvalue","OBvalue","alpha"]}},
+    {"qid":11,"problem":{"verdict":"KEEP_ASSET","reason":"원본 q11_question-v2.png에 AC=40m, BC=60m, ∠ACB=60° 확인."},"solution":{"verdict":"KEEP_ASSET","reason":"수선 CH=20m, AH=20√3m, BH=40m와 90°·60° 표시 확인."}},
+    {"qid":12,"problem":{"verdict":"KEEP_ASSET","reason":"원본 q012_visual.png의 밑변·높이 30% 증감 형상 확인."},"solution":{"verdict":"KEEP_ASSET","reason":"원래·변경된 삼각형의 넓이 비교용 겹침 색 영역이 풀이 내용에 직접 대응하므로 유지."}},
+    {"qid":13,"problem":{"verdict":"KEEP_ASSET","reason":"원본 q013_visual.png에 관찰 거리·시선 3m, 51° 및 높이 관계 확인."},"solution":{"verdict":"KEEP_ASSET","reason":"삼각비용 시선 3m·51°, 1.89m 높이, 0.5m 기준높이와 점선 확인."}},
+    {"qid":14,"problem":{"verdict":"KEEP_ASSET","reason":"원본 q14_question-v2.png에 직사각형 접기와 AB=3cm·AP=5cm 확인."},"solution":{"verdict":"KEEP_ASSET","reason":"접는 선 PQ, 직각, AC 중점 M, 9cm 전체·5cm·4cm 분할과 보조선 확인."}},
+    {"qid":15,"problem":{"verdict":"KEEP_ASSET","reason":"원본 q15_question-v2.png에 ∠A=90°, OB=10, sin∠AOB=3/5 및 삼각형 위치 확인."},"solution":{"verdict":"KEEP_ASSET","reason":"OAB와 OBC의 넓이 이등분을 설명하는 두 면 채움은 정당하며 OA=8, AB=BC=6, 좌표 표기를 확인."}},
+    {"qid":16,"problem":{"verdict":"KEEP_ASSET","reason":"현행 q16-engine-upgrade.svg의 원, 위·아래 평행 현, 12cm·6cm·10cm·8cm, 직각·등길이 눈금 확인."},"solution":{"verdict":"KEEP_ASSET","reason":"현에서 중심으로 내린 수선 두 개, 길이 x와 8 및 표식 확인."}},
+    {"qid":17,"problem":{"verdict":"KEEP_ASSET","reason":"원본 q017_visual.png의 동등한 중심-현 거리, ∠B=58° 및 목표각 x 확인."},"solution":{"verdict":"KEEP_ASSET","reason":"두 중심 수선의 직각 네모·등길이 눈금 및 58° 밑각 두 개를 확인."}},
+    {"qid":18,"problem":{"verdict":"KEEP_ASSET","reason":"q18_question-v2.png의 접선 PA·PB, 원 O, 60° 및 원본 반지름 3을 확인."},"solution":{"verdict":"REPLAN","reason":"기존 q18-solution-v2.svg의 내부 파란 부채꼴 면 채움은 접선 길이 문제에 불필요. 원·접선·반지름·두 직각·30°/60°·등길이 표식을 무채움 plan으로 설계.","capability":"construction-spike-v1","planPath":"q18-solution.plan.json","planLintShallow":"PASS","planLintFull":"PASS","drawnFeatureParity":"PASS","mappedFeatures":["circ","sPA/sPB","sameTangents","sOA/sOB","sameRadii","rightA/rightB","sPO","givenAngle/halfAngle","radiusThree","tangentValue"]}},
+    {"qid":19,"problem":{"verdict":"EXEMPT","reason":"세 학생의 원 중심 찾기 대화가 원문 문제 전체이며 추가 도형은 필수 아님."},"solution":{"verdict":"KEEP_ASSET","reason":"현 AB·CD의 수직이등분선과 교점 O를 표시해 대화의 핵심 원리를 보조."}},
+    {"qid":20,"problem":{"verdict":"KEEP_ASSET","reason":"원본 q020_visual.png의 직사각형 9cm×6cm, 내접원, 접선 DE 및 관련 접점 확인."},"solution":{"verdict":"KEEP_ASSET","reason":"원의 접점, DT=6, EV=ET=6−x의 보조선과 치수선 확인."}},
+    {"qid":21,"problem":{"verdict":"KEEP_ASSET","reason":"원본 q021_visual.png의 삼각형 내접원·접점 D,E,F 및 변 길이 조건 확인."},"solution":{"verdict":"KEEP_ASSET","reason":"각 꼭짓점에서 접선의 같은 길이를 다중 눈금과 분할 길이로 표시."}},
+    {"qid":22,"problem":{"verdict":"KEEP_ASSET","reason":"원본 q022_visual.png의 사각형, ∠A=60°·∠D=30° 및 변 길이 표시 확인."},"solution":{"verdict":"KEEP_ASSET","reason":"대각선 BD로 분리한 △ABD와 △BCD의 넓이 음영·수선·7cm·12cm·14cm 확인. 면 채움은 넓이 합의 시각화."}},
+    {"qid":23,"problem":{"verdict":"KEEP_ASSET","reason":"q23_question-v2.png의 클리노미터 관찰 상황, 수직 실과 빨대의 60°, 눈높이 1.6m·거리 10m 확인."},"solution":{"verdict":"REPLAN","reason":"기존 q23-solution.svg의 주황색 삼각형 면 채움은 높이 계산에 필요하지 않음. 60° 수직기준각·30° 올려본각·10m·1.6m·H·H−1.6 및 직각을 무채움 plan으로 재설계.","capability":"construction-spike-v1","planPath":"q23-solution.plan.json","planLintShallow":"PASS","planLintFull":"PASS","drawnFeatureParity":"PASS","mappedFeatures":["sAF","measuredAngle","sAD","upAngle","groundDistance","eyeHeight","treeHeight","heightAboveEye","tree90"]}}
+  ],
+  "outcome": {"qidCount":23,"axisCount":46,"replanned":3,"kept":36,"exempt":7,"shallowPass":3,"fullPass":3,"drawnFeatureParityPass":3,"engineCapabilityPending":0,"actualPlanSvgRender":"NOT_RUN","studentView":"NOT_RUN","printA4":"NOT_RUN","postPublication":"NOT_RUN"},
+  "notice": "원본 PNG 대조는 연결된 에셋의 표현을 확인한 것이지 기출 인쇄지의 픽셀 동등성을 보증하는 검사가 아니다. 새 plan은 아직 실제 SVG로 렌더·연결되지 않았으며 기존 문제·해설 경로는 변경하지 않았다."
+}

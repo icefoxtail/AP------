@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "visual-audit-original-exam-v1",
+  "sourcePath": "archive/exams/original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js",
+  "reviewScope": "2026 중3 2학기 중간, 24 qid × 문제·해설 두 축",
+  "comparisonBasis": "JS 원문·풀이·해설 대 현행 SVG(렌더링 이미지 포함). 별도의 스캔 원본 기출 이미지가 이 시험지의 각 문항에 연결되어 있지는 않아 원본 인쇄 스캔의 픽셀 동등성은 확인하지 못했다.",
+  "legend": {
+    "KEEP_ASSET": "현행 연결된 그림의 발문상 필수 시각요소를 검토했고, 이번 재설계가 필요하다고 입증되지 않음. 새 plan의 패리티 통과 건수에 포함하지 않음.",
+    "EXEMPT": "그림 없이 문제·해설 텍스트만으로 완결. 비필수 SVG 제작 또는 문제 정답 노출을 피함.",
+    "REPLAN": "새 실사용 JSON plan을 작성함. PASS는 공식 shallow·full 검증과 렌더 필드 대조의 정적 결과만 뜻함.",
+    "NOT_APPLICABLE": "새 plan이 없어 plan-lint 및 새 plan 필드 패리티 검증 적용 대상 아님."
+  },
+  "entries": [
+    {"qid":1,"problem":{"verdict":"KEEP_ASSET","reason":"직각삼각형 ABC의 빗변 5, 변 BC=4, B의 직각 네모, 점 이름을 확인."},"solution":{"verdict":"KEEP_ASSET","reason":"피타고라스로 구한 AB=3과 ∠C 기준 변의 관계 및 직각표식 유지."}},
+    {"qid":2,"problem":{"verdict":"EXEMPT","reason":"30°·60° 삼각비의 곱셈식만 제시."},"solution":{"verdict":"EXEMPT","reason":"삼각비 대입과 켤레식 계산을 텍스트 수식으로 완결."}},
+    {"qid":3,"problem":{"verdict":"KEEP_ASSET","reason":"원 O, 길이 24cm의 현, 중심-현 거리 9cm 및 수선의 직각표식 확인."},"solution":{"verdict":"KEEP_ASSET","reason":"현 반길이 12와 반지름 15의 보조 직각삼각형 확인."}},
+    {"qid":4,"problem":{"verdict":"EXEMPT","reason":"∠C=90°, tan A=3은 발문에 수치로 주어지므로 문제 그림은 필수 아님."},"solution":{"verdict":"REPLAN","reason":"기존 해설 SVG 누락: 직각삼각형에 x, 3x, √10x 및 C 직각표식을 함께 표시하는 공식 plan 신규 작성.","capability":"construction-spike-v1","planPath":"q04-solution.plan.json","planLintShallow":"PASS","planLintFull":"PASS","drawnFeatureParity":"PASS","mappedFeatures":["sAC/ACx","sBC/BC3x","sAB/ABhyp","C90","angleA"]}},
+    {"qid":5,"problem":{"verdict":"KEEP_ASSET","reason":"42°·빗변 2·C 직각 및 40~43° 삼각비 표의 행·열·소수값 확인."},"solution":{"verdict":"KEEP_ASSET","reason":"sin42°, cos42°를 각각 변에 대응한 보조 삼각형 확인."}},
+    {"qid":6,"problem":{"verdict":"KEEP_ASSET","reason":"사각형의 ∠A=45°, ∠C=60°, 두 직각 및 CD=1 확인."},"solution":{"verdict":"KEEP_ASSET","reason":"대각선 BD를 기준으로 분리한 넓이 계산용 두 직각삼각형 유지."}},
+    {"qid":7,"problem":{"verdict":"EXEMPT","reason":"학생의 삼각비 설명의 진위를 판단하는 텍스트 선택형."},"solution":{"verdict":"EXEMPT","reason":"각 발언의 정의와 반례를 말·수식으로 판단."}},
+    {"qid":8,"problem":{"verdict":"KEEP_ASSET","reason":"빗변 √13, ∠A=a°, C 직각 및 필요한 점·변 확인."},"solution":{"verdict":"KEEP_ASSET","reason":"BC가 A의 대변임을 보이는 직각삼각형 유지."}},
+    {"qid":9,"problem":{"verdict":"KEEP_ASSET","reason":"3m 천장, 반사 경로 A→B→C, 30° 입사각, 2m 높이와 벽·천장 직각 확인."},"solution":{"verdict":"KEEP_ASSET","reason":"빛 반사의 두 구간과 30° 관계의 보조선·높이 확인."}},
+    {"qid":10,"problem":{"verdict":"KEEP_ASSET","reason":"배구 공 경로 A→D→B, 2.5m·2m 수직높이, 30°·45° 및 바닥 수선 확인."},"solution":{"verdict":"KEEP_ASSET","reason":"두 구간의 이동거리 계산에 필요한 보조 직각삼각형 유지."}},
+    {"qid":11,"problem":{"verdict":"KEEP_ASSET","reason":"△ABC의 ∠A=30°와 AB=4√3cm를 확인."},"solution":{"verdict":"KEEP_ASSET","reason":"넓이 3√3cm²에 연결되는 높이·밑변 표시 확인."}},
+    {"qid":12,"problem":{"verdict":"KEEP_ASSET","reason":"평행사변형의 대각선 교점 O, BC=12cm·CD=8cm 및 넓이를 묻는 음영 영역 확인. 이 음영은 불필요한 채움이 아님."},"solution":{"verdict":"KEEP_ASSET","reason":"대각선으로 분할되는 넓이 구획과 각도 관계 확인."}},
+    {"qid":13,"problem":{"verdict":"KEEP_ASSET","reason":"120°·135° 각호와 네 변 길이 4√2, 4√3, 6√2−2√6, 4√2 확인."},"solution":{"verdict":"KEEP_ASSET","reason":"사각형 넓이 분해에 필요한 대각선·변·각 표기 확인."}},
+    {"qid":14,"problem":{"verdict":"KEEP_ASSET","reason":"원 중심 O, AB=18cm, OC에 대한 현의 수직이등분점 C와 직각·등길이 표시 확인."},"solution":{"verdict":"KEEP_ASSET","reason":"반지름 및 현의 반쪽 길이를 잇는 직각삼각형 확인."}},
+    {"qid":15,"problem":{"verdict":"KEEP_ASSET","reason":"원, 현 AB와 CD, OM⊥AB, OD=8cm, OM=6cm, 동등 현의 눈금·수선 확인."},"solution":{"verdict":"KEEP_ASSET","reason":"동등 현의 중심거리 및 △OCD 넓이용 보조선을 확인."}},
+    {"qid":16,"problem":{"verdict":"KEEP_ASSET","reason":"같은 길이의 평행 현 쌍, 서로 수직인 두 현, 거리 10cm·6cm 및 24cm와 평행·등길이 표식 확인."},"solution":{"verdict":"KEEP_ASSET","reason":"현 사이 거리로 세운 직교 보조선과 반지름 관계 확인."}},
+    {"qid":17,"problem":{"verdict":"KEEP_ASSET","reason":"접선 AD·BC·AF, 접점 D·E·F, 18cm·15cm·13cm·60° 표시 확인."},"solution":{"verdict":"KEEP_ASSET","reason":"접선의 동등 길이와 삼각형 넓이 관계 확인."}},
+    {"qid":18,"problem":{"verdict":"REPLAN","reason":"기존 q18-readable-v3.svg에는 AB=AC 눈금과 36°는 있지만 BD가 ∠B를 이등분한다는 두 각호의 동등 표식이 없음.","capability":"construction-spike-v1","planPath":"q18-problem.plan.json","planLintShallow":"PASS","planLintFull":"PASS","drawnFeatureParity":"PASS","mappedFeatures":["sBD","bisectorLeft","bisectorRight","isoscelesSides","angleA","baseLength"]},"solution":{"verdict":"KEEP_ASSET","reason":"∠B의 36°+36° 분할, ∠C=72°, BD·AD=1 및 높이·18° 표시가 현행 해설에 있음."}},
+    {"qid":19,"problem":{"verdict":"KEEP_ASSET","reason":"반지름 4√3, AB=16인 정삼각형, 지름 AH와 BC의 직교, 요구된 회색 음영 면적을 확인. 음영은 문제 조건."},"solution":{"verdict":"KEEP_ASSET","reason":"원의 호·삼각형·면적 차이를 나타내는 보조 도식 유지."}},
+    {"qid":20,"problem":{"verdict":"KEEP_ASSET","reason":"직각삼각형 내접원 O, 접점 D·E·F, BD=5·CE=12 및 A 직각 확인."},"solution":{"verdict":"KEEP_ASSET","reason":"접선 분할 길이 및 중심에서 각 변으로의 수선 확인."}},
+    {"qid":21,"problem":{"verdict":"KEEP_ASSET","reason":"종이 접기 EF, 원래 꼭짓점 A의 점선, CF=1cm, ∠CDF=90° 및 접힌 선분 확인."},"solution":{"verdict":"KEEP_ASSET","reason":"접힌 전후 변과 중간 길이의 대응 확인."}},
+    {"qid":22,"problem":{"verdict":"KEEP_ASSET","reason":"사탑의 기울기 4°, A-B 거리 60m, 45°와 수선·기준선·점선 확인."},"solution":{"verdict":"KEEP_ASSET","reason":"피사의 사탑 높이 풀이의 수직선·경사선과 삼각비 대응 확인."}},
+    {"qid":23,"problem":{"verdict":"KEEP_ASSET","reason":"△ABC와 △ADE, AC:AE=2:1·AB:AD=1:3, 교차 선분과 점 배열 확인."},"solution":{"verdict":"KEEP_ASSET","reason":"두 삼각형 넓이 비에 필요한 대응 밑변·높이 유지."}},
+    {"qid":24,"problem":{"verdict":"KEEP_ASSET","reason":"발문 HTML에 실제 유물 사진과 원형 복원 보조 SVG를 포함함. 단순 image 필드 공란을 그림 누락으로 오진하지 않음."},"solution":{"verdict":"KEEP_ASSET","reason":"원호·현 AB·중심 O·현 중점 M·두 반지름 동등표식 및 직각을 확인."}}
+  ],
+  "outcome": {"qidCount":24,"axisCount":48,"replanned":2,"kept":41,"exempt":5,"shallowPass":2,"fullPass":2,"drawnFeatureParityPass":2,"engineCapabilityPending":0,"actualPlanSvgRender":"NOT_RUN","studentView":"NOT_RUN","printA4":"NOT_RUN","postPublication":"NOT_RUN"},
+  "notice": "plan-lint 및 DRAWN_FEATURE_PARITY는 공식 엔진·렌더 필드의 정적 검증이다. 새 SVG 파일 제작·실물 PNG/A4·게시·JS 연결 및 원본 스캔 픽셀 비교는 후속 단계다. 현행 연결 에셋은 삭제·변경하지 않았다."
+}
