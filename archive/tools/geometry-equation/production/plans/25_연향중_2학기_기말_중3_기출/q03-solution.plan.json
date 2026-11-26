@@ -1,0 +1,53 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes": [
+      {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"X","op":"TRANSLATE_POINT","inputs":["O"],"args":{"dx":{"kind":"integer","value":"1"},"dy":{"kind":"integer","value":"0"}},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"k","op":"CIRCLE_CENTER_RADIUS","inputs":["O"],"args":{"radius":{"kind":"integer","value":"6"}},"outputType":"CIRCLE","factRole":"GIVEN"},
+      {"id":"A","op":"POLAR_POINT","inputs":["O","X"],"args":{"length":{"kind":"integer","value":"6"},"angleDeg":{"kind":"integer","value":"90"},"turn":"CCW"},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B","op":"POLAR_POINT","inputs":["O","X"],"args":{"length":{"kind":"integer","value":"6"},"angleDeg":{"kind":"integer","value":"150"},"turn":"CCW"},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"C","op":"POLAR_POINT","inputs":["O","X"],"args":{"length":{"kind":"integer","value":"6"},"angleDeg":{"kind":"integer","value":"30"},"turn":"CCW"},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"D","op":"POLAR_POINT","inputs":["O","X"],"args":{"length":{"kind":"integer","value":"6"},"angleDeg":{"kind":"integer","value":"120"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"lOD","op":"LINE_THROUGH","inputs":["O","D"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"lAB","op":"LINE_THROUGH","inputs":["A","B"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"lBC","op":"LINE_THROUGH","inputs":["B","C"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"M","op":"LINE_INTERSECTION","inputs":["lOD","lAB"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"E","op":"LINE_INTERSECTION","inputs":["lOD","lBC"],"args":{},"outputType":"POINT","factRole":"GIVEN"}
+    ]
+  },
+  "coordinateCanvas":{"width":600,"height":490},
+  "displayPoints":["O","A","B","C","D","M","E"],
+  "displayLines":[],
+  "displayCircles":["k"],
+  "displaySegments":[
+    {"id":"sAB","refs":["A","B"]},
+    {"id":"sAC","refs":["A","C"]},
+    {"id":"sBC","refs":["B","C"]},
+    {"id":"sOA","refs":["O","A"]},
+    {"id":"sOD","refs":["O","D"]},
+    {"id":"sOE","refs":["O","E"],"emphasis":"ACCENT"}
+  ],
+  "rightAngles":[{"id":"rM","refs":["O","M","A"]}],
+  "planeMarks":{
+    "angles":[
+      {"id":"aA","refs":["B","A","C"],"value":120,"label":"120","style":"ARC","factRole":"GIVEN"},
+      {"id":"aB","refs":["A","B","C"],"value":30,"label":"30","style":"ARC","factRole":"DERIVED_INTERMEDIATE"}
+    ],
+    "expressionLabels":[
+      {"id":"lOA","ownerSegment":"sOA","text":"6"},
+      {"id":"lenAB","ownerSegment":"sAB","text":"6"},
+      {"id":"lOE","ownerSegment":"sOE","text":"2sqrt(3)"}
+    ]
+  },
+  "caption":"OD와 현 BC의 교점 E를 정확히 표시하고, OD와 AB의 교점 M을 구분하여 OE의 길이를 구한다.",
+  "sourceQuote":"OD는 AB에 수직이고 OD와 BC의 교점 E에 대해 OE를 구한다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"A,B,C는 반지름 6인 원 위에 있고 AB=AC=OA=6이며 BAC=120°이다.","mappedTo":["mathPlan.nodes","displayCircles","planeMarks.angles","planeMarks.expressionLabels"]},
+    {"id":"c2","condition":"OD는 AB에 수직이며 E는 OD와 BC의 교점이다; M은 OD와 AB의 교점으로 E와 다른 점이다.","mappedTo":["mathPlan.nodes","displaySegments","rightAngles"]},
+    {"id":"c3","condition":"BC는 y=3이고 OD 방향은 120°이므로 E=(-√3,3), OE=2√3이다.","mappedTo":["mathPlan.nodes","displaySegments","planeMarks.expressionLabels"]}
+  ],
+  "newVisualInformation":["종전 그림이 E를 AB 위에 놓은 오류를 수정하고 BC 위 E와 AB 위 M을 각각 점과 라벨로 구별한다.","필요한 OA·AB 길이와 직각·각도 호를 유지하고 영역은 채우지 않는다."]
+}
