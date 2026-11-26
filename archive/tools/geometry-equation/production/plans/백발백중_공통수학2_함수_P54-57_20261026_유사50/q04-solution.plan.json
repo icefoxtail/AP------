@@ -1,0 +1,64 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "k",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "왼쪽 조건",
+        "color": "BLUE",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-6",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "오른쪽 조건",
+        "color": "WARM",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "6",
+              "state": "OPEN"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "RESULT",
+        "label": "공통 범위"
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "매개변수 k의 범위"
+  },
+  "caption": "두 조각의 기울기가 같은 방향으로 유지되는 -6<k<6의 열린 교집합.",
+  "accessibilityDescription": "매개변수 k의 허용 범위를 열린 끝점과 구간으로 표시한 수직선.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "k>-6: 좌측 기울기 부호",
+      "mappedTo": [
+        "numberLine.rows[0].pieces"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "k<6: 우측 기울기 부호",
+      "mappedTo": [
+        "numberLine.rows[1].pieces"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "경계값을 포함하지 않는 열린 끝점과 허용 범위의 연결 여부를 확인한다."
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "7",
+          "4",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -6,
+      2
+    ],
+    "viewport": [
+      -6,
+      2,
+      2,
+      14
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": -2,
+        "y": 3
+      }
+    ],
+    "referenceLines": [
+      {
+        "id": "r",
+        "y": "3",
+        "intersectionX": [
+          "-2"
+        ]
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        -2
+      ],
+      "y": [
+        3
+      ]
+    }
+  },
+  "caption": "경계 a=4에서 g(x)=(x+2)²+3는 y=3에 꼭짓점에서 접한다.",
+  "accessibilityDescription": "경계 매개변수 a=4일 때 함수 g의 이차함수 곡선과 높이 3인 기준선의 접점을 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "g(x)=x²+4x+7 (매개변수의 경계 사례)",
+      "mappedTo": "graphPlan.pieces[0].coefficients"
+    },
+    {
+      "id": "c2",
+      "condition": "f(t)≥0인 위쪽 구간의 경계 t=3",
+      "mappedTo": "graphPlan.referenceLines[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "g의 최솟값 3는 x=-2에서 발생",
+      "mappedTo": "graphPlan.requiredPoints[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "합성부등식의 전 실수 조건을 g의 최솟값과 f의 근 사이의 접점 위치로 해석한다."
+  ],
+  "sourceQuote": "두 함수 $f(x)=x^2-2x-3, g(x)=x^2+ax+7$일 때, 모든 실수 $x$에 대하여 $(f \\circ g)(x) \\ge 0$이 되도록 하는 모든 실수 $a$의 값의 범위는?"
+}
