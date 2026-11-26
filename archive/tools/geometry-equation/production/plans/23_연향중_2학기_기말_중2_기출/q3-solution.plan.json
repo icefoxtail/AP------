@@ -1,0 +1,281 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "14"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "MIDPOINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "20",
+              "denominator": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "MIDPOINT",
+        "inputs": [
+          "E",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "G",
+    "F"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "sDF",
+      "refs": [
+        "D",
+        "F"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "sAE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "sEC",
+      "refs": [
+        "E",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "parallels": [
+      {
+        "id": "parDF",
+        "count": 1,
+        "segments": [
+          "sDF",
+          "sBE"
+        ]
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "eBD",
+        "count": 1,
+        "segments": [
+          "sBD",
+          "sDC"
+        ]
+      },
+      {
+        "id": "eAE",
+        "count": 2,
+        "segments": [
+          "sAE",
+          "sEC"
+        ]
+      }
+    ],
+    "regions": [
+      {
+        "id": "rFDC",
+        "fill": "MEDIUM",
+        "label": "8",
+        "unit": "cm^2",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "polygon": [
+              "F",
+              "D",
+              "C"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "삼각형 FDC의 넓이 8 cm²만 회색으로 구분하여 중점과 닮음에 의한 전체 삼각형의 넓이비를 읽는다.",
+  "accessibilityDescription": "삼각형 ABC는 흰 바탕이며 FDC 작은 삼각형만 회색으로 칠하고 8 cm²로 표시한다. D와 E는 중점, DF와 BE는 평행이다.",
+  "sourceConditions": [
+    {
+      "id": "centroid",
+      "condition": "G는 삼각형 ABC의 무게중심으로, 중선 AD와 BE 위에 있다.",
+      "mappedTo": "mathPlan.nodes:G,D,E; displaySegments:sAD,sBE; planeMarks.equalLengths:eBD,eAE"
+    },
+    {
+      "id": "parallel",
+      "condition": "D를 지나고 BE에 평행한 선이 AC와 만나는 점 F가 있다.",
+      "mappedTo": "mathPlan.nodes:F; displaySegments:sDF; planeMarks.parallels:parDF"
+    },
+    {
+      "id": "area",
+      "condition": "삼각형 FDC의 넓이가 8 cm²라고 문제 본문에 주어진다.",
+      "mappedTo": "mathPlan.nodes:F,D,C; displaySegments:sDF,sDC,sEC"
+    },
+    {
+      "id": "givenArea",
+      "condition": "FDC의 넓이는 8 cm²이고 넓이비는 전체의 1/8이다.",
+      "mappedTo": "planeMarks.regions:rFDC"
+    }
+  ],
+  "newVisualInformation": [
+    "넓이가 주어진 FDC에만 회색 음영과 8 cm² 수치를 두고 나머지 삼각형은 무채움으로 만든다."
+  ]
+}

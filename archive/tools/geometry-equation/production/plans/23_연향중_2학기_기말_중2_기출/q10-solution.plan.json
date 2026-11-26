@@ -1,0 +1,287 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "28"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "28"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "H"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sEA",
+      "refs": [
+        "E",
+        "A"
+      ]
+    },
+    {
+      "id": "sBH",
+      "refs": [
+        "B",
+        "H"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sHA",
+      "refs": [
+        "H",
+        "A"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dBC",
+        "from": "B",
+        "to": "C",
+        "label": "6",
+        "side": "LEFT"
+      },
+      {
+        "id": "dCD",
+        "from": "C",
+        "to": "D",
+        "label": "28",
+        "side": "BELOW"
+      },
+      {
+        "id": "dAE",
+        "from": "A",
+        "to": "E",
+        "label": "20",
+        "side": "ABOVE"
+      },
+      {
+        "id": "dAB",
+        "from": "B",
+        "to": "A",
+        "label": "10",
+        "side": "LEFT"
+      },
+      {
+        "id": "dAH",
+        "from": "H",
+        "to": "A",
+        "label": "8",
+        "side": "ABOVE"
+      },
+      {
+        "id": "dBH",
+        "from": "B",
+        "to": "H",
+        "label": "6",
+        "side": "LEFT",
+        "offset": "AUTO"
+      },
+      {
+        "id": "dED",
+        "from": "E",
+        "to": "D",
+        "label": "12",
+        "side": "RIGHT"
+      }
+    ]
+  },
+  "caption": "가로 28, 높이 12의 큰 직사각형에서 윗왼쪽 밑변 8·높이 6인 직각삼각형을 점선으로 보충한 오각형이다.",
+  "accessibilityDescription": "가로 28, 높이 12의 큰 직사각형에서 윗왼쪽 밑변 8·높이 6인 직각삼각형을 점선으로 보충한 오각형이다.",
+  "sourceConditions": [
+    {
+      "id": "pentagon",
+      "condition": "BC=6, CD=28, DE⊥CD, AE=20, AB=10이다.",
+      "mappedTo": "displaySegments:sAB,sBC,sCD,sDE,sEA; planeMarks.dimensions:dBC,dCD,dAE,dAB"
+    },
+    {
+      "id": "completion",
+      "condition": "B의 위쪽 H까지 연장하면 AH=8, BH=6인 직각삼각형을 이루며 전체 높이는 12이다.",
+      "mappedTo": "mathPlan.nodes:H; displaySegments:sBH,sHA; rightAngles:rH; planeMarks.dimensions:dAH,dBH,dED"
+    }
+  ],
+  "newVisualInformation": [
+    "전면 연한 파랑을 삭제하고 원문 해설의 점선 확장·직각·8·6을 남긴다."
+  ],
+  "rightAngles": [
+    {
+      "id": "rD",
+      "refs": [
+        "C",
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "rE",
+      "refs": [
+        "D",
+        "E",
+        "A"
+      ]
+    },
+    {
+      "id": "rH",
+      "refs": [
+        "B",
+        "H",
+        "A"
+      ]
+    }
+  ]
+}

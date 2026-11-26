@@ -1,0 +1,234 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "X1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "16"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "16"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "X1",
+    "X2",
+    "X3",
+    "X4",
+    "T",
+    "U"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sTop1",
+      "refs": [
+        "X1",
+        "T"
+      ]
+    },
+    {
+      "id": "sTop2",
+      "refs": [
+        "T",
+        "X2"
+      ]
+    },
+    {
+      "id": "sRight",
+      "refs": [
+        "X2",
+        "X3"
+      ]
+    },
+    {
+      "id": "sBottom1",
+      "refs": [
+        "X3",
+        "U"
+      ]
+    },
+    {
+      "id": "sBottom2",
+      "refs": [
+        "U",
+        "X4"
+      ]
+    },
+    {
+      "id": "sLeft",
+      "refs": [
+        "X4",
+        "X1"
+      ]
+    },
+    {
+      "id": "sDivider",
+      "refs": [
+        "T",
+        "U"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "textLabels": [
+      {
+        "id": "labelA",
+        "at": [
+          4,
+          2.5
+        ],
+        "text": "A"
+      },
+      {
+        "id": "labelB",
+        "at": [
+          12,
+          2.5
+        ],
+        "text": "B"
+      }
+    ]
+  },
+  "caption": "두 개의 동등한 직사각형 A와 B가 가로로 나뉘고 어느 영역도 아직 칠해지지 않았다.",
+  "accessibilityDescription": "두 개의 동등한 직사각형 A와 B가 가로로 나뉘고 어느 영역도 아직 칠해지지 않았다.",
+  "sourceConditions": [
+    {
+      "id": "halves",
+      "condition": "직사각형은 같은 넓이의 좌측 A와 우측 B로 나뉜다.",
+      "mappedTo": "displaySegments:sTop1,sTop2,sRight,sBottom1,sBottom2,sLeft,sDivider; planeMarks.textLabels:labelA,labelB"
+    },
+    {
+      "id": "uncolored",
+      "condition": "주사위를 던지기 전에 어느 영역도 색칠되어 있지 않다.",
+      "mappedTo": "planeMarks.textLabels:labelA,labelB"
+    }
+  ],
+  "newVisualInformation": [
+    "원본처럼 완전한 흰색 무채움으로 두고 세 번째 시행까지 색칠하는 확률의 전제 상태를 보존한다."
+  ],
+  "hiddenPointNames": [
+    "X1",
+    "X2",
+    "X3",
+    "X4",
+    "T",
+    "U"
+  ],
+  "hiddenPointStyle": "NONE"
+}

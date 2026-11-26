@@ -1,0 +1,340 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "14"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "MIDPOINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "N",
+        "op": "MIDPOINT",
+        "inputs": [
+          "C",
+          "D"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "14",
+              "denominator": "3"
+            },
+            {
+              "kind": "rational",
+              "numerator": "10",
+              "denominator": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "28",
+              "denominator": "3"
+            },
+            {
+              "kind": "rational",
+              "numerator": "20",
+              "denominator": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "M",
+    "N",
+    "P",
+    "Q"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sAM",
+      "refs": [
+        "A",
+        "M"
+      ]
+    },
+    {
+      "id": "sAN",
+      "refs": [
+        "A",
+        "N"
+      ]
+    },
+    {
+      "id": "sBM",
+      "refs": [
+        "B",
+        "M"
+      ]
+    },
+    {
+      "id": "sMC",
+      "refs": [
+        "M",
+        "C"
+      ]
+    },
+    {
+      "id": "sCN",
+      "refs": [
+        "C",
+        "N"
+      ]
+    },
+    {
+      "id": "sND",
+      "refs": [
+        "N",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "eBM",
+        "count": 1,
+        "segments": [
+          "sBM",
+          "sMC"
+        ]
+      },
+      {
+        "id": "eCN",
+        "count": 2,
+        "segments": [
+          "sCN",
+          "sND"
+        ]
+      }
+    ],
+    "regions": [
+      {
+        "id": "rShaded",
+        "fill": "MEDIUM",
+        "shapes": [
+          {
+            "polygon": [
+              "M",
+              "P",
+              "Q",
+              "N",
+              "C"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "rLeft",
+        "fill": "WARM",
+        "shapes": [
+          {
+            "polygon": [
+              "B",
+              "P",
+              "M"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "rRight",
+        "fill": "WARM",
+        "shapes": [
+          {
+            "polygon": [
+              "D",
+              "Q",
+              "N"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "색칠한 오각형은 삼각형 BCD에서 왼쪽 BPM, 오른쪽 DQN의 두 작은 삼각형을 뺀 부분이다.",
+  "accessibilityDescription": "삼각형 BCD 안쪽 오각형 PQNCM은 회색, 각 끝에서 빼는 삼각형 BPM과 DQN은 주황색이며 나머지 평행사변형은 흰색이다.",
+  "sourceConditions": [
+    {
+      "id": "parallel",
+      "condition": "ABCD는 평행사변형이며 넓이가 96 cm²이다.",
+      "mappedTo": "mathPlan.nodes:A,B,C,D; displaySegments:sAB,sBC,sCD,sDA"
+    },
+    {
+      "id": "midpoints",
+      "condition": "M은 BC의 중점이고 N은 CD의 중점이다.",
+      "mappedTo": "mathPlan.nodes:M,N; displaySegments:sBM,sMC,sCN,sND; planeMarks.equalLengths:eBM,eCN"
+    },
+    {
+      "id": "intersections",
+      "condition": "AM과 AN이 BD와 만나는 점은 각각 P,Q이다.",
+      "mappedTo": "mathPlan.nodes:P,Q; displaySegments:sAM,sAN,sBD"
+    },
+    {
+      "id": "shaded",
+      "condition": "어두운 부분은 P-Q-N-C-M으로 둘러싸인 오각형이다.",
+      "mappedTo": "planeMarks.regions:rShaded"
+    },
+    {
+      "id": "areaSplit",
+      "condition": "두 끝의 삼각형 BPM, DQN은 각각 8 cm²로 계산하여 48에서 뺀다.",
+      "mappedTo": "planeMarks.regions:rLeft,rRight; displaySegments:sBD,sAM,sAN"
+    }
+  ],
+  "newVisualInformation": [
+    "넓이를 빼는 두 작은 삼각형만 서로 같은 색으로 구분하고 넓이 조건의 오각형을 보존한다.",
+    "비교 대상이 아닌 나머지 면은 칠하지 않는다."
+  ]
+}

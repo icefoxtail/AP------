@@ -1,0 +1,265 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "14"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "20",
+              "denominator": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sDB",
+      "refs": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "sAE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "sEC",
+      "refs": [
+        "E",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "parallels": [
+      {
+        "id": "pDE",
+        "count": 1,
+        "segments": [
+          "sDE",
+          "sBC"
+        ]
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "eAB",
+        "count": 1,
+        "segments": [
+          "sAD",
+          "sDB"
+        ]
+      },
+      {
+        "id": "eAC",
+        "count": 2,
+        "segments": [
+          "sAE",
+          "sEC"
+        ]
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dDC",
+        "from": "D",
+        "to": "C",
+        "label": "24",
+        "side": "RIGHT",
+        "unit": "cm"
+      },
+      {
+        "id": "dDF",
+        "from": "D",
+        "to": "F",
+        "label": "8",
+        "side": "RIGHT",
+        "unit": "cm",
+        "style": "INLINE"
+      }
+    ]
+  },
+  "caption": "양쪽 변의 중점 D·E를 잇는 평행선과 두 중선의 교점 F를 보이며, DC는 24 cm이고 DF는 8 cm이다.",
+  "accessibilityDescription": "양쪽 변의 중점 D·E를 잇는 평행선과 두 중선의 교점 F를 보이며, DC는 24 cm이고 DF는 8 cm이다.",
+  "sourceConditions": [
+    {
+      "id": "parallel",
+      "condition": "DE는 BC와 평행하다.",
+      "mappedTo": "displaySegments:sDE,sBC; planeMarks.parallels:pDE"
+    },
+    {
+      "id": "midpoint",
+      "condition": "D는 AB의 중점, E는 AC의 중점이다.",
+      "mappedTo": "mathPlan.nodes:D,E; planeMarks.equalLengths:eAB,eAC"
+    },
+    {
+      "id": "centroid",
+      "condition": "중선 DC와 BE가 F에서 만나 DF:FC=1:2이다.",
+      "mappedTo": "mathPlan.nodes:F; displaySegments:sDC,sBE; planeMarks.dimensions:dDC,dDF"
+    }
+  ],
+  "newVisualInformation": [
+    "불필요한 삼각형 내부 채움을 제거하고 중점·평행·중선과 24, 8 cm 길이 관계를 유지한다."
+  ]
+}

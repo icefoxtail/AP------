@@ -1,0 +1,269 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Dp",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "P",
+    "Dp"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sDP",
+      "refs": [
+        "D",
+        "P"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sPC",
+      "refs": [
+        "P",
+        "C"
+      ]
+    },
+    {
+      "id": "sAP",
+      "refs": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "sADp",
+      "refs": [
+        "A",
+        "Dp"
+      ]
+    },
+    {
+      "id": "sDpP",
+      "refs": [
+        "Dp",
+        "P"
+      ]
+    },
+    {
+      "id": "sBDp",
+      "refs": [
+        "B",
+        "Dp"
+      ]
+    },
+    {
+      "id": "sDpC",
+      "refs": [
+        "Dp",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dAD",
+        "from": "A",
+        "to": "D",
+        "label": "10",
+        "side": "ABOVE",
+        "unit": "cm"
+      },
+      {
+        "id": "dAB",
+        "from": "A",
+        "to": "B",
+        "label": "8",
+        "side": "LEFT",
+        "unit": "cm"
+      }
+    ]
+  },
+  "caption": "가로 10, 세로 8의 직사각형에서 AP를 접는 선으로 하여 D가 D′에 겹친다. 원래 모서리 AD와 DP는 점선으로 나타낸다.",
+  "accessibilityDescription": "가로 10, 세로 8의 직사각형에서 AP를 접는 선으로 하여 D가 D′에 겹친다. 원래 모서리 AD와 DP는 점선으로 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "rectangle",
+      "condition": "ABCD는 가로 10, 세로 8인 직사각형이며 AD와 DP는 접기 전 모서리이다.",
+      "mappedTo": "mathPlan.nodes:A,B,C,D,P; displaySegments:sAB,sBC,sAD,sDP,sPC; planeMarks.dimensions:dAD,dAB"
+    },
+    {
+      "id": "fold",
+      "condition": "접는 선 AP를 따라 D가 BC 위의 D'으로 옮겨진다.",
+      "mappedTo": "mathPlan.nodes:Dp; displaySegments:sAP,sADp,sDpP; rightAngles:rDp"
+    }
+  ],
+  "newVisualInformation": [
+    "무관한 면 채움을 없애고 접기 전 모서리 점선, 접는 선, 직각 표식을 남긴다."
+  ],
+  "pointNames": {
+    "Dp": "D′"
+  },
+  "rightAngles": [
+    {
+      "id": "rB",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "rDp",
+      "refs": [
+        "A",
+        "Dp",
+        "P"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,212 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "16"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "30"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "M",
+    "C"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBM",
+      "refs": [
+        "B",
+        "M"
+      ]
+    },
+    {
+      "id": "sMC",
+      "refs": [
+        "M",
+        "C"
+      ]
+    },
+    {
+      "id": "sAM",
+      "refs": [
+        "A",
+        "M"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dAB",
+        "from": "A",
+        "to": "B",
+        "label": "16",
+        "side": "LEFT",
+        "unit": "cm"
+      },
+      {
+        "id": "dBM",
+        "from": "B",
+        "to": "M",
+        "label": "12",
+        "side": "BELOW",
+        "unit": "cm"
+      },
+      {
+        "id": "dMC",
+        "from": "M",
+        "to": "C",
+        "label": "18",
+        "side": "BELOW",
+        "unit": "cm"
+      },
+      {
+        "id": "dAM",
+        "from": "A",
+        "to": "M",
+        "label": "20",
+        "side": "RIGHT",
+        "unit": "cm"
+      },
+      {
+        "id": "dAC",
+        "from": "A",
+        "to": "C",
+        "label": "34",
+        "side": "RIGHT",
+        "unit": "cm"
+      }
+    ]
+  },
+  "caption": "밑변을 12 cm와 18 cm로 나눈 두 직각삼각형에서 높이 16 cm, 안쪽 빗변 20 cm, 바깥 빗변 34 cm를 보인다.",
+  "accessibilityDescription": "밑변을 12 cm와 18 cm로 나눈 두 직각삼각형에서 높이 16 cm, 안쪽 빗변 20 cm, 바깥 빗변 34 cm를 보인다.",
+  "sourceConditions": [
+    {
+      "id": "right",
+      "condition": "왼쪽 아래 꼭짓점은 직각이며 높이는 x=16 cm이다.",
+      "mappedTo": "displaySegments:sAB,sBM; rightAngles:rB; planeMarks.dimensions:dAB"
+    },
+    {
+      "id": "nested",
+      "condition": "안쪽 빗변은 20 cm, 밑변 두 조각은 12·18 cm, 바깥 빗변은 34 cm이다.",
+      "mappedTo": "displaySegments:sAM,sAC,sBM,sMC; planeMarks.dimensions:dBM,dMC,dAM,dAC"
+    }
+  ],
+  "newVisualInformation": [
+    "문제·원본의 길이 지시선과 직각 표식을 보존하고 채움은 모두 제거한다."
+  ],
+  "hiddenPointNames": [
+    "A",
+    "B",
+    "M",
+    "C"
+  ],
+  "hiddenPointStyle": "NONE",
+  "rightAngles": [
+    {
+      "id": "rB",
+      "refs": [
+        "A",
+        "B",
+        "M"
+      ]
+    }
+  ]
+}
