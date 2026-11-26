@@ -1,0 +1,86 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "x",
+        "elements": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "18/x",
+        "elements": [
+          "18",
+          "9",
+          "6"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        }
+      }
+    ],
+    "highlight": {
+      "arrows": [
+        2
+      ]
+    }
+  },
+  "caption": "18의 양의 약수 묶음 {1,18}, {2,9}, {3,6}. 3∈A이므로 {3,6} 묶음은 필수이다.",
+  "accessibilityDescription": "왼쪽 약수 1, 2, 3에서 오른쪽 18, 9, 6로 대응하는 3개 화살표; 3번째 묶음을 강조.",
+  "sourceConditions": [
+    {
+      "id": "closure",
+      "condition": "x∈A이면 18/x∈A",
+      "mappedTo": [
+        "diagram.columns",
+        "diagram.arrows"
+      ]
+    },
+    {
+      "id": "special",
+      "condition": "3∈A이므로 {3,6} 묶음은 필수이다",
+      "mappedTo": [
+        "diagram.arrows[2]",
+        "diagram.highlight"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "정수 18에 대해 임의 원소를 단독 선택할 수 없음을 3개 약수 짝의 대응으로 표시한다."
+  ]
+}

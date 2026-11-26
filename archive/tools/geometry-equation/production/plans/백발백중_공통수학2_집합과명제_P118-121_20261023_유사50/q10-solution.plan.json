@@ -1,0 +1,67 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A"
+      },
+      {
+        "id": "B"
+      }
+    ],
+    "elements": [
+      {
+        "text": "1",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "4",
+        "in": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "text": "2",
+        "in": [
+          "B"
+        ]
+      }
+    ],
+    "shade": "A-B"
+  },
+  "caption": "해설의 a=2에서 A={1,4}, B={4,2}이다. 차집합 A-B={1}.",
+  "accessibilityDescription": "A에만 1, 공통 영역에 4, B에만 2가 놓인 벤다이어그램으로 해당 차집합 영역을 표시",
+  "sourceConditions": [
+    {
+      "id": "set-A",
+      "condition": "a=2를 대입한 A={1,4}",
+      "mappedTo": [
+        "diagram.elements[0]",
+        "diagram.elements[1]"
+      ]
+    },
+    {
+      "id": "set-B",
+      "condition": "a=2를 대입한 B={4,2}",
+      "mappedTo": [
+        "diagram.elements[1]",
+        "diagram.elements[2]"
+      ]
+    },
+    {
+      "id": "operation",
+      "condition": "차집합 A-B={1}",
+      "mappedTo": [
+        "diagram.shade",
+        "diagram.elements"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "공통 원소 4와 A·B 각 고유 원소를 정확히 분리하고 필요한 영역에만 음영을 준다."
+  ]
+}

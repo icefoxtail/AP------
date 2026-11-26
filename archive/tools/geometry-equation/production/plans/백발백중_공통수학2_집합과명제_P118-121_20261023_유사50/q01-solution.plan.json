@@ -1,0 +1,8 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {"kind":"VENN","sets":[{"id":"A"},{"id":"B"}],"elements":[{"text":"2","in":["A"]},{"text":"3","in":["A","B"]},{"text":"4","in":["B"]}]},
+  "caption": "a=2를 대입하면 A={2,3}, B={3,4}이므로 공통 원소는 3이다.",
+  "accessibilityDescription": "두 원 A와 B가 겹치는 영역에 3, A에만 2, B에만 4가 있는 벤다이어그램.",
+  "sourceConditions": [{"id":"c1","condition":"a=2일 때 A={2,3}","mappedTo":["diagram.elements[0]","diagram.elements[1]"]},{"id":"c2","condition":"a=2일 때 B={3,4}","mappedTo":["diagram.elements[1]","diagram.elements[2]"]}],
+  "newVisualInformation": ["원소 3이 두 집합의 교집합에 속하고 2와 4는 각각 한 집합에만 속한다."]
+}

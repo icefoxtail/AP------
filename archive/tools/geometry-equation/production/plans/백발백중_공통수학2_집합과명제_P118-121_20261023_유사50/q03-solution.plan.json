@@ -1,0 +1,65 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A"
+      },
+      {
+        "id": "B"
+      }
+    ],
+    "elements": [
+      {
+        "text": "3",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "5",
+        "in": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "text": "1",
+        "in": [
+          "B"
+        ]
+      }
+    ]
+  },
+  "caption": "해설의 a=3에서 A={3,5}, B={5,1}이다. 교집합 A∩B={5}.",
+  "accessibilityDescription": "A에만 3, 공통 영역에 5, B에만 1가 놓인 벤다이어그램.",
+  "sourceConditions": [
+    {
+      "id": "set-A",
+      "condition": "a=3를 대입한 A={3,5}",
+      "mappedTo": [
+        "diagram.elements[0]",
+        "diagram.elements[1]"
+      ]
+    },
+    {
+      "id": "set-B",
+      "condition": "a=3를 대입한 B={5,1}",
+      "mappedTo": [
+        "diagram.elements[1]",
+        "diagram.elements[2]"
+      ]
+    },
+    {
+      "id": "operation",
+      "condition": "교집합 A∩B={5}",
+      "mappedTo": [
+        "diagram.elements"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "공통 원소 5와 A·B 각 고유 원소를 정확히 분리해 표시한다."
+  ]
+}
