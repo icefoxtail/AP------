@@ -1,0 +1,32 @@
+{
+  "capability":"construction-spike-v1",
+  "sourceQuote":"직각삼각형 ABC와 BDE에서 AC=BE, AB=5cm, ED=3cm, ∠BED=59°, ∠BAC=31°일 때 삼각형의 합동을 이용하여 길이를 구하시오.",
+  "caption":"직각삼각형 ABC, BDE의 빗변 AC=BE, 두 각 31°·59°, 두 직각, AB 5cm와 ED 3cm를 무채움 호와 눈금으로 보인다.",
+  "sourceConditions":[
+    {"id":"triangles","condition":"A-B-C와 B-D-E의 변 6개, 공유 수평선 B-C-D의 C점 및 대각선 AC와 BE를 모두 유지한다.","mappedTo":["displaySegments[0]","displaySegments[1]","displaySegments[2]","displaySegments[3]","displaySegments[4]","displaySegments[5]"]},
+    {"id":"right-angles","condition":"B와 D는 각각 직각이며 작은 사각 표식이 필요하다.","mappedTo":["rightAngles[0]","rightAngles[1]"]},
+    {"id":"hypotenuse","condition":"AC=BE인 빗변은 동일한 눈금 한 개로 표현한다.","mappedTo":"planeMarks.equalLengths[0]"},
+    {"id":"angles","condition":"∠BAC=∠DBE=31°이고 ∠ACB=∠BED=59°이다.","mappedTo":["planeMarks.angles[0]","planeMarks.angles[1]","planeMarks.angles[2]","planeMarks.angles[3]"]},
+    {"id":"given-lengths","condition":"AB=5cm, ED=3cm가 원본의 두 수직변에 각각 붙어 있다.","mappedTo":["planeMarks.expressionLabels[0]","planeMarks.expressionLabels[1]"]}
+  ],
+  "newVisualInformation":["회색 각 부채꼴 4개를 빈 호로 바꾸고 정확한 대응 각의 호 개수를 통일한다.","수직변 길이와 빗변 같음 눈금, 직각 표시를 생략하지 않는다."],
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"5"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"3"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"5"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"E","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"5"},{"kind":"integer","value":"3"}]},"outputType":"POINT","factRole":"GIVEN"}
+  ]},
+  "displayPoints":["A","B","C","D","E"],
+  "displaySegments":[{"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},{"id":"sCA","refs":["C","A"]},{"id":"sBD","refs":["B","D"]},{"id":"sDE","refs":["D","E"]},{"id":"sEB","refs":["E","B"]}],
+  "rightAngles":[{"id":"rB","refs":["A","B","C"]},{"id":"rD","refs":["B","D","E"]}],
+  "planeMarks":{"equalLengths":[{"id":"eqACBE","count":1,"segments":["sCA","sEB"]}],"expressionLabels":[
+    {"id":"ab5","ownerSegment":"sAB","text":"5","unit":"cm"},
+    {"id":"de3","ownerSegment":"sDE","text":"3","unit":"cm"}
+  ],"angles":[
+    {"id":"a31","refs":["B","A","C"],"value":31,"label":"31","style":"ARC","arcs":1,"factRole":"GIVEN"},
+    {"id":"b31","refs":["D","B","E"],"value":31,"label":"31","style":"ARC","arcs":1,"factRole":"CONCLUSION"},
+    {"id":"c59","refs":["A","C","B"],"value":59,"label":"59","style":"ARC","arcs":2,"factRole":"CONCLUSION"},
+    {"id":"e59","refs":["B","E","D"],"value":59,"label":"59","style":"ARC","arcs":2,"factRole":"GIVEN"}
+  ]}
+}

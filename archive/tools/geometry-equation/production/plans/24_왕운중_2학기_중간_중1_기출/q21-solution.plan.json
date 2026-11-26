@@ -1,0 +1,29 @@
+{
+  "capability":"construction-spike-v1",
+  "sourceQuote":"∠AOB는 평각, ∠COD=⅓∠AOD, ∠DOE=½∠EOB일 때 ∠COE를 구하시오.",
+  "caption":"평각 AOB 위 C,D,E 반직선과 직각 AOC, 45°·15°·30° 세 각을 회색 채움 없이 나타낸다.",
+  "sourceConditions":[
+    {"id":"straight-AOB","condition":"A,O,B가 일직선이고 O는 중앙에 있다.","mappedTo":["displaySegments[0]","displaySegments[1]"]},
+    {"id":"rays-CDE","condition":"C는 O의 수직 위, D는 C와 E 사이, E는 D와 B 사이에 놓인다.","mappedTo":["displaySegments[2]","displaySegments[3]","displaySegments[4]"]},
+    {"id":"right-at-AOC","condition":"∠AOC=90°를 작은 직각 사각형으로 표시한다.","mappedTo":"rightAngles[0]"},
+    {"id":"ratio-COD","condition":"∠COD=45°이고 ∠AOD=135°이므로 조건 ∠COD=⅓∠AOD를 만족한다.","mappedTo":"planeMarks.angles[0]"},
+    {"id":"ratio-DOE-EOB","condition":"∠DOE=15°, ∠EOB=30°로 1:2이다.","mappedTo":["planeMarks.angles[1]","planeMarks.angles[2]"]}
+  ],
+  "newVisualInformation":["기존 45°·15°·30° 회색 부채꼴 면 채움을 없애고 각 호만 표시한다.","정답 ∠COE 자체의 숫자 라벨은 그림에 적지 않는다."],
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-6"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"6"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"6"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"D","op":"POLAR_POINT","inputs":["O","B"],"args":{"length":{"kind":"integer","value":"5"},"angleDeg":{"kind":"integer","value":"45"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"E","op":"POLAR_POINT","inputs":["O","B"],"args":{"length":{"kind":"integer","value":"6"},"angleDeg":{"kind":"integer","value":"30"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "displayPoints":["O","A","B","C","D","E"],
+  "displaySegments":[{"id":"OA","refs":["O","A"]},{"id":"OB","refs":["O","B"]},{"id":"OC","refs":["O","C"]},{"id":"OD","refs":["O","D"]},{"id":"OE","refs":["O","E"]}],
+  "rightAngles":[{"id":"aoc","refs":["A","O","C"]}],
+  "planeMarks":{"angles":[
+    {"id":"cod","refs":["C","O","D"],"value":45,"label":"45","style":"ARC","arcs":1,"factRole":"CONCLUSION"},
+    {"id":"doe","refs":["D","O","E"],"value":15,"label":"15","style":"ARC","arcs":1,"factRole":"CONCLUSION"},
+    {"id":"eob","refs":["E","O","B"],"value":30,"label":"30","style":"ARC","arcs":1,"factRole":"CONCLUSION"}
+  ]}
+}

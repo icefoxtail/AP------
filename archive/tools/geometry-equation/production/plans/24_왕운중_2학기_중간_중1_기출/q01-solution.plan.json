@@ -1,0 +1,30 @@
+{
+  "capability":"construction-spike-v1",
+  "caption":"두 직선 l·m의 교차각 61°와 수선에서 얻는 x=119°, y=29°를 호와 직각표식으로 나타낸다.",
+  "accessibilityDescription":"수평선 l과 사선 m이 만나고 오른쪽 위 61도, 오른쪽 아래 x는 119도, 왼쪽 위 y는 29도이다. 또 다른 사선과 m이 이루는 직각이 사각 표식으로 나타나며 면 채움은 없다.",
+  "sourceQuote":"다음 그림에서 두 직선 $l$, $m$이 한 점에서 만난다고 할 때, $\\angle x+\\angle y$의 크기를 구하면?",
+  "sourceConditions":[
+    {"id":"intersect","condition":"l은 가로선, m은 왼쪽 아래에서 오른쪽 위로 그어진 선이다.","mappedTo":["displaySegments[0]","displaySegments[1]","displaySegments[2]","displaySegments[3]"]},
+    {"id":"given61","condition":"l의 오른쪽 반직선과 m 위쪽 반직선 사이의 각은 61°이다.","mappedTo":["planeMarks.angles[0]"]},
+    {"id":"right-angle","condition":"m의 위쪽 반직선과 왼쪽 위 사선은 수직이다.","mappedTo":["rightAngles[0]"]},
+    {"id":"solved","condition":"이웃각 x=119°, 남은 각 y=29°이다.","mappedTo":["planeMarks.angles[1]","planeMarks.angles[2]"]}
+  ],
+  "newVisualInformation":["기존 회색 각 부채꼴을 제거하고 호만 그린다.","원본 직각 사각 표식을 유지하고 61·119·29를 각각 해당 각에 직접 붙인다."],
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"T","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"1"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"E","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"5"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"W","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-5"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"NE","op":"POLAR_POINT","inputs":["O","T"],"args":{"length":{"kind":"integer","value":"5"},"angleDeg":{"kind":"integer","value":"61"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"NW","op":"POLAR_POINT","inputs":["O","T"],"args":{"length":{"kind":"integer","value":"5"},"angleDeg":{"kind":"integer","value":"151"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"SW","op":"POLAR_POINT","inputs":["O","T"],"args":{"length":{"kind":"integer","value":"5"},"angleDeg":{"kind":"integer","value":"241"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "displayPoints":["O","T","E","W","NE","NW","SW"],"hiddenPointNames":["O","T","E","W","NE","NW","SW"],"hiddenPointStyle":"NONE",
+  "displaySegments":[{"id":"sE","refs":["O","E"]},{"id":"sW","refs":["O","W"]},{"id":"sNE","refs":["O","NE"]},{"id":"sNW","refs":["O","NW"]},{"id":"sSW","refs":["O","SW"]}],
+  "planeMarks":{"angles":[
+    {"id":"g61","refs":["E","O","NE"],"value":61,"label":"61","style":"ARC","arcs":1,"factRole":"GIVEN"},
+    {"id":"x","refs":["SW","O","E"],"value":119,"label":"x=119","style":"ARC","arcs":1,"factRole":"CONCLUSION"},
+    {"id":"y","refs":["W","O","NW"],"value":29,"label":"y=29","style":"ARC","arcs":1,"factRole":"CONCLUSION"}
+  ]},
+  "rightAngles":[{"id":"rNWNE","refs":["NW","O","NE"]}]
+}

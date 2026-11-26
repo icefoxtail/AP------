@@ -1,0 +1,29 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "맞꼭지각 x+40°와 70°, 이웃각 y의 관계를 각 호로 확인한다.",
+  "accessibilityDescription": "서로 교차하는 두 직선에서 왼쪽 맞꼭지각은 x+40도, 오른쪽은 70도이며 윗각은 y로 표시된다. 각 안쪽은 색칠하지 않았다.",
+  "sourceQuote": "아래 그림과 같이 두 직선이 한 점에서 만날 때, $y-x$의 값을 구하면?",
+  "sourceConditions": [
+    {"id":"crossing","condition":"두 직선이 한 점에서 만나고 맞꼭지각인 좌우 각의 크기가 같다.","mappedTo":["mathPlan.nodes[0]","displaySegments[0]","displaySegments[1]","displaySegments[2]","displaySegments[3]"]},
+    {"id":"angle-left","condition":"원본의 왼쪽 각은 x+40°이다.","mappedTo":["planeMarks.angles[0].label","planeMarks.angles[0].refs"]},
+    {"id":"angle-right","condition":"오른쪽 맞꼭지각은 70°이다.","mappedTo":["planeMarks.angles[1].label","planeMarks.angles[1].value"]},
+    {"id":"angle-top","condition":"윗각 y는 70°의 이웃각이어서 110°이다.","mappedTo":["planeMarks.angles[2].label","planeMarks.angles[2].value"]}
+  ],
+  "newVisualInformation": ["기존 해설의 회색 각 부채꼴 채움을 없애고 세 각을 열린 호로 표시한다.","원본 각 문자·수치를 문제와 같은 부위에 유지한다."],
+  "mathPlan": {"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"T","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"1"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"NE","op":"POLAR_POINT","inputs":["O","T"],"args":{"length":{"kind":"integer","value":"5"},"angleDeg":{"kind":"integer","value":"35"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"NW","op":"POLAR_POINT","inputs":["O","T"],"args":{"length":{"kind":"integer","value":"5"},"angleDeg":{"kind":"integer","value":"145"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"SW","op":"POLAR_POINT","inputs":["O","T"],"args":{"length":{"kind":"integer","value":"5"},"angleDeg":{"kind":"integer","value":"215"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"SE","op":"POLAR_POINT","inputs":["O","T"],"args":{"length":{"kind":"integer","value":"5"},"angleDeg":{"kind":"integer","value":"325"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "displayPoints":["O","T","NE","NW","SW","SE"],
+  "hiddenPointNames":["O","T","NE","NW","SW","SE"],"hiddenPointStyle":"NONE",
+  "displaySegments":[{"id":"sNE","refs":["O","NE"]},{"id":"sNW","refs":["O","NW"]},{"id":"sSW","refs":["O","SW"]},{"id":"sSE","refs":["O","SE"]}],
+  "planeMarks":{"angles":[
+    {"id":"left","refs":["NW","O","SW"],"value":70,"label":"x°+40","style":"ARC","arcs":1,"factRole":"GIVEN"},
+    {"id":"right","refs":["NE","O","SE"],"value":70,"label":"70","style":"ARC","arcs":1,"factRole":"GIVEN"},
+    {"id":"top","refs":["NW","O","NE"],"value":110,"label":"y","style":"ARC","arcs":1,"factRole":"GIVEN"}
+  ]}
+}

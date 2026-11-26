@@ -1,0 +1,37 @@
+{
+  "capability":"construction-spike-v1",
+  "caption":"정삼각형 ABC와 ECD에서 AC=BC, CD=CE, 두 끼인각 120°를 호로 나타낸 SAS 합동 그림이다.",
+  "accessibilityDescription":"점 B,C,D가 한 직선 위에 있고 그 위로 두 정삼각형 ABC, ECD를 세운다. AD와 BE는 F에서 교차한다. AC와 BC, CD와 CE에는 각각 같은 길이 눈금이 있고 C에서 두 120도 끼인각을 호로 표시하되 내부는 색칠하지 않았다.",
+  "sourceQuote":"다음 그림은 정삼각형 $ABC$의 한 변 $BC$의 연장선 위에 점 $D$를 잡고, $CD$를 한 변으로 하는 정삼각형 $ECD$를 그린 것이다. $BE$와 $AD$의 교점을 $F$라 할 때, $\\triangle ACD\\equiv\\triangle BCE$의 합동 조건을 고르면?",
+  "sourceConditions":[
+    {"id":"collinear","condition":"점 B,C,D는 이 순서로 한 직선 위에 있고 삼각형 ABC와 ECD는 위쪽의 정삼각형이다.","mappedTo":["mathPlan.nodes[0]","mathPlan.nodes[1]","mathPlan.nodes[2]","mathPlan.nodes[3]","mathPlan.nodes[4]","displaySegments[1]","displaySegments[4]"]},
+    {"id":"equilateral-left","condition":"ABC는 정삼각형이어서 AC=BC, ∠ACB=60°이다.","mappedTo":["mathPlan.nodes[3]","planeMarks.equalLengths[0]"]},
+    {"id":"equilateral-right","condition":"ECD는 정삼각형이어서 CD=CE, ∠ECD=60°이다.","mappedTo":["mathPlan.nodes[4]","planeMarks.equalLengths[1]"]},
+    {"id":"crossing","condition":"원본의 교차 선분 AD와 BE는 점 F에서 만난다.","mappedTo":["mathPlan.nodes[7]","displaySegments[6]","displaySegments[7]"]},
+    {"id":"sas","condition":"∠ACD=∠BCE=120°이며 AC=BC, CD=CE이므로 두 변과 끼인각 SAS이다.","mappedTo":["planeMarks.angles[0]","planeMarks.angles[1]","planeMarks.equalLengths[0]","planeMarks.equalLengths[1]"]}
+  ],
+  "newVisualInformation":["기존 120° 회색 부채꼴 두 면을 제거하고 호만 유지한다.","정삼각형을 엔진의 정확한 60° POLAR_POINT로 작도하며 A,B,C,D,E,F 이름과 두 교차 선분을 모두 유지한다."],
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-6"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"6"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"A","op":"POLAR_POINT","inputs":["C","B"],"args":{"length":{"kind":"integer","value":"6"},"angleDeg":{"kind":"integer","value":"60"},"turn":"CW"},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"E","op":"POLAR_POINT","inputs":["C","D"],"args":{"length":{"kind":"integer","value":"6"},"angleDeg":{"kind":"integer","value":"60"},"turn":"CCW"},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"lAD","op":"LINE_THROUGH","inputs":["A","D"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"lBE","op":"LINE_THROUGH","inputs":["B","E"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"F","op":"LINE_INTERSECTION","inputs":["lAD","lBE"],"args":{},"outputType":"POINT","factRole":"GIVEN"}
+  ]},
+  "displayPoints":["A","B","C","D","E","F"],
+  "displaySegments":[
+    {"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},{"id":"sCA","refs":["C","A"]},
+    {"id":"sEC","refs":["E","C"]},{"id":"sCD","refs":["C","D"]},{"id":"sDE","refs":["D","E"]},
+    {"id":"sAD","refs":["A","D"]},{"id":"sBE","refs":["B","E"]}
+  ],
+  "planeMarks":{
+    "equalLengths":[{"id":"left","count":1,"segments":["sCA","sBC"]},{"id":"right","count":2,"segments":["sCD","sEC"]}],
+    "angles":[
+      {"id":"ACD","refs":["A","C","D"],"value":120,"label":"120","style":"ARC","arcs":1,"ring":1,"factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"BCE","refs":["B","C","E"],"value":120,"label":"120","style":"ARC","arcs":1,"ring":2,"factRole":"DERIVED_INTERMEDIATE"}
+    ]
+  }
+}
