@@ -1,0 +1,268 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1381966011",
+              "denominator": "1000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2763932023",
+              "denominator": "1000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "7927050983",
+              "denominator": "1000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2763932023",
+              "denominator": "1000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "I",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "894427191",
+              "denominator": "200000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2763932023",
+              "denominator": "1000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "I"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sDB",
+      "refs": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "sEA",
+      "refs": [
+        "E",
+        "A"
+      ]
+    },
+    {
+      "id": "sDI",
+      "refs": [
+        "D",
+        "I"
+      ]
+    },
+    {
+      "id": "sIE",
+      "refs": [
+        "I",
+        "E"
+      ]
+    },
+    {
+      "id": "sBI",
+      "refs": [
+        "B",
+        "I"
+      ]
+    },
+    {
+      "id": "sIC",
+      "refs": [
+        "I",
+        "C"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 520,
+    "height": 420
+  },
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a1",
+        "refs": [
+          "D",
+          "B",
+          "I"
+        ],
+        "value": 31.7175,
+        "label": "x",
+        "style": "ARC",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "a2",
+        "refs": [
+          "I",
+          "C",
+          "E"
+        ],
+        "value": 26.5651,
+        "label": "y",
+        "style": "ARC",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "parallels": [
+      {
+        "id": "par1",
+        "count": 1,
+        "segments": [
+          "sDI",
+          "sBC"
+        ]
+      }
+    ]
+  },
+  "caption": "내심의 각 이등분선과 DE∥BC에서 두 이등변삼각형의 대응각을 비교한다.",
+  "accessibilityDescription": "내심의 각 이등분선과 DE∥BC에서 두 이등변삼각형의 대응각을 비교한다.",
+  "newVisualInformation": [
+    "6개 요소의 수학 위치와 연결선을 엔진 필드에 명시",
+    "원문을 기준으로 필요한 치수·각·직각·점선 표시를 그리기 필드에서 확인"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>12. 오른쪽 그림의 $\\triangle\\text{ABC}$에서 점 $\\text{I}$는 $\\triangle\\text{ABC}$의 내심이고, 점 $\\text{I}$를 지나 $\\overline{\\text{BC}}$에 평행한 선을 그어 $\\overline{\\text{AB}}$, $\\overline{\\text{AC}}$와의 교점을 각각 $\\text{D}$, $\\text{E}$라 할 때, 다음 중 옳지 않은 것은? [4.5점]</p><p><img src=\"assets/images/20_왕의중_2학기_중간_중2_수학/q12.png\" alt=\"삼각형 ABC의 내심 I를 지나 밑변 BC에 평행한 선분 DE를 나타낸 그림\" /></p>",
+      "mappedTo": "solution의 실제 geometry plan nodes/displaySegments/planeMarks"
+    },
+    {
+      "id": "geometry",
+      "condition": "그림의 위치·길이는 원문에서 수치가 확정된 경우 외에는 조건을 만족하는 대표 배치이며, 해설의 최종 관계는 문제 그림에 미노출한다.",
+      "mappedTo": "mathPlan.nodes and planeMarks"
+    }
+  ]
+}

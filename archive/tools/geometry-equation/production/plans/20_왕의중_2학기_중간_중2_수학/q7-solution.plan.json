@@ -337,11 +337,11 @@
           "I"
         ],
         "value": 20,
-        "label": "20",
         "arcs": 1,
         "ring": 1,
         "equalGroup": 1,
-        "style": "ARC"
+        "style": "ARC",
+        "noLabel": true
       },
       {
         "id": "a1",
@@ -365,11 +365,11 @@
           "I"
         ],
         "value": 40,
-        "label": "40",
         "arcs": 2,
         "ring": 1,
         "equalGroup": 2,
-        "style": "ARC"
+        "style": "ARC",
+        "noLabel": true
       },
       {
         "id": "a3",
@@ -393,11 +393,11 @@
           "I"
         ],
         "value": 30,
-        "label": "30",
         "arcs": 3,
         "ring": 1,
         "equalGroup": 3,
-        "style": "ARC"
+        "style": "ARC",
+        "noLabel": true
       },
       {
         "id": "a5",
@@ -419,19 +419,22 @@
     "width": 460,
     "height": 420
   },
-  "caption": "내심 I에서 세 변에 내린 수선의 발이 D, E, F이므로 ID, IE, IF는 내접원의 반지름으로 같다. IA, IB, IC가 세 내각을 이등분하므로 삼각형 IAD와 IAF, IBD와 IBE, ICE와 ICF가 각각 합동이고 각 IBD와 각 IBE도 같다. 그러나 삼각형 IAF와 ICF는 AF와 CF가 일반적으로 같지 않아 합동이 아니며, IA, IB, IC가 모두 같은 것은 외심의 성질이지 내심의 성질이 아니다. 따라서 답은 ②, ④이다.",
-  "accessibilityDescription": "삼각형 ABC 안에 내심 I가 있고 I에서 세 변에 내린 수선의 발 D, E, F가 있으며, D, E, F에 직각 표시가 있다. ID, IE, IF와 AD와 FA, DB와 BE에 각각 같은 길이 표시가 있고, 세 꼭짓각이 이등분된 호와 20도, 40도, 30도가 적혀 있다.",
+  "caption": "내심의 세 각 이등분선, 접점 D·E·F의 직각과 동일 거리·접선 길이만 표시한다. 원문에 없는 예시 각도 숫자는 제거한다.",
+  "accessibilityDescription": "내심의 세 각 이등분선, 접점 D·E·F의 직각과 동일 거리·접선 길이만 표시한다. 원문에 없는 예시 각도 숫자는 제거한다.",
   "newVisualInformation": [
-    "내심과 세 변의 수선의 발",
-    "내접원 반지름 ID, IE, IF의 같은 길이 표시",
-    "세 내각의 이등분 표시와 20도, 40도, 30도",
-    "접선 길이 AD와 AF, DB와 BE의 같음 표시"
+    "12개 요소의 수학 위치와 연결선을 엔진 필드에 명시",
+    "원문을 기준으로 필요한 치수·각·직각·점선 표시를 그리기 필드에서 확인"
   ],
   "sourceConditions": [
     {
       "id": "source",
       "condition": "<p>7. 오른쪽 그림에서 점 $\\text{I}$는 $\\triangle\\text{ABC}$의 내심이다. 다음 중에서 옳지 않은 것은? (정답 2개) [4점]</p><p><img src=\"assets/images/20_왕의중_2학기_중간_중2_수학/q07.png\" alt=\"삼각형 ABC의 내심 I에서 세 변에 내린 수선의 발 D, E, F를 나타낸 그림\" /></p>",
-      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+      "mappedTo": "solution의 실제 geometry plan nodes/displaySegments/planeMarks"
+    },
+    {
+      "id": "geometry",
+      "condition": "그림의 위치·길이는 원문에서 수치가 확정된 경우 외에는 조건을 만족하는 대표 배치이며, 해설의 최종 관계는 문제 그림에 미노출한다.",
+      "mappedTo": "mathPlan.nodes and planeMarks"
     }
   ]
 }

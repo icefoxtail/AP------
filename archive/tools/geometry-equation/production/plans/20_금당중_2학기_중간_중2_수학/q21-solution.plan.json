@@ -1,0 +1,350 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "I",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-16",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "18",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ1",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "I"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "I",
+    "D",
+    "E",
+    "F"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ1"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sDB",
+      "refs": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "sEC",
+      "refs": [
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "sCF",
+      "refs": [
+        "C",
+        "F"
+      ]
+    },
+    {
+      "id": "sFA",
+      "refs": [
+        "F",
+        "A"
+      ]
+    },
+    {
+      "id": "sID",
+      "refs": [
+        "I",
+        "D"
+      ]
+    },
+    {
+      "id": "sIE",
+      "refs": [
+        "I",
+        "E"
+      ]
+    },
+    {
+      "id": "sIF",
+      "refs": [
+        "I",
+        "F"
+      ]
+    },
+    {
+      "id": "sIA",
+      "refs": [
+        "I",
+        "A"
+      ]
+    },
+    {
+      "id": "sIB",
+      "refs": [
+        "I",
+        "B"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 520,
+    "height": 420
+  },
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "d1",
+        "from": "A",
+        "to": "C",
+        "label": "6",
+        "side": "RIGHT",
+        "unit": "cm"
+      },
+      {
+        "id": "d2",
+        "from": "B",
+        "to": "C",
+        "label": "8",
+        "side": "BELOW",
+        "unit": "cm"
+      },
+      {
+        "id": "d3",
+        "from": "A",
+        "to": "B",
+        "label": "10",
+        "side": "LEFT",
+        "unit": "cm"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "eq1",
+        "count": 1,
+        "segments": [
+          "sID",
+          "sIE",
+          "sIF"
+        ]
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "right1",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "right2",
+      "refs": [
+        "I",
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "right3",
+      "refs": [
+        "I",
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "right4",
+      "refs": [
+        "I",
+        "F",
+        "C"
+      ]
+    }
+  ],
+  "caption": "접선 길이 AD=AF, BD=BE, EC=FC를 이용해 r을 구한다.",
+  "accessibilityDescription": "접선 길이 AD=AF, BD=BE, EC=FC를 이용해 r을 구한다.",
+  "newVisualInformation": [
+    "8개 요소의 수학 위치와 연결선을 엔진 필드에 명시",
+    "원문을 기준으로 필요한 치수·각·직각·점선 표시를 그리기 필드에서 확인"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>서술형 1. 다음은 직각삼각형의 내접원의 반지름을 구하는 과정이다. 빈 칸에 기호와 수식을 적절히 사용하여 설명하시오. (6점)</p><p><img src=\"assets/images/20_금당중_2학기_중간_중2_수학/s01.png\" alt=\"직각삼각형 ABC의 세 변의 길이가 6cm, 8cm, 10cm이고 내접원 반지름 r와 접점 D, E, F가 표시된 그림\" /></p><div style=\"border: 1px solid #000; padding: 12px; margin: 10px 0;\">내접원의 반지름의 길이를 $r\\text{ cm}$라고 하자.<br/>$\\overline{\\text{EC}} = \\overline{\\text{FC}} = r\\text{ cm}$이므로<br/>$\\overline{\\text{AF}} = 6 - r\\text{ cm}$, $\\overline{\\text{BE}} = $ ( &nbsp;&nbsp;&nbsp;&nbsp; (1) &nbsp;&nbsp;&nbsp;&nbsp; )$\\text{ cm}$<br/>한편, $\\overline{\\text{ID}} = \\overline{\\text{IE}} = \\overline{\\text{IF}}$이므로 위 그림과 같이 $\\overline{\\text{IA}}$와 $\\overline{\\text{IB}}$를 각각 그으면<br/>$\\triangle\\text{IBE} \\equiv \\triangle\\text{IBD} (\\text{RHS 합동})$, $\\triangle\\text{IAD} \\equiv \\triangle\\text{IAF} ($ ( &nbsp;&nbsp;&nbsp;&nbsp; (2) &nbsp;&nbsp;&nbsp;&nbsp; ) $\\text{합동})$<br/>따라서, $\\overline{\\text{AD}} = 6 - r\\text{ cm}$, $\\overline{\\text{BD}} = $ ( &nbsp;&nbsp;&nbsp;&nbsp; (3) &nbsp;&nbsp;&nbsp;&nbsp; )$\\text{ cm}$이다.<br/>$\\overline{\\text{AB}} = \\overline{\\text{AD}} + \\overline{\\text{BD}}$를 $r$를 이용한 식으로 나타내면<br/>( &nbsp;&nbsp;&nbsp;&nbsp; (4) &nbsp;&nbsp;&nbsp;&nbsp; )와 같이 나타낼 수 있다.<br/>이를 풀면 $r = $ ( &nbsp;&nbsp;&nbsp;&nbsp; (5) &nbsp;&nbsp;&nbsp;&nbsp; )$\\text{ cm}$이다.</div>",
+      "mappedTo": "solution의 실제 geometry plan nodes/displaySegments/planeMarks"
+    },
+    {
+      "id": "geometry",
+      "condition": "그림의 위치·길이는 원문에서 수치가 확정된 경우 외에는 조건을 만족하는 대표 배치이며, 해설의 최종 관계는 문제 그림에 미노출한다.",
+      "mappedTo": "mathPlan.nodes and planeMarks"
+    }
+  ]
+}

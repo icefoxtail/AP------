@@ -9,7 +9,7 @@
     },
     "nodes": [
       {
-        "id": "O",
+        "id": "A",
         "op": "SOURCE_POINT",
         "inputs": [],
         "args": {
@@ -17,6 +17,26 @@
             {
               "kind": "integer",
               "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2094427191",
+              "denominator": "200000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
             },
             {
               "kind": "integer",
@@ -28,98 +48,46 @@
         "factRole": "GIVEN"
       },
       {
-        "id": "B",
-        "op": "TRANSLATE_POINT",
-        "inputs": [
-          "O"
-        ],
-        "args": {
-          "dx": {
-            "kind": "integer",
-            "value": "-4"
-          },
-          "dy": {
-            "kind": "expression",
-            "op": "mul",
-            "args": [
-              {
-                "kind": "rational",
-                "numerator": "-2",
-                "denominator": "1"
-              },
-              {
-                "kind": "expression",
-                "op": "sqrt",
-                "args": [
-                  {
-                    "kind": "integer",
-                    "value": "5"
-                  }
-                ]
-              }
-            ]
-          }
-        },
-        "outputType": "POINT",
-        "factRole": "DERIVED_INTERMEDIATE"
-      },
-      {
         "id": "C",
-        "op": "TRANSLATE_POINT",
-        "inputs": [
-          "O"
-        ],
+        "op": "SOURCE_POINT",
+        "inputs": [],
         "args": {
-          "dx": {
-            "kind": "integer",
-            "value": "4"
-          },
-          "dy": {
-            "kind": "expression",
-            "op": "mul",
-            "args": [
-              {
-                "kind": "rational",
-                "numerator": "-2",
-                "denominator": "1"
-              },
-              {
-                "kind": "expression",
-                "op": "sqrt",
-                "args": [
-                  {
-                    "kind": "integer",
-                    "value": "5"
-                  }
-                ]
-              }
-            ]
-          }
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
         },
         "outputType": "POINT",
-        "factRole": "DERIVED_INTERMEDIATE"
+        "factRole": "GIVEN"
       },
       {
-        "id": "A",
-        "op": "TRANSLATE_POINT",
-        "inputs": [
-          "O"
-        ],
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
         "args": {
-          "dx": {
-            "kind": "integer",
-            "value": "0"
-          },
-          "dy": {
-            "kind": "integer",
-            "value": "6"
-          }
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "894427191",
+              "denominator": "200000000"
+            }
+          ]
         },
         "outputType": "POINT",
-        "factRole": "DERIVED_INTERMEDIATE"
+        "factRole": "GIVEN"
       },
       {
-        "id": "cc",
+        "id": "circ1",
         "op": "CIRCLE_CENTER_RADIUS",
         "inputs": [
           "O"
@@ -131,7 +99,7 @@
           }
         },
         "outputType": "CIRCLE",
-        "factRole": "DERIVED_INTERMEDIATE"
+        "factRole": "GIVEN"
       }
     ]
   },
@@ -141,108 +109,97 @@
     "C",
     "O"
   ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ1"
+  ],
   "displaySegments": [
     {
-      "id": "AB",
+      "id": "sAB",
       "refs": [
         "A",
         "B"
       ]
     },
     {
-      "id": "BC",
+      "id": "sBC",
       "refs": [
         "B",
         "C"
       ]
     },
     {
-      "id": "CA",
+      "id": "sCA",
       "refs": [
         "C",
         "A"
       ]
     },
     {
-      "id": "OA",
-      "refs": [
-        "O",
-        "A"
-      ]
-    },
-    {
-      "id": "OB",
+      "id": "sOB",
       "refs": [
         "O",
         "B"
       ]
     },
     {
-      "id": "OC",
+      "id": "sOC",
       "refs": [
         "O",
         "C"
       ]
+    },
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
     }
   ],
-  "displayCircles": [
-    "cc"
-  ],
-  "displayLines": [],
-  "caption": "예: 반지름이 같은 원 위에 세 꼭짓점이 있는 삼각형으로 그렸다(A의 위치는 모양만 나타낸 예이다). 외심 O에서 OB=OC=R이므로 △OBC의 둘레는 R+R+8=2R+8이다. 둘레가 20cm이므로 2R+8=20에서 R=6cm이다. 따라서 외접원의 둘레의 길이는 2π×6=12πcm이다.",
-  "accessibilityDescription": "삼각형 ABC와 세 꼭짓점을 지나는 원이 있고 외심 O에서 세 꼭짓점으로 길이가 같은 선분이 그어져 있으며 이 선분에 R, 변 BC에 8이 적혀 있다.",
+  "coordinateCanvas": {
+    "width": 520,
+    "height": 420
+  },
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "d1",
+        "from": "B",
+        "to": "C",
+        "label": "8",
+        "side": "BELOW",
+        "unit": "cm"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "eq1",
+        "count": 1,
+        "segments": [
+          "sOA",
+          "sOB",
+          "sOC"
+        ]
+      }
+    ]
+  },
+  "caption": "OB=OC=6cm이므로 외접원 둘레는 12π cm이다.",
+  "accessibilityDescription": "OB=OC=6cm이므로 외접원 둘레는 12π cm이다.",
   "newVisualInformation": [
-    "외심에서 꼭짓점까지의 거리 R이 같아 삼각형 OBC의 둘레 2R+8=20에서 R=6"
+    "5개 요소의 수학 위치와 연결선을 엔진 필드에 명시",
+    "원문을 기준으로 필요한 치수·각·직각·점선 표시를 그리기 필드에서 확인"
   ],
   "sourceConditions": [
     {
       "id": "source",
       "condition": "<p>서술형 3. 오른쪽 그림에서 점 $\\text{O}$는 $\\triangle\\text{ABC}$의 외심이다. $\\overline{\\text{BC}} = 8\\text{ cm}$이고 $\\triangle\\text{OBC}$의 둘레의 길이가 $20\\text{ cm}$일 때, $\\triangle\\text{ABC}$의 외접원의 둘레의 길이를 구하여라. [5점]</p><p><img src=\"assets/images/20_왕의중_2학기_중간_중2_수학/s03.png\" alt=\"삼각형 ABC의 외심 O와 삼각형 OBC의 둘레 조건이 주어진 외접원 그림\" /></p>",
-      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+      "mappedTo": "solution의 실제 geometry plan nodes/displaySegments/planeMarks"
     },
     {
-      "id": "gauge",
-      "condition": "유일 SOURCE_POINT는 평행이동 자유도를 고정하는 배치 기준이다. 주어진 좌표로 주장하지 않는다. 나머지 점은 문항 길이·각 관계 또는 명시된 대표 배치에서 공식 연산으로 파생한다.",
-      "mappedTo": "mathPlan"
+      "id": "geometry",
+      "condition": "그림의 위치·길이는 원문에서 수치가 확정된 경우 외에는 조건을 만족하는 대표 배치이며, 해설의 최종 관계는 문제 그림에 미노출한다.",
+      "mappedTo": "mathPlan.nodes and planeMarks"
     }
-  ],
-  "equalLengths": [
-    {
-      "id": "eq0",
-      "count": 1,
-      "segments": [
-        "OA",
-        "OB",
-        "OC"
-      ]
-    }
-  ],
-  "planeMarks": {
-    "expressionLabels": [
-      {
-        "id": "vOB",
-        "ownerSegment": "OB",
-        "text": "R",
-        "factRole": "DERIVED_INTERMEDIATE"
-      },
-      {
-        "id": "vOC",
-        "ownerSegment": "OC",
-        "text": "R",
-        "factRole": "DERIVED_INTERMEDIATE"
-      },
-      {
-        "id": "vOA",
-        "ownerSegment": "OA",
-        "text": "R",
-        "factRole": "DERIVED_INTERMEDIATE"
-      },
-      {
-        "id": "vBC",
-        "ownerSegment": "BC",
-        "text": "8",
-        "factRole": "GIVEN"
-      }
-    ]
-  }
+  ]
 }

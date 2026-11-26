@@ -1,0 +1,253 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "12"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "D",
+    "C",
+    "P"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "DC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "AP",
+      "refs": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "PD",
+      "refs": [
+        "P",
+        "D"
+      ]
+    },
+    {
+      "id": "PB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "PC",
+      "refs": [
+        "P",
+        "C"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "A",
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "P",
+        "D",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a0",
+        "refs": [
+          "B",
+          "A",
+          "D"
+        ],
+        "style": "ARC",
+        "equalGroup": 1,
+        "arcs": 1,
+        "noLabel": true
+      },
+      {
+        "id": "a1",
+        "refs": [
+          "D",
+          "A",
+          "C"
+        ],
+        "style": "ARC",
+        "equalGroup": 1,
+        "arcs": 1,
+        "noLabel": true
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "givenABAC",
+        "count": 1,
+        "segments": [
+          "AB",
+          "CA"
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 320
+  },
+  "caption": "원문 8번의 점·선·각·치수를 답 노출 없이 재구성한 문제 그림.",
+  "accessibilityDescription": "원문 8번의 점·선·각·치수를 답 노출 없이 재구성한 문제 그림.",
+  "newVisualInformation": [
+    "5개 요소의 수학 위치와 연결선을 엔진 필드에 명시",
+    "원문을 기준으로 필요한 치수·각·직각·점선 표시를 그리기 필드에서 확인"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>8. 오른쪽 그림과 같이 $\\overline{\\text{AB}} = \\overline{\\text{AC}}$인 이등변삼각형 $\\text{ABC}$에서 $\\angle\\text{A}$의 이등분선과 $\\overline{\\text{BC}}$의 교점을 $\\text{D}$라 하자. $\\overline{\\text{AD}}$ 위에 한 점 $\\text{P}$를 잡을 때, 다음 중 옳지 않은 것은? [4.5점]</p><p><img src=\"assets/images/20_왕의중_2학기_중간_중2_수학/q08.png\" alt=\"이등변삼각형 ABC에서 꼭지각 A의 이등분선 AD 위의 점 P를 나타낸 그림\" /></p>",
+      "mappedTo": "problem의 실제 geometry plan nodes/displaySegments/planeMarks"
+    },
+    {
+      "id": "geometry",
+      "condition": "그림의 위치·길이는 원문에서 수치가 확정된 경우 외에는 조건을 만족하는 대표 배치이며, 해설의 최종 관계는 문제 그림에 미노출한다.",
+      "mappedTo": "mathPlan.nodes and planeMarks"
+    }
+  ]
+}

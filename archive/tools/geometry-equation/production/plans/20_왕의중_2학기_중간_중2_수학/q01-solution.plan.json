@@ -1,0 +1,82 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -3,
+      5,
+      -7,
+      5
+    ],
+    "curves": [
+      {
+        "id": "line1",
+        "kind": "LINE",
+        "coefficients": [
+          "3/2",
+          "-5/4"
+        ],
+        "domain": [
+          "-3",
+          "5"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "line2",
+        "kind": "LINE",
+        "coefficients": [
+          "-1/2",
+          "-5/4"
+        ],
+        "domain": [
+          "-3",
+          "5"
+        ],
+        "color": "WARM",
+        "label": "g"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "F",
+          "x": "0",
+          "y": "3/2",
+          "coordinates": true,
+          "labelDirection": "NE"
+        },
+        {
+          "id": "G",
+          "x": "0",
+          "y": "-1/2",
+          "coordinates": true,
+          "labelDirection": "SE"
+        }
+      ]
+    }
+  },
+  "caption": "해가 없는 연립방정식은 기울기가 같고 y절편이 다른 두 평행 직선이다.",
+  "accessibilityDescription": "해가 없는 연립방정식은 기울기가 같고 y절편이 다른 두 평행 직선이다.",
+  "newVisualInformation": [
+    "직선 f, g을 실제 LINE 곡선 필드에 정의",
+    "문제의 교점·평행·기울기 관계를 비교"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>1. 연립방정식 $\\begin{cases} ax + 2y - 3 = 0 \\\\ 5x + 4y + 2 = 0 \\end{cases}$의 그래프가 만나지 않을 때, 수 $a$의 값은? [3.5점]</p>",
+      "mappedTo": "solution의 실제 geometry plan nodes/displaySegments/planeMarks"
+    },
+    {
+      "id": "geometry",
+      "condition": "그림의 위치·길이는 원문에서 수치가 확정된 경우 외에는 조건을 만족하는 대표 배치이며, 해설의 최종 관계는 문제 그림에 미노출한다.",
+      "mappedTo": "mathPlan.nodes and planeMarks"
+    }
+  ]
+}
