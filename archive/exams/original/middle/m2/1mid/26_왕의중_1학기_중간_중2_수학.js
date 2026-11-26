@@ -1309,7 +1309,7 @@ window.questionBank = [
     "questionType": "서술형",
     "layoutTag": "fullwidth",
     "content": "[서답형 4] 다음 그림과 같은 정사각형에서 점 $F$는 점 $D$에서 점 $C$까지 움직인다고 한다. $\\overline{DF}=x\\,\\text{cm}$이고 사각형 $AECF$의 넓이는 정사각형 $ABCD$의 넓이의 $\\dfrac{5}{9}$ 이하가 된다고 할 때, 가능한 $x$의 값 중 가장 작은 자연수를 풀이과정과 함께 구하시오.<br><img src=\"assets/images/26_왕의중_1학기_중간_중2_수학/q24-problem-visual-v2.svg\" alt=\"정사각형 ABCD의 위쪽과 왼쪽 변은 각각 30 cm이다. 아래로 B에서 E까지의 길이는 25 cm이다. F가 오른쪽의 D에서 C로 움직이고 DF의 길이는 x cm이다. AECF를 청록색으로 칠했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
-    "image": "",
+    "image": "assets/images/26_왕의중_1학기_중간_중2_수학/q24-problem.svg",
     "answer": "2",
     "solution": "정사각형 넓이는 900cm^2, 삼각형 ABE 넓이는 (1/2)·30·25=375, 삼각형 ADF 넓이는 (1/2)·30·x=15x이다. AECF 넓이는 900-375-15x=525-15x. 5/9·900=500이므로 525-15x≤500, x≥5/3. 가장 작은 자연수는 2이다.",
     "sourceDocumentSha256": "sha256:178bdfcdd68ca55fdbe1224dcd374d08e0e5a5b71605fdceef3f725d494957c3",
@@ -1354,6 +1354,9 @@ window.questionBank = [
       "도형"
     ],
     "itemStatus": "READY_FOR_REVIEW",
-    "sourceMode": "EXTRACTED_JS_ASSETS"
+    "sourceMode": "EXTRACTED_JS_ASSETS",
+    "imageAlt": "한 변이 30cm인 정사각형 ABCD에서 BE는 25cm이고, 오른쪽 변의 F는 D에서 C로 움직인다. 사각형 AECF만 옅게 칠한다.",
+    "imageCaption": "한 변이 30cm인 정사각형 ABCD에서 BE는 25cm이고, 오른쪽 변의 F는 D에서 C로 움직인다. 사각형 AECF만 옅게 칠한다.",
+    "imageSize": "full"
   }
 ];

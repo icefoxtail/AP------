@@ -633,7 +633,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "두 점수 평균18이상을 좌표합36이상으로 바꾸어 해당 점의 개수를 전체20명으로 나눈다.",
-    "decisiveStep": "두 점수 평균18이상을 좌표합36이상으로 바꾸어 해당 점의 개수를 전체20명으로 나눈다."
+    "decisiveStep": "두 점수 평균18이상을 좌표합36이상으로 바꾸어 해당 점의 개수를 전체20명으로 나눈다.",
+    "image": "assets/images/22_연향중_2학기_기말_중3_기출/q14-problem.svg",
+    "imageAlt": "공통 산점도: 1차·2차 점수, 원본의 학생 20명 점 위치와 눈금을 유지한다.",
+    "imageCaption": "공통 산점도: 1차·2차 점수, 원본의 학생 20명 점 위치와 눈금을 유지한다.",
+    "imageSize": "full"
   },
   {
     "id": 15,

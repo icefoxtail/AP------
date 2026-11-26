@@ -240,7 +240,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "무게중심의 길이·등넓이 분할 성질 판정",
-    "decisiveStep": "중선2:1과 여섯 등넓이 조각으로 보기를 판정하고 중점과 공통변만으로는 합동조건이 충족되지 않음을 확인한다."
+    "decisiveStep": "중선2:1과 여섯 등넓이 조각으로 보기를 판정하고 중점과 공통변만으로는 합동조건이 충족되지 않음을 확인한다.",
+    "image": "assets/images/22_연향중_2학기_기말_중2_기출/q5-problem.svg",
+    "imageAlt": "삼각형 ABC의 세 중선 AQ, BR, CP가 무게중심 G에서 만나고, P·Q·R에 각각 중점 눈금이 표시된 문제 도형이다.",
+    "imageCaption": "삼각형 ABC의 세 중선 AQ, BR, CP가 무게중심 G에서 만나고, P·Q·R에 각각 중점 눈금이 표시된 문제 도형이다.",
+    "imageSize": "full"
   },
   {
     "id": 6,

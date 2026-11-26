@@ -397,7 +397,11 @@ window.questionBank = [
     "targetChoiceSlot": 5,
     "solutionImage": "assets/images/백발백중_공통수학2_평면좌표_직선의방정식_P30-33_20261022_유사50/BV-BAKBAL-H-COM2-P30-Q03-T1-R2-solution.svg",
     "solutionImageAlt": "해설 도형",
-    "solutionImageSize": "large"
+    "solutionImageSize": "large",
+    "image": "assets/images/백발백중_공통수학2_평면좌표_직선의방정식_P30-33_20261022_유사50/BV-BAKBAL-H-COM2-P30-Q03-T1-R2-problem.svg",
+    "imageAlt": "주어진 정삼각형 ABC의 높이 AM과 원점 무게중심 O의 위치를 나타낸다.",
+    "imageCaption": "주어진 정삼각형 ABC의 높이 AM과 원점 무게중심 O의 위치를 나타낸다.",
+    "imageSize": "full"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P30-Q03-S1-R2",
@@ -454,7 +458,11 @@ window.questionBank = [
     "targetChoiceSlot": 3,
     "solutionImage": "assets/images/백발백중_공통수학2_평면좌표_직선의방정식_P30-33_20261022_유사50/BV-BAKBAL-H-COM2-P30-Q03-S1-R2-solution.svg",
     "solutionImageAlt": "해설 도형",
-    "solutionImageSize": "large"
+    "solutionImageSize": "large",
+    "image": "assets/images/백발백중_공통수학2_평면좌표_직선의방정식_P30-33_20261022_유사50/BV-BAKBAL-H-COM2-P30-Q03-S1-R2-problem.svg",
+    "imageAlt": "주어진 정삼각형 ABC의 높이 AM과 원점 무게중심 O의 위치를 나타낸다.",
+    "imageCaption": "주어진 정삼각형 ABC의 높이 AM과 원점 무게중심 O의 위치를 나타낸다.",
+    "imageSize": "full"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P30-Q03-S2-R2",

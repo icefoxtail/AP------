@@ -1341,7 +1341,11 @@ window.questionBank = [
     "inferredFields": [],
     "problemImage": "assets/images/백발백중_공통수학2_집합과명제_P142-145_20261023_유사50/BV-BAKBAL-H-COM2-P143-Q08-T1-R1-problem.svg",
     "problemImageAlt": "문항 도형",
-    "problemImageSize": "large"
+    "problemImageSize": "large",
+    "image": "assets/images/백발백중_공통수학2_집합과명제_P142-145_20261023_유사50/BV-BAKBAL-H-COM2-P143-Q08-T1-R1-problem.svg",
+    "imageAlt": "발문에 주어진 f의 직사각형과 g의 직사각형을 같은 좌표평면에 표시한다.",
+    "imageCaption": "발문에 주어진 f의 직사각형과 g의 직사각형을 같은 좌표평면에 표시한다.",
+    "imageSize": "full"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P143-Q08-S1-R1",
@@ -1403,7 +1407,11 @@ window.questionBank = [
     "inferredFields": [],
     "problemImage": "assets/images/백발백중_공통수학2_집합과명제_P142-145_20261023_유사50/BV-BAKBAL-H-COM2-P143-Q08-S1-R1-problem.svg",
     "problemImageAlt": "문항 도형",
-    "problemImageSize": "large"
+    "problemImageSize": "large",
+    "image": "assets/images/백발백중_공통수학2_집합과명제_P142-145_20261023_유사50/BV-BAKBAL-H-COM2-P143-Q08-S1-R1-problem.svg",
+    "imageAlt": "발문에 주어진 f의 직사각형과 g의 직사각형을 같은 좌표평면에 표시한다.",
+    "imageCaption": "발문에 주어진 f의 직사각형과 g의 직사각형을 같은 좌표평면에 표시한다.",
+    "imageSize": "full"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P143-Q08-S2-R1",
@@ -1465,7 +1473,11 @@ window.questionBank = [
     "inferredFields": [],
     "problemImage": "assets/images/백발백중_공통수학2_집합과명제_P142-145_20261023_유사50/BV-BAKBAL-H-COM2-P143-Q08-S2-R1-problem.svg",
     "problemImageAlt": "문항 도형",
-    "problemImageSize": "large"
+    "problemImageSize": "large",
+    "image": "assets/images/백발백중_공통수학2_집합과명제_P142-145_20261023_유사50/BV-BAKBAL-H-COM2-P143-Q08-S2-R1-problem.svg",
+    "imageAlt": "발문에 주어진 f의 직사각형과 g의 직사각형을 같은 좌표평면에 표시한다.",
+    "imageCaption": "발문에 주어진 f의 직사각형과 g의 직사각형을 같은 좌표평면에 표시한다.",
+    "imageSize": "full"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P143-Q09-T1-R1",
@@ -1881,7 +1893,11 @@ window.questionBank = [
     "inferredFields": [],
     "problemImage": "assets/images/백발백중_공통수학2_집합과명제_P142-145_20261023_유사50/BV-BAKBAL-H-COM2-P144-Q11-T1-R1-problem.svg",
     "problemImageAlt": "문항 도형",
-    "problemImageSize": "large"
+    "problemImageSize": "large",
+    "image": "assets/images/백발백중_공통수학2_집합과명제_P142-145_20261023_유사50/BV-BAKBAL-H-COM2-P144-Q11-T1-R1-problem.svg",
+    "imageAlt": "직사각형 세 변에 접하는 원, CD 위의 E, 원 위의 P와 PE를 내분하는 Q를 보인다.",
+    "imageCaption": "직사각형 세 변에 접하는 원, CD 위의 E, 원 위의 P와 PE를 내분하는 Q를 보인다.",
+    "imageSize": "full"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P144-Q11-S1-R1",
@@ -1943,7 +1959,11 @@ window.questionBank = [
     "inferredFields": [],
     "problemImage": "assets/images/백발백중_공통수학2_집합과명제_P142-145_20261023_유사50/BV-BAKBAL-H-COM2-P144-Q11-S1-R1-problem.svg",
     "problemImageAlt": "문항 도형",
-    "problemImageSize": "large"
+    "problemImageSize": "large",
+    "image": "assets/images/백발백중_공통수학2_집합과명제_P142-145_20261023_유사50/BV-BAKBAL-H-COM2-P144-Q11-S1-R1-problem.svg",
+    "imageAlt": "직사각형 세 변에 접하는 원, CD 위의 E, 원 위의 P와 PE를 내분하는 Q를 보인다.",
+    "imageCaption": "직사각형 세 변에 접하는 원, CD 위의 E, 원 위의 P와 PE를 내분하는 Q를 보인다.",
+    "imageSize": "full"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P144-Q12-T1-R1",
@@ -2474,7 +2494,11 @@ window.questionBank = [
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P142-145_20261023_유사50/BV-BAKBAL-H-COM2-P144-Q16-T1-R1-solution.svg",
     "solutionImageAlt": "풀이 도형",
     "solutionImageSize": "large",
-    "inferredFields": []
+    "inferredFields": [],
+    "image": "assets/images/백발백중_공통수학2_집합과명제_P142-145_20261023_유사50/BV-BAKBAL-H-COM2-P144-Q16-T1-R1-problem.svg",
+    "imageAlt": "두 원과 두 중심 사이를 지나는 내공통접선의 위치를 나타낸다.",
+    "imageCaption": "두 원과 두 중심 사이를 지나는 내공통접선의 위치를 나타낸다.",
+    "imageSize": "full"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P144-Q16-S1-R1",

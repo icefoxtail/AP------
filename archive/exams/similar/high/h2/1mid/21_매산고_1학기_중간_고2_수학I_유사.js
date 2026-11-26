@@ -812,7 +812,11 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "H2-M1-RPM-023",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "solutionImage": "assets/images/21_매산고_1학기_중간_고2_수학I_유사/q19-solution.svg",
+    "solutionImageAlt": "해설에서 n=4인 경우의 첫 네 주기 예시. 짝수 x에서 값이 0, 홀수 x에서 값이 1인 주기함수와 밑 8 로그곡선의 교점을 나타낸다.",
+    "solutionImageCaption": "해설에서 n=4인 경우의 첫 네 주기 예시. 짝수 x에서 값이 0, 홀수 x에서 값이 1인 주기함수와 밑 8 로그곡선의 교점을 나타낸다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,

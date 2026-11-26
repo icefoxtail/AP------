@@ -36,7 +36,11 @@ window.examData = {
     "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
     "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE",
     "primaryMethod": "삼각형 내부 평행선의 분할비",
-    "decisiveStep": "평행한 BC와 DE에서 AB:BD=AC:CE를 바로 세운다."
+    "decisiveStep": "평행한 BC와 DE에서 AB:BD=AC:CE를 바로 세운다.",
+    "image": "assets/images/21_매산중_2학기_기말_중2_수학/q1-problem.svg",
+    "imageAlt": "평행한 BC와 DE가 삼각형 ADE의 두 변을 각각 두 구간으로 나눈 그림.",
+    "imageCaption": "평행한 BC와 DE가 삼각형 ADE의 두 변을 각각 두 구간으로 나눈 그림.",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -73,7 +77,11 @@ window.examData = {
     "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
     "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
     "primaryMethod": "사다리꼴 보조 평행선과 선분비",
-    "decisiveStep": "D에서 AB에 평행한 선을 내려 두 평행사변형의 길이를 옮긴 뒤 작은 삼각형의 비례로 밑변을 복원한다."
+    "decisiveStep": "D에서 AB에 평행한 선을 내려 두 평행사변형의 길이를 옮긴 뒤 작은 삼각형의 비례로 밑변을 복원한다.",
+    "image": "assets/images/21_매산중_2학기_기말_중2_수학/q2-problem.svg",
+    "imageAlt": "AD∥EF∥BC, AE=4 cm, EB=6 cm, AD=8 cm, EF=10 cm을 보이는 문제용 도형.",
+    "imageCaption": "AD∥EF∥BC, AE=4 cm, EB=6 cm, AD=8 cm, EF=10 cm을 보이는 문제용 도형.",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -110,7 +118,11 @@ window.examData = {
     "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
     "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE",
     "primaryMethod": "중점연결정리와 합동 분할",
-    "decisiveStep": "중점연결의 평행·절반 길이로 보기들을 판단하고 네 작은 삼각형의 SSS 합동에서 넓이 배수를 확인한다."
+    "decisiveStep": "중점연결의 평행·절반 길이로 보기들을 판단하고 네 작은 삼각형의 SSS 합동에서 넓이 배수를 확인한다.",
+    "image": "assets/images/21_매산중_2학기_기말_중2_수학/q3-problem.svg",
+    "imageAlt": "D,E,F는 ABC의 세 변의 중점이고 △DEF=12 cm²을 보이는 문제용 도형.",
+    "imageCaption": "D,E,F는 ABC의 세 변의 중점이고 △DEF=12 cm²을 보이는 문제용 도형.",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -148,7 +160,11 @@ window.examData = {
     "templateKey": "TPL_CENTROID_APPLICATION",
     "subUnit": "삼각형의 무게중심의 성질",
     "primaryMethod": "숨은 무게중심과 중점연결선",
-    "decisiveStep": "평행사변형 대각선의 중점 O를 찾아 P를 ABC의 무게중심으로 인식하고 BD를 복원한 뒤 EF를 구한다."
+    "decisiveStep": "평행사변형 대각선의 중점 O를 찾아 P를 ABC의 무게중심으로 인식하고 BD를 복원한 뒤 EF를 구한다.",
+    "image": "assets/images/21_매산중_2학기_기말_중2_수학/q4-problem.svg",
+    "imageAlt": "ABCD는 평행사변형, E,F는 변의 중점이고 P,O,Q는 BD의 교점, BP=12 cm을 보이는 문제용 도형.",
+    "imageCaption": "ABCD는 평행사변형, E,F는 변의 중점이고 P,O,Q는 BD의 교점, BP=12 cm을 보이는 문제용 도형.",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -218,7 +234,11 @@ window.examData = {
     "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
     "templateKey": "TPL_M2_PYTHAGOREAN_SIDE_LENGTH",
     "primaryMethod": "직사각형 대각선의 피타고라스 길이",
-    "decisiveStep": "가로80·세로60을 두 직각변으로 사용한다."
+    "decisiveStep": "가로80·세로60을 두 직각변으로 사용한다.",
+    "image": "assets/images/21_매산중_2학기_기말_중2_수학/q6-problem.svg",
+    "imageAlt": "직사각형 모니터 가로 80 cm, 세로 60 cm, 대각선을 보이는 문제용 도형.",
+    "imageCaption": "직사각형 모니터 가로 80 cm, 세로 60 cm, 대각선을 보이는 문제용 도형.",
+    "imageSize": "full"
   },
   {
     "id": 7,
@@ -293,7 +313,11 @@ window.examData = {
     "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
     "templateKey": "TPL_SPECIAL_QUADRILATERALS",
     "primaryMethod": "내부 정사각형의 성질 판정",
-    "decisiveStep": "네 모서리 삼각형의 합동으로 내부 사각형이 정사각형임을 확인하고 피타고라스 관계로 변·대각선 설명을 비교한다."
+    "decisiveStep": "네 모서리 삼각형의 합동으로 내부 사각형이 정사각형임을 확인하고 피타고라스 관계로 변·대각선 설명을 비교한다.",
+    "image": "assets/images/21_매산중_2학기_기말_중2_수학/q8-problem.svg",
+    "imageAlt": "정사각형 ABCD의 변은 a,b로 분할되고 EFGH가 내부에서 이어진다을 보이는 문제용 도형.",
+    "imageCaption": "정사각형 ABCD의 변은 a,b로 분할되고 EFGH가 내부에서 이어진다을 보이는 문제용 도형.",
+    "imageSize": "full"
   },
   {
     "id": 9,
@@ -331,7 +355,11 @@ window.examData = {
     "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
     "templateKey": "TPL_M2_PYTHAGOREAN_SIDE_LENGTH",
     "primaryMethod": "합동 대응을 준비한 피타고라스 길이와 넓이",
-    "decisiveStep": "합동으로 BE와 AE=ED 및 AED의 직각을 확보하고 AE를 구해 직각삼각형 넓이에 넣는다."
+    "decisiveStep": "합동으로 BE와 AE=ED 및 AED의 직각을 확보하고 AE를 구해 직각삼각형 넓이에 넣는다.",
+    "image": "assets/images/21_매산중_2학기_기말_중2_수학/q9-problem.svg",
+    "imageAlt": "△ABE≡△ECD, B,E,C 공선, AB=12 cm, CD=16 cm을 보이는 문제용 도형.",
+    "imageCaption": "△ABE≡△ECD, B,E,C 공선, AB=12 cm, CD=16 cm을 보이는 문제용 도형.",
+    "imageSize": "full"
   },
   {
     "id": 10,
@@ -368,7 +396,11 @@ window.examData = {
     "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
     "templateKey": "TPL_M2_PYTHAGOREAN_SIDE_LENGTH",
     "primaryMethod": "수선을 내린 사다리꼴의 변 길이",
-    "decisiveStep": "수선으로 직사각형과3-4 직각삼각형을 만들어 사변 AB를 구한 뒤 둘레를 합한다."
+    "decisiveStep": "수선으로 직사각형과3-4 직각삼각형을 만들어 사변 AB를 구한 뒤 둘레를 합한다.",
+    "image": "assets/images/21_매산중_2학기_기말_중2_수학/q10-problem.svg",
+    "imageAlt": "∠C=∠D=90°, AD=5 cm, BC=8 cm, CD=4 cm을 보이는 문제용 도형.",
+    "imageCaption": "∠C=∠D=90°, AD=5 cm, BC=8 cm, CD=4 cm을 보이는 문제용 도형.",
+    "imageSize": "full"
   },
   {
     "id": 11,
@@ -403,7 +435,11 @@ window.examData = {
     "standardUnit": "피타고라스 정리",
     "subUnit": "피타고라스 정리의 활용",
     "primaryMethod": "피타고라스 제곱관계의 반원 넓이 전환",
-    "decisiveStep": "세 반원 넓이를 각 지름 제곱의 π/8배로 표현하여 두 직각변 제곱합을 빗변 제곱으로 바꾼다."
+    "decisiveStep": "세 반원 넓이를 각 지름 제곱의 π/8배로 표현하여 두 직각변 제곱합을 빗변 제곱으로 바꾼다.",
+    "image": "assets/images/21_매산중_2학기_기말_중2_수학/q11-problem.svg",
+    "imageAlt": "∠A=90°, BC=18 cm, AB/AC/BC를 지름으로 하는 세 반원 P,Q,R을 보이는 문제용 도형.",
+    "imageCaption": "∠A=90°, BC=18 cm, AB/AC/BC를 지름으로 하는 세 반원 P,Q,R을 보이는 문제용 도형.",
+    "imageSize": "full"
   },
   {
     "id": 12,
@@ -440,7 +476,11 @@ window.examData = {
     "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
     "templateKey": "TPL_M2_PYTHAGOREAN_COMPOSITE_APPLICATION",
     "primaryMethod": "접기 등거리와 두 피타고라스 식",
-    "decisiveStep": "접기 보존 길이로 BP·PC를 구하고 CQ와12-CQ의 제곱관계를 세워 PQ와 삼각형 넓이를 복원한다."
+    "decisiveStep": "접기 보존 길이로 BP·PC를 구하고 CQ와12-CQ의 제곱관계를 세워 PQ와 삼각형 넓이를 복원한다.",
+    "image": "assets/images/21_매산중_2학기_기말_중2_수학/q12-problem.svg",
+    "imageAlt": "ABCD 직사각형 13×12 cm의 접는 선 AP와 점 P,Q을 보이는 문제용 도형.",
+    "imageCaption": "ABCD 직사각형 13×12 cm의 접는 선 AP와 점 P,Q을 보이는 문제용 도형.",
+    "imageSize": "full"
   },
   {
     "id": 13,

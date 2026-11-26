@@ -352,7 +352,11 @@ window.questionBank = [
     "integrationPattern": "",
     "rpmPrimaryRecordId": "H2-M1-RPM-038",
     "sourceQid": null,
-    "variationType": ""
+    "variationType": "",
+    "solutionImage": "assets/images/21_매산여고_1학기_중간_고2_수학I_유사/q8-solution.svg",
+    "solutionImageAlt": "0≤x<π에서 y=cos(2x)와 y=−1/4의 두 교점이 x=π/2를 중심으로 서로 대칭인 관계를 나타낸다.",
+    "solutionImageCaption": "0≤x<π에서 y=cos(2x)와 y=−1/4의 두 교점이 x=π/2를 중심으로 서로 대칭인 관계를 나타낸다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 9,

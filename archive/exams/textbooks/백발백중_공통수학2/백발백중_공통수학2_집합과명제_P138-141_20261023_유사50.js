@@ -978,7 +978,11 @@ window.questionBank = [
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P138-141_20261023_유사50/BV-BAKBAL-H-COM2-P140-Q06-T1-R1-solution.svg",
     "solutionImageAlt": "풀이 도형",
     "solutionImageSize": "large",
-    "inferredFields": []
+    "inferredFields": [],
+    "image": "assets/images/백발백중_공통수학2_집합과명제_P138-141_20261023_유사50/BV-BAKBAL-H-COM2-P140-Q06-T1-R1-problem.svg",
+    "imageAlt": "반지름 5인 원에 길이 6의 현 AB가 놓인 모습이다.",
+    "imageCaption": "반지름 5인 원에 길이 6의 현 AB가 놓인 모습이다.",
+    "imageSize": "full"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P140-Q06-S1-R1",
@@ -1037,7 +1041,11 @@ window.questionBank = [
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P138-141_20261023_유사50/BV-BAKBAL-H-COM2-P140-Q06-S1-R1-solution.svg",
     "solutionImageAlt": "풀이 도형",
     "solutionImageSize": "large",
-    "inferredFields": []
+    "inferredFields": [],
+    "image": "assets/images/백발백중_공통수학2_집합과명제_P138-141_20261023_유사50/BV-BAKBAL-H-COM2-P140-Q06-S1-R1-problem.svg",
+    "imageAlt": "반지름 5인 원에 길이 8의 현 AB가 놓인 모습이다.",
+    "imageCaption": "반지름 5인 원에 길이 8의 현 AB가 놓인 모습이다.",
+    "imageSize": "full"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P140-Q06-S2-R1",
@@ -1096,7 +1104,11 @@ window.questionBank = [
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P138-141_20261023_유사50/BV-BAKBAL-H-COM2-P140-Q06-S2-R1-solution.svg",
     "solutionImageAlt": "풀이 도형",
     "solutionImageSize": "large",
-    "inferredFields": []
+    "inferredFields": [],
+    "image": "assets/images/백발백중_공통수학2_집합과명제_P138-141_20261023_유사50/BV-BAKBAL-H-COM2-P140-Q06-S2-R1-problem.svg",
+    "imageAlt": "반지름 sqrt(13)인 원에 길이 6의 현 AB가 놓인 모습이다.",
+    "imageCaption": "반지름 sqrt(13)인 원에 길이 6의 현 AB가 놓인 모습이다.",
+    "imageSize": "full"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P140-Q07-T1-R1",
@@ -1509,7 +1521,11 @@ window.questionBank = [
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P138-141_20261023_유사50/BV-BAKBAL-H-COM2-P140-Q09-T1-R1-solution.svg",
     "solutionImageAlt": "풀이 도형",
     "solutionImageSize": "large",
-    "inferredFields": []
+    "inferredFields": [],
+    "image": "assets/images/백발백중_공통수학2_집합과명제_P138-141_20261023_유사50/BV-BAKBAL-H-COM2-P140-Q09-T1-R1-problem.svg",
+    "imageAlt": "원 밖 점 P에서 한 원에 그은 두 접선 PT₁과 PT₂를 나타낸다.",
+    "imageCaption": "원 밖 점 P에서 한 원에 그은 두 접선 PT₁과 PT₂를 나타낸다.",
+    "imageSize": "full"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P140-Q09-S1-R1",
@@ -1568,7 +1584,11 @@ window.questionBank = [
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P138-141_20261023_유사50/BV-BAKBAL-H-COM2-P140-Q09-S1-R1-solution.svg",
     "solutionImageAlt": "풀이 도형",
     "solutionImageSize": "large",
-    "inferredFields": []
+    "inferredFields": [],
+    "image": "assets/images/백발백중_공통수학2_집합과명제_P138-141_20261023_유사50/BV-BAKBAL-H-COM2-P140-Q09-S1-R1-problem.svg",
+    "imageAlt": "원 밖 점 P에서 한 원에 그은 두 접선 PT₁과 PT₂를 나타낸다.",
+    "imageCaption": "원 밖 점 P에서 한 원에 그은 두 접선 PT₁과 PT₂를 나타낸다.",
+    "imageSize": "full"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P140-Q09-S2-R1",
@@ -1627,7 +1647,11 @@ window.questionBank = [
     "solutionImage": "assets/images/백발백중_공통수학2_집합과명제_P138-141_20261023_유사50/BV-BAKBAL-H-COM2-P140-Q09-S2-R1-solution.svg",
     "solutionImageAlt": "풀이 도형",
     "solutionImageSize": "large",
-    "inferredFields": []
+    "inferredFields": [],
+    "image": "assets/images/백발백중_공통수학2_집합과명제_P138-141_20261023_유사50/BV-BAKBAL-H-COM2-P140-Q09-S2-R1-problem.svg",
+    "imageAlt": "원 x²+y²=5와 원 밖의 점 P(3,0)에서 그은 두 접선을 나타낸다.",
+    "imageCaption": "원 x²+y²=5와 원 밖의 점 P(3,0)에서 그은 두 접선을 나타낸다.",
+    "imageSize": "full"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P140-Q10-T1-R1",
@@ -2707,7 +2731,11 @@ window.questionBank = [
     "solutionImageSize": "large",
     "inferredFields": [
       "original_page_image_visual_comparison"
-    ]
+    ],
+    "image": "assets/images/백발백중_공통수학2_집합과명제_P138-141_20261023_유사50/BV-BAKBAL-H-COM2-P141-Q18-T1-R1-problem.svg",
+    "imageAlt": "선분 AB의 점이 제3사분면에 놓일 수 있는 부분을 좌표축과 함께 확인한다.",
+    "imageCaption": "선분 AB의 점이 제3사분면에 놓일 수 있는 부분을 좌표축과 함께 확인한다.",
+    "imageSize": "full"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P141-Q18-S1-R1",
@@ -2768,7 +2796,11 @@ window.questionBank = [
     "solutionImageSize": "large",
     "inferredFields": [
       "original_page_image_visual_comparison"
-    ]
+    ],
+    "image": "assets/images/백발백중_공통수학2_집합과명제_P138-141_20261023_유사50/BV-BAKBAL-H-COM2-P141-Q18-S1-R1-problem.svg",
+    "imageAlt": "선분 AB의 점이 제3사분면에 놓일 수 있는 부분을 좌표축과 함께 확인한다.",
+    "imageCaption": "선분 AB의 점이 제3사분면에 놓일 수 있는 부분을 좌표축과 함께 확인한다.",
+    "imageSize": "full"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P141-Q19-T1-R1",
