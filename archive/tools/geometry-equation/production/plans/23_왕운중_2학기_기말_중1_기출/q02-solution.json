@@ -1,0 +1,47 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes": [
+      {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"L","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-5"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"R","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"5"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"K","op":"CIRCLE_CENTER_RADIUS","inputs":["O"],"args":{"radius":{"kind":"integer","value":"5"}},"outputType":"CIRCLE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"LU","op":"POLAR_POINT","inputs":["O","L"],"args":{"length":{"kind":"integer","value":"5"},"angleDeg":{"kind":"integer","value":"20"},"turn":"CW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"LD","op":"POLAR_POINT","inputs":["O","L"],"args":{"length":{"kind":"integer","value":"5"},"angleDeg":{"kind":"integer","value":"20"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"RU","op":"POLAR_POINT","inputs":["O","R"],"args":{"length":{"kind":"integer","value":"5"},"angleDeg":{"kind":"integer","value":"40"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"RD","op":"POLAR_POINT","inputs":["O","R"],"args":{"length":{"kind":"integer","value":"5"},"angleDeg":{"kind":"integer","value":"40"},"turn":"CW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "displayPoints":["O","L","R","LU","LD","RU","RD"],
+  "hiddenPointNames":["L","R","LU","LD","RU","RD"],
+  "hiddenPointStyle":"NONE",
+  "displayCircles":["K"],
+  "displaySegments":[
+    {"id":"sLU","refs":["O","LU"]},
+    {"id":"sLD","refs":["O","LD"]},
+    {"id":"sRU","refs":["O","RU"]},
+    {"id":"sRD","refs":["O","RD"]}
+  ],
+  "planeMarks":{
+    "angles":[
+      {"id":"leftAngle","refs":["LU","O","LD"],"value":40,"label":"40","style":"ARC","arcs":1,"factRole":"GIVEN"},
+      {"id":"rightAngle","refs":["RU","O","RD"],"value":80,"label":"80","style":"ARC","arcs":1,"factRole":"GIVEN"}
+    ],
+    "arcs":[
+      {"id":"leftArc","circle":"K","center":"O","from":"LU","to":"LD","side":"MINOR","label":"8","unit":"cm"},
+      {"id":"rightArc","circle":"K","center":"O","from":"RU","to":"RD","side":"MINOR","label":"x","unit":"cm"}
+    ]
+  },
+  "coordinateCanvas":{"width":540,"height":440},
+  "caption":"같은 원에서 중심각과 호의 길이 비교",
+  "accessibilityDescription":"원 O의 왼쪽 작은 호는 중심각 40도와 길이 8센티미터, 오른쪽 호는 중심각 80도와 길이 x센티미터로 나타낸 해설 그림이다.",
+  "sourceQuote":"다음 그림에서 $x$의 값은?",
+  "sourceConditions":[
+    {"id":"cLeft","condition":"왼쪽 호의 길이 8cm와 중심각 40°","mappedTo":["planeMarks.arcs.leftArc","planeMarks.angles.leftAngle"]},
+    {"id":"cRight","condition":"오른쪽 호의 길이 xcm와 중심각 80°","mappedTo":["planeMarks.arcs.rightArc","planeMarks.angles.rightAngle"]},
+    {"id":"cSame","condition":"두 호는 같은 원 O 위에 있다.","mappedTo":"displayCircles.K"}
+  ],
+  "newVisualInformation":["원의 반지름 5는 모식도 배치만을 위한 값으로 그림에는 기입하지 않는다. 두 부채꼴의 불필요한 회색 면 채움을 없애고 호와 중심각만 표시한다."]
+}
