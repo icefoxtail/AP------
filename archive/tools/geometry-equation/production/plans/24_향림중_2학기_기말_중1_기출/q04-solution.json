@@ -1,0 +1,16 @@
+{
+  "capability": "solid-figure-v1",
+  "caption": "밑면이 변 6·8·10 cm인 직각삼각형, 기둥의 높이가 15 cm인 삼각기둥이다.",
+  "accessibilityDescription": "두 밑면이 직각삼각형인 삼각기둥. 직각을 끼는 변 6센티미터와 8센티미터, 빗변 10센티미터, 기둥 높이 15센티미터를 표시하며 가려진 모서리는 점선이다. 삼각형의 직각은 작은 정사각형으로 보인다.",
+  "sourceQuote": "오른쪽 기둥의 겉넓이는?",
+  "sourceConditions":[
+    {"id":"c1","condition":"삼각형 밑면의 직각을 끼는 변은 각각 6 cm와 8 cm이고 빗변은 10 cm이다.","mappedTo":["solids[0].base","dims[0]","dims[1]","dims[2]","marks.rightAngles"]},
+    {"id":"c2","condition":"기둥의 높이는 15 cm이다.","mappedTo":["solids[0].height","dims[3]"]},
+    {"id":"c3","condition":"밑면은 두 개이고 옆면은 직사각형 세 개다.","mappedTo":["solids[0].kind"]}
+  ],
+  "newVisualInformation":["원본의 위쪽·안쪽 직각 표식과 숨은 모서리를 엔진의 실측 모델로 다시 그린다.","직각삼각형·옆면을 구분하는 데 불필요한 넓은 주황 면 채움은 사용하지 않는다."],
+  "unit":"cm",
+  "solids":[{"id":"s1","kind":"PRISM","base":{"kind":"POLYGON","points":[[0,0],[6,0],[0,8]]},"height":15,"names":"......"}],
+  "dims":[{"edge":["#b0","#b1"]},{"edge":["#b0","#b2"]},{"edge":["#b1","#b2"]},{"edge":["#b0","#t0"]}],
+  "marks":{"rightAngles":[{"at":"#b0","refs":["#b1","#b2"]},{"at":"#t0","refs":["#t1","#t2"]}]}
+}
