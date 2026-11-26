@@ -1,0 +1,31 @@
+{
+  "capability":"construction-spike-v1",
+  "caption":"사다리꼴 ABCD의 윗변 3cm, 아랫변 5cm, 넓이 16cm²와 높이 4cm를 면 채움 없이 표시한다.",
+  "accessibilityDescription":"윗변 AD가 3센티미터, 아랫변 BC가 5센티미터인 사다리꼴이다. 내부에 넓이 16제곱센티미터가 쓰여 있고 오른쪽 높이는 4센티미터이며 위아래 두 직각 사각 표식이 있다. 내부 색칠은 없다.",
+  "sourceQuote":"다음 그림은 넓이가 $16\\,\\mathrm{cm}^2$인 사다리꼴 $ABCD$이다. 점 $D$와 변 $BC$ 사이의 거리는?",
+  "sourceConditions":[
+    {"id":"trapezoid","condition":"ABCD는 AD∥BC인 사다리꼴이고 DC는 두 밑변에 수직이다.","mappedTo":["displaySegments[0]","displaySegments[1]","displaySegments[2]","displaySegments[3]","rightAngles[0]","rightAngles[1]"]},
+    {"id":"top","condition":"AD=3cm가 윗변에 쓰여 있다.","mappedTo":["planeMarks.dimensions[0]"]},
+    {"id":"bottom","condition":"BC=5cm가 아랫변에 쓰여 있다.","mappedTo":["planeMarks.dimensions[1]"]},
+    {"id":"area","condition":"사다리꼴 내부에 넓이 16cm²가 쓰여 있다.","mappedTo":["planeMarks.textLabels[0]"]},
+    {"id":"height","condition":"해설에서 (3+5)×h/2=16으로 높이 h=4cm를 구한다.","mappedTo":["planeMarks.dimensions[2]"]}
+  ],
+  "newVisualInformation":["기존 해설 사다리꼴의 회청색 면 채움을 완전히 제거한다.","기존 그림에 약하게 보이던 D·C의 두 직각 사각 표식을 명시하고 계산된 높이를 실제 치수선으로 나타낸다."],
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"1"},{"kind":"integer","value":"4"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-1"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"4"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"4"},{"kind":"integer","value":"4"}]},"outputType":"POINT","factRole":"GIVEN"}
+  ]},
+  "displayPoints":["A","B","C","D"],
+  "displaySegments":[{"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},{"id":"sCD","refs":["C","D"]},{"id":"sDA","refs":["D","A"]}],
+  "rightAngles":[{"id":"rC","refs":["B","C","D"]},{"id":"rD","refs":["A","D","C"]}],
+  "planeMarks":{
+    "dimensions":[
+      {"id":"ad","from":"A","to":"D","label":"3","unit":"cm","side":"ABOVE","factRole":"GIVEN"},
+      {"id":"bc","from":"B","to":"C","label":"5","unit":"cm","side":"BELOW","factRole":"GIVEN"},
+      {"id":"height","from":"C","to":"D","label":"4","unit":"cm","side":"RIGHT","factRole":"CONCLUSION"}
+    ],
+    "textLabels":[{"id":"area","at":[1.7,1.8],"text":"16cm²","labelKind":"TEXT","factRole":"GIVEN"}]
+  }
+}
