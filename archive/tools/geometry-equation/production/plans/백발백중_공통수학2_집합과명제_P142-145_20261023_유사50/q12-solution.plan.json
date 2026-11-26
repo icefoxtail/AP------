@@ -1,0 +1,220 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "선분 AB의 중점 M을 지나는 수직이등분선과 y=x+2의 교점 P.",
+  "accessibilityDescription": "좌표평면에 A, B, 중점 M과 같은 거리에 있는 교점 P, 수직이등분선, 직선 y=x+k, 수직 표식을 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "A(0,0), B(4,4)",
+      "mappedTo": "mathPlan.nodes[0].args.coordinates,mathPlan.nodes[1].args.coordinates"
+    },
+    {
+      "id": "c2",
+      "condition": "AB의 중점 M과 수직이등분선",
+      "mappedTo": "mathPlan.nodes[2],mathPlan.nodes[4],rightAngles"
+    },
+    {
+      "id": "c3",
+      "condition": "P는 y=x+2 위",
+      "mappedTo": "mathPlan.nodes[5],mathPlan.nodes[6]"
+    }
+  ],
+  "newVisualInformation": [
+    "주어진 좌표·길이·위치 조건과 풀이에서 얻는 도형 관계를 실제 점·선분·표식으로 그린다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "AB",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "K",
+        "op": "PERPENDICULAR_THROUGH",
+        "inputs": [
+          "M",
+          "AB"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "L",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "-1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "K",
+          "L"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "M",
+    "P"
+  ],
+  "displayLines": [
+    "K",
+    "L"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAM",
+      "refs": [
+        "A",
+        "M"
+      ]
+    },
+    {
+      "id": "sMB",
+      "refs": [
+        "M",
+        "B"
+      ]
+    },
+    {
+      "id": "sAP",
+      "refs": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "sBP",
+      "refs": [
+        "B",
+        "P"
+      ]
+    }
+  ],
+  "coordinateLabels": [
+    "A",
+    "B",
+    "M",
+    "P"
+  ],
+  "rightAngles": [
+    {
+      "id": "raM",
+      "refs": [
+        "A",
+        "M",
+        "P"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "mid",
+        "count": 1,
+        "segments": [
+          "sAM",
+          "sMB"
+        ]
+      },
+      {
+        "id": "equidistant",
+        "count": 2,
+        "segments": [
+          "sAP",
+          "sBP"
+        ]
+      }
+    ]
+  },
+  "lineLabels": [
+    {
+      "nodeId": "L",
+      "form": "SLOPE_INTERCEPT"
+    }
+  ]
+}
