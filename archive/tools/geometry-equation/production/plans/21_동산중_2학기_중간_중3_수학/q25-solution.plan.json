@@ -1,0 +1,221 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "20"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "30"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "20"
+            },
+            {
+              "kind": "rational",
+              "numerator": "34641016151378",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "H",
+    "B",
+    "C"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAH",
+      "refs": [
+        "A",
+        "H"
+      ]
+    },
+    {
+      "id": "sHB",
+      "refs": [
+        "H",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCH",
+      "refs": [
+        "C",
+        "H"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "style": "ARC",
+        "factRole": "GIVEN",
+        "id": "aA",
+        "refs": [
+          "H",
+          "A",
+          "C"
+        ],
+        "value": 60,
+        "label": "60"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAC",
+        "ownerSegment": "sAC",
+        "text": "40"
+      },
+      {
+        "id": "lAH",
+        "ownerSegment": "sAH",
+        "text": "20"
+      },
+      {
+        "id": "lHB",
+        "ownerSegment": "sHB",
+        "text": "10"
+      },
+      {
+        "id": "lCH",
+        "ownerSegment": "sCH",
+        "text": "20√3"
+      },
+      {
+        "id": "lBC",
+        "ownerSegment": "sBC",
+        "text": "10√13"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dAB",
+        "from": "A",
+        "to": "B",
+        "label": "30",
+        "side": "BELOW",
+        "style": "BAR"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "r1",
+      "refs": [
+        "C",
+        "H",
+        "B"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 420
+  },
+  "caption": "AB=30, AC=40, ∠A=60°에서 C의 수선의 발 H를 잡으면 AH=20, BH=10, CH=20√3이며 BC=10√13이다.",
+  "accessibilityDescription": "AB=30, AC=40, ∠A=60°에서 C의 수선의 발 H를 잡으면 AH=20, BH=10, CH=20√3이며 BC=10√13이다.",
+  "sourceConditions": [
+    {
+      "id": "problem-stem",
+      "condition": "[서답형 3] 삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AB}} = 30$, $\\overline{\\mathrm{AC}} = 40$, $\\angle \\mathrm{A} = 60^\\circ$일 때, $\\overline{\\mathrm{BC}}$의 거리를 구하여라. (7점)",
+      "mappedTo": "mathPlan.nodes, displaySegments, planeMarks, rightAngles"
+    },
+    {
+      "id": "worked-solution",
+      "condition": "점 $C$에서 $AB$에 내린 수선의 발을 $H$라 하자. 직각삼각형 $ACH$에서 $AH=AC\\cos60^\\circ=40\\cdot\\frac12=20$, $CH=AC\\sin60^\\circ=40\\cdot\\frac{\\sqrt3}{2}=20\\sqrt3$이다. 따라서 $BH=AB-AH=30-20=10$이다. 직각삼각형 $BCH$에서 $BC=\\sqrt{BH^2+CH^2}=\\sqrt{10^2+(20\\sqrt3)^2}=\\sqrt{1300}=10\\sqrt{13}$이다.",
+      "mappedTo": "planeMarks, displaySegments, caption"
+    }
+  ],
+  "newVisualInformation": [
+    "C에서 AB에 내린 CH와 H 직각",
+    "A 60°, AB30, AC40 길이",
+    "AH20, BH10, CH20√3, BC10√13 중간값의 선분 소속, 무채움"
+  ]
+}

@@ -1,0 +1,197 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "4898979485566",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3464101615138",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "C",
+    "D",
+    "B",
+    "A"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDB",
+      "refs": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "sBA",
+      "refs": [
+        "B",
+        "A"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dCD",
+        "from": "C",
+        "to": "D",
+        "label": "2",
+        "side": "BELOW",
+        "style": "BAR"
+      },
+      {
+        "id": "dAB",
+        "from": "A",
+        "to": "B",
+        "label": "6",
+        "side": "RIGHT",
+        "style": "BAR"
+      },
+      {
+        "id": "dAD",
+        "from": "A",
+        "to": "D",
+        "label": "4",
+        "side": "LEFT",
+        "style": "BAR"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "r1",
+      "refs": [
+        "A",
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 420
+  },
+  "caption": "직각삼각형 ABC에서 D는 BC 위에 있으며 AB=6, AD=4, CD=2이다. 떨어진 치수선 없이 세 길이를 해당 변에 연결한다.",
+  "accessibilityDescription": "직각삼각형 ABC에서 D는 BC 위에 있으며 AB=6, AD=4, CD=2이다. 떨어진 치수선 없이 세 길이를 해당 변에 연결한다.",
+  "sourceConditions": [
+    {
+      "id": "problem-stem",
+      "condition": "직각삼각형 $ABC$에서 $\\angle C=90^\\circ$이고 점 $D$는 선분 $BC$ 위에 있다. $AB=6$, $AD=4$, $CD=2$일 때, $\\cos B$의 값을 구하여라. (6점)<br><img src=\"assets/images/21_동산중_2학기_중간_중3_수학/q24-audit-rework.svg\" alt=\"C가 직각이고 D가 BC 위에 있는 삼각형, AB=6, AD=4, CD=2\" />",
+      "mappedTo": "mathPlan.nodes, displaySegments, planeMarks, rightAngles"
+    },
+    {
+      "id": "worked-solution",
+      "condition": "$D$가 $BC$ 위에 있고 $\\angle C=90^\\circ$이므로 $AC\\perp CD$이다. 직각삼각형 $ACD$에서 $AD^2=AC^2+CD^2$이므로 $AC^2=4^2-2^2=12$, 즉 $AC=2\\sqrt3$이다. 직각삼각형 $ABC$에서 $BC^2=AB^2-AC^2=6^2-12=24$이므로 $BC=2\\sqrt6$이다. 따라서 $\\cos B=BC/AB=2\\sqrt6/6=\\sqrt6/3$이다.",
+      "mappedTo": "planeMarks, displaySegments, caption"
+    }
+  ],
+  "newVisualInformation": [
+    "AB 길이 6의 두 끝점 A,B를 직접 묶는 치수선",
+    "AD 길이 4의 두 끝점 A,D를 직접 묶는 치수선",
+    "CD=2, C 직각, 점 D∈BC; 정답은 표시하지 않음"
+  ]
+}

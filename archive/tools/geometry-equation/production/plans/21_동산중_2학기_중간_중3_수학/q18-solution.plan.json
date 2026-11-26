@@ -1,0 +1,173 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "C",
+    "B",
+    "A"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sCB",
+      "refs": [
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "style": "ARC",
+        "factRole": "GIVEN",
+        "id": "aB",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 56.309932474,
+        "label": "B",
+        "labelKind": "NAME"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAC",
+        "ownerSegment": "sCA",
+        "text": "12"
+      },
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "4√13"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dBC",
+        "from": "C",
+        "to": "B",
+        "label": "8",
+        "side": "BELOW",
+        "style": "BAR",
+        "unit": "cm"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "r1",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 420
+  },
+  "caption": "C가 직각이며 tan B=3/2, BC=8cm인 삼각형. AC=12cm이고 빗변 AB=4√13cm이다.",
+  "accessibilityDescription": "C가 직각이며 tan B=3/2, BC=8cm인 삼각형. AC=12cm이고 빗변 AB=4√13cm이다.",
+  "sourceConditions": [
+    {
+      "id": "problem-stem",
+      "condition": "$\\angle \\mathrm{C} = 90^\\circ$인 직각삼각형 $\\mathrm{ABC}$에서 $\\tan B = \\frac32$이다. $\\overline{\\mathrm{BC}} = 8\\,\\text{cm}$일 때, $\\overline{\\mathrm{AB}}$의 길이를 구하면? (4점)",
+      "mappedTo": "mathPlan.nodes, displaySegments, planeMarks, rightAngles"
+    },
+    {
+      "id": "worked-solution",
+      "condition": "$\\tan B=AC/BC=3/2$이고 $BC=8$이므로 $AC=12$이다. $\\angle C=90^\\circ$이므로 피타고라스 정리에서 $AB=\\sqrt{AC^2+BC^2}=\\sqrt{12^2+8^2}=\\sqrt{208}=4\\sqrt{13}\\,\\mathrm{cm}$이다. 정답은 ④이다.",
+      "mappedTo": "planeMarks, displaySegments, caption"
+    }
+  ],
+  "newVisualInformation": [
+    "C 직각 표식, B의 예각 호",
+    "BC=8cm, AC=12cm, AB=4√13cm의 소속 길이",
+    "면 채움 없음"
+  ]
+}
