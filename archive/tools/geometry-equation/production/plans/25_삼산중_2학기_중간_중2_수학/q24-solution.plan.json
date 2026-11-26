@@ -1,0 +1,316 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "S",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "131",
+              "denominator": "46"
+            },
+            {
+              "kind": "rational",
+              "numerator": "119",
+              "denominator": "46"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "N",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "7",
+              "denominator": "2"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "S",
+    "B",
+    "H",
+    "O",
+    "M",
+    "N"
+  ],
+  "displaySegments": [
+    {
+      "id": "sSM",
+      "refs": [
+        "S",
+        "M"
+      ]
+    },
+    {
+      "id": "sMB",
+      "refs": [
+        "M",
+        "B"
+      ]
+    },
+    {
+      "id": "sBN",
+      "refs": [
+        "B",
+        "N"
+      ]
+    },
+    {
+      "id": "sNH",
+      "refs": [
+        "N",
+        "H"
+      ]
+    },
+    {
+      "id": "sHS",
+      "refs": [
+        "H",
+        "S"
+      ]
+    },
+    {
+      "id": "sMO",
+      "refs": [
+        "M",
+        "O"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sNO",
+      "refs": [
+        "N",
+        "O"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sOS",
+      "refs": [
+        "O",
+        "S"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sOH",
+      "refs": [
+        "O",
+        "H"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "S",
+    "B",
+    "H",
+    "O",
+    "M",
+    "N"
+  ],
+  "planeMarks": {
+    "textLabels": [
+      {
+        "id": "school",
+        "at": "S",
+        "text": "학교",
+        "labelKind": "TEXT",
+        "anchor": "NW"
+      },
+      {
+        "id": "bank",
+        "at": "B",
+        "text": "은행",
+        "labelKind": "TEXT",
+        "anchor": "SW"
+      },
+      {
+        "id": "hospital",
+        "at": "H",
+        "text": "병원",
+        "labelKind": "TEXT",
+        "anchor": "E"
+      },
+      {
+        "id": "library",
+        "at": "O",
+        "text": "도서관",
+        "labelKind": "TEXT",
+        "anchor": "N"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "sbMid",
+        "count": 1,
+        "segments": [
+          "sSM",
+          "sMB"
+        ]
+      },
+      {
+        "id": "bhMid",
+        "count": 2,
+        "segments": [
+          "sBN",
+          "sNH"
+        ]
+      },
+      {
+        "id": "radius",
+        "count": 3,
+        "segments": [
+          "sOS",
+          "sOB",
+          "sOH"
+        ]
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "perpSB",
+      "refs": [
+        "S",
+        "M",
+        "O"
+      ]
+    },
+    {
+      "id": "perpBH",
+      "refs": [
+        "B",
+        "N",
+        "O"
+      ]
+    }
+  ],
+  "caption": "학교·은행·병원에서 같은 거리에 있는 도서관은 삼각형의 외심",
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 440
+  },
+  "sourceConditions": [
+    {
+      "id": "sourceMap",
+      "condition": "학교, 은행, 병원에서 같은 거리인 도서관; 수직이등분선들의 교점이 외심",
+      "mappedTo": "planeMarks.textLabels/equalLengths/rightAngles/displaySegments"
+    }
+  ],
+  "newVisualInformation": [
+    "원본 지도에서 필요한 세 장소만 개념적으로 추려 두 수직이등분선과 등거리 선분을 나타낸 도형. 원본 지도 전체를 대체하지 않음"
+  ]
+}
