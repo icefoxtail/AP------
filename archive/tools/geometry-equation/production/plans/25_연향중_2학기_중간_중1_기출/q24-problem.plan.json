@@ -1,0 +1,70 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes": [
+      {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-4"},{"kind":"integer","value":"4"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-4"},{"kind":"integer","value":"-4"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"4"},{"kind":"integer","value":"-4"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"4"},{"kind":"integer","value":"4"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"E","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"30","denominator":"13"},{"kind":"rational","numerator":"72","denominator":"13"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"F","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"-42","denominator":"13"},{"kind":"rational","numerator":"102","denominator":"13"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"G","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"-72","denominator":"13"},{"kind":"rational","numerator":"30","denominator":"13"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"H","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"-30","denominator":"13"},{"kind":"rational","numerator":"-72","denominator":"13"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"I","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"42","denominator":"13"},{"kind":"rational","numerator":"-102","denominator":"13"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"J","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"72","denominator":"13"},{"kind":"rational","numerator":"-30","denominator":"13"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"lOE","op":"LINE_THROUGH","inputs":["O","E"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"lOG","op":"LINE_THROUGH","inputs":["O","G"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"lOH","op":"LINE_THROUGH","inputs":["O","H"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"lOJ","op":"LINE_THROUGH","inputs":["O","J"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"lAD","op":"LINE_THROUGH","inputs":["A","D"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"lAB","op":"LINE_THROUGH","inputs":["A","B"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"lBC","op":"LINE_THROUGH","inputs":["B","C"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"lCD","op":"LINE_THROUGH","inputs":["C","D"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"R","op":"LINE_INTERSECTION","inputs":["lOE","lAD"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"S","op":"LINE_INTERSECTION","inputs":["lOG","lAB"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"P","op":"LINE_INTERSECTION","inputs":["lOH","lBC"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"Q","op":"LINE_INTERSECTION","inputs":["lOJ","lCD"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "displayPoints": ["A","B","C","D","O","E","F","G","H","I","J","R","S","P","Q"],
+  "displaySegments": [
+    {"id":"sAR","refs":["A","R"]},{"id":"sRD","refs":["R","D"]},
+    {"id":"sDQ","refs":["D","Q"]},{"id":"sQC","refs":["Q","C"]},
+    {"id":"sCP","refs":["C","P"]},{"id":"sPB","refs":["P","B"]},
+    {"id":"sBS","refs":["B","S"]},{"id":"sSA","refs":["S","A"]},
+    {"id":"sAO","refs":["A","O"]},{"id":"sOC","refs":["O","C"]},
+    {"id":"sBO","refs":["B","O"]},{"id":"sOD","refs":["O","D"]},
+    {"id":"sOR","refs":["O","R"]},{"id":"sRE","refs":["R","E"]},
+    {"id":"sEF","refs":["E","F"]},{"id":"sFG","refs":["F","G"]},
+    {"id":"sGS","refs":["G","S"]},{"id":"sSO","refs":["S","O"]},
+    {"id":"sOP","refs":["O","P"]},{"id":"sPH","refs":["P","H"]},
+    {"id":"sHI","refs":["H","I"]},{"id":"sIJ","refs":["I","J"]},
+    {"id":"sJQ","refs":["J","Q"]},{"id":"sQO","refs":["Q","O"]}
+  ],
+  "planeMarks": {
+    "regions": [
+      {"id":"upperShaded","fill":"LIGHT","factRole":"GIVEN","shapes":[{"polygon":["O","R","A","S"]}]},
+      {"id":"lowerShaded","fill":"LIGHT","factRole":"GIVEN","shapes":[{"polygon":["O","P","C","Q"]}]}
+    ],
+    "pathLabels": [{"id":"side8","points":["B","P","C"],"label":"8","unit":"cm","value":"8"}],
+    "expressionLabels": [
+      {"id":"side6top","ownerSegment":"sFG","text":"6","unit":"cm"},
+      {"id":"side6bottom","ownerSegment":"sIJ","text":"6","unit":"cm"}
+    ]
+  },
+  "coordinateCanvas": {"width":720,"height":600},
+  "caption": "한 변 8cm인 정사각형 ABCD의 중심 O에서 두 방향으로 그린 한 변 6cm의 정사각형 OEFG와 OHIJ, 그리고 두 색칠 영역",
+  "accessibilityDescription": "가운데 정사각형 ABCD는 한 변 8cm이고 두 대각선이 O에서 만난다. O를 공유하는 한 변 6cm의 정사각형 OEFG는 왼쪽 위에, OHIJ는 오른쪽 아래에 있다. 두 정사각형의 변은 가운데 정사각형의 변과 각각 R, S, P, Q에서 만난다. O-R-A-S 사각형과 O-P-C-Q 사각형 두 곳만 연회색으로 색칠했다.",
+  "sourceQuote": "한 변의 길이가 8cm인 정사각형 ABCD의 두 대각선의 교점 O를 꼭짓점으로 가지고 한 변의 길이가 6cm인 정사각형 OEFG, OHIJ를 그렸다. (3) 색칠한 부분의 넓이",
+  "sourceConditions": [
+    {"id":"centralSquare","condition":"ABCD는 한 변의 길이가 8cm인 정사각형이고 AC와 BD가 O에서 만난다.","mappedTo":["mathPlan.nodes.A","mathPlan.nodes.B","mathPlan.nodes.C","mathPlan.nodes.D","mathPlan.nodes.O","displaySegments.sAO","displaySegments.sOC","displaySegments.sBO","displaySegments.sOD","planeMarks.pathLabels.side8"]},
+    {"id":"upperSquare","condition":"OEFG는 O를 공통 꼭짓점으로 가지는 한 변 6cm의 정사각형으로 왼쪽 위에 기울어져 있다.","mappedTo":["mathPlan.nodes.E","mathPlan.nodes.F","mathPlan.nodes.G","displaySegments.sOR","displaySegments.sRE","displaySegments.sEF","displaySegments.sFG","displaySegments.sGS","displaySegments.sSO","planeMarks.expressionLabels.side6top"]},
+    {"id":"lowerSquare","condition":"OHIJ는 O를 공통 꼭짓점으로 가지는 한 변 6cm의 정사각형으로 오른쪽 아래에 기울어져 있다.","mappedTo":["mathPlan.nodes.H","mathPlan.nodes.I","mathPlan.nodes.J","displaySegments.sOP","displaySegments.sPH","displaySegments.sHI","displaySegments.sIJ","displaySegments.sJQ","displaySegments.sQO","planeMarks.expressionLabels.side6bottom"]},
+    {"id":"intersections","condition":"R은 OE와 AD, S는 OG와 AB, P는 OH와 BC, Q는 OJ와 CD의 교점이다.","mappedTo":["mathPlan.nodes.R","mathPlan.nodes.S","mathPlan.nodes.P","mathPlan.nodes.Q","displaySegments.sAR","displaySegments.sRD","displaySegments.sBS","displaySegments.sSA","displaySegments.sCP","displaySegments.sPB","displaySegments.sDQ","displaySegments.sQC"]},
+    {"id":"shadedAreas","condition":"원본에서 색칠된 부분은 사각형 ORAS와 사각형 OPCQ 두 곳이다.","mappedTo":["planeMarks.regions.upperShaded","planeMarks.regions.lowerShaded"]}
+  ],
+  "newVisualInformation": ["복잡한 원본 PNG의 세 정사각형, 네 교점, 두 대각선, 두 색칠 영역을 큰 도형에 분리해 표현한다. 기울기는 원본의 상대적 위치를 따르는 동형 대표 배치이며 출제되지 않은 회전각은 적거나 표시하지 않는다. 원본 PNG 하단의 서술형 (1)~(3) 발문은 이 도형 plan에 포함되지 않으므로 실제 이미지 교체 전에 JS 본문으로 이동해 보존해야 한다."]
+}
