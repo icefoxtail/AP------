@@ -1230,7 +1230,15 @@ window.questionBank = [
     "level": "중",
     "curriculum": "2015",
     "primaryMethod": "완전제곱식으로 A(−2,k+2)를 얻고 B(0,k),그림의k>0과삼각형넓이4를 연결해 매개변수k를 역산한다. 소문항의 함수식·꼭짓점·계수목표를 모두 보존한다.",
-    "decisiveStep": "완전제곱식으로 A(−2,k+2)를 얻고 B(0,k),그림의k>0과삼각형넓이4를 연결해 매개변수k를 역산한다. 소문항의 함수식·꼭짓점·계수목표를 모두 보존한다."
+    "decisiveStep": "완전제곱식으로 A(−2,k+2)를 얻고 B(0,k),그림의k>0과삼각형넓이4를 연결해 매개변수k를 역산한다. 소문항의 함수식·꼭짓점·계수목표를 모두 보존한다.",
+    "image": "assets/images/21_왕운중_2학기_중간_중3_수학/q21-problem.svg",
+    "imageAlt": "미지 k가 있는 아래로 열린 포물선의 예시 모양: 꼭짓점 A, y축 위 B, 원점 O(계수 k 및 좌표는 노출하지 않음)",
+    "imageCaption": "미지 k가 있는 아래로 열린 포물선의 예시 모양: 꼭짓점 A, y축 위 B, 원점 O(계수 k 및 좌표는 노출하지 않음)",
+    "imageSize": "full",
+    "solutionImage": "assets/images/21_왕운중_2학기_중간_중3_수학/q21-solution.svg",
+    "solutionImageAlt": "삼각형 AOB의 넓이 4에서 k=4를 얻은 후 A(−2,6), B(0,4)의 포물선",
+    "solutionImageCaption": "삼각형 AOB의 넓이 4에서 k=4를 얻은 후 A(−2,6), B(0,4)의 포물선",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -1282,7 +1290,11 @@ window.questionBank = [
     "level": "중",
     "curriculum": "2015",
     "primaryMethod": "원뿔의축단면에서 모선4의 수직·수평성분으로 높이와반지름을 구해부피식에 넣는다.",
-    "decisiveStep": "원뿔의축단면에서 모선4의 수직·수평성분으로 높이와반지름을 구해부피식에 넣는다."
+    "decisiveStep": "원뿔의축단면에서 모선4의 수직·수평성분으로 높이와반지름을 구해부피식에 넣는다.",
+    "image": "assets/images/21_왕운중_2학기_중간_중3_수학/q22-problem.svg",
+    "imageAlt": "원본 원뿔의 빗면 모선 4cm, 숨은 밑원 점선 및 중심축; 밑원 양끝 B·C 이름과 C의 모선-밑면 60°는 엔진 표식 미지원",
+    "imageCaption": "원본 원뿔의 빗면 모선 4cm, 숨은 밑원 점선 및 중심축; 밑원 양끝 B·C 이름과 C의 모선-밑면 60°는 엔진 표식 미지원",
+    "imageSize": "full"
   },
   {
     "id": 23,
@@ -1337,6 +1349,10 @@ window.questionBank = [
     "level": "중",
     "curriculum": "2015",
     "primaryMethod": "피타고라스로 AB,BD를 구하고 ABD넓이를 밑변AD·높이BC와 밑변AB·높이DE 두방식으로 표현해 DE를복원한뒤 sinx를 구한다.",
-    "decisiveStep": "피타고라스로 AB,BD를 구하고 ABD넓이를 밑변AD·높이BC와 밑변AB·높이DE 두방식으로 표현해 DE를복원한뒤 sinx를 구한다."
+    "decisiveStep": "피타고라스로 AB,BD를 구하고 ABD넓이를 밑변AD·높이BC와 밑변AB·높이DE 두방식으로 표현해 DE를복원한뒤 sinx를 구한다.",
+    "image": "assets/images/21_왕운중_2학기_중간_중3_수학/q23-problem.svg",
+    "imageAlt": "A-D-C가 일직선, AD=DC=BC의 세 길이 동등 표식, C 직각, B에서 BA와 BD 사이 x각",
+    "imageCaption": "A-D-C가 일직선, AD=DC=BC의 세 길이 동등 표식, C 직각, B에서 BA와 BD 사이 x각",
+    "imageSize": "full"
   }
 ];

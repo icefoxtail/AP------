@@ -184,7 +184,11 @@ window.examData = {
     "solutionImage": "assets/images/20_왕의중_2학기_중간_중2_수학/q3-solution.svg",
     "solutionImageAlt": "해설 그림: 좌표평면에 서로 다른 색의 두 직선이 교차하고, 교점 (3,1)에 좌표가 표시되어 있다. 교점에서 두 축으로 내린 점선 보조선도 보인다.",
     "solutionImageCaption": "두 직선 -x+5y=2와 2x-2y=4의 교점이 (3,1)이다. (3,1)을 2x-(1-a)y=4에 대입하면 6-(1-a)=4에서 a=-1이다. (3,1)을 ax+by=2에 대입하면 -3+b=2에서 b=5이다. 따라서 a+b=4이므로 답은 ②이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "image": "assets/images/20_왕의중_2학기_중간_중2_수학/q3-problem.svg",
+    "imageAlt": "원문 3번의 점·선·각·치수를 답 노출 없이 재구성한 문제 그림.",
+    "imageCaption": "원문 3번의 점·선·각·치수를 답 노출 없이 재구성한 문제 그림.",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -311,7 +315,11 @@ window.examData = {
     "solutionImage": "assets/images/20_왕의중_2학기_중간_중2_수학/q5-solution.svg",
     "solutionImageAlt": "해설 그림: 삼각형 ABC에서 변 AB와 변 BC에 같은 길이 표시가 있고, 각 A와 각 C에 같은 30도 표시, 꼭짓점 B에서 변 BC를 오른쪽으로 연장한 방향과 변 BA 사이에 60도 표시가 보인다.",
     "solutionImageCaption": "삼각형의 한 외각은 이웃하지 않는 두 내각의 크기의 합과 같으므로 각 A는 30도이다. 각 A와 각 C가 30도로 같아 삼각형 ABC는 이등변삼각형이고 선분 AB와 선분 BC의 길이가 같다. 따라서 x는 5이다. 따라서 답은 ③이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "image": "assets/images/20_왕의중_2학기_중간_중2_수학/q5-problem.svg",
+    "imageAlt": "원문 5번의 점·선·각·치수를 답 노출 없이 재구성한 문제 그림.",
+    "imageCaption": "원문 5번의 점·선·각·치수를 답 노출 없이 재구성한 문제 그림.",
+    "imageSize": "full"
   },
   {
     "id": 6,
@@ -373,7 +381,11 @@ window.examData = {
     "solutionImage": "assets/images/20_왕의중_2학기_중간_중2_수학/q6-solution.svg",
     "solutionImageAlt": "해설 그림: 직선 l 위에 점 D, A, E가 차례로 놓여 있고, 그 위쪽에 A를 꼭짓점으로 하는 직각이등변삼각형 ABC가 있다. B에서 l에 내린 수선 BD의 길이 6과 C에서 내린 수선 CE의 길이 4가 적혀 있고, D와 E 사이에 치수선이 그려져 있다.",
     "solutionImageCaption": "∠DAB+∠EAC=90°이고 ∠DBA+∠DAB=90°이므로 ∠DBA=∠EAC이다. 빗변 AB와 CA가 같고 한 예각이 같으므로 △BDA와 △AEC는 합동이다. 따라서 DA=CE=4, AE=BD=6이므로 DE=4+6=10이다. 따라서 답은 ④이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "image": "assets/images/20_왕의중_2학기_중간_중2_수학/q6-problem.svg",
+    "imageAlt": "원문 6번의 점·선·각·치수를 답 노출 없이 재구성한 문제 그림.",
+    "imageCaption": "원문 6번의 점·선·각·치수를 답 노출 없이 재구성한 문제 그림.",
+    "imageSize": "full"
   },
   {
     "id": 7,
@@ -427,7 +439,11 @@ window.examData = {
     "solutionImage": "assets/images/20_왕의중_2학기_중간_중2_수학/q7-solution.svg",
     "solutionImageAlt": "해설 그림: 삼각형 ABC 안에 내심 I가 있고 I에서 세 변에 내린 수선의 발 D, E, F가 있으며, D, E, F에 직각 표시가 있다. ID, IE, IF와 AD와 FA, DB와 BE에 각각 같은 길이 표시가 있고, 세 꼭짓각이 이등분된 호와 20도, 40도, 30도가 적혀 있다.",
     "solutionImageCaption": "내심 I에서 세 변에 내린 수선의 발이 D, E, F이므로 ID, IE, IF는 내접원의 반지름으로 같다. IA, IB, IC가 세 내각을 이등분하므로 삼각형 IAD와 IAF, IBD와 IBE, ICE와 ICF가 각각 합동이고 각 IBD와 각 IBE도 같다. 그러나 삼각형 IAF와 ICF는 AF와 CF가 일반적으로 같지 않아 합동이 아니며, IA, IB, IC가 모두 같은 것은 외심의 성질이지 내심의 성질이 아니다. 따라서 답은 ②, ④이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "image": "assets/images/20_왕의중_2학기_중간_중2_수학/q7-problem.svg",
+    "imageAlt": "원문 7번의 점·선·각·치수를 답 노출 없이 재구성한 문제 그림.",
+    "imageCaption": "원문 7번의 점·선·각·치수를 답 노출 없이 재구성한 문제 그림.",
+    "imageSize": "full"
   },
   {
     "id": 8,
@@ -489,7 +505,11 @@ window.examData = {
     "solutionImage": "assets/images/20_왕의중_2학기_중간_중2_수학/q8-solution.svg",
     "solutionImageAlt": "해설 그림: 이등변삼각형 ABC의 꼭짓점 A에서 밑변 BC의 중점 D까지 선분 AD를 긋고, AD 위의 점 P에서 B와 C로 선분을 그린 그림이다. 변 AB와 AC, BD와 DC, PB와 PC에 같은 길이 표시가 있고, D에는 직각 표시가 두 개 있다.",
     "solutionImageCaption": "이등변삼각형 ABC에서 꼭지각 A의 이등분선 AD는 밑변 BC를 수직이등분하므로 BD=CD이고 AD는 BC에 수직이다. 따라서 AD 위의 임의의 점 P에 대하여 PB=PC이고, 두 삼각형 PBD와 PCD는 세 변이 각각 같아 합동이다. 그러나 AP의 길이는 P의 위치에 따라 달라지므로 AP=BP=CP는 항상 성립하지 않는다. 따라서 답은 ⑤이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "image": "assets/images/20_왕의중_2학기_중간_중2_수학/q8-problem.svg",
+    "imageAlt": "원문 8번의 점·선·각·치수를 답 노출 없이 재구성한 문제 그림.",
+    "imageCaption": "원문 8번의 점·선·각·치수를 답 노출 없이 재구성한 문제 그림.",
+    "imageSize": "full"
   },
   {
     "id": 9,
@@ -554,7 +574,11 @@ window.examData = {
     "solutionImage": "assets/images/20_왕의중_2학기_중간_중2_수학/q9-solution.svg",
     "solutionImageAlt": "해설 그림: 직각이등변삼각형 ABC에서 빗변 AB 위의 점 D와 변 BC 위의 점 E가 있고, A와 E, D와 E가 각각 이어져 있다. EC의 길이 5, DE의 길이 5, DB의 길이 5가 각 선분에 적혀 있으며 꼭짓점 C와 D에 직각 표시가 있다.",
     "solutionImageCaption": "AE를 그으면 ∠ADE와 ∠ACE가 직각이고 빗변 AE가 공통이며 AD=AC이므로 △ADE와 △ACE는 합동이다. 따라서 DE=EC=5이다. ∠B=45°이므로 △EBD도 직각이등변삼각형이고 DB=DE=5이다. 따라서 DB+DE=10이다. 따라서 답은 ③이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "image": "assets/images/20_왕의중_2학기_중간_중2_수학/q9-problem.svg",
+    "imageAlt": "원문 9번의 점·선·각·치수를 답 노출 없이 재구성한 문제 그림.",
+    "imageCaption": "원문 9번의 점·선·각·치수를 답 노출 없이 재구성한 문제 그림.",
+    "imageSize": "full"
   },
   {
     "id": 10,
