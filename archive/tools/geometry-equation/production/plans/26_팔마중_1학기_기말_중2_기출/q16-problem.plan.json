@@ -1,0 +1,142 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": { "coordinates": [ { "kind": "integer", "value": "0" }, { "kind": "integer", "value": "8" } ] },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": { "coordinates": [ { "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" } ] },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": { "coordinates": [ { "kind": "integer", "value": "15" }, { "kind": "integer", "value": "0" } ] },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": { "coordinates": [ { "kind": "integer", "value": "15" }, { "kind": "integer", "value": "8" } ] },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": { "coordinates": [ { "kind": "integer", "value": "4" }, { "kind": "integer", "value": "0" } ] },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "TRANSLATE_POINT",
+        "inputs": [ "P" ],
+        "args": { "dx": { "kind": "integer", "value": "1" }, "dy": { "kind": "integer", "value": "-1" } },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "N",
+        "op": "TRANSLATE_POINT",
+        "inputs": [ "P" ],
+        "args": { "dx": { "kind": "integer", "value": "4" }, "dy": { "kind": "integer", "value": "-1" } },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [ "A", "B", "C", "D", "P", "M", "N" ],
+  "hiddenPointNames": [ "M", "N" ],
+  "hiddenPointStyle": "NONE",
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    { "id": "sAB", "refs": [ "A", "B" ] },
+    { "id": "sBP", "refs": [ "B", "P" ] },
+    { "id": "sPC", "refs": [ "P", "C" ] },
+    { "id": "sCD", "refs": [ "C", "D" ] },
+    { "id": "sDA", "refs": [ "D", "A" ] },
+    { "id": "sDP", "refs": [ "D", "P" ] },
+    { "id": "movementArrow", "refs": [ "M", "N" ], "arrow": "END" }
+  ],
+  "planeMarks": {
+    "regions": [
+      {
+        "id": "shadedABPD",
+        "fill": "LIGHT",
+        "shapes": [ { "polygon": [ "A", "B", "P", "D" ] } ]
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "lengthAD",
+        "from": "A",
+        "to": "D",
+        "label": "15",
+        "unit": "cm",
+        "side": "ABOVE",
+        "style": "BAR",
+        "offset": 1,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lengthDC",
+        "from": "D",
+        "to": "C",
+        "label": "8",
+        "unit": "cm",
+        "side": "RIGHT",
+        "style": "BAR",
+        "offset": 1,
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": { "width": 720, "height": 440 },
+  "caption": "가로 15cm, 세로 8cm인 직사각형 ABCD에서 P는 B에서 C로 움직인다. 원본처럼 사각형 ABPD만 옅게 칠하고 이동 방향을 화살표로 나타낸다.",
+  "accessibilityDescription": "직사각형 ABCD의 위쪽 AD는 15cm, 오른쪽 DC는 8cm이다. 밑변 BC 위에는 움직이는 점 P가 있으며 P와 D를 잇는 선분이 그려져 있다. 왼쪽 사각형 ABPD만 옅은 회색이고 P 아래 화살표는 C 방향을 가리킨다.",
+  "sourceQuote": "다음 직사각형 $ABCD$에서 점 $P$는 점 $B$를 출발하여 점 $C$까지 $BC$를 따라 초속 3 cm로 움직이고 있다.",
+  "sourceConditions": [
+    {
+      "id": "rectangle",
+      "condition": "현행 JS 및 원본 q16.png의 ABCD는 가로 AD=15cm, 세로 DC=8cm인 직사각형이다.",
+      "mappedTo": [ "A", "B", "C", "D", "sAB", "sBP", "sPC", "sCD", "sDA", "lengthAD", "lengthDC" ]
+    },
+    {
+      "id": "movingP",
+      "condition": "P는 밑변 BC 위에서 B에서 C 방향으로 움직인다. 화면의 P=(4,0)은 시간이나 정답을 뜻하지 않는 임의의 내부 배치점이다.",
+      "mappedTo": [ "P", "sBP", "sPC", "M", "N", "movementArrow" ]
+    },
+    {
+      "id": "targetArea",
+      "condition": "원본 q16.png는 DP를 경계로 왼쪽 사각형 ABPD만 음영 처리하고 오른쪽 삼각형 DPC는 흰색이다. 묻는 넓이는 사각형 ABPD이다.",
+      "mappedTo": [ "sDP", "shadedABPD" ]
+    }
+  ],
+  "newVisualInformation": [
+    "기존 연결 q16-problem-visual-v2.svg에서 빠진 원본의 ABPD 선택 음영을 planeMarks.regions의 실제 다각형으로 복원한다.",
+    "AD의 15cm와 DC의 8cm는 dimensions 필드로, P의 B→C 이동은 별도 화살표 선분으로 표시한다.",
+    "P의 위치는 임의의 개형 배치이며 구하는 시간·BP의 길이·96cm² 결과를 문제 그림에 노출하지 않는다. DPC와 바탕은 칠하지 않는다."
+  ]
+}
