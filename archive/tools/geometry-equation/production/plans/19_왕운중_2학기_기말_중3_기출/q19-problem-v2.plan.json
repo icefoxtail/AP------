@@ -128,7 +128,12 @@
         },
         "outputType": "CIRCLE",
         "factRole": "GIVEN"
-      }
+      },
+      {"id":"srcAxiscirc1","op":"TRANSLATE_POINT","inputs":["p5"],"args":{"dx":{"kind":"integer","value":"1"},"dy":{"kind":"integer","value":"0"}},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"srcArccirc1D9","op":"POLAR_POINT","inputs":["p5","srcAxiscirc1"],"args":{"length":{"kind":"rational","numerator":"1720","denominator":"1000"},"angleDeg":{"kind":"integer","value":"9"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"srcArccirc1D160","op":"POLAR_POINT","inputs":["p5","srcAxiscirc1"],"args":{"length":{"kind":"rational","numerator":"1720","denominator":"1000"},"angleDeg":{"kind":"integer","value":"160"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"srcArccirc1D211","op":"POLAR_POINT","inputs":["p5","srcAxiscirc1"],"args":{"length":{"kind":"rational","numerator":"1720","denominator":"1000"},"angleDeg":{"kind":"integer","value":"211"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"srcArccirc1D330","op":"POLAR_POINT","inputs":["p5","srcAxiscirc1"],"args":{"length":{"kind":"rational","numerator":"1720","denominator":"1000"},"angleDeg":{"kind":"integer","value":"330"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
     ]
   },
   "displayPoints": [
@@ -136,7 +141,11 @@
     "p2",
     "p3",
     "p4",
-    "p5"
+    "p5",
+    "srcArccirc1D9",
+    "srcArccirc1D160",
+    "srcArccirc1D211",
+    "srcArccirc1D330"
   ],
   "displayLines": [],
   "displayCircles": [
@@ -159,6 +168,7 @@
     }
   ],
   "planeMarks": {
+    "arcs": [{"id":"sourceLargeArc1","circle":"circ1","center":"p5","from":"srcArccirc1D160","to":"srcArccirc1D211","side":"MINOR","color":"GREEN","factRole":"GIVEN"},{"id":"sourceLargeArc2","circle":"circ1","center":"p5","from":"srcArccirc1D330","to":"srcArccirc1D9","side":"MINOR","color":"WARM","factRole":"GIVEN"}],
     "segmentColors": [{"segments":["s1"],"color":"BLUE"},{"segments":["s2"],"color":"WARM"}],
     "textLabels": [
       {
@@ -218,14 +228,22 @@
     "p2",
     "p3",
     "p4",
-    "p5"
+    "p5",
+    "srcArccirc1D9",
+    "srcArccirc1D160",
+    "srcArccirc1D211",
+    "srcArccirc1D330"
   ],
   "unmarkedPointNames": [
     "p1",
     "p2",
     "p3",
     "p4",
-    "p5"
+    "p5",
+    "srcArccirc1D9",
+    "srcArccirc1D160",
+    "srcArccirc1D211",
+    "srcArccirc1D330"
   ],
   "caption": "교차하는 두 현과 서로 마주 보는 호 — 원 안의 P를 지나 두 현 AB와 CD가 교차한다. P의 왼쪽 각이 문제에서 묻는 각이다.",
   "sourceConditions": [
@@ -240,6 +258,8 @@
     }
   ],
   "newVisualInformation": [
+    "ENGINE_CAPABILITY_PENDING: 교차 현의 P점에 붙은 수치 없는 31px 내각호를 angle.label 없이 독립적으로 그리는 unlabeled-angle-arc mark",
+    "SOURCE_LARGE_ARC_PARITY_RESTORED: 원본 SVG의 강조 원호 2개를 정확한 원의 POLAR_POINT/planeMarks.arcs 드로잉 필드로 매핑",
     "SOURCE_VS_PLAN_REVIEWED: 선분·원·문자·점선·선색·각 표시를 도형 필드와 대조함. 잔여 SVG 고유 텍스처·정밀 곡선/도형 배치와 렌더 실물은 별도 보강·검수 대상.",
     "곡선/호 경로: 전용 곡선 primitive 확장 검토 필요"
   ],

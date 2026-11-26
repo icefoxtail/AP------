@@ -133,7 +133,10 @@
         },
         "outputType": "POINT",
         "factRole": "GIVEN"
-      }
+      },
+      {"id":"srcDiagLineA","op":"LINE_THROUGH","inputs":["p1","p3"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"srcDiagLineB","op":"LINE_THROUGH","inputs":["p2","p4"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"srcCross","op":"LINE_INTERSECTION","inputs":["srcDiagLineA","srcDiagLineB"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
     ]
   },
   "displayPoints": [
@@ -142,7 +145,8 @@
     "p3",
     "p4",
     "p5",
-    "p6"
+    "p6",
+    "srcCross"
   ],
   "displayLines": [],
   "displayCircles": [],
@@ -198,18 +202,9 @@
     }
   ],
   "planeMarks": {
+    "angles": [{"id":"sourceIntersectionAngle","style":"ARC","refs":["p3","srcCross","p4"],"value":45,"label":"45","factRole":"GIVEN"}],
     "segmentColors": [{"segments":["s5"],"color":"BLUE"},{"segments":["s6","s7"],"color":"WARM"}],
     "textLabels": [
-      {
-        "id": "text1",
-        "at": [
-          4.794,
-          2.088
-        ],
-        "text": "45°",
-        "labelKind": "TEXT",
-        "factRole": "GIVEN"
-      },
       {
         "id": "text2",
         "at": [
@@ -268,7 +263,8 @@
     "p3",
     "p4",
     "p5",
-    "p6"
+    "p6",
+    "srcCross"
   ],
   "unmarkedPointNames": [
     "p1",
@@ -276,7 +272,8 @@
     "p3",
     "p4",
     "p5",
-    "p6"
+    "p6",
+    "srcCross"
   ],
   "caption": "사각형 넓이와 두 대각선의 각 — 주황 대각선 BD 길이는 12 cm이다. 파랑 AC와 주황 BD가 만나는 곳의 오른쪽 각이 45도이다.",
   "sourceConditions": [
@@ -291,6 +288,7 @@
     }
   ],
   "newVisualInformation": [
+    "SOURCE_INTERSECTION_ANGLE_PARITY_RESTORED: 원본 교차각 45°를 두 대각선의 실교점과 planeMarks.angles에 표시",
     "SOURCE_VS_PLAN_REVIEWED: 선분·원·문자·점선·선색·각 표시를 도형 필드와 대조함. 잔여 SVG 고유 텍스처·정밀 곡선/도형 배치와 렌더 실물은 별도 보강·검수 대상.",
     "곡선/호 경로: 전용 곡선 primitive 확장 검토 필요"
   ],

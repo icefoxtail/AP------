@@ -149,7 +149,12 @@
         },
         "outputType": "CIRCLE",
         "factRole": "GIVEN"
-      }
+      },
+      {"id":"srcAxiscirc1","op":"TRANSLATE_POINT","inputs":["p6"],"args":{"dx":{"kind":"integer","value":"1"},"dy":{"kind":"integer","value":"0"}},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"srcArccirc1D104","op":"POLAR_POINT","inputs":["p6","srcAxiscirc1"],"args":{"length":{"kind":"rational","numerator":"1171","denominator":"1000"},"angleDeg":{"kind":"integer","value":"104"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"srcArccirc1D159","op":"POLAR_POINT","inputs":["p6","srcAxiscirc1"],"args":{"length":{"kind":"rational","numerator":"1171","denominator":"1000"},"angleDeg":{"kind":"integer","value":"159"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"srcArccirc1D214","op":"POLAR_POINT","inputs":["p6","srcAxiscirc1"],"args":{"length":{"kind":"rational","numerator":"1171","denominator":"1000"},"angleDeg":{"kind":"integer","value":"214"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"srcArccirc1D329","op":"POLAR_POINT","inputs":["p6","srcAxiscirc1"],"args":{"length":{"kind":"rational","numerator":"1171","denominator":"1000"},"angleDeg":{"kind":"integer","value":"329"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
     ]
   },
   "displayPoints": [
@@ -158,7 +163,11 @@
     "p3",
     "p4",
     "p5",
-    "p6"
+    "p6",
+    "srcArccirc1D104",
+    "srcArccirc1D159",
+    "srcArccirc1D214",
+    "srcArccirc1D329"
   ],
   "displayLines": [],
   "displayCircles": [
@@ -195,6 +204,7 @@
     }
   ],
   "planeMarks": {
+    "arcs": [{"id":"sourceLargeArc1","circle":"circ1","center":"p6","from":"srcArccirc1D104","to":"srcArccirc1D159","side":"MINOR","color":"VIOLET","factRole":"GIVEN"},{"id":"sourceLargeArc2","circle":"circ1","center":"p6","from":"srcArccirc1D159","to":"srcArccirc1D214","side":"MINOR","color":"GREEN","factRole":"GIVEN"},{"id":"sourceLargeArc3","circle":"circ1","center":"p6","from":"srcArccirc1D214","to":"srcArccirc1D329","side":"MINOR","color":"WARM","factRole":"GIVEN"},{"id":"sourceLargeArc4","circle":"circ1","center":"p6","from":"srcArccirc1D329","to":"srcArccirc1D104","side":"MINOR","color":"BLUE","factRole":"GIVEN"}],
     "segmentColors": [{"segments":["s1","s2"],"color":"BLUE"},{"segments":["s3","s4"],"color":"GREEN"}],
     "angles": [{"id":"sourceAngle1","style":"ARC","refs":["p2","p1","p3"],"factRole":"GIVEN","value":30,"label":"30"},{"id":"sourceAngle2","style":"ARC","refs":["p2","p4","p5"],"factRole":"GIVEN","value":40,"label":"40"},{"id":"sourceUnknownAngle3","style":"ARC","refs":["p4","p2","p1"],"factRole":"GIVEN","value":55,"label":"x"}],
     "textLabels": [
@@ -326,7 +336,11 @@
     "p3",
     "p4",
     "p5",
-    "p6"
+    "p6",
+    "srcArccirc1D104",
+    "srcArccirc1D159",
+    "srcArccirc1D214",
+    "srcArccirc1D329"
   ],
   "unmarkedPointNames": [
     "p1",
@@ -334,7 +348,11 @@
     "p3",
     "p4",
     "p5",
-    "p6"
+    "p6",
+    "srcArccirc1D104",
+    "srcArccirc1D159",
+    "srcArccirc1D214",
+    "srcArccirc1D329"
   ],
   "caption": "두 원 밖 각과 네 호의 관계 — 원 위 네 점 사이의 네 호를 서로 다른 색으로 나누었다. 원 밖 점 P의 두 할선은 가까운 호 AB와 먼 호 CD의 양 끝에 닿으며, Q에서는 BC와 DA를 비교한다.",
   "sourceConditions": [
@@ -349,6 +367,7 @@
     }
   ],
   "newVisualInformation": [
+    "SOURCE_LARGE_ARC_PARITY_RESTORED: 원본 SVG의 강조 원호 4개를 정확한 원의 POLAR_POINT/planeMarks.arcs 드로잉 필드로 매핑",
     "SOURCE_VS_PLAN_REVIEWED: 선분·원·문자·점선·선색·각 표시를 도형 필드와 대조함. 잔여 SVG 고유 텍스처·정밀 곡선/도형 배치와 렌더 실물은 별도 보강·검수 대상.",
     "곡선/호 경로: 전용 곡선 primitive 확장 검토 필요"
   ],

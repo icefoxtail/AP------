@@ -128,7 +128,11 @@
         },
         "outputType": "CIRCLE",
         "factRole": "GIVEN"
-      }
+      },
+      {"id":"srcAxiscirc1","op":"TRANSLATE_POINT","inputs":["p5"],"args":{"dx":{"kind":"integer","value":"1"},"dy":{"kind":"integer","value":"0"}},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"srcArccirc1D0","op":"POLAR_POINT","inputs":["p5","srcAxiscirc1"],"args":{"length":{"kind":"rational","numerator":"1900","denominator":"1000"},"angleDeg":{"kind":"rational","numerator":"1","denominator":"1000"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"srcArccirc1D180","op":"POLAR_POINT","inputs":["p5","srcAxiscirc1"],"args":{"length":{"kind":"rational","numerator":"1900","denominator":"1000"},"angleDeg":{"kind":"integer","value":"180"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"srcArccirc1D260","op":"POLAR_POINT","inputs":["p5","srcAxiscirc1"],"args":{"length":{"kind":"rational","numerator":"1900","denominator":"1000"},"angleDeg":{"kind":"integer","value":"260"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
     ]
   },
   "displayPoints": [
@@ -136,7 +140,10 @@
     "p2",
     "p3",
     "p4",
-    "p5"
+    "p5",
+    "srcArccirc1D0",
+    "srcArccirc1D180",
+    "srcArccirc1D260"
   ],
   "displayLines": [],
   "displayCircles": [
@@ -180,8 +187,9 @@
     }
   ],
   "planeMarks": {
+    "arcs": [{"id":"sourceLargeArc1","circle":"circ1","center":"p5","from":"srcArccirc1D180","to":"srcArccirc1D260","side":"MINOR","color":"GREEN","factRole":"GIVEN"},{"id":"sourceLargeArc2","circle":"circ1","center":"p5","from":"srcArccirc1D260","to":"srcArccirc1D0","side":"MINOR","color":"WARM","factRole":"GIVEN"}],
     "segmentColors": [{"segments":["s3","s4"],"color":"BLUE"},{"segments":["s5"],"color":"WARM"}],
-    "angles": [{"id":"sourceAngle1","style":"ARC","refs":["p4","p3","p2"],"factRole":"GIVEN","value":50,"label":"50"}],
+    "angles": [{"id":"sourceAngle1","style":"ARC","refs":["p4","p3","p2"],"factRole":"GIVEN","value":50,"label":"50"},{"id":"derivedCentral100","style":"ARC","refs":["p2","p5","p4"],"value":100,"label":"100","factRole":"DERIVED_INTERMEDIATE"}],
     "textLabels": [
       {
         "id": "text1",
@@ -210,16 +218,6 @@
           0.505
         ],
         "text": "10π cm",
-        "labelKind": "TEXT",
-        "factRole": "GIVEN"
-      },
-      {
-        "id": "text4",
-        "at": [
-          3.811,
-          2.014
-        ],
-        "text": "100°",
         "labelKind": "TEXT",
         "factRole": "GIVEN"
       },
@@ -280,14 +278,20 @@
     "p2",
     "p3",
     "p4",
-    "p5"
+    "p5",
+    "srcArccirc1D0",
+    "srcArccirc1D180",
+    "srcArccirc1D260"
   ],
   "unmarkedPointNames": [
     "p1",
     "p2",
     "p3",
     "p4",
-    "p5"
+    "p5",
+    "srcArccirc1D0",
+    "srcArccirc1D180",
+    "srcArccirc1D260"
   ],
   "caption": "원주각과 반원 속 두 호의 길이 — 반원의 두 호를 초록 AC와 주황 BC로 나누었다. 50도 원주각과 같은 호를 보는 중심각이 두 배이다.",
   "sourceConditions": [
@@ -302,6 +306,7 @@
     }
   ],
   "newVisualInformation": [
+    "SOURCE_LARGE_ARC_PARITY_RESTORED: 원본 SVG의 강조 원호 2개를 정확한 원의 POLAR_POINT/planeMarks.arcs 드로잉 필드로 매핑",
     "SOURCE_VS_PLAN_REVIEWED: 선분·원·문자·점선·선색·각 표시를 도형 필드와 대조함. 잔여 SVG 고유 텍스처·정밀 곡선/도형 배치와 렌더 실물은 별도 보강·검수 대상.",
     "곡선/호 경로: 전용 곡선 primitive 확장 검토 필요"
   ],

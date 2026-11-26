@@ -149,7 +149,13 @@
         },
         "outputType": "CIRCLE",
         "factRole": "GIVEN"
-      }
+      },
+      {"id":"srcAxiscirc1","op":"TRANSLATE_POINT","inputs":["p1"],"args":{"dx":{"kind":"integer","value":"1"},"dy":{"kind":"integer","value":"0"}},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"srcArccirc1D25","op":"POLAR_POINT","inputs":["p1","srcAxiscirc1"],"args":{"length":{"kind":"rational","numerator":"1760","denominator":"1000"},"angleDeg":{"kind":"integer","value":"25"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"srcArccirc1D140","op":"POLAR_POINT","inputs":["p1","srcAxiscirc1"],"args":{"length":{"kind":"rational","numerator":"1760","denominator":"1000"},"angleDeg":{"kind":"integer","value":"140"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"srcArccirc1D180","op":"POLAR_POINT","inputs":["p1","srcAxiscirc1"],"args":{"length":{"kind":"rational","numerator":"1760","denominator":"1000"},"angleDeg":{"kind":"integer","value":"180"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"srcArccirc1D220","op":"POLAR_POINT","inputs":["p1","srcAxiscirc1"],"args":{"length":{"kind":"rational","numerator":"1760","denominator":"1000"},"angleDeg":{"kind":"integer","value":"220"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"srcArccirc1D345","op":"POLAR_POINT","inputs":["p1","srcAxiscirc1"],"args":{"length":{"kind":"rational","numerator":"1760","denominator":"1000"},"angleDeg":{"kind":"integer","value":"345"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
     ]
   },
   "displayPoints": [
@@ -158,7 +164,12 @@
     "p3",
     "p4",
     "p5",
-    "p6"
+    "p6",
+    "srcArccirc1D25",
+    "srcArccirc1D140",
+    "srcArccirc1D180",
+    "srcArccirc1D220",
+    "srcArccirc1D345"
   ],
   "displayLines": [],
   "displayCircles": [
@@ -209,6 +220,7 @@
     }
   ],
   "planeMarks": {
+    "arcs": [{"id":"sourceLargeArc1","circle":"circ1","center":"p1","from":"srcArccirc1D140","to":"srcArccirc1D180","side":"MINOR","color":"GREEN","factRole":"GIVEN"},{"id":"sourceLargeArc2","circle":"circ1","center":"p1","from":"srcArccirc1D180","to":"srcArccirc1D220","side":"MINOR","color":"GREEN","factRole":"GIVEN"},{"id":"sourceLargeArc3","circle":"circ1","center":"p1","from":"srcArccirc1D345","to":"srcArccirc1D25","side":"MINOR","color":"GREEN","factRole":"GIVEN"}],
     "segmentColors": [{"segments":["s6"],"color":"VIOLET"}],
     "textLabels": [
       {
@@ -279,7 +291,12 @@
     "p3",
     "p4",
     "p5",
-    "p6"
+    "p6",
+    "srcArccirc1D25",
+    "srcArccirc1D140",
+    "srcArccirc1D180",
+    "srcArccirc1D220",
+    "srcArccirc1D345"
   ],
   "unmarkedPointNames": [
     "p1",
@@ -287,7 +304,12 @@
     "p3",
     "p4",
     "p5",
-    "p6"
+    "p6",
+    "srcArccirc1D25",
+    "srcArccirc1D140",
+    "srcArccirc1D180",
+    "srcArccirc1D220",
+    "srcArccirc1D345"
   ],
   "caption": "같은 중심각이 만드는 같은 호와 현 — 원 O의 왼쪽에서 A, B, C는 연속으로 놓이고 오른쪽의 D와 E 사이에도 같은 중심각을 표시했다.",
   "sourceConditions": [
@@ -302,6 +324,8 @@
     }
   ],
   "newVisualInformation": [
+    "ENGINE_CAPABILITY_PENDING: 원 중심 O 주변의 같은 작은 각호 3개를 숫자 라벨 없이 동심 원호 마크로 반복 표시하는 unlabeled equal-angle tick primitive",
+    "SOURCE_LARGE_ARC_PARITY_RESTORED: 원본 SVG의 강조 원호 3개를 정확한 원의 POLAR_POINT/planeMarks.arcs 드로잉 필드로 매핑",
     "SOURCE_VS_PLAN_REVIEWED: 선분·원·문자·점선·선색·각 표시를 도형 필드와 대조함. 잔여 SVG 고유 텍스처·정밀 곡선/도형 배치와 렌더 실물은 별도 보강·검수 대상.",
     "곡선/호 경로: 전용 곡선 primitive 확장 검토 필요"
   ],
