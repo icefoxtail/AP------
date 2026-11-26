@@ -1,4 +1,11 @@
 {
   "status": "UNSUPPORTED",
-  "reason": "합성함수의 안쪽 치역을 이동한 코사인 구간에서 최대·최소 위치를 확인. 현재 구조의 학생용 수학 관계를 그대로 나타내는 제작용 capability plan 미완성; 원문·해설 값 확정. 정밀 제작 후 엔진 렌더 대상."
+  "reason": "합성함수의 치역과 삼각함수 극값이 실제 닫힌 짧은 구간에서 결정됨. 공식 엔진은 1/4 주기 미만을 거부하므로 임의 확장 렌더는 하지 않는다.",
+  "requiredEngineExtension": "trigonometric-spike-v1 short sub-quarter-period interval: support exact π-rational domain length π/3 (one sixth of the cosine period) while retaining BOTH closed endpoints; current TRIG_INTERVAL_PERIOD_COUNT_UNSUPPORTED",
+  "studentRequirements": [
+    "안쪽 함수 t=g(x)=π sin(πx)/6 의 치역은 닫힌 구간 [-π/6,π/6]이며 양 끝값 모두 달성된다.",
+    "그림은 수평축 t에 대해 y=4cos(t+π/6)+1을 오직 t∈[-π/6,π/6]에서 표시한다.",
+    "t=-π/6에서 y=5 (최댓값), t=π/6에서 y=3 (최솟값)이고 내부 단조 감소한다.",
+    "그림의 구간을 임의로 π/2 이상으로 늘려 거짓 극값을 보여 주거나 발문의 정의역을 바꾸지 않는다."
+  ]
 }

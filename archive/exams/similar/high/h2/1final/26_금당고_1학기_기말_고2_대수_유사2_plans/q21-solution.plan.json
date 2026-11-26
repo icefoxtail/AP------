@@ -1,4 +1,12 @@
 {
   "status": "UNSUPPORTED",
-  "reason": "절댓값 그래프에서 밑점의 단일 교점과 상위 배수의 양쪽 두 교점을 구분. 현재 구조의 학생용 수학 관계를 그대로 나타내는 제작용 capability plan 미완성; 원문·해설 값 확정. 정밀 제작 후 엔진 렌더 대상."
+  "reason": "절댓값 그래프에서 밑점의 단일 교점과 상위 배수의 양쪽 두 교점을 구분. 현재 구조의 학생용 수학 관계를 그대로 나타내는 제작용 capability plan 미완성; 원문·해설 값 확정. 정밀 제작 후 엔진 렌더 대상.",
+  "requiredEngineExtension": "parameter-family-absolute-composition-intersections-v1: symbolic parameter-level V graph horizontal multiple levels and symmetry constraint, not one frozen (a,b) example",
+  "studentRequirements": [
+    "a,b는 자연수이며 함수 f(x)=(2/a)|x−3|+b, g(x)=sin(πx/b)+3을 그대로 사용한다.",
+    "f(g(x))가 x=3에 대해 대칭임은 sin(6π/b)=0 ↔ b∈{1,2,3,6}과 동치라는 주기·대칭 조건을 보여 준다.",
+    "0≤x≤6에서 g(f(x))=3의 해는 f(x)=mb (m 자연수)의 교점으로, 밑점 mb=b에 한 개, 그보다 큰 수평선에 양쪽 두 개다.",
+    "정확히 3개이려면 3<ab≤6이고, 7개 순서쌍 전부를 수학 조건에서 빠짐없이 열거해야 한다.",
+    "문제용 좌표·답 수치의 선공개를 피한다."
+  ]
 }
