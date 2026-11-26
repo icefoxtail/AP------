@@ -1,0 +1,30 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes": [
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"2"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"3","denominator":"2"},{"kind":"expression","op":"div","args":[{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"3"}]},{"kind":"integer","value":"2"}]}]},"outputType":"POINT","factRole":"GIVEN"}
+    ]
+  },
+  "displayPoints": ["A","B","C"],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {"id":"sAB","refs":["A","B"]},
+    {"id":"sBC","refs":["B","C"]},
+    {"id":"sCA","refs":["C","A"]}
+  ],
+  "rightAngles": [{"id":"rC","refs":["A","C","B"]}],
+  "planeMarks": {
+    "expressionLabels": [
+      {"id":"lAC","ownerSegment":"sCA","text":"sqrt(3)","factRole":"GIVEN"},
+      {"id":"lBC","ownerSegment":"sBC","text":"1","factRole":"GIVEN"}
+    ]
+  },
+  "caption": "원본의 C가 직각인 삼각형이다. AC=√3과 BC=1을 실제 변 라벨로 표시한다. 문제에서 계산할 빗변 AB=2는 노출하지 않는다.",
+  "sourceConditions": [{"id":"c1","condition":"∠ACB=90°, AC=√3, BC=1.","mappedTo":["mathPlan.nodes","displaySegments","rightAngles","planeMarks.expressionLabels"]}],
+  "newVisualInformation": ["기존 문제 SVG의 잘못된 AC=3 라벨을 원본·발문과 일치하는 √3으로 재설계한다. 면 채움은 쓰지 않는다."]
+}

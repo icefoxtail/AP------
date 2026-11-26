@@ -122,41 +122,8 @@
         "outputType": "POINT",
         "factRole": "GIVEN"
       },
-      {
-        "id": "H",
-        "op": "SOURCE_POINT",
-        "inputs": [],
-        "args": {
-          "coordinates": [
-            {
-              "kind": "expression",
-              "op": "mul",
-              "args": [
-                {
-                  "kind": "integer",
-                  "value": "2"
-                },
-                {
-                  "kind": "expression",
-                  "op": "sqrt",
-                  "args": [
-                    {
-                      "kind": "integer",
-                      "value": "3"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "kind": "integer",
-              "value": "0"
-            }
-          ]
-        },
-        "outputType": "POINT",
-        "factRole": "GIVEN"
-      }
+      {"id":"lineBC","op":"LINE_THROUGH","inputs":["B","C"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"H","op":"PERPENDICULAR_FOOT","inputs":["A","lineBC"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
     ]
   },
   "displayPoints": [
@@ -202,7 +169,8 @@
       "refs": [
         "A",
         "H"
-      ]
+      ],
+      "dashed": true
     },
     {
       "id": "CH",
@@ -213,6 +181,7 @@
       "dashed": true
     }
   ],
+  "rightAngles": [{"id":"rAHB","refs":["A","H","B"]}],
   "planeMarks": {
     "angles": [
       {
@@ -225,17 +194,6 @@
         "value": 150,
         "factRole": "GIVEN",
         "labelPlacement": "LEADER"
-      },
-      {
-        "id": "AHB90",
-        "refs": [
-          "A",
-          "H",
-          "B"
-        ],
-        "value": 90,
-        "factRole": "DERIVED_INTERMEDIATE",
-        "noLabel": true
       },
       {
         "id": "ABC30",
@@ -261,14 +219,6 @@
         "ownerSegment": "BC",
         "text": "sqrt(3)",
         "unit": "cm"
-      }
-    ],
-    "segmentColors": [
-      {
-        "segments": [
-          "AH"
-        ],
-        "color": "WARM"
       }
     ]
   },
