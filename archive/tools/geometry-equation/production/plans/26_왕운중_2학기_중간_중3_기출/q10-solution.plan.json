@@ -1,0 +1,46 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{
+    "schemaVersion":"construction-spike-v1",
+    "realization":{"recipeId":"SOURCE_COORDINATE_AXES_v1","unit":"source-coordinate","reflectionEquivalent":false},
+    "nodes":[
+      {"id":"O","op":"NORMALIZATION_ORIGIN","inputs":[],"args":{},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"X","op":"NORMALIZATION_AXIS","inputs":[],"args":{"length":{"kind":"integer","value":"1"}},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"-26","denominator":"5"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"rational","numerator":"13","denominator":"6"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"lineAB","op":"LINE_THROUGH","inputs":["A","B"],"args":{},"outputType":"LINE","factRole":"GIVEN"},
+      {"id":"H","op":"PERPENDICULAR_FOOT","inputs":["O","lineAB"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "displayPoints":["O","A","B","H"],
+  "displayLines":["lineAB"],
+  "displayCircles":[],
+  "displaySegments":[
+    {"id":"sOA","refs":["O","A"]},
+    {"id":"sOB","refs":["O","B"]},
+    {"id":"sOH","refs":["O","H"],"emphasis":"BOLD"}
+  ],
+  "rightAngles":[{"id":"footRight","refs":["A","H","O"]}],
+  "planeMarks":{
+    "angles":[{"id":"alpha","refs":["B","A","O"],"value":22.61986494804043,"label":"α","labelKind":"MATH","style":"ARC","factRole":"GIVEN"}],
+    "expressionLabels":[
+      {"id":"OHtwo","ownerSegment":"sOH","text":"2","factRole":"GIVEN"},
+      {"id":"OAvalue","ownerSegment":"sOA","text":"26/5","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"OBvalue","ownerSegment":"sOB","text":"13/6","factRole":"DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "coordinateCanvas":{"width":640,"height":480},
+  "caption":"직선 AB와 원점 O의 수선 OH가 이루는 두 직각삼각형에서 OH는 2이고 기울기는 5/12이다.",
+  "accessibilityDescription":"좌표평면에서 A는 음의 x축, B는 양의 y축 위에 있고 A와 B를 지나는 기울기 5/12의 직선이 그려져 있다. O에서 직선에 내린 수선 OH의 길이는 2이며 H에는 직각 표식이 있다. OA는 26/5, OB는 13/6이다.",
+  "sourceQuote":"$\\overline{OH}=2$이다.",
+  "sourceConditions":[
+    {"id":"coordinates","condition":"A와 B는 각각 x축·y축의 교점이다. 해설에서 OA=26/5, OB=13/6으로 계산된다.","mappedTo":["O","A","B","sOA","sOB","OAvalue","OBvalue"]},
+    {"id":"slope","condition":"tan α=5/12이고 A는 음의 x축에 있어 AB의 기울기는 양의 5/12이다. 표본 좌표가 이를 만족한다.","mappedTo":["lineAB","alpha"]},
+    {"id":"perpendicular","condition":"OH⊥AB이고 OH=2이다. H는 원점에서 AB로 내린 수선의 발로 엔진이 직접 계산한다.","mappedTo":["H","sOH","footRight","OHtwo"]}
+  ],
+  "newVisualInformation":[
+    "넓이를 묻는 문제가 아닌데 기존 q10-solution-v2.svg에 남은 삼각형 내부의 주황색 면 채움을 완전히 제외한다.",
+    "x·y축, 직선 AB, O에서의 수선 OH와 직각 표식 및 길이 2는 공식 좌표 작도 필드로 그린다.",
+    "OA와 OB의 해설 계산값을 선분 라벨로 추가하되 원문 문제 그림에 정답 m+n을 노출하지 않는다."
+  ]
+}
