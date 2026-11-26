@@ -1,0 +1,47 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "6" }, { "kind": "rational", "numerator": "15", "denominator": "4" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "12" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "M", "op": "DIVISION_POINT", "inputs": ["B", "C"], "args": { "m": { "kind": "integer", "value": "1" }, "n": { "kind": "integer", "value": "1" }, "mode": "INTERNAL" }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "lAB", "op": "LINE_THROUGH", "inputs": ["A", "B"], "args": {}, "outputType": "LINE", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "lAC", "op": "LINE_THROUGH", "inputs": ["A", "C"], "args": {}, "outputType": "LINE", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "D", "op": "PERPENDICULAR_FOOT", "inputs": ["M", "lAB"], "args": {}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "E", "op": "PERPENDICULAR_FOOT", "inputs": ["M", "lAC"], "args": {}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" }
+    ]
+  },
+  "displayPoints": ["A", "B", "C", "M", "D", "E"],
+  "displaySegments": [
+    { "id": "sAB", "refs": ["A", "B"] }, { "id": "sAC", "refs": ["A", "C"] },
+    { "id": "sBM", "refs": ["B", "M"] }, { "id": "sMC", "refs": ["M", "C"] },
+    { "id": "sMD", "refs": ["M", "D"] }, { "id": "sME", "refs": ["M", "E"] }
+  ],
+  "rightAngles": [
+    { "id": "rightD", "refs": ["A", "D", "M"], "factRole": "GIVEN" },
+    { "id": "rightE", "refs": ["A", "E", "M"], "factRole": "GIVEN" }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      { "id": "midpoint", "count": 1, "segments": ["sBM", "sMC"] },
+      { "id": "perpendiculars", "count": 2, "segments": ["sMD", "sME"] }
+    ],
+    "angles": [
+      { "id": "givenB", "refs": ["A", "B", "M"], "value": 32, "label": "32", "style": "ARC", "arcs": 1, "factRole": "GIVEN" },
+      { "id": "targetA", "refs": ["B", "A", "C"], "value": 116, "noLabel": true, "style": "ARC", "arcs": 1, "factRole": "DERIVED_INTERMEDIATE" }
+    ]
+  },
+  "coordinateCanvas": { "width": 700, "height": 540 },
+  "caption": "M은 BC의 중점이고 MD와 ME는 각 변에 수직이며 서로 같다. B의 각은 32°이고 A의 각은 미지이다.",
+  "accessibilityDescription": "삼각형 ABC에서 BC 위의 중점 M을 거쳐 MD와 ME가 AB, AC의 D, E에 각각 수직으로 이어진다. 두 밑변 조각 BM, MC에는 한 눈금, 두 수선 MD, ME에는 두 눈금, D와 E에는 직각 사각표식, B에는 32도 호가 있다. 정답인 A의 각은 숫자로 쓰지 않고 전체 삼각형도 채우지 않는다.",
+  "sourceConditions": [
+    { "id": "midpoint", "condition": "M은 BC의 중점이므로 BM=MC이다.", "mappedTo": ["M", "sBM", "sMC", "midpoint"] },
+    { "id": "feet", "condition": "MD⊥AB, ME⊥AC이고 MD=ME이다.", "mappedTo": ["D", "E", "sMD", "sME", "rightD", "rightE", "perpendiculars"] },
+    { "id": "angle", "condition": "∠B=32°이며 ∠A는 구할 값이라 도형에 밝히지 않는다. 대표 배치의 B 각은 약 32.0°이다.", "mappedTo": ["givenB", "targetA"] }
+  ],
+  "newVisualInformation": ["기존 문제 SVG의 전체 삼각형을 채운 옅은 파란 면과 두 바닥 삼각형의 불필요한 연두색을 제거한다.", "원본의 M 중점 한 눈금, 두 수선의 같은 길이 두 눈금 및 D/E 직각을 정확한 표식으로 남긴다."],
+  "sourceQuote": "점 $M$에서 두 변 $AB$, $AC$에 내린 수선의 발을 각각 $D$, $E$라 하자."
+}

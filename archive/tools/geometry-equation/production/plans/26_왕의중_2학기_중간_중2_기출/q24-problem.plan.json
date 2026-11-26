@@ -1,0 +1,46 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "5" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "-8" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "-5" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "D", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "8" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "lBC", "op": "LINE_THROUGH", "inputs": ["B", "C"], "args": {}, "outputType": "LINE", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "lCD", "op": "LINE_THROUGH", "inputs": ["C", "D"], "args": {}, "outputType": "LINE", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "P", "op": "PERPENDICULAR_FOOT", "inputs": ["A", "lBC"], "args": {}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "Q", "op": "PERPENDICULAR_FOOT", "inputs": ["A", "lCD"], "args": {}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" }
+    ]
+  },
+  "displayPoints": ["A", "B", "C", "D", "P", "Q"],
+  "displaySegments": [
+    { "id": "sAB", "refs": ["A", "B"] }, { "id": "sAD", "refs": ["A", "D"] },
+    { "id": "sBP", "refs": ["B", "P"] }, { "id": "sPC", "refs": ["P", "C"] },
+    { "id": "sCQ", "refs": ["C", "Q"] }, { "id": "sQD", "refs": ["Q", "D"] },
+    { "id": "sAP", "refs": ["A", "P"] }, { "id": "sAQ", "refs": ["A", "Q"] },
+    { "id": "sPQ", "refs": ["P", "Q"] }
+  ],
+  "rightAngles": [
+    { "id": "rightP", "refs": ["A", "P", "B"], "factRole": "GIVEN" },
+    { "id": "rightQ", "refs": ["A", "Q", "D"], "factRole": "GIVEN" }
+  ],
+  "planeMarks": {
+    "equalLengths": [{ "id": "rhombusSides", "count": 1, "segments": ["sAB", "sAD"] }],
+    "angles": [
+      { "id": "givenB", "refs": ["A", "B", "P"], "value": 64, "label": "64", "style": "ARC", "arcs": 1, "factRole": "GIVEN" },
+      { "id": "unknownX", "refs": ["A", "P", "Q"], "value": 58, "label": "x", "style": "ARC", "arcs": 1, "factRole": "DERIVED_INTERMEDIATE" }
+    ]
+  },
+  "coordinateCanvas": { "width": 720, "height": 550 },
+  "caption": "마름모 ABCD의 B 각은 64°이며 A에서 BC와 CD에 내린 두 수선 AP, AQ가 PQ와 만나는 P의 미지각 x를 보인다.",
+  "accessibilityDescription": "A가 위, B와 D가 좌우, C가 아래인 마름모에서 A-P는 왼쪽 아래 BC에, A-Q는 오른쪽 아래 CD에 각각 수직이다. P와 Q를 실선으로 잇고 두 수선의 발에 직각 사각표식, B에는 64도 각 호, P의 구하는 각에는 x 호가 있다. 외곽이나 내부에 필요 없는 면 채움이 없다.",
+  "sourceConditions": [
+    { "id": "rhombus", "condition": "ABCD는 네 변의 길이가 같은 마름모이고 ∠B=64°이다. A=(0,5), B=(-8,0), C=(0,-5), D=(8,0)은 주어진 각을 약 64.01°로 구현하는 대표 좌표다.", "mappedTo": ["sAB", "sAD", "sBP", "sPC", "sCQ", "sQD", "rhombusSides", "givenB"] },
+    { "id": "feet", "condition": "P, Q는 A에서 각각 BC, CD에 내린 수선의 발이다.", "mappedTo": ["P", "Q", "sAP", "sAQ", "rightP", "rightQ"] },
+    { "id": "target", "condition": "∠APQ는 x로 표시하고 답 수치를 보여 주지 않는다.", "mappedTo": ["sPQ", "unknownX"] }
+  ],
+  "newVisualInformation": ["원본에 없는 옅은 파란 마름모 전체 및 가운데 초록 삼각형의 면색을 모두 제거한다.", "수선의 발 P,Q를 정확한 연산으로 놓고 두 직각, 주어진 64°와 미지 x의 각 호, 마름모의 같음 관계 눈금을 남긴다."],
+  "sourceQuote": "$A$에서 $BC$, $CD$에 내린 수선의 발을 각각 $P$, $Q$라 하자."
+}
