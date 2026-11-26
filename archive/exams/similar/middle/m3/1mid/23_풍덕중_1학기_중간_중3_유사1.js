@@ -223,7 +223,11 @@ window.questionBank = [
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_풍덕중_1학기_중간_중3_유사1/q8-solution.svg",
+    "solutionImageAlt": "수직선에서 B=1−√5, A=√5−2, C=√3, D=4−√3 순서로 점이 놓인다.",
+    "solutionImageCaption": "수직선에서 B=1−√5, A=√5−2, C=√3, D=4−√3 순서로 점이 놓인다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,

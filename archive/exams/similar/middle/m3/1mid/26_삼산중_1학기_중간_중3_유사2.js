@@ -125,7 +125,11 @@ window.questionBank = [
       "$14$",
       "$15$"
     ],
-    "answer": "⑤"
+    "answer": "⑤",
+    "solutionImage": "assets/images/26_삼산중_1학기_중간_중3_유사2/q3-solution.svg",
+    "solutionImageAlt": "제곱근 두 수 사이에 4, 5, 6이 차례로 놓이는 수직선이다.",
+    "solutionImageCaption": "제곱근 두 수 사이에 4, 5, 6이 차례로 놓이는 수직선이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -210,7 +214,11 @@ window.questionBank = [
       "$\\sqrt{17}-2$",
       "$\\sqrt{19}-2$"
     ],
-    "answer": "④"
+    "answer": "④",
+    "image": "assets/images/26_삼산중_1학기_중간_중3_유사2/q5-problem.svg",
+    "imageAlt": "좌표 -2의 O에서 오른쪽으로 서로 다른 두 빗변 길이를 옮긴 점 P, Q이다.",
+    "imageCaption": "좌표 -2의 O에서 오른쪽으로 서로 다른 두 빗변 길이를 옮긴 점 P, Q이다.",
+    "imageSize": "full"
   },
   {
     "id": 6,
@@ -422,7 +430,11 @@ window.questionBank = [
       "$30\\sqrt2$",
       "$36\\sqrt2$"
     ],
-    "answer": "①"
+    "answer": "①",
+    "image": "assets/images/26_삼산중_1학기_중간_중3_유사2/q10-problem.svg",
+    "imageAlt": "마름모의 두 대각선이 직각으로 만나며 각각의 길이는 3√15와 2√3이다.",
+    "imageCaption": "마름모의 두 대각선이 직각으로 만나며 각각의 길이는 3√15와 2√3이다.",
+    "imageSize": "full"
   },
   {
     "id": 11,

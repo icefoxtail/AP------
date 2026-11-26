@@ -220,7 +220,11 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "rpmPrimaryRecordId": "M2-RPM-012",
     "sourceQid": 5,
-    "variationType": "NUMERIC"
+    "variationType": "NUMERIC",
+    "image": "assets/images/23_연향중_1학기_중간_중2_유사/q5-problem.svg",
+    "imageAlt": "같은 넓이의 직사각형과 삼각형을 나란히 비교한다. 변의 기호는 발문 값이고 도형 크기는 대표 배치이므로 일반적인 축척을 뜻하지 않는다. 삼각형 높이 h의 값은 주어지지 않았다.",
+    "imageCaption": "같은 넓이의 직사각형과 삼각형을 나란히 비교한다. 변의 기호는 발문 값이고 도형 크기는 대표 배치이므로 일반적인 축척을 뜻하지 않는다. 삼각형 높이 h의 값은 주어지지 않았다.",
+    "imageSize": "full"
   },
   {
     "id": 6,
@@ -528,7 +532,11 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "rpmPrimaryRecordId": "M2-RPM-018",
     "sourceQid": 12,
-    "variationType": "NUMERIC"
+    "variationType": "NUMERIC",
+    "solutionImage": "assets/images/23_연향중_1학기_중간_중2_유사/q12-solution.svg",
+    "solutionImageAlt": "x는 -4/9보다 작으므로 경계 -4/9는 빈 원으로 나타낸다. 그 왼쪽 정수 중 가장 큰 것은 -1이다.",
+    "solutionImageCaption": "x는 -4/9보다 작으므로 경계 -4/9는 빈 원으로 나타낸다. 그 왼쪽 정수 중 가장 큰 것은 -1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,

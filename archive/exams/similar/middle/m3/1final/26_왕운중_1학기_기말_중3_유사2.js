@@ -636,7 +636,11 @@ window.questionBank = [
     "imageAlt": "꼭짓점이 x축 위 2에 있고 y축과 -3에서 만나는 위로 볼록한 포물선의 그래프.",
     "imageSize": "full",
     "followupKind": "CONFIRMATION",
-    "solutionPlanRef": "archive/exams/similar/middle/m3/1final/26_왕운중_1학기_기말_중3_유사2_plans/q14-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/middle/m3/1final/26_왕운중_1학기_기말_중3_유사2_plans/q14-solution.plan.json",
+    "solutionImage": "assets/images/26_왕운중_1학기_기말_중3_유사2/q14-solution.svg",
+    "solutionImageAlt": "수평으로 이동한 포물선 y=-2(x+2)²와 두 점",
+    "solutionImageCaption": "수평으로 이동한 포물선 y=-2(x+2)²와 두 점",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -683,7 +687,11 @@ window.questionBank = [
     "imageAlt": "x축과 -3, 3에서 만나고 y축과 -9에서 만나는 아래로 볼록한 포물선의 그래프.",
     "imageSize": "full",
     "followupKind": "CONFIRMATION",
-    "solutionPlanRef": "archive/exams/similar/middle/m3/1final/26_왕운중_1학기_기말_중3_유사2_plans/q15-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/middle/m3/1final/26_왕운중_1학기_기말_중3_유사2_plans/q15-solution.plan.json",
+    "solutionImage": "assets/images/26_왕운중_1학기_기말_중3_유사2/q15-solution.svg",
+    "solutionImageAlt": "비대칭 x절편과 꼭짓점 V(1,-9)",
+    "solutionImageCaption": "비대칭 x절편과 꼭짓점 V(1,-9)",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -728,7 +736,12 @@ window.questionBank = [
     "sourceQid": 16,
     "variationType": "EXAM_FOLLOWUP",
     "followupKind": "CONFIRMATION",
-    "solutionPlanRef": "archive/exams/similar/middle/m3/1final/26_왕운중_1학기_기말_중3_유사2_plans/q16-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/middle/m3/1final/26_왕운중_1학기_기말_중3_유사2_plans/q16-solution.plan.json",
+    "solutionImage": "assets/images/26_왕운중_1학기_기말_중3_유사2/q16-solution.svg",
+    "solutionImageAlt": "두 포물선과 높이 y=5의 교점 A·B·C·D",
+    "solutionImageCaption": "두 포물선과 높이 y=5의 교점 A·B·C·D",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 17,
@@ -819,7 +832,12 @@ window.questionBank = [
     "sourceQid": 18,
     "variationType": "EXAM_FOLLOWUP",
     "followupKind": "CONFIRMATION",
-    "solutionPlanRef": "archive/exams/similar/middle/m3/1final/26_왕운중_1학기_기말_중3_유사2_plans/q18-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/middle/m3/1final/26_왕운중_1학기_기말_중3_유사2_plans/q18-solution.plan.json",
+    "solutionImage": "assets/images/26_왕운중_1학기_기말_중3_유사2/q18-solution.svg",
+    "solutionImageAlt": "두 포물선 y=x², y=x²/5에서 두 세로선의 높이",
+    "solutionImageCaption": "두 포물선 y=x², y=x²/5에서 두 세로선의 높이",
+    "solutionImageSize": "full",
+    "solutionImageScale": 94
   },
   {
     "id": 19,
@@ -867,7 +885,11 @@ window.questionBank = [
     "sourceQid": 19,
     "variationType": "EXAM_FOLLOWUP",
     "followupKind": "CONFIRMATION",
-    "solutionPlanRef": "archive/exams/similar/middle/m3/1final/26_왕운중_1학기_기말_중3_유사2_plans/q19-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/middle/m3/1final/26_왕운중_1학기_기말_중3_유사2_plans/q19-solution.plan.json",
+    "solutionImage": "assets/images/26_왕운중_1학기_기말_중3_유사2/q19-solution.svg",
+    "solutionImageAlt": "허용 범위 내 a=-1일 때 사분면과 y절편",
+    "solutionImageCaption": "허용 범위 내 a=-1일 때 사분면과 y절편",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -997,7 +1019,11 @@ window.questionBank = [
     "sourceQid": 22,
     "variationType": "EXAM_FOLLOWUP",
     "followupKind": "CONFIRMATION",
-    "solutionPlanRef": "archive/exams/similar/middle/m3/1final/26_왕운중_1학기_기말_중3_유사2_plans/q22-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/middle/m3/1final/26_왕운중_1학기_기말_중3_유사2_plans/q22-solution.plan.json",
+    "solutionImage": "assets/images/26_왕운중_1학기_기말_중3_유사2/q22-solution.svg",
+    "solutionImageAlt": "포물선 y=x²−6x+4와 삼각형 ABO",
+    "solutionImageCaption": "포물선 y=x²−6x+4와 삼각형 ABO",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -1038,6 +1064,11 @@ window.questionBank = [
     "sourceQid": 23,
     "variationType": "EXAM_FOLLOWUP",
     "followupKind": "ADVANCED",
-    "solutionPlanRef": "archive/exams/similar/middle/m3/1final/26_왕운중_1학기_기말_중3_유사2_plans/q23-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/middle/m3/1final/26_왕운중_1학기_기말_중3_유사2_plans/q23-solution.plan.json",
+    "solutionImage": "assets/images/26_왕운중_1학기_기말_중3_유사2/q23-solution.svg",
+    "solutionImageAlt": "직각삼각형 ABC와 BC 위 E: 일반식의 길이 관계를 보여 주는 한 가지 비례 예시",
+    "solutionImageCaption": "직각삼각형 ABC와 BC 위 E: 일반식의 길이 관계를 보여 주는 한 가지 비례 예시",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   }
 ];
