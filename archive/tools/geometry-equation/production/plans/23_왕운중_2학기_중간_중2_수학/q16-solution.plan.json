@@ -1,0 +1,312 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "6736",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3889",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "6736",
+              "denominator": "1000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "I",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "6351",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1702",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "H",
+    "I"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBH",
+      "refs": [
+        "B",
+        "H"
+      ]
+    },
+    {
+      "id": "sHC",
+      "refs": [
+        "H",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAI",
+      "refs": [
+        "A",
+        "I"
+      ]
+    },
+    {
+      "id": "sBI",
+      "refs": [
+        "B",
+        "I"
+      ]
+    },
+    {
+      "id": "sCI",
+      "refs": [
+        "C",
+        "I"
+      ]
+    },
+    {
+      "id": "sAH",
+      "refs": [
+        "A",
+        "H"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "given30",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 30,
+        "label": "30°",
+        "style": "ARC",
+        "arcs": 1
+      },
+      {
+        "id": "given50",
+        "refs": [
+          "B",
+          "C",
+          "A"
+        ],
+        "value": 50,
+        "label": "50°",
+        "style": "ARC",
+        "arcs": 1
+      },
+      {
+        "id": "halfA",
+        "refs": [
+          "I",
+          "A",
+          "C"
+        ],
+        "value": 50,
+        "label": "50°",
+        "style": "ARC",
+        "arcs": 1
+      },
+      {
+        "id": "height40",
+        "refs": [
+          "H",
+          "A",
+          "C"
+        ],
+        "value": 40,
+        "label": "40°",
+        "style": "ARC",
+        "arcs": 1
+      },
+      {
+        "id": "result10",
+        "refs": [
+          "I",
+          "A",
+          "H"
+        ],
+        "value": 10,
+        "label": "10°",
+        "style": "ARC",
+        "arcs": 1
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "perpH",
+      "refs": [
+        "B",
+        "H",
+        "A"
+      ]
+    }
+  ],
+  "caption": "내심 AI와 높이 AH가 꼭지각을 각각 50°와 40°로 나누어 10°를 만든다",
+  "accessibilityDescription": "밑각이 30도, 50도인 삼각형 ABC에서 A에서 내심 I로 각의 이등분선과 밑변 BC로 높이 AH를 그렸다. H의 직각 및 꼭짓점 A의 50도, 40도, 10도 각 호를 표시하고 면을 채우지 않았다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "∠ABC=30°",
+      "mappedTo": [
+        "given30"
+      ],
+      "sourceQuote": "오른쪽 그림에서 점 $I$는 $\\triangle ABC$의 내심이고, $\\angle ABC=30^\\circ$, $\\angle ACB=50^\\circ$이다. 점 $A$에서 $BC$에 내린 수선의 발을 $H$라 할 때, $\\angle IAH$의 크기를 구하면? [5점]"
+    },
+    {
+      "id": "c2",
+      "condition": "∠ACB=50°",
+      "mappedTo": [
+        "given50"
+      ],
+      "sourceQuote": "오른쪽 그림에서 점 $I$는 $\\triangle ABC$의 내심이고, $\\angle ABC=30^\\circ$, $\\angle ACB=50^\\circ$이다. 점 $A$에서 $BC$에 내린 수선의 발을 $H$라 할 때, $\\angle IAH$의 크기를 구하면? [5점]"
+    },
+    {
+      "id": "c3",
+      "condition": "AH ⟂ BC",
+      "mappedTo": [
+        "perpH"
+      ],
+      "sourceQuote": "[키포인트] 내심을 지나는 선은 꼭지각을 이등분하고, 높이로 생긴 직각삼각형의 각을 이용한다.\n$AI$가 $\\angle A$를 이등분하므로 $\\angle IAC=50^\\circ$이다.\n$AH\\perp BC$이므로 직각삼각형 $AHC$에서 $\\angle HAC=90^\\circ-\\angle ACB=40^\\circ$이다.\n따라서 $\\angle IAH=\\angle IAC-\\angle HAC=50^\\circ-40^\\circ=10^\\circ$이다.\n\n따라서 정답은 ②이다."
+    },
+    {
+      "id": "c4",
+      "condition": "∠IAC=50°",
+      "mappedTo": [
+        "halfA"
+      ],
+      "sourceQuote": "[키포인트] 내심을 지나는 선은 꼭지각을 이등분하고, 높이로 생긴 직각삼각형의 각을 이용한다.\n$AI$가 $\\angle A$를 이등분하므로 $\\angle IAC=50^\\circ$이다.\n$AH\\perp BC$이므로 직각삼각형 $AHC$에서 $\\angle HAC=90^\\circ-\\angle ACB=40^\\circ$이다.\n따라서 $\\angle IAH=\\angle IAC-\\angle HAC=50^\\circ-40^\\circ=10^\\circ$이다.\n\n따라서 정답은 ②이다."
+    },
+    {
+      "id": "c5",
+      "condition": "∠HAC=40°",
+      "mappedTo": [
+        "height40"
+      ],
+      "sourceQuote": "[키포인트] 내심을 지나는 선은 꼭지각을 이등분하고, 높이로 생긴 직각삼각형의 각을 이용한다.\n$AI$가 $\\angle A$를 이등분하므로 $\\angle IAC=50^\\circ$이다.\n$AH\\perp BC$이므로 직각삼각형 $AHC$에서 $\\angle HAC=90^\\circ-\\angle ACB=40^\\circ$이다.\n따라서 $\\angle IAH=\\angle IAC-\\angle HAC=50^\\circ-40^\\circ=10^\\circ$이다.\n\n따라서 정답은 ②이다."
+    },
+    {
+      "id": "c6",
+      "condition": "∠IAH=10°",
+      "mappedTo": [
+        "result10"
+      ],
+      "sourceQuote": "[키포인트] 내심을 지나는 선은 꼭지각을 이등분하고, 높이로 생긴 직각삼각형의 각을 이용한다.\n$AI$가 $\\angle A$를 이등분하므로 $\\angle IAC=50^\\circ$이다.\n$AH\\perp BC$이므로 직각삼각형 $AHC$에서 $\\angle HAC=90^\\circ-\\angle ACB=40^\\circ$이다.\n따라서 $\\angle IAH=\\angle IAC-\\angle HAC=50^\\circ-40^\\circ=10^\\circ$이다.\n\n따라서 정답은 ②이다."
+    }
+  ],
+  "newVisualInformation": [
+    "기존 문제 그림에 없는 해설의 50°-40°=10° 세 각 호와 직각 표시를 각각 렌더 필드에 매핑한다.",
+    "내부 색칠 없이 높이와 내심선을 구별한다."
+  ],
+  "coordinateCanvas": {
+    "width": 680,
+    "height": 480
+  }
+}

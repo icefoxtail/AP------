@@ -1,0 +1,322 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "195707",
+              "denominator": "66989"
+            },
+            {
+              "kind": "rational",
+              "numerator": "730250",
+              "denominator": "66989"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2251",
+              "denominator": "500"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "O",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAO",
+      "refs": [
+        "A",
+        "O"
+      ]
+    },
+    {
+      "id": "sBO",
+      "refs": [
+        "B",
+        "O"
+      ]
+    },
+    {
+      "id": "sCO",
+      "refs": [
+        "C",
+        "O"
+      ]
+    },
+    {
+      "id": "sOD",
+      "refs": [
+        "O",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "radii",
+        "count": 1,
+        "segments": [
+          "sAO",
+          "sBO",
+          "sCO"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "id": "given33",
+        "refs": [
+          "O",
+          "A",
+          "B"
+        ],
+        "value": 33,
+        "label": "33°",
+        "style": "ARC",
+        "arcs": 1
+      },
+      {
+        "id": "given75",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 75,
+        "label": "75°",
+        "style": "ARC",
+        "arcs": 1
+      },
+      {
+        "id": "angle42B",
+        "refs": [
+          "O",
+          "B",
+          "C"
+        ],
+        "value": 42,
+        "label": "42°",
+        "style": "ARC",
+        "arcs": 1
+      },
+      {
+        "id": "angle42C",
+        "refs": [
+          "B",
+          "C",
+          "O"
+        ],
+        "value": 42,
+        "label": "42°",
+        "style": "ARC",
+        "arcs": 1
+      },
+      {
+        "id": "answer48",
+        "refs": [
+          "B",
+          "O",
+          "D"
+        ],
+        "value": 48,
+        "label": "48°",
+        "style": "ARC",
+        "arcs": 1
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "perpOD",
+      "refs": [
+        "B",
+        "D",
+        "O"
+      ]
+    }
+  ],
+  "caption": "외심 O의 같은 반지름과 수선 OD로 두 각 42°와 목표 각 48°를 읽는다",
+  "accessibilityDescription": "삼각형 ABC의 외심 O와 세 꼭짓점을 이었다. O에서 BC에 내린 수선 D는 직각이고, OA·OB·OC에는 동일한 반지름 눈금이 있다. A의 33도와 B의 75도, 해설의 42도 두 개와 48도를 호로 표시했다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "O는 외심이라 OA=OB=OC",
+      "mappedTo": [
+        "radii"
+      ],
+      "sourceQuote": "[키포인트] 외심의 등거리 성질과 직각삼각형의 합동을 이용한다.\n$OA=OB$이므로 $\\angle ABO=\\angle OAB=33^\\circ$이다.\n따라서 $\\angle OBC=75^\\circ-33^\\circ=42^\\circ$이다.\n$OB=OC$이므로 $\\angle OCB=42^\\circ$이고 $\\angle BOC=180^\\circ-42^\\circ-42^\\circ=96^\\circ$이다.\n$\\triangle BOD$와 $\\triangle COD$는 각각 직각삼각형이고 빗변 $OB=OC$, 공통변 $OD$를 가지므로 합동이다.\n따라서 $\\angle BOD=\\angle DOC=96^\\circ\\div2=48^\\circ$이므로 $x=48^\\circ$이다.\n\n따라서 정답은 ④이다."
+    },
+    {
+      "id": "c2",
+      "condition": "∠OAB=33°",
+      "mappedTo": [
+        "given33"
+      ],
+      "sourceQuote": "오른쪽 그림에서 점 $O$는 $\\triangle ABC$의 외심이다. $\\angle OAB=33^\\circ$, $\\angle ABC=75^\\circ$이고 점 $D$는 점 $O$에서 $BC$에 내린 수선의 발일 때, $\\angle x$의 크기를 구하면? [5점]"
+    },
+    {
+      "id": "c3",
+      "condition": "∠ABC=75°",
+      "mappedTo": [
+        "given75"
+      ],
+      "sourceQuote": "오른쪽 그림에서 점 $O$는 $\\triangle ABC$의 외심이다. $\\angle OAB=33^\\circ$, $\\angle ABC=75^\\circ$이고 점 $D$는 점 $O$에서 $BC$에 내린 수선의 발일 때, $\\angle x$의 크기를 구하면? [5점]"
+    },
+    {
+      "id": "c4",
+      "condition": "OD ⟂ BC",
+      "mappedTo": [
+        "perpOD"
+      ],
+      "sourceQuote": "오른쪽 그림에서 점 $O$는 $\\triangle ABC$의 외심이다. $\\angle OAB=33^\\circ$, $\\angle ABC=75^\\circ$이고 점 $D$는 점 $O$에서 $BC$에 내린 수선의 발일 때, $\\angle x$의 크기를 구하면? [5점]"
+    },
+    {
+      "id": "c5",
+      "condition": "∠OBC=∠BCO=42°",
+      "mappedTo": [
+        "angle42B",
+        "angle42C"
+      ],
+      "sourceQuote": "[키포인트] 외심의 등거리 성질과 직각삼각형의 합동을 이용한다.\n$OA=OB$이므로 $\\angle ABO=\\angle OAB=33^\\circ$이다.\n따라서 $\\angle OBC=75^\\circ-33^\\circ=42^\\circ$이다.\n$OB=OC$이므로 $\\angle OCB=42^\\circ$이고 $\\angle BOC=180^\\circ-42^\\circ-42^\\circ=96^\\circ$이다.\n$\\triangle BOD$와 $\\triangle COD$는 각각 직각삼각형이고 빗변 $OB=OC$, 공통변 $OD$를 가지므로 합동이다.\n따라서 $\\angle BOD=\\angle DOC=96^\\circ\\div2=48^\\circ$이므로 $x=48^\\circ$이다.\n\n따라서 정답은 ④이다."
+    },
+    {
+      "id": "c6",
+      "condition": "∠BOD=48°",
+      "mappedTo": [
+        "answer48"
+      ],
+      "sourceQuote": "[키포인트] 외심의 등거리 성질과 직각삼각형의 합동을 이용한다.\n$OA=OB$이므로 $\\angle ABO=\\angle OAB=33^\\circ$이다.\n따라서 $\\angle OBC=75^\\circ-33^\\circ=42^\\circ$이다.\n$OB=OC$이므로 $\\angle OCB=42^\\circ$이고 $\\angle BOC=180^\\circ-42^\\circ-42^\\circ=96^\\circ$이다.\n$\\triangle BOD$와 $\\triangle COD$는 각각 직각삼각형이고 빗변 $OB=OC$, 공통변 $OD$를 가지므로 합동이다.\n따라서 $\\angle BOD=\\angle DOC=96^\\circ\\div2=48^\\circ$이므로 $x=48^\\circ$이다.\n\n따라서 정답은 ④이다."
+    }
+  ],
+  "newVisualInformation": [
+    "각도 추적 문제 해설의 무관한 삼각형 면 채움을 제거한다.",
+    "필요한 등거리 눈금, 90도 수선 표식, 33도·75도·42도·48도 각 호를 넣는다."
+  ],
+  "coordinateCanvas": {
+    "width": 680,
+    "height": 480
+  }
+}

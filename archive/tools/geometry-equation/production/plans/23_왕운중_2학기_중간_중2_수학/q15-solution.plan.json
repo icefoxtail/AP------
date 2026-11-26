@@ -1,0 +1,426 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "3420",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "9397",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "112",
+              "denominator": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "14620",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "9397",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "12910",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "46985",
+              "denominator": "10000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1710",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "46985",
+              "denominator": "10000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lineBE",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "E"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "A",
+          "lineBE"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "M",
+    "H"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAM",
+      "refs": [
+        "A",
+        "M"
+      ]
+    },
+    {
+      "id": "sMB",
+      "refs": [
+        "M",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "sED",
+      "refs": [
+        "E",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "sAH",
+      "refs": [
+        "A",
+        "H"
+      ]
+    },
+    {
+      "id": "sMH",
+      "refs": [
+        "M",
+        "H"
+      ]
+    },
+    {
+      "id": "sMD",
+      "refs": [
+        "M",
+        "D"
+      ]
+    },
+    {
+      "id": "sDH",
+      "refs": [
+        "D",
+        "H"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "midpointE",
+        "count": 1,
+        "segments": [
+          "sCE",
+          "sED"
+        ]
+      },
+      {
+        "id": "midpointM",
+        "count": 2,
+        "segments": [
+          "sAM",
+          "sMB",
+          "sMH"
+        ]
+      }
+    ],
+    "parallels": [
+      {
+        "id": "parallelME",
+        "count": 1,
+        "segments": [
+          "sMD",
+          "sBE"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "id": "angle50B",
+        "refs": [
+          "A",
+          "B",
+          "H"
+        ],
+        "value": 50,
+        "label": "50°",
+        "style": "ARC",
+        "arcs": 1
+      },
+      {
+        "id": "angle20B",
+        "refs": [
+          "H",
+          "B",
+          "C"
+        ],
+        "value": 20,
+        "label": "20°",
+        "style": "ARC",
+        "arcs": 1
+      },
+      {
+        "id": "angle110C",
+        "refs": [
+          "B",
+          "C",
+          "E"
+        ],
+        "value": 110,
+        "label": "110°",
+        "style": "ARC",
+        "arcs": 1
+      },
+      {
+        "id": "angle70A",
+        "refs": [
+          "D",
+          "A",
+          "H"
+        ],
+        "value": 70,
+        "label": "70°",
+        "style": "ARC",
+        "arcs": 1
+      },
+      {
+        "id": "angle40D",
+        "refs": [
+          "A",
+          "D",
+          "H"
+        ],
+        "value": 40,
+        "label": "40°",
+        "style": "ARC",
+        "arcs": 1
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "footH",
+      "refs": [
+        "A",
+        "H",
+        "B"
+      ]
+    }
+  ],
+  "caption": "각 추적과 직각삼각형의 빗변 중점 M을 함께 나타낸 평행사변형",
+  "accessibilityDescription": "평행사변형 ABCD에서 E는 CD의 중점, M은 AB의 중점이고 A에서 BE에 내린 수선의 발은 H이다. 주어진 50도, 20도, 110도와 해설에 쓰이는 70도, 40도를 각 호로 표시하고, 길이·평행 표식을 넣었다. 면은 칠하지 않았다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "DE=CE",
+      "mappedTo": [
+        "midpointE"
+      ],
+      "sourceQuote": "다음 그림과 같은 평행사변형 $ABCD$에서 $DE=CE$, $\\angle ABH=50^\\circ$, $\\angle CBH=20^\\circ$, $\\angle BCE=110^\\circ$일 때, $\\angle ADH$의 크기를 구하면? [5점]"
+    },
+    {
+      "id": "c2",
+      "condition": "∠ABH=50°",
+      "mappedTo": [
+        "angle50B"
+      ],
+      "sourceQuote": "다음 그림과 같은 평행사변형 $ABCD$에서 $DE=CE$, $\\angle ABH=50^\\circ$, $\\angle CBH=20^\\circ$, $\\angle BCE=110^\\circ$일 때, $\\angle ADH$의 크기를 구하면? [5점]"
+    },
+    {
+      "id": "c3",
+      "condition": "∠CBH=20°",
+      "mappedTo": [
+        "angle20B"
+      ],
+      "sourceQuote": "다음 그림과 같은 평행사변형 $ABCD$에서 $DE=CE$, $\\angle ABH=50^\\circ$, $\\angle CBH=20^\\circ$, $\\angle BCE=110^\\circ$일 때, $\\angle ADH$의 크기를 구하면? [5점]"
+    },
+    {
+      "id": "c4",
+      "condition": "∠BCE=110°",
+      "mappedTo": [
+        "angle110C"
+      ],
+      "sourceQuote": "다음 그림과 같은 평행사변형 $ABCD$에서 $DE=CE$, $\\angle ABH=50^\\circ$, $\\angle CBH=20^\\circ$, $\\angle BCE=110^\\circ$일 때, $\\angle ADH$의 크기를 구하면? [5점]"
+    },
+    {
+      "id": "c5",
+      "condition": "AH ⟂ BE",
+      "mappedTo": [
+        "footH"
+      ],
+      "sourceQuote": "[키포인트] 중점과 직각삼각형의 빗변의 중점을 이용해 $AD=DH$를 보인다.\n$\\angle ABC=50^\\circ+20^\\circ=70^\\circ$이므로 $\\angle DAB=110^\\circ$이다.\n직각삼각형 $ABH$에서 $\\angle BAH=40^\\circ$이므로 $\\angle DAH=110^\\circ-40^\\circ=70^\\circ$이다.\n$AB$의 중점을 $M$이라 하자.\n직각삼각형 $ABH$에서 빗변의 중점은 세 꼭지점까지의 거리가 같으므로 $MH=MA=MB=\\dfrac{AB}{2}$이다.\n$E$는 $CD$의 중점이고 $AB=CD$이므로 $CE=\\dfrac{AB}{2}=MH$이다.\n또한 $M,E$가 서로 마주 보는 변 $AB,CD$의 중점이므로 점을 둘레 순서로 이은 사각형 $BEDM$은 평행사변형이고 $MD=BE$이다.\n$\\triangle MBH$에서 $MB=MH$이고 $\\angle MBH=50^\\circ$이므로 $\\angle BMH=80^\\circ$이다.\n$MD\\parallel BE$이므로 $\\angle BMD=130^\\circ$, 따라서 $\\angle HMD=50^\\circ$이다.\n한편 $\\triangle BCE$에서 $\\angle CBE=20^\\circ$, $\\angle BCE=110^\\circ$이므로 $\\angle CEB=50^\\circ$이다.\n그러므로 $MH=CE$, $MD=BE$, $\\angle HMD=\\angle CEB$이므로 $\\triangle HMD\\cong\\triangle CEB$이다.\n따라서 $HD=CB=AD$이다.\n$\\triangle ADH$는 $AD=DH$인 이등변삼각형이므로 $\\angle DAH=\\angle AHD=70^\\circ$이고, $\\angle ADH=180^\\circ-70^\\circ-70^\\circ=40^\\circ$이다.\n\n따라서 정답은 ④이다."
+    },
+    {
+      "id": "c6",
+      "condition": "AM=MB=MH",
+      "mappedTo": [
+        "midpointM"
+      ],
+      "sourceQuote": "[키포인트] 중점과 직각삼각형의 빗변의 중점을 이용해 $AD=DH$를 보인다.\n$\\angle ABC=50^\\circ+20^\\circ=70^\\circ$이므로 $\\angle DAB=110^\\circ$이다.\n직각삼각형 $ABH$에서 $\\angle BAH=40^\\circ$이므로 $\\angle DAH=110^\\circ-40^\\circ=70^\\circ$이다.\n$AB$의 중점을 $M$이라 하자.\n직각삼각형 $ABH$에서 빗변의 중점은 세 꼭지점까지의 거리가 같으므로 $MH=MA=MB=\\dfrac{AB}{2}$이다.\n$E$는 $CD$의 중점이고 $AB=CD$이므로 $CE=\\dfrac{AB}{2}=MH$이다.\n또한 $M,E$가 서로 마주 보는 변 $AB,CD$의 중점이므로 점을 둘레 순서로 이은 사각형 $BEDM$은 평행사변형이고 $MD=BE$이다.\n$\\triangle MBH$에서 $MB=MH$이고 $\\angle MBH=50^\\circ$이므로 $\\angle BMH=80^\\circ$이다.\n$MD\\parallel BE$이므로 $\\angle BMD=130^\\circ$, 따라서 $\\angle HMD=50^\\circ$이다.\n한편 $\\triangle BCE$에서 $\\angle CBE=20^\\circ$, $\\angle BCE=110^\\circ$이므로 $\\angle CEB=50^\\circ$이다.\n그러므로 $MH=CE$, $MD=BE$, $\\angle HMD=\\angle CEB$이므로 $\\triangle HMD\\cong\\triangle CEB$이다.\n따라서 $HD=CB=AD$이다.\n$\\triangle ADH$는 $AD=DH$인 이등변삼각형이므로 $\\angle DAH=\\angle AHD=70^\\circ$이고, $\\angle ADH=180^\\circ-70^\\circ-70^\\circ=40^\\circ$이다.\n\n따라서 정답은 ④이다."
+    },
+    {
+      "id": "c7",
+      "condition": "MD ∥ BE",
+      "mappedTo": [
+        "parallelME"
+      ],
+      "sourceQuote": "[키포인트] 중점과 직각삼각형의 빗변의 중점을 이용해 $AD=DH$를 보인다.\n$\\angle ABC=50^\\circ+20^\\circ=70^\\circ$이므로 $\\angle DAB=110^\\circ$이다.\n직각삼각형 $ABH$에서 $\\angle BAH=40^\\circ$이므로 $\\angle DAH=110^\\circ-40^\\circ=70^\\circ$이다.\n$AB$의 중점을 $M$이라 하자.\n직각삼각형 $ABH$에서 빗변의 중점은 세 꼭지점까지의 거리가 같으므로 $MH=MA=MB=\\dfrac{AB}{2}$이다.\n$E$는 $CD$의 중점이고 $AB=CD$이므로 $CE=\\dfrac{AB}{2}=MH$이다.\n또한 $M,E$가 서로 마주 보는 변 $AB,CD$의 중점이므로 점을 둘레 순서로 이은 사각형 $BEDM$은 평행사변형이고 $MD=BE$이다.\n$\\triangle MBH$에서 $MB=MH$이고 $\\angle MBH=50^\\circ$이므로 $\\angle BMH=80^\\circ$이다.\n$MD\\parallel BE$이므로 $\\angle BMD=130^\\circ$, 따라서 $\\angle HMD=50^\\circ$이다.\n한편 $\\triangle BCE$에서 $\\angle CBE=20^\\circ$, $\\angle BCE=110^\\circ$이므로 $\\angle CEB=50^\\circ$이다.\n그러므로 $MH=CE$, $MD=BE$, $\\angle HMD=\\angle CEB$이므로 $\\triangle HMD\\cong\\triangle CEB$이다.\n따라서 $HD=CB=AD$이다.\n$\\triangle ADH$는 $AD=DH$인 이등변삼각형이므로 $\\angle DAH=\\angle AHD=70^\\circ$이고, $\\angle ADH=180^\\circ-70^\\circ-70^\\circ=40^\\circ$이다.\n\n따라서 정답은 ④이다."
+    },
+    {
+      "id": "c8",
+      "condition": "∠ADH=40°",
+      "mappedTo": [
+        "angle40D"
+      ],
+      "sourceQuote": "[키포인트] 중점과 직각삼각형의 빗변의 중점을 이용해 $AD=DH$를 보인다.\n$\\angle ABC=50^\\circ+20^\\circ=70^\\circ$이므로 $\\angle DAB=110^\\circ$이다.\n직각삼각형 $ABH$에서 $\\angle BAH=40^\\circ$이므로 $\\angle DAH=110^\\circ-40^\\circ=70^\\circ$이다.\n$AB$의 중점을 $M$이라 하자.\n직각삼각형 $ABH$에서 빗변의 중점은 세 꼭지점까지의 거리가 같으므로 $MH=MA=MB=\\dfrac{AB}{2}$이다.\n$E$는 $CD$의 중점이고 $AB=CD$이므로 $CE=\\dfrac{AB}{2}=MH$이다.\n또한 $M,E$가 서로 마주 보는 변 $AB,CD$의 중점이므로 점을 둘레 순서로 이은 사각형 $BEDM$은 평행사변형이고 $MD=BE$이다.\n$\\triangle MBH$에서 $MB=MH$이고 $\\angle MBH=50^\\circ$이므로 $\\angle BMH=80^\\circ$이다.\n$MD\\parallel BE$이므로 $\\angle BMD=130^\\circ$, 따라서 $\\angle HMD=50^\\circ$이다.\n한편 $\\triangle BCE$에서 $\\angle CBE=20^\\circ$, $\\angle BCE=110^\\circ$이므로 $\\angle CEB=50^\\circ$이다.\n그러므로 $MH=CE$, $MD=BE$, $\\angle HMD=\\angle CEB$이므로 $\\triangle HMD\\cong\\triangle CEB$이다.\n따라서 $HD=CB=AD$이다.\n$\\triangle ADH$는 $AD=DH$인 이등변삼각형이므로 $\\angle DAH=\\angle AHD=70^\\circ$이고, $\\angle ADH=180^\\circ-70^\\circ-70^\\circ=40^\\circ$이다.\n\n따라서 정답은 ④이다."
+    }
+  ],
+  "newVisualInformation": [
+    "각도 문제에 불필요한 삼각형 면 채움은 제거한다.",
+    "수선의 발 H는 엔진의 PERPENDICULAR_FOOT으로 계산한다.",
+    "DE=CE, AM=MB=MH, MD∥BE, 5개 각 표식을 렌더 필드에 넣는다."
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 540
+  }
+}

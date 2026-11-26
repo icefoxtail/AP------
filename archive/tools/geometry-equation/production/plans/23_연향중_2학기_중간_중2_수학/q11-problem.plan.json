@@ -1,0 +1,397 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "66",
+              "denominator": "10"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-18",
+              "denominator": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "114",
+              "denominator": "10"
+            },
+            {
+              "kind": "rational",
+              "numerator": "18",
+              "denominator": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "78",
+              "denominator": "10"
+            },
+            {
+              "kind": "rational",
+              "numerator": "66",
+              "denominator": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "I",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "525",
+              "denominator": "100"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "J",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "rational",
+              "numerator": "525",
+              "denominator": "100"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "J"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "sEC",
+      "refs": [
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "sED",
+      "refs": [
+        "E",
+        "D"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "sFG",
+      "refs": [
+        "F",
+        "G"
+      ]
+    },
+    {
+      "id": "sGH",
+      "refs": [
+        "G",
+        "H"
+      ]
+    },
+    {
+      "id": "sHE",
+      "refs": [
+        "H",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "correspondingSides",
+        "count": 1,
+        "segments": [
+          "sAB",
+          "sEF"
+        ]
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "cornerB",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "cornerE",
+      "refs": [
+        "F",
+        "E",
+        "H"
+      ]
+    }
+  ],
+  "caption": "두 합동인 정사각형의 배치와 두 대각선 및 교점 I, J",
+  "accessibilityDescription": "정사각형 ABCD의 실선 대각선 AC와 BD가 E에서 만난다. E를 꼭짓점으로 하는 합동 정사각형 EFGH를 겹쳐 놓아 EF가 BC와 I에서, EH가 CD와 J에서 만나는 구조를 나타냈다. 불필요한 면색은 없다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "ABCD는 정사각형",
+      "mappedTo": [
+        "cornerB"
+      ],
+      "sourceQuote": "오른쪽 그림과 같이 정사각형 $ABCD$의 두 대각선의 교점과 정사각형 $EFGH$의 한 꼭짓점이 서로 겹치도록 두 정사각형이 놓여 있다. 두 정사각형은 합동이고 $AC=6$ cm일 때, 사각형 $EICJ$의 넓이는? [5점]"
+    },
+    {
+      "id": "c2",
+      "condition": "두 대각선의 교점이 E이다",
+      "mappedTo": [
+        "sAE",
+        "sEC",
+        "sBE",
+        "sED"
+      ],
+      "sourceQuote": "오른쪽 그림과 같이 정사각형 $ABCD$의 두 대각선의 교점과 정사각형 $EFGH$의 한 꼭짓점이 서로 겹치도록 두 정사각형이 놓여 있다. 두 정사각형은 합동이고 $AC=6$ cm일 때, 사각형 $EICJ$의 넓이는? [5점]"
+    },
+    {
+      "id": "c3",
+      "condition": "EFGH는 ABCD와 합동인 정사각형",
+      "mappedTo": [
+        "cornerE",
+        "correspondingSides"
+      ],
+      "sourceQuote": "오른쪽 그림과 같이 정사각형 $ABCD$의 두 대각선의 교점과 정사각형 $EFGH$의 한 꼭짓점이 서로 겹치도록 두 정사각형이 놓여 있다. 두 정사각형은 합동이고 $AC=6$ cm일 때, 사각형 $EICJ$의 넓이는? [5점]"
+    },
+    {
+      "id": "c4",
+      "condition": "EF와 BC는 I에서 만난다",
+      "mappedTo": [
+        "sEF",
+        "sBC"
+      ],
+      "sourceQuote": "오른쪽 그림과 같이 정사각형 $ABCD$의 두 대각선의 교점과 정사각형 $EFGH$의 한 꼭짓점이 서로 겹치도록 두 정사각형이 놓여 있다. 두 정사각형은 합동이고 $AC=6$ cm일 때, 사각형 $EICJ$의 넓이는? [5점]"
+    },
+    {
+      "id": "c5",
+      "condition": "EH와 CD는 J에서 만난다",
+      "mappedTo": [
+        "sHE",
+        "sCD"
+      ],
+      "sourceQuote": "오른쪽 그림과 같이 정사각형 $ABCD$의 두 대각선의 교점과 정사각형 $EFGH$의 한 꼭짓점이 서로 겹치도록 두 정사각형이 놓여 있다. 두 정사각형은 합동이고 $AC=6$ cm일 때, 사각형 $EICJ$의 넓이는? [5점]"
+    }
+  ],
+  "newVisualInformation": [
+    "원본에 실선으로 그려진 AC와 BD를 기존 SVG의 점선 대신 실선 계획으로 복구한다.",
+    "두 정사각형의 크기를 정확히 같게 설계하고 E의 직각을 표시한다."
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 560
+  }
+}

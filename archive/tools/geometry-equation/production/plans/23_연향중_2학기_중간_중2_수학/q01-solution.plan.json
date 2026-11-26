@@ -1,0 +1,290 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "P"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAP",
+      "refs": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "sPD",
+      "refs": [
+        "P",
+        "D"
+      ]
+    },
+    {
+      "id": "sBP",
+      "refs": [
+        "B",
+        "P"
+      ]
+    },
+    {
+      "id": "sCP",
+      "refs": [
+        "C",
+        "P"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "equalABAC",
+        "count": 1,
+        "segments": [
+          "sAB",
+          "sCA"
+        ]
+      },
+      {
+        "id": "equalBDCD",
+        "count": 2,
+        "segments": [
+          "sBD",
+          "sDC"
+        ]
+      },
+      {
+        "id": "equalPBPC",
+        "count": 3,
+        "segments": [
+          "sBP",
+          "sCP"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "id": "halfA1",
+        "refs": [
+          "B",
+          "A",
+          "P"
+        ],
+        "style": "ARC",
+        "arcs": 1,
+        "noLabel": true,
+        "equalGroup": 1
+      },
+      {
+        "id": "halfA2",
+        "refs": [
+          "P",
+          "A",
+          "C"
+        ],
+        "style": "ARC",
+        "arcs": 1,
+        "noLabel": true,
+        "equalGroup": 1
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "perpD",
+      "refs": [
+        "B",
+        "D",
+        "P"
+      ]
+    }
+  ],
+  "caption": "이등변삼각형 ABC에서 AD는 밑변의 수직이등분선이고 P에서 B,C까지 거리가 같다",
+  "accessibilityDescription": "이등변삼각형 ABC의 AB와 AC는 같고 A의 양쪽 각이 같다. AD는 BC에 수직이고 D에서 밑변을 이등분한다. AD 위 점 P에서 B와 C까지의 선분에도 같은 길이 눈금을 표시했다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AB=AC",
+      "mappedTo": [
+        "equalABAC"
+      ],
+      "sourceQuote": "오른쪽 그림과 같이 $AB=AC$인 이등변삼각형 $ABC$에서 $\\angle A$의 이등분선과 $BC$의 교점을 $D$라 하자. $AD$ 위에 한 점 $P$를 잡을 때, 다음 중 옳지 않은 것은? [4점]"
+    },
+    {
+      "id": "c2",
+      "condition": "AD가 ∠A의 이등분선",
+      "mappedTo": [
+        "halfA1",
+        "halfA2"
+      ],
+      "sourceQuote": "오른쪽 그림과 같이 $AB=AC$인 이등변삼각형 $ABC$에서 $\\angle A$의 이등분선과 $BC$의 교점을 $D$라 하자. $AD$ 위에 한 점 $P$를 잡을 때, 다음 중 옳지 않은 것은? [4점]"
+    },
+    {
+      "id": "c3",
+      "condition": "AD ⟂ BC",
+      "mappedTo": [
+        "perpD"
+      ],
+      "sourceQuote": "[키포인트] 이등변삼각형의 꼭짓점에서 그은 각의 이등분선은 밑변의 수직이등분선이다.\n$AD\\perp BC$, $BD=CD$이다. 또한 $P$가 $BC$의 수직이등분선 $AD$ 위에 있으므로 $PB=PC$이고, $\\triangle PBC$는 이등변삼각형이다. $\\triangle PAB$와 $\\triangle PAC$는 $AP$가 공통이고 $AB=AC$, $\\angle BAP=\\angle PAC$이므로 합동이다. 그러나 $AP$의 길이까지 $BP$, $CP$와 같다고 정해지지는 않는다.\n따라서 정답은 ③이다."
+    },
+    {
+      "id": "c4",
+      "condition": "BD=CD",
+      "mappedTo": [
+        "equalBDCD"
+      ],
+      "sourceQuote": "[키포인트] 이등변삼각형의 꼭짓점에서 그은 각의 이등분선은 밑변의 수직이등분선이다.\n$AD\\perp BC$, $BD=CD$이다. 또한 $P$가 $BC$의 수직이등분선 $AD$ 위에 있으므로 $PB=PC$이고, $\\triangle PBC$는 이등변삼각형이다. $\\triangle PAB$와 $\\triangle PAC$는 $AP$가 공통이고 $AB=AC$, $\\angle BAP=\\angle PAC$이므로 합동이다. 그러나 $AP$의 길이까지 $BP$, $CP$와 같다고 정해지지는 않는다.\n따라서 정답은 ③이다."
+    },
+    {
+      "id": "c5",
+      "condition": "PB=PC",
+      "mappedTo": [
+        "equalPBPC"
+      ],
+      "sourceQuote": "[키포인트] 이등변삼각형의 꼭짓점에서 그은 각의 이등분선은 밑변의 수직이등분선이다.\n$AD\\perp BC$, $BD=CD$이다. 또한 $P$가 $BC$의 수직이등분선 $AD$ 위에 있으므로 $PB=PC$이고, $\\triangle PBC$는 이등변삼각형이다. $\\triangle PAB$와 $\\triangle PAC$는 $AP$가 공통이고 $AB=AC$, $\\angle BAP=\\angle PAC$이므로 합동이다. 그러나 $AP$의 길이까지 $BP$, $CP$와 같다고 정해지지는 않는다.\n따라서 정답은 ③이다."
+    }
+  ],
+  "newVisualInformation": [
+    "문제에서 묻는 AP=PB=PC를 표시하지 않고, 해설이 실제로 증명하는 PB=PC를 별도 눈금으로 표현한다.",
+    "밑변의 직각과 중점을 추가하고 면을 채우지 않는다."
+  ],
+  "coordinateCanvas": {
+    "width": 680,
+    "height": 480
+  }
+}

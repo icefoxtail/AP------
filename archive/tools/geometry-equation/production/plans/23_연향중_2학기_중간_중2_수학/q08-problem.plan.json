@@ -1,0 +1,261 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "5533333",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "26",
+              "denominator": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "P"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAP",
+      "refs": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "sBP",
+      "refs": [
+        "B",
+        "P"
+      ]
+    },
+    {
+      "id": "sCP",
+      "refs": [
+        "C",
+        "P"
+      ]
+    },
+    {
+      "id": "sDP",
+      "refs": [
+        "D",
+        "P"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "textLabels": [
+      {
+        "id": "area17",
+        "at": [
+          7.6,
+          4.8
+        ],
+        "text": "17",
+        "anchor": "CENTER"
+      },
+      {
+        "id": "area13",
+        "at": [
+          5,
+          0.8
+        ],
+        "text": "13",
+        "anchor": "CENTER"
+      },
+      {
+        "id": "area16",
+        "at": [
+          9.25,
+          2.8
+        ],
+        "text": "16",
+        "anchor": "CENTER"
+      }
+    ],
+    "parallels": [
+      {
+        "id": "parallelTopBottom",
+        "count": 1,
+        "segments": [
+          "sDA",
+          "sBC"
+        ]
+      }
+    ]
+  },
+  "caption": "평행사변형 ABCD 안의 P가 만든 세 삼각형의 주어진 넓이",
+  "accessibilityDescription": "평행사변형 ABCD의 내부 점 P를 네 꼭짓점과 이었다. ADP의 넓이는 17, BCP는 13, CDP는 16이고 ABP는 비워 두었다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AD ∥ BC",
+      "mappedTo": [
+        "parallelTopBottom"
+      ],
+      "sourceQuote": "오른쪽 평행사변형 $ABCD$의 내부의 점 $P$에 대하여 $[ADP]=17$ cm$^2$, $[BCP]=13$ cm$^2$, $[CDP]=16$ cm$^2$일 때, $[ABP]$는? [4점]"
+    },
+    {
+      "id": "c2",
+      "condition": "[ADP] = 17 cm²",
+      "mappedTo": [
+        "area17"
+      ],
+      "sourceQuote": "오른쪽 평행사변형 $ABCD$의 내부의 점 $P$에 대하여 $[ADP]=17$ cm$^2$, $[BCP]=13$ cm$^2$, $[CDP]=16$ cm$^2$일 때, $[ABP]$는? [4점]"
+    },
+    {
+      "id": "c3",
+      "condition": "[BCP] = 13 cm²",
+      "mappedTo": [
+        "area13"
+      ],
+      "sourceQuote": "오른쪽 평행사변형 $ABCD$의 내부의 점 $P$에 대하여 $[ADP]=17$ cm$^2$, $[BCP]=13$ cm$^2$, $[CDP]=16$ cm$^2$일 때, $[ABP]$는? [4점]"
+    },
+    {
+      "id": "c4",
+      "condition": "[CDP] = 16 cm²",
+      "mappedTo": [
+        "area16"
+      ],
+      "sourceQuote": "오른쪽 평행사변형 $ABCD$의 내부의 점 $P$에 대하여 $[ADP]=17$ cm$^2$, $[BCP]=13$ cm$^2$, $[CDP]=16$ cm$^2$일 때, $[ABP]$는? [4점]"
+    }
+  ],
+  "newVisualInformation": [
+    "세 주어진 넓이를 삼각형의 내부에 표시해 인접 삼각형과의 대응을 명확히 한다.",
+    "해를 구하는 네 번째 넓이값은 그림에 표시하지 않는다.",
+    "색칠 없이 흰 바탕에 선·숫자만 사용한다."
+  ],
+  "coordinateCanvas": {
+    "width": 680,
+    "height": 480
+  }
+}
