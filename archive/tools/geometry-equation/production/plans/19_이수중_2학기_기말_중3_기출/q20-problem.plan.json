@@ -1,0 +1,46 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-2"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"expression","op":"mul","args":[{"kind":"integer","value":"-2"},{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"3"}]}]},{"kind":"integer","value":"-2"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"5"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"expression","op":"mul","args":[{"kind":"rational","numerator":"5","denominator":"2"},{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"3"}]}]},{"kind":"rational","numerator":"5","denominator":"2"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"lineAC","op":"LINE_THROUGH","inputs":["A","C"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"lineBD","op":"LINE_THROUGH","inputs":["B","D"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"E","op":"LINE_INTERSECTION","inputs":["lineAC","lineBD"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "displayPoints": ["A","B","C","D","E"],
+  "hiddenPointNames": ["E"],
+  "hiddenPointStyle": "NONE",
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {"id":"sAB","refs":["A","B"]},
+    {"id":"sBC","refs":["B","C"]},
+    {"id":"sCD","refs":["C","D"]},
+    {"id":"sDA","refs":["D","A"]},
+    {"id":"sAC","refs":["A","C"]},
+    {"id":"sBD","refs":["B","D"]}
+  ],
+  "planeMarks": {
+    "angles": [
+      {"id":"aE","refs":["C","E","D"],"value":30,"factRole":"GIVEN","color":"ROSE"}
+    ],
+    "regions": [
+      {"id":"rABCD","fill":"GREEN","shapes":[{"polygon":["A","B","C","D"]}]}
+    ],
+    "expressionLabels": [
+      {"id":"lAC","ownerSegment":"sAC","text":"7","unit":"cm"},
+      {"id":"lBD","ownerSegment":"sBD","text":"9","unit":"cm"}
+    ]
+  },
+  "caption": "원본의 목표 넓이인 사각형 ABCD만 옅게 채우고, 대각선 AC=7 cm, BD=9 cm 및 끼인 예각 30°를 표시한다. 교점 이름과 점 표식은 표시하지 않는다."
+}

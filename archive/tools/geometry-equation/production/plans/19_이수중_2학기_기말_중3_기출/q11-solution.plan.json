@@ -41,12 +41,14 @@
               "args": {
                 "coordinates": [
                   {
-                    "kind": "integer",
-                    "value": "-3"
+                    "kind": "rational",
+                    "numerator": "-24",
+                    "denominator": "5"
                   },
                   {
-                    "kind": "integer",
-                    "value": "4"
+                    "kind": "rational",
+                    "numerator": "-7",
+                    "denominator": "5"
                   }
                 ]
               },
@@ -61,83 +63,11 @@
                 "coordinates": [
                   {
                     "kind": "integer",
-                    "value": "-3"
-                  },
-                  {
-                    "kind": "integer",
-                    "value": "-4"
-                  }
-                ]
-              },
-              "outputType": "POINT",
-              "factRole": "GIVEN"
-            },
-            {
-              "id": "M",
-              "op": "SOURCE_POINT",
-              "inputs": [],
-              "args": {
-                "coordinates": [
-                  {
-                    "kind": "integer",
-                    "value": "-3"
-                  },
-                  {
-                    "kind": "integer",
                     "value": "0"
-                  }
-                ]
-              },
-              "outputType": "POINT",
-              "factRole": "GIVEN"
-            },
-            {
-              "id": "N",
-              "op": "SOURCE_POINT",
-              "inputs": [],
-              "args": {
-                "coordinates": [
-                  {
-                    "kind": "expression",
-                    "op": "mul",
-                    "args": [
-                      {
-                        "kind": "rational",
-                        "numerator": "3",
-                        "denominator": "2"
-                      },
-                      {
-                        "kind": "expression",
-                        "op": "sqrt",
-                        "args": [
-                          {
-                            "kind": "integer",
-                            "value": "2"
-                          }
-                        ]
-                      }
-                    ]
                   },
                   {
-                    "kind": "expression",
-                    "op": "mul",
-                    "args": [
-                      {
-                        "kind": "rational",
-                        "numerator": "-3",
-                        "denominator": "2"
-                      },
-                      {
-                        "kind": "expression",
-                        "op": "sqrt",
-                        "args": [
-                          {
-                            "kind": "integer",
-                            "value": "2"
-                          }
-                        ]
-                      }
-                    ]
+                    "kind": "integer",
+                    "value": "-5"
                   }
                 ]
               },
@@ -151,46 +81,14 @@
               "args": {
                 "coordinates": [
                   {
-                    "kind": "expression",
-                    "op": "mul",
-                    "args": [
-                      {
-                        "kind": "rational",
-                        "numerator": "-1",
-                        "denominator": "2"
-                      },
-                      {
-                        "kind": "expression",
-                        "op": "sqrt",
-                        "args": [
-                          {
-                            "kind": "integer",
-                            "value": "2"
-                          }
-                        ]
-                      }
-                    ]
+                    "kind": "rational",
+                    "numerator": "117",
+                    "denominator": "25"
                   },
                   {
-                    "kind": "expression",
-                    "op": "mul",
-                    "args": [
-                      {
-                        "kind": "rational",
-                        "numerator": "-7",
-                        "denominator": "2"
-                      },
-                      {
-                        "kind": "expression",
-                        "op": "sqrt",
-                        "args": [
-                          {
-                            "kind": "integer",
-                            "value": "2"
-                          }
-                        ]
-                      }
-                    ]
+                    "kind": "rational",
+                    "numerator": "-44",
+                    "denominator": "25"
                   }
                 ]
               },
@@ -204,52 +102,22 @@
               "args": {
                 "coordinates": [
                   {
-                    "kind": "expression",
-                    "op": "mul",
-                    "args": [
-                      {
-                        "kind": "rational",
-                        "numerator": "7",
-                        "denominator": "2"
-                      },
-                      {
-                        "kind": "expression",
-                        "op": "sqrt",
-                        "args": [
-                          {
-                            "kind": "integer",
-                            "value": "2"
-                          }
-                        ]
-                      }
-                    ]
+                    "kind": "integer",
+                    "value": "3"
                   },
                   {
-                    "kind": "expression",
-                    "op": "mul",
-                    "args": [
-                      {
-                        "kind": "rational",
-                        "numerator": "1",
-                        "denominator": "2"
-                      },
-                      {
-                        "kind": "expression",
-                        "op": "sqrt",
-                        "args": [
-                          {
-                            "kind": "integer",
-                            "value": "2"
-                          }
-                        ]
-                      }
-                    ]
+                    "kind": "integer",
+                    "value": "4"
                   }
                 ]
               },
               "outputType": "POINT",
               "factRole": "GIVEN"
             },
+            {"id":"lineAB","op":"LINE_THROUGH","inputs":["A","B"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+            {"id":"lineCD","op":"LINE_THROUGH","inputs":["C","D"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+            {"id":"M","op":"PERPENDICULAR_FOOT","inputs":["O","lineAB"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+            {"id":"N","op":"PERPENDICULAR_FOOT","inputs":["O","lineCD"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
             {
               "id": "circ",
               "op": "CIRCLE_CENTER_RADIUS",
