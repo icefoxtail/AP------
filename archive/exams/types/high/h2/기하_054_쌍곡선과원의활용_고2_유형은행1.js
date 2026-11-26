@@ -180,7 +180,11 @@ window.questionBank = [
       "CC_PYTHAGOREAN"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_054_쌍곡선과원의활용_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "A(-5,0)에서 C(5,0) 중심의 원에 그은 접선 위 P,B와 삼각형 PBC",
+    "imageCaption": "A(-5,0)에서 C(5,0) 중심의 원에 그은 접선 위 P,B와 삼각형 PBC",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -226,7 +230,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_POSITIVE"
     ],
-    "integrationPattern": "INTERDEPENDENT"
+    "integrationPattern": "INTERDEPENDENT",
+    "image": "assets/images/기하_054_쌍곡선과원의활용_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "직각삼각형 APB와 원점 중심의 직선 AP 접원, 원점에서 접선에 내린 수선",
+    "imageCaption": "직각삼각형 APB와 원점 중심의 직선 AP 접원, 원점에서 접선에 내린 수선",
+    "imageSize": "full"
   },
   {
     "id": 6,
@@ -366,7 +374,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_INEQUALITY_CONSTRAINT"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_054_쌍곡선과원의활용_고2_유형은행1/q8-problem.svg",
+    "imageAlt": "왼쪽 초점 F′ 중심의 접원 C에 제1사분면 P에서 그은 길이 12의 접선 PQ",
+    "imageCaption": "왼쪽 초점 F′ 중심의 접원 C에 제1사분면 P에서 그은 길이 12의 접선 PQ",
+    "imageSize": "full"
   },
   {
     "id": 9,
@@ -412,6 +424,10 @@ window.questionBank = [
     "conditionKeys": [
       "COND_POSITIVE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_054_쌍곡선과원의활용_고2_유형은행1/q9-problem.svg",
+    "imageAlt": "오른쪽 초점 F 중심의 접원 C에 제2사분면 P에서 그은 길이 15의 접선 PQ",
+    "imageCaption": "오른쪽 초점 F 중심의 접원 C에 제2사분면 P에서 그은 길이 15의 접선 PQ",
+    "imageSize": "full"
   }
 ];

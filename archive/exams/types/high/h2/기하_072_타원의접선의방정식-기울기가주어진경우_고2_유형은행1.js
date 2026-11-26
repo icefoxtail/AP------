@@ -357,7 +357,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RANGE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_072_타원의접선의방정식-기울기가주어진경우_고2_유형은행1/q8-problem.svg",
+    "imageAlt": "아래 꼭짓점 A를 지나는 수평선 위 외부점 P와 기울어진 접선 PQ",
+    "imageCaption": "아래 꼭짓점 A를 지나는 수평선 위 외부점 P와 기울어진 접선 PQ",
+    "imageSize": "full"
   },
   {
     "id": 9,
@@ -403,6 +407,10 @@ window.questionBank = [
     "conditionKeys": [
       "COND_NATURAL_NUMBER"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_072_타원의접선의방정식-기울기가주어진경우_고2_유형은행1/q9-problem.svg",
+    "imageAlt": "바깥 타원 네 꼭짓점의 마름모와 그 안에 접하는 가로 장축 타원",
+    "imageCaption": "바깥 타원 네 꼭짓점의 마름모와 그 안에 접하는 가로 장축 타원",
+    "imageSize": "full"
   }
 ];

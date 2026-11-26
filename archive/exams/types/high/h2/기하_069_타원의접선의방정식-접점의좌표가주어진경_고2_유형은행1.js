@@ -218,7 +218,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RANGE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_069_타원의접선의방정식-접점의좌표가주어진경_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "타원의 제1사분면 접점 P에서 접선 l과 법선이 x축과 각각 만나는 모습 (대표 도식)",
+    "imageCaption": "타원의 제1사분면 접점 P에서 접선 l과 법선이 x축과 각각 만나는 모습 (대표 도식)",
+    "imageSize": "full"
   },
   {
     "id": 6,

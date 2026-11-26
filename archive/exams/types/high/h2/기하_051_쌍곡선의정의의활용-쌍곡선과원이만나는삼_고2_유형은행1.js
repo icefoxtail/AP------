@@ -235,6 +235,10 @@ window.questionBank = [
     "conditionKeys": [
       "COND_POSITIVE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_051_쌍곡선의정의의활용-쌍곡선과원이만나는삼_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "두 초점을 지름의 끝점으로 하는 원과 쌍곡선의 제1사분면 교점 P, 삼각형 PF′F",
+    "imageCaption": "두 초점을 지름의 끝점으로 하는 원과 쌍곡선의 제1사분면 교점 P, 삼각형 PF′F",
+    "imageSize": "full"
   }
 ];

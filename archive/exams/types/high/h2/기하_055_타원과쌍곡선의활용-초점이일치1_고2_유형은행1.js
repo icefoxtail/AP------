@@ -42,7 +42,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_POSITIVE"
     ],
-    "integrationPattern": "INTERDEPENDENT"
+    "integrationPattern": "INTERDEPENDENT",
+    "image": "assets/images/기하_055_타원과쌍곡선의활용-초점이일치1_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "두 초점을 공유하는 타원과 쌍곡선의 제1사분면 교점 P, 주어진 PF=2·PF′=8",
+    "imageCaption": "두 초점을 공유하는 타원과 쌍곡선의 제1사분면 교점 P, 주어진 PF=2·PF′=8",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -85,7 +89,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_POSITIVE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_055_타원과쌍곡선의활용-초점이일치1_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "공유 초점 F,F′을 갖는 타원과 쌍곡선의 첫사분면 공통 교점 P, 주어진 PF=4",
+    "imageCaption": "공유 초점 F,F′을 갖는 타원과 쌍곡선의 첫사분면 공통 교점 P, 주어진 PF=4",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -128,7 +136,11 @@ window.questionBank = [
       "CC_X_INTERCEPT"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_055_타원과쌍곡선의활용-초점이일치1_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "공유 초점을 갖는 타원과 쌍곡선의 양의 x축 꼭짓점 A,B 사이 선분 AB와 공통 교점 P",
+    "imageCaption": "공유 초점을 갖는 타원과 쌍곡선의 양의 x축 꼭짓점 A,B 사이 선분 AB와 공통 교점 P",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -172,7 +184,11 @@ window.questionBank = [
       "CC_RIGHT_TRIANGLE"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_055_타원과쌍곡선의활용-초점이일치1_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "F(5,0),F′(-5,0)을 공유하는 타원과 쌍곡선, 공통 점 P(5,3), 두 양의 x축 꼭짓점 A,B",
+    "imageCaption": "F(5,0),F′(-5,0)을 공유하는 타원과 쌍곡선, 공통 점 P(5,3), 두 양의 x축 꼭짓점 A,B",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -305,7 +321,11 @@ window.questionBank = [
       "COND_POSITIVE",
       "COND_LOWER_BOUND"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_055_타원과쌍곡선의활용-초점이일치1_고2_유형은행1/q7-problem.svg",
+    "imageAlt": "공유 초점의 타원과 쌍곡선 제1사분면 교점 P, PF′가 PF의 세 배인 조건",
+    "imageCaption": "공유 초점의 타원과 쌍곡선 제1사분면 교점 P, PF′가 PF의 세 배인 조건",
+    "imageSize": "full"
   },
   {
     "id": 8,
@@ -352,6 +372,10 @@ window.questionBank = [
     "conditionKeys": [
       "COND_POSITIVE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_055_타원과쌍곡선의활용-초점이일치1_고2_유형은행1/q8-problem.svg",
+    "imageAlt": "타원 꼭짓점 B(-4,0)에서 O까지가 쌍곡선 주축인 공유 초점 구성과 삼각형 PF₂F₃",
+    "imageCaption": "타원 꼭짓점 B(-4,0)에서 O까지가 쌍곡선 주축인 공유 초점 구성과 삼각형 PF₂F₃",
+    "imageSize": "full"
   }
 ];

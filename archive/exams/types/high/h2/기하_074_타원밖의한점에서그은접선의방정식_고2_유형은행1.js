@@ -167,7 +167,11 @@ window.questionBank = [
     "templateKey": "TPL_GEO_TANGENT_FROM_OUTSIDE_POINT",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_074_타원밖의한점에서그은접선의방정식_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "수평선 y=3의 외부점 P에서 세로 장축 타원에 그은 두 접선",
+    "imageCaption": "수평선 y=3의 외부점 P에서 세로 장축 타원에 그은 두 접선",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -212,6 +216,10 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RATIONAL"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_074_타원밖의한점에서그은접선의방정식_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "y축 외부점에서 그은 두 접선의 접점 P,Q와 왼쪽 초점 F의 삼각형",
+    "imageCaption": "y축 외부점에서 그은 두 접선의 접점 P,Q와 왼쪽 초점 F의 삼각형",
+    "imageSize": "full"
   }
 ];

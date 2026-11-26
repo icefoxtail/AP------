@@ -172,6 +172,10 @@ window.questionBank = [
       "CC_EQUATIONS_PARALLEL_TO_AXES"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_057_쌍곡선의실생활활용_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "30 km 간격 두 등대와 해안선에 평행한 배의 경로 PQ (해안선과 9 km 간격)",
+    "imageCaption": "30 km 간격 두 등대와 해안선에 평행한 배의 경로 PQ (해안선과 9 km 간격)",
+    "imageSize": "full"
   }
 ];

@@ -86,7 +86,11 @@ window.questionBank = [
       "COND_POSITIVE",
       "COND_INEQUALITY_CONSTRAINT"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_053_쌍곡선과포물선_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "공통 초점 F를 갖는 쌍곡선과 포물선의 위·아래 교점 P,Q와 길이 4√6인 현",
+    "imageCaption": "공통 초점 F를 갖는 쌍곡선과 포물선의 위·아래 교점 P,Q와 길이 4√6인 현",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -131,7 +135,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_POSITIVE"
     ],
-    "integrationPattern": "INTERDEPENDENT"
+    "integrationPattern": "INTERDEPENDENT",
+    "image": "assets/images/기하_053_쌍곡선과포물선_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "포물선·쌍곡선의 공통 초점 F와 제1사분면 교점 A를 이은 길이 10인 선분",
+    "imageCaption": "포물선·쌍곡선의 공통 초점 F와 제1사분면 교점 A를 이은 길이 10인 선분",
+    "imageSize": "full"
   },
   {
     "id": 4,

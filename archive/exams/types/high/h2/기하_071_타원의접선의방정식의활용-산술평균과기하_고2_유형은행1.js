@@ -45,7 +45,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RANGE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_071_타원의접선의방정식의활용-산술평균과기하_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "타원의 제1사분면 접선과 양의 좌표축이 만드는 색칠된 삼각형 OAB (대표 도식)",
+    "imageCaption": "타원의 제1사분면 접선과 양의 좌표축이 만드는 색칠된 삼각형 OAB (대표 도식)",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -91,6 +95,10 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RANGE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_071_타원의접선의방정식의활용-산술평균과기하_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "세로로 긴 타원의 접선과 양의 좌표축으로 만드는 색칠된 삼각형 OAB (대표 도식)",
+    "imageCaption": "세로로 긴 타원의 접선과 양의 좌표축으로 만드는 색칠된 삼각형 OAB (대표 도식)",
+    "imageSize": "full"
   }
 ];

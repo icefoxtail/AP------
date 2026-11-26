@@ -137,7 +137,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_POSITIVE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_062_포물선의접선의방정식의활용-포물선의정의_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "포물선의 접선·초점으로 둘러싸인 색칠 삼각형 ABF",
+    "imageCaption": "포물선의 접선·초점으로 둘러싸인 색칠 삼각형 ABF",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -181,6 +185,10 @@ window.questionBank = [
       "CC_SLOPE"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_062_포물선의접선의방정식의활용-포물선의정의_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "초점 F와 거리 PF=9인 포물선 위의 점 P 및 접선",
+    "imageCaption": "초점 F와 거리 PF=9인 포물선 위의 점 P 및 접선",
+    "imageSize": "full"
   }
 ];

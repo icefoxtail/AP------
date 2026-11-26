@@ -89,7 +89,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_POSITIVE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_061_포물선의접선의방정식의활용-접점이미지수_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "준선 위의 A와 접점 B, 준선으로 내린 수선의 발 H 및 C(-3,0)",
+    "imageCaption": "준선 위의 A와 접점 B, 준선으로 내린 수선의 발 H 및 C(-3,0)",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -133,7 +137,11 @@ window.questionBank = [
       "CC_PARABOLA"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_061_포물선의접선의방정식의활용-접점이미지수_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "초점 F, 포물선의 점 P와 접선의 x축 교점 T",
+    "imageCaption": "초점 F, 포물선의 점 P와 접선의 x축 교점 T",
+    "imageSize": "full"
   },
   {
     "id": 4,
