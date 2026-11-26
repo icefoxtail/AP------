@@ -1,0 +1,76 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "axisVariable": false,
+    "rows": [
+      {
+        "kind": "POINTS",
+        "label": "x",
+        "band": false,
+        "points": [
+          {
+            "id": "P0",
+            "value": "3-sqrt(5)",
+            "hideName": true,
+            "showValue": false
+          }
+        ]
+      },
+      {
+        "kind": "POINTS",
+        "label": "n=1",
+        "band": false,
+        "points": [
+          {
+            "id": "P1",
+            "value": "1",
+            "hideName": true,
+            "showValue": false
+          }
+        ]
+      },
+      {
+        "kind": "POINTS",
+        "label": "y",
+        "band": false,
+        "points": [
+          {
+            "id": "P2",
+            "value": "-1+sqrt(7)",
+            "hideName": true,
+            "showValue": false
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "x=3−√5≈0.764, y=√7−1≈1.646이다. 공통 눈금의 점 위치에서 x<1<y이므로 가능한 정수 n은 1뿐이다.",
+  "accessibilityDescription": "세 줄에 주어진 무리수 x, 정수 1, 무리수 y의 위치를 같은 가로 눈금으로 비교한 해설 수직선이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "x=3−√5≈0.76",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "y=√7−1≈1.65",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "x<n≤y이며 n은 정수",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "서로 다른 근호를 포함한 x, y의 정확한 수를 엔진에 전달해 같은 가로 눈금의 위치로 나타낸다.",
+    "x<1<y라는 비교와 두 경계의 정수 사이 위치를 세 줄의 점으로 확인한다."
+  ]
+}
