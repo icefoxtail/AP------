@@ -50,8 +50,13 @@ test('ordinary runtime checks compile the exact checkout before catalog and reso
   const catalog = calls.findIndex(call => call.args[0] === 'archive/tools/build-archive2-catalog.mjs');
   const tests = calls.findIndex(call => call.args[0] === '--test');
   assert.ok(catalog > 0 && tests > catalog);
-  assert.ok(calls[tests].args.includes('archive/tools/meta-foundation/rpm-active-resolver.test.mjs'));
-  assert.ok(calls[tests].args.includes('tests/archive2-runtime-preparation.test.cjs'));
+  const testStages = calls.filter(call => call.args[0] === '--test');
+  assert.equal(testStages.length, 2, 'isolated timing tests and remaining runtime contracts both run');
+  const allTestFiles = testStages.flatMap(call => call.args.slice(2));
+  assert.equal(allTestFiles.length, 34);
+  assert.equal(new Set(allTestFiles).size, 34, 'every original runtime test file executes exactly once');
+  assert.ok(allTestFiles.includes('archive/tools/meta-foundation/rpm-active-resolver.test.mjs'));
+  assert.ok(allTestFiles.includes('tests/archive2-runtime-preparation.test.cjs'));
 });
 
 for (const [label, compilerResult] of [
@@ -69,9 +74,21 @@ for (const [label, compilerResult] of [
 test('registered runtime verification preserves the snapshot and executes the existing test gates', () => {
   const { calls, exitCode } = run({ registered: true });
   assert.equal(exitCode, 0);
-  assert.equal(calls.length, 1);
+  assert.equal(calls.length, 2);
   assert.equal(calls[0].args[0], '--test');
-  assert.ok(calls[0].args.includes('archive/tools/meta-foundation/rpm-active-resolver.test.mjs'));
-  assert.equal(calls[0].options.timeout, 180000);
-  assert.equal(calls[0].args.includes('--write'), false);
+  assert.equal(calls[1].args[0], '--test');
+  assert.ok(calls[0].args.includes('--test-concurrency=1'));
+  assert.ok(calls[1].args.includes('--test-concurrency=2'));
+  for (const timingFile of [
+    'tests/archive2-compose-performance.test.cjs',
+    'tests/archive2-key-resolver.test.js',
+    'tests/archive2-quick-pools.test.js',
+  ]) {
+    assert.ok(calls[0].args.includes(timingFile), `${timingFile} runs without a competing test file`);
+    assert.ok(!calls[1].args.includes(timingFile));
+  }
+  assert.ok(calls[1].args.includes('archive/tools/meta-foundation/rpm-active-resolver.test.mjs'));
+  assert.ok(calls.every(call => call.options.timeout > 0 && call.options.timeout <= 180000));
+  assert.ok(calls[1].options.timeout <= calls[0].options.timeout, 'both stages share one original deadline');
+  assert.ok(calls.every(call => !call.args.includes('--write')), 'registered verification does not rewrite sources');
 });
