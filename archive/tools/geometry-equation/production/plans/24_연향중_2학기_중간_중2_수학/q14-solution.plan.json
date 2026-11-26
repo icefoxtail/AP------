@@ -1,0 +1,42 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "5" }, { "kind": "rational", "numerator": "15388417685876", "denominator": "1000000000000" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "10" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "D", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "rational", "numerator": "1909830056251", "denominator": "1000000000000" }, { "kind": "rational", "numerator": "5877852522925", "denominator": "1000000000000" }] }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" }
+    ]
+  },
+  "coordinateCanvas": { "width": 480, "height": 540 },
+  "displayPoints": ["A", "B", "C", "D"],
+  "displaySegments": [
+    { "id": "sAB", "refs": ["A", "B"] },
+    { "id": "sAC", "refs": ["A", "C"] },
+    { "id": "sBC", "refs": ["B", "C"] },
+    { "id": "sCD", "refs": ["C", "D"] }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      { "id": "iso", "count": 1, "segments": ["sAB", "sAC"] },
+      { "id": "derived", "count": 2, "segments": ["sBC", "sCD"] }
+    ],
+    "angles": [
+      { "id": "aB", "refs": ["A", "B", "C"], "value": 72, "label": "72", "style": "ARC" },
+      { "id": "aA", "refs": ["B", "A", "C"], "value": 36, "label": "36", "style": "ARC" },
+      { "id": "aBCD", "refs": ["B", "C", "D"], "value": 36, "label": "36", "style": "ARC" },
+      { "id": "aDCA", "refs": ["D", "C", "A"], "value": 36, "label": "36", "style": "ARC" },
+      { "id": "aBDC", "refs": ["B", "D", "C"], "value": 72, "style": "ARC", "noLabel": true }
+    ]
+  },
+  "caption": "AB=AC인 이등변삼각형에서 CD가 C의 각을 이등분하며 △ABC∽△CDB로부터 밑각 x=72°를 확인한다.",
+  "accessibilityDescription": "이등변삼각형 ABC의 AB 위 D에서 C로 선분을 그렸다. AB와 AC는 한 눈금, BC와 CD는 닮음의 결과로 두 눈금이며 B의 각 72도, A의 각 36도, C의 분할각 각각 36도가 실제 각 호에 붙는다. 배경 및 내부 면 채움은 없다.",
+  "sourceConditions": [
+    { "id": "isosceles", "condition": "AB=AC이므로 두 밑각 ∠ABC=∠BCA=x", "mappedTo": ["sAB", "sAC", "iso", "aB"] },
+    { "id": "bisector", "condition": "D는 AB 위이며 CD는 C의 각 이등분선", "mappedTo": ["D", "sAB", "sCD", "aBCD", "aDCA"] },
+    { "id": "similar", "condition": "△ABC∽△CDB, ∠BAC=∠BCD=36°, ∠CDB=∠ABC=72°, x=72°", "mappedTo": ["aA", "aBCD", "aBDC", "aB", "derived"] }
+  ],
+  "newVisualInformation": ["기존 해설에서 점 C의 36°가 선분 및 호와 겹치던 위치를 수정하고 두 36°를 각각의 각 호에 결속한다.", "이등변 조건의 같은 길이 눈금과 닮음에서 나온 대응 길이 눈금을 구분한다. 기본 배경과 면 채움은 사용하지 않는다."]
+}

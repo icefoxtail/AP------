@@ -1,0 +1,42 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "6" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "6" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "D", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "6" }, { "kind": "integer", "value": "6" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "O", "op": "MIDPOINT", "inputs": ["A", "C"], "args": {}, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "E", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "rational", "numerator": "-3", "denominator": "5" }, { "kind": "rational", "numerator": "-9", "denominator": "5" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "F", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "rational", "numerator": "21", "denominator": "5" }, { "kind": "rational", "numerator": "-27", "denominator": "5" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "G", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "rational", "numerator": "39", "denominator": "5" }, { "kind": "rational", "numerator": "-3", "denominator": "5" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "P", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "rational", "numerator": "3", "denominator": "4" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "Q", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "6" }, { "kind": "rational", "numerator": "3", "denominator": "4" }] }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" }
+    ]
+  },
+  "coordinateCanvas": { "width": 620, "height": 520 },
+  "displayPoints": ["A", "B", "C", "D", "O", "E", "F", "G", "P", "Q"],
+  "displaySegments": [
+    { "id": "sAB", "refs": ["A", "B"] }, { "id": "sBP", "refs": ["B", "P"] },
+    { "id": "sPC", "refs": ["P", "C"] }, { "id": "sCQ", "refs": ["C", "Q"] },
+    { "id": "sQD", "refs": ["Q", "D"] }, { "id": "sDA", "refs": ["D", "A"] },
+    { "id": "sAO", "refs": ["A", "O"] }, { "id": "sOC", "refs": ["O", "C"] },
+    { "id": "sBO", "refs": ["B", "O"] }, { "id": "sOD", "refs": ["O", "D"] },
+    { "id": "sOP", "refs": ["O", "P"] }, { "id": "sPE", "refs": ["P", "E"] },
+    { "id": "sEF", "refs": ["E", "F"] }, { "id": "sFG", "refs": ["F", "G"] },
+    { "id": "sGQ", "refs": ["G", "Q"] }, { "id": "sQO", "refs": ["Q", "O"] }
+  ],
+  "planeMarks": {
+    "dimensions": [{ "id": "dAB", "from": "A", "to": "B", "label": "6", "unit": "cm", "side": "LEFT" }],
+    "regions": [{ "id": "rOverlap", "fill": "LIGHT", "shapes": [{ "polygon": ["O", "P", "C", "Q"] }] }]
+  },
+  "caption": "한 변이 6cm인 두 정사각형 ABCD와 OEFG의 겹친 영역 □OPCQ를 표시한 문제 그림",
+  "accessibilityDescription": "첫 정사각형의 중심 O에서 뻗는 두 번째 정사각형 OEFG의 변들이 BC의 P와 CD의 Q에서 만난다. 겹친 부분 OPCQ만 연한 회색으로 칠하고 다른 면은 채우지 않는다.",
+  "sourceConditions": [
+    { "id": "squares", "condition": "ABCD와 OEFG는 한 변 6cm인 정사각형, O는 ABCD 대각선 교점", "mappedTo": ["sAB", "sBP", "sPC", "sCQ", "sQD", "sDA", "sAO", "sOC", "sBO", "sOD", "sOP", "sPE", "sEF", "sFG", "sGQ", "sQO", "dAB"] },
+    { "id": "overlap", "condition": "두 정사각형의 겹친 부분은 O-P-C-Q로 닫히는 사각형", "mappedTo": ["sOP", "sPC", "sCQ", "sQO", "rOverlap"] }
+  ],
+  "newVisualInformation": ["원본 스캔에서 강조한 겹침 OPCQ가 기존 문제 SVG에서 전혀 칠해지지 않았던 결함을 보완한다.", "필수 영역만 LIGHT로 칠하고 정답인 9cm²는 문제 그림에 노출하지 않는다."]
+}

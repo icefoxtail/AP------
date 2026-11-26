@@ -1,0 +1,427 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-3",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-9",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "21",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-27",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "39",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-3",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 520
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "O",
+    "E",
+    "F",
+    "G",
+    "P",
+    "Q"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBP",
+      "refs": [
+        "B",
+        "P"
+      ]
+    },
+    {
+      "id": "sPC",
+      "refs": [
+        "P",
+        "C"
+      ]
+    },
+    {
+      "id": "sCQ",
+      "refs": [
+        "C",
+        "Q"
+      ]
+    },
+    {
+      "id": "sQD",
+      "refs": [
+        "Q",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAO",
+      "refs": [
+        "A",
+        "O"
+      ]
+    },
+    {
+      "id": "sOC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "sBO",
+      "refs": [
+        "B",
+        "O"
+      ]
+    },
+    {
+      "id": "sOD",
+      "refs": [
+        "O",
+        "D"
+      ]
+    },
+    {
+      "id": "sOP",
+      "refs": [
+        "O",
+        "P"
+      ]
+    },
+    {
+      "id": "sPE",
+      "refs": [
+        "P",
+        "E"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "sFG",
+      "refs": [
+        "F",
+        "G"
+      ]
+    },
+    {
+      "id": "sGQ",
+      "refs": [
+        "G",
+        "Q"
+      ]
+    },
+    {
+      "id": "sQO",
+      "refs": [
+        "Q",
+        "O"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dAB",
+        "from": "A",
+        "to": "B",
+        "label": "6",
+        "unit": "cm",
+        "side": "LEFT"
+      }
+    ],
+    "regions": [
+      {
+        "id": "rOverlap",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "O",
+              "P",
+              "C",
+              "Q"
+            ]
+          }
+        ],
+        "label": "9",
+        "labelName": "□OPCQ",
+        "unit": "cm^2",
+        "labelPlacement": "AUTO_LEADER"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "radii",
+        "count": 1,
+        "segments": [
+          "sBO",
+          "sOC"
+        ]
+      }
+    ]
+  },
+  "caption": "두 정사각형의 겹친 □OPCQ는 △OBC와 넓이가 같아 9cm²가 되는 해설",
+  "accessibilityDescription": "두 정사각형 ABCD와 OEFG가 O를 공유하고 겹침 영역 OPCQ가 회색으로 표시된다. BO와 CO의 같은 길이를 나타내며, 겹침 영역에는 넓이 9cm²의 라벨이 연결된다.",
+  "sourceConditions": [
+    {
+      "id": "squares",
+      "condition": "두 정사각형의 한 변은 6cm이고 O는 ABCD의 대각선 교점",
+      "mappedTo": [
+        "sAB",
+        "sBP",
+        "sPC",
+        "sCQ",
+        "sQD",
+        "sDA",
+        "sAO",
+        "sOC",
+        "sBO",
+        "sOD",
+        "sOP",
+        "sPE",
+        "sEF",
+        "sFG",
+        "sGQ",
+        "sQO",
+        "dAB"
+      ]
+    },
+    {
+      "id": "congruence",
+      "condition": "OB=OC이며 △OBP≡△OCQ가 되어 겹침 영역은 △OBC와 넓이가 같다",
+      "mappedTo": [
+        "sBO",
+        "sOC",
+        "radii",
+        "sOP",
+        "sPC",
+        "sCQ",
+        "sQO"
+      ]
+    },
+    {
+      "id": "area",
+      "condition": "□OPCQ=△OBC=6×3/2=9cm²",
+      "mappedTo": [
+        "rOverlap",
+        "dAB"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "기존 해설의 단순한 검은 외곽과 텍스트 대신 겹침 영역 OPCQ 하나만 LIGHT로 칠한다.",
+    "해설용에는 영역 내부·지시선 라벨로 9cm²를 쓰고 BO=OC 대응 길이는 실제 눈금으로 표시한다."
+  ]
+}

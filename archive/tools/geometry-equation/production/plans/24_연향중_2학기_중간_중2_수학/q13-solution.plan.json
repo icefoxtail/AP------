@@ -1,0 +1,37 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "4" }, { "kind": "integer", "value": "15" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "12" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "D", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "rational", "numerator": "32", "denominator": "5" }, { "kind": "integer", "value": "15" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "O", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "rational", "numerator": "16", "denominator": "3" }, { "kind": "rational", "numerator": "25", "denominator": "2" }] }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" }
+    ]
+  },
+  "coordinateCanvas": { "width": 540, "height": 440 },
+  "displayPoints": ["A", "B", "C", "D", "O"],
+  "displaySegments": [
+    { "id": "sAB", "refs": ["A", "B"] }, { "id": "sBC", "refs": ["B", "C"] },
+    { "id": "sCD", "refs": ["C", "D"] }, { "id": "sDA", "refs": ["D", "A"] },
+    { "id": "sAO", "refs": ["A", "O"] }, { "id": "sOC", "refs": ["O", "C"] },
+    { "id": "sBO", "refs": ["B", "O"] }, { "id": "sOD", "refs": ["O", "D"] }
+  ],
+  "planeMarks": {
+    "parallels": [{ "id": "tops", "count": 1, "segments": ["sDA", "sBC"] }],
+    "regions": [
+      { "id": "rOBC", "fill": "LIGHT", "label": "75", "labelName": "△OBC", "unit": "cm^2", "labelPlacement": "AUTO_LEADER", "shapes": [{ "polygon": ["O", "B", "C"] }] },
+      { "id": "rOCD", "fill": "MEDIUM", "label": "15", "labelName": "△OCD", "unit": "cm^2", "labelPlacement": "AUTO_LEADER", "shapes": [{ "polygon": ["O", "C", "D"] }] }
+    ]
+  },
+  "caption": "사다리꼴에서 △DBC의 넓이 90과 △OBC의 넓이 75를 나누어 △OCD=△AOB=15를 보인다",
+  "accessibilityDescription": "평행한 밑변 AD와 BC를 가진 사다리꼴 ABCD에서 대각선은 O에서 교차한다. 삼각형 OBC의 넓이는 75, OCD의 넓이는 15로 각자의 실제 영역에 표시된다.",
+  "sourceConditions": [
+    { "id": "trapezoid", "condition": "AD∥BC이고 AC와 BD의 교점이 O", "mappedTo": ["sDA", "sBC", "sAO", "sOC", "sBO", "sOD", "tops"] },
+    { "id": "areas", "condition": "△DBC=90cm², △OBC=75cm²이므로 △OCD=15cm²", "mappedTo": ["rOBC", "rOCD"] },
+    { "id": "answer", "condition": "같은 밑변 AD·같은 높이에서 △AOB=△OCD=15cm²", "mappedTo": ["sAB", "sAO", "sBO", "rOCD"] }
+  ],
+  "newVisualInformation": ["기존 해설의 임의 위치에 떠 있던 90·75·15 텍스트를 실제 넓이 분할 영역과 연결한다.", "문제가 넓이를 비교하므로 해당 두 삼각형만 아주 옅게 구분하며 배경·나머지 도형 채움은 없다."]
+}
