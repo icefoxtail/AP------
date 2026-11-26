@@ -46,7 +46,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RANGE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_144_꼬인위치에있는두직선이이루는각2_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "모서리 6인 정육면체의 상면 AC 위 AP:PC=2:1인 P와 PF",
+    "imageCaption": "모서리 6인 정육면체의 상면 AC 위 AP:PC=2:1인 P와 PF",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -90,7 +94,11 @@ window.questionBank = [
       "CC_PYTHAGOREAN_THEOREM"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_144_꼬인위치에있는두직선이이루는각2_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "밑변 4×4, 높이 2인 직육면체의 면 대각선 BE와 FH",
+    "imageCaption": "밑변 4×4, 높이 2인 직육면체의 면 대각선 BE와 FH",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -137,7 +145,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RANGE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_144_꼬인위치에있는두직선이이루는각2_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "모서리 2인 정육면체에서 DH 중점 M, 선분 BM 및 내부 대각선 DF",
+    "imageCaption": "모서리 2인 정육면체에서 DH 중점 M, 선분 BM 및 내부 대각선 DF",
+    "imageSize": "full"
   },
   {
     "id": 4,

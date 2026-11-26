@@ -43,7 +43,11 @@ window.questionBank = [
       "CC_EQUILATERAL_TRIANGLE"
     ],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "image": "assets/images/기하_143_꼬인위치에있는두직선이이루는각1_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "정육면체 ABCD-EFGH의 기본 입체도",
+    "imageCaption": "정육면체 ABCD-EFGH의 기본 입체도",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -87,7 +91,11 @@ window.questionBank = [
       "CC_PYTHAGOREAN_THEOREM"
     ],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "image": "assets/images/기하_143_꼬인위치에있는두직선이이루는각1_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "정육면체 ABCD-EFGH의 기본 입체도",
+    "imageCaption": "정육면체 ABCD-EFGH의 기본 입체도",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -131,7 +139,11 @@ window.questionBank = [
       "CC_PYTHAGOREAN_THEOREM"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_143_꼬인위치에있는두직선이이루는각1_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "한 모서리가 1인 정육면체 ABCD-EFGH",
+    "imageCaption": "한 모서리가 1인 정육면체 ABCD-EFGH",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -175,7 +187,11 @@ window.questionBank = [
       "CC_PYTHAGOREAN_THEOREM"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_143_꼬인위치에있는두직선이이루는각1_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "AB=2, AD=3, AE=6인 직육면체 ABCD-EFGH",
+    "imageCaption": "AB=2, AD=3, AE=6인 직육면체 ABCD-EFGH",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -220,7 +236,11 @@ window.questionBank = [
       "CC_PYTHAGOREAN_THEOREM"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_143_꼬인위치에있는두직선이이루는각1_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "EF=FG=CG=2인 직육면체에서 윗면 AC의 중점 M과 F를 이은 MF",
+    "imageCaption": "EF=FG=CG=2인 직육면체에서 윗면 AC의 중점 M과 F를 이은 MF",
+    "imageSize": "full"
   },
   {
     "id": 6,
@@ -265,7 +285,11 @@ window.questionBank = [
       "CC_TRIGONOMETRIC_IDENTITY"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_143_꼬인위치에있는두직선이이루는각1_고2_유형은행1/q6-problem.svg",
+    "imageAlt": "밑면이 정삼각형이고 높이가 밑변과 같아 옆면이 모두 정사각형인 직삼각기둥",
+    "imageCaption": "밑면이 정삼각형이고 높이가 밑변과 같아 옆면이 모두 정사각형인 직삼각기둥",
+    "imageSize": "full"
   },
   {
     "id": 7,
@@ -309,7 +333,11 @@ window.questionBank = [
       "CC_PYTHAGOREAN_THEOREM"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_143_꼬인위치에있는두직선이이루는각1_고2_유형은행1/q7-problem.svg",
+    "imageAlt": "밑변 √2, 직기둥 높이 1인 삼각기둥 ABC-DEF",
+    "imageCaption": "밑변 √2, 직기둥 높이 1인 삼각기둥 ABC-DEF",
+    "imageSize": "full"
   },
   {
     "id": 8,
@@ -353,7 +381,11 @@ window.questionBank = [
       "CC_EQUILATERAL_TRIANGLE"
     ],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "image": "assets/images/기하_143_꼬인위치에있는두직선이이루는각1_고2_유형은행1/q8-problem.svg",
+    "imageAlt": "A와 F가 마주 보고 BCDE가 정사각형인 정팔면체",
+    "imageCaption": "A와 F가 마주 보고 BCDE가 정사각형인 정팔면체",
+    "imageSize": "full"
   },
   {
     "id": 9,
@@ -398,7 +430,11 @@ window.questionBank = [
       "CC_PYTHAGOREAN_THEOREM"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_143_꼬인위치에있는두직선이이루는각1_고2_유형은행1/q9-problem.svg",
+    "imageAlt": "모든 모서리 길이 4인 정사면체 ABCD, CD의 중점 M",
+    "imageCaption": "모든 모서리 길이 4인 정사면체 ABCD, CD의 중점 M",
+    "imageSize": "full"
   },
   {
     "id": 10,
@@ -443,6 +479,10 @@ window.questionBank = [
       "CC_EQUILATERAL_TRIANGLE"
     ],
     "conditionKeys": [],
-    "integrationPattern": "REINTERPRETATION"
+    "integrationPattern": "REINTERPRETATION",
+    "image": "assets/images/기하_143_꼬인위치에있는두직선이이루는각1_고2_유형은행1/q10-problem.svg",
+    "imageAlt": "전개도를 접어 완성한 정육면체의 서로 다른 두 면 대각선 BD와 CF",
+    "imageCaption": "전개도를 접어 완성한 정육면체의 서로 다른 두 면 대각선 BD와 CF",
+    "imageSize": "full"
   }
 ];

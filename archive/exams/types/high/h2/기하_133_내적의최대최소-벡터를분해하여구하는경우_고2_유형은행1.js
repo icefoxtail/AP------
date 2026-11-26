@@ -43,7 +43,11 @@ window.questionBank = [
       "CC_PYTHAGOREAN"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_133_내적의최대최소-벡터를분해하여구하는경우_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "AB=3·AD=4 직사각형과 CD를 지름으로 하는 오른쪽 외부 반원",
+    "imageCaption": "AB=3·AD=4 직사각형과 CD를 지름으로 하는 오른쪽 외부 반원",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -87,7 +91,11 @@ window.questionBank = [
       "CC_PYTHAGOREAN"
     ],
     "conditionKeys": [],
-    "integrationPattern": "CASE_BRANCH"
+    "integrationPattern": "CASE_BRANCH",
+    "image": "assets/images/기하_133_내적의최대최소-벡터를분해하여구하는경우_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "AB=4·AD=2√5 직사각형의 오른쪽 CD 반원과 아래쪽 BC 반원",
+    "imageCaption": "AB=4·AD=2√5 직사각형의 오른쪽 CD 반원과 아래쪽 BC 반원",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -131,7 +139,11 @@ window.questionBank = [
       "CC_INSCRIBED_ANGLE"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_133_내적의최대최소-벡터를분해하여구하는경우_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "한 변 6 정삼각형 ABC, 지름 BC의 전체 원 및 A 반대쪽 호의 P",
+    "imageCaption": "한 변 6 정삼각형 ABC, 지름 BC의 전체 원 및 A 반대쪽 호의 P",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -176,7 +188,11 @@ window.questionBank = [
       "CC_DISTANCE_TWO_POINTS"
     ],
     "conditionKeys": [],
-    "integrationPattern": "REINTERPRETATION"
+    "integrationPattern": "REINTERPRETATION",
+    "image": "assets/images/기하_133_내적의최대최소-벡터를분해하여구하는경우_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "변 길이 7인 정사각형 안의 반지름 3 원 C₁(B 쪽)·C₂(D 쪽)와 P,Q",
+    "imageCaption": "변 길이 7인 정사각형 안의 반지름 3 원 C₁(B 쪽)·C₂(D 쪽)와 P,Q",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -222,6 +238,10 @@ window.questionBank = [
     "conditionKeys": [
       "COND_NATURAL"
     ],
-    "integrationPattern": "REINTERPRETATION"
+    "integrationPattern": "REINTERPRETATION",
+    "image": "assets/images/기하_133_내적의최대최소-벡터를분해하여구하는경우_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "정삼각형 ABC, BC 위의 D와 AD(∠DAB=30°), 지름 AC인 원 및 이동점 X",
+    "imageCaption": "정삼각형 ABC, BC 위의 D와 AD(∠DAB=30°), 지름 AC인 원 및 이동점 X",
+    "imageSize": "full"
   }
 ];

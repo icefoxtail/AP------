@@ -233,6 +233,10 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RANGE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_122_평면벡터의내적의성질과수직_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "AB=4·BC=2 직사각형 내부의 이동점 P와 네 연결선",
+    "imageCaption": "AB=4·BC=2 직사각형 내부의 이동점 P와 네 연결선",
+    "imageSize": "full"
   }
 ];

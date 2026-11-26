@@ -42,7 +42,11 @@ window.questionBank = [
       "CC_SPACE_FIGURE"
     ],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "image": "assets/images/기하_142_공간에서위치관계_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "두 삼각형 ABC·DEF와 대응 옆모서리 AD·BE·CF인 삼각기둥",
+    "imageCaption": "두 삼각형 ABC·DEF와 대응 옆모서리 AD·BE·CF인 삼각기둥",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -85,7 +89,11 @@ window.questionBank = [
       "CC_SPACE_FIGURE"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_142_공간에서위치관계_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "정삼각형 윗밑면 ABC와 아랫밑면 DEF, 직사각형 옆면의 직삼각기둥",
+    "imageCaption": "정삼각형 윗밑면 ABC와 아랫밑면 DEF, 직사각형 옆면의 직삼각기둥",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -128,7 +136,11 @@ window.questionBank = [
       "CC_SPACE_FIGURE"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_142_공간에서위치관계_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "정사각형 BCDE를 밑면으로 하고 꼭짓점 A가 위에 있는 사각뿔 A-BCDE",
+    "imageCaption": "정사각형 BCDE를 밑면으로 하고 꼭짓점 A가 위에 있는 사각뿔 A-BCDE",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -171,7 +183,11 @@ window.questionBank = [
       "CC_SPACE_FIGURE"
     ],
     "conditionKeys": [],
-    "integrationPattern": "CASE_BRANCH"
+    "integrationPattern": "CASE_BRANCH",
+    "image": "assets/images/기하_142_공간에서위치관계_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "위 꼭짓점 A, 아래 꼭짓점 F, 가운데 정사각형 BCDE인 정팔면체",
+    "imageCaption": "위 꼭짓점 A, 아래 꼭짓점 F, 가운데 정사각형 BCDE인 정팔면체",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -215,7 +231,11 @@ window.questionBank = [
       "CC_EQUILATERAL_TRIANGLE"
     ],
     "conditionKeys": [],
-    "integrationPattern": "CASE_BRANCH"
+    "integrationPattern": "CASE_BRANCH",
+    "image": "assets/images/기하_142_공간에서위치관계_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "마주 보는 A와 F, 같은 평면의 정사각형 BCDE인 정팔면체",
+    "imageCaption": "마주 보는 A와 F, 같은 평면의 정사각형 BCDE인 정팔면체",
+    "imageSize": "full"
   },
   {
     "id": 6,
@@ -258,7 +278,11 @@ window.questionBank = [
       "CC_SPACE_FIGURE"
     ],
     "conditionKeys": [],
-    "integrationPattern": "CASE_BRANCH"
+    "integrationPattern": "CASE_BRANCH",
+    "image": "assets/images/기하_142_공간에서위치관계_고2_유형은행1/q6-problem.svg",
+    "imageAlt": "위 정오각형 ABCDE, 아래 정오각형 FGHIJ, AF·BG·CH·DI·EJ가 옆모서리인 직오각기둥",
+    "imageCaption": "위 정오각형 ABCDE, 아래 정오각형 FGHIJ, AF·BG·CH·DI·EJ가 옆모서리인 직오각기둥",
+    "imageSize": "full"
   },
   {
     "id": 7,
@@ -345,6 +369,10 @@ window.questionBank = [
       "CC_SPACE_FIGURE"
     ],
     "conditionKeys": [],
-    "integrationPattern": "CASE_BRANCH"
+    "integrationPattern": "CASE_BRANCH",
+    "image": "assets/images/기하_142_공간에서위치관계_고2_유형은행1/q8-problem.svg",
+    "imageAlt": "윗면 ABCD, 아랫면 EFGH인 직육면체",
+    "imageCaption": "윗면 ABCD, 아랫면 EFGH인 직육면체",
+    "imageSize": "full"
   }
 ];

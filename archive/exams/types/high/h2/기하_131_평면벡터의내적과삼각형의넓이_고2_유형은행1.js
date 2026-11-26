@@ -43,7 +43,11 @@ window.questionBank = [
       "CC_TRIGONOMETRIC_TANGENT"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_131_평면벡터의내적과삼각형의넓이_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "OA=6, OB=4, OA·OB=12인 두 벡터의 삼각형 OAB",
+    "imageCaption": "OA=6, OB=4, OA·OB=12인 두 벡터의 삼각형 OAB",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -86,7 +90,11 @@ window.questionBank = [
       "CC_TRIANGLE_AREA"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_131_평면벡터의내적과삼각형의넓이_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "OA=2, OB=4이고 OA+OB의 크기가 2√7인 삼각형 OAB",
+    "imageCaption": "OA=2, OB=4이고 OA+OB의 크기가 2√7인 삼각형 OAB",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -172,7 +180,11 @@ window.questionBank = [
       "CC_PARALLELOGRAM_AREA"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_131_평면벡터의내적과삼각형의넓이_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "OA=a(길이 3), OC=b(길이 8), 내적 12인 평행사변형 OABC",
+    "imageCaption": "OA=a(길이 3), OC=b(길이 8), 내적 12인 평행사변형 OABC",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -262,7 +274,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RANGE"
     ],
-    "integrationPattern": "CASE_BRANCH"
+    "integrationPattern": "CASE_BRANCH",
+    "image": "assets/images/기하_131_평면벡터의내적과삼각형의넓이_고2_유형은행1/q6-problem.svg",
+    "imageAlt": "A(-3,0), B(3,0)와 제1사분면 반비례곡선 y=4/x 위의 움직이는 P",
+    "imageCaption": "A(-3,0), B(3,0)와 제1사분면 반비례곡선 y=4/x 위의 움직이는 P",
+    "imageSize": "full"
   },
   {
     "id": 7,
@@ -393,7 +409,11 @@ window.questionBank = [
       "CC_ELLIPSE"
     ],
     "conditionKeys": [],
-    "integrationPattern": "INTERDEPENDENT"
+    "integrationPattern": "INTERDEPENDENT",
+    "image": "assets/images/기하_131_평면벡터의내적과삼각형의넓이_고2_유형은행1/q9-problem.svg",
+    "imageAlt": "타원 x²/16+y²/7과 두 초점 F,F′ 및 움직이는 P에서 두 초점까지의 연결",
+    "imageCaption": "타원 x²/16+y²/7과 두 초점 F,F′ 및 움직이는 P에서 두 초점까지의 연결",
+    "imageSize": "full"
   },
   {
     "id": 10,
@@ -480,6 +500,10 @@ window.questionBank = [
       "CC_CONIC_TANGENT"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_131_평면벡터의내적과삼각형의넓이_고2_유형은행1/q11-problem.svg",
+    "imageAlt": "타원 x²/3+y²=1과 A(1,0), B(0,1), P에서의 최대 조건 접선",
+    "imageCaption": "타원 x²/3+y²=1과 A(1,0), B(0,1), P에서의 최대 조건 접선",
+    "imageSize": "full"
   }
 ];

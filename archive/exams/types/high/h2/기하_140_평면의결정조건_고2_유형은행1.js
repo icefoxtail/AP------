@@ -130,7 +130,11 @@ window.questionBank = [
       "CC_SKEW_LINES"
     ],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "image": "assets/images/기하_140_평면의결정조건_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "윗밑면 ABC, 아랫밑면 DEF, 대응 평행 모서리 AD·BE·CF인 삼각기둥",
+    "imageCaption": "윗밑면 ABC, 아랫밑면 DEF, 대응 평행 모서리 AD·BE·CF인 삼각기둥",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -173,7 +177,11 @@ window.questionBank = [
       "CC_SPACE_FIGURE"
     ],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "image": "assets/images/기하_140_평면의결정조건_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "윗면 ABCD·아랫면 EFGH, 평행한 AE·BF·CG·DH의 직육면체",
+    "imageCaption": "윗면 ABCD·아랫면 EFGH, 평행한 AE·BF·CG·DH의 직육면체",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -216,6 +224,10 @@ window.questionBank = [
       "CC_SPACE_FIGURE"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_140_평면의결정조건_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "윗면 ABCD·아랫면 EFGH인 정육면체의 세 점 A,C,G와 직선 BD,FH",
+    "imageCaption": "윗면 ABCD·아랫면 EFGH인 정육면체의 세 점 A,C,G와 직선 BD,FH",
+    "imageSize": "full"
   }
 ];

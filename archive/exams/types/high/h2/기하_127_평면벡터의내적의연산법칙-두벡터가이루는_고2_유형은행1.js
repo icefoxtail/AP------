@@ -169,7 +169,11 @@ window.questionBank = [
       "CC_EQUILATERAL_TRIANGLE"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_127_평면벡터의내적의연산법칙-두벡터가이루는_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "한 변의 길이 1인 정삼각형과 A에서 B,C로 향하는 벡터 a,b",
+    "imageCaption": "한 변의 길이 1인 정삼각형과 A에서 B,C로 향하는 벡터 a,b",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -212,7 +216,11 @@ window.questionBank = [
       "CC_REGULAR_HEXAGON"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_127_평면벡터의내적의연산법칙-두벡터가이루는_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "한 변의 길이가 1인 정육각형 ABCDEF와 BA=a, BC=b",
+    "imageCaption": "한 변의 길이가 1인 정육각형 ABCDEF와 BA=a, BC=b",
+    "imageSize": "full"
   },
   {
     "id": 6,
@@ -255,6 +263,10 @@ window.questionBank = [
       "CC_SQUARE_PROPERTIES"
     ],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "image": "assets/images/기하_127_평면벡터의내적의연산법칙-두벡터가이루는_고2_유형은행1/q6-problem.svg",
+    "imageAlt": "한 변 1의 정사각형 ABCD와 A에서 시작하는 직교 벡터 a,b",
+    "imageCaption": "한 변 1의 정사각형 ABCD와 A에서 시작하는 직교 벡터 a,b",
+    "imageSize": "full"
   }
 ];
