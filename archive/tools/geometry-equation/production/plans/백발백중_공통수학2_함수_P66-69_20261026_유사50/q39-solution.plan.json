@@ -1,0 +1,134 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -1,
+      6,
+      -1,
+      6
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "9/4",
+          "0",
+          "1"
+        ],
+        "domain": [
+          "0",
+          "2"
+        ],
+        "color": "BLUE",
+        "label": "y=f(x)"
+      },
+      {
+        "id": "g",
+        "kind": "X_OF_Y",
+        "coefficients": [
+          "9/4",
+          "0",
+          "1"
+        ],
+        "domain": [
+          "0",
+          "2"
+        ],
+        "branch": "POSITIVE",
+        "color": "WARM",
+        "label": "y=g(x)"
+      },
+      {
+        "id": "sym",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "0",
+          "5"
+        ],
+        "style": "DASHED",
+        "label": "y=x"
+      },
+      {
+        "id": "sec",
+        "kind": "LINE",
+        "coefficients": [
+          "3",
+          "-1"
+        ],
+        "domain": [
+          "0",
+          "5"
+        ],
+        "label": "y=-x+3"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "3"
+      ],
+      "y": [
+        "1",
+        "3"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "1/2",
+          "y": "5/2"
+        },
+        {
+          "id": "B",
+          "x": "5/2",
+          "y": "1/2"
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "A": "A",
+    "B": "B"
+  },
+  "caption": "f와 역함수 g는 y=x에 대칭이다. 최적일 때 k=3, A=(1/2,5/2), B=(5/2,1/2)이며 AB=2√2.",
+  "accessibilityDescription": "증가하는 포물선 y=x²+9/4의 x≥0 부분과 y=x 대칭인 역함수 그래프, 기울기가 −1인 직선 및 두 교점 A, B와 대칭축 y=x.",
+  "sourceConditions": [
+    {
+      "id": "f",
+      "condition": "f(x)=x²+9/4 (x≥0)",
+      "mappedTo": "graphPlan.curves[0]"
+    },
+    {
+      "id": "inverse",
+      "condition": "g=f⁻¹이고 f와 g의 그래프는 y=x에 대하여 대칭",
+      "mappedTo": [
+        "graphPlan.curves[1]",
+        "graphPlan.curves[2]"
+      ]
+    },
+    {
+      "id": "line",
+      "condition": "A, B는 동일한 기울기 −1인 직선 y=−x+k 위에 있다.",
+      "mappedTo": [
+        "graphPlan.curves[3]",
+        "graphPlan.overlays.points"
+      ]
+    },
+    {
+      "id": "sample",
+      "condition": "AB 최솟값을 주는 t=1/2와 k=3으로 두 교점을 표시",
+      "mappedTo": "graphPlan.overlays.points"
+    }
+  ],
+  "newVisualInformation": [
+    "역함수 대칭으로 A=(t,f(t)), B=(f(t),t)이며 AB가 y=x에 수직인 선분임을 보여 준다."
+  ],
+  "sourceQuote": "함수 $f(x)=x^2+\\frac{9}{4} (x \\ge 0)$의 역함수를 $g(x)$라 하자. 직선 $y=-x+k$가 두 곡선 $y=f(x), y=g(x)$와 만나는 점을 각각 $\\mathrm{A}, \\mathrm{B}$라 할 때, 선분 $\\mathrm{AB}$의 길이의 제곱의 최솟값은? (단, $k \\ge \\frac{9}{4}$)"
+}
