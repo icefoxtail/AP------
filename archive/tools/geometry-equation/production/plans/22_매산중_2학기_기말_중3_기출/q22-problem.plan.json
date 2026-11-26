@@ -1,0 +1,112 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 6,
+        "depth": 6
+      },
+      "height": 6,
+      "names": {
+        "base": [
+          "B",
+          ".",
+          ".",
+          "."
+        ],
+        "top": [
+          "A",
+          "C",
+          ".",
+          "D"
+        ]
+      },
+      "points": [
+        {
+          "id": "H",
+          "at": {
+            "projection": {
+              "from": "A",
+              "plane": [
+                "B",
+                "C",
+                "D"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "B",
+      "to": "C",
+      "style": "SOLID"
+    },
+    {
+      "from": "B",
+      "to": "D",
+      "style": "DASHED"
+    },
+    {
+      "from": "C",
+      "to": "D",
+      "style": "SOLID"
+    },
+    {
+      "from": "A",
+      "to": "H",
+      "style": "DASHED"
+    },
+    {
+      "from": "H",
+      "to": "B",
+      "style": "DASHED"
+    }
+  ],
+  "dims": [
+    {
+      "from": "B",
+      "to": "#b1",
+      "label": "6"
+    }
+  ],
+  "marks": {
+    "angles": [
+      {
+        "id": "given-a",
+        "refs": [
+          "B",
+          "A",
+          "H"
+        ],
+        "label": "a"
+      }
+    ]
+  },
+  "solidCaption": {
+    "text": "정육면체와 BCD 절단면"
+  },
+  "caption": "한 모서리 6인 정육면체의 세 면대각선 BC·CD·DB가 이루는 절단 삼각뿔과 수선 AH, 각 BAH=a",
+  "sourceQuote": "[수준별1-②] 아래 그림과 같이 한 모서리의 길이가 $6$인 정육면체를 세 꼭짓점 $B,C,D$를 지나는 평면으로 잘라서 만든 삼각뿔의 꼭짓점 $A$에서 면 $BCD$에 내린 수선의 발을 $H$라고 하자. $\\angle BAH=a^\\circ$일 때, 이 삼각뿔의 부피를 $a^\\circ$를 이용하여 구하는 풀이 과정과 답을 쓰시오. (5점)",
+  "sourceConditions": [
+    {
+      "id": "original-cube-tetra",
+      "condition": "[수준별1-②] 아래 그림과 같이 한 모서리의 길이가 $6$인 정육면체를 세 꼭짓점 $B,C,D$를 지나는 평면으로 잘라서 만든 삼각뿔의 꼭짓점 $A$에서 면 $BCD$에 내린 수선의 발을 $H$라고 하자. $\\angle BAH=a^\\circ$일 때, 이 삼각뿔의 부피를 $a^\\circ$를 이용하여 구하는 풀이 과정과 답을 쓰시오. (5점)",
+      "mappedTo": [
+        "solids",
+        "segments",
+        "dims",
+        "marks.angles"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "정육면체 12모서리, 삼각형 BCD와 A에서 내린 수선 AH의 입체 위치를 원문대로 표현",
+    "문제용 그림에는 밑넓이·수선 길이·최종 부피의 답을 표시하지 않음"
+  ]
+}

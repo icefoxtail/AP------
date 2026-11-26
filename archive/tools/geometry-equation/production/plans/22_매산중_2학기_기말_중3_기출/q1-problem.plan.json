@@ -1,0 +1,152 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "B",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "90"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displayLines": [],
+  "displaySegments": [
+    {
+      "id": "ab",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "bc",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "ac",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "right",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 90,
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "hyp",
+        "ownerSegment": "ac",
+        "text": "b",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "adj",
+        "ownerSegment": "ab",
+        "text": "c",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "opp",
+        "ownerSegment": "bc",
+        "text": "a",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "직각삼각형 ABC에서 B는 직각이고 AC=b, AB=c, BC=a라는 세 변 표기를 보여 준다.",
+  "sourceConditions": [
+    {
+      "id": "original-figure",
+      "condition": "직각삼각형 ABC에서 B는 직각이고 AC=b, AB=c, BC=a라는 세 변 표기를 보여 준다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "직각삼각형 ABC에서 B는 직각이고 AC=b, AB=c, BC=a라는 세 변 표기를 보여 준다."
+  ],
+  "accessibilityDescription": "직각삼각형 ABC에서 B는 직각이고 AC=b, AB=c, BC=a라는 세 변 표기를 보여 준다.",
+  "sourceQuote": "오른쪽 그림과 같이 $\\angle B=90^\\circ$인 직각삼각"
+}

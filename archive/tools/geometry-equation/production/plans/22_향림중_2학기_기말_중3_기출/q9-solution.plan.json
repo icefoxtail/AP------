@@ -1,0 +1,267 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "X",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "190"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "255"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "340"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "110"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "solutionCirc",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "8"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "X",
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "AD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "BD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "atD",
+        "refs": [
+          "A",
+          "D",
+          "C"
+        ],
+        "value": 75,
+        "label": "75",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "atC",
+        "refs": [
+          "A",
+          "C",
+          "D"
+        ],
+        "value": 40,
+        "label": "40",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "atB",
+        "refs": [
+          "D",
+          "B",
+          "C"
+        ],
+        "value": 65,
+        "label": "65",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "derivedAtA",
+        "refs": [
+          "D",
+          "A",
+          "C"
+        ],
+        "value": 65,
+        "label": "65",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "O",
+    "X"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displayCircles": [
+    "solutionCirc"
+  ],
+  "caption": "②의 A와 B에서 선분 DC를 보는 각이 각각 65°이므로 네 점이 한 원 위에 있다",
+  "sourceQuote": "다음 그림에서 네 점 $A$, $B$, $C$, $D$가 한 원 위에 있는 것은? [4점]",
+  "sourceConditions": [
+    {
+      "id": "choice-two-proof",
+      "condition": "[키포인트] 같은 선분을 보는 두 각의 크기가 같으면 네 점이 한 원 위에 있음을 이용한다.\n②에서 $\\angle ADC=75^\\circ$, $\\angle ACD=40^\\circ$이므로 $\\angle DAC=180^\\circ-75^\\circ-40^\\circ=65^\\circ$이다.\n또 그림에서 $\\angle DBC=65^\\circ$이다. 따라서 $\\angle DAC=\\angle DBC$이고 두 각은 모두 선분 $DC$를 본다. 그러므로 네 점 $A,B,C,D$는 한 원 위에 있다.\n따라서 정답은 ②이다.",
+      "mappedTo": [
+        "displaySegments",
+        "planeMarks.angles",
+        "displayCircles"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "삼각형 내각합으로 구한 65°와 같은 원주각을 표시"
+  ]
+}

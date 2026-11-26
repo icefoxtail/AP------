@@ -1,0 +1,333 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "V",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "N",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "expression",
+              "op": "neg",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "21"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "expression",
+              "op": "neg",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "21"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "expression",
+              "op": "neg",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "21"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "H",
+    "U",
+    "V",
+    "N",
+    "L",
+    "R"
+  ],
+  "hiddenPointNames": [
+    "H",
+    "U",
+    "V",
+    "N",
+    "L",
+    "R"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "UV",
+      "refs": [
+        "U",
+        "V"
+      ]
+    },
+    {
+      "id": "OH",
+      "refs": [
+        "O",
+        "H"
+      ]
+    },
+    {
+      "id": "LR",
+      "refs": [
+        "L",
+        "R"
+      ]
+    },
+    {
+      "id": "ON",
+      "refs": [
+        "O",
+        "N"
+      ]
+    },
+    {
+      "id": "OL",
+      "refs": [
+        "O",
+        "L"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "rightTop",
+        "refs": [
+          "O",
+          "H",
+          "V"
+        ],
+        "value": 90,
+        "noLabel": true,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "rightBottom",
+        "refs": [
+          "O",
+          "N",
+          "R"
+        ],
+        "value": 90,
+        "noLabel": true,
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "chord8",
+        "ownerSegment": "UV",
+        "text": "8",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "chord4",
+        "ownerSegment": "LR",
+        "text": "4",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "rad5",
+        "ownerSegment": "OL",
+        "text": "5",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "x",
+        "ownerSegment": "OH",
+        "text": "x",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "원 O에서 길이가 8cm인 위쪽 현과 4cm인 아래쪽 현, 반지름 5cm와 위쪽 중심거리 x를 구분한다.",
+  "sourceQuote": "오른쪽 그림과 같이 원 $O$에서 $x$의 값을 구한 것은?",
+  "sourceConditions": [
+    {
+      "id": "top",
+      "condition": "위쪽 현의 길이 8cm와 중심 O에서 내린 수선",
+      "mappedTo": [
+        "displaySegments",
+        "planeMarks.expressionLabels"
+      ]
+    },
+    {
+      "id": "bottom",
+      "condition": "아래쪽 현의 길이 4cm와 원의 반지름 5cm",
+      "mappedTo": [
+        "displaySegments",
+        "planeMarks.expressionLabels"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 현의 길이, 각각의 수선의 발, 중심에서 원주까지의 반지름 5cm를 빠짐없이 표시한다."
+  ],
+  "accessibilityDescription": "원 O 안에 위쪽 현 8cm와 아래쪽 현 4cm가 있고 중심에서 현으로 내린 수선, 반지름 5cm, 미지 x가 표시된다."
+}
