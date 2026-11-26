@@ -1,0 +1,36 @@
+{
+  "capability":"composite-panels-v1",
+  "caption":"왼쪽의 평행사변형이 오른쪽의 마름모가 되기 위한 조건을 고르는 문제. 두 도형 모두 원본대로 ABCD로 표기한다.",
+  "panels":[
+    {
+      "caption":{"text":"평행사변형 ABCD"},
+      "plan":{
+        "capability":"construction-spike-v1",
+        "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+          {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"3"},{"kind":"integer","value":"5"}]},"outputType":"POINT","factRole":"GIVEN"},
+          {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+          {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"8"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+          {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"11"},{"kind":"integer","value":"5"}]},"outputType":"POINT","factRole":"GIVEN"}
+        ]},
+        "displayPoints":["A","B","C","D"],"displayLines":[],"displayCircles":[],
+        "displaySegments":[{"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},{"id":"sCD","refs":["C","D"]},{"id":"sDA","refs":["D","A"]}]
+      }
+    },
+    {
+      "caption":{"text":"마름모 ABCD"},
+      "plan":{
+        "capability":"construction-spike-v1",
+        "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+          {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"6"}]},"outputType":"POINT","factRole":"GIVEN"},
+          {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-5"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+          {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"-6"}]},"outputType":"POINT","factRole":"GIVEN"},
+          {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"5"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"}
+        ]},
+        "displayPoints":["A","B","C","D"],"displayLines":[],"displayCircles":[],
+        "displaySegments":[{"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},{"id":"sCD","refs":["C","D"]},{"id":"sDA","refs":["D","A"]}]
+      }
+    }
+  ],
+  "sourceConditions":[{"id":"side-by-side","condition":"원본은 ABCD가 적힌 일반 평행사변형과 ABCD가 적힌 마름모를 ⇒ 기호로 연결한 두 그림이다. 보기 ①~⑤의 정답은 그림 안에 표시하지 않는다.","mappedTo":["panels","caption"]}],
+  "newVisualInformation":["문항의 출발 도형과 목표 도형을 서로 다른 패널로 1:1 분리해 그려 원본 두 장면 누락을 해소한다.","보기 중 정답인 ①·④를 시각적으로 강조하지 않는다. 면 채움은 없다."]
+}

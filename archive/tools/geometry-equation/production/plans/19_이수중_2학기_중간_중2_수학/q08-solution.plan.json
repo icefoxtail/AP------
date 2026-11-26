@@ -1,0 +1,40 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{
+    "schemaVersion":"construction-spike-v1",
+    "realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes":[
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-8"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"6"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"bA","op":"ANGLE_BISECTOR","inputs":["B","A","C"],"args":{"mode":"INTERNAL"},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"bB","op":"ANGLE_BISECTOR","inputs":["A","B","C"],"args":{"mode":"INTERNAL"},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"I","op":"LINE_INTERSECTION","inputs":["bA","bB"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"lAC","op":"LINE_THROUGH","inputs":["A","C"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"E","op":"PERPENDICULAR_FOOT","inputs":["I","lAC"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"k","op":"CIRCLE_CENTER_RADIUS","inputs":["I"],"args":{"radius":{"kind":"integer","value":"2"}},"outputType":"CIRCLE","factRole":"DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "coordinateCanvas":{"width":530,"height":420},
+  "displayLines":[],"displayCircles":["k"],"displayPoints":["A","B","C","I","E"],"hiddenPointNames":["E"],"hiddenPointStyle":"NONE",
+  "displaySegments":[
+    {"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},{"id":"sAC","refs":["A","C"]},
+    {"id":"sAI","refs":["A","I"]},{"id":"sBI","refs":["B","I"]},{"id":"sIE","refs":["I","E"]}
+  ],
+  "rightAngles":[{"id":"rC","refs":["A","C","B"]},{"id":"rE","refs":["A","E","I"]}],
+  "planeMarks":{
+    "expressionLabels":[
+      {"id":"tAB","ownerSegment":"sAB","text":"10"},
+      {"id":"tBC","ownerSegment":"sBC","text":"8"},
+      {"id":"tAC","ownerSegment":"sAC","text":"6"},
+      {"id":"tIE","ownerSegment":"sIE","text":"2"}
+    ]
+  },
+  "caption":"6·8·10 직각삼각형의 내접원 중심에서 변에 내린 수선이 반지름 2를 나타낸다.",
+  "accessibilityDescription":"직각삼각형 ABC의 세 변 AB 10, BC 8, AC 6이 표시되어 있다. 삼각형 안에는 내접원과 내심 I가 있고 I에서 AC 위 접점으로 내린 선분은 AC에 수직이며 길이 2라고 적혀 있다.",
+  "sourceConditions":[
+    {"id":"right-triangle","condition":"원본 그림은 ∠C=90°인 ABC로 빗변 AB 10cm, 직각변 BC 8cm 및 AC 6cm이다.","mappedTo":"mathPlan.nodes:A,B,C;rightAngles:rC;planeMarks.expressionLabels:tAB,tBC,tAC"},
+    {"id":"incircle","condition":"I는 ABC의 내심이며 반지름은 IA, IB가 아닌 I에서 변 AC로 내린 수선 IE의 길이이다.","mappedTo":"mathPlan.nodes:bA,bB,I,E,k;displayCircles:k;rightAngles:rE;planeMarks.expressionLabels:tIE"}
+  ],
+  "newVisualInformation":["원본의 내접원·접점·내심·직각표식과 10/8/6 치수 라벨을 실제 필드에 매핑한다.","해설 축에서 반지름의 길이 2를 수선 위에 표시한다.","원 내부는 색으로 채우지 않는다."]
+}

@@ -1,0 +1,61 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {"recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false},
+    "nodes": [
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"5"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-1"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"11"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"D","op":"TRANSLATE_POINT","inputs":["A"],"args":{"dx":{"kind":"integer","value":"12"},"dy":{"kind":"integer","value":"0"}},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"lAC","op":"LINE_THROUGH","inputs":["A","C"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"lAD","op":"LINE_THROUGH","inputs":["A","D"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"lBC","op":"LINE_THROUGH","inputs":["B","C"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"pB","op":"PERPENDICULAR_THROUGH","inputs":["B","lAC"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"pD","op":"PERPENDICULAR_THROUGH","inputs":["D","lAC"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"F","op":"LINE_INTERSECTION","inputs":["pB","lAD"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"E","op":"LINE_INTERSECTION","inputs":["pD","lBC"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"K","op":"PERPENDICULAR_FOOT","inputs":["B","lAC"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"L","op":"PERPENDICULAR_FOOT","inputs":["D","lAC"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "coordinateCanvas": {"width": 600, "height": 400},
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": ["A","B","C","D","E","F","K","L"],
+  "hiddenPointNames": ["K","L"],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {"id":"sAB","refs":["A","B"]},
+    {"id":"sBE","refs":["B","E"]},
+    {"id":"sEC","refs":["E","C"]},
+    {"id":"sCD","refs":["C","D"]},
+    {"id":"sDF","refs":["D","F"]},
+    {"id":"sFA","refs":["F","A"]},
+    {"id":"sAC","refs":["A","C"]},
+    {"id":"sBF","refs":["B","F"]},
+    {"id":"sDE","refs":["D","E"]}
+  ],
+  "rightAngles": [
+    {"id":"rBK","refs":["B","K","A"]},
+    {"id":"rDL","refs":["D","L","C"]}
+  ],
+  "planeMarks": {
+    "angles": [
+      {"id":"aBAC","refs":["B","A","C"],"arcs":1,"equalGroup":1,"noLabel":true,"style":"ARC"},
+      {"id":"aDCA","refs":["D","C","A"],"arcs":1,"equalGroup":1,"noLabel":true,"style":"ARC"}
+    ]
+  },
+  "caption": "평행사변형의 대각선에 두 수선이 내려지고, 수선의 발마다 직각 표식이 나타난다.",
+  "accessibilityDescription": "평행사변형 ABCD에서 AC를 긋고, B에서 F로, D에서 E로 그은 선분이 각각 AC와 직각으로 만난다. F는 AD 위, E는 BC 위에 있으며 두 직각 표식과 대응각 호가 보인다.",
+  "sourceConditions": [
+    {"id":"parallelogram","condition":"ABCD는 평행사변형이고 F는 AD 위, E는 BC 위에 있다. 좌표는 길이가 주어지지 않은 도형의 관계를 보존하는 대표 배치이다.","mappedTo":"mathPlan.nodes:A,B,C,D,F,E;displaySegments:sAB,sBE,sEC,sCD,sDF,sFA"},
+    {"id":"perpendiculars","condition":"B와 D에서 대각선 AC에 그은 수선 BF, DE는 각각 AC에 수직이다.","mappedTo":"mathPlan.nodes:pB,pD,K,L;displaySegments:sBF,sDE,sAC;rightAngles:rBK,rDL"},
+    {"id":"correspondence","condition":"평행사변형에서 AB와 CD는 평행하고 대각선 AC와 이루는 대응각이 같다.","mappedTo":"planeMarks.angles:aBAC,aDCA"}
+  ],
+  "newVisualInformation": [
+    "원본의 두 직각 사각표식을 실제 rightAngles 필드로 보존한다.",
+    "BF와 DE가 평행한 이유인 AC에 대한 수직 관계를 선분과 교점으로 보인다.",
+    "원본에 없는 면 채움은 적용하지 않는다."
+  ]
+}

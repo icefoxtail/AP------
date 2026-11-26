@@ -1,0 +1,39 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{
+    "schemaVersion":"construction-spike-v1",
+    "realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes":[
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"-3","denominator":"5"},{"kind":"rational","numerator":"24","denominator":"5"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-1"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"8"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"43","denominator":"5"},{"kind":"rational","numerator":"36","denominator":"5"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"E","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"27","denominator":"5"},{"kind":"rational","numerator":"24","denominator":"5"}]},"outputType":"POINT","factRole":"GIVEN"}
+    ]
+  },
+  "coordinateCanvas":{"width":660,"height":430},"displayPoints":["A","B","C","D","E"],"displayLines":[],"displayCircles":[],
+  "displaySegments":[
+    {"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},
+    {"id":"sCD","refs":["C","D"]},{"id":"sAE","refs":["A","E"]},
+    {"id":"sBE","refs":["B","E"]},{"id":"sED","refs":["E","D"]}
+  ],
+  "planeMarks":{
+    "expressionLabels":[
+      {"id":"label-ae","ownerSegment":"sAE","text":"6"},
+      {"id":"label-be","ownerSegment":"sBE","text":"8"},
+      {"id":"label-ed","ownerSegment":"sED","text":"4"},
+      {"id":"label-bc","ownerSegment":"sBC","text":"9"}
+    ],
+    "angles":[
+      {"id":"parallel-a","refs":["B","A","E"],"noLabel":true,"arcs":1,"equalGroup":1},
+      {"id":"parallel-c","refs":["D","C","B"],"noLabel":true,"arcs":1,"equalGroup":1}
+    ]
+  },
+  "caption":"AB∥CD, AE∥BC이므로 △ABE∼△CDB이다. BE:BD=8:(8+4)=2:3, AE:BC=2:3에서 BC=9cm이다.",
+  "accessibilityDescription":"A에서 E로 가는 수평 선분 AE는 6cm, B에서 C로 가는 수평 선분 BC는 9cm이다. 비스듬한 BD 위에 E가 놓여 BE=8cm, ED=4cm가 표시되며 AB는 CD와 평행하고 AE는 BC와 평행하다.",
+  "sourceConditions":[
+    {"id":"parallelism","condition":"AB∥CD, AE∥BC, B,E,D는 일직선이고 E는 B와 D 사이에 있다.","mappedTo":"mathPlan.nodes:A,B,C,D,E;displaySegments:sAB,sCD,sAE,sBC,sBE,sED"},
+    {"id":"given-measures","condition":"원본 그림의 AE=6cm, BE=8cm, ED=4cm는 각각 실제 좌표 차이와 일치한다. BC=9cm는 해설 축에서만 결론으로 추가된다.","mappedTo":"planeMarks.expressionLabels:label-ae,label-be,label-ed,label-bc"}
+  ],
+  "newVisualInformation":["원본의 평행선 두 쌍 및 6·8·4 치수를 실제 1:1 대응 도형에 놓고 풀이 결과 9를 구분해 나타낸다.","면 채움 없이 연장선 분할을 명료하게 보인다."]
+}

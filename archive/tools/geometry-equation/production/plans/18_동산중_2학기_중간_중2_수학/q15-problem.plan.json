@@ -1,0 +1,116 @@
+{
+  "capability": "composite-panels-v1",
+  "caption": "외심을 나타내는 그림을 찾기 위한 다섯 개의 독립적인 삼각형 보기.",
+  "panels": [
+    {
+      "caption": {"text":"①"},
+      "plan": {
+        "capability":"construction-spike-v1",
+        "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+          {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"8"}]},"outputType":"POINT","factRole":"GIVEN"},
+          {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-6"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+          {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"7"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+          {"id":"D","op":"MIDPOINT","inputs":["A","B"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+          {"id":"E","op":"MIDPOINT","inputs":["B","C"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+          {"id":"lAB","op":"LINE_THROUGH","inputs":["A","B"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+          {"id":"lBC","op":"LINE_THROUGH","inputs":["B","C"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+          {"id":"pD","op":"PERPENDICULAR_THROUGH","inputs":["D","lAB"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+          {"id":"pE","op":"PERPENDICULAR_THROUGH","inputs":["E","lBC"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+          {"id":"O","op":"LINE_INTERSECTION","inputs":["pD","pE"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+        ]},
+        "displayPoints":["A","B","C","O"],"displayLines":[],"displayCircles":[],
+        "displaySegments":[{"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},{"id":"sCA","refs":["C","A"]},{"id":"sOA","refs":["O","A"]},{"id":"sOB","refs":["O","B"]},{"id":"sOC","refs":["O","C"]}],
+        "planeMarks":{"equalLengths":[{"id":"e1","count":1,"segments":["sOA","sOB","sOC"]}]}
+      }
+    },
+    {
+      "caption": {"text":"②"},
+      "plan": {
+        "capability":"construction-spike-v1",
+        "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+          {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"8"}]},"outputType":"POINT","factRole":"GIVEN"},
+          {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-6"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+          {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"7"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+          {"id":"lAB","op":"LINE_THROUGH","inputs":["A","B"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+          {"id":"lAC","op":"LINE_THROUGH","inputs":["A","C"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+          {"id":"X","op":"PERPENDICULAR_FOOT","inputs":["B","lAC"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+          {"id":"Y","op":"PERPENDICULAR_FOOT","inputs":["C","lAB"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+          {"id":"pB","op":"PERPENDICULAR_THROUGH","inputs":["B","lAC"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+          {"id":"pC","op":"PERPENDICULAR_THROUGH","inputs":["C","lAB"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+          {"id":"O","op":"LINE_INTERSECTION","inputs":["pB","pC"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+        ]},
+        "displayPoints":["A","B","C","O","X","Y"],"hiddenPointNames":["X","Y"],"hiddenPointStyle":"NONE", "displayLines":[],"displayCircles":[],
+        "displaySegments":[{"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},{"id":"sCA","refs":["C","A"]},{"id":"sBX","refs":["B","X"]},{"id":"sCY","refs":["C","Y"]}],
+        "rightAngles":[{"id":"rX","refs":["B","X","A"]},{"id":"rY","refs":["C","Y","A"]}]
+      }
+    },
+    {
+      "caption": {"text":"③"},
+      "plan": {
+        "capability":"construction-spike-v1",
+        "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+          {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"8"}]},"outputType":"POINT","factRole":"GIVEN"},
+          {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-6"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+          {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"7"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+          {"id":"bA","op":"ANGLE_BISECTOR","inputs":["B","A","C"],"args":{"mode":"INTERNAL"},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+          {"id":"bB","op":"ANGLE_BISECTOR","inputs":["A","B","C"],"args":{"mode":"INTERNAL"},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+          {"id":"O","op":"LINE_INTERSECTION","inputs":["bA","bB"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+        ]},
+        "displayPoints":["A","B","C","O"],"displayLines":[],"displayCircles":[],
+        "displaySegments":[{"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},{"id":"sCA","refs":["C","A"]},{"id":"sAO","refs":["A","O"]},{"id":"sBO","refs":["B","O"]},{"id":"sCO","refs":["C","O"]}],
+        "planeMarks":{"angles":[{"id":"a1","refs":["B","A","O"],"arcs":1,"equalGroup":1,"noLabel":true,"style":"ARC"},{"id":"a2","refs":["O","A","C"],"arcs":1,"equalGroup":1,"noLabel":true,"style":"ARC"}]}
+      }
+    },
+    {
+      "caption": {"text":"④"},
+      "plan": {
+        "capability":"construction-spike-v1",
+        "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+          {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"8"}]},"outputType":"POINT","factRole":"GIVEN"},
+          {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-6"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+          {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"7"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+          {"id":"D","op":"MIDPOINT","inputs":["A","B"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+          {"id":"E","op":"MIDPOINT","inputs":["B","C"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+          {"id":"F","op":"MIDPOINT","inputs":["A","C"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+          {"id":"lAB","op":"LINE_THROUGH","inputs":["A","B"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+          {"id":"lBC","op":"LINE_THROUGH","inputs":["B","C"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+          {"id":"pD","op":"PERPENDICULAR_THROUGH","inputs":["D","lAB"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+          {"id":"pE","op":"PERPENDICULAR_THROUGH","inputs":["E","lBC"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+          {"id":"O","op":"LINE_INTERSECTION","inputs":["pD","pE"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+        ]},
+        "displayPoints":["A","B","C","D","E","F","O"],"displayLines":[],"displayCircles":[],
+        "displaySegments":[{"id":"sAD","refs":["A","D"]},{"id":"sDB","refs":["D","B"]},{"id":"sBE","refs":["B","E"]},{"id":"sEC","refs":["E","C"]},{"id":"sCF","refs":["C","F"]},{"id":"sFA","refs":["F","A"]},{"id":"sOD","refs":["O","D"]},{"id":"sOE","refs":["O","E"]},{"id":"sOF","refs":["O","F"]}],
+        "rightAngles":[{"id":"rD","refs":["A","D","O"]},{"id":"rE","refs":["B","E","O"]},{"id":"rF","refs":["A","F","O"]}],
+        "planeMarks":{"equalLengths":[{"id":"eAB","count":1,"segments":["sAD","sDB"]},{"id":"eBC","count":2,"segments":["sBE","sEC"]},{"id":"eCA","count":3,"segments":["sCF","sFA"]}]}
+      }
+    },
+    {
+      "caption": {"text":"⑤"},
+      "plan": {
+        "capability":"construction-spike-v1",
+        "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+          {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"8"}]},"outputType":"POINT","factRole":"GIVEN"},
+          {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-6"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+          {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"7"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+          {"id":"bA","op":"ANGLE_BISECTOR","inputs":["B","A","C"],"args":{"mode":"INTERNAL"},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+          {"id":"bB","op":"ANGLE_BISECTOR","inputs":["A","B","C"],"args":{"mode":"INTERNAL"},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+          {"id":"O","op":"LINE_INTERSECTION","inputs":["bA","bB"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+          {"id":"lBC","op":"LINE_THROUGH","inputs":["B","C"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+          {"id":"T","op":"PERPENDICULAR_FOOT","inputs":["O","lBC"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+          {"id":"inc","op":"CIRCLE_THROUGH_POINT","inputs":["O","T"],"args":{},"outputType":"CIRCLE","factRole":"DERIVED_INTERMEDIATE"}
+        ]},
+        "displayPoints":["A","B","C","O"],"displayLines":[],"displayCircles":["inc"],
+        "displaySegments":[{"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},{"id":"sCA","refs":["C","A"]}]
+      }
+    }
+  ],
+  "sourceConditions": [
+    {"id":"source-five","condition":"문항의 ①~⑤ 다섯 보기는 외심 판단에 필요한 서로 다른 조건을 보이며, 삼각형·점 O·수선/이등분선/중점·원 관계를 눈으로 읽어야 한다. 원본의 손글씨 흔적은 출제 표식이 아니다.","mappedTo":["panels","caption"]},
+    {"id":"given-only","condition":"문제용 그림에는 어떤 보기가 정답인지 알려 주는 문구나 풀이 계산을 넣지 않는다.","mappedTo":["panels"]}
+  ],
+  "newVisualInformation": [
+    "오염된 원본 이미지의 펜 낙서와 불필요한 면 채움을 제거하고 다섯 보기를 독립 패널로 재제작한다.",
+    "반지름의 같은 길이 눈금, 수선의 직각표식, 각이등분선 호, 수직이등분선의 중점 눈금, 내접원의 접점을 엔진 표식으로 구분한다.",
+    "정답을 암시하는 색·선택표식은 추가하지 않는다."
+  ]
+}
