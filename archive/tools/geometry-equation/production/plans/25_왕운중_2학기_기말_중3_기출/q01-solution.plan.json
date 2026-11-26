@@ -1,0 +1,50 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{
+    "schemaVersion":"construction-spike-v1",
+    "realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes":[
+      {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"k","op":"CIRCLE_CENTER_RADIUS","inputs":["O"],"args":{"radius":{"kind":"integer","value":"10"}},"outputType":"CIRCLE","factRole":"GIVEN"},
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-8"},{"kind":"integer","value":"6"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"8"},{"kind":"integer","value":"6"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-8"},{"kind":"integer","value":"-6"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"8"},{"kind":"integer","value":"-6"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"M","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"6"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"N","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"-6"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "coordinateCanvas":{"width":580,"height":490},
+  "displayPoints":["O","A","B","C","D","M","N"],
+  "hiddenPointNames":["A","B","C","D","M","N"],
+  "hiddenPointStyle":"NONE",
+  "displayLines":[],
+  "displayCircles":["k"],
+  "displaySegments":[
+    {"id":"sAB","refs":["A","B"]},
+    {"id":"sCD","refs":["C","D"]},
+    {"id":"sOM","refs":["O","M"],"emphasis":"BOLD"},
+    {"id":"sON","refs":["O","N"]},
+    {"id":"sOC","refs":["O","C"]}
+  ],
+  "rightAngles":[{"id":"rM","refs":["O","M","A"]},{"id":"rN","refs":["O","N","C"]}],
+  "planeMarks":{
+    "equalLengths":[{"id":"eqChords","count":1,"segments":["sAB","sCD"]}],
+    "dimensions":[
+      {"id":"dAB","from":"A","to":"B","label":"16","unit":"cm","side":"ABOVE","value":16},
+      {"id":"dCD","from":"C","to":"D","label":"16","unit":"cm","side":"BELOW","value":16}
+    ],
+    "expressionLabels":[
+      {"id":"lOM","ownerSegment":"sOM","text":"x"},
+      {"id":"lOC","ownerSegment":"sOC","text":"10","unit":"cm"}
+    ]
+  },
+  "caption":"반지름이 10cm인 원에서 길이가 각각 16cm인 두 현의 중심 수선은 중점을 지나며 x의 값을 결정한다.",
+  "sourceQuote":"반지름 10cm인 원에 길이 16cm인 두 현과 중심에서 현에 내린 수선 x가 있다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"원 O의 반지름은 10cm이며 위와 아래의 두 현은 각각 16cm이다.","mappedTo":["mathPlan.nodes","displayCircles","planeMarks.dimensions","planeMarks.expressionLabels"]},
+    {"id":"c2","condition":"OM과 ON은 각 현에 수직이고 현의 중점을 지나며 x=OM이다.","mappedTo":["displaySegments","rightAngles","planeMarks.expressionLabels"]},
+    {"id":"c3","condition":"현의 절반은 8cm이므로 x²+8²=10²이다.","mappedTo":["mathPlan.nodes","planeMarks.dimensions"]}
+  ],
+  "newVisualInformation":["기존 해설에서 사라진 원본의 16cm 치수 둘을 실제 치수선으로 복원한다.","두 직각·반지름 10cm·x를 한 그림에서 대응시키며 색칠 없이 그린다."]
+}

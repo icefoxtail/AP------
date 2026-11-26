@@ -1,0 +1,47 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{
+    "schemaVersion":"construction-spike-v1",
+    "realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes":[
+      {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"X","op":"TRANSLATE_POINT","inputs":["O"],"args":{"dx":{"kind":"integer","value":"1"},"dy":{"kind":"integer","value":"0"}},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"k","op":"CIRCLE_CENTER_RADIUS","inputs":["O"],"args":{"radius":{"kind":"integer","value":"6"}},"outputType":"CIRCLE","factRole":"GIVEN"},
+      {"id":"A","op":"POLAR_POINT","inputs":["O","X"],"args":{"length":{"kind":"integer","value":"6"},"angleDeg":{"kind":"integer","value":"90"},"turn":"CCW"},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B","op":"POLAR_POINT","inputs":["O","X"],"args":{"length":{"kind":"integer","value":"6"},"angleDeg":{"kind":"integer","value":"150"},"turn":"CCW"},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"C","op":"POLAR_POINT","inputs":["O","X"],"args":{"length":{"kind":"integer","value":"6"},"angleDeg":{"kind":"integer","value":"30"},"turn":"CCW"},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"D","op":"POLAR_POINT","inputs":["O","X"],"args":{"length":{"kind":"integer","value":"6"},"angleDeg":{"kind":"integer","value":"120"},"turn":"CCW"},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"lOD","op":"LINE_THROUGH","inputs":["O","D"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"lAB","op":"LINE_THROUGH","inputs":["A","B"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"lBC","op":"LINE_THROUGH","inputs":["B","C"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"M","op":"LINE_INTERSECTION","inputs":["lOD","lAB"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"E","op":"LINE_INTERSECTION","inputs":["lOD","lBC"],"args":{},"outputType":"POINT","factRole":"GIVEN"}
+    ]
+  },
+  "coordinateCanvas":{"width":600,"height":490},
+  "displayPoints":["O","A","B","C","D","E","M"],
+  "hiddenPointNames":["M"],
+  "hiddenPointStyle":"NONE",
+  "displayLines":[],
+  "displayCircles":["k"],
+  "displaySegments":[
+    {"id":"sAB","refs":["A","B"]},
+    {"id":"sAC","refs":["A","C"]},
+    {"id":"sBC","refs":["B","C"]},
+    {"id":"sOA","refs":["O","A"]},
+    {"id":"sOD","refs":["O","D"]}
+  ],
+  "rightAngles":[{"id":"rM","refs":["O","M","A"]}],
+  "planeMarks":{
+    "angles":[{"id":"aA","refs":["B","A","C"],"value":120,"label":"120","style":"ARC","factRole":"GIVEN"}],
+    "equalLengths":[{"id":"eqABAC","count":1,"segments":["sAB","sAC"]}],
+    "expressionLabels":[{"id":"lenOA","ownerSegment":"sOA","text":"6"},{"id":"lenAB","ownerSegment":"sAB","text":"6"}]
+  },
+  "caption":"원에 내접하는 이등변삼각형 ABC에서 OD는 AB에 수직이며 E는 OD와 BC의 교점이다.",
+  "sourceQuote":"AB=AC, BAC=120°, OA=AB=6, OD⊥AB, E=OD∩BC이다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"A,B,C,D는 원 위에 있고 AB=AC=OA=6이며 BAC=120°이다.","mappedTo":["mathPlan.nodes","displayCircles","displaySegments","planeMarks.angles","planeMarks.equalLengths","planeMarks.expressionLabels"]},
+    {"id":"c2","condition":"OD⊥AB이고 E는 OD와 BC의 교점이다.","mappedTo":["mathPlan.nodes","displaySegments","rightAngles"]}
+  ],
+  "newVisualInformation":["현행 문제 PNG가 E를 AB 위에 찍은 오류를 원문 발문의 BC 위 교점으로 복원한다.","정답 OE의 수치와 풀이에서 유도되는 각 30°는 문제 그림에 싣지 않는다."]
+}

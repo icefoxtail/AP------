@@ -1,0 +1,48 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{
+    "schemaVersion":"construction-spike-v1",
+    "realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes":[
+      {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"X","op":"TRANSLATE_POINT","inputs":["O"],"args":{"dx":{"kind":"integer","value":"1"},"dy":{"kind":"integer","value":"0"}},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"k","op":"CIRCLE_CENTER_RADIUS","inputs":["O"],"args":{"radius":{"kind":"integer","value":"10"}},"outputType":"CIRCLE","factRole":"GIVEN"},
+      {"id":"A","op":"POLAR_POINT","inputs":["O","X"],"args":{"length":{"kind":"integer","value":"10"},"angleDeg":{"kind":"integer","value":"115"},"turn":"CCW"},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B","op":"POLAR_POINT","inputs":["O","X"],"args":{"length":{"kind":"integer","value":"10"},"angleDeg":{"kind":"integer","value":"245"},"turn":"CCW"},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"10"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"lOA","op":"LINE_THROUGH","inputs":["O","A"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"lOB","op":"LINE_THROUGH","inputs":["O","B"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"tA","op":"PERPENDICULAR_THROUGH","inputs":["A","lOA"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"tB","op":"PERPENDICULAR_THROUGH","inputs":["B","lOB"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"P","op":"LINE_INTERSECTION","inputs":["tA","tB"],"args":{},"outputType":"POINT","factRole":"GIVEN"}
+    ]
+  },
+  "coordinateCanvas":{"width":580,"height":460},
+  "displayPoints":["O","A","B","C","P"],
+  "displayLines":[],
+  "displayCircles":["k"],
+  "displaySegments":[
+    {"id":"sPA","refs":["P","A"]},
+    {"id":"sPB","refs":["P","B"]},
+    {"id":"sOA","refs":["O","A"]},
+    {"id":"sOB","refs":["O","B"]},
+    {"id":"sAC","refs":["A","C"]},
+    {"id":"sBC","refs":["B","C"]}
+  ],
+  "rightAngles":[{"id":"rA","refs":["O","A","P"]},{"id":"rB","refs":["O","B","P"]}],
+  "planeMarks":{
+    "angles":[
+      {"id":"aP","refs":["A","P","B"],"value":50,"label":"50","style":"ARC","factRole":"GIVEN"},
+      {"id":"aO","refs":["A","O","B"],"value":130,"label":"130","style":"ARC","color":"BLUE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"aC","refs":["A","C","B"],"value":65,"label":"x","style":"ARC","color":"WARM","factRole":"CONCLUSION"}
+    ]
+  },
+  "caption":"접선 PA, PB의 두 직각과 끼인각 50°를 이용하면 중심각 AOB는 130°, 원주각 x는 그 절반이다.",
+  "sourceQuote":"PA, PB는 원 O의 접선이고 P=50°일 때 원주각 x를 구한다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"PA와 PB는 각각 A와 B에서 원에 접하며 OA⊥PA, OB⊥PB이다.","mappedTo":["mathPlan.nodes","displaySegments","rightAngles"]},
+    {"id":"c2","condition":"APB=50°이고 사각형 OAPB의 중심각 AOB는 130°이다.","mappedTo":["planeMarks.angles"]},
+    {"id":"c3","condition":"C가 큰 호 AB에 있을 때 원주각 ACB=x=65°이다.","mappedTo":["mathPlan.nodes","displaySegments","planeMarks.angles"]}
+  ],
+  "newVisualInformation":["기존 SVG에서 근거 없이 채워졌던 푸른 사각형·회색 부채꼴을 제거하고 50°·130°·x를 호와 표식으로만 그린다.","양 접점 직각표식과 원주각의 두 현을 유지한다."]
+}
