@@ -61,11 +61,17 @@
   "newVisualInformation": [
     "두 직선의 교점을 점과 좌표로 표시한다."
   ],
+  "sourceQuote": "[서술형 1] 연립방정식 $\\begin{cases}3x-2y=7",
   "sourceConditions": [
     {
       "id": "source",
       "condition": "[서술형 1] 연립방정식 $\\begin{cases}3x-2y=7\\\\5x-3y=11\\end{cases}$의 해를 구하고, 그 풀이 과정을 서술하시오. [5점]",
-      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+      "mappedTo": ["graphPlan.curves[0]", "graphPlan.curves[1]"]
+    },
+    {
+      "id": "intersection",
+      "condition": "3x-2y=7과 5x-3y=11의 교점은 (1,-2)이다.",
+      "mappedTo": ["graphPlan.curves[0].coefficients", "graphPlan.curves[1].coefficients", "graphPlan.overlays.points[0]"]
     }
   ]
 }
