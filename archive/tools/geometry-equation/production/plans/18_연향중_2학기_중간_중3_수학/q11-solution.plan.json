@@ -1,0 +1,267 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displayLines": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rA",
+      "refs": [
+        "B",
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "rD",
+      "refs": [
+        "C",
+        "D",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "e8",
+        "count": 1,
+        "segments": [
+          "sAC",
+          "sDE"
+        ]
+      },
+      {
+        "id": "e4",
+        "count": 2,
+        "segments": [
+          "sAB",
+          "sCD"
+        ]
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "lAB",
+        "from": "A",
+        "to": "B",
+        "label": "4",
+        "unit": "cm",
+        "side": "ABOVE"
+      },
+      {
+        "id": "lDE",
+        "from": "D",
+        "to": "E",
+        "label": "8",
+        "unit": "cm",
+        "side": "BELOW"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 560
+  },
+  "caption": "합동인 두 직각삼각형에서 AC=DE=8, CD=AB=4이므로 AD=12이고, BCE의 넓이를 사다리꼴에서 두 직각삼각형을 빼서 구한다.",
+  "accessibilityDescription": "A,C,D가 왼쪽 세로 직선 위에서 위에서 아래 순으로 있고 B와 E는 오른쪽에 있다. A와 D의 직각, AB=4cm, DE=8cm와 두 쌍의 같은 길이를 눈금으로 표시한다.",
+  "sourceQuote": "AC=DE=8, CD=AB=4이므로 AD=12이다.",
+  "sourceConditions": [
+    {
+      "id": "congruent",
+      "condition": "△ACB와 △DEC는 각 A,D가 직각이며 AC=DE=8, AB=CD=4이다.",
+      "mappedTo": [
+        "rA",
+        "rD",
+        "e8",
+        "e4",
+        "sAC",
+        "sDE",
+        "sAB",
+        "sCD"
+      ]
+    },
+    {
+      "id": "givenLengths",
+      "condition": "문제에 주어진 AB=4cm, DE=8cm 표시를 유지한다.",
+      "mappedTo": [
+        "lAB",
+        "lDE"
+      ]
+    },
+    {
+      "id": "middleArea",
+      "condition": "중앙 △BCE는 세 꼭짓점과 세 변만 표시하며 넓이 계산은 해설 문장에 제시한다.",
+      "mappedTo": [
+        "sBC",
+        "sCE",
+        "sBE"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "사다리꼴의 빗변 BE와 두 보조선 BC,CE를 모두 남겨 삼각형 BCE를 명확히 표시한다.",
+    "해설 원문과 같은 점·선분·라벨·직각표식의 위치를 보존하면서 불필요한 전체 면 채움을 제거한다."
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{
+    "schemaVersion":"construction-spike-v1",
+    "realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes":[
+      {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"5"}]}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-2"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"expression","op":"neg","args":[{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"12"}]}]}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"20"}]},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"}
+    ]
+  },
+  "displayPoints":["A","B","C","D","O"],"displayLines":[],
+  "displaySegments":[
+    {"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},
+    {"id":"sCD","refs":["C","D"]},{"id":"sDA","refs":["D","A"]},
+    {"id":"sAO","refs":["A","O"]},{"id":"sOC","refs":["O","C"]},
+    {"id":"sBO","refs":["B","O"]},{"id":"sOD","refs":["O","D"]}
+  ],
+  "rightAngles":[{"id":"rO","refs":["A","O","D"]}],
+  "planeMarks":{
+    "expressionLabels":[
+      {"id":"ab3","ownerSegment":"sAB","text":"3","unit":"cm"},
+      {"id":"bc4","ownerSegment":"sBC","text":"4","unit":"cm"},
+      {"id":"ad5","ownerSegment":"sDA","text":"5","unit":"cm"},
+      {"id":"cdx","ownerSegment":"sCD","text":"x","unit":"cm"}
+    ]
+  },
+  "coordinateCanvas":{"width":600,"height":530},
+  "caption":"대각선 AC와 BD가 O에서 수직으로 만나는 사각형에서 AB=3cm, BC=4cm, AD=5cm, CD=xcm이다.",
+  "accessibilityDescription":"A는 위쪽, B는 왼쪽, C는 아래쪽, D는 오른쪽이고 두 대각선이 O에서 직각으로 만난다. 네 변의 주어진 길이 3,4,5와 구할 값 x를 표시하고 영역을 칠하지 않는다.",
+  "sourceQuote":"사각형 ABCD에서 AC⊥BD, AB=3cm, BC=4cm, AD=5cm일 때 CD의 길이는?",
+  "sourceConditions":[
+    {"id":"perpendicular","condition":"대각선 AC와 BD가 O에서 수직이다. 좌표를 A=(0,√5), B=(-2,0), C=(0,-√12), D=(√20,0)로 잡으면 조건을 정확히 만족한다.","mappedTo":["sAO","sOC","sBO","sOD","rO"]},
+    {"id":"givenLengths","condition":"AB=3cm, BC=4cm, AD=5cm, CD=xcm를 실제 변에 붙인다.","mappedTo":["sAB","sBC","sDA","sCD","ab3","bc4","ad5","cdx"]}
+  ],
+  "newVisualInformation":["원본 q10.png의 네 꼭짓점·교점 O·수직 관계·모든 길이 라벨을 정확한 근호 좌표로 재구성한다.","기존 해설 SVG의 네 삼각형 채움 전체를 없애고 직각 표식과 선분 소속 라벨만 유지한다. 풀이의 CD²=AD²+BC²−AB²=32는 해설 문장으로 보여준다."]
+}

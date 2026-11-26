@@ -1,0 +1,26 @@
+{
+  "capability":"solid-figure-v1",
+  "unit":"cm",
+  "solids":[{
+    "kind":"PRISM","base":{"kind":"RECT","width":4.242640687119285,"depth":4.242640687119285},"height":4.242640687119285,"names":"FGHEBCDA",
+    "points":[{"id":"M","at":{"footOnLine":{"from":"F","line":["B","H"]}}}]
+  }],
+  "segments":[
+    {"from":"B","to":"H","style":"DASHED","role":"REF"},
+    {"from":"F","to":"M","style":"SOLID","role":"REF","color":"WARM"},
+    {"from":"B","to":"M","style":"DASHED","role":"REF"},
+    {"from":"M","to":"H","style":"DASHED","role":"REF"}
+  ],
+  "marks":{"rightAngles":[{"at":"M","refs":["F","H"]}]},
+  "dims":[{"edge":"FG","label":"3\\sqrt{2}"}],
+  "solidCaption":{"text":"정육면체의 공간 수선"},
+  "caption":"모서리 3√2cm 정육면체에서 B-H는 공간대각선이고 M은 F에서 BH에 내린 수선의 발이다.",
+  "accessibilityDescription":"정육면체의 윗면 B와 반대쪽 아래 꼭짓점 H를 잇는 공간 대각선 BH가 내부 점선이다. 앞쪽 아래 꼭짓점 F에서 BH 위의 M까지 수선을 내리고 M에 직각 네모를 놓았다. 한 모서리에 3√2cm를 표시하고 면은 칠하지 않는다.",
+  "sourceQuote":"정육면체의 꼭짓점 F에서 대각선 BH에 내린 수선의 발을 M이라 할 때 FM의 길이는?",
+  "sourceConditions":[
+    {"id":"cube","condition":"정육면체의 세 방향 모서리 길이는 모두 3√2cm이다.","mappedTo":["solids","dims"]},
+    {"id":"diagonal","condition":"BH는 서로 반대인 꼭짓점을 잇는 공간대각선이다.","mappedTo":["segments"]},
+    {"id":"altitude","condition":"M은 BH 위에 있고 FM⊥BH이다.","mappedTo":["solids","segments","marks"]}
+  ],
+  "newVisualInformation":["기존 SVG의 비어 있던 공간대각선 BH·수선 FM·발 M의 직각표식을 실제 3D 보조점과 선분으로 복원한다.","기존 불필요한 정육면체 면색과 삼각형 전면 채움을 없애고 선분·점선만 남긴다."]
+}

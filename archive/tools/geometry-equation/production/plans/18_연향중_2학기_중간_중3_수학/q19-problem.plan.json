@@ -1,0 +1,24 @@
+{
+  "capability":"solid-figure-v1",
+  "unit":"cm",
+  "solids":[{
+    "kind":"PRISM","base":{"kind":"RECT","width":8,"depth":8},"height":8,"names":"FGHEBCDA",
+    "points":[{"id":"M","at":{"edge":["C","G"],"t":"1/2"}},{"id":"N","at":{"edge":["C","D"],"t":"1/2"}}]
+  }],
+  "segments":[
+    {"from":"B","to":"M","style":"AUTO","role":"REF"},
+    {"from":"B","to":"N","style":"AUTO","role":"REF"},
+    {"from":"M","to":"N","style":"AUTO","role":"REF"}
+  ],
+  "dims":[{"edge":"FG"}],
+  "solidCaption":{"text":"정육면체의 중점 삼각형"},
+  "caption":"한 모서리 8cm인 정육면체에서 CG의 중점 M, CD의 중점 N과 꼭짓점 B를 연결한다.",
+  "accessibilityDescription":"밑면 FGHE, 윗면 BCDA의 정육면체에서 점 M은 C와 G 사이 세로 모서리 중점, N은 C와 D 사이 가로 모서리 중점이다. BM,BN,MN 삼각형의 세 선이 보이고 한 모서리 FG가 8cm로 표시된다. 면색은 없다.",
+  "sourceQuote":"한 모서리의 길이가 8cm인 정육면체 CG, CD의 중점을 M, N이라 할 때 △BMN의 넓이는?",
+  "sourceConditions":[
+    {"id":"cube","condition":"정육면체의 모든 모서리는 8cm이며 원본 FG 모서리 8cm 표기를 복원한다.","mappedTo":["solids","dims"]},
+    {"id":"midpoints","condition":"M은 CG의 중점, N은 CD의 중점이다.","mappedTo":["solids"]},
+    {"id":"target","condition":"면 채움 없이 BM,BN,MN 세 선분으로 목표 삼각형을 분리한다.","mappedTo":["segments"]}
+  ],
+  "newVisualInformation":["원본 q19.png의 8cm 모서리, 두 정확한 중점과 3D 모서리의 실선·숨은 점선을 유지한다.","기존 보라·초록 삼각형 전체 채움을 제거하고 구하려는 삼각형의 세 선만 선명하게 한다."]
+}

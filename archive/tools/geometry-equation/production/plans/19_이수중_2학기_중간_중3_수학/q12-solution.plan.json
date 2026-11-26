@@ -1,0 +1,34 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{
+    "schemaVersion":"construction-spike-v1",
+    "realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes":[
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"3"}]}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-1"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"1"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"D","op":"MIDPOINT","inputs":["B","C"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "displayPoints":["A","B","C","D"],"displayLines":[],
+  "displaySegments":[{"id":"sAB","refs":["A","B"]},{"id":"sAC","refs":["A","C"]},{"id":"sBD","refs":["B","D"]},{"id":"sDC","refs":["D","C"]},{"id":"sAD","refs":["A","D"]}],
+  "rightAngles":[{"id":"rD","refs":["A","D","C"]}],
+  "planeMarks":{
+    "equalLengths":[{"id":"halves","count":1,"segments":["sBD","sDC"]}],
+    "expressionLabels":[
+      {"id":"sideA","ownerSegment":"sAB","text":"a"},
+      {"id":"bdHalf","ownerSegment":"sBD","text":"a/2"},
+      {"id":"dcHalf","ownerSegment":"sDC","text":"a/2"},
+      {"id":"heightH","ownerSegment":"sAD","text":"h"}
+    ]
+  },
+  "coordinateCanvas":{"width":540,"height":460},
+  "caption":"한 변 a인 정삼각형 ABC에서 높이 AD가 밑변 BC를 이등분해 BD=DC=a/2가 되고, AD는 BC에 수직이다.",
+  "accessibilityDescription":"정삼각형 ABC의 꼭짓점 A에서 밑변의 중점 D까지 수선을 내렸다. B-D와 D-C의 길이는 각각 a/2이며 같은 눈금이 있다. 높이는 h이고 내부에는 색을 칠하지 않는다.",
+  "sourceQuote":"한 변이 a인 정삼각형 ABC의 넓이를 구하는 과정에서 (가), (나)에 알맞은 것은?",
+  "sourceConditions":[
+    {"id":"equilateral","condition":"AB=AC=BC=a인 정삼각형, D는 BC의 중점이며 BD=DC=a/2이다. 그림은 a=2인 대표비율이다.","mappedTo":["sAB","sAC","sBD","sDC","halves","sideA","bdHalf","dcHalf"]},
+    {"id":"altitude","condition":"AD⊥BC, 높이 AD=h를 표시한다.","mappedTo":["sAD","rD","heightH"]}
+  ],
+  "newVisualInformation":["원본 q12.png의 수선·직각·중점 D·반쪽 밑변의 대응을 복원한다.","기존 해설 SVG의 양쪽 삼각형을 넓게 채운 면색을 모두 없애고 두 반쪽 밑변의 같은 길이 눈금을 유지한다."]
+}

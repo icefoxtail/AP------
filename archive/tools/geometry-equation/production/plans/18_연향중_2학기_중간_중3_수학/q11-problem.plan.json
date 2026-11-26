@@ -1,0 +1,39 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{
+    "schemaVersion":"construction-spike-v1",
+    "realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes":[
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"12"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"4"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"4"},{"kind":"integer","value":"12"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"E","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"8"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"}
+    ]
+  },
+  "displayPoints":["A","B","C","D","E"],"displayLines":[],
+  "displaySegments":[
+    {"id":"sAB","refs":["A","B"]},{"id":"sAC","refs":["A","C"]},
+    {"id":"sCD","refs":["C","D"]},{"id":"sDE","refs":["D","E"]},
+    {"id":"sBC","refs":["B","C"]},{"id":"sCE","refs":["C","E"]},
+    {"id":"sBE","refs":["B","E"]}
+  ],
+  "rightAngles":[{"id":"rA","refs":["B","A","C"]},{"id":"rD","refs":["C","D","E"]}],
+  "planeMarks":{
+    "equalLengths":[
+      {"id":"e8","count":1,"segments":["sAC","sDE"]},
+      {"id":"e4","count":2,"segments":["sAB","sCD"]}
+    ],
+    "dimensions":[{"id":"lAB","from":"A","to":"B","label":"4","unit":"cm","side":"ABOVE"},{"id":"lDE","from":"D","to":"E","label":"8","unit":"cm","side":"BELOW"}]
+  },
+  "coordinateCanvas":{"width":560,"height":560},
+  "caption":"세 점 A,C,D가 일직선에 있고 합동인 직각삼각형 ACB와 DEC가 가운데 삼각형 BCE를 둘러싼다.",
+  "accessibilityDescription":"A,C,D가 왼쪽 세로 직선 위에서 위에서 아래 순으로 있고 B와 E는 오른쪽에 있다. A와 D의 직각, AB=4cm, DE=8cm와 두 쌍의 같은 길이를 눈금으로 표시한다.",
+  "sourceQuote":"두 직각삼각형 ACB, DEC는 합동, A,C,D는 일직선, AB=4cm, DE=8cm일 때 △BCE의 넓이는?",
+  "sourceConditions":[
+    {"id":"congruent","condition":"△ACB와 △DEC는 각 A,D가 직각이며 AC=DE=8, AB=CD=4이다.","mappedTo":["rA","rD","e8","e4","sAC","sDE","sAB","sCD"]},
+    {"id":"givenLengths","condition":"문제에 주어진 AB=4cm, DE=8cm 표시를 유지한다.","mappedTo":["lAB","lDE"]},
+    {"id":"middleArea","condition":"중앙 △BCE는 세 꼭짓점과 세 변만 표시하며 정답 넓이는 노출하지 않는다.","mappedTo":["sBC","sCE","sBE"]}
+  ],
+  "newVisualInformation":["원본 q11.png의 두 직각 표식과 대응변의 같은 길이 눈금을 복원하고 장식성 삼각형 내부 채움을 모두 없앤다."]
+}

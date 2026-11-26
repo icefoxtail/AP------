@@ -1,0 +1,34 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{
+    "schemaVersion":"construction-spike-v1",
+    "realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes":[
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"6"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"U","op":"POLAR_POINT","inputs":["B","C"],"args":{"length":{"kind":"integer","value":"1"},"angleDeg":{"kind":"integer","value":"60"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"V","op":"POLAR_POINT","inputs":["C","B"],"args":{"length":{"kind":"integer","value":"1"},"angleDeg":{"kind":"integer","value":"45"},"turn":"CW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"lB","op":"LINE_THROUGH","inputs":["B","U"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"lC","op":"LINE_THROUGH","inputs":["C","V"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"A","op":"LINE_INTERSECTION","inputs":["lB","lC"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "displayPoints":["A","B","C"],"displayLines":[],
+  "displaySegments":[{"id":"sAB","refs":["A","B"]},{"id":"sAC","refs":["A","C"]},{"id":"sBC","refs":["B","C"]}],
+  "planeMarks":{
+    "angles":[
+      {"id":"aB","refs":["A","B","C"],"value":60,"label":"60","style":"ARC","factRole":"GIVEN"},
+      {"id":"aC","refs":["A","C","B"],"value":45,"label":"45","style":"ARC","factRole":"GIVEN"}
+    ],
+    "dimensions":[{"id":"base6","from":"B","to":"C","label":"6","unit":"cm","side":"BELOW"}]
+  },
+  "coordinateCanvas":{"width":550,"height":460},
+  "caption":"삼각형 ABC에서 밑변 BC는 6cm, B의 각은 60도, C의 각은 45도이다.",
+  "accessibilityDescription":"수평 밑변 BC의 위쪽에 꼭짓점 A를 두고 두 밑각 60도와 45도를 원호로 표시한다. 밑변 길이는 6cm이며 면을 칠하지 않는다.",
+  "sourceQuote":"∠B=60°, ∠C=45°인 △ABC에서 BC=6cm일 때 넓이는?",
+  "sourceConditions":[
+    {"id":"angles","condition":"문제의 ∠ABC=60°, ∠ACB=45°를 길이와 방향이 정확한 두 반직선 교점에서 나타낸다.","mappedTo":["aB","aC","lB","lC"]},
+    {"id":"base","condition":"BC=6cm이다.","mappedTo":["sBC","base6"]}
+  ],
+  "newVisualInformation":["원본 q13.png의 두 각도 호·밑변 길이 6cm를 보존하고 기존 연한 파란 삼각형 전체 채움을 제거한다.","문제축에는 풀이의 수선 발 H와 높이 h 및 정답을 미리 그리지 않는다."]
+}

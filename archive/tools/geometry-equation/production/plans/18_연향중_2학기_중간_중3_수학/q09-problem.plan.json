@@ -1,0 +1,37 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{
+    "schemaVersion":"construction-spike-v1",
+    "realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes":[
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"2"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"2"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"C","op":"POLAR_POINT","inputs":["B","O"],"args":{"length":{"kind":"integer","value":"4"},"angleDeg":{"kind":"integer","value":"90"},"turn":"CCW"},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"D","op":"POLAR_POINT","inputs":["C","O"],"args":{"length":{"kind":"integer","value":"6"},"angleDeg":{"kind":"integer","value":"90"},"turn":"CCW"},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"E","op":"POLAR_POINT","inputs":["D","O"],"args":{"length":{"kind":"integer","value":"8"},"angleDeg":{"kind":"integer","value":"90"},"turn":"CCW"},"outputType":"POINT","factRole":"GIVEN"}
+    ]
+  },
+  "displayPoints":["A","O","B","C","D","E"],"displayLines":[],
+  "displaySegments":[
+    {"id":"sAB","refs":["A","B"]},{"id":"sAO","refs":["A","O"]},{"id":"sOB","refs":["O","B"]},
+    {"id":"sBC","refs":["B","C"]},{"id":"sOC","refs":["O","C"]},
+    {"id":"sCD","refs":["C","D"]},{"id":"sOD","refs":["O","D"]},
+    {"id":"sDE","refs":["D","E"]},{"id":"sOE","refs":["O","E"]}
+  ],
+  "rightAngles":[{"id":"rA","refs":["B","A","O"]},{"id":"rB","refs":["O","B","C"]},{"id":"rC","refs":["O","C","D"]},{"id":"rD","refs":["O","D","E"]}],
+  "planeMarks":{"expressionLabels":[
+    {"id":"a2","ownerSegment":"sAB","text":"2"},{"id":"o2","ownerSegment":"sAO","text":"2"},
+    {"id":"b4","ownerSegment":"sBC","text":"4"},{"id":"c6","ownerSegment":"sCD","text":"6"},{"id":"d8","ownerSegment":"sDE","text":"8"}
+  ]},
+  "coordinateCanvas":{"width":710,"height":480},
+  "caption":"O를 한 꼭짓점으로 공유하는 직각삼각형 AOB, BOC, COD, DOE를 차례로 연결한 그림이다.",
+  "accessibilityDescription":"A,O는 왼쪽 밑변, B는 A의 위쪽, C,D,E는 오른쪽으로 부채꼴처럼 퍼진다. A,B,C,D에서 직각 네모, 길이 2,2,4,6,8을 표시하고 삼각형 면은 칠하지 않는다.",
+  "sourceQuote":"직각삼각형을 이어 그릴 때 OE의 길이를 구하면? OA=AB=2, BC=4, CD=6, DE=8",
+  "sourceConditions":[
+    {"id":"legs","condition":"OA=AB=2, BC=4, CD=6, DE=8의 다섯 주어진 길이를 표시한다.","mappedTo":["a2","o2","b4","c6","d8"]},
+    {"id":"fourRights","condition":"∠BAO, ∠OBC, ∠OCD, ∠ODE는 모두 직각이다.","mappedTo":["rA","rB","rC","rD"]},
+    {"id":"hypotenuses","condition":"연속된 빗변 OB,OC,OD와 최종 목표 OE를 그린다. OE의 계산값은 문제용에 표기하지 않는다.","mappedTo":["sOB","sOC","sOD","sOE"]}
+  ],
+  "newVisualInformation":["원본 q09.png의 직각 네 개·길이 2,2,4,6,8을 정밀 재구성한다.","기존 문제 SVG의 네 삼각형에 칠해진 반투명 면색을 전부 제거한다."]
+}

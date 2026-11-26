@@ -1,0 +1,373 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "정육면체의 BMN"
+      },
+      "plan": {
+        "capability": "solid-figure-v1",
+        "unit": "cm",
+        "solids": [
+          {
+            "kind": "PRISM",
+            "base": {
+              "kind": "RECT",
+              "width": 8,
+              "depth": 8
+            },
+            "height": 8,
+            "names": "FGHEBCDA",
+            "points": [
+              {
+                "id": "M",
+                "at": {
+                  "edge": [
+                    "C",
+                    "G"
+                  ],
+                  "t": "1/2"
+                }
+              },
+              {
+                "id": "N",
+                "at": {
+                  "edge": [
+                    "C",
+                    "D"
+                  ],
+                  "t": "1/2"
+                }
+              },
+              {
+                "id": "K",
+                "at": {
+                  "midpoint": [
+                    "M",
+                    "N"
+                  ]
+                }
+              }
+            ]
+          }
+        ],
+        "segments": [
+          {
+            "from": "B",
+            "to": "M",
+            "style": "AUTO",
+            "role": "REF"
+          },
+          {
+            "from": "B",
+            "to": "N",
+            "style": "AUTO",
+            "role": "REF"
+          },
+          {
+            "from": "M",
+            "to": "N",
+            "style": "AUTO",
+            "role": "REF"
+          },
+          {
+            "from": "B",
+            "to": "K",
+            "style": "AUTO",
+            "role": "REF"
+          },
+          {
+            "from": "K",
+            "to": "M",
+            "style": "AUTO",
+            "role": "REF"
+          }
+        ],
+        "dims": [
+          {
+            "edge": "FG"
+          },
+          {
+            "from": "M",
+            "to": "N"
+          },
+          {
+            "from": "B",
+            "to": "K"
+          }
+        ],
+        "marks": {
+          "rightAngles": [
+            {
+              "at": "K",
+              "refs": [
+                "B",
+                "M"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "삼각형 BMN의 높이"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "M",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "N",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "expression",
+                    "op": "mul",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "4"
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "2"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "K",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "expression",
+                    "op": "mul",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "2"
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "2"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "expression",
+                    "op": "mul",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "2"
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "2"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "mul",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "6"
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "2"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "B",
+          "M",
+          "N",
+          "K"
+        ],
+        "displayLines": [],
+        "displaySegments": [
+          {
+            "id": "sBM",
+            "refs": [
+              "B",
+              "M"
+            ]
+          },
+          {
+            "id": "sBN",
+            "refs": [
+              "B",
+              "N"
+            ]
+          },
+          {
+            "id": "sMN",
+            "refs": [
+              "M",
+              "N"
+            ]
+          },
+          {
+            "id": "sBK",
+            "refs": [
+              "B",
+              "K"
+            ]
+          }
+        ],
+        "rightAngles": [
+          {
+            "id": "rK",
+            "refs": [
+              "B",
+              "K",
+              "M"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "equalLengths": [
+            {
+              "id": "equalBM",
+              "count": 1,
+              "segments": [
+                "sBM",
+                "sBN"
+              ]
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "lenBM",
+              "ownerSegment": "sBM",
+              "text": "4√5"
+            },
+            {
+              "id": "lenMN",
+              "ownerSegment": "sMN",
+              "text": "4√2"
+            },
+            {
+              "id": "lenBK",
+              "ownerSegment": "sBK",
+              "text": "6√2"
+            }
+          ]
+        },
+        "coordinateCanvas": {
+          "width": 500,
+          "height": 430
+        }
+      }
+    }
+  ],
+  "caption": "정육면체의 중점 M,N으로 만든 삼각형과 수선 BK의 실측 관계로 넓이 24cm²를 구한다.",
+  "sourceQuote": "삼각형 BMN의 넓이는 (1/2)×4√2×6√2=24cm²이다.",
+  "sourceConditions": [
+    {
+      "id": "solid",
+      "condition": "CG와 CD의 중점 M,N 및 정육면체 BMN을 실선·점선으로 표시한다.",
+      "mappedTo": [
+        "panels"
+      ]
+    },
+    {
+      "id": "triangle",
+      "condition": "별도 평면 패널에서 BM=BN=4√5, MN=4√2, BK=6√2, BK⊥MN을 보인다.",
+      "mappedTo": [
+        "panels"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "기존 보라색 BMN 면 채움을 없애고 3차원 정육면체와 2차원 보조 직각삼각형을 두 패널로 복원한다.",
+    "높이 BK의 직각·중점 K·밑변 길이 4√2와 빗변 길이 4√5를 선분에 배치한다."
+  ]
+}

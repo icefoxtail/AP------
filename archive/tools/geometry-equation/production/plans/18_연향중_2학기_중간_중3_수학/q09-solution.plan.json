@@ -1,0 +1,314 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "B",
+          "O"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "90"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "C",
+          "O"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "90"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "D",
+          "O"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "90"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "O",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displayLines": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAO",
+      "refs": [
+        "A",
+        "O"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sOC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sOD",
+      "refs": [
+        "O",
+        "D"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sOE",
+      "refs": [
+        "O",
+        "E"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rA",
+      "refs": [
+        "B",
+        "A",
+        "O"
+      ]
+    },
+    {
+      "id": "rB",
+      "refs": [
+        "O",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "rC",
+      "refs": [
+        "O",
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "rD",
+      "refs": [
+        "O",
+        "D",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "a2",
+        "ownerSegment": "sAB",
+        "text": "2"
+      },
+      {
+        "id": "o2",
+        "ownerSegment": "sAO",
+        "text": "2"
+      },
+      {
+        "id": "b4",
+        "ownerSegment": "sBC",
+        "text": "4"
+      },
+      {
+        "id": "c6",
+        "ownerSegment": "sCD",
+        "text": "6"
+      },
+      {
+        "id": "d8",
+        "ownerSegment": "sDE",
+        "text": "8"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 710,
+    "height": 480
+  },
+  "caption": "OA=AB=2, BC=4, CD=6, DE=8을 사용하여 OB²=8, OC²=24, OD²=60, OE²=124를 순차 계산한다.",
+  "accessibilityDescription": "A,O는 왼쪽 밑변, B는 A의 위쪽, C,D,E는 오른쪽으로 부채꼴처럼 퍼진다. A,B,C,D에서 직각 네모, 길이 2,2,4,6,8을 표시하고 삼각형 면은 칠하지 않는다.",
+  "sourceQuote": "그림의 직각 표시를 따라 피타고라스 정리를 차례로 적용한다.",
+  "sourceConditions": [
+    {
+      "id": "legs",
+      "condition": "OA=AB=2, BC=4, CD=6, DE=8의 다섯 주어진 길이를 표시한다.",
+      "mappedTo": [
+        "a2",
+        "o2",
+        "b4",
+        "c6",
+        "d8"
+      ]
+    },
+    {
+      "id": "fourRights",
+      "condition": "∠BAO, ∠OBC, ∠OCD, ∠ODE는 모두 직각이다.",
+      "mappedTo": [
+        "rA",
+        "rB",
+        "rC",
+        "rD"
+      ]
+    },
+    {
+      "id": "hypotenuses",
+      "condition": "연속된 빗변 OB,OC,OD와 최종 목표 OE를 그린다. OE의 계산값은 풀이 결과는 해설 문장에 표시한다.",
+      "mappedTo": [
+        "sOB",
+        "sOC",
+        "sOD",
+        "sOE"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "연속된 네 직각삼각형의 공통 빗변을 선분으로 모두 남기고 계산은 해설에 둔다.",
+    "해설 원문과 같은 점·선분·라벨·직각표식의 위치를 보존하면서 불필요한 전체 면 채움을 제거한다."
+  ]
+}

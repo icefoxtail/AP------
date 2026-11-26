@@ -1,0 +1,41 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{
+    "schemaVersion":"construction-spike-v1",
+    "realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes":[
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"4"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"3"},{"kind":"integer","value":"4"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"7"},{"kind":"integer","value":"4"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"E","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"3"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"F","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"7"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "displayPoints":["A","B","C","D","E","F"],"displayLines":[],
+  "displaySegments":[
+    {"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},
+    {"id":"sCF","refs":["C","F"]},{"id":"sFE","refs":["F","E"]},
+    {"id":"sED","refs":["E","D"]},{"id":"sDA","refs":["D","A"]},
+    {"id":"sBE","refs":["B","E"],"dashed":true},
+    {"id":"sAF","refs":["A","F"],"emphasis":"BOLD"}
+  ],
+  "rightAngles":[{"id":"rD","refs":["A","D","E"]},{"id":"rF","refs":["C","F","E"]}],
+  "planeMarks":{
+    "dimensions":[
+      {"id":"ab3","from":"A","to":"B","label":"3","unit":"cm","side":"ABOVE"},
+      {"id":"bc4","from":"B","to":"C","label":"4","unit":"cm","side":"ABOVE"},
+      {"id":"height4","from":"C","to":"F","label":"4","unit":"cm","side":"RIGHT"}
+    ]
+  },
+  "coordinateCanvas":{"width":660,"height":410},
+  "caption":"삼각기둥의 옆면 ABED와 BCEF를 펼치면 가로 3+4cm, 세로 4cm의 직사각형이고 최단 경로는 직선 AF이다.",
+  "accessibilityDescription":"왼쪽 폭 3cm, 오른쪽 폭 4cm인 두 직사각형이 점선 BE를 기준으로 이어져 있다. 전체 높이 4cm이고 왼쪽 위 A에서 오른쪽 아래 F까지 진한 대각선이 BE를 지난다. 면 채움은 없다.",
+  "sourceQuote":"삼각기둥에서 A에서 출발하여 모서리 BE를 지나 F까지 가는 가장 짧은 거리는?",
+  "sourceConditions":[
+    {"id":"unfold","condition":"직각삼각형의 AB=3cm, BC=4cm를 따라 붙은 두 옆면을 동일 평면으로 펼친다.","mappedTo":["sAB","sBC","sBE","ab3","bc4"]},
+    {"id":"height","condition":"기둥 모서리 BE=CF=4cm이다.","mappedTo":["sBE","sCF","height4"]},
+    {"id":"shortest","condition":"A에서 F로 가는 직선 선분이 점선 접합 모서리 BE를 통과한다.","mappedTo":["sAF","sBE"]}
+  ],
+  "newVisualInformation":["해설의 3·4·4 치수선, 접합선 BE 점선, 최단 경로 AF를 실제 선분으로 복원한다.","기존 해설 SVG의 직사각형 전체 파랑·초록 면 채움은 제거하고 선분·직각·치수만 남긴다."]
+}
