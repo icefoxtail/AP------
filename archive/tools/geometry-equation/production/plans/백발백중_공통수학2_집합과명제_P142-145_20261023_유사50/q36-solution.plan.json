@@ -1,0 +1,36 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "caption": "분할 항등식에서 B가 A의 진부분집합임을 확인한다.",
+  "accessibilityDescription": "분할 항등식에서 B가 A의 진부분집합임을 확인한다.",
+  "sourceConditions": [
+    {
+      "id": "partition",
+      "condition": "차집합과 교집합의 합집합이 원래 집합",
+      "mappedTo": "diagram.sets"
+    },
+    {
+      "id": "proper",
+      "condition": "B가 A의 진부분집합",
+      "mappedTo": "diagram.subset"
+    }
+  ],
+  "newVisualInformation": [
+    "차집합이 비고 한 집합이 다른 집합 내부에 완전히 들어가는 관계를 명료하게 나타낸다."
+  ],
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A"
+      },
+      {
+        "id": "B"
+      }
+    ],
+    "subset": [
+      "B",
+      "A"
+    ],
+    "shade": "B"
+  }
+}

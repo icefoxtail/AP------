@@ -1,0 +1,169 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "세 직선이 삼각형을 만들지 않고 한 점에서 만나는 경우를 나타낸다.",
+  "accessibilityDescription": "세 직선이 삼각형을 만들지 않고 한 점에서 만나는 경우를 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "fixed",
+      "condition": "주어진 두 직선 x+4y-9=0, x+2y-5=0",
+      "mappedTo": [
+        "mathPlan.nodes[0].args",
+        "mathPlan.nodes[1].args"
+      ]
+    },
+    {
+      "id": "third",
+      "condition": "세 직선의 공통 교점 (1,2)와 a=5인 세 번째 직선",
+      "mappedTo": [
+        "mathPlan.nodes[2].args",
+        "mathPlan.nodes[3].args"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "세 직선이 공통점을 지나므로 삼각형을 이루지 않는 세 번째 예외를 시각화한다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "L1",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "-9"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L2",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "-5"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L3",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "-11"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [
+    "L1",
+    "L2",
+    "L3"
+  ],
+  "displayPoints": [
+    "T"
+  ],
+  "coordinateLabels": [
+    "T"
+  ],
+  "lineLabels": [
+    {
+      "nodeId": "L1",
+      "form": "GENERAL"
+    },
+    {
+      "nodeId": "L2",
+      "form": "GENERAL"
+    },
+    {
+      "nodeId": "L3",
+      "form": "GENERAL"
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 670,
+    "height": 470
+  },
+  "sourceQuote": "서로 다른 세 직선 $x+4y-9=0$, $x+2y-5=0$, $x+ay-11=0$이 삼각형을 만들지 않도록 하는 모든 실수 $a$의 값의 합은?"
+}

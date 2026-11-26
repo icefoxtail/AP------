@@ -1,0 +1,62 @@
+{
+  "capability": "number-line-figure-v1",
+  "caption": "A=[3,7]와 B=(-2,3)의 경계 포함 여부를 나란히 비교한다.",
+  "accessibilityDescription": "A의 3, 7 양끝은 닫혀 있고 B의 -2, 3 양끝은 열려 있어 두 구간의 교집합이 공집합이다.",
+  "sourceConditions": [
+    {
+      "id": "A",
+      "condition": "A의 근 3, 7와 이하 부등호",
+      "mappedTo": "numberLine.rows[0].pieces"
+    },
+    {
+      "id": "B",
+      "condition": "B의 근 -2, 3와 미만 부등호",
+      "mappedTo": "numberLine.rows[1].pieces"
+    }
+  ],
+  "newVisualInformation": [
+    "맞닿은 경계에서 A의 닫힌 점과 B의 열린 점이 달라 교집합이 공집합인 이유를 보여 준다."
+  ],
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "A",
+        "color": "BLUE",
+        "pieces": [
+          {
+            "lo": {
+              "value": "3",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "7",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "B",
+        "color": "WARM",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-2",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "3",
+              "state": "OPEN"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "서로소인 두 구간의 경계"
+  }
+}

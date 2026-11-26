@@ -1,0 +1,374 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "중심에서 현의 중점에 내린 수선과 반지름으로 직각삼각형을 만든다.",
+  "accessibilityDescription": "중심에서 현의 중점에 내린 수선과 반지름으로 직각삼각형을 만든다.",
+  "sourceConditions": [
+    {
+      "id": "circle",
+      "condition": "중심 (4,1) 반지름 5",
+      "mappedTo": [
+        "mathPlan.nodes[0].args",
+        "mathPlan.nodes[5].args"
+      ]
+    },
+    {
+      "id": "chord",
+      "condition": "직선 1x+1y-1=0과 원의 교점 A,B",
+      "mappedTo": [
+        "mathPlan.nodes[1].args",
+        "mathPlan.nodes[2].args",
+        "mathPlan.nodes[3].args"
+      ]
+    },
+    {
+      "id": "midpoint",
+      "condition": "선분 AB의 중점 M",
+      "mappedTo": [
+        "mathPlan.nodes[4].inputs",
+        "displaySegments[0]"
+      ]
+    },
+    {
+      "id": "orthogonal",
+      "condition": "CM은 AB에 수직이고 AM은 현 길이의 절반",
+      "mappedTo": [
+        "displaySegments[1]",
+        "displaySegments[2]",
+        "rightAngles[0]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "현의 길이를 직접 계산하는 대신 중심–현 중점–교점의 직각삼각형으로 관계를 파악한다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "-1"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "add",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "-1"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "mul",
+                      "args": [
+                        {
+                          "kind": "rational",
+                          "numerator": "1",
+                          "denominator": "2"
+                        },
+                        {
+                          "kind": "expression",
+                          "op": "sqrt",
+                          "args": [
+                            {
+                              "kind": "integer",
+                              "value": "34"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "expression",
+              "op": "add",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "-1"
+                },
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "rational",
+                      "numerator": "1",
+                      "denominator": "2"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "34"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "add",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "neg",
+                  "args": [
+                    {
+                      "kind": "expression",
+                      "op": "mul",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "-1"
+                        },
+                        {
+                          "kind": "expression",
+                          "op": "mul",
+                          "args": [
+                            {
+                              "kind": "rational",
+                              "numerator": "1",
+                              "denominator": "2"
+                            },
+                            {
+                              "kind": "expression",
+                              "op": "sqrt",
+                              "args": [
+                                {
+                                  "kind": "integer",
+                                  "value": "34"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "expression",
+              "op": "add",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "-1"
+                },
+                {
+                  "kind": "expression",
+                  "op": "neg",
+                  "args": [
+                    {
+                      "kind": "expression",
+                      "op": "mul",
+                      "args": [
+                        {
+                          "kind": "rational",
+                          "numerator": "1",
+                          "denominator": "2"
+                        },
+                        {
+                          "kind": "expression",
+                          "op": "sqrt",
+                          "args": [
+                            {
+                              "kind": "integer",
+                              "value": "34"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "C",
+          "L"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayCircles": [
+    "k"
+  ],
+  "displayLines": [
+    "L"
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "M",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ],
+      "emphasis": "BOLD"
+    },
+    {
+      "id": "sCM",
+      "refs": [
+        "C",
+        "M"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 680,
+    "height": 490
+  },
+  "rightAngles": [
+    {
+      "id": "raM",
+      "refs": [
+        "C",
+        "M",
+        "A"
+      ]
+    }
+  ],
+  "coordinateLabels": [
+    "C"
+  ],
+  "sourceQuote": "원 $(x-4)^2+(y-1)^2=25$과 직선 $x+y-1=0$의 두 교점을 $A,B$, 선분 $AB$의 중점을 $M$이라 할 때, $AM$의 길이는?"
+}

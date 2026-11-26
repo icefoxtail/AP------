@@ -1,0 +1,174 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "매개변수 m=0인 대표 직선 y=4는 삼각형의 세 꼭짓점과 떨어져 있다.",
+  "accessibilityDescription": "매개변수 m=0인 대표 직선 y=4는 삼각형의 세 꼭짓점과 떨어져 있다.",
+  "sourceConditions": [
+    {
+      "id": "vertices",
+      "condition": "삼각형의 꼭짓점 -2,3;2,-2;4,1",
+      "mappedTo": [
+        "mathPlan.nodes[0].args",
+        "mathPlan.nodes[1].args",
+        "mathPlan.nodes[2].args"
+      ]
+    },
+    {
+      "id": "param",
+      "condition": "주어진 매개변수 직선에서 답 범위 내부의 예 m=0",
+      "mappedTo": "mathPlan.nodes[3].args"
+    }
+  ],
+  "newVisualInformation": [
+    "직선이 삼각형과 만나지 않으려면 세 꼭짓점의 선형식 부호가 같아야 한다는 점을 한 표본으로 보인다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "-4"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "displayLines": [
+    "L"
+  ],
+  "coordinateLabels": [
+    "A",
+    "B",
+    "C"
+  ],
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 480
+  },
+  "sourceQuote": "세 점 $A(-2,3)$, $B(2,-2)$, $C(4,1)$을 꼭짓점으로 하는 삼각형과 직선 $mx-y-2m+4=0$이 만나지 않도록 하는 실수 $m$의 범위는?"
+}

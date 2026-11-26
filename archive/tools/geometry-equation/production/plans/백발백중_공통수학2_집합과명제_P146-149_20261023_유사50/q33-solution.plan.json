@@ -1,0 +1,216 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "원의 중심에서 주어진 직선에 내린 수선의 발에서 접선을 그려 최소 길이를 나타낸다.",
+  "accessibilityDescription": "원의 중심에서 주어진 직선에 내린 수선의 발에서 접선을 그려 최소 길이를 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "circle",
+      "condition": "중심 (3,2) 반지름 1",
+      "mappedTo": [
+        "mathPlan.nodes[0].args",
+        "mathPlan.nodes[4].args"
+      ]
+    },
+    {
+      "id": "line",
+      "condition": "주어진 직선 2x+1y-3=0",
+      "mappedTo": "mathPlan.nodes[1].args"
+    },
+    {
+      "id": "foot",
+      "condition": "중심에서 직선에 내린 수선의 발 (1,1)",
+      "mappedTo": "mathPlan.nodes[2].args"
+    },
+    {
+      "id": "tangent",
+      "condition": "CQ와 PQ는 수직이고 Q는 반지름 1의 원 위",
+      "mappedTo": [
+        "mathPlan.nodes[3].args",
+        "displaySegments[1]",
+        "displaySegments[2]",
+        "rightAngles[0]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "중심–접점–외부점의 직각삼각형에서 PQ²=PC²−r²이면서 PC가 최소임을 보여 준다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "-3"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayCircles": [
+    "k"
+  ],
+  "displayLines": [
+    "L"
+  ],
+  "displayPoints": [
+    "C",
+    "P",
+    "Q"
+  ],
+  "displaySegments": [
+    {
+      "id": "sCP",
+      "refs": [
+        "C",
+        "P"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sPQ",
+      "refs": [
+        "P",
+        "Q"
+      ],
+      "emphasis": "BOLD"
+    },
+    {
+      "id": "sCQ",
+      "refs": [
+        "C",
+        "Q"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "raQ",
+      "refs": [
+        "C",
+        "Q",
+        "P"
+      ]
+    }
+  ],
+  "coordinateLabels": [
+    "C"
+  ],
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 480
+  },
+  "sourceQuote": "직선 $y=-2x+3$ 위를 움직이는 점 $P$에서 원 $(x-3)^2+(y-2)^2=1$에 그은 접선의 접점을 $Q$라 할 때, 선분 $PQ$의 길이의 최솟값은?"
+}

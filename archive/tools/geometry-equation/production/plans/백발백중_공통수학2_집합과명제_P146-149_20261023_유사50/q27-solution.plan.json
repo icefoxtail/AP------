@@ -1,0 +1,75 @@
+{
+  "capability": "polynomial-spike-v1",
+  "caption": "평행이동한 직선과 포물선이 한 점 T에서 접하는 모습을 표시한다.",
+  "accessibilityDescription": "평행이동한 직선과 포물선이 한 점 T에서 접하는 모습을 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "parabola",
+      "condition": "y=x²-2x+5",
+      "mappedTo": "graphPlan.coefficients"
+    },
+    {
+      "id": "shift",
+      "condition": "원래 직선 y=4x-2를 왼쪽 1, 위로 k 이동",
+      "mappedTo": [
+        "graphPlan.lines[0].slope",
+        "graphPlan.lines[0].intercept"
+      ]
+    },
+    {
+      "id": "tangent",
+      "condition": "접점 T=(3,8) 및 접선 y=4x-4",
+      "mappedTo": [
+        "graphPlan.requiredPoints[0]",
+        "graphPlan.lines[0].tangentAt"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "판별식 0에 해당하는 하나의 접점과 이동 직선의 기울기를 곡선 및 접선으로 대조한다."
+  ],
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "5",
+      "-2",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -3,
+      7
+    ],
+    "viewport": [
+      -3,
+      7,
+      -6,
+      22
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "T",
+        "x": 3,
+        "y": 8
+      }
+    ],
+    "lines": [
+      {
+        "id": "L",
+        "slope": "4",
+        "intercept": "-4",
+        "through": [
+          "T"
+        ],
+        "tangentAt": "T"
+      }
+    ]
+  },
+  "sourceQuote": "직선 $y=4x-2$을 $x$축의 음의 방향으로 $1$만큼, $y$축의 방향으로 $k$만큼 평행이동한 직선이 포물선 $y=x^2-2x+5$에 접할 때, 실수 $k$의 값은?"
+}
