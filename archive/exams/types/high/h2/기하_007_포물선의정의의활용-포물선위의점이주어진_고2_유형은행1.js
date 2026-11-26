@@ -44,7 +44,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RANGE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_007_포물선의정의의활용-포물선위의점이주어진_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "포물선 y²=8x에서 수평선 y=1,2,3과 만나는 P₁,P₂,P₃ 및 초점 F. 이후 P₁₅까지 같은 규칙으로 이어진다.",
+    "imageCaption": "포물선 y²=8x에서 수평선 y=1,2,3과 만나는 P₁,P₂,P₃ 및 초점 F. 이후 P₁₅까지 같은 규칙으로 이어진다.",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -89,7 +93,11 @@ window.questionBank = [
       "CC_PERPENDICULAR"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_007_포물선의정의의활용-포물선위의점이주어진_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "y²=20x의 초점 F에서 세 점 A,B,C로 이은 선분과 원점에서 B의 수선의 발까지 x축 거리 9",
+    "imageCaption": "y²=20x의 초점 F에서 세 점 A,B,C로 이은 선분과 원점에서 B의 수선의 발까지 x축 거리 9",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -135,7 +143,11 @@ window.questionBank = [
       "CC_TRIANGLE_AREA"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_007_포물선의정의의활용-포물선위의점이주어진_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "포물선 y²=16x와 초점 F 중심의 원이 제1사분면의 P에서 만나는 그림",
+    "imageCaption": "포물선 y²=16x와 초점 F 중심의 원이 제1사분면의 P에서 만나는 그림",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -184,7 +196,11 @@ window.questionBank = [
       "COND_POSITIVE",
       "COND_UPPER_BOUND"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_007_포물선의정의의활용-포물선위의점이주어진_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "포물선 y²=4px, F=(p,0), A=(9,0)과 PA=PF인 이등변삼각형 PFA",
+    "imageCaption": "포물선 y²=4px, F=(p,0), A=(9,0)과 PA=PF인 이등변삼각형 PFA",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -231,7 +247,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_LOWER_BOUND"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_007_포물선의정의의활용-포물선위의점이주어진_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "y²=12x 위의 P에서 x축으로 내린 수선과 넓이가 4√21인 직각삼각형 PFH",
+    "imageCaption": "y²=12x 위의 P에서 x축으로 내린 수선과 넓이가 4√21인 직각삼각형 PFH",
+    "imageSize": "full"
   },
   {
     "id": 6,
@@ -277,7 +297,11 @@ window.questionBank = [
       "CC_EQUILATERAL_TRIANGLE"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_007_포물선의정의의활용-포물선위의점이주어진_고2_유형은행1/q6-problem.svg",
+    "imageAlt": "꼭짓점 (2,1), 초점 F(4,1), 준선 l:x=0인 포물선과 정삼각형 PHF",
+    "imageCaption": "꼭짓점 (2,1), 초점 F(4,1), 준선 l:x=0인 포물선과 정삼각형 PHF",
+    "imageSize": "full"
   },
   {
     "id": 7,
@@ -323,7 +347,11 @@ window.questionBank = [
       "CC_TRIANGLE_AREA_TRIG"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_007_포물선의정의의활용-포물선위의점이주어진_고2_유형은행1/q7-problem.svg",
+    "imageAlt": "y²=24x에서 PH=PF인 삼각형 PHF, 주어진 ∠HPF=120°",
+    "imageCaption": "y²=24x에서 PH=PF인 삼각형 PHF, 주어진 ∠HPF=120°",
+    "imageSize": "full"
   },
   {
     "id": 8,
@@ -416,7 +444,11 @@ window.questionBank = [
       "CC_DISTANCE_TWO_POINTS"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_007_포물선의정의의활용-포물선위의점이주어진_고2_유형은행1/q9-problem.svg",
+    "imageAlt": "y²=12x에서 H의 각을 이등분하는 HQ와 PQ:QF=3:2",
+    "imageCaption": "y²=12x에서 H의 각을 이등분하는 HQ와 PQ:QF=3:2",
+    "imageSize": "full"
   },
   {
     "id": 10,
@@ -464,6 +496,10 @@ window.questionBank = [
     "conditionKeys": [
       "COND_POSITIVE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_007_포물선의정의의활용-포물선위의점이주어진_고2_유형은행1/q10-problem.svg",
+    "imageAlt": "준선 x=-5와 x축의 P에서 출발한 양의 기울기 직선 l이 포물선 y²=20x와 두 번 만난다. PA:PB=1:5.",
+    "imageCaption": "준선 x=-5와 x축의 P에서 출발한 양의 기울기 직선 l이 포물선 y²=20x와 두 번 만난다. PA:PB=1:5.",
+    "imageSize": "full"
   }
 ];

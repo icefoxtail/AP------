@@ -265,6 +265,10 @@ window.questionBank = [
       "CC_UNDETERMINED_COEFFICIENTS"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_004_포물선의평행이동2_고2_유형은행1/q6-problem.svg",
+    "imageAlt": "세 점 (0,0), (0,4), (6,6)을 지나는 오른쪽으로 열린 포물선",
+    "imageCaption": "세 점 (0,0), (0,4), (6,6)을 지나는 오른쪽으로 열린 포물선",
+    "imageSize": "full"
   }
 ];

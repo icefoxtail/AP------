@@ -42,7 +42,11 @@ window.questionBank = [
     "decisiveStep": "$\\overline{\\mathrm{AP}}+\\overline{\\mathrm{PF}}=\\overline{\\mathrm{AH}}=7-(-3)=10$",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "image": "assets/images/기하_006_포물선의정의의활용-포물선위의점이주어진_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "포물선 y²=12x와 A(7,4)를 지나는 수평선, 교점 P, 초점 F",
+    "imageCaption": "포물선 y²=12x와 A(7,4)를 지나는 수평선, 교점 P, 초점 F",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -135,7 +139,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RANGE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_006_포물선의정의의활용-포물선위의점이주어진_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "포물선 y²=20x와 준선 위의 점 A, 초점 F를 잇는 선분 위 교점 B",
+    "imageCaption": "포물선 y²=20x와 준선 위의 점 A, 초점 F를 잇는 선분 위 교점 B",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -183,7 +191,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RANGE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_006_포물선의정의의활용-포물선위의점이주어진_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "포물선 y²=16x 위의 제1·4사분면 점 A, B와 삼각형 AOB",
+    "imageCaption": "포물선 y²=16x 위의 제1·4사분면 점 A, B와 삼각형 AOB",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -228,7 +240,11 @@ window.questionBank = [
       "CC_INTERNAL_DIVISION"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_006_포물선의정의의활용-포물선위의점이주어진_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "포물선 y²=2x 위의 P와 초점 F, FP 연장선 위의 점 Q",
+    "imageCaption": "포물선 y²=2x 위의 P와 초점 F, FP 연장선 위의 점 Q",
+    "imageSize": "full"
   },
   {
     "id": 6,
@@ -277,6 +293,10 @@ window.questionBank = [
     "conditionKeys": [
       "COND_POSITIVE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_006_포물선의정의의활용-포물선위의점이주어진_고2_유형은행1/q6-problem.svg",
+    "imageAlt": "포물선 위의 A, 준선의 수선의 발 B, 선분 BF와 포물선의 교점 C",
+    "imageCaption": "포물선 위의 A, 준선의 수선의 발 B, 선분 BF와 포물선의 교점 C",
+    "imageSize": "full"
   }
 ];
