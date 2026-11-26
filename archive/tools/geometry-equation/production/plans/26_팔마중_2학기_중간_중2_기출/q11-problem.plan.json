@@ -1,0 +1,47 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "10" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "D", "op": "POLAR_POINT", "inputs": ["B", "C"], "args": { "length": { "kind": "integer", "value": "10" }, "angleDeg": { "kind": "integer", "value": "40" }, "turn": "CCW" }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "P70", "op": "POLAR_POINT", "inputs": ["B", "C"], "args": { "length": { "kind": "integer", "value": "1" }, "angleDeg": { "kind": "integer", "value": "70" }, "turn": "CCW" }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "lB70", "op": "LINE_THROUGH", "inputs": ["B", "P70"], "args": {}, "outputType": "LINE", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "lCD", "op": "LINE_THROUGH", "inputs": ["C", "D"], "args": {}, "outputType": "LINE", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "A", "op": "LINE_INTERSECTION", "inputs": ["lB70", "lCD"], "args": {}, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "lBD", "op": "LINE_THROUGH", "inputs": ["B", "D"], "args": {}, "outputType": "LINE", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "P150", "op": "POLAR_POINT", "inputs": ["C", "B"], "args": { "length": { "kind": "integer", "value": "1" }, "angleDeg": { "kind": "integer", "value": "30" }, "turn": "CW" }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "lC150", "op": "LINE_THROUGH", "inputs": ["C", "P150"], "args": {}, "outputType": "LINE", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "E", "op": "LINE_INTERSECTION", "inputs": ["lBD", "lC150"], "args": {}, "outputType": "POINT", "factRole": "GIVEN" }
+    ]
+  },
+  "displayPoints": ["A", "B", "C", "D", "E"],
+  "displaySegments": [
+    { "id": "sAB", "refs": ["A", "B"] },
+    { "id": "sBC", "refs": ["B", "C"] },
+    { "id": "sAD", "refs": ["A", "D"] },
+    { "id": "sDC", "refs": ["D", "C"] },
+    { "id": "sBE", "refs": ["B", "E"] },
+    { "id": "sED", "refs": ["E", "D"] },
+    { "id": "sCE", "refs": ["C", "E"] }
+  ],
+  "planeMarks": {
+    "equalLengths": [{ "id": "sourceTickCDCE", "count": 2, "segments": ["sDC", "sCE"] }],
+    "angles": [
+      { "id": "givenAngleA40", "refs": ["B", "A", "C"], "value": 40, "label": "40", "arcs": 1, "factRole": "GIVEN" },
+      { "id": "askedAngleDCE", "refs": ["D", "C", "E"], "label": "x", "labelKind": "MATH", "arcs": 1, "factRole": "CONCLUSION" }
+    ]
+  },
+  "caption": "AB=AC인 이등변삼각형 ABC에서 BC=BD, CD=CE. A의 각 40°와 C의 미지각 x",
+  "accessibilityDescription": "꼭짓점 A가 위, B와 C가 밑변의 양끝인 이등변삼각형이다. AC 위 D, BD 위 E를 놓고 C와 E를 잇는다. A의 각은 40°, C에서 CD와 CE가 만드는 각은 x이다. 원본의 CD와 CE에 같은 길이 눈금 두 개씩이 있고, AB와 AD가 같다는 잘못된 눈금은 없다. 배경과 삼각형 면에는 색칠이 없다.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "AB=AC이며 꼭지각 A는 40°", "mappedTo": ["A", "B", "C", "givenAngleA40", "sAB", "sAD", "sDC"] },
+    { "id": "c2", "condition": "BC=BD, D는 AC 위, E는 BD 위", "mappedTo": ["B", "C", "D", "E", "sBC", "sBE", "sED"] },
+    { "id": "c3", "condition": "CD=CE, ∠DCE=x", "mappedTo": ["sDC", "sCE", "sourceTickCDCE", "askedAngleDCE"] }
+  ],
+  "newVisualInformation": ["실제 POLAR_POINT 40°·70°와 LINE_INTERSECTION으로 모든 주어진 길이·각을 충족하며, 원본에는 없는 AB=AD 오인 눈금과 불필요한 내부 면 채움은 없다.", "미지각 x의 수치 정답 40°는 문제 그림에 적지 않는다."],
+  "sourceQuote": "그림에서 $\\triangle ABC$는 $AB=AC$인 이등변삼각형이다.",
+  "coordinateCanvas": { "width": 600, "height": 590 }
+}
