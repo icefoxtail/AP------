@@ -215,7 +215,7 @@
     }
   ],
   "newVisualInformation": [
-    "?? ?? ?? ? ???? ???? ????? ??? ?? ?? ??."
+    "20° 원주각과 중심각 x·원주각 y를 서로 다른 호 표식으로 묶고, 면 채움 없이 선과 호만 강조한다."
   ],
   "planeMarks": {
     "angles": [
@@ -227,9 +227,10 @@
           "B"
         ],
         "value": 20,
-        "noLabel": true,
         "color": "BLUE",
-        "factRole": "GIVEN"
+        "factRole": "GIVEN",
+        "label": "20",
+        "labelKind": "DEGREE"
       },
       {
         "id": "x",
@@ -239,9 +240,10 @@
           "B"
         ],
         "value": 40,
-        "noLabel": true,
         "color": "WARM",
-        "factRole": "DERIVED_INTERMEDIATE"
+        "factRole": "DERIVED_INTERMEDIATE",
+        "label": "x",
+        "labelKind": "MATH"
       },
       {
         "id": "y",
@@ -251,9 +253,10 @@
           "B"
         ],
         "value": 20,
-        "noLabel": true,
         "color": "BLUE",
-        "factRole": "DERIVED_INTERMEDIATE"
+        "factRole": "DERIVED_INTERMEDIATE",
+        "label": "y",
+        "labelKind": "MATH"
       }
     ],
     "arcs": [
