@@ -1,0 +1,213 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "21"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "ba",
+        "from": "B",
+        "to": "A",
+        "label": "17",
+        "side": "ABOVE"
+      },
+      {
+        "id": "ad",
+        "from": "A",
+        "to": "D",
+        "label": "6",
+        "side": "ABOVE"
+      },
+      {
+        "id": "dc",
+        "from": "D",
+        "to": "C",
+        "label": "10",
+        "side": "RIGHT"
+      },
+      {
+        "id": "ac",
+        "from": "A",
+        "to": "C",
+        "label": "8",
+        "side": "LEFT"
+      },
+      {
+        "id": "bc",
+        "from": "B",
+        "to": "C",
+        "label": "15",
+        "side": "BELOW"
+      }
+    ]
+  },
+  "caption": "두 직각삼각형 ACD와 ABC를 공통 높이 AC=8로 연결하고, 변 AD=6·DC=10·AB=17·BC=15를 표시한다.",
+  "accessibilityDescription": "두 직각삼각형 ACD와 ABC를 공통 높이 AC=8로 연결하고, 변 AD=6·DC=10·AB=17·BC=15를 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "triangle",
+      "condition": "AC는 AD와 BC 양쪽에 수직이다.",
+      "mappedTo": "displaySegments:sAC,sAD,sBC; rightAngles:rA,rC"
+    },
+    {
+      "id": "given",
+      "condition": "AB=17cm, AD=6cm, DC=10cm이다.",
+      "mappedTo": "planeMarks.dimensions:ba,ad,dc"
+    },
+    {
+      "id": "derived",
+      "condition": "AC=8cm이고 BC=15cm이다.",
+      "mappedTo": "planeMarks.dimensions:ac,bc"
+    }
+  ],
+  "newVisualInformation": [
+    "원문에 그려진 꼭짓점·중점·중선·보조선과 길이·직각·같은 길이 눈금을 실제 도형 필드에 배치하고, 넓이 지정이 없는 면의 채움을 제거한다."
+  ],
+  "rightAngles": [
+    {
+      "id": "rA",
+      "refs": [
+        "C",
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "rC",
+      "refs": [
+        "B",
+        "C",
+        "A"
+      ]
+    }
+  ]
+}

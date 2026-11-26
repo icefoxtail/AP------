@@ -8,22 +8,33 @@
         "name": "경로",
         "elements": [
           "A",
-          "BA"
+          "BA",
+          "BB"
         ]
       },
       {
         "id": "B",
-        "name": "확률",
+        "name": "경로 확률",
         "elements": [
           "1/2",
-          "1/4"
+          "1/4",
+          "2/8"
         ]
       },
       {
         "id": "C",
-        "name": "A승",
+        "name": "최종 승률",
         "elements": [
-          "3/4"
+          "3/4",
+          "1/4"
+        ]
+      },
+      {
+        "id": "D",
+        "name": "상금",
+        "elements": [
+          "48",
+          "16"
         ]
       }
     ],
@@ -52,6 +63,17 @@
       },
       {
         "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
           "column": 1,
           "element": 0
         },
@@ -71,18 +93,68 @@
           "element": 0
         },
         "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 2
+        },
+        "to": {
+          "column": 2,
+          "element": 1
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 2,
+          "element": 0
+        },
+        "to": {
+          "column": 3,
+          "element": 0
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 2,
+          "element": 1
+        },
+        "to": {
+          "column": 3,
+          "element": 1
+        },
+        "style": "SOLID"
       }
     ]
   },
-  "caption": "A가 다음 판에 바로 이기면 확률은 1/2이고, B가 이긴 뒤 그 다음 판에 A가 이기면 1/2×1/2=1/4이다. 따라서 A가 이길 확률은 1/2+1/4=3/4이고, B가 이길 확률은 1-3/4=1/4이다. 상금은 A가 64×3/4=48피스톨, B가 64×1/4=16피스톨이다. 따라서 답은 (1) 3/4, (2) 1/4, (3) A는 48피스톨, B는 16피스톨이다.",
-  "newVisualInformation": [
-    "A가 이기는 두 경로 A와 BA가 각각 확률 1/2과 1/4을 거쳐 3/4로 합쳐지는 대응도이다."
-  ],
+  "caption": "A 즉시 승리 경로 확률 1/2, B 다음 A 승리 경로 1/4를 더해 A승 3/4이다. B가 남은 두 판을 모두 이기는 확률 1/4(동등한 분수 2/8로 표기), 최종 상금은 A 48·B 16피스톨이다.",
+  "accessibilityDescription": "A승 경로 A(1/2), BA(1/4) 및 B승 경로 BB(2/8=1/4)를 최종 승률 A 3/4와 B 1/4, 상금 48과 16으로 각각 연결한 네 칸 대응도.",
   "sourceConditions": [
     {
-      "id": "source",
-      "condition": "[서술형 1] 실력이 같은 두 사람 $A$, $B$가 각각 $32$피스톨(화폐 단위)씩을 걸고 내기를 하였는데, 비기는 경우가 없는 주사위 던지기 게임을 승부가 날 때까지 해서 먼저 $3$번 이긴 사람이 상금 $64$피스톨을 모두 갖기로 하였다. 그런데 $A$가 $2$번, $B$가 $1$번 이긴 상황에서 부득이한 사정으로 게임을 중단하게 되었다. 이때 상금 $64$피스톨을 어떻게 나누어 가지는 것이 공평한가? (두 사람 $A$, $B$가 각각 이길 수 있는 가능성을 고려하여 상금을 나누어 가져야 한다)\n(1) $A$가 내기에서 이길 확률을 구하시오 (풀이과정 서술) [2점]\n(2) $B$가 내기에서 이길 확률을 구하시오 (풀이과정 서술) [1점]\n(3) $A$,$B$가 받는 상금을 각각 구하시오 (단답형) [2점]",
-      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+      "id": "start",
+      "condition": "A는 2승, B는 1승이고 비김 없는 3선승 게임이다.",
+      "mappedTo": "diagram.columns:A"
+    },
+    {
+      "id": "a",
+      "condition": "A는 A 경로(1/2) 또는 BA 경로(1/4)로 이길 수 있다.",
+      "mappedTo": "diagram.columns:A,B; diagram.arrows:0,1,3,4"
+    },
+    {
+      "id": "b",
+      "condition": "B가 우승하는 유일한 경로 BB는 1/4=2/8의 확률이다.",
+      "mappedTo": "diagram.columns:A,B,C; diagram.arrows:2,5"
+    },
+    {
+      "id": "prizes",
+      "condition": "A 최종 승률 3/4에 64를 곱하면 48, B 최종 승률 1/4에 64를 곱하면 16이다.",
+      "mappedTo": "diagram.columns:C,D; diagram.arrows:6,7"
     }
+  ],
+  "newVisualInformation": [
+    "두 승리 경로에 해당하는 1/2·1/4 확률을 실제 경로 노드에 복원했고, B의 별도 BB 경로 확률과 두 학생의 승률·상금까지 전부 그리는 필드에 연결했다.",
+    "집합 대응 엔진이 같은 열 안에 1/4를 중복 표시하지 못하므로 B 경로의 동등한 분수 2/8을 써 구별했다."
   ]
 }

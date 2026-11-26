@@ -1,0 +1,122 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "A",
+        "name": "합계",
+        "elements": [
+          "6",
+          "11"
+        ]
+      },
+      {
+        "id": "B",
+        "name": "순서쌍 수",
+        "elements": [
+          "5",
+          "2"
+        ]
+      },
+      {
+        "id": "C",
+        "name": "유리한 경우",
+        "elements": [
+          "7"
+        ]
+      },
+      {
+        "id": "D",
+        "name": "확률",
+        "elements": [
+          "7/36"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 0
+        },
+        "to": {
+          "column": 2,
+          "element": 0
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 1,
+          "element": 1
+        },
+        "to": {
+          "column": 2,
+          "element": 0
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 2,
+          "element": 0
+        },
+        "to": {
+          "column": 3,
+          "element": 0
+        },
+        "style": "SOLID"
+      }
+    ]
+  },
+  "caption": "정오각형에서 A에서 반시계 방향 한 칸인 B에 도달하려면 두 눈의 합이 5로 나눈 나머지 1인 6 또는 11이어야 하며, 각각 5가지와 2가지의 합 7가지이므로 확률은 7/36이다.",
+  "accessibilityDescription": "정오각형 바둑돌을 한 칸 이동시키는 주사위 합 6, 11이 각각 순서쌍 5가지, 2가지와 연결되고 최종 7가지에서 확률 7/36으로 이어지는 경우의 수 대응도.",
+  "sourceConditions": [
+    {
+      "id": "pentagon",
+      "condition": "정오각형 A→B→C→D→E→A를 반시계 방향으로 돌 때 B에 도착하려면 이동 횟수를 5로 나눈 나머지가 1이다.",
+      "mappedTo": "diagram.columns:A; caption"
+    },
+    {
+      "id": "six",
+      "condition": "주사위 두 눈의 합이 6인 경우는 (1,5),(2,4),(3,3),(4,2),(5,1)로 5가지다.",
+      "mappedTo": "diagram.columns:A,B; diagram.arrows:0"
+    },
+    {
+      "id": "eleven",
+      "condition": "합 11은 (5,6),(6,5)로 2가지다.",
+      "mappedTo": "diagram.columns:A,B; diagram.arrows:1"
+    },
+    {
+      "id": "total",
+      "condition": "모든 눈의 쌍은 36개이고 조건을 만족하는 쌍은 7개다.",
+      "mappedTo": "diagram.columns:C,D; diagram.arrows:2,3,4"
+    }
+  ],
+  "newVisualInformation": [
+    "이미 문제용 정오각형에 표시된 반시계 방향을 해설에서는 주사위 합 6과 11, 각 합의 순서쌍 수 5와 2, 총 7과 7/36을 구체적인 대응 화살표로 연결한다."
+  ]
+}

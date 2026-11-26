@@ -1,0 +1,315 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "108",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "144",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "42"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "36",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "48",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "176",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "48",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "116",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "48",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "24"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sDB",
+      "refs": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "sAE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "sEC",
+      "refs": [
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "sDF",
+      "refs": [
+        "D",
+        "F"
+      ]
+    },
+    {
+      "id": "sFE",
+      "refs": [
+        "F",
+        "E"
+      ]
+    },
+    {
+      "id": "sBG",
+      "refs": [
+        "B",
+        "G"
+      ]
+    },
+    {
+      "id": "sGC",
+      "refs": [
+        "G",
+        "C"
+      ]
+    },
+    {
+      "id": "sAF",
+      "refs": [
+        "A",
+        "F"
+      ]
+    },
+    {
+      "id": "sFG",
+      "refs": [
+        "F",
+        "G"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "ad",
+        "from": "A",
+        "to": "D",
+        "label": "24",
+        "side": "LEFT"
+      },
+      {
+        "id": "db",
+        "from": "D",
+        "to": "B",
+        "label": "12",
+        "side": "LEFT"
+      },
+      {
+        "id": "df",
+        "from": "D",
+        "to": "F",
+        "label": "16",
+        "side": "BELOW"
+      },
+      {
+        "id": "fe",
+        "from": "F",
+        "to": "E",
+        "label": "12",
+        "side": "BELOW"
+      },
+      {
+        "id": "bg",
+        "from": "B",
+        "to": "G",
+        "label": "24",
+        "side": "BELOW"
+      },
+      {
+        "id": "gc",
+        "from": "G",
+        "to": "C",
+        "label": "18",
+        "side": "BELOW"
+      }
+    ],
+    "parallels": [
+      {
+        "id": "p",
+        "count": 1,
+        "segments": [
+          "sDF",
+          "sBG"
+        ]
+      }
+    ]
+  },
+  "caption": "삼각형에서 DE와 BC가 평행하고, DF:BG=16:24=2:3 및 FE:GC=12:18임을 길이별로 표시한다.",
+  "accessibilityDescription": "삼각형에서 DE와 BC가 평행하고, DF:BG=16:24=2:3 및 FE:GC=12:18임을 길이별로 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "parallel",
+      "condition": "DE∥BC이며 A,F,G는 한 직선이다.",
+      "mappedTo": "displaySegments:sDF,sFE,sBG,sGC,sAF,sFG; planeMarks.parallels:p"
+    },
+    {
+      "id": "given",
+      "condition": "AD=24, DF=16, FE=12, BG=24이다.",
+      "mappedTo": "planeMarks.dimensions:ad,df,fe,bg"
+    },
+    {
+      "id": "derived",
+      "condition": "DB=12, GC=18로 대응하는 부분 길이가 정해진다.",
+      "mappedTo": "planeMarks.dimensions:db,gc"
+    }
+  ],
+  "newVisualInformation": [
+    "원문에 그려진 꼭짓점·중점·중선·보조선과 길이·직각·같은 길이 눈금을 실제 도형 필드에 배치하고, 넓이 지정이 없는 면의 채움을 제거한다."
+  ]
+}
