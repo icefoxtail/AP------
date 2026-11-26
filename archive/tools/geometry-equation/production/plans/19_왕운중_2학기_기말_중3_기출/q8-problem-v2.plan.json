@@ -91,14 +91,18 @@
         },
         "outputType": "POINT",
         "factRole": "GIVEN"
-      }
+      },
+      {"id":"srcDiagLineA","op":"LINE_THROUGH","inputs":["p1","p3"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"srcDiagLineB","op":"LINE_THROUGH","inputs":["p2","p4"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"srcCross","op":"LINE_INTERSECTION","inputs":["srcDiagLineA","srcDiagLineB"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
     ]
   },
   "displayPoints": [
     "p1",
     "p2",
     "p3",
-    "p4"
+    "p4",
+    "srcCross"
   ],
   "displayLines": [],
   "displayCircles": [],
@@ -147,18 +151,9 @@
     }
   ],
   "planeMarks": {
+    "angles": [{"id":"sourceIntersectionAngle","style":"ARC","refs":["p1","srcCross","p4"],"value":120,"label":"120","factRole":"GIVEN"}],
     "segmentColors": [{"segments":["s5","s6"],"color":"BLUE"}],
     "textLabels": [
-      {
-        "id": "text1",
-        "at": [
-          3.475,
-          1.763
-        ],
-        "text": "120°",
-        "labelKind": "TEXT",
-        "factRole": "GIVEN"
-      },
       {
         "id": "text2",
         "at": [
@@ -205,13 +200,15 @@
     "p1",
     "p2",
     "p3",
-    "p4"
+    "p4",
+    "srcCross"
   ],
   "unmarkedPointNames": [
     "p1",
     "p2",
     "p3",
-    "p4"
+    "p4",
+    "srcCross"
   ],
   "caption": "등변사다리꼴의 같은 두 대각선과 끼인각 — 등변사다리꼴에서 두 대각선이 P에서 교차한다. 아래쪽 두 대각선 사이의 각은 120도이다.",
   "sourceConditions": [
@@ -226,6 +223,7 @@
     }
   ],
   "newVisualInformation": [
+    "SOURCE_INTERSECTION_ANGLE_PARITY_RESTORED: 원본 교차각 120°를 두 대각선의 실교점과 planeMarks.angles에 표시",
     "SOURCE_VS_PLAN_REVIEWED: 선분·원·문자·점선·선색·각 표시를 도형 필드와 대조함. 잔여 SVG 고유 텍스처·정밀 곡선/도형 배치와 렌더 실물은 별도 보강·검수 대상.",
     "곡선/호 경로: 전용 곡선 primitive 확장 검토 필요"
   ],

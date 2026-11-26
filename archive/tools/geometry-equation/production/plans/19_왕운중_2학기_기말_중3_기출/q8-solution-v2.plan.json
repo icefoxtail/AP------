@@ -427,7 +427,10 @@
         },
         "outputType": "POINT",
         "factRole": "GIVEN"
-      }
+      },
+      {"id":"srcDiagLineA","op":"LINE_THROUGH","inputs":["p1","p3"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"srcDiagLineB","op":"LINE_THROUGH","inputs":["p2","p4"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"srcCross","op":"LINE_INTERSECTION","inputs":["srcDiagLineA","srcDiagLineB"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
     ]
   },
   "displayPoints": [
@@ -450,7 +453,8 @@
     "p17",
     "p18",
     "p19",
-    "p20"
+    "p20",
+    "srcCross"
   ],
   "displayLines": [],
   "displayCircles": [],
@@ -571,18 +575,9 @@
     }
   ],
   "planeMarks": {
+    "angles": [{"id":"sourceIntersectionAngle","style":"ARC","refs":["p1","srcCross","p4"],"value":120,"label":"120","factRole":"GIVEN"}],
     "segmentColors": [{"segments":["s5","s6","s7","s8","s9","s10"],"color":"BLUE"}],
     "textLabels": [
-      {
-        "id": "text1",
-        "at": [
-          3.475,
-          1.763
-        ],
-        "text": "120°",
-        "labelKind": "TEXT",
-        "factRole": "GIVEN"
-      },
       {
         "id": "text2",
         "at": [
@@ -655,7 +650,8 @@
     "p17",
     "p18",
     "p19",
-    "p20"
+    "p20",
+    "srcCross"
   ],
   "unmarkedPointNames": [
     "p1",
@@ -677,7 +673,8 @@
     "p17",
     "p18",
     "p19",
-    "p20"
+    "p20",
+    "srcCross"
   ],
   "caption": "등변사다리꼴의 같은 두 대각선과 끼인각 — 파랑 두 대각선은 같은 길이이다. AC 위와 아래로 주황 높이를 각각 내려 두 삼각형의 넓이를 비교한다.",
   "sourceConditions": [
@@ -692,6 +689,7 @@
     }
   ],
   "newVisualInformation": [
+    "SOURCE_INTERSECTION_ANGLE_PARITY_RESTORED: 원본 교차각 120°를 두 대각선의 실교점과 planeMarks.angles에 표시",
     "ENGINE_CAPABILITY_PENDING: 원본의 색을 입힌 점선 2개는 현행 segmentColors+dashed 동시 지원 불가(SEGMENT_COLOR_INVALID); 점선 우선 보존, colored dashed 지원 필요",
     "SOURCE_VS_PLAN_REVIEWED: 선분·원·문자·점선·선색·각 표시를 도형 필드와 대조함. 잔여 SVG 고유 텍스처·정밀 곡선/도형 배치와 렌더 실물은 별도 보강·검수 대상.",
     "곡선/호 경로: 전용 곡선 primitive 확장 검토 필요"

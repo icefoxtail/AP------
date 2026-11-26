@@ -128,7 +128,13 @@
         },
         "outputType": "CIRCLE",
         "factRole": "GIVEN"
-      }
+      },
+      {"id":"srcAxiscirc1","op":"TRANSLATE_POINT","inputs":["p5"],"args":{"dx":{"kind":"integer","value":"1"},"dy":{"kind":"integer","value":"0"}},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"srcArccirc1D200","op":"POLAR_POINT","inputs":["p5","srcAxiscirc1"],"args":{"length":{"kind":"rational","numerator":"1950","denominator":"1000"},"angleDeg":{"kind":"integer","value":"200"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"srcArccirc1D320","op":"POLAR_POINT","inputs":["p5","srcAxiscirc1"],"args":{"length":{"kind":"rational","numerator":"1950","denominator":"1000"},"angleDeg":{"kind":"integer","value":"320"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"srcDiagLineA","op":"LINE_THROUGH","inputs":["p1","p2"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"srcDiagLineB","op":"LINE_THROUGH","inputs":["p3","p4"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"srcCross","op":"LINE_INTERSECTION","inputs":["srcDiagLineA","srcDiagLineB"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
     ]
   },
   "displayPoints": [
@@ -136,7 +142,10 @@
     "p2",
     "p3",
     "p4",
-    "p5"
+    "p5",
+    "srcArccirc1D200",
+    "srcArccirc1D320",
+    "srcCross"
   ],
   "displayLines": [],
   "displayCircles": [
@@ -173,8 +182,9 @@
     }
   ],
   "planeMarks": {
+    "arcs": [{"id":"sourceLargeArc1","circle":"circ1","center":"p5","from":"srcArccirc1D200","to":"srcArccirc1D320","side":"MINOR","color":"WARM","factRole":"GIVEN"}],
     "segmentColors": [{"segments":["s1"],"color":"BLUE"},{"segments":["s2"],"color":"WARM"}],
-    "angles": [{"id":"sourceAngle1","style":"ARC","refs":["p4","p3","p1"],"factRole":"GIVEN","value":25,"label":"25"}],
+    "angles": [{"id":"sourceAngle1","style":"ARC","refs":["p4","p3","p1"],"factRole":"GIVEN","value":25,"label":"25"},{"id":"sourceIntersectionAngle","style":"ARC","refs":["p1","srcCross","p4"],"value":85,"label":"85","factRole":"GIVEN"}],
     "textLabels": [
       {
         "id": "text1",
@@ -183,16 +193,6 @@
           3.185
         ],
         "text": "25°",
-        "labelKind": "TEXT",
-        "factRole": "GIVEN"
-      },
-      {
-        "id": "text2",
-        "at": [
-          2.419,
-          2.713
-        ],
-        "text": "85°",
         "labelKind": "TEXT",
         "factRole": "GIVEN"
       },
@@ -263,14 +263,20 @@
     "p2",
     "p3",
     "p4",
-    "p5"
+    "p5",
+    "srcArccirc1D200",
+    "srcArccirc1D320",
+    "srcCross"
   ],
   "unmarkedPointNames": [
     "p1",
     "p2",
     "p3",
     "p4",
-    "p5"
+    "p5",
+    "srcArccirc1D200",
+    "srcArccirc1D320",
+    "srcCross"
   ],
   "caption": "교차하는 두 현과 서로 마주 보는 호 — 교점 P의 아래 각은 85도이며 D의 왼쪽 각은 25도이다. 아래의 호 DB에는 길이 4 cm를 표시했다.",
   "sourceConditions": [
@@ -285,6 +291,8 @@
     }
   ],
   "newVisualInformation": [
+    "SOURCE_INTERSECTION_ANGLE_PARITY_RESTORED: 원본 교차각 85°를 두 대각선의 실교점과 planeMarks.angles에 표시",
+    "SOURCE_LARGE_ARC_PARITY_RESTORED: 원본 SVG의 강조 원호 1개를 정확한 원의 POLAR_POINT/planeMarks.arcs 드로잉 필드로 매핑",
     "SOURCE_VS_PLAN_REVIEWED: 선분·원·문자·점선·선색·각 표시를 도형 필드와 대조함. 잔여 SVG 고유 텍스처·정밀 곡선/도형 배치와 렌더 실물은 별도 보강·검수 대상.",
     "곡선/호 경로: 전용 곡선 primitive 확장 검토 필요"
   ],

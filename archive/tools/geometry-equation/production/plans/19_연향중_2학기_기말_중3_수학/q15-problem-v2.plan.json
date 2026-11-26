@@ -128,7 +128,12 @@
         },
         "outputType": "CIRCLE",
         "factRole": "GIVEN"
-      }
+      },
+      {"id":"srcAxiscirc1","op":"TRANSLATE_POINT","inputs":["p5"],"args":{"dx":{"kind":"integer","value":"1"},"dy":{"kind":"integer","value":"0"}},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"srcArccirc1D12","op":"POLAR_POINT","inputs":["p5","srcAxiscirc1"],"args":{"length":{"kind":"rational","numerator":"1645","denominator":"1000"},"angleDeg":{"kind":"integer","value":"12"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"srcArccirc1D117","op":"POLAR_POINT","inputs":["p5","srcAxiscirc1"],"args":{"length":{"kind":"rational","numerator":"1645","denominator":"1000"},"angleDeg":{"kind":"integer","value":"117"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"srcArccirc1D222","op":"POLAR_POINT","inputs":["p5","srcAxiscirc1"],"args":{"length":{"kind":"rational","numerator":"1645","denominator":"1000"},"angleDeg":{"kind":"integer","value":"222"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"srcArccirc1D327","op":"POLAR_POINT","inputs":["p5","srcAxiscirc1"],"args":{"length":{"kind":"rational","numerator":"1645","denominator":"1000"},"angleDeg":{"kind":"integer","value":"327"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
     ]
   },
   "displayPoints": [
@@ -136,7 +141,11 @@
     "p2",
     "p3",
     "p4",
-    "p5"
+    "p5",
+    "srcArccirc1D12",
+    "srcArccirc1D117",
+    "srcArccirc1D222",
+    "srcArccirc1D327"
   ],
   "displayLines": [],
   "displayCircles": [
@@ -173,6 +182,7 @@
     }
   ],
   "planeMarks": {
+    "arcs": [{"id":"sourceLargeArc1","circle":"circ1","center":"p5","from":"srcArccirc1D12","to":"srcArccirc1D117","side":"MINOR","color":"GREEN","factRole":"GIVEN"},{"id":"sourceLargeArc2","circle":"circ1","center":"p5","from":"srcArccirc1D117","to":"srcArccirc1D222","side":"MINOR","color":"GREEN","factRole":"GIVEN"},{"id":"sourceLargeArc3","circle":"circ1","center":"p5","from":"srcArccirc1D222","to":"srcArccirc1D327","side":"MINOR","color":"GREEN","factRole":"GIVEN"}],
     "segmentColors": [{"segments":["s1"],"color":"BLUE"},{"segments":["s3"],"color":"VIOLET"},{"segments":["s4"],"color":"WARM"}],
     "angles": [{"id":"sourceAngle1","style":"ARC","refs":["p3","p2","p1"],"factRole":"GIVEN","value":30,"label":"30"},{"id":"sourceUnknownAngle2","style":"ARC","refs":["p2","p3","p4"],"factRole":"GIVEN","value":22.5,"label":"x"}],
     "textLabels": [
@@ -243,14 +253,22 @@
     "p2",
     "p3",
     "p4",
-    "p5"
+    "p5",
+    "srcArccirc1D12",
+    "srcArccirc1D117",
+    "srcArccirc1D222",
+    "srcArccirc1D327"
   ],
   "unmarkedPointNames": [
     "p1",
     "p2",
     "p3",
     "p4",
-    "p5"
+    "p5",
+    "srcArccirc1D12",
+    "srcArccirc1D117",
+    "srcArccirc1D222",
+    "srcArccirc1D327"
   ],
   "caption": "원 밖에서 만나는 두 할선과 같은 세 호 — A, B, C, D가 원 위에 있고 두 할선은 오른쪽의 P에서 만난다. 호 AB, BC와 CD는 같은 초록 모양이다.",
   "sourceConditions": [
@@ -265,6 +283,7 @@
     }
   ],
   "newVisualInformation": [
+    "SOURCE_LARGE_ARC_PARITY_RESTORED: 원본 SVG의 강조 원호 3개를 정확한 원의 POLAR_POINT/planeMarks.arcs 드로잉 필드로 매핑",
     "SOURCE_VS_PLAN_REVIEWED: 선분·원·문자·점선·선색·각 표시를 도형 필드와 대조함. 잔여 SVG 고유 텍스처·정밀 곡선/도형 배치와 렌더 실물은 별도 보강·검수 대상.",
     "곡선/호 경로: 전용 곡선 primitive 확장 검토 필요"
   ],

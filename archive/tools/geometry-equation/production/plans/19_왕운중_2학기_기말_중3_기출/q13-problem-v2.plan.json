@@ -128,7 +128,11 @@
         },
         "outputType": "CIRCLE",
         "factRole": "GIVEN"
-      }
+      },
+      {"id":"srcAxiscirc1","op":"TRANSLATE_POINT","inputs":["p5"],"args":{"dx":{"kind":"integer","value":"1"},"dy":{"kind":"integer","value":"0"}},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"srcArccirc1D180","op":"POLAR_POINT","inputs":["p5","srcAxiscirc1"],"args":{"length":{"kind":"rational","numerator":"1750","denominator":"1000"},"angleDeg":{"kind":"integer","value":"180"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"srcArccirc1D230","op":"POLAR_POINT","inputs":["p5","srcAxiscirc1"],"args":{"length":{"kind":"rational","numerator":"1750","denominator":"1000"},"angleDeg":{"kind":"integer","value":"230"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"srcArccirc1D280","op":"POLAR_POINT","inputs":["p5","srcAxiscirc1"],"args":{"length":{"kind":"rational","numerator":"1750","denominator":"1000"},"angleDeg":{"kind":"integer","value":"280"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
     ]
   },
   "displayPoints": [
@@ -136,7 +140,10 @@
     "p2",
     "p3",
     "p4",
-    "p5"
+    "p5",
+    "srcArccirc1D180",
+    "srcArccirc1D230",
+    "srcArccirc1D280"
   ],
   "displayLines": [],
   "displayCircles": [
@@ -173,6 +180,7 @@
     }
   ],
   "planeMarks": {
+    "arcs": [{"id":"sourceLargeArc1","circle":"circ1","center":"p5","from":"srcArccirc1D180","to":"srcArccirc1D230","side":"MINOR","color":"GREEN","factRole":"GIVEN"},{"id":"sourceLargeArc2","circle":"circ1","center":"p5","from":"srcArccirc1D230","to":"srcArccirc1D280","side":"MINOR","color":"GREEN","factRole":"GIVEN"}],
     "segmentColors": [{"segments":["s2"],"color":"BLUE"},{"segments":["s4"],"color":"WARM"}],
     "angles": [{"id":"sourceAngle1","style":"ARC","refs":["p1","p2","p3"],"factRole":"GIVEN","value":25,"label":"25"},{"id":"sourceUnknownAngle2","style":"ARC","refs":["p2","p3","p4"],"factRole":"GIVEN","value":40,"label":"x"}],
     "textLabels": [
@@ -243,14 +251,20 @@
     "p2",
     "p3",
     "p4",
-    "p5"
+    "p5",
+    "srcArccirc1D180",
+    "srcArccirc1D230",
+    "srcArccirc1D280"
   ],
   "unmarkedPointNames": [
     "p1",
     "p2",
     "p3",
     "p4",
-    "p5"
+    "p5",
+    "srcArccirc1D180",
+    "srcArccirc1D230",
+    "srcArccirc1D280"
   ],
   "caption": "지름 아래의 두 같은 호와 원주각 — AB가 원의 지름이다. 아래쪽에서 호 AC와 호 CD는 같은 녹색 표시이다. B의 각은 25도이고 C에서 x를 표시했다.",
   "sourceConditions": [
@@ -265,6 +279,7 @@
     }
   ],
   "newVisualInformation": [
+    "SOURCE_LARGE_ARC_PARITY_RESTORED: 원본 SVG의 강조 원호 2개를 정확한 원의 POLAR_POINT/planeMarks.arcs 드로잉 필드로 매핑",
     "SOURCE_VS_PLAN_REVIEWED: 선분·원·문자·점선·선색·각 표시를 도형 필드와 대조함. 잔여 SVG 고유 텍스처·정밀 곡선/도형 배치와 렌더 실물은 별도 보강·검수 대상.",
     "곡선/호 경로: 전용 곡선 primitive 확장 검토 필요"
   ],
