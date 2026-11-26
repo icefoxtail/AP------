@@ -1,0 +1,19 @@
+{
+  "capability":"polynomial-spike-v1",
+  "graphPlan":{
+    "family":"polynomial","coefficients":["0","16","-1"],
+    "sourceDomain":{"kind":"INTERVAL","range":[0,16],"states":["OPEN","OPEN"]},
+    "domain":[0,16],"viewport":[-1,17,-3,70],
+    "requiredPoints":[{"id":"V","x":8,"y":64}],
+    "axisTickValues":{"x":["8"],"y":["64"]}
+  },
+  "caption":"0<x<16에서 f(x)=(1/2)log_2[x(16−x)]이고 로그가 증가함수이므로 안쪽 이차식 x(16−x)의 꼭짓점 x=8, 값 64가 f의 최댓값을 결정한다.",
+  "accessibilityDescription":"아래로 볼록한 이차식 y=x(16−x)가 x=0,16에서 0에 접근하고 꼭짓점 (8,64)에서 최댓값을 갖는다.",
+  "sourceQuote":"함수 $f(x) = \\log_4(16-x) + \\log_2\\sqrt{x}$의 최댓값",
+  "sourceConditions":[
+    {"id":"domain","condition":"진수 조건 0<x<16","mappedTo":"graphPlan.sourceDomain"},
+    {"id":"transform","condition":"로그 안의 곱 x(16−x)=−x²+16x","mappedTo":"graphPlan.coefficients"},
+    {"id":"max","condition":"x=8에서 안쪽 최대 64","mappedTo":"graphPlan.requiredPoints,graphPlan.axisTickValues"}
+  ],
+  "newVisualInformation":["로그 단조성을 이용한 이차식의 꼭짓점 최대 관계"]
+}

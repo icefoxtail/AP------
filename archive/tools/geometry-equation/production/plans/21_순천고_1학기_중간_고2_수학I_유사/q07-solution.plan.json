@@ -1,0 +1,30 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion":"construction-spike-v1",
+    "realization":{"recipeId":"SOURCE_COORDINATE_AXES_v1","unit":"source-coordinate","reflectionEquivalent":false},
+    "nodes":[
+      {"id":"O","op":"NORMALIZATION_ORIGIN","inputs":[],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"X","op":"NORMALIZATION_AXIS","inputs":[],"args":{"length":{"kind":"integer","value":"1"}},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"Y","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"1"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"circ","op":"CIRCLE_CENTER_RADIUS","inputs":["O"],"args":{"radius":{"kind":"integer","value":"1"}},"outputType":"CIRCLE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"A","op":"POLAR_POINT","inputs":["O","X"],"args":{"length":{"kind":"integer","value":"1"},"angleDeg":{"kind":"integer","value":"60"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"B","op":"POLAR_POINT","inputs":["O","X"],"args":{"length":{"kind":"integer","value":"1"},"angleDeg":{"kind":"integer","value":"60"},"turn":"CW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "displayPoints":["O","X","Y","A","B"],"hiddenPointNames":["X","Y"],"hiddenPointStyle":"NONE","displayLines":[],"displayCircles":["circ"],
+  "displaySegments":[{"id":"OA","refs":["O","A"]},{"id":"OB","refs":["O","B"]}],
+  "planeMarks":{"angles":[
+    {"id":"a60","refs":["X","O","A"],"value":60,"label":"60","arcs":1,"style":"ARC","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"a300","refs":["X","O","B"],"side":"OUTER","value":300,"label":"300","arcs":1,"style":"ARC","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "coordinateCanvas":{"width":600,"height":500},
+  "caption":"일반각을 360°로 나눈 나머지가 60°인 동경 A와 나머지 300°인 동경 B는 서로 다른 위치에 놓인다.",
+  "accessibilityDescription":"단위원에서 제1사분면의 60도 동경과 제4사분면의 300도 동경이 서로 다르게 그려져 있다.",
+  "sourceQuote":"다음 각이 나타내는 동경의 위치가 다른 것은?",
+  "sourceConditions":[
+    {"id":"same","condition":"①−660°,②780°,④7π/3,⑤−5π/3는 60° 동경","mappedTo":"mathPlan.nodes[4],displaySegments[0],planeMarks.angles[0]"},
+    {"id":"different","condition":"③300°는 제4사분면 동경","mappedTo":"mathPlan.nodes[5],displaySegments[1],planeMarks.angles[1]"}
+  ],
+  "newVisualInformation":["360° 주기 동경의 위치 동치", "60°와 300° 동경의 차이"]
+}

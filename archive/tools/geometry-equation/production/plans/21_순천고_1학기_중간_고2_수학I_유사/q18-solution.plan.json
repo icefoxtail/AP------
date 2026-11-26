@@ -1,0 +1,28 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{
+    "schemaVersion":"construction-spike-v1",
+    "realization":{"recipeId":"SOURCE_COORDINATE_AXES_v1","unit":"source-coordinate","reflectionEquivalent":false},
+    "nodes":[
+      {"id":"O","op":"NORMALIZATION_ORIGIN","inputs":[],"args":{},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"X","op":"NORMALIZATION_AXIS","inputs":[],"args":{"length":{"kind":"integer","value":"1"}},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"4"},{"kind":"integer","value":"-3"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"H","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"4"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"circle","op":"CIRCLE_CENTER_RADIUS","inputs":["O"],"args":{"radius":{"kind":"integer","value":"5"}},"outputType":"CIRCLE","factRole":"GIVEN"}
+    ]
+  },
+  "displayPoints":["O","X","A","H"],"hiddenPointNames":["X"],"displayLines":[],"displayCircles":["circle"],"coordinateLabels":["A"],
+  "displaySegments":[{"id":"OA","refs":["O","A"]},{"id":"OH","refs":["O","H"]},{"id":"HA","refs":["H","A"]}],
+  "rightAngles":[{"id":"rH","refs":["O","H","A"]}],
+  "planeMarks":{"expressionLabels":[{"id":"rad","ownerSegment":"OA","text":"5"},{"id":"xh","ownerSegment":"OH","text":"4"},{"id":"yh","ownerSegment":"HA","text":"3"}]},
+  "coordinateCanvas":{"width":640,"height":540},
+  "caption":"cos θ>0, tan θ=−3/4이므로 동경은 제4사분면, 반지름이 5인 원과의 교점은 A(4,−3)이다.",
+  "accessibilityDescription":"반지름 5인 원의 제4사분면 점 A(4,-3), 원점으로 향하는 반지름 5 및 수평길이 4·수직길이 3인 직각삼각형이 보인다.",
+  "sourceQuote":"중심이 원점 $\\mathrm{O}$이고 반지름의 길이가 $5$인 원",
+  "sourceConditions":[
+    {"id":"circle","condition":"원점 중심 반지름 5","mappedTo":"mathPlan.nodes[4],displayCircles"},
+    {"id":"quadrant","condition":"cos θ>0, tan θ=−3/4; 제4사분면","mappedTo":"mathPlan.nodes[2],displaySegments"},
+    {"id":"point","condition":"A(4,−3), OA=5, OH=4, HA=3","mappedTo":"mathPlan.nodes[2],coordinateLabels,planeMarks.expressionLabels,rightAngles"}
+  ],
+  "newVisualInformation":["제4사분면 각의 부호", "3:4:5 직각삼각형과 원 위의 점 A"]
+}
