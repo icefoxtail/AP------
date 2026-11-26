@@ -1,0 +1,66 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "3",
+      "2",
+      "-1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -2.5,
+      4.5
+    ],
+    "viewport": [
+      -3,
+      5,
+      -4,
+      6
+    ],
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": -1,
+        "y": 0
+      },
+      {
+        "id": "R",
+        "x": 3,
+        "y": 0
+      },
+      {
+        "id": "Y",
+        "x": 0,
+        "y": 3
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        -1,
+        3
+      ],
+      "y": [
+        3
+      ]
+    }
+  },
+  "caption": "x절편 -1, 3과 y절편 3이 보이는 아래로 열린 포물선이다.",
+  "accessibilityDescription": "x절편 -1, 3과 y절편 3이 보이는 아래로 열린 포물선이다.",
+  "sourceQuote": "이차함수 $y=ax^2+bx+c$의 그래프가 다음 그림과 같을 때, 이 이차함수의 최댓값은? (5점)",
+  "sourceConditions": [
+    {
+      "id": "original-graph",
+      "condition": "x절편 -1, 3과 y절편 3이 보이는 아래로 열린 포물선이다.",
+      "mappedTo": [
+        "graphPlan.coefficients",
+        "graphPlan.viewport"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본 -1·3·3 눈금과 포물선의 최대점(1,4)을 재현한다."
+  ]
+}

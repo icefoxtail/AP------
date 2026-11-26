@@ -1,0 +1,40 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "1",
+      "0",
+      "-1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -2.2,
+      2.2
+    ],
+    "viewport": [
+      -2.5,
+      2.5,
+      -4,
+      2
+    ]
+  },
+  "caption": "아래로 열리는 이차함수의 그래프는 y절편이 양수이며 축은 y축이다.",
+  "accessibilityDescription": "아래로 열리는 이차함수의 그래프는 y절편이 양수이며 축은 y축이다.",
+  "sourceQuote": "이차함수 $y=ax^2+q$의 그래프가 그림과 같을 때, 다음 중 옳은 것은? (4점)",
+  "sourceConditions": [
+    {
+      "id": "original-graph",
+      "condition": "아래로 열리는 이차함수의 그래프는 y절편이 양수이며 축은 y축이다.",
+      "mappedTo": [
+        "graphPlan.coefficients",
+        "graphPlan.viewport"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 오른쪽 하강 가지와 양의 y절편, x/y 축을 선만으로 표시한다."
+  ]
+}

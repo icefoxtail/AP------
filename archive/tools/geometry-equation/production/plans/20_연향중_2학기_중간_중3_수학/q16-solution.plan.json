@@ -1,0 +1,256 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-14"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-81",
+              "denominator": "14"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "9",
+                  "denominator": "14"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "115"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-81",
+              "denominator": "14"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "-9",
+                  "denominator": "14"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "115"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "9"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "P",
+    "A",
+    "B"
+  ],
+  "displayLines": [],
+  "displaySegments": [
+    {
+      "id": "sPA",
+      "refs": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "sPB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rPAO",
+      "refs": [
+        "P",
+        "A",
+        "O"
+      ]
+    },
+    {
+      "id": "rPBO",
+      "refs": [
+        "P",
+        "B",
+        "O"
+      ]
+    }
+  ],
+  "displayCircles": [
+    "k"
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aAPB",
+        "refs": [
+          "A",
+          "P",
+          "B"
+        ],
+        "value": 80,
+        "label": "80",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aOAB",
+        "refs": [
+          "O",
+          "A",
+          "B"
+        ],
+        "value": 40,
+        "label": "x",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 480
+  },
+  "caption": "원 O의 두 접선 PA/PB가 P에서 80°를 이루고 접점 A/B에서 반지름과 수직이다.",
+  "accessibilityDescription": "원 O의 두 접선 PA/PB가 P에서 80°를 이루고 접점 A/B에서 반지름과 수직이다.",
+  "sourceQuote": "오른쪽 그림에서 $\\vec{\\mathrm{PA}}$, $\\vec{\\mathrm{PB}}$는 원 $\\mathrm{O}$의 접선이고 두 점 $\\mathrm{A}, \\mathrm{B}$는 접점이다. $\\angle P = 80^\\circ$일 때, $\\angle \\mathrm{OAB}$의 크기를 구하면? (4점)",
+  "sourceConditions": [
+    {
+      "id": "original-geometry",
+      "condition": "원 O의 두 접선 PA/PB가 P에서 80°를 이루고 접점 A/B에서 반지름과 수직이다.",
+      "mappedTo": [
+        "displayPoints",
+        "displaySegments",
+        "rightAngles",
+        "planeMarks",
+        "displayCircles"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원의 접선-반지름 직각을 무리수 좌표로 정확히 맞추고, 80°(도 단위 정밀도)와 A에서의 40°를 표시한다."
+  ]
+}

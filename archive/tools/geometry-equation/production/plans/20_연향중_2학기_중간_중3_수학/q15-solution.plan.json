@@ -1,0 +1,233 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "15",
+              "denominator": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "15",
+            "denominator": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "M",
+    "C"
+  ],
+  "displayLines": [],
+  "displaySegments": [
+    {
+      "id": "sAM",
+      "refs": [
+        "A",
+        "M"
+      ]
+    },
+    {
+      "id": "sMB",
+      "refs": [
+        "M",
+        "B"
+      ]
+    },
+    {
+      "id": "sMO",
+      "refs": [
+        "M",
+        "O"
+      ]
+    },
+    {
+      "id": "sMC",
+      "refs": [
+        "M",
+        "C"
+      ]
+    },
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rAMO",
+      "refs": [
+        "A",
+        "M",
+        "O"
+      ]
+    }
+  ],
+  "displayCircles": [
+    "k"
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dMB",
+        "from": "M",
+        "to": "B",
+        "label": "6",
+        "side": "BELOW",
+        "unit": "cm"
+      },
+      {
+        "id": "dMC",
+        "from": "M",
+        "to": "C",
+        "label": "3",
+        "side": "RIGHT",
+        "unit": "cm"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 480
+  },
+  "caption": "반지름이 같은 원 O에서 중심-현 수선 OM⊥AB, BM=6cm, CM=3cm.",
+  "accessibilityDescription": "반지름이 같은 원 O에서 중심-현 수선 OM⊥AB, BM=6cm, CM=3cm.",
+  "sourceQuote": "오른쪽 그림에서 $\\overline{\\mathrm{AB}} \\perp \\overline{\\mathrm{OC}}$이고, $\\overline{\\mathrm{BM}}=6\\mathrm{cm}$이고 $\\overline{\\mathrm{CM}}=3\\mathrm{cm}$일 때, 원 $\\mathrm{O}$의 둘레의 길이는? (5점)",
+  "sourceConditions": [
+    {
+      "id": "original-geometry",
+      "condition": "반지름이 같은 원 O에서 중심-현 수선 OM⊥AB, BM=6cm, CM=3cm.",
+      "mappedTo": [
+        "displayPoints",
+        "displaySegments",
+        "rightAngles",
+        "planeMarks",
+        "displayCircles"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원의 원주와 현 AB·M/C/O 일직선·수직표식 및 6/3cm 길이를 원본과 맞춘다."
+  ]
+}
