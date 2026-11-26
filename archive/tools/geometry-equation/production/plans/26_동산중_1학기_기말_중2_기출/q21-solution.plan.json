@@ -67,11 +67,17 @@
     "공통 기울기를 가진 두 평행선 3x+2y-3=0과 3x+2y-1=0",
     "y절편 (0, 3/2), (0, 1/2)의 좌표"
   ],
+  "sourceQuote": "일차방정식 $ax+2y-3=0$의 그래프가 다음 조건",
   "sourceConditions": [
     {
       "id": "source",
       "condition": "일차방정식 $ax+2y-3=0$의 그래프가 다음 조건을 만족시킬 때, 0이 아닌 상수 $a,b$의 값을 각각 구하시오. [5점]\n<div class=\"note-box\">· 직선 $(b+2)x-2y+1=0$과 만나지 않는다.<br>· 직선 $(-2b-1)x+6y-9=0$과 두 개 이상의 점에서 만난다.</div>",
-      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+      "mappedTo": ["graphPlan.curves[0]", "graphPlan.curves[1]"]
+    },
+    {
+      "id": "parallelAndCoincident",
+      "condition": "a=3,b=-5에서 첫째 직선과 둘째 직선은 기울기가 -3/2로 평행하고, 셋째 직선은 첫째 직선과 일치한다. 두 평행선의 y절편은 각각 3/2, 1/2이다.",
+      "mappedTo": ["graphPlan.curves[0].coefficients", "graphPlan.curves[1].coefficients", "graphPlan.overlays.points[0]", "graphPlan.overlays.points[1]"]
     }
   ]
 }
