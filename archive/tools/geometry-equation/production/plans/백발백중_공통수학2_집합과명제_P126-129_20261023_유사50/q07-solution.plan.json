@@ -1,0 +1,43 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A"
+      },
+      {
+        "id": "B"
+      },
+      {
+        "id": "C"
+      }
+    ],
+    "subset": [
+      "C",
+      "B",
+      "A"
+    ]
+  },
+  "caption": "B∪(A-B)=A로 B⊆A이고, (A^c∪B^c)∩C=∅에서 C⊆B이다. 따라서 C⊆B⊆A.",
+  "accessibilityDescription": "집합 C가 B의 안쪽에, B가 A의 안쪽에 있는 세 겹 원의 포함관계 그림.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "B∪(A-B)=A",
+      "mappedTo": [
+        "diagram.subset"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "(A^c∪B^c)∩C=∅",
+      "mappedTo": [
+        "diagram.subset"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "세 집합의 포함 순서 C⊆B⊆A를 원들의 실제 중첩으로 보인다."
+  ]
+}

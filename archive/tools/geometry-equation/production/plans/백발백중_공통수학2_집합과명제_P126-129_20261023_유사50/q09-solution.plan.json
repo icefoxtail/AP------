@@ -1,0 +1,72 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "B는 A에 포함"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "VENN",
+          "sets": [
+            {
+              "id": "A"
+            },
+            {
+              "id": "B"
+            }
+          ],
+          "subset": [
+            "B",
+            "A"
+          ]
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "B는 C에 포함"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "VENN",
+          "sets": [
+            {
+              "id": "B"
+            },
+            {
+              "id": "C"
+            }
+          ],
+          "subset": [
+            "B",
+            "C"
+          ]
+        }
+      }
+    }
+  ],
+  "caption": "B⊆A와 B⊆C이므로 B⊆A∩C. A와 C의 상호 포함관계는 주어지지 않는다.",
+  "accessibilityDescription": "두 개의 별도 포함관계 도식으로 B가 A와 C 양쪽에 포함됨을 나타내며 A와 C의 크기는 정하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "B∪(A-B)=A → B⊆A",
+      "mappedTo": [
+        "panels[0].plan.diagram.subset"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "(A^c∪C^c)∩B=∅ → B⊆C",
+      "mappedTo": [
+        "panels[1].plan.diagram.subset"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 개의 별도 포함관계 도식으로 B가 A와 C 양쪽에 포함됨을 나타내며 A와 C의 크기는 정하지 않는다."
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A"
+      },
+      {
+        "id": "B"
+      }
+    ],
+    "shade": "(A∩B)^c"
+  },
+  "caption": "A−B^c=A∩B이므로 (A−B^c)^c=(A∩B)^c=A^c∪B^c. 교집합을 제외한 전체 영역을 표시한다.",
+  "accessibilityDescription": "두 원 A와 B의 교집합 바깥 전체를 칠해 드모르간 법칙 결과를 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "law",
+      "condition": "(A−B^c)^c=A^c∪B^c",
+      "mappedTo": [
+        "diagram.shade"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 원 A와 B의 교집합 바깥 전체를 칠해 드모르간 법칙 결과를 나타낸다."
+  ]
+}

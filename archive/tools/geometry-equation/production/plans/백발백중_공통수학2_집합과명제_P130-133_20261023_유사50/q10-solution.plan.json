@@ -1,0 +1,174 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "ㄱ 왼쪽"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "VENN",
+          "sets": [
+            {
+              "id": "A"
+            },
+            {
+              "id": "B"
+            },
+            {
+              "id": "C"
+            }
+          ],
+          "shade": "(A∪B)∩C"
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "ㄱ 오른쪽"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "VENN",
+          "sets": [
+            {
+              "id": "A"
+            },
+            {
+              "id": "B"
+            },
+            {
+              "id": "C"
+            }
+          ],
+          "shade": "(A∩C)∪(B∩C)"
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "ㄴ 왼쪽"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "VENN",
+          "sets": [
+            {
+              "id": "A"
+            },
+            {
+              "id": "B"
+            },
+            {
+              "id": "C"
+            }
+          ],
+          "shade": "A-(B∪C)"
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "ㄴ 오른쪽"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "VENN",
+          "sets": [
+            {
+              "id": "A"
+            },
+            {
+              "id": "B"
+            },
+            {
+              "id": "C"
+            }
+          ],
+          "shade": "(A-B)∩(A-C)"
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "ㄷ 왼쪽"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "VENN",
+          "sets": [
+            {
+              "id": "A"
+            },
+            {
+              "id": "B"
+            },
+            {
+              "id": "C"
+            }
+          ],
+          "shade": "(A∩B)-C"
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "ㄷ 오른쪽"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "VENN",
+          "sets": [
+            {
+              "id": "A"
+            },
+            {
+              "id": "B"
+            },
+            {
+              "id": "C"
+            }
+          ],
+          "shade": "A∩(B-C)"
+        }
+      }
+    }
+  ],
+  "caption": "ㄱ·ㄴ·ㄷ의 양변에서 색칠된 부분을 대조하면 세 등식 모두 같은 영역이다.",
+  "accessibilityDescription": "집합 A B C의 벤다이어그램 여섯 개를 두 열 세 행으로 배열해 ㄱ ㄴ ㄷ의 양변을 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "law-ㄱ",
+      "condition": "(A∪B)∩C=(A∩C)∪(B∩C)",
+      "mappedTo": [
+        "panels[0].plan.diagram.shade",
+        "panels[1].plan.diagram.shade"
+      ]
+    },
+    {
+      "id": "law-ㄴ",
+      "condition": "A-(B∪C)=(A-B)∩(A-C)",
+      "mappedTo": [
+        "panels[2].plan.diagram.shade",
+        "panels[3].plan.diagram.shade"
+      ]
+    },
+    {
+      "id": "law-ㄷ",
+      "condition": "(A∩B)-C=A∩(B-C)",
+      "mappedTo": [
+        "panels[4].plan.diagram.shade",
+        "panels[5].plan.diagram.shade"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "세 가지 분배·차집합 법칙 각각에서 좌변과 우변이 동일한 영역을 색칠함을 보인다."
+  ]
+}

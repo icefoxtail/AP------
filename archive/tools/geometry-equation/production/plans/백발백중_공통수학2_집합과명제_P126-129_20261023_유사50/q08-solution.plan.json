@@ -1,0 +1,41 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A",
+        "name": "A=B"
+      },
+      {
+        "id": "C",
+        "name": "C"
+      }
+    ],
+    "subset": [
+      "A",
+      "C"
+    ]
+  },
+  "caption": "A∪(B-A)=B에서 A⊆B, (A^c∪C^c)∩B=∅에서 B⊆A∩C. 따라서 A=B⊆C.",
+  "accessibilityDescription": "A와 B는 같은 하나의 집합으로 표현하고 그 집합이 C에 포함됨을 보이는 두 겹 원.",
+  "sourceConditions": [
+    {
+      "id": "equality",
+      "condition": "A=B",
+      "mappedTo": [
+        "diagram.sets[0].name"
+      ]
+    },
+    {
+      "id": "subset",
+      "condition": "A=B⊆C",
+      "mappedTo": [
+        "diagram.subset"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "A와 B는 같은 하나의 집합으로 표현하고 그 집합이 C에 포함됨을 보이는 두 겹 원."
+  ]
+}

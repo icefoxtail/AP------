@@ -1,0 +1,77 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A",
+        "count": "22",
+        "countUnit": "개"
+      },
+      {
+        "id": "B",
+        "count": "15",
+        "countUnit": "개"
+      }
+    ],
+    "elements": [
+      {
+        "text": "14개",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "8개",
+        "in": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "text": "7개",
+        "in": [
+          "B"
+        ]
+      }
+    ],
+    "shade": "A-B",
+    "countStyle": "n"
+  },
+  "caption": "n(A)=22, n(B)=15, n(A∪B)=29이므로 공통 8개, A만 14개, B만 7개이다. 음영은 A-B 영역이다.",
+  "accessibilityDescription": "A만 14개, A와 B의 공통 8개, B만 7개를 서로 다른 영역에 표시한 벤다이어그램.",
+  "sourceConditions": [
+    {
+      "id": "size-A",
+      "condition": "n(A)=22",
+      "mappedTo": [
+        "diagram.sets[0].count"
+      ]
+    },
+    {
+      "id": "size-B",
+      "condition": "n(B)=15",
+      "mappedTo": [
+        "diagram.sets[1].count"
+      ]
+    },
+    {
+      "id": "union",
+      "condition": "n(A∪B)=29, n(A∩B)=8",
+      "mappedTo": [
+        "diagram.elements[1]"
+      ]
+    },
+    {
+      "id": "difference",
+      "condition": "n(A-B)=14",
+      "mappedTo": [
+        "diagram.elements[0]",
+        "diagram.shade"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "A만 14개, A와 B의 공통 8개, B만 7개를 서로 다른 영역에 표시한 벤다이어그램."
+  ]
+}

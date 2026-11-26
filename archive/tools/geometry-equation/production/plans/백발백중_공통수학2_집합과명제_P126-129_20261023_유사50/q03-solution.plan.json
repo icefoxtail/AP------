@@ -1,0 +1,66 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "A",
+        "color": "BLUE",
+        "pieces": [
+          {
+            "lo": {
+              "value": "2",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "4",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "B",
+        "color": "WARM",
+        "pieces": [
+          {
+            "lo": {
+              "value": "3",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "4",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "최댓값 경계 a=4"
+  },
+  "caption": "A=[2,4], B=[min(a,3),max(a,3)]. a=4에서 B=[3,4]⊆A이고 전체 허용 범위는 2≤a≤4.",
+  "accessibilityDescription": "최댓값 경계 a=4에서 해집합 A와 B의 열린·닫힌 끝점을 정확하게 표시한 두 줄 수직선.",
+  "sourceConditions": [
+    {
+      "id": "interval-1",
+      "condition": "A: x²-6x+8≤0 → [2,4]",
+      "mappedTo": [
+        "numberLine.rows[0].pieces"
+      ]
+    },
+    {
+      "id": "interval-2",
+      "condition": "a=4일 때 B: x²-(a+3)x+3a≤0 → [3,4]",
+      "mappedTo": [
+        "numberLine.rows[1].pieces"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 해집합의 끝점 포함 여부와 포함·서로소 관계를 수직선 위에 보인다."
+  ]
+}
