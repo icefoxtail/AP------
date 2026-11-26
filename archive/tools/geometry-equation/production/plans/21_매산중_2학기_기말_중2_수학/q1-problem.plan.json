@@ -1,0 +1,233 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "rational",
+              "numerator": "16",
+              "denominator": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "16",
+              "denominator": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sCE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "parallels": [
+      {
+        "id": "parallel1",
+        "count": 1,
+        "segments": [
+          "sBC",
+          "sDE"
+        ]
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dAB",
+        "from": "A",
+        "to": "B",
+        "label": "x",
+        "unit": "cm",
+        "side": "LEFT"
+      },
+      {
+        "id": "dBD",
+        "from": "B",
+        "to": "D",
+        "label": "8",
+        "unit": "cm",
+        "side": "LEFT"
+      },
+      {
+        "id": "dAC",
+        "from": "A",
+        "to": "C",
+        "label": "6",
+        "unit": "cm",
+        "side": "RIGHT"
+      },
+      {
+        "id": "dCE",
+        "from": "C",
+        "to": "E",
+        "label": "12",
+        "unit": "cm",
+        "side": "RIGHT"
+      }
+    ]
+  },
+  "caption": "평행한 BC와 DE가 삼각형 ADE의 두 변을 각각 두 구간으로 나눈 그림.",
+  "accessibilityDescription": "A에서 D와 E로 내려간 두 변 사이에 BC와 DE가 평행하며, AB=x cm, BD=8 cm, AC=6 cm, CE=12 cm가 치수선으로 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "cParallel",
+      "condition": "BC ∥ DE",
+      "mappedTo": [
+        "planeMarks.parallels[0]"
+      ]
+    },
+    {
+      "id": "cLengths",
+      "condition": "AB=x, BD=8, AC=6, CE=12 (cm)",
+      "mappedTo": [
+        "planeMarks.dimensions[0]",
+        "planeMarks.dimensions[1]",
+        "planeMarks.dimensions[2]",
+        "planeMarks.dimensions[3]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 두 평행선 화살표, 구간별 치수선과 모든 점 이름을 보존하고 면을 칠하지 않는다."
+  ]
+}

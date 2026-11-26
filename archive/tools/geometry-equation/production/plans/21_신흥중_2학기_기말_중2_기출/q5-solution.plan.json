@@ -1,0 +1,258 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "MIDPOINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "CENTROID",
+        "inputs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "J",
+        "op": "CENTROID",
+        "inputs": [
+          "G",
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "G",
+    "J"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAG",
+      "refs": [
+        "A",
+        "G"
+      ]
+    },
+    {
+      "id": "sGD",
+      "refs": [
+        "G",
+        "D"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBG",
+      "refs": [
+        "B",
+        "G"
+      ]
+    },
+    {
+      "id": "sGC",
+      "refs": [
+        "G",
+        "C"
+      ]
+    },
+    {
+      "id": "sBJ",
+      "refs": [
+        "B",
+        "J"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sJD",
+      "refs": [
+        "J",
+        "D"
+      ],
+      "dashed": true
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "tickBase",
+        "count": 1,
+        "segments": [
+          "sBD",
+          "sDC"
+        ]
+      }
+    ],
+    "regions": [
+      {
+        "id": "knownArea",
+        "fill": "LIGHT",
+        "label": "6",
+        "unit": "cm^2",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "polygon": [
+              "B",
+              "J",
+              "D"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "targetArea",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "A",
+              "G",
+              "C"
+            ]
+          }
+        ],
+        "label": "36",
+        "unit": "cm^2",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "rightAngles": [],
+  "caption": "작은 삼각형 G'BD의 넓이 6 cm²와 큰 삼각형 AGC의 넓이 36 cm²의 대응을 보인다.",
+  "accessibilityDescription": "큰 삼각형의 무게중심 G와 내부 삼각형의 무게중심 G'가 한 중선 위에 있다.",
+  "sourceConditions": [
+    {
+      "id": "sourceSolution",
+      "condition": "신흥중 5번 원문 그림 및 해설 계산의 점·길이·각 관계",
+      "mappedTo": [
+        "displaySegments[0]",
+        "displaySegments[1]",
+        "displaySegments[2]",
+        "displaySegments[3]",
+        "displaySegments[4]",
+        "displaySegments[5]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "q5 해설에서 추가된 보조선·수선·합동·원·계산 결과를 구분하며 문제에 없던 면 채움을 기본값으로 만들지 않는다."
+  ],
+  "pointNames": {
+    "J": "G'"
+  }
+}

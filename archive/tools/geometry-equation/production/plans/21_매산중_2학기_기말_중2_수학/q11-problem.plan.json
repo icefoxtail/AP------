@@ -1,0 +1,312 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "18"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "288",
+              "denominator": "25"
+            },
+            {
+              "kind": "rational",
+              "numerator": "216",
+              "denominator": "25"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "N1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "144",
+              "denominator": "25"
+            },
+            {
+              "kind": "rational",
+              "numerator": "108",
+              "denominator": "25"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "N2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "369",
+              "denominator": "25"
+            },
+            {
+              "kind": "rational",
+              "numerator": "108",
+              "denominator": "25"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "cBC",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "M"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "9"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cAB",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "N1"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "36",
+            "denominator": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cAC",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "N2"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "27",
+            "denominator": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "B",
+    "C",
+    "A",
+    "M",
+    "N1",
+    "N2"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "l1",
+        "ownerSegment": "sBC",
+        "text": "18",
+        "ownership": "NEAREST"
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "t1",
+        "at": [
+          3.6,
+          7.2
+        ],
+        "text": "P"
+      },
+      {
+        "id": "t2",
+        "at": [
+          16.9,
+          5.9
+        ],
+        "text": "Q"
+      },
+      {
+        "id": "t3",
+        "at": [
+          9,
+          -4.5
+        ],
+        "text": "R"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "aBC",
+        "circle": "cBC",
+        "center": "M",
+        "from": "C",
+        "to": "B",
+        "side": "CW"
+      },
+      {
+        "id": "aAB",
+        "circle": "cAB",
+        "center": "N1",
+        "from": "B",
+        "to": "A",
+        "side": "CW"
+      },
+      {
+        "id": "aAC",
+        "circle": "cAC",
+        "center": "N2",
+        "from": "A",
+        "to": "C",
+        "side": "CW"
+      }
+    ]
+  },
+  "caption": "∠A=90°, BC=18 cm, AB/AC/BC를 지름으로 하는 세 반원 P,Q,R을 보이는 문제용 도형.",
+  "coordinateCanvas": {
+    "width": 384,
+    "height": 384
+  },
+  "rightAngles": [
+    {
+      "id": "ra0",
+      "refs": [
+        "B",
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "M",
+    "N1",
+    "N2"
+  ],
+  "hiddenPointStyle": "NONE",
+  "accessibilityDescription": "∠A=90°, BC=18 cm, AB/AC/BC를 지름으로 하는 세 반원 P,Q,R. 점·선분·각 표식은 주어진 그림에 대응하고 해설에서만 얻는 값은 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "sourceFigure",
+      "condition": "∠A=90°, BC=18 cm, AB/AC/BC를 지름으로 하는 세 반원 P,Q,R",
+      "mappedTo": [
+        "planeMarks.arcs[0]",
+        "planeMarks.arcs[1]",
+        "planeMarks.arcs[2]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "문제 원문·스캔 원본의 필수 선분, 점, 길이, 표식을 표현한다.",
+    "해설에서 유도한 답/보조선은 문제 그림에 넣지 않으며 원본에 필요 없는 면색을 제거한다."
+  ]
+}
