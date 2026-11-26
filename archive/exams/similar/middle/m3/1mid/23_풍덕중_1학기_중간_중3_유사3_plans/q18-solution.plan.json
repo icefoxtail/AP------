@@ -1,0 +1,29 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "정수해",
+        "pieces": [
+          {
+            "lo": {"value": "-2", "state": "CLOSED"},
+            "hi": {"value": "4", "state": "CLOSED"}
+          }
+        ],
+        "integerPoints": true
+      }
+    ]
+  },
+  "caption": "|x−4|+|x+2|=6의 해는 −2≤x≤4이고, 정수해는 −2부터 4까지 7개이다.",
+  "accessibilityDescription": "수직선에서 마이너스 이부터 사까지 양 끝을 포함한 구간과 그 안의 정수 일곱 개를 나타낸 그림이다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "|x−4|+|x+2|=6의 해는 -2≤x≤4", "mappedTo": ["numberLine.rows"]},
+    {"id": "c2", "condition": "x는 정수", "mappedTo": ["numberLine.rows"]}
+  ],
+  "newVisualInformation": [
+    "양 끝이 닫힌 구간 -2≤x≤4를 수직선에서 보인다.",
+    "구간 안의 정수 -2,-1,0,1,2,3,4의 위치를 엔진이 계산해 표시한다."
+  ]
+}
