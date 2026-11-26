@@ -96,13 +96,30 @@
         },
         "outputType": "POINT",
         "factRole": "GIVEN"
+      },
+      {
+        "id": "baseBC",
+        "op": "LINE_THROUGH",
+        "inputs": ["B", "C"],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": ["A", "baseBC"],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
       }
     ]
   },
   "displayPoints": [
     "A",
     "B",
-    "C"
+    "C",
+    "H"
   ],
   "displayLines": [],
   "displayCircles": [],
@@ -127,6 +144,11 @@
         "C",
         "A"
       ]
+    },
+    {
+      "id": "sAH",
+      "refs": ["A", "H"],
+      "dashed": true
     }
   ],
   "planeMarks": {
@@ -140,8 +162,7 @@
         ],
         "value": 45,
         "factRole": "DERIVED_INTERMEDIATE",
-        "color": "ROSE",
-        "noLabel": true
+        "color": "ROSE"
       }
     ],
     "expressionLabels": [
@@ -173,5 +194,12 @@
       }
     ]
   },
-  "caption": "파란 변 6cm와 주황 변 10cm 사이의 끼인각 B는 예각이다. 넓이 15√2cm²를 넓이 공식에 넣어 sin B를 구하고 각을 찾는다."
+  "rightAngles": [{"id":"rAH","refs":["A","H","C"]}],
+  "caption": "AB=6cm, BC=10cm이고 삼각형 넓이가 15√2cm²이다. B에서의 예각을 45도로 구한 후 점선 높이 AH와 직각 표시로 넓이 관계를 확인한다.",
+  "accessibilityDescription": "삼각형 ABC에서 AB 6cm, BC 10cm, 각 B 45도이고 A에서 BC에 내린 높이 AH가 점선으로 표시되어 있다.",
+  "sourceConditions": [
+    {"id":"c1","sourceQuote":"AB=6cm, BC=10cm, ∠B는 예각","mappedTo":["planeMarks.expressionLabels","planeMarks.angles","mathPlan.nodes"]},
+    {"id":"c2","sourceQuote":"삼각형 ABC의 넓이는 15√2cm²","mappedTo":["caption","mathPlan.nodes"]}
+  ],
+  "newVisualInformation": ["해설에서 구한 ∠B=45°를 각 표식으로 명시한다.","점선 높이 AH와 H의 직각을 표시하되 도형 면은 채우지 않는다."]
 }

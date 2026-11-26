@@ -1,0 +1,43 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes": [
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"7"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"expression","op":"mul","args":[{"kind":"integer","value":"7"},{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"3"}]}]},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"3"}]},{"kind":"integer","value":"-6"}]},"outputType":"POINT","factRole":"GIVEN"}
+    ]
+  },
+  "displayPoints": ["A","B","C","D"],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {"id":"sAB","refs":["A","B"]},
+    {"id":"sBD","refs":["B","D"]},
+    {"id":"sDA","refs":["D","A"]},
+    {"id":"sDC","refs":["D","C"]},
+    {"id":"sCB","refs":["C","B"]}
+  ],
+  "planeMarks": {
+    "angles": [
+      {"id":"aA","refs":["B","A","D"],"value":60,"factRole":"GIVEN"},
+      {"id":"aD","refs":["C","D","B"],"value":30,"factRole":"GIVEN"}
+    ],
+    "expressionLabels": [
+      {"id":"lAB","ownerSegment":"sAB","text":"7","unit":"cm"},
+      {"id":"lAD","ownerSegment":"sDA","text":"14","unit":"cm"},
+      {"id":"lCD","ownerSegment":"sDC","text":"12","unit":"cm"}
+    ]
+  },
+  "rightAngles": [{"id":"rB","refs":["A","B","D"]}],
+  "coordinateCanvas": {"width":560,"height":480},
+  "caption": "사각형 ABCD에서 A는 60도, ABD는 직각, CDB는 30도이고, AB는 7cm, AD는 14cm, CD는 12cm이다.",
+  "accessibilityDescription": "사각형 ABCD의 대각선 BD가 그어져 있고 각 A 60도, B의 직각, D 30도가 표시되어 있다. 변 AB는 7cm, AD는 14cm, CD는 12cm이다.",
+  "sourceConditions": [
+    {"id":"c1","sourceQuote":"∠A=60°, ∠ABD=90°, ∠CDB=30°","mappedTo":["mathPlan.nodes","planeMarks.angles","rightAngles"]},
+    {"id":"c2","sourceQuote":"AB=7cm, AD=14cm, CD=12cm","mappedTo":["mathPlan.nodes","planeMarks.expressionLabels"]}
+  ],
+  "newVisualInformation": ["주어진 각 3개와 길이 3개, 대각선 BD 및 B의 직각 표식을 빠짐없이 표시한다.","문제 그림에는 해설에서 도출하는 BD와 CH의 길이 및 수선의 발 H를 노출하지 않는다.","사각형 안은 채우지 않는다."]
+}

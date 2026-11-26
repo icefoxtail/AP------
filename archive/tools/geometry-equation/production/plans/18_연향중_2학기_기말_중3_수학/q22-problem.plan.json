@@ -1,0 +1,45 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion":"construction-spike-v1",
+    "realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes": [
+      {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"P","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"expression","op":"mul","args":[{"kind":"integer","value":"4"},{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"3"}]}]}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"M","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"expression","op":"mul","args":[{"kind":"integer","value":"2"},{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"3"}]}]}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"Q","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"expression","op":"mul","args":[{"kind":"integer","value":"3"},{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"3"}]}]}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-6"},{"kind":"expression","op":"mul","args":[{"kind":"integer","value":"2"},{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"3"}]}]}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"6"},{"kind":"expression","op":"mul","args":[{"kind":"integer","value":"2"},{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"3"}]}]}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"circ","op":"CIRCLE_CENTER_RADIUS","inputs":["O"],"args":{"radius":{"kind":"expression","op":"mul","args":[{"kind":"integer","value":"4"},{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"3"}]}]}},"outputType":"CIRCLE","factRole":"DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "displayPoints":["O","P","M","Q","A","B"],
+  "displayLines":[],
+  "displayCircles":["circ"],
+  "displaySegments":[
+    {"id":"sOM","refs":["O","M"]},
+    {"id":"sMQ","refs":["M","Q"]},
+    {"id":"sQP","refs":["Q","P"]},
+    {"id":"sAM","refs":["A","M"]},
+    {"id":"sMB","refs":["M","B"]},
+    {"id":"sAP","refs":["A","P"]},
+    {"id":"sAQ","refs":["A","Q"]},
+    {"id":"sOA","refs":["O","A"],"dashed":true}
+  ],
+  "planeMarks":{
+    "expressionLabels":[{"id":"lOA","ownerSegment":"sOA","text":"4sqrt(3)","unit":"cm"}],
+    "equalLengths":[{"id":"ePQ","count":1,"segments":["sQP","sMQ"]}],
+    "regions":[{"id":"rPAQ","fill":"ROSE","shapes":[{"polygon":["P","A","Q"]}]}]
+  },
+  "rightAngles":[{"id":"rM","refs":["P","M","A"]}],
+  "coordinateCanvas":{"width":560,"height":480},
+  "caption":"반지름 4√3cm인 원을 접을 때 P와 O가 겹치고, AB는 접는 선이다. Q는 PM 위에서 PQ=QM이며, 색칠은 구하려는 삼각형 PAQ에만 한다.",
+  "accessibilityDescription":"원 위쪽의 P와 중심 O를 잇는 수직선이 가로 현 AB의 중점 M에서 만난다. 점 Q는 P와 M 사이에 있다. PQ와 QM에 같은 길이 표식이 있고, 삼각형 PAQ만 엷게 강조했다.",
+  "sourceConditions":[
+    {"id":"c1","sourceQuote":"반지름의 길이가 4√3cm인 원 O","mappedTo":["mathPlan.nodes","displayCircles","planeMarks.expressionLabels"]},
+    {"id":"c2","sourceQuote":"AB를 접는 선으로 하여 P가 원의 중심 O와 겹쳐진다","mappedTo":["mathPlan.nodes","displaySegments","rightAngles"]},
+    {"id":"c3","sourceQuote":"PQ=MQ","mappedTo":["mathPlan.nodes","planeMarks.equalLengths"]},
+    {"id":"c4","sourceQuote":"삼각형 PAQ의 넓이","mappedTo":["displaySegments","planeMarks.regions"]}
+  ],
+  "newVisualInformation":["주어진 반지름·접는 선·직각·동일 길이 눈금을 모두 그리는 필드로 지정한다.","넓이를 묻는 삼각형 PAQ만 색칠하고 원판 전체와 아래쪽 영역은 채우지 않는다.","해설에서 구할 PQ, AM, 면적 수치는 문제 그림에 노출하지 않는다."]
+}

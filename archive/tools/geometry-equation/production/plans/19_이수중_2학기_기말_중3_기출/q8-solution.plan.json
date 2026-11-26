@@ -80,13 +80,30 @@
         },
         "outputType": "POINT",
         "factRole": "GIVEN"
+      },
+      {
+        "id": "baseBC",
+        "op": "LINE_THROUGH",
+        "inputs": ["B", "C"],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": ["A", "baseBC"],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
       }
     ]
   },
   "displayPoints": [
     "A",
     "B",
-    "C"
+    "C",
+    "H"
   ],
   "displayLines": [],
   "displayCircles": [],
@@ -111,6 +128,11 @@
         "C",
         "A"
       ]
+    },
+    {
+      "id": "sAH",
+      "refs": ["A", "H"],
+      "dashed": true
     }
   ],
   "planeMarks": {
@@ -156,5 +178,12 @@
       }
     ]
   },
-  "caption": "파란 변 4cm와 주황 변 5cm 사이의 끼인각이 60도이다. 두 변의 곱의 절반에 끼인각의 사인 값을 곱해 넓이를 구한다."
+  "rightAngles": [{"id":"rAH","refs":["A","H","C"]}],
+  "caption": "AB=4cm, BC=5cm이고 끼인각 B는 60도이다. 점 A에서 BC에 내린 점선 높이 AH와 직각 표시로 넓이 공식을 설명한다.",
+  "accessibilityDescription": "삼각형 ABC에서 AB는 4cm, BC는 5cm, 각 B는 60도이며 A에서 BC에 내린 수선의 발 H가 표시되어 있다.",
+  "sourceConditions": [
+    {"id":"c1","sourceQuote":"AB=4cm, BC=5cm, ∠B=60°","mappedTo":["mathPlan.nodes","planeMarks.expressionLabels","planeMarks.angles"]},
+    {"id":"c2","condition":"해설에서 삼각형의 높이 AH를 내려 넓이를 설명한다.","mappedTo":["mathPlan.nodes","displaySegments","rightAngles"]}
+  ],
+  "newVisualInformation": ["점선 높이 AH와 수선의 발 H, 직각 표식을 보여 준다.","필요 없는 삼각형 면 채움은 사용하지 않는다."]
 }
