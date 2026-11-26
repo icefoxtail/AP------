@@ -1,0 +1,21 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "SIN",
+    "coefficients": ["1", "1", "0"],
+    "phasePi": "0",
+    "sourceDomain": { "kind": "INTERVAL_PI", "rangePi": ["0", "2"], "states": ["CLOSED", "OPEN"] },
+    "referenceLines": [{ "id": "h", "y": "1/2", "intersectionCount": 2 }],
+    "keyPoints": true,
+    "axisTickPi": true,
+    "axisTickValues": { "x": ["1/6", "5/6", "1", "3/2"], "y": ["-1", "1/2", "1"] }
+  },
+  "caption": "0≤x<2π에서 sin x≤1/2를 해석하기 위한 사인 곡선과 수평선 y=1/2. 두 교점은 x=π/6, 5π/6이며 부등식의 등호를 포함한다.",
+  "sourceQuote": "부등식 $2\\cos^2 x - \\cos",
+  "sourceConditions": [
+    { "id": "inequality", "condition": "0≤x<2π에서 2cos²x−cos(3π/2+x)−1≥0", "mappedTo": "PRESERVED_ARCHIVE_BANK" },
+    { "id": "reduced", "condition": "동치 조건 sin x≤1/2", "mappedTo": "DERIVED_FROM_SOLUTION" }
+  ],
+  "newVisualInformation": ["임계값 1/2의 사인곡선 교점 두 개", "등호 포함 부등식의 두 구간"]
+}
