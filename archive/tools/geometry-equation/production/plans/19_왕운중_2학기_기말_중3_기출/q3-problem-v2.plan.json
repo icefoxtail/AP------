@@ -1,0 +1,319 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "p1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "850",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1084",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "6270",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2536",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "3755",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1084",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "6270",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1084",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p5",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "6110",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1084",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p6",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "6110",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1244",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p7",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "6270",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1244",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "p1",
+    "p2",
+    "p3",
+    "p4",
+    "p5",
+    "p6",
+    "p7"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "s1",
+      "refs": [
+        "p1",
+        "p2"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "p3",
+        "p2"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "p1",
+        "p4"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "p4",
+        "p2"
+      ]
+    },
+    {
+      "id": "s5",
+      "refs": [
+        "p5",
+        "p6"
+      ]
+    },
+    {
+      "id": "s6",
+      "refs": [
+        "p6",
+        "p7"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "segmentColors": [{"segments":["s1"],"color":"BLUE"},{"segments":["s2"],"color":"WARM"},{"segments":["s4"],"color":"GREEN"}],
+    "angles": [{"id":"sourceAngle1","style":"ARC","refs":["p4","p1","p2"],"factRole":"GIVEN","value":15,"label":"15"}],
+    "textLabels": [
+      {
+        "id": "text1",
+        "at": [
+          1.802,
+          1.411
+        ],
+        "text": "15°",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "text2",
+        "at": [
+          4.503,
+          1.147
+        ],
+        "text": "30°",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "text3",
+        "at": [
+          6.38,
+          2.686
+        ],
+        "text": "A",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "text4",
+        "at": [
+          0.7,
+          0.844
+        ],
+        "text": "B",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "text5",
+        "at": [
+          3.755,
+          0.814
+        ],
+        "text": "C",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "text6",
+        "at": [
+          6.39,
+          0.864
+        ],
+        "text": "D",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "p1",
+    "p2",
+    "p3",
+    "p4",
+    "p5",
+    "p6",
+    "p7"
+  ],
+  "unmarkedPointNames": [
+    "p1",
+    "p2",
+    "p3",
+    "p4",
+    "p5",
+    "p6",
+    "p7"
+  ],
+  "caption": "같은 높이를 공유하는 15도와 30도의 직각삼각형 — B, C, D는 같은 밑변 위에 왼쪽부터 놓이고 A는 D 바로 위이다. B에 15도, C에 30도를 표시했다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "아래 그림에서 $\\angle ABC=15^\\circ$, $\\angle D=90^\\circ$일 때 $\\tan15^\\circ$의 값은? (4점)",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "SOURCE_VS_PLAN_REVIEWED: 선분·원·문자·점선·선색·각 표시를 도형 필드와 대조함. 잔여 SVG 고유 텍스처·정밀 곡선/도형 배치와 렌더 실물은 별도 보강·검수 대상.",
+    "곡선/호 경로: 전용 곡선 primitive 확장 검토 필요"
+  ],
+  "coordinateCanvas": {
+    "width": 712,
+    "height": 362
+  }
+}

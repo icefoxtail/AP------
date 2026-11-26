@@ -1,0 +1,275 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "p1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1748",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "4006",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "6300",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1835",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1273",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1439",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "4104",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2882",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p5",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "2495",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2540",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ1",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "p5"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "1645",
+            "denominator": "1000"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "p1",
+    "p2",
+    "p3",
+    "p4",
+    "p5"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ1"
+  ],
+  "displaySegments": [
+    {
+      "id": "s1",
+      "refs": [
+        "p1",
+        "p2"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "p3",
+        "p2"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "p1",
+        "p3"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "p4",
+        "p3"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "segmentColors": [{"segments":["s1"],"color":"BLUE"},{"segments":["s3"],"color":"VIOLET"},{"segments":["s4"],"color":"WARM"}],
+    "angles": [{"id":"sourceAngle1","style":"ARC","refs":["p3","p2","p1"],"factRole":"GIVEN","value":30,"label":"30"},{"id":"sourceUnknownAngle2","style":"ARC","refs":["p2","p3","p4"],"factRole":"GIVEN","value":22.5,"label":"x"}],
+    "textLabels": [
+      {
+        "id": "text1",
+        "at": [
+          5.315,
+          1.863
+        ],
+        "text": "30°",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "text3",
+        "at": [
+          4.214,
+          3.052
+        ],
+        "text": "A",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "text4",
+        "at": [
+          1.608,
+          4.146
+        ],
+        "text": "B",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "text5",
+        "at": [
+          1.133,
+          1.179
+        ],
+        "text": "C",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "text6",
+        "at": [
+          3.995,
+          1.384
+        ],
+        "text": "D",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "text7",
+        "at": [
+          6.47,
+          1.755
+        ],
+        "text": "P",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "p1",
+    "p2",
+    "p3",
+    "p4",
+    "p5"
+  ],
+  "unmarkedPointNames": [
+    "p1",
+    "p2",
+    "p3",
+    "p4",
+    "p5"
+  ],
+  "caption": "원 밖에서 만나는 두 할선과 같은 세 호 — A, B, C, D가 원 위에 있고 두 할선은 오른쪽의 P에서 만난다. 호 AB, BC와 CD는 같은 초록 모양이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림에서 점 $\\mathrm{P}$는 두 현 $\\mathrm{AB, CD}$의 연장선의 교점이다. $\\overset{\\frown}{\\mathrm{AB}}=\\overset{\\frown}{\\mathrm{BC}}=\\overset{\\frown}{\\mathrm{CD}}$이고, $\\angle\\mathrm{APD}=30^\\circ$일 때, $\\angle x$의 크기는?(5점) ",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "SOURCE_VS_PLAN_REVIEWED: 선분·원·문자·점선·선색·각 표시를 도형 필드와 대조함. 잔여 SVG 고유 텍스처·정밀 곡선/도형 배치와 렌더 실물은 별도 보강·검수 대상.",
+    "곡선/호 경로: 전용 곡선 primitive 확장 검토 필요"
+  ],
+  "coordinateCanvas": {
+    "width": 715,
+    "height": 508
+  }
+}

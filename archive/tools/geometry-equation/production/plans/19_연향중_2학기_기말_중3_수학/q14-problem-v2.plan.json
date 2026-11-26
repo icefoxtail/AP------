@@ -1,0 +1,233 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "p1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1276",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2098",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "4724",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3022",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "4024",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1098",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2560",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ1",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "p4"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "1785",
+            "denominator": "1000"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "p1",
+    "p2",
+    "p3",
+    "p4"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ1"
+  ],
+  "displaySegments": [
+    {
+      "id": "s1",
+      "refs": [
+        "p1",
+        "p2"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "p2",
+        "p3"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "p4",
+        "p3"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "segmentColors": [{"segments":["s1"],"color":"BLUE"},{"segments":["s3"],"color":"WARM"}],
+    "angles": [{"id":"sourceAngle1","style":"ARC","refs":["p1","p2","p3"],"factRole":"GIVEN","value":55,"label":"55"},{"id":"sourceUnknownAngle2","style":"ARC","refs":["p1","p4","p3"],"factRole":"GIVEN","value":110,"label":"x"}],
+    "textLabels": [
+      {
+        "id": "text1",
+        "at": [
+          4.197,
+          2.483
+        ],
+        "text": "55°",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "text3",
+        "at": [
+          1.096,
+          2.018
+        ],
+        "text": "A",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "text4",
+        "at": [
+          4.884,
+          3.152
+        ],
+        "text": "P",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "text5",
+        "at": [
+          4.144,
+          0.848
+        ],
+        "text": "B",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "text6",
+        "at": [
+          3.02,
+          2.72
+        ],
+        "text": "O",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "p1",
+    "p2",
+    "p3",
+    "p4"
+  ],
+  "unmarkedPointNames": [
+    "p1",
+    "p2",
+    "p3",
+    "p4"
+  ],
+  "caption": "같은 호로 이어지는 원주각과 중심각 — A와 P를 잇는 지름에 중심 O가 놓인다. P의 각은 55도이고 O의 각이 x이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림의 원 $\\mathrm{O}$에서 $\\angle x$의 크기는?(3점) ",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "SOURCE_VS_PLAN_REVIEWED: 선분·원·문자·점선·선색·각 표시를 도형 필드와 대조함. 잔여 SVG 고유 텍스처·정밀 곡선/도형 배치와 렌더 실물은 별도 보강·검수 대상.",
+    "곡선/호 경로: 전용 곡선 primitive 확장 검토 필요"
+  ],
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 512
+  }
+}

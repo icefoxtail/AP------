@@ -1,0 +1,319 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "p1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "2777",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "4505",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "5117",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1343",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "3143",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1291",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1766",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1255",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p5",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "3830",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3081",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p6",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "4114",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1946",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ1",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "p6"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "1171",
+            "denominator": "1000"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "p1",
+    "p2",
+    "p3",
+    "p4",
+    "p5",
+    "p6"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ1"
+  ],
+  "displaySegments": [
+    {
+      "id": "s1",
+      "refs": [
+        "p1",
+        "p2"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "p1",
+        "p3"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "p4",
+        "p5"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "p4",
+        "p2"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "segmentColors": [{"segments":["s1","s2"],"color":"BLUE"},{"segments":["s3","s4"],"color":"GREEN"}],
+    "angles": [{"id":"sourceAngle1","style":"ARC","refs":["p2","p1","p3"],"factRole":"GIVEN","value":30,"label":"30"},{"id":"sourceAngle2","style":"ARC","refs":["p2","p4","p5"],"factRole":"GIVEN","value":40,"label":"40"},{"id":"sourceUnknownAngle3","style":"ARC","refs":["p4","p2","p1"],"factRole":"GIVEN","value":55,"label":"x"}],
+    "textLabels": [
+      {
+        "id": "text1",
+        "at": [
+          3.109,
+          3.569
+        ],
+        "text": "30°",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "text2",
+        "at": [
+          2.341,
+          1.343
+        ],
+        "text": "40°",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "text4",
+        "at": [
+          2.747,
+          4.665
+        ],
+        "text": "P",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "text5",
+        "at": [
+          1.596,
+          1.075
+        ],
+        "text": "Q",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "text6",
+        "at": [
+          3.91,
+          3.251
+        ],
+        "text": "A",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "text7",
+        "at": [
+          2.851,
+          2.455
+        ],
+        "text": "B",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "text8",
+        "at": [
+          3.023,
+          1.021
+        ],
+        "text": "C",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "text9",
+        "at": [
+          5.277,
+          1.083
+        ],
+        "text": "D",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "p1",
+    "p2",
+    "p3",
+    "p4",
+    "p5",
+    "p6"
+  ],
+  "unmarkedPointNames": [
+    "p1",
+    "p2",
+    "p3",
+    "p4",
+    "p5",
+    "p6"
+  ],
+  "caption": "두 원 밖 각과 네 호의 관계 — 사각형 ABCD의 네 점이 원 위에 있다. 원 밖 P의 각은 30도, Q의 각은 40도이며 원 위 D에서 각 x를 표시했다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림에서 사각형 $ABCD$가 원에 내접하고, $\\angle CPD=30^\\circ$, $\\angle DQA=40^\\circ$일 때, $\\angle x$의 크기는? (5점)",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "SOURCE_VS_PLAN_REVIEWED: 선분·원·문자·점선·선색·각 표시를 도형 필드와 대조함. 잔여 SVG 고유 텍스처·정밀 곡선/도형 배치와 렌더 실물은 별도 보강·검수 대상.",
+    "곡선/호 경로: 전용 곡선 primitive 확장 검토 필요"
+  ],
+  "coordinateCanvas": {
+    "width": 705,
+    "height": 528
+  }
+}
