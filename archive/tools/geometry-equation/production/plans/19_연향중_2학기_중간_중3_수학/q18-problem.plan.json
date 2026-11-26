@@ -1,0 +1,70 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 6,
+        "depth": 8
+      },
+      "height": 4,
+      "names": "FGHEBCDA"
+    }
+  ],
+  "segments": [
+    {
+      "from": "A",
+      "to": "B",
+      "style": "SOLID",
+      "role": "ACCENT"
+    },
+    {
+      "from": "B",
+      "to": "G",
+      "style": "SOLID",
+      "role": "ACCENT"
+    },
+    {
+      "from": "G",
+      "to": "A",
+      "style": "SOLID",
+      "role": "ACCENT"
+    }
+  ],
+  "dims": [
+    {
+      "edge": "FG",
+      "label": "6"
+    },
+    {
+      "edge": "GH",
+      "label": "8"
+    },
+    {
+      "edge": "DH",
+      "label": "4"
+    }
+  ],
+  "solidCaption": {
+    "text": "직육면체의 삼각형 ABG"
+  },
+  "caption": "세 방향의 모서리가 6cm, 8cm, 4cm인 직육면체 ABCDEFGH의 삼각형 ABG를 실제 세 선분 AB,BG,GA로 표시한다. 숨은 모서리는 점선이고 면은 칠하지 않는다.",
+  "accessibilityDescription": "세 방향의 모서리가 6cm, 8cm, 4cm인 직육면체 ABCDEFGH의 삼각형 ABG를 실제 세 선분 AB,BG,GA로 표시한다. 숨은 모서리는 점선이고 면은 칠하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "solid",
+      "condition": "세 방향의 모서리가 6cm, 8cm, 4cm인 직육면체 ABCDEFGH의 삼각형 ABG를 실제 세 선분 AB,BG,GA로 표시한다. 숨은 모서리는 점선이고 면은 칠하지 않는다.",
+      "mappedTo": [
+        "solids",
+        "segments",
+        "dims"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "기존 입체·삼각형에 남아 있던 파랑·초록·주황의 넓은 면 채움을 제거한다. 원본 삼각형 ABG의 세 선분과 6·8·4cm의 실제 3D 모서리 길이는 유지한다."
+  ],
+  "sourceQuote": "다음 그림과 같이 세 모서리의 길이가 각각 $6\\,\\mathrm{cm}, 8\\,\\mathrm{cm}, 4\\,\\mathrm{cm}$인 직육면체에서 $\\triangle\\mathrm{ABG}$의 둘레의 길이를 구하면? (5점)"
+}

@@ -1,0 +1,159 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U0",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-1"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "P",
+    "Q",
+    "F"
+  ],
+  "displayLines": [],
+  "displaySegments": [
+    {
+      "id": "sPQ",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    },
+    {
+      "id": "sPF",
+      "refs": [
+        "P",
+        "F"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sFQ",
+      "refs": [
+        "F",
+        "Q"
+      ],
+      "dashed": true
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rPFQ",
+      "refs": [
+        "P",
+        "F",
+        "Q"
+      ]
+    }
+  ],
+  "coordinateLabels": [
+    "P",
+    "Q"
+  ],
+  "hiddenPointNames": [
+    "F"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "좌표평면의 P(-1,3), Q(2,1)을 연결하고, P에서 가로로 3칸, Q에서 세로로 2칸 이어지는 보조 점선 두 개와 그 사이 직각을 표시한다.",
+  "accessibilityDescription": "좌표평면의 P(-1,3), Q(2,1)을 연결하고, P에서 가로로 3칸, Q에서 세로로 2칸 이어지는 보조 점선 두 개와 그 사이 직각을 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "coordinates",
+      "condition": "좌표평면의 P(-1,3), Q(2,1)을 연결하고, P에서 가로로 3칸, Q에서 세로로 2칸 이어지는 보조 점선 두 개와 그 사이 직각을 표시한다.",
+      "mappedTo": [
+        "displayPoints",
+        "displaySegments",
+        "rightAngles",
+        "coordinateLabels"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "해설의 파란 삼각형 전체 면 채움을 제거하고 P·Q의 실제 좌표, 가로3·세로2 보조선 점선과 직각 네모를 보존한다."
+  ],
+  "sourceQuote": "두 점의 가로 좌표 차는 $2-(-1)=3$, 세로 좌표 차는 $1-3=-2$이다. 피타고라스 정리를 적용하면 거리 $=\\sqrt{3^2+(-2)^2}=\\sqrt{13}$. ①."
+}

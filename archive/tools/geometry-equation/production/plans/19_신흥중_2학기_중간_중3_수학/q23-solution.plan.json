@@ -1,0 +1,278 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "7"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "7"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "24"
+            },
+            {
+              "kind": "integer",
+              "value": "7"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "24"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3500000000",
+              "denominator": "1000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "E",
+    "F",
+    "G",
+    "A",
+    "B",
+    "C",
+    "M"
+  ],
+  "displayLines": [],
+  "displaySegments": [
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "sFG",
+      "refs": [
+        "F",
+        "G"
+      ]
+    },
+    {
+      "id": "sGC",
+      "refs": [
+        "G",
+        "C"
+      ]
+    },
+    {
+      "id": "sCB",
+      "refs": [
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "sBA",
+      "refs": [
+        "B",
+        "A"
+      ]
+    },
+    {
+      "id": "sAE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "sFB",
+      "refs": [
+        "F",
+        "B"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sEM",
+      "refs": [
+        "E",
+        "M"
+      ],
+      "emphasis": "ACCENT"
+    },
+    {
+      "id": "sMC",
+      "refs": [
+        "M",
+        "C"
+      ],
+      "emphasis": "ACCENT"
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dAB",
+        "from": "A",
+        "to": "B",
+        "label": "12",
+        "side": "BELOW",
+        "unit": "cm"
+      },
+      {
+        "id": "dBC",
+        "from": "B",
+        "to": "C",
+        "label": "12",
+        "side": "BELOW",
+        "unit": "cm"
+      },
+      {
+        "id": "dGC",
+        "from": "G",
+        "to": "C",
+        "label": "7",
+        "side": "RIGHT",
+        "unit": "cm"
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "M"
+  ],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {
+    "width": 610,
+    "height": 470
+  },
+  "caption": "직육면체의 앞면 EABF와 인접 면 FBCG를 FB를 따라 펼쳐 가로 12+12cm, 세로 7cm인 두 직사각형으로 만든 전개도다. E에서 C로 향하는 직선이 FB의 중점을 지난다.",
+  "accessibilityDescription": "직육면체의 앞면 EABF와 인접 면 FBCG를 FB를 따라 펼쳐 가로 12+12cm, 세로 7cm인 두 직사각형으로 만든 전개도다. E에서 C로 향하는 직선이 FB의 중점을 지난다.",
+  "sourceConditions": [
+    {
+      "id": "visual",
+      "condition": "직육면체의 앞면 EABF와 인접 면 FBCG를 FB를 따라 펼쳐 가로 12+12cm, 세로 7cm인 두 직사각형으로 만든 전개도다. E에서 C로 향하는 직선이 FB의 중점을 지난다.",
+      "mappedTo": [
+        "displaySegments",
+        "displayPoints",
+        "planeMarks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "해설 전개도의 장식성 두 직사각형 색 채움을 모두 없애고 FB 이음선 점선, 두 가로 12cm 및 세로 7cm 길이선, E→C의 최단 직선 두 조각을 정확히 표시한다."
+  ],
+  "sourceQuote": "직육면체의 앞면 $EABF$와 오른쪽 면 $FBCG$를 공통 모서리 $FB$를 따라 펼친다. 전개도에서 $FB$를 세로 변으로 놓으면 $E$는 $F$에서 왼쪽으로 $12\\,\\mathrm{cm}$, $C$는 $B$에서 오른쪽으로 $12\\,\\mathrm{cm}$ 떨어져 있다. 따라서 $E$와 $C$의 가로 차는 $12+12=24\\,\\mathr"
+}

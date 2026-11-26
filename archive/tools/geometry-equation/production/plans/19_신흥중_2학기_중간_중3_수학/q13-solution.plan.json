@@ -1,0 +1,311 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-866025404",
+              "denominator": "1000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "500000000",
+              "denominator": "1000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-866025404",
+              "denominator": "1000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-500000000",
+              "denominator": "1000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "866025404",
+              "denominator": "1000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-500000000",
+              "denominator": "1000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "866025404",
+              "denominator": "1000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "500000000",
+              "denominator": "1000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "O"
+  ],
+  "displayLines": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "sFA",
+      "refs": [
+        "F",
+        "A"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sOC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "sOD",
+      "refs": [
+        "O",
+        "D"
+      ]
+    },
+    {
+      "id": "sOE",
+      "refs": [
+        "O",
+        "E"
+      ]
+    },
+    {
+      "id": "sOF",
+      "refs": [
+        "O",
+        "F"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dAB",
+        "from": "A",
+        "to": "B",
+        "label": "1",
+        "side": "ABOVE",
+        "unit": "cm"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "sameR",
+        "count": 1,
+        "segments": [
+          "sOA",
+          "sOB",
+          "sOC",
+          "sOD",
+          "sOE",
+          "sOF"
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 610,
+    "height": 470
+  },
+  "caption": "정육각형의 중심 O를 모든 꼭짓점에 연결해 여섯 정삼각형으로 나눈다. 원본의 AD는 외접원의 지름이다.",
+  "accessibilityDescription": "정육각형의 중심 O를 모든 꼭짓점에 연결해 여섯 정삼각형으로 나눈다. 원본의 AD는 외접원의 지름이다.",
+  "sourceConditions": [
+    {
+      "id": "visual",
+      "condition": "정육각형의 중심 O를 모든 꼭짓점에 연결해 여섯 정삼각형으로 나눈다. 원본의 AD는 외접원의 지름이다.",
+      "mappedTo": [
+        "displaySegments",
+        "displayPoints",
+        "planeMarks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "전체 육각형 파란 채움과 풀이용 삼각형 장식 채움을 없애고 여섯 반지름과 같은 길이 눈금을 실제 선으로 표시한다."
+  ],
+  "sourceQuote": "정육각형을 중심에서 꼭짓점에 이은 여섯 개의 삼각형으로 나누면 각각 정삼각형이고 외접원의 반지름은 한 변과 같은 $1\\,\\mathrm{cm}$이다. $A,D$는 서로 마주 보는 꼭짓점이므로 $AD$는 지름이다. 따라서 $AD=2\\,\\mathrm{cm}$, ④."
+}

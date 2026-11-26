@@ -1,0 +1,281 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "2196152423",
+              "denominator": "1000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3803847577",
+              "denominator": "1000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "5196152423",
+              "denominator": "1000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3803847577",
+              "denominator": "1000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "2196152423",
+              "denominator": "1000000000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "5196152423",
+              "denominator": "1000000000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "A",
+    "D",
+    "C",
+    "E",
+    "F"
+  ],
+  "displayLines": [],
+  "displaySegments": [
+    {
+      "id": "sBA",
+      "refs": [
+        "B",
+        "A"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "sCB",
+      "refs": [
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "sAE",
+      "refs": [
+        "A",
+        "E"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sDF",
+      "refs": [
+        "D",
+        "F"
+      ],
+      "dashed": true
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rBEA",
+      "refs": [
+        "B",
+        "E",
+        "A"
+      ]
+    },
+    {
+      "id": "rDFC",
+      "refs": [
+        "D",
+        "F",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aABC",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 60,
+        "label": "60",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aDCB",
+        "refs": [
+          "D",
+          "C",
+          "B"
+        ],
+        "value": 45,
+        "label": "45",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dAD",
+        "from": "A",
+        "to": "D",
+        "label": "3",
+        "side": "ABOVE",
+        "unit": "cm"
+      },
+      {
+        "id": "dBC",
+        "from": "B",
+        "to": "C",
+        "label": "9",
+        "side": "BELOW",
+        "unit": "cm"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lh",
+        "ownerSegment": "sAE",
+        "text": "h"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 610,
+    "height": 470
+  },
+  "caption": "AD=3cm, BC=9cm인 사다리꼴의 A,D에서 BC에 내린 두 수선 AE,DF를 점선으로 보이고 각 발에 직각 네모를 넣는다. 높이를 h라 둔다.",
+  "accessibilityDescription": "AD=3cm, BC=9cm인 사다리꼴의 A,D에서 BC에 내린 두 수선 AE,DF를 점선으로 보이고 각 발에 직각 네모를 넣는다. 높이를 h라 둔다.",
+  "sourceConditions": [
+    {
+      "id": "visual",
+      "condition": "AD=3cm, BC=9cm인 사다리꼴의 A,D에서 BC에 내린 두 수선 AE,DF를 점선으로 보이고 각 발에 직각 네모를 넣는다. 높이를 h라 둔다.",
+      "mappedTo": [
+        "displaySegments",
+        "displayPoints",
+        "rightAngles",
+        "planeMarks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "해설의 직각 수선 2개와 높이 h를 원본 기하 조건에 맞춰 추가하고 삼각형·사다리꼴 전체 색 채움은 없앤다."
+  ],
+  "sourceQuote": "점 $A,D$에서 밑변 $BC$에 수선을 내리고 사다리꼴의 높이를 $h$라고 하자. 왼쪽 밑변에서 $A$의 수선 발까지의 길이를 $x$, $D$의 수선 발에서 $C$까지의 길이를 $y$라 하면 두 밑변의 차가 두 수평 길이의 합이다. $x+y=BC-AD=9-3=6$이다. 왼쪽 직각삼각형의 한 각은 $60^\\circ$이므로 $30^\\circ"
+}
