@@ -1,0 +1,51 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "반원에서 평행선 AD와 OC, 각 36°·108° 및 24cm 호 AD를 보인 풀이 도형.",
+  "accessibilityDescription": "위쪽 반원에서 지름의 왼쪽 끝 A, 중심 O, 오른쪽 끝 B를 잇는다. 현 AD와 반지름 OC는 평행하게 표시하고, 호 AD에는 24센티미터, 각 DAO에는 36도, 중심각 AOD에는 108도, BOC에는 36도를 표시한다.",
+  "sourceQuote": "다음 반원 $O$에서",
+  "sourceConditions": [
+    {"id":"semicircle","condition":"A,O,B는 한 직선 위에 있고 위쪽 반원이다. 반지름 10은 원문의 실제 반지름이 아니라 각과 평행을 보이기 위한 도식 축척이며 호 길이 24cm는 원문 표기를 그대로 둔다(실제 반지름 40/πcm는 도식에 수치로 쓰지 않음).","mappedTo":["mathPlan.nodes[0]","mathPlan.nodes[1]","mathPlan.nodes[2]","planeMarks.arcs[0]"]},
+    {"id":"given-angle","condition":"∠DAO=36°이면 반원에 내접한 점 D의 중심각 위치는 72°이고 OA=OD이므로 ∠ADO도 36°이다.","mappedTo":["mathPlan.nodes[3]","planeMarks.angles[0]","planeMarks.angles[1]"]},
+    {"id":"parallel","condition":"AD∥OC이므로 ∠BOC=36°. 원의 중심 O에서 C는 x축 기준 36° 위치에 놓인다.","mappedTo":["mathPlan.nodes[4]","planeMarks.parallels[0]","planeMarks.angles[3]"]},
+    {"id":"arc-length","condition":"호 AD는 24cm이며, 대응하는 중심각 AOD=108°이다.","mappedTo":["planeMarks.arcs[1]","planeMarks.angles[2]"]}
+  ],
+  "newVisualInformation": [
+    "기존 해설 SVG의 반원 부채꼴 내부 회색 채움을 제거하고 상단 반원호만 유지한다.",
+    "평행 표식·주어진 36°·호 길이 24cm와 해설에 사용한 중심각 108°, 36°를 실제 그려지는 필드에 둔다.",
+    "아래쪽 반원의 불필요한 호 또는 면은 추가하지 않는다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes": [
+      {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"10"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"A","op":"POLAR_POINT","inputs":["O","B"],"args":{"length":{"kind":"integer","value":"10"},"angleDeg":{"kind":"integer","value":"180"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"D","op":"POLAR_POINT","inputs":["O","B"],"args":{"length":{"kind":"integer","value":"10"},"angleDeg":{"kind":"integer","value":"72"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"C","op":"POLAR_POINT","inputs":["O","B"],"args":{"length":{"kind":"integer","value":"10"},"angleDeg":{"kind":"integer","value":"36"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"circ","op":"CIRCLE_CENTER_RADIUS","inputs":["O"],"args":{"radius":{"kind":"integer","value":"10"}},"outputType":"CIRCLE","factRole":"DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "displayPoints": ["A", "O", "B", "C", "D"],
+  "displaySegments": [
+    {"id":"sAB","refs":["A","B"]},
+    {"id":"sAD","refs":["A","D"]},
+    {"id":"sOD","refs":["O","D"]},
+    {"id":"sOC","refs":["O","C"]}
+  ],
+  "planeMarks": {
+    "arcs": [
+      {"id":"half","circle":"circ","center":"O","from":"A","to":"B","side":"CW","highlight":false,"factRole":"GIVEN"},
+      {"id":"lengthAD","circle":"circ","center":"O","from":"A","to":"D","side":"CW","label":"24","unit":"cm","factRole":"GIVEN"}
+    ],
+    "angles": [
+      {"id":"aDAO","refs":["D","A","O"],"value":36,"label":"36","style":"ARC","factRole":"GIVEN"},
+      {"id":"aADO","refs":["A","D","O"],"value":36,"label":"36","style":"ARC","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"aAOD","refs":["A","O","D"],"value":108,"label":"108","style":"ARC","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"aBOC","refs":["B","O","C"],"value":36,"label":"36","style":"ARC","factRole":"DERIVED_INTERMEDIATE"}
+    ],
+    "parallels": [
+      {"id":"parallelADOC","count":1,"segments":["sAD","sOC"]}
+    ]
+  }
+}
