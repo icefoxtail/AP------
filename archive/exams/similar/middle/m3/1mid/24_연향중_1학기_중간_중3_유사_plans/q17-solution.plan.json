@@ -1,0 +1,22 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "a",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [{ "lo": { "value": "-2", "state": "OPEN" }, "hi": { "value": "5", "state": "OPEN" } }],
+        "hideSetLabel": true,
+        "label": "범위"
+      }
+    ]
+  },
+  "numberLineCaption": { "text": "절댓값 안의 부호를 판단하는 열린 구간" },
+  "caption": "-2<a<5인 수직선의 열린 구간에서 a-5<0, a+2>0이므로 |a-5|=5-a, |a+2|=a+2이다. 식의 값은 -2a+3이다.",
+  "accessibilityDescription": "수직선 -2와 5에 빈 원을 그리고 두 점 사이만 강조했다. 이 열린 구간에서 a는 -2보다 크고 5보다 작다.",
+  "sourceConditions": [
+    { "id": "s1", "condition": "-2<a<5", "mappedTo": ["numberLine.rows[0].pieces[0]"] },
+    { "id": "s2", "condition": "√((a-5)²)-√((a+2)²)=|a-5|-|a+2|", "mappedTo": "PRESERVED_ARCHIVE_BANK" }
+  ],
+  "newVisualInformation": ["경계 -2와 5를 제외한 열린 구간을 표시하여 두 절댓값 내부의 부호 판단을 돕는다"]
+}
