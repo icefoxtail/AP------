@@ -1,0 +1,59 @@
+{
+  "capability": "lattice-path-figure-v1",
+  "lattice": {
+    "grid": {
+      "cols": 3,
+      "rows": 3
+    },
+    "points": {
+      "A": [
+        0,
+        3
+      ],
+      "B": [
+        3,
+        0
+      ],
+      "P": [
+        2,
+        1
+      ]
+    },
+    "from": "A",
+    "to": "B",
+    "forbidden": [
+      [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    ],
+    "counts": true
+  },
+  "caption": "도로망 각 교차점의 최단경로 수와 P 경유·전체 경로 수를 보여 주는 해설 도식.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "A는 왼쪽 위, B는 오른쪽 아래, P는 (2,1), 맨 아래 왼쪽 칸의 두 도로는 없음",
+      "mappedTo": "lattice"
+    }
+  ],
+  "newVisualInformation": [
+    "최단 경로 개수는 엔진이 결손 도로를 고려하여 계산한다."
+  ]
+}

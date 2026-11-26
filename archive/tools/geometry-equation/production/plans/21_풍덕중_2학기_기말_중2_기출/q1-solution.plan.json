@@ -1,0 +1,60 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -1.5,
+      2,
+      -4,
+      9
+    ],
+    "curves": [
+      {
+        "id": "initial",
+        "kind": "LINE",
+        "coefficients": [
+          "2",
+          "-3"
+        ],
+        "domain": [
+          "-3/2",
+          "2"
+        ],
+        "color": "BLUE",
+        "label": "y=-3x+2"
+      },
+      {
+        "id": "shifted",
+        "kind": "LINE",
+        "coefficients": [
+          "5",
+          "-3"
+        ],
+        "domain": [
+          "-3/2",
+          "2"
+        ],
+        "color": "WARM",
+        "label": "y=-3x+5"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": [
+        "2",
+        "5"
+      ]
+    }
+  },
+  "caption": "직선 y=−3x+2를 위로 3만큼 이동하면 y=−3x+5가 된다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "직선 y=−3x+2를 위로 3만큼 이동하면 y=−3x+5가 된다.",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "두 직선의 기울기와 절편을 같은 좌표평면에서 비교한다."
+  ]
+}

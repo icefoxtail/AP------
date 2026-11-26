@@ -1,0 +1,434 @@
+{
+  "capability": "composite-panels-v1",
+  "columns": 1,
+  "panels": [
+    {
+      "caption": {
+        "text": "이등분선 AD"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "-5"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "5"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayLines": [],
+        "displayCircles": [],
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sAC",
+            "refs": [
+              "A",
+              "C"
+            ]
+          },
+          {
+            "id": "sBD",
+            "refs": [
+              "B",
+              "D"
+            ]
+          },
+          {
+            "id": "sDC",
+            "refs": [
+              "D",
+              "C"
+            ]
+          },
+          {
+            "id": "sAD",
+            "refs": [
+              "A",
+              "D"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "a1",
+              "refs": [
+                "B",
+                "A",
+                "D"
+              ],
+              "value": 39.8,
+              "noLabel": true,
+              "style": "ARC",
+              "equalGroup": 1
+            },
+            {
+              "id": "a2",
+              "refs": [
+                "D",
+                "A",
+                "C"
+              ],
+              "value": 39.8,
+              "noLabel": true,
+              "style": "ARC",
+              "equalGroup": 1
+            }
+          ]
+        },
+        "caption": "△ABC에서 AD는 꼭짓각 A의 이등분선이고 D는 BC 위에 있다.",
+        "coordinateCanvas": {
+          "width": 560,
+          "height": 460
+        },
+        "sourceConditions": [
+          {
+            "id": "original",
+            "condition": "AD는 ∠A의 이등분선; B,D,C는 한 직선 위",
+            "mappedTo": [
+              "A",
+              "B",
+              "C",
+              "D"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "원본 선분·점·동일길이·평행 표식과 길이/변수 라벨을 수치 노출 없이 구분한다."
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "보조선 CE∥AD"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "5"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "-4"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "E",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "10"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayLines": [],
+        "displayCircles": [],
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E"
+        ],
+        "displaySegments": [
+          {
+            "id": "sBA",
+            "refs": [
+              "B",
+              "A"
+            ]
+          },
+          {
+            "id": "sAE",
+            "refs": [
+              "A",
+              "E"
+            ]
+          },
+          {
+            "id": "sAC",
+            "refs": [
+              "A",
+              "C"
+            ]
+          },
+          {
+            "id": "sAD",
+            "refs": [
+              "A",
+              "D"
+            ]
+          },
+          {
+            "id": "sBD",
+            "refs": [
+              "B",
+              "D"
+            ]
+          },
+          {
+            "id": "sDC",
+            "refs": [
+              "D",
+              "C"
+            ]
+          },
+          {
+            "id": "sCE",
+            "refs": [
+              "C",
+              "E"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "parallels": [
+            {
+              "id": "p",
+              "count": 1,
+              "segments": [
+                "sAD",
+                "sCE"
+              ]
+            }
+          ],
+          "angles": [
+            {
+              "id": "a1",
+              "refs": [
+                "B",
+                "A",
+                "D"
+              ],
+              "arcs": 1,
+              "equalGroup": 1,
+              "noLabel": true,
+              "style": "ARC"
+            },
+            {
+              "id": "a2",
+              "refs": [
+                "D",
+                "A",
+                "C"
+              ],
+              "arcs": 1,
+              "equalGroup": 1,
+              "noLabel": true,
+              "style": "ARC"
+            }
+          ]
+        },
+        "caption": "E는 BA의 연장선 위, CE∥AD는 원문이 주어진 보조 작도이다.",
+        "sourceConditions": [
+          {
+            "id": "source",
+            "condition": "C를 지나 AD와 평행한 직선이 BA의 연장선과 만나는 점 E",
+            "mappedTo": [
+              "E",
+              "sAE",
+              "sCE"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "평행선과 연장선을 보여 주되 풀이 도출된 같음표식·정답을 새로 그리지 않는다."
+        ],
+        "coordinateCanvas": {
+          "width": 540,
+          "height": 460
+        }
+      }
+    }
+  ],
+  "caption": "원문 두 그림: 각의 이등분선이 있는 △ABC와, 점 C를 지나 AD에 평행한 CE를 추가한 보조 작도.",
+  "sourceConditions": [
+    {
+      "id": "original",
+      "condition": "원본 q11_1, q11_2 두 그림을 모두 포함하며 원문에서 제시된 CE∥AD와 연장선 E를 보존",
+      "mappedTo": "panels"
+    }
+  ],
+  "newVisualInformation": [
+    "두 원본 그림을 한 문항의 두 패널로 재구성하되 풀이에서 찾을 각의 이름을 문제 그림에 추가하지 않는다."
+  ]
+}

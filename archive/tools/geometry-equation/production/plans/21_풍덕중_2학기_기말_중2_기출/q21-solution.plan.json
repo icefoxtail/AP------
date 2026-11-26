@@ -1,0 +1,62 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-2",
+          "2/3"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [],
+    "viewport": [
+      -2,
+      7,
+      -5,
+      4
+    ],
+    "axisTickValues": {
+      "x": [
+        "3"
+      ],
+      "y": [
+        "-2"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "Y",
+          "axis": "y",
+          "value": "-2",
+          "unnamed": true,
+          "coordinates": true
+        },
+        {
+          "id": "X",
+          "axis": "x",
+          "value": "3",
+          "unnamed": true,
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "절편 (0,−2),(3,0)에서 기울기 2/3와 식 y=(2/3)x−2를 결정한다.",
+  "sourceConditions": [
+    {
+      "id": "equation",
+      "condition": "절편 (0,−2),(3,0)에서 기울기 2/3와 식 y=(2/3)x−2를 결정한다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "기울기·절편 및 주어진 좌표를 실제 좌표축과 대응하는 해설 그래프로 나타낸다."
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "capability": "lattice-path-figure-v1",
+  "lattice": {
+    "grid": {
+      "cols": 3,
+      "rows": 3
+    },
+    "points": {
+      "A": [
+        0,
+        3
+      ],
+      "B": [
+        3,
+        0
+      ],
+      "P": [
+        2,
+        1
+      ]
+    },
+    "from": "A",
+    "to": "B",
+    "forbidden": [
+      [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    ],
+    "counts": false
+  },
+  "caption": "왼쪽 아래 모서리의 도로가 없는 3×3 격자 도로망에서 A, P, B의 위치.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "A는 왼쪽 위, B는 오른쪽 아래, P는 (2,1), 맨 아래 왼쪽 칸의 두 도로는 없음",
+      "mappedTo": "lattice"
+    }
+  ],
+  "newVisualInformation": [
+    "원본 비정형 도로의 결손 두 선분을 금지 연결로 정확히 지정하고 P 통과 여부를 묻는다."
+  ]
+}

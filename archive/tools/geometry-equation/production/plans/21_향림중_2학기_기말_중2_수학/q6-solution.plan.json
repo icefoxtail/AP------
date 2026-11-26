@@ -1,0 +1,114 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "kind": "PRISM",
+      "base": {
+        "kind": "POLYGON",
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            2.88675,
+            1.66667
+          ]
+        ]
+      },
+      "height": 4,
+      "names": "DEFABC"
+    },
+    {
+      "kind": "PRISM",
+      "base": {
+        "kind": "POLYGON",
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            3,
+            0
+          ],
+          [
+            4.330125,
+            2.500005
+          ]
+        ]
+      },
+      "height": 6,
+      "names": "D′E′F′A′B′C′"
+    }
+  ],
+  "dims": [
+    {
+      "solid": "s1",
+      "edge": "AD",
+      "label": "4 cm"
+    },
+    {
+      "solid": "s1",
+      "edge": "DE",
+      "label": "2 cm"
+    },
+    {
+      "solid": "s2",
+      "edge": [
+        "A′",
+        "D′"
+      ],
+      "label": "6 cm"
+    },
+    {
+      "solid": "s2",
+      "edge": [
+        "A′",
+        "C′"
+      ],
+      "label": "5 cm"
+    },
+    {
+      "solid": "s2",
+      "edge": [
+        "D′",
+        "E′"
+      ],
+      "label": "3"
+    }
+  ],
+  "marks": {
+    "angles": [
+      {
+        "refs": [
+          "B′",
+          "A′",
+          "C′"
+        ],
+        "value": 30,
+        "arcs": 1,
+        "label": "30^\\circ"
+      }
+    ]
+  },
+  "solidCaption": {
+    "text": "닮은 두 삼각기둥"
+  },
+  "caption": "해설: 서로 닮은 작은 삼각기둥 ABC-DEF와 큰 삼각기둥 A′B′C′-D′E′F′의 주어진 치수. 작은 윗변 AC의 길이 10/3cm는 해설 본문에서 계산한다.",
+  "sourceConditions": [
+    {
+      "id": "solution",
+      "condition": "두 삼각기둥의 닮음비 2:3, 작은 AC=10/3cm와 큰 D′E′=3cm.",
+      "mappedTo": "dims"
+    }
+  ],
+  "newVisualInformation": [
+    "두 기둥의 닮음비와 D′E′=3cm를 그림에 나타내고, AC=10/3cm는 본문에서 풀이한다."
+  ]
+}
