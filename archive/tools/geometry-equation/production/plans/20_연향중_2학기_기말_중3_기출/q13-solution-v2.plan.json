@@ -1,0 +1,851 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "AL",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "-1",
+            "denominator": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "AR",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "15"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "-1",
+            "denominator": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "AT",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "15"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "1",
+            "denominator": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "AB",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "1",
+            "denominator": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-1"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "BL",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "-5",
+            "denominator": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "BR",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "-5",
+            "denominator": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "BT",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "-3",
+            "denominator": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "BB",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "-3",
+            "denominator": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-1"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "CL",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "-9",
+            "denominator": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "CR",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "-9",
+            "denominator": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "CT",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "-7",
+            "denominator": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "CB",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "-7",
+            "denominator": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-1"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "DL",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "-13",
+            "denominator": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "DR",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "-13",
+            "denominator": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "DT",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "-11",
+            "denominator": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "DB",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "-11",
+            "denominator": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-1"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "EL",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "-17",
+            "denominator": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ER",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "11"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "-17",
+            "denominator": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ET",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "11"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "-15",
+            "denominator": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "EB",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "-15",
+            "denominator": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-1"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Z0",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-10"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Z1",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 540
+  },
+  "displayLines": [],
+  "displayPoints": [
+    "AL",
+    "AR",
+    "AT",
+    "AB",
+    "A",
+    "BL",
+    "BR",
+    "BT",
+    "BB",
+    "B",
+    "CL",
+    "CR",
+    "CT",
+    "CB",
+    "C",
+    "DL",
+    "DR",
+    "DT",
+    "DB",
+    "D",
+    "EL",
+    "ER",
+    "ET",
+    "EB",
+    "E",
+    "Z0",
+    "Z1"
+  ],
+  "hiddenPointNames": ["AL", "AR", "AT", "AB", "BL", "BR", "BT", "BB", "CL", "CR", "CT", "CB", "DL", "DR", "DT", "DB", "EL", "ER", "ET", "EB", "Z0", "Z1"],
+  "displaySegments": [
+    {
+      "id": "barA",
+      "refs": [
+        "AL",
+        "AR"
+      ]
+    },
+    {
+      "id": "endA",
+      "refs": [
+        "AR",
+        "AT"
+      ]
+    },
+    {
+      "id": "topA",
+      "refs": [
+        "AT",
+        "AB"
+      ]
+    },
+    {
+      "id": "startA",
+      "refs": [
+        "AB",
+        "AL"
+      ]
+    },
+    {
+      "id": "barB",
+      "refs": [
+        "BL",
+        "BR"
+      ]
+    },
+    {
+      "id": "endB",
+      "refs": [
+        "BR",
+        "BT"
+      ]
+    },
+    {
+      "id": "topB",
+      "refs": [
+        "BT",
+        "BB"
+      ]
+    },
+    {
+      "id": "startB",
+      "refs": [
+        "BB",
+        "BL"
+      ]
+    },
+    {
+      "id": "barC",
+      "refs": [
+        "CL",
+        "CR"
+      ]
+    },
+    {
+      "id": "endC",
+      "refs": [
+        "CR",
+        "CT"
+      ]
+    },
+    {
+      "id": "topC",
+      "refs": [
+        "CT",
+        "CB"
+      ]
+    },
+    {
+      "id": "startC",
+      "refs": [
+        "CB",
+        "CL"
+      ]
+    },
+    {
+      "id": "barD",
+      "refs": [
+        "DL",
+        "DR"
+      ]
+    },
+    {
+      "id": "endD",
+      "refs": [
+        "DR",
+        "DT"
+      ]
+    },
+    {
+      "id": "topD",
+      "refs": [
+        "DT",
+        "DB"
+      ]
+    },
+    {
+      "id": "startD",
+      "refs": [
+        "DB",
+        "DL"
+      ]
+    },
+    {
+      "id": "barE",
+      "refs": [
+        "EL",
+        "ER"
+      ]
+    },
+    {
+      "id": "endE",
+      "refs": [
+        "ER",
+        "ET"
+      ]
+    },
+    {
+      "id": "topE",
+      "refs": [
+        "ET",
+        "EB"
+      ]
+    },
+    {
+      "id": "startE",
+      "refs": [
+        "EB",
+        "EL"
+      ]
+    },
+    {
+      "id": "zeroAxis",
+      "refs": [
+        "Z0",
+        "Z1"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "regions": [
+      {
+        "id": "fillA",
+        "fill": "BLUE",
+        "shapes": [
+          {
+            "polygon": [
+              "AL",
+              "AR",
+              "AT",
+              "AB"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "fillB",
+        "fill": "WARM",
+        "shapes": [
+          {
+            "polygon": [
+              "BL",
+              "BR",
+              "BT",
+              "BB"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "fillC",
+        "fill": "WARM",
+        "shapes": [
+          {
+            "polygon": [
+              "CL",
+              "CR",
+              "CT",
+              "CB"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "fillD",
+        "fill": "WARM",
+        "shapes": [
+          {
+            "polygon": [
+              "DL",
+              "DR",
+              "DT",
+              "DB"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "fillE",
+        "fill": "BLUE",
+        "shapes": [
+          {
+            "polygon": [
+              "EL",
+              "ER",
+              "ET",
+              "EB"
+            ]
+          }
+        ]
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "valueA",
+        "ownerSegment": "topA",
+        "text": "7",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "valueB",
+        "ownerSegment": "topB",
+        "text": "-2",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "valueC",
+        "ownerSegment": "topC",
+        "text": "-2",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "valueD",
+        "ownerSegment": "topD",
+        "text": "-6",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "valueE",
+        "ownerSegment": "topE",
+        "text": "3",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "환자 A~E의 편차: 0선을 기준으로 오른쪽은 양(파랑), 왼쪽은 음(주황)이다. A=+7, B=−2, C=−2, D=−6, E=+3 (분).",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "평균 12분, A=7, B=-2, C는 미지값, D=-6, E=3이며 편차 합은 0이다.",
+      "mappedTo": [
+        "mathPlan",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "편차의 부호·크기를 기준선과 5개 가로 막대의 방향·길이로 대응시킨다. C의 값은 해설 도식에서 -2로 완성한다."
+  ]
+}

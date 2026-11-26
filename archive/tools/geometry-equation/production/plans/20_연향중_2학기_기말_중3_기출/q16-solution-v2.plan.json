@@ -1,0 +1,277 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "양의 상관관계"
+      },
+      "plan": {
+        "capability": "stat-chart-figure-v1",
+        "chart": {
+          "kind": "SCATTER",
+          "points": [
+            {
+              "x": 1,
+              "y": 1
+            },
+            {
+              "x": 2,
+              "y": 2
+            },
+            {
+              "x": 3,
+              "y": 2
+            },
+            {
+              "x": 4,
+              "y": 4
+            },
+            {
+              "x": 5,
+              "y": 4
+            },
+            {
+              "x": 6,
+              "y": 6
+            },
+            {
+              "x": 7,
+              "y": 6
+            },
+            {
+              "x": 8,
+              "y": 8
+            },
+            {
+              "x": 9,
+              "y": 8
+            }
+          ],
+          "xRange": [
+            "0",
+            "10"
+          ],
+          "yRange": [
+            "0",
+            "10"
+          ],
+          "xStep": "5",
+          "yStep": "5",
+          "xTitle": "x",
+          "yTitle": "y",
+          "grid": true,
+          "equalUnits": true,
+          "trendArrow": {
+            "direction": "UP"
+          }
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "음의 상관관계"
+      },
+      "plan": {
+        "capability": "stat-chart-figure-v1",
+        "chart": {
+          "kind": "SCATTER",
+          "points": [
+            {
+              "x": 1,
+              "y": 9
+            },
+            {
+              "x": 2,
+              "y": 8
+            },
+            {
+              "x": 3,
+              "y": 8
+            },
+            {
+              "x": 4,
+              "y": 6
+            },
+            {
+              "x": 5,
+              "y": 6
+            },
+            {
+              "x": 6,
+              "y": 4
+            },
+            {
+              "x": 7,
+              "y": 4
+            },
+            {
+              "x": 8,
+              "y": 2
+            },
+            {
+              "x": 9,
+              "y": 1
+            }
+          ],
+          "xRange": [
+            "0",
+            "10"
+          ],
+          "yRange": [
+            "0",
+            "10"
+          ],
+          "xStep": "5",
+          "yStep": "5",
+          "xTitle": "x",
+          "yTitle": "y",
+          "grid": true,
+          "equalUnits": true,
+          "trendArrow": {
+            "direction": "DOWN"
+          }
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "상관관계 없음"
+      },
+      "plan": {
+        "capability": "stat-chart-figure-v1",
+        "chart": {
+          "kind": "SCATTER",
+          "points": [
+            {
+              "x": 1,
+              "y": 5
+            },
+            {
+              "x": 2,
+              "y": 8
+            },
+            {
+              "x": 3,
+              "y": 2
+            },
+            {
+              "x": 4,
+              "y": 7
+            },
+            {
+              "x": 5,
+              "y": 4
+            },
+            {
+              "x": 6,
+              "y": 9
+            },
+            {
+              "x": 7,
+              "y": 3
+            },
+            {
+              "x": 8,
+              "y": 6
+            },
+            {
+              "x": 9,
+              "y": 5
+            }
+          ],
+          "xRange": [
+            "0",
+            "10"
+          ],
+          "yRange": [
+            "0",
+            "10"
+          ],
+          "xStep": "5",
+          "yStep": "5",
+          "xTitle": "x",
+          "yTitle": "y",
+          "grid": true,
+          "equalUnits": true
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "수평에 가까운 직선"
+      },
+      "plan": {
+        "capability": "stat-chart-figure-v1",
+        "chart": {
+          "kind": "SCATTER",
+          "points": [
+            {
+              "x": 1,
+              "y": 5
+            },
+            {
+              "x": 2,
+              "y": 5
+            },
+            {
+              "x": 3,
+              "y": 6
+            },
+            {
+              "x": 4,
+              "y": 5
+            },
+            {
+              "x": 5,
+              "y": 5
+            },
+            {
+              "x": 6,
+              "y": 6
+            },
+            {
+              "x": 7,
+              "y": 5
+            },
+            {
+              "x": 8,
+              "y": 5
+            },
+            {
+              "x": 9,
+              "y": 6
+            }
+          ],
+          "xRange": [
+            "0",
+            "10"
+          ],
+          "yRange": [
+            "0",
+            "10"
+          ],
+          "xStep": "5",
+          "yStep": "5",
+          "xTitle": "x",
+          "yTitle": "y",
+          "grid": true,
+          "equalUnits": true
+        }
+      }
+    }
+  ],
+  "caption": "점들의 모양에 따라 양의 상관관계, 음의 상관관계, 상관관계 없음을 비교하는 산점도 예시 네 가지이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "산점도에서 점들이 한 직선에 가까이 모일수록 상관관계가 강하고, 기울기가 양수이면 양의 상관관계이다.",
+      "mappedTo": [
+        "panels",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "점들이 오른쪽 위·오른쪽 아래·흩어진 모양·수평에 가까운 모양일 때의 상관관계 차이를 나란히 보인다."
+  ]
+}
