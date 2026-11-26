@@ -42,7 +42,11 @@ window.questionBank = [
     "decisiveStep": "1/7+1/BF=1/5에서 1/BF=2/35이므로 BD=BF=35/2",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "image": "assets/images/기하_010_포물선의정의의활용-초점을지나는직선이주_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "y²=20x의 초점 현 AB에서 준선 l로 내린 수선 AC=7, BD는 미지수",
+    "imageCaption": "y²=20x의 초점 현 AB에서 준선 l로 내린 수선 AC=7, BD는 미지수",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -89,7 +93,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_POSITIVE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_010_포물선의정의의활용-초점을지나는직선이주_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "초점 현 AB와 y축에 내린 두 수선 AC=9, BD가 이루는 사다리꼴 CDBA, AF=12",
+    "imageCaption": "초점 현 AB와 y축에 내린 두 수선 AC=9, BD가 이루는 사다리꼴 CDBA, AF=12",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -132,7 +140,11 @@ window.questionBank = [
     "decisiveStep": "5/(6k)=1/4에서 k=10/3이므로 AB=3k+2k=5k=50/3",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "image": "assets/images/기하_010_포물선의정의의활용-초점을지나는직선이주_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "포물선 y²=16x의 초점을 지나는 현 AB에서 AF:BF=3:2",
+    "imageCaption": "포물선 y²=16x의 초점을 지나는 현 AB에서 AF:BF=3:2",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -178,7 +190,11 @@ window.questionBank = [
       "CC_REFLECTION"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_010_포물선의정의의활용-초점을지나는직선이주_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "y²=16x 위 사다리꼴 ABCD의 두 세로변 AB,CD와 초점 F에서 교차하는 두 대각선. DF=12.",
+    "imageCaption": "y²=16x 위 사다리꼴 ABCD의 두 세로변 AB,CD와 초점 F에서 교차하는 두 대각선. DF=12.",
+    "imageSize": "full"
   },
   {
     "id": 5,

@@ -86,7 +86,11 @@ window.questionBank = [
       "CC_PYTHAGOREAN"
     ],
     "conditionKeys": [],
-    "integrationPattern": "REINTERPRETATION"
+    "integrationPattern": "REINTERPRETATION",
+    "image": "assets/images/기하_018_타원의넓이의최댓값구하기_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "가로 밑변 AB=10 위쪽에 움직이는 점 P를 잡아 만든 삼각형 PAB의 한 대표 배치",
+    "imageCaption": "가로 밑변 AB=10 위쪽에 움직이는 점 P를 잡아 만든 삼각형 PAB의 한 대표 배치",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -129,6 +133,10 @@ window.questionBank = [
       "CC_TRIANGLE_AREA"
     ],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "image": "assets/images/기하_018_타원의넓이의최댓값구하기_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "가로 장축의 타원형 광장과 좌·우 초점 F′,F 사이 거리 10m, 둘레의 대표점 P를 두 조형물에 연결한 삼각형",
+    "imageCaption": "가로 장축의 타원형 광장과 좌·우 초점 F′,F 사이 거리 10m, 둘레의 대표점 P를 두 조형물에 연결한 삼각형",
+    "imageSize": "full"
   }
 ];

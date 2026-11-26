@@ -167,7 +167,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RANGE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_016_타원의초점의좌표장축단축의길이_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "중심 O와 세로축 위 두 초점 F, F′를 갖는 타원에서 제1사분면의 점 P와 두 초점을 이은 삼각형 PFF′",
+    "imageCaption": "중심 O와 세로축 위 두 초점 F, F′를 갖는 타원에서 제1사분면의 점 P와 두 초점을 이은 삼각형 PFF′",
+    "imageSize": "full"
   },
   {
     "id": 5,

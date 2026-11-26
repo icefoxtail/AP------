@@ -47,7 +47,11 @@ window.questionBank = [
       "COND_INEQUALITY_CONSTRAINT",
       "COND_RESTRICTED_INTERVAL"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_013_두포물선이이루는선분의길이_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "꼭짓점 A(-2,0), B(11,0)에서 서로 마주 보는 두 포물선 C₁,C₂가 초점 F를 공유하고 수평선 위 P,Q를 만든다.",
+    "imageCaption": "꼭짓점 A(-2,0), B(11,0)에서 서로 마주 보는 두 포물선 C₁,C₂가 초점 F를 공유하고 수평선 위 P,Q를 만든다.",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -95,7 +99,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_POSITIVE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_013_두포물선이이루는선분의길이_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "원점 O에서 좌우로 열린 두 포물선 y²=4px, y²=−8px, 수평선 위 P,Q와 PQ=6, OP=PF",
+    "imageCaption": "원점 O에서 좌우로 열린 두 포물선 y²=4px, y²=−8px, 수평선 위 P,Q와 PQ=6, OP=PF",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -189,7 +197,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_INEQUALITY_CONSTRAINT"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_013_두포물선이이루는선분의길이_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "두 포물선 y²=8(x+3), y²=−8(x−4) 위에서 각 초점을 지나는 AB,CD와 수평 AD,BC로 만든 사각형",
+    "imageCaption": "두 포물선 y²=8(x+3), y²=−8(x−4) 위에서 각 초점을 지나는 AB,CD와 수평 AD,BC로 만든 사각형",
+    "imageSize": "full"
   },
   {
     "id": 5,

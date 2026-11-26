@@ -42,7 +42,11 @@ window.questionBank = [
       "CC_REFLECTION"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_025_타원의정의의활용-타원위의점에서두초점까_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "x²/36+y²/20=1 위쪽 반타원의 여섯 점 P₁∼P₆과 4등분 위치의 수직 보조선 및 양의 초점 F를 잇는 여섯 선분",
+    "imageCaption": "x²/36+y²/20=1 위쪽 반타원의 여섯 점 P₁∼P₆과 4등분 위치의 수직 보조선 및 양의 초점 F를 잇는 여섯 선분",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -83,7 +87,11 @@ window.questionBank = [
     "templateKey": "TPL_GEO_ELLIPSE_FOCAL",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "image": "assets/images/기하_025_타원의정의의활용-타원위의점에서두초점까_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "타원 x²/25+y²/16=1 위 네 점 A·B·C·D와 양의 초점 F를 잇는 네 거리 선분",
+    "imageCaption": "타원 x²/25+y²/16=1 위 네 점 A·B·C·D와 양의 초점 F를 잇는 네 거리 선분",
+    "imageSize": "full"
   },
   {
     "id": 3,

@@ -86,7 +86,11 @@ window.questionBank = [
       "CC_LINE_INTERCEPT_EQUATION"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_021_타원의정의의활용-장축의성질_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "장축이 y축인 타원, 두 점 A(2,0), F(0,3)을 지나는 직선 y=−3x/2+3",
+    "imageCaption": "장축이 y축인 타원, 두 점 A(2,0), F(0,3)을 지나는 직선 y=−3x/2+3",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -131,6 +135,10 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RANGE"
     ],
-    "integrationPattern": "INTERDEPENDENT"
+    "integrationPattern": "INTERDEPENDENT",
+    "image": "assets/images/기하_021_타원의정의의활용-장축의성질_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "타원에 내접한 직각이등변삼각형 ABC, A는 양의 y축, 두 초점 F′,F는 각각 AB,AC 위에 있고 BC는 x축 아래의 수평변",
+    "imageCaption": "타원에 내접한 직각이등변삼각형 ABC, A는 양의 y축, 두 초점 F′,F는 각각 AB,AC 위에 있고 BC는 x축 아래의 수평변",
+    "imageSize": "full"
   }
 ];

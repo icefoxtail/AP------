@@ -45,7 +45,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RANGE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_024_타원의정의의활용-삼각형의둘레의길이와장_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "y축 장축 타원의 두 꼭짓점 A·B와 두 초점 F·F′를 같은 밑변 축에 두고 제1사분면 점 P로 잇는 넓이 비교 그림",
+    "imageCaption": "y축 장축 타원의 두 꼭짓점 A·B와 두 초점 F·F′를 같은 밑변 축에 두고 제1사분면 점 P로 잇는 넓이 비교 그림",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -133,6 +137,10 @@ window.questionBank = [
       "CC_TRIANGLE_AREA_TRIG"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_024_타원의정의의활용-삼각형의둘레의길이와장_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "장축이 x축인 타원에서 음의 꼭짓점 A, 양의 y축 교점 B, 양의 초점 F를 이은 삼각형 AFB",
+    "imageCaption": "장축이 x축인 타원에서 음의 꼭짓점 A, 양의 y축 교점 B, 양의 초점 F를 이은 삼각형 AFB",
+    "imageSize": "full"
   }
 ];

@@ -42,7 +42,11 @@ window.questionBank = [
     "decisiveStep": "$4^2=16x$에서 $x=1$이므로 $\\mathrm{P}(1,4)$, $a+b=1+4=5$",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "image": "assets/images/기하_012_포물선의정의의활용-선분의길이의합의최단_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "y²=16x 위에서 움직이는 P와 고정된 F(4,0), A(5,4)의 거리 합 PF+PA",
+    "imageCaption": "y²=16x 위에서 움직이는 P와 고정된 F(4,0), A(5,4)의 거리 합 PF+PA",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -85,7 +89,11 @@ window.questionBank = [
     "decisiveStep": "$\\mathrm{H}'(-3,2)$이므로 $\\overline{\\mathrm{AH}'}=6-(-3)=9$가 최솟값",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "image": "assets/images/기하_012_포물선의정의의활용-선분의길이의합의최단_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "y²=12x와 고정 초점 F(3,0), A(6,2), 가변점 P에서 FP+AP의 최솟값",
+    "imageCaption": "y²=12x와 고정 초점 F(3,0), A(6,2), 가변점 P에서 FP+AP의 최솟값",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -175,7 +183,11 @@ window.questionBank = [
       "CC_TRIANGLE_AREA"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_012_포물선의정의의활용-선분의길이의합의최단_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "y²=8x 위의 P와 F(2,0), A(5,2)의 삼각형 AFP의 최소 둘레 배치",
+    "imageCaption": "y²=8x 위의 P와 F(2,0), A(5,2)의 삼각형 AFP의 최소 둘레 배치",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -220,7 +232,11 @@ window.questionBank = [
       "CC_DISTANCE_TWO_POINTS"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_012_포물선의정의의활용-선분의길이의합의최단_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "y²=12x의 준선 x=-3과 바깥 점 Q(9,12), 선분 QF가 만나는 포물선 점 P",
+    "imageCaption": "y²=12x의 준선 x=-3과 바깥 점 Q(9,12), 선분 QF가 만나는 포물선 점 P",
+    "imageSize": "full"
   },
   {
     "id": 6,
@@ -265,6 +281,10 @@ window.questionBank = [
       "CC_POINT_LINE_DISTANCE"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_012_포물선의정의의활용-선분의길이의합의최단_고2_유형은행1/q6-problem.svg",
+    "imageAlt": "x²=6y의 초점 F를 지나는 현 RS와 직선 y=3의 P,Q가 만드는 PR+RS+SQ 경로",
+    "imageCaption": "x²=6y의 초점 F를 지나는 현 RS와 직선 y=3의 P,Q가 만드는 PR+RS+SQ 경로",
+    "imageSize": "full"
   }
 ];

@@ -42,7 +42,11 @@ window.questionBank = [
       "CC_PERPENDICULAR_BISECTOR"
     ],
     "conditionKeys": [],
-    "integrationPattern": "INTERDEPENDENT"
+    "integrationPattern": "INTERDEPENDENT",
+    "image": "assets/images/기하_027_타원의정의의활용-중점연결정리_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "타원의 초점 F(5,0), F′(-5,0)과 제2사분면 P, PF′의 중점 H에 내린 수선 OH를 나타낸 도형",
+    "imageCaption": "타원의 초점 F(5,0), F′(-5,0)과 제2사분면 P, PF′의 중점 H에 내린 수선 OH를 나타낸 도형",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -86,7 +90,11 @@ window.questionBank = [
       "CC_PYTHAGOREAN"
     ],
     "conditionKeys": [],
-    "integrationPattern": "INTERDEPENDENT"
+    "integrationPattern": "INTERDEPENDENT",
+    "image": "assets/images/기하_027_타원의정의의활용-중점연결정리_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "타원의 두 초점 F(4,0), F′(-4,0)과 제1사분면 P, 두 수선의 발 H·I로 이루어진 직사각형 OHPI",
+    "imageCaption": "타원의 두 초점 F(4,0), F′(-4,0)과 제1사분면 P, 두 수선의 발 H·I로 이루어진 직사각형 OHPI",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -129,6 +137,10 @@ window.questionBank = [
       "CC_PERPENDICULAR_BISECTOR"
     ],
     "conditionKeys": [],
-    "integrationPattern": "INTERDEPENDENT"
+    "integrationPattern": "INTERDEPENDENT",
+    "image": "assets/images/기하_027_타원의정의의활용-중점연결정리_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "초점 F(6,0), F′(-6,0)인 타원과 위쪽 P·아래쪽 Q에서의 중점 수선 OH·OI",
+    "imageCaption": "초점 F(6,0), F′(-6,0)인 타원과 위쪽 P·아래쪽 Q에서의 중점 수선 OH·OI",
+    "imageSize": "full"
   }
 ];
