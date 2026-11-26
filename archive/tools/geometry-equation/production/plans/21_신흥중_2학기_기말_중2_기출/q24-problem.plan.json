@@ -1,0 +1,139 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "iso",
+        "count": 1,
+        "segments": [
+          "sAB",
+          "sCA"
+        ]
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "baseLength",
+        "from": "B",
+        "to": "C",
+        "label": "10",
+        "side": "BELOW",
+        "unit": "cm"
+      }
+    ]
+  },
+  "rightAngles": [],
+  "caption": "AB와 AC가 같은 이등변삼각형 ABC이고 밑변 BC의 길이는 10 cm이다.",
+  "accessibilityDescription": "AB와 AC가 같은 이등변삼각형 ABC이고 밑변 BC의 길이는 10 cm이다.",
+  "sourceConditions": [
+    {
+      "id": "sourceGeometry",
+      "condition": "AB=AC, BC=10 cm, △ABC의 넓이 60 cm²는 발문에 주어짐",
+      "mappedTo": [
+        "displaySegments[0]",
+        "displaySegments[1]",
+        "displaySegments[2]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "문제 그림에 답인 AB의 수치나 해설용 높이 AD를 넣지 않는다."
+  ]
+}

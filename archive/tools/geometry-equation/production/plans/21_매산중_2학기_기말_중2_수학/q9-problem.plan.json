@@ -1,0 +1,228 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "16"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "28"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "28"
+            },
+            {
+              "kind": "integer",
+              "value": "16"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "E",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "sEC",
+      "refs": [
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "sED",
+      "refs": [
+        "E",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "d1",
+        "from": "A",
+        "to": "B",
+        "label": "12",
+        "side": "LEFT",
+        "style": "ARROW",
+        "offset": "AUTO"
+      },
+      {
+        "id": "d2",
+        "from": "C",
+        "to": "D",
+        "label": "16",
+        "side": "RIGHT",
+        "style": "ARROW",
+        "offset": "AUTO"
+      }
+    ]
+  },
+  "caption": "△ABE≡△ECD, B,E,C 공선, AB=12 cm, CD=16 cm을 보이는 문제용 도형.",
+  "coordinateCanvas": {
+    "width": 384,
+    "height": 320
+  },
+  "rightAngles": [
+    {
+      "id": "ra0",
+      "refs": [
+        "A",
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "ra1",
+      "refs": [
+        "E",
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "accessibilityDescription": "△ABE≡△ECD, B,E,C 공선, AB=12 cm, CD=16 cm. 점·선분·각 표식은 주어진 그림에 대응하고 해설에서만 얻는 값은 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "sourceFigure",
+      "condition": "△ABE≡△ECD, B,E,C 공선, AB=12 cm, CD=16 cm",
+      "mappedTo": [
+        "planeMarks.dimensions[0]",
+        "planeMarks.dimensions[1]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "문제 원문·스캔 원본의 필수 선분, 점, 길이, 표식을 표현한다.",
+    "해설에서 유도한 답/보조선은 문제 그림에 넣지 않으며 원본에 필요 없는 면색을 제거한다."
+  ]
+}
