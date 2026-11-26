@@ -1,0 +1,96 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": { "text": "① 두 쌍의 대변 길이" },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": { "schemaVersion": "construction-spike-v1", "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false }, "nodes": [
+          { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+          { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "6" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+          { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "rational", "numerator": "84", "denominator": "10" }, { "kind": "rational", "numerator": "32", "denominator": "10" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+          { "id": "D", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "rational", "numerator": "24", "denominator": "10" }, { "kind": "rational", "numerator": "32", "denominator": "10" }] }, "outputType": "POINT", "factRole": "GIVEN" }
+        ] },
+        "coordinateCanvas": { "width": 384, "height": 320 }, "displayPoints": ["A", "B", "C", "D"], "hiddenPointNames": ["A", "B", "C", "D"], "hiddenPointStyle": "NONE",
+        "displaySegments": [{ "id": "sAB", "refs": ["A", "B"] }, { "id": "sBC", "refs": ["B", "C"] }, { "id": "sCD", "refs": ["C", "D"] }, { "id": "sDA", "refs": ["D", "A"] }],
+        "planeMarks": { "expressionLabels": [{ "id": "tAB", "ownerSegment": "sAB", "text": "6" }, { "id": "tCD", "ownerSegment": "sCD", "text": "6" }, { "id": "tBC", "ownerSegment": "sBC", "text": "4" }, { "id": "tDA", "ownerSegment": "sDA", "text": "4" }] }
+      }
+    },
+    {
+      "caption": { "text": "② 두 쌍의 엇각" },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": { "schemaVersion": "construction-spike-v1", "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false }, "nodes": [
+          { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+          { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "10" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+          { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "rational", "numerator": "10994739352694", "denominator": "1000000000000" }, { "kind": "rational", "numerator": "4001757857896", "denominator": "1000000000000" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+          { "id": "D", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "rational", "numerator": "994739352694", "denominator": "1000000000000" }, { "kind": "rational", "numerator": "4001757857896", "denominator": "1000000000000" }] }, "outputType": "POINT", "factRole": "GIVEN" }
+        ] },
+        "coordinateCanvas": { "width": 384, "height": 320 }, "displayPoints": ["A", "B", "C", "D"], "hiddenPointNames": ["A", "B", "C", "D"], "hiddenPointStyle": "NONE",
+        "displaySegments": [{ "id": "sAB", "refs": ["A", "B"] }, { "id": "sBC", "refs": ["B", "C"] }, { "id": "sCD", "refs": ["C", "D"] }, { "id": "sDA", "refs": ["D", "A"] }, { "id": "sAC", "refs": ["A", "C"] }, { "id": "sDB", "refs": ["D", "B"] }],
+        "planeMarks": { "angles": [
+          { "id": "aA20", "refs": ["B", "A", "C"], "value": 20, "label": "20", "style": "ARC" },
+          { "id": "aC20", "refs": ["D", "C", "A"], "value": 20, "label": "20", "style": "ARC" },
+          { "id": "aD80", "refs": ["A", "D", "B"], "value": 80, "label": "80", "style": "ARC" },
+          { "id": "aB80", "refs": ["D", "B", "C"], "value": 80, "label": "80", "style": "ARC" }
+        ] }
+      }
+    },
+    {
+      "caption": { "text": "③ 대각선의 반쪽 길이" },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": { "schemaVersion": "construction-spike-v1", "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false }, "nodes": [
+          { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "4" }, { "kind": "integer", "value": "3" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+          { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+          { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "rational", "numerator": "6645751311065", "denominator": "1000000000000" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+          { "id": "D", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "rational", "numerator": "10645751311065", "denominator": "1000000000000" }, { "kind": "integer", "value": "3" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+          { "id": "O", "op": "MIDPOINT", "inputs": ["A", "C"], "args": {}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" }
+        ] },
+        "coordinateCanvas": { "width": 384, "height": 320 }, "displayPoints": ["A", "B", "C", "D", "O"], "hiddenPointNames": ["A", "B", "C", "D", "O"], "hiddenPointStyle": "NONE",
+        "displaySegments": [{ "id": "sAB", "refs": ["A", "B"] }, { "id": "sBC", "refs": ["B", "C"] }, { "id": "sCD", "refs": ["C", "D"] }, { "id": "sDA", "refs": ["D", "A"] }, { "id": "sAO", "refs": ["A", "O"] }, { "id": "sOC", "refs": ["O", "C"] }, { "id": "sBO", "refs": ["B", "O"] }, { "id": "sOD", "refs": ["O", "D"] }],
+        "planeMarks": { "expressionLabels": [{ "id": "lAB", "ownerSegment": "sAB", "text": "5" }, { "id": "lCD", "ownerSegment": "sCD", "text": "5" }, { "id": "lAO", "ownerSegment": "sAO", "text": "2" }, { "id": "lOC", "ownerSegment": "sOC", "text": "2" }] }
+      }
+    },
+    {
+      "caption": { "text": "④ 같은 대변과 엇각" },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": { "schemaVersion": "construction-spike-v1", "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false }, "nodes": [
+          { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "3" }, { "kind": "rational", "numerator": "5196152422707", "denominator": "1000000000000" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+          { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+          { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "rational", "numerator": "7360089581434", "denominator": "1000000000000" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+          { "id": "D", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "rational", "numerator": "10360089581434", "denominator": "1000000000000" }, { "kind": "rational", "numerator": "5196152422707", "denominator": "1000000000000" }] }, "outputType": "POINT", "factRole": "GIVEN" }
+        ] },
+        "coordinateCanvas": { "width": 384, "height": 320 }, "displayPoints": ["A", "B", "C", "D"], "hiddenPointNames": ["A", "B", "C", "D"], "hiddenPointStyle": "NONE",
+        "displaySegments": [{ "id": "sAB", "refs": ["A", "B"] }, { "id": "sBC", "refs": ["B", "C"] }, { "id": "sCD", "refs": ["C", "D"] }, { "id": "sDA", "refs": ["D", "A"] }, { "id": "sAC", "refs": ["A", "C"] }],
+        "planeMarks": { "expressionLabels": [{ "id": "lAB", "ownerSegment": "sAB", "text": "6" }, { "id": "lCD", "ownerSegment": "sCD", "text": "6" }], "angles": [{ "id": "aA70", "refs": ["B", "A", "C"], "value": 70, "label": "70", "style": "ARC" }, { "id": "aC70", "refs": ["A", "C", "D"], "value": 70, "label": "70", "style": "ARC" }] }
+      }
+    },
+    {
+      "caption": { "text": "⑤ 이웃한 두 각만 주어짐" },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": { "schemaVersion": "construction-spike-v1", "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false }, "nodes": [
+          { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+          { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "8" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+          { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "11" }, { "kind": "rational", "numerator": "4284444020226", "denominator": "1000000000000" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+          { "id": "D", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "2" }, { "kind": "rational", "numerator": "2856296013484", "denominator": "1000000000000" }] }, "outputType": "POINT", "factRole": "GIVEN" }
+        ] },
+        "coordinateCanvas": { "width": 384, "height": 320 }, "displayPoints": ["A", "B", "C", "D"], "hiddenPointNames": ["A", "B", "C", "D"], "hiddenPointStyle": "NONE",
+        "displaySegments": [{ "id": "sAB", "refs": ["A", "B"] }, { "id": "sBC", "refs": ["B", "C"] }, { "id": "sCD", "refs": ["C", "D"] }, { "id": "sDA", "refs": ["D", "A"] }],
+        "planeMarks": { "angles": [{ "id": "aA55", "refs": ["D", "A", "B"], "value": 55, "label": "55", "style": "ARC" }, { "id": "aB125", "refs": ["A", "B", "C"], "value": 125, "label": "125", "style": "ARC" }] }
+      }
+    }
+  ],
+  "caption": "평행사변형 조건을 조사하는 ①~⑤ 다섯 사각형의 원문 그림",
+  "accessibilityDescription": "① 맞은편 변 6과 6, 4와 4. ② 엇각 20도 두 곳과 80도 두 곳. ③ 대변의 길이 5 두 곳과 한 대각선의 양쪽 길이 2. ④ 맞은편 변의 길이 6과 엇각 70도 두 곳. ⑤ 이웃한 두 각 55도와 125도만 보인다. 각 사각형은 배경 없이 검은 윤곽으로 그린다.",
+  "sourceConditions": [
+    { "id": "choice1", "condition": "① 서로 마주 보는 두 쌍의 대변에 6,6과 4,4 표시", "mappedTo": "panels:0.planeMarks.expressionLabels:tAB,tCD,tBC,tDA" },
+    { "id": "choice2", "condition": "② 교차하는 대각선과 20° 두 곳, 80° 두 곳의 엇각", "mappedTo": "panels:1.displaySegments:sAC,sDB;panels:1.planeMarks.angles:aA20,aC20,aD80,aB80" },
+    { "id": "choice3", "condition": "③ 마주 보는 변 5,5와 대각선의 두 구간 2,2", "mappedTo": "panels:2.planeMarks.expressionLabels:lAB,lCD,lAO,lOC" },
+    { "id": "choice4", "condition": "④ 마주 보는 변 6,6과 대각선에서 생기는 70° 두 곳", "mappedTo": "panels:3.planeMarks.expressionLabels:lAB,lCD;panels:3.planeMarks.angles:aA70,aC70" },
+    { "id": "choice5", "condition": "⑤ 이웃한 두 내각 55°,125°만 주어져 다른 쌍의 대변 평행은 확정할 수 없다", "mappedTo": "panels:4.planeMarks.angles:aA55,aB125" }
+  ],
+  "newVisualInformation": ["다섯 선택지의 주어진 길이·엇각·대각선은 각각 실제 선분·각·숫자 라벨 필드에 대응한다.", "회색 카드 배경과 연한 면 채움 없이 흰 바탕과 선으로만 그린다. ⑤는 두 쌍이 모두 평행하다고 오인하지 않도록 비평행 사각형을 표시한다."]
+}
