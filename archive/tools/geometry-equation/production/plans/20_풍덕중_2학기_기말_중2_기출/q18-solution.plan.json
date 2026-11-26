@@ -48,19 +48,21 @@
       },
       {
         "id": "P0",
-        "op": "TRANSLATE_POINT",
+        "op": "POLAR_POINT",
         "inputs": [
-          "O"
+          "O",
+          "X"
         ],
         "args": {
-          "dx": {
+          "length": {
             "kind": "integer",
             "value": "5"
           },
-          "dy": {
+          "angleDeg": {
             "kind": "integer",
-            "value": "0"
-          }
+            "value": "342"
+          },
+          "turn": "CCW"
         },
         "outputType": "POINT",
         "factRole": "DERIVED_INTERMEDIATE"
@@ -79,7 +81,7 @@
           },
           "angleDeg": {
             "kind": "integer",
-            "value": "36"
+            "value": "18"
           },
           "turn": "CCW"
         },
@@ -100,7 +102,7 @@
           },
           "angleDeg": {
             "kind": "integer",
-            "value": "72"
+            "value": "54"
           },
           "turn": "CCW"
         },
@@ -121,7 +123,7 @@
           },
           "angleDeg": {
             "kind": "integer",
-            "value": "108"
+            "value": "90"
           },
           "turn": "CCW"
         },
@@ -142,7 +144,7 @@
           },
           "angleDeg": {
             "kind": "integer",
-            "value": "144"
+            "value": "126"
           },
           "turn": "CCW"
         },
@@ -163,7 +165,7 @@
           },
           "angleDeg": {
             "kind": "integer",
-            "value": "180"
+            "value": "162"
           },
           "turn": "CCW"
         },
@@ -184,7 +186,7 @@
           },
           "angleDeg": {
             "kind": "integer",
-            "value": "216"
+            "value": "198"
           },
           "turn": "CCW"
         },
@@ -205,7 +207,7 @@
           },
           "angleDeg": {
             "kind": "integer",
-            "value": "252"
+            "value": "234"
           },
           "turn": "CCW"
         },
@@ -226,7 +228,7 @@
           },
           "angleDeg": {
             "kind": "integer",
-            "value": "288"
+            "value": "270"
           },
           "turn": "CCW"
         },
@@ -247,7 +249,7 @@
           },
           "angleDeg": {
             "kind": "integer",
-            "value": "324"
+            "value": "306"
           },
           "turn": "CCW"
         },
@@ -268,6 +270,25 @@
         },
         "outputType": "CIRCLE",
         "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
       }
     ]
   },
@@ -282,7 +303,8 @@
     "P6",
     "P7",
     "P8",
-    "P9"
+    "P9",
+    "T"
   ],
   "displaySegments": [
     {
@@ -354,6 +376,14 @@
         "O",
         "P9"
       ]
+    },
+    {
+      "id": "pointer",
+      "refs": [
+        "O",
+        "T"
+      ],
+      "arrow": "END"
     }
   ],
   "displayCircles": [
@@ -370,10 +400,11 @@
     "P6",
     "P7",
     "P8",
-    "P9"
+    "P9",
+    "T"
   ],
-  "caption": "원판은 크기가 같은 10개의 칸으로 나뉘어 있고 1부터 10까지의 수 중 소수인 칸 2, 3, 5, 7을 색칠했다. 소수는 4개이므로 바늘이 소수를 가리킬 확률은 4/10=2/5이다. 따라서 답은 ③이다.",
-  "accessibilityDescription": "크기가 같은 10개의 부채꼴로 나뉜 원판에서 네 부채꼴이 색칠되어 있고 색칠된 칸에 2, 3, 5, 7이 적혀 있다.",
+  "caption": "원본의 1~10 모든 숫자를 각각 한 부채꼴에 표시하였다. 2, 3, 5, 7 네 칸만 풀이에서 옅게 강조한다. 4/10=2/5.",
+  "accessibilityDescription": "1부터 10까지 모든 숫자가 적힌 10등분 원판에서 소수 2, 3, 5, 7에 해당하는 네 칸만 옅게 강조한 해설 그림.",
   "newVisualInformation": [
     "10개의 같은 칸 중 소수 2, 3, 5, 7의 네 칸이 색칠되어 확률이 4/10임"
   ],
@@ -392,9 +423,8 @@
   "planeMarks": {
     "regions": [
       {
-        "id": "s2",
+        "id": "prime2",
         "fill": "LIGHT",
-        "label": "2",
         "shapes": [
           {
             "sector": {
@@ -407,39 +437,36 @@
         ]
       },
       {
-        "id": "s3",
+        "id": "prime3",
         "fill": "LIGHT",
-        "label": "3",
         "shapes": [
           {
             "sector": {
               "center": "O",
-              "from": "P2",
-              "to": "P3",
+              "from": "P0",
+              "to": "P1",
               "side": "CCW"
             }
           }
         ]
       },
       {
-        "id": "s5",
+        "id": "prime5",
         "fill": "LIGHT",
-        "label": "5",
         "shapes": [
           {
             "sector": {
               "center": "O",
-              "from": "P4",
-              "to": "P5",
+              "from": "P8",
+              "to": "P9",
               "side": "CCW"
             }
           }
         ]
       },
       {
-        "id": "s7",
+        "id": "prime7",
         "fill": "LIGHT",
-        "label": "7",
         "shapes": [
           {
             "sector": {
@@ -450,6 +477,98 @@
             }
           }
         ]
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "sector3",
+        "at": [
+          3.38,
+          0
+        ],
+        "text": "3",
+        "labelKind": "MATH"
+      },
+      {
+        "id": "sector2",
+        "at": [
+          2.7344774409873223,
+          1.9867141527485592
+        ],
+        "text": "2",
+        "labelKind": "MATH"
+      },
+      {
+        "id": "sector1",
+        "at": [
+          1.0444774409873223,
+          3.214571025077619
+        ],
+        "text": "1",
+        "labelKind": "MATH"
+      },
+      {
+        "id": "sector10",
+        "at": [
+          -1.0444774409873219,
+          3.2145710250776194
+        ],
+        "text": "10",
+        "labelKind": "MATH"
+      },
+      {
+        "id": "sector9",
+        "at": [
+          -2.734477440987322,
+          1.9867141527485594
+        ],
+        "text": "9",
+        "labelKind": "MATH"
+      },
+      {
+        "id": "sector8",
+        "at": [
+          -3.38,
+          4.1393061811180535e-16
+        ],
+        "text": "8",
+        "labelKind": "MATH"
+      },
+      {
+        "id": "sector7",
+        "at": [
+          -2.7344774409873223,
+          -1.9867141527485588
+        ],
+        "text": "7",
+        "labelKind": "MATH"
+      },
+      {
+        "id": "sector6",
+        "at": [
+          -1.0444774409873228,
+          -3.214571025077619
+        ],
+        "text": "6",
+        "labelKind": "MATH"
+      },
+      {
+        "id": "sector5",
+        "at": [
+          1.0444774409873216,
+          -3.2145710250776194
+        ],
+        "text": "5",
+        "labelKind": "MATH"
+      },
+      {
+        "id": "sector4",
+        "at": [
+          2.734477440987322,
+          -1.98671415274856
+        ],
+        "text": "4",
+        "labelKind": "MATH"
       }
     ]
   },

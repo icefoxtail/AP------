@@ -1,0 +1,50 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-4",
+          "-2"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -5,
+      3
+    ],
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": "-2",
+        "y": "0"
+      },
+      {
+        "id": "Q",
+        "x": "1",
+        "y": "-6"
+      },
+      {
+        "id": "R",
+        "x": "-3",
+        "y": "2"
+      }
+    ]
+  },
+  "caption": "(-2,0),(1,-6)을 지나는 직선과 그 위의 점 (-3,2).",
+  "accessibilityDescription": "q4 좌표평면의 직선과 원문에 주어진 점 및 절편을 보이는 그래프.",
+  "sourceConditions": [
+    {
+      "id": "original",
+      "condition": "세 점 (a,a+5),(-2,0),(1,-6)이 일직선이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "원문의 점·절편·기울기 관계를 좌표축 위에 정확히 나타낸다."
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-3",
+          "3"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -6,
+      7
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "1",
+        "y": "0"
+      },
+      {
+        "id": "B",
+        "x": "0",
+        "y": "-3"
+      }
+    ],
+    "referenceLines": [
+      {
+        "id": "parallel",
+        "slope": "3",
+        "intercept": "-1",
+        "intersectionX": []
+      }
+    ]
+  },
+  "caption": "원본 직선의 기울기는 3이고 y=(k/2)x-1이 평행하려면 k=6이다.",
+  "accessibilityDescription": "q5 좌표평면의 직선과 원문에 주어진 점 및 절편을 보이는 그래프.",
+  "sourceConditions": [
+    {
+      "id": "original",
+      "condition": "y=(k/2)x-1의 직선이 (1,0),(0,-3)을 지나는 직선과 평행하다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "원문의 점·절편·기울기 관계를 좌표축 위에 정확히 나타낸다."
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "TREE",
+    "root": {
+      "label": "다음 경기",
+      "children": [
+        {
+          "label": "A승",
+          "p": "1/2"
+        },
+        {
+          "label": "B승",
+          "p": "1/2",
+          "children": [
+            {
+              "label": "A승",
+              "p": "1/2"
+            },
+            {
+              "label": "B승",
+              "p": "1/2"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "caption": "A가 2승, B가 1승인 시점에서 A는 다음 경기에 이기면 즉시 우승하고, B가 이기면 마지막 경기를 치른다. A 우승 확률은 1/2+1/4=3/4이다.",
+  "accessibilityDescription": "풍덕중 21번 경우의 수·확률 풀이의 가지를 나타낸 수형도.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "A가 2승 B가 1승인 상황에서 먼저 3승하는 사람에게 상금을 준다.",
+      "mappedTo": "chart"
+    }
+  ],
+  "newVisualInformation": [
+    "모든 경우를 단계별로 나누어 같은 결과를 중복 없이 계산한다."
+  ]
+}

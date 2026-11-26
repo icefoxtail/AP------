@@ -1,0 +1,48 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "1",
+          "-2"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -3,
+      3
+    ],
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": "1/2",
+        "y": "0"
+      }
+    ],
+    "overlays": {
+      "lines": [
+        {
+          "id": "vertical",
+          "x": "1/2"
+        }
+      ]
+    }
+  },
+  "caption": "y=-2x+1 위의 (1/2,0)을 지나고 y축에 평행한 직선 x=1/2.",
+  "accessibilityDescription": "q9 좌표평면의 직선과 원문에 주어진 점 및 절편을 보이는 그래프.",
+  "sourceConditions": [
+    {
+      "id": "original",
+      "condition": "직선 y=-2x+1의 x절편을 지나는 세로선의 방정식을 구한다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "원문의 점·절편·기울기 관계를 좌표축 위에 정확히 나타낸다."
+  ]
+}

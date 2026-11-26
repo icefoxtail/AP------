@@ -1,0 +1,48 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-1",
+          "2"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -6,
+      7
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "0",
+        "y": "-1"
+      }
+    ],
+    "referenceLines": [
+      {
+        "id": "sample",
+        "slope": "2",
+        "intercept": "-3",
+        "intersectionX": []
+      }
+    ]
+  },
+  "caption": "해가 없는 연립방정식의 평행한 직선 두 개를 a=2, b=3인 대표 경우로 비교한다. 일반 조건은 a=2, b≠1이다.",
+  "accessibilityDescription": "q10 좌표평면의 직선과 원문에 주어진 점 및 절편을 보이는 그래프.",
+  "sourceConditions": [
+    {
+      "id": "original",
+      "condition": "ax-y=1과 4x-2y=2b의 해가 없기 위한 조건을 구한다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "원문의 점·절편·기울기 관계를 좌표축 위에 정확히 나타낸다."
+  ]
+}
