@@ -1,0 +1,150 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "C",
+    "B"
+  ],
+  "displayLines": [],
+  "displaySegments": [
+    {
+      "id": "sAB0",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC1",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sCB2",
+      "refs": [
+        "C",
+        "B"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "right0",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lbl0",
+        "ownerSegment": "sAB0",
+        "text": "13"
+      },
+      {
+        "id": "lbl1",
+        "ownerSegment": "sAC1",
+        "text": "12"
+      },
+      {
+        "id": "lbl2",
+        "ownerSegment": "sCB2",
+        "text": "5"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 460
+  },
+  "caption": "5-12-13 직각삼각형에서 B의 대변 AC=12를 강조한다",
+  "accessibilityDescription": "5-12-13 직각삼각형에서 B의 대변 AC=12를 강조한다",
+  "sourceQuote": "다음 그림의 직각삼각형 $\\mathrm{ABC}$에서 $\\sin B$의 값은? [3점]",
+  "sourceConditions": [
+    {
+      "id": "source-figure",
+      "condition": "5-12-13 직각삼각형에서 B의 대변 AC=12를 강조한다",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "5-12-13 직각삼각형에서 B의 대변 AC=12를 강조한다"
+  ]
+}

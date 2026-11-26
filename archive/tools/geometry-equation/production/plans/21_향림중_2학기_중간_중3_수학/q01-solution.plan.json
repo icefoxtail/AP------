@@ -1,0 +1,54 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "3",
+      "0",
+      "2"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -2,
+      2
+    ],
+    "viewport": [
+      -3,
+      3,
+      -1,
+      12
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 0,
+        "y": 3
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": [
+        3
+      ]
+    }
+  },
+  "caption": "y=2x²+3의 꼭짓점은 (0,3)임을 보여 주는 위로 열린 포물선",
+  "accessibilityDescription": "y=2x²+3의 꼭짓점은 (0,3)임을 보여 주는 위로 열린 포물선",
+  "sourceQuote": "이차함수 $y=2x^2+3$의 그래프에 대한 다음 설명 중 옳지 않은 것은? [3점]",
+  "sourceConditions": [
+    {
+      "id": "source-parabola",
+      "condition": "y=2x²+3의 꼭짓점은 (0,3)임을 보여 주는 위로 열린 포물선",
+      "mappedTo": [
+        "graphPlan.coefficients",
+        "graphPlan.requiredPoints",
+        "graphPlan.axisTickValues"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "y=2x²+3의 꼭짓점은 (0,3)임을 보여 주는 위로 열린 포물선"
+  ]
+}

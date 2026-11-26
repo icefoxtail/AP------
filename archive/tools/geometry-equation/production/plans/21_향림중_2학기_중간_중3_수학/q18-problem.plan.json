@@ -1,0 +1,65 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "8",
+      "2",
+      "-1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -3.2,
+      5.2
+    ],
+    "viewport": [
+      -4,
+      6,
+      -2,
+      11
+    ],
+    "requiredPoints": [],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "axis": "x",
+          "value": "-2"
+        },
+        {
+          "id": "Q",
+          "axis": "x",
+          "value": "4"
+        },
+        {
+          "id": "A",
+          "x": "1",
+          "y": "9"
+        }
+      ]
+    }
+  },
+  "caption": "교점 P·Q와 꼭짓점 A의 이름만 표시하고 계산된 절편·넓이는 노출하지 않는다",
+  "accessibilityDescription": "교점 P·Q와 꼭짓점 A의 이름만 표시하고 계산된 절편·넓이는 노출하지 않는다",
+  "sourceQuote": "다음 그림은 이차함수 $y=-x^2+2x+8$의 그래프이다. $x$축과의 교점을 $\\mathrm{P}$와 $\\mathrm{Q}$, 꼭짓점을 $\\mathrm{A}$라고 할 때, $\\triangle \\mathrm{APQ}$의 넓이는? [4점]",
+  "sourceConditions": [
+    {
+      "id": "source-parabola",
+      "condition": "교점 P·Q와 꼭짓점 A의 이름만 표시하고 계산된 절편·넓이는 노출하지 않는다",
+      "mappedTo": [
+        "graphPlan.coefficients",
+        "graphPlan.requiredPoints",
+        "graphPlan.axisTickValues"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "교점 P·Q와 꼭짓점 A의 이름만 표시하고 계산된 절편·넓이는 노출하지 않는다"
+  ]
+}

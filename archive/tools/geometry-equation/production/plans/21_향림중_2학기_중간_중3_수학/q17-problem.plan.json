@@ -1,0 +1,251 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "12990381",
+              "denominator": "2500000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-1"
+            },
+            {
+              "kind": "rational",
+              "numerator": "4330127",
+              "denominator": "1250000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "rational",
+              "numerator": "4330127",
+              "denominator": "2500000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "displayLines": [],
+  "displaySegments": [
+    {
+      "id": "sAB0",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC1",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA2",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sDE3",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sEF4",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "sFD5",
+      "refs": [
+        "F",
+        "D"
+      ]
+    },
+    {
+      "id": "sAD6",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sAF7",
+      "refs": [
+        "A",
+        "F"
+      ]
+    },
+    {
+      "id": "sEC8",
+      "refs": [
+        "E",
+        "C"
+      ]
+    }
+  ],
+  "rightAngles": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lbl1",
+        "ownerSegment": "sBC1",
+        "text": "6"
+      },
+      {
+        "id": "lbl6",
+        "ownerSegment": "sAD6",
+        "text": "2"
+      },
+      {
+        "id": "lbl7",
+        "ownerSegment": "sAF7",
+        "text": "4"
+      },
+      {
+        "id": "lbl8",
+        "ownerSegment": "sEC8",
+        "text": "4"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 460
+  },
+  "caption": "한 변 6cm인 정삼각형 ABC와 내접 정삼각형 DEF, 주어진 2·4cm 구간",
+  "accessibilityDescription": "한 변 6cm인 정삼각형 ABC와 내접 정삼각형 DEF, 주어진 2·4cm 구간",
+  "sourceQuote": "다음 그림과 같이 한 변의 길이가 $6\\,\\mathrm{cm}$인 정삼각형 $\\mathrm{ABC}$에 정삼각형 $\\mathrm{DEF}$가 내접할 때, $\\triangle \\mathrm{DEF}$의 넓이는? [4점]",
+  "sourceConditions": [
+    {
+      "id": "source-figure",
+      "condition": "한 변 6cm인 정삼각형 ABC와 내접 정삼각형 DEF, 주어진 2·4cm 구간",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "한 변 6cm인 정삼각형 ABC와 내접 정삼각형 DEF, 주어진 2·4cm 구간"
+  ]
+}

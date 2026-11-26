@@ -1,0 +1,62 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "1",
+      "-2",
+      "1/3"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -2,
+      8
+    ],
+    "viewport": [
+      -3,
+      9,
+      -4,
+      5
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 3,
+        "y": -2
+      },
+      {
+        "id": "Y",
+        "x": 0,
+        "y": 1
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        3
+      ],
+      "y": [
+        -2,
+        1
+      ]
+    }
+  },
+  "caption": "y절편 1과 꼭짓점 (3,-2)에서 점선 안내를 읽는 이차함수 그래프",
+  "accessibilityDescription": "y절편 1과 꼭짓점 (3,-2)에서 점선 안내를 읽는 이차함수 그래프",
+  "sourceQuote": "[서술형 2] 이차함수 $y=ax^2+bx+c$의 그래프가 다음 그림과 같을 때, $a+b+c$의 값을 구하시오. [5점]",
+  "sourceConditions": [
+    {
+      "id": "source-parabola",
+      "condition": "y절편 1과 꼭짓점 (3,-2)에서 점선 안내를 읽는 이차함수 그래프",
+      "mappedTo": [
+        "graphPlan.coefficients",
+        "graphPlan.requiredPoints",
+        "graphPlan.axisTickValues"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "y절편 1과 꼭짓점 (3,-2)에서 점선 안내를 읽는 이차함수 그래프"
+  ]
+}

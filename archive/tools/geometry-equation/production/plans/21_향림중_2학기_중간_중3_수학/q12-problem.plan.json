@@ -1,0 +1,212 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "20490381",
+              "denominator": "2500000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "rational",
+              "numerator": "12990381",
+              "denominator": "2500000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "H",
+    "C",
+    "A"
+  ],
+  "displayLines": [],
+  "displaySegments": [
+    {
+      "id": "sBH0",
+      "refs": [
+        "B",
+        "H"
+      ]
+    },
+    {
+      "id": "sHC1",
+      "refs": [
+        "H",
+        "C"
+      ]
+    },
+    {
+      "id": "sAH2",
+      "refs": [
+        "A",
+        "H"
+      ]
+    },
+    {
+      "id": "sAB3",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC4",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "right0",
+      "refs": [
+        "A",
+        "H",
+        "B"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lbl0",
+        "ownerSegment": "sBH0",
+        "text": "3"
+      },
+      {
+        "id": "lbl3",
+        "ownerSegment": "sAB3",
+        "text": "x"
+      },
+      {
+        "id": "lbl4",
+        "ownerSegment": "sAC4",
+        "text": "y"
+      }
+    ],
+    "angles": [
+      {
+        "id": "a0",
+        "refs": [
+          "H",
+          "B",
+          "A"
+        ],
+        "value": 60,
+        "label": "60",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a1",
+        "refs": [
+          "A",
+          "C",
+          "H"
+        ],
+        "value": 45,
+        "label": "45",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 460
+  },
+  "caption": "BH=3, B=60°, C=45°, AH⊥BC 및 AB=x, AC=y를 보여 준다",
+  "accessibilityDescription": "BH=3, B=60°, C=45°, AH⊥BC 및 AB=x, AC=y를 보여 준다",
+  "sourceQuote": "다음 그림과 같은 $\\triangle \\mathrm{ABC}$에서 $\\overline{\\mathrm{AH}} \\perp \\overline{\\mathrm{BC}}$일 때, $x+y$의 값은? [4점]",
+  "sourceConditions": [
+    {
+      "id": "source-figure",
+      "condition": "BH=3, B=60°, C=45°, AH⊥BC 및 AB=x, AC=y를 보여 준다",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "BH=3, B=60°, C=45°, AH⊥BC 및 AB=x, AC=y를 보여 준다"
+  ]
+}

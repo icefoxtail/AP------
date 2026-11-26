@@ -1,0 +1,316 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "191511",
+              "denominator": "250000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "191511",
+              "denominator": "250000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "160697",
+              "denominator": "250000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "6",
+              "denominator": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "6",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "251733",
+              "denominator": "250000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Y",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U0",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "X",
+    "Y"
+  ],
+  "displayLines": [],
+  "displaySegments": [
+    {
+      "id": "sOA0",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sAB1",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sOB2",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sOD3",
+      "refs": [
+        "O",
+        "D"
+      ]
+    },
+    {
+      "id": "sCD4",
+      "refs": [
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "right0",
+      "refs": [
+        "O",
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "right1",
+      "refs": [
+        "O",
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "hiddenPointNames": [
+    "X",
+    "Y"
+  ],
+  "hiddenPointStyle": "NONE",
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lbl0",
+        "ownerSegment": "sOA0",
+        "text": "cos(a)"
+      },
+      {
+        "id": "lbl1",
+        "ownerSegment": "sAB1",
+        "text": "sin(a)"
+      },
+      {
+        "id": "lbl2",
+        "ownerSegment": "sOB2",
+        "text": "1"
+      }
+    ],
+    "angles": [
+      {
+        "id": "a0",
+        "refs": [
+          "A",
+          "O",
+          "B"
+        ],
+        "value": 40,
+        "label": "a",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a1",
+        "refs": [
+          "B",
+          "D",
+          "C"
+        ],
+        "value": 50,
+        "label": "b",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "arc0",
+        "circle": "k",
+        "center": "O",
+        "from": "Y",
+        "to": "X",
+        "side": "MINOR"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 460
+  },
+  "caption": "좌표축과 두 각 a·b를 보존하며 OA=cos a=sin b, AB=sin a를 표시한다",
+  "accessibilityDescription": "좌표축과 두 각 a·b를 보존하며 OA=cos a=sin b, AB=sin a를 표시한다",
+  "sourceQuote": "오른쪽 그림과 같이 반지름의 길이가 $1$인 사분원을 좌표평면 위에 나타낼 때, 다음 중에서 점 $\\mathrm{B}$의 좌표를 나타내는 것은? (4점)",
+  "sourceConditions": [
+    {
+      "id": "source-figure",
+      "condition": "좌표축과 두 각 a·b를 보존하며 OA=cos a=sin b, AB=sin a를 표시한다",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "좌표축과 두 각 a·b를 보존하며 OA=cos a=sin b, AB=sin a를 표시한다"
+  ]
+}

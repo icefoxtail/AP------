@@ -1,0 +1,222 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "20490381",
+              "denominator": "2500000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "rational",
+              "numerator": "12990381",
+              "denominator": "2500000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "H",
+    "C",
+    "A"
+  ],
+  "displayLines": [],
+  "displaySegments": [
+    {
+      "id": "sBH0",
+      "refs": [
+        "B",
+        "H"
+      ]
+    },
+    {
+      "id": "sHC1",
+      "refs": [
+        "H",
+        "C"
+      ]
+    },
+    {
+      "id": "sAH2",
+      "refs": [
+        "A",
+        "H"
+      ]
+    },
+    {
+      "id": "sAB3",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC4",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "right0",
+      "refs": [
+        "A",
+        "H",
+        "B"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lbl0",
+        "ownerSegment": "sBH0",
+        "text": "3"
+      },
+      {
+        "id": "lbl1",
+        "ownerSegment": "sHC1",
+        "text": "3sqrt(3)"
+      },
+      {
+        "id": "lbl2",
+        "ownerSegment": "sAH2",
+        "text": "3sqrt(3)"
+      },
+      {
+        "id": "lbl3",
+        "ownerSegment": "sAB3",
+        "text": "6"
+      },
+      {
+        "id": "lbl4",
+        "ownerSegment": "sAC4",
+        "text": "3sqrt(6)"
+      }
+    ],
+    "angles": [
+      {
+        "id": "a0",
+        "refs": [
+          "H",
+          "B",
+          "A"
+        ],
+        "value": 60,
+        "label": "60",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a1",
+        "refs": [
+          "A",
+          "C",
+          "H"
+        ],
+        "value": 45,
+        "label": "45",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 460
+  },
+  "caption": "AH=3√3, AB=6, AC=3√6의 두 직각삼각형 관계",
+  "accessibilityDescription": "AH=3√3, AB=6, AC=3√6의 두 직각삼각형 관계",
+  "sourceQuote": "다음 그림과 같은 $\\triangle \\mathrm{ABC}$에서 $\\overline{\\mathrm{AH}} \\perp \\overline{\\mathrm{BC}}$일 때, $x+y$의 값은? [4점]",
+  "sourceConditions": [
+    {
+      "id": "source-figure",
+      "condition": "AH=3√3, AB=6, AC=3√6의 두 직각삼각형 관계",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "AH=3√3, AB=6, AC=3√6의 두 직각삼각형 관계"
+  ]
+}

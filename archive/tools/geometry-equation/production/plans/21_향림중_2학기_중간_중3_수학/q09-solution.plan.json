@@ -1,0 +1,62 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "2",
+      "-2",
+      "-1/2"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -6,
+      2
+    ],
+    "viewport": [
+      -7,
+      3,
+      -5,
+      6
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": -2,
+        "y": 4
+      },
+      {
+        "id": "Y",
+        "x": 0,
+        "y": 2
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        -2
+      ],
+      "y": [
+        2,
+        4
+      ]
+    }
+  },
+  "caption": "꼭짓점 (-2,4), y절편 2의 조건에서 계수 a=-1/2를 읽는 그래프",
+  "accessibilityDescription": "꼭짓점 (-2,4), y절편 2의 조건에서 계수 a=-1/2를 읽는 그래프",
+  "sourceQuote": "이차함수 $y=a(x-p)^2+q$의 그래프가 다음 그림과 같을 때, $a+p+q$의 값은? [4점]",
+  "sourceConditions": [
+    {
+      "id": "source-parabola",
+      "condition": "꼭짓점 (-2,4), y절편 2의 조건에서 계수 a=-1/2를 읽는 그래프",
+      "mappedTo": [
+        "graphPlan.coefficients",
+        "graphPlan.requiredPoints",
+        "graphPlan.axisTickValues"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "꼭짓점 (-2,4), y절편 2의 조건에서 계수 a=-1/2를 읽는 그래프"
+  ]
+}

@@ -1,0 +1,230 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "9",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "20"
+            },
+            {
+              "kind": "rational",
+              "numerator": "9",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "20"
+            },
+            {
+              "kind": "rational",
+              "numerator": "102",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "20"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "G",
+    "T"
+  ],
+  "displayLines": [],
+  "displaySegments": [
+    {
+      "id": "sAB0",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC1",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAC2",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sGA3",
+      "refs": [
+        "G",
+        "A"
+      ]
+    },
+    {
+      "id": "sBT4",
+      "refs": [
+        "B",
+        "T"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sGT5",
+      "refs": [
+        "G",
+        "T"
+      ],
+      "dashed": true
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "right0",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "hiddenPointNames": [
+    "G",
+    "T"
+  ],
+  "hiddenPointStyle": "NONE",
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lbl0",
+        "ownerSegment": "sAB0",
+        "text": "20"
+      },
+      {
+        "id": "lbl3",
+        "ownerSegment": "sGA3",
+        "text": "1.8"
+      }
+    ],
+    "angles": [
+      {
+        "id": "a0",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 43,
+        "label": "43",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 460
+  },
+  "caption": "20m 수평거리, 1.8m 눈높이, 올려본각 43°인 번지 점프대 개형",
+  "accessibilityDescription": "20m 수평거리, 1.8m 눈높이, 올려본각 43°인 번지 점프대 개형",
+  "sourceQuote": "[서술형 4] 다음 그림과 같이 눈의 높이가 $1.8\\,\\mathrm{m}$인 사람이 번지 점프대로부터 $20\\,\\mathrm{m}$ 떨어진 곳에 서 있다. 이 사람이 점프대의 꼭대기 지점 $\\mathrm{C}$를 올려다본 각의 크기가 $43^\\circ$일 때, 번지 점프대의 높이를 구하시오. (단, $\\sin 43^\\circ = 0.68$, $\\cos 43^\\circ = 0.73$, $\\tan 43^\\circ = 0.93$으로 계산한다.) [5점]",
+  "sourceConditions": [
+    {
+      "id": "source-figure",
+      "condition": "20m 수평거리, 1.8m 눈높이, 올려본각 43°인 번지 점프대 개형",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "20m 수평거리, 1.8m 눈높이, 올려본각 43°인 번지 점프대 개형"
+  ]
+}

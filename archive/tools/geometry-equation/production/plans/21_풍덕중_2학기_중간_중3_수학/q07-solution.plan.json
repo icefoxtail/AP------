@@ -1,0 +1,302 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-7"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-7"
+            },
+            {
+              "kind": "integer",
+              "value": "-5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "-5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "N",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "74"
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "M",
+    "N"
+  ],
+  "displayLines": [],
+  "displaySegments": [
+    {
+      "id": "sAM0",
+      "refs": [
+        "A",
+        "M"
+      ]
+    },
+    {
+      "id": "sMB1",
+      "refs": [
+        "M",
+        "B"
+      ]
+    },
+    {
+      "id": "sCN2",
+      "refs": [
+        "C",
+        "N"
+      ]
+    },
+    {
+      "id": "sND3",
+      "refs": [
+        "N",
+        "D"
+      ]
+    },
+    {
+      "id": "sOM4",
+      "refs": [
+        "O",
+        "M"
+      ]
+    },
+    {
+      "id": "sON5",
+      "refs": [
+        "O",
+        "N"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "right0",
+      "refs": [
+        "A",
+        "M",
+        "O"
+      ]
+    },
+    {
+      "id": "right1",
+      "refs": [
+        "O",
+        "N",
+        "C"
+      ]
+    }
+  ],
+  "displayCircles": [
+    "k"
+  ],
+  "hiddenPointNames": [
+    "M",
+    "N"
+  ],
+  "hiddenPointStyle": "NONE",
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lbl0",
+        "ownerSegment": "sAM0",
+        "text": "7"
+      },
+      {
+        "id": "lbl1",
+        "ownerSegment": "sMB1",
+        "text": "7"
+      },
+      {
+        "id": "lbl2",
+        "ownerSegment": "sCN2",
+        "text": "7"
+      },
+      {
+        "id": "lbl3",
+        "ownerSegment": "sND3",
+        "text": "7"
+      },
+      {
+        "id": "lbl4",
+        "ownerSegment": "sOM4",
+        "text": "5"
+      },
+      {
+        "id": "lbl5",
+        "ownerSegment": "sON5",
+        "text": "5"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 460
+  },
+  "caption": "두 현의 중심거리 5cm와 반현 길이 7cm가 같아 전체 현이 14cm임을 설명한다",
+  "accessibilityDescription": "두 현의 중심거리 5cm와 반현 길이 7cm가 같아 전체 현이 14cm임을 설명한다",
+  "sourceQuote": "오른쪽 원 $\\mathrm{O}$에서 $x$의 값을 구하면? (3점)",
+  "sourceConditions": [
+    {
+      "id": "source-figure",
+      "condition": "두 현의 중심거리 5cm와 반현 길이 7cm가 같아 전체 현이 14cm임을 설명한다",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 현의 중심거리 5cm와 반현 길이 7cm가 같아 전체 현이 14cm임을 설명한다"
+  ]
+}

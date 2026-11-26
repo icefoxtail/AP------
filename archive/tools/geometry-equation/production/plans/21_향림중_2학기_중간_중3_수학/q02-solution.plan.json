@@ -1,0 +1,54 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "-9",
+      "6",
+      "-1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      0,
+      6
+    ],
+    "viewport": [
+      -1,
+      7,
+      -11,
+      3
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 3,
+        "y": 0
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        3
+      ],
+      "y": []
+    }
+  },
+  "caption": "y=-x²를 오른쪽으로 3만큼 이동하여 꼭짓점 (3,0)과 대칭축 x=3을 보인다",
+  "accessibilityDescription": "y=-x²를 오른쪽으로 3만큼 이동하여 꼭짓점 (3,0)과 대칭축 x=3을 보인다",
+  "sourceQuote": "이차함수 $y=-x^2$의 그래프를 $x$축의 방향으로 $3$만큼 평행이동한 그래프의 축의 방정식은? [3점]",
+  "sourceConditions": [
+    {
+      "id": "source-parabola",
+      "condition": "y=-x²를 오른쪽으로 3만큼 이동하여 꼭짓점 (3,0)과 대칭축 x=3을 보인다",
+      "mappedTo": [
+        "graphPlan.coefficients",
+        "graphPlan.requiredPoints",
+        "graphPlan.axisTickValues"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "y=-x²를 오른쪽으로 3만큼 이동하여 꼭짓점 (3,0)과 대칭축 x=3을 보인다"
+  ]
+}

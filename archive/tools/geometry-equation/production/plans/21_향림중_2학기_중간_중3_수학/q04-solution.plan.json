@@ -1,0 +1,56 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "5",
+      "2",
+      "1/2"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -6,
+      2
+    ],
+    "viewport": [
+      -7,
+      3,
+      0,
+      9
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": -2,
+        "y": 3
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        -2
+      ],
+      "y": [
+        3
+      ]
+    }
+  },
+  "caption": "y=1/2x²를 왼쪽 2·위쪽 3만큼 이동한 꼭짓점 (-2,3)의 그래프",
+  "accessibilityDescription": "y=1/2x²를 왼쪽 2·위쪽 3만큼 이동한 꼭짓점 (-2,3)의 그래프",
+  "sourceQuote": "다음 그림은 이차함수 $y=\\frac{1}{2}x^2$의 그래프이다. 이 그래프를 이용하여 $y=\\frac{1}{2}(x+2)^2+3$의 그래프를 바르게 그린 것은? [3점]",
+  "sourceConditions": [
+    {
+      "id": "source-parabola",
+      "condition": "y=1/2x²를 왼쪽 2·위쪽 3만큼 이동한 꼭짓점 (-2,3)의 그래프",
+      "mappedTo": [
+        "graphPlan.coefficients",
+        "graphPlan.requiredPoints",
+        "graphPlan.axisTickValues"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "y=1/2x²를 왼쪽 2·위쪽 3만큼 이동한 꼭짓점 (-2,3)의 그래프"
+  ]
+}

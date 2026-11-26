@@ -1,0 +1,203 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "2828427",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1767767",
+              "denominator": "250000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "4242641",
+              "denominator": "1000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1767767",
+              "denominator": "250000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "C",
+    "A",
+    "H"
+  ],
+  "displayLines": [],
+  "displaySegments": [
+    {
+      "id": "sBC0",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA1",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sBA2",
+      "refs": [
+        "B",
+        "A"
+      ]
+    },
+    {
+      "id": "sAH3",
+      "refs": [
+        "A",
+        "H"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sCH4",
+      "refs": [
+        "C",
+        "H"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "right0",
+      "refs": [
+        "A",
+        "H",
+        "C"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lbl0",
+        "ownerSegment": "sBC0",
+        "text": "2sqrt(2)"
+      },
+      {
+        "id": "lbl1",
+        "ownerSegment": "sCA1",
+        "text": "6"
+      },
+      {
+        "id": "lbl3",
+        "ownerSegment": "sAH3",
+        "text": "3sqrt(2)"
+      }
+    ],
+    "angles": [
+      {
+        "id": "a0",
+        "refs": [
+          "B",
+          "C",
+          "A"
+        ],
+        "value": 135,
+        "label": "135",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 460
+  },
+  "caption": "BC 연장선에 수선 AH를 내려 높이 3√2를 보이고 불필요한 회색 면 채움을 제거한다",
+  "accessibilityDescription": "BC 연장선에 수선 AH를 내려 높이 3√2를 보이고 불필요한 회색 면 채움을 제거한다",
+  "sourceQuote": "다음 그림과 같은 삼각형의 넓이는? [3점]",
+  "sourceConditions": [
+    {
+      "id": "source-figure",
+      "condition": "BC 연장선에 수선 AH를 내려 높이 3√2를 보이고 불필요한 회색 면 채움을 제거한다",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "BC 연장선에 수선 AH를 내려 높이 3√2를 보이고 불필요한 회색 면 채움을 제거한다"
+  ]
+}

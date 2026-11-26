@@ -1,0 +1,141 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "24751",
+              "denominator": "1000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "C",
+    "B"
+  ],
+  "displayLines": [],
+  "displaySegments": [
+    {
+      "id": "sAC0",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sCB1",
+      "refs": [
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "sAB2",
+      "refs": [
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "right0",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lbl0",
+        "ownerSegment": "sAC0",
+        "text": "10"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 460
+  },
+  "caption": "C 직각, 이웃변 AC=10cm와 A의 코사인 표값 0.3746을 대응한다",
+  "accessibilityDescription": "C 직각, 이웃변 AC=10cm와 A의 코사인 표값 0.3746을 대응한다",
+  "sourceQuote": "다음 그림과 같은 직각삼각형 $\\mathrm{ABC}$에서 $\\angle C=90^\\circ$, $\\overline{\\mathrm{AC}}=10\\,\\mathrm{cm}$이고 $\\cos A = 0.3746$이라고 할 때, 삼각비의 표를 이용하여 변 $\\mathrm{BC}$의 길이를 구하면? [4점]",
+  "sourceConditions": [
+    {
+      "id": "source-figure",
+      "condition": "C 직각, 이웃변 AC=10cm와 A의 코사인 표값 0.3746을 대응한다",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "C 직각, 이웃변 AC=10cm와 A의 코사인 표값 0.3746을 대응한다"
+  ]
+}

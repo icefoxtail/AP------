@@ -1,0 +1,66 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "-15",
+      "-2",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -4,
+      6
+    ],
+    "viewport": [
+      -5,
+      7,
+      -19,
+      4
+    ],
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": -3,
+        "y": 0
+      },
+      {
+        "id": "R",
+        "x": 5,
+        "y": 0
+      },
+      {
+        "id": "V",
+        "x": 1,
+        "y": -16
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        -3,
+        1,
+        5
+      ],
+      "y": []
+    }
+  },
+  "caption": "두 근 -3·5가 축 x=1을 중심으로 8만큼 떨어진 포물선 y=x²−2x−15",
+  "accessibilityDescription": "두 근 -3·5가 축 x=1을 중심으로 8만큼 떨어진 포물선 y=x²−2x−15",
+  "sourceQuote": "이차함수 $y=x^2+ax+b$의 그래프는 $x 1$일 때 $x$의 값이 증가하면 $y$의 값도 증가한다. 이 그래프가 $x$축과 만나는 두 점 사이의 거리가 $8$일 때, 상수 $a, b$의 값은? [5점]",
+  "sourceConditions": [
+    {
+      "id": "source-parabola",
+      "condition": "두 근 -3·5가 축 x=1을 중심으로 8만큼 떨어진 포물선 y=x²−2x−15",
+      "mappedTo": [
+        "graphPlan.coefficients",
+        "graphPlan.requiredPoints",
+        "graphPlan.axisTickValues"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 근 -3·5가 축 x=1을 중심으로 8만큼 떨어진 포물선 y=x²−2x−15"
+  ]
+}

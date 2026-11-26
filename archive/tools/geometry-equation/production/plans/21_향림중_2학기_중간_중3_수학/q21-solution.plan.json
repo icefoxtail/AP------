@@ -1,0 +1,75 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "15/2",
+          "1",
+          "-1/2"
+        ],
+        "domain": [
+          "-1",
+          "6"
+        ],
+        "label": "y=-x^2/2+x+15/2",
+        "color": "BLUE"
+      },
+      {
+        "id": "g",
+        "kind": "LINE",
+        "coefficients": [
+          "10",
+          "-2"
+        ],
+        "domain": [
+          "-1",
+          "6"
+        ],
+        "label": "y=-2x+10",
+        "color": "WARM"
+      }
+    ],
+    "viewport": [
+      -2,
+      7,
+      -3,
+      15
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "V",
+          "x": "1",
+          "y": "8",
+          "coordinates": true
+        },
+        {
+          "id": "X",
+          "axis": "x",
+          "value": "5",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "꼭짓점 V(1,8)과 x축 교점 X(5,0)가 한 직선 위에도 놓이는 두 함수",
+  "accessibilityDescription": "꼭짓점 V(1,8)과 x축 교점 X(5,0)가 한 직선 위에도 놓이는 두 함수",
+  "sourceQuote": "이차함수 $y=ax^2-2ax+b$의 그래프의 꼭짓점이 일차함수 $y=-2x+10$의 그래프 위에 있고, 두 그래프는 $x$축 위에서 만난다. 이때 $a+b$의 값은? (단, $a, b$는 상수) [5점]",
+  "sourceConditions": [
+    {
+      "id": "two-parabolas",
+      "condition": "꼭짓점 V(1,8)과 x축 교점 X(5,0)가 한 직선 위에도 놓이는 두 함수",
+      "mappedTo": [
+        "graphPlan.curves",
+        "graphPlan.overlays"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "꼭짓점 V(1,8)과 x축 교점 X(5,0)가 한 직선 위에도 놓이는 두 함수"
+  ]
+}

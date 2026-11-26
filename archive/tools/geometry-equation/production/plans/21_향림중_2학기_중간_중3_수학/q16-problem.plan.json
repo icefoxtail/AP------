@@ -1,0 +1,159 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1691",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "6309",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "C",
+    "A"
+  ],
+  "displayLines": [],
+  "displaySegments": [
+    {
+      "id": "sBC0",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sBA1",
+      "refs": [
+        "B",
+        "A"
+      ]
+    },
+    {
+      "id": "sAC2",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "rightAngles": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lbl0",
+        "ownerSegment": "sBC0",
+        "text": "8"
+      }
+    ],
+    "angles": [
+      {
+        "id": "a0",
+        "refs": [
+          "C",
+          "B",
+          "A"
+        ],
+        "value": 75,
+        "label": "75",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a1",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "value": 45,
+        "label": "45",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 460
+  },
+  "caption": "BC=8cm, 밑각 B=75°·C=45°인 비직각삼각형",
+  "accessibilityDescription": "BC=8cm, 밑각 B=75°·C=45°인 비직각삼각형",
+  "sourceQuote": "다음 그림과 같은 $\\triangle \\mathrm{ABC}$에서 $\\overline{\\mathrm{BC}}=8\\,\\mathrm{cm}$, $\\angle \\mathrm{B}=75^\\circ$, $\\angle \\mathrm{C}=45^\\circ$일 때, $\\overline{\\mathrm{AB}}$의 길이는? [4점]",
+  "sourceConditions": [
+    {
+      "id": "source-figure",
+      "condition": "BC=8cm, 밑각 B=75°·C=45°인 비직각삼각형",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "BC=8cm, 밑각 B=75°·C=45°인 비직각삼각형"
+  ]
+}
