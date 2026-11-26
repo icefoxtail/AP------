@@ -43,7 +43,11 @@ window.questionBank = [
       "CC_EQUILATERAL_TRIANGLE"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_090_정육각형의벡터의연산3_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "EJ를 공유하는 두 정육각형과 B→A, B→D 벡터",
+    "imageCaption": "EJ를 공유하는 두 정육각형과 B→A, B→D 벡터",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -131,6 +135,10 @@ window.questionBank = [
       "CC_PYTHAGOREAN"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_090_정육각형의벡터의연산3_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "수직 EF를 공유하는 좌우의 두 정육각형",
+    "imageCaption": "수직 EF를 공유하는 좌우의 두 정육각형",
+    "imageSize": "full"
   }
 ];

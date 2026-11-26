@@ -43,7 +43,11 @@ window.questionBank = [
       "CC_DISTANCE_TWO_POINTS"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_094_이차곡선에서벡터의연산과크기_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "포물선 y²=12x, 초점 F(3,0) 및 제1사분면 점 P와 OP·OF·PF",
+    "imageCaption": "포물선 y²=12x, 초점 F(3,0) 및 제1사분면 점 P와 OP·OF·PF",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -87,7 +91,11 @@ window.questionBank = [
       "CC_DISTANCE_TWO_POINTS"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_094_이차곡선에서벡터의연산과크기_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "타원 9x²+25y²=225와 두 초점 F·F′, 원점 O, 제1사분면 P 및 OP 선분",
+    "imageCaption": "타원 9x²+25y²=225와 두 초점 F·F′, 원점 O, 제1사분면 P 및 OP 선분",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -133,7 +141,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RANGE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_094_이차곡선에서벡터의연산과크기_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "쌍곡선 x²/16−y²/20=1, 초점 F(6,0)·제1사분면 점 P와 OP·PF",
+    "imageCaption": "쌍곡선 x²/16−y²/20=1, 초점 F(6,0)·제1사분면 점 P와 OP·PF",
+    "imageSize": "full"
   },
   {
     "id": 4,

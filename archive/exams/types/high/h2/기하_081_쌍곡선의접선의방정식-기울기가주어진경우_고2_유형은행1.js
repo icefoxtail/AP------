@@ -183,7 +183,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RANGE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_081_쌍곡선의접선의방정식-기울기가주어진경우_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "기울기 m인 쌍곡선 접선과 두 좌표축이 만드는 음영 직각삼각형",
+    "imageCaption": "기울기 m인 쌍곡선 접선과 두 좌표축이 만드는 음영 직각삼각형",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -365,7 +369,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_POSITIVE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_081_쌍곡선의접선의방정식-기울기가주어진경우_고2_유형은행1/q8-problem.svg",
+    "imageAlt": "쌍곡선의 점근선 l과 기울기 1인 접선 m이 만드는 삼각형 AOB",
+    "imageCaption": "쌍곡선의 점근선 l과 기울기 1인 접선 m이 만드는 삼각형 AOB",
+    "imageSize": "full"
   },
   {
     "id": 9,

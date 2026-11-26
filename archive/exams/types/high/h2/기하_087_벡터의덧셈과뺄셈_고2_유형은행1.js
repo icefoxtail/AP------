@@ -88,7 +88,11 @@ window.questionBank = [
       "CC_MIDPOINT"
     ],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "image": "assets/images/기하_087_벡터의덧셈과뺄셈_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "평행사변형의 대각선 교점 O에서 A와 B로 향하는 벡터",
+    "imageCaption": "평행사변형의 대각선 교점 O에서 A와 B로 향하는 벡터",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -129,7 +133,11 @@ window.questionBank = [
     "templateKey": "TPL_GEO_VECTOR_BASIC_OPERATION",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "image": "assets/images/기하_087_벡터의덧셈과뺄셈_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "네 꼭짓점 A, B, C, D가 반시계 방향으로 놓인 볼록사각형",
+    "imageCaption": "네 꼭짓점 A, B, C, D가 반시계 방향으로 놓인 볼록사각형",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -174,7 +182,11 @@ window.questionBank = [
       "CC_SIMILARITY"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_087_벡터의덧셈과뺄셈_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "한 변 3인 정사각형에서 AB를 1:2로 나누는 M과 이동점 P",
+    "imageCaption": "한 변 3인 정사각형에서 AB를 1:2로 나누는 M과 이동점 P",
+    "imageSize": "full"
   },
   {
     "id": 5,

@@ -46,7 +46,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_POSITIVE"
     ],
-    "integrationPattern": "INTERDEPENDENT"
+    "integrationPattern": "INTERDEPENDENT",
+    "image": "assets/images/기하_079_두이차곡선의교점에서접선이수직일때미지수_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "두 이차곡선이 만나는 제1사분면 점 P에서 서로 수직인 접선",
+    "imageCaption": "두 이차곡선이 만나는 제1사분면 점 P에서 서로 수직인 접선",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -91,7 +95,11 @@ window.questionBank = [
       "CC_PERPENDICULAR_SLOPE"
     ],
     "conditionKeys": [],
-    "integrationPattern": "INTERDEPENDENT"
+    "integrationPattern": "INTERDEPENDENT",
+    "image": "assets/images/기하_079_두이차곡선의교점에서접선이수직일때미지수_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "한 예: 쌍곡선과 타원의 공통점 P에서 직교하는 두 접선",
+    "imageCaption": "한 예: 쌍곡선과 타원의 공통점 P에서 직교하는 두 접선",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -136,7 +144,11 @@ window.questionBank = [
       "CC_PERPENDICULAR_SLOPE"
     ],
     "conditionKeys": [],
-    "integrationPattern": "INTERDEPENDENT"
+    "integrationPattern": "INTERDEPENDENT",
+    "image": "assets/images/기하_079_두이차곡선의교점에서접선이수직일때미지수_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "두 이차곡선이 P(2,−1)에서 만나고 접선 두 개가 직교하는 그림",
+    "imageCaption": "두 이차곡선이 P(2,−1)에서 만나고 접선 두 개가 직교하는 그림",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -183,6 +195,10 @@ window.questionBank = [
     "conditionKeys": [
       "COND_POSITIVE"
     ],
-    "integrationPattern": "INTERDEPENDENT"
+    "integrationPattern": "INTERDEPENDENT",
+    "image": "assets/images/기하_079_두이차곡선의교점에서접선이수직일때미지수_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "세로로 긴 타원과 세로로 열린 쌍곡선의 공통점 P(2,3)과 접선",
+    "imageCaption": "세로로 긴 타원과 세로로 열린 쌍곡선의 공통점 P(2,3)과 접선",
+    "imageSize": "full"
   }
 ];

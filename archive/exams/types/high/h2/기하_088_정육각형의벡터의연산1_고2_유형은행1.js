@@ -46,7 +46,11 @@ window.questionBank = [
       "COND_PAIRWISE_DISTINCT_POINTS",
       "COND_UPPER_BOUND"
     ],
-    "integrationPattern": "CASE_BRANCH"
+    "integrationPattern": "CASE_BRANCH",
+    "image": "assets/images/기하_088_정육각형의벡터의연산1_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "한 변의 길이가 2인 시계방향 정육각형 ABCDEF",
+    "imageCaption": "한 변의 길이가 2인 시계방향 정육각형 ABCDEF",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -92,7 +96,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_PAIRWISE_DISTINCT_POINTS"
     ],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "image": "assets/images/기하_088_정육각형의벡터의연산1_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "세 긴 대각선이 O에서 만나는 한 변 2의 정육각형",
+    "imageCaption": "세 긴 대각선이 O에서 만나는 한 변 2의 정육각형",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -136,7 +144,11 @@ window.questionBank = [
       "CC_EQUILATERAL_TRIANGLE"
     ],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "image": "assets/images/기하_088_정육각형의벡터의연산1_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "정육각형 C에서 출발하는 벡터 a=CB와 b=CD",
+    "imageCaption": "정육각형 C에서 출발하는 벡터 a=CB와 b=CD",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -180,7 +192,11 @@ window.questionBank = [
       "CC_EQUILATERAL_TRIANGLE"
     ],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "image": "assets/images/기하_088_정육각형의벡터의연산1_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "정육각형 FA와 AB에 놓인 벡터 a, b",
+    "imageCaption": "정육각형 FA와 AB에 놓인 벡터 a, b",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -225,6 +241,10 @@ window.questionBank = [
       "CC_DIAGONALS"
     ],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "image": "assets/images/기하_088_정육각형의벡터의연산1_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "정육각형 F에서 출발하는 변 벡터 a와 대각선 벡터 b",
+    "imageCaption": "정육각형 F에서 출발하는 변 벡터 a와 대각선 벡터 b",
+    "imageSize": "full"
   }
 ];

@@ -131,7 +131,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_POSITIVE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_080_이차곡선위의한점에서의접선의방정식_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "한 예: 포물선의 접점 P, 수선의 발 H, 접선의 x절편 Q",
+    "imageCaption": "한 예: 포물선의 접점 P, 수선의 발 H, 접선의 x절편 Q",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -177,7 +181,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RANGE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_080_이차곡선위의한점에서의접선의방정식_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "한 예: 타원의 제1사분면 접점 P와 H, Q의 x축 위치",
+    "imageCaption": "한 예: 타원의 제1사분면 접점 P와 H, Q의 x축 위치",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -223,6 +231,10 @@ window.questionBank = [
     "conditionKeys": [
       "COND_POSITIVE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_080_이차곡선위의한점에서의접선의방정식_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "한 예: 쌍곡선 오른쪽 가지 위 접점 P와 두 x축 점 H, Q",
+    "imageCaption": "한 예: 쌍곡선 오른쪽 가지 위 접점 P와 두 x축 점 H, Q",
+    "imageSize": "full"
   }
 ];

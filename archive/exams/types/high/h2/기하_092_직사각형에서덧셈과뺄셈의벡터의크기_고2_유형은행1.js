@@ -43,7 +43,11 @@ window.questionBank = [
       "CC_PYTHAGOREAN"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_092_직사각형에서덧셈과뺄셈의벡터의크기_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "가로 4·세로 3 직사각형의 A→B·A→C·A→D 세 벡터",
+    "imageCaption": "가로 4·세로 3 직사각형의 A→B·A→C·A→D 세 벡터",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -87,7 +91,11 @@ window.questionBank = [
       "CC_PYTHAGOREAN"
     ],
     "conditionKeys": [],
-    "integrationPattern": "CASE_BRANCH"
+    "integrationPattern": "CASE_BRANCH",
+    "image": "assets/images/기하_092_직사각형에서덧셈과뺄셈의벡터의크기_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "한 변 2인 정사각형과 A를 시점으로 하는 세 유향벡터",
+    "imageCaption": "한 변 2인 정사각형과 A를 시점으로 하는 세 유향벡터",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -131,7 +139,11 @@ window.questionBank = [
       "CC_PYTHAGOREAN"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_092_직사각형에서덧셈과뺄셈의벡터의크기_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "한 변 2 정사각형 OABC에서 O→A·O→B·O→C 벡터",
+    "imageCaption": "한 변 2 정사각형 OABC에서 O→A·O→B·O→C 벡터",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -176,7 +188,11 @@ window.questionBank = [
       "CC_TRIANGLE_AREA"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_092_직사각형에서덧셈과뺄셈의벡터의크기_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "정삼각형 ABC 아래에 정사각형 BCDE를 붙이고 AD·CB·EB 벡터 표시",
+    "imageCaption": "정삼각형 ABC 아래에 정사각형 BCDE를 붙이고 AD·CB·EB 벡터 표시",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -220,7 +236,11 @@ window.questionBank = [
       "CC_RECTANGLE_AREA"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_092_직사각형에서덧셈과뺄셈의벡터의크기_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "변 AB=3a·AD=4a인 직사각형 ABCD",
+    "imageCaption": "변 AB=3a·AD=4a인 직사각형 ABCD",
+    "imageSize": "full"
   },
   {
     "id": 6,

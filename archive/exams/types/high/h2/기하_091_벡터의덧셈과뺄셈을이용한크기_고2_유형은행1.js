@@ -42,7 +42,11 @@ window.questionBank = [
       "CC_EQUILATERAL_TRIANGLE"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_091_벡터의덧셈과뺄셈을이용한크기_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "변의 길이가 √3인 정삼각형의 벡터 a, b",
+    "imageCaption": "변의 길이가 √3인 정삼각형의 벡터 a, b",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -130,7 +134,11 @@ window.questionBank = [
       "CC_MIDPOINT"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_091_벡터의덧셈과뺄셈을이용한크기_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "가로 4·세로 3 직사각형의 윗변과 아랫변 중점",
+    "imageCaption": "가로 4·세로 3 직사각형의 윗변과 아랫변 중점",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -176,7 +184,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RESTRICTED_INTERVAL"
     ],
-    "integrationPattern": "REINTERPRETATION"
+    "integrationPattern": "REINTERPRETATION",
+    "image": "assets/images/기하_091_벡터의덧셈과뺄셈을이용한크기_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "가로 2√5·세로 4 직사각형의 윗변 위 이동점 P",
+    "imageCaption": "가로 2√5·세로 4 직사각형의 윗변 위 이동점 P",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -222,7 +234,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RESTRICTED_INTERVAL"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_091_벡터의덧셈과뺄셈을이용한크기_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "한 변 4의 정사각형과 AB 위 P, BC 중점 M",
+    "imageCaption": "한 변 4의 정사각형과 AB 위 P, BC 중점 M",
+    "imageSize": "full"
   },
   {
     "id": 6,
@@ -266,7 +282,11 @@ window.questionBank = [
       "CC_CIRCLE_CENTER_RADIUS"
     ],
     "conditionKeys": [],
-    "integrationPattern": "REINTERPRETATION"
+    "integrationPattern": "REINTERPRETATION",
+    "image": "assets/images/기하_091_벡터의덧셈과뺄셈을이용한크기_고2_유형은행1/q6-problem.svg",
+    "imageAlt": "반지름 6 원 C의 접점 P, 접선 l과 원 위의 점 Q",
+    "imageCaption": "반지름 6 원 C의 접점 P, 접선 l과 원 위의 점 Q",
+    "imageSize": "full"
   },
   {
     "id": 7,
@@ -311,7 +331,11 @@ window.questionBank = [
       "CC_TRIANGLE_AREA"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_091_벡터의덧셈과뺄셈을이용한크기_고2_유형은행1/q7-problem.svg",
+    "imageAlt": "정삼각형 ABC의 무게중심 G와 GB, GC",
+    "imageCaption": "정삼각형 ABC의 무게중심 G와 GB, GC",
+    "imageSize": "full"
   },
   {
     "id": 8,
@@ -355,7 +379,11 @@ window.questionBank = [
       "CC_SQUARE_AREA"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_091_벡터의덧셈과뺄셈을이용한크기_고2_유형은행1/q8-problem.svg",
+    "imageAlt": "정사각형 A에서 시작해 B,C,D로 향하는 세 벡터",
+    "imageCaption": "정사각형 A에서 시작해 B,C,D로 향하는 세 벡터",
+    "imageSize": "full"
   },
   {
     "id": 9,
@@ -399,7 +427,11 @@ window.questionBank = [
       "CC_MIDPOINT"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_091_벡터의덧셈과뺄셈을이용한크기_고2_유형은행1/q9-problem.svg",
+    "imageAlt": "정사각형 ABCD에서 AB·AD의 중점 M·N과 선분 MN·MB",
+    "imageCaption": "정사각형 ABCD에서 AB·AD의 중점 M·N과 선분 MN·MB",
+    "imageSize": "full"
   },
   {
     "id": 10,
@@ -442,7 +474,11 @@ window.questionBank = [
       "CC_EQUILATERAL_TRIANGLE"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_091_벡터의덧셈과뺄셈을이용한크기_고2_유형은행1/q10-problem.svg",
+    "imageAlt": "반시계 순서 A·B·C의 한 변 길이 1 정삼각형",
+    "imageCaption": "반시계 순서 A·B·C의 한 변 길이 1 정삼각형",
+    "imageSize": "full"
   },
   {
     "id": 11,
@@ -487,7 +523,11 @@ window.questionBank = [
       "CC_MIDPOINT"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_091_벡터의덧셈과뺄셈을이용한크기_고2_유형은행1/q11-problem.svg",
+    "imageAlt": "직선 B-C-F 위쪽에 한 변 1 정사각형과 한 변 2 정삼각형, CF 중점 M",
+    "imageCaption": "직선 B-C-F 위쪽에 한 변 1 정사각형과 한 변 2 정삼각형, CF 중점 M",
+    "imageSize": "full"
   },
   {
     "id": 12,
@@ -532,6 +572,10 @@ window.questionBank = [
       "CC_LINE_INTERSECTION"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_091_벡터의덧셈과뺄셈을이용한크기_고2_유형은행1/q12-problem.svg",
+    "imageAlt": "AB=4·AD=6 직사각형, BC 중점 M과 AC·DM의 교점 P",
+    "imageCaption": "AB=4·AD=6 직사각형, BC 중점 M과 AC·DM의 교점 P",
+    "imageSize": "full"
   }
 ];

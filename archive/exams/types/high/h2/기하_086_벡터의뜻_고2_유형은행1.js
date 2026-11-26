@@ -43,7 +43,11 @@ window.questionBank = [
       "CC_LATTICE_POINT_COUNTING"
     ],
     "conditionKeys": [],
-    "integrationPattern": "CASE_BRANCH"
+    "integrationPattern": "CASE_BRANCH",
+    "image": "assets/images/기하_086_벡터의뜻_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "단위 정사각형 네 개로 만든 2×2 격자의 아홉 꼭짓점",
+    "imageCaption": "단위 정사각형 네 개로 만든 2×2 격자의 아홉 꼭짓점",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -131,7 +135,11 @@ window.questionBank = [
       "CC_PYTHAGOREAN"
     ],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "image": "assets/images/기하_086_벡터의뜻_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "한 변 4인 정삼각형 ABC와 세 변의 중점을 이은 DEF",
+    "imageCaption": "한 변 4인 정삼각형 ABC와 세 변의 중점을 이은 DEF",
+    "imageSize": "full"
   },
   {
     "id": 4,
