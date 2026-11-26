@@ -1,0 +1,205 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "rational",
+              "numerator": "17320508075688772",
+              "denominator": "10000000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "rational",
+              "numerator": "17320508075688772",
+              "denominator": "10000000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 430
+  },
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "l0",
+        "ownerSegment": "sAB",
+        "text": "2"
+      },
+      {
+        "id": "l1",
+        "ownerSegment": "sDA",
+        "text": "2"
+      },
+      {
+        "id": "l2",
+        "ownerSegment": "sBC",
+        "text": "4"
+      }
+    ],
+    "parallels": [
+      {
+        "id": "par0",
+        "count": 1,
+        "segments": [
+          "sDA",
+          "sBC"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "id": "a0",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 60,
+        "label": "60",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a1",
+        "refs": [
+          "B",
+          "C",
+          "D"
+        ],
+        "value": 60,
+        "label": "60",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "23번 문제: 서술형 q23 원본 이미지 없음: 등변사다리꼴 AD∥BC와 AB=AD=2, 밑각 60°.",
+  "accessibilityDescription": "23번 문제 그림: 서술형 q23 원본 이미지 없음: 등변사다리꼴 AD∥BC와 AB=AD=2, 밑각 60°.",
+  "sourceConditions": [
+    {
+      "id": "src-q23",
+      "condition": " 조건: 사각형 $\\text{ABCD}$에서 $\\overline{\\text{AD}} \\parallel \\overline{\\text{BC}}$, $\\overline{\\text{AB}}=\\overline{\\text{AD}}=2\\text{cm}$, $\\angle\\text{B}=\\angle\\text{C}=60^\\circ$입니다. 구할 대상: (1) 사각형의 종류 [2점] (2) 선분 $\\overline{\\text{BC}}$의 길이 [2점] (3) 사각형 $\\square\\text{ABCD}$의 둘레의 길이 [1점]  1) 한 쌍의 대변이 평행하고 아랫변의 양 끝 각의 크기가 같은 사각형은 등변사다리꼴입니다. 2) 꼭짓점 $\\text{D}$를 지나 변 $\\overline{\\text{AB}}$에 평행한 보조선 $\\overline{\\text{DP}}$를 그어 $\\overline{\\text{BC}}$와의 교점을 $\\text{P}$라 합니다. $\\square\\text{ABPD}$는 평행사변형이 되고, $\\triangle\\text{DPC}$는 정삼각형이 됩니다.  (1) 사각형의 종류: 한 쌍의 대변이 평행하고($\\overline{\\text{AD}} \\parallel \\overline{\\text{BC}}$) 밑변의 두 양 끝 각의 크기가 같으므로($\\angle\\text{B}=\\angle\\text{C}=60^\\circ$) $\\square\\text{ABCD}$는 **등변사다리꼴**입니다. (2) $\\overline{\\text{BC}}$의 길이 계산: 점 $\\text{D}$를 지나 $\\overline{\\text{AB}}$에 평행한 직선이 변 $\\overline{\\text{BC}}$와 만나는 점을 $\\text{P}$라 하면, $\\overline{\\text{AB}} \\parallel \\overline{\\text{DP}}$이고 $\\overline{\\text{AD}} \\parallel \\overline{\\text{BP}}$이므로 $\\square\\text{ABPD}$는 평행사변형입니다. 대변의 길이가 같으므로 $\\overline{\\text{BP}} = \\overline{\\text{AD}} = 2\\text{cm}$, $\\overline{\\text{DP}} = \\overline{\\text{AB}} = 2\\text{cm}$. 동위각에 의해 $\\angle\\text{DPC} = \\angle\\text{B} = 60^\\circ$이므로 $\\triangle\\text{DPC}$에서 $\\angle\\text{DPC}=60^\\circ, \\angle\\text{C}=60^\\circ \\implies \\angle\\text{PDC} = 60^\\circ$. 따라서 $\\triangle\\text{DPC}$는 정삼각형이므로 $\\overline{\\text{PC}} = \\overline{\\text{DP}} = 2\\text{cm}$. 선분 $\\overline{\\text{BC}} = \\overline{\\text{BP}} + \\overline{\\text{PC}} = 2 + 2 = 4\\text{cm}$. (3) 둘레의 길이 계산: 등변사다리꼴에서 평행하지 않은 한 쌍의 대변의 길이는 같으므로 $\\overline{\\text{CD}} = \\overline{\\text{AB}} = 2\\text{cm}$. 따라서 $\\square\\text{ABCD}$의 둘레의 길이는 $\\overline{\\text{AB}} + \\overline{\\text{BC}} + \\overline{\\text{CD}} + \\overline{\\text{DA}} = 2 + 4 + 2 + 2 = 10\\text{cm}$.  (1) 등변사다리꼴 명시 [2점] (2) 보조선을 통한 평행사변형과 정삼각형 분할 및 $\\overline{\\text{BC}}=4\\text{cm}$ 도출 [2점] (3) 둘레 $2+4+2+2=10\\text{cm}$ 계산 [1점]  (1) 등변사다리꼴 (2) $4\\text{ cm}$ (3) $10\\text{ cm}$ ",
+      "mappedTo": "mathPlan.nodes;displaySegments;planeMarks"
+    },
+    {
+      "id": "source-visual-feature",
+      "condition": "서술형 q23 원본 이미지 없음: 등변사다리꼴 AD∥BC와 AB=AD=2, 밑각 60°; 풀이에 필요한 추가 관계",
+      "mappedTo": "displaySegments;planeMarks"
+    }
+  ],
+  "newVisualInformation": [
+    "서술형 q23 원본 이미지 없음: 등변사다리꼴 AD∥BC와 AB=AD=2, 밑각 60°; 풀이에 필요한 추가 관계"
+  ]
+}

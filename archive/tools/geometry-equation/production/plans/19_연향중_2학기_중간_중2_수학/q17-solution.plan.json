@@ -1,0 +1,227 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "5",
+              "denominator": "10"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3968626966596886",
+              "denominator": "1000000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "125",
+              "denominator": "100"
+            },
+            {
+              "kind": "rational",
+              "numerator": "9921567416492214",
+              "denominator": "1000000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sCE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 430
+  },
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "l0",
+        "ownerSegment": "sCA",
+        "text": "4"
+      },
+      {
+        "id": "l1",
+        "ownerSegment": "sAB",
+        "text": "5"
+      },
+      {
+        "id": "l2",
+        "ownerSegment": "sBC",
+        "text": "6"
+      },
+      {
+        "id": "l3",
+        "ownerSegment": "sAD",
+        "text": "8"
+      },
+      {
+        "id": "l4",
+        "ownerSegment": "sCE",
+        "text": "6"
+      },
+      {
+        "id": "l5",
+        "ownerSegment": "sDE",
+        "text": "12"
+      }
+    ]
+  },
+  "caption": "17번 문제: 원본 q17.png: 일직선 A-C-E와 A-B-D, AC4·CE6·AB5·AD8·BC6·DE=x.",
+  "accessibilityDescription": "17번 문제 그림: 원본 q17.png: 일직선 A-C-E와 A-B-D, AC4·CE6·AB5·AD8·BC6·DE=x.",
+  "sourceConditions": [
+    {
+      "id": "src-q17",
+      "condition": " 그림에서 $\\text{A,C,E}$는 한 직선 위, $\\text{A,B,D}$는 한 직선 위이고 $\\overline{\\text{AC}}=4\\text{cm}$, $\\overline{\\text{CE}}=6\\text{cm}$, $\\overline{\\text{AB}}=5\\text{cm}$, $\\overline{\\text{AD}}=8\\text{cm}$, $\\overline{\\text{BC}}=6\\text{cm}$입니다. 따라서 $\\overline{\\text{AE}}=4+6=10\\text{cm}$입니다.  $\\angle\\text{BAC}=\\angle\\text{EAD}$이고 $\\dfrac{\\overline{\\text{AB}}}{\\overline{\\text{AE}}}=\\dfrac{5}{10}=\\dfrac12$, $\\dfrac{\\overline{\\text{AC}}}{\\overline{\\text{AD}}}=\\dfrac{4}{8}=\\dfrac12$입니다. 두 변의 비와 그 끼인각이 같으므로 $\\triangle\\text{ABC}\\sim\\triangle\\text{AED}$입니다.  대응하는 변 $\\text{BC}$와 $\\text{ED}=x$의 비는 $1:2$이므로 $x=2\\times6=12\\text{cm}$입니다. 정답은 ①입니다. ",
+      "mappedTo": "mathPlan.nodes;displaySegments;planeMarks"
+    },
+    {
+      "id": "source-visual-feature",
+      "condition": "원본 q17.png: 일직선 A-C-E와 A-B-D, AC4·CE6·AB5·AD8·BC6·DE=x; 풀이에 필요한 추가 관계",
+      "mappedTo": "displaySegments;planeMarks"
+    }
+  ],
+  "newVisualInformation": [
+    "원본 q17.png: 일직선 A-C-E와 A-B-D, AC4·CE6·AB5·AD8·BC6·DE=x; 풀이에 필요한 추가 관계"
+  ]
+}

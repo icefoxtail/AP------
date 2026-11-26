@@ -1,0 +1,247 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "16",
+              "denominator": "10"
+            },
+            {
+              "kind": "rational",
+              "numerator": "6118823416311342",
+              "denominator": "1000000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-24615384615384616",
+              "denominator": "10000000000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "23533936216582084",
+              "denominator": "10000000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "36923076923076930",
+              "denominator": "10000000000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "23533936216582084",
+              "denominator": "10000000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "I",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "rational",
+              "numerator": "23533936216582084",
+              "denominator": "10000000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "I"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sBI",
+      "refs": [
+        "B",
+        "I"
+      ]
+    },
+    {
+      "id": "sCI",
+      "refs": [
+        "C",
+        "I"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sEC",
+      "refs": [
+        "E",
+        "C"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 430
+  },
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "l0",
+        "ownerSegment": "sAB",
+        "text": "9"
+      },
+      {
+        "id": "l1",
+        "ownerSegment": "sCA",
+        "text": "7"
+      }
+    ],
+    "parallels": [
+      {
+        "id": "par0",
+        "count": 1,
+        "segments": [
+          "sDE",
+          "sBC"
+        ]
+      }
+    ]
+  },
+  "caption": "9번 문제: 내심 I를 지나는 DE∥BC, 원본 AB9·AC7 길이.",
+  "accessibilityDescription": "9번 문제 그림: 내심 I를 지나는 DE∥BC, 원본 AB9·AC7 길이.",
+  "sourceConditions": [
+    {
+      "id": "src-q9",
+      "condition": " 조건: 점 $\\mathrm{I}$는 $\\triangle\\mathrm{ABC}$의 내심이고, 선분 $\\overline{\\mathrm{DE}}$는 점 $\\mathrm{I}$를 지나며 $\\overline{\\mathrm{BC}}$와 평행합니다. 변의 길이는 $\\overline{\\mathrm{AB}}=9\\text{cm}$, $\\overline{\\mathrm{AC}}=7\\text{cm}$입니다. 구할 대상: $\\triangle\\mathrm{ADE}$의 둘레의 길이를 구합니다.  먼저 풀이에 쓸 성질을 순서대로 정리합니다. 1) 내심 $\\mathrm{I}$의 성질에 의해 $\\overline{\\mathrm{BI}}$와 $\\overline{\\mathrm{CI}}$는 각각 $\\angle\\mathrm{B}$와 $\\angle\\mathrm{C}$의 이등분선입니다. 2) $\\overline{\\mathrm{DE}} \\parallel \\overline{\\mathrm{BC}}$이므로 엇각의 크기가 같습니다: $\\angle\\mathrm{DIB} = \\angle\\mathrm{IBC}$, $\\angle\\mathrm{EIC} = \\angle\\mathrm{ICB}$. 3) 따라서 $\\triangle\\mathrm{DBI}$와 $\\triangle\\mathrm{EIC}$는 각각 밑각의 크기가 같은 이등변삼각형이 되어 $\\overline{\\mathrm{DI}}=\\overline{\\mathrm{DB}}$, $\\overline{\\mathrm{EI}}=\\overline{\\mathrm{EC}}$입니다. 4) $\\triangle\\mathrm{ADE}$의 둘레는 $\\overline{\\mathrm{AB}} + \\overline{\\mathrm{AC}}$와 일치함을 도출합니다.  위에서 정리한 성질을 이용해 차례로 계산합니다. $\\overline{\\mathrm{BI}}$가 $\\angle\\mathrm{B}$의 이등분선이므로 $\\angle\\mathrm{DBI} = \\angle\\mathrm{IBC}$입니다. $\\overline{\\mathrm{DE}} \\parallel \\overline{\\mathrm{BC}}$에서 엇각의 크기가 같으므로 $\\angle\\mathrm{DIB} = \\angle\\mathrm{IBC}$입니다. 따라서 $\\angle\\mathrm{DBI} = \\angle\\mathrm{DIB}$이므로 $\\triangle\\mathrm{DBI}$는 이등변삼각형이며: $$\\overline{\\mathrm{DI}} = \\overline{\\mathrm{DB}}$$ 마찬가지로 $\\overline{\\mathrm{CI}}$가 $\\angle\\mathrm{C}$의 이등분선이므로 $\\angle\\mathrm{ECI} = \\angle\\mathrm{ICB}$이고, 엇각 $\\angle\\mathrm{EIC} = \\angle\\mathrm{ICB}$이므로: $$\\angle\\mathrm{ECI} = \\angle\\mathrm{EIC} \\implies \\overline{\\mathrm{EI}} = \\overline{\\mathrm{EC}}$$ 그러므로 선분 $\\overline{\\mathrm{DE}}$의 길이는 다음과 같습니다: $$\\overline{\\mathrm{DE}} = \\overline{\\mathrm{DI}} + \\overline{\\mathrm{EI}} = \\overline{\\mathrm{DB}} + \\overline{\\mathrm{EC}}$$ 이제 $\\triangle\\mathrm{ADE}$의 둘레의 길이를 계산하면 다음과 같습니다: $$\\text{둘레} = \\overline{\\mathrm{AD}} + \\overline{\\mathrm{DE}} + \\overline{\\mathrm{EA}}$$ $$= \\overline{\\mathrm{AD}} + (\\overline{\\mathrm{DB}} + \\overline{\\mathrm{EC}}) + \\overline{\\mathrm{EA}}$$ $$= (\\overline{\\mathrm{AD}} + \\overline{\\mathrm{DB}}) + (\\overline{\\mathrm{EA}} + \\overline{\\mathrm{EC}})$$ $$= \\overline{\\mathrm{AB}} + \\overline{\\mathrm{AC}} = 9 + 7 = 16\\text{ cm}$$  각 선지를 확인하면 다음과 같습니다. ① $15\\text{cm}$: 거짓 ② $16\\text{cm}$: 참 (계산 결과와 일치) ③ $17\\text{cm}$: 거짓 ④ $18\\text{cm}$: 거짓 ⑤ $19\\text{cm}$: 거짓  따라서 정답은 ②입니다. ",
+      "mappedTo": "mathPlan.nodes;displaySegments;planeMarks"
+    },
+    {
+      "id": "source-visual-feature",
+      "condition": "내심 I를 지나는 DE∥BC, 원본 AB9·AC7 길이; 풀이에 필요한 추가 관계",
+      "mappedTo": "displaySegments;planeMarks"
+    }
+  ],
+  "newVisualInformation": [
+    "내심 I를 지나는 DE∥BC, 원본 AB9·AC7 길이; 풀이에 필요한 추가 관계"
+  ]
+}

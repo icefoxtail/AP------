@@ -1,0 +1,272 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-83166247903554",
+              "denominator": "10000000000000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "24833147735478828",
+              "denominator": "10000000000000000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-20002686048743",
+              "denominator": "100000000000000"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-16740823228676076",
+              "denominator": "10000000000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "27777777777777776",
+              "denominator": "10000000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-351665165084283",
+              "denominator": "100000000000000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBF",
+      "refs": [
+        "B",
+        "F"
+      ]
+    },
+    {
+      "id": "sFC",
+      "refs": [
+        "F",
+        "C"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sDF",
+      "refs": [
+        "D",
+        "F"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 580,
+    "height": 405
+  },
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "l0",
+        "ownerSegment": "sAB",
+        "text": "6"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dim0",
+        "from": "A",
+        "to": "E",
+        "label": "4",
+        "side": "ABOVE"
+      },
+      {
+        "id": "dim1",
+        "from": "E",
+        "to": "C",
+        "label": "5",
+        "side": "ABOVE"
+      },
+      {
+        "id": "dim2",
+        "from": "D",
+        "to": "E",
+        "label": "8/3",
+        "side": "RIGHT"
+      }
+    ],
+    "parallels": [
+      {
+        "id": "par0",
+        "count": 1,
+        "segments": [
+          "sDA",
+          "sBC"
+        ]
+      },
+      {
+        "id": "par1",
+        "count": 2,
+        "segments": [
+          "sAB",
+          "sDF"
+        ]
+      }
+    ]
+  },
+  "caption": "20번 문제: AD∥BC와 AB∥DF, AC를 AE4:EC5로 나누는 E, AB6.",
+  "accessibilityDescription": "20번 문제 그림: AD∥BC와 AB∥DF, AC를 AE4:EC5로 나누는 E, AB6.",
+  "sourceConditions": [
+    {
+      "id": "src-q20",
+      "condition": " 조건: $\\overline{\\mathrm{AD}}\\parallel\\overline{\\mathrm{BC}}$, $\\overline{\\mathrm{AB}}\\parallel\\overline{\\mathrm{DF}}$입니다. 변의 길이는 $\\overline{\\mathrm{AB}}=6$, $\\overline{\\mathrm{AE}}=4$, $\\overline{\\mathrm{EC}}=5$입니다. 구할 대상: 선분 $\\overline{\\mathrm{DE}}$의 길이를 구합니다.  먼저 풀이에 쓸 성질을 순서대로 정리합니다. 1) $\\overline{\\mathrm{AD}}\\parallel\\overline{\\mathrm{BF}}$이고 $\\overline{\\mathrm{AB}}\\parallel\\overline{\\mathrm{DF}}$이므로 사각형 $\\square\\mathrm{ABFD}$는 평행사변형입니다. 2) 평행사변형의 대변의 길이는 같으므로 $\\overline{\\mathrm{DF}} = \\overline{\\mathrm{AB}} = 6$입니다. 3) $\\overline{\\mathrm{AD}} \\parallel \\overline{\\mathrm{BC}}$에 의해 모래시계 형태의 두 삼각형 $\\triangle\\mathrm{ADE}$와 $\\triangle\\mathrm{CFE}$는 엇각이 같으므로 AA 닮음입니다. 4) 닮음비 $\\overline{\\mathrm{DE}} : \\overline{\\mathrm{EF}} = \\overline{\\mathrm{AE}} : \\overline{\\mathrm{CE}} = 4 : 5$를 이용하여 선분 $\\overline{\\mathrm{DE}}$의 길이를 비례배분합니다.  위에서 정리한 성질을 이용해 차례로 계산합니다. 사각형 $\\square\\mathrm{ABFD}$에서 두 쌍의 대변이 각각 평행하므로 평행사변형입니다: $$\\overline{\\mathrm{DF}} = \\overline{\\mathrm{AB}} = 6$$ 선분 $\\overline{\\mathrm{DF}}$ 위에 점 $\\mathrm{E}$가 있으므로 $\\overline{\\mathrm{DF}} = \\overline{\\mathrm{DE}} + \\overline{\\mathrm{EF}} = 6$입니다. 한편 $\\overline{\\mathrm{AD}} \\parallel \\overline{\\mathrm{BC}}$이므로 엇각의 크기가 같아: $$\\angle\\mathrm{DAE} = \\angle\\mathrm{FCE}, \\quad \\angle\\mathrm{ADE} = \\angle\\mathrm{CFE}$$ 따라서 두 각의 크기가 각각 같으므로: $$\\triangle\\mathrm{ADE} \\sim \\triangle\\mathrm{CFE} \\quad (\\text{AA 닮음})$$ 대응변의 길이의 비는 다음과 같습니다: $$\\overline{\\mathrm{DE}} : \\overline{\\mathrm{FE}} = \\overline{\\mathrm{AE}} : \\overline{\\mathrm{CE}} = 4 : 5$$ 따라서 $\\overline{\\mathrm{DE}}$의 길이는 전체 선분 $\\overline{\\mathrm{DF}}$를 $4:5$로 비례배분한 것 중 $4$에 해당합니다: $$\\overline{\\mathrm{DE}} = \\overline{\\mathrm{DF}} \\times \\frac{4}{4 + 5} = 6 \\times \\frac{4}{9} = \\frac{24}{9} = \\frac{8}{3}$$  각 선지를 확인하면 다음과 같습니다. ① $2$: 거짓 ② $\\dfrac{5}{2}$: 거짓 ③ $\\dfrac{8}{3}$: 참 (계산된 $\\overline{\\mathrm{DE}}=\\dfrac{8}{3}$과 일치) ④ $3$: 거짓 ⑤ $\\dfrac{10}{3}$: 거짓 ($\\overline{\\mathrm{EF}}$의 길이에 해당함)  따라서 정답은 ③입니다. ",
+      "mappedTo": "mathPlan.nodes;displaySegments;planeMarks"
+    },
+    {
+      "id": "source-visual-feature",
+      "condition": "AD∥BC와 AB∥DF, AC를 AE4:EC5로 나누는 E, AB6; 풀이에 필요한 추가 관계",
+      "mappedTo": "displaySegments;planeMarks"
+    }
+  ],
+  "newVisualInformation": [
+    "AD∥BC와 AB∥DF, AC를 AE4:EC5로 나누는 E, AB6; 풀이에 필요한 추가 관계"
+  ]
+}

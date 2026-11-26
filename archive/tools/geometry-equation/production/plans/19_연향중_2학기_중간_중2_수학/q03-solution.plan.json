@@ -1,0 +1,205 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "6968908795874237",
+              "denominator": "1000000000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "5847608800326174",
+              "denominator": "1000000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2309401",
+              "denominator": "1000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "O"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sOC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 430
+  },
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a0",
+        "refs": [
+          "O",
+          "B",
+          "C"
+        ],
+        "value": 30,
+        "label": "30",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a1",
+        "refs": [
+          "O",
+          "C",
+          "A"
+        ],
+        "value": 50,
+        "label": "50",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a2",
+        "refs": [
+          "O",
+          "A",
+          "B"
+        ],
+        "value": 10,
+        "label": "10",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "3번 문제: 원본 q04.png: 외심 O와 OA·OB·OC, B의 30°, C의 50°, A의 미지각 x.",
+  "accessibilityDescription": "3번 문제 그림: 원본 q04.png: 외심 O와 OA·OB·OC, B의 30°, C의 50°, A의 미지각 x.",
+  "sourceConditions": [
+    {
+      "id": "src-q3",
+      "condition": " 조건: 점 $\\text{O}$는 $\\triangle\\text{ABC}$의 외심이고, 그림에서 $\\angle\\text{OBC}=30^\\circ$, $\\angle\\text{OCA}=50^\\circ$입니다. 구할 각은 $x=\\angle\\text{BAO}$입니다.  외심에서 꼭짓점까지의 거리는 같으므로 $\\overline{\\text{OA}}=\\overline{\\text{OB}}=\\overline{\\text{OC}}$입니다. 따라서 $\\triangle\\text{OAB}$와 $\\triangle\\text{OBC}$는 이등변삼각형입니다.  $\\triangle\\text{OAB}$에서 $\\angle\\text{ABO}=x$이고, $\\triangle\\text{OBC}$에서 $\\angle\\text{OCB}=30^\\circ$입니다. 또한 $\\angle\\text{OAC}=\\angle\\text{OCA}=50^\\circ$입니다. 그러므로 $\\triangle\\text{ABC}$의 세 각은 $x+50^\\circ$, $x+30^\\circ$, $30^\\circ+50^\\circ$입니다.  삼각형의 내각의 합을 이용하면 $(x+50)+(x+30)+(30+50)=180$, $2x+160=180$, $x=10$입니다.  따라서 정답은 ②입니다. ",
+      "mappedTo": "mathPlan.nodes;displaySegments;planeMarks"
+    },
+    {
+      "id": "source-visual-feature",
+      "condition": "원본 q04.png: 외심 O와 OA·OB·OC, B의 30°, C의 50°, A의 미지각 x; 풀이에 필요한 추가 관계",
+      "mappedTo": "displaySegments;planeMarks"
+    }
+  ],
+  "newVisualInformation": [
+    "원본 q04.png: 외심 O와 OA·OB·OC, B의 30°, C의 50°, A의 미지각 x; 풀이에 필요한 추가 관계"
+  ]
+}

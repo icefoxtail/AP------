@@ -9,7 +9,7 @@
     },
     "nodes": [
       {
-        "id": "B",
+        "id": "A",
         "op": "SOURCE_POINT",
         "inputs": [],
         "args": {
@@ -17,6 +17,26 @@
             {
               "kind": "integer",
               "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "8242",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
             },
             {
               "kind": "integer",
@@ -29,214 +49,67 @@
       },
       {
         "id": "C",
-        "op": "TRANSLATE_POINT",
-        "inputs": [
-          "B"
-        ],
+        "op": "SOURCE_POINT",
+        "inputs": [],
         "args": {
-          "dx": {
-            "kind": "integer",
-            "value": "10"
-          },
-          "dy": {
-            "kind": "integer",
-            "value": "0"
-          }
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
         },
         "outputType": "POINT",
-        "factRole": "DERIVED_INTERMEDIATE"
-      },
-      {
-        "id": "U",
-        "op": "POLAR_POINT",
-        "inputs": [
-          "B",
-          "C"
-        ],
-        "args": {
-          "length": {
-            "kind": "integer",
-            "value": "1"
-          },
-          "angleDeg": {
-            "kind": "integer",
-            "value": "70"
-          },
-          "turn": "CCW"
-        },
-        "outputType": "POINT",
-        "factRole": "DERIVED_INTERMEDIATE"
-      },
-      {
-        "id": "V",
-        "op": "POLAR_POINT",
-        "inputs": [
-          "C",
-          "B"
-        ],
-        "args": {
-          "length": {
-            "kind": "integer",
-            "value": "1"
-          },
-          "angleDeg": {
-            "kind": "integer",
-            "value": "70"
-          },
-          "turn": "CW"
-        },
-        "outputType": "POINT",
-        "factRole": "DERIVED_INTERMEDIATE"
-      },
-      {
-        "id": "bu",
-        "op": "LINE_THROUGH",
-        "inputs": [
-          "B",
-          "U"
-        ],
-        "args": {},
-        "outputType": "LINE",
-        "factRole": "DERIVED_INTERMEDIATE"
-      },
-      {
-        "id": "cv",
-        "op": "LINE_THROUGH",
-        "inputs": [
-          "C",
-          "V"
-        ],
-        "args": {},
-        "outputType": "LINE",
-        "factRole": "DERIVED_INTERMEDIATE"
-      },
-      {
-        "id": "A",
-        "op": "LINE_INTERSECTION",
-        "inputs": [
-          "bu",
-          "cv"
-        ],
-        "args": {},
-        "outputType": "POINT",
-        "factRole": "DERIVED_INTERMEDIATE"
-      },
-      {
-        "id": "bB",
-        "op": "ANGLE_BISECTOR",
-        "inputs": [
-          "A",
-          "B",
-          "C"
-        ],
-        "args": {
-          "mode": "INTERNAL"
-        },
-        "outputType": "LINE",
-        "factRole": "DERIVED_INTERMEDIATE"
-      },
-      {
-        "id": "bC",
-        "op": "ANGLE_BISECTOR",
-        "inputs": [
-          "A",
-          "C",
-          "B"
-        ],
-        "args": {
-          "mode": "INTERNAL"
-        },
-        "outputType": "LINE",
-        "factRole": "DERIVED_INTERMEDIATE"
-      },
-      {
-        "id": "I",
-        "op": "LINE_INTERSECTION",
-        "inputs": [
-          "bB",
-          "bC"
-        ],
-        "args": {},
-        "outputType": "POINT",
-        "factRole": "DERIVED_INTERMEDIATE"
-      },
-      {
-        "id": "W",
-        "op": "POLAR_POINT",
-        "inputs": [
-          "B",
-          "C"
-        ],
-        "args": {
-          "length": {
-            "kind": "integer",
-            "value": "1"
-          },
-          "angleDeg": {
-            "kind": "integer",
-            "value": "50"
-          },
-          "turn": "CCW"
-        },
-        "outputType": "POINT",
-        "factRole": "DERIVED_INTERMEDIATE"
-      },
-      {
-        "id": "X",
-        "op": "POLAR_POINT",
-        "inputs": [
-          "C",
-          "B"
-        ],
-        "args": {
-          "length": {
-            "kind": "integer",
-            "value": "1"
-          },
-          "angleDeg": {
-            "kind": "integer",
-            "value": "50"
-          },
-          "turn": "CW"
-        },
-        "outputType": "POINT",
-        "factRole": "DERIVED_INTERMEDIATE"
-      },
-      {
-        "id": "bw",
-        "op": "LINE_THROUGH",
-        "inputs": [
-          "B",
-          "W"
-        ],
-        "args": {},
-        "outputType": "LINE",
-        "factRole": "DERIVED_INTERMEDIATE"
-      },
-      {
-        "id": "cx",
-        "op": "LINE_THROUGH",
-        "inputs": [
-          "C",
-          "X"
-        ],
-        "args": {},
-        "outputType": "LINE",
-        "factRole": "DERIVED_INTERMEDIATE"
+        "factRole": "GIVEN"
       },
       {
         "id": "O",
-        "op": "LINE_INTERSECTION",
-        "inputs": [
-          "bw",
-          "cx"
-        ],
-        "args": {},
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3575016015530212",
+              "denominator": "1000000000000000"
+            }
+          ]
+        },
         "outputType": "POINT",
-        "factRole": "DERIVED_INTERMEDIATE"
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "I",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "21006226146291292",
+              "denominator": "10000000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
       }
     ]
   },
+  "displayLines": [],
+  "displayCircles": [],
   "displayPoints": [
     "A",
     "B",
@@ -246,46 +119,72 @@
   ],
   "displaySegments": [
     {
-      "id": "AB",
+      "id": "sAB",
       "refs": [
         "A",
         "B"
       ]
     },
     {
-      "id": "BC",
+      "id": "sBC",
       "refs": [
         "B",
         "C"
       ]
     },
     {
-      "id": "CA",
+      "id": "sCA",
       "refs": [
         "C",
         "A"
       ]
     },
     {
-      "id": "BI",
+      "id": "sBO",
+      "refs": [
+        "B",
+        "O"
+      ]
+    },
+    {
+      "id": "sCO",
+      "refs": [
+        "C",
+        "O"
+      ]
+    },
+    {
+      "id": "sBI",
       "refs": [
         "B",
         "I"
       ]
     },
     {
-      "id": "BO",
+      "id": "sCI",
       "refs": [
-        "B",
+        "C",
+        "I"
+      ]
+    },
+    {
+      "id": "sAO",
+      "refs": [
+        "A",
         "O"
+      ]
+    },
+    {
+      "id": "sAI",
+      "refs": [
+        "A",
+        "I"
       ]
     }
   ],
-  "displayCircles": [],
-  "displayLines": [],
   "coordinateCanvas": {
-    "width": 720,
-    "height": 600
+    "width": 545,
+    "height": 430
   },
   "planeMarks": {
     "equalLengths": [
@@ -293,8 +192,8 @@
         "id": "eq0",
         "count": 1,
         "segments": [
-          "AB",
-          "CA"
+          "sAB",
+          "sCA"
         ]
       }
     ],
@@ -308,7 +207,8 @@
         ],
         "value": 40,
         "label": "40",
-        "style": "ARC"
+        "style": "ARC",
+        "factRole": "GIVEN"
       },
       {
         "id": "a1",
@@ -320,7 +220,7 @@
         "value": 35,
         "label": "35",
         "style": "ARC",
-        "ring": 3
+        "factRole": "GIVEN"
       },
       {
         "id": "a2",
@@ -332,49 +232,37 @@
         "value": 20,
         "label": "20",
         "style": "ARC",
-        "ring": 1
-      }
-    ],
-    "callouts": [
+        "factRole": "GIVEN"
+      },
       {
-        "id": "kOBI",
-        "kind": "ANGLE",
-        "vertex": "B",
-        "rays": [
+        "id": "a3",
+        "refs": [
           "O",
+          "B",
           "I"
         ],
-        "at": "RIGHT",
-        "link": "VERTEX",
-        "angles": [
-          {
-            "id": "a3",
-            "refs": [
-              "O",
-              "B",
-              "I"
-            ],
-            "value": 15,
-            "label": "15",
-            "style": "ARC"
-          }
-        ]
+        "value": 15,
+        "label": "15",
+        "style": "ARC",
+        "factRole": "GIVEN"
       }
     ]
   },
-  "caption": "이등변삼각형 ABC에서 꼭지각 A가 40도이므로 두 밑각 B와 C는 각각 70도이다. 내심 I에 대하여 BI가 각 B를 이등분하므로 각 ABI는 35도이고, 외심 O에 대하여 각 AOB는 각 C의 두 배인 140도이므로 각 ABO는 20도이다. 따라서 각 OBI는 35도에서 20도를 뺀 15도이다. 따라서 답은 (1) 35도, (2) 20도, (3) 15도이다.",
-  "accessibilityDescription": "이등변삼각형 ABC 안에 내심 I와 외심 O가 있고, 꼭짓점 B에서 I와 O로 선분이 그어져 있다. 꼭짓점 A와 B 주변에 각의 크기와 호 표시가 있고, 오른쪽에 각 OBI를 따로 그린 작은 그림이 있다.",
-  "newVisualInformation": [
-    "꼭지각 40도인 이등변삼각형",
-    "각 ABI의 크기 35도",
-    "각 ABO의 크기 20도",
-    "각 OBI의 크기 15도"
-  ],
+  "caption": "22번 문제: 이등변 AB=AC, ∠A=40°, 외심 O와 내심 I의 B/C 연결선.",
+  "accessibilityDescription": "22번 문제 그림: 이등변 AB=AC, ∠A=40°, 외심 O와 내심 I의 B/C 연결선.",
   "sourceConditions": [
     {
-      "id": "source",
-      "condition": "",
-      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+      "id": "src-q22",
+      "condition": " 조건: $\\triangle\\mathrm{ABC}$에서 $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{AC}}$인 이등변삼각형이고, 꼭지각 $\\angle\\mathrm{A}=40^\\circ$입니다. 점 $\\mathrm{O}$와 $\\mathrm{I}$는 각각 $\\triangle\\mathrm{ABC}$의 외심과 내심입니다. 구할 대상: (1) $\\angle\\mathrm{ABI}$의 크기 (풀이과정과 답, 3점) (2) $\\angle\\mathrm{ABO}$의 크기 (풀이과정과 답, 3점) (3) $\\angle\\mathrm{OBI}$의 크기 (정답만, 2점)  먼저 풀이에 쓸 성질을 순서대로 정리합니다. 1) $\\triangle\\mathrm{ABC}$가 이등변삼각형이므로 두 밑각은 $\\angle\\mathrm{B} = \\angle\\mathrm{C} = \\dfrac{180^\\circ - 40^\\circ}{2} = 70^\\circ$입니다. 2) 내심 $\\mathrm{I}$는 각의 이등분선의 교점이므로 $\\overline{\\mathrm{BI}}$는 $\\angle\\mathrm{B}$를 이등분합니다. 3) 외심 $\\mathrm{O}$는 세 꼭짓점에 이르는 거리가 같으므로 $\\triangle\\mathrm{OAB}$는 $\\overline{\\mathrm{OA}}=\\overline{\\mathrm{OB}}$인 이등변삼각형입니다. 중심각 $\\angle\\mathrm{AOB}=2\\angle\\mathrm{C}$를 이용하여 밑각 $\\angle\\mathrm{ABO}$를 구합니다. 4) $\\angle\\mathrm{OBI} = \\angle\\mathrm{ABI} - \\angle\\mathrm{ABO}$의 차이를 구합니다.  먼저 이등변삼각형 $\\mathrm{ABC}$의 밑각 $\\angle\\mathrm{B}$를 계산합니다: $$\\angle\\mathrm{B} = \\angle\\mathrm{C} = \\frac{180^\\circ - 40^\\circ}{2} = 70^\\circ$$  (1) $\\angle\\mathrm{ABI}$의 크기: 점 $\\mathrm{I}$는 $\\triangle\\mathrm{ABC}$의 내심이므로 선분 $\\overline{\\mathrm{BI}}$는 $\\angle\\mathrm{B}$의 이등분선입니다. $$\\angle\\mathrm{ABI} = \\frac{1}{2}\\angle\\mathrm{B} = \\frac{1}{2} \\times 70^\\circ = 35^\\circ$$  (2) $\\angle\\mathrm{ABO}$의 크기: 점 $\\mathrm{O}$는 $\\triangle\\mathrm{ABC}$의 외심이므로 원주각과 중심각의 성질에 의해: $$\\angle\\mathrm{AOB} = 2\\angle\\mathrm{C} = 2 \\times 70^\\circ = 140^\\circ$$ $\\triangle\\mathrm{OAB}$에서 $\\overline{\\mathrm{OA}}=\\overline{\\mathrm{OB}}$(외접원의 반지름)인 이등변삼각형이므로 두 밑각의 크기는 같습니다: $$\\angle\\mathrm{ABO} = \\frac{180^\\circ - \\angle\\mathrm{AOB}}{2} = \\frac{180^\\circ - 140^\\circ}{2} = \\frac{40^\\circ}{2} = 20^\\circ$$  (3) $\\angle\\mathrm{OBI}$의 크기: 반직선 $\\overline{\\mathrm{BO}}$가 $\\angle\\mathrm{ABI}$의 내부에 위치하므로: $$\\angle\\mathrm{OBI} = \\angle\\mathrm{ABI} - \\angle\\mathrm{ABO} = 35^\\circ - 20^\\circ = 15^\\circ$$ (또는 $\\angle\\mathrm{OBC} = \\angle\\mathrm{B} - \\angle\\mathrm{ABO} = 70^\\circ - 20^\\circ = 50^\\circ$이고, $\\angle\\mathrm{IBC} = 35^\\circ$이므로 $\\angle\\mathrm{OBI} = \\angle\\mathrm{OBC} - \\angle\\mathrm{IBC} = 50^\\circ - 35^\\circ = 15^\\circ$로 일치합니다.)  각 소문항의 핵심 근거를 정리하면 다음과 같습니다. - (1) 내심의 정의에 따른 각의 이등분선 성질로 $35^\\circ$ 명확히 산출함. - (2) 외심 중심각과 이등변삼각형 성질을 적용하여 $20^\\circ$ 정확히 산출함. - (3) 두 각의 차를 구하여 $15^\\circ$를 올바르게 제시함.  따라서 최종 정답은 다음과 같습니다: (1) $35^\\circ$ (2) $20^\\circ$ (3) $15^\\circ$ ",
+      "mappedTo": "mathPlan.nodes;displaySegments;planeMarks"
+    },
+    {
+      "id": "source-visual-feature",
+      "condition": "내심·외심 보조선과 ∠ABI35°, ∠ABO20°, ∠OBI15°",
+      "mappedTo": "displaySegments;planeMarks"
     }
+  ],
+  "newVisualInformation": [
+    "내심·외심 보조선과 ∠ABI35°, ∠ABO20°, ∠OBI15°"
   ]
 }

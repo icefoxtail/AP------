@@ -1,0 +1,267 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "8578",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "18869030900932350",
+              "denominator": "10000000000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "45315363232950570",
+              "denominator": "10000000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-2732141854055941",
+              "denominator": "1000000000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2718921793977034",
+              "denominator": "1000000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sFD",
+      "refs": [
+        "F",
+        "D"
+      ]
+    },
+    {
+      "id": "sED",
+      "refs": [
+        "E",
+        "D"
+      ]
+    },
+    {
+      "id": "sBF",
+      "refs": [
+        "B",
+        "F"
+      ]
+    },
+    {
+      "id": "sCE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 430
+  },
+  "planeMarks": {
+    "expressionLabels": [],
+    "equalLengths": [
+      {
+        "id": "eq0",
+        "count": 1,
+        "segments": [
+          "sAB",
+          "sCA"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "id": "a0",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 50,
+        "label": "50",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a1",
+        "refs": [
+          "F",
+          "D",
+          "E"
+        ],
+        "value": 65,
+        "label": "65",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "4번 문제: 이등변삼각형, A=50°, CD=BF 및 BD=CE, 연결선 FD·ED.",
+  "accessibilityDescription": "4번 문제 그림: 이등변삼각형, A=50°, CD=BF 및 BD=CE, 연결선 FD·ED.",
+  "sourceConditions": [
+    {
+      "id": "src-q4",
+      "condition": " 조건: $\\triangle\\mathrm{ABC}$에서 $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{AC}}$이고 $\\angle\\mathrm{A}=50^\\circ$입니다. 점 $\\mathrm{D}$는 변 $\\overline{\\mathrm{BC}}$ 위의 점, $\\mathrm{E}$는 $\\overline{\\mathrm{AC}}$ 위의 점, $\\mathrm{F}$는 $\\overline{\\mathrm{AB}}$ 위의 점이며, $\\overline{\\mathrm{CD}}=\\overline{\\mathrm{BF}}$, $\\overline{\\mathrm{BD}}=\\overline{\\mathrm{CE}}$입니다. 구할 대상: $\\angle\\mathrm{FDE}$의 크기를 구합니다.  먼저 풀이에 쓸 성질을 순서대로 정리합니다. 1) $\\triangle\\mathrm{ABC}$가 이등변삼각형이므로 밑각 $\\angle\\mathrm{B} = \\angle\\mathrm{C} = \\dfrac{180^\\circ - 50^\\circ}{2} = 65^\\circ$입니다. 2) $\\triangle\\mathrm{FBD}$와 $\\triangle\\mathrm{DCE}$에서 대응하는 두 변의 길이와 그 끼인각이 같으므로 SAS 합동임을 확인합니다. 3) 합동인 두 삼각형의 대응각 관계를 이용하여 점 $\\mathrm{D}$에서 직선 $\\overline{\\mathrm{BC}}$ 위의 평각 $180^\\circ$ 관계식을 세웁니다.  먼저 두 밑각의 크기는 다음과 같습니다: $$\\angle\\mathrm{B} = \\angle\\mathrm{C} = \\frac{180^\\circ - 50^\\circ}{2} = 65^\\circ$$ 이제 $\\triangle\\mathrm{FBD}$와 $\\triangle\\mathrm{DCE}$를 비교하면: $$\\overline{\\mathrm{BF}} = \\overline{\\mathrm{CD}} \\quad (\\text{조건})$$ $$\\angle\\mathrm{B} = \\angle\\mathrm{C} = 65^\\circ$$ $$\\overline{\\mathrm{BD}} = \\overline{\\mathrm{CE}} \\quad (\\text{조건})$$ 따라서 대응하는 두 변의 길이가 같고 그 끼인각의 크기가 같으므로: $$\\triangle\\mathrm{FBD} \\equiv \\triangle\\mathrm{DCE} \\quad (\\text{SAS 합동})$$ 합동인 두 삼각형의 대응각의 크기가 같으므로: $$\\angle\\mathrm{BFD} = \\angle\\mathrm{CDE}, \\quad \\angle\\mathrm{BDF} = \\angle\\mathrm{CED}$$ $\\triangle\\mathrm{FBD}$의 세 내각의 합은 $180^\\circ$이므로: $$\\angle\\mathrm{BFD} + \\angle\\mathrm{BDF} + \\angle\\mathrm{B} = 180^\\circ \\implies \\angle\\mathrm{BFD} + \\angle\\mathrm{BDF} + 65^\\circ = 180^\\circ$$ $$\\angle\\mathrm{BFD} + \\angle\\mathrm{BDF} = 115^\\circ$$ $\\angle\\mathrm{CDE} = \\angle\\mathrm{BFD}$이므로: $$\\angle\\mathrm{BDF} + \\angle\\mathrm{CDE} = \\angle\\mathrm{BDF} + \\angle\\mathrm{BFD} = 115^\\circ$$ 점 $\\mathrm{D}$에서 선분 $\\overline{\\mathrm{BC}}$는 일직선이므로 세 각의 합은 $180^\\circ$입니다: $$\\angle\\mathrm{BDF} + \\angle\\mathrm{FDE} + \\angle\\mathrm{CDE} = 180^\\circ$$ $$(\\angle\\mathrm{BDF} + \\angle\\mathrm{CDE}) + \\angle\\mathrm{FDE} = 115^\\circ + \\angle\\mathrm{FDE} = 180^\\circ$$ $$\\angle\\mathrm{FDE} = 180^\\circ - 115^\\circ = 65^\\circ$$  각 선지를 확인하면 다음과 같습니다. ① $50^\\circ$: 거짓 ($65^\\circ$와 불일치) ② $55^\\circ$: 거짓 ($65^\\circ$와 불일치) ③ $60^\\circ$: 거짓 ($65^\\circ$와 불일치) ④ $65^\\circ$: 참 (계산된 $\\angle\\mathrm{FDE} = 65^\\circ$와 일치) ⑤ $70^\\circ$: 거짓 ($65^\\circ$와 불일치)  따라서 정답은 ④입니다. ",
+      "mappedTo": "mathPlan.nodes;displaySegments;planeMarks"
+    },
+    {
+      "id": "source-visual-feature",
+      "condition": "이등변삼각형, A=50°, CD=BF 및 BD=CE, 연결선 FD·ED; 풀이에 필요한 추가 관계",
+      "mappedTo": "displaySegments;planeMarks"
+    }
+  ],
+  "newVisualInformation": [
+    "이등변삼각형, A=50°, CD=BF 및 BD=CE, 연결선 FD·ED; 풀이에 필요한 추가 관계"
+  ]
+}

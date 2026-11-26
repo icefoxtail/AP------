@@ -1,0 +1,234 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "-4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "-4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "29282",
+              "denominator": "10000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "sCE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 430
+  },
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "eq0",
+        "count": 1,
+        "segments": [
+          "sBE",
+          "sCE",
+          "sBC"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "id": "a0",
+        "refs": [
+          "B",
+          "E",
+          "C"
+        ],
+        "value": 60,
+        "label": "60",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a1",
+        "refs": [
+          "A",
+          "B",
+          "E"
+        ],
+        "value": 30,
+        "label": "30",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a2",
+        "refs": [
+          "B",
+          "A",
+          "E"
+        ],
+        "value": 75,
+        "label": "75",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "21번 문제: 서술형 도형: 정사각형 ABCD 내부의 정삼각형 BEC와 각 x·y.",
+  "accessibilityDescription": "21번 문제 그림: 서술형 도형: 정사각형 ABCD 내부의 정삼각형 BEC와 각 x·y.",
+  "sourceConditions": [
+    {
+      "id": "src-q21",
+      "condition": " 조건: $\\square\\mathrm{ABCD}$는 정사각형이고 점 $\\mathrm{E}$는 정사각형 내부의 점으로서 $\\overline{\\mathrm{EB}}=\\overline{\\mathrm{BC}}=\\overline{\\mathrm{EC}}$입니다. 구할 대상: (1) $\\angle y$의 크기를 풀이과정과 함께 구합니다. (3점) (2) $\\angle x$의 크기를 풀이과정과 함께 구합니다. (3점)  먼저 풀이에 쓸 성질을 순서대로 정리합니다. 1) $\\overline{\\mathrm{EB}}=\\overline{\\mathrm{BC}}=\\overline{\\mathrm{EC}}$이므로 $\\triangle\\mathrm{EBC}$는 세 변의 길이가 같은 정삼각형입니다. 따라서 한 내각의 크기는 $60^\\circ$입니다. 2) 정사각형의 한 내각은 $90^\\circ$이므로 $\\angle y = \\angle\\mathrm{ABC} - \\angle\\mathrm{EBC}$로 계산합니다. 3) $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{BC}}$이고 $\\overline{\\mathrm{BE}}=\\overline{\\mathrm{BC}}$이므로 $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{BE}}$가 되어 $\\triangle\\mathrm{ABE}$는 이등변삼각형입니다. 꼭지각 $\\angle y$를 이용하여 밑각 $\\angle x$를 구합니다.  (1) $\\angle y$의 크기 계산: $\\triangle\\mathrm{EBC}$에서 세 변의 길이가 같으므로 정삼각형입니다: $$\\angle\\mathrm{EBC} = 60^\\circ$$ 정사각형 $\\mathrm{ABCD}$에서 $\\angle\\mathrm{ABC} = 90^\\circ$이므로: $$\\angle y = \\angle\\mathrm{ABC} - \\angle\\mathrm{EBC} = 90^\\circ - 60^\\circ = 30^\\circ$$  (2) $\\angle x$의 크기 계산: 정사각형의 성질에 의해 $\\overline{\\mathrm{AB}} = \\overline{\\mathrm{BC}}$이고, 정삼각형의 성질에 의해 $\\overline{\\mathrm{BE}} = \\overline{\\mathrm{BC}}$입니다. 따라서 $\\overline{\\mathrm{AB}} = \\overline{\\mathrm{BE}}$이므로 $\\triangle\\mathrm{ABE}$는 이등변삼각형입니다. 이등변삼각형 $\\mathrm{ABE}$에서 꼭지각이 $\\angle y = 30^\\circ$이므로 두 밑각의 크기는 서로 같습니다: $$\\angle\\mathrm{BAE} = \\angle\\mathrm{BEA} = \\angle x$$ 삼각형의 세 내각의 크기의 합은 $180^\\circ$이므로: $$\\angle x = \\frac{180^\\circ - \\angle y}{2} = \\frac{180^\\circ - 30^\\circ}{2} = \\frac{150^\\circ}{2} = 75^\\circ$$  각 소문항의 핵심 근거를 정리하면 다음과 같습니다. - 소문항 (1): 정삼각형의 내각 $60^\\circ$와 정사각형의 직각 $90^\\circ$의 차이로 $\\angle y = 30^\\circ$를 올바르게 유도함. - 소문항 (2): $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{BE}}$에 의한 이등변삼각형 성질을 적용하여 밑각 $\\angle x = 75^\\circ$를 정확히 계산함.  따라서 최종 정답은 다음과 같습니다: (1) $30^\\circ$ (2) $75^\\circ$ ",
+      "mappedTo": "mathPlan.nodes;displaySegments;planeMarks"
+    },
+    {
+      "id": "source-visual-feature",
+      "condition": "정삼각형 BEC 60°에서 유도한 30°·75° 해설 각",
+      "mappedTo": "displaySegments;planeMarks"
+    }
+  ],
+  "newVisualInformation": [
+    "정삼각형 BEC 60°에서 유도한 30°·75° 해설 각"
+  ]
+}

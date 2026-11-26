@@ -1,0 +1,340 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2585786437626905",
+              "denominator": "1000000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-5414213562373095",
+              "denominator": "1000000000000000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-27071067811865476",
+              "denominator": "10000000000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "12928932188134526",
+              "denominator": "10000000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "I",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-1"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-14309644062711508",
+              "denominator": "10000000000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "19023689270621828",
+              "denominator": "10000000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "outer",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "inner",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "I"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [
+    "outer",
+    "inner"
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "O",
+    "I",
+    "D",
+    "E",
+    "F"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sOI",
+      "refs": [
+        "O",
+        "I"
+      ]
+    },
+    {
+      "id": "sID",
+      "refs": [
+        "I",
+        "D"
+      ]
+    },
+    {
+      "id": "sIE",
+      "refs": [
+        "I",
+        "E"
+      ]
+    },
+    {
+      "id": "sIF",
+      "refs": [
+        "I",
+        "F"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 430
+  },
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "l0",
+        "ownerSegment": "sIE",
+        "text": "1"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dim0",
+        "from": "O",
+        "to": "A",
+        "label": "3",
+        "side": "ABOVE"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "B",
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "I",
+        "E",
+        "B"
+      ]
+    },
+    {
+      "id": "r2",
+      "refs": [
+        "I",
+        "F",
+        "A"
+      ]
+    },
+    {
+      "id": "r3",
+      "refs": [
+        "I",
+        "D",
+        "A"
+      ]
+    }
+  ],
+  "caption": "10번 문제: 외접원 반지름3·내접원 반지름1 및 직각삼각형 ABC와 접점 D/E/F.",
+  "accessibilityDescription": "10번 문제 그림: 외접원 반지름3·내접원 반지름1 및 직각삼각형 ABC와 접점 D/E/F.",
+  "sourceConditions": [
+    {
+      "id": "src-q10",
+      "condition": " 조건: $\\angle\\mathrm{C}=90^\\circ$인 직각삼각형 $\\mathrm{ABC}$에서 외접원 $\\mathrm{O}$의 반지름은 $R=3\\text{cm}$, 내접원 $\\mathrm{I}$의 반지름은 $r=1\\text{cm}$입니다. 구할 대상: $\\triangle\\mathrm{ABC}$의 넓이를 구합니다.  먼저 풀이에 쓸 성질을 순서대로 정리합니다. 1) 직각삼각형의 외심 $\\mathrm{O}$는 빗변 $\\overline{\\mathrm{AB}}$의 중점이므로 빗변의 길이는 지름 $c = 2R = 2 \\times 3 = 6\\text{cm}$입니다. 2) 직각삼각형의 두 직각변을 $a, b$, 빗변을 $c$라 할 때 내접원 반지름 공식 $r = \\dfrac{a+b-c}{2}$를 적용하여 $a+b$를 구합니다. 3) 삼각형의 넓이는 $S = \\dfrac{1}{2}r(a+b+c)$를 통해 직접 계산할 수 있습니다.  직각삼각형의 외심의 성질로부터 빗변 $c$는 외접원의 지름입니다: $$c = \\overline{\\mathrm{AB}} = 2R = 2 \\times 3 = 6\\text{ cm}$$ 내접원의 반지름 $r=1\\text{cm}$이므로 공식에 대입하면: $$r = \\frac{a+b-c}{2} \\implies 1 = \\frac{a+b-6}{2}$$ $$a + b - 6 = 2 \\implies a + b = 8\\text{ cm}$$ 따라서 $\\triangle\\mathrm{ABC}$의 둘레의 길이는 다음과 같습니다: $$\\text{둘레} = a + b + c = 8 + 6 = 14\\text{ cm}$$ 그러므로 $\\triangle\\mathrm{ABC}$의 넓이 $S$는 내접원 반지름과 둘레의 곱의 절반입니다: $$S = \\frac{1}{2}r(a+b+c) = \\frac{1}{2} \\times 1 \\times 14 = 7\\text{ cm}^2$$ (피타고라스 정리 검증: $a^2+b^2=c^2=36$이고, $(a+b)^2=a^2+b^2+2ab$이므로 $8^2=36+2ab \\implies 64=36+2ab \\implies 2ab=28 \\implies ab=14$. 따라서 $S = \\dfrac{1}{2}ab = 7\\text{ cm}^2$로 완벽히 일치합니다.)  각 선지를 확인하면 다음과 같습니다. ① $7\\text{cm}^2$: 참 (계산된 넓이 $7\\text{cm}^2$와 일치) ② $\\dfrac{15}{2}\\text{cm}^2$: 거짓 ③ $8\\text{cm}^2$: 거짓 ④ $\\dfrac{17}{2}\\text{cm}^2$: 거짓 ⑤ $9\\text{cm}^2$: 거짓  따라서 정답은 ①입니다. ",
+      "mappedTo": "mathPlan.nodes;displaySegments;planeMarks"
+    },
+    {
+      "id": "source-visual-feature",
+      "condition": "외접원 반지름3·내접원 반지름1 및 직각삼각형 ABC와 접점 D/E/F; 풀이에 필요한 추가 관계",
+      "mappedTo": "displaySegments;planeMarks"
+    }
+  ],
+  "newVisualInformation": [
+    "외접원 반지름3·내접원 반지름1 및 직각삼각형 ABC와 접점 D/E/F; 풀이에 필요한 추가 관계"
+  ]
+}

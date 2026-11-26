@@ -1,0 +1,269 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "F",
+    "E",
+    "G"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sEG",
+      "refs": [
+        "E",
+        "G"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 430
+  },
+  "planeMarks": {
+    "regions": [
+      {
+        "id": "area1",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "A",
+              "G",
+              "F"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "area2",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "D",
+              "E",
+              "F"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "A",
+        "F",
+        "D"
+      ]
+    }
+  ],
+  "caption": "11번 문제: 원본 q11.png: 마름모 대각선의 수직, E-F-G 직선, 색칠한 △AGF·△DEF 두 영역.",
+  "accessibilityDescription": "11번 문제 그림: 원본 q11.png: 마름모 대각선의 수직, E-F-G 직선, 색칠한 △AGF·△DEF 두 영역.",
+  "sourceConditions": [
+    {
+      "id": "src-q11",
+      "condition": " 조건: 마름모 $\\square\\text{ABCD}$의 대각선은 서로를 수직이등분하고 교점은 $\\text{F}$입니다. $\\text{G}$는 $\\overline{\\text{AB}}$ 위, $\\text{E}$는 $\\overline{\\text{DC}}$ 위에 있으며 $\\text{E,F,G}$는 일직선 위에 있습니다. $\\triangle\\text{AGF}$와 $\\triangle\\text{DEF}$의 넓이의 합은 $20\\text{cm}^2$입니다.  대각선이 서로를 이등분하므로 마름모는 넓이가 같은 네 삼각형으로 나뉩니다. $\\triangle\\text{ABF}$의 넓이를 $S$라 하면 마름모의 넓이는 $4S$입니다.  $\\overline{\\text{AB}}\\parallel\\overline{\\text{DC}}$이고 $\\overline{\\text{BF}}=\\overline{\\text{DF}}$입니다. 맞꼭지각과 평행선에서 생기는 각이 같으므로 $\\triangle\\text{BFG}\\sim\\triangle\\text{DFE}$이고 닮음비는 $1:1$입니다. 따라서 두 삼각형의 넓이는 같습니다.  $\\text{G}$가 $\\overline{\\text{AB}}$ 위에 있으므로 $\\triangle\\text{ABF}$의 넓이는 $\\triangle\\text{AGF}$와 $\\triangle\\text{BFG}$의 넓이의 합입니다. 또 $\\triangle\\text{BFG}$와 $\\triangle\\text{DFE}$의 넓이가 같으므로, 주어진 넓이의 합은 $S$와 같습니다. 따라서 $S=20\\text{cm}^2$이고 마름모의 넓이는 $4S=80\\text{cm}^2$입니다. 정답은 ⑤입니다. ",
+      "mappedTo": "mathPlan.nodes;displaySegments;planeMarks"
+    },
+    {
+      "id": "source-visual-feature",
+      "condition": "원본 q11.png: 마름모 대각선의 수직, E-F-G 직선, 색칠한 △AGF·△DEF 두 영역; 풀이에 필요한 추가 관계",
+      "mappedTo": "displaySegments;planeMarks"
+    }
+  ],
+  "newVisualInformation": [
+    "원본 q11.png: 마름모 대각선의 수직, E-F-G 직선, 색칠한 △AGF·△DEF 두 영역; 풀이에 필요한 추가 관계"
+  ]
+}

@@ -1,0 +1,253 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "rational",
+              "numerator": "4618802153517007",
+              "denominator": "1000000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "5333333333333333",
+              "denominator": "1000000000000000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "rational",
+              "numerator": "23094010767585030",
+              "denominator": "10000000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "M"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sMD",
+      "refs": [
+        "M",
+        "D"
+      ]
+    },
+    {
+      "id": "sAM",
+      "refs": [
+        "A",
+        "M"
+      ]
+    },
+    {
+      "id": "sMB",
+      "refs": [
+        "M",
+        "B"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 430
+  },
+  "planeMarks": {
+    "equalLengths": [],
+    "angles": [
+      {
+        "id": "a0",
+        "refs": [
+          "D",
+          "A",
+          "B"
+        ],
+        "value": 30,
+        "noLabel": true,
+        "equalGroup": 1,
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a1",
+        "refs": [
+          "C",
+          "A",
+          "D"
+        ],
+        "value": 30,
+        "noLabel": true,
+        "equalGroup": 1,
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a2",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 30,
+        "label": "30",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "B",
+        "M",
+        "D"
+      ]
+    }
+  ],
+  "caption": "2번 문제: 빗변 AB의 중점 M과 수직이등분선 MD, C 직각, A의 이등분선 AD.",
+  "accessibilityDescription": "2번 문제 그림: 빗변 AB의 중점 M과 수직이등분선 MD, C 직각, A의 이등분선 AD.",
+  "sourceConditions": [
+    {
+      "id": "src-q2",
+      "condition": " 조건: $\\angle\\mathrm{C}=90^\\circ$인 직각삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AB}}$의 수직이등분선이 $\\overline{\\mathrm{BC}}$와 만나는 점이 $\\mathrm{D}$이고, $\\overline{\\mathrm{AD}}$는 $\\angle\\mathrm{A}$의 이등분선입니다. 구할 대상: $\\angle\\mathrm{B}$의 크기를 구합니다.  먼저 풀이에 쓸 성질을 순서대로 정리합니다. 1) 점 $\\mathrm{D}$가 선분 $\\overline{\\mathrm{AB}}$의 수직이등분선 위에 있으므로 $\\overline{\\mathrm{DA}} = \\overline{\\mathrm{DB}}$입니다. 2) 따라서 $\\triangle\\mathrm{DAB}$는 이등변삼각형이 되어 $\\angle\\mathrm{DAB} = \\angle\\mathrm{B}$입니다. 3) $\\overline{\\mathrm{AD}}$가 $\\angle\\mathrm{A}$의 이등분선이므로 $\\angle\\mathrm{CAD} = \\angle\\mathrm{DAB}$입니다. 4) 직각삼각형 $\\mathrm{ABC}$에서 $\\angle\\mathrm{A} + \\angle\\mathrm{B} = 90^\\circ$임을 이용하여 일차방정식을 세웁니다.  $\\angle\\mathrm{B} = \\theta$라고 두면 다음과 같습니다: $$\\overline{\\mathrm{DA}}=\\overline{\\mathrm{DB}} \\implies \\angle\\mathrm{DAB} = \\angle\\mathrm{B} = \\theta$$ 선분 $\\overline{\\mathrm{AD}}$가 $\\angle\\mathrm{A}$를 이등분하므로: $$\\angle\\mathrm{CAD} = \\angle\\mathrm{DAB} = \\theta$$ 따라서 각 $\\mathrm{A}$의 전체 크기는 다음과 같습니다: $$\\angle\\mathrm{A} = \\angle\\mathrm{CAD} + \\angle\\mathrm{DAB} = \\theta + \\theta = 2\\theta$$ 직각삼각형 $\\mathrm{ABC}$에서 두 예각의 합은 $90^\\circ$이므로: $$\\angle\\mathrm{A} + \\angle\\mathrm{B} = 2\\theta + \\theta = 3\\theta = 90^\\circ$$ 양변을 $3$으로 나누면: $$\\theta = 30^\\circ$$ 따라서 $\\angle\\mathrm{B} = 30^\\circ$입니다.  각 선지를 확인하면 다음과 같습니다. ① $28^\\circ$: 거짓 ($30^\\circ$와 불일치) ② $29^\\circ$: 거짓 ($30^\\circ$와 불일치) ③ $30^\\circ$: 참 (계산된 $\\angle\\mathrm{B} = 30^\\circ$와 일치) ④ $31^\\circ$: 거짓 ($30^\\circ$와 불일치) ⑤ $32^\\circ$: 거짓 ($30^\\circ$와 불일치)  따라서 정답은 ③입니다. ",
+      "mappedTo": "mathPlan.nodes;displaySegments;planeMarks"
+    },
+    {
+      "id": "source-visual-feature",
+      "condition": "빗변 AB의 중점 M과 수직이등분선 MD, C 직각, A의 이등분선 AD; 풀이에 필요한 추가 관계",
+      "mappedTo": "displaySegments;planeMarks"
+    }
+  ],
+  "newVisualInformation": [
+    "빗변 AB의 중점 M과 수직이등분선 MD, C 직각, A의 이등분선 AD; 풀이에 필요한 추가 관계"
+  ]
+}
