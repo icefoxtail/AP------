@@ -1,0 +1,45 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "O", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "-8" }, { "kind": "integer", "value": "6" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "8" }, { "kind": "integer", "value": "6" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "-8" }, { "kind": "integer", "value": "-6" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "D", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "8" }, { "kind": "integer", "value": "-6" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "M", "op": "MIDPOINT", "inputs": ["A", "B"], "args": {}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "N", "op": "MIDPOINT", "inputs": ["C", "D"], "args": {}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "k", "op": "CIRCLE_CENTER_RADIUS", "inputs": ["O"], "args": { "radius": { "kind": "integer", "value": "10" } }, "outputType": "CIRCLE", "factRole": "GIVEN" }
+    ]
+  },
+  "displayPoints": ["A", "B", "C", "D", "M", "N", "O"],
+  "displayCircles": ["k"],
+  "displaySegments": [
+    { "id": "sAB", "refs": ["A", "B"] },
+    { "id": "sCD", "refs": ["C", "D"] },
+    { "id": "sOM", "refs": ["O", "M"] },
+    { "id": "sON", "refs": ["O", "N"] }
+  ],
+  "rightAngles": [
+    { "id": "rightM", "refs": ["A", "M", "O"] },
+    { "id": "rightN", "refs": ["C", "N", "O"] }
+  ],
+  "planeMarks": {
+    "equalLengths": [{ "id": "equalOffsets", "count": 1, "segments": ["sOM", "sON"] }]
+  },
+  "coordinateCanvas": { "width": 620, "height": 520 },
+  "sourceQuote": "원 $O$의 두 현 $AB$, $CD$에 중심 $O$에서 내린 수선의 발을 각각 $M$, $N$이라 하자. $\\overline{OM}=\\overline{ON}>0$일 때, 다음 중 반드시 옳은 것은? [5점]",
+  "caption": "서로 다른 두 현 AB, CD에 중심 O에서 내린 수선 OM, ON은 같은 길이이다. 원문에 없는 수치나 정답은 표시하지 않는다.",
+  "accessibilityDescription": "같은 원 안에 위쪽 현 AB와 아래쪽 현 CD가 있고, 중심 O에서 각 현의 중점 M,N으로 수선을 내렸다. OM과 ON에 같은 길이 눈금이 있고 각 수선의 발에 직각 표식이 있다.",
+  "sourceConditions": [
+    { "id": "chords", "condition": "한 원 O의 서로 다른 두 현 AB, CD", "mappedTo": ["k", "sAB", "sCD", "A", "B", "C", "D"] },
+    { "id": "feet", "condition": "M,N은 각각 중심 O에서 두 현에 내린 수선의 발", "mappedTo": ["O", "M", "N", "sOM", "sON", "rightM", "rightN"] },
+    { "id": "distance", "condition": "OM=ON>0", "mappedTo": ["sOM", "sON", "equalOffsets"] }
+  ],
+  "newVisualInformation": [
+    "원본 두 현, 중심, 수선의 발을 실제 점·선분으로 연결하고 M,N의 직각과 OM=ON 눈금을 각각 명시한다.",
+    "풀이에서 비로소 얻는 현의 길이 같음·반현 길이는 문제 그림에 공개하지 않으며 면 채움을 사용하지 않는다."
+  ]
+}

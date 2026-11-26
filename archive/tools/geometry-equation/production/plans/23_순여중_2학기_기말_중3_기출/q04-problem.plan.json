@@ -1,0 +1,52 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "O", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "-10" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "10" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "D", "op": "POLAR_POINT", "inputs": ["O", "B"], "args": { "length": { "kind": "integer", "value": "10" }, "angleDeg": { "kind": "integer", "value": "115" }, "turn": "CCW" }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "C", "op": "POLAR_POINT", "inputs": ["O", "B"], "args": { "length": { "kind": "integer", "value": "10" }, "angleDeg": { "kind": "integer", "value": "69" }, "turn": "CCW" }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "lAD", "op": "LINE_THROUGH", "inputs": ["A", "D"], "args": {}, "outputType": "LINE", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "lBC", "op": "LINE_THROUGH", "inputs": ["B", "C"], "args": {}, "outputType": "LINE", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "E", "op": "LINE_INTERSECTION", "inputs": ["lAD", "lBC"], "args": {}, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "k", "op": "CIRCLE_CENTER_RADIUS", "inputs": ["O"], "args": { "radius": { "kind": "integer", "value": "10" } }, "outputType": "CIRCLE", "factRole": "DERIVED_INTERMEDIATE" }
+    ]
+  },
+  "displayPoints": ["A", "B", "C", "D", "E", "O"],
+  "displayCircles": [],
+  "displaySegments": [
+    { "id": "sAB", "refs": ["A", "B"] },
+    { "id": "sAE", "refs": ["A", "E"] },
+    { "id": "sBE", "refs": ["B", "E"] },
+    { "id": "sOD", "refs": ["O", "D"] },
+    { "id": "sOC", "refs": ["O", "C"] }
+  ],
+  "planeMarks": {
+    "arcs": [
+      { "id": "arcBC", "circle": "k", "center": "O", "from": "B", "to": "C", "side": "MINOR" },
+      { "id": "arcCD", "circle": "k", "center": "O", "from": "C", "to": "D", "side": "MINOR" },
+      { "id": "arcDA", "circle": "k", "center": "O", "from": "D", "to": "A", "side": "MINOR" }
+    ],
+    "angles": [
+      { "id": "angleDOC", "refs": ["D", "O", "C"], "value": 46, "label": "46", "style": "ARC", "factRole": "GIVEN" },
+      { "id": "angleDEC", "refs": ["D", "E", "C"], "value": 67, "label": "x", "style": "ARC", "factRole": "GIVEN" }
+    ]
+  },
+  "coordinateCanvas": { "width": 620, "height": 540 },
+  "sourceQuote": "다음 그림과 같이 $\\overline{AB}$를 지름으로 하는 반원 O에서 $\\overline{AD}$, $\\overline{BC}$의 연장선의 교점을 E라고 할 때, 다음 중 옳은 것은? [정답 2개, 5점]",
+  "caption": "AB는 반원 O의 지름이다. 원 위 D,C를 지나는 직선 AD와 BC의 연장선은 E에서 만나고 중심각 DOC는 46°이다. x의 값은 미지수로만 표시한다.",
+  "accessibilityDescription": "위쪽 반원에 왼쪽 끝 A와 오른쪽 끝 B, 중심 O가 놓인다. 위쪽 호에는 D,C가 있고 AD와 BC를 위로 연장한 두 직선이 E에서 만난다. 원의 중심에서 D,C로 그은 반지름 사이의 각은 46도이며 E의 미지각은 x로 표시된다.",
+  "sourceConditions": [
+    { "id": "semicircle", "condition": "AB가 지름인 위쪽 반원과 그 위의 D,C", "mappedTo": ["O", "sAB", "k", "arcBC", "arcCD", "arcDA", "D", "C"] },
+    { "id": "secants", "condition": "AD와 BC의 연장선이 E에서 만난다", "mappedTo": ["lAD", "lBC", "E", "sAE", "sBE"] },
+    { "id": "central", "condition": "원본 그림의 중심각 DOC는 46도", "mappedTo": ["sOD", "sOC", "angleDOC"] },
+    { "id": "unknown", "condition": "연장된 두 선이 이루는 E의 각 x", "mappedTo": ["angleDEC"] }
+  ],
+  "newVisualInformation": [
+    "흐린 원본 스캔의 반원 테두리를 한 원의 세 개 연속 호로 작도하고 원 바깥의 교점 E와 46°를 실제 도형 요소로 보존한다.",
+    "원의 반지름과 세 점의 대표 배치는 원본의 위쪽 반원·중심각 46° 조건을 정확히 만족하는 동형 도식이다. 문제축에는 풀이용 현 BD·직각·23°를 그리지 않는다."
+  ]
+}
