@@ -1,0 +1,292 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "big",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "8"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "small",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "neg",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "7"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "-6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "7"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "-6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "H"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "big",
+    "small"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAH",
+      "refs": [
+        "A",
+        "H"
+      ]
+    },
+    {
+      "id": "sHB",
+      "refs": [
+        "H",
+        "B"
+      ]
+    },
+    {
+      "id": "sOH",
+      "refs": [
+        "O",
+        "H"
+      ]
+    },
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lOH",
+        "ownerSegment": "sOH",
+        "text": "6",
+        "unit": "cm"
+      },
+      {
+        "id": "lOA",
+        "ownerSegment": "sOA",
+        "text": "8",
+        "unit": "cm"
+      }
+    ],
+    "segmentColors": [
+      {
+        "segments": [
+          "sOH"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "segments": [
+          "sOA"
+        ],
+        "color": "GREEN"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "e1",
+        "count": 1,
+        "color": "WARM",
+        "segments": [
+          "sAH",
+          "sHB"
+        ]
+      }
+    ],
+    "callouts": [
+      {
+        "id": "k1",
+        "kind": "SEGMENT",
+        "path": [
+          "A",
+          "H"
+        ],
+        "at": "BELOW",
+        "scale": 1,
+        "dimensions": [
+          {
+            "id": "dAH",
+            "from": "A",
+            "to": "H",
+            "label": "2sqrt(7)",
+            "unit": "cm",
+            "side": "BELOW",
+            "style": "ARROW",
+            "offset": "AUTO"
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "s04번 문제 도형: 주어진 점·선·각·치수만 보이고 미지값은 유지한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "[서술형 4] 다음 그림과 같이 중심이 모두 점 $O$이고 반지름의 길이가 각각 $8\\text{ cm}$와 $6\\text{ cm}$인 두 원이 있다. 큰 원의 현 $\\overline{AB}$가 작은 원과 접할 때, $\\overline{AB}$의 길이를 구하시오. (4점)",
+      "mappedTo": [
+        "mathPlan",
+        "displaySegments",
+        "planeMarks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원문 도형의 점 순서, 직각·보조선·주어진 길이를 재현하고 풀이 결과는 표시하지 않는다."
+  ],
+  "rightAngles": [
+    {
+      "id": "r1",
+      "refs": [
+        "A",
+        "H",
+        "O"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 440,
+    "height": 440
+  }
+}

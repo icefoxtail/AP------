@@ -1,0 +1,183 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aA",
+        "style": "ARC",
+        "refs": [
+          "C",
+          "A",
+          "B"
+        ],
+        "value": 28.07,
+        "factRole": "GIVEN",
+        "noLabel": true,
+        "color": "ROSE"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lAC",
+        "ownerSegment": "sAC",
+        "text": "15"
+      },
+      {
+        "id": "lAB",
+        "ownerSegment": "sAB",
+        "text": "17"
+      },
+      {
+        "id": "lBC",
+        "ownerSegment": "sBC",
+        "text": "8"
+      }
+    ],
+    "segmentColors": [
+      {
+        "segments": [
+          "sAC"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "segments": [
+          "sAB"
+        ],
+        "color": "WARM"
+      },
+      {
+        "segments": [
+          "sBC"
+        ],
+        "color": "GREEN"
+      }
+    ]
+  },
+  "caption": "q02번 문제 도형: 주어진 점·선·각·치수만 보이고 미지값은 유지한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "아래 그림과 같은 직각삼각형 $ABC$에서 $\\overline{AC}=15, \\overline{AB}=17, \\overline{BC}=8$일 때, 다음 중 옳은 것은? (4점)",
+      "mappedTo": [
+        "mathPlan",
+        "displaySegments",
+        "planeMarks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원문 도형의 점 순서, 직각·보조선·주어진 길이를 재현하고 풀이 결과는 표시하지 않는다."
+  ],
+  "rightAngles": [
+    {
+      "id": "r1",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 320
+  }
+}
