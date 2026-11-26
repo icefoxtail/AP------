@@ -816,7 +816,11 @@ window.examData = {
     "difficultyBoundaryFlag": "UNKNOWN",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "외접사각형대변합에서접선길이와직각모서리반지름복원",
-    "decisiveStep": "BC=6+10−8=8이고BE=8−4=4이다. 직각B와두반지름이만드는BEOF는정사각형이라r=BE=4, 넓이16π이다."
+    "decisiveStep": "BC=6+10−8=8이고BE=8−4=4이다. 직각B와두반지름이만드는BEOF는정사각형이라r=BE=4, 넓이16π이다.",
+    "image": "assets/images/17_팔마중_2학기_기말_중3_수학/q22-problem.svg",
+    "imageAlt": "원 O가 사각형 ABCD의 네 변에 접한다. ∠B=90°, AB=6 cm, AD=10 cm, CD=12 cm, CE=4 cm이고 E는 변 BC 위의 접점이다. 길이는 그림에서 비례하지 않는다.",
+    "imageCaption": "원 O가 사각형 ABCD의 네 변에 접한다. ∠B=90°, AB=6 cm, AD=10 cm, CD=12 cm, CE=4 cm이고 E는 변 BC 위의 접점이다. 길이는 그림에서 비례하지 않는다.",
+    "imageSize": "full"
   },
     {
       "id": 23,

@@ -437,7 +437,11 @@ window.examData = {
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "전체 호의 비10 중 목표호 CA의 비4를360도에 비례배분하고 대응 원주각의 절반 관계를 적용한다.",
-    "decisiveStep": "전체 호의 비10 중 목표호 CA의 비4를360도에 비례배분하고 대응 원주각의 절반 관계를 적용한다."
+    "decisiveStep": "전체 호의 비10 중 목표호 CA의 비4를360도에 비례배분하고 대응 원주각의 절반 관계를 적용한다.",
+    "image": "assets/images/21_연향중_2학기_기말_중3_수학/q11-problem.svg",
+    "imageAlt": "원 위의 세 점 A, B, C를 이어 삼각형 ABC를 그렸다. 변 BC는 원의 지름이고, 각 ABC에 호 표시가 있다. 호 AB, BC, CA의 길이의 비는 1:5:4이다.",
+    "imageCaption": "원 위의 세 점 A, B, C를 이어 삼각형 ABC를 그렸다. 변 BC는 원의 지름이고, 각 ABC에 호 표시가 있다. 호 AB, BC, CA의 길이의 비는 1:5:4이다.",
+    "imageSize": "full"
   },
     {
       "id": "q12",

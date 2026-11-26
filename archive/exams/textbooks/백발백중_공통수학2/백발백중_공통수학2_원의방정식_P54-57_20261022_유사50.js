@@ -539,7 +539,11 @@ window.questionBank = [
     "solutionImageSize": "large",
     "problemImage": "assets/images/백발백중_공통수학2_원의방정식_P54-57_20261022_유사50/BV-BAKBAL-H-COM2-P54-Q03-S2-R1-problem.svg",
     "problemImageAlt": "발문 도형",
-    "problemImageSize": "large"
+    "problemImageSize": "large",
+    "image": "assets/images/백발백중_공통수학2_원의방정식_P54-57_20261022_유사50/BV-BAKBAL-H-COM2-P54-Q03-S2-R1-problem.svg",
+    "imageAlt": "주어진 원과 외부 점에서 그은 접선의 배치를 나타낸다.",
+    "imageCaption": "주어진 원과 외부 점에서 그은 접선의 배치를 나타낸다.",
+    "imageSize": "full"
   },
   {
     "id": "BV-BAKBAL-H-COM2-P54-Q04-T1-R1",
