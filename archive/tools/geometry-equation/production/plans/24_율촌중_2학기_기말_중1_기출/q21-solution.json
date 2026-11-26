@@ -1,0 +1,15 @@
+{
+  "capability": "solid-figure-v1",
+  "caption": "반지름 3 cm인 공 3개를 원기둥에 세로로 넣으면 통의 높이는 18 cm, 반지름은 3 cm이다.",
+  "accessibilityDescription": "원기둥 모양 통 속에 반지름 3센티미터인 구 세 개가 바닥부터 위까지 수직으로 이어져 있다. 구의 외곽선과 적도 숨은선, 통의 윗면과 아랫면 원 및 높이 18센티미터 치수선이 함께 있다.",
+  "sourceQuote": "반지름의 길이가 3 cm인 공 3개가 원기둥 모양의 통에 꼭 맞게 들어 있다. 이 통 속의 빈 공간의 부피를 구하시오.",
+  "sourceConditions":[
+    {"id":"c1","condition":"공은 세 개이며 모두 반지름 3 cm이다.","mappedTo":["solids[0].stack.count","solids[0].stack.radius"]},
+    {"id":"c2","condition":"공 3개가 통에 세로로 꼭 맞아 원기둥의 반지름이 3 cm, 높이가 18 cm이다.","mappedTo":["solids[0].radius","solids[0].height"]},
+    {"id":"c3","condition":"원본의 공 중심에서 그린 3 cm 반지름과 통 전체 높이를 나타낸다.","mappedTo":["dims"]}
+  ],
+  "newVisualInformation":["해설의 평면 직사각형 단면을 실제 원기둥·내접 구 세 개의 동축 입체로 복원한다.", "구 적도의 뒤 호와 원기둥 뒤쪽 원의 숨은 부분을 엔진이 계산해 점선으로 그리고 외부 높이 치수선을 둔다."],
+  "unit":"cm",
+  "solids":[{"id":"s1","kind":"CYLINDER","radius":3,"height":18,"stack":{"count":3,"radius":3}}],
+  "dims":[{"solid":"s1","height":true,"side":"LEFT"},{"solid":"s1","radius":"top"}]
+}
