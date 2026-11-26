@@ -1,0 +1,43 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "두 직선 AD와 BE의 맞꼭지각, 수선 OC의 직각, ∠BOC=x 및 ∠DOE=2x를 호 표식으로 나타낸다.",
+  "accessibilityDescription": "A O D는 한 직선, B O E는 다른 직선 위에 있으며 두 직선이 O에서 교차한다. O 아래에 C가 있고 OC는 AD에 수직이다. ∠BOC는 x, ∠DOE는 2x, ∠AOE는 120°로 표시된다.",
+  "sourceQuote": "다음 그림과 같이 $\\overleftrightarrow{AD}$와 $\\overleftrightarrow{BE}$가 점 $O$에서 만나고, 점 $O$는 점 $C$에서 $\\overleftrightarrow{AD}$에 내린 수선의 발이다. $2\\angle BOC=\\angle DOE$라고 할 때, $\\angle AOE$의 값을 구하면? [4점]",
+  "sourceConditions": [
+    {"id":"lines","condition":"원본의 두 직선은 A–O–D와 B–O–E이며 O에서 만난다.","mappedTo":["mathPlan.nodes[0]","mathPlan.nodes[1]","mathPlan.nodes[2]","mathPlan.nodes[3]","mathPlan.nodes[4]","displaySegments[0]","displaySegments[1]","displaySegments[2]","displaySegments[3]"]},
+    {"id":"perpendicular","condition":"O는 C에서 직선 AD에 내린 수선의 발이므로 OC⊥AD이고 ∠DOC=90°이다.","mappedTo":["mathPlan.nodes[5]","displaySegments[4]","rightAngles[0]"]},
+    {"id":"angle-ratio","condition":"2∠BOC=∠DOE이고 두 각은 x와 2x로 표시한다. 실제 작도 각은 각각 30°와 60°이다.","mappedTo":["planeMarks.angles[0]","planeMarks.angles[1]"]},
+    {"id":"result-angle","condition":"해설에서 맞꼭지각으로 구한 ∠AOE=120°를 빈 면 채움 없이 호로 표시한다.","mappedTo":["planeMarks.angles[2]"]}
+  ],
+  "newVisualInformation": [
+    "해설 SVG의 ∠AOE·∠DOE·∠BOC 안쪽 회색 면 채움을 모두 제거하고 개별 호로 표현한다.",
+    "기존 해설의 수직 조건이 호와 겹쳐 흐려지지 않도록 실제 직각 표식을 별도로 그린다.",
+    "원문에 없는 점 이름과 임의의 길이는 적지 않는다."
+  ],
+  "mathPlan": {
+    "schemaVersion":"construction-spike-v1",
+    "realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes":[
+      {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"4"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-4"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"E","op":"POLAR_POINT","inputs":["O","D"],"args":{"length":{"kind":"integer","value":"4"},"angleDeg":{"kind":"integer","value":"60"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"B","op":"POLAR_POINT","inputs":["O","E"],"args":{"length":{"kind":"integer","value":"4"},"angleDeg":{"kind":"integer","value":"180"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"-4"}]},"outputType":"POINT","factRole":"GIVEN"}
+    ]
+  },
+  "displayPoints":["A","O","D","B","E","C"],
+  "displaySegments":[
+    {"id":"sAO","refs":["A","O"]},
+    {"id":"sOD","refs":["O","D"]},
+    {"id":"sBO","refs":["B","O"]},
+    {"id":"sOE","refs":["O","E"]},
+    {"id":"sOC","refs":["O","C"]}
+  ],
+  "rightAngles":[{"id":"rightDOC","refs":["D","O","C"]}],
+  "planeMarks":{"angles":[
+    {"id":"aBOC","refs":["B","O","C"],"value":30,"label":"x","style":"ARC","factRole":"GIVEN"},
+    {"id":"aDOE","refs":["D","O","E"],"value":60,"label":"2x","style":"ARC","factRole":"GIVEN"},
+    {"id":"aAOE","refs":["A","O","E"],"value":120,"label":"120","style":"ARC","factRole":"DERIVED_INTERMEDIATE"}
+  ]}
+}

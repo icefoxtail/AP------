@@ -1,0 +1,41 @@
+{
+  "capability":"construction-spike-v1",
+  "caption":"원 둘레의 같은 간격에 점 12개만 나타내어 서로 다른 두 점을 고르는 그림이다.",
+  "accessibilityDescription":"흰 바탕에 한 원이 있고 원 위에 이름 없는 점 12개가 정확히 30도 간격으로 찍혀 있다. 중심점이나 중심 이름, 불필요한 연결선은 보이지 않는다.",
+  "sourceQuote":"아래 그림과 같이 원 위에 동일한 간격으로 12개의 점을 찍었을 때, 점과 점을 이어 그을 수 있는 모든 선분의 개수를 구하면? [5점]",
+  "sourceConditions":[
+    {"id":"circle","condition":"원본에는 한 개의 온전한 원이 그려져 있고 중심 이름이나 중심점 표시는 없다.","mappedTo":["mathPlan.nodes[1]","mathPlan.nodes[13]","displayCircles[0]"]},
+    {"id":"twelve-points","condition":"원 위에 이름 없는 점이 정확히 12개이며 모든 이웃한 점 사이의 중심각은 30°(360°÷12)이다.","mappedTo":["mathPlan.nodes[0]","mathPlan.nodes[2]","mathPlan.nodes[3]","mathPlan.nodes[4]","mathPlan.nodes[5]","mathPlan.nodes[6]","mathPlan.nodes[7]","mathPlan.nodes[8]","mathPlan.nodes[9]","mathPlan.nodes[10]","mathPlan.nodes[11]","mathPlan.nodes[12]","displayPoints","planeMarks.textLabels[0]"]},
+    {"id":"no-radii","condition":"원의 중심이나 반지름, 특정 두 점을 잇는 선분은 원본의 시각 조건이 아니므로 화면에 추가하지 않는다.","mappedTo":["displayCircles[0]","displayPoints"]}
+  ],
+  "newVisualInformation":[
+    "기존 해설 SVG에 원본에 없던 중심점 O와 중심 이름이 추가된 결함을 없앤다.",
+    "반지름과 임의의 보조선 없이 12개 점의 위치, 원 그리고 원문의 점 개수 12개 안내만 엔진으로 생성한다.",
+    "무색의 흰 바탕과 원의 윤곽을 유지한다."
+  ],
+  "mathPlan":{
+    "schemaVersion":"construction-spike-v1",
+    "realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes":[
+      {"id":"P0","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"5"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"K","op":"TRANSLATE_POINT","inputs":["P0"],"args":{"dx":{"kind":"integer","value":"-5"},"dy":{"kind":"integer","value":"0"}},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"P1","op":"POLAR_POINT","inputs":["K","P0"],"args":{"length":{"kind":"integer","value":"5"},"angleDeg":{"kind":"integer","value":"30"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"P2","op":"POLAR_POINT","inputs":["K","P0"],"args":{"length":{"kind":"integer","value":"5"},"angleDeg":{"kind":"integer","value":"60"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"P3","op":"POLAR_POINT","inputs":["K","P0"],"args":{"length":{"kind":"integer","value":"5"},"angleDeg":{"kind":"integer","value":"90"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"P4","op":"POLAR_POINT","inputs":["K","P0"],"args":{"length":{"kind":"integer","value":"5"},"angleDeg":{"kind":"integer","value":"120"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"P5","op":"POLAR_POINT","inputs":["K","P0"],"args":{"length":{"kind":"integer","value":"5"},"angleDeg":{"kind":"integer","value":"150"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"P6","op":"POLAR_POINT","inputs":["K","P0"],"args":{"length":{"kind":"integer","value":"5"},"angleDeg":{"kind":"integer","value":"180"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"P7","op":"POLAR_POINT","inputs":["K","P0"],"args":{"length":{"kind":"integer","value":"5"},"angleDeg":{"kind":"integer","value":"210"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"P8","op":"POLAR_POINT","inputs":["K","P0"],"args":{"length":{"kind":"integer","value":"5"},"angleDeg":{"kind":"integer","value":"240"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"P9","op":"POLAR_POINT","inputs":["K","P0"],"args":{"length":{"kind":"integer","value":"5"},"angleDeg":{"kind":"integer","value":"270"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"P10","op":"POLAR_POINT","inputs":["K","P0"],"args":{"length":{"kind":"integer","value":"5"},"angleDeg":{"kind":"integer","value":"300"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"P11","op":"POLAR_POINT","inputs":["K","P0"],"args":{"length":{"kind":"integer","value":"5"},"angleDeg":{"kind":"integer","value":"330"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"circ","op":"CIRCLE_CENTER_RADIUS","inputs":["K"],"args":{"radius":{"kind":"integer","value":"5"}},"outputType":"CIRCLE","factRole":"GIVEN"}
+    ]
+  },
+  "displayPoints":["P0","P1","P2","P3","P4","P5","P6","P7","P8","P9","P10","P11"],
+  "hiddenPointNames":["P0","P1","P2","P3","P4","P5","P6","P7","P8","P9","P10","P11"],
+  "hiddenPointStyle":"DOT",
+  "displayCircles":["circ"],
+  "planeMarks":{"textLabels":[{"id":"count12","at":"P0","text":"12개","labelKind":"TEXT","factRole":"GIVEN"}]}
+}

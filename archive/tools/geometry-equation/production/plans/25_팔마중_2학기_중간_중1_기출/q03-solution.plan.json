@@ -1,0 +1,42 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "A–M–B–N–C의 순서, 두 중점의 같은 길이 눈금, MN=28cm 치수선을 함께 나타낸다.",
+  "accessibilityDescription": "한 직선 위에 A, M, B, N, C가 순서대로 놓여 있고 AM과 MB는 같은 한 개의 눈금, BN과 NC는 같은 두 개의 눈금으로 표시되어 있다. M과 N 사이에는 28cm 길이 치수선이 있다.",
+  "sourceQuote": "다음 그림에서 점 $M$은 $\\overline{AB}$의 중점이고, 점 $N$은 $\\overline{BC}$의 중점이다. $\\overline{AB}=3\\overline{BC}$, $\\overline{MN}=28\\mathrm{cm}$일 때, $\\overline{AB}$의 길이를 구하면? [4점]",
+  "sourceConditions": [
+    {"id":"order","condition":"원본 그림의 점 순서는 A–M–B–N–C이며 다섯 점은 한 직선 위에 있다.","mappedTo":["mathPlan.nodes[0]","mathPlan.nodes[1]","mathPlan.nodes[2]","mathPlan.nodes[3]","mathPlan.nodes[4]","displaySegments[0]","displaySegments[1]","displaySegments[2]","displaySegments[3]"]},
+    {"id":"midpoints","condition":"M은 AB의 중점(AM=MB), N은 BC의 중점(BN=NC)이다.","mappedTo":["planeMarks.equalLengths[0]","planeMarks.equalLengths[1]"]},
+    {"id":"ratio","condition":"AB=3BC이며 그림의 작도용 축척에서 AB:BC=6:2로 보인다. 수치 6과 2는 실제 길이 라벨로 표기하지 않는다.","mappedTo":["mathPlan.nodes[0]","mathPlan.nodes[2]","mathPlan.nodes[4]"]},
+    {"id":"length","condition":"원문의 주어진 길이 MN=28cm는 치수선에 28cm로 명시한다.","mappedTo":["planeMarks.dimensions[0]"]}
+  ],
+  "newVisualInformation": [
+    "기존 해설 SVG에서 누락된 원본의 MN=28cm 길이 안내선을 복구한다.",
+    "두 중점의 서로 다른 등길이 눈금과 원래의 다섯 점 순서를 유지한다.",
+    "배경과 도형 내부를 채우지 않는다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes": [
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"M","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"3"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"6"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"N","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"7"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"8"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"}
+    ]
+  },
+  "displayPoints": ["A","M","B","N","C"],
+  "displaySegments": [
+    {"id":"sAM","refs":["A","M"]},
+    {"id":"sMB","refs":["M","B"]},
+    {"id":"sBN","refs":["B","N"]},
+    {"id":"sNC","refs":["N","C"]}
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {"id":"midAB","count":1,"segments":["sAM","sMB"]},
+      {"id":"midBC","count":2,"segments":["sBN","sNC"]}
+    ],
+    "dimensions": [{"id":"lengthMN","from":"M","to":"N","label":"28","unit":"cm","side":"ABOVE","factRole":"GIVEN"}]
+  }
+}

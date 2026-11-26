@@ -1,0 +1,50 @@
+{
+  "capability":"construction-spike-v1",
+  "caption":"원본의 교차하는 닫힌 여섯 변 경로에 45°·40°·55°·25°와 미지각 x·y를 모두 복구한 풀이 그림이다.",
+  "accessibilityDescription":"꼭짓점 여섯 개를 순서대로 이은 선들이 안쪽에서 서로 교차한다. 왼쪽 각은 45도, 왼쪽 아래 각은 40도, 위의 뾰족한 각은 25도, 아래 중앙 각은 55도, 오른쪽 위아래의 두 각은 각각 x와 y이다. 여섯 각은 선에 닿는 호로 표시되어 있고 면의 색칠은 없다.",
+  "sourceQuote":"다음 그림에서 $\\angle x+\\angle y$의 크기로 알맞은 것은? (4점)",
+  "sourceConditions":[
+    {"id":"six-sided-path","condition":"원본 그림은 왼쪽 꼭짓점→오른쪽 위 x→오른쪽 아래 y→왼쪽 아래 40°→위쪽 25°→아래 중앙 55°→왼쪽 꼭짓점을 차례로 잇는 교차하는 닫힌 꺾은선이다. 원본에 점 이름은 없다.","mappedTo":["mathPlan.nodes[0]","mathPlan.nodes[1]","mathPlan.nodes[2]","mathPlan.nodes[3]","mathPlan.nodes[4]","mathPlan.nodes[5]","displaySegments[0]","displaySegments[1]","displaySegments[2]","displaySegments[3]","displaySegments[4]","displaySegments[5]"]},
+    {"id":"left-angle","condition":"원본 왼쪽 꼭짓점의 각은 45°이다.","mappedTo":["planeMarks.angles[0]"]},
+    {"id":"lower-left-angle","condition":"원본 왼쪽 아래 꼭짓점의 각은 40°이다.","mappedTo":["planeMarks.angles[1]"]},
+    {"id":"top-angle","condition":"원본 최상단 두 선분 사이의 각은 25°이다.","mappedTo":["planeMarks.angles[2]"]},
+    {"id":"bottom-angle","condition":"원본 아래 중앙에서 수직선과 왼쪽 위로 뻗은 선분이 이루는 각은 55°이다. 기존 해설 SVG에는 누락되어 있다.","mappedTo":["planeMarks.angles[3]"]},
+    {"id":"unknown-angles","condition":"원본 오른쪽 위아래의 미지각은 각각 x와 y이다. 작도 좌표의 실제 두 각은 약 112.46°와 82.54°이지만 그림에는 해설 전 미지수 이름만 쓴다.","mappedTo":["planeMarks.angles[4]","planeMarks.angles[5]"]}
+  ],
+  "newVisualInformation":[
+    "기존 해설 SVG에 빠진 아래 중앙 55°의 각 호와 숫자를 원본과 같은 꼭짓점에 복구한다.",
+    "25°·45°·40°·55°·x·y의 여섯 각을 모두 각각의 실제 각 위치에 표시한다.",
+    "선분 여섯 개의 교차 순서와 교차하는 형태는 유지하며 보조점 이름이나 채움은 추가하지 않는다."
+  ],
+  "mathPlan":{
+    "schemaVersion":"construction-spike-v1",
+    "realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes":[
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"T","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"8"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"L","op":"POLAR_POINT","inputs":["B","T"],"args":{"length":{"kind":"integer","value":"6"},"angleDeg":{"kind":"integer","value":"55"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"C","op":"POLAR_POINT","inputs":["T","B"],"args":{"length":{"kind":"integer","value":"9"},"angleDeg":{"kind":"integer","value":"25"},"turn":"CW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"Y","op":"POLAR_POINT","inputs":["C","T"],"args":{"length":{"kind":"integer","value":"12"},"angleDeg":{"kind":"integer","value":"40"},"turn":"CW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"X","op":"POLAR_POINT","inputs":["L","B"],"args":{"length":{"kind":"rational","numerator":"59","denominator":"5"},"angleDeg":{"kind":"integer","value":"45"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "displayPoints":["L","X","Y","C","T","B"],
+  "hiddenPointNames":["L","X","Y","C","T","B"],
+  "hiddenPointStyle":"NONE",
+  "displaySegments":[
+    {"id":"sLX","refs":["L","X"]},
+    {"id":"sXY","refs":["X","Y"]},
+    {"id":"sYC","refs":["Y","C"]},
+    {"id":"sCT","refs":["C","T"]},
+    {"id":"sTB","refs":["T","B"]},
+    {"id":"sBL","refs":["B","L"]}
+  ],
+  "planeMarks":{"angles":[
+    {"id":"aL","refs":["X","L","B"],"value":45,"label":"45","style":"ARC","factRole":"GIVEN"},
+    {"id":"aC","refs":["Y","C","T"],"value":40,"label":"40","style":"ARC","factRole":"GIVEN"},
+    {"id":"aT","refs":["C","T","B"],"value":25,"label":"25","style":"ARC","factRole":"GIVEN"},
+    {"id":"aB","refs":["T","B","L"],"value":55,"label":"55","style":"ARC","factRole":"GIVEN"},
+    {"id":"aX","refs":["L","X","Y"],"value":112.46090422,"label":"x","style":"ARC","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"aY","refs":["X","Y","C"],"value":82.53909578,"label":"y","style":"ARC","factRole":"DERIVED_INTERMEDIATE"}
+  ]}
+}

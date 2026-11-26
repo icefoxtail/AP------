@@ -1,0 +1,43 @@
+{
+  "capability":"construction-spike-v1",
+  "caption":"수직이등분선 l 위의 P, 중점 M, AM=MB의 눈금과 M의 직각을 면 채움 없이 보여 준다.",
+  "accessibilityDescription":"A M B는 한 직선 위에 있고 M은 AB의 중점이다. M을 지나 위아래로 이어지는 직선 l 위에 P가 있다. A와 P, P와 B가 연결되어 있으며 AM과 MB에 같은 길이 눈금, M에 직각 표시가 있다. 삼각형 내부는 흰색이다.",
+  "sourceQuote":"다음은 아래 그림과 같이 점 $P$가 $\\overline{AB}$의 수직이등분선 $l$ 위의 한 점일 때, $\\overline{PA}=\\overline{PB}$임을 보이는 과정이다. ①~⑤에 들어갈 것으로 옳지 않은 것은? (5점)",
+  "sourceConditions":[
+    {"id":"base","condition":"A,M,B는 한 직선 위에 놓이고 M은 AB의 중점이어서 AM=MB이다.","mappedTo":["mathPlan.nodes[0]","mathPlan.nodes[1]","mathPlan.nodes[2]","displaySegments[0]","displaySegments[1]","planeMarks.equalLengths[0]"]},
+    {"id":"bisector","condition":"직선 l은 AB의 수직이등분선이고 P,M은 l 위에 있다. 따라서 ∠PMB=90°이다.","mappedTo":["mathPlan.nodes[3]","mathPlan.nodes[4]","mathPlan.nodes[5]","displaySegments[2]","rightAngles[0]","planeMarks.textLabels[0]"]},
+    {"id":"two-triangles","condition":"△PAM과 △PBM은 PA, PB와 공통변 PM을 가지며 SAS 합동 증명에 사용한다.","mappedTo":["displaySegments[2]","displaySegments[3]","displaySegments[4]"]}
+  ],
+  "newVisualInformation":[
+    "기존 해설 SVG에서 양쪽 삼각형 전체를 불필요하게 회색으로 칠한 부분을 제거한다.",
+    "원본 문제의 중점 등길이 표식과 직각 표식을 그대로 유지한다.",
+    "수직이등분선의 위아래 연장과 직선 이름 l을 보여 주되 추가 점 이름은 화면에 쓰지 않는다."
+  ],
+  "mathPlan":{
+    "schemaVersion":"construction-spike-v1",
+    "realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes":[
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-4"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"M","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"4"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"P","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"4"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"T","op":"TRANSLATE_POINT","inputs":["P"],"args":{"dx":{"kind":"integer","value":"0"},"dy":{"kind":"integer","value":"2"}},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"U","op":"TRANSLATE_POINT","inputs":["M"],"args":{"dx":{"kind":"integer","value":"0"},"dy":{"kind":"integer","value":"-2"}},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "displayPoints":["A","M","B","P","T","U"],
+  "hiddenPointNames":["T","U"],
+  "hiddenPointStyle":"NONE",
+  "displaySegments":[
+    {"id":"sAM","refs":["A","M"]},
+    {"id":"sMB","refs":["M","B"]},
+    {"id":"sTU","refs":["T","U"]},
+    {"id":"sAP","refs":["A","P"]},
+    {"id":"sPB","refs":["P","B"]}
+  ],
+  "rightAngles":[{"id":"rPMB","refs":["P","M","B"]}],
+  "planeMarks":{
+    "equalLengths":[{"id":"mid","count":1,"segments":["sAM","sMB"]}],
+    "textLabels":[{"id":"lineL","at":"T","text":"l","labelKind":"MATH","factRole":"GIVEN"}]
+  }
+}
