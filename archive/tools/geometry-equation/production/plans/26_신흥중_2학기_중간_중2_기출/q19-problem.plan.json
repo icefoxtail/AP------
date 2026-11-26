@@ -1,0 +1,17 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {"id":"vessel","kind":"CONE","radius":6,"height":12,"orientation":"APEX_DOWN"}
+  ],
+  "section": {"solid":"vessel","kind":"LEVEL","at":"1/3"},
+  "solidCaption": {"text":"원뿔 그릇의 물 높이"},
+  "caption": "꼭짓점이 아래인 원뿔 그릇에서 물은 전체 높이의 1/3 지점까지만 차 있다.",
+  "accessibilityDescription": "위로 넓어지는 원뿔 모양 그릇의 아래쪽에서 전체 높이의 정확히 3분의 1까지 물이 찬 부분만 옅게 표시하고 수면의 타원을 그린다.",
+  "sourceConditions": [
+    {"id":"cone","condition":"아래가 뾰족하고 위가 열린 원뿔 모양의 그릇이다. 원래 높이와 반지름의 수치는 주어지지 않아 닮은꼴 대표 치수로만 그린다.","mappedTo":"solids"},
+    {"id":"water","condition":"물 높이는 그릇 전체 높이의 1/3이고, 물을 채우는 속력은 일정하다.","mappedTo":"section"}
+  ],
+  "newVisualInformation": ["기존 문제 SVG에서 약 절반 높이로 보이던 물의 수면을 정확한 1/3 단면으로 낮춘다.","원본에서 물이 차 있는 아래쪽 작은 원뿔만 칠하고, 위의 빈 공간은 칠하지 않는다."],
+  "sourceQuote": "물을 전체 높이의 $\\frac13$만큼 채우는 데 6분이 걸렸다면"
+}
