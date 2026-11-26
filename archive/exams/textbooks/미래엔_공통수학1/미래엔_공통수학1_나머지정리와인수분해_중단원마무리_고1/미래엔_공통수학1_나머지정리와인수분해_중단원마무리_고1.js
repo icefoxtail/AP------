@@ -307,6 +307,10 @@ window.questionBank = [
     "content": "삼각형의 세 변의 길이 $a, b, c$에 대하여\n$$a^3-ab^2-b^2c+a^2c+c^3+ac^2=0$$\n이 성립할 때, 이 삼각형은 어떤 삼각형인지 말하시오.",
     "choices": [],
     "answer": "빗변의 길이가 $b$인 직각삼각형",
-    "solution": "좌변을 $(a+c)$로 묶을 수 있도록 항을 나누어 인수분해한다.\n$$a^3+a^2c+ac^2+c^3-ab^2-b^2c=0$$\n$a^3+a^2c=a^2(a+c)$, $ac^2+c^3=c^2(a+c)$, $-ab^2-b^2c=-b^2(a+c)$이므로\n$$(a+c)(a^2+c^2-b^2)=0$$\n$a,\\ b,\\ c$는 삼각형의 세 변의 길이이므로 $a+c>0$이다. 따라서\n$$a^2+c^2-b^2=0,\\qquad\\text{즉}\\qquad b^2=a^2+c^2$$\n피타고라스 정리의 역에 의하여 이 삼각형은 $b$가 빗변인 직각삼각형이다."
+    "solution": "좌변을 $(a+c)$로 묶을 수 있도록 항을 나누어 인수분해한다.\n$$a^3+a^2c+ac^2+c^3-ab^2-b^2c=0$$\n$a^3+a^2c=a^2(a+c)$, $ac^2+c^3=c^2(a+c)$, $-ab^2-b^2c=-b^2(a+c)$이므로\n$$(a+c)(a^2+c^2-b^2)=0$$\n$a,\\ b,\\ c$는 삼각형의 세 변의 길이이므로 $a+c>0$이다. 따라서\n$$a^2+c^2-b^2=0,\\qquad\\text{즉}\\qquad b^2=a^2+c^2$$\n피타고라스 정리의 역에 의하여 이 삼각형은 $b$가 빗변인 직각삼각형이다.",
+    "solutionImage": "assets/images/미래엔_공통수학1_나머지정리와인수분해_중단원마무리_고1/q11-solution.svg",
+    "solutionImageAlt": "인수분해로 얻은 변의 길이 관계를 직각삼각형으로 나타낸 개념도이다.",
+    "solutionImageCaption": "인수분해로 얻은 변의 길이 관계를 직각삼각형으로 나타낸 개념도이다.",
+    "solutionImageSize": "full"
   }
 ];

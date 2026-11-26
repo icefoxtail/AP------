@@ -27,7 +27,11 @@ window.questionBank = [
     "content": "다음 두 점 사이의 거리를 구하시오.\n⑴ $\\mathrm{A}(3)$, $\\mathrm{B}(-7)$\n⑵ $\\mathrm{A}(-5, 1)$, $\\mathrm{B}(-2, 6)$",
     "choices": [],
     "answer": "⑴ $10$\n⑵ $\\sqrt{34}$",
-    "solution": "⑴ 수직선 위의 두 점 $\\mathrm{A}(x_1)$, $\\mathrm{B}(x_2)$ 사이의 거리는 $|x_2-x_1|$이므로\n$$\\overline{\\mathrm{AB}}=|-7-3|=10$$\n⑵ 좌표평면 위의 두 점 사이의 거리는 $\\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$이므로\n$$\\overline{\\mathrm{AB}}=\\sqrt{(-2-(-5))^2+(6-1)^2}=\\sqrt{9+25}=\\sqrt{34}$$"
+    "solution": "⑴ 수직선 위의 두 점 $\\mathrm{A}(x_1)$, $\\mathrm{B}(x_2)$ 사이의 거리는 $|x_2-x_1|$이므로\n$$\\overline{\\mathrm{AB}}=|-7-3|=10$$\n⑵ 좌표평면 위의 두 점 사이의 거리는 $\\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$이므로\n$$\\overline{\\mathrm{AB}}=\\sqrt{(-2-(-5))^2+(6-1)^2}=\\sqrt{9+25}=\\sqrt{34}$$",
+    "solutionImage": "assets/images/미래엔_공통수학2_평면좌표와직선의방정식_중단원마무리_고1/q1-solution.svg",
+    "solutionImageAlt": "⑵ A(−5,1), B(−2,6)의 수평·수직 좌표 차는 각각 3과 5이다. 직각삼각형의 빗변 AB=√34.",
+    "solutionImageCaption": "⑵ A(−5,1), B(−2,6)의 수평·수직 좌표 차는 각각 3과 5이다. 직각삼각형의 빗변 AB=√34.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -55,7 +59,11 @@ window.questionBank = [
     "content": "다음 점의 좌표를 구하시오.\n⑴ 두 점 $\\mathrm{A}(-2)$와 $\\mathrm{B}(8)$에 대하여 선분 $\\mathrm{AB}$를 $3:2$로 내분하는 점\n⑵ 두 점 $\\mathrm{A}(6, 2)$와 $\\mathrm{B}(-3, -1)$에 대하여 선분 $\\mathrm{AB}$를 $1:2$로 내분하는 점",
     "choices": [],
     "answer": "⑴ $4$\n⑵ $(3,\\ 1)$",
-    "solution": "선분 $\\mathrm{AB}$를 $m:n$으로 내분하는 점의 좌표는 $\\frac{mx_2+nx_1}{m+n}$ (좌표평면에서는 $x,\\ y$좌표에 각각 적용)이다.\n⑴ $\\mathrm{A}(-2)$, $\\mathrm{B}(8)$이고 $m:n=3:2$이므로\n$$\\frac{3\\times 8+2\\times(-2)}{3+2}=\\frac{24-4}{5}=4$$\n⑵ $\\mathrm{A}(6,\\ 2)$, $\\mathrm{B}(-3,\\ -1)$이고 $m:n=1:2$이므로\n$$x=\\frac{1\\times(-3)+2\\times 6}{1+2}=\\frac{9}{3}=3,\\qquad y=\\frac{1\\times(-1)+2\\times 2}{1+2}=\\frac{3}{3}=1$$\n따라서 내분하는 점은 $(3,\\ 1)$이다."
+    "solution": "선분 $\\mathrm{AB}$를 $m:n$으로 내분하는 점의 좌표는 $\\frac{mx_2+nx_1}{m+n}$ (좌표평면에서는 $x,\\ y$좌표에 각각 적용)이다.\n⑴ $\\mathrm{A}(-2)$, $\\mathrm{B}(8)$이고 $m:n=3:2$이므로\n$$\\frac{3\\times 8+2\\times(-2)}{3+2}=\\frac{24-4}{5}=4$$\n⑵ $\\mathrm{A}(6,\\ 2)$, $\\mathrm{B}(-3,\\ -1)$이고 $m:n=1:2$이므로\n$$x=\\frac{1\\times(-3)+2\\times 6}{1+2}=\\frac{9}{3}=3,\\qquad y=\\frac{1\\times(-1)+2\\times 2}{1+2}=\\frac{3}{3}=1$$\n따라서 내분하는 점은 $(3,\\ 1)$이다.",
+    "solutionImage": "assets/images/미래엔_공통수학2_평면좌표와직선의방정식_중단원마무리_고1/q2-solution.svg",
+    "solutionImageAlt": "⑵ A(6,2)에서 B(−3,−1)까지 세 등분한 첫 점 P는 AP:PB=1:2, P(3,1)이다. 세 작은 선분의 동일 눈금이 내분비를 나타낸다.",
+    "solutionImageCaption": "⑵ A(6,2)에서 B(−3,−1)까지 세 등분한 첫 점 P는 AP:PB=1:2, P(3,1)이다. 세 작은 선분의 동일 눈금이 내분비를 나타낸다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -83,7 +91,11 @@ window.questionBank = [
     "content": "다음 직선의 방정식을 구하시오.\n⑴ 점 $(-4, 5)$를 지나고 직선 $y=-3x+2$에 평행한 직선\n⑵ 점 $(1, -3)$을 지나고 직선 $y=2x-1$에 수직인 직선",
     "choices": [],
     "answer": "⑴ $y=-3x-7$\n⑵ $x+2y+5=0$ (즉 $y=-\\frac{1}{2}x-\\frac{5}{2}$)",
-    "solution": "⑴ 직선 $y=-3x+2$와 평행하면 기울기가 $-3$으로 같다. 점 $(-4,\\ 5)$를 지나므로\n$$y-5=-3(x+4),\\quad\\text{즉}\\quad y=-3x-7$$\n⑵ 직선 $y=2x-1$과 수직이면 기울기의 곱이 $-1$이므로 기울기는 $-\\frac{1}{2}$이다. 점 $(1,\\ -3)$을 지나므로\n$$y+3=-\\frac{1}{2}(x-1)$$\n양변에 $2$를 곱하여 정리하면 $2y+6=-x+1$, 즉 $x+2y+5=0$"
+    "solution": "⑴ 직선 $y=-3x+2$와 평행하면 기울기가 $-3$으로 같다. 점 $(-4,\\ 5)$를 지나므로\n$$y-5=-3(x+4),\\quad\\text{즉}\\quad y=-3x-7$$\n⑵ 직선 $y=2x-1$과 수직이면 기울기의 곱이 $-1$이므로 기울기는 $-\\frac{1}{2}$이다. 점 $(1,\\ -3)$을 지나므로\n$$y+3=-\\frac{1}{2}(x-1)$$\n양변에 $2$를 곱하여 정리하면 $2y+6=-x+1$, 즉 $x+2y+5=0$",
+    "solutionImage": "assets/images/미래엔_공통수학2_평면좌표와직선의방정식_중단원마무리_고1/q3-solution.svg",
+    "solutionImageAlt": "⑵ 점 P(1,−3)를 지나는 직선 K는 y=2x−1에 수직이다. 따라서 K의 기울기는 −1/2이고 식은 x+2y+5=0이다.",
+    "solutionImageCaption": "⑵ 점 P(1,−3)를 지나는 직선 K는 y=2x−1에 수직이다. 따라서 K의 기울기는 −1/2이고 식은 x+2y+5=0이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -111,7 +123,11 @@ window.questionBank = [
     "content": "점 $(4, 2)$와 직선 $3x-4y+11=0$ 사이의 거리를 구하시오.",
     "choices": [],
     "answer": "$3$",
-    "solution": "점 $(x_1,\\ y_1)$과 직선 $ax+by+c=0$ 사이의 거리는 $\\frac{|ax_1+by_1+c|}{\\sqrt{a^2+b^2}}$이다.\n$$\\frac{|3\\times 4-4\\times 2+11|}{\\sqrt{3^2+(-4)^2}}=\\frac{|12-8+11|}{5}=\\frac{15}{5}=3$$"
+    "solution": "점 $(x_1,\\ y_1)$과 직선 $ax+by+c=0$ 사이의 거리는 $\\frac{|ax_1+by_1+c|}{\\sqrt{a^2+b^2}}$이다.\n$$\\frac{|3\\times 4-4\\times 2+11|}{\\sqrt{3^2+(-4)^2}}=\\frac{|12-8+11|}{5}=\\frac{15}{5}=3$$",
+    "solutionImage": "assets/images/미래엔_공통수학2_평면좌표와직선의방정식_중단원마무리_고1/q4-solution.svg",
+    "solutionImageAlt": "점 P(4,2)에서 직선 3x−4y+11=0에 내린 수선 PH의 길이는 15/5=3이다.",
+    "solutionImageCaption": "점 P(4,2)에서 직선 3x−4y+11=0에 내린 수선 PH의 길이는 15/5=3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -139,7 +155,12 @@ window.questionBank = [
     "content": "세 점 $\\mathrm{A}(-4, 5)$, $\\mathrm{B}(-2, -3)$, $\\mathrm{C}(1, a)$를 꼭짓점으로 하는 삼각형 $\\mathrm{ABC}$가 $\\angle\\mathrm{C}=90^\\circ$인 직각삼각형일 때, $a$의 값을 모두 구하시오.",
     "choices": [],
     "answer": "$0,\\ 2$",
-    "solution": "$\\angle\\mathrm{C}=90^\\circ$이므로 직선 $\\mathrm{CA}$와 직선 $\\mathrm{CB}$가 수직이다. (또는 $\\overline{\\mathrm{AB}}^2=\\overline{\\mathrm{CA}}^2+\\overline{\\mathrm{CB}}^2$)\n$\\overline{\\mathrm{AB}}^2=(-2+4)^2+(-3-5)^2=4+64=68$\n$\\overline{\\mathrm{CA}}^2=(1+4)^2+(a-5)^2=25+a^2-10a+25=a^2-10a+50$\n$\\overline{\\mathrm{CB}}^2=(1+2)^2+(a+3)^2=9+a^2+6a+9=a^2+6a+18$\n피타고라스 정리에 의하여\n$$68=(a^2-10a+50)+(a^2+6a+18)=2a^2-4a+68$$\n$2a^2-4a=0$이므로 $2a(a-2)=0$에서 $a=0$ 또는 $a=2$"
+    "solution": "$\\angle\\mathrm{C}=90^\\circ$이므로 직선 $\\mathrm{CA}$와 직선 $\\mathrm{CB}$가 수직이다. (또는 $\\overline{\\mathrm{AB}}^2=\\overline{\\mathrm{CA}}^2+\\overline{\\mathrm{CB}}^2$)\n$\\overline{\\mathrm{AB}}^2=(-2+4)^2+(-3-5)^2=4+64=68$\n$\\overline{\\mathrm{CA}}^2=(1+4)^2+(a-5)^2=25+a^2-10a+25=a^2-10a+50$\n$\\overline{\\mathrm{CB}}^2=(1+2)^2+(a+3)^2=9+a^2+6a+9=a^2+6a+18$\n피타고라스 정리에 의하여\n$$68=(a^2-10a+50)+(a^2+6a+18)=2a^2-4a+68$$\n$2a^2-4a=0$이므로 $2a(a-2)=0$에서 $a=0$ 또는 $a=2$",
+    "solutionImage": "assets/images/미래엔_공통수학2_평면좌표와직선의방정식_중단원마무리_고1/q5-solution.svg",
+    "solutionImageAlt": "A(−4,5), B(−2,−3), C(1,a)에서 ∠ACB=90°이려면 a(a−2)=0이다. a=0과 a=2인 두 삼각형 모두 C에서 직각이다.",
+    "solutionImageCaption": "A(−4,5), B(−2,−3), C(1,a)에서 ∠ACB=90°이려면 a(a−2)=0이다. a=0과 a=2인 두 삼각형 모두 C에서 직각이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 6,
