@@ -1,0 +1,32 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"10"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"10"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"10"},{"kind":"integer","value":"10"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"P","op":"DIVISION_POINT","inputs":["A","C"],"args":{"m":{"kind":"integer","value":"3"},"n":{"kind":"integer","value":"17"},"mode":"INTERNAL"},"outputType":"POINT","factRole":"GIVEN"}
+  ]},
+  "displayPoints":["A","B","C","D","P"],
+  "displaySegments":[{"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},{"id":"sCD","refs":["C","D"]},{"id":"sDA","refs":["D","A"]},{"id":"sAP","refs":["A","P"]},{"id":"sPC","refs":["P","C"]},{"id":"sBP","refs":["B","P"]},{"id":"sDP","refs":["D","P"]}],
+  "rightAngles":[{"id":"rD","refs":["A","D","C"],"factRole":"GIVEN"}],
+  "planeMarks":{"equalLengths":[{"id":"squareSides","count":1,"segments":["sAB","sDA"]}],"angles":[
+    {"id":"angBPC","refs":["B","P","C"],"value":55,"label":"55","style":"ARC","arcs":1,"ring":1,"factRole":"GIVEN"},
+    {"id":"angAPB","refs":["A","P","B"],"value":125,"label":"125","style":"ARC","arcs":1,"ring":2,"factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"angBAP","refs":["B","A","P"],"value":45,"noLabel":true,"style":"ARC","arcs":1,"equalGroup":1,"factRole":"GIVEN"},
+    {"id":"angPAD","refs":["P","A","D"],"value":45,"noLabel":true,"style":"ARC","arcs":1,"equalGroup":1,"factRole":"GIVEN"},
+    {"id":"angABP","refs":["A","B","P"],"value":10,"label":"10","style":"ARC","arcs":1,"factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"angADP","refs":["A","D","P"],"value":10,"label":"10","style":"ARC","arcs":1,"factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"angPDC","refs":["P","D","C"],"value":80,"label":"80","style":"ARC","arcs":1,"ring":2,"factRole":"CONCLUSION"}
+  ]},
+  "coordinateCanvas":{"width":720,"height":570},
+  "caption":"∠BPC=55°와 대각선의 이등분 각 45°, 합동인 두 삼각형에서 ∠ABP=∠ADP=10°, 따라서 ∠PDC=80°이다.",
+  "accessibilityDescription":"정사각형 ABCD에서 대각선 AC 위에 점 P가 있다. B와 D에서 P로 선분을 잇고 AB와 AD의 같은 길이 눈금을 남긴다. P의 55°와 125°, A의 두 45°, B와 D의 10°, D의 80°를 호와 숫자로 표시하며 내부 어느 영역도 칠하지 않는다.",
+  "sourceConditions":[
+    {"id":"square","condition":"ABCD는 정사각형으로 AB=AD이고 두 꼭짓각은 90°이다.","mappedTo":["sAB","sDA","squareSides","rD"]},
+    {"id":"point","condition":"P는 대각선 AC 위의 점이고 ∠BPC=55°이다. 대표 배치는 주어진 각과 0.01° 이내로 일치한다.","mappedTo":["P","sAP","sPC","angBPC"]},
+    {"id":"congruence","condition":"APB는 125°, A의 두 각은 45°이고, ABP·ADP는 각각 10°로 대응하며 마지막 ∠PDC는 80°이다.","mappedTo":["angAPB","angBAP","angPAD","sBP","sDP","angABP","angADP","angPDC"]}
+  ],
+  "newVisualInformation":["기존 해설 SVG에서 각도 풀이에 필요 없이 회색으로 채운 삼각형 APD의 면색을 없앤다.","원본 점과 대각선을 보존하고 합동의 AB=AD 눈금, 각 호 55°→125°→10°→80°, 직각을 직접 그리는 필드로 지정한다."],
+  "sourceQuote":"$\\angle BPC=55^\\circ$이고 $A,P,C$가 한 직선 위에 있으므로"
+}
