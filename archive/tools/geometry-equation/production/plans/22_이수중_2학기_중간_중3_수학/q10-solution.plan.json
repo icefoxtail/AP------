@@ -1,0 +1,255 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "9797959",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "2070552",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "7727407",
+              "denominator": "1000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "A",
+          "lineBC"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "lineBC",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aBAC",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "label": "75",
+        "value": 75,
+        "style": "ARC",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aACB",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "label": "60",
+        "value": 60,
+        "style": "ARC",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "tAC",
+        "ownerSegment": "sCA",
+        "text": "8",
+        "unit": "m",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "tAB",
+        "ownerSegment": "sAB",
+        "text": "4√6",
+        "unit": "m"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 460
+  },
+  "caption": "10번 해설 도형: 주어진 변·원·각과 표식을 보존한다.",
+  "accessibilityDescription": "10번 해설 도형: 주어진 변·원·각과 표식을 보존한다.",
+  "sourceQuote": "연못의 가장자리의 두 지점 $\\text{A}$, $\\text{B}$ 사이의 거리를 구하려고 연못의 바깥쪽 $\\text{C}$ 지점에서 필요한 부분을 측량하였더니 $\\overline{\\text{AC}}=8\\text{ m}$, $\\angle\\text{CAB}=75^\\circ$, $\\angle\\text{ACB}=60^\\circ$이었다. 이때 두 지점 $\\text{A}$, $\\text{B}$ 사이의 거리는? [5점]",
+  "sourceConditions": [
+    {
+      "id": "source-figure",
+      "condition": "원본 문항의 꼭짓점·변·원·표식·치수 관계",
+      "mappedTo": [
+        "sAB",
+        "sBC",
+        "sCA",
+        "aBAC",
+        "aACB",
+        "tAC"
+      ]
+    },
+    {
+      "id": "source-length-tAC",
+      "condition": "원본 그림의 선분 길이·변수 표기 8m",
+      "mappedTo": [
+        "tAC"
+      ]
+    },
+    {
+      "id": "source-angle-aBAC",
+      "condition": "원본 그림의 ∠BAC=75°",
+      "mappedTo": [
+        "aBAC"
+      ]
+    },
+    {
+      "id": "source-angle-aACB",
+      "condition": "원본 그림의 ∠ACB=60°",
+      "mappedTo": [
+        "aACB"
+      ]
+    },
+    {
+      "id": "derived-aid",
+      "condition": "해설의 보조선·직각·도출 길이",
+      "mappedTo": [
+        "sAD",
+        "tAB"
+      ]
+    },
+    {
+      "id": "altitude",
+      "condition": "해설에서 A에서 BC로 내린 수선 AD",
+      "mappedTo": [
+        "sAD",
+        "rADB"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "풀이에 사용하는 관계와 보조선의 시각적 위치를 명시",
+    "보조선과 수선의 발, 길이 관계를 도형에서 직접 확인 가능"
+  ],
+  "rightAngles": [
+    {
+      "id": "rADB",
+      "refs": [
+        "A",
+        "D",
+        "B"
+      ]
+    }
+  ]
+}

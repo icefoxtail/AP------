@@ -1,0 +1,250 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-2165064",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-3750000",
+              "denominator": "1000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "2165064",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3750000",
+              "denominator": "1000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "O"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aDOC",
+        "refs": [
+          "D",
+          "O",
+          "C"
+        ],
+        "label": "60",
+        "value": 60,
+        "style": "ARC",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "tAC",
+        "ownerSegment": "sAC",
+        "text": "8",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "tBD",
+        "ownerSegment": "sBD",
+        "text": "5√3",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 460
+  },
+  "caption": "11번 원문 도형: 주어진 변·원·각과 표식을 보존한다.",
+  "accessibilityDescription": "11번 원문 도형: 주어진 변·원·각과 표식을 보존한다.",
+  "sourceQuote": "$\\overline{\\text{AC}}=8\\text{ cm}$, $\\overline{\\text{BD}}=5\\sqrt{3}\\text{ cm}$, $\\overline{\\text{AC}}$와 $\\overline{\\text{BD}}$ 사이의 교각이 $60^\\circ$일 때, $\\square\\text{ABCD}$의 넓이는? [4점] ",
+  "sourceConditions": [
+    {
+      "id": "source-figure",
+      "condition": "원본 문항의 꼭짓점·변·원·표식·치수 관계",
+      "mappedTo": [
+        "sAB",
+        "sBC",
+        "sCD",
+        "sDA",
+        "sAC",
+        "sBD",
+        "aDOC",
+        "tAC",
+        "tBD"
+      ]
+    },
+    {
+      "id": "source-length-tAC",
+      "condition": "원본 그림의 선분 길이·변수 표기 8cm",
+      "mappedTo": [
+        "tAC"
+      ]
+    },
+    {
+      "id": "source-length-tBD",
+      "condition": "원본 그림의 선분 길이·변수 표기 5√3cm",
+      "mappedTo": [
+        "tBD"
+      ]
+    },
+    {
+      "id": "source-angle-aDOC",
+      "condition": "원본 그림의 ∠DOC=60°",
+      "mappedTo": [
+        "aDOC"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본 스캔의 길이·각·직각 표시와 점선 지시선을 분리하여 보존"
+  ]
+}

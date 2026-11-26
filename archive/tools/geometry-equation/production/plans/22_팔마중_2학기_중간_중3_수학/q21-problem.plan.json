@@ -1,0 +1,299 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "O2",
+          "lineP"
+        ],
+        "args": {},
+        "id": "P",
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-1333333",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3771236",
+              "denominator": "1000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k1",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k2",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O2"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lineP",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "rational",
+            "numerator": "-5656854",
+            "denominator": "1000000"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "16"
+          },
+          "c": {
+            "kind": "rational",
+            "numerator": "-67882248",
+            "denominator": "1000000"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [
+    "k1",
+    "k2"
+  ],
+  "displayPoints": [
+    "A",
+    "O",
+    "C",
+    "O2",
+    "B",
+    "P",
+    "Q"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAP",
+      "refs": [
+        "A",
+        "P"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "tAB",
+        "ownerSegment": "sAB",
+        "text": "24",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rAPO2",
+      "refs": [
+        "A",
+        "P",
+        "O2"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 460
+  },
+  "caption": "21번 원문 도형: 주어진 변·원·각과 표식을 보존한다.",
+  "accessibilityDescription": "21번 원문 도형: 주어진 변·원·각과 표식을 보존한다.",
+  "sourceQuote": "길이가 $24$인 선분 $\\text{AB}$의 중점 $\\text{C}$에 대하여 $\\overline{\\text{AC}}$와 $\\overline{\\text{CB}}$를 각각 지름으로 하는 두 원 $\\text{O}$, $\\text{O}'$이 있다. $\\overline{\\text{AP}}$가 원 $\\text{O}'$의 접선이고, $\\overline{\\text{AP}}$와 원 $\\text{O}$의 교점을 $\\text{Q}$라고 할 때, $\\triangle\\text{AOQ}$의 넓이는? [4점] ",
+  "sourceConditions": [
+    {
+      "id": "source-figure",
+      "condition": "원본 문항의 꼭짓점·변·원·표식·치수 관계",
+      "mappedTo": [
+        "sAB",
+        "sAP",
+        "k1",
+        "k2",
+        "rAPO2",
+        "tAB"
+      ]
+    },
+    {
+      "id": "source-length-tAB",
+      "condition": "원본 그림의 선분 길이·변수 표기 24",
+      "mappedTo": [
+        "tAB"
+      ]
+    },
+    {
+      "id": "source-right-rAPO2",
+      "condition": "원본 그림의 APO2 직각표시",
+      "mappedTo": [
+        "rAPO2"
+      ]
+    },
+    {
+      "id": "source-circle-k1",
+      "condition": "원본 그림의 원둘레",
+      "mappedTo": [
+        "k1"
+      ]
+    },
+    {
+      "id": "source-circle-k2",
+      "condition": "원본 그림의 원둘레",
+      "mappedTo": [
+        "k2"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본 스캔의 길이·각·직각 표시와 점선 지시선을 분리하여 보존"
+  ]
+}

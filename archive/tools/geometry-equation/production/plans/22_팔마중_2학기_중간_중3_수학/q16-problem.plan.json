@@ -1,0 +1,267 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-6928203",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "integer",
+              "value": "-4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "6928203",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "integer",
+              "value": "-4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "8"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "fold",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O2"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "8"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [
+    "k"
+  ],
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "M",
+    "O2"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sOM",
+      "refs": [
+        "O",
+        "M"
+      ]
+    },
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "tOA",
+        "ownerSegment": "sOA",
+        "text": "8",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "folded-arc",
+        "circle": "fold",
+        "center": "O2",
+        "from": "B",
+        "to": "A",
+        "side": "CCW"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rOMB",
+      "refs": [
+        "O",
+        "M",
+        "B"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "O2"
+  ],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 460
+  },
+  "caption": "현 AB를 접어 아래쪽 원호가 O를 지나는 안쪽 접힘호로 나타나며, 접힘선 AB와 중심까지의 거리 OM을 그린다.",
+  "accessibilityDescription": "현 AB를 접어 아래쪽 원호가 O를 지나는 안쪽 접힘호로 나타나며, 접힘선 AB와 중심까지의 거리 OM을 그린다.",
+  "sourceQuote": "그림은 $\\overline{\\text{AB}}$를 접는 선으로 하여 $\\overgroup{\\text{AB}}$가 원의 중심 $\\text{O}$를 지나도록 접은 것이다. $\\overline{\\text{AB}}$의 길이는? [4점] ",
+  "sourceConditions": [
+    {
+      "id": "source-figure",
+      "condition": "원본 문항의 꼭짓점·변·원·표식·치수 관계",
+      "mappedTo": [
+        "sAB",
+        "sOM",
+        "sOA",
+        "k",
+        "rOMB",
+        "tOA",
+        "folded-arc"
+      ]
+    },
+    {
+      "id": "source-length-tOA",
+      "condition": "원본 그림의 선분 길이·변수 표기 8cm",
+      "mappedTo": [
+        "tOA"
+      ]
+    },
+    {
+      "id": "source-right-rOMB",
+      "condition": "원본 그림의 OMB 직각표시",
+      "mappedTo": [
+        "rOMB"
+      ]
+    },
+    {
+      "id": "source-arc-folded-arc",
+      "condition": "원본 그림의 원호",
+      "mappedTo": [
+        "folded-arc"
+      ]
+    },
+    {
+      "id": "source-circle-k",
+      "condition": "원본 그림의 원둘레",
+      "mappedTo": [
+        "k"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "반사된 원호를 별도 원 기하로 작도",
+    "ENGINE_CAPABILITY_PENDING: 종이 접힘 방향의 곡선 화살촉 애니메이션은 미지원"
+  ]
+}

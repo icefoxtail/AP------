@@ -1,0 +1,299 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "4618802",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "rational",
+              "numerator": "4618802",
+              "denominator": "1000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "sBF",
+      "refs": [
+        "B",
+        "F"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aEBF",
+        "refs": [
+          "E",
+          "B",
+          "F"
+        ],
+        "label": "30",
+        "value": 30,
+        "style": "ARC",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aABE",
+        "refs": [
+          "A",
+          "B",
+          "E"
+        ],
+        "label": "30",
+        "style": "ARC",
+        "arcs": 1,
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "eq0",
+        "count": 1,
+        "segments": [
+          "sBE",
+          "sBF"
+        ]
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rABC",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 460
+  },
+  "caption": "12번 해설 도형: 주어진 변·원·각과 표식을 보존한다.",
+  "accessibilityDescription": "12번 해설 도형: 주어진 변·원·각과 표식을 보존한다.",
+  "sourceQuote": "$\\square\\text{ABCD}$는 정사각형이고, $\\triangle\\text{EBF}$는 $\\overline{\\text{BE}}=\\overline{\\text{BF}}$인 이등변삼각형이다. $\\angle\\text{EBF}=30^\\circ$이고 $\\triangle\\text{EBF}$의 넓이가 $\\frac{3}{2}\\text{ cm}^2$일 때, 정사각형 $\\text{ABCD}$의 넓이는? [4점] ",
+  "sourceConditions": [
+    {
+      "id": "source-figure",
+      "condition": "원본 문항의 꼭짓점·변·원·표식·치수 관계",
+      "mappedTo": [
+        "sAB",
+        "sBC",
+        "sCD",
+        "sDA",
+        "sBE",
+        "sBF",
+        "rABC",
+        "aEBF"
+      ]
+    },
+    {
+      "id": "source-angle-aEBF",
+      "condition": "원본 그림의 ∠EBF=30°",
+      "mappedTo": [
+        "aEBF"
+      ]
+    },
+    {
+      "id": "source-right-rABC",
+      "condition": "원본 그림의 ABC 직각표시",
+      "mappedTo": [
+        "rABC"
+      ]
+    },
+    {
+      "id": "source-equal-eq0",
+      "condition": "원본 그림의 같은 길이 표시",
+      "mappedTo": [
+        "eq0"
+      ]
+    },
+    {
+      "id": "derived-aid",
+      "condition": "해설의 보조선·직각·도출 길이",
+      "mappedTo": [
+        "sBD"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "풀이에 사용하는 관계와 보조선의 시각적 위치를 명시",
+    "보조선과 수선의 발, 길이 관계를 도형에서 직접 확인 가능"
+  ]
+}

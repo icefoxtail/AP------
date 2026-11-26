@@ -1,0 +1,353 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "12"
+                }
+              ]
+            }
+          ]
+        },
+        "id": "A",
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "12"
+              }
+            ]
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "120"
+          },
+          "turn": "CCW"
+        },
+        "id": "B",
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "12"
+              }
+            ]
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "120"
+          },
+          "turn": "CW"
+        },
+        "id": "C",
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "id": "D",
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "op": "MIDPOINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "id": "E",
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "op": "MIDPOINT",
+        "inputs": [
+          "C",
+          "A"
+        ],
+        "args": {},
+        "id": "F",
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "12"
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [
+    "k"
+  ],
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sOD",
+      "refs": [
+        "O",
+        "D"
+      ]
+    },
+    {
+      "id": "sOE",
+      "refs": [
+        "O",
+        "E"
+      ]
+    },
+    {
+      "id": "sOF",
+      "refs": [
+        "O",
+        "F"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "tAD",
+        "ownerSegment": "sAD",
+        "text": "3",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "eq0",
+        "count": 1,
+        "segments": [
+          "sOD",
+          "sOE",
+          "sOF"
+        ]
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rODA",
+      "refs": [
+        "O",
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "rOEB",
+      "refs": [
+        "O",
+        "E",
+        "B"
+      ]
+    },
+    {
+      "id": "rOFA",
+      "refs": [
+        "O",
+        "F",
+        "A"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 460
+  },
+  "caption": "13번 원문 도형: 주어진 변·원·각과 표식을 보존한다.",
+  "accessibilityDescription": "13번 원문 도형: 주어진 변·원·각과 표식을 보존한다.",
+  "sourceQuote": "원 $\\text{O}$는 $\\triangle\\text{ABC}$의 외접원이고 $\\overline{\\text{OD}}=\\overline{\\text{OE}}=\\overline{\\text{OF}}$이다. $\\overline{\\text{AD}}=3\\text{ cm}$일 때, $\\triangle\\text{ABC}$의 둘레의 길이는? [3점] ",
+  "sourceConditions": [
+    {
+      "id": "source-figure",
+      "condition": "원본 문항의 꼭짓점·변·원·표식·치수 관계",
+      "mappedTo": [
+        "sAB",
+        "sBC",
+        "sCA",
+        "sOD",
+        "sOE",
+        "sOF",
+        "sAD",
+        "k",
+        "rODA",
+        "rOEB",
+        "rOFA",
+        "tAD"
+      ]
+    },
+    {
+      "id": "source-length-tAD",
+      "condition": "원본 그림의 선분 길이·변수 표기 3cm",
+      "mappedTo": [
+        "tAD"
+      ]
+    },
+    {
+      "id": "source-right-rODA",
+      "condition": "원본 그림의 ODA 직각표시",
+      "mappedTo": [
+        "rODA"
+      ]
+    },
+    {
+      "id": "source-right-rOEB",
+      "condition": "원본 그림의 OEB 직각표시",
+      "mappedTo": [
+        "rOEB"
+      ]
+    },
+    {
+      "id": "source-right-rOFA",
+      "condition": "원본 그림의 OFA 직각표시",
+      "mappedTo": [
+        "rOFA"
+      ]
+    },
+    {
+      "id": "source-circle-k",
+      "condition": "원본 그림의 원둘레",
+      "mappedTo": [
+        "k"
+      ]
+    },
+    {
+      "id": "source-equal-eq0",
+      "condition": "원본 그림의 같은 길이 표시",
+      "mappedTo": [
+        "eq0"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본 스캔의 길이·각·직각 표시와 점선 지시선을 분리하여 보존"
+  ]
+}

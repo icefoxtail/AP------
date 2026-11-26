@@ -1,0 +1,311 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "rational",
+              "numerator": "15773503",
+              "denominator": "1000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "F",
+    "E",
+    "C",
+    "H",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sFE",
+      "refs": [
+        "F",
+        "E"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sFC",
+      "refs": [
+        "F",
+        "C"
+      ]
+    },
+    {
+      "id": "sCE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDH",
+      "refs": [
+        "D",
+        "H"
+      ]
+    },
+    {
+      "id": "sHE",
+      "refs": [
+        "H",
+        "E"
+      ]
+    },
+    {
+      "id": "sCH",
+      "refs": [
+        "C",
+        "H"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aHCD",
+        "refs": [
+          "H",
+          "C",
+          "D"
+        ],
+        "label": "30",
+        "value": 30,
+        "style": "ARC",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aHCE",
+        "refs": [
+          "H",
+          "C",
+          "E"
+        ],
+        "label": "45",
+        "value": 45,
+        "style": "ARC",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "tFE",
+        "ownerSegment": "sFE",
+        "text": "10",
+        "unit": "m",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "tCH",
+        "ownerSegment": "sCH",
+        "text": "10",
+        "unit": "m"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rCHD",
+      "refs": [
+        "C",
+        "H",
+        "D"
+      ]
+    },
+    {
+      "id": "rFEH",
+      "refs": [
+        "F",
+        "E",
+        "H"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 460
+  },
+  "caption": "두 건물 사이 10 m, 관측점 C에서 상승 30°와 하강 45°, 수평선 CH 및 직각표시를 보존한다.",
+  "accessibilityDescription": "두 건물 사이 10 m, 관측점 C에서 상승 30°와 하강 45°, 수평선 CH 및 직각표시를 보존한다.",
+  "sourceQuote": "【서술형 2】 [서술형] 다음 그림과 같이 $10\\text{ m}$만큼 떨어진 두 건물 $\\text{A}$, $\\text{B}$가 있다. $\\text{A}$ 건물 옥상에서 $\\text{B}$ 건물을 올려다본 각도는 $30^\\circ$이고 내려다본 각도는 $45^\\circ$일 때, $\\text{B}$ 건물의 높이는? [6점] * 풀이과정을 적을 때 반드시 오른쪽 그림을 이용하여 적어주셔야 합니다. *",
+  "sourceConditions": [
+    {
+      "id": "source-figure",
+      "condition": "원본 문항의 꼭짓점·변·원·표식·치수 관계",
+      "mappedTo": [
+        "sFE",
+        "sFC",
+        "sCE",
+        "sCD",
+        "sDH",
+        "sHE",
+        "sCH",
+        "rCHD",
+        "rFEH",
+        "aHCD",
+        "aHCE",
+        "tFE"
+      ]
+    },
+    {
+      "id": "source-length-tFE",
+      "condition": "원본 그림의 선분 길이·변수 표기 10m",
+      "mappedTo": [
+        "tFE"
+      ]
+    },
+    {
+      "id": "source-angle-aHCD",
+      "condition": "원본 그림의 ∠HCD=30°",
+      "mappedTo": [
+        "aHCD"
+      ]
+    },
+    {
+      "id": "source-angle-aHCE",
+      "condition": "원본 그림의 ∠HCE=45°",
+      "mappedTo": [
+        "aHCE"
+      ]
+    },
+    {
+      "id": "source-right-rCHD",
+      "condition": "원본 그림의 CHD 직각표시",
+      "mappedTo": [
+        "rCHD"
+      ]
+    },
+    {
+      "id": "source-right-rFEH",
+      "condition": "원본 그림의 FEH 직각표시",
+      "mappedTo": [
+        "rFEH"
+      ]
+    },
+    {
+      "id": "derived-aid",
+      "condition": "해설의 보조선·직각·도출 길이",
+      "mappedTo": [
+        "tCH"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "풀이에 사용하는 관계와 보조선의 시각적 위치를 명시",
+    "보조선과 수선의 발, 길이 관계를 도형에서 직접 확인 가능"
+  ]
+}

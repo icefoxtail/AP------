@@ -1,0 +1,314 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "7230769",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "6907675",
+              "denominator": "1000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "13"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "5061538",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "4835373",
+              "denominator": "1000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "9153846",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "4605117",
+              "denominator": "1000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2806243",
+              "denominator": "1000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "2806243",
+            "denominator": "1000000"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [
+    "k"
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "O"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sDB",
+      "refs": [
+        "D",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "tAD",
+        "ownerSegment": "sAD",
+        "text": "3",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "tDB",
+        "ownerSegment": "sDB",
+        "text": "7",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "tAC",
+        "ownerSegment": "sCA",
+        "text": "9",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "tBC",
+        "ownerSegment": "sBC",
+        "text": "x",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 460
+  },
+  "caption": "17번 원문 도형: 주어진 변·원·각과 표식을 보존한다.",
+  "accessibilityDescription": "17번 원문 도형: 주어진 변·원·각과 표식을 보존한다.",
+  "sourceQuote": "원 $\\text{O}$는 $\\triangle\\text{ABC}$의 내접원이고, 세 점 $\\text{D}$, $\\text{E}$, $\\text{F}$는 그 접점이다. $\\overline{\\text{AD}}=3$, $\\overline{\\text{BD}}=7$, $\\overline{\\text{AC}}=9$일 때, $x$의 값은? [4점] ",
+  "sourceConditions": [
+    {
+      "id": "source-figure",
+      "condition": "원본 문항의 꼭짓점·변·원·표식·치수 관계",
+      "mappedTo": [
+        "sAB",
+        "sBC",
+        "sCA",
+        "sAD",
+        "sDB",
+        "k",
+        "tAD",
+        "tDB",
+        "tAC",
+        "tBC"
+      ]
+    },
+    {
+      "id": "source-length-tAD",
+      "condition": "원본 그림의 선분 길이·변수 표기 3",
+      "mappedTo": [
+        "tAD"
+      ]
+    },
+    {
+      "id": "source-length-tDB",
+      "condition": "원본 그림의 선분 길이·변수 표기 7",
+      "mappedTo": [
+        "tDB"
+      ]
+    },
+    {
+      "id": "source-length-tAC",
+      "condition": "원본 그림의 선분 길이·변수 표기 9",
+      "mappedTo": [
+        "tAC"
+      ]
+    },
+    {
+      "id": "source-length-tBC",
+      "condition": "원본 그림의 선분 길이·변수 표기 x",
+      "mappedTo": [
+        "tBC"
+      ]
+    },
+    {
+      "id": "source-circle-k",
+      "condition": "원본 그림의 원둘레",
+      "mappedTo": [
+        "k"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본 스캔의 길이·각·직각 표시와 점선 지시선을 분리하여 보존"
+  ]
+}

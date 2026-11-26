@@ -1,0 +1,200 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-12"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [
+    "k"
+  ],
+  "displayPoints": [
+    "O",
+    "T",
+    "P"
+  ],
+  "displaySegments": [
+    {
+      "id": "sPT",
+      "refs": [
+        "P",
+        "T"
+      ]
+    },
+    {
+      "id": "sOT",
+      "refs": [
+        "O",
+        "T"
+      ]
+    },
+    {
+      "id": "sPO",
+      "refs": [
+        "P",
+        "O"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "tPT",
+        "ownerSegment": "sPT",
+        "text": "12",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "tOT",
+        "ownerSegment": "sOT",
+        "text": "5",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rPTO",
+      "refs": [
+        "P",
+        "T",
+        "O"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 460
+  },
+  "caption": "17번 원문 도형: 주어진 변·원·각과 표식을 보존한다.",
+  "accessibilityDescription": "17번 원문 도형: 주어진 변·원·각과 표식을 보존한다.",
+  "sourceQuote": "다음은 원 밖의 한 점 $\\text{P}$에서 접선 $\\text{PT}$를 그은 것이다. $\\overline{\\text{PT}}=12$이고 $\\overline{\\text{OT}}=5$일 때, 점 $\\text{P}$에서 원 $\\text{O}$에 그은 다른 한 접선의 길이는? [3점]",
+  "sourceConditions": [
+    {
+      "id": "source-figure",
+      "condition": "원본 문항의 꼭짓점·변·원·표식·치수 관계",
+      "mappedTo": [
+        "sPT",
+        "sOT",
+        "sPO",
+        "k",
+        "rPTO",
+        "tPT",
+        "tOT"
+      ]
+    },
+    {
+      "id": "source-length-tPT",
+      "condition": "원본 그림의 선분 길이·변수 표기 12",
+      "mappedTo": [
+        "tPT"
+      ]
+    },
+    {
+      "id": "source-length-tOT",
+      "condition": "원본 그림의 선분 길이·변수 표기 5",
+      "mappedTo": [
+        "tOT"
+      ]
+    },
+    {
+      "id": "source-right-rPTO",
+      "condition": "원본 그림의 PTO 직각표시",
+      "mappedTo": [
+        "rPTO"
+      ]
+    },
+    {
+      "id": "source-circle-k",
+      "condition": "원본 그림의 원둘레",
+      "mappedTo": [
+        "k"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본 스캔의 길이·각·직각 표시와 점선 지시선을 분리하여 보존"
+  ]
+}

@@ -1,0 +1,312 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "0",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "130"
+          },
+          "turn": "CCW"
+        },
+        "id": "B",
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "130"
+          },
+          "turn": "CW"
+        },
+        "id": "C",
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "id": "M",
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "id": "N",
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [
+    "k"
+  ],
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "M",
+    "N"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sOM",
+      "refs": [
+        "O",
+        "M"
+      ]
+    },
+    {
+      "id": "sON",
+      "refs": [
+        "O",
+        "N"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aBAC",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "label": "50",
+        "value": 50,
+        "style": "ARC",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aABC",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "label": "65",
+        "style": "ARC",
+        "arcs": 1,
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "eq0",
+        "count": 1,
+        "segments": [
+          "sOM",
+          "sON"
+        ]
+      },
+      {
+        "id": "parity-eq-2",
+        "count": 2,
+        "segments": [
+          "sAB",
+          "sCA"
+        ]
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rOMA",
+      "refs": [
+        "O",
+        "M",
+        "A"
+      ]
+    },
+    {
+      "id": "rONC",
+      "refs": [
+        "O",
+        "N",
+        "C"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 460
+  },
+  "caption": "20번 해설 도형: 주어진 변·원·각과 표식을 보존한다.",
+  "accessibilityDescription": "20번 해설 도형: 주어진 변·원·각과 표식을 보존한다.",
+  "sourceQuote": "다음 그림에서 $\\overline{\\text{OM}}=\\overline{\\text{ON}}$이고 $\\angle\\text{A}=50^\\circ$일 때, $\\angle\\text{B}$의 크기는? [5점]",
+  "sourceConditions": [
+    {
+      "id": "source-figure",
+      "condition": "원본 문항의 꼭짓점·변·원·표식·치수 관계",
+      "mappedTo": [
+        "sAB",
+        "sBC",
+        "sCA",
+        "sOM",
+        "sON",
+        "k",
+        "rOMA",
+        "rONC",
+        "aBAC"
+      ]
+    },
+    {
+      "id": "source-angle-aBAC",
+      "condition": "원본 그림의 ∠BAC=50°",
+      "mappedTo": [
+        "aBAC"
+      ]
+    },
+    {
+      "id": "source-right-rOMA",
+      "condition": "원본 그림의 OMA 직각표시",
+      "mappedTo": [
+        "rOMA"
+      ]
+    },
+    {
+      "id": "source-right-rONC",
+      "condition": "원본 그림의 ONC 직각표시",
+      "mappedTo": [
+        "rONC"
+      ]
+    },
+    {
+      "id": "source-circle-k",
+      "condition": "원본 그림의 원둘레",
+      "mappedTo": [
+        "k"
+      ]
+    },
+    {
+      "id": "source-equal-eq0",
+      "condition": "원본 그림의 같은 길이 표시",
+      "mappedTo": [
+        "eq0"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "풀이에 사용하는 관계와 보조선의 시각적 위치를 명시",
+    "보조선과 수선의 발, 길이 관계를 도형에서 직접 확인 가능"
+  ]
+}

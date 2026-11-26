@@ -1,0 +1,183 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "10392305",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "O",
+    "P",
+    "Q"
+  ],
+  "displaySegments": [
+    {
+      "id": "sOP",
+      "refs": [
+        "O",
+        "P"
+      ]
+    },
+    {
+      "id": "sOQ",
+      "refs": [
+        "O",
+        "Q"
+      ]
+    },
+    {
+      "id": "sPQ",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aPOQ",
+        "refs": [
+          "P",
+          "O",
+          "Q"
+        ],
+        "label": "60",
+        "value": 60,
+        "style": "ARC",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "tOP",
+        "ownerSegment": "sOP",
+        "text": "8",
+        "unit": "m",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "tOQ",
+        "ownerSegment": "sOQ",
+        "text": "12",
+        "unit": "m",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 460
+  },
+  "caption": "8번 원문 도형: 주어진 변·원·각과 표식을 보존한다.",
+  "accessibilityDescription": "8번 원문 도형: 주어진 변·원·각과 표식을 보존한다.",
+  "sourceQuote": "어느 공원에 있는 호수의 양 끝 지점 $\\text{P}$, $\\text{Q}$ 사이의 거리를 구하기 위하여 거리와 각을 측정하여 나타낸 것이다. $\\overline{\\text{OP}}=8\\text{ m}$, $\\overline{\\text{OQ}}=12\\text{ m}$이고 $\\angle\\text{O}=60^\\circ$일 때, 두 지점 $\\text{P}$, $\\text{Q}$ 사이의 거리는? [4점] ",
+  "sourceConditions": [
+    {
+      "id": "source-figure",
+      "condition": "원본 문항의 꼭짓점·변·원·표식·치수 관계",
+      "mappedTo": [
+        "sOP",
+        "sOQ",
+        "sPQ",
+        "aPOQ",
+        "tOP",
+        "tOQ"
+      ]
+    },
+    {
+      "id": "source-length-tOP",
+      "condition": "원본 그림의 선분 길이·변수 표기 8m",
+      "mappedTo": [
+        "tOP"
+      ]
+    },
+    {
+      "id": "source-length-tOQ",
+      "condition": "원본 그림의 선분 길이·변수 표기 12m",
+      "mappedTo": [
+        "tOQ"
+      ]
+    },
+    {
+      "id": "source-angle-aPOQ",
+      "condition": "원본 그림의 ∠POQ=60°",
+      "mappedTo": [
+        "aPOQ"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본 스캔의 길이·각·직각 표시와 점선 지시선을 분리하여 보존"
+  ]
+}

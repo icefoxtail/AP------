@@ -1,0 +1,368 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "829038",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "829038",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "559193",
+              "denominator": "1000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "rational",
+              "numerator": "674509",
+              "denominator": "1000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "O",
+    "U",
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sOC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "sOU",
+      "refs": [
+        "O",
+        "U"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sOD",
+      "refs": [
+        "O",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aCOB",
+        "refs": [
+          "C",
+          "O",
+          "B"
+        ],
+        "label": "x",
+        "value": 34,
+        "style": "ARC",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "tAC",
+        "ownerSegment": "sAC",
+        "text": "0.17",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "tAB",
+        "ownerSegment": "sAB",
+        "text": "a",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "tCD",
+        "ownerSegment": "sCD",
+        "text": "b",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "tOB",
+        "ownerSegment": "sOB",
+        "text": "1",
+        "factRole": "GIVEN"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "quarter",
+        "circle": "k",
+        "center": "O",
+        "from": "C",
+        "to": "U",
+        "side": "CCW"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rOAB",
+      "refs": [
+        "O",
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "rOCD",
+      "refs": [
+        "O",
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 460
+  },
+  "caption": "원본 사분원 O를 중심으로 OB=1, AC=0.17, AB=a, CD=b와 x각, 두 수선의 발 A·C를 그린다.",
+  "accessibilityDescription": "원본 사분원 O를 중심으로 OB=1, AC=0.17, AB=a, CD=b와 x각, 두 수선의 발 A·C를 그린다.",
+  "sourceQuote": "반지름의 길이가 $1$인 사분원에서 $\\overline{\\text{AC}}=0.17$이다. $\\overline{\\text{AB}}$의 길이를 $a$, $\\overline{\\text{CD}}$의 길이를 $b$라고 할 때, $a+b$의 값은? [4점] 각도 사인(sin) 코사인(cos) 탄젠트(tan) $32^\\circ$ 0.53 0.85 0.62 $33^\\circ$ 0.54 0.84 0.65 $34^\\circ$ 0.56 0.83 0.67 ",
+  "sourceConditions": [
+    {
+      "id": "source-figure",
+      "condition": "원본 문항의 꼭짓점·변·원·표식·치수 관계",
+      "mappedTo": [
+        "sOC",
+        "sOU",
+        "sOB",
+        "sAB",
+        "sAC",
+        "sCD",
+        "sOD",
+        "rOAB",
+        "rOCD",
+        "aCOB",
+        "tAC",
+        "tAB"
+      ]
+    },
+    {
+      "id": "source-length-tAC",
+      "condition": "원본 그림의 선분 길이·변수 표기 0.17",
+      "mappedTo": [
+        "tAC"
+      ]
+    },
+    {
+      "id": "source-length-tAB",
+      "condition": "원본 그림의 선분 길이·변수 표기 a",
+      "mappedTo": [
+        "tAB"
+      ]
+    },
+    {
+      "id": "source-length-tCD",
+      "condition": "원본 그림의 선분 길이·변수 표기 b",
+      "mappedTo": [
+        "tCD"
+      ]
+    },
+    {
+      "id": "source-length-tOB",
+      "condition": "원본 그림의 선분 길이·변수 표기 1",
+      "mappedTo": [
+        "tOB"
+      ]
+    },
+    {
+      "id": "source-angle-aCOB",
+      "condition": "원본 그림의 ∠COB=x°",
+      "mappedTo": [
+        "aCOB"
+      ]
+    },
+    {
+      "id": "source-right-rOAB",
+      "condition": "원본 그림의 OAB 직각표시",
+      "mappedTo": [
+        "rOAB"
+      ]
+    },
+    {
+      "id": "source-right-rOCD",
+      "condition": "원본 그림의 OCD 직각표시",
+      "mappedTo": [
+        "rOCD"
+      ]
+    },
+    {
+      "id": "source-arc-quarter",
+      "condition": "원본 그림의 원호",
+      "mappedTo": [
+        "quarter"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본 스캔의 길이·각·직각 표시와 점선 지시선을 분리하여 보존"
+  ]
+}

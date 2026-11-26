@@ -1,0 +1,373 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "2828427",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-1"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "N",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "B",
+    "C",
+    "A",
+    "H",
+    "L",
+    "R",
+    "M",
+    "N"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAH",
+      "refs": [
+        "A",
+        "H"
+      ]
+    },
+    {
+      "id": "sLR",
+      "refs": [
+        "L",
+        "R"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sMN",
+      "refs": [
+        "M",
+        "N"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sLM",
+      "refs": [
+        "L",
+        "M"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aABC",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "label": "45",
+        "value": 45,
+        "style": "ARC",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aBCA",
+        "refs": [
+          "B",
+          "C",
+          "A"
+        ],
+        "label": "67.5",
+        "value": 67.5,
+        "style": "ARC",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "tLM",
+        "ownerSegment": "sLM",
+        "text": "2",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "tAH",
+        "ownerSegment": "sAH",
+        "text": "2",
+        "unit": "cm"
+      }
+    ],
+    "parallels": [
+      {
+        "id": "par0",
+        "count": 1,
+        "segments": [
+          "sLR",
+          "sBC"
+        ]
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rAHC",
+      "refs": [
+        "A",
+        "H",
+        "C"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 460
+  },
+  "caption": "폭 2 cm 테이프의 서로 평행한 가장자리와 접는 선 AC, 접힌 선 AB 및 45° 각을 위치 관계로 나타낸다.",
+  "accessibilityDescription": "폭 2 cm 테이프의 서로 평행한 가장자리와 접는 선 AC, 접힌 선 AB 및 45° 각을 위치 관계로 나타낸다.",
+  "sourceQuote": "【서술형 3】 [서술형] 폭이 $2\\text{ cm}$인 종이 테이프를 그림과 같이 $\\overline{\\text{AC}}$를 접는 선으로 하여 접었다. $\\angle\\text{ABC}=45^\\circ$일 때, $\\triangle\\text{ABC}$의 넓이를 구하려고 한다. [5점] (1) $\\angle\\text{ACB}$의 크기 구하는 과정을 자세히 서술하고 답을 구하시오. (2점) (2) $\\triangle\\text{ABC}$의 넓이 구하는 과정을 자세히 서술하고 답을 구하시오. (3점)",
+  "sourceConditions": [
+    {
+      "id": "source-figure",
+      "condition": "원본 문항의 꼭짓점·변·원·표식·치수 관계",
+      "mappedTo": [
+        "sAB",
+        "sBC",
+        "sCA",
+        "sAH",
+        "sLR",
+        "sMN",
+        "sLM",
+        "rAHC",
+        "aABC",
+        "aBCA",
+        "tLM"
+      ]
+    },
+    {
+      "id": "source-length-tLM",
+      "condition": "원본 그림의 선분 길이·변수 표기 2cm",
+      "mappedTo": [
+        "tLM"
+      ]
+    },
+    {
+      "id": "source-angle-aABC",
+      "condition": "원본 그림의 ∠ABC=45°",
+      "mappedTo": [
+        "aABC"
+      ]
+    },
+    {
+      "id": "source-angle-aBCA",
+      "condition": "원본 그림의 ∠BCA=67.5°",
+      "mappedTo": [
+        "aBCA"
+      ]
+    },
+    {
+      "id": "source-right-rAHC",
+      "condition": "원본 그림의 AHC 직각표시",
+      "mappedTo": [
+        "rAHC"
+      ]
+    },
+    {
+      "id": "source-parallel-par0",
+      "condition": "원본 그림의 평행선 표시",
+      "mappedTo": [
+        "par0"
+      ]
+    },
+    {
+      "id": "derived-aid",
+      "condition": "해설의 보조선·직각·도출 길이",
+      "mappedTo": [
+        "tAH"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "접힘선 AC와 접히는 가장자리 AB를 구분",
+    "ENGINE_CAPABILITY_PENDING: 찢어진 종이 양끝의 불규칙 외곽선과 질감은 작도 엔진 미지원",
+    "보조선과 수선의 발, 길이 관계를 도형에서 직접 확인 가능"
+  ]
+}
