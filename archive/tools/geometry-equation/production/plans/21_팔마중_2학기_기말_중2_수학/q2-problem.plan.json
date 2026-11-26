@@ -1,0 +1,285 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "8",
+              "denominator": "3"
+            },
+            {
+              "kind": "rational",
+              "numerator": "117",
+              "denominator": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "4",
+              "denominator": "3"
+            },
+            {
+              "kind": "rational",
+              "numerator": "117",
+              "denominator": "20"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "15",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "53",
+              "denominator": "6"
+            },
+            {
+              "kind": "rational",
+              "numerator": "117",
+              "denominator": "20"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sDB",
+      "refs": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "sEC",
+      "refs": [
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "sCF",
+      "refs": [
+        "C",
+        "F"
+      ]
+    },
+    {
+      "id": "sFA",
+      "refs": [
+        "F",
+        "A"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "sFD",
+      "refs": [
+        "F",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "e0",
+        "count": 1,
+        "segments": [
+          "sAD",
+          "sDB"
+        ]
+      },
+      {
+        "id": "e1",
+        "count": 2,
+        "segments": [
+          "sBE",
+          "sEC"
+        ]
+      },
+      {
+        "id": "e2",
+        "count": 3,
+        "segments": [
+          "sCF",
+          "sFA"
+        ]
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "l0",
+        "ownerSegment": "sEF",
+        "text": "6"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "d0",
+        "style": "ARROW",
+        "factRole": "GIVEN",
+        "from": "B",
+        "to": "C",
+        "label": "15",
+        "side": "BELOW"
+      },
+      {
+        "id": "d1",
+        "style": "ARROW",
+        "factRole": "GIVEN",
+        "from": "A",
+        "to": "C",
+        "label": "17",
+        "side": "RIGHT"
+      }
+    ]
+  },
+  "caption": "문제의 그림 (단위 cm)",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "점 D, E, F는 삼각형 ABC의 세 변의 중점이고 BC=15, AC=17, EF=6이다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원문에 명시된 점·선분·표식·길이만 나타내며 계산한 값을 표시하지 않는다."
+  ],
+  "coordinateCanvas": {
+    "width": 384,
+    "height": 384
+  },
+  "accessibilityDescription": "원본 기출 문제의 도형과 제시된 조건을 표시한 문제 그림. 답이나 계산한 수치는 넣지 않았다."
+}

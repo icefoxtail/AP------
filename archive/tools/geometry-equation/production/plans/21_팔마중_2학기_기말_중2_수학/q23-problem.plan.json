@@ -1,0 +1,212 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "7"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "13"
+            },
+            {
+              "kind": "integer",
+              "value": "7"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A1",
+    "A2",
+    "B1",
+    "B2",
+    "C1",
+    "C2"
+  ],
+  "displaySegments": [
+    {
+      "id": "s13",
+      "refs": [
+        "A1",
+        "A2"
+      ]
+    },
+    {
+      "id": "s12",
+      "refs": [
+        "B1",
+        "B2"
+      ]
+    },
+    {
+      "id": "sx",
+      "refs": [
+        "C1",
+        "C2"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "A1",
+    "A2",
+    "B1",
+    "B2",
+    "C1",
+    "C2"
+  ],
+  "hiddenPointStyle": "NONE",
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "len13",
+        "ownerSegment": "s13",
+        "text": "13",
+        "unit": "cm"
+      },
+      {
+        "id": "len12",
+        "ownerSegment": "s12",
+        "text": "12",
+        "unit": "cm"
+      },
+      {
+        "id": "lenX",
+        "ownerSegment": "sx",
+        "text": "x",
+        "unit": "cm"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 660,
+    "height": 320
+  },
+  "caption": "13 cm, 12 cm, x cm인 세 빨대의 길이 표시 (x는 미지수, 비례 축척 아님)",
+  "sourceConditions": [
+    {
+      "id": "given-three-straws",
+      "condition": "길이 13 cm, 12 cm, x cm인 서로 다른 세 빨대로 직각삼각형을 만든다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks.expressionLabels",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "세 빨대의 길이 표기는 주어진 조건이며, 직각삼각형을 미리 만들어 경우를 누설하지 않는다."
+  ],
+  "accessibilityDescription": "13 cm, 12 cm, x cm로 각각 적힌 세 선분. 어떤 선분이 빗변인지는 제시하지 않았다."
+}

@@ -1,0 +1,199 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "15"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "20"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "D",
+    "C"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "l0",
+        "ownerSegment": "sAD",
+        "text": "17"
+      },
+      {
+        "id": "l1",
+        "ownerSegment": "sAC",
+        "text": "x"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "d0",
+        "style": "ARROW",
+        "factRole": "GIVEN",
+        "from": "A",
+        "to": "B",
+        "label": "15",
+        "side": "LEFT"
+      },
+      {
+        "id": "d1",
+        "style": "ARROW",
+        "factRole": "GIVEN",
+        "from": "D",
+        "to": "C",
+        "label": "12",
+        "side": "BELOW"
+      }
+    ]
+  },
+  "caption": "문제의 그림 (단위 cm)",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "각 B가 직각인 삼각형 ABC에서 점 D는 BC 위의 점이고 AB=15, AD=17, DC=12이며 AC를 x로 둔다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원문에 명시된 점·선분·표식·길이만 나타내며 계산한 값을 표시하지 않는다."
+  ],
+  "coordinateCanvas": {
+    "width": 384,
+    "height": 384
+  },
+  "rightAngles": [
+    {
+      "id": "ra0",
+      "refs": [
+        "A",
+        "B",
+        "D"
+      ]
+    }
+  ],
+  "accessibilityDescription": "원본 기출 문제의 도형과 제시된 조건을 표시한 문제 그림. 답이나 계산한 수치는 넣지 않았다."
+}
