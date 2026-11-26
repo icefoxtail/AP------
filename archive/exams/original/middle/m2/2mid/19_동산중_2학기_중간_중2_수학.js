@@ -46,7 +46,11 @@ window.examData = {
     "solutionImageAlt": "x+y=2와 2x−y=−5의 그래프가 P(−1,3)에서 만난다.",
     "solutionImageCaption": "x+y=2와 2x−y=−5의 그래프가 P(−1,3)에서 만난다.",
     "solutionImageSize": "full",
-    "solutionImageScale": 80
+    "solutionImageScale": 80,
+    "image": "assets/images/19_동산중_2학기_중간_중2_수학/q1-problem.svg",
+    "imageAlt": "x+y=2와 2x−y=−5의 그래프가 P(−1,3)에서 만난다.",
+    "imageCaption": "x+y=2와 2x−y=−5의 그래프가 P(−1,3)에서 만난다.",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -228,7 +232,11 @@ window.examData = {
     "solutionImage": "assets/images/19_동산중_2학기_중간_중2_수학/q5-solution.svg",
     "solutionImageAlt": "19_동산중 5번 발문: 점·선분·주어진 표식을 구분한 도식.",
     "solutionImageCaption": "19_동산중 5번 발문: 점·선분·주어진 표식을 구분한 도식.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "image": "assets/images/19_동산중_2학기_중간_중2_수학/q5-problem.svg",
+    "imageAlt": "19_동산중 5번 발문: 점·선분·주어진 표식을 구분한 도식.",
+    "imageCaption": "19_동산중 5번 발문: 점·선분·주어진 표식을 구분한 도식.",
+    "imageSize": "full"
   },
   {
     "id": 6,
@@ -246,7 +254,11 @@ window.examData = {
     "solutionImage": "assets/images/19_동산중_2학기_중간_중2_수학/q6-solution.svg",
     "solutionImageAlt": "해설 그림: 직각삼각형 ABC의 변 AB 위에 점 E가 있고, E에서 D로 수선 ED가 그어져 있으며 D는 BC 위에 있다. AE와 AC에 4cm, DC에 2cm, BD에 4cm가 표시되고 ∠EAD=30°, E와 C에 직각 표시가 있다.",
     "solutionImageCaption": "직각삼각형 ADC에서 tan∠DAC=DC/AC=2/4=1/2이다. ∠EAD=30°이므로 ∠BAC=30°+∠DAC이고, 이를 이용하면 BC=6이 되어 BD=BC-DC=6-2=4이다. 따라서 삼각형 ADB의 넓이는 1/2×BD×AC=1/2×4×4=8이다. 따라서 답은 ④이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "image": "assets/images/19_동산중_2학기_중간_중2_수학/q6-problem.svg",
+    "imageAlt": "원본의 직각 C·E와 AE=AC, DC=2를 구별하고 수선 DE의 발을 표시한다.",
+    "imageCaption": "원본의 직각 C·E와 AE=AC, DC=2를 구별하고 수선 DE의 발을 표시한다.",
+    "imageSize": "full"
   },
   {
     "id": 7,
@@ -281,7 +293,11 @@ window.examData = {
     "solutionImage": "assets/images/19_동산중_2학기_중간_중2_수학/q7-solution.svg",
     "solutionImageAlt": "19_동산중 7번 발문: 점·선분·주어진 표식을 구분한 도식.",
     "solutionImageCaption": "19_동산중 7번 발문: 점·선분·주어진 표식을 구분한 도식.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "image": "assets/images/19_동산중_2학기_중간_중2_수학/q7-problem.svg",
+    "imageAlt": "19_동산중 7번 발문: 점·선분·주어진 표식을 구분한 도식.",
+    "imageCaption": "19_동산중 7번 발문: 점·선분·주어진 표식을 구분한 도식.",
+    "imageSize": "full"
   },
   {
     "id": 8,
@@ -329,7 +345,11 @@ window.examData = {
     "solutionImage": "assets/images/19_동산중_2학기_중간_중2_수학/q8-solution.svg",
     "solutionImageAlt": "19_동산중 8번 발문: 점·선분·주어진 표식을 구분한 도식.",
     "solutionImageCaption": "19_동산중 8번 발문: 점·선분·주어진 표식을 구분한 도식.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "image": "assets/images/19_동산중_2학기_중간_중2_수학/q8-problem.svg",
+    "imageAlt": "19_동산중 8번 발문: 점·선분·주어진 표식을 구분한 도식.",
+    "imageCaption": "19_동산중 8번 발문: 점·선분·주어진 표식을 구분한 도식.",
+    "imageSize": "full"
   },
   {
     "id": 9,
@@ -347,7 +367,11 @@ window.examData = {
     "solutionImage": "assets/images/19_동산중_2학기_중간_중2_수학/q9-solution.svg",
     "solutionImageAlt": "해설 그림: 삼각형 ABC의 변 BC 위에 외심 O가 있고, O에서 변 AB와 AC에 내린 수선과 그 발의 직각 표시가 있다. 두 수선의 길이는 각각 3센티미터와 4센티미터이고, OA=OB=OC와 두 변이 이등분된 표시가 있다.",
     "solutionImageCaption": "O가 외심이므로 OA=OB=OC이고, O에서 변 AB, AC에 내린 수선은 그 변을 각각 이등분한다. 그림에서 O가 BC 위에 있으므로 BC는 외접원의 지름이고 각 A는 직각이다. 수선의 길이가 3센티미터, 4센티미터이므로 AC=6, AB=8이고 BC=10이다. 따라서 둘레의 길이는 6+8+10=24센티미터이므로 답은 ⑤이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "image": "assets/images/19_동산중_2학기_중간_중2_수학/q9-problem.svg",
+    "imageAlt": "19_동산중 9번 발문: 점·선분·주어진 표식을 구분한 도식.",
+    "imageCaption": "19_동산중 9번 발문: 점·선분·주어진 표식을 구분한 도식.",
+    "imageSize": "full"
   },
   {
     "id": 10,
@@ -650,7 +674,15 @@ window.examData = {
       "l4": "변·각 조건"
     },
     "primaryMethod": "평행사변형 충분조건과 반례 구별",
-    "decisiveStep": "표준 다섯 판정조건에 대응시키고 등변사다리꼴도 가능한 두 조건을 제외한다."
+    "decisiveStep": "표준 다섯 판정조건에 대응시키고 등변사다리꼴도 가능한 두 조건을 제외한다.",
+    "image": "assets/images/19_동산중_2학기_중간_중2_수학/q16-problem.svg",
+    "imageAlt": "19_동산중 16번 발문: 점·선분·주어진 표식을 구분한 도식.",
+    "imageCaption": "19_동산중 16번 발문: 점·선분·주어진 표식을 구분한 도식.",
+    "imageSize": "full",
+    "solutionImage": "assets/images/19_동산중_2학기_중간_중2_수학/q16-solution.svg",
+    "solutionImageAlt": "19_동산중 16번 발문: 점·선분·주어진 표식을 구분한 도식.",
+    "solutionImageCaption": "19_동산중 16번 발문: 점·선분·주어진 표식을 구분한 도식.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -684,7 +716,15 @@ window.examData = {
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "각이등분선의 변비로 높이 복원 후 넓이",
-    "decisiveStep": "BE:EC=AB:AC에서 직사각형의 높이 AB를 구해 AEC의 밑변 EC와 곱한다."
+    "decisiveStep": "BE:EC=AB:AC에서 직사각형의 높이 AB를 구해 AEC의 밑변 EC와 곱한다.",
+    "image": "assets/images/19_동산중_2학기_중간_중2_수학/q17-problem.svg",
+    "imageAlt": "19_동산중 17번 발문: 점·선분·주어진 표식을 구분한 도식.",
+    "imageCaption": "19_동산중 17번 발문: 점·선분·주어진 표식을 구분한 도식.",
+    "imageSize": "full",
+    "solutionImage": "assets/images/19_동산중_2학기_중간_중2_수학/q17-solution.svg",
+    "solutionImageAlt": "19_동산중 17번 발문: 점·선분·주어진 표식을 구분한 도식.",
+    "solutionImageCaption": "19_동산중 17번 발문: 점·선분·주어진 표식을 구분한 도식.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -817,7 +857,11 @@ window.examData = {
     "solutionImage": "assets/images/19_동산중_2학기_중간_중2_수학/q20-solution.svg",
     "solutionImageAlt": "해설 그림: 등변사다리꼴 ABCD에서 윗변 AD 3, 아랫변 BC 5가 적혀 있고 A에서 BC로 내린 수선의 발 H에 직각 표시가 있으며 BH 1, HC 4가 적혀 있고 두 다리 AB와 CD에 같은 눈금이 있다.",
     "solutionImageCaption": "등변사다리꼴이므로 점 D에서 BC에 내린 수선의 발을 H′이라 하면 BH=H′C이고 HH′=AD=3cm이다. 따라서 BH=(BC−AD)/2=(5−3)/2=1cm이다. 답은 ①이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "image": "assets/images/19_동산중_2학기_중간_중2_수학/q20-problem.svg",
+    "imageAlt": "19_동산중 20번 발문: 점·선분·주어진 표식을 구분한 도식.",
+    "imageCaption": "19_동산중 20번 발문: 점·선분·주어진 표식을 구분한 도식.",
+    "imageSize": "full"
   },
   {
     "id": 21,
@@ -901,7 +945,11 @@ window.examData = {
     "solutionImageAlt": "해설 그림: 오른쪽 아래로 내려가는 직선과 오른쪽 위로 올라가는 직선이 y축 위의 점 (0,3)에서 만나고 각각 x축과 (1,0), (−3,0)에서 만나며 세 점의 좌표가 표시되어 있다.",
     "solutionImageCaption": "3x+y=3은 y=3−3x이고 x절편 1, y절편 3이다. x−y=−3은 y=x+3이고 x절편 −3, y절편 3이다. 두 직선은 y축 위의 점 (0,3)에서 만난다. 따라서 x축과 두 직선으로 둘러싸인 삼각형은 밑변이 −3부터 1까지의 길이 4, 높이가 3이므로 넓이는 (1/2)×4×3=6이다.",
     "solutionImageSize": "full",
-    "solutionImageScale": 80
+    "solutionImageScale": 80,
+    "image": "assets/images/19_동산중_2학기_중간_중2_수학/q22-problem.svg",
+    "imageAlt": "직선 y=3−3x와 y=x+3이 (0,3)에서 만나고 x축과 이루는 삼각형의 두 밑변 끝은 (−3,0),(1,0).",
+    "imageCaption": "직선 y=3−3x와 y=x+3이 (0,3)에서 만나고 x축과 이루는 삼각형의 두 밑변 끝은 (−3,0),(1,0).",
+    "imageSize": "full"
   },
   {
     "id": 23,
