@@ -1,0 +1,165 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "51197",
+              "denominator": "6250"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "51197",
+              "denominator": "6250"
+            },
+            {
+              "kind": "rational",
+              "numerator": "71697",
+              "denominator": "12500"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "right0",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "length0",
+        "ownerSegment": "s0",
+        "text": "8.19"
+      },
+      {
+        "id": "length1",
+        "ownerSegment": "s1",
+        "text": "5.74"
+      },
+      {
+        "id": "length2",
+        "ownerSegment": "s2",
+        "text": "10"
+      }
+    ],
+    "angles": [
+      {
+        "id": "angle0",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 35,
+        "label": "35",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 580,
+    "height": 430
+  },
+  "caption": "근삿값 AB≈8.19·BC≈5.74를 보여 둘레≈23.9를 확인하는 직각삼각형",
+  "accessibilityDescription": "근삿값 AB≈8.19·BC≈5.74를 보여 둘레≈23.9를 확인하는 직각삼각형",
+  "sourceQuote": "아래 그림과 같은 직각삼각형 $\\mathrm{ABC}$에서 $\\angle\\mathrm{A}=35^\\circ$, $\\overline{\\mathrm{AC}}=10$일 때, $\\triangle\\mathrm{ABC}$의 둘레의 길이는? (단, $\\sin 35^\\circ = 0.57$, $\\cos 35^\\circ = 0.82$, $\\tan 35^\\circ = 0.70$)",
+  "sourceConditions": [
+    {
+      "id": "source-geometry",
+      "condition": "근삿값 AB≈8.19·BC≈5.74를 보여 둘레≈23.9를 확인하는 직각삼각형",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "근삿값 AB≈8.19·BC≈5.74를 보여 둘레≈23.9를 확인하는 직각삼각형"
+  ]
+}

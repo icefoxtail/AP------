@@ -1,0 +1,155 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "18",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "24",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "18",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-24",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "P",
+    "A",
+    "B"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "P",
+        "B"
+      ]
+    }
+  ],
+  "rightAngles": [],
+  "coordinateCanvas": {
+    "width": 580,
+    "height": 430
+  },
+  "caption": "외부점 P에서 원 O에 그은 두 접선 PA·PB와 접점 A·B(문제 그림에는 불필요한 보조반지름 없음)",
+  "accessibilityDescription": "외부점 P에서 원 O에 그은 두 접선 PA·PB와 접점 A·B(문제 그림에는 불필요한 보조반지름 없음)",
+  "sourceQuote": "[서술형3] 다음 접선의 성질을 아래 순서에 따라 증명하려고 한다. 빈 칸 ① ~ ⑤에 알맞은 답을 기호를 써서 구하시오.[5점, 각 1점씩] &lt;접선의 성질&gt; 원 밖의 한 점에서 그 원에 그은 두 접선의 길이는 같다. 원 $O$ 밖의 한 점 $P$에서 이 원에 그은 두 접선의 접점을 각각 $A$와 $B$라고 할 때, $\\triangle\\mathrm{PAO}, \\triangle\\mathrm{PBO}$에서 ( ① ) ( ② ) ( ③ )을 만족한다. ①②③에 의해 $\\triangle\\mathrm{PAO} \\equiv \\triangle\\mathrm{PBO}$ ( ④ 합동) 이다. 따라서, 합동인 삼각형의 대응하는 두 변의 길이는 같으므로 ( ⑤ ) 이다.",
+  "sourceConditions": [
+    {
+      "id": "source-geometry",
+      "condition": "외부점 P에서 원 O에 그은 두 접선 PA·PB와 접점 A·B(문제 그림에는 불필요한 보조반지름 없음)",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "외부점 P에서 원 O에 그은 두 접선 PA·PB와 접점 A·B(문제 그림에는 불필요한 보조반지름 없음)"
+  ]
+}

@@ -1,0 +1,202 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "60"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "283923",
+              "denominator": "2000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "283923",
+              "denominator": "2000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "283923",
+              "denominator": "2000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "C",
+    "D",
+    "A"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "A",
+        "D"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "right0",
+      "refs": [
+        "C",
+        "D",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "length0",
+        "ownerSegment": "s0",
+        "text": "60"
+      }
+    ],
+    "angles": [
+      {
+        "id": "angle0",
+        "refs": [
+          "C",
+          "B",
+          "A"
+        ],
+        "value": 45,
+        "label": "45",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "angle1",
+        "refs": [
+          "D",
+          "C",
+          "A"
+        ],
+        "value": 60,
+        "label": "60",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 580,
+    "height": 430
+  },
+  "caption": "산 정상 A와 지면 B-C-D, BC=60m, 고도각 45°·60°, 산 높이 AD 수선(사진의 산 실루엣은 보존)",
+  "accessibilityDescription": "산 정상 A와 지면 B-C-D, BC=60m, 고도각 45°·60°, 산 높이 AD 수선(사진의 산 실루엣은 보존)",
+  "sourceQuote": "단답형 2. 그림과 같이 $60\\,\\text{m}$ 떨어진 두 지점 $\\mathrm{B}$와 $\\mathrm{C}$에서 이 산의 꼭대기 $\\mathrm{A}$ 지점을 올려본각의 크기가 각각 $45^\\circ$와 $60^\\circ$이다. 이 산의 높이를 구하시오.",
+  "sourceConditions": [
+    {
+      "id": "source-geometry",
+      "condition": "산 정상 A와 지면 B-C-D, BC=60m, 고도각 45°·60°, 산 높이 AD 수선(사진의 산 실루엣은 보존)",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "산 정상 A와 지면 B-C-D, BC=60m, 고도각 45°·60°, 산 높이 AD 수선(사진의 산 실루엣은 보존)",
+    "ENGINE_CAPABILITY_PENDING: 기하 표식 외 원본 풍선·산 실루엣·지도 항공사진 재현용 장면 및 래스터 합성 에셋 지원이 필요하며 기존 PNG 원본은 유지한다."
+  ]
+}
