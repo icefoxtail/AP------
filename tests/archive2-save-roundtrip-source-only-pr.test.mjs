@@ -1,6 +1,6 @@
 // A pull request that changes original exam JS or meta carries only sources; the registrar writes the generated files after the merge.
 // So the save round trip builds the ignored package shards from the checkout's own sources on a pull request, and keeps
-// `--package-only` (registered files must match their inputs) for main, manual runs and the Pages deploy.
+// `--package-only` (registered files must match their inputs) after main registration and on manual runs.
 // This test pins that split and shows the pull request path is not a weaker check: it is the same computation as --package-only
 // (a broken exam JS still throws), minus only the comparison with registered bytes. Duplicate questionUid is guarded elsewhere
 // (verify-archive-registration in the PR registration projection of ci.yml), unchanged by this split.
@@ -16,9 +16,33 @@ const workflow = read('.github/workflows/archive2-save-roundtrip.yml');
 const builder = read('archive/tools/build-archive2-catalog.mjs');
 
 function steps(text) {
-  const body = text.slice(text.indexOf('\n    steps:\n'));
-  return body.split(/\n      - /).slice(1).map(chunk => '- ' + chunk);
+  const jobStart = text.indexOf('\n  save-round-trip:\n');
+  assert.ok(jobStart >= 0, 'save-round-trip job exists');
+  const body = text.slice(jobStart);
+  const stepsStart = body.indexOf('\n    steps:\n');
+  assert.ok(stepsStart >= 0, 'save-round-trip job has steps');
+  const stepBody = body.slice(stepsStart);
+  return stepBody.split(/\n      - /).slice(1).map(chunk => '- ' + chunk);
 }
+
+test('main save test starts after successful registration, not on an unregistered push', () => {
+  assert.doesNotMatch(workflow, /^  push:/m);
+  assert.match(workflow, /^  workflow_run:\n    workflows: \['Archive Main Auto Metadata'\]\n    types: \[completed\]\n    branches: \[main\]/m);
+  assert.match(workflow, /if: needs\.scope\.outputs\.run_save == 'true'/);
+  assert.match(workflow, /SOURCE_RESULT.*github\.event\.workflow_run\.conclusion/);
+  assert.match(workflow, /SOURCE_EVENT.*github\.event\.workflow_run\.event/);
+  assert.match(workflow, /count >= 300/, 'truncated commits must fail open to running the test');
+  for (const path of [
+    'archive/archive2-*.js', 'archive/workspace.html', 'archive/data/*', 'archive/problem-bank-*.js',
+    'archive/tools/build-archive2-catalog.mjs', 'archive/tools/materialize-archive-package-shards.mjs',
+    'archive/tools/meta-foundation/question-metadata-format.mjs',
+    'archive/meta-foundation-runtime.js', 'archive/mixer-selector.js', 'archive/rpm-middle-toc.js',
+    'archive/unit-past-exams-core.js', 'apmath/worker-backup/*',
+    'tests/archive2-save-roundtrip.e2e.mjs', 'tests/archive-saved-papers-many-images.test.mjs',
+    'tests/helpers/archive2-save-roundtrip-harness.mjs', 'tests/helpers/archive2-scope-harness.cjs',
+    '.github/workflows/archive2-save-roundtrip.yml',
+  ]) assert.ok(workflow.includes(path), `save-sensitive trigger path missing: ${path}`);
+});
 
 test('pull request builds the package shards from sources, main and manual runs keep --package-only', () => {
   const generate = steps(workflow).filter(step => /build-archive2-catalog\.mjs/.test(step));
