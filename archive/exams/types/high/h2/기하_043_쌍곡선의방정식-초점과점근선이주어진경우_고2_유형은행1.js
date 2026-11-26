@@ -339,7 +339,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_POSITIVE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_043_쌍곡선의방정식-초점과점근선이주어진경우_고2_유형은행1/q8-problem.svg",
+    "imageAlt": "쌍곡선의 초점 F를 중심으로 두 점근선에 동시에 접하는 원",
+    "imageCaption": "쌍곡선의 초점 F를 중심으로 두 점근선에 동시에 접하는 원",
+    "imageSize": "full"
   },
   {
     "id": 9,
@@ -382,6 +386,10 @@ window.questionBank = [
       "CC_REGULAR_HEXAGON"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_043_쌍곡선의방정식-초점과점근선이주어진경우_고2_유형은행1/q9-problem.svg",
+    "imageAlt": "정육각형 ABCDEF의 마주 보는 꼭짓점 A·D를 초점으로 하는 쌍곡선 H",
+    "imageCaption": "정육각형 ABCDEF의 마주 보는 꼭짓점 A·D를 초점으로 하는 쌍곡선 H",
+    "imageSize": "full"
   }
 ];

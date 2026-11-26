@@ -172,6 +172,10 @@ window.questionBank = [
     "conditionKeys": [
       "COND_POSITIVE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_038_쌍곡선의방정식_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "쌍곡선 3x²−y²=12의 초점 F를 지나는 수직선과 삼각형 ABF′",
+    "imageCaption": "쌍곡선 3x²−y²=12의 초점 F를 지나는 수직선과 삼각형 ABF′",
+    "imageSize": "full"
   }
 ];

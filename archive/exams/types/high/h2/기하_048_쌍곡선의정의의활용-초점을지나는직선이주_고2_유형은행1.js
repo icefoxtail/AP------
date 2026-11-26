@@ -42,7 +42,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RANGE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_048_쌍곡선의정의의활용-초점을지나는직선이주_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "초점 F를 지나는 길이 11의 현 AB와 다른 초점 F′에서 두 끝점까지의 선분",
+    "imageCaption": "초점 F를 지나는 길이 11의 현 AB와 다른 초점 F′에서 두 끝점까지의 선분",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -85,7 +89,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RANGE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_048_쌍곡선의정의의활용-초점을지나는직선이주_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "A(-5,0)를 지나는 길이 8의 쌍곡선 왼쪽 초점현 PQ와 삼각형 PQB",
+    "imageCaption": "A(-5,0)를 지나는 길이 8의 쌍곡선 왼쪽 초점현 PQ와 삼각형 PQB",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -128,7 +136,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RANGE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_048_쌍곡선의정의의활용-초점을지나는직선이주_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "초점 F(3,0)를 지나는 현 AB와 다른 초점 C(-3,0)를 잇는 삼각형 ABC (둘레 22)",
+    "imageCaption": "초점 F(3,0)를 지나는 현 AB와 다른 초점 C(-3,0)를 잇는 삼각형 ABC (둘레 22)",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -215,6 +227,10 @@ window.questionBank = [
     "templateKey": "TPL_GEO_HYPERBOLA_FOCAL_DIFF",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_048_쌍곡선의정의의활용-초점을지나는직선이주_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "초점을 공유하는 두 쌍곡선, F′에서 나오는 동일 직선 위의 A와 B, 삼각형 FAB",
+    "imageCaption": "초점을 공유하는 두 쌍곡선, F′에서 나오는 동일 직선 위의 A와 B, 삼각형 FAB",
+    "imageSize": "full"
   }
 ];

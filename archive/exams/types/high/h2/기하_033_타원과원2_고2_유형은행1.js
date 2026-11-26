@@ -43,7 +43,11 @@ window.questionBank = [
       "CC_DISTANCE_TWO_POINTS"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_033_타원과원2_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "원 x²+y²=16의 축 교점 A·B·C·D와 AB를 두 초점으로 하는 타원",
+    "imageCaption": "원 x²+y²=16의 축 교점 A·B·C·D와 AB를 두 초점으로 하는 타원",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -87,7 +91,11 @@ window.questionBank = [
       "CC_INSCRIBED_ANGLE"
     ],
     "conditionKeys": [],
-    "integrationPattern": "INTERDEPENDENT"
+    "integrationPattern": "INTERDEPENDENT",
+    "image": "assets/images/기하_033_타원과원2_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "타원 x²/25+y²/9 위에서 OP=OF인 점 P와 초점 F·F′",
+    "imageCaption": "타원 x²/25+y²/9 위에서 OP=OF인 점 P와 초점 F·F′",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -132,7 +140,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_NEGATIVE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_033_타원과원2_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "타원 x²/36+y²/20과 F(4,0) 중심 반지름 4인 원의 제1사분면 교점 P",
+    "imageCaption": "타원 x²/36+y²/20과 F(4,0) 중심 반지름 4인 원의 제1사분면 교점 P",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -178,7 +190,11 @@ window.questionBank = [
       "COND_NATURAL_NUMBER",
       "COND_RANGE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_033_타원과원2_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "타원 x²/81+y²/17과 F(8,0) 중심 반지름 n인 원의 대표 교점 Pₙ",
+    "imageCaption": "타원 x²/81+y²/17과 F(8,0) 중심 반지름 n인 원의 대표 교점 Pₙ",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -270,7 +286,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_LOWER_BOUND"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_033_타원과원2_고2_유형은행1/q6-problem.svg",
+    "imageAlt": "타원 위 P를 중심으로 A(0,k)와 초점 F를 지나는 원과 선분 AF′",
+    "imageCaption": "타원 위 P를 중심으로 A(0,k)와 초점 F를 지나는 원과 선분 AF′",
+    "imageSize": "full"
   },
   {
     "id": 7,
@@ -317,7 +337,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_INEQUALITY_CONSTRAINT"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_033_타원과원2_고2_유형은행1/q7-problem.svg",
+    "imageAlt": "초점 F(4,0),F′(−4,0)을 지름으로 하는 원과 타원의 제1사분면 교점 P에서 원에 그은 접선",
+    "imageCaption": "초점 F(4,0),F′(−4,0)을 지름으로 하는 원과 타원의 제1사분면 교점 P에서 원에 그은 접선",
+    "imageSize": "full"
   },
   {
     "id": 8,

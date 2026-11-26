@@ -45,7 +45,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_POSITIVE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_047_쌍곡선의정의의활용-초점이주어진경우_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "원점 O를 지나는 PQ와 쌍곡선의 두 초점으로 만든 평행사변형 PF′QF",
+    "imageCaption": "원점 O를 지나는 PQ와 쌍곡선의 두 초점으로 만든 평행사변형 PF′QF",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -88,7 +92,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_POSITIVE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_047_쌍곡선의정의의활용-초점이주어진경우_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "쌍곡선의 오른쪽 위 P와 왼쪽 아래 Q에서 양쪽 초점까지 연결한 네 거리",
+    "imageCaption": "쌍곡선의 오른쪽 위 P와 왼쪽 아래 Q에서 양쪽 초점까지 연결한 네 거리",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -215,7 +223,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_POSITIVE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_047_쌍곡선의정의의활용-초점이주어진경우_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "초점 F를 사이에 두고 같은 오른쪽 가지에서 만나는 P, Q와 왼쪽 초점 F′",
+    "imageCaption": "초점 F를 사이에 두고 같은 오른쪽 가지에서 만나는 P, Q와 왼쪽 초점 F′",
+    "imageSize": "full"
   },
   {
     "id": 6,
@@ -256,7 +268,11 @@ window.questionBank = [
     "templateKey": "TPL_GEO_HYPERBOLA_FOCAL_DIFF",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_047_쌍곡선의정의의활용-초점이주어진경우_고2_유형은행1/q6-problem.svg",
+    "imageAlt": "두 초점과 제1사분면 P가 이루는 삼각형 PF′F 및 두 초점 거리의 비 5:2",
+    "imageCaption": "두 초점과 제1사분면 P가 이루는 삼각형 PF′F 및 두 초점 거리의 비 5:2",
+    "imageSize": "full"
   },
   {
     "id": 7,
@@ -302,7 +318,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_POSITIVE"
     ],
-    "integrationPattern": "INTERDEPENDENT"
+    "integrationPattern": "INTERDEPENDENT",
+    "image": "assets/images/기하_047_쌍곡선의정의의활용-초점이주어진경우_고2_유형은행1/q7-problem.svg",
+    "imageAlt": "원점 O를 사이에 둔 P,Q와 두 초점으로 이루어진 직사각형 PF′QF",
+    "imageCaption": "원점 O를 사이에 둔 P,Q와 두 초점으로 이루어진 직사각형 PF′QF",
+    "imageSize": "full"
   },
   {
     "id": 8,
@@ -345,7 +365,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_INEQUALITY_CONSTRAINT"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_047_쌍곡선의정의의활용-초점이주어진경우_고2_유형은행1/q8-problem.svg",
+    "imageAlt": "초점 거리 PF, FF′, PF′가 등차수열인 쌍곡선 위 삼각형 PF′F",
+    "imageCaption": "초점 거리 PF, FF′, PF′가 등차수열인 쌍곡선 위 삼각형 PF′F",
+    "imageSize": "full"
   },
   {
     "id": 9,
@@ -388,7 +412,11 @@ window.questionBank = [
       "CC_ANGLE_BISECTOR_THEOREM"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_047_쌍곡선의정의의활용-초점이주어진경우_고2_유형은행1/q9-problem.svg",
+    "imageAlt": "초점 삼각형 F′PF의 내각 이등분선 PA와 F′A:AF=3:1",
+    "imageCaption": "초점 삼각형 F′PF의 내각 이등분선 PA와 F′A:AF=3:1",
+    "imageSize": "full"
   },
   {
     "id": 10,
@@ -431,7 +459,11 @@ window.questionBank = [
       "CC_ANGLE_BISECTOR_THEOREM"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_047_쌍곡선의정의의활용-초점이주어진경우_고2_유형은행1/q10-problem.svg",
+    "imageAlt": "세로로 열린 쌍곡선의 초점 삼각형과 y축의 각 이등분선 발 A(0,2)",
+    "imageCaption": "세로로 열린 쌍곡선의 초점 삼각형과 y축의 각 이등분선 발 A(0,2)",
+    "imageSize": "full"
   },
   {
     "id": 11,
@@ -477,7 +509,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_POSITIVE"
     ],
-    "integrationPattern": "INTERDEPENDENT"
+    "integrationPattern": "INTERDEPENDENT",
+    "image": "assets/images/기하_047_쌍곡선의정의의활용-초점이주어진경우_고2_유형은행1/q11-problem.svg",
+    "imageAlt": "두 초점을 아래 꼭짓점으로 하는 정사각형 ABF′F와 그 위에 놓인 쌍곡선",
+    "imageCaption": "두 초점을 아래 꼭짓점으로 하는 정사각형 ABF′F와 그 위에 놓인 쌍곡선",
+    "imageSize": "full"
   },
   {
     "id": 12,
@@ -523,7 +559,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_POSITIVE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_047_쌍곡선의정의의활용-초점이주어진경우_고2_유형은행1/q12-problem.svg",
+    "imageAlt": "초점 F 바로 위의 쌍곡선 점 P에서 그린 직각삼각형 PF′F",
+    "imageCaption": "초점 F 바로 위의 쌍곡선 점 P에서 그린 직각삼각형 PF′F",
+    "imageSize": "full"
   },
   {
     "id": 13,
@@ -568,6 +608,10 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RANGE"
     ],
-    "integrationPattern": "INTERDEPENDENT"
+    "integrationPattern": "INTERDEPENDENT",
+    "image": "assets/images/기하_047_쌍곡선의정의의활용-초점이주어진경우_고2_유형은행1/q13-problem.svg",
+    "imageAlt": "x축·y축 방향 두 쌍곡선 H₁,H₂의 공통 교점 P,Q와 초점 F,G로 이룬 사각형 PGFQ",
+    "imageCaption": "x축·y축 방향 두 쌍곡선 H₁,H₂의 공통 교점 P,Q와 초점 F,G로 이룬 사각형 PGFQ",
+    "imageSize": "full"
   }
 ];

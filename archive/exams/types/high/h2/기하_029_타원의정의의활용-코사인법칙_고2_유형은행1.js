@@ -40,7 +40,11 @@ window.questionBank = [
     "templateKey": "TPL_GEO_ELLIPSE_FOCAL",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_029_타원의정의의활용-코사인법칙_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "타원 x²/25+y²/9=1 위 점 P와 초점 F(4,0), F′(-4,0)로 이루어진 삼각형",
+    "imageCaption": "타원 x²/25+y²/9=1 위 점 P와 초점 F(4,0), F′(-4,0)로 이루어진 삼각형",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -81,7 +85,11 @@ window.questionBank = [
     "templateKey": "TPL_GEO_ELLIPSE_FOCAL",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_029_타원의정의의활용-코사인법칙_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "타원 x²/28+y²/12=1 위 P와 두 초점으로 만든 끼인각 60°의 삼각형",
+    "imageCaption": "타원 x²/28+y²/12=1 위 P와 두 초점으로 만든 끼인각 60°의 삼각형",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -127,7 +135,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_POSITIVE"
     ],
-    "integrationPattern": "INTERDEPENDENT"
+    "integrationPattern": "INTERDEPENDENT",
+    "image": "assets/images/기하_029_타원의정의의활용-코사인법칙_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "타원의 제2사분면 P에서 초점 F′ 방향 중점 Q와 PF의 1:2 내분점 R 및 직각 PQR",
+    "imageCaption": "타원의 제2사분면 P에서 초점 F′ 방향 중점 Q와 PF의 1:2 내분점 R 및 직각 PQR",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -168,6 +180,10 @@ window.questionBank = [
     "templateKey": "TPL_GEO_ELLIPSE_FOCAL",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_029_타원의정의의활용-코사인법칙_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "타원 x²/144+y²/80=1에서 양의 초점 F와 가까운 꼭짓점 A, 타원 위 P의 각 PFF′=60°",
+    "imageCaption": "타원 x²/144+y²/80=1에서 양의 초점 F와 가까운 꼭짓점 A, 타원 위 P의 각 PFF′=60°",
+    "imageSize": "full"
   }
 ];

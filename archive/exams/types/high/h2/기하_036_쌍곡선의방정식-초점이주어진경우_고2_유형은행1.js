@@ -128,7 +128,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_POSITIVE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_036_쌍곡선의방정식-초점이주어진경우_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "원점 대칭인 쌍곡선의 두 꼭짓점 A·B와 두 초점 F′·F",
+    "imageCaption": "원점 대칭인 쌍곡선의 두 꼭짓점 A·B와 두 초점 F′·F",
+    "imageSize": "full"
   },
   {
     "id": 4,

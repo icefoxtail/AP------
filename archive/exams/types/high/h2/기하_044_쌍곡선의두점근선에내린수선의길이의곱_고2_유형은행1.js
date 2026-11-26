@@ -87,6 +87,10 @@ window.questionBank = [
       "CC_AREA"
     ],
     "conditionKeys": [],
-    "integrationPattern": "REINTERPRETATION"
+    "integrationPattern": "REINTERPRETATION",
+    "image": "assets/images/기하_044_쌍곡선의두점근선에내린수선의길이의곱_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "직각쌍곡선 위의 점 P에서 두 점근선에 내린 수선과 직사각형 AOBP",
+    "imageCaption": "직각쌍곡선 위의 점 P에서 두 점근선에 내린 수선과 직사각형 AOBP",
+    "imageSize": "full"
   }
 ];

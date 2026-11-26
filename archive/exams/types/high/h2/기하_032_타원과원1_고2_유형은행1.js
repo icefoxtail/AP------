@@ -44,7 +44,11 @@ window.questionBank = [
       "CC_TRIANGLE_AREA"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_032_타원과원1_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "타원 x²/36+y²/11과 초점 F·F′을 지름으로 하는 원, 제1사분면 교점 P의 삼각형",
+    "imageCaption": "타원 x²/36+y²/11과 초점 F·F′을 지름으로 하는 원, 제1사분면 교점 P의 삼각형",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -91,7 +95,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_POSITIVE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_032_타원과원1_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "반지름 4인 원의 지름 AB가 두 초점인 타원, 제1사분면 공통점 P의 삼각형",
+    "imageCaption": "반지름 4인 원의 지름 AB가 두 초점인 타원, 제1사분면 공통점 P의 삼각형",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -135,6 +143,10 @@ window.questionBank = [
       "CC_PARALLELOGRAM_PROPERTIES"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_032_타원과원1_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "타원 x²/15+y²/7과 초점 지름 원 x²+y²=8의 반대 교점 P,Q로 만든 사각형",
+    "imageCaption": "타원 x²/15+y²/7과 초점 지름 원 x²+y²=8의 반대 교점 P,Q로 만든 사각형",
+    "imageSize": "full"
   }
 ];
