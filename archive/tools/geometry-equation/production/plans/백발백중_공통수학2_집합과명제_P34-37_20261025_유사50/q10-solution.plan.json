@@ -1,0 +1,74 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "a",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "조건 p",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-7",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "7",
+              "state": "OPEN"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "조건 q",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "0",
+              "state": "OPEN"
+            }
+          },
+          {
+            "lo": {
+              "value": "4",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ]
+      },
+      {
+        "kind": "RESULT",
+        "label": "공통",
+        "integerPoints": true
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "두 명제의 공통 정수 범위"
+  },
+  "caption": "p: -7<a<7, q: a<0 또는 a>4의 공통 정수는 -6, -5, -4, -3, -2, -1, 5, 6이므로 개수는 8개이다.",
+  "accessibilityDescription": "a의 범위를 나타내는 수직선 세 줄. p는 양끝이 열린 구간, q는 두 개의 열린 반직선이며 마지막 줄에 공통 정수점을 보인다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "p의 참 조건은 -7<a<7 (양끝 제외)",
+      "mappedTo": "numberLine.rows[0].pieces[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "q의 참 조건은 a<0 또는 a>4",
+      "mappedTo": "numberLine.rows[1].pieces"
+    },
+    {
+      "id": "c3",
+      "condition": "p,q의 공통 정수점 -6, -5, -4, -3, -2, -1, 5, 6",
+      "mappedTo": "numberLine.rows[2].integerPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "p와 q의 서로 분리된 구간을 같은 축에 놓고 끝점 포함 및 정수점 8개를 구별한다."
+  ]
+}
