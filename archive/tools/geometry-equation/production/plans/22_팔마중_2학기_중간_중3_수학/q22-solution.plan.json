@@ -1,0 +1,255 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "3464102",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "4618802",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "3464102",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "B",
+    "H",
+    "C",
+    "A"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAH",
+      "refs": [
+        "A",
+        "H"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aABC",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "label": "30",
+        "value": 30,
+        "style": "ARC",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aBCA",
+        "refs": [
+          "B",
+          "C",
+          "A"
+        ],
+        "label": "60",
+        "value": 60,
+        "style": "ARC",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "tAB",
+        "ownerSegment": "sAB",
+        "text": "4",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "tAH",
+        "ownerSegment": "sAH",
+        "text": "2"
+      },
+      {
+        "id": "tAC",
+        "ownerSegment": "sCA",
+        "text": "4√3/3"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rAHB",
+      "refs": [
+        "A",
+        "H",
+        "B"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 460
+  },
+  "caption": "22번 해설 도형: 주어진 변·원·각과 표식을 보존한다.",
+  "accessibilityDescription": "22번 해설 도형: 주어진 변·원·각과 표식을 보존한다.",
+  "sourceQuote": "【서술형 1】 [서술형] $\\triangle\\text{ABC}$의 꼭짓점 $\\text{A}$에서 $\\overline{\\text{BC}}$에 내린 수선의 발을 $\\text{H}$라 할 때, $\\overline{\\text{AC}}$의 길이를 구하려고 한다. [4점] (1) $\\triangle\\text{ABH}$에서 $\\overline{\\text{AH}}$의 길이를 삼각비를 이용하여 풀이 과정을 자세히 쓰고 답을 구하시오. (2점) (2) $\\triangle\\text{ACH}$에서 $\\overline{\\text{AC}}$의 길이를 삼각비를 이용하여 풀이 과정을 자세히 쓰고 답을 구하시오. (2점)",
+  "sourceConditions": [
+    {
+      "id": "source-figure",
+      "condition": "원본 문항의 꼭짓점·변·원·표식·치수 관계",
+      "mappedTo": [
+        "sAB",
+        "sBC",
+        "sCA",
+        "sAH",
+        "rAHB",
+        "aABC",
+        "aBCA",
+        "tAB"
+      ]
+    },
+    {
+      "id": "source-length-tAB",
+      "condition": "원본 그림의 선분 길이·변수 표기 4",
+      "mappedTo": [
+        "tAB"
+      ]
+    },
+    {
+      "id": "source-angle-aABC",
+      "condition": "원본 그림의 ∠ABC=30°",
+      "mappedTo": [
+        "aABC"
+      ]
+    },
+    {
+      "id": "source-angle-aBCA",
+      "condition": "원본 그림의 ∠BCA=60°",
+      "mappedTo": [
+        "aBCA"
+      ]
+    },
+    {
+      "id": "source-right-rAHB",
+      "condition": "원본 그림의 AHB 직각표시",
+      "mappedTo": [
+        "rAHB"
+      ]
+    },
+    {
+      "id": "derived-aid",
+      "condition": "해설의 보조선·직각·도출 길이",
+      "mappedTo": [
+        "tAH",
+        "tAC"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "풀이에 사용하는 관계와 보조선의 시각적 위치를 명시",
+    "보조선과 수선의 발, 길이 관계를 도형에서 직접 확인 가능"
+  ]
+}

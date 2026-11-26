@@ -1,0 +1,197 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "C",
+    "B"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sCB",
+      "refs": [
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "sBA",
+      "refs": [
+        "B",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aCAB",
+        "refs": [
+          "C",
+          "A",
+          "B"
+        ],
+        "label": "A",
+        "style": "ARC",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "tAC",
+        "ownerSegment": "sAC",
+        "text": "1",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "tBA",
+        "ownerSegment": "sBA",
+        "text": "√2",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rACB",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 460
+  },
+  "caption": "2번 원문 도형: 주어진 변·원·각과 표식을 보존한다.",
+  "accessibilityDescription": "2번 원문 도형: 주어진 변·원·각과 표식을 보존한다.",
+  "sourceQuote": "다음 그림의 직각삼각형에서 $\\tan A$의 값은? [3점]",
+  "sourceConditions": [
+    {
+      "id": "source-figure",
+      "condition": "원본 문항의 꼭짓점·변·원·표식·치수 관계",
+      "mappedTo": [
+        "sAC",
+        "sCB",
+        "sBA",
+        "rACB",
+        "aCAB",
+        "tAC",
+        "tBA"
+      ]
+    },
+    {
+      "id": "source-length-tAC",
+      "condition": "원본 그림의 선분 길이·변수 표기 1",
+      "mappedTo": [
+        "tAC"
+      ]
+    },
+    {
+      "id": "source-length-tBA",
+      "condition": "원본 그림의 선분 길이·변수 표기 √2",
+      "mappedTo": [
+        "tBA"
+      ]
+    },
+    {
+      "id": "source-angle-aCAB",
+      "condition": "원본 그림의 ∠CAB=A°",
+      "mappedTo": [
+        "aCAB"
+      ]
+    },
+    {
+      "id": "source-right-rACB",
+      "condition": "원본 그림의 ACB 직각표시",
+      "mappedTo": [
+        "rACB"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본 스캔의 길이·각·직각 표시와 점선 지시선을 분리하여 보존"
+  ]
+}

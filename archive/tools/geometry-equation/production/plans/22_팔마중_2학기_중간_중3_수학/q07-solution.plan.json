@@ -1,0 +1,245 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "정육면체의 공간 대각선"
+      },
+      "plan": {
+        "capability": "solid-figure-v1",
+        "solids": [
+          {
+            "id": "s1",
+            "kind": "PRISM",
+            "base": {
+              "kind": "RECT",
+              "width": 5,
+              "depth": 5
+            },
+            "height": 5,
+            "names": "FGHEBCDA"
+          }
+        ],
+        "segments": [
+          {
+            "from": "E",
+            "to": "G",
+            "style": "AUTO",
+            "role": "REF"
+          },
+          {
+            "from": "E",
+            "to": "C",
+            "style": "AUTO",
+            "role": "REF"
+          }
+        ],
+        "dims": [
+          {
+            "edge": "FG",
+            "label": "5"
+          }
+        ],
+        "marks": {
+          "rightAngles": [
+            {
+              "at": "G",
+              "refs": [
+                "E",
+                "C"
+              ]
+            }
+          ],
+          "angles": [
+            {
+              "refs": [
+                "G",
+                "E",
+                "C"
+              ],
+              "arcs": 1,
+              "label": "x"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "직각삼각형 EGC"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "E",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "G",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "7071068",
+                    "denominator": "1000000"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "7071068",
+                    "denominator": "1000000"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "5"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "axisTickValues": {
+          "x": [],
+          "y": []
+        },
+        "displayLines": [],
+        "displayCircles": [],
+        "displayPoints": [
+          "E",
+          "G",
+          "C"
+        ],
+        "displaySegments": [
+          {
+            "id": "sEG",
+            "refs": [
+              "E",
+              "G"
+            ]
+          },
+          {
+            "id": "sGC",
+            "refs": [
+              "G",
+              "C"
+            ]
+          },
+          {
+            "id": "sCE",
+            "refs": [
+              "C",
+              "E"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "aGEC",
+              "refs": [
+                "G",
+                "E",
+                "C"
+              ],
+              "label": "x",
+              "style": "ARC",
+              "arcs": 1,
+              "factRole": "GIVEN"
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "tEG",
+              "ownerSegment": "sEG",
+              "text": "5√2",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "tGC",
+              "ownerSegment": "sGC",
+              "text": "5",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "rightAngles": [
+          {
+            "id": "rEGC",
+            "refs": [
+              "E",
+              "G",
+              "C"
+            ]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 320
+        }
+      }
+    }
+  ],
+  "caption": "원본 정육면체에서 EG는 밑면 대각선 5√2, CG는 수직 모서리 5이므로 tan x=CG/EG이다.",
+  "accessibilityDescription": "원본 정육면체에서 EG는 밑면 대각선 5√2, CG는 수직 모서리 5이므로 tan x=CG/EG이다.",
+  "sourceQuote": "한 모서리의 길이가 $5$인 정육면체에서 $\\angle\\text{CEG}=x^\\circ$라 할 때, $\\sin x^\\circ \\div \\cos x^\\circ$의 값은? [4점] ",
+  "sourceConditions": [
+    {
+      "id": "panel-0",
+      "condition": "정육면체의 공간 대각선",
+      "mappedTo": [
+        "panels[0]"
+      ]
+    },
+    {
+      "id": "panel-1",
+      "condition": "직각삼각형 EGC",
+      "mappedTo": [
+        "panels[1]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 독립적인 원 두 개를 별도 패널로 분리하여 치수·직각·같은 거리 표시를 보존"
+  ]
+}

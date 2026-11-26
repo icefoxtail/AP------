@@ -1,0 +1,310 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "B",
+          "lineA"
+        ],
+        "args": {},
+        "id": "A",
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lineA",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "rational",
+            "numerator": "1267949",
+            "denominator": "1000000"
+          },
+          "b": {
+            "kind": "rational",
+            "numerator": "-4732051",
+            "denominator": "1000000"
+          },
+          "c": {
+            "kind": "rational",
+            "numerator": "13856408",
+            "denominator": "1000000"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aABD",
+        "refs": [
+          "A",
+          "B",
+          "D"
+        ],
+        "label": "60",
+        "value": 60,
+        "style": "ARC",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aBDC",
+        "refs": [
+          "B",
+          "D",
+          "C"
+        ],
+        "label": "45",
+        "value": 45,
+        "style": "ARC",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aADB",
+        "refs": [
+          "A",
+          "D",
+          "B"
+        ],
+        "label": "30",
+        "style": "ARC",
+        "arcs": 1,
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "tAB",
+        "ownerSegment": "sAB",
+        "text": "2√2",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "tAD",
+        "ownerSegment": "sDA",
+        "text": "2√6"
+      },
+      {
+        "id": "tBC",
+        "ownerSegment": "sBC",
+        "text": "4"
+      },
+      {
+        "id": "tBD",
+        "ownerSegment": "sBD",
+        "text": "4√2",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rBAD",
+      "refs": [
+        "B",
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "rBCD",
+      "refs": [
+        "B",
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 460
+  },
+  "caption": "3번 해설 도형: 주어진 변·원·각과 표식을 보존한다.",
+  "accessibilityDescription": "3번 해설 도형: 주어진 변·원·각과 표식을 보존한다.",
+  "sourceQuote": "$\\angle\\text{ABD}=60^\\circ$, $\\angle\\text{BDC}=45^\\circ$이고 $\\overline{\\text{AB}}=2\\sqrt{2}$일 때, $\\overline{\\text{AD}} \\times \\overline{\\text{BC}}$의 값은? [4점] ",
+  "sourceConditions": [
+    {
+      "id": "source-figure",
+      "condition": "원본 문항의 꼭짓점·변·원·표식·치수 관계",
+      "mappedTo": [
+        "sAB",
+        "sBC",
+        "sCD",
+        "sDA",
+        "sBD",
+        "rBAD",
+        "rBCD",
+        "aABD",
+        "aBDC",
+        "tAB"
+      ]
+    },
+    {
+      "id": "source-length-tAB",
+      "condition": "원본 그림의 선분 길이·변수 표기 2√2",
+      "mappedTo": [
+        "tAB"
+      ]
+    },
+    {
+      "id": "source-angle-aABD",
+      "condition": "원본 그림의 ∠ABD=60°",
+      "mappedTo": [
+        "aABD"
+      ]
+    },
+    {
+      "id": "source-angle-aBDC",
+      "condition": "원본 그림의 ∠BDC=45°",
+      "mappedTo": [
+        "aBDC"
+      ]
+    },
+    {
+      "id": "source-right-rBAD",
+      "condition": "원본 그림의 BAD 직각표시",
+      "mappedTo": [
+        "rBAD"
+      ]
+    },
+    {
+      "id": "source-right-rBCD",
+      "condition": "원본 그림의 BCD 직각표시",
+      "mappedTo": [
+        "rBCD"
+      ]
+    },
+    {
+      "id": "derived-aid",
+      "condition": "해설의 보조선·직각·도출 길이",
+      "mappedTo": [
+        "tAD",
+        "tBC"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "풀이에 사용하는 관계와 보조선의 시각적 위치를 명시",
+    "보조선과 수선의 발, 길이 관계를 도형에서 직접 확인 가능"
+  ]
+}

@@ -1,0 +1,301 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CW"
+        },
+        "id": "A",
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "0",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "integer",
+              "value": "-6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CCW"
+        },
+        "id": "C",
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "id": "P",
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "op": "MIDPOINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "id": "Q",
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [
+    "k"
+  ],
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "P",
+    "Q"
+  ],
+  "displaySegments": [
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sOC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sOP",
+      "refs": [
+        "O",
+        "P"
+      ]
+    },
+    {
+      "id": "sOQ",
+      "refs": [
+        "O",
+        "Q"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "tOA",
+        "ownerSegment": "sOA",
+        "text": "6",
+        "factRole": "GIVEN"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "eq0",
+        "count": 1,
+        "segments": [
+          "sOA",
+          "sAB",
+          "sBC"
+        ]
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rOPA",
+      "refs": [
+        "O",
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "rOQC",
+      "refs": [
+        "O",
+        "Q",
+        "C"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 460
+  },
+  "caption": "20번 원문 도형: 주어진 변·원·각과 표식을 보존한다.",
+  "accessibilityDescription": "20번 원문 도형: 주어진 변·원·각과 표식을 보존한다.",
+  "sourceQuote": "반지름의 길이가 $6$인 원 $\\text{O}$에서 $\\overline{\\text{OA}}=\\overline{\\text{AB}}=\\overline{\\text{BC}}=6$이고, 점 $\\text{P}$, $\\text{Q}$가 각각 $\\overline{\\text{AB}}$, $\\overline{\\text{BC}}$의 중점일 때, $\\triangle\\text{OPQ}$의 넓이는? [4점] ",
+  "sourceConditions": [
+    {
+      "id": "source-figure",
+      "condition": "원본 문항의 꼭짓점·변·원·표식·치수 관계",
+      "mappedTo": [
+        "sOA",
+        "sOB",
+        "sOC",
+        "sAB",
+        "sBC",
+        "sOP",
+        "sOQ",
+        "k",
+        "rOPA",
+        "rOQC",
+        "tOA"
+      ]
+    },
+    {
+      "id": "source-length-tOA",
+      "condition": "원본 그림의 선분 길이·변수 표기 6",
+      "mappedTo": [
+        "tOA"
+      ]
+    },
+    {
+      "id": "source-right-rOPA",
+      "condition": "원본 그림의 OPA 직각표시",
+      "mappedTo": [
+        "rOPA"
+      ]
+    },
+    {
+      "id": "source-right-rOQC",
+      "condition": "원본 그림의 OQC 직각표시",
+      "mappedTo": [
+        "rOQC"
+      ]
+    },
+    {
+      "id": "source-circle-k",
+      "condition": "원본 그림의 원둘레",
+      "mappedTo": [
+        "k"
+      ]
+    },
+    {
+      "id": "source-equal-eq0",
+      "condition": "원본 그림의 같은 길이 표시",
+      "mappedTo": [
+        "eq0"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본 스캔의 길이·각·직각 표시와 점선 지시선을 분리하여 보존"
+  ]
+}

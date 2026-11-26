@@ -1,0 +1,377 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Y",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "642788",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "766044",
+              "denominator": "1000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "642788",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1191754",
+              "denominator": "1000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "O",
+    "X",
+    "Y",
+    "P",
+    "T",
+    "U"
+  ],
+  "displaySegments": [
+    {
+      "id": "sOX",
+      "refs": [
+        "O",
+        "X"
+      ]
+    },
+    {
+      "id": "sOY",
+      "refs": [
+        "O",
+        "Y"
+      ]
+    },
+    {
+      "id": "sOP",
+      "refs": [
+        "O",
+        "P"
+      ]
+    },
+    {
+      "id": "sPT",
+      "refs": [
+        "P",
+        "T"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sPU",
+      "refs": [
+        "P",
+        "U"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sTO",
+      "refs": [
+        "T",
+        "O"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sUX",
+      "refs": [
+        "U",
+        "X"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aXOP",
+        "refs": [
+          "X",
+          "O",
+          "P"
+        ],
+        "label": "50",
+        "value": 50,
+        "style": "ARC",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "tOX",
+        "ownerSegment": "sOX",
+        "text": "1",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "tPT",
+        "ownerSegment": "sPT",
+        "text": "0.7660",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "tOT",
+        "ownerSegment": "sTO",
+        "text": "0.6428",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "tUX",
+        "ownerSegment": "sUX",
+        "text": "1.1918",
+        "factRole": "GIVEN"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "quarter",
+        "circle": "k",
+        "center": "O",
+        "from": "X",
+        "to": "Y",
+        "side": "CCW"
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "axis-x",
+        "at": [
+          1.2,
+          0
+        ],
+        "text": "x",
+        "labelKind": "TEXT"
+      },
+      {
+        "id": "axis-y",
+        "at": [
+          0,
+          1.2
+        ],
+        "text": "y",
+        "labelKind": "TEXT"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rOTP",
+      "refs": [
+        "O",
+        "T",
+        "P"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 460
+  },
+  "caption": "단위원 제1사분면의 50° 동경, 원호, 코사인 0.6428과 사인 0.7660, 탄젠트 1.1918을 점선 지시선으로 대응시킨다.",
+  "accessibilityDescription": "단위원 제1사분면의 50° 동경, 원호, 코사인 0.6428과 사인 0.7660, 탄젠트 1.1918을 점선 지시선으로 대응시킨다.",
+  "sourceQuote": "다음 그림은 반지름의 길이가 $1$인 사분원을 좌표평면에 나타낸 것이다. 이를 이용하여 $\\tan 50^\\circ$의 값을 구하면? [4점]",
+  "sourceConditions": [
+    {
+      "id": "source-figure",
+      "condition": "원본 문항의 꼭짓점·변·원·표식·치수 관계",
+      "mappedTo": [
+        "sOX",
+        "sOY",
+        "sOP",
+        "sPT",
+        "sPU",
+        "sTO",
+        "sUX",
+        "rOTP",
+        "aXOP",
+        "tOX",
+        "tPT",
+        "tOT"
+      ]
+    },
+    {
+      "id": "source-length-tOX",
+      "condition": "원본 그림의 선분 길이·변수 표기 1",
+      "mappedTo": [
+        "tOX"
+      ]
+    },
+    {
+      "id": "source-length-tPT",
+      "condition": "원본 그림의 선분 길이·변수 표기 0.7660",
+      "mappedTo": [
+        "tPT"
+      ]
+    },
+    {
+      "id": "source-length-tOT",
+      "condition": "원본 그림의 선분 길이·변수 표기 0.6428",
+      "mappedTo": [
+        "tOT"
+      ]
+    },
+    {
+      "id": "source-length-tUX",
+      "condition": "원본 그림의 선분 길이·변수 표기 1.1918",
+      "mappedTo": [
+        "tUX"
+      ]
+    },
+    {
+      "id": "source-angle-aXOP",
+      "condition": "원본 그림의 ∠XOP=50°",
+      "mappedTo": [
+        "aXOP"
+      ]
+    },
+    {
+      "id": "source-right-rOTP",
+      "condition": "원본 그림의 OTP 직각표시",
+      "mappedTo": [
+        "rOTP"
+      ]
+    },
+    {
+      "id": "source-arc-quarter",
+      "condition": "원본 그림의 원호",
+      "mappedTo": [
+        "quarter"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본 스캔의 길이·각·직각 표시와 점선 지시선을 분리하여 보존"
+  ]
+}
