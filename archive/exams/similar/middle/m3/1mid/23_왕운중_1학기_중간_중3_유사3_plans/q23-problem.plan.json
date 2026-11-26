@@ -1,0 +1,61 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "2" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "2" }, { "kind": "integer", "value": "2" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "D", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "2" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "E", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "2" }, { "kind": "integer", "value": "3" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "F", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "5" }, { "kind": "integer", "value": "3" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "G", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "5" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "H", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "5" }, { "kind": "integer", "value": "4" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "I", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "9" }, { "kind": "integer", "value": "4" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "J", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "9" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" }
+    ]
+  },
+  "displayPoints": ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"],
+  "hiddenPointNames": ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    { "id": "sAB", "refs": ["A", "B"] },
+    { "id": "sBG", "refs": ["B", "G"] },
+    { "id": "sGJ", "refs": ["G", "J"] },
+    { "id": "sAD", "refs": ["A", "D"] },
+    { "id": "sDC", "refs": ["D", "C"] },
+    { "id": "sCE", "refs": ["C", "E"] },
+    { "id": "sEF", "refs": ["E", "F"] },
+    { "id": "sFH", "refs": ["F", "H"] },
+    { "id": "sHI", "refs": ["H", "I"] },
+    { "id": "sIJ", "refs": ["I", "J"] },
+    { "id": "sBC", "refs": ["B", "C"] },
+    { "id": "sGF", "refs": ["G", "F"] }
+  ],
+  "planeMarks": {
+    "textLabels": [
+      { "id": "area12", "at": [1, 1], "text": "12", "factRole": "GIVEN" },
+      { "id": "area27", "at": [3.5, 1.5], "text": "27", "factRole": "GIVEN" },
+      { "id": "area48", "at": [7, 2], "text": "48", "factRole": "GIVEN" }
+    ]
+  },
+  "rightAngles": [
+    { "id": "ra1", "refs": ["A", "D", "C"] },
+    { "id": "ra2", "refs": ["C", "E", "F"] },
+    { "id": "ra3", "refs": ["F", "H", "I"] }
+  ],
+  "caption": "밑변을 일직선에 두고 왼쪽부터 넓이 12, 27, 48인 세 정사각형을 이어 붙인 모양이다.",
+  "accessibilityDescription": "크기가 다른 세 정사각형이 밑변을 나란히 맞대어 왼쪽부터 점점 높아지며 이어져 있다. 각 정사각형 안에 넓이 12, 27, 48이 적혀 있고 내부를 색칠하지 않았다.",
+  "sourceConditions": [
+    { "id": "areas", "condition": "세 정사각형의 넓이는 차례로 12, 27, 48이다.", "mappedTo": ["planeMarks.textLabels[area12,area27,area48]", "mathPlan.nodes의 변 길이 정규화 비 2:3:4"] },
+    { "id": "square", "condition": "세 도형은 정사각형으로 각각 서로 직각이고 가로·세로 변이 같다.", "mappedTo": ["displaySegments: sAB/sDC/sAD/sBC", "sBG/sEF/sCE/sGF", "sGJ/sHI/sFH/sIJ", "planeMarks.rightAngles"] },
+    { "id": "adjacent", "condition": "밑변이 일직선 위에 있으며 세 정사각형은 겹치지 않고 연이어 붙는다. 본문 나열 순서인 12→27→48로 배치한다.", "mappedTo": "mathPlan.points의 공통 y=0 및 접합 x=2,5" },
+    { "id": "unknown", "condition": "구할 것은 전체 도형의 둘레다.", "mappedTo": "그려지는 필드에 최종 둘레 값 없음" }
+  ],
+  "newVisualInformation": [
+    "정규화된 한 칸을 √3 길이로 놓아 세 정사각형의 실제 길이 비 2:3:4를 맞춘 대표 도형이다.",
+    "문제 축에는 넓이 12,27,48과 밑변 정렬/직각 정보만 표시하고 변 길이·전체 둘레 값은 쓰지 않는다.",
+    "채움색 없이 외곽선과 두 접합선 및 직각 표식만 사용한다."
+  ]
+}
