@@ -708,120 +708,6 @@
     }
   ],
   "planeMarks": {
-    "regions": [
-      {
-        "id": "rv1",
-        "fill": "WARM",
-        "shapes": [
-          {
-            "polygon": [
-              "P0a",
-              "P1a",
-              "P1b",
-              "P0b"
-            ]
-          }
-        ]
-      },
-      {
-        "id": "ru2",
-        "fill": "BLUE",
-        "shapes": [
-          {
-            "polygon": [
-              "P1b",
-              "P2b",
-              "P2c",
-              "P1c"
-            ]
-          }
-        ]
-      },
-      {
-        "id": "rv2",
-        "fill": "WARM",
-        "shapes": [
-          {
-            "polygon": [
-              "P1a",
-              "P2a",
-              "P2b",
-              "P1b"
-            ]
-          }
-        ]
-      },
-      {
-        "id": "rv3",
-        "fill": "WARM",
-        "shapes": [
-          {
-            "polygon": [
-              "P2a",
-              "P3a",
-              "P3b",
-              "P2b"
-            ]
-          }
-        ]
-      },
-      {
-        "id": "ru4",
-        "fill": "BLUE",
-        "shapes": [
-          {
-            "polygon": [
-              "P3b",
-              "P4b",
-              "P4c",
-              "P3c"
-            ]
-          }
-        ]
-      },
-      {
-        "id": "ru6",
-        "fill": "BLUE",
-        "shapes": [
-          {
-            "polygon": [
-              "P5b",
-              "P6b",
-              "P6c",
-              "P5c"
-            ]
-          }
-        ]
-      },
-      {
-        "id": "rv6",
-        "fill": "WARM",
-        "shapes": [
-          {
-            "polygon": [
-              "P5a",
-              "P6a",
-              "P6b",
-              "P5b"
-            ]
-          }
-        ]
-      },
-      {
-        "id": "ru8",
-        "fill": "BLUE",
-        "shapes": [
-          {
-            "polygon": [
-              "P7b",
-              "P8b",
-              "P8c",
-              "P7c"
-            ]
-          }
-        ]
-      }
-    ],
     "textLabels": [
       {
         "id": "u1",
@@ -985,7 +871,7 @@
       }
     ]
   },
-  "caption": "1부터 9까지의 카드에서 처음에 짝수 2, 4, 6, 8이 나오는 경우(파란색)와 다시 넣은 뒤 두 번째에 6의 약수 1, 2, 3, 6이 나오는 경우(주황색)를 나타냈다. 두 번의 선택은 서로 영향을 주지 않는다.",
+  "caption": "처음 카드의 짝수는 2,4,6,8이고 두 번째 카드의 6의 약수는 1,2,3,6이다. 카드의 숫자를 읽어 두 사건을 구분한다.",
   "coordinateCanvas": {
     "width": 560,
     "height": 340
@@ -1036,6 +922,7 @@
     }
   ],
   "newVisualInformation": [
-    "처음의 짝수 카드와 두 번째의 6의 약수 카드를 두 색으로 구분한다"
+    "처음의 짝수 카드와 두 번째의 6의 약수 카드를 두 색으로 구분한다",
+    "원본에 없는 장식용 면 채움을 제거하고 기하·수치·경계선 표현을 보존한다."
   ]
 }

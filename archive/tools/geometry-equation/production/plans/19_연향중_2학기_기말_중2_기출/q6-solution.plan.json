@@ -376,21 +376,6 @@
           }
         ],
         "planeMarks": {
-          "regions": [
-            {
-              "id": "rT",
-              "fill": "BLUE",
-              "shapes": [
-                {
-                  "polygon": [
-                    "A",
-                    "B",
-                    "E"
-                  ]
-                }
-              ]
-            }
-          ],
           "expressionLabels": [
             {
               "id": "lAB",
@@ -435,5 +420,18 @@
       }
     }
   ],
-  "caption": "큰 정사각형의 한 변은 12 cm이고 CE=x라 하면 점 B, C, E가 한 직선 위에 있어 BE=12+x이다. 파란색 직각삼각형 ABE에서 피타고라스 정리 12²+(12+x)²=20²이 성립한다."
+  "caption": "큰 정사각형의 한 변은 12cm이고 BE=12+x이다. 직각삼각형 ABE에서 12²+(12+x)²=20²을 적용한다.",
+  "sourceConditions": [
+    {
+      "id": "original-conditions",
+      "condition": "ABCD와 CEFG는 정사각형, AD=12cm, AE=20cm, CE=x이다.",
+      "mappedTo": [
+        "panels[0].plan.mathPlan.nodes",
+        "panels[0].plan.displaySegments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본에 없는 장식용 면 채움을 제거하고 기하·수치·경계선 표현을 보존한다."
+  ]
 }

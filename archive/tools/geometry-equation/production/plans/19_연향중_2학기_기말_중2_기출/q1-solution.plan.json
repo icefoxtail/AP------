@@ -480,98 +480,6 @@
             ]
           }
         ],
-        "planeMarks": {
-          "regions": [
-            {
-              "id": "rGBE",
-              "fill": "BLUE",
-              "shapes": [
-                {
-                  "polygon": [
-                    "G",
-                    "B",
-                    "E"
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "rGEC",
-              "fill": "BLUE",
-              "shapes": [
-                {
-                  "polygon": [
-                    "G",
-                    "E",
-                    "C"
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "rGCF",
-              "fill": "BLUE",
-              "shapes": [
-                {
-                  "polygon": [
-                    "G",
-                    "C",
-                    "F"
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "rGFA",
-              "fill": "BLUE",
-              "shapes": [
-                {
-                  "polygon": [
-                    "G",
-                    "F",
-                    "A"
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "rGAD",
-              "fill": "BLUE",
-              "shapes": [
-                {
-                  "polygon": [
-                    "G",
-                    "A",
-                    "D"
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "rGDB",
-              "fill": "BLUE",
-              "shapes": [
-                {
-                  "polygon": [
-                    "G",
-                    "D",
-                    "B"
-                  ]
-                }
-              ]
-            }
-          ],
-          "equalAreas": [
-            [
-              "rGBE",
-              "rGEC",
-              "rGCF",
-              "rGFA",
-              "rGAD",
-              "rGDB"
-            ]
-          ]
-        },
         "caption": "넓이가 같은 6개의 삼각형",
         "coordinateCanvas": {
           "width": 420,
@@ -800,23 +708,6 @@
             ]
           }
         ],
-        "planeMarks": {
-          "regions": [
-            {
-              "id": "rAGC",
-              "fill": "WARM",
-              "shapes": [
-                {
-                  "polygon": [
-                    "A",
-                    "G",
-                    "C"
-                  ]
-                }
-              ]
-            }
-          ]
-        },
         "caption": "삼각형 AGC는 6개 중 2개",
         "coordinateCanvas": {
           "width": 420,
@@ -831,5 +722,18 @@
       }
     }
   ],
-  "caption": "무게중심 G는 각 중선을 꼭짓점 쪽에서 2:1로 나눈다(파란색 AG가 주황색 GE의 두 배). 세 중선은 삼각형을 넓이가 같은 6개의 삼각형으로 나누고, 삼각형 AGC(주황색)는 그 중 2개이므로 삼각형 ABC의 3분의 1이다."
+  "caption": "G는 중선을 2:1로 나누고 세 중선은 삼각형을 같은 넓이의 여섯 부분으로 나눈다. 해설에서 선과 점으로 넓이 관계를 확인한다.",
+  "sourceConditions": [
+    {
+      "id": "original-conditions",
+      "condition": "G는 ABC의 무게중심이고 D,E,F는 대응 변의 중점이다. 원본에는 면 채움이 없다.",
+      "mappedTo": [
+        "panels[0].plan.mathPlan.nodes",
+        "panels[0].plan.displaySegments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본에 없는 장식용 면 채움을 제거하고 기하·수치·경계선 표현을 보존한다."
+  ]
 }

@@ -202,7 +202,7 @@
     },
     {
       "caption": {
-        "text": "삼각형 ABC (파란색)"
+        "text": "삼각형 ABC: x²+15²=17²"
       },
       "plan": {
         "capability": "construction-spike-v1",
@@ -304,21 +304,6 @@
           }
         ],
         "planeMarks": {
-          "regions": [
-            {
-              "id": "rT",
-              "fill": "BLUE",
-              "shapes": [
-                {
-                  "polygon": [
-                    "A",
-                    "B",
-                    "C"
-                  ]
-                }
-              ]
-            }
-          ],
           "expressionLabels": [
             {
               "id": "lAB",
@@ -361,7 +346,7 @@
     },
     {
       "caption": {
-        "text": "삼각형 ABD (주황색)"
+        "text": "삼각형 ABD: y²=8²+6²"
       },
       "plan": {
         "capability": "construction-spike-v1",
@@ -463,21 +448,6 @@
           }
         ],
         "planeMarks": {
-          "regions": [
-            {
-              "id": "rT",
-              "fill": "WARM",
-              "shapes": [
-                {
-                  "polygon": [
-                    "A",
-                    "B",
-                    "D"
-                  ]
-                }
-              ]
-            }
-          ],
           "expressionLabels": [
             {
               "id": "lAB",
@@ -519,5 +489,18 @@
       }
     }
   ],
-  "caption": "BC=BD+DC=15이다. 파란색 삼각형 ABC에서 x²+15²=17²이므로 x=8이다. 주황색 삼각형 ABD에서 AB=8, BD=6이므로 y²=8²+6²이다."
+  "caption": "BC=6+9=15. 삼각형 ABC에서 x²+15²=17², 삼각형 ABD에서 y²=8²+6²을 사용한다. 보조 삼각형의 면은 채우지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "original-conditions",
+      "condition": "ABC는 B에서 직각이고 BD=6, DC=9, AC=17, AB=x, AD=y이다.",
+      "mappedTo": [
+        "panels[0].plan.mathPlan.nodes",
+        "panels[0].plan.displaySegments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본에 없는 장식용 면 채움을 제거하고 기하·수치·경계선 표현을 보존한다."
+  ]
 }

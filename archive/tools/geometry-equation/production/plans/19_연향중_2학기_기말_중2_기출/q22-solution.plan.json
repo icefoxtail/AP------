@@ -106,21 +106,6 @@
           }
         ],
         "planeMarks": {
-          "regions": [
-            {
-              "id": "rT",
-              "fill": "BLUE",
-              "shapes": [
-                {
-                  "polygon": [
-                    "A",
-                    "B",
-                    "C"
-                  ]
-                }
-              ]
-            }
-          ],
           "segmentColors": [
             {
               "segments": [
@@ -271,21 +256,6 @@
           }
         ],
         "planeMarks": {
-          "regions": [
-            {
-              "id": "rT",
-              "fill": "BLUE",
-              "shapes": [
-                {
-                  "polygon": [
-                    "A",
-                    "B",
-                    "C"
-                  ]
-                }
-              ]
-            }
-          ],
           "segmentColors": [
             {
               "segments": [
@@ -333,5 +303,18 @@
       }
     }
   ],
-  "caption": "가장 긴 변이 빗변이다. 빗변이 4이면 6보다 짧아 삼각형이 될 수 없으므로 빗변은 6 또는 a이다. 주황색이 빗변이고 직각을 낀 두 변은 파란색 삼각형의 나머지 두 변이다."
+  "caption": "빗변은 6 또는 a이다. 두 경우의 직각삼각형에서 변의 길이와 직각 표식으로 a²을 판정한다.",
+  "sourceConditions": [
+    {
+      "id": "original-conditions",
+      "condition": "세 변이 4, 6, a인 삼각형이 직각삼각형이 될 수 있는 a²의 경우를 모두 구한다.",
+      "mappedTo": [
+        "panels[0].plan.mathPlan.nodes",
+        "panels[0].plan.displaySegments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본에 없는 장식용 면 채움을 제거하고 기하·수치·경계선 표현을 보존한다."
+  ]
 }

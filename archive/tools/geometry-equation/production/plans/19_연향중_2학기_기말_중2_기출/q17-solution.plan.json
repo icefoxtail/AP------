@@ -464,72 +464,6 @@
           }
         ],
         "planeMarks": {
-          "regions": [
-            {
-              "id": "rA",
-              "fill": "LIGHT",
-              "shapes": [
-                {
-                  "polygon": [
-                    "a1",
-                    "a2",
-                    "a3",
-                    "a4",
-                    "a5",
-                    "a6"
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "rB",
-              "fill": "LIGHT",
-              "shapes": [
-                {
-                  "polygon": [
-                    "a4",
-                    "a3",
-                    "m1",
-                    "b1",
-                    "b2",
-                    "b3"
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "rC",
-              "fill": "LIGHT",
-              "shapes": [
-                {
-                  "polygon": [
-                    "a6",
-                    "a5",
-                    "b3",
-                    "c1",
-                    "c2",
-                    "c3"
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "rD",
-              "fill": "LIGHT",
-              "shapes": [
-                {
-                  "polygon": [
-                    "b1",
-                    "d1",
-                    "d2",
-                    "c2",
-                    "c1",
-                    "b2"
-                  ]
-                }
-              ]
-            }
-          ],
           "textLabels": [
             {
               "id": "tA",
@@ -1053,72 +987,6 @@
           }
         ],
         "planeMarks": {
-          "regions": [
-            {
-              "id": "rA",
-              "fill": "LIGHT",
-              "shapes": [
-                {
-                  "polygon": [
-                    "a1",
-                    "a2",
-                    "a3",
-                    "a4",
-                    "a5",
-                    "a6"
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "rB",
-              "fill": "LIGHT",
-              "shapes": [
-                {
-                  "polygon": [
-                    "a4",
-                    "a3",
-                    "m1",
-                    "b1",
-                    "b2",
-                    "b3"
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "rC",
-              "fill": "LIGHT",
-              "shapes": [
-                {
-                  "polygon": [
-                    "a6",
-                    "a5",
-                    "b3",
-                    "c1",
-                    "c2",
-                    "c3"
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "rD",
-              "fill": "LIGHT",
-              "shapes": [
-                {
-                  "polygon": [
-                    "b1",
-                    "d1",
-                    "d2",
-                    "c2",
-                    "c1",
-                    "b2"
-                  ]
-                }
-              ]
-            }
-          ],
           "textLabels": [
             {
               "id": "tA",
@@ -1642,72 +1510,6 @@
           }
         ],
         "planeMarks": {
-          "regions": [
-            {
-              "id": "rA",
-              "fill": "LIGHT",
-              "shapes": [
-                {
-                  "polygon": [
-                    "a1",
-                    "a2",
-                    "a3",
-                    "a4",
-                    "a5",
-                    "a6"
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "rB",
-              "fill": "WARM",
-              "shapes": [
-                {
-                  "polygon": [
-                    "a4",
-                    "a3",
-                    "m1",
-                    "b1",
-                    "b2",
-                    "b3"
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "rC",
-              "fill": "LIGHT",
-              "shapes": [
-                {
-                  "polygon": [
-                    "a6",
-                    "a5",
-                    "b3",
-                    "c1",
-                    "c2",
-                    "c3"
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "rD",
-              "fill": "LIGHT",
-              "shapes": [
-                {
-                  "polygon": [
-                    "b1",
-                    "d1",
-                    "d2",
-                    "c2",
-                    "c1",
-                    "b2"
-                  ]
-                }
-              ]
-            }
-          ],
           "textLabels": [
             {
               "id": "tA",
@@ -1769,5 +1571,18 @@
       }
     }
   ],
-  "caption": "B는 A, C, D와 모두 이웃하고 A와 C도 이웃하다. B, A, C, D 순서로 이웃한 영역에 쓴 색을 빼고 칠하는 방법을 센다. B를 빨간색으로 정하면(주황색 영역) 나머지 A, C, D를 칠하는 방법만 남는다."
+  "caption": "B는 A,C,D 모두와 이웃하며 A와 C도 이웃한다. B의 색을 정한 뒤 A,C,D의 가능한 색을 세고, 면은 채우지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "original-conditions",
+      "condition": "A B C D 네 구획이 원본에서 색칠되지 않은 상태로 나뉘며 인접 영역끼리 다른 색을 써야 한다.",
+      "mappedTo": [
+        "panels[0].plan.mathPlan.nodes",
+        "panels[0].plan.displaySegments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본에 없는 장식용 면 채움을 제거하고 기하·수치·경계선 표현을 보존한다."
+  ]
 }

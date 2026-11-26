@@ -1049,134 +1049,6 @@
     }
   ],
   "planeMarks": {
-    "regions": [
-      {
-        "id": "rb00",
-        "fill": "BLUE",
-        "shapes": [
-          {
-            "polygon": [
-              "b00a",
-              "b00b",
-              "b00c",
-              "b00d"
-            ]
-          }
-        ]
-      },
-      {
-        "id": "rb01",
-        "fill": "WARM",
-        "shapes": [
-          {
-            "polygon": [
-              "b01a",
-              "b01b",
-              "b01c",
-              "b01d"
-            ]
-          }
-        ]
-      },
-      {
-        "id": "rb02",
-        "fill": "GREEN",
-        "shapes": [
-          {
-            "polygon": [
-              "b02a",
-              "b02b",
-              "b02c",
-              "b02d"
-            ]
-          }
-        ]
-      },
-      {
-        "id": "rb10",
-        "fill": "BLUE",
-        "shapes": [
-          {
-            "polygon": [
-              "b10a",
-              "b10b",
-              "b10c",
-              "b10d"
-            ]
-          }
-        ]
-      },
-      {
-        "id": "rb11",
-        "fill": "WARM",
-        "shapes": [
-          {
-            "polygon": [
-              "b11a",
-              "b11b",
-              "b11c",
-              "b11d"
-            ]
-          }
-        ]
-      },
-      {
-        "id": "rb12",
-        "fill": "GREEN",
-        "shapes": [
-          {
-            "polygon": [
-              "b12a",
-              "b12b",
-              "b12c",
-              "b12d"
-            ]
-          }
-        ]
-      },
-      {
-        "id": "rb20",
-        "fill": "BLUE",
-        "shapes": [
-          {
-            "polygon": [
-              "b20a",
-              "b20b",
-              "b20c",
-              "b20d"
-            ]
-          }
-        ]
-      },
-      {
-        "id": "rb21",
-        "fill": "WARM",
-        "shapes": [
-          {
-            "polygon": [
-              "b21a",
-              "b21b",
-              "b21c",
-              "b21d"
-            ]
-          }
-        ]
-      },
-      {
-        "id": "rb22",
-        "fill": "GREEN",
-        "shapes": [
-          {
-            "polygon": [
-              "b22a",
-              "b22b",
-              "b22c",
-              "b22d"
-            ]
-          }
-        ]
-      }
-    ],
     "textLabels": [
       {
         "id": "tb00",
@@ -1372,7 +1244,7 @@
       }
     ]
   },
-  "caption": "세 자리 정수이므로 백의 자리에는 0이 올 수 없다. 같은 숫자를 여러 번 쓸 수 있으므로 십의 자리는 0, 1, 2, 3 모두 가능하다. 일의 자리가 홀수이면 1 또는 3, 짝수이면 0 또는 2이다. 자리마다 쓸 수 있는 숫자와 그 개수를 세 경우로 나타냈다.",
+  "caption": "세 자리 수의 백의 자리에는 0이 올 수 없고 십의 자리는 0부터 3까지 가능하다. 일의 자리 조건을 숫자 표로 구분한다.",
   "coordinateCanvas": {
     "width": 720,
     "height": 460
@@ -1429,6 +1301,7 @@
     }
   ],
   "newVisualInformation": [
-    "자리마다 쓸 수 있는 숫자와 가짓수"
+    "자리마다 쓸 수 있는 숫자와 가짓수",
+    "원본에 없는 장식용 면 채움을 제거하고 기하·수치·경계선 표현을 보존한다."
   ]
 }
