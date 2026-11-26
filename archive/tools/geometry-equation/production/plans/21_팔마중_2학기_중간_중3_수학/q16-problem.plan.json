@@ -1,0 +1,238 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "-8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "-8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "H",
+    "P"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "H",
+        "P"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "O",
+        "P"
+      ]
+    },
+    {
+      "id": "s5",
+      "refs": [
+        "O",
+        "A"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "right0",
+      "refs": [
+        "A",
+        "H",
+        "P"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "length3",
+        "ownerSegment": "s3",
+        "text": "2"
+      },
+      {
+        "id": "length5",
+        "ownerSegment": "s5",
+        "text": "10"
+      }
+    ],
+    "regions": [
+      {
+        "id": "sourceCap",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "segment": {
+              "center": "O",
+              "from": "A",
+              "to": "B",
+              "side": "MINOR"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 580,
+    "height": 430
+  },
+  "caption": "반지름 10cm 원의 아래쪽 활꼴, 현 AB·그 중점 H, 현에서 호까지 HP=2cm 수선, 발문의 음영 활꼴",
+  "accessibilityDescription": "반지름 10cm 원의 아래쪽 활꼴, 현 AB·그 중점 H, 현에서 호까지 HP=2cm 수선, 발문의 음영 활꼴",
+  "sourceQuote": "다음 그림은 반지름의 길이가 $10\\text{ cm}$인 원의 일부이다. 현 $\\mathrm{AB}$의 중점 $\\mathrm{H}$에서 그은 이 현의 수선은 이 호와 점 $\\mathrm{P}$에서 만나고 $\\overline{\\mathrm{HP}}=2\\text{ cm}$일 때, $\\triangle\\mathrm{APB}$의 넓이는?",
+  "sourceConditions": [
+    {
+      "id": "source-geometry",
+      "condition": "반지름 10cm 원의 아래쪽 활꼴, 현 AB·그 중점 H, 현에서 호까지 HP=2cm 수선, 발문의 음영 활꼴",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "반지름 10cm 원의 아래쪽 활꼴, 현 AB·그 중점 H, 현에서 호까지 HP=2cm 수선, 발문의 음영 활꼴"
+  ]
+}

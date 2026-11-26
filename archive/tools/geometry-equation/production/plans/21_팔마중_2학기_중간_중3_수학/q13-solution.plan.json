@@ -23,9 +23,8 @@
               "op": "sqrt",
               "args": [
                 {
-                  "kind": "rational",
-                  "numerator": "75",
-                  "denominator": "1"
+                  "kind": "integer",
+                  "value": "75"
                 }
               ]
             }
@@ -87,9 +86,8 @@
               "op": "sqrt",
               "args": [
                 {
-                  "kind": "rational",
-                  "numerator": "27",
-                  "denominator": "1"
+                  "kind": "integer",
+                  "value": "27"
                 }
               ]
             }
@@ -110,35 +108,35 @@
   "displayCircles": [],
   "displaySegments": [
     {
-      "id": "sAB",
+      "id": "s0",
       "refs": [
         "A",
         "B"
       ]
     },
     {
-      "id": "sBC",
+      "id": "s1",
       "refs": [
         "B",
         "C"
       ]
     },
     {
-      "id": "sCD",
+      "id": "s2",
       "refs": [
         "C",
         "D"
       ]
     },
     {
-      "id": "sDA",
+      "id": "s3",
       "refs": [
         "D",
         "A"
       ]
     },
     {
-      "id": "sAC",
+      "id": "s4",
       "refs": [
         "A",
         "C"
@@ -146,48 +144,44 @@
       "dashed": true
     }
   ],
+  "rightAngles": [],
   "planeMarks": {
     "expressionLabels": [
       {
-        "id": "lAB",
-        "ownerSegment": "sAB",
-        "text": "12",
-        "unit": "cm"
+        "id": "length0",
+        "ownerSegment": "s0",
+        "text": "12"
       },
       {
-        "id": "lBC",
-        "ownerSegment": "sBC",
-        "text": "8",
-        "unit": "cm"
+        "id": "length1",
+        "ownerSegment": "s1",
+        "text": "8"
       },
       {
-        "id": "lAD",
-        "ownerSegment": "sDA",
-        "text": "2√7",
-        "unit": "cm"
+        "id": "length2",
+        "ownerSegment": "s2",
+        "text": "2√7"
       },
       {
-        "id": "lCD",
-        "ownerSegment": "sCD",
-        "text": "2√7",
-        "unit": "cm"
+        "id": "length3",
+        "ownerSegment": "s3",
+        "text": "2√7"
       }
     ],
     "angles": [
       {
-        "id": "aB",
+        "id": "angle0",
         "refs": [
-          "A",
+          "C",
           "B",
-          "C"
+          "A"
         ],
         "value": 60,
         "label": "60",
-        "arcs": 1,
         "factRole": "GIVEN"
       },
       {
-        "id": "aD",
+        "id": "angle1",
         "refs": [
           "A",
           "D",
@@ -195,55 +189,29 @@
         ],
         "value": 120,
         "label": "120",
-        "arcs": 1,
         "factRole": "GIVEN"
-      }
-    ],
-    "regions": [
-      {
-        "id": "rABC",
-        "fill": "BLUE",
-        "shapes": [
-          {
-            "polygon": [
-              "A",
-              "B",
-              "C"
-            ]
-          }
-        ]
-      },
-      {
-        "id": "rADC",
-        "fill": "WARM",
-        "shapes": [
-          {
-            "polygon": [
-              "A",
-              "D",
-              "C"
-            ]
-          }
-        ]
       }
     ]
   },
   "coordinateCanvas": {
-    "width": 420,
-    "height": 340
+    "width": 580,
+    "height": 430
   },
-  "caption": "대각선 AC로 사각형을 삼각형 ABC와 삼각형 ADC로 나눈다. 삼각형 ABC의 넓이는 두 변 12, 8과 끼인각 60도로 24√3이고, 삼각형 ADC는 두 변 2√7, 2√7과 끼인각 120도로 7√3이다. 두 넓이를 더하면 31√3 cm²이다. 따라서 답은 ①이다.",
-  "accessibilityDescription": "사각형 ABCD에 대각선 AC가 점선으로 그어져 있고 삼각형 ABC는 파란색, 삼각형 ADC는 주황색으로 칠해져 있다. 각 B에는 60도, 각 D에는 120도 표시가 있고 네 변에 길이가 적혀 있다.",
-  "newVisualInformation": [
-    "대각선 AC로 나뉜 두 삼각형의 색칠",
-    "삼각형 ABC의 넓이 24√3과 삼각형 ADC의 넓이 7√3",
-    "각 B의 60도, 각 D의 120도 표시"
-  ],
+  "caption": "대각선 AC 점선으로 면적을 분할하고 기존 파란색·주황색 면 채움을 제거; 원문 수치 간 거리모순은 미해결",
+  "accessibilityDescription": "대각선 AC 점선으로 면적을 분할하고 기존 파란색·주황색 면 채움을 제거; 원문 수치 간 거리모순은 미해결",
+  "sourceQuote": "다음 그림에서 $\\square\\mathrm{ABCD}$의 넓이를 구하면?",
   "sourceConditions": [
     {
-      "id": "source",
-      "condition": "다음 그림에서 $\\square\\mathrm{ABCD}$의 넓이를 구하면?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q13.png\" />",
-      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+      "id": "source-geometry",
+      "condition": "대각선 AC 점선으로 면적을 분할하고 기존 파란색·주황색 면 채움을 제거; 원문 수치 간 거리모순은 미해결",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments"
+      ]
     }
+  ],
+  "newVisualInformation": [
+    "대각선 AC 점선으로 면적을 분할하고 기존 파란색·주황색 면 채움을 제거; 원문 수치 간 거리모순은 미해결",
+    "SOURCE_GEOMETRY_CONFLICT: ABC의 조건에서 AC²=112, ADC의 조건에서 AC²=84이므로 원본 수치가 동시에 성립할 수 없다; 엔진의 길이-표식 1:1 물리 검증은 SOURCE_CONFLICT로 유보한다."
   ]
 }

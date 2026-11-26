@@ -1,0 +1,239 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-17"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-64",
+              "denominator": "17"
+            },
+            {
+              "kind": "rational",
+              "numerator": "120",
+              "denominator": "17"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-64",
+              "denominator": "17"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-120",
+              "denominator": "17"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "8"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "P",
+    "C",
+    "A",
+    "B"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "P",
+        "C"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "C",
+        "O"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "s5",
+      "refs": [
+        "O",
+        "B"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "right0",
+      "refs": [
+        "P",
+        "A",
+        "O"
+      ]
+    },
+    {
+      "id": "right1",
+      "refs": [
+        "O",
+        "B",
+        "P"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "length1",
+        "ownerSegment": "s1",
+        "text": "15"
+      },
+      {
+        "id": "length2",
+        "ownerSegment": "s2",
+        "text": "9"
+      },
+      {
+        "id": "length4",
+        "ownerSegment": "s4",
+        "text": "8"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 580,
+    "height": 430
+  },
+  "caption": "외부점 P에서 원 O로 그은 접선 PA·PB 및 중심을 지나는 PC=9, PB=15, 반지름 OA=8",
+  "accessibilityDescription": "외부점 P에서 원 O로 그은 접선 PA·PB 및 중심을 지나는 PC=9, PB=15, 반지름 OA=8",
+  "sourceQuote": "다음 그림과 같이 반지름의 길이가 $8\\text{cm}$인 원 $\\mathrm{O}$의 외부의 한 점 $\\mathrm{P}$에서 이 원에 그은 두 접선이 두 점 $\\mathrm{A}$와 $\\mathrm{B}$에서 각각 접하고 $\\overline{\\mathrm{PO}}$는 이 원과 점 $\\mathrm{C}$에서 만난다. $\\overline{\\mathrm{PC}}=9\\text{cm}$일 때, $\\overline{PB}$의 길이는?",
+  "sourceConditions": [
+    {
+      "id": "source-geometry",
+      "condition": "외부점 P에서 원 O로 그은 접선 PA·PB 및 중심을 지나는 PC=9, PB=15, 반지름 OA=8",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "외부점 P에서 원 O로 그은 접선 PA·PB 및 중심을 지나는 PC=9, PB=15, 반지름 OA=8"
+  ]
+}

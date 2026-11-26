@@ -1,0 +1,246 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "-6"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "-6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "6"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "-6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "K",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "outer",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "12"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "fold",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "K"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "12"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "K"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "outer"
+  ],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "O",
+        "K"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "O",
+        "B"
+      ]
+    }
+  ],
+  "rightAngles": [],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "length0",
+        "ownerSegment": "s0",
+        "text": "12√3"
+      },
+      {
+        "id": "length1",
+        "ownerSegment": "s1",
+        "text": "12"
+      },
+      {
+        "id": "length2",
+        "ownerSegment": "s2",
+        "text": "12"
+      },
+      {
+        "id": "length3",
+        "ownerSegment": "s3",
+        "text": "12"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "arc0",
+        "circle": "fold",
+        "center": "K",
+        "from": "A",
+        "to": "B",
+        "side": "MINOR"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 580,
+    "height": 430
+  },
+  "caption": "접힌 원호의 중심 K와 O 사이 거리 12cm, 현 AB=12√3cm, 반현 6√3cm의 관계",
+  "accessibilityDescription": "접힌 원호의 중심 K와 O 사이 거리 12cm, 현 AB=12√3cm, 반현 6√3cm의 관계",
+  "sourceQuote": "다음 그림과 같이 반지름의 길이가 $12\\text{ cm}$인 원 모양의 종이를 현 $\\mathrm{AB}$를 접는 선으로 하여 접었더니 호 $\\mathrm{AB}$가 원의 중심 $\\mathrm{O}$를 지난다. 이 때 현 $\\mathrm{AB}$의 길이는?",
+  "sourceConditions": [
+    {
+      "id": "source-geometry",
+      "condition": "접힌 원호의 중심 K와 O 사이 거리 12cm, 현 AB=12√3cm, 반현 6√3cm의 관계",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "접힌 원호의 중심 K와 O 사이 거리 12cm, 현 AB=12√3cm, 반현 6√3cm의 관계"
+  ]
+}

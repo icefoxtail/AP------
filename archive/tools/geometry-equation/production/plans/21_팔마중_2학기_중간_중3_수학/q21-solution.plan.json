@@ -1,0 +1,440 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "14"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "38",
+              "denominator": "7"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "24",
+                  "denominator": "7"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "6"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "114",
+              "denominator": "35"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "72",
+                  "denominator": "35"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "6"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "add",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "76",
+                  "denominator": "21"
+                },
+                {
+                  "kind": "rational",
+                  "numerator": "14",
+                  "denominator": "3"
+                }
+              ]
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "16",
+                  "denominator": "7"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "6"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "4",
+                  "denominator": "3"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "6"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "incircle",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "rational",
+                "numerator": "4",
+                "denominator": "3"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "C",
+    "A",
+    "D",
+    "F",
+    "E",
+    "O"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "incircle"
+  ],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "C",
+        "F"
+      ]
+    },
+    {
+      "id": "s5",
+      "refs": [
+        "F",
+        "A"
+      ]
+    },
+    {
+      "id": "s6",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "s7",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "s8",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "s9",
+      "refs": [
+        "O",
+        "E"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "right0",
+      "refs": [
+        "O",
+        "E",
+        "B"
+      ]
+    },
+    {
+      "id": "right1",
+      "refs": [
+        "O",
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "right2",
+      "refs": [
+        "O",
+        "F",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "length0",
+        "ownerSegment": "s0",
+        "text": "4"
+      },
+      {
+        "id": "length1",
+        "ownerSegment": "s1",
+        "text": "6"
+      },
+      {
+        "id": "length2",
+        "ownerSegment": "s2",
+        "text": "6"
+      },
+      {
+        "id": "length3",
+        "ownerSegment": "s3",
+        "text": "8"
+      },
+      {
+        "id": "length4",
+        "ownerSegment": "s4",
+        "text": "8"
+      },
+      {
+        "id": "length5",
+        "ownerSegment": "s5",
+        "text": "4"
+      },
+      {
+        "id": "length6",
+        "ownerSegment": "s6",
+        "text": "10"
+      },
+      {
+        "id": "length7",
+        "ownerSegment": "s7",
+        "text": "12"
+      },
+      {
+        "id": "length8",
+        "ownerSegment": "s8",
+        "text": "14"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 580,
+    "height": 430
+  },
+  "caption": "같은 꼭짓점에서 그은 접선 AD=AF=4, BD=BE=6, CE=CF=8을 읽는 내접원 접선 해설",
+  "accessibilityDescription": "같은 꼭짓점에서 그은 접선 AD=AF=4, BD=BE=6, CE=CF=8을 읽는 내접원 접선 해설",
+  "sourceQuote": "다음 그림에서 원 $\\mathrm{O}$는 $\\triangle\\mathrm{ABC}$의 내접원이고 세 점 $\\mathrm{D}, \\mathrm{E}, \\mathrm{F}$에서 각각 접한다. $\\overline{\\mathrm{AB}}=10\\text{cm}$, $\\overline{\\mathrm{AC}}=12\\text{cm}$, $\\overline{\\mathrm{AD}}=4\\text{cm}$일 때, $\\overline{\\mathrm{BC}}$의 길이는?",
+  "sourceConditions": [
+    {
+      "id": "source-geometry",
+      "condition": "같은 꼭짓점에서 그은 접선 AD=AF=4, BD=BE=6, CE=CF=8을 읽는 내접원 접선 해설",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "같은 꼭짓점에서 그은 접선 AD=AF=4, BD=BE=6, CE=CF=8을 읽는 내접원 접선 해설"
+  ]
+}

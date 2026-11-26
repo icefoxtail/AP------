@@ -1,0 +1,507 @@
+{
+  "capability": "composite-panels-v1",
+  "columns": 2,
+  "panels": [
+    {
+      "caption": {
+        "text": "(1) 직각삼각형"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "expression",
+                    "op": "sub",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "1"
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "3"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "add",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "1"
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "3"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "B",
+          "C",
+          "D",
+          "A"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "s0",
+            "refs": [
+              "B",
+              "A"
+            ]
+          },
+          {
+            "id": "s1",
+            "refs": [
+              "A",
+              "D"
+            ]
+          },
+          {
+            "id": "s2",
+            "refs": [
+              "D",
+              "C"
+            ]
+          },
+          {
+            "id": "s3",
+            "refs": [
+              "C",
+              "B"
+            ]
+          },
+          {
+            "id": "s4",
+            "refs": [
+              "B",
+              "D"
+            ]
+          }
+        ],
+        "rightAngles": [
+          {
+            "id": "right0",
+            "refs": [
+              "B",
+              "A",
+              "D"
+            ]
+          },
+          {
+            "id": "right1",
+            "refs": [
+              "B",
+              "C",
+              "D"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "expressionLabels": [
+            {
+              "id": "length0",
+              "ownerSegment": "s0",
+              "text": "2√2"
+            }
+          ],
+          "angles": [
+            {
+              "id": "angle0",
+              "refs": [
+                "A",
+                "B",
+                "D"
+              ],
+              "value": 60,
+              "label": "60",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "angle1",
+              "refs": [
+                "B",
+                "D",
+                "C"
+              ],
+              "value": 45,
+              "label": "45",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "coordinateCanvas": {
+          "width": 385,
+          "height": 340
+        },
+        "caption": "(1) AB=2√2, B=60°, D=45°, A·C의 두 직각",
+        "accessibilityDescription": "(1) AB=2√2, B=60°, D=45°, A·C의 두 직각",
+        "sourceQuote": "[서술형2] 아래 물음에 대하여 풀이 과정을 쓰고 답을 구하시오.[5점] (1) 다음 그림에서 $\\angle\\mathrm{ABD}=60^\\circ$, $\\angle\\mathrm{BDC}=45^\\circ$이고 $\\overline{\\mathrm{AB}}=2\\sqrt{2}$일 때, $\\overline{\\mathrm{BC}}$의 길이를 구하면?[2점] (조건: 삼각비를 이용하여 풀 것) (2) $\\square\\mathrm{ABCD}$의 넓이가 $30\\sqrt{3}$일 때, $\\overline{\\mathrm{AC}}$의 길이를 구하면?[3점]",
+        "sourceConditions": [
+          {
+            "id": "source-geometry",
+            "condition": "(1) AB=2√2, B=60°, D=45°, A·C의 두 직각",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "(1) AB=2√2, B=60°, D=45°, A·C의 두 직각"
+        ]
+      }
+    },
+    {
+      "caption": {
+        "text": "(2) 대각선 교차"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "P",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "-2"
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "mul",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "2"
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "3"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "-15",
+                    "denominator": "2"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "mul",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "-2"
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "3"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "15",
+                    "denominator": "2"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "P",
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "s0",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "s1",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "s2",
+            "refs": [
+              "C",
+              "D"
+            ]
+          },
+          {
+            "id": "s3",
+            "refs": [
+              "D",
+              "A"
+            ]
+          },
+          {
+            "id": "s4",
+            "refs": [
+              "A",
+              "C"
+            ]
+          },
+          {
+            "id": "s5",
+            "refs": [
+              "B",
+              "D"
+            ]
+          }
+        ],
+        "rightAngles": [],
+        "planeMarks": {
+          "expressionLabels": [
+            {
+              "id": "length5",
+              "ownerSegment": "s5",
+              "text": "15"
+            }
+          ],
+          "angles": [
+            {
+              "id": "angle0",
+              "refs": [
+                "A",
+                "P",
+                "B"
+              ],
+              "value": 60,
+              "label": "60",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "coordinateCanvas": {
+          "width": 385,
+          "height": 340
+        },
+        "caption": "(2) 대각선 AC·BD는 P에서 60°로 교차, BD=15",
+        "accessibilityDescription": "(2) 대각선 AC·BD는 P에서 60°로 교차, BD=15",
+        "sourceQuote": "[서술형2] 아래 물음에 대하여 풀이 과정을 쓰고 답을 구하시오.[5점] (1) 다음 그림에서 $\\angle\\mathrm{ABD}=60^\\circ$, $\\angle\\mathrm{BDC}=45^\\circ$이고 $\\overline{\\mathrm{AB}}=2\\sqrt{2}$일 때, $\\overline{\\mathrm{BC}}$의 길이를 구하면?[2점] (조건: 삼각비를 이용하여 풀 것) (2) $\\square\\mathrm{ABCD}$의 넓이가 $30\\sqrt{3}$일 때, $\\overline{\\mathrm{AC}}$의 길이를 구하면?[3점]",
+        "sourceConditions": [
+          {
+            "id": "source-geometry",
+            "condition": "(2) 대각선 AC·BD는 P에서 60°로 교차, BD=15",
+            "mappedTo": [
+              "mathPlan.nodes",
+              "displaySegments"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "(2) 대각선 AC·BD는 P에서 60°로 교차, BD=15"
+        ]
+      }
+    }
+  ],
+  "caption": "서술형 두 소문항의 원본 그림을 각각 분리: (1) 두 직각·60°·45°·AB=2√2, (2) BD=15와 대각선 교각 60°",
+  "accessibilityDescription": "서술형 두 소문항의 원본 그림을 각각 분리: (1) 두 직각·60°·45°·AB=2√2, (2) BD=15와 대각선 교각 60°",
+  "sourceQuote": "[서술형2] 아래 물음에 대하여 풀이 과정을 쓰고 답을 구하시오.[5점] (1) 다음 그림에서 $\\angle\\mathrm{ABD}=60^\\circ$, $\\angle\\mathrm{BDC}=45^\\circ$이고 $\\overline{\\mathrm{AB}}=2\\sqrt{2}$일 때, $\\overline{\\mathrm{BC}}$의 길이를 구하면?[2점] (조건: 삼각비를 이용하여 풀 것) (2) $\\square\\mathrm{ABCD}$의 넓이가 $30\\sqrt{3}$일 때, $\\overline{\\mathrm{AC}}$의 길이를 구하면?[3점]",
+  "sourceConditions": [
+    {
+      "id": "source-geometry",
+      "condition": "서술형 두 소문항의 원본 그림을 각각 분리: (1) 두 직각·60°·45°·AB=2√2, (2) BD=15와 대각선 교각 60°",
+      "mappedTo": [
+        "graphPlan",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "서술형 두 소문항의 원본 그림을 각각 분리: (1) 두 직각·60°·45°·AB=2√2, (2) BD=15와 대각선 교각 60°"
+  ]
+}
