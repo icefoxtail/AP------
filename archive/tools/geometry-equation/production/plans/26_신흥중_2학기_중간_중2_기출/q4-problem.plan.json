@@ -1,0 +1,34 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes": [
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "6" }]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{ "kind": "integer", "value": "8" }, { "kind": "integer", "value": "0" }]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{ "kind": "integer", "value": "8" }, { "kind": "integer", "value": "6" }]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{ "kind": "integer", "value": "4" }, { "kind": "integer", "value": "3" }]},"outputType":"POINT","factRole":"GIVEN"}
+    ]
+  },
+  "displayPoints":["A","B","C","D","O"],
+  "displaySegments":[
+    {"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},
+    {"id":"sCD","refs":["C","D"]},{"id":"sDA","refs":["D","A"]},
+    {"id":"sAC","refs":["A","C"]},{"id":"sBD","refs":["B","D"]}
+  ],
+  "planeMarks":{"dimensions":[
+    {"id":"dBC","from":"B","to":"C","label":"8","unit":"cm","side":"BELOW","style":"BAR","value":"8","factRole":"GIVEN"},
+    {"id":"dCD","from":"C","to":"D","label":"6","unit":"cm","side":"RIGHT","style":"BAR","value":"6","factRole":"GIVEN"},
+    {"id":"dBD","from":"B","to":"D","label":"10","unit":"cm","side":"ABOVE","style":"BAR","value":"10","factRole":"GIVEN"}
+  ]},
+  "coordinateCanvas":{"width":720,"height":480},
+  "caption":"가로 8 cm, 세로 6 cm인 직사각형 ABCD의 두 대각선이 O에서 만난다.",
+  "accessibilityDescription":"색으로 칠하지 않은 직사각형 ABCD에 대각선 AC와 BD를 그리고 교점 O를 표시한다. BC=8 cm, CD=6 cm, BD=10 cm 치수선이 있다.",
+  "sourceConditions":[
+    {"id":"rectangle","condition":"직사각형 ABCD이며 BC=8 cm, CD=6 cm이다.","mappedTo":["sAB","sBC","sCD","sDA","dBC","dCD"]},
+    {"id":"diagonals","condition":"AC와 BD의 교점이 O이고 BD=10 cm이다.","mappedTo":["sAC","sBD","O","dBD"]}
+  ],
+  "newVisualInformation":["기존 SVG의 불필요한 사각형 내부 채움을 제거하고 흰 바탕과 윤곽선만 남긴다.","원본의 두 대각선, O, 세 치수값을 지시선·치수선으로 명확히 보인다."],
+  "sourceQuote":"다음 직사각형 ABCD에서 두 대각선의 교점을 O라고 할 때"
+}

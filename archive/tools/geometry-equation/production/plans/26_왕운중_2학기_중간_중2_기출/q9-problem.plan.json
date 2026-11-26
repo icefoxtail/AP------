@@ -1,0 +1,663 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "(1) 변 AB 접기"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "5"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "M",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "3",
+                    "denominator": "2"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "5",
+                    "denominator": "2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "P",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "17",
+                    "denominator": "3"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "M",
+          "P"
+        ],
+        "hiddenPointNames": [
+          "M",
+          "P"
+        ],
+        "hiddenPointStyle": "NONE",
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ],
+            "dashed": true
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ],
+            "dashed": true
+          },
+          {
+            "id": "sCA",
+            "refs": [
+              "C",
+              "A"
+            ],
+            "dashed": false
+          },
+          {
+            "id": "creaseAB",
+            "refs": [
+              "M",
+              "P"
+            ]
+          },
+          {
+            "id": "sAM",
+            "refs": ["A", "M"]
+          },
+          {
+            "id": "sPA",
+            "refs": ["P", "A"]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 320
+        },
+        "planeMarks": {
+          "regions": [
+            {
+              "id": "flapAB",
+              "fill": "LIGHT",
+              "shapes": [
+                {
+                  "polygon": [
+                    "A",
+                    "M",
+                    "P"
+                  ]
+                }
+              ],
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "caption": "A와 B를 맞대어 접고 펴서 변 AB의 수직이등분선을 만든다."
+      }
+    },
+    {
+      "caption": {
+        "text": "(2) 변 AC 접기"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "5"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "N",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "9",
+                    "denominator": "2"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "5",
+                    "denominator": "2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "Q",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "1",
+                    "denominator": "3"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "N",
+          "Q"
+        ],
+        "hiddenPointNames": [
+          "N",
+          "Q"
+        ],
+        "hiddenPointStyle": "NONE",
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ],
+            "dashed": true
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ],
+            "dashed": true
+          },
+          {
+            "id": "sCA",
+            "refs": [
+              "C",
+              "A"
+            ],
+            "dashed": false
+          },
+          {
+            "id": "creaseAC",
+            "refs": [
+              "N",
+              "Q"
+            ]
+          },
+          {
+            "id": "sAN",
+            "refs": ["A", "N"]
+          },
+          {
+            "id": "sQA",
+            "refs": ["Q", "A"]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 320
+        },
+        "planeMarks": {
+          "regions": [
+            {
+              "id": "flapAC",
+              "fill": "LIGHT",
+              "shapes": [
+                {
+                  "polygon": [
+                    "A",
+                    "N",
+                    "Q"
+                  ]
+                }
+              ],
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "caption": "A와 C를 맞대어 접고 펴서 변 AC의 수직이등분선을 만든다."
+      }
+    },
+    {
+      "caption": {
+        "text": "(3) 두 선의 교점 O"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "5"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "M",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "3",
+                    "denominator": "2"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "5",
+                    "denominator": "2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "P",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "17",
+                    "denominator": "3"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "N",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "9",
+                    "denominator": "2"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "5",
+                    "denominator": "2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "Q",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "1",
+                    "denominator": "3"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "8",
+                    "denominator": "5"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "M",
+          "P",
+          "N",
+          "Q",
+          "O"
+        ],
+        "hiddenPointNames": [
+          "M",
+          "P",
+          "N",
+          "Q"
+        ],
+        "hiddenPointStyle": "NONE",
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ],
+            "dashed": false
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ],
+            "dashed": true
+          },
+          {
+            "id": "sCA",
+            "refs": [
+              "C",
+              "A"
+            ],
+            "dashed": true
+          },
+          {
+            "id": "creaseAB",
+            "refs": [
+              "M",
+              "P"
+            ]
+          },
+          {
+            "id": "creaseAC",
+            "refs": [
+              "N",
+              "Q"
+            ]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 384,
+          "height": 320
+        },
+        "caption": "두 접기 자국의 교점을 O로 표시한다."
+      }
+    }
+  ],
+  "caption": "두 변의 수직이등분선을 접어 만들고 그 교점 O를 찾는 세 단계의 활동이다.",
+  "accessibilityDescription": "첫 번째 패널은 변 AB의 접힌 삼각형 영역만 옅게 칠하고, 두 번째 패널은 변 AC의 접힌 영역만 칠한다. 세 번째에는 두 수직이등분선의 교점 O를 보여 준다.",
+  "sourceConditions": [
+    {
+      "id": "step1",
+      "condition": "A와 B가 겹치게 접어서 변 AB의 수직이등분선을 만든다.",
+      "mappedTo": [
+        "panels[0].plan.displaySegments.creaseAB",
+        "panels[0].plan.planeMarks.regions.flapAB"
+      ]
+    },
+    {
+      "id": "step2",
+      "condition": "A와 C가 겹치게 접어서 변 AC의 수직이등분선을 만든다.",
+      "mappedTo": [
+        "panels[1].plan.displaySegments.creaseAC",
+        "panels[1].plan.planeMarks.regions.flapAC"
+      ]
+    },
+    {
+      "id": "step3",
+      "condition": "두 수직이등분선의 교점을 O로 표시한다.",
+      "mappedTo": [
+        "panels[2].plan.displaySegments.creaseAB",
+        "panels[2].plan.displaySegments.creaseAC",
+        "panels[2].plan.displayPoints.O"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "기존 문제 SVG에 빠져 있던 (1),(2) 접기 단계의 명시적 음영을 원본과 같이 복원한다.",
+    "세 번째 패널에서 두 직교 접기 선분의 교점을 O로 표시하되, 정답 보기의 AO=BO=CO 사실은 미리 적지 않는다.",
+    "면 채움은 접힌 부분 두 군데에만 적용하고 일반 삼각형 내부와 바탕은 칠하지 않는다."
+  ],
+  "sourceQuote": "두 꼭짓점 $A$, $B$가 겹치도록 접었다가 펼쳐"
+}

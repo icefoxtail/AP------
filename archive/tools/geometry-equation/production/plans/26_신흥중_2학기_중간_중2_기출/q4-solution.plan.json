@@ -1,0 +1,35 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes":[
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "6" }]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{ "kind": "integer", "value": "8" }, { "kind": "integer", "value": "0" }]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{ "kind": "integer", "value": "8" }, { "kind": "integer", "value": "6" }]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{ "kind": "integer", "value": "4" }, { "kind": "integer", "value": "3" }]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+    ]},
+  "displayPoints":["A","B","C","D","O"],
+  "displaySegments":[
+    {"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},
+    {"id":"sCD","refs":["C","D"]},{"id":"sDA","refs":["D","A"]},
+    {"id":"sAO","refs":["A","O"]},{"id":"sOC","refs":["O","C"]},
+    {"id":"sBO","refs":["B","O"]},{"id":"sOD","refs":["O","D"]}
+  ],
+  "planeMarks":{
+    "equalLengths":[{"id":"eqO","count":1,"segments":["sAO","sBO"]}],
+    "expressionLabels":[
+      {"id":"aFive","ownerSegment":"sAO","text":"5","unit":"cm"},
+      {"id":"bFive","ownerSegment":"sBO","text":"5","unit":"cm"},
+      {"id":"abSix","ownerSegment":"sAB","text":"6","unit":"cm"}
+    ]
+  },
+  "coordinateCanvas":{"width":720,"height":500},
+  "caption":"직사각형의 대각선은 서로를 이등분하므로 OA=OB=5 cm이고 AB=6 cm이다.",
+  "accessibilityDescription":"직사각형의 교점 O와 삼각형 OAB의 세 변 OA, OB, AB에 각각 5 cm, 5 cm, 6 cm를 표시한다. 면 채움은 없다.",
+  "sourceConditions":[
+    {"id":"midpoint","condition":"BD=10 cm이며 직사각형의 두 대각선은 서로를 이등분하므로 OA=OB=5 cm이다.","mappedTo":["O","sAO","sBO","eqO","aFive","bFive"]},
+    {"id":"height","condition":"AB=DC=6 cm이고 둘레는 5+5+6이다.","mappedTo":["sAB","sCD","abSix"]}
+  ],
+  "newVisualInformation":["둘레를 묻는 해설에서 불필요한 삼각형 내부 음영을 빼고 세 변의 길이와 이등분 표식을 직접 붙인다."],
+  "sourceQuote":"직사각형의 두 대각선은 길이가 같고 서로를 이등분한다."
+}
