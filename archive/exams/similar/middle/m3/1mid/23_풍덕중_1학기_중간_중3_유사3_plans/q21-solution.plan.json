@@ -1,0 +1,27 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "axisVariable": false,
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "points": [
+          {"id": "P0", "value": "3", "hideName": true, "showValue": true},
+          {"id": "P1", "value": "2+sqrt(3)", "hideName": true, "showValue": true},
+          {"id": "P2", "value": "4", "hideName": true, "showValue": true}
+        ]
+      }
+    ]
+  },
+  "caption": "1/b=2+√3은 3과 4 사이이므로 정수 부분은 3, 소수 부분은 √3−1이다.",
+  "accessibilityDescription": "수직선에서 정수 삼과 사 사이에 있는 이 더하기 루트 삼의 위치를 정확히 나타낸 해설 그림이다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "b=2−√3, 1/b=2+√3", "mappedTo": ["numberLine.rows"]},
+    {"id": "c2", "condition": "3<2+√3<4", "mappedTo": ["numberLine.rows"]}
+  ],
+  "newVisualInformation": [
+    "정수 3, 4 및 그 사이의 정확한 2+√3 위치를 숫자 이름 없이 세 점으로 표시한다.",
+    "정수 부분 3을 빼서 소수 부분을 만드는 관계를 수직선 위치로 설명한다."
+  ]
+}
