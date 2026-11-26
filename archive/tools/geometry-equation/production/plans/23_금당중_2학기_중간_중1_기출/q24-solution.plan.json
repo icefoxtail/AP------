@@ -1,0 +1,39 @@
+{
+  "capability":"construction-spike-v1",
+  "sourceQuote":"AD∥BC, ∠A=∠B=90°, E는 BC 연장선, F=AE∩CD, AF=EF이다. 합동과 넓이를 구하시오.",
+  "caption":"빈 내부의 사다리꼴 ABCD에서 AF=EF, AD=EC, 두 대응각, 두 직각과 높이 4cm·전체 밑변 10cm를 표시한다.",
+  "sourceConditions":[
+    {"id":"trapezoid","condition":"A-B-C-D 네 꼭짓점과 밑변 연장점 E, AD∥BC, A·B의 직각을 모두 유지한다.","mappedTo":["displaySegments[0]","displaySegments[1]","displaySegments[2]","displaySegments[3]","displaySegments[4]","planeMarks.parallels[0]","rightAngles[0]","rightAngles[1]"]},
+    {"id":"intersection","condition":"AE와 CD가 F에서 만나고 F는 두 선분의 내부에 있다.","mappedTo":["mathPlan.nodes[7]","displaySegments[5]","displaySegments[6]"]},
+    {"id":"given-equal","condition":"AF=EF는 문제의 주어진 조건이다.","mappedTo":"planeMarks.equalLengths[0]"},
+    {"id":"derived-equal","condition":"삼각형 AFD와 EFC의 합동으로 AD=EC가 된다.","mappedTo":"planeMarks.equalLengths[1]"},
+    {"id":"asa-angles","condition":"맞꼭지각 ∠AFD=∠EFC와 엇각 ∠FAD=∠FEC를 1개/2개 호 묶음으로 그린다.","mappedTo":["planeMarks.angles[0]","planeMarks.angles[1]","planeMarks.angles[2]","planeMarks.angles[3]"]},
+    {"id":"dimensions","condition":"AB=4cm, BE=10cm는 실제 치수선으로 표시한다.","mappedTo":["planeMarks.dimensions[0]","planeMarks.dimensions[1]"]}
+  ],
+  "newVisualInformation":["기존 사다리꼴·삼각형 전체를 채운 회색 면을 제거한다.","합동 관계를 나타내는 눈금·각 호·직각·길이·점선이 아닌 실제 선분을 모두 보존한다."],
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"4"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"6"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"4"},{"kind":"integer","value":"4"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"E","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"10"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"lAE","op":"LINE_THROUGH","inputs":["A","E"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"lDC","op":"LINE_THROUGH","inputs":["D","C"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"F","op":"LINE_INTERSECTION","inputs":["lAE","lDC"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "displayPoints":["A","B","C","D","E","F"],
+  "displaySegments":[{"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},{"id":"sCD","refs":["C","D"]},{"id":"sAD","refs":["A","D"]},{"id":"sCE","refs":["C","E"]},{"id":"sAF","refs":["A","F"]},{"id":"sFE","refs":["F","E"]}],
+  "rightAngles":[{"id":"rA","refs":["D","A","B"]},{"id":"rB","refs":["A","B","C"]}],
+  "planeMarks":{"parallels":[{"id":"p","count":1,"segments":["sAD","sBC"]}],"equalLengths":[
+    {"id":"afef","count":1,"segments":["sAF","sFE"]},
+    {"id":"adec","count":2,"segments":["sAD","sCE"]}
+  ],"dimensions":[
+    {"id":"height","from":"A","to":"B","label":"4","unit":"cm","side":"LEFT","factRole":"GIVEN"},
+    {"id":"base","from":"B","to":"E","label":"10","unit":"cm","side":"BELOW","factRole":"GIVEN"}
+  ],"angles":[
+    {"id":"AFD","refs":["A","F","D"],"value":41.63,"style":"ARC","arcs":1,"equalGroup":1,"noLabel":true,"factRole":"CONCLUSION"},
+    {"id":"EFC","refs":["E","F","C"],"value":41.63,"style":"ARC","arcs":1,"equalGroup":1,"noLabel":true,"factRole":"CONCLUSION"},
+    {"id":"FAD","refs":["F","A","D"],"value":21.80,"style":"ARC","arcs":2,"equalGroup":2,"noLabel":true,"factRole":"CONCLUSION"},
+    {"id":"FEC","refs":["F","E","C"],"value":21.80,"style":"ARC","arcs":2,"equalGroup":2,"noLabel":true,"factRole":"CONCLUSION"}
+  ]}
+}

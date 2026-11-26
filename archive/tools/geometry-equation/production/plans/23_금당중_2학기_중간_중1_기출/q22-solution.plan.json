@@ -1,0 +1,33 @@
+{
+  "capability":"construction-spike-v1",
+  "sourceQuote":"[서술형2] 다음 그림에서 ∠a의 크기를 구하시오.",
+  "caption":"2x−18°=36°, 3x+36°=117°, x=27°, 직각에서 a=63°인 관계를 빈 호로 표시한다.",
+  "sourceConditions":[
+    {"id":"crossing","condition":"수평 직선, 오른쪽 위·왼쪽 아래 직선, 왼쪽 위·오른쪽 아래 직선과 수직 반직선이 모두 교차점 O를 지난다.","mappedTo":["displaySegments[0]","displaySegments[1]","displaySegments[2]","displaySegments[3]","displaySegments[4]","displaySegments[5]","displaySegments[6]"]},
+    {"id":"expr-left","condition":"왼쪽 위 수평선과 대각선의 각 2x−18°는 36°이다.","mappedTo":"planeMarks.angles[0]"},
+    {"id":"expr-bottom","condition":"두 대각선 아래쪽의 각 3x+36°는 117°이다.","mappedTo":"planeMarks.angles[1]"},
+    {"id":"x-and-a","condition":"오른쪽 수평선 위쪽 x=27°, 수직선과 오른쪽 위 대각선 사이 a=63°를 각각 표시한다.","mappedTo":["planeMarks.angles[2]","planeMarks.angles[3]"]},
+    {"id":"perpendicular","condition":"수평 직선과 수직 반직선은 직각이다.","mappedTo":"rightAngles[0]"}
+  ],
+  "newVisualInformation":["기존 회색 각 채움을 없애되 네 표현식·문자와 직각 네모는 생략하지 않는다.","주어진 관계를 직접 만족하는 반직선 방향으로 독립 계산한다."],
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"T","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"1"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"R","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"6"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"L","op":"POLAR_POINT","inputs":["O","T"],"args":{"length":{"kind":"integer","value":"6"},"angleDeg":{"kind":"integer","value":"180"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"N","op":"POLAR_POINT","inputs":["O","T"],"args":{"length":{"kind":"integer","value":"5"},"angleDeg":{"kind":"integer","value":"90"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"NE","op":"POLAR_POINT","inputs":["O","T"],"args":{"length":{"kind":"integer","value":"6"},"angleDeg":{"kind":"integer","value":"27"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"NW","op":"POLAR_POINT","inputs":["O","T"],"args":{"length":{"kind":"integer","value":"6"},"angleDeg":{"kind":"integer","value":"144"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"SW","op":"POLAR_POINT","inputs":["O","T"],"args":{"length":{"kind":"integer","value":"6"},"angleDeg":{"kind":"integer","value":"207"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"SE","op":"POLAR_POINT","inputs":["O","T"],"args":{"length":{"kind":"integer","value":"6"},"angleDeg":{"kind":"integer","value":"324"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "displayPoints":["O","T","R","L","N","NE","NW","SW","SE"],"hiddenPointNames":["O","T","R","L","N","NE","NW","SW","SE"],"hiddenPointStyle":"NONE",
+  "displaySegments":[{"id":"right","refs":["O","R"]},{"id":"left","refs":["O","L"]},{"id":"up","refs":["O","N"]},{"id":"ne","refs":["O","NE"]},{"id":"nw","refs":["O","NW"]},{"id":"sw","refs":["O","SW"]},{"id":"se","refs":["O","SE"]}],
+  "rightAngles":[{"id":"perp","refs":["N","O","R"]}],
+  "planeMarks":{"angles":[
+    {"id":"left-expr","refs":["L","O","NW"],"value":36,"label":"2x-18","style":"ARC","factRole":"GIVEN"},
+    {"id":"bottom-expr","refs":["SW","O","SE"],"value":117,"label":"3x+36","style":"ARC","factRole":"GIVEN"},
+    {"id":"x","refs":["R","O","NE"],"value":27,"label":"x","style":"ARC","factRole":"GIVEN"},
+    {"id":"a","refs":["N","O","NE"],"value":63,"label":"a","style":"ARC","factRole":"CONCLUSION"}
+  ]}
+}

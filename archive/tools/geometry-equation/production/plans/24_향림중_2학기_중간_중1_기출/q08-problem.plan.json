@@ -1,0 +1,304 @@
+{
+  "capability": "construction-spike-v1",
+  "sourceQuote": "두 직선 AB, CD가 O에서 만나고 OE⊥AB, OF⊥CD이며 ∠EOD=48°인 그림.",
+  "caption": "서로 직교하는 OE·AB와 OF·CD, 교점 O, 주어진 ∠EOD=48°를 각호·직각 표식으로 그린다.",
+  "sourceConditions": [
+    {
+      "id": "crossing",
+      "condition": "A-O-B가 일직선이고 C-O-D가 일직선이다.",
+      "mappedTo": [
+        "displaySegments[0]",
+        "displaySegments[1]",
+        "displaySegments[2]",
+        "displaySegments[3]"
+      ]
+    },
+    {
+      "id": "first-perp",
+      "condition": "OE는 AB와 수직이다.",
+      "mappedTo": "rightAngles[0]"
+    },
+    {
+      "id": "second-perp",
+      "condition": "OF는 CD와 수직이다.",
+      "mappedTo": "rightAngles[1]"
+    },
+    {
+      "id": "given48",
+      "condition": "∠EOD=48°이다.",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "unknown",
+      "condition": "구할 각 ∠AOF의 값을 그림 안에 공개하지 않는다.",
+      "mappedTo": "displaySegments[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "원본 PNG에서 생략되었던 OE⊥AB 및 OF⊥CD의 작은 직각 네모 2개를 보완한다.",
+    "정답을 노출하는 42°·132° 라벨은 문제 그림에 쓰지 않는다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "T"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "180"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "T"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "90"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "T"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "42"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "T"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "222"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "T"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "312"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "T",
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "hiddenPointNames": [
+    "T"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "a",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "b",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "c",
+      "refs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "d",
+      "refs": [
+        "O",
+        "D"
+      ]
+    },
+    {
+      "id": "e",
+      "refs": [
+        "O",
+        "E"
+      ]
+    },
+    {
+      "id": "f",
+      "refs": [
+        "O",
+        "F"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "perpE",
+      "refs": [
+        "E",
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "perpF",
+      "refs": [
+        "D",
+        "O",
+        "F"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "given48",
+        "refs": [
+          "E",
+          "O",
+          "D"
+        ],
+        "value": 48,
+        "label": "48",
+        "factRole": "GIVEN"
+      }
+    ]
+  }
+}

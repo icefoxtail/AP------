@@ -1,0 +1,36 @@
+{
+  "capability":"construction-spike-v1",
+  "sourceQuote":"한 꼭짓점에 정사각형·정육각형·정n각형이 모였을 때 정n각형의 한 내각은 150°이다.",
+  "caption":"공통 꼭짓점의 정사각형 90°, 정육각형 120°, 정n각형 150°를 세 영역의 채움 없이 각호와 직각으로 나타낸다.",
+  "sourceConditions":[
+    {"id":"square","condition":"공통점을 포함하는 정사각형의 네 변과 직각을 모두 보인다.","mappedTo":["displaySegments[0]","displaySegments[1]","displaySegments[2]","displaySegments[3]","rightAngles[0]"]},
+    {"id":"hexagon","condition":"공통점을 포함하는 정육각형의 여섯 변을 모두 보인다.","mappedTo":["displaySegments[4]","displaySegments[5]","displaySegments[6]","displaySegments[7]","displaySegments[8]","displaySegments[9]"]},
+    {"id":"n-regular","condition":"남은 정n각형이 공통점에서 만나는 두 변과 그 밖의 인접 변 조각을 보인다.","mappedTo":["displaySegments[10]","displaySegments[11]"]},
+    {"id":"angles","condition":"공통점 둘레 세 각은 90°+120°+150°=360°이다.","mappedTo":["rightAngles[0]","planeMarks.angles[0]","planeMarks.angles[1]"]}
+  ],
+  "newVisualInformation":["기존 해설의 회색 정사각형·육각형·정n각형 면 채움을 모두 없앤다.","공통 꼭짓점의 세 각 90°·120°·150°를 서로 다른 각호/직각으로 표시한다."],
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"T","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"1"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"3"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"Q","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"3"},{"kind":"integer","value":"3"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"N","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"3"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"H1","op":"POLAR_POINT","inputs":["A","O"],"args":{"length":{"kind":"integer","value":"3"},"angleDeg":{"kind":"integer","value":"120"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"H2","op":"POLAR_POINT","inputs":["H1","A"],"args":{"length":{"kind":"integer","value":"3"},"angleDeg":{"kind":"integer","value":"120"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"H3","op":"POLAR_POINT","inputs":["H2","H1"],"args":{"length":{"kind":"integer","value":"3"},"angleDeg":{"kind":"integer","value":"120"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"H4","op":"POLAR_POINT","inputs":["H3","H2"],"args":{"length":{"kind":"integer","value":"3"},"angleDeg":{"kind":"integer","value":"120"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"N2","op":"POLAR_POINT","inputs":["N","O"],"args":{"length":{"kind":"integer","value":"3"},"angleDeg":{"kind":"integer","value":"210"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"H5","op":"POLAR_POINT","inputs":["H4","O"],"args":{"length":{"kind":"integer","value":"3"},"angleDeg":{"kind":"integer","value":"150"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "displayPoints":["O","T","A","Q","N","H1","H2","H3","H4","N2","H5"],"hiddenPointNames":["O","T","A","Q","N","H1","H2","H3","H4","N2","H5"],"hiddenPointStyle":"NONE",
+  "displaySegments":[
+    {"id":"sqOA","refs":["O","A"]},{"id":"sqAQ","refs":["A","Q"]},{"id":"sqQN","refs":["Q","N"]},{"id":"sqNO","refs":["N","O"]},
+    {"id":"hexOA","refs":["O","A"]},{"id":"hexAH1","refs":["A","H1"]},{"id":"hexH1H2","refs":["H1","H2"]},{"id":"hexH2H3","refs":["H2","H3"]},{"id":"hexH3H4","refs":["H3","H4"]},{"id":"hexH4O","refs":["H4","O"]},
+    {"id":"nN2","refs":["N","N2"]},{"id":"nH5","refs":["H4","H5"]}
+  ],
+  "rightAngles":[{"id":"squareO","refs":["A","O","N"],"label":"90°"}],
+  "planeMarks":{"angles":[
+    {"id":"hex120","refs":["H4","O","A"],"value":120,"label":"120","factRole":"GIVEN"},
+    {"id":"regular150","refs":["N","O","H4"],"value":150,"label":"150","factRole":"CONCLUSION"}
+  ]}
+}

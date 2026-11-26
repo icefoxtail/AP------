@@ -1,0 +1,286 @@
+{
+  "capability": "construction-spike-v1",
+  "sourceQuote": "l∥m일 때 표시된 ∠a의 크기를 구한다.",
+  "caption": "평행한 두 직선 사이의 엇각 a와 45°를 같은 크기 각호로 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "lines",
+      "condition": "위아래 수평 직선 l,m은 평행이며 한 횡단선이 가로지른다.",
+      "mappedTo": [
+        "displaySegments[0]",
+        "displaySegments[1]",
+        "displaySegments[2]",
+        "planeMarks.parallels[0]"
+      ]
+    },
+    {
+      "id": "given",
+      "condition": "아랫교점에서 오른쪽 위 내각은 45°이다.",
+      "mappedTo": "planeMarks.angles[0]"
+    },
+    {
+      "id": "corrected-position",
+      "condition": "윗교점의 a를 원본에서 잘못 표시된 우하측 각호가 아니라 엇각 관계를 나타내는 좌하측 각호에 놓는다.",
+      "mappedTo": "planeMarks.angles[1]"
+    }
+  ],
+  "newVisualInformation": [
+    "원본 PNG에서 a의 각호가 같은 쪽 내각에 잘못 놓인 수학적 모순을 복구한다.",
+    "평행 화살표·횡단선·두 빈 각호·선 이름 l,m을 빠짐없이 그린다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "L1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "SW",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "NE",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "L1",
+    "L2",
+    "M1",
+    "M2",
+    "P",
+    "Q",
+    "SW",
+    "NE"
+  ],
+  "hiddenPointNames": [
+    "L1",
+    "L2",
+    "M1",
+    "M2",
+    "P",
+    "Q",
+    "SW",
+    "NE"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "lLine",
+      "refs": [
+        "L1",
+        "L2"
+      ]
+    },
+    {
+      "id": "mLine",
+      "refs": [
+        "M1",
+        "M2"
+      ]
+    },
+    {
+      "id": "transversal",
+      "refs": [
+        "SW",
+        "NE"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "parallels": [
+      {
+        "id": "linesParallel",
+        "segments": [
+          "lLine",
+          "mLine"
+        ],
+        "count": 1
+      }
+    ],
+    "angles": [
+      {
+        "id": "angle45",
+        "refs": [
+          "M2",
+          "P",
+          "Q"
+        ],
+        "value": 45,
+        "label": "45",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "angleA",
+        "refs": [
+          "L1",
+          "Q",
+          "P"
+        ],
+        "value": 45,
+        "label": "a"
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "nameL",
+        "at": "L2",
+        "text": "l",
+        "anchor": "NE"
+      },
+      {
+        "id": "nameM",
+        "at": "M2",
+        "text": "m",
+        "anchor": "NE"
+      }
+    ]
+  }
+}

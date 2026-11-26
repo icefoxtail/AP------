@@ -1,0 +1,29 @@
+{
+  "capability":"construction-spike-v1",
+  "sourceQuote":"오른쪽 그림에서 ∠x의 크기는?",
+  "caption":"오각형의 네 내각 110°·110°·120°·78°와 연장선 바깥각 x=58°를 무채움 호로 나타낸다.",
+  "accessibilityDescription":"밑변이 수평인 볼록 오각형에서 네 꼭짓점 내각 110도, 110도, 120도, 78도가 표시된다. 오른쪽 밑변 연장선 위에 외각 x가 있으며 면은 채우지 않는다.",
+  "sourceConditions":[
+    {"id":"pentagon","condition":"원본의 볼록 오각형 다섯 변과 오른쪽 밑변의 연장선을 모두 연결한다. 좌표는 네 내각에 부합하는 대표 배치이다.","mappedTo":["displaySegments[0]","displaySegments[1]","displaySegments[2]","displaySegments[3]","displaySegments[4]","displaySegments[5]"]},
+    {"id":"angles","condition":"순서대로 110°,110°,120°,78°인 네 내각은 실제 호와 수치가 함께 있다.","mappedTo":["planeMarks.angles[0]","planeMarks.angles[1]","planeMarks.angles[2]","planeMarks.angles[3]"]},
+    {"id":"exterior","condition":"마지막 내각은 122°, 바깥각 x는 58°이다.","mappedTo":"planeMarks.angles[4]"}
+  ],
+  "newVisualInformation":["기존 해설의 회색 각 부채꼴 다섯 개를 제거한다.","원본 외각 x의 원호와 밑변 오른쪽 연장선을 삭제하지 않는다."],
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"P0","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"P1","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"-1026","denominator":"1000"},{"kind":"rational","numerator":"2819","denominator":"1000"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"P2","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"2038","denominator":"1000"},{"kind":"rational","numerator":"5390","denominator":"1000"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"P3","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"5797","denominator":"1000"},{"kind":"rational","numerator":"4022","denominator":"1000"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"P4","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"3285","denominator":"1000"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"R","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"7"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "displayPoints":["P0","P1","P2","P3","P4","R"],"hiddenPointNames":["P0","P1","P2","P3","P4","R"],"hiddenPointStyle":"NONE",
+  "displaySegments":[{"id":"e01","refs":["P0","P1"]},{"id":"e12","refs":["P1","P2"]},{"id":"e23","refs":["P2","P3"]},{"id":"e34","refs":["P3","P4"]},{"id":"e40","refs":["P4","P0"]},{"id":"ext","refs":["P4","R"]}],
+  "planeMarks":{"angles":[
+    {"id":"a0","refs":["P4","P0","P1"],"value":110,"label":"110","style":"ARC","factRole":"GIVEN"},
+    {"id":"a1","refs":["P0","P1","P2"],"value":110,"label":"110","style":"ARC","factRole":"GIVEN"},
+    {"id":"a2","refs":["P1","P2","P3"],"value":120,"label":"120","style":"ARC","factRole":"GIVEN"},
+    {"id":"a3","refs":["P2","P3","P4"],"value":78,"label":"78","style":"ARC","factRole":"GIVEN"},
+    {"id":"x","refs":["P3","P4","R"],"value":58,"label":"x","style":"ARC","factRole":"CONCLUSION"}
+  ]}
+}
