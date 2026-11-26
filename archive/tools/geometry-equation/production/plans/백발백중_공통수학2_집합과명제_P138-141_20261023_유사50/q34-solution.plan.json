@@ -1,0 +1,166 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "원래 공통점 S(0,-2)을 x축으로 왼쪽 2 이동하고 y축에 대칭한다.",
+  "accessibilityDescription": "원래 공통점 S(0,-2)을 x축으로 왼쪽 2 이동하고 y축에 대칭한다.",
+  "sourceConditions": [
+    {
+      "id": "common",
+      "condition": "k에 무관한 원래 공통점 (0,-2)",
+      "mappedTo": "mathPlan.nodes[0].args.coordinates"
+    },
+    {
+      "id": "translate",
+      "condition": "x방향 이동량 -2",
+      "mappedTo": "mathPlan.nodes[2].args.dx"
+    },
+    {
+      "id": "reflection",
+      "condition": "마지막에 y축 대칭",
+      "mappedTo": "mathPlan.nodes[3]"
+    },
+    {
+      "id": "traces",
+      "condition": "S→T와 T의 반사점 R",
+      "mappedTo": [
+        "displayPoints",
+        "displaySegments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원점이 아닌 y축 위 공통점에서 번역·대칭 순서를 구분한다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "S",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "yax",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "S"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "LINE_REFLECTION",
+        "inputs": [
+          "T",
+          "yax"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 680,
+    "height": 520
+  },
+  "displayPoints": [
+    "S",
+    "T",
+    "R"
+  ],
+  "coordinateLabels": [
+    "S",
+    "T",
+    "R"
+  ],
+  "displaySegments": [
+    {
+      "id": "movement",
+      "refs": [
+        "S",
+        "T"
+      ]
+    },
+    {
+      "id": "reflection",
+      "refs": [
+        "T",
+        "R"
+      ],
+      "dashed": true
+    }
+  ],
+  "sourceQuote": "직선 $(k-2)x+5y+10=0$을 $x$축의 방향으로 $-2$만큼"
+}
