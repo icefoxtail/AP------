@@ -1,0 +1,82 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -2.5,
+      2.5,
+      -2.5,
+      4.5
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ],
+        "color": "BLUE",
+        "label": "y=x^2"
+      },
+      {
+        "id": "g",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "-1/2"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ],
+        "color": "WARM",
+        "label": "y=-x^2/2"
+      }
+    ],
+    "regions": [
+      {
+        "id": "left",
+        "between": [
+          "f",
+          "g"
+        ],
+        "from": "-2",
+        "to": "0",
+        "fill": "MEDIUM"
+      },
+      {
+        "id": "right",
+        "between": [
+          "f",
+          "g"
+        ],
+        "from": "0",
+        "to": "2",
+        "fill": "MEDIUM"
+      }
+    ]
+  },
+  "caption": "y=x²와 y=-x²/2의 두 포물선 및 양옆 사이의 원본 어두운 영역",
+  "accessibilityDescription": "두 포물선 사이의 좌우 어두운 영역과 원점 및 좌표축.",
+  "sourceQuote": "두 이차함수 $y=x^2$, $y=-\\frac{1}{2}x^2$의 그래프가 다음 그림과 같을 때, 다음 중 그림의 좌표평면의 어두운 부분을 지나는 것을 고르면? (4점)",
+  "sourceConditions": [
+    {
+      "id": "shaded-parabolic-bands",
+      "condition": "두 곡선 사이의 좌우 음영과 원점",
+      "mappedTo": [
+        "graphPlan.curves",
+        "graphPlan.regions"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본 검정 음영은 반드시 두 곡선 사이의 양쪽 영역에만 표시한다."
+  ]
+}

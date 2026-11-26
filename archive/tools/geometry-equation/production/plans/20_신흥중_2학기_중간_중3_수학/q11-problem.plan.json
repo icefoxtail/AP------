@@ -1,0 +1,40 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "1",
+      "-2",
+      "-1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -3.5,
+      1.5
+    ],
+    "viewport": [
+      -4,
+      2,
+      -2,
+      3
+    ]
+  },
+  "caption": "꼭짓점이 y축 왼쪽·x축 위이고 아래로 열리는 이차함수 y=a(x+p)^2-q.",
+  "accessibilityDescription": "꼭짓점이 y축 왼쪽·x축 위이고 아래로 열리는 이차함수 y=a(x+p)^2-q.",
+  "sourceQuote": "이차함수 $y=a(x+p)^2-q$의 그래프가 다음 그림과 같을 때, $a, p, q$의 부호는? (4점)",
+  "sourceConditions": [
+    {
+      "id": "original-graph",
+      "condition": "꼭짓점이 y축 왼쪽·x축 위이고 아래로 열리는 이차함수 y=a(x+p)^2-q.",
+      "mappedTo": [
+        "graphPlan.coefficients",
+        "graphPlan.viewport"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 꼭짓점 위치·음의 최고차항 및 두 좌표축을 유지한다."
+  ]
+}

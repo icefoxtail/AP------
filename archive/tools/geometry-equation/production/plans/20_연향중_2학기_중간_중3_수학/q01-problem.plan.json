@@ -1,0 +1,136 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "2"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "C",
+    "B"
+  ],
+  "displayLines": [],
+  "displaySegments": [
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sCB",
+      "refs": [
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "sBA",
+      "refs": [
+        "B",
+        "A"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rACB",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 480
+  },
+  "caption": "직각삼각형 ABC에서 C 직각, tan A=√2이므로 AC:BC=1:√2.",
+  "accessibilityDescription": "직각삼각형 ABC에서 C 직각, tan A=√2이므로 AC:BC=1:√2.",
+  "sourceQuote": "오른쪽 직각삼각형 $\\mathrm{ABC}$에서 $\\tan A = \\sqrt{2}$일 때, $\\sin A + \\cos B$의 값은? (4점)",
+  "sourceConditions": [
+    {
+      "id": "original-geometry",
+      "condition": "직각삼각형 ABC에서 C 직각, tan A=√2이므로 AC:BC=1:√2.",
+      "mappedTo": [
+        "displayPoints",
+        "displaySegments",
+        "rightAngles"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "문제 쪽에 답을 드러내지 않고 C 직각·세 변의 뚜렷한 윤곽을 보이고, 해설에만 1·√2·√3을 놓는다."
+  ]
+}

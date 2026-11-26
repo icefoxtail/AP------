@@ -1,0 +1,74 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "8",
+      "-2",
+      "-1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -5,
+      3
+    ],
+    "viewport": [
+      -6,
+      4,
+      -2,
+      10
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "-4"
+        },
+        {
+          "id": "B",
+          "curveX": "2"
+        },
+        {
+          "id": "C",
+          "curveX": "0"
+        }
+      ],
+      "segments": [
+        {
+          "id": "ab",
+          "from": "A",
+          "to": "B"
+        },
+        {
+          "id": "ac",
+          "from": "A",
+          "to": "C"
+        },
+        {
+          "id": "bc",
+          "from": "B",
+          "to": "C"
+        }
+      ]
+    }
+  },
+  "caption": "y=-x²-2x+8의 x절편 A(-4,0), B(2,0), y절편 C(0,8), 삼각형 ABC.",
+  "accessibilityDescription": "y=-x²-2x+8의 x절편 A(-4,0), B(2,0), y절편 C(0,8), 삼각형 ABC.",
+  "sourceQuote": "다음 그림에서 이차함수 $y=-x^2-2x+8$의 그래프와 $x$축과의 교점을 각각 $\\mathrm{A}$, $\\mathrm{B}$, $y$축과의 교점을 $\\mathrm{C}$라 할 때, $\\triangle \\mathrm{ABC}$의 넓이는? (5점)",
+  "sourceConditions": [
+    {
+      "id": "original-graph",
+      "condition": "y=-x²-2x+8의 x절편 A(-4,0), B(2,0), y절편 C(0,8), 삼각형 ABC.",
+      "mappedTo": [
+        "graphPlan.coefficients",
+        "graphPlan.viewport",
+        "graphPlan.overlays"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "곡선에 정확한 세 교점과 AC·BC·AB 연결선을 넣어 삼각형의 세 경계를 보존한다."
+  ]
+}
