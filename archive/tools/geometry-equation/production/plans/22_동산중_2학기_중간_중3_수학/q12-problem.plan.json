@@ -1,0 +1,302 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "600000",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "600000",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "800000",
+              "denominator": "1000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1333333",
+              "denominator": "1000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "O",
+    "B",
+    "D",
+    "A",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rB",
+      "refs": [
+        "A",
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "rD",
+      "refs": [
+        "C",
+        "D",
+        "O"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aAOD",
+        "refs": [
+          "A",
+          "O",
+          "D"
+        ],
+        "value": 53.1301,
+        "label": "x",
+        "arcs": 1,
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aOAB",
+        "refs": [
+          "O",
+          "A",
+          "B"
+        ],
+        "value": 36.8699,
+        "label": "y",
+        "arcs": 1,
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aACD",
+        "refs": [
+          "A",
+          "C",
+          "D"
+        ],
+        "value": 36.8699,
+        "label": "z",
+        "arcs": 1,
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dOD",
+        "from": "O",
+        "to": "D",
+        "label": "1",
+        "side": "BELOW",
+        "style": "BRACE",
+        "factRole": "GIVEN"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "arcQuarter",
+        "circle": "k",
+        "center": "O",
+        "from": "D",
+        "to": "A",
+        "side": "MINOR"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 700,
+    "height": 510
+  },
+  "caption": "반지름 1, 사분원 호, 두 수직선과 각 x·y·z를 별도의 호로 표시한다.",
+  "sourceQuote": "반지름 1인 사분원, O,A,C는 한 직선 위, AB와 CD는 수직, x·y·z의 관계",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "반지름 OD=1과 사분원 호 AD",
+      "mappedTo": [
+        "dOD",
+        "arcQuarter"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "AB⊥OD, CD⊥OD",
+      "mappedTo": [
+        "rB",
+        "rD"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "각 x,y,z",
+      "mappedTo": [
+        "aAOD",
+        "aOAB",
+        "aACD"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원문 조건의 각·직각·선분·길이·라벨을 복원하고 면 채움 없이 검증한다."
+  ]
+}

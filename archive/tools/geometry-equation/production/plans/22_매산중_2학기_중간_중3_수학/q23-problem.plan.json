@@ -1,0 +1,138 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "kind": "PYRAMID",
+      "base": {
+        "kind": "RECT",
+        "width": 10,
+        "depth": 10
+      },
+      "height": 7.0710678118654755,
+      "names": "CDBEA",
+      "points": [
+        {
+          "id": "M",
+          "at": {
+            "midpoint": [
+              "C",
+              "D"
+            ]
+          }
+        },
+        {
+          "id": "N",
+          "at": {
+            "midpoint": [
+              "B",
+              "E"
+            ]
+          }
+        },
+        {
+          "id": "O",
+          "at": {
+            "midpoint": [
+              "M",
+              "N"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "A",
+      "to": "M",
+      "style": "SOLID"
+    },
+    {
+      "from": "M",
+      "to": "N",
+      "style": "AUTO"
+    },
+    {
+      "from": "A",
+      "to": "O",
+      "style": "DASHED"
+    },
+    {
+      "from": "O",
+      "to": "M",
+      "style": "DASHED"
+    }
+  ],
+  "dims": [
+    {
+      "edge": "AC",
+      "label": "10"
+    },
+    {
+      "edge": "CD",
+      "label": "10"
+    }
+  ],
+  "marks": {
+    "angles": [
+      {
+        "id": "x",
+        "refs": [
+          "A",
+          "M",
+          "N"
+        ],
+        "label": "x"
+      }
+    ],
+    "rightAngles": [
+      {
+        "at": "O",
+        "refs": [
+          "A",
+          "M"
+        ]
+      }
+    ]
+  },
+  "caption": "사각뿔의 두 맞은편 변의 중점 M·N과 높이 AO, 각 AMN을 보인다.",
+  "accessibilityDescription": "한 모서리가 10cm인 정사각뿔 A-CDBE, CD와 BE의 중점 M,N 및 밑면 중심 O, 선분 AM·MN·AO와 각 AMN.",
+  "sourceQuote": "수준별 3-② 밑면은 정사각형이고 옆면은 정삼각형, 모서리 10cm, CD의 중점 M, BE의 중점 N, ∠AMN=x",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "한 모서리 10cm인 정사각뿔",
+      "mappedTo": [
+        "solids[0]",
+        "dims"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "M은 CD의 중점, N은 BE의 중점",
+      "mappedTo": [
+        "solids[0].points[0]",
+        "solids[0].points[1]"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "밑면 중심 O와 높이 AO",
+      "mappedTo": [
+        "solids[0].points[2]",
+        "segments[2]"
+      ]
+    },
+    {
+      "id": "c4",
+      "condition": "각 AMN=x",
+      "mappedTo": [
+        "marks.angles"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "기존 손그림 입체의 밑면 점선·두 중점·고도 및 x의 각 호를 엔진 투영/마크로 생성한다."
+  ]
+}

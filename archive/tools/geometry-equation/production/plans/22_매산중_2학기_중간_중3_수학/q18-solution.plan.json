@@ -1,0 +1,84 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "2",
+          "4",
+          "-1"
+        ],
+        "domain": [
+          "-2",
+          "6"
+        ],
+        "label": "y=-(x-2)^2+6"
+      }
+    ],
+    "viewport": [
+      -3,
+      7,
+      -12,
+      9
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "V",
+          "x": "2",
+          "y": "6",
+          "coordinates": true
+        },
+        {
+          "id": "P",
+          "x": "0",
+          "y": "2",
+          "coordinates": true
+        }
+      ],
+      "guides": [
+        {
+          "id": "axisV",
+          "from": "V",
+          "axis": "x"
+        }
+      ]
+    }
+  },
+  "caption": "꼭짓점 V(2,6)과 주어진 점 P(0,2)를 보조선으로 확인한다.",
+  "sourceQuote": "꼭짓점 (2,6), 그래프 위의 점 (0,2)",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "이차함수 y=-(x-2)²+6",
+      "mappedTo": [
+        "f"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "꼭짓점과 통과점",
+      "mappedTo": [
+        "V",
+        "P"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "대칭축 x=2",
+      "mappedTo": [
+        "axisV"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원문 식·점·보조선과 축의 관계를 정확히 남기고 기본 면 채움을 두지 않는다."
+  ]
+}

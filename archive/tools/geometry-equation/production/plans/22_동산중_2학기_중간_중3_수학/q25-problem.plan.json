@@ -1,0 +1,288 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "8485281",
+              "denominator": "1000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-5196152",
+              "denominator": "1000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "275280",
+              "denominator": "1000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "2736000",
+            "denominator": "1000000"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [
+    "k"
+  ],
+  "displayPoints": [
+    "A",
+    "C",
+    "B",
+    "D",
+    "O",
+    "P"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rP",
+      "refs": [
+        "A",
+        "P",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "tBC",
+        "ownerSegment": "sBC",
+        "text": "9",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "tCD",
+        "ownerSegment": "sCD",
+        "text": "6",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "tAB",
+        "ownerSegment": "sAB",
+        "text": "x",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "tAD",
+        "ownerSegment": "sDA",
+        "text": "y",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 700,
+    "height": 510
+  },
+  "caption": "원에 외접한 사각형과 직교하는 대각선을 무채움으로 그린다.",
+  "sourceQuote": "원에 외접하는 사각형 ABCD, AC⊥BD, BC=9, CD=6, AB=x, AD=y",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "네 변이 원에 접한다",
+      "mappedTo": [
+        "k",
+        "sAB",
+        "sBC",
+        "sCD",
+        "sDA"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "대각선 AC와 BD는 수직",
+      "mappedTo": [
+        "sAC",
+        "sBD"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "BC=9, CD=6, AB=x, AD=y",
+      "mappedTo": [
+        "tBC",
+        "tCD",
+        "tAB",
+        "tAD"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원문 조건의 각·직각·선분·길이·라벨을 복원하고 면 채움 없이 검증한다."
+  ],
+  "hiddenPointNames": [
+    "P"
+  ],
+  "hiddenPointStyle": "NONE"
+}

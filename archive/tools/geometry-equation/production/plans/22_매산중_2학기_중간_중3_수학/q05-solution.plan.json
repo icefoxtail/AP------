@@ -1,0 +1,76 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "-4/5"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ],
+        "label": "y=-(4/5)x^2"
+      },
+      {
+        "id": "g",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "4/5"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ],
+        "label": "y=(4/5)x^2"
+      }
+    ],
+    "viewport": [
+      -4,
+      4,
+      -9,
+      9
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        }
+      ]
+    }
+  },
+  "caption": "서로 x축에 대칭인 두 이차함수 그래프를 선으로 구분한다.",
+  "sourceQuote": "y=-4/5x²를 x축에 대칭이동한 그래프",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "음의 계수 원래 포물선",
+      "mappedTo": [
+        "f"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "x축 대칭인 양의 계수 포물선",
+      "mappedTo": [
+        "g"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원문 식·점·보조선과 축의 관계를 정확히 남기고 기본 면 채움을 두지 않는다."
+  ]
+}

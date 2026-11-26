@@ -1,0 +1,325 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "9"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lCD",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "C",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "O",
+          "lCD"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "O",
+    "B",
+    "C",
+    "D",
+    "T"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAO",
+      "refs": [
+        "A",
+        "O"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sCT",
+      "refs": [
+        "C",
+        "T"
+      ]
+    },
+    {
+      "id": "sTD",
+      "refs": [
+        "T",
+        "D"
+      ]
+    },
+    {
+      "id": "sOT",
+      "refs": [
+        "O",
+        "T"
+      ],
+      "dashed": true
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rA",
+      "refs": [
+        "C",
+        "A",
+        "O"
+      ]
+    },
+    {
+      "id": "rB",
+      "refs": [
+        "D",
+        "B",
+        "O"
+      ]
+    },
+    {
+      "id": "rT",
+      "refs": [
+        "O",
+        "T",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "tAC",
+        "ownerSegment": "sAC",
+        "text": "4",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "tBD",
+        "ownerSegment": "sBD",
+        "text": "9",
+        "factRole": "GIVEN"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dAB",
+        "from": "A",
+        "to": "B",
+        "label": "x",
+        "side": "BELOW",
+        "style": "BRACE",
+        "factRole": "GIVEN"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "arcAB",
+        "circle": "k",
+        "center": "O",
+        "from": "B",
+        "to": "A",
+        "side": "CCW"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 700,
+    "height": 510
+  },
+  "caption": "반원 윗호·접선 세 개·접점 T·길이 4와 9를 보이고 배경을 칠하지 않는다.",
+  "sourceQuote": "AB는 지름, AC·BD·CD가 반원에 접하며 AC=4, BD=9",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "반원의 위쪽 호",
+      "mappedTo": [
+        "arcAB"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "세 접선 AC, BD, CD",
+      "mappedTo": [
+        "sAC",
+        "sBD",
+        "sCT",
+        "sTD"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "접선 길이 4·9",
+      "mappedTo": [
+        "tAC",
+        "tBD"
+      ]
+    },
+    {
+      "id": "c4",
+      "condition": "접점 T에서 반지름 OT는 CD에 수직",
+      "mappedTo": [
+        "sOT",
+        "rT"
+      ]
+    },
+    {
+      "id": "c5",
+      "condition": "구하는 지름 AB=x",
+      "mappedTo": [
+        "dAB"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "기존 해설이 생략한 AC=4, BD=9를 복구하고 CD의 접점·직각을 명확히 표시한다."
+  ]
+}

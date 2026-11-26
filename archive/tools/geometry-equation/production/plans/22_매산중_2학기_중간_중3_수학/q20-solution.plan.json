@@ -1,0 +1,108 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "8",
+          "8",
+          "2"
+        ],
+        "domain": [
+          "-6",
+          "2"
+        ],
+        "label": "y=2(x+2)^2"
+      },
+      {
+        "id": "g",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "-32",
+          "-20",
+          "-2"
+        ],
+        "domain": [
+          "-8",
+          "-2"
+        ],
+        "label": "y=-2(x+5)^2+18"
+      }
+    ],
+    "viewport": [
+      -9,
+      3,
+      -2,
+      34
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "O",
+          "x": "-2",
+          "y": "0"
+        },
+        {
+          "id": "A",
+          "x": "-5",
+          "y": "18"
+        },
+        {
+          "id": "B",
+          "x": "1",
+          "y": "18"
+        }
+      ],
+      "segments": [
+        {
+          "id": "AB",
+          "from": "A",
+          "to": "B"
+        }
+      ],
+      "guides": [
+        {
+          "id": "horizontal",
+          "from": "A",
+          "axis": "y"
+        }
+      ]
+    }
+  },
+  "caption": "서로의 꼭짓점을 지나는 두 포물선과 수평 선분 AB를 표시한다.",
+  "sourceQuote": "y=2(x+2)²와 두 꼭짓점을 서로 지나는 다른 포물선; A가 다른 그래프의 꼭짓점이며 AB=6",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "첫째 포물선",
+      "mappedTo": [
+        "f"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "둘째 포물선과 꼭짓점 A(-5,18)",
+      "mappedTo": [
+        "g",
+        "A"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "높이가 같은 A,B의 수평 선분 AB=6",
+      "mappedTo": [
+        "AB"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원문 식·점·보조선과 축의 관계를 정확히 남기고 기본 면 채움을 두지 않는다."
+  ]
+}

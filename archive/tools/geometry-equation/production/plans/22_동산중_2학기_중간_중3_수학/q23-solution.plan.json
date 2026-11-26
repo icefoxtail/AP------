@@ -1,0 +1,100 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "16",
+          "4",
+          "-2"
+        ],
+        "domain": [
+          "-11/5",
+          "21/5"
+        ],
+        "label": "y=-2x^2+4x+16"
+      }
+    ],
+    "viewport": [
+      -3,
+      5,
+      -3,
+      22
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "1",
+          "y": "18"
+        },
+        {
+          "id": "B",
+          "x": "-2",
+          "y": "0"
+        },
+        {
+          "id": "C",
+          "x": "4",
+          "y": "0"
+        }
+      ],
+      "guides": [
+        {
+          "id": "height",
+          "from": "A",
+          "axis": "x"
+        }
+      ],
+      "polygons": [
+        {
+          "id": "ABC",
+          "points": [
+            "A",
+            "B",
+            "C"
+          ],
+          "fill": "NONE"
+        }
+      ]
+    }
+  },
+  "caption": "그래프의 꼭짓점과 두 x절편을 연결한 삼각형을 면 채움 없이 보여 준다.",
+  "sourceQuote": "y=-2x²+4x+16, A는 꼭짓점, B·C는 x절편",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "주어진 이차함수",
+      "mappedTo": [
+        "f"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "꼭짓점 A와 두 x절편 B,C",
+      "mappedTo": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "넓이 계산의 삼각형과 높이",
+      "mappedTo": [
+        "ABC",
+        "height"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원문 식·점·보조선과 축의 관계를 정확히 남기고 기본 면 채움을 두지 않는다."
+  ]
+}

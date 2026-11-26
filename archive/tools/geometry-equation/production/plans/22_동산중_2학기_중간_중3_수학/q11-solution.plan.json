@@ -1,0 +1,241 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "3200000",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2400000",
+              "denominator": "1000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1600000",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1200000",
+              "denominator": "1000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1600000",
+              "denominator": "1000000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "B",
+    "A",
+    "C",
+    "D",
+    "E"
+  ],
+  "displaySegments": [
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rC",
+      "refs": [
+        "B",
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "rE",
+      "refs": [
+        "D",
+        "E",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aBDE",
+        "refs": [
+          "B",
+          "D",
+          "E"
+        ],
+        "value": 53.1301,
+        "label": "x",
+        "arcs": 1,
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "tBC",
+        "ownerSegment": "sBC",
+        "text": "4",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "tCA",
+        "ownerSegment": "sCA",
+        "text": "3",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 700,
+    "height": 510
+  },
+  "caption": "두 삼각형의 직각과 주어진 길이 4·3, 각 x를 모두 표시한다.",
+  "sourceQuote": "∠C=90°, BC=4, AC=3, D는 BC 위, DE⊥AB, ∠BDE=x",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "BC=4, AC=3",
+      "mappedTo": [
+        "tBC",
+        "tCA"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "두 직각 C, E",
+      "mappedTo": [
+        "rC",
+        "rE"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "D∈BC, E∈AB이며 ∠BDE=x",
+      "mappedTo": [
+        "sBC",
+        "sDE",
+        "aBDE"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "기존 해설에서 누락된 BC=4와 AC=3을 별도 선분 라벨로 복구한다."
+  ]
+}
