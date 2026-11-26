@@ -1,0 +1,58 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "P0", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "P1", "op": "TRANSLATE_POINT", "inputs": ["P0"], "args": { "dx": { "kind": "integer", "value": "6" }, "dy": { "kind": "integer", "value": "0" } }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "P2", "op": "TRANSLATE_POINT", "inputs": ["P1"], "args": { "dx": { "kind": "expression", "op": "sqrt", "args": [{ "kind": "integer", "value": "3" }] }, "dy": { "kind": "integer", "value": "0" } }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "P3", "op": "TRANSLATE_POINT", "inputs": ["P2"], "args": { "dx": { "kind": "expression", "op": "sub", "args": [{ "kind": "integer", "value": "6" }, { "kind": "expression", "op": "mul", "args": [{ "kind": "integer", "value": "2" }, { "kind": "expression", "op": "sqrt", "args": [{ "kind": "integer", "value": "3" }] }] }] }, "dy": { "kind": "integer", "value": "0" } }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "P4", "op": "TRANSLATE_POINT", "inputs": ["P3"], "args": { "dx": { "kind": "integer", "value": "0" }, "dy": { "kind": "expression", "op": "sqrt", "args": [{ "kind": "integer", "value": "3" }] } }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "P5", "op": "TRANSLATE_POINT", "inputs": ["P2"], "args": { "dx": { "kind": "integer", "value": "0" }, "dy": { "kind": "expression", "op": "sqrt", "args": [{ "kind": "integer", "value": "3" }] } }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "P6", "op": "TRANSLATE_POINT", "inputs": ["P1"], "args": { "dx": { "kind": "integer", "value": "0" }, "dy": { "kind": "expression", "op": "sqrt", "args": [{ "kind": "integer", "value": "3" }] } }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "P7", "op": "TRANSLATE_POINT", "inputs": ["P1"], "args": { "dx": { "kind": "integer", "value": "0" }, "dy": { "kind": "integer", "value": "6" } }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "P8", "op": "TRANSLATE_POINT", "inputs": ["P3"], "args": { "dx": { "kind": "integer", "value": "0" }, "dy": { "kind": "integer", "value": "6" } }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "P9", "op": "TRANSLATE_POINT", "inputs": ["P0"], "args": { "dx": { "kind": "integer", "value": "0" }, "dy": { "kind": "integer", "value": "6" } }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" }
+    ]
+  },
+  "displayPoints": ["P0", "P1", "P2", "P3", "P4", "P5", "P6", "P7", "P8", "P9"],
+  "hiddenPointNames": ["P0", "P1", "P2", "P3", "P4", "P5", "P6", "P7", "P8", "P9"],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    { "id": "s01", "refs": ["P0", "P1"] },
+    { "id": "s12", "refs": ["P1", "P2"] },
+    { "id": "s23", "refs": ["P2", "P3"] },
+    { "id": "s34", "refs": ["P3", "P4"] },
+    { "id": "s48", "refs": ["P4", "P8"] },
+    { "id": "s87", "refs": ["P8", "P7"] },
+    { "id": "s79", "refs": ["P7", "P9"] },
+    { "id": "s90", "refs": ["P9", "P0"] },
+    { "id": "s16", "refs": ["P1", "P6"] },
+    { "id": "s67", "refs": ["P6", "P7"] },
+    { "id": "s65", "refs": ["P6", "P5"] },
+    { "id": "s54", "refs": ["P5", "P4"] },
+    { "id": "s25", "refs": ["P2", "P5"] }
+  ],
+  "planeMarks": {
+    "textLabels": [
+      { "id": "landA", "at": [3, 3], "text": "A", "factRole": "GIVEN" },
+      { "id": "landB", "at": [8.1, 3.8], "text": "B", "factRole": "GIVEN" },
+      { "id": "landC", "at": [6.8, 0.8], "text": "C", "factRole": "GIVEN" },
+      { "id": "landD", "at": [9, 0.8], "text": "D", "factRole": "GIVEN" }
+    ]
+  },
+  "caption": "큰 정사각형의 오른쪽에 작은 정사각형 둘과 직사각형이 이어 붙은 땅 분할도",
+  "accessibilityDescription": "왼쪽 큰 정사각형 A, 오른쪽 위 정사각형 B, 아래 왼쪽 정사각형 C, 아래 오른쪽 직사각형 D가 하나의 큰 직사각형을 이룬다.",
+  "sourceConditions": [
+    { "id": "outer", "condition": "전체 땅은 직사각형이며 네 구획의 경계를 원문 그림처럼 공유한다.", "mappedTo": ["displaySegments: s01,s12,s23,s34,s48,s87,s79,s90", "internal: s16,s67,s65,s54,s25"] },
+    { "id": "squareA", "condition": "왼쪽 정사각형의 넓이는 36m²이므로 변 길이 6m이다.", "mappedTo": "P0,P1,P7,P9의 정사각형: 6×6; planeMarks.textLabels.landA" },
+    { "id": "squareC", "condition": "아래 작은 정사각형의 넓이는 3m²이므로 변 길이 √3m이다.", "mappedTo": "P1,P2,P5,P6의 정사각형: √3×√3; planeMarks.textLabels.landC" },
+    { "id": "squareB", "condition": "오른쪽 위 구획도 정사각형이며 그 아래는 C와 D로 분할된다.", "mappedTo": "P6,P4,P8,P7의 정사각형: (6−√3)²; planeMarks.textLabels.landB" },
+    { "id": "unknown", "condition": "구하려는 D의 넓이는 문제 그림에 공개하지 않는다.", "mappedTo": "planeMarks.textLabels.landD는 영역 이름 D만 표시; 면적/정답 수치 없음" }
+  ],
+  "newVisualInformation": [
+    "원문과 같은 네 구획의 위·아래 및 좌·우 접합 관계를 정확한 제곱근 좌표로 표현한다.",
+    "면은 칠하지 않고 구획 경계와 A/B/C/D 식별 글자만 표시한다."
+  ]
+}
