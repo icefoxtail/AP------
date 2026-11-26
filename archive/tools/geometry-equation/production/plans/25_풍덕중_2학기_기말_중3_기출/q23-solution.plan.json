@@ -1,0 +1,55 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "학생 A"
+      },
+      "plan": {
+        "capability": "stat-chart-figure-v1",
+        "chart": {
+          "kind": "DOT_PLOT",
+          "values": [
+            6,
+            9,
+            8,
+            9
+          ],
+          "xTitle": "점수"
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "학생 B"
+      },
+      "plan": {
+        "capability": "stat-chart-figure-v1",
+        "chart": {
+          "kind": "DOT_PLOT",
+          "values": [
+            7,
+            10,
+            9,
+            6
+          ],
+          "xTitle": "점수"
+        }
+      }
+    }
+  ],
+  "caption": "원문 점수의 모든 자료를 점 하나당 변량 하나로 보존한 비교 그림.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "학생 A:6,9,8,9; 학생 B:7,10,9,6",
+      "mappedTo": [
+        "panels"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "분산·최빈값 분석에 필요한 개별 도수를 빠짐없이 보존한다. 자동 평균선, 그림 배경의 임의 면채움은 추가하지 않는다.",
+    "ENGINE_CAPABILITY_PENDING: TRANSPARENT_CANVAS_OR_NO_BACKGROUND_RECT"
+  ]
+}

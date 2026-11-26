@@ -1,0 +1,97 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "SCATTER",
+    "points": [
+      {
+        "x": 40,
+        "y": 13
+      },
+      {
+        "x": 45,
+        "y": 15
+      },
+      {
+        "x": 50,
+        "y": 18
+      },
+      {
+        "x": 55,
+        "y": 26
+      },
+      {
+        "x": 60,
+        "y": 27
+      },
+      {
+        "x": 60,
+        "y": 30
+      },
+      {
+        "x": 60,
+        "y": 37
+      },
+      {
+        "x": 65,
+        "y": 33
+      },
+      {
+        "x": 65,
+        "y": 37
+      },
+      {
+        "x": 70,
+        "y": 41
+      },
+      {
+        "x": 70,
+        "y": 43
+      },
+      {
+        "x": 75,
+        "y": 42
+      },
+      {
+        "x": 75,
+        "y": 49
+      },
+      {
+        "x": 80,
+        "y": 54
+      },
+      {
+        "x": 85,
+        "y": 65
+      }
+    ],
+    "xRange": [
+      "35",
+      "85"
+    ],
+    "yRange": [
+      "0",
+      "65"
+    ],
+    "xStep": "5",
+    "yStep": "5",
+    "xTitle": "속력(km/h)",
+    "yTitle": "제동거리(m)",
+    "grid": true
+  },
+  "caption": "원본 산점도의 모든 좌표·축 눈금·축 제목 보존: 차량 15대, 속력과 제동거리의 15개 좌표.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "차량 15대, 속력과 제동거리의 15개 좌표.",
+      "mappedTo": [
+        "chart.points",
+        "chart.xRange",
+        "chart.yRange"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본과 같은 좌표값의 점 전부를 포함하고 임의 표본·회귀선을 만들지 않는다.",
+    "ENGINE_CAPABILITY_PENDING: TRANSPARENT_CANVAS_OR_NO_BACKGROUND_RECT: 통계 SVG 자동 흰색 배경 rect는 엔진 교체 필요."
+  ]
+}

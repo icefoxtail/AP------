@@ -1,0 +1,36 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "DOT_PLOT",
+    "values": [
+      4,
+      5,
+      6,
+      8,
+      12,
+      13
+    ],
+    "xTitle": "턱걸이(회)",
+    "marks": {
+      "meanLine": {
+        "value": "8",
+        "label": "평균"
+      }
+    }
+  },
+  "caption": "자료 4,5,6,8,12,13과 평균 8을 점도로 나타내 분산을 계산한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "6명 턱걸이 횟수 4,5,6,8,12,13 / 중앙값7 / 평균8",
+      "mappedTo": [
+        "chart.values",
+        "chart.marks.meanLine"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "실제 여섯 점의 평균선·개수와 편차를 정확히 대응시킨다.",
+    "ENGINE_CAPABILITY_PENDING: TRANSPARENT_CANVAS_OR_NO_BACKGROUND_RECT"
+  ]
+}
