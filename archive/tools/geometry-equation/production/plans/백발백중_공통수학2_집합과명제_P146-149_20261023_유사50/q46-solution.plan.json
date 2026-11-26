@@ -1,0 +1,61 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "caption": "전체집합과 B의 원소 수로 A∩B와 Aᶜ∩B의 크기를 구분한다.",
+  "accessibilityDescription": "전체집합과 B의 원소 수로 A∩B와 Aᶜ∩B의 크기를 구분한다.",
+  "sourceConditions": [
+    {
+      "id": "universe",
+      "condition": "n(U)=60",
+      "mappedTo": "diagram.universe"
+    },
+    {
+      "id": "B-complement",
+      "condition": "n(Bᶜ)=35 이므로 n(B)=25",
+      "mappedTo": "diagram.sets"
+    },
+    {
+      "id": "De-Morgan",
+      "condition": "n(Aᶜ∪Bᶜ)=47 이므로 n(A∩B)=13",
+      "mappedTo": "diagram.elements"
+    },
+    {
+      "id": "partition",
+      "condition": "n(Aᶜ∩B)=n(B)-n(A∩B)=12",
+      "mappedTo": "diagram.elements"
+    }
+  ],
+  "newVisualInformation": [
+    "B는 A∩B와 Aᶜ∩B의 서로 겹치지 않는 두 영역으로 나뉜다."
+  ],
+  "diagram": {
+    "kind": "VENN",
+    "universe": {
+      "name": "U",
+      "count": "60"
+    },
+    "sets": [
+      {
+        "id": "A"
+      },
+      {
+        "id": "B",
+        "count": "25"
+      }
+    ],
+    "elements": [
+      {
+        "text": "13개",
+        "in": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "text": "12개",
+        "in": [
+          "B"
+        ]
+      }
+    ]
+  }
+}

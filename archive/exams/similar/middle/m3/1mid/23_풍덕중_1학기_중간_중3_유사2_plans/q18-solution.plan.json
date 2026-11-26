@@ -1,0 +1,27 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "주어진 범위",
+        "pieces": [
+          {
+            "lo": {"value": "-1", "state": "OPEN"},
+            "hi": {"value": "2", "state": "OPEN"}
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "−1<x<2에서는 x+1이 양수, x−2가 음수이므로 |x+1|+|x−2|=(x+1)+(2−x)=3이다.",
+  "accessibilityDescription": "수직선에서 마이너스 일과 이 사이의 열린 구간을 나타낸 해설 그림이다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "-1<x<2", "mappedTo": ["numberLine.rows"]}
+  ],
+  "newVisualInformation": [
+    "수직선 위 두 열린 끝점 -1, 2와 그 사이의 x 범위를 표시한다.",
+    "범위 전체에서 x+1은 양수, x-2는 음수라는 부호 판단의 위치 근거를 제공한다."
+  ]
+}

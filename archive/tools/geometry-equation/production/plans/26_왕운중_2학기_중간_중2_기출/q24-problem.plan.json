@@ -1,0 +1,36 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"2"},{"kind":"integer","value":"6"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"8"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"10"},{"kind":"integer","value":"6"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"O","op":"DIVISION_POINT","inputs":["A","C"],"args":{"m":{"kind":"integer","value":"1"},"n":{"kind":"integer","value":"1"},"mode":"INTERNAL"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"M","op":"DIVISION_POINT","inputs":["A","O"],"args":{"m":{"kind":"integer","value":"1"},"n":{"kind":"integer","value":"1"},"mode":"INTERNAL"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"N","op":"DIVISION_POINT","inputs":["O","C"],"args":{"m":{"kind":"integer","value":"1"},"n":{"kind":"integer","value":"1"},"mode":"INTERNAL"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"H","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"10"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "displayPoints":["A","B","C","D","O","M","N","H"],
+  "hiddenPointNames":["H"],"hiddenPointStyle":"NONE",
+  "displaySegments":[
+    {"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},{"id":"sCD","refs":["C","D"]},{"id":"sDA","refs":["D","A"]},
+    {"id":"sAM","refs":["A","M"]},{"id":"sMO","refs":["M","O"]},{"id":"sON","refs":["O","N"]},{"id":"sNC","refs":["N","C"]},
+    {"id":"sBD","refs":["B","D"]},{"id":"sBM","refs":["B","M"]},{"id":"sBN","refs":["B","N"]},
+    {"id":"hDH","refs":["D","H"],"dashed":true},{"id":"hCH","refs":["C","H"],"dashed":true}
+  ],
+  "rightAngles":[{"id":"rH","refs":["C","H","D"],"factRole":"GIVEN"}],
+  "planeMarks":{"equalLengths":[{"id":"halves","count":1,"segments":["sAM","sMO","sON","sNC"]}],"dimensions":[
+    {"id":"dBC","from":"B","to":"C","label":"8","unit":"cm","side":"BELOW","style":"BAR","value":"8","factRole":"GIVEN"},
+    {"id":"dDH","from":"D","to":"H","label":"6","unit":"cm","side":"RIGHT","style":"BAR","value":"6","factRole":"GIVEN"}
+  ]},
+  "coordinateCanvas":{"width":720,"height":520},
+  "caption":"넓이 계산에 쓰이는 평행사변형 ABCD의 밑변 8 cm, 높이 6 cm와 대각선의 네 동일 부분을 보인다.",
+  "accessibilityDescription":"평행사변형 ABCD 내부의 대각선 AC는 A-M-O-N-C의 네 같은 길이로 나뉘고, B와 M 및 N을 각각 잇는다. 오른쪽 바깥의 높이는 점선과 직각 표식, 6 cm 치수선이고 BC=8 cm이다. 평행사변형 전체 내부는 채우지 않는다.",
+  "sourceConditions":[
+    {"id":"parallel","condition":"ABCD는 평행사변형이고 O는 두 대각선 AC와 BD의 교점이다.","mappedTo":["sAB","sBC","sCD","sDA","sBD","O"]},
+    {"id":"midpoints","condition":"M은 AO의 중점, N은 CO의 중점이다.","mappedTo":["M","N","halves","sBM","sBN"]},
+    {"id":"measure","condition":"밑변 BC=8 cm, 대응 높이=6 cm이다.","mappedTo":["dBC","dDH","hDH","hCH","rH"]}
+  ],
+  "newVisualInformation":["기존 문제 SVG가 평행사변형 내부 전체에 씌운 불필요한 연한 파랑 면 채움을 제거한다.","원본의 외부 점선 높이·밑변 8 cm·높이 6 cm와 M/N 중점 관계를 실제 눈금 표식으로 나타낸다."],
+  "sourceQuote":"$\\overline{AO}$, $\\overline{CO}$의 중점을 각각 $M$, $N$이라고 할 때"
+}

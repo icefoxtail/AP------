@@ -1,0 +1,314 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "MIDPOINT",
+        "inputs": [
+          "B",
+          "D"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "B",
+          "D"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "B",
+          "D"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "O",
+    "E",
+    "F"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAO",
+      "refs": [
+        "A",
+        "O"
+      ]
+    },
+    {
+      "id": "sOC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "sEO",
+      "refs": [
+        "E",
+        "O"
+      ]
+    },
+    {
+      "id": "sOF",
+      "refs": [
+        "O",
+        "F"
+      ]
+    },
+    {
+      "id": "sFD",
+      "refs": [
+        "F",
+        "D"
+      ]
+    },
+    {
+      "id": "sAE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "sEC",
+      "refs": [
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "sCF",
+      "refs": [
+        "C",
+        "F"
+      ]
+    },
+    {
+      "id": "sFA",
+      "refs": [
+        "F",
+        "A"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 540
+  },
+  "caption": "평행사변형 ABCD의 대각선 AC·BD, 대각선 위 두 점 E·F와 주어진 BE=DF 표식을 원래와 같이 무채움으로 나타낸다.",
+  "accessibilityDescription": "A와 D가 위, B와 C가 아래에 있는 평행사변형에서 AC와 BD가 O에서 교차한다. E는 B와 O 사이, F는 O와 D 사이이다. BE와 FD만 같은 길이 눈금으로 표시되고, 내부 사각형 AECF를 포함해 아무 면도 색칠하지 않았다.",
+  "sourceConditions": [
+    {
+      "id": "parallelogram",
+      "condition": "A+C=B+D=(12,8)이므로 ABCD는 평행사변형, O는 두 대각선의 교점이다.",
+      "mappedTo": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "O",
+        "sAB",
+        "sBC",
+        "sCD",
+        "sDA",
+        "sAO",
+        "sOC"
+      ]
+    },
+    {
+      "id": "division",
+      "condition": "E는 BD의 1/4지점, F는 3/4지점이므로 BE=DF이고 둘 다 BD 위에 있다.",
+      "mappedTo": [
+        "E",
+        "F",
+        "sBE",
+        "sFD",
+        "equalBEFD"
+      ]
+    },
+    {
+      "id": "construction",
+      "condition": "AECF의 변 AE,EC,CF,FA를 원본대로 그리고 AECF가 평행사변형이라는 결론의 표식은 문제에서 숨긴다.",
+      "mappedTo": [
+        "sAE",
+        "sEC",
+        "sCF",
+        "sFA"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "AECF 영역과 외부 삼각형의 원본에 없는 청록색 채움을 제거한다.",
+    "BE=DF만 실제 눈금으로 보이고 OA=OC·OE=OF·AECF 평행사변형이라는 증명 결론의 눈금·평행표시는 문제에 선공개하지 않는다."
+  ],
+  "sourceQuote": "$BE=DF$이며 $E,F$는 대각선 $BD$ 위에 있다.",
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "equalBEFD",
+        "count": 1,
+        "segments": [
+          "sBE",
+          "sFD"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "caption": "A를 A-B와 A∩B로 나누어 X의 선택 원리를 비교한다.",
+  "accessibilityDescription": "A를 A-B와 A∩B로 나누어 X의 선택 원리를 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "finite-set-A",
+      "condition": "A=1,2,4,5,10,20",
+      "mappedTo": "diagram.elements"
+    },
+    {
+      "id": "finite-set-B",
+      "condition": "B=2,4,7",
+      "mappedTo": "diagram.elements"
+    },
+    {
+      "id": "choice-rule",
+      "condition": "X는 A의 부분집합이고 A-B에서 지정된 개수만 선택한다.",
+      "mappedTo": "diagram.sets"
+    }
+  ],
+  "newVisualInformation": [
+    "A-B와 A∩B의 실제 원소를 각각의 영역에 배치하여 독립 선택을 설명한다."
+  ],
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A"
+      },
+      {
+        "id": "B"
+      }
+    ],
+    "showUniverse": false,
+    "elements": [
+      {
+        "text": "1",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "2",
+        "in": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "text": "4",
+        "in": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "text": "5",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "10",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "20",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "7",
+        "in": [
+          "B"
+        ]
+      }
+    ]
+  }
+}

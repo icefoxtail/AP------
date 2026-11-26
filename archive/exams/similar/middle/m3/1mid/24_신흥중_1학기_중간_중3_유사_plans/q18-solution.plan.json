@@ -1,0 +1,27 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": { "value": "2", "state": "OPEN" },
+            "hi": { "value": "5", "state": "OPEN" }
+          }
+        ],
+        "hideSetLabel": true,
+        "label": "범위"
+      }
+    ]
+  },
+  "numberLineCaption": { "text": "절댓값의 부호가 정해지는 범위" },
+  "caption": "2<x<5인 구간에서는 x-5<0, x-2>0이다. 따라서 |x-5|=5-x, |x-2|=x-2이다.",
+  "accessibilityDescription": "수직선에서 2와 5에 빈 동그라미를 두고 그 사이 열린 구간을 표시했다. 이 범위의 x는 2보다 크고 5보다 작아 두 절댓값 안의 식의 부호가 서로 다르다.",
+  "sourceConditions": [
+    { "id": "s1", "condition": "2<x<5", "mappedTo": ["numberLine.rows[0].pieces[0]"] },
+    { "id": "s2", "condition": "√((x-5)^2)-√((x-2)^2)=|x-5|-|x-2|", "mappedTo": "PRESERVED_ARCHIVE_BANK" }
+  ],
+  "newVisualInformation": ["두 경계점 2와 5를 포함하지 않는 열린 구간에서 x가 놓이는 위치를 보인다"]
+}

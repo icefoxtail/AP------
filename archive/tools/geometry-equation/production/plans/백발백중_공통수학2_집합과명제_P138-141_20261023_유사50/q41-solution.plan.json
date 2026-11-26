@@ -1,0 +1,311 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "원래 원의 최저점 P를 대칭이동하고 위로 3만큼 옮긴 점 Q에서 삼각형 ABQ의 높이가 최대가 된다.",
+  "accessibilityDescription": "중심 (1, 1)인 반지름 2의 원과 이동한 원, 밑변 A(-3, 0)B(3, 0), 원래 점 P와 옮긴 점 Q가 그려진 좌표평면이다.",
+  "sourceConditions": [
+    {
+      "id": "givenCircle",
+      "condition": "원래 원의 중심 (1,1), 반지름 2",
+      "mappedTo": [
+        "mathPlan.nodes[0].args.coordinates",
+        "mathPlan.nodes[5].args.radius",
+        "displayCircles[0]"
+      ]
+    },
+    {
+      "id": "segmentAB",
+      "condition": "삼각형 밑변 A(-3,0), B(3,0)",
+      "mappedTo": [
+        "mathPlan.nodes[1].args.coordinates",
+        "mathPlan.nodes[2].args.coordinates",
+        "displaySegments[0]"
+      ]
+    },
+    {
+      "id": "transformation",
+      "condition": "x축 대칭 뒤 y축 방향 +3 평행이동",
+      "mappedTo": [
+        "mathPlan.nodes[7]",
+        "mathPlan.nodes[8]",
+        "mathPlan.nodes[9]",
+        "mathPlan.nodes[10]"
+      ]
+    },
+    {
+      "id": "extremum",
+      "condition": "원래 최저점 P=(1,-1), 이동 후 최고점 Q=(1,4)",
+      "mappedTo": [
+        "mathPlan.nodes[4]",
+        "mathPlan.nodes[6]",
+        "mathPlan.nodes[8]",
+        "displayPoints",
+        "displaySegments[1]",
+        "displaySegments[2]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "대칭과 평행이동으로 두 원의 중심과 반지름 관계가 유지된다.",
+    "Q에서 수평 밑변 AB로 잰 높이를 두 선분으로 비교하며 원래 점 P와 대응시킨다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "xaxis",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "bottom",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "old",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "C",
+          "bottom"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Pmirror",
+        "op": "LINE_REFLECTION",
+        "inputs": [
+          "P",
+          "xaxis"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "Pmirror"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Cmirror",
+        "op": "LINE_REFLECTION",
+        "inputs": [
+          "C",
+          "xaxis"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "Cmirror"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "moved",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "D"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 680,
+    "height": 520
+  },
+  "displayCircles": [
+    "old",
+    "moved"
+  ],
+  "displayPoints": [
+    "C",
+    "D",
+    "P",
+    "Q",
+    "A",
+    "B"
+  ],
+  "hiddenPointNames": [
+    "C",
+    "D"
+  ],
+  "coordinateLabels": [
+    "P",
+    "Q",
+    "A",
+    "B"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAQ",
+      "refs": [
+        "A",
+        "Q"
+      ]
+    },
+    {
+      "id": "sBQ",
+      "refs": [
+        "B",
+        "Q"
+      ]
+    }
+  ],
+  "sourceQuote": "원 $(x-1)^2+(y-1)^2=4$ 위의 점 $P("
+}

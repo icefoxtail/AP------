@@ -1,0 +1,86 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "P (a=4)",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-2",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "4",
+              "state": "OPEN"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "Q",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-4",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "4",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "R (b=6)",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-5",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "7",
+              "state": "OPEN"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "필요조건의 진리집합 포함"
+  },
+  "caption": "극값 a=4, b=6에서 P=(-2,4)⊆Q=[-4,4]⊆R=(-5,7)이다. Q의 닫힌 양끝점이 R의 열린 범위 안에 있어야 하므로 경계를 엄격하게 비교한다. 두 극값의 합은 10이다.",
+  "accessibilityDescription": "같은 x축 위 세 수직선. P는 -2와 4을 제외한 열린 구간, Q는 -4와 4을 포함한 닫힌 구간, R은 -5와 7을 제외한 열린 구간으로서 P가 Q 안에, Q가 R 안에 있다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "p의 해집합 (-2,a), 극값 a=4에서 P=(-2,4)",
+      "mappedTo": "numberLine.rows[0].pieces[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "q의 해집합 Q=[-4,4] (양끝 포함)",
+      "mappedTo": "numberLine.rows[1].pieces[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "r의 해집합 (중심-b,중심+b), 극값 b=6에서 R=(-5,7)",
+      "mappedTo": "numberLine.rows[2].pieces[0]"
+    },
+    {
+      "id": "c4",
+      "condition": "두 필요조건은 P⊆Q⊆R을 뜻한다",
+      "mappedTo": "numberLine.rows"
+    }
+  ],
+  "newVisualInformation": [
+    "P의 열린 오른쪽 끝이 Q의 닫힌 오른쪽 끝과 같을 수 있는 반면 Q의 닫힌 끝점은 R의 열린 끝에 닿을 수 없음을 같은 눈금 위에서 비교한다."
+  ]
+}

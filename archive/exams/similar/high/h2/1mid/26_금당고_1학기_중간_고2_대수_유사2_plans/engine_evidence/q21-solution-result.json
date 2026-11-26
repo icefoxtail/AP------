@@ -1,0 +1,86 @@
+{
+ "status": "ARCHIVE_BOUND",
+ "capability": "polynomial-spike-v1",
+ "sizeClass": "full",
+ "layoutRepairs": 0,
+ "identity": {
+  "questionUid": "26_금당고_1학기_중간_고2_대수|21",
+  "surface": "SOLUTION_VISUAL",
+  "visualRole": "decisive-relation",
+  "visualAssetKey": "sha256:d4bed642321eeb3f6772df147e2560a819300292c1d1da29664564a8a1079cbe",
+  "assetId": "va-985e8722415cac0ff89dbef83480071b2747b193e520148621de706760cdfeea"
+ },
+ "violations": [
+  {
+   "code": "TEXT_CLIPPED",
+   "id": "P-coordinates",
+   "degree": {
+    "kind": "outside",
+    "clippedFraction": 0,
+    "d": 0.04990627936548877
+   },
+   "stage": "compose"
+  },
+  {
+   "code": "TEXT_CLIPPED",
+   "id": "P-coordinates",
+   "degree": {
+    "kind": "outside",
+    "clippedFraction": 0,
+    "d": 0.04990313053828771
+   },
+   "stage": "archive"
+  },
+  {
+   "code": "TEXT_CLIPPED",
+   "id": "P-coordinates",
+   "degree": {
+    "kind": "outside",
+    "clippedFraction": 0,
+    "d": 0.04971209382822336
+   },
+   "stage": "archive"
+  }
+ ],
+ "scoreGate": {
+  "status": "SCORED_PASS",
+  "score": 95.40230865380093,
+  "passScore": 90,
+  "tableVersion": "score-table-v3",
+  "stage": "archive",
+  "stages": {
+   "compose": 97.70056232380706,
+   "archive": 95.40230865380093
+  },
+  "deductions": [
+   {
+    "code": "TEXT_CLIPPED",
+    "track": "DEDUCT",
+    "stage": "post-render",
+    "source": "code",
+    "id": "P-coordinates",
+    "points": 2.299418783229726,
+    "basis": "degree",
+    "degree": {
+     "kind": "outside",
+     "clippedFraction": 0,
+     "d": 0.04990313053828771
+    }
+   },
+   {
+    "code": "TEXT_CLIPPED",
+    "track": "DEDUCT",
+    "stage": "post-render",
+    "source": "code",
+    "id": "P-coordinates",
+    "points": 2.2982725629693403,
+    "basis": "degree",
+    "degree": {
+     "kind": "outside",
+     "clippedFraction": 0,
+     "d": 0.04971209382822336
+    }
+   }
+  ]
+ }
+}

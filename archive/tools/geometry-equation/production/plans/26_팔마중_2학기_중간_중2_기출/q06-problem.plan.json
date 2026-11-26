@@ -1,0 +1,355 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "E",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "E",
+          "C"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "F",
+          "E"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "120"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lAF",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "F"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "TRANSLATE_POINT",
+        "inputs": ["C"],
+        "args": {
+          "dx": {"kind":"integer","value":"0"},
+          "dy": {"kind":"integer","value":"1"}
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lCR",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "C",
+          "R"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lAF",
+          "lCR"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "sEC",
+      "refs": [
+        "E",
+        "C"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sDF",
+      "refs": [
+        "D",
+        "F"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sFA",
+      "refs": [
+        "F",
+        "A"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sAE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "sFG",
+      "refs": [
+        "F",
+        "G"
+      ]
+    },
+    {
+      "id": "sGA",
+      "refs": [
+        "G",
+        "A"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 540
+  },
+  "caption": "C가 A에 겹치도록 접은 직사각형의 원래 점선 테두리와 접힌 윤곽선, E의 60° 각 및 F의 물음 각을 표시한다.",
+  "accessibilityDescription": "직사각형 ABCD의 원래 오른쪽 및 위쪽 테두리는 점선이다. E에서 F로 접는 선이 이어지며 접힌 C는 A에, 접힌 D는 위쪽 G에 놓인다. E의 주어진 60도 각과 F에서 구하는 각 호가 있고, 원본에 없는 녹색 내부 면 채움은 없다.",
+  "sourceConditions": [
+    {
+      "id": "fold",
+      "condition": "E=(4,0), C=(12,0), EA=EC=8이고 EF가 ∠AEC=120°를 이등분해 C를 A로 반사한다. G는 D의 EF 대칭점이다.",
+      "mappedTo": [
+        "E",
+        "C",
+        "A",
+        "F",
+        "D",
+        "G",
+        "sAE",
+        "sEC",
+        "sEF",
+        "sFG",
+        "sGA"
+      ]
+    },
+    {
+      "id": "angle",
+      "condition": "∠AEB=60°는 주어진 각이고 ∠EFD는 물음 각이므로 수치 120°를 그림에 공개하지 않는다.",
+      "mappedTo": [
+        "given60",
+        "askF",
+        "sAE",
+        "sBE",
+        "sEF",
+        "sDF"
+      ]
+    },
+    {
+      "id": "guides",
+      "condition": "원래 직사각형의 EC,CD,DF,FA는 접기 전 위치 안내 점선이다.",
+      "mappedTo": [
+        "sEC",
+        "sCD",
+        "sDF",
+        "sFA"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본에 없는 접힌 사각형 전체의 녹색 면 채움을 제거한다.",
+    "원래 직사각형 테두리의 점선을 명시하고 접힌 C→A, D→G의 정확한 반사 위치를 수학적으로 구성한다."
+  ],
+  "sourceQuote": "$\\angle AEB=60^\\circ$",
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "given60",
+        "refs": [
+          "A",
+          "E",
+          "B"
+        ],
+        "value": 60,
+        "label": "60",
+        "style": "ARC",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "askF",
+        "refs": [
+          "E",
+          "F",
+          "D"
+        ],
+        "value": 120,
+        "noLabel": true,
+        "style": "ARC",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rB",
+      "refs": [
+        "A",
+        "B",
+        "E"
+      ],
+      "factRole": "DERIVED_INTERMEDIATE"
+    }
+  ]
+}

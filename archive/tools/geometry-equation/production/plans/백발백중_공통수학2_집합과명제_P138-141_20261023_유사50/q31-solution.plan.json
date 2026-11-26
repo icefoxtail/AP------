@@ -1,0 +1,48 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "caption": "U=40, A=22, 교집합=8, 두 원 바깥=12에서 B의 원소 수를 포함배제로 계산한다.",
+  "accessibilityDescription": "U=40, A=22, 교집합=8, 두 원 바깥=12에서 B의 원소 수를 포함배제로 계산한다.",
+  "sourceConditions": [
+    {
+      "id": "universe",
+      "condition": "n(U)=40",
+      "mappedTo": "diagram.universe.count"
+    },
+    {
+      "id": "A",
+      "condition": "n(A)=22",
+      "mappedTo": "diagram.sets[0].count"
+    },
+    {
+      "id": "B",
+      "condition": "해설에서 계산한 n(B)=14",
+      "mappedTo": "diagram.sets[1].count"
+    },
+    {
+      "id": "intersection",
+      "condition": "n(A∩B)=8",
+      "mappedTo": "diagram.shade"
+    }
+  ],
+  "newVisualInformation": [
+    "원의 포함·겹침·바깥 영역만 시각화하며 원소 수나 정답을 그림 원소로 가장하지 않는다."
+  ],
+  "diagram": {
+    "kind": "VENN",
+    "universe": {
+      "name": "U",
+      "count": "40"
+    },
+    "sets": [
+      {
+        "id": "A",
+        "count": "22"
+      },
+      {
+        "id": "B",
+        "count": "14"
+      }
+    ],
+    "shade": "A∩B"
+  }
+}

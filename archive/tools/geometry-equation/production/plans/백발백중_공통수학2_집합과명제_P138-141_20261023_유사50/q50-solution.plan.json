@@ -1,0 +1,237 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "최댓값 조건에서 두 이동원 C₁, C₂ 모두 직선 3x-4y=0과 두 점에서 만난다.",
+  "accessibilityDescription": "반지름 2인 원의 중심을 (4,0), 이어 (0,4)만큼 옮겨 만든 두 원과 직선 3x-4y=0, 두 중심을 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "original",
+      "condition": "원래 원 중심 (1,2), 반지름 2",
+      "mappedTo": [
+        "mathPlan.nodes[0].args",
+        "mathPlan.nodes[1].args",
+        "mathPlan.nodes[2]",
+        "mathPlan.nodes[6].args.radius",
+        "mathPlan.nodes[7].args.radius"
+      ]
+    },
+    {
+      "id": "shift1",
+      "condition": "원 C₁는 x축 방향 +4만큼 이동",
+      "mappedTo": [
+        "mathPlan.nodes[3].args",
+        "displayCircles[0]"
+      ]
+    },
+    {
+      "id": "shift2",
+      "condition": "원 C₂는 C₁에서 y축 방향 +4만큼 이동",
+      "mappedTo": [
+        "mathPlan.nodes[4].args",
+        "displayCircles[1]"
+      ]
+    },
+    {
+      "id": "line",
+      "condition": "직선 3x-4y=0",
+      "mappedTo": [
+        "mathPlan.nodes[5].args",
+        "displayLines[0]",
+        "lineLabels"
+      ]
+    },
+    {
+      "id": "secants",
+      "condition": "두 원 중심의 직선까지 거리가 반지름 2보다 엄격히 작다.",
+      "mappedTo": [
+        "displayCircles",
+        "displayLines"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원과 직선이 서로 다른 두 점에서 만나도록 두 이동원의 위치를 함께 보여 준다.",
+    "중심을 옮겨도 원의 반지름은 변하지 않으며 접하는 경계와는 구별된다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "vx",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "-1"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "hy",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "-2"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "vx",
+          "hy"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C1",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C2",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C1"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "line",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "-4"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "c1",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "C1"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "c2",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "C2"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 680,
+    "height": 520
+  },
+  "displayCircles": [
+    "c1",
+    "c2"
+  ],
+  "displayLines": [
+    "line"
+  ],
+  "displayPoints": [
+    "C1",
+    "C2"
+  ],
+  "coordinateLabels": [
+    "C1",
+    "C2"
+  ],
+  "pointNames": {
+    "C1": "C₁",
+    "C2": "C₂"
+  },
+  "lineLabels": [
+    {
+      "nodeId": "line",
+      "form": "GENERAL"
+    }
+  ],
+  "sourceQuote": "원 $(x-1)^2+(y-2)^2=4$를 $x$축 방향"
+}

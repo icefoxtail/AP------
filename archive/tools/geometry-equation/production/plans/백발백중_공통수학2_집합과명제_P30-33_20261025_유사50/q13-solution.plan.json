@@ -1,0 +1,64 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "a",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "첫 조건",
+        "pieces": [
+          {
+            "lo": {
+              "value": "1",
+              "state": "CLOSED"
+            },
+            "hi": null
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "둘째 조건",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "5",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "RESULT",
+        "label": "공통",
+        "integerPoints": true
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "두 조건의 공통 정수 범위"
+  },
+  "caption": "a-2≥-1, a+2≤7에서 1≤a≤5이므로 가능한 정수 a는 1부터 5까지다.",
+  "accessibilityDescription": "a가 1 이상인 범위와 5 이하인 범위 및 그 공통 정수점을 수직선에 나타낸 그림이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "[a-2,a+2]⊆[-1,7]의 왼쪽 끝 a-2≥-1",
+      "mappedTo": "numberLine.rows[0].pieces[0].lo"
+    },
+    {
+      "id": "c2",
+      "condition": "오른쪽 끝 a+2≤7",
+      "mappedTo": "numberLine.rows[1].pieces[0].hi"
+    },
+    {
+      "id": "c3",
+      "condition": "정수 a를 양 끝 포함하여 구함",
+      "mappedTo": "numberLine.rows[2].integerPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "두 부등식의 교집합과 끝점 포함 여부 및 정수점을 한 수직선 축에서 보인다."
+  ]
+}

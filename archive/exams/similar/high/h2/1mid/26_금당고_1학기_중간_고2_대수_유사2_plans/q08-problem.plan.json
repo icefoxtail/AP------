@@ -1,4 +1,86 @@
 {
-  "status": "EXEMPT",
-  "reason": "수학적 판단에 필요한 정보와 결정적 단계를 발문·판서 해설에 모두 명시함. 선택적 보조 SVG는 별도 svg-pending plan으로 후속 제작 예정."
+  "capability": "exponential-affine-spike-v1",
+  "sourceQuote": "함수 $y=2^x+3$의 그래프 위의 두 점 $P,Q$",
+  "caption": "세로로 3만큼 이동한 지수함수 y=2^x+3과 점 P(p,7), Q(4,q)를 표시하는 문제 보조 그래프",
+  "accessibilityDescription": "지수함수 y=2의 x제곱 더하기 3의 그래프 위에 두 점 P(p,7)과 Q(4,q)가 있고, 각 점에서 좌표축으로 내린 점선 보조선과 p, q 눈금이 표시된 그래프이다.",
+  "graphPlan": {
+    "family": "exponential-affine",
+    "base": "2",
+    "coefficients": [
+      "1",
+      "1",
+      "3"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -2,
+      4.6
+    ],
+    "viewport": [
+      -2.5,
+      5,
+      0,
+      23
+    ],
+    "axisTickLabels": {
+      "x": {
+        "2": "p"
+      },
+      "y": {
+        "19": "q"
+      }
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "curveX": "2"
+        },
+        {
+          "id": "Q",
+          "curveX": "4"
+        }
+      ],
+      "guides": [
+        {
+          "id": "gp",
+          "from": "P",
+          "axis": "BOTH"
+        },
+        {
+          "id": "gq",
+          "from": "Q",
+          "axis": "BOTH"
+        }
+      ],
+      "callouts": [
+        {
+          "id": "cp",
+          "point": "P",
+          "text": "(p,7)",
+          "direction": "NW",
+          "labelKind": "MATH"
+        },
+        {
+          "id": "cq",
+          "point": "Q",
+          "text": "(4,q)",
+          "direction": "W",
+          "labelKind": "MATH"
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "P": "P",
+    "Q": "Q"
+  },
+  "assetPath": "assets/images/26_금당고_1학기_중간_고2_대수_유사2/q08-problem.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/1mid/26_금당고_1학기_중간_고2_대수_유사2_plans/engine_evidence/q08-problem-result.json",
+    "statePath": "archive/exams/similar/high/h2/1mid/26_금당고_1학기_중간_고2_대수_유사2_plans/engine_evidence/q08-problem-state.json",
+    "svgPath": "archive/exams/similar/high/h2/1mid/26_금당고_1학기_중간_고2_대수_유사2_plans/engine_evidence/q08-problem.svg"
+  }
 }

@@ -1,0 +1,26 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"27","denominator":"5"},{"kind":"rational","numerator":"36","denominator":"5"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"54","denominator":"5"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"24"},{"kind":"integer","value":"12"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"E","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"15"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"F","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"33"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"}
+  ]},
+  "displayPoints":["A","B","C","D","E","F"],
+  "displaySegments":[{"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},{"id":"sCA","refs":["C","A"]},{"id":"sDE","refs":["D","E"]},{"id":"sEF","refs":["E","F"]},{"id":"sFD","refs":["F","D"]}],
+  "planeMarks":{"dimensions":[
+    {"id":"dAB","from":"A","to":"B","label":"9","unit":"cm","value":"9","side":"LEFT","style":"BAR","factRole":"GIVEN"},
+    {"id":"dDE","from":"D","to":"E","label":"15","unit":"cm","value":"15","side":"LEFT","style":"BAR","factRole":"GIVEN"}
+  ]},
+  "coordinateCanvas":{"width":720,"height":420},
+  "caption":"서로 닮은 삼각형 ABC, DEF에서 AB=9 cm, DE=15 cm를 보인다.",
+  "accessibilityDescription":"작은 삼각형 ABC가 왼쪽, 닮음비 3대 5로 확대된 삼각형 DEF가 오른쪽에 있다. 대응변 AB에 9 cm, DE에 15 cm를 표시하고 두 삼각형 내부는 칠하지 않는다.",
+  "sourceConditions":[
+    {"id":"similar","condition":"삼각형 ABC와 DEF는 닮음이고 A-D, B-E, C-F 순서로 대응한다.","mappedTo":["sAB","sBC","sCA","sDE","sEF","sFD"]},
+    {"id":"length","condition":"두 대응변 AB=9 cm, DE=15 cm만 주어지고 넓이의 답은 미지수이다.","mappedTo":["dAB","dDE"]}
+  ],
+  "newVisualInformation":["기존 문제 SVG의 양쪽 삼각형 내부 연한 파랑·초록 채움을 제거하여 원본처럼 흰 면을 남긴다.","9 cm와 15 cm를 각 대응변 바로 옆의 정밀 치수선으로 붙인다."],
+  "sourceQuote":"$\\triangle DEF$의 넓이가 $50\\,\\mathrm{cm}^2$일 때"
+}

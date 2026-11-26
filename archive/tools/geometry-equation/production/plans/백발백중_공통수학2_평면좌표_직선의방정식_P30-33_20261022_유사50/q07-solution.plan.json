@@ -1,0 +1,255 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "정삼각형의 높이 AM은 중선이며 무게중심 O에서 AO:OM=2:1이다.",
+  "accessibilityDescription": "정삼각형의 높이 AM은 중선이며 무게중심 O에서 AO:OM=2:1이다.",
+  "sourceConditions": [
+    {
+      "id": "equilateral",
+      "condition": "A,B,C는 정삼각형의 꼭짓점",
+      "mappedTo": [
+        "mathPlan.nodes[2]",
+        "mathPlan.nodes[3]",
+        "displaySegments"
+      ]
+    },
+    {
+      "id": "centroid",
+      "condition": "원점 O는 무게중심이므로 AM 위에 있다.",
+      "mappedTo": "displayPoints"
+    },
+    {
+      "id": "foot",
+      "condition": "AM은 변 BC에 수직이며 M은 중점이다.",
+      "mappedTo": [
+        "mathPlan.nodes[4]",
+        "rightAngles"
+      ]
+    },
+    {
+      "id": "height",
+      "condition": "AO=2*sqrt(5), AM=3*sqrt(5)",
+      "mappedTo": [
+        "planeMarks.expressionLabels",
+        "displaySegments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "높이 AM의 2:1 무게중심 분할과 직각삼각형의 구조를 보인다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "2"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "5"
+                  }
+                ]
+              }
+            ]
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "120"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "2"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "5"
+                  }
+                ]
+              }
+            ]
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "240"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "MIDPOINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 680,
+    "height": 520
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "O",
+    "M"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAM",
+      "refs": [
+        "A",
+        "M"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sAO",
+      "refs": [
+        "A",
+        "O"
+      ]
+    },
+    {
+      "id": "sOM",
+      "refs": [
+        "O",
+        "M"
+      ],
+      "dashed": true
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rM",
+      "refs": [
+        "A",
+        "M",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "labAO",
+        "ownerSegment": "sAO",
+        "text": "2*sqrt(5)"
+      },
+      {
+        "id": "labAM",
+        "ownerSegment": "sAM",
+        "text": "3*sqrt(5)"
+      }
+    ]
+  },
+  "sourceQuote": "정삼각형 $ABC$의 무게중심이 원점 $O$이고 꼭짓점 $A(4,-2)$이다. $A$에서 변 $BC$에 내린 수선의 발을 $M$이라 할 때, $AM$의 길이는?"
+}

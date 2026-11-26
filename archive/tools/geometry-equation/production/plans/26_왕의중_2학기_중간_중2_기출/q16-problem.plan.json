@@ -1,0 +1,65 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "4" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "3" }, { "kind": "integer", "value": "1" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "6" }, { "kind": "integer", "value": "4" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "V", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "rational", "numerator": "7", "denominator": "2" }, { "kind": "integer", "value": "9" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "Ap", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "11" }, { "kind": "integer", "value": "6" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "Bp", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "rational", "numerator": "31", "denominator": "2" }, { "kind": "rational", "numerator": "3", "denominator": "2" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "Cp", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "20" }, { "kind": "integer", "value": "6" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "Vp", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "rational", "numerator": "65", "denominator": "4" }, { "kind": "rational", "numerator": "27", "denominator": "2" }] }, "outputType": "POINT", "factRole": "GIVEN" }
+    ]
+  },
+  "displayPoints": ["A", "B", "C", "V", "Ap", "Bp", "Cp", "Vp"],
+  "pointNames": { "Ap": "A'", "Bp": "B'", "Cp": "C'", "Vp": "V'" },
+  "displaySegments": [
+    { "id": "sAB", "refs": ["A", "B"] },
+    { "id": "sBC", "refs": ["B", "C"] },
+    { "id": "sAC", "refs": ["A", "C"], "dashed": true },
+    { "id": "sAV", "refs": ["A", "V"] },
+    { "id": "sBV", "refs": ["B", "V"] },
+    { "id": "sCV", "refs": ["C", "V"] },
+    { "id": "sApBp", "refs": ["Ap", "Bp"] },
+    { "id": "sBpCp", "refs": ["Bp", "Cp"] },
+    { "id": "sApCp", "refs": ["Ap", "Cp"], "dashed": true },
+    { "id": "sApVp", "refs": ["Ap", "Vp"] },
+    { "id": "sBpVp", "refs": ["Bp", "Vp"] },
+    { "id": "sCpVp", "refs": ["Cp", "Vp"] }
+  ],
+  "planeMarks": {
+    "angles": [
+      { "id": "angle55", "refs": ["V", "A", "C"], "value": 55.008, "label": "55", "style": "ARC", "arcs": 1, "factRole": "GIVEN" },
+      { "id": "angleY", "refs": ["Vp", "Ap", "Cp"], "value": 55.008, "label": "y", "style": "ARC", "arcs": 1, "factRole": "GIVEN" }
+    ],
+    "dimensions": [
+      { "id": "lengthAB", "from": "A", "to": "B", "label": "6", "unit": "cm", "side": "LEFT", "style": "BAR", "factRole": "GIVEN" },
+      { "id": "lengthBC", "from": "B", "to": "C", "label": "z", "unit": "cm", "side": "BELOW", "style": "BAR", "factRole": "GIVEN" },
+      { "id": "lengthVC", "from": "V", "to": "C", "label": "x", "unit": "cm", "side": "RIGHT", "style": "BAR", "factRole": "GIVEN" },
+      { "id": "lengthApBp", "from": "Ap", "to": "Bp", "label": "9", "unit": "cm", "side": "LEFT", "style": "BAR", "factRole": "GIVEN" },
+      { "id": "lengthBpCp", "from": "Bp", "to": "Cp", "label": "6", "unit": "cm", "side": "BELOW", "style": "BAR", "factRole": "GIVEN" },
+      { "id": "lengthVpCp", "from": "Vp", "to": "Cp", "label": "15", "unit": "cm", "side": "RIGHT", "style": "BAR", "factRole": "GIVEN" }
+    ],
+    "regions": [
+      { "id": "sourceShadedFace", "fill": "LIGHT", "shapes": [{ "polygon": ["Vp", "Bp", "Cp"] }] }
+    ]
+  },
+  "coordinateCanvas": { "width": 720, "height": 560 },
+  "caption": "원본의 좌우 두 닮은 삼각뿔을 대응하는 모서리와 각으로 비교한다. 오른쪽 삼각뿔의 한 옆면만 옅게 칠하고 다른 면에는 바탕색 채움을 하지 않는다.",
+  "accessibilityDescription": "왼쪽 삼각뿔의 꼭짓점 A,B,C,V와 오른쪽 A′,B′,C′,V′가 서로 대응한다. 두 개의 숨은 A-C, A′-C′ 모서리는 점선이다. AB 6cm, BC z cm, VC x cm에 대응해 A′B′ 9cm, B′C′ 6cm, V′C′ 15cm의 치수선이 있다. A의 55도와 A′의 y도를 같은 위치의 각 호로 표시했다. 오른쪽 V′B′C′ 면만 원본처럼 옅게 구분하며 x, y, z의 값이나 문제의 정답을 보여 주지 않는다.",
+  "sourceConditions": [
+    { "id": "tetrahedra", "condition": "작은 삼각뿔 ABCV와 큰 삼각뿔 A′B′C′V′의 꼭짓점 및 모서리가 일대일 대응한다. 두 개의 원본 도형을 같은 투영 방식으로 나타내고 큰 도형은 작은 도형의 3/2배 개형이다.", "mappedTo": ["sAB", "sBC", "sAC", "sAV", "sBV", "sCV", "sApBp", "sBpCp", "sApCp", "sApVp", "sBpVp", "sCpVp"] },
+    { "id": "knownLengths", "condition": "AB=6cm, A′B′=9cm, B′C′=6cm, V′C′=15cm가 주어진다.", "mappedTo": ["lengthAB", "lengthApBp", "lengthBpCp", "lengthVpCp"] },
+    { "id": "unknownLengths", "condition": "BC=z cm, VC=x cm이며 미지 길이의 수치나 해답은 도형에 표시하지 않는다.", "mappedTo": ["lengthBC", "lengthVC"] },
+    { "id": "correspondingAngle", "condition": "A의 주어진 각 55°에 대응하는 A′의 각은 미지수 y°이다. 투영 개형에서 두 각은 동일한 크기로 작도하고 값 y를 풀어 쓰지 않는다.", "mappedTo": ["angle55", "angleY"] },
+    { "id": "selectiveFill", "condition": "원본 스캔은 오른쪽 큰 삼각뿔의 V′B′C′ 옆면만 흐린 회색으로 칠해져 있고 나머지는 무채움이다.", "mappedTo": ["sourceShadedFace"] }
+  ],
+  "newVisualInformation": [
+    "현행 문제 SVG에서 왼쪽 삼각뿔과 오른쪽 삼각뿔 여러 면에 입힌 원본 근거 없는 옅은 파란 채움을 없애고 오른쪽 V′B′C′ 옆면만 선택적으로 칠한다.",
+    "두 도형의 대응 꼭짓점 프라임 라벨, 보이지 않는 모서리의 점선, 55°·y°의 각 호, 여섯 길이/미지 치수를 공식 엔진의 실제 필드에 연결한다."
+  ],
+  "sourceQuote": "다음 그림의 두 삼각뿔이 서로 닮은 도형이고 $\\overline{AB}$에 대응하는 모서리가 $\\overline{A\\prime B\\prime}$일 때"
+}

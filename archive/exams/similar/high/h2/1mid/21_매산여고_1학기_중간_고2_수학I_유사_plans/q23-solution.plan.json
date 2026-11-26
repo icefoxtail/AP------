@@ -1,0 +1,22 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "COS",
+    "ratePi": "2",
+    "coefficients": ["3", "0"],
+    "phasePi": "0",
+    "absolute": true,
+    "sourceDomain": { "kind": "INTERVAL", "range": ["0", "1"], "states": ["CLOSED", "CLOSED"] },
+    "referenceLines": [{ "id": "h", "y": "3/2", "intersectionCount": 4, "intersectionMarker": "OPEN" }],
+    "keyPoints": true,
+    "axisTickValues": { "x": ["1/4", "1/2", "3/4", "1"], "y": ["3/2", "3"] }
+  },
+  "caption": "y=|3cos(2πx)|, 0≤x≤1의 두 주기. 극댓값 3, 극솟값 0과 x=1/4·3/4의 영점, 수평선 y=3/2을 나타낸다. 엄격부등식의 네 교점은 열린 점이다.",
+  "sourceQuote": "함수 $f(x) = |3\\cos 2\\pi x|$",
+  "sourceConditions": [
+    { "id": "function", "condition": "f(x)=|3cos(2πx)|, 한 주기 이상 그래프와 축 교점 제시", "mappedTo": "PRESERVED_ARCHIVE_BANK" },
+    { "id": "range", "condition": "0≤x≤1에서 f(x)>3/2", "mappedTo": "PRESERVED_ARCHIVE_BANK" }
+  ],
+  "newVisualInformation": ["주기 1/2의 절댓값 코사인 그래프", "극점·축 교점과 엄격부등식 경계 네 점"]
+}

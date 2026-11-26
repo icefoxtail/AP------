@@ -1,0 +1,729 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "△ABC"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "R",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "A"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "V",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "A"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "0"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "1"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "C",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "A",
+                "R"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "6"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "35"
+                },
+                "turn": "CW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "lAV",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "A",
+                "V"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "B",
+              "op": "PERPENDICULAR_FOOT",
+              "inputs": [
+                "C",
+                "lAV"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sAC",
+            "refs": [
+              "A",
+              "C"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "angleC35",
+              "refs": [
+                "A",
+                "C",
+                "B"
+              ],
+              "value": 35,
+              "label": "35",
+              "arcs": 1,
+              "style": "ARC",
+              "factRole": "GIVEN"
+            }
+          ],
+          "dimensions": [
+            {
+              "id": "dimAC6",
+              "from": "A",
+              "to": "C",
+              "label": "6",
+              "unit": "cm",
+              "side": "ABOVE",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "rightAngles": [
+          {
+            "id": "rightB",
+            "refs": [
+              "A",
+              "B",
+              "C"
+            ],
+            "factRole": "GIVEN"
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 340
+        },
+        "caption": "ABC: 빗변 AC 6cm, C 35°"
+      }
+    },
+    {
+      "caption": {
+        "text": "△DEF"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "E",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "F",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "F",
+                "E"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "6"
+                },
+                "angleDeg": {
+                  "kind": "rational",
+                  "numerator": "4818968510422141",
+                  "denominator": "100000000000000"
+                },
+                "turn": "CW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "D",
+          "E",
+          "F"
+        ],
+        "displaySegments": [
+          {
+            "id": "sDE",
+            "refs": [
+              "D",
+              "E"
+            ]
+          },
+          {
+            "id": "sEF",
+            "refs": [
+              "E",
+              "F"
+            ]
+          },
+          {
+            "id": "sDF",
+            "refs": [
+              "D",
+              "F"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "dimensions": [
+            {
+              "id": "dimDF6",
+              "from": "D",
+              "to": "F",
+              "label": "6",
+              "unit": "cm",
+              "side": "RIGHT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "dimEF4",
+              "from": "E",
+              "to": "F",
+              "label": "4",
+              "unit": "cm",
+              "side": "BELOW",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "rightAngles": [
+          {
+            "id": "rightE",
+            "refs": [
+              "D",
+              "E",
+              "F"
+            ],
+            "factRole": "GIVEN"
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 340
+        },
+        "caption": "DEF: 빗변 DF 6cm, EF 4cm"
+      }
+    },
+    {
+      "caption": {
+        "text": "△GHI"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "G",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "H",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "-6"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "I",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "G",
+          "H",
+          "I"
+        ],
+        "displaySegments": [
+          {
+            "id": "sGH",
+            "refs": [
+              "G",
+              "H"
+            ]
+          },
+          {
+            "id": "sGI",
+            "refs": [
+              "G",
+              "I"
+            ]
+          },
+          {
+            "id": "sHI",
+            "refs": [
+              "H",
+              "I"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "dimensions": [
+            {
+              "id": "dimGH6",
+              "from": "G",
+              "to": "H",
+              "label": "6",
+              "unit": "cm",
+              "side": "ABOVE",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "dimGI4",
+              "from": "G",
+              "to": "I",
+              "label": "4",
+              "unit": "cm",
+              "side": "RIGHT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "rightAngles": [
+          {
+            "id": "rightG",
+            "refs": [
+              "H",
+              "G",
+              "I"
+            ],
+            "factRole": "GIVEN"
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 340
+        },
+        "caption": "GHI: 두 직각변 6cm, 4cm"
+      }
+    },
+    {
+      "caption": {
+        "text": "△JKL"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "J",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "L",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "ZJ",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "J",
+                "L"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "35"
+                },
+                "turn": "CW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "ZL",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "L",
+                "J"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "55"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "lJ",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "J",
+                "ZJ"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "lL",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "L",
+                "ZL"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "K",
+              "op": "LINE_INTERSECTION",
+              "inputs": [
+                "lJ",
+                "lL"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "J",
+          "K",
+          "L"
+        ],
+        "displaySegments": [
+          {
+            "id": "sJK",
+            "refs": [
+              "J",
+              "K"
+            ]
+          },
+          {
+            "id": "sKL",
+            "refs": [
+              "K",
+              "L"
+            ]
+          },
+          {
+            "id": "sJL",
+            "refs": [
+              "J",
+              "L"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "angleL55",
+              "refs": [
+                "J",
+                "L",
+                "K"
+              ],
+              "value": 55,
+              "label": "55",
+              "arcs": 1,
+              "style": "ARC",
+              "factRole": "GIVEN"
+            }
+          ],
+          "dimensions": [
+            {
+              "id": "dimJL6",
+              "from": "J",
+              "to": "L",
+              "label": "6",
+              "unit": "cm",
+              "side": "ABOVE",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "rightAngles": [
+          {
+            "id": "rightK",
+            "refs": [
+              "J",
+              "K",
+              "L"
+            ],
+            "factRole": "GIVEN"
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 340
+        },
+        "caption": "JKL: 빗변 JL 6cm, L 55°"
+      }
+    }
+  ],
+  "caption": "네 직각삼각형을 각각 무채움으로 그려 실제 표식과 주어진 길이·각도를 비교한다.",
+  "accessibilityDescription": "2×2 패널의 ABC, DEF, GHI, JKL 네 직각삼각형. ABC는 B가 직각, AC=6cm, C=35도. DEF는 E가 직각, DF=6cm, EF=4cm. GHI는 G가 직각, GH=6cm, GI=4cm. JKL은 K가 직각, JL=6cm, L=55도. 네 패널 모두 불필요한 면 색칠 없이 각·직각 및 길이표시만 남는다.",
+  "sourceConditions": [
+    {
+      "id": "abc",
+      "condition": "△ABC는 ∠B=90°, AC=6cm, ∠C=35°이다.",
+      "mappedTo": [
+        "panels[0].plan.rightAngles.rightB",
+        "panels[0].plan.planeMarks.dimensions.dimAC6",
+        "panels[0].plan.planeMarks.angles.angleC35"
+      ]
+    },
+    {
+      "id": "def",
+      "condition": "△DEF는 ∠E=90°, DF=6cm, EF=4cm이다.",
+      "mappedTo": [
+        "panels[1].plan.rightAngles.rightE",
+        "panels[1].plan.planeMarks.dimensions.dimDF6",
+        "panels[1].plan.planeMarks.dimensions.dimEF4"
+      ]
+    },
+    {
+      "id": "ghi",
+      "condition": "△GHI는 ∠G=90°, GH=6cm, GI=4cm이다.",
+      "mappedTo": [
+        "panels[2].plan.rightAngles.rightG",
+        "panels[2].plan.planeMarks.dimensions.dimGH6",
+        "panels[2].plan.planeMarks.dimensions.dimGI4"
+      ]
+    },
+    {
+      "id": "jkl",
+      "condition": "△JKL는 ∠K=90°, JL=6cm, ∠L=55°이다.",
+      "mappedTo": [
+        "panels[3].plan.rightAngles.rightK",
+        "panels[3].plan.planeMarks.dimensions.dimJL6",
+        "panels[3].plan.planeMarks.angles.angleL55"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "4개 직각삼각형의 모든 근거 없는 파란색 전체 면 채움을 제거한다.",
+    "원본 4패널을 유지하며 각 패널에 직각·빗변·변 길이·주어진 예각을 직접 그려지는 필드로 보존한다.",
+    "문제 그림은 어느 두 삼각형이 합동인지 붉은 선이나 답 텍스트로 선공개하지 않는다."
+  ],
+  "sourceQuote": "아래 직각삼각형 중 ① 서로 합동인 것을 찾아 기호로 나타내고"
+}

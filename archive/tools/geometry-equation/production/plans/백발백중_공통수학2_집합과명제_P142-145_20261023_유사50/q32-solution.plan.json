@@ -1,0 +1,335 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "P의 원과 Q의 자취 원은 E를 중심으로 한 닮음에 의해 반지름 비가 일정하다.",
+  "accessibilityDescription": "P의 원과 Q의 자취 원은 E를 중심으로 한 닮음에 의해 반지름 비가 일정하다.",
+  "sourceConditions": [
+    {
+      "id": "rectangle",
+      "condition": "직사각형의 가로 12, 세로 6",
+      "mappedTo": [
+        "mathPlan.nodes[0].args",
+        "mathPlan.nodes[2].args",
+        "displaySegments[0]",
+        "displaySegments[1]"
+      ]
+    },
+    {
+      "id": "contact",
+      "condition": "원은 AB, BC, DA에 모두 접하고 반지름은 세로의 절반",
+      "mappedTo": [
+        "mathPlan.nodes[7].args",
+        "mathPlan.nodes[8].args"
+      ]
+    },
+    {
+      "id": "E",
+      "condition": "CD 위 CE=4",
+      "mappedTo": "mathPlan.nodes[4].args"
+    },
+    {
+      "id": "ratio",
+      "condition": "PQ:QE=2:1",
+      "mappedTo": [
+        "mathPlan.nodes[6].args",
+        "displaySegments[4]",
+        "displaySegments[5]"
+      ]
+    },
+    {
+      "id": "locus",
+      "condition": "Q의 중심 (9,3.6666666666666665), 반지름 1",
+      "mappedTo": [
+        "mathPlan.nodes[9].args",
+        "mathPlan.nodes[10].args"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원 위의 점을 고정점 E와 내분할 때 자취가 별도의 원이 되고 반지름이 주어진 비로 줄어든다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "120",
+              "denominator": "12"
+            },
+            {
+              "kind": "rational",
+              "numerator": "44",
+              "denominator": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "K",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "K"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "108",
+              "denominator": "12"
+            },
+            {
+              "kind": "rational",
+              "numerator": "44",
+              "denominator": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "j",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "T"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "3",
+            "denominator": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "displayCircles": [
+    "k",
+    "j"
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "P",
+    "Q",
+    "K",
+    "T"
+  ],
+  "hiddenPointNames": [
+    "K",
+    "T"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sPQ",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    },
+    {
+      "id": "sQE",
+      "refs": [
+        "Q",
+        "E"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 690,
+    "height": 480
+  },
+  "sourceQuote": "가로 12, 세로 6인 직사각형 $ABCD$의 내부에 세 변 $AB,BC,DA$와 접하는 원이 있다. 변 $CD$ 위에 $CE=4$인 점 $E$를 잡고, 원 위를 움직이는 점 $P$에 대하여 $PQ:QE=2:1$이 되도록 선분 $PE$의 내분점 $Q$를 잡는다. 점 $Q$의 자취의 길이는?"
+}

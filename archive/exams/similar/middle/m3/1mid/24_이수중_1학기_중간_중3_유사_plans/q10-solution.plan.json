@@ -1,0 +1,23 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      { "kind": "POINTS", "band": false, "points": [
+        { "id": "E", "value": "3-sqrt(2)" },
+        { "id": "P0", "value": "3", "hideName": true }
+      ] }
+    ],
+    "constructions": [
+      { "id": "la", "center": "P0", "radius": { "value": "sqrt(2)" }, "arc": { "side": "LEFT" }, "hits": [{ "id": "E", "branch": "LEFT" }] }
+    ]
+  },
+  "numberLineCaption": { "text": "3에서 √2만큼 왼쪽" },
+  "caption": "한 변 1인 정사각형의 대각선은 √2이다. 수직선의 3에서 왼쪽으로 √2만큼 떨어진 점 E의 좌표는 3−√2≈1.586이다.",
+  "accessibilityDescription": "수직선 위 3을 중심으로 제곱근 2만큼 왼쪽에 있는 점 E를 호로 표시한다. E는 1과 2 사이에 있다.",
+  "sourceConditions": [
+    { "id": "i10-1", "condition": "한 변의 길이 1인 정사각형의 대각선 √(1²+1²)=√2", "mappedTo": ["numberLine.constructions[0].radius"] },
+    { "id": "i10-2", "condition": "수직선 좌표 3에서 왼쪽으로 √2만큼 이동", "mappedTo": ["numberLine.rows[0].points[P0]", "numberLine.constructions[0].arc"] },
+    { "id": "i10-3", "condition": "정답 점 E의 좌표는 3−√2로 약 1.586", "mappedTo": ["numberLine.rows[0].points[E]", "numberLine.constructions[0].hits"] }
+  ],
+  "newVisualInformation": ["기존 문제 도형은 유지하고 해설축에서 √2 길이를 3의 왼쪽으로 옮기는 호와 E의 정확한 근호 좌표를 보여 준다."]
+}

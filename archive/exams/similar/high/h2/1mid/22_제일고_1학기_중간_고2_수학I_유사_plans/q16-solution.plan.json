@@ -1,0 +1,21 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "SIN",
+    "ratePi": "1/4",
+    "coefficients": ["1", "0"],
+    "phasePi": "0",
+    "sourceDomain": { "kind": "INTERVAL", "range": ["0", "10"], "states": ["CLOSED", "CLOSED"] },
+    "referenceLines": [ { "id": "h", "y": "3/4", "intersectionCount": 3 } ],
+    "keyPoints": true,
+    "axisTickValues": { "x": ["2", "4", "6", "8", "10"], "y": ["3/4", "1", "-1"] }
+  },
+  "caption": "y=sin(πx/4), 0≤x≤10과 y=3/4의 처음 세 교점. 첫 두 교점은 x=2에 대칭이고 세 번째는 첫째보다 주기 8만큼 오른쪽에 있다.",
+  "sourceQuote": "함수 $f(x)=\\sin\\frac{\\pi}{4}x$",
+  "sourceConditions": [
+    { "id": "sine", "condition": "f(x)=sin(πx/4), x≥0", "mappedTo": "PRESERVED_ARCHIVE_BANK" },
+    { "id": "level", "condition": "y=3/4의 처음 세 교점 α, β, γ", "mappedTo": "PRESERVED_ARCHIVE_BANK" }
+  ],
+  "newVisualInformation": ["처음 세 교점과 주기 8", "x=2 대칭인 첫 두 교점"]
+}

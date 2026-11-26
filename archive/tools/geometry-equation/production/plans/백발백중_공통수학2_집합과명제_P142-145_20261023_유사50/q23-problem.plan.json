@@ -1,0 +1,306 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "발문에 주어진 f의 직사각형과 g의 직사각형을 같은 좌표평면에 표시한다.",
+  "accessibilityDescription": "두 직사각형의 가로·세로 크기와 위치를 선과 f·g 라벨로 직접 대조한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f의 네 꼭짓점 [[-2,1],[0,1],[0,4],[-2,4]]",
+      "mappedTo": "mathPlan.nodes[0].args.coordinates,mathPlan.nodes[1].args.coordinates,mathPlan.nodes[2].args.coordinates,mathPlan.nodes[3].args.coordinates,displaySegments[0],displaySegments[1],displaySegments[2],displaySegments[3]"
+    },
+    {
+      "id": "c2",
+      "condition": "g의 네 꼭짓점 [[0,0],[3,0],[3,2],[0,2]]",
+      "mappedTo": "mathPlan.nodes[4].args.coordinates,mathPlan.nodes[5].args.coordinates,mathPlan.nodes[6].args.coordinates,mathPlan.nodes[7].args.coordinates,displaySegments[4],displaySegments[5],displaySegments[6],displaySegments[7]"
+    },
+    {
+      "id": "c3",
+      "condition": "대칭과 평행이동의 방향을 비교",
+      "mappedTo": "planeMarks.expressionLabels"
+    }
+  ],
+  "newVisualInformation": [
+    "두 직사각형의 가로·세로 크기와 위치를 선과 f·g 라벨로 직접 대조한다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "F1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "G1",
+    "G2",
+    "G3",
+    "G4"
+  ],
+  "hiddenPointNames": [
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "G1",
+    "G2",
+    "G3",
+    "G4"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "sF1",
+      "refs": [
+        "F1",
+        "F2"
+      ]
+    },
+    {
+      "id": "sF2",
+      "refs": [
+        "F2",
+        "F3"
+      ]
+    },
+    {
+      "id": "sF3",
+      "refs": [
+        "F3",
+        "F4"
+      ]
+    },
+    {
+      "id": "sF4",
+      "refs": [
+        "F4",
+        "F1"
+      ]
+    },
+    {
+      "id": "sG1",
+      "refs": [
+        "G1",
+        "G2"
+      ]
+    },
+    {
+      "id": "sG2",
+      "refs": [
+        "G2",
+        "G3"
+      ]
+    },
+    {
+      "id": "sG3",
+      "refs": [
+        "G3",
+        "G4"
+      ]
+    },
+    {
+      "id": "sG4",
+      "refs": [
+        "G4",
+        "G1"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "labF",
+        "ownerSegment": "sF1",
+        "text": "f"
+      },
+      {
+        "id": "labG",
+        "ownerSegment": "sG1",
+        "text": "g"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 540
+  },
+  "sourceQuote": "좌표평면에서 $f(x,y)=0$은 꼭짓점이 $(-2,1),(0,1),(0,4),(-2,4)$인 직사각형의 둘레이고, $g(x,y)=0$은 꼭짓점이 $(0,0),(3,0),(3,2),(0,2)$인 직사각형의 둘레이다. 그림을 참고할 때 $g(x,y)$를 $f$로 나타낸 식으로 옳은 것은?"
+}

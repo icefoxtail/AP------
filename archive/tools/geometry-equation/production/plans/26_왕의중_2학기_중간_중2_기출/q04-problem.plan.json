@@ -1,0 +1,54 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "8" }, { "kind": "integer", "value": "6" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "8" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "D", "op": "DIVISION_POINT", "inputs": ["B", "C"], "args": { "m": { "kind": "integer", "value": "5" }, "n": { "kind": "integer", "value": "3" }, "mode": "INTERNAL" }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "E", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "rational", "numerator": "16", "denominator": "5" }, { "kind": "rational", "numerator": "12", "denominator": "5" }] }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" }
+    ]
+  },
+  "displayPoints": ["A", "B", "C", "D", "E"],
+  "displaySegments": [
+    { "id": "sAB", "refs": ["A", "B"] },
+    { "id": "sBC", "refs": ["B", "C"] },
+    { "id": "sCA", "refs": ["C", "A"] },
+    { "id": "sAD", "refs": ["A", "D"] },
+    { "id": "sDE", "refs": ["D", "E"] }
+  ],
+  "rightAngles": [
+    { "id": "rightC", "refs": ["A", "C", "B"], "factRole": "GIVEN" },
+    { "id": "rightE", "refs": ["A", "E", "D"], "factRole": "GIVEN" }
+  ],
+  "planeMarks": {
+    "angles": [
+      { "id": "angleBAD", "refs": ["B", "A", "D"], "value": 26.56505118, "noLabel": true, "arcs": 1, "equalGroup": 1, "style": "ARC", "factRole": "GIVEN" },
+      { "id": "angleDAC", "refs": ["D", "A", "C"], "value": 26.56505118, "noLabel": true, "arcs": 1, "equalGroup": 1, "style": "ARC", "factRole": "GIVEN" }
+    ],
+    "dimensions": [
+      { "id": "lengthAB", "from": "A", "to": "B", "label": "10", "value": "10", "side": "LEFT", "style": "BAR", "factRole": "GIVEN" },
+      { "id": "lengthBC", "from": "B", "to": "C", "label": "8", "value": "8", "side": "BELOW", "style": "BAR", "factRole": "GIVEN" },
+      { "id": "lengthAC", "from": "A", "to": "C", "label": "6", "value": "6", "side": "RIGHT", "style": "BAR", "factRole": "GIVEN" }
+    ],
+    "regions": [
+      { "id": "targetBDE", "fill": "LIGHT", "shapes": [{ "polygon": ["B", "D", "E"] }] }
+    ]
+  },
+  "coordinateCanvas": { "width": 720, "height": 540 },
+  "caption": "AB=10, BC=8, AC=6인 직각삼각형에서 AD가 A의 각을 이등분하고 DE가 AB에 수직이다. 넓이를 구하는 작은 삼각형 BDE만 옅게 구분한다.",
+  "accessibilityDescription": "B가 왼쪽 아래, C가 오른쪽 아래, A가 C의 바로 위에 있다. C와 E에는 직각 사각표식, A에서 AD 양쪽에는 같은 각 호가 있다. AB=10, BC=8, AC=6의 치수선이 있으며 BDE만 옅은 선택 음영이고 ABC 전체는 채우지 않았다. 삼각형 BDE의 넓이와 미공개 길이는 표시하지 않는다.",
+  "sourceConditions": [
+    { "id": "rightTriangle", "condition": "ABC는 C에서 직각이고 AB=10, BC=8, AC=6이다. 대표 좌표에서 6²+8²=10²을 직접 만족한다.", "mappedTo": ["rightC", "sAB", "sBC", "sCA", "lengthAB", "lengthBC", "lengthAC"] },
+    { "id": "bisector", "condition": "AD는 A의 각 이등분선이고 D는 BC 위의 내분점이다. BD:DC=5:3을 좌표 연산으로 만족하지만 풀이 수치는 보이지 않는다.", "mappedTo": ["D", "sAD", "angleBAD", "angleDAC"] },
+    { "id": "perpendicular", "condition": "E는 AB 위에 있으며 DE는 AB에 수직이다. E=(16/5,12/5)이고 (A-E)·(D-E)=0이다.", "mappedTo": ["E", "sAB", "sDE", "rightE"] },
+    { "id": "target", "condition": "문제의 목표는 작은 삼각형 BDE의 넓이이다. BDE 외부 전체 면 채움은 필요하지 않다.", "mappedTo": ["targetBDE", "sDE"] }
+  ],
+  "newVisualInformation": [
+    "원본의 C/E 직각 사각표식, A의 같은 각 호, 10·8·6 길이 지시를 실제 엔진 필드에 연결한다.",
+    "현행 문제 SVG의 근거 없는 ABC 전체 면 채움을 없애고 원본의 BDE 관심 영역만 옅은 선택 음영으로 남긴다."
+  ],
+  "sourceQuote": "$\\angle C=90^\\circ$인 직각삼각형 $ABC$에서 $\\angle A$의 이등분선이 $BC$와 만나는 점을 $D$라 하고, $AB\\perp DE$이다."
+}

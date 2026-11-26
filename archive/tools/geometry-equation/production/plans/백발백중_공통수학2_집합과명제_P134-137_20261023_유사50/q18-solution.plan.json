@@ -1,0 +1,73 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "caption": "U는 1~12, A는 12의 약수, B는 3의 배수이다. 표시 원소는 제외될 A-B의 3개뿐이며 음영은 A^c∪B이다.",
+  "accessibilityDescription": "U는 1~12, A는 12의 약수, B는 3의 배수이다. 표시 원소는 제외될 A-B의 3개뿐이며 음영은 A^c∪B이다.",
+  "sourceConditions": [
+    {
+      "id": "universe",
+      "condition": "U={1,...,12}",
+      "mappedTo": "diagram.universe.count"
+    },
+    {
+      "id": "setA",
+      "condition": "A는 12의 약수 6개",
+      "mappedTo": "diagram.sets[0].count"
+    },
+    {
+      "id": "setB",
+      "condition": "B는 3의 배수 4개",
+      "mappedTo": "diagram.sets[1].count"
+    },
+    {
+      "id": "exception",
+      "condition": "A-B={1,2,4}",
+      "mappedTo": "diagram.elements"
+    },
+    {
+      "id": "target",
+      "condition": "A^c∪B=(A-B)^c",
+      "mappedTo": "diagram.shade"
+    }
+  ],
+  "newVisualInformation": [
+    "A-B의 원소만 선택적으로 명시하고, 그 밖의 음영 영역 전체가 구하는 합집합임을 보여 준다."
+  ],
+  "diagram": {
+    "kind": "VENN",
+    "universe": {
+      "name": "U",
+      "count": "12"
+    },
+    "sets": [
+      {
+        "id": "A",
+        "count": "6"
+      },
+      {
+        "id": "B",
+        "count": "4"
+      }
+    ],
+    "elements": [
+      {
+        "text": "1",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "2",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "4",
+        "in": [
+          "A"
+        ]
+      }
+    ],
+    "shade": "A^c∪B"
+  }
+}

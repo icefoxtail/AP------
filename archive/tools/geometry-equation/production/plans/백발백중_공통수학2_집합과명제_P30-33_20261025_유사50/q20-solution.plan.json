@@ -1,0 +1,70 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "q 영역",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "-2",
+              "state": "CLOSED"
+            }
+          },
+          {
+            "lo": {
+              "value": "4",
+              "state": "CLOSED"
+            },
+            "hi": null
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "p 가능",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-2",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "4",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "integerPoints": true
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "명제 조건의 수직선 비교"
+  },
+  "caption": "q의 진리집합은 x≤-2 또는 x≥4이다. [a,b]는 그와 만나면 안 되므로 -2<a<b<4이고, 최소 a=-1, 최대 b=3이다.",
+  "accessibilityDescription": "명제의 진리집합을 수직선으로 나타내어 열린 끝점과 닫힌 끝점, 두 조건의 관계를 구별한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "q: x≤-2 또는 x≥4",
+      "mappedTo": "numberLine.rows[0].pieces"
+    },
+    {
+      "id": "c2",
+      "condition": "p의 구간 [a,b]와 q가 만나지 않으려면 -2<a<b<4",
+      "mappedTo": "numberLine.rows[1].pieces[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "정수 a,b의 위치 가능 범위",
+      "mappedTo": "numberLine.rows[1].integerPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "양 바깥쪽 q 영역과 그 사이에만 들어갈 수 있는 닫히지 않은 p의 배치 범위를 구별한다."
+  ]
+}

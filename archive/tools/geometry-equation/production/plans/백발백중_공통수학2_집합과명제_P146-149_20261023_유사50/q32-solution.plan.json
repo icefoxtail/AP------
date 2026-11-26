@@ -1,0 +1,189 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "변수를 교환하고 평행이동한 결과의 왼쪽 또는 오른쪽 반원 영역을 나타낸다.",
+  "accessibilityDescription": "변수를 교환하고 평행이동한 결과의 왼쪽 또는 오른쪽 반원 영역을 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "center",
+      "condition": "반원 중심 (1,0) 및 반지름 2",
+      "mappedTo": [
+        "mathPlan.nodes[0].args",
+        "mathPlan.nodes[3].args"
+      ]
+    },
+    {
+      "id": "bounds",
+      "condition": "지름 끝점 (1,2)와 (1,-2), 호 방향 CW",
+      "mappedTo": [
+        "mathPlan.nodes[1].args",
+        "mathPlan.nodes[2].args",
+        "planeMarks.arcs[0]"
+      ]
+    },
+    {
+      "id": "region",
+      "condition": "지름을 포함하는 반원 영역",
+      "mappedTo": "planeMarks.regions[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "f의 변수 치환 후 중심 이동과 반원 방향 전환을 영역 자체로 확인한다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "K",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "K"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "K"
+  ],
+  "hiddenPointNames": [
+    "A",
+    "B",
+    "K"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "diam",
+      "refs": [
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "arc1",
+        "circle": "k",
+        "center": "K",
+        "from": "A",
+        "to": "B",
+        "side": "CW"
+      }
+    ],
+    "regions": [
+      {
+        "id": "rg",
+        "fill": "LIGHT",
+        "factRole": "CONCLUSION",
+        "shapes": [
+          {
+            "segment": {
+              "center": "K",
+              "from": "A",
+              "to": "B",
+              "side": "CW"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 580,
+    "height": 440
+  },
+  "sourceQuote": "그림은 중심이 원점이고 반지름이 $2$인 원의 **위쪽 반원 영역**(지름 포함)이며, 이 도형을 $f(x,y)=0$으로 나타낸다. $f(y,x-1)=0$의 도형은?"
+}

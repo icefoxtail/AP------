@@ -1,0 +1,35 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "caption": "A^c∪B=U를 여집합으로 바꾸면 A-B=∅이므로 A⊆B이다.",
+  "accessibilityDescription": "집합 A의 모든 원소가 집합 B 안에 들어 있는 포함 관계를 보여 주는 벤다이어그램.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "A^c∪B=U",
+      "mappedTo": "diagram.subset"
+    },
+    {
+      "id": "c2",
+      "condition": "A-B=∅",
+      "mappedTo": "diagram.subset"
+    }
+  ],
+  "newVisualInformation": [
+    "A의 원을 B의 원 내부에 놓아 포함 방향을 드러낸다."
+  ],
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A"
+      },
+      {
+        "id": "B"
+      }
+    ],
+    "subset": [
+      "A",
+      "B"
+    ]
+  }
+}

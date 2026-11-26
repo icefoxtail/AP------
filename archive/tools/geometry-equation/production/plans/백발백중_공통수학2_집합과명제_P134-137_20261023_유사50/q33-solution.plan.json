@@ -1,0 +1,74 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "caption": "서로소인 A와 B 각각에서 적어도 한 원소를 고르고 바깥 원소는 자유롭게 고른다.",
+  "accessibilityDescription": "서로소인 A와 B 각각에서 적어도 한 원소를 고르고 바깥 원소는 자유롭게 고른다.",
+  "sourceConditions": [
+    {
+      "id": "members",
+      "condition": "U, A, B의 정확한 원소별 소속",
+      "mappedTo": "diagram.elements"
+    },
+    {
+      "id": "disjoint",
+      "condition": "A∩B=∅",
+      "mappedTo": "diagram.disjoint"
+    }
+  ],
+  "newVisualInformation": [
+    "원의 포함·겹침·바깥 영역만 시각화하며 원소 수나 정답을 그림 원소로 가장하지 않는다."
+  ],
+  "diagram": {
+    "kind": "VENN",
+    "universe": {
+      "name": "U"
+    },
+    "sets": [
+      {
+        "id": "A"
+      },
+      {
+        "id": "B"
+      }
+    ],
+    "elements": [
+      {
+        "text": "1",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "2",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "3",
+        "in": [
+          "B"
+        ]
+      },
+      {
+        "text": "4",
+        "in": [
+          "B"
+        ]
+      },
+      {
+        "text": "5",
+        "in": []
+      },
+      {
+        "text": "6",
+        "in": []
+      }
+    ],
+    "disjoint": [
+      [
+        "A",
+        "B"
+      ]
+    ]
+  }
+}

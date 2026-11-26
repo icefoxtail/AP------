@@ -1,0 +1,34 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"expression","op":"mul","args":[{"kind":"integer","value":"6"},{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"13"}]}]}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"expression","op":"mul","args":[{"kind":"integer","value":"6"},{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"13"}]}]},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"expression","op":"mul","args":[{"kind":"integer","value":"6"},{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"13"}]}]},{"kind":"expression","op":"mul","args":[{"kind":"integer","value":"6"},{"kind":"expression","op":"sqrt","args":[{"kind":"integer","value":"13"}]}]}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"E","op":"DIVISION_POINT","inputs":["C","D"],"args":{"m":{"kind":"integer","value":"2"},"n":{"kind":"integer","value":"1"},"mode":"INTERNAL"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"lineBE","op":"LINE_THROUGH","inputs":["B","E"],"args":{},"outputType":"LINE","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"F","op":"PERPENDICULAR_FOOT","inputs":["A","lineBE"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"G","op":"PERPENDICULAR_FOOT","inputs":["C","lineBE"],"args":{},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "displayPoints":["A","B","C","D","E","F","G"],
+  "displaySegments":[
+    {"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},{"id":"sCD","refs":["C","D"]},{"id":"sDA","refs":["D","A"]},
+    {"id":"sBF","refs":["B","F"]},{"id":"sFG","refs":["F","G"]},{"id":"sGE","refs":["G","E"]},
+    {"id":"sAF","refs":["A","F"]},{"id":"sCG","refs":["C","G"]},{"id":"sAG","refs":["A","G"]}
+  ],
+  "rightAngles":[{"id":"rF","refs":["A","F","G"],"factRole":"GIVEN"},{"id":"rG","refs":["C","G","F"],"factRole":"GIVEN"}],
+  "planeMarks":{"expressionLabels":[
+    {"id":"lblAF","ownerSegment":"sAF","text":"18","unit":"cm","factRole":"GIVEN"},
+    {"id":"lblCG","ownerSegment":"sCG","text":"12","unit":"cm","factRole":"GIVEN"}
+  ],"regions":[{"id":"areaAFG","fill":"LIGHT","shapes":[{"polygon":["A","F","G"]}]}]},
+  "coordinateCanvas":{"width":720,"height":540},
+  "caption":"정사각형 ABCD에서 BFGE는 한 직선 위에 있고 AF와 CG는 그 선에 수직이다. 원본처럼 삼각형 AFG만 옅게 구분한다.",
+  "accessibilityDescription":"정사각형 ABCD의 왼쪽 아래 B에서 오른쪽 변의 E로 올라가는 선이 F, G를 차례로 지나간다. A에서 F, C에서 G로 내린 선분은 각각 수직이고 18 cm, 12 cm이다. AFG 삼각형만 옅은 회색으로 표시했다.",
+  "sourceConditions":[
+    {"id":"square","condition":"ABCD는 정사각형이며 E는 CD 위에 있다. 닮음 관계를 이용해 정사각형의 변은 6√13인 한 정확한 대표 배치로 둔다.","mappedTo":["sAB","sBC","sCD","sDA","E"]},
+    {"id":"feet","condition":"A와 C에서 BE에 내린 수선의 발이 각각 F,G이며 실제 거리 AF=18 cm, CG=12 cm이다.","mappedTo":["F","G","rF","rG","sAF","sCG","lblAF","lblCG"]},
+    {"id":"area","condition":"묻는 도형은 삼각형 AFG이므로 해당 면만 표시하되 넓이 답은 그림에 적지 않는다.","mappedTo":["sFG","sAG","areaAFG"]}
+  ],
+  "newVisualInformation":["원본 그림의 색칠한 삼각형 AFG 영역을 복원하되 정사각형 나머지 면은 흰 상태로 둔다.","수선의 발 F,G를 수학적 수선 연산으로 생성하고 18 cm·12 cm·두 직각 표식을 그려지는 필드로 명시한다."],
+  "sourceQuote":"내린 수선의 발을 각각 F, G라고 할 때"
+}

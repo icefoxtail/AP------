@@ -22,11 +22,6 @@
         "id": "P0",
         "x": "0",
         "y": "2"
-      },
-      {
-        "id": "P1",
-        "x": "1",
-        "y": "2"
       }
     ],
     "formula": "2",
@@ -47,12 +42,35 @@
       ]
     }
   },
-  "caption": "④의 첫 식은 수평선 y=−c/b,둘째 식은 수직선 x=−c′/a′이므로 항상 하나의 교점이다. 이 패널은 y2,x1의 설명용 대표값이며 실제 상수의 값을 정하지 않는다. 정답④.",
+  "caption": "④는 한 식이 수평선, 다른 식이 수직선이라 언제나 한 교점이다. 좌표 (1,2)는 상수의 값을 정한 것이 아닌 설명용 대표 그림이며 교점 라벨은 한 번만 표시한다. 정답 ④.",
   "sourceConditions": [
     {
-      "id": "source",
-      "condition": "연립방정식 $\\begin{cases}ax+by+c=0\\\\a'x+b'y+c'=0\\end{cases}$ ($a$, $b$, $c$, $a'$, $b'$, $c'$는 상수)에 대한 설명으로 옳은 것은? [5점]",
-      "mappedTo": "graphPlan"
+      "id": "horizontal",
+      "condition": "④에서 a=0,b≠0이면 첫 방정식은 수평 직선이다. 수평선 y=2는 대표 예다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.requiredPoints"
+      ]
+    },
+    {
+      "id": "vertical",
+      "condition": "a′≠0,b′=0이면 둘째 방정식은 수직 직선이다. x=1은 대표 예다.",
+      "mappedTo": [
+        "graphPlan.overlays.lines"
+      ]
+    },
+    {
+      "id": "intersection",
+      "condition": "수평선과 수직선은 정확히 한 점에서 만나며 교점을 하나만 표시한다.",
+      "mappedTo": [
+        "graphPlan.overlays.points"
+      ]
     }
-  ]
+  ],
+  "accessibilityDescription": "수평선 y=2와 수직선 x=1이 (1,2)에서 만난다. 원점 위의 (0,2)와 단 하나의 교점 (1,2)이 중복 없이 각각 표시되어 있다.",
+  "newVisualInformation": [
+    "동일한 (1,2) 좌표의 중복 라벨을 없애도록 requiredPoints의 P1을 제거하고 overlay의 단일 교점 I만 남긴다.",
+    "설명용 상수는 원문에서 확정되지 않았으며 해설 패널의 대표 예임을 caption에 명시한다."
+  ],
+  "sourceQuote": "연립방정식 $\\\\begin{cases}ax+by+c=0"
 }

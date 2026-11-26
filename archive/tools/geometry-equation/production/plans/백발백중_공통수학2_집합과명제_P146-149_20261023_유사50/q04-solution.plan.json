@@ -1,0 +1,282 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "세 변의 길이가 정해진 삼각형 ABC에서 M은 BC의 중점이고, N은 AM을 2:3으로 내분한다.",
+  "accessibilityDescription": "삼각형 ABC의 변 길이, 중점 M, 중선 위 내분점 N을 표시한 축 없는 도형.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AB=5, AC=7, BC=8",
+      "mappedTo": "mathPlan.nodes[1],mathPlan.nodes[2],mathPlan.nodes[3],mathPlan.nodes[4],planeMarks.expressionLabels"
+    },
+    {
+      "id": "c2",
+      "condition": "M은 BC의 중점",
+      "mappedTo": "mathPlan.nodes[7],planeMarks.equalLengths"
+    },
+    {
+      "id": "c3",
+      "condition": "AN:NM=2:3",
+      "mappedTo": "mathPlan.nodes[8],planeMarks.expressionLabels"
+    },
+    {
+      "id": "c4",
+      "condition": "A=(0,0), B=(AB,0)는 세 변으로 정해진 삼각형의 회전·이동 좌표 기준",
+      "mappedTo": "mathPlan.nodes[0],mathPlan.nodes[1]"
+    }
+  ],
+  "newVisualInformation": [
+    "주어진 좌표·길이·위치 조건과 풀이에서 얻는 도형 관계를 실제 점·선분·표식으로 그린다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "cA",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "7"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cB",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "8"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "I",
+        "op": "INTERSECTION",
+        "inputs": [
+          "cA",
+          "cB"
+        ],
+        "args": {},
+        "outputType": "POINT_SET",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SELECT_POINT",
+        "inputs": [
+          "I"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "CONCLUSION",
+        "branch": {
+          "kind": "SIDE_OF_ORIENTED_LINE",
+          "refs": [
+            "A",
+            "B"
+          ],
+          "sign": 1
+        }
+      },
+      {
+        "id": "T",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "MIDPOINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "N",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "A",
+          "M"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "M",
+    "N"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBM",
+      "refs": [
+        "B",
+        "M"
+      ]
+    },
+    {
+      "id": "sMC",
+      "refs": [
+        "M",
+        "C"
+      ]
+    },
+    {
+      "id": "sAN",
+      "refs": [
+        "A",
+        "N"
+      ]
+    },
+    {
+      "id": "sNM",
+      "refs": [
+        "N",
+        "M"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "eBM",
+        "count": 1,
+        "segments": [
+          "sBM",
+          "sMC"
+        ]
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "labAB",
+        "ownerSegment": "sAB",
+        "text": "5"
+      },
+      {
+        "id": "labAC",
+        "ownerSegment": "sAC",
+        "text": "7"
+      },
+      {
+        "id": "labBC",
+        "ownerSegment": "sBC",
+        "text": "8"
+      },
+      {
+        "id": "labAN",
+        "ownerSegment": "sAN",
+        "text": "2"
+      },
+      {
+        "id": "labNM",
+        "ownerSegment": "sNM",
+        "text": "3"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 540
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [{ "id": "P" }, { "id": "Q" }],
+    "shade": "P∩Q"
+  },
+  "caption": "p⇒~q의 반례는 p가 참이고 q도 참인 P∩Q 영역이다.",
+  "accessibilityDescription": "집합 P와 Q가 겹친 부분을 표시한 벤다이어그램이다.",
+  "sourceConditions": [
+    { "id": "c1", "condition": "p의 진리집합 P", "mappedTo": "diagram.sets[0]" },
+    { "id": "c2", "condition": "q의 진리집합 Q", "mappedTo": "diagram.sets[1]" },
+    { "id": "c3", "condition": "p⇒~q가 거짓이면 p와 q가 참", "mappedTo": "diagram.shade" }
+  ],
+  "newVisualInformation": ["반례가 P와 Q의 교집합에 놓이는 관계를 영역으로 보여 준다."]
+}

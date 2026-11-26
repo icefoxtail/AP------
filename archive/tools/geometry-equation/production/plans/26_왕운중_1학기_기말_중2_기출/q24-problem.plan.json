@@ -1,0 +1,288 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "XL",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "XR",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "YB",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "YT",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "7"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "7"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "XL",
+    "XR",
+    "YB",
+    "YT",
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "hiddenPointNames": [
+    "XL",
+    "XR",
+    "YB",
+    "YT",
+    "D"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "xAxis",
+      "refs": [
+        "XL",
+        "XR"
+      ],
+      "arrow": "END"
+    },
+    {
+      "id": "yAxis",
+      "refs": [
+        "YB",
+        "YT"
+      ],
+      "arrow": "END"
+    },
+    {
+      "id": "line1",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "line2",
+      "refs": [
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "eq1",
+        "ownerSegment": "line1",
+        "text": "-x+y-4=0"
+      },
+      {
+        "id": "eq2",
+        "ownerSegment": "line2",
+        "text": "3x+y+4=0"
+      },
+      {
+        "id": "x",
+        "ownerSegment": "xAxis",
+        "text": "x"
+      },
+      {
+        "id": "y",
+        "ownerSegment": "yAxis",
+        "text": "y"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 530
+  },
+  "caption": "두 방정식 −x+y−4=0과 3x+y+4=0의 직선을 모두 실선으로 그린다. 세 번째 미지의 직선이나 세 직선의 공통점은 문제 그림에 표시하지 않는다.",
+  "accessibilityDescription": "가로·세로 좌표축 위로 오른쪽 위로 오르는 직선 −x+y−4=0과 오른쪽 아래로 내리는 직선 3x+y+4=0이 각각 실선으로 그려져 만난다. 다른 선이나 면 채움이 없다.",
+  "sourceConditions": [
+    {
+      "id": "line1",
+      "condition": "첫 번째 일차방정식 −x+y−4=0의 직선이다.",
+      "mappedTo": [
+        "line1",
+        "eq1"
+      ]
+    },
+    {
+      "id": "line2",
+      "condition": "두 번째 일차방정식 3x+y+4=0의 직선이다.",
+      "mappedTo": [
+        "line2",
+        "eq2"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본 PNG의 두 직선은 모두 실선이므로 현행 문제 SVG의 주황 점선을 실선으로 바로잡는다.",
+    "문제 해답인 a의 값이나 제3의 직선을 문제 그림에 선공개하지 않는다."
+  ],
+  "sourceQuote": "두 일차방정식 $-x+y-4=0$, $3x+y+4=0$의 그래프가 다음 그림과 같을 때"
+}

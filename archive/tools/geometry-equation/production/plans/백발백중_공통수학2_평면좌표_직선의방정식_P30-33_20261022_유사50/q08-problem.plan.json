@@ -1,0 +1,186 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "주어진 정삼각형 ABC의 높이 AM과 원점 무게중심 O의 위치를 나타낸다.",
+  "accessibilityDescription": "주어진 정삼각형 ABC의 높이 AM과 원점 무게중심 O의 위치를 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "equilateral",
+      "condition": "A,B,C는 정삼각형의 꼭짓점",
+      "mappedTo": [
+        "mathPlan.nodes[2]",
+        "mathPlan.nodes[3]",
+        "displaySegments"
+      ]
+    },
+    {
+      "id": "centroid",
+      "condition": "원점 O는 무게중심이므로 AM 위에 있다.",
+      "mappedTo": "displayPoints"
+    },
+    {
+      "id": "foot",
+      "condition": "AM은 변 BC에 수직이며 M은 중점이다.",
+      "mappedTo": [
+        "mathPlan.nodes[4]",
+        "rightAngles"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "정삼각형에서 꼭짓점·무게중심·높이의 발이 일직선인 조건만 보여 준다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "120"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "240"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "MIDPOINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 680,
+    "height": 520
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "O",
+    "M"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAM",
+      "refs": [
+        "A",
+        "M"
+      ],
+      "dashed": true
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rM",
+      "refs": [
+        "A",
+        "M",
+        "B"
+      ]
+    }
+  ],
+  "sourceQuote": "정삼각형 $ABC$의 무게중심이 원점 $O$이고 꼭짓점 $A(0,6)$이다. $A$에서 변 $BC$에 내린 수선의 발을 $M$이라 할 때, $AM$의 길이는?"
+}

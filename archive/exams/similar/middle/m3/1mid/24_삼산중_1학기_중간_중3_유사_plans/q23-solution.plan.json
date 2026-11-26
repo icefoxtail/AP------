@@ -1,0 +1,63 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      { "id": "P0", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "P1", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "3" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "P2", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "5" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "P3", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "3" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "P4", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "3" }, { "kind": "integer", "value": "3" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "P5", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "5" }, { "kind": "integer", "value": "3" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "P6", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "5" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "P7", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "3" }, { "kind": "integer", "value": "5" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "P8", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "5" }, { "kind": "integer", "value": "5" }] }, "outputType": "POINT", "factRole": "GIVEN" }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": ["P0", "P1", "P2", "P3", "P4", "P5", "P6", "P7", "P8"],
+  "displaySegments": [
+    { "id": "s01", "refs": ["P0", "P1"] },
+    { "id": "s12", "refs": ["P1", "P2"] },
+    { "id": "s34", "refs": ["P3", "P4"] },
+    { "id": "s45", "refs": ["P4", "P5"] },
+    { "id": "s67", "refs": ["P6", "P7"] },
+    { "id": "s78", "refs": ["P7", "P8"] },
+    { "id": "s03", "refs": ["P0", "P3"] },
+    { "id": "s36", "refs": ["P3", "P6"] },
+    { "id": "s14", "refs": ["P1", "P4"] },
+    { "id": "s47", "refs": ["P4", "P7"] },
+    { "id": "s25", "refs": ["P2", "P5"] },
+    { "id": "s58", "refs": ["P5", "P8"] }
+  ],
+  "planeMarks": {
+    "regions": [
+      { "id": "areaAA", "fill": "LIGHT", "label": "a^2", "factRole": "CONCLUSION", "shapes": [{ "polygon": ["P0", "P1", "P4", "P3"] }] },
+      { "id": "areaAB1", "fill": "LIGHT", "label": "ab", "factRole": "CONCLUSION", "shapes": [{ "polygon": ["P1", "P2", "P5", "P4"] }] },
+      { "id": "areaAB2", "fill": "LIGHT", "label": "ab", "factRole": "CONCLUSION", "shapes": [{ "polygon": ["P3", "P4", "P7", "P6"] }] },
+      { "id": "areaBB", "fill": "LIGHT", "label": "b^2", "factRole": "CONCLUSION", "shapes": [{ "polygon": ["P4", "P5", "P8", "P7"] }] }
+    ],
+    "dimensions": [
+      { "id": "bottomA", "from": "P0", "to": "P1", "label": "a", "side": "BELOW", "style": "ARROW", "factRole": "GIVEN" },
+      { "id": "bottomB", "from": "P1", "to": "P2", "label": "b", "side": "BELOW", "style": "ARROW", "factRole": "GIVEN" },
+      { "id": "leftA", "from": "P0", "to": "P3", "label": "a", "side": "LEFT", "style": "ARROW", "factRole": "GIVEN" },
+      { "id": "leftB", "from": "P3", "to": "P6", "label": "b", "side": "LEFT", "style": "ARROW", "factRole": "GIVEN" }
+    ]
+  },
+  "coordinateCanvas": { "width": 440, "height": 390 },
+  "hiddenPointNames": ["P0", "P1", "P2", "P3", "P4", "P5", "P6", "P7", "P8"],
+  "hiddenPointStyle": "NONE",
+  "caption": "한 변이 a+b인 정사각형을 a와 b의 길이로 각각 나누어 네 영역 a², ab, ab, b²를 얻는 기하학적 증명 모식도이다. a와 b의 수치 비율은 주어지지 않아 도식의 길이 비율은 예시이며 실측값을 뜻하지 않는다.",
+  "accessibilityDescription": "가로·세로가 각각 a와 b로 분할된 큰 정사각형 안에 왼쪽 아래 a 제곱, 오른쪽 아래 ab, 왼쪽 위 ab, 오른쪽 위 b 제곱이라는 넓이 라벨이 있다. 큰 정사각형의 넓이는 이 네 부분의 합이다.",
+  "sourceConditions": [
+    { "id": "source", "condition": "[서·논술형 3] a>0, b>0인 경우 한 변의 길이가 a+b인 정사각형을 네 영역으로 나누어 (a+b)^2=a^2+2ab+b^2임을 넓이로 증명한다.", "mappedTo": "PRESERVED_ARCHIVE_BANK" },
+    { "id": "partition", "condition": "가로와 세로를 순서대로 a,b로 나누면 부분 넓이가 a²,ab,ab,b²가 된다. SOURCE_POINT의 0,3,5는 문자변수 a,b의 비율에 관한 원문 수치가 아니라 비례의 증명을 위한 임시 화면 배치 좌표이다.", "mappedTo": ["mathPlan.nodes", "displaySegments", "planeMarks.regions", "planeMarks.dimensions"] }
+  ],
+  "newVisualInformation": ["분배법칙의 네 항을 정사각형의 네 부분과 1:1로 대응시키며 ab 영역 두 개를 직관적으로 구별한다."]
+}

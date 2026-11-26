@@ -1,0 +1,74 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "a",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "명제 p",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-8",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "8",
+              "state": "OPEN"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "명제 q",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "2",
+              "state": "OPEN"
+            }
+          },
+          {
+            "lo": {
+              "value": "6",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ]
+      },
+      {
+        "kind": "RESULT",
+        "label": "공통",
+        "integerPoints": true
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "명제 조건의 수직선 비교"
+  },
+  "caption": "p: -8<a<8; q: a<2 또는 a>6. 두 조건을 만족하는 정수는 -7, -6, -5, -4, -3, -2, -1, 0, 1, 7으로 10개이다.",
+  "accessibilityDescription": "명제의 진리집합을 수직선으로 나타내어 열린 끝점과 닫힌 끝점, 두 조건의 관계를 구별한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "p: -8<a<8",
+      "mappedTo": "numberLine.rows[0].pieces[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "q: a<2 또는 a>6",
+      "mappedTo": "numberLine.rows[1].pieces"
+    },
+    {
+      "id": "c3",
+      "condition": "공통 정수 -7, -6, -5, -4, -3, -2, -1, 0, 1, 7",
+      "mappedTo": "numberLine.rows[2].integerPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "p의 열린 유계 구간과 q의 두 갈래 반직선의 교집합을 정수점으로 표시한다."
+  ]
+}

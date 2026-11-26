@@ -1,0 +1,148 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "원점 대칭으로 얻은 P와 직선 y=x 대칭으로 얻은 Q를 연결한 선분 PQ.",
+  "accessibilityDescription": "원래 점 T에서 원점과 직선 y=x에 대한 두 종류의 대칭점 P,Q와 그 사이 선분을 좌표평면에 보여 준다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "T(5,-1)",
+      "mappedTo": "mathPlan.nodes[1].args.coordinates"
+    },
+    {
+      "id": "c2",
+      "condition": "원점 대칭 P",
+      "mappedTo": "mathPlan.nodes[3].op"
+    },
+    {
+      "id": "c3",
+      "condition": "직선 y=x 대칭 Q",
+      "mappedTo": "mathPlan.nodes[4].op"
+    }
+  ],
+  "newVisualInformation": [
+    "주어진 좌표·길이·위치 조건과 풀이에서 얻는 도형 관계를 실제 점·선분·표식으로 그린다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "-1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "-1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "POINT_REFLECTION",
+        "inputs": [
+          "T",
+          "O"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "Q",
+        "op": "LINE_REFLECTION",
+        "inputs": [
+          "T",
+          "L"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "X",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "T",
+    "P",
+    "Q"
+  ],
+  "displayLines": [
+    "L"
+  ],
+  "lineLabels": [
+    {
+      "nodeId": "L",
+      "form": "SLOPE_INTERCEPT"
+    }
+  ],
+  "displaySegments": [
+    {
+      "id": "sPQ",
+      "refs": [
+        "P",
+        "Q"
+      ],
+      "emphasis": "BOLD"
+    }
+  ],
+  "coordinateLabels": [
+    "T",
+    "P",
+    "Q"
+  ]
+}

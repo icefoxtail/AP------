@@ -39,8 +39,12 @@
         "args": {
           "coordinates": [
             {
-              "kind": "integer",
-              "value": "0"
+              "kind": "expression",
+              "op": "sub",
+              "args": [
+                { "kind": "integer", "value": "3" },
+                { "kind": "expression", "op": "sqrt", "args": [{ "kind": "integer", "value": "12" }] }
+              ]
             },
             {
               "kind": "integer",
@@ -77,8 +81,12 @@
         "args": {
           "coordinates": [
             {
-              "kind": "integer",
-              "value": "6"
+              "kind": "expression",
+              "op": "add",
+              "args": [
+                { "kind": "integer", "value": "3" },
+                { "kind": "expression", "op": "sqrt", "args": [{ "kind": "integer", "value": "12" }] }
+              ]
             },
             {
               "kind": "integer",
@@ -119,8 +127,9 @@
               "value": "3"
             },
             {
-              "kind": "integer",
-              "value": "3"
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [{ "kind": "integer", "value": "12" }]
             }
           ]
         },
@@ -134,12 +143,17 @@
         "args": {
           "coordinates": [
             {
-              "kind": "integer",
-              "value": "6"
+              "kind": "expression",
+              "op": "add",
+              "args": [
+                { "kind": "integer", "value": "3" },
+                { "kind": "expression", "op": "sqrt", "args": [{ "kind": "integer", "value": "12" }] }
+              ]
             },
             {
-              "kind": "integer",
-              "value": "3"
+              "kind": "expression",
+              "op": "sqrt",
+              "args": [{ "kind": "integer", "value": "12" }]
             }
           ]
         },
@@ -310,6 +324,11 @@
       "id": "source",
       "condition": "[서·논술형 1] 수직선 위의 점 $A$는 수 $3$에 대응한다. 넓이가 $12$인 정사각형의 한 변의 길이만큼 점 $A$에서 오른쪽으로 이동한 점을 $P$, 왼쪽으로 이동한 점을 $Q$라 한다. 점 $P, Q$에 대응하는 수가 각각 $a, b$일 때, $\\dfrac{b}{a}$의 값을 구하는 과정을 서술하시오. [6점]",
       "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "square-area-and-numberline",
+      "condition": "정사각형의 넓이는 12이므로 AP=AD=DC=CP=AQ=sqrt(12)=2sqrt(3); 수직선 A는 3이므로 P=3+sqrt(12), Q=3-sqrt(12)이다.",
+      "mappedTo": ["mathPlan.nodes", "displaySegments", "planeMarks.equalLengths", "rightAngles"]
     }
   ]
 }

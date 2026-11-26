@@ -1,0 +1,52 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "caption": "1~100에서 A는 5의 배수 20개, B는 10의 배수 10개로 B⊆A이므로 A∪B=A이다.",
+  "accessibilityDescription": "1~100에서 A는 5의 배수 20개, B는 10의 배수 10개로 B⊆A이므로 A∪B=A이다.",
+  "sourceConditions": [
+    {
+      "id": "setA",
+      "condition": "n(A5)=20",
+      "mappedTo": "diagram.sets[0].count"
+    },
+    {
+      "id": "setB",
+      "condition": "n(A10)=10",
+      "mappedTo": "diagram.sets[1].count"
+    },
+    {
+      "id": "subset",
+      "condition": "A10⊆A5",
+      "mappedTo": "diagram.subset"
+    },
+    {
+      "id": "union",
+      "condition": "A5∪A10=A5",
+      "mappedTo": "diagram.shade"
+    }
+  ],
+  "newVisualInformation": [
+    "공통 영역이 B 전체인 경우 합집합은 A만 남는 구조를 보인다."
+  ],
+  "diagram": {
+    "kind": "VENN",
+    "universe": {
+      "name": "U",
+      "count": "100"
+    },
+    "sets": [
+      {
+        "id": "A",
+        "count": "20"
+      },
+      {
+        "id": "B",
+        "count": "10"
+      }
+    ],
+    "subset": [
+      "B",
+      "A"
+    ],
+    "shade": "A"
+  }
+}

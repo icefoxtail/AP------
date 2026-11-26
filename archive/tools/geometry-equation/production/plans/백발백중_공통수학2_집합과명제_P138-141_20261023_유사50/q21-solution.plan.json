@@ -1,0 +1,117 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "caption": "B의 부분집합 X는 F=B-A={2,3,5,6,8,9}를 반드시 포함하고, B-F={1,4,7,10}의 원소는 자유롭게 선택한다.",
+  "accessibilityDescription": "B의 부분집합 X는 F=B-A={2,3,5,6,8,9}를 반드시 포함하고, B-F={1,4,7,10}의 원소는 자유롭게 선택한다.",
+  "sourceConditions": [
+    {
+      "id": "universe",
+      "condition": "B={1,2,3,4,5,6,7,8,9,10}",
+      "mappedTo": "diagram.elements"
+    },
+    {
+      "id": "mandatory",
+      "condition": "F=B-A={2,3,5,6,8,9}",
+      "mappedTo": "diagram.elements"
+    },
+    {
+      "id": "subset",
+      "condition": "F⊆X⊆B",
+      "mappedTo": "diagram.subset"
+    },
+    {
+      "id": "shade",
+      "condition": "F는 반드시 들어갈 원소",
+      "mappedTo": "diagram.shade"
+    }
+  ],
+  "newVisualInformation": [
+    "안쪽 F의 원소는 필수, B-F의 원소는 선택 가능하다는 역할의 차이를 보인다."
+  ],
+  "diagram": {
+    "kind": "VENN",
+    "showUniverse": false,
+    "sets": [
+      {
+        "id": "F",
+        "count": "6"
+      },
+      {
+        "id": "B",
+        "count": "10"
+      }
+    ],
+    "subset": [
+      "F",
+      "B"
+    ],
+    "elements": [
+      {
+        "text": "1",
+        "in": [
+          "B"
+        ]
+      },
+      {
+        "text": "2",
+        "in": [
+          "F",
+          "B"
+        ]
+      },
+      {
+        "text": "3",
+        "in": [
+          "F",
+          "B"
+        ]
+      },
+      {
+        "text": "4",
+        "in": [
+          "B"
+        ]
+      },
+      {
+        "text": "5",
+        "in": [
+          "F",
+          "B"
+        ]
+      },
+      {
+        "text": "6",
+        "in": [
+          "F",
+          "B"
+        ]
+      },
+      {
+        "text": "7",
+        "in": [
+          "B"
+        ]
+      },
+      {
+        "text": "8",
+        "in": [
+          "F",
+          "B"
+        ]
+      },
+      {
+        "text": "9",
+        "in": [
+          "F",
+          "B"
+        ]
+      },
+      {
+        "text": "10",
+        "in": [
+          "B"
+        ]
+      }
+    ],
+    "shade": "F"
+  }
+}

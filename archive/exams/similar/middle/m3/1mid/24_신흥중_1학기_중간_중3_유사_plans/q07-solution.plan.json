@@ -1,0 +1,25 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "DICE_TABLE",
+    "faces": 6,
+    "cell": "PRODUCT",
+    "colVar": "a",
+    "rowVar": "b",
+    "highlightGroups": [
+      { "highlight": { "expr": "a*b", "cmp": "=", "value": 3 }, "tone": 1 },
+      { "highlight": { "expr": "a*b", "cmp": "=", "value": 12 }, "tone": 2 }
+    ]
+  },
+  "caption": "주사위 A의 눈 a와 B의 눈 b에 대해 6×6 곱셈 표에서 ab=3인 2칸과 ab=12인 4칸을 구분해 표시한다. 3ab가 완전제곱수가 되는 경우는 36칸 중 6칸이다.",
+  "accessibilityDescription": "첫째 주사위의 눈 1에서 6까지를 열, 둘째 주사위의 눈 1에서 6까지를 행으로 한 36칸의 곱셈 표이다. 곱이 3인 두 칸과 12인 네 칸에 서로 다른 농도의 표시가 있다.",
+  "sourceConditions": [
+    { "id": "s1", "condition": "두 주사위의 눈 a,b는 각각 1부터 6까지의 정수", "mappedTo": ["chart.kind", "chart.faces", "chart.colVar", "chart.rowVar"] },
+    { "id": "s2", "condition": "√(12ab)가 자연수일 조건은 3ab가 완전제곱수, 곧 ab=3 또는 12", "mappedTo": ["chart.highlightGroups"] },
+    { "id": "s3", "condition": "순서쌍은 (1,3),(3,1),(2,6),(3,4),(4,3),(6,2) 여섯 가지", "mappedTo": ["chart.highlightGroups"] }
+  ],
+  "newVisualInformation": [
+    "36칸의 가능한 순서쌍 중 곱이 3 또는 12인 정확히 여섯 칸을 구별한다",
+    "ab=3인 2칸과 ab=12인 4칸을 서로 다른 농도로 표시한다"
+  ]
+}

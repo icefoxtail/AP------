@@ -1,0 +1,308 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R",
+        "op": "TRANSLATE_POINT",
+        "inputs": ["B"],
+        "args": {
+          "dx": {"kind":"integer","value":"12"},
+          "dy": {"kind":"integer","value":"0"}
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V",
+        "op": "TRANSLATE_POINT",
+        "inputs": ["B"],
+        "args": {
+          "dx": {"kind":"integer","value":"0"},
+          "dy": {"kind":"integer","value":"12"}
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "B",
+          "R"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "25"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lBR",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "R"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lBV",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "V"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "D",
+          "lBR"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "D",
+          "lBV"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "O",
+        "op": "MIDPOINT",
+        "inputs": [
+          "B",
+          "D"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "O"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAO",
+      "refs": [
+        "A",
+        "O"
+      ]
+    },
+    {
+      "id": "sOC",
+      "refs": [
+        "O",
+        "C"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sBO",
+      "refs": [
+        "B",
+        "O"
+      ]
+    },
+    {
+      "id": "sOD",
+      "refs": [
+        "O",
+        "D"
+      ],
+      "dashed": true
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 540
+  },
+  "caption": "직사각형 ABCD의 25도 각·미지각 x·선분 OC의 미지 길이 y와 대각선 BD=10을 점선·각 호·치수선으로 표시한다.",
+  "accessibilityDescription": "세로로 놓인 A-B와 C-D, 가로 B-C와 A-D의 직사각형이다. 두 대각선이 중점 O에서 만나며 O-D와 O-C는 원본대로 점선이다. B에서 BC와 BD 사이의 25도 각, A의 x 각, 선분 OC의 y, BD 전체 길이 10을 각각 별도의 그려지는 라벨로 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "rectangle",
+      "condition": "R=(12,0), B=(0,0)를 기준으로 BD=10 및 ∠CBD=25°의 정확한 극좌표점 D를 만든다. 수선의 발 C와 A로 직사각형이 된다.",
+      "mappedTo": [
+        "B",
+        "D",
+        "C",
+        "A",
+        "lBR",
+        "lBV",
+        "sAB",
+        "sBC",
+        "sCD",
+        "sDA"
+      ]
+    },
+    {
+      "id": "angles",
+      "condition": "∠CBD=25°는 주어진 값이고 ∠BAC=x°는 미지각이므로 x만 표기한다.",
+      "mappedTo": [
+        "given25",
+        "unknownX",
+        "sBO",
+        "sBC",
+        "sAO",
+        "sAB"
+      ]
+    },
+    {
+      "id": "diagonal",
+      "condition": "두 대각선의 교점 O는 BD의 중점이며 OC=y, BD=10은 주어진 길이 표기다.",
+      "mappedTo": [
+        "O",
+        "sOC",
+        "sBO",
+        "sOD",
+        "unknownY",
+        "lengthBD"
+      ]
+    },
+    {
+      "id": "dashes",
+      "condition": "원본 그림의 OC와 OD는 점선, 나머지 보이는 대각선 절반은 실선이다.",
+      "mappedTo": [
+        "sOC",
+        "sOD",
+        "sAO",
+        "sBO"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 2개 점선 반대각선 OC·OD를 dashed 필드로 복구한다.",
+    "BD=10 및 25°를 정확한 POLAR_POINT와 각·치수 필드에 대응하고 x·y는 미지기호로 보존한다."
+  ],
+  "sourceQuote": "$\\angle CBD=25^\\circ$",
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "given25",
+        "refs": [
+          "C",
+          "B",
+          "O"
+        ],
+        "value": 25,
+        "label": "25",
+        "style": "ARC",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "unknownX",
+        "refs": [
+          "B",
+          "A",
+          "O"
+        ],
+        "value": 65,
+        "label": "x",
+        "style": "ARC",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "unknownY",
+        "ownerSegment": "sOC",
+        "text": "y"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "lengthBD",
+        "from": "B",
+        "to": "D",
+        "label": "10",
+        "side": "ABOVE",
+        "style": "BAR",
+        "factRole": "GIVEN"
+      }
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "6" }, { "kind": "integer", "value": "9" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "12" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "O", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "6" }, { "kind": "rational", "numerator": "5", "denominator": "2" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "lAB", "op": "LINE_THROUGH", "inputs": ["A", "B"], "args": {}, "outputType": "LINE", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "lBC", "op": "LINE_THROUGH", "inputs": ["B", "C"], "args": {}, "outputType": "LINE", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "lAC", "op": "LINE_THROUGH", "inputs": ["A", "C"], "args": {}, "outputType": "LINE", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "D", "op": "PERPENDICULAR_FOOT", "inputs": ["O", "lAB"], "args": {}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "E", "op": "PERPENDICULAR_FOOT", "inputs": ["O", "lBC"], "args": {}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "F", "op": "PERPENDICULAR_FOOT", "inputs": ["O", "lAC"], "args": {}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" }
+    ]
+  },
+  "displayPoints": ["A", "B", "C", "O", "D", "E", "F"],
+  "displaySegments": [
+    { "id": "sAB", "refs": ["A", "B"] }, { "id": "sBC", "refs": ["B", "C"] }, { "id": "sCA", "refs": ["C", "A"] },
+    { "id": "sOA", "refs": ["O", "A"] }, { "id": "sOB", "refs": ["O", "B"] }, { "id": "sOC", "refs": ["O", "C"] },
+    { "id": "sOD", "refs": ["O", "D"] }, { "id": "sOE", "refs": ["O", "E"] }, { "id": "sOF", "refs": ["O", "F"] }
+  ],
+  "rightAngles": [
+    { "id": "rightD", "refs": ["A", "D", "O"], "factRole": "GIVEN" },
+    { "id": "rightE", "refs": ["B", "E", "O"], "factRole": "GIVEN" },
+    { "id": "rightF", "refs": ["C", "F", "O"], "factRole": "GIVEN" }
+  ],
+  "coordinateCanvas": { "width": 680, "height": 540 },
+  "caption": "삼각형 ABC의 외심 O에서 각 변에 내린 수선의 발 D, E, F와 세 꼭짓점으로 잇는 선분을 표시한다.",
+  "accessibilityDescription": "삼각형 ABC의 외심 O는 세 꼭짓점으로부터 같은 거리에 놓인다. O에서 AB, BC, CA에 내린 수선 OD, OE, OF의 발 D, E, F에 직각 사각표시가 있다. 외심의 성질을 묻는 문제이므로 참·거짓 정답을 암시하는 등호 눈금이나 전체 면 채움은 없다.",
+  "sourceConditions": [
+    { "id": "circumcenter", "condition": "O는 ABC의 외심이다. 정확한 대표 배치 A=(6,9), B=(0,0), C=(12,0), O=(6,5/2)에서 OA²=OB²=OC²=169/4이다.", "mappedTo": ["O", "sOA", "sOB", "sOC"] },
+    { "id": "feet", "condition": "D, E, F는 외심 O에서 AB, BC, AC에 내린 수선의 발이다.", "mappedTo": ["D", "E", "F", "sOD", "sOE", "sOF", "rightD", "rightE", "rightF"] },
+    { "id": "outline", "condition": "세 변과 세 수선의 구별이 중요하고 채움은 요구하지 않는다.", "mappedTo": ["sAB", "sBC", "sCA"] }
+  ],
+  "newVisualInformation": ["기존 문항 SVG에 있는 삼각형 전체의 근거 없는 연한 면 채움을 제거한다.", "수선의 발을 독립 기하 연산으로 두고 D/E/F 직각 사각표식을 모두 그려지는 필드로 지정한다."],
+  "sourceQuote": "점 $O$가 $\\triangle ABC$의 외심일 때"
+}

@@ -378,10 +378,9 @@ window.questionBank = [
     "rpmPrimaryRecordId": "H2-M1-RPM-080",
     "sourceQid": 8,
     "variationType": "EXAM_FOLLOWUP",
-    "problemPlanRef": "archive/exams/similar/high/h2/1mid/26_금당고_1학기_중간_고2_대수_유사2_plans/q08-problem-svg-pending.plan.json",
-    "image": "assets/images/26_금당고_1학기_중간_고2_대수_유사2/q8-problem.svg",
-    "imageAlt": "세로로 3만큼 이동한 지수함수와 점 P의 세로좌표 7, 점 Q의 가로좌표 4를 표시하는 보조 그래프",
-    "imageCaption": "세로로 3만큼 이동한 지수함수와 점 P의 세로좌표 7, 점 Q의 가로좌표 4를 표시하는 보조 그래프",
+    "problemPlanRef": "archive/exams/similar/high/h2/1mid/26_금당고_1학기_중간_고2_대수_유사2_plans/q08-problem.plan.json",
+    "image": "assets/images/26_금당고_1학기_중간_고2_대수_유사2/q08-problem.svg",
+    "imageAlt": "지수함수 y=2의 x제곱 더하기 3의 그래프 위에 두 점 P(p,7)과 Q(4,q)가 있고, 각 점에서 좌표축으로 내린 점선 보조선과 p, q 눈금이 표시된 그래프이다.",
     "imageSize": "medium"
   },
   {
@@ -925,7 +924,11 @@ window.questionBank = [
     "rpmPrimaryRecordId": "H2-M1-RPM-086",
     "sourceQid": 19,
     "variationType": "EXAM_FOLLOWUP",
-    "solutionPlanRef": "archive/exams/similar/high/h2/1mid/26_금당고_1학기_중간_고2_대수_유사2_plans/q19-solution-svg-pending.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h2/1mid/26_금당고_1학기_중간_고2_대수_유사2_plans/q19-solution.plan.json",
+    "solutionImage": "assets/images/26_금당고_1학기_중간_고2_대수_유사2/q19-solution.svg",
+    "solutionImageAlt": "이차식의 교점 조건에서 도출한 세 k값 -2, 2, 6과 이웃한 값 사이 거리 4를 수직선에 표시",
+    "solutionImageCaption": "이차식의 교점 조건에서 도출한 세 k값 -2, 2, 6과 이웃한 값 사이 거리 4를 수직선에 표시",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -1016,6 +1019,10 @@ window.questionBank = [
     "rpmPrimaryRecordId": "H2-M1-RPM-082",
     "sourceQid": 21,
     "variationType": "EXAM_FOLLOWUP",
-    "solutionPlanRef": "archive/exams/similar/high/h2/1mid/26_금당고_1학기_중간_고2_대수_유사2_plans/q21-solution-svg-pending.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h2/1mid/26_금당고_1학기_중간_고2_대수_유사2_plans/q21-solution.plan.json",
+    "solutionImage": "assets/images/26_금당고_1학기_중간_고2_대수_유사2/q21-solution.svg",
+    "solutionImageAlt": "u>0에서 Q(u)=u²-u+1/2와 y=5/16의 두 교점",
+    "solutionImageCaption": "u>0에서 Q(u)=u²-u+1/2와 y=5/16의 두 교점",
+    "solutionImageSize": "full"
   }
 ];

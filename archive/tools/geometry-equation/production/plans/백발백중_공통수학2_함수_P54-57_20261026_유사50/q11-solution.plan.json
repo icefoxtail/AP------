@@ -1,0 +1,46 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "a",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "동방향",
+        "color": "BLUE",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "-2",
+              "state": "OPEN"
+            }
+          },
+          {
+            "lo": {
+              "value": "2",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "매개변수 a의 범위"
+  },
+  "caption": "좌우 기울기가 모두 감소하거나 모두 증가하려면 a<-2 또는 a>2이다.",
+  "accessibilityDescription": "매개변수 a의 허용 범위를 열린 끝점과 구간으로 표시한 수직선.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "a<-2 또는 a>2; 양쪽 경계는 기울기 0으로 제외",
+      "mappedTo": [
+        "numberLine.rows[0].pieces"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "경계값을 포함하지 않는 열린 끝점과 허용 범위의 연결 여부를 확인한다."
+  ]
+}

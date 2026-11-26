@@ -1,0 +1,287 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "직사각형 세 변에 접하는 원, CD 위의 E, 원 위의 P와 PE를 내분하는 Q를 보인다.",
+  "accessibilityDescription": "직사각형 세 변에 접하는 원, CD 위의 E, 원 위의 P와 PE를 내분하는 Q를 보인다.",
+  "sourceConditions": [
+    {
+      "id": "rectangle",
+      "condition": "직사각형의 가로 14, 세로 8",
+      "mappedTo": [
+        "mathPlan.nodes[0].args",
+        "mathPlan.nodes[2].args",
+        "displaySegments[0]",
+        "displaySegments[1]"
+      ]
+    },
+    {
+      "id": "contact",
+      "condition": "원은 AB, BC, DA에 모두 접하고 반지름은 세로의 절반",
+      "mappedTo": [
+        "mathPlan.nodes[7].args",
+        "mathPlan.nodes[8].args"
+      ]
+    },
+    {
+      "id": "E",
+      "condition": "CD 위 CE=7",
+      "mappedTo": "mathPlan.nodes[4].args"
+    },
+    {
+      "id": "ratio",
+      "condition": "PQ:QE=1:3",
+      "mappedTo": [
+        "mathPlan.nodes[6].args",
+        "displaySegments[4]",
+        "displaySegments[5]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "반지름을 알 수 있는 세 변의 접촉과 내분점 Q의 위치 관계를 답의 자취 없이 표시한다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "14"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "14"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "14"
+            },
+            {
+              "kind": "integer",
+              "value": "7"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "114",
+              "denominator": "12"
+            },
+            {
+              "kind": "rational",
+              "numerator": "57",
+              "denominator": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "K",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "K"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayCircles": [
+    "k"
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "P",
+    "Q",
+    "K"
+  ],
+  "hiddenPointNames": [
+    "K"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sPQ",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    },
+    {
+      "id": "sQE",
+      "refs": [
+        "Q",
+        "E"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 680,
+    "height": 480
+  },
+  "sourceQuote": "가로 14, 세로 8인 직사각형 $ABCD$의 내부에 세 변 $AB,BC,DA$와 접하는 원이 있다. 변 $CD$ 위에 $CE=7$인 점 $E$를 잡고, 원 위를 움직이는 점 $P$에 대하여 $PQ:QE=1:3$이 되도록 선분 $PE$의 내분점 $Q$를 잡는다. 점 $Q$의 자취의 길이는?"
+}

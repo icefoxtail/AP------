@@ -1,0 +1,639 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "5"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "add",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "5"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "2"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "5"
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "3"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "5"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "3"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "I",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "5"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "J",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "add",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "5"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "2"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "5"
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "J"
+  ],
+  "displaySegments": [
+    {
+      "id": "sBot",
+      "refs": [
+        "A",
+        "D"
+      ],
+      "emphasis": "BOLD"
+    },
+    {
+      "id": "sL",
+      "refs": [
+        "A",
+        "E"
+      ],
+      "emphasis": "BOLD"
+    },
+    {
+      "id": "sTL",
+      "refs": [
+        "E",
+        "F"
+      ],
+      "emphasis": "BOLD"
+    },
+    {
+      "id": "sRise1",
+      "refs": [
+        "F",
+        "G"
+      ],
+      "emphasis": "BOLD"
+    },
+    {
+      "id": "sTM",
+      "refs": [
+        "G",
+        "H"
+      ],
+      "emphasis": "BOLD"
+    },
+    {
+      "id": "sRise2",
+      "refs": [
+        "H",
+        "I"
+      ],
+      "emphasis": "BOLD"
+    },
+    {
+      "id": "sTR",
+      "refs": [
+        "I",
+        "J"
+      ],
+      "emphasis": "BOLD"
+    },
+    {
+      "id": "sR",
+      "refs": [
+        "J",
+        "D"
+      ],
+      "emphasis": "BOLD"
+    },
+    {
+      "id": "sInner1",
+      "refs": [
+        "B",
+        "F"
+      ]
+    },
+    {
+      "id": "sInner2",
+      "refs": [
+        "C",
+        "H"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "regions": [
+      {
+        "id": "r1",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "A",
+              "B",
+              "F",
+              "E"
+            ]
+          }
+        ],
+        "label": "8",
+        "unit": "cm^2",
+        "labelPlacement": "AUTO_LEADER"
+      },
+      {
+        "id": "r2",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "B",
+              "C",
+              "H",
+              "G"
+            ]
+          }
+        ],
+        "label": "18",
+        "unit": "cm^2",
+        "labelPlacement": "AUTO_LEADER"
+      },
+      {
+        "id": "r3",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "C",
+              "D",
+              "J",
+              "I"
+            ]
+          }
+        ],
+        "label": "25",
+        "unit": "cm^2",
+        "labelPlacement": "AUTO_LEADER"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dWidth",
+        "from": "A",
+        "to": "D",
+      "label": "5sqrt(2)+5",
+        "side": "BELOW",
+        "style": "BAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "dHeight",
+        "from": "D",
+        "to": "J",
+        "label": "5",
+        "side": "RIGHT",
+        "style": "BAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 600,
+    "height": 410
+  },
+  "hiddenPointNames": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "J"
+  ],
+  "hiddenPointStyle": "NONE",
+  "caption": "넓이 8, 18, 25인 정사각형의 한 변은 각각 2√2, 3√2, 5 cm이다. 수평 총폭은 5√2+5, 최대 높이는 5이며, 굵은 외곽선의 길이는 2(5√2+5)+2·5=10√2+20 cm이다.",
+  "accessibilityDescription": "밑변을 맞춘 정사각형 세 개의 높이가 왼쪽부터 증가한다. 세 정사각형의 면적 8, 18, 25가 내부에 쓰여 있고 외곽 둘레가 굵게 표시된다. 맨 아래 전체 폭은 5루트2 더하기 5, 오른쪽 높이는 5로 표시되어 있다.",
+  "newVisualInformation": [
+    "면적 라벨은 문제 수치 그대로 두고 해설에서 실제 바깥 둘레를 굵게 따라가도록 하며 전체 가로와 세로를 별도 치수로 제시한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "i12-1",
+      "condition": "세 정사각형의 넓이 8,18,25 cm² → 각 변 2√2,3√2,5 cm",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "planeMarks.regions"
+      ]
+    },
+    {
+      "id": "i12-2",
+      "condition": "밑변을 일직선에 맞추어 왼쪽부터 순서대로 세 정사각형을 연결",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments"
+      ]
+    },
+    {
+      "id": "i12-3",
+      "condition": "폭 2√2+3√2+5=5√2+5, 최대 높이 5",
+      "mappedTo": [
+        "planeMarks.dimensions[dWidth]",
+        "planeMarks.dimensions[dHeight]"
+      ]
+    },
+    {
+      "id": "i12-4",
+      "condition": "외곽 수평 합은 폭의 두 배, 수직 합은 최대 높이의 두 배 → 둘레 10√2+20",
+      "mappedTo": [
+        "displaySegments[*].emphasis"
+      ]
+    }
+  ]
+}

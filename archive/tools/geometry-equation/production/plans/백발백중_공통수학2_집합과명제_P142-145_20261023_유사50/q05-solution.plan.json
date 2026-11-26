@@ -1,0 +1,197 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "중심 O의 원을 수평 2만큼 왼쪽으로 옮기면 중심 C(-2,0), 반지름 3인 원이 된다.",
+  "accessibilityDescription": "원점 중심 반지름 3인 원과 중심 (-2,0)의 평행이동된 같은 반지름 원을 함께 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원 x²+y²=9에서 반지름 3",
+      "mappedTo": "mathPlan.nodes[2].args.radius"
+    },
+    {
+      "id": "c2",
+      "condition": "x축 방향 평행이동 -2",
+      "mappedTo": "mathPlan.nodes[1].args.dx"
+    },
+    {
+      "id": "c3",
+      "condition": "원래 원 위의 반지름 보조 기준점 (3,0), (0,3)",
+      "mappedTo": "mathPlan.nodes[5],mathPlan.nodes[6]"
+    },
+    {
+      "id": "c4",
+      "condition": "이동한 원 위에서 중심과 x좌표가 같은 위쪽 점 (이동 후 h,a), a>0",
+      "mappedTo": "mathPlan.nodes[7],coordinateLabels,displaySegments[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "주어진 좌표·길이·위치 조건과 풀이에서 얻는 도형 관계를 실제 점·선분·표식으로 그린다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "k0",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k1",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "S",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "S"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "displayCircles": [
+    "k0",
+    "k1"
+  ],
+  "displayPoints": [
+    "O",
+    "C",
+    "R",
+    "S",
+    "P"
+  ],
+  "coordinateLabels": [
+    "C",
+    "P"
+  ],
+  "hiddenPointNames": [
+    "R",
+    "S"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "sCP",
+      "refs": [
+        "C",
+        "P"
+      ],
+      "emphasis": "BOLD"
+    }
+  ]
+}

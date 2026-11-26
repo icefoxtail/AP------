@@ -1,0 +1,19 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family":"polynomial", "coefficients":["0","7","-1"],
+    "sourceDomain":{"kind":"INTERVAL","range":[0,7],"states":["OPEN","OPEN"]},
+    "domain":[0,7], "viewport":[-1,8,-2,14],
+    "requiredPoints":[{"id":"V","x":3.5,"y":12.25}],
+    "axisTickValues":{"x":["7/2"],"y":["49/4"]}
+  },
+  "caption":"둘레 14인 부채꼴의 넓이 S=7r-r²는 r=7/2에서 최대 49/4이며, 중심각은 그때 2라디안이다.",
+  "accessibilityDescription":"반지름 r이 0과 7 사이에서 움직일 때 넓이의 아래로 볼록한 포물선이 꼭짓점 r=7/2에서 최대가 된다.",
+  "sourceQuote":"둘레의 길이가 $14$인 부채꼴 중에서 그 넓이가 최대",
+  "sourceConditions":[
+    {"id":"perimeter","condition":"2r+rθ=14, 0<r<7","mappedTo":"graphPlan.sourceDomain"},
+    {"id":"area","condition":"S=7r-r²","mappedTo":"graphPlan.coefficients"},
+    {"id":"vertex","condition":"꼭짓점 (7/2,49/4)","mappedTo":"graphPlan.requiredPoints,graphPlan.axisTickValues"}
+  ],
+  "newVisualInformation":["부채꼴 넓이의 최댓값을 결정하는 이차함수의 꼭짓점"]
+}

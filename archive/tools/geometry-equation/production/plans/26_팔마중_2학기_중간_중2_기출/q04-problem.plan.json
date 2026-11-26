@@ -1,0 +1,274 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "D"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "O"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sEA",
+      "refs": [
+        "E",
+        "A"
+      ]
+    },
+    {
+      "id": "sAO",
+      "refs": [
+        "A",
+        "O"
+      ]
+    },
+    {
+      "id": "sOD",
+      "refs": [
+        "O",
+        "D"
+      ]
+    },
+    {
+      "id": "sBO",
+      "refs": [
+        "B",
+        "O"
+      ]
+    },
+    {
+      "id": "sOE",
+      "refs": [
+        "O",
+        "E"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 540
+  },
+  "caption": "평행사변형 ABDE의 대각선 AD와 BE의 교점 O, BC와 OD의 길이·평행 표시, 넓이 10 조건을 원본 모양대로 나타낸다.",
+  "accessibilityDescription": "A,E가 위쪽, B,D가 중간 가로선인 평행사변형에 대각선 AD와 BE가 교차하는 O가 있다. B에서 C로 내려간 선분 BC는 O에서 D로 향하는 OD와 나란하고 길이도 같다. 불필요한 내부 면 채움은 전혀 없다.",
+  "sourceConditions": [
+    {
+      "id": "parallel",
+      "condition": "ABDE는 평행사변형이다. O는 AD와 BE의 공통 중점이다.",
+      "mappedTo": [
+        "A",
+        "B",
+        "D",
+        "E",
+        "O",
+        "sAO",
+        "sOD",
+        "sBO",
+        "sOE"
+      ]
+    },
+    {
+      "id": "matching",
+      "condition": "BC=OD, BC∥AD이다. 대표 배치에서 BC=(3/2,-2)=OD이며 AD=(3,-4)와 평행하다.",
+      "mappedTo": [
+        "sBC",
+        "sOD",
+        "sAO",
+        "equalBCOD",
+        "parallelBCAD"
+      ]
+    },
+    {
+      "id": "area",
+      "condition": "△ABE는 밑변 AE=5와 높이 4이므로 넓이가 정확히 10이다.",
+      "mappedTo": [
+        "A",
+        "B",
+        "E",
+        "sAB",
+        "sBO",
+        "sOE",
+        "sEA"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본에 없는 세 다각형의 일괄 채움을 없애고 흰색 배경에서 선만 그린다.",
+    "BC=OD와 BC∥AD 조건을 실제 길이 눈금 및 평행 화살표로 분리한다."
+  ],
+  "sourceQuote": "평행사변형 $ABDE$의 두 대각선의 교점을 $O$라 하자.",
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "equalBCOD",
+        "count": 1,
+        "segments": [
+          "sBC",
+          "sOD"
+        ]
+      }
+    ],
+    "parallels": [
+      {
+        "id": "parallelBCAD",
+        "count": 1,
+        "segments": [
+          "sBC",
+          "sAO"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "capability":"trigonometric-spike-v1",
+  "graphPlan": {
+    "family":"trigonometric", "function":"COS", "coefficients":["3","1/4","4"], "phasePi":"0",
+    "sourceDomain":{"kind":"INTERVAL_PI","rangePi":["0","8"],"states":["CLOSED","CLOSED"]},
+    "keyPoints":true,"axisTickPi":true,
+    "axisTickValues":{"x":["4"],"y":["1","4","7"]}
+  },
+  "caption":"최댓값 7과 최솟값 1의 중간선은 y=4, 진폭은 3이고 x=0에서 x=8π까지가 한 주기이다.",
+  "accessibilityDescription":"코사인 곡선이 (0,7)에서 최대, (4π,1)에서 최소, (8π,7)에서 다시 최대가 된다.",
+  "sourceQuote":"$x = 0$과 $x = 8\\pi$에서 연속한 두 최댓값",
+  "sourceConditions":[
+    {"id":"extrema","condition":"최대 7, 최소 1","mappedTo":"graphPlan.coefficients,graphPlan.axisTickValues.y"},
+    {"id":"period","condition":"연속 최대 x=0과 x=8π; 주기 8π","mappedTo":"graphPlan.coefficients[1],graphPlan.sourceDomain,graphPlan.axisTickValues.x"}
+  ],
+  "newVisualInformation":["진폭과 중심선", "연속 최댓값 사이 정확한 주기"]
+}
