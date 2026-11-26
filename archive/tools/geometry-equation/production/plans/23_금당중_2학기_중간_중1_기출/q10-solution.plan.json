@@ -1,0 +1,29 @@
+{
+  "capability":"construction-spike-v1",
+  "sourceQuote":"다음 그림에서 ∠a의 크기는?",
+  "caption":"맞꼭지각의 30°와 직각 90°를 더하면 a=120°임을 열린 각 호와 직각 정사각형으로 보여 준다.",
+  "sourceConditions":[
+    {"id":"two-lines","condition":"원본에서 두 직선이 X자로 교차한다.","mappedTo":["displaySegments[0]","displaySegments[1]","displaySegments[2]","displaySegments[3]"]},
+    {"id":"additional-ray","condition":"교점에서 위로 향하는 추가 반직선이 30°와 직각을 나눈다.","mappedTo":"displaySegments[4]"},
+    {"id":"30deg","condition":"왼쪽 위 30°는 기존 직선과 추가 반직선 사이에 놓인다.","mappedTo":"planeMarks.angles[0]"},
+    {"id":"right-angle","condition":"추가 반직선과 오른쪽 위 반직선 사이가 직각이다.","mappedTo":"rightAngles[0]"},
+    {"id":"opposite","condition":"아래쪽 맞꼭지각 a는 30°+90°=120°이다.","mappedTo":"planeMarks.angles[1]"}
+  ],
+  "newVisualInformation":["기존 해설의 회색 각 부채꼴을 제거한다.","직각 네모·30° 호·a 호를 각각 실제 선 사이에 표시한다."],
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"T","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"1"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"NW","op":"POLAR_POINT","inputs":["O","T"],"args":{"length":{"kind":"integer","value":"6"},"angleDeg":{"kind":"integer","value":"145"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"NE","op":"POLAR_POINT","inputs":["O","T"],"args":{"length":{"kind":"integer","value":"6"},"angleDeg":{"kind":"integer","value":"25"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"SW","op":"POLAR_POINT","inputs":["O","T"],"args":{"length":{"kind":"integer","value":"6"},"angleDeg":{"kind":"integer","value":"205"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"SE","op":"POLAR_POINT","inputs":["O","T"],"args":{"length":{"kind":"integer","value":"6"},"angleDeg":{"kind":"integer","value":"325"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"UP","op":"POLAR_POINT","inputs":["O","T"],"args":{"length":{"kind":"integer","value":"5"},"angleDeg":{"kind":"integer","value":"115"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "displayPoints":["O","T","NW","NE","SW","SE","UP"],"hiddenPointNames":["O","T","NW","NE","SW","SE","UP"],"hiddenPointStyle":"NONE",
+  "displaySegments":[{"id":"nw","refs":["O","NW"]},{"id":"ne","refs":["O","NE"]},{"id":"sw","refs":["O","SW"]},{"id":"se","refs":["O","SE"]},{"id":"up","refs":["O","UP"]}],
+  "rightAngles":[{"id":"right","refs":["UP","O","NE"]}],
+  "planeMarks":{"angles":[
+    {"id":"thirty","refs":["NW","O","UP"],"value":30,"label":"30","style":"ARC","factRole":"GIVEN"},
+    {"id":"a","refs":["SW","O","SE"],"value":120,"label":"a","style":"ARC","factRole":"CONCLUSION"}
+  ]}
+}

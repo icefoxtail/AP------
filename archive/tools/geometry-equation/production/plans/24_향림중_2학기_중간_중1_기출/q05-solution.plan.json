@@ -1,0 +1,28 @@
+{
+  "capability":"construction-spike-v1",
+  "sourceQuote":"오른쪽 그림에서 ∠x의 크기는?",
+  "caption":"외각 120°와 안각 60°, 꼭짓점 40°, 이웃각 80°·100°를 빈 호로 표시한 삼각형 풀이.",
+  "sourceConditions":[
+    {"id":"triangle","condition":"큰 삼각형의 왼쪽 밑점·위 꼭짓점·오른쪽 밑점과 꼭짓점에서 밑변으로 내린 내부 선분을 빠짐없이 유지한다.","mappedTo":["displaySegments[0]","displaySegments[1]","displaySegments[2]","displaySegments[3]","displaySegments[4]","displaySegments[5]"]},
+    {"id":"upper-40","condition":"오른쪽 작은 삼각형의 꼭짓점 각은 40°이다.","mappedTo":"planeMarks.angles[0]"},
+    {"id":"right-120","condition":"오른쪽 밑점 외각 120°와 그 보각 60°를 표시한다.","mappedTo":["planeMarks.angles[1]","planeMarks.angles[2]"]},
+    {"id":"at-middle","condition":"밑변 가운데 점의 오른쪽 각 y=80°와 왼쪽 x=100°는 한 직선 위 이웃각이다.","mappedTo":["planeMarks.angles[3]","planeMarks.angles[4]"]}
+  ],
+  "newVisualInformation":["기존 해설 각 부채꼴 채움을 제거하고 호만 남긴다.","x의 위치는 원본처럼 내부 선분 왼쪽 밑각이며 오른쪽 y=80°와 바뀌지 않는다."],
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"L","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-4"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"M","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"R","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"4"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"936","denominator":"1000"},{"kind":"rational","numerator":"5307","denominator":"1000"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"X","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"7"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "displayPoints":["L","M","R","A","X"],"hiddenPointNames":["L","M","R","A","X"],"hiddenPointStyle":"NONE",
+  "displaySegments":[{"id":"lm","refs":["L","M"]},{"id":"mr","refs":["M","R"]},{"id":"rx","refs":["R","X"]},{"id":"al","refs":["A","L"]},{"id":"am","refs":["A","M"]},{"id":"ar","refs":["A","R"]}],
+  "planeMarks":{"angles":[
+    {"id":"a40","refs":["M","A","R"],"value":40,"label":"40","style":"ARC","factRole":"GIVEN"},
+    {"id":"ext120","refs":["A","R","X"],"value":120,"label":"120","style":"ARC","factRole":"GIVEN"},
+    {"id":"in60","refs":["A","R","M"],"value":60,"label":"60","style":"ARC","factRole":"CONCLUSION"},
+    {"id":"y80","refs":["A","M","R"],"value":80,"label":"80","style":"ARC","factRole":"CONCLUSION"},
+    {"id":"x100","refs":["L","M","A"],"value":100,"label":"x","style":"ARC","factRole":"CONCLUSION"}
+  ]}
+}

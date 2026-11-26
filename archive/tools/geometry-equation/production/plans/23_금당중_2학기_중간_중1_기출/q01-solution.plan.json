@@ -1,0 +1,1269 @@
+{
+  "capability": "construction-spike-v1",
+  "sourceQuote": "점 C의 좌표는 x축에서 4, y축에서 -1이므로 C(4,-1)이다.",
+  "caption": "원본 다섯 점과 1단위 격자를 유지하고, 점 C에서 x축·y축으로 내린 두 점선이 C(4,-1)를 가리킨다.",
+  "sourceConditions": [
+    {
+      "id": "A",
+      "condition": "A는 (-3,5)에 있는 제2사분면의 점이다.",
+      "mappedTo": "mathPlan.nodes[0]"
+    },
+    {
+      "id": "B",
+      "condition": "B는 (3,3)에 있는 제1사분면의 점이다.",
+      "mappedTo": "mathPlan.nodes[1]"
+    },
+    {
+      "id": "C",
+      "condition": "C는 (4,-1)에 있는 제4사분면의 점이다.",
+      "mappedTo": "mathPlan.nodes[2]"
+    },
+    {
+      "id": "D",
+      "condition": "D는 (0,-4)인 y축 위의 점이다.",
+      "mappedTo": "mathPlan.nodes[3]"
+    },
+    {
+      "id": "E",
+      "condition": "E는 (-5,-3)에 있는 제3사분면의 점이다.",
+      "mappedTo": "mathPlan.nodes[4]"
+    },
+    {
+      "id": "grid",
+      "condition": "원본은 한 눈금 간격 1의 세로·가로 격자이며 좌표축은 별도 자동 출력된다.",
+      "mappedTo": "displaySegments"
+    },
+    {
+      "id": "answer-guides",
+      "condition": "C(4,-1)의 수선 경로를 두 축으로 드러낸다.",
+      "mappedTo": [
+        "displaySegments[19]",
+        "displaySegments[20]"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 희미한 스캔과 점 좌표 혼동을 없애고 다섯 점의 정확한 위치를 고정한다.",
+    "좌표 값과 정답을 명시하는 추가 라벨은 문제 축에 미리 붙이지 않는다.",
+    "원본 1단위 격자 세로선 10개·가로선 10개를 가는 점선 보조선으로 표현한다.",
+    "C에서 각 축으로 연결한 점선 2개를 추가해 C(4,-1)의 읽기 경로를 직접 표시한다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "-1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "integer",
+              "value": "-3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Vm5a",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "integer",
+              "value": "-5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Vm5b",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Vm4a",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "-5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Vm4b",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Vm3a",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "-5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Vm3b",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Vm2a",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "-5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Vm2b",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Vm1a",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-1"
+            },
+            {
+              "kind": "integer",
+              "value": "-5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Vm1b",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-1"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Vp1a",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "-5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Vp1b",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Vp2a",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "-5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Vp2b",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Vp3a",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "-5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Vp3b",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Vp4a",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "-5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Vp4b",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Vp5a",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "-5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Vp5b",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Hm4a",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "-4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Hm4b",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "-4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Hm3a",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "-3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Hm3b",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "-3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Hm2a",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Hm2b",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Hm1a",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "-1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Hm1b",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "-1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Hp1a",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Hp1b",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Hp2a",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Hp2b",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Hp3a",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Hp3b",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Hp4a",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Hp4b",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Hp5a",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Hp5b",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Cx",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Cy",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Hm5a",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "-5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Hm5b",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "-5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "Vm5a",
+    "Vm5b",
+    "Vm4a",
+    "Vm4b",
+    "Vm3a",
+    "Vm3b",
+    "Vm2a",
+    "Vm2b",
+    "Vm1a",
+    "Vm1b",
+    "Vp1a",
+    "Vp1b",
+    "Vp2a",
+    "Vp2b",
+    "Vp3a",
+    "Vp3b",
+    "Vp4a",
+    "Vp4b",
+    "Vp5a",
+    "Vp5b",
+    "Hm4a",
+    "Hm4b",
+    "Hm3a",
+    "Hm3b",
+    "Hm2a",
+    "Hm2b",
+    "Hm1a",
+    "Hm1b",
+    "Hp1a",
+    "Hp1b",
+    "Hp2a",
+    "Hp2b",
+    "Hp3a",
+    "Hp3b",
+    "Hp4a",
+    "Hp4b",
+    "Hp5a",
+    "Hp5b",
+    "Cx",
+    "Cy",
+    "Hm5a",
+    "Hm5b"
+  ],
+  "hiddenPointNames": [
+    "Vm5a",
+    "Vm5b",
+    "Vm4a",
+    "Vm4b",
+    "Vm3a",
+    "Vm3b",
+    "Vm2a",
+    "Vm2b",
+    "Vm1a",
+    "Vm1b",
+    "Vp1a",
+    "Vp1b",
+    "Vp2a",
+    "Vp2b",
+    "Vp3a",
+    "Vp3b",
+    "Vp4a",
+    "Vp4b",
+    "Vp5a",
+    "Vp5b",
+    "Hm4a",
+    "Hm4b",
+    "Hm3a",
+    "Hm3b",
+    "Hm2a",
+    "Hm2b",
+    "Hm1a",
+    "Hm1b",
+    "Hp1a",
+    "Hp1b",
+    "Hp2a",
+    "Hp2b",
+    "Hp3a",
+    "Hp3b",
+    "Hp4a",
+    "Hp4b",
+    "Hp5a",
+    "Hp5b",
+    "Cx",
+    "Cy",
+    "Hm5a",
+    "Hm5b"
+  ],
+  "unmarkedPointNames": [
+    "Vm5a",
+    "Vm5b",
+    "Vm4a",
+    "Vm4b",
+    "Vm3a",
+    "Vm3b",
+    "Vm2a",
+    "Vm2b",
+    "Vm1a",
+    "Vm1b",
+    "Vp1a",
+    "Vp1b",
+    "Vp2a",
+    "Vp2b",
+    "Vp3a",
+    "Vp3b",
+    "Vp4a",
+    "Vp4b",
+    "Vp5a",
+    "Vp5b",
+    "Hm4a",
+    "Hm4b",
+    "Hm3a",
+    "Hm3b",
+    "Hm2a",
+    "Hm2b",
+    "Hm1a",
+    "Hm1b",
+    "Hp1a",
+    "Hp1b",
+    "Hp2a",
+    "Hp2b",
+    "Hp3a",
+    "Hp3b",
+    "Hp4a",
+    "Hp4b",
+    "Hp5a",
+    "Hp5b",
+    "Cx",
+    "Cy",
+    "Hm5a",
+    "Hm5b"
+  ],
+  "displaySegments": [
+    {
+      "id": "gridVm5",
+      "refs": [
+        "Vm5a",
+        "Vm5b"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "gridVm4",
+      "refs": [
+        "Vm4a",
+        "Vm4b"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "gridVm3",
+      "refs": [
+        "Vm3a",
+        "Vm3b"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "gridVm2",
+      "refs": [
+        "Vm2a",
+        "Vm2b"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "gridVm1",
+      "refs": [
+        "Vm1a",
+        "Vm1b"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "gridVp1",
+      "refs": [
+        "Vp1a",
+        "Vp1b"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "gridVp2",
+      "refs": [
+        "Vp2a",
+        "Vp2b"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "gridVp3",
+      "refs": [
+        "Vp3a",
+        "Vp3b"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "gridVp4",
+      "refs": [
+        "Vp4a",
+        "Vp4b"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "gridVp5",
+      "refs": [
+        "Vp5a",
+        "Vp5b"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "gridHm4",
+      "refs": [
+        "Hm4a",
+        "Hm4b"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "gridHm3",
+      "refs": [
+        "Hm3a",
+        "Hm3b"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "gridHm2",
+      "refs": [
+        "Hm2a",
+        "Hm2b"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "gridHm1",
+      "refs": [
+        "Hm1a",
+        "Hm1b"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "gridHp1",
+      "refs": [
+        "Hp1a",
+        "Hp1b"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "gridHp2",
+      "refs": [
+        "Hp2a",
+        "Hp2b"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "gridHp3",
+      "refs": [
+        "Hp3a",
+        "Hp3b"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "gridHp4",
+      "refs": [
+        "Hp4a",
+        "Hp4b"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "gridHp5",
+      "refs": [
+        "Hp5a",
+        "Hp5b"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "cToX",
+      "refs": [
+        "C",
+        "Cx"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "cToY",
+      "refs": [
+        "C",
+        "Cy"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "gridHm5",
+      "refs": [
+        "Hm5a",
+        "Hm5b"
+      ],
+      "dashed": true
+    }
+  ]
+}

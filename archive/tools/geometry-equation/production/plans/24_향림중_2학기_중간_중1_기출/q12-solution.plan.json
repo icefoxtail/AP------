@@ -1,0 +1,25 @@
+{
+  "capability":"construction-spike-v1",
+  "sourceQuote":"한 꼭짓점에서 두 대각선을 그어 삼각형 둘과 사각형 하나로 나누어진 다각형의 대각선 개수는?",
+  "caption":"육각형의 한 꼭짓점에서 대각선 2개를 그어 삼각형·사각형·삼각형의 세 영역을 만든다.",
+  "accessibilityDescription":"면이 채워지지 않은 육각형 안에 위 꼭짓점에서 아래 양쪽으로 대각선 두 개를 그어 양옆 삼각형 둘과 가운데 사각형 하나가 보인다.",
+  "sourceConditions":[
+    {"id":"hexagon","condition":"서로 다른 여섯 꼭짓점 V0~V5와 여섯 변이 있고 하나의 닫힌 육각형을 이룬다.","mappedTo":["mathPlan.nodes[0]","mathPlan.nodes[1]","mathPlan.nodes[2]","mathPlan.nodes[3]","mathPlan.nodes[4]","mathPlan.nodes[5]","displaySegments[0]","displaySegments[1]","displaySegments[2]","displaySegments[3]","displaySegments[4]","displaySegments[5]"]},
+    {"id":"two-diagonals","condition":"같은 꼭짓점 V0에서 V2와 V4에 이은 두 대각선이 내부를 두 삼각형과 한 사각형으로 분할한다.","mappedTo":["displaySegments[6]","displaySegments[7]"]}
+  ],
+  "newVisualInformation":["기존 해설의 세 영역에 넣은 회색·청회색 면 채움을 없애고 외곽선과 대각선만 남긴다.","새로운 길이·각도·정답 숫자는 그림에 기입하지 않는다."],
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"V0","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"5"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"V1","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"4"},{"kind":"integer","value":"3"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"V2","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"4"},{"kind":"integer","value":"-1"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"V3","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"-3"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"V4","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-4"},{"kind":"integer","value":"-1"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"V5","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-4"},{"kind":"integer","value":"3"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"TR","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"8","denominator":"3"},{"kind":"rational","numerator":"7","denominator":"3"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"QL","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+    {"id":"TL","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"-8","denominator":"3"},{"kind":"rational","numerator":"7","denominator":"3"}]},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+  ]},
+  "displayPoints":["V0","V1","V2","V3","V4","V5","TR","QL","TL"],"hiddenPointNames":["V0","V1","V2","V3","V4","V5","TR","QL","TL"],"hiddenPointStyle":"NONE",
+  "displaySegments":[{"id":"e01","refs":["V0","V1"]},{"id":"e12","refs":["V1","V2"]},{"id":"e23","refs":["V2","V3"]},{"id":"e34","refs":["V3","V4"]},{"id":"e45","refs":["V4","V5"]},{"id":"e50","refs":["V5","V0"]},{"id":"d02","refs":["V0","V2"]},{"id":"d04","refs":["V0","V4"]}],
+  "planeMarks":{"textLabels":[{"id":"triangle1","at":"TR","text":"삼각형","labelKind":"TEXT"},{"id":"square","at":"QL","text":"사각형","labelKind":"TEXT"},{"id":"triangle2","at":"TL","text":"삼각형","labelKind":"TEXT"}]}
+}

@@ -1,0 +1,27 @@
+{
+  "capability":"construction-spike-v1",
+  "sourceQuote":"AD∥BC이고 AD=4, BC=4인 사각형에서 △ABD와 합동인 삼각형을 찾으시오.",
+  "caption":"대각선 BD, 평행한 AD와 BC, 길이 4, 공통변 BD, 엇각을 나타낸 SAS 합동 그림이다.",
+  "sourceConditions":[
+    {"id":"parallelogram","condition":"A는 왼쪽 위, B는 왼쪽 아래, C는 오른쪽 아래, D는 오른쪽 위이다. AD∥BC이고 각 길이는 4이다.","mappedTo":["displaySegments[0]","displaySegments[1]","displaySegments[2]","displaySegments[3]","planeMarks.parallels[0]","planeMarks.expressionLabels[0]","planeMarks.expressionLabels[1]"]},
+    {"id":"diagonal","condition":"원본 대각선 BD를 실제로 연결한다.","mappedTo":"displaySegments[4]"},
+    {"id":"alternate-angle","condition":"평행선의 엇각 ∠ADB=∠CBD를 열린 호로 한 쌍 표시한다.","mappedTo":["planeMarks.angles[0]","planeMarks.angles[1]"]},
+    {"id":"common-side","condition":"BD는 두 삼각형의 공통변이며 양쪽 밑변은 같은 4이다.","mappedTo":["displaySegments[4]","planeMarks.equalLengths[0]"]}
+  ],
+  "newVisualInformation":["기존 해설의 사각형 전체 회색 채움을 없앤다.","평행 화살표·두 4의 길이 라벨·SAS에 쓰는 엇각 호를 유지한다."],
+  "mathPlan":{"schemaVersion":"construction-spike-v1","realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},"nodes":[
+    {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"1"},{"kind":"integer","value":"3"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"4"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+    {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"5"},{"kind":"integer","value":"3"}]},"outputType":"POINT","factRole":"GIVEN"}
+  ]},
+  "displayPoints":["A","B","C","D"],
+  "displaySegments":[{"id":"sAB","refs":["A","B"]},{"id":"sBC","refs":["B","C"]},{"id":"sCD","refs":["C","D"]},{"id":"sAD","refs":["A","D"]},{"id":"sBD","refs":["B","D"]}],
+  "planeMarks":{"parallels":[{"id":"parallel","count":1,"segments":["sAD","sBC"]}],"equalLengths":[{"id":"four","count":1,"segments":["sAD","sBC"]}],"expressionLabels":[
+    {"id":"top4","ownerSegment":"sAD","text":"4"},
+    {"id":"bottom4","ownerSegment":"sBC","text":"4"}
+  ],"angles":[
+    {"id":"ADB","refs":["A","D","B"],"value":30.96,"style":"ARC","arcs":1,"noLabel":true,"factRole":"CONCLUSION"},
+    {"id":"CBD","refs":["C","B","D"],"value":30.96,"style":"ARC","arcs":1,"noLabel":true,"factRole":"CONCLUSION"}
+  ]}
+}
