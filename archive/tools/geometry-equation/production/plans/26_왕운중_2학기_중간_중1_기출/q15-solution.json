@@ -1,0 +1,61 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {"recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false},
+    "nodes": [
+      {"id":"Q","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"R","op":"TRANSLATE_POINT","inputs":["Q"],"args":{"dx":{"kind":"integer","value":"1"},"dy":{"kind":"integer","value":"0"}},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"mL","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-4"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"mR","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"4"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"P","op":"POLAR_POINT","inputs":["Q","R"],"args":{"length":{"kind":"integer","value":"4"},"angleDeg":{"kind":"integer","value":"75"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"rP","op":"TRANSLATE_POINT","inputs":["P"],"args":{"dx":{"kind":"integer","value":"1"},"dy":{"kind":"integer","value":"0"}},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"lR","op":"POLAR_POINT","inputs":["P","rP"],"args":{"length":{"kind":"integer","value":"4"},"angleDeg":{"kind":"integer","value":"10"},"turn":"CW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"lL","op":"POLAR_POINT","inputs":["P","rP"],"args":{"length":{"kind":"integer","value":"4"},"angleDeg":{"kind":"integer","value":"170"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"nU","op":"POLAR_POINT","inputs":["P","Q"],"args":{"length":{"kind":"integer","value":"2"},"angleDeg":{"kind":"integer","value":"180"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"nD","op":"POLAR_POINT","inputs":["Q","P"],"args":{"length":{"kind":"integer","value":"2"},"angleDeg":{"kind":"integer","value":"180"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "displayPoints": ["P","Q","mL","mR","lL","lR","nU","nD"],
+  "hiddenPointNames": ["P","Q","mL","mR","lL","lR","nU","nD"],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {"id":"slLeft","refs":["lL","P"]},
+    {"id":"slRight","refs":["P","lR"]},
+    {"id":"smLeft","refs":["mL","Q"]},
+    {"id":"smRight","refs":["Q","mR"]},
+    {"id":"snUp","refs":["P","nU"]},
+    {"id":"snMiddle","refs":["P","Q"]},
+    {"id":"snDown","refs":["Q","nD"]}
+  ],
+  "planeMarks": {
+    "angles": [
+      {"id":"a95","refs":["lL","P","nU"],"value":95,"label":"95","style":"ARC","arcs":1,"factRole":"GIVEN"},
+      {"id":"aa","refs":["nU","P","lR"],"value":85,"label":"a","style":"ARC","arcs":1,"factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"ab","refs":["Q","P","lR"],"value":95,"label":"b","style":"ARC","arcs":1,"factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"ac","refs":["lL","P","Q"],"value":85,"label":"c","style":"ARC","arcs":1,"factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"ad","refs":["mL","Q","P"],"value":105,"label":"d","style":"ARC","arcs":1,"factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"ae","refs":["P","Q","mR"],"value":75,"label":"e","style":"ARC","arcs":1,"factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"a105","refs":["nD","Q","mR"],"value":105,"label":"105","style":"ARC","arcs":1,"factRole":"GIVEN"},
+      {"id":"af","refs":["mL","Q","nD"],"value":75,"label":"f","style":"ARC","arcs":1,"factRole":"DERIVED_INTERMEDIATE"}
+    ],
+    "expressionLabels": [
+      {"id":"tl","ownerSegment":"slRight","text":"l","labelAt":"END"},
+      {"id":"tm","ownerSegment":"smRight","text":"m","labelAt":"END"},
+      {"id":"tn","ownerSegment":"snUp","text":"n","labelAt":"END"}
+    ]
+  },
+  "coordinateCanvas": {"width":520,"height":420},
+  "caption": "직선 l, m, n에서 맞꼭지각과 엇각의 위치",
+  "accessibilityDescription": "기울어진 직선 l과 가로 직선 m을 직선 n이 위아래 두 교점에서 가로지른다. 위 교점에는 원본의 95도, a, b, c 네 각을, 아래 교점에는 d, e, 105도, f 네 각을 빠짐없이 표시한다. b는 95도의 맞꼭지각이고 b와 d는 두 교점 사이 엇각 위치이다. 평행 표식과 면 채움은 없다.",
+  "sourceQuote": "다음 그림과 같이 한 평면 위에서 두 직선 l, m이 한 직선 n과 만날 때, ∠d와 엇각인 각의 크기는?",
+  "sourceConditions": [
+    {"id":"cLines","condition":"서로 다른 두 직선 l과 m은 직선 n과 각각 만난다. 원본은 l∥m이라고 주지 않았다.","mappedTo":["displaySegments.slLeft","displaySegments.slRight","displaySegments.smLeft","displaySegments.smRight","displaySegments.snMiddle"]},
+    {"id":"c95","condition":"위 교점 왼쪽 위의 주어진 각은 95°이다.","mappedTo":"planeMarks.angles.a95"},
+    {"id":"c105","condition":"아래 교점 오른쪽 아래의 주어진 각은 105°이다.","mappedTo":"planeMarks.angles.a105"},
+    {"id":"cSixLetters","condition":"원본의 두 교점에는 미지수 각 a,b,c,d,e,f가 각각 지정되어 있다.","mappedTo":["planeMarks.angles.aa","planeMarks.angles.ab","planeMarks.angles.ac","planeMarks.angles.ad","planeMarks.angles.ae","planeMarks.angles.af"]},
+    {"id":"cVertical","condition":"위 교점에서 ∠b는 95°의 맞꼭지각으로 크기가 95°이다.","mappedTo":"planeMarks.angles.ab"},
+    {"id":"cAlternate","condition":"∠d와 ∠b는 두 직선 사이에 서로 반대쪽으로 있는 엇각이다.","mappedTo":["planeMarks.angles.ad","planeMarks.angles.ab"]}
+  ],
+  "newVisualInformation": ["현행 두 패널 해설에서 누락된 원본의 105° 표기 및 a,c,e,f 각 이름까지 복원해 95°, 105°, a,b,c,d,e,f 여덟 각을 한 화면의 실제 위치에 각각 표시한다. 엇각의 위치를 크기의 같음과 혼동하지 않도록 l과 m에 평행 표시를 넣지 않는다. 교점 위치·선분 길이는 모식도용이고 원본의 새 수치 조건이 아니다."]
+}
