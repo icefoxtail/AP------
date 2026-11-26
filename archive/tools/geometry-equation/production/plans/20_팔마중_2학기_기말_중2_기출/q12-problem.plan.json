@@ -1,0 +1,203 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "l1",
+        "ownerSegment": "sDC",
+        "text": "x"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "d1",
+        "from": "A",
+        "to": "D",
+        "label": "2",
+        "side": "ABOVE",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "d2",
+        "from": "A",
+        "to": "B",
+        "label": "3",
+        "side": "LEFT",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "d3",
+        "from": "B",
+        "to": "C",
+        "label": "4",
+        "side": "BELOW",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "2020 팔마중 중2 2학기 기말 12번 문제 조건도",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "사각형 A, B, C, D에서 AD=2, AB=3, BC=4이고 각 A와 각 B가 직각이다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 그림 상태와 주어진 표식·길이·음영만 나타낸다"
+  ],
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 320
+  },
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "B",
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    }
+  ]
+}

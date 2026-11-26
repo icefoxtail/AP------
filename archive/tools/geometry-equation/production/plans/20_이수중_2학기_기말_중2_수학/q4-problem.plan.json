@@ -1,0 +1,96 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PRISM",
+      "base": {
+        "kind": "POLYGON",
+        "points": [
+          [
+            0,
+            3.2
+          ],
+          [
+            2.9,
+            0.445
+          ],
+          [
+            6,
+            3.2
+          ]
+        ]
+      },
+      "height": 8,
+      "names": "DEFABC"
+    },
+    {
+      "id": "s2",
+      "kind": "PRISM",
+      "base": {
+        "kind": "POLYGON",
+        "points": [
+          [
+            0,
+            4.800000000000001
+          ],
+          [
+            4.35,
+            0.6675
+          ],
+          [
+            9,
+            4.800000000000001
+          ]
+        ]
+      },
+      "height": 12,
+      "names": "D′E′F′A′B′C′"
+    }
+  ],
+  "dims": [
+    {
+      "solid": "s1",
+      "from": "A",
+      "to": "C",
+      "label": "6",
+      "side": "TOP"
+    },
+    {
+      "solid": "s1",
+      "from": "A",
+      "to": "D",
+      "label": "x"
+    },
+    {
+      "solid": "s2",
+      "from": "A′",
+      "to": "C′",
+      "label": "9",
+      "side": "TOP"
+    },
+    {
+      "solid": "s2",
+      "from": "A′",
+      "to": "D′",
+      "label": "12"
+    },
+    {
+      "solid": "s1",
+      "from": "A",
+      "to": "B",
+      "label": "4"
+    },
+    {
+      "solid": "s2",
+      "from": "A′",
+      "to": "B′",
+      "label": "y"
+    }
+  ],
+  "caption": "2020 이수중 중2 2학기 기말 4번 문제 조건도",
+  "newVisualInformation": [
+    "원본의 그림 상태와 주어진 표식·길이·음영만 나타낸다"
+  ]
+}

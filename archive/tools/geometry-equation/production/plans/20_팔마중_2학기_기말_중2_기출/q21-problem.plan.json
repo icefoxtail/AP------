@@ -1,0 +1,252 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "5",
+              "denominator": "2"
+            },
+            {
+              "kind": "rational",
+              "numerator": "43",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "54",
+              "denominator": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "6750",
+              "denominator": "8021"
+            },
+            {
+              "kind": "rational",
+              "numerator": "23220",
+              "denominator": "8021"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "399384",
+              "denominator": "71425"
+            },
+            {
+              "kind": "rational",
+              "numerator": "385452",
+              "denominator": "71425"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sDB",
+      "refs": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "sAE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "sEC",
+      "refs": [
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "l1",
+        "ownerSegment": "sAE",
+        "text": "x"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "d1",
+        "from": "A",
+        "to": "D",
+        "label": "6",
+        "side": "LEFT",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "d2",
+        "from": "A",
+        "to": "B",
+        "label": "9",
+        "side": "LEFT",
+        "style": "ARROW",
+        "factRole": "GIVEN",
+        "offset": 2
+      },
+      {
+        "id": "d3",
+        "from": "A",
+        "to": "C",
+        "label": "12",
+        "side": "RIGHT",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "2020 팔마중 중2 2학기 기말 21번 문제 조건도",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "삼각형 ABC에서 CD는 AB에, BE는 AC에 수직이다. AB=9cm, AC=12cm, AD=6cm이고 AE의 길이를 x라 한다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 그림 상태와 주어진 표식·길이·음영만 나타낸다"
+  ],
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 320
+  },
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "A",
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "A",
+        "E",
+        "B"
+      ]
+    }
+  ]
+}
