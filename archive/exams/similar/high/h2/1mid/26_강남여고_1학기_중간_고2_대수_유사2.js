@@ -1063,7 +1063,11 @@ window.questionBank = [
     "solutionImage": "assets/images/26_강남여고_1학기_중간_고2_대수_유사2/q19-solution.svg",
     "solutionImageAlt": "해설 보조: 안쪽 반지름이 바깥쪽의 절반인 부채꼴 띠. 둘레 = 3rθ/2+r, 넓이 = 3r²θ/8.",
     "solutionImageCaption": "해설 보조: 안쪽 반지름이 바깥쪽의 절반인 부채꼴 띠. 둘레 = 3rθ/2+r, 넓이 = 3r²θ/8.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "image": "assets/images/26_강남여고_1학기_중간_고2_대수_유사2/q19-problem.svg",
+    "imageAlt": "같은 중심 O를 가진 두 부채꼴 사이의 고리 모양 부분. 안쪽 반지름은 바깥쪽의 절반이다.",
+    "imageCaption": "같은 중심 O를 가진 두 부채꼴 사이의 고리 모양 부분. 안쪽 반지름은 바깥쪽의 절반이다.",
+    "imageSize": "full"
   },
   {
     "id": 20,

@@ -378,7 +378,11 @@ window.questionBank = [
     "rpmPrimaryRecordId": "H2-M1-RPM-080",
     "sourceQid": 8,
     "variationType": "EXAM_FOLLOWUP",
-    "problemPlanRef": "archive/exams/similar/high/h2/1mid/26_금당고_1학기_중간_고2_대수_유사2_plans/q08-problem-svg-pending.plan.json"
+    "problemPlanRef": "archive/exams/similar/high/h2/1mid/26_금당고_1학기_중간_고2_대수_유사2_plans/q08-problem-svg-pending.plan.json",
+    "image": "assets/images/26_금당고_1학기_중간_고2_대수_유사2/q8-problem.svg",
+    "imageAlt": "세로로 3만큼 이동한 지수함수와 점 P의 세로좌표 7, 점 Q의 가로좌표 4를 표시하는 보조 그래프",
+    "imageCaption": "세로로 3만큼 이동한 지수함수와 점 P의 세로좌표 7, 점 Q의 가로좌표 4를 표시하는 보조 그래프",
+    "imageSize": "medium"
   },
   {
     "id": 9,
