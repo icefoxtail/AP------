@@ -1,0 +1,59 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 5,
+        "depth": 6
+      },
+      "height": 8,
+      "names": "ABCDEFGH"
+    }
+  ],
+  "segments": [
+    {
+      "from": "A",
+      "to": "G",
+      "style": "SOLID",
+      "role": "REF"
+    }
+  ],
+  "dims": [
+    {
+      "edge": "AB",
+      "label": "5"
+    },
+    {
+      "edge": "AE",
+      "label": "8"
+    },
+    {
+      "from": "A",
+      "to": "G",
+      "label": "5sqrt(5)"
+    }
+  ],
+  "solidCaption": {
+    "text": "직육면체 공간대각선"
+  },
+  "caption": "가로 5cm·높이 8cm, 공간대각선 5√5cm인 직육면체와 숨은 모서리·대각선을 그린다.",
+  "accessibilityDescription": "가로 5cm·높이 8cm, 공간대각선 5√5cm인 직육면체와 숨은 모서리·대각선을 그린다.",
+  "sourceConditions": [
+    {
+      "id": "source-solid",
+      "condition": "가로 5cm·높이 8cm, 공간대각선 5√5cm인 직육면체와 숨은 모서리·대각선을 그린다.",
+      "mappedTo": [
+        "solids",
+        "segments",
+        "dims"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본 3차원 직육면체를 대각선 5√5·가로5·높이8 치수와 무채움 점선 가림선으로 재구성한다."
+  ],
+  "sourceQuote": "오른쪽 그림은 대각선의 길이가 $5\\sqrt{5}\\,\\mathrm{cm}$인 직육면체이다. 가로의 길이와 높이가 각각 $5\\,\\mathrm{cm}$와 $8\\,\\mathrm{cm}$일 때, 세로의 길이는? (4점)"
+}
