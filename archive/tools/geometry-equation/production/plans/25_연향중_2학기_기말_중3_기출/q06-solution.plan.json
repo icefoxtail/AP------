@@ -1,0 +1,54 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{
+    "schemaVersion":"construction-spike-v1",
+    "realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes":[
+      {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"X","op":"TRANSLATE_POINT","inputs":["O"],"args":{"dx":{"kind":"integer","value":"1"},"dy":{"kind":"integer","value":"0"}},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"k","op":"CIRCLE_CENTER_RADIUS","inputs":["O"],"args":{"radius":{"kind":"integer","value":"10"}},"outputType":"CIRCLE","factRole":"GIVEN"},
+      {"id":"A","op":"POLAR_POINT","inputs":["O","X"],"args":{"length":{"kind":"integer","value":"10"},"angleDeg":{"kind":"integer","value":"118"},"turn":"CCW"},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B","op":"POLAR_POINT","inputs":["O","X"],"args":{"length":{"kind":"integer","value":"10"},"angleDeg":{"kind":"integer","value":"194"},"turn":"CCW"},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"C","op":"POLAR_POINT","inputs":["O","X"],"args":{"length":{"kind":"integer","value":"10"},"angleDeg":{"kind":"integer","value":"270"},"turn":"CCW"},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"D","op":"POLAR_POINT","inputs":["O","X"],"args":{"length":{"kind":"integer","value":"10"},"angleDeg":{"kind":"integer","value":"352"},"turn":"CCW"},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"T","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-15"},{"kind":"integer","value":"-10"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"U","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"15"},{"kind":"integer","value":"-10"}]},"outputType":"POINT","factRole":"GIVEN"}
+    ]
+  },
+  "coordinateCanvas":{"width":630,"height":470},
+  "displayPoints":["O","A","B","C","D","T","U"],
+  "pointNames":{"U":"T'"},
+  "displayLines":[],
+  "displayCircles":["k"],
+  "displaySegments":[
+    {"id":"sAB","refs":["A","B"]},
+    {"id":"sAC","refs":["A","C"]},
+    {"id":"sAD","refs":["A","D"]},
+    {"id":"sBC","refs":["B","C"]},
+    {"id":"sCD","refs":["C","D"]},
+    {"id":"sTC","refs":["T","C"]},
+    {"id":"sCU","refs":["C","U"]},
+    {"id":"sOC","refs":["O","C"],"dashed":true}
+  ],
+  "rightAngles":[{"id":"rC","refs":["O","C","U"]}],
+  "planeMarks":{
+    "angles":[
+      {"id":"aBCA","refs":["B","C","A"],"value":38,"label":"38","style":"ARC","factRole":"GIVEN"},
+      {"id":"aACD","refs":["A","C","D"],"value":63,"label":"63","style":"ARC","factRole":"GIVEN"},
+      {"id":"aDCU","refs":["D","C","U"],"value":41,"label":"x","style":"ARC","factRole":"CONCLUSION"}
+    ],
+    "arcs":[
+      {"id":"arcAB","circle":"k","center":"O","from":"A","to":"B","side":"MINOR","label":"76","color":"BLUE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"arcBC","circle":"k","center":"O","from":"B","to":"C","side":"MINOR","label":"76","color":"BLUE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"arcAD","circle":"k","center":"O","from":"A","to":"D","side":"MINOR","label":"126","color":"WARM","factRole":"DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "caption":"호 AB와 BC가 같고 C의 두 원주각이 38°와 63°인 원에서 접선 CT′와 현 CD가 이루는 각 x를 읽는다.",
+  "sourceQuote":"AB호=BC호, BCA=38°, ACD=63°, TT′는 C에서의 접선, x는 DCT′이다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"A,B,C,D는 원 위에 있고 호 AB와 호 BC는 각각 76°이다.","mappedTo":["mathPlan.nodes","displayCircles","planeMarks.arcs"]},
+    {"id":"c2","condition":"BCA=38°, ACD=63°이므로 호 AD는 126°이다.","mappedTo":["planeMarks.angles","planeMarks.arcs"]},
+    {"id":"c3","condition":"T,C,T′는 수평 접선 위에 있고 OC는 그 접선에 수직이다; 호 CD=82°이므로 접선-현각 x=41°이다.","mappedTo":["displaySegments","rightAngles","planeMarks.angles"]}
+  ],
+  "newVisualInformation":["종전 분리된 보조 각도 그림의 수치를 본 그림의 실제 호·각에 직접 부착한다.","접선·반지름 직각·같은 호 76° 두 개·호 AD 126°와 미지 x를 같은 원 위에 표현하고 면은 채우지 않는다."]
+}
