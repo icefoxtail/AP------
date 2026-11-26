@@ -1,0 +1,29 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "자연수 해",
+        "pieces": [
+          {
+            "lo": {"value": "5", "state": "OPEN"},
+            "hi": {"value": "17/2", "state": "OPEN"}
+          }
+        ],
+        "integerPoints": true
+      }
+    ]
+  },
+  "caption": "3<√(2x−1)<4를 제곱하면 5<x<17/2이다. 이 범위의 자연수는 6, 7, 8이고 합은 21이다.",
+  "accessibilityDescription": "수직선에서 5와 8.5 사이의 열린 구간을 나타내고, 그 안에 있는 자연수 6, 7, 8을 점으로 표시한 해설 그림이다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "3<sqrt(2x-1)<4에서 5<x<17/2를 얻는다", "mappedTo": ["numberLine.rows"]},
+    {"id": "c2", "condition": "x는 자연수이며 가능한 값은 6,7,8이다", "mappedTo": ["numberLine.rows"]}
+  ],
+  "newVisualInformation": [
+    "두 열린 끝점 5와 17/2 사이의 구간을 표시한다.",
+    "조건을 만족하는 자연수 6, 7, 8의 위치를 엔진이 계산해 나타낸다."
+  ]
+}
