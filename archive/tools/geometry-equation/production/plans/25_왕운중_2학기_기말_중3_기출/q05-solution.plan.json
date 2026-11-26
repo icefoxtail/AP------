@@ -1,0 +1,38 @@
+{
+  "capability":"construction-spike-v1",
+  "mathPlan":{
+    "schemaVersion":"construction-spike-v1",
+    "realization":{"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes":[
+      {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"X","op":"TRANSLATE_POINT","inputs":["O"],"args":{"dx":{"kind":"integer","value":"1"},"dy":{"kind":"integer","value":"0"}},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"k","op":"CIRCLE_CENTER_RADIUS","inputs":["O"],"args":{"radius":{"kind":"integer","value":"10"}},"outputType":"CIRCLE","factRole":"GIVEN"},
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-10"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"10"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"C","op":"POLAR_POINT","inputs":["O","X"],"args":{"length":{"kind":"integer","value":"10"},"angleDeg":{"kind":"integer","value":"118"},"turn":"CCW"},"outputType":"POINT","factRole":"GIVEN"}
+    ]
+  },
+  "coordinateCanvas":{"width":560,"height":455},
+  "displayPoints":["O","A","B","C"],
+  "displayLines":[],
+  "displayCircles":["k"],
+  "displaySegments":[
+    {"id":"sAB","refs":["A","B"]},
+    {"id":"sOC","refs":["O","C"],"emphasis":"BOLD"},
+    {"id":"sBC","refs":["B","C"]}
+  ],
+  "planeMarks":{
+    "angles":[
+      {"id":"aAOC","refs":["A","O","C"],"value":62,"label":"62","style":"ARC","factRole":"GIVEN"},
+      {"id":"aCOB","refs":["C","O","B"],"value":118,"label":"118","style":"ARC","color":"BLUE","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"aBCO","refs":["B","C","O"],"value":31,"label":"31","style":"ARC","color":"WARM","factRole":"CONCLUSION"}
+    ]
+  },
+  "caption":"AB가 지름이고 AOC가 62°이므로 BOC는 118°, 이등변삼각형 BOC의 밑각 BCO는 31°이다.",
+  "sourceQuote":"AB는 원 O의 지름, AOC=62°이며 BCO를 구한다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"A,O,B는 한 직선 위의 지름이고 OA=OB=OC이다.","mappedTo":["mathPlan.nodes","displayCircles","displaySegments"]},
+    {"id":"c2","condition":"AOC=62°, BOC=118°, BCO=31°이다.","mappedTo":["planeMarks.angles"]}
+  ],
+  "newVisualInformation":["기존 SVG의 62°·118°에 깔린 불필요한 부채꼴 채움을 없애고 호와 글자로 표시한다.","지름 AB·반지름 OC·현 BC와 밑각 31°를 같은 도형 안에 둔다."]
+}
