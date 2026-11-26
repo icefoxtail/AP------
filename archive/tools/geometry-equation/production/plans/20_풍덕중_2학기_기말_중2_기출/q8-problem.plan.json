@@ -1,0 +1,1206 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "①"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "XL",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "-4"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "XR",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "YB",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "-4"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "YT",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "X",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "Y",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "O",
+          "XL",
+          "XR",
+          "YB",
+          "YT",
+          "X",
+          "Y"
+        ],
+        "hiddenPointNames": [
+          "XL",
+          "XR",
+          "YB",
+          "YT",
+          "X",
+          "Y"
+        ],
+        "hiddenPointStyle": "NONE",
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "sx",
+            "refs": [
+              "XL",
+              "XR"
+            ],
+            "arrow": "END"
+          },
+          {
+            "id": "sy",
+            "refs": [
+              "YB",
+              "YT"
+            ],
+            "arrow": "END"
+          },
+          {
+            "id": "sl",
+            "refs": [
+              "X",
+              "Y"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "textLabels": [
+            {
+              "id": "x",
+              "at": [
+                4.3,
+                0
+              ],
+              "text": "x",
+              "labelKind": "MATH"
+            },
+            {
+              "id": "y",
+              "at": [
+                0.3,
+                4.2
+              ],
+              "text": "y",
+              "labelKind": "MATH"
+            },
+            {
+              "id": "xi",
+              "at": [
+                2,
+                -0.5
+              ],
+              "text": "2",
+              "labelKind": "MATH"
+            },
+            {
+              "id": "yi",
+              "at": [
+                -0.6,
+                3
+              ],
+              "text": "3",
+              "labelKind": "MATH"
+            }
+          ]
+        },
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 330
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "②"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "XL",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "-4"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "XR",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "YB",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "-4"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "YT",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "X",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "-2"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "Y",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "O",
+          "XL",
+          "XR",
+          "YB",
+          "YT",
+          "X",
+          "Y"
+        ],
+        "hiddenPointNames": [
+          "XL",
+          "XR",
+          "YB",
+          "YT",
+          "X",
+          "Y"
+        ],
+        "hiddenPointStyle": "NONE",
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "sx",
+            "refs": [
+              "XL",
+              "XR"
+            ],
+            "arrow": "END"
+          },
+          {
+            "id": "sy",
+            "refs": [
+              "YB",
+              "YT"
+            ],
+            "arrow": "END"
+          },
+          {
+            "id": "sl",
+            "refs": [
+              "X",
+              "Y"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "textLabels": [
+            {
+              "id": "x",
+              "at": [
+                4.3,
+                0
+              ],
+              "text": "x",
+              "labelKind": "MATH"
+            },
+            {
+              "id": "y",
+              "at": [
+                0.3,
+                4.2
+              ],
+              "text": "y",
+              "labelKind": "MATH"
+            },
+            {
+              "id": "xi",
+              "at": [
+                -2,
+                -0.5
+              ],
+              "text": "-2",
+              "labelKind": "MATH"
+            },
+            {
+              "id": "yi",
+              "at": [
+                -0.6,
+                3
+              ],
+              "text": "3",
+              "labelKind": "MATH"
+            }
+          ]
+        },
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 330
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "③"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "XL",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "-4"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "XR",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "YB",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "-4"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "YT",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "X",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "-2"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "Y",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "-3"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "O",
+          "XL",
+          "XR",
+          "YB",
+          "YT",
+          "X",
+          "Y"
+        ],
+        "hiddenPointNames": [
+          "XL",
+          "XR",
+          "YB",
+          "YT",
+          "X",
+          "Y"
+        ],
+        "hiddenPointStyle": "NONE",
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "sx",
+            "refs": [
+              "XL",
+              "XR"
+            ],
+            "arrow": "END"
+          },
+          {
+            "id": "sy",
+            "refs": [
+              "YB",
+              "YT"
+            ],
+            "arrow": "END"
+          },
+          {
+            "id": "sl",
+            "refs": [
+              "X",
+              "Y"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "textLabels": [
+            {
+              "id": "x",
+              "at": [
+                4.3,
+                0
+              ],
+              "text": "x",
+              "labelKind": "MATH"
+            },
+            {
+              "id": "y",
+              "at": [
+                0.3,
+                4.2
+              ],
+              "text": "y",
+              "labelKind": "MATH"
+            },
+            {
+              "id": "xi",
+              "at": [
+                -2,
+                -0.5
+              ],
+              "text": "-2",
+              "labelKind": "MATH"
+            },
+            {
+              "id": "yi",
+              "at": [
+                -0.6,
+                -3
+              ],
+              "text": "-3",
+              "labelKind": "MATH"
+            }
+          ]
+        },
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 330
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "④"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "XL",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "-4"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "XR",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "YB",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "-4"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "YT",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "X",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "-3"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "Y",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "O",
+          "XL",
+          "XR",
+          "YB",
+          "YT",
+          "X",
+          "Y"
+        ],
+        "hiddenPointNames": [
+          "XL",
+          "XR",
+          "YB",
+          "YT",
+          "X",
+          "Y"
+        ],
+        "hiddenPointStyle": "NONE",
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "sx",
+            "refs": [
+              "XL",
+              "XR"
+            ],
+            "arrow": "END"
+          },
+          {
+            "id": "sy",
+            "refs": [
+              "YB",
+              "YT"
+            ],
+            "arrow": "END"
+          },
+          {
+            "id": "sl",
+            "refs": [
+              "X",
+              "Y"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "textLabels": [
+            {
+              "id": "x",
+              "at": [
+                4.3,
+                0
+              ],
+              "text": "x",
+              "labelKind": "MATH"
+            },
+            {
+              "id": "y",
+              "at": [
+                0.3,
+                4.2
+              ],
+              "text": "y",
+              "labelKind": "MATH"
+            },
+            {
+              "id": "xi",
+              "at": [
+                -3,
+                -0.5
+              ],
+              "text": "-3",
+              "labelKind": "MATH"
+            },
+            {
+              "id": "yi",
+              "at": [
+                -0.6,
+                3
+              ],
+              "text": "3",
+              "labelKind": "MATH"
+            }
+          ]
+        },
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 330
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "⑤"
+      },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "XL",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "-4"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "XR",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "YB",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "-4"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "YT",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "X",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "Y",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "O",
+          "XL",
+          "XR",
+          "YB",
+          "YT",
+          "X",
+          "Y"
+        ],
+        "hiddenPointNames": [
+          "XL",
+          "XR",
+          "YB",
+          "YT",
+          "X",
+          "Y"
+        ],
+        "hiddenPointStyle": "NONE",
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "sx",
+            "refs": [
+              "XL",
+              "XR"
+            ],
+            "arrow": "END"
+          },
+          {
+            "id": "sy",
+            "refs": [
+              "YB",
+              "YT"
+            ],
+            "arrow": "END"
+          },
+          {
+            "id": "sl",
+            "refs": [
+              "X",
+              "Y"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "textLabels": [
+            {
+              "id": "x",
+              "at": [
+                4.3,
+                0
+              ],
+              "text": "x",
+              "labelKind": "MATH"
+            },
+            {
+              "id": "y",
+              "at": [
+                0.3,
+                4.2
+              ],
+              "text": "y",
+              "labelKind": "MATH"
+            },
+            {
+              "id": "xi",
+              "at": [
+                3,
+                -0.5
+              ],
+              "text": "3",
+              "labelKind": "MATH"
+            },
+            {
+              "id": "yi",
+              "at": [
+                -0.6,
+                2
+              ],
+              "text": "2",
+              "labelKind": "MATH"
+            }
+          ]
+        },
+        "coordinateCanvas": {
+          "width": 420,
+          "height": 330
+        }
+      }
+    }
+  ],
+  "caption": "일차방정식 2x+3y-6=0의 그래프를 고르는 원본의 다섯 선택지. 정답 표시는 없다."
+}

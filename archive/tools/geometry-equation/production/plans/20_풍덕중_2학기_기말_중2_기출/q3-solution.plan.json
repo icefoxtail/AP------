@@ -1,0 +1,45 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-3",
+          "3"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -3,
+      3
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "1",
+        "y": "0"
+      },
+      {
+        "id": "B",
+        "x": "0",
+        "y": "-3"
+      }
+    ]
+  },
+  "caption": "y=3x-3의 x절편 A(1,0), y절편 B(0,-3).",
+  "accessibilityDescription": "q3 좌표평면의 직선과 원문에 주어진 점 및 절편을 보이는 그래프.",
+  "sourceConditions": [
+    {
+      "id": "original",
+      "condition": "y=3x-3과 두 좌표축의 교점 A,B를 구한다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "원문의 점·절편·기울기 관계를 좌표축 위에 정확히 나타낸다."
+  ]
+}

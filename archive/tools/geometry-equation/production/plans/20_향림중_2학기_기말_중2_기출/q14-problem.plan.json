@@ -1,0 +1,406 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "Ll",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "9"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Lm",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Ln",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "19",
+              "denominator": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Rl",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "9"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Rm",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "15",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Rn",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "87",
+              "denominator": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Ml",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-1",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "9"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Mm",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-1",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Mn",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-1",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Nl",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "21",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "9"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Nm",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "21",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Nn",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "21",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "Ll",
+    "Lm",
+    "Ln",
+    "Rl",
+    "Rm",
+    "Rn",
+    "Ml",
+    "Mm",
+    "Mn",
+    "Nl",
+    "Nm",
+    "Nn"
+  ],
+  "displaySegments": [
+    {
+      "id": "sl",
+      "refs": [
+        "Ll",
+        "Nl"
+      ]
+    },
+    {
+      "id": "sm",
+      "refs": [
+        "Lm",
+        "Nm"
+      ]
+    },
+    {
+      "id": "sn",
+      "refs": [
+        "Ln",
+        "Nn"
+      ]
+    },
+    {
+      "id": "lt",
+      "refs": [
+        "Ll",
+        "Ln"
+      ]
+    },
+    {
+      "id": "rt",
+      "refs": [
+        "Rl",
+        "Rn"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "parallels": [
+      {
+        "id": "pp",
+        "count": 1,
+        "segments": [
+          "sl",
+          "sm",
+          "sn"
+        ]
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "d27",
+        "from": "Ll",
+        "to": "Ln",
+        "label": "27",
+        "side": "LEFT",
+        "style": "ARROW",
+        "offset": "AUTO",
+        "factRole": "GIVEN"
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "tl",
+        "at": [
+          11.1,
+          9
+        ],
+        "text": "l",
+        "labelKind": "MATH"
+      },
+      {
+        "id": "tm",
+        "at": [
+          11.1,
+          4
+        ],
+        "text": "m",
+        "labelKind": "MATH"
+      },
+      {
+        "id": "tn",
+        "at": [
+          11.1,
+          0
+        ],
+        "text": "n",
+        "labelKind": "MATH"
+      },
+      {
+        "id": "n12",
+        "at": [
+          2.6,
+          2
+        ],
+        "text": "12",
+        "labelKind": "MATH"
+      },
+      {
+        "id": "n20",
+        "at": [
+          7.7,
+          6.5
+        ],
+        "text": "20",
+        "labelKind": "MATH"
+      },
+      {
+        "id": "nx",
+        "at": [
+          8.9,
+          2
+        ],
+        "text": "x",
+        "labelKind": "MATH"
+      }
+    ]
+  },
+  "caption": "2020 향림중 14번 원본 문제 그림 — 평행선 l, m, n과 두 직선",
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 360
+  },
+  "hiddenPointNames": [
+    "Ll",
+    "Lm",
+    "Ln",
+    "Rl",
+    "Rm",
+    "Rn",
+    "Ml",
+    "Mm",
+    "Mn",
+    "Nl",
+    "Nm",
+    "Nn"
+  ],
+  "hiddenPointStyle": "NONE",
+  "accessibilityDescription": "2020 향림중 14번 원본 문제에 등장하는 도형과 주어진 표기. 풀이로 얻은 수치를 나타내지 않는다."
+}

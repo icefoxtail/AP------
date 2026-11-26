@@ -1,0 +1,177 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "14"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3873",
+              "denominator": "500"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "63",
+              "denominator": "8"
+            },
+            {
+              "kind": "rational",
+              "numerator": "43571",
+              "denominator": "10000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sDB",
+      "refs": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "a1",
+        "ownerSegment": "sAD",
+        "text": "7",
+        "unit": "cm"
+      },
+      {
+        "id": "a2",
+        "ownerSegment": "sDB",
+        "text": "9",
+        "unit": "cm"
+      },
+      {
+        "id": "a3",
+        "ownerSegment": "sCA",
+        "text": "8",
+        "unit": "cm"
+      },
+      {
+        "id": "a4",
+        "ownerSegment": "sBC",
+        "text": "12",
+        "unit": "cm"
+      },
+      {
+        "id": "a5",
+        "ownerSegment": "sCD",
+        "text": "x",
+        "unit": "cm"
+      }
+    ]
+  },
+  "caption": "2020 향림중 11번 원본 문제 그림 — 삼각형 ABC와 AB 위의 점 D",
+  "coordinateCanvas": {
+    "width": 420,
+    "height": 320
+  },
+  "accessibilityDescription": "2020 향림중 11번 원본 문제에 등장하는 도형과 주어진 표기. 풀이로 얻은 수치를 나타내지 않는다."
+}

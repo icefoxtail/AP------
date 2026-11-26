@@ -1,0 +1,45 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "-1/2"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -3,
+      8
+    ],
+    "requiredPoints": [
+      {
+        "id": "X",
+        "x": "4",
+        "y": "0"
+      },
+      {
+        "id": "Y",
+        "x": "0",
+        "y": "2"
+      }
+    ]
+  },
+  "caption": "문제 그래프: 원본에 표시된 x절편 4와 y절편 2. 기울기·식·정답은 생략한다.",
+  "accessibilityDescription": "q6 좌표평면의 직선과 원문에 주어진 점 및 절편을 보이는 그래프.",
+  "sourceConditions": [
+    {
+      "id": "original",
+      "condition": "원본의 직선은 y축 2, x축 4를 지나며 그래프에 대한 옳은 설명 둘을 고른다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "원문의 점·절편·기울기 관계를 좌표축 위에 정확히 나타낸다."
+  ]
+}

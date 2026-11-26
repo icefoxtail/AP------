@@ -1,0 +1,50 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "-1/2"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -3,
+      8
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "4",
+        "y": "0"
+      },
+      {
+        "id": "B",
+        "x": "0",
+        "y": "2"
+      },
+      {
+        "id": "C",
+        "x": "2",
+        "y": "1"
+      }
+    ]
+  },
+  "caption": "y=-x/2+2, 원본의 x절편 4, y절편 2 및 (2,1)을 정확히 보인다.",
+  "accessibilityDescription": "q6 좌표평면의 직선과 원문에 주어진 점 및 절편을 보이는 그래프.",
+  "sourceConditions": [
+    {
+      "id": "original",
+      "condition": "주어진 그래프의 x절편은 4이고 y절편은 2이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "원문의 점·절편·기울기 관계를 좌표축 위에 정확히 나타낸다."
+  ]
+}

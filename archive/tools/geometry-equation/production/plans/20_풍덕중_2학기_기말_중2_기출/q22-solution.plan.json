@@ -1,0 +1,56 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "90",
+          "-3"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      0,
+      30
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "0",
+        "y": "90"
+      },
+      {
+        "id": "B",
+        "x": "20",
+        "y": "30"
+      },
+      {
+        "id": "C",
+        "x": "30",
+        "y": "0"
+      }
+    ],
+    "viewport": [
+      0,
+      32,
+      0,
+      100
+    ]
+  },
+  "caption": "승강기 높이 y=90-3x: 출발 (0,90), 20초 뒤 (20,30), 지상 도달 (30,0).",
+  "accessibilityDescription": "q22 좌표평면의 직선과 원문에 주어진 점 및 절편을 보이는 그래프.",
+  "sourceConditions": [
+    {
+      "id": "original",
+      "condition": "높이 90m에서 매초 3m 내려오는 승강기의 시간과 높이 관계를 구한다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "원문의 점·절편·기울기 관계를 좌표축 위에 정확히 나타낸다."
+  ]
+}
