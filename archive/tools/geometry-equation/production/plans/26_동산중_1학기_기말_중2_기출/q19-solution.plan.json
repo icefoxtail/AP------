@@ -60,11 +60,17 @@
     "두 직선 y=(5/3)x-4/3과 y=(-3/2)x-9/2",
     "교점 (-1, -3)의 좌표"
   ],
+  "sourceQuote": "연립방정식 $\\begin{cases}0.5x-0.3y=0.4",
   "sourceConditions": [
     {
       "id": "source",
       "condition": "연립방정식 $\\begin{cases}0.5x-0.3y=0.4\\\\ \\dfrac{x}{2}+\\dfrac{y}{3}=-\\dfrac{3}{2}\\end{cases}$을 푸시오. [4점]",
-      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+      "mappedTo": ["graphPlan.curves[0]", "graphPlan.curves[1]"]
+    },
+    {
+      "id": "solutionIntersection",
+      "condition": "5x-3y=4와 3x+2y=-9의 교점은 (-1,-3)이다.",
+      "mappedTo": ["graphPlan.curves[0].coefficients", "graphPlan.curves[1].coefficients", "graphPlan.overlays.points[0]"]
     }
   ]
 }
