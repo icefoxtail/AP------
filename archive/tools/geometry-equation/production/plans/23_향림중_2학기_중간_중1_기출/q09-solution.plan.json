@@ -1,0 +1,342 @@
+{
+  "capability": "construction-spike-v1",
+  "sourceQuote": "종이테이프를 FG에서 접었을 때 DGF=110°, GFC=x, GEF=y이다.",
+  "caption": "접힌 삼각형 EFG와 x=70°, y=40°의 각 관계를 보인다.",
+  "sourceConditions": [
+    {
+      "id": "rectangle",
+      "condition": "AD와 BC는 평행하며 좌우 변은 수직이다.",
+      "mappedTo": "displaySegments"
+    },
+    {
+      "id": "fold",
+      "condition": "접는 선 FG와 반사된 삼각형 EFG의 세 변을 모두 그린다.",
+      "mappedTo": "displaySegments[7]"
+    },
+    {
+      "id": "angles",
+      "condition": "DGF=110°, GFC=x, GEF=y를 각호로 표시한다.",
+      "mappedTo": "planeMarks.angles"
+    }
+  ],
+  "newVisualInformation": [
+    "기존 해설에서 빠진 원래 종이의 접힌 윗부분 점선과 EFG의 세 변을 복원하며 면 채움은 하지 않는다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "3332",
+              "denominator": "1000"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "6908",
+              "denominator": "1000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "52",
+              "denominator": "10"
+            },
+            {
+              "kind": "rational",
+              "numerator": "53",
+              "denominator": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "U"
+  ],
+  "hiddenPointNames": [
+    "U"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBF",
+      "refs": [
+        "B",
+        "F"
+      ]
+    },
+    {
+      "id": "sFC",
+      "refs": [
+        "F",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDG",
+      "refs": [
+        "D",
+        "G"
+      ]
+    },
+    {
+      "id": "sGE",
+      "refs": [
+        "G",
+        "E"
+      ]
+    },
+    {
+      "id": "sEA",
+      "refs": [
+        "E",
+        "A"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "sFG",
+      "refs": [
+        "F",
+        "G"
+      ]
+    },
+    {
+      "id": "sEU",
+      "refs": [
+        "E",
+        "U"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sUG",
+      "refs": [
+        "U",
+        "G"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "given110",
+        "refs": [
+          "D",
+          "G",
+          "F"
+        ],
+        "value": 110,
+        "label": "110",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "angleX",
+        "refs": [
+          "G",
+          "F",
+          "C"
+        ],
+        "value": 70,
+        "label": "70",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "angleY",
+        "refs": [
+          "G",
+          "E",
+          "F"
+        ],
+        "value": 40,
+        "label": "40",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "foldEqual",
+        "refs": [
+          "G",
+          "F",
+          "E"
+        ],
+        "value": 70,
+        "label": "70",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 690,
+    "height": 510
+  }
+}

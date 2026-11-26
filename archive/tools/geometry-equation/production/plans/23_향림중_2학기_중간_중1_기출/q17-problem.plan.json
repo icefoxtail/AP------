@@ -1,0 +1,209 @@
+{
+  "capability": "construction-spike-v1",
+  "sourceQuote": "삼각형 ABC 안 O에서 ∠BAC=85°, ∠ABO=20°, ∠ACO=25°, ∠BOC=x이다.",
+  "caption": "A=85°, B쪽 20°, C쪽 25°, 내부의 점 O에서 x를 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "triangle",
+      "condition": "ABC는 삼각형이고 O는 그 안에 있다.",
+      "mappedTo": "displaySegments"
+    },
+    {
+      "id": "angles",
+      "condition": "A의 85°, B의 20°, C의 25°, O의 x를 모두 표시한다.",
+      "mappedTo": "planeMarks.angles"
+    }
+  ],
+  "newVisualInformation": [
+    "중심각의 회색 면 채움을 제거하고 반사각은 선호·지시각으로 구별한다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-55",
+              "denominator": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "55",
+              "denominator": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-626",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2536",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "O"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sBO",
+      "refs": [
+        "B",
+        "O"
+      ]
+    },
+    {
+      "id": "sOC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "apex",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 85,
+        "label": "85",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "smallB",
+        "refs": [
+          "A",
+          "B",
+          "O"
+        ],
+        "value": 20,
+        "label": "20",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "smallC",
+        "refs": [
+          "A",
+          "C",
+          "O"
+        ],
+        "value": 25,
+        "label": "25",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "smallO",
+        "refs": [
+          "B",
+          "O",
+          "C"
+        ],
+        "value": 130,
+        "label": "x",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 650,
+    "height": 500
+  }
+}

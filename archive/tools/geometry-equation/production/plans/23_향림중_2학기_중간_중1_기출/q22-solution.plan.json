@@ -1,0 +1,433 @@
+{
+  "capability": "construction-spike-v1",
+  "sourceQuote": "한 변을 공유하는 정오각형·정육각형과 연장선을 그려 각 a,b,c,d,e,f를 비교한다.",
+  "caption": "공유 꼭짓점의 108°·120°·132°와 연장선의 72°·60°·96°를 같은 도형에서 확인한다.",
+  "sourceConditions": [
+    {
+      "id": "pentagon",
+      "condition": "왼쪽 정오각형의 다섯 변은 모두 같고 내각은 108°이다.",
+      "mappedTo": "displaySegments"
+    },
+    {
+      "id": "hexagon",
+      "condition": "오른쪽 정육각형의 여섯 변은 모두 같고 내각은 120°이다.",
+      "mappedTo": "mathPlan.nodes"
+    },
+    {
+      "id": "extension",
+      "condition": "정오각형 왼쪽 변과 정육각형 아래쪽 변을 연장하여 만나게 한다.",
+      "mappedTo": "displaySegments[10]"
+    },
+    {
+      "id": "all-angles",
+      "condition": "a,b,c,d,e,f의 여섯 위치를 복원한다.",
+      "mappedTo": "planeMarks.angles"
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 여섯 각 표식과 연장선 교점을 정확한 정다각형 회전각으로 재구성하고 원치 않는 중앙 회색 채움을 없앤다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "rational",
+              "numerator": "34641",
+              "denominator": "10000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-67652",
+              "denominator": "100000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "643668",
+              "denominator": "100000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-43307",
+              "denominator": "10000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "480973",
+              "denominator": "100000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-391259",
+              "denominator": "100000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "83165",
+              "denominator": "100000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "rational",
+              "numerator": "34641",
+              "denominator": "10000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-34641",
+              "denominator": "10000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H5",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-34641",
+              "denominator": "10000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-346109",
+              "denominator": "100000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-34641",
+              "denominator": "10000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "T",
+    "P2",
+    "P3",
+    "P4",
+    "H2",
+    "H3",
+    "H4",
+    "H5",
+    "F"
+  ],
+  "hiddenPointNames": [
+    "O",
+    "T",
+    "P2",
+    "P3",
+    "P4",
+    "H2",
+    "H3",
+    "H4",
+    "H5",
+    "F"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "sOT",
+      "refs": [
+        "O",
+        "T"
+      ]
+    },
+    {
+      "id": "sTP2",
+      "refs": [
+        "T",
+        "P2"
+      ]
+    },
+    {
+      "id": "sP2P3",
+      "refs": [
+        "P2",
+        "P3"
+      ]
+    },
+    {
+      "id": "sP3P4",
+      "refs": [
+        "P3",
+        "P4"
+      ]
+    },
+    {
+      "id": "sP4O",
+      "refs": [
+        "P4",
+        "O"
+      ]
+    },
+    {
+      "id": "sTH2",
+      "refs": [
+        "T",
+        "H2"
+      ]
+    },
+    {
+      "id": "sH2H3",
+      "refs": [
+        "H2",
+        "H3"
+      ]
+    },
+    {
+      "id": "sH3H4",
+      "refs": [
+        "H3",
+        "H4"
+      ]
+    },
+    {
+      "id": "sH4H5",
+      "refs": [
+        "H4",
+        "H5"
+      ]
+    },
+    {
+      "id": "sH5O",
+      "refs": [
+        "H5",
+        "O"
+      ]
+    },
+    {
+      "id": "sP4F",
+      "refs": [
+        "P4",
+        "F"
+      ]
+    },
+    {
+      "id": "sFH5",
+      "refs": [
+        "F",
+        "H5"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a",
+        "refs": [
+          "P4",
+          "O",
+          "T"
+        ],
+        "value": 108,
+        "label": "108",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "b",
+        "refs": [
+          "T",
+          "O",
+          "H5"
+        ],
+        "value": 120,
+        "label": "120",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "c",
+        "refs": [
+          "P4",
+          "O",
+          "H5"
+        ],
+        "value": 132,
+        "label": "132",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "d",
+        "refs": [
+          "O",
+          "P4",
+          "F"
+        ],
+        "value": 72,
+        "label": "72",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "e",
+        "refs": [
+          "O",
+          "H5",
+          "F"
+        ],
+        "value": 60,
+        "label": "60",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "f",
+        "refs": [
+          "P4",
+          "F",
+          "H5"
+        ],
+        "value": 96,
+        "label": "96",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 700,
+    "height": 540
+  }
+}

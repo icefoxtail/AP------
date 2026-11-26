@@ -1,0 +1,315 @@
+{
+  "capability": "construction-spike-v1",
+  "sourceQuote": "l∥m이고 위 각 2x+50°, 아래 각 x-20°인 동측 내각에서 x를 구한다.",
+  "caption": "평행한 l,m과 한 사선의 교점에서 2x+50°, x-20°를 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "parallel",
+      "condition": "위 직선 l과 아래 직선 m은 서로 평행하다.",
+      "mappedTo": "planeMarks.parallels[0]"
+    },
+    {
+      "id": "transversal",
+      "condition": "사선은 두 직선을 모두 지난다.",
+      "mappedTo": "displaySegments"
+    },
+    {
+      "id": "angles",
+      "condition": "위쪽 2x+50°, 아래쪽 x-20°가 원본 방향에 있다.",
+      "mappedTo": "planeMarks.angles"
+    }
+  ],
+  "newVisualInformation": [
+    "각호 주변의 회색 부채꼴을 제거하고 두 평행선의 연장·표식을 보강한다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "U",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "V",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "13"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-7"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "N",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "K",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-1714",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Z",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "11"
+            },
+            {
+              "kind": "rational",
+              "numerator": "6286",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "U",
+    "T",
+    "V",
+    "M",
+    "O",
+    "N",
+    "K",
+    "Z"
+  ],
+  "hiddenPointNames": [
+    "U",
+    "T",
+    "V",
+    "M",
+    "O",
+    "N",
+    "K",
+    "Z"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "sUT",
+      "refs": [
+        "U",
+        "T"
+      ]
+    },
+    {
+      "id": "sTV",
+      "refs": [
+        "T",
+        "V"
+      ]
+    },
+    {
+      "id": "sMO",
+      "refs": [
+        "M",
+        "O"
+      ]
+    },
+    {
+      "id": "sON",
+      "refs": [
+        "O",
+        "N"
+      ]
+    },
+    {
+      "id": "sKO",
+      "refs": [
+        "K",
+        "O"
+      ]
+    },
+    {
+      "id": "sOT",
+      "refs": [
+        "O",
+        "T"
+      ]
+    },
+    {
+      "id": "sTZ",
+      "refs": [
+        "T",
+        "Z"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "parallels": [
+      {
+        "id": "p",
+        "count": 1,
+        "segments": [
+          "sUT",
+          "sMO"
+        ]
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "l",
+        "at": "U",
+        "text": "l"
+      },
+      {
+        "id": "m",
+        "at": "M",
+        "text": "m"
+      }
+    ],
+    "angles": [
+      {
+        "id": "top",
+        "refs": [
+          "U",
+          "T",
+          "Z"
+        ],
+        "value": 150,
+        "label": "2x+50",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "bottom",
+        "refs": [
+          "N",
+          "O",
+          "T"
+        ],
+        "value": 30,
+        "label": "x-20",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 690,
+    "height": 520
+  }
+}

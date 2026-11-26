@@ -1,0 +1,239 @@
+{
+  "capability": "construction-spike-v1",
+  "sourceQuote": "두 직선이 만나는 곳에서 ∠a+∠b=120°이며 ∠x를 구한다.",
+  "caption": "두 직선의 교점에 마주 보는 각 a, b와 위쪽 각 x를 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "cross",
+      "condition": "두 직선은 한 점에서 만나며 맞꼭지각 a,b를 이룬다.",
+      "mappedTo": "displaySegments"
+    },
+    {
+      "id": "labels",
+      "condition": "a+b=120°와 x가 원문의 각 위치를 따른다.",
+      "mappedTo": "planeMarks.angles"
+    }
+  ],
+  "newVisualInformation": [
+    "옅은 원본 스캔의 각호·문자 라벨을 또렷한 선으로 재구성하고 각 내부의 회색 채움을 쓰지 않는다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "T"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "150"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "T"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "30"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "T"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "330"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "T"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "210"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "T",
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "hiddenPointNames": [
+    "O",
+    "T",
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "sAO",
+      "refs": [
+        "A",
+        "O"
+      ]
+    },
+    {
+      "id": "sOC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "sDO",
+      "refs": [
+        "D",
+        "O"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "left",
+        "refs": [
+          "A",
+          "O",
+          "D"
+        ],
+        "value": 60,
+        "label": "a",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "right",
+        "refs": [
+          "B",
+          "O",
+          "C"
+        ],
+        "value": 60,
+        "label": "b",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "top",
+        "refs": [
+          "A",
+          "O",
+          "B"
+        ],
+        "value": 120,
+        "label": "x",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ]
+  }
+}

@@ -1,0 +1,555 @@
+{
+  "capability": "construction-spike-v1",
+  "sourceQuote": "l∥m∥n, 꺾은선의 2x, 150°, 3x, y, 55°가 주어졌다.",
+  "caption": "평행선에서 2x=60°, 3x=90°, 보각 y=145°가 되는 꺾인 선을 보인다.",
+  "sourceConditions": [
+    {
+      "id": "three-parallels",
+      "condition": "l,m,n은 오른쪽 아래로 같은 기울기의 평행선이다.",
+      "mappedTo": "planeMarks.parallels[0]"
+    },
+    {
+      "id": "zigzag",
+      "condition": "아래 가로선에서 올라갔다가 위쪽 완만한 선으로 꺾인다.",
+      "mappedTo": "displaySegments"
+    },
+    {
+      "id": "given",
+      "condition": "2x, 150°, 3x, y, 55°가 각 꼭짓점에 붙는다.",
+      "mappedTo": "planeMarks.angles"
+    }
+  ],
+  "newVisualInformation": [
+    "기존 해설의 각 부채꼴 회색 채움을 제거하고 90°·55°·145°에 대응하는 각호를 복원한다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "X",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "K",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "34641",
+              "denominator": "10000"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "J",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "606218",
+              "denominator": "100000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "35",
+              "denominator": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "N",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1104315",
+              "denominator": "100000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "306422",
+              "denominator": "100000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1502793",
+              "denominator": "100000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "27156",
+              "denominator": "10000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Lp",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-85",
+              "denominator": "10"
+            },
+            {
+              "kind": "rational",
+              "numerator": "433013",
+              "denominator": "100000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Lb",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-35",
+              "denominator": "10"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-433013",
+              "denominator": "100000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Mp",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "9641",
+              "denominator": "10000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "633013",
+              "denominator": "100000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Mb",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "59641",
+              "denominator": "10000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-233013",
+              "denominator": "100000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Np",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "854315",
+              "denominator": "100000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "739435",
+              "denominator": "100000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Nb",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1354315",
+              "denominator": "100000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-126591",
+              "denominator": "100000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "X",
+    "Q",
+    "L",
+    "K",
+    "M",
+    "J",
+    "N",
+    "R",
+    "Lp",
+    "Lb",
+    "Mp",
+    "Mb",
+    "Np",
+    "Nb"
+  ],
+  "hiddenPointNames": [
+    "X",
+    "Q",
+    "L",
+    "K",
+    "M",
+    "J",
+    "N",
+    "R",
+    "Lp",
+    "Lb",
+    "Mp",
+    "Mb",
+    "Np",
+    "Nb"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "sXL",
+      "refs": [
+        "X",
+        "L"
+      ]
+    },
+    {
+      "id": "sLK",
+      "refs": [
+        "L",
+        "K"
+      ]
+    },
+    {
+      "id": "sKM",
+      "refs": [
+        "K",
+        "M"
+      ]
+    },
+    {
+      "id": "sMJ",
+      "refs": [
+        "M",
+        "J"
+      ]
+    },
+    {
+      "id": "sJN",
+      "refs": [
+        "J",
+        "N"
+      ]
+    },
+    {
+      "id": "sNR",
+      "refs": [
+        "N",
+        "R"
+      ]
+    },
+    {
+      "id": "sLpL",
+      "refs": [
+        "Lp",
+        "L"
+      ]
+    },
+    {
+      "id": "sLLb",
+      "refs": [
+        "L",
+        "Lb"
+      ]
+    },
+    {
+      "id": "sMpM",
+      "refs": [
+        "Mp",
+        "M"
+      ]
+    },
+    {
+      "id": "sMMb",
+      "refs": [
+        "M",
+        "Mb"
+      ]
+    },
+    {
+      "id": "sNpN",
+      "refs": [
+        "Np",
+        "N"
+      ]
+    },
+    {
+      "id": "sNNb",
+      "refs": [
+        "N",
+        "Nb"
+      ]
+    },
+    {
+      "id": "sKQ",
+      "refs": [
+        "K",
+        "Q"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "parallels": [
+      {
+        "id": "parallel",
+        "count": 1,
+        "segments": [
+          "sLpL",
+          "sMpM",
+          "sNpN"
+        ]
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "ll",
+        "at": "Lp",
+        "text": "l"
+      },
+      {
+        "id": "mm",
+        "at": "Mp",
+        "text": "m"
+      },
+      {
+        "id": "nn",
+        "at": "Np",
+        "text": "n"
+      }
+    ],
+    "angles": [
+      {
+        "id": "twox",
+        "refs": [
+          "X",
+          "L",
+          "Lp"
+        ],
+        "value": 60,
+        "label": "60",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "given150",
+        "refs": [
+          "X",
+          "K",
+          "M"
+        ],
+        "value": 150,
+        "label": "150",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "threex",
+        "refs": [
+          "Mp",
+          "M",
+          "K"
+        ],
+        "value": 90,
+        "label": "90",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "wantedY",
+        "refs": [
+          "M",
+          "J",
+          "N"
+        ],
+        "value": 145,
+        "label": "145",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "given55",
+        "refs": [
+          "R",
+          "N",
+          "Nb"
+        ],
+        "value": 55,
+        "label": "55",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "derived30",
+        "refs": [
+          "Q",
+          "K",
+          "M"
+        ],
+        "value": 30,
+        "label": "30",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 560
+  }
+}
