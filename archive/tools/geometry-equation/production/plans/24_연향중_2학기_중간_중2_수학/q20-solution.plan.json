@@ -1,0 +1,44 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "rational", "numerator": "15", "denominator": "2" }, { "kind": "rational", "numerator": "12990381056767", "denominator": "1000000000000" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "15" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "D", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "4" }, { "kind": "rational", "numerator": "6928203230276", "denominator": "1000000000000" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "E", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "3" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "F", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "rational", "numerator": "51", "denominator": "4" }, { "kind": "rational", "numerator": "3897114317030", "denominator": "1000000000000" }] }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" }
+    ]
+  },
+  "coordinateCanvas": { "width": 600, "height": 470 },
+  "displayPoints": ["A", "B", "C", "D", "E", "F"],
+  "displaySegments": [
+    { "id": "sBD", "refs": ["B", "D"] }, { "id": "sDA", "refs": ["D", "A"], "dashed": true },
+    { "id": "sBE", "refs": ["B", "E"] }, { "id": "sEC", "refs": ["E", "C"] },
+    { "id": "sAF", "refs": ["A", "F"], "dashed": true }, { "id": "sFC", "refs": ["F", "C"] },
+    { "id": "sDF", "refs": ["D", "F"] }, { "id": "sDE", "refs": ["D", "E"] },
+    { "id": "sEF", "refs": ["E", "F"] }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      { "id": "foldD", "count": 1, "segments": ["sDA", "sDE"] },
+      { "id": "foldF", "count": 2, "segments": ["sAF", "sEF"] }
+    ],
+    "dimensions": [
+      { "id": "dBD", "from": "B", "to": "D", "label": "8", "unit": "cm", "side": "LEFT" },
+      { "id": "dBE", "from": "B", "to": "E", "label": "3", "unit": "cm", "side": "BELOW" },
+      { "id": "dDE", "from": "D", "to": "E", "label": "7", "unit": "cm", "side": "LEFT" },
+      { "id": "dAF", "from": "A", "to": "F", "label": "21/2", "unit": "cm", "side": "RIGHT" }
+    ]
+  },
+  "caption": "정삼각형 ABC를 DF로 접어 A가 E로 겹칠 때 DA=DE=7, FA=FE=21/2",
+  "accessibilityDescription": "정삼각형 ABC에서 D F는 접는 선이며 접기 전 AD와 AF는 점선이다. B D는 8, B E는 3, D E는 7, A F는 21/2cm로 각 선분에 치수선이 있다. 같은 길이는 서로 다른 눈금으로 묶었다.",
+  "sourceConditions": [
+    { "id": "equilateral", "condition": "ABC는 한 변 15cm인 정삼각형, B D A와 B E C는 순서대로 일직선", "mappedTo": ["sBD", "sDA", "sBE", "sEC", "sAF", "sFC"] },
+    { "id": "fold", "condition": "접는 선 DF에 A가 E로 겹쳐 DA=DE, FA=FE", "mappedTo": ["sDF", "sDE", "sEF", "sDA", "sAF", "foldD", "foldF"] },
+    { "id": "lengths", "condition": "BD=8, BE=3, DE=7, 결과 AF=21/2cm", "mappedTo": ["dBD", "dBE", "dDE", "dAF"] }
+  ],
+  "newVisualInformation": ["기존 해설에서 문자로만 떠 있던 접기 전후 대응 길이를 접는 선·점선·동일 길이 눈금과 실제 치수선에 결속한다.", "원래 종이와 접힌 종이를 별도 색 면으로 칠하지 않는다."]
+}

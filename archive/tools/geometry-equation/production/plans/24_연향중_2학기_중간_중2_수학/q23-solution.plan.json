@@ -1,0 +1,40 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "rational", "numerator": "26", "denominator": "3" }, { "kind": "rational", "numerator": "4988876515699", "denominator": "1000000000000" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "12" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "D", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "rational", "numerator": "416", "denominator": "75" }, { "kind": "rational", "numerator": "3192880970047", "denominator": "1000000000000" }] }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" }
+    ]
+  },
+  "coordinateCanvas": { "width": 550, "height": 385 },
+  "displayPoints": ["A", "B", "C", "D"],
+  "displaySegments": [
+    { "id": "sAD", "refs": ["A", "D"] }, { "id": "sDB", "refs": ["D", "B"] },
+    { "id": "sBC", "refs": ["B", "C"] }, { "id": "sCA", "refs": ["C", "A"] },
+    { "id": "sCD", "refs": ["C", "D"] }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      { "id": "dAB", "from": "A", "to": "B", "label": "10", "side": "LEFT" },
+      { "id": "dAC", "from": "A", "to": "C", "label": "6", "side": "RIGHT" },
+      { "id": "dBC", "from": "B", "to": "C", "label": "12", "side": "BELOW" }
+    ],
+    "expressionLabels": [{ "id": "dCD", "ownerSegment": "sCD", "text": "36/5" }],
+    "angles": [
+      { "id": "aABC", "refs": ["A", "B", "C"], "value": 29.926435, "style": "ARC", "arcs": 1, "equalGroup": 1, "noLabel": true },
+      { "id": "aACD", "refs": ["A", "C", "D"], "value": 29.926435, "style": "ARC", "arcs": 1, "equalGroup": 1, "noLabel": true }
+    ]
+  },
+  "caption": "∠ABC=∠ACD와 공통인 A의 각으로 △ABC∽△ACD, AB:AC=5:3, CD=36/5",
+  "accessibilityDescription": "삼각형 ABC에서 AB 10, AC 6, BC 12를 각각 치수선으로 보이며 AB 위 D와 C를 잇는다. B와 C의 같은 각 호와 CD=36/5가 실제 CD 선분에 결속된다.",
+  "sourceConditions": [
+    { "id": "lengths", "condition": "AB=10, AC=6, BC=12", "mappedTo": ["dAB", "dAC", "dBC"] },
+    { "id": "similar", "condition": "D는 AB 위, ∠ABC=∠ACD, ∠BAC=∠CAD", "mappedTo": ["sAD", "sDB", "sCD", "aABC", "aACD"] },
+    { "id": "result", "condition": "AA 닮음의 대응비 5:3으로 CD=36/5", "mappedTo": ["dCD", "sCD"] }
+  ],
+  "newVisualInformation": ["기존 해설에서 C 근처 다른 선분과 겹치던 CD=36/5 라벨을 실제 CD 소유 라벨로 놓는다.", "주어진 세 변의 길이는 외부 치수선으로 놓고, 같음 조건은 실제 각 호로 나타내며 면 채움은 없다."]
+}

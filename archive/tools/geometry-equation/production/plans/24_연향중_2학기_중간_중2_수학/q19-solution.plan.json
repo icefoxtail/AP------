@@ -1,0 +1,46 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "2" }, { "kind": "integer", "value": "4" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "12" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "D", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "14" }, { "kind": "integer", "value": "4" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "P", "op": "MIDPOINT", "inputs": ["A", "B"], "args": {}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "Q", "op": "MIDPOINT", "inputs": ["B", "C"], "args": {}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "R", "op": "MIDPOINT", "inputs": ["C", "D"], "args": {}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "M", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "4" }, { "kind": "integer", "value": "2" }] }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "N", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "10" }, { "kind": "integer", "value": "2" }] }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" }
+    ]
+  },
+  "coordinateCanvas": { "width": 600, "height": 380 },
+  "displayPoints": ["A", "B", "C", "D", "P", "Q", "R", "M", "N"],
+  "displaySegments": [
+    { "id": "sAP", "refs": ["A", "P"] }, { "id": "sPB", "refs": ["P", "B"] },
+    { "id": "sBQ", "refs": ["B", "Q"] }, { "id": "sQC", "refs": ["Q", "C"] },
+    { "id": "sCR", "refs": ["C", "R"] }, { "id": "sRD", "refs": ["R", "D"] },
+    { "id": "sDA", "refs": ["D", "A"] },
+    { "id": "sPM", "refs": ["P", "M"] }, { "id": "sMN", "refs": ["M", "N"] }, { "id": "sNR", "refs": ["N", "R"] },
+    { "id": "sAM", "refs": ["A", "M"] }, { "id": "sMQ", "refs": ["M", "Q"] },
+    { "id": "sDN", "refs": ["D", "N"] }, { "id": "sNQ", "refs": ["N", "Q"] }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      { "id": "midAB", "count": 1, "segments": ["sAP", "sPB"] },
+      { "id": "midCD", "count": 2, "segments": ["sCR", "sRD"] },
+      { "id": "midBC", "count": 3, "segments": ["sBQ", "sQC"] }
+    ],
+    "parallels": [{ "id": "midline", "count": 1, "segments": ["sMN", "sDA"] }],
+    "regions": [{ "id": "rMQN", "fill": "LIGHT", "label": "6", "labelName": "△MQN", "unit": "cm^2", "labelPlacement": "AUTO_LEADER", "shapes": [{ "polygon": ["M", "Q", "N"] }] }]
+  },
+  "caption": "중점 P·Q·R과 교점 M·N을 보이며 △MQN은 전체 평행사변형의 1/8, 넓이는 6 대 48",
+  "accessibilityDescription": "평행사변형 ABCD의 세 변 중점 P Q R이 눈금으로 표시된다. PR 위의 M N, 선분 AQ와 DQ, 삼각형 MQN의 넓이 6을 보이며 그 밖의 부분은 채우지 않는다.",
+  "sourceConditions": [
+    { "id": "midpoints", "condition": "P는 AB, Q는 BC, R은 CD의 중점", "mappedTo": ["P", "Q", "R", "midAB", "midBC", "midCD"] },
+    { "id": "intersections", "condition": "M=PR∩AQ, N=PR∩DQ, PR∥BC", "mappedTo": ["sPM", "sMN", "sNR", "sAM", "sMQ", "sDN", "sNQ", "midline"] },
+    { "id": "area", "condition": "△MQN=6cm², 전체 ABCD=48cm²", "mappedTo": ["rMQN", "sDA", "sBQ", "sQC"] }
+  ],
+  "newVisualInformation": ["기존 해설에서 중점 표시 없이 글로만 적힌 △MQN=6을 실제 선분 MN·MQ·NQ 경계가 만든 영역 내부에 결속한다.", "선분에 붙지 않은 계산 텍스트와 배경 채움을 없앤다."]
+}

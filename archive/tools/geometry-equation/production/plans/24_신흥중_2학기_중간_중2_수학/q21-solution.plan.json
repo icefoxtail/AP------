@@ -1,0 +1,45 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "2" }, { "kind": "integer", "value": "6" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "10" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "D", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "12" }, { "kind": "integer", "value": "6" }] }, "outputType": "POINT", "factRole": "GIVEN" }
+    ]
+  },
+  "coordinateCanvas": { "width": 530, "height": 375 },
+  "displayPoints": ["A", "B", "C", "D"],
+  "displaySegments": [
+    { "id": "sAB", "refs": ["A", "B"] }, { "id": "sBC", "refs": ["B", "C"] },
+    { "id": "sCD", "refs": ["C", "D"] }, { "id": "sDA", "refs": ["D", "A"] },
+    { "id": "sAC", "refs": ["A", "C"] }
+  ],
+  "planeMarks": {
+    "parallels": [
+      { "id": "parallel1", "count": 1, "segments": ["sAB", "sCD"] },
+      { "id": "parallel2", "count": 2, "segments": ["sBC", "sDA"] }
+    ],
+    "equalLengths": [
+      { "id": "opposite1", "count": 1, "segments": ["sAB", "sCD"] },
+      { "id": "opposite2", "count": 2, "segments": ["sBC", "sDA"] }
+    ],
+    "angles": [
+      { "id": "aBAC", "refs": ["B", "A", "C"], "value": 71.565051, "style": "ARC", "arcs": 1, "equalGroup": 1, "noLabel": true },
+      { "id": "aDCA", "refs": ["D", "C", "A"], "value": 71.565051, "style": "ARC", "arcs": 1, "equalGroup": 1, "noLabel": true },
+      { "id": "aBCA", "refs": ["B", "C", "A"], "value": 36.869898, "style": "ARC", "arcs": 2, "equalGroup": 2, "noLabel": true },
+      { "id": "aDAC", "refs": ["D", "A", "C"], "value": 36.869898, "style": "ARC", "arcs": 2, "equalGroup": 2, "noLabel": true }
+    ],
+    "commonSides": [{ "id": "diagonal", "segment": "sAC", "text": "공통" }]
+  },
+  "caption": "평행사변형의 대각선 AC로 나눈 두 삼각형의 ASA 합동과 대응하는 대변의 길이",
+  "accessibilityDescription": "평행사변형 ABCD에 대각선 AC를 긋고 두 쌍의 평행표시·대응 엇각표시·AC 공통 변 표식으로 삼각형 ABC와 CDA의 합동을 나타낸다.",
+  "sourceConditions": [
+    { "id": "parallel", "condition": "AB∥CD, BC∥AD", "mappedTo": ["parallel1", "parallel2"] },
+    { "id": "asa", "condition": "∠BAC=∠DCA, ∠BCA=∠DAC, AC는 공통인 변", "mappedTo": ["aBAC", "aDCA", "aBCA", "aDAC", "diagonal"] },
+    { "id": "conclusion", "condition": "합동인 두 삼각형에서 AB=CD, BC=AD", "mappedTo": ["opposite1", "opposite2"] }
+  ],
+  "newVisualInformation": ["기존 검은 해설 그림에 글로만 붙은 평행·합동 조건을 실제 평행 화살표·엇각 호·대응변 눈금으로 바꾸어 선에 붙인다.", "도형 안에 불필요한 설명문·면 채움을 넣지 않는다."]
+}

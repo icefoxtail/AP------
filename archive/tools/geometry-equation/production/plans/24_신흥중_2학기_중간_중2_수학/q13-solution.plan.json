@@ -1,0 +1,36 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "6" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "10" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "D", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "10" }, { "kind": "integer", "value": "6" }] }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "O", "op": "MIDPOINT", "inputs": ["A", "C"], "args": {}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" }
+    ]
+  },
+  "coordinateCanvas": { "width": 530, "height": 385 },
+  "displayPoints": ["A", "B", "C", "D", "O"],
+  "displaySegments": [
+    { "id": "sAB", "refs": ["A", "B"] }, { "id": "sBC", "refs": ["B", "C"] },
+    { "id": "sCD", "refs": ["C", "D"] }, { "id": "sDA", "refs": ["D", "A"] },
+    { "id": "sAO", "refs": ["A", "O"] }, { "id": "sOC", "refs": ["O", "C"] },
+    { "id": "sBO", "refs": ["B", "O"] }, { "id": "sOD", "refs": ["O", "D"] }
+  ],
+  "planeMarks": {
+    "angles": [
+      { "id": "aOAB", "refs": ["O", "A", "B"], "value": 59.03624347, "style": "ARC", "arcs": 1, "equalGroup": 1, "noLabel": true },
+      { "id": "aOBA", "refs": ["O", "B", "A"], "value": 59.03624347, "style": "ARC", "arcs": 1, "equalGroup": 1, "noLabel": true }
+    ],
+    "equalLengths": [{ "id": "halves", "count": 1, "segments": ["sAO", "sBO", "sOC", "sOD"] }]
+  },
+  "caption": "두 대각선의 교점 O에서 OA=OB, OA=OC, OB=OD이므로 AC=BD가 되는 관계",
+  "accessibilityDescription": "평행사변형의 두 대각선이 O에서 만나며 A와 B의 같은 각, OA OB OC OD의 같은 길이 눈금이 모두 표시되어 있다. 불필요한 식 텍스트가 선 위에 겹치지 않는다.",
+  "sourceConditions": [
+    { "id": "givenAngles", "condition": "∠OAB=∠OBA로부터 OA=OB", "mappedTo": ["aOAB", "aOBA", "sAO", "sBO"] },
+    { "id": "bisect", "condition": "평행사변형의 대각선이 서로를 이등분하여 OA=OC, OB=OD", "mappedTo": ["O", "sAO", "sOC", "sBO", "sOD", "halves"] }
+  ],
+  "newVisualInformation": ["OA·OB·OC·OD 길이 관계를 실제 선분 눈금 하나의 그룹으로 보이고 AC=BD 결론을 도형에서 읽는다.", "기존 해설 SVG의 O 주변 중복 문자와 교차선 위 식 라벨을 삭제하고 면 채움을 사용하지 않는다."]
+}

@@ -1,0 +1,45 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "rational", "numerator": "9656854249492", "denominator": "1000000000000" }, { "kind": "rational", "numerator": "9656854249492", "denominator": "1000000000000" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "rational", "numerator": "9656854249492", "denominator": "1000000000000" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "D", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "rational", "numerator": "2828427124746", "denominator": "1000000000000" }, { "kind": "rational", "numerator": "2828427124746", "denominator": "1000000000000" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "E", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "rational", "numerator": "5656854249492", "denominator": "1000000000000" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" }
+    ]
+  },
+  "coordinateCanvas": { "width": 545, "height": 425 },
+  "displayPoints": ["A", "B", "C", "D", "E"],
+  "displaySegments": [
+    { "id": "sAD", "refs": ["A", "D"] }, { "id": "sDB", "refs": ["D", "B"] },
+    { "id": "sBE", "refs": ["B", "E"] }, { "id": "sEC", "refs": ["E", "C"] },
+    { "id": "sCA", "refs": ["C", "A"] }, { "id": "sDE", "refs": ["D", "E"] },
+    { "id": "sAE", "refs": ["A", "E"] }
+  ],
+  "rightAngles": [
+    { "id": "rC", "refs": ["A", "C", "E"] },
+    { "id": "rD", "refs": ["A", "D", "E"] }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      { "id": "hypo", "count": 1, "segments": ["sAD", "sCA"] },
+      { "id": "four", "count": 2, "segments": ["sDB", "sDE", "sEC"] }
+    ],
+    "dimensions": [
+      { "id": "dEC", "from": "E", "to": "C", "label": "4", "unit": "cm", "side": "BELOW" },
+      { "id": "dDB", "from": "D", "to": "B", "label": "4", "unit": "cm", "side": "LEFT" },
+      { "id": "dDE", "from": "D", "to": "E", "label": "4", "unit": "cm", "side": "RIGHT" }
+    ]
+  },
+  "caption": "△ACE와 △ADE의 RHS 합동에서 CE=DE=4, 다시 △BDE는 직각이등변으로 DB=4",
+  "accessibilityDescription": "직각이등변삼각형 ABC의 C에서 직각, D에서 DE와 AB의 직각을 보인다. AD=AC 눈금, AE 공통 선분, EC·DE·DB 각 4cm의 눈금과 치수선이 있다.",
+  "sourceConditions": [
+    { "id": "given", "condition": "∠C=90°, AC=BC, D는 AB 위이며 AD=AC, DE⊥AB", "mappedTo": ["sAD", "sDB", "sCA", "sDE", "rC", "rD", "hypo"] },
+    { "id": "rhs", "condition": "AE는 공통 빗변이므로 △ACE≡△ADE (RHS), CE=DE", "mappedTo": ["sAE", "sEC", "sDE", "four"] },
+    { "id": "answer", "condition": "EC=4로부터 DE=DB=4, DB+DE=8cm", "mappedTo": ["dEC", "dDB", "dDE", "four"] }
+  ],
+  "newVisualInformation": ["기존 해설에서 우측에 떠 있던 DB·DE·EC의 수치를 세 선분의 실제 치수선과 같은 길이 눈금에 결속한다.", "RHS 합동에 필요한 두 직각과 공통 빗변을 그리며 면 채움은 없다."]
+}

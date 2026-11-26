@@ -1,0 +1,46 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "4" }, { "kind": "rational", "numerator": "6928203230275", "denominator": "1000000000000" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "11" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "D", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "15" }, { "kind": "rational", "numerator": "6928203230275", "denominator": "1000000000000" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "E", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "3" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "F", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "8" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" }
+    ]
+  },
+  "coordinateCanvas": { "width": 620, "height": 390 },
+  "displayPoints": ["A", "B", "C", "D", "E", "F"],
+  "displaySegments": [
+    { "id": "sAB", "refs": ["A", "B"] }, { "id": "sAD", "refs": ["A", "D"] },
+    { "id": "sDC", "refs": ["D", "C"] }, { "id": "sBE", "refs": ["B", "E"] },
+    { "id": "sEF", "refs": ["E", "F"] }, { "id": "sFC", "refs": ["F", "C"] },
+    { "id": "sAF", "refs": ["A", "F"] }, { "id": "sDE", "refs": ["D", "E"] }
+  ],
+  "planeMarks": {
+    "angles": [
+      { "id": "aBAF", "refs": ["B", "A", "F"], "value": 60, "style": "ARC", "arcs": 1, "equalGroup": 1, "noLabel": true },
+      { "id": "aFAD", "refs": ["F", "A", "D"], "value": 60, "style": "ARC", "arcs": 1, "equalGroup": 1, "noLabel": true },
+      { "id": "aADE", "refs": ["A", "D", "E"], "value": 30, "style": "ARC", "arcs": 2, "equalGroup": 2, "noLabel": true },
+      { "id": "aEDC", "refs": ["E", "D", "C"], "value": 30, "style": "ARC", "arcs": 2, "equalGroup": 2, "noLabel": true }
+    ],
+    "dimensions": [
+      { "id": "dAB", "from": "A", "to": "B", "label": "8", "side": "LEFT" },
+      { "id": "dAD", "from": "A", "to": "D", "label": "11", "side": "ABOVE" },
+      { "id": "dBF", "from": "B", "to": "F", "label": "8", "side": "BELOW", "offset": "AUTO" },
+      { "id": "dFC", "from": "F", "to": "C", "label": "3", "side": "BELOW", "offset": "AUTO" },
+      { "id": "dEF", "from": "E", "to": "F", "label": "5", "side": "BELOW", "offset": "AUTO" }
+    ]
+  },
+  "caption": "각의 이등분선 AF·DE로부터 BF=8, CF=3, EF=5를 구하는 평행사변형 풀이",
+  "accessibilityDescription": "평행사변형 ABCD에서 A와 D의 각이 각각 이등분되며, 밑변의 순서는 B E F C다. AB 8, AD 11, BF 8, FC 3, EF 5를 각각 해당 선분의 치수선으로 보여 준다.",
+  "sourceConditions": [
+    { "id": "initial", "condition": "AB=8, AD=BC=11인 평행사변형", "mappedTo": ["sAB", "sAD", "sDC", "sBE", "sEF", "sFC", "dAB", "dAD"] },
+    { "id": "bisectors", "condition": "AF와 DE가 각 A와 D의 이등분선", "mappedTo": ["sAF", "sDE", "aBAF", "aFAD", "aADE", "aEDC"] },
+    { "id": "derived", "condition": "BF=8, CF=3, EF=5", "mappedTo": ["dBF", "dFC", "dEF"] }
+  ],
+  "newVisualInformation": ["겹치던 BF=8·CF=3·EF=5의 풀잇값을 실제 선분별 치수선과 두 각 이등분 표식으로 분리한다.", "채움은 전혀 사용하지 않는다."]
+}

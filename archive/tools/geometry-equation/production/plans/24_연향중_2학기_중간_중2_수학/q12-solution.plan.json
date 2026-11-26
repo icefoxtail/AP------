@@ -1,0 +1,43 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "10" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "-20" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "-10" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "D", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "20" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "O", "op": "MIDPOINT", "inputs": ["A", "C"], "args": {}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "P", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "-12" }, { "kind": "integer", "value": "-4" }] }, "outputType": "POINT", "factRole": "GIVEN" }
+    ]
+  },
+  "coordinateCanvas": { "width": 620, "height": 430 },
+  "displayPoints": ["A", "B", "C", "D", "O", "P"],
+  "displaySegments": [
+    { "id": "sAB", "refs": ["A", "B"] }, { "id": "sBP", "refs": ["B", "P"] },
+    { "id": "sPC", "refs": ["P", "C"] }, { "id": "sCD", "refs": ["C", "D"] },
+    { "id": "sDA", "refs": ["D", "A"] }, { "id": "sAC", "refs": ["A", "C"] },
+    { "id": "sBD", "refs": ["B", "D"] }, { "id": "sAP", "refs": ["A", "P"] }
+  ],
+  "rightAngles": [{ "id": "rO", "refs": ["A", "O", "D"] }],
+  "planeMarks": {
+    "dimensions": [
+      { "id": "dAC", "from": "A", "to": "C", "label": "20", "side": "RIGHT", "style": "INLINE" },
+      { "id": "dBD", "from": "B", "to": "D", "label": "40", "side": "ABOVE", "style": "INLINE" }
+    ],
+    "expressionLabels": [
+      { "id": "pBP", "ownerSegment": "sBP", "text": "2k" },
+      { "id": "pPC", "ownerSegment": "sPC", "text": "3k" }
+    ],
+    "regions": [{ "id": "rAPC", "fill": "LIGHT", "label": "120", "labelName": "△APC", "unit": "cm^2", "labelPlacement": "AUTO_LEADER", "shapes": [{ "polygon": ["A", "P", "C"] }] }]
+  },
+  "caption": "마름모의 대각선 20·40, BP:PC=2:3으로 △ABC=200과 △APC=120을 구하는 풀이",
+  "accessibilityDescription": "마름모 ABCD의 두 대각선 AC와 BD가 O에서 수직으로 만난다. BC 위 점 P는 BP:PC=2:3이고, 길이 20과 40이 각 대각선에 붙어 있다. 삼각형 APC만 채워 넓이 120을 표시한다.",
+  "sourceConditions": [
+    { "id": "rhombus", "condition": "마름모 ABCD에서 AC=20, BD=40이고 대각선은 수직이등분", "mappedTo": ["sAC", "sBD", "O", "rO", "dAC", "dBD"] },
+    { "id": "ratio", "condition": "P는 BC 위이고 BP:PC=2:3", "mappedTo": ["P", "sBP", "sPC", "pBP", "pPC"] },
+    { "id": "area", "condition": "△APC의 넓이는 120cm²", "mappedTo": ["sAP", "rAPC"] }
+  ],
+  "newVisualInformation": ["기존 해설 SVG의 중복·충돌하던 AC20, BD40, BP:PC 조건을 각 선분의 실제 길이·비례 필드에 결속한다.", "문제가 구하는 △APC만 색칠하고 다른 면은 비운다."]
+}

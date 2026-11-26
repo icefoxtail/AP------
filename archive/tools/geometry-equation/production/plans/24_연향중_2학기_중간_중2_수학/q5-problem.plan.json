@@ -1,0 +1,157 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": { "text": "① 중선의 교점" },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": { "schemaVersion": "construction-spike-v1", "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false }, "nodes": [
+          { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "3" }, { "kind": "integer", "value": "6" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+          { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+          { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "10" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+          { "id": "D", "op": "MIDPOINT", "inputs": ["A", "B"], "args": {}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+          { "id": "E", "op": "MIDPOINT", "inputs": ["A", "C"], "args": {}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+          { "id": "F", "op": "MIDPOINT", "inputs": ["B", "C"], "args": {}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+          { "id": "O", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "rational", "numerator": "13", "denominator": "3" }, { "kind": "integer", "value": "2" }] }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" }
+        ] },
+        "coordinateCanvas": { "width": 384, "height": 320 },
+        "displayPoints": ["A", "B", "C", "D", "E", "F", "O"],
+        "hiddenPointNames": ["D", "E", "F"], "hiddenPointStyle": "NONE",
+        "displaySegments": [
+          { "id": "sAD", "refs": ["A", "D"] }, { "id": "sDB", "refs": ["D", "B"] },
+          { "id": "sAE", "refs": ["A", "E"] }, { "id": "sEC", "refs": ["E", "C"] },
+          { "id": "sBF", "refs": ["B", "F"] }, { "id": "sFC", "refs": ["F", "C"] },
+          { "id": "sAF", "refs": ["A", "F"] }, { "id": "sBE", "refs": ["B", "E"] },
+          { "id": "sCD", "refs": ["C", "D"] }
+        ],
+        "planeMarks": { "equalLengths": [
+          { "id": "mAB", "count": 1, "segments": ["sAD", "sDB"] },
+          { "id": "mAC", "count": 2, "segments": ["sAE", "sEC"] },
+          { "id": "mBC", "count": 3, "segments": ["sBF", "sFC"] }
+        ] }
+      }
+    },
+    {
+      "caption": { "text": "② 세 각의 이등분선" },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": { "schemaVersion": "construction-spike-v1", "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false }, "nodes": [
+          { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "4" }, { "kind": "integer", "value": "6" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+          { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+          { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "10" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+          { "id": "O", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "rational", "numerator": "4362910588345", "denominator": "1000000000000" }, { "kind": "rational", "numerator": "2334958886617", "denominator": "1000000000000" }] }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" }
+        ] },
+        "coordinateCanvas": { "width": 384, "height": 320 },
+        "displayPoints": ["A", "B", "C", "O"],
+        "displaySegments": [
+          { "id": "sAB", "refs": ["A", "B"] }, { "id": "sBC", "refs": ["B", "C"] },
+          { "id": "sCA", "refs": ["C", "A"] }, { "id": "sAO", "refs": ["A", "O"] },
+          { "id": "sBO", "refs": ["B", "O"] }, { "id": "sCO", "refs": ["C", "O"] }
+        ],
+        "planeMarks": { "angles": [
+          { "id": "aa1", "refs": ["B", "A", "O"], "value": 39.345034, "style": "ARC", "arcs": 1, "equalGroup": 1, "noLabel": true },
+          { "id": "aa2", "refs": ["O", "A", "C"], "value": 39.345034, "style": "ARC", "arcs": 1, "equalGroup": 1, "noLabel": true },
+          { "id": "ab1", "refs": ["A", "B", "O"], "value": 28.154966, "style": "ARC", "arcs": 2, "equalGroup": 2, "noLabel": true },
+          { "id": "ab2", "refs": ["O", "B", "C"], "value": 28.154966, "style": "ARC", "arcs": 2, "equalGroup": 2, "noLabel": true },
+          { "id": "ac1", "refs": ["B", "C", "O"], "value": 22.5, "style": "ARC", "arcs": 3, "equalGroup": 3, "noLabel": true },
+          { "id": "ac2", "refs": ["O", "C", "A"], "value": 22.5, "style": "ARC", "arcs": 3, "equalGroup": 3, "noLabel": true }
+        ] }
+      }
+    },
+    {
+      "caption": { "text": "③ 세 꼭짓점까지 같은 거리" },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": { "schemaVersion": "construction-spike-v1", "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false }, "nodes": [
+          { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "4" }, { "kind": "integer", "value": "6" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+          { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+          { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "10" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+          { "id": "O", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "5" }, { "kind": "integer", "value": "1" }] }, "outputType": "POINT", "factRole": "GIVEN" }
+        ] },
+        "coordinateCanvas": { "width": 384, "height": 320 },
+        "displayPoints": ["A", "B", "C", "O"],
+        "displaySegments": [
+          { "id": "sAB", "refs": ["A", "B"] }, { "id": "sBC", "refs": ["B", "C"] },
+          { "id": "sCA", "refs": ["C", "A"] }, { "id": "sAO", "refs": ["A", "O"] },
+          { "id": "sBO", "refs": ["B", "O"] }, { "id": "sCO", "refs": ["C", "O"] }
+        ],
+        "planeMarks": { "equalLengths": [{ "id": "radii", "count": 1, "segments": ["sAO", "sBO", "sCO"] }] }
+      }
+    },
+    {
+      "caption": { "text": "④ 세 변까지 같은 수선 거리" },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": { "schemaVersion": "construction-spike-v1", "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false }, "nodes": [
+          { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "4" }, { "kind": "integer", "value": "6" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+          { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+          { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "10" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+          { "id": "O", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "rational", "numerator": "4362910588345", "denominator": "1000000000000" }, { "kind": "rational", "numerator": "2334958886617", "denominator": "1000000000000" }] }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+          { "id": "F1", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "rational", "numerator": "2420107359468", "denominator": "1000000000000" }, { "kind": "rational", "numerator": "3630161039202", "denominator": "1000000000000" }] }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+          { "id": "F2", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "rational", "numerator": "6013975850864", "denominator": "1000000000000" }, { "kind": "rational", "numerator": "3986024149136", "denominator": "1000000000000" }] }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+          { "id": "F3", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "rational", "numerator": "4362910588345", "denominator": "1000000000000" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" }
+        ] },
+        "coordinateCanvas": { "width": 384, "height": 320 },
+        "displayPoints": ["A", "B", "C", "O", "F1", "F2", "F3"],
+        "hiddenPointNames": ["F1", "F2", "F3"], "hiddenPointStyle": "NONE",
+        "displaySegments": [
+          { "id": "sAB", "refs": ["A", "B"] }, { "id": "sBC", "refs": ["B", "C"] },
+          { "id": "sCA", "refs": ["C", "A"] },
+          { "id": "sOF1", "refs": ["O", "F1"] }, { "id": "sOF2", "refs": ["O", "F2"] },
+          { "id": "sOF3", "refs": ["O", "F3"] }
+        ],
+        "rightAngles": [
+          { "id": "rF1", "refs": ["A", "F1", "O"] },
+          { "id": "rF2", "refs": ["A", "F2", "O"] },
+          { "id": "rF3", "refs": ["B", "F3", "O"] }
+        ],
+        "planeMarks": { "equalLengths": [{ "id": "inradii", "count": 1, "segments": ["sOF1", "sOF2", "sOF3"] }] }
+      }
+    },
+    {
+      "caption": { "text": "⑤ 각 변의 수직이등분선" },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": { "schemaVersion": "construction-spike-v1", "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false }, "nodes": [
+          { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "4" }, { "kind": "integer", "value": "6" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+          { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+          { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "10" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+          { "id": "O", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "5" }, { "kind": "integer", "value": "1" }] }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+          { "id": "F1", "op": "MIDPOINT", "inputs": ["A", "B"], "args": {}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+          { "id": "F2", "op": "MIDPOINT", "inputs": ["A", "C"], "args": {}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+          { "id": "F3", "op": "MIDPOINT", "inputs": ["B", "C"], "args": {}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" }
+        ] },
+        "coordinateCanvas": { "width": 384, "height": 320 },
+        "displayPoints": ["A", "B", "C", "O", "F1", "F2", "F3"],
+        "hiddenPointNames": ["F1", "F2", "F3"], "hiddenPointStyle": "NONE",
+        "displaySegments": [
+          { "id": "sAF1", "refs": ["A", "F1"] }, { "id": "sF1B", "refs": ["F1", "B"] },
+          { "id": "sAF2", "refs": ["A", "F2"] }, { "id": "sF2C", "refs": ["F2", "C"] },
+          { "id": "sBF3", "refs": ["B", "F3"] }, { "id": "sF3C", "refs": ["F3", "C"] },
+          { "id": "sOF1", "refs": ["O", "F1"] }, { "id": "sOF2", "refs": ["O", "F2"] },
+          { "id": "sOF3", "refs": ["O", "F3"] }
+        ],
+        "rightAngles": [
+          { "id": "rF1", "refs": ["A", "F1", "O"] },
+          { "id": "rF2", "refs": ["A", "F2", "O"] },
+          { "id": "rF3", "refs": ["B", "F3", "O"] }
+        ],
+        "planeMarks": { "equalLengths": [
+          { "id": "mAB", "count": 1, "segments": ["sAF1", "sF1B"] },
+          { "id": "mAC", "count": 2, "segments": ["sAF2", "sF2C"] },
+          { "id": "mBC", "count": 3, "segments": ["sBF3", "sF3C"] }
+        ] }
+      }
+    }
+  ],
+  "caption": "외심을 판정하는 다섯 그림의 중선·각 이등분선·같은 반지름·변까지 거리·수직이등분선 조건",
+  "accessibilityDescription": "다섯 삼각형 ①부터 ⑤까지 각기 다른 도형 조건을 그림으로 보여 준다. ① 중선 ③ 같은 꼭짓점까지의 거리 ⑤ 수직이등분선 등의 핵심 요소를 명시하며, 카드형 회색 배경과 면 채움은 없다.",
+  "sourceConditions": [
+    { "id": "choice1", "condition": "① 세 중선과 세 변의 중점 눈금", "mappedTo": "panels:0.displaySegments:sAF,sBE,sCD;panels:0.planeMarks.equalLengths:mAB,mAC,mBC" },
+    { "id": "choice2", "condition": "② 세 꼭짓점의 각 이등분선이 O에서 만남", "mappedTo": "panels:1.displaySegments:sAO,sBO,sCO;panels:1.planeMarks.angles:aa1,aa2,ab1,ab2,ac1,ac2" },
+    { "id": "choice3", "condition": "③ OA=OB=OC", "mappedTo": "panels:2.planeMarks.equalLengths:radii" },
+    { "id": "choice4", "condition": "④ 각 변까지의 수선 거리가 같음", "mappedTo": "panels:3.rightAngles:rF1,rF2,rF3;panels:3.planeMarks.equalLengths:inradii" },
+    { "id": "choice5", "condition": "⑤ 각 변의 중점에서 그은 수선들이 O에서 만남", "mappedTo": "panels:4.rightAngles:rF1,rF2,rF3;panels:4.planeMarks.equalLengths:mAB,mAC,mBC" }
+  ],
+  "newVisualInformation": ["원본 ①~⑤의 중점·각·길이·직각 정보가 각 패널의 실제 작도와 표식 필드에 1:1로 연결된다.", "기존 SVG의 회색 선택지 카드와 불필요한 삼각형 색 면을 전부 없애고 선과 눈금만 남긴다."]
+}
