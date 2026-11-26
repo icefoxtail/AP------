@@ -1,0 +1,357 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "p1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "919",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "775",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "5881",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "775",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "3377",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "775",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1956",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1438",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p5",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "5120",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1996",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p6",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "3377",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "4485",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p7",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "3377",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2630",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ1",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "p7"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "1855",
+            "denominator": "1000"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "p1",
+    "p2",
+    "p3",
+    "p4",
+    "p5",
+    "p6",
+    "p7"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ1"
+  ],
+  "displaySegments": [
+    {
+      "id": "s1",
+      "refs": [
+        "p1",
+        "p2"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "p3",
+        "p4"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "p3",
+        "p5"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "p4",
+        "p6"
+      ]
+    },
+    {
+      "id": "s5",
+      "refs": [
+        "p6",
+        "p5"
+      ]
+    },
+    {
+      "id": "s6",
+      "refs": [
+        "p4",
+        "p5"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [{"id":"sourceUnknownAngle1","style":"ARC","refs":["p3","p4","p5"],"factRole":"GIVEN","value":35,"label":"x"},{"id":"sourceUnknownAngle2","style":"ARC","refs":["p4","p6","p5"],"factRole":"GIVEN","value":60,"label":"y"}],
+    "segmentColors": [{"segments":["s2"],"color":"BLUE"},{"segments":["s3"],"color":"WARM"},{"segments":["s6"],"color":"VIOLET"}],
+    "textLabels": [
+      {
+        "id": "text1",
+        "at": [
+          2.487,
+          0.403
+        ],
+        "text": "25°",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "text2",
+        "at": [
+          4.363,
+          0.511
+        ],
+        "text": "35°",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "text5",
+        "at": [
+          3.367,
+          0.505
+        ],
+        "text": "A",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "text6",
+        "at": [
+          5.3,
+          1.816
+        ],
+        "text": "B",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "text7",
+        "at": [
+          3.457,
+          4.655
+        ],
+        "text": "C",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "text8",
+        "at": [
+          1.706,
+          1.308
+        ],
+        "text": "D",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "text9",
+        "at": [
+          3.477,
+          2.76
+        ],
+        "text": "O",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "text10",
+        "at": [
+          5.981,
+          0.525
+        ],
+        "text": "T",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "p1",
+    "p2",
+    "p3",
+    "p4",
+    "p5",
+    "p6",
+    "p7"
+  ],
+  "unmarkedPointNames": [
+    "p1",
+    "p2",
+    "p3",
+    "p4",
+    "p5",
+    "p6",
+    "p7"
+  ],
+  "caption": "접점에서 두 현이 만드는 각 — 같은 파랑 25도는 현 AD에 대응하고, 주황 35도는 현 AB를 본다. 위쪽 y는 아래쪽 호 DB를 본다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림에서 $\\overleftrightarrow{\\mathrm{AT}}$는 원 $\\mathrm{O}$의 접선이고 점 $\\mathrm{A}$는 접점일 때, $\\angle x + \\angle y$의 크기를 구하면?(4점) ",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "SOURCE_VS_PLAN_REVIEWED: 선분·원·문자·점선·선색·각 표시를 도형 필드와 대조함. 잔여 SVG 고유 텍스처·정밀 곡선/도형 배치와 렌더 실물은 별도 보강·검수 대상.",
+    "곡선/호 경로: 전용 곡선 primitive 확장 검토 필요"
+  ],
+  "coordinateCanvas": {
+    "width": 680,
+    "height": 526
+  }
+}

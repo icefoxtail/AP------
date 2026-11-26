@@ -1,0 +1,1436 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "32",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "16",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "semicircle",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "arc5",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "arc10",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "arc15",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "15"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "arc20",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "20"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "arc25",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "25"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "arc30",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "30"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "arc35",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "35"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "arc40",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "40"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "arc45",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "45"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "arc50",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "50"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "arc55",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "55"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "arc60",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "arc65",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "65"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "arc70",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "70"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "arc75",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "75"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "arc80",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "80"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "arc85",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "85"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "arc90",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "90"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "arc95",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "95"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "arc100",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "100"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "arc105",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "105"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "arc110",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "110"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "arc115",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "115"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "arc120",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "120"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "arc125",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "125"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "arc130",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "130"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "arc135",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "135"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "arc140",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "140"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "arc145",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "145"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "arc150",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "150"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "arc155",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "155"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "arc160",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "160"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "arc165",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "165"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "arc170",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "170"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "arc175",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "175"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "O",
+    "T",
+    "arc5",
+    "arc10",
+    "arc15",
+    "arc20",
+    "arc25",
+    "arc30",
+    "arc35",
+    "arc40",
+    "arc45",
+    "arc50",
+    "arc55",
+    "arc60",
+    "arc65",
+    "arc70",
+    "arc75",
+    "arc80",
+    "arc85",
+    "arc90",
+    "arc95",
+    "arc100",
+    "arc105",
+    "arc110",
+    "arc115",
+    "arc120",
+    "arc125",
+    "arc130",
+    "arc135",
+    "arc140",
+    "arc145",
+    "arc150",
+    "arc155",
+    "arc160",
+    "arc165",
+    "arc170",
+    "arc175"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "AD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "bound3",
+      "refs": [
+        "B",
+        "arc5"
+      ]
+    },
+    {
+      "id": "bound4",
+      "refs": [
+        "arc5",
+        "arc10"
+      ]
+    },
+    {
+      "id": "bound5",
+      "refs": [
+        "arc10",
+        "arc15"
+      ]
+    },
+    {
+      "id": "bound6",
+      "refs": [
+        "arc15",
+        "arc20"
+      ]
+    },
+    {
+      "id": "bound7",
+      "refs": [
+        "arc20",
+        "arc25"
+      ]
+    },
+    {
+      "id": "bound8",
+      "refs": [
+        "arc25",
+        "arc30"
+      ]
+    },
+    {
+      "id": "bound9",
+      "refs": [
+        "arc30",
+        "arc35"
+      ]
+    },
+    {
+      "id": "bound10",
+      "refs": [
+        "arc35",
+        "arc40"
+      ]
+    },
+    {
+      "id": "bound11",
+      "refs": [
+        "arc40",
+        "arc45"
+      ]
+    },
+    {
+      "id": "bound12",
+      "refs": [
+        "arc45",
+        "arc50"
+      ]
+    },
+    {
+      "id": "bound13",
+      "refs": [
+        "arc50",
+        "arc55"
+      ]
+    },
+    {
+      "id": "bound14",
+      "refs": [
+        "arc55",
+        "arc60"
+      ]
+    },
+    {
+      "id": "bound15",
+      "refs": [
+        "arc60",
+        "arc65"
+      ]
+    },
+    {
+      "id": "bound16",
+      "refs": [
+        "arc65",
+        "arc70"
+      ]
+    },
+    {
+      "id": "bound17",
+      "refs": [
+        "arc70",
+        "arc75"
+      ]
+    },
+    {
+      "id": "bound18",
+      "refs": [
+        "arc75",
+        "arc80"
+      ]
+    },
+    {
+      "id": "bound19",
+      "refs": [
+        "arc80",
+        "arc85"
+      ]
+    },
+    {
+      "id": "bound20",
+      "refs": [
+        "arc85",
+        "arc90"
+      ]
+    },
+    {
+      "id": "bound21",
+      "refs": [
+        "arc90",
+        "arc95"
+      ]
+    },
+    {
+      "id": "bound22",
+      "refs": [
+        "arc95",
+        "arc100"
+      ]
+    },
+    {
+      "id": "bound23",
+      "refs": [
+        "arc100",
+        "arc105"
+      ]
+    },
+    {
+      "id": "bound24",
+      "refs": [
+        "arc105",
+        "arc110"
+      ]
+    },
+    {
+      "id": "bound25",
+      "refs": [
+        "arc110",
+        "arc115"
+      ]
+    },
+    {
+      "id": "bound26",
+      "refs": [
+        "arc115",
+        "arc120"
+      ]
+    },
+    {
+      "id": "bound27",
+      "refs": [
+        "arc120",
+        "arc125"
+      ]
+    },
+    {
+      "id": "bound28",
+      "refs": [
+        "arc125",
+        "arc130"
+      ]
+    },
+    {
+      "id": "bound29",
+      "refs": [
+        "arc130",
+        "arc135"
+      ]
+    },
+    {
+      "id": "bound30",
+      "refs": [
+        "arc135",
+        "arc140"
+      ]
+    },
+    {
+      "id": "bound31",
+      "refs": [
+        "arc140",
+        "arc145"
+      ]
+    },
+    {
+      "id": "bound32",
+      "refs": [
+        "arc145",
+        "arc150"
+      ]
+    },
+    {
+      "id": "bound33",
+      "refs": [
+        "arc150",
+        "arc155"
+      ]
+    },
+    {
+      "id": "bound34",
+      "refs": [
+        "arc155",
+        "arc160"
+      ]
+    },
+    {
+      "id": "bound35",
+      "refs": [
+        "arc160",
+        "arc165"
+      ]
+    },
+    {
+      "id": "bound36",
+      "refs": [
+        "arc165",
+        "arc170"
+      ]
+    },
+    {
+      "id": "bound37",
+      "refs": [
+        "arc170",
+        "arc175"
+      ]
+    },
+    {
+      "id": "bound38",
+      "refs": [
+        "arc175",
+        "A"
+      ]
+    },
+    {
+      "id": "OT",
+      "refs": [
+        "O",
+        "T"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "semiround",
+        "circle": "semicircle",
+        "center": "O",
+        "from": "B",
+        "to": "arc90",
+        "side": "MINOR",
+        "color": "WARM",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "semiround2",
+        "circle": "semicircle",
+        "center": "O",
+        "from": "arc90",
+        "to": "A",
+        "side": "MINOR",
+        "color": "WARM",
+        "factRole": "GIVEN"
+      }
+    ],
+    "regions": [
+      {
+        "id": "shadedTrapezoidMinusSemi",
+        "fill": "BLUE",
+        "shapes": [
+          {
+            "polygon": [
+              "D",
+              "C",
+              "B",
+              "arc5",
+              "arc10",
+              "arc15",
+              "arc20",
+              "arc25",
+              "arc30",
+              "arc35",
+              "arc40",
+              "arc45",
+              "arc50",
+              "arc55",
+              "arc60",
+              "arc65",
+              "arc70",
+              "arc75",
+              "arc80",
+              "arc85",
+              "arc90",
+              "arc95",
+              "arc100",
+              "arc105",
+              "arc110",
+              "arc115",
+              "arc120",
+              "arc125",
+              "arc130",
+              "arc135",
+              "arc140",
+              "arc145",
+              "arc150",
+              "arc155",
+              "arc160",
+              "arc165",
+              "arc170",
+              "arc175",
+              "A"
+            ]
+          }
+        ]
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "AD8",
+        "ownerSegment": "AD",
+        "text": "8",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "BC2",
+        "ownerSegment": "BC",
+        "text": "2",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "diam8",
+        "ownerSegment": "AB",
+        "text": "8",
+        "unit": "cm",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rightA",
+      "refs": [
+        "D",
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "rightB",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "rT",
+      "refs": [
+        "O",
+        "T",
+        "C"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "arc5",
+    "arc10",
+    "arc15",
+    "arc20",
+    "arc25",
+    "arc30",
+    "arc35",
+    "arc40",
+    "arc45",
+    "arc50",
+    "arc55",
+    "arc60",
+    "arc65",
+    "arc70",
+    "arc75",
+    "arc80",
+    "arc85",
+    "arc90",
+    "arc95",
+    "arc100",
+    "arc105",
+    "arc110",
+    "arc115",
+    "arc120",
+    "arc125",
+    "arc130",
+    "arc135",
+    "arc140",
+    "arc145",
+    "arc150",
+    "arc155",
+    "arc160",
+    "arc165",
+    "arc170",
+    "arc175"
+  ],
+  "unmarkedPointNames": [
+    "arc5",
+    "arc10",
+    "arc15",
+    "arc20",
+    "arc25",
+    "arc30",
+    "arc35",
+    "arc40",
+    "arc45",
+    "arc50",
+    "arc55",
+    "arc60",
+    "arc65",
+    "arc70",
+    "arc75",
+    "arc80",
+    "arc85",
+    "arc90",
+    "arc95",
+    "arc100",
+    "arc105",
+    "arc110",
+    "arc115",
+    "arc120",
+    "arc125",
+    "arc130",
+    "arc135",
+    "arc140",
+    "arc145",
+    "arc150",
+    "arc155",
+    "arc160",
+    "arc165",
+    "arc170",
+    "arc175"
+  ],
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 480
+  },
+  "caption": "왕운중 18번 해설: AD=8cm, BC=2cm에서 반원 지름 AB=8cm, 반지름 4cm. 사다리꼴 넓이 40cm²에서 반원 넓이 8πcm²를 뺀 색칠 넓이는 40−8πcm².",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "지름 AB인 반원, 양 끝 접선 AD=8cm, BC=2cm, 호 위 T에서의 공통 접선 DC. 색칠된 사다리꼴에서 반원을 뺀 부분의 넓이를 구한다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks",
+        "rightAngles"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "ENGINE_CAPABILITY_PENDING: 반원과 사다리꼴의 차집합을 정확한 곡선 경계로 채우는 boolean region fill 기능",
+    "반원 전체 대신 윗쪽 반원호와 정확한 접선 사다리꼴을 재구성",
+    "원문에서 필요한 색칠 영역을 5° 간격 곡선점 35개로 고해상도 근사; 실제 외곽은 엔진 원호",
+    "8cm/2cm 주어진 값과 두 직각을 그리기 필드로 복구",
+    "접점 T로 향하는 점선 OT와 직각을 풀이 보조선으로 추가"
+  ]
+}

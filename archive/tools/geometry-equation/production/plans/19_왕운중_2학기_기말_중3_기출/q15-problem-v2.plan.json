@@ -1,0 +1,295 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "p1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1275",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2825",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "5075",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2825",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "3505",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "4696",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "2845",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "954",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p5",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "3175",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2825",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ1",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "p5"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "1900",
+            "denominator": "1000"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "p1",
+    "p2",
+    "p3",
+    "p4",
+    "p5"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ1"
+  ],
+  "displaySegments": [
+    {
+      "id": "s1",
+      "refs": [
+        "p1",
+        "p2"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "p3",
+        "p4"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "p3",
+        "p2"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "p3",
+        "p1"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "segmentColors": [{"segments":["s3","s4"],"color":"BLUE"}],
+    "angles": [{"id":"sourceAngle1","style":"ARC","refs":["p4","p3","p2"],"factRole":"GIVEN","value":50,"label":"50"}],
+    "textLabels": [
+      {
+        "id": "text1",
+        "at": [
+          3.636,
+          3.939
+        ],
+        "text": "50°",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "text2",
+        "at": [
+          2.135,
+          0.505
+        ],
+        "text": "x",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "text3",
+        "at": [
+          4.065,
+          0.505
+        ],
+        "text": "10π cm",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "text4",
+        "at": [
+          1.115,
+          2.745
+        ],
+        "text": "A",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "text5",
+        "at": [
+          5.265,
+          2.765
+        ],
+        "text": "B",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "text6",
+        "at": [
+          2.775,
+          0.674
+        ],
+        "text": "C",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "text7",
+        "at": [
+          3.575,
+          4.836
+        ],
+        "text": "P",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "text8",
+        "at": [
+          3.015,
+          2.965
+        ],
+        "text": "O",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "p1",
+    "p2",
+    "p3",
+    "p4",
+    "p5"
+  ],
+  "unmarkedPointNames": [
+    "p1",
+    "p2",
+    "p3",
+    "p4",
+    "p5"
+  ],
+  "caption": "원주각과 반원 속 두 호의 길이 — AB가 지름이고 P에서 보는 각 BPC는 50도이다. 반원 아래쪽 원호 BC에는 10π cm, 원호 AC에는 x를 표시했다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림과 같이 $\\overline{AB}$는 원 $O$의 지름이고, $\\angle BPC=50^\\circ$, $\\overset{\\frown}{BC}=10\\pi\\rm\\,cm$일 때, $x$의 길이는? (3점)",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "SOURCE_VS_PLAN_REVIEWED: 선분·원·문자·점선·선색·각 표시를 도형 필드와 대조함. 잔여 SVG 고유 텍스처·정밀 곡선/도형 배치와 렌더 실물은 별도 보강·검수 대상.",
+    "곡선/호 경로: 전용 곡선 primitive 확장 검토 필요"
+  ],
+  "coordinateCanvas": {
+    "width": 635,
+    "height": 535
+  }
+}

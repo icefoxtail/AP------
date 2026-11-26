@@ -1,0 +1,416 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "p1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "3974",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "4875",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1301",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "775",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "5271",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1370",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "5349",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2757",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p5",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "3974",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1634",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p6",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "3286",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1073",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p7",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "3974",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1774",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p8",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "4082",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1863",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "p9",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "4082",
+              "denominator": "1000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1723",
+              "denominator": "1000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "p1",
+    "p2",
+    "p3",
+    "p4",
+    "p5",
+    "p6",
+    "p7",
+    "p8",
+    "p9"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "s1",
+      "refs": [
+        "p1",
+        "p2"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "p1",
+        "p3"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "p1",
+        "p4"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "p3",
+        "p4"
+      ]
+    },
+    {
+      "id": "s5",
+      "refs": [
+        "p2",
+        "p3"
+      ]
+    },
+    {
+      "id": "s6",
+      "refs": [
+        "p4",
+        "p2"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "s7",
+      "refs": [
+        "p4",
+        "p5"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "s8",
+      "refs": [
+        "p5",
+        "p6"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "s9",
+      "refs": [
+        "p1",
+        "p5"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "s10",
+      "refs": [
+        "p7",
+        "p8"
+      ]
+    },
+    {
+      "id": "s11",
+      "refs": [
+        "p8",
+        "p9"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "segmentColors": [{"segments":["s3"],"color":"BLUE"}],
+    "textLabels": [
+      {
+        "id": "text1",
+        "at": [
+          5.141,
+          2.784
+        ],
+        "text": "x",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "text2",
+        "at": [
+          3.974,
+          5.045
+        ],
+        "text": "A",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "text3",
+        "at": [
+          1.141,
+          0.645
+        ],
+        "text": "B",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "text4",
+        "at": [
+          5.441,
+          1.17
+        ],
+        "text": "C",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "text5",
+        "at": [
+          5.539,
+          2.777
+        ],
+        "text": "D",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "text6",
+        "at": [
+          3.914,
+          1.324
+        ],
+        "text": "H",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "text7",
+        "at": [
+          3.226,
+          0.803
+        ],
+        "text": "M",
+        "labelKind": "TEXT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "p1",
+    "p2",
+    "p3",
+    "p4",
+    "p5",
+    "p6",
+    "p7",
+    "p8",
+    "p9"
+  ],
+  "unmarkedPointNames": [
+    "p1",
+    "p2",
+    "p3",
+    "p4",
+    "p5",
+    "p6",
+    "p7",
+    "p8",
+    "p9"
+  ],
+  "caption": "정사면체 밑면과 수선이 만드는 삼각형 — 파랑 옆모서리 AD, 주황 수선 AH, 초록 밑면 선분 HD가 한 직각삼각형을 이룬다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림과 같이 정사면체의 꼭짓점 $A$에서 밑면에 내린 수선의 발을 $H$라 하자. $\\angle ADH=x$라고 할 때, $\\sin x$의 값은? (4점)",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "ENGINE_CAPABILITY_PENDING: 원본의 색을 입힌 점선 3개는 현행 segmentColors+dashed 동시 지원 불가(SEGMENT_COLOR_INVALID); 점선 우선 보존, colored dashed 지원 필요",
+    "SOURCE_VS_PLAN_REVIEWED: 선분·원·문자·점선·선색·각 표시를 도형 필드와 대조함. 잔여 SVG 고유 텍스처·정밀 곡선/도형 배치와 렌더 실물은 별도 보강·검수 대상.",
+    "곡선/호 경로: 전용 곡선 primitive 확장 검토 필요"
+  ],
+  "coordinateCanvas": {
+    "width": 665,
+    "height": 565
+  }
+}
