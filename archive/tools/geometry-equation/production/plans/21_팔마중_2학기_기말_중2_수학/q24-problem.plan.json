@@ -1,0 +1,56 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-6",
+          "3"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "formula": "3*x-6",
+    "requiredPoints": [],
+    "axisTickValues": {
+      "x": [
+        "2"
+      ],
+      "y": [
+        "-6"
+      ]
+    },
+    "viewport": [
+      -1,
+      7,
+      -7,
+      7
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "X",
+          "axis": "x",
+          "value": "2",
+          "unnamed": true,
+          "coordinates": true,
+          "labelDirection": "SE"
+        },
+        {
+          "id": "Y",
+          "axis": "y",
+          "value": "-6",
+          "unnamed": true,
+          "coordinates": true,
+          "labelDirection": "SW"
+        }
+      ]
+    }
+  },
+  "caption": "주어진 직선과 두 절편. x절편 2, y절편 −6을 나타낸다.",
+  "accessibilityDescription": "좌표평면의 직선은 x축과 (2,0), y축과 (0,-6)에서 교차한다. 확률 계산에 필요한 다른 점은 표시하지 않았다."
+}

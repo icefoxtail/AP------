@@ -1,0 +1,37 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {"recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false},
+    "nodes": [
+      {"id":"O","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"L","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-4"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"R","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"4"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"U","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"3"},{"kind":"integer","value":"3"}]},"outputType":"POINT","factRole":"GIVEN"}
+    ]
+  },
+  "displayPoints": ["O","L","R","U"],
+  "hiddenPointNames": ["O","L","R","U"],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {"id":"sOL","refs":["O","L"]},
+    {"id":"sOR","refs":["O","R"],"arrow":"END"},
+    {"id":"sOU","refs":["O","U"]}
+  ],
+  "planeMarks": {
+    "angles": [
+      {"id":"aInterior","refs":["L","O","U"],"value":135,"style":"ARC","arcs":1,"label":"135","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"aExterior","refs":["U","O","R"],"value":45,"style":"ARC","arcs":1,"label":"45","factRole":"DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "coordinateCanvas": {"width":480,"height":360},
+  "caption": "정다각형의 한 내각과 이웃한 외각",
+  "accessibilityDescription": "한 꼭짓점에서 이어지는 직선과 반직선 사이에 내각 135도와 이웃한 외각 45도를 면 채움 없이 호로 표시한 해설 그림이다.",
+  "sourceQuote": "한 내각의 크기와 그 내각과 이웃한 외각의 크기의 비가 $3 : 1$이다.",
+  "sourceConditions": [
+    {"id":"cRatio","condition":"한 내각과 이웃한 외각의 비는 3:1이며 두 각의 합은 180°이다.","mappedTo":["planeMarks.angles.aInterior","planeMarks.angles.aExterior"]},
+    {"id":"cInterior","condition":"해설에서 구한 내각은 135°이다.","mappedTo":"planeMarks.angles.aInterior"},
+    {"id":"cExterior","condition":"해설에서 구한 외각은 45°이다.","mappedTo":"planeMarks.angles.aExterior"}
+  ],
+  "newVisualInformation": ["해설의 3:1 비로 얻은 두 각 135°와 45°를 서로 이웃한 호로 보여 준다. 점의 좌표와 선분 길이는 모식도용이며 문제의 새 조건이 아니다."]
+}
