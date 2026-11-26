@@ -1,0 +1,53 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "rational", "numerator": "54", "denominator": "5" }, { "kind": "rational", "numerator": "72", "denominator": "5" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "24" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "D", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "rational", "numerator": "174", "denominator": "5" }, { "kind": "rational", "numerator": "72", "denominator": "5" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "F", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "6" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "E", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "18" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" }
+    ]
+  },
+  "displayPoints": ["A", "B", "C", "D", "E", "F"],
+  "displaySegments": [
+    { "id": "sAB", "refs": ["A", "B"] },
+    { "id": "sBF", "refs": ["B", "F"] },
+    { "id": "sFE", "refs": ["F", "E"] },
+    { "id": "sEC", "refs": ["E", "C"] },
+    { "id": "sCD", "refs": ["C", "D"] },
+    { "id": "sDA", "refs": ["D", "A"] },
+    { "id": "sAE", "refs": ["A", "E"] },
+    { "id": "sDF", "refs": ["D", "F"] }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      { "id": "dAB", "from": "A", "to": "B", "label": "18", "unit": "cm", "side": "LEFT", "style": "BAR", "value": "18", "factRole": "GIVEN" },
+      { "id": "dAD", "from": "A", "to": "D", "label": "24", "unit": "cm", "side": "ABOVE", "style": "BAR", "value": "24", "factRole": "GIVEN" }
+    ],
+    "angles": [
+      { "id": "aBAE", "refs": ["B", "A", "E"], "value": 63.434948823, "noLabel": true, "style": "ARC", "arcs": 1, "equalGroup": 1, "factRole": "GIVEN" },
+      { "id": "aEAD", "refs": ["E", "A", "D"], "value": 63.434948823, "noLabel": true, "style": "ARC", "arcs": 1, "equalGroup": 1, "factRole": "GIVEN" },
+      { "id": "aADF", "refs": ["A", "D", "F"], "value": 26.565051177, "noLabel": true, "style": "ARC", "arcs": 2, "equalGroup": 2, "factRole": "GIVEN" },
+      { "id": "aFDC", "refs": ["F", "D", "C"], "value": 26.565051177, "noLabel": true, "style": "ARC", "arcs": 2, "equalGroup": 2, "factRole": "GIVEN" }
+    ]
+  },
+  "coordinateCanvas": { "width": 720, "height": 510 },
+  "caption": "평행사변형 ABCD의 AD=24 cm, AB=18 cm이고 A-E, D-F는 각 꼭짓점의 각 이등분선이다. 밑변의 점은 B-F-E-C 순서이다.",
+  "accessibilityDescription": "왼쪽으로 기울어진 두 변 AB, DC가 평행한 평행사변형이다. 위쪽 A에서 밑변 E로, 위쪽 D에서 밑변 F로 실선 두 개가 교차한다. A의 두 각과 D의 두 각을 각각 같은 쌍의 각 호로 표시한다. AB=18 cm, AD=24 cm이며 FE에는 아직 길이 값을 쓰지 않는다. 내부는 흰색이다.",
+  "sourceConditions": [
+    { "id": "parallelogram", "condition": "ABCD는 평행사변형이고 AD=24 cm, AB=18 cm이다. 좌표상 AB=(-54/5,-72/5), AD=(24,0)으로 길이와 평행 관계를 정확히 만족한다.", "mappedTo": ["A", "B", "C", "D", "sAB", "sBF", "sEC", "sCD", "sDA", "dAB", "dAD"] },
+    { "id": "bisectorA", "condition": "A에서의 두 각 BAE와 EAD가 같고, AE는 밑변의 E에서 끝난다.", "mappedTo": ["sAE", "E", "aBAE", "aEAD"] },
+    { "id": "bisectorD", "condition": "D에서의 두 각 ADF와 FDC가 같고, DF는 밑변의 F에서 끝난다.", "mappedTo": ["sDF", "F", "aADF", "aFDC"] },
+    { "id": "order", "condition": "원본 밑변에서 B,F,E,C가 이 순서로 놓이며 FE는 구할 길이이므로 수치를 표시하지 않는다.", "mappedTo": ["B", "F", "E", "C", "sBF", "sFE", "sEC"] }
+  ],
+  "newVisualInformation": [
+    "원본의 A 꼭짓각 두 점 표식과 D 꼭짓각 두 X표식의 수학적 의미를, 실제 그려지는 각 호 두 쌍으로 각각 표현한다.",
+    "A-E와 D-F의 교차 및 B-F-E-C의 순서를 정확한 좌표와 선분 필드로 유지한다.",
+    "FE의 답은 문제 그림에 쓰지 않고, 원본에 없는 전체 면 채움은 적용하지 않는다."
+  ],
+  "sourceQuote": "다음 평행사변형 ABCD에서 $\\angle A$의 이등분선과 $\\angle D$의 이등분선이 $\\overline{BC}$와 만나는 점을 각각 E, F라고 하자."
+}
