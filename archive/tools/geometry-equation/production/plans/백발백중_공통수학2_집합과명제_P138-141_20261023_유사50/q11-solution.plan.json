@@ -1,0 +1,164 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "A(1,2)와 B(4,6)를 이으면 직각삼각형의 빗변 AB=5이고, 수평·수직 길이는 각각 3, 4이다.",
+  "accessibilityDescription": "좌표평면의 A(1,2)와 B(4,6)를 잇고 가로·세로 직각 분해로 두 점 사이 거리를 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "A(1,2), B(4,6)",
+      "mappedTo": "mathPlan.nodes,coordinateLabels"
+    },
+    {
+      "id": "c2",
+      "condition": "AB=5",
+      "mappedTo": "displaySegments[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "수평·수직 거리",
+      "mappedTo": "displaySegments[1],displaySegments[2],planeMarks.rightAngles"
+    }
+  ],
+  "newVisualInformation": [
+    "두 점과 축에 평행한 수선의 발을 정확히 놓아 피타고라스 관계를 시각화한다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "F"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ],
+      "emphasis": "BOLD"
+    },
+    {
+      "id": "sAF",
+      "refs": [
+        "A",
+        "F"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sFB",
+      "refs": [
+        "F",
+        "B"
+      ],
+      "dashed": true
+    }
+  ],
+  "coordinateLabels": [
+    "A",
+    "B"
+  ],
+  "rightAngles": [
+      {
+        "id": "ra",
+        "refs": [
+          "A",
+          "F",
+          "B"
+        ]
+      }
+  ],
+  "hiddenPointNames": [
+    "F"
+  ],
+  "unmarkedPointNames": [
+    "F"
+  ]
+}

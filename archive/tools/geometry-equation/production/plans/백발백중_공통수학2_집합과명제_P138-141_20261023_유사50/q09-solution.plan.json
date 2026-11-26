@@ -1,0 +1,131 @@
+{
+  "capability": "composite-panels-v1",
+  "caption": "A=24명, B=20명, 전체 U=40명. 교집합 최대 20명은 B⊆A, 최소 4명은 A∪B=U에서 실현된다. M−m=16.",
+  "accessibilityDescription": "전체 인원수와 두 집합의 인원수 아래에서 교집합의 최대·최소 배치를 나란히 보여 준다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "n(U)=40,n(A)=24,n(B)=20",
+      "mappedTo": "panels[0].plan.diagram.universe,panels[0].plan.diagram.sets,panels[1].plan.diagram.sets"
+    },
+    {
+      "id": "c2",
+      "condition": "M=20: B⊆A",
+      "mappedTo": "panels[0].plan.diagram.subset,panels[0].plan.diagram.elements"
+    },
+    {
+      "id": "c3",
+      "condition": "m=4: A∪B=U",
+      "mappedTo": "panels[1].plan.diagram.elements"
+    }
+  ],
+  "newVisualInformation": [
+    "교집합을 최대화하는 포함 배치와 최소화하는 전체 덮개 배치의 각 원자 영역 인원수를 정확히 비교한다."
+  ],
+  "panels": [
+    {
+      "caption": {
+        "text": "최댓값: B⊆A"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "VENN",
+          "universe": {
+            "name": "U",
+            "count": "40",
+            "countUnit": "명"
+          },
+          "sets": [
+            {
+              "id": "A",
+              "count": "24",
+              "countUnit": "명"
+            },
+            {
+              "id": "B",
+              "count": "20",
+              "countUnit": "명"
+            }
+          ],
+          "countStyle": "n",
+          "shade": "A∩B",
+          "elements": [
+            {
+              "text": "4명",
+              "in": [
+                "A"
+              ]
+            },
+            {
+              "text": "20명",
+              "in": [
+                "A",
+                "B"
+              ]
+            },
+            {
+              "text": "16명",
+              "in": []
+            }
+          ],
+          "subset": [
+            "B",
+            "A"
+          ]
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "최솟값: A∪B=U"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "VENN",
+          "universe": {
+            "name": "U",
+            "count": "40",
+            "countUnit": "명"
+          },
+          "sets": [
+            {
+              "id": "A",
+              "count": "24",
+              "countUnit": "명"
+            },
+            {
+              "id": "B",
+              "count": "20",
+              "countUnit": "명"
+            }
+          ],
+          "countStyle": "n",
+          "shade": "A∩B",
+          "elements": [
+            {
+              "text": "20명",
+              "in": [
+                "A"
+              ]
+            },
+            {
+              "text": "4명",
+              "in": [
+                "A",
+                "B"
+              ]
+            },
+            {
+              "text": "16명",
+              "in": [
+                "B"
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

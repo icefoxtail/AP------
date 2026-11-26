@@ -1,0 +1,97 @@
+{
+  "capability": "composite-panels-v1",
+  "caption": "S=한 곳만 이용/신청, D=두 곳 모두 이용/신청. 전체 50명, 두 집합 교집합 12명, 남녀 각각 S=19명이며 D는 남 6명·여 6명이다.",
+  "accessibilityDescription": "남자와 여자별로 한 곳만 이용한 S와 두 곳 모두 이용한 D의 인원을 각각 서로소인 두 원으로 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "남자 25명, 여자 25명",
+      "mappedTo": "panels[0].plan.diagram.universe,panels[1].plan.diagram.universe"
+    },
+    {
+      "id": "c2",
+      "condition": "n(A)+n(B)=62",
+      "mappedTo": "panels[0].plan.diagram.sets,panels[1].plan.diagram.sets"
+    },
+    {
+      "id": "c3",
+      "condition": "한 곳만 이용/신청한 남녀의 수가 같다",
+      "mappedTo": "panels[0].plan.diagram.sets[0],panels[1].plan.diagram.sets[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "남녀 각 집단에서 정확히 한 곳만 이용한 사람과 두 곳 모두 이용한 사람의 인원을 분리하여 제시한다."
+  ],
+  "panels": [
+    {
+      "caption": {
+        "text": "남자"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "VENN",
+          "universe": {
+            "name": "U",
+            "count": "25",
+            "countUnit": "명"
+          },
+          "sets": [
+            {
+              "id": "S",
+              "count": "19",
+              "countUnit": "명"
+            },
+            {
+              "id": "D",
+              "count": "6",
+              "countUnit": "명"
+            }
+          ],
+          "disjoint": [
+            [
+              "S",
+              "D"
+            ]
+          ],
+          "countStyle": "n"
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "여자"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "VENN",
+          "universe": {
+            "name": "U",
+            "count": "25",
+            "countUnit": "명"
+          },
+          "sets": [
+            {
+              "id": "S",
+              "count": "19",
+              "countUnit": "명"
+            },
+            {
+              "id": "D",
+              "count": "6",
+              "countUnit": "명"
+            }
+          ],
+          "disjoint": [
+            [
+              "S",
+              "D"
+            ]
+          ],
+          "countStyle": "n"
+        }
+      }
+    }
+  ]
+}
