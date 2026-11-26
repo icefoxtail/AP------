@@ -232,7 +232,11 @@ window.questionBank = [
       "CC_INTERNAL_DIVISION"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_168_정육면체에서정사영을이용하여이면각의크기_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "기하 유형은행 168번 유형 5번: 모서리 CD의 N은 CN=1, ND=3을 만족하며 삼각형 BGN이 칠해짐.",
+    "imageCaption": "기하 유형은행 168번 유형 5번: 모서리 CD의 N은 CN=1, ND=3을 만족하며 삼각형 BGN이 칠해짐.",
+    "imageSize": "full"
   },
   {
     "id": 6,

@@ -44,7 +44,11 @@ window.questionBank = [
       "CC_TRIG_RATIO"
     ],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "image": "assets/images/기하_173_태양광선이비스듬히비출때정사영과그림자의_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "기하 173 유형 q01: 반지름 8인 구 기본 모형. 지름 16 표식과 45도 광선·그림자 타원은 미표시.",
+    "imageCaption": "기하 173 유형 q01: 반지름 8인 구 기본 모형. 지름 16 표식과 45도 광선·그림자 타원은 미표시.",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -89,7 +93,11 @@ window.questionBank = [
       "CC_TRIG_RATIO"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_173_태양광선이비스듬히비출때정사영과그림자의_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "기하 173 유형 q02: 공중에 떠 있는 구의 대표 기본 모형. 위치와 30도 햇빛·그림자 누락.",
+    "imageCaption": "기하 173 유형 q02: 공중에 떠 있는 구의 대표 기본 모형. 위치와 30도 햇빛·그림자 누락.",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -134,7 +142,11 @@ window.questionBank = [
       "CC_TRIG_RATIO"
     ],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "image": "assets/images/기하_173_태양광선이비스듬히비출때정사영과그림자의_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "기하 173 유형 q03: 반지름 9인 구. 60도 빛과 지면 그림자는 렌더되지 않은 기본 모형.",
+    "imageCaption": "기하 173 유형 q03: 반지름 9인 구. 60도 빛과 지면 그림자는 렌더되지 않은 기본 모형.",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -178,7 +190,11 @@ window.questionBank = [
       "CC_TRIG_RATIO"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_173_태양광선이비스듬히비출때정사영과그림자의_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "기하 173 유형 q04: 지면 위 막대 길이 4√3, 왼쪽 30도 기울기, 오른쪽 위에서 오는 30도 광선과 왼쪽 그림자.",
+    "imageCaption": "기하 173 유형 q04: 지면 위 막대 길이 4√3, 왼쪽 30도 기울기, 오른쪽 위에서 오는 30도 광선과 왼쪽 그림자.",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -222,6 +238,10 @@ window.questionBank = [
       "CC_TRIG_RATIO"
     ],
     "conditionKeys": [],
-    "integrationPattern": "INTERDEPENDENT"
+    "integrationPattern": "INTERDEPENDENT",
+    "image": "assets/images/기하_173_태양광선이비스듬히비출때정사영과그림자의_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "기하 173 유형 q05: 넓이 12인 차광막의 오른쪽 위 30도 기울기와 태양의 60도 광선, 차광막 바로 아래 지면 그림자.",
+    "imageCaption": "기하 173 유형 q05: 넓이 12인 차광막의 오른쪽 위 30도 기울기와 태양의 60도 광선, 차광막 바로 아래 지면 그림자.",
+    "imageSize": "full"
   }
 ];

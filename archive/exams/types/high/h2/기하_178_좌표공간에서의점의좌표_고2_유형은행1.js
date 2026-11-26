@@ -219,7 +219,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_POSITIVE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_178_좌표공간에서의점의좌표_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "기하 178 q05: 동형 대표 크기(주어진 p+q+r=20에 따라 a=5)로 쌓은 정육면체 두 개의 16개 보조 모서리.",
+    "imageCaption": "기하 178 q05: 동형 대표 크기(주어진 p+q+r=20에 따라 a=5)로 쌓은 정육면체 두 개의 16개 보조 모서리.",
+    "imageSize": "full"
   },
   {
     "id": 6,
@@ -265,7 +269,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_POSITIVE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_178_좌표공간에서의점의좌표_고2_유형은행1/q6-problem.svg",
+    "imageAlt": "기하 178 q06: 한 변 4 정삼각기둥 OAB-CDE와 양의 방향 보조선·축 문자.",
+    "imageCaption": "기하 178 q06: 한 변 4 정삼각기둥 OAB-CDE와 양의 방향 보조선·축 문자.",
+    "imageSize": "full"
   },
   {
     "id": 7,

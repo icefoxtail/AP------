@@ -44,7 +44,11 @@ window.questionBank = [
       "CC_PYTHAGOREAN_THEOREM"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_176_정사면체의활용_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "기하 176 유형 q01: 모든 모서리 6인 정사면체의 AD 중점 M과 삼각형 BCM.",
+    "imageCaption": "기하 176 유형 q01: 모든 모서리 6인 정사면체의 AD 중점 M과 삼각형 BCM.",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -89,7 +93,11 @@ window.questionBank = [
       "CC_SPACE_FIGURE"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_176_정사면체의활용_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "기하 176 유형 q02: 한 모서리 길이가 6인 정사면체 ABCD (A가 꼭대기, BCD가 밑면).",
+    "imageCaption": "기하 176 유형 q02: 한 모서리 길이가 6인 정사면체 ABCD (A가 꼭대기, BCD가 밑면).",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -134,7 +142,11 @@ window.questionBank = [
       "CC_SPACE_FIGURE"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_176_정사면체의활용_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "기하 176 유형 q03: 정사면체 꼭짓점 A의 수선발 H(밑면 BCD의 무게중심)와 삼각형 CDH.",
+    "imageCaption": "기하 176 유형 q03: 정사면체 꼭짓점 A의 수선발 H(밑면 BCD의 무게중심)와 삼각형 CDH.",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -179,7 +191,11 @@ window.questionBank = [
       "CC_SPACE_FIGURE"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_176_정사면체의활용_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "기하 176 유형 q04: 한 변 길이 6인 정사면체. 면 ABC 내접원은 아직 표시하지 못함.",
+    "imageCaption": "기하 176 유형 q04: 한 변 길이 6인 정사면체. 면 ABC 내접원은 아직 표시하지 못함.",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -224,7 +240,11 @@ window.questionBank = [
       "CC_INTERNAL_DIVISION"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_176_정사면체의활용_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "기하 176 유형 q05: 정사면체 CD 중점 P와 AC(2:1)의 Q, AD(1:2)의 R을 이은 삼각형 PQR.",
+    "imageCaption": "기하 176 유형 q05: 정사면체 CD 중점 P와 AC(2:1)의 Q, AD(1:2)의 R을 이은 삼각형 PQR.",
+    "imageSize": "full"
   },
   {
     "id": 6,
@@ -269,7 +289,11 @@ window.questionBank = [
       "CC_SPACE_FIGURE"
     ],
     "conditionKeys": [],
-    "integrationPattern": "REINTERPRETATION"
+    "integrationPattern": "REINTERPRETATION",
+    "image": "assets/images/기하_176_정사면체의활용_고2_유형은행1/q6-problem.svg",
+    "imageAlt": "기하 176 유형 q06: 한 모서리 √6인 정사면체. 공유 모서리 정육면체와 내접원은 미표시.",
+    "imageCaption": "기하 176 유형 q06: 한 모서리 √6인 정사면체. 공유 모서리 정육면체와 내접원은 미표시.",
+    "imageSize": "full"
   },
   {
     "id": 7,
@@ -314,7 +338,11 @@ window.questionBank = [
       "CC_SIMILARITY"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_176_정사면체의활용_고2_유형은행1/q7-problem.svg",
+    "imageAlt": "기하 176 유형 q07: 모서리 18인 정사면체. 세 면의 내접원과 가장 가까운 점·삼각형 미표시.",
+    "imageCaption": "기하 176 유형 q07: 모서리 18인 정사면체. 세 면의 내접원과 가장 가까운 점·삼각형 미표시.",
+    "imageSize": "full"
   },
   {
     "id": 8,
@@ -359,6 +387,10 @@ window.questionBank = [
       "CC_TRIANGLE_AREA"
     ],
     "conditionKeys": [],
-    "integrationPattern": "CASE_BRANCH"
+    "integrationPattern": "CASE_BRANCH",
+    "image": "assets/images/기하_176_정사면체의활용_고2_유형은행1/q8-problem.svg",
+    "imageAlt": "기하 176 유형 q08: 외접구 반지름 3인 정사면체의 중심 O 및 면 무게중심 F,G; 구의 윤곽은 미표시.",
+    "imageCaption": "기하 176 유형 q08: 외접구 반지름 3인 정사면체의 중심 O 및 면 무게중심 F,G; 구의 윤곽은 미표시.",
+    "imageSize": "full"
   }
 ];

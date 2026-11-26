@@ -44,7 +44,11 @@ window.questionBank = [
       "CC_TRIG_RATIO"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_174_태양광선이비스듬히비출때정사영과그림자의_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "기하 174 유형 q01: 높이 10의 가로등과 대표 직선 그림자. 공중 구·13:5 타원 그림자는 별도 확장 필요.",
+    "imageCaption": "기하 174 유형 q01: 높이 10의 가로등과 대표 직선 그림자. 공중 구·13:5 타원 그림자는 별도 확장 필요.",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -89,7 +93,11 @@ window.questionBank = [
       "CC_TRIG_RATIO"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_174_태양광선이비스듬히비출때정사영과그림자의_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "기하 174 유형 q02: 수직 깃대와 길이 8인 그림자 및 광선. 구의 타원 그림자는 미구현.",
+    "imageCaption": "기하 174 유형 q02: 수직 깃대와 길이 8인 그림자 및 광선. 구의 타원 그림자는 미구현.",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -136,6 +144,10 @@ window.questionBank = [
     "conditionKeys": [
       "COND_INTEGER"
     ],
-    "integrationPattern": "INTERDEPENDENT"
+    "integrationPattern": "INTERDEPENDENT",
+    "image": "assets/images/기하_174_태양광선이비스듬히비출때정사영과그림자의_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "기하 174 유형 q03: 가로 6 세로 5인 수직 판만 표시. 반지름 2 원형 구멍과 기울인 그림자 형태는 미구현.",
+    "imageCaption": "기하 174 유형 q03: 가로 6 세로 5인 수직 판만 표시. 반지름 2 원형 구멍과 기울인 그림자 형태는 미구현.",
+    "imageSize": "full"
   }
 ];

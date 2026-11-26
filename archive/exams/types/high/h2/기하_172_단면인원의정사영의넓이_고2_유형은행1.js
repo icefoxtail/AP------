@@ -43,7 +43,11 @@ window.questionBank = [
       "CC_ELLIPSE"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_172_단면인원의정사영의넓이_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "기하 172 유형 q01: 반지름 6인 반구와 중심 O 기본 형상. A,B·45도 단면은 아직 그려지지 않음.",
+    "imageCaption": "기하 172 유형 q01: 반지름 6인 반구와 중심 O 기본 형상. A,B·45도 단면은 아직 그려지지 않음.",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -89,7 +93,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_POSITIVE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_172_단면인원의정사영의넓이_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "기하 172 유형 q02: 반지름이 a로 표시된 반구 기본 형상. 경사 60도 단면은 누락.",
+    "imageCaption": "기하 172 유형 q02: 반지름이 a로 표시된 반구 기본 형상. 경사 60도 단면은 누락.",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -136,7 +144,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RESTRICTED_INTERVAL"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_172_단면인원의정사영의넓이_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "기하 172 유형 q03: 반지름 5인 구의 기본 형상. α/β 평면, O′, 절단원 C와 정사영 타원은 미표시.",
+    "imageCaption": "기하 172 유형 q03: 반지름 5인 구의 기본 형상. α/β 평면, O′, 절단원 C와 정사영 타원은 미표시.",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -181,6 +193,10 @@ window.questionBank = [
       "CC_TRIANGLE_AREA"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_172_단면인원의정사영의넓이_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "기하 172 유형 q04: 반지름 2√5인 반구의 기본 형태. 경사 절단·큰 활꼴은 미표시.",
+    "imageCaption": "기하 172 유형 q04: 반지름 2√5인 반구의 기본 형태. 경사 절단·큰 활꼴은 미표시.",
+    "imageSize": "full"
   }
 ];

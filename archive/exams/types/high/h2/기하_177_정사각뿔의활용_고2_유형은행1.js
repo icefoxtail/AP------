@@ -44,7 +44,11 @@ window.questionBank = [
       "CC_PYTHAGOREAN_THEOREM"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_177_정사각뿔의활용_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "기하 177 q01: 밑변 2, 옆모서리 √5인 정사각뿔 A-BCDE.",
+    "imageCaption": "기하 177 q01: 밑변 2, 옆모서리 √5인 정사각뿔 A-BCDE.",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -89,7 +93,11 @@ window.questionBank = [
       "CC_SQUARE_AREA"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_177_정사각뿔의활용_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "기하 177 q02: 모든 모서리 6인 정사각뿔의 밑면 BCDE 및 측면 ABC.",
+    "imageCaption": "기하 177 q02: 모든 모서리 6인 정사각뿔의 밑면 BCDE 및 측면 ABC.",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -179,7 +187,11 @@ window.questionBank = [
       "CC_SPACE_FIGURE"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_177_정사각뿔의활용_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "기하 177 q04: 모든 모서리 6인 정사각뿔. 측면 OBC 내접원은 미표시.",
+    "imageCaption": "기하 177 q04: 모든 모서리 6인 정사각뿔. 측면 OBC 내접원은 미표시.",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -224,7 +236,11 @@ window.questionBank = [
       "CC_PYTHAGOREAN_THEOREM"
     ],
     "conditionKeys": [],
-    "integrationPattern": "REINTERPRETATION"
+    "integrationPattern": "REINTERPRETATION",
+    "image": "assets/images/기하_177_정사각뿔의활용_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "기하 177 q05: 정육면체 윗면 EFGH에 정사각뿔 P-EFGH를 결합한 입체, 면 PFG와 BFGC 표시.",
+    "imageCaption": "기하 177 q05: 정육면체 윗면 EFGH에 정사각뿔 P-EFGH를 결합한 입체, 면 PFG와 BFGC 표시.",
+    "imageSize": "full"
   },
   {
     "id": 6,
@@ -271,7 +287,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RESTRICTED_INTERVAL"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_177_정사각뿔의활용_고2_유형은행1/q6-problem.svg",
+    "imageAlt": "기하 177 q06: 모든 모서리 2인 정사각뿔, 인접 옆면 PAB·PAD 구분.",
+    "imageCaption": "기하 177 q06: 모든 모서리 2인 정사각뿔, 인접 옆면 PAB·PAD 구분.",
+    "imageSize": "full"
   },
   {
     "id": 7,
@@ -318,6 +338,10 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RATIONAL"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/기하_177_정사각뿔의활용_고2_유형은행1/q7-problem.svg",
+    "imageAlt": "기하 177 q07: 밑변 6의 정사각뿔 기본형. 측면 내접원·정사영·밑면 차집합 음영은 미표시.",
+    "imageCaption": "기하 177 q07: 밑변 6의 정사각뿔 기본형. 측면 내접원·정사영·밑면 차집합 음영은 미표시.",
+    "imageSize": "full"
   }
 ];
