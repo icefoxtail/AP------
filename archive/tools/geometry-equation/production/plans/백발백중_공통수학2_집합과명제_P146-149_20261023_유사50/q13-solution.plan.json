@@ -1,0 +1,179 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "주어진 직선과 그 직선에 수직인 직선이 주어진 점 T에서 만나는 수선 관계. 진한 직선은 수직인 직선이다.",
+  "accessibilityDescription": "직선 x+2y−4=0과 점 T(-2,1)을 지나는 수직선, 발 F와 직각 표식을 좌표평면에 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "점 T(-2,1)",
+      "mappedTo": "mathPlan.nodes[0].args.coordinates"
+    },
+    {
+      "id": "c2",
+      "condition": "주어진 직선 x+2y−4=0",
+      "mappedTo": "mathPlan.nodes[1].args"
+    },
+    {
+      "id": "c3",
+      "condition": "직선과 수직 관계",
+      "mappedTo": "mathPlan.nodes[2],rightAngles"
+    }
+  ],
+  "newVisualInformation": [
+    "주어진 좌표·길이·위치 조건과 풀이에서 얻는 도형 관계를 실제 점·선분·표식으로 그린다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "-4"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R",
+        "op": "PERPENDICULAR_THROUGH",
+        "inputs": [
+          "T",
+          "L"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "F",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "T",
+          "L"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "O",
+          "L"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "X",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "T",
+    "F",
+    "G"
+  ],
+  "displayLines": [
+    "L",
+    "R"
+  ],
+  "displaySegments": [
+    {
+      "id": "sTF",
+      "refs": [
+        "T",
+        "F"
+      ],
+      "emphasis": "BOLD"
+    },
+    {
+      "id": "sFG",
+      "refs": [
+        "F",
+        "G"
+      ],
+      "dashed": true
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "raF",
+      "refs": [
+        "T",
+        "F",
+        "G"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "G"
+  ],
+  "coordinateLabels": [
+    "T",
+    "F"
+  ],
+  "lineLabels": [
+    {
+      "nodeId": "L",
+      "form": "GENERAL"
+    }
+  ]
+}

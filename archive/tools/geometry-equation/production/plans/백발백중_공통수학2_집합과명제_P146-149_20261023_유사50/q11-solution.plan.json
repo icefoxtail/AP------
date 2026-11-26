@@ -1,0 +1,140 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "A와 B에 같은 평행이동을 적용하면 각각 A′와 B′로 옮겨진다.",
+  "accessibilityDescription": "좌표평면에서 두 원래 점과 옮긴 점을 이어 같은 방향과 크기의 평행이동 화살표 두 개를 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "A′(2,-2), B′(7,1)",
+      "mappedTo": "mathPlan.nodes[0],mathPlan.nodes[1]"
+    },
+    {
+      "id": "c2",
+      "condition": "원래 점으로 역이동 (-3,3)",
+      "mappedTo": "mathPlan.nodes[2],mathPlan.nodes[3]"
+    }
+  ],
+  "newVisualInformation": [
+    "주어진 좌표·길이·위치 조건과 풀이에서 얻는 도형 관계를 실제 점·선분·표식으로 그린다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "Ap",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Bp",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "Ap"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "Bp"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "pointNames": {
+    "Ap": "A′",
+    "Bp": "B′"
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "Ap",
+    "Bp"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAAp",
+      "refs": [
+        "A",
+        "Ap"
+      ],
+      "arrow": "END"
+    },
+    {
+      "id": "sBBp",
+      "refs": [
+        "B",
+        "Bp"
+      ],
+      "arrow": "END"
+    }
+  ],
+  "coordinateLabels": [
+    "A",
+    "B",
+    "Ap",
+    "Bp"
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "caption": "두 집합에서 한쪽에만 속하는 원소는 1, 4, 5, 6, 10이고, 색칠된 두 차집합이 그 부분이다.",
+  "accessibilityDescription": "원소를 A만, 공통, B만의 세 영역에 정확히 배치하고 대칭차집합 영역을 표시한 벤다이어그램.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "A={1,2,5,8,10}",
+      "mappedTo": "diagram.sets[0],diagram.elements"
+    },
+    {
+      "id": "c2",
+      "condition": "B={2,4,6,8}",
+      "mappedTo": "diagram.sets[1],diagram.elements"
+    },
+    {
+      "id": "c3",
+      "condition": "합집합에서 교집합을 뺀 원소 수",
+      "mappedTo": "diagram.shade"
+    }
+  ],
+  "newVisualInformation": [
+    "대칭차집합의 두 원자영역이 서로 겹치지 않음을 색으로 보여 준다."
+  ],
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A"
+      },
+      {
+        "id": "B"
+      }
+    ],
+    "elements": [
+      {
+        "text": "1",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "2",
+        "in": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "text": "4",
+        "in": [
+          "B"
+        ]
+      },
+      {
+        "text": "5",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "6",
+        "in": [
+          "B"
+        ]
+      },
+      {
+        "text": "8",
+        "in": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "text": "10",
+        "in": [
+          "A"
+        ]
+      }
+    ],
+    "shade": "(A-B)∪(B-A)"
+  }
+}
