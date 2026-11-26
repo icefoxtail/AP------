@@ -1,0 +1,20 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "caption": "서로 다른 두 주사위의 36개 순서쌍 중 √(12ab)가 유리수인 6칸을 구분한다.",
+  "accessibilityDescription": "가로 a와 세로 b가 각각 1부터 6까지인 6행 6열 곱 표이다. ab가 3 또는 12인 여섯 칸을 강조하여 전체 36가지 중 유리수가 되는 예외를 보여 준다.",
+  "chart": {
+    "kind": "DICE_TABLE",
+    "faces": 6,
+    "cell": "PRODUCT",
+    "highlight": { "expr": "a*b", "in": [3, 12] }
+  },
+  "sourceConditions": [
+    { "id": "dice", "condition": "서로 다른 두 주사위의 결과는 순서쌍 (a,b)이며 각 눈은 1부터 6이다.", "mappedTo": "chart.kind=DICE_TABLE, chart.faces=6" },
+    { "id": "rational", "condition": "√(12ab)=2√(3ab)가 유리수이려면 ab는 3 또는 12이다(주사위 가능한 범위).", "mappedTo": "chart.highlight.expr=a*b, chart.highlight.in=[3,12]" },
+    { "id": "total", "condition": "전체는 36개이며 유리수가 되는 6개를 제외한 30개가 답이다.", "mappedTo": "chart.faces=6, chart.highlight에 해당하는 6개 셀" }
+  ],
+  "newVisualInformation": [
+    "두 주사위의 순서를 구별하는 6×6 격자와 각 칸의 a×b 값을 실제 표에 그린다.",
+    "a×b=3인 2칸 및 a×b=12인 4칸을 같은 강조로 표시한다."
+  ]
+}
