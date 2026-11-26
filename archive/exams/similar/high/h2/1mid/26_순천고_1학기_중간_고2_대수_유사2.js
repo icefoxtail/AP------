@@ -907,7 +907,11 @@ window.questionBank = [
     "followupKind": "CONFIRMATION",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h2/1mid/26_순천고_1학기_중간_고2_대수.js#q20",
     "problemPlanRef": "archive/exams/similar/high/h2/1mid/26_순천고_1학기_중간_고2_대수_유사2_plans/q20-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h2/1mid/26_순천고_1학기_중간_고2_대수_유사2_plans/q20-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h2/1mid/26_순천고_1학기_중간_고2_대수_유사2_plans/q20-solution.plan.json",
+    "solutionImage": "assets/images/26_순천고_1학기_중간_고2_대수_유사2/q20-solution.svg",
+    "solutionImageAlt": "f_n(x)=-2|x-3|+2n+1 (n=1,2,3,4)과 g(x)=log_2(x-1)+2, h(x)=log_{1/2}(x-1)+1의 교점은 각각 P(3,3), Q(2,1) 등을 포함해 4개씩이다.",
+    "solutionImageCaption": "f_n(x)=-2|x-3|+2n+1 (n=1,2,3,4)과 g(x)=log_2(x-1)+2, h(x)=log_{1/2}(x-1)+1의 교점은 각각 P(3,3), Q(2,1) 등을 포함해 4개씩이다.",
+    "solutionImageSize": "full"
   },
   {
     "curriculum": "2022",
