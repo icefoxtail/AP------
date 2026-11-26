@@ -1,0 +1,233 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "제2사분면의 중심 C(-4,4)에서 두 좌표축까지의 거리는 각각 반지름 4이다.",
+  "accessibilityDescription": "제2사분면의 중심 C(-4,4)에서 두 좌표축까지의 거리는 각각 반지름 4이다.",
+  "sourceConditions": [
+    {
+      "id": "quadrant",
+      "condition": "중심은 제2사분면에 있다.",
+      "mappedTo": [
+        "mathPlan.nodes[0].args.coordinates",
+        "coordinateLabels"
+      ]
+    },
+    {
+      "id": "circle",
+      "condition": "중심 C에서 반지름 4인 원",
+      "mappedTo": [
+        "mathPlan.nodes[3].args.radius",
+        "displayCircles"
+      ]
+    },
+    {
+      "id": "tangencies",
+      "condition": "x축, y축에 각각 수직으로 접한다.",
+      "mappedTo": [
+        "rightAngles",
+        "displaySegments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "좌표축까지의 두 수선이 동일 반지름이며 각각의 접점에서 직각임을 보인다. 원의 중심이 주어진 포물선 위에 있다는 대수 조건은 풀이에서 확인한다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "xAxis",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "yAxis",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "c",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Tx",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "C",
+          "xAxis"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Ty",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "C",
+          "yAxis"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Z",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 680,
+    "height": 520
+  },
+  "displayCircles": [
+    "c"
+  ],
+  "displayPoints": [
+    "C",
+    "Tx",
+    "Ty",
+    "Z"
+  ],
+  "displaySegments": [
+    {
+      "id": "sCX",
+      "refs": [
+        "C",
+        "Tx"
+      ]
+    },
+    {
+      "id": "sCY",
+      "refs": [
+        "C",
+        "Ty"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rTx",
+      "refs": [
+        "C",
+        "Tx",
+        "Z"
+      ]
+    },
+    {
+      "id": "rTy",
+      "refs": [
+        "C",
+        "Ty",
+        "Z"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "rad",
+        "count": 1,
+        "segments": [
+          "sCX",
+          "sCY"
+        ]
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "radLabel",
+        "ownerSegment": "sCX",
+        "text": "4"
+      }
+    ]
+  },
+  "coordinateLabels": [
+    "C"
+  ],
+  "sourceQuote": "곡선 $y=x^2-x-16$ 위의 점 중 제2사분면에 있는 점을 중심으로 하고 $x$축과 $y$축에 동시에 접하는 원의 방정식이 $x^2+y^2+ax+by+c=0$일 때, $a+b+c$의 값은?"
+}

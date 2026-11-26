@@ -1,0 +1,186 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "AB의 2:1 내분점 P가 선분 AB 위에 있음을 같은 간격의 세 조각으로 표시한다.",
+  "accessibilityDescription": "AB의 2:1 내분점 P가 선분 AB 위에 있음을 같은 간격의 세 조각으로 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "points",
+      "condition": "A=(0,9), B=(9,0)",
+      "mappedTo": [
+        "mathPlan.nodes[0].args.coordinates",
+        "mathPlan.nodes[1].args.coordinates"
+      ]
+    },
+    {
+      "id": "division",
+      "condition": "AP:PB=2:1",
+      "mappedTo": [
+        "mathPlan.nodes[2].args",
+        "displayPoints"
+      ]
+    },
+    {
+      "id": "ratio",
+      "condition": "AB를 동일한 세 조각으로 나누면 P는 두 조각 뒤이다.",
+      "mappedTo": "planeMarks.equalLengths"
+    }
+  ],
+  "newVisualInformation": [
+    "2:1 내분비만 표시하며 원 중심이나 반지름·계수 a,b는 드러내지 않는다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "9"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "P"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Z",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 680,
+    "height": 520
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "P",
+    "Q"
+  ],
+  "hiddenPointNames": [
+    "Q"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAQ",
+      "refs": [
+        "A",
+        "Q"
+      ]
+    },
+    {
+      "id": "sQP",
+      "refs": [
+        "Q",
+        "P"
+      ]
+    },
+    {
+      "id": "sPB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "thirds",
+        "count": 1,
+        "segments": [
+          "sAQ",
+          "sQP",
+          "sPB"
+        ]
+      }
+    ]
+  },
+  "coordinateLabels": [
+    "A",
+    "B"
+  ],
+  "sourceQuote": "두 점 $A(0,9)$, $B(9,0)$에 대하여 선분 $AB$를 $2:1$로 내분하는 점을 $P$라 하자. 원 $x^2+y^2-2ax-2by=0$이 직선 $AB$와 점 $P$에서 접할 때, $a+b$의 값은?"
+}
