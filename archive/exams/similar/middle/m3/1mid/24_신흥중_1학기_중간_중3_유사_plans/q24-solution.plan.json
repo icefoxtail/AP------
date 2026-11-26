@@ -1,0 +1,26 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "net": {
+    "kind": "CYLINDER",
+    "radius": 4.242640687119285,
+    "height": 6.928203230275509,
+    "dims": [
+      { "part": "rect-width", "label": "6\\sqrt{2}\\pi" },
+      { "part": "rect-height", "label": "4\\sqrt{3}" },
+      { "part": "radius-top", "label": "3\\sqrt{2}" }
+    ]
+  },
+  "caption": "원기둥 전개도의 직사각형 가로는 밑면의 둘레 6√2π cm, 세로는 높이 4√3 cm이다. 원의 반지름은 둘레를 2π로 나눈 3√2 cm이다.",
+  "accessibilityDescription": "원기둥의 전개도는 가로 6√2π cm, 세로 4√3 cm인 직사각형과 같은 크기의 원 두 개이다. 위쪽 원의 반지름에 3√2 cm가 표시되어 있다.",
+  "sourceConditions": [
+    { "id": "s1", "condition": "원기둥 전개도 옆면 직사각형의 가로=밑면 둘레=6√2π cm", "mappedTo": ["net.kind", "net.dims[0]"] },
+    { "id": "s2", "condition": "원기둥의 높이=4√3 cm", "mappedTo": ["net.height", "net.dims[1]"] },
+    { "id": "s3", "condition": "2πr=6√2π이므로 r=3√2 cm", "mappedTo": ["net.radius", "net.dims[2]"] },
+    { "id": "s4", "condition": "엔진 수치 좌표계에서는 정확한 3√2와 4√3을 부동소수점 근삿값으로 입력하지만 표시 치수는 원식이다", "mappedTo": ["net.radius", "net.height"] }
+  ],
+  "newVisualInformation": [
+    "원기둥 옆면이 직사각형으로 펼쳐지고 가로가 밑면 둘레와 같음을 보인다",
+    "직사각형 높이와 위쪽 원의 반지름을 구분해 표기한다"
+  ]
+}

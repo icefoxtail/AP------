@@ -1,0 +1,50 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "points": [
+          { "id": "P", "value": "-sqrt(5)", "showValue": true },
+          { "id": "A", "value": "0", "showValue": true },
+          { "id": "C", "value": "2", "showValue": true },
+          { "id": "Q", "value": "2+sqrt(13)", "showValue": true }
+        ]
+      }
+    ],
+    "constructions": [
+      {
+        "id": "cA",
+        "center": "A",
+        "radius": { "value": "sqrt(5)" },
+        "arc": { "side": "LEFT" },
+        "hits": [{ "id": "P", "branch": "LEFT" }],
+        "source": { "grid": true, "from": [0, 0], "to": [-2, 1], "toName": "B" }
+      },
+      {
+        "id": "cC",
+        "center": "C",
+        "radius": { "value": "sqrt(13)" },
+        "arc": { "side": "RIGHT" },
+        "hits": [{ "id": "Q", "branch": "RIGHT" }],
+        "source": { "grid": true, "from": [2, 0], "to": [5, 2], "toName": "D" }
+      }
+    ]
+  },
+  "numberLineCaption": { "text": "선분의 길이를 옮긴 결과" },
+  "caption": "모눈에서 AB=√5, CD=√13이다. A=0에서 왼쪽으로 옮긴 P는 -√5이고, C=2에서 오른쪽으로 옮긴 Q는 2+√13이다.",
+  "accessibilityDescription": "가로 모눈 2칸·세로 1칸의 선분 AB와 가로 3칸·세로 2칸의 선분 CD를 작도하고, 수직선에서 P=-√5, A=0, C=2, Q=2+√13을 왼쪽부터 차례로 나타낸 해설 그림이다.",
+  "sourceConditions": [
+    { "id": "s1", "condition": "모눈 한 칸의 길이는 1이고 B는 A에서 왼쪽 2칸·위 1칸", "mappedTo": ["numberLine.constructions[0].source"] },
+    { "id": "s2", "condition": "D는 C에서 오른쪽 3칸·위 2칸", "mappedTo": ["numberLine.constructions[1].source"] },
+    { "id": "s3", "condition": "AB=AP=√5, P는 A=0의 왼쪽", "mappedTo": ["numberLine.constructions[0]", "numberLine.rows[0].points[0]"] },
+    { "id": "s4", "condition": "CD=CQ=√13, Q는 C=2의 오른쪽", "mappedTo": ["numberLine.constructions[1]", "numberLine.rows[0].points[3]"] },
+    { "id": "s5", "condition": "CP=2+√5는 해설 계산으로 보존", "mappedTo": "PRESERVED_ARCHIVE_BANK" }
+  ],
+  "newVisualInformation": [
+    "두 모눈 직각삼각형의 선분을 각각 왼쪽·오른쪽으로 옮긴 호를 보인다",
+    "수직선의 P와 Q 아래에 각각 -√5와 2+√13을 표시한다"
+  ]
+}
