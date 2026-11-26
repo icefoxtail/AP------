@@ -1,0 +1,271 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-20",
+              "denominator": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-29",
+              "denominator": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-7"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-20",
+              "denominator": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-20",
+              "denominator": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "29",
+            "denominator": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "M",
+    "C",
+    "A",
+    "B"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAM",
+      "refs": [
+        "A",
+        "M"
+      ]
+    },
+    {
+      "id": "sMB",
+      "refs": [
+        "M",
+        "B"
+      ]
+    },
+    {
+      "id": "sOM",
+      "refs": [
+        "O",
+        "M"
+      ]
+    },
+    {
+      "id": "sMC",
+      "refs": [
+        "M",
+        "C"
+      ]
+    },
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sOC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rightM",
+      "refs": [
+        "O",
+        "M",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "halfChord",
+        "count": 1,
+        "segments": [
+          "sAM",
+          "sMB"
+        ]
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "BM7",
+        "ownerSegment": "sMB",
+        "text": "7",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "CM3",
+        "ownerSegment": "sMC",
+        "text": "3",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "OMval",
+        "ownerSegment": "sOM",
+        "text": "r-3",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "radiusVal",
+        "ownerSegment": "sOA",
+        "text": "29/3",
+        "factRole": "CONCLUSION"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 680,
+    "height": 520
+  },
+  "caption": "원의 중심에서 현 AB로 내린 수선 OM과 현의 반쪽 7 및 MC=3으로 반지름을 구한다.",
+  "accessibilityDescription": "중심 O, 현 AB와 교점 M, 원 위 C, M 직각표식, AM=MB 눈금, BM=7, CM=3, OM=r-3, OA=29/3을 보인다.",
+  "sourceQuote": "다음 그림에서 $\\overline{AB}\\perp\\overline",
+  "sourceConditions": [
+    {
+      "id": "condition1",
+      "condition": "OM은 AB와 수직이고 BM=7, CM=3이다.",
+      "mappedTo": [
+        "sOM",
+        "rightM",
+        "BM7",
+        "CM3"
+      ]
+    },
+    {
+      "id": "condition2",
+      "condition": "현을 이등분하므로 AM=MB=7, OM=r-3, OA=r=29/3이다.",
+      "mappedTo": [
+        "sAM",
+        "sMB",
+        "halfChord",
+        "OMval",
+        "radiusVal"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "기존 해설의 직각·현의 이등분 눈금 및 원본 7·3 길이의 소속이 불분명한 결함을 복원."
+  ]
+}

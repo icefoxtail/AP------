@@ -1,0 +1,196 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rightO",
+      "refs": [
+        "A",
+        "O",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "angleA",
+        "refs": [
+          "B",
+          "A",
+          "O"
+        ],
+        "value": 26.56505117707799,
+        "label": "a",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "angleB",
+        "refs": [
+          "A",
+          "B",
+          "O"
+        ],
+        "value": 63.43494882292201,
+        "label": "b",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "OA8",
+        "ownerSegment": "sOA",
+        "text": "8",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "OB4",
+        "ownerSegment": "sOB",
+        "text": "4",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ABroot",
+        "ownerSegment": "sAB",
+        "text": "4sqrt(5)",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 680,
+    "height": 520
+  },
+  "caption": "직선 y=x/2+4의 절편 A(-8,0), B(0,4)와 두 각 a,b를 좌표축 위에 보인다.",
+  "accessibilityDescription": "좌표평면에 x축의 A(-8,0), y축의 B(0,4), 원점 O, 직선 AB, O의 직각, 두 각 a와 b, OA=8과 OB=4, AB=4루트5가 표시된다.",
+  "sourceQuote": "[서술형2] 다음 그림과 같이 일차함수 $y=\\dfrac{1}{2",
+  "sourceConditions": [
+    {
+      "id": "condition1",
+      "condition": "y=x/2+4와 좌표축의 교점 A(-8,0), B(0,4).",
+      "mappedTo": [
+        "O",
+        "A",
+        "B",
+        "sOA",
+        "sOB",
+        "rightO"
+      ]
+    },
+    {
+      "id": "condition2",
+      "condition": "두 각은 BAO=a, ABO=b이고 AB=4루트5이다.",
+      "mappedTo": [
+        "angleA",
+        "angleB",
+        "sAB",
+        "ABroot",
+        "OA8",
+        "OB4"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "기존 해설에는 원본 ∠BAO=a, ∠ABO=b 각호와 O의 직각이 빠져 있고 오히려 정답 -3을 도형 상단에 분리 표기함. 도형에 계산 과정만 정확히 배치."
+  ]
+}

@@ -1,0 +1,1625 @@
+{
+  "schema": "m3-2mid-visual-audit-v1",
+  "scope": {
+    "exam": "archive/exams/original/middle/m3/2mid/25_금당중_2학기_중간_중3_수학.js",
+    "qidRange": "q01–q24",
+    "axes": [
+      "problem",
+      "solution"
+    ],
+    "exclude": [
+      "m3/2final",
+      "다른 시험지·학년"
+    ]
+  },
+  "methodology": [
+    "원문(content,solution), 원본 image PNG, 현재 해설 solutionImage SVG 대조",
+    "정확한 표식·수선·점선·각·직각·수치·라벨·면 채움 검수",
+    "REPLAN: construction plan JSON 작성, sourceConditions와 그려질 요소 ID 1:1 대응 검증",
+    "모든 REPLAN에 plan-lint.cjs --shallow/full 확인",
+    "최종 SVG 실제 렌더 검사는 이 환경의 Chromium Archive preflight 실패로 실행 불가; 운영 렌더·observer 후속 필요"
+  ],
+  "summary": {
+    "questions": 24,
+    "axes": 48,
+    "problemKeep": 22,
+    "problemExempt": 2,
+    "solutionReplan": 21,
+    "solutionKeep": 0,
+    "solutionExempt": 3,
+    "engineCapabilityPending": 0,
+    "plansShallowOK": 21,
+    "plansFullOK": 21,
+    "plansStaticParityOK": 21,
+    "renderedSvgQA": "NOT_RUN_CHROMIUM_ARCHIVE_PREFLIGHT_FAIL"
+  },
+  "items": [
+    {
+      "qid": "q01",
+      "problem": {
+        "axis": "problem",
+        "verdict": "KEEP",
+        "originalAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q1.png",
+        "activeAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q1.png",
+        "defectDecision": "원본 기출 스캔을 확대 대조: 필수 지시선·보조선·점선·각호·직각·길이·라벨·음영을 그대로 담고 있어 보존.",
+        "capability": "NOT_REQUIRED",
+        "planPath": null,
+        "lint": {
+          "shallow": "N/A",
+          "full": "N/A"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_KEEP_ORIGINAL_SCAN",
+          "missing": []
+        }
+      },
+      "solution": {
+        "axis": "solution",
+        "verdict": "EXEMPT_NO_ACTIVE_IMAGE",
+        "originalAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q1.png",
+        "activeAsset": null,
+        "defectDecision": "해설에 SVG/image 참조가 없고 문장·수식 풀이만 있으므로 재설계할 기존 해설 도형이 없음.",
+        "capability": "NOT_REQUIRED",
+        "planPath": null,
+        "lint": {
+          "shallow": "N/A",
+          "full": "N/A"
+        },
+        "drawnFeatureParity": {
+          "status": "EXEMPT_NO_IMAGE",
+          "missing": []
+        }
+      }
+    },
+    {
+      "qid": "q02",
+      "problem": {
+        "axis": "problem",
+        "verdict": "EXEMPT_NO_ACTIVE_IMAGE",
+        "originalAsset": null,
+        "activeAsset": null,
+        "defectDecision": "원문에 별도 문제 이미지 참조가 없으므로 SVG 재작성 축이 아님.",
+        "capability": "NOT_REQUIRED",
+        "planPath": null,
+        "lint": {
+          "shallow": "N/A",
+          "full": "N/A"
+        },
+        "drawnFeatureParity": {
+          "status": "EXEMPT_NO_IMAGE",
+          "missing": []
+        }
+      },
+      "solution": {
+        "axis": "solution",
+        "verdict": "EXEMPT_NO_ACTIVE_IMAGE",
+        "originalAsset": null,
+        "activeAsset": null,
+        "defectDecision": "해설에 SVG/image 참조가 없고 문장·수식 풀이만 있으므로 재설계할 기존 해설 도형이 없음.",
+        "capability": "NOT_REQUIRED",
+        "planPath": null,
+        "lint": {
+          "shallow": "N/A",
+          "full": "N/A"
+        },
+        "drawnFeatureParity": {
+          "status": "EXEMPT_NO_IMAGE",
+          "missing": []
+        }
+      }
+    },
+    {
+      "qid": "q03",
+      "problem": {
+        "axis": "problem",
+        "verdict": "EXEMPT_NO_ACTIVE_IMAGE",
+        "originalAsset": null,
+        "activeAsset": null,
+        "defectDecision": "원문에 별도 문제 이미지 참조가 없으므로 SVG 재작성 축이 아님.",
+        "capability": "NOT_REQUIRED",
+        "planPath": null,
+        "lint": {
+          "shallow": "N/A",
+          "full": "N/A"
+        },
+        "drawnFeatureParity": {
+          "status": "EXEMPT_NO_IMAGE",
+          "missing": []
+        }
+      },
+      "solution": {
+        "axis": "solution",
+        "verdict": "REPLAN",
+        "originalAsset": null,
+        "activeAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q3-solution.svg",
+        "defectDecision": "기존 해설 그림의 B 직각표식과 각 A 표기 누락을 보완.",
+        "capability": "construction-spike-v1/PLANE_FIGURE_v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/25_금당중_2학기_중간_중3_수학/q03-solution.plan.json",
+        "lint": {
+          "shallow": "OK",
+          "full": "OK"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_PLAN_ENTITY_1_TO_1",
+          "method": "원문·원본 스캔·기존 해설 SVG 수동 대조 및 sourceConditions→plan 구성요소 ID 전수 확인",
+          "conditions": [
+            {
+              "source": "cos A=2/3으로 두 변 2와 3을 둔다.",
+              "drawnIds": [
+                "sAB",
+                "sAC",
+                "leg2",
+                "hyp3",
+                "angleA"
+              ],
+              "missing": []
+            },
+            {
+              "source": "피타고라스 정리로 BC=루트5이다.",
+              "drawnIds": [
+                "sBC",
+                "leg5",
+                "rightB"
+              ],
+              "missing": []
+            }
+          ],
+          "missing": [],
+          "renderedOutput": "NOT_RUN_BROWSER_PREFLIGHT_FAIL"
+        },
+        "background": "NO_EXPLICIT_WHITE_RECT",
+        "regions": "NONE"
+      }
+    },
+    {
+      "qid": "q04",
+      "problem": {
+        "axis": "problem",
+        "verdict": "KEEP",
+        "originalAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q4.png",
+        "activeAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q4.png",
+        "defectDecision": "원본 기출 스캔을 확대 대조: 필수 지시선·보조선·점선·각호·직각·길이·라벨·음영을 그대로 담고 있어 보존.",
+        "capability": "NOT_REQUIRED",
+        "planPath": null,
+        "lint": {
+          "shallow": "N/A",
+          "full": "N/A"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_KEEP_ORIGINAL_SCAN",
+          "missing": []
+        }
+      },
+      "solution": {
+        "axis": "solution",
+        "verdict": "EXEMPT_NO_ACTIVE_IMAGE",
+        "originalAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q4.png",
+        "activeAsset": null,
+        "defectDecision": "해설에 SVG/image 참조가 없고 문장·수식 풀이만 있으므로 재설계할 기존 해설 도형이 없음.",
+        "capability": "NOT_REQUIRED",
+        "planPath": null,
+        "lint": {
+          "shallow": "N/A",
+          "full": "N/A"
+        },
+        "drawnFeatureParity": {
+          "status": "EXEMPT_NO_IMAGE",
+          "missing": []
+        }
+      }
+    },
+    {
+      "qid": "q05",
+      "problem": {
+        "axis": "problem",
+        "verdict": "KEEP",
+        "originalAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q5.png",
+        "activeAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q5.png",
+        "defectDecision": "원본 기출 스캔을 확대 대조: 필수 지시선·보조선·점선·각호·직각·길이·라벨·음영을 그대로 담고 있어 보존.",
+        "capability": "NOT_REQUIRED",
+        "planPath": null,
+        "lint": {
+          "shallow": "N/A",
+          "full": "N/A"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_KEEP_ORIGINAL_SCAN",
+          "missing": []
+        }
+      },
+      "solution": {
+        "axis": "solution",
+        "verdict": "REPLAN",
+        "originalAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q5.png",
+        "activeAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q5-solution.svg",
+        "defectDecision": "기존 해설의 CD 수선·D 직각과 ∠ACD=x, ∠BCD=y를 복원.",
+        "capability": "construction-spike-v1/PLANE_FIGURE_v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/25_금당중_2학기_중간_중3_수학/q05-solution.plan.json",
+        "lint": {
+          "shallow": "OK",
+          "full": "OK"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_PLAN_ENTITY_1_TO_1",
+          "method": "원문·원본 스캔·기존 해설 SVG 수동 대조 및 sourceConditions→plan 구성요소 ID 전수 확인",
+          "conditions": [
+            {
+              "source": "주어진 AC=8, BC=15, C 직각과 AB=17.",
+              "drawnIds": [
+                "sAC",
+                "sCB",
+                "sAB",
+                "AC8",
+                "CB15",
+                "AB17",
+                "rightC"
+              ],
+              "missing": []
+            },
+            {
+              "source": "CD는 AB의 수선이고 두 각은 x,y이다.",
+              "drawnIds": [
+                "D",
+                "sCD",
+                "rightD",
+                "xangle",
+                "yangle"
+              ],
+              "missing": []
+            }
+          ],
+          "missing": [],
+          "renderedOutput": "NOT_RUN_BROWSER_PREFLIGHT_FAIL"
+        },
+        "background": "NO_EXPLICIT_WHITE_RECT",
+        "regions": "NONE"
+      }
+    },
+    {
+      "qid": "q06",
+      "problem": {
+        "axis": "problem",
+        "verdict": "KEEP",
+        "originalAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q6.png",
+        "activeAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q6.png",
+        "defectDecision": "원본 기출 스캔을 확대 대조: 필수 지시선·보조선·점선·각호·직각·길이·라벨·음영을 그대로 담고 있어 보존.",
+        "capability": "NOT_REQUIRED",
+        "planPath": null,
+        "lint": {
+          "shallow": "N/A",
+          "full": "N/A"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_KEEP_ORIGINAL_SCAN",
+          "missing": []
+        }
+      },
+      "solution": {
+        "axis": "solution",
+        "verdict": "REPLAN",
+        "originalAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q6.png",
+        "activeAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q6-solution.svg",
+        "defectDecision": "기존 해설의 A각 이등분 표식과 C 직각·B의 30도 각호 누락을 복원.",
+        "capability": "construction-spike-v1/PLANE_FIGURE_v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/25_금당중_2학기_중간_중3_수학/q06-solution.plan.json",
+        "lint": {
+          "shallow": "OK",
+          "full": "OK"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_PLAN_ENTITY_1_TO_1",
+          "method": "원문·원본 스캔·기존 해설 SVG 수동 대조 및 sourceConditions→plan 구성요소 ID 전수 확인",
+          "conditions": [
+            {
+              "source": "AB=6, B=30도, C가 직각이다.",
+              "drawnIds": [
+                "sAB",
+                "ABsix",
+                "angleB",
+                "rightC"
+              ],
+              "missing": []
+            },
+            {
+              "source": "AD는 A의 이등분선이고 BD는 2루트3이다.",
+              "drawnIds": [
+                "sAD",
+                "halfA1",
+                "halfA2",
+                "sBD",
+                "BDvalue"
+              ],
+              "missing": []
+            }
+          ],
+          "missing": [],
+          "renderedOutput": "NOT_RUN_BROWSER_PREFLIGHT_FAIL"
+        },
+        "background": "NO_EXPLICIT_WHITE_RECT",
+        "regions": "NONE"
+      }
+    },
+    {
+      "qid": "q07",
+      "problem": {
+        "axis": "problem",
+        "verdict": "KEEP",
+        "originalAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q7.png",
+        "activeAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q7.png",
+        "defectDecision": "원본 기출 스캔을 확대 대조: 필수 지시선·보조선·점선·각호·직각·길이·라벨·음영을 그대로 담고 있어 보존.",
+        "capability": "NOT_REQUIRED",
+        "planPath": null,
+        "lint": {
+          "shallow": "N/A",
+          "full": "N/A"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_KEEP_ORIGINAL_SCAN",
+          "missing": []
+        }
+      },
+      "solution": {
+        "axis": "solution",
+        "verdict": "REPLAN",
+        "originalAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q7.png",
+        "activeAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q7-solution.svg",
+        "defectDecision": "기존 해설에 빠진 B·D의 두 직각, C의 45도 및 B의 30도 각호 복원.",
+        "capability": "construction-spike-v1/PLANE_FIGURE_v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/25_금당중_2학기_중간_중3_수학/q07-solution.plan.json",
+        "lint": {
+          "shallow": "OK",
+          "full": "OK"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_PLAN_ENTITY_1_TO_1",
+          "method": "원문·원본 스캔·기존 해설 SVG 수동 대조 및 sourceConditions→plan 구성요소 ID 전수 확인",
+          "conditions": [
+            {
+              "source": "ABC는 B가 직각이고 AC=6루트2, C각 45도.",
+              "drawnIds": [
+                "rightB",
+                "angleC",
+                "ACsixroot2",
+                "sAC"
+              ],
+              "missing": []
+            },
+            {
+              "source": "BDC는 D가 직각이고 B각 30도, BD=3루트3.",
+              "drawnIds": [
+                "sBD",
+                "sDC",
+                "rightD",
+                "angleDBC",
+                "BDthree"
+              ],
+              "missing": []
+            }
+          ],
+          "missing": [],
+          "renderedOutput": "NOT_RUN_BROWSER_PREFLIGHT_FAIL"
+        },
+        "background": "NO_EXPLICIT_WHITE_RECT",
+        "regions": "NONE"
+      }
+    },
+    {
+      "qid": "q08",
+      "problem": {
+        "axis": "problem",
+        "verdict": "KEEP",
+        "originalAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q8.png",
+        "activeAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q8.png",
+        "defectDecision": "원본 기출 스캔을 확대 대조: 필수 지시선·보조선·점선·각호·직각·길이·라벨·음영을 그대로 담고 있어 보존.",
+        "capability": "NOT_REQUIRED",
+        "planPath": null,
+        "lint": {
+          "shallow": "N/A",
+          "full": "N/A"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_KEEP_ORIGINAL_SCAN",
+          "missing": []
+        }
+      },
+      "solution": {
+        "axis": "solution",
+        "verdict": "REPLAN",
+        "originalAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q8.png",
+        "activeAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q8-solution.svg",
+        "defectDecision": "기존 해설에서 원본 60도 각호와 수선 AH·직각표식이 빠진 결함 복구.",
+        "capability": "construction-spike-v1/PLANE_FIGURE_v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/25_금당중_2학기_중간_중3_수학/q08-solution.plan.json",
+        "lint": {
+          "shallow": "OK",
+          "full": "OK"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_PLAN_ENTITY_1_TO_1",
+          "method": "원문·원본 스캔·기존 해설 SVG 수동 대조 및 sourceConditions→plan 구성요소 ID 전수 확인",
+          "conditions": [
+            {
+              "source": "AB=8, BC=10, 각 B는 60도이다.",
+              "drawnIds": [
+                "sAB",
+                "sBC",
+                "AB8",
+                "BC10",
+                "angleB"
+              ],
+              "missing": []
+            },
+            {
+              "source": "높이 AH=4루트3, HC=6이며 H는 수선의 발이다.",
+              "drawnIds": [
+                "sAH",
+                "sHC",
+                "rightH",
+                "AHheight",
+                "HCsix"
+              ],
+              "missing": []
+            }
+          ],
+          "missing": [],
+          "renderedOutput": "NOT_RUN_BROWSER_PREFLIGHT_FAIL"
+        },
+        "background": "NO_EXPLICIT_WHITE_RECT",
+        "regions": "NONE"
+      }
+    },
+    {
+      "qid": "q09",
+      "problem": {
+        "axis": "problem",
+        "verdict": "KEEP",
+        "originalAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q9.png",
+        "activeAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q9.png",
+        "defectDecision": "원본 기출 스캔을 확대 대조: 필수 지시선·보조선·점선·각호·직각·길이·라벨·음영을 그대로 담고 있어 보존.",
+        "capability": "NOT_REQUIRED",
+        "planPath": null,
+        "lint": {
+          "shallow": "N/A",
+          "full": "N/A"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_KEEP_ORIGINAL_SCAN",
+          "missing": []
+        }
+      },
+      "solution": {
+        "axis": "solution",
+        "verdict": "REPLAN",
+        "originalAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q9.png",
+        "activeAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q9-solution.svg",
+        "defectDecision": "기존 해설의 30도·135도·45도 각호와 H의 직각표식을 복원.",
+        "capability": "construction-spike-v1/PLANE_FIGURE_v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/25_금당중_2학기_중간_중3_수학/q09-solution.plan.json",
+        "lint": {
+          "shallow": "OK",
+          "full": "OK"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_PLAN_ENTITY_1_TO_1",
+          "method": "원문·원본 스캔·기존 해설 SVG 수동 대조 및 sourceConditions→plan 구성요소 ID 전수 확인",
+          "conditions": [
+            {
+              "source": "B=30도, C의 내각135도, BC=4루트3이다.",
+              "drawnIds": [
+                "B30",
+                "C135",
+                "BCfour"
+              ],
+              "missing": []
+            },
+            {
+              "source": "C 외각45도, AH는 밑변 연장선의 수선이고 AH=6+2루트3이다.",
+              "drawnIds": [
+                "ACH45",
+                "sAH",
+                "rightH",
+                "AHanswer"
+              ],
+              "missing": []
+            }
+          ],
+          "missing": [],
+          "renderedOutput": "NOT_RUN_BROWSER_PREFLIGHT_FAIL"
+        },
+        "background": "NO_EXPLICIT_WHITE_RECT",
+        "regions": "NONE"
+      }
+    },
+    {
+      "qid": "q10",
+      "problem": {
+        "axis": "problem",
+        "verdict": "KEEP",
+        "originalAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q10.png",
+        "activeAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q10.png",
+        "defectDecision": "원본 기출 스캔을 확대 대조: 필수 지시선·보조선·점선·각호·직각·길이·라벨·음영을 그대로 담고 있어 보존.",
+        "capability": "NOT_REQUIRED",
+        "planPath": null,
+        "lint": {
+          "shallow": "N/A",
+          "full": "N/A"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_KEEP_ORIGINAL_SCAN",
+          "missing": []
+        }
+      },
+      "solution": {
+        "axis": "solution",
+        "verdict": "REPLAN",
+        "originalAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q10.png",
+        "activeAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q10-solution.svg",
+        "defectDecision": "기존 해설의 x 각호·중점 눈금·정사각형 직각표식 누락을 복원. 넓이 계산용 △EBF만 면 채움 유지.",
+        "capability": "construction-spike-v1/PLANE_FIGURE_v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/25_금당중_2학기_중간_중3_수학/q10-solution.plan.json",
+        "lint": {
+          "shallow": "OK",
+          "full": "OK"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_PLAN_ENTITY_1_TO_1",
+          "method": "원문·원본 스캔·기존 해설 SVG 수동 대조 및 sourceConditions→plan 구성요소 ID 전수 확인",
+          "conditions": [
+            {
+              "source": "ABCD는 변4인 정사각형이며 E,F는 중점이다.",
+              "drawnIds": [
+                "ABfour",
+                "rightA",
+                "rightB",
+                "rightC",
+                "rightD",
+                "midpointSides"
+              ],
+              "missing": []
+            },
+            {
+              "source": "각 EBF=x, BE=BF=2루트5이고 △EBF의 넓이는 6이다.",
+              "drawnIds": [
+                "angleX",
+                "sBE",
+                "sBF",
+                "BEroot",
+                "BFroot",
+                "triangleArea"
+              ],
+              "missing": []
+            }
+          ],
+          "missing": [],
+          "renderedOutput": "NOT_RUN_BROWSER_PREFLIGHT_FAIL"
+        },
+        "background": "NO_EXPLICIT_WHITE_RECT",
+        "regions": [
+          {
+            "id": "triangleArea",
+            "reason": "문제의 음영 원판·그림 분할·면적 계산에 필요한 의미 있는 영역"
+          }
+        ]
+      }
+    },
+    {
+      "qid": "q11",
+      "problem": {
+        "axis": "problem",
+        "verdict": "KEEP",
+        "originalAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q11.png",
+        "activeAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q11.png",
+        "defectDecision": "원본 기출 스캔을 확대 대조: 필수 지시선·보조선·점선·각호·직각·길이·라벨·음영을 그대로 담고 있어 보존.",
+        "capability": "NOT_REQUIRED",
+        "planPath": null,
+        "lint": {
+          "shallow": "N/A",
+          "full": "N/A"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_KEEP_ORIGINAL_SCAN",
+          "missing": []
+        }
+      },
+      "solution": {
+        "axis": "solution",
+        "verdict": "REPLAN",
+        "originalAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q11.png",
+        "activeAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q11-solution.svg",
+        "defectDecision": "기존 해설의 등변 눈금과 75도 두 각·30도 꼭짓각 누락 복구.",
+        "capability": "construction-spike-v1/PLANE_FIGURE_v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/25_금당중_2학기_중간_중3_수학/q11-solution.plan.json",
+        "lint": {
+          "shallow": "OK",
+          "full": "OK"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_PLAN_ENTITY_1_TO_1",
+          "method": "원문·원본 스캔·기존 해설 SVG 수동 대조 및 sourceConditions→plan 구성요소 ID 전수 확인",
+          "conditions": [
+            {
+              "source": "두 변 AB=AC=4루트2이다.",
+              "drawnIds": [
+                "sAB",
+                "sAC",
+                "isoSides",
+                "ABroot",
+                "ACroot"
+              ],
+              "missing": []
+            },
+            {
+              "source": "밑각이 각각 75도라 꼭짓각은 30도, 넓이는 8이다.",
+              "drawnIds": [
+                "angleA",
+                "angleB",
+                "angleC",
+                "areaABC"
+              ],
+              "missing": []
+            }
+          ],
+          "missing": [],
+          "renderedOutput": "NOT_RUN_BROWSER_PREFLIGHT_FAIL"
+        },
+        "background": "NO_EXPLICIT_WHITE_RECT",
+        "regions": [
+          {
+            "id": "areaABC",
+            "reason": "문제의 음영 원판·그림 분할·면적 계산에 필요한 의미 있는 영역"
+          }
+        ]
+      }
+    },
+    {
+      "qid": "q12",
+      "problem": {
+        "axis": "problem",
+        "verdict": "KEEP",
+        "originalAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q12.png",
+        "activeAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q12.png",
+        "defectDecision": "원본 기출 스캔을 확대 대조: 필수 지시선·보조선·점선·각호·직각·길이·라벨·음영을 그대로 담고 있어 보존.",
+        "capability": "NOT_REQUIRED",
+        "planPath": null,
+        "lint": {
+          "shallow": "N/A",
+          "full": "N/A"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_KEEP_ORIGINAL_SCAN",
+          "missing": []
+        }
+      },
+      "solution": {
+        "axis": "solution",
+        "verdict": "REPLAN",
+        "originalAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q12.png",
+        "activeAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q12-solution.svg",
+        "defectDecision": "기존 해설에 빠진 직사각형 종이띠의 좌우 윤곽·접힌 부분과 각 30·60도, 높이2, AC4, 직각표식을 복원.",
+        "capability": "construction-spike-v1/PLANE_FIGURE_v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/25_금당중_2학기_중간_중3_수학/q12-solution.plan.json",
+        "lint": {
+          "shallow": "OK",
+          "full": "OK"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_PLAN_ENTITY_1_TO_1",
+          "method": "원문·원본 스캔·기존 해설 SVG 수동 대조 및 sourceConditions→plan 구성요소 ID 전수 확인",
+          "conditions": [
+            {
+              "source": "세로2인 직사각형 종이를 선 AC=4로 접는다.",
+              "drawnIds": [
+                "AHtwo",
+                "ACfour",
+                "sAC",
+                "sAH",
+                "paperLeftSide",
+                "paperTopRight",
+                "paperRightSide",
+                "paperStrip"
+              ],
+              "missing": []
+            },
+            {
+              "source": "접은 뒤 수평선과 각은 30도·60도, 높이는 수직이다.",
+              "drawnIds": [
+                "B60",
+                "C30",
+                "rightH",
+                "foldArea"
+              ],
+              "missing": []
+            }
+          ],
+          "missing": [],
+          "renderedOutput": "NOT_RUN_BROWSER_PREFLIGHT_FAIL"
+        },
+        "background": "NO_EXPLICIT_WHITE_RECT",
+        "regions": [
+          {
+            "id": "paperStrip",
+            "reason": "문제의 음영 원판·그림 분할·면적 계산에 필요한 의미 있는 영역"
+          },
+          {
+            "id": "foldArea",
+            "reason": "문제의 음영 원판·그림 분할·면적 계산에 필요한 의미 있는 영역"
+          }
+        ]
+      }
+    },
+    {
+      "qid": "q13",
+      "problem": {
+        "axis": "problem",
+        "verdict": "KEEP",
+        "originalAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q13.png",
+        "activeAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q13.png",
+        "defectDecision": "원본 기출 스캔을 확대 대조: 필수 지시선·보조선·점선·각호·직각·길이·라벨·음영을 그대로 담고 있어 보존.",
+        "capability": "NOT_REQUIRED",
+        "planPath": null,
+        "lint": {
+          "shallow": "N/A",
+          "full": "N/A"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_KEEP_ORIGINAL_SCAN",
+          "missing": []
+        }
+      },
+      "solution": {
+        "axis": "solution",
+        "verdict": "REPLAN",
+        "originalAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q13.png",
+        "activeAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q13-solution.svg",
+        "defectDecision": "기존 해설의 원본 60도 각호·높이 수선 및 직각·BC=6이 누락되어 재설계.",
+        "capability": "construction-spike-v1/PLANE_FIGURE_v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/25_금당중_2학기_중간_중3_수학/q13-solution.plan.json",
+        "lint": {
+          "shallow": "OK",
+          "full": "OK"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_PLAN_ENTITY_1_TO_1",
+          "method": "원문·원본 스캔·기존 해설 SVG 수동 대조 및 sourceConditions→plan 구성요소 ID 전수 확인",
+          "conditions": [
+            {
+              "source": "밑변 BC=6, B각60도, 넓이15루트3이다.",
+              "drawnIds": [
+                "BCsix",
+                "B60",
+                "areaABC"
+              ],
+              "missing": []
+            },
+            {
+              "source": "AB=10, 높이5루트3, HC=1, AC=2루트19이다.",
+              "drawnIds": [
+                "ABten",
+                "AHheight",
+                "HCon",
+                "ACvalue",
+                "rightH"
+              ],
+              "missing": []
+            }
+          ],
+          "missing": [],
+          "renderedOutput": "NOT_RUN_BROWSER_PREFLIGHT_FAIL"
+        },
+        "background": "NO_EXPLICIT_WHITE_RECT",
+        "regions": [
+          {
+            "id": "areaABC",
+            "reason": "문제의 음영 원판·그림 분할·면적 계산에 필요한 의미 있는 영역"
+          }
+        ]
+      }
+    },
+    {
+      "qid": "q14",
+      "problem": {
+        "axis": "problem",
+        "verdict": "KEEP",
+        "originalAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q14.png",
+        "activeAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q14.png",
+        "defectDecision": "원본 기출 스캔을 확대 대조: 필수 지시선·보조선·점선·각호·직각·길이·라벨·음영을 그대로 담고 있어 보존.",
+        "capability": "NOT_REQUIRED",
+        "planPath": null,
+        "lint": {
+          "shallow": "N/A",
+          "full": "N/A"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_KEEP_ORIGINAL_SCAN",
+          "missing": []
+        }
+      },
+      "solution": {
+        "axis": "solution",
+        "verdict": "REPLAN",
+        "originalAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q14.png",
+        "activeAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q14-solution.svg",
+        "defectDecision": "기존 해설의 원본 xcm 표기·현12cm·중점 등길이 눈금·수선 직각표식 누락 보완.",
+        "capability": "construction-spike-v1/PLANE_FIGURE_v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/25_금당중_2학기_중간_중3_수학/q14-solution.plan.json",
+        "lint": {
+          "shallow": "OK",
+          "full": "OK"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_PLAN_ENTITY_1_TO_1",
+          "method": "원문·원본 스캔·기존 해설 SVG 수동 대조 및 sourceConditions→plan 구성요소 ID 전수 확인",
+          "conditions": [
+            {
+              "source": "원의 중심 O에서 현 AB에 내린 수선 OM은 M에서 직각이다.",
+              "drawnIds": [
+                "O",
+                "circ",
+                "sOM",
+                "rightM"
+              ],
+              "missing": []
+            },
+            {
+              "source": "현 AB=12이고 AM=x이며 AM=MB=6이다.",
+              "drawnIds": [
+                "chord12",
+                "sAM",
+                "sMB",
+                "halves",
+                "xUnknown",
+                "MBsix"
+              ],
+              "missing": []
+            }
+          ],
+          "missing": [],
+          "renderedOutput": "NOT_RUN_BROWSER_PREFLIGHT_FAIL"
+        },
+        "background": "NO_EXPLICIT_WHITE_RECT",
+        "regions": "NONE"
+      }
+    },
+    {
+      "qid": "q15",
+      "problem": {
+        "axis": "problem",
+        "verdict": "KEEP",
+        "originalAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q15.png",
+        "activeAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q15.png",
+        "defectDecision": "원본 기출 스캔을 확대 대조: 필수 지시선·보조선·점선·각호·직각·길이·라벨·음영을 그대로 담고 있어 보존.",
+        "capability": "NOT_REQUIRED",
+        "planPath": null,
+        "lint": {
+          "shallow": "N/A",
+          "full": "N/A"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_KEEP_ORIGINAL_SCAN",
+          "missing": []
+        }
+      },
+      "solution": {
+        "axis": "solution",
+        "verdict": "REPLAN",
+        "originalAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q15.png",
+        "activeAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q15-solution.svg",
+        "defectDecision": "기존 해설의 직각·현의 이등분 눈금 및 원본 7·3 길이의 소속이 불분명한 결함을 복원.",
+        "capability": "construction-spike-v1/PLANE_FIGURE_v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/25_금당중_2학기_중간_중3_수학/q15-solution.plan.json",
+        "lint": {
+          "shallow": "OK",
+          "full": "OK"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_PLAN_ENTITY_1_TO_1",
+          "method": "원문·원본 스캔·기존 해설 SVG 수동 대조 및 sourceConditions→plan 구성요소 ID 전수 확인",
+          "conditions": [
+            {
+              "source": "OM은 AB와 수직이고 BM=7, CM=3이다.",
+              "drawnIds": [
+                "sOM",
+                "rightM",
+                "BM7",
+                "CM3"
+              ],
+              "missing": []
+            },
+            {
+              "source": "현을 이등분하므로 AM=MB=7, OM=r-3, OA=r=29/3이다.",
+              "drawnIds": [
+                "sAM",
+                "sMB",
+                "halfChord",
+                "OMval",
+                "radiusVal"
+              ],
+              "missing": []
+            }
+          ],
+          "missing": [],
+          "renderedOutput": "NOT_RUN_BROWSER_PREFLIGHT_FAIL"
+        },
+        "background": "NO_EXPLICIT_WHITE_RECT",
+        "regions": "NONE"
+      }
+    },
+    {
+      "qid": "q16",
+      "problem": {
+        "axis": "problem",
+        "verdict": "KEEP",
+        "originalAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q16.png",
+        "activeAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q16.png",
+        "defectDecision": "원본 기출 스캔을 확대 대조: 필수 지시선·보조선·점선·각호·직각·길이·라벨·음영을 그대로 담고 있어 보존.",
+        "capability": "NOT_REQUIRED",
+        "planPath": null,
+        "lint": {
+          "shallow": "N/A",
+          "full": "N/A"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_KEEP_ORIGINAL_SCAN",
+          "missing": []
+        }
+      },
+      "solution": {
+        "axis": "solution",
+        "verdict": "REPLAN",
+        "originalAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q16.png",
+        "activeAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q16-solution.svg",
+        "defectDecision": "기존 q16 해설은 원본에서 면적을 구분하던 5개의 어두운 원이 전부 흰색이고 가운데 원의 접촉 관계도 보이지 않음. 실제 원판 5개와 접점·보조 직각삼각형을 정밀 복원.",
+        "capability": "construction-spike-v1/PLANE_FIGURE_v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/25_금당중_2학기_중간_중3_수학/q16-solution.plan.json",
+        "lint": {
+          "shallow": "OK",
+          "full": "OK"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_PLAN_ENTITY_1_TO_1",
+          "method": "원문·원본 스캔·기존 해설 SVG 수동 대조 및 sourceConditions→plan 구성요소 ID 전수 확인",
+          "conditions": [
+            {
+              "source": "반지름2인 원기둥 밑면 다섯 개가 정사각형에 꼭 맞게 놓인다.",
+              "drawnIds": [
+                "circleC1",
+                "circleC2",
+                "circleC3",
+                "circleC4",
+                "circleO",
+                "shadeC1",
+                "shadeC2",
+                "shadeC3",
+                "shadeC4",
+                "shadeO",
+                "radius2"
+              ],
+              "missing": []
+            },
+            {
+              "source": "모서리 원과 가운데 원은 접하므로 중심 사이 거리는 4, 가로세로 차는 각각 2루트2이다.",
+              "drawnIds": [
+                "sDiagonal",
+                "distance4",
+                "sHorizontal",
+                "sVertical",
+                "horizontalGap",
+                "verticalGap",
+                "rightH"
+              ],
+              "missing": []
+            },
+            {
+              "source": "상자 밑면의 한 변 길이는 4+4루트2이다.",
+              "drawnIds": [
+                "boxSide"
+              ],
+              "missing": []
+            }
+          ],
+          "missing": [],
+          "renderedOutput": "NOT_RUN_BROWSER_PREFLIGHT_FAIL"
+        },
+        "background": "NO_EXPLICIT_WHITE_RECT",
+        "regions": [
+          {
+            "id": "shadeC1",
+            "reason": "문제의 음영 원판·그림 분할·면적 계산에 필요한 의미 있는 영역"
+          },
+          {
+            "id": "shadeC2",
+            "reason": "문제의 음영 원판·그림 분할·면적 계산에 필요한 의미 있는 영역"
+          },
+          {
+            "id": "shadeC3",
+            "reason": "문제의 음영 원판·그림 분할·면적 계산에 필요한 의미 있는 영역"
+          },
+          {
+            "id": "shadeC4",
+            "reason": "문제의 음영 원판·그림 분할·면적 계산에 필요한 의미 있는 영역"
+          },
+          {
+            "id": "shadeO",
+            "reason": "문제의 음영 원판·그림 분할·면적 계산에 필요한 의미 있는 영역"
+          }
+        ]
+      }
+    },
+    {
+      "qid": "q17",
+      "problem": {
+        "axis": "problem",
+        "verdict": "KEEP",
+        "originalAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q17.png",
+        "activeAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q17.png",
+        "defectDecision": "원본 기출 스캔을 확대 대조: 필수 지시선·보조선·점선·각호·직각·길이·라벨·음영을 그대로 담고 있어 보존.",
+        "capability": "NOT_REQUIRED",
+        "planPath": null,
+        "lint": {
+          "shallow": "N/A",
+          "full": "N/A"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_KEEP_ORIGINAL_SCAN",
+          "missing": []
+        }
+      },
+      "solution": {
+        "axis": "solution",
+        "verdict": "REPLAN",
+        "originalAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q17.png",
+        "activeAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q17-solution.svg",
+        "defectDecision": "기존 해설에 없는 원본 60도 각호·접점 직각 두 개·접선 동등 길이 눈금을 복원.",
+        "capability": "construction-spike-v1/PLANE_FIGURE_v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/25_금당중_2학기_중간_중3_수학/q17-solution.plan.json",
+        "lint": {
+          "shallow": "OK",
+          "full": "OK"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_PLAN_ENTITY_1_TO_1",
+          "method": "원문·원본 스캔·기존 해설 SVG 수동 대조 및 sourceConditions→plan 구성요소 ID 전수 확인",
+          "conditions": [
+            {
+              "source": "PA=6, P각=60도이다.",
+              "drawnIds": [
+                "sPA",
+                "PA6",
+                "P60"
+              ],
+              "missing": []
+            },
+            {
+              "source": "PA=PB이고 접점의 반지름은 접선에 수직이다.",
+              "drawnIds": [
+                "sameTangents",
+                "sOA",
+                "sOB",
+                "rightA",
+                "rightB"
+              ],
+              "missing": []
+            },
+            {
+              "source": "삼각형 APB 넓이는 9루트3이다.",
+              "drawnIds": [
+                "areaAPB"
+              ],
+              "missing": []
+            }
+          ],
+          "missing": [],
+          "renderedOutput": "NOT_RUN_BROWSER_PREFLIGHT_FAIL"
+        },
+        "background": "NO_EXPLICIT_WHITE_RECT",
+        "regions": [
+          {
+            "id": "areaAPB",
+            "reason": "문제의 음영 원판·그림 분할·면적 계산에 필요한 의미 있는 영역"
+          }
+        ]
+      }
+    },
+    {
+      "qid": "q18",
+      "problem": {
+        "axis": "problem",
+        "verdict": "KEEP",
+        "originalAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q18.png",
+        "activeAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q18.png",
+        "defectDecision": "원본 기출 스캔을 확대 대조: 필수 지시선·보조선·점선·각호·직각·길이·라벨·음영을 그대로 담고 있어 보존.",
+        "capability": "NOT_REQUIRED",
+        "planPath": null,
+        "lint": {
+          "shallow": "N/A",
+          "full": "N/A"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_KEEP_ORIGINAL_SCAN",
+          "missing": []
+        }
+      },
+      "solution": {
+        "axis": "solution",
+        "verdict": "REPLAN",
+        "originalAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q18.png",
+        "activeAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q18-solution.svg",
+        "defectDecision": "기존 해설에 접점 3개의 직각·동등접선 눈금·원본 8/12 길이·반지름 표시가 누락되어 복원.",
+        "capability": "construction-spike-v1/PLANE_FIGURE_v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/25_금당중_2학기_중간_중3_수학/q18-solution.plan.json",
+        "lint": {
+          "shallow": "OK",
+          "full": "OK"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_PLAN_ENTITY_1_TO_1",
+          "method": "원문·원본 스캔·기존 해설 SVG 수동 대조 및 sourceConditions→plan 구성요소 ID 전수 확인",
+          "conditions": [
+            {
+              "source": "ABC는 A가 직각이며 BE=8, CE=12, BC=20이다.",
+              "drawnIds": [
+                "rightA",
+                "BE8",
+                "CE12",
+                "BC20"
+              ],
+              "missing": []
+            },
+            {
+              "source": "접점 D,E,F는 반지름과 직각, 같은 꼭짓점의 두 접선 길이는 같다.",
+              "drawnIds": [
+                "rightD",
+                "rightE",
+                "rightF",
+                "tangentA",
+                "tangentB",
+                "tangentC"
+              ],
+              "missing": []
+            },
+            {
+              "source": "반지름은 4이며 OB=4루트5, OC=4루트10이다.",
+              "drawnIds": [
+                "r4",
+                "OBval",
+                "OCval",
+                "circ"
+              ],
+              "missing": []
+            }
+          ],
+          "missing": [],
+          "renderedOutput": "NOT_RUN_BROWSER_PREFLIGHT_FAIL"
+        },
+        "background": "NO_EXPLICIT_WHITE_RECT",
+        "regions": "NONE"
+      }
+    },
+    {
+      "qid": "q19",
+      "problem": {
+        "axis": "problem",
+        "verdict": "KEEP",
+        "originalAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q19.png",
+        "activeAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q19.png",
+        "defectDecision": "원본 기출 스캔을 확대 대조: 필수 지시선·보조선·점선·각호·직각·길이·라벨·음영을 그대로 담고 있어 보존.",
+        "capability": "NOT_REQUIRED",
+        "planPath": null,
+        "lint": {
+          "shallow": "N/A",
+          "full": "N/A"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_KEEP_ORIGINAL_SCAN",
+          "missing": []
+        }
+      },
+      "solution": {
+        "axis": "solution",
+        "verdict": "REPLAN",
+        "originalAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q19.png",
+        "activeAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q19-solution.svg",
+        "defectDecision": "기존 해설의 접점 직각 두 개, P에서 원까지의 거리 6의 소속, 접선 동등 눈금 누락 복구.",
+        "capability": "construction-spike-v1/PLANE_FIGURE_v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/25_금당중_2학기_중간_중3_수학/q19-solution.plan.json",
+        "lint": {
+          "shallow": "OK",
+          "full": "OK"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_PLAN_ENTITY_1_TO_1",
+          "method": "원문·원본 스캔·기존 해설 SVG 수동 대조 및 sourceConditions→plan 구성요소 ID 전수 확인",
+          "conditions": [
+            {
+              "source": "P에서 원까지의 거리는 6이고 반지름은 4이다.",
+              "drawnIds": [
+                "sPQ",
+                "sQO",
+                "Pnear6",
+                "radius4",
+                "circ"
+              ],
+              "missing": []
+            },
+            {
+              "source": "두 접선 PA와 PB는 접점에서 반지름에 수직이고 길이가 같다.",
+              "drawnIds": [
+                "rightA",
+                "rightB",
+                "sameTangents"
+              ],
+              "missing": []
+            },
+            {
+              "source": "직각삼각형 POA에서 PA=2루트21이다.",
+              "drawnIds": [
+                "PAval",
+                "sPA"
+              ],
+              "missing": []
+            }
+          ],
+          "missing": [],
+          "renderedOutput": "NOT_RUN_BROWSER_PREFLIGHT_FAIL"
+        },
+        "background": "NO_EXPLICIT_WHITE_RECT",
+        "regions": "NONE"
+      }
+    },
+    {
+      "qid": "q20",
+      "problem": {
+        "axis": "problem",
+        "verdict": "KEEP",
+        "originalAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q20.png",
+        "activeAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q20.png",
+        "defectDecision": "원본 기출 스캔을 확대 대조: 필수 지시선·보조선·점선·각호·직각·길이·라벨·음영을 그대로 담고 있어 보존.",
+        "capability": "NOT_REQUIRED",
+        "planPath": null,
+        "lint": {
+          "shallow": "N/A",
+          "full": "N/A"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_KEEP_ORIGINAL_SCAN",
+          "missing": []
+        }
+      },
+      "solution": {
+        "axis": "solution",
+        "verdict": "REPLAN",
+        "originalAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q20.png",
+        "activeAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q20-solution.svg",
+        "defectDecision": "기존 q20 해설 SVG에는 문제에서 요구한 오른쪽 어두운 부분이 통째로 빠짐. 원호 D→B와 선분으로 경계를 닫는 실제 region으로 복원.",
+        "capability": "construction-spike-v1/PLANE_FIGURE_v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/25_금당중_2학기_중간_중3_수학/q20-solution.plan.json",
+        "lint": {
+          "shallow": "OK",
+          "full": "OK"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_PLAN_ENTITY_1_TO_1",
+          "method": "원문·원본 스캔·기존 해설 SVG 수동 대조 및 sourceConditions→plan 구성요소 ID 전수 확인",
+          "conditions": [
+            {
+              "source": "원 반지름6, OM=ON=3, ∠NOM=150도.",
+              "drawnIds": [
+                "circ",
+                "ON3",
+                "OM3",
+                "OD6",
+                "centerDistances",
+                "NOM150"
+              ],
+              "missing": []
+            },
+            {
+              "source": "중심 수선 ON⊥CD, OM⊥AB이고 양쪽 직각삼각형을 사용한다.",
+              "drawnIds": [
+                "rightN",
+                "rightM",
+                "NOD60",
+                "MOB60",
+                "NDval",
+                "MBval"
+              ],
+              "missing": []
+            },
+            {
+              "source": "어두운 부분은 ON-D-원호 DB-BM-MO로 둘러싸인 영역이다.",
+              "drawnIds": [
+                "shadedRight",
+                "sON",
+                "sND",
+                "sMB",
+                "sOM",
+                "DOB30"
+              ],
+              "missing": []
+            }
+          ],
+          "missing": [],
+          "renderedOutput": "NOT_RUN_BROWSER_PREFLIGHT_FAIL"
+        },
+        "background": "NO_EXPLICIT_WHITE_RECT",
+        "regions": [
+          {
+            "id": "shadedRight",
+            "reason": "문제의 음영 원판·그림 분할·면적 계산에 필요한 의미 있는 영역"
+          }
+        ]
+      }
+    },
+    {
+      "qid": "q21",
+      "problem": {
+        "axis": "problem",
+        "verdict": "KEEP",
+        "originalAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q21.png",
+        "activeAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q21.png",
+        "defectDecision": "원본 기출 스캔을 확대 대조: 필수 지시선·보조선·점선·각호·직각·길이·라벨·음영을 그대로 담고 있어 보존.",
+        "capability": "NOT_REQUIRED",
+        "planPath": null,
+        "lint": {
+          "shallow": "N/A",
+          "full": "N/A"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_KEEP_ORIGINAL_SCAN",
+          "missing": []
+        }
+      },
+      "solution": {
+        "axis": "solution",
+        "verdict": "REPLAN",
+        "originalAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q21.png",
+        "activeAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q21-solution.svg",
+        "defectDecision": "기존 해설의 B 직각 네모와 A각 기준선·라벨 누락을 보완하고 길이 4·2루트5·6을 소속 선분에 붙임.",
+        "capability": "construction-spike-v1/PLANE_FIGURE_v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/25_금당중_2학기_중간_중3_수학/q21-solution.plan.json",
+        "lint": {
+          "shallow": "OK",
+          "full": "OK"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_PLAN_ENTITY_1_TO_1",
+          "method": "원문·원본 스캔·기존 해설 SVG 수동 대조 및 sourceConditions→plan 구성요소 ID 전수 확인",
+          "conditions": [
+            {
+              "source": "AC=6은 빗변이고 cos A=2/3이다.",
+              "drawnIds": [
+                "sAC",
+                "ACsix",
+                "angleA"
+              ],
+              "missing": []
+            },
+            {
+              "source": "AB=4, BC=2루트5이며 B는 직각이다.",
+              "drawnIds": [
+                "sAB",
+                "sBC",
+                "ABfour",
+                "BCroot",
+                "rightB"
+              ],
+              "missing": []
+            }
+          ],
+          "missing": [],
+          "renderedOutput": "NOT_RUN_BROWSER_PREFLIGHT_FAIL"
+        },
+        "background": "NO_EXPLICIT_WHITE_RECT",
+        "regions": "NONE"
+      }
+    },
+    {
+      "qid": "q22",
+      "problem": {
+        "axis": "problem",
+        "verdict": "KEEP",
+        "originalAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q22.png",
+        "activeAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q22.png",
+        "defectDecision": "원본 기출 스캔을 확대 대조: 필수 지시선·보조선·점선·각호·직각·길이·라벨·음영을 그대로 담고 있어 보존.",
+        "capability": "NOT_REQUIRED",
+        "planPath": null,
+        "lint": {
+          "shallow": "N/A",
+          "full": "N/A"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_KEEP_ORIGINAL_SCAN",
+          "missing": []
+        }
+      },
+      "solution": {
+        "axis": "solution",
+        "verdict": "REPLAN",
+        "originalAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q22.png",
+        "activeAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q22-solution.svg",
+        "defectDecision": "기존 해설에는 원본 ∠BAO=a, ∠ABO=b 각호와 O의 직각이 빠져 있고 오히려 정답 -3을 도형 상단에 분리 표기함. 도형에 계산 과정만 정확히 배치.",
+        "capability": "construction-spike-v1/SOURCE_COORDINATE_AXES_v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/25_금당중_2학기_중간_중3_수학/q22-solution.plan.json",
+        "lint": {
+          "shallow": "OK",
+          "full": "OK"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_PLAN_ENTITY_1_TO_1",
+          "method": "원문·원본 스캔·기존 해설 SVG 수동 대조 및 sourceConditions→plan 구성요소 ID 전수 확인",
+          "conditions": [
+            {
+              "source": "y=x/2+4와 좌표축의 교점 A(-8,0), B(0,4).",
+              "drawnIds": [
+                "O",
+                "A",
+                "B",
+                "sOA",
+                "sOB",
+                "rightO"
+              ],
+              "missing": []
+            },
+            {
+              "source": "두 각은 BAO=a, ABO=b이고 AB=4루트5이다.",
+              "drawnIds": [
+                "angleA",
+                "angleB",
+                "sAB",
+                "ABroot",
+                "OA8",
+                "OB4"
+              ],
+              "missing": []
+            }
+          ],
+          "missing": [],
+          "renderedOutput": "NOT_RUN_BROWSER_PREFLIGHT_FAIL"
+        },
+        "background": "NO_EXPLICIT_WHITE_RECT",
+        "regions": "NONE"
+      }
+    },
+    {
+      "qid": "q23",
+      "problem": {
+        "axis": "problem",
+        "verdict": "KEEP",
+        "originalAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q23.png",
+        "activeAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q23.png",
+        "defectDecision": "원본 기출 스캔을 확대 대조: 필수 지시선·보조선·점선·각호·직각·길이·라벨·음영을 그대로 담고 있어 보존.",
+        "capability": "NOT_REQUIRED",
+        "planPath": null,
+        "lint": {
+          "shallow": "N/A",
+          "full": "N/A"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_KEEP_ORIGINAL_SCAN",
+          "missing": []
+        }
+      },
+      "solution": {
+        "axis": "solution",
+        "verdict": "REPLAN",
+        "originalAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q23.png",
+        "activeAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q23-solution.svg",
+        "defectDecision": "기존 해설의 원본 45도·60도 각호와 B 직각표식·CD=3 길이 누락을 복원. 면 채움은 두 넓이 영역 구분에만 유지.",
+        "capability": "construction-spike-v1/PLANE_FIGURE_v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/25_금당중_2학기_중간_중3_수학/q23-solution.plan.json",
+        "lint": {
+          "shallow": "OK",
+          "full": "OK"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_PLAN_ENTITY_1_TO_1",
+          "method": "원문·원본 스캔·기존 해설 SVG 수동 대조 및 sourceConditions→plan 구성요소 ID 전수 확인",
+          "conditions": [
+            {
+              "source": "△ABC는 B가 직각이고 CAB=45도, BC=6이다.",
+              "drawnIds": [
+                "rightB",
+                "CAB45",
+                "BCsix",
+                "regionABC"
+              ],
+              "missing": []
+            },
+            {
+              "source": "△ACD는 ACD=60도, CD=3, AC=6루트2이다.",
+              "drawnIds": [
+                "ACD60",
+                "CDthree",
+                "ACroot",
+                "regionACD"
+              ],
+              "missing": []
+            }
+          ],
+          "missing": [],
+          "renderedOutput": "NOT_RUN_BROWSER_PREFLIGHT_FAIL"
+        },
+        "background": "NO_EXPLICIT_WHITE_RECT",
+        "regions": [
+          {
+            "id": "regionABC",
+            "reason": "문제의 음영 원판·그림 분할·면적 계산에 필요한 의미 있는 영역"
+          },
+          {
+            "id": "regionACD",
+            "reason": "문제의 음영 원판·그림 분할·면적 계산에 필요한 의미 있는 영역"
+          }
+        ]
+      }
+    },
+    {
+      "qid": "q24",
+      "problem": {
+        "axis": "problem",
+        "verdict": "KEEP",
+        "originalAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q24.png",
+        "activeAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q24.png",
+        "defectDecision": "원본 기출 스캔을 확대 대조: 필수 지시선·보조선·점선·각호·직각·길이·라벨·음영을 그대로 담고 있어 보존.",
+        "capability": "NOT_REQUIRED",
+        "planPath": null,
+        "lint": {
+          "shallow": "N/A",
+          "full": "N/A"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_KEEP_ORIGINAL_SCAN",
+          "missing": []
+        }
+      },
+      "solution": {
+        "axis": "solution",
+        "verdict": "REPLAN",
+        "originalAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q24.png",
+        "activeAsset": "archive/assets/images/25_금당중_2학기_중간_중3_수학/q24-solution.svg",
+        "defectDecision": "기존 해설의 OM·ON 동등 눈금, M·N 직각 네모 및 AM=MB=CN=ND가 누락되어 증명 전제와 결론을 1:1 표식으로 복원.",
+        "capability": "construction-spike-v1/PLANE_FIGURE_v1",
+        "planPath": "archive/tools/geometry-equation/production/plans/25_금당중_2학기_중간_중3_수학/q24-solution.plan.json",
+        "lint": {
+          "shallow": "OK",
+          "full": "OK"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_PLAN_ENTITY_1_TO_1",
+          "method": "원문·원본 스캔·기존 해설 SVG 수동 대조 및 sourceConditions→plan 구성요소 ID 전수 확인",
+          "conditions": [
+            {
+              "source": "OA=OC는 반지름이고 OM=ON이다.",
+              "drawnIds": [
+                "circ",
+                "sOA",
+                "sOC",
+                "radiusEqual",
+                "sOM",
+                "sON",
+                "centerEqual"
+              ],
+              "missing": []
+            },
+            {
+              "source": "OM⊥AB, ON⊥CD이고 각각 현을 이등분한다.",
+              "drawnIds": [
+                "rightM",
+                "rightN",
+                "halfChords",
+                "sAM",
+                "sMB",
+                "sCN",
+                "sND"
+              ],
+              "missing": []
+            }
+          ],
+          "missing": [],
+          "renderedOutput": "NOT_RUN_BROWSER_PREFLIGHT_FAIL"
+        },
+        "background": "NO_EXPLICIT_WHITE_RECT",
+        "regions": "NONE"
+      }
+    }
+  ]
+}

@@ -1,0 +1,256 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "5"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "C",
+    "A",
+    "H"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sAH",
+      "refs": [
+        "A",
+        "H"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sHC",
+      "refs": [
+        "H",
+        "C"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rightH",
+      "refs": [
+        "A",
+        "H",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "B60",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 60,
+        "label": "60",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "BCsix",
+        "ownerSegment": "sBC",
+        "text": "6",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ABten",
+        "ownerSegment": "sAB",
+        "text": "10",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "AHheight",
+        "ownerSegment": "sAH",
+        "text": "5sqrt(3)",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "HCon",
+        "ownerSegment": "sHC",
+        "text": "1",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ACvalue",
+        "ownerSegment": "sAC",
+        "text": "2sqrt(19)",
+        "factRole": "CONCLUSION"
+      }
+    ],
+    "regions": [
+      {
+        "id": "areaABC",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "A",
+              "B",
+              "C"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 680,
+    "height": 520
+  },
+  "caption": "BC=6, B=60도인 삼각형의 넓이 15루트3으로 AB=10을 구한 뒤 높이로 AC를 계산한다.",
+  "accessibilityDescription": "B의 60도 호, 밑변 BC 6, AB 10, H에서의 직각, 높이 5루트3과 HC 1, AC 2루트19가 보인다.",
+  "sourceQuote": "다음 $\\triangle ABC$의 넓이가 $15\\sqrt3\\,\\",
+  "sourceConditions": [
+    {
+      "id": "condition1",
+      "condition": "밑변 BC=6, B각60도, 넓이15루트3이다.",
+      "mappedTo": [
+        "BCsix",
+        "B60",
+        "areaABC"
+      ]
+    },
+    {
+      "id": "condition2",
+      "condition": "AB=10, 높이5루트3, HC=1, AC=2루트19이다.",
+      "mappedTo": [
+        "ABten",
+        "AHheight",
+        "HCon",
+        "ACvalue",
+        "rightH"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "기존 해설의 원본 60도 각호·높이 수선 및 직각·BC=6이 누락되어 재설계."
+  ]
+}

@@ -1,0 +1,260 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "C",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rightB",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "CAB45",
+        "refs": [
+          "C",
+          "A",
+          "B"
+        ],
+        "value": 45,
+        "label": "45",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ACD60",
+        "refs": [
+          "A",
+          "C",
+          "D"
+        ],
+        "value": 60,
+        "label": "60",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "BCsix",
+        "ownerSegment": "sBC",
+        "text": "6",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "CDthree",
+        "ownerSegment": "sCD",
+        "text": "3",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ABsix",
+        "ownerSegment": "sAB",
+        "text": "6",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ACroot",
+        "ownerSegment": "sAC",
+        "text": "6sqrt(2)",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "regions": [
+      {
+        "id": "regionABC",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "A",
+              "B",
+              "C"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "regionACD",
+        "fill": "MEDIUM",
+        "shapes": [
+          {
+            "polygon": [
+              "A",
+              "C",
+              "D"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 680,
+    "height": 520
+  },
+  "caption": "사각형 ABCD를 대각선 AC로 넓이 18인 △ABC와 다른 삼각형 ACD로 나누어 구한다.",
+  "accessibilityDescription": "사각형에서 B는 직각, A의 ∠CAB는 45도, C의 ∠ACD는 60도, BC=6, CD=3이며 대각선 AC로 두 넓이 영역이 구분된다.",
+  "sourceQuote": "[서술형3] 다음 그림의 사각형 $ABCD$에서 $\\angle C",
+  "sourceConditions": [
+    {
+      "id": "condition1",
+      "condition": "△ABC는 B가 직각이고 CAB=45도, BC=6이다.",
+      "mappedTo": [
+        "rightB",
+        "CAB45",
+        "BCsix",
+        "regionABC"
+      ]
+    },
+    {
+      "id": "condition2",
+      "condition": "△ACD는 ACD=60도, CD=3, AC=6루트2이다.",
+      "mappedTo": [
+        "ACD60",
+        "CDthree",
+        "ACroot",
+        "regionACD"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "기존 해설의 원본 45도·60도 각호와 B 직각표식·CD=3 길이 누락을 복원. 면 채움은 두 넓이 영역 구분에만 유지."
+  ]
+}

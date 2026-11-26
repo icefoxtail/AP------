@@ -1,0 +1,272 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "A",
+          "R"
+        ],
+        "args": {
+          "length": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "4"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  }
+                ]
+              }
+            ]
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "75"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "A",
+          "R"
+        ],
+        "args": {
+          "length": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "4"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  }
+                ]
+              }
+            ]
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "105"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "R"
+  ],
+  "hiddenPointNames": [
+    "R"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "angleA",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 30,
+        "label": "30",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "angleB",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 75,
+        "label": "75",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "angleC",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "value": 75,
+        "label": "75",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "isoSides",
+        "count": 1,
+        "segments": [
+          "sAB",
+          "sAC"
+        ]
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "ABroot",
+        "ownerSegment": "sAB",
+        "text": "4sqrt(2)",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ACroot",
+        "ownerSegment": "sAC",
+        "text": "4sqrt(2)",
+        "factRole": "GIVEN"
+      }
+    ],
+    "regions": [
+      {
+        "id": "areaABC",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "A",
+              "B",
+              "C"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 680,
+    "height": 520
+  },
+  "caption": "AB=AC=4루트2인 이등변삼각형의 밑각 75도, 꼭짓각 30도와 넓이를 보인다.",
+  "accessibilityDescription": "AB=AC 등길이 눈금, 두 밑각 75도, 꼭짓각 30도 및 삼각형 면적 영역을 표시한다.",
+  "sourceQuote": "다음 그림과 같이 $\\overline{AB}=\\overline{A",
+  "sourceConditions": [
+    {
+      "id": "condition1",
+      "condition": "두 변 AB=AC=4루트2이다.",
+      "mappedTo": [
+        "sAB",
+        "sAC",
+        "isoSides",
+        "ABroot",
+        "ACroot"
+      ]
+    },
+    {
+      "id": "condition2",
+      "condition": "밑각이 각각 75도라 꼭짓각은 30도, 넓이는 8이다.",
+      "mappedTo": [
+        "angleA",
+        "angleB",
+        "angleC",
+        "areaABC"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "기존 해설의 등변 눈금과 75도 두 각·30도 꼭짓각 누락 복구."
+  ]
+}

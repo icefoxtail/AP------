@@ -1,0 +1,231 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lineAB",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "C",
+          "lineAB"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "C",
+    "B",
+    "D"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sCB",
+      "refs": [
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ],
+      "dashed": true
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rightC",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "rightD",
+      "refs": [
+        "C",
+        "D",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "xangle",
+        "refs": [
+          "A",
+          "C",
+          "D"
+        ],
+        "label": "x",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "yangle",
+        "refs": [
+          "D",
+          "C",
+          "B"
+        ],
+        "label": "y",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "AC8",
+        "ownerSegment": "sAC",
+        "text": "8",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "CB15",
+        "ownerSegment": "sCB",
+        "text": "15",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "AB17",
+        "ownerSegment": "sAB",
+        "text": "17",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 680,
+    "height": 520
+  },
+  "caption": "C에서 직각인 8·15·17 삼각형에 AB로 내린 수선 CD와 x·y 각호를 표시한다.",
+  "accessibilityDescription": "AC 8, BC 15, AB 17인 삼각형에서 C와 D에 직각표식이 있고 C의 각은 CD를 기준으로 x와 y로 나뉜다.",
+  "sourceQuote": "다음 직각삼각형 $ABC$에서 $\\overline{AB}\\perp",
+  "sourceConditions": [
+    {
+      "id": "condition1",
+      "condition": "주어진 AC=8, BC=15, C 직각과 AB=17.",
+      "mappedTo": [
+        "sAC",
+        "sCB",
+        "sAB",
+        "AC8",
+        "CB15",
+        "AB17",
+        "rightC"
+      ]
+    },
+    {
+      "id": "condition2",
+      "condition": "CD는 AB의 수선이고 두 각은 x,y이다.",
+      "mappedTo": [
+        "D",
+        "sCD",
+        "rightD",
+        "xangle",
+        "yangle"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "기존 해설의 CD 수선·D 직각과 ∠ACD=x, ∠BCD=y를 복원."
+  ]
+}

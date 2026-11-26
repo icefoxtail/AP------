@@ -1,0 +1,950 @@
+{
+  "schema": "m3-2mid-visual-audit-v1",
+  "scope": {
+    "exam": "archive/exams/original/middle/m3/2mid/26_팔마중_2학기_중간_중3_기출.js",
+    "qidRange": "q01–q24",
+    "axes": [
+      "problem",
+      "solution"
+    ],
+    "exclude": [
+      "m3/2final",
+      "다른 시험지·학년"
+    ]
+  },
+  "methodology": [
+    "원문(content,solution), 원본 image PNG, 현재 해설 solutionImage SVG 대조",
+    "정확한 표식·수선·점선·각·직각·수치·라벨·면 채움 검수",
+    "REPLAN: construction plan JSON 작성, sourceConditions와 그려질 요소 ID 1:1 대응 검증",
+    "모든 REPLAN에 plan-lint.cjs --shallow/full 확인",
+    "최종 SVG 실제 렌더 검사는 이 환경의 Chromium Archive preflight 실패로 실행 불가; 운영 렌더·observer 후속 필요"
+  ],
+  "summary": {
+    "questions": 24,
+    "axes": 48,
+    "problemKeep": 20,
+    "problemExempt": 4,
+    "solutionReplan": 0,
+    "solutionKeep": 24,
+    "solutionExempt": 0,
+    "engineCapabilityPending": 0,
+    "plansShallowOK": 0,
+    "plansFullOK": 0,
+    "plansStaticParityOK": 0,
+    "renderedSvgQA": "NOT_RUN_CHROMIUM_ARCHIVE_PREFLIGHT_FAIL"
+  },
+  "items": [
+    {
+      "qid": "q01",
+      "problem": {
+        "axis": "problem",
+        "verdict": "KEEP",
+        "originalAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q1_question-v2.png",
+        "activeAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q1_question-v2.png",
+        "defectDecision": "원본 기출 스캔을 확대 대조: 필수 지시선·보조선·점선·각호·직각·길이·라벨·음영을 그대로 담고 있어 보존.",
+        "capability": "NOT_REQUIRED",
+        "planPath": null,
+        "lint": {
+          "shallow": "N/A",
+          "full": "N/A"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_KEEP_ORIGINAL_SCAN",
+          "missing": []
+        }
+      },
+      "solution": {
+        "axis": "solution",
+        "verdict": "KEEP",
+        "originalAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q1_question-v2.png",
+        "activeAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q1-solution.svg",
+        "defectDecision": "해설 SVG를 원본 문제 스캔 및 문항·풀이 문장과 육안 비교. 직각·밑변2·빗변4·높이2√3 확인; 임의 흰 배경·불필요한 면 채움·원본 대비 정보 저하는 관찰되지 않음.",
+        "checkedFeatures": "직각·밑변2·빗변4·높이2√3",
+        "capability": "NOT_REQUIRED",
+        "planPath": null,
+        "lint": {
+          "shallow": "N/A",
+          "full": "N/A"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_KEEP_VISUAL_CHECK",
+          "missing": []
+        }
+      }
+    },
+    {
+      "qid": "q02",
+      "problem": {
+        "axis": "problem",
+        "verdict": "KEEP",
+        "originalAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q2_question-v2.png",
+        "activeAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q2_question-v2.png",
+        "defectDecision": "원본 기출 스캔을 확대 대조: 필수 지시선·보조선·점선·각호·직각·길이·라벨·음영을 그대로 담고 있어 보존.",
+        "capability": "NOT_REQUIRED",
+        "planPath": null,
+        "lint": {
+          "shallow": "N/A",
+          "full": "N/A"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_KEEP_ORIGINAL_SCAN",
+          "missing": []
+        }
+      },
+      "solution": {
+        "axis": "solution",
+        "verdict": "KEEP",
+        "originalAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q2_question-v2.png",
+        "activeAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q2-solution.svg",
+        "defectDecision": "해설 SVG를 원본 문제 스캔 및 문항·풀이 문장과 육안 비교. 직각·세 변 길이 확인; 임의 흰 배경·불필요한 면 채움·원본 대비 정보 저하는 관찰되지 않음.",
+        "checkedFeatures": "직각·세 변 길이",
+        "capability": "NOT_REQUIRED",
+        "planPath": null,
+        "lint": {
+          "shallow": "N/A",
+          "full": "N/A"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_KEEP_VISUAL_CHECK",
+          "missing": []
+        }
+      }
+    },
+    {
+      "qid": "q03",
+      "problem": {
+        "axis": "problem",
+        "verdict": "EXEMPT_NO_ACTIVE_IMAGE",
+        "originalAsset": null,
+        "activeAsset": null,
+        "defectDecision": "원문에 별도 문제 이미지 참조가 없으므로 SVG 재작성 축이 아님.",
+        "capability": "NOT_REQUIRED",
+        "planPath": null,
+        "lint": {
+          "shallow": "N/A",
+          "full": "N/A"
+        },
+        "drawnFeatureParity": {
+          "status": "EXEMPT_NO_IMAGE",
+          "missing": []
+        }
+      },
+      "solution": {
+        "axis": "solution",
+        "verdict": "KEEP",
+        "originalAsset": null,
+        "activeAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q3-solution.svg",
+        "defectDecision": "해설 SVG를 원본 문제 스캔 및 문항·풀이 문장과 육안 비교. 30도·직각·√7/√3/2 대응 확인; 임의 흰 배경·불필요한 면 채움·원본 대비 정보 저하는 관찰되지 않음.",
+        "checkedFeatures": "30도·직각·√7/√3/2 대응",
+        "capability": "NOT_REQUIRED",
+        "planPath": null,
+        "lint": {
+          "shallow": "N/A",
+          "full": "N/A"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_KEEP_VISUAL_CHECK",
+          "missing": []
+        }
+      }
+    },
+    {
+      "qid": "q04",
+      "problem": {
+        "axis": "problem",
+        "verdict": "EXEMPT_NO_ACTIVE_IMAGE",
+        "originalAsset": null,
+        "activeAsset": null,
+        "defectDecision": "원문에 별도 문제 이미지 참조가 없으므로 SVG 재작성 축이 아님.",
+        "capability": "NOT_REQUIRED",
+        "planPath": null,
+        "lint": {
+          "shallow": "N/A",
+          "full": "N/A"
+        },
+        "drawnFeatureParity": {
+          "status": "EXEMPT_NO_IMAGE",
+          "missing": []
+        }
+      },
+      "solution": {
+        "axis": "solution",
+        "verdict": "KEEP",
+        "originalAsset": null,
+        "activeAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q4-solution.svg",
+        "defectDecision": "해설 SVG를 원본 문제 스캔 및 문항·풀이 문장과 육안 비교. 30도·60도·직각 확인; 임의 흰 배경·불필요한 면 채움·원본 대비 정보 저하는 관찰되지 않음.",
+        "checkedFeatures": "30도·60도·직각",
+        "capability": "NOT_REQUIRED",
+        "planPath": null,
+        "lint": {
+          "shallow": "N/A",
+          "full": "N/A"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_KEEP_VISUAL_CHECK",
+          "missing": []
+        }
+      }
+    },
+    {
+      "qid": "q05",
+      "problem": {
+        "axis": "problem",
+        "verdict": "EXEMPT_NO_ACTIVE_IMAGE",
+        "originalAsset": null,
+        "activeAsset": null,
+        "defectDecision": "원문에 별도 문제 이미지 참조가 없으므로 SVG 재작성 축이 아님.",
+        "capability": "NOT_REQUIRED",
+        "planPath": null,
+        "lint": {
+          "shallow": "N/A",
+          "full": "N/A"
+        },
+        "drawnFeatureParity": {
+          "status": "EXEMPT_NO_IMAGE",
+          "missing": []
+        }
+      },
+      "solution": {
+        "axis": "solution",
+        "verdict": "KEEP",
+        "originalAsset": null,
+        "activeAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q5-solution.svg",
+        "defectDecision": "해설 SVG를 원본 문제 스캔 및 문항·풀이 문장과 육안 비교. 30도 각호·보조선 확인; 임의 흰 배경·불필요한 면 채움·원본 대비 정보 저하는 관찰되지 않음.",
+        "checkedFeatures": "30도 각호·보조선",
+        "capability": "NOT_REQUIRED",
+        "planPath": null,
+        "lint": {
+          "shallow": "N/A",
+          "full": "N/A"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_KEEP_VISUAL_CHECK",
+          "missing": []
+        }
+      }
+    },
+    {
+      "qid": "q06",
+      "problem": {
+        "axis": "problem",
+        "verdict": "KEEP",
+        "originalAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q6_question-v2.png",
+        "activeAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q6_question-v2.png",
+        "defectDecision": "원본 기출 스캔을 확대 대조: 필수 지시선·보조선·점선·각호·직각·길이·라벨·음영을 그대로 담고 있어 보존.",
+        "capability": "NOT_REQUIRED",
+        "planPath": null,
+        "lint": {
+          "shallow": "N/A",
+          "full": "N/A"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_KEEP_ORIGINAL_SCAN",
+          "missing": []
+        }
+      },
+      "solution": {
+        "axis": "solution",
+        "verdict": "KEEP",
+        "originalAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q6_question-v2.png",
+        "activeAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q6-solution.svg",
+        "defectDecision": "해설 SVG를 원본 문제 스캔 및 문항·풀이 문장과 육안 비교. 원호·58도·32도·점선·세로 눈금 확인; 임의 흰 배경·불필요한 면 채움·원본 대비 정보 저하는 관찰되지 않음.",
+        "checkedFeatures": "원호·58도·32도·점선·세로 눈금",
+        "capability": "NOT_REQUIRED",
+        "planPath": null,
+        "lint": {
+          "shallow": "N/A",
+          "full": "N/A"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_KEEP_VISUAL_CHECK",
+          "missing": []
+        }
+      }
+    },
+    {
+      "qid": "q07",
+      "problem": {
+        "axis": "problem",
+        "verdict": "KEEP",
+        "originalAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q7_question-v2.png",
+        "activeAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q7_question-v2.png",
+        "defectDecision": "원본 기출 스캔을 확대 대조: 필수 지시선·보조선·점선·각호·직각·길이·라벨·음영을 그대로 담고 있어 보존.",
+        "capability": "NOT_REQUIRED",
+        "planPath": null,
+        "lint": {
+          "shallow": "N/A",
+          "full": "N/A"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_KEEP_ORIGINAL_SCAN",
+          "missing": []
+        }
+      },
+      "solution": {
+        "axis": "solution",
+        "verdict": "KEEP",
+        "originalAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q7_question-v2.png",
+        "activeAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q7-solution.svg",
+        "defectDecision": "해설 SVG를 원본 문제 스캔 및 문항·풀이 문장과 육안 비교. 28도·수평10m·높이1.6m·수직 눈금 확인; 임의 흰 배경·불필요한 면 채움·원본 대비 정보 저하는 관찰되지 않음.",
+        "checkedFeatures": "28도·수평10m·높이1.6m·수직 눈금",
+        "capability": "NOT_REQUIRED",
+        "planPath": null,
+        "lint": {
+          "shallow": "N/A",
+          "full": "N/A"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_KEEP_VISUAL_CHECK",
+          "missing": []
+        }
+      }
+    },
+    {
+      "qid": "q08",
+      "problem": {
+        "axis": "problem",
+        "verdict": "KEEP",
+        "originalAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q8_question-v2.png",
+        "activeAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q8_question-v2.png",
+        "defectDecision": "원본 기출 스캔을 확대 대조: 필수 지시선·보조선·점선·각호·직각·길이·라벨·음영을 그대로 담고 있어 보존.",
+        "capability": "NOT_REQUIRED",
+        "planPath": null,
+        "lint": {
+          "shallow": "N/A",
+          "full": "N/A"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_KEEP_ORIGINAL_SCAN",
+          "missing": []
+        }
+      },
+      "solution": {
+        "axis": "solution",
+        "verdict": "KEEP",
+        "originalAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q8_question-v2.png",
+        "activeAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q8-solution.svg",
+        "defectDecision": "해설 SVG를 원본 문제 스캔 및 문항·풀이 문장과 육안 비교. 수선 AH·30도·√3/3√3·전장 확인; 임의 흰 배경·불필요한 면 채움·원본 대비 정보 저하는 관찰되지 않음.",
+        "checkedFeatures": "수선 AH·30도·√3/3√3·전장",
+        "capability": "NOT_REQUIRED",
+        "planPath": null,
+        "lint": {
+          "shallow": "N/A",
+          "full": "N/A"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_KEEP_VISUAL_CHECK",
+          "missing": []
+        }
+      }
+    },
+    {
+      "qid": "q09",
+      "problem": {
+        "axis": "problem",
+        "verdict": "KEEP",
+        "originalAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q9_question-v2.png",
+        "activeAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q9_question-v2.png",
+        "defectDecision": "원본 기출 스캔을 확대 대조: 필수 지시선·보조선·점선·각호·직각·길이·라벨·음영을 그대로 담고 있어 보존.",
+        "capability": "NOT_REQUIRED",
+        "planPath": null,
+        "lint": {
+          "shallow": "N/A",
+          "full": "N/A"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_KEEP_ORIGINAL_SCAN",
+          "missing": []
+        }
+      },
+      "solution": {
+        "axis": "solution",
+        "verdict": "KEEP",
+        "originalAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q9_question-v2.png",
+        "activeAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q9-solution.svg",
+        "defectDecision": "해설 SVG를 원본 문제 스캔 및 문항·풀이 문장과 육안 비교. 60도 외각·직각 발·높이3√3 확인; 임의 흰 배경·불필요한 면 채움·원본 대비 정보 저하는 관찰되지 않음.",
+        "checkedFeatures": "60도 외각·직각 발·높이3√3",
+        "capability": "NOT_REQUIRED",
+        "planPath": null,
+        "lint": {
+          "shallow": "N/A",
+          "full": "N/A"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_KEEP_VISUAL_CHECK",
+          "missing": []
+        }
+      }
+    },
+    {
+      "qid": "q10",
+      "problem": {
+        "axis": "problem",
+        "verdict": "KEEP",
+        "originalAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q10_question-v2.png",
+        "activeAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q10_question-v2.png",
+        "defectDecision": "원본 기출 스캔을 확대 대조: 필수 지시선·보조선·점선·각호·직각·길이·라벨·음영을 그대로 담고 있어 보존.",
+        "capability": "NOT_REQUIRED",
+        "planPath": null,
+        "lint": {
+          "shallow": "N/A",
+          "full": "N/A"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_KEEP_ORIGINAL_SCAN",
+          "missing": []
+        }
+      },
+      "solution": {
+        "axis": "solution",
+        "verdict": "KEEP",
+        "originalAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q10_question-v2.png",
+        "activeAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q10-solution.svg",
+        "defectDecision": "해설 SVG를 원본 문제 스캔 및 문항·풀이 문장과 육안 비교. A각30도·두 직각·넓이 음영·20/15 치수 확인; 임의 흰 배경·불필요한 면 채움·원본 대비 정보 저하는 관찰되지 않음.",
+        "checkedFeatures": "A각30도·두 직각·넓이 음영·20/15 치수",
+        "capability": "NOT_REQUIRED",
+        "planPath": null,
+        "lint": {
+          "shallow": "N/A",
+          "full": "N/A"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_KEEP_VISUAL_CHECK",
+          "missing": []
+        }
+      }
+    },
+    {
+      "qid": "q11",
+      "problem": {
+        "axis": "problem",
+        "verdict": "EXEMPT_NO_ACTIVE_IMAGE",
+        "originalAsset": null,
+        "activeAsset": null,
+        "defectDecision": "원문에 별도 문제 이미지 참조가 없으므로 SVG 재작성 축이 아님.",
+        "capability": "NOT_REQUIRED",
+        "planPath": null,
+        "lint": {
+          "shallow": "N/A",
+          "full": "N/A"
+        },
+        "drawnFeatureParity": {
+          "status": "EXEMPT_NO_IMAGE",
+          "missing": []
+        }
+      },
+      "solution": {
+        "axis": "solution",
+        "verdict": "KEEP",
+        "originalAsset": null,
+        "activeAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q11-solution.svg",
+        "defectDecision": "해설 SVG를 원본 문제 스캔 및 문항·풀이 문장과 육안 비교. 원의 중심각120/60·치수6/10·점선 보조 현 확인; 임의 흰 배경·불필요한 면 채움·원본 대비 정보 저하는 관찰되지 않음.",
+        "checkedFeatures": "원의 중심각120/60·치수6/10·점선 보조 현",
+        "capability": "NOT_REQUIRED",
+        "planPath": null,
+        "lint": {
+          "shallow": "N/A",
+          "full": "N/A"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_KEEP_VISUAL_CHECK",
+          "missing": []
+        }
+      }
+    },
+    {
+      "qid": "q12",
+      "problem": {
+        "axis": "problem",
+        "verdict": "KEEP",
+        "originalAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q12_question-v2.png",
+        "activeAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q12_question-v2.png",
+        "defectDecision": "원본 기출 스캔을 확대 대조: 필수 지시선·보조선·점선·각호·직각·길이·라벨·음영을 그대로 담고 있어 보존.",
+        "capability": "NOT_REQUIRED",
+        "planPath": null,
+        "lint": {
+          "shallow": "N/A",
+          "full": "N/A"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_KEEP_ORIGINAL_SCAN",
+          "missing": []
+        }
+      },
+      "solution": {
+        "axis": "solution",
+        "verdict": "KEEP",
+        "originalAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q12_question-v2.png",
+        "activeAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q12-solution.svg",
+        "defectDecision": "해설 SVG를 원본 문제 스캔 및 문항·풀이 문장과 육안 비교. 직사각형 직각·BE⊥AC·x각호·8/2 치수 확인; 임의 흰 배경·불필요한 면 채움·원본 대비 정보 저하는 관찰되지 않음.",
+        "checkedFeatures": "직사각형 직각·BE⊥AC·x각호·8/2 치수",
+        "capability": "NOT_REQUIRED",
+        "planPath": null,
+        "lint": {
+          "shallow": "N/A",
+          "full": "N/A"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_KEEP_VISUAL_CHECK",
+          "missing": []
+        }
+      }
+    },
+    {
+      "qid": "q13",
+      "problem": {
+        "axis": "problem",
+        "verdict": "KEEP",
+        "originalAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q13_question-v2.png",
+        "activeAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q13_question-v2.png",
+        "defectDecision": "원본 기출 스캔을 확대 대조: 필수 지시선·보조선·점선·각호·직각·길이·라벨·음영을 그대로 담고 있어 보존.",
+        "capability": "NOT_REQUIRED",
+        "planPath": null,
+        "lint": {
+          "shallow": "N/A",
+          "full": "N/A"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_KEEP_ORIGINAL_SCAN",
+          "missing": []
+        }
+      },
+      "solution": {
+        "axis": "solution",
+        "verdict": "KEEP",
+        "originalAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q13_question-v2.png",
+        "activeAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q13-solution.svg",
+        "defectDecision": "해설 SVG를 원본 문제 스캔 및 문항·풀이 문장과 육안 비교. 평행 점선·45/67.5도·높이 8·전장 확인; 임의 흰 배경·불필요한 면 채움·원본 대비 정보 저하는 관찰되지 않음.",
+        "checkedFeatures": "평행 점선·45/67.5도·높이 8·전장",
+        "capability": "NOT_REQUIRED",
+        "planPath": null,
+        "lint": {
+          "shallow": "N/A",
+          "full": "N/A"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_KEEP_VISUAL_CHECK",
+          "missing": []
+        }
+      }
+    },
+    {
+      "qid": "q14",
+      "problem": {
+        "axis": "problem",
+        "verdict": "KEEP",
+        "originalAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q14_question-v2.png",
+        "activeAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q14_question-v2.png",
+        "defectDecision": "원본 기출 스캔을 확대 대조: 필수 지시선·보조선·점선·각호·직각·길이·라벨·음영을 그대로 담고 있어 보존.",
+        "capability": "NOT_REQUIRED",
+        "planPath": null,
+        "lint": {
+          "shallow": "N/A",
+          "full": "N/A"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_KEEP_ORIGINAL_SCAN",
+          "missing": []
+        }
+      },
+      "solution": {
+        "axis": "solution",
+        "verdict": "KEEP",
+        "originalAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q14_question-v2.png",
+        "activeAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q14-solution.svg",
+        "defectDecision": "해설 SVG를 원본 문제 스캔 및 문항·풀이 문장과 육안 비교. 원 안 현·두 접선·동등 눈금·서로 다른 세부 도형 확인; 임의 흰 배경·불필요한 면 채움·원본 대비 정보 저하는 관찰되지 않음.",
+        "checkedFeatures": "원 안 현·두 접선·동등 눈금·서로 다른 세부 도형",
+        "capability": "NOT_REQUIRED",
+        "planPath": null,
+        "lint": {
+          "shallow": "N/A",
+          "full": "N/A"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_KEEP_VISUAL_CHECK",
+          "missing": []
+        }
+      }
+    },
+    {
+      "qid": "q15",
+      "problem": {
+        "axis": "problem",
+        "verdict": "KEEP",
+        "originalAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q15_question-v2.png",
+        "activeAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q15_question-v2.png",
+        "defectDecision": "원본 기출 스캔을 확대 대조: 필수 지시선·보조선·점선·각호·직각·길이·라벨·음영을 그대로 담고 있어 보존.",
+        "capability": "NOT_REQUIRED",
+        "planPath": null,
+        "lint": {
+          "shallow": "N/A",
+          "full": "N/A"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_KEEP_ORIGINAL_SCAN",
+          "missing": []
+        }
+      },
+      "solution": {
+        "axis": "solution",
+        "verdict": "KEEP",
+        "originalAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q15_question-v2.png",
+        "activeAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q15-solution.svg",
+        "defectDecision": "해설 SVG를 원본 문제 스캔 및 문항·풀이 문장과 육안 비교. 현 CD·중점 M·직각·원 밖 15cm 치수 확인; 임의 흰 배경·불필요한 면 채움·원본 대비 정보 저하는 관찰되지 않음.",
+        "checkedFeatures": "현 CD·중점 M·직각·원 밖 15cm 치수",
+        "capability": "NOT_REQUIRED",
+        "planPath": null,
+        "lint": {
+          "shallow": "N/A",
+          "full": "N/A"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_KEEP_VISUAL_CHECK",
+          "missing": []
+        }
+      }
+    },
+    {
+      "qid": "q16",
+      "problem": {
+        "axis": "problem",
+        "verdict": "KEEP",
+        "originalAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q16_question-v2.png",
+        "activeAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q16_question-v2.png",
+        "defectDecision": "원본 기출 스캔을 확대 대조: 필수 지시선·보조선·점선·각호·직각·길이·라벨·음영을 그대로 담고 있어 보존.",
+        "capability": "NOT_REQUIRED",
+        "planPath": null,
+        "lint": {
+          "shallow": "N/A",
+          "full": "N/A"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_KEEP_ORIGINAL_SCAN",
+          "missing": []
+        }
+      },
+      "solution": {
+        "axis": "solution",
+        "verdict": "KEEP",
+        "originalAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q16_question-v2.png",
+        "activeAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q16-solution.svg",
+        "defectDecision": "해설 SVG를 원본 문제 스캔 및 문항·풀이 문장과 육안 비교. 중심 수선 두 개·110도·동등거리·내각 확인; 임의 흰 배경·불필요한 면 채움·원본 대비 정보 저하는 관찰되지 않음.",
+        "checkedFeatures": "중심 수선 두 개·110도·동등거리·내각",
+        "capability": "NOT_REQUIRED",
+        "planPath": null,
+        "lint": {
+          "shallow": "N/A",
+          "full": "N/A"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_KEEP_VISUAL_CHECK",
+          "missing": []
+        }
+      }
+    },
+    {
+      "qid": "q17",
+      "problem": {
+        "axis": "problem",
+        "verdict": "KEEP",
+        "originalAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q17_question-v2.png",
+        "activeAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q17_question-v2.png",
+        "defectDecision": "원본 기출 스캔을 확대 대조: 필수 지시선·보조선·점선·각호·직각·길이·라벨·음영을 그대로 담고 있어 보존.",
+        "capability": "NOT_REQUIRED",
+        "planPath": null,
+        "lint": {
+          "shallow": "N/A",
+          "full": "N/A"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_KEEP_ORIGINAL_SCAN",
+          "missing": []
+        }
+      },
+      "solution": {
+        "axis": "solution",
+        "verdict": "KEEP",
+        "originalAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q17_question-v2.png",
+        "activeAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q17-solution.svg",
+        "defectDecision": "해설 SVG를 원본 문제 스캔 및 문항·풀이 문장과 육안 비교. 접선 두 개·P각60도·길이6·면적 강조 확인; 임의 흰 배경·불필요한 면 채움·원본 대비 정보 저하는 관찰되지 않음.",
+        "checkedFeatures": "접선 두 개·P각60도·길이6·면적 강조",
+        "capability": "NOT_REQUIRED",
+        "planPath": null,
+        "lint": {
+          "shallow": "N/A",
+          "full": "N/A"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_KEEP_VISUAL_CHECK",
+          "missing": []
+        }
+      }
+    },
+    {
+      "qid": "q18",
+      "problem": {
+        "axis": "problem",
+        "verdict": "KEEP",
+        "originalAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q18_question-v2.png",
+        "activeAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q18_question-v2.png",
+        "defectDecision": "원본 기출 스캔을 확대 대조: 필수 지시선·보조선·점선·각호·직각·길이·라벨·음영을 그대로 담고 있어 보존.",
+        "capability": "NOT_REQUIRED",
+        "planPath": null,
+        "lint": {
+          "shallow": "N/A",
+          "full": "N/A"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_KEEP_ORIGINAL_SCAN",
+          "missing": []
+        }
+      },
+      "solution": {
+        "axis": "solution",
+        "verdict": "KEEP",
+        "originalAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q18_question-v2.png",
+        "activeAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q18-solution.svg",
+        "defectDecision": "해설 SVG를 원본 문제 스캔 및 문항·풀이 문장과 육안 비교. 내접원·네 변 접점·동등 눈금·4/6/9 치수 확인; 임의 흰 배경·불필요한 면 채움·원본 대비 정보 저하는 관찰되지 않음.",
+        "checkedFeatures": "내접원·네 변 접점·동등 눈금·4/6/9 치수",
+        "capability": "NOT_REQUIRED",
+        "planPath": null,
+        "lint": {
+          "shallow": "N/A",
+          "full": "N/A"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_KEEP_VISUAL_CHECK",
+          "missing": []
+        }
+      }
+    },
+    {
+      "qid": "q19",
+      "problem": {
+        "axis": "problem",
+        "verdict": "KEEP",
+        "originalAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q19_question-v2.png",
+        "activeAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q19_question-v2.png",
+        "defectDecision": "원본 기출 스캔을 확대 대조: 필수 지시선·보조선·점선·각호·직각·길이·라벨·음영을 그대로 담고 있어 보존.",
+        "capability": "NOT_REQUIRED",
+        "planPath": null,
+        "lint": {
+          "shallow": "N/A",
+          "full": "N/A"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_KEEP_ORIGINAL_SCAN",
+          "missing": []
+        }
+      },
+      "solution": {
+        "axis": "solution",
+        "verdict": "KEEP",
+        "originalAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q19_question-v2.png",
+        "activeAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q19-solution.svg",
+        "defectDecision": "해설 SVG를 원본 문제 스캔 및 문항·풀이 문장과 육안 비교. 반원·접선·높이3/4·2r 확인; 임의 흰 배경·불필요한 면 채움·원본 대비 정보 저하는 관찰되지 않음.",
+        "checkedFeatures": "반원·접선·높이3/4·2r",
+        "capability": "NOT_REQUIRED",
+        "planPath": null,
+        "lint": {
+          "shallow": "N/A",
+          "full": "N/A"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_KEEP_VISUAL_CHECK",
+          "missing": []
+        }
+      }
+    },
+    {
+      "qid": "q20",
+      "problem": {
+        "axis": "problem",
+        "verdict": "KEEP",
+        "originalAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q20_question-v2.png",
+        "activeAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q20_question-v2.png",
+        "defectDecision": "원본 기출 스캔을 확대 대조: 필수 지시선·보조선·점선·각호·직각·길이·라벨·음영을 그대로 담고 있어 보존.",
+        "capability": "NOT_REQUIRED",
+        "planPath": null,
+        "lint": {
+          "shallow": "N/A",
+          "full": "N/A"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_KEEP_ORIGINAL_SCAN",
+          "missing": []
+        }
+      },
+      "solution": {
+        "axis": "solution",
+        "verdict": "KEEP",
+        "originalAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q20_question-v2.png",
+        "activeAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q20-solution.svg",
+        "defectDecision": "해설 SVG를 원본 문제 스캔 및 문항·풀이 문장과 육안 비교. 동심원·현·수선·반지름6/10·동등 표식 확인; 임의 흰 배경·불필요한 면 채움·원본 대비 정보 저하는 관찰되지 않음.",
+        "checkedFeatures": "동심원·현·수선·반지름6/10·동등 표식",
+        "capability": "NOT_REQUIRED",
+        "planPath": null,
+        "lint": {
+          "shallow": "N/A",
+          "full": "N/A"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_KEEP_VISUAL_CHECK",
+          "missing": []
+        }
+      }
+    },
+    {
+      "qid": "q21",
+      "problem": {
+        "axis": "problem",
+        "verdict": "KEEP",
+        "originalAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q21_question-v2.png",
+        "activeAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q21_question-v2.png",
+        "defectDecision": "원본 기출 스캔을 확대 대조: 필수 지시선·보조선·점선·각호·직각·길이·라벨·음영을 그대로 담고 있어 보존.",
+        "capability": "NOT_REQUIRED",
+        "planPath": null,
+        "lint": {
+          "shallow": "N/A",
+          "full": "N/A"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_KEEP_ORIGINAL_SCAN",
+          "missing": []
+        }
+      },
+      "solution": {
+        "axis": "solution",
+        "verdict": "KEEP",
+        "originalAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q21_question-v2.png",
+        "activeAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q21-solution.svg",
+        "defectDecision": "해설 SVG를 원본 문제 스캔 및 문항·풀이 문장과 육안 비교. 정육면체 EG 단면·점선 은선·모서리5 확인; 임의 흰 배경·불필요한 면 채움·원본 대비 정보 저하는 관찰되지 않음.",
+        "checkedFeatures": "정육면체 EG 단면·점선 은선·모서리5",
+        "capability": "NOT_REQUIRED",
+        "planPath": null,
+        "lint": {
+          "shallow": "N/A",
+          "full": "N/A"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_KEEP_VISUAL_CHECK",
+          "missing": []
+        }
+      }
+    },
+    {
+      "qid": "q22",
+      "problem": {
+        "axis": "problem",
+        "verdict": "KEEP",
+        "originalAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q22_question-v2.png",
+        "activeAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q22_question-v2.png",
+        "defectDecision": "원본 기출 스캔을 확대 대조: 필수 지시선·보조선·점선·각호·직각·길이·라벨·음영을 그대로 담고 있어 보존.",
+        "capability": "NOT_REQUIRED",
+        "planPath": null,
+        "lint": {
+          "shallow": "N/A",
+          "full": "N/A"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_KEEP_ORIGINAL_SCAN",
+          "missing": []
+        }
+      },
+      "solution": {
+        "axis": "solution",
+        "verdict": "KEEP",
+        "originalAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q22_question-v2.png",
+        "activeAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q22-solution.svg",
+        "defectDecision": "해설 SVG를 원본 문제 스캔 및 문항·풀이 문장과 육안 비교. 시선 30/45도·20m·높이h·보조선 확인; 임의 흰 배경·불필요한 면 채움·원본 대비 정보 저하는 관찰되지 않음.",
+        "checkedFeatures": "시선 30/45도·20m·높이h·보조선",
+        "capability": "NOT_REQUIRED",
+        "planPath": null,
+        "lint": {
+          "shallow": "N/A",
+          "full": "N/A"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_KEEP_VISUAL_CHECK",
+          "missing": []
+        }
+      }
+    },
+    {
+      "qid": "q23",
+      "problem": {
+        "axis": "problem",
+        "verdict": "KEEP",
+        "originalAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q23_question-v2.png",
+        "activeAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q23_question-v2.png",
+        "defectDecision": "원본 기출 스캔을 확대 대조: 필수 지시선·보조선·점선·각호·직각·길이·라벨·음영을 그대로 담고 있어 보존.",
+        "capability": "NOT_REQUIRED",
+        "planPath": null,
+        "lint": {
+          "shallow": "N/A",
+          "full": "N/A"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_KEEP_ORIGINAL_SCAN",
+          "missing": []
+        }
+      },
+      "solution": {
+        "axis": "solution",
+        "verdict": "KEEP",
+        "originalAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q23_question-v2.png",
+        "activeAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q23-solution.svg",
+        "defectDecision": "해설 SVG를 원본 문제 스캔 및 문항·풀이 문장과 육안 비교. 현 AB·OM 직각·반지름·3/6 길이 확인; 임의 흰 배경·불필요한 면 채움·원본 대비 정보 저하는 관찰되지 않음.",
+        "checkedFeatures": "현 AB·OM 직각·반지름·3/6 길이",
+        "capability": "NOT_REQUIRED",
+        "planPath": null,
+        "lint": {
+          "shallow": "N/A",
+          "full": "N/A"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_KEEP_VISUAL_CHECK",
+          "missing": []
+        }
+      }
+    },
+    {
+      "qid": "q24",
+      "problem": {
+        "axis": "problem",
+        "verdict": "KEEP",
+        "originalAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q24_question-v2.png",
+        "activeAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q24_question-v2.png",
+        "defectDecision": "원본 기출 스캔을 확대 대조: 필수 지시선·보조선·점선·각호·직각·길이·라벨·음영을 그대로 담고 있어 보존.",
+        "capability": "NOT_REQUIRED",
+        "planPath": null,
+        "lint": {
+          "shallow": "N/A",
+          "full": "N/A"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_KEEP_ORIGINAL_SCAN",
+          "missing": []
+        }
+      },
+      "solution": {
+        "axis": "solution",
+        "verdict": "KEEP",
+        "originalAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q24_question-v2.png",
+        "activeAsset": "archive/assets/images/26_팔마중_2학기_중간_중3_기출/q24-solution.svg",
+        "defectDecision": "해설 SVG를 원본 문제 스캔 및 문항·풀이 문장과 육안 비교. 접원·사각형·동등 눈금·6/9/12·점선 확인; 임의 흰 배경·불필요한 면 채움·원본 대비 정보 저하는 관찰되지 않음.",
+        "checkedFeatures": "접원·사각형·동등 눈금·6/9/12·점선",
+        "capability": "NOT_REQUIRED",
+        "planPath": null,
+        "lint": {
+          "shallow": "N/A",
+          "full": "N/A"
+        },
+        "drawnFeatureParity": {
+          "status": "PASS_KEEP_VISUAL_CHECK",
+          "missing": []
+        }
+      }
+    }
+  ]
+}

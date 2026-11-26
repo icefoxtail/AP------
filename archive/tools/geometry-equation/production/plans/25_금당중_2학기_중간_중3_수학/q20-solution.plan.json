@@ -1,0 +1,523 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "N",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "neg",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "3"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "2"
+            },
+            {
+              "kind": "expression",
+              "op": "neg",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "div",
+                  "args": [
+                    {
+                      "kind": "expression",
+                      "op": "mul",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        },
+                        {
+                          "kind": "expression",
+                          "op": "sqrt",
+                          "args": [
+                            {
+                              "kind": "integer",
+                              "value": "3"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "expression",
+              "op": "neg",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "N",
+    "C",
+    "D",
+    "M",
+    "A",
+    "B"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "circ"
+  ],
+  "displaySegments": [
+    {
+      "id": "sCN",
+      "refs": [
+        "C",
+        "N"
+      ]
+    },
+    {
+      "id": "sND",
+      "refs": [
+        "N",
+        "D"
+      ]
+    },
+    {
+      "id": "sAM",
+      "refs": [
+        "A",
+        "M"
+      ]
+    },
+    {
+      "id": "sMB",
+      "refs": [
+        "M",
+        "B"
+      ]
+    },
+    {
+      "id": "sON",
+      "refs": [
+        "O",
+        "N"
+      ]
+    },
+    {
+      "id": "sOM",
+      "refs": [
+        "O",
+        "M"
+      ]
+    },
+    {
+      "id": "sOD",
+      "refs": [
+        "O",
+        "D"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ],
+      "dashed": true
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rightN",
+      "refs": [
+        "O",
+        "N",
+        "D"
+      ]
+    },
+    {
+      "id": "rightM",
+      "refs": [
+        "O",
+        "M",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "NOM150",
+        "refs": [
+          "N",
+          "O",
+          "M"
+        ],
+        "value": 150,
+        "label": "150",
+        "style": "ARC",
+        "factRole": "GIVEN",
+        "ring": 3
+      },
+      {
+        "id": "NOD60",
+        "refs": [
+          "N",
+          "O",
+          "D"
+        ],
+        "value": 60,
+        "label": "60",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "MOB60",
+        "refs": [
+          "M",
+          "O",
+          "B"
+        ],
+        "value": 60,
+        "label": "60",
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "DOB30",
+        "refs": [
+          "D",
+          "O",
+          "B"
+        ],
+        "value": 30,
+        "label": "30",
+        "style": "ARC",
+        "factRole": "GIVEN",
+        "ring": 2
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "centerDistances",
+        "count": 1,
+        "segments": [
+          "sON",
+          "sOM"
+        ]
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "ON3",
+        "ownerSegment": "sON",
+        "text": "3",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "OM3",
+        "ownerSegment": "sOM",
+        "text": "3",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "OD6",
+        "ownerSegment": "sOD",
+        "text": "6",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "NDval",
+        "ownerSegment": "sND",
+        "text": "3sqrt(3)",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "MBval",
+        "ownerSegment": "sMB",
+        "text": "3sqrt(3)",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "regions": [
+      {
+        "id": "shadedRight",
+        "fill": "MEDIUM",
+        "shapes": [
+          {
+            "loop": {
+              "start": "O",
+              "steps": [
+                {
+                  "to": "N"
+                },
+                {
+                  "to": "D"
+                },
+                {
+                  "to": "B",
+                  "arc": {
+                    "center": "O",
+                    "side": "MINOR"
+                  }
+                },
+                {
+                  "to": "M"
+                },
+                {
+                  "to": "O"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 680,
+    "height": 520
+  },
+  "caption": "원 O에서 OM=ON=3, ∠NOM=150도인 도형의 오른쪽 음영을 정확한 원호 경계로 보인다.",
+  "accessibilityDescription": "반지름 6의 원에서 위 현 CD와 아래 현 AB의 수선발 N,M은 중심에서 거리3이다. 두 직각과 150도, 오른쪽 어두운 원호 영역을 표시한다.",
+  "sourceQuote": "다음 그림과 같이 반지름의 길이가 $6$인 원 $O$에서 $\\ov",
+  "sourceConditions": [
+    {
+      "id": "condition1",
+      "condition": "원 반지름6, OM=ON=3, ∠NOM=150도.",
+      "mappedTo": [
+        "circ",
+        "ON3",
+        "OM3",
+        "OD6",
+        "centerDistances",
+        "NOM150"
+      ]
+    },
+    {
+      "id": "condition2",
+      "condition": "중심 수선 ON⊥CD, OM⊥AB이고 양쪽 직각삼각형을 사용한다.",
+      "mappedTo": [
+        "rightN",
+        "rightM",
+        "NOD60",
+        "MOB60",
+        "NDval",
+        "MBval"
+      ]
+    },
+    {
+      "id": "condition3",
+      "condition": "어두운 부분은 ON-D-원호 DB-BM-MO로 둘러싸인 영역이다.",
+      "mappedTo": [
+        "shadedRight",
+        "sON",
+        "sND",
+        "sMB",
+        "sOM",
+        "DOB30"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "기존 q20 해설 SVG에는 문제에서 요구한 오른쪽 어두운 부분이 통째로 빠짐. 원호 D→B와 선분으로 경계를 닫는 실제 region으로 복원."
+  ]
+}
