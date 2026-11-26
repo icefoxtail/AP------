@@ -1,0 +1,39 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "2" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "expression", "op": "mul", "args": [{ "kind": "integer", "value": "4" }, { "kind": "expression", "op": "sqrt", "args": [{ "kind": "integer", "value": "2" }] }] }] }, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displayPoints": ["A", "B", "C"],
+  "displaySegments": [
+    { "id": "sAB", "refs": ["A", "B"] },
+    { "id": "sAC", "refs": ["A", "C"] },
+    { "id": "sBC", "refs": ["B", "C"] }
+  ],
+  "rightAngles": [{ "id": "rA", "refs": ["C", "A", "B"] }],
+  "planeMarks": {
+    "dimensions": [
+      { "id": "dBase", "from": "A", "to": "B", "label": "2", "side": "BELOW", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "dHyp", "from": "B", "to": "C", "label": "6", "side": "RIGHT", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "dHeight", "from": "A", "to": "C", "label": "4sqrt(2)", "side": "LEFT", "factRole": "CONCLUSION" }
+    ]
+  },
+  "coordinateCanvas": { "width": 480, "height": 400 },
+  "hiddenPointNames": ["A", "B", "C"],
+  "hiddenPointStyle": "NONE",
+  "caption": "전개식에서 a=4, b=2이므로 밑변 a−b=2, 빗변 a+b=6이다. 직각삼각형의 높이는 √(6²−2²)=4√2이며 넓이는 4√2이다.",
+  "accessibilityDescription": "왼쪽 아래가 직각인 삼각형이다. 아래 변은 2, 오른쪽으로 기울어진 빗변은 6, 왼쪽 높이는 피타고라스 정리로 얻은 4루트 2로 표시되어 있다.",
+  "sourceConditions": [
+    { "id": "w23-1", "condition": "(x+a)(x−2)=x²+bx−8에서 a=4,b=2", "mappedTo": ["mathPlan.nodes[B]", "planeMarks.dimensions[dBase]"] },
+    { "id": "w23-2", "condition": "원문 직각삼각형의 밑변 a−b=2, 빗변 a+b=6, 직각은 왼쪽 아래", "mappedTo": ["displaySegments", "rightAngles", "planeMarks.dimensions[dHyp]"] },
+    { "id": "w23-3", "condition": "높이 √(6²−2²)=4√2, 넓이 (2×4√2)/2=4√2", "mappedTo": ["mathPlan.nodes[C]", "planeMarks.dimensions[dHeight]"] }
+  ],
+  "newVisualInformation": ["문제 그림의 두 변을 실제 유도값 2, 6으로 읽고 수직 높이 4√2가 피타고라스 정리에서 나옴을 보인다."]
+}
