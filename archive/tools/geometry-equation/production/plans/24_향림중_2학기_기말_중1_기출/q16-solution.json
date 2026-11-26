@@ -1,0 +1,13 @@
+{
+  "capability":"solid-figure-v1",
+  "caption":"옆면 직사각형의 가로는 6π cm, 세로는 8 cm이므로 밑면의 반지름은 3 cm이다.",
+  "accessibilityDescription":"원기둥의 전개도에 가로 길이 6파이 센티미터, 높이 8센티미터인 직사각형과 반지름 3센티미터인 원 두 개가 붙어 있다. 접히는 선은 점선이며 불필요한 면 색칠은 없다.",
+  "sourceQuote":"오른쪽 그림의 직사각형은 높이가 8 cm인 원기둥의 옆면을 펼친 것이다.",
+  "sourceConditions":[
+    {"id":"c1","condition":"옆면 직사각형의 가로는 밑면 둘레인 6π cm이다.","mappedTo":["net.radius","net.dims[0]"]},
+    {"id":"c2","condition":"옆면 직사각형의 세로는 원기둥 높이 8 cm이다.","mappedTo":["net.height","net.dims[1]"]}
+  ],
+  "newVisualInformation":["원본 직사각형의 길이와 높이 지시선을 전개도의 실제 치수선으로 보존한다.","밑면 원 두 개와의 접는 선을 명확히 구분하고 옅은 면 채움을 제거한다."],
+  "unit":"cm",
+  "net":{"kind":"CYLINDER","radius":3,"height":8,"dims":[{"part":"rect-width"},{"part":"rect-height"},{"part":"radius-top"}]}
+}
