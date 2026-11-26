@@ -1,0 +1,274 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-8660254037844",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "9848077530122",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-1736481776669",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 610,
+    "height": 440
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sOC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    }
+  ],
+  "displayCircles": [
+    "circ"
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "radii",
+        "count": 2,
+        "segments": [
+          "sOA",
+          "sOB",
+          "sOC"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "id": "aBAO",
+        "refs": [
+          "B",
+          "A",
+          "O"
+        ],
+        "value": 15,
+        "style": "ARC",
+        "arcs": 1,
+        "label": "15°"
+      },
+      {
+        "id": "aACO",
+        "refs": [
+          "A",
+          "C",
+          "O"
+        ],
+        "value": 40,
+        "style": "ARC",
+        "arcs": 1,
+        "label": "40°"
+      },
+      {
+        "id": "aAOB",
+        "refs": [
+          "A",
+          "O",
+          "B"
+        ],
+        "value": 150,
+        "style": "ARC",
+        "arcs": 1,
+        "label": "150°"
+      },
+      {
+        "id": "aAOC",
+        "refs": [
+          "A",
+          "O",
+          "C"
+        ],
+        "value": 100,
+        "style": "ARC",
+        "arcs": 1,
+        "label": "100°"
+      },
+      {
+        "id": "aBOC",
+        "refs": [
+          "B",
+          "O",
+          "C"
+        ],
+        "value": 110,
+        "style": "ARC",
+        "arcs": 1,
+        "label": "x=110°"
+      }
+    ]
+  },
+  "caption": "외심의 같은 반지름에서 중심각 150°, 100°, 최종 110°를 도출",
+  "accessibilityDescription": "외심 O에서 세 꼭짓점으로 이은 반지름에 같은 눈금이 붙어 있다. A의 15도, C의 40도, O의 150도, 100도, 구하는 110도는 각 호로 표시된다.",
+  "sourceConditions": [
+    {
+      "id": "condition1",
+      "condition": "O는 외심이므로 OA=OB=OC",
+      "mappedTo": [
+        "radii"
+      ],
+      "sourceQuote": "그림에서 점 $O$가 $\\triangle ABC$의 외심일"
+    },
+    {
+      "id": "condition2",
+      "condition": "주어진 ∠BAO=15°, ∠ACO=40°",
+      "mappedTo": [
+        "aBAO",
+        "aACO"
+      ],
+      "sourceQuote": "그림에서 점 $O$가 $\\triangle ABC$의 외심일"
+    },
+    {
+      "id": "condition3",
+      "condition": "계산된 중심각 150°,100°,110°",
+      "mappedTo": [
+        "aAOB",
+        "aAOC",
+        "aBOC"
+      ],
+      "sourceQuote": "그림에서 점 $O$가 $\\triangle ABC$의 외심일"
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 도형과 풀이에서 지정된 점·선·각·길이를 실제 엔진 필드에 1:1 결속한다.",
+    "기본 배경과 불필요한 면 채움을 만들지 않고 필수 표식만 명확하게 표시한다."
+  ]
+}

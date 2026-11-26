@@ -1,0 +1,277 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 610,
+    "height": 440
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "O"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAO",
+      "refs": [
+        "A",
+        "O"
+      ]
+    },
+    {
+      "id": "sOC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "sBO",
+      "refs": [
+        "B",
+        "O"
+      ]
+    },
+    {
+      "id": "sOD",
+      "refs": [
+        "O",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "parallels": [
+      {
+        "id": "parallelsADBC",
+        "count": 1,
+        "segments": [
+          "sDA",
+          "sBC"
+        ]
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "halfAC",
+        "count": 1,
+        "segments": [
+          "sAO",
+          "sOC"
+        ]
+      },
+      {
+        "id": "halfBD",
+        "count": 2,
+        "segments": [
+          "sBO",
+          "sOD"
+        ]
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dAD",
+        "from": "A",
+        "to": "D",
+        "label": "3x−4",
+        "side": "ABOVE",
+        "style": "INLINE"
+      },
+      {
+        "id": "dBC",
+        "from": "B",
+        "to": "C",
+        "label": "x+2",
+        "side": "BELOW",
+        "style": "INLINE"
+      },
+      {
+        "id": "dBD",
+        "from": "B",
+        "to": "D",
+        "label": "4y+3",
+        "side": "RIGHT",
+        "style": "INLINE"
+      },
+      {
+        "id": "dOD",
+        "from": "O",
+        "to": "D",
+        "label": "y/2+3",
+        "side": "LEFT",
+        "style": "INLINE"
+      }
+    ]
+  },
+  "caption": "평행사변형의 마주 보는 변 3x−4=x+2, 대각선 BD의 양쪽 반쪽이 같음",
+  "accessibilityDescription": "AD에 3x−4, BC에 x+2 길이가 붙고 양 변이 평행하다. BD의 전체 길이 4y+3과 OD의 길이 y/2+3이 실제 대각선의 지시선으로 표시된다. O를 중심으로 두 대각선의 반쪽 눈금이 각각 일치한다.",
+  "sourceConditions": [
+    {
+      "id": "condition1",
+      "condition": "AD=BC ⇒ 3x−4=x+2",
+      "mappedTo": [
+        "dAD",
+        "dBC",
+        "parallelsADBC"
+      ],
+      "sourceQuote": "[서·논술형 4] 그림과 같은 평행사변형 $ABCD$에서 "
+    },
+    {
+      "id": "condition2",
+      "condition": "BO=OD, AO=OC",
+      "mappedTo": [
+        "halfBD",
+        "halfAC"
+      ],
+      "sourceQuote": "[서·논술형 4] 그림과 같은 평행사변형 $ABCD$에서 "
+    },
+    {
+      "id": "condition3",
+      "condition": "BD=4y+3, OD=y/2+3",
+      "mappedTo": [
+        "dBD",
+        "dOD"
+      ],
+      "sourceQuote": "[서·논술형 4] 그림과 같은 평행사변형 $ABCD$에서 "
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 도형과 풀이에서 지정된 점·선·각·길이를 실제 엔진 필드에 1:1 결속한다.",
+    "기본 배경과 불필요한 면 채움을 만들지 않고 필수 표식만 명확하게 표시한다."
+  ]
+}

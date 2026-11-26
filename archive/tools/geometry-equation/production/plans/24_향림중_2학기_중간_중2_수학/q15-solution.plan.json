@@ -1,0 +1,263 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "5656854249492",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-5656854249492",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-2828427124746",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2828427124746",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 610,
+    "height": 440
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "O"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sOC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    }
+  ],
+  "displayCircles": [
+    "circ"
+  ],
+  "rightAngles": [
+    {
+      "id": "rC",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "isosceles",
+        "count": 1,
+        "segments": [
+          "sAC",
+          "sBC"
+        ]
+      },
+      {
+        "id": "radii",
+        "count": 2,
+        "segments": [
+          "sOA",
+          "sOB",
+          "sOC"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "id": "aBAC",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 45,
+        "style": "ARC",
+        "arcs": 1,
+        "label": "45°"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dAB",
+        "from": "A",
+        "to": "B",
+        "label": "8",
+        "side": "ABOVE",
+        "style": "INLINE"
+      },
+      {
+        "id": "dOA",
+        "from": "O",
+        "to": "A",
+        "label": "4",
+        "side": "RIGHT",
+        "style": "INLINE"
+      }
+    ]
+  },
+  "caption": "반지름 4인 외접원, 빗변 AB=8인 직각이등변삼각형",
+  "accessibilityDescription": "C의 직각 정사각형, A의 45도 호, 두 직각변의 동일 눈금, 외심 O에서 세 점까지의 반지름 4와 지름 AB=8이 선분에 부착된다. 원과 삼각형 내부는 채우지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "condition1",
+      "condition": "∠C=90°, ∠A=45°",
+      "mappedTo": [
+        "rC",
+        "aBAC"
+      ],
+      "sourceQuote": "그림에서 $\\triangle ABC$는 $\\angle C="
+    },
+    {
+      "id": "condition2",
+      "condition": "외접원 넓이 16π ⇒ 반지름 4",
+      "mappedTo": [
+        "dOA",
+        "radii"
+      ],
+      "sourceQuote": "그림에서 $\\triangle ABC$는 $\\angle C="
+    },
+    {
+      "id": "condition3",
+      "condition": "빗변 AB=8, AC=BC",
+      "mappedTo": [
+        "dAB",
+        "isosceles"
+      ],
+      "sourceQuote": "그림에서 $\\triangle ABC$는 $\\angle C="
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 도형과 풀이에서 지정된 점·선·각·길이를 실제 엔진 필드에 1:1 결속한다.",
+    "기본 배경과 불필요한 면 채움을 만들지 않고 필수 표식만 명확하게 표시한다."
+  ]
+}

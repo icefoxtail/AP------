@@ -1,0 +1,296 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1819851171331",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "11819851171331",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1819851171331",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "10650073386926",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1786061951567",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 610,
+    "height": 440
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCF",
+      "refs": [
+        "C",
+        "F"
+      ]
+    },
+    {
+      "id": "sFD",
+      "refs": [
+        "F",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "sAF",
+      "refs": [
+        "A",
+        "F"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rE",
+      "refs": [
+        "A",
+        "E",
+        "B"
+      ]
+    },
+    {
+      "id": "rF",
+      "refs": [
+        "A",
+        "F",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "parallels": [
+      {
+        "id": "ABCDparallel",
+        "count": 1,
+        "segments": [
+          "sAB",
+          "sFD"
+        ]
+      },
+      {
+        "id": "horizontalparallel",
+        "count": 2,
+        "segments": [
+          "sDA",
+          "sBC"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "id": "aBAE",
+        "refs": [
+          "B",
+          "A",
+          "E"
+        ],
+        "value": 20,
+        "style": "ARC",
+        "arcs": 1,
+        "label": "20°"
+      },
+      {
+        "id": "aEAF",
+        "refs": [
+          "E",
+          "A",
+          "F"
+        ],
+        "value": 70,
+        "style": "ARC",
+        "arcs": 1,
+        "label": "70°"
+      }
+    ]
+  },
+  "caption": "평행사변형 AB∥CD, 두 수선 AE⊥BC와 AF⊥CD에서 ∠EAF=70°",
+  "accessibilityDescription": "E와 F에서 직각을 선에 직접 그린다. A에서 AB와 AE 사이 20도 호, AE와 AF 사이 70도 호를 표시한다. 두 쌍의 평행 표시를 실제 대응 변에 붙인다.",
+  "sourceConditions": [
+    {
+      "id": "condition1",
+      "condition": "AE⊥BC, AF⊥CD",
+      "mappedTo": [
+        "rE",
+        "rF",
+        "sAE",
+        "sAF"
+      ],
+      "sourceQuote": "그림에서 사각형 $ABCD$는 평행사변형이다. 점 $A$에"
+    },
+    {
+      "id": "condition2",
+      "condition": "AB∥CD, AD∥BC",
+      "mappedTo": [
+        "ABCDparallel",
+        "horizontalparallel"
+      ],
+      "sourceQuote": "그림에서 사각형 $ABCD$는 평행사변형이다. 점 $A$에"
+    },
+    {
+      "id": "condition3",
+      "condition": "∠BAE=20°, ∠EAF=70°",
+      "mappedTo": [
+        "aBAE",
+        "aEAF"
+      ],
+      "sourceQuote": "그림에서 사각형 $ABCD$는 평행사변형이다. 점 $A$에"
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 도형과 풀이에서 지정된 점·선·각·길이를 실제 엔진 필드에 1:1 결속한다.",
+    "기본 배경과 불필요한 면 채움을 만들지 않고 필수 표식만 명확하게 표시한다."
+  ]
+}
