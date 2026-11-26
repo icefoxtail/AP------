@@ -80,6 +80,7 @@ if (extensionKeys.status !== 0 || extensionKeys.error) process.exit(1);
 // original three-minute wall-clock ceiling for the entire runtime test suite.
 const timingFiles = new Set([
   'tests/archive2-compose-performance.test.cjs',
+  'tests/archive2-key-resolver.test.js',
   'tests/archive2-quick-pools.test.js',
 ]);
 const testGroups = [
