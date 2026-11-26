@@ -1,0 +1,377 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "rational",
+              "numerator": "5773502691896",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "13660254037844",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3660254037844",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 610,
+    "height": 440
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sCE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "sCF",
+      "refs": [
+        "C",
+        "F"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rA",
+      "refs": [
+        "B",
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "isosceles",
+        "count": 1,
+        "segments": [
+          "sAB",
+          "sAC"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "id": "aCBE",
+        "refs": [
+          "C",
+          "B",
+          "E"
+        ],
+        "value": 15,
+        "style": "ARC",
+        "arcs": 1,
+        "noLabel": true,
+        "equalGroup": 1
+      },
+      {
+        "id": "aEBD",
+        "refs": [
+          "E",
+          "B",
+          "D"
+        ],
+        "value": 15,
+        "style": "ARC",
+        "arcs": 1,
+        "noLabel": true,
+        "equalGroup": 1
+      },
+      {
+        "id": "aDBA",
+        "refs": [
+          "D",
+          "B",
+          "A"
+        ],
+        "value": 15,
+        "style": "ARC",
+        "arcs": 1,
+        "noLabel": true,
+        "equalGroup": 1
+      },
+      {
+        "id": "aACD",
+        "refs": [
+          "A",
+          "C",
+          "D"
+        ],
+        "value": 45,
+        "style": "ARC",
+        "arcs": 2,
+        "noLabel": true,
+        "equalGroup": 2
+      },
+      {
+        "id": "aDCE",
+        "refs": [
+          "D",
+          "C",
+          "E"
+        ],
+        "value": 45,
+        "style": "ARC",
+        "arcs": 2,
+        "noLabel": true,
+        "equalGroup": 2
+      },
+      {
+        "id": "aECF",
+        "refs": [
+          "E",
+          "C",
+          "F"
+        ],
+        "value": 45,
+        "style": "ARC",
+        "arcs": 2,
+        "noLabel": true,
+        "equalGroup": 2
+      },
+      {
+        "id": "aBDC",
+        "refs": [
+          "B",
+          "D",
+          "C"
+        ],
+        "value": 60,
+        "style": "ARC",
+        "arcs": 1,
+        "label": "60°"
+      },
+      {
+        "id": "aBEC",
+        "refs": [
+          "B",
+          "E",
+          "C"
+        ],
+        "value": 30,
+        "style": "ARC",
+        "arcs": 1,
+        "label": "30°"
+      }
+    ]
+  },
+  "caption": "B의 45° 삼등분과 C의 외각 135° 삼등분에서 ∠BDC=60°, ∠BEC=30°",
+  "accessibilityDescription": "A의 직각, AB와 AC의 같은 길이 표식, B의 15°씩 세 호, C의 외각 45°씩 세 호, 교차점 D와 E의 60°와 30° 각 호가 실제 선에 맞물린다. 내부에 불필요한 면 채움은 없다.",
+  "sourceConditions": [
+    {
+      "id": "condition1",
+      "condition": "AB=AC, ∠A=90°",
+      "mappedTo": [
+        "isosceles",
+        "rA"
+      ],
+      "sourceQuote": "[서·논술형 3] 그림과 같이 $AB=AC$, $\\angl"
+    },
+    {
+      "id": "condition2",
+      "condition": "∠B=45°의 삼등분선",
+      "mappedTo": [
+        "sBD",
+        "sBE",
+        "aCBE",
+        "aEBD",
+        "aDBA"
+      ],
+      "sourceQuote": "[서·논술형 3] 그림과 같이 $AB=AC$, $\\angl"
+    },
+    {
+      "id": "condition3",
+      "condition": "∠ACF=135°의 삼등분선",
+      "mappedTo": [
+        "sCE",
+        "sCD",
+        "sCF",
+        "aACD",
+        "aDCE",
+        "aECF"
+      ],
+      "sourceQuote": "[서·논술형 3] 그림과 같이 $AB=AC$, $\\angl"
+    },
+    {
+      "id": "condition4",
+      "condition": "∠BDC=60°, ∠BEC=30°",
+      "mappedTo": [
+        "aBDC",
+        "aBEC"
+      ],
+      "sourceQuote": "[서·논술형 3] 그림과 같이 $AB=AC$, $\\angl"
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 도형과 풀이에서 지정된 점·선·각·길이를 실제 엔진 필드에 1:1 결속한다.",
+    "기본 배경과 불필요한 면 채움을 만들지 않고 필수 표식만 명확하게 표시한다."
+  ]
+}

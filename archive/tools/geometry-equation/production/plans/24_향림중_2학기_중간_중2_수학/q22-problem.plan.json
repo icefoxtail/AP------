@@ -1,0 +1,288 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "18"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "18"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 610,
+    "height": 440
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "P",
+    "Q"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBP",
+      "refs": [
+        "B",
+        "P"
+      ],
+      "arrow": "END"
+    },
+    {
+      "id": "sPC",
+      "refs": [
+        "P",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDQ",
+      "refs": [
+        "D",
+        "Q"
+      ],
+      "arrow": "END"
+    },
+    {
+      "id": "sQA",
+      "refs": [
+        "Q",
+        "A"
+      ]
+    },
+    {
+      "id": "sPQ",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rA",
+      "refs": [
+        "B",
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "rC",
+      "refs": [
+        "B",
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "dAD",
+        "from": "A",
+        "to": "D",
+        "label": "18",
+        "side": "ABOVE",
+        "style": "INLINE"
+      },
+      {
+        "id": "dAB",
+        "from": "A",
+        "to": "B",
+        "label": "8",
+        "side": "LEFT",
+        "style": "INLINE"
+      }
+    ],
+    "regions": [
+      {
+        "id": "targetPCDQ",
+        "fill": "LIGHT",
+        "label": "y",
+        "labelPlacement": "AUTO_LEADER",
+        "shapes": [
+          {
+            "polygon": [
+              "P",
+              "C",
+              "D",
+              "Q"
+            ]
+          }
+        ],
+        "labelName": "사다리꼴 PCDQ",
+        "unit": "cm^2"
+      }
+    ]
+  },
+  "caption": "시작 후 임의 시점의 이동점 P,Q와 사다리꼴 PCDQ, 밑변 18·높이 8",
+  "accessibilityDescription": "직사각형 ABCD에서 P는 아래쪽 B에서 C로, Q는 위쪽 D에서 A로 이동한다. AD 18과 AB 8을 지시선으로 표시하고 사다리꼴 PCDQ만 연하게 칠한다. 직사각형 내부 배경은 투명하고 해답 수치는 문제 도형에 미리 쓰지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "condition1",
+      "condition": "AD=BC=18, AB=CD=8",
+      "mappedTo": [
+        "dAD",
+        "dAB",
+        "rA",
+        "rC"
+      ],
+      "sourceQuote": "[서·논술형 2] 직사각형 $ABCD$에서 점 $P$는 점"
+    },
+    {
+      "id": "condition2",
+      "condition": "P는 BC 위, Q는 DA 위로 이동",
+      "mappedTo": [
+        "P",
+        "Q",
+        "sBP",
+        "sDQ"
+      ],
+      "sourceQuote": "[서·논술형 2] 직사각형 $ABCD$에서 점 $P$는 점"
+    },
+    {
+      "id": "condition3",
+      "condition": "사다리꼴 PCDQ의 넓이 y",
+      "mappedTo": [
+        "targetPCDQ"
+      ],
+      "sourceQuote": "[서·논술형 2] 직사각형 $ABCD$에서 점 $P$는 점"
+    }
+  ],
+  "newVisualInformation": [
+    "직사각형 전면을 덮던 파란 면 채움을 삭제하고 실제 요구 영역인 PCDQ만 LIGHT로 그린다.",
+    "P,Q의 이동 방향과 원본 길이 18,8을 유지하되 유도된 답은 문제축에서 숨긴다."
+  ]
+}

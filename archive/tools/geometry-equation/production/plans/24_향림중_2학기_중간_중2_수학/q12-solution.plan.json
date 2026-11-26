@@ -1,0 +1,309 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "4195498155886",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "6974654218173",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2538566529714",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "3025345781827",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2538566529714",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "1819851171331",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 610,
+    "height": 440
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sCE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "isosceles",
+        "count": 1,
+        "segments": [
+          "sAB",
+          "sCA"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "id": "aADB",
+        "refs": [
+          "A",
+          "D",
+          "B"
+        ],
+        "value": 60,
+        "style": "ARC",
+        "arcs": 1,
+        "label": "60°"
+      },
+      {
+        "id": "aABF",
+        "refs": [
+          "A",
+          "B",
+          "F"
+        ],
+        "value": 20,
+        "style": "ARC",
+        "arcs": 1,
+        "label": "20°"
+      },
+      {
+        "id": "aFBC",
+        "refs": [
+          "F",
+          "B",
+          "C"
+        ],
+        "value": 20,
+        "style": "ARC",
+        "arcs": 1,
+        "noLabel": true,
+        "equalGroup": 1
+      },
+      {
+        "id": "aBCE",
+        "refs": [
+          "B",
+          "C",
+          "E"
+        ],
+        "value": 20,
+        "style": "ARC",
+        "arcs": 1,
+        "label": "20°"
+      },
+      {
+        "id": "aECA",
+        "refs": [
+          "E",
+          "C",
+          "A"
+        ],
+        "value": 20,
+        "style": "ARC",
+        "arcs": 2,
+        "noLabel": true,
+        "equalGroup": 2
+      },
+      {
+        "id": "aBFE",
+        "refs": [
+          "B",
+          "F",
+          "E"
+        ],
+        "value": 40,
+        "style": "ARC",
+        "arcs": 1,
+        "label": "40°"
+      }
+    ]
+  },
+  "caption": "이등변삼각형의 두 밑각 이등분선 BD와 CE가 F에서 만나는 각도 풀이",
+  "accessibilityDescription": "AB와 AC의 동일 눈금, B와 C에서 각각 20도씩 이등분한 호 두 쌍, D의 60도와 F의 40도 호를 실제 꼭짓점에 연결한다.",
+  "sourceConditions": [
+    {
+      "id": "condition1",
+      "condition": "AB=AC, ∠ADB=60°",
+      "mappedTo": [
+        "isosceles",
+        "aADB"
+      ],
+      "sourceQuote": "그림과 같이 $AB=AC$인 $\\triangle ABC$에"
+    },
+    {
+      "id": "condition2",
+      "condition": "BD와 CE는 각각 밑각 이등분선",
+      "mappedTo": [
+        "sBD",
+        "sCE",
+        "aABF",
+        "aFBC",
+        "aBCE",
+        "aECA"
+      ],
+      "sourceQuote": "그림과 같이 $AB=AC$인 $\\triangle ABC$에"
+    },
+    {
+      "id": "condition3",
+      "condition": "∠BFE=40°",
+      "mappedTo": [
+        "F",
+        "aBFE"
+      ],
+      "sourceQuote": "그림과 같이 $AB=AC$인 $\\triangle ABC$에"
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 도형과 풀이에서 지정된 점·선·각·길이를 실제 엔진 필드에 1:1 결속한다.",
+    "기본 배경과 불필요한 면 채움을 만들지 않고 필수 표식만 명확하게 표시한다."
+  ]
+}

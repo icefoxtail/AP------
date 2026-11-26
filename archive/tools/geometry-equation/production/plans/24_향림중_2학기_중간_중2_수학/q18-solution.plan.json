@@ -1,0 +1,304 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "rational",
+              "numerator": "5196152422707",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "rational",
+              "numerator": "5196152422707",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 610,
+    "height": 440
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sCE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "parallels": [
+      {
+        "id": "horizontals",
+        "count": 1,
+        "segments": [
+          "sDA",
+          "sBC"
+        ]
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "sameADBC",
+        "count": 1,
+        "segments": [
+          "sDA",
+          "sBC"
+        ]
+      },
+      {
+        "id": "isoscelesCED",
+        "count": 2,
+        "segments": [
+          "sCD",
+          "sCE"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "id": "aADE",
+        "refs": [
+          "A",
+          "D",
+          "E"
+        ],
+        "value": 30,
+        "style": "ARC",
+        "arcs": 1,
+        "noLabel": true,
+        "equalGroup": 1
+      },
+      {
+        "id": "aEDC",
+        "refs": [
+          "E",
+          "D",
+          "C"
+        ],
+        "value": 30,
+        "style": "ARC",
+        "arcs": 1,
+        "noLabel": true,
+        "equalGroup": 1
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dAD",
+        "from": "A",
+        "to": "D",
+        "label": "4",
+        "side": "ABOVE",
+        "style": "INLINE"
+      },
+      {
+        "id": "dDC",
+        "from": "D",
+        "to": "C",
+        "label": "6",
+        "side": "RIGHT",
+        "style": "INLINE"
+      },
+      {
+        "id": "dCE",
+        "from": "C",
+        "to": "E",
+        "label": "6",
+        "side": "BELOW",
+        "style": "INLINE"
+      },
+      {
+        "id": "dBC",
+        "from": "B",
+        "to": "C",
+        "label": "4",
+        "side": "BELOW",
+        "style": "INLINE"
+      },
+      {
+        "id": "dBE",
+        "from": "B",
+        "to": "E",
+        "label": "2",
+        "side": "BELOW",
+        "style": "INLINE"
+      }
+    ]
+  },
+  "caption": "평행사변형에서 D의 이등분선이 BC 연장선 E에서 만나며 BE=6−4=2",
+  "accessibilityDescription": "B,C,E 세 점이 일직선이다. AD와 BC 평행 표시 및 같은 길이 눈금, CD와 CE 같은 길이 눈금, D의 두 동일 각 호와 AD4 CD6 CE6 BC4 BE2 길이 지시선이 붙어 있다.",
+  "sourceConditions": [
+    {
+      "id": "condition1",
+      "condition": "AD=BC=4",
+      "mappedTo": [
+        "horizontals",
+        "sameADBC",
+        "dAD",
+        "dBC"
+      ],
+      "sourceQuote": "그림과 같은 평행사변형 $ABCD$에서 $\\angle D$"
+    },
+    {
+      "id": "condition2",
+      "condition": "D의 이등분선에서 CE=CD=6",
+      "mappedTo": [
+        "aADE",
+        "aEDC",
+        "isoscelesCED",
+        "dDC",
+        "dCE"
+      ],
+      "sourceQuote": "그림과 같은 평행사변형 $ABCD$에서 $\\angle D$"
+    },
+    {
+      "id": "condition3",
+      "condition": "BE=CE−BC=2",
+      "mappedTo": [
+        "dBE"
+      ],
+      "sourceQuote": "그림과 같은 평행사변형 $ABCD$에서 $\\angle D$"
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 도형과 풀이에서 지정된 점·선·각·길이를 실제 엔진 필드에 1:1 결속한다.",
+    "기본 배경과 불필요한 면 채움을 만들지 않고 필수 표식만 명확하게 표시한다."
+  ]
+}
