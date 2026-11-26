@@ -1,0 +1,65 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A",
+        "count": "1"
+      },
+      {
+        "id": "X"
+      },
+      {
+        "id": "B",
+        "count": "5"
+      }
+    ],
+    "subset": [
+      "A",
+      "X",
+      "B"
+    ],
+    "countStyle": "n",
+    "showUniverse": false,
+    "elements": [
+      {
+        "text": "3",
+        "in": [
+          "A",
+          "X",
+          "B"
+        ]
+      }
+    ]
+  },
+  "caption": "n(A)=1이고 가능한 X의 수는 2^(n(B)-1)이다. 주어진 개수로 n(B)=5를 결정한다.",
+  "accessibilityDescription": "A가 X에, X가 B에 포함된 세 집합의 중첩 그림. A의 원소 수는 1, B의 원소 수는 5이다.",
+  "sourceConditions": [
+    {
+      "id": "subset-chain",
+      "condition": "A⊆X⊆B",
+      "mappedTo": [
+        "diagram.subset"
+      ]
+    },
+    {
+      "id": "given-A",
+      "condition": "A=['3']",
+      "mappedTo": [
+        "diagram.elements",
+        "diagram.sets[0].count"
+      ]
+    },
+    {
+      "id": "derived-nB",
+      "condition": "풀이 2^(n(B)-1)=16에서 n(B)=5",
+      "mappedTo": [
+        "diagram.sets[2].count"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "중간집합 X의 안팎으로 선택 가능한 원소 수의 차이를 실제 포함관계와 집합별 원소 수 라벨로 보인다."
+  ]
+}

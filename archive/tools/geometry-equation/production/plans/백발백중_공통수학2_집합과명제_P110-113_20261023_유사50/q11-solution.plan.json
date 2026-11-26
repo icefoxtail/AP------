@@ -1,0 +1,44 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A"
+      },
+      {
+        "id": "B"
+      }
+    ],
+    "universe": {
+      "name": "U"
+    },
+    "subset": [
+      "A",
+      "B"
+    ],
+    "shade": "B^c"
+  },
+  "caption": "A는 B 안에 들어 있고, 포함관계에서 교집합·합집합·여집합의 방향을 확인한다.",
+  "accessibilityDescription": "전체집합 U에서 A가 B에 포함된 관계를 두 원의 위치로 표현한 그림.",
+  "sourceConditions": [
+    {
+      "id": "source-relation",
+      "condition": "A∩B=A 이므로 A⊆B",
+      "mappedTo": [
+        "diagram.subset"
+      ]
+    },
+    {
+      "id": "complement",
+      "condition": "B^c⊆A^c",
+      "mappedTo": [
+        "diagram.shade",
+        "diagram.subset"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "A와 B의 포함 방향이 실제 중첩된 경계로 표현된다."
+  ]
+}
