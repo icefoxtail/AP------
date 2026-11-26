@@ -1,0 +1,67 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "caption": "찢어진 밝기 히스토그램: 보이는 네 도수 4·6·5·2와 안 보이는 두 계급 2x·x를 분리한다.",
+  "accessibilityDescription": "12~24럭스 2럭스 간격 히스토그램 6계급. 첫 둘째 넷째 여섯째 막대는 4,6,5,2이고, 16~18 계급은 2x, 20~22 계급은 x로 테두리만 점선이며 비율은 2대1이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "계급 경계는 12,14,16,18,20,22,24 럭스이다.",
+      "mappedTo": "chart.boundaries"
+    },
+    {
+      "id": "c2",
+      "condition": "원본에서 읽는 도수는 4,6,미상,5,미상,2이고 합계 50개이다.",
+      "mappedTo": "chart.series[0].frequencies"
+    },
+    {
+      "id": "c3",
+      "condition": "16~18 계급은 20~22 계급의 두 배이므로 각각 2x와 x로 나타낸다. 결과 숫자는 원문에 나오지 않는다.",
+      "mappedTo": "chart.unknownLabels"
+    }
+  ],
+  "newVisualInformation": [
+    "찢어진 두 계급을 임의 회색 막대로 채우지 않고 점선 윤곽과 2x:x의 높이 비로 식별한다.",
+    "보이는 막대와 계급 간격·전체 50개를 일대일로 유지한다."
+  ],
+  "chart": {
+    "kind": "HISTOGRAM",
+    "boundaries": [
+      "12",
+      "14",
+      "16",
+      "18",
+      "20",
+      "22",
+      "24"
+    ],
+    "series": [
+      {
+        "frequencies": [
+          4,
+          6,
+          null,
+          5,
+          null,
+          2
+        ]
+      }
+    ],
+    "total": 50,
+    "xTitle": "밝기(럭스)",
+    "yTitle": "도수(개)",
+    "grid": true,
+    "showValues": true,
+    "unknownLabels": [
+      {
+        "class": 2,
+        "label": "2x",
+        "relHeight": 2
+      },
+      {
+        "class": 4,
+        "label": "x",
+        "relHeight": 1
+      }
+    ]
+  }
+}
