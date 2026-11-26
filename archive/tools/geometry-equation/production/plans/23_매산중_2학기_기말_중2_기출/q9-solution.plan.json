@@ -1,0 +1,43 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "6" }, { "kind": "integer", "value": "8" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "12" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "M", "op": "MIDPOINT", "inputs": ["B", "C"], "args": {}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" }
+    ]
+  },
+  "displayPoints": ["A", "B", "C", "M"],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    { "id": "sAB", "refs": ["A", "B"] },
+    { "id": "sAC", "refs": ["A", "C"] },
+    { "id": "sBC", "refs": ["B", "C"] },
+    { "id": "sAM", "refs": ["A", "M"], "emphasis": "BOLD" }
+  ],
+  "rightAngles": [
+    { "id": "rightM", "refs": ["A", "M", "C"] }
+  ],
+  "planeMarks": {
+    "equalLengths": [{ "id": "equalSides", "count": 1, "segments": ["sAB", "sAC"] }],
+    "dimensions": [
+      { "id": "dAB", "from": "B", "to": "A", "label": "10", "unit": "cm", "side": "LEFT" },
+      { "id": "dAC", "from": "A", "to": "C", "label": "10", "unit": "cm", "side": "RIGHT" },
+      { "id": "dBC", "from": "B", "to": "C", "label": "12", "unit": "cm", "side": "BELOW" },
+      { "id": "dBM", "from": "B", "to": "M", "label": "6", "unit": "cm", "side": "BELOW", "offset": "AUTO" },
+      { "id": "dMC", "from": "M", "to": "C", "label": "6", "unit": "cm", "side": "BELOW", "offset": "AUTO" },
+      { "id": "dAM", "from": "A", "to": "M", "label": "8", "unit": "cm", "side": "LEFT", "style": "INLINE" }
+    ]
+  },
+  "caption": "이등변삼각형의 꼭짓점 A에서 밑변 BC의 중점 M으로 수선을 내린다. BM=MC=6 cm, AM=8 cm이다.",
+  "accessibilityDescription": "AB와 AC는 각각 10 cm, BC는 12 cm이다. 밑변의 중점 M과 꼭짓점 A를 이은 높이는 8 cm이고 M에 직각 표시가 있다.",
+  "sourceConditions": [
+    { "id": "sides", "condition": "AB=AC=10 cm, BC=12 cm의 이등변삼각형이다.", "mappedTo": "mathPlan.nodes:A,B,C; planeMarks.dimensions:dAB,dAC,dBC; planeMarks.equalLengths:equalSides" },
+    { "id": "altitude", "condition": "넓이 풀이에서 밑변의 중점 M에 내린 높이 AM을 사용한다.", "mappedTo": "mathPlan.nodes:M; displaySegments:sAM; rightAngles:rightM; planeMarks.dimensions:dBM,dMC,dAM" }
+  ],
+  "newVisualInformation": ["중점 M, AM의 직각 표시와 6-8-10 직각삼각형을 보인다.", "삼각형 내부는 무채움으로 유지한다."]
+}

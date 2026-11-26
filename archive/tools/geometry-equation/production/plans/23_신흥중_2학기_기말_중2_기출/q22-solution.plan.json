@@ -1,0 +1,46 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "6" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "8" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "D", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "8" }, { "kind": "integer", "value": "6" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "lineBD", "op": "LINE_THROUGH", "inputs": ["B", "D"], "args": {}, "outputType": "LINE", "factRole": "DERIVED_INTERMEDIATE" },
+      { "id": "E", "op": "PERPENDICULAR_FOOT", "inputs": ["A", "lineBD"], "args": {}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" }
+    ]
+  },
+  "displayPoints": ["A", "B", "C", "D", "E"],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    { "id": "sAB", "refs": ["A", "B"] },
+    { "id": "sBC", "refs": ["B", "C"] },
+    { "id": "sCD", "refs": ["C", "D"] },
+    { "id": "sDA", "refs": ["D", "A"] },
+    { "id": "sBD", "refs": ["B", "D"] },
+    { "id": "sAE", "refs": ["A", "E"], "emphasis": "BOLD" }
+  ],
+  "rightAngles": [
+    { "id": "rightA", "refs": ["B", "A", "D"] },
+    { "id": "rightE", "refs": ["A", "E", "D"] }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      { "id": "dAB", "from": "A", "to": "B", "label": "6", "unit": "cm", "side": "LEFT" },
+      { "id": "dAD", "from": "A", "to": "D", "label": "8", "unit": "cm", "side": "ABOVE" },
+      { "id": "dBD", "from": "B", "to": "D", "label": "10", "unit": "cm", "side": "RIGHT" },
+      { "id": "dAE", "from": "A", "to": "E", "label": "AE", "side": "LEFT", "style": "INLINE" }
+    ]
+  },
+  "caption": "직사각형에서 BD는 6-8-10 직각삼각형의 빗변이다. E에 직각을 표시해 두 넓이 식 6×8/2=10×AE/2를 비교한다.",
+  "accessibilityDescription": "가로 8 cm, 세로 6 cm인 직사각형 ABCD에 대각선 BD를 긋고 A에서 BD로 내린 수선의 발 E를 표시했다. 대각선은 10 cm이다.",
+  "sourceConditions": [
+    { "id": "rectangle", "condition": "직사각형 ABCD에서 AB=6 cm, AD=8 cm이다.", "mappedTo": "mathPlan.nodes:A,B,C,D; displaySegments:sAB,sBC,sCD,sDA; rightAngles:rightA; planeMarks.dimensions:dAB,dAD" },
+    { "id": "foot", "condition": "E는 꼭짓점 A에서 대각선 BD에 내린 수선의 발이다.", "mappedTo": "mathPlan.nodes:lineBD,E; displaySegments:sBD,sAE; rightAngles:rightE" },
+    { "id": "solution", "condition": "피타고라스 정리로 BD=10 cm이고 같은 넓이로 AE를 구한다.", "mappedTo": "planeMarks.dimensions:dBD,dAE" }
+  ],
+  "newVisualInformation": ["E에 직각 표식을 보존하고 10 cm 빗변을 그림에 추가한다.", "직사각형 내부의 임의 면 채움은 하지 않는다."]
+}

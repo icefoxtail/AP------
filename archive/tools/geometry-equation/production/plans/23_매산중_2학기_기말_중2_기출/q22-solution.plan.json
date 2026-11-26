@@ -1,0 +1,48 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": { "text": "① 3-4-5 직각삼각형" },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+          "nodes": [
+            { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+            { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "4" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+            { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "4" }, { "kind": "integer", "value": "3" }] }, "outputType": "POINT", "factRole": "GIVEN" }
+          ]
+        },
+        "coordinateCanvas": { "width": 384, "height": 340 },
+        "hiddenPointNames": ["A", "B", "C"],
+        "displayPoints": ["A", "B", "C"],
+        "displaySegments": [
+          { "id": "sAB", "refs": ["A", "B"] }, { "id": "sBC", "refs": ["B", "C"] }, { "id": "sCA", "refs": ["C", "A"] }
+        ],
+        "rightAngles": [{ "id": "raB", "refs": ["A", "B", "C"] }],
+        "planeMarks": { "dimensions": [
+          { "id": "base", "from": "A", "to": "B", "label": "4", "unit": "cm", "side": "BELOW" },
+          { "id": "height", "from": "B", "to": "C", "label": "3", "unit": "cm", "side": "RIGHT" },
+          { "id": "hyp", "from": "A", "to": "C", "label": "5", "unit": "cm", "side": "ABOVE" }
+        ] }
+      }
+    },
+    {
+      "caption": { "text": "② 원뿔의 높이와 모선" },
+      "plan": {
+        "capability": "solid-figure-v1",
+        "unit": "cm",
+        "solids": [{ "kind": "CONE", "radius": 6, "height": 8 }],
+        "dims": [{ "radius": "bottom" }, { "height": true }, { "slant": true }]
+      }
+    }
+  ],
+  "caption": "① 피타고라스 정리로 x=4 cm. ② 원뿔 부피로 높이 8 cm, 피타고라스로 모선 10 cm를 얻어 옆넓이 60π cm²를 구한다.",
+  "accessibilityDescription": "① 직각삼각형 세 변의 길이는 3 cm, 4 cm, 5 cm이다. ② 밑면 반지름 6 cm, 높이 8 cm, 모선 10 cm를 각각 치수로 표시한 원뿔이다.",
+  "sourceConditions": [
+    { "id": "triangle", "condition": "빗변 5 cm와 높이 3 cm로 나머지 변은 4 cm이다.", "mappedTo": "panels:0.planeMarks.dimensions:base,height,hyp;panels:0.rightAngles:raB" },
+    { "id": "cone", "condition": "반지름 6 cm, 부피 96π cm³인 원뿔은 높이 8 cm이고 모선 10 cm이다.", "mappedTo": "panels:1.solids:CONE;panels:1.dims:radius,height,slant" }
+  ],
+  "newVisualInformation": ["두 풀이의 결과를 패널별 실제 치수선으로 각각 그린다.", "연한 배경판과 불필요한 면 색을 없애고 원뿔의 높이 점선 및 모선 표시를 유지한다."]
+}

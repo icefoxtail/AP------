@@ -1,0 +1,76 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": { "text": "① 무게중심의 넓이비" },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+          "nodes": [
+            { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "6" }, { "kind": "integer", "value": "12" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+            { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+            { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "12" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+            { "id": "D", "op": "MIDPOINT", "inputs": ["B", "C"], "args": {}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+            { "id": "E", "op": "MIDPOINT", "inputs": ["A", "C"], "args": {}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+            { "id": "F", "op": "MIDPOINT", "inputs": ["A", "B"], "args": {}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+            { "id": "G", "op": "CENTROID", "inputs": ["A", "B", "C"], "args": {}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" }
+          ]
+        },
+        "coordinateCanvas": { "width": 384, "height": 340 },
+        "displayPoints": ["A", "B", "C", "D", "E", "F", "G"],
+        "displaySegments": [
+          { "id": "sAB", "refs": ["A", "B"] }, { "id": "sBC", "refs": ["B", "C"] }, { "id": "sCA", "refs": ["C", "A"] },
+          { "id": "sAD", "refs": ["A", "D"] }, { "id": "sBE", "refs": ["B", "E"] }, { "id": "sCF", "refs": ["C", "F"] }
+        ],
+        "planeMarks": { "regions": [{ "id": "area3", "fill": "LIGHT", "label": "3", "unit": "cm^2", "factRole": "GIVEN", "shapes": [{ "polygon": ["G", "D", "C"] }] }] }
+      }
+    },
+    {
+      "caption": { "text": "② 중점 M, N과 무게중심" },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+          "nodes": [
+            { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "9" }, { "kind": "integer", "value": "12" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+            { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+            { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "25" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+            { "id": "D", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "15" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+            { "id": "M", "op": "MIDPOINT", "inputs": ["B", "D"], "args": {}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+            { "id": "N", "op": "MIDPOINT", "inputs": ["D", "C"], "args": {}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+            { "id": "G", "op": "CENTROID", "inputs": ["A", "B", "D"], "args": {}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" },
+            { "id": "G2", "op": "CENTROID", "inputs": ["A", "D", "C"], "args": {}, "outputType": "POINT", "factRole": "DERIVED_INTERMEDIATE" }
+          ]
+        },
+        "coordinateCanvas": { "width": 384, "height": 340 },
+        "pointNames": { "G2": "G′" },
+        "displayPoints": ["A", "B", "C", "D", "M", "N", "G", "G2"],
+        "displaySegments": [
+          { "id": "sAB", "refs": ["A", "B"] }, { "id": "sAC", "refs": ["A", "C"] }, { "id": "sBC", "refs": ["B", "C"] },
+          { "id": "sAM", "refs": ["A", "M"] }, { "id": "sAN", "refs": ["A", "N"] }, { "id": "sMN", "refs": ["M", "N"], "dashed": true },
+          { "id": "sAG", "refs": ["A", "G"] }, { "id": "sAG2", "refs": ["A", "G2"] }, { "id": "sGG2", "refs": ["G", "G2"] }
+        ],
+        "rightAngles": [{ "id": "raA", "refs": ["B", "A", "C"] }],
+        "planeMarks": {
+          "dimensions": [
+            { "id": "ab", "from": "A", "to": "B", "label": "15", "side": "LEFT" },
+            { "id": "ac", "from": "A", "to": "C", "label": "20", "side": "RIGHT" },
+            { "id": "bc", "from": "B", "to": "C", "label": "25", "side": "BELOW" }
+          ],
+          "regions": [{ "id": "littleArea", "fill": "LIGHT", "shapes": [{ "polygon": ["A", "G", "G2"] }] }]
+        }
+      }
+    }
+  ],
+  "caption": "① GDC가 여섯 같은 넓이 부분 중 하나라 전체 넓이는 18 cm²이다. ② 두 무게중심의 위치가 중선의 2:3 비이므로 AGG′의 넓이는 100/3 cm²이다.",
+  "accessibilityDescription": "① ABC의 세 중선과 무게중심, 넓이 3 cm²인 작은 삼각형 GDC만 칠한 그림. ② AB=15, AC=20, BC=25인 직각삼각형, BD와 DC의 중점 M,N, 두 무게중심 G,G′과 작은 삼각형 AGG′을 보이는 그림.",
+  "sourceConditions": [
+    { "id": "area1", "condition": "삼각형 GDC의 넓이는 3 cm²이고 중선은 전체를 넓이 같은 작은 삼각형 여섯 개로 나눈다.", "mappedTo": "panels:0.mathPlan.nodes:D,E,F,G;panels:0.planeMarks.regions:area3" },
+    { "id": "area2", "condition": "AB=15, AC=20, BC=25, BD:DC=3:2이고 두 무게중심은 G,G′이다.", "mappedTo": "panels:1.mathPlan.nodes:A,B,C,D,G,G2;panels:1.planeMarks.dimensions:ab,ac,bc" },
+    { "id": "midpoints", "condition": "M은 BD의 중점, N은 DC의 중점이므로 AM,AN을 잇는 작은 닮은 삼각형을 그릴 수 있다.", "mappedTo": "panels:1.mathPlan.nodes:M,N;panels:1.displaySegments:sAM,sAN,sMN,sGG2" }
+  ],
+  "newVisualInformation": ["첫째 그림은 주어진 넓이 3 cm²에 해당하는 삼각형만 채워서 여섯 부분의 관계를 보여 준다.", "둘째 그림은 풀이에 실제로 사용하는 M,N,AG,AG′,GG′,MN과 15·20·25 치수선을 렌더 필드에 반영한다."]
+}
