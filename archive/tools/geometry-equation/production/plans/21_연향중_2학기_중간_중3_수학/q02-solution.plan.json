@@ -1,0 +1,328 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "4095760221444959",
+              "denominator": "5000000000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "286788218175523",
+              "denominator": "500000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "4095760221444959",
+              "denominator": "5000000000000000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "rational",
+              "numerator": "35010377",
+              "denominator": "50000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Y",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "286788218175523",
+              "denominator": "500000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "unit",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "D",
+    "T",
+    "C",
+    "Y"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "s0",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "s1",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "O",
+        "D"
+      ]
+    },
+    {
+      "id": "s5",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "s6",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "s7",
+      "refs": [
+        "Y",
+        "A"
+      ],
+      "dashed": true
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "right0",
+      "refs": [
+        "O",
+        "B",
+        "A"
+      ]
+    },
+    {
+      "id": "right1",
+      "refs": [
+        "O",
+        "D",
+        "C"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "T",
+    "Y"
+  ],
+  "hiddenPointStyle": "NONE",
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "length0",
+        "ownerSegment": "s0",
+        "text": "1"
+      },
+      {
+        "id": "length1",
+        "ownerSegment": "s1",
+        "text": "0.5736"
+      },
+      {
+        "id": "length2",
+        "ownerSegment": "s2",
+        "text": "0.8192"
+      },
+      {
+        "id": "length4",
+        "ownerSegment": "s4",
+        "text": "1"
+      }
+    ],
+    "angles": [
+      {
+        "id": "angle0",
+        "refs": [
+          "D",
+          "O",
+          "A"
+        ],
+        "value": 35,
+        "label": "35",
+        "factRole": "GIVEN"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "arc0",
+        "circle": "unit",
+        "center": "O",
+        "from": "T",
+        "to": "D",
+        "side": "MINOR"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 460
+  },
+  "caption": "sin35°≈0.5736, cos35°≈0.8192, 합≈1.39를 수선 AB·OB로 구분",
+  "accessibilityDescription": "sin35°≈0.5736, cos35°≈0.8192, 합≈1.39를 수선 AB·OB로 구분",
+  "sourceQuote": "오른쪽 그림과 같이 좌표평면 위의 원점 $\\mathrm{O}$를 중심으로 하고 반지름의 길이가 $1$인 사분원에서 $\\sin 35^\\circ + \\cos 35^\\circ$의 값은?",
+  "sourceConditions": [
+    {
+      "id": "source-geometry",
+      "condition": "sin35°≈0.5736, cos35°≈0.8192, 합≈1.39를 수선 AB·OB로 구분",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "sin35°≈0.5736, cos35°≈0.8192, 합≈1.39를 수선 AB·OB로 구분"
+  ]
+}
