@@ -1,0 +1,302 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "24",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "32",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "11"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "79",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "32",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "sFC",
+      "refs": [
+        "F",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAF",
+      "refs": [
+        "A",
+        "F"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "bisA1",
+        "refs": [
+          "B",
+          "A",
+          "F"
+        ],
+        "label": "",
+        "arcs": 1,
+        "style": "ARC",
+        "noLabel": true
+      },
+      {
+        "id": "bisA2",
+        "refs": [
+          "F",
+          "A",
+          "D"
+        ],
+        "label": "",
+        "arcs": 1,
+        "style": "ARC",
+        "noLabel": true
+      },
+      {
+        "id": "bisD1",
+        "refs": [
+          "A",
+          "D",
+          "E"
+        ],
+        "label": "",
+        "arcs": 1,
+        "style": "ARC",
+        "noLabel": true
+      },
+      {
+        "id": "bisD2",
+        "refs": [
+          "E",
+          "D",
+          "C"
+        ],
+        "label": "",
+        "arcs": 1,
+        "style": "ARC",
+        "noLabel": true
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "AB8",
+        "from": "A",
+        "to": "B",
+        "label": "8",
+        "side": "LEFT"
+      },
+      {
+        "id": "AD11",
+        "from": "A",
+        "to": "D",
+        "label": "11",
+        "side": "ABOVE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 550
+  },
+  "caption": "평행사변형의 두 꼭짓각 이등분선과 바닥 교점 E·F",
+  "accessibilityDescription": "A 각이등분선은 F로, D 각이등분선은 E로 도달하고 BC 위 순서는 B-E-F-C다. AD11과 AB8을 별도 치수로 표시한다.",
+  "sourceQuote": "17. 아래 그림과 같이 $\\overline{\\mathrm{AB",
+  "sourceConditions": [
+    {
+      "id": "a",
+      "condition": "AB=8, AD=11",
+      "mappedTo": [
+        "AB8",
+        "AD11"
+      ],
+      "sourceQuote": "17. 아래 그림과 같이 $\\overline{\\mathrm{AB}}=8$, $\\overline{\\mathrm{AD}}=11$인 평행사변형 $\\mathrm{ABCD}$에서 $\\angle\\mathrm{A}$의 이등분선과 $\\overline{\\mathrm{BC}}$의 교점을 $\\mathrm{F}$라 하고, $\\angle\\mathrm{D}$의 이등분선과 $\\overline{\\mathrm{BC}}$의 교점을 $\\mathrm{E}$라 할 때, $\\overline{\\mathrm{EF}}$의 길이를 구하면? (4점) [그림]"
+    },
+    {
+      "id": "b",
+      "condition": "AF는 ∠A 이등분선",
+      "mappedTo": [
+        "bisA1",
+        "bisA2"
+      ],
+      "sourceQuote": "17. 아래 그림과 같이 $\\overline{\\mathrm{AB}}=8$, $\\overline{\\mathrm{AD}}=11$인 평행사변형 $\\mathrm{ABCD}$에서 $\\angle\\mathrm{A}$의 이등분선과 $\\overline{\\mathrm{BC}}$의 교점을 $\\mathrm{F}$라 하고, $\\angle\\mathrm{D}$의 이등분선과 $\\overline{\\mathrm{BC}}$의 교점을 $\\mathrm{E}$라 할 때, $\\overline{\\mathrm{EF}}$의 길이를 구하면? (4점) [그림]"
+    },
+    {
+      "id": "c",
+      "condition": "DE는 ∠D 이등분선",
+      "mappedTo": [
+        "bisD1",
+        "bisD2"
+      ],
+      "sourceQuote": "17. 아래 그림과 같이 $\\overline{\\mathrm{AB}}=8$, $\\overline{\\mathrm{AD}}=11$인 평행사변형 $\\mathrm{ABCD}$에서 $\\angle\\mathrm{A}$의 이등분선과 $\\overline{\\mathrm{BC}}$의 교점을 $\\mathrm{F}$라 하고, $\\angle\\mathrm{D}$의 이등분선과 $\\overline{\\mathrm{BC}}$의 교점을 $\\mathrm{E}$라 할 때, $\\overline{\\mathrm{EF}}$의 길이를 구하면? (4점) [그림]"
+    }
+  ],
+  "newVisualInformation": []
+}

@@ -1,0 +1,307 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "I",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "outer",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "inner",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "I"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "O",
+    "I",
+    "T"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "displayCircles": [
+    "outer",
+    "inner"
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "AB6",
+        "from": "A",
+        "to": "B",
+        "label": "6",
+        "side": "LEFT",
+        "unit": "cm"
+      },
+      {
+        "id": "BC8",
+        "from": "B",
+        "to": "C",
+        "label": "8",
+        "side": "BELOW",
+        "unit": "cm"
+      },
+      {
+        "id": "AC10",
+        "from": "A",
+        "to": "C",
+        "label": "10",
+        "side": "ABOVE",
+        "unit": "cm"
+      }
+    ],
+    "regions": [
+      {
+        "id": "shadedRing",
+        "fill": "LIGHT",
+      "pattern": "HATCH",
+        "shapes": [
+          {
+            "loop": {
+              "start": "A",
+              "steps": [
+                {
+                  "to": "A",
+                  "arc": {
+                    "center": "O",
+                    "side": "FULL"
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "holes": [
+          {
+            "loop": {
+              "start": "T",
+              "steps": [
+                {
+                  "to": "T",
+                  "arc": {
+                    "center": "I",
+                    "side": "FULL"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rightB",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 550
+  },
+  "caption": "반지름 5의 외접원에서 반지름 2의 내접원을 뺀 음영",
+  "accessibilityDescription": "큰 원 내부에서 작은 내접원의 둥근 구멍만 남기고 음영 처리한다. 내접원 자체와 삼각형 내부에는 불필요한 별도 면칠을 하지 않는다.",
+  "sourceQuote": "9. 다음 그림과 같이 $\\triangle\\mathrm{ABC}",
+  "sourceConditions": [
+    {
+      "id": "a",
+      "condition": "∠B=90°",
+      "mappedTo": [
+        "rightB"
+      ],
+      "sourceQuote": "9. 다음 그림과 같이 $\\triangle\\mathrm{ABC}$는 $\\angle\\mathrm{B}=90^\\circ$이고 $\\overline{\\mathrm{AB}}=6\\text{cm}$, $\\overline{\\mathrm{AC}}=10\\text{cm}$, $\\overline{\\mathrm{BC}}=8\\text{cm}$인 직각삼각형이다. 이때 직각삼각형 $\\mathrm{ABC}$의 내접원과 외접원을 그렸을 때, 색칠한 부분의 넓이를 구하면? [4점] [그림]"
+    },
+    {
+      "id": "b",
+      "condition": "AB=6, BC=8, AC=10",
+      "mappedTo": [
+        "AB6",
+        "BC8",
+        "AC10"
+      ],
+      "sourceQuote": "9. 다음 그림과 같이 $\\triangle\\mathrm{ABC}$는 $\\angle\\mathrm{B}=90^\\circ$이고 $\\overline{\\mathrm{AB}}=6\\text{cm}$, $\\overline{\\mathrm{AC}}=10\\text{cm}$, $\\overline{\\mathrm{BC}}=8\\text{cm}$인 직각삼각형이다. 이때 직각삼각형 $\\mathrm{ABC}$의 내접원과 외접원을 그렸을 때, 색칠한 부분의 넓이를 구하면? [4점] [그림]"
+    },
+    {
+      "id": "c",
+      "condition": "외접원에서 내접원을 제외한 색칠 부분",
+      "mappedTo": [
+        "shadedRing"
+      ],
+      "sourceQuote": "9. 다음 그림과 같이 $\\triangle\\mathrm{ABC}$는 $\\angle\\mathrm{B}=90^\\circ$이고 $\\overline{\\mathrm{AB}}=6\\text{cm}$, $\\overline{\\mathrm{AC}}=10\\text{cm}$, $\\overline{\\mathrm{BC}}=8\\text{cm}$인 직각삼각형이다. 이때 직각삼각형 $\\mathrm{ABC}$의 내접원과 외접원을 그렸을 때, 색칠한 부분의 넓이를 구하면? [4점] [그림]"
+    }
+  ],
+  "newVisualInformation": [
+    "원본 스캔의 빗금은 의미 있는 음영이다. 엔진 기본은 무채움으로 두고 딱 한 개의 원환 영역만 지정한다."
+  ]
+}

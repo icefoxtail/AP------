@@ -1,0 +1,63 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "CONE",
+      "radius": 5,
+      "height": 15
+    },
+    {
+      "id": "s2",
+      "kind": "CONE",
+      "radius": 4,
+      "height": 12
+    }
+  ],
+  "dims": [
+    {
+      "solid": "s2",
+      "height": true,
+      "label": "12",
+      "side": "RIGHT"
+    }
+  ],
+  "solidCaption": {
+    "text": "닮은 두 원뿔"
+  },
+  "caption": "큰 원뿔의 높이는 15cm이며 두 밑면의 반지름 비는 5대4",
+  "accessibilityDescription": "큰 원뿔과 작은 원뿔을 나란히 놓아 각 밑면의 뒤쪽을 점선으로 구분하고 작은 원뿔의 높이 12cm를 표시한다.",
+  "sourceQuote": "다음 그림의 두 원뿔은 닮은 도형이고",
+  "sourceConditions": [
+    {
+      "id": "g1",
+      "condition": "두 원뿔 닮음비 5:4",
+      "mappedTo": [
+        "s1",
+        "s2"
+      ],
+      "sourceQuote": "다음 그림의 두 원뿔은 닮은 도형이고, 닮음비가 $5:4$이다."
+    },
+    {
+      "id": "g2",
+      "condition": "큰 밑면의 넓이 25π cm²",
+      "mappedTo": [
+        "s1"
+      ],
+      "sourceQuote": "큰 원뿔의 밑면의 넓이가 $25\\pi\\text{ cm}^2$"
+    },
+    {
+      "id": "g3",
+      "condition": "작은 원뿔 높이 12cm",
+      "mappedTo": [
+        "s2"
+      ],
+      "sourceQuote": "작은 원뿔의 높이를 $12\\text{ cm}$라 하자."
+    }
+  ],
+  "newVisualInformation": [
+    "원뿔의 타원형 밑면 중 뒤쪽 경계는 자동 점선으로 유지한다.",
+    "높이선은 수직선으로 나타내며 전면에 불필요한 면색을 칠하지 않는다."
+  ]
+}

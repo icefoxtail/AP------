@@ -1,0 +1,222 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "6433520761529",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "M"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBM",
+      "refs": [
+        "B",
+        "M"
+      ]
+    },
+    {
+      "id": "sMC",
+      "refs": [
+        "M",
+        "C"
+      ]
+    },
+    {
+      "id": "sAM",
+      "refs": [
+        "A",
+        "M"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "equalABAC",
+        "segments": [
+          "sAB",
+          "sAC"
+        ],
+        "count": 1
+      },
+      {
+        "id": "midpointBM_MC",
+        "segments": [
+          "sBM",
+          "sMC"
+        ],
+        "count": 2
+      }
+    ],
+    "angles": [
+      {
+        "id": "given25",
+        "refs": [
+          "B",
+          "A",
+          "M"
+        ],
+        "label": "25°",
+        "arcs": 1,
+        "style": "ARC"
+      },
+      {
+        "id": "unknownB",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "label": "x",
+        "arcs": 1,
+        "style": "ARC"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 550
+  },
+  "caption": "중선 AM과 이등변삼각형의 25도 꼭지각",
+  "accessibilityDescription": "AB와 AC의 같은 변 눈금, 밑변의 같은 두 절반, A에서 M으로 내려온 보조선을 보인다.",
+  "sourceQuote": "7. 오른쪽 그림과 같이 $\\overline{\\mathrm{AB",
+  "sourceConditions": [
+    {
+      "id": "a",
+      "condition": "AB=AC",
+      "mappedTo": [
+        "equalABAC"
+      ],
+      "sourceQuote": "7. 오른쪽 그림과 같이 $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{AC}}$인 이등변삼각형 $\\mathrm{ABC}$에서 밑변 $\\mathrm{BC}$의 중점을 $\\mathrm{M}$이라 하자. $\\angle\\mathrm{BAM}=25^\\circ$일 때, $\\angle x$의 크기를 구하면? (3점) [그림]"
+    },
+    {
+      "id": "b",
+      "condition": "M은 BC의 중점",
+      "mappedTo": [
+        "midpointBM_MC"
+      ],
+      "sourceQuote": "7. 오른쪽 그림과 같이 $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{AC}}$인 이등변삼각형 $\\mathrm{ABC}$에서 밑변 $\\mathrm{BC}$의 중점을 $\\mathrm{M}$이라 하자. $\\angle\\mathrm{BAM}=25^\\circ$일 때, $\\angle x$의 크기를 구하면? (3점) [그림]"
+    },
+    {
+      "id": "c",
+      "condition": "∠BAM=25°",
+      "mappedTo": [
+        "given25"
+      ],
+      "sourceQuote": "7. 오른쪽 그림과 같이 $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{AC}}$인 이등변삼각형 $\\mathrm{ABC}$에서 밑변 $\\mathrm{BC}$의 중점을 $\\mathrm{M}$이라 하자. $\\angle\\mathrm{BAM}=25^\\circ$일 때, $\\angle x$의 크기를 구하면? (3점) [그림]"
+    },
+    {
+      "id": "d",
+      "condition": "∠B=x",
+      "mappedTo": [
+        "unknownB"
+      ],
+      "sourceQuote": "7. 오른쪽 그림과 같이 $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{AC}}$인 이등변삼각형 $\\mathrm{ABC}$에서 밑변 $\\mathrm{BC}$의 중점을 $\\mathrm{M}$이라 하자. $\\angle\\mathrm{BAM}=25^\\circ$일 때, $\\angle x$의 크기를 구하면? (3점) [그림]"
+    }
+  ],
+  "newVisualInformation": [
+    "원본 q07.png의 아래쪽이 잘렸으므로 보이지 않는 구간은 발문에 명시된 중점 조건으로만 복원한다."
+  ]
+}

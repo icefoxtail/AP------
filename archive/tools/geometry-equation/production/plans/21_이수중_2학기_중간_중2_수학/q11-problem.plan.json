@@ -1,0 +1,232 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1002558221203",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "8572541558964",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2886751345948",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "O"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sOC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "radiiABC",
+        "segments": [
+          "sOA",
+          "sOB",
+          "sOC"
+        ],
+        "count": 1
+      }
+    ],
+    "angles": [
+      {
+        "id": "given25",
+        "refs": [
+          "B",
+          "A",
+          "O"
+        ],
+        "label": "25°",
+        "arcs": 1,
+        "style": "ARC"
+      },
+      {
+        "id": "given30",
+        "refs": [
+          "O",
+          "B",
+          "C"
+        ],
+        "label": "30°",
+        "arcs": 1,
+        "style": "ARC"
+      },
+      {
+        "id": "unknownOAC",
+        "refs": [
+          "O",
+          "A",
+          "C"
+        ],
+        "label": "x",
+        "arcs": 1,
+        "style": "ARC"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 550
+  },
+  "caption": "외심에서 각 꼭짓점까지 같은 거리와 25·30도 표시",
+  "accessibilityDescription": "ABC의 외심 O와 세 꼭짓점을 모두 연결하고, BAO=25°, OBC=30°, OAC=x를 각 위치에 붙인다.",
+  "sourceQuote": "11. 다음 그림에서 점 $\\mathrm{O}$는 $\\trian",
+  "sourceConditions": [
+    {
+      "id": "a",
+      "condition": "외심 O에서 OA=OB=OC",
+      "mappedTo": [
+        "radiiABC"
+      ],
+      "sourceQuote": "11. 다음 그림에서 점 $\\mathrm{O}$는 $\\triangle\\mathrm{ABC}$의 외심이고 $\\angle\\mathrm{BAO}=25^\\circ$, $\\angle\\mathrm{OBC}=30^\\circ$일 때, $\\angle\\mathrm{OAC}$의 크기를 구하면? (3점) [그림]"
+    },
+    {
+      "id": "b",
+      "condition": "∠BAO=25°",
+      "mappedTo": [
+        "given25"
+      ],
+      "sourceQuote": "11. 다음 그림에서 점 $\\mathrm{O}$는 $\\triangle\\mathrm{ABC}$의 외심이고 $\\angle\\mathrm{BAO}=25^\\circ$, $\\angle\\mathrm{OBC}=30^\\circ$일 때, $\\angle\\mathrm{OAC}$의 크기를 구하면? (3점) [그림]"
+    },
+    {
+      "id": "c",
+      "condition": "∠OBC=30°",
+      "mappedTo": [
+        "given30"
+      ],
+      "sourceQuote": "11. 다음 그림에서 점 $\\mathrm{O}$는 $\\triangle\\mathrm{ABC}$의 외심이고 $\\angle\\mathrm{BAO}=25^\\circ$, $\\angle\\mathrm{OBC}=30^\\circ$일 때, $\\angle\\mathrm{OAC}$의 크기를 구하면? (3점) [그림]"
+    },
+    {
+      "id": "d",
+      "condition": "∠OAC=x",
+      "mappedTo": [
+        "unknownOAC"
+      ],
+      "sourceQuote": "11. 다음 그림에서 점 $\\mathrm{O}$는 $\\triangle\\mathrm{ABC}$의 외심이고 $\\angle\\mathrm{BAO}=25^\\circ$, $\\angle\\mathrm{OBC}=30^\\circ$일 때, $\\angle\\mathrm{OAC}$의 크기를 구하면? (3점) [그림]"
+    }
+  ],
+  "newVisualInformation": []
+}

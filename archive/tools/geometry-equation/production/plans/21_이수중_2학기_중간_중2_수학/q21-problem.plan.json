@@ -1,0 +1,254 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "899377385371",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "5100622614629",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "sEC",
+      "refs": [
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "sED",
+      "refs": [
+        "E",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "given10",
+        "refs": [
+          "A",
+          "B",
+          "E"
+        ],
+        "label": "10°",
+        "arcs": 1,
+        "style": "ARC"
+      },
+      {
+        "id": "unknownX",
+        "refs": [
+          "D",
+          "E",
+          "C"
+        ],
+        "label": "x",
+        "arcs": 1,
+        "style": "ARC"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "squareB",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 550
+  },
+  "caption": "정사각형의 대각선 위 E와 10도 보조각",
+  "accessibilityDescription": "정사각형 ABCD의 AC 위 E에 B,E와 D,E를 잇고 B의 ABE=10도, E의 DEC=x를 원본처럼 표시한다.",
+  "sourceQuote": "21. 오른쪽 그림과 같이 정사각형 $\\mathrm{ABCD}$",
+  "sourceConditions": [
+    {
+      "id": "a",
+      "condition": "정사각형 ABCD",
+      "mappedTo": [
+        "squareB"
+      ],
+      "sourceQuote": "21. 오른쪽 그림과 같이 정사각형 $\\mathrm{ABCD}$의 대각선 $\\mathrm{AC}$ 위에 $\\angle\\mathrm{ABE}=10^\\circ$가 되도록 점 $\\mathrm{E}$를 잡을 때, $\\angle x$의 크기는? (4점) [그림]"
+    },
+    {
+      "id": "b",
+      "condition": "E는 AC 대각선 위",
+      "mappedTo": [
+        "sAE",
+        "sEC"
+      ],
+      "sourceQuote": "21. 오른쪽 그림과 같이 정사각형 $\\mathrm{ABCD}$의 대각선 $\\mathrm{AC}$ 위에 $\\angle\\mathrm{ABE}=10^\\circ$가 되도록 점 $\\mathrm{E}$를 잡을 때, $\\angle x$의 크기는? (4점) [그림]"
+    },
+    {
+      "id": "c",
+      "condition": "∠ABE=10°",
+      "mappedTo": [
+        "given10"
+      ],
+      "sourceQuote": "21. 오른쪽 그림과 같이 정사각형 $\\mathrm{ABCD}$의 대각선 $\\mathrm{AC}$ 위에 $\\angle\\mathrm{ABE}=10^\\circ$가 되도록 점 $\\mathrm{E}$를 잡을 때, $\\angle x$의 크기는? (4점) [그림]"
+    },
+    {
+      "id": "d",
+      "condition": "∠DEC=x",
+      "mappedTo": [
+        "unknownX"
+      ],
+      "sourceQuote": "21. 오른쪽 그림과 같이 정사각형 $\\mathrm{ABCD}$의 대각선 $\\mathrm{AC}$ 위에 $\\angle\\mathrm{ABE}=10^\\circ$가 되도록 점 $\\mathrm{E}$를 잡을 때, $\\angle x$의 크기는? (4점) [그림]"
+    }
+  ],
+  "newVisualInformation": []
+}

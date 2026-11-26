@@ -1,0 +1,347 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "39",
+              "denominator": "4"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "1",
+                  "denominator": "4"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2079"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "27",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "13",
+              "denominator": "4"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "1",
+                  "denominator": "12"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2079"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "49",
+              "denominator": "4"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "1",
+                  "denominator": "12"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2079"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "I",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "33",
+              "denominator": "4"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "1",
+                  "denominator": "12"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2079"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "I"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sDB",
+      "refs": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "sEA",
+      "refs": [
+        "E",
+        "A"
+      ]
+    },
+    {
+      "id": "sDI",
+      "refs": [
+        "D",
+        "I"
+      ]
+    },
+    {
+      "id": "sIE",
+      "refs": [
+        "I",
+        "E"
+      ]
+    },
+    {
+      "id": "sBI",
+      "refs": [
+        "B",
+        "I"
+      ]
+    },
+    {
+      "id": "sIC",
+      "refs": [
+        "I",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "parallels": [
+      {
+        "id": "parallelDEBC",
+        "count": 1,
+        "segments": [
+          "sDI",
+          "sBC"
+        ]
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "BD5",
+        "from": "B",
+        "to": "D",
+        "label": "5",
+        "side": "LEFT",
+        "unit": "cm"
+      },
+      {
+        "id": "CE4",
+        "from": "C",
+        "to": "E",
+        "label": "4",
+        "side": "RIGHT",
+        "unit": "cm"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 550
+  },
+  "caption": "내심 I를 지나는 평행선 DE와 양쪽 5·4cm 구간",
+  "accessibilityDescription": "두 변의 교점 D,E와 내심 I가 한 직선 위이고 DE는 BC와 평행하며 BD=5cm, CE=4cm를 서로 다른 쪽에 붙인다.",
+  "sourceQuote": "13. 다음 그림에서 점 $\\mathrm{I}$는 $\\trian",
+  "sourceConditions": [
+    {
+      "id": "a",
+      "condition": "I는 내심",
+      "mappedTo": [
+        "I"
+      ],
+      "sourceQuote": "13. 다음 그림에서 점 $\\mathrm{I}$는 $\\triangle\\mathrm{ABC}$의 내심이고 내심 $\\mathrm{I}$를 지나고 $\\overline{\\mathrm{BC}}$에 평행한 직선과 $\\overline{\\mathrm{AB}}$, $\\overline{\\mathrm{AC}}$의 교점을 각각 $\\mathrm{D}$, $\\mathrm{E}$라 하자. $\\overline{\\mathrm{BD}}=5\\text{ cm}$, $\\overline{\\mathrm{CE}}=4\\text{ cm}$일 때, $\\overline{\\mathrm{DE}}$의 길이를 구하면? (4점) [그림]"
+    },
+    {
+      "id": "b",
+      "condition": "DE∥BC",
+      "mappedTo": [
+        "parallelDEBC"
+      ],
+      "sourceQuote": "13. 다음 그림에서 점 $\\mathrm{I}$는 $\\triangle\\mathrm{ABC}$의 내심이고 내심 $\\mathrm{I}$를 지나고 $\\overline{\\mathrm{BC}}$에 평행한 직선과 $\\overline{\\mathrm{AB}}$, $\\overline{\\mathrm{AC}}$의 교점을 각각 $\\mathrm{D}$, $\\mathrm{E}$라 하자. $\\overline{\\mathrm{BD}}=5\\text{ cm}$, $\\overline{\\mathrm{CE}}=4\\text{ cm}$일 때, $\\overline{\\mathrm{DE}}$의 길이를 구하면? (4점) [그림]"
+    },
+    {
+      "id": "c",
+      "condition": "BD=5cm",
+      "mappedTo": [
+        "BD5"
+      ],
+      "sourceQuote": "13. 다음 그림에서 점 $\\mathrm{I}$는 $\\triangle\\mathrm{ABC}$의 내심이고 내심 $\\mathrm{I}$를 지나고 $\\overline{\\mathrm{BC}}$에 평행한 직선과 $\\overline{\\mathrm{AB}}$, $\\overline{\\mathrm{AC}}$의 교점을 각각 $\\mathrm{D}$, $\\mathrm{E}$라 하자. $\\overline{\\mathrm{BD}}=5\\text{ cm}$, $\\overline{\\mathrm{CE}}=4\\text{ cm}$일 때, $\\overline{\\mathrm{DE}}$의 길이를 구하면? (4점) [그림]"
+    },
+    {
+      "id": "d",
+      "condition": "CE=4cm",
+      "mappedTo": [
+        "CE4"
+      ],
+      "sourceQuote": "13. 다음 그림에서 점 $\\mathrm{I}$는 $\\triangle\\mathrm{ABC}$의 내심이고 내심 $\\mathrm{I}$를 지나고 $\\overline{\\mathrm{BC}}$에 평행한 직선과 $\\overline{\\mathrm{AB}}$, $\\overline{\\mathrm{AC}}$의 교점을 각각 $\\mathrm{D}$, $\\mathrm{E}$라 하자. $\\overline{\\mathrm{BD}}=5\\text{ cm}$, $\\overline{\\mathrm{CE}}=4\\text{ cm}$일 때, $\\overline{\\mathrm{DE}}$의 길이를 구하면? (4점) [그림]"
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 아래쪽이 잘린 선분 BC는 발문에서 지정한 삼각형의 변으로 완성한다."
+  ]
+}

@@ -1,0 +1,326 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-16",
+              "denominator": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-16",
+              "denominator": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "-8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "24"
+            },
+            {
+              "kind": "integer",
+              "value": "-8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "21"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "sFG",
+      "refs": [
+        "F",
+        "G"
+      ]
+    },
+    {
+      "id": "sGH",
+      "refs": [
+        "G",
+        "H"
+      ]
+    },
+    {
+      "id": "sHE",
+      "refs": [
+        "H",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "AD6",
+        "from": "A",
+        "to": "D",
+        "label": "6",
+        "side": "ABOVE",
+        "unit": "cm"
+      },
+      {
+        "id": "BC8",
+        "from": "B",
+        "to": "C",
+        "label": "8",
+        "side": "BELOW",
+        "unit": "cm"
+      },
+      {
+        "id": "FG12",
+        "from": "F",
+        "to": "G",
+        "label": "12",
+        "side": "BELOW",
+        "unit": "cm"
+      },
+      {
+        "id": "EF8",
+        "from": "E",
+        "to": "F",
+        "label": "8",
+        "side": "LEFT",
+        "unit": "cm"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rightB",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "rightF",
+      "refs": [
+        "E",
+        "F",
+        "G"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 550
+  },
+  "caption": "닮은 두 사다리꼴의 대응변과 6·8·12 길이",
+  "accessibilityDescription": "왼쪽과 오른쪽 사다리꼴의 높이를 다르게 그리고 작은 윗변6, 아랫변8, 큰 아랫변12, 큰 세로변8의 치수를 서로 독립적으로 보인다.",
+  "sourceQuote": "16. 다음 그림에서 $\\square\\mathrm{ABCD}\\s",
+  "sourceConditions": [
+    {
+      "id": "a",
+      "condition": "사다리꼴 ABCD와 EFGH 닮음",
+      "mappedTo": [
+        "sDA",
+        "sHE"
+      ],
+      "sourceQuote": "16. 다음 그림에서 $\\square\\mathrm{ABCD}\\sim\\square\\mathrm{EFGH}$일 때, $\\overline{\\mathrm{EH}}$의 길이를 구하면? [3점] [그림]"
+    },
+    {
+      "id": "b",
+      "condition": "AD=6, BC=8, FG=12",
+      "mappedTo": [
+        "AD6",
+        "BC8",
+        "FG12"
+      ],
+      "sourceQuote": "16. 다음 그림에서 $\\square\\mathrm{ABCD}\\sim\\square\\mathrm{EFGH}$일 때, $\\overline{\\mathrm{EH}}$의 길이를 구하면? [3점] [그림]"
+    },
+    {
+      "id": "c",
+      "condition": "EF=8",
+      "mappedTo": [
+        "EF8"
+      ],
+      "sourceQuote": "16. 다음 그림에서 $\\square\\mathrm{ABCD}\\sim\\square\\mathrm{EFGH}$일 때, $\\overline{\\mathrm{EH}}$의 길이를 구하면? [3점] [그림]"
+    }
+  ],
+  "newVisualInformation": []
+}

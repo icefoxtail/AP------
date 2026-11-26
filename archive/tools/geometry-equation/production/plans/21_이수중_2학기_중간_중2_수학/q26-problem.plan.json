@@ -1,0 +1,260 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "I",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "incircle",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "I"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "I",
+    "T"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sBI",
+      "refs": [
+        "B",
+        "I"
+      ]
+    },
+    {
+      "id": "sIC",
+      "refs": [
+        "I",
+        "C"
+      ]
+    },
+    {
+      "id": "sIT",
+      "refs": [
+        "I",
+        "T"
+      ]
+    }
+  ],
+  "displayCircles": [
+    "incircle"
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "AB13",
+        "from": "A",
+        "to": "B",
+        "label": "13",
+        "side": "ABOVE",
+        "unit": "cm"
+      },
+      {
+        "id": "BC12",
+        "from": "B",
+        "to": "C",
+        "label": "12",
+        "side": "BELOW",
+        "unit": "cm"
+      },
+      {
+        "id": "CA5",
+        "from": "C",
+        "to": "A",
+        "label": "5",
+        "side": "RIGHT",
+        "unit": "cm"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rightC",
+      "refs": [
+        "B",
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "radiusFoot",
+      "refs": [
+        "I",
+        "T",
+        "B"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 550
+  },
+  "caption": "직각삼각형 5·12·13의 내접원과 내심 I",
+  "accessibilityDescription": "5·12·13 직각삼각형 안에 반지름 2의 내접원을 그리고 내심 I, 접점 T와 BC에 내린 수선을 표시한다.",
+  "sourceQuote": "서술형 4. 오른쪽 그림에서 점 $\\mathrm{I}$는 $\\a",
+  "sourceConditions": [
+    {
+      "id": "a",
+      "condition": "∠C=90°",
+      "mappedTo": [
+        "rightC"
+      ],
+      "sourceQuote": "서술형 4. 오른쪽 그림에서 점 $\\mathrm{I}$는 $\\angle\\mathrm{C}=90^\\circ$인 직각삼각형 $\\mathrm{ABC}$의 내심이다. $\\overline{\\mathrm{AB}}=13\\text{ cm}$, $\\overline{\\mathrm{BC}}=12\\text{ cm}$, $\\overline{\\mathrm{CA}}=5\\text{ cm}$일 때, $\\triangle\\mathrm{IBC}$의 넓이를 구하려고 한다. 다음 물음에 답하시오. (5점, 정답과 풀이과정을 쓰시오.) [그림] (1) 내접원의 반지름의 길이를 $r\\text{ cm}$라 할 때, $r$을 구하시오. (3점) (2) $\\triangle\\mathrm{IBC}$의 넓이를 구하시오. (2점)"
+    },
+    {
+      "id": "b",
+      "condition": "AB=13,BC=12,CA=5",
+      "mappedTo": [
+        "AB13",
+        "BC12",
+        "CA5"
+      ],
+      "sourceQuote": "서술형 4. 오른쪽 그림에서 점 $\\mathrm{I}$는 $\\angle\\mathrm{C}=90^\\circ$인 직각삼각형 $\\mathrm{ABC}$의 내심이다. $\\overline{\\mathrm{AB}}=13\\text{ cm}$, $\\overline{\\mathrm{BC}}=12\\text{ cm}$, $\\overline{\\mathrm{CA}}=5\\text{ cm}$일 때, $\\triangle\\mathrm{IBC}$의 넓이를 구하려고 한다. 다음 물음에 답하시오. (5점, 정답과 풀이과정을 쓰시오.) [그림] (1) 내접원의 반지름의 길이를 $r\\text{ cm}$라 할 때, $r$을 구하시오. (3점) (2) $\\triangle\\mathrm{IBC}$의 넓이를 구하시오. (2점)"
+    },
+    {
+      "id": "c",
+      "condition": "I는 내심 및 내접원의 중심",
+      "mappedTo": [
+        "I",
+        "incircle"
+      ],
+      "sourceQuote": "서술형 4. 오른쪽 그림에서 점 $\\mathrm{I}$는 $\\angle\\mathrm{C}=90^\\circ$인 직각삼각형 $\\mathrm{ABC}$의 내심이다. $\\overline{\\mathrm{AB}}=13\\text{ cm}$, $\\overline{\\mathrm{BC}}=12\\text{ cm}$, $\\overline{\\mathrm{CA}}=5\\text{ cm}$일 때, $\\triangle\\mathrm{IBC}$의 넓이를 구하려고 한다. 다음 물음에 답하시오. (5점, 정답과 풀이과정을 쓰시오.) [그림] (1) 내접원의 반지름의 길이를 $r\\text{ cm}$라 할 때, $r$을 구하시오. (3점) (2) $\\triangle\\mathrm{IBC}$의 넓이를 구하시오. (2점)"
+    }
+  ],
+  "newVisualInformation": []
+}

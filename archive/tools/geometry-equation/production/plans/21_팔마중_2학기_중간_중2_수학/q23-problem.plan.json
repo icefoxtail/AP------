@@ -1,0 +1,253 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "rational",
+              "numerator": "25",
+              "denominator": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "M",
+    "P"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCM",
+      "refs": [
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "sMD",
+      "refs": [
+        "M",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAM",
+      "refs": [
+        "A",
+        "M"
+      ]
+    },
+    {
+      "id": "sMP",
+      "refs": [
+        "M",
+        "P"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sCP",
+      "refs": [
+        "C",
+        "P"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "midCD",
+        "segments": [
+          "sCM",
+          "sMD"
+        ],
+        "count": 1
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "AD5",
+        "from": "A",
+        "to": "D",
+        "label": "5",
+        "side": "ABOVE",
+        "unit": "cm"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 550
+  },
+  "caption": "평행사변형에서 중점 M과 두 연장선의 교점 P",
+  "accessibilityDescription": "M은 C,D의 가운데이고 A-M-P는 한 직선, B-C-P 역시 한 직선이다. 연장부는 점선, AD에는 5cm가 있다.",
+  "sourceQuote": "[서술형 3] 오른쪽 그림과 같은 평행사변형 $\\mathrm{A",
+  "sourceConditions": [
+    {
+      "id": "a",
+      "condition": "AD=5cm",
+      "mappedTo": [
+        "AD5"
+      ],
+      "sourceQuote": "[서술형 3] 오른쪽 그림과 같은 평행사변형 $\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AD}}=5\\text{cm}$이고 $\\overline{\\mathrm{CD}}$의 중점을 $\\mathrm{M}$, $\\overline{\\mathrm{AM}}$의 연장선과 $\\overline{\\mathrm{BC}}$의 연장선의 교점을 $\\mathrm{P}$라 할 때, $\\overline{\\mathrm{BP}}$의 길이를 구하려고 합니다. 다음 물음에 답하시오. [4점] [그림] (1) $\\triangle\\mathrm{AMD}$와 $\\triangle\\mathrm{PMC}$가 합동임을 설명하시오. [2점] (2) $\\overline{\\mathrm{BP}}$의 길이를 구하는 풀이과정과 답을 쓰시오. [2점]"
+    },
+    {
+      "id": "b",
+      "condition": "M은 CD 중점",
+      "mappedTo": [
+        "midCD"
+      ],
+      "sourceQuote": "[서술형 3] 오른쪽 그림과 같은 평행사변형 $\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AD}}=5\\text{cm}$이고 $\\overline{\\mathrm{CD}}$의 중점을 $\\mathrm{M}$, $\\overline{\\mathrm{AM}}$의 연장선과 $\\overline{\\mathrm{BC}}$의 연장선의 교점을 $\\mathrm{P}$라 할 때, $\\overline{\\mathrm{BP}}$의 길이를 구하려고 합니다. 다음 물음에 답하시오. [4점] [그림] (1) $\\triangle\\mathrm{AMD}$와 $\\triangle\\mathrm{PMC}$가 합동임을 설명하시오. [2점] (2) $\\overline{\\mathrm{BP}}$의 길이를 구하는 풀이과정과 답을 쓰시오. [2점]"
+    },
+    {
+      "id": "c",
+      "condition": "AM 연장선과 BC 연장선이 P에서 만남",
+      "mappedTo": [
+        "sMP",
+        "sCP"
+      ],
+      "sourceQuote": "[서술형 3] 오른쪽 그림과 같은 평행사변형 $\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AD}}=5\\text{cm}$이고 $\\overline{\\mathrm{CD}}$의 중점을 $\\mathrm{M}$, $\\overline{\\mathrm{AM}}$의 연장선과 $\\overline{\\mathrm{BC}}$의 연장선의 교점을 $\\mathrm{P}$라 할 때, $\\overline{\\mathrm{BP}}$의 길이를 구하려고 합니다. 다음 물음에 답하시오. [4점] [그림] (1) $\\triangle\\mathrm{AMD}$와 $\\triangle\\mathrm{PMC}$가 합동임을 설명하시오. [2점] (2) $\\overline{\\mathrm{BP}}$의 길이를 구하는 풀이과정과 답을 쓰시오. [2점]"
+    }
+  ],
+  "newVisualInformation": []
+}

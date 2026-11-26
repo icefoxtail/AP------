@@ -1,0 +1,277 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "11532562594671",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "18"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "29532562594671",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "24532562594671",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBF",
+      "refs": [
+        "B",
+        "F"
+      ]
+    },
+    {
+      "id": "sFC",
+      "refs": [
+        "F",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sEA",
+      "refs": [
+        "E",
+        "A"
+      ]
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "sDF",
+      "refs": [
+        "D",
+        "F"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "BC18",
+        "from": "B",
+        "to": "C",
+        "label": "18",
+        "side": "BELOW",
+        "unit": "cm"
+      },
+      {
+        "id": "CD13",
+        "from": "C",
+        "to": "D",
+        "label": "13",
+        "side": "RIGHT",
+        "unit": "cm"
+      }
+    ],
+    "regions": [
+      {
+        "id": "targetEBFD",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "E",
+              "B",
+              "F",
+              "D"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 550
+  },
+  "caption": "평행사변형 안의 두 이등분선과 사각형 EBFD 넓이 영역",
+  "accessibilityDescription": "BC=18cm, CD=13cm를 치수선으로 그리고 B-E 및 D-F의 교차 없이 생긴 사각형 E-B-F-D에만 의도된 회색 음영.",
+  "sourceQuote": "18. 오른쪽 그림과 같은 평행사변형 $\\mathrm{ABCD}",
+  "sourceConditions": [
+    {
+      "id": "a",
+      "condition": "BC=18cm",
+      "mappedTo": [
+        "BC18"
+      ],
+      "sourceQuote": "18. 오른쪽 그림과 같은 평행사변형 $\\mathrm{ABCD}$에서 $\\angle\\mathrm{B}, \\angle\\mathrm{D}$의 이등분선이 $\\overline{\\mathrm{AD}}$, $\\overline{\\mathrm{BC}}$와 만나는 점을 각각 $\\mathrm{E}, \\mathrm{F}$라 하자. 평행사변형 $\\mathrm{ABCD}$의 넓이가 $108\\text{ cm}^2$이고, $\\overline{\\mathrm{CD}}=13\\text{ cm}$, $\\overline{\\mathrm{BC}}=18\\text{ cm}$일 때, $\\square\\mathrm{EBFD}$의 넓이를 구하면? (4점) [그림]"
+    },
+    {
+      "id": "b",
+      "condition": "CD=13cm",
+      "mappedTo": [
+        "CD13"
+      ],
+      "sourceQuote": "18. 오른쪽 그림과 같은 평행사변형 $\\mathrm{ABCD}$에서 $\\angle\\mathrm{B}, \\angle\\mathrm{D}$의 이등분선이 $\\overline{\\mathrm{AD}}$, $\\overline{\\mathrm{BC}}$와 만나는 점을 각각 $\\mathrm{E}, \\mathrm{F}$라 하자. 평행사변형 $\\mathrm{ABCD}$의 넓이가 $108\\text{ cm}^2$이고, $\\overline{\\mathrm{CD}}=13\\text{ cm}$, $\\overline{\\mathrm{BC}}=18\\text{ cm}$일 때, $\\square\\mathrm{EBFD}$의 넓이를 구하면? (4점) [그림]"
+    },
+    {
+      "id": "c",
+      "condition": "B·D의 각이등분선은 E·F로 연결",
+      "mappedTo": [
+        "sBE",
+        "sDF"
+      ],
+      "sourceQuote": "18. 오른쪽 그림과 같은 평행사변형 $\\mathrm{ABCD}$에서 $\\angle\\mathrm{B}, \\angle\\mathrm{D}$의 이등분선이 $\\overline{\\mathrm{AD}}$, $\\overline{\\mathrm{BC}}$와 만나는 점을 각각 $\\mathrm{E}, \\mathrm{F}$라 하자. 평행사변형 $\\mathrm{ABCD}$의 넓이가 $108\\text{ cm}^2$이고, $\\overline{\\mathrm{CD}}=13\\text{ cm}$, $\\overline{\\mathrm{BC}}=18\\text{ cm}$일 때, $\\square\\mathrm{EBFD}$의 넓이를 구하면? (4점) [그림]"
+    },
+    {
+      "id": "d",
+      "condition": "전체 평행사변형 넓이는 108",
+      "mappedTo": [
+        "targetEBFD"
+      ],
+      "sourceQuote": "18. 오른쪽 그림과 같은 평행사변형 $\\mathrm{ABCD}$에서 $\\angle\\mathrm{B}, \\angle\\mathrm{D}$의 이등분선이 $\\overline{\\mathrm{AD}}$, $\\overline{\\mathrm{BC}}$와 만나는 점을 각각 $\\mathrm{E}, \\mathrm{F}$라 하자. 평행사변형 $\\mathrm{ABCD}$의 넓이가 $108\\text{ cm}^2$이고, $\\overline{\\mathrm{CD}}=13\\text{ cm}$, $\\overline{\\mathrm{BC}}=18\\text{ cm}$일 때, $\\square\\mathrm{EBFD}$의 넓이를 구하면? (4점) [그림]"
+    }
+  ],
+  "newVisualInformation": [
+    "대상 영역의 꼭짓점 순서 E-B-F-D를 보존하여 주변에 불필요한 면 칠을 하지 않는다."
+  ]
+}

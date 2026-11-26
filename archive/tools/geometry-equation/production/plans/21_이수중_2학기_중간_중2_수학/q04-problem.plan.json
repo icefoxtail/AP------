@@ -1,0 +1,318 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-1"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Y",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "V",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "7"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "graph1",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "-1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "graph2",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "-3"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "O",
+    "X",
+    "Y",
+    "U",
+    "V"
+  ],
+  "displaySegments": [
+    {
+      "id": "sXY",
+      "refs": [
+        "X",
+        "Y"
+      ],
+      "arrow": "END"
+    },
+    {
+      "id": "sUV",
+      "refs": [
+        "U",
+        "V"
+      ],
+      "arrow": "END"
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "displayLines": [
+    "graph1",
+    "graph2"
+  ],
+  "lineLabels": [
+    {
+      "nodeId": "graph1",
+      "form": "SLOPE_INTERCEPT"
+    },
+    {
+      "nodeId": "graph2",
+      "form": "SLOPE_INTERCEPT"
+    }
+  ],
+  "planeMarks": {
+    "regions": [
+      {
+        "id": "shadedABC",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "A",
+              "B",
+              "C"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "X",
+    "Y",
+    "U",
+    "V"
+  ],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 550
+  },
+  "caption": "두 직선과 x축이 둘러싼 삼각형 ABC의 넓이 영역",
+  "accessibilityDescription": "좌표축, 두 직선의 교점 A, 두 x절편 B와 C, 삼각형 ABC 안쪽에만 음영이 있다.",
+  "sourceQuote": "4. 두 직선 $y=2x+6$, $y=-x+3$의 교점을 $\\m",
+  "sourceConditions": [
+    {
+      "id": "g1",
+      "condition": "두 직선 y=2x+6, y=-x+3의 교점 A",
+      "mappedTo": [
+        "A"
+      ],
+      "sourceQuote": "4. 두 직선 $y=2x+6$, $y=-x+3$의 교점을 $\\mathrm{A}$, 두 직선과 $x$축과의 교점을 각각 $\\mathrm{B}, \\mathrm{C}$라 할 때, 삼각형 $\\mathrm{ABC}$의 넓이를 구하면? (4점) [그림]"
+    },
+    {
+      "id": "g2",
+      "condition": "두 직선의 x절편 B와 C",
+      "mappedTo": [
+        "B",
+        "C"
+      ],
+      "sourceQuote": "4. 두 직선 $y=2x+6$, $y=-x+3$의 교점을 $\\mathrm{A}$, 두 직선과 $x$축과의 교점을 각각 $\\mathrm{B}, \\mathrm{C}$라 할 때, 삼각형 $\\mathrm{ABC}$의 넓이를 구하면? (4점) [그림]"
+    },
+    {
+      "id": "g3",
+      "condition": "넓이를 구하는 삼각형 ABC",
+      "mappedTo": [
+        "shadedABC"
+      ],
+      "sourceQuote": "4. 두 직선 $y=2x+6$, $y=-x+3$의 교점을 $\\mathrm{A}$, 두 직선과 $x$축과의 교점을 각각 $\\mathrm{B}, \\mathrm{C}$라 할 때, 삼각형 $\\mathrm{ABC}$의 넓이를 구하면? (4점) [그림]"
+    }
+  ],
+  "newVisualInformation": [
+    "원본 q04.png의 삼각형 회색 음영이 기존 SVG에서 누락됨.",
+    "두 직선 방정식은 원문에서 유지하되 좌표축 원점과 음영 경계를 같이 표시한다."
+  ]
+}

@@ -1,0 +1,316 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "BA",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "100"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "CA",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "C",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "20"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lBA",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "BA"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lCA",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "C",
+          "CA"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lBA",
+          "lCA"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "BI",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "50"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "CI",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "C",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lBI",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "BI"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lCI",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "C",
+          "CI"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "I",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lBI",
+          "lCI"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "I"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAI",
+      "refs": [
+        "A",
+        "I"
+      ]
+    },
+    {
+      "id": "sBI",
+      "refs": [
+        "B",
+        "I"
+      ]
+    },
+    {
+      "id": "sCI",
+      "refs": [
+        "C",
+        "I"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "ratioAIB",
+        "refs": [
+          "A",
+          "I",
+          "B"
+        ],
+        "label": "5k",
+        "arcs": 1,
+        "style": "ARC"
+      },
+      {
+        "id": "ratioBIC",
+        "refs": [
+          "B",
+          "I",
+          "C"
+        ],
+        "label": "6k",
+        "arcs": 1,
+        "style": "ARC"
+      },
+      {
+        "id": "ratioAIC",
+        "refs": [
+          "A",
+          "I",
+          "C"
+        ],
+        "label": "7k",
+        "arcs": 1,
+        "style": "ARC"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 550
+  },
+  "caption": "내심 주변의 세 각을 5k·6k·7k로 독립 표기",
+  "accessibilityDescription": "내심 I에서 A·B·C로 이어진 세 선분 사이의 각을 각각 다른 비율 이름으로 표시한다.",
+  "sourceQuote": "[서술형 2] 다음 그림에서 점 $\\mathrm{I}$는 $\\t",
+  "sourceConditions": [
+    {
+      "id": "a",
+      "condition": "I는 내심",
+      "mappedTo": [
+        "I"
+      ],
+      "sourceQuote": "[서술형 2] 다음 그림에서 점 $\\mathrm{I}$는 $\\triangle\\mathrm{ABC}$의 내심이다. $\\angle\\mathrm{AIB}:\\angle\\mathrm{BIC}:\\angle\\mathrm{AIC}=5:6:7$일 때, $\\angle\\mathrm{ABC}$의 크기를 구하려고 합니다. 다음 물음에 답하시오. [4점] [그림] (1) $\\angle\\mathrm{AIC}$의 크기를 구하는 풀이과정과 답을 쓰시오. [2점] (2) $\\angle\\mathrm{ABC}$의 크기를 구하는 풀이과정과 답을 쓰시오. [2점]"
+    },
+    {
+      "id": "b",
+      "condition": "AIB:BIC:AIC=5:6:7",
+      "mappedTo": [
+        "ratioAIB",
+        "ratioBIC",
+        "ratioAIC"
+      ],
+      "sourceQuote": "[서술형 2] 다음 그림에서 점 $\\mathrm{I}$는 $\\triangle\\mathrm{ABC}$의 내심이다. $\\angle\\mathrm{AIB}:\\angle\\mathrm{BIC}:\\angle\\mathrm{AIC}=5:6:7$일 때, $\\angle\\mathrm{ABC}$의 크기를 구하려고 합니다. 다음 물음에 답하시오. [4점] [그림] (1) $\\angle\\mathrm{AIC}$의 크기를 구하는 풀이과정과 답을 쓰시오. [2점] (2) $\\angle\\mathrm{ABC}$의 크기를 구하는 풀이과정과 답을 쓰시오. [2점]"
+    }
+  ],
+  "newVisualInformation": []
+}

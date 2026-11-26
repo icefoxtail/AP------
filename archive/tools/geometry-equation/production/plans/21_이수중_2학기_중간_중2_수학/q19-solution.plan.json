@@ -1,0 +1,318 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "6"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "6"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "3"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "O"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAO",
+      "refs": [
+        "A",
+        "O"
+      ]
+    },
+    {
+      "id": "sOC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "sBO",
+      "refs": [
+        "B",
+        "O"
+      ]
+    },
+    {
+      "id": "sOD",
+      "refs": [
+        "O",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "given60",
+        "refs": [
+          "B",
+          "D",
+          "C"
+        ],
+        "label": "60°",
+        "arcs": 1,
+        "style": "ARC"
+      },
+      {
+        "id": "unknownY",
+        "refs": [
+          "D",
+          "A",
+          "O"
+        ],
+        "label": "y",
+        "arcs": 1,
+        "style": "ARC"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "AC12",
+        "from": "A",
+        "to": "C",
+        "label": "12",
+        "side": "LEFT",
+        "unit": "cm"
+      },
+      {
+        "id": "ODx",
+        "from": "O",
+        "to": "D",
+        "label": "x",
+        "side": "ABOVE",
+        "unit": "cm"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "rightC",
+      "refs": [
+        "B",
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 550
+  },
+  "caption": "직사각형의 두 대각선과 AC=12·∠BDC=60°",
+  "accessibilityDescription": "두 대각선의 교점을 O로 쓰고 AC 전체 12cm, OD 구간 xcm, D의 BDC 60도, A의 OAD y도를 서로 겹치지 않게 표시한다.",
+  "sourceQuote": "19. 오른쪽 그림의 직사각형 $\\mathrm{ABCD}$에서 ",
+  "sourceConditions": [
+    {
+      "id": "a",
+      "condition": "직사각형 ABCD",
+      "mappedTo": [
+        "rightC"
+      ],
+      "sourceQuote": "19. 오른쪽 그림의 직사각형 $\\mathrm{ABCD}$에서 점 $\\mathrm{O}$는 두 대각선의 교점이다. $\\overline{\\mathrm{AC}}=12\\text{ cm}$, $\\angle\\mathrm{BDC}=60^\\circ$일 때, $x$와 $y$에 대하여 $x+y$의 값은? (3점) [그림]"
+    },
+    {
+      "id": "b",
+      "condition": "AC=12cm",
+      "mappedTo": [
+        "AC12"
+      ],
+      "sourceQuote": "19. 오른쪽 그림의 직사각형 $\\mathrm{ABCD}$에서 점 $\\mathrm{O}$는 두 대각선의 교점이다. $\\overline{\\mathrm{AC}}=12\\text{ cm}$, $\\angle\\mathrm{BDC}=60^\\circ$일 때, $x$와 $y$에 대하여 $x+y$의 값은? (3점) [그림]"
+    },
+    {
+      "id": "c",
+      "condition": "∠BDC=60°",
+      "mappedTo": [
+        "given60"
+      ],
+      "sourceQuote": "19. 오른쪽 그림의 직사각형 $\\mathrm{ABCD}$에서 점 $\\mathrm{O}$는 두 대각선의 교점이다. $\\overline{\\mathrm{AC}}=12\\text{ cm}$, $\\angle\\mathrm{BDC}=60^\\circ$일 때, $x$와 $y$에 대하여 $x+y$의 값은? (3점) [그림]"
+    },
+    {
+      "id": "d",
+      "condition": "OD=x, ∠OAD=y",
+      "mappedTo": [
+        "ODx",
+        "unknownY"
+      ],
+      "sourceQuote": "19. 오른쪽 그림의 직사각형 $\\mathrm{ABCD}$에서 점 $\\mathrm{O}$는 두 대각선의 교점이다. $\\overline{\\mathrm{AC}}=12\\text{ cm}$, $\\angle\\mathrm{BDC}=60^\\circ$일 때, $x$와 $y$에 대하여 $x+y$의 값은? (3점) [그림]"
+    }
+  ],
+  "newVisualInformation": []
+}

@@ -1,0 +1,248 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "10989909677818",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "4767014370377",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "I",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "rational",
+              "numerator": "2800830152839",
+              "denominator": "1000000000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "O",
+    "I"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sOC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "sIB",
+      "refs": [
+        "I",
+        "B"
+      ]
+    },
+    {
+      "id": "sIC",
+      "refs": [
+        "I",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "isosceles",
+        "segments": [
+          "sAB",
+          "sCA"
+        ],
+        "count": 1
+      }
+    ],
+    "angles": [
+      {
+        "id": "apex40",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "label": "40°",
+        "arcs": 1,
+        "style": "ARC"
+      },
+      {
+        "id": "unknownBOI",
+        "refs": [
+          "O",
+          "B",
+          "I"
+        ],
+        "label": "x",
+        "arcs": 1,
+        "style": "ARC"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 550
+  },
+  "caption": "40도 이등변삼각형 안의 외심 O와 내심 I",
+  "accessibilityDescription": "중앙 세로선에 외심 O와 내심 I를 분리해 적고, 각각 B,C와 이은 선분으로 B에서의 두 중심 사이 각을 표시한다.",
+  "sourceQuote": "12. 오른쪽 그림과 같이 $\\overline{\\mathrm{A",
+  "sourceConditions": [
+    {
+      "id": "a",
+      "condition": "AB=AC",
+      "mappedTo": [
+        "isosceles"
+      ],
+      "sourceQuote": "12. 오른쪽 그림과 같이 $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{AC}}$인 이등변삼각형 $\\mathrm{ABC}$에서 점 $\\mathrm{O}$와 점 $\\mathrm{I}$는 각각 $\\triangle\\mathrm{ABC}$의 외심과 내심이다. $\\angle\\mathrm{A}=40^\\circ$일 때, $\\angle\\mathrm{OBI}$의 크기는? (4점) [그림]"
+    },
+    {
+      "id": "b",
+      "condition": "∠A=40°",
+      "mappedTo": [
+        "apex40"
+      ],
+      "sourceQuote": "12. 오른쪽 그림과 같이 $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{AC}}$인 이등변삼각형 $\\mathrm{ABC}$에서 점 $\\mathrm{O}$와 점 $\\mathrm{I}$는 각각 $\\triangle\\mathrm{ABC}$의 외심과 내심이다. $\\angle\\mathrm{A}=40^\\circ$일 때, $\\angle\\mathrm{OBI}$의 크기는? (4점) [그림]"
+    },
+    {
+      "id": "c",
+      "condition": "외심 O 및 내심 I",
+      "mappedTo": [
+        "O",
+        "I"
+      ],
+      "sourceQuote": "12. 오른쪽 그림과 같이 $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{AC}}$인 이등변삼각형 $\\mathrm{ABC}$에서 점 $\\mathrm{O}$와 점 $\\mathrm{I}$는 각각 $\\triangle\\mathrm{ABC}$의 외심과 내심이다. $\\angle\\mathrm{A}=40^\\circ$일 때, $\\angle\\mathrm{OBI}$의 크기는? (4점) [그림]"
+    },
+    {
+      "id": "d",
+      "condition": "∠OBI=x",
+      "mappedTo": [
+        "unknownBOI"
+      ],
+      "sourceQuote": "12. 오른쪽 그림과 같이 $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{AC}}$인 이등변삼각형 $\\mathrm{ABC}$에서 점 $\\mathrm{O}$와 점 $\\mathrm{I}$는 각각 $\\triangle\\mathrm{ABC}$의 외심과 내심이다. $\\angle\\mathrm{A}=40^\\circ$일 때, $\\angle\\mathrm{OBI}$의 크기는? (4점) [그림]"
+    }
+  ],
+  "newVisualInformation": []
+}

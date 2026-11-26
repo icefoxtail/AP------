@@ -1,0 +1,306 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-3464101615138",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "3464101615138",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-866025403784",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "15",
+              "denominator": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "866025403784",
+              "denominator": "1000000000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "15",
+              "denominator": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "M",
+    "C",
+    "D",
+    "E"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sDB",
+      "refs": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "sBM",
+      "refs": [
+        "B",
+        "M"
+      ]
+    },
+    {
+      "id": "sMC",
+      "refs": [
+        "M",
+        "C"
+      ]
+    },
+    {
+      "id": "sCE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "sEA",
+      "refs": [
+        "E",
+        "A"
+      ]
+    },
+    {
+      "id": "sMD",
+      "refs": [
+        "M",
+        "D"
+      ]
+    },
+    {
+      "id": "sME",
+      "refs": [
+        "M",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "midBM_MC",
+        "segments": [
+          "sBM",
+          "sMC"
+        ],
+        "count": 1
+      },
+      {
+        "id": "sameMDME",
+        "segments": [
+          "sMD",
+          "sME"
+        ],
+        "count": 2
+      }
+    ],
+    "angles": [
+      {
+        "id": "angleA120",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "label": "120°",
+        "arcs": 1,
+        "style": "ARC"
+      },
+      {
+        "id": "unknownB",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "label": "x",
+        "arcs": 1,
+        "style": "ARC"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "footD",
+      "refs": [
+        "A",
+        "D",
+        "M"
+      ]
+    },
+    {
+      "id": "footE",
+      "refs": [
+        "A",
+        "E",
+        "M"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 550
+  },
+  "caption": "A의 120도와 중점 M에서 내린 두 같은 길이 수선",
+  "accessibilityDescription": "120도 호는 꼭짓점 A에 있고 M에는 호를 두지 않는다. M-D,M-E 수선과 중점 눈금이 각각 완전하다.",
+  "sourceQuote": "6. 오른쪽 그림과 같이 $\\triangle\\mathrm{ABC",
+  "sourceConditions": [
+    {
+      "id": "a",
+      "condition": "M은 BC의 중점",
+      "mappedTo": [
+        "midBM_MC"
+      ],
+      "sourceQuote": "6. 오른쪽 그림과 같이 $\\triangle\\mathrm{ABC}$에서 변 $\\mathrm{BC}$의 중점을 $\\mathrm{M}$이라 하고, 점 $\\mathrm{M}$에서 두 변 $\\mathrm{AB}$와 $\\mathrm{AC}$에 내린 수선의 발을 각각 $\\mathrm{D}$와 $\\mathrm{E}$라고 하자. $\\overline{\\mathrm{MD}}=\\overline{\\mathrm{ME}}$이고 $\\angle\\mathrm{A}=120^\\circ$일 때, $\\angle\\mathrm{B}$의 크기를 구하면? [4점] [그림]"
+    },
+    {
+      "id": "b",
+      "condition": "MD⊥AB, ME⊥AC",
+      "mappedTo": [
+        "footD",
+        "footE"
+      ],
+      "sourceQuote": "6. 오른쪽 그림과 같이 $\\triangle\\mathrm{ABC}$에서 변 $\\mathrm{BC}$의 중점을 $\\mathrm{M}$이라 하고, 점 $\\mathrm{M}$에서 두 변 $\\mathrm{AB}$와 $\\mathrm{AC}$에 내린 수선의 발을 각각 $\\mathrm{D}$와 $\\mathrm{E}$라고 하자. $\\overline{\\mathrm{MD}}=\\overline{\\mathrm{ME}}$이고 $\\angle\\mathrm{A}=120^\\circ$일 때, $\\angle\\mathrm{B}$의 크기를 구하면? [4점] [그림]"
+    },
+    {
+      "id": "c",
+      "condition": "MD=ME",
+      "mappedTo": [
+        "sameMDME"
+      ],
+      "sourceQuote": "6. 오른쪽 그림과 같이 $\\triangle\\mathrm{ABC}$에서 변 $\\mathrm{BC}$의 중점을 $\\mathrm{M}$이라 하고, 점 $\\mathrm{M}$에서 두 변 $\\mathrm{AB}$와 $\\mathrm{AC}$에 내린 수선의 발을 각각 $\\mathrm{D}$와 $\\mathrm{E}$라고 하자. $\\overline{\\mathrm{MD}}=\\overline{\\mathrm{ME}}$이고 $\\angle\\mathrm{A}=120^\\circ$일 때, $\\angle\\mathrm{B}$의 크기를 구하면? [4점] [그림]"
+    },
+    {
+      "id": "d",
+      "condition": "∠A=120°",
+      "mappedTo": [
+        "angleA120"
+      ],
+      "sourceQuote": "6. 오른쪽 그림과 같이 $\\triangle\\mathrm{ABC}$에서 변 $\\mathrm{BC}$의 중점을 $\\mathrm{M}$이라 하고, 점 $\\mathrm{M}$에서 두 변 $\\mathrm{AB}$와 $\\mathrm{AC}$에 내린 수선의 발을 각각 $\\mathrm{D}$와 $\\mathrm{E}$라고 하자. $\\overline{\\mathrm{MD}}=\\overline{\\mathrm{ME}}$이고 $\\angle\\mathrm{A}=120^\\circ$일 때, $\\angle\\mathrm{B}$의 크기를 구하면? [4점] [그림]"
+    }
+  ],
+  "newVisualInformation": [
+    "기존 SVG는 120°를 M에 놓은 심각한 각 주인 오배치를 고친다."
+  ]
+}

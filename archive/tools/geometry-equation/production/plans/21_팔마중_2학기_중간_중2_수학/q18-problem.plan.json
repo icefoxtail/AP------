@@ -1,0 +1,246 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "46",
+              "denominator": "9"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "rational",
+                  "numerator": "20",
+                  "denominator": "9"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "AB6",
+        "from": "A",
+        "to": "B",
+        "label": "6",
+        "side": "LEFT",
+        "unit": "cm"
+      },
+      {
+        "id": "AD4",
+        "from": "A",
+        "to": "D",
+        "label": "4",
+        "side": "ABOVE",
+        "unit": "cm"
+      },
+      {
+        "id": "DC5",
+        "from": "D",
+        "to": "C",
+        "label": "5",
+        "side": "ABOVE",
+        "unit": "cm"
+      },
+      {
+        "id": "BC9",
+        "from": "B",
+        "to": "C",
+        "label": "9",
+        "side": "BELOW",
+        "unit": "cm"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 550
+  },
+  "caption": "삼각형 ABC와 AC 위 점 D의 정확한 6·4·5·9cm",
+  "accessibilityDescription": "AB6, AD4, DC5, BC9의 원본 점선 지시 길이를 각 해당 변에 치수선으로 표시하고 내부선 BD를 보인다.",
+  "sourceQuote": "18. 다음 그림에 대한 설명으로 옳은 것을 모두 고르면? (정",
+  "sourceConditions": [
+    {
+      "id": "a",
+      "condition": "AB=6cm",
+      "mappedTo": [
+        "AB6"
+      ],
+      "sourceQuote": "18. 다음 그림에 대한 설명으로 옳은 것을 모두 고르면? (정답 2개) [4점] [그림]"
+    },
+    {
+      "id": "b",
+      "condition": "AD=4cm",
+      "mappedTo": [
+        "AD4"
+      ],
+      "sourceQuote": "18. 다음 그림에 대한 설명으로 옳은 것을 모두 고르면? (정답 2개) [4점] [그림]"
+    },
+    {
+      "id": "c",
+      "condition": "DC=5cm",
+      "mappedTo": [
+        "DC5"
+      ],
+      "sourceQuote": "18. 다음 그림에 대한 설명으로 옳은 것을 모두 고르면? (정답 2개) [4점] [그림]"
+    },
+    {
+      "id": "d",
+      "condition": "BC=9cm",
+      "mappedTo": [
+        "BC9"
+      ],
+      "sourceQuote": "18. 다음 그림에 대한 설명으로 옳은 것을 모두 고르면? (정답 2개) [4점] [그림]"
+    }
+  ],
+  "newVisualInformation": [
+    "활성 문제 그림은 현재 PNG(q18-restored-20261119.png)이므로 새 plan과의 운영 연결은 별도 렌더 승인 후 진행한다."
+  ]
+}
