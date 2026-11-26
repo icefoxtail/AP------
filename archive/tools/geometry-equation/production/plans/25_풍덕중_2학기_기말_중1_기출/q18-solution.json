@@ -1,0 +1,23 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "caption": "풍덕중 학생 100명의 윗몸일으키기 상대도수분포다각형. 50회 이상 60회 미만인 계급의 상대도수는 0.20으로 학생 수는 20명이다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "계급은 10회 이상 20회 미만부터 50회 이상 60회 미만까지 다섯 개다.", "mappedTo": "chart.boundaries"},
+    {"id": "c2", "condition": "상대도수는 차례로 0.10, 0.15, 0.25, 0.30, 0.20이고 합은 1이다.", "mappedTo": "chart.series[0].relativeFrequencies"},
+    {"id": "c3", "condition": "50회인 학생은 마지막 계급(50회 이상 60회 미만)에 속한다.", "mappedTo": "chart.highlightPoints[0]"}
+  ],
+  "newVisualInformation": [
+    "원본 기출은 점을 이은 상대도수분포다각형만 사용하므로 기존 해설의 흰색 배경 사각형 및 회색 막대들을 데이터 이외의 채움으로 재현하지 않는다.",
+    "50~60회 계급의 꼭짓점과 상대도수 0.20만 표시하여 원문의 데이터와 해설에서 읽는 값을 1:1로 연결한다."
+  ],
+  "chart": {
+    "kind": "FREQUENCY_POLYGON",
+    "yKind": "RELATIVE",
+    "boundaries": ["10", "20", "30", "40", "50", "60"],
+    "series": [{"relativeFrequencies": ["0.10", "0.15", "0.25", "0.30", "0.20"]}],
+    "xTitle": "기록(회)",
+    "yTitle": "상대도수",
+    "grid": true,
+    "highlightPoints": [{"series": 0, "class": 4, "tone": 1, "showValue": true}]
+  }
+}
