@@ -1,0 +1,805 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "-4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "-4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "30",
+              "denominator": "13"
+            },
+            {
+              "kind": "rational",
+              "numerator": "72",
+              "denominator": "13"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-42",
+              "denominator": "13"
+            },
+            {
+              "kind": "rational",
+              "numerator": "102",
+              "denominator": "13"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-72",
+              "denominator": "13"
+            },
+            {
+              "kind": "rational",
+              "numerator": "30",
+              "denominator": "13"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-30",
+              "denominator": "13"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-72",
+              "denominator": "13"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "I",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "42",
+              "denominator": "13"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-102",
+              "denominator": "13"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "J",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "72",
+              "denominator": "13"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-30",
+              "denominator": "13"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lOE",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "O",
+          "E"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lOG",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "O",
+          "G"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lOH",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "O",
+          "H"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lOJ",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "O",
+          "J"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lAD",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lAB",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lBC",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lCD",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "C",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lOE",
+          "lAD"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "S",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lOG",
+          "lAB"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lOH",
+          "lBC"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lOJ",
+          "lCD"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "O",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "J",
+    "R",
+    "S",
+    "P",
+    "Q"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAR",
+      "refs": [
+        "A",
+        "R"
+      ]
+    },
+    {
+      "id": "sRD",
+      "refs": [
+        "R",
+        "D"
+      ]
+    },
+    {
+      "id": "sDQ",
+      "refs": [
+        "D",
+        "Q"
+      ]
+    },
+    {
+      "id": "sQC",
+      "refs": [
+        "Q",
+        "C"
+      ]
+    },
+    {
+      "id": "sCP",
+      "refs": [
+        "C",
+        "P"
+      ]
+    },
+    {
+      "id": "sPB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "sBS",
+      "refs": [
+        "B",
+        "S"
+      ]
+    },
+    {
+      "id": "sSA",
+      "refs": [
+        "S",
+        "A"
+      ]
+    },
+    {
+      "id": "sAO",
+      "refs": [
+        "A",
+        "O"
+      ]
+    },
+    {
+      "id": "sOC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "sBO",
+      "refs": [
+        "B",
+        "O"
+      ]
+    },
+    {
+      "id": "sOD",
+      "refs": [
+        "O",
+        "D"
+      ]
+    },
+    {
+      "id": "sOR",
+      "refs": [
+        "O",
+        "R"
+      ]
+    },
+    {
+      "id": "sRE",
+      "refs": [
+        "R",
+        "E"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "sFG",
+      "refs": [
+        "F",
+        "G"
+      ]
+    },
+    {
+      "id": "sGS",
+      "refs": [
+        "G",
+        "S"
+      ]
+    },
+    {
+      "id": "sSO",
+      "refs": [
+        "S",
+        "O"
+      ]
+    },
+    {
+      "id": "sOP",
+      "refs": [
+        "O",
+        "P"
+      ]
+    },
+    {
+      "id": "sPH",
+      "refs": [
+        "P",
+        "H"
+      ]
+    },
+    {
+      "id": "sHI",
+      "refs": [
+        "H",
+        "I"
+      ]
+    },
+    {
+      "id": "sIJ",
+      "refs": [
+        "I",
+        "J"
+      ]
+    },
+    {
+      "id": "sJQ",
+      "refs": [
+        "J",
+        "Q"
+      ]
+    },
+    {
+      "id": "sQO",
+      "refs": [
+        "Q",
+        "O"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "regions": [
+      {
+        "id": "upperShaded",
+        "fill": "LIGHT",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "polygon": [
+              "O",
+              "R",
+              "A",
+              "S"
+            ]
+          }
+        ],
+        "label": "16"
+      },
+      {
+        "id": "lowerShaded",
+        "fill": "LIGHT",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "polygon": [
+              "O",
+              "P",
+              "C",
+              "Q"
+            ]
+          }
+        ],
+        "label": "16"
+      }
+    ],
+    "pathLabels": [
+      {
+        "id": "side8",
+        "points": [
+          "B",
+          "P",
+          "C"
+        ],
+        "label": "8",
+        "unit": "cm",
+        "value": "8"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "side6top",
+        "ownerSegment": "sFG",
+        "text": "6",
+        "unit": "cm"
+      },
+      {
+        "id": "side6bottom",
+        "ownerSegment": "sIJ",
+        "text": "6",
+        "unit": "cm"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "equalOCOD",
+        "count": 1,
+        "segments": [
+          "sOC",
+          "sOD"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "id": "aPCO",
+        "refs": [
+          "P",
+          "C",
+          "O"
+        ],
+        "value": 45,
+        "label": "45",
+        "style": "ARC",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "aQDO",
+        "refs": [
+          "Q",
+          "D",
+          "O"
+        ],
+        "value": 45,
+        "label": "45",
+        "style": "ARC",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "aPOC",
+        "refs": [
+          "P",
+          "O",
+          "C"
+        ],
+        "value": 67.62,
+        "noLabel": true,
+        "arcs": 1,
+        "equalGroup": 1,
+        "style": "ARC",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "aQOD",
+        "refs": [
+          "Q",
+          "O",
+          "D"
+        ],
+        "value": 67.62,
+        "noLabel": true,
+        "arcs": 1,
+        "equalGroup": 1,
+        "style": "ARC",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 600
+  },
+  "caption": "두 정사각형의 회전 관계로 삼각형 OPC와 OQD가 합동이고 색칠된 두 사각형 ORAS와 OPCQ의 넓이가 각각 16cm²임을 보이는 해설 그림",
+  "accessibilityDescription": "한 변 8cm인 정사각형 ABCD와 O를 공유하는 6cm 정사각형 OEFG, OHIJ를 모두 보인다. OC와 OD에는 같은 길이 눈금, C와 D에는 각각 45도 표식, O에는 서로 같은 두 각의 호를 그렸다. ORAS와 OPCQ 사각형은 각각 연회색으로 칠하고 16을 표시해 전체 32 제곱센티미터임을 나타낸다.",
+  "sourceQuote": "(1) 삼각형 OPC와 OQD는 ASA 합동. (2) 사각형 OPCQ의 넓이는 삼각형 OCD의 넓이와 같아 16cm². (3) 반대쪽 색칠 부분도 정사각형 OEFG에 대해 16cm²이므로 전체는 32cm².",
+  "sourceConditions": [
+    {
+      "id": "centralSquare",
+      "condition": "ABCD는 한 변의 길이가 8cm인 정사각형이고 AC와 BD가 O에서 만난다.",
+      "mappedTo": [
+        "mathPlan.nodes.A",
+        "mathPlan.nodes.B",
+        "mathPlan.nodes.C",
+        "mathPlan.nodes.D",
+        "mathPlan.nodes.O",
+        "displaySegments.sAO",
+        "displaySegments.sOC",
+        "displaySegments.sBO",
+        "displaySegments.sOD",
+        "planeMarks.pathLabels.side8"
+      ]
+    },
+    {
+      "id": "upperSquare",
+      "condition": "OEFG는 O를 공통 꼭짓점으로 가지는 한 변 6cm의 정사각형으로 왼쪽 위에 기울어져 있다.",
+      "mappedTo": [
+        "mathPlan.nodes.E",
+        "mathPlan.nodes.F",
+        "mathPlan.nodes.G",
+        "displaySegments.sOR",
+        "displaySegments.sRE",
+        "displaySegments.sEF",
+        "displaySegments.sFG",
+        "displaySegments.sGS",
+        "displaySegments.sSO",
+        "planeMarks.expressionLabels.side6top"
+      ]
+    },
+    {
+      "id": "lowerSquare",
+      "condition": "OHIJ는 O를 공통 꼭짓점으로 가지는 한 변 6cm의 정사각형으로 오른쪽 아래에 기울어져 있다.",
+      "mappedTo": [
+        "mathPlan.nodes.H",
+        "mathPlan.nodes.I",
+        "mathPlan.nodes.J",
+        "displaySegments.sOP",
+        "displaySegments.sPH",
+        "displaySegments.sHI",
+        "displaySegments.sIJ",
+        "displaySegments.sJQ",
+        "displaySegments.sQO",
+        "planeMarks.expressionLabels.side6bottom"
+      ]
+    },
+    {
+      "id": "intersections",
+      "condition": "R은 OE와 AD, S는 OG와 AB, P는 OH와 BC, Q는 OJ와 CD의 교점이다.",
+      "mappedTo": [
+        "mathPlan.nodes.R",
+        "mathPlan.nodes.S",
+        "mathPlan.nodes.P",
+        "mathPlan.nodes.Q",
+        "displaySegments.sAR",
+        "displaySegments.sRD",
+        "displaySegments.sBS",
+        "displaySegments.sSA",
+        "displaySegments.sCP",
+        "displaySegments.sPB",
+        "displaySegments.sDQ",
+        "displaySegments.sQC"
+      ]
+    },
+    {
+      "id": "shadedAreas",
+      "condition": "원본에서 색칠된 부분은 사각형 ORAS와 사각형 OPCQ 두 곳이다.",
+      "mappedTo": [
+        "planeMarks.regions.upperShaded",
+        "planeMarks.regions.lowerShaded"
+      ]
+    },
+    {
+      "id": "equalRadii",
+      "condition": "정사각형 ABCD의 대각선 교점 O에서 OC=OD이다.",
+      "mappedTo": [
+        "displaySegments.sOC",
+        "displaySegments.sOD",
+        "planeMarks.equalLengths.equalOCOD"
+      ]
+    },
+    {
+      "id": "rightAngles",
+      "condition": "대각선으로 정사각형을 나눈 각 PCO와 QDO는 각각 45°이다.",
+      "mappedTo": [
+        "planeMarks.angles.aPCO",
+        "planeMarks.angles.aQDO"
+      ]
+    },
+    {
+      "id": "congruentTriangles",
+      "condition": "OP⊥OQ, OC⊥OD이므로 각 POC=QOD이며 삼각형 OPC와 OQD는 ASA 합동이다.",
+      "mappedTo": [
+        "mathPlan.nodes.P",
+        "mathPlan.nodes.Q",
+        "displaySegments.sOP",
+        "displaySegments.sQO",
+        "planeMarks.angles.aPOC",
+        "planeMarks.angles.aQOD"
+      ]
+    },
+    {
+      "id": "equalAreaSixteen",
+      "condition": "사각형 OPCQ와 대칭편 ORAS의 넓이는 각각 16cm²이며 두 색칠 부분의 넓이 합은 32cm²이다.",
+      "mappedTo": [
+        "planeMarks.regions.lowerShaded",
+        "planeMarks.regions.upperShaded"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "문제 원본의 두 색칠 사각형 ORAS·OPCQ를 모두 보존하고 각각 넓이 16을 표기한다.",
+    "길이 OC=OD와 45° 두 각, 회전으로 같아지는 각 POC·QOD에 실제 눈금·호를 추가한다.",
+    "(2)의 사각형 OPCQ와 삼각형 OCD의 넓이 일치, (3)의 두 색칠 영역 합 32cm²는 해설에서 검산한 값이며 문제용 plan에는 노출하지 않는다."
+  ]
+}
