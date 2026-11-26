@@ -280,7 +280,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RANGE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_125_미분가능을이용한미정계수결정_고2_유형은행1/q7-problem.svg",
+    "imageAlt": "원점 중심의 반지름 2인 원, 양의 x축과 각 α·β를 이루는 두 동경 OP·OQ 및 현 PQ를 나타낸다.",
+    "imageCaption": "원점 중심의 반지름 2인 원, 양의 x축과 각 α·β를 이루는 두 동경 OP·OQ 및 현 PQ를 나타낸다.",
+    "imageSize": "full"
   },
   {
     "id": 8,
@@ -401,7 +405,11 @@ window.questionBank = [
       "CC_TRIGONOMETRIC_IDENTITY"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_125_미분가능을이용한미정계수결정_고2_유형은행1/q10-problem.svg",
+    "imageAlt": "직사각형 ABCD와 E∈CD, F∈AD, G∈BC, BE⊥EF, FG⊥BC를 그리고 BF=65·α·β를 표시한다.",
+    "imageCaption": "직사각형 ABCD와 E∈CD, F∈AD, G∈BC, BE⊥EF, FG⊥BC를 그리고 BF=65·α·β를 표시한다.",
+    "imageSize": "full"
   },
   {
     "id": 11,
@@ -440,7 +448,11 @@ window.questionBank = [
       "CC_SPECIAL_ANGLES"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_125_미분가능을이용한미정계수결정_고2_유형은행1/q11-problem.svg",
+    "imageAlt": "AB⊥BC, AC⊥CD인 꺾인 두 직각삼각형과 AB 위의 H, DH⊥AB를 표시한다.",
+    "imageCaption": "AB⊥BC, AC⊥CD인 꺾인 두 직각삼각형과 AB 위의 H, DH⊥AB를 표시한다.",
+    "imageSize": "full"
   },
   {
     "id": 12,

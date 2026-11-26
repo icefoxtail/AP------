@@ -284,7 +284,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RESTRICTED_INTERVAL"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_095_두직선이이루는각의크기_고2_유형은행1/q7-problem.svg",
+    "imageAlt": "원점에서 양의 x축, y=mx, y=x, y=2x의 반직선과 두 같은 각.",
+    "imageCaption": "원점에서 양의 x축, y=mx, y=x, y=2x의 반직선과 두 같은 각.",
+    "imageSize": "full"
   },
   {
     "id": 8,
@@ -324,6 +328,10 @@ window.questionBank = [
       "CC_LINE_SLOPE_TANGENT"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_095_두직선이이루는각의크기_고2_유형은행1/q8-problem.svg",
+    "imageAlt": "P=(0,2)의 기울기1과 2+√3인 두 반직선 위의 A,B, PB=9와 B에서 직각.",
+    "imageCaption": "P=(0,2)의 기울기1과 2+√3인 두 반직선 위의 A,B, PB=9와 B에서 직각.",
+    "imageSize": "full"
   }
 ];

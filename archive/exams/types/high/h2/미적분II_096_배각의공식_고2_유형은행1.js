@@ -152,7 +152,11 @@ window.questionBank = [
       "CC_TRIG_RATIO"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_096_배각의공식_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "지름 AB=10인 원에서 P는 아래 호, Q는 위 호, AP=8와 ∠QAB=2∠PAB.",
+    "imageCaption": "지름 AB=10인 원에서 P는 아래 호, Q는 위 호, AP=8와 ∠QAB=2∠PAB.",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -194,7 +198,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RANGE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_096_배각의공식_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "원점 반지름5의 원, 지름 AB, 반지름 OC와 AD 수선·BD 및 각 x.",
+    "imageCaption": "원점 반지름5의 원, 지름 AB, 반지름 OC와 AD 수선·BD 및 각 x.",
+    "imageSize": "full"
   },
   {
     "id": 6,

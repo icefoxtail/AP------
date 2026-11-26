@@ -572,6 +572,10 @@ window.questionBank = [
       "CC_SHARED_HEIGHT"
     ],
     "conditionKeys": [],
-    "integrationPattern": "DEEP_COMPOSITE"
+    "integrationPattern": "DEEP_COMPOSITE",
+    "image": "assets/images/미적분II_093_삼각함수의덧셈정리2_고2_유형은행1/q14-problem.svg",
+    "imageAlt": "B−D−C 수평선에 A와 AD 중점 E, AB=10, AC=√89, EC=√41.",
+    "imageCaption": "B−D−C 수평선에 A와 AD 중점 E, AB=10, AC=√89, EC=√41.",
+    "imageSize": "full"
   }
 ];

@@ -81,7 +81,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_POSITIVE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_119_부채꼴의호의길이와넓이의삼각함수의극한_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "반지름 2의 윗쪽 원호 P–Q 길이 3t와 수선의 발 H, 수평거리 PH를 보인다.",
+    "imageCaption": "반지름 2의 윗쪽 원호 P–Q 길이 3t와 수선의 발 H, 수평거리 PH를 보인다.",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -122,7 +126,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RANGE"
     ],
-    "integrationPattern": "INTERDEPENDENT"
+    "integrationPattern": "INTERDEPENDENT",
+    "image": "assets/images/미적분II_119_부채꼴의호의길이와넓이의삼각함수의극한_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "사분원의 P에서 그은 접선과 x축의 교점 Q, 작은 부채꼴 QRA, 삼각형 OHP를 보여 준다.",
+    "imageCaption": "사분원의 P에서 그은 접선과 x축의 교점 Q, 작은 부채꼴 QRA, 삼각형 OHP를 보여 준다.",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -163,7 +171,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RANGE"
     ],
-    "integrationPattern": "DEEP_COMPOSITE"
+    "integrationPattern": "DEEP_COMPOSITE",
+    "image": "assets/images/미적분II_119_부채꼴의호의길이와넓이의삼각함수의극한_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "부채꼴 OAB 안에서 G가 OC에, F가 원호 AC에 있는 정사각형 DEFG와 DP⊥OB, Q=DP∩OC를 나타낸다.",
+    "imageCaption": "부채꼴 OAB 안에서 G가 OC에, F가 원호 AC에 있는 정사각형 DEFG와 DP⊥OB, Q=DP∩OC를 나타낸다.",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -204,7 +216,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RANGE"
     ],
-    "integrationPattern": "INTERDEPENDENT"
+    "integrationPattern": "INTERDEPENDENT",
+    "image": "assets/images/미적분II_119_부채꼴의호의길이와넓이의삼각함수의극한_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "직각삼각형 ABC에서 C의 각 이등분선 CD와 A 중심의 작은 부채꼴 ADE, 삼각형 BCE를 표시한다.",
+    "imageCaption": "직각삼각형 ABC에서 C의 각 이등분선 CD와 A 중심의 작은 부채꼴 ADE, 삼각형 BCE를 표시한다.",
+    "imageSize": "full"
   },
   {
     "id": 6,
@@ -245,6 +261,10 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RANGE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_119_부채꼴의호의길이와넓이의삼각함수의극한_고2_유형은행1/q6-problem.svg",
+    "imageAlt": "지름 AB=10인 윗반원에서 호 위 P, OP와 수직인 AQ, 삼각형 AOQ와 교차 직각을 표시한다.",
+    "imageCaption": "지름 AB=10인 윗반원에서 호 위 P, OP와 수직인 AQ, 삼각형 AOQ와 교차 직각을 표시한다.",
+    "imageSize": "full"
   }
 ];

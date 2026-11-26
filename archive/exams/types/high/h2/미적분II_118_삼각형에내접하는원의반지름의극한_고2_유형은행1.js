@@ -40,7 +40,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_POSITIVE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_118_삼각형에내접하는원의반지름의극한_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "양의 좌표축 위 두 점 P,Q의 직각삼각형 OPQ와 그 안의 내접원을 나타낸다.",
+    "imageCaption": "양의 좌표축 위 두 점 P,Q의 직각삼각형 OPQ와 그 안의 내접원을 나타낸다.",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -81,7 +85,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RANGE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_118_삼각형에내접하는원의반지름의극한_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "반지름 6 사분원에서 B를 OP에 투영한 Q, Q를 OB에 투영한 R과 삼각형 BQR의 내접원을 보인다.",
+    "imageCaption": "반지름 6 사분원에서 B를 OP에 투영한 Q, Q를 OB에 투영한 R과 삼각형 BQR의 내접원을 보인다.",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -122,7 +130,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RANGE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_118_삼각형에내접하는원의반지름의극한_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "제1사분면의 원호 A–P와 수선 PH가 만든 직각삼각형 AHP의 내접원을 그린다.",
+    "imageCaption": "제1사분면의 원호 A–P와 수선 PH가 만든 직각삼각형 AHP의 내접원을 그린다.",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -163,7 +175,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RANGE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_118_삼각형에내접하는원의반지름의극한_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "지름 AB=6인 윗반원 위 P와 수선의 발 H가 만든 삼각형 AHP의 내접원을 보인다.",
+    "imageCaption": "지름 AB=6인 윗반원 위 P와 수선의 발 H가 만든 삼각형 AHP의 내접원을 보인다.",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -204,6 +220,10 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RANGE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_118_삼각형에내접하는원의반지름의극한_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "AB가 지름인 윗반원에서 직각삼각형 APB와 그 내접원을 표시한다.",
+    "imageCaption": "AB가 지름인 윗반원에서 직각삼각형 APB와 그 내접원을 표시한다.",
+    "imageSize": "full"
   }
 ];

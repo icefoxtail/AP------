@@ -122,7 +122,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RANGE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_117_지수로그함수와삼각함수의극한의활용_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "직각삼각형 ABC에서 AB=6, ∠B=θ와 빗변 BC에 내린 수선 AH를 표시한다.",
+    "imageCaption": "직각삼각형 ABC에서 AB=6, ∠B=θ와 빗변 BC에 내린 수선 AH를 표시한다.",
+    "imageSize": "full"
   },
   {
     "id": 4,

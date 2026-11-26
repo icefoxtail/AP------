@@ -37,7 +37,11 @@ window.questionBank = [
       "CC_TRIG_RATIO"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_099_삼각함수의덧셈정리의도형에의활용_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "A-B-D가 일직선, C와 E는 위쪽에 있는 두 직각삼각형 ABC와 ADE. AB=4, BC=6, AD=6, DE=3.",
+    "imageCaption": "A-B-D가 일직선, C와 E는 위쪽에 있는 두 직각삼각형 ABC와 ADE. AB=4, BC=6, AD=6, DE=3.",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -75,7 +79,11 @@ window.questionBank = [
       "CC_TRIG_RATIO"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_099_삼각함수의덧셈정리의도형에의활용_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "∠C가 직각인 △ABC. AC=3BC이고 D는 AC의 중점, BA와 BD가 그려진 그림.",
+    "imageCaption": "∠C가 직각인 △ABC. AC=3BC이고 D는 AC의 중점, BA와 BD가 그려진 그림.",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -116,7 +124,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_POSITIVE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_099_삼각함수의덧셈정리의도형에의활용_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "O 원점 위에 P(0,2), 양의 x축 위에 A,B(3,0),C(6,0)를 놓고 P에서 세 점으로 시선을 연결한 그림.",
+    "imageCaption": "O 원점 위에 P(0,2), 양의 x축 위에 A,B(3,0),C(6,0)를 놓고 P에서 세 점으로 시선을 연결한 그림.",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -155,7 +167,11 @@ window.questionBank = [
       "CC_TRIGONOMETRIC_IDENTITY"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_099_삼각함수의덧셈정리의도형에의활용_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "AB=10, AD=8인 직사각형에서 E는 AB 위 AE=3, F는 AD의 중점. F에서 E와 C를 잇는 도형.",
+    "imageCaption": "AB=10, AD=8인 직사각형에서 E는 AB 위 AE=3, F는 AD의 중점. F에서 E와 C를 잇는 도형.",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -194,7 +210,11 @@ window.questionBank = [
       "CC_TRIG_RATIO"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_099_삼각함수의덧셈정리의도형에의활용_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "수평 지면 A-H-B와 수직 CH, C에서 A,B로 연결한 시선. CH=4m, HB=2m, ∠ACB의 탄젠트는 2.",
+    "imageCaption": "수평 지면 A-H-B와 수직 CH, C에서 A,B로 연결한 시선. CH=4m, HB=2m, ∠ACB의 탄젠트는 2.",
+    "imageSize": "full"
   },
   {
     "id": 6,
@@ -234,6 +254,10 @@ window.questionBank = [
       "CC_TRIANGLE_AREA_TRIG"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_099_삼각함수의덧셈정리의도형에의활용_고2_유형은행1/q6-problem.svg",
+    "imageAlt": "직각삼각형 ABC에서 AB=2, BC를 다섯 등분하는 P₁~P₄. A에서 P₁,P₂,P₄로 연결하고 각 a,b를 표시.",
+    "imageCaption": "직각삼각형 ABC에서 AB=2, BC를 다섯 등분하는 P₁~P₄. A에서 P₁,P₂,P₄로 연결하고 각 a,b를 표시.",
+    "imageSize": "full"
   }
 ];

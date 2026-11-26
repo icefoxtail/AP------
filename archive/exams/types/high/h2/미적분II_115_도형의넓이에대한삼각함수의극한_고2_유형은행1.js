@@ -40,7 +40,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RANGE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_115_도형의넓이에대한삼각함수의극한_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "제1사분면의 반지름 2 원호와 OB 연장선이 x=2에서 만나는 D, 평행한 세로변 BH와 AD의 사다리꼴을 그린다.",
+    "imageCaption": "제1사분면의 반지름 2 원호와 OB 연장선이 x=2에서 만나는 D, 평행한 세로변 BH와 AD의 사다리꼴을 그린다.",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -81,7 +85,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RANGE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_115_도형의넓이에대한삼각함수의극한_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "사분원 A–B의 현 AB와 수직선 PH가 Q에서 만나고, 삼각형 AQH의 대상 넓이만 연한 회색으로 나타낸다.",
+    "imageCaption": "사분원 A–B의 현 AB와 수직선 PH가 Q에서 만나고, 삼각형 AQH의 대상 넓이만 연한 회색으로 나타낸다.",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -122,7 +130,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RANGE"
     ],
-    "integrationPattern": "INTERDEPENDENT"
+    "integrationPattern": "INTERDEPENDENT",
+    "image": "assets/images/미적분II_115_도형의넓이에대한삼각함수의극한_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "제1사분면 호 위 P보다 높은 Q, P 아래의 H에서 수직 HP보다 왼쪽으로 θ 기울어진 HQ를 보인다.",
+    "imageCaption": "제1사분면 호 위 P보다 높은 Q, P 아래의 H에서 수직 HP보다 왼쪽으로 θ 기울어진 HQ를 보인다.",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -164,6 +176,10 @@ window.questionBank = [
       "COND_NATURAL_NUMBER",
       "COND_POSITIVE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_115_도형의넓이에대한삼각함수의극한_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "지름 AB인 위 반원에서 P, x축의 수선 발 Q, OP에 대한 Q의 수선 발 R, AP에 대한 O의 수선 발 S를 표시한다.",
+    "imageCaption": "지름 AB인 위 반원에서 P, x축의 수선 발 Q, OP에 대한 Q의 수선 발 R, AP에 대한 O의 수선 발 S를 표시한다.",
+    "imageSize": "full"
   }
 ];

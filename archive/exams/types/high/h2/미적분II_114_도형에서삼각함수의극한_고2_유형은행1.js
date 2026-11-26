@@ -37,7 +37,11 @@ window.questionBank = [
       "CC_TRIG_RATIO"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_114_도형에서삼각함수의극한_고2_유형은행1/q1-problem.svg",
+    "imageAlt": "지름 AB가 6인 위쪽 반원에서 P, 그 수선의 발 H, ∠PAH=θ를 보인다. 그림은 임의의 양의 θ를 나타낸다.",
+    "imageCaption": "지름 AB가 6인 위쪽 반원에서 P, 그 수선의 발 H, ∠PAH=θ를 보인다. 그림은 임의의 양의 θ를 나타낸다.",
+    "imageSize": "full"
   },
   {
     "id": 2,
@@ -75,7 +79,11 @@ window.questionBank = [
       "CC_TRIGONOMETRIC_IDENTITY"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_114_도형에서삼각함수의극한_고2_유형은행1/q2-problem.svg",
+    "imageAlt": "반지름 8의 제1사분면 원호와 그 위 P, x축으로 내린 수선의 발 H, ∠BOP=θ를 표시한다.",
+    "imageCaption": "반지름 8의 제1사분면 원호와 그 위 P, x축으로 내린 수선의 발 H, ∠BOP=θ를 표시한다.",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -113,7 +121,11 @@ window.questionBank = [
       "CC_TRIG_RATIO"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_114_도형에서삼각함수의극한_고2_유형은행1/q3-problem.svg",
+    "imageAlt": "직각삼각형 ABC에서 AB=6, ∠ABC=θ이고 AH는 빗변 BC에 내린 수선이다.",
+    "imageCaption": "직각삼각형 ABC에서 AB=6, ∠ABC=θ이고 AH는 빗변 BC에 내린 수선이다.",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -151,7 +163,11 @@ window.questionBank = [
       "CC_TRIG_RATIO"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_114_도형에서삼각함수의극한_고2_유형은행1/q4-problem.svg",
+    "imageAlt": "∠B=90°인 삼각형 ABC에서 BC=8, ∠BCA=θ, BH가 빗변 AC에 수직이다.",
+    "imageCaption": "∠B=90°인 삼각형 ABC에서 BC=8, ∠BCA=θ, BH가 빗변 AC에 수직이다.",
+    "imageSize": "full"
   },
   {
     "id": 5,
@@ -189,7 +205,11 @@ window.questionBank = [
       "CC_TRIANGLE_AREA_TRIG"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_114_도형에서삼각함수의극한_고2_유형은행1/q5-problem.svg",
+    "imageAlt": "지름 AB=6인 원의 위쪽 P와 같은 세로선의 아래쪽 Q를 잇고 BPQ 삼각형을 표시한다.",
+    "imageCaption": "지름 AB=6인 원의 위쪽 P와 같은 세로선의 아래쪽 Q를 잇고 BPQ 삼각형을 표시한다.",
+    "imageSize": "full"
   },
   {
     "id": 6,
@@ -227,7 +247,11 @@ window.questionBank = [
       "CC_COORDINATE_TRIG"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_114_도형에서삼각함수의극한_고2_유형은행1/q6-problem.svg",
+    "imageAlt": "O–C–B가 같은 반직선 위에 있고 OA는 수평, AB는 수직이며 OC=12인 도형이다.",
+    "imageCaption": "O–C–B가 같은 반직선 위에 있고 OA는 수평, AB는 수직이며 OC=12인 도형이다.",
+    "imageSize": "full"
   },
   {
     "id": 7,
@@ -265,7 +289,11 @@ window.questionBank = [
       "CC_TRIG_RATIO"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "image": "assets/images/미적분II_114_도형에서삼각함수의극한_고2_유형은행1/q7-problem.svg",
+    "imageAlt": "∠BAC=90°, AB=4, ∠ABC=θ인 삼각형에서 A를 BC에 수직으로 내린 발 H가 보인다.",
+    "imageCaption": "∠BAC=90°, AB=4, ∠ABC=θ인 삼각형에서 A를 BC에 수직으로 내린 발 H가 보인다.",
+    "imageSize": "full"
   },
   {
     "id": 8,
