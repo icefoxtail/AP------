@@ -1,8 +1,13 @@
 {
   "capability": "polynomial-spike-v1",
-  "sourceQuote": "$k=1$일 때 두 양근은 $1/4$, $3/4$이다.",
+  "sourceQuote": "$u^2-u+\\dfrac3{16}=0$이므로 두 양근은 $\\dfrac14$, $\\dfrac34$이다.",
   "caption": "u>0에서 Q(u)=u²-u+1/2와 y=5/16의 두 교점",
   "accessibilityDescription": "위로 열린 포물선 Q(u)=u제곱-u+1/2과 수평선 y=5/16이 양의 구간에서 서로 다른 두 점에서 만난다.",
+  "sourceConditions": [
+    {"id":"vertex","condition":"$Q(u)=\\left(u-\\dfrac12\\right)^2+2^{-k}-\\dfrac14> -\\dfrac14$","mappedTo":"CURRENT_SOLUTION"},
+    {"id":"two-positive-roots","condition":"두 양근은 $\\dfrac14$, $\\dfrac34$이다.","mappedTo":"CURRENT_SOLUTION"}
+  ],
+  "newVisualInformation": ["k=1에서 u=1/4,3/4의 두 교점과 Q(u)의 최솟값을 비교하여 양근이 정확히 둘임을 드러낸다."],
   "graphPlan": {
     "family": "polynomial",
     "coefficients": ["1/2", "-1", "1"],

@@ -1,19 +1,20 @@
 {
   "capability": "exponential-affine-spike-v1",
   "sourceQuote": "함수 $y=2^x+3$의 그래프 위의 두 점 $P,Q$",
-  "caption": "세로로 3만큼 이동한 지수함수와 점 P의 세로좌표 7, 점 Q의 가로좌표 4를 표시하는 보조 그래프",
-  "accessibilityDescription": "지수함수 y=2의 x제곱 더하기 3의 그래프. P의 세로좌표는 7, Q의 가로좌표는 4이고 다른 좌표는 문제 풀이로 구한다.",
+  "caption": "지수함수 y=2의 x제곱 더하기 3의 증가와 수평점근선 y=3을 보여 주는 문제 보조 그래프. P, Q의 미지 좌표는 표시하지 않는다.",
+  "accessibilityDescription": "지수함수 y는 2의 x제곱 더하기 3으로, x가 증가하면 커지고 왼쪽에서 수평선 y=3에 가까워진다. 미지 좌표의 위치나 값은 표시하지 않는다.",
   "graphPlan": {
     "family": "exponential-affine",
     "base": "2",
     "coefficients": ["1", "1", "3"],
     "sourceDomain": {"kind": "ALL_REALS"},
     "domain": [-2, 4.6],
-    "viewport": [-2.5, 5, 0, 23],
-    "overlays": {
-      "points": [{"id": "P", "curveX": "2"}, {"id": "Q", "curveX": "4"}],
-      "guides": [{"id": "gp", "from": "P", "axis": "BOTH"}, {"id": "gq", "from": "Q", "axis": "BOTH"}]
-    }
+    "viewport": [-2.5, 5, 0, 23]
   },
+  "sourceConditions": [
+    {"id":"current-stem","condition":"함수 $y=2^x+3$의 그래프 위의 두 점 $P,Q$","mappedTo":"CURRENT_PROBLEM"},
+    {"id":"given-coordinates","condition":"$P$의 $y$좌표는 $7$이고, $Q$의 $x$좌표는 $4$이다.","mappedTo":"CURRENT_PROBLEM"}
+  ],
+  "newVisualInformation": ["세로 이동 후 그래프의 점근선과 증가 양상만 보여 준다. P의 x좌표 p=2와 Q의 y좌표 q=19는 문제 그림에서 노출하지 않는다."],
   "assetPath": "assets/images/26_금당고_1학기_중간_고2_대수_유사2/q08-problem.svg"
 }
