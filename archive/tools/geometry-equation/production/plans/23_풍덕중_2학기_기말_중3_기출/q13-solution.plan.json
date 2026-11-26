@@ -1,0 +1,412 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-1632069847",
+              "denominator": "100000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "142787610",
+              "denominator": "100000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-3905827596",
+              "denominator": "100000000"
+            },
+            {
+              "kind": "integer",
+              "value": "-5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-2398114290",
+              "denominator": "100000000"
+            },
+            {
+              "kind": "integer",
+              "value": "-5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-2616877600",
+              "denominator": "100000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-30860568",
+              "denominator": "100000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-866025404",
+              "denominator": "100000000"
+            },
+            {
+              "kind": "integer",
+              "value": "-5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "-766044443",
+              "denominator": "100000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "642787610",
+              "denominator": "100000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "866025404",
+              "denominator": "100000000"
+            },
+            {
+              "kind": "integer",
+              "value": "-5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "173648178",
+              "denominator": "100000000"
+            },
+            {
+              "kind": "rational",
+              "numerator": "984807753",
+              "denominator": "100000000"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "left",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O1"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "right",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O2"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O1",
+    "O2",
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "left",
+    "right"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sCE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "sEG",
+      "refs": [
+        "E",
+        "G"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sDF",
+      "refs": [
+        "D",
+        "F"
+      ]
+    },
+    {
+      "id": "sED",
+      "refs": [
+        "E",
+        "D"
+      ]
+    },
+    {
+      "id": "sGF",
+      "refs": [
+        "G",
+        "F"
+      ]
+    },
+    {
+      "id": "sDG",
+      "refs": [
+        "D",
+        "G"
+      ]
+    },
+    {
+      "id": "sCB",
+      "refs": [
+        "C",
+        "B"
+      ]
+    }
+  ],
+  "caption": "풍덕중 13번 해설: 오른쪽 원의 맞은각에서 왼쪽 원의 원주각을 연결해 삼각형 ABC의 각 20°를 얻는다",
+  "accessibilityDescription": "풍덕중 13번 해설: 오른쪽 원의 맞은각에서 왼쪽 원의 원주각을 연결해 삼각형 ABC의 각 20°를 얻는다",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "A,C,E,G 및 A,B,D,F가 각각 일직선이며 두 원은 E,D에서 교차하고 ∠EGF=95°, ∠DEG=115°이다.",
+      "mappedTo": [
+        "mathPlan.nodes",
+        "displaySegments",
+        "planeMarks",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "문제의 주어진 도형에 해설에 사용한 반지름·보조선·호·등분 관계를 추가한다."
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "ang0",
+        "refs": [
+          "E",
+          "G",
+          "F"
+        ],
+        "style": "ARC",
+        "value": 95,
+        "label": "95",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ang1",
+        "refs": [
+          "D",
+          "E",
+          "G"
+        ],
+        "style": "ARC",
+        "value": 115,
+        "label": "115",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ang2",
+        "refs": [
+          "C",
+          "A",
+          "B"
+        ],
+        "style": "ARC",
+        "value": 20,
+        "label": "20",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ang3",
+        "refs": [
+          "E",
+          "D",
+          "F"
+        ],
+        "style": "ARC",
+        "value": 85,
+        "label": "85",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ang4",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "style": "ARC",
+        "value": 95,
+        "label": "95",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ang5",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "style": "ARC",
+        "value": 65,
+        "label": "65",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "O1",
+    "O2"
+  ],
+  "hiddenPointStyle": "NONE"
+}
