@@ -1,0 +1,64 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "a",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "왼쪽 경계",
+        "pieces": [
+          {
+            "lo": {
+              "value": "4",
+              "state": "CLOSED"
+            },
+            "hi": null
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "오른쪽 경계",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "6",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "RESULT",
+        "label": "공통",
+        "integerPoints": true
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "명제 조건의 수직선 비교"
+  },
+  "caption": "p의 구간 [a-3,a+3]가 q의 [1,9]에 포함되려면 4≤a≤6이다. 정수는 4, 5, 6이고 합은 15이다.",
+  "accessibilityDescription": "명제의 진리집합을 수직선으로 나타내어 열린 끝점과 닫힌 끝점, 두 조건의 관계를 구별한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "a-3≥1",
+      "mappedTo": "numberLine.rows[0].pieces[0].lo"
+    },
+    {
+      "id": "c2",
+      "condition": "a+3≤9",
+      "mappedTo": "numberLine.rows[1].pieces[0].hi"
+    },
+    {
+      "id": "c3",
+      "condition": "공통 정수 4, 5, 6",
+      "mappedTo": "numberLine.rows[2].integerPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "두 경계의 교집합과 포함되는 모든 정수점을 수직선에 표시한다."
+  ]
+}
