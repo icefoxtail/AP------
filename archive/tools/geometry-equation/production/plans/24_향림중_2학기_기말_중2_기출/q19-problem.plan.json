@@ -1,0 +1,381 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "CA",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "CB",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Au",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Ad",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Bu",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Bl",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "CB",
+          "Bu"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "120"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Br",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "CB",
+          "Bu"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "120"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Aa",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-1"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Ba",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "kA",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "CA"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "kB",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "CB"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "CA",
+    "CB",
+    "Au",
+    "Ad",
+    "Bu",
+    "Bl",
+    "Br",
+    "Aa",
+    "Ba"
+  ],
+  "displaySegments": [
+    {
+      "id": "dividerA",
+      "refs": [
+        "Au",
+        "Ad"
+      ]
+    },
+    {
+      "id": "rB1",
+      "refs": [
+        "CB",
+        "Bu"
+      ]
+    },
+    {
+      "id": "rB2",
+      "refs": [
+        "CB",
+        "Bl"
+      ]
+    },
+    {
+      "id": "rB3",
+      "refs": [
+        "CB",
+        "Br"
+      ]
+    },
+    {
+      "id": "arrowA",
+      "refs": [
+        "CA",
+        "Aa"
+      ],
+      "arrow": "END"
+    },
+    {
+      "id": "arrowB",
+      "refs": [
+        "CB",
+        "Ba"
+      ],
+      "arrow": "END"
+    }
+  ],
+  "displayCircles": [
+    "kA",
+    "kB"
+  ],
+  "displayLines": [],
+  "hiddenPointNames": [
+    "CA",
+    "CB",
+    "Au",
+    "Ad",
+    "Bu",
+    "Bl",
+    "Br",
+    "Aa",
+    "Ba"
+  ],
+  "hiddenPointStyle": "NONE",
+  "planeMarks": {
+    "textLabels": [
+      {
+        "id": "lA",
+        "at": [
+          0,
+          -3
+        ],
+        "text": "A",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lB",
+        "at": [
+          7,
+          -3
+        ],
+        "text": "B",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a1",
+        "at": [
+          -1,
+          0
+        ],
+        "text": "1",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a2",
+        "at": [
+          1,
+          0
+        ],
+        "text": "2",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "b1",
+        "at": [
+          6,
+          0.7
+        ],
+        "text": "1",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "b2",
+        "at": [
+          8,
+          0.7
+        ],
+        "text": "2",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "b3",
+        "at": [
+          7,
+          -1.2
+        ],
+        "text": "3",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 700,
+    "height": 420
+  },
+  "caption": "원판 A는 양쪽 두 칸에 1,2가, 원판 B는 120도씩 나눈 세 칸에 1,2,3이 있다. 바늘은 위쪽 왼쪽을 가리킨다.",
+  "accessibilityDescription": "면을 채우지 않은 원 두 개가 있다. 왼쪽 원판 A는 세로 지름으로 2등분하고 숫자 1,2를 쓰며, 오른쪽 원판 B는 중심에서 120도씩 세 방사선으로 3등분해 숫자 1,2,3을 쓴다. 중심에서 왼쪽 위로 향하는 화살표를 그린다.",
+  "sourceQuote": "다음과 같이 각각 $2$등분, $3$등분한 원판 $A$, $B$의 바늘을 돌려 바늘이 멈춘 후 가리키는 숫자를 읽는다. 바늘이 가리키는 숫자가 서로 다를 확률은? (단, 바늘이 경계선을 가리키는 경우는 생각하지 않는다.) (5점)",
+  "sourceConditions": [
+    {
+      "id": "src",
+      "condition": "다음과 같이 각각 $2$등분, $3$등분한 원판 $A$, $B$의 바늘을 돌려 바늘이 멈춘 후 가리키는 숫자를 읽는다. 바늘이 가리키는 숫자가 서로 다를 확률은? (단, 바늘이 경계선을 가리키는 경우는 생각하지 않는다.) (5점)",
+      "mappedTo": [
+        "mathPlan",
+        "displaySegments",
+        "planeMarks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "그림의 원판 둘과 실제 2등분·3등분 방사선, 일대일 숫자 표기, 회전 바늘 화살촉을 그린다.",
+    "기존 파랑·초록·보라 색칠은 없애고 경계선만 유지한다."
+  ]
+}

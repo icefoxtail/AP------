@@ -1,0 +1,342 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H"
+  ],
+  "displaySegments": [
+    {
+      "id": "AD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "DE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "EB",
+      "refs": [
+        "E",
+        "B"
+      ]
+    },
+    {
+      "id": "AF",
+      "refs": [
+        "A",
+        "F"
+      ]
+    },
+    {
+      "id": "FG",
+      "refs": [
+        "F",
+        "G"
+      ]
+    },
+    {
+      "id": "GC",
+      "refs": [
+        "G",
+        "C"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "DF",
+      "refs": [
+        "D",
+        "F"
+      ]
+    },
+    {
+      "id": "EH",
+      "refs": [
+        "E",
+        "H"
+      ]
+    },
+    {
+      "id": "HG",
+      "refs": [
+        "H",
+        "G"
+      ]
+    },
+    {
+      "id": "DC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "planeMarks": {
+    "parallels": [
+      {
+        "id": "parallel",
+        "count": 1,
+        "segments": [
+          "DF",
+          "EH",
+          "BC"
+        ]
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "ad5",
+        "ownerSegment": "AD",
+        "text": "5",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "de5",
+        "ownerSegment": "DE",
+        "text": "5",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "eb5",
+        "ownerSegment": "EB",
+        "text": "5",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "eh9",
+        "ownerSegment": "EH",
+        "text": "9",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "gh3",
+        "ownerSegment": "HG",
+        "text": "3",
+        "factRole": "GIVEN"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "bc18",
+        "from": "B",
+        "to": "C",
+        "label": "18",
+        "side": "BELOW",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "eg12",
+        "from": "E",
+        "to": "G",
+        "label": "12",
+        "side": "BELOW",
+        "offset": 2,
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 650,
+    "height": 460
+  },
+  "caption": "평행선 DF·EG·BC를 유지하여 EG=12, EH=9를 눈으로 대조하고 GH=3을 보인다.",
+  "accessibilityDescription": "큰 삼각형 ABC에서 AB를 5씩 세 등분한 D,E, 평행선 DF와 E-H-G, 횡단선 D-H-C, BC=18, EG=12, EH=9, GH=3이 표시된다.",
+  "sourceQuote": "다음 그림에서 $\\overline{AD}=\\overline{DE}=\\overline{EB}=5\\rm\\,cm$이고, $\\overline{BC}=18\\rm\\,cm$, $\\overline{DF}\\parallel\\overline{EG}\\parallel\\overline{BC}$일 때, 점 $H$는 $\\overline{CD}$와 $\\overline{EG}$의 교점이다. $\\overline{GH}$의 길이는? (5점)",
+  "sourceConditions": [
+    {
+      "id": "src",
+      "condition": "다음 그림에서 $\\overline{AD}=\\overline{DE}=\\overline{EB}=5\\rm\\,cm$이고, $\\overline{BC}=18\\rm\\,cm$, $\\overline{DF}\\parallel\\overline{EG}\\parallel\\overline{BC}$일 때, 점 $H$는 $\\overline{CD}$와 $\\overline{EG}$의 교점이다. $\\overline{GH}$의 길이는? (5점)",
+      "mappedTo": [
+        "mathPlan",
+        "displaySegments",
+        "planeMarks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "직선 CD의 교점 H와, E-H-G 세 부분을 실제 선분으로 나눈다.",
+    "면색 없이 12−9=3을 길이와 치수선으로 비교한다."
+  ]
+}

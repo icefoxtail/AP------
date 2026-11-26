@@ -1,0 +1,330 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "AEline",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "E"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "DFline",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "D",
+          "F"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "AEline",
+          "DFline"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "AD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "FB",
+      "refs": [
+        "F",
+        "B"
+      ]
+    },
+    {
+      "id": "CE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "AG",
+      "refs": [
+        "A",
+        "G"
+      ]
+    },
+    {
+      "id": "GE",
+      "refs": [
+        "G",
+        "E"
+      ]
+    },
+    {
+      "id": "DG",
+      "refs": [
+        "D",
+        "G"
+      ]
+    },
+    {
+      "id": "GF",
+      "refs": [
+        "G",
+        "F"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "rightAngles": [
+    {
+      "id": "rB",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "rC",
+      "refs": [
+        "D",
+        "C",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "parallels": [
+      {
+        "id": "p",
+        "count": 1,
+        "segments": [
+          "AD",
+          "BC"
+        ]
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "lenDG",
+        "ownerSegment": "DG",
+        "text": "15/4",
+        "factRole": "GIVEN"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "ad6",
+        "from": "A",
+        "to": "D",
+        "label": "6",
+        "side": "ABOVE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ce2",
+        "from": "C",
+        "to": "E",
+        "label": "2",
+        "side": "BELOW",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "fe10",
+        "from": "F",
+        "to": "E",
+        "label": "10",
+        "side": "BELOW",
+        "offset": 2,
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 650,
+    "height": 460
+  },
+  "caption": "정사각형 ABCD와 두 연장선 AE·DF의 교점 G에서 FE=10, AD=6, DG=15/4를 비교한다.",
+  "accessibilityDescription": "A,B,C,D 정사각형의 밑변 양쪽 연장에 F와 E가 놓이며, AE와 DF가 G에서 교차한다. AD=6, CE=2, FE=10, DG=15/4를 표시하고 직각·평행 표식을 보이되 내부는 비워 둔다.",
+  "sourceQuote": "다음 그림과 같이 한 변의 길이가 $6\\rm\\,cm$인 정사각형 $ABCD$에서 $\\triangle ABE\\equiv\\triangle DCF$가 되도록 하는 $\\overline{BC}$의 연장선 위에 두 점을 $E$, $F$라고 하자. $\\overline{CE}=2\\rm\\,cm$, $\\overline{DG}=x\\rm\\,cm$일 때, $x$의 값은? (5점)",
+  "sourceConditions": [
+    {
+      "id": "src",
+      "condition": "다음 그림과 같이 한 변의 길이가 $6\\rm\\,cm$인 정사각형 $ABCD$에서 $\\triangle ABE\\equiv\\triangle DCF$가 되도록 하는 $\\overline{BC}$의 연장선 위에 두 점을 $E$, $F$라고 하자. $\\overline{CE}=2\\rm\\,cm$, $\\overline{DG}=x\\rm\\,cm$일 때, $x$의 값은? (5점)",
+      "mappedTo": [
+        "mathPlan",
+        "displaySegments",
+        "planeMarks"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원본 두 교차선과 F-B-C-E의 공선 관계 및 CE 2를 보존한다.",
+    "해설에 필요 없는 주황 삼각형 채움을 제거하고 닮음에 쓰는 평행선과 FE 10의 치수를 별도 표시한다."
+  ]
+}

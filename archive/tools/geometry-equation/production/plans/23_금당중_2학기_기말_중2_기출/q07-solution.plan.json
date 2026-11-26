@@ -1,0 +1,56 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-2"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -6,
+      6
+    ],
+    "referenceLines": [
+      {
+        "id": "parallel",
+        "y": "2",
+        "intersectionX": []
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": "0",
+        "y": "-2"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": [
+        -2,
+        2
+      ]
+    }
+  },
+  "caption": "원본 직선 y=−2와 점 (4,2)를 지나는 수평 직선 y=2는 서로 평행하다.",
+  "accessibilityDescription": "원본 직선 y=−2와 점 (4,2)를 지나는 수평 직선 y=2는 서로 평행하다.",
+  "sourceConditions": [
+    {
+      "id": "src",
+      "condition": "아래의 그래프와 평행하고 점 $(4,2)$을 지나는 직선의 방정식은? [3점]",
+      "mappedTo": [
+        "graphPlan",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 개의 수평선을 별도로 그리고 두 y절편 −2와 2를 표시한다."
+  ]
+}

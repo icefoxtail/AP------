@@ -1,0 +1,61 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-3",
+          "1"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -2,
+      5
+    ],
+    "referenceLines": [
+      {
+        "id": "line2",
+        "slope": "-4",
+        "intercept": "2",
+        "intersectionX": [
+          "1"
+        ]
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "E",
+        "x": "1",
+        "y": "-2"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        1
+      ],
+      "y": [
+        -2
+      ]
+    }
+  },
+  "caption": "x-ay=3은 y=x−3, bx+y=2는 y=−4x+2이며 교점 (1,−2)을 표시한다.",
+  "accessibilityDescription": "x-ay=3은 y=x−3, bx+y=2는 y=−4x+2이며 교점 (1,−2)을 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "src",
+      "condition": "아래 그림은 두 일차방정식 $x-ay=3$과 $bx+y=2$의 그래프를 각각 그린 것이다. 두 수 $a$와 $b$에 대하여 $a-b$의 값을 구하면? [4점]",
+      "mappedTo": [
+        "graphPlan",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 직선의 서로 다른 기울기 및 (1,-2)의 교점을 정확히 보인다."
+  ]
+}
