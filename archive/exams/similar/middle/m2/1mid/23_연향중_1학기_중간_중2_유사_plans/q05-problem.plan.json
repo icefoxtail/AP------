@@ -1,0 +1,53 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": { "recipeId": "PLANE_FIGURE_v1", "unit": "source-length", "reflectionEquivalent": false },
+    "nodes": [
+      { "id": "A", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "B", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "4" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "C", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "4" }, { "kind": "integer", "value": "3" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "D", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "0" }, { "kind": "integer", "value": "3" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "E", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "7" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "F", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "15" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "G", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "11" }, { "kind": "integer", "value": "3" }] }, "outputType": "POINT", "factRole": "GIVEN" },
+      { "id": "H", "op": "SOURCE_POINT", "inputs": [], "args": { "coordinates": [{ "kind": "integer", "value": "11" }, { "kind": "integer", "value": "0" }] }, "outputType": "POINT", "factRole": "GIVEN" }
+    ]
+  },
+  "displayPoints": ["A", "B", "C", "D", "E", "F", "G", "H"],
+  "hiddenPointNames": ["A", "B", "C", "D", "E", "F", "G", "H"],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    { "id": "sAB", "refs": ["A", "B"] },
+    { "id": "sBC", "refs": ["B", "C"] },
+    { "id": "sCD", "refs": ["C", "D"] },
+    { "id": "sDA", "refs": ["D", "A"] },
+    { "id": "sEF", "refs": ["E", "F"] },
+    { "id": "sFG", "refs": ["F", "G"] },
+    { "id": "sGE", "refs": ["G", "E"] },
+    { "id": "sGH", "refs": ["G", "H"], "dashed": true }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "expressionLabels": [
+      { "id": "rectWidth", "ownerSegment": "sAB", "text": "4a^3b^2" },
+      { "id": "rectHeight", "ownerSegment": "sDA", "text": "3ab" },
+      { "id": "triBase", "ownerSegment": "sEF", "text": "8a^2b^5" },
+      { "id": "triHeight", "ownerSegment": "sGH", "text": "h" }
+    ]
+  },
+  "rightAngles": [
+    { "id": "rectRight", "refs": ["D", "A", "B"] },
+    { "id": "triRight", "refs": ["G", "H", "F"] }
+  ],
+  "coordinateCanvas": { "width": 680, "height": 400 },
+  "caption": "같은 넓이의 직사각형과 삼각형을 나란히 비교한다. 변의 기호는 발문 값이고 도형 크기는 대표 배치이므로 일반적인 축척을 뜻하지 않는다. 삼각형 높이 h의 값은 주어지지 않았다.",
+  "accessibilityDescription": "왼쪽 직사각형의 가로 4a의 세제곱 b의 제곱, 세로 3ab가 표시되어 있고, 오른쪽 삼각형의 밑변 8a의 제곱 b의 다섯제곱과 미지 높이 h가 표시되어 있다. 삼각형 높이에는 직각 표식이 있다.",
+  "sourceConditions": [
+    { "id": "rect", "condition": "직사각형 가로 4a^3b^2, 세로 3ab", "mappedTo": ["planeMarks.expressionLabels[0]", "planeMarks.expressionLabels[1]", "displaySegments[0]", "displaySegments[3]"] },
+    { "id": "tri", "condition": "삼각형 밑변 8a^2b^5, 높이 미지; 두 도형 넓이가 같다", "mappedTo": ["planeMarks.expressionLabels[2]", "planeMarks.expressionLabels[3]", "rightAngles[1]", "displaySegments[4]", "displaySegments[7]"] },
+    { "id": "layout", "condition": "a=b=1인 경우에도 성립하는 대표 좌표 배치로, 문자 길이의 일반적인 축척은 표현하지 않는다", "mappedTo": ["mathPlan.nodes"] }
+  ],
+  "newVisualInformation": ["직사각형의 두 치수와 삼각형의 밑변 치수를 각 변에 연결한다", "삼각형의 미지 높이를 수선과 직각 표식으로 구별한다"]
+}
