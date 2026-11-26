@@ -1,0 +1,115 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "X",
+        "elements": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "X",
+        "elements": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 4
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 3
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 3
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 4
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        }
+      }
+    ],
+    "arrowGroups": [
+      {
+        "name": "f",
+        "from": "X",
+        "to": "Y",
+        "color": "BLUE"
+      }
+    ]
+  },
+  "caption": "일대일대응 f의 순열은 1→5, 2→4, 3→1, 4→2, 5→3이다.",
+  "accessibilityDescription": "집합 X의 원소 1부터 5까지를 각기 다른 원소 5, 4, 1, 2, 3으로 대응시키는 전단사 함수의 화살표.",
+  "sourceConditions": [
+    {
+      "id": "bijection",
+      "condition": "X={1,2,3,4,5}, f:X→X는 일대일대응",
+      "mappedTo": [
+        "diagram.columns",
+        "diagram.arrows"
+      ]
+    },
+    {
+      "id": "equal-difference",
+      "condition": "f(2)-f(3)=f(1)-f(4)=f(5): 4-1=5-2=3",
+      "mappedTo": "diagram.arrows"
+    },
+    {
+      "id": "ordering",
+      "condition": "f(4)<f(2)<f(1): 2<4<5",
+      "mappedTo": "diagram.arrows"
+    }
+  ],
+  "newVisualInformation": [
+    "공역의 다섯 원소가 중복 없이 한 번씩 연결되고, 차이·대소 제약을 동시에 만족한다."
+  ]
+}

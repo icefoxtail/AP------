@@ -1,0 +1,63 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "4",
+          "2",
+          "-1"
+        ],
+        "domain": [
+          null,
+          "1"
+        ],
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "4",
+          "1"
+        ],
+        "domain": [
+          "1",
+          null
+        ],
+        "start": "CLOSED"
+      }
+    ],
+    "requiredPoints": [],
+    "axisTickValues": {
+      "x": [
+        "1"
+      ],
+      "y": [
+        "5"
+      ]
+    }
+  },
+  "caption": "최소 정수 기울기 a=m=1일 때 b=n=5. x=1에서 좌극한과 오른쪽 함수값이 모두 5로 일치해 전 실수에서 단조증가 전단사가 된다. mn=5.",
+  "accessibilityDescription": "x=1 왼쪽은 증가하는 아래로 볼록한 이차곡선, 오른쪽은 기울기 1의 증가 직선으로 (1,5)에서 잇는다.",
+  "sourceConditions": [
+    {
+      "id": "left",
+      "condition": "x<1인 음의 이차식의 꼭짓점은 (1,5)이며 이 점은 왼쪽 조각에 미포함",
+      "mappedTo": "graphPlan.pieces[0].coefficients"
+    },
+    {
+      "id": "right",
+      "condition": "x≥1: a=1인 직선의 절편은 4",
+      "mappedTo": "graphPlan.pieces[1].coefficients"
+    },
+    {
+      "id": "range",
+      "condition": "왼쪽 치역 (-∞,5), 오른쪽 치역 [5,∞)",
+      "mappedTo": "graphPlan.pieces"
+    }
+  ],
+  "newVisualInformation": [
+    "x=1의 왼쪽 열린 점과 오른쪽 닫힌 점이 (1,5)에서 만나 전체 실수 치역을 완성하며 오른쪽의 최소 양의 정수 기울기는 1이다."
+  ],
+  "sourceQuote": "실수 전체의 집합 $\\mathbb{R}$에서 $\\mathbb{R}$로의 함수 $f(x) = \\begin{cases} -(x-1)^2+b & (x < 1) \\\\ ax+4 & (x \\ge 1) \\end{cases}$가 일대일대응일 때, 정수 $a$의 최솟값을 $m$, 그때의 $b$의 값을 $n$이라 하자. $mn$의 값은? (단, $a, b$는 상수이다.)"
+}
