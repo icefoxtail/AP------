@@ -1,0 +1,334 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Y",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "-1"
+                },
+                {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "expression",
+              "op": "add",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "X",
+    "Y",
+    "A",
+    "B",
+    "C",
+    "H"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sAO",
+      "refs": [
+        "A",
+        "O"
+      ]
+    },
+    {
+      "id": "sOX",
+      "refs": [
+        "O",
+        "X"
+      ]
+    },
+    {
+      "id": "sOY",
+      "refs": [
+        "O",
+        "Y"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sBH",
+      "refs": [
+        "B",
+        "H"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sHC",
+      "refs": [
+        "H",
+        "C"
+      ],
+      "dashed": true
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "H90",
+      "refs": [
+        "B",
+        "H",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "slope30",
+        "refs": [
+          "O",
+          "A",
+          "C"
+        ],
+        "label": "30°",
+        "style": "ARC",
+        "factRole": "GIVEN",
+        "value": 30
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "intercept2",
+        "ownerSegment": "sOB",
+        "text": "y=2",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "run3",
+        "ownerSegment": "sBH",
+        "text": "3",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "riseRoot3",
+        "ownerSegment": "sHC",
+        "text": "sqrt(3)",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "hiddenPointNames": [
+    "X",
+    "Y",
+    "H"
+  ],
+  "hiddenPointStyle": "NONE",
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 560
+  },
+  "caption": "다음 그림의 직선의 방정식을 구하면? [4점]",
+  "accessibilityDescription": "양의 x축과 이루는 각 30°이고 y절편이2인 직선 y=(√3/3)x+2.",
+  "sourceQuote": "다음 그림의 직선의 방정식을 구하면? [4점]",
+  "sourceConditions": [
+    {
+      "id": "original",
+      "condition": "다음 그림의 직선의 방정식을 구하면? [4점]",
+      "mappedTo": [
+        "sAC",
+        "sAO",
+        "sOX",
+        "sOY",
+        "sBH",
+        "sHC",
+        "H90",
+        "slope30",
+        "intercept2",
+        "run3",
+        "riseRoot3"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "기존 좌표 그림의 모호한 눈금과 불분명한 기울기를 30° 각호·y절편2·수평3/상승√3 수선으로 규명",
+    "원본에 필요한 지시선·점선·각호·직각·수치 및 점명만 생성하며 배경 흰색 직사각형과 불필요한 면 채움을 사용하지 않는다."
+  ]
+}

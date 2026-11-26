@@ -1,0 +1,278 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "9",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "9",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "-6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "9",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "15",
+              "denominator": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "plate",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "15",
+            "denominator": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "D",
+    "C"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sDB",
+      "refs": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "sOD",
+      "refs": [
+        "O",
+        "D"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ],
+      "dashed": true
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "D90",
+      "refs": [
+        "O",
+        "D",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "midChord",
+        "count": 1,
+        "segments": [
+          "sAD",
+          "sDB"
+        ]
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "AD6",
+        "ownerSegment": "sAD",
+        "text": "6",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "DB6",
+        "ownerSegment": "sDB",
+        "text": "6",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "DC3",
+        "ownerSegment": "sDC",
+        "text": "3",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "r7p5",
+        "ownerSegment": "sOA",
+        "text": "15/2",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "remainingRim",
+        "circle": "plate",
+        "center": "O",
+        "from": "B",
+        "to": "A",
+        "side": "CCW",
+        "highlight": false
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "AB12",
+        "from": "A",
+        "to": "B",
+        "label": "12",
+        "side": "LEFT",
+        "style": "BAR",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 560
+  },
+  "caption": "오른쪽 그림은 원 모양의 접시의 깨진 조각이다. 깨지기 전 접시의 둘레의 길이는? [4점]",
+  "accessibilityDescription": "깨진 원형 접시의 남은 짧은 호 AB, 현12와 반쪽 현6, 활꼴 높이3, 반지름15/2, 둘레15π.",
+  "sourceQuote": "오른쪽 그림은 원 모양의 접시의 깨진 조각이다. 깨지기 전 접시의 둘레의 길이는? [4점]",
+  "sourceConditions": [
+    {
+      "id": "original",
+      "condition": "오른쪽 그림은 원 모양의 접시의 깨진 조각이다. 깨지기 전 접시의 둘레의 길이는? [4점]",
+      "mappedTo": [
+        "sAD",
+        "sDB",
+        "sDC",
+        "sOD",
+        "sOA",
+        "D90",
+        "midChord",
+        "AD6",
+        "DB6",
+        "DC3",
+        "r7p5",
+        "remainingRim",
+        "AB12"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "깨진 접시의 일부 호만 표현하고 현 AB=12의 중점 D, AD=DB=6 및 잔여 높이 DC=3의 직각 추가",
+    "원본에 필요한 지시선·점선·각호·직각·수치 및 점명만 생성하며 배경 흰색 직사각형과 불필요한 면 채움을 사용하지 않는다."
+  ]
+}
