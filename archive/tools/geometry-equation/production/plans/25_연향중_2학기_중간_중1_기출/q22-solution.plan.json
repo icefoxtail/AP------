@@ -1,0 +1,54 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {"recipeId":"PLANE_FIGURE_v1","unit":"source-length","reflectionEquivalent":false},
+    "nodes": [
+      {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-4"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"-1"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"2"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"D","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"5"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"P","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"4"}]},"outputType":"POINT","factRole":"GIVEN"},
+      {"id":"XL","op":"TRANSLATE_POINT","inputs":["A"],"args":{"dx":{"kind":"integer","value":"-1"},"dy":{"kind":"integer","value":"0"}},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"XR","op":"TRANSLATE_POINT","inputs":["D"],"args":{"dx":{"kind":"integer","value":"1"},"dy":{"kind":"integer","value":"0"}},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"PAup","op":"TRANSLATE_POINT","inputs":["P"],"args":{"dx":{"kind":"integer","value":"1"},"dy":{"kind":"integer","value":"1"}},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"PAdown","op":"TRANSLATE_POINT","inputs":["A"],"args":{"dx":{"kind":"integer","value":"-1"},"dy":{"kind":"integer","value":"-1"}},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"PBup","op":"TRANSLATE_POINT","inputs":["P"],"args":{"dx":{"kind":"rational","numerator":"1","denominator":"4"},"dy":{"kind":"integer","value":"1"}},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"PBdown","op":"TRANSLATE_POINT","inputs":["B"],"args":{"dx":{"kind":"rational","numerator":"-1","denominator":"4"},"dy":{"kind":"integer","value":"-1"}},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"PCup","op":"TRANSLATE_POINT","inputs":["P"],"args":{"dx":{"kind":"rational","numerator":"-1","denominator":"2"},"dy":{"kind":"integer","value":"1"}},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"PCdown","op":"TRANSLATE_POINT","inputs":["C"],"args":{"dx":{"kind":"rational","numerator":"1","denominator":"2"},"dy":{"kind":"integer","value":"-1"}},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"PDup","op":"TRANSLATE_POINT","inputs":["P"],"args":{"dx":{"kind":"rational","numerator":"-5","denominator":"4"},"dy":{"kind":"integer","value":"1"}},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+      {"id":"PDdown","op":"TRANSLATE_POINT","inputs":["D"],"args":{"dx":{"kind":"rational","numerator":"5","denominator":"4"},"dy":{"kind":"integer","value":"-1"}},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+    ]
+  },
+  "displayPoints": ["A","B","C","D","P","XL","XR","PAup","PAdown","PBup","PBdown","PCup","PCdown","PDup","PDdown"],
+  "hiddenPointNames": ["XL","XR","PAup","PAdown","PBup","PBdown","PCup","PCdown","PDup","PDdown"],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {"id":"sLine","refs":["XL","XR"],"arrow":"BOTH"},
+    {"id":"sPA","refs":["PAup","PAdown"],"arrow":"BOTH"},
+    {"id":"sPB","refs":["PBup","PBdown"],"arrow":"BOTH"},
+    {"id":"sPC","refs":["PCup","PCdown"],"arrow":"BOTH"},
+    {"id":"sPD","refs":["PDup","PDdown"],"arrow":"BOTH"}
+  ],
+  "planeMarks": {
+    "textLabels": [
+      {"id":"lineName","at":[7,0.3],"text":"l","labelKind":"MATH"},
+      {"id":"lineCount","at":[-3,6],"text":"직선 5개","labelKind":"TEXT"},
+      {"id":"rayCount","at":[2,6],"text":"반직선 14개","labelKind":"TEXT"},
+      {"id":"segmentCount","at":[1,-2],"text":"선분 10개","labelKind":"TEXT"}
+    ]
+  },
+  "coordinateCanvas": {"width":700,"height":450},
+  "caption": "한 직선 위의 네 점 A, B, C, D와 직선 밖의 P에서 서로 다른 직선 5개, 반직선 14개, 선분 10개를 셀 수 있다",
+  "accessibilityDescription": "A, B, C, D가 왼쪽부터 직선 l 위에 놓여 있고 P는 위쪽에 있다. 모든 다섯 직선을 각각 양쪽 점 너머까지 늘리고 양 끝에 화살표를 표시했다. 연장선 끝의 이름 없는 작도점은 표시하지 않는다. 직선 5개, 반직선 14개, 선분 10개라는 계산 결과를 별도 글자로 배치했다.",
+  "sourceQuote": "직선 l 위에 있는 네 점 A, B, C, D와 직선 l 위에 있지 않은 한 점 P에서 만들 수 있는 직선, 반직선, 선분의 개수의 합",
+  "sourceConditions": [
+    {"id":"collinear","condition":"점 A, B, C, D는 모두 직선 l 위에 있고 왼쪽부터 그 순서로 놓인다.","mappedTo":["mathPlan.nodes.A","mathPlan.nodes.B","mathPlan.nodes.C","mathPlan.nodes.D","displaySegments.sLine","planeMarks.textLabels.lineName"]},
+    {"id":"externalPoint","condition":"점 P는 직선 l 위에 있지 않으며 네 점 A, B, C, D와 연결할 수 있다.","mappedTo":["mathPlan.nodes.P","displaySegments.sPA","displaySegments.sPB","displaySegments.sPC","displaySegments.sPD"]},
+    {"id":"lineCount","condition":"서로 다른 직선은 l, PA, PB, PC, PD로 5개이다.","mappedTo":["planeMarks.textLabels.lineCount","displaySegments.sLine","displaySegments.sPA","displaySegments.sPB","displaySegments.sPC","displaySegments.sPD"]},
+    {"id":"rayCount","condition":"l 위에서는 서로 다른 반직선 6개, P와 네 점 사이에서는 서로 반대 방향인 반직선 8개이므로 14개이다.","mappedTo":["planeMarks.textLabels.rayCount","displaySegments.sLine","displaySegments.sPA","displaySegments.sPB","displaySegments.sPC","displaySegments.sPD"]},
+    {"id":"segmentCount","condition":"서로 다른 다섯 점 중 두 점을 고르는 선분은 5×4÷2=10개이다.","mappedTo":["planeMarks.textLabels.segmentCount","displayPoints"]}
+  ],
+  "newVisualInformation": ["기존 네 패널 해설 SVG에서 작은 글자와 중첩 화살표로 분산된 개수 정보를 한 장의 큰 도형과 세 개의 계산 라벨에 결합한다. 기존 다섯 이름 외의 보조점 이름이나 길이 수치를 표시하지 않는다.","직선 l 위의 여섯 반직선 및 P와 네 점 사이의 여덟 반직선은 다섯 직선의 양쪽 연장 화살표와 계산 글자로 구분하며, 원문 풀이에 있는 5·14·10의 합이 29임을 캡션에서 밝힌다."]
+}
