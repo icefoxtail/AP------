@@ -1,0 +1,8 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {"kind":"MAPPING","columns":[{"id":"X","name":"x","elements":["1","2","4"]},{"id":"Y","name":"16/x","elements":["16","8","4"]}],"arrows":[{"from":{"column":0,"element":0},"to":{"column":1,"element":0}},{"from":{"column":0,"element":1},"to":{"column":1,"element":1}},{"from":{"column":0,"element":2},"to":{"column":1,"element":2}}],"highlight":{"arrows":[2]}},
+  "caption": "16의 양의 약수는 {1,16}, {2,8}, {4}의 세 묶음으로 선택한다. 4는 자기 자신과 짝이다.",
+  "accessibilityDescription": "16의 약수 1, 2, 4에서 각각 16, 8, 4로 향하는 세 대응 화살표. 4의 자기대응이 강조되어 있다.",
+  "sourceConditions": [{"id":"c1","condition":"x가 A에 있으면 16/x도 A에 있어야 함","mappedTo":["diagram.columns","diagram.arrows"]}],
+  "newVisualInformation": ["16의 양의 약수 짝 세 묶음과 제곱근 4의 자기대응을 한 화면에 구분한다."]
+}

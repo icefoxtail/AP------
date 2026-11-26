@@ -1,0 +1,73 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "x",
+        "elements": [
+          "1",
+          "2",
+          "4"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "16/x",
+        "elements": [
+          "16",
+          "8",
+          "4"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        }
+      }
+    ]
+  },
+  "caption": "16의 양의 약수 묶음 {1,16}, {2,8}, {4}. 묶음합은 각각 17, 10, 4로 최대·최소를 비교한다.",
+  "accessibilityDescription": "왼쪽 약수 1, 2, 4에서 오른쪽 16, 8, 4로 대응하는 3개 화살표.",
+  "sourceConditions": [
+    {
+      "id": "closure",
+      "condition": "x∈A이면 16/x∈A",
+      "mappedTo": [
+        "diagram.columns",
+        "diagram.arrows"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "정수 16에 대해 임의 원소를 단독 선택할 수 없음을 3개 약수 짝의 대응으로 표시한다."
+  ]
+}
