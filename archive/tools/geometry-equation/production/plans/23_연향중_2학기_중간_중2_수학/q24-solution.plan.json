@@ -1,0 +1,405 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "2"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "O"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBF",
+      "refs": [
+        "B",
+        "F"
+      ]
+    },
+    {
+      "id": "sFC",
+      "refs": [
+        "F",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sEA",
+      "refs": [
+        "E",
+        "A"
+      ]
+    },
+    {
+      "id": "sAO",
+      "refs": [
+        "A",
+        "O"
+      ]
+    },
+    {
+      "id": "sOC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "sEO",
+      "refs": [
+        "E",
+        "O"
+      ]
+    },
+    {
+      "id": "sOF",
+      "refs": [
+        "O",
+        "F"
+      ]
+    },
+    {
+      "id": "sAF",
+      "refs": [
+        "A",
+        "F"
+      ]
+    },
+    {
+      "id": "sEC",
+      "refs": [
+        "E",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "diagonalMidpoint",
+        "count": 1,
+        "segments": [
+          "sAO",
+          "sOC"
+        ]
+      },
+      {
+        "id": "otherMidpoint",
+        "count": 2,
+        "segments": [
+          "sEO",
+          "sOF"
+        ]
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dimDE",
+        "from": "D",
+        "to": "E",
+        "label": "2",
+        "unit": "cm",
+        "side": "ABOVE"
+      },
+      {
+        "id": "dimBC",
+        "from": "B",
+        "to": "C",
+        "label": "8",
+        "unit": "cm",
+        "side": "BELOW"
+      }
+    ]
+  },
+  "rightAngles": [
+    {
+      "id": "perpendicularO",
+      "refs": [
+        "A",
+        "O",
+        "E"
+      ]
+    }
+  ],
+  "caption": "직사각형의 대각선 중점 O에서 두 대각선이 수직이고 서로 이등분한다",
+  "accessibilityDescription": "직사각형 ABCD에서 AC의 중점 O를 지나 수직인 EF를 그렸다. AO와 OC, EO와 OF에 각각 같은 길이 눈금을 넣고 DE 2cm와 BC 8cm를 표시했다. 내부는 색칠하지 않았다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AC의 중점 O",
+      "mappedTo": [
+        "diagonalMidpoint"
+      ],
+      "sourceQuote": "[서술형 4] 오른쪽 직사각형 $ABCD$에서 대각선 $AC$의 중점을 $O$라 하고, 점 $O$에서 $AC$에 수직인 직선과 $AD$, $BC$의 교점을 각각 $E$, $F$라 하자. $DE=2$ cm, $BC=8$ cm일 때, 사각형 $AFCE$의 둘레의 길이를 구하시오. [5점]"
+    },
+    {
+      "id": "c2",
+      "condition": "AC ⟂ EF",
+      "mappedTo": [
+        "perpendicularO"
+      ],
+      "sourceQuote": "[서술형 4] 오른쪽 직사각형 $ABCD$에서 대각선 $AC$의 중점을 $O$라 하고, 점 $O$에서 $AC$에 수직인 직선과 $AD$, $BC$의 교점을 각각 $E$, $F$라 하자. $DE=2$ cm, $BC=8$ cm일 때, 사각형 $AFCE$의 둘레의 길이를 구하시오. [5점]"
+    },
+    {
+      "id": "c3",
+      "condition": "DE = 2 cm",
+      "mappedTo": [
+        "dimDE"
+      ],
+      "sourceQuote": "[서술형 4] 오른쪽 직사각형 $ABCD$에서 대각선 $AC$의 중점을 $O$라 하고, 점 $O$에서 $AC$에 수직인 직선과 $AD$, $BC$의 교점을 각각 $E$, $F$라 하자. $DE=2$ cm, $BC=8$ cm일 때, 사각형 $AFCE$의 둘레의 길이를 구하시오. [5점]"
+    },
+    {
+      "id": "c4",
+      "condition": "BC = 8 cm",
+      "mappedTo": [
+        "dimBC"
+      ],
+      "sourceQuote": "[서술형 4] 오른쪽 직사각형 $ABCD$에서 대각선 $AC$의 중점을 $O$라 하고, 점 $O$에서 $AC$에 수직인 직선과 $AD$, $BC$의 교점을 각각 $E$, $F$라 하자. $DE=2$ cm, $BC=8$ cm일 때, 사각형 $AFCE$의 둘레의 길이를 구하시오. [5점]"
+    },
+    {
+      "id": "c5",
+      "condition": "EO = OF",
+      "mappedTo": [
+        "otherMidpoint"
+      ],
+      "sourceQuote": "[키포인트] 교점 $O$에서 두 삼각형의 합동으로 $EO=FO$를 보인 뒤, 대각선의 성질로 마름모를 판정한다.\n직사각형의 대각선은 서로를 이등분하므로 $AO=CO$이다. 또한 $AD\\parallel BC$이므로 $\\angle EAO=\\angle FCO$이고, 맞꼭지각으로 $\\angle EOA=\\angle FOC$이다.\n따라서 $\\triangle AEO\\cong\\triangle CFO$이므로 $EO=FO$이다.\n사각형 $AFCE$의 두 대각선 $AC$, $EF$는 서로를 이등분하므로 $AFCE$는 평행사변형이고, 문제에서 $AC\\perp EF$이므로 이 평행사변형은 마름모이다.\n$AD=BC=8$ cm이고 $DE=2$ cm이므로 $AE=8-2=6$ cm이다. 마름모의 네 변의 길이는 모두 같으므로 둘레는 $4\\times6=24$ cm이다.\n따라서 답은 $24$ cm이다."
+    }
+  ],
+  "newVisualInformation": [
+    "둘레 문제에서 불필요한 사각형 내부 채움을 제거한다.",
+    "O의 직각 표식, 두 쌍의 중점 눈금, 주어진 2cm와 8cm를 실제 그림 필드에 둔다."
+  ],
+  "coordinateCanvas": {
+    "width": 680,
+    "height": 480
+  }
+}

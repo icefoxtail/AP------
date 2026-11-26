@@ -1,0 +1,286 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "18"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "16"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "sEC",
+      "refs": [
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDF",
+      "refs": [
+        "D",
+        "F"
+      ]
+    },
+    {
+      "id": "sFA",
+      "refs": [
+        "F",
+        "A"
+      ]
+    },
+    {
+      "id": "sAE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "sBF",
+      "refs": [
+        "B",
+        "F"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "rhombusSides",
+        "count": 1,
+        "segments": [
+          "sAB",
+          "sBE",
+          "sEF",
+          "sFA"
+        ]
+      }
+    ],
+    "parallels": [
+      {
+        "id": "adBcParallel",
+        "count": 1,
+        "segments": [
+          "sFA",
+          "sBE"
+        ]
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "base12",
+        "from": "B",
+        "to": "C",
+        "label": "12",
+        "unit": "cm",
+        "side": "BELOW"
+      },
+      {
+        "id": "side10",
+        "from": "C",
+        "to": "D",
+        "label": "10",
+        "unit": "cm",
+        "side": "RIGHT"
+      }
+    ]
+  },
+  "caption": "각의 이등분선으로 만들어진 사각형 ABEF의 네 변은 각각 10 cm",
+  "accessibilityDescription": "평행사변형 ABCD에서 A에서 E와 B에서 F로 잇고, 사각형 ABEF의 네 변에 같은 길이 눈금을 표시했다. BC는 12cm, CD는 10cm다. 면 채움은 없다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "BC = 12 cm",
+      "mappedTo": [
+        "base12"
+      ],
+      "sourceQuote": "오른쪽 그림과 같은 평행사변형 $ABCD$에서 $\\angle A$, $\\angle B$의 이등분선이 $BC$, $AD$와 만나는 점을 각각 $E,F$라고 하자. $BC=12$ cm, $CD=10$ cm일 때, $\\square ABEF$의 둘레의 길이를 구하면? [4점]"
+    },
+    {
+      "id": "c2",
+      "condition": "CD = 10 cm",
+      "mappedTo": [
+        "side10"
+      ],
+      "sourceQuote": "오른쪽 그림과 같은 평행사변형 $ABCD$에서 $\\angle A$, $\\angle B$의 이등분선이 $BC$, $AD$와 만나는 점을 각각 $E,F$라고 하자. $BC=12$ cm, $CD=10$ cm일 때, $\\square ABEF$의 둘레의 길이를 구하면? [4점]"
+    },
+    {
+      "id": "c3",
+      "condition": "AB = BE = EF = FA = 10 cm",
+      "mappedTo": [
+        "rhombusSides"
+      ],
+      "sourceQuote": "[키포인트] 평행선과 각의 이등분선으로 생기는 이등변삼각형을 이용한다.\n$AE$는 $\\angle A$의 이등분선이고 $AD\\parallel BE$이므로 $\\angle BAE=\\angle EAD=\\angle AEB$이다.\n따라서 $AB=BE=10$ cm이다.\n같은 방법으로 $BF$는 $\\angle B$의 이등분선이고 $AF\\parallel BC$이므로 $AB=AF=10$ cm이다.\n$AF\\parallel BE$이고 $AF=BE$이므로 사각형 $ABEF$는 평행사변형이다.\n따라서 $EF=AB=10$ cm이고 둘레는 $10+10+10+10=40$ cm이다.\n\n따라서 정답은 ②이다."
+    },
+    {
+      "id": "c4",
+      "condition": "AF ∥ BE",
+      "mappedTo": [
+        "adBcParallel"
+      ],
+      "sourceQuote": "[키포인트] 평행선과 각의 이등분선으로 생기는 이등변삼각형을 이용한다.\n$AE$는 $\\angle A$의 이등분선이고 $AD\\parallel BE$이므로 $\\angle BAE=\\angle EAD=\\angle AEB$이다.\n따라서 $AB=BE=10$ cm이다.\n같은 방법으로 $BF$는 $\\angle B$의 이등분선이고 $AF\\parallel BC$이므로 $AB=AF=10$ cm이다.\n$AF\\parallel BE$이고 $AF=BE$이므로 사각형 $ABEF$는 평행사변형이다.\n따라서 $EF=AB=10$ cm이고 둘레는 $10+10+10+10=40$ cm이다.\n\n따라서 정답은 ②이다."
+    }
+  ],
+  "newVisualInformation": [
+    "둘레 문제의 해설에 남아 있던 불필요한 면색을 제거한다.",
+    "네 변의 같은 길이 표식과 주어진 치수를 렌더 필드로 남긴다."
+  ],
+  "coordinateCanvas": {
+    "width": 680,
+    "height": 480
+  }
+}
