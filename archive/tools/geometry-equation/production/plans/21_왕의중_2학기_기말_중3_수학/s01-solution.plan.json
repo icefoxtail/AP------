@@ -169,19 +169,6 @@
     }
   ],
   "planeMarks": {
-    "angles": [
-      {
-        "id": "M90",
-        "refs": [
-          "B",
-          "M",
-          "O"
-        ],
-        "value": 90,
-        "factRole": "DERIVED_INTERMEDIATE",
-        "noLabel": true
-      }
-    ],
     "equalLengths": [
       {
         "id": "e1",
@@ -217,7 +204,11 @@
       }
     ]
   },
+  "rightAngles": [
+    {"id": "M90", "refs": ["B", "M", "O"]}
+  ],
   "caption": "현의 수직이등분과 직각삼각형 OMB를 보여 주는 해설 그림이다.",
+  "accessibilityDescription": "원 O의 현 AB와 수선 OM, 점 C를 그리고 M의 직각 사각 표식, AM 8, CM 4, 반지름 x와 OM 길이 x-4를 나타낸다.",
   "sourceConditions": [
     {
       "id": "c1",
@@ -227,6 +218,7 @@
         "displayCircles",
         "displaySegments",
         "planeMarks",
+        "rightAngles",
         "caption"
       ]
     }

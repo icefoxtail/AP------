@@ -158,19 +158,6 @@
     }
   ],
   "planeMarks": {
-    "angles": [
-      {
-        "id": "T90",
-        "refs": [
-          "A",
-          "T",
-          "O"
-        ],
-        "value": 90,
-        "factRole": "DERIVED_INTERMEDIATE",
-        "noLabel": true
-      }
-    ],
     "equalLengths": [
       {
         "id": "e1",
@@ -200,7 +187,11 @@
       }
     ]
   },
+  "rightAngles": [
+    {"id": "T90", "refs": ["A", "T", "O"]}
+  ],
   "caption": "두 동심원과 접점 T에서의 수직 관계를 보여 주는 해설 그림이다.",
+  "accessibilityDescription": "반지름이 5cm와 3cm인 두 동심원과 작은 원의 접점 T를 통과하는 현 AB를 그린다. OT와 AB의 수직 관계를 직각 사각 표식으로 보인다.",
   "sourceConditions": [
     {
       "id": "c1",
@@ -210,6 +201,7 @@
         "displayCircles",
         "displaySegments",
         "planeMarks",
+        "rightAngles",
         "caption"
       ]
     }
